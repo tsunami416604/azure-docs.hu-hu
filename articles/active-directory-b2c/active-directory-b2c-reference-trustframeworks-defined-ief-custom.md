@@ -1,127 +1,127 @@
 ---
-title: Referencia - megbízhatósági keretrendszereket az Azure Active Directory B2C |} A Microsoft Docs
-description: Az Azure Active Directory B2C-vel egyéni szabályzatok és az identitás-kezelőfelületi keretrendszer témája.
+title: A Azure Active Directory B2C referenciái – megbízhatósági keretrendszerek | Microsoft Docs
+description: A Azure Active Directory B2C egyéni szabályzatokkal és az identitás-élmény keretrendszerével kapcsolatos témakörök.
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/04/2017
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8debab073d65cd64303d2f395b73a3a04e8105b6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: e96ddcb904bbda6c3123ffc9d3da50ff80823689
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55166866"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500009"
 ---
-# <a name="define-trust-frameworks-with-azure-ad-b2c-identity-experience-framework"></a>Az Azure AD B2C identitás-kezelőfelületi keretrendszer megbízhatósági keretrendszerek definiálása
+# <a name="define-trust-frameworks-with-azure-ad-b2c-identity-experience-framework"></a>Megbízhatósági keretrendszerek meghatározása Azure AD B2C Identity Experience Framework-keretrendszerrel
 
-Az Azure Active Directory B2C (Azure AD B2C-vel) egyéni szabályzatot, amely használhatja az identitáskezelési keretrendszert is, adjon meg egy központosított szolgáltatásba szervezeténél. Ez a szolgáltatás fontos a nagy közösségi identitás-összevonási bonyolultságát is csökkenti. Az összetettséget egyetlen megbízhatósági kapcsolat és a egy egyetlen metaadatok exchange csökken.
+Azure Active Directory B2C (Azure AD B2C) a személyazonossági élmény keretrendszert használó egyéni házirendek központosított szolgáltatással biztosítják a szervezetét. Ez a szolgáltatás csökkenti az identitás-összevonás összetettségét egy nagy közösség érdeklődési területén. Az összetettséget egyetlen megbízhatósági kapcsolat és egy metaadat-csere is csökkenti.
 
-Az Azure AD B2C-vel egyéni szabályzatok használhatja az identitáskezelési keretrendszert is, hogy a következő kérdések megválaszolásával:
+Azure AD B2C egyéni szabályzatok az identitási élmény keretrendszert használják a következő kérdések megválaszolásához:
 
-- Mik azok a jogi, biztonsági, adatvédelmi és be kell tartani, hogy adatvédelmi szabályzatok?
-- Kik az ügyfelek és Mik azok a folyamatok egy akkreditált résztvevő lenni?
-- Kik a akkreditált információk Identitásszolgáltatók (más néven: "jogcímek szolgáltatók"), és hogy mit kínálnak?
-- Az akkreditált függő entitások, akik (és opcionálisan, mi szükséges a)?
-- Mik azok a műszaki "on"átkerül együttműködési követelményeket résztvevői?
-- Mik azok a műveleti "runtime" szabályokat, amelyek a digitális azonosító adatok cseréjére vonatkozó kényszerítettnek kell lennie?
+- Milyen jogi, biztonsági, adatvédelmi és adatvédelmi szabályzatokat kell betartani?
+- Kik a partnerek, és Mik azok a folyamatok, amelyek egy akkreditált résztvevőnek válnak?
+- Kik az akkreditált identitás-szolgáltatók (más néven "jogcím-szolgáltatók"), és mit kínálnak?
+- Kik az akkreditált függő entitások (és opcionálisan mit is igényelnek)?
+- Mik a technikai "a drót" együttműködési követelményei a résztvevők számára?
+- Milyen működési "futtatókörnyezeti" szabályokat kell kikényszeríteni a digitális azonosítók adatainak cseréjére?
 
-Ezek a kérdések megválaszolásához hozhatnak létre az Azure AD B2C-vel egyéni szabályzatok, amelyek a megbízható keretrendszer (TF) identitás-kezelőfelületi keretrendszer használatát. Vegyünk például tento konstruktor, és hogy mire használható.
+Ezen kérdések megválaszolásához Azure AD B2C az Identity Experience Framework-t használó egyéni szabályzatokat a megbízhatósági keretrendszer (TF) szerkezet használatával. Tekintsük át ezt a konstrukciót és azt, amit biztosít.
 
-## <a name="understand-the-trust-framework-and-federation-management-foundation"></a>A megbízható keretrendszer és az összevonás felügyeleti foundation ismertetése
+## <a name="understand-the-trust-framework-and-federation-management-foundation"></a>A megbízhatósági keretrendszer és az összevonási felügyeleti alaprendszer ismertetése
 
-A megbízható keretrendszer az identitás, biztonsági, adatvédelmi és adatvédelmi szabályzatok, amelyhez meg kell felelnie a fontos közösségi résztvevők írásos meghatározását.
+A megbízhatósági keretrendszer az identitás, a biztonság, az adatvédelem és az adatvédelmi szabályzatok írásos specifikációja, amelyeknek meg kell felelniük a Közösségen belüli résztvevőknek.
 
-Összevont identitás erőforrásigény végfelhasználói identitás garancia Internet szintjén elérésére. Delegálásával át harmadik félnek az Identitáskezelés, a végfelhasználó egy egyetlen digitális identitás több függő újrahasználhatók.  
+Az összevont identitás lehetővé teszi a végfelhasználói identitások Internet-méretezéssel való megvalósításának alapját. Az Identitáskezelés harmadik félnek való delegálásával a végfelhasználók egyetlen digitális identitása újra felhasználható több függő féllel.  
 
-Identitás garancia szükséges, hogy az identitásszolgáltató (IDP) és attribútum szolgáltatók (AtPs) formátumhoz meghatározott biztonsági, adatvédelmi, és a működési szabályzatai és.  Közvetlen ellenőrzések nem végezhetik el, ha a függő entitások (RPs) kell fejlesztenie megbízhatósági kapcsolata az identitásszolgáltató és AtPs együttműködve választják.  
+Az Identity Assurance megköveteli, hogy az Identity Providers (IDP) és az attribútum-szolgáltatók (AtPs-EK) megfeleljenek az egyes biztonsági, adatvédelmi és üzemeltetési házirendeknek és eljárásoknak.  Ha nem tudnak közvetlen ellenőrzéseket végezni, a függő entitások (RPs) megbízhatósági kapcsolatot kell kifejleszteniük a IDP és a AtPs.  
 
-A fogyasztók és digitális azonosító adatok szolgáltatók növekedésével sokaságát tekintve nehéz lenne páros kezelését ezek megbízhatósági kapcsolatokat, vagy még hálózati kapcsolat szükséges technikai metaadatok páros exchange továbbra is.  Összevonási hubs el csak korlátozott sikeres, a problémák megoldásához.
+Mivel a felhasználók száma és a digitális személyazonossággal kapcsolatos információk mennyisége növekszik, nehéz tovább páros a megbízhatósági kapcsolatok felügyeletét, vagy akár a hálózati kapcsolathoz szükséges technikai metaadatok páros cseréjét is.  Az összevonási központok csak korlátozott sikert értek el ezen problémák megoldásakor.
 
-### <a name="what-a-trust-framework-specification-defines"></a>Milyen keretrendszer megbízható specifikáció meghatározása
-TFs a linchpins a nyitott identitás Exchange (OIX) megbízható keretrendszer modell, ahol minden egyes Közösség fontos egy adott TF specifikációt szabályozzák. Ilyen TF leírást határozza meg:
+### <a name="what-a-trust-framework-specification-defines"></a>A megbízhatósági keretrendszer specifikációjának meghatározása
+A TFs az Open Identity Exchange (OIX) megbízhatósági keretrendszer modelljének linchpins, amelyben minden érdekelt Közösségre egy adott TF-specifikáció vonatkozik. Az ilyen TF-specifikációk a következőket határozzák meg:
 
-- **A Közösség hasznos hely meghatározása a biztonság és adatvédelem metrikák:**
-    - A szintjei közül (LOA), amelyek a résztvevők; által kínált/szükséges Ha például egy rendezett készlet digitális azonosító adatok hitelességének megbízhatósági minősítése.
-    - A szintek, amelyek a résztvevők; által kínált/szükséges védelem (LOP) Ha például egy rendezett készlet megbízhatósági minősítés, amely kezeli a lényeges a Közösségben résztvevő digitális azonosító adatok védelméről.
+- **A Közösség számára fontos biztonsági és adatvédelmi mérőszámok a következő meghatározásával:**
+    - A résztvevők által kínált/szükséges megbízhatósági szintek (LOA); például a megbízhatósági minősítések rendezett halmaza a digitális azonosítók adatainak hitelességéhez.
+    - A résztvevők által kínált/szükséges védelmi szintek (LOP); például egy rendezett megbízhatósági minősítést a Közösségen belüli résztvevők által kezelt digitális identitások adatainak védelmére.
 
-- **A digitális azonosító adatok, amely rendelkezik felajánlott/kötelező résztvevők leírása**.
+- A **résztvevők által felkínált vagy szükséges digitális azonosító információk leírása**.
 
-- **A technikai házirendek, az éles és az digitális azonosító adatok felhasználását, és így LOA és LOP méréséhez. A megírt házirendek általában a következő kategóriákba tartozó házirendek a következők:**
-    - Az identitás ellenőrzés a szabályzatok, például: *Hogyan erősen az egy személy azonosító adatok megvizsgált?*
-    - Biztonsági házirendek, például: *Hogyan erősen információ sértetlenségét és bizalmas védettek?*
-    - Adatvédelmi szabályzatok, például: *Milyen control a felhasználó rendelkezik személyes azonosításra alkalmas adatokat (PII) keresztül*?
-    - Túlélést házirendek, például: *Ha egy szolgáltató működése megszűnik, hogyan történik elérhetőségének folytonosságát és a személyazonosításra alkalmas adatok függvény?*
+- **A digitális azonosító adatok előállítására és felhasználására vonatkozó technikai szabályzatok, így az LOA és a LOP méréséhez. Ezek az írott szabályzatok jellemzően a következő kategóriákat tartalmazzák:**
+    - Személyazonosság-igazolási szabályzatok, például: *Mennyire erős a személy személyazonossági adatai?*
+    - Biztonsági házirendek, például: *Milyen mértékben védi az információ-integritást és a titkosságot?*
+    - Adatvédelmi szabályzatok, például: *Milyen szabályozást végeznek a felhasználók a személyes azonosításra alkalmas adatokkal*?
+    - Túlélő házirendek, például: *Ha a szolgáltató megszűnik a műveletek, hogyan működik a személyes adatokkal kapcsolatos funkciók folytonossága és védelme?*
 
-- **A technikai profilok az éles és az digitális azonosító adatok felhasználását. Ezek a profilok a következők:**
-    - Hatókör felületek, amelynek digitális azonosító adatok egy megadott LOA címen érhető el.
-    - Az átvitel közbeni együttműködés a műszaki követelményeket.
+- **A digitális azonosító adatok előállítására és felhasználására szolgáló technikai profilok. Ezek a profilok a következők:**
+    - A hatókör-felületek, amelyekhez a rendszer a megadott LOA-ben elérhetővé válik a digitális azonosító információi.
+    - Technikai követelmények a vezetékes együttműködéshez.
 
-- **A különböző szerepköröket, amelyek a Közösségben résztvevő hajthat végre, és ezek a szerepkörök teljesítéséhez szükséges szoftverösszetevője leírását.**
+- **A Közösség résztvevői által elvégezhető különböző szerepkörök leírása, valamint a szerepkörök teljesítéséhez szükséges képzettségek.**
 
-Így TF specifikáció szabályozza, hogyan történik a azonosító adatok között a résztvevők a Közösség hasznos helyek: függő entitások, identitás- és attribútum szolgáltatók és attribútum hitelesítők.
+Így a TF specifikáció szabályozza, hogyan történik az identitási adatok cseréje a Közösség résztvevői között: függő entitások, identitás-és attribútum-szolgáltatók, valamint attribútumok ellenőrzői.
 
-Egy TF specifikációt egy vagy több dokumentumot, amely a Közösség fontos, hogy szabályozza a helyességi feltétel és a digitális azonosító adatok Közösségen belüli fogyasztásnál a cégirányítási referenciaként szolgálnak. Egy dokumentált szabályzatokat és eljárásokat az online tranzakció-Közösség fontos tagjai között használt digitális identitásokat a megbízhatósági kapcsolatot hoz létre.  
+A TF-specifikáció egy vagy több olyan dokumentum, amely referenciául szolgál az olyan Közösség irányítására, amely a digitális személyazonossági információk Közösségen belüli érvényesítését és felhasználását szabályozza. Ez a szabályzatok és eljárások dokumentált készlete, amelynek célja, hogy megbízhatósági kapcsolatot hozzon létre a Közösség érdeklődési körének online tranzakciói számára használt digitális identitásokban.  
 
-Más szóval TF specifikáció a közösségi egy működőképes összevont identitás ökoszisztéma létrehozására szolgáló szabályokat határozza meg.
+Ez azt jelenti, hogy a TF specifikáció meghatározza az életképes összevont identitások ökoszisztémájának létrehozási szabályait egy Közösség számára.
 
-Jelenleg nincs ilyen megközelítés a juttatás a széles körű szerződés. Nem kétséges, amely a bizalmi keretrendszer specifikációk digitális identitásokat rendszereit ellenőrizhető biztonsági, megbízhatósági és adatvédelmi jellemzőkkel, ami azt jelenti, hogy azok felhasználhatók a lényeges több logikai fejlesztésének megkönnyítése.
+Jelenleg széleskörű megállapodás van az ilyen megközelítés előnyeiről. Nem kétséges, hogy a megbízhatósági keretrendszer specifikációi megerősítik a digitális identitás-ökoszisztémák fejlesztését a ellenőrizhető biztonsági, megbízhatósági és adatvédelmi jellemzőkkel, ami azt jelenti, hogy több Közösség érdeklődésére is felhasználhatók.
 
-Amely az okból az identitáskezelési keretrendszert használó Azure AD B2C-vel egyéni szabályzatok használja a specifikáció egy TF annak adatreprezentációt alapjául szolgáló együttműködés megkönnyítése érdekében.  
+Ezért Azure AD B2C az Identity Experience Framework-t használó egyéni szabályzatok a specifikációt használják a TF számára az együttműködési képesség elősegítése érdekében.  
 
-Az Azure AD B2C-vel egyéni szabályzatok, az az identitás-kezelőfelületi keretrendszer képviseli egy emberi és gépi olvasásra alkalmas adatok vegyesen TF specifikációjának. Olyan (általában szakaszokat, amelyek további Dokumentumközpontú cégirányítási felé) Ez a modell részei közzétett biztonsági és adatvédelmi szabályzat dokumentációját és a kapcsolódó eljárások hivatkozásként jelennek meg (ha van). Más szakaszok részletesen leírja a konfigurációs metaadatok és a futtatókörnyezet szabályok, amelyek elősegítik a működési automation.
+Azure AD B2C az identitási élmény keretrendszerét kihasználó egyéni szabályzatok az emberi és a géppel olvasható adatok keverékéből álló TF-specifikációnak minősülnek. A modell egyes részeit (általában az irányítás irányába jobban igazodó szakaszt) a közzétett biztonsági és adatvédelmi szabályzatokra mutató hivatkozásként, valamint a kapcsolódó eljárásokkal (ha vannak) jelölik. Más szakaszok részletesen ismertetik az operatív automatizálást megkönnyítő konfigurációs metaadatokat és futtatókörnyezeti szabályokat.
 
-## <a name="understand-trust-framework-policies"></a>Keretrendszer megbízhatósági házirendek ismertetése
+## <a name="understand-trust-framework-policies"></a>A megbízhatósági keretrendszer házirendjeinek ismertetése
 
-Tekintetében végrehajtására a TF specifikáció házirendjei, amelyek lehetővé teszik a teljes körű, és az identitás viselkedések áll.  Az identitáskezelési keretrendszert használó Azure AD B2C-vel egyéni szabályzatok lehetővé teszik a hozhat létre, és hozzon létre saját TF ilyen deklaratív házirendek meghatározása és konfigurálása:
+A megvalósítás szempontjából a TF specifikáció olyan szabályzatokból áll, amelyek lehetővé teszik az identitás-viselkedés és a tapasztalatok teljes körű felügyeletét.  Az Identity Experience Framework-t használó egyéni házirendek lehetővé teszik, hogy saját TF-et hozzanak létre és hozzon létre az olyan deklaratív házirendekkel, amelyek meghatározhatják és konfigurálhatják a következőket: Azure AD B2C
 
-- A hivatkozás vagy hivatkozásai, amelyek meghatározzák az összevont identitás ökoszisztéma a Közösség, hogy a TF vonatkozik. Azok a TF dokumentációs hivatkozásokat. A (előre meghatározott) működési "runtime" szabályokat, vagy a felhasználói utak, amely automatizálja és/vagy az exchange és a jogcímek használatát szabályozza. Ezek az felhasználói utak társítva egy LOA (és a egy LOP). Egy házirend így is kell az idő (és LOPs) változó felhasználói utak.
+- A Közösség összevont identitási ökoszisztémáját meghatározó dokumentum-hivatkozás vagy hivatkozások, amely a TF-hoz kapcsolódik. A TF dokumentációra hivatkoznak. Az (előre definiált) működési futtatókörnyezeti szabályok vagy a felhasználói utazások, amelyek automatizálják és/vagy vezérlik a jogcímek cseréjét és használatát. Ezeket a felhasználói útvonalakat egy LOA (és egy LOP) társítja. A szabályzatok ezért különböző LOAs (és LOPs) rendelkező felhasználói útvonalakat is tartalmazhatnak.
 
-- Az identitás- és szolgáltatók, vagy a Jogcímszolgáltatók, a Közösségben, és a technikai profilok mellett, hogy azok vonatkozik (a sávon kívüli) LOA/LOP akkreditálási támogatják.
+- Az identitás-és attribútum-szolgáltatók, illetve a jogcímek szolgáltatója a Közösségen belül, valamint az általuk támogatott technikai profilok, valamint a hozzájuk kapcsolódó (sávon kívüli) LOA/LOP akkreditáció.
 
-- Az integráció az attribútum ellenőrzőkkel és a Jogcímszolgáltatók.
+- Az attribútum-ellenőrzők vagy jogcímek szolgáltatóinak integrációja.
 
-- A függő entitások, a közösségi (által következtetésekhez).
+- A Közösségen belüli függő felek (következtetéssel).
 
-- A résztvevők közötti hálózati kommunikáció létrehozó metaadatait. Ezeket a metaadatokat a technikai profilok szolgálnak a tranzakció során történő bekötését végző "on"közti együttműködés a függő entitáshoz, és egyéb közösségi résztvevők között.
+- A résztvevők közötti hálózati kommunikáció kialakításához szükséges metaadatok. Ezeket a metaadatokat a technikai profilokkal együtt használja a rendszer a forgalomban lévő, a függő entitás és más közösségi résztvevők közötti együttműködésre irányuló forgalomban.
 
-- Az protokoll átalakítás, ha bármely (például a SAML 2.0, az OAuth2, WS-Federation és az OpenID Connect).
+- A protokoll átalakítása, ha van ilyen (például SAML 2,0, OAuth2, WS-Federation és OpenID Connect).
 
-- A hitelesítési követelményeknek.
+- A hitelesítési követelmények.
 
-- A többtényezős vezénylési, ha van ilyen.
+- A többtényezős előkészítés, ha van ilyen.
 
-- Az összes rendelkezésre álló jogcímek és a résztvevők a lényeges közösségi leképezések közös sémát.
+- Egy megosztott séma az összes rendelkezésre álló jogcím számára, és a Közösségen belüli résztvevőkhöz való hozzárendelés.
 
-- Jogcímek átalakításokat, ebben a környezetben, az exchange és a jogcímek használatát átcsoportosítása lehetséges minimalizálásával együtt.
+- A jogcímek átalakítását, valamint a lehetséges adatminimalizálás mértékét a jogcímek cseréjének és használatának fenntartása érdekében.
 
-- A kötés és -titkosítást.
+- A kötés és a titkosítás.
 
-- A jogcímek tárolót.
+- A jogcím-tároló.
 
 ### <a name="understand-claims"></a>Jogcímek ismertetése
 
 > [!NOTE]
-> Együttesen nevezzük, amely előfordulhat, hogy ki kell cserélni "jogcímként" azonosító adatok lehetséges típusait: személyes azonosítási attribútumok, a végfelhasználók hitelesítő adatok, a identitás vizsgálata során, a kommunikációs eszköz, a fizikai hely jogcímek és így tovább.  
+> A rendszer közösen hivatkozik a "jogcímek" kifejezéssel kicserélhető személyazonossági adatok lehetséges típusaira: jogcímek a végfelhasználók hitelesítési hitelesítő adataival, az identitás átadásával, a kommunikációs eszközzel, a fizikai hellyel, a személyazonosításra alkalmas attribútumokkal, és így tovább.  
 >
-> Használjuk "jogcímek"--ahelyett, hogy "attribútumok" – mivel az online tranzakció, ezek az adatok összetevők nem közvetlenül a függő entitás által ellenőrzött tényeket. Inkább azok helyességi feltételek vagy a jogcímek, az információ, amelyhez a függő entitás engedélyezési kért tranzakció a felhasználó megfelelő magabiztossággal kell fejlesztenie tényeket.  
+> A "jogcímek" kifejezést használjuk – a "Attributes" kifejezés helyett – mivel az online tranzakciók esetében ezek az adatösszetevők nem olyan tények, amelyeket a függő entitás közvetlenül ellenőrizheti. Ehelyett a jogcímek vagy jogcímek olyan tényekkel kapcsolatosak, amelyekhez a függő entitásnak megfelelő megbízhatóságot kell kialakítania ahhoz, hogy a végfelhasználó által kért tranzakciót megadják.  
 >
-> Is használjuk a "jogcímek" kifejezést, mert az identitáskezelési keretrendszert használó Azure AD B2C-vel egyéni szabályzatok úgy tervezték, hogy egységes módon végrehajtott, függetlenül attól, hogy van-e a mögöttes protokollt minden típusú digitális azonosító adatok cseréjének egyszerűsítése a felhasználói hitelesítés vagy attribútum beolvasásához definiálva.  Hasonlóképpen, az előfizetési időszak "Jogcímszolgáltatók" használjuk együttesen identitás-szolgáltatóktól, attribútum szolgáltatók és attribútum hitelesítők hivatkozni, ha nem szeretnénk funkcióik között.   
+> A "jogcímek" kifejezést is felhasználjuk, mivel Azure AD B2C az identitást használó egyéni szabályzatok úgy lettek kialakítva, hogy minden típusú digitális identitást következetes módon leegyszerűsítsék, függetlenül attól, hogy az alapul szolgáló protokoll a felhasználói hitelesítéshez vagy az attribútumok lekéréséhez van definiálva.  Hasonlóképpen a "jogcímek szolgáltatói" kifejezést használjuk, hogy közösen hivatkozzon a személyazonosság-szolgáltatókra, az attribútum-szolgáltatóra és az attribútum-ellenőrzőre, ha nem szeretnénk megkülönböztetni az adott függvények körét.   
 
-Így azok szabályozzák, hogyan történik a azonosító adatok egy függő entitás, identitás- és attribútum szolgáltatók és attribútum hitelesítők között. Ezek szabályozhatja, hogy melyik identitás, és attribútum szolgáltatók a következők: egy függő entitás hitelesítéshez szükséges. Azok kell tekinteni a tartomány-specifikus nyelvet (DSL), azt jelenti, egy számítógép nyelv, amely rendelkezik egy adott alkalmazás tartomány az öröklést, specializált *Ha* utasítások, polimorfizmus.
+Így szabályozzák, hogyan történik a személyazonossági adatok cseréje a függő entitások, az identitás-és az attribútum-szolgáltatók, valamint az attribútumok ellenőrzői között. Azt szabályozzák, hogy mely identitás-és attribútum-szolgáltatók szükségesek a függő entitások hitelesítéséhez. Ezeket a tartományra jellemző nyelvnek (DSL) kell tekinteni, azaz egy adott alkalmazás-tartományhoz tartozó, örökléssel, *Ha* az utasítások, a polimorfizmus.
 
-Ezek a szabályzatok az Azure AD B2C-vel egyéni szabályzatok az identitás-kezelőfelületi keretrendszer kihasználva a TF szerkezet gépi olvasásra alkalmas részét képezik. Ezek közé tartozik a működési adatait, például jogcímek szolgáltatók metaadatok és technikai profilok, jogcímek-sémadefiníciók, jogcímek átalakítása funkciók és, amelyek ki vannak töltve működési koordinálási és automatizálási elősegítésére felhasználói utak.  
+Ezek a szabályzatok a TF-konstrukció géppel olvasható részét képezik Azure AD B2C egyéni szabályzatokban, amelyek az identitási élmény keretrendszerét hasznosítják. Ide tartozik az összes működési adat, beleértve a jogcím-szolgáltatók metaadatait, a technikai profilokat, a jogcímek sémájának definícióit, a jogcím-átalakítási függvényeket és a kitöltött felhasználói útvonalakat az operatív előkészítés és automatizálás elősegítése érdekében.  
 
-Ezek a azt feltételezi, hogy *élő dokumentumok* azért van esély arra, hogy azok tartalmát keresztül idő vonatkozó aktív résztvevő deklarált azokban a házirendekben változik. Nincs az esélye, hogy a feltételeket és kikötéseket résztvevő is változhat.  
+A rendszer feltételezi, hogy *élő dokumentumoknak* minősülnek, mivel a tartalmakat a szabályzatokban szereplő aktív résztvevőkkel kapcsolatos idő múlásával érdemes megváltoztatni. Az is előfordulhat, hogy a résztvevő feltételei és kikötései változhatnak.  
 
-Összevonási telepítési és karbantartási technológiáikkal nagymértékben egyszerűsített védelmi folyamatos megbízhatóság és a kapcsolat reconfigurations a függő entitások, mint különböző jogcím-szolgáltatók/hitelesítők csatlakozásra és (a Közösség által jelölt) által házirendkészletben.
+Az összevonás beállítása és karbantartása nagymértékben leegyszerűsíthető a függő entitások folyamatos megbízhatósággal és kapcsolat-újrakonfigurálásával, mint a különböző jogcím-szolgáltatók/ellenőrzők csatlakozása vagy elhagyása (a Közösség által jelölt) a szabályzatok halmaza.
 
-Együttműködési egy másik komoly nehézségeket. További jogcímek szolgáltatók/hitelesítők integrálni kell, mert a függő entitások nem valószínű, hogy a szükséges protokollokat támogatja. Az Azure AD B2C-vel egyéni szabályzatok megoldhatja a problémát, szabványos protokollok támogatása és transzponálása kérelmeket, amikor a függő entitások és attribútum szolgáltató nem támogatja ugyanazt a protokollt az adott felhasználó Journey alkalmazásával.  
+Az együttműködési képesség egy másik jelentős kihívás. A további jogcím-szolgáltatók/ellenőrzők integrálására van szükség, mivel a függő entitások nem valószínű, hogy támogatják a szükséges protokollokat. Azure AD B2C egyéni szabályzatok ezt a problémát az iparági szabványnak megfelelő protokollok támogatásával és a kérések áttelepítésére vonatkozó konkrét felhasználói utazások alkalmazásával oldják meg, ha a függő entitások és az attribútumok szolgáltatói nem támogatják ugyanazt a protokollt.  
 
-Felhasználói utak közé tartozik a protokoll-profilokat és történő bekötését végző "on"közti együttműködés a a függő entitás és a résztvevők között használt metaadatok. Identitás information exchange kérés/válasz üzeneteket az TF-specifikáció részeként közzétett szabályzatok betartása alkalmazott műveleti modul szabályok is vonatkoznak. Felhasználói utak lényege az testre szabhatja az ügyfélélményt kulcs. Azt is feltárja az hogyan a rendszer a protokoll szintjén működik.
+A felhasználói útvonalak közé tartoznak azok a protokoll-profilok és metaadatok, amelyeket a rendszer a függő entitás és a többi résztvevő között a vezetékeken való együttműködéshez használ. A TF specifikációnak megfelelően vannak olyan operatív futtatókörnyezeti szabályok is, amelyek a közzétett szabályzatoknak való megfelelés érdekében érvényesek az azonosító adatok Exchange-kérelmére és a válaszüzenetekre. A felhasználói élményre vonatkozó elképzelés az, hogy az ügyfél-környezet testreszabása kulcsfontosságú. Emellett fényt derít arra is, hogy a rendszer hogyan működik a protokoll szintjén.
 
-Ennek alapján függő alkalmazásait és portálok is, függően a környezeti meghívása az Azure AD B2C-vel egyéni szabályzatok, az az identitás-kezelőfelületi keretrendszer átadása egy adott házirend nevét és pontosan a viselkedést és információcsere beolvasása muss, fuss vagy kockázat nélkül szeretnének.
+Ezen az alapon a függő entitások és a portálok a kontextustól függően meghívhatnak Azure AD B2C egyéni szabályzatokat, amelyek kihasználják az identitási élmény keretrendszerét egy adott szabályzat nevével, és pontosan a viselkedést és az információcserét rendetlenség, felhajtás vagy kockázat nélkül szeretnék.

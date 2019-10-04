@@ -1,49 +1,51 @@
 ---
-title: SAP HANA az Azure-ban (nagyméretű példányok) a használati tudja |} A Microsoft Docs
-description: Hogy az SAP HANA az Azure-ban (nagyméretű példányok) feltételeit.
+title: A SAP HANA feltételeinek ismerete az Azure-ban (nagyméretű példányok) | Microsoft Docs
+description: Ismerje meg az Azure-beli SAP HANA használati feltételeit (nagyméretű példányok).
 services: virtual-machines-linux
 documentationcenter: ''
 author: RicksterCDN
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/20/2018
-ms.author: saghorpa
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a8131bc953c2aba3c8d33f866cbbe9b1e232e168
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: fec9f18404fc45f4cf69cc13b1602f818dbddfaf
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56819088"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099744"
 ---
-# <a name="know-the-terms"></a>A használati tudja
+# <a name="know-the-terms"></a>A feltételek megismerése
 
-Több közös definíciók széles körben használják az architektúra és üzembe helyezési útmutatót. Vegye figyelembe a következő kifejezéseket és azok jelentését ismerteti:
+Számos gyakori definíciót széles körben használnak az architektúra és a technikai üzembe helyezési útmutatóban. Vegye figyelembe a következő kifejezéseket és azok jelentéseit:
 
 - **IaaS**: Infrastruktúra-szolgáltatás.
-- **PaaS**: Szolgáltatásként nyújtott platformon.
-- **SaaS**: Szolgáltatott szoftver.
-- **Az SAP-összetevő**: Egyedi SAP alkalmazások, például az ERP központi összetevő (ECC), a Business Warehouse (BW), a megoldás Manager vagy a vállalati portál (EP). Az SAP-összetevők hagyományos ABAP és Java-technológiák vagy egy nem NetWeaver-alapú alkalmazás, például az üzleti objektumok alapulhat.
-- **Az SAP-környezet**: Egy vagy több SAP összetevő logikusan való alkalmasság vállalati, például fejlesztési, minőségbiztosítási, képzés, vész-helyreállítási vagy éles környezetben.
-- **SAP-rendszeren**: Hivatkozik az egész SAP-eszközök az informatikai környezet változásaihoz. Az SAP-rendszeren, tartalmazza az összes éles környezetben, és nem éles környezetekben.
-- **SAP-rendszerhez**: Az adatbázis-kezelő réteg és a alkalmazásréteg, például az SAP ERP fejlesztési rendszer együttes használata az SAP BW tesztelése, és az SAP CRM éles rendszer. Azure-környezetek nem támogatják a értékkel való osztásának e két réteget a helyszíni és az Azure között. Egy SAP-rendszerrel, üzembe helyezett helyszíni vagy annak az Azure-ban üzembe helyezett. A különböző rendszerek, az SAP-rendszeren az Azure-ban vagy a helyszíni telepítheti. Például telepítheti az SAP CRM fejlesztési és rendszerek tesztelése az Azure-ban, miközben az SAP CRM rendszert a helyi környezetben telepíti. Az SAP Hana az Azure-ban (nagyméretű példányok) célja, hogy az SAP alkalmazásréteg-alapú virtuális gépeken futó SAP-rendszereit és a egy egységet az SAP HANA az Azure-ban (nagyméretű példányok) stamp a kapcsolódó SAP HANA-példány üzemeltetése.
-- **Nagyméretű szolgáltatáspéldányban**: Egy, az SAP HANA TDI-tanúsítvánnyal és futtatásához az Azure-beli SAP HANA-példányok dedikált hardver infrastruktúra stack.
-- **Az SAP HANA az Azure-ban (nagyméretű példányok):** Az ajánlat az Azure-ban a HANA-példányok futtathatók az SAP HANA TDI-tanúsítvánnyal rendelkező hardverek nagyméretű példány stampek különböző Azure-régióban üzembe helyezett hivatalos neve. A kapcsolódó kifejezés *nagyméretű HANA-példány* rövid a *SAP HANA az Azure-ban (nagyméretű példányok)* és széles körben használatos a műszaki telepítési útmutatóban.
-- **Létesítmények közötti**: Ismerteti egy olyan forgatókönyvet, ahol a virtuális gépek Azure-előfizetéssel, amely rendelkezik a site-to-site, többhelyes vagy Azure ExpressRoute-kapcsolat a helyszíni adatközpontok és az Azure közötti üzembe. A gyakori Azure dokumentációjában, az ilyen típusú központi telepítések is rendelkezésre állnak, létesítmények közötti forgatókönyvek leírtak szerint. A kapcsolat az az oka, hogy kiterjesztése a helyszíni tartományokra, a helyszíni Azure Active Directory/OpenLDAP és a helyszíni DNS az Azure-bA. Az Azure-előfizetések az Azure-objektumok kiterjed a helyszíni környezet változásaihoz. Ez a bővítmény a virtuális gépeket a helyszíni tartomány része lehet. 
+- **Péter**: Szolgáltatásként szolgáló platform.
+- **SaaS**: Szoftver szolgáltatásként.
+- **SAP-összetevő**: Egy egyéni SAP-alkalmazás, például az ERP központi összetevő (ECC), az üzleti raktár (BW), a Solution Manager vagy a Enterprise Portal (EP). Az SAP-összetevők a hagyományos ABAP vagy Java-technológiákon, vagy egy nem NetWeaver-alapú alkalmazáson, például üzleti objektumokon alapulnak.
+- **SAP-környezet**: Egy vagy több olyan SAP-összetevő, amely logikailag csoportosítva üzleti funkciók végrehajtására, például fejlesztésre, minőségbiztosításra, képzésre, vész-helyreállításra vagy éles üzemre.
+- **SAP-környezet**: A teljes SAP-eszközre utal az informatikai környezetben. Az SAP-környezet az összes éles és nem éles környezetet magában foglalja.
+- **SAP-System**: Az adatbázis-kezelő réteg és az alkalmazás rétegének kombinációja, például egy SAP ERP fejlesztői rendszer, egy SAP BW tesztelési rendszer és egy SAP CRM éles rendszer. Az Azure-beli üzemelő példányok nem támogatják a két réteg a helyszíni és az Azure közötti felosztását. Az SAP rendszer üzembe helyezése a helyszínen történik, vagy az Azure-ban van üzembe helyezve. Az SAP-környezetek különböző rendszereit üzembe helyezheti az Azure-ban vagy a helyszínen egyaránt. Telepítheti például az SAP CRM fejlesztési és tesztelési rendszereit az Azure-ban, miközben üzembe helyezi az SAP CRM üzemi rendszerét a helyszínen. Az Azure-beli SAP HANA (nagyméretű példányok) esetében a rendszer azt a célt szolgálja, hogy a virtuális gépek SAP-alkalmazási rétegét, illetve az Azure-beli (nagyméretű példányok) bélyegző SAP HANA egy egységéhez tartozó SAP HANA-példányt üzemelteti.
+- **Nagyméretű példány bélyegzője**: Egy hardveres infrastruktúra-verem, amely SAP HANA TDI-tanúsítvánnyal rendelkezik, és az Azure-on belüli SAP HANA példányok futtatására van kijelölve.
+- **SAP HANA az Azure-ban (nagyméretű példányok):** Az ajánlat hivatalos neve az Azure-ban, hogy HANA-példányokat futtasson SAP HANA TDI-tanúsítvánnyal rendelkező hardvereken, amelyeket nagyméretű példányokban helyeztek üzembe különböző Azure-régiókban. A *HANA nagyméretű példány* kapcsolódó kifejezése rövid SAP HANA az Azure-ban *(nagyméretű példányok)* , és széles körben használatos ebben a technikai üzembe helyezési útmutatóban.
+- **Létesítmények közötti**: Leírja azt a forgatókönyvet, amelyben a virtuális gépeket olyan Azure-előfizetéshez telepítik, amely helyek közötti, többhelyes vagy Azure ExpressRoute kapcsolatot tartalmaz a helyszíni adatközpontok és az Azure között. A közös Azure-dokumentációban az ilyen típusú központi telepítések a létesítmények közötti forgatókönyvekben is szerepelnek. A kapcsolódás oka a helyszíni tartományok, a helyszíni Azure Active Directory/OpenLDAP és a helyszíni DNS kiterjesztése az Azure-ba. A helyszíni környezet az Azure-előfizetések Azure-eszközeire van kiterjesztve. Ezzel a bővítménnyel a virtuális gépek a helyszíni tartomány részei lehetnek. 
 
-   Tartományi felhasználókat a helyszíni tartomány elérheti a kiszolgálók és szolgáltatások futtatása a virtuális gépeken (például adatbázis-kezelő szolgáltatások). Virtuális gépek közötti kommunikációt és a névfeloldás üzembe helyezte a helyszínen és az Azure által telepített virtuális gépek lehetséges. Ebben a forgatókönyvben jellemző, amelyben a legtöbb SAP-eszközök vannak üzembe helyezve módja. További információkért lásd: [Azure VPN Gateway](../../../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) és [virtuális hálózat létrehozása helyek közötti kapcsolattal az Azure portal használatával](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-- **Bérlő**: A HANA nagyméretű szolgáltatáspéldányban telepített ügyfél lekérdezi izolált be egy *bérlő.* Egy bérlő van különítve a hálózati, tárolási és számítási rétegben, a többi bérlőtől. A különböző bérlők rendelt tárolási és számítási egységek nem tekintse meg egymással, és nem kommunikálnak egymással, nagyméretű HANA-példány stamp szint. Egy ügyfél lehet váltani, más bérlők üzemelő rendelkezik. Ezután még nem folyik kommunikáció bérlők HANA nagyméretű példányok stamp szint között.
-- **Termékváltozat kategória**: A nagyméretű HANA-példányt a következő két kategória SKU-k érhetők el:
-    - **I. osztály típus**: S72, S72m, S96, S144, S144m, S192, S192m és S192xm
-    - **Írja be a II osztály**: S384, S384m, S384xm, S384xxm, S576m, S576xm, S768m, S768xm, and S960m
+   A helyszíni tartomány tartományi felhasználói hozzáférhetnek a kiszolgálókhoz, és futtathatnak szolgáltatásokat ezeken a virtuális gépeken (például az adatbázis-kezelő szolgáltatásokban). A helyszíni és az Azure által üzembe helyezett virtuális gépek közötti kommunikáció és névfeloldás lehetséges. Ez a forgatókönyv a legtöbb SAP-eszköz üzembe helyezésének módjára jellemző. További információ: [Azure VPN Gateway](../../../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) és [virtuális hálózat létrehozása helyek közötti kapcsolattal a Azure Portal használatával](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+- **Bérlő**: A HANA nagyméretű példány bélyegén üzembe helyezett ügyfelek elkülönítettek a *bérlőhöz.* A bérlő a többi bérlő hálózati, tárolási és számítási rétegében el van különítve. A különböző bérlők számára hozzárendelt tárolási és számítási egységek nem látják egymást, és nem tudnak kommunikálni egymással a HANA nagyméretű példány-bélyegző szintjén. Egy ügyfél dönthet úgy is, hogy a központi telepítések különböző bérlők között vannak. A HANA nagyméretű példány Stamp szintjén azonban nincs kommunikáció a bérlők között.
+- **SKU-kategória**: A HANA nagyméretű példány esetében a következő két SKU-kategóriát ajánljuk:
+    - **I. típusú osztály**: S72, S72m, S96, S144, S144m, S192, S192m és S192xm
+    - **Type II osztály**: S384, S384m, S384xm, S384xxm, S576m, S576xm, S768m, S768xm, and S960m
+- **Bélyegző**: A nagyméretű HANA-példányok Microsoft belső üzembe helyezési méretének meghatározása. A HANA nagyméretű példányok üzembe helyezése előtt olyan HANA nagyméretű példány bélyegzőt kell üzembe helyezni, amely a számítási, hálózati és tárolási állványokból áll. Az ilyen üzembe helyezést HANA nagyméretű példány bélyegzőnek vagy a 4. változatnak (lásd alább) a **nagyméretű példányok** időszakának helyettesítőjét használjuk.
+- **Változat**: A HANA nagy példányszámú bélyegek esetében két különböző Stamp-változat létezik. Ezek különböznek az Azure-beli virtuálisgép-gazdagépek architektúrájában és közelségében
+    - "3. változat" (Rev 3): az eredeti kialakítás, amely a 2016-as év közepétől lett üzembe helyezve.
+    - "4. változat" (Rev 4): egy olyan új kialakítás, amely az Azure-beli virtuális gépek gazdagépei számára nagyobb közelséget biztosít, valamint az Azure-beli és a HANA nagyméretű példány-egységek közötti alacsonyabb hálózati késést. 
 
-
-Számos további erőforrás az SAP számítási feladatok felhőbeli üzembe helyezése a érhetők el. Ha azt tervezi, hajtsa végre az SAP HANA üzembe helyezése az Azure-ban, szüksége lehet hasznosítani és az Azure IaaS és a központi telepítés az SAP számítási feladatok az Azure IaaS tisztában. A folytatás előtt tekintse meg a [használata SAP-megoldások az Azure-beli virtuális gépek](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) további információt. 
+A felhőben számos további erőforrás érhető el a SAP-munkaterhelések üzembe helyezéséhez. Ha SAP HANA Azure-beli üzembe helyezését tervezi, akkor az Azure IaaS alapelveivel és az Azure IaaS SAP-számítási feladatainak üzembe helyezésével foglalkoznia kell. A folytatás előtt tekintse [meg az SAP-megoldások használata az Azure Virtual Machines](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) szolgáltatásban című témakört. 
 
 **Következő lépések**
-- Tekintse meg [HLI minősítés](hana-certification.md)
+- [HLI-minősítés](hana-certification.md) megtekintése

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3da6277d2e816960f3db8964fd8b849c7d2a497c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 124dbcf43bc02274c0299b9d89cc8d282f3afd5d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57876935"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67106245"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bgs-online"></a>Oktatóanyag: A Háttérkép Online az Azure Active Directory-integráció
 
@@ -53,7 +53,7 @@ Az Azure AD-be Háttérkép online integráció konfigurálásához, hozzá kell
 
 **Adja hozzá a Háttérkép Online a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

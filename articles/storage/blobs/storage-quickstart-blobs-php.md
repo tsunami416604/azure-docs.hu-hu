@@ -1,19 +1,18 @@
 ---
 title: Azure rövid útmutató – Blob létrehozása objektumtárban PHP használatával | Microsoft Docs
 description: Gyors áttekintést kaphat arról, hogyan továbbíthat objektumokat az Azure Blob-tárolókra és -tárolókról a PHP használatával
-services: storage
-author: roygara
-ms.service: storage
-ms.devlang: php
-ms.topic: quickstart
+author: mhopkins-msft
+ms.author: mhopkins
 ms.date: 11/14/2018
-ms.author: rogarana
-ms.openlocfilehash: 3e1738c3e5acbe63faf1d614e2435088efd8c4d6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.service: storage
+ms.subservice: blobs
+ms.topic: quickstart
+ms.openlocfilehash: 0453d7465479fb1410d1436cc3fa53914633ece5
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58014774"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726390"
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-php"></a>Objektumok továbbítása Azure Blob-tárolókra és -tárolókról a PHP használatával
 A rövid útmutató azt ismerteti, hogyan használható a PHP blokkblobok feltöltésére, letöltésére és listázására egy, az Azure Blob Storage-ban található tárolóban. 
@@ -22,10 +21,10 @@ A rövid útmutató azt ismerteti, hogyan használható a PHP blokkblobok feltö
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
-Győződjön meg arról, hogy telepítve van a következő további Előfeltételek:
+Győződjön meg arról, hogy a következő további előfeltételek vannak telepítve:
 
 * [PHP](https://php.net/downloads.php)
-* [Azure Storage SDK for PHP](https://github.com/Azure/azure-storage-php)
+* [PHP-hez készült Azure Storage SDK](https://github.com/Azure/azure-storage-php)
 
 ## <a name="download-the-sample-application"></a>A mintaalkalmazás letöltése
 A rövid útmutatóban használt [mintaalkalmazás](https://github.com/Azure-Samples/storage-blobs-php-quickstart.git) egy egyszerű PHP-alkalmazás.  

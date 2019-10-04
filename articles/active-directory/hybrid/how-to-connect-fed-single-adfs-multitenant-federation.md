@@ -1,5 +1,5 @@
 ---
-title: Több Azure AD összevonása egyetlen AD FS-szel | Microsoft Docs
+title: Az egyetlen AD FS – Azure több Azure AD összevonása
 description: Ebből a dokumentumból megtudhatja, hogyan vonhat össze több Azure AD-t egyetlen AD FS-szel.
 keywords: federate, ADFS, AD FS, multiple tenants, single AD FS, one ADFS, multi-tenant federation, multi-forest adfs, aad connect, federation, cross-tenant federation
 services: active-directory
@@ -17,12 +17,12 @@ ms.date: 07/17/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 620255896e02319675928396c3d6e5e0d9865c0c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 9122e3a7af2230dc0f68e72b28891d488b01a80a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56181728"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65137833"
 ---
 # <a name="federate-multiple-instances-of-azure-ad-with-single-instance-of-ad-fs"></a>Több Azure AD-példány összevonása egyetlen AD FS-példánnyal
 
@@ -40,11 +40,11 @@ Egyetlen magas rendelkezésre állású AD FS farm összevonhat több erdőt, ha
 
 Vegye figyelembe, hogy a contoso.com tartomány a contoso.onmicrosoft.com Azure Active Directory-címtárban már össze van vonva a contoso.com helyszíni Active Directory-környezetbe telepített helyszíni AD FS-szel. A fabrikam.com a fabrikam.onmicrosoft.com Azure Active Directory-címtár egy tartománya.
 
-## <a name="step-1-establish-a-two-way-trust"></a>1. lépés: Egy kétirányú megbízhatósági kapcsolat létrehozása
+## <a name="step-1-establish-a-two-way-trust"></a>1\. lépés: Egy kétirányú megbízhatósági kapcsolat létrehozása
  
 Ahhoz, hogy a contoso.com-beli AD FS hitelesíthesse a fabrikam.com-beli felhasználókat, kétirányú megbízhatósági kapcsolatra van szükség a contoso.com és fabrikam.com között. A k kétirányú megbízhatósági kapcsolat létrehozásához kövesse a [cikk](https://technet.microsoft.com/library/cc816590.aspx) iránymutatását.
  
-## <a name="step-2-modify-contosocom-federation-settings"></a>2. lépés: A contoso.com összevonási beállításainak módosítása 
+## <a name="step-2-modify-contosocom-federation-settings"></a>2\. lépés: A contoso.com összevonási beállításainak módosítása 
  
 Alapértelmezett kiállító állítsa be az AD FS összevont egyetlen tartományhoz tartozó "http\://ADFSServiceFQDN/adfs/services/trust", például `http://fs.contoso.com/adfs/services/trust`. Az Azure Active Directory összevont tartományonként egyedi kiállítót igényel. Mivel ugyanaz az AD FS fog két tartományt összevonni, a kiállító értékét módosítani kell, hogy minden egyes tartományhoz egyedi legyen, amelyet az AD FS az Azure Active Directoryval összevon. 
  
@@ -54,7 +54,7 @@ Csatlakozzon a contoso.com tartományt tartalmazó Azure Active Directory-címt�
  
 A tartomány-összevonás beállításában lévő kiállító módosul: "http\:/ / contoso.com/adfs/services/trust" és a egy kiállítási jogcímszabályt az Azure AD függő entitás megbízhatóságához adja ki a megfelelő issuerId érték utótagja alapján a rendszer hozzáad.
  
-## <a name="step-3-federate-fabrikamcom-with-ad-fs"></a>3. lépés: A fabrikam.com összevonása az AD FS
+## <a name="step-3-federate-fabrikamcom-with-ad-fs"></a>3\. lépés: A fabrikam.com összevonása az AD FS
  
 Az Azure AD powershell-munkamenetben hajtsa végre az alábbi lépéseket: Csatlakozzon az Azure Active Directory, amely tartalmazza a tartományi fabrikam.com
 

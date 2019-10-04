@@ -1,141 +1,140 @@
 ---
-title: Data Lake tools with hortonworks – tesztkörnyezet – Azure HDInsight Visual Studio
-description: Ismerje meg az Azure Data Lake tools for Visual Studio használata a Hortonworks sandbox fut a helyi virtuális Gépen. Ezekkel az eszközökkel, hozhat létre és futtathat Hive és Pig-feladatok a védőfal, és a feladat kimenetének megtekintése és a korábbi.
-services: hdinsight
+title: A Visual studióhoz készült Data Lake eszközök Hortonworks-alapú homokozóval – Azure HDInsight
+description: Megtudhatja, hogyan használhatja a Visual studióhoz készült Azure Data Lake-eszközöket a helyi virtuális gépen futó Hortonworks-homokozóval. Ezekkel az eszközökkel létrehozhat és futtathat kaptár-és Pig-feladatokat a homokozóban, és megtekintheti a feladatok kimenetét és előzményeit.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.author: hrasheed
-ms.openlocfilehash: 7c2a1c586b4d6f5f9f6e34a091702a35f994544f
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 1edab776ec93f057ebf7e37ac887747f86a27db9
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53726629"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098776"
 ---
-# <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>A Azure Data Lake tools for Visual Studio és a hortonworks – tesztkörnyezet használata
+# <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>A Visual studióhoz készült Azure Data Lake Tools használata a Hortonworks sandbox használatával
 
-Az Azure Data Lake általános Apache Hadoop-fürtökkel folytatott munkavégzéshez kapcsolódó eszközöket tartalmazza. Ez a dokumentum egy helyi virtuális gépen futó a Data Lake-eszközök használata a Hortonworks Sandbox szükséges lépéseket ismerteti.
+A Azure Data Lake az általános Apache Hadoop fürtökkel való munkavégzéshez használható eszközöket tartalmaz. Ez a dokumentum ismerteti azokat a lépéseket, amelyek szükségesek ahhoz, hogy a Data Lake-eszközöket a helyi virtuális gépen futó Hortonworks-sandbox használatával használhassa.
 
-A hortonworks – tesztkörnyezet használata lehetővé teszi a fejlesztési környezetet a helyi és a hadoop együttes működését. Miután a megoldást, és a méretezett telepíteni, majd továbbléphet egy HDInsight-fürtön.
+A Hortonworks sandbox használatával helyileg dolgozhat a Hadoop a fejlesztői környezetben. A megoldás kifejlesztése és a nagy léptékű üzembe helyezése után a HDInsight-fürtre léphet.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A hortonworks – tesztkörnyezet, a fejlesztési környezetet egy virtuális gépen futó. Ez a dokumentum írt volt, és a védőfal futó Oracle VirtualBox teszteltük. A védőfal beállításával kapcsolatos további információkért lásd: a [a Hortonworks sandbox használatának első lépései.](hadoop/apache-hadoop-emulator-get-started.md) a dokumentum.
+* A Hortonworks-homokozó, amely egy virtuális gépen fut a fejlesztési környezetben. Ezt a dokumentumot az Oracle VirtualBox-ban futó homokozóban írták és tesztelték. A homokozó beállításával kapcsolatos információkért tekintse meg az [első lépések a Hortonworks homokozóban](hadoop/apache-hadoop-emulator-get-started.md) című témakört. dokumentum.
 
-* A Visual Studio 2013, Visual Studio 2015 vagy Visual Studio 2017 (bármely kiadás esetén).
+* Visual Studio.
 
-* A [Azure SDK for .NET](https://azure.microsoft.com/downloads/) 2.7.1-es vagy újabb.
+* Az [Azure SDK for .net](https://azure.microsoft.com/downloads/) 2.7.1-es vagy újabb verziója.
 
-* A [Azure Data Lake tools for Visual Studio](https://www.microsoft.com/download/details.aspx?id=49504).
+* A [Visual studióhoz készült Azure Data Lake Tools](https://www.microsoft.com/download/details.aspx?id=49504).
 
-## <a name="configure-passwords-for-the-sandbox"></a>A védőfal jelszavak beállítása
+## <a name="configure-passwords-for-the-sandbox"></a>A homokozó jelszavainak konfigurálása
 
-Győződjön meg arról, hogy fut-e a hortonworks – tesztkörnyezet. Ezután kövesse a lépéseket a [Ismerkedjen meg a Hortonworks Sandbox](hadoop/apache-hadoop-emulator-get-started.md#set-sandbox-passwords) dokumentumot. Ezeket a lépéseket a jelszót az SSH konfigurálása `root` fiókot és az Apache Ambari `admin` fiókot. Ezek a jelszavak használt való csatlakozáskor a védőfal a Visual Studióból.
+Győződjön meg arról, hogy a Hortonworks-homokozó fut. Ezután kövesse az [első lépések a Hortonworks homokozóban](hadoop/apache-hadoop-emulator-get-started.md#set-sandbox-passwords) című dokumentum lépéseit. Ezekkel a lépésekkel konfigurálhatja az `root` SSH-fiók és az Apache `admin` Ambari-fiók jelszavát. Ezeket a jelszavakat akkor használja a rendszer, amikor a Visual studióból csatlakozik a Sandboxhoz.
 
-## <a name="connect-the-tools-to-the-sandbox"></a>Az eszközök csatlakozni a védőfal
+## <a name="connect-the-tools-to-the-sandbox"></a>Az eszközök összekötése a homokozóval
 
-1. Nyissa meg a Visual Studióban, válassza ki **nézet**, majd válassza ki **Server Explorer**.
+1. Nyissa meg a Visual studiót, válassza a **nézet**, majd a **Server Explorer**lehetőséget.
 
-2. A **Server Explorer**, kattintson a jobb gombbal a **HDInsight** bejegyzést, és válassza ki **csatlakozhat a HDInsight Emulator**.
+2. A **Server Explorerben**kattintson a jobb gombbal a **HDInsight** bejegyzésre, majd válassza a **Kapcsolódás a HDInsight emulatorhoz**lehetőséget.
 
-    ![Képernyőkép a Server Explorer eszközben való kapcsolódás a HDInsight Emulator kiemelésével](./media/hdinsight-hadoop-emulator-visual-studio/connect-emulator.png)
+    ![A Server Explorer és a HDInsight-emulátorhoz való kapcsolódás Kiemelt](./media/hdinsight-hadoop-emulator-visual-studio/connect-hdinsight-emulator.png)
 
-3. Az a **csatlakozhat a HDInsight Emulator** párbeszédpanelen adja meg az Ambari beállított jelszót.
+3. A **Kapcsolódás a HDInsight-emulátorhoz** párbeszédpanelen adja meg a Ambari konfigurált jelszót.
 
-    ![A jelszó szövegmező kiemelve a párbeszédpanel képernyőképe](./media/hdinsight-hadoop-emulator-visual-studio/enter-ambari-password.png)
-
-    A folytatáshoz kattintson a **Tovább** gombra.
-
-4. Használja a **jelszó** mezőbe írja be a beállított jelszót a `root` fiókot. Az alapértelmezett értéket a többi mezőt hagyja.
-
-    ![A jelszó szövegmező kiemelve a párbeszédpanel képernyőképe](./media/hdinsight-hadoop-emulator-visual-studio/enter-root-password.png)
+    ![Képernyőkép a párbeszédpanelről, a ambari Password szövegmező kiemelve](./media/hdinsight-hadoop-emulator-visual-studio/enter-ambari-password.png)
 
     A folytatáshoz kattintson a **Tovább** gombra.
 
-5. Várjon, amíg befejeződik a szolgáltatások érvényesítési. Bizonyos esetekben a érvényesítése sikertelen, és kérni fogja, hogy frissítse a konfigurációt. Ha az érvényesítés meghiúsul, válassza ki a **frissítés**, és várjon, amíg a konfiguráció és az ellenőrzés befejezéséhez a szolgáltatás.
+4. A **jelszó** mező használatával adja meg a `root` fiókhoz konfigurált jelszót. Hagyja meg a többi mezőt az alapértelmezett értéken.
 
-    ![Frissítés gomb kiemelésével a párbeszédpanel képernyőképe](./media/hdinsight-hadoop-emulator-visual-studio/fail-and-update.png)
+    ![Képernyőkép a párbeszédpanelről, a gyökér jelszava szövegmező kiemelve](./media/hdinsight-hadoop-emulator-visual-studio/enter-root-password1.png)
+
+    A folytatáshoz kattintson a **Tovább** gombra.
+
+5. Várjon, amíg a szolgáltatások érvényesítése befejeződik. Bizonyos esetekben előfordulhat, hogy az érvényesítés meghiúsul, és felszólítja a konfiguráció frissítésére. Ha az érvényesítés sikertelen, válassza a **frissítés**lehetőséget, és várjon, amíg a szolgáltatás be nem fejeződik a konfiguráció és az ellenőrzés.
+
+    ![Képernyőkép a párbeszédpanelről, a frissítés gomb kiemelve](./media/hdinsight-hadoop-emulator-visual-studio/fail-and-update-window.png)
 
     > [!NOTE]  
-    > A frissítési folyamat által a Data Lake tools for Visual Studio várt a hortonworks – tesztkörnyezet konfigurációját módosíthatja az Ambari használ.
+    > A frissítési folyamat a Ambari használatával módosítja a Hortonworks-homokozó konfigurációját a Visual studióhoz készült Data Lake Tools által várt módon.
 
-6. Érvényesítés befejezése után, válassza ki a **Befejezés** konfigurálásának befejezéséhez.
-    ![A Befejezés gomb kiemelésével a párbeszédpanel képernyőképe](./media/hdinsight-hadoop-emulator-visual-studio/finished-connect.png)
+6. Az érvényesítés befejezése után a **Befejezés** gombra kattintva fejezze be a konfigurálást.
+    ![Képernyőkép a párbeszédpanelről, a Befejezés gombbal kiemelve](./media/hdinsight-hadoop-emulator-visual-studio/finished-connect-dialog.png)
 
      >[!NOTE]  
-     > A fejlesztési környezetet, és a virtuális gép számára lefoglalt memória sebességétől függően konfigurálása és érvényesítése a szolgáltatások több percet is igénybe vehet.
+     > A fejlesztési környezet sebességétől és a virtuális géphez lefoglalt memória mennyiségétől függően több percet is igénybe vehet, hogy konfigurálja és érvényesítse a szolgáltatásokat.
 
-Után az alábbi lépésekkel, most már rendelkezik egy **helyi HDInsight-fürt** a Server Explorerben bejegyzés alatt a **HDInsight** szakasz.
+Az alábbi lépések elvégzése után már rendelkezik egy **HDInsight helyi fürttel** a Server Explorerben a **HDInsight** szakaszban.
 
-## <a name="write-an-apache-hive-query"></a>Az Apache Hive-lekérdezés írása
+## <a name="write-an-apache-hive-query"></a>Apache Hive lekérdezés írása
 
-Hive használata a strukturált adatok egy SQL-szerű lekérdezési nyelvet (HiveQL) tartalmaz. A következő lépések segítségével megtudhatja, hogyan igény szerinti lekérdezéseket futtassanak a helyi fürtöt.
+A kaptár egy SQL-szerű lekérdezési nyelvet (HiveQL) biztosít a strukturált adatkezeléshez. A következő lépésekkel megtudhatja, hogyan futtathat igény szerinti lekérdezéseket a helyi fürtön.
 
-1. A **Server Explorer**, kattintson a jobb gombbal a helyi fürthöz korábban hozzáadott bejegyzését, és válassza **egy Hive-lekérdezés írása**.
+1. A **Server Explorerben**kattintson a jobb gombbal a korábban hozzáadott helyi fürt bejegyzésére, majd válassza a **kaptár-lekérdezés írása**lehetőséget.
 
-    ![Képernyőkép a Server Explorer eszközben Write a Hive-lekérdezés, kiemelve az](./media/hdinsight-hadoop-emulator-visual-studio/write-hive-query.png)
+    ![A Server Explorer képernyőképe, a kaptár lekérdezésének megírásával](./media/hdinsight-hadoop-emulator-visual-studio/write-apache-hive-query.png)
 
-    Megnyílik egy új lekérdezési ablak. Itt is gyorsan írása és elküldése egy lekérdezést a helyi fürthöz.
+    Megnyílik egy új lekérdezési ablak. Itt gyorsan írhat és küldhet el egy lekérdezést a helyi fürthöz.
 
 2. Az új lekérdezési ablakban adja meg a következő parancsot:
 
         select count(*) from sample_08;
 
-    Válassza ki a lekérdezés futtatásához **küldés** az ablak tetején. A többi értéket hagyja (**Batch** és a kiszolgáló neve) az alapértelmezett értéken.
+    A lekérdezés futtatásához válassza a **Submit (Küldés** ) lehetőséget az ablak tetején. Hagyja meg a többi értéket (**köteg** és kiszolgáló neve) az alapértelmezett értékeken.
 
-    ![Képernyőkép a lekérdezési ablakban, a Küldés gomb kiemelésével](./media/hdinsight-hadoop-emulator-visual-studio/submit-hive.png)
+    ![Képernyőfelvétel a lekérdezési ablakról a beküldés gomb kiemelésével](./media/hdinsight-hadoop-emulator-visual-studio/query-window-submit-hive.png)
 
-    Használhatja a legördülő menü mellett **küldés** kiválasztásához **speciális**. Speciális beállítások lehetővé teszik a további lehetőségeket nyújtanak, ha a feladat elküldéséhez.
+    A **speciális**lehetőségre kattintva a **Submit (Küldés** ) melletti legördülő menüt is használhatja. A speciális beállítások lehetővé teszik további beállítások megadását a feladatok elküldésekor.
 
-    ![Parancsfájl elküldése képernyőkép párbeszédpanel](./media/hdinsight-hadoop-emulator-visual-studio/advanced-hive.png)
+    ![A parancsfájl elküldése párbeszédpanel-struktúra képernyőképe](./media/hdinsight-hadoop-emulator-visual-studio/advanced-apache-hive.png)
 
-3. Miután elküldi a lekérdezést, a feladat állapota jelenik meg. A feladat állapota a feladatok információit jeleníti meg, hadoop feldolgozás során. **Feladat állapota** biztosít a feladat állapotát. Az állapot rendszeresen frissül, vagy a frissítés ikont használatával frissítse manuálisan az állapotát.
+3. A lekérdezés elküldése után a feladatok állapota jelenik meg. A feladatok állapota a Hadoop által feldolgozott feladattal kapcsolatos információkat jeleníti meg. A **feladatok** állapota a feladatok állapotát adja meg. Az állapot rendszeresen frissül, vagy a frissítés ikon használatával manuálisan is frissítheti az állapotot.
 
-    ![Képernyőfelvétel a feladat nézet párbeszédpanel, kiemelve a feladat állapota](./media/hdinsight-hadoop-emulator-visual-studio/job-state.png)
+    ![Képernyőkép a feladat nézetről párbeszédpanel, a feladat állapota kiemelve](./media/hdinsight-hadoop-emulator-visual-studio/job-view-dialog-box1.png)
 
-    Miután a **feladat állapota** vált **kész**, egy irányított aciklikus Graph (DAG) jelenik meg. Ez az ábra ismerteti a végrehajtási útvonalát, amely a Tez volt határozza meg a Hive-lekérdezés feldolgozása során. Tez a alapértelmezett-végrehajtó motor a Hive a helyi fürtön.
-
-    > [!NOTE]  
-    > Az Apache Tez egyben az alapértelmezett Linux-alapú HDInsight-fürtök használata esetén. Akkor sem a Windows-alapú HDInsight az alapértelmezett. A használatára, hozzá kell adnia a sor `set hive.execution.engine = tez;` elején található a Hive-lekérdezést.
-
-    Használja a **Feladatkimenet** hivatkozásra a kimenet megtekintéséhez. Ebben az esetben fontos 823, a sample_08 tábla sorainak számát. A feladat diagnosztikai információ segítségével tekintheti a **Job Log** és **töltse le a YARN-naplók** hivatkozásokat.
-
-4. Futtathat Hive-feladatok interaktív módon módosításával a **Batch** mezőt **interaktív**. Válassza ki **Execute**.
-
-    ![Képernyőkép az interaktív és végrehajtási gombok kiemelésével](./media/hdinsight-hadoop-emulator-visual-studio/interactive-query.png)
-
-    Interaktív lekérdezést streameli a feldolgozás során generált kimeneti naplót a **hiveserver2-n keresztül kimeneti** ablak.
+    A **feladatok állapotának** **befejezését**követően egy irányított aciklikus gráf (Dag) jelenik meg. Ez az ábra a TEZ által a kaptár-lekérdezés feldolgozásakor meghatározott végrehajtási útvonalat ismerteti. A TEZ az alapértelmezett végrehajtási motor a kaptár számára a helyi fürtön.
 
     > [!NOTE]  
-    > Az információ megegyezik, amely elérhető a **Job Log** hivatkozásra a feladat befejezése után.
+    > A Linux-alapú HDInsight-fürtök használatakor az Apache TEZ is az alapértelmezett. A Windows-alapú HDInsight nem ez az alapértelmezett érték. Ha itt szeretné használni, a sort `set hive.execution.engine = tez;` hozzá kell adnia a kaptár-lekérdezés elejéhez.
 
-    ![Képernyőkép a kimeneti naplót](./media/hdinsight-hadoop-emulator-visual-studio/hiveserver2-output.png)
+    A kimenet megtekintéséhez használja a **feladatok kimeneti** hivatkozását. Ebben az esetben ez 823, a sorok száma a sample_08 táblában. A feladatra vonatkozó diagnosztikai információkat a **Projektnapló** és a **fonalas naplók letöltése** hivatkozásra kattintva tekintheti meg.
 
-## <a name="create-a-hive-project"></a>Egy Hive-projekt létrehozása
+4. A kaptár-feladatokat interaktív módon is futtathatja, ha a **Batch** mezőt **interaktívra**módosítja. Ezután válassza a **végrehajtás**lehetőséget.
 
-Egy több Hive-parancsfájlt tartalmazó projektet is létrehozhat. A projekt használja, kapcsolódó parancsfájlokat vagy parancsprogramok tárolása egy verziókövetési rendszert szeretne.
+    ![Képernyőkép az interaktív és a végrehajtás gombok kiemeléséről](./media/hdinsight-hadoop-emulator-visual-studio/hdi-interactive-query.png)
 
-1. A Visual Studióban válassza ki a **fájl**, **új**, majd **projekt**.
+    Az interaktív lekérdezés a **HiveServer2 kimeneti** ablakba való feldolgozás során generált kimeneti naplót adatfolyamként továbbítja.
 
-2. Bontsa ki a listából a projektek **sablonok**, bontsa ki a **az Azure Data Lake**, majd válassza ki **HIVE (HDInsight)**. A sablonok listájából válassza **minta Hive**. Adjon meg egy nevet és egy helyet, és válassza ki **OK**.
+    > [!NOTE]  
+    > A feladatok befejeződése után az információ megegyezik a **feladatütemezés** hivatkozásával.
 
-    ![Képernyőfelvétel az új projekt ablakról, amelyen a az Azure Data Lake, a HIVE, a Hive-minta és az OK kiemelésével](./media/hdinsight-hadoop-emulator-visual-studio/new-hive-project.png)
+    ![Képernyőkép a HiveServer2 kimenetéről](./media/hdinsight-hadoop-emulator-visual-studio/hiveserver2-output-box.png)
 
-A **minta Hive** -projekt tartalmazza a két parancsfájlok **WebLogAnalysis.hql** és **SensorDataAnalysis.hql**. Ezek a szkriptek használatával azonos küldhet **küldés** gombra az ablak tetején.
+## <a name="create-a-hive-project"></a>Struktúra-projekt létrehozása
 
-## <a name="create-an-apache-pig-project"></a>Hozzon létre egy Apache Pig-projektet
+Létrehozhat egy olyan projektet is, amely több kaptár-parancsfájlt is tartalmaz. Ha kapcsolódó parancsfájlokkal rendelkezik, vagy ha parancsfájlokat szeretne tárolni egy verziókövető rendszeren, használjon egy projektet.
 
-Hive SQL-szerű nyelv biztosít a strukturált adatokkal dolgozik, a Pig átalakításokat végez az adatok alapján működik megfelelően. A Pig, amely lehetővé teszi, hogy egy folyamatot átalakítások fejlesztése nyelv (a Pig latin betűs) biztosít. A Pig használata a helyi fürthöz, kövesse az alábbi lépéseket:
+1. A Visual Studióban válassza a **fájl**, **új**, majd **projekt**lehetőséget.
 
-1. Nyissa meg a Visual Studiót, és válassza ki **fájl**, **új**, majd **projekt**. Bontsa ki a listából a projektek **sablonok**, bontsa ki a **az Azure Data Lake**, majd válassza ki **Pig (HDInsight)**. A sablonok listájából válassza **Pig alkalmazás**. Adja meg a nevét, helyét, és válassza ki **OK**.
+2. A projektek listájában bontsa ki a **sablonok**, majd a **Azure Data Lake**elemet, majd válassza a **kaptár (HDInsight)** elemet. A sablonok listájában válassza a **struktúra minta**lehetőséget. Adja meg a nevet és a helyet, majd kattintson **az OK gombra**.
 
-    ![Képernyőfelvétel az új projekt ablakról, amelyen a az Azure Data Lake, a Pig, a Pig-alkalmazás és az OK kiemelésével](./media/hdinsight-hadoop-emulator-visual-studio/new-pig.png)
+    ![Új projekt ablak, Azure Data Lake, kaptár minta és OK](./media/hdinsight-hadoop-emulator-visual-studio/new-apache-hive-project.png)
 
-2. Adja meg a következő szöveget a tartalmát a **script.pig** fájlt, amely a projekt létrejött.
+A **kaptár minta** projekt két parancsfájlt tartalmaz: a **WebLogAnalysis. HQL** és a **SensorDataAnalysis. HQL**. Ezeket a szkripteket az ablak felső részén található **Küldés** gomb használatával küldheti el.
+
+## <a name="create-an-apache-pig-project"></a>Apache Pig-projekt létrehozása
+
+Míg a kaptár egy SQL-szerű nyelvet biztosít a strukturált adatokkal való munkavégzéshez, a Pig az adatokon végzett átalakítások elvégzésével működik. A Pig egy nyelvet (Pig Latin) biztosít, amely lehetővé teszi átalakítások folyamatának fejlesztését. Ha a sertést a helyi fürthöz szeretné használni, kövesse az alábbi lépéseket:
+
+1. Nyissa meg a Visual studiót, és válassza a **fájl**, **új**, majd **projekt**lehetőséget. A projektek listájából bontsa ki a **sablonok**, majd a **Azure Data Lake**, majd a **Pig (HDInsight)** elemet. A sablonok listájában válassza a **Pig-alkalmazás**lehetőséget. Adja meg a nevet, a helyet, majd kattintson **az OK gombra**.
+
+    ![Képernyőfelvétel az új projekt ablakról, a Azure Data Lake, a Pig, a Pig alkalmazás és az OK kiemelésével](./media/hdinsight-hadoop-emulator-visual-studio/new-apche-pig-project.png)
+
+2. Adja meg a következő szöveget a projekttel létrehozott **script. Pig** fájl tartalmában.
 
         a = LOAD '/demo/data/Website/Website-Logs' AS (
             log_id:int,
@@ -148,57 +147,57 @@ Hive SQL-szerű nyelv biztosít a strukturált adatokkal dolgozik, a Pig átalak
         c = GROUP b BY ip_address;
         DUMP c;
 
-    Bár a Pig egy másik nyelvet használja, mint a Hive, a feladatok futtatásának módját a konzisztens között mindkét nyelven, keresztül a **küldés** gombra. Válassza a legördülő elem melletti **küldés** a Pig-speciális küldés párbeszédpanelt jelenít meg.
+    Míg a Pig más nyelvet használ, mint a kaptár, a feladatok futtatásának módja mindkét nyelv között konzisztens, a **Submit (Küldés** ) gombra kattintva. Ha a **Küldés** melletti legördülő menüre kattint, megjelenik a Pig speciális beküldési párbeszédpanelje.
 
-    ![Parancsfájl elküldése képernyőkép párbeszédpanel](./media/hdinsight-hadoop-emulator-visual-studio/advanced-pig.png)
+    ![A szkript elküldése párbeszédpanel-Pig képernyőképe](./media/hdinsight-hadoop-emulator-visual-studio/advanced-apache-pig1.png)
 
-3. A feladat állapota és kimenete is megjelenik, ugyanaz, mint egy Hive-lekérdezést.
+3. A feladatok állapota és kimenete is megjelenik, ugyanaz, mint a kaptár lekérdezése.
 
-    ![Képernyőkép a Pig feladat](./media/hdinsight-hadoop-emulator-visual-studio/completed-pig.png)
+    ![Képernyőkép egy befejezett Pig-feladatokról](./media/hdinsight-hadoop-emulator-visual-studio/completed-apache-pig.png)
 
 ## <a name="view-jobs"></a>Feladatok megtekintése
 
-Data Lake-eszközök is lehetővé teszik információ a hadoopon futó feladatok megtekintéséhez. Az alábbi lépések segítségével tekintse meg a helyi fürtön futó feladatok.
+Data Lake eszközök segítségével egyszerűen megtekintheti a Hadoop-on futtatott feladatokkal kapcsolatos információkat. A következő lépésekkel tekintheti meg a helyi fürtön futtatott feladatokat.
 
-1. A **Server Explorer**, kattintson a jobb gombbal a helyi fürthöz, és válassza **feladatok megtekintése**. A fürt elküldött feladatok listája jelenik meg.
+1. A **Server Explorerben**kattintson a jobb gombbal a helyi fürtre, majd válassza a **feladatok megtekintése**lehetőséget. Megjelenik a fürtnek elküldött feladatok listája.
 
-    ![Képernyőkép a Server Explorer, a kiemelt feladatok megtekintése](./media/hdinsight-hadoop-emulator-visual-studio/view-jobs.png)
+    ![A Server Explorer képernyőképe a Kiemelt feladatok megjelenítésével](./media/hdinsight-hadoop-emulator-visual-studio/server-explorer-view-jobs.png)
 
-2. Feladatok listájából válassza ki a feladat részleteinek megtekintéséhez.
+2. A feladatok listájában válassza az egyik elemet a feladat részleteinek megtekintéséhez.
 
-    ![Képernyőkép a Feladatböngésző, egy, a feladatok vannak kiemelve](./media/hdinsight-hadoop-emulator-visual-studio/view-job-details.png)
+    ![Képernyőfelvétel a feladat böngészőről, a Kiemelt feladatok egyikével](./media/hdinsight-hadoop-emulator-visual-studio/hdi-view-job-details.png)
 
-    A megjelenő információk a kimenet megtekintéséhez és naplózza az információkat mutató hivatkozásokat tartalmaz Hive és Pig lekérdezés futtatása után megjelenő hasonlít.
+    A megjelenő információk hasonlóak ahhoz, amit a struktúra vagy a Pig lekérdezés futtatása után lát, beleértve a kimeneti és a naplózási információk megtekintésére szolgáló hivatkozásokat is.
 
-3. Módosíthatja, és küldje el újra a feladatot, itt is.
+3. A feladatot itt is módosíthatja, majd újból elküldheti.
 
-## <a name="view-hive-databases"></a>Hive-adatbázisok megtekintése
+## <a name="view-hive-databases"></a>Struktúra-adatbázisok megtekintése
 
-1. A **Server Explorer**, bontsa ki a **helyi HDInsight-fürt** bejegyzést, majd **Hive-adatbázisok**. A **alapértelmezett** és **xademo** jelennek meg a helyi fürtön lévő adatbázisok. Egy adatbázis bővítése jeleníti meg a táblák az adatbázisban.
+1. A **Server Explorerben**bontsa ki a **HDInsight helyi fürt** bejegyzést, majd bontsa ki a **kaptár-adatbázisok**csomópontot. Megjelennek a helyi fürtön lévő **alapértelmezett** és **xademo** adatbázisok. Az adatbázisok kibontása az adatbázisban található táblákat jeleníti meg.
 
-    ![Képernyőkép a Server Explorer eszközben az adatbázisok kibontva](./media/hdinsight-hadoop-emulator-visual-studio/expanded-databases.png)
+    ![Képernyőfelvétel a Server Explorerről, az adatbázisok kibontásával](./media/hdinsight-hadoop-emulator-visual-studio/expanded-databases-view.png)
 
-2. Egy tábla kibontása jeleníti meg, hogy a táblázat oszlopainak. Az adatok gyors megtekintéséhez kattintson a jobb gombbal egy táblát, és válassza **View Top 100 sor**.
+2. A táblázat kibontása megjeleníti a tábla oszlopait. Az adatmegjelenítéshez kattintson a jobb gombbal a táblázatra, majd válassza a **felső 100-sorok megtekintése**lehetőséget.
 
-    ![Képernyőkép a Server Explorer eszközben kibontva tábla és nézet első 100 sor van kijelölve](./media/hdinsight-hadoop-emulator-visual-studio/view-100.png)
+    ![Server Explorer, a táblázat kibontva és a felső 100-sorok megjelenítése kiválasztva](./media/hdinsight-hadoop-emulator-visual-studio/hdi-view-top-100-rows.png)
 
 ### <a name="database-and-table-properties"></a>Adatbázis és tábla tulajdonságai
 
-Megtekintheti egy adatbázis és tábla tulajdonságai. Kiválasztásával **tulajdonságok** megjeleníti a kiválasztott elem részletei a Tulajdonságok ablakban. Például olvassa el az alábbi képernyőképen látható:
+Megtekintheti egy adatbázis vagy tábla tulajdonságait. A **Tulajdonságok** lehetőség kiválasztásával a Tulajdonságok ablakban a kijelölt elemmel kapcsolatos részletek jelennek meg. Tekintse meg például a következő képernyőképen látható információkat:
 
-![Képernyőfelvétel: a Tulajdonságok ablak](./media/hdinsight-hadoop-emulator-visual-studio/properties.png)
+![Képernyőkép a Tulajdonságok ablakról](./media/hdinsight-hadoop-emulator-visual-studio/hdi-properties-window.png)
 
 ### <a name="create-a-table"></a>Tábla létrehozása
 
-Hozzon létre egy táblát, kattintson a jobb gombbal egy adatbázist, és válassza **Create Table**.
+Tábla létrehozásához kattintson a jobb gombbal egy adatbázisra, majd válassza a **tábla létrehozása**lehetőséget.
 
-![Képernyőkép a Server Explorer eszközben a Create Table kiemelésével](./media/hdinsight-hadoop-emulator-visual-studio/create-table.png)
+![A Server Explorer képernyőképe, a CREATE TABLE kiemelve](./media/hdinsight-hadoop-emulator-visual-studio/server-explorer-create-table.png)
 
-Ezután létrehozhat a tábla űrlap segítségével. Az alábbi képernyőképen alján megjelenik a nyers HiveQL a tábla létrehozásához használt.
+Ezután létrehozhatja a táblázatot egy űrlap használatával. A következő képernyőkép alján láthatja a tábla létrehozásához használt nyers HiveQL.
 
-![A tábla létrehozására szolgáló képernyő képernyőképe](./media/hdinsight-hadoop-emulator-visual-studio/create-table-form.png)
+![A táblázat létrehozásához használt űrlap képernyőképe](./media/hdinsight-hadoop-emulator-visual-studio/create-table-form-box.png)
 
 ## <a name="next-steps"></a>További lépések
 
-* [Tanulási a köteleknek, a hortonworks – tesztkörnyezet](https://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
-* [Az Apache Hadoop-oktatóanyag – HDP – első lépések](https://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/)
+* [A Hortonworks-Homokozóhoz tartozó kötelek megismerése](https://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
+* [Apache Hadoop oktatóanyag – első lépések a HDP](https://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/)

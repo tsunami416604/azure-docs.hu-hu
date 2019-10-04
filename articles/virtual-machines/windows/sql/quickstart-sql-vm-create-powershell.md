@@ -7,19 +7,18 @@ author: MashaMSFT
 manager: craigg
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: c533f4671411412f223fb1c67f1b310ee19bcf23
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 69781b7c5187bd9166946a96a8b47233d0f77208
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59547544"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100676"
 ---
 # <a name="quickstart-create-a-sql-server-windows-virtual-machine-with-azure-powershell"></a>Gyors útmutató: SQL Servert futtató, Windows rendszerű virtuális gép létrehozása az Azure PowerShell használatával
 
@@ -40,17 +39,17 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="configure-powershell"></a>A PowerShell konfigurálása
 
-1. Nyissa meg a Powershellt, és állítsa be az Azure-fiókja elérését futtatásával a **Connect-AzAccount** parancsot.
+1. A **AzAccount** parancs futtatásával nyissa meg a PowerShellt, és hozzon létre hozzáférést az Azure-fiókjához.
 
    ```powershell
    Connect-AzAccount
    ```
 
-1. Megjelenik egy képernyő, amely a hitelesítő adatainak megadását. Használja ugyanazt az e-mail-címet és jelszót, amelyet az Azure Portalra való bejelentkezéshez használ.
+1. A hitelesítő adatok megadásához egy képernyőt kell látnia. Használja ugyanazt az e-mail-címet és jelszót, amelyet az Azure Portalra való bejelentkezéshez használ.
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-1. Adjon meg egy változót egy egyedi erőforráscsoport-névvel. Ez a rövid útmutató a többi leegyszerűsítése a többi parancs ezt a nevet alapjaként használja az egyéb erőforrásnevekhez.
+1. Adjon meg egy változót egy egyedi erőforráscsoport-névvel. A rövid útmutató további részének egyszerűsítése érdekében a többi parancs ezt a nevet használja az egyéb erőforrásnevek alapján.
 
    ```powershell
    $ResourceGroupName = "sqlvm1"
@@ -121,7 +120,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="create-the-sql-vm"></a>Az SQL virtuális gép létrehozása
 
-1. Adja meg a bejelentkezési adatait, jelentkezzen be a virtuális Gépet. A felhasználónév az "azureadmin". Ellenőrizze, hogy módosítja \<jelszó > a parancs futtatása előtt.
+1. Adja meg a hitelesítő adatait a virtuális gépre való bejelentkezéshez. A Felhasználónév "azureadmin". A parancs futtatása előtt \<győződjön meg róla, hogy módosítja a jelszót >.
 
    ``` PowerShell
    # Define a credential object
@@ -135,9 +134,9 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
    ```powershell
    # Create a virtual machine configuration
    $VMName = $ResourceGroupName + "VM"
-   $VMConfig = New-AzVMConfig -VMName $VMName -VMSize Standard_DS13_V2 | `
-      Set-AzVMOperatingSystem -Windows -ComputerName $VMName -Credential $Cred -ProvisionVMAgent -EnableAutoUpdate | `
-      Set-AzVMSourceImage -PublisherName "MicrosoftSQLServer" -Offer "SQL2017-WS2016" -Skus "SQLDEV" -Version "latest" | `
+   $VMConfig = New-AzVMConfig -VMName $VMName -VMSize Standard_DS13_V2 |
+      Set-AzVMOperatingSystem -Windows -ComputerName $VMName -Credential $Cred -ProvisionVMAgent -EnableAutoUpdate |
+      Set-AzVMSourceImage -PublisherName "MicrosoftSQLServer" -Offer "SQL2017-WS2016" -Skus "SQLDEV" -Version "latest" |
       Add-AzVMNetworkInterface -Id $Interface.Id
    
    # Create the VM
@@ -149,7 +148,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="install-the-sql-iaas-agent"></a>Az SQL IaaS-ügynök telepítése
 
-A portál integrációjához és az SQL virtuálisgép-funkciókhoz telepíteni kell az [SQL Server IaaS-ügynök bővítményt](virtual-machines-windows-sql-server-agent-extension.md). Telepítse az ügynököt az új virtuális gép, futtassa a következő parancsot a virtuális gép létrehozása után.
+A portál integrációjához és az SQL virtuálisgép-funkciókhoz telepíteni kell az [SQL Server IaaS-ügynök bővítményt](virtual-machines-windows-sql-server-agent-extension.md). Ha az ügynököt az új virtuális gépre szeretné telepíteni, futtassa a következő parancsot a virtuális gép létrehozása után.
 
    ```powershell
    Set-AzVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "1.2" -Location $Location
@@ -157,37 +156,37 @@ A portál integrációjához és az SQL virtuálisgép-funkciókhoz telepíteni 
 
 ## <a name="remote-desktop-into-the-vm"></a>Távoli asztal a virtuális gépen
 
-1. Használja a következő parancsot az új virtuális gép nyilvános IP-cím lekéréséhez.
+1. Az új virtuális gép nyilvános IP-címének lekéréséhez használja a következő parancsot.
 
    ```powershell
    Get-AzPublicIpAddress -ResourceGroupName $ResourceGroupName | Select IpAddress
    ```
 
-1. A visszaadott IP-címet adja át a parancssori paramétereként **mstsc** , indítson el egy távoli asztali munkamenetet az új virtuális gépen.
+1. Adja át a visszaadott IP-címet parancssori paraméterként az **mstsc** számára, hogy egy távoli asztal munkamenetet indítson el az új virtuális gépre.
 
    ```
    mstsc /v:<publicIpAddress>
    ```
 
-1. Amikor a rendszer a hitelesítő adatokat kéri, válassza egy másik fiók hitelesítő adatainak megadását. Adja meg a felhasználónevét és a egy fordított perjel (például `\azureadmin`), és az ebben a rövid útmutatóban korábban megadott jelszót.
+1. Amikor a rendszer a hitelesítő adatokat kéri, válassza egy másik fiók hitelesítő adatainak megadását. Adja meg a felhasználónevet az előző fordított perjeltel ( `\azureadmin`például:), valamint az ebben a rövid útmutatóban korábban megadott jelszót.
 
 ## <a name="connect-to-sql-server"></a>Csatlakozás az SQL Serverhez
 
-1. Miután bejelentkezett a a távoli asztali munkamenetbe, indítsa el a **SQL Server Management Studio 2017** a start menüből.
+1. A Távoli asztal-munkamenetbe való bejelentkezés után indítsa el **SQL Server Management Studio 2017** alkalmazást a Start menüből.
 
-1. Az a **kapcsolódás a kiszolgálóhoz** párbeszédpanelen hagyja változatlanul az alapértelmezett értékeket. A kiszolgáló neve a virtuális gép neve. A Hitelesítés értéke **Windows Authentication** (Windows-hitelesítés). Kattintson a **Csatlakozás** gombra.
+1. A **Kapcsolódás a kiszolgálóhoz** párbeszédpanelen tartsa meg az alapértelmezett értékeket. A kiszolgáló neve a virtuális gép neve. A Hitelesítés értéke **Windows Authentication** (Windows-hitelesítés). Kattintson a **Csatlakozás** gombra.
 
-Most már csatlakozott az SQL Server helyi. Ha távolról kapcsolódni szeretne, akkor kell [-kapcsolat konfigurálása](virtual-machines-windows-sql-connect.md) a portálról, vagy manuálisan.
+Mostantól a SQL Server helyileg csatlakozik. Ha távolról szeretne csatlakozni, a [kapcsolatot](virtual-machines-windows-sql-connect.md) a portálról vagy manuálisan kell konfigurálnia.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szüksége a virtuális gép folyamatosan fusson, a szükségtelen díjak elkerüléséhez leállításával, amikor nincs használatban. A következő parancs leállítja a virtuális gépet, de elérhető állapotban hagyja későbbi használat céljából.
+Ha nincs szüksége a virtuális gép folyamatos futtatására, a szükségtelen költségeket elkerülheti, ha nincs használatban. A következő parancs leállítja a virtuális gépet, de elérhető állapotban hagyja későbbi használat céljából.
 
 ```powershell
 Stop-AzVM -Name $VMName -ResourceGroupName $ResourceGroupName
 ```
 
-A virtuális géppel társított összes erőforrás véglegesen is törölheti a **Remove-AzResourceGroup** parancsot. Ezzel véglegesen törli a virtuális gépet is, ezért ezt a parancsot körültekintően.
+A **Remove-AzResourceGroup** paranccsal véglegesen törölheti a virtuális géphez társított összes erőforrást is. Ezzel véglegesen törli a virtuális gépet is, ezért használja ezt a parancsot körültekintően.
 
 ## <a name="next-steps"></a>További lépések
 

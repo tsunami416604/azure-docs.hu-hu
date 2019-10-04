@@ -1,46 +1,38 @@
 ---
-title: Az Azure Resource Manager sablonfüggvényei – üzembe helyezés |} A Microsoft Docs
-description: A funkciók az Azure Resource Manager-sablon használatával lekérheti az üzembe helyezés információkat ismerteti.
-services: azure-resource-manager
-documentationcenter: na
+title: Azure Resource Manager template functions – üzembe helyezés | Microsoft Docs
+description: Ismerteti a Azure Resource Manager-sablonban a telepítési információk lekéréséhez használandó függvényeket.
 author: tfitzmac
-ms.assetid: ''
 ms.service: azure-resource-manager
-ms.devlang: na
-ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/03/2019
+ms.topic: conceptual
+ms.date: 09/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: c5bd40741ec0fe047f98b4b4431819d90e188385
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 12698d1655c414b1ee3b9866cc975dc53e4ef095
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268097"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983992"
 ---
-# <a name="deployment-functions-for-azure-resource-manager-templates"></a>Központi telepítési funkciók az Azure Resource Manager-sablonok 
+# <a name="deployment-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager-sablonok üzembe helyezési funkciói 
 
-Erőforrás-kezelő az alábbi funkciókat biztosít értékek lekérése a sablont és az értékek üzembe helyezésével kapcsolatos szakaszait:
+A Resource Manager a következő függvényeket biztosítja a sablon és a telepítéshez kapcsolódó értékek beolvasásához:
 
-* [Üzembe helyezés](#deployment)
-* [paraméterek](#parameters)
-* [Változók](#variables)
+* [telepítési](#deployment)
+* [parameters](#parameters)
+* [variables](#variables)
 
-Erőforrások, erőforráscsoportok vagy előfizetések lekérjük az értékeket, lásd: [erőforrásfüggvények](resource-group-template-functions-resource.md).
+Erőforrások, erőforráscsoportok vagy előfizetések értékeinek lekéréséhez lásd: [Resource functions](resource-group-template-functions-resource.md).
 
 <a id="deployment" />
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-## <a name="deployment"></a>üzembe helyezés
+## <a name="deployment"></a>deployment
 `deployment()`
 
-A jelenlegi üzembe helyezési művelet adatait adja vissza.
+A jelenlegi telepítési műveletre vonatkozó adatokat adja vissza.
 
 ### <a name="return-value"></a>Vrácená hodnota
 
-Ez a függvény üzembe helyezése során átadott objektumot adja vissza. A visszaadott objektum tulajdonság e a telepítési objektum átadása egy hivatkozást, vagy egy beágyazott objektumként függően eltérőek lehetnek. Ha a központi telepítési objektum átadása a sor végét, mint például használatakor a **- TemplateFile** paramétert az Azure PowerShell helyi fájlra mutat, a visszaadott objektum rendelkezik a következő formátumban:
+Ez a függvény az üzembe helyezés során átadott objektumot adja vissza. A visszaadott objektum tulajdonságai eltérnek attól függően, hogy a központi telepítési objektum hivatkozásként vagy beágyazott objektumként van-e átadva. Ha a központi telepítési objektum átadásra kerül, például ha a Azure PowerShell a **-TemplateFile** paramétert használja egy helyi fájlra, a visszaadott objektum formátuma a következő:
 
 ```json
 {
@@ -62,7 +54,7 @@ Ez a függvény üzembe helyezése során átadott objektumot adja vissza. A vis
 }
 ```
 
-Ha az objektum átadása egy hivatkozással, mint például a használatakor a **- TemplateUri** paramétert, hogy egy távoli objektumot, mutasson az objektum a következő formátumban adja vissza: 
+Ha az objektumot hivatkozásként adja át, például ha a **-TemplateUri** paraméterrel egy távoli objektumra mutat, az objektum a következő formátumban lesz visszaadva: 
 
 ```json
 {
@@ -86,11 +78,11 @@ Ha az objektum átadása egy hivatkozással, mint például a használatakor a *
 }
 ```
 
-Ha Ön [üzembe helyezése Azure-előfizetéssel](deploy-to-subscription.md), helyett egy erőforráscsoport, a visszaadott objektum tartalmaz egy `location` tulajdonság. A location tulajdonság szerepel, vagy egy helyi sablont, vagy egy külső sablon üzembe helyezésekor.
+Ha egy erőforráscsoport helyett [Azure-előfizetésre végez üzembe helyezést](deploy-to-subscription.md), a Return objektum tartalmaz egy `location` tulajdonságot. Helyi sablon vagy külső sablon telepítésekor a Location tulajdonság is szerepel.
 
 ### <a name="remarks"></a>Megjegyzések
 
-Használhatja a deployment() összekapcsolása egy másik sablon URI-ját a fölérendelt sablon alapján.
+A központi telepítés () használatával egy másik sablonra lehet hivatkozni a fölérendelt sablon URI-ja alapján.
 
 ```json
 "variables": {  
@@ -98,11 +90,11 @@ Használhatja a deployment() összekapcsolása egy másik sablon URI-ját a föl
 }
 ```  
 
-Ha az üzembe helyezési előzmények a portálon a sablon újbóli telepítése, a sablon üzembe egy helyi fájlba. A `templateLink` tulajdonság nem jelenik meg a központi telepítési függvény. Ha a sablon támaszkodik `templateLink` egy másik sablon mutató hivatkozást hozhat létre, nem használja a portál újbóli üzembe helyezéséhez. Ehelyett használja a parancsok, amellyel eredetileg helyezheti üzembe a sablont.
+Ha a portálon lévő központi telepítési előzményekből telepít újra egy sablont, a sablon helyi fájlként lesz telepítve. A `templateLink` tulajdonságot a rendszer nem adja vissza a telepítési függvényben. Ha a sablon `templateLink` egy másik sablonra mutató hivatkozást hoz létre, ne használja a portált az újbóli üzembe helyezéshez. Ehelyett használja a sablon eredeti üzembe helyezéséhez használt parancsokat.
 
 ### <a name="example"></a>Példa
 
-A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deployment.json) a központi telepítési objektumot ad vissza:
+A következő [példában szereplő sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deployment.json) a központi telepítési objektumot adja vissza:
 
 ```json
 {
@@ -118,7 +110,7 @@ A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/
 }
 ```
 
-Az előző példában a következő objektumot ad vissza:
+Az előző példa a következő objektumot adja vissza:
 
 ```json
 {
@@ -142,40 +134,28 @@ Az előző példában a következő objektumot ad vissza:
 }
 ```
 
-Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/deployment.json
-```
-
-Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/deployment.json
-```
-
-Egy előfizetés-szintű sablont, amely a központi telepítési függvényt használja, lásd: [előfizetés üzembe helyezési funkció](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deploymentsubscription.json). A következők egyikével telepítették `az deployment create` vagy `New-AzDeployment` parancsokat.
+Az üzembe helyezési funkciót használó előfizetési szintű sablonért lásd: [előfizetés üzembe helyezési funkciója](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deploymentsubscription.json). A rendszer a `az deployment create` vagy `New-AzDeployment` a parancsot is alkalmazza.
 
 <a id="parameters" />
 
-## <a name="parameters"></a>paraméterek
+## <a name="parameters"></a>parameters
 `parameters(parameterName)`
 
-A paraméter értékét adja vissza. A megadott paraméternév a sablon a Paraméterek szakaszban kell definiálni.
+Egy paraméter értékét adja vissza. A megadott paraméter nevét meg kell adni a sablon paraméterek szakaszában.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| parameterName |Igen |sztring |A visszaadandó paraméter neve. |
+| parameterName |Igen |Karakterlánc |A visszaadni kívánt paraméter neve. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
-A megadott paraméter értékét.
+A megadott paraméter értéke.
 
 ### <a name="remarks"></a>Megjegyzések
 
-Általában használni a paraméterek erőforrás értékeinek beállításához. Az alábbi példában a webhely nevét a telepítés során átadott paraméter értéke állítja.
+Általában paraméterekkel állíthatja be az erőforrás-értékeket. A következő példa beállítja a webhely nevét az üzembe helyezés során átadott paraméterérték értékére.
 
 ```json
 "parameters": { 
@@ -195,7 +175,7 @@ A megadott paraméter értékét.
 
 ### <a name="example"></a>Példa
 
-A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/parameters.json) egy egyszerűsített a paraméterek függvény használatát mutatja be.
+A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/parameters.json) a Parameters függvény egyszerűsített használatát mutatja be.
 
 ```json
 {
@@ -252,46 +232,36 @@ A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/
 
 Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Érték |
+| Name (Név) | Típus | Value |
 | ---- | ---- | ----- |
-| stringOutput | String | 1. lehetőséget |
+| stringOutput | Sztring | 1\. lehetőség |
 | intOutput | Int | 1 |
-| objectOutput | Objektum | {"egy": "a", "2": "b"} |
-| arrayOutput | Tömb | [1, 2, 3] |
-| crossOutput | String | 1. lehetőséget |
+| objectOutput | Object | {"One": "a", "kettő": "b"} |
+| arrayOutput | Array | [1, 2, 3] |
+| crossOutput | Sztring | 1\. lehetőség |
 
-Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/parameters.json
-```
-
-Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/parameters.json
-```
+További információ a paraméterek használatáról: [Azure Resource Manager sablonban található paraméterek](template-parameters.md).
 
 <a id="variables" />
 
-## <a name="variables"></a>Változók
+## <a name="variables"></a>változók
 `variables(variableName)`
 
-A változó értékét adja vissza. A megadott változónév a sablon a változók szakaszban kell definiálni.
+A változó értékét adja vissza. A megadott változó nevét meg kell adni a sablon változók szakaszában.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| variableName |Igen |String |A visszaadandó változó neve. |
+| variableName |Igen |Sztring |A visszaadni kívánt változó neve. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
-A megadott változó értékét.
+A megadott változó értéke.
 
 ### <a name="remarks"></a>Megjegyzések
 
-Általában a változókkal egyszerűsítése érdekében a sablont hozhat létre komplex értékek csak egyszer. Az alábbi példa létrehoz egy storage-fiók egy egyedi nevet.
+Általában változók használatával egyszerűsítheti a sablont úgy, hogy csak egyszer hozza létre az összetett értékeket. A következő példa egy egyedi nevet hoz létre egy Storage-fiókhoz.
 
 ```json
 "variables": {
@@ -315,7 +285,7 @@ A megadott változó értékét.
 
 ### <a name="example"></a>Példa
 
-A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/variables.json) különböző változó értékeit adja vissza.
+A következő [példában szereplő sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/variables.json) eltérő változó értékeket ad vissza.
 
 ```json
 {
@@ -355,28 +325,18 @@ A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/
 
 Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Érték |
+| Name (Név) | Típus | Value |
 | ---- | ---- | ----- |
-| exampleOutput1 | String | myVariable |
-| exampleOutput2 | Tömb | [1, 2, 3, 4] |
-| exampleOutput3 | String | myVariable |
-| exampleOutput4 |  Objektum | {"Tulajdonság1": "érték1", "Tulajdonság2": "érték2"} |
+| exampleOutput1 | Sztring | myVariable |
+| exampleOutput2 | Array | [1, 2, 3, 4] |
+| exampleOutput3 | Sztring | myVariable |
+| exampleOutput4 |  Object | {"Tulajdonság1": "érték1", "property2": "érték2"} |
 
-Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/variables.json
-```
-
-Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/variables.json
-```
+További információ a változók használatáról: [változók Azure Resource Manager sablonban](template-variables.md).
 
 ## <a name="next-steps"></a>További lépések
 * A szakaszok az Azure Resource Manager-sablon ismertetését lásd: [Azure Resource Manager-sablonok készítése](resource-group-authoring-templates.md).
-* Egyesíthet több sablont, tekintse meg [kapcsolt sablonok használata az Azure Resource Manager](resource-group-linked-templates.md).
+* Több sablon egyesítéséhez tekintse meg [a csatolt sablonok használata Azure Resource Manager használatával](resource-group-linked-templates.md)című témakört.
 * A megadott számú alkalommal újrafuttathatja egy adott típusú erőforrás létrehozásakor, lásd: [több erőforráspéldány létrehozása az Azure Resource Manager](resource-group-create-multiple.md).
 * A létrehozott sablon üzembe helyezése, olvassa el [alkalmazás üzembe helyezése Azure Resource Manager-sablonnal](resource-group-template-deploy.md).
 

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.openlocfilehash: 20cb7a446befb1d31f0e069d91d0230fc4a2a901
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59999467"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60565599"
 ---
 # <a name="troubleshoot-failback-to-on-premises-from-azure"></a>A helyszíni feladat-visszavétel az Azure-ból – hibaelhárítás
 
@@ -24,7 +24,7 @@ Feladat-visszavétel lényegében két fő lépésből áll. Az első lépés a 
 
 Ez a szakasz részletesen az ismételt védelem előforduló gyakori hibák és a rendszernaplóban őket.
 
-### <a name="error-code-95226"></a>95226. Hibakód:
+### <a name="error-code-95226"></a>95226\. Hibakód:
 
 **Az ismételt védelem sikertelen volt, mert az Azure virtuális gép nem tudta elérni a helyszíni konfigurációs kiszolgálót.**
 
@@ -38,7 +38,7 @@ A probléma megoldása:
 * Ellenőrizze, hogy az Azure Virtuálisgép-hálózat lehetővé teszi, hogy az Azure virtuális Gépen a helyszíni konfigurációs kiszolgálóval való kommunikációhoz. A site-to-site VPN beállítása a helyszíni adatközponthoz, vagy az Azure ExpressRoute-kapcsolatok konfigurálása a privát társviszony-létesítést az Azure virtuális gépek a virtuális hálózaton.
 * Ha a virtuális gép kommunikálhat a helyszíni konfigurációs kiszolgálót, jelentkezzen be a virtuális géphez. Ezután ellenőrizze az InMage Scout application szolgáltatást. Ha látja, hogy nem fut, indítsa el manuálisan a szolgáltatást. Ellenőrizze, hogy a szolgáltatás indítási típus beállítása **automatikus**.
 
-### <a name="error-code-78052"></a>78052. Hibakód:
+### <a name="error-code-78052"></a>78052\. Hibakód:
 
 **A virtuális gép védelme nem sikerült befejezni.**
 
@@ -50,7 +50,7 @@ A probléma megoldása:
 * Emellett használhatja vMotion a fő célkiszolgáló áthelyezése egy másik gazdagépre, ahol a névütközést nem történik meg. Ha a meglévő virtuális gép egy szétszórt gép, nevezze át, hogy az új virtuális gép ugyanazon az ESXi-gazdagépen hozható létre.
 
 
-### <a name="error-code-78093"></a>78093. Hibakód:
+### <a name="error-code-78093"></a>78093\. Hibakód:
 
 **A virtuális gép nem fut, lefagyott állapotban, vagy nem érhető el.**
 
@@ -61,7 +61,7 @@ Egy átvevő virtuális gép ismételt védelme, hogy az Azure virtuális Gépen
 * Indítsa újra a virtuális Gépet, így kommunikál a helyszíni elindul.
 * Indítsa újra az ismételt védelmi feladat, az Azure virtuális gép elindítása után.
 
-### <a name="error-code-8061"></a>8061. Hibakód:
+### <a name="error-code-8061"></a>8061\. Hibakód:
 
 **Az adattárhoz az ESXi-gazdagép nem érhető el.**
 
@@ -72,7 +72,7 @@ Ellenőrizze a [fő cél Előfeltételek és a támogatott adattárak](vmware-az
 
 Ez a szakasz ismerteti a feladat-visszavétel során esetleg felmerülő gyakori hibák.
 
-### <a name="error-code-8038"></a>8038. Hibakód:
+### <a name="error-code-8038"></a>8038\. Hibakód:
 
 **Csatlakozva a helyszíni virtuális gép a hiba miatt nem sikerült.**
 

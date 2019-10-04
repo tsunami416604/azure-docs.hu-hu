@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 06/04/2018
+ms.date: 09/28/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 244d6be318662be794cac58aaa8350b433b6cb37
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: a852807ab685e85b76d26e5b39c99a32f645bbd7
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34825459"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71838164"
 ---
-Ne társítson egy útválasztási táblázatot, amely tartalmaz egy útvonalat a 0.0.0.0/0 az átjáró alhálózatának a cél. Ezzel megakadályozza, hogy az átjáró helyes működését.
+A felhasználó által megadott útvonalak 0.0.0.0/0 célhoz és NSG a GatewaySubnet **nem támogatottak**. Az ezzel a konfigurációval létrehozott átjárókat a rendszer letiltja a létrehozásból. Az átjárók a megfelelő működés érdekében a felügyeleti vezérlőkhöz való hozzáférést igényelnek.

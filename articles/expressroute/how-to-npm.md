@@ -9,11 +9,11 @@ ms.date: 01/25/2019
 ms.author: cherylmc
 ms.custom: seodec18
 ms.openlocfilehash: 180075f13be2cc2507a78e3d10a67a49a0c0cb12
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58118629"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60840172"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>Network Performance Monitor for ExpressRoute konfigurálása
 
@@ -206,7 +206,7 @@ A Microsoft társviszony-létesítéshez, kattintson a figyelni kívánt Microso
 
 1. Ellenőrizze a **társviszony figyelése** jelölőnégyzetet. 
 2. (Nem kötelező) Módosíthatja a cél Microsoft szolgáltatásvégpontot. Alapértelmezés szerint az NPM és a cél Microsoft szolgáltatásvégpont választja ki. Az NPM figyeli a kapcsolat a helyszíni kiszolgálók és a céloldali végpont expressroute-on keresztül. 
-    * A céloldali végpont módosításához kattintson a **(Szerkesztés)** mellett kapcsolni **cél:**, és válassza ki egy másik Microsoft szolgáltatási cél végpont URL-címek listájából.
+    * A céloldali végpont módosításához kattintson a **(Szerkesztés)** mellett kapcsolni **cél:** , és válassza ki egy másik Microsoft szolgáltatási cél végpont URL-címek listájából.
       ![Cél szerkesztése](./media/how-to-npm/edit_target.png)<br>
 
     * Egy egyéni URL-cím vagy IP-címet is használhatja. Ez a beállítás akkor különösen fontos, ha a Microsoft társviszony-létesítést úgy, hogy egy kapcsolatot az Azure PaaS-szolgáltatások, például az Azure Storage, SQL Database-adatbázisok és a nyilvános IP-címet felkínált webhelyek. Ehhez kattintson a hivatkozásra **(egyéni URL-cím vagy IP-címet használja helyette)** alján, az URL-CÍMEK listája, majd adja meg az Azure PaaS-szolgáltatás, amely csatlakozik az ExpressRoute a Microsoft társviszony-létesítésen keresztül a nyilvános végponthoz.
@@ -257,7 +257,7 @@ A helyszíni és a választott társviszony-létesítési ExpressRoute-kapcsolat
 
 ### <a name="topology"></a>Kapcsolatcsoport topológia
 
-Kapcsolatcsoport topológiájának megtekintéséhez kattintson a **topológia** csempére. Ekkor megjelenik a topológia e nézetében a kiválasztott kapcsolatcsoporthoz vagy a társviszony-létesítés. A topológiadiagramot a minden egyes szegmens a késést biztosít a hálózaton található. 3. rétegbeli ugrásokra egy csomópont a diagram képviseli. Az Ugrás kapcsolatos további részletekért kattintson egy Ugrás a tárja fel.
+Kapcsolatcsoport topológiájának megtekintéséhez kattintson a **topológia** csempére. Ekkor megjelenik a topológia e nézetében a kiválasztott kapcsolatcsoporthoz vagy a társviszony-létesítés. A topológiadiagramot a minden egyes szegmens a késést biztosít a hálózaton található. 3\. rétegbeli ugrásokra egy csomópont a diagram képviseli. Az Ugrás kapcsolatos további részletekért kattintson egy Ugrás a tárja fel.
 
 Növelheti helyszíni útválasztók ugrásainak tartalmazza az alábbi csúszka mozgatásával láthatóság szintjét **szűrők**. A csúszka mozgatása jobbra vagy balra, növekszik és csökken az ugrások számát, a topológia Graph. Minden egyes szegmens a késés akkor látható, amely lehetővé teszi a hálózat nagy késésű szegmensek gyorsabban elkülönítését.
 

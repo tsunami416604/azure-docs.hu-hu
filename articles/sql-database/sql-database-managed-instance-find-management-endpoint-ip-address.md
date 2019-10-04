@@ -1,6 +1,6 @@
 ---
-title: Fedezze fel az Azure SQL Database felügyelt példányába felügyeleti végpontja |} A Microsoft Docs
-description: 'Útmutató: Azure SQL Database felügyelt példányába felügyeleti végpont nyilvános IP-címét, és a beépített tűzfal általi védelem ellenőrzése'
+title: A felügyelt példányok felügyeleti végpontjának felderítése Azure SQL Database | Microsoft Docs
+description: Ismerje meg, hogyan kérhet Azure SQL Database felügyelt példányok felügyeleti végpontjának nyilvános IP-címét, és ellenőrizheti a beépített tűzfal-védelmet
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -12,27 +12,24 @@ ms.author: srbozovi
 ms.reviewer: sstein, carlrab
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: b7eb9ecd6b94aad263346ad6b5c45b694e0bd46f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: c5304c62b29d842f9beeadb34eba1cb53048d179
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59797958"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302281"
 ---
-# <a name="determine-the-management-endpoint-ip-address"></a>A felügyeleti végpont IP-cím meghatározása
+# <a name="determine-the-management-endpoint-ip-address"></a>A felügyeleti végpont IP-címének meghatározása
 
-Az Azure SQL Database felügyelt példánya virtuális fürt tartalmaz egy felügyeleti végpontot, a Microsoft által a felügyeleti műveleteket. A hálózati szintű és kölcsönös tanúsítvány-ellenőrzés az alkalmazás szintjén a beépített tűzfal védi a felügyeleti végponthoz. Megadhatja, hogy a felügyeleti végpont IP-címe, de nem érheti el ezt a végpontot.
+A Azure SQL Database felügyelt példány virtuális fürt felügyeleti végpontot tartalmaz, amelyet a Microsoft a felügyeleti műveletekhez használ. A felügyeleti végpontot a rendszer egy beépített tűzfallal védi a hálózati szinten, valamint a kölcsönös tanúsítvány-ellenőrzést az alkalmazás szintjén. Meghatározhatja a felügyeleti végpont IP-címét, de ehhez a végponthoz nem férhet hozzá.
 
-## <a name="determine-ip-address"></a>IP-cím meghatározása
+A felügyeleti IP-cím meghatározásához hajtson végre DNS-lekérdezést a felügyelt példány `mi-name.zone_id.database.windows.net`teljes tartománynevén:. Ez egy olyan DNS-bejegyzést ad vissza, `trx.region-a.worker.vnet.database.windows.net`amely hasonló. Ezt követően a ". vnet" nevű DNS-lekérdezést törölheti a teljes tartománynévre. Ekkor a rendszer visszaküldi a felügyeleti IP-címet. 
 
-Tegyük fel, hogy felügyelt példány állomás `mi-demo.xxxxxx.database.windows.net`. Futtatás `nslookup` név használatával.
+Ez a PowerShell mindent megtesz, ha a mi FQDN \<\> -t a felügyelt példány DNS-bejegyzésével helyettesíti `mi-name.zone_id.database.windows.net`::
+  
+``` powershell
+  $MIFQDN = "<MI FQDN>"
+  resolve-dnsname $MIFQDN | select -first 1  | %{ resolve-dnsname $_.NameHost.Replace(".vnet","")}
+```
 
-![Belső állomásnév feloldása](./media/sql-database-managed-instance-management-endpoint/01_find_internal_host.png)
-
-Most már egy másik tegye `nslookup` kiemelt neve eltávolítását a `.vnet.` szegmens. A nyilvános IP-címet kap, ha a parancs végrehajtása.
-
-![Nyilvános IP-cím feloldása](./media/sql-database-managed-instance-management-endpoint/02_find_public_ip.png)
-
-## <a name="next-steps"></a>További lépések
-
-További információ a felügyelt példányok és a kapcsolat: [Azure SQL Database felügyelt példány kapcsolati architektúra](sql-database-managed-instance-connectivity-architecture.md).
+A felügyelt példányokkal és kapcsolatokkal kapcsolatos további információkért lásd: [Azure SQL Database felügyelt példány kapcsolati architektúrája](sql-database-managed-instance-connectivity-architecture.md).

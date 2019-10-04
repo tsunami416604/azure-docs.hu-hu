@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
-ms.author: v-ant-msft
-ms.openlocfilehash: 3ea502477cc5b380c99a183d9270c2b2e94375a8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: jeedes
+ms.openlocfilehash: dd8335442cd370e0478c029a927c71e26fe6ef1b
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59275482"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672856"
 ---
 # <a name="tutorial-configure-zscaler-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása Zscaler konfigurálása
 
@@ -49,7 +49,7 @@ Az Azure AD-felhasználók automatikus Zscaler konfigurálja, mielőtt szükség
 
 **Az Azure AD alkalmazáskatalógusában Zscaler hozzáadásához hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -116,7 +116,7 @@ Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás létrehozása
 
     Válassza ki **Enable SCIM-Based kiépítés** lekéréséhez **alap URL-cím** és **tulajdonosi jogkivonat**, majd mentse a beállításokat. Másolás a **alap URL-cím** való **bérlői URL-cím**, és **tulajdonosi jogkivonat** való **titkos jogkivonat** az Azure Portalon.
 
-7. 5. lépésben megjelenő mezők feltöltése, után kattintson a **kapcsolat tesztelése** annak biztosítása érdekében az Azure AD Zscaler csatlakozhat. Ha a kapcsolat hibája esetén, győződjön meg arról, Zscaler fiókja rendszergazdai engedélyekkel rendelkező, és próbálkozzon újra.
+7. 5\. lépésben megjelenő mezők feltöltése, után kattintson a **kapcsolat tesztelése** annak biztosítása érdekében az Azure AD Zscaler csatlakozhat. Ha a kapcsolat hibája esetén, győződjön meg arról, Zscaler fiókja rendszergazdai engedélyekkel rendelkező, és próbálkozzon újra.
 
     ![Zscaler-kiépítés](./media/zscaler-provisioning-tutorial/test-connection.png)
 

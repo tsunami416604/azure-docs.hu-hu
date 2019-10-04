@@ -1,89 +1,87 @@
 ---
-title: Megismerheti az Azure-költségkeretét |} A Microsoft Docs
-description: Ismerteti, hogyan működik az Azure-költségkeretét, és annak eltávolításáról
-services: ''
-documentationcenter: ''
-author: genlin
-manager: alherz
-editor: ''
+title: Azure-költségkeret | Microsoft Docs
+description: Ez a cikk az Azure-költségkeret működését és eltávolításának módját ismerteti.
+author: bandersmsft
+manager: amberb
 tags: billing
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 08/28/2019
 ms.author: banders
-ms.openlocfilehash: c234f75ec752ec79e9f2a051f79e91bdde81de15
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: 1324b60de05805cd409975358ff78e5b2b27eef1
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57845372"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70114452"
 ---
-# <a name="understand-azure-spending-limit-and-how-to-remove-it"></a>Tudnivalók az Azure-költségkeretről és annak eltávolításáról
+# <a name="azure-spending-limit"></a>Azure-költségkeret
 
-A kreditösszeg erejéig kiadásait elkerülése érdekében létezik költségkeret az Azure-ban. A próbaverzióra vagy a több hónapon átívelő krediteket tartalmazó ajánlatok regisztráló új ügyfelek a költségkeretet, alapértelmezés szerint engedélyezve van. A költségkeret 0 USD. Nem lehet módosítani. A költségkeret nem érhető el az olyan előfizetéstípusokhoz, mint a használatalapú fizetés és a kötelezettségvállalásos csomagok. Tekintse meg a [teljes listája megtalálható az Azure és a költségkeret elérhetősége](https://azure.microsoft.com/support/legal/offer-details/).
+Az Azure-költségkerettel elkerülheti a kreditek mennyiségét meghaladó kiadásokat. A költségkeret alapértelmezés szerint be van kapcsolva minden új felhasználó esetében, aki Azure-próbaverzióra regisztrál, illetve olyan ajánlatok esetében, amelyek több hónapnyi kreditet tartalmaznak. A költségkeret 0 dollár, és nem módosítható. Nem módosíthatja tehát a költségkeretet például 100 dollárra. Lehetősége van azonban a költségkeret eltávolítására. Tehát vagy nincs költségkerete, vagy nulla értékű költségkerete van, amellyel elkerülheti a legtöbb kiadást. A költségkeret nem érhető el bizonyos csomagok részét képező előfizetésekhez, például a hűségszerződéses csomagokhoz és a használatalapú fizetéses csomagokhoz. Tekintse meg [az Azure-ajánlatok teljes listáját és a költségkeret elérhetőségét](https://azure.microsoft.com/support/legal/offer-details/) ismertető cikket.
 
-## <a name="what-happens-when-i-reach-the-spending-limit"></a>Mi történik a költségkeret elérése esetén?
+## <a name="reaching-a-spending-limit"></a>A költségkeret elérése
 
-Ha felhasználta a rendelkezésére szereplő havi mennyiséget díjakat a használati eredményezi az előfizetéséhez járó, a telepített szolgáltatások le vannak tiltva, az elszámolási időszakból hátralévő. 
+Ha a használat olyan költségeket eredményez, amelyek kimerítik az Azure-előfizetéssel járó havi összeget, akkor a rendszer letiltja az üzembe helyezett szolgáltatásokat a számlázási időszak fennmaradó idejére.
 
-Például ha töltött az előfizetéséhez járó összes kreditet, Cloud Services telepített szolgáltatásai el lesznek távolítva éles és az Azure-beli virtuális gépek le lesznek állítva és fel lesznek szabadítva. Az adatok a storage-fiókok csak olvasható módon érhetők el.
+Ha például elkölti az előfizetésével járó összes kreditet, akkor a rendszer eltávolítja az üzembe helyezett Azure-erőforrásokat az éles környezetből, valamint leállítja és felszabadítja az Azure-beli virtuális gépeket. A tárfiókokban lévő adatok írásvédett formában érhetők el.
 
-A következő elszámolási időszak kezdetétől érvényesül, ha az előfizetési ajánlatok között a több hónapon átívelő krediteket tartalmaz az előfizetés szeretné újra engedélyezni automatikusan. Ezután ismételt üzembe helyezése a Cloud Services és a tárfiókok és adatbázisok teljes hozzáféréssel rendelkezik.
+Ha a következő számlázási időszak elején az előfizetési ajánlat több hónapra vonatkozó kredittel rendelkezik, akkor a rendszer automatikusan újraengedélyezi az előfizetést. Ezután újból üzembe helyezheti az Azure-erőforrásokat, és teljes hozzáféréssel fog rendelkezni a tárfiókokhoz és az adatbázisokhoz.
 
-Ha eléri a költségkeret az előfizetéshez tartozó e-mail-értesítéseket küldünk. Jelentkezzen be a [Account Center](https://account.windowsazure.com/Subscriptions), és láthatja, hogy túllépte a költségkeretét szóló értesítéseket.
+Az előfizetéshez tartozó költségkeret elérésekor az Azure e-mailes értesítést küld. A költségkeretet elérő előfizetésekkel kapcsolatos értesítések megtekintéséhez jelentkezzen be a [Fiókközpontba](https://account.windowsazure.com/Subscriptions).
 
-Ha rendelkezik egy ingyenes próbaverzióra, és a költségkeret elérése, [használatalapú fizetésre frissítési](billing-upgrade-azure-subscription.md) el kell távolítania a költségkeretet, és automatikusan újra engedélyezi az előfizetés.
+Ha ingyenes próba-előfizetéssel rendelkezik, és eléri a költségkeretet, akkor a költségkeret eltávolításához és az előfizetés automatikus engedélyezéséhez [használatalapú fizetéses](billing-upgrade-azure-subscription.md) díjszabású csomagra frissíthet.
 
 <a id="remove"></a>
 
-## <a name="remove-the-spending-limit-in-account-center"></a>A költségkeret eltávolítása az Account Center webhelyen
+## <a name="remove-the-spending-limit-in-account-center"></a>A költségkeret eltávolítása a Fiókközpontban
 
-A költségkeretet bármikor eltávolíthatja mindaddig, amíg van érvényes fizetési mód rendelve az előfizetéséhez. A több hónapon átívelő a krediteket tartalmazó ajánlatok emellett engedélyezheti újra a költségkeret a következő elszámolási időszak kezdetétől érvényesül.
+A költségkeretet bármikor eltávolíthatja mindaddig, amíg az Azure-előfizetéséhez érvényes fizetési mód van társítva. A több hónapnyi kreditet tartalmazó ajánlatok esetében a következő számlázási időszak elején is engedélyezheti a költségkeretet.
 
-Az alábbi lépéseket követve távolíthatja el a költségkeretet:
+A költségkeret eltávolításához kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be a [Fiókközpontban](https://account.windowsazure.com/Subscriptions).
-1. Válasszon egy előfizetést. Ha az előfizetés a költségkeret elérése miatt le van tiltva, kattintson erre az értesítésre: „Subscription reached the Spending Limit and has been disabled to prevent charges” (Az előfizetés a költségkeret túllépése miatt és a további díjak elkerülése végett le van tiltva.) szövegű értesítésre. Ellenkező esetben kattintson a **távolítsa el a költségkeretet** a a **ELŐFIZETÉS állapota** területen.
-1. Válasszon egy Önnek megfelelő lehetőséget.
+1. Jelentkezzen be a [Fiókközpontba](https://account.windowsazure.com/Subscriptions).
+1. Válasszon egy előfizetést. Ha az előfizetés a költségkeret elérése miatt le van tiltva, kattintson erre az értesítésre: **Az előfizetés elérte a költségkeretet, és a további díjak elkerülése érdekében le lett tiltva.** Egyéb esetben kattintson a **Költségkeret eltávolítása** elemre az **ELŐFIZETÉS ÁLLAPOTA** területen.
+1. Válassza ki az Önnek megfelelő lehetőséget.
 
-![A költségkeret eltávolítása a megfelelő beállítás kiválasztása](./media/billing-spending-limit/remove-spending-limit.PNG)
+![A költségkeret eltávolítására szolgáló lehetőség kiválasztása](./media/billing-spending-limit/remove-spending-limit.PNG)
 
-|Beállítás|Következmény|
-|-------|-----|
-|A költségkeret eltávolítása meghatározatlan időre|A költségkeret eltávolítása oly módon, hogy az nem kapcsolódik vissza automatikusan a következő elszámolási időszak kezdetén.|
-|A költségkeret eltávolítása az adott elszámolási időszakban|A költségkeret eltávolítása oly módon, hogy a következő elszámolási időszak kezdetén automatikusan visszakapcsolódik.|
+| Beállítás | Hatás |
+| --- | --- |
+| A költségkeret eltávolítása határozatlan időre | Úgy távolítja el a költségkeretet, hogy az a következő számlázási időszak kezdetekor nem kapcsol be automatikusan. |
+| A költségkeret eltávolítása az aktuális számlázási időszakra | Úgy távolítja el a költségkeretet, hogy az a következő számlázási időszak kezdetekor automatikusan bekapcsol. |
 
-## <a name="frequently-asked-questions"></a>Gyakori kérdések
+## <a name="why-you-might-want-to-remove-the-spending-limit"></a>A költségkeret eltávolításának lehetséges okai
 
-### <a name="why-would-i-want-to-remove-the-spending-limit"></a>Miért érdemes a költségkeretet eltávolítani?
+A költségkeret megakadályozhatja bizonyos külső vagy Microsoft-szolgáltatások üzembe helyezését vagy használatát. A következő helyzetekben érdemes eltávolítania az előfizetéséhez tartozó költségkeretet.
 
-A költségkeret megakadályozhatja, hogy telepítését vagy bizonyos külső és a Microsoft-szolgáltatások használatával. A következő szituációkban javasolt a költségkeret eltávolítása az előfizetésből.
+-  Belső rendszerképeket (például Oracle) vagy szolgáltatásokat (például Azure DevOps Services) szeretne üzembe helyezni. Ez a helyzet a költségkeret szinte azonnali átlépéséhez és az előfizetés letiltásához vezet.
+- Olyan szolgáltatásokkal rendelkezik, amelyek megszakadását szeretné elkerülni.
+- Olyan szolgáltatásokkal és erőforrásokkal rendelkezik, amelyek beállításait (például virtuális IP-címek) nem szeretné elveszíteni. A szolgáltatások és erőforrások felszabadításakor ezek a beállítások elvesznek.
 
-* Belső rendszerképeket például az Oracle és olyan szolgáltatásokat, például az Azure DevOps-szolgáltatások telepítését tervezi. Ez a forgatókönyv hatására szinte azonnal túllépi a költségkeretet, és hatására az előfizetés le kell tiltani.
-* Olyan szolgáltatásai vannak, amelyek működése nem szakadhat meg.
-* Olyan szolgáltatásokkal és erőforrásokkal rendelkezik, amelyeknek beállításait – például a virtuális IP-címeket – nem szeretné elveszteni. Ezek a beállítások elvesznek, ha a szolgáltatások és erőforrások szüntethető.
+## <a name="turn-on-the-spending-limit-after-removing"></a>A költségkeret bekapcsolása eltávolítás után
 
-### <a name="how-do-i-turn-on-the-spending-limit-after-removing-it"></a>Hogyan bekapcsolja a költségkeret eltávolítása után?
+Ez a funkció csak a költségkeret határozatlan időre történő eltávolítása esetén érhető el. Módosítsa úgy, hogy automatikusan bekapcsoljon a következő számlázási időszak kezdetekor.
 
-Ez a funkció csak a költségkeret határozatlan időre el lett távolítva esetén érhető el. Módosítsa a következő elszámolási időszak elején automatikusan bekapcsolása.
+1. Jelentkezzen be a [Fiókközpontba](https://account.windowsazure.com/Subscriptions).
+1. A költségkeret beállításának módosításához kattintson a sárga szalagra.
+1. Válassza **A költségkeret bekapcsolása a következő számlázási időszakban \<számlázási időszak kezdési dátuma\>** lehetőséget.
 
-1. Jelentkezzen be a [Fiókközpontban](https://account.windowsazure.com/Subscriptions).
-1. Kattintson a sárga szalagcímre módosítása a költési korlát lehetőséget.
-1. Válasszon **kapcsolja be a költségkeret a következő elszámolási időszakban \<számlázási időszak kezdete\>**
-
-### <a name="how-do-i-set-a-custom-spending-limit"></a>Hogyan állíthatok be egyéni költségkeret?
+## <a name="custom-spending-limit"></a>Egyéni költségkeret
 
 Egyéni költségkeretek nem érhetők el.
 
-### <a name="does-the-spending-limit-prevent-all-charges-from-azure"></a>Akadályozza meg a költségkeretet minden költséget az Azure-ból?
+## <a name="a-spending-limit-doesnt-prevent-all-charges"></a>A költségkerettel nem kerülhető el minden költség
 
-[Az Azure Marketplace-en közzétett néhány külső szolgáltatások](billing-understand-your-azure-marketplace-charges.md) előfizetési kreditek nem használhatók, és képes külön díjat számolunk akkor is, ha a költségkeret van beállítva. Ilyenek például a Visual Studio-licencek, a Azure Active Directory premium, a támogatási csomagok és a legtöbb harmadik féltől származó szolgáltatások. Amikor üzembe helyezi az új külső szolgáltatás, figyelmeztetés, hogy tudja, a szolgáltatások számlázása külön-külön jelenik meg:
+[Az Azure Marketplace-en közzétett egyes külső szolgáltatások](billing-understand-your-azure-marketplace-charges.md) esetén nem használhatja az előfizetésével járó krediteket, és külön költségek jelentkeznek még akkor is, ha költségkeretet állított be. Ilyenek például a Visual Studio-licencek, a prémium szintű Azure Active Directory, a támogatási csomagok és a legtöbb külső szolgáltatás. Új külső szolgáltatás üzembe helyezésekor megjelenik egy figyelmeztetés, amely arról tájékoztatja, hogy a szolgáltatások számlázása külön történik:
 
-![Marketplace-en beszerzési figyelmeztetés](./media/billing-understand-your-azure-marketplace-charges/marketplace-warning.PNG)
+![Marketplace vásárlási figyelmeztetése](./media/billing-understand-your-azure-marketplace-charges/marketplace-warning.PNG)
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
+
+## <a name="next-steps"></a>További lépések
+- Frissítsen egy [használatalapú fizetéses](billing-upgrade-azure-subscription.md) díjszabású csomagra.

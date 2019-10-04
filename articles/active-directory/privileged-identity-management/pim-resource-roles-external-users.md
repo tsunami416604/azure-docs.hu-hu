@@ -1,9 +1,9 @@
 ---
-title: Vendégek meghívása, és rendelje hozzá a PIM - Azure Active Directory Azure-erőforrások szerepköreihez |} A Microsoft Docs
-description: Ismerje meg, hogyan külső vendégfelhasználók meghívása és az Azure-erőforrás szerepkörök hozzárendelése az Azure AD Privileged Identity Management (PIM).
+title: Vendégek meghívása és Azure-beli erőforrás-szerepkörök kiosztása a PIM-Azure Active Directoryban | Microsoft Docs
+description: Ismerje meg, hogyan hívhat meg külső vendég felhasználókat, és hogyan rendelhet hozzá Azure-beli erőforrás-szerepköröket Azure AD Privileged Identity Management (PIM) szolgáltatásban.
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 ms.service: active-directory
 ms.devlang: na
@@ -12,160 +12,160 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
 ms.date: 04/09/2019
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5846d2bd85a382b8e2aee539af405518e9fb221
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: f3e01b58a2a2fc6f93ae5ccc15e200a0cea69a0c
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59493093"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804216"
 ---
-# <a name="invite-guest-users-and-assign-azure-resource-roles-in-pim"></a>Vendégfelhasználók meghívása és az Azure-erőforrás szerepköröket a PIM
+# <a name="invite-guest-users-and-assign-azure-resource-roles-in-pim"></a>Vendég felhasználók meghívása és Azure-erőforrás-szerepkörök kiosztása a PIM-ben
 
-Az Azure Active Directory (Azure AD)--vállalatközi (B2B) képességeket, amely lehetővé teszi a szervezetek működhet együtt a külső vendégfelhasználóknak (vendég) és a szállítók minden olyan fiók használatával az Azure AD-n belül. Ha kombinálja az Azure AD Privileged Identity Management (PIM) B2B, folytathatja a megfelelőségi és szabályozási követelmények vonatkoznak a vendégek. Például használhatja ezeket a PIM-funkciókat az Azure-identitás feladatokat a vendégek:
+A Azure Active Directory (Azure AD) vállalatok közötti (B2B) funkciók az Azure AD-n belül olyan képességek, amelyek lehetővé teszik a szervezetek számára, hogy bármely fiók használatával működjenek együtt a külső vendég felhasználókkal (vendégekkel) és a szállítókkal. Ha Azure AD Privileged Identity Management (PIM) használatával kombinálja a B2B-t, továbbra is alkalmazhatja a megfelelőségi és irányítási követelményeket a vendégek számára. Használhatja például a következő PIM-funkciókat az Azure Identity-feladatokhoz a vendégekkel:
 
-- Adott Azure-erőforrásokhoz való hozzáférés hozzárendelése
-- Igény szerinti elérésének engedélyezése
-- Adja meg a hozzárendelés időtartam és a záró dátum
-- Többtényezős hitelesítés megkövetelése aktív hozzárendeléskor vagy az aktiválás
-- Hajtsa végre a hozzáférési felülvizsgálatok
-- Riasztások, és a naplók
+- Hozzáférés kiosztása adott Azure-erőforrásokhoz
+- Igény szerinti hozzáférés engedélyezése
+- Hozzárendelés időtartamának és befejezési dátumának megadása
+- MFA megkövetelése aktív hozzárendelés vagy aktiválás esetén
+- Hozzáférési felülvizsgálatok végrehajtása
+- Riasztások és naplófájlok kihasználása
 
-Ez a cikk ismerteti a szervezet számára Vendég meghívása és a Privileged Identity Management használata Azure-erőforrásokhoz való hozzáférés kezelése.
+Ez a cikk bemutatja, hogyan hívhat meg egy vendéget a szervezet számára, és hogyan kezelheti az Azure-erőforrásokhoz való hozzáférését Privileged Identity Management használatával.
 
-## <a name="when-would-you-invite-guests"></a>Ha szeretné meghívni vendégek?
+## <a name="when-would-you-invite-guests"></a>Mikor hívja meg a vendégeket?
 
-Ha a szervezet számára, előfordulhat, hogy meghívhatnak vendégeket az alábbiakban néhány példaforgatókönyvek:
+Íme néhány példa arra, hogy mikor hívhatja meg a szervezet vendégeit:
 
-- Lehetővé teszi egy külső önálló szállító, amely csak a projekt az Azure-erőforrások eléréséhez e-mail fiókja van.
-- Egy külső partner egy nagy szervezet, amely a helyszíni Active Directory összevonási szolgáltatások használja a költségek alkalmazáshoz való hozzáférés engedélyezése.
-- Lehetővé teszi a támogatási szakértők nem a szervezetben (például a Microsoft támogatási) kapcsolatos problémák elhárítása az Azure-erőforrás átmenetileg el.
+- A projekthez tartozó Azure-erőforrásokhoz való hozzáféréshez csak egy e-mail-fiókkal rendelkező külső önálló szolgáltató engedélyezése.
+- Külső partner engedélyezése egy olyan nagyvállalatnál, amely helyszíni Active Directory összevonási szolgáltatások (AD FS) használatával fér hozzá a költségelszámolás alkalmazásához.
+- Lehetővé teszi, hogy a szervezeten kívüli támogatási mérnökök (például a Microsoft támogatási szolgálata) átmenetileg hozzáférjenek az Azure-erőforráshoz a hibák elhárítása érdekében.
 
-## <a name="how-does-collaboration-using-b2b-guests-work"></a>Hogyan történik az együttműködés B2B használatával vendégek munkahelyi?
+## <a name="how-does-collaboration-using-b2b-guests-work"></a>Hogyan működik a B2B-vendégeket használó együttműködés?
 
-B2B-együttműködés használata esetén meghívhatja egy külső felhasználót vendégként a szervezet számára. A Vendég úgy tűnik, hogy a szervezetben, de a vendég nem rendelkezik a hozzá társított hitelesítő adatokat. Amikor egy Vendég hitelesítését, hitelesíteniük kell a szervezet és a szervezet nem az. Ez azt jelenti, hogy ha a Vendég már nem rendelkezik hozzáféréssel a saját szervezet, azokat is elveszíti a hozzáférést a szervezet számára. Például ha a Vendég a szervezetből kilépő, azok automatikusan férhet hozzá, akkor megosztott erőforrások velük az Azure AD-ban anélkül, hogy bármi egyebet kellene. B2B kapcsolatos további információkért lásd: [Mi az az Azure Active Directory B2B vendégfelhasználói hozzáférés?](../b2b/what-is-b2b.md).
+Ha B2B-együttműködést használ, egy külső felhasználót is meghívhat vendégként a szervezet számára. A vendég úgy tűnik, hogy a szervezetében van, de a vendégnek nincs hitelesítő adata társítva. Ha egy vendég hitelesítése szükséges, akkor azokat hitelesíteni kell a saját szervezetében, és nem a cégen belül. Ez azt jelenti, hogy ha a vendég már nem fér hozzá a saját szervezetéhez, akkor is elveszti a hozzáférést a szervezethez. Ha például a vendég elhagyja a szervezetét, automatikusan elveszíti az Azure AD-vel megosztott összes erőforráshoz való hozzáférést anélkül, hogy bármit el kellene végeznie. További információ a B2B-ről: [Mi a vendég felhasználói hozzáférés Azure Active Directory B2B-ben?](../b2b/what-is-b2b.md).
 
-![B2B és Vendég](./media/pim-resource-roles-external-users/b2b-external-user.png)
+![Azt bemutató ábra, hogy a vendég felhasználó hogyan jelenik meg a címtárban, de a saját címtárában van hitelesítve](./media/pim-resource-roles-external-users/b2b-external-user.png)
 
-## <a name="check-guest-collaboration-settings"></a>Vendég együttműködési beállítások ellenőrzése
+## <a name="check-guest-collaboration-settings"></a>Vendég együttműködési beállítások keresése
 
-Ahhoz, hogy is meghívhatnak vendégeket a szervezetbe, ellenőrizni kell a Vendég együttműködési beállítások.
+Győződjön meg arról, hogy meg tudja hívni a vendégeket a szervezetbe, ellenőrizze a vendég együttműködési beállításait.
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
-1. Kattintson a **Azure Active Directory** > **felhasználói beállítások**.
+1. Kattintson **Azure Active Directory** > **felhasználói beállítások**elemre.
 
-1. Kattintson a **külső együttműködési beállítások kezelése**.
+1. Kattintson a **külső együttműködési beállítások kezelése**lehetőségre.
 
-    ![Külső együttműködési beállítások](./media/pim-resource-roles-external-users/external-collaboration-settings.png)
+    ![Külső csoportmunka-beállítások lap, amely az engedélyek, a meghívás és az együttműködés korlátozására vonatkozó beállításokat jeleníti meg](./media/pim-resource-roles-external-users/external-collaboration-settings.png)
 
-1. Győződjön meg arról, hogy a **rendszergazdák és a vendégmeghívó szerepkörű felhasználók küldhetnek meghívót** kapcsoló értéke **Igen**.
+1. Győződjön meg arról, hogy a **vendég meghívó szerepkörben található rendszergazdák és felhasználók meghívhatják** a kapcsolót **Igen**értékre.
 
-## <a name="invite-a-guest-and-assign-a-role"></a>Vendég meghívása és a egy szerepkör hozzárendelése
+## <a name="invite-a-guest-and-assign-a-role"></a>Vendég meghívása és szerepkör kiosztása
 
-A PIM használata esetén Vendég meghívása, és győződjön meg az Azure-erőforrás szerepkörhöz hasonlóan a tag felhasználó jogosult.
+Ha a PIM-t használja, meghívhat egy vendéget, és jogosult lehet egy Azure-beli erőforrás-szerepkörre, ugyanúgy, mint a tag felhasználó.
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) egy felhasználóval, amely tagja a [kiemelt szerepkörű rendszergazda](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) vagy [felhasználói rendszergazdája](../users-groups-roles/directory-assign-admin-roles.md#user-administrator) szerepkör.
+1. Jelentkezzen be [Azure Portal](https://portal.azure.com/) egy olyan felhasználóval, aki tagja a [Kiemelt szerepkörű rendszergazda](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) vagy a [felhasználói rendszergazda](../users-groups-roles/directory-assign-admin-roles.md#user-administrator) szerepkörnek.
 
-1. Nyissa meg **az Azure AD Privileged Identity Management**.
+1. Nyissa meg **Azure ad Privileged Identity Management**.
 
-1. Kattintson a **Azure-erőforrások**.
+1. Kattintson az **Azure-erőforrások**elemre.
 
-1. Használja a **Erőforrásszűrő** a felügyelt erőforrások szűréséhez.
+1. Az **Erőforrás-szűrő** használatával szűrheti a felügyelt erőforrások listáját.
 
-1. Kattintson az erőforrás szeretne felügyelni, mint például egy erőforrást, erőforráscsoport, előfizetés vagy a felügyeleti csoport.
+1. Kattintson a kezelni kívánt erőforrásra, például egy erőforrásra, egy erőforráscsoport, egy előfizetés vagy egy felügyeleti csoportra.
 
-    A hatókör csak szüksége van a Vendég milyen kell beállítania.
+    A hatókört csak a vendég igényeinek megfelelően állítsa be.
 
-1. Kattintson a kezelés, **szerepkörök** szerepkörök az Azure-erőforrások listájának megtekintéséhez.
+1. A kezelés alatt kattintson a **szerepkörök** elemre az Azure-erőforrások szerepköreinek megjelenítéséhez.
 
-    ![Azure-erőforrások szerepkörök](./media/pim-resource-roles-external-users/resources-roles.png)
+    ![Az aktív és jogosult felhasználók számát mutató Azure-erőforrások szerepköreinek listája](./media/pim-resource-roles-external-users/resources-roles.png)
 
-1. Kattintson a minimális szerepkör, amely a felhasználónak lesz szüksége.
+1. Kattintson a felhasználó által igényelt minimális szerepkörre.
 
-    ![A kijelölt szerepkör](./media/pim-resource-roles-external-users/selected-role.png)
+    ![A szerepkör aktuális tagjait felsoroló kiválasztott szerepkör lap](./media/pim-resource-roles-external-users/selected-role.png)
 
-1. A szerepkör lapján kattintson a **tag hozzáadása** az új hozzárendelés panel megnyitásához.
+1. A szerepkör lapon kattintson a **tag hozzáadása** elemre az új hozzárendelés ablaktábla megnyitásához.
 
-1. Kattintson a **tag vagy csoport kijelölése**.
+1. Kattintson **a tag vagy csoport kiválasztása**elemre.
 
-    ![Tag vagy csoport kijelölése](./media/pim-resource-roles-external-users/select-member-group.png)
+    ![Új hozzárendelés – válasszon ki egy tag vagy csoport ablaktáblát, amely felsorolja a felhasználókat és a csoportokat, valamint egy Meghívási lehetőséget.](./media/pim-resource-roles-external-users/select-member-group.png)
 
-1. Vendég meghívása, kattintson a **meghívása**.
+1. Vendég meghívásához kattintson a **meghívás**elemre.
 
-    ![Vendég meghívása](./media/pim-resource-roles-external-users/invite-guest.png)
+    ![Vendég oldal meghívása e-mail-cím megadásához és személyes üzenet megadásához](./media/pim-resource-roles-external-users/invite-guest.png)
 
-1. Miután kiválasztotta a Vendég, kattintson a **meghívása**.
+1. A vendég kiválasztása után kattintson a **meghívás**elemre.
 
-    A Vendég kiválasztott tagként hozzá kell adni.
+    A vendéget kijelölt tagként kell hozzáadni.
 
-1. Az a **tag vagy csoport kijelölése** ablaktáblán kattintson a **kiválasztása**.
+1. A **tag vagy csoport kiválasztása** ablaktáblán kattintson a **kiválasztás**elemre.
 
-1. Az a **tagsági beállítások** ablaktáblán válassza ki a hozzárendelés típusa és időtartama.
+1. A **tagsági beállítások** ablaktáblán válassza ki a hozzárendelés típusát és időtartamát.
 
-    ![Tagsági beállítások](./media/pim-resource-roles-external-users/membership-settings.png)
+    ![Új hozzárendelés – tagsági beállítások lap a hozzárendelési típus, a kezdő dátum és a befejezési dátum megadására szolgáló beállításokkal](./media/pim-resource-roles-external-users/membership-settings.png)
 
-1. A hozzárendelés befejezéséhez kattintson a **kész** , majd **Hozzáadás**.
+1. A hozzárendelés befejezéséhez kattintson a **kész** , majd a **Hozzáadás**elemre.
 
-    A Vendég szerepkör-hozzárendelés megjelenik a szerepkör-listában.
+    A vendég szerepkör-hozzárendelés megjelenik a szerepkör listájában.
 
-    ![Vendég szerepkör-hozzárendelés](./media/pim-resource-roles-external-users/role-assignment.png)
+    ![A szerepkör lap jogosultként tartalmazza a vendéget](./media/pim-resource-roles-external-users/role-assignment.png)
 
-## <a name="activate-role-as-a-guest"></a>Vendégként a szerepkör aktiválása
+## <a name="activate-role-as-a-guest"></a>Szerepkör aktiválása vendégként
 
-Külső felhasználóként akkor először fogadja az Azure AD-szervezet, valószínűleg a a szerepkör aktiválásához.
+Külső felhasználóként először el kell fogadnia a meghívást az Azure AD-szervezet számára, és esetleg aktiválni kell a szerepkört.
 
-1. Nyissa meg az e-mailt a meghívást. Az e-mailt az alábbihoz hasonlóan fog kinézni.
+1. Nyissa meg az e-mailt a meghívóval. Az e-mail a következőhöz hasonlóan fog kinézni.
 
-    ![E-mailes meghívó](./media/pim-resource-roles-external-users/email-invite.png)
+    ![E-mail meghívása a címtár nevével, személyes üzenettel és az első lépések hivatkozással](./media/pim-resource-roles-external-users/email-invite.png)
 
-1. Kattintson a **Ismerkedés** az e-mailben lévő hivatkozásra.
+1. Kattintson az **első lépések** hivatkozásra az e-mailben.
 
-1. Az engedélyek áttekintése után kattintson **elfogadás**.
+1. Az engedélyek áttekintése után kattintson az **elfogadás**gombra.
 
-    ![Engedélyek felülvizsgálata](./media/pim-resource-roles-external-users/invite-accept.png)
+    ![Tekintse át az engedélyek lapot egy böngészőben azon engedélyek listájával, amelyeket a szervezet szeretne áttekinteni](./media/pim-resource-roles-external-users/invite-accept.png)
 
-1. Előfordulhat, hogy megkérdezi, hogy fogadja el a használati feltételeket, és adja meg, hogy szeretné-e bejelentkezve marad.
+1. Előfordulhat, hogy a rendszer felszólítja a használati feltételek elfogadására, és megadja, hogy szeretne-e bejelentkezni.
 
-    Megnyílik az Azure Portalon. Ha Ön csak jogosult szerepkör, akkor nem kell erőforrásokhoz való hozzáférés.
+    Megnyílik a Azure Portal. Ha csak egy szerepkörre jogosult, nem férhet hozzá az erőforrásokhoz.
 
-1. A szerepkör aktiválásához nyissa meg az e-mailt a hivatkozás a szerepkör aktiválása. Az e-mailt az alábbihoz hasonlóan fog kinézni.
+1. A szerepkör aktiválásához nyissa meg az e-mailt az aktiválási szerepkör hivatkozásával. Az e-mail a következőhöz hasonlóan fog kinézni.
 
-    ![E-mailes meghívó](./media/pim-resource-roles-external-users/email-role-assignment.png)
+    ![A PIM-ből származó e-mail-üzenet, amely azt jelzi, hogy jogosult a szerepkör aktiválása szerepkörre hivatkozással.](./media/pim-resource-roles-external-users/email-role-assignment.png)
 
-1. Kattintson a **szerepkör aktiválása** a jogosult szerepkörök az PIM-ben lehetőségre.
+1. Kattintson a **szerepkör aktiválása** elemre, hogy megnyissa a jogosult szerepköröket a PIM-ben.
 
-    ![Saját szerepkörök - jogosult](./media/pim-resource-roles-external-users/my-roles-eligible.png)
+    ![A PIM saját szerepkörök lapja, amely felsorolja a jogosult szerepköröket](./media/pim-resource-roles-external-users/my-roles-eligible.png)
 
-1. Művelet alatt kattintson a **aktiválás** hivatkozásra.
+1. A művelet területen kattintson az **aktiválás** hivatkozásra.
 
-    A szerepkör-beállítások attól függően kell adjon meg néhány információt a szerepkör aktiválását.
+    A szerepkör beállításaitól függően meg kell adnia néhány információt a szerepkör aktiválásához.
 
-1. Miután megadta a beállításokat a szerepkörhöz, kattintson a **aktiválás** a szerepkör aktiválását.
+1. Miután megadta a szerepkör beállításait, kattintson az **aktiválás** gombra a szerepkör aktiválásához.
 
-    ![Szerepkör aktiválása](./media/pim-resource-roles-external-users/activate-role.png)
+    ![Az oldal-lista hatókörének és beállításainak aktiválása a kezdési idő, az időtartam és az OK megadásához](./media/pim-resource-roles-external-users/activate-role.png)
 
-    A rendszergazdának kell jóváhagynia a kérést, hacsak kell erőforrásokhoz való hozzáférést.
+    Ha a rendszergazda nem szükséges a kérelem jóváhagyásához, hozzáféréssel kell rendelkeznie a megadott erőforrásokhoz.
 
-## <a name="view-activity-for-a-guest"></a>A Vendég tevékenységek megtekintése
+## <a name="view-activity-for-a-guest"></a>Vendég tevékenységének megtekintése
 
-Csakúgy, mint a tag felhasználó megtekintheti a vendégek mire nyomon követheti, hogy a naplók.
+A felhasználókhoz hasonlóan a naplók is megtekinthetők, hogy nyomon kövessék, mit csinálnak a vendégek.
 
-1. Rendszergazdaként nyissa meg a PIM, és válassza ki az erőforrást, amely meg van osztva.
+1. Rendszergazdaként nyissa meg a PIM-t, és válassza ki a megosztott erőforrást.
 
-1. Kattintson a **erőforrás naplózása** az a tevékenység az adott erőforráshoz. Az alábbiakban látható egy példa a tevékenység egy erőforráscsoporthoz.
+1. Az erőforrás tevékenységének megtekintéséhez kattintson az **erőforrás-naplózás** elemre. Az alábbi példa egy erőforráscsoport tevékenységére mutat példát.
 
-    ![Erőforrás naplózása](./media/pim-resource-roles-external-users/audit-resource.png)
+    ![Azure-erőforrások – erőforrás-naplózási oldal, amely az idő, a kérelmező és a művelet listáját tartalmazza](./media/pim-resource-roles-external-users/audit-resource.png)
 
-1. A Vendég a tevékenység megtekintéséhez kattintson **Azure Active Directory** > **felhasználók** > Vendég neve.
+1. A vendég tevékenységének megtekintéséhez kattintson **Azure Active Directory** > **felhasználók** > vendég neve elemre.
 
-1. Kattintson a **Auditnaplók** a szervezet számára a naplók megtekintéséhez. Ha szükséges, a szűrők is megadhat.
+1. Kattintson a **naplók** elemre a szervezet naplófájljainak megtekintéséhez. Szükség esetén szűrők megadására is lehetőség van.
 
-    ![szervezet naplózása](./media/pim-resource-roles-external-users/audit-directory.png)
+    ![Címtár-naplózási naplók listázási dátuma, cél, kezdeményező és tevékenység](./media/pim-resource-roles-external-users/audit-directory.png)
 
 ## <a name="next-steps"></a>További lépések
 
-- [A PIM az Azure AD-rendszergazdai szerepkörök hozzárendelése](pim-how-to-add-role-to-user.md)
-- [Mi az az Azure Active Directory B2B vendégfelhasználói hozzáférés?](../b2b/what-is-b2b.md)
+- [Azure AD-rendszergazdai szerepkörök kiosztása a PIM-ben](pim-how-to-add-role-to-user.md)
+- [Mi a vendég felhasználói hozzáférés a Azure Active Directory B2B-ben?](../b2b/what-is-b2b.md)

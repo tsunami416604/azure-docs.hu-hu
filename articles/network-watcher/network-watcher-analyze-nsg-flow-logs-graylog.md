@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: mareat
 ms.openlocfilehash: a5fadcfce154740a79a8764f44f08b21ad18f4d8
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57879939"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60625204"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Kezelheti és elemezheti a hálózati biztonsági csoport folyamatnaplóit az Azure Network Watcher és a Graylog használatával
 
@@ -56,7 +56,7 @@ Graylog platform és beállítások függően többféleképpen is telepíthető
 
 -  Java használata 8 vagy újabb – [Azul Azure JDK-dokumentáció](https://aka.ms/azure-jdks)
 -  Rugalmas keresés 2.x (2.1.0 vagy újabb) – [Elasticsearch-dokumentáció](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/_installation.html)
--  2.4-es vagy újabb – MongoDB [MongoDB-dokumentáció](https://docs.mongodb.com/manual/administration/install-on-linux/)
+-  2\.4-es vagy újabb – MongoDB [MongoDB-dokumentáció](https://docs.mongodb.com/manual/administration/install-on-linux/)
 
 ### <a name="install-logstash"></a>A Logstash telepítéséhez
 

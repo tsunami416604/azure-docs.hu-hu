@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: danlep
-ms.openlocfilehash: 78136a081e52ef3f12d672d01449ce616534462e
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: da94a4c79694f511d41e5c8dda8c786fc7049726
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011010"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64569634"
 ---
 # <a name="set-the-command-line-in-a-container-instance-to-override-the-default-command-line-operation"></a>A parancssor tárolópéldány felülbírálhatja az alapértelmezett parancssor művelet beállítása
 
@@ -24,7 +24,15 @@ A beállítás, például [környezeti változók](container-instances-environme
 
 * Alapértelmezés szerint a parancssorban megadja egy *egyszeri folyamat, amelyet egy felület nélkül indítja el* a tárolóban. Például a parancssor futhat egy Python-szkript vagy végrehajtható fájlt. 
 
-* Hajtsa végre a több parancsokat, megkezdheti a parancssori rendszerhéj-környezetet az operációs rendszer beállításával (példák: `bin/sh`, `/bin/bash`, `cmd`). Az konvencióinak a rendszerhéj úgy, hogy több parancsok sorrendben lefutnak.
+* Több parancs végrehajtásához először a parancssorban a rendszerhéj-környezetet, amely a tároló operációs rendszerben támogatott beállítás. Példák:
+
+  |Operációs rendszer  |Alapértelmezett rendszerhéját  |
+  |---------|---------|
+  |Ubuntu     |   `/bin/bash`      |
+  |Az Alpine     |   `/bin/sh`      |
+  |Windows     |    `cmd`     |
+
+  Az konvencióinak a rendszerhéj úgy, hogy több parancsok sorrendben lefutnak.
 
 * A tároló konfigurációjától függően szükség lehet beállítani egy parancssori végrehajtható fájl teljes elérési útja nebo argumenty obsahují.
 

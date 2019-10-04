@@ -1,19 +1,19 @@
 ---
-title: Metrikák riasztások konfigurálása az Azure Database for postgresql-hez az Azure Portalon
-description: Ez a cikk ismerteti konfigurálása és a hozzáférési metrikákhoz kapcsolódó riasztások az Azure Database for postgresql-hez az Azure Portalról.
+title: Metrikák riasztások konfigurálása az Azure Database for PostgreSQL – egyetlen kiszolgáló az Azure Portalon
+description: Ez a cikk ismerteti konfigurálása és a hozzáférési metrikákhoz kapcsolódó riasztások az Azure Database for PostgreSQL – egyetlen kiszolgáló az Azure Portalról.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/11/2019
-ms.openlocfilehash: 7211ffddf82b38ca27b776ecfd12bca25ebbb0f6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 5/6/2019
+ms.openlocfilehash: 000dfe2d3e594c71f9c7ebbff7bce7141243668a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58121944"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65067297"
 ---
-# <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql"></a>Riasztásokat állíthat be mérőszámok az Azure Database for postgresql-hez az Azure portal használatával 
+# <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---single-server"></a>Riasztásokat állíthat be mérőszámok az Azure Database for PostgreSQL – egyetlen kiszolgáló az Azure portal használatával
 
 Ez a cikk bemutatja, hogyan állítható be Azure Database for PostgreSQL riasztások az Azure portal használatával. A metrikák az Azure-szolgáltatások monitorozása alapján riasztást kaphat.
 

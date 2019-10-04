@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
-ms.author: zhiweiw
+ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbdeef7c591221756ad206bf2f3dd78ac3d26c4f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b1fd5f9746299d72ed58a3209013822505b19b56
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57885317"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67702555"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>Diagnosztizálásához és elhárításához a duplikált attribútummal szinkronizálási hibák
 
@@ -67,11 +67,11 @@ Kövesse a lépéseket leszűkíteni a szinkronizálási hiba részletes adatait
 Az Azure Portalról lépéseket néhány meghatározott kezelhető helyzetek azonosításához:  
 1.  Ellenőrizze a **állapotának diagnosztizálása** oszlop. Az állapot mutatja, hogy van-e egy lehetséges megoldást az egy szinkronizálási hiba közvetlenül az Azure Active Directoryból. Más szóval a hibaelhárítási folyamat, amely létezik is a hibaesetét szűkítéséhez és potenciálisan javítást.
 
-| status | Mit jelent? |
+| Állapot | Mit jelent? |
 | ------------------ | -----------------|
-| Nincs elindítva | A diagnosztikai folyamat még nem járt. A diagnosztikai eredményei függően egy lehetséges megoldást az közvetlenül a portálról a szinkronizálási hiba van. |
+| Nem indult el | A diagnosztikai folyamat még nem járt. A diagnosztikai eredményei függően egy lehetséges megoldást az közvetlenül a portálról a szinkronizálási hiba van. |
 | Manuális javítás szükséges | A hiba nem fér el a feltételeket a portálon elérhető javításokat. Mindkét ütköző típusú objektumokat nem a felhasználók, vagy már a diagnosztikai lépések végrehajtása, és a javítás megoldás nem érhető el a portálról. Az utóbbi esetben a javítás, ahonnan a helyszíni még mindig megoldás egyikét. [Tudjon meg többet a helyszíni javításokat](https://support.microsoft.com/help/2647098). | 
-| Folyamatban lévő szinkronizálás | Egy javítást alkalmaztak. A portál vár, hogy törölje a hiba a következő szinkronizálási ciklus. |
+| Szinkronizálás folyamatban | Egy javítást alkalmaztak. A portál vár, hogy törölje a hiba a következő szinkronizálási ciklus. |
 
   >[!IMPORTANT]
   > A diagnosztikai állapot oszlop minden egyes szinkronizálási ciklust követően alaphelyzetbe állnak. 
@@ -108,7 +108,7 @@ Az a **árva objektumra mutat a forgatókönyv**, csak egyetlen felhasználó **
 Ezt a kérdést ellenőrzi egy bejövő ütköző felhasználót és a meglévő felhasználói objektum megjelenítéséhez, ha ugyanazon felhasználó tartoznak az Azure AD-ben.  
 1. Az ütköző objektumot az Azure Active Directoryban újonnan szinkronizálva van. Hasonlítsa össze az objektumok attribútumok:  
    - Megjelenítendő név
-   - Felhasználó egyszerű neve
+   - Egyszerű felhasználónév
    - Objektumazonosító
 2. Ha az Azure AD nem tudja őket összehasonlítani, ellenőrizze, hogy az Active Directory rendelkezik-e a megadott objektum **objektum megtalálható, nemmel**. Válasz **nem** Ha is talál.
 

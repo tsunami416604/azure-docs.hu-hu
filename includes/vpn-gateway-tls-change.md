@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 0377548a3b026657ae3282801523b1c0c6731265
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 2ed141847f923a847443d2293e850519357cdae2
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35236690"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179010"
 ---
-2018. július 1., kezdési támogatja a TLS 1.0 és 1.1 az Azure VPN Gateway távolít el. Csak a TLS 1.2-es VPN-átjáró támogatja. Csak a pont – hely kapcsolatok érintett; pont-pont kapcsolatok nem érinti. A TLS a Windows 10-ügyfelek pont-pont VPN-ek használata, nem kell tennie semmit. Ha pont – hely kapcsolatok a Windows 7 és Windows 8 rendszerű ügyfeleken TLS használ, tekintse meg a [VPN Gateway – gyakori kérdések](../articles/vpn-gateway/vpn-gateway-vpn-faq.md#P2S) frissítés utasításokat.
+2018. július 1-től az Azure VPN Gatewayből el lett távolítva a TLS 1.0 és 1.1 támogatása. Ettől kezdve az Azure VPN Gateway csak a TLS 1.2-es verzióját támogatja. Csak a pont – hely kapcsolatok érintett; hely – hely kapcsolatok érintetlenek maradnak. Ha TLS a Windows 10-ügyfelek a pont – hely VPN-ek használata esetén nem kell semmit sem. Ha pont – hely kapcsolatokhoz a Windows 7 és Windows 8 rendszerű ügyfelek TLS használ, tekintse meg a [VPN Gateway – gyakori kérdések](../articles/vpn-gateway/vpn-gateway-vpn-faq.md#P2S) update utasítások.

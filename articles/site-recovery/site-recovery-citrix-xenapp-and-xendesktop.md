@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ponatara
 ms.openlocfilehash: 68f12bb7335da0a996aeadd752f59db0aa360a8e
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310521"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61038233"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-citrix-xenapp-and-xendesktop-deployment"></a>egy többrétegű Citrix XenApp és xendesktop-példányok üzembe helyezés a vészhelyreállítás beállítása
 
@@ -45,7 +45,7 @@ A Citrix XenApp és xendesktop-példányok farm általában rendelkeznek a köve
 
 A Citrix XenApp és xendesktop-példányok üzembe helyezési AD DNS-kiszolgáló, SQL-adatbázis-kiszolgáló, Citrix kézbesítési vezérlő, StoreFront-kiszolgáló, XenApp Master (VDA), Citrix XenApp licenckiszolgáló
 
-![1. telepítési minta](./media/site-recovery-citrix-xenapp-and-xendesktop/citrix-deployment.png)
+![1\. telepítési minta](./media/site-recovery-citrix-xenapp-and-xendesktop/citrix-deployment.png)
 
 
 ## <a name="site-recovery-support"></a>Site Recovery támogatása
@@ -156,7 +156,7 @@ A testre szabott helyreállítási terv néz ki az alábbi:
    >[!NOTE]     
    >Csak egy helyszíni xenapp alkalmazandók, 4, 6, 7 manuális vagy parancsfájl műveleteket tartalmazó lépéseket > MCS/PVS katalógusok környezetet.
 
-4. 3. csoport kézi vagy parancsprogram-művelet: Állítsa le a fő VDA virtuális gép.
+4. 3\. csoport kézi vagy parancsprogram-művelet: Állítsa le a fő VDA virtuális gép.
 A fő VDA virtuális Gépet az Azure-ba irányuló feladatátvételkor futó állapotban lesz. Hozhat létre új MCS-katalógus használatával az Azure üzemeltetési, a fő VDA virtuális gép szükség lehet a Leállítva (de lefoglalt) állapot. Állítsa le a virtuális gép az Azure Portalról.
 
 5. Feladatátvételi 4: Alkalmazáskézbesítési vezérlőt és StoreFront-kiszolgáló virtuális gépek

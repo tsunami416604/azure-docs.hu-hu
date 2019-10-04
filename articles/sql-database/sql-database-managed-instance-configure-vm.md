@@ -10,16 +10,15 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, srbozovi, bonova
-manager: craigg
 ms.date: 02/18/2019
-ms.openlocfilehash: 59088ad53e923f1303c0e800df9c25f70e63812f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ddcac56671e145728f02d31bf23c657ea172e4c0
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59360496"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567661"
 ---
-# <a name="quickstart-configure-azure-vm-to-connect-to-an-azure-sql-database-managed-instance"></a>Gyors útmutató: Azure-beli virtuális gép csatlakozni egy Azure SQL Database felügyelt példányába konfigurálása
+# <a name="quickstart-configure-azure-vm-to-connect-to-an-azure-sql-database-managed-instance"></a>Gyors útmutató: Azure virtuális gép konfigurálása Azure SQL Database felügyelt példányhoz való kapcsolódáshoz
 
 Ez a rövid útmutató bemutatja, hogyan konfigurálhatja az Azure virtuális gép csatlakozni egy Azure SQL Database felügyelt példánya SQL Server Management Studio (SSMS) használatával. A rövid útmutató, amely egy pont – hely kapcsolattal a helyszíni ügyfélszámítógépről összekapcsolása, lásd: [pont – hely kapcsolat konfigurálása](sql-database-managed-instance-configure-p2s.md)
 
@@ -84,7 +83,7 @@ Az ügyfél virtuális gép létrehozása az összes szükséges eszközökkel l
    |**Jelszó**|Bármely érvényes jelszó|A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).<br>Használja ezt a jelszót, tetszőleges időpontban [csatlakozzon a virtuális Géphez](#connect-to-virtual-machine).|
    | **Virtuális gép mérete** | Bármely érvényes mérete | Ez a sablon az alapértelmezett **Standard_B2s** elegendő ehhez a gyors útmutatóhoz. |
    | **Hely**|[resourceGroup () .location].| Ez az érték nem módosítható. |
-   | **Virtuális hálózat neve**|A virtuális hálózat, amelyben létrehozta a felügyelt példányhoz.|
+   | **Virtuális hálózat neve**|Az a virtuális hálózat, amelyben létrehozta a felügyelt példányt.|
    | **Alhálózat neve**|Az alhálózatot, amelyet az előző eljárásban létrehozott neve| Ne válassza ki az alhálózatot, amelyben létrehozta a felügyelt példányhoz.|
    | **összetevők helye** | [.properties.templateLink.uri a központi telepítés ()] | Ez az érték nem módosítható. |
    | **összetevők hely Sas-jogkivonat** | Hagyja üresen | Ez az érték nem módosítható. |
@@ -98,7 +97,7 @@ Az ügyfél virtuális gép létrehozása az összes szükséges eszközökkel l
 5. Válassza ki a **értesítések** ikonra kattintva megtekintheti az üzembe helyezési állapotát.
 
 > [!IMPORTANT]
-> Ne folytassa a virtuális gép létrehozása az SQL Server Management Studio telepítése utáni létrehozási parancsfájlok ideje után körülbelül 15 perccel.
+> Ha a virtuális gép létrehozása után körülbelül 15 percet vesz igénybe, hogy időt adjon a létrehozás utáni parancsfájloknak SQL Server Management Studio telepítéséhez.
 
 ## <a name="connect-to-virtual-machine"></a>Csatlakozás virtuális géphez
 

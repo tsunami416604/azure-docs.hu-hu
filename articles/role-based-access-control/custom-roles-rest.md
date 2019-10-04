@@ -16,11 +16,11 @@ ms.date: 04/18/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 4024f6fdb40c752ef61f348d15f681e81d81c08c
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59999774"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60596679"
 ---
 # <a name="create-custom-roles-for-azure-resources-using-the-rest-api"></a>Az Azure-erőforrásokhoz a REST API-val egyéni szerepkörök létrehozása
 
@@ -54,11 +54,11 @@ Egyéni szerepkörök hatókörre listájában, használja a [szerepkör-definí
 
 1. Cserélje le az URI-belül *{hatókör}* a hatókörben, amelynek meg szeretné össze a szerepkörök listáját.
 
-    | Hatókör | Typo |
+    | Scope | Típus |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Előfizetés |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Erőforráscsoport |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Erőforrás |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
 
 1. Cserélje le *{szűrő}* szerepkör típusú.
 
@@ -78,11 +78,11 @@ Egyéni szerepkör kapcsolatos információkat a megjelenített név alapján, a
 
 1. Cserélje le az URI-belül *{hatókör}* a hatókörben, amelynek meg szeretné össze a szerepkörök listáját.
 
-    | Hatókör | Typo |
+    | Scope | Típus |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Előfizetés |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Erőforráscsoport |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Erőforrás |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
 
 1. Cserélje le *{szűrő}* a szerepkör megjelenített nevét.
 
@@ -104,11 +104,11 @@ Egyéni szerepkör adatainak lekérése az egyedi azonosítója alapján, haszn�
 
 1. Cserélje le az URI-belül *{hatókör}* a hatókörben, amelynek meg szeretné össze a szerepkörök listáját.
 
-    | Hatókör | Typo |
+    | Scope | Típus |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Előfizetés |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Erőforráscsoport |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Erőforrás |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
 
 1. Cserélje le *{roleDefinitionId}* a szerepkör-definíció GUID azonosítóját.
 
@@ -152,11 +152,11 @@ Egyéni szerepkör létrehozásához használja a [szerepkör-definíciók - lé
 
 1. Cserélje le az URI-belül *{hatókör}* – az első `assignableScopes` az egyéni szerepkör.
 
-    | Hatókör | Typo |
+    | Scope | Típus |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Előfizetés |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Erőforráscsoport |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Erőforrás |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
 
 1. Cserélje le *{roleDefinitionId}* az egyéni szerepkör GUID azonosítóval.
 
@@ -217,11 +217,11 @@ Egyéni szerepkör frissítéséhez használja a [szerepkör-definíciók – l�
 
 1. Cserélje le az URI-belül *{hatókör}* – az első `assignableScopes` az egyéni szerepkör.
 
-    | Hatókör | Typo |
+    | Scope | Típus |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Előfizetés |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Erőforráscsoport |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Erőforrás |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
 
 1. Cserélje le *{roleDefinitionId}* az egyéni szerepkör GUID azonosítóval.
 
@@ -301,11 +301,11 @@ Egyéni szerepkör törléséhez használja a [szerepkör-definíciók – Törl
 
 1. Cserélje le az URI-belül *{hatókör}* törli az egyéni szerepkör a hatókörrel rendelkező.
 
-    | Hatókör | Typo |
+    | Scope | Típus |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Előfizetés |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Erőforráscsoport |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Erőforrás |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
 
 1. Cserélje le *{roleDefinitionId}* az egyéni szerepkör GUID azonosítóval.
 

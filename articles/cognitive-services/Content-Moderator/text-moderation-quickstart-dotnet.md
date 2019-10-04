@@ -1,25 +1,25 @@
 ---
-title: 'Gyors útmutató: A szöveg elemzése C# -Content Moderator'
-titlesuffix: Azure Cognitive Services
-description: Szöveg tartalmának elemzése különböző kifogásolható tartalmak felismeréséhez a Content Moderator SDK for .NET használatával
+title: 'Gyors útmutató: Szöveges tartalom elemzése a C# -Content Moderatorban'
+titleSuffix: Azure Cognitive Services
+description: Különböző kifogásolt anyagok szöveges tartalmának elemzése a .NET-hez készült Content Moderator SDK-val
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 02/07/2019
+ms.date: 07/03/2019
 ms.author: sajagtap
-ms.openlocfilehash: 09fd58fa33873c06ac5dab4970af199bc3030479
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 45ac641948531aa27334762704eba3333aebba4d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756530"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564327"
 ---
-# <a name="quickstart-analyze-text-content-for-objectionable-material-in-c"></a>Gyors útmutató: A nem kívánt tartalom szöveges tartalmakat elemezhetC#
+# <a name="quickstart-analyze-text-content-for-objectionable-material-in-c"></a>Gyors útmutató: Szöveges tartalom elemzése a kifogásolt anyagokhoz a következőben:C#
 
-Ez a cikk ahhoz biztosít információt és kódmintákat, hogy megismerkedhessen a [Content Moderator SDK for .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) használatával. Megtanulhatja, hogyan végezhet szűrést kifejezések alapján, és hogyan osztályozhatja a szöveges tartalmakat az esetlegesen kifogásolható tartalmak moderálása céljából.
+Ez a cikk ahhoz biztosít információt és kódmintákat, hogy megismerkedhessen a [Content Moderator SDK for .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) használatával. Megtudhatja, hogyan hajthat végre lejáraton alapuló szűrést és a szöveges tartalom besorolását azzal a céllal, hogy a potenciálisan kifogásolt anyagok moderálása megtörténjen.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt. 
 
@@ -57,11 +57,11 @@ Adja hozzá a következő kódot a *Program.cs* fájlhoz, hogy létrehozzon egy 
 
 ### <a name="set-up-input-and-output-targets"></a>Bemeneti és kimeneti célok beállítása
 
-Adja hozzá a következő statikus mezőket a **Program** osztályhoz a _Program.cs_-ben. Ezek adják meg a bemeneti szöveg tartalmának és a kimeneti JSON tartalmának fájljait.
+Adja hozzá a következő statikus mezőket a **Program** osztályhoz a _Program.cs_-ben. Ezek a mezők határozzák meg a bemeneti szöveges tartalom és a kimeneti JSON-tartalom fájljait.
 
 [!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/text-moderation-quickstart-dotnet.cs?range=15-19)]
 
-Létre kell hoznia a *TextFile.txt* bemeneti fájlt, és ennek megfelelően frissítenie kell az elérési útját (a relatív elérési utak a végrehajtási könyvtárhoz képest relatívak). Nyissa meg a _TextFile.txt_ fájlt, és adja hozzá a moderálandó szöveget. Ez a rövid útmutató a következő mintaszöveget használja:
+Létre kell hoznia a *TextFile. txt* bemeneti fájlt, és frissítenie kell annak elérési útját (a paths a végrehajtási könyvtárhoz viszonyítva). Nyissa meg a _TextFile.txt_ fájlt, és adja hozzá a moderálandó szöveget. Ez a rövid útmutató a következő mintaszöveget használja:
 
 ```
 Is this a grabage or crap email abcdef@abcd.com, phone: 6657789887, IP: 255.255.255.255, 1 Microsoft Way, Redmond, WA 98052.
@@ -74,7 +74,7 @@ These are all UK phone numbers, the last two being Microsoft UK support numbers:
 Adja hozzá az alábbi kódot a **Main** metódushoz. A **ScreenText** metódus a legfontosabb művelet. Ennek a metódusnak a paraméterei adják meg, melyik tartalommoderálási művelet megy végbe. Ebben a példában a metódus a következőkre van konfigurálva:
 - Potenciális profanitás észlelése a szövegben.
 - A szöveg normalizálása és a gépelési hibák automatikus javítása.
-- Észleli a személyes adatok, például az USA és az Egyesült Királyság telefonszámok, e-mail-címeket, és USA levelezési címe.
+- Személyes adatok, például az Egyesült ÁLLAMOKbeli és az Egyesült királyságbeli telefonszámok, e-mail-címek és az USA levelezési címeinek észlelése.
 - Gépi tanuláson alapuló modellek használata a szöveg három kategóriába való besorolásához.
 
 Ha többet szeretne megtudni arról, mire szolgálnak ezek a műveletek, kattintson a [További lépések](#next-steps) szakaszban található hivatkozásra.

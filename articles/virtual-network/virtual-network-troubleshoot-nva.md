@@ -1,10 +1,10 @@
 ---
-title: Az Azure-ban a hálózati virtuális berendezés problémák elhárítása |} A Microsoft Docs
-description: Ismerje meg az Azure-ban a hálózati virtuális berendezés kapcsolatos problémák elhárítása.
+title: A hálózati virtuális berendezésekkel kapcsolatos problémák elhárítása az Azure-ban | Microsoft Docs
+description: Ismerje meg, hogyan lehet elhárítani a hálózati virtuális berendezésekkel kapcsolatos problémákat az Azure-ban.
 services: virtual-network
 documentationcenter: na
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-network
@@ -14,85 +14,92 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2018
 ms.author: genli
-ms.openlocfilehash: b7ac96d3588923727a71cf6152ba36481ef44545
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: b998043bc7d896989590ac21db5f309a81cc02bd
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526656"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71056835"
 ---
-# <a name="network-virtual-appliance-issues-in-azure"></a>Hálózati virtuális berendezés problémák az Azure-ban
+# <a name="network-virtual-appliance-issues-in-azure"></a>Hálózati virtuális berendezések problémái az Azure-ban
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Előfordulhat, hogy virtuális Gépet, vagy ha VPN-kapcsolati hibák és a hibákat, amikor egy külső féltől származó hálózati virtuális készüléket (NVA) Microsoft Azure-ban. Ez a cikk segítséget nyújt az NVA-konfigurációk esetén az Azure Platform minimális követelményeinek ellenőrzése alapvető lépéseit ismerteti.
+Előfordulhat, hogy a virtuális gép vagy a VPN-kapcsolattal kapcsolatos problémákat és hibákat tapasztal, amikor egy harmadik féltől származó hálózati virtuális berendezést (NVA) használ a Microsoft Azure. Ez a cikk alapvető lépéseket biztosít a NVA-konfigurációk alapszintű Azure-platformra vonatkozó követelményeinek érvényesítéséhez.
 
-Technikai támogatás külső nva-k és azok az Azure platformmal való integráció az NVA gyártójától.
+A harmadik féltől származó NVA és az Azure platformmal való integrációjának technikai támogatását a NVA gyártója biztosítja.
 
 > [!NOTE]
-> Ha a kapcsolat vagy útválasztási problémát, amely magában foglalja egy nva-t, akkor [, forduljon az nva-t a](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines) közvetlenül.
+> Ha van olyan kapcsolat vagy útválasztási probléma, amely egy NVA tartalmaz, forduljon közvetlenül [a NVA gyártójához](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines) .
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="checklist-for-troubleshooting-with-nva-vendor"></a>NVA gyártójával hibaelhárítási ellenőrzőlista
+## <a name="checklist-for-troubleshooting-with-nva-vendor"></a>Ellenőrzőlista a NVA-gyártóval való hibaelhárításhoz
 
-- Szoftverfrissítések NVA virtuális gép szoftverek
-- Szolgáltatásfiók beállítási módja és funkciókészlete
-- Felhasználó által megadott útvonalak (udr-EK), amely a forgalmat az NVA virtuális hálózati alhálózatokon
-- A virtuális alhálózatokkal, a forgalmat az nva-t az udr-EK
-- Útválasztási táblázatok és szabályok (például az a NIC2 NIC1) az nva-n belül
-- Az NVA hálózati adapterek ellenőrzése és forgalmat fogadó nyomon követése
-- A Standard Termékváltozat és a nyilvános IP-címek használata esetén kell létrehozott NSG-t és egy explicit szabály engedélyezi a forgalmat az nva-n lesznek irányítva.
+- Szoftverfrissítések a NVA VM-szoftverekhez
+- Szolgáltatásfiók beállítása és funkciója
+- Felhasználó által megadott útvonalak (UDR-EK) a virtuális hálózati alhálózatokon, amelyek a NVA irányítják a forgalmat
+- UDR a NVA-ből közvetlen forgalomban lévő virtuális hálózati alhálózatokon
+- Útválasztási táblák és szabályok a NVA belül (például a NIC1 és a NIC2 között)
+- A hálózati forgalom fogadásának és küldésének ellenőrzésére szolgáló NVA hálózati adapterek nyomkövetése
+- Szabványos SKU és nyilvános IP-címek használatakor létre kell hozni egy NSG és egy explicit szabályt, amely lehetővé teszi a forgalom átirányítását a NVA.
 
-## <a name="basic-troubleshooting-steps"></a>Alapszintű hibaelhárítási lépéseket
+## <a name="basic-troubleshooting-steps"></a>Alapvető hibaelhárítási lépések
 
-- Az alapvető konfigurációjának ellenőrzése
-- Ellenőrizze az nva-n teljesítménye
-- A speciális hálózati hibáinak elhárítása
+- Az alapszintű konfiguráció keresése
+- NVA teljesítményének megtekintése
+- Speciális hálózati hibaelhárítás
 
-## <a name="check-the-minimum-configuration-requirements-for-nvas-on-azure"></a>Az nva-k az Azure-ban a minimális konfigurációs követelményeinek ellenőrzése
+## <a name="check-the-minimum-configuration-requirements-for-nvas-on-azure"></a>Az Azure-beli NVA minimális konfigurációs követelményeinek ellenõrzése
 
-Minden NVA rendelkezik alapszintű konfigurációs követelményeknek megfelelő működéséhez az Azure-ban. Az alábbi szakasz lépései ezen alapszintű konfigurációk ellenőrzése. További információ [, forduljon az nva-t a](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
+Minden NVA rendelkezik az Azure-ban megfelelő működéséhez szükséges alapszintű konfigurációs követelményekkel. A következő szakasz az alapvető konfigurációk ellenőrzésének lépéseit ismerteti. További információért [forduljon a NVA gyártójához](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
 
-**Ellenőrizze, hogy az IP-továbbítás engedélyezve van-e az nva-n**
+**Győződjön meg arról, hogy engedélyezve van-e az IP-továbbítás a NVA**
 
 Az Azure Portal használata
 
-1. Keresse meg az NVA erőforrás a [az Azure portal](https://portal.azure.com), hálózatkezelés, majd válassza ki és a hálózati adaptert.
-2. A hálózati adapter oldalon válassza ki az IP-konfigurációt.
-3. Győződjön meg arról, hogy az IP-továbbítás engedélyezve van-e.
+1. Keresse meg a NVA erőforrást [](https://portal.azure.com)a Azure Portalban, válassza a hálózatkezelés lehetőséget, majd válassza ki a hálózati adaptert.
+2. A hálózati adapter lapon válassza az IP-konfiguráció lehetőséget.
+3. Győződjön meg arról, hogy az IP-továbbítás engedélyezve van.
 
 A PowerShell használata
 
-1. Nyissa meg a Powershellt, és jelentkezzen be Azure-fiókjába.
-2. Az alábbi parancsot (a zárójeles értékeket cserélje le az adatokat):
+1. Nyissa meg a PowerShellt, majd jelentkezzen be az Azure-fiókjába.
+2. Futtassa a következő parancsot (a zárójeles értékeket cserélje le az adataira):
 
    ```powershell
    Get-AzNetworkInterface -ResourceGroupName <ResourceGroupName> -Name <NicName>
    ```
 
-3. Ellenőrizze a **EnableIPForwarding** tulajdonság.
-4. Ha IP-továbbítás nem engedélyezett, a következő parancsokat az engedélyezéshez:
+3. Keresse meg a **EnableIPForwarding** tulajdonságot.
+4. Ha az IP-továbbítás nincs engedélyezve, futtassa a következő parancsokat az engedélyezéséhez:
 
-   $nic2 = Get-AzNetworkInterface - ResourceGroupName <ResourceGroupName> -név <NicName> $nic2. EnableIPForwarding = 1 hajtsa végre a Set-AzNetworkInterface – hálózati $nic2: $nic2 #and keresése a várt kimenet: EnableIPForwarding: TRUE NetworkSecurityGroup: null
+   ```powershell
+   $nic2 = Get-AzNetworkInterface -ResourceGroupName <ResourceGroupName> -Name <NicName>
+   $nic2.EnableIPForwarding = 1
+   Set-AzNetworkInterface -NetworkInterface $nic2
+   Execute: $nic2 #and check for an expected output:
+   EnableIPForwarding   : True
+   NetworkSecurityGroup : null
+   ```
 
-**Standard Termékváltozat Pubilc IP-cím használata esetén ellenőrizze az NSG** a Standard Termékváltozat és a nyilvános IP-címek használata esetén kell létrehozni egy NSG-t és a egy explicit szabály engedélyezi a forgalmat az nva-t a.
+**NSG keresése standard SKU Pubilc IP-cím használata esetén** A standard SKU és a nyilvános IP-címek használatakor létre kell hozni egy NSG és egy explicit szabályt, amely engedélyezi a forgalmat a NVA.
 
-**Ellenőrizze, hogy a forgalom átirányítható az nva-n**
+**Győződjön meg arról, hogy a forgalom átirányítható-e a NVA**
 
-1. A [az Azure portal](https://portal.azure.com), nyissa meg **Network Watcher**válassza **következő Ugrás**.
-2. Adjon meg egy virtuális Gépet, amely konfigurálva van a forgalom átirányítása az nva-t, és a egy cél IP-cím, amelynél a következő ugrás megjelenítéséhez. 
-3. Ha az NVA nem szerepel a **következő Ugrás**, ellenőrizze, és frissítse az Azure útválasztási táblázatban.
+1. [Azure Portalon](https://portal.azure.com)nyissa meg a **Network Watcher**, majd válassza a **következő ugrás**lehetőséget.
+2. Olyan virtuális gépet válasszon, amely átirányítja a forgalmat a NVA, valamint egy cél IP-címet, amelyen a következő ugrás megtekinthető. 
+3. Ha a NVA nem szerepel a **következő ugrásként**, ellenőrizze és frissítse az Azure Route-táblákat.
 
-**Ellenőrizze-e a forgalmat az nva-n elérhetővé**
+**Annak megkeresése, hogy a forgalom elérheti-e a NVA**
 
-1. A [az Azure portal](https://portal.azure.com), nyissa meg **Network Watcher**, majd válassza ki **IP Flow ellenőrzése**. 
-2. Adja meg a virtuális gép és az IP-címét az nva-t, és ellenőrizze a minden olyan hálózati biztonsági csoportok (NSG) blokkolja a forgalmat.
-3. Ha van egy NSG-szabályt, amely blokkolja a forgalmat, keresse meg az NSG-t a **érvényben lévő biztonsági** szabályokat, és frissítse, hogy a forgalom áthaladását. Ezután futtassa **IP Flow ellenőrzése** újra, és **kapcsolódási hibák elhárítása** TCP által kezdeményezett kommunikáció a virtuális gép a belső vagy külső IP-cím tesztelése.
+1. [Azure Portal](https://portal.azure.com)nyissa meg a **Network Watcher**, majd válassza az **IP-folyamat ellenőrzése**lehetőséget. 
+2. Adja meg a virtuális gépet és a NVA IP-címét, majd győződjön meg arról, hogy bármely hálózati biztonsági csoport (NSG) blokkolja-e a forgalmat.
+3. Ha van olyan NSG-szabály, amely blokkolja a forgalmat, keresse meg a NSG a **hatályos biztonsági** szabályokban, majd frissítse azt a forgalom továbbításának engedélyezéséhez. Ezután futtassa újra az **IP-folyamatot** , és használja a **kapcsolati HIBÁit** a virtuális gépekről a belső vagy külső IP-CÍMÉRE irányuló TCP-kommunikáció teszteléséhez.
 
-**Ellenőrizze-e az nva-t és a virtuális gépek figyelik-e a várt forgalomhoz**
+**Győződjön meg arról, hogy a NVA és a virtuális gépek figyelik-e a várható forgalmat**
 
-1. RDP vagy SSH használatával csatlakozhat az nva-t, és futtassa a következő parancsot:
+1. Csatlakozzon a NVA RDP vagy SSH használatával, majd futtassa a következő parancsot:
 
     Windows esetén:
 
@@ -101,38 +108,38 @@ A PowerShell használata
     Linux esetén:
 
         netstat -an | grep -i listen
-2. Ha nem látja a TCP-portot, amelyet az nva-t szoftver, amely szerepel az eredmények konfigurálnia kell az alkalmazást az nva-t és a virtuális gép figyelését, valamint válaszoljanak a forgalomra, amely eléri a ezeket a portokat. [Segítségért forduljon az NVA szállító, igény szerint](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
+2. Ha nem látja azt a TCP-portot, amelyet az eredmények listájában szereplő NVA szoftver használ, konfigurálnia kell az alkalmazást a NVA és a virtuális gépen, hogy figyelje és reagáljon a portokat elérő forgalomra. [Szükség esetén forduljon a NVA gyártójához](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
 
-## <a name="check-nva-performance"></a>Ellenőrizze az nva-n teljesítménye
+## <a name="check-nva-performance"></a>NVA teljesítményének megtekintése
 
-### <a name="validate-vm-cpu"></a>Ellenőrizze a virtuális gép Processzor
+### <a name="validate-vm-cpu"></a>Virtuális gép PROCESSZORának ellenőrzése
 
-Ha a processzorhasználat megközelíti a 100 %-os lekérdezi, hálózati csomag csepp befolyásoló problémákat tapasztalhat. A virtuális gép jelentések átlagos CPU-számára egy adott időtartam, az Azure Portalon. Során CPU ugrásszerű vizsgálja meg a Vendég virtuális gép okozza a magas CPU folyamatokat, és csökkentheti, ha lehetséges. Méretezze át a virtuális Gépet egy nagyobb SKU-méret, vagy a virtuálisgép-méretezési csoport esetében, a példányszám növelése, vagy állítsa be az automatikus méretezést a CPU-használat is rendelkezhetnek. Ezeket a problémákat a [segítségért forduljon az NVA szállítói](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines), igény szerint.
+Ha a CPU-használat a 100 százalékhoz közeledik, akkor előfordulhat, hogy problémák lépnek fel a hálózati csomagok elejtésére. A virtuális gép átlagos CPU-jelentést küld egy adott időtartományhoz a Azure Portalban. A CPU-tüske során vizsgálja meg, hogy a vendég virtuális gép melyik folyamata okozza a nagy CPU-t, és ha lehetséges, csökkentse a problémát. Előfordulhat, hogy a virtuális gépet át kell méreteznie egy nagyobb SKU-méretre, vagy a virtuálisgép-méretezési csoportnál növelje a példányszámot, vagy állítsa a CPU-használat automatikus méretezésére. A problémák bármelyike esetén [segítségért forduljon a NVA gyártójához](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines), igény szerint.
 
-### <a name="validate-vm-network-statistics"></a>Virtuálisgép-hálózat statisztika ellenőrzése
+### <a name="validate-vm-network-statistics"></a>Virtuálisgép-hálózati statisztika ellenőrzése
 
-Ha a Virtuálisgép-hálózat hirtelen megugró kihasználtság, vagy megjeleníti a magas kihasználtságú időszakok is magasabb átviteli sebesség képességek beszerzése a virtuális gép Termékváltozata méretének növeléséhez. Is engedélyezve van a gyorsított hálózatkezelés sablonkonfigurációkat telepítse újra a virtuális Gépet. Ellenőrizze, hogy támogatja-e az nva-t a gyorsított hálózati funkció [segítségért forduljon az NVA szállítói](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines), igény szerint.
+Ha a virtuálisgép-hálózat tüskéket használ, vagy magas kihasználtságú időszakokat jelenít meg, akkor előfordulhat, hogy a virtuális gép SKU-os méretének növelésére van szüksége a magasabb átviteli sebesség érdekében. A virtuális gépet a gyorsított hálózatkezelés engedélyezésével is újra üzembe helyezheti. Annak ellenőrzéséhez, hogy a NVA támogatja-e a gyorsított hálózatkezelési funkciót, szükség esetén [forduljon a NVA gyártójához](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
 
-## <a name="advanced-network-administrator-troubleshooting"></a>A speciális hálózati rendszergazda hibáinak elhárítása
+## <a name="advanced-network-administrator-troubleshooting"></a>A hálózati rendszergazda speciális hibaelhárítása
 
 ### <a name="capture-network-trace"></a>Hálózati nyomkövetés rögzítése
-A forrásoldali virtuális gép egyidejű hálózati nyomkövetést, az nva-n és a cél virtuális gép futtatása közben rögzítése **[PsPing](https://docs.microsoft.com/sysinternals/downloads/psping)** vagy **Nmap**, majd állítsa le a nyomkövetést.
+Rögzítse egyidejű hálózati nyomkövetést a forrásoldali virtuális gépen, a NVA és a cél virtuális gépen a **[PsPing](https://docs.microsoft.com/sysinternals/downloads/psping)** vagy az **nmap**futtatása közben, majd állítsa le a nyomkövetést.
 
-1. Egyidejű hálózati nyomkövetést rögzítéséhez, futtassa a következő parancsot:
+1. Egyidejű hálózati nyomkövetés rögzítéséhez futtassa a következő parancsot:
 
-   **A Windows**
+   **Windows rendszerhez**
 
-   a Netsh trace start capture = yes tracefile=c:\server_IP.etl scenario = netconnection
+   netsh Trace Start Capture = igen tracefile = c:\server_IP.etl forgatókönyv = NETCONNECTION
 
-   **A Linux rendszerre**
+   **Linux rendszerhez**
 
    sudo tcpdump -s0 -i eth0 -X -w vmtrace.cap
 
-2. Használat **PsPing** vagy **Nmap** a forrás virtuális Gépet a cél virtuális gép (például: `PsPing 10.0.0.4:80` vagy `Nmap -p 80 10.0.0.4`).
-3. Nyissa meg a hálózati nyomkövetést a cél virtuális gép használatával [Hálózatfigyelő](https://www.microsoft.com/download/details.aspx?id=4865) vagy a tcpdump. Alkalmazzon megjelenítési szűrőt futtatta, a forrás virtuális gép IP-címhez **PsPing** vagy **Nmap** , mint például `IPv4.address==10.0.0.4 (Windows netmon)` vagy `tcpdump -nn -r vmtrace.cap src or dst host 10.0.0.4` (Linux).
+2. Használjon **PsPing** vagy **nmap** -t a forrás virtuális gépről a cél virtuális gépre (például `PsPing 10.0.0.4:80` : `Nmap -p 80 10.0.0.4`vagy).
+3. Nyissa meg a hálózati nyomkövetést a cél virtuális gépről [Hálózatfigyelő](https://www.microsoft.com/download/details.aspx?id=4865) vagy tcpdump használatával. Alkalmazzon megjelenítési szűrőt a **PsPing** vagy **nmap** -t futtató forrás virtuális gép IP-címére `IPv4.address==10.0.0.4 (Windows netmon)` , például vagy `tcpdump -nn -r vmtrace.cap src or dst host 10.0.0.4` (Linux).
 
-### <a name="analyze-traces"></a>Nyomok elemzése
+### <a name="analyze-traces"></a>Nyomkövetések elemzése
 
-Ha nem érkeznek bejövő csomagok a háttérbeli virtuális gép nyomkövetési látja, valószínűleg egy NSG-t, vagy UDR zavarja a folyamatot, vagy az NVA-útválasztási táblázatok helytelenek.
+Ha nem látja a háttérbeli virtuális gép nyomkövetéséhez bejövő csomagokat, valószínűleg egy NSG vagy egy UDR zavarja, vagy a NVA útválasztási táblái helytelenek.
 
-Ha a csomagok beérkeznek, de nincs válasz, akkor a virtuálisgép-alkalmazáshoz vagy a tűzfalhoz kapcsolódó problémáról lehet szó. Ezeket a problémákat a [forduljon segítségért az NVA szállító, igény szerint](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
+Ha a csomagok beérkeznek, de nincs válasz, akkor a virtuálisgép-alkalmazáshoz vagy a tűzfalhoz kapcsolódó problémáról lehet szó. A problémák bármelyike esetén [a szükséges segítségért forduljon a NVA gyártójához](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).

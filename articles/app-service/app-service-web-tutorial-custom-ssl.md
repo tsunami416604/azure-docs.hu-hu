@@ -1,5 +1,5 @@
 ---
-title: Meglévő egyéni SSL-tanúsítvány kötése – az Azure App Service |} A Microsoft Docs
+title: Feltölteni és hozzákötni SSL-tanúsítvány – az Azure App Service |} A Microsoft Docs
 description: Megtudhatja, hogyan köthet egyéni SSL-tanúsítványt a webalkalmazáshoz, egy mobilalkalmazás hátérrendszeréhez vagy egy API-alkalmazáshoz az Azure App Service-ben.
 services: app-service\web
 documentationcenter: nodejs
@@ -12,19 +12,19 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 08/24/2018
+ms.date: 06/06/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 0a5b8bdbcd5a05574d824e3f57cfc23967278e27
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 32e6311a8796e708119f3e1df813b6ebb2ed0673
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487736"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66743012"
 ---
-# <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-app-service"></a>Oktatóanyag: Meglévő egyéni SSL-tanúsítvány kötése az Azure App Service-ben
+# <a name="tutorial-upload-and-bind-ssl-certificates-to-azure-app-service"></a>Oktatóanyag: Töltse fel, és az Azure App Service SSL-tanúsítványok kötése
 
-Az Azure App Service egy rugalmasan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt. Az oktatóanyag bemutatja, hogyan köthet, egy megbízható hitelesítésszolgáltatótól vásárolt egyéni SSL-tanúsítvány [Azure App Service](overview.md). Ha elkészült, fogja tudni elérni az alkalmazást az egyéni DNS-tartomány HTTPS-végpontján.
+Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás. Ez az oktatóanyag bemutatja, hogyan védheti meg az App Service egyéni tartománnyal, amelyen egy tanúsítványt egy megbízható hitelesítésszolgáltatótól vásárolt. Azt is bemutatja, hogyan tölthetők fel minden olyan privát és nyilvános tanúsítványokat az alkalmazás igényeinek megfelelően. Ha elkészült, fogja tudni elérni az alkalmazást az egyéni DNS-tartomány HTTPS-végpontján.
 
 ![Egyéni SSL-tanúsítványt használó webalkalmazás](./media/app-service-web-tutorial-custom-ssl/app-with-custom-ssl.png)
 
@@ -32,51 +32,48 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Az alkalmazás tarifacsomagjának bővítése.
-> * Az egyéni tanúsítvány App Service-hez kötése
+> * Egyéni tartomány tanúsítvánnyal biztonságos
+> * Privát tanúsítvány feltöltése
+> * Nyilvános tanúsítvány feltöltése
 > * Tanúsítványok megújítása
 > * HTTPS kényszerítése
 > * A TLS 1.1/1.2 kényszerítése
 > * A TLS kezelésének automatizálása szkriptekkel
-
-> [!NOTE]
-> Egy egyéni SSL-tanúsítvány van szüksége, ha közvetlenül be egyet, az Azure Portalon, és kösse az alkalmazást. Kövesse az [App Service-tanúsítványok szóló oktatóanyag](web-sites-purchase-ssl-web-site.md) utasításait.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag elvégzéséhez:
 
 - [Létre kell hoznia egy App Service-alkalmazást.](/azure/app-service/)
-- [Egy egyéni DNS-név leképezése az App Service-alkalmazás](app-service-web-tutorial-custom-domain.md)
-- Be kell szereznie egy SSL-tanúsítványt egy megbízható hitelesítésszolgáltatótól.
-- Rendelkeznie kell az SSL-tanúsítványkérés aláírásához használt titkos kulccsal.
+- [Egy egyéni DNS-név leképezése az App Service-alkalmazást](app-service-web-tutorial-custom-domain.md) (ha az egyéni tartomány védelme)
+- Szerezzen be egy megbízható hitelesítésszolgáltatótól származó tanúsítványt
+- A (a személyes tanúsítványok) a tanúsítvány kérés aláírásához használt titkos kulccsal rendelkezik
 
 <a name="requirements"></a>
 
-### <a name="requirements-for-your-ssl-certificate"></a>Az SSL-tanúsítvány követelményei
+## <a name="prepare-a-private-certificate"></a>Privát tanúsítvány előkészítése
 
-A tanúsítvány App Service-ben történő használatához a tanúsítványnak meg kell felelnie az alábbi követelmények mindegyikének:
+Biztonságos egy tartományhoz, a tanúsítványt a következő követelményeknek kell megfelelnie:
 
+* Kiszolgáló-hitelesítési konfigurálva
 * A tanúsítványt megbízható hitelesítésszolgáltatónak kell aláírnia.
 * Jelszóval védett PFX-fájlként kell exportálni.
 * Legalább 2048 bit hosszúságú titkos kulcsot kell tartalmaznia.
 * Tartalmaznia kell a tanúsítványláncban lévő összes köztes tanúsítványt.
 
+> [!TIP]
+> Egy egyéni SSL-tanúsítvány van szüksége, ha közvetlenül be egyet, az Azure Portalon, és importálja azt az alkalmazást. Kövesse az [App Service-tanúsítványok szóló oktatóanyag](web-sites-purchase-ssl-web-site.md) utasításait.
+
 > [!NOTE]
 > **Az elliptikus görbéjű titkosítási (ECC-) tanúsítványok** együttműködnek az App Service-szel, ez a cikk azonban erre nem tér ki. A hitelesítésszolgáltatóval együttműködve dolgozzák ki az ECC-tanúsítványok létrehozására szolgáló lépéseket.
 
-[!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
-
-<a name="upload"></a>
-
-## <a name="bind-your-ssl-certificate"></a>Az SSL-tanúsítvány kötése
-
-Az SSL-tanúsítvány feltöltéséhez az alkalmazás készen áll.
+Amint beszerzett egy tanúsítványt a tanúsítvány szolgáltatói, kövesse az ebben a szakaszban, hogy készen áll az App Service.
 
 ### <a name="merge-intermediate-certificates"></a>Köztes tanúsítványok egyesítése
 
-Ha a hitelesítésszolgáltató több tanúsítványt biztosít a tanúsítványláncban, sorrendben kell egyesítenie a tanúsítványokat. 
+Ha a hitelesítésszolgáltató több tanúsítványt biztosít a tanúsítványláncban, sorrendben kell egyesítenie a tanúsítványokat.
 
-Ehhez nyissa meg a kapott tanúsítványokat egy szövegszerkesztőben. 
+Ehhez nyissa meg a kapott tanúsítványokat egy szövegszerkesztőben.
 
 Hozzon létre egy _mergedcertificate.crt_ nevű fájlt az egyesített tanúsítvány számára. Egy szövegszerkesztőben másolja ebbe a fájlba az egyes tanúsítványok tartalmát. A tanúsítványok sorrendjének egyeznie kell a tanúsítványláncban lévő sorrenddel, a saját tanúsítvánnyal kezdve és a főtanúsítvánnyal végződve. Az alábbi példához hasonlóan néz ki:
 
@@ -112,45 +109,49 @@ Amikor a rendszer megkéri, adjon meg egy exportálási jelszót. Ezt a jelszót
 
 Ha az IIS vagy a _Certreq.exe_ használatával hozta létre a tanúsítványkérést, telepítse a tanúsítványt a helyi számítógépre, majd [exportálja a tanúsítványt PFX-fájlba](https://technet.microsoft.com/library/cc754329(v=ws.11).aspx).
 
-### <a name="upload-your-ssl-certificate"></a>Az SSL-tanúsítvány feltöltése
+Most már most már készen áll a tanúsítvány feltöltése App Service-ben.
 
-Az SSL-tanúsítvány feltöltéséhez kattintson **SSL-beállítások** az alkalmazás a bal oldali navigációs.
+[!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
-Kattintson az **Upload Certificate** (Tanúsítvány feltöltése) parancsra. 
+<a name="upload"></a>
+
+## <a name="secure-a-custom-domain"></a>Egyéni tartomány védelme
+
+> [!TIP]
+> Egy egyéni SSL-tanúsítvány van szüksége, ha közvetlenül be egyet, az Azure Portalon, és kösse az alkalmazást. Kövesse az [App Service-tanúsítványok szóló oktatóanyag](web-sites-purchase-ssl-web-site.md) utasításait.
+
+Biztonságos egy [egyéni tartomány](app-service-web-tutorial-custom-domain.md) egy külső tanúsítvány feltöltése a [személyes tanúsítvány előkészített](#prepare-a-private-certificate) , és kösse az egyéni tartomány, de az App Service leegyszerűsíti a folyamatot az Ön számára. Kövesse az alábbi lépéseket:
+
+Kattintson a **egyéni tartományok** az alkalmazás bal oldali navigációs sávján kattintson a **kötés hozzáadása** szeretné biztonságossá tenni a tartományhoz. Ha nem lát **kötés hozzáadása** tartományhoz, majd már biztonságos, és rendelkeznie kell egy **biztonságos** SSL-állapot.
+
+![Kötés hozzáadása a tartományhoz](./media/app-service-web-tutorial-custom-ssl/secure-domain-launch.png)
+
+Kattintson az **Upload Certificate** (Tanúsítvány feltöltése) parancsra.
 
 A **PFX Certificate File** (PFX-tanúsítványfájl) mezőben válassza ki a PFX-fájlt. A **Certificate password** (Tanúsítvány jelszava) területen írja be a PFX-fájl exportálásakor létrehozott jelszót.
 
 Kattintson a **Feltöltés** gombra.
 
-![Tanúsítvány feltöltése](./media/app-service-web-tutorial-custom-ssl/upload-certificate-private1.png)
+![Tartomány-tanúsítvány feltöltése](./media/app-service-web-tutorial-custom-ssl/secure-domain-upload.png)
 
-Amikor az App Service befejezi a tanúsítvány feltöltését, a tanúsítvány megjelenik az **SSL settings** (SSL-beállítások) lapon.
+Várjon, amíg az Azure-ban töltse fel a tanúsítványt, és indítsa el az SSL-kötései párbeszédpanelen.
 
-![Feltöltött tanúsítvány](./media/app-service-web-tutorial-custom-ssl/certificate-uploaded.png)
-
-### <a name="bind-your-ssl-certificate"></a>Az SSL-tanúsítvány kötése
-
-Az **SSL bindings** (SSL-kötések) területen kattintson az **Add binding** (Kötés hozzáadása) elemre.
-
-Az **Add SSL Binding** (SSL-kötés hozzáadása) lapon a legördülő listákkal válassza ki a védeni kívánt tartománynevet és a használni kívánt tanúsítványt.
+Az SSL kötései párbeszédpanelen válassza ki a feltöltött tanúsítvány és az SSL-típus, és kattintson **kötésének hozzáadása**.
 
 > [!NOTE]
-> Ha feltöltötte a tanúsítványt, de nem látja a tartományneve(ke)t a **Hostname** (Gazdanév) legördülő listában, próbálkozzon a böngészőoldal frissítésével.
+> A következő SSL-típusokat támogatja:
 >
->
+> - **[SNI-alapú SSL](https://en.wikipedia.org/wiki/Server_Name_Indication)**  – több SNI-alapú SSL-kötés adható hozzá. Ez a beállítás lehetővé teszi, hogy több SSL-tanúsítvány biztosítson védelmet több tartomány számára ugyanazon az IP-címen. A legtöbb modern böngésző (beleértve az Internet Explorert, a Chrome-ot, a Firefox-ot és az Operát) támogatja az SNI-t (átfogóbb böngészőtámogatási információkat a [Kiszolgálónév jelzése](https://wikipedia.org/wiki/Server_Name_Indication) című szakaszban talál).
+> - **IP-based SSL** (IP-alapú SSL) – Csak egy IP-alapú SSL-kötés adható hozzá. Ez a beállítás csak egy SSL-tanúsítványnak engedélyezi egy dedikált nyilvános IP-cím védelmét. Több tartomány védelméhez mindegyik tartományt ugyanazzal az SSL-tanúsítvánnyal kell védelemmel ellátni. Ez az SSL-kötések hagyományos beállítása.
 
-Az **SSL Type** (SSL típusa) területen válassza ki, hogy a **[kiszolgálónév jelzésén (SNI)](https://en.wikipedia.org/wiki/Server_Name_Indication)** alapuló vagy IP-alapú SSL-t kíván-e használni.
+![Az SSL kötést létrehozni tartományhoz](./media/app-service-web-tutorial-custom-ssl/secure-domain-bind.png)
 
-- **SNI-based SSL** (SNI-alapú SSL) – Több SNI-alapú SSL-kötés adható hozzá. Ez a beállítás lehetővé teszi, hogy több SSL-tanúsítvány biztosítson védelmet több tartomány számára ugyanazon az IP-címen. A legtöbb modern böngésző (beleértve az Internet Explorert, a Chrome-ot, a Firefox-ot és az Operát) támogatja az SNI-t (átfogóbb böngészőtámogatási információkat a [Kiszolgálónév jelzése](https://wikipedia.org/wiki/Server_Name_Indication) című szakaszban talál).
-- **IP-based SSL** (IP-alapú SSL) – Csak egy IP-alapú SSL-kötés adható hozzá. Ez a beállítás csak egy SSL-tanúsítványnak engedélyezi egy dedikált nyilvános IP-cím védelmét. Több tartomány védelméhez mindegyik tartományt ugyanazzal az SSL-tanúsítvánnyal kell védelemmel ellátni. Ez az SSL-kötések hagyományos beállítása.
+A tartomány SSL-állapot most kell módosítani, **biztonságos**.
 
-Kattintson az **Add Binding** (Kötés hozzáadása) lehetőségre.
+![Védett tartomány](./media/app-service-web-tutorial-custom-ssl/secure-domain-finished.png)
 
-![SSL-tanúsítvány kötése](./media/app-service-web-tutorial-custom-ssl/bind-certificate.png)
-
-Amikor az App Service befejezi a tanúsítvány feltöltését, a tanúsítvány megjelenik az **SSL bindings** (SSL-kötések) szakaszban.
-
-![Webalkalmazáshoz kötött tanúsítvány](./media/app-service-web-tutorial-custom-ssl/certificate-bound.png)
+> [!NOTE]
+> A **biztonságos** az állapot a **egyéni tartományok** azt jelenti, hogy, egy tanúsítvány védi, de az App Service-ben nem jelentkezik be, ha a tanúsítvány önaláírt vagy lejárt, például amelyek is okozhatnak a böngészők a hibák vagy figyelmeztetések megjelenítése.
 
 ## <a name="remap-a-record-for-ip-ssl"></a>Az A rekord újbóli leképezése az IP SSL-re
 
@@ -175,8 +176,6 @@ Már csak annak ellenőrzése van hátra, hogy a HTTPS működik-e az egyéni ta
 >
 > Ha nem így van, előfordulhat, hogy kihagyott néhány köztes tanúsítványt, amikor a tanúsítványt a PFX-fájlba exportálta.
 
-<a name="bkmk_enforce"></a>
-
 ## <a name="renew-certificates"></a>Tanúsítványok megújítása
 
 A bejövő IP-cím kötések törlésekor változhat, akkor is, ha a kötés IP-alapú. Ez akkor kifejezetten fontos, ha egy olyan tanúsítványt újít meg, amely már egy IP-alapú kötésben található. Annak érdekében, hogy az alkalmazás IP-címe ne változzon, kövesse sorrendben az alábbi lépéseket:
@@ -184,6 +183,8 @@ A bejövő IP-cím kötések törlésekor változhat, akkor is, ha a kötés IP-
 1. Töltse fel az új tanúsítványt.
 2. Kösse az új tanúsítványt a kívánt egyéni tartományhoz anélkül, hogy törölné a régit. Ez a művelet lecserélni a kötést ahelyett, hogy eltávolítaná a régit.
 3. Törölje a régi tanúsítványt. 
+
+<a name="bkmk_enforce"></a>
 
 ## <a name="enforce-https"></a>HTTPS kényszerítése
 
@@ -217,32 +218,32 @@ Automatizálhatja SSL-kötések szkriptekkel, az alkalmazás használatával az 
 
 Az alábbi parancs feltölt egy exportált PFX-fájlt, és lekéri az ujjlenyomatot.
 
-```bash
+```azurecli-interactive
 thumbprint=$(az webapp config ssl upload \
-    --name <app_name> \
-    --resource-group <resource_group_name> \
-    --certificate-file <path_to_PFX_file> \
-    --certificate-password <PFX_password> \
+    --name <app-name> \
+    --resource-group <resource-group-name> \
+    --certificate-file <path-to-PFX-file> \
+    --certificate-password <PFX-password> \
     --query thumbprint \
     --output tsv)
 ```
 
 A következő parancs SNI-alapú SSL-kötést ad hozzá az előző parancsból származó ujjlenyomat használatával.
 
-```bash
+```azurecli-interactive
 az webapp config ssl bind \
-    --name <app_name> \
-    --resource-group <resource_group_name>
+    --name <app-name> \
+    --resource-group <resource-group-name>
     --certificate-thumbprint $thumbprint \
     --ssl-type SNI \
 ```
 
 A következő parancs a TLS legalább 1.2-es verzióját kényszeríti ki.
 
-```bash
+```azurecli-interactive
 az webapp config set \
-    --name <app_name> \
-    --resource-group <resource_group_name>
+    --name <app-name> \
+    --resource-group <resource-group-name>
     --min-tls-version 1.2
 ```
 
@@ -261,12 +262,10 @@ New-AzWebAppSSLBinding `
     -CertificatePassword <PFX_password> `
     -SslState SniEnabled
 ```
-## <a name="public-certificates-optional"></a>Nyilvános tanúsítványok (nem kötelező)
-Az alkalmazás távoli erőforrásokhoz fér hozzá a ügyfélként kell, és a távoli erőforrás Tanúsítványalapú hitelesítés szükséges, feltölthet [nyilvános tanúsítványokat](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer/) az alkalmazáshoz. A nyilvános tanúsítványok nem szükségesek az alkalmazás SSL-kötések.
 
-A nyilvános tanúsítványok az alkalmazásokba való feltöltésével és használatával kapcsolatos további információkért lásd az [SSL-tanúsítvány az alkalmazáskódban az Azure App Service-ben való használatát](app-service-web-ssl-cert-load.md) ismertető cikket. Használhatja a nyilvános tanúsítványok alkalmazásokkal az App Service Environment-környezetek túl. Tárolja a tanúsítványt a LocalMachine tanúsítványtárolóban kell, ha szeretné használni egy alkalmazást az App Service Environmentben. További információkért lásd: [az App Service-alkalmazást a nyilvános tanúsítványok konfigurálása](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer).
+## <a name="use-certificates-in-your-code"></a>Tanúsítványok használata a kódban
 
-![Nyilvános tanúsítvány feltöltése](./media/app-service-web-tutorial-custom-ssl/upload-certificate-public1.png)
+Ha az alkalmazásnak szüksége van a távoli erőforrásokhoz történő csatlakozáshoz, és a távoli erőforrás Tanúsítványalapú hitelesítés szükséges, nyilvános vagy privát tanúsítványok tölthet fel az alkalmazáshoz. Nem kell kötni ezeket a tanúsítványokat az alkalmazás bármely egyéni tartomány. További információ: [Use an SSL certificate in your application code in Azure App Service](app-service-web-ssl-cert-load.md) (SSL-tanúsítvány használata az alkalmazáskódban az Azure App Service-ben).
 
 ## <a name="next-steps"></a>További lépések
 

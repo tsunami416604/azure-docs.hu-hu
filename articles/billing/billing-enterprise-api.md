@@ -1,6 +1,6 @@
 ---
-title: Az Azure Enterprise API-k számlázási |} A Microsoft Docs
-description: További információ a Reporting API-k, amelyek lehetővé teszik a nagyvállalati Azure-ügyfelek használati adatok programozott módon kérhetők.
+title: Azure nagyvállalati számlázási API-k | Microsoft Docs
+description: Ismerje meg azokat a jelentéskészítési API-kat, amelyekkel a nagyvállalati Azure-ügyfelek programozott módon kérhetik le a használati adatokat.
 services: ''
 documentationcenter: ''
 author: mumami
@@ -13,52 +13,54 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: billing
-ms.date: 04/25/2017
-ms.author: erikre
-ms.openlocfilehash: 52612419599ef69e7476c660b52f9e6e36946825
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
-ms.translationtype: MT
+ms.date: 10/01/2019
+ms.author: banders
+ms.openlocfilehash: f5d549006961f3108bf7155610dfb3a9ea78422a
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535399"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719780"
 ---
-# <a name="overview-of-reporting-apis-for-enterprise-customers"></a>A vállalati ügyfelek a Reporting API-k áttekintése
-A Reporting API-k engedélyezése a nagyvállalati Azure-ügyfelek használati és számlázási adatok programozott módon lekérni az előnyben részesített adatok elemzésére szolgáló eszközöket. A vállalati felhasználók regisztráltak- [nagyvállalati szerződés (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) az Azure-ral az egyeztetett pénzügyi kötelezettségvállalások és egyéni díjszabás az Azure-erőforrásokhoz való hozzáférést.
+# <a name="overview-of-reporting-apis-for-enterprise-customers"></a>A nagyvállalati ügyfeleknek elérhető jelentéskészítési API-k áttekintése
+A jelentéskészítési API-kkal a nagyvállalati Azure-ügyfelek programozott módon kérhetnek le használati és számlázási adatokat az előnyben részesített adatelemző eszközökbe. A nagyvállalati ügyfelek aláírtak egy [Nagyvállalati Szerződést (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) az Azure-ral, amelyben egyeztetett pénzügyi kötelezettségeket állapítanak meg annak érdekében, hogy az Azure-erőforrások egyéni díjszabására legyenek jogosultak.
 
-## <a name="enabling-data-access-to-the-api"></a>Adatelérési API engedélyezése
-* **Hozza létre, vagy kérje le az API-kulcsot** -jelentkezzen be a vállalati portált, és keresse meg a jelentéseket > használati adatok letöltése > API hozzáférési kulcsa létrehozni vagy beolvasni az API-kulcsot.
-* **Kulcsok átadása az API-ban** – az API-kulcsot kell átadni a hitelesítéshez és engedélyezéshez minden egyes híváshoz. A következő tulajdonságot kell lennie, a HTTP-fejlécek
+## <a name="enabling-data-access-to-the-api"></a>Adathozzáférés biztosítása az API-knak
+* **Az API-kulcs létrehozása vagy lekérése** – Jelentkezzen be az Enterprise Portalra, és lépjen a Jelentések > Használati adatok letöltése > API-hozzáférési kulcs területre az API-kulcs létrehozásához vagy lekéréséhez.
+* **Kulcsok átadása az API-ban** – Az API-kulcsot minden hitelesítési és engedélyezési híváshoz át kell adni. A következő tulajdonságnak kell szerepelnie a HTTP-fejlécekben
 
-|Fejléc kulcs kérése | Érték|
+|Kérelemfejléc kulcsa | Érték|
 |-|-|
-|Engedélyezés| Adja meg az értéket a következő formátumban: **tulajdonosi {API_KEY}** <br/> Példa: tulajdonosi eyr... 09| 
+|Engedélyezés| Adja meg az értéket ebben a formátumban: **bearer {API-KULCS}** <br/> Példa: bearer eyr....09| 
 
-## <a name="consumption-apis"></a>Szolgáltatáshasználati API-jai
-A Swagger-végpont érhető el [Itt](https://consumption.azure.com/swagger/ui/index) esetében az API-k leírt, amely alatt könnyen önelemzési API- és ügyféloldali SDK-k használatával képességét engedélyezze [AutoRest](https://github.com/Azure/AutoRest) vagy [Swagger CodeGen](https://swagger.io/swagger-codegen/). 2014. május 1-én kezdődő adatokat az API-n keresztül érhető el. 
+## <a name="consumption-apis"></a>Használati API-k
+[Itt](https://consumption.azure.com/swagger/ui/index) talál egy Swagger-végpontot az alább leírt API-khoz, amely lehetővé teszi az API egyszerű vizsgálatát és az ügyfél SDK-k létrehozását [AutoRest](https://github.com/Azure/AutoRest) vagy [Swagger CodeGen](https://swagger.io/swagger-codegen/) használatával. A 2014. május 1. utáni adatok érhetők el ezen az API-n keresztül. 
 
-* **Egyenleg és összegzése** – a [egyenlegét és az API összefoglaló](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) kínál a jóváírásokat összefoglaló balances, új vásárlások, Azure Marketplace szolgáltatási díjai, módosítását és kereten túli díjak havi összegzését.
+* **Egyenleg és összefoglalás** – A [Balance and Summary API](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) havi összefoglaló információkat nyújt az egyenlegekről, az új vásárlásokról, az Azure Marketplace szolgáltatási díjairól, a kiigazításokról és a többletköltségekről.
 
-* **Használat részletei** – a [használatának részletes API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail) kínál a felhasznált mennyiségek és becsült költségek szerint regisztrációs napi bontásban. Az eredmény példányok, mérőszámok és szervezeti információkat is biztosít. Az API-t lekérdezhetők, számlázási időszak, vagy egy megadott kezdő és záró dátumát. 
+* **Használati adatok** – A [Usage Details API](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail) a felhasznált mennyiségek napi részletezését és az adott regisztrációhoz kapcsolódó becsült költségeket jeleníti meg. Az eredmény a példányokkal, mérőszámokkal és részlegekkel kapcsolatos információkat is tartalmazza. Az API lekérdezhető számlázási időszak vagy egy megadott kezdő és záró dátum alapján. 
 
-* **Marketplace-en Store díj** – a [Marketplace Store díj API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge) adja vissza a piactér használat alapú költségek bontás naponta az adott számlázási időszak vagy kezdő és záró dátuma (egyszeri díjak nem szerepelnek).
+* **Marketplace-díjak** – A [Marketplace Store Charge API](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge) a megadott számlázási időszakra, illetve a kezdési és befejezési dátumokra vonatkozóan napi bontásban adja vissza a használaton alapuló Marketplace-díjakat (az egyszeri díjakat nem tartalmazza).
 
-* **Árlista** – a [ár lap API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) felbontáson a megadott regisztrációs és számlázási időszak a alkalmazni sebesség biztosít. 
+* **Árlista** – A [Price Sheet API](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) a megadott regisztrációs és számlázási időszakra vonatkozóan az egyes mérők esetében érvényes díjszabást biztosítja.
+
+* **Fenntartott példány részletei** – A [Reserved Instance usage API](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) a fenntartott példányok vásárlásának használati adatait adja vissza. A [Reserved Instance charges API](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) az elvégzett számlázási tranzakciókat jeleníti meg. 
 
 ## <a name="data-freshness"></a>Adatok frissessége
-A válasz a fenti API az ETag lesznek visszaadva. Etag módosítása azt jelzi, hogy az adatok frissítve lett.  Az ezt követő azonos paraméterekkel azonos API-hívás adja át a rögzített Etag a kulccsal "If-None-Match" http-kérés fejlécében. A válaszként kapott állapotkód "NotModified" lenne, ha az adatok további nem frissültek, és nem az adatok visszaadásához fog. API a teljes adatkészletet ad vissza, a szükséges időszak, amikor egy etag változik.
+Az összes fenti API válaszában ETagek szerepelnek. Az ETagek változása azt jelenti, hogy az adatok frissültek.  Ha később hívásokat intéz ugyanarra az API-ra ugyanazokkal a paraméterekkel, a rögzített ETaget úgy adja át, hogy a HTTP-kérelem fejlécében az „If-None-Match” kulcs szerepeljen. A válasz állapotkódja „NotModified”, ha az adatok nem frissültek tovább, és a rendszer nem ad vissza adatokat. Az API visszaadja a lekérdezett időszak teljes adathalmazát, amikor egy ETag módosul.
 
-## <a name="helper-apis"></a>Segédlet az API-k
- **Számlázási időszak listában** – a [elszámolási időszakok API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) elszámolási időszakok, hogy egy használati adatokat a megadott regisztrációs fordított időrendben listáját adja vissza. Minden időszakban mutat a négy adatkészletek - BalanceSummary, UsageDetails, piactér-díjak és árlista API útvonala tulajdonságot tartalmaz.
+## <a name="helper-apis"></a>Segítő API-k
+ **Számlázási időszakok listázása** – A [Billing Periods API](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) olyan számlázási időszakok listáját adja vissza, amelyekben a megadott regisztráció használati adatai szerepelnek fordított időrendi sorrendben. Minden időszak tartalmazza a négy következő adathalmaz API-útvonalára mutató egyik tulajdonságot: BalanceSummary, UsageDetails, Marketplace Charges és Price Sheet.
 
 
 ## <a name="api-response-codes"></a>API-válaszkódok   
 |Válasz állapotkódja|Üzenet|Leírás|
 |-|-|-|
 |200| OK|Nincs hiba|
-|401| Nem engedélyezett| API-kulcs nem található, érvénytelen, lejárt stb.|
-|404| Nem elérhető| A jelentés a végpont nem található|
-|400| Hibás kérelem| Érvénytelen paraméterek – dátumtartományokat, nagyvállalati szerződéssel rendelkező számokat stb.|
-|500| Kiszolgálóhiba| Váratlan hiba történt a kérelem feldolgozása| 
+|401| Nem engedélyezett| Az API-kulcs nem található, érvénytelen, lejárt stb.|
+|404| Nem érhető el| A jelentésvégpont nem található|
+|400| Hibás kérés| Érvénytelen paraméterek – dátumtartományok, EA-számok stb.|
+|500| Kiszolgálóhiba| Váratlan hiba a kérelem feldolgozása során| 
 
 
 

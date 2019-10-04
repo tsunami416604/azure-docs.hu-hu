@@ -1,26 +1,26 @@
 ---
-title: Elküldeni vagy fogadni a pythonnal – Azure Event Hubs események |} A Microsoft Docs
-description: Ez a cikk a forgatókönyv egy Python-alkalmazás, amely az Azure Event Hubs küldi az eseményeket létrehozásához.
+title: Események küldése vagy fogadása a Python használatával – Azure Event Hubs | Microsoft Docs
+description: Ez a cikk bemutatja, hogyan hozhat létre egy olyan Python-alkalmazást, amely eseményeket küld az Azure Event Hubsnak.
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: femila
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
-ms.date: 04/15/2019
+ms.date: 09/16/2019
 ms.author: shvija
-ms.openlocfilehash: 6a8f0ddcfe6de904219059c6e761ead4c004732d
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 5162c6359c4b6e6bdd53d2778ca247704e2f16be
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59681709"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059138"
 ---
-# <a name="send-events-to-or-receive-events-from-event-hubs-using-python"></a>Események küldése vagy események fogadása az Event Hubs Python használatával
+# <a name="send-events-to-or-receive-events-from-event-hubs-using-python"></a>Események küldése vagy fogadása Event Hubsról a Python használatával
 
 Az Azure Event Hubs egy Big Data streamplatform és eseményfeldolgozó szolgáltatás, amely másodpercenként több millió esemény fogadására és feldolgozására képes. Az Event Hubs képes az elosztott szoftverek és eszközök által generált események, adatok vagy telemetria feldolgozására és tárolására. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. Az Event Hubs részletes áttekintéséért lásd az [Event Hubs áttekintését](event-hubs-about.md) és az [Event Hubs-szolgáltatásokat](event-hubs-features.md) ismertető cikket.
 
-Ez az oktatóanyag azt ismerteti, eseményeket küldeni, vagy események fogadása az event hub Python-alkalmazások létrehozása. 
+Ez az oktatóanyag leírja, hogyan hozhat létre olyan Python-alkalmazásokat, amelyek események küldésére és fogadására használhatók az Event hub-ból. 
 
 > [!NOTE]
 > A rövid útmutatót mintaként letöltheti a [GitHubról](https://github.com/Azure/azure-event-hubs-python/tree/master/examples). Cserélje le az `EventHubConnectionString` és `EventHubName` sztringeket a saját eseményközpontja értékeire, majd futtassa a mintát. Vagy létrehozhatja saját megoldását is az oktatóanyag lépései alapján.
@@ -31,7 +31,7 @@ Az oktatóanyag teljesítéséhez a következő előfeltételekre lesz szükség
 
 - Azure-előfizetés. Ha még nincs előfizetése, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
 - Python 3.4-es vagy újabb.
-- Használja a [az Azure portal](https://portal.azure.com) hozzon létre egy Event Hubs típusú névteret, és szerezze be az alkalmazása és az eseményközpont közötti kommunikációhoz szükséges felügyeleti hitelesítő adatokat. A névtér és eseményközpont létrehozásához hajtsa végre az eljárást a [Ez a cikk](event-hubs-create.md). Az eseményközpont hozzáférési kulcs értékét, majd kövesse a cikkben szereplő lekéréséhez: [Kapcsolati sztring lekérése](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). A hozzáférési kulcsot a kód írása az oktatóanyag későbbi részében fogja használni. Az alapértelmezett nevet, majd: **RootManageSharedAccessKey**.
+- A [Azure Portal](https://portal.azure.com) használatával hozzon létre Event Hubs típusú névteret, és szerezze be azokat a felügyeleti hitelesítő adatokat, amelyekre az alkalmazásnak szüksége van az Event hub-vel való kommunikációhoz. A névtér és eseményközpont létrehozásához hajtsa végre az eljárást a [Ez a cikk](event-hubs-create.md). Ezután szerezze be az Event hub elérési kulcsának értékét a cikk utasításait követve: A [kapcsolatok karakterláncának beolvasása](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). A hozzáférési kulcsot a kód írása az oktatóanyag későbbi részében fogja használni. Az alapértelmezett kulcs neve: **RootManageSharedAccessKey**.
 
 ## <a name="install-python-package"></a>Python-csomag telepítése
 
@@ -43,11 +43,14 @@ pip install azure-eventhub
 
 ## <a name="send-events"></a>Események küldése
 
+> [!NOTE]
+> Az ebben a szakaszban szereplő kód a Event Hubs SDK jelenlegi stabil verziójára (1.3.1) érvényes. Ha az SDK előzetes verzióját használó mintakód keres, tekintse meg [ezt a lapot](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhubs/examples).
+
 ### <a name="create-a-python-script-to-send-events"></a>Hozzon létre egy Python-szkriptet események küldésére
 
 Ezután hozzon létre egy Python-alkalmazás, amely elküldi az eseményeket egy eseményközpontba:
 
-1. Nyissa meg a Python kedvenc szerkesztőjében, például [Visual Studio Code](https://code.visualstudio.com/)
+1. Nyissa meg kedvenc Python-szerkesztőjét, például a [Visual Studio Code](https://code.visualstudio.com/) -ot
 2. Hozzon létre egy parancsfájlt nevű **send.py**. Ez a szkript 100 eseményeket küld az event hub.
 3. Send.py, és cserélje le a címet, a felhasználó és a kulcs értékeit az Azure Portalról az előző szakaszban beszerzett illessze be a következő kódot: 
 
@@ -66,11 +69,11 @@ logger = logging.getLogger("azure")
 # "amqps://<URL-encoded-SAS-policy>:<URL-encoded-SAS-key>@<mynamespace>.servicebus.windows.net/myeventhub"
 # "amqps://<mynamespace>.servicebus.windows.net/myeventhub"
 # For example:
-ADDRESS = "amqps://mynamespace.servicebus.windows.net/myeventhub"
+ADDRESS = "amqps://<EVENTHUBS NAMESPACE NAME>.servicebus.windows.net/<EVENTHUB NAME>"
 
 # SAS policy and key are not required if they are encoded in the URL
 USER = "RootManageSharedAccessKey"
-KEY = "namespaceSASKey"
+KEY = "<SHARED ACCESS KEY FOR THE EVENT HUBS NAMESPACE>"
 
 try:
     if not ADDRESS:
@@ -84,7 +87,8 @@ try:
         start_time = time.time()
         for i in range(100):
             print("Sending message: {}".format(i))
-            sender.send(EventData(str(i)))
+            message = "Message {}".format(i)
+            sender.send(EventData(message))
     except:
         raise
     finally:
@@ -113,7 +117,7 @@ Gratulálunk! Üzeneteket küldött egy eseményközpontba.
 
 Ezután hozzon létre egy Python-alkalmazás, amely fogadja az eseményeket egy adott eseményközpontból:
 
-1. Nyissa meg a Python kedvenc szerkesztőjében, például [Visual Studio Code](https://code.visualstudio.com/)
+1. Nyissa meg kedvenc Python-szerkesztőjét, például a [Visual Studio Code](https://code.visualstudio.com/) -ot
 2. Hozzon létre egy parancsfájlt nevű **recv.py**.
 3. Recv.py, és cserélje le a címet, a felhasználó és a kulcs értékeit az Azure Portalról az előző szakaszban beszerzett illessze be a következő kódot: 
 
@@ -130,11 +134,12 @@ logger = logging.getLogger("azure")
 # "amqps://<URL-encoded-SAS-policy>:<URL-encoded-SAS-key>@<mynamespace>.servicebus.windows.net/myeventhub"
 # "amqps://<mynamespace>.servicebus.windows.net/myeventhub"
 # For example:
-ADDRESS = "amqps://mynamespace.servicebus.windows.net/myeventhub"
+ADDRESS = "amqps://<EVENTHUBS NAMESPACE NAME>.servicebus.windows.net/<EVENTHUB NAME>"
 
 # SAS policy and key are not required if they are encoded in the URL
 USER = "RootManageSharedAccessKey"
-KEY = "namespaceSASKey"
+KEY = "<SHARED ACCESS KEY FOR THE EVENT HUBS NAMESPACE>"
+
 CONSUMER_GROUP = "$default"
 OFFSET = Offset("-1")
 PARTITION = "0"
@@ -144,13 +149,12 @@ last_sn = -1
 last_offset = "-1"
 client = EventHubClient(ADDRESS, debug=False, username=USER, password=KEY)
 try:
-    receiver = client.add_receiver(CONSUMER_GROUP, PARTITION, prefetch=5000, offset=OFFSET)
+    receiver = client.add_receiver(
+        CONSUMER_GROUP, PARTITION, prefetch=5000, offset=OFFSET)
     client.run()
     start_time = time.time()
     for event_data in receiver.receive(timeout=100):
-        last_offset = event_data.offset
-        last_sn = event_data.sequence_number
-        print("Received: {}, {}".format(last_offset, last_sn))
+        print("Received: {}".format(event_data.body_as_str(encoding='UTF-8')))
         total += 1
 
     end_time = time.time()
@@ -176,6 +180,6 @@ start python recv.py
 Olvassa el a következő cikkeket:
 
 - [EventProcessorHost](event-hubs-event-processor-host.md)
-- [Funkciók és az Azure Event Hubs terminológiája](event-hubs-features.md)
+- [Az Azure Event Hubs funkciói és terminológiája](event-hubs-features.md)
 - [Event Hubs – gyakori kérdések](event-hubs-faq.md)
 

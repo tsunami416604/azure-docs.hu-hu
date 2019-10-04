@@ -2,23 +2,25 @@
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 03/22/2019
 ms.author: sngun
-ms.openlocfilehash: e07a59ba0484910d87329be94f0fcc58b1011b95
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seo-java-september2019
+ms.openlocfilehash: a8162afadb5a7d327804d7202b29ca0dccf275c4
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51572235"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71210236"
 ---
-A fiókjához tartozó erőforrások adatátviteli sebessége, tárolókapacitása, rendelkezésre állása, késleltetése és konzisztenciája az Azure Portalon monitorozható. Vessünk egy pillantást ezekre a metrikákra. 
+A Azure Portal figyeli a Cosmos DB fiók átviteli sebességét, a tárterületet, a rendelkezésre állást, a késést és a konzisztenciát. Egy [Azure Cosmos DB szolgáltatói szerződés (SLA)](https://azure.microsoft.com/support/legal/sla/cosmos-db/) társított metrikák diagramjai a tényleges teljesítménnyel összehasonlítva mutatják be az SLA értékét. A metrikák ezen csomagja a SLA-kat transzparens módon figyeli.
 
-1. Kattintson a **Metrikák** elemre a navigációs menüben.
+A metrikák és SLA-azonosítók áttekintése: 
 
-   ![Mérőszámok az Azure Portalon](./media/cosmos-db-tutorial-review-slas/metrics.png)
+1. Válassza a metrikák lehetőséget a Cosmos db fiókjának navigációs menüjében.
+   
+2. Válasszon egy fület,például a késést, és válasszon ki egy időkeretet a jobb oldalon. Hasonlítsa össze a **tényleges** és **SLA** -sorokat a diagramokon.
+   
+   ![Azure Cosmos DB-metrikák](./media/cosmos-db-tutorial-review-slas/azure-cosmosdb-metrics-suite.png)
+   
+3. Tekintse át a metrikákat a többi lapon. 
 
-2. Kattintson végig az összes lapon, hogy tisztában legyen az Azure Cosmos DB által biztosított metrikákkal. 
-
-    Az [Azure Cosmos DB szolgáltatói szerződéseihez (SLA)](https://azure.microsoft.com/support/legal/sla/cosmos-db/) tartozó összes diagram tartalmaz egy-egy vonalat, amely értesít arról, ha bármely SLA-t megsértették. Az Azure Cosmos DB ezekkel a metrikákkal átláthatóvá teszi az SLA-k monitorozását. 
-
-   ![Azure Cosmos DB-metrikák](./media/cosmos-db-tutorial-review-slas/metrics-suite.png)

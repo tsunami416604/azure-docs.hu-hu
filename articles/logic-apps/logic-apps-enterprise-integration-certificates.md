@@ -1,6 +1,6 @@
 ---
-title: A tanúsítványok – Azure Logic Apps B2B-üzenetek védelme |} A Microsoft Docs
-description: Tanúsítványok és az Enterprise Integration Pack Azure Logic Apps B2B-üzenetek védelmére hozzáadása
+title: Biztonságos B2B-üzenetek tanúsítványokkal – Azure Logic Apps | Microsoft Docs
+description: Tanúsítványok hozzáadása a Azure Logic Appsban lévő B2B-üzenetek biztonságossá tételéhez a Enterprise Integration Pack
 services: logic-apps
 ms.service: logic-apps
 author: divyaswarnkar
@@ -11,97 +11,97 @@ ms.assetid: 4cbffd85-fe8d-4dde-aa5b-24108a7caa7d
 ms.suite: integration
 ms.topic: article
 ms.date: 08/17/2018
-ms.openlocfilehash: 38bc1615c0849a33ddfa5790a66fc05d681ce339
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: be3dbc386b0ac89a85bc1719081df944523c28ce
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244929"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997840"
 ---
-# <a name="secure-b2b-messages-with-certificates"></a>A tanúsítványok biztonságos B2B-üzenetek
+# <a name="secure-b2b-messages-with-certificates"></a>Biztonságos B2B-üzenetek tanúsítványokkal
 
-B2B-kommunikáció bizalmasan kell, amikor gondoskodhat B2B kommunikációs a vállalati integrációs alkalmazások, pontosabban a logic apps, tanúsítványokat ad hozzá az integrációs fiók. Tanúsítványok digitális dokumentumok, amely az identitások keresése a résztvevők az elektronikus kommunikáció, és segítenek a biztonságos kommunikáció a következő lehetőségeket biztosítva:
+Ha a B2B-kommunikációt bizalmasan kell megtartania, akkor a vállalati integrációs alkalmazások, különösen a logikai alkalmazások számára biztosíthatja a B2B-kommunikációt, ha tanúsítványokat ad hozzá az integrációs fiókjához. A tanúsítványok olyan digitális dokumentumok, amelyek az elektronikus kommunikáció résztvevői identitásait ellenőrizzék, és segítenek a kommunikációban az alábbi módokon:
 
 * Üzenet tartalmának titkosítása.
-* Üzenetek digitális aláírását. 
+* Üzenetek digitális aláírása. 
 
-Ezeket a tanúsítványokat a vállalati integrációs alkalmazásokban használható:
+Ezeket a tanúsítványokat a vállalati integrációs alkalmazásokban használhatja:
 
-* [A nyilvános tanúsítványok](https://en.wikipedia.org/wiki/Public_key_certificate), amely a nyilvános interneten vásárolhatja meg kell [hitelesítésszolgáltatói (CA)](https://en.wikipedia.org/wiki/Certificate_authority) azonban nem igénylik bármilyen kulcsok. 
+* [Nyilvános tanúsítványok](https://en.wikipedia.org/wiki/Public_key_certificate), amelyeket nyilvános internetes [hitelesítésszolgáltatótól](https://en.wikipedia.org/wiki/Certificate_authority) kell megvásárolnia, de nincs szükség kulcsokra. 
 
-* A privát tanúsítványok vagy [ *önaláírt tanúsítványokat*](https://en.wikipedia.org/wiki/Self-signed_certificate), amely létrehozása, és adja ki saját kezűleg de az is szükség van a titkos kulcsok. 
+* Privát tanúsítványok vagy [*önaláírt tanúsítványok*](https://en.wikipedia.org/wiki/Self-signed_certificate), amelyeket Ön hoz létre és állít ki, de titkos kulcsokra is szükség van. 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="upload-a-public-certificate"></a>Nyilvános tanúsítvány feltöltése
 
-Használata egy *nyilvános tanúsítvány* a logic apps B2B-funkciói rendelkező, akkor először fel kell töltenie a tanúsítvány az integrációs fiókba. A tulajdonságok megadása után a [szerződések](logic-apps-enterprise-integration-agreements.md) , hogy hoz létre, a tanúsítványt, amellyel biztonságossá teheti a B2B-üzenetek érhető el.
+Ha olyan logikai alkalmazásokban szeretne *nyilvános tanúsítványt* használni, amelyek B2B-képességekkel rendelkeznek, először fel kell töltenie a tanúsítványt az integrációs fiókjába. Miután definiálta a tulajdonságokat a létrehozott [szerződésekben](logic-apps-enterprise-integration-agreements.md) , a tanúsítvány elérhetővé válik a B2B-üzenetek biztonságossá tételéhez.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Az Azure fő menüjéből válassza **összes erőforrás**. A keresőmezőbe adja meg az integrációs fiók nevét, és válassza ki a kívánt integrációs fiók.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Az Azure fő menüjében válassza az **összes erőforrás**lehetőséget. A keresőmezőbe írja be az integrációs fiók nevét, majd válassza ki a kívánt integrációs fiókot.
 
-   ![Keresse meg és válassza ki az integrációs fiók](media/logic-apps-enterprise-integration-certificates/select-integration-account.png)  
+   ![Integrációs fiók megkeresése és kiválasztása](media/logic-apps-enterprise-integration-certificates/select-integration-account.png)  
 
-2. A **összetevők**, válassza ki a **tanúsítványok** csempére.
+2. Az **összetevők**területen válassza a **tanúsítványok** csempét.
 
-   ![Válassza a "Tanúsítványok"](media/logic-apps-enterprise-integration-certificates/add-certificates.png)
+   ![Válassza a tanúsítványok lehetőséget.](media/logic-apps-enterprise-integration-certificates/add-certificates.png)
 
-3. A **tanúsítványok**, válassza a **Hozzáadás**. A **tanúsítvány hozzáadása**, adja meg ezeket az adatokat a tanúsítványt. Ha elkészült, válassza ki a **OK**.
+3. A **tanúsítványok**területen válassza a **Hozzáadás**lehetőséget. A **tanúsítvány hozzáadása**területen adja meg a tanúsítványhoz tartozó adatokat. Ha elkészült, kattintson **az OK gombra**.
 
    | Tulajdonság | Érték | Leírás | 
    |----------|-------|-------------|
-   | **Name (Név)** | <*tanúsítvány neve*> | A tanúsítvány neve, amely ebben a példában a "publicCert" | 
+   | **Name** | <*tanúsítvány neve*> | A tanúsítvány neve, amely ebben a példában a "publicCert". | 
    | **Tanúsítvány típusa** | Nyilvános | A tanúsítvány típusa |
-   | **Tanúsítvány** | <*certificate-file-name*> | Keresse meg és válassza ki a feltöltendő tanúsítványfájlt, válassza a mappa ikont a a **tanúsítvány** mezőbe. |
+   | **Tanúsítvány** | <*tanúsítvány-fájl neve*> | A feltölteni kívánt tanúsítványfájl megkereséséhez és kiválasztásához válassza a **tanúsítvány** mező melletti mappa ikont. |
    ||||
 
-   ![Válassza az "Add", adja meg a tanúsítvány részletei](media/logic-apps-enterprise-integration-certificates/public-certificate-details.png)
+   ![Válassza a Hozzáadás lehetőséget, adja meg a tanúsítvány részleteit](media/logic-apps-enterprise-integration-certificates/public-certificate-details.png)
 
-   Miután az Azure ellenőrzi a kijelölt, az Azure feltölti a tanúsítványt.
+   Miután az Azure érvényesíti a kiválasztott beállításokat, az Azure feltölti a tanúsítványt.
 
-   ![Az Azure új tanúsítvány jeleníti meg.](media/logic-apps-enterprise-integration-certificates/new-public-certificate.png) 
+   ![Az Azure új tanúsítványt jelenít meg](media/logic-apps-enterprise-integration-certificates/new-public-certificate.png) 
 
 ## <a name="upload-a-private-certificate"></a>Privát tanúsítvány feltöltése
 
-Használata egy *személyes tanúsítvány* a logic apps B2B-funkciói rendelkező, akkor először fel kell töltenie a tanúsítvány az integrációs fiókba. Rendelkezik titkos kulccsal, amely először hozzá kell [Azure Key Vault](../key-vault/key-vault-get-started.md). 
+Ha a logikai alkalmazásokban a B2B-képességekkel rendelkező *privát tanúsítványt* szeretne használni, először fel kell töltenie a tanúsítványt az integrációs fiókjába. Szükség van egy titkos kulcsra is, amelyet először a Azure Key Vaulthoz [](../key-vault/key-vault-get-started.md)kell hozzáadnia. 
 
-A tulajdonságok megadása után a [szerződések](logic-apps-enterprise-integration-agreements.md) , hogy hoz létre, a tanúsítványt, amellyel biztonságossá teheti a B2B-üzenetek érhető el.
+Miután definiálta a tulajdonságokat a létrehozott [szerződésekben](logic-apps-enterprise-integration-agreements.md) , a tanúsítvány elérhetővé válik a B2B-üzenetek biztonságossá tételéhez.
 
 > [!NOTE]
-> Privát tanúsítványok esetén győződjön meg arról, hogy a megfelelő nyilvános tanúsítvány megjelenő hozzáadása a [AS2-egyezményt](logic-apps-enterprise-integration-as2.md) **küldési és fogadási** aláírása és titkosítása üzenetek beállításait.
+> Privát tanúsítványok esetén ügyeljen arra, hogy adjon hozzá egy megfelelő nyilvános tanúsítványt, amely megjelenik az [AS2-egyezmény](logic-apps-enterprise-integration-as2.md) **küldési és fogadási** beállításaiban az üzenetek aláírásához és titkosításához.
 
-1. [Adja hozzá a titkos kulcsot az Azure Key Vaultba](../key-vault/certificate-scenarios.md#import-a-certificate) , és adja meg egy **kulcsnév**.
+1. [Adja hozzá a titkos kulcsot Azure Key Vaulthoz](../key-vault/certificate-scenarios.md#import-a-certificate) , és adja meg a **kulcs nevét**.
    
-2. Engedélyezze az Azure Logic Apps műveletek végrehajtása az Azure Key Vaultban. Hozzáférési jogot a Logic Apps szolgáltatás egyszerű, használja a PowerShell-paranccsal [Set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy), például:
+2. Engedélyezi Azure Logic Apps számára, hogy műveleteket hajtson végre a Azure Key Vaulton. Ha hozzáférést szeretne biztosítani az Logic Apps egyszerű szolgáltatáshoz, használja a következő PowerShell [-parancsot: set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy), például:
 
    `Set-AzKeyVaultAccessPolicy -VaultName 'TestcertKeyVault' -ServicePrincipalName 
    '7cd684f4-8a78-49b0-91ec-6a35d38739ba' -PermissionsToKeys decrypt, sign, get, list`
  
-3. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Az Azure fő menüjéből válassza **összes erőforrás**. A keresőmezőbe adja meg az integrációs fiók nevét, és válassza ki a kívánt integrációs fiók.
+3. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Az Azure fő menüjében válassza az **összes erőforrás**lehetőséget. A keresőmezőbe írja be az integrációs fiók nevét, majd válassza ki a kívánt integrációs fiókot.
 
-   ![Keresse meg az integrációs fiók](media/logic-apps-enterprise-integration-certificates/select-integration-account.png) 
+   ![Integrációs fiók megkeresése](media/logic-apps-enterprise-integration-certificates/select-integration-account.png) 
 
-4. A **összetevők**, válassza ki a **tanúsítványok** csempére.  
+4. Az **összetevők**területen válassza a **tanúsítványok** csempét.  
 
    ![A tanúsítványok csempe kiválasztása](media/logic-apps-enterprise-integration-certificates/add-certificates.png)
 
-5. A **tanúsítványok**, válassza a **Hozzáadás**. A **tanúsítvány hozzáadása**, adja meg ezeket az adatokat a tanúsítványt. Ha elkészült, válassza ki a **OK**.
+5. A **tanúsítványok**területen válassza a **Hozzáadás**lehetőséget. A **tanúsítvány hozzáadása**területen adja meg a tanúsítványhoz tartozó adatokat. Ha elkészült, kattintson **az OK gombra**.
 
    | Tulajdonság | Érték | Leírás | 
    |----------|-------|-------------|
-   | **Name (Név)** | <*tanúsítvány neve*> | A tanúsítvány neve, amely ebben a példában a "privateCert" | 
-   | **Tanúsítvány típusa** | Privát | A tanúsítvány típusa |
-   | **Tanúsítvány** | <*certificate-file-name*> | Keresse meg és válassza ki a feltöltendő tanúsítványfájlt, válassza a mappa ikont a a **tanúsítvány** mezőbe. | 
-   | **Erőforráscsoport** | <*integration-account-resource-group*> | Az integrációs fiók erőforráscsoportot, amely ebben a példában a "MyResourceGroup" | 
-   | **Key Vault** | <*key-vault-name*> | Az Azure key vault neve |
-   | **Kulcsnév** | <*key-name*> | A kulcs neve |
+   | **Name** | <*tanúsítvány neve*> | A tanúsítvány neve, amely ebben a példában a "privateCert". | 
+   | **Tanúsítvány típusa** | Magánjellegű | A tanúsítvány típusa |
+   | **Tanúsítvány** | <*tanúsítvány-fájl neve*> | A feltölteni kívánt tanúsítványfájl megkereséséhez és kiválasztásához válassza a **tanúsítvány** mező melletti mappa ikont. Ha kulcstartót használ a titkos kulcshoz, a feltöltött fájl lesz a nyilvános tanúsítvány. | 
+   | **Erőforráscsoport** | <*integration-account-resource-group*> | Az integrációs fiókhoz tartozó erőforráscsoport, amely ebben a példában a "MyResourceGroup". | 
+   | **Key Vault** | <*Key-Vault-név*> | Az Azure Key Vault neve |
+   | **Kulcs neve** | <*kulcs neve*> | A kulcs neve |
    ||||
 
-   ![Válassza az "Add", adja meg a tanúsítvány részletei](media/logic-apps-enterprise-integration-certificates/private-certificate-details.png)
+   ![Válassza a Hozzáadás lehetőséget, adja meg a tanúsítvány részleteit](media/logic-apps-enterprise-integration-certificates/private-certificate-details.png)
 
-   Miután az Azure ellenőrzi a kijelölt, az Azure feltölti a tanúsítványt.
+   Miután az Azure érvényesíti a kiválasztott beállításokat, az Azure feltölti a tanúsítványt.
 
-   ![Az Azure új tanúsítvány jeleníti meg.](media/logic-apps-enterprise-integration-certificates/new-private-certificate.png) 
+   ![Az Azure új tanúsítványt jelenít meg](media/logic-apps-enterprise-integration-certificates/new-private-certificate.png) 
 
 ## <a name="next-steps"></a>További lépések
 
-* [A B2B-egyezmény létrehozása](logic-apps-enterprise-integration-agreements.md)
+* [B2B-szerződés létrehozása](logic-apps-enterprise-integration-agreements.md)

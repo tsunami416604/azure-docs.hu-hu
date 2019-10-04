@@ -1,6 +1,6 @@
 ---
 title: Metrikariasztás létrehozása Resource Manager-sablonnal
-description: Ismerje meg, hogyan metrikariasztás létrehozása Resource Manager-sablon használatával.
+description: Megtudhatja, hogyan hozhat létre metrikus riasztásokat Resource Manager-sablonok használatával.
 author: snehithm
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,33 +8,33 @@ ms.topic: conceptual
 ms.date: 9/27/2018
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: 13507361411a08852a059782f1ed6f00e25bec94
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 70da3a518746d1989e8807cee9bc7c87cc634c27
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57541316"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873295"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Metrikariasztás létrehozása Resource Manager-sablonnal
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Ez a cikk bemutatja, hogyan használhatja egy [Azure Resource Manager-sablon](../../azure-resource-manager/resource-group-authoring-templates.md) konfigurálása [újabb metrikákhoz kapcsolódó riasztások](../../azure-monitor/platform/alerts-metric-near-real-time.md) az Azure monitorban. Resource Manager-sablonok lehetővé teszik a programozott módon riasztások beállítása egy egységes és megismételhető módon, a környezetek között. Újabb metrikákhoz kapcsolódó riasztások jelenleg érhetők el a [erőforrástípusok készlete](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported).
+Ez a cikk bemutatja, hogyan konfigurálhat egy [Azure Resource Manager sablonnal](../../azure-resource-manager/resource-group-authoring-templates.md) [újabb metrikai riasztásokat](../../azure-monitor/platform/alerts-metric-near-real-time.md) Azure monitor. A Resource Manager-sablonok lehetővé teszik, hogy programozott módon állítsa be a riasztásokat konzisztens és reprodukálható módon a környezetekben. Az újabb metrikai riasztások jelenleg [ezen erőforrástípusok készletén](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)érhetők el.
 
 > [!IMPORTANT]
-> Erőforrás-sablon erőforrástípus metrikákhoz kapcsolódó riasztások létrehozásához: Az Azure Log Analytics-munkaterület (azaz) `Microsoft.OperationalInsights/workspaces`, további lépéseket igényel. További információkért lásd: a cikk a [naplók - Resource-sablon riasztási metrika](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs).
+> Erőforrás-sablon metrikai riasztások létrehozásához: Az Azure log Analytics munkaterület (azaz) `Microsoft.OperationalInsights/workspaces`további lépéseket igényel. Részletekért tekintse meg a [naplók – erőforrás-sablon metrikai riasztása](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)című cikket.
 
-Az alapvető lépéseken az alábbiak szerint:
+Az alapszintű lépések a következők:
 
-1. Az alábbi sablonok egyikét használja, amely azt ismerteti, hogyan hozhat létre a riasztás JSON-fájlként.
-2. Szerkessze és használja a megfelelő paramétereket tartalmazó fájlt egy JSON-fájlként szabhatja testre a riasztás
-3. A sablon üzembe [bármely üzembe helyezési módszer](../../azure-resource-manager/resource-group-template-deploy.md).
+1. Használja az alábbi sablonok egyikét egy olyan JSON-fájlként, amely leírja, hogyan kell létrehozni a riasztást.
+2. A riasztás testreszabásához a megfelelő paramétereket tartalmazó fájlt JSON-ként szerkessze és használja
+3. A sablon üzembe helyezése [bármely üzembe helyezési módszer](../../azure-resource-manager/resource-group-template-deploy.md)használatával.
 
-## <a name="template-for-a-simple-static-threshold-metric-alert"></a>Egyszerű statikus küszöbérték metrikariasztás sablonja
+## <a name="template-for-a-simple-static-threshold-metric-alert"></a>Egyszerű statikus küszöbérték-metrikai riasztás sablonja
 
-Hozzon létre egy riasztást, Resource Manager-sablonnal, hozzon létre egy erőforrást típusú `Microsoft.Insights/metricAlerts` , és töltse ki az összes kapcsolódó tulajdonságok. Alább egy mintasablon, amely létrehozza a metrikaalapú riasztási szabály van.
+Ha Resource Manager-sablonnal szeretne riasztást létrehozni, hozzon létre egy típusú `Microsoft.Insights/metricAlerts` erőforrást, és töltse ki az összes kapcsolódó tulajdonságot. Az alábbi minta sablon egy metrikai riasztási szabályt hoz létre.
 
-Mentse az alábbi json simplestaticmetricalert.json Ez a bemutató céljából.
+Mentse az alábbi JSON-t simplestaticmetricalert. JSON néven az útmutató céljára.
 
 ```json
 {
@@ -119,7 +119,8 @@ Mentse az alábbi json simplestaticmetricalert.json Ez a bemutató céljából.
                 "Average",
                 "Minimum",
                 "Maximum",
-                "Total"
+                "Total",
+                "Count"
             ],
             "metadata": {
                 "description": "How the data that is collected should be combined over time."
@@ -128,13 +129,30 @@ Mentse az alábbi json simplestaticmetricalert.json Ez a bemutató céljából.
         "windowSize": {
             "type": "string",
             "defaultValue": "PT5M",
+            "allowedValues": [
+                "PT1M",
+                "PT5M",
+                "PT15M",
+                "PT30M",
+                "PT1H",
+                "PT6H",
+                "PT12H",
+                "PT24H"
+            ],
             "metadata": {
-                "description": "Period of time used to monitor alert activity based on the threshold. Must be between five minutes and one day. ISO 8601 duration format."
+                "description": "Period of time used to monitor alert activity based on the threshold. Must be between one minute and one day. ISO 8601 duration format."
             }
         },
         "evaluationFrequency": {
             "type": "string",
             "defaultValue": "PT1M",
+            "allowedValues": [
+                "PT1M",
+                "PT5M",
+                "PT15M",
+                "PT30M",
+                "PT1H"
+            ],
             "metadata": {
                 "description": "how often the metric alert is evaluated represented in ISO 8601 duration format"
             }
@@ -186,15 +204,15 @@ Mentse az alábbi json simplestaticmetricalert.json Ez a bemutató céljából.
 }
 ```
 
-A séma és a Tulajdonságok magyarázata a riasztási szabály [itt érhetők el](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate).
+A riasztási szabály sémájának és tulajdonságainak magyarázata [itt érhető el](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate).
 
-Beállíthatja a paraméterek értékeit, a parancssorban vagy egy paraméterfájl keresztül. A paraméter egy mintafájlt lejjebb találja.
+A paraméterek értékeit a parancssorban vagy egy paraméterérték használatával állíthatja be. Az alábbiakban egy példaként megadott paramétert tartalmazó fájlt talál.
 
-Az alábbi json Mentés másként simplestaticmetricalert.parameters.json, és szükség szerint módosítsa.
+Mentse az alábbi JSON-t simplestaticmetricalert. Parameters. JSON néven, és módosítsa a szükséges módon.
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "alertName": {
@@ -232,7 +250,7 @@ Az alábbi json Mentés másként simplestaticmetricalert.parameters.json, és s
 ```
 
 
-A metrikariasztás a sablon és paraméterek fájllal, a PowerShell vagy az Azure CLI használatával is létrehozhat.
+A metrikai riasztást a sablon és paraméterek fájl használatával hozhatja létre a PowerShell vagy az Azure CLI használatával.
 
 Az Azure PowerShell használata
 
@@ -259,13 +277,13 @@ az group deployment create \
 
 > [!NOTE]
 >
-> Bár a metrikariasztás létrehozható egy másik erőforráscsoportot, amelybe a célként megadott erőforrás, mint a célerőforrás ugyanabban az erőforráscsoportban használatát javasoljuk.
+> Míg a metrika riasztása egy másik erőforráscsoporthoz hozható létre a célként megadott erőforráshoz, javasoljuk, hogy ugyanazt az erőforráscsoportot használja, mint a célként megadott erőforrás.
 
-## <a name="template-for-a-simple-dynamic-thresholds-metric-alert"></a>Egyszerű dinamikus küszöbértékek metrikariasztás sablonja
+## <a name="template-for-a-simple-dynamic-thresholds-metric-alert"></a>Egyszerű dinamikus küszöbértékek metrikai riasztásának sablonja
 
-Hozzon létre egy riasztást, Resource Manager-sablonnal, hozzon létre egy erőforrást típusú `Microsoft.Insights/metricAlerts` , és töltse ki az összes kapcsolódó tulajdonságok. Alább egy mintasablon, amely létrehozza a metrikaalapú riasztási szabály van.
+Ha Resource Manager-sablonnal szeretne riasztást létrehozni, hozzon létre egy típusú `Microsoft.Insights/metricAlerts` erőforrást, és töltse ki az összes kapcsolódó tulajdonságot. Az alábbi minta sablon egy metrikai riasztási szabályt hoz létre.
 
-Mentse az alábbi json simpledynamicmetricalert.json Ez a bemutató céljából.
+Mentse az alábbi JSON-t simpledynamicmetricalert. JSON néven az útmutató céljára.
 
 ```json
 {
@@ -366,7 +384,8 @@ Mentse az alábbi json simpledynamicmetricalert.json Ez a bemutató céljából.
                 "Average",
                 "Minimum",
                 "Maximum",
-                "Total"
+                "Total",
+                "Count"
             ],
             "metadata": {
                 "description": "How the data that is collected should be combined over time."
@@ -375,13 +394,25 @@ Mentse az alábbi json simpledynamicmetricalert.json Ez a bemutató céljából.
         "windowSize": {
             "type": "string",
             "defaultValue": "PT5M",
+            "allowedValues": [
+                "PT5M",
+                "PT15M",
+                "PT30M",
+                "PT1H"
+            ],
             "metadata": {
-                "description": "Period of time used to monitor alert activity based on the threshold. Must be between five minutes and one day. ISO 8601 duration format."
+                "description": "Period of time used to monitor alert activity based on the threshold. Must be between five minutes and one hour. ISO 8601 duration format."
             }
         },
         "evaluationFrequency": {
             "type": "string",
-            "defaultValue": "PT1M",
+            "defaultValue": "PT5M",
+            "allowedValues": [
+                "PT5M",
+                "PT15M",
+                "PT30M",
+                "PT1H"
+            ],
             "metadata": {
                 "description": "how often the metric alert is evaluated represented in ISO 8601 duration format"
             }
@@ -438,15 +469,15 @@ Mentse az alábbi json simpledynamicmetricalert.json Ez a bemutató céljából.
 }
 ```
 
-A séma és a Tulajdonságok magyarázata a riasztási szabály [itt érhetők el](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate).
+A riasztási szabály sémájának és tulajdonságainak magyarázata [itt érhető el](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate).
 
-Beállíthatja a paraméterek értékeit, a parancssorban vagy egy paraméterfájl keresztül. A paraméter egy mintafájlt lejjebb találja. 
+A paraméterek értékeit a parancssorban vagy egy paraméterérték használatával állíthatja be. Az alábbiakban egy példaként megadott paramétert tartalmazó fájlt talál. 
 
-Az alábbi json Mentés másként simpledynamicmetricalert.parameters.json, és szükség szerint módosítsa.
+Mentse az alábbi JSON-t simpledynamicmetricalert. Parameters. JSON néven, és módosítsa a szükséges módon.
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "alertName": {
@@ -490,7 +521,7 @@ Az alábbi json Mentés másként simpledynamicmetricalert.parameters.json, és 
 ```
 
 
-A metrikariasztás a sablon és paraméterek fájllal, a PowerShell vagy az Azure CLI használatával is létrehozhat.
+A metrikai riasztást a sablon és paraméterek fájl használatával hozhatja létre a PowerShell vagy az Azure CLI használatával.
 
 Az Azure PowerShell használata
 
@@ -517,13 +548,13 @@ az group deployment create \
 
 > [!NOTE]
 >
-> Bár a metrikariasztás létrehozható egy másik erőforráscsoportot, amelybe a célként megadott erőforrás, mint a célerőforrás ugyanabban az erőforráscsoportban használatát javasoljuk.
+> Míg a metrika riasztása egy másik erőforráscsoporthoz hozható létre a célként megadott erőforráshoz, javasoljuk, hogy ugyanazt az erőforráscsoportot használja, mint a célként megadott erőforrás.
 
-## <a name="template-for-a-more-advanced-static-threshold-metric-alert"></a>Speciális statikus küszöbérték metrikariasztás sablonja
+## <a name="template-for-a-more-advanced-static-threshold-metric-alert"></a>Sablon egy összetettebb statikus küszöbérték metrikai riasztáshoz
 
-Újabb metrikariasztásokat támogatja a többdimenziós metrikák riasztásai, valamint a támogatási több feltételt. Az alábbi sablon használatával fejlettebb metrikariasztás létrehozása a többdimenziós metrikák, és adja meg a több feltételt.
+Az újabb metrikai riasztások támogatják a többdimenziós metrikák riasztásait, valamint a több feltétel támogatását. A következő sablonnal egy összetettebb metrikai riasztást hozhat létre a dimenziós mérőszámokra vonatkozóan, és több feltételt is megadhat.
 
-Mentse az alábbi json advancedstaticmetricalert.json Ez a bemutató céljából.
+Mentse az alábbi JSON-t advancedstaticmetricalert. JSON néven az útmutató céljára.
 
 ```json
 {
@@ -586,13 +617,30 @@ Mentse az alábbi json advancedstaticmetricalert.json Ez a bemutató céljából
         "windowSize": {
             "type": "string",
             "defaultValue": "PT5M",
+            "allowedValues": [
+                "PT1M",
+                "PT5M",
+                "PT15M",
+                "PT30M",
+                "PT1H",
+                "PT6H",
+                "PT12H",
+                "PT24H"
+            ],
             "metadata": {
-                "description": "Period of time used to monitor alert activity based on the threshold. Must be between five minutes and one day. ISO 8601 duration format."
+                "description": "Period of time used to monitor alert activity based on the threshold. Must be between one minute and one day. ISO 8601 duration format."
             }
         },
         "evaluationFrequency": {
             "type": "string",
             "defaultValue": "PT1M",
+            "allowedValues": [
+                "PT1M",
+                "PT5M",
+                "PT15M",
+                "PT30M",
+                "PT1H"
+            ],
             "metadata": {
                 "description": "how often the metric alert is evaluated represented in ISO 8601 duration format"
             }
@@ -639,13 +687,13 @@ Mentse az alábbi json advancedstaticmetricalert.json Ez a bemutató céljából
 }
 ```
 
-A fenti sablon használható együtt az alábbi alkalmazásparaméter-fájlt. 
+A fenti sablonnal együtt használhatja az alább megadott paramétert. 
 
-Mentse, és ez a bemutató céljából advancedstaticmetricalert.parameters.json, az alábbi json módosítása.
+Mentse és módosítsa az alábbi JSON-t advancedstaticmetricalert. Parameters. JSON néven az útmutató céljára.
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "alertName": {
@@ -708,7 +756,7 @@ Mentse, és ez a bemutató céljából advancedstaticmetricalert.parameters.json
 ```
 
 
-A sablon és paraméterek fájllal, PowerShell vagy az Azure CLI használatával az aktuális munkakönyvtárba metrikariasztás hozhat létre
+A metrikai riasztást a sablon és paraméterek fájl segítségével hozhatja létre a PowerShell vagy az Azure CLI használatával az aktuális munkakönyvtárból
 
 Az Azure PowerShell használata
 ```powershell
@@ -735,15 +783,15 @@ az group deployment create \
 
 >[!NOTE]
 >
-> Bár a metrikariasztás létrehozható egy másik erőforráscsoportot, amelybe a célként megadott erőforrás, mint a célerőforrás ugyanabban az erőforráscsoportban használatát javasoljuk.
+> Míg a metrika riasztása egy másik erőforráscsoporthoz hozható létre a célként megadott erőforráshoz, javasoljuk, hogy ugyanazt az erőforráscsoportot használja, mint a célként megadott erőforrás.
 
-## <a name="template-for-a-more-advanced-dynamic-thresholds-metric-alert"></a>Speciális dinamikus küszöbértékek metrikariasztás sablonja
+## <a name="template-for-a-more-advanced-dynamic-thresholds-metric-alert"></a>Sablon a fejlettebb dinamikus küszöbértékek metrikai riasztáshoz
 
-Az alábbi sablon használatával speciális dinamikus küszöbértékek metrikariasztás létrehozása a többdimenziós metrikák. Többszörös feltétel jelenleg nem támogatottak.
+A következő sablonnal egy összetettebb dinamikus küszöbértékek mérőszáma hozható létre a dimenziós mérőszámokon. Több feltétel jelenleg nem támogatott.
 
-A szabály riasztásokat hozhat létre dinamikus küszöbértékek metrika sorozat (akár a különböző típusú) több száz küszöbértékek szabott egy időben, ami kevesebb riasztási szabályok kezelése.
+A dinamikus küszöbértékek riasztási szabálya több száz metrikus adatsorozathoz (akár különböző típusokhoz) szabott küszöbértékeket hozhat létre egyszerre, így kevesebb riasztási szabályt kell kezelni.
 
-Mentse az alábbi json advanceddynamicmetricalert.json Ez a bemutató céljából.
+Mentse az alábbi JSON-t advanceddynamicmetricalert. JSON néven az útmutató céljára.
 
 ```json
 {
@@ -800,13 +848,25 @@ Mentse az alábbi json advanceddynamicmetricalert.json Ez a bemutató céljábó
         "windowSize": {
             "type": "string",
             "defaultValue": "PT5M",
+            "allowedValues": [
+                "PT5M",
+                "PT15M",
+                "PT30M",
+                "PT1H"
+            ],
             "metadata": {
-                "description": "Period of time used to monitor alert activity based on the threshold. Must be between five minutes and one day. ISO 8601 duration format."
+                "description": "Period of time used to monitor alert activity based on the threshold. Must be between five minutes and one hour. ISO 8601 duration format."
             }
         },
         "evaluationFrequency": {
             "type": "string",
-            "defaultValue": "PT1M",
+            "defaultValue": "PT5M",
+            "allowedValues": [
+                "PT5M",
+                "PT15M",
+                "PT30M",
+                "PT1H"
+            ],
             "metadata": {
                 "description": "how often the metric alert is evaluated represented in ISO 8601 duration format"
             }
@@ -851,13 +911,13 @@ Mentse az alábbi json advanceddynamicmetricalert.json Ez a bemutató céljábó
 }
 ```
 
-A fenti sablon használható együtt az alábbi alkalmazásparaméter-fájlt. 
+A fenti sablonnal együtt használhatja az alább megadott paramétert. 
 
-Mentse, és ez a bemutató céljából advanceddynamicmetricalert.parameters.json, az alábbi json módosítása.
+Mentse és módosítsa az alábbi JSON-t advanceddynamicmetricalert. Parameters. JSON néven az útmutató céljára.
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "alertName": {
@@ -909,7 +969,7 @@ Mentse, és ez a bemutató céljából advanceddynamicmetricalert.parameters.jso
 ```
 
 
-A sablon és paraméterek fájllal, PowerShell vagy az Azure CLI használatával az aktuális munkakönyvtárba metrikariasztás hozhat létre
+A metrikai riasztást a sablon és paraméterek fájl segítségével hozhatja létre a PowerShell vagy az Azure CLI használatával az aktuális munkakönyvtárból
 
 Az Azure PowerShell használata
 ```powershell
@@ -936,25 +996,25 @@ az group deployment create \
 
 >[!NOTE]
 >
-> Bár a metrikariasztás létrehozható egy másik erőforráscsoportot, amelybe a célként megadott erőforrás, mint a célerőforrás ugyanabban az erőforráscsoportban használatát javasoljuk.
+> Míg a metrika riasztása egy másik erőforráscsoporthoz hozható létre a célként megadott erőforráshoz, javasoljuk, hogy ugyanazt az erőforráscsoportot használja, mint a célként megadott erőforrás.
 
-## <a name="template-for-metric-alert-that-monitors-multiple-resources"></a>Metrikariasztás, amely több erőforrást figyelésére szolgáló sablon
+## <a name="template-for-metric-alert-that-monitors-multiple-resources"></a>Több erőforrást figyelő metrikai riasztás sablonja
 
-A fentebbi szakaszokban leírt minta Azure Resource Manager-sablonok, metrikákkal kapcsolatos riasztások figyelése egyetlen erőforrás létrehozásához. Az Azure Monitor most már támogatja egyetlen a metrikaalapú riasztási szabály több erőforrások figyelése. Az előzetes verziójú funkció jelenleg csak az Azure Resource Manager-sablonok és a REST API használatával érhető el, és csak a virtuális gépek támogatott.
+Az előző szakaszokban a minta Azure Resource Manager sablonokat, amelyek egyetlen erőforrást figyelő metrikai riasztásokat hoznak létre. Azure Monitor mostantól több erőforrás figyelését is lehetővé teszi egyetlen metrikai riasztási szabállyal. Ez a funkció jelenleg csak az Azure nyilvános felhőben támogatott, és csak a Virtual Machines és a Databox Edge-eszközökön érhető el.
 
-Dinamikus küszöbérték riasztási szabály is segít több száz metrika sorozat (akár más esetében), testre szabott küszöbértékek létrehozása egy időben, ami kevesebb riasztási szabályok kezelése.
+A dinamikus küszöbértékek riasztási szabálya segítséget nyújt a testre szabott küszöbértékek létrehozásához egyszerre több száz metrikus adatsorozathoz (akár különböző típusokhoz is), így kevesebb riasztási szabályt kell kezelni.
 
-Ez a szakasz azt ismerteti, három forgatókönyv egyetlen szabállyal több erőforrások figyelése az Azure Resource Manager-sablonokkal.
+Ebből a szakaszból megtudhatja, hogy három forgatókönyv esetén hogyan figyelheti meg a több erőforrás egyetlen szabállyal való figyelésére Azure Resource Manager sablonokat.
 
-- (Egy Azure-régióban) található összes virtuális gép figyelése egy vagy több erőforráscsoport.
-- Az előfizetéshez (egy Azure-régióban) található összes virtuális gép figyelése
-- Figyelés egy adott előfizetés (az egyik Azure-régióból) a virtuális gépek listáját.
+- Egy vagy több erőforráscsoport összes virtuális gép (egy Azure-régióban) figyelése.
+- Egy előfizetésben lévő összes virtuális gép (egy Azure-régióban) figyelése
+- A virtuális gépek listájának figyelése (egy Azure-régióban) egy előfizetésben.
 
-### <a name="static-threshold-alert-on-all-virtual-machines-in-one-or-more-resource-groups"></a>Egy vagy több erőforráscsoport minden virtuális gép statikus küszöbértékének riasztási
+### <a name="static-threshold-alert-on-all-virtual-machines-in-one-or-more-resource-groups"></a>Statikus küszöbérték riasztása egy vagy több erőforráscsoport összes virtuális gépen
 
-Ez a sablon statikus küszöbérték a metrikaalapú riasztási szabály, amely figyeli a százalékos Processzorhasználat (egy Azure-régióban) található összes virtuális gépet hoz létre egy vagy több erőforráscsoport.
+Ez a sablon egy statikus küszöbérték-metrikai riasztási szabályt hoz létre, amely egy vagy több erőforráscsoport esetében az összes virtuális gép százalékos PROCESSZORát figyeli (egy Azure-régióban).
 
-Mentse az alábbi json all-vms-in-resource-group-static.json ebben az útmutatóban céljából.
+Mentse az alábbi JSON-t az All-VM-in-Resource-Group-static. JSON néven az útmutató céljára.
 
 ```json
 {
@@ -1100,7 +1160,8 @@ Mentse az alábbi json all-vms-in-resource-group-static.json ebben az útmutató
                 "Average",
                 "Minimum",
                 "Maximum",
-                "Total"
+                "Total",
+                "Count"
             ],
             "metadata": {
                 "description": "How the data that is collected should be combined over time."
@@ -1109,13 +1170,29 @@ Mentse az alábbi json all-vms-in-resource-group-static.json ebben az útmutató
         "windowSize": {
             "type": "string",
             "defaultValue": "PT5M",
+            "allowedValues": [
+                "PT1M",
+                "PT5M",
+                "PT15M",
+                "PT30M",
+                "PT1H",
+                "PT6H",
+                "PT12H",
+                "PT24H"
+            ],
             "metadata": {
-                "description": "Period of time used to monitor alert activity based on the threshold. Must be between five minutes and one day. ISO 8601 duration format."
+                "description": "Period of time used to monitor alert activity based on the threshold. Must be between one minute and one day. ISO 8601 duration format."
             }
         },
         "evaluationFrequency": {
             "type": "string",
             "defaultValue": "PT1M",
+            "allowedValues": [
+                "PT1M",
+                "PT5M",
+                "PT15M",
+                "PT30M"
+            ],
             "metadata": {
                 "description": "how often the metric alert is evaluated represented in ISO 8601 duration format"
             }
@@ -1169,12 +1246,12 @@ Mentse az alábbi json all-vms-in-resource-group-static.json ebben az útmutató
 }
 ```
 
-A fenti sablon az alábbi alkalmazásparaméter-fájlt is használhatja.
-Mentse, és módosítsa a bemutató céljából all-vms-in-resource-group-static.parameters.json, az alábbi json.
+A fenti sablonnal az alábbi paramétert használhatja.
+Mentse és módosítsa az alábbi JSON-t az összes virtuális gép-erőforrás-csoport-statikus. Parameters. JSON néven az útmutató céljára.
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "alertName": {
@@ -1220,7 +1297,7 @@ Mentse, és módosítsa a bemutató céljából all-vms-in-resource-group-static
 }
 ```
 
-A sablon és paraméterek fájllal, PowerShell vagy az Azure CLI használatával az aktuális munkakönyvtárba statikus metrikariasztás hozhat létre.
+A statikus metrikai riasztást a sablon és paraméterek fájl használatával hozhatja létre a PowerShell vagy az Azure CLI használatával az aktuális munkakönyvtárból.
 
 Az Azure PowerShell használata
 
@@ -1245,11 +1322,11 @@ az group deployment create \
     --parameters @all-vms-in-resource-group-static.parameters.json
 ```
 
-### <a name="dynamic-thresholds-alert-on-all-virtual-machines-in-one-or-more-resource-groups"></a>Egy vagy több erőforráscsoport minden virtuális gép dinamikus küszöbértékek riasztás
+### <a name="dynamic-thresholds-alert-on-all-virtual-machines-in-one-or-more-resource-groups"></a>Dinamikus küszöbértékek riasztása egy vagy több erőforráscsoport összes virtuális gépen
 
-Ezzel a sablonnal egy vagy több erőforráscsoport dinamikus küszöbértékeket a metrikaalapú riasztási szabály, amely figyeli a százalékos Processzorhasználat (egy Azure-régióban) található összes virtuális gépet hoz létre.
+Ez a sablon egy dinamikus küszöbértékek mérőszámának riasztási szabályát fogja létrehozni, amely egy vagy több erőforráscsoport esetében az összes virtuális gép százalékos PROCESSZORát figyeli (egy Azure-régióban).
 
-Mentse az alábbi json all-vms-in-resource-group-dynamic.json ebben az útmutatóban céljából.
+Mentse az alábbi JSON-t az All-VM-in-Resource-Group-Dynamic. JSON néven az útmutató céljára.
 
 ```json
 {
@@ -1411,7 +1488,8 @@ Mentse az alábbi json all-vms-in-resource-group-dynamic.json ebben az útmutat�
                 "Average",
                 "Minimum",
                 "Maximum",
-                "Total"
+                "Total",
+                "Count"
             ],
             "metadata": {
                 "description": "How the data that is collected should be combined over time."
@@ -1420,13 +1498,25 @@ Mentse az alábbi json all-vms-in-resource-group-dynamic.json ebben az útmutat�
         "windowSize": {
             "type": "string",
             "defaultValue": "PT5M",
+            "allowedValues": [
+                "PT5M",
+                "PT15M",
+                "PT30M",
+                "PT1H"
+            ],
             "metadata": {
-                "description": "Period of time used to monitor alert activity based on the threshold. Must be between five minutes and one day. ISO 8601 duration format."
+                "description": "Period of time used to monitor alert activity based on the threshold. Must be between five minutes and one hour. ISO 8601 duration format."
             }
         },
         "evaluationFrequency": {
             "type": "string",
-            "defaultValue": "PT1M",
+            "defaultValue": "PT5M",
+            "allowedValues": [
+                "PT5M",
+                "PT15M",
+                "PT30M",
+                "PT1H"
+            ],
             "metadata": {
                 "description": "how often the metric alert is evaluated represented in ISO 8601 duration format"
             }
@@ -1485,12 +1575,12 @@ Mentse az alábbi json all-vms-in-resource-group-dynamic.json ebben az útmutat�
 }
 ```
 
-A fenti sablon az alábbi alkalmazásparaméter-fájlt is használhatja.
-Mentse, és módosítsa a bemutató céljából all-vms-in-resource-group-dynamic.parameters.json, az alábbi json.
+A fenti sablonnal az alábbi paramétert használhatja.
+Mentse és módosítsa az alábbi JSON-t az összes virtuális gép-erőforrás-csoport-dinamikus. Parameters. JSON néven az útmutató céljára.
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "alertName": {
@@ -1542,7 +1632,7 @@ Mentse, és módosítsa a bemutató céljából all-vms-in-resource-group-dynami
 }
 ```
 
-A sablon és paraméterek fájllal, PowerShell vagy az Azure CLI használatával az aktuális munkakönyvtárba metrikariasztás hozhat létre.
+A metrikai riasztást a sablon és paraméterek fájl segítségével hozhatja létre a PowerShell vagy az Azure CLI használatával az aktuális munkakönyvtárból.
 
 Az Azure PowerShell használata
 
@@ -1567,11 +1657,11 @@ az group deployment create \
     --parameters @all-vms-in-resource-group-dynamic.parameters.json
 ```
 
-### <a name="static-threshold-alert-on-all-virtual-machines-in-a-subscription"></a>Egy adott előfizetés összes virtuális gép statikus küszöbértékének riasztási
+### <a name="static-threshold-alert-on-all-virtual-machines-in-a-subscription"></a>Statikus küszöbérték riasztása egy előfizetésben lévő összes virtuális gépen
 
-Ezzel a sablonnal statikus küszöbérték a metrikaalapú riasztási szabály, amely figyeli a százalékos Processzorhasználat (egy Azure-régióban) található összes virtuális gépet hoz létre az előfizetéshez.
+Ez a sablon egy statikus küszöbérték-metrikai riasztási szabályt hoz létre, amely figyeli az előfizetésben lévő összes virtuális gép százalékos PROCESSZORát (egy Azure-régióban).
 
-Mentse az alábbi json minden – virtuális gépek-az-előfizetés-static.json ebben az útmutatóban céljából.
+Mentse az alábbi JSON-t az All-VM-in-előfizetés-static. JSON néven az útmutató céljára.
 
 ```json
 {
@@ -1717,7 +1807,8 @@ Mentse az alábbi json minden – virtuális gépek-az-előfizetés-static.json 
                 "Average",
                 "Minimum",
                 "Maximum",
-                "Total"
+                "Total",
+                "Count"
             ],
             "metadata": {
                 "description": "How the data that is collected should be combined over time."
@@ -1726,13 +1817,29 @@ Mentse az alábbi json minden – virtuális gépek-az-előfizetés-static.json 
         "windowSize": {
             "type": "string",
             "defaultValue": "PT5M",
+            "allowedValues": [
+                "PT1M",
+                "PT5M",
+                "PT15M",
+                "PT30M",
+                "PT1H",
+                "PT6H",
+                "PT12H",
+                "PT24H"
+            ],
             "metadata": {
-                "description": "Period of time used to monitor alert activity based on the threshold. Must be between five minutes and one day. ISO 8601 duration format."
+                "description": "Period of time used to monitor alert activity based on the threshold. Must be between one minute and one day. ISO 8601 duration format."
             }
         },
         "evaluationFrequency": {
             "type": "string",
             "defaultValue": "PT1M",
+            "allowedValues": [
+                "PT5M",
+                "PT15M",
+                "PT30M",
+                "PT1H"
+            ],
             "metadata": {
                 "description": "how often the metric alert is evaluated represented in ISO 8601 duration format"
             }
@@ -1786,12 +1893,12 @@ Mentse az alábbi json minden – virtuális gépek-az-előfizetés-static.json 
 }
 ```
 
-A fenti sablon az alábbi alkalmazásparaméter-fájlt is használhatja.
-Mentse, és minden – virtuális gépek-az-előfizetés-static.parameters.json Ez a bemutató céljából, az alábbi json módosítása.
+A fenti sablonnal az alábbi paramétert használhatja.
+Mentse és módosítsa a JSON-t az alábbi módon: ALL-VM-in-előfizetés-static. Parameters. JSON az útmutató céljára.
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "alertName": {
@@ -1834,7 +1941,7 @@ Mentse, és minden – virtuális gépek-az-előfizetés-static.parameters.json 
 }
 ```
 
-A sablon és paraméterek fájllal, PowerShell vagy az Azure CLI használatával az aktuális munkakönyvtárba metrikariasztás hozhat létre.
+A metrikai riasztást a sablon és paraméterek fájl segítségével hozhatja létre a PowerShell vagy az Azure CLI használatával az aktuális munkakönyvtárból.
 
 Az Azure PowerShell használata
 
@@ -1859,11 +1966,11 @@ az group deployment create \
     --parameters @all-vms-in-subscription.parameters-static.json
 ```
 
-### <a name="dynamic-thresholds-alert-on-all-virtual-machines-in-a-subscription"></a>Egy adott előfizetés összes virtuális gép dinamikus küszöbértékek riasztás
+### <a name="dynamic-thresholds-alert-on-all-virtual-machines-in-a-subscription"></a>Dinamikus küszöbértékek riasztása egy előfizetésben lévő összes virtuális gépen
 
-Ezzel a sablonnal hoz létre dinamikus küszöbértékeket a metrikaalapú riasztási szabály, amely figyeli a százalékos Processzorhasználat az összes virtuális gép (egy Azure-régióban) az előfizetéshez.
+Ez a sablon egy dinamikus küszöbértékek mérőszámának riasztási szabályát fogja létrehozni, amely figyeli az előfizetésben lévő összes virtuális gép százalékos PROCESSZORát (egy Azure-régióban).
 
-Mentse az alábbi json minden – virtuális gépek-az-előfizetés-dynamic.json ebben az útmutatóban céljából.
+Mentse az alábbi JSON-t az All-VM-in-előfizetés-Dynamic. JSON néven az útmutató céljára.
 
 ```json
 {
@@ -2025,7 +2132,8 @@ Mentse az alábbi json minden – virtuális gépek-az-előfizetés-dynamic.json
                 "Average",
                 "Minimum",
                 "Maximum",
-                "Total"
+                "Total",
+                "Count"
             ],
             "metadata": {
                 "description": "How the data that is collected should be combined over time."
@@ -2034,13 +2142,25 @@ Mentse az alábbi json minden – virtuális gépek-az-előfizetés-dynamic.json
         "windowSize": {
             "type": "string",
             "defaultValue": "PT5M",
+            "allowedValues": [
+                "PT5M",
+                "PT15M",
+                "PT30M",
+                "PT1H"
+            ],
             "metadata": {
-                "description": "Period of time used to monitor alert activity based on the threshold. Must be between five minutes and one day. ISO 8601 duration format."
+                "description": "Period of time used to monitor alert activity based on the threshold. Must be between five minutes and one hour. ISO 8601 duration format."
             }
         },
         "evaluationFrequency": {
             "type": "string",
-            "defaultValue": "PT1M",
+            "defaultValue": "PT5M",
+            "allowedValues": [
+                "PT5M",
+                "PT15M",
+                "PT30M",
+                "PT1H"
+            ],
             "metadata": {
                 "description": "how often the metric alert is evaluated represented in ISO 8601 duration format"
             }
@@ -2099,12 +2219,12 @@ Mentse az alábbi json minden – virtuális gépek-az-előfizetés-dynamic.json
 }
 ```
 
-A fenti sablon az alábbi alkalmazásparaméter-fájlt is használhatja.
-Mentse, és minden – virtuális gépek-az-előfizetés-dynamic.parameters.json Ez a bemutató céljából, az alábbi json módosítása.
+A fenti sablonnal az alábbi paramétert használhatja.
+Mentse és módosítsa a JSON-t az alábbi módon: ALL-VM-in-előfizetés-Dynamic. Parameters. JSON az útmutató céljára.
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "alertName": {
@@ -2153,7 +2273,7 @@ Mentse, és minden – virtuális gépek-az-előfizetés-dynamic.parameters.json
 }
 ```
 
-A sablon és paraméterek fájllal, PowerShell vagy az Azure CLI használatával az aktuális munkakönyvtárba metrikariasztás hozhat létre.
+A metrikai riasztást a sablon és paraméterek fájl segítségével hozhatja létre a PowerShell vagy az Azure CLI használatával az aktuális munkakönyvtárból.
 
 Az Azure PowerShell használata
 
@@ -2178,11 +2298,11 @@ az group deployment create \
     --parameters @all-vms-in-subscription-dynamic.parameter-dynamics.json
 ```
 
-### <a name="static-threshold-alert-on-a-list-of-virtual-machines"></a>Statikus küszöbértékének riasztási a virtuális gépek listája
+### <a name="static-threshold-alert-on-a-list-of-virtual-machines"></a>Statikus küszöbérték riasztása a virtuális gépek listájáról
 
-Ezzel a sablonnal hoz létre a statikus küszöbérték a metrikaalapú riasztási szabály, amely figyeli a százalékos Processzorhasználat (az egyik Azure-régióból) a virtuális gépek listáját az előfizetéshez.
+Ez a sablon létrehoz egy statikus küszöbérték-metrikai riasztási szabályt, amely figyeli a százalékos CPU-t az előfizetésben található virtuális gépek (egy Azure-régióban) listájához.
 
-Mentse az alábbi json list-az-virtuális gépek – static.json ebben az útmutatóban céljából.
+Mentse az alábbi JSON-t a-VM-static. JSON néven az útmutató céljára.
 
 ```json
 {
@@ -2328,7 +2448,8 @@ Mentse az alábbi json list-az-virtuális gépek – static.json ebben az útmut
                 "Average",
                 "Minimum",
                 "Maximum",
-                "Total"
+                "Total",
+                "Count"
             ],
             "metadata": {
                 "description": "How the data that is collected should be combined over time."
@@ -2337,13 +2458,30 @@ Mentse az alábbi json list-az-virtuális gépek – static.json ebben az útmut
         "windowSize": {
             "type": "string",
             "defaultValue": "PT5M",
+            "allowedValues": [
+                "PT1M",
+                "PT5M",
+                "PT15M",
+                "PT30M",
+                "PT1H",
+                "PT6H",
+                "PT12H",
+                "PT24H"
+            ],
             "metadata": {
-                "description": "Period of time used to monitor alert activity based on the threshold. Must be between five minutes and one day. ISO 8601 duration format."
+                "description": "Period of time used to monitor alert activity based on the threshold. Must be between one minute and one day. ISO 8601 duration format."
             }
         },
         "evaluationFrequency": {
             "type": "string",
             "defaultValue": "PT1M",
+            "allowedValues": [
+                "PT1M",
+                "PT5M",
+                "PT15M",
+                "PT30M",
+                "PT1H""
+            ],
             "metadata": {
                 "description": "how often the metric alert is evaluated represented in ISO 8601 duration format"
             }
@@ -2397,12 +2535,12 @@ Mentse az alábbi json list-az-virtuális gépek – static.json ebben az útmut
 }
 ```
 
-A fenti sablon az alábbi alkalmazásparaméter-fájlt is használhatja.
-Mentse, és a lista-az-virtuális gépek – static.parameters.json Ez a bemutató céljából, az alábbi json módosítása.
+A fenti sablonnal az alábbi paramétert használhatja.
+Mentse és módosítsa az alábbi JSON-t a-VM-static. Parameters. JSON néven a jelen útmutató céljára.
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "alertName": {
@@ -2448,7 +2586,7 @@ Mentse, és a lista-az-virtuális gépek – static.parameters.json Ez a bemutat
 }
 ```
 
-A sablon és paraméterek fájllal, PowerShell vagy az Azure CLI használatával az aktuális munkakönyvtárba metrikariasztás hozhat létre.
+A metrikai riasztást a sablon és paraméterek fájl segítségével hozhatja létre a PowerShell vagy az Azure CLI használatával az aktuális munkakönyvtárból.
 
 Az Azure PowerShell használata
 
@@ -2473,11 +2611,11 @@ az group deployment create \
     --parameters @list-of-vms-static.parameters.json
 ```
 
-### <a name="dynamic-thresholds-alert-on-a-list-of-virtual-machines"></a>Dinamikus küszöbérték riasztás a virtuális gépek listája
+### <a name="dynamic-thresholds-alert-on-a-list-of-virtual-machines"></a>Dinamikus küszöbértékek riasztása a virtuális gépek listájáról
 
-Ezzel a sablonnal hoz létre dinamikus küszöbértékeket a metrikaalapú riasztási szabály, amely százalékos Processzorhasználat figyeli egy adott előfizetés (az egyik Azure-régióból) a virtuális gépek listáját.
+Ez a sablon létrehoz egy dinamikus küszöbértékek metrikus riasztási szabályt, amely figyeli a százalékos CPU-t egy előfizetésben lévő virtuális gépek (egy Azure-régióban) listájához.
 
-Mentse az alábbi json list-az-virtuális gépek – dynamic.json ebben az útmutatóban céljából.
+Mentse az alábbi JSON-t a-VM-Dynamic. JSON néven az útmutató céljára.
 
 ```json
 {
@@ -2639,7 +2777,8 @@ Mentse az alábbi json list-az-virtuális gépek – dynamic.json ebben az útmu
                 "Average",
                 "Minimum",
                 "Maximum",
-                "Total"
+                "Total",
+                "Count"
             ],
             "metadata": {
                 "description": "How the data that is collected should be combined over time."
@@ -2648,13 +2787,25 @@ Mentse az alábbi json list-az-virtuális gépek – dynamic.json ebben az útmu
         "windowSize": {
             "type": "string",
             "defaultValue": "PT5M",
+             "allowedValues": [
+                "PT5M",
+                "PT15M",
+                "PT30M",
+                "PT1H"
+            ],
             "metadata": {
-                "description": "Period of time used to monitor alert activity based on the threshold. Must be between five minutes and one day. ISO 8601 duration format."
+                "description": "Period of time used to monitor alert activity based on the threshold. Must be between five minutes and one hour. ISO 8601 duration format."
             }
         },
         "evaluationFrequency": {
             "type": "string",
-            "defaultValue": "PT1M",
+            "defaultValue": "PT5M",
+             "allowedValues": [
+                "PT5M",
+                "PT15M",
+                "PT30M",
+                "PT1H"
+            ],
             "metadata": {
                 "description": "how often the metric alert is evaluated represented in ISO 8601 duration format"
             }
@@ -2713,12 +2864,12 @@ Mentse az alábbi json list-az-virtuális gépek – dynamic.json ebben az útmu
 }
 ```
 
-A fenti sablon az alábbi alkalmazásparaméter-fájlt is használhatja.
-Mentse, és a lista-az-virtuális gépek – dynamic.parameters.json Ez a bemutató céljából, az alábbi json módosítása.
+A fenti sablonnal az alábbi paramétert használhatja.
+Mentse és módosítsa az alábbi JSON-t a virtuális gép-dinamikus. Parameters. JSON néven a jelen útmutató céljára.
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "alertName": {
@@ -2770,7 +2921,7 @@ Mentse, és a lista-az-virtuális gépek – dynamic.parameters.json Ez a bemuta
 }
 ```
 
-A sablon és paraméterek fájllal, PowerShell vagy az Azure CLI használatával az aktuális munkakönyvtárba metrikariasztás hozhat létre.
+A metrikai riasztást a sablon és paraméterek fájl segítségével hozhatja létre a PowerShell vagy az Azure CLI használatával az aktuális munkakönyvtárból.
 
 Az Azure PowerShell használata
 
@@ -2795,8 +2946,159 @@ az group deployment create \
     --parameters @list-of-vms-dynamic.parameters.json
 ```
 
-## <a name="next-steps"></a>További lépések
-* Tudjon meg többet [riasztások az Azure-ban](alerts-overview.md)
-* Ismerje meg, hogyan [műveletcsoport létrehozása a Resource Manager-sablonokkal](action-groups-create-resource-manager-template.md)
-* A JSON-szintaxist és a Tulajdonságok [Microsoft.Insights/metricAlerts](/azure/templates/microsoft.insights/metricalerts) tárfióksablonok referenciáját.
+## <a name="template-for-a-availability-test-along-with-availability-test-alert"></a>Sablon a rendelkezésre állási tesztekhez, valamint a rendelkezésre állási teszttel kapcsolatos riasztás
 
+[Application Insights rendelkezésre állási tesztek](../../azure-monitor/app/monitor-web-app-availability.md) segítségével figyelheti a webhely vagy alkalmazás elérhetőségét a világ különböző helyeiről. A rendelkezésre állási teszt riasztásai értesítik, ha a rendelkezésre állási tesztek bizonyos számú helyről sikertelenek.
+A rendelkezésre állási tesztekkel kapcsolatos riasztások ugyanazzal az erőforrással, mint a metrikai riasztások (Microsoft. bepillantások/metricAlerts). A következő minta Azure Resource Manager sablonnal egy egyszerű rendelkezésre állási teszt és egy kapcsolódó riasztás állítható be.
+
+Mentse az alábbi JSON-t availabilityalert. JSON néven az útmutató céljára.
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "appName": {
+      "type": "string"
+    },
+    "pingURL": {
+      "type": "string"
+    },
+    "pingText": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "actionGroupId": {
+      "type": "string"
+    }
+  },
+  "variables": {
+    "pingTestName": "[concat('PingTest-', toLower(parameters('appName')))]",
+    "pingAlertRuleName": "[concat('PingAlert-', toLower(parameters('appName')), '-', subscription().subscriptionId)]"
+  },
+  "resources": [
+    {
+      "name": "[variables('pingTestName')]",
+      "type": "Microsoft.Insights/webtests",
+      "apiVersion": "2014-04-01",
+      "location": "West Central US",
+      "tags": {
+        "[concat('hidden-link:', resourceId('Microsoft.Insights/components', parameters('appName')))]": "Resource"
+      },
+      "properties": {
+        "Name": "[variables('pingTestName')]",
+        "Description": "Basic ping test",
+        "Enabled": true,
+        "Frequency": 300,
+        "Timeout": 120,
+        "Kind": "ping",
+        "RetryEnabled": true,
+        "Locations": [
+          {
+            "Id": "us-va-ash-azr"
+          },
+          {
+            "Id": "emea-nl-ams-azr"
+          },
+          {
+            "Id": "apac-jp-kaw-edge"
+          }
+        ],
+        "Configuration": {
+          "WebTest": "[concat('<WebTest   Name=\"', variables('pingTestName'), '\"   Enabled=\"True\"         CssProjectStructure=\"\"    CssIteration=\"\"  Timeout=\"120\"  WorkItemIds=\"\"         xmlns=\"http://microsoft.com/schemas/VisualStudio/TeamTest/2010\"         Description=\"\"  CredentialUserName=\"\"  CredentialPassword=\"\"         PreAuthenticate=\"True\"  Proxy=\"default\"  StopOnError=\"False\"         RecordedResultFile=\"\"  ResultsLocale=\"\">  <Items>  <Request Method=\"GET\"    Version=\"1.1\"  Url=\"', parameters('pingURL'),   '\" ThinkTime=\"0\"  Timeout=\"300\" ParseDependentRequests=\"True\"         FollowRedirects=\"True\" RecordResult=\"True\" Cache=\"False\"         ResponseTimeGoal=\"0\"  Encoding=\"utf-8\"  ExpectedHttpStatusCode=\"200\"         ExpectedResponseUrl=\"\" ReportingName=\"\" IgnoreHttpStatusCode=\"False\" />        </Items>  <ValidationRules> <ValidationRule  Classname=\"Microsoft.VisualStudio.TestTools.WebTesting.Rules.ValidationRuleFindText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a\" DisplayName=\"Find Text\"         Description=\"Verifies the existence of the specified text in the response.\"         Level=\"High\"  ExecutionOrder=\"BeforeDependents\">  <RuleParameters>        <RuleParameter Name=\"FindText\" Value=\"',   parameters('pingText'), '\" />  <RuleParameter Name=\"IgnoreCase\" Value=\"False\" />  <RuleParameter Name=\"UseRegularExpression\" Value=\"False\" />  <RuleParameter Name=\"PassIfTextFound\" Value=\"True\" />  </RuleParameters> </ValidationRule>  </ValidationRules>  </WebTest>')]"
+        },
+        "SyntheticMonitorId": "[variables('pingTestName')]"
+      }
+    },
+    {
+      "name": "[variables('pingAlertRuleName')]",
+      "type": "Microsoft.Insights/metricAlerts",
+      "apiVersion": "2018-03-01",
+      "location": "global",
+      "dependsOn": [
+        "[resourceId('Microsoft.Insights/webtests', variables('pingTestName'))]"
+      ],
+      "tags": {
+        "[concat('hidden-link:', resourceId('Microsoft.Insights/components', parameters('appName')))]": "Resource",
+        "[concat('hidden-link:', resourceId('Microsoft.Insights/webtests', variables('pingTestName')))]": "Resource"
+      },
+      "properties": {
+        "description": "Alert for web test",
+        "severity": 1,
+        "enabled": true,
+        "scopes": [
+          "[resourceId('Microsoft.Insights/webtests',variables('pingTestName'))]",
+          "[resourceId('Microsoft.Insights/components',parameters('appName'))]"
+        ],
+        "evaluationFrequency": "PT1M",
+        "windowSize": "PT5M",
+        "templateType": 0,
+        "criteria": {
+          "odata.type": "Microsoft.Azure.Monitor.WebtestLocationAvailabilityCriteria",
+          "webTestId": "[resourceId('Microsoft.Insights/webtests', variables('pingTestName'))]",
+          "componentId": "[resourceId('Microsoft.Insights/components', parameters('appName'))]",
+          "failedLocationCount": 2
+        },
+        "actions": [
+          {
+            "actionGroupId": "[parameters('actionGroupId')]"
+          }
+        ]
+      }
+    }
+  ]
+}
+```
+
+A paraméterek értékeit a parancssorban vagy egy paraméterérték használatával állíthatja be. Az alábbiakban egy példaként megadott paramétert tartalmazó fájlt talál.
+
+Mentse az alábbi JSON-t availabilityalert. Parameters. JSON néven, és módosítsa a szükséges módon.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "appName": {
+            "value": "Replace with your Application Insights component name"
+        },
+        "pingURL": {
+            "value": "https://www.yoursite.com"
+        },
+        "actionGroupId": {
+            "value": "/subscriptions/replace-with-subscription-id/resourceGroups/replace-with-resourceGroup-name/providers/microsoft.insights/actiongroups/replace-with-action-group-name"
+        }
+    }
+}
+```
+
+A rendelkezésre állási tesztet és a hozzá tartozó riasztást a sablon és paraméterek fájl használatával hozhatja létre a PowerShell vagy az Azure CLI használatával.
+
+Az Azure PowerShell használata
+
+```powershell
+Connect-AzAccount
+
+Select-AzSubscription -SubscriptionName <yourSubscriptionName>
+
+New-AzResourceGroupDeployment -Name AvailabilityAlertDeployment -ResourceGroupName ResourceGroupofApplicationInsightsComponent `
+  -TemplateFile availabilityalert.json -TemplateParameterFile availabilityalert.parameters.json
+```
+
+Az Azure parancssori felület használata
+
+```azurecli
+az login
+
+az group deployment create \
+    --name AvailabilityAlertDeployment \
+    --resource-group ResourceGroupofApplicationInsightsComponent \
+    --template-file availabilityalert.json \
+    --parameters @availabilityalert.parameters.json
+```
+
+## <a name="next-steps"></a>További lépések
+
+- További információ [Az Azure-beli riasztásokról](alerts-overview.md)
+- Megtudhatja, hogyan [hozhat létre műveleti csoportot Resource Manager-sablonokkal](action-groups-create-resource-manager-template.md)
+- A JSON szintaxis és tulajdonságok esetében lásd: [Microsoft. metricAlerts/](/azure/templates/microsoft.insights/metricalerts) a sablon referenciája.

@@ -5,19 +5,19 @@ ms.topic: include
 ms.date: 11/03/2016
 ms.author: cephalin
 ms.openlocfilehash: f188f2c7bea511f1109d37ef49563e0f745a770e
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50133462"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "68385747"
 ---
-Az Azure Resource Managerrel meghatározhatja a sablon üzembe helyezésekor használandó értékeket a paraméterek. A sablon tartalmaz egy `parameters` összes paraméter értékét tartalmazó szakasz. Minden egyes paraméterérték használják a sablont, amely számára telepíteni kívánja az erőforrások definiálása.
+A Azure Resource Manager segítségével paramétereket adhat meg a sablon telepítésekor használandó értékekhez. A sablon tartalmaz egy `parameters` szakaszt, amely tartalmazza az összes paraméter értékét. A sablon minden paraméter értékét felhasználja a telepíteni kívánt erőforrások definiálásához.
 
 > [!NOTE]
-> Ne adjon meg olyan paramétereket olyan értékhez, amelyek nem változnak. Határozza meg a paraméterek csak az értékeket, amelyek eltérőek lehetnek, a projekt végzi vagy telepítéséhez a környezet alapján.
+> Ne adjon meg olyan paramétereket olyan értékhez, amelyek nem változnak. Csak olyan értékekhez adjon meg paramétereket, amelyek az üzembe helyezett projekt alapján vagy az üzembe helyezett környezet alapján változnak.
 
-Ha paraméterek meghatározása:
+Paraméterek megadásakor:
 
-* A felhasználó általi üzembe helyezés során az engedélyezett értékek megadásához használja a **allowedValues** mező.
+* A felhasználók által az üzembe helyezés során megadható engedélyezett értékek megadásához használja a **allowedValues** mezőt.
 
-* Szeretne hozzárendelni, paraméterben alapértelmezett értékeket, ha nincs fel van tüntetve, üzembe helyezés során, használja a **defaultValue** mező. 
+* Ha alapértelmezett értékeket szeretne hozzárendelni a paraméterhez, ha az üzembe helyezés során nincs megadva érték, használja a **defaultValue** mezőt. 

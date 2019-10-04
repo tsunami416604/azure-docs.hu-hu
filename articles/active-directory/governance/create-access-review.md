@@ -1,9 +1,9 @@
 ---
-title: Hozzon létre a csoportokat vagy alkalmazásokat – Azure Active Directory hozzáférési felülvizsgálatok |} A Microsoft Docs
-description: Ismerje meg a csoport tagjainak vagy alkalmazás-hozzáférés hozzáférési felülvizsgálat létrehozása az Azure Active Directory hozzáférési felülvizsgálatok.
+title: Csoportok vagy alkalmazások hozzáférési felülvizsgálatának létrehozása – Azure Active Directory | Microsoft Docs
+description: Megtudhatja, hogyan hozhat létre hozzáférési felülvizsgálatot a csoporttagokról vagy az alkalmazás-hozzáférésről Azure Active Directory hozzáférési felülvizsgálatokban.
 services: active-directory
-author: rolyon
-manager: mtillman
+author: msaburnley
+manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
@@ -11,133 +11,129 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/01/2019
-ms.author: rolyon
+ms.date: 05/21/2019
+ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 804efa6e0a39e009e18bbb9dec5ad1638a163597
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 230fb40c8e3a100d2fdfa0af6b40c93c3e5b47d2
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59495054"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68499725"
 ---
-# <a name="create-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>A csoportok a hozzáférési felülvizsgálat létrehozása és alkalmazások az Azure AD hozzáférési felülvizsgálatokkal
+# <a name="create-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>Csoportok vagy alkalmazások hozzáférési felülvizsgálatának létrehozása az Azure AD hozzáférési felülvizsgálatokban
 
-Hozzáférési csoportoknak és alkalmazásoknak az alkalmazottak és a vendégek változik az idő múlásával. A régi hozzáférési hozzárendelések kockázatának csökkentése érdekében a rendszergazdák az Azure Active Directory (Azure AD) használhatják a hozzáférési felülvizsgálatok létrehozása csoporttagok vagy alkalmazás-hozzáférés. Rendszeresen ellenőrizze a hozzáférés van szüksége, ha ismétlődő a hozzáférési felülvizsgálatok is létrehozhat. Ilyen forgatókönyvekkel kapcsolatos további információkért lásd: [felhasználói hozzáférés felügyelete](manage-user-access-with-access-reviews.md) és [vendégfelhasználói hozzáférés felügyelete](manage-guest-access-with-access-reviews.md).
+A csoportokhoz és alkalmazásokhoz való hozzáférés az alkalmazottak és a vendégek számára az idő múlásával változik. Az elavult hozzáférési hozzárendelésekhez kapcsolódó kockázatok csökkentése érdekében a rendszergazdák Azure Active Directory (Azure AD) használatával hozhatnak létre hozzáférési felülvizsgálatokat a csoporttagok vagy az alkalmazások eléréséhez. Ha rendszeresen szeretné áttekinteni a hozzáférést, akkor ismétlődő hozzáférési felülvizsgálatokat is létrehozhat. További információ ezekről a forgatókönyvekről: a [felhasználói hozzáférés kezelése](manage-user-access-with-access-reviews.md) és a [vendég-hozzáférés kezelése](manage-guest-access-with-access-reviews.md).
 
-Ez a cikk ismerteti, hogyan hozhat létre egy vagy több hozzáférési felülvizsgálatok csoporttagok vagy alkalmazás-hozzáférést.
+Ez a cikk azt ismerteti, hogyan hozhat létre egy vagy több hozzáférési felülvizsgálatot a csoporttagok vagy az alkalmazások eléréséhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- [A hozzáférési felülvizsgálatok engedélyezve](access-reviews-overview.md)
+- Azure AD Premium P2
 - Globális rendszergazda vagy felhasználói rendszergazda
 
-## <a name="create-one-or-more-access-reviews"></a>Hozzon létre egy vagy több hozzáférési felülvizsgálatok
+További információ: [mely felhasználóknak kell licenceket tartalmazniuk?](access-reviews-overview.md#which-users-must-have-licenses)
 
-1. Jelentkezzen be az Azure Portalon, és nyissa meg a [hozzáférési felülvizsgálatok lapot](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/).
+## <a name="create-one-or-more-access-reviews"></a>Egy vagy több hozzáférési felülvizsgálat létrehozása
 
-1. A bal oldali menüben kattintson a **hozzáférési felülvizsgálatokkal**.
+1. Jelentkezzen be a Azure Portalba, és nyissa meg az [Identity irányításáért lapot](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/).
 
-1. Kattintson a **új hozzáférési felülvizsgálat** egy új hozzáférési felülvizsgálat létrehozása.
+1. A bal oldali menüben kattintson a **hozzáférési felülvizsgálatok**elemre.
 
-    ![Hozzáférési felülvizsgálat - vezérlők](./media/create-access-review/access-reviews.png)
+1. Új hozzáférési felülvizsgálat létrehozásához kattintson az **új hozzáférés-ellenőrzés** elemre.
 
-1. A hozzáférési felülvizsgálat neve. A felülvizsgálat igény szerint adjon meg leírást. A nevet és leírást a felülvizsgálóknak jelennek meg.
+    ![Az identitás-irányítás hozzáférési felülvizsgálatok panelje](./media/create-access-review/access-reviews.png)
 
-    ![Hozzáférési felülvizsgálat létrehozása – felülvizsgálat neve és leírása](./media/create-access-review/name-description.png)
+1. Nevezze el a hozzáférési felülvizsgálatot. Szükség esetén adja meg a Leírás áttekintését. A név és a leírás a felülvizsgálók számára jelenik meg.
 
-1. Állítsa be a **kezdő dátum**. Alapértelmezés szerint a hozzáférési felülvizsgálat egyszer végbemegy, létrejön egy időben kezdődik, és egy hónap alatt végződik. Módosíthatja a kezdő és záró dátumát férnek hozzá egy tekintse át kezdő legutóbbi és a jövőben azonban hány nappal kívánja.
+    ![Hozzáférési felülvizsgálat létrehozása – a név és a Leírás áttekintése](./media/create-access-review/name-description.png)
 
-    ![Hozzáférési felülvizsgálat - létrehozása kezdési és befejezési dátuma](./media/create-access-review/start-end-dates.png)
+1. Állítsa be a **kezdő dátumot**. Alapértelmezés szerint a hozzáférési felülvizsgálat egyszer is megtörténik, és egy hónapon belül megkezdődik. A kezdő és a záró dátum módosításával megkezdheti a hozzáférési felülvizsgálat megkezdését a jövőben, és több napot is megadhat.
 
-1. Ahhoz, hogy a hozzáférési felülvizsgálat ismétlődési, módosítsa a **gyakorisága** beállítást **egyszer** való **heti**, **havi**,  **Negyedéves** vagy **évente**. Használja a **időtartama** meghatározásához, hány napig lesz az ismétlődő sorozatának kritika nyissa meg a felülvizsgálóknak a bemenetet a csúszka vagy a beviteli mezőben. Például a maximális időtartam, amely lehet a havi felülvizsgálat 27 nap, kerülje az átfedésben lévő értékelések.
+    ![Hozzáférési felülvizsgálat létrehozása – kezdési és befejezési dátumok](./media/create-access-review/start-end-dates.png)
 
-1. Használja a **záró** a beállítás határozza meg az ismétlődő hozzáférés befejezése tekintse át a sorozat. A sorozat fejezheti be háromféleképpen: folyamatosan felülvizsgálatok határozatlan ideig, amíg egy adott dátumot, vagy egy meghatározott előfordulások száma befejezése után el futtatja. Azt, egy másik felhasználó rendszergazda vagy egy másik globális rendszergazda állíthatja le a sorozat létrehozása után a dátumot a módosításával **beállítások**, így az adott dátumon végződik.
+1. A hozzáférési felülvizsgálat ismétlődővé tételéhez módosítsa a **gyakoriság** beállítását **egy alkalommal** **hetente**, **havonta**, **negyedévente** vagy **évente**. Az **időtartam** csúszka vagy a szövegmező segítségével megadhatja, hogy a rendszer hány napig nyissa meg az ismétlődő adatsorozatok összes felülvizsgálatát a véleményezők számára. Például a havi felülvizsgálathoz beállítható maximális időtartam 27 nap, az átfedő felülvizsgálatok elkerülése érdekében.
 
-1. Az a **felhasználók** szakaszban adja meg a felhasználók, a hozzáférési felülvizsgálat vonatkozik. A hozzáférési felülvizsgálatok lehet a felhasználók számára, akik hozzá lett rendelve egy alkalmazás vagy egy csoport tagjai számára. A hozzáférés tekintse át a felülvizsgálati csak a vendégfelhasználók akik tagjai (vagy az alkalmazáshoz hozzárendelt), ahelyett, hogy tekintse át az összes felhasználó számára a tagja, vagy hozzáférni az alkalmazáshoz rendelkező további körét.
+1. A **befejezési** beállítással adhatja meg az ismétlődő hozzáférés-felülvizsgálati sorozat befejezésének módját. A sorozat három módon végződhet: a folyamatosan futtatott értékelések határozatlan ideig, egy adott dátumig vagy egy meghatározott számú előfordulás után is megkezdődhetnek. Ön, egy másik felhasználó rendszergazdája vagy egy másik globális rendszergazda állíthatja le a sorozatot a létrehozás után, hogy megváltoztatta a dátumot a **beállításokban**, hogy az adott időpontban véget vessen.
 
-    ![Hozzáférési felülvizsgálat - felhasználók létrehozása](./media/create-access-review/users.png)
+1. A **felhasználók** szakaszban válassza ki azokat a felhasználókat, akikre a hozzáférési felülvizsgálat vonatkozik. A hozzáférési felülvizsgálatok lehetnek egy csoport tagjai vagy egy alkalmazáshoz hozzárendelt felhasználók számára. A hozzáférési felülvizsgálat továbbra is kiterjeszthető, hogy csak azok a vendég felhasználók legyenek áttekintve, akik tagjai (vagy az alkalmazáshoz vannak rendelve), és nem tekinti át az alkalmazáshoz hozzáférő összes felhasználót.
 
-1. Az a **csoport** területen válassza ki egy vagy több olyan csoportot, amelyet szeretne, tekintse át a tagságát.
+    ![Hozzáférési felülvizsgálat létrehozása – felhasználók](./media/create-access-review/users.png)
 
-    > [!NOTE]
-    > Több csoport kiválasztásakor több hozzáférési felülvizsgálatok hoz létre. Ha például öt csoportokra hoz létre öt külön a hozzáférési felülvizsgálatok.
-    
-    ![Hozzáférési felülvizsgálat létrehozása – csoport kijelölése](./media/create-access-review/select-group.png)
-
-1. Az a **alkalmazások** szakaszban (Ha a kiválasztott **alkalmazáshoz hozzárendelt** 8. lépés), válassza ki az alkalmazásokat, amelyeket szeretne, tekintse át a hozzáférést.
+1. A **csoport** szakaszban válasszon ki egy vagy több olyan csoportot, amelyről meg szeretné tekinteni a tagságát.
 
     > [!NOTE]
-    > Kiválasztásával egynél több alkalmazást hoz létre több hozzáférési felülvizsgálatok. Ha például öt alkalmazások kiválasztása hoz létre öt külön a hozzáférési felülvizsgálatok.
+    > Több csoport kiválasztásával több hozzáférési felülvizsgálat jön létre. Például öt csoport kiválasztásával öt külön hozzáférési felülvizsgálat jön létre.
     
-    ![Hozzáférési felülvizsgálat létrehozása – alkalmazás választása](./media/create-access-review/select-application.png)
+    ![Hozzáférési felülvizsgálat létrehozása – csoport kiválasztása](./media/create-access-review/select-group.png)
 
-1. Az a **felülvizsgálók** területen válassza ki egy vagy több személyeket, és tekintse át a hatókörben lévő összes felhasználó. Vagy tekintse át a saját hozzáférését tagokból ki. Ha az erőforrás-csoport, megkérheti a csoport tulajdonosai áttekintéséhez. Azt is megkövetelheti, hogy a felülvizsgálók szabályzataival OK, a hozzáférés jóváhagyása.
+1. Az **alkalmazások** szakaszban (ha kiválasztotta **egy alkalmazáshoz** a 8. lépésben), válassza ki azokat az alkalmazásokat, amelyeknek át szeretné tekinteni a hozzáférést.
 
-    ![Hozzáférési felülvizsgálat - felülvizsgálók létrehozása](./media/create-access-review/reviewers.png)
+    > [!NOTE]
+    > Több alkalmazás kiválasztása több hozzáférési felülvizsgálatot is létrehoz. Ha például öt alkalmazást választ, öt külön hozzáférési felülvizsgálatot fog létrehozni.
+    
+    ![Hozzáférési felülvizsgálat létrehozása – alkalmazás kiválasztása](./media/create-access-review/select-application.png)
 
-1. Az a **programok** területen válassza ki a használni kívánt programot. Egyszerűsítheti a nyomon követni, és a hozzáférési felülvizsgálatok gyűjtése a különböző felhasználási célokra szervezetspecifikus programokban rendezve kezelje. **Alapértelmezett Program** mindig jelen, vagy létrehozhat egy másik program. Választhat, például, hogy az egyes megfelelőségi-kezdeményezéshez egy program vagy üzleti cél.
+1. A felülvizsgálók **szakaszban válasszon** ki egy vagy több személyt a hatókör összes felhasználójának áttekintéséhez. Azt is megteheti, hogy a tagok a saját hozzáférését vizsgálják felül. Ha az erőforrás egy csoport, megkérheti, hogy a csoport tulajdonosai is áttekintsék. Azt is megkövetelheti, hogy a felülvizsgálók a hozzáférés jóváhagyásakor megadják a szükséges okot.
 
-    ![Hozzáférési felülvizsgálat - programok létrehozása](./media/create-access-review/programs.png)
+    ![Hozzáférési felülvizsgálat létrehozása – véleményezők](./media/create-access-review/reviewers.png)
+
+1. A **programok** szakaszban válassza ki a használni kívánt programot. Az **alapértelmezett program** mindig jelen van.
+
+    ![Hozzáférési felülvizsgálati programok létrehozása](./media/create-access-review/programs.png)
+
+    A különböző célokra vonatkozó hozzáférési felülvizsgálatok nyomon követése és összegyűjtése a programokba való szervezéssel végezhető el. Az egyes hozzáférési felülvizsgálatok csatolhatók egy programhoz. Ezután amikor jelentést készít egy auditor számára, az adott kezdeményezés hatókörében lévő hozzáférési felülvizsgálatokra koncentrálhat. A programok és a hozzáférés-felülvizsgálati eredmények a globális rendszergazda, a felhasználói rendszergazda, a biztonsági rendszergazda vagy a biztonsági olvasó szerepkör felhasználói számára láthatók.
+
+    A programok listájának megtekintéséhez nyissa meg a hozzáférési felülvizsgálatok lapot, és válassza a **programok**lehetőséget. Ha globális rendszergazdai vagy felhasználói rendszergazdai szerepkörrel rendelkezik, további programokat is létrehozhat. Dönthet például úgy, hogy az egyes megfelelőségi kezdeményezésekhez vagy üzleti célokhoz egy programot használ. Ha már nincs szüksége egy programra, és nem rendelkezik hozzá kapcsolódó vezérlőkkel, törölheti.
 
 ### <a name="upon-completion-settings"></a>A befejezést követő művelet beállításai
 
-1. Adja meg, mi történik, a felülvizsgálat befejezése után, bontsa ki a **befejezést követő művelet beállításai** szakaszban.
+1. Ha meg szeretné határozni, hogy mi történik egy ellenőrzés befejezése után, bontsa ki a **befejezési beállítások** szakaszban.
 
-    ![A befejezést követő művelet beállításai](./media/create-access-review/upon-completion-settings.png)
+    ![Hozzáférési felülvizsgálat létrehozása a befejezési beállítások alapján](./media/create-access-review/upon-completion-settings.png)
 
-1. Ha szeretne automatikusan remove hozzáférést a felhasználók számára, hogy el lett utasítva, **eredmények automatikus alkalmazása az erőforrás** való **engedélyezése**. Ha szeretné manuálisan alkalmazza az eredményeket, ha a felülvizsgálatot követően, állítsa a kapcsolót **letiltása**.
+1. Ha azt szeretné, hogy a rendszer automatikusan eltávolítsa a megtagadott felhasználók hozzáférését, állítsa be az **eredmények automatikus alkalmazása** az erőforrásra lehetőséget az **engedélyezéshez**. Ha a felülvizsgálat befejeződése után manuálisan szeretné alkalmazni az eredményeket, állítsa a kapcsolót a **Letiltás**lehetőségre.
 
-1. Használja a **a felülvizsgáló nem válaszol** listát használva adhatja meg, mi történik, a felhasználók számára, nem ellenőrzött felülvizsgálója ellenőrzi a felülvizsgálati időszak alatt. Ez a beállítás nem befolyásolja a felhasználók, akik korábban a többi felhasználó által manuálisan. Ha a végső felülvizsgáló döntési megtagadás, akkor a felhasználó hozzáférése törlődni fog.
+1. Az ajánlott felülvizsgáló **nem válaszoló** listával adhatja meg, hogy mi történik azon felhasználók esetében, akiket a felülvizsgálati időszakon belül nem tekintenek át a véleményező. Ez a beállítás nem érinti azokat a felhasználókat, akiket manuálisan ellenőriztek a véleményezők. Ha megtagadja a végső felülvizsgáló döntését, a rendszer eltávolítja a felhasználó hozzáférését.
 
-    - **Nincs változás** -hagyja változatlanul a felhasználó hozzáférése
-    - **Hozzáférés eltávolítása** – felhasználói hozzáférés letiltása
-    - **Hozzáférés jóváhagyása** – felhasználói hozzáférés jóváhagyása
-    - **Ajánlatok elfogadása** – a rendszer elutasítja az ajánlást igénybe, vagy hagyja jóvá a felhasználó a folyamatos hozzáférést
+    - **Nincs változás** – a felhasználó hozzáférése változatlan marad
+    - **Hozzáférés eltávolítása** – a felhasználó hozzáférésének eltávolítása
+    - **Hozzáférés jóváhagyása** – a felhasználó hozzáférésének jóváhagyása
+    - **Javaslatok készítése** – a rendszer javaslata a felhasználó folyamatos hozzáférésének megtagadására vagy jóváhagyására
 
 ### <a name="advanced-settings"></a>Speciális beállítások
 
-1. Szeretne megadni további beállításokat, bontsa ki a **speciális beállítások** szakaszban.
+1. További beállítások megadásához bontsa ki a **Speciális beállítások** szakaszt.
 
-    ![Speciális beállítások](./media/create-access-review/advanced-settings.png)
+    ![Hozzáférési felülvizsgálat létrehozása – speciális beállítások](./media/create-access-review/advanced-settings.png)
 
-1. Állítsa be **javaslatok megjelenítése** való **engedélyezése** lehet megjeleníteni a felülvizsgálók a rendszer javaslatok alapján a felhasználó hozzáférési adatokat.
+1. Állítsa be a **javaslatok megjelenítése** lehetőséget, hogy megjelenjenek a felülvizsgálók a felhasználó hozzáférési adatai alapján.
 
-1. Állítsa be **a jóváhagyás oka szükséges** való **engedélyezése** , adja meg a jóváhagyás okát a felülvizsgálónak kötelező.
+1. Ha **engedélyezni** szeretné, hogy a felülvizsgáló megkövetelje a jóváhagyás okát, meg kell adnia a **jóváhagyáshoz szükséges okot** .
 
-1. Állítsa be **az E-mail értesítések** való **engedélyezése** szeretné, hogy az Azure AD küldjön értesítő felülvizsgálóknak a hozzáférési felülvizsgálatok megkezdésekor, valamint a rendszergazdák felülvizsgálatok befejezésekor.
+1. E- **mail-értesítések** beállításával **engedélyezheti** , hogy az Azure ad e-mailes értesítéseket küldjön a felülvizsgálók számára a hozzáférési felülvizsgálat indításakor, valamint a rendszergazdáknak a felülvizsgálat befejezésekor.
 
-1. Állítsa be **emlékeztetők** való **engedélyezése** , az Azure AD emlékeztetőt küldjön a hozzáférési felülvizsgálatok folyamatban felülvizsgálóknak, akik még nem fejezték be a felülvizsgálatot.
+1. Az **emlékeztetők** beállításával **engedélyezheti** , hogy az Azure ad emlékeztetőket küldjön a folyamatban lévő hozzáférési felülvizsgálatokról azon felülvizsgálók számára, akik nem fejezték be a felülvizsgálatot.
 
-## <a name="start-the-access-review"></a>A hozzáférési felülvizsgálat indítása
+    Alapértelmezés szerint az Azure AD a rendelkezésre álló idő felénél automatikusan emlékeztetőt küld azoknak a felülvizsgálóknak, akik még nem tettek eleget a kérésnek.
 
-Miután megadta a hozzáférési felülvizsgálat beállításait, kattintson a **Start**. A hozzáférési felülvizsgálat megjelenik a listában, az azt jelzi, hogy annak állapotát.
+## <a name="start-the-access-review"></a>A hozzáférési felülvizsgálat elindítása
 
-![A hozzáférési felülvizsgálatok listája](./media/create-access-review/access-reviews-list.png)
+Miután megadta a hozzáférési felülvizsgálat beállításait, kattintson a **Start**gombra. A hozzáférési felülvizsgálat megjelenik a listában az állapotának jelzésével.
 
-Alapértelmezés szerint az Azure AD-e-mailt küld felülvizsgálók elindítja a felülvizsgálatot követően rövid időn belül. Ha nem rendelkezik Azure ad-ben az e-mailt, mindenképpen tájékoztatja a felülvizsgálatot, amely a hozzáférési felülvizsgálat várakozik, amíg befejeződnek. Mutathat nekik az utasításokat, hogy hogyan [csoportokhoz vagy alkalmazásokhoz való hozzáférés felülvizsgálata](perform-access-review.md). Ha áttekintésre vendégek tekintse át a saját hozzáférését, azokat az utasítások megjelenítése, hogy hogyan [hozzáférés felülvizsgálata maga a csoportokat vagy alkalmazásokat](review-your-access.md).
+![Hozzáférési felülvizsgálatok és azok állapotának listája](./media/create-access-review/access-reviews-list.png)
 
-Ha a felülvizsgálók néhány Vendégek, Vendégek értesítést kap e-mailen keresztül csak akkor, ha korábban már fogadta el a meghívót.
+Alapértelmezés szerint az Azure AD egy e-mailt küld a felülvizsgálók számára röviddel a felülvizsgálat elindítása után. Ha úgy dönt, hogy nem szeretné elküldeni az Azure AD-t az e-mail-címre, tájékoztassa a véleményezőket arról, hogy a hozzáférési felülvizsgálat a befejezésre vár. Megtekintheti a [csoportokhoz vagy alkalmazásokhoz való hozzáférés ellenőrzésének](perform-access-review.md)utasításait. Ha az Ön véleménye szerint a vendégek áttekinthetik a saját hozzáférését, megtudhatják, hogyan [tekintheti át a hozzáférést a csoportokhoz vagy alkalmazásokhoz](review-your-access.md).
 
-## <a name="manage-the-access-review"></a>A hozzáférési felülvizsgálat kezelése
+Ha a vendégek felülvizsgálók vannak hozzárendelve, és nem fogadták el a meghívást, nem kapnak e-mailt a hozzáférési felülvizsgálatokból, mert először el kell fogadniuk a meghívót a felülvizsgálat előtt.
 
-Követheti a folyamat állapotát, a felülvizsgálók a legteljesebb körű áttekintette a **áttekintése** a hozzáférési felülvizsgálat lapján. Nincs hozzáférési jogosultsága változnak, amíg a könyvtárban [a felülvizsgálat befejeződött](complete-access-review.md).
+## <a name="create-reviews-via-apis"></a>Felülvizsgálatok létrehozása API-kon keresztül
 
-![A hozzáférési felülvizsgálatok folyamatban](./media/create-access-review/overview-progress.png)
-
-Ha ez egy egyszeri tekintse át, majd a hozzáférési felülvizsgálati időszak felett van, vagy a rendszergazda a hozzáférési felülvizsgálat leállítása után kövesse a lépéseket a [csoportokat vagy alkalmazásokat a hozzáférési felülvizsgálat befejezése](complete-access-review.md) megtekintéséhez és a alkalmazni az eredményeket.  
-
-Kezelheti a hozzáférést egy sorozatát értékelések, keresse meg a hozzáférési felülvizsgálatot, és hoz közelgő események keresése az ütemezett ellenőrzések, és módosítsa a záró dátumot vagy hozzáadása/eltávolítása felülvizsgálóknak annak megfelelően.
-
-A beállításokat az alapján **befejezést követő művelet beállításai**, automatikus alkalmazása lesz a felülvizsgálat záró dátuma, vagy ha manuálisan leállítja a felülvizsgálatot követően hajtható végre. A felülvizsgálat állapota változik **befejezve** például köztes állapotok keresztül **alkalmazása** végül állapotba **alkalmazott**. Tekintse meg a letiltott felhasználók, ha bármely, a csoport tagsági és alkalmazás-hozzárendelés néhány perc múlva távolít el kell látnia.
-
-## <a name="create-reviews-via-apis"></a>API-kon keresztül felülvizsgálat létrehozása
-
-A hozzáférési felülvizsgálatok API-k használatával is létrehozhat. A csoportok kezelésére mit ellenőrzi, és alkalmazás felhasználói számára az Azure Portalon is elvégezhető a Microsoft Graph API-k használatával. További információkért lásd: a [az Azure AD hozzáférési felülvizsgálatok API-referencia](https://docs.microsoft.com/graph/api/resources/accessreviews-root?view=graph-rest-beta). A kód minta: [példa beolvasása az Azure AD hozzáférési felülvizsgálatok keresztül a Microsoft Graph](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/m-p/236096).
+Az API-k használatával hozzáférési felülvizsgálatokat is létrehozhat. A csoportok és alkalmazás-felhasználók hozzáférési felülvizsgálatának kezelése a Azure Portalban Microsoft Graph API-k használatával is elvégezhető. További információt az [Azure ad hozzáférési felülvizsgálatok API](https://docs.microsoft.com/graph/api/resources/accessreviews-root?view=graph-rest-beta)-referenciája című témakörben talál. A mintakód esetében tekintse meg [Az Azure ad hozzáférési felülvizsgálatok Microsoft Graph használatával történő](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/m-p/236096)beolvasásának példáját.
 
 ## <a name="next-steps"></a>További lépések
 
-- [A csoportokat vagy alkalmazásokat hozzáférés felülvizsgálata](perform-access-review.md)
-- [Tekintse át a hozzáférést a saját maga csoportokat vagy alkalmazásokat](review-your-access.md)
-- [Csoportokat vagy alkalmazásokat a hozzáférési felülvizsgálat befejezése](complete-access-review.md)
+- [Csoportok vagy alkalmazások hozzáférésének ellenőrzése](perform-access-review.md)
+- [Csoportok vagy alkalmazások hozzáférésének áttekintése](review-your-access.md)
+- [Csoportok vagy alkalmazások hozzáférési felülvizsgálatának befejezése](complete-access-review.md)

@@ -1,112 +1,111 @@
 ---
-title: Szinkronizálási idő Linux rendszerű virtuális gépekhez az Azure-ban |} A Microsoft Docs
-description: Linux rendszerű virtuális gépek idő szinkronizálása.
+title: Linux rendszerű virtuális gépek időszinkronizálása az Azure-ban | Microsoft Docs
+description: Linux rendszerű virtuális gépek időszinkronizálása.
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 0ac102f388c404bab98354b7bd131989abedd7e6
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 7e23b71edd05154f3c19a097ebf92c690426c777
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59548187"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100781"
 ---
-# <a name="time-sync-for-linux-vms-in-azure"></a>Idő szinkronizálása az Azure-ban Linux rendszerű virtuális gépekhez
+# <a name="time-sync-for-linux-vms-in-azure"></a>Linux rendszerű virtuális gépek időszinkronizálása az Azure-ban
 
-Időszinkronizálás fontos a biztonság és eseménykorreláció. Egyes esetekben használatos az elosztott tranzakciók végrehajtására. Szinkronizáció idő pontossága a több számítógépes rendszereken érhető el. Szinkronizálási hatással lehet más dolgokra, beleértve az újraindítások és az idő forrás- és a számítógép beolvasása az idő közötti hálózati forgalmat. 
+Az időszinkronizálás fontos a biztonság és az események korrelációs használata esetén. Időnként az elosztott tranzakciók megvalósítására használják. A több számítógépes rendszer közötti idő-pontosság a szinkronizáláson keresztül érhető el. A szinkronizálás több dologra is hatással lehet, többek között a újraindításra és a hálózati forgalomra az idő forrása és a számítógép lekérése között. 
 
-Azure Windows Server 2016 rendszerű infrastruktúrája épül. A Windows Server 2016 továbbfejlesztett algoritmusok pontos idő és a helyi órája UTC szinkronizálását a feltétel rendelkezik.  A Windows Server 2016 – pontos idő funkció jelentősen javult hogyan a VMICTimeSync szolgáltatás, amely szabályozza a virtuális gépek a gazdagép a pontos idő. Fejlesztések közé tartoznak a pontosabb kezdeti ideje a virtuális gép start vagy a virtuális gép visszaállítási megszakítási késési javítási. 
+Az Azure-t a Windows Server 2016-et futtató infrastruktúra támogatja. A Windows Server 2016 továbbfejlesztett algoritmusokkal rendelkezik, amelyek az időpontot és a feltételt használják a helyi óra és az UTC közötti szinkronizáláshoz.  A Windows Server 2016 pontos idő funkciója jelentősen javította, hogy a VMICTimeSync szolgáltatás hogyan szabályozza a virtuális gépeket a gazdagépen a pontos idő tekintetében. A javításokban pontosabb kezdeti idő van a virtuális gépek indításakor, illetve a virtuális gépek visszaállítása és a késések késleltetésének javítása. 
 
 >[!NOTE]
->A Windows időszolgáltatás gyors áttekintést, vessen egy pillantást, ez [videó összefoglaló jellegű áttekintést nyújt](https://aka.ms/WS2016TimeVideo).
+>A Windows időszolgáltatásának gyors áttekintéséhez tekintse meg ezt a [magas szintű áttekintő videót](https://aka.ms/WS2016TimeVideo).
 >
-> További információkért lásd: [Windows Server 2016 – pontos idő](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time). 
+> További információ: [a Windows Server 2016 pontos ideje](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time). 
 
 ## <a name="overview"></a>Áttekintés
 
-A számítógép órája pontosságának van kivett a hogyan zárja be a számítógép óráját, hogy az idő egyezményes világidő (UTC) standard. (UTC) egy második 300 évben ki csak lehet pontos atomi órájával multinacionális mintát határozza meg. De UTC olvasása közvetlenül speciális hardvert igényel. Ehelyett időkiszolgálók szinkronizálva lesznek az UTC és más számítógépek méretezhetőségét és háttértárat érhető el. Minden számítógép szinkronizálási szolgáltatás fut, hogy tudja, milyen idő-kiszolgálók által használt, és rendszeresen ellenőrzi, hogy ha a számítógép órája javításra szoruló idő tartozik, és beállítja az időt, szükség esetén. 
+A számítógép órájának pontossága a számítógép órájának az egyezményes világidő (UTC) időszabványhoz való zárásának mérésére szolgál. Az UTC-t egy, a pontos Atomic-órákat tartalmazó többnemzetiségű minta határozza meg, amely csak 300 év egy másodpercében lehet kikapcsolható. Az UTC közvetlen olvasása azonban speciális hardvert igényel. Ehelyett az időkiszolgálókat a rendszer az UTC szerint szinkronizálja, és más számítógépekről éri el a méretezhetőség és a robusztusság biztosítása érdekében. Minden számítógépen van olyan időszinkronizálási szolgáltatás, amely tudja, hogy milyen időkiszolgálókat használ, és rendszeres időközönként ellenőrzi, hogy a számítógép óráját javítani kell-e, és szükség esetén módosítani kell-e az időt. 
 
-Azure gazdagép belső hierarchiabeli 1 Microsoft tulajdonú eszközökről, a GPS-antennák azok időt vesz igénybe a Microsoft idő kiszolgálók vannak szinkronizálva. Az Azure Virtual machines vagy függőségi viszonyban lehet átadni a pontos időt a gazdagép (*idő gazdagép*) be a virtuális gép vagy a virtuális gép közvetlenül lekérheti a idő egy kiszolgálót vagy mindkettőt. 
+Az Azure-gazdagépek szinkronizálása a Microsoft által a Microsoft által birtokolt stratum 1-eszközökről, a GPS-antennák használatával történik. Az Azure-beli virtuális gépek vagy a gazdagéptől függenek, hogy a pontos időt (*gazda időt*) a virtuális gépre irányítják, vagy a virtuális gép közvetlenül lekérheti az időt egy időkiszolgálóról, vagy mindkettő kombinációját. 
 
-Önálló hardverre, a Linux operációs rendszer csak olvassa be a gazdagép hardverének mért rendszertöltés. Ezt követően az óra, kezelik a Linux kernel a megszakítási időzítő segítségével. Ebben a konfigurációban az óra lesz konfigurációsodródás idővel. Újabb Linux-disztribúciókon az Azure-ban a virtuális gépek használatával a VMICTimeSync szolgáltatója, a Linux integration services (LIS), a lekérdezési óra frissítések gyakran a gazdagépről.
+Önálló hardveren a Linux operációs rendszer csak a gazdagép hardveres óráját olvassa be a rendszerindításkor. Ezt követően a rendszer az órát a Linux kernel megszakítási időzítője segítségével tartja karban. Ebben a konfigurációban az óra az idő múlásával fog sodródni. Az Azure-beli újabb Linux-disztribúciókban a virtuális gépek a Linux Integration Services (LIS) szolgáltatásban is használhatják a VMICTimeSync szolgáltatót, hogy gyakrabban kérdezzenek le az óra frissítéseiről a gazdagépről.
 
-A gazdagép virtuálisgép-interakció is befolyásolhatja az óra. Során [karbantartás megőrzése memória](maintenance-and-updates.md#maintenance-not-requiring-a-reboot), virtuális gépek vannak függesztve, akár 30 másodpercig. Például karbantartás megkezdése előtt a virtuális gép órája jeleníti meg a 10:00:00-kor és 28 másodperc tart. Után folytatja a virtuális Gépet, az óra, a virtuális gép továbbra is megjeleníti 10:00:00-kor, amelyek 28 másodperc ki. Ennek, a VMICTimeSync szolgáltatás figyeli a gazdagép és a módosítások utasításokat található a virtuális gépek esetében történő kompenzálás mi történik.
+A virtuális gép és a gazdagép közötti interakció is hatással lehet az órára. A [karbantartás](maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot)során a virtuális gépek legfeljebb 30 másodpercig szünetelnek. Például a karbantartás megkezdése előtt a virtuális gép órája a 10:00:00-as és 28 másodperces időtartamot jeleníti meg. A virtuális gép újraindítása után a virtuális gép órája továbbra is a 10:00:00-as értéket fogja megjeleníteni, ami 28 másodperc lenne. Ennek kiválasztásához a VMICTimeSync szolgáltatás figyeli, hogy mi történik a gazdagépen, és felszólítja a virtuális gépeken végrehajtott módosítások elvégzésére a kompenzálás érdekében.
 
-Nélkül idő szinkronizálási működő, a virtuális gép órája hibák lenne összeadódhatnak. Ha csak egy virtuális Gépet, a hatás nem jelentős, kivéve, ha a munkaterhelés rendkívül pontos időmérő igényel. De a legtöbb esetben azt kell több, összekapcsolt virtuális gépeket, amelyek idő segítségével nyomon követheti a tranzakciók és az időt kell lennie a teljes telepítés során. Ha más virtuális gépek között eltelt idő, sikerült jelenik meg a következő hatásai vannak:
+Az időszinkronizálás nem működik, mert a virtuális gépen lévő idő felhalmozza a hibákat. Ha csak egy virtuális gép van, akkor előfordulhat, hogy a hatás nem jelentős, kivéve, ha a munkaterhelés nagyon pontos időmérést igényel. A legtöbb esetben azonban több, egymással összekapcsolt virtuális géppel is rendelkezünk, amelyek időt használnak a tranzakciók nyomon követésére, és az idő a teljes telepítés során konzisztensnek kell lennie. Ha a virtuális gépek közötti idő eltér, a következő hatások jelenhetnek meg:
 
-- Hitelesítés sikertelen lesz. Biztonsági protokollok, például a Kerberos vagy a tanúsítvány-függő technológia támaszkodik a rendszeridő konzisztens a rendszerek között.
-- Legyen nagyon nehéz döntse el, mi történhetett rendszerekben, hogy a naplók (vagy egyéb adat) nem fogadom el lehetőséget időben. Az ugyanahhoz az eseményhez jelenne meg, különböző időpontokban, nehéz és korrelációs történt.
-- Ha óra ki kapcsolva, a számlázás helytelenül sikerült kiszámítani.
+- A hitelesítés sikertelen lesz. A biztonsági protokollok, például a Kerberos vagy a tanúsítványtól függő technológiák támaszkodnak a rendszerek közötti konzisztens időszakra.
+- Nagyon nehéz megállapítani, hogy mi történt a rendszeren, ha a naplók (vagy más adat) nem fogadnak el időt. Ugyanez az esemény a különböző időpontokban történt, így megnehezíti a korrelációt.
+- Ha az óra ki van kapcsolva, a számlázás helytelenül számítható ki.
 
 
 
 ## <a name="configuration-options"></a>Beállítási lehetőségek
 
-Általában három módon szinkronizálás konfigurálása az Azure-ban üzemeltetett Linuxos virtuális gépek:
+Az Azure-ban üzemeltetett linuxos virtuális gépek időszinkronizálását általában három módon konfigurálhatja:
 
-- Az Azure Marketplace-rendszerképek alapértelmezett konfigurációja egyaránt NTP és VMICTimeSync gazdagép-időpontot használja. 
-- Gazdagép csak VMICTimeSync használatával.
-- Egy másik, külső idő kiszolgálót használjon, vagy anélkül VMICTimeSync gazdagép-ideje.
+- Az Azure Marketplace-lemezképek alapértelmezett konfigurációja az NTP-időt és a VMICTimeSync-gazdagépet is használja. 
+- Gazdagép – csak a VMICTimeSync használatával.
+- Használjon egy másik, külső időkiszolgálót a VMICTimeSync-gazdagép-idő használatával vagy anélkül.
 
 
-### <a name="use-the-default"></a>Használja az alapértelmezett
+### <a name="use-the-default"></a>Alapértelmezett érték használata
 
-Alapértelmezés szerint a legtöbb Azure Marketplace-rendszerképek Linux vannak konfigurálva a szinkronizálási két forrásból származó: 
+Alapértelmezés szerint a Linux rendszerhez készült legtöbb Azure Marketplace-lemezkép két forrásból való szinkronizálásra van konfigurálva: 
 
-- NTP elsődleges, amely lekérdezi az idő az NTP-kiszolgálóról. Például az Ubuntu 16.04 LTS Marketplace lemezképek használata **ntp.ubuntu.com**.
-- Másodlagos, mint a VMICTimeSync szolgáltatás kommunikálni a virtuális gépek gazdagép időt, és javíthatja a megadottakat, miután a virtuális gép fel van függesztve, a karbantartási szolgál. Azure gazdagépek hierarchiabeli 1 a Microsoft által birtokolt eszközök használatával – pontos idő tartani.
+- Az NTP elsődlegesként, amely egy NTP-kiszolgálótól kap időt. Az Ubuntu 16,04 LTS Marketplace-lemezképek például a **NTP.Ubuntu.com**-t használják.
+- A VMICTimeSync szolgáltatás másodlagosként, amely a gazdagépek és a virtuális gépek közötti kommunikációra szolgál, és a virtuális gép karbantartás utáni szüneteltetése után végez javítást. Az Azure-gazdagépek a Microsoft által birtokolt stratum 1 eszközöket használják a pontos idő megtartására.
 
-Újabb Linux-disztribúció a VMICTimeSync szolgáltatás használ a pontosság time protocol (PTP), de korábbi disztribúciók nem támogatja a PTP és fog fall vissza NTP az első alkalommal a gazdagépről.
+Az újabb Linux-disztribúciókban a VMICTimeSync szolgáltatás a (z) pontosságot használja, de előfordulhat, hogy a korábbi disztribúciók nem támogatják a PTP-t, és az NTP-re kerülnek vissza a gazdagépről való idő beszerzéséhez.
 
-Győződjön meg arról, NTP megfelelően szinkronizál, futtassa a `ntpq -p` parancsot.
+Az NTP sikeres szinkronizálásának megerősítéséhez futtassa a `ntpq -p` parancsot.
 
-### <a name="host-only"></a>Csak állomásnév 
+### <a name="host-only"></a>Csak gazdagép 
 
-Az NTP-kiszolgálókra, mint például a time.windows.com és ntp.ubuntu.com nyilvánosak, mert azokat az idő szinkronizálása szükséges forgalom küldése az interneten keresztül. Csomag késések változó negatív hatással lehet az idő szinkronizálása minőségét. NTP eltávolítása átvált a gazdagép csak szinkronizálás néha javítja az idő szinkronizálása az eredményeket.
+Mivel az NTP-kiszolgálók, például a time.windows.com és a ntp.ubuntu.com nyilvánosak, az adatok szinkronizálásához az interneten keresztül kell elküldeni a forgalmat. A csomagok különböző késései negatívan befolyásolhatják az idő szinkronizálásának minőségét. Ha az NTP-t csak gazdagépre való áttéréssel távolítja el, időnként javíthatja az idő szinkronizálási eredményeit.
 
-Váltás csak állomásnév idő szinkronizálása teszi értelemben vett idő szinkronizálása tapasztal problémák az alapértelmezett konfigurációt használja. Próbálja ki a gazdagép csak szinkronizálás megtekintéséhez Ha, amelyek az idő szinkronizálása a virtuális Gépen. 
+Ha az alapértelmezett konfiguráció használatával időt vesz igénybe, a csak a gazdagépre való áttéréskor érdemes váltani. Próbálja ki a gazdagépek szinkronizálását, és ellenőrizze, hogy ez javítaná-e a virtuális gépen futó idő szinkronizálását. 
 
-### <a name="external-time-server"></a>Külső időkiszolgálóval
+### <a name="external-time-server"></a>Külső idő kiszolgálója
 
-Ha adott időpont-szinkronizálás követelményei, is lehetőség van a külső idő kiszolgálók használatával. Külső idő kiszolgálók biztosíthat az adott időpontot, amely a tesztelési helyzetekhez, ideje egységességének biztosítása üzemeltetett-Microsoft adatközpontok vagy kezelési azt másodperc, speciális módon gépekkel hasznos lehet.
+Ha bizonyos időszinkronizálási követelményekkel rendelkezik, akkor a külső időkiszolgálók is használhatók. A külső időkiszolgálók meghatározott időt biztosíthatnak, ami hasznos lehet a tesztelési forgatókönyvekhez, így biztosítva a nem Microsoft-adatközpontokban üzemeltetett gépekkel való időbeli egységességet, illetve a LEAP másodpercek speciális módon történő kezelését.
 
-Egy külső időkiszolgálóval egyesíthetők a VMICTimeSync szolgáltatás az alapértelmezett konfiguráció hasonló eredményeket. Egy külső időkiszolgálóval egyesül VMICTimeSync problémákat, amelyek a virtuális gépek karbantartás szüneteltetésekor ok lehet többé vesződnie a sérült leginkább megfelelő opció kiválasztásához. 
+Egy külső időkiszolgálót kombinálhat a VMICTimeSync szolgáltatással az alapértelmezett konfigurációhoz hasonló eredmények biztosításához. A külső időkiszolgálók és a VMICTimeSync együttes használata a legjobb megoldás az olyan problémák kezelésére, amelyek a virtuális gépek karbantartás közbeni felfüggesztésével járhatnak. 
 
 ## <a name="tools-and-resources"></a>Eszközök és erőforrások
 
-Van néhány alapszintű parancsainak a idő szinkronizálási konfiguráció ellenőrzése. Linux-disztribúció dokumentációjában részletesebb információkat tartalmaz a szinkronizálás ideje, hogy a terjesztés konfigurálása a legjobb módszer.
+Az időszinkronizálási konfiguráció ellenőrzéséhez néhány alapszintű parancs szükséges. A Linux-disztribúció dokumentációja részletesebben ismerteti a terjesztés időszinkronizálásának legjobb módját.
 
-### <a name="integration-services"></a>Az integrációs szolgáltatások
+### <a name="integration-services"></a>Integrációs szolgáltatások
 
-Ellenőrizze, hogy ha az integrációs szolgáltatás (hv_utils) be van-e töltve.
+Ellenőrizze, hogy az integrációs szolgáltatás (hv_utils) be van-e töltve.
 
 ```bash
 lsmod | grep hv_utils
 ```
-Valami ehhez hasonlóan kell megjelennie:
+Ehhez a következőhöz hasonlónak kell lennie:
 
 ```
 hv_utils               24418  0
 hv_vmbus              397185  7 hv_balloon,hyperv_keyboard,hv_netvsc,hid_hyperv,hv_utils,hyperv_fb,hv_storvsc
 ```
 
-Tekintse meg, hogy a Hyper-V integrációs szolgáltatások démon fut-e.
+Ellenőrizze, hogy fut-e a Hyper-V Integration Services démon.
 
 ```bash
 ps -ef | grep hv
 ```
 
-Valami ehhez hasonlóan kell megjelennie:
+Ehhez a következőhöz hasonlónak kell lennie:
 
 ```
 root        229      2  0 17:52 ?        00:00:00 [hv_vmbus_con]
@@ -114,47 +113,47 @@ root        391      2  0 17:52 ?        00:00:00 [hv_balloon]
 ```
 
 
-### <a name="check-for-ptp"></a>PTP keresése
+### <a name="check-for-ptp"></a>A PTP keresése
 
-Egy újabb verziója Linux, a pontosság Time Protocol (PTP) óra forrás álljon rendelkezésre a VMICTimeSync szolgáltató részeként. A Red Hat Enterprise Linux vagy CentOS régebbi verzióin 7.x a [Linux Integration Services](https://github.com/LIS/lis-next) letölthető, és a frissített illesztőprogram telepítéséhez használt. PTP használatakor a Linux rendszerű eszköz lesz a képernyő/dev/ptp*x*. 
+A Linux újabb verzióiban a VMICTimeSync-szolgáltató részeként a (z) Precision Time Protocol (PTP) órajel-forrás érhető el. Red Hat Enterprise Linux vagy CentOS 7. x régebbi verzióiban a [Linux integrációs szolgáltatások](https://github.com/LIS/lis-next) tölthetők le, és a frissített illesztőprogram telepítéséhez használhatók. A PTP használatakor a Linux-eszköz/dev/PTP*x*formátumú lesz. 
 
-Tekintse meg, mely PTP óra források érhetők el.
+Itt láthatja, hogy mely PTP-órajelek érhetők el.
 
 ```bash
 ls /sys/class/ptp
 ```
 
-Ebben a példában a visszaadott érték *ptp0*, ezért használjuk, hogy ellenőrizze a óra nevét. Az eszköz ellenőrzéséhez tekintse az óra neve.
+Ebben a példában a visszaadott érték a *ptp0*, ezért ezt használjuk az óra nevének megadásához. Az eszköz ellenőrzéséhez ellenőrizze az óra nevét.
 
 ```bash
 cat /sys/class/ptp/ptp0/clock_name
 ```
 
-A kapott **Hyper-v**.
+Ennek a **HyperV**kell visszaadnia.
 
 ### <a name="chrony"></a>chrony
 
-A Red Hat Enterprise Linux és a CentOS 7.x, [chrony](https://chrony.tuxfamily.org/) PTP forrás hodiny használatára konfigurálva. A Network Time Protocol démon (ntpd) nem támogatja a PTP forrásokból, így használatával **chronyd** ajánlott. PTP engedélyezéséhez frissítse **chrony.conf**.
+A Red Hat Enterprise Linux és a CentOS 7. x esetében a [chrony](https://chrony.tuxfamily.org/) a PTP-forrás órájának használatára van konfigurálva. A Network Time Protocol Daemon (ntpd) nem támogatja a PTP-forrásokat, ezért a **chronyd** használata javasolt. A PTP engedélyezéséhez frissítse a **chrony. conf fájlt**.
 
 ```bash
 refclock PHC /dev/ptp0 poll 3 dpoll -2 offset 0
 ```
 
-A Red Hat és NTP további információkért lásd: [konfigurálása NTP](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/s1-configure_ntp). 
+A Red Hat és az NTP szolgáltatással kapcsolatos további információkért lásd: az [NTP konfigurálása](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/s1-configure_ntp). 
 
-Chrony további információkért lásd: [chrony használatával](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-using_chrony).
+További információ a chrony-ről: a [Chrony használata](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-using_chrony).
 
-Chrony és TimeSync forrásokból is egyidejű engedélyezése, ha több mint megjelölheti **inkább** amely állítja be a más forrásból, biztonsági mentéséhez. Mivel az NTP-szolgáltatások, amíg nem frissítik az óra, kivéve a hosszú idő nagy dönt a a VMICTimeSync állítja helyre az óra szüneteltetett virtuális gép események sokkal gyorsabban önálló NTP-alapú eszközök.
+Ha a chrony-és a TimeSync-források egyszerre is engedélyezve vannak, megjelölheti az egyiket **előnyben részesítettként** , amely a másik forrást biztonsági másolatként állítja be. Mivel az NTP-szolgáltatások nem frissítik a nagy terhelések óráját a hosszú időtartam után, a VMICTimeSync sokkal gyorsabban fogja helyreállítani a szüneteltetett virtuális gépek eseményeinek óráját, mint az NTP-alapú eszközökön.
 
 
-### <a name="systemd"></a>systemd 
+### <a name="systemd"></a>rendszerszintű 
 
-Az Ubuntu és a SUSE sync konfigurálva van az használatával [systemd](https://www.freedesktop.org/wiki/Software/systemd/). További információ az ubuntu rendszeren: [időszinkronizálás](https://help.ubuntu.com/lts/serverguide/NTP.html). További információ a SUSE rendszeren című 4.5.8 [SUSE Linux Enterprise Server 12 SP3 kibocsátási megjegyzések](https://www.suse.com/releasenotes/x86_64/SUSE-SLES/12-SP3/#InfraPackArch.ArchIndependent.SystemsManagement).
+Ubuntu és SUSE idő szinkronizálásakor a [rendszer](https://www.freedesktop.org/wiki/Software/systemd/)a rendszerbeállítással van konfigurálva. Az Ubuntuval kapcsolatos további információkért lásd [](https://help.ubuntu.com/lts/serverguide/NTP.html): időszinkronizálás. További információ a SUSE-ről: [SUSE Linux Enterprise Server 12 SP3 kibocsátási megjegyzések](https://www.suse.com/releasenotes/x86_64/SUSE-SLES/12-SP3/#InfraPackArch.ArchIndependent.SystemsManagement)4.5.8 szakasza.
 
 
 
 ## <a name="next-steps"></a>További lépések
 
-További információkért lásd: [Windows Server 2016 – pontos idő](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time).
+További információ: [a Windows Server 2016 pontos ideje](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time).
 
 

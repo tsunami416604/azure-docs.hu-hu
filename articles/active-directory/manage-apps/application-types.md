@@ -3,8 +3,8 @@ title: Nem várt alkalmazás alkalmazáslistában |} A Microsoft Docs
 description: Tekintse meg a bérlő összes alkalmazást, és megismerheti, hogyan alkalmazások jelennek meg a minden alkalmazás lista a vállalati alkalmazások
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: celested
+ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 075a50802a05a9b8254ff6ab1e0a38f43baca970
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b1cb4eeb52d0680695bda266ad1a563b2ef5ee02
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58105624"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65781099"
 ---
 # <a name="unexpected-application-in-my-applications-list"></a>Nem várt alkalmazás alkalmazáslistában
 

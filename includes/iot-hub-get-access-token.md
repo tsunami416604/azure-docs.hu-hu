@@ -4,19 +4,19 @@ ms.author: robinsh
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: b6ea8c7b3a6374572c8bd31e3c62b788efbafcbc
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: 7f7dc1483002c2bdfe3227a8aade8dbf2a8da417
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59804165"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70803006"
 ---
-## <a name="obtain-an-azure-resource-manager-token"></a>Egy Azure Resource Manager-jogkivonat beszerzése
-Az Azure Active Directory hitelesítést kell végeznie az Azure Resource Manager-erőforrásokon végrehajtott összes feladatot. Az itt látható példában jelszó-hitelesítést használ, további egyéb megközelítések: [hitelesítése az Azure Resource Manager-kérelmek][lnk-authenticate-arm].
+## <a name="obtain-an-azure-resource-manager-token"></a>Azure Resource Manager jogkivonat beszerzése
+A Azure Active Directorynak hitelesítenie kell az erőforrásokon végrehajtott összes feladatot a Azure Resource Manager használatával. Az itt látható példa jelszavas hitelesítést használ, más módszerekkel kapcsolatban lásd: [Azure Resource Manager kérelmek hitelesítése][lnk-authenticate-arm].
 
-1. Adja hozzá a következő kódot a **fő** metódus a program.cs fájlban egy token lekérése az Azure AD-ba, az alkalmazás azonosítóját és jelszavát.
+1. Adja hozzá a következő kódot a **Main** metódushoz a program.cs-ben az alkalmazás-azonosító és a jelszó használatával az Azure ad-beli jogkivonat lekéréséhez.
    
-    ```
+    ```csharp
     var authContext = new AuthenticationContext(string.Format  
       ("https://login.microsoftonline.com/{0}", tenantId));
     var credential = new ClientCredential(applicationId, password);
@@ -29,16 +29,16 @@ Az Azure Active Directory hitelesítést kell végeznie az Azure Resource Manage
       return;
     }
     ```
-2. Hozzon létre egy **ResourceManagementClient** objektum, amely használja a jogkivonatot a következő kód hozzáadásával végéhez a **fő** módszer:
+2. Hozzon létre egy **ResourceManagementClient** objektumot, amely a tokent használja a következő kód a **Main** metódus végéhez való hozzáadásával:
    
-    ```
+    ```csharp
     var creds = new TokenCredentials(token.AccessToken);
     var client = new ResourceManagementClient(creds);
     client.SubscriptionId = subscriptionId;
     ```
-3. Hozzon létre, vagy szerezzen be egy hivatkozást, az erőforráscsoportot használja:
+3. Hozzon létre vagy szerezzen be egy hivatkozást a használt erőforráscsoporthoz:
    
-    ```
+    ```csharp
     var rgResponse = client.ResourceGroups.CreateOrUpdate(rgName,
         new ResourceGroup("East US"));
     if (rgResponse.Properties.ProvisioningState != "Succeeded")

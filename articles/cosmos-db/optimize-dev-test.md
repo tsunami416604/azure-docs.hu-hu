@@ -4,14 +4,14 @@ description: Ez a cikk bemutatja, hogyan Azure Cosmos DB több lehetőséget kí
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/20/2018
+ms.date: 05/21/2019
 ms.author: rimman
-ms.openlocfilehash: 3bb39fe99e612fb19f12fd049ebb8f600e48373e
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f9cb18b66def144b84de708351743832d1831fbf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55457870"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65967263"
 ---
 # <a name="optimize-development-and-testing-cost-in-azure-cosmos-db"></a>Fejlesztési és tesztelési költségek az Azure Cosmos DB optimalizálása
 

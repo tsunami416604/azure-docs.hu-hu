@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: 5dd027c886e8102e77ddefe93817daee0e1ec29b
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584151"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60626434"
 ---
 # <a name="summary-of-customer-data-request-features"></a>Vásárlói adatok funkciók összefoglalása
 

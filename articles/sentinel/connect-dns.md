@@ -1,66 +1,79 @@
 ---
-title: Az Azure-on Előzetesben Sentinel-DNS-adatok csatlakoztatása |} A Microsoft Docs
-description: Ismerje meg, hogyan csatlakozhat az Azure-Sentinel DNS-adatok.
+title: DNS-adatkapcsolatok összekötése az Azure Sentinelben | Microsoft Docs
+description: Ismerje meg, hogyan csatlakoztathatók a DNS-adatkészletek az Azure Sentinelben.
 services: sentinel
 documentationcenter: na
 author: rkarlin
-manager: barbkess
+manager: rkarlin
 editor: ''
 ms.assetid: 77af84f9-47bc-418e-8ce2-4414d7b58c0c
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
+ms.date: 09/24/2019
 ms.author: rkarlin
-ms.openlocfilehash: e34db2bdc78eb846cf4885b1ef083fd3b21e21b5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c5e58f496176ec0f1b8317c8b862a8ef2ffa434d
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792051"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262733"
 ---
 # <a name="connect-your-domain-name-server"></a>Connect your domain name server
 
 > [!IMPORTANT]
-> Az Azure Sentinel jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> A DNS-adatösszekötő az Azure Sentinel szolgáltatásban jelenleg nyilvános előzetes verzióban érhető el.
+> Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Bármely tartomány neve Server (DNS) futó Windows Azure-Sentinel kapcsolódhat. Ez történik, a DNS-gépen egy ügynök telepítésével. Naplózza a DNS-sel, mélyebb bepillantást nyerhet biztonsági, teljesítménnyel és műveletek kapcsolatos elemzéseket kaphat a DNS-infrastruktúra, a szervezet által gyűjtött, elemzése, és naplókezelője elemzési és auditnaplók és egyéb kapcsolódó adatokat a DNS-kiszolgálókról.
+A Windows rendszeren futó összes DNS-kiszolgálót összekapcsolhatja az Azure Sentinel szolgáltatással. Ezt úgy teheti meg, hogy egy ügynököt telepít a DNS-gépre. A DNS-naplók használatával biztonsági, teljesítménybeli és működés közbeni elemzéseket nyerhet a szervezet DNS-infrastruktúrájában azáltal, hogy összegyűjti, elemzi és korrelálja a DNS-kiszolgálókkal kapcsolatos elemzési és naplózási naplókat és egyéb kapcsolódó adatait.
 
-Ha engedélyezi a DNS kapcsolat, a következőket teheti:
-- Azok az ügyfelek, kártékony tartománynevek azonosítása
+A DNS-naplózási kapcsolatok engedélyezésekor a következőket teheti:
+- Azonosítsa azokat az ügyfeleket, akik kártékony tartományneveket próbálnak megoldani
 - Elavult erőforrásrekordok azonosítása
-- Gyakran lekérdezett tartománynevek és beszédes DNS-ügyfelek azonosítása
-- DNS-kiszolgálók terhelését nézet kérelem
-- Dinamikus DNS regisztrációs hibák megtekintése
+- A gyakran lekérdezett tartománynevek és a beszédes DNS-ügyfelek azonosítása
+- Kérések terhelésének megtekintése DNS-kiszolgálókon
+- Dinamikus DNS-regisztrálási hibák megtekintése
 
-## <a name="how-it-works"></a>Működés
+## <a name="connected-sources"></a>Összekapcsolt források
 
-DNS-kapcsolat a DNS-gépen egy ügynök telepítésével valósítható meg. Az ügynök lekéri az események a DNS szolgáltatásból, és továbbítja őket a Log Analytics.
+A következő táblázat ismerteti a megoldás által támogatott csatlakoztatott forrásokat:
 
-## <a name="connect-your-dns-appliance"></a>Csatlakozás a DNS-berendezés
+| **Csatlakoztatott forrás** | **Támogatás** | **Leírás** |
+| --- | --- | --- |
+| [Windows-ügynökök](../azure-monitor/platform/agent-windows.md) | Igen | A megoldás a DNS-adatok Windows-ügynököktől gyűjti. |
+| [Linux-ügynökök](../azure-monitor/learn/quick-collect-linux-computer.md) | Nem | A megoldás nem DNS-információkat gyűjtsön a közvetlen Linux-ügynökök. |
+| [System Center Operations Manager felügyeleti csoport](../azure-monitor/platform/om-agents.md) | Igen | A megoldás a DNS-adatok egy csatlakoztatott az Operations Manager felügyeleti csoportban lévő ügynököktől gyűjti. Nem szükséges közvetlen kapcsolódás a Operations Manager ügynöktől a Azure Monitorhoz. Adatok lesznek továbbítva a felügyeleti csoportból a Log Analytics-munkaterületet. |
+| [Azure Storage-fiók](../azure-monitor/platform/collect-azure-metrics-logs.md) | Nem | A megoldás az Azure storage nem használja. |
 
-1. Az Azure-Sentinel-portálon válassza **adatösszekötők** , és válassza a **DNS** csempére.
-1. Ha a DNS-gép az Azure-ban:
-    1. Kattintson a **letöltése és telepítése az ügynök a Windows virtuális gépek**.
-    1. Az a **virtuális gépek** listájához, válassza ki a kívánt streamelése az Azure-Sentinel DNS gép. Ellenőrizze, hogy ez egy Windows virtuális Gépet.
-    1. A virtuális gép megnyíló ablakban kattintson a **Connect**.  
-    1. Kattintson a **engedélyezése** a a **DNS összekötő** ablak. 
+### <a name="data-collection-details"></a>Adatok gyűjtése részletei
 
-2. Ha a DNS-számítógép nem egy Azure virtuális Gépen:
-    1. Kattintson a **letöltése és telepítése a Windows Azure-beli gépek ügynök**.
-    1. Az a **közvetlen ügynök** ablakában válassza **töltse le Windows-ügynök (64 bites)** vagy **töltse le Windows-ügynök (32 bites)**.
-    1. Telepítse az ügynököt a DNS-gépen. Másolás a **munkaterület-Azonosítót**, **elsődleges kulcs**, és **másodlagos kulcs** , és használja őket, amikor a rendszer kéri, a telepítés során.
+A megoldás gyűjti DNS-leltár- és DNS-esemény kapcsolatos adatokat a DNS-kiszolgálók ahol egy Log Analytics-ügynök telepítve van. A DNS PowerShell-parancsmagok futtatása leltárhoz kapcsolódó adatok, például a DNS-kiszolgálók, zónák és rekordok, számát gyűjti. Az adatok két naponta egyszer frissül. Az esemény-kapcsolódó adatok gyűjtése történik, közel valós időben a [elemzési és auditnaplók](https://technet.microsoft.com/library/dn800669.aspx#enhanc) továbbfejlesztett DNS-naplózás és diagnosztika a Windows Server 2012 R2 által biztosított.
 
-3. A Log Analytics a megfelelő sémát használ a DNS-naplókat, keresse meg **DnsEvents**.
+
+## <a name="connect-your-dns-appliance"></a>A DNS-berendezés összekötése
+
+1. Az Azure Sentinel portálon válassza az **adatösszekötők** lehetőséget, és válassza a **DNS (előzetes verzió)** csempét.
+1. Ha a DNS-gépek az Azure-ban vannak:
+    1. Kattintson **az ügynök telepítése az Azure Windows rendszerű virtuális gépen**elemre.
+    1. A **virtuális gépek** listájában válassza ki azt a DNS-gépet, amelyet az Azure sentinelbe szeretne továbbítani. Győződjön meg arról, hogy ez egy Windows rendszerű virtuális gép.
+    1. A virtuális gép megnyíló ablakában kattintson a **kapcsolat**elemre.  
+    1. A **DNS-összekötő** ablakban kattintson az **Engedélyezés** elemre. 
+
+2. Ha a DNS-számítógép nem Azure-beli virtuális gép:
+    1. Kattintson **az ügynök telepítése nem Azure-beli gépekre**elemre.
+    1. A **közvetlen ügynök** ablakban válassza a Windows- **ügynök letöltése (64 bites)** vagy a **windows-ügynök letöltése (32 bit)** lehetőséget.
+    1. Telepítse az ügynököt a DNS-gépre. Másolja a **munkaterület-azonosítót**, az **elsődleges kulcsot**és a **másodlagos kulcsot** , és használja őket, ha a telepítés során a rendszer kéri.
+
+3. Ha a DNS-naplókhoz a Log Analytics vonatkozó sémát szeretné használni, keresse meg a **DnsEvents**.
 
 ## <a name="validate"></a>Érvényesítés 
 
-A Log Analyticsben, keresse meg a séma **DnsEvents** , és ellenőrizze, hogy nincsenek az eseményeket.
+A Log Analyticsban keresse meg a séma **DnsEvents** , és győződjön meg arról, hogy vannak események.
 
 ## <a name="next-steps"></a>További lépések
-Ebben a dokumentumban megtudhatta, hogyan szeretne csatlakozni a helyi DNS-berendezéseit Azure Sentinel. Azure-Sentinel kapcsolatos további információkért tekintse meg a következő cikkeket:
-- Ismerje meg, hogyan [betekintést nyerhet az adatok és a potenciális fenyegetések](quickstart-get-visibility.md).
-- Első lépések [Azure Sentinel-fenyegetések észlelése](tutorial-detect-threats.md).
+Ebből a dokumentumból megtudhatta, hogyan csatlakoztathatók a helyi DNS-készülékek az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
+- Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
+- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).

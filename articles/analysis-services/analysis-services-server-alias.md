@@ -9,13 +9,13 @@ ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 66e6b4713591f099769543a75dcddec34f3d2e2b
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188130"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60534317"
 ---
-# <a name="alias-server-names"></a>Alias kiszolgálók nevei
+# <a name="alias-server-names"></a>Alias server names
 
 Kiszolgálónév aliasának használatával a felhasználók kapcsolódhatnak az Azure Analysis Services-kiszolgáló és a egy rövidebb *alias* a kiszolgáló neve helyett. Amikor egy ügyfélalkalmazás csatlakoztat, az alias-végpont használatával van megadva a **hivatkozás: / /** protokoll formátumban. A végpont ahhoz, hogy csatlakozhasson majd a kiszolgáló valódi nevét adja vissza.
 

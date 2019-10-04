@@ -1,25 +1,18 @@
 ---
-title: Közzététel a Power BI alkalmazást offer – Azure Marketplace-en |} A Microsoft Docs
+title: A Power BI alkalmazás-ajánlat közzététele |} Az Azure Marketplace-en
 description: Tegye közzé a Power BI-alkalmazás az ajánlat a Microsoft AppSource marketplace-en.
 services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.author: pbutlerm
-ms.openlocfilehash: 0e82041dab1932ed7c129b598740b2441aa59315
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.author: pabutler
+ms.openlocfilehash: aae23feaf1cc5887de061414af985ef16070546b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56822752"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64943184"
 ---
 # <a name="publish-a-power-bi-app-offer"></a>A Power BI alkalmazás-ajánlat közzététele
 

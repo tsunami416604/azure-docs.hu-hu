@@ -1,14 +1,14 @@
 ---
-author: diberry
-ms.author: diberry
+author: IEvangelist
+ms.author: dapine
+ms.date: 06/25/2019
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 01/02/2019
-ms.openlocfilehash: a8a49bdf2e77cc657a7d12cebffe6f1984f82eed
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: a642160fc7e94979a91687b07c26fafeb786bbb4
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56741295"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704179"
 ---
-Állítsa le a tárolót, a parancssori környezetben, ahol a tárolóban fut, nyomja le a **Ctrl + C**.
+Állítsa le a tárolót, a parancssori környezetben, ahol a tárolóban fut, válassza a <kbd>Ctrl + C</kbd>.

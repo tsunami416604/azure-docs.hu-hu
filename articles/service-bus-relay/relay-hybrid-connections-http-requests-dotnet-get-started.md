@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 11/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 5bb45ff87f558e1142b68af01147ad55386ee28f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 37227b7d0ea1b3630a3c2ce991a61543e6a1503d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57888059"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66428246"
 ---
 # <a name="get-started-with-relay-hybrid-connections-http-requests-in-net"></a>Ismerkedés a hibrid Relay-kapcsolatok HTTP-kéréseivel a .NET-ben
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
@@ -67,7 +67,7 @@ A Visual Studióban egy C# nyelven íródott konzolalkalmazást hozunk létre az
 1. Futtassa az ügyfélalkalmazást. Megjelenik a `hello!` üzenet az ügyfélablakban. Az ügyfél elküld egy HTTP-kérelem a kiszolgálóra, és a kiszolgáló válasza egy `hello!`. 
 3. A konzolablakok bezárásához nyomja le az **ENTER** billentyűt mindkét konzolablakban. 
 
-Gratulálunk, végpontok közötti hibrid kapcsolati alkalmazást hozott létre!
+Gratulálunk, létrehozott egy teljes hibrid kapcsolatok alkalmazást!
 
 ## <a name="next-steps"></a>További lépések
 

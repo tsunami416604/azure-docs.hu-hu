@@ -1,6 +1,6 @@
 ---
-title: Csatlakozás az Azure Logic Apps a SMTP |} A Microsoft Docs
-description: Automatizálhatja a feladatokat és a munkafolyamatok, amelyek az SMTP (Simple Mail Transfer Protocol) fiókon keresztül e-mail küldése az Azure Logic Apps használatával
+title: Kapcsolódás az SMTP-hez Azure Logic Appsról | Microsoft Docs
+description: Automatizálja a feladatokat és munkafolyamatokat, amelyek e-mailt küldenek az SMTP (Simple Mail Transfer Protocol) fiók használatával Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -11,65 +11,65 @@ ms.assetid: d4141c08-88d7-4e59-a757-c06d0dc74300
 ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 78b1eb6272fa97ef392e97723454d29cf56bb4bf
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 1649f197d4dbd88e2b485ab32f254a2d09696a84
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230505"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050742"
 ---
-# <a name="send-email-from-your-smtp-account-with-azure-logic-apps"></a>E-mail küldése az SMTP-fiókból az Azure Logic Apps
+# <a name="send-email-from-your-smtp-account-with-azure-logic-apps"></a>E-mail küldése az SMTP-fiókból Azure Logic Apps
 
-Az Azure Logic Apps és a Simple Mail Transfer Protocol (SMTP)-összekötő hozhat létre automatizált feladatokat és a munkafolyamatok, amelyek e-mailek küldése az SMTP-fiókból. SMTP-műveletek a kimenetét használják más műveleteket is rendelkezhet. Például az SMTP-e-mailt küld, miután értesítheti a csapatot Slack a Slack-összekötővel. Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+A Azure Logic Apps és a Simple Mail Transfer Protocol (SMTP) összekötővel automatizált feladatokat és munkafolyamatokat hozhat létre, amelyek e-mailt küldenek az SMTP-fiókjából. Más műveletek is használhatók az SMTP-műveletek kimenetének használatával. Ha például az SMTP e-mailt küld, akkor a Slack-összekötővel értesítheti a csapatot a Slackben. Ha most ismerkedik a Logic apps szolgáltatással, tekintse át [a mi az Azure Logic apps?](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, <a href="https://azure.microsoft.com/free/" target="_blank">regisztráljon egy ingyenes Azure-fiókra</a>. 
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/). 
 
-* Az SMTP fiók és felhasználói hitelesítő adatok
+* Az SMTP-fiók és a felhasználói hitelesítő adatok
 
-  A hitelesítő adatok engedélyezik a logikai alkalmazás, hozzon létre egy kapcsolatot, és az SMTP-fiók eléréséhez.
+  A hitelesítő adatai engedélyezik a logikai alkalmazásnak a kapcsolat létrehozását és az SMTP-fiók elérését.
 
-* Alapvető ismeretek szerezhetők [logikai alkalmazások létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Alapvető ismeretek a [logikai alkalmazások létrehozásáról](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* A logikai alkalmazást, amelyre az SMTP-fiók eléréséhez. SMTP-művelethez használja, indítsa el a logikai alkalmazás egy eseményindítóval, például a Salesforce eseményindító, ha rendelkezik egy Salesforce-fiókban.
+* Az a logikai alkalmazás, amelyhez el szeretné érni az SMTP-fiókját. Ha SMTP-műveletet szeretne használni, indítsa el a logikai alkalmazást egy triggerrel, például egy Salesforce triggerrel, ha rendelkezik Salesforce-fiókkal.
 
-  Például a logikai alkalmazás megkezdheti az **egy rekord létrehozásakor** Salesforce eseményindító. 
-  Ez az eseményindító minden alkalommal, amikor egy új rekordot, például egy érdeklődő a Salesforce-ban létrehozott következik be. 
-  Kövesse ezt az SMTP-eseményindító **E-mail küldése** művelet. Így ha az új rekord jön létre, a logikai alkalmazás egy e-mailt küld a SMTP-fiókjával kapcsolatban az új rekordban.
+  Elindíthatja például a logikai alkalmazást a **rekord létrehozásakor** Salesforce trigger használatával. 
+  Ez az eseményindító minden alkalommal aktiválódik, amikor egy új rekord, például egy érdeklődő jön létre a Salesforce-ben. 
+  Ezt követően ezt az triggert az SMTP **E-mail küldése** művelettel követheti el. Így az új rekord létrehozásakor a logikai alkalmazás e-mailt küld az SMTP-fiókjából az új rekordról.
 
-## <a name="connect-to-smtp"></a>Csatlakozás SMTP
+## <a name="connect-to-smtp"></a>Kapcsolódás az SMTP-hez
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com), és nyissa meg a logikai alkalmazás a Logikaialkalmazás-Tervező, ha nem, nyissa meg a már.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és nyissa meg a logikai alkalmazást a Logic app Designerben, ha már nincs megnyitva.
 
-1. Válassza ki az utolsó lépésnél, ahol szeretne hozzáadni egy SMTP-művelethez, **új lépés**. 
+1. Az utolsó lépésben, amelyben hozzá szeretne adni egy SMTP-műveletet, válassza az **új lépés**lehetőséget. 
 
-   Lépések közötti művelet hozzáadása, helyezze az egérmutatót a nyíl lépések között. 
-   Válassza a plusz jelre (**+**), amely akkor jelenik meg, és válassza ki **művelet hozzáadása**.
+   A lépések közötti művelet hozzáadásához vigye a mutatót a lépések közötti nyíl fölé. 
+   Válassza ki a megjelenő pluszjelet ( **+** ), majd válassza a **művelet hozzáadása**lehetőséget.
 
-1. A Keresés mezőbe írja be szűrőként "smtp". Műveletek listája alatt válassza ki a kívánt művelet.
+1. A keresőmezőbe írja be a "SMTP" kifejezést a szűrőként. A műveletek listában válassza ki a kívánt műveletet.
 
-1. Amikor a rendszer kéri, adja meg a kapcsolati információkat:
+1. Ha a rendszer kéri, adja meg a következő kapcsolódási adatokat:
 
-   | Tulajdonság | Szükséges | Leírás |
+   | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Kapcsolat neve** | Igen | A kapcsolat az SMTP-kiszolgáló nevét | 
+   | **Kapcsolat neve** | Igen | Az SMTP-kiszolgálóhoz való kapcsolódás neve | 
    | **SMTP-kiszolgáló címe** | Igen | Az SMTP-kiszolgáló címe | 
-   | **Felhasználónév** | Igen | A felhasználónév az SMTP-fiók | 
-   | **Jelszó** | Igen | Az SMTP-fiók jelszavát | 
-   | **SMTP-kiszolgáló portját** | Nem | Egy adott portot a használni kívánt SMTP-kiszolgálón | 
-   | **SSL engedélyezése?** | Nem | Kapcsolja be, vagy kapcsolja ki az SSL-titkosítást. | 
+   | **Felhasználónév** | Igen | Az SMTP-fiókhoz tartozó Felhasználónév | 
+   | **Jelszó** | Igen | Az SMTP-fiók jelszava | 
+   | **SMTP-kiszolgáló portja** | Nem | Egy megadott port a használni kívánt SMTP-kiszolgálón | 
+   | **Engedélyezi az SSL használatát?** | Nem | Az SSL-titkosítás bekapcsolása vagy kikapcsolása. | 
    |||| 
 
-1. Adja meg a szükséges adatokat a kiválasztott művelet. 
+1. Adja meg a kiválasztott művelethez szükséges adatokat. 
 
-1. A logikai alkalmazás mentéséhez, vagy továbbra is használhatja a logic app-munkafolyamatot.
+1. Mentse a logikai alkalmazást, vagy folytassa a logikai alkalmazás munkafolyamatának összeállításával.
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-További technikai részletek korlátok, eseményindítók és műveletek, amely ismerteti az összekötő OpenAPI által (korábbi nevén Swagger) leírását, tekintse át az összekötő [referencialapja](/connectors/smtpconnector/).
+Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos technikai részletekért lásd az összekötő OpenAPI (korábban: hencegés) leírását, tekintse át az összekötő [hivatkozási oldalát](/connectors/smtpconnector/).
 
 ## <a name="get-support"></a>Támogatás kérése
 
@@ -78,4 +78,4 @@ További technikai részletek korlátok, eseményindítók és műveletek, amely
 
 ## <a name="next-steps"></a>További lépések
 
-* További információk egyéb [Logic Apps-összekötők](../connectors/apis-list.md)
+* További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

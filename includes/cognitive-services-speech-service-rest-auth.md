@@ -4,21 +4,21 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/29/2019
 ms.author: erhopf
-ms.openlocfilehash: 9cad860b8808dd2682995768c282d8376ab5d9be
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 22a95be43f06e95a6067b179b3023ba94ee5795d
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58671739"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68362536"
 ---
 ## <a name="authentication"></a>Authentication
 
-Minden egyes kérelem engedélyeztetési fejléc van szükség. Ez a táblázat mutatja be, hogy mely fejlécek az egyes szolgáltatások támogatottak:
+Minden kérelemhez engedélyezési fejléc szükséges. Ez a táblázat mutatja be, hogy mely fejlécek az egyes szolgáltatások támogatottak:
 
 | Támogatott engedélyezési fejléceket | Speech-to-text | Szövegfelolvasás |
 |------------------------|----------------|----------------|
 | OCP-Apim-Subscription-Key | Igen | Nem |
-| Hitelesítés: Tulajdonosi | Igen | Igen |
+| Engedély Tulajdonosi | Igen | Igen |
 
 Használatakor a `Ocp-Apim-Subscription-Key` fejléc, már csak számára meg kell adnia az előfizetési kulcs. Példa:
 
@@ -26,8 +26,7 @@ Használatakor a `Ocp-Apim-Subscription-Key` fejléc, már csak számára meg ke
 'Ocp-Apim-Subscription-Key': 'YOUR_SUBSCRIPTION_KEY'
 ```
 
-Használatakor a `Authorization: Bearer` fejléc, Ön szükséges kérheti a `issueToken` végpont. Ebben a kérelemben cserél az előfizetési kulcs hozzáférési jogkivonat helyeként, 10 percig érvényes. A következő néhány szakaszban fog elsajátíthatja egy token beszerzéséhez, -tokennel, és frissítse a jogkivonatot.
-
+Használatakor a `Authorization: Bearer` fejléc, Ön szükséges kérheti a `issueToken` végpont. Ebben a kérelemben cserél az előfizetési kulcs hozzáférési jogkivonat helyeként, 10 percig érvényes. A következő néhány szakaszban megtudhatja, hogyan kérhet le jogkivonatot, és hogyan használhat jogkivonatot.
 
 ### <a name="how-to-get-an-access-token"></a>Hozzáférési jogkivonat beszerzése
 
@@ -51,7 +50,7 @@ Content-type: application/x-www-form-urlencoded
 Content-Length: 0
 ```
 
-A válasz törzse tartalmazza a hozzáférési jogkivonat JSON webes jogkivonat (JWT) formátumú.
+A válasz törzse JSON Web Token (JWT) formátumban tartalmazza a hozzáférési jogkivonatot.
 
 #### <a name="powershell-sample"></a>PowerShell-minta
 
@@ -130,6 +129,7 @@ public class Authentication
 import requests
 
 subscription_key = 'REPLACE_WITH_YOUR_KEY'
+
 
 def get_token(subscription_key):
     fetch_token_url = 'https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken'

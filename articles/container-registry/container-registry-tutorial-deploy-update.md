@@ -1,21 +1,22 @@
 ---
-title: Oktatóanyag – leküldéses a frissített tárolórendszerképet regionális Azure-alkalmazás központi telepítések
-description: Módosított Docker-rendszerkép leküldése a georeplikált Azure container registrybe, majd több régióban futó webalkalmazások automatikusan telepíti a módosítások megtekintéséhez. Ez egy háromrészes sorozat harmadik része.
+title: Oktatóanyag – frissített tároló rendszerképének leküldése a regionális Azure-alkalmazások üzembe helyezéséhez
+description: Küldjön le egy módosított Docker-rendszerképet a Geo-replikált Azure Container registryre, majd tekintse meg a több régióban futó webalkalmazások automatikusan telepített módosításait. Ez egy háromrészes sorozat harmadik része.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: tutorial
 ms.date: 04/30/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: d9faa89d33dde7da35ad4490b78b9a1d023274ae
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: e01fdc41d0cc2e65951bd92378eb59f0fd35816a
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53256621"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310431"
 ---
-# <a name="tutorial-push-an-updated-container-image-to-a-geo-replicated-container-registry-for-regional-web-app-deployments"></a>Oktatóanyag: Frissített tárolórendszerkép leküldése egy georeplikált tárolójegyzéket regionális webes alkalmazás központi telepítésekhez
+# <a name="tutorial-push-an-updated-container-image-to-a-geo-replicated-container-registry-for-regional-web-app-deployments"></a>Oktatóanyag: Frissített tároló-rendszerkép leküldése a földrajzi helyről replikált tároló beállításjegyzékbe a regionális webalkalmazások üzembe helyezéséhez
 
 Ez egy háromrészes sorozat harmadik része. Az [előző oktatóanyagban](container-registry-tutorial-deploy-app.md) a georeplikációt két különböző régióban üzembe helyezett webalkalmazáshoz konfigurálta. Ebben az oktatóanyagban először az alkalmazást módosítjuk, majd egy új tárolórendszerképet hozunk létre, és leküldjük azt a georeplikált beállításjegyzékbe. Végül megtekintjük az Azure Container Registry webhookok által automatikusan üzembe helyezett módosításokat mind a két webalkalmazás esetében.
 
@@ -133,7 +134,7 @@ Egyetlen `docker push`, lehetővé tette mindkét regionális Web App üzemelő 
 
 Ebben az oktatóanyagban frissítette és leküldte a webalkalmazás tárolójának egy új verzióját a georeplikált beállításjegyzékbe. Az Azure Container Registry webhookjai értesítették a Web Apps for Containers alkalmazást a frissítésről, amely egy helyi lekérést indított a beállításjegyzékek legközelebbi replikájából.
 
-### <a name="acr-build-automated-image-build-and-patch"></a>ACR-Build: Automatizált kép létrehozás és javítás
+### <a name="acr-build-automated-image-build-and-patch"></a>ACR-Build: Automatizált rendszerképek létrehozása és javítása
 
 A georeplikáción kívül az ACR Build az Azure Container Registry egy másik funkciója, amely segíthet a tároló üzembe helyezési folyamatának optimalizálásban. A képességeinek megismeréséhez kezdjen az ACR Build áttekintésével:
 

@@ -1,6 +1,6 @@
 ---
-title: 'Gyors útmutató: ismerje meg, hogyan használhatja az Alkalmazáskonfigurációt Azure |} A Microsoft Docs'
-description: Gyors üzembe helyezés az Azure-alkalmazások konfigurálása használata Java Spring-alkalmazásokkal.
+title: Útmutató az Azure-alkalmazások konfigurációjának használatáról | Microsoft Docs
+description: Útmutató az Azure-alkalmazások konfigurálásához a Java Spring Apps használatával.
 services: azure-app-configuration
 documentationcenter: ''
 author: yidon
@@ -14,67 +14,65 @@ ms.tgt_pltfrm: Spring
 ms.workload: tbd
 ms.date: 01/08/2019
 ms.author: yidon
-ms.openlocfilehash: d023c6ec9c3d24400fd2b7b9fcce9568aa851214
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: f4ebbd4f37422c5aa2fea07a243eb624ec9e2961
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60000025"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71687022"
 ---
-# <a name="quickstart-create-a-java-spring-app-with-app-configuration"></a>Gyors útmutató: Egy Java Spring-alkalmazás létrehozása az alkalmazás konfigurációja
+# <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>Gyors útmutató: Java Spring-alkalmazás létrehozása az Azure app Configuration szolgáltatással
 
-Az Azure App konfigurálása felügyelt konfigurációs szolgáltatása az Azure-ban. Könnyedén tárolhatja, és a egy helyet, amely választja el az alkalmazás beállításait kezelheti a kódból használhatja azt. Ez a rövid útmutató bemutatja, hogyan belefoglalhatja a szolgáltatást egy Java Spring alkalmazásba.
-
-Bármely Kódszerkesztő segítségével ebben a rövid útmutatóban található lépések elvégzése. [A Visual Studio Code](https://code.visualstudio.com/) kiváló lehetőség a Windows, macOS és Linux platformokon az érhető el.
+Ebben a rövid útmutatóban beépíti az Azure-alkalmazások konfigurációját egy Java Spring-alkalmazásba, hogy központilag központosítsa az alkalmazás-beállítások tárolási és kezelési beállításait a kódból.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a rövid útmutató elvégzéséhez telepítse egy támogatott [Java fejlesztői készlet (JDK)](https://aka.ms/azure-jdks) 8-verzióval és [Apache Maven](https://maven.apache.org/) a 3.0-s verzió vagy újabb.
+- Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
+- A 8-as verzióval támogatott [Java Development Kit (JDK)](https://docs.microsoft.com/java/azure/jdk) .
+- Az [Apache Maven](https://maven.apache.org/download.cgi) 3,0-es vagy újabb verziója.
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
-## <a name="create-an-app-configuration-store"></a>Hozzon létre egy alkalmazást a konfigurációs adattároló
+## <a name="create-an-app-configuration-store"></a>Alkalmazás-konfigurációs tároló létrehozása
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Válassza ki **kulcs/érték Explorer** > **+ létrehozás** a következő kulcs-érték párok hozzáadásához:
+6. Válassza a **Configuration Explorer** >  **+ Létrehozás** lehetőséget a következő kulcs-érték párok hozzáadásához:
 
     | Kulcs | Value |
     |---|---|
     | /application/config.message | Üdvözöljük! |
 
-    Hagyja **címke** és **tartalomtípus** most üres.
+    Most hagyja üresen a **címke** és a **tartalom típusát** .
 
-## <a name="create-a-spring-boot-app"></a>Hozzon létre egy Spring Boot alkalmazás
+## <a name="create-a-spring-boot-app"></a>Spring boot-alkalmazás létrehozása
 
-Használja a [Spring Initializr](https://start.spring.io/) egy új Spring Boot-projekt létrehozása.
+A [Spring inicializáló](https://start.spring.io/) használatával új Spring boot-projektet hozhat létre.
 
 1. Nyissa meg a következő címet: <https://start.spring.io/>.
 
-2. Adja meg a következő beállításokat:
+2. A következő beállításokat kell megadnia:
 
-   * Hozzon létre egy **Maven** a projekt **Java**.
-   * Adjon meg egy **Spring Boot** egyenlő vagy nagyobb, mint a 2.0-s verzióját.
-   * Adja meg a **csoport** és **összetevő** az alkalmazás nevét.
-   * Adja hozzá a **webes** függőség.
+   * **Maven** -projekt létrehozása **Javával**.
+   * Olyan **Spring boot** -verziót válasszon, amely egyenlő vagy nagyobb, mint 2,0.
+   * Adja meg az alkalmazás **csoport** -és **lelet** -nevét.
+   * Adja hozzá a **webes** függőséget.
 
-3. Után az előző beállítások megadásához válassza **készítése a projekt**. Amikor a rendszer kéri, töltse le a projekt egy elérési utat a helyi számítógépen.
+3. Az előző beállítások megadása után válassza a **projekt létrehozása**lehetőséget. Ha a rendszer kéri, töltse le a projektet egy elérési útra a helyi számítógépen.
 
-## <a name="connect-to-an-app-configuration-store"></a>Egy alkalmazás a konfigurációs adattároló csatlakozni
+## <a name="connect-to-an-app-configuration-store"></a>Kapcsolódás alkalmazás-konfigurációs tárolóhoz
 
-1. Miután, bontsa ki a helyi számítógépen, az egyszerű Spring Boot-alkalmazás készen áll a szerkesztése. Keresse meg a *pom.xml* fájlt az alkalmazás gyökérkönyvtárában.
+1. Miután kicsomagolta a fájlokat a helyi rendszeren, az egyszerű Spring boot-alkalmazás készen áll a szerkesztésre. Keresse meg a *Pom. XML* fájlt az alkalmazás gyökérkönyvtárában.
 
-2. Nyissa meg a *pom.xml* fájlt egy szövegszerkesztőben, és adja hozzá a Spring Cloud Azure Config alapszintű listájának `<dependencies>`:
+2. Nyissa meg a *Pom. XML* fájlt egy szövegszerkesztőben, és adja hozzá a Spring Cloud Azure config Starter- `<dependencies>`t a következő listához:
 
     ```xml
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-appconfiguration-config</artifactId>
-        <version>1.1.0.M3</version>
+        <version>1.1.0.M4</version>
     </dependency>
     ```
 
-3. Hozzon létre egy új Java-fájlt *MessageProperties.java* az alkalmazás a csomag könyvtárában. Adja hozzá a következő sorokat:
+3. Hozzon létre egy új, *MessageProperties. Java* nevű Java-fájlt az alkalmazás csomag könyvtárába. Adja hozzá a következő sorokat:
 
     ```java
     @ConfigurationProperties(prefix = "config")
@@ -91,7 +89,7 @@ Használja a [Spring Initializr](https://start.spring.io/) egy új Spring Boot-p
     }
     ```
 
-4. Hozzon létre egy új Java-fájlt *HelloController.java* az alkalmazás a csomag könyvtárában. Adja hozzá a következő sorokat:
+4. Hozzon létre egy új, *HelloController. Java* nevű Java-fájlt az alkalmazás csomag könyvtárába. Adja hozzá a következő sorokat:
 
     ```java
     @RestController
@@ -109,7 +107,7 @@ Használja a [Spring Initializr](https://start.spring.io/) egy új Spring Boot-p
     }
     ```
 
-5. Nyissa meg az alkalmazás fő Java fájlt, és adja hozzá `@EnableConfigurationProperties` a funkció engedélyezéséhez.
+5. Nyissa meg az alkalmazás fő Java-fájlját, és adja hozzá `@EnableConfigurationProperties` a szolgáltatást a funkció engedélyezéséhez.
 
     ```java
     @SpringBootApplication
@@ -121,26 +119,26 @@ Használja a [Spring Initializr](https://start.spring.io/) egy új Spring Boot-p
     }
     ```
 
-6. Hozzon létre egy új fájlt `bootstrap.properties` az alkalmazás az erőforrásokat a könyvtárban, és adja hozzá a következő sorokat a fájl. Cserélje le a megfelelő tulajdonságokat az alkalmazás konfigurációs tárához tartozó mintaértékeket.
+6. Hozzon létre egy nevű `bootstrap.properties` új fájlt az alkalmazás erőforrások könyvtára alatt, és adja hozzá a következő sorokat a fájlhoz. Cserélje le a mintavételi értékeket az alkalmazás konfigurációs tárolójának megfelelő tulajdonságaira.
 
     ```properties
     spring.cloud.azure.appconfiguration.stores[0].connection-string=[your-connection-string]
     ```
 
-## <a name="build-and-run-the-app-locally"></a>Hozhat létre, és az alkalmazás helyileg történő futtatása
+## <a name="build-and-run-the-app-locally"></a>Az alkalmazás helyi létrehozása és futtatása
 
-1. A Mavennel a Spring Boot-alkalmazás létrehozása és futtatása, pl.:
+1. Készítse elő a Spring boot-alkalmazást a Maven használatával, és futtassa, például:
 
     ```shell
     mvn clean package
     mvn spring-boot:run
     ```
-2. Miután az alkalmazás fut, a *curl* segítségével az alkalmazást, például:
+2. Az alkalmazás futása után a *curl* használatával tesztelheti az alkalmazást, például:
 
       ```shell
       curl -X GET http://localhost:8080/
       ```
-    Az üzenetet kap, az alkalmazás a konfigurációs adattároló megadott.
+    Megjelenik az alkalmazás konfigurációs tárolójában megadott üzenet.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -148,9 +146,9 @@ Használja a [Spring Initializr](https://start.spring.io/) egy új Spring Boot-p
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs adattároló, és egy Java Spring alkalmazással használta azt. További információkért lásd: [Spring az Azure-ban](https://docs.microsoft.com/java/azure/spring-framework/).
+Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs tárolót, amelyet egy Java Spring-alkalmazással használt. További információ: [Spring on Azure](https://docs.microsoft.com/java/azure/spring-framework/).
 
-Ismerje meg, hogyan használhatja az Alkalmazáskonfigurációt, folytassa a következő oktatóanyag azt mutatja be a hitelesítést.
+Ha többet szeretne megtudni az alkalmazások konfigurációjának használatáról, folytassa a következő oktatóanyaggal, amely bemutatja a hitelesítést.
 
 > [!div class="nextstepaction"]
-> [Felügyelt identitás-integráció](./howto-integrate-azure-managed-service-identity.md)
+> [Felügyelt identitások integrációja](./howto-integrate-azure-managed-service-identity.md)

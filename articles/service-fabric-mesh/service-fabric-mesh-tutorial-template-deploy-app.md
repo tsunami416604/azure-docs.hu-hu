@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 825f667029aeb1d75bfdaf52b1084ff5133b5774
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: ce063d8a256cbf2507e19d459aafe13150eccce7
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527336"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306950"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>Oktatóanyag: Alkalmazás üzembe helyezése a Service Fabric Meshben sablon használatával
 
@@ -347,7 +347,7 @@ A paraméterfájlban frissítse a következő paraméterértékeket:
 
 |Paraméter|Érték|
 |---|---|
-|location|Az alkalmazás üzembe helyezési régiója.  Például: „eastus”.|
+|hely|Az alkalmazás üzembe helyezési régiója.  Például: „eastus”.|
 |registryPassword|A [Regisztrációs adatbázis hitelesítő adatainak lekérése](#retrieve-credentials-for-the-registry) szakaszban lekért jelszó. A sablon ezen paramétere egy biztonságos sztring, amely nem jelenik meg az üzembe helyezési állapot képernyőjén és az `az mesh service show` típusú parancsokban.|
 |registryUserName|A [Regisztrációs adatbázis hitelesítő adatainak lekérése](#retrieve-credentials-for-the-registry) szakaszban lekért felhasználónév.|
 |registryServer|A [Regisztrációs adatbázis hitelesítő adatainak lekérése](#retrieve-credentials-for-the-registry) szakaszban lekért regisztrációs adatbázis kiszolgálóneve.|

@@ -1,20 +1,20 @@
 ---
-title: 'Az Azure Cosmos DB-oktatóanyag: Létrehozása, lekérdezése és gráfbejárás az Apache TinkerPops Gremlin-konzol'
+title: 'Azure Cosmos DB oktatóanyag: Az Apache TinkerPops Gremlin-konzoljának létrehozása, lekérdezése és bejárása'
 description: Az Azure Cosmos DB rövid útmutatója csúcsok, élek és lekérdezések az Azure Cosmos DB Gremlin API-val történő létrehozásához.
 author: luisbosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: quickstart
-ms.date: 01/08/2018
+ms.date: 07/23/2019
 ms.author: lbosq
-ms.openlocfilehash: 06601fbad43b3daf00e06efbe95a092e76559e36
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3f25bbbbc8b3f34bdb89ba8797b042826a88ca8d
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57849822"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71815965"
 ---
-# <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>Gyors útmutató: Létrehozása, lekérdezése és bejárása a Gremlin-konzol használatával egy Azure Cosmos DB-gráfadatbázis
+# <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>Gyors útmutató: Azure Cosmos DB Graph-adatbázis létrehozása, lekérdezése és bejárása a Gremlin-konzol használatával
 
 > [!div class="op_single_selector"]
 > * [Gremlin-konzol](create-graph-gremlin-console.md)
@@ -27,7 +27,7 @@ ms.locfileid: "57849822"
 
 Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum, kulcs/érték és gráf típusú adatbázisokat, amelyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket. 
 
-Ez a rövid útmutató bemutatja egy Azure Cosmos DB [Gremlin API](graph-introduction.md)-fiók, egy adatbázis és egy gráf (tároló) Azure Portal segítségével való létrehozását, majd az [Apache TinkerPop](https://tinkerpop.apache.org) [Gremlin-konzoljának](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) használatát a Gremlin API adataival végzett munkához. Ebben az oktatóanyagban éleket és csúcspontokat hoz létre és kérdez le, csúcsponttulajdonságokat frissít, csúcspontokat kérdez le, bejárja a gráfot és elvet csúcspontokat.
+Ez a rövid útmutató bemutatja, hogyan hozhat létre Azure Cosmos DB [GREMLIN API](graph-introduction.md) -fiókot, adatbázist és gráfot (tárolót) a Azure Portal használatával, majd az [Apache TinkerPop](https://tinkerpop.apache.org) [Gremlin-KONZOLját](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) használhatja a Gremlin API-adatokkal való együttműködéshez. Ebben az oktatóanyagban éleket és csúcspontokat hoz létre és kérdez le, csúcsponttulajdonságokat frissít, csúcspontokat kérdez le, bejárja a gráfot és elvet csúcspontokat.
 
 ![Azure Cosmos DB az Apache Gremlin-konzolból](./media/create-graph-gremlin-console/gremlin-console.png)
 
@@ -55,37 +55,37 @@ Emellett a [Gremlin-konzolnak](https://tinkerpop.apache.org/) telepítve kell le
 
     Beállítás|Ajánlott érték|Leírás
     ---|---|---
-    gazdagépek|[*fióknév*.gremlin.cosmosdb.azure.com] vagy [*fióknév*.graphs.azure.com] a 2017. december 20-a előtt létrehozott fiókok esetében|Tekintse meg a következő képernyőképet. Ez a Gremlin URI értéke szögletes zárójelben az Azure Portal Áttekintés oldalán a :443 / végződés nélkül.
+    gazdagépek|[*fiók neve*. **Gremlin**. Cosmos.Azure.com]|Tekintse meg a következő képernyőképet. Ez a **GREMLIN URI** -érték a Azure Portal áttekintés lapján, szögletes zárójelben, a következő záróval: 443/eltávolítva. Megjegyzés: Ügyeljen arra, hogy a Gremlin értéket használja, és **ne** a [*fióknév*. Documents.Azure.com] végződésű URI-t, amely valószínűleg a "gazdagép nem válaszolt időben" kivételt eredményezett, amikor később megpróbálta végrehajtani a Gremlin-lekérdezéseket. 
     port|443|Állítsa 443 értékre.
     felhasználónév|*Az Ön felhasználóneve*|A `/dbs/<db>/colls/<coll>` űrlap erőforrása, ahol a `<db>` az adatbázis neve és a `<coll>` a gyűjtemény neve.
     jelszó|*Az Ön elsődleges kulcsa*| Lásd az alábbiakban a második képernyőképet. Ez az Ön elsődleges kulcsa, amelyet az Azure Portal Kulcsok oldalának Elsődleges Kulcs mezőjéből kérdezhet le. Az érték másolásához használja a mező bal oldalán lévő Másolás gombot.
     kapcsolatkészlet|{enableSsl: true}|A kapcsolatkészletre vonatkozó beállítás az SSL-hez.
-    szerializáló|{ className: org.apache.tinkerpop.gremlin.<br>driver.ser.GraphSONMessageSerializerV1d0,<br> config: { serializeResultToString: true }}|Állítsa be ezt az értéket, és törölje a `\n` sortöréseket az érték beillesztésekor.
+    szerializáló|{ className: org.apache.tinkerpop.gremlin.<br>Driver. ser. GraphSONMessageSerializerV2d0,<br> config: { serializeResultToString: true }}|Állítsa be ezt az értéket, és törölje a `\n` sortöréseket az érték beillesztésekor.
 
-    A gazdagépek értékéhez másolja a **Gremlin URI** értéket a **áttekintése** oldalon: ![Az Azure Portal Áttekintés lapján található Gremlin URI érték megtekintése és másolása](./media/create-graph-gremlin-console/gremlin-uri.png)
+    A gazdagépek értékéhez másolja a **GREMLIN URI** értékét az **Áttekintés** lapról: ![Az Azure Portal Áttekintés lapján található Gremlin URI érték megtekintése és másolása](./media/create-graph-gremlin-console/gremlin-uri.png)
 
-    A jelszó értékéhez másolja a **elsődleges kulcs** származó a **kulcsok** oldalon: ![Megtekintése és másolása az elsődleges kulcsot az Azure portal kulcsok oldalán](./media/create-graph-gremlin-console/keys.png)
+    A jelszó értékéhez másolja az **elsődleges kulcsot** a **kulcsok** lapról: ![Az elsődleges kulcs megtekintése és másolása a Azure Portal, kulcsok lapon](./media/create-graph-gremlin-console/keys.png)
 
 A remote-secure.yaml fájlnak így kell kinéznie:
 
 ```
-hosts: [your_database_server.gremlin.cosmosdb.azure.com]
+hosts: [your_database_server.gremlin.cosmos.azure.com] 
 port: 443
 username: /dbs/your_database_account/colls/your_collection
 password: your_primary_key
 connectionPool: {
   enableSsl: true
 }
-serializer: { className: org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessageSerializerV1d0, config: { serializeResultToString: true }}
+serializer: { className: org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessageSerializerV2d0, config: { serializeResultToString: true }}
 ```
 
-Ellenőrizze, hogy burkolása belül szögletes gazdagépek paraméter értékét. 
+Ügyeljen arra, hogy a gazdagépek paraméter értékét a szögletes zárójelben ([]) belül betakarja. 
 
 1. A terminálban futtassa a `bin/gremlin.bat` vagy a `bin/gremlin.sh` parancsot a [Gremlin-konzol](https://tinkerpop.apache.org/docs/3.2.5/tutorials/getting-started/) elindításához.
 1. A terminálban futtassa a `:remote connect tinkerpop.server conf/remote-secure.yaml` parancsot az alkalmazásszolgáltatáshoz való csatlakozáshoz.
 
     > [!TIP]
-    > Ha a rendszer `No appenders could be found for logger` hibát ad vissza, győződjön meg arról, hogy frissítette a szerializáló értékét a remote-secure.yaml fájlban a 2. lépésben leírtak szerint. 
+    > Ha a rendszer `No appenders could be found for logger` hibát ad vissza, győződjön meg arról, hogy frissítette a szerializáló értékét a remote-secure.yaml fájlban a 2. lépésben leírtak szerint. Ha a konfiguráció helyes, akkor ez a figyelmeztetés nyugodtan figyelmen kívül hagyható, mivel nem befolyásolhatja a konzol használatát. 
 
 1. Ezután a(z) `:remote console` futtatásával irányítson át minden konzolparancsot a távoli kiszolgálóra.
 
@@ -107,7 +107,7 @@ Először hozzon létre öt darab, egy-egy személyt jelölő csúcsot *Thomas*,
 Bemenet (Thomas):
 
 ```
-g.addV('person').property('firstName', 'Thomas').property('lastName', 'Andersen').property('age', 44).property('userid', 1)
+g.addV('person').property('firstName', 'Thomas').property('lastName', 'Andersen').property('age', 44).property('userid', 1).property('pk', 'pk')
 ```
 
 Kimenet:
@@ -118,7 +118,7 @@ Kimenet:
 Bemenet (Mary Kay):
 
 ```
-g.addV('person').property('firstName', 'Mary Kay').property('lastName', 'Andersen').property('age', 39).property('userid', 2)
+g.addV('person').property('firstName', 'Mary Kay').property('lastName', 'Andersen').property('age', 39).property('userid', 2).property('pk', 'pk')
 
 ```
 
@@ -132,7 +132,7 @@ Kimenet:
 Bemenet (Robin):
 
 ```
-g.addV('person').property('firstName', 'Robin').property('lastName', 'Wakefield').property('userid', 3)
+g.addV('person').property('firstName', 'Robin').property('lastName', 'Wakefield').property('userid', 3).property('pk', 'pk')
 ```
 
 Kimenet:
@@ -144,7 +144,7 @@ Kimenet:
 Bemenet (Ben):
 
 ```
-g.addV('person').property('firstName', 'Ben').property('lastName', 'Miller').property('userid', 4)
+g.addV('person').property('firstName', 'Ben').property('lastName', 'Miller').property('userid', 4).property('pk', 'pk')
 
 ```
 
@@ -157,7 +157,7 @@ Kimenet:
 Bemenet (Jack):
 
 ```
-g.addV('person').property('firstName', 'Jack').property('lastName', 'Connor').property('userid', 5)
+g.addV('person').property('firstName', 'Jack').property('lastName', 'Connor').property('userid', 5).property('pk', 'pk')
 ```
 
 Kimenet:
@@ -302,7 +302,7 @@ g.E().drop()
 g.V().drop()
 ```
 
-Gratulálunk! Ön teljesítette az Azure Cosmos DB: Gremlin API-oktatóanyag!
+Gratulálunk! Ezt a Azure Cosmos DB végrehajtotta: Gremlin API-oktatóanyag!
 
 ## <a name="review-slas-in-the-azure-portal"></a>Az SLA-k áttekintése az Azure Portalon
 

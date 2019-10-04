@@ -1,66 +1,64 @@
 ---
-title: Azure virtuális gépeket nem lehet kapcsolódni, mert nincs engedélyezve az NSG-t az RDP-portra |} A Microsoft Docs
-description: Ismerje meg, amelyben RDP meghiúsul, az Azure Portalon az NSG-konfiguráció miatt probléma elhárítása |} A Microsoft Docs
+title: Nem lehet csatlakozni az Azure-beli virtuális gépekhez, mert az RDP-port nincs engedélyezve a NSG-ben | Microsoft Docs
+description: Megtudhatja, hogyan lehet elhárítani a problémát, amikor az RDP nem sikerül, mert a NSG konfigurációja a Azure Portalban | Microsoft Docs
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: v-jesits
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/20/2018
 ms.author: genli
-ms.openlocfilehash: c32612c411f275220f549eea79276fa5a7232fd0
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 5f95b42fd17aec4e3ec6b7b8fac1965772fefa67
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52954612"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162593"
 ---
-#  <a name="cannot-connect-remotely-to-a-vm-because-rdp-port-is-not-enabled-in-nsg"></a>Nem lehet távoli csatlakozás egy virtuális Gépet, mert az RDP-port nincs engedélyezve az NSG-t
+#  <a name="cannot-connect-remotely-to-a-vm-because-rdp-port-is-not-enabled-in-nsg"></a>Nem lehet távolról kapcsolódni a virtuális géphez, mert az RDP-port nincs engedélyezve a NSG
 
-Ez a cikk bemutatja, hogyan, amelyben nem lehet csatlakoztatni egy Windows Azure virtuális gép (VM), mert a távoli asztal protokoll (RDP) port nem engedélyezett a hálózati biztonsági csoport (NSG) a probléma megoldásához.
+Ez a cikk azt ismerteti, hogyan lehet megoldani egy olyan problémát, amely nem tud csatlakozni egy Azure-beli Windows rendszerű virtuális géphez (VM), mert a hálózati biztonsági csoportban (NSG) nincs engedélyezve a RDP protokoll (RDP) port.
 
 
 > [!NOTE] 
-> Az Azure az erőforrások létrehozásához és használatához két üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../../azure-resource-manager/resource-manager-deployment-model.md). Azt javasoljuk, hogy használja a Resource Manager üzemi modell helyett a klasszikus üzemi modellben az új üzembe helyezésekhez. 
+> Az Azure két üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../../azure-resource-manager/resource-manager-deployment-model.md). Javasoljuk, hogy a klasszikus üzemi modell helyett a Resource Manager-alapú üzemi modellt használja az új központi telepítésekhez. 
 
 ## <a name="symptom"></a>Jelenség
 
-RDP-kapcsolatok nem tudja elvégezni az Azure-beli virtuális géphez, mivel az RDP-port nem nyílik meg a hálózati biztonsági csoport.
+Nem lehet RDP-kapcsolat az Azure-beli virtuális géppel, mert az RDP-port nincs megnyitva a hálózati biztonsági csoportban.
 
 ## <a name="solution"></a>Megoldás 
 
-Amikor létrehoz egy új virtuális Gépet, az összes forgalom az internetről alapértelmezés szerint le van tiltva. 
+Új virtuális gép létrehozásakor az internetről érkező összes forgalom alapértelmezés szerint le van tiltva. 
 
-Ahhoz, hogy az RDP-portra egy NSG-ben, kövesse az alábbi lépéseket:
+Az RDP-port NSG való engedélyezéséhez kövesse az alábbi lépéseket:
 1. Jelentkezzen be a [az Azure Portalon](https://portal.azure.com).
-2. A **virtuális gépek**, válassza ki a virtuális Gépet, a problémát. 
-3. A **beállítások**válassza **hálózatkezelés**. 
-4. A **bejövőport-szabályok**, ellenőrizze-e a port RDP megfelelően van-e beállítva. A következő egy példa a konfigurációs: 
+2. A **Virtual Machines**területen válassza ki a problémával rendelkező virtuális gépet. 
+3. A **Beállítások**területen válassza a **hálózatkezelés**lehetőséget. 
+4. A **bejövő portok szabályai**területen győződjön meg arról, hogy az RDP-port helyesen van-e beállítva. Az alábbi példa a konfigurációt szemlélteti: 
 
     **Prioritás**: 300 </br>
-    **Port**: 3389-es </br>
     **Név**: Port_3389 </br>
-    **Port**: 3389-es </br>
+    **Port (cél)** : 3389 </br>
     **Protokoll**: TCP </br>
-    **Forrás**: összes </br>
-    **Célok**: összes </br>
-    **A művelet**: engedélyezése </br>
+    **Forrás**: Any </br>
+    **Célhelyek**: Any </br>
+    **Művelet**: Allow </br>
 
-Ha a forrás IP-címet ad meg, ez a beállítás lehetővé teszi, hogy csak a megadott IP-címet vagy IP-címtartományt a virtuális Géphez való csatlakozáshoz érkező forgalmat. Győződjön meg arról, hogy az RDP-munkamenet elindításához használja a számítógépet a tartományba esik.
+Ha megadja a forrás IP-címét, akkor ez a beállítás csak az adott IP-címről vagy IP-címtartományból érkező forgalmat engedélyezi a virtuális géphez való kapcsolódáshoz. Győződjön meg arról, hogy az RDP-munkamenet elindításához használt számítógép a tartományon belül van.
 
-NSG-kkel kapcsolatos további információkért lásd: [hálózati biztonsági csoport](../../virtual-network/security-overview.md).
+További információ a NSG: [hálózati biztonsági csoport](../../virtual-network/security-overview.md).
 
 > [!NOTE]
-> 3389-es RDP-portra van közzétéve az interneten. Ezért azt javasoljuk, hogy ezt a portot használja csak tesztelésre ajánlott. Éles környezetekben ajánlott VPN-t vagy magánhálózati kapcsolatot használni.
+> Az 3389-es RDP-port elérhető az interneten. Ezért azt javasoljuk, hogy ezt a portot csak teszteléshez ajánlott használni. Éles környezetekben ajánlott VPN-vagy magánhálózati kapcsolatokat használni.
 
 ## <a name="next-steps"></a>További lépések
 
-Ha az RDP-port már engedélyezve van az NSG-t, tekintse meg [hibaelhárítása az Azure virtuális Gépen RDP általános hiba](./troubleshoot-rdp-general-error.md).
+Ha az RDP-port már engedélyezve van a NSG-ben, olvassa el a következőt: [RDP általános hiba megoldása az Azure virtuális gépen](./troubleshoot-rdp-general-error.md).
 
 
 

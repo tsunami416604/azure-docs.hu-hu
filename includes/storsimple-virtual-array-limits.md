@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 658fd9178495f14274c85eab2129c9dcd3be7693
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50166404"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179150"
 ---
 | **Korlátazonosító** | **Korlát** | **Megjegyzések** |
 | --- | --- | --- |
@@ -18,7 +18,7 @@ ms.locfileid: "50166404"
 | Kötetek/megosztások maximális száma |16 | |
 | A rétegzett megosztás legkisebb mérete |500 GB | |
 | A rétegzett kötetek minimális mérete |500 GB | |
-| A rétegzett megosztás maximális mérete |20 TB-IG | |
+| A rétegzett megosztás maximális mérete |20 TB | |
 | A rétegzett kötetek maximális mérete |5 TB | |
 | Egy helyileg rögzített megosztási minimális mérete |50 GB | |
 | Helyileg rögzített kötet minimális mérete |50 GB | |

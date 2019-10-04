@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e5ddc8a1190161d9492cd083a50120ca9d5fc5f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 58fcd21c7e6e3f2336d3e809584451dc38f6276b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57901287"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67105740"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-central-desktop"></a>Oktatóanyag: Az Azure Active Directory-integráció központi desktoppal
 
@@ -53,7 +53,7 @@ Az Azure AD-be központi Desktop integráció konfigurálásához, hozzá kell k
 
 **Központi asztali hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -238,7 +238,7 @@ Az Azure AD-felhasználók tudnak bejelentkezni akkor ki kell építeni a közpo
 
     ![E-mail-címek az új tagok](./media/central-desktop-tutorial/ic781052.png "E-mail-címek az új tagok")
 
-4. Válassza ki **belső hozzáadása tag(ok)**.
+4. Válassza ki **belső hozzáadása tag(ok)** .
 
     ![Belső tag hozzáadása](./media/central-desktop-tutorial/ic781053.png "belső tag hozzáadása")
   

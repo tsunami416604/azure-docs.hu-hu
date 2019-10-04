@@ -1,90 +1,87 @@
 ---
-title: Áttekintése és összehasonlítása az Azure igény szerinti médiakódolók a |} A Microsoft Docs
-description: Ez a témakör áttekintése és összehasonlítása az Azure igény szerinti médiakódolók a biztosít.
+title: Az Azure igény szerinti adathordozó-kódolóinak áttekintése | Microsoft Docs
+description: Ez a témakör áttekintést nyújt az Azure igény szerinti adathordozó-kódolóról.
 services: media-services
 documentationcenter: ''
 author: juliako
 manager: femila
 editor: ''
-ms.assetid: e6bfc068-fa46-4d68-b1ce-9092c8f3a3c9
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/01/2019
+ms.date: 06/25/2019
 ms.author: juliako
-ms.openlocfilehash: a976b7c1f697c09082ca0f7978bb23bb4e467e5d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 5c55b419b88a66d2e1acf1687478ab35d9f0a059
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58801696"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70019038"
 ---
-# <a name="overview-and-comparison-of-azure-on-demand-media-encoders"></a>Áttekintése és összehasonlítása az Azure igény szerinti médiakódolók a 
-
-## <a name="encoding-overview"></a>Kódolási áttekintése
+# <a name="overview-of-azure-on-demand-media-encoders"></a>Az Azure igény szerinti adathordozó-kódolóinak áttekintése 
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még [v3 a v2 migrálási útmutató](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
 
-Az Azure Media Services media felhőalapú kódolási több lehetőséget biztosít.
+Azure Media Services több lehetőséget kínál a felhőben lévő adathordozók kódolására.
 
-A Media Services kezdi, amikor fontos kodekeket és a fájl formátumok közötti különbségek megértése.
-A kodekeket, amely megvalósítja a tömörítés és kibontás algoritmusok, mivel fájlformátumok olyan tárolók, amelyek a tömörített videó tartsa a szoftvert.
+A Media Services indításakor fontos megérteni a kodekek és a fájlformátumok közötti különbséget.
+A kodekek a tömörítési/kibontási algoritmust megvalósító szoftverek, míg a fájlformátumok olyan tárolók, amelyek a tömörített videót tárolják.
 
-Media Services dinamikus csomagolást, amely lehetővé teszi az adaptív sávszélességű MP4 vagy Smooth Streaming-kódolású tartalmak streamformátumok valamelyikében (MPEG DASH, HLS, Smooth Streaming), a Media Services által támogatott biztosít anélkül, hogy kellene csomagolni ezekbe adatfolyam-továbbítási formátumokba.
+A Media Services dinamikus csomagolást biztosít, amely lehetővé teszi az adaptív sávszélességű MP4 vagy Smooth Streaming kódolású tartalom továbbítását a Media Services által támogatott folyamatos átviteli formátumokban (MPEG DASH, HLS, Smooth Streaming) anélkül, hogy újra kellene csomagolnia ezeket folyamatos átviteli formátumok.
 
-Az AMS-fiók létrehozásakor a rendszer hozzáad egy **alapértelmezett** streamvégpontot a fiókhoz **Leállítva** állapotban. A tartalom streamelésének megkezdéséhez, valamint a dinamikus csomagolás és a dinamikus titkosítás kihasználásához a tartalomstreameléshez használt streamvégpontnak **Fut** állapotban kell lennie. 
+A Media Services-fiók létrehozásakor a rendszer hozzáad egy **alapértelmezett** streamvégpontot a fiókhoz **Leállítva** állapotban. A tartalom streamelésének megkezdéséhez, valamint a dinamikus csomagolás és a dinamikus titkosítás kihasználásához a tartalomstreameléshez használt streamvégpontnak **Fut** állapotban kell lennie. A folyamatos átviteli végpontok számlázása akkor történik meg, amikor a végpont **futó** állapotban van.
 
-A Media Services az igény szerinti kódolók ebben a cikkben ismertetett a következőket támogatja:
+Media Services a következő, igény szerinti kódolókat támogatja, amelyek a jelen cikkben olvashatók:
 
 * [Media Encoder Standard](media-services-encode-asset.md#media-encoder-standard)
 * [Media Encoder Premium-munkafolyamat](media-services-encode-asset.md#media-encoder-premium-workflow)
 
-Ez a cikk rövid áttekintést nyújt az igény szerinti médiakódolók, és hivatkozásokat tartalmaz a cikkek, amelyek segítségével a további tájékoztatáshoz. A témakör emellett a kódolók összehasonlítása.
+Ez a cikk rövid áttekintést nyújt az igény szerinti adathordozó-kódolókkal kapcsolatban, és hivatkozásokat tartalmaz a részletesebb információkat tartalmazó cikkekhez. A témakör emellett a kódolók összehasonlítását is tartalmazza.
 
-Alapértelmezés szerint minden Media Services-fiók egy aktív kódolási feladat rendelkezhet egyszerre. Kódolási egységek, amelyek lehetővé teszik, hogy több kódolási feladat fut egyidejűleg, egy az egyes kódolási szolgáltatás számára fenntartott egység megvásárlása tartható fenn. További információ: [kódolási egységek méretezése](media-services-scale-media-processing-overview.md).
+Alapértelmezés szerint minden Media Services fiók egyszerre csak egy aktív kódolási feladattal rendelkezhet. Olyan kódolási egységeket foglalhat le, amelyek lehetővé teszik, hogy egyszerre több kódolási feladatot futtasson, egyet a megvásárolt kódoláshoz fenntartott egységekhez. További információ: [kódolási egységek skálázása](media-services-scale-media-processing-overview.md).
 
 ## <a name="media-encoder-standard"></a>Media Encoder Standard
+
 ### <a name="how-to-use"></a>A használat módja
-[Kódolása a Media Encoder standarddel](media-services-dotnet-encode-with-media-encoder-standard.md)
+[Kódolás a Media Encoder Standard használatával](media-services-dotnet-encode-with-media-encoder-standard.md)
 
 ### <a name="formats"></a>Formátumok
-[Formátumai és kodekei](media-services-media-encoder-standard-formats.md)
+[Formátumok és kodekek](media-services-media-encoder-standard-formats.md)
 
 ### <a name="presets"></a>Előzetes beállítások
-Media Encoder Standard használatával lett konfigurálva a kódoló készletek leírt egyik [Itt](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409).
+Media Encoder Standard az [itt](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)ismertetett kódoló-beállításkészletek egyikével van konfigurálva.
 
 ### <a name="input-and-output-metadata"></a>Bemeneti és kimeneti metaadatok
-A kódolók bemeneti metaadatok leírt [Itt](media-services-input-metadata-schema.md).
+A kódolók bemeneti metaadatait [itt](media-services-input-metadata-schema.md)mutatjuk be.
 
-A kódolók kimeneti metaadatok leírt [Itt](media-services-output-metadata-schema.md).
+A kódoló kimeneti metaadatait [itt](media-services-output-metadata-schema.md)mutatjuk be.
 
-### <a name="generate-thumbnails"></a>Miniatűrök létrehozása
-További információ: [Media Encoder Standard használatával miniatűrök létrehozása](media-services-advanced-encoding-with-mes.md#thumbnails).
+### <a name="generate-thumbnails"></a>Miniatűrök előállítása
+További információ: [miniatűrök készítése a Media Encoder standard használatával](media-services-advanced-encoding-with-mes.md#thumbnails).
 
-### <a name="trim-videos-clipping"></a>Trim videók (a vágás)
-További információ: [azokat a videókat a Media Encoder Standard használatával hogyan](media-services-advanced-encoding-with-mes.md#trim_video).
+### <a name="trim-videos-clipping"></a>Videók körülvágása (vágás)
+További információ: [videók körülvágása Media Encoder standard használatával](media-services-advanced-encoding-with-mes.md#trim_video).
 
 ### <a name="create-overlays"></a>Átfedések létrehozása
-További információ: [hogyan hozhat létre Media Encoder Standard használatával átfedések](media-services-advanced-encoding-with-mes.md#overlay).
+További információ: [átfedések létrehozása Media Encoder standard használatával](media-services-advanced-encoding-with-mes.md#overlay).
 
 ### <a name="see-also"></a>Lásd még
-[A Media Services blogja](https://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/)
+[A Media Services blog](https://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/)
 
 ## <a name="media-encoder-premium-workflow"></a>Media Encoder Premium-munkafolyamat
 ### <a name="overview"></a>Áttekintés
-[Introducing Premium Encoding in Azure Media Services](https://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services/)
+[Prémium szintű kódolás bemutatása Azure Media Services](https://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services/)
 
 ### <a name="how-to-use"></a>A használat módja
-Media Encoder Premium munkafolyamat komplex munkafolyamatok használatával van konfigurálva. Munkafolyamat-fájlok sikerült létrehozni és frissíteni, használja a [munkafolyamat-tervezővel](media-services-workflow-designer.md) eszközt.
+A Media Encoder Premium Workflow összetett munkafolyamatok használatával van konfigurálva. A munkafolyamat-fájlok a [munkafolyamat-tervező](media-services-workflow-designer.md) eszköz használatával hozhatók létre és frissíthetők.
 
-[Prémium szintű kódolás az Azure Media Services használatával](https://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services/)
+[Prémium szintű kódolás használata a Azure Media Servicesban](https://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services/)
 
 ### <a name="known-issues"></a>Ismert problémák
-Ha a bemeneti videó nem tartalmazza a feliratozás, a kimeneti adategység továbbra is fájlt fogja tartalmazni, egy üres TTML.
-
+Ha a bemeneti videó nem tartalmaz kódolt feliratozást, a kimeneti eszköz továbbra is tartalmaz egy üres TTML-fájlt.
 
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -93,7 +90,7 @@ Ha a bemeneti videó nem tartalmazza a feliratozás, a kimeneti adategység tov�
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
-* [Speciális kódolási feladatokat végez, és a Media Encoder Standard-beállításkészletek testreszabása](media-services-custom-mes-presets-with-dotnet.md)
+* [Speciális kódolási feladatok végrehajtása a Media Encoder Standard-készletek testreszabásával](media-services-custom-mes-presets-with-dotnet.md)
 * [Kvóták és korlátozások](media-services-quotas-and-limitations.md)
 
 <!--Reference links in article-->

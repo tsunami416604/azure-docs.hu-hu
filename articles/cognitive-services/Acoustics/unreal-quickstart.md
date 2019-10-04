@@ -1,90 +1,97 @@
 ---
-title: Projekt Akusztika rövid útmutató az Unreal
+title: Projekt akusztikai gyors üzembe helyezése Unreal-vel
 titlesuffix: Azure Cognitive Services
-description: Mintatartalmakat próbálhat használja, az Unreal és Wwise tervezési vezérlők projekt Akusztika kísérletezhet, és üzembe helyezése Windows asztali.
+description: A mintaszöveg használatával kísérletezzen a Project akusztikai tervezési vezérlőkkel az Unreal-ben és a Wwise-ben, és telepítse a Windows asztalra.
 services: cognitive-services
-author: kegodin
+author: NoelCross
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: quickstart
 ms.date: 03/20/2019
-ms.author: kegodin
-ms.openlocfilehash: 691f49e9be8aabe9a3e229bfd3b35ab183f9fed9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: noelc
+ROBOTS: NOINDEX
+ms.openlocfilehash: 927ce403130460c302f546038ff3a0c3a16e0368
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59492405"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933016"
 ---
-# <a name="project-acoustics-unrealwwise-quickstart"></a>Projekt Akusztika Unreal/Wwise rövid útmutató
-Ebben a rövid útmutatóban fog kísérletezhet projekt Akusztika az Unreal Engine és Wwise megadott minta tartalom-Tervező szabályozza.
+# <a name="project-acoustics-unrealwwise-quickstart"></a>Projekt akusztikai Unreal/Wwise gyors útmutató
+Ebben a rövid útmutatóban a Project akusztikai tervezési vezérlőkkel kísérletezik a megadott minta tartalmakat használva az Unreal Engine és a Wwise számára.
 
-Szoftverkövetelmények:
-* [Unreal Engine](https://www.unrealengine.com/) 4.21.
-* [AudioKinetic Wwise](https://www.audiokinetic.com/products/wwise/) 2018.1.6
+A minta tartalmának használatához szükséges szoftverek:
+* [Unreal Engine](https://www.unrealengine.com/) 4,22
+* [AudioKinetic Wwise](https://www.audiokinetic.com/products/wwise/) 2019.1.2
 
-## <a name="download-the-sample-package"></a>A minta-csomag letöltése
-Töltse le a [projekt Akusztika Unreal + Wwise minta csomag](https://www.microsoft.com/download/details.aspx?id=58090). A minta csomag tartalmazza, az Unreal Engine projekt, az Unreal projektben, és a projekt Akusztika Wwise beépülő modul Wwise projekt.
+## <a name="download-the-sample-package"></a>A minta csomag letöltése
+Töltse le a [Project Acoustics Unreal + Wwise minta csomagot](https://www.microsoft.com/download/details.aspx?id=58090). A mintakód egy Unreal Engine-projektet, az adott Unreal-projekthez tartozó Wwise-projektet és a Project Acoustics Wwise beépülő modulját tartalmazza.
 
-## <a name="set-up-the-project-acoustics-sample-project"></a>A projekt Akusztika mintaprojektet beállítása
-A projekt Akusztika Unreal/Wwise mintaprojektet beállításához kell telepítenie a projekt Akusztika beépülő modul Wwise be. Ezután az Unreal projekt üzembe helyezése a Wwise bináris fájlokat, és állítsa be a Wwise Unreal beépülő modul projekt Akusztika támogatásához.
+## <a name="set-up-the-project-acoustics-sample-project"></a>A Project akusztikai minta projekt beállítása
+Ahhoz, hogy beállítsa a projekt akusztikai Unreal/Wwise minta projektjét, először telepítenie kell a Project akusztikai beépülő modult a Wwise-be. Ezután telepítse a Wwise bináris fájljait az Unreal projektbe, és állítsa be a Wwise Unreal beépülő modulját a projekt Akusztikaének támogatásához.
 
-### <a name="install-the-project-acoustics-wwise-plugin"></a>A projekt Akusztika Wwise beépülő modul telepítése
-Nyissa meg Wwise indítója, majd a **beépülő modulok** lap **új beépülő modulok telepítése**, jelölje be **könyvtár hozzáadása a**. Válassza ki a `AcousticsWwisePlugin\ProjectAcoustics` könyvtárban található a letöltött csomagot.
+### <a name="install-the-project-acoustics-wwise-plugin"></a>A Project akusztikai Wwise beépülő modul telepítése
+Nyissa meg a Wwise-indítót, majd a **plugins** ( **új beépülő modulok telepítése**) lapon válassza a **Hozzáadás a címtárból**lehetőséget. Válassza ki `AcousticsWwisePlugin\ProjectAcoustics` a letöltött csomag részét képező könyvtárat.
 
-![Képernyőkép a Wwise indítója telepítése Wwise beépülő modul lehetőséget mutató](media/wwise-install-new-plugin.png)
+![Képernyőkép a Wwise-Indítóról a Wwise beépülő modul telepítése lehetőséggel](media/wwise-install-new-plugin.png)
 
-### <a name="add-wwise-binaries-to-the-project-acoustics-unreal-sample-project"></a>A projekt Akusztika Unreal mintaprojekt Wwise bináris fájlok hozzáadása
-Wwise indítója, kattintson a **Unreal Engine** lapfülre, majd kattintson a Tovább gombra a hamburger menü **legutóbbi Unreal Engine projektek** válassza **keresse meg a projekt**. Nyissa meg a mintaprojektet Unreal `.uproject` a csomagban lévő fájlhoz `AcousticsSample\AcousticsGame\AcousticsGame.uproject`.
+### <a name="add-wwise-binaries-to-the-project-acoustics-unreal-sample-project"></a>Wwise bináris fájlok hozzáadása a projekt akusztikai Unreal Sample projekthez
+A Wwise-Indítóban kattintson az **Unreal Engine (irreális motor** ) fülre, majd a **legutóbbi Unreal Engine-projektek** melletti hamburger menüre, és válassza a **Tallózás a projekthez**lehetőséget. Nyissa meg a minta `.uproject` Unreal Project fájlt a `AcousticsSample\AcousticsGame\AcousticsGame.uproject`csomagban.
 
-![Képernyőkép a Wwise indítója Unreal lap](media/wwise-unreal-tab.png)
+![Képernyőkép a Wwise Launcher Unreal lapról](media/wwise-unreal-tab.png)
 
-A projekt Akusztika mintaprojektet mellett kattintson a **integrálása Wwise projektben**.
+Ezután a projekt akusztikai minta projekt mellett kattintson a **Wwise integrálása a projektben**elemre.
 
-![Képernyőkép a Wwise indítója Akusztika játék Unreal projekt megjelenítése](media/wwise-acoustics-game-project.png)
+![Képernyőkép a Wwise-Indítóról, amely a akusztikai játékok Unreal-projektjét mutatja](media/wwise-acoustics-game-project.png)
 
-### <a name="extend-wwises-unreal-plugin-functionality"></a>A Wwise Unreal beépülő modul funkciójának bővítése
-A projekt Akusztika Unreal beépülő modul további viselkedés szükséges lehet a Wwise Unreal API beépülő modul teszi közzé. Futtassa a parancsfájlt a projekt Akusztika Unreal beépülő modullal, ezek a módosítások automatizálásához biztosított:
-* Belül `AcousticsGame\Plugins\ProjectAcoustics\Resources`futtassa `PatchWwise.bat`.
+### <a name="extend-wwises-unreal-plugin-functionality"></a>A Wwise Unreal beépülő modul funkcióinak kiterjesztése
+A Project akusztikai Unreal beépülő moduljának további viselkedést kell kitennie a Wwise Unreal beépülő modul API-ból. A következő módosítások automatizálásához futtassa a Project Acoustics Unreal beépülő modullal megadott batch-fájlt:
+* Belül `AcousticsGame\Plugins\ProjectAcoustics\Resources`futtassa a `PatchWwise.bat`parancsot.
 
-    ![Képernyőfelvétel a Windows Explorer ablak, rajta a parancsfájl javítás Wwise projekthez](media/patch-wwise-script.png)
+    ![A Windows Intéző ablakának képernyőképe, amely a Wwise-projekt javításának parancsfájlját mutatja](media/patch-wwise-script.png)
 
-* Ha nem rendelkezik a DirectX SDK telepítve van, tegye megjegyzésbe a DXSDK_DIR tartalmazó sort kell `AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs`
+* Ha nincs telepítve a DirectX SDK, attól függően, hogy milyen verziójú Wwise használ, érdemes megadnia a következőt `DXSDK_DIR` `AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs`tartalmazó sort:
 
-    ![Kódszerkesztő megjegyzésként DXSDK bemutató képernyőkép](media/directx-sdk-comment.png)
+    ![Képernyőkép a Kódszerkesztő DXSDK](media/directx-sdk-comment.png)
+
+* Ha a Visual Studio 2019-as verzióval állítja össze a Wwise-vel való összekapcsolási hibát, manuálisan `VSVersion` szerkessze `AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs` az `vc150`alapértelmezett értéket a következőben:
+
+    ![Képernyőfelvétel a VSVersion-ról vc150-ra módosított Kódszerkesztő](media/vsversion-comment.png)
 
 ### <a name="open-the-unreal-project"></a>Nyissa meg az Unreal projektet. 
-Rendszer rákérdez, hogy újraépíthesse modulok; Kattintson az Igen gombra.
+A rendszer felkéri a modulok újraépítésére; kattintson az Igen gombra.
 
-Ha a projekt megnyitása sikertelen, az Összeállítási hibák, ellenőrizze, hogy telepítette a projekt Akusztika mintaprojektet a használt Wwise ugyanazt a verzióját, a projekt Akusztika Wwise beépülő modul.
+>Ha a projekt megnyitása nem sikerül a létrehozási hibáknál, ellenőrizze, hogy telepítette-e a Project Acoustics Wwise beépülő modult a Project akusztikus Wwise használt verzióra.
 
-## <a name="experiment-with-project-acoustics-design-controls"></a>Kísérletezzen a projekt Akusztika tervezési vezérlők
-Figyeljen, hogy a jelenet úgy érzi, az Unreal szerkesztőben a lejátszás gombra kattintva. A számítógépen, használjon W, A, S, D, és az egérrel való mozgáshoz. További billentyűparancsok megtekintéséhez nyomja le az **F1** billentyűt. Az alábbiakban néhány tervezési tevékenység próbálkozhat:
+>Ha a 2019,1-nál korábbi [AudioKinetic-Wwise](https://www.audiokinetic.com/products/wwise/) használ, nem fog tudni hangbankokat előállítani a projekt akusztikai mintájának projektje alapján.  A Wwise 2019,1-es verziójának a megfelelő használatra való integrálása szükséges a mintavételi projektben.
 
-### <a name="modify-occlusion-and-transmission"></a>Hangelnyelés és átviteli módosítása
-Vannak a forrás projekt Akusztika tervezési vezérlőelemek minden Unreal eredményes színész:
+## <a name="experiment-with-project-acoustics-design-controls"></a>Kísérletezés a Project akusztikai tervezési vezérlőkkel
+Figyelje meg, hogyan hangzik a jelenet az Unreal Editor Play (lejátszás) gombjára kattintva. Az asztalon a W, A, S, D és az egér használatával mozoghat. További billentyűparancsok megtekintéséhez nyomja le az **F1** billentyűt. Íme néhány tervezési tevékenység a kipróbáláshoz:
 
-![Képernyőkép az Unreal szerkesztő Akusztika tervezési vezérlők](media/demo-scene-sound-source-design-controls.png)
+### <a name="modify-occlusion-and-transmission"></a>Elzáródás és átvitel módosítása
+Az egyes Unreal hangszínészek esetében a Source Project akusztikai tervezési vezérlői vannak:
 
-Ha a **hangelnyelés** Szorzó (az alapértelmezett érték 1) 1-nél nagyobb, hangelnyelés exaggerated kell lesz. Révén az 1-nél kisebb értékre a hangelnyelés életbe lépjenek több változás is.
+![Az Unreal Editor akusztikai tervezési vezérlőinek képernyőképe](media/demo-scene-sound-source-design-controls.png)
 
-Ahhoz, hogy a fali keresztül átviteli, helyezze át a **átviteli (adatbázis)** csúszka ki a legalacsonyabb szintre. 
+Ha az **elzáródási** szorzó nagyobb, mint 1 (az alapértelmezett érték 1), a elzáródás túlzott lesz. Ha 1-nél kisebb értéket ad meg, az elzáródás hatása finomabb lesz.
 
-### <a name="modify-wetness-for-a-source"></a>A forrás wetness módosítása
-Milyen gyorsan wetness módosítja a távolságot módosításához használja a **technológiáira távolság Warp**. Projekt Akusztika kiszámítja a lemezterületet, a szimulációt, egész nedves szinteket, amelyek zökkenőmentesen távolság számától függ, és adja meg a technológiáira távolság jelek. Ez a hatás növelése a távolság lánc exaggerates távolság kapcsolatos nedves szintjei által. Hajlítási értékek 1-nél kisebb győződjön meg arról, módosítsa a távolság-alapú reverberation több változás is. Erről is módosítható részletesebben részletesen módosításával a **Wetness (adatbázis)**.
+A falon belüli átvitel engedélyezéséhez mozgassa az **átviteli (db)** csúszkát a legalacsonyabb szintjéről. 
 
-Növelje a késleltetési idő során a hely beállításával **Decay időskálára**. Vegyük azt az esetet, ahol a szimuláció eredménye egy késleltetési idő az 1.5-ös s. Beállítás a **Decay időskálára** 2 eredményez a alkalmazni a 3-ból a forrás késleltetési idő s.
+### <a name="modify-wetness-for-a-source"></a>A nedvesség módosítása a forrásnál
+Ha módosítani szeretné, hogy a nedvesség milyen gyorsan változik atávolsággal, használja az észlelési távolsági láncot. A Project Acoustics a teljes területről kiszámítja a nedves szinteket a szimulációból, ami a távolságtól és a megérzékelt távolsági célzástól függ. A távolsági lánc növelésével a távolsághoz kapcsolódó nedves szintek egyre nagyobb mértékben eltúlozzák ezt a hatást. 1-nél kisebb értékek elhajlása esetén a távolságon alapuló visszaverődés sokkal finomabbra változik. Ez a hatás finomabb részletességgel is módosítható a **nedvesség (db)** beállításával.
 
-### <a name="modify-distance-based-attenuation"></a>Távolság-alapú gyengülés módosítása
-A projekt Akusztika Wwise mixer beépülő modul tiszteletben tartja a forrás távolság-alapú gyengülés Wwise beépített. Ez a görbe módosítása változik a száraz-elérési szint. A projekt Akusztika beépülő modul lehetőség a nedves szint a Nyugat-európai száradó vegyesen szimuláció és a tervező által megadott fenntartásához.
+Növelje a romlási időt a teljes térben a **romlási idő skálázásának**módosításával. Gondolja át azt az esetet, amikor a szimulációs eredmény 1,5 s bomlási idő. Ha a **romlási idő méretezése** 2 értékre van állítva, a rendszer a 3 s forrásra alkalmazza a romlási időt.
 
-![Képernyőkép a Wwise gyengülés görbe panel a szimuláció határ előtt fog gyengülés](media/demo-sounds-attenuation.png)
+### <a name="modify-distance-based-attenuation"></a>Távolságon alapuló csillapítás módosítása
+A Project akusztikai Wwise keverő beépülő modulja figyelembe veszi a Wwise-ben beépített, forrásként szolgáló távolságon alapuló gyengülést. A görbe módosítása megváltoztatja a száraz elérési út szintjét. A Project akusztikai beépülő modulja úgy állítja be a nedves szintet, hogy fenntartsa a szimulációs és kialakítási vezérlők által meghatározott nedves szárazanyag-kombinációt.
 
-Mindegyik szimulált player helyen Eszközkezelőre "szimuláció régió" mezőben számítási projekt Akusztika hajtja végre. A minta csomagban Akusztika eszközök is számlázásnak szimuláció régió sugarú 45 m, és a attenuations arra tervezték, hogy előtti 45 m 0-ra csökken. Bár ez fakulási nem egy szigorú követelmény, azt, hogy csak a figyelő 45 m belül geometriai fog occlude hangok csoportosítani végzi.
+![Képernyőkép a Wwise csillapítási görbe paneljéről, és a szimuláció határa előtt a gyengítés nulla lesz](media/demo-sounds-attenuation.png)
+
+A Project akusztikai szolgáltatás a szimulált lejátszók helyét középpontba kerülő "szimulációs régió" mezőben számítja ki a számítást. A rendszer az akusztikai eszközöket egy 45 m sugarú szimulációs régióval együtt sütötte, és a gyengítés a 45 m előtt 0-ra csökken. Habár ez a fakulás nem szigorú követelmény, az azt eredményezi, hogy csak a figyelő 45 m-n belüli geometriája occlude a hangokat.
 
 ## <a name="next-steps"></a>További lépések
-* [A projekt Akusztika integrálása](unreal-integration.md) beépülő modul, az Unreal projektbe
+* [A Project Acoustics](unreal-integration.md) beépülő modul integrálása az Unreal-projektbe
 * [Azure-fiók létrehozása](create-azure-account.md) beépíteni kívánt saját tartalmak számára
 
 

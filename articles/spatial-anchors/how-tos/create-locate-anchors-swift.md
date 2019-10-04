@@ -4,16 +4,16 @@ description: Bemutatja, hogyan hozhat létre, és keresse meg az Azure térbeli 
 author: ramonarguelles
 manager: vicenterivera
 services: azure-spatial-anchors
-ms.author: ramonarguelles
+ms.author: rgarcia
 ms.date: 02/24/2019
-ms.topic: how-to
+ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 6147616156bc192ffd8d38ddcc636734d8d5179c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: f4646c55d2e9c4d7c0a9d21b39c759aea06272e1
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58915968"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672029"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-swift"></a>Hogyan hozhat létre, és keresse meg a horgonyok SWIFT nyelvű Azure térbeli horgonyok használatával
 
@@ -160,7 +160,7 @@ Tudjon meg többet a [ASACloudSpatialAnchor](https://docs.microsoft.com/objectiv
     var localAnchor : ARAnchor? = nil
     let hits = self.sceneView.session.currentFrame?.hitTest(CGPoint(x:0.5, y:0.5), types: ARHitTestResult.ResultType.estimatedHorizontalPlane)
     if (hits!.count == 0) return
-    // The hitTest method sorts the resulting list by distance from the camera, increasing
+    // The hitTest method sorts the resulting list by increasing distance from the camera
     // The first hit result will usually be the most relevant when responding to user input
     localAnchor = ARAnchor(transform:hits![0].worldTransform)
     self.sceneView.session.add(anchor: _localAnchor!)

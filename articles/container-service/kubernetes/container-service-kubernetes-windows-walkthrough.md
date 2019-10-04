@@ -10,11 +10,11 @@ ms.date: 07/18/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017, mvc, devcenter
 ms.openlocfilehash: d7ce702bb726fb89780d251f31023c9490112c36
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55659388"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66148787"
 ---
 # <a name="deprecated-deploy-kubernetes-cluster-for-windows-containers"></a>(ELAVULT) Windows-tárolók Kubernetes-fürt üzembe helyezése
 

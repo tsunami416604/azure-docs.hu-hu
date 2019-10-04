@@ -14,11 +14,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: abfdad1db655c102dbfb300434eac952fe2154dc
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58095898"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60381898"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezés hibaelhárítása
 
@@ -91,7 +91,7 @@ A következő ellenőrzőlista segítségével zökkenőmentes egyszeri Bejelent
 
 ### <a name="domain-controller-logs"></a>Domain controller naplók
 
-Ha sikeres a naplózás a tartományvezérlőn, majd minden alkalommal, amikor egy felhasználó bejelentkezik keresztül közvetlen egyszeri bejelentkezés engedélyezése egy biztonsági bejegyzés az eseménynaplóba van rögzítve. Ezek a biztonsági események a következő lekérdezéssel keresheti. (Esemény **4769** a számítógép fiókjához társított **AzureADSSOAcc$**.)
+Ha sikeres a naplózás a tartományvezérlőn, majd minden alkalommal, amikor egy felhasználó bejelentkezik keresztül közvetlen egyszeri bejelentkezés engedélyezése egy biztonsági bejegyzés az eseménynaplóba van rögzítve. Ezek a biztonsági események a következő lekérdezéssel keresheti. (Esemény **4769** a számítógép fiókjához társított **AzureADSSOAcc$** .)
 
 ```
     <QueryList>
@@ -105,18 +105,18 @@ Ha sikeres a naplózás a tartományvezérlőn, majd minden alkalommal, amikor e
 
 Hibaelhárítási oldották meg, ha manuálisan alaphelyzetbe állíthatja a funkció a bérlő. Kövesse ezeket a lépéseket a helyszíni kiszolgálón, ahol futtatja az Azure AD Connect.
 
-### <a name="step-1-import-the-seamless-sso-powershell-module"></a>1. lépés: A zökkenőmentes egyszeri bejelentkezési PowerShell-modul importálása
+### <a name="step-1-import-the-seamless-sso-powershell-module"></a>1\. lépés: A zökkenőmentes egyszeri bejelentkezési PowerShell-modul importálása
 
 1. Először töltse le és telepítse [az Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview).
 2. Keresse meg a `%programfiles%\Microsoft Azure Active Directory Connect` mappát.
 3. A zökkenőmentes egyszeri bejelentkezési PowerShell-modul importálása a következő paranccsal: `Import-Module .\AzureADSSO.psd1`.
 
-### <a name="step-2-get-the-list-of-active-directory-forests-on-which-seamless-sso-has-been-enabled"></a>2. lépés: Listájának megtekintéséhez, amelyen a közvetlen egyszeri bejelentkezés engedélyezve van az Active Directory-erdők
+### <a name="step-2-get-the-list-of-active-directory-forests-on-which-seamless-sso-has-been-enabled"></a>2\. lépés: Listájának megtekintéséhez, amelyen a közvetlen egyszeri bejelentkezés engedélyezve van az Active Directory-erdők
 
 1. Futtassa a Powershellt rendszergazdaként. A PowerShellben hívás `New-AzureADSSOAuthenticationContext`. Amikor a rendszer kéri, adja meg a bérlő globális rendszergazdai hitelesítő adatokkal.
 2. Hívás `Get-AzureADSSOStatus`. Ez a parancs biztosít az Active Directory-erdők, (tekintse meg a "Tartományok" listája) listája a, amelyhez ez a funkció engedélyezve van.
 
-### <a name="step-3-disable-seamless-sso-for-each-active-directory-forest-where-youve-set-up-the-feature"></a>3. lépés: Minden egyes Active Directory-erdőben, amennyiben beállította a szolgáltatást a közvetlen egyszeri bejelentkezés letiltása
+### <a name="step-3-disable-seamless-sso-for-each-active-directory-forest-where-youve-set-up-the-feature"></a>3\. lépés: Minden egyes Active Directory-erdőben, amennyiben beállította a szolgáltatást a közvetlen egyszeri bejelentkezés letiltása
 
 1. Hívás `$creds = Get-Credential`. Amikor a rendszer kéri, adja meg a tartományi rendszergazda hitelesítő adatai a megfelelő Active Directory-erdőben.
 
@@ -126,7 +126,7 @@ Hibaelhárítási oldották meg, ha manuálisan alaphelyzetbe állíthatja a fun
 2. Hívás `Disable-AzureADSSOForest -OnPremCredentials $creds`. Ezzel a paranccsal eltávolítható az `AZUREADSSOACC` az adott erdő Active Directory a helyszíni tartományvezérlő számítógépfiókja.
 3. Ismételje meg a fenti lépéseket minden egyes Active Directory-erdőben, amennyiben beállította a szolgáltatást.
 
-### <a name="step-4-enable-seamless-sso-for-each-active-directory-forest"></a>4. lépés: Közvetlen egyszeri bejelentkezés engedélyezése az Active Directory erdőhöz
+### <a name="step-4-enable-seamless-sso-for-each-active-directory-forest"></a>4\. lépés: Közvetlen egyszeri bejelentkezés engedélyezése az Active Directory erdőhöz
 
 1. Hívás `Enable-AzureADSSOForest`. Amikor a rendszer kéri, adja meg a tartományi rendszergazda hitelesítő adatai a megfelelő Active Directory-erdőben.
 
@@ -135,6 +135,6 @@ Hibaelhárítási oldották meg, ha manuálisan alaphelyzetbe állíthatja a fun
 
 2. Ismételje meg az előző lépést minden egyes Active Directory-erdőben, ahol szeretné beállítani a szolgáltatást.
 
-### <a name="step-5-enable-the-feature-on-your-tenant"></a>5. lépés A bérlő a funkció engedélyezése
+### <a name="step-5-enable-the-feature-on-your-tenant"></a>5\. lépés. A bérlő a funkció engedélyezése
 
 A bérlő a funkció bekapcsolásához hívás `Enable-AzureADSSO -Enable $true`.

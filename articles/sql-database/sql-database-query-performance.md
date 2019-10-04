@@ -13,11 +13,11 @@ ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/03/2019
 ms.openlocfilehash: 5d892005881436dec89c0d0d010f7f02e7bdebf9
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039197"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60585258"
 ---
 # <a name="query-performance-insight-for-azure-sql-database"></a>Az Azure SQL Database lekérdezési Terheléselemző
 
@@ -275,7 +275,7 @@ Ezek a beállítások alkalmazásának végül ellenőrizze a Query Store az új
     ALTER DATABASE [YourDB] SET QUERY_STORE CLEAR;
 ```
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Lekérdezési Terheléselemző segítségével megismerheti a számítási feladatok hatását, és hogy miként kapcsolódik az adatbázis-erőforrások felhasználását. Ezzel a funkcióval megismerheti a top-igényes lekérdezéseket az adatbázisban, és látni fogja a lekérdezések optimalizálásához, mielőtt azok a problémát.
 

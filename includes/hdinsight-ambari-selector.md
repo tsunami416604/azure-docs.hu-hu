@@ -5,14 +5,14 @@ ms.topic: include
 ms.date: 10/25/2018
 ms.author: jasonh
 ms.openlocfilehash: 064fce7c2ca8934ef7c4d9d4ab9d5637a4649afd
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50165522"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179778"
 ---
 > [!div class="op_single_selector"]
-> * [Webes felhasználói felületen](../articles/hdinsight/hdinsight-hadoop-manage-ambari.md)
+> * [Web UI](../articles/hdinsight/hdinsight-hadoop-manage-ambari.md)
 > * [REST API](../articles/hdinsight/hdinsight-hadoop-manage-ambari-rest-api.md)
 > 
 > 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: b648c51b1b169c02f149493c53b6ef738b736e61
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 40409dbc860341e36501eec7ba77e2dd727c995e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59281896"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67088621"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tonicdm"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező TonicDM
 
@@ -55,7 +55,7 @@ Az Azure AD integrálása a TonicDM konfigurálásához hozzá kell TonicDM a ka
 
 **TonicDM hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

@@ -1,115 +1,187 @@
 ---
-title: 'Az Azure Portalon: SQL felügyelt példány létrehozása |} A Microsoft Docs'
-description: Hozzon létre egy felügyelt SQL-példány, a hálózati környezet és a hozzáférési VM-ügyfél.
+title: 'Azure Portal: SQL Database felügyelt példány létrehozása | Microsoft Docs'
+description: Hozzon létre egy SQL Database felügyelt példányt, hálózati környezetet és ügyfél virtuális gépet a hozzáféréshez.
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
-author: jovanpop-msft
-ms.author: jovanpop
+author: danimir
+ms.author: danil
 ms.reviewer: sstein, carlrab
-manager: craigg
-ms.date: 04/10/2019
-ms.openlocfilehash: d94e00c8a475e29ddd671004b8137ba4e6efd107
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 09/26/2019
+ms.openlocfilehash: 4f9ea699bd6d09f902a3ff97c95ff3455926a9d8
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59495037"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350919"
 ---
-# <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>Gyors útmutató: Egy Azure SQL Database felügyelt példány létrehozása
+# <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>Gyors útmutató: Azure SQL Database felügyelt példány létrehozása
 
-Ez a rövid útmutató végigvezeti azon, hogyan hozhat létre az Azure SQL Database [felügyelt példány](sql-database-managed-instance.md) az Azure Portalon.
+Ez a rövid útmutató bemutatja, hogyan hozhat létre Azure SQL Database [felügyelt példányt](sql-database-managed-instance.md) a Azure Portalban.
 
 > [!IMPORTANT]
-> További korlátozások: [támogatott régiók](sql-database-managed-instance-resource-limits.md#supported-regions) és [támogatott típusú előfizetésessel](sql-database-managed-instance-resource-limits.md#supported-subscription-types).
+> Korlátozásokkal kapcsolatban lásd: [támogatott régiók](sql-database-managed-instance-resource-limits.md#supported-regions) és [támogatott előfizetési típusok](sql-database-managed-instance-resource-limits.md#supported-subscription-types).
 
-## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
+## <a name="sign-in-to-azure-portal"></a>Bejelentkezés az Azure portálra
 
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/).
+
+Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 ## <a name="create-a-managed-instance"></a>Felügyelt példány létrehozása
 
-A következő lépések bemutatják, hogyan hozhat létre felügyelt példányt.
+A következő lépések bemutatják, hogyan hozhat létre felügyelt példányt:
 
-1. Válassza az Azure Portal bal felső sarkában az **Erőforrás létrehozása** lehetőséget.
-2. Keresse meg **felügyelt példány** majd **Azure SQL felügyelt példánya**.
+1. Azure Portal bal oldali menüjében válassza az **Azure SQL** lehetőséget. Ha az **Azure SQL** nem szerepel a listában, válassza a **minden szolgáltatás**lehetőséget, majd írja be az **Azure SQL** kifejezést a keresőmezőbe.
+2. Válassza a **+ Hozzáadás** lehetőséget az **SQL-telepítés kiválasztása** lap megnyitásához. Azure SQL Database felügyelt példányra vonatkozó további információkat a **felügyelt példányok** csempén látható **Részletek megjelenítése** lehetőség választásával tekintheti meg.
 3. Kattintson a **Létrehozás** gombra.
 
-   ![Felügyelt példány létrehozása](./media/sql-database-managed-instance-get-started/managed-instance-create.png)
+   ![Felügyelt példány létrehozása](./media/sql-database-managed-instance-get-started/create-managed-instance.png)
 
-4. Töltse ki a **SQL felügyelt példánya** űrlapját a szükséges információkat, az alábbi táblázatban szereplő információk segítségével:
+4. A **létrehozás Azure SQL Database felügyelt példány** létesítése űrlapon található lapokat a szükséges és választható információk hozzáadásához használhatja. A következő szakaszok ismertetik ezeket a lapokat.
+
+### <a name="basics"></a>Alapadatok
+
+- Adja meg az **alapok** lapon szükséges kötelező információkat. Ez a felügyelt példány kiépítéséhez szükséges minimális információ.
+
+   !["Alapismeretek" lap felügyelt példány létrehozásához](./media/sql-database-managed-instance-get-started/tabs/mi-create-tab-basics.png)
+
+   Az alábbi táblázat az ezen a lapon szükséges információkra mutató hivatkozásként használható.
 
    | Beállítás| Ajánlott érték | Leírás |
    | ------ | --------------- | ----------- |
-   | **Előfizetés** | Az Ön előfizetése | Olyan előfizetés, amely rendelkezik új erőforrások létrehozásához szükséges engedéllyel |
-   |**Felügyelt példány neve**|Bármely érvényes név|Az érvényes nevekkel kapcsolatban lásd: [elnevezési szabályokat és korlátozásokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).|
-   |**Felügyelt példány rendszergazdai bejelentkezési neve**|Bármely érvényes felhasználónév|Az érvényes nevekkel kapcsolatban lásd: [elnevezési szabályokat és korlátozásokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). Ne használja a "serveradmin", mivel ez egy fenntartott kiszolgálói szintű szerepkört.|
-   |**Jelszó**|Bármely érvényes jelszó|A jelszónak legalább 16 karakter hosszúságúnak kell lennie, és teljesítenie kell [a meghatározott összetettségi követelményeket](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).|
-   |**Időzóna**|A felügyelt példány által, az adott időzóna|További információkért lásd: [időzónák](sql-database-managed-instance-timezone.md)|
-   |**Rendezés**|A rendezést, hogy a felügyelt példány használni kívánt|Ha az SQL Server adatbázisok áttelepítése, ellenőrizze a forrás rendezést használ `SELECT SERVERPROPERTY(N'Collation')` , és ezt az értéket használja. További információk a Rendezés: [kiszolgálószintű rendezések](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation).|
-   |**Hely**|A helyét, amelyben meg szeretné a felügyelt példány létrehozása|Régiókkal kapcsolatos információkért lásd: [Azure-régiók](https://azure.microsoft.com/regions/).|
-   |**Virtuális hálózat**|Ezek közül bármelyikre **új virtuális hálózat létrehozása** vagy egy érvényes virtuális hálózatot, és az alhálózatot.| Hálózat/alhálózat nem érhető el, hogy kell lennie [módosítani a hálózati követelmények teljesítéséhez](sql-database-managed-instance-configure-vnet-subnet.md) az új felügyelt példány cél kiválasztása előtt. A felügyelt példány a hálózati környezet konfigurálásához vonatkozó követelményekkel kapcsolatos információkért lásd: [a felügyelt példány virtuális hálózat konfigurálása](sql-database-managed-instance-connectivity-architecture.md). |
-   |**Kapcsolat típusa**|Válassza a Proxy- és átirányítási kapcsolat típusa között|Kapcsolattípusok kapcsolatos további információkért lásd: [Azure SQL-kapcsolódási szabályzat](sql-database-connectivity-architecture.md#connection-policy).|
-   |**Erőforráscsoport**|Egy új vagy létező erőforráscsoport|Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) ismertető cikket.|
+   | **Előfizetés** | Az előfizetése. | Olyan előfizetés, amely engedélyt ad új erőforrások létrehozására. |
+   | **Erőforráscsoport** | Új vagy meglévő erőforráscsoport.|Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) ismertető cikket.|
+   | **Felügyelt példány neve** | Bármely érvényes név.|Az érvényes nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) ismertető cikket.|
+   | **Régió** |Az a régió, amelyben létre kívánja hozni a felügyelt példányt.|További információ a régiókkal kapcsolatban: [Azure-régiók](https://azure.microsoft.com/regions/).|
+   | **Felügyelt példány rendszergazdai bejelentkezési neve** | Bármilyen érvényes Felhasználónév. | Az érvényes nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) ismertető cikket. Ne használja a "ServerAdmin" kulcsszót, mert ez egy fenntartott kiszolgálói szintű szerepkör.|
+   | **Jelszó** | Bármilyen érvényes jelszó.| A jelszónak legalább 16 karakter hosszúságúnak kell lennie, és teljesítenie kell [a meghatározott összetettségi követelményeket](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).|
 
-   ![felügyelt példány űrlap](./media/sql-database-managed-instance-get-started/managed-instance-create-form.png)
+- Válassza a **felügyelt példány beállítása** lehetőséget a számítási és tárolási erőforrások méretének és a díjszabási szintek áttekintéséhez. A csúszkák vagy a szövegmezők segítségével adja meg a tárterület méretét és a virtuális magok számát. Ha elkészült, kattintson az **alkalmaz** gombra a kijelölés mentéséhez. 
 
-5. Egy másodlagos példány feladatátvételi csoportot a következő felügyelt példányt használ, válassza ki a kivételt, és adja meg a DnsAzurePartner felügyelt példányát. Ez a funkció előzetes verzióban érhető el, és nem a kísérő képernyőképen látható.
-6. Válassza ki **tarifacsomag** a számítási és tárolási erőforrások méretezéséhez, valamint a lehetséges tarifacsomagok áttekintéséhez. Az alapértelmezett érték az általános célú tarifacsomag, amely 32 GB memóriával és 16 virtuális maggal rendelkezik.
-7. A csúszkák vagy a szövegmezők segítségével adja meg a tárterület méretét és a virtuális magok számát.
-8. Amikor végzett, válassza ki a **alkalmaz** a mentéshez.  
-9. Válassza ki **létrehozás** a felügyelt példány üzembe helyezéséhez.
-10. Válassza ki a **értesítések** ikonra kattintva megtekintheti az üzembe helyezési állapotát.
+   ![Felügyelt példány űrlapja](./media/sql-database-managed-instance-get-started/tabs/mi-create-tab-configure-performance.png)
 
-    ![felügyelt példány üzembehelyezési folyamata](./media/sql-database-managed-instance-get-started/deployment-progress.png)
+- Ha a felügyelt példány létrehozása előtt szeretné áttekinteni a beállításokat, válassza a **felülvizsgálat + létrehozás**lehetőséget. Vagy konfigurálja a hálózatkezelési beállításokat a **Next (tovább) gombra kattintva: Hálózatkezelés**.
 
-11. Válassza ki **üzembe helyezés folyamatban** , amelyben részletesebben nyomon követheti az üzembehelyezési folyamatot a felügyelt példány ablakának megnyitásához.
+### <a name="networking"></a>Hálózat
+
+- Adja meg a választható adatokat a **hálózatkezelés** lapon. Ha kihagyja ezt az információt, a portál az alapértelmezett beállításokat fogja alkalmazni.
+
+   !["Hálózatkezelés" lap felügyelt példány létrehozásához](./media/sql-database-managed-instance-get-started/tabs/mi-create-tab-networking.png)
+
+   Az alábbi táblázat az ezen a lapon szükséges információkra mutató hivatkozásként használható.
+
+   | Beállítás| Ajánlott érték | Leírás |
+   | ------ | --------------- | ----------- |
+   | **Virtuális hálózat** | Válassza az **új virtuális hálózat létrehozása** vagy egy érvényes virtuális hálózat és alhálózat lehetőséget.| Ha egy hálózat vagy alhálózat nem érhető el, akkor azt módosítani kell, [hogy megfeleljen a hálózati követelményeknek](sql-database-managed-instance-configure-vnet-subnet.md) , mielőtt kiválasztja az új felügyelt példány célhelyének. A felügyelt példányok hálózati környezetének konfigurálásával kapcsolatos tudnivalókat lásd: [virtuális hálózat konfigurálása felügyelt példányhoz](sql-database-managed-instance-connectivity-architecture.md). |
+   | **Kapcsolattípus** | Válasszon egy proxy és egy átirányítási kapcsolat típusa közül.|További információ a kapcsolatok típusairól: [Azure SQL Database a kapcsolatkérelem-házirend](sql-database-connectivity-architecture.md#connection-policy).|
+   | **Nyilvános végponthoz**  | Válassza ki **engedélyezése**. | Ahhoz, hogy egy felügyelt példány elérhető legyen a nyilvános adatvégponton keresztül, engedélyeznie kell ezt a beállítást. | 
+   | **Hozzáférés engedélyezése innen** : (ha a **nyilvános végpont** engedélyezve van) | Válasszon egyet a lehetőségek közül.   |A portál felhasználói felülete lehetővé teszi egy biztonsági csoport nyilvános végponttal való konfigurálását. </br> </br> A forgatókönyv alapján válasszon a következő lehetőségek közül: </br> <ul> <li>**Azure-szolgáltatások**: Ezt a lehetőséget akkor javasoljuk, ha Power BI vagy egy másik több-bérlős szolgáltatásból csatlakozik. </li> <li> **Internet**: Tesztelési célokra használható, ha gyors üzembe helyezést szeretne végezni egy felügyelt példányon. Éles környezetekhez nem ajánlott. </li> <li> **Nincs hozzáférés**: Ez a beállítás egy **megtagadási** biztonsági szabályt hoz létre. Módosítsa ezt a szabályt úgy, hogy egy nyilvános végponton keresztül elérhetővé váljon a felügyelt példány. </li> </ul> </br> A nyilvános végpontok biztonságával kapcsolatos további információkért tekintse meg a [Azure SQL Database felügyelt példány biztonságos használata nyilvános végponttal](sql-database-managed-instance-public-endpoint-securely.md)című témakört.|
+
+- A felügyelt példány létrehozása előtt válassza a **felülvizsgálat + létrehozás** lehetőséget a beállítások áttekintéséhez. Vagy konfigurálja a további egyéni beállításokat a **Next (tovább) gombra kattintva: További beállítások**.
+
+### <a name="additional-settings"></a>További beállítások
+
+- Adja meg a választható információkat a **További beállítások** lapon. Ha kihagyja ezt az információt, a portál az alapértelmezett beállításokat fogja alkalmazni.
+
+   !["További beállítások" lap felügyelt példány létrehozásához](./media/sql-database-managed-instance-get-started/tabs/mi-create-tab-additional-settings.png)
+
+   Az alábbi táblázat az ezen a lapon szükséges információkra mutató hivatkozásként használható.
+
+   | Beállítás| Ajánlott érték | Leírás |
+   | ------ | --------------- | ----------- |
+   | **Egybevetés** | Válassza ki a felügyelt példányhoz használni kívánt rendezést. Ha SQL Serverból telepít át adatbázisokat, ellenőrizze a forrás rendezését a `SELECT SERVERPROPERTY(N'Collation')` használatával, és használja ezt az értéket.| További információ a rendezésekről: [a kiszolgáló rendezésének beállítása vagy módosítása](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation).|   
+   | **Időzóna** | Válassza ki azt az időzónát, amelyet a felügyelt példány figyelembe fog venni.|További információ: [időzóna](sql-database-managed-instance-timezone.md).|
+   | **Használat feladatátvételi másodlagosként** | Válassza az **Igen**lehetőséget. | Ezzel a beállítással engedélyezheti a felügyelt példány másodlagos feladatátvételi csoportként való használatát.|
+   | **Elsődleges felügyelt példány** (ha a **másodlagos feladatátvételt használja** , akkor az **Igen**értékre van állítva) | Válasszon egy meglévő elsődleges felügyelt példányt, amely ugyanabban a DNS-zónában lesz csatlakoztatva, mint a létrehozandó felügyelt példány. | Ez a lépés lehetővé teszi a feladatátvételi csoport létrehozás utáni konfigurációját. További információ [: oktatóanyag: SQL Database felügyelt példány hozzáadása egy feladatátvételi csoporthoz](sql-database-managed-instance-failover-group-tutorial.md).|
+
+### <a name="review--create"></a>Felülvizsgálat + létrehozás
+
+5. A felügyelt példány létrehozása előtt válassza a **felülvizsgálat + létrehozás** fület a lehetőségek áttekintéséhez.
+
+   ![Felügyelt példányok áttekintésére és létrehozására szolgáló lap](./media/sql-database-managed-instance-get-started/tabs/mi-create-tab-review-create.png)
+
+6. Válassza a **Létrehozás** lehetőséget a felügyelt példány kiépítés indításához.
 
 > [!IMPORTANT]
-> Az első példánynál az alhálózatok üzembe helyezés ideje általában sokkal hosszabb, mint a további példányok. Ne szakítsa meg a központi telepítési műveletet, mert a vártnál tovább tart. A második felügyelt példány létrehozása az alhálózat csak néhány percet vesz igénybe.
+> A felügyelt példányok üzembe helyezése hosszan futó művelet. Az alhálózat első példányának üzembe helyezése általában sokkal hosszabb időt vesz igénybe, mint egy meglévő felügyelt példányokkal rendelkező alhálózatba való üzembe helyezés. Az átlagos kiépítési idő: [felügyelt példányok kezelési műveletei](sql-database-managed-instance.md#managed-instance-management-operations).
 
-## <a name="review-resources-and-retrieve-your-fully-qualified-server-name"></a>Tekintse át az erőforrásokat, és a teljes kiszolgálónév lekérése
+### <a name="monitor-deployment-progress"></a>Központi telepítési folyamat figyelése
 
-Az üzembe helyezés sikeres befejezése után tekintse át a létrehozott erőforrásokat, és kérje le a kiszolgáló teljes nevét, hogy a későbbiekben felhasználhassa gyorskonfigurálások alkalmával.
+7. A központi telepítés állapotának megtekintéséhez kattintson az **értesítések** ikonra.
 
-1. Az erőforráscsoport, a felügyelt példány megnyithatja és megtekintheti annak az Ön számára létrehozott erőforrást a [felügyelt példány létrehozása](#create-a-managed-instance) rövid.
+   ![Felügyelt példány központi telepítésének telepítési folyamata](./media/sql-database-managed-instance-get-started/in-progress/mi-create-deployment-in-progress.png)
+
+8. Válassza a **telepítés folyamatban** van az értesítésben a felügyelt példányok ablak megnyitásához és a telepítési folyamat további figyeléséhez. 
+
+> [!TIP]
+> Ha bezárta a webböngészőt, vagy áthelyezte az üzembe helyezési folyamat képernyőjéről, kövesse az alábbi lépéseket az üzembe helyezési folyamat ablakának megkereséséhez:
+> 1. A Azure Portalban nyissa meg az erőforráscsoportot (az **alapok** lapon), amelyhez felügyelt példányt helyez üzembe.
+> 2. Válassza a **központi telepítések**lehetőséget.
+> 3. Válassza ki a felügyelt példány központi telepítési műveletét folyamatban.
+
+## <a name="post-deployment-operations"></a>Üzembe helyezés utáni műveletek
+
+A létrehozott erőforrások áttekintéséhez, a hálózati beállítások finomhangolásához és a gazdagép kapcsolati adatainak lekéréséhez kövesse az ebben a szakaszban ismertetett lépéseket.
+
+### <a name="view-resources-created"></a>Létrehozott erőforrások megtekintése
+
+A felügyelt példány sikeres üzembe helyezése után a létrehozott erőforrások megtekintése:
+
+1. Nyissa meg a felügyelt példányhoz tartozó erőforráscsoportot. Tekintse meg a [felügyelt példány létrehozása](#create-a-managed-instance) rövid útmutatójában létrehozott erőforrásait.
 
    ![Felügyelt példány erőforrásai](./media/sql-database-managed-instance-get-started/resources.png)
 
-2. Jelölje be az útvonaltáblát tekintse át a felhasználó által megadott útvonal udr-t) az Ön számára létrehozott táblában.
+### <a name="view-and-fine-tune-network-settings"></a>Hálózati beállítások megtekintése és finomhangolása
+
+A hálózati beállítások finomhangolásához ellenőrizze a következőket:
+
+1. Válassza ki az útválasztási táblázatot az Ön számára létrehozott felhasználó által megadott útvonal (UDR) áttekintéséhez.
 
    ![Útválasztási táblázat](./media/sql-database-managed-instance-get-started/route-table.png)
 
-3. Az útválasztási táblázatban tekintse át a bejegyzések irányíthatja a forgalmat, és a felügyelt példány virtuális hálózaton belül. Ha létrehozásakor és manuális konfigurálása az útválasztási táblázatot, ne felejtse el ezeket a bejegyzéseket létrehozni az útvonaltáblában lévő kell lennie.
+2. Az útválasztási táblázatban tekintse át azokat a bejegyzéseket, amelyek a felügyelt példány virtuális hálózatán belüli és onnan érkező forgalmat irányítják. Ha manuálisan hozza létre vagy konfigurálja az útválasztási táblázatot, győződjön meg róla, hogy létrehozza ezeket a bejegyzéseket a felügyelt példány útválasztási táblájában.
 
-   ![MI alhálózat helyi belépési](./media/sql-database-managed-instance-get-started/udr.png)
+   ![Felügyelt példány alhálózatának helyire való bejegyzése](./media/sql-database-managed-instance-get-started/udr.png)
 
-4. Térjen vissza az erőforráscsoportot, és válassza ki a hálózati biztonsági csoport tekintse át a biztonsági szabályokat.
+3. Térjen vissza az erőforráscsoporthoz, és válassza ki a hálózati biztonsági csoportot.
 
-   ![Network-security-group](./media/sql-database-managed-instance-get-started/network-security-group.png)
+   ![Hálózati biztonsági csoport](./media/sql-database-managed-instance-get-started/network-security-group.png)
 
-5. Tekintse át a kimenő és bejövő biztonsági szabályokat.
+4. Tekintse át a bejövő és kimenő biztonsági szabályokat. 
 
    ![Biztonsági szabályok](./media/sql-database-managed-instance-get-started/security-rules.png)
 
-6. Térjen vissza az erőforráscsoportot, és válassza ki azt a felügyelt példányt.
+> [!IMPORTANT]
+> Ha konfigurálta a nyilvános végpontot a felügyelt példányhoz, meg kell nyitnia a portokat, hogy engedélyezze a hálózati forgalom számára a nyilvános internetről a felügyelt példányhoz való csatlakozást, további információért lásd: [nyilvános végpont konfigurálása felügyelt](sql-database-managed-instance-public-endpoint-configure.md#allow-public-endpoint-traffic-on-the-network-security-group) példányhoz. További információ .
+>
 
-   ![Felügyelt példány](./media/sql-database-managed-instance-get-started/managed-instance.png)
+### <a name="retrieve-connection-details-to-managed-instance"></a>Kapcsolat adatainak lekérése felügyelt példányra
 
-7. Az a **áttekintése** lapra, keresse meg a **gazdagép** tulajdonság és másolja a teljesen minősített gazdagép oldja meg a felügyelt példány a következő gyorsútmutatóval használható.
+A felügyelt példányhoz való kapcsolódáshoz kövesse az alábbi lépéseket az állomásnév és a teljes tartománynév (FQDN) lekéréséhez:
 
-   ![Állomásnév](./media/sql-database-managed-instance-get-started/host-name.png)
+1. Térjen vissza az erőforráscsoporthoz, és válassza ki a felügyelt példányt.
 
-   A név a következőhöz hasonló, **your_machine_name.a1b2c3d4e5f6.database.windows.net**.
+   ![Felügyelt példány az erőforráscsoporthoz](./media/sql-database-managed-instance-get-started/managed-instance.png)
+
+2. Az **Áttekintés** lapon keresse meg a **gazdagép** tulajdonságot. Másolja a felügyelt példány állomásnevét a következő rövid útmutatóban való használathoz.
+
+   ![Gazdagép neve](./media/sql-database-managed-instance-get-started/host-name.png)
+
+   A másolt érték a felügyelt példányhoz való kapcsolódáshoz használható teljes tartománynevet (FQDN) jelöli. A következőhöz hasonló, például: *your_host_name. a1b2c3d4e5f6. database. Windows. net*.
 
 ## <a name="next-steps"></a>További lépések
 
-- Csatlakozhat a felügyelt példány kapcsolatos további információkért lásd:
-  - Az alkalmazások csatlakozási lehetőségek áttekintését lásd: [összekötheti saját alkalmazásait a felügyelt példány az](sql-database-managed-instance-connect-app.md).
-  - A rövid útmutató, amely hogyan csatlakozhat a felügyelt példány az Azure virtuális gépből, lásd: [egy Azure-beli Virtuálisgép-kapcsolat konfigurálása](sql-database-managed-instance-configure-vm.md).
-  - A rövid útmutató, amely hogyan csatlakozhat a felügyelt példány egy pont – hely kapcsolattal a helyszíni ügyfélszámítógépről, lásd: [pont – hely kapcsolat konfigurálása](sql-database-managed-instance-configure-p2s.md).
-- Ha vissza kíván állítani egy meglévő SQL-adatbázist egy felügyelt példányra, használhatja az [Azure Database Migration Services (DMS) migrálásához](../dms/tutorial-sql-server-to-managed-instance.md) szolgáltatást, amellyel a visszaállítás egy adatbázis biztonságimásolat-fájljából történik, vagy a [T-SQL RESTORE parancsot](sql-database-managed-instance-get-started-restore.md), amellyel egy adatbázis biztonságimásolat-fájljából végezhet visszaállítást.
-- A speciális hibaelhárítási beépített intelligenciával felügyelt példány adatbázis-teljesítmény figyelését: [figyelése Azure SQL Database az Azure SQL Analytics használatával](../azure-monitor/insights/azure-sql.md)
+A felügyelt példányokhoz való kapcsolódással kapcsolatos tudnivalók:
+- Az alkalmazások csatlakozási lehetőségeinek áttekintését lásd: [alkalmazások csatlakoztatása felügyelt példányhoz](sql-database-managed-instance-connect-app.md).
+- A felügyelt példányok Azure-beli virtuális gépekről történő csatlakoztatását bemutató rövid útmutató: Azure-beli virtuálisgép- [kapcsolat konfigurálása](sql-database-managed-instance-configure-vm.md).
+- A pont – hely kapcsolat [konfigurálásával](sql-database-managed-instance-configure-p2s.md)megtudhatja, hogyan csatlakozhat egy felügyelt példányhoz egy helyszíni ügyfélszámítógépről pont – hely kapcsolat használatával.
+
+Meglévő SQL Server-adatbázis visszaállítása a helyszínről a felügyelt példányra: 
+- Az [áttelepítéshez](../dms/tutorial-sql-server-to-managed-instance.md) használja a Azure Database Migration Service az adatbázis biztonságimásolat-fájljából való visszaállításhoz. 
+- Az adatbázis-biztonságimásolat-fájlból történő visszaállításhoz használja a [T-SQL Restore parancsot](sql-database-managed-instance-get-started-restore.md) .
+
+A felügyelt példányok adatbázisának teljesítményének speciális figyelése a beépített hibaelhárítási intelligenciával: [Azure SQL Database figyelése Azure SQL Analytics használatával](../azure-monitor/insights/azure-sql.md).

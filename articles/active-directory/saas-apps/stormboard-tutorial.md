@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1a8c28546417e5de22b363e425728c97cbe5288
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: dce74d2e526ca5a961ad6ea0da433ac070026549
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57855333"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67089691"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-stormboard"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Stormboard
 
@@ -56,7 +56,7 @@ Az Azure AD integrálása a Stormboard konfigurálásához hozzá kell Stormboar
 
 **Stormboard hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

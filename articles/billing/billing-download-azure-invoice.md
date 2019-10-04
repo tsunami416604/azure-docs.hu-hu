@@ -1,150 +1,156 @@
 ---
-title: Megtekintheti és letöltheti a Microsoft Azure-számla |} A Microsoft Docs
-description: Ismerteti, hogyan lehet megtekintéséhez és a Microsoft Azure-számla letöltése
-keywords: Hitelkártyás, számla letöltése, azure-számlát, azure-használat
-services: billing
-documentationcenter: ''
-author: genlin
+title: A Microsoft Azure-számla megtekintése és letöltése
+description: A cikk a Microsoft Azure-számlák megtekintését és letöltését mutatja be.
+keywords: számlázás,számla,számla letöltése,azure-számla,azure-használat
+author: bandersmsft
 manager: jureid
-editor: ''
 tags: billing
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/19/2019
+ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: f71fe9b02765e0fc8fd5f3b7abbd54c87b08132f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 862ec629504da4d8ee7eadd8f9b925984d96614c
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59264063"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718893"
 ---
 # <a name="view-and-download-your-microsoft-azure-invoice"></a>A Microsoft Azure-számla megtekintése és letöltése
 
-A legtöbb előfizetés esetén töltse le a számla a [az Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) vagy e-mailben küldött nincs. Ha Ön Azure-ügyfelek a nagyvállalati szerződés (EA-ügyfél), nem lehet letölteni a szervezet számlákat. Számlák küldése a személy, aki be van állítva a beléptetési számlákat fogadásához.
+A legtöbb előfizetés esetében a számláját letöltheti az [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) felületéről, de e-mailben is megkaphatja. Amennyiben Ön Nagyvállalati Szerződéssel rendelkező Azure-ügyfél (EA-ügyfél), a szervezet számláit nem tudja letölteni. A rendszer annak küldi el a számlákat, akihez a regisztrációkor a számlák fogadása hozzá lett rendelve.
 
-Csak egyes szerepkörök engedélye, például az a fiók rendszergazdája vagy vállalati rendszergazdai számlák megtekintése. További információ a számlázási információhoz való hozzáférésről: [Az Azure-beli számlázáshoz való hozzáférés kezelése szerepkörök használatával](billing-manage-access.md).
+Csak bizonyos szerepkörök rendelkeznek a számlák megtekintéséhez szükséges engedéllyel. Ilyen szerepkör a fiókadminisztrátor és a vállalati rendszergazda. További információ a számlázási információhoz való hozzáférésről: [Az Azure-beli számlázáshoz való hozzáférés kezelése szerepkörök használatával](billing-manage-access.md).
 
-Ha rendelkezik egy [Microsoft Ügyfélszerződéséhez](#check-your-access-to-a-microsoft-customer-agreement), csak egy számlázási profilja tulajdonos, közreműködő, olvasó, és számlázása a számlákon szerkesztését. További számlázási szerepkörökkel kapcsolatban a Microsoft ügyfél-megállapodások esetén, lásd: [számlázási profil szerepkörök és feladatok](billing-understand-mca-roles.md#billing-profile-roles-and-tasks).
+Ha rendelkezik [Microsoft-ügyfélszerződéssel](#check-your-access-to-a-microsoft-customer-agreement), a következő szerepkörök egyikével is rendelkeznie kell a számlák lekéréséhez:
 
-## <a name="download-your-azure-invoices-pdf"></a>Töltse le az Azure-számlák (.pdf)
+- Számlázásiprofil-tulajdonos
+- Közreműködő
+- Olvasó
+- Számlakezelő
 
-A legtöbb előfizetés esetén töltse le a számla az Azure Portalról. Ha a Microsoft vevői szerződéssel rendelkezik, tekintse meg a letöltési számlázási profilhoz tartozó számlákat.
+A Microsoft-ügyfélszerződések számlázási szerepköreivel kapcsolatos további információkért tekintse meg [a számlázási profil szerepköreit és feladatait](billing-understand-mca-roles.md#billing-profile-roles-and-tasks) ismertető szakaszt.
 
-### <a name="download-invoices-for-an-individual-subscription"></a>Egy adott előfizetéshez tartozó számla letöltése
-
-1. Válassza ki az előfizetését a [előfizetések lapon](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) , az Azure Portalon [számlákat hozzáféréssel rendelkező felhasználó](billing-manage-access.md).
-
-2. Válassza ki a **Számlák** elemet.
-
-    ![A számlázás- és használati beállítás bemutató képernyőkép](./media/billing-download-azure-invoice-daily-usage-date/billingandusage.png)
-
-3. Kattintson a **számla letöltése** megtekintéséhez a PDF formátumú számlákat másolatát. Ugyanakkor **nem érhető el**, lásd: [miért nem látom számla alapján az előző elszámolási időszakban?](#noinvoice)
-
-    ![Képernyőkép a elszámolási időszakok, a letöltési lehetőséget és a teljes díj minden elszámolási időszakban](./media/billing-download-azure-invoice-daily-usage-date/billing4.png)
-
-4. A napi használat a számlázási időszak kattintva is megtekintheti.
-
-A számla kapcsolatos további információkért lásd: [Microsoft Azure-hoz kapcsolódó számlák magyarázata](billing-understand-your-bill.md). A költségek kezelésével kapcsolatos útmutatásért lásd: [az Azure-elszámolással és költségkezeléssel váratlan költségek megelőzése](billing-getting-started.md).
-
-### <a name="download-invoices-for-a-microsoft-customer-agreement"></a>Töltse le a Microsoft Ügyfélszerződéséhez számlák
-
-Számlák jönnek létre az egyes [profil számlázási](billing-mca-overview.md#understand-billing-profiles) a Microsoft ügyfél-szerződés. Számlázási profil tulajdonos, közreműködő, olvasó, vagy a számlához manager számlákat letölteni az Azure Portalról.
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Végezzen keresést a **Költségkezelés + Számlázás** oldalon.
-1. Válassza ki a számlázási profilt. A hozzáférést, attól függően szükség lehet először ki kell választania egy számlázási fiókot.
-1. Válassza ki a **Számlák** elemet.
-1. A számla rács megkeresi a letölteni kívánt számla.
-1. Kattintson a három (`...`) a sor végén található.
-    ![A sor végén található három pontra bemutató képernyőkép](./media/billing-download-azure-invoice/billingprofile-invoicegrid.png)
-1. A letöltési helyi menüben válassza ki a **számla**.
-
-    ![Képernyőkép a helyi menü](./media/billing-download-azure-invoice/contextmenu.png)
-
-Ha számla alapján az előző elszámolási időszakban nem látja, tekintse meg [miért nem látom számla alapján az előző elszámolási időszakban?](#noinvoice)
-
-## <a name="get-your-invoice-in-email-pdf"></a>A számla kapni e-mailben (.pdf)
-
-Is engedélyezve van a hibajelentések, valamint fogadni az Azure további címzettek egy e-mailben számla. Ez a funkció nem lehet például a támogatási ajánlatok, a nagyvállalati szerződés keretében vagy az Azure in Open licencprogram bizonyos előfizetésekhez érhető el. Ha egy Microsoft Customer szerződéssel rendelkezik, tekintse meg a számlázási profilja számlák e-mailt a Get.
-
-### <a name="get-your-subscriptions-invoices-in-email"></a>Az előfizetéshez tartozó számlákat kapni e-mailben
-
-1. Válassza ki az előfizetését a [előfizetések lapon](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade). Mindegyik a saját előfizetés kiválasztásához. Kattintson a **számlákat** majd **E-mail-a számla**.
-
-    ![A szolgáltatás aktiválása folyamatot bemutató képernyőkép](./media/billing-download-azure-invoice-daily-usage-date/InvoicesDeepLink.PNG)
-
-2. Kattintson a **engedélyezve van a hibajelentések** és fogadja el a feltételeket.
-
-    ![Képernyőkép a választható flow 2. lépés](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep2.PNG)
- 
-3. Ha Ön már elfogadta a szerződést, további címzetteket is beállíthatja. Amikor eltávolít egy címzettet, az e-mail-cím már nem tárolja. Ha meggondolja magát, újra hozzá kell őket.
-
-    ![Képernyőkép a választható folyamat 3. lépés](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep3.PNG)
-
-Ha a lépések végrehajtása után nem kap egy e-mailt, győződjön meg arról, az e-mail-címét a megfelelő a [profilját a kommunikációs beállítások](https://account.windowsazure.com/profile).
-
-### <a name="opt-out-of-getting-your-subscriptions-invoices-in-email"></a>Tilthatják le az első az előfizetéshez tartozó számlákat e-mailben
-
-Kikapcsolja a számla első e-mail gombra kattintva és a fenti lépések elvégzésével **tilthatják le az e-mailben elküldött számlákhoz**. Ez a beállítás eltávolít minden olyan e-mail-címet, amelyre be volt állítva a számlák küldése e-mailben. Amennyiben vissza a címzettek újrakonfigurálhatja az.
-
- ![A letiltási folyamat bemutató képernyőkép](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep4.PNG)
-
-### <a name="get-your-microsoft-customer-agreement-invoices-in-email"></a>A Microsoft Ügyfélszerződéséhez számlákat kapni e-mailben
-
-Ha egy Microsoft Ügyfélszerződéséhez, kérheti a, a számla kapni egy e-mailben. Számlázási profil tulajdonosoknak, közreműködőknek, olvasó és számla ellenében kezelők a számlát fog kapni e-mailben. Olvasói az e-mailek számla szabályozó nem lehet frissíteni.
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Végezzen keresést a **Költségkezelés + Számlázás** oldalon.
-1. Válassza ki a számlázási profilt. A hozzáférést, attól függően szükség lehet először ki kell választania egy számlázási fiókot.
-1. A **beállítások**válassza **tulajdonságok**.
-1. Alatt **E-mail számla**válassza **Update e-mail számla beállítás**.
-
-    ![Képernyőkép, amely bemutatja, e-mailes számla tulajdonságai](./media/billing-download-azure-invoice/billingprofile-email.png)
-
-1. Válassza ki **engedélyezve van a hibajelentések**.
-1. Kattintson az **Update** (Frissítés) elemre.
-
-### <a name="opt-out-of-getting-your-microsoft-customer-agreement-invoices-in-email"></a>Tilthatják le az első a Microsoft Ügyfélszerződéséhez számlákat e-mailben
-
-Kikapcsolja a számla első e-mail gombra kattintva és a fenti lépések elvégzésével **kikapcsolhatja az újat**. Tulajdonosoknak, közreműködőknek, olvasó és számla ellenében kezelők kívül a számlán túl első e-mail, a rendszer kilépteti. Ha egy olvasó, az e-mailek számla beállítás nem módosítható.
-
-### <a name="noinvoice"></a> Miért nem látom számla alapján az előző elszámolási időszakban?
+## <a name="noinvoice"></a> Lehetséges okok, amiért nem kaphatja meg a számlát
 
 Számos oka lehet annak, hogy nem jelenik meg számla:
 
 - 30 napnál kevesebb telt el az Azure-előfizetés életbe lépése óta.
 
-- A rendszer még nem hozta létre a számlát. Várja meg a számlázási időszak végét.
+- Az Azure a számlázási időszak végén küld Önnek számlát. Lehetséges, hogy még nem készült számla. Várja meg a számlázási időszak végét.
 
-- Nincs engedélye számlák megtekintése. Ha a Microsoft vevői szerződéssel rendelkezik, csak a számlázási profilja tulajdonos, közreműködő, olvasó, és manager számla. Másik előfizetés esetén Ön nem láthatja korábbi számlák nvdimm-n a fiók rendszergazdája. További információ a számlázási információhoz való hozzáférésről: [Az Azure-beli számlázáshoz való hozzáférés kezelése szerepkörök használatával](billing-manage-access.md).
+- Nem rendelkezik engedéllyel a számlák megtekintéséhez. Ha rendelkezik Microsoft-ügyfélszerződéssel, a számlázási profil tulajdonosának, közreműködőjének, olvasójának vagy számlakezelőjének kell lennie. Más előfizetések esetén előfordulhat, hogy nem látja a régi számlákat, ha nem Ön a fiókadminisztrátor. További információ a számlázási információhoz való hozzáférésről: [Az Azure-beli számlázáshoz való hozzáférés kezelése szerepkörök használatával](billing-manage-access.md).
 
-- Ha ingyenes próbaidőszakot, vagy egy havi kreditösszeg erejéig-előfizetése, akkor nem lehet hosszabb, nem fog számlát kap, kivéve, ha a Microsoft vevői szerződéssel rendelkezik.
+- Ha ingyenes próbaverzióval vagy a havi kreditösszeggel rendelkezik az előfizetésén, csak akkor fog számlát kapni, ha túllépi a havi kreditösszeget. Ha Microsoft-ügyfélszerződéssel rendelkezik, minden esetben fog számlát kapni.
 
-## <a name="check-your-access-to-a-microsoft-customer-agreement"></a>A Microsoft vevői Szerződéssel való hozzáférés ellenőrzése
+## <a name="download-your-azure-invoices-pdf"></a>Azure-számlák letöltése (.pdf)
+
+A legtöbb előfizetés esetében a számláját letöltheti az Azure Portalról. Ha rendelkezik Microsoft-ügyfélszerződéssel, tekintse meg a [számlázási profilhoz tartozó számlák letöltésével](#download-invoices-for-a-microsoft-customer-agreement) foglalkozó szakaszt.
+
+### <a name="download-invoices-for-an-individual-subscription"></a>Számlák letöltése önálló előfizetéshez
+
+1. Válassza ki az előfizetését az Azure Portal [Előfizetések oldalán](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) a [számlákhoz hozzáféréssel rendelkező felhasználóként](billing-manage-access.md).
+
+2. Válassza ki a **Számlák** elemet.
+
+    ![A számlázási és a használati lehetőséget megjelenítő képernyőkép](./media/billing-download-azure-invoice-daily-usage-date/billingandusage.png)
+
+3. Kattintson a **Számla letöltése** elemre a PDF formátumú számla másolatának megtekintéséhez. Ha a számla **Nem érhető el**, derítse ki, [miért nem látja a legutóbbi számlázási időszakra vonatkozó számlát](#noinvoice).
+
+    ![A számlázási időszakokat, a letöltési lehetőséget és az egyes számlázási időszakok teljes díját ábrázoló képernyőkép](./media/billing-download-azure-invoice-daily-usage-date/billing4.png)
+
+4. A számlázási időszakra kattintva a napi használati adatokat is megtekintheti.
+
+A számlájára vonatkozó további információért lásd [a Microsoft Azure-számla ismertetését](billing-understand-your-bill.md). A költségek kezelésével kapcsolatos segítségért lásd [az Azure-számlázással és -költségkezeléssel kapcsolatos váratlan költségek megelőzését](billing-getting-started.md) ismertető szakaszt.
+
+### <a name="download-invoices-for-a-microsoft-customer-agreement"></a>Microsoft-ügyfélszerződéshez tartozó számlák letöltése
+
+A Microsoft-ügyfélszerződésben lévő minden [számlázási profilhoz](billing-mca-overview.md#billing-profiles) számlát hoz létre a rendszer. A számlák Azure Portalról történő letöltéséhez a számlázási profil tulajdonosának, közreműködőjének, olvasójának, illetve számlakezelőjének kell lennie.
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Keressen rá a *Költségkezelés + számlázás* kifejezésre.
+1. Válasszon ki egy számlázási profilt. A hozzáférésétől függően előfordulhat, hogy először ki kell választania egy számlázási fiókot.
+1. Válassza ki a **Számlák** elemet.
+1. A számlák rácsos elrendezésében keresse meg a letölteni kívánt számla sorát.
+1. Kattintson a sor végén található három pontra (`...`).
+    ![A sor végén található három pontot ábrázoló képernyőkép](./media/billing-download-azure-invoice/billingprofile-invoicegrid.png)
+1. A helyi letöltési menüben válassza a **Számla** lehetőséget.
+
+    ![A helyi menüt ábrázoló képernyőkép](./media/billing-download-azure-invoice/contextmenu.png)
+
+Amennyiben nem látja a legutóbbi számlázási időszakra vonatkozó számlát, tekintse meg az [ezzel a kérdéssel foglalkozó](#noinvoice) szakaszt.
+
+## <a name="get-your-invoice-in-email-pdf"></a>Számla kérése e-mailben (.pdf)
+
+További címzetteket is engedélyezhet és konfigurálhat, akik e-mailben megkapják az Azure-számlát. Előfordulhat, hogy ez a funkció nem érhető el bizonyos előfizetések esetén, például támogatási ajánlatoknál, Nagyvállalati Szerződéseknél vagy az Azure in Open licencprogramban. Ha rendelkezik Microsoft-ügyfélszerződéssel, tekintse meg a következő, [a számlázási profilja számláinak e-mailben történő kézbesítését](#get-your-subscriptions-invoices-in-email) ismertető szakaszt.
+
+### <a name="get-your-subscriptions-invoices-in-email"></a>Az előfizetése számláinak kérése e-mailben
+
+1. Válassza ki az előfizetését az [Előfizetések lapon](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade). Hagyja jóvá az összes előfizetését. Kattintson a **Számlák**, majd a **Számla küldése e-mailben** parancsra.
+
+    ![A jóváhagyási folyamatot ábrázoló képernyőkép](./media/billing-download-azure-invoice-daily-usage-date/InvoicesDeepLink.PNG)
+
+2. Kattintson a **jóváhagyási** lehetőségre, és fogadja el a feltételeket.
+
+    ![A jóváhagyási folyamat második lépését ábrázoló képernyőkép](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep2.PNG)
+
+3. A megállapodás elfogadása után konfigurálhatja a további címzetteket. Miután eltávolított egy címzettet, a hozzá tartozó e-mail-cím nem lesz tovább tárolva. Ha meggondolja magát, újra hozzá kell adnia a címzettet.
+
+    ![A jóváhagyási folyamat harmadik lépését ábrázoló képernyőkép](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep3.PNG)
+
+Ha a lépések végrehajtása után nem kap e-mailt, ellenőrizze, hogy az e-mail-címe helyesen szerepel-e a [profil kommunikációs beállításai között](https://account.windowsazure.com/profile).
+
+### <a name="opt-out-of-getting-your-subscriptions-invoices-in-email"></a>Az előfizetése számláinak e-mailben történő kézbesítésének lemondása
+
+A számlák e-mailben történő kézbesítését lemondhatja az alábbi lépések követésével és a **számlák e-mailben történő küldésének lemondására** való kattintással. Ez a beállítás eltávolít minden olyan e-mail-címet, amelyre be volt állítva a számlák küldése e-mailben. Ha újból jóváhagyja a szolgáltatást, újrakonfigurálhatja a címzetteket.
+
+ ![A lemondási folyamatot megjelenítő képernyőkép](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep4.PNG)
+
+### <a name="get-your-microsoft-customer-agreement-invoices-in-email"></a>A Microsoft-ügyfélszerződés számláinak e-mailben történő kézbesítése
+
+Ha rendelkezik Microsoft-ügyfélszerződéssel, engedélyezheti a számlák e-mailes kézbesítését. A számlázási profil összes tulajdonosa, közreműködője, olvasója és számlakezelője e-mailben kapja meg a számlát. Az olvasók nem tudják frissíteni a számlák e-mailes kézbesítésének beállításait.
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Keressen rá a **Költségkezelés + számlázás** kifejezésre.
+1. Válasszon ki egy számlázási profilt. A hozzáférésétől függően előfordulhat, hogy először ki kell választania egy számlázási fiókot.
+1. A **Beállítások** alatt válassza a **Tulajdonságok** elemet.
+1. A **Számla küldése e-mailben** elem alatt válassza a **Számla küldése e-mailben beállítás frissítése** lehetőséget.
+
+    ![Az e-mailben kapott számlák tulajdonságait ábrázoló képernyőkép](./media/billing-download-azure-invoice/billingprofile-email.png)
+
+1. Válassza a **jóváhagyási** lehetőséget.
+1. Kattintson a **Frissítés** parancsra.
+
+### <a name="opt-out-of-getting-your-microsoft-customer-agreement-invoices-in-email"></a>A számlák e-mailben történő kézbesítésének lemondása Microsoft-ügyfélszerződés esetében
+
+A számlák e-mailben történő kézbesítését lemondhatja az alábbi lépések követésével és a **lemondásra** való kattintással. Egyik tulajdonos, közreműködő, olvasó és számlakezelő sem fogja e-mailben megkapni a számlát. Ha Ön olvasó, nem tudja megváltoztatni az e-mailes számlaküldés beállításait.
+
+
+
+## <a name="check-your-access-to-a-microsoft-customer-agreement"></a>Microsoft-ügyfélszerződéshez való hozzáférés ellenőrzése
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolat
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>További lépések
 
-A számlák és a költségek kapcsolatos további információkért lásd:
+A számlájával és a díjakkal kapcsolatos további információkért lásd:
 
-- [Megtekintheti és letöltheti a Microsoft Azure-használat és a díj](billing-download-azure-daily-usage.md)
-- [A Microsoft Azure-hoz kapcsolódó számlák magyarázata](billing-understand-your-bill.md)
+- [A Microsoft Azure használati adatainak és díjainak megtekintése és letöltése](billing-download-azure-daily-usage.md)
+- [Microsoft Azure-elszámolások értelmezése](billing-understand-your-bill.md)
 - [Az Azure-számla feltételeinek értelmezése](billing-understand-your-invoice.md)
-- [A feltételeinek értelmezése a Microsoft Azure részletes használat](billing-understand-your-usage.md)
-- [A szervezet az Azure díjszabásának megtekintése](billing-ea-pricing.md)
+- [A Microsoft Azure részletes használati feltételeinek értelmezése](billing-understand-your-usage.md)
+- [A szervezet Azure-díjszabásásnak megtekintése](billing-ea-pricing.md)
 
-Ha a Microsoft vevői szerződéssel rendelkezik, tekintse meg:
+Ha Microsoft-ügyfélszerződéssel rendelkezik, tekintse meg a következő cikkeket:
 
-- [A költségek, a számlán a számlázási profiljához ismertetése](billing-mca-understand-your-bill.md)
-- [A számlázási profil a számla feltételeinek értelmezése](billing-mca-understand-your-invoice.md)
-- [Megismerheti az Azure-beli használat és költségek fájlmegosztás a számlázási profiljához](billing-mca-understand-your-usage.md)
-- [Megtekintheti, és a számlázási profiljához adó dokumentumok letöltése](billing-mca-download-tax-document.md)
-- [A szervezet az Azure díjszabásának megtekintése](billing-ea-pricing.md)
+- [A számlázási profilhoz tartozó számla díjainak ismertetése](billing-mca-understand-your-bill.md)
+- [A számlázási profilhoz tartozó számla feltételeinek ismertetése](billing-mca-understand-your-invoice.md)
+- [A számlázási profiljához tartozó, az Azure használati adatait és díjait tartalmazó fájl ismertetése](billing-mca-understand-your-usage.md)
+- [A számlázási profil adózási dokumentumainak megtekintése és letöltése](billing-mca-download-tax-document.md)
+- [A szervezet Azure-díjszabásásnak megtekintése](billing-ea-pricing.md)

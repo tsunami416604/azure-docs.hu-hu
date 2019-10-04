@@ -1,143 +1,142 @@
 ---
-title: A beágyazott virtualizálás az Azure-ban az Azure virtuális gép hiba elhárítása |} A Microsoft Docs
-description: Hogyan háríthatók el a probléma az Azure virtuális gép használatával a beágyazott virtualizálás az Azure-ban
+title: Azure-beli virtuális gép hibáinak elhárítása beágyazott virtualizálás használatával az Azure-ban | Microsoft Docs
+description: Azure-beli virtuális gép hibáinak elhárítása beágyazott virtualizálás használatával az Azure-ban
 services: virtual-machines-windows
 documentationcenter: ''
 author: glimoli
-manager: jeconnoc
+manager: dcscontentpm
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: c84d015da907c8792f09d1d60e6bc8eddb7e2957
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: ad359a19cb42bf115189aca7905d1908d0dc5284
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005598"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71087058"
 ---
-# <a name="troubleshoot-a-problem-azure-vm-by-using-nested-virtualization-in-azure"></a>A beágyazott virtualizálás az Azure-ban az Azure virtuális gép hiba elhárítása
+# <a name="troubleshoot-a-problem-azure-vm-by-using-nested-virtualization-in-azure"></a>Azure-beli virtuális gép hibáinak elhárítása beágyazott virtualizálás használatával az Azure-ban
 
-Ez a cikk bemutatja, hogyan hozhat létre egy beágyazott virtualizálási környezet a Microsoft Azure-ban, így akkor is csatlakoztathatja a lemezt a virtuális gép hibát a Hyper-V gazdagép (VM-mentési) hibaelhárítás céljából.
+Ez a cikk bemutatja, hogyan hozhat létre beágyazott virtualizációs környezetet a Microsoft Azureban, így hibaelhárítási célból csatlakoztathatja a problémát okozó virtuális gép lemezét a Hyper-V-gazdagépen (mentő virtuális gépen).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Csatlakoztatja a hibás virtuális Gépnek, a mentési virtuális Gépet a következő előfeltételeknek kell megfelelnie:
+A probléma virtuális gép csatlakoztatásához a mentési virtuális gépnek meg kell felelnie a következő előfeltételeknek:
 
--   A mentési virtuális gép ugyanazon a helyen, mint a hibás virtuális Gépnek kell lennie.
+-   A mentési virtuális gépnek a probléma virtuális géppel azonos helyen kell lennie.
 
--   A mentési VM ugyanazt az erőforráscsoportot, a hibás virtuális Gépnek kell lennie.
+-   A mentési virtuális gépnek ugyanabban az erőforráscsoporthoz kell tartoznia, mint a probléma virtuális gépnek.
 
--   A mentési VM ugyanolyan típusú (Standard vagy prémium szintű) Tárfiók kell használnia, mint a virtuális gép hibás.
+-   A mentési virtuális gépnek ugyanolyan típusú Storage-fiókot (standard vagy prémium) kell használnia, mint a probléma virtuális gépe.
 
-## <a name="step-1-create-a-rescue-vm-and-install-hyper-v-role"></a>1. lépés: Mentő virtuális gép létrehozása és Hyper-V szerepkör telepítése
+## <a name="step-1-create-a-rescue-vm-and-install-hyper-v-role"></a>1\. lépés: Mentési virtuális gép létrehozása és Hyper-V szerepkör telepítése
 
-1.  Hozzon létre egy új mentési virtuális Gépet:
+1.  Hozzon létre egy új mentési virtuális gépet:
 
     -  Operációs rendszer: Windows Server 2016 Datacenter
 
-    -  Méret: Bármely v3-as sorozat legalább két mag, hogy támogatja a beágyazott virtualizálás. További információkért lásd: [bemutatjuk az új Dv3 és Ev3 Virtuálisgép-méretek](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/).
+    -  Méret: Bármely v3-sorozat legalább két, beágyazott virtualizációt támogató maggal. További információ: [az új Dv3 és a EV3 VM-méretek bemutatása](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/).
 
-    -  Azonos helyen, Tárfiók, és erőforráscsoporthoz tartozik, mint a hibás virtuális Gépnek.
+    -  Ugyanaz a hely, a Storage-fiók és az erőforráscsoport, mint a probléma virtuális gép.
 
-    -  Válasszon azonos tárolási módot, a hibás virtuális Gépnek (Standard vagy prémium).
+    -  Válassza ki ugyanazt a tárolási típust, mint a probléma virtuális gép (standard vagy prémium).
 
-2.  A készenléti Virtuálisgép követő jön létre, a mentési virtuális géphez a távoli asztal.
+2.  A mentési virtuális gép létrehozása után a távoli asztal a mentési virtuális géphez.
 
-3.  A Kiszolgálókezelőben válasza **kezelés** > **szerepkörök és szolgáltatások hozzáadása**.
+3.  A Kiszolgálókezelőben válassza a **kezelés** > **szerepkörök és szolgáltatások hozzáadása**lehetőséget.
 
-4.  Az a **telepítési típus** szakaszban jelölje be **szerepköralapú vagy szolgáltatásalapú telepítés**.
+4.  A **telepítés típusa** szakaszban válassza a **szerepköralapú vagy a szolgáltatáson alapuló telepítés**lehetőséget.
 
-5.  Az a **célkiszolgáló kijelölése** területen győződjön meg arról, hogy a mentési virtuális gép el van-e kiválasztva.
+5.  A **célkiszolgáló kijelölése** szakaszban győződjön meg arról, hogy a mentési virtuális gép ki van választva.
 
-6.  Válassza ki a **Hyper-V szerepkör** > **szolgáltatások hozzáadása**.
+6.  Válassza ki a **Hyper-V szerepkör** > **szolgáltatások hozzáadása**elemet.
 
-7.  Válassza ki **tovább** a a **funkciók** szakaszban.
+7.  A **funkciók** szakaszban válassza a **tovább** lehetőséget.
 
-8.  Ha egy virtuális kapcsoló nem érhető el, kattintson rá. Ellenkező esetben válasszon **tovább**.
+8.  Ha elérhető egy virtuális kapcsoló, válassza ki. Ellenkező esetben válassza a **tovább**lehetőséget.
 
-9.  Az a **áttelepítési** szakaszban jelölje be **tovább**
+9.  Az **áttelepítés** szakaszban válassza a **tovább** lehetőséget.
 
-10. Az a **alapértelmezett tárak** szakaszban jelölje be **tovább**.
+10. Az **alapértelmezett áruházak** szakaszban válassza a **tovább**lehetőséget.
 
-11. Jelölje be a jelölőnégyzetet, hogy szükség esetén automatikusan újraindítja a kiszolgálót.
+11. Jelölje be a jelölőnégyzetet a kiszolgáló automatikus újraindításához, ha szükséges.
 
 12. Válassza az **Install** (Telepítés) lehetőséget.
 
-13. Lehetővé teszi a Hyper-V szerepkör telepítése a kiszolgálón. Ez eltarthat néhány percig, és a kiszolgáló automatikusan újraindul.
+13. A Hyper-V szerepkör telepítésének engedélyezése a kiszolgálónak. Ez eltarthat néhány percig, és a kiszolgáló automatikusan újraindul.
 
-## <a name="step-2-create-the-problem-vm-on-the-rescue-vms-hyper-v-server"></a>2. lépés: A hibás virtuális Gépnek a mentési virtuális gép Hyper-V kiszolgálón hozzon létre.
+## <a name="step-2-create-the-problem-vm-on-the-rescue-vms-hyper-v-server"></a>2\. lépés: A probléma virtuális gép létrehozása a mentési virtuális gép Hyper-V-kiszolgálóján
 
-1.  Rögzítse a hibás virtuális Gépnek a lemez nevét, és ezután törölje a hibás virtuális Gépnek. Győződjön meg arról, hogy őrizze meg az összes csatlakoztatott lemezek. 
+1.  Jegyezze fel a lemez nevét a probléma virtuális gépen, majd törölje a problémát okozó virtuális gépet. Győződjön meg arról, hogy megtartja az összes csatlakoztatott lemezt. 
 
-2.  A problémát a virtuális gép operációsrendszer-lemezének csatolása a virtuális gép mentési adatlemezként.
+2.  Csatlakoztassa a problémát okozó virtuális gép operációsrendszer-lemezét a mentési virtuális gép adatlemezéhez.
 
-    1.  Miután a virtuális gép törlését a probléma látogasson el a készenléti Virtuálisgép.
+    1.  A probléma a virtuális gép törlése után lépjen a mentési virtuális gépre.
 
-    2.  Válassza ki **lemezek**, majd **Hozzáadás adatlemez**.
+    2.  Válassza a **lemezek**lehetőséget, majd **adja hozzá az adatlemezt**.
 
-    3.  A probléma a virtuális gép lemezét, majd válassza ki és **mentése**.
+    3.  Válassza ki a probléma virtuális gép lemezét, majd kattintson a **Mentés**gombra.
 
-3.  Miután a lemez sikeresen a mentési virtuális géphez csatolt, távoli asztali.
+3.  A lemez sikeres csatolása után a távoli asztal a mentési virtuális géphez.
 
-4.  Nyissa meg a Lemezkezelés (diskmgmt.msc). Győződjön meg arról, hogy a probléma a lemez virtuális gép van beállítva, **Offline**.
+4.  Nyissa meg a Lemezkezelés (diskmgmt. msc) parancsot. Győződjön meg arról, hogy a probléma virtuális gépe lemeze **Offline**értékre van állítva.
 
-5.  Nyissa meg a Hyper-V kezelőjével: A **Kiszolgálókezelő**, jelölje be a **Hyper-V szerepkör**. Kattintson a jobb gombbal a kiszolgáló, és válassza a **Hyper-V Manager**.
+5.  A Hyper-V kezelőjének megnyitása: A **Kiszolgálókezelőben**válassza ki a **Hyper-V szerepkört**. Kattintson a jobb gombbal a kiszolgálóra, majd válassza ki a **Hyper-V kezelőjét**.
 
-6.  A Hyper-V kezelőjében kattintson a jobb gombbal a mentési virtuális Gépet, és válassza **új** > **virtuális gép** > **tovább**.
+6.  A Hyper-V kezelőjében kattintson a jobb gombbal a mentő virtuális gépre, majd válassza az **új** > **virtuális gép** > **tovább**lehetőséget.
 
-7.  Adja meg a virtuális gép nevét, és válassza **tovább**.
+7.  Adja meg a virtuális gép nevét, majd kattintson a **tovább**gombra.
 
-8.  Válassza ki **1. generációs**.
+8.  Válassza az **1. generáció**lehetőséget.
 
-9.  Az indítási memóriát 1024 MB vagy annál beállítani.
+9.  Állítsa be az indítási memóriát 1024 MB-nál nagyobb értékre.
 
-10. Ha van ilyen válassza ki a Hyper-V hálózati kapcsoló, amely lett létrehozva. Ellenkező esetben helyezze át a következő lapra.
+10. Ha alkalmazható, válassza ki a létrehozott Hyper-V hálózati kapcsolót. Másik lépés a következő lapra.
 
-11. Válassza ki **egy virtuális merevlemez csatlakoztatása később**.
+11. Válassza **a virtuális merevlemez csatlakoztatása később**lehetőséget.
 
-    ![a csatolás egy újabb virtuális merevlemez lehetőséget bemutató kép](media/troubleshoot-vm-by-use-nested-virtualization/attach-disk-later.png)
+    ![a virtuális merevlemez csatolása később lehetőséggel kapcsolatos rendszerkép](media/troubleshoot-vm-by-use-nested-virtualization/attach-disk-later.png)
 
-12. Válassza ki **Befejezés** a virtuális gép létrehozásakor.
+12. A virtuális gép létrehozásakor válassza a **Befejezés** lehetőséget.
 
-13. Kattintson a jobb gombbal a virtuális gép által létrehozott, és válassza ki **beállítások**.
+13. Kattintson a jobb gombbal a létrehozott virtuális gépre, majd válassza a **Beállítások**lehetőséget.
 
-14. Válassza ki **IDE-vezérlő 0**válassza **merevlemez**, és kattintson a **Hozzáadás**.
+14. Válassza az **ide-vezérlő 0**lehetőséget, válassza a **merevlemez**lehetőséget, majd kattintson a **Hozzáadás**gombra.
 
-    ![új rögzített meghajtót ad hozzá a bemutató kép](media/troubleshoot-vm-by-use-nested-virtualization/create-new-drive.png)    
+    ![az új merevlemez-meghajtó hozzáadására szolgáló rendszerkép](media/troubleshoot-vm-by-use-nested-virtualization/create-new-drive.png)    
 
-15. A **fizikai merevlemez**, jelölje ki a lemezt a virtuális Gépet, amely az Azure virtuális géphez csatolt probléma. Ha nem látja az összes felsorolt lemezt, ellenőrizze, ha a lemez értéke offline Lemezkezelés használatával.
+15. A **fizikai merevlemez**területen válassza ki az Azure-beli virtuális géphez csatlakoztatott probléma virtuális gépe lemezét. Ha nem látja a felsorolt lemezeket, ellenőrizze, hogy a lemez offline értékre van-e állítva a Lemezkezelés eszköz használatával.
 
-    ![a csatlakoztatja a lemezt bemutató kép](media/troubleshoot-vm-by-use-nested-virtualization/mount-disk.png)  
+    ![a lemez csatlakoztatására szolgáló rendszerkép](media/troubleshoot-vm-by-use-nested-virtualization/mount-disk.png)  
 
 
 17. Válassza az **Apply** (Alkalmaz) lehetőséget, majd kattintson az **OK** gombra.
 
-18. Kattintson duplán a virtuális gépen, és indítsa el azt.
+18. Kattintson duplán a virtuális gépre, majd indítsa el.
 
-19. Most már használhatja a virtuális gépen a helyszíni virtuális gépként. Sikerült hajtsa végre a szükséges hibaelhárítási lépéseket.
+19. Most már dolgozhat a virtuális gépen a helyszíni virtuális gép használatával. Követheti a szükséges hibaelhárítási lépéseket.
 
-## <a name="step-3-re-create-your-azure-vm-in-azure"></a>3. lépés: Hozzon létre újra az Azure virtuális Gépen az Azure-ban
+## <a name="step-3-re-create-your-azure-vm-in-azure"></a>3\. lépés: Azure-beli virtuális gép újbóli létrehozása az Azure-ban
 
-1.  Online állapotba a virtuális gép kap, miután állítsa le a virtuális gép a Hyper-V kezelőjében.
+1.  Miután a virtuális gép ismét online állapotba került, állítsa le a virtuális gépet a Hyper-V kezelőjében.
 
-2.  Nyissa meg a [az Azure portal](https://portal.azure.com) , és válassza ki a mentési virtuális gép > lemezek, másolja a lemez neve. A név a következő lépésben fogja használni. Válassza le a rögzített méretű lemezt a mentési virtuális gépről.
+2.  Nyissa meg a [Azure Portal](https://portal.azure.com) , és válassza ki a helyreállító virtuális gép > lemezeket, és másolja a lemez nevét. A következő lépésben a nevet fogja használni. Válassza le a rögzített lemezt a mentési virtuális gépről.
 
-3.  Lépjen a **összes erőforrás**, keresse meg a lemez neve, és válassza ki a lemezt.
+3.  Nyissa meg az **összes erőforrást**, keresse meg a lemez nevét, majd válassza ki a lemezt.
 
-     ![bemutató kép megkeresi a lemezen](media/troubleshoot-vm-by-use-nested-virtualization/search-disk.png)     
+     ![a lemez keresésének képe](media/troubleshoot-vm-by-use-nested-virtualization/search-disk.png)     
 
-4. Kattintson a **virtuális gép létrehozása**.
+4. Kattintson a **virtuális gép létrehozása**elemre.
 
-     ![bemutató kép virtuális gépet hoz létre a lemezről](media/troubleshoot-vm-by-use-nested-virtualization/create-vm-from-vhd.png) 
+     ![a virtuális gépet a lemezről létrehozó lemezkép](media/troubleshoot-vm-by-use-nested-virtualization/create-vm-from-vhd.png) 
 
-Azure PowerShell használatával a virtuális gép létrehozása a lemezről. További információkért lásd: [az új virtuális gép létrehozása egy meglévő lemezről a PowerShell használatával](../windows/create-vm-specialized.md#create-the-new-vm). 
+Azure PowerShell használatával is létrehozhatja a virtuális gépet a lemezről. További információ: [az új virtuális gép létrehozása meglévő lemezről a PowerShell használatával](../windows/create-vm-specialized.md#create-the-new-vm). 
 
 ## <a name="next-steps"></a>További lépések
 
-Ha a virtuális Géphez való csatlakozással kapcsolatos problémákat tapasztal, tekintse meg [hibaelhárítása RDP-kapcsolatai egy Azure virtuális gép](troubleshoot-rdp-connection.md). A virtuális Gépen futó alkalmazások elérésével kapcsolatos problémák, lásd: [a Windows virtuális gép alkalmazások csatlakozási hibáinak elhárítása](troubleshoot-app-connection.md).
+Ha problémába ütközik a virtuális géphez való csatlakozással kapcsolatban, tekintse meg [az RDP-kapcsolatok hibaelhárítása Azure-beli virtuális géppel](troubleshoot-rdp-connection.md)című témakört. A virtuális gépen futó alkalmazások elérésével kapcsolatos problémákért lásd: az [alkalmazások kapcsolódási problémáinak elhárítása Windows rendszerű virtuális gépen](troubleshoot-app-connection.md).

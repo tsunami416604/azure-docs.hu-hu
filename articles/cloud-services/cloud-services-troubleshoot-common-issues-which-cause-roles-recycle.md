@@ -1,72 +1,71 @@
 ---
-title: Felhőszolgáltatásbeli szerepkörök újrahasznosításának gyakori okai |} A Microsoft Docs
-description: A felhőszolgáltatási szerepkör, amely hirtelen újraindul jelentős állásidőt okozhatnak. Az alábbiakban néhány gyakori probléma, amely szerepkörök újrahasznosítását, amely esetleg segítséget csökkenthető a leállások miatt.
+title: A Cloud Service-szerepkörök újrahasznosításának gyakori okai | Microsoft Docs
+description: A hirtelen újrahasznosítható felhőalapú szolgáltatási szerepkör jelentős állásidőt eredményezhet. Íme néhány gyakori probléma, amely a szerepkörök újrahasznosítását okozza, ami segíthet az állásidő csökkentésében.
 services: cloud-services
 documentationcenter: ''
 author: simonxjx
-manager: felixwu
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 533930d1-8035-4402-b16a-cf887b2c4f85
 ms.service: cloud-services
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 2a9214b918883e493ebe5c93fc7f56e7ce9c77ec
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 554508b1bf784e306cd12a4a601f908e06320933
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234494"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154982"
 ---
 # <a name="common-issues-that-cause-roles-to-recycle"></a>Gyakori hibák, melyek a szerepkörök újrahasznosítását okozzák
-Ez a cikk ismerteti az egyes alkalmazástelepítéssel kapcsolatos problémák leggyakoribb okait és hibaelhárítási tippekkel szolgál az ilyen problémák megoldásához. Azt jelzi, hogy probléma van egy alkalmazás akkor, ha a szerepkörpéldány nem indul el, vagy azt a inicializálása során, foglalt és leállítása állapotok közötti ciklusok.
+Ez a cikk a telepítési problémák gyakori okait ismerteti, és hibaelhárítási tippeket nyújt a problémák megoldásához. Annak jelzése, hogy az alkalmazással kapcsolatban probléma merült fel, ha a szerepkör-példány nem indul el, vagy az inicializálás, a foglalt és a leállítási állapotok között ciklust jelez.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="missing-runtime-dependencies"></a>Hiányzó futtatókörnyezeti függőségek
-Ha egy szerepkörhöz az alkalmazás az esetleges támaszkodik szerelvényt, amely nem része a .NET-keretrendszer vagy az Azure által felügyelt erőforrástár, explicit módon szerepelnie kell ezt a szerelvényt az alkalmazáscsomagot. Ne feledje, hogy más Microsoft-keretrendszerek nem érhetők el az Azure-ban alapértelmezés szerint. Ha a szerepkör kereteinek támaszkodik, hozzá kell adnia az alkalmazáscsomag e szerelvények.
+## <a name="missing-runtime-dependencies"></a>Hiányzó futásidejű függőségek
+Ha az alkalmazás egyik szerepköre bármely olyan szerelvényre támaszkodik, amely nem része a .NET-keretrendszernek vagy az Azure Managed Library-nek, explicit módon fel kell vennie az adott szerelvényt az alkalmazáscsomag részébe. Ne feledje, hogy a Microsoft egyéb keretrendszerek alapértelmezés szerint nem érhetők el az Azure-ban. Ha a szerepkör egy ilyen keretrendszerre támaszkodik, ezeket a szerelvényeket hozzá kell adnia az alkalmazáscsomag számára.
 
-Mielőtt hozhat létre, és az alkalmazás becsomagolása, ellenőrizze a következőket:
+Az alkalmazás létrehozása és becsomagolása előtt ellenőrizze a következőket:
 
-* A Visual studio használata esetén ellenőrizze, hogy a **másolási helyi** tulajdonság értéke **igaz** esetében minden egyes hivatkozott szerelvényt a projekt, amely nem része az Azure SDK-t vagy a .NET-keretrendszer.
-* Győződjön meg arról, hogy a web.config fájl bármely fel nem használt szerelvények a fordítási elem nem hivatkozik.
-* A **Build Action** minden .cshtml fájl van állítva **tartalom**. Ez biztosítja, hogy a fájlok megfelelően fog megjelenni a csomagot, és lehetővé teszi, hogy más hivatkozott fájlok megjelennek a csomag.
+* Ha a Visual studiót használja, győződjön meg róla, hogy a **Másolás helyi** tulajdonság értéke **true (igaz** ) értékre van állítva a projektben szereplő összes hivatkozott szerelvény esetében, amely nem része az Azure SDK-nak vagy a .NET-keretrendszernek.
+* Győződjön meg arról, hogy a web. config fájl nem hivatkozik a fordítási elemben lévő nem használt szerelvényekre.
+* Minden . cshtml-fájl létrehozási művelete a **Content (tartalom**) értékre van állítva. Ez biztosítja, hogy a fájlok megfelelően jelenjenek meg a csomagban, és lehetővé teszi más hivatkozott fájlok megjelenítését a csomagban.
 
-## <a name="assembly-targets-wrong-platform"></a>Célok helytelen platforma sestavení
-Az Azure egy 64 bites környezet áll. Ezért egy 32 bites cél lefordított .NET-szerelvények nem fognak működni az Azure-ban.
+## <a name="assembly-targets-wrong-platform"></a>A szerelvény helytelen platformot céloz meg
+Az Azure egy 64 bites környezet. Ezért a 32 bites célra fordított .NET-szerelvények nem fognak működni az Azure-ban.
 
-## <a name="role-throws-unhandled-exceptions-while-initializing-or-stopping"></a>Szerepkör nem kezelt kivételt jelez inicializálás vagy a leállítás során
-A módszerek által okozott kivételek a [RoleEntryPoint] osztály, amely tartalmazza a [ONSTART érvényesség], [OnStop], és [Futtatás] módszereket, nem kezelt kivételeket. Nem kezelt kivétel lép fel az alábbi módszerek egyikét, ha a szerepkör-újraindítás lesz. A szerepkör mindig többször újraindul, ha, előfordulhat, hogy lehet hívása nem kezelt kivétel minden alkalommal, amikor megpróbálnak elindítani.
+## <a name="role-throws-unhandled-exceptions-while-initializing-or-stopping"></a>A szerepkör nem kezelt kivételeket dob az inicializálás vagy a leállítás során
+A [RoleEntryPoint] osztály metódusai által kiváltott kivételek, beleértve a [OnStart], a [OnStop]és a [Futtatás] metódusokat, nem kezelt kivételek. Ha nem kezelt kivétel lép fel az egyik metódusban, a szerepkör újra fog indulni. Ha a szerepkör ismételt újrahasznosítást végez, előfordulhat, hogy a rendszer minden indításkor nem kezelt kivételt dobott.
 
-## <a name="role-returns-from-run-method"></a>A szerepkör visszatér a Run metódus
-A [Futtatás] metódus az célja, hogy határozatlan ideig szeretné futtatni. Ha a kód felülírja az [Futtatás] metódus, azt kell alvó határozatlan időre. Ha a [Futtatás] metódus adja vissza, a szerepkör újraindul.
+## <a name="role-returns-from-run-method"></a>A szerepkör visszatér a Run metódusból
+A [Futtatás] módszer határozatlan idejű futtatást szolgál. Ha a kód felülbírálja a [Futtatás] módszert, határozatlan ideig alvó állapotba kell lépnie. Ha a [Futtatás] metódus visszatér, a szerepkör újrahasznosítja.
 
-## <a name="incorrect-diagnosticsconnectionstring-setting"></a>Nem megfelelő DiagnosticsConnectionString beállítása
-Ha az alkalmazás az Azure Diagnostics használja, a szolgáltatáskonfigurációs fájlban meg kell adnia a `DiagnosticsConnectionString` konfigurációs beállítás. Ez a beállítás meg kell adnia a HTTPS-kapcsolatot, a storage-fiókba az Azure-ban.
+## <a name="incorrect-diagnosticsconnectionstring-setting"></a>Helytelen DiagnosticsConnectionString-beállítás
+Ha az alkalmazás Azure Diagnostics használ, a szolgáltatás konfigurációs fájljának meg `DiagnosticsConnectionString` kell adnia a konfigurációs beállítást. Ezzel a beállítással HTTPS-kapcsolat adható meg a Storage-fiókhoz az Azure-ban.
 
-Annak érdekében, hogy a `DiagnosticsConnectionString` beállítás helyességéről, mielőtt alkalmazáscsomag üzembe helyezése az Azure-ba, ellenőrizze a következőket:  
+Győződjön meg arról, `DiagnosticsConnectionString` hogy a beállítás megfelelő, mielőtt az alkalmazáscsomag üzembe helyezését az Azure-ba telepítené, ellenőrizze a következőket:  
 
-* A `DiagnosticsConnectionString` pontok beállítást egy érvényes tárfiókot az Azure-ban.  
-  Alapértelmezés szerint ez a beállítás mutat a emulált storage-fiókban, explicit módon módosítania kell ezt a beállítást az alkalmazáscsomag üzembe helyezése előtt. Ne változtassa ezt a beállítást, ha a program kivételt vált ki, ha a szerepkörpéldány próbálja meg elindítani a diagnosztikai figyelő. Emiatt előfordulhat, hogy a szerepkörpéldány határozatlan időre újraindításához.
-* A kapcsolati karakterlánc van megadva a következő [formátum](../storage/common/storage-configure-connection-string.md). (A protokoll meg kell adni, HTTPS.) Cserélje le *MyAccountName* a tárfiók nevével és *MyAccountKey* a hívóbetűre:    
+* A `DiagnosticsConnectionString` beállítás egy érvényes Storage-fiókra mutat az Azure-ban.  
+  Alapértelmezés szerint ez a beállítás az emulált Storage-fiókra mutat, ezért az alkalmazáscsomag üzembe helyezése előtt explicit módon módosítania kell ezt a beállítást. Ha nem módosítja ezt a beállítást, akkor kivétel keletkezik, amikor a szerepkör-példány megkísérli elindítani a diagnosztikai figyelőt. Ez azt eredményezheti, hogy a szerepkör-példány határozatlan időre újrahasznosítható.
+* A kapcsolatok karakterlánca a következő [formátumban](../storage/common/storage-configure-connection-string.md)van megadva. (A protokollt HTTPS-ként kell megadni.) Cserélje le a *MyAccountName* nevet a Storage-fiók nevére, és *MyAccountKey* a hozzáférési kulccsal:    
 
         DefaultEndpointsProtocol=https;AccountName=MyAccountName;AccountKey=MyAccountKey
 
-  Az alkalmazás a Microsoft Visual Studióhoz készült Azure-eszközök használatával fejleszt, a tulajdonságlapok használatával ezt az értéket.
+  Ha a Microsoft Visual studióhoz készült Azure Tools használatával fejleszti az alkalmazást, a tulajdonságlapok használatával állíthatja be ezt az értéket.
 
-## <a name="exported-certificate-does-not-include-private-key"></a>Exportált tanúsítvány nem tartalmaz titkos kulcsot
-Az SSL a webes szerepkör futtatásához, gondoskodnia kell arról, hogy a exportált felügyeleti tanúsítványát tartalmazza a titkos kulcs. Ha a *Tanúsítványkezelő Windows* exportálja a tanúsítványt, ügyeljen arra, hogy válassza ki **Igen** a a **exportálja a titkos kulcsot** lehetőséget. A tanúsítványt a PFX-formátum, ami a jelenleg támogatott csak formátuma kell exportálni.
+## <a name="exported-certificate-does-not-include-private-key"></a>Az exportált tanúsítvány nem tartalmaz titkos kulcsot.
+Ha webes szerepkört szeretne futtatni az SSL alatt, győződjön meg arról, hogy az exportált felügyeleti tanúsítvány tartalmazza a titkos kulcsot. Ha a *Windows Tanúsítványkezelőt* használja a tanúsítvány exportálásához, akkor ügyeljen arra, hogy a **titkos kulcs exportálása** lehetőségnél válassza az **Igen** lehetőséget. A tanúsítványt PFX formátumban kell exportálni, amely az egyetlen jelenleg támogatott formátum.
 
 ## <a name="next-steps"></a>További lépések
-Továbbiak megtekintése [hibaelhárítási cikkek](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) a cloud services.
+További [hibaelhárítási cikkek](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) a Cloud Services szolgáltatáshoz.
 
-További szerepkör-újrahasznosítás: forgatókönyvek megtekintése [Kevin Williamson blogsorozatot](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).
+További szerepkör-újrahasznosítási forgatókönyvek megtekintése a [Kevin Williamson blog-sorozatában](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).
 
 [RoleEntryPoint]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.aspx
-[ONSTART érvényesség]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx
+[OnStart]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx
 [OnStop]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstop.aspx
 [Futtatás]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx

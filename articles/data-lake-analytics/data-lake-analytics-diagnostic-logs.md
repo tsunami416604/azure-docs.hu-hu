@@ -9,11 +9,11 @@ ms.assetid: cf5633d4-bc43-444e-90fc-f90fbd0b7935
 ms.topic: conceptual
 ms.date: 02/12/2018
 ms.openlocfilehash: 7fd88383e909ebd6be64c22721b813946e37179e
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56959127"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60616499"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Az Azure Data Lake Analytics diagnosztikai naplóinak elérése
 
@@ -134,7 +134,7 @@ A naplózási és a kérés naplók strukturált JSON formátumban vannak.
 | resultType |String |A művelet, például 200-as állapotát. |
 | callerIpAddress |String |Az ügyfél a kérés IP-címe |
 | correlationId |String |A napló azonosítója. Ez az érték kapcsolódó bejegyzései készletét csoportosítására használható. |
-| identity |Objektum |Az identitás által generált napló |
+| identity |Object |Az identitás által generált napló |
 | properties |JSON |A következő szakaszban (kérelem tulajdonságai séma) kapcsolatos részletek |
 
 #### <a name="request-log-properties-schema"></a>Kérelem tulajdonságai séma
@@ -145,8 +145,8 @@ A naplózási és a kérés naplók strukturált JSON formátumban vannak.
 | Útvonal |String |Az elérési utat a művelet végrehajtásának ideje |
 | RequestContentLength |int |A HTTP-kérelem tartalmának hossza |
 | ClientRequestId |String |Az azonosító, amely egyedileg azonosítja ezt a kérelmet |
-| Kezdés időpontja |String |Az idő, amelyen a kiszolgáló a kérelem érkezett |
-| Befejezés időpontja: |String |Az idő, amikor a kiszolgáló által küldött választ |
+| StartTime |String |Az idő, amelyen a kiszolgáló a kérelem érkezett |
+| EndTime |String |Az idő, amikor a kiszolgáló által küldött választ |
 
 ### <a name="audit-logs"></a>Naplók
 
@@ -201,8 +201,8 @@ A naplózási és a kérés naplók strukturált JSON formátumban vannak.
 | JobName |String |A feladat megadott neve |
 | JobRunTime |String |A futtatókörnyezet, a feladat elvégzéséhez használt |
 | SubmitTime |String |Az idő (UTC), a feladat el lett küldve. |
-| Kezdés időpontja |String |Az idő a feladat elindításának (UTC) elküldése után |
-| Befejezés időpontja: |String |Az idő a feladat befejeződött |
+| StartTime |String |Az idő a feladat elindításának (UTC) elküldése után |
+| EndTime |String |Az idő a feladat befejeződött |
 | Párhuzamosság |String |A kért a feladat elküldése közben. a Data Lake Analytics-egységek számát |
 
 > [!NOTE]

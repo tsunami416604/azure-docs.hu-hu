@@ -1,5 +1,5 @@
 ---
-title: A nyelvi Understa előre összeállított tartományok
+title: Előre elkészített tartományok Language Understanding
 titleSuffix: Azure Cognitive Services
 description: A LUIS előre összeállított tartományok esetében gyakori, természetes nyelvi felhasználói esetek rövid idő alatt hozzáadhat egy készletét tartalmazza.
 services: cognitive-services
@@ -8,15 +8,15 @@ ms.custom: seodec18
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 01/24/2019
+ms.topic: conceptual
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: e1b99396c4739dc6f1b7a4da0164553d4c25ef3c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: e5d5de6a6f348fa3708b1e39fe2bdd3aa8693dee
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55867103"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932655"
 ---
 # <a name="add-prebuilt-domains-for-common-usage-scenarios"></a>Gyakori használati forgatókönyvek az előre összeállított tartományok hozzáadása 
 

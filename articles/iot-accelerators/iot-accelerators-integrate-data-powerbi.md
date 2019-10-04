@@ -9,11 +9,11 @@ services: iot-accelerators
 ms.date: 05/01/2018
 ms.topic: conceptual
 ms.openlocfilehash: 3398c6d318e0e3c51d3f6cfe8af651a6e3f55c9c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58094820"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61448137"
 ---
 # <a name="visualize-remote-monitoring-data-using-power-bi"></a>A Power BI segítségével történő távoli megfigyelési adatok megjelenítése
 
@@ -42,7 +42,7 @@ Ez az oktatóanyag végigvezeti a távoli figyelési megoldás adatok a Power BI
 
 5. A bal oldali panelen kattintson a "Kulcsok" szakaszt, és jegyezze fel a következő értékeket a Power bi-ban használható:
 
-   - URI
+   - URI-T
    - Elsődleges kulcs
 
      ![keys](./media/iot-accelerators-integrate-data-powerbi/keys.png)
@@ -59,7 +59,7 @@ Ez az oktatóanyag végigvezeti a távoli figyelési megoldás adatok a Power BI
   
 3. Adja meg az adatokat, amelyek a fenti rögzített:
 
-    * URI
+    * URI-T
     * Elsődleges kulcs
 
 4. Válassza ki a Power BI-bA importálni kívánt összes tábla. Ez a művelet elindít az adatok betöltését. A megoldás minél hosszabb ideje fut, a hosszabb ideig is igénybe vehet az adatok betöltéséhez (akár néhány órát). 

@@ -3,8 +3,8 @@ title: Biztonsági szempontok az Azure AD-alkalmazásproxyval |} A Microsoft Doc
 description: Azure AD Application Proxy használatára vonatkozó biztonsági szempontokat ismerteti.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/08/2017
-ms.author: celested
+ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7bb9fc806779565581fa7667749402f5608edd80
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: fa7b5c82f0b057e2eb029b9cc632d8da02206678
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57438074"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108397"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Távolról az Azure AD-alkalmazásproxy-alkalmazások eléréséhez szükséges biztonsági szempontok
 
@@ -49,7 +49,7 @@ A hálózati kapcsolatot létesít alkalmaznia gazdagabb szabályzati vezérlők
 
 A [feltételes hozzáférési](../conditional-access/overview.md), korlátozásokat definiálhat a forgalmat a háttér-alkalmazások hozzáférhetnek. Amelyek korlátozzák a bejelentkezések hely, a hitelesítés és felhasználói kockázatú profil erőssége alapján szabályzatokat hozhat létre.
 
-Feltételes hozzáférés használatával újabb biztonsági réteget ad hozzá a felhasználói hitelesítések multi-factor Authentication hitelesítési házirendek konfigurálása. Ezenkívül az alkalmazások is továbbíthatók a Microsoft Cloud App Security keresztül az Azure AD feltételes hozzáférés használatával valós idejű figyelés és a vezérlők keresztül [hozzáférés](https://docs.microsoft.com/cloud-app-security/access-policy-aad) és [munkamenet](https://docs.microsoft.com/cloud-app-security/session-policy-aad) házirendek
+Feltételes hozzáférés használatával újabb biztonsági réteget ad hozzá a felhasználói hitelesítések multi-factor Authentication hitelesítési házirendek konfigurálása. Ezenkívül az alkalmazások is lehet továbbítani a Microsoft Cloud App Security segítségével az Azure AD feltételes hozzáférés használatával valós idejű figyelés és a vezérlők keresztül [hozzáférés](https://docs.microsoft.com/cloud-app-security/access-policy-aad) és [munkamenet](https://docs.microsoft.com/cloud-app-security/session-policy-aad) házirendek
 
 ### <a name="traffic-termination"></a>Forgalom megszüntetése
 

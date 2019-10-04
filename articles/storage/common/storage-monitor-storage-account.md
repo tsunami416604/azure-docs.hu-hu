@@ -1,145 +1,147 @@
 ---
-title: Azure Storage-fiók figyelése |} A Microsoft Docs
-description: Ismerje meg az Azure storage-fiók monitorozása az Azure portal használatával.
-services: storage
-author: tamram
+title: Azure Storage-fiók figyelése a Azure Portalban | Microsoft Docs
+description: Megtudhatja, hogyan figyelheti a Storage-fiókot az Azure-ban a Azure Portal használatával.
+author: normesta
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/31/2018
-ms.author: tamram
+ms.author: normesta
+ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 64cfac0d689df88c4d432e772bcd0a0cc7ab4ade
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 143574ff02960fcd0fd33ccaed5a80a9bb4f3147
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317680"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71211853"
 ---
-# <a name="monitor-a-storage-account-in-the-azure-portal"></a>Az Azure Portal tárfiók figyelése
+# <a name="monitor-a-storage-account-in-the-azure-portal"></a>Storage-fiók figyelése a Azure Portal
 
-[Az Azure Storage Analytics](storage-analytics.md) metrikákat nyújt az összes tárolási szolgáltatások és a blobok, üzenetsorok, naplók és a táblák. Használhatja a [az Azure portal](https://portal.azure.com) konfigurálása, mely metrikákat és naplókat tárolja, amely a fiókjához, és adja meg a mérőszámadatokat vizuális ábrázolásai diagramok konfigurálása.
+A [Azure Storage Analytics](storage-analytics.md) metrikákat biztosít az összes tárolási szolgáltatáshoz, valamint a Blobok, várólisták és táblák naplóihoz. A [Azure Portal](https://portal.azure.com) használatával beállíthatja, hogy mely mérőszámok és naplók legyenek rögzítve a fiókjához, és hogyan konfigurálhat olyan diagramokat, amelyek vizuális ábrázolást biztosítanak a metrikák adataihoz. 
+
+Javasoljuk, hogy tekintse át [Azure monitor a Storage szolgáltatáshoz](../../azure-monitor/insights/storage-insights-overview.md) (előzetes verzió). Ez az Azure Monitor szolgáltatása, amely átfogóan figyeli az Azure Storage-fiókokat az Azure Storage-szolgáltatások teljesítményének, kapacitásának és rendelkezésre állásának egységes áttekintésével. Nem igényli, hogy bármit engedélyezzen vagy konfiguráljan, és azonnal megtekintheti ezeket a metrikákat az előre definiált interaktív diagramokon és egyéb vizualizációkban is.
 
 > [!NOTE]
-> Nincsenek figyelési adatok az Azure Portalon vizsgálata kapcsolódó költségeket. További információkért lásd: [Storage Analytics](storage-analytics.md).
+> A Azure Portal figyelési adataival kapcsolatos költségek vannak kivizsgálva. További információ: [Storage Analytics](storage-analytics.md).
 >
-> Jelenleg az Azure Files Storage Analytics mérőszámainak áttekintését támogatja, de egyelőre nem támogatják a naplózást.
+> Azure Files jelenleg támogatja Storage Analytics metrikákat, de még nem támogatja a naplózást.
 >
-> A Storage Analytics és más eszközök használatával azonosítsa, diagnosztizálása és hibaelhárítása az Azure Storage szolgáltatással kapcsolatos problémák a részletes útmutatót lásd: [figyelése, diagnosztizálása és hibaelhárítása a Microsoft Azure Storage](storage-monitoring-diagnosing-troubleshooting.md).
+> Az Azure Storage szolgáltatással kapcsolatos problémák azonosítására, diagnosztizálására és hibaelhárítására vonatkozó részletes útmutató a Storage Analytics és egyéb eszközök használatáról: [Microsoft Azure Storage figyelése, diagnosztizálása és hibaelhárítása](storage-monitoring-diagnosing-troubleshooting.md).
 >
 
-## <a name="configure-monitoring-for-a-storage-account"></a>A storage-fiók figyelésének konfigurálása
+## <a name="configure-monitoring-for-a-storage-account"></a>Storage-fiók figyelésének konfigurálása
 
-1. Az a [az Azure portal](https://portal.azure.com)válassza **tárfiókok**, majd a tárfiók nevét a fiók-irányítópult megnyitásához.
-1. Válassza ki **diagnosztikai** a a **figyelés** részében menü.
+1. A [Azure Portal](https://portal.azure.com)válassza ki a **Storage-fiókok**elemet, majd a Storage-fiók nevét a fiók irányítópultjának megnyitásához.
+1. Válassza a **diagnosztika** lehetőséget a menü panel **figyelés** szakaszában.
 
     ![MonitoringOptions](./media/storage-monitor-storage-account/storage-enable-metrics-00.png)
 
-1. Válassza ki a **típus** metrikák adatok az egyes **szolgáltatás** szeretné figyelni, és a **adatmegőrzési** az adatok. A figyelés beállítást is letilthatók **állapota** való **ki**.
+1. Válassza ki **a figyelni** kívánt **szolgáltatás** metrikájának adatait, valamint az adatok **megőrzési szabályát** . A figyelést le is tilthatja, ha az **állapot** beállítás **ki**értékre van állítva.
 
     ![MonitoringOptions](./media/storage-monitor-storage-account/storage-enable-metrics-01.png)
 
-   Az adatmegőrzési házirend beállítása, helyezze át a **megőrzés (nap)** csúszka, vagy adja meg az adatok megőrzése, 1 és 365 nap. Új tárfiókok esetén az alapérték hét nap. Ha nem szeretne adatmegőrzési szabály beállításához, adja meg a nulla. Ha egy adatmegőrzési házirend sem, akár a monitorozási adatok törlését.
+   Az adatmegőrzési szabály beállításához helyezze át a **megőrzés (nap)** csúszkát, vagy adja meg a megőrizni kívánt adatnapok számát 1 és 365 között. Az új Storage-fiókok alapértelmezett értéke hét nap. Ha nem szeretne adatmegőrzési szabályt beállítani, adja meg a nulla értéket. Ha nincs adatmegőrzési szabály, akkor a figyelési adatok törlése is megtörténik.
 
    > [!WARNING]
-   > A számlázás a metrikák adatait manuálisan törlésekor. Elavult elemzési adatok (az adatmegőrzési-nál régebbi adatok) nem törli azokat a rendszer költségek nélkül. Azt javasoljuk, hogy mennyi ideig szeretné megőrizni a storage analytics-adatok a fiók alapján adatmegőrzési beállítás. Lásd: [számlázást a storage-mérőszámok](storage-analytics-metrics.md#billing-on-storage-metrics) további információt.
+   > A metrikai adatok manuális törlése után számítunk fel díjat. A rendszer díjmentesen törli az elavult elemzési adatok (az adatmegőrzési szabályzatnál régebbi adatok) adatait. Azt javasoljuk, hogy állítsa be az adatmegőrzési szabályzatot azon alapul, hogy mennyi ideig szeretné megőrizni a Storage Analytics-adatait a fiókjához. További információért lásd a [Storage-metrikák számlázása](storage-analytics-metrics.md#billing-on-storage-metrics) című témakört.
    >
 
-1. Ha befejezte a figyelési konfigurációtól, válassza ki a **mentése**.
+1. A figyelési konfiguráció befejezése után válassza a **Mentés**lehetőséget.
 
-Metrikák alapértelmezett készletét diagramokat, a storage-fiók panelen, valamint az adott szolgáltatás paneleken (blob, üzenetsor, tábla és fájl) jelenik meg. Miután engedélyezte a metrikákat egy szolgáltatáshoz, igénybe vehet egy órát adatai megjelennek a diagramokban. Választhat **szerkesztése** a konfigurálása, mely metrikák jelennek meg a diagram bármely metrikadiagram.
+A metrikák alapértelmezett készlete a Storage-fiók panelen, valamint az egyes szolgáltatásokhoz tartozó (blob, üzenetsor, tábla és fájl) diagramokon jelenik meg. Miután engedélyezte a metrikákat a szolgáltatásokhoz, akár egy óráig is eltarthat, amíg az adatok megjelennek a diagramokban. Bármelyik metrikai diagramon kiválaszthatja a **Szerkesztés** lehetőséget a diagramon megjelenítendő mérőszámok konfigurálásához.
 
-Letilthatja a gyűjtemény metrikák és naplózás, beállítás **állapot** való **ki**.
+A metrikák gyűjtését és naplózását letilthatja, ha az **állapot** beállítás **ki**értékre van állítva.
 
 > [!NOTE]
-> Az Azure Storage használ [táblatároló](storage-introduction.md#table-storage) való tárolása a storage-fiókot, és tárolja a metrikák a metrikák a fiókjában táblákban. További információkért lásd:. [Metrikák módjára](storage-analytics-metrics.md#how-metrics-are-stored).
+> Az Azure Storage a [Table Storage](storage-introduction.md#table-storage) használatával tárolja a Storage-fiók metrikáit, és a fiókban lévő táblákban tárolja a metrikákat. További információ:. [A metrikák tárolása](storage-analytics-metrics.md#how-metrics-are-stored)
 >
 
-## <a name="customize-metrics-charts"></a>Mérőszámdiagramok testreszabása
+## <a name="customize-metrics-charts"></a>Metrikák diagramjainak testreszabása
 
-Az alábbi eljárás segítségével válassza ki, melyik storage-mérőszámok megtekintéséhez a teljesítménymetrikák diagramja.
+A következő eljárással kiválaszthatja, hogy mely tárolási metrikákat szeretné megtekinteni egy mérőszámok diagramján.
 
-1. Indítsa el a storage metrikadiagram megjelenítése az Azure Portalon. A diagramok talál a **tárfiók panelén** és a a **metrikák** egy adott szolgáltatás (blob, queue, table, fájl) panelen.
+1. Először jelenítse meg a tárolási metrika diagramot a Azure Portal. Az egyes szolgáltatásokhoz (blob, üzenetsor, tábla, fájl) tartozó diagramok a **Storage-fiók** panelen és a **metrikák** panelen találhatók.
 
-   Ebben a példában használja az alábbi ábra, amely akkor jelenik meg a **tárfiók panelén**:
+   Ebben a példában a következő, a **Storage-fiók**panelen megjelenő diagramot használja:
 
-   ![Diagram kiválasztása az Azure Portalon](./media/storage-monitor-storage-account/stg-customize-chart-00.png)
+   ![Diagram kijelölése Azure Portal](./media/storage-monitor-storage-account/stg-customize-chart-00.png)
 
-1. Kattintson bárhová a diagram szerkesztése a diagramon belül.
+1. A diagram szerkesztéséhez kattintson bárhová a diagramon belül.
 
-1. Ezután válassza ki a **időtartomány** a diagramon megjelenítendő metrikák és a **szolgáltatás** (blob, queue, table, fájlt) amelynek megjelenítendő mérőszámokat. Itt az elmúlt egy hét metrikák megjelenítéséhez a blob szolgáltatás jelölt ki:
+1. Ezután válassza ki a diagramon megjelenítendő mérőszámok **időtartományát** , valamint azt a **szolgáltatást** (blob, üzenetsor, tábla, fájl), amelynek metrikáit meg szeretné megjeleníteni. Itt az előző heti mérőszámok vannak kiválasztva a blob szolgáltatás megjelenítéséhez:
 
-   ![A diagram szerkesztése panel idő tartomány és a szolgáltatás kiválasztása](./media/storage-monitor-storage-account/storage-edit-metric-time-range.png)
+   ![Időtartomány és szolgáltatás kiválasztása a diagram szerkesztése panelen](./media/storage-monitor-storage-account/storage-edit-metric-time-range.png)
 
-1. Válassza ki az egyes **metrikák** kellett például látható a diagramban, majd kattintson a **OK**.
+1. Válassza ki a diagramon megjeleníteni kívánt egyéni **metrikákat** , majd kattintson az **OK**gombra.
 
-   ![A diagram szerkesztése panelen egyéni metrika kiválasztása](./media/storage-monitor-storage-account/storage-edit-metric-selections.png)
+   ![Egyéni metrika kiválasztása a diagram szerkesztése panelen](./media/storage-monitor-storage-account/storage-edit-metric-selections.png)
 
-A diagram beállításai nincsenek hatással a gyűjtemény, az összesítés vagy a tárolás figyelés a tárfiókban lévő adatokat.
+A diagram beállításai nem érintik a tárolási fiókban lévő figyelési adatgyűjtést, összesítést vagy tárolást.
 
-### <a name="metrics-availability-in-charts"></a>Diagramok mérőszámok rendelkezésre állás érdekében
+### <a name="metrics-availability-in-charts"></a>Metrikák rendelkezésre állása a diagramokon
 
-Rendelkezésre álló metrikák változnak, melyik szolgáltatás választott ki a listából, és az egység típusát, a diagram szerkesztése listája. Százalékos mérőszám jelölje ki például *percentnetworkerror értéket mutatnak* és *percentthrottlingerror értéket mutatnak* csak akkor, ha százalékban egységek megjelenítő diagram szerkesztése:
+Az elérhető mérőszámok listája azon alapul, hogy a legördülő listában kiválasztott szolgáltatás és a szerkesztett diagram egység típusa alapján változik-e meg. Kiválaszthatja például, hogy a százalékos mérőszámok, például a *percentnetworkerror értéket mutatnak* és a *percentthrottlingerror értéket mutatnak* csak akkor legyenek, ha olyan diagramot szerkeszt, amely százalékban jeleníti meg az egységeket:
 
-![Kérelem hiba százalékos diagram az Azure Portalon](./media/storage-monitor-storage-account/stg-customize-chart-04.png)
+![Lekérési hiba százalékos diagramja a Azure Portal](./media/storage-monitor-storage-account/stg-customize-chart-04.png)
 
-### <a name="metrics-resolution"></a>Metrikák felbontás
+### <a name="metrics-resolution"></a>Metrikák feloldása
 
-A kiválasztott metrikák **diagnosztikai** határozza meg, a metrikák elérhető a fiók felbontása:
+A **diagnosztika** kiválasztott mérőszámai határozzák meg a fiókhoz elérhető metrikák feloldását:
 
-* **Összesített** monitorozása biztosítja a bejövő/kimenő forgalom, elérhetőség, késés és sikeres százalékos metrikákat. Ezek a metrikák, a blob, table, file és queue szolgáltatások vannak összesítve.
-* **API /** biztosít kifinomultabb feloldási metrikákkal egyes tárolási műveletek, továbbá a szolgáltatásiszint-összesítések.
+* Az **összesített** figyelés olyan mérőszámokat biztosít, mint a bejövő/kimenő forgalom, a rendelkezésre állás, a késés és a sikerességi arány. Ezek a metrikák a blob-, tábla-, fájl-és üzenetsor-szolgáltatásokból vannak összesítve.
+* Az API-k **egy** finomabb felbontást biztosítanak, és a szolgáltatási szint összesítései mellett egyéni tárolási műveletekhez elérhető metrikák is rendelkezésre állnak.
 
-## <a name="configure-metrics-alerts"></a>Metrikák riasztások konfigurálása
+## <a name="configure-metrics-alerts"></a>Metrikai riasztások konfigurálása
 
-Arra az esetre, amikor a küszöbértékeket a rendszer elérte a tárolási erőforrás-mérőszámok riasztásokat is létrehozhat.
+Riasztásokat hozhat létre, amelyekkel értesítést kaphat, ha elérte a tárolási erőforrás metrikáinak küszöbértékeit.
 
-1. Megnyitásához a **riasztási szabályok panel**, görgessen le a **figyelés** szakaszában a **menü panel** , és válassza ki **riasztások (klasszikus)**.
-2. Válassza ki **metrikariasztás hozzáadása (klasszikus)** megnyitásához a **riasztási szabály hozzáadása** panel
-3. Adjon meg egy **neve** és **leírás** az Új riasztási szabály.
-4. Válassza ki a **metrika** szeretné hozzáadni egy riasztást a riasztás a **feltétel**, és a egy **küszöbérték**. A küszöbérték egység írja be a mérőszám úgy döntött, attól függően változik. Például a "count" nem egység típusú *ContainerCount*, miközben az egység a *percentnetworkerror értéket mutatnak* metrika százalékos.
-5. Válassza ki a **időszak**. Metrikák, amely eléri vagy meghaladja a küszöbértéket a időszakon belül megjelenik egy figyelmeztetés.
-6. (Nem kötelező) Konfigurálása **E-mail** és **Webhook** értesítések. További információk a webhookok,: [webhook konfigurálása az Azure metrikariasztás](../../azure-monitor/platform/alerts-webhooks.md). Ha nem adja meg e-mailben vagy webhook értesítések, riasztások csak az Azure Portalon fog megjelenni.
+1. A **riasztási szabályok**panel megnyitásához görgessen le a **figyelés** szakaszhoz a **menü** panelen, és válassza a **riasztások (klasszikus)** lehetőséget.
+2. A **riasztási szabály hozzáadása** panel megnyitásához válassza a **metrikus riasztás hozzáadása (klasszikus) lehetőséget.**
+3. Adja meg az új riasztási szabály **nevét** és **leírását** .
+4. Válassza ki azt a **metrikát** , amelynek hozzá szeretne adni egy riasztást, egy riasztási **feltételt**és egy **küszöbértéket**. A küszöbérték-egység típusa a választott mérőszámtól függően változik. Például a "Count" a *ContainerCount*egység típusa, míg a *percentnetworkerror értéket mutatnak* metrika egysége százalék.
+5. Válassza ki az **időszakot**. A riasztást kiváltó időszakon belüli küszöbértéket elérő vagy annál nagyobb mérőszámok.
+6. Választható **E-mailek** és **webhookok** értesítéseinek konfigurálása. A webhookokkal kapcsolatos további információkért lásd: [webhook konfigurálása Azure metrikai riasztáshoz](../../azure-monitor/platform/alerts-webhooks.md). Ha nem konfigurálja az e-mail-vagy webhook-értesítéseket, a riasztások csak a Azure Portal fognak megjelenni.
 
-![Az Azure Portalon "A riasztási szabály hozzáadása" panel](./media/storage-monitor-storage-account/add-alert-rule.png)
+!["Riasztási szabály hozzáadása" panel a Azure Portal](./media/storage-monitor-storage-account/add-alert-rule.png)
 
-## <a name="add-metrics-charts-to-the-portal-dashboard"></a>A portál irányítópultján mérőszámdiagramok hozzáadása
+## <a name="add-metrics-charts-to-the-portal-dashboard"></a>Metrikai diagramok hozzáadása a portál irányítópulthoz
 
-A tárfiókok bármely Azure Storage mérőszámdiagramok adhat hozzá a portál irányítópultján.
+Bármelyik Storage-fiókhoz hozzáadhat Azure Storage metrikai diagramokat a portál irányítópultján.
 
-1. Válassza ki kattintson **irányítópult szerkesztése** megtekintése az irányítópulton a során a [az Azure portal](https://portal.azure.com).
-1. Az a **Csempetárral**válassza **található csempék által** > **típus**.
-1. Válassza ki **típus** > **tárfiókok**.
-1. A **erőforrások**, válassza ki a tárfiókot, amelynek metrikák hozzáadása az irányítópulthoz való szeretné.
-1. Válassza ki **kategóriák** > **figyelési**.
-1. És húzza a diagram csempe alakzatot a szeretné metrika megjelenik az irányítópulton. Ismételje meg az összes használni kívánt metrikák az irányítópulton jelenik meg. Az alábbi ábrán a "Blobok – kérések összesen" diagram például ki van jelölve, de a diagramok érhetők el elhelyezésre az irányítópulton.
+1. Válassza az **irányítópult szerkesztése** lehetőséget az irányítópult megtekintésekor a [Azure Portal](https://portal.azure.com).
+1. A csempe- **gyűjteményben**válassza a **csempék keresése** > **típus**szerint lehetőséget.
+1. Válassza a **típus** > **Storage-fiókok**lehetőséget.
+1. Az **erőforrások**területen válassza ki azt a Storage-fiókot, amelynek metrikáit hozzá szeretné adni az irányítópulthoz.
+1. Válassza ki a **Kategóriák** > **figyelése**elemet.
+1. Húzza a diagram csempét az Irányítópultra a megjelenő mérőszámhoz. Ismételje meg az összes olyan mérőszámot, amelyet meg szeretne jeleníteni az irányítópulton. A következő ábrán a "Blobok – összes kérelem" diagram ki van emelve példaként, de az irányítópulton az összes diagram elérhetővé válik.
 
-   ![Az Azure Portalon csempetárral](./media/storage-monitor-storage-account/storage-customize-dashboard.png)
-1. Válassza ki **testreszabás kész** tetején az irányítópult hozzáadása diagramok elkészült.
+   ![Csempe-gyűjtemény Azure Portal](./media/storage-monitor-storage-account/storage-customize-dashboard.png)
+1. Ha elkészült a diagramok hozzáadásával, válassza az irányítópult tetején található **Testreszabás kész** lehetőséget.
 
-Miután hozzáadott diagramokat az irányítópulton, további testre szabhatja testreszabás mérőszámdiagramok leírtak szerint.
+Miután hozzáadta a diagramokat az irányítópulthoz, tovább testreszabhatja azokat a következő témakörben leírtak szerint: metrika-diagramok testreszabása.
 
 ## <a name="configure-logging"></a>Naplózás konfigurálása
 
-Mentse a diagnosztikai naplók olvasási, írási és törlési kérelmeket a blob, table és queue szolgáltatások az Azure Storage találhatók. Az adatmegőrzési házirend, állítsa be ezeket a naplókat is vonatkozik.
+A blob-, tábla-és üzenetsor-szolgáltatásokhoz tartozó olvasási, írási és törlési kérelmek esetében az Azure Storage-ba is utasíthatja a diagnosztikai naplók mentését. A beállított adatmegőrzési szabályzat ezekre a naplókra is érvényes.
 
 > [!NOTE]
-> Jelenleg az Azure Files Storage Analytics mérőszámainak áttekintését támogatja, de egyelőre nem támogatják a naplózást.
+> Azure Files jelenleg támogatja Storage Analytics metrikákat, de még nem támogatja a naplózást.
 >
 
-1. Az a [az Azure portal](https://portal.azure.com), jelölje be **tárfiókok**, majd nyissa meg a storage-fiók panelen a tárfiók nevére.
-1. Válassza ki **diagnosztikai** a a **figyelés** részében menü.
+1. A [Azure Portal](https://portal.azure.com)válassza ki a Storage- **fiókok**elemet, majd a Storage-fiók nevét a Storage-fiók panel megnyitásához.
+1. Válassza a **diagnosztika** lehetőséget a menü panel **figyelés** szakaszában.
 
-    ![Diagnosztikai menüelem figyelés alatt az Azure Portalon.](./media/storage-monitor-storage-account/storage-enable-metrics-00.png)
+    ![Diagnosztika menüpont a Azure Portal figyelés területén.](./media/storage-monitor-storage-account/storage-enable-metrics-00.png)
 
-1. Győződjön meg arról **állapot** értékre van állítva **a**, és válassza ki a **szolgáltatások** szeretné naplózásának engedélyezése a.
+1. Győződjön **meg**arról, hogy az **állapot** beállítás be értékre van állítva, majd válassza ki azokat a **szolgáltatásokat** , amelyeknek engedélyezni szeretné a naplózást.
 
-    ![Naplózás konfigurálása az Azure Portalon.](./media/storage-monitor-storage-account/enable-diagnostics.png)
+    ![Konfigurálja a naplózást a Azure Portalban.](./media/storage-monitor-storage-account/enable-diagnostics.png)
 1. Kattintson a **Save** (Mentés) gombra.
 
-Egy blobtárolót a diagnosztikai naplók mentett *$logs* a storage-fiókban. A naplózási adatokat, például a storage explorer használatával is megtekintheti a [Microsoft Storage Explorer](https://storageexplorer.com), vagy programozott módon, a storage ügyféloldali kódtára vagy a PowerShell segítségével.
+A diagnosztikai naplókat a rendszer egy *$logs* nevű blob-tárolóba menti a Storage-fiókjában. A naplófájlokat a [Microsoft Storage Explorerhoz](https://storageexplorer.com)hasonló Storage Explorerrel, vagy programozott módon, a Storage ügyféloldali kódtár vagy a PowerShell használatával tekintheti meg.
 
-További információ a $logs tároló elérésekor: [a Storage analytics naplózási](storage-analytics-logging.md).
+További információ a $logs tároló eléréséről: [Storage Analytics naplózása](storage-analytics-logging.md).
 
 ## <a name="next-steps"></a>További lépések
 
-* További részleteket talál a kapcsolatos [mérőszámok, naplózás, és a számlázási](storage-analytics.md) a Storage Analytics.
+* További információ a Storage Analytics [metrikákkal, naplózással és számlázással](storage-analytics.md) kapcsolatban.

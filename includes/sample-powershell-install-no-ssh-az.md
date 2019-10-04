@@ -2,15 +2,16 @@
 author: sptramer
 ms.service: azure-powershell
 ms.topic: include
-ms.date: 02/13/2019
+ms.date: 06/05/2019
 ms.author: sttramer
-ms.openlocfilehash: f72b9a9738bf44711051947d9422047f4c1f7c7f
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: e769bfaab66cf1072bee192331c3bbc839a0488b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56246119"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67132988"
 ---
-Ez a példa az Azure PowerShell szükséges. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. 
+Ez a példa az Azure PowerShell szükséges. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`.
+Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. 
 
-Futtassa a `Connect-AzAccount` parancsot, hogy kapcsolatot hozzon létre az Azure-ral. 
+Futtassa a [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) csatlakoztatása az Azure-parancsmagot. 

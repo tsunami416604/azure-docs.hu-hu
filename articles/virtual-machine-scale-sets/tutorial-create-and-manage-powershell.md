@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/18/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: f9302180a351e24955f779c105b994ce08a3d390
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 694fc0ba6d59497cfc53efb6f2607bc6a7d4ad2d
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60188963"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66728684"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Oktatóanyag: Létrehozása és kezelése az Azure PowerShell használatával virtuálisgép-méretezési csoportot
 
@@ -38,7 +38,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
-[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 
 
@@ -140,7 +140,7 @@ IpAddress
 52.168.121.216
 ```
 
-Távoli kapcsolaton keresztül csatlakozzon az első virtuálisgép-példányhoz. Adja meg saját nyilvános IP-címét, valamint a kívánt VM-példány portszámát, amint az az előző parancsokban látható. Amikor a rendszer kéri, adja meg a méretezési csoport létrehozása során használt hitelesítő adatokat (a mintaparancsokban alapértelmezés szerint *azureuser* és *P\@ssw0rd!*). Az Azure Cloud Shell használata esetén ezt a lépést egy helyi PowerShell-parancssorból vagy egy távoli asztali ügyfélről hajtsa végre. A következő példa az *1* nevű virtuálisgép-példányhoz csatlakozik:
+Távoli kapcsolaton keresztül csatlakozzon az első virtuálisgép-példányhoz. Adja meg saját nyilvános IP-címét, valamint a kívánt VM-példány portszámát, amint az az előző parancsokban látható. Amikor a rendszer kéri, adja meg a méretezési csoport létrehozása során használt hitelesítő adatokat (a mintaparancsokban alapértelmezés szerint *azureuser* és *P\@ssw0rd!* ). Az Azure Cloud Shell használata esetén ezt a lépést egy helyi PowerShell-parancssorból vagy egy távoli asztali ügyfélről hajtsa végre. A következő példa az *1* nevű virtuálisgép-példányhoz csatlakozik:
 
 ```powershell
 mstsc /v 52.168.121.216:50001
@@ -205,7 +205,7 @@ A virtuálisgép-példány mérete, más néven *SKU*, a virtuálisgép-példán
 ### <a name="vm-instance-sizes"></a>A virtuálisgép-példányok mérete
 Az alábbi táblázat a virtuális gépek gyakori méreteit használati esetek alapján kategorizálja.
 
-| Typo                     | Gyakori méretek           |    Leírás       |
+| Típus                     | Gyakori méretek           |    Leírás       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Általános célú](../virtual-machines/windows/sizes-general.md)         |Dsv3, Dv3, DSv2, Dv2, DS, D, Av2, A0-7| Kiegyensúlyozott processzor-memória arány. Ideális választás fejlesztéshez/teszteléshez, valamint kis- és közepes méretű alkalmazásokhoz és adatkezelési megoldásokhoz.  |
 | [Számításra optimalizált](../virtual-machines/windows/sizes-compute.md)   | Fs, F             | Magas processzor-memória arány a processzor javára. Megfelelő választás a közepes forgalmú alkalmazásokhoz, hálózati berendezésekhez és kötegelt folyamatokhoz.        |

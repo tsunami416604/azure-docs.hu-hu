@@ -4,19 +4,19 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 74ae5cab5430c508f31a5ba4ad7fbdefe89abdd8
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 7ee269651662496e211e1861bf4a80f6ba4d27d1
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55235982"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "67048555"
 ---
 <!--
     Separate the generic "Get started" paragraph from each connector-* article in azure-docs-pr/articles/data-factory/ to ease future central update.
 -->
-A következő eszközök és SDK-k valamelyikét használhatja a másolási tevékenység használatához egy olyan folyamattal. Válassza ki a részletes hivatkozást:
+Az alábbi eszközök vagy SDK-k egyikével használhatja a másolási tevékenységet egy folyamattal. Válasszon egy hivatkozást a lépésenkénti utasításokhoz:
 
-- [Adatok másolása eszköz](../articles/data-factory/quickstart-create-data-factory-copy-data-tool.md)
+- [Adatmásolás eszköz](../articles/data-factory/quickstart-create-data-factory-copy-data-tool.md)
 - [Azure Portal](../articles/data-factory/quickstart-create-data-factory-portal.md)
 - [.NET SDK](../articles/data-factory/quickstart-create-data-factory-dot-net.md)
 - [Python SDK](../articles/data-factory/quickstart-create-data-factory-python.md)

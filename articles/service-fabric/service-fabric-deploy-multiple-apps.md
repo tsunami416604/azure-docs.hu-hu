@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: 69df9eff85d96c9cc6ca7fa1d3aabd2c54fae416
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 677a9d02493bf5fac1bfcbe8c40ce9efe2040be9
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58884720"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537750"
 ---
 # <a name="deploy-multiple-guest-executables"></a>Több futtatható vendégalkalmazás üzembe helyezése
 Ez a cikk bemutatja, hogyan csomagolását és több futtatható vendégalkalmazás üzembe helyezése az Azure Service fabric. Fejlesztésére és üzembe helyezése a Service Fabric egyetlen csomagban további ismertetés a [egy futtatható vendégalkalmazás üzembe helyezése Service Fabric](service-fabric-deploy-existing-app.md).
@@ -28,12 +28,12 @@ Ez az útmutató bemutatja, hogyan helyezhet üzembe egy egy Node.js kezelőfel�
 
 A Visual Studio segítségével a több futtatható vendégalkalmazás tartalmazó alkalmazáscsomagot előállításához. Lásd: [meglévő alkalmazás becsomagolása a Visual Studio használatával](service-fabric-deploy-existing-app.md). Miután hozzáadta az első Vendég végrehajtható fájlt, kattintson jobb gombbal az alkalmazásprojektre, és válassza ki a **Hozzáadás -> új Service Fabric-szolgáltatás** hozzáadása a második Vendég végrehajtható projektet a megoldáshoz. Megjegyzés: Ha a forrás a Visual Studio-projekt mutató hivatkozást választja, a Visual Studio-megoldás létrehozása fog ellenőrizze, hogy az alkalmazáscsomag naprakészen a forrás változásainak. 
 
-## <a name="samples"></a>Példák
+## <a name="samples"></a>Minták
 * [Minta csomagolás és a egy futtatható vendégalkalmazás üzembe helyezése](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Minta két Vendég végrehajtható fájlok (C# és nodejs) keresztül kommunikáljon az elnevezési szolgáltatásban REST használatával](https://github.com/Azure-Samples/service-fabric-containers)
 
 ## <a name="manually-package-the-multiple-guest-executable-application"></a>A több Vendég futtatható alkalmazás manuális csomag
-Másik lehetőségként kézzel csomagot készíthet a Vendég végrehajtható. A manuális csomagolást, ebben a cikkben a Service Fabric csomagolási eszközt, amely mindig elérhető legyen az [ https://aka.ms/servicefabricpacktool ](https://aka.ms/servicefabricpacktool).
+Másik lehetőségként kézzel csomagot készíthet a Vendég végrehajtható. További információkért lásd: [manuálisan csomagolása és üzembe helyezése meglévő végrehajtható](service-fabric-deploy-existing-app.md#manually-package-and-deploy-an-existing-executable).
 
 ### <a name="packaging-the-nodejs-application"></a>A Node.js-alkalmazás csomagolása
 Ez a cikk azt feltételezi, hogy Node.js nincs telepítve, a Service Fabric-fürt csomópontjain. Ennek következményeképpen kell Node.exe hozzáadása előtt csomagolási a node-alkalmazás gyökérkönyvtárában. A könyvtárstruktúra, a Node.js-alkalmazás (Expressz webes keretrendszert és Jade sablonmotor használatával), az alábbihoz hasonlóan kell kinéznie:
@@ -207,7 +207,6 @@ New-ServiceFabricApplication -ApplicationName 'fabric:/NodeApp' -ApplicationType
 Miután az alkalmazás sikeresen közzé lett téve a helyi fürthöz, a Node.js-alkalmazás a porton, hogy a Node.js-alkalmazás – például http szolgáltatásjegyzékben írt elérheti:\//localhost:3000.
 
 Ebben az oktatóanyagban látott egyszerűen egy Service Fabric-alkalmazásként a két meglévő alkalmazások csomagolása. Emellett megtanulhatta, hogyan helyezhet üzembe Service fabric, hogy a Service Fabric funkcióit, például a magas rendelkezésre állású és egészségügyi rendszer-integráció előnyei.
-
 
 ## <a name="adding-more-guest-executables-to-an-existing-application-using-yeoman-on-linux"></a>Több futtatható vendégalkalmazás hozzáadása egy meglévő alkalmazás Linux rendszeren Yeoman használatával
 

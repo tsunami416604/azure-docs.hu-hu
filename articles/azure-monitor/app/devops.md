@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 12/21/2018
 ms.author: mbullwin
 ms.openlocfilehash: 24b0bc01b5cb4f1d2696a7c9526d586c9b42d0fc
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674582"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60899719"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Webalkalmazások és szolgáltatások részletes diagnosztikája az Application Insights szolgáltatással
 ## <a name="why-do-i-need-application-insights"></a>Miért kell Application Insights?
@@ -104,7 +104,7 @@ Mindkét esetben a riasztás nem csak arra kéri, a tünetek fel van derítve, d
 
 Ügyfél Samtec mondta: "Során átváltás egy közelmúltbeli funkciót, találtunk egy alatt méretezett adatbázis, amely a erőforráskorlátok lenyomásával, és időtúllépéseket okoz. Proaktív problémaészlelés riasztások kapott hirdetett azt is sorolása a problémát, nagyon közel valós idejű szó. Ez a riasztás az Azure-platform riasztások ügyfélparancsfájl kommunikációnkhoz szinte azonnal kijavíthatja a hibát. Üzemen kívüli perc összesen < 10 perc."
 
-## <a name="live-metrics-stream"></a>Élő metrikastream
+## <a name="live-metrics-stream"></a>Élő metrikák Stream
 A legújabb buildre helyezhetők üzembe tart felületet nyújt. Problémák merülnének fel, ha szeretné azonnal tudnia kell, velük kapcsolatban, úgy, hogy a biztonsági meg, ha szükséges. Élő metrikák Stream kulcsfontosságú olyan mérőszámokat biztosít, körülbelül egy másodperc késéssel.
 
 ![Élő metrikák](./media/devops/0040.png)
@@ -133,7 +133,7 @@ Ha például is könnyen:
 * Nyomon követheti a munkamenetek és az azonnali ügyfélszolgálati és üzemeltetési csapatok engedélyezése adott felhasználói válaszidejét.
 * Határozza meg, hogy a gyakran használt funkciók funkció rangsorolási kérdésre.
 
-A DNN ügyfél mondta: "Az application Insights biztosított velünk a kapcsolatot a folyamatban a következő hiányzó részét képes egyesítése, rendezés, lekérdezés és adatok szűrése, igény szerint. Csapatunk saját nyújt, és felület használatával kereshet egy hatékony lekérdezési nyelvet az adatok lehetővé tette számunkra, hogy az információkhoz, és a problémák megoldásában, így nem is tudjuk történt. Sok érdekes válaszokat származnak kezdve a kérdések *' I wonder, ha... ".*"
+A DNN ügyfél mondta: "Az application Insights biztosított velünk a kapcsolatot a folyamatban a következő hiányzó részét képes egyesítése, rendezés, lekérdezés és adatok szűrése, igény szerint. Csapatunk saját nyújt, és felület használatával kereshet egy hatékony lekérdezési nyelvet az adatok lehetővé tette számunkra, hogy az információkhoz, és a problémák megoldásában, így nem is tudjuk történt. Sok érdekes válaszokat származnak kezdve a kérdések *' I wonder, ha... ".* "
 
 ## <a name="development-tools-integration"></a>Fejlesztői eszközök integrációja
 ### <a name="configuring-application-insights"></a>Az Application Insights konfigurálása
@@ -150,7 +150,7 @@ Fejlesztés és hibakeresés funkció, miközben tekintheti meg és keressen tel
 
 Hibakeresés során lehetősége van, hogy a telemetria a fejlesztői gépén való tekintse meg a Visual Studióban, de anélkül, hogy elküldené a portálon. Ezzel a beállítással helyi elkerülhető, hogy éles telemetriával végzett hibakereséssel keverése.
 
-### <a name="work-items"></a>Munkatételek
+### <a name="work-items"></a>Munkaelemek
 Riasztást hoz létre, amikor az Application Insights automatikusan létrehozhat az egy munkaelemet a nyomon követési rendszer munkáját.
 
 ## <a name="but-what-about"></a>De mi a helyzet...?

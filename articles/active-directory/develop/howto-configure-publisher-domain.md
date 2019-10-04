@@ -1,81 +1,81 @@
 ---
-title: Alkalmazás közzétevőjének tartománya konfigurálása |} Az Azure
-description: Ismerje meg, hogyan tudja, ahol a adatokat küld a felhasználóknak, hogy egy alkalmazás közzétevőjének tartománya konfigurálása.
+title: Alkalmazás közzétevő tartományának konfigurálása | Azure
+description: Megtudhatja, hogyan konfigurálhat egy alkalmazás közzétevő tartományát, hogy a felhasználók tisztában legyenek az adataik elküldésével.
 services: active-directory
 documentationcenter: dev-center-name
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/05/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efbf448770bfcf797d6bf01cd3c28dc98023adff
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 28021c0b8512ca12ead92b0b78541fce690b1f80
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59793893"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257934"
 ---
-# <a name="how-to-configure-an-applications-publisher-domain-preview"></a>Útmutató: Alkalmazás közzétevőjének tartománya (előzetes verzió) konfigurálása
+# <a name="how-to-configure-an-applications-publisher-domain-preview"></a>Útmutató: Alkalmazás közzétevő tartományának konfigurálása (előzetes verzió)
 
-Alkalmazás közzétevőjének tartománya jelenik meg a felhasználók számára a [alkalmazás jóváhagyási kérése](application-consent-experience.md) érhessék, ahol azok információkat küld a rendszer. Szabályzatként jelenik meg több-bérlős alkalmazások 2019. május 21. után regisztrált, amelyek nem rendelkeznek a közzétevői tartományt **nem ellenőrzött**. Több-bérlős alkalmazások olyan alkalmazások, amelyek támogatja a szervezeti egyetlen címtárban; kívül-fiókok például az összes Azure AD-fiókokat támogatja, vagy az Azure AD-fiókok és a személyes Microsoft-fiókok támogatják.
+Az alkalmazás közzétevői tartománya megjelenik a felhasználók számára az [alkalmazás jóváhagyására vonatkozó kérésben](application-consent-experience.md) , hogy a felhasználók tudják, hol küldik el az adataikat. A több-bérlős alkalmazások, amelyek a 2019. május 21. után vannak regisztrálva, amelyek nem rendelkeznek közzétevő tartománnyal, nem **ellenőrzöttként**jelennek meg. A több-bérlős alkalmazások olyan alkalmazások, amelyek egyetlen szervezeti címtáron kívül is támogatják a fiókokat. például támogassa az összes Azure AD-fiókot, vagy támogassa az összes Azure AD-fiókot és a személyes Microsoft-fiókokat.
 
 ## <a name="new-applications"></a>Új alkalmazások
 
-Amikor regisztrál egy új alkalmazást, az az alkalmazás közzétevőjének tartománya beállítható egy alapértelmezett értéket. Az érték attól függ, ahol az alkalmazás regisztrálva van, különösen azt, hogy az alkalmazás regisztrálva van a bérlő, és hogy a bérlő rendelkezik bérlői ellenőrzött tartományok.
+Új alkalmazás regisztrálása esetén előfordulhat, hogy az alkalmazás közzétevő tartománya alapértelmezett értékre van állítva. Az érték attól függ, hogy az alkalmazás hol van regisztrálva, különösen azt, hogy az alkalmazás regisztrálva van-e a bérlőben, és hogy a bérlő rendelkezik-e a bérlő által ellenőrzött tartományokkal.
 
-Ha a bérlő ellenőrzött tartományok, az alkalmazás közzétevőjének tartománya alapértelmezés szerint az elsődleges, a bérlő ellenőrzött tartomány. Van-e nem a bérlő ellenőrzött tartományok (amely a helyzet, ha az alkalmazás a bérlő nincs regisztrálva), az alkalmazás közzétevőjének tartománya állítja be null értékre.
+Bérlő által ellenőrzött tartományok esetén az alkalmazás közzétevő tartománya alapértelmezés szerint a bérlő elsődleges ellenőrzött tartománya lesz. Ha nincsenek bérlő által ellenőrzött tartományok (amelyek akkor jelennek meg, ha az alkalmazás nincs bérlőn regisztrálva), az alkalmazás közzétevő tartománya NULL értékűre lesz állítva.
 
-A következő táblázat összefoglalja a közzétevő tartományérték alapértelmezett viselkedését.  
+A következő táblázat összefoglalja a közzétevő tartomány értékének alapértelmezett viselkedését.  
 
-| Bérlő ellenőrzött tartományok | Alapértelmezett érték a közzétevő tartománya |
+| Bérlő által ellenőrzött tartományok | Közzétevő tartomány alapértelmezett értéke |
 |-------------------------|----------------------------|
 | null | null |
 | *.onmicrosoft.com | *.onmicrosoft.com |
-| - *.onmicrosoft.com<br/>- domain1.com<br/>-Tartomány2.com (elsődleges) | domain2.com |
+| - *.onmicrosoft.com<br/>- domain1.com<br/>-domain2.com (elsődleges) | domain2.com |
 
-Ha egy több-bérlős alkalmazás közzétevőjének tartománya nincs beállítva, vagy ha egy tartományhoz, amely értékre van állítva. onmicrosoft.com, megjelenik az alkalmazás jóváhagyási kérése **nem ellenőrzött** helyett a közzétevői tartományt.
+Ha a több-bérlős alkalmazás közzétevő tartománya nincs beállítva, vagy ha egy olyan tartományra van beállítva, amely a. onmicrosoft.com-ben ér véget, akkor az alkalmazás hozzájárulási kérése nem **ellenőrzöttként** jelenik meg a közzétevő tartománya helyett.
 
-## <a name="grandfathered-applications"></a>Grandfathered alkalmazások
+## <a name="grandfathered-applications"></a>Nagyszülő alkalmazások
 
-Ha az alkalmazás 2019. május 21. előtt regisztrálva lett az alkalmazás jóváhagyási kérése nem jelenik meg **nem ellenőrzött** Ha nem állított be a közzétevői tartományt. Azt javasoljuk, hogy a közzétevő tartomány értéket beállítani, hogy a felhasználók ezeket az információkat tekintheti meg az alkalmazás jóváhagyási kérése az.
+Ha az alkalmazás regisztrálása a 2019. május 21. előtt történt meg, az alkalmazás jóváhagyására vonatkozó kérés **nem jelenik meg, ha nem** állított be közzétevő tartományt. Azt javasoljuk, hogy állítsa be a közzétevői tartomány értékét, hogy a felhasználók láthassák ezeket az információkat az alkalmazás jóváhagyására vonatkozó kérdésben.
 
-## <a name="configure-publisher-domain-using-the-azure-portal"></a>Konfigurálja a közzétevői tartományt az Azure portal használatával
+## <a name="configure-publisher-domain-using-the-azure-portal"></a>A közzétevő tartomány konfigurálása a Azure Portal használatával
 
-Az alkalmazás közzétevőjének tartománya beállításához kövesse az alábbi lépéseket.
+Az alkalmazás közzétevő tartományának beállításához kövesse az alábbi lépéseket.
 
 1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
 
-1. Ha a fiókja egynél több Azure AD-bérlő szerepel:
-   1. Az oldal jobb felső sarkában a menüből válassza ki a profilt, majd **címtár váltása**.
-   1. A munkamenet módosítani kívánja az alkalmazás létrehozása az Azure AD-bérlőhöz.
+1. Ha a fiókja több Azure AD-bérlőn is megtalálható:
+   1. Válassza ki a profilt a lap jobb felső sarkában található menüből, majd **váltson át a könyvtárra**.
+   1. Módosítsa a munkamenetet arra az Azure AD-bérlőre, ahol létre szeretné hozni az alkalmazást.
 
-1. Navigáljon a [Azure Active Directory > alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) keresése, és válassza ki a konfigurálni kívánt alkalmazást.
+1. Keresse meg [Azure Active Directory > Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) a konfigurálni kívánt alkalmazás megkereséséhez és kiválasztásához.
 
-   Miután kiválasztotta az alkalmazás, látni fogja az alkalmazás **áttekintése** lapot.
+   Miután kiválasztotta az alkalmazást, látni fogja az alkalmazás **Áttekintés** lapját.
 
-1. Az alkalmazás **áttekintése** lapon válassza ki a **Branding** szakaszban.
+1. Az alkalmazás **Áttekintés** lapján válassza a **branding (védjegyezés** ) szakaszt.
 
-1. Keresse meg a **közzétevőjének tartománya** mezőbe, majd válasszon az alábbi lehetőségek közül:
+1. Keresse meg a **közzétevő tartomány** mezőt, és válasszon egyet a következő lehetőségek közül:
 
-   - Válassza ki **tartomány konfigurálása** Ha már korábban nem konfigurálta a tartományhoz.
-   - Válassza ki **frissítési tartomány** Ha már konfigurálva van egy tartományhoz.
+   - Válassza **a tartomány konfigurálása** lehetőséget, ha már nem konfigurált tartományt.
+   - Válassza a **tartomány frissítése** lehetőséget, ha már konfigurálva van egy tartomány.
 
-Ha az alkalmazás regisztrálva van a bérlő, akkor válassza ki a két lap jelenik meg: **Válasszon ellenőrzött tartományt** és **új tartomány hitelesítése**.
+Ha az alkalmazás regisztrálva van egy bérlőben, két lap közül választhat: **Válasszon egy ellenőrzött tartományt** , és **ellenőrizzen egy új tartományt**.
 
-Ha az alkalmazás a bérlő nincs regisztrálva, ellenőrizheti az alkalmazás egy új tartományt csak látni fogja.
+Ha az alkalmazás nincs a bérlőben regisztrálva, akkor csak az új tartomány ellenőrzésének lehetősége jelenik meg.
 
-### <a name="to-verify-a-new-domain-for-your-app"></a>Az alkalmazás egy új tartomány ellenőrzése
+### <a name="to-verify-a-new-domain-for-your-app"></a>Új tartomány ellenőrzése az alkalmazáshoz
 
-1. Hozzon létre egy fájlt `microsoft-identity-association.json` , és illessze be a következő JSON-kódrészlet.
+1. Hozzon létre egy `microsoft-identity-association.json` nevű fájlt, és illessze be a következő JSON-kódrészletet.
 
    ```json
    {
@@ -87,51 +87,57 @@ Ha az alkalmazás a bérlő nincs regisztrálva, ellenőrizheti az alkalmazás e
     }
    ```
 
-1. Cserélje le a helyőrző *{YOUR-APP-ID-Itt}* az alkalmazás (ügyfél) azonosítójával, amely megfelel az alkalmazás.
+1. Cserélje le a *{Your-app-ID-here}* helyőrzőt az alkalmazásnak megfelelő alkalmazás-(ügyfél-) azonosítóra.
 
-1. A fájlban a következő gazdagép: `https://{YOUR-DOMAIN-HERE}.com/.well-known/microsoft-identity-association.json`. Cserélje le a helyőrző *{YOUR-Ön-GYÖKÉRTARTOMÁNYA}* ellenőrzött tartományának megfelelően.
+1. A fájl üzemeltetése a `https://{YOUR-DOMAIN-HERE}.com/.well-known/microsoft-identity-association.json`következő helyen:. Cserélje le a *{Your-Domain-ide}* helyőrzőt az ellenőrzött tartománynak megfelelően.
 
-1. Kattintson a **győződjön meg arról, és mentse a tartomány** gombra.
+1. Kattintson a **tartomány ellenőrzése és mentése** gombra.
 
-### <a name="to-select-a-verified-domain"></a>Jelölje be egy ellenőrzött tartomány
+### <a name="to-select-a-verified-domain"></a>Ellenőrzött tartomány kiválasztása
 
-- Ha a bérlő ellenőrizte a tartományokat, válasszon egyet a tartománynak a **válasszon ellenőrzött tartományt** legördülő listából.
+- Ha a bérlő ellenőrizte a tartományokat, válassza ki az egyik tartományt a **Select an ellenőrzött tartomány** legördülő listából.
 
-## <a name="implications-on-the-app-consent-prompt"></a>Az alkalmazás gyakorolt jóváhagyási kérés
+>[!Note]
+> A várt "Content-Type" fejlécnek `application/json`kell szerepelnie. Előfordulhat, hogy az alábbihoz hasonló hibaüzenetet kap, ha mást szeretne használni`application/json; charset=utf-8` 
+> 
+>``` "Verification of publisher domain failed. Error getting JSON file from https:///.well-known/microsoft-identity-association. The server returned an unexpected content type header value. " ```
+>
 
-A közzétevői tartományt konfigurálása mit látnak a felhasználók az alkalmazás-jóváhagyási kérése a hatással van. A beleegyezést kérő összetevőinek teljes megismeréséhez tekintse meg [ismertetése során lép fel az alkalmazás jóváhagyásának](application-consent-experience.md).
+## <a name="implications-on-the-app-consent-prompt"></a>Az alkalmazás jóváhagyására vonatkozó kérdés következményei
 
-A következő táblázat ismerteti a 2019. május 21. előtt létrehozott alkalmazások viselkedését.
+A közzétevő tartomány konfigurálása hatással van arra, hogy a felhasználók mit látnak az alkalmazás jóváhagyására vonatkozó kérésben. Az egyetértési kérdés összetevőinek teljes megértéséhez tekintse meg [az alkalmazás-hozzájárulási tapasztalatok megismerése](application-consent-experience.md)című témakört.
 
-![2019. május 21. előtt létrehozott alkalmazások beleegyezést kérő üzenete](./media/howto-configure-publisher-domain/old-app-behavior-table.png)
+Az alábbi táblázat a 2019. május 21. előtt létrehozott alkalmazások viselkedését ismerteti.
 
-2019. május 21. után létrehozott új alkalmazások viselkedését a közzétevői tartományt és alkalmazás típusától függ. A következő táblázat ismerteti a módosítások megtekintéséhez, a konfigurációk különböző kombinációit számíthat.
+![Beleegyezés kérése a 2019. május 21. előtt létrehozott alkalmazásokhoz](./media/howto-configure-publisher-domain/old-app-behavior-table.png)
 
-![Jóváhagyási kérés 2019. május 21. után létrehozott alkalmazások](./media/howto-configure-publisher-domain/new-app-behavior-table.png)
+A 2019. május 21. után létrehozott új alkalmazások viselkedése a közzétevő tartománytól és az alkalmazás típusától függ. A következő táblázat azokat a módosításokat ismerteti, amelyeket el kell várnia a konfigurációk különböző kombinációinak megjelenítéséhez.
 
-## <a name="implications-on-redirect-uris"></a>Átirányítási URI-k gyakorolt
+![Beleegyezés kérése a 2019. május 21. után létrehozott alkalmazásokhoz](./media/howto-configure-publisher-domain/new-app-behavior-table.png)
 
-Az alkalmazásokat, amelyek a felhasználók minden olyan munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiókok ([több-bérlős](single-and-multi-tenant-apps.md)) van néhány korlátozások megadásakor átirányítási URI-k.
+## <a name="implications-on-redirect-uris"></a>Az átirányítási URI-k következményei
 
-### <a name="single-root-domain-restriction"></a>Egyetlen legfelső szintű tartomány korlátozása
+Az olyan alkalmazások, amelyek munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiókkal ([több-bérlős](single-and-multi-tenant-apps.md)) jelentkeznek be a felhasználókba, az átirányítási URI-k megadására néhány korlátozás vonatkozik.
 
-Ha a közzétevő tartomány több-bérlős alkalmazások értéke null, alkalmazások korlátozva, egy egyetlen legfelső szintű tartományt az átirányítási URI-k megosztása. Ha például nem engedélyezett a következő kombinaci hodnot, mert a legfelső szintű tartományt, a contoso.com, fabrikam.com nem felel meg.
+### <a name="single-root-domain-restriction"></a>Egyetlen legfelső szintű tartományi korlátozás
+
+Ha a több-bérlős alkalmazások közzétevői tartományának értéke null, az alkalmazások csak egyetlen gyökértartomány megosztására korlátozódnak az átirányítási URI-k számára. Például a következő értékek nem engedélyezettek, mert a gyökértartomány, a contoso.com, nem felel meg a fabrikam.com.
 
 ```
 "https://contoso.com",
 "https://fabrikam.com",
 ```
 
-### <a name="subdomain-restrictions"></a>Subdomain restrictions
+### <a name="subdomain-restrictions"></a>Altartományokra vonatkozó korlátozások
 
-Altartományok engedélyezettek, de a legfelső szintű tartományt explicit módon kell regisztrálni. Ha például a következő URI-k egy egyetlen legfelső szintű tartományt oszt meg, amíg együttes használata nem engedélyezett.
+Az altartományok engedélyezettek, de explicit módon regisztrálnia kell a gyökértartomány tartományát. Ha például a következő URI-k egyetlen gyökértartomány megosztását használják, a kombináció nem engedélyezett.
 
 ```
 "https://app1.contoso.com",
 "https://app2.contoso.com",
 ```
 
-Azonban ha a fejlesztői explicit módon a legfelső szintű tartomány ad hozzá, együttes használata engedélyezett.
+Ha azonban a fejlesztő explicit módon hozzáadja a gyökértartomány tartományát, akkor a kombináció engedélyezett.
 
 ```
 "https://contoso.com",
@@ -141,12 +147,12 @@ Azonban ha a fejlesztői explicit módon a legfelső szintű tartomány ad hozz�
 
 ### <a name="exceptions"></a>Kivételek
 
-A következő esetekben nem az egyetlen legfelső szintű tartomány korlátozás alá:
+A következő esetek nem vonatkoznak az egyetlen legfelső szintű tartományi korlátozásra:
 
-- Egybérlős alkalmazások, illetve egyetlen címtárban fiókok megcélzó alkalmazások
-- Localhost, átirányítási URI-k használata
-- Átirányítási URI-k egyéni sémák (nem HTTP vagy HTTPS)
+- Egybérlős alkalmazások vagy olyan alkalmazások, amelyek egyetlen címtárban célozzák meg a fiókokat.
+- A localhost használata átirányítási URI-ként
+- URI-k átirányítása egyéni sémákkal (nem HTTP vagy HTTPS)
 
-## <a name="configure-publisher-domain-programmatically"></a>Közzétevő tartománya konfigurálása szoftveresen
+## <a name="configure-publisher-domain-programmatically"></a>Közzétevői tartomány programozott módon történő konfigurálása
 
-Jelenleg nincs nem REST API vagy a PowerShell támogatott programozott módon konfigurálhatja a közzétevői tartományt.
+Jelenleg nincs REST API vagy PowerShell-támogatás a közzétevői tartomány programozott módon történő konfigurálásához.

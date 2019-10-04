@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: jingwang
 ms.openlocfilehash: 3c1bb38eb12ce77d172257706cd458cebda4bd8c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59260748"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66153419"
 ---
 # <a name="managed-identity-for-data-factory"></a>Felügyelt identitás Data Factoryhoz
 
@@ -158,8 +158,8 @@ A felügyelt identitás, az Azure Portalon vagy programozott módon kérheti le.
 
 A felügyelt azonosító adatok az Azure portal -> annak a data factory -> Tulajdonságok:
 
-- Felügyelt identitás objektumazonosítója
-- Felügyelt identitás bérlője
+- Felügyelt identitás objektum azonosítója
+- Managed Identity Tenant
 - **Felügyelt identitás Alkalmazásazonosítója** > másolja ezt az értéket
 
 ![Felügyelt identitás beolvasása](media/data-factory-service-identity/retrieve-service-identity-portal.png)

@@ -1,7 +1,6 @@
 ---
 title: A HDInsight - Azure Machine Learning-szolgáltatások Azure Storage-megoldások
 description: A HDInsight a Machine Learning-szolgáltatások különböző tárolási lehetőségek ismertetése
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: ffde6f3e94cab94fca5a815db28478790a2a4221
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 8c1624ba6780fc45e3e663cadc032e253ce9545f
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523392"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448876"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Azure Storage-megoldások Machine Learning-szolgáltatások az Azure HDInsight
 
@@ -170,6 +169,5 @@ Az Azure Files egyik fő előnye az, hogy a fájlmegosztások csatlakoztatva van
 ## <a name="next-steps"></a>További lépések
 
 * [Machine Learning-szolgáltatások HDInsight-fürt áttekintése](r-server-overview.md)
-* [Ismerkedés a Machine Learning-szolgáltatások az Apache Hadoop-fürt](r-server-get-started.md)
 * [Számítási környezeti beállítások az ML-szolgáltatások HDInsighton belüli fürtjében](r-server-compute-contexts.md)
 * [Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtök](../hdinsight-hadoop-use-data-lake-storage-gen2.md)

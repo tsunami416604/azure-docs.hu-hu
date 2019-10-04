@@ -3,8 +3,8 @@ title: Hálózati behatolásészlelés nyílt forráskódú eszközök és az Az
 description: Ez a cikk bemutatja, hogyan használhatja az Azure Network Watcher, és nyílt forráskódú eszközök hálózati behatolás felderítése végrehajtásához
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: timlt
+author: KumudD
+manager: twooley
 editor: ''
 ms.assetid: 0f043f08-19e1-4125-98b0-3e335ba69681
 ms.service: network-watcher
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: jdial
-ms.openlocfilehash: 41b039c6598334d49b9ddb0608d7ad2ae045b223
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: kumud
+ms.openlocfilehash: b5dc885611c6654c1dc1d236e41ed75ef2717cc1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57901270"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65605698"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Hajtsa végre a hálózati behatolás felderítése a Network Watcher és a nyílt forráskódú eszközökkel
 
@@ -255,7 +255,7 @@ A saját vizualizációkat, és azokra az érdekes mérőszám vizsgálatára sa
 
 A minta-irányítópult több Vizualizációk Suricata riasztási naplóját biztosítja:
 
-1. Riasztások szerint GeoIP – egy térképként ábrázolja a riasztások azok (IP-cím alapján meghatározott) földrajzi helye alapján származási ország szerint eloszlása
+1. Riasztások szerint GeoIP – egy térkép, amely a terjesztési riasztások azok (IP-cím alapján meghatározott) földrajzi helye alapján származási ország/régió szerint
 
     ![georedundáns ip][3]
 

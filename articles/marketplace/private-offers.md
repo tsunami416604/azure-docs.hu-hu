@@ -1,64 +1,55 @@
 ---
-title: Saját ajánlatok |} Az Azure
-description: Saját ajánlatok az Azure piactéren elérhető alkalmazás és szolgáltatás-közzétevők esetében.
+title: Privát ajánlatok | Azure piactér
+description: Privát ajánlatok az Azure Marketplace-en az alkalmazások és szolgáltatások közzétevői számára.
 services: Azure, Marketplace, Compute
-documentationcenter: ''
 author: qianw211
 manager: pabutler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 11/1/2018
-ms.author: qianw211
-ms.openlocfilehash: c3294aaa2b6c88e08028c8958d2ab3a7297aea74
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.author: pabutler
+ms.openlocfilehash: 3d97fd167f0f946239d4de24bb180796ebb498d3
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351813"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70885870"
 ---
 # <a name="private-offers"></a>Saját ajánlatok
 
-Saját ajánlatok az [a Microsoft Azure Marketplace-en](https://azuremarketplace.microsoft.com/) engedélyezi a kiadók számára, amelyek csak megcélzott felhasználók számára látható SKU-k létrehozása.
+A [Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/) privát ajánlatai lehetővé teszik a kiadók számára, hogy csak a megrendelt ügyfelek számára látható SKU-ket hozzanak létre.
 
-## <a name="unlock-enterprise-deals-with-private-offers"></a>Vállalati üzletek privát ajánlatokkal zárolásának feloldása
+## <a name="unlock-enterprise-deals-with-private-offers"></a>A vállalati ajánlatok feloldása privát ajánlatokkal
 
-Nagyvállalati ügyfeleink egyre használatával online piacterein keresése, próbálhatnak ki és vásárolhatnak a felhőalapú megoldások. Most már az szóló ajánlatok közzétevők használatával marketplace testre szabott megoldásokat közvetlenül a Microsoftnak megoszthatja lehetőségeket a vállalatok igénylő célzott ügyfeleket:
+A nagyvállalati ügyfelek egyre gyakrabban használják online piactéreket a felhőalapú megoldások keresésére, kipróbálására és megvásárlására. A privát ajánlatokkal a kiadók a piactéren testre szabott megoldásokat használhatnak a megcélzott ügyfelekkel a vállalatok által igényelt képességekkel:
 
-- *Egyeztetett díjszabás* lehetővé teszi a közzétevők kiterjesztheti a kedvezményeket és a ki-listát a nyilvánosan elérhető ajánlatok díjszabása.
-- *Privát feltételek és kikötések* közzétevők megfelelő használati feltételeit, egy adott ügyfél engedélyezése.
-- *Speciális konfigurációk* lehetővé teszik a kiadók testre szabni az egyéni ügyféligények megfelelő virtuális gépek Azure-alkalmazások és SaaS-alkalmazások ajánlatukat. Ez a beállítás is lehetővé teszi a kiadók számára, hogy minden ügyfél számára szélesebb körben elindítása előtt új termékfunkciók, előzetes hozzáférést biztosítanak.
+- Az *egyeztetett díjszabás* lehetővé teszi, hogy a kiadók a nyilvánosan elérhető ajánlatokból származó kedvezményeket és off-listázási díjszabást terjesszenek.
+- A *privát feltételek és* kikötések lehetővé teszik a kiadók számára a használati feltételek egy adott ügyfélhez való személyre szabását.
+- A *speciális konfigurációk* lehetővé teszik a kiadók számára a Virtual Machines, az Azure-alkalmazások és az SaaS-alkalmazások személyre szabását az ügyfelek igényei szerint. Ez a beállítás azt is lehetővé teszi, hogy a kiadók az új termékek funkcióinak előzetes hozzáférését is megadják, mielőtt szélesebb körben kellene elindítani az összes ügyfelet
 
-Saját ajánlatok lehetővé teszik a közzétevők a rugalmasságot és irányítást egyeztetésére és egyéni üzletek és konfigurációk előnyeit, a méretezési csoport és globális rendelkezésre állása egy nyilvános piactérről érvénybe. Ezek a funkciók együtt, nyissa meg a felhőalapú piacterein erős vállalati elfogadását ajtaja.  A vállalatok mostantól vásárolni, és értékesíteni szeretné termékét az általuk elvárt módon, és igény szerint.
+A privát ajánlatok lehetővé teszik a kiadók számára, hogy kihasználják a nyilvános piactér skálázhatóságát és globális rendelkezésre állását, valamint az egyéni ajánlatok és konfigurációk egyeztetéséhez és megvalósításához szükséges rugalmasságot és irányítást. Ezek a funkciók együttesen nyitják meg az ajtót a Felhőbeli piactérek erős nagyvállalati bevezetéséhez.  A vállalatok mostantól megvásárolhatják és értékesíthetik a várható és a keresletet.
 
-Saját ajánlatok számára érhető el virtuális gép Azure-alkalmazás (megvalósítva, megoldássablonok vagy felügyelt alkalmazások), és SaaS-alkalmazásokat kínál. Nyilvános ajánlatokat, mint saját ajánlatok is létrehozhatóak és felügyelhetőek keresztül a [Cloud Partner Portalon](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus).  Az ügyfelek is megadható, vagy saját ajánlatok percek alatt hozzáférést visszavonták.
+Mostantól elérhetők a virtuális gépek, az Azure-alkalmazások (megoldás-sablonok vagy felügyelt alkalmazások) és az SaaS-alkalmazások. A nyilvános ajánlatokhoz hasonlóan a [Cloud Partner Portal](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md)keresztül is létrehozhatók és kezelhetők a saját ajánlatok.  Az ügyfelek percek alatt megadhatók vagy visszavonhatók a privát ajánlatok eléréséhez.
 
-## <a name="creating-private-offers-using-skus-and-plans"></a>SKU-k és tervek létrehozása saját kínál
+## <a name="creating-private-offers-using-skus-and-plans"></a>Privát ajánlatok létrehozása SKU-val és csomagok használatával
 
-A *nyilvános SKU-k vagy a csomag új vagy meglévő ajánlatok*, közzétevők könnyedén hozhat létre új, privát költségszámítóban új termékváltozatok és tervek létrehozása, és privát megjelölése őket.  [Privát termékváltozatok](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus) és a terveket az ajánlat összetevő, és csak látható és a megcélzott felhasználók által megvásárolható. Privát SKU-k és a tervek is újból felhasználhatja az alaprendszerképek lekéréshez és/vagy egy nyilvános Termékváltozat vagy csomag már közzétett metaadatok kínálnak. Ez a beállítás lehetővé teszi, hogy a kiadók számára hozzon létre egy nyilvános ajánlat több privát változata azonos alaplemezkép több verziójának közzététele és metaadatok nélkül. Virtuális gép és az Azure application, amelyek csak amikor egy privát Termékváltozat alapképet osztanak meg a nyilvános Termékváltozat módosítania kellene az ajánlat alaplemezkép továbbterjeszti alapszintű rendszerkép használata a nyilvános és privát termékváltozatok között.
+A *nyilvános SKU-kal vagy csomagokkal rendelkező új vagy meglévő ajánlatok*esetében a kiadók egyszerűen létrehozhatnak új, privát változatokat új SKU-i vagy csomagok létrehozásával és magánjellegűként való megjelölésével.  A [privát SKU](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md) -ket és a csomagokat egy ajánlat összetevői képezik, és csak a megadott ügyfelek számára láthatók és megvásárolhatóak. A privát SKU-i és csomagok felhasználhatják a nyilvános SKU-hoz vagy tervhez már közzétett alaplemezképeket és/vagy ajánlati metaadatokat. Ez a beállítás lehetővé teszi, hogy a kiadók a nyilvános ajánlatok több privát változatát is létrehozzák anélkül, hogy ugyanazon alaprendszerkép több verzióját kellene közzétenniük, és a metaadatokat is el kellene készíteni. A virtuális gépek és az Azure-alkalmazások esetében, ha egy privát SKU nyilvános SKU-val oszt meg egy alapszintű rendszerképet, az ajánlat alaprendszerképének minden módosítása az adott alaprendszerkép használatával lesz propagálva az összes nyilvános és privát SKU-ra.
 
-A *új ajánlat csak a privát SKU-k vagy terveket tartalmazó*, közzétevők hozzon létre semmilyen egyéb ajánlattal ajánlatait, és jelöli az SKU-k vagy a csomagok saját. Az ajánlatok, amelyek csak privát SKU-k vagy tervek felderíthető vagy -en keresztül elérhető nem lesz [Azure Marketplace-en](https://azuremarketplace.microsoft.com) vagy a [az Azure portal](https://azure.microsoft.com/features/azure-portal/) ügyfelek, amelyek nem tartoznak az ajánlat keretében.
+Olyan *új ajánlatok esetén, amelyek csak privát SKU-ket vagy csomagokat tartalmaznak*, a kiadók az ajánlatokat bármely más ajánlatként hozhatják létre, majd megjelölik az SKU-t vagy a csomagokat magánjellegűként. Azok az ajánlatok, amelyek csak a privát SKU-val vagy a csomaggal rendelkeznek, nem vehetők igénybe, és nem érhetők el az [Azure Marketplace](https://azuremarketplace.microsoft.com) -en keresztül, vagy az ajánlathoz nem társított ügyfelek által [Azure Portal](https://azure.microsoft.com/features/azure-portal/) .
 
-## <a name="targeting-customers-with-private-offers"></a>Saját ajánlatok célcsoport-kezelési ügyfeleit
-Új és meglévő titkos ajánlatok esetében a kiadók előfizetés azonosítókat használó ügyfelek célba. Egy virtuális gép vagy Azure-alkalmazás ajánlat használatával a kiadók korlátozhatja az egyes Azure-előfizetés-azonosítója egy privát SKU rendelkezésre állását, vagy töltse fel a fürt megosztott kötetei szolgáltatás legfeljebb 20 000 Azure-előfizetés azonosítókat is. Egy SaaS-alkalmazás titkos ajánlat használatakor a kiadók társíthatja egy Azure-előfizetési Azonosítóját vagy a a bérlő Azonosítóját korlátozhatja az egy privát tervet, rendelkezésre állását a manuális vagy a fürt megosztott kötetei szolgáltatás a feltöltési módszer használatával.
+## <a name="targeting-customers-with-private-offers"></a>Ügyfelek célzása privát ajánlatokkal
+A kiadók az új és a meglévő privát ajánlatok esetében is megcélozhatja az ügyfeleket az előfizetés-azonosítók használatával. A virtuális gépet vagy az Azure-alkalmazást használó közzétevők a privát SKU-t egy egyedi Azure-előfizetési AZONOSÍTÓra korlátozhatja, vagy akár 20 000 Azure-előfizetési azonosítóval rendelkező CSV-t is feltölthetnek. Egy SaaS-alkalmazás privát ajánlatának használatakor a kiadók az Azure-előfizetések vagy a bérlői AZONOSÍTÓk összekapcsolhatják a privát csomag rendelkezésre állását a manuális vagy CSV-feltöltési módszer használatával.
 
-Ajánlat hitelesített, és a közzétett, az ügyfelek frissítve vagy eltávolítva a szinkronizálási saját előfizetések szolgáltatással a Termékváltozat vagy a csomag percen belül. Ez a funkció lehetővé teszi, hogy a kiadók számára, hogy gyorsan és könnyedén ügyfeleink, amelyhez a privát Termékváltozat vagy csomag egyike a recertifying, és közzéteszi az ajánlatot itt nélkül listájának frissítése.
+Az ajánlat minősítése és közzététele után az ügyfelek perceken belül frissíthetik és eltávolíthatják az SKU-t vagy a csomagot a privát előfizetések szinkronizálása funkció használatával. Ez a funkció lehetővé teszi a kiadók számára, hogy gyorsan és egyszerűen frissítse azon ügyfelek listáját, amelyekhez a privát SKU-t vagy csomagot az ajánlat ismételt hitelesítése vagy újbóli közzététele nélkül mutatjuk be.
 
-## <a name="deploying-private-offers"></a>Privát telepítése kínál
+## <a name="deploying-private-offers"></a>Privát ajánlatok üzembe helyezése
 
-Saját ajánlatok csak akkor felfedezhetők a [az Azure portal](https://azure.microsoft.com/features/azure-portal/) és nem jelennek meg keresztül [Azure Marketplace-en](https://azuremarketplace.microsoft.com). Miután bejelentkezett az Azure Portalon, a felhasználók is választhatnak a Marketplace-en navigációs elem privát ajánlatait eléréséhez. Saját ajánlatok is megjelennek a keresési eredmények között, és a parancssor és az Azure Resource Manager-sablonokat, mint más ajánlatokkal keresztül telepíthető.
+A privát ajánlatok csak a Azure Portalon keresztül érhetők [](https://azure.microsoft.com/features/azure-portal/) el, és nem az [Azure Marketplace](https://azuremarketplace.microsoft.com)-en keresztül jelennek meg. Miután bejelentkezett a Azure Portalba, az ügyfelek kiválaszthatják a piactér navigációs elemét a privát ajánlatok eléréséhez. A privát ajánlatok is megjelennek a keresési eredmények között, és parancssorból és Azure Resource Manager-sablonokból is üzembe helyezhetők, mint bármely más ajánlat.
 
-![[Szóló ajánlatok]](./media/marketplace-publishers-guide/private-offer.png)
+![[Privát ajánlatok]](./media/marketplace-publishers-guide/private-offer.png)
 
-Saját ajánlatok is megjelenik a keresési eredmények között. Keresse a "Privát" jelvény.
-
-> [!Note]
-> Saját ajánlatok a viszonteladó a Cloud Solution Provider (CSP) program keretében létrehozott előfizetések nem támogatottak.
+A privát ajánlatok is megjelennek a keresési eredmények között. Csak tekintse meg a "Private" jelvényt.
 
 ## <a name="next-steps"></a>További lépések
 
-Ha szeretné, hogy ezek az új képességek kihasználásához, megkezdheti az értékesítési a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/sell).
+A privát ajánlatok használatának megkezdéséhez kövesse a [Private SKU-és csomagok](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md) útmutatójának lépéseit.

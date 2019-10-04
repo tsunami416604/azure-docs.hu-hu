@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Database Managed Instance Time Zone | Microsoft Docs"
-description: Ismerje meg az Azure SQL Database felügyelt példányain időzóna tulajdonságairól
+title: Azure SQL Database felügyelt példány időzónái | Microsoft Docs "
+description: Tudnivalók Azure SQL Database felügyelt példány időzóna-specifikus jellemzőiről
 services: sql-database
 ms.service: sql-database
 ms.custom: ''
@@ -9,47 +9,48 @@ ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
-manager: craigg
-ms.date: 04/10/2019
-ms.openlocfilehash: 23314e97051da95ab164baeab6e9d089f486351a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 09/03/2019
+ms.openlocfilehash: e81ae2fc563300402339fc40893fbbdbbd326dcd
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59489690"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70233239"
 ---
-# <a name="time-zone-in-azure-sql-database-managed-instance-preview"></a>Az Azure SQL Database felügyelt példány (előzetes verzió) időzóna
+# <a name="time-zones-in-azure-sql-database-managed-instance"></a>Azure SQL Database felügyelt példány időzónái
 
-Noha az egyezményes világidő (UTC) használatával felhőalapú megoldások az adatréteg számára ajánlott gyakorlat, az Azure SQL Database felügyelt példányain kínál időzóna többféle, ha a meglévő alkalmazásokat, amelyek dátum és idő értékét tárolja, és hívás dátuma és egy adott időzóna implicit kontextusában idő együttműködik.
+Az egyezményes világidő (UTC) a felhőalapú megoldások adatszintjéhez ajánlott időzóna. Azure SQL Database felügyelt példány a dátum-és időértékeket tároló meglévő alkalmazások igényeinek kielégítésére, valamint a dátum-és időfüggvények meghívására is lehetőséget biztosít az adott időzóna implicit környezetében.
 
-T-SQL-funkciók, például [GETDATE()](https://docs.microsoft.com/sql/t-sql/functions/getdate-transact-sql) , illetve CLR-beli kódot, tekintse át az adott időzóna szolgáltatásiszint-példányon állítsa. SQL-ügynök feladatot is hajtsa végre az ütemezés a példány időzónájának megfelelően.
+A T-SQL függvények, például a [getdate ()](https://docs.microsoft.com/sql/t-sql/functions/getdate-transact-sql) vagy a CLR-kód betartják a példány szintjén beállított időzónát. SQL Server Agent a feladatok a példány időzónája szerint is követik az ütemtervet.
 
   >[!NOTE]
-  > Felügyelt példány egyetlen központi telepítési lehetőség az Azure SQL Database, amely támogatja az időzóna-beállítását. Egyéb telepítési lehetőségekért mindig kövesse (UTC).
-Használat [AT TIME ZONE](https://docs.microsoft.com/sql/t-sql/queries/at-time-zone-transact-sql) egyetlen vagy készletezett SQL-adatbázisokban ilyenkor nem UTC időzóna szerint dátum és idő adatok értelmezése.
+  > A felügyelt példány az egyetlen olyan Azure SQL Database üzembe helyezési lehetősége, amely támogatja az időzóna-beállítást. Egyéb üzembe helyezési lehetőségek mindig az UTC szerint járjanak el.
+Ha [](https://docs.microsoft.com/sql/t-sql/queries/at-time-zone-transact-sql) a dátum-és időadatokat nem UTC időzónában szeretné értelmezni, használja az időzónát egy és készletezett SQL-adatbázisokban.
 
 ## <a name="supported-time-zones"></a>Támogatott időzónák
 
-A felügyelt példány az alapul szolgáló operációs rendszer támogatott időzónák készletét öröklődnek, és rendszeresen frissül új definíciókat, és változásainak és a meglévő.
+A támogatott időzónák készlete örökölt a felügyelt példány mögöttes operációs rendszertől. Rendszeresen frissül az új Időzóna-definíciók beszerzése és a meglévők változásainak tükrözése.
 
-A támogatott időzónák neveinek listáját keresztül közzétett a [sys.time_zone_info](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql) rendszernézet.
+A [nyári időszámítási idő/időzóna-változások házirendje](https://aka.ms/time) az 2010-ig terjedő korábbi pontosságot biztosítja.
 
-## <a name="setting-time-zone"></a>A beállítás időzóna
+A támogatott időzónák nevét tartalmazó lista a [sys. time_zone_info](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql) rendszernézeten keresztül érhető el.
 
-Felügyelt példány időzónát beállítható csak a példány létrehozása során. Az alapértelmezett időzóna az egyezményes világidő (UTC).
+## <a name="set-a-time-zone"></a>Időzóna beállítása
+
+A felügyelt példányok időzónája a példány létrehozásakor állítható be. Az alapértelmezett időzóna UTC.
 
   >[!NOTE]
-  > Meglévő felügyelt példány az adott időzóna nem lehet módosítani.
+  > Egy meglévő felügyelt példány időzónája nem módosítható.
 
-### <a name="setting-the-time-zone-through-azure-portal"></a>Az Azure Portalon keresztül időzóna beállítása
+### <a name="set-the-time-zone-through-the-azure-portal"></a>Az időzóna beállítása a Azure Portal
 
-Az új példány paraméterek megadása, miközben időzónát kijelölhet a listában, a támogatott időzónák:
+Új példány paramétereinek megadásakor válasszon ki egy időzónát a támogatott időzónák listájából.
   
-![Időzóna beállítása során példány létrehozása](media/sql-database-managed-instance-timezone/01-setting_timezone-during-instance-creation.png)
+![Időzóna beállítása a példány létrehozásakor](media/sql-database-managed-instance-timezone/01-setting_timezone-during-instance-creation.png)
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager-sablon
 
-Adja meg az időzóna azonosítója tulajdonságot a [Resource Manager-sablon](https://aka.ms/sql-mi-create-arm-posh) példány létrehozása során az időzóna beállítása.
+Adja meg az timezoneId tulajdonságot a [Resource Manager](https://aka.ms/sql-mi-create-arm-posh) -sablonban az időzóna beállításához a példány létrehozásakor.
 
 ```json
 "properties": {
@@ -66,40 +67,39 @@ Adja meg az időzóna azonosítója tulajdonságot a [Resource Manager-sablon](h
 
 ```
 
-Ez a cikk végén található időzóna azonosítója tulajdonság támogatott értékei listája.
+A timezoneId tulajdonság támogatott értékeinek listája a cikk végén található.
 
-Ha nincs megadva, a rendszer időzóna UTC-re állítja.
+Ha nincs megadva, az időzóna UTC értékre van állítva.
 
-## <a name="checking-the-time-zone-of-instance"></a>Az időzóna-példány ellenőrzése
+## <a name="check-the-time-zone-of-an-instance"></a>Példány időzónájának keresése
 
-[CURRENT_TIMEZONE](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-transact-sql) függvény az időzóna-példány egy megjelenített nevét adja vissza.
+A [CURRENT_TIMEZONE](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-transact-sql) függvény a példány időzónájának megjelenített nevét adja vissza.
 
-## <a name="cross-feature-considerations"></a>Kereszt-funkciók kapcsolatos megfontolások
+## <a name="cross-feature-considerations"></a>Szolgáltatások közötti megfontolások
 
-### <a name="restore-and-import"></a>Visszaállítás és importálása
+### <a name="restore-and-import"></a>Visszaállítás és importálás
 
-Visszaállítás biztonsági másolatból, vagy adatokat importálhat a felügyelt példány egy példányt, vagy a kiszolgáló más időzónában beállításokkal. Azonban ügyeljen arra, hogy ehhez kellő körültekintéssel járjon el, és elemezheti az alkalmazás viselkedése, és az eredményeket a lekérdezéseket és jelentéseket, ugyanúgy, mint a különböző időzóna-beállítások két SQL Server-példányok közötti adatátvitel során.
+Visszaállíthat egy biztonságimásolat-fájlt, vagy importálhat egy felügyelt példányra egy példányból vagy egy másik időzóna-beállításokkal rendelkező kiszolgálóról. Ügyeljen rá, hogy körültekintően járjon el. Elemezheti az alkalmazások viselkedését és a lekérdezések és jelentések eredményét, ugyanúgy, mint amikor két SQL Server példány közötti adatátvitelt végez különböző időzóna-beállításokkal.
 
 ### <a name="point-in-time-restore"></a>Adott időpontnak megfelelő helyreállítás
 
-Időponthoz visszaállítás végrehajtásakor történő helyreállításához szükséges időt a rendszer értelmezi UTC időnek nyári időszámítás és az esetleges változások miatt a félreérthetőség elkerülése érdekében.
+Ha időponthoz tartozó visszaállítást végez, a visszaállítási idő UTC-időként lesz értelmezve. Így elkerülhetők a nyári időszámítások és a lehetséges változások miatti esetleges kétségek.
 
 ### <a name="auto-failover-groups"></a>Automatikus feladatátvételi csoportok
 
-Feladatátvétel az elsődleges és másodlagos példány között ugyanabban az időzónában használatával csoport nincs érvényes, de erősen ajánlott.
-  >[!IMPORTANT]
-  > Bár vannak forgatókönyvek esetén másik időzónában kellene földrajzilag másodlagos példányt használja a csak olvasási méretezhető, vegye figyelembe, hogy a másodlagos példány manuális vagy automatikus feladatátvétel esetén sem megtartja annak eredeti időzóna.
+Egy feladatátvételi csoportban lévő elsődleges és másodlagos példányon azonos időzóna használata nem kényszerített, de erősen ajánlott.
+
+  >[!WARNING]
+  > Azt javasoljuk, hogy a feladatátvételi csoportban lévő elsődleges és másodlagos példányhoz ugyanazt az időzónát használja. Bizonyos ritka használati esetek miatt az elsődleges és a másodlagos példányok közötti egyidejű zónát nem kényszeríti ki. Fontos tisztában lenni azzal, hogy manuális vagy automatikus feladatátvétel esetén a másodlagos példány megtartja az eredeti időzónáját.
 
 ## <a name="limitations"></a>Korlátozások
 
-- A meglévő felügyelt példány időzóna nem lehet módosítani.
-- Az SQL Agent-feladatok elindítása külső folyamatok időzóna-példány nem veszik figyelembe.
-- Felügyelt példány natív felhasználói [New-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance) PowerShell-parancsmag nem támogatási megadásának időzónájában paraméter még. PowerShell-burkoló használata, [Resource Manager-sablon](https://aka.ms/sql-mi-create-arm-posh) helyette.
-- CLI-paranccsal [létrehozása az sql buszpéldány](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-create) még nem támogatja időzóna-paraméter.
+- A meglévő felügyelt példány időzónája nem módosítható.
+- A SQL Server Agenti feladatokból indított külső folyamatok nem veszik figyelembe a példány időzónáját.
 
-## <a name="list-of-supported-time-zones"></a>Támogatott időzónákat
+## <a name="list-of-supported-time-zones"></a>Támogatott időzónák listája
 
-| **Időzóna-Azonosítóhoz** | **Időzóna megjelenített neve** |
+| **Időzóna-azonosító** | **Időzóna megjelenítendő neve** |
 | --- | --- |
 | Dátumvonali téli idő | (UTC-12:00) Nemzetközi dátumválasztó vonal - nyugat |
 | UTC-11 | (UTC-11:00) Egyezményes világidő-11 |
@@ -117,7 +117,7 @@ Feladatátvétel az elsődleges és másodlagos példány között ugyanabban az
 | Közép-amerikai téli idő | (UTC-06:00) Közép-Amerika |
 | Amerikai középső téli idő | (UTC-06:00) Amerikai középidő (Egyesült Államok és Kanada) |
 | Húsvét-szigeti téli idő | (UTC-06:00) Húsvét-sziget |
-| Téli középidő (Mexikó) | (UTC-06:00) Guadalajara, Mexikóváros, Monterrey |
+| Közép-téli idő (Mexikó) | (UTC-06:00) Guadalajara, Mexikóváros, Monterrey |
 | Kanadai téli középidő | (UTC-06:00) Saskatchewan |
 | Dél-amerikai csendes-óceáni téli idő | (UTC-05:00) Bogota, Lima, Quito, Rio Branco |
 | Keleti téli idő (Mexikó) | (UTC-05:00) Chetumal |
@@ -125,10 +125,10 @@ Feladatátvétel az elsődleges és másodlagos példány között ugyanabban az
 | Haiti téli idő | (UTC-05:00) Haiti |
 | Kubai téli idő | (UTC-05:00) Havanna |
 | Amerikai keleti téli idő | (UTC-05:00) Indiana (kelet) |
-| Turks- és Caicos-szigetek téli idő | (UTC-05:00) Turks- és Caicos-szigetek |
+| Turks-és Caicos-i téli idő | (UTC-05:00) Turks-és Caicos-szigetek |
 | Paraguayi téli idő | (UTC-04:00) Asuncion |
 | Atlanti-óceáni téli idő | (UTC-04:00) Atlanti-óceáni idő (Kanada) |
-| Venezuelai téli idő | (UTC-04:00) Caracas |
+| Venezuela Standard Time | (UTC-04:00) Caracas |
 | Közép-brazíliai idő | (UTC-04:00) Cuiaba |
 | Dél-amerikai nyugati téli idő | (UTC-04:00) Georgetown, La Paz, Manaus, San Juan |
 | Csendes-óceáni dél-amerikai téli idő | (UTC-04:00) Santiago |
@@ -143,17 +143,17 @@ Feladatátvétel az elsődleges és másodlagos példány között ugyanabban az
 | Saint-Pierre-i téli idő | (UTC-03:00) Saint-Pierre és Miquelon |
 | Bahiai téli idő | (UTC-03:00) Salvador |
 | UTC-02 | (UTC-02:00) Egyezményes világidő-02 |
-| Közép-atlanti téli idő | (UTC-02:00) Közép-atlanti időzóna – régi |
+| Közép-Atlanti téli idő | (UTC-02:00) Közép-atlanti időzóna – régi |
 | Azori-szigeteki téli idő | (UTC-01:00) Azori-szigetek |
-| Zöld-foki-szigeteki téli idő | (UTC-01:00) Cabo Verde |
+| Cape Verdei téli idő | (UTC-01:00) Cabo Verde |
 | UTC | (UTC) Egyezményes világidő |
 | Greenwichi téli idő | (UTC+00:00) Dublin, Edinburgh, Lisszabon, London |
 | Greenwichi téli idő | (UTC+00:00) Monrovia, Reykjavik |
 | W. Európai téli idő | (UTC+01:00) Amszterdam, Berlin, Bern, Róma, Stockholm, Bécs |
 | Közép-európai téli idő | (UTC+01:00) Belgrád, Pozsony, Budapest, Ljubljana, Prága |
 | Francia téli idő | (UTC+01:00) Brüsszel, Koppenhága, Madrid, Párizs |
-| Marokkói téli idő | (UTC+01:00) Casablanca |
-| Sao Tome-i téli idő | (UTC+01:00) Sao Tome |
+| Marokkói téli idő | (UTC + 01:00) Casablanca |
+| Sao Tome-i téli idő | (UTC + 01:00) Sao Tome |
 | Közép-európai téli idő | (UTC+01:00) Szarajevó, Szkopje, Varsó, Zágráb |
 | W. Közép-afrikai téli idő | (UTC+01:00) Nyugat-Közép-Afrika |
 | Jordániai téli időszámítás | (UTC+02:00) Amman |
@@ -162,29 +162,29 @@ Feladatátvétel az elsődleges és másodlagos példány között ugyanabban az
 | Egyiptomi téli idő | (UTC+02:00) Kairó |
 | E. Európai téli idő | (UTC+02:00) Chisinau |
 | Szíriai téli idő | (UTC+02:00) Damaszkusz |
-| Nyugati téli idő | (UTC+02:00) Gáza, Hebron |
+| Nyugati banki téli idő | (UTC+02:00) Gáza, Hebron |
 | Dél-afrikai téli idő | (UTC+02:00) Harare, Pretoria |
 | Finn, lett, észt téli idő | (UTC+02:00) Helsinki, Kijev, Riga, Szófia, Tallinn, Vilnius |
-| Izraeli normál idő | (UTC+02:00) Jeruzsálem |
+| Izraeli téli idő | (UTC+02:00) Jeruzsálem |
 | Kalinyingrádi téli idő | (UTC+02:00) Kalinyingrád |
-| Szudáni téli idő | (UTC+02:00) Kartúm |
+| Szudáni téli idő | (UTC + 02:00) Khartoum |
 | Líbiai téli idő | (UTC+02:00) Tripoli |
-| Namíbiai téli idő | (UTC+02:00) Windhoek |
+| Namíbiai téli idő | (UTC + 02:00) Windhoek |
 | Bagdadi téli idő | (UTC+03:00) Bagdad |
-| Törökországi téli idő | (UTC+03:00) Isztambul |
+| Törökországi téli idő | (UTC + 03:00) Isztambul |
 | Arab téli idő | (UTC+03:00) Kuvait, Riyadh |
 | Belarusz téli idő | (UTC+03:00) Minszk |
-| Orosz téli idő | (UTC+03:00) Moszkva, Szentpétervár |
+| Orosz téli idő | (UTC + 03:00) Moszkva, Szentpétervár |
 | E. Afrikai téli idő | (UTC+03:00) Nairobi |
 | Iráni téli idő | (UTC+03:30) Teherán |
 | Arábiai téli idő | (UTC+04:00) Abu Dhabi, Muscat |
 | Asztraháni téli idő | (UTC+04:00) Asztrahán, Uljanovszk |
 | Azerbajdzsáni téli időszámítás | (UTC+04:00) Baku |
-| Russia Time Zone 3 | (UTC+04:00) Izsevszk, Szamara |
+| Oroszországi idő 3. zóna | (UTC+04:00) Izsevszk, Szamara |
 | Mauritiusi téli idő | (UTC+04:00) Port Louis |
-| Szaratovi téli idő | (UTC+04:00) Szaratov |
+| Szaratovi téli idő | (UTC + 04:00) Saratov |
 | Grúz téli idő | (UTC+04:00) Tbiliszi |
-| Volgográdi téli idő | (UTC+04:00) Volgográd |
+| Volgográdi téli idő | (UTC + 04:00) Volgográd |
 | Kaukázusi téli idő | (UTC+04:00) Jereván |
 | Afganisztáni téli idő | (UTC+04:30) Kabul |
 | Nyugat-ázsiai téli idő | (UTC+05:00) Asgabat, Taskent |
@@ -195,13 +195,13 @@ Feladatátvétel az elsődleges és másodlagos példány között ugyanabban az
 | Nepáli téli idő | (UTC+05:45) Katmandu |
 | Közép-ázsiai téli idő | (UTC+06:00) Asztana |
 | Bangladesi téli idő | (UTC+06:00) Dhaka |
-| Omszki téli idő | (UTC+06:00) Omszk |
+| Omszki téli idő | (UTC + 06:00) Omszki |
 | Myanmari téli idő | (UTC+06:30) Yangon (Rangun) |
 | Délkelet-ázsiai téli idő | (UTC+07:00) Bangkok, Hanoi, Jakarta |
 | Altaji téli idő | (UTC+07:00) Barnaul, Gorno-Altajszk |
-| W. Mongolia Standard Time | (UTC+07:00) Hovd |
-| North Asia Standard Time | (UTC+07:00) Krasznojarszk |
-| N. Közép-ázsiai téli idő | (UTC+07:00) Novoszibirszk |
+| W. Mongóliai téli idő | (UTC+07:00) Hovd |
+| Észak-ázsiai téli idő | (UTC+07:00) Krasznojarszk |
+| N. Közép-ázsiai téli idő | (UTC + 07:00) Novoszibirszk |
 | Tomszki téli idő | (UTC+07:00) Tomszk |
 | Kínai téli idő | (UTC+08:00) Peking, Chongqing, Hongkong (KKT), Urumqi |
 | Észak-ázsiai keleti téli idő | (UTC+08:00) Irkutszk |
@@ -209,12 +209,12 @@ Feladatátvétel az elsődleges és másodlagos példány között ugyanabban az
 | W. Ausztráliai téli idő | (UTC+08:00) Perth |
 | Tajpeji téli idő | (UTC+08:00) Taipei |
 | Ulánbátori téli idő | (UTC+08:00) Ulánbátor |
-| Ausztrál középnyugati téli idő | (UTC+08:45) Eucla |
+| Közép-ausztráliai téli idő | (UTC+08:45) Eucla |
 | Transzbajkáli téli idő | (UTC+09:00) Csita |
 | Tokiói téli idő | (UTC+09:00) Oszaka, Szapporo, Tokió |
-| Észak-koreai téli idő | (UTC+09:00) Phenjan |
+| Észak-koreai téli idő | (UTC + 09:00) Phenjan |
 | Koreai téli idő | (UTC+09:00) Szöul |
-| Jakutszki téli idő | (UTC+09:00) Jakutszk |
+| Yakutsk téli idő | (UTC+09:00) Jakutszk |
 | CEN. Ausztráliai téli idő | (UTC+09:30) Adelaide |
 | Ausztráliai közép téli idő | (UTC+09:30) Darwin |
 | E. Ausztráliai téli idő | (UTC+10:00) Brisbane |
@@ -224,23 +224,23 @@ Feladatátvétel az elsődleges és másodlagos példány között ugyanabban az
 | Vlagyivosztoki téli idő | (UTC+10:00) Vlagyivosztok |
 | Lord Howe-szigeti téli idő | (UTC+10:30) Lord Howe-sziget |
 | Bougainville-szigeti téli idő | (UTC+11:00) Bougainville sziget |
-| Russia Time Zone 10 | (UTC+11:00) Csokurdah |
+| Orosz időzóna, 10 | (UTC+11:00) Csokurdah |
 | Magadáni téli idő | (UTC+11:00) Magadan |
 | Norfolk-szigeti téli idő | (UTC+11:00) Norfolk-sziget |
 | Szahalini téli idő | (UTC+11:00) Szahalin |
 | Közép-csendes-óceáni téli idő | (UTC+11:00) Salamon-szigetek, Új-Kaledónia |
-| 11. orosz időzóna | (UTC+12:00) Anadir, Petropavlovszk-Kamcsatszkij |
+| Orosz időzóna, 11 | (UTC+12:00) Anadir, Petropavlovszk-Kamcsatszkij |
 | Új-zélandi téli idő | (UTC+12:00) Auckland, Wellington |
 | UTC+12 | (UTC+12:00) Egyezményes világidő+12 |
 | Fidzsi-szigeteki téli idő | (UTC+12:00) Fidzsi |
-| Kamcsatkai téli idő | (UTC+12:00) Petropavlovszk-Kamcsatszkij - régi |
+| Kamchatka Standard Time | (UTC+12:00) Petropavlovszk-Kamcsatszkij - régi |
 | Chatham-szigeteki téli idő | (UTC+12:45) Chatham-szigetek |
-| UTC+13 | (UTC+13:00) Egyezményes világidő+13 |
+| UTC+13 | (UTC + 13:00) Egyezményes világidő + 13 |
 | Tongai téli idő | (UTC+13:00) Nuku'alofa |
 | Szamoai téli idő | (UTC+13:00) Szamoa |
 | Line-szigetek téli idő | (UTC+14:00) Kiritimati-sziget |
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még 
 
 - [CURRENT_TIMEZONE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-transact-sql)
 - [AT TIME ZONE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/at-time-zone-transact-sql)

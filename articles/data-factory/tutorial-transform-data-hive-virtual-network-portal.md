@@ -11,12 +11,12 @@ ms.date: 01/04/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 9cea3e7494ee81638923cbcaff9f1b82d08a1ad1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b6e57500da0ca863f0c5810f625d6a4b0c56d1bf
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58085031"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277476"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Azure virtuális hálózaton lévő adatok átalakítása Hive-tevékenység segítségével az Azure Data Factoryben
 Ebben az oktatóanyagban az Azure Portal segítségével hoz létre egy Data Factory-folyamatot, amely egy Azure virtuális hálózaton (VNet) lévő HDInsight-fürtön futó Hive-tevékenységgel alakítja át az adatokat. Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
@@ -201,7 +201,7 @@ Ebben a lépésben létrehoz egy Hive-tevékenységgel rendelkező új folyamato
 Vegye figyelembe a következő szempontokat:
 
 - A **scriptPath** annak a Hive-szkriptnek az elérési útjára mutat az Azure Storage-fiókon, amelyet a MyStorageLinkedService szolgáltatáshoz használt. Az elérési út megkülönbözteti a kis- és nagybetűket.
-- Az **Output** egy, a Hive-szkriptben használt argumentum. Használja a `wasb://<Container>@<StorageAccount>.blob.core.windows.net/outputfolder/` formátumot, hogy egy létező mappára mutasson az Azure Storage-ban. Az elérési út megkülönbözteti a kis- és nagybetűket. 
+- Az **Output** egy, a Hive-szkriptben használt argumentum. Használja a `wasbs://<Container>@<StorageAccount>.blob.core.windows.net/outputfolder/` formátumot, hogy egy létező mappára mutasson az Azure Storage-ban. Az elérési út megkülönbözteti a kis- és nagybetűket. 
 
 1. A Data Factory felhasználói felületén, a bal oldali panelen kattintson a **+ (plusz)** jelre, majd a **Pipeline** (Folyamat) elemre. 
 
@@ -226,7 +226,7 @@ Vegye figyelembe a következő szempontokat:
         ![Szkript beállításai](./media/tutorial-transform-data-using-hive-in-vnet-portal/confirm-hive-script-settings.png)
     5. A **Script lapon** bontsa ki az **Advanced** (Speciális) szakaszt. 
     6. Kattintson az **Auto-fill from script** (Automatikus kitöltés szkript alapján) elemre a **Parameters** (Paraméterek) menüpontban. 
-    7. Adja meg a **kimeneti** paraméter értékét a következő formátumban: `wasb://<Blob Container>@<StorageAccount>.blob.core.windows.net/outputfolder/`. Például: `wasb://adftutorial@mystorageaccount.blob.core.windows.net/outputfolder/`.
+    7. Adja meg a **kimeneti** paraméter értékét a következő formátumban: `wasbs://<Blob Container>@<StorageAccount>.blob.core.windows.net/outputfolder/`. Például: `wasbs://adftutorial@mystorageaccount.blob.core.windows.net/outputfolder/`.
  
         ![Szkript argumentumai](./media/tutorial-transform-data-using-hive-in-vnet-portal/script-arguments.png)
 1. Ahhoz, hogy közzétehesse az összetevőket a Data Factoryn, kattintson a **Publish** (Közzététel) gombra.

@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ae83cea866367fa6a6596caa683d0287bea96c29
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59616208"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60456174"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Az Azure Active Directory átmenő hitelesítés hibaelhárítása
 
@@ -133,7 +133,7 @@ Részletes elemzés engedélyezze a "Munkamenet" log (kattintson a jobb gombbal 
 
 ### <a name="detailed-trace-logs"></a>Részletes nyomkövetési naplók
 
-A felhasználói bejelentkezési hibák elhárításához keresse meg a nyomkövetési naplókat, **%ProgramData%\Microsoft\Azure AD Connect hitelesítési Agent\Trace\\**. Ezek a naplók például miért egy adott felhasználó bejelentkezési okokból nem sikerült az átmenő hitelesítés funkciójával. Ezeket a hibákat a sikertelen bejelentkezési okokból előző táblázatban szereplő bejelentkezési hibák okainak is vannak leképezve. Következő egy példa naplóbejegyzés:
+A felhasználói bejelentkezési hibák elhárításához keresse meg a nyomkövetési naplókat, **%ProgramData%\Microsoft\Azure AD Connect hitelesítési Agent\Trace\\** . Ezek a naplók például miért egy adott felhasználó bejelentkezési okokból nem sikerült az átmenő hitelesítés funkciójával. Ezeket a hibákat a sikertelen bejelentkezési okokból előző táblázatban szereplő bejelentkezési hibák okainak is vannak leképezve. Következő egy példa naplóbejegyzés:
 
 ```
     AzureADConnectAuthenticationAgentService.exe Error: 0 : Passthrough Authentication request failed. RequestId: 'df63f4a4-68b9-44ae-8d81-6ad2d844d84e'. Reason: '1328'.
@@ -161,7 +161,7 @@ Ha a naplózás engedélyezve van, további információ a biztonsági naplók a
 
 ## <a name="performance-monitor-counters"></a>Teljesítményfigyelő-számlálók
 
-Hitelesítési ügynökök figyeléséhez egy másik lehetőség, hogy jellemző teljesítményszámlálók nyomon minden kiszolgálón, ahol a hitelesítési ügynök telepítve van. Használja a következő globális számlálók (**# ESP hitelesítések**, **#PTA sikertelen hitelesítések** és **#PTA sikeres hitelesítések**) és a hiba-számlálók (**# ESP hitelesítési hibák**):
+Hitelesítési ügynökök figyeléséhez egy másik lehetőség, hogy jellemző teljesítményszámlálók nyomon minden kiszolgálón, ahol a hitelesítési ügynök telepítve van. Használja a következő globális számlálók ( **# ESP hitelesítések**, **#PTA sikertelen hitelesítések** és **#PTA sikeres hitelesítések**) és a hiba-számlálók ( **# ESP hitelesítési hibák**):
 
 ![Átmenő hitelesítés Teljesítményfigyelő-számlálók](./media/tshoot-connect-pass-through-authentication/pta12.png)
 

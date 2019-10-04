@@ -4,26 +4,25 @@ description: Ebben az oktatóanyagban megismeri az Azure Security Centert, és m
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 4c54383df74d9cfd7941dc52d26856bc8da51457
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: e65e9670facdfcbf9d1aac04fa25ee53996a9c4b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594712"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100309"
 ---
-# <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>Oktatóanyag: Az Azure Security Center használata a Windows virtuális gépek figyelése céljából
+# <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>Oktatóanyag: Azure Security Center használata a Windows rendszerű virtuális gépek figyeléséhez
 
 Az Azure Security Center segítségével áttekintheti az Azure-erőforrása biztonsági intézkedéseit. A Security Center integrált biztonsági monitorozást biztosít. Képes egyébként észrevétlenül maradó fenyegetések észlelésére. Ebben az oktatóanyagban megismeri az Azure Security Centert, és a következőket sajátíthatja el:
 
@@ -51,7 +50,7 @@ Ha a virtuális gép biztonsági konfigurációjára kíváncsi, előbb be kell 
 
 1. A Security Center irányítópultján kattintson a **Biztonsági szabályzat** elemre, és válassza ki az előfizetését. 
 2. Az **Automatikus kiépítés** **Adatgyűjtés** pontjánál válassza a **Be** lehetőséget.
-3. Az **Alapértelmezett munkaterület-konfiguráció** menüpont beállítása maradjon a **Security Center által létrehozott munkaterület(ek) használata (alapértelmezett)**.
+3. Az **Alapértelmezett munkaterület-konfiguráció** menüpont beállítása maradjon a **Security Center által létrehozott munkaterület(ek) használata (alapértelmezett)** .
 4. A **Biztonsági eseményeknél** tartsa meg az **Általános** alapértelmezett beállítást.
 4. Kattintson az oldal tetején lévő **Mentés** elemre. 
 
@@ -65,7 +64,7 @@ Ha biztonsági szabályzatot szeretne beállítani a teljes előfizetéshez:
 
 1. A Security Center irányítópultján válassza a **Biztonsági szabályzat** lehetőséget, és válassza ki az előfizetését.
 2. A **Biztonsági szabályzat** panelen válassza a **Biztonsági szabályzat** elemet. 
-3. Az a **biztonsági házirend - biztonsági házirend** panelen kapcsolja be, vagy kapcsolja ki az előfizetést a alkalmazni kívánt szabályzatelemeket.
+3. A **biztonsági házirend – biztonsági szabályzat** panelen kapcsolja be vagy kapcsolja ki azokat a szabályzatokat, amelyeket alkalmazni kíván az előfizetésre.
 4. Ha végzett a beállítások megadásával, kattintson a panel tetején lévő **Mentés** elemre. 
 
 
@@ -73,7 +72,7 @@ Ha biztonsági szabályzatot szeretne beállítani a teljes előfizetéshez:
 
 ## <a name="view-vm-configuration-health"></a>Virtuálisgép-konfiguráció állapotának megtekintése
 
-Miután bekapcsolta az adatgyűjtést, és beállított egy biztonsági szabályzatot, a Security Center elkezd riasztásokat és javaslatokat küldeni. A virtuális gépek üzembe helyezésekor a rendszer telepíti az adatgyűjtési ügynököt. Ezután a Security Centerbe betöltődnek az új virtuális gépekhez tartozó adatok. A virtuális gép konfigurációs állapotára vonatkozó részletes adatokkal kapcsolatban [a virtuális gépek a Security Centerben történő védelmét](../../security-center/security-center-virtual-machine-recommendations.md) ismertető szakaszban olvashat bővebben. 
+Miután bekapcsolta az adatgyűjtést, és beállított egy biztonsági szabályzatot, a Security Center elkezd riasztásokat és javaslatokat küldeni. A virtuális gépek üzembe helyezésekor a rendszer telepíti az adatgyűjtési ügynököt. Ezután a Security Centerbe betöltődnek az új virtuális gépekhez tartozó adatok. A virtuális gép konfigurációs állapotára vonatkozó részletes adatokkal kapcsolatban [a virtuális gépek a Security Centerben történő védelmét](../../security-center/security-center-virtual-machine-protection.md) ismertető szakaszban olvashat bővebben. 
 
 Ahogy gyűlnek az adatok, az egyes virtuális gépek erőforrás-állapotát és a kapcsolódó Azure-erőforrásokat a rendszer összesíti. Az információk egy könnyen értelmezhető diagramon jelennek meg. 
 
@@ -105,9 +104,9 @@ Ha a rendszer elvégzi a javaslatokhoz tartozó javításokat, megoldottként je
 
 ## <a name="view-detected-threats"></a>Észlelt fenyegetések megtekintése
 
-Az erőforrások konfigurációjára vonatkozó javaslatok mellett a Security Center megjelenít fenyegetésészlelési riasztásokat is. A biztonsági riasztások szolgáltatása az Azure-erőforrásokra leselkedő biztonsági fenyegetések felderítése érdekében összesíti az egyes virtuális gépekről gyűjtött adatokat, az Azure-beli hálózati naplókat és a csatlakoztatott partnermegoldásokat. A Security Center fenyegetésészlelési képességeivel kapcsolatban további információt [az Azure Security Center észlelési képességeit](../../security-center/security-center-detection-capabilities.md) ismertető szakaszban talál.
+Az erőforrások konfigurációjára vonatkozó javaslatok mellett a Security Center megjelenít fenyegetésészlelési riasztásokat is. A biztonsági riasztások szolgáltatása az Azure-erőforrásokra leselkedő biztonsági fenyegetések felderítése érdekében összesíti az egyes virtuális gépekről gyűjtött adatokat, az Azure-beli hálózati naplókat és a csatlakoztatott partnermegoldásokat. Security Center veszélyforrások észlelési képességeivel kapcsolatos részletes információkért lásd: [Hogyan észleli a fenyegetéseket az Security Center?](../../security-center/security-center-alerts-overview.md#detect-threats)
 
-A biztonsági riasztások funkciójának használatához a Security Center tarifacsomagját *Ingyenesről* *Standardra* kell emelni. A **az ingyenes próbaidőszak** érhető el a magasabb tarifacsomagra lép. 
+A biztonsági riasztások funkciójának használatához a Security Center tarifacsomagját *Ingyenesről* *Standardra* kell emelni. Erre a magasabb szintű díjszabásra való áttéréskor **ingyenes próbaverzió** érhető el. 
 
 A tarifacsomag módosítása:  
 

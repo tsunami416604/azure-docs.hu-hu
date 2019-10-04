@@ -4,7 +4,7 @@ description: További információ a biztonsági és szabályzatok a Windows és
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.date: 11/26/2018
 ms.author: cynthn
 ms.topic: conceptual
-ms.openlocfilehash: 49a3ea97efc702a4616a48eb3b69b0868e2853f2
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: da89d2181909688c465160d88274614f7e325aaf
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57792225"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709218"
 ---
 # <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Biztonságos és szabályzatok használata az Azure-beli virtuális gépeken
 

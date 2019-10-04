@@ -1,106 +1,99 @@
 ---
-title: Üzembe helyezése és kezelése az Azure Time Series – előzetes |} A Microsoft Docs
-description: Megértse, hogyan építhet ki és felügyelhet az Azure Time Series Insights előzetes verziója.
+title: Azure Time Series előzetes verziójának kiépítése és kezelése | Microsoft Docs
+description: Azure Time Series Insights előnézet kiépítésének és kezelésének megismerése.
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 ms.workload: big-data
 manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/10/2018
+ms.date: 09/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 85d5bb822bc9b89c68c70633a22a1bed74118f49
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: a84c587a2666982e862f0640b30d2d6bef3b9a42
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758184"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744674"
 ---
-# <a name="provision-and-manage-azure-time-series-insights-preview"></a>Üzembe helyezése és kezelése az Azure Time Series Insights előzetes verziója
+# <a name="provision-and-manage-azure-time-series-insights-preview"></a>Azure Time Series Insights előzetes verziójának kiépítése és kezelése
 
-Ez a cikk bemutatja, hogyan hozhat létre és kezelése az Azure Time Series Insights – előzetes környezet használatával a [az Azure portal](https://portal.azure.com/).
+Ez a cikk azt ismerteti, hogyan hozhat létre és kezelhet egy Azure Time Series Insights előnézeti környezetet a [Azure Portal](https://portal.azure.com/)használatával.
 
 ## <a name="overview"></a>Áttekintés
 
-Az Azure Time Series Insights előzetes környezetekben használatalapú fizetés (Használatalapú) környezetben.
+Azure Time Series Insights előnézeti környezetek TB-környezetek.
 
-Amikor üzembe helyezi az Azure Time Series Insights – előzetes környezet, hozzon létre két Azure-erőforrások:
+Azure Time Series Insights előnézeti környezet kiépítésekor két Azure-erőforrást hoz létre:
 
-* Az Azure Time Series Insights – előzetes környezet  
-* Azure Storage-általános célú v1 fiók
+* Azure Time Series Insights előnézeti környezet  
+* Azure Storage általános célú v1-fiók
   
-Ismerje meg, [a környezet tervezésével](./time-series-insights-update-plan.md).
+Ismerje meg [, hogyan tervezze meg a környezetét](./time-series-insights-update-plan.md).
 
 >[!IMPORTANT]
-> Az előzetes verzióra, ellenőrizze, hogy használja az Azure Storage általános célú v1 (GPv1-) fiókkal.  A GPv2 és újabb verziók fogja támogatni a közeljövőben.  
+> Az előzetes verzióban győződjön meg róla, hogy Azure Storage általános célú v1-(GPv1-) fiókot használ.
 
-Szükség esetén az egyes Azure Time Series Insights – előzetes környezetekben is társíthat eseményforrás. További információkért olvassa el [adja hozzá a hub eseményforrást](./time-series-insights-how-to-add-an-event-source-eventhub.md) és [egy IoT hub-forrás hozzáadása](./time-series-insights-how-to-add-an-event-source-iothub.md). E lépés során egy időbélyeg ID tulajdonsága és a egy egyedi felhasználói csoport biztosítanak. Ez biztosítja, hogy a környezet férhet hozzá a megfelelő események.
+Szükség esetén az egyes Azure Time Series Insights előnézeti környezeteket társíthatja egy adott eseményforrás használatával. További információért olvassa el az [Event hub-forrás hozzáadása](./time-series-insights-how-to-add-an-event-source-eventhub.md) és [az IoT hub-forrás hozzáadása](./time-series-insights-how-to-add-an-event-source-iothub.md)című témakört. Ebben a lépésben egy időbélyeg-azonosító tulajdonságot és egy egyedi fogyasztói csoportot kell megadnia. Így biztosíthatja, hogy a környezet hozzáférjen a megfelelő eseményekhez.
 
-Kiépítés befejezése után módosíthatja a hozzáférési házirendek és más környezeti attribútumok saját üzleti követelményeinek megfelelően.
+A kiépítés befejezése után módosíthatja a hozzáférési házirendeket és az egyéb környezeti attribútumokat az üzleti követelményeinek megfelelően.
 
 ## <a name="create-the-environment"></a>A környezet létrehozása
 
-Az alábbi lépések bemutatják, hogyan hozhat létre az Azure Time Series Insights – előzetes környezet:
+A következő lépések bemutatják, hogyan hozhat létre Azure Time Series Insights előnézeti környezetet:
 
-1. Válassza ki a **PAYG** gomb alatt a **Termékváltozat** menü. Adja meg a környezet nevét, és válassza ki, melyik előfizetést csoporthoz, és melyik erőforráscsoport. Ezután válassza ki a környezetet üzemeltetni, a támogatott helyét.
+1. Kattintson a **TB** gombra az **SKU** menüben. Adja meg a környezet nevét, és válassza ki, hogy melyik előfizetési csoportot és melyik erőforráscsoportot kívánja használni. Ezután válasszon ki egy támogatott helyet a környezet számára a szolgáltatásban.
 
-   ![Hozzon létre egy Azure Time Series Insights-példányt.][1]
+   [![Hozzon létre egy Azure Time Series Insights példányt.](media/v2-update-manage/manage-three.png)](media/v2-update-manage/manage-three.png#lightbox)
 
-1. Adjon meg egy Idősorozat-azonosító.
+1. Adjon meg egy idősorozat-azonosítót.
 
     >[!NOTE]
-    > * A Time Series-azonosító, kis-és nagybetűket, és nem módosítható. (Ez nem módosítható beállítása után.)
-    > * Time Series azonosítók legfeljebb három kulcsot is lehet.
-    > * A Time Series ID kiválasztásával kapcsolatos további információkért olvassa el [válassza ki a Time Series ID](./time-series-insights-update-how-to-id.md).
+    > * Az idősorozat-azonosító megkülönbözteti a kis-és nagybetűket. (Ez a beállítás után nem módosítható.)
+    > * Az idősorozat-azonosítók legfeljebb három kulccsal rendelkezhetnek.
+    > * Az idősorozat-azonosító kiválasztásával kapcsolatos további információkért olvassa el [az Idősorozat-azonosító](./time-series-insights-update-how-to-id.md)kiválasztása című témakört.
 
-1. Az Azure storage-fiók létrehozása a tárfiók nevének kiválasztásával, és a egy replikációs választott kijelölése. Ez így automatikusan létrehoz egy Azure Storage-általános célú v1 fiók. Az Azure Time Series Insights – előzetes környezet, amely a korábban kiválasztott ugyanabban a régióban jön.
+1. Hozzon létre egy Azure Storage-fiókot a Storage-fiók nevének kiválasztásával, majd válasszon ki egy replikálási lehetőséget. Ez automatikusan létrehoz egy Azure Storage általános célú v1-fiókot. A rendszer ugyanabban a régióban jön létre, mint a korábban kiválasztott Azure Time Series Insights-előnézeti környezet.
 
-    ![A példány az Azure storage-fiók létrehozása][5]
+    [![Azure Storage-fiók létrehozása a példányhoz](media/v2-update-manage/manage-five.png)](media/v2-update-manage/manage-five.png#lightbox)
 
-1. Szükség esetén az eseményforrás is hozzáadhat.
+1. Lehetőség van egy eseményforrás hozzáadására is.
 
-   * Time Series Insights támogatja [Azure IoT Hub](./time-series-insights-how-to-add-an-event-source-iothub.md) és [Azure Event Hubs](./time-series-insights-how-to-add-an-event-source-eventhub.md) közül. Bár hozzáadhat csak egyetlen eseményforrás környezet létrehozáskor történik, egy másik eseményforrás később is hozzáadhat. Érdemes létrehozni egy egyedi felhasználói csoport, győződjön meg arról, hogy láthatók-e az összes esemény az Azure Time Series Insights – előzetes-példányhoz. Válasszon egy meglévő fogyasztói csoportot, vagy hozzon létre egy új fogyasztói csoportot, az eseményforrás hozzáadása során.
+   * Time Series Insights az [azure IoT hub](./time-series-insights-how-to-add-an-event-source-iothub.md) és az [Azure Event Hubs](./time-series-insights-how-to-add-an-event-source-eventhub.md) használatát is támogatja. Bár a környezet létrehozási idején csak egyetlen eseményforrás adható hozzá, később további eseményforrás is felvehető. Érdemes létrehozni egy egyedi fogyasztói csoportot, amely biztosítja, hogy minden esemény látható legyen a Azure Time Series Insights előzetes verziójának példánya számára. Az eseményforrás hozzáadásakor kiválaszthat egy meglévő fogyasztói csoportot, vagy létrehozhat egy új fogyasztói csoportot is.
 
-   * Válassza a megfelelő időbélyeg-tulajdonság is. Alapértelmezés szerint az Azure Time Series Insights használja az üzenet sorba helyezésekor minden egyes esemény forrását.
+   * Válassza ki a megfelelő timestamp tulajdonságot is. Alapértelmezés szerint a Azure Time Series Insights az várólistán lévő időt használja az egyes eseményforrás számára.
 
      > [!TIP]
-     > Az üzenet sorba helyezésekor nem feltétlenül a legjobb konfigurált beállítást, a batch-esemény vagy előzményadatokat forgatókönyvek feltöltés. Ellenőrizze, hogy ellenőrizze a döntést, vagy használjon egy időbélyeg-tulajdonság az ezekben az esetekben.
+     > Előfordulhat, hogy az üzenet várólistán lévő időpontja nem a legalkalmasabb a Batch-eseményekben vagy a korábbi adatfeltöltési forgatókönyvekben való használathoz. Ügyeljen arra, hogy az ilyen esetekben ne használjon timestamp tulajdonságot.
 
-     ![Esemény (forrás) lapot][2]
+     [![Eseményforrás lap](media/v2-update-manage/manage-two.png)](media/v2-update-manage/manage-two.png#lightbox)
 
-1. Győződjön meg arról, hogy a környezet van kiépítve a kívánt beállításokat.
+1. Győződjön meg arról, hogy a környezet a kívánt beállításokkal lett kiépítve.
 
-    ![Felülvizsgálat + Létrehozás lap][3]
+    [![Felülvizsgálat + Létrehozás lap](media/v2-update-manage/manage-three.png)](media/v2-update-manage/manage-three.png#lightbox)
 
 ## <a name="manage-the-environment"></a>A környezet kezelése
 
-Az Azure Time Series Insights – előzetes környezet az Azure portal használatával kezelheti. Az alábbiakban a jelentősebb eltérések kezelését egy Használatalapú Azure Time Series Insights előzetes verziója környezet helyett egy S1 vagy S2 környezetben, az Azure portal használatával:
+A Azure Portal használatával felügyelheti Azure Time Series Insights előnézeti környezetét. A következőkben a TB Azure Time Series Insights előzetes verzió környezetének főbb eltérései az S1 vagy S2 környezettel szemben a Azure Portal használatával:
 
-* Az Azure Portalon **áttekintése** panel nem változott az Azure Time Series Insightsban, kivéve az alábbi módokon:
-  * Kapacitás törlődnek, mert a fogalom esetében nem releváns PAYG környezetekben.
-  * A Time Series azonosító tulajdonsággal bővült. Meghatározza, hogy az adatok particionálásáról.
-  * Referencia-adatkészletekhez el lesznek távolítva.
-  * A megjelenő URL-CÍMÉT arra utasítja, hogy a [Azure Time Series Insights – előzetes explorer](./time-series-insights-update-explorer.md).
-  * Az Azure storage-fiók neve szerepel a listán.
+* A Azure Portal **áttekintő** panelje nem változik Azure Time Series Insights, kivéve a következő módokon:
+  * A rendszer eltávolítja a kapacitást, mivel ez a koncepció nem vonatkozik a TB-környezetekre.
+  * Az idősorozat-azonosító tulajdonság hozzá lett adva. Meghatározza, hogyan particionálja az adatait.
+  * A rendszer eltávolítja a hivatkozási adatkészleteket.
+  * A megjelenített URL-cím a [Azure Time Series Insights Preview Explorer böngészőre](./time-series-insights-update-explorer.md)irányítja.
+  * Megjelenik az Azure Storage-fiók neve.
 
-* Az Azure Portalon **konfigurálása** panel az Azure Time Series Insights – előzetes eltávolították, mivel Használatalapú környezetek nem konfigurálható.
+* A Azure Portal **konfigurálása** panel el lett távolítva a Azure Time Series Insights Preview-ban, mert a TB-környezetek nem konfigurálhatók.
 
-* Az Azure Portalon **referenciaadatok** panel az Azure Time Series Insights – előzetes eltávolították, mert referenciaadatok nem PAYG környezet egyik összetevője.
+* A Azure Portal **hivatkozási** adatpanelje el lett távolítva a Azure Time Series Insights Preview-ban, mert a hivatkozási adatterületek nem a TB-környezetek összetevője.
 
-![Time Series Insights előzetes verziójú környezet az Azure Portalon][4]
+[![Time Series Insights előzetes verziójú környezet a Azure Portal](media/v2-update-manage/manage-four.png)](media/v2-update-manage/manage-four.png#lightbox)
 
 ## <a name="next-steps"></a>További lépések
 
-Olvasási [a környezet megtervezése](./time-series-insights-update-plan.md).
+- Olvassa el [a környezet megtervezése](./time-series-insights-update-plan.md)című cikkét.
 
-Olvasási [adja hozzá a hub eseményforrást](./time-series-insights-how-to-add-an-event-source-eventhub.md).
+- Ismerje meg, hogyan [adhat hozzá egy Event hub-forrást](./time-series-insights-how-to-add-an-event-source-eventhub.md).
 
-Olvasási [egy IoT hub-forrás hozzáadása](./time-series-insights-how-to-add-an-event-source-iothub.md).
-
-<!-- Images -->
-[1]: media/v2-update-manage/manage_one.PNG
-[2]: media/v2-update-manage/manage_two.PNG
-[3]: media/v2-update-manage/manage_three.PNG
-[4]: media/v2-update-manage/manage_four.PNG
-[5]: media/v2-update-manage/manage_five.PNG
+- [IoT hub-forrás](./time-series-insights-how-to-add-an-event-source-iothub.md)konfigurálása.

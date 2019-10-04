@@ -1,6 +1,6 @@
 ---
-title: Az Azure rbac-RÓL és a REST API – Azure erőforrások elérésének kezelése |} A Microsoft Docs
-description: Ismerje meg, hogyan kezelheti a felhasználók, csoportok és szerepköralapú hozzáférés-vezérlés (RBAC) és a REST API-t használó alkalmazások Azure-erőforrásokhoz való hozzáférését. Ez tartalmazza a hozzáférés felsorolásának, a hozzáférés adásának és a hozzáférés eltávolításának módját.
+title: Az Azure-erőforrásokhoz való hozzáférés kezelése a RBAC és a REST API-Azure használatával | Microsoft Docs
+description: Ismerje meg, hogyan kezelheti az Azure-erőforrásokhoz való hozzáférést a felhasználók, csoportok és alkalmazások számára szerepköralapú hozzáférés-vezérlés (RBAC) és a REST API használatával. Ez tartalmazza a hozzáférés felsorolásának, a hozzáférés adásának és a hozzáférés eltávolításának módját.
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -12,55 +12,58 @@ ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 09/11/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 0e0c83d411242be38992dd763dea72eda70ffbf4
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 86ee030e8c97cf3033b9d2d76b8125c64ecf8065
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60006457"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996475"
 ---
-# <a name="manage-access-to-azure-resources-using-rbac-and-the-rest-api"></a>Rbac-RÓL és a REST API használatával Azure-erőforrásokhoz való hozzáférés kezelése
+# <a name="manage-access-to-azure-resources-using-rbac-and-the-rest-api"></a>Az Azure-erőforrásokhoz való hozzáférés kezelése a RBAC és a REST API használatával
 
-[Szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) van az Azure-erőforrásokhoz való hozzáférés kezelése ugyanúgy. Ez a cikk bemutatja, hogyan kezelheti a felhasználók, csoportok és alkalmazások rbac-RÓL és a REST API használatával hozzáférését.
+A [szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) az Azure-erőforrásokhoz való hozzáférés kezelésének módja. Ez a cikk azt ismerteti, hogyan kezelheti a felhasználók, csoportok és alkalmazások hozzáférését a RBAC és a REST API használatával.
 
 ## <a name="list-access"></a>Hozzáférések felsorolása
 
-Az RBAC lista hozzáférés listázása a szerepkör-hozzárendeléseket. Szerepkör-hozzárendelések felsorolásához használja következők egyikét a [szerepkör-hozzárendelések – lista](/rest/api/authorization/roleassignments/list) REST API-k. Az eredmények pontosításához használjon, megadhatja a hatókör és a egy nem kötelező szűrő.
+A RBAC-ben a hozzáférés listázásához listázhatja a szerepkör-hozzárendeléseket. A szerepkör-hozzárendelések listázásához használja a [szerepkör-hozzárendelések-lista](/rest/api/authorization/roleassignments/list) REST API-k egyikét. Az eredmények pontosításához meg kell adnia egy hatókört és egy opcionális szűrőt.
 
-1. Indítsa el a következő kérelmet:
+1. Kezdje a következő kéréssel:
 
     ```http
     GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter={filter}
     ```
 
-1. Cserélje le az URI-belül *{hatókör}* a hatókörben, amelynek meg szeretné a szerepkör-hozzárendelések lista.
+1. Az URI-n belül cserélje le a *{scope}* elemet arra a hatókörre, amelyre a szerepkör-hozzárendeléseket szeretné listázni.
 
-    | Hatókör | Typo |
+    | Scope | Type |
     | --- | --- |
-    | `subscriptions/{subscriptionId}` | Előfizetés |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Erőforráscsoport |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Erőforrás |
+    | `providers/Microsoft.Management/managementGroups/{groupId1}` | Felügyeleti csoport |
+    | `subscriptions/{subscriptionId1}` | Előfizetés |
+    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Resource group |
+    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
 
-1. Cserélje le *{szűrő}* azzal a feltétellel, hogy a szerepkör-hozzárendelés listájának szűrése a alkalmazni szeretné.
+    Az előző példában a Microsoft. web egy olyan erőforrás-szolgáltató, amely egy App Service példányra hivatkozik. Hasonlóképpen használhatja bármely más erőforrás-szolgáltatót, és megadhatja a hatókört. További információ: [Azure erőforrás-szolgáltatók és típusok](../azure-resource-manager/resource-manager-supported-services.md) és támogatott [Azure Resource Manager erőforrás-szolgáltatói műveletek](resource-provider-operations.md).  
+     
+1. Cserélje le a *{Filter}* helyére azt a feltételt, amelyet alkalmazni szeretne a szerepkör-hozzárendelési lista szűréséhez.
 
     | Szűrés | Leírás |
     | --- | --- |
-    | `$filter=atScope()` | A listában csak a megadott hatókörön, a nem többek között a szerepkör-hozzárendelést subscopes szerepkör-hozzárendeléseit. |
-    | `$filter=principalId%20eq%20'{objectId}'` | Listázza egy adott felhasználó, csoport vagy egyszerű szolgáltatás szerepkör-hozzárendeléseit. |
-    | `$filter=assignedTo('{objectId}')` | Listázza egy adott felhasználó, köztük azokról, örökölt szerepkör-hozzárendeléseit. |
+    | `$filter=atScope()` | Csak a megadott hatókörhöz tartozó szerepkör-hozzárendelések felsorolása, nem tartalmazza a szerepkör-hozzárendeléseket az alhatókörben. |
+    | `$filter=principalId%20eq%20'{objectId}'` | Egy adott felhasználó, csoport vagy egyszerű szolgáltatásnév szerepkör-hozzárendeléseinek felsorolása. |
+    | `$filter=assignedTo('{objectId}')` | Egy adott felhasználó vagy szolgáltatásnév szerepkör-hozzárendeléseinek felsorolása. Ha a felhasználó egy szerepkör-hozzárendeléssel rendelkező csoport tagja, akkor a szerepkör-hozzárendelés is megjelenik. Ez a szűrő a csoportok esetében tranzitív, ami azt jelenti, hogy ha a felhasználó egy csoport tagja, és a csoport egy másik, szerepkör-hozzárendelést tartalmazó csoport tagja, akkor a szerepkör-hozzárendelés is megjelenik. Ez a szűrő csak egy felhasználóhoz vagy egy egyszerű szolgáltatáshoz tartozó objektumazonosítót fogad el. Nem lehet átadni egy objektum AZONOSÍTÓját egy csoport számára. |
 
 ## <a name="grant-access"></a>Hozzáférés biztosítása
 
-Az RBAC-ben a hozzáférés biztosítása egy szerepkör-hozzárendelés létrehozásával történik. Szerepkör-hozzárendelés létrehozásához használja a [szerepkör-hozzárendelések – hozzon létre](/rest/api/authorization/roleassignments/create) – REST API-t, és adja meg a rendszerbiztonsági tag, a szerepkör-definíció és a hatókör. Az API meghívásához, hozzáféréssel kell rendelkeznie a `Microsoft.Authorization/roleAssignments/write` műveletet. A beépített szerepkörök, csak [tulajdonosa](built-in-roles.md#owner) és [felhasználói hozzáférés rendszergazdája](built-in-roles.md#user-access-administrator) , amelyekhez hozzáférést ezt a műveletet.
+Az RBAC-ben a hozzáférés biztosítása egy szerepkör-hozzárendelés létrehozásával történik. Szerepkör-hozzárendelés létrehozásához használja a [szerepkör-hozzárendeléseket – hozzon létre](/rest/api/authorization/roleassignments/create) REST API, és határozza meg a rendszerbiztonsági tag, a szerepkör-definíció és a hatókört. Az API meghívásához hozzáféréssel kell rendelkeznie a `Microsoft.Authorization/roleAssignments/write` művelethez. A beépített szerepkörök közül csak a tulajdonosi [](built-in-roles.md#owner) és a [felhasználói hozzáférés-adminisztrátor](built-in-roles.md#user-access-administrator) kap hozzáférést ehhez a művelethez.
 
-1. Használja a [szerepkör-definíciók - lista](/rest/api/authorization/roledefinitions/list) vagy a REST API-t [beépített szerepkörök](built-in-roles.md) beolvasni a hozzárendelni kívánt szerepkör-definíció azonosítóját.
+1. Használja a [szerepkör-definíciók – lista](/rest/api/authorization/roledefinitions/list) REST API, vagy tekintse meg a [beépített szerepköröket](built-in-roles.md) a hozzárendelni kívánt szerepkör-definíció azonosítójának lekéréséhez.
 
-1. Egy GUID eszköz segítségével hozza létre a szerepkör-hozzárendelési azonosító esetében használt egyedi azonosító. Az azonosító formátuma: `00000000-0000-0000-0000-000000000000`
+1. Egy GUID-eszköz használatával állítson be egy egyedi azonosítót, amelyet a rendszer a szerepkör-hozzárendelési azonosítóhoz fog használni. Az azonosító formátuma:`00000000-0000-0000-0000-000000000000`
 
-1. Indítsa el a következő kérés és a szervezet:
+1. Kezdje a következő kéréssel és szövegtörzstel:
 
     ```http
     PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}?api-version=2015-07-01
@@ -69,52 +72,61 @@ Az RBAC-ben a hozzáférés biztosítása egy szerepkör-hozzárendelés létreh
     ```json
     {
       "properties": {
-        "roleDefinitionId": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}",
+        "roleDefinitionId": "/{scope}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}",
         "principalId": "{principalId}"
       }
     }
     ```
-    
-1. Cserélje le az URI-t, belül *{hatókör}* a hatókörben, a szerepkör-hozzárendelésre vonatkozó.
 
-    | Hatókör | Typo |
+1. Az URI-n belül cserélje le a *{scope}* értéket a szerepkör-hozzárendelés hatókörére.
+
+    | Scope | Type |
     | --- | --- |
-    | `subscriptions/{subscriptionId}` | Előfizetés |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Erőforráscsoport |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Erőforrás |
+    | `providers/Microsoft.Management/managementGroups/{groupId1}` | Felügyeleti csoport |
+    | `subscriptions/{subscriptionId1}` | Előfizetés |
+    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Resource group |
+    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/ providers/microsoft.web/sites/mysite1` | Resource |
 
-1. Cserélje le *{roleAssignmentName}* a szerepkör-hozzárendelés GUID azonosítóját.
+1. Cserélje le a *{roleAssignmentName}* helyére a szerepkör-hozzárendelés GUID azonosítóját.
 
-1. Cserélje le a kérelem törzsében lévő *{subscriptionId}* az előfizetés-azonosítóval.
+1. A kérelem törzsében cserélje le a *{scope}* helyére a szerepkör-hozzárendelés hatókörét.
 
-1. Cserélje le *{roleDefinitionId}* a szerepkör-definíció azonosítóval.
+    | Scope | Type |
+    | --- | --- |
+    | `providers/Microsoft.Management/managementGroups/{groupId1}` | Felügyeleti csoport |
+    | `subscriptions/{subscriptionId1}` | Előfizetés |
+    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Resource group |
+    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/ providers/microsoft.web/sites/mysite1` | Resource |
 
-1. Cserélje le *{principalId}* az egyszerű szolgáltatás a szerepkörhöz rendelt, felhasználó vagy csoport objektumazonosítóját.
+1. Cserélje le a *{roleDefinitionId}* helyére a szerepkör-definíció azonosítóját.
 
-## <a name="remove-access"></a>Hozzáférés eltávolítása
+1. Cserélje le a *{principalId}* helyére annak a felhasználónak, csoportnak vagy egyszerű szolgáltatásnak az azonosítóját, amely hozzá lesz rendelve a szerepkörhöz.
 
-Az RBAC-ben hozzáférés eltávolításához egy szerepkör-hozzárendelést kell eltávolítania. Szerepkör-hozzárendelés eltávolításához használja a [szerepkör-hozzárendelések – Törlés](/rest/api/authorization/roleassignments/delete) REST API-t. Az API meghívásához, hozzáféréssel kell rendelkeznie a `Microsoft.Authorization/roleAssignments/delete` műveletet. A beépített szerepkörök, csak [tulajdonosa](built-in-roles.md#owner) és [felhasználói hozzáférés rendszergazdája](built-in-roles.md#user-access-administrator) , amelyekhez hozzáférést ezt a műveletet.
+## <a name="remove-access"></a>Hozzáférés megszüntetése
 
-1. A szerepkör-hozzárendelés azonosítója (GUID) beolvasása. Ez az azonosító adja vissza, amikor először hoz létre a szerepkör-hozzárendelést vagy a szerepkör-hozzárendeléseket listázásával beszerezheti azt.
+Az RBAC-ben hozzáférés eltávolításához egy szerepkör-hozzárendelést kell eltávolítania. Szerepkör-hozzárendelés eltávolításához használja a [szerepkör-hozzárendeléseket – törölje](/rest/api/authorization/roleassignments/delete) REST API. Az API meghívásához hozzáféréssel kell rendelkeznie a `Microsoft.Authorization/roleAssignments/delete` művelethez. A beépített szerepkörök közül csak a tulajdonosi [](built-in-roles.md#owner) és a [felhasználói hozzáférés-adminisztrátor](built-in-roles.md#user-access-administrator) kap hozzáférést ehhez a művelethez.
 
-1. Indítsa el a következő kérelmet:
+1. A szerepkör-hozzárendelési azonosító (GUID) beolvasása. Ezt az azonosítót a rendszer a szerepkör-hozzárendelés első létrehozásakor adja vissza, vagy pedig a szerepkör-hozzárendelések listázásával.
+
+1. Kezdje a következő kéréssel:
 
     ```http
     DELETE https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}?api-version=2015-07-01
     ```
 
-1. Belül az URI-t, cserélje le a *{hatókör}* a hatókörben, a szerepkör-hozzárendelés eltávolításához.
+1. Az URI-n belül cserélje le a *{scope}* elemet a szerepkör-hozzárendelés eltávolítására szolgáló hatókörre.
 
-    | Hatókör | Typo |
+    | Scope | Type |
     | --- | --- |
-    | `subscriptions/{subscriptionId}` | Előfizetés |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Erőforráscsoport |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Erőforrás |
+    | `providers/Microsoft.Management/managementGroups/{groupId1}` | Felügyeleti csoport |
+    | `subscriptions/{subscriptionId1}` | Előfizetés |
+    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Resource group |
+    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/ providers/microsoft.web/sites/mysite1` | Resource |
 
-1. Cserélje le *{roleAssignmentName}* a szerepkör-hozzárendelés GUID azonosítóját.
+1. Cserélje le a *{roleAssignmentName}* helyére a szerepkör-hozzárendelés GUID azonosítóját.
 
 ## <a name="next-steps"></a>További lépések
 
 - [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure Manager REST API-val](../azure-resource-manager/resource-group-template-deploy-rest.md)
 - [Azure REST API-referencia](/rest/api/azure/)
-- [Az Azure-erőforrásokhoz a REST API-val egyéni szerepkörök létrehozása](custom-roles-rest.md)
+- [Egyéni szerepkörök létrehozása az Azure-erőforrásokhoz a REST API használatával](custom-roles-rest.md)

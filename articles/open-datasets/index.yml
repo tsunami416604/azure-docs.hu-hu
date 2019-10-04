@@ -1,0 +1,41 @@
+### YamlMime:Landing
+title: Az Azure Open Datasets előzetes verziójának dokumentációja
+summary: Az Azure Open Datasets válogatott és tisztított, minimális előkészítés után használható adatokat kínál – köztük időjárási, népszámlálási és ünnepekre vonatkozó adatokat – a gépi tanulási modellek gazdagításához.
+metadata:
+  title: Az Open Datasets előzetes verziójának dokumentációja – Azure
+  description: Az Azure Open Datasets válogatott és tisztított, minimális előkészítés után használható adatokat kínál – köztük időjárási, népszámlálási és ünnepekre vonatkozó adatokat – a gépi tanulási modellek gazdagításához.
+  services: machine-learning
+  ms.service: machine-learning
+  ms.subservice: data-science-vm
+  ms.topic: landing-page
+  ms.collection: collection
+  author: cjgronlund
+  ms.author: cgronlun
+  ms.date: 09/03/2019
+  ms.openlocfilehash: 44dea30e44e204664a5266a37c740b2eb23a49f7
+  ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 09/04/2019
+  ms.locfileid: "70309364"
+landingContent:
+- title: Az Open Datasets bemutatása
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az Open Datasets?
+      url: overview-what-are-open-datasets.md
+    - text: Példák
+      url: samples.md
+- title: Bevezetés
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Regressziós modell létrehozása automatizált gépi tanulással
+      url: tutorial-opendatasets-automl.md
+- title: A referencia tartalmának áttekintése
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Python API
+      url: https://docs.microsoft.com/python/api/azureml-opendatasets/?view=azure-ml-py

@@ -1,91 +1,145 @@
 ---
-title: Naplózási minták és a definíciók bejelentkezik az Azure Active Directory B2C |} A Microsoft Docs
-description: Útmutató és -példák az Azure AD B2C-naplók elérése a.
+title: Naplókban szereplő minták és definíciók naplózása Azure Active Directory B2C
+description: Útmutató és példák a Azure AD B2C naplók eléréséhez.
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 08/04/2017
-ms.author: davidmu
+ms.date: 09/14/2019
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 117d58f6f56fe1b24539c7bfe950f1a23d6de51a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.custom: fasttrack-edit
+ms.openlocfilehash: bf9b6a3ad40d46b628bfcdb3fa3e32b2419360c9
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58003599"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802113"
 ---
-# <a name="accessing-azure-ad-b2c-audit-logs"></a>Auditnaplók eléréséhez az Azure AD B2C-vel
+# <a name="accessing-azure-ad-b2c-audit-logs"></a>Azure AD B2C naplók elérése
 
-Az Azure Active Directory B2C (Azure AD B2C-vel) tartalmazó rendszertevékenység információk a B2C-erőforrás kiadott jogkivonatokat, és a rendszergazdai hozzáférés auditnaplók bocsát ki. Ez a cikk az információ a vizsgálati naplók és utasításokat rövid áttekintést nyújt az Azure AD B2C-bérlő számára az adatok elérésével.
+A Azure Active Directory B2C (Azure AD B2C) a B2C-erőforrásokkal, a kiállított jogkivonatokkal és a rendszergazdai hozzáféréssel kapcsolatos tevékenységeket tartalmazó naplókat bocsát ki. Ez a cikk röviden áttekinti a naplókban elérhető információkat, és leírja, hogyan férhet hozzá ezekhez az adatokhoz a Azure AD B2C bérlőhöz.
 
-> [!IMPORTANT]
-> Auditnaplók csak megmaradnak a hét napja. Tervezze meg, töltse le és tárolja a naplókat az alább látható, ha szüksége van-e a hosszabb adatmegőrzési idő módszerek egyikének használatával.
-
-## <a name="overview-of-activities-available-in-the-b2c-category-of-audit-logs"></a>A naplók a B2C kategóriában elérhető tevékenységek áttekintése
-A **B2C** kategória-naplók az alábbi típusú tevékenységeket tartalmazza:
-
-|Tevékenység típusa |Leírás  |
-|---------|---------|
-|Engedélyezés |Az erőforrások eléréséhez B2C felhasználói engedély vonatkozó (például egy rendszergazda fér hozzá a B2C-szabályzatok listája) tevékenységek         |
-|Címtár |Directory-attribútumok kérhető le, ha rendszergazdaként jelentkezik be az Azure Portallal kapcsolatos tevékenységek |
-|Alkalmazás | A B2C-alkalmazások CRUD-műveletek |
-|Kulcs |A B2C-kulcstároló tárolt kulcsok CRUD-műveletek |
-|Erőforrás |B2C-erőforrásokat (például a szabályzatok és az identitás-szolgáltatóktól) CRUD-műveletek
-|Authentication |Felhasználói hitelesítő adatok és a kiállítási érvényesítése|
+A naplózási naplózási események csak **hét napig**őrződnek meg. Tervezze meg a naplók letöltését és tárolását az alább látható módszerek valamelyikével, ha hosszabb megőrzési időtartamra van szüksége.
 
 > [!NOTE]
-> A felhasználói objektum CRUD tevékenységhez, tekintse meg a **alapvető könyvtár** kategória.
+> Az egyes Azure AD B2C alkalmazásokhoz tartozó felhasználói bejelentkezések nem jelennek meg a Azure Portal **Azure Active Directory** vagy **Azure ad B2C** lapjain a **felhasználók** szakaszban. A bejelentkezési események felhasználói tevékenységet mutatnak, de nem kapcsolhatók vissza arra a B2C-alkalmazásra, amelyhez a felhasználó bejelentkezett. Az ehhez szükséges naplókat a jelen cikkben ismertetett módon kell használni.
 
-## <a name="example-activity"></a>Példa tevékenység
-Az alábbi példában látható, amikor egy felhasználó jelentkezik be egy külső identitásszolgáltatónak rögzített adatokat: ![Auditnaplók – példa](./media/active-directory-b2c-reference-audit-logs/audit-logs-example.png)
+## <a name="overview-of-activities-available-in-the-b2c-category-of-audit-logs"></a>A B2C-kategóriákban elérhető tevékenységek áttekintése
 
-## <a name="accessing-audit-logs-through-the-azure-portal"></a>Az Azure Portalon keresztül éri el a vizsgálati naplók
-1. Nyissa meg az [Azure Portal](https://portal.azure.com). Győződjön meg róla, hogy a B2C-címtárban.
-2. Kattintson a **Azure Active Directory** a Kedvencek sávra a bal oldalon található
-    
-    ![Auditnaplók – AAD gomb](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-aad.png)
+A naplókban a **B2C** kategória a következő típusú tevékenységeket tartalmazza:
 
-1. A **tevékenység**, kattintson a **Auditnaplók**
+|Tevékenységtípus |Leírás  |
+|---------|---------|
+|Authorization |A B2C-erőforrásokhoz való hozzáférés engedélyezésével kapcsolatos tevékenységek (például egy rendszergazda, amely a B2C-szabályzatok listáját használja).         |
+|Címtár |Címtár-attribútumokkal kapcsolatos tevékenységek, amikor egy rendszergazda bejelentkezik a Azure Portal használatával. |
+|Alkalmazás | A B2C-alkalmazásokhoz tartozó létrehozási, olvasási, frissítési és törlési (szifilisz-) műveletek. |
+|Kulcs |A B2C-kulcstárolóban tárolt kulcsokra vonatkozó szifilisz-műveletek. |
+|Resource |A B2C-erőforrásokra vonatkozó szifilisz-műveletek. Például házirendek és identitás-szolgáltatók.
+|Authentication |A felhasználói hitelesítő adatok és a jogkivonatok kiadásának ellenőrzése.|
 
-    ![Auditnaplók – naplók szakasz](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-section.png)
+A felhasználói objektumhoz tartozó szifilisz-tevékenységek esetében tekintse meg az **alapvető könyvtár** kategóriát.
 
-2. Az a **kategória** dropbox válassza **B2C-vel**
-3. Kattintson a **alkalmazása**
+## <a name="example-activity"></a>Példa tevékenységre
 
-    ![Auditnaplók – kategória](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-category.png)
+Ez a példa a Azure Portal képet jeleníti meg, amikor egy felhasználó külső identitás-szolgáltatóval jelentkezik be, ebben az esetben a Facebook:
 
-Látni fogja az elmúlt hét napban naplózott tevékenységek listája.
-- Használja a **tevékenység erőforrástípusa** legördülő menüben szűrhet a fent vázolt tevékenységtípusok
-- Használja a **dátumtartomány** legördülő menü jelenik meg a tevékenységek dátumtartománya szűrése
-- Kattint egy adott sorra a listában, ha egy környezetfüggő a jobb oldali mezőbe megjelenik a tevékenység társított további attribútumok
-- Kattintson a **letöltése** tevékenységek letöltése csv-fájlként
+![Példa a naplózási tevékenység részleteinek oldalára Azure Portal](./media/active-directory-b2c-reference-audit-logs/audit-logs-example.png)
 
-## <a name="accessing-audit-logs-through-the-azure-ad-reporting-api"></a>Az Azure AD reporting API keresztül éri el a vizsgálati naplók
-Auditnaplók más tevékenységek azonos folyamatra számára közzétett Azure Active Directoryban, így azok keresztül érhetők el a [Azure Active Directory reporting API](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-audit-reference).
+A tevékenység részletei panel a következő releváns információkat tartalmazza:
 
-### <a name="prerequisites"></a>Előfeltételek
-Az Azure ad reporting API hitelesítésére először kell regisztrálni egy alkalmazást. Ügyeljen arra, hogy kövesse a [az Azure AD reporting API elérésének előfeltételeit](https://azure.microsoft.com/documentation/articles/active-directory-reporting-api-getting-started/).
+|`Section`|Mező|Leírás|
+|-------|-----|-----------|
+| Tevékenység | Name (Név) | Melyik tevékenység történt. Például *adjon ki egy id_token az alkalmazásnak*, amely a tényleges felhasználói bejelentkezést vonja le. |
+| Kezdeményező (színész) | ObjectId | Annak a B2C-alkalmazásnak az **azonosítója** , amelyhez a felhasználó bejelentkezik. Ez az azonosító nem látható a Azure Portalban, de a Microsoft Graph API-n keresztül érhető el. |
+| Kezdeményező (színész) | Egyszerű szolgáltatásnév | Annak a B2C-alkalmazásnak az **azonosítója** , amelyhez a felhasználó bejelentkezik. |
+| Cél (ok) | ObjectId | A bejelentkezett felhasználó **objektumazonosító** . |
+| További részletek | TenantId | A Azure AD B2C bérlő **bérlői azonosítója** . |
+| További részletek | `PolicyId` | Annak a felhasználói folyamatnak (házirendnek) a **házirend-azonosítója** , amellyel a rendszer aláírja a felhasználót a alkalmazásban. |
+| További részletek | ApplicationId | Annak a B2C-alkalmazásnak az **azonosítója** , amelyhez a felhasználó bejelentkezik. |
 
-### <a name="accessing-the-api"></a>Az API elérése
-Az API-n keresztül az Azure AD B2C-naplók letöltéséhez, a naplók szűrése szeretné a **B2C** kategória. Szűrés kategória szerint, használja a lekérdezési karakterlánc paramétereként az Azure AD reporting API-végpont hívásakor, ahogy az alábbi:
+## <a name="view-audit-logs-in-the-azure-portal"></a>Naplófájlok megtekintése a Azure Portal
 
-`https://graph.windows.net/your-b2c-tentant.onmicrosoft.com/activities/audit?api-version=beta&$filter=category eq 'B2C'`
+A Azure Portal hozzáférést biztosít a Azure AD B2C bérlő naplójának eseményeihez.
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com)
+1. Váltson arra a könyvtárra, amely a Azure AD B2C bérlőt tartalmazza, majd keresse meg **Azure ad B2C**.
+1. A bal oldali menü **tevékenységek** területén válassza a **naplók**lehetőséget.
+
+Megjelenik az elmúlt hét napban naplózott tevékenységi események listája.
+
+![Példa szűrőre két tevékenységgel kapcsolatos eseménnyel kapcsolatban Azure Portal](media/active-directory-b2c-reference-audit-logs/audit-logs-example-filter.png)
+
+Több szűrési lehetőség is elérhető, beleértve a következőket:
+
+* **Tevékenység erőforrástípus** – a [tevékenységek elérhetővé](#overview-of-activities-available-in-the-b2c-category-of-audit-logs) tételének áttekintése című táblázatban látható tevékenységtípusok alapján szűrhet.
+* **Dátum** – a megjelenített tevékenységek dátum-tartományának szűrése.
+
+Ha kijelöl egy sort a listában, a program megjeleníti az esemény tevékenységének részleteit.
+
+Ha le szeretné tölteni a tevékenységi események listáját egy vesszővel tagolt (CSV) fájlban, válassza a **Letöltés**lehetőséget.
+
+## <a name="get-audit-logs-with-the-azure-ad-reporting-api"></a>Naplók beszerzése az Azure AD Reporting API-val
+
+A naplók ugyanazon a folyamaton lesznek közzétéve, mint a Azure Active Directory egyéb tevékenységei, így azok a [Azure Active Directory jelentési API](https://docs.microsoft.com/graph/api/directoryaudit-list)-n keresztül érhetők el. További információ: Ismerkedés [a Azure Active Directory Reporting API-val](../active-directory/reports-monitoring/concept-reporting-api.md).
+
+### <a name="enable-reporting-api-access"></a>Jelentéskészítési API-hozzáférés engedélyezése
+
+Az Azure AD Reporting API-hoz való parancsfájl-vagy alkalmazás-hozzáférés engedélyezéséhez Azure Active Directory alkalmazásra van szükség a Azure AD B2C-bérlőben a következő API-engedélyekkel:
+
+* Microsoft Graph
+  * Alkalmazás: Az összes auditnapló adatainak olvasása
+
+Ezeket az engedélyeket engedélyezheti a B2C-bérlőn belüli meglévő Azure Active Directory alkalmazások regisztrálásához, vagy létrehozhat egy újat, kifejezetten a log Automation használatával.
+
+Kövesse az alábbi lépéseket egy alkalmazás regisztrálásához, adja meg a szükséges Microsoft Graph API-engedélyeket, majd hozzon létre egy ügyfél-titkot.
+
+### <a name="register-application-in-azure-active-directory"></a>Alkalmazás regisztrálása a Azure Active Directoryban
+
+[!INCLUDE [active-directory-b2c-appreg-mgmt](../../includes/active-directory-b2c-appreg-mgmt.md)]
+
+### <a name="assign-api-access-permissions"></a>API-hozzáférési engedélyek kiosztása
+
+1. A **regisztrált alkalmazás** áttekintése lapon válassza a **Beállítások**lehetőséget.
+1. Az **API-hozzáférés**területen válassza a **szükséges engedélyek**lehetőséget.
+1. Válassza a **Hozzáadás**lehetőséget, majd **válasszon ki egy API**-t.
+1. Válassza a **Microsoft Graph**lehetőséget, majd **válassza a elemet**.
+1. Az **alkalmazás engedélyei**területen válassza az **összes naplózási napló adatának olvasása**elemet.
+1. Kattintson a **kiválasztás** gombra, majd válassza a **kész**lehetőséget.
+1. Válassza ki **engedélyeket**, majd válassza ki **Igen**.
+
+### <a name="create-client-secret"></a>Ügyfél titkos kulcsának létrehozása
+
+[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
+
+Most már rendelkezik egy alkalmazással a szükséges API-hozzáféréssel, egy alkalmazás-AZONOSÍTÓval és egy, az Automation-parancsfájlokban használható kulccsal. A cikk későbbi részében a PowerShell-szkript című szakaszban talál példát arra, hogyan kérhető le a tevékenység eseményei egy parancsfájl használatával.
+
+### <a name="access-the-api"></a>Hozzáférés az API-hoz
+
+Ha Azure ad B2C naplózási eseményeket az API-n keresztül szeretné letölteni, szűrje a `B2C` kategóriába tartozó naplókat. A kategória szerinti szűréshez használja a `filter` lekérdezési karakterlánc paramétert az Azure ad Reporting API-végpont meghívásakor.
+
+```HTTP
+https://graph.microsoft.com/v1.0/auditLogs/directoryAudits?$filter=loggedByService eq 'B2C' and activityDateTime gt 2019-09-10T02:28:17Z
+```
 
 ### <a name="powershell-script"></a>PowerShell-szkript
-Az alábbi parancsprogram azt szemlélteti, lekérdezése az Azure AD reporting API és az eredményeket JSON-fájlként tárolja a PowerShell segítségével:
+
+Az alábbi PowerShell-szkript bemutatja, hogyan lehet lekérdezni az Azure AD Reporting API-t. Az API lekérdezése után kinyomtatja a naplózott eseményeket a standard kimenetre, majd a JSON-kimenetet fájlba írja.
+
+Ezt a szkriptet a [Azure Cloud Shell](../cloud-shell/overview.md)is kipróbálhatja. Győződjön meg arról, hogy az alkalmazás-AZONOSÍTÓval, a kulccsal és a Azure AD B2C bérlő nevével frissíti.
 
 ```powershell
-# This script will require registration of a Web Application in Azure Active Directory (see https://azure.microsoft.com/documentation/articles/active-directory-reporting-api-getting-started/)
+# This script requires the registration of a Web Application in Azure Active Directory:
+# https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-reporting-api
 
 # Constants
-$ClientID       = "your-client-application-id-here"       # Insert your application's Client ID, a Globally Unique ID (registered by Global Admin)
-$ClientSecret   = "your-client-application-secret-here"   # Insert your application's Client Key/Secret string
+$ClientID       = "your-client-application-id-here"       # Insert your application's Client ID, a GUID (registered by Global Admin)
+$ClientSecret   = "your-client-application-secret-here"   # Insert your application's Client secret/key
+$tenantdomain   = "your-b2c-tenant.onmicrosoft.com"       # Insert your Azure AD B2C tenant; for example, contoso.onmicrosoft.com
 $loginURL       = "https://login.microsoftonline.com"
-$tenantdomain   = "your-b2c-tenant.onmicrosoft.com"       # AAD B2C Tenant; for example, contoso.onmicrosoft.com
-$resource       = "https://graph.windows.net"             # Azure AD Graph API resource URI
+$resource       = "https://graph.microsoft.com"           # Microsoft Graph API resource URI
 $7daysago       = "{0:s}" -f (get-date).AddDays(-7) + "Z" # Use 'AddMinutes(-5)' to decrement minutes, for example
 Write-Output "Searching for events starting $7daysago"
 
@@ -97,7 +151,7 @@ $oauth      = Invoke-RestMethod -Method Post -Uri $loginURL/$tenantdomain/oauth2
 if ($oauth.access_token -ne $null) {
     $i=0
     $headerParams = @{'Authorization'="$($oauth.token_type) $($oauth.access_token)"}
-    $url = 'https://graph.windows.net/' + $tenantdomain + '/activities/audit?api-version=beta&$filter=category eq ''B2C''and activityDate gt ' + $7daysago
+    $url = "https://graph.microsoft.com/v1.0/auditLogs/directoryAudits?`$filter=loggedByService eq 'B2C' and activityDateTime gt  " + $7daysago
 
     # loop through each query page (1 through n)
     Do {
@@ -118,3 +172,72 @@ if ($oauth.access_token -ne $null) {
     Write-Host "ERROR: No Access Token"
 }
 ```
+
+Itt látható a cikkben korábban bemutatott példa tevékenység esemény JSON-ábrázolása:
+
+```JSON
+{
+    "id": "B2C_DQO3J_4984536",
+    "category": "Authentication",
+    "correlationId": "00000000-0000-0000-0000-000000000000",
+    "result": "success",
+    "resultReason": "N/A",
+    "activityDisplayName": "Issue an id_token to the application",
+    "activityDateTime": "2019-09-14T18:13:17.0618117Z",
+    "loggedByService": "B2C",
+    "operationType": "",
+    "initiatedBy": {
+        "user": null,
+        "app": {
+            "appId": "00000000-0000-0000-0000-000000000000",
+            "displayName": null,
+            "servicePrincipalId": null,
+            "servicePrincipalName": "00000000-0000-0000-0000-000000000000"
+        }
+    },
+    "targetResources": [
+        {
+            "id": "00000000-0000-0000-0000-000000000000",
+            "displayName": null,
+            "type": "User",
+            "userPrincipalName": null,
+            "groupType": null,
+            "modifiedProperties": []
+        }
+    ],
+    "additionalDetails": [
+        {
+            "key": "TenantId",
+            "value": "test.onmicrosoft.com"
+        },
+        {
+            "key": "PolicyId",
+            "value": "B2C_1A_signup_signin"
+        },
+        {
+            "key": "ApplicationId",
+            "value": "00000000-0000-0000-0000-000000000000"
+        },
+        {
+            "key": "Client",
+            "value": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36"
+        },
+        {
+            "key": "IdentityProviderName",
+            "value": "facebook"
+        },
+        {
+            "key": "IdentityProviderApplicationId",
+            "value": "0000000000000000"
+        },
+        {
+            "key": "ClientIpAddress",
+            "value": "127.0.0.1"
+        }
+    ]
+}
+```
+
+## <a name="next-steps"></a>További lépések
+
+Automatizálhat más felügyeleti feladatokat, például [kezelheti a felhasználókat a .net](active-directory-b2c-devquickstarts-graph-dotnet.md)használatával.

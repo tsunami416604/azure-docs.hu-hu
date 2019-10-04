@@ -1,55 +1,57 @@
 ---
-title: Az Azure Kubernetes Service (AKS) kubeconfig való hozzáférés korlátozása
-description: Ismerje meg, hogyan férhet hozzá a Kubernetes konfigurációs fájl (kubeconfig) a fürt rendszergazdák és a fürt felhasználók
+title: A kubeconfig való hozzáférés korlátozása az Azure Kubernetes szolgáltatásban (ak)
+description: Útmutató a Kubernetes konfigurációs fájlhoz (kubeconfig) való hozzáférés vezérléséhez a fürt rendszergazdái és a fürt felhasználói számára
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 01/03/2019
-ms.author: iainfou
-ms.openlocfilehash: 141aacc71d129bb45dc53774af876d5b07b7fc86
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.date: 05/31/2019
+ms.author: mlearned
+ms.openlocfilehash: cbc653b86ed83f9d6a7348d39f51dc7cd49c6892
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60004278"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "67615675"
 ---
-# <a name="use-azure-role-based-access-controls-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>Hozzáférés megadása a Kubernetes konfigurációs fájl az Azure Kubernetes Service (AKS) az Azure szerepköralapú hozzáférés-vezérlés használatával
+# <a name="use-azure-role-based-access-controls-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>Az Azure szerepköralapú hozzáférés-vezérlés használata a Kubernetes konfigurációs fájlhoz való hozzáférés definiálásához az Azure Kubernetes szolgáltatásban (ak)
 
-Kubernetes-fürtök használata kezelheti a `kubectl` eszközt. Az Azure CLI beolvasni a hozzáférési hitelesítő adatok egyszerű megoldást kínál, és a konfigurációs adatokat szeretne csatlakozni az AKS-fürtök használatával `kubectl`. Korlátot, akik kérheti, hogy a Kubernetes-konfigurációját (*kubeconfig*) információt, és korlátozza az engedélyeket, majd rendelkezik, használhatja az Azure szerepköralapú hozzáférés-vezérlők (RBAC).
+A Kubernetes-fürtöket az `kubectl` eszköz használatával lehet kezelni. Az Azure CLI-vel egyszerűen lekérheti a hozzáférési hitelesítő adatokat és a konfigurációs információkat, hogy a használatával `kubectl`csatlakozzanak az AK-fürtökhöz. Az Azure szerepköralapú hozzáférés-vezérlés (RBAC) használatával korlátozhatja, hogy ki érheti el az Kubernetes-konfiguráció (*kubeconfig*) adatait, és korlátozhatja a rájuk vonatkozó engedélyeket.
 
-Ez a cikk bemutatja, hogyan rendelje hozzá ezt a korlátot, akik az AKS-fürt konfigurációs információkat kaphat az RBAC-szerepkörök.
+Ebből a cikkből megtudhatja, hogyan rendelhet hozzá olyan RBAC-szerepköröket, amelyek korlátozzák, hogy ki szerezhet be egy AK-fürt konfigurációs adatait.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
-Ez a cikk azt feltételezi, hogy egy meglévő AKS-fürtöt. Ha egy AKS-fürtre van szüksége, tekintse meg az AKS gyors [az Azure CLI-vel] [ aks-quickstart-cli] vagy [az Azure portal használatával][aks-quickstart-portal].
+Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel. Ha AK-fürtre van szüksége, tekintse meg az AK gyors üzembe helyezését [Az Azure CLI használatával][aks-quickstart-cli] vagy [a Azure Portal használatával][aks-quickstart-portal].
 
-Ez a cikk is szükséges, hogy futnak-e az Azure CLI 2.0.53 verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
+Ehhez a cikkhez az Azure CLI 2.0.65 vagy újabb verzióját is futtatnia kell. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
 
-## <a name="available-cluster-roles-permissions"></a>Elérhető fürtözött szerepkörök engedélyek
+## <a name="available-cluster-roles-permissions"></a>Elérhető fürt szerepköreinek engedélyei
 
-Ha egy AKS fürt használata kezelheti a `kubectl` az eszközt, a konfigurációs fájlt, amely meghatározza a fürtkapcsolati adatok használják. Ezt a konfigurációs fájlt általában tárolva *~/.kube/config*. Több fürt lehet definiálni ez *kubeconfig* fájlt. Fürtök közötti váltás a [kubectl konfigurációs használatát – helyi] [ kubectl-config-use-context] parancsot.
+Ha az `kubectl` eszköz használatával használ egy AK-fürtöt, a rendszer egy konfigurációs fájlt használ, amely a fürt kapcsolati adatait határozza meg. Ezt a konfigurációs fájlt általában a *~/.Kube/config*tárolja. Ebben a *kubeconfig* -fájlban több fürt is definiálható. A fürtök közötti váltáshoz [használja a kubectl config use-Context][kubectl-config-use-context] parancsot.
 
-A [az aks get-credentials] [ az-aks-get-credentials] parancs lehetővé teszi a hozzáférési hitelesítő adatok beszerzése egy AKS-fürtöt, és egyesíti azokat az *kubeconfig* fájlt. Az Azure szerepköralapú hozzáférés-vezérlők (RBAC) segítségével férhet hozzá ezeket a hitelesítő adatokat. Ezeket az Azure RBAC-szerepkörök segítségével meghatározhatja, hogy ki lehet lekérdezni a *kubeconfig* fájlt, és milyen engedélyeket, majd a fürtön belül van.
+Az az [AK Get-hitelesítőadats][az-aks-get-credentials] parancs lehetővé teszi egy AK-fürt hozzáférési hitelesítő adatainak beszerzését, és egyesíti őket a *kubeconfig* -fájlba. Az Azure szerepköralapú hozzáférés-vezérlés (RBAC) használatával szabályozhatja a hitelesítő adatokhoz való hozzáférést. Ezek az Azure RBAC-szerepkörök lehetővé teszik a *kubeconfig* -fájl beolvasását, valamint a fürtön belüli engedélyek megadását.
 
-A két beépített szerepkörök a következők:
+A két beépített szerepkör a következők:
 
-* **Az Azure Kubernetes Service-fürt rendszergazdai szerepkör**  
-    * Engedélyezi a hozzáférést *Microsoft.ContainerService/managedClusters/listClusterAdminCredential/action* API-hívás. Az API-hívás [sorolja fel a fürt rendszergazdai hitelesítő adataival][api-cluster-admin].
-    * Letöltések *kubeconfig* számára a *clusterAdmin* szerepkör.
-* **Az Azure Kubernetes Service-fürt felhasználói szerepkör**
-    * Engedélyezi a hozzáférést *Microsoft.ContainerService/managedClusters/listClusterUserCredential/action* API-hívás. Az API-hívás [sorolja fel a fürt felhasználói hitelesítő adatok][api-cluster-user].
-    * Letöltések *kubeconfig* a *clusterUser* szerepkör.
+* **Azure Kubernetes Service-fürt rendszergazdai szerepköre**  
+    * Engedélyezi a hozzáférést a *Microsoft. tárolószolgáltatás/managedClusters/listClusterAdminCredential/Action* API-híváshoz. Ez az API-hívás [felsorolja a fürt rendszergazdai hitelesítő adatait][api-cluster-admin].
+    * A *clusterAdmin* szerepkör *kubeconfig* letöltése.
+* **Azure Kubernetes Service-fürt felhasználói szerepköre**
+    * Engedélyezi a hozzáférést a *Microsoft. tárolószolgáltatás/managedClusters/listClusterUserCredential/Action* API-híváshoz. Ez az API-hívás [a fürt felhasználói hitelesítő adatait listázza][api-cluster-user].
+    * A *clusterUser* szerepkör *kubeconfig* letöltése.
 
-## <a name="assign-role-permissions-to-a-user"></a>Szerepkör-engedélyek hozzárendelése egy felhasználóhoz
+Ezeket a RBAC szerepköröket Azure Active Directory (AD) felhasználóra vagy csoportra lehet alkalmazni.
 
-Szeretne hozzárendelni egy felhasználóhoz az Azure-szerepkörök egyikét, az erőforrás-Azonosítóját az AKS-fürtöt és a felhasználói fiók Azonosítóját kell. A következő Példaparancsok tegye a következőket:
+## <a name="assign-role-permissions-to-a-user-or-group"></a>Szerepkör-engedélyek társítása felhasználóhoz vagy csoporthoz
 
-* A fürt resource ID használatával lekérdezi a [az aks show] [ az-aks-show] parancsot a fürt nevű *myAKSCluster* a a *myResourceGroup* erőforráscsoport. Adja meg a saját fürt- és erőforrás-csoport neve, igény szerint.
-* Használja a [az fiók show] [ az-account-show] és [az ad felhasználó show] [ az-ad-user-show] parancsok beszerzése a felhasználói azonosítóját.
-* Végül hozzárendel egy szerepkör használatával a [az szerepkör-hozzárendelés létrehozása] [ az-role-assignment-create] parancsot.
+Az elérhető szerepkörök egyikének hozzárendeléséhez le kell kérnie az AK-fürt erőforrás-AZONOSÍTÓját és az Azure AD felhasználói fiók vagy csoport AZONOSÍTÓját. A következő példa parancsai:
 
-Az alábbi példa a *Azure Kubernetes Service fürt rendszergazdai szerepkör*:
+* Szerezze be a fürterőforrás-azonosítót az az *myAKSCluster* nevű fürthöz tartozó *myResourceGroup* -erőforráscsoport, az az az [AK show][az-aks-show] parancs használatával. Szükség szerint adja meg a fürt és az erőforráscsoport nevét.
+* Az az [Account show][az-account-show] és az [ad User show][az-ad-user-show] PARANCSOKAT használja a felhasználói azonosító lekéréséhez.
+* Végül pedig az az [role hozzárendelés Create][az-role-assignment-create] paranccsal rendel hozzá egy szerepkört.
+
+Az alábbi példa az *Azure Kubernetes Service-fürt rendszergazdai szerepkörét* rendeli hozzá egy egyéni felhasználói fiókhoz:
 
 ```azurecli-interactive
 # Get the resource ID of your AKS cluster
@@ -66,9 +68,12 @@ az role assignment create \
     --role "Azure Kubernetes Service Cluster Admin Role"
 ```
 
-A korábbi hozzárendelés módosíthatja a *fürt felhasználói szerepkör* igény szerint.
+> [!TIP]
+> Ha engedélyeket szeretne hozzárendelni egy Azure ad-csoporthoz, frissítse az `--assignee` előző példában látható paramétert a *csoport* objektum-azonosítójával, nem pedig felhasználóként. Egy csoport objektumazonosítóának beszerzéséhez használja az az [ad Group show][az-ad-group-show] parancsot. A következő példa a *appdev*nevű Azure ad-csoport OBJEKTUMAZONOSÍTÓ-azonosítóját kapja:`az ad group show --group appdev --query objectId -o tsv`
 
-Az alábbi példa kimenetében látható, a szerepkör-hozzárendelés létrehozása sikerült:
+Szükség szerint módosíthatja az előző hozzárendelést a *fürt felhasználói szerepköréhez* .
+
+A következő példa kimenete a szerepkör-hozzárendelés sikeres létrehozását mutatja be:
 
 ```
 {
@@ -83,15 +88,15 @@ Az alábbi példa kimenetében látható, a szerepkör-hozzárendelés létrehoz
 }
 ```
 
-## <a name="get-and-verify-the-configuration-information"></a>GET, és ellenőrizze a konfigurációs adatokat
+## <a name="get-and-verify-the-configuration-information"></a>A konfigurációs adatok beolvasása és ellenőrzése
 
-Az RBAC-szerepkörökhöz rendelt, használja a [az aks get-credentials] [ az-aks-get-credentials] parancs használatával beszerezheti az *kubeconfig* az AKS-fürt definíciója. Az alábbi példa lekéri a *– rendszergazdai* megfelelően működik, ha a felhasználó megkapta-e hitelesítő adatokat a *fürt rendszergazdai szerepkör*:
+A hozzárendelt RBAC-szerepkörökkel az az [AK Get-hitelesítőadats][az-aks-get-credentials] paranccsal kérheti le a *kubeconfig* -definíciót az AK-fürthöz. A következő példa lekéri a *--Admin* hitelesítő adatokat, amelyek megfelelően működnek, ha a felhasználó megkapta a *fürt rendszergazdai szerepkörét*:
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --admin
 ```
 
-Ezután a [kubectl konfigurációs nézet] [ kubectl-config-view] paranccsal ellenőrizheti, hogy a *környezet* esetében a fürt látható, hogy a felügyeleti konfigurációs adatokat:
+Ezután a [kubectl config View][kubectl-config-view] paranccsal ellenőrizheti, hogy a fürt környezete azt mutatja-e, hogy a rendszergazda konfigurációs adatai lettek alkalmazva:
 
 ```
 $ kubectl config view
@@ -118,9 +123,9 @@ users:
     token: e9f2f819a4496538b02cefff94e61d35
 ```
 
-## <a name="remove-role-permissions"></a>Távolítsa el a szerepkör engedélyei
+## <a name="remove-role-permissions"></a>Szerepkör-engedélyek eltávolítása
 
-Szerepkör-hozzárendelések eltávolításához használja a [az szerepkör-hozzárendelés törlése] [ az-role-assignment-delete] parancsot. Adja meg a fiókot, és fürt erőforrás-azonosító, ahogy az előző parancsokkal beszerzett:
+A szerepkör-hozzárendelések eltávolításához használja az az [role hozzárendelés delete][az-role-assignment-delete] parancsot. Az előző parancsokban leírtak szerint határozza meg a fiók AZONOSÍTÓját és a fürterőforrás AZONOSÍTÓját. Ha a szerepkört felhasználó helyett egy csoporthoz rendelte hozzá, akkor a következő `--assignee` paraméterhez nem kell megadnia a megfelelő csoportazonosító-azonosítót:
 
 ```azurecli-interactive
 az role assignment delete --assignee $ACCOUNT_ID --scope $AKS_CLUSTER
@@ -128,7 +133,7 @@ az role assignment delete --assignee $ACCOUNT_ID --scope $AKS_CLUSTER
 
 ## <a name="next-steps"></a>További lépések
 
-AKS-fürtök esetén a hozzáférést a fokozott biztonságot [Azure Active Directory-hitelesítés integrálása][aad-integration].
+Az AK-fürtökhöz való hozzáférés fokozott biztonsága érdekében [integrálja Azure Active Directory hitelesítést][aad-integration].
 
 <!-- LINKS - external -->
 [kubectl-config-use-context]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#config
@@ -148,3 +153,4 @@ AKS-fürtök esetén a hozzáférést a fokozott biztonságot [Azure Active Dire
 [az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
 [az-role-assignment-delete]: /cli/azure/role/assignment#az-role-assignment-delete
 [aad-integration]: azure-ad-integration.md
+[az-ad-group-show]: /cli/azure/ad/group#az-ad-group-show

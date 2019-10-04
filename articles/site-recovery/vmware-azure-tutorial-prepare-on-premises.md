@@ -1,24 +1,23 @@
 ---
 title: Helyszíni VMware-kiszolgálók előkészítése VMware virtuális gépek az Azure-ba való vészhelyreállításához | Microsoft Docs
 description: Ismerje meg, hogyan készíthet elő VMware-kiszolgálókat az Azure-ba irányuló vészhelyreállításhoz az Azure Site Recovery szolgáltatással.
-services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 04/08/2019
+ms.date: 08/22/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 1095a80ba05aa3e0ae6dfcd526db7ffd18fb9d4d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 0f62ee1a79126f456b993c7caf2de3741637f710
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59359366"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147804"
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>Helyszíni VMware-kiszolgálók előkészítése az Azure-ba irányuló vészhelyreállításához
 
-Ez a cikk bemutatja, hogyan készíti elő a helyszíni VMware-kiszolgálók a vész-helyreállítási Azure-bA a [Azure Site Recovery](site-recovery-overview.md) szolgáltatások. 
+Ez a cikk azt ismerteti, hogyan készítse elő a helyszíni VMware-kiszolgálókat az Azure-ba való vész-helyreállításra az [Azure site Recovery](site-recovery-overview.md) -szolgáltatások használatával. 
 
 Ez az oktatóanyag a második rész abban a sorozatban, amely bemutatja, hogyan állíthat be Azure-ba irányuló vészhelyreállítást helyszíni VMware virtuális gépekhez. Az első oktatóanyagban [konfiguráltuk a VMware vészhelyreállításhoz szükséges Azure-összetevőket](tutorial-prepare-azure.md).
 
@@ -26,17 +25,17 @@ Ez az oktatóanyag a második rész abban a sorozatban, amely bemutatja, hogyan 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
-> * Készítsen elő egy fiók a vCenter-kiszolgáló vagy vSphere ESXi-gazdagép, virtuális gépek felderítésének automatizálásához.
-> * Fiók előkészítése a mobilitási szolgáltatást a VMware virtuális gépek automatikus telepítését.
-> * Tekintse át a VMware-kiszolgáló és a Virtuálisgép-követelmények és a támogatás.
-> * Készítse elő az Azure virtuális géphez való kapcsolódásra a feladatátvételt követően.
+> * Készítse elő a fiókot a vCenter-kiszolgálón vagy a vSphere ESXi-gazdagépen a virtuális gépek felderítésének automatizálásához.
+> * Készítsen elő egy fiókot a mobilitási szolgáltatás VMware virtuális gépeken való automatikus telepítéséhez.
+> * Tekintse át a VMware-kiszolgáló és a virtuális gép követelményeit és támogatását.
+> * Felkészülés az Azure-beli virtuális gépekhez való csatlakozásra a feladatátvételt követően.
 
 > [!NOTE]
-> Az oktatóanyagok bemutatják a legegyszerűbb telepítési út esetén. Ahol lehet, az alapértelmezett beállításokat használják, és nem mutatják be az összes lehetséges beállítást és útvonalat. Részletes útmutatásért tekintse át a cikk az útmutató szakaszban a Site Recovery a tartalom.
+> Az oktatóanyagok a forgatókönyvek legegyszerűbb telepítési útvonalát mutatják be. Ahol lehet, az alapértelmezett beállításokat használják, és nem mutatják be az összes lehetséges beállítást és útvonalat. Részletes utasításokért tekintse át a Site Recovery tartalomjegyzékének útmutató című cikkét.
 
 ## <a name="before-you-start"></a>Előkészületek
 
-Győződjön meg arról, hogy előkészítette az Azure leírtak szerint a [első oktatóanyag-sorozat](tutorial-prepare-azure.md).
+Győződjön meg arról, hogy előkészítette az Azure-t az [ebben a sorozatban szereplő első oktatóanyagban](tutorial-prepare-azure.md)leírtak szerint.
 
 ## <a name="prepare-an-account-for-automatic-discovery"></a>Fiók előkészítése automatikus felderítéshez
 
@@ -69,7 +68,7 @@ Készítse elő a fiókot az alábbiak szerint:
 
 Készítsen elő egy tartományi vagy helyi fiókot, amely rendelkezik a virtuális gépre való telepítéshez szükséges engedélyekkel.
 
-- **Windows virtuális gépek**: Windows virtuális gépekre kíván telepíteni, ha nem használ tartományi fiókot, tiltsa le a távoli felhasználói hozzáférés-vezérlést a helyi számítógépen. Ehhez adja hozzá a **LocalAccountTokenFilterPolicy** DWORD bejegyzést 1 értékkel a **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** helyen található beállításjegyzékhez.
+- **Windows rendszerű virtuális gépek**: Ha Windows rendszerű virtuális gépekre kíván telepíteni, ha nem tartományi fiókot használ, tiltsa le a távoli felhasználói hozzáférés-vezérlést a helyi gépen. Ehhez adja hozzá a **LocalAccountTokenFilterPolicy** DWORD bejegyzést 1 értékkel a **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** helyen található beállításjegyzékhez.
 - **Linux rendszerű virtuális gépek**: Ha Linux virtuális gépekre kíván telepíteni, készítsen elő egy rendszergazdai fiókot a Linux-forráskiszolgálón.
 
 
@@ -82,7 +81,7 @@ Győződjön meg róla, hogy a VMware-kiszolgálók és -virtuálisgépek megfel
 3. Ellenőrizze a helyszíni [hálózat](vmware-physical-azure-support-matrix.md#network) és [tárolás](vmware-physical-azure-support-matrix.md#storage) támogatását. 
 4. Ellenőrizze az Azure támogatott [hálózati](vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover), [tárolási](vmware-physical-azure-support-matrix.md#azure-storage) és [számítási](vmware-physical-azure-support-matrix.md#azure-compute) lehetőségeit a feladatátvételt követően.
 5. Az Azure-ba replikált helyszíni virtuális gépeknek meg kell felelniük az [Azure virtuális gépekre vonatkozó feltételeinek](vmware-physical-azure-support-matrix.md#azure-vm-requirements).
-6. Linux rendszerű virtuális gépek, az eszköz vagy csatlakoztatási pont nevét egyedinek kell lennie. Győződjön meg arról, hogy nincs két eszközök/csatlakoztatási pont rendelkezik-e ugyanazokat a neveket. Vegye figyelembe, hogy a név nem kis-és nagybetűket. Például két eszköz ugyanabban a virtuális Gépben, mint elnevezési _device1_ és _Device1_ nem engedélyezett.
+6. A Linux rendszerű virtuális gépeken az eszköz nevének vagy a csatlakoztatási pont nevének egyedinek kell lennie. Győződjön meg arról, hogy nincs két eszköz/csatlakoztatási pont azonos névvel. Vegye figyelembe, hogy a név nem a kis-és nagybetűket megkülönböztető Például két eszköznek a _device1_ és a _device1_ azonos virtuális géphez való elnevezése nem engedélyezett.
 
 
 ## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>Felkészülés az Azure virtuális gépekhez való kapcsolódásra a feladatátvételt követően
@@ -96,7 +95,7 @@ Ha a feladatátvételt követően RDP segítségével szeretne kapcsolódni a Wi
     - Feladatátvétel előtt engedélyezze az RDP-t a helyszíni gépen.
     - Engedélyezze az RDP-t a **Windows tűzfal** -> **Engedélyezett alkalmazások és szolgáltatások** területén a **Tartomány és Privát** hálózatok számára.
     - Ellenőrizze, hogy az operációs rendszer tárolóhálózati szabályzata **OnlineAll** értékre van-e állítva. [További információk](https://support.microsoft.com/kb/3031135).
-- A virtuális gépen nem lehetnek függőben lévő Windows-frissítések a feladatátvétel elindításakor. Ha vannak, nem jelentkezhet be a virtuális géphez a frissítés befejeződéséig.
+- A virtuális gépen nem lehetnek függőben lévő Windows-frissítések a feladatátvétel elindításakor. Ha vannak, akkor nem fog tudni bejelentkezni a virtuális gépre, amíg a frissítés be nem fejeződik.
 - A feladatátvételt követően ellenőrizze a **Rendszerindítási diagnosztika** részt a Windows Azure virtuális gépen a virtuális gép képernyőképének megtekintéséhez. Ha nem sikerül, ellenőrizze, hogy fut-e a virtuális gép, majd tekintse át a [hibaelhárítási tippeket](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
 
 Ha a feladatátvételt követően SSH segítségével szeretne kapcsolódni a Linux virtuális gépekhez, tegye a következőket:
@@ -109,13 +108,13 @@ Ha a feladatátvételt követően SSH segítségével szeretne kapcsolódni a Li
 
 
 ## <a name="failback-requirements"></a>Feladat-visszavételre vonatkozó követelmények
-Ha azt tervezi, a feladat-visszavételhez a helyszíni hely, vannak-e számos [feladat-visszavételhez szükséges előfeltételek](vmware-azure-reprotect.md##before-you-begin). Most már előkészíti ezeket, de nem szükséges. Előkészítheti követően átadja a feladatokat az Azure-bA.
+Ha azt tervezi, hogy visszaadja a feladatokat a helyszíni helynek, a feladat-visszavételhez számos előfeltételt kell megadnia. [](vmware-azure-reprotect.md##before-you-begin) Ezeket most is előkészítheti, de nem szükséges. Az Azure-ba történő feladatátvétel után is előkészítheti a feladatokat.
 
 
 
 ## <a name="next-steps"></a>További lépések
 
-Vészhelyreállítás beállítása. Ha több virtuális gépet replikál, a kapacitás megtervezése.
+Állítsa be a vész-helyreállítást. Több virtuális gép replikálásakor tervezze meg a kapacitást.
 > [!div class="nextstepaction"]
-> [Vészhelyreállítás az Azure-bA beállítása VMware virtuális gépek](vmware-azure-tutorial.md)
-> [kapacitástervezés](site-recovery-deployment-planner.md).
+> [Az Azure-ba irányuló vész-helyreállítás beállítása a VMWare virtuális gépek](vmware-azure-tutorial.md)
+> számára a[kapacitás](site-recovery-deployment-planner.md)megtervezése.

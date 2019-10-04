@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/02/2017
 ms.author: sumukhs
-ms.openlocfilehash: 97cf4fafb53156eec654bcc67cd8dccf3d973c32
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 8ddb5d0566c57dd1d507d543ac53c0975a83dd43
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58660697"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60723554"
 ---
 # <a name="configure-stateful-reliable-services"></a>A stateful reliable services konfigurálása
 Nincsenek konfigurációs beállításait a reliable services két csoportját. Egy, a fürt összes reliable Services globális, viszont a többi csoport csak egy adott megbízható szolgáltatás.
@@ -30,11 +30,11 @@ A globális reliable Services-konfiguráció van megadva a fürtjegyzék a fürt
 ### <a name="configuration-names"></a>Konfigurációs nevek
 | Name (Név) | Unit (Egység) | Alapértelmezett érték | Megjegyzések |
 | --- | --- | --- | --- |
-| WriteBufferMemoryPoolMinimumInKB |kilobájt |8388608 |A naplózó írási memória pufferkészlet rendszermag módban lefoglalni KB minimális száma. Gyorsítótárazás lemezre írás előtt állapotinformációkat a memóriakészletben használható. |
-| WriteBufferMemoryPoolMaximumInKB |kilobájt |Korlátlan |Amelyhez a naplózó írási pufferkészletben memória maximális mérete növelhető. |
+| WriteBufferMemoryPoolMinimumInKB |Kilobájt |8388608 |A naplózó írási memória pufferkészlet rendszermag módban lefoglalni KB minimális száma. Gyorsítótárazás lemezre írás előtt állapotinformációkat a memóriakészletben használható. |
+| WriteBufferMemoryPoolMaximumInKB |Kilobájt |Korlátlan |Amelyhez a naplózó írási pufferkészletben memória maximális mérete növelhető. |
 | SharedLogId |GUID |"" |Adja meg egy egyedi GUID Azonosítót az alapértelmezett megosztott naplófájl a fürt összes csomópontja, amely a szolgáltatás adott konfigurációban a SharedLogId nem adja meg az összes megbízható szolgáltatások által használt azonosítására használható. Ha SharedLogId van megadva, majd SharedLogPath is kötelező. |
 | SharedLogPath |Teljes elérési útja |"" |Itt adhatja meg a teljes elérési útja, ahol a megosztott naplófájlban a fürt összes csomópontja, amely a szolgáltatás adott konfigurációban a SharedLogPath nem adja meg az összes megbízható szolgáltatás használja. Azonban ha SharedLogPath van megadva, majd SharedLogId is kötelező. |
-| SharedLogSizeInMB |megabájt |8192 |Ennyi statikusan lefoglalni a közös naplók MB szabad lemezterület. Az értéknek kell lennie, 2048 vagy nagyobb. |
+| SharedLogSizeInMB |(MB) |8192 |Ennyi statikusan lefoglalni a közös naplók MB szabad lemezterület. Az értéknek kell lennie, 2048 vagy nagyobb. |
 
 Az Azure ARM vagy a helyszíni JSON-sablon az alábbi példa bemutatja, hogyan módosíthatja a megosztott tranzakciós napló, amely minden, az állapotalapú szolgáltatások esetében a reliable collections biztonsági létrejön.
 

@@ -1,6 +1,6 @@
 ---
-title: Megtekintése az Azure portal segítségével Azure-erőforrások hozzárendelések elutasítása |} A Microsoft Docs
-description: Ismerje meg, hogy a felhasználók, csoportok, a szolgáltatásnevek és felügyelt identitások, amelyek az adott Azure-erőforrás-műveleteket hajthat végre az Azure portal használatával adott hatókörben hozzáférése megtekintése.
+title: Listában elutasítása hozzárendelések Azure-erőforrások az Azure portal használatával |} A Microsoft Docs
+description: Ismerje meg, hogyan kell felsorolni a felhasználók, csoportok, a szolgáltatásnevek és felügyelt identitások, amelyek az adott Azure-erőforrás-műveleteket hajthat végre, az Azure portal használatával adott hatókörök hozzáférése.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,22 +11,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/13/2019
+ms.date: 06/10/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 2dcbcbec9054b31312043ef6642f59fa64728b30
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 21ffb1a2539a2e724a91dd3b2818270a5e573ef8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58005802"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67127485"
 ---
-# <a name="view-deny-assignments-for-azure-resources-using-the-azure-portal"></a>Megtekintése az Azure portal segítségével Azure-erőforrások hozzárendelések megtagadása
+# <a name="list-deny-assignments-for-azure-resources-using-the-azure-portal"></a>Listában elutasítása hozzárendelések Azure-erőforrások az Azure portal használatával
 
-[Hozzárendelések megtagadása](deny-assignments.md) meggátolja a felhasználókat adott Azure-erőforrás műveleteket végrehajtani, akkor is, ha a szerepkör-hozzárendelés hozzáférést biztosít számukra. Ez a cikk bemutatja, hogyan megtekintése az Azure portal segítségével hozzárendelések elutasítása.
+[Hozzárendelések megtagadása](deny-assignments.md) meggátolja a felhasználókat adott Azure-erőforrás műveleteket végrehajtani, akkor is, ha a szerepkör-hozzárendelés hozzáférést biztosít számukra. Ez a cikk azt ismerteti, hogyan kell felsorolni az Azure portal használatával hozzárendelések elutasítása.
 
 > [!NOTE]
-> Jelenleg az egyetlen módszer, hozzáadhatja a saját megtagadási hozzárendelések van Azure-tervek használatával. További információkért lásd: [Azure tervezetek erőforrászárat az új erőforrások védelmét](../governance/blueprints/tutorials/protect-new-resources.md).
+> Nem közvetlenül hozhat létre saját hozzárendelések elutasítása. Információ a nem engedélyezi a hozzárendelések jönnek létre, lásd: [hozzárendelések megtagadása](deny-assignments.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -34,15 +34,15 @@ Egy megtagadási hozzárendelés adatainak beolvasása, kell rendelkeznie:
 
 - `Microsoft.Authorization/denyAssignments/read` engedéllyel, amely tartalmazza a legtöbb [beépített szerepkörök az Azure-erőforrások](built-in-roles.md).
 
-## <a name="view-deny-assignments"></a>Megtagadási hozzárendelések megtekintése
+## <a name="list-deny-assignments"></a>Listában elutasítása hozzárendelések
 
-Kövesse az alábbi lépéseket megtekintéséhez az előfizetés vagy a felügyeleti csoport hatókörű hozzárendelések tiltása.
+Kövesse az alábbi lépéseket listában elutasítása-hozzárendelést az előfizetés vagy a felügyeleti csoport hatóköre.
 
 1. Az Azure Portalon kattintson a **minden szolgáltatás** , majd **felügyeleti csoportok** vagy **előfizetések**.
 
-1. Kattintson a felügyeleti csoport vagy a megtekinteni kívánt előfizetést.
+1. Kattintson a felügyeleti csoport vagy a megjeleníteni kívánt előfizetést.
 
-1. Kattintson a **hozzáférés-vezérlés (IAM)**.
+1. Kattintson a **hozzáférés-vezérlés (IAM)** .
 
 1. Kattintson a **hozzárendelések megtagadása** lap (vagy kattintson a **nézet** gombot a nézetben megtagadása hozzárendelések csempére).
 
@@ -67,9 +67,9 @@ Kövesse az alábbi lépéseket megtekintéséhez az előfizetés vagy a felügy
 
 1. Az engedélyezett elemek hozzáadása egy pipa, és kattintson a **OK** a kijelölt oszlopok megjelenítéséhez.
 
-## <a name="view-details-about-a-deny-assignment"></a>Egy megtagadási hozzárendelés részleteinek megtekintése
+## <a name="list-details-about-a-deny-assignment"></a>Lista részleteit egy megtagadási-hozzárendelést
 
-Kövesse az alábbi lépéseket egy megtagadási hozzárendeléssel kapcsolatos további részletek megtekintéséhez.
+Kövesse az alábbi lépéseket egy megtagadási hozzárendeléssel kapcsolatos további részletek.
 
 1. Nyissa meg a **hozzárendelések megtagadása** ablaktáblán az előző szakaszban leírtak szerint.
 
@@ -110,4 +110,4 @@ Kövesse az alábbi lépéseket egy megtagadási hozzárendeléssel kapcsolatos 
 ## <a name="next-steps"></a>További lépések
 
 * [Megismerheti az Azure-erőforrások hozzárendelések megtagadása](deny-assignments.md)
-* [Listában elutasítása a REST API használatával az Azure erőforrás-hozzárendelések](deny-assignments-rest.md)
+* [Listában elutasítása hozzárendelések Azure-erőforrások Azure PowerShell-lel](deny-assignments-powershell.md)

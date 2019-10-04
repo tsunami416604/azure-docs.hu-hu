@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 0879f9026276eb7149ae44906377a7b369e05116
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c9c860bf994dfeef57e8fd86329ed3a2b3f85e4c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59267072"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67087338"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vodeclic"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Vodeclic
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a Vodeclic konfigurálásához hozzá kell Vodeclic a 
 
 **Vodeclic hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -191,7 +191,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 Ebben a szakaszban egy felhasználói Britta Simon nevű Vodeclic hoz létre. Együttműködve [Vodeclic támogatási csapatának](mailto:hotline@vodeclic.com) a felhasználók hozzáadása az Vodeclic platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
 > [!NOTE]
-> Alkalmazás követelményeinek megfelelően szüksége lehet beolvasni a gép szerepel az engedélyezési listán. Az, hogy megtörténjen, meg kell osztania a nyilvános IP-címet a [Vodeclic támogatási csapatának](mailto:hotline@vodeclic.com).
+> Alkalmazás követelményeinek megfelelően szüksége lehet az engedélyezési listához hozzáadott gépet. Az, hogy megtörténjen, meg kell osztania a nyilvános IP-címet a [Vodeclic támogatási csapatának](mailto:hotline@vodeclic.com).
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 

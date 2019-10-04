@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 8602f020481249282756a952a46b32bd9e768372
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
-ms.translationtype: HT
+ms.openlocfilehash: 4a6a074c3f677023928fefa5c09eb305b5441dfe
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241319"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303980"
 ---
 # <a name="enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Az eszköz regisztrálása IoT Hubra az Azure IoT Hub Provisioning Service ügyfél (.NET) használatával
 
@@ -30,7 +30,7 @@ Az előző oktatóanyagban bemutattuk, hogyan állíthat be egy eszközt úgy, h
 
 A folytatás előtt győződjön meg arról, hogy [a kiépítendő eszköz az Azure IoT Hub Device Provisioning Service használatával történő beállítását](./tutorial-set-up-device.md) ismertető oktatóanyagban leírt módon konfigurálta az eszközt és annak *hardverbiztonsági modulját*.
 
-* Visual Studio 2015 vagy Visual Studio 2017
+* Visual Studio
 
 > [!NOTE]
 > Visual Studio nem szükséges. Elegendő a [.NET](https://www.microsoft.com/net) telepítése, és a fejlesztők az általuk előnyben részesített, Windowson vagy Linuxon futó szerkesztőt használhatják.  
@@ -121,13 +121,13 @@ A következő két módon regisztrálható az eszköz a Device Provisioning Serv
         SetRegistrationDataAsync().GetAwaiter().GetResult();
             
         Console.WriteLine("Done, hit enter to exit.");
-        Console.ReadLine();
     }
     catch (Exception ex)
     {
         Console.WriteLine();
         Console.WriteLine("Error in sample: {0}", ex.Message);
     }
+    Console.ReadLine();
     ```
         
 1. A Visual Studio Megoldáskezelőben kattintson a jobb gombbal a megoldásra, majd kattintson a **Kezdőprojektek beállítása** parancsra. Válassza az **Egyetlen kezdőprojekt** lehetőséget, majd a legördülő menüből válassza a **DeviceProvisioning** projektet.  

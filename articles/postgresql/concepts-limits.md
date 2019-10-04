@@ -1,20 +1,22 @@
 ---
-title: Azure Database for postgresql-hez korlátozásai
-description: Ez a cikk ismerteti a korlátozások az Azure Database for postgresql-hez, például kapcsolat és a tárolási motort lehetőségek számát.
+title: Azure Database for PostgreSQL - kiszolgáló egyetlen korlátai
+description: Ez a cikk ismerteti a korlátokat az Azure Database for PostgreSQL – egyetlen kiszolgálóból álló, például kapcsolat és a tárolási motort lehetőségek számát.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 1/22/2019
-ms.openlocfilehash: 843107b8d251c2073ba9e02beacb16ab7615eca6
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.date: 06/25/2019
+ms.custom: fasttrack-edit
+ms.openlocfilehash: e4752112acf136d9ffb19a0b7383bc3aff5de5e0
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470732"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448087"
 ---
-# <a name="limitations-in-azure-database-for-postgresql"></a>Azure Database for postgresql-hez korlátozásai
-A következő szakaszok ismertetik a kapacitás és a működési korlátai az adatbázis-szolgáltatás.
+# <a name="limits-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - kiszolgáló egyetlen korlátai
+A következő szakaszok ismertetik a kapacitás és a működési korlátai az adatbázis-szolgáltatás. Ha szeretné (számítási, memória, tárolási) erőforrást szintekről ismerje meg, tekintse meg a [tarifacsomagok](concepts-pricing-tiers.md) cikk.
+
 
 ## <a name="maximum-connections"></a>Kapcsolatok maximális száma
 Tarifacsomag és virtuális magok száma kapcsolatok maximális száma a következők: 
@@ -33,7 +35,7 @@ Tarifacsomag és virtuális magok száma kapcsolatok maximális száma a követk
 |Memóriára optimalizált| 4| 500|
 |Memóriára optimalizált| 8| 960|
 |Memóriára optimalizált| 16| 1900|
-|Memóriára optimalizált| 32| 1900|
+|Memóriára optimalizált| 32| 1987|
 
 Amikor kapcsolatokat meghaladják a korlátot, a következő hiba jelenhet meg:
 > VÉGZETES: sajnos már túl sok ügyfél
@@ -47,6 +49,9 @@ Az Azure rendszer öt kapcsolatok figyelése az Azure Database for PostgreSQL-ki
 
 ### <a name="server-version-upgrades"></a>Kiszolgáló verziófrissítések
 - Fő database engine verziói között az automatikus migrálási jelenleg nem támogatott. Ha szeretné, a következő fő verzióra való frissítéshez, egy [memóriakép és visszaállítás](./howto-migrate-using-dump-and-restore.md) , hogy egy kiszolgálót, amely az új motor verziójával lett létrehozva.
+
+> PostgreSQL, 10-es verzió előtt vegye figyelembe, hogy a [PostgreSQL versioning házirend](https://www.postgresql.org/support/versioning/) számít egy _főverzió_ megnöveli az első frissítés _vagy_ száma (a második például tekintették 9,5 a 9.6- _fő_ termékverzió-frissítés).
+> Től 10-es verzió, csak az első szám módosítása a főverzió-frissítés számít (például 10.0, 10.1 van egy _kisebb_ termékverzió-frissítés, illetve 10, 11 egy _fő_ termékverzió-frissítés).
 
 ### <a name="vnet-service-endpoints"></a>Virtuális hálózati Szolgáltatásvégpontok
 - Virtuális hálózati Szolgáltatásvégpontok támogatása csak az általános célú és memóriahasználatra optimalizált kiszolgálók esetében érhető el.

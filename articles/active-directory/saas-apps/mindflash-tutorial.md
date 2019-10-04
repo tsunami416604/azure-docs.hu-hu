@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 571ab38dd52d83f1391b555bc4dfc8c091f1fd1b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 97e38c62da74444f1f229f12e42d98e75a6e5073
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59256702"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67097203"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mindflash"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Mindflash
 
@@ -52,7 +52,7 @@ Az Azure AD integrálása a Mindflash konfigurálásához hozzá kell Mindflash 
 
 **Mindflash hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -204,7 +204,7 @@ Ahhoz, hogy az Azure AD-felhasználók Mindflash szolgáltatásba való bejelent
     
     c. Az a **E-mail** szövegmezőbe írja be **E-mail cím** , a felhasználó **BrittaSimon\@contoso.com**.
 
-    b. Kattintson a **Hozzáadás** parancsra.
+    b. Kattintson a **Hozzáadás**lehetőségre.
 
 >[!NOTE]
 >Bármely más Mindflash felhasználói fiók létrehozása eszközöket használhatja, vagy az aad-ben a felhasználói fiókok kiépítését Mindflash által biztosított API-k. 

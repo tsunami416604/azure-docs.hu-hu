@@ -3,8 +3,8 @@ title: A hálózati adapterek hozzáadása vagy eltávolítása abból az Azure 
 description: Útmutató a hálózati adapterek hozzáadása vagy eltávolítása a hálózati adapterek virtuális gépekről.
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
-ms.author: jdial
-ms.openlocfilehash: a6371746d156fb0be2d45ac94c898652a3147a6b
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.author: kumud
+ms.openlocfilehash: 23e46290af6bdb4c217d8fa0cd836673652fc81d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887488"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64701378"
 ---
 # <a name="add-network-interfaces-to-or-remove-network-interfaces-from-virtual-machines"></a>A hálózati adapterek hozzáadása vagy eltávolítása a hálózati adapterek virtuális gépekről
 
@@ -56,7 +56,7 @@ A virtuális Gépet hoz létre, mielőtt hálózati adaptert létrehozni a lép�
 
 1. Jelentkezzen be az Azure portálra.
 2. A keresőmezőbe, a portál tetején, írja be a nevét, a virtuális gép, amelyhez a hálózati adapter hozzáadása, vagy keresse meg a virtuális gép kiválasztásával kívánt **minden szolgáltatás**, majd **virtuális gépek**. Miután a virtuális Gépet talált, kattintson rá. A virtuális gép támogatnia kell a hozzáadni kívánt hálózati adapterek számát. Ismerje meg, hány hálózati adapterek minden virtuális gép mérete támogatja, lásd: [az Azure-ban Linux rendszerű virtuális gépek méretei](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy [méretek a Windows virtuális gépek az Azure-ban](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).  
-3. Válassza ki **áttekintése**alatt **beállítások**. Válassza ki **leállítása**, majd várjon, amíg a **állapot** módosítja a virtuális gép **leállítva (felszabadítva)**.
+3. Válassza ki **áttekintése**alatt **beállítások**. Válassza ki **leállítása**, majd várjon, amíg a **állapot** módosítja a virtuális gép **leállítva (felszabadítva)** .
 4. Válassza ki **hálózatkezelés**alatt **beállítások**.
 5. Válassza ki **hálózati adapter csatolása**. Nem jelenleg egy másik virtuális géphez csatolt hálózati adapterek listájából válassza ki a kívánt csatolása.
 
@@ -95,7 +95,7 @@ Megtekintheti a jelenleg csatlakoztatva van egy virtuális géphez, mindegyik h�
 
 1. Jelentkezzen be az Azure portálra.
 2. A keresőmezőbe, a portál tetején, keresse meg az eltávolítani kívánt virtuális gép nevét (leválasztása) a hálózati adaptert a, vagy a tallózással keresse meg a virtuális gép kiválasztásával **minden szolgáltatás**, majd **virtuális gépek**. Miután a virtuális Gépet talált, kattintson rá.
-3. Válassza ki **áttekintése**alatt **beállítások**, majd **leállítása**. Várja meg, amíg a **állapot** módosítja a virtuális gép **leállítva (felszabadítva)**.
+3. Válassza ki **áttekintése**alatt **beállítások**, majd **leállítása**. Várja meg, amíg a **állapot** módosítja a virtuális gép **leállítva (felszabadítva)** .
 4. Válassza ki **hálózatkezelés**alatt **beállítások**.
 5. Válassza ki **leválasztási hálózati adapter**. Jelenleg a virtuális géphez csatlakoztatott hálózati adapterek listájából válassza ki a leválasztani kívánt hálózati adaptert.
 

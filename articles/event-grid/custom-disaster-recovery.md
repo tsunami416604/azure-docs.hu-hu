@@ -5,20 +5,22 @@ services: event-grid
 author: banisadr
 ms.service: event-grid
 ms.topic: tutorial
-ms.date: 01/16/2018
+ms.date: 05/16/2019
 ms.author: babanisa
-ms.openlocfilehash: fa0ffa9ad913f0dc3afe8dc31aeaa0254fa2d241
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 4a069db7984a7b0b0bb4bb867dc510f73d8b1f75
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57863168"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66305083"
 ---
-# <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>A saját vész-helyreállítási hozhat létre egyéni témaköröket az Event Gridben
-
+# <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Hozhat létre a saját vész-helyreállítási egyéni témakört az Event Gridben
 Az alkalmazás funkciói súlyos adatvesztést helyreállva vész-helyreállítási összpontosít. Ez az oktatóanyag végigvezeti a eseménykezelési architektúra beállítása helyreállítja, ha egy adott régióban az Event Grid szolgáltatás akkor kerül sérült.
 
 Ebben az oktatóanyagban megismerheti, hogyan hozhat létre egyéni témaköröket az aktív-passzív feladatátvétel architektúra az Event Gridben lesz. Feladatátvétel által az üzenettémák és előfizetések tükrözés két régióban is, és kezeli a feladatátvétel során egy témakör akkor kerül sérült fogja elvégezni. Ebben az oktatóanyagban az architektúra minden új forgalom feladatait. Fontos, hogy ne feledje, a telepítés, események már útban nem állítható helyre, amíg a feltört régió ismét kifogástalan.
+
+> [!NOTE]
+> Event Grid mostantól támogatja az automatikus georedundáns vészhelyreállítás (GeoDR) a kiszolgálói oldalon. Ha azt szeretné, hogy a feladatátvételi folyamat nagyobb vezérlőelem ügyféloldali vész-helyreállítási logikai továbbra is alkalmazható. További információk az automatikus GeoDR: [kiszolgálóoldali georedundáns vészhelyreállítás az Azure Event Grid](geo-disaster-recovery.md).
 
 ## <a name="create-a-message-endpoint"></a>Üzenetvégpont létrehozása
 

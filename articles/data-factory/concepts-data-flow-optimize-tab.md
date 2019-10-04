@@ -1,20 +1,19 @@
 ---
 title: Az Azure Data Factory leképezés adatfolyam Optimalizálás lap
-description: Adatfolyamok optimalizálása lapon partíció beállításokkal leképezése az Azure Data Factory optimalizálása
+description: Azure Data Factory leképezése adatfolyamok lapján optimalizálása a partícióbeállítások optimalizálása
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 3802a8475d8a39a2f275dbc7fcf21ce69892a117
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 40023931b2a0b3788a583a5b5240e7916b187e34
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728777"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190644"
 ---
-# <a name="mapping-data-flow-transformation-optimize-tab"></a>Hozzárendelési folyamat átalakítását Optimalizálás lap
+# <a name="mapping-data-flow-transformation-optimize-tab"></a>Adatfolyam átalakítása optimalizálás adatok hozzárendelése lap
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
@@ -46,8 +45,13 @@ Dinamikus tartomány Spark oszlopokat vagy Ön által megadott kifejezések alap
 
 ### <a name="fixed-range"></a>Rögzített tartomány
 
-Egy kifejezés, amely értékek, particionált adatok az oszlopokban a rögzített kínál kell létrehozni. Az adatok beható ismerete, mielőtt ezt a beállítást annak érdekében, hogy partíció döntés kell rendelkeznie. Adja meg a kifejezés értékét a partíciós függvények részeként használható. Beállíthatja, hogy a fizikai partíciók számát.
+Egy kifejezés, amely értékek, particionált adatok az oszlopokban a rögzített kínál kell létrehozni. Az adatok beható ismerete, mielőtt ezt a beállítást annak érdekében, hogy partíció döntés kell rendelkeznie. A kifejezés a beírt értékeket a partíciós függvények részeként használható. Beállíthatja, hogy a fizikai partíciók számát.
 
 ### <a name="key"></a>Kulcs
 
 Ha az adatok a számosságot beható ismerete, kulcs particionálás egy jó partíció stratégia lehet. Kulcs particionálás az oszlopban található létrehozza a partíciók minden egyedi értékére vonatkozóan. A partíciók száma nem állítható, mert az a szám az adatok egyedi értékeket fog alapulni.
+
+## <a name="next-steps"></a>További lépések
+
+[Leképezés adatfolyam teljesítmény-útmutató](concepts-data-flow-performance.md)
+[adatfolyam figyelése](concepts-data-flow-monitoring.md)

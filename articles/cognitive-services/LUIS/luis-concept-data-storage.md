@@ -1,6 +1,6 @@
 ---
-title: Adattárolás
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Adattárolás – LUIS
+titleSuffix: Azure Cognitive Services
 description: A LUIS egy Azure data store, a kulcs által megadott a régióhoz tartozó, a titkosított adatokat tárolja.
 services: cognitive-services
 author: diberry
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/28/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: a1093c2a6303b453a17a52058303913de5ecfa8d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e3028a9f046edb4013d8a2d6ec88d8c3cb2ca489
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58893197"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639225"
 ---
 # <a name="data-storage-and-removal-in-language-understanding-luis-cognitive-services"></a>Az adattárolás és eltávolítása a Cognitive Services Language Understanding (LUIS)
 A LUIS egy Azure data store, a kulcs által megadott a régióhoz tartozó, a titkosított adatokat tárolja. Ezek az adatok 30 napig tárolja. 
@@ -26,31 +26,32 @@ Felhasználók teljes hozzáféréssel rendelkeznek a keresztül [exportálása]
 
 ## <a name="utterances"></a>Beszédmódok
 
-Beszédmódok két különböző helyen tárolhatók. 
+A hosszúságú kimondott szöveg két különböző helyen is tárolhatók. 
 
-* Során **az Authoring Tool folyamat**, utterances létrehozása és tárolása a SZÁNDÉKTÓL. A leképezések kimondott szöveg sikeres LUIS-alkalmazásokon szükségesek. Miután az alkalmazás közzé van téve, és megkapja a végponton, a végpont-kérelem lekérdezési karakterlánc, a lekérdezések `log=false`, határozza meg, ha a végpont utterance (kifejezés) tárolja. Ha a végpont, aktív tanulás megcímkézzen található a része lesz a **hozhat létre** szakaszban a portál, a a **tekintse át a végpont utterances** szakaszban. 
-* Ha Ön **tekintse át a végpont utterances**, és -leképezést ad hozzá az utterance (kifejezés), az utterance (kifejezés) már nem található végponti megcímkézzen vizsgálni a részeként. Felvettük a alkalmazásszándékkal. 
+* **A szerzői folyamat**során a rendszer létrehozza és tárolja a hosszúságú kimondott szöveg a szándékban. A sikeres LUIS-alkalmazáshoz hosszúságú kimondott szöveg szükséges. Miután közzétette az alkalmazást, és fogadja a lekérdezéseket a végponton, a végponti kérelem querystring `log=false`határozza meg, hogy a végpontok kivonása van-e tárolva. Ha a rendszer tárolja a végpontot, az a portál **összeállítás** szakaszában található aktív tanulási hosszúságú kimondott szöveg részévé válik az **Endpoint hosszúságú kimondott szöveg áttekintése** szakaszban. 
+* Ha áttekinti a **végpont hosszúságú kimondott szöveg**, és felvesz egy leképezést, a rendszer már nem tárolja a megjelölést az áttekinthető végponti hosszúságú kimondott szöveg részeként. A rendszer hozzáadja az alkalmazás szándékához. 
 
 <a name="utterances-in-an-intent"></a>
 
-### <a name="delete-example-utterances-from-an-intent"></a>Példa utterances törlése rendeltetésből
+### <a name="delete-example-utterances-from-an-intent"></a>Példa hosszúságú kimondott szöveg törlése egy szándékból
+
 Példa utterances képzéshez használt törlése [LUIS](luis-reference-regions.md). Ha töröl egy példa utterance (kifejezés) a LUIS-alkalmazás, törlődik a LUIS webszolgáltatás és az exportálás nem érhető el.
 
 <a name="utterances-in-review"></a>
 
-### <a name="delete-utterances-in-review-from-active-learning"></a>Aktív tanulás, tekintse át a kimondott szöveg törlése
+### <a name="delete-utterances-in-review-from-active-learning"></a>Hosszúságú kimondott szöveg törlése az Active learningből
 
-Beszédmódok törölheti, hogy a LUIS javasol a felhasználó megcímkézzen listájából a  **[áttekintés végpont kimondott szöveg lap](luis-how-to-review-endpoint-utterances.md)**. Beszédmódok törlése a listáról a továbbiakban nem javasolt, de nem törli azokat a naplókat.
+Beszédmódok törölheti, hogy a LUIS javasol a felhasználó megcímkézzen listájából a  **[áttekintés végpont kimondott szöveg lap](luis-how-to-review-endpoint-utterances.md)** . Beszédmódok törlése a listáról a továbbiakban nem javasolt, de nem törli azokat a naplókat.
 
-Ha nem szeretné, aktív tanulás utterances, [tiltsa le az aktív tanulás](luis-how-to-review-endpoint-utterances.md#disable-active-learning). Aktív tanulás letiltását is letiltja a naplózást.
+Ha nem szeretné, hogy az aktív tanulás hosszúságú kimondott szöveg, [Tiltsa le az aktív tanulást](luis-how-to-review-endpoint-utterances.md#disable-active-learning). Az aktív tanulás letiltása szintén letiltja a naplózást.
 
-### <a name="disable-logging-utterances"></a>Tiltsa le a naplózást kimondott szöveg
-[Aktív tanulás letiltása](luis-how-to-review-endpoint-utterances.md#disable-active-learning) letiltja a naplózást.
+### <a name="disable-logging-utterances"></a>Hosszúságú kimondott szöveg naplózásának letiltása
+Az [aktív tanulás letiltása](luis-how-to-review-endpoint-utterances.md#disable-active-learning) letiltja a naplózást.
 
 
 <a name="accounts"></a>
 
-## <a name="delete-an-account"></a>-Fiók törlése
+## <a name="delete-an-account"></a>Fiók törlése
 Ha töröl egy fiókot, az összes alkalmazás törlődnek, azokhoz példa kimondott szöveg és a naplókat. Az adatok a fiók előtt 60 napig megőrződnek, és adatok véglegesen törlődnek.
 
 Fiók törlése folyamatban van a érhető el a **beállítások** lapot. Válassza ki a fiók nevét a jobb felső navigációs sávon való a **beállítások** lapot.

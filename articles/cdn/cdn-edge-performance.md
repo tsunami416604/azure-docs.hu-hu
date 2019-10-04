@@ -7,19 +7,19 @@ author: zhangmanling
 manager: erikre
 editor: ''
 ms.assetid: 8cc596a7-3e01-4f76-af7b-a05a1421517e
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 7dfa252c29121adca2ecc77c08b2fca81d56e575
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: b8a65d4ae6aaac78e642c851a66b745a940fa0ad
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320074"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593904"
 ---
 # <a name="analyze-edge-node-performance-in-microsoft-azure-cdn"></a>Az élcsomópontok teljesítményének elemzése a Microsoft Azure CDN szolgáltatásban
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
@@ -111,17 +111,17 @@ Ezek a metrikák célja nyújt betekintést az alábbi általános költségek m
 | A bájtok |Azt jelzi, hogy igénylők (pl. webböngésző) által küldött adatok (bájt) mennyisége és a CDN (edge kiszolgálók). |
 | Távoli bájt |Azt jelzi, hogy a CDN-t (peremhálózati kiszolgálókon) a CDN-t és az ügyfelek szerverek küldött bájtok, az adatok mennyisége. |
 
-#### <a name="performance-metrics"></a>Teljesítmény-mérőszámok
+#### <a name="performance-metrics"></a>Teljesítmény-metrikák
 Ezek a metrikák célja a forgalom általános CDN teljesítményének nyomon követéséhez.
 
 | Mező | Leírás |
 | --- | --- |
 | Átviteli sebesség |Azt jelzi, hogy az átlagos tartalom volt továbbításának sebessége a CDN-ből egy kérelmezőnek. |
-| Időtartam |Azt jelzi, hogy az átlagos idő (MS), egy eszköz továbbítására a kérelmező (pl. webböngésző) időtartamát. |
+| Duration |Azt jelzi, hogy az átlagos idő (MS), egy eszköz továbbítására a kérelmező (pl. webböngésző) időtartamát. |
 | Tömörített kérelmek gyakorisága |A kérelmező (pl. webböngésző), a CDN-t (peremhálózati kiszolgálókon) a kapott találatok arányát jelzi a tömörített formátumban. |
 | 4xx Hibaarány |Által generált egy 4xx típusú állapotkódot találatok arányát jelzi. |
 | 5XX Hibaarány |Által generált 5xx állapotkódot találatok arányát jelzi. |
-| Találatok |Azt jelzi, hogy a CDN-tartalom vonatkozó kérelmek száma. |
+| Találatok száma |Azt jelzi, hogy a CDN-tartalom vonatkozó kérelmek száma. |
 
 #### <a name="secure-traffic-metrics"></a>Biztonságos forgalom metrikák
 Ezek a metrikák célja a HTTPS-forgalmat a CDN teljesítményének nyomon követéséhez.
@@ -168,7 +168,7 @@ Ez a modul minden egyes jelentést tartalmaz egy diagramot és a különböző t
 | TCP_EXPIRED_MISS részletei |Tartalmazza az elavult eszközöket, amelyhez új verzió kellett kérhető le a forráskiszolgáló URL felső 10-megjelenítő grafikon. Az első 100 URL-címeket az ilyen típusú eszközök statisztikája közvetlenül ehhez a diagramhoz alatt jelennek meg. |
 | TCP_CLIENT_REFRESH_MISS részletei |Tartalmazza a sávdiagramot oszlopdiagramra cseréli, amely megjeleníti az első 10 URL-címeket az eszközök lekérése egy forráskiszolgálóról, az ügyfél kérése no-cache miatt. Az első 100 URL-címeket az ilyen típusú kérelmeket statisztikája közvetlenül a diagram alatt jelennek meg. |
 | Ügyfél kéréstípusok |HTTP-ügyfél (például böngészők) által végrehajtott kérelmek típusát jelzi. Ez a jelentés egy fánkdiagramon feltárhatja, hogy hogyan kérések kezelésének bizonyos értelemben biztosító tartalmaz. Minden egyes kérelemtípus kapcsolatos sávszélesség és a forgalom a diagram alatt jelenik meg. |
-| Böngészőazonosító |Tartalmaz egy olyan oszlopdiagramon, megjelenítés, a felső 10 felhasználói ügynökök lekérni a tartalmat a CDN-en keresztül. A felhasználói ügynök általában egy webböngészőben, a media player vagy a mobiltelefon böngészőben. Az első 100 felhasználói ügynökök statisztikáját közvetlenül a diagram alatt jelennek meg. |
+| Felhasználói ügynök |Tartalmaz egy olyan oszlopdiagramon, megjelenítés, a felső 10 felhasználói ügynökök lekérni a tartalmat a CDN-en keresztül. A felhasználói ügynök általában egy webböngészőben, a media player vagy a mobiltelefon böngészőben. Az első 100 felhasználói ügynökök statisztikáját közvetlenül a diagram alatt jelennek meg. |
 | Hivatkozók |A felső 10 hivatkozók megjelenítése a CDN-en keresztül elérhető tartalmakhoz oszlopdiagramon tartalmazza. A hivatkozó általában a weblapon vagy a tartalom összekapcsoló erőforrás URL-CÍMÉT. Részletes információkat lejjebb a diagramon az első 100 hivatkozóknak. |
 | A tömörítési típusok |E tömörített, a peremhálózati kiszolgáló által kért eszközök felszámolja gyűrűdiagramra tartalmazza. A tömörített eszközök aránya használt tömörítési típust oszlanak meg. Részletes információkat lejjebb a gráf minden tömörítési típus és állapotát. |
 | Fájltípusok |Egy oszlopdiagramot jelenít meg a felső 10 fájltípusokat, a fiókhoz tartozó CDN-en keresztül kérő tartalmazza. Ez a jelentés az alkalmazásában, a fájl típusa határozza meg az objektum fájlnév-kiterjesztésű és internetes média típusa (pl. .html \[text/html\], .htm \[text/html\], .aspx \[text/html\]stb.). Részletes információkat lejjebb a gráf az első 100 fájltípusok esetén. |

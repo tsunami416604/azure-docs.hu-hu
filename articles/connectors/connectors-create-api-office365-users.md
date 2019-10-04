@@ -1,5 +1,5 @@
 ---
-title: Csatlakozás az Office 365 felhasználók – az Azure Logic Apps |} Microsoft Docs
+title: Kapcsolódás az Office 365-felhasználók – Azure Logic Apps |} A Microsoft Docs
 description: Az Office 365 felhasználók REST API-k és az Azure Logic Apps felhasználói profilok kezelése
 author: ecfan
 manager: jeconnoc
@@ -11,33 +11,33 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: f030ac07dc1615c435c1a110836d7a03ab8a8546
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 3865fbc4fbc39da0860218565b0a8956b2dad8ee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295608"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62105871"
 ---
-# <a name="get-started-with-the-office-365-users-connector"></a>Az Office 365-felhasználók összekötő az első lépései
-Office 365 felhasználói profilok, a keresés felhasználói és több csatlakozni. Az Office 365-felhasználók a következőket teheti:
+# <a name="get-started-with-the-office-365-users-connector"></a>Az Office 365 Users összekötővel használatának első lépései
+Csatlakozhat Office 365-felhasználói profilok, a felhasználók keresése és egyéb beolvasásához. Az Office 365-felhasználók a következőket teheti:
 
-* Az üzleti folyamat Office 365-felhasználók származó adatok alapján történő létrehozása. 
-* Közvetlen beosztottai első használata műveleteket vezető felhasználói profil, és több kapják meg. Ezeket a műveleteket válaszol, és végezze el a kimeneti más műveletek érhető el. Például lekérni egy személy közvetlen beosztottai, majd ezt az adatot és SQL Azure-adatbázis frissítéséhez. 
+* Az üzleti folyamat kap Office 365 felhasználói adatok alapján történő létrehozása. 
+* Használható műveletek, amelyek a közvetlen beosztottak, beolvasása lekéréséhez-kezelő felhasználói profil stb. Ezek a műveletek válaszol, és végezze el a kimenetet más műveletek esetében érhető el. Ha például egy személy közvetlen beosztottak, beolvasása ezt az adatot és egy SQL Azure adatbázis frissítése. 
 
-Most hozzon létre egy logic app kezdheti, lásd: [logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Hozzon létre egy logikai alkalmazás most már megkezdheti, lásd: [hozzon létre egy logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-## <a name="create-a-connection-to-office-365-users"></a>Kapcsolatot létesíthet Office 365-felhasználók
-Ezt az összekötőt a logic Apps alkalmazások hozzáadásakor kell bejelentkezés az Office 365-felhasználó fiókját, és lehetővé teszik a logic Apps alkalmazásokat fiókjához.
+## <a name="create-a-connection-to-office-365-users"></a>Hozzon létre egy kapcsolatot az Office 365-felhasználók
+Ha ezt az összekötőt a logic apps hozzáad, kell jelentkezzen be az Office 365 felhasználói fiók és a logic apps a fiókhoz való csatlakozás engedélyezése.
 
 > [!INCLUDE [Steps to create a connection to Office 365 Users](../../includes/connectors-create-api-office365users.md)]
 > 
 > 
 
-Miután létrehozta a kapcsolatot, akkor adja meg az Office 365-felhasználók tulajdonságai, például a felhasználói azonosítóját. A **REST API-referenciában** ebben a cikkben ismerteti ezeket a tulajdonságokat.
+Miután létrehozta a kapcsolatot, akkor adja meg az Office 365-felhasználók tulajdonságai, például a felhasználói azonosítóját. A **REST API-referencia** ebben a cikkben azt ismerteti, ezeket a tulajdonságokat.
 
 ## <a name="connector-specific-details"></a>Összekötő-specifikus részletei
 
-Bármely eseményindítók és a swagger definiált műveletek megtekintése, és semmilyen határnak a Lásd még: a [connector részleteket](/connectors/officeusers/).
+Megtekintheti a valamennyi eseményindítót és műveletet a swaggerben meghatározott, és emellett a korlátozott a [összekötő részletei](/connectors/officeusers/).
 
 ## <a name="more-connectors"></a>További összekötők
-Lépjen vissza a [API-k lista](apis-list.md).
+Lépjen vissza a [API-k listája](apis-list.md).

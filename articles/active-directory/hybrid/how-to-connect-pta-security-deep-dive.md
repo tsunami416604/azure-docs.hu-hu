@@ -16,11 +16,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7f5e2443a285e065426e3dba0312ef6420097ef1
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617212"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60348063"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Az Azure Active Directory átmenő hitelesítés a biztonság részletes bemutatása
 
@@ -186,9 +186,9 @@ Az Azure AD-hitelesítési ügynök megbízhatósági megújítása:
 
 A frissítési kérelem automatikusan frissíti a hitelesítési ügynök, amikor egy új (a hibajavításokat és teljesítményt érintő továbbfejlesztés) verziója. A frissítési kérelem nem kezeli a jelszó érvényesítése kérések a bérlő számára.
 
-Azure ad-ben üzemelteti az új verziót, a szoftver egy aláírt **Windows Installer-csomagot (MSI)**. Az MSI használatával legyen aláírva [Microsoft Authenticode](https://msdn.microsoft.com/library/ms537359.aspx) az SHA256 titkosítást, kivonatoló algoritmus. 
+Azure ad-ben üzemelteti az új verziót, a szoftver egy aláírt **Windows Installer-csomagot (MSI)** . Az MSI használatával legyen aláírva [Microsoft Authenticode](https://msdn.microsoft.com/library/ms537359.aspx) az SHA256 titkosítást, kivonatoló algoritmus. 
 
-![Automatikus frissítés](./media/how-to-connect-pta-security-deep-dive/pta5.png)
+![Az automatikus frissítés](./media/how-to-connect-pta-security-deep-dive/pta5.png)
 
 Az automatikus frissítés hitelesítési ügynök:
 

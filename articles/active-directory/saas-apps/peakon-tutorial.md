@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: a98ec0d460e050f8158ffee1262dd85f0cd07d9a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b093a26848701254ad674081037c266f1fb012b2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59256414"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67094720"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-peakon"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Peakon
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a Peakon konfigurálásához hozzá kell Peakon a kata
 
 **Peakon hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -162,7 +162,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Peakon, hajtsa végr
 
     e. Kattintson a **ikon** másolása a **válasz URL-cím (ACS)** és illessze be a **válasz URL-cím** szövegmezőjébe **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
-    f. Kattintson a **Mentés** gombra.
+    f. Kattintson a **Save** (Mentés) gombra
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
 

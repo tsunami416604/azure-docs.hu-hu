@@ -9,11 +9,11 @@ services: iot-accelerators
 ms.date: 10/10/2018
 ms.topic: conceptual
 ms.openlocfilehash: 34222f396ed3c43932371aa9f64a459bb2a5dd0e
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51828320"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61442939"
 ---
 # <a name="import-an-iot-edge-package-into-your-remote-monitoring-solution-accelerator"></a>A távoli figyelési megoldásgyorsító egy IoT Edge-csomag importálása
 
@@ -31,9 +31,9 @@ Az Azure portal használatával exportálja a fejlesztési környezet manifest n
 
 1. Az Azure Portalon lépjen az IoT hub használatával fejlesztheti és tesztelheti az IoT Edge-eszközökön. Kattintson a **IoT Edge** , majd **IoT Edge-telepítések**: ![IoT Edge](media/iot-accelerators-remote-monitoring-import-edge-package/iotedge.png)
 
-1. Kattintson a használni kívánt központi telepítés konfigurálása a központi telepítést. A **üzembe helyezési adatok** oldal: ![IoT Edge üzembe helyezés részleteit](media/iot-accelerators-remote-monitoring-import-edge-package/deploymentdetails.png)
+1. Kattintson a használni kívánt központi telepítés konfigurálása a központi telepítést. A **üzembe helyezési adatok** lapon jelenik meg: ![IoT Edge üzembe helyezés részleteit](media/iot-accelerators-remote-monitoring-import-edge-package/deploymentdetails.png)
 
-1. Kattintson a **töltse le az IoT Edge-jegyzékfájl**: ![letöltési manifest nasazení](media/iot-accelerators-remote-monitoring-import-edge-package/download.png)
+1. Kattintson a **töltse le az IoT Edge-jegyzékfájl**:  ![Manifest nasazení letöltése](media/iot-accelerators-remote-monitoring-import-edge-package/download.png)
 
 1. A JSON-fájl mentése nevű helyi fájl **deploymentmanifest.json**.
 
@@ -43,11 +43,11 @@ Most már manifest nasazení tartalmazó fájl. A következő szakaszban Ön íg
 
 Az Edge manifest nasazení csomag importálásához a megoldás az alábbi lépésekkel:
 
-1. Keresse meg a **csomagok** oldal a távoli figyelési webes felhasználói felületen: ![csomagok lap](media/iot-accelerators-remote-monitoring-import-edge-package/packagespage.png)
+1. Keresse meg a **csomagok** oldal a távoli figyelési webes felhasználói felületen:  ![Csomagok lap](media/iot-accelerators-remote-monitoring-import-edge-package/packagespage.png)
 
-1. Kattintson a **+ új csomag**, válassza a **Edge Manifest** csomag típusa, és kattintson **Tallózás** válassza ki a **deploymentmanifest.json** fájl az előző szakaszban mentett: ![válassza manifest](media/iot-accelerators-remote-monitoring-import-edge-package/selectmanifest.png)
+1. Kattintson a **+ új csomag**, válassza a **Edge Manifest** csomag típusa, és kattintson **Tallózás** válassza ki a **deploymentmanifest.json** fájl az előző szakaszban mentett:  ![Válassza ki a jegyzékfájl](media/iot-accelerators-remote-monitoring-import-edge-package/selectmanifest.png)
 
-1. Kattintson a **feltöltése** , adja hozzá a csomagot a távoli figyelési megoldás: ![feltöltött csomag](media/iot-accelerators-remote-monitoring-import-edge-package/uploadedpackage.png)
+1. Kattintson a **feltöltése** , adja hozzá a csomagot a távoli figyelési megoldás:  ![Feltöltött csomagban](media/iot-accelerators-remote-monitoring-import-edge-package/uploadedpackage.png)
 
 Az IoT Edge manifest nasazení csomag most már feltöltötte. Az a **központi telepítések** lap, ezt a csomagot a csatlakoztatott IoT Edge-eszközökön telepítheti.
 

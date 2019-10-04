@@ -5,35 +5,35 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: include
-ms.date: 08/30/2018
+ms.date: 05/14/2019
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 844e4a0d2715799b808f2c7630c201f6e792bd63
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ee8ff3529524a63ca2e54a64327570197f363538
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58124426"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "67179483"
 ---
-| Erőforrás | Alapszintű | Standard | Prémium |
+| Resource | Alapszintű | Standard | Prémium |
 |---|---|---|---|
-| Tárolási<sup>1</sup> | 10 GiB | 100 GiB| 500 GiB |
-| Maximális képméret réteg | 20 GiB | 20 GiB | 50 GB |
-| Percenkénti ReadOps<sup>2, 3</sup> | 1,000 | 3,000 | 10,000 |
-| Írási műveletek száma percenként<sup>2, 4</sup> | 100 | 500 | 2,000 |
-| Töltse le a sávszélesség MB/s<sup>2</sup> | 30 | 60 | 100 |
-| Töltse fel a sávszélesség MB/s<sup>2</sup> | 10 | 20 | 50 |
-| Webhookok | 2 | 10 | 100 |
+| <sup>1</sup> . tároló | 10 GiB | 100 GiB| 500 GiB |
+| Képréteg maximális mérete | 200 GiB | 200 GiB | 200 GiB |
+| ReadOps percenként<sup>2, 3</sup> | 1,000 | 3,000 | 10,000 |
+| WriteOps percenként<sup>2, 4</sup> | 100 | 500 | 2,000 |
+| Sávszélesség letöltése MBps<sup>2</sup> | 30 | 60 | 100 |
+| Feltöltési sávszélesség (MBps)<sup>2</sup> | 10 | 20 | 50 |
+| webhooks | 2 | 10 | 100 |
 | Georeplikáció | – | – | [Támogatott][geo-replication] |
-| Tartalom-megbízhatóság (előzetes verzió) | – | – | [Támogatott][content-trust] |
+| Tartalommegbízhatóság | – | – | [Támogatott][content-trust] |
 
-<sup>1</sup>a megadott tárolási korlátok a következők mennyisége *foglalt* storage az egyes rétegekhez. Egy további napi díj / GIB-ra a fenti ezeket a korlátokat képtárolás díjkötelesek. Forgalmi információkért lásd: [Azure Container Registry díjszabás][pricing].
+<sup>1</sup> A megadott tárolási korlát az egyes rétegek *belefoglalt* tárterületének mennyisége. A fenti korlátokat meghaladó képtárolásért napi további díjat számítunk fel. A díjszabással kapcsolatos információkért lásd: [Azure Container Registry díjszabása][pricing].
 
-<sup>2</sup>*ReadOps*, *írási műveletek*, és *sávszélesség* minimális becslések. Az Azure Container Registry nagy hangsúlyt fektet a teljesítmény javítása, a használatához.
+<sup>2</sup> A *ReadOps*, a *WriteOps*és a *sávszélesség* minimális becslés. Azure Container Registry a használathoz szükséges teljesítmény növelésére törekszik.
 
-<sup>3</sup>A [docker pull](https://docs.docker.com/registry/spec/api/#pulling-an-image) a rendszer lefordítja arra több olvasási műveletek a lemezképet, valamint a manifest lekérés a rétegek száma alapján.
+<sup>3</sup> A [Docker lekérése](https://docs.docker.com/registry/spec/api/#pulling-an-image) több olvasási műveletre is vonatkozik a rendszerkép rétegeinek száma és a jegyzékfájl beolvasása alapján.
 
-<sup>4</sup>A [docker leküldéses](https://docs.docker.com/registry/spec/api/#pushing-an-image) a rendszer lefordítja arra, hogy kell lehet leküldeni a rétegek száma alapján, több írási műveleteket. A `docker push` tartalmaz *ReadOps* beolvasni a meglévő rendszerképet jegyzékfájl.
+<sup>4</sup> A [Docker leküldése](https://docs.docker.com/registry/spec/api/#pushing-an-image) több írási műveletre is vonatkozik a leküldhető rétegek száma alapján. A `docker push` tartalmaz egy meglévő rendszerkép jegyzékfájljának beolvasására szolgáló *ReadOps* .
 
 <!-- LINKS - External -->
 [pricing]: https://azure.microsoft.com/pricing/details/container-registry/

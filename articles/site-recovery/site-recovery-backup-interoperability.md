@@ -1,29 +1,28 @@
 ---
-title: Támogatás az Azure Site Recovery használatával az Azure Backup szolgáltatással |} A Microsoft Docs
-description: Egy áttekintést nyújt az Azure Site Recovery és az Azure Backup segítségével hogyan biztosítható együtt.
-services: site-recovery
+title: A Azure Site Recovery és a Azure Backup használatának támogatása
+description: Áttekintést nyújt a Azure Site Recovery és Azure Backup együttes használatáról.
 author: sideeksh
 manager: rochakm
 ms.service: site-recovery
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: sideeksh
-ms.openlocfilehash: e902f70225ec0eb0caa98f7e19a16c87220cb6f9
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 2078aa33ca735b91b5923d94028a286427f107a6
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58312886"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70146874"
 ---
-# <a name="support-for-using-site-recovery-with-azure-backup"></a>Site Recovery használatával az Azure Backup szolgáltatással támogatása
+# <a name="support-for-using-site-recovery-with-azure-backup"></a>A Site Recovery és a Azure Backup használatának támogatása
 
-Ez a cikk összegzi használatának támogatása a [Site Recovery szolgáltatás](site-recovery-overview.md) együtt a [Azure Backup szolgáltatás](https://docs.microsoft.com/azure/backup/backup-overview).
+Ez a cikk a [site Recovery szolgáltatás](site-recovery-overview.md) és a [Azure Backup szolgáltatás](https://docs.microsoft.com/azure/backup/backup-overview)együttes használatának támogatását foglalja össze.
 
-**Művelet** | **Site Recovery támogatási** | **Részletek**
+**Művelet** | **Site Recovery támogatás** | **Részletek**
 --- | --- | ---
-**Szolgáltatások együttes telepítését** | Támogatott | Szolgáltatások együttműködésre, és együttesen is konfigurálható.
-**Fájl biztonsági mentése/visszaállítása** | Támogatott | Ha egy virtuális gép esetében engedélyezve vannak a biztonsági mentési és replikációs és biztonsági másolatokat készít, nincs probléma van a forrásoldali virtuális gépeket, vagy a virtuális gépek csoportján fájlok visszaállítása a. Replikáció a szokásos módon folytatja az replikációs állapota nem változik.
-**Lemezek biztonsági mentése/visszaállítása** | Nincs jelenlegi támogatás | Ha a biztonsági másolat a lemez visszaállításához ki kell tiltsa le, és újra a virtuális gép replikálását újraengedélyezni.
-**Virtuális gép biztonsági mentése/visszaállítása** | Nincs jelenlegi támogatás | Ha biztonsági mentése vagy visszaállítása egy virtuális gép vagy a virtuális gépek csoportján, tiltsa le, és a virtuális gép újraengedélyezni szüksége.  
+**Szolgáltatások együttes üzembe helyezése** | Támogatott | A szolgáltatások együttműködésre alkalmasak, és konfigurálhatók egymással.
+**Fájl biztonsági mentése/visszaállítása** | Támogatott | Ha a biztonsági mentés és a replikáció engedélyezve van egy virtuális gépen, és biztonsági mentést végez, a fájlok a forrás-és a virtuális gépeken való visszaállítása nem jelent problémát. A replikáció állapota a szokásosnál folytatódik, a replikálás állapotának változása nélkül.
+**Lemezes biztonsági mentés/visszaállítás** | Nincs jelenlegi támogatás | Ha egy biztonsági másolattal rendelkező lemezt állít vissza, le kell tiltania, majd újra engedélyeznie kell a virtuális gép replikálását.
+**Virtuális gép biztonsági mentése/visszaállítása** | Nincs jelenlegi támogatás | Ha biztonsági mentést készít, vagy helyreállít egy virtuális gépet vagy virtuális gépek csoportját, le kell tiltania és újra engedélyeznie kell a virtuális gép replikálását.  
 
 

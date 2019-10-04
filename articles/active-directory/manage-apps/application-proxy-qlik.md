@@ -3,23 +3,23 @@ title: Az Azure AD-alkalmazásproxy és Qlik Sense |} A Microsoft Docs
 description: Kapcsolja be az alkalmazásproxyt, hogy az Azure Portalon, és az összekötők telepítése a fordított proxy.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: article
 ms.date: 09/06/2018
-ms.author: celested
+ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12e36c49d8c4db60302d4b72dfa81ea4aceec77b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8f54e08e6c3b7b673541f124a90f32dbc860fa44
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58107389"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65859541"
 ---
 # <a name="application-proxy-and-qlik-sense"></a>Az alkalmazásproxy és Qlik Sense 
 Az Azure Active Directory alkalmazásproxy és Qlik Sense platformtechnológiát együtt, ellenőrizze, hogy könnyen tud alkalmazásproxy használatával a Qlik Sense-telepítés a távelérés biztosítása.  
@@ -52,7 +52,7 @@ Kövesse az alábbi lépéseket az alkalmazás közzétételéhez. Egy részlete
 ### <a name="application-2"></a>#2. alkalmazás: 
 Kövesse a lépéseket, mint az alkalmazás 1, a következő kivételekkel: 
 
-**5. #**: A belső URL-cím most kell lennie az QlikSense azt a hitelesítési portot, amelyet az alkalmazás URL-CÍMÉT. Az alapértelmezett érték **4244** 4248 HTTP és HTTPS. Például: **https&#58;//demo.qlik.com:4244**</br></br> 
+**5. #** : A belső URL-cím most kell lennie az QlikSense azt a hitelesítési portot, amelyet az alkalmazás URL-CÍMÉT. Az alapértelmezett érték **4244** 4248 HTTP és HTTPS. Például: **https&#58;//demo.qlik.com:4244**</br></br> 
  **#10. lépés:** Ne az egyszeri bejelentkezés Konfigurálásához, és hagyja a **egyszeri bejelentkezés le van tiltva**
  
  
@@ -60,7 +60,9 @@ Kövesse a lépéseket, mint az alkalmazás 1, a következő kivételekkel:
 Az alkalmazás teszteléséhez készen áll. A külső URL-cím, amellyel QlikSense közzététele az alkalmazás 1 és bejelentkezés egy felhasználó mindkét alkalmazáshoz rendelt eléréséhez.  
 
 ## <a name="additional-references"></a>További referenciák
-Közzétételi Qlik Sense a proxyval kapcsolatos további információkért tekintse meg a Qlik közösségi cikk: [Az Azure AD-integrált Windows-hitelesítés a Kerberos által korlátozott delegálás használata a Qlik Sense](https://community.qlik.com/docs/DOC-20183).
+Közzétételi Qlik Sense a proxyval kapcsolatos további információkért tekintse meg a következő a Qlik közösségi cikkeket: 
+- [A Kerberos által korlátozott delegálás használata a Qlik Sense integrált Windows-hitelesítés az Azure ad-ben](https://community.qlik.com/docs/DOC-20183)
+- [Az Azure AD-alkalmazásproxy Qlik Sense-integráció](https://community.qlik.com/t5/Technology-Partners-Ecosystem/Azure-AD-Application-Proxy/ta-p/1528396)
 
 ## <a name="next-steps"></a>További lépések
 

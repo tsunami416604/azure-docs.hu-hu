@@ -1,10 +1,10 @@
 ---
-title: Késedelmes egyenleg e-mailt az Azure-ból |} A Microsoft Docs
-description: Ismerteti, hogyan végezze el a fizetés az Azure-előfizetése van egy korábbi esedékes terheléselosztása
+title: Lejárt esedékességű egyenlegről értesítő e-mail az Azure-tól | Microsoft Docs
+description: A cikk azt ismerteti, hogyan fizetheti be a lejárt esedékességű Azure-előfizetéssel kapcsolatos tartozást
 services: ''
 documentationcenter: ''
 author: genlin
-manager: jureid
+manager: dcscontentpm
 editor: ''
 tags: billing
 ms.assetid: d0b88c92-fb9d-4d12-931b-c26104ad63e9
@@ -13,41 +13,56 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/11/2018
+ms.date: 05/20/2019
 ms.author: banders
-ms.openlocfilehash: 056ece53fa154e86cf0b5f5fb24a8842cf5a4261
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: cd3c29c4b65f45863647599ae2447584845f27c8
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57839287"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300282"
 ---
-# <a name="resolve-past-due-balance-for-your-azure-subscription-after-getting-an-email-from-azure"></a>Késedelmes egyenleg az Azure-előfizetés után az Azure-ból egy e-mail érkezése
+# <a name="resolve-past-due-balance-for-your-azure-subscription"></a>Az Azure-előfizetés lejárt esedékességű tartozásának rendezése
 
-Ha nem érkezik meg a fizetési, vagy ha nem tudjuk feldolgozni a fizetési, akkor előfordulhat, hogy kap egy e-mailt, vagy egy figyelmeztetés az Account Center webhelyen vagy az Azure Portalon. Az üzenet hasonló lehet:
+Ez a cikk a Microsoft Online Services Program-fiókkal rendelkező ügyfelekre vonatkozik.
 
-**Nem sikerült a hitelkártya-előfizetéséhez tartozó már. Bármely szolgáltatáskiesések elkerülése érdekében frissítse fizetési adatait.**
+Ha a kifizetése nem érkezik meg, vagy azt nem tudjuk feldolgozni, előfordulhat, hogy kap egy e-mailt, vagy megjelenik egy értesítés az Azure Portalon vagy a Fiókközpontban.
+Amennyiben Ön a [Fiókadminisztrátor](billing-subscription-transfer.md#whoisaa), az [Azure Portalon](https://portal.azure.com) rendezheti a kiegyenlítetlen díjakat. Ha Önnek számlás fizetés van beállítva fizetési módként, küldje az utalást a számla alján megadott helyre.
 
-Kövesse a cikkben korábban feloldani a kellő egyensúly.
+> [!IMPORTANT]
+> * Ha ugyanahhoz a bankkártyájához több előfizetés is tartozik, és mindegyik befizetése lejárt esedékességű, a teljes fennmaradó egyenleget egyszerre kell kifizetnie.
+> * A kiegyenlítetlen díjakhoz használt fizetési eszköz lesz innentől az új aktív fizetési eszköz az összes olyan előfizetés esetén, amelynél korábban sikertelen volt a díj befizetése.
 
-## <a name="resolve-the-past-due-balance"></a>Oldja meg a korábbi esedékes terheléselosztása
+## <a name="resolve-past-due-balance-in-the-azure-portal"></a>Lejárt esedékességű tartozás rendezése az Azure Portalon
 
-* Ha a hitelkártyára terheljük próbálkozásai sikertelenek lesznek, vagy lejárt, [az előfizetés díjfizetéséhez használt bankkártya módosítása](billing-how-to-change-credit-card.md) , vagy forduljon a bankjához, a probléma megoldásához. Amikor frissíti a fizetési módot, Azure, az azonnal az összes ki nem egyenlített díjakat fizetési dolgozza fel. Fizetési is érdekében dolgoz fel más Microsoft-szolgáltatásokba, ahol ki nem egyenlített díjakat rendelkezik.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) fiókadminisztrátorként.
+1. Keressen rá a **Költségkezelés + számlázás** kifejezésre.
+1. Az Áttekintés lapon megjelenik az előfizetések listája. Ha az előfizetés állapota lejárt, kattintson az **Egyenleg rendezése** hivatkozásra.
+    ![Az egyenlet rendezését mutató hivatkozást megjelenítő képernyőkép](./media/billing-azure-subscription-past-due-balance/settle-balance-entry-point.png)
+1. A kiegyenlítetlen egyenleg az összes Microsoft-szolgáltatásra vonatkozó, sikertelen fizetési mód használata miatt fennálló terhelést tükrözi.
+1. Válasszon ki egy fizetési módot az egyenleg kifizetéséhez. Ez a fizetési mód válik az aktív fizetési móddá mindegyik olyan előfizetés esetén, amelynél korábban sikertelen volt a fizetés.
+    ![A fizetési mód kiválasztására szolgáló hivatkozást megjelenítő képernyőkép](./media/billing-azure-subscription-past-due-balance/settle-balance-screen.png)
+1. Ha a kiválasztott fizetési módnak szintén vannak a Microsoft-szolgáltatásokhoz kapcsolódó kiegyenlítetlen díjai, azok megjelennek a teljes kiegyenlítetlen egyenlegben. Ezeket a kiegyenlítetlen díjakat is rendeznie kell.
+1. Kattintson a **Fizetés** parancsra.
 
-* Ha egy számla üzemmód fizetési módot használ, el a befizetést a számla alján megadott helyre. Ha segítségre van szüksége, forduljon a [Azure-támogatási](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+## <a name="troubleshoot-declined-credit-card"></a>Elutasított hitelkártya hibáinak elhárítása
 
-* Ha nem jelenik meg a számlán, mert a Fiókadminisztrátor kilépett a vállalattól vagy módosult a szerepköre, lépjen kapcsolatba [Azure-támogatási](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma megoldásához.
+Ha a hitelkártyát a pénzügyi intézet elutasította, lépjen kapcsolatba a pénzügyi intézettel a probléma megoldása érdekében. Lépjen kapcsolatba a bankkal, és ellenőrizze a következőket:
+- Engedélyezve vannak a kártyán a nemzetközi tranzakciók?
+- A kártyáján beállított hitelkeret vagy a kártya egyenlege lehetővé teszi az összeg kifizetését?
+- Engedélyezve vannak a kártyán az ismétlődő fizetések?
 
-* Ha ismeri a fizetés feldolgozását követően, de az előfizetés továbbra is le van tiltva, forduljon a [Azure-támogatási](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+## <a name="not-getting-billing-email-notifications"></a>Nem kap számlázással kapcsolatos e-mail-értesítéseket?
 
-## <a name="not-getting-billing-email-notifications"></a>Számlázási e-mail-értesítések nem érkeznek?
+Amennyiben Ön a fiókadminisztrátor, [ellenőrizze, hogy melyik e-mail-cím van beállítva az értesítésekhez](billing-how-to-change-azure-account-profile.md). Javasoljuk, hogy olyan e-mail-címet adjon meg, amelyet rendszeresen ellenőriz. Amennyiben az e-mail-cím helyesen van megadva, ellenőrizze a levélszemét-mappát.
 
-Ha Ön a Fiókadminisztrátor [ellenőrizze, hogy milyen e-mail-címmel értesítésekhez használatos](billing-how-to-change-azure-account-profile.md). Azt javasoljuk, hogy használja-e egy e-mail címet, amely rendszeresen ellenőrizheti. Ha az e-mailt a megfelelő, ellenőrizze a Levélszemét mappát.
+## <a name="if-i-forget-to-pay-what-happens"></a>Mi történik, ha elfelejtek fizetni?
 
-## <a name="if-i-forget-to-pay-what-happens"></a>Kell fizetnem elvesztésekor mi történik?
+A szolgáltatás fel lesz függesztve, és az erőforrásai nem lesznek többé elérhetők. Az Azure-adatai a szolgáltatás felfüggesztését követő 90 nap után törölve lesznek. További tudnivalókért lásd a [Microsoft Adatvédelmi központ az adatok kezelését](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409) ismertető cikkét.
 
-A szolgáltatás megszakad, és az erőforrások már nem érhetők el. Azure-beli adatait a szolgáltatás megszakad után 90 nappal törlődnek. További tudnivalókért lásd: [Microsoft Trust Center – hogyan kezeljük adatait](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409).
+Ha tudja, hogy a befizetése fel lett dolgozva, de az előfizetése ennek ellenére még mindig le van tiltva, lépjen kapcsolatba az [Azure-támogatással](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
+
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).

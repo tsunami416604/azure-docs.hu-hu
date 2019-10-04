@@ -1,25 +1,28 @@
 ---
-title: Az Azure Functions és az Azure SignalR Service valós idejű alkalmazások készítése
-description: Áttekintés az Azure SignalR Service segítségével a kiszolgáló nélküli alkalmazásokat.
+title: Valós idejű alkalmazások létrehozása a Azure Functions és az Azure Signaler szolgáltatással
+description: Az Azure Signaler szolgáltatás kiszolgáló nélküli alkalmazásokban való használatának áttekintése.
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: c06203cfd7537dd4c9bc35c75a3f21d12bf64d26
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 6a71647d452597c84e0df1beb6e9c6c3932d171b
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57554987"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639927"
 ---
-# <a name="build-real-time-apps-with-azure-functions-and-azure-signalr-service"></a>Az Azure Functions és az Azure SignalR Service valós idejű alkalmazások készítése
+# <a name="build-real-time-apps-with-azure-functions-and-azure-signalr-service"></a>Valós idejű alkalmazások létrehozása a Azure Functions és az Azure Signaler szolgáltatással
 
 Mivel az Azure SignalR szolgáltatás és az Azure Functions teljeskörűen felügyelt, nagymértékben skálázható szolgáltatások, amelyek lehetővé teszik, hogy az infrastruktúra-kezelés helyett az alkalmazások létrehozására összpontosítson, gyakran használják együtt őket, hogy valós idejű kommunikációt biztosítsanak a [kiszolgáló nélküli](https://azure.microsoft.com/solutions/serverless/) környezetekben.
 
+> [!NOTE]
+> Ismerkedjen meg a Signaler és a Azure Functions együttes használatával az interaktív oktatóanyagban, amely [lehetővé teszi az automatikus frissítések használatát egy webalkalmazásban a Azure functions és a signaler szolgáltatás használatával](https://docs.microsoft.com/learn/modules/automatic-update-of-a-webapp-using-azure-functions-and-signalr).
+
 ## <a name="integrate-real-time-communications-with-azure-services"></a>Valós idejű kommunikáció integrálása Azure-szolgáltatásokkal
 
-Az Azure Functions lehetővé teszi, hogy [több nyelven](../azure-functions/supported-languages.md) (például JavaScript, C# és Java nyelven) írjon olyan kódokat, amelyek akkor aktiválódnak, ha események történnek a felhőben. Ilyen események például a következők:
+Azure Functions lehetővé teszi, hogy [különböző nyelveken](../azure-functions/supported-languages.md), például a JavaScript, a Python C#és a Java nyelven is írjon kódot, amely a felhőben előforduló események bekövetkezésekor aktiválódik. Ilyen események például a következők:
 
 * HTTP- és webhookkérések
 * Rendszeres időzítők
@@ -63,9 +66,10 @@ A SignalR szolgáltatás lehetővé teszi, hogy üzeneteket továbbítson az ös
 
 Ez a cikk áttekintést nyújtott arról, hogyan használható az Azure Functions és a SignalR szolgáltatás számos különböző kiszolgáló nélküli, valós idejű üzenetküldési forgatókönyv engedélyezésére.
 
-További részletek az Azure Functions és a SignalR Service együttes használatával olvassa el az alábbi útmutatóban.
+A Azure Functions és a Signaler szolgáltatás használatával kapcsolatos részletes információkért tekintse meg a következő forrásokat:
 
-* [Az Azure Functions fejlesztői és SignalR Service-konfiguráció](signalr-concept-serverless-development-config.md)
+* [Azure Functions fejlesztés és konfigurálás a Signaler szolgáltatással](signalr-concept-serverless-development-config.md)
+* [Automatikus frissítések engedélyezése webalkalmazásokban a Azure Functions és a Signaler szolgáltatás használatával](https://docs.microsoft.com/learn/modules/automatic-update-of-a-webapp-using-azure-functions-and-signalr)
 
 További információért kövesse az alábbi rövid útmutatók egyikét.
 

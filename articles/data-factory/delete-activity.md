@@ -1,6 +1,6 @@
 ---
-title: Törlése tevékenység az Azure Data Factoryban |} A Microsoft Docs
-description: Megtudhatja, hogyan különböző fájl tárolja a fájlokat törli a törlése tevékenységgel az Azure Data Factoryban.
+title: Tevékenység törlése a Azure Data Factoryban | Microsoft Docs
+description: Megtudhatja, hogyan törölheti a különböző tárakban található fájlokat a törlés tevékenységgel Azure Data Factoryban.
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
@@ -12,45 +12,47 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/25/2019
-ms.openlocfilehash: 00658b650cdc0b1752bb9f2f205420018c1d6edd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 08/20/2019
+ms.openlocfilehash: d9a1c76e8ac386b954c68f16e2189df4e6c0e1b7
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58881783"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996324"
 ---
-# <a name="delete-activity-in-azure-data-factory"></a>Az Azure Data Factory tevékenység törlése
+# <a name="delete-activity-in-azure-data-factory"></a>Tevékenység törlése Azure Data Factory
 
-Fájlok törlése az Azure Data Factoryban a törlése tevékenység is használhatja, vagy a helyszíni tárolók mappákról tárolja, vagy cloud storage tárol. Ez a tevékenység használatával tisztítása vagy archiválja a fájlokat, ha már nincs szüksége.
+A Azure Data Factory törlés tevékenységgel törölheti a fájlokat vagy mappákat a helyszíni tárolók vagy a Felhőbeli tárolók tárolójából. Ezzel a tevékenységgel törölheti vagy archiválhatja a fájlokat, ha már nincs rájuk szükség.
 
 > [!WARNING]
-> Nem lehet visszaállítani a törölt fájlok vagy mappák. Legyen óvatos a törlése tevékenység használatakor, hogy törli a fájlokat és mappákat.
+> A törölt fájlok vagy mappák nem állíthatók vissza. A DELETE tevékenység használatakor legyen óvatos a fájlok vagy mappák törléséhez.
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 
-Az alábbiakban a törlése tevékenység használatára vonatkozó ajánlásokat:
+Íme néhány javaslat a törlési tevékenység használatához:
 
--   A fájlok biztonsági mentése előtt a törlése tevékenységgel törölni őket, abban az esetben vissza kell állítania a jövőben őket.
+-   A fájlok biztonsági mentését, mielőtt törölné őket a törlés tevékenységgel, ha később vissza kell állítania őket.
 
--   Győződjön meg arról, hogy a Data Factory rendelkezik írási engedéllyel a mappákat vagy fájlokat törli a storage-tárolóból.
+-   Győződjön meg arról, hogy a Data Factory rendelkezik írási engedéllyel a mappák vagy fájlok törléséhez a tárolóból.
 
--   Ellenőrizze, hogy nem törlünk egyszerre kiírt fájlokat. 
+-   Győződjön meg arról, hogy nem törli az egyszerre megírt fájlokat. 
 
--   Ha azt szeretné, törli a fájlokat vagy mappát egy helyszíni rendszerből, győződjön meg arról, egy saját üzemeltetésű integrációs modult egy nagyobb, mint 3,14 verzióval használja.
+-   Ha a fájlokat vagy mappákat egy helyszíni rendszerből szeretné törölni, győződjön meg arról, hogy a saját üzemeltetésű integrációs modult használja a 3,14-nál nagyobb verziószámmal.
 
 ## <a name="supported-data-stores"></a>Támogatott adattárak
 
 -   [Azure Blob Storage](connector-azure-blob-storage.md)
--   [1. generációs Azure Data Lake Storage](connector-azure-data-lake-store.md)
+-   [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)
 -   [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)
+-   [Azure File Storage](connector-azure-file-storage.md)
 
-### <a name="file-system-data-stores"></a>A fájl rendszer adattárak
+### <a name="file-system-data-stores"></a>Fájlrendszerbeli adattárak
 
 -   [Fájlrendszer](connector-file-system.md)
 -   [FTP](connector-ftp.md)
 -   [SFTP](connector-sftp.md)
 -   [Amazon S3](connector-amazon-simple-storage-service.md)
+-   [Google Cloud Storage](connector-google-cloud-storage.md)
 
 ## <a name="syntax"></a>Szintaxis
 
@@ -77,25 +79,25 @@ Az alábbiakban a törlése tevékenység használatára vonatkozó ajánlásoka
 }
 ```
 
-## <a name="type-properties"></a>Tulajdonságok
+## <a name="type-properties"></a>Típus tulajdonságai
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| Adatkészlet | Itt az adatkészlet-hivatkozásban, határozza meg, hogy mely fájlok vagy törlődnek mappa | Igen |
-| a rekurzív | Azt jelzi, hogy a fájlokat a törölt rekurzív módon az almappák vagy csak a megadott mappába.  | Nem. A mező alapértelmezett értéke: `false`. |
-| maxConcurrentConnections | A storage áruház egyidejűleg mappára vagy fájlokra törlése csatlakozni a kapcsolatok száma.   |  Nem. A mező alapértelmezett értéke: `1`. |
-| EnableLogging | Azt jelzi, hogy kell-e rögzíteni a fájl vagy mappa nevét, amely törölve lett. Igaz értéke esetén szüksége további adjon meg egy tárfiókot, a naplófájl mentéséhez, hogy a naplófájl olvassa el a viselkedéseket a törlése tevékenység követheti nyomon. | Nem |
-| logStorageSettings | Csak érvényes akkor, ha enablelogging = true.<br/><br/>A megadott tárolótulajdonságok, amely egy csoportját, mentse a fájl vagy mappa törlése tevékenység által törölt nevét tartalmazó naplófájlt szeretné. | Nem |
-| linkedServiceName | Csak érvényes akkor, ha enablelogging = true.<br/><br/>A társított szolgáltatás [Azure Storage](connector-azure-blob-storage.md#linked-service-properties), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#linked-service-properties), vagy [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) a napló tárolásához, amely tartalmazza a mappa vagy fájl neve, amely a törlési tevékenységet törölték. | Nem |
-| elérési út | Csak érvényes akkor, ha enablelogging = true.<br/><br/>Mentse a naplófájlt a tárfiókja elérési útja. Ha nem ad meg elérési utat, a szolgáltatás létrehoz egy tárolót az Ön számára. | Nem |
+| adatkészlet | Az adatkészlet hivatkozását adja meg a törlendő fájlok vagy mappák meghatározásához | Igen |
+| recursive | Azt jelzi, hogy a rendszer törli-e a fájlokat rekurzív módon az almappákból, vagy csak a megadott mappából.  | Nem. A mező alapértelmezett értéke: `false`. |
+| maxConcurrentConnections | Azon kapcsolatok száma, amelyek a Storage Store-hoz csatlakoznak egyidejűleg a mappák vagy fájlok törléséhez.   |  Nem. A mező alapértelmezett értéke: `1`. |
+| enablelogging | Azt jelzi, hogy rögzíteni kell-e a törölt mappát vagy fájlneveket. Ha az értéke TRUE (igaz), meg kell adnia egy Storage-fiókot a naplófájl mentéséhez, hogy nyomon tudja követni a törlési tevékenység viselkedését a naplófájl olvasásával. | Nem |
+| logStorageSettings | Csak akkor alkalmazható, ha a EnableLogging = True.<br/><br/>A tárolási tulajdonságok olyan csoportja, amely megadhatja, hogy hová szeretné menteni a DELETE tevékenység által törölt mappát vagy fájlneveket tartalmazó naplófájlt. | Nem |
+| linkedServiceName | Csak akkor alkalmazható, ha a EnableLogging = True.<br/><br/>Az [Azure Storage](connector-azure-blob-storage.md#linked-service-properties), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#linked-service-properties)vagy [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) társított szolgáltatása, amely a DELETE tevékenység által törölt mappát vagy fájlneveket tartalmazó naplófájlt tárolja. Vegye figyelembe, hogy a fájlok törléséhez ugyanazt a Integration Runtime-típust kell konfigurálnia, mint amelyet a DELETE tevékenység használ. | Nem |
+| path | Csak akkor alkalmazható, ha a EnableLogging = True.<br/><br/>A naplófájlnak a Storage-fiókba való mentésének elérési útja. Ha nem ad meg elérési utat, a szolgáltatás létrehoz egy tárolót. | Nem |
 
 ## <a name="monitoring"></a>Figyelés
 
-Nincsenek két helyen, ahol megtekintheti és az eredmények a törlése tevékenység figyelése: 
--   A törlési tevékenységet a kimenetből.
--   Az a naplófájlban.
+A törlési tevékenység eredményét két helyen tekintheti meg és figyelheti: 
+-   A törlési tevékenység kimenetéről.
+-   A naplófájlból.
 
-### <a name="sample-output-of-the-delete-activity"></a>Minta kimenet törlése tevékenység
+### <a name="sample-output-of-the-delete-activity"></a>A törlési tevékenység mintájának kimenete
 
 ```json
 { 
@@ -113,35 +115,35 @@ Nincsenek két helyen, ahol megtekintheti és az eredmények a törlése tevéke
 }
 ```
 
-### <a name="sample-log-file-of-the-delete-activity"></a>Minta log fájl törlése tevékenység
+### <a name="sample-log-file-of-the-delete-activity"></a>A törlési tevékenység minta naplófájlja
 
-| Name (Név) | Kategória | status | Hiba |
+| Name (Név) | Category | State | Hiba |
 |:--- |:--- |:--- |:--- |
 | test1/yyy.json | Fájl | Törölve |  |
-| test2/hello789.txt | Fájl | Törölve |  |
-| test2/test3/hello000.txt | Fájl | Törölve |  |
+| teszt2/hello789. txt | Fájl | Törölve |  |
+| teszt2/test3/hello000. txt | Fájl | Törölve |  |
 | test2/test3/zzz.json | Fájl | Törölve |  |
 
-## <a name="examples-of-using-the-delete-activity"></a>Példák a törlése tevékenységgel
+## <a name="examples-of-using-the-delete-activity"></a>Példák a DELETE tevékenység használatára
 
-### <a name="delete-specific-folders-or-files"></a>Meghatározott mappák vagy fájlok törlése
+### <a name="delete-specific-folders-or-files"></a>Adott mappák vagy fájlok törlése
 
-A tároló a következő mappastruktúra rendelkezik:
+Az áruház a következő mappastruktúrát rendelkezik:
 
-Legfelső szintű /<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8.txt
+Legfelső szintű<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7. csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8. txt
 
-Most már használja a Delete mappára vagy fájlokra törli az adatkészlet különböző tulajdonság értékét kombinációja szerint és a törlése tevékenység:
+Most a DELETE tevékenységgel törli a mappát vagy a fájlokat az adatkészletből és a törlési tevékenységből származó eltérő tulajdonságértékek kombinációjával:
 
-| folderPath (adatkészletből) | Fájlnév (adatkészletből) | a rekurzív (az a törlése tevékenység) | Kimenet |
+| folderPath (adatkészletből) | Fájlnév (az adatkészletből) | rekurzív (a törlési tevékenységből) | Output |
 |:--- |:--- |:--- |:--- |
-| Root/ Folder_A_2 | NULL | False (Hamis) | Legfelső szintű /<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>5.csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8.txt |
-| Root/ Folder_A_2 | NULL | True (Igaz) | Legfelső szintű /<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_A_2/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>5.csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_B_1/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>6.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>7.csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_B_2/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>8.txt</strike> |
-| Root/ Folder_A_2 | *.txt | False (Hamis) | Legfelső szintű /<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8.txt |
-| Root/ Folder_A_2 | *.txt | True (Igaz) | Legfelső szintű /<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>6.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>8.txt</strike> |
+| Gyökér/Folder_A_2 | NULL | False (Hamis) | Legfelső szintű<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>5.csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7. csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8. txt |
+| Gyökér/Folder_A_2 | NULL | True | Legfelső szintű<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_A_2/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>5.csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_B_1/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>6.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>7. csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_B_2/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>8.txt</strike> |
+| Gyökér/Folder_A_2 | *. txt | False (Hamis) | Legfelső szintű<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7. csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8. txt |
+| Gyökér/Folder_A_2 | *. txt | True | Legfelső szintű<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>6.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7. csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>8.txt</strike> |
 
-### <a name="periodically-clean-up-the-time-partitioned-folder-or-files"></a>Rendszeres időközönként a idő particionált mappára vagy fájlokra tisztítása
+### <a name="periodically-clean-up-the-time-partitioned-folder-or-files"></a>Az idő-particionált mappa vagy fájlok rendszeres törlése
 
-A folyamat rendszeres időközönként karbantartása az idő a particionált mappára vagy fájlokra is létrehozhat.  Például hasonló,-e a gyökérmappa-szerkezetében: `/mycontainer/2018/12/14/*.csv`.  Az ütemezési eseményindító azonosítására, mely mappára vagy fájlokra törölni kell minden egyes folyamatfuttatás az ADF rendszerváltozó használhatja. 
+Létrehozhat egy folyamatot, amely rendszeres időközönként törli az idő particionált mappáját vagy fájljait.  A mappa szerkezete például a következőhöz hasonló: `/mycontainer/2018/12/14/*.csv`.  Az ADF rendszerváltozó kihasználható az ütemezett triggerből annak azonosításához, hogy mely mappákat vagy fájlokat kell törölni minden egyes folyamat futtatásakor. 
 
 #### <a name="sample-pipeline"></a>Minta feldolgozási sor
 
@@ -220,7 +222,7 @@ A folyamat rendszeres időközönként karbantartása az idő a particionált ma
 }
 ```
 
-#### <a name="sample-trigger"></a>Minta-eseményindító
+#### <a name="sample-trigger"></a>Minta trigger
 
 ```json
 {
@@ -259,9 +261,9 @@ A folyamat rendszeres időközönként karbantartása az idő a particionált ma
 }
 ```
 
-### <a name="clean-up-the-expired-files-that-were-last-modified-before-201811"></a>Utoljára módosítva 2018.1.1 előtt lejárt fájlok törlése
+### <a name="clean-up-the-expired-files-that-were-last-modified-before-201811"></a>A 2018.1.1 előtti utolsó módosítás lejárt fájljainak törlése
 
-Létrehozhat egy folyamatot, fájlszűrő attribútum kihasználva a régi vagy lejárt fájlok karbantartása: "LastModified" adatkészletben.  
+Létrehozhat egy folyamatot a régi vagy a lejárt fájlok törléséhez a file Attribute szűrő használatával: "LastModified" az adatkészletben.  
 
 #### <a name="sample-pipeline"></a>Minta feldolgozási sor
 
@@ -321,12 +323,12 @@ Létrehozhat egy folyamatot, fájlszűrő attribútum kihasználva a régi vagy 
 }
 ```
 
-### <a name="move-files-by-chaining-the-copy-activity-and-the-delete-activity"></a>Helyezze át a fájlokat a láncolás a másolási tevékenység és a törlése tevékenység
+### <a name="move-files-by-chaining-the-copy-activity-and-the-delete-activity"></a>Fájlok áthelyezése a másolási tevékenység és a törlési tevékenység láncolásával
 
-Fájl másolása másolási tevékenységgel és egy törlési tevékenységet a folyamat fájlok törléséhez áthelyezheti egy fájlt.  Ha több fájlt helyezni szeretné, használja a GetMetadata tevékenység + a tevékenység: Filter + a Foreach tevékenység + a másolási tevékenység, + törlése tevékenység a következő példa:
+Egy fájl másolási tevékenységgel helyezhető át egy fájl másolásához, majd egy törlési tevékenységgel törölheti a folyamat egy fájlját.  Ha több fájlt szeretne áthelyezni, a GetMetadata tevékenység + szűrés tevékenység + foreach tevékenység + másolás tevékenység + törlés tevékenységet használhatja az alábbi példában látható módon:
 
 > [!NOTE]
-> Ha áthelyezi a mappát egy adatkészletet, amely tartalmazza a mappa elérési útja csak, és ezután egy másolási tevékenységgel és egy hivatkozást az ugyanahhoz az adatkészlethez egy mappába, amely a törlése tevékenység óvatosan kell. Győződjön meg arról, hogy nem lesz a mappába művelet másolása és törlése művelet között érkező új fájlokat, mert van.  Ha a mappa abban a pillanatban, amikor a másolási tevékenység csak a másolási feladat befejeződött, de a törlési tevékenységet nem lett stared érkező új fájlokat, is lehet, hogy a törlési tevékenységet törli az új beérkező fájlt, amely a destinati sem lett átmásolva még törlésével a teljes mappát. 
+> Ha a teljes mappát a mappa elérési útját tartalmazó adatkészlet definiálásával szeretné áthelyezni, majd egy másolási tevékenységgel és a törlési tevékenységgel, hogy ugyanarra az adatkészletre hivatkozzon, amely egy mappát jelképez, nagyon Körültekintőnek kell lennie. Ennek az az oka, hogy meg kell győződnie arról, hogy a másolási művelet és a törlési művelet között nem lesznek új fájlok a mappába.  Ha a másolási tevékenység csak a másolási művelet befejezése után új fájlok érkeznek, de a törlési tevékenység nem lett kitöltve, lehetséges, hogy a törlési tevékenység törli ezt az új, a DESTINATI nem másolt beérkező fájlt. még a teljes mappa törlésével. 
 
 #### <a name="sample-pipeline"></a>Minta feldolgozási sor
 
@@ -485,7 +487,7 @@ Fájl másolása másolási tevékenységgel és egy törlési tevékenységet a
 
 #### <a name="sample-datasets"></a>Mintaadatkészletek
 
-A fájlok listájának számbavétele GetMetadata tevékenység által használt adatkészlet.
+A GetMetadata tevékenység által a fájllista enumerálásához használt adatkészlet.
 
 ```json
 {
@@ -504,7 +506,7 @@ A fájlok listájának számbavétele GetMetadata tevékenység által használt
 }
 ```
 
-A másolási tevékenység és a törlése tevékenység által használt adatforrás adatkészlet.
+A másolási tevékenység és a törlési tevékenység által használt adatforrás adatkészlete.
 
 ```json
 {
@@ -537,7 +539,7 @@ A másolási tevékenység és a törlése tevékenység által használt adatfo
 }
 ```
 
-Másolási tevékenység által használt adatok cél adatkészletet.
+Adathalmaz a másolási tevékenység által használt adat céljához.
 
 ```json
 {
@@ -563,14 +565,17 @@ Másolási tevékenység által használt adatok cél adatkészletet.
     }
 }
 ```
+
+Azt is megteheti, hogy a sablon segítségével [](solution-template-move-files.md)áthelyezi a fájlokat innen.
+
 ## <a name="known-limitation"></a>Ismert korlátozás
 
--   Törlése tevékenység nem támogatja a helyettesítő karakteres által leírt mappák törlése listáját.
+-   A törlési tevékenység nem támogatja a helyettesítő karakterrel leírt mappák listájának törlését.
 
--   Fájlszűrő attribútum használata esetén: modifiedDatetimeStart és modifiedDatetimeEnd válassza ki a fájlokat törli azt, hogy feltétlenül állítson be a "fájlnevet": "*" adatkészletben.
+-   Ha a file Attribute Filter: modifiedDatetimeStart és a modifiedDatetimeEnd paramétert használja a törlendő fájlok kiválasztásához, ügyeljen arra, hogy az adatkészlet "fájlnév": "*" beállítását adja meg.
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a fájlok áthelyezése az Azure Data Factoryban.
+További információ a Azure Data Factory lévő fájlok áthelyezéséről.
 
--   [Adatok másolása eszköz az Azure Data Factoryban](copy-data-tool.md)
+-   [Adatok másolása eszköz az Azure Data Factoryben](copy-data-tool.md)

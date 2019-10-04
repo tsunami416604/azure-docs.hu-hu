@@ -1,10 +1,10 @@
 ---
-title: Jelentkezzen be az Azure Active Directory hitelesítő adatokkal rendelkező Linux virtuális gép |} A Microsoft Docs
-description: Ez az útmutató bemutatja hogyan kell létrehozni és konfigurálni a felhasználói bejelentkezéseket az Azure Active Directory-hitelesítés használata Linux virtuális gép
+title: Jelentkezzen be egy Linux rendszerű virtuális gépre Azure Active Directory hitelesítő adatokkal | Microsoft Docs
+description: Megtudhatja, hogyan hozhat létre és konfigurálhat Linux rendszerű virtuális gépeket Azure Active Directory hitelesítéssel való bejelentkezéshez.
 services: virtual-machines-linux
 documentationcenter: ''
-author: cynthn
-manager: jeconnoc
+author: iainfoulds
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -12,61 +12,65 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/17/2018
-ms.author: cynthn
-ms.openlocfilehash: d1db228f4c73cc00cd32ca6ae5b86056db68f05b
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
-ms.translationtype: HT
+ms.date: 08/29/2019
+ms.author: iainfou
+ms.openlocfilehash: b473844f1507285e0052ca1f8de00f6ca3207e6f
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60148951"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327097"
 ---
-# <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Jelentkezzen be egy Linux rendszerű virtuális gép az Azure-ban az Azure Active Directory-hitelesítés (előzetes verzió)
+# <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Előzetes verzió: Jelentkezzen be egy Linux rendszerű virtuális gépre az Azure-ban Azure Active Directory hitelesítés használatával
 
-Linux rendszerű virtuális gépek (VM) az Azure-ban, a biztonság növelése érdekében integrálható az Azure Active Directory (AD) hitelesítési szolgáltatással. Ha Linux rendszerű virtuális gépekhez az Azure AD-hitelesítés használata esetén központilag szabályozhatja és engedélyezheti vagy megtagadhatja a hozzáférést a virtuális gépek olyan házirendek kényszerítését. Ez a cikk bemutatja, hogyan hozhat létre, és a egy Linux rendszerű virtuális gép az Azure AD-hitelesítés használatára konfigurálja.
+Az Azure-beli linuxos virtuális gépek (VM-EK) biztonságának növelése érdekében integrálható Azure Active Directory (AD) hitelesítéssel. Ha az Azure AD-hitelesítést Linux rendszerű virtuális gépekhez használja, központilag szabályozza és érvényesíti a virtuális gépekhez való hozzáférést engedélyező vagy megtagadó házirendeket. Ez a cikk bemutatja, hogyan hozhat létre és konfigurálhat Linux rendszerű virtuális gépeket az Azure AD-hitelesítés használatához.
 
-> [!NOTE]
-> Ez a funkció előzetes verzióban érhető el, és az éles virtuális gépek vagy a számítási feladatok nem ajánlott. A funkció használatához a tesztelés után elveti várt tesztelési virtuális gépen.
 
-Nincsenek számos előnnyel jár, jelentkezzen be az Azure-beli, Linux rendszerű virtuális gépek az Azure AD-hitelesítés használatával többek között:
+> [!IMPORTANT]
+> Azure Active Directory hitelesítés jelenleg nyilvános előzetes verzióban érhető el.
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Ezt a szolgáltatást olyan teszt virtuális gépen használja, amelyet a tesztelés után el kell vetni.
+>
 
-- **Továbbfejlesztett biztonság:**
-  - A vállalati AD hitelesítő adatait használhatja a bejelentkezni az Azure Linux rendszerű virtuális gépek. Hiba esetén nem kell helyi rendszergazdai fiókok létrehozása és kezelése a hitelesítő adatok élettartama.
-  - A helyi rendszergazdai fiókok támaszkodás csökkentésével, nem kell aggódnia a hitelesítő adatok elvesztése/lopás, felhasználók gyenge azonosító adatokat stb.
-  - A jelszó összetettségét és az Azure AD címtárhoz konfigurált élettartama jelszóházirendek segítségével biztonságos Linux virtuális gépek is.
-  - További biztonságos jelentkezzen be az Azure virtual machines a multi-factor authentication is konfigurálhat.
-  - Jelentkezzen be a Linux rendszerű virtuális gépek az Azure Active Directory lehetővé teszi az ügyfelek által használt is működik [összevonási szolgáltatások](../../active-directory/hybrid/how-to-connect-fed-whatis.md).
 
-- **Zökkenőmentes együttműködés:** A szerepköralapú hozzáférés vezérlése (RBAC), megadhatja a ki jelentkezhet be egy adott virtuális gépre normál felhasználóként vagy rendszergazdai jogosultságokkal. Amikor a felhasználó csatlakozzon, vagy hagyja meg a csapat, frissítheti a virtuális gép megfelelő hozzáférést biztosít az RBAC házirend. Ez a tapasztalat jóval egyszerűbb, mint el kell távolítani a virtuális gépek eltávolítja a felesleges nyilvános SSH-kulcsokat, ha. Amikor az alkalmazottak elhagyják a szervezet és a felhasználói fiók le van tiltva vagy Azure AD-ből eltávolított, már nem rendelkeznek az erőforrásokhoz való hozzáférés.
+Az Azure AD-hitelesítés számos előnnyel jár az Azure-beli linuxos virtuális gépekre való bejelentkezéshez, beleértve a következőket:
 
-## <a name="supported-azure-regions-and-linux-distributions"></a>Támogatott Azure-régiók és a Linux-disztribúciók
+- **Fokozott biztonság:**
+  - A vállalati AD hitelesítő adataival jelentkezhet be az Azure Linux rendszerű virtuális gépekre. Nincs szükség helyi rendszergazdai fiókok létrehozására és a hitelesítő adatok élettartamának kezelésére.
+  - A helyi rendszergazdai fiókokra való támaszkodás csökkentésével nem kell aggódnia a hitelesítő adatok elvesztése/ellopása, a gyenge hitelesítő adatokat konfiguráló felhasználók stb.
+  - Az Azure AD-címtárhoz konfigurált jelszó-bonyolultsági és jelszó-élettartam szabályzatok a Linux rendszerű virtuális gépeket is biztonságossá teszik.
+  - Az Azure Virtual Machines szolgáltatásba való bejelentkezés további biztonságossá tételéhez konfigurálhatja a többtényezős hitelesítést.
+  - A Linux rendszerű virtuális gépekre való bejelentkezés lehetősége Azure Active Directory is működik az [összevonási szolgáltatásokat](../../active-directory/hybrid/how-to-connect-fed-whatis.md)használó ügyfelek számára.
 
-A következő Linux-disztribúció jelenleg a szolgáltatás az előzetes verzióban támogatja:
+- **Zökkenőmentes együttműködés:** Szerepköralapú Access Control (RBAC) használatával megadhatja, hogy ki tud bejelentkezni egy adott virtuális gépre normál felhasználóként vagy rendszergazdai jogosultságokkal. Amikor a felhasználók csatlakoznak vagy elhagyják a csapatot, frissítheti a virtuális gép RBAC-szabályzatát, hogy a megfelelő módon biztosítson hozzáférést. Ez a felhasználói élmény sokkal egyszerűbb, mint a virtuális gépek felesleges SSH nyilvános kulcsainak eltávolításához. Ha az alkalmazottak elhagyják a szervezetét, és a felhasználói fiókja le van tiltva vagy el lett távolítva az Azure AD-ből, már nem férnek hozzá az erőforrásaihoz.
+
+## <a name="supported-azure-regions-and-linux-distributions"></a>Támogatott Azure-régiók és Linux-disztribúciók
+
+A következő Linux-disztribúciók jelenleg a funkció előzetes verziójában támogatottak:
 
 | Disztribúció | Version |
 | --- | --- |
 | CentOS | CentOS 6, CentOS 7 |
 | Debian | Debian 9 |
-| openSUSE | openSUSE Leap 42.3 |
-| RedHat Enterprise Linux | RHEL RHEL 7, 6 | 
+| openSUSE | openSUSE LEAP 42,3 |
+| RedHat vállalati Linux | RHEL 6, RHEL 7 | 
 | SUSE Linux Enterprise Server | SLES 12 |
-| Ubuntu Server | Ubuntu 14.04 LTS, Ubuntu Server 16.04 és Ubuntu Server 18.04 |
+| Ubuntu Server | Ubuntu 14,04 LTS, Ubuntu Server 16,04 és Ubuntu Server 18,04 |
 
 
-A következő Azure-régiók jelenleg a szolgáltatás az előzetes verzióban támogatja:
+A szolgáltatás előzetes verziójában jelenleg a következő Azure-régiók támogatottak:
 
-- Globális Azure-régiók
+- Minden globális Azure-régió
 
 >[!IMPORTANT]
-> Az előzetes verziójú funkció használatához csak egy támogatott Linux-disztribúció telepítése és a egy támogatott Azure-régióban. A funkció nem támogatott az Azure Government vagy független felhőkben.
+> Az előzetes verziójú funkció használatához csak egy támogatott Linux-disztribúciót és egy támogatott Azure-régiót telepítsen. A funkció Azure Government vagy szuverén felhőkben nem támogatott.
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Ha a helyi telepítése és használata a parancssori felület választja, az oktatóanyaghoz, hogy futnak-e az Azure CLI 2.0.31-es verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.31 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
 ## <a name="create-a-linux-virtual-machine"></a>Linuxos virtuális gép létrehozása
 
-Hozzon létre egy erőforráscsoportot a [az csoport létrehozása](/cli/azure/group#az-group-create), majd hozzon létre egy virtuális Gépet a [az virtuális gép létrehozása](/cli/azure/vm#az-vm-create) támogatott disztribúciójának használatával és a egy támogatott régióban. Az alábbi példa egy nevű virtuális Gépet helyez üzembe *myVM* használó *Ubuntu 16.04 LTS* helyezzen egy erőforráscsoportban nevű *myResourceGroup* a a *southcentralus*  régióban. A következő példákban megadhatja a saját erőforráscsoport és igény szerint egy virtuális gép neve.
+Hozzon létre egy erőforráscsoportot az [az Group Create](/cli/azure/group#az-group-create)paranccsal, majd hozzon létre egy virtuális gépet az [az VM Create](/cli/azure/vm#az-vm-create) használatával egy támogatott disztribúcióval és egy támogatott régióban. A következő példa egy *myVM* nevű virtuális gépet telepít, amely *Ubuntu 16,04 LTS* -et használ egy *myResourceGroup* nevű erőforráscsoporthoz a *southcentralus* régióban. Az alábbi példákban megadhatja a saját erőforráscsoport és a virtuális gépek nevét igény szerint.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location southcentralus
@@ -81,9 +85,12 @@ az vm create \
 
 A virtuális gép és a kapcsolódó erőforrások létrehozása csak néhány percet vesz igénybe.
 
-## <a name="install-the-azure-ad-login-vm-extension"></a>Az Azure AD bejelentkezési Virtuálisgép-bővítmény telepítése
+## <a name="install-the-azure-ad-login-vm-extension"></a>Az Azure AD bejelentkezési virtuálisgép-bővítményének telepítése
 
-Jelentkezzen be egy Linuxos virtuális Gépre az Azure AD hitelesítő adatait, az Azure Active Directory-bejelentkezés Virtuálisgép-bővítmény telepítése. A Virtuálisgép-bővítmények olyan kisebb alkalmazásoknál, amelyek az üzembe helyezés utáni konfigurációs és automatizálási feladatokat biztosít az Azure-beli virtuális gépeken. Használati [virtuálisgép-bővítmény csoportot az](/cli/azure/vm/extension#az-vm-extension-set) telepítéséhez a *AADLoginForLinux* nevű virtuális gép futtatására szolgáló bővítmény *myVM* a a *myResourceGroup* erőforrás csoport:
+> [!NOTE]
+> Ha a bővítményt egy korábban létrehozott virtuális gépre telepíti, győződjön meg arról, hogy a gép legalább 1 GB memóriát foglalt le, és a bővítmény telepítése sikertelen lesz.
+
+Ha Azure AD-beli hitelesítő adatokkal szeretne bejelentkezni egy Linux rendszerű virtuális gépre, telepítse a Azure Active Directory login VM-bővítményt. A virtuálisgép-bővítmények olyan kisméretű alkalmazások, amelyek üzembe helyezés utáni konfigurációs és automatizálási feladatokat biztosítanak az Azure-beli virtuális gépeken. Az az [VM Extension set](/cli/azure/vm/extension#az-vm-extension-set) paranccsal telepítse a *AADLoginForLinux* -bővítményt a *MyVM* nevű virtuális gépre a *myResourceGroup* erőforráscsoporthoz:
 
 ```azurecli-interactive
 az vm extension set \
@@ -93,19 +100,19 @@ az vm extension set \
     --vm-name myVM
 ```
 
-A *provisioningState* , *sikeres* a bővítményt a virtuális gép telepítése után jelenik meg.
+A *sikeres* *provisioningState* akkor jelenik meg, ha a bővítmény telepítése sikeresen megtörtént a virtuális gépen.
 
-## <a name="configure-role-assignments-for-the-vm"></a>A virtuális gép szerepkör-hozzárendelések konfigurálása
+## <a name="configure-role-assignments-for-the-vm"></a>Szerepkör-hozzárendelések konfigurálása a virtuális géphez
 
-Az Azure szerepköralapú hozzáférés-vezérlés (RBAC) házirend határozza meg, aki bejelentkezhet a virtuális Gépet. Engedélyezze a virtuális gép bejelentkezési két RBAC-szerepkörök használhatók:
+Az Azure szerepköralapú Access Control (RBAC) szabályzata meghatározza, hogy ki jelentkezhet be a virtuális gépre. Két RBAC-szerepkört használ a virtuális gép bejelentkezésének engedélyezéséhez:
 
-- **A virtuális gépre való rendszergazdai bejelentkezés**: Az ehhez a szerepkörhöz rendelt felhasználók bejelentkezhetnek a Windows rendszergazdai vagy a Linux gyökérszintű felhasználójának jogosultságaival Azure virtuális gépeken.
-- **A virtuális gépre való felhasználói bejelentkezés**: Az ehhez a szerepkörhöz rendelt felhasználók bejelentkezhet egy Azure virtuális gépen a normál felhasználói jogosultságokat.
+- **Virtuális gép rendszergazdai bejelentkezése**: A hozzárendelt szerepkörrel rendelkező felhasználók bejelentkezhetnek egy Azure-beli virtuális gépre a Windows rendszergazdai vagy a Linux root felhasználói jogosultságokkal.
+- **Virtuális gép felhasználói bejelentkezése**: Az ehhez a szerepkörhöz hozzárendelt felhasználók normál felhasználói jogosultságokkal jelentkezhetnek be egy Azure-beli virtuális gépre.
 
 > [!NOTE]
-> Lehetővé teszi, hogy jelentkezzen be a virtuális Gépre ssh-n keresztül, hozzá kell rendelnie vagy a *virtuális gépre való rendszergazdai bejelentkezés* vagy *virtuális gépre való felhasználói bejelentkezés* szerepkör. Az Azure-felhasználó a *tulajdonosa* vagy *közreműködői* egy virtuális géphez hozzárendelt szerepkörök automatikusan nem rendelkezik jogosultságokkal jelentkezzen be a virtuális gép ssh-n keresztül.
+> Annak engedélyezéséhez, hogy a felhasználó SSH-kapcsolaton keresztül jelentkezzen be a virtuális gépre, hozzá kell rendelnie a *virtuális gép rendszergazdai felhasználónevét* vagy a *virtuális gép felhasználói bejelentkezési* szerepkörét. Egy virtuális géphez hozzárendelt *tulajdonosi* vagy *közreműködői* szerepkörökkel rendelkező Azure-felhasználó nem jogosult automatikusan bejelentkezni a virtuális gépre SSH-kapcsolaton keresztül.
 
-Az alábbi példában [az szerepkör-hozzárendelés létrehozása](/cli/azure/role/assignment#az-role-assignment-create) hozzárendelése a *virtuális gépre való rendszergazdai bejelentkezés* a virtuális gép az aktuális Azure felhasználói szerepkört. Az aktív Azure-fiók felhasználóneve beszerzett [az fiók show](/cli/azure/account#az-account-show), és a *hatókör* van állítva az előző lépésben létrehozott virtuális géphez [az vm show](/cli/azure/vm#az-vm-show). A hatókört is hozzárendelhetők egy erőforrás csoportba vagy előfizetésbe szintjén, és a normál öröklési RBAC-engedélyek vonatkoznak. További információkért lásd: [szerepköralapú hozzáférés-vezérlés](../../role-based-access-control/overview.md)
+Az alábbi példa az [az role hozzárendelés Create](/cli/azure/role/assignment#az-role-assignment-create) paranccsal rendeli hozzá a *virtuális gép rendszergazdai bejelentkezési* szerepkörét a virtuális géphez az aktuális Azure-felhasználóhoz. Az aktív Azure-fiókjának felhasználónevét az az [Account show](/cli/azure/account#az-account-show)paranccsal szerezheti be, a *hatókör* pedig az előző lépésben létrehozott virtuális gépre az [az VM show](/cli/azure/vm#az-vm-show)paranccsal. A hatókör egy erőforráscsoport vagy előfizetés szintjén is hozzárendelhető, és a normál RBAC öröklési engedélyek is érvényesek. További információ: [szerepköralapú hozzáférés-vezérlés](../../role-based-access-control/overview.md)
 
 ```azurecli-interactive
 username=$(az account show --query user.name --output tsv)
@@ -118,47 +125,44 @@ az role assignment create \
 ```
 
 > [!NOTE]
-> Ha az AAD-tartomány és a tartomány felhasználónév nem egyezik, meg kell adnia a felhasználói fiókjához való Objektumazonosítóját a *--assignee-object-id*, nem csak a felhasználónév *--assignee*. Objektumazonosító szerezheti be a felhasználói fiókjához [az ad felhasználó-lista](/cli/azure/ad/user#az-ad-user-list).
+> Ha a HRE tartomány és a bejelentkezési Felhasználónév tartománya nem egyezik, meg kell adnia a felhasználói fiók objektumazonosítóát a *--megbízott-Object-ID azonosítóval*, nem csak a-- *megbízott*felhasználónevet. A felhasználói fiókhoz tartozó objektumazonosítót az [az ad User List](/cli/azure/ad/user#az-ad-user-list)paranccsal kérheti le.
 
-RBAC használata az Azure-előfizetések erőforrásaihoz való hozzáférés kezelése a további információkért tekintse meg a használatával a [Azure CLI-vel](../../role-based-access-control/role-assignments-cli.md), [az Azure portal](../../role-based-access-control/role-assignments-portal.md), vagy [Azure PowerShell-lel](../../role-based-access-control/role-assignments-powershell.md).
+Az Azure-előfizetések erőforrásaihoz való hozzáférés RBAC használatával kapcsolatos további információkért lásd az [Azure CLI](../../role-based-access-control/role-assignments-cli.md), [Azure Portal](../../role-based-access-control/role-assignments-portal.md)vagy [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)használatát ismertető témakört.
 
-Beállíthatja, hogy jelentkezzen be a Linux rendszerű virtuális gép egy adott felhasználót többtényezős hitelesítés megkövetelése az Azure ad-ben. További információkért lásd: [Azure multi-factor Authentication a felhőben – első lépések](../../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md).
+Az Azure AD-t úgy is beállíthatja, hogy a többtényezős hitelesítés megkövetelése egy adott felhasználó számára a linuxos virtuális gépre való bejelentkezéshez. További információ: Ismerkedés [Az Azure multi-Factor Authentication a felhőben](../../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md).
 
-## <a name="log-in-to-the-linux-virtual-machine"></a>Jelentkezzen be a Linux rendszerű virtuális gép
+## <a name="log-in-to-the-linux-virtual-machine"></a>Bejelentkezés a Linux rendszerű virtuális gépre
 
-Először is megtekintheti a virtuális gép nyilvános IP-címét [az vm show](/cli/azure/vm#az-vm-show):
+Először tekintse meg a virtuális gép nyilvános IP-címét az [az VM show](/cli/azure/vm#az-vm-show)paranccsal:
 
 ```azurecli-interactive
 az vm show --resource-group myResourceGroup --name myVM -d --query publicIps -o tsv
 ```
 
-Jelentkezzen be az Azure-beli Linuxos virtuális gép az Azure ad-ben használt hitelesítő adataival. A `-l` paraméter lehetővé teszi a saját Azure AD-fiók címét adja meg. Fiók címek csupa kisbetűket meg kell adni. Az előző parancs által a virtuális gép nyilvános IP-címet használja:
+Jelentkezzen be az Azure Linux rendszerű virtuális gépre az Azure AD-beli hitelesítő adataival. A `-l` paraméter segítségével megadhatja saját Azure ad-fiókjának a címeit. Cserélje le a példában szereplő fiókot a sajátra. A fiók címét minden kisbetűs értékben kell megadni. Cserélje le a példában szereplő IP-címet a virtuális gép nyilvános IP-címére az előző parancsból.
 
 ```azurecli-interactive
-ssh -l azureuser@contoso.onmicrosoft.com publicIps
+ssh -l azureuser@contoso.onmicrosoft.com 10.11.123.456
 ```
 
-Jelentkezzen be Azure AD egy egyszeri használható kóddal, a rendszer felszólítja [ https://microsoft.com/devicelogin ](https://microsoft.com/devicelogin). Másolja és illessze be a bejelentkezési oldaláról, az egyszeri használható kódja a következő példában látható módon:
+A rendszer felszólítja, hogy jelentkezzen be az Azure AD-be egy egyszeri használatú kóddal a következő címen: [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin). Másolja és illessze be az egyszer használatos kódot az eszköz bejelentkezési oldalára.
 
-```bash
-~$ ssh -l azureuser@contoso.onmicrosoft.com 13.65.237.247
-To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code FJS3K6X4D to authenticate. Press ENTER when ready.
-```
+Ha a rendszer kéri, adja meg az Azure AD bejelentkezési hitelesítő adatait a bejelentkezési oldalon. 
 
-Amikor a rendszer kéri, adja meg az Azure AD bejelentkezési hitelesítő adatait, a bejelentkezési oldalára. A következő üzenet jelenik meg a böngésző, ha a hitelesítés sikerült:
+A következő üzenet jelenik meg a böngészőben a sikeres hitelesítés után:`You have signed in to the Microsoft Azure Linux Virtual Machine Sign-In application on your device.`
 
-    You have signed in to the Microsoft Azure Linux Virtual Machine Sign-In application on your device.
+A böngészőablak bezárásához térjen vissza az SSH-parancssorba, majd nyomja le az **ENTER** billentyűt. 
 
-Zárja be a böngészőablakot, térjen vissza az SSH parancssor, és nyomja le az **Enter** kulcsot. Most már bejelentkezett az Azure-beli Linuxos virtuális gép szerepkör engedélyeivel, hozzárendelt, mint például *a virtuális gép felhasználójának* vagy *VM rendszergazda*. Ha a felhasználói fiók hozzá van rendelve a *virtuális gépre való rendszergazdai bejelentkezés* szerepkör, használhatja a `sudo` legfelső szintű jogosultságokat igénylő parancsok futtatásához.
+Most bejelentkezett az Azure Linux rendszerű virtuális gépre a hozzárendelt szerepkör-engedélyekkel, mint például a *VM-felhasználó* vagy a VM- *rendszergazda*. Ha a felhasználói fiókja a *virtuális gép rendszergazdai bejelentkezési* szerepköréhez van rendelve, akkor `sudo` a paranccsal olyan parancsokat futtathat, amelyek rendszergazdai jogosultságokat igényelnek.
 
-## <a name="sudo-and-aad-login"></a>Sudo és AAD-bejelentkezés
+## <a name="sudo-and-aad-login"></a>Sudo és HRE bejelentkezés
 
-Az első futtatásakor sudo, a rendszer kéri, másodszor hitelesítéséhez. Ha nem szeretné futtatni a sudo újra hitelesíteni kell, szerkesztheti a sudoers fájl `/etc/sudoers.d/aad_admins` , és cserélje le ezt a sort:
+Amikor először futtatja a sudo-t, a rendszer kérni fogja, hogy másodszor is hitelesítse magát. Ha nem szeretné ismét hitelesíteni a sudo-t, szerkesztheti a sudoers-fájlt `/etc/sudoers.d/aad_admins` , és lecserélheti a következő sort:
 
 ```bash
 %aad_admins ALL=(ALL) ALL
 ```
-az ezt a sort:
+Ezzel a sorral:
 
 ```bash
 %aad_admins ALL=(ALL) NOPASSWD:ALL
@@ -167,11 +171,11 @@ az ezt a sort:
 
 ## <a name="troubleshoot-sign-in-issues"></a>Bejelentkezési problémák elhárítása
 
-Az Azure AD-beli hitelesítő ssh meg néhány gyakori hibák közé tartozik a nincs hozzárendelve, RBAC-szerepkörök és ismételni utasításokat követve jelentkezzen be. Az alábbi szakaszok segítségével javítsa ki ezeket a problémákat.
+Az Azure AD-beli hitelesítő adatokkal való SSH-val való próbálkozáskor előforduló gyakori hibákhoz nem tartoznak RBAC-szerepkörök, és a rendszer ismételten kéri a bejelentkezést. Ezeket a problémákat a következő fejezetek segítségével orvosolhatja.
 
-### <a name="access-denied-rbac-role-not-assigned"></a>A hozzáférés megtagadva: Az RBAC-szerepkör nincs hozzárendelve
+### <a name="access-denied-rbac-role-not-assigned"></a>Hozzáférés megtagadva: A RBAC szerepkör nincs hozzárendelve
 
-Ha az SSH-parancssorban a következő hibát látja, győződjön meg arról, hogy konfigurálta a virtuális gép, amely engedélyezi a felhasználó vagy RBAC-házirendeket a *virtuális gépre való rendszergazdai bejelentkezés* vagy *virtuális gépre való felhasználói bejelentkezés*szerepkör:
+Ha a következő hibaüzenet jelenik meg az SSH-parancssorban, ellenőrizze, hogy konfigurálta-e a *virtuális gép rendszergazdai felhasználónevét* vagy a *virtuális gép felhasználói bejelentkezési* szerepkörét biztosító RBAC házirendeket a virtuális géphez:
 
 ```bash
 login as: azureuser@contoso.onmicrosoft.com
@@ -182,18 +186,18 @@ Access denied:  to sign-in you be assigned a role with action 'Microsoft.Compute
 Access denied
 ```
 
-### <a name="continued-ssh-sign-in-prompts"></a>Folyamatos SSH bejelentkezési kérések
+### <a name="continued-ssh-sign-in-prompts"></a>További SSH bejelentkezési kérések
 
-Ha sikeresen befejezte a hitelesítési lépés egy webböngészőben, azonnal kérheti az ismételt bejelentkezéshez egy friss kóddal. Ez a hiba általában okozza az SSH-parancssorban megadott bejelentkezési nevet és a regisztrált az Azure AD-fiók nem egyeznek. A probléma megoldása:
+Ha sikeresen elvégezte a hitelesítési lépést egy webböngészőben, akkor előfordulhat, hogy a rendszer azonnal felszólítja, hogy új kóddal jelentkezzen be. Ezt a hibát általában az SSH-parancssorban megadott bejelentkezési név és az Azure AD-be a-nal bejelentkezett fiók közötti eltérés okozza. A probléma megoldásához:
 
-- Győződjön meg arról, hogy az SSH-parancssorban megadott bejelentkezési neve helyesen-e. A bejelentkezési neve egy elgépelte az SSH-parancssorban megadott bejelentkezési nevet és a regisztrált az Azure AD-fiók közötti eltérést okozhat. Ha például a beírt *azuresuer\@contoso.onmicrosoft.com* helyett *azureuser\@contoso.onmicrosoft.com*.
-- Ha több felhasználói fiók rendelkezik, győződjön meg arról, egy másik felhasználói fiókkal, a böngésző ablakában nem ad meg Azure ad-ben való bejelentkezéskor.
-- Linux rendszerű, a kis-és nagybetűket operációs rendszer. Van különbség a "Azureuser@contoso.onmicrosoft.com"és"azureuser@contoso.onmicrosoft.com", amely eltérést okozhat. Győződjön meg arról, hogy a megfelelő Kisbetű/nagybetű megkülönböztetése az SSH a parancssorba az UPN megadását.
+- Győződjön meg arról, hogy az SSH-parancssorban megadott bejelentkezési név helyes. A bejelentkezési név elírása eltérést okozhat az SSH-parancssorban megadott bejelentkezési név és az Azure AD-be a-ban bejelentkezett fiók között. Tegyük fel például, hogy a *azuresuer\@contoso.onmicrosoft.com* -et adta meg az *\@azureuser contoso.onmicrosoft.com*helyett.
+- Ha több felhasználói fiókkal rendelkezik, ügyeljen arra, hogy a böngészőablakban ne adjon meg másik felhasználói fiókot az Azure AD-ba való bejelentkezéskor.
+- A Linux egy kis-és nagybetűket megkülönböztető operációs rendszer. Különbség van a (z)Azureuser@contoso.onmicrosoft.comazureuser@contoso.onmicrosoft.comés a (z) között, ami eltérő lehet. Győződjön meg arról, hogy az UPN-t a megfelelő kis-és nagybetűkkel határozza meg az SSH-parancssorban.
 
-## <a name="preview-feedback"></a>Előzetes verzióval kapcsolatos visszajelzések
+## <a name="preview-feedback"></a>Előzetes visszajelzés
 
-Ossza meg velünk véleményét a használja a előzetes funkciót vagy a jelentés problémákkal kapcsolatban az [az Azure AD Visszajelzési fórum](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)
+Ossza meg visszajelzését erről az előzetes verziójú szolgáltatásról, vagy jelentse az [Azure ad visszajelzési fórumát](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032) használó problémákat
 
 ## <a name="next-steps"></a>További lépések
 
-További információ az Azure Active Directory: [Mi az Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)
+További információ a Azure Active Directoryről: [Mi az Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)

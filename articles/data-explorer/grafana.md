@@ -6,17 +6,23 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 12/05/2018
-ms.openlocfilehash: 188cb310cfc13fe2fc41ba3e01deb01068c0184d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 6/30/2019
+ms.openlocfilehash: 0f148a97b25afb9135223ff92afb898d4734c586
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59048316"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537802"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-grafana"></a>A Grafana az Azure Data Explorer adatainak megjelenítése
 
 Grafana egy analitikai platform, amely lehetővé teszi, hogy a lekérdezési adatok megjelenítése, majd hozzon létre és oszthat meg irányítópultokat, a Vizualizációk alapján. Grafana biztosít az Azure Data Explorer *beépülő modul*, amely lehetővé teszi, hogy csatlakozik, és az Azure Data Explorer adatainak megjelenítése. Ebből a cikkből megismerheti, hogyan állítsa be az Azure Data Explorer adatforrásként a Grafana, és ezután megjelenítheti egy minta-fürtből származó adatokat.
+
+Használja az alábbi videó, tudhat meg a Grafana az Azure Data Explorer beépülő moduljának használata, és beállítása az Azure Data Explorer adatforrásként a Grafana, majd az adatok megjelenítése. 
+
+> [!VIDEO https://www.youtube.com/embed/fSR_qCIFZSA]
+
+Másik megoldásként is [konfigurálja az adatforrást](#configure-the-data-source) és [adatok vizualizációja](#visualize-data) az alábbi cikkben részletes.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -153,10 +159,10 @@ A szolgáltatásnévhez hozzárendelt együtt a *megtekintők* szerepkör, most 
 
     | Grafana UI | Azure Portal | Azure CLI |
     | --- | --- | --- |
-    | Előfizetési azonosító | ELŐFIZETÉS AZONOSÍTÓJA | SubscriptionId |
-    | Bérlő azonosítója | Címtár azonosítója | bérlő |
+    | Előfizetési azonosító | ELŐFIZETÉS-AZONOSÍTÓ | SubscriptionId |
+    | Bérlő azonosítója | Címtár-azonosító | tenant |
     | Ügyfél-azonosító | Alkalmazásazonosító | appId |
-    | Titkos ügyfélkulcs | Jelszó | jelszó |
+    | Titkos ügyfélkulcs | Jelszó | password |
     | | | |
 
 1. Válassza ki **mentés és tesztelés**.
@@ -208,6 +214,6 @@ Most már végzett konfigurálása az Azure Data Explorer adatforrásként a Gra
 
 ## <a name="next-steps"></a>További lépések
 
-[Lekérdezések írása az Azure Data Explorerhez](write-queries.md)
+* [Lekérdezések írása az Azure Data Explorerhez](write-queries.md)
 
-[Oktatóanyag: A Power bi-ban az Azure Data Explorer adatainak megjelenítése](visualize-power-bi.md)
+* [Oktatóanyag: A Power bi-ban az Azure Data Explorer adatainak megjelenítése](visualize-power-bi.md)

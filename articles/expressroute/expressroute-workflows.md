@@ -1,19 +1,19 @@
 ---
-title: 'Konfiguráció-munkafolyamatok – az ExpressRoute kapcsolatcsoport-: Azure |} A Microsoft Docs'
+title: 'Áramkör-konfigurációs munkafolyamatok – ExpressRoute: Azure| Microsoft Docs'
 description: Ezen a lapon látható a munkafolyamatok a konfigurálása ExpressRoute-kapcsolatcsoport és a társviszony
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 09/18/2018
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 3ffcc5ac2193e607573ceb93717258f5349d1f15
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 1e0f4d356bb6addf735bf148a80e6be3ca550c8f
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53101687"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123382"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>Az ExpressRoute kapcsolatcsoport-kiépítési munkafolyamatai és a kapcsolatcsoportok állapotai
 Ezen a lapon végigvezeti a szolgáltatás kiépítése, és magas szintű konfigurációs munkafolyamatok útválasztást.
@@ -29,7 +29,7 @@ Az alábbi ábra és a megfelelő lépéseket kell követnie ahhoz, hogy rendelk
    
    * Engedélyezze az Azure-beli privát társviszony - engedélyezése a társviszony a virtuális gépekhez csatlakozhat / cloud services üzembe helyezett virtuális hálózatokon belül.
 
-   * Engedélyezze a Microsoft társviszony-létesítést – engedélyezze ezt a hozzáférést az Office 365 és Dynamics 365. Ezenkívül az összes Azure PaaS-szolgáltatások érhetők el a Microsoft társviszony-létesítésen keresztül.
+   * A Microsoft társközi engedélyezése – az Office 365 elérésének engedélyezése. Ezenkívül az összes Azure PaaS-szolgáltatások érhetők el a Microsoft társviszony-létesítésen keresztül.
      
      > [!IMPORTANT]
      > Gondoskodnia kell arról, hogy külön proxy használatát választja, / csatlakozni a Microsoft fut, a peremhálózati használata az internethez. Az azonos edge használatával az ExpressRoute- és az Internet az aszimmetrikus útválasztás okozhat, és a hálózat kapcsolódási kimaradások miatt.

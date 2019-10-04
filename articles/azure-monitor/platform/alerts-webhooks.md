@@ -9,11 +9,11 @@ ms.date: 04/03/2017
 ms.author: snmuvva
 ms.subservice: alerts
 ms.openlocfilehash: 264f3eb042a3c29523ed93df93dfa6d45c00ae87
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54465666"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60345778"
 ---
 # <a name="have-a-classic-metric-alert-notify-a-non-azure-system-using-a-webhook"></a>Klasszikus metrikariasztás értesítése egy webhook használatával nem Azure-beli system rendelkezik
 Webhookok használatával irányíthatja a riasztási értesítés az Azure utólagos feldolgozási vagy egyéni műveleteket más rendszerekre. A riasztás egy webhook használatával átirányítása a szolgáltatások által küldött SMS-ezni, hibák, csevegési vagy az üzenetkezelési szolgáltatások révén, vagy a különböző műveleteknél csapat értesítése bejelentkezni. 
@@ -72,20 +72,20 @@ A POST művelet a következő JSON-adattartalom és az összes mérőszám-alap�
 | Mező | Kötelező | Rögzített számú értékek | Megjegyzések |
 |:--- |:--- |:--- |:--- |
 | status |I |Aktivált, feloldva |A feltételek alapján a riasztás állapotának beállítása. |
-| Környezet |I | |A riasztás környezetét. |
-| időbélyeg |I | |Az idő, amelyen a riasztás lett elindítva. |
+| context |I | |A riasztás környezetét. |
+| timestamp |I | |Az idő, amelyen a riasztás lett elindítva. |
 | id |I | |Minden riasztási szabály tartozik egy egyedi azonosítót. |
-| név |I | |A riasztás neve. |
-| leírás |I | |A riasztás leírása. |
+| name |I | |A riasztás neve. |
+| description |I | |A riasztás leírása. |
 | conditionType |I |A metrika esemény |A riasztások két típusok támogatottak: metrika- és esemény. Metrikákhoz kapcsolódó riasztások egy metrikai feltétel teljesülésekor alapulnak. Egy esemény a tevékenységnaplóban miatti riasztás alapul. Ez az érték használatával ellenőrizze-e a riasztás egy metrikát, illetve egy esemény alapul-e. |
-| feltétel |I | |Ellenőrizze, hogy az adott mezők alapján a **conditionType** értéket. |
-| MetricName |A metrikákhoz kapcsolódó riasztások | |A mérőszám, amely meghatározza, mit figyeli a szabály neve. |
+| condition |I | |Ellenőrizze, hogy az adott mezők alapján a **conditionType** értéket. |
+| metricName |A metrikákhoz kapcsolódó riasztások | |A mérőszám, amely meghatározza, mit figyeli a szabály neve. |
 | metricUnit |A metrikákhoz kapcsolódó riasztások |Bájt, BytesPerSecond, Count, CountPerSecond, %, másodperc |Az egység a metrika az engedélyezett. Lásd: [megengedett értékek](https://msdn.microsoft.com/library/microsoft.azure.insights.models.unit.aspx). |
 | metricValue |A metrikákhoz kapcsolódó riasztások | |A metrika a riasztást kiváltó tényleges értéke. |
-| Küszöbérték |A metrikákhoz kapcsolódó riasztások | |A küszöbérték, a riasztás aktiválódik. |
+| threshold |A metrikákhoz kapcsolódó riasztások | |A küszöbérték, a riasztás aktiválódik. |
 | windowSize |A metrikákhoz kapcsolódó riasztások | |Az az időtartam, használt figyelése a riasztás a küszöbérték alapján. Az érték 5 perc és 1 nap között kell lennie. Az értéknek időtartama ISO 8601 formátumban kell lennie. |
 | timeAggregation |A metrikákhoz kapcsolódó riasztások |Átlagos, Last, maximális, minimális, None, összesen |A gyűjtött adatokat hogyan idővel nelze kombinovat. Az alapértelmezett érték: átlaga. Lásd: [megengedett értékek](https://msdn.microsoft.com/library/microsoft.azure.insights.models.aggregationtype.aspx). |
-| Operátor |A metrikákhoz kapcsolódó riasztások | |Az operátort, amelynek a szolgál hasonlítani a jelenlegi metrikaadatok a beállított küszöbértéket. |
+| operator |A metrikákhoz kapcsolódó riasztások | |Az operátort, amelynek a szolgál hasonlítani a jelenlegi metrikaadatok a beállított küszöbértéket. |
 | subscriptionId |I | |Az Azure-előfizetés azonosítóját. |
 | resourceGroupName |I | |Az erőforráscsoport az érintett erőforrás neve. |
 | resourceName |I | |Az érintett erőforrás erőforrás neve. |

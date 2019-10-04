@@ -1,6 +1,6 @@
 ---
-title: Functions az Azure Monitor log-lekérdezések |} A Microsoft Docs
-description: Ez a cikk ismerteti az Azure Monitor egy másik naplólekérdezés, hívja meg a lekérdezés a functions használatával.
+title: Függvények a Azure Monitor log lekérdezésekben | Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan használhatók a függvények egy másik, Azure Monitorban található napló lekérdezésének meghívásához.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,47 +13,39 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: bwren
-ms.openlocfilehash: 7eb5f090026b415e3c980116a9317594f4ca8115
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 75beb7b66863efd2fb3679f034a3663dca4a6d2f
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750769"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076697"
 ---
-# <a name="using-functions-in-azure-monitor-log-queries"></a>Az Azure Monitor log-lekérdezéseket a functions használatával
+# <a name="using-functions-in-azure-monitor-log-queries"></a>Függvények használata Azure Monitor log-lekérdezésekben
 
-> [!NOTE]
-> Hajtsa végre [az Analytics-portál – első lépések](get-started-portal.md) és [Ismerkedés a lekérdezések](get-started-queries.md) ebben a leckében befejezése előtt.
-
-[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
-
-
-A naplólekérdezés használata egy másik lekérdezést is mentheti függvényében. Ez lehetővé teszi, hogy az összetett lekérdezések egyszerűbbé használhatatlanná tévő őket részre, és újra felhasználhatja a közös kód, amely több lekérdezést.
+Ha egy másik lekérdezéssel rendelkező naplózási lekérdezést szeretne használni, akkor azt függvényként mentheti. Ez lehetővé teszi, hogy leegyszerűsítse az összetett lekérdezéseket részekre bontással, és lehetővé teszi, hogy a közös kódokat több lekérdezéssel is felhasználhassa.
 
 ## <a name="create-a-function"></a>Függvény létrehozása
 
-Függvény létrehozása a Log Analytics használatával az Azure Portalon kattintva **mentése** , és ezután az alábbi táblázatban szereplő adatok.
+A **Save (Mentés** ) gombra kattintva hozzon létre egy Azure Portal log Analyticstel rendelkező függvényt, majd adja meg az adatokat a következő táblázatban.
 
 | Beállítás | Leírás |
 |:---|:---|
-| Name (Név)           | A lekérdezés a megjelenítendő név **lekérdezéskezelő**. |
+| Name (Név)           | A lekérdezés megjelenített neve a **query Explorerben**. |
 | Mentés másként        | Függvény |
-| Függvény aliasa | A függvénnyel további lekérdezések rövid nevét. Nem tartalmazhat szóközt, és egyedinek kell lennie. |
-| Kategória       | Mentett lekérdezések és a functions rendszerezéséhez kategória **lekérdezéskezelő**. |
+| Függvény aliasa | A függvény más lekérdezésekben való használatának rövid neve. A nem tartalmazhat szóközt, és egyedinek kell lennie. |
+| Category       | A **lekérdezési Explorerben**mentett lekérdezések és függvények rendszerezésének kategóriája. |
 
 > [!NOTE]
-> Az Azure monitorban függvény nem tartalmazhat egy másik függvényt.
-
-> [!NOTE]
-> Egy függvény mentése az Azure Monitor naplólekérdezések, de jelenleg az Application Insights-lekérdezések esetében nem lehetséges.
+> Azure Monitor függvény nem tartalmazhat másik függvényt.
 
 
 
-## <a name="use-a-function"></a>Egy függvény használata
-A funkció használatához többek között az alias egy másik lekérdezésbe. Mint bármely más táblázat használható.
+
+## <a name="use-a-function"></a>Függvény használata
+Használjon függvényt egy másik lekérdezésben szereplő aliassal együtt. Más táblákhoz hasonlóan is használható.
 
 ## <a name="example"></a>Példa
-Az alábbi mintalekérdezés az elmúlt egy napon belül jelentett összes hiányzó biztonsági frissítések adja vissza. Lekérdezés mentése az aliasszal függvényében _security_updates_last_day_. 
+A következő minta lekérdezés az elmúlt nap során jelentett összes hiányzó biztonsági frissítést visszaadja. Mentse ezt a lekérdezést függvényként az alias _security_updates_last_day_. 
 
 ```Kusto
 Update
@@ -62,19 +54,19 @@ Update
 | where UpdateState == "Needed"
 ```
 
-Egy másik lekérdezést, és hivatkozás létrehozása a _security_updates_last_day_ függvény az SQL-kapcsolódó szükséges frissítések kereséséhez.
+Hozzon létre egy másik lekérdezést, és hivatkozzon a _security_updates_last_day_ függvényre az SQL-hez kapcsolódó szükséges biztonsági frissítések kereséséhez.
 
 ```Kusto
 security_updates_last_day | where Title contains "SQL"
 ```
 
 ## <a name="next-steps"></a>További lépések
-Tekintse meg az Azure Monitor log-lekérdezések írására szolgáló egyéb leckék:
+A Azure Monitor log-lekérdezések írásához további leckéket talál:
 
 - [Karakterlánc-műveletek](string-operations.md)
-- [Dátum és idő műveletek](datetime-operations.md)
-- [Összesítésfüggvények](aggregations.md)
+- [Dátum-és időműveletek](datetime-operations.md)
+- [Összesítési függvények](aggregations.md)
 - [Speciális összesítések](advanced-aggregations.md)
-- [JSON és adatstruktúrák](json-data-structures.md)
-- [Illesztés](joins.md)
+- [JSON-és adatstruktúrák](json-data-structures.md)
+- [Csatlakozik](joins.md)
 - [Diagramok](charts.md)

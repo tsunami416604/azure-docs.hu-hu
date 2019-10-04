@@ -1,24 +1,24 @@
 ---
-title: Leképezések hozzáadása
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Leképezések hozzáadása – LUIS
+titleSuffix: Azure Cognitive Services
 description: Leképezések hozzáadása a LUIS-alkalmazás olyan kérdésekre, vagy ugyanazon céljaira rendelkező parancsok azonosítására.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 04/01/2019
+ms.topic: conceptual
+ms.date: 07/29/2019
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: ed180563ea6138b3b4bab6092b39eeacf9dbf840
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: eb90a902b8f7fe8b37b81c2825cbdfc25ef5dc0d
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59521742"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932895"
 ---
-# <a name="add-intents-to-determine-user-intention-of-utterances"></a>Leképezések meghatározni a felhasználó szándékának beszédmódok hozzáadása
+# <a name="add-intents-to-determine-user-intention-of-utterances"></a>Leképezések hozzáadása a hosszúságú kimondott szöveg felhasználói szándékának meghatározásához
 
 Adjon hozzá [leképezések](luis-concept-intent.md) az olyan kérdések és azonos szándékkal rendelkező parancsok azonosítására a LUIS-alkalmazás. 
 
@@ -42,22 +42,31 @@ Példa utterances Példák szöveges felhasználói kérdések vagy parancsok. L
 
     A LUIS kisbetűvé alakítja az összes kimondott szöveg, és hozzáadja a jogkivonatok kötőjeleket például szóközt.
 
-## <a name="intent-prediction-discrepancy-errors"></a>Leképezési előrejelzési eltérést észlelt hibák 
+<a name="#intent-prediction-discrepancy-errors"></a>
 
-Előfordulhat, hogy az utterance (kifejezés) megjelölésű a egy leképezési előrejelzés eltérés van a kiválasztott célt és az előrejelzési pontszám között. LUIS azt jelzi, hogy a piros Keretes ez eltérést észlelt a **szándékot feliratú** a sorban található az a példában utterance (kifejezés). 
+## <a name="intent-prediction-errors"></a>Szándék-előrejelzési hibák 
 
-![Képernyőkép a leképezések Részletek lapján utterance (kifejezés) előrejelzés eltérés hibákkal](./media/luis-how-to-add-intents/prediction-discrepancy-intent.png) 
+A szándékok egyik példájának kimondása a szándék előrejelzési hibája lehet, ha a példa a Kimondás alatt áll, és az előrejelzési szándékot a képzés során határozzák meg. 
 
-Válassza ki a felső navigációs **Train**. Az előrejelzés eltérés van most szűnt.
+A részletes előrejelzési hibák megkereséséhez és a kijavításához használja a **szűrési** lehetőség kiértékelési beállításait a helytelen és a nem egyértelmű beállításhoz a **Részletes nézet** **megtekintési** lehetőségével együtt. 
 
-> [!Note]
-> Ha egy piros vonal alatt egy szót vagy kifejezést a példa utterance (kifejezés), a egy [entitás előrejelzési hiba](luis-how-to-add-example-utterances.md#entity-status-predictions) történt. Javítsa ki kell. 
+![A teljes előrejelzési hibák és a kijavításuk megkereséséhez használja a Filter (szűrő) beállítást.](./media/luis-how-to-add-intents/find-intent-prediction-errors.png)
+
+Ha a szűrők és a nézet alkalmazva van, és vannak például hosszúságú kimondott szöveg hibák, a példaként szolgáló lista a hosszúságú kimondott szöveg és a problémákat jeleníti meg.
+
+![! [Ha a szűrők és a nézet alkalmazva van, és vannak például hosszúságú kimondott szöveg hibák, a példában a teljes lista a hosszúságú kimondott szöveg és a problémákat mutatja.] (./media/luis-how-to-add-intents/find-errors-in-utterances.png)](./media/luis-how-to-add-intents/find-errors-in-utterances.png#lightbox)
+
+Az egyes sorok az aktuális képzés előrejelzési pontszámát jelenítik meg a példához, a legközelebbi rivális pontszámát, amely a két pontszám különbsége. 
+
+### <a name="fixing-intents"></a>Leképezések kijavítása
+
+Ha meg szeretné tudni, hogyan lehet kijavítani a szándék-előrejelző hibákat, használja az [összegző irányítópultot](luis-how-to-use-dashboard.md). Az összegző irányítópult elemzést nyújt az aktív verzió utolsó betanításáról, és a legjobb javaslatokat kínálja a modell kijavításához.  
 
 ## <a name="add-a-custom-entity"></a>Egyéni entitás hozzáadása
 
 Az utterance (kifejezés) megjelölésű ad hozzá, miután kiválaszthatja az utterance (kifejezés) hozhat létre egyéni entitásokat származó szöveg. Egyéni entitás módja a kinyerési, és a megfelelő leképezés címke szövegét. 
 
-Lásd: [entitás hozzáadása az utterance (kifejezés)](luis-how-to-add-example-utterances.md) további.
+További információért tekintse meg az [entitás hozzáadása a teljes](luis-how-to-add-example-utterances.md) információhoz című témakört.
 
 ## <a name="entity-prediction-discrepancy-errors"></a>Entitás előrejelzési eltérést észlelt hibák 
 
@@ -73,7 +82,7 @@ További információ: [előre összeállított entitások](luis-how-to-add-enti
 
 ## <a name="using-the-contextual-toolbar"></a>A környezetfüggő eszköztár
 
-Ha egy vagy több példa kimondott szöveg van kijelölve a listában az utterance (kifejezés) balra a négyzet bejelölésével az eszköztár fölött az utterance (kifejezés) lista lehetővé teszi a következő műveletek végrehajtásához:
+Ha a listában egy vagy több példa hosszúságú kimondott szöveg van kiválasztva, akkor a teljes képernyő bal oldalán lévő jelölőnégyzet bejelölésével a teljes lista fölötti eszköztár lehetővé teszi a következő műveletek végrehajtását:
 
 * Leképezés ismételt hozzárendelése: utterance(s) áthelyezése másik leképezés
 * Utterance(s) törlése
@@ -88,7 +97,7 @@ Az alábbi műveleteket az egyes utterance (kifejezés) a három pont menüben j
 
 * Szerkesztés: az utterance (kifejezés) szövegének módosítása
 * Törlés: a leképezés eltávolítása az utterance (kifejezés). Ha továbbra is az utterance (kifejezés), célszerűbb áthelyezni, hogy-e a **nincs** szándékot. 
-* Adjon hozzá egy minta: A minta egy közös utterance (kifejezés) igénybe vehet, és jelölje be a cserélhető és szöveg figyelmen kívül hagyható, ezáltal csökkentve a további utterances a SZÁNDÉKTÓL teszi lehetővé. 
+* Minta hozzáadása: A minta lehetővé teszi egy közös szöveg-és visszahelyezhető szöveg és a figyelmen kívül hagyható szöveg megjelölését, így csökkentve a szándékot, hogy további hosszúságú kimondott szöveg legyenek. 
 
 A **szándékot feliratú** oszlop lehetővé teszi, hogy az utterance (kifejezés) célját módosítani.
 

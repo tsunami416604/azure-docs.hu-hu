@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: aa0ffbd69e73ddbef72e0eabf79f2736079c3d23
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622023"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60636431"
 ---
 # <a name="manage-all-policies-for-a-lab-in-azure-devtest-labs"></a>Az Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet szabályzatainak kezelését
 
@@ -91,7 +91,7 @@ Labortulajdonosként leállítási ütemezés szerint konfigurálhatja a virtuá
 
 1. Válassza ki a labor kezdőlapja, **Konfigurace a zásady**.
 2. Válassza ki **automatikus leállítási házirend** a a **ütemezések** szakaszában a bal oldali menüben.
-3. Válassza ki a beállítások. A következő részek biztosítanak a beállításokkal kapcsolatos további részletekért: A set-szabályzat vonatkozik, csak a lab-ben létrehozott új virtuális gépek és a már meglévő virtuális gépet. 
+3. Válassza ki a beállítások. Az alábbi szakaszok ezen lehetőségekről további részleteket biztosítanak: A set-szabályzat vonatkozik, csak a lab-ben létrehozott új virtuális gépek és a már meglévő virtuális gépet. 
 
     ![Automatikus leállítási házirend-beállítások](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-options.png)
 

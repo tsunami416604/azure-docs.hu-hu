@@ -9,15 +9,15 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: 1bf60014b20f4cec29d661db4deb029fea4ab1d5
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59547343"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60796322"
 ---
 # <a name="choose-the-right-pricing-tier-in-azure-maps"></a>A jobb oldalon, az Azure Maps-tarifacsomag kiválasztása
 
-Az Azure Maps két tarifacsomag kínál. Ez a cikk célja segítségével válassza ki a tarifacsomagot az igényeinek jobb. Válassza ki a tarifacsomagot jobb érdekében tegye fel magának a következő két kérdéseket.
+Az Azure Maps két tarifacsomaggal rendelkezik. Ez a cikk célja segítségével válassza ki a tarifacsomagot az igényeinek jobb. Válassza ki a tarifacsomagot jobb érdekében tegye fel magának a következő két kérdéseket.
 
 ## <a name="what-geospatial-capabilities-do-i-plan-to-use"></a>Milyen térinformatikai funkciókat tervezhetem használni?
 Az S0 tarifacsomag akkor megfelelő, ha a core API-k térinformatikai a szolgáltatás követelményeinek. Ha azt szeretné, speciális funkciókat az alkalmazáshoz, érdemes lehet térségen az S1 tarifacsomagot. Példa képességek állnak közötti és hibrid képeken útválasztási tartomány és a batch geokódolás beolvasása. A **szolgáltatásszintek lehetőségei díjszabás** , az alábbi táblázat segít az alkalmazás igényeinek jobb képet. Emellett segít válasszon egy tarifacsomagot az alkalmazásához leginkább megfelelő.

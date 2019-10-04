@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 04/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 06a3469507631d032535bce62b01d964e99dc603
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54319401"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60334794"
 ---
 # <a name="storsimple-virtual-array-update-04-release-notes"></a>A StorSimple Virtual Array frissítés 0,4 kibocsátási megjegyzései
 
@@ -53,7 +53,7 @@ A 0.4 elsősorban a hibajavítás build néhány kiegészítésre szolgáltatás
 
 Az alábbi táblázat hibáinak javításai ebben a kiadásban összegzését tartalmazza.
 
-| Nem. | Szolgáltatás | Probléma |
+| Nem. | Funkció | Probléma |
 | --- | --- | --- |
 | 1 |Biztonsági mentés teljesítményét|A korábbi kiadásokban a nagy mennyiségű fájlt érintő biztonsági mentések állna Ez egy hosszú ideig (sorrendjében nap). Ebben a kiadásban a teljes és növekményes biztonsági tekintse meg a befejezési idő jelentős csökkentését. |
 | 2 |Támogatási csomag|Lemez, Processzor, memória, hálózati és felhőalapú statisztika most már bejelentkezett a támogatási naplók, így nagyon hatékony, a bármely eszköz kapcsolatos hibák elhárítása a támogatási csomagokat.|
@@ -65,7 +65,7 @@ Az alábbi táblázat hibáinak javításai ebben a kiadásban összegzését ta
 
 Az alábbi táblázat a StorSimple Virtual Array az ismert problémák összegzését tartalmazza, és a kiadási jelezve a korábbi kiadásokban a problémák tartalmazza. 
 
-| Nem. | Szolgáltatás | Probléma | Megkerülő megoldás és megjegyzések |
+| Nem. | Funkció | Probléma | Megkerülő megoldás és megjegyzések |
 | --- | --- | --- | --- |
 | **1.** |Frissítések |Az előzetes kiadásban létrehozott virtuális eszközre nem lehet frissíteni egy támogatott általánosan elérhető verzióra. |Ezek a virtuális eszközök feladatátvételt kell végrehajtani a végleges kiadás vész-helyreállítási munkafolyamat használatával. |
 | **2.** |Kiépített adatlemez |Miután ellátta bizonyos megadott méretű adatlemez és a megfelelő virtuális StorSimple-eszközt hozott létre, meg kell nem tartalomtól az adatlemezt. Elvesztését eredményezi, a helyi rétegeken az eszköz összes adatának tegye kísérletet. | |

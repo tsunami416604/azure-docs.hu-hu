@@ -3,22 +3,22 @@ title: 'Gyors útmutató: Translator Speech APIC#'
 titlesuffix: Azure Cognitive Services
 description: Információ és kódminták segítségével ismerkedhet meg a Translator Speech API használatának alapjaival.
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: quickstart
-ms.date: 3/5/2018
-ms.author: v-jaswel
+ms.date: 04/26/2019
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: a76c11341d0e145e6d2e9f86a7300ddb9319f6f5
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 359d962db8b7d8cfdc17c230351bc5556604ebbe
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673887"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965423"
 ---
-# <a name="quickstart-translator-speech-api-with-c"></a>Gyors útmutató: Translator Speech API-C#
+# <a name="quickstart-translator-speech-api-with-c"></a>Gyors útmutató: Translator Speech APIC#
 <a name="HOLTop"></a>
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
@@ -27,7 +27,7 @@ Ez a cikk bemutatja, hogyan használhatja a Translator Speech API-t egy .wav fá
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A kód Windowson történő futtatásához [Visual Studio 2017](https://www.visualstudio.com/downloads/) szükséges. (Az ingyenes Community Edition is elegendő.) Ha Mac OS- vagy Linux is használhatja a szövegszerkesztőben [Visual Studio Code](https://code.visualstudio.com/Download) alternatívájaként.
+A kód Windows rendszeren való futtatásához szüksége lesz a [Visual Studio 2019](https://www.visualstudio.com/downloads/) -re. (Az ingyenes Community Edition is elegendő.) Ha Mac OS vagy Linux rendszert használ, Alternatív megoldásként használhatja a szövegszerkesztő [Visual Studio Code](https://code.visualstudio.com/Download) -ot is.
 
 A „speak.wav” fájlnak ugyanabban a mappában kell lennie, mint az alábbi kódból fordított végrehajtható fájlnak. Ennek a .wav fájlnak standard PCM, 16 bites, 16 kHz-es, mono formátumúnak kell lennie.
 

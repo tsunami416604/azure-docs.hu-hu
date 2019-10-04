@@ -13,11 +13,11 @@ ms.reviewer: genemi
 manager: craigg
 ms.date: 02/07/2019
 ms.openlocfilehash: efb6d932e616ada6b8dfff637af469c16fc2f293
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57761821"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60723408"
 ---
 # <a name="sql-database-application-development-overview"></a>Az SQL Database-alapú alkalmazásfejlesztés – áttekintés
 
@@ -33,7 +33,7 @@ Használhatja a különböző [programozási nyelvek és platformok](sql-databas
 
 Kihasználhatja a nyílt forráskódú eszközökkel, mint például [cheetah](https://github.com/wunderlist/cheetah), [sql-cli](https://www.npmjs.com/package/sql-cli), [VS Code](https://code.visualstudio.com/). Ezen kívül az Azure SQL Database olyan Microsoft-eszközöket is támogat, mint például a [Visual Studio](https://www.visualstudio.com/downloads/) és az [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx). Használhatja az Azure portal, PowerShell, és a REST API-k segítségével hatékonyságot.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Hitelesítés
 
 Hozzáférés az Azure SQL Database-bejelentkezések és a tűzfal védi. Az Azure SQL Database támogatja mind az SQL Server és [Azure Active Directory (AAD) hitelesítés](sql-database-aad-authentication.md) felhasználók és bejelentkezések. Csak a felügyelt példány AAD bejelentkezések érhetők el. 
 

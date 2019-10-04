@@ -11,18 +11,18 @@ ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9a1b8abf15233c06e8ff9e507b315cc8a3703970
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57443334"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60454659"
 ---
 # <a name="azure-ad-connect--adsynctools-powershell-reference"></a>Azure AD Connect:  ADSyncTools PowerShell-referencia
 A következő dokumentáció arról nyújt a ADSyncTools.psm1 PowerShell-modult, amely tartalmazza az Azure AD Connecttel kapcsolatos referenciainformációk.
 
 ## <a name="clear-adsynctoolsconsistencyguid"></a>CLEAR-ADSyncToolsConsistencyGuid
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 Az mS-Ds-ConsistencyGuid az AD-felhasználó törlése
 
 ### <a name="syntax"></a>SZINTAXIS
@@ -36,7 +36,7 @@ Törölje az értéket az mS-Ds-ConsistencyGuid a cél AD-felhasználó
 
 ### <a name="examples"></a>PÉLDÁK
 
-#### <a name="example-1"></a>1. PÉLDA
+#### <a name="example-1"></a>1\. PÉLDA
 ```
 Example of how to use this cmdlet
 ```
@@ -69,7 +69,7 @@ További információk: about_CommonParameters (https://go.microsoft.com/fwlink/
 
 ## <a name="confirm-adsynctoolsadmoduleloaded"></a>Confirm-ADSyncToolsADModuleLoaded
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 {{Töltse ki a Szinopszist}}
 
 ### <a name="syntax"></a>SZINTAXIS
@@ -83,7 +83,7 @@ Confirm-ADSyncToolsADModuleLoaded
 
 ### <a name="examples"></a>PÉLDÁK
 
-#### <a name="example-1"></a>1. példa
+#### <a name="example-1"></a>1\. példa
 ```powershell
 PS C:\> {{ Add example code here }}
 ```
@@ -92,7 +92,7 @@ PS C:\> {{ Add example code here }}
 
 ## <a name="connect-adsyncdatabase"></a>Connect-AdSyncDatabase
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 {{Töltse ki a Szinopszist}}
 
 ### <a name="syntax"></a>SZINTAXIS
@@ -107,7 +107,7 @@ Connect-AdSyncDatabase [-Server] <String> [[-Instance] <String>] [[-Database] <S
 
 ### <a name="examples"></a>PÉLDÁK
 
-#### <a name="example-1"></a>1. példa
+#### <a name="example-1"></a>1\. példa
 ```powershell
 PS C:\> {{ Add example code here }}
 ```
@@ -197,7 +197,7 @@ További információk: about_CommonParameters (https://go.microsoft.com/fwlink/
 
 ## <a name="export-adsynctoolsconsistencyguidmigration"></a>Exportálás – ADSyncToolsConsistencyGuidMigration
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 ConsistencyGuid jelentés exportálása
 
 ### <a name="syntax"></a>SZINTAXIS
@@ -212,7 +212,7 @@ Az Importálás CSV-fájlt a Import-ADSyncToolsImmutableIdMigration alapján Con
 
 ### <a name="examples"></a>PÉLDÁK
 
-#### <a name="example-1"></a>1. PÉLDA
+#### <a name="example-1"></a>1\. PÉLDA
 ```
 Import-Csv .\AllSyncUsers.csv | Export-ADSyncToolsConsistencyGuidMigration -Output ".\AllSyncUsers-Report"
 ```
@@ -290,7 +290,7 @@ További információk: about_CommonParameters (https://go.microsoft.com/fwlink/
 
 ## <a name="get-adsyncsqlbrowserinstances"></a>Get-ADSyncSQLBrowserInstances
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 {{Töltse ki a Szinopszist}}
 
 ### <a name="syntax"></a>SZINTAXIS
@@ -304,7 +304,7 @@ Get-ADSyncSQLBrowserInstances [[-hostName] <String>]
 
 ### <a name="examples"></a>PÉLDÁK
 
-#### <a name="example-1"></a>1. példa
+#### <a name="example-1"></a>1\. példa
 ```powershell
 PS C:\> {{ Add example code here }}
 ```
@@ -330,7 +330,7 @@ Accept wildcard characters: False
 
 ## <a name="get-adsynctoolsaduser"></a>Get-ADSyncToolsADuser
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 Felhasználó beolvasása az AD-ből
 
 ### <a name="syntax"></a>SZINTAXIS
@@ -344,7 +344,7 @@ TEGYE AD objektumot adja vissza: Több erdő támogatása
 
 ### <a name="examples"></a>PÉLDÁK
 
-#### <a name="example-1"></a>1. PÉLDA
+#### <a name="example-1"></a>1\. PÉLDA
 ```
 Example of how to use this cmdlet
 ```
@@ -377,7 +377,7 @@ További információk: about_CommonParameters (https://go.microsoft.com/fwlink/
 
 ## <a name="get-adsynctoolsconsistencyguid"></a>Get-ADSyncToolsConsistencyGuid
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 Az mS-Ds-ConsistencyGuid le AD-felhasználó
 
 ### <a name="syntax"></a>SZINTAXIS
@@ -391,7 +391,7 @@ A cél az AD felhasználó GUID formátumú mS-Ds-ConsistencyGuid attribútum é
 
 ### <a name="examples"></a>PÉLDÁK
 
-#### <a name="example-1"></a>1. PÉLDA
+#### <a name="example-1"></a>1\. PÉLDA
 ```
 Example of how to use this cmdlet
 ```
@@ -424,7 +424,7 @@ További információk: about_CommonParameters (https://go.microsoft.com/fwlink/
 
 ## <a name="get-adsynctoolsobjectguid"></a>Get-ADSyncToolsObjectGuid
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 Első az ObjectGuid AD-felhasználó
 
 ### <a name="syntax"></a>SZINTAXIS
@@ -438,7 +438,7 @@ Az értéket adja vissza az ObjectGUID attribútum GUID formátumú cél AD-felh
 
 ### <a name="examples"></a>PÉLDÁK
 
-#### <a name="example-1"></a>1. PÉLDA
+#### <a name="example-1"></a>1\. PÉLDA
 ```
 Example of how to use this cmdlet
 ```
@@ -471,7 +471,7 @@ További információk: about_CommonParameters (https://go.microsoft.com/fwlink/
 
 ## <a name="get-adsynctoolsrunhistory"></a>Get-ADSyncToolsRunHistory
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 Get AAD Connect futtatási előzmények
 
 ### <a name="syntax"></a>SZINTAXIS
@@ -485,7 +485,7 @@ Függvény, amely XML formátumban adja vissza az AAD Connect futtatási előzm�
 
 ### <a name="examples"></a>PÉLDÁK
 
-#### <a name="example-1"></a>1. PÉLDA
+#### <a name="example-1"></a>1\. PÉLDA
 ```
 Get-ADSyncToolsRunHistory
 ```
@@ -518,7 +518,7 @@ További információk: about_CommonParameters (https://go.microsoft.com/fwlink/
 
 ## <a name="get-adsynctoolssourceanchorchanged"></a>Get-ADSyncToolsSourceAnchorChanged
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 Felhasználók beolvasása megváltozott SourceAnchor hibákkal
 
 ### <a name="syntax"></a>SZINTAXIS
@@ -532,7 +532,7 @@ Lekérdezések AAD Connect futtatási előzmények működik, és exportálja a 
 
 ### <a name="examples"></a>PÉLDÁK
 
-#### <a name="example-1"></a>1. PÉLDA
+#### <a name="example-1"></a>1\. PÉLDA
 ```
 #Required Parameters
 ```
@@ -584,7 +584,7 @@ További információk: about_CommonParameters (https://go.microsoft.com/fwlink/
 
 ## <a name="import-adsynctoolsimmutableidmigration"></a>Import-ADSyncToolsImmutableIdMigration
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 Importálás ImmutableID az aad-ből
 
 ### <a name="syntax"></a>SZINTAXIS
@@ -599,7 +599,7 @@ Létrehoz egy fájlt az összes Azure AD-Synchronized felhasználóval GUID form
 
 ### <a name="examples"></a>PÉLDÁK
 
-#### <a name="example-1"></a>1. PÉLDA
+#### <a name="example-1"></a>1\. PÉLDA
 ```
 Import-ADSyncToolsImmutableIdMigration -OutputFile '.\AllSyncUsers.csv'
 ```
@@ -648,7 +648,7 @@ További információk: about_CommonParameters (https://go.microsoft.com/fwlink/
 
 ## <a name="invoke-adsyncdatabasequery"></a>Invoke-AdSyncDatabaseQuery
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 {{Töltse ki a Szinopszist}}
 
 ### <a name="syntax"></a>SZINTAXIS
@@ -662,7 +662,7 @@ Invoke-AdSyncDatabaseQuery [-SqlConnection] <SqlConnection> [[-Query] <String>] 
 
 ### <a name="examples"></a>PÉLDÁK
 
-#### <a name="example-1"></a>1. példa
+#### <a name="example-1"></a>1\. példa
 ```powershell
 PS C:\> {{ Add example code here }}
 ```
@@ -707,7 +707,7 @@ További információk: about_CommonParameters (https://go.microsoft.com/fwlink/
 
 ## <a name="remove-adsynctoolsexpiredcertificates"></a>Remove-ADSyncToolsExpiredCertificates
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 Távolítsa el a lejárt tanúsítványokat UserCertificate attribútum-szkript
 
 ### <a name="syntax"></a>SZINTAXIS
@@ -725,7 +725,7 @@ Mindegyik tanúsítvány egy elkülönített filename készül biztonsági máso
 
 ### <a name="examples"></a>PÉLDÁK
 
-#### <a name="example-1"></a>1. PÉLDA
+#### <a name="example-1"></a>1\. PÉLDA
 ```
 Check all users in target OU - Expired Certificates will be copied to separated files and no certificates will be removed
 ```
@@ -792,7 +792,7 @@ További információk: about_CommonParameters (https://go.microsoft.com/fwlink/
 
 ## <a name="repair-adsynctoolsautoupgradestate"></a>Repair-ADSyncToolsAutoUpgradeState
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 Rövid leírás
 
 ### <a name="syntax"></a>SZINTAXIS
@@ -806,7 +806,7 @@ Hosszú leírás
 
 ### <a name="examples"></a>PÉLDÁK
 
-#### <a name="example-1"></a>1. PÉLDA
+#### <a name="example-1"></a>1\. PÉLDA
 ```
 Example of how to use this cmdlet
 ```
@@ -818,7 +818,7 @@ Another example of how to use this cmdlet
 
 ## <a name="resolve-adsynchostaddress"></a>Resolve-ADSyncHostAddress
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 {{Töltse ki a Szinopszist}}
 
 ### <a name="syntax"></a>SZINTAXIS
@@ -832,7 +832,7 @@ Resolve-ADSyncHostAddress [[-hostName] <String>]
 
 ### <a name="examples"></a>PÉLDÁK
 
-#### <a name="example-1"></a>1. példa
+#### <a name="example-1"></a>1\. példa
 ```powershell
 PS C:\> {{ Add example code here }}
 ```
@@ -858,7 +858,7 @@ Accept wildcard characters: False
 
 ## <a name="restore-adsynctoolsexpiredcertificates"></a>Restore-ADSyncToolsExpiredCertificates
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 (EHHEZ) Visszaállítja a AD UserCertificate attribútum a tanúsítványfájl
 
 ### <a name="syntax"></a>SZINTAXIS
@@ -872,7 +872,7 @@ Hosszú leírás
 
 ### <a name="examples"></a>PÉLDÁK
 
-#### <a name="example-1"></a>1. PÉLDA
+#### <a name="example-1"></a>1\. PÉLDA
 ```
 Example of how to use this cmdlet
 ```
@@ -884,7 +884,7 @@ Another example of how to use this cmdlet
 
 ## <a name="set-adsynctoolsconsistencyguid"></a>Set-ADSyncToolsConsistencyGuid
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 MS-Ds-ConsistencyGuid beállítása az AD-felhasználó
 
 ### <a name="syntax"></a>SZINTAXIS
@@ -898,7 +898,7 @@ Adja meg a cél AD-felhasználó mS-Ds-ConsistencyGuid attribútum
 
 ### <a name="examples"></a>PÉLDÁK
 
-#### <a name="example-1"></a>1. PÉLDA
+#### <a name="example-1"></a>1\. PÉLDA
 ```
 Example of how to use this cmdlet
 ```
@@ -946,7 +946,7 @@ További információk: about_CommonParameters (https://go.microsoft.com/fwlink/
 
 ## <a name="test-adsyncnetworkport"></a>Test-ADSyncNetworkPort
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 {{Töltse ki a Szinopszist}}
 
 ### <a name="syntax"></a>SZINTAXIS
@@ -960,7 +960,7 @@ Test-ADSyncNetworkPort [[-hostName] <String>] [[-port] <String>]
 
 ### <a name="examples"></a>PÉLDÁK
 
-#### <a name="example-1"></a>1. példa
+#### <a name="example-1"></a>1\. példa
 ```powershell
 PS C:\> {{ Add example code here }}
 ```
@@ -1001,7 +1001,7 @@ Accept wildcard characters: False
 
 ## <a name="trace-adsynctoolsadimport"></a>Trace-ADSyncToolsADImport
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 Létrehoz egy nyomkövetési fájl és az AD importálás lépés
 
 ### <a name="syntax"></a>SZINTAXIS
@@ -1016,7 +1016,7 @@ Nyomkövetések minden, az AAD Connect AD importálás ldap-lekérdezéseket fut
 
 ### <a name="examples"></a>PÉLDÁK
 
-#### <a name="example-1"></a>1. PÉLDA
+#### <a name="example-1"></a>1\. PÉLDA
 ```
 Example of how to use this cmdlet
 ```
@@ -1125,7 +1125,7 @@ További információk: about_CommonParameters (https://go.microsoft.com/fwlink/
 
 ## <a name="trace-adsynctoolsldapquery"></a>Trace-ADSyncToolsLdapQuery
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 Rövid leírás
 
 ### <a name="syntax"></a>SZINTAXIS
@@ -1140,7 +1140,7 @@ Hosszú leírás
 
 ### <a name="examples"></a>PÉLDÁK
 
-#### <a name="example-1"></a>1. PÉLDA
+#### <a name="example-1"></a>1\. PÉLDA
 ```
 Example of how to use this cmdlet
 ```
@@ -1218,7 +1218,7 @@ További információk: about_CommonParameters (https://go.microsoft.com/fwlink/
 
 ## <a name="update-adsynctoolsconsistencyguidmigration"></a>Update-ADSyncToolsConsistencyGuidMigration
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 Felhasználók frissíti az új ConsistencyGuid (immutableid azonosítója)
 
 ### <a name="syntax"></a>SZINTAXIS
@@ -1233,7 +1233,7 @@ Frissíti a felhasználók az új ConsistencyGuid (immutableid azonosítója) é
 
 ### <a name="examples"></a>PÉLDÁK
 
-#### <a name="example-1"></a>1. PÉLDA
+#### <a name="example-1"></a>1\. PÉLDA
 ```
 Import-Csv .\AllSyncUsersTEST-Report.csv -Delimiter "`t"| Update-ADSyncToolsConsistencyGuidMigration -Output .\AllSyncUsersTEST-Result2 -WhatIf
 ```

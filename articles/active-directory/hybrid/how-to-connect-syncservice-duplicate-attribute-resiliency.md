@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a65af5a5ea0629b617c4e736d8c110cbb9aa540c
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438301"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60348813"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>Identitásszinkronizálás és ismétlődő attribútumok rugalmassága
 Ismétlődő attribútumok rugalmassága lehetővé teszi az Azure Active Directoryban, amely kiküszöböli a fennakadások nélkül használható által okozott az **UserPrincipalName** és **ProxyAddress** ütközik a Microsoft egyik futtatásakor szinkronizálás eszközökkel.
@@ -103,7 +103,7 @@ Vagy
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -PropertyName ProxyAddresses`
 
 #### <a name="by-conflicting-value"></a>Ütköző érték szerint
-Adjon hozzá egy adott tulajdonságra vonatkozó hibaüzenetek jelennek meg a **- tulajdonságérték** jelző (**- PropertyName** kell használni, valamint ez a jelző hozzáadásakor):
+Adjon hozzá egy adott tulajdonságra vonatkozó hibaüzenetek jelennek meg a **- tulajdonságérték** jelző ( **- PropertyName** kell használni, valamint ez a jelző hozzáadásakor):
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -PropertyValue User@domain.com -PropertyName UserPrincipalName`
 

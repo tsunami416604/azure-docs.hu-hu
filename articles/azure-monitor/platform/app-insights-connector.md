@@ -13,23 +13,23 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: magoedte
-ms.openlocfilehash: aa1bb62e762925dcb5a0ee37b71602094e768137
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 05f2f52da90f499f7ac16de179d9967b97579997
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58905698"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68849191"
 ---
-# <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights-összekötő felügyeleti megoldás (elavult)
+# <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights Connector felügyeleti megoldás (elavult)
 
 ![Application Insights szimbólum](./media/app-insights-connector/app-insights-connector-symbol.png)
 
 >[!NOTE]
-> A támogatási [erőforrások közötti lekérdezések](../../azure-monitor/log-query/cross-workspace-query.md), az Application Insights-összekötő-felügyeleti megoldás már nem szükséges. Már elavult, és törli az Azure piactéren, az OMS-portálon, hogy 2019. január 15. az Azure kereskedelmi felhőben hivatalosan elavulttá együtt. Ez jén kivonjuk a forgalomból 2019. március 30 Azure US Government-felhőben.
+> Az [erőforrások közötti lekérdezések](../../azure-monitor/log-query/cross-workspace-query.md)támogatásával a Application Insights Connector felügyeleti megoldás már nem szükséges. Az Azure piactéren elavult és eltávolított, valamint a OMS-portálon, amely az Azure-beli kereskedelmi felhő esetében hivatalosan elavult, 2019. 2019. március 30-án megszűnik az Azure US government Cloud.
 >
->A meglévő kapcsolatok továbbra is működnek, amíg 2019. június 30.  Az OMS-portál elavulásának nincs lehetőség a konfigurálását, és távolítsa el a meglévő kapcsolatok a portálról. Lásd: [eltávolításával a PowerShell-lel az összekötő](#removing-the-connector-with-powershell) alább talál egy parancsfájlt a PowerShell használatával távolítsa el a meglévő kapcsolatok.
+>A meglévő kapcsolatok 2019 június 30-ig továbbra is működni fognak.  A OMS-portál elavult használata esetén nincs lehetőség a meglévő kapcsolatok konfigurálására és eltávolítására a portálon. A meglévő kapcsolatok eltávolításához lásd: [az összekötő eltávolítása](#removing-the-connector-with-powershell) az alábbi PowerShell-lel a PowerShell használatával.
 >
->Útmutató az Application Insights lekérdezési napló az adatok több alkalmazáshoz, lásd: [használja őket egységes Előtérrendszerként több Azure Monitor az Application Insights-erőforrást](../log-query/unify-app-resource-data.md). Az OMS-portál elavulással kapcsolatos további információkért lásd: [Azure-bA az OMS-portálon](../../azure-monitor/platform/oms-portal-transition.md).
+>Több alkalmazás naplózási információinak lekérdezéséhez Application Insights tekintse meg a [több Azure Monitor Application Insights erőforrás egységesítését](../log-query/unify-app-resource-data.md)ismertető témakört. További információ a OMS-portál érvénytelenítéséről: a [OMS-portál áthelyezése az Azure](../../azure-monitor/platform/oms-portal-transition.md)-ba.
 >
 > 
 
@@ -142,7 +142,7 @@ Perspektíva összetevők frissülnek, attól függően, a keresési lekérdezé
 
 Application Insights-összekötő panelek úgy tervezték, hogy lehetővé teszi a kiválasztott Application Insights alkalmazáshoz forgáspont *használhatja az Azure Portalon*. A megoldás magas szintű felügyeleti platform, amely segít egy alkalmazás hibaelhárításával foglalkozó szakaszt is használhatja. Amikor megjelenik a csatlakoztatott alkalmazások valamelyikében egy potenciális problémát, vagy részletes elemzéseket készíthet, a Log Analytics-keresést is, vagy Ön is kimutatás, közvetlenül az Application Insights alkalmazást az.
 
-Forgáspont, kattintson a három pontra (**...** ), amely akkor jelenik meg az egyes sorok végén található, és válassza ki **nyissa meg az Application Insights**.
+Forgáspont, kattintson a három pontra ( **...** ), amely akkor jelenik meg az egyes sorok végén található, és válassza ki **nyissa meg az Application Insights**.
 
 >[!NOTE]
 >**Nyissa meg az Application Insights** nem érhető el az Azure Portalon.
@@ -181,7 +181,7 @@ Egy rekord egy *típus* , *ApplicationInsights* jön létre az egyes bemeneti ad
 
 ### <a name="generic-fields"></a>Általános mezők
 
-| Tulajdonság | Leírás |
+| Tulajdonság | Description |
 | --- | --- |
 | Típus | ApplicationInsights |
 | ClientIP |   |
@@ -192,10 +192,10 @@ Egy rekord egy *típus* , *ApplicationInsights* jön létre az egyes bemeneti ad
 | DeviceType | Ügyféleszközök |
 | ScreenResolution |   |
 | Kontinens | Kontinens, amelyben adja meg a kérelem |
-| Ország | Ország, ahonnan a kérés származik |
+| Country | Az ország/régió, ahol a kérés származik |
 | Megye | Tartomány, állapot vagy a területi beállítás, amelyben adja meg a kérelem |
 | Város | Város vagy a város, amelyben adja meg a kérelem |
-| isSynthetic | Azt jelzi, hogy a kérelem egy felhasználó által vagy automatikus módon hozták-e. = Igaz a felhasználó által vagy a false = az automatikus módszer |
+| isSynthetic | Azt jelzi, hogy a kérelem egy felhasználó által vagy automatikus módon hozták-e. True = automatizált metódus vagy hamis = felhasználó által generált |
 | Érvénytelen a SamplingRate | A telemetriát a portálra küldött SDK által generált százalékos értéke. Tartomány 0,0-100.0. |
 | SampledCount | 100/(SamplingRate). Ha például 4 =&gt; 25 %-kal |
 | IsAuthenticated | Igaz vagy hamis |
@@ -249,7 +249,7 @@ Egy rekord egy *típus* , *ApplicationInsights* jön létre az egyes bemeneti ad
 
 ### <a name="request-specific-fields"></a>Kérelem-specifikus mezők
 
-| Tulajdonság | Leírás |
+| Tulajdonság | Description |
 | --- | --- |
 | Típus | ApplicationInsights |
 | TelemetryType | Kérés |
@@ -272,8 +272,8 @@ Egy rekord egy *típus* , *ApplicationInsights* jön létre az egyes bemeneti ad
 
 Ez a megoldás nem rendelkezik az irányítópulton látható naplókeresési mintákat egy készletét. Minta naplóbeli keresési lekérdezések leírásokat tartalmazó látható azonban a [nézet Application Insights-összekötő információk](#view-application-insights-connector-information) szakaszban.
 
-## <a name="removing-the-connector-with-powershell"></a>A PowerShell-lel az összekötő eltávolítása
-Az OMS-portál elavulásának nincs lehetőség a konfigurálását, és távolítsa el a meglévő kapcsolatok a portálról. Meglévő kapcsolatok a következő PowerShell-parancsfájllal távolíthatja el. A tulajdonosi vagy közreműködői a munkaterület és Application Insights-erőforrást az olvasó végrehajtani a műveletet kell lennie.
+## <a name="removing-the-connector-with-powershell"></a>Az összekötő eltávolítása a PowerShell-lel
+A OMS-portál elavult használata esetén nincs lehetőség a meglévő kapcsolatok konfigurálására és eltávolítására a portálon. A meglévő kapcsolatokat a következő PowerShell-parancsfájl használatával távolíthatja el. A művelet végrehajtásához a munkaterület tulajdonosának vagy közreműködője, Application Insights erőforrás-olvasójának kell lennie.
 
 ```powershell
 $Subscription_app = "App Subscription Name"
@@ -290,7 +290,7 @@ Set-AzContext -SubscriptionId $Subscription_workspace
 Remove-AzOperationalInsightsDataSource -WorkspaceName $Workspace -ResourceGroupName $ResourceGroup_workspace -Name $AIApp.Id
 ```
 
-Kérheti le a következő PowerShell-parancsfájlt, amely REST API-hívás hív meg használó alkalmazások listáját. 
+Az alkalmazások listáját az alábbi PowerShell-parancsfájl segítségével kérheti le, amely egy REST API hívást hív meg. 
 
 ```powershell
 Connect-AzAccount
@@ -311,13 +311,13 @@ $Headers = @{
 $Connections = Invoke-RestMethod -Method "GET" -Uri "https://management.azure.com$($LAWorkspace.ResourceId)/dataSources/?%24filter=kind%20eq%20'ApplicationInsights'&api-version=2015-11-01-preview" -Headers $Headers
 $ConnectionsJson = $Connections | ConvertTo-Json
 ```
-Ehhez a szkripthez hitelesítési tulajdonosi jogkivonattal az Azure Active Directoryval történő hitelesítésre. Egyik módja a jogkivonat lekéréséhez használja a cikk a [REST API-dokumentációs oldalának](https://docs.microsoft.com/rest/api/loganalytics/datasources/createorupdate). Kattintson a **Kipróbálom** , és jelentkezzen be az Azure-előfizetésében. A tulajdonosi jogkivonatot is másolja a **előzetes kérése** az alábbi képen látható módon.
+A szkriptnek rendelkeznie kell egy tulajdonosi hitelesítési jogkivonattal a Azure Active Directory való hitelesítéshez. A token lekérésének egyik módja a [REST API dokumentációs webhelyén](https://docs.microsoft.com/rest/api/loganalytics/datasources/createorupdate)található cikk használata. Kattintson a **kipróbálás** gombra, és jelentkezzen be az Azure-előfizetésbe. A tulajdonosi jogkivonatot a **kérelem előzetes** verziójából másolhatja, ahogy az alábbi képen is látható.
 
 
 ![Tulajdonosi jogkivonat](media/app-insights-connector/bearer-token.png)
 
 
-Alkalmazások használata listáját egy naplólekérdezés is lekérhet:
+Lekérheti az alkalmazások listáját is, ha egy napló lekérdezést használ:
 
 ```Kusto
 ApplicationInsights | summarize by ApplicationName

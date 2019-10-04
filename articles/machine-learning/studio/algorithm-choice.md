@@ -11,11 +11,11 @@ ms.author: amlstudiodocs
 ms.custom: previous-ms.author=pakalra, previous-author=pakalra
 ms.date: 03/04/2019
 ms.openlocfilehash: 3bb88f2f9546ec25433061a0704bd144730bd34c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57894631"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60752884"
 ---
 # <a name="how-to-choose-algorithms-for-azure-machine-learning-studio"></a>Az Azure Machine Learning Studióban az algoritmusok kiválasztása
 
@@ -41,7 +41,7 @@ Ezek az ajánlások számos az adatszakértők és a machine learning szakértő
 
 ### <a name="how-to-use-the-cheat-sheet"></a>Hogyan használható a – Adatlap
 
-Olvassa el a diagram elérési útja és algoritmus címkéinek "a  *&lt;görbe felirata&gt;*, használjon  *&lt;algoritmus&gt;*." Például "a *sebesség*, használjon *két osztály logisztikai regressziós*." Néha több ág vonatkozik.
+Olvassa el a diagram elérési útja és algoritmus címkéinek "a  *&lt;görbe felirata&gt;* , használjon  *&lt;algoritmus&gt;* ." Például "a *sebesség*, használjon *két osztály logisztikai regressziós*." Néha több ág vonatkozik.
 Néha egyikük sem tökéletes választás. Arra szolgálnak, hogy a szabály az USB javaslatok, így nem kell aggódnia, hogy pontos lehet.
 Beszéltünk az említett, amelyek több az adatszakértők a csak arról a legjobb algoritmus található módja kipróbálni az összes őket.
 
@@ -66,14 +66,14 @@ Felügyelt tanítás olyan népszerű és hasznos a gépi tanulás. Egy kivétel
 
 Felügyeletlen learning, az adatpontok nem tartalmaz feliratokat társítva. Ehelyett egy felügyeletlen tanulási algoritmus célja valamilyen módon adatok rendezése, vagy a szerkezetét írja le. Ez azt létre, fürtök vagy megtalálni a különböző módszereket, az összetett megnézzük, így egyszerűbb vagy több szervezett jelenik.
 
-### <a name="reinforcement-learning"></a>Megerősítő tanulást
+### <a name="reinforcement-learning"></a>Megerősítő tanulás
 
 A megerősítő tanulást az algoritmus lesz az egyes válaszul művelet kiválasztását. A tanulási algoritmus is fogad ellenszolgáltatás jel egy rövid ideig később, hogyan jó döntés lett megjelölve.
 Ennek alapján, az algoritmus módosítása igazítani a stratégiáját a legmagasabb ellenszolgáltatás növelhető. Jelenleg nincsenek nincs megerősítő tanulási algoritmus modulok az Azure Machine Learning Studióban. Megerősítő tanulást szokás robotika, ahol egy adatpont érzékelőinek adott ponton időben lesz, és az algoritmus ki kell választania a robot a következő művelet. Emellett akkor is, természetes választás olyan Internet of Things alkalmazásokat.
 
 ## <a name="considerations-when-choosing-an-algorithm"></a>Egy algoritmus kiválasztásakor megfontolandó szempontok
 
-### <a name="accuracy"></a>Pontosság
+### <a name="accuracy"></a>pontosság
 
 Bevezetés a legpontosabb válasz lehetséges nem mindig szükséges.
 Néha közelítés verziója megfelelő, attól függően szeretné használni. Ha ebben az esetben lehet kivágni a feldolgozási idő jelentősen több hozzávetőleges módszerekkel színerősséget. További hozzávetőleges módszerek egy másik előnye, hogy természetes módon általában overfitting elkerülése érdekében.

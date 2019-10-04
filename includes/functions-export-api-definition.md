@@ -5,35 +5,35 @@ ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
 ms.openlocfilehash: 49ac1a7585ddf2a6500c7e9382880109c3f7f431
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50134159"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534273"
 ---
 ## <a name="export-an-api-definition"></a>API-definíció exportálása
-OpenAPI-definíció rendelkezik a függvény [függvény OpenAPI definíció létrehozása](../articles/azure-functions/functions-openapi-definition.md). Ez a folyamat következő lépése, hogy az API-definíció exportálása, hogy a PowerApps és a Microsoft Flow is használhassák az egyéni API-t.
+OpenAPI-definíciója van a függvényhez, a [OpenAPI-definíció létrehozása függvényhez](../articles/azure-functions/functions-openapi-definition.md). A folyamat következő lépése az API-definíció exportálása, hogy a PowerApps és a Microsoft Flow egy egyéni API-ban is használható legyen.
 
 > [!IMPORTANT]
-> Ne feledje, hogy Ön be kell jelentkeznie az Azure-ba, használhatja a powerapps és Microsoft Flow-bérlők azonos hitelesítő adatokkal. Ez lehetővé teszi az Azure-ban az egyéni API létrehozása és a PowerApps és a Microsoft Flow elérhetővé tenni.
+> Ne feledje, hogy be kell jelentkeznie az Azure-ba ugyanazzal a hitelesítő adatokkal, amelyeket a PowerApps és Microsoft Flow bérlőhöz használ. Ez lehetővé teszi, hogy az Azure létrehozza az egyéni API-t, és elérhetővé tegye mind a PowerApps, mind a Microsoft Flow számára.
 
-1. Az a [az Azure portal](https://portal.azure.com), kattintson a függvényalkalmazás nevére (például **function-demo-energy**) > **platformfunkciók** > **API-definíció** .
+1. A [Azure Portal](https://portal.azure.com)kattintson a Function alkalmazás nevére (például **Function-demó-Energy**) > **platform szolgáltatásai** > **API-definíció**.
 
     ![API-definíció](media/functions-export-api-definition/api-definition.png)
 
-1. Kattintson a **exportálás a Powerappsba és a Flow**.
+1. Kattintson **az Exportálás PowerApps + flow**elemre.
 
     ![API-definíció forrása](media/functions-export-api-definition/export-api-1.png)
 
-1. A jobb oldali ablaktáblán használja a táblázatban megadott beállításokat.
+1. A jobb oldali ablaktáblában használja a táblázatban megadott beállításokat.
 
     |Beállítás|Leírás|
     |--------|------------|
-    |**Export mód**|Válassza ki **Express** automatikusan létrehozni az egyéni API-t. Kiválasztásával **manuális** exportálások az API-definíció, de majd importálnia kell azt a PowerApps és a Microsoft Flow manuálisan. További információkért lásd: [exportálás a Powerappsbe és a Microsoft Flow](../articles/azure-functions/app-service-export-api-to-powerapps-and-flow.md).|
-    |**Környezet**|Válassza ki a környezetet, amely az egyéni API-t menteni kell. További információkért lásd: [környezetek áttekintése (PowerApps)](https://powerapps.microsoft.com/tutorials/environments-overview/) vagy [környezetek áttekintése (Microsoft Flow)](https://us.flow.microsoft.com/documentation/environments-overview-admin/).|
-    |**Egyéni API neve**|Adjon meg egy nevet, például `Turbine Repair`.|
-    |**API-kulcs neve**|Az egyéni API-t felhasználói felületén adja meg a nevét, amely alkalmazások és folyamatok sikerei kell megjelennie. Vegye figyelembe, hogy a példa a hasznos információkat tartalmazza.|
+    |**Exportálási mód**|Válassza az **expressz** lehetőséget az egyéni API automatikus létrehozásához. Válassza a **manuális** EXPORTÁLÁS az API-definíciót, de ezt követően manuálisan kell importálnia a PowerApps-be és Microsoft flow. További információ: [Exportálás PowerApps és Microsoft Flowba](../articles/azure-functions/app-service-export-api-to-powerapps-and-flow.md).|
+    |**Környezet**|Válassza ki azt a környezetet, amelyre az egyéni API-t menteni kívánja. További információ: környezetek [áttekintése (PowerApps)](https://powerapps.microsoft.com/tutorials/environments-overview/) vagy [környezetek áttekintése (Microsoft flow)](https://us.flow.microsoft.com/documentation/environments-overview-admin/).|
+    |**Egyéni API neve**|Írjon be egy nevet, `Turbine Repair`például:.|
+    |**API-kulcs neve**|Adja meg azt a nevet, amelyet az alkalmazásnak és a flow-építőknek látniuk kell az egyéni API felhasználói felületén. Vegye figyelembe, hogy a példa hasznos információkat tartalmaz.|
  
     ![Exportálás a PowerAppsbe és a Microsoft Flow-ba](media/functions-export-api-definition/export-api-2.png)
 
-1. Kattintson az **OK** gombra. Az egyéni API-t most készített, és felveszi a környezetbe a megadott.
+1. Kattintson az **OK** gombra. Az egyéni API most már a megadott környezethez lett létrehozva és hozzá lett adva.

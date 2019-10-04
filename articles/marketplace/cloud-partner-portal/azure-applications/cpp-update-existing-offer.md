@@ -1,25 +1,18 @@
 ---
-title: Egy Azure-alkalmazás létező ajánlat frissítése |} A Microsoft Docs
+title: Egy Azure-alkalmazás létező ajánlat frissítése |} Az Azure Marketplace-en
 description: Hogyan frissíthető egy meglévő Azure-alkalmazás az ajánlat az Azure Marketplace-en.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 1019c06afbdab0a6b0e172133da316aea01a5504
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.author: pabutler
+ms.openlocfilehash: a36df757e3a2682af641101ed82583a0cd293e0a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57216891"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64942822"
 ---
 # <a name="update-an-existing-azure-application-offer"></a>Egy Azure-alkalmazás létező ajánlat frissítése
 

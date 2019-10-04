@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 05/07/2019
 ms.author: spelluru
-ms.openlocfilehash: f1194d8385d1e7ddcb906d0c8c3a2b56648e2547
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 6f283ce007e96547e01a01a3753ddcb60574bfc3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58120822"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65412807"
 ---
 # <a name="manage-lab-accounts-in-azure-lab-services"></a>Az Azure Lab Services tesztkörnyezetfiókok kezelése 
 Az Azure Lab Services tesztkörnyezetfiók az felügyelt tesztkörnyezet-típusok, például osztályterem-tesztkörnyezetek tárolója. A rendszergazda állítja be az Azure Lab Services tesztkörnyezetfiók és labortulajdonosok labs hozhat létre a fiók számára hozzáférést biztosít. Ez a cikk bemutatja, hogyan tesztkörnyezetfiók létrehozása, megtekintheti az összes tesztkörnyezetfiókok, vagy törölheti a labor.
@@ -38,9 +38,11 @@ A következő lépések bemutatják, hogyan használhatja az Azure Portalt teszt
     2. Válassza ki azt az **Azure-előfizetést**, amelyben a tesztkörnyezetfiókot létre szeretné hozni.
     3. Az **Erőforráscsoport** esetében válassza az **Új létrehozása** lehetőséget, majd adjon nevet az új erőforráscsoportnak.
     4. A **Helyszín** esetében válassza ki a helyszínt/régiót, ahol létre szeretné hozni a tesztkörnyezetfiókot. 
-    5. A **társ virtuális hálózatnak**, válassza ki a társ virtuális hálózatnak (VNet), a tesztlabor-hálózat. Ehhez a fiókhoz a létrehozott Labs a kiválasztott virtuális hálózat csatlakozik, és rendelkezik az erőforrásokhoz való hozzáférést a kiválasztott virtuális hálózat. 
-    7. Az a **engedélyezése tesztkörnyezet létrehozója, labor helyre** mezőben adja meg, hogy tesztlabor kiindulópontként szolgálhat ki egy helyet a tesztkörnyezethez. Alapértelmezés szerint a beállítás le van tiltva. Le van tiltva, ha a labor alkotói nem adható meg egy helyet a tesztkörnyezethez hoznak létre. A labs labor-fiókba az Önhöz legközelebbi földrajzi helyet jönnek létre. Ha engedélyezve van, egy tesztkörnyezet létrehozója lab létrehozása idején válasszon egy helyet is.      
-    8. Kattintson a **Létrehozás** gombra. 
+    5. Válasszon egy meglévő **megosztott lemezkép-katalógusában** vagy hozzon létre egyet. A Virtuálisgép-sablon mentheti a megosztott rendszerkép-katalógusában ahhoz, hogy a mások által felhasználható. Megosztott kép katalógusok részletes információkért lásd: [használata az Azure Lab Services egy megosztott képgyűjtemény](how-to-use-shared-image-gallery.md).
+    6. A **társ virtuális hálózatnak**, válassza ki a társ virtuális hálózatnak (VNet), a tesztlabor-hálózat. Ehhez a fiókhoz a létrehozott Labs a kiválasztott virtuális hálózat csatlakozik, és rendelkezik az erőforrásokhoz való hozzáférést a kiválasztott virtuális hálózat. 
+    7. Adjon meg egy **címtartomány** a laborkörnyezetben található virtuális gépek számára. A címtartomány a classless inter-domain routing (CIDR) formátumban kell lennie (Példa: 10.20.0.0/23). A lab-ben a virtuális gépek jönnek a címtartományt. További információkért lásd: [-címtartományt ad meg a virtuális gépek a laborban](how-to-configure-lab-accounts.md#specify-an-address-range-for-vms-in-the-lab).    
+    8. Az a **engedélyezése tesztkörnyezet létrehozója, labor helyre** mezőben adja meg, hogy tesztlabor kiindulópontként szolgálhat ki egy helyet a tesztkörnyezethez. Alapértelmezés szerint a beállítás le van tiltva. Le van tiltva, ha a labor alkotói nem adható meg egy helyet a tesztkörnyezethez hoznak létre. A labs labor-fiókba az Önhöz legközelebbi földrajzi helyet jönnek létre. Ha engedélyezve van, egy tesztkörnyezet létrehozója lab létrehozása idején válasszon egy helyet is.      
+    9. Kattintson a **Létrehozás** gombra. 
 
         ![Tesztkörnyezetfiók létrehozása ablak](../media/tutorial-setup-lab-account/lab-account-settings.png)
 5. Válassza ki a **harang ikonra** eszköztár (**értesítések**), győződjön meg arról, hogy az üzembe helyezés sikeres volt-e, és válassza ki **erőforrás megnyitása**. 
@@ -51,54 +53,6 @@ A következő lépések bemutatják, hogyan használhatja az Azure Portalt teszt
 6. Megjelenik az alábbi **tesztkörnyezetfiók** oldala:
 
     ![Tesztkörnyezetfiók-oldal](../media/tutorial-setup-lab-account/lab-account-page.png)
-
-## <a name="add-a-user-to-the-lab-creator-role"></a>Felhasználó hozzáadása a Tesztkörnyezet-létrehozó szerepkörhöz
-A felhasználónak **Tesztkörnyezet-létrehozó** szerepkörrel kell rendelkeznie a tesztkörnyezetfiókban ahhoz, hogy létrehozhasson egy osztályterem-tesztkörnyezetet. A tesztkörnyezetfiók létrehozásához használt fiók automatikusan hozzáadódik ehhez a szerepkörhöz. Ha ugyanazt a felhasználói fiókot tervezi használni az osztályterem-tesztkörnyezet létrehozásához, ezt a lépést kihagyhatja. Ha egy másik felhasználói fiókot tervez használni, kövesse a következő lépéseket: 
-
-Ha engedélyt kíván adni az oktatóknak, hogy létrehozzák a tesztkörnyezeteket a tanóráikhoz, adja hozzá őket a **Tesztkörnyezet-létrehozó** szerepkörhöz:
-
-1. A a **labor fiók** lapon válassza ki **hozzáférés-vezérlés (IAM)**, és kattintson a **+ szerepkör-hozzárendelés hozzáadása** az eszköztáron. 
-
-    ![Hozzáférés-vezérlés -> szerepkör-hozzárendelés hozzáadása gomb](../media/tutorial-setup-lab-account/add-role-assignment-button.png)
-1. Az a **szerepkör-hozzárendelés hozzáadása** lapon jelölje be **tesztkörnyezet létrehozója** a **szerepkör**, válassza ki a felhasználót, adja hozzá a labor létrehozó szerepkörhöz, és válassza ki a kívánt **mentése**. 
-
-    ![Tesztkörnyezet létrehozója hozzáadása](../media/tutorial-setup-lab-account/add-lab-creator.png)
-
-
-## <a name="specify-marketplace-images-available-to-lab-creators"></a>Adja meg a Marketplace-rendszerképek labor létrehozói számára elérhető
-A tesztkörnyezetfiók tulajdonosaként megadhatja azokat a Marketplace-beli rendszerképeket, amelyek használatával a tesztkörnyezet-létrehozók tesztkörnyezeteket hozhatnak létre a tesztkörnyezetfiókban. 
-
-1. Válassza a bal oldali menüből a **Marketplace-beli rendszerképek** elemet. Alapértelmezés szerint a rendszerképek teljes listája jelenik meg (az engedélyezett és a letiltott rendszerképek egyaránt). A fenti legördülő listában a **Csak az engedélyezettek**/**Csak a letiltottak** lehetőségre kattintva szűrheti a listát, hogy csak az engedélyezett/letiltott rendszerképek jelenjenek meg. 
-    
-    ![Marketplace-beli rendszerképek oldal](../media/tutorial-setup-lab-account/marketplace-images-page.png)
-
-    A listában csak azok a Marketplace-beli rendszerképek jelennek meg, amelyek megfelelnek a következő feltételeknek:
-        
-    - Egyetlen virtuális gépet hoznak létre.
-    - A virtuális gépek üzembe helyezéséhez az Azure Resource Managert használják.
-    - Nincs szükség külön licenccsomag vásárlására.
-2. Egy engedélyezett Marketplace-beli rendszerkép **letiltásának** a következő módjai vannak: 
-    1. Kattintson az utolsó oszlopban a három pontra **(...)**, majd a **Rendszerkép letiltása** lehetőségre. 
-
-        ![Egy rendszerkép letiltása](../media/tutorial-setup-lab-account/disable-one-image.png) 
-    2. Jelöljön ki egy vagy több, a listában szereplő rendszerképet a nevük előtti jelölőnégyzet kijelölésével, majd kattintson a **Kiválasztott rendszerképek letiltása** lehetőségre. 
-
-        ![Több rendszerkép letiltása](../media/tutorial-setup-lab-account/disable-multiple-images.png) 
-1. A letiltott Marketplace-beli rendszerképek **engedélyezésének** a fentiekhez hasonlóan a következő módjai vannak: 
-    1. Kattintson az utolsó oszlopban a három pontra **(...)**, majd a **Rendszerkép engedélyezése** lehetőségre. 
-    2. Jelöljön ki egy vagy több, a listában szereplő rendszerképet a nevük előtti jelölőnégyzet kijelölésével, majd kattintson a **Kiválasztott rendszerképek engedélyezése** lehetőségre. 
-
-## <a name="configure-the-lab-account"></a>A lab-fiókok konfigurálása
-1. Az a **labor fiók** lapon jelölje be **Labs konfigurációs** a bal oldali menüben.
-
-    ![Laborok konfigurációs lapja](../media/how-to-manage-lab-accounts/labs-configuration-page.png) 
-1. A **társ virtuális hálózatnak**válassza **engedélyezve** vagy **letiltott**. Az alapértelmezett érték **letiltott**. Ahhoz, hogy a társ virtuális hálózatnak, tegye a következőket: 
-    1. Válassza ki **engedélyezve**.
-    2. Válassza ki a **VNet** a legördülő listából. 
-    3. Válassza az eszköztár **Save** (Mentés) elemét. 
-    
-        Ehhez a fiókhoz a létrehozott Labs csatlakozik a kiválasztott virtuális hálózaton. A kiválasztott virtuális hálózaton lévő erőforrások eléréséhez. 
-3. Az a **engedélyezése tesztkörnyezet létrehozója, labor helyre**, jelölje be **engedélyezve** Ha azt szeretné, hogy a tesztkörnyezet létrehozója tudják válasszon ki egy helyet a tesztkörnyezethez. Ha le van tiltva, a rendszer automatikusan létrehozza a labs ugyanazon a helyen, amelyben a labor fiók létezik. 
 
 ## <a name="view-lab-accounts"></a>Tesztkörnyezetfiókok megtekintése
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
@@ -119,8 +73,6 @@ A tesztkörnyezetfiók tulajdonosaként megadhatja azokat a Marketplace-beli ren
     3. E-mail-címét a felhasználó, aki létrehozta a labor létrehozása. 
     4. A laborkörnyezetbe engedélyezett felhasználók maximális száma. 
     5. A labor állapotát. 
-
-
 
 ## <a name="delete-a-lab-in-the-lab-account"></a>A lab-fiókban tesztkörnyezet törlése
 Kövesse az utasításokat az előző szakaszban a labor-fiókban a labs listájának megtekintéséhez.
@@ -145,11 +97,5 @@ Kövesse az utasításokat az előző szakaszban, hogy a lab-fiókokban listába
     ![Törölje a labor-fiók – megerősítés](../media/how-to-manage-lab-accounts/delete-lab-account-confirmation.png)
 
 
-
 ## <a name="next-steps"></a>További lépések
-Lásd az alábbi cikkeket:
-
-- [Labortulajdonosként hozzon létre és laborok kezelése](how-to-manage-classroom-labs.md)
-- [Labortulajdonosként állítsa be, és a sablonok közzététele](how-to-create-manage-template.md)
-- [Labortulajdonosként konfigurálása, és a egy lab használatának szabályozása](how-to-configure-student-usage.md)
-- [Labor felhasználóként osztályterem-tesztkörnyezetek elérése](how-to-use-classroom-lab.md)
+Tekintse meg a következő cikket: [Tesztkörnyezetfiókok konfigurálása](how-to-configure-lab-accounts.md).

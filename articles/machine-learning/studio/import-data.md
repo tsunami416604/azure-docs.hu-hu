@@ -11,11 +11,11 @@ ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/01/2019
 ms.openlocfilehash: 41cc1d6638871f26ae942e724a402e17f52150fc
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57872027"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60811012"
 ---
 # <a name="import-your-training-data-into-azure-machine-learning-studio-from-various-data-sources"></a>A betanítási adatok importálása az Azure Machine Learning Studióba különböző adatforrásokból
 
@@ -49,7 +49,7 @@ Különféle típusú adatokat importálhat is futtathatja a kísérletet, attó
 * Excel-fájl
 * Azure-tábla
 * Hive-tábla
-* SQL Database tábla
+* SQL database tábla
 * OData-értékek
 * SVMLight adatok (.svmlight) (lásd a [SVMLight definíció](http://svmlight.joachims.org/) formátum információ)
 * Attribútum-relációs fájlformátumra (ARFF) adatokat (.arff) (lásd a [ARFF definíció](https://weka.wikispaces.com/ARFF) formátum információ)
@@ -67,7 +67,7 @@ A következő adattípusokat felismeri a Studio:
 * String
 * Egész szám
 * Double
-* Logikai
+* Boolean
 * DateTime
 * TimeSpan
 

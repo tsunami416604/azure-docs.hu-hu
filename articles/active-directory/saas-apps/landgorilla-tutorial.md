@@ -1,244 +1,163 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integráció föld Gorilla ügyféllel |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a föld Gorilla között.
+title: 'Oktatóanyag: Azure Active Directory integráció a Land gorilla szolgáltatással | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és a szárazföldi gorilla között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 28acce3e-22a0-4a37-8b66-6e518d777350
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 03/13/2017
+ms.topic: tutorial
+ms.date: 08/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2e1288885476aeeba01f966b615c23c5fe51081
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e7c2f9b076d831f4d851a964ababb64930a7c7f8
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56199510"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879994"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-land-gorilla-client"></a>Oktatóanyag: A föld Gorilla ügyfél az Azure Active Directory-integráció
+# <a name="tutorial-integrate-land-gorilla-with-azure-active-directory"></a>Oktatóanyag: A Land gorilla integrálása Azure Active Directory
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan föld Gorilla ügyfél integrálása az Azure Active Directory (Azure AD).
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Land Gorillat Azure Active Directory (Azure AD-val). Ha a Land Gorillat az Azure AD-vel integrálja, a következőket teheti:
 
-Az Azure AD integrálása a föld Gorilla ügyfél nyújt a következő előnyökkel jár:
+* Vezérlés az Azure AD-ben, aki hozzáfér a szárazföldi Gorillahez.
+* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a Gorilla szolgáltatásba az Azure AD-fiókjával.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-- Szabályozhatja, hogy ki férhet hozzá a föld Gorilla ügyfél Azure AD-ben
-- Az Azure AD-fiókjukat engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett föld Gorilla ügyfélnek (egyszeri bejelentkezés)
-- A fiókok egyetlen központi helyen – az Azure felügyeleti portálján kezelheti.
-
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
-
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció konfigurálása a föld Gorilla ügyfél, a következőkre van szükség:
+Első lépésként a következő elemeket kell megadnia:
 
-- Azure AD-előfizetés
-- A föld Gorilla ügyfél egyszeri bejelentkezéses engedélyezett előfizetés
-
-
-> [!NOTE]
-> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
-
-
-Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
-
-- Az éles környezetben ne használjon, ha erre szükség.
-- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, beszerezheti a egy egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/).
-
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* Tartományi gorilla egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. Föld Gorilla ügyfél hozzáadása a katalógusból
-1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
+* A Land gorilla támogatja a **identitásszolgáltató** által KEZDEMÉNYEZett SSO-t
 
-## <a name="adding-land-gorilla-client-from-the-gallery"></a>Föld Gorilla ügyfél hozzáadása a katalógusból
-Az Azure AD integrálása a föld Gorilla ügyfél konfigurálásához hozzá kell föld Gorilla ügyfél a galériából a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-land-gorilla-from-the-gallery"></a>Land gorilla hozzáadása a katalógusból
 
-**A föld Gorilla ügyfél hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
+A Land gorilla Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Land Gorillat a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. Az a  **[Azure felügyeleti portálján](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **Land gorilla** kifejezést a keresőmezőbe.
+1. Válassza ki a **Land gorilla** elemet az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-    ![Active Directory][1]
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+Konfigurálja és tesztelje az Azure AD SSO-t a Land gorilla használatával egy **B. Simon**nevű teszt felhasználóval. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között, a szárazföldi Gorillaban.
 
-    ![Alkalmazások][2]
-    
-1. Kattintson a **Hozzáadás** gombra a párbeszédpanel tetején.
+Az Azure AD SSO tartományi gorilla szolgáltatással való konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
-    ![Alkalmazások][3]
+1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+2. A **[Land GORILLA SSO konfigurálása](#configure-land-gorilla-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+4. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+5. **[Hozzon létre egy Land gorilla-teszt felhasználót](#create-land-gorilla-test-user)** – hogy rendelkezzen egy B. Simon-beli, a felhasználó Azure ad-képviseletéhez kapcsolódó, a Land gorilla-beli partnerrel.
+6. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
-1. A Keresés mezőbe írja be a **föld Gorilla ügyfél**.
+### <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/landgorilla-tutorial/tutorial_landgorilla_search.png)
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. Az eredmények panelen válassza ki a **föld Gorilla ügyfél**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. A [Azure Portal](https://portal.azure.com/)a **Land gorilla** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az alapszintű **SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/landgorilla-tutorial/tutorial_landgorilla_addfromgallery.png)
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon adja meg a következő mezők értékeit:
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
-Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés föld Gorilla ügyfél "Britta Simon" nevű tesztfelhasználó alapján.
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta egyikének használatával:
 
-Az egyszeri bejelentkezés működéséhez az Azure AD tudnia kell, a partner felhasználó föld Gorilla ügyfél mi egy felhasználó számára az Azure ad-ben. Más szóval Azure AD-felhasználót és a kapcsolódó felhasználó a föld Gorilla ügyfél közötti kapcsolat kapcsolatot kell létrehozni.
+    | | |
+    |-|-|
+    | `https://<customer domain>.landgorilla.com/`|
+    | `https://www.<customer domain>.landgorilla.com`|
+    | | |
 
-Ez a hivatkozás-kapcsolat létesítéséhez értéket rendeli az **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** föld Gorilla ügyfél.
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta egyikének használatával:
 
-Az Azure AD egyszeri bejelentkezés a föld Gorilla ügyfél tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
+    | | |
+    |-|-|
+    | `https://<customer domain>.landgorilla.com/simplesaml/module.php/core/authenticate.php`|
+    | `https://www.<customer domain>.landgorilla.com/simplesaml/module.php/core/authenticate.php`|
+    | `https://<customer domain>.landgorilla.com/simplesaml/module.php/saml/sp/saml2-acs.php/default-sp`|
+    | `https://www.<customer domain>.landgorilla.com/simplesaml/module.php/saml/sp/saml2-acs.php/default-sp`|
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-1. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés korlátozott csoporttal teszteléséhez.
-1. **[A föld Gorilla tesztfelhasználó létrehozása](#creating-a-land-gorilla-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-1. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-1. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+    > [!NOTE]
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel. Itt javasoljuk, hogy a karakterlánc egyedi értékét használja az azonosítóban. Az értékek beszerzéséhez lépjen kapcsolatba a [Land gorilla-ügyfél támogatási csapatával](https://www.landgorilla.com/support/) . Az Azure Portal alapszintű **SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML** -fájlját, és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
 
-Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure felügyeleti portálon, és a föld Gorilla ügyfélalkalmazás az egyszeri bejelentkezés konfigurálása.
+    ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
 
-**Az Azure AD egyszeri bejelentkezés konfigurálása a föld Gorilla ügyfél, hajtsa végre az alábbi lépéseket:**
+1. A **Land gorilla beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmény alapján.
 
-1. Az Azure felügyeleti portálon a a **föld Gorilla ügyfél** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-    ![Egyszeri bejelentkezés konfigurálása][4]
+### <a name="configure-land-gorilla-sso"></a>Tartományi gorilla SSO konfigurálása
 
-1. Az a **egyszeri bejelentkezési** párbeszédpanelen, **mód** kiválasztása **SAML-alapú bejelentkezés** való egyszeri bejelentkezés engedélyezése.
- 
-    ![Egyszeri bejelentkezés konfigurálása](./media/landgorilla-tutorial/tutorial_landgorilla_samlbase.png)
+Ha az egyszeri bejelentkezést a **Land gorilla** oldalon szeretné beállítani, el kell küldenie a letöltött **összevonási METAADATOKat tartalmazó XML** -fájlt és a megfelelő másolt url-címeket a Azure Portalről a [Land gorilla támogatási csapatához](https://www.landgorilla.com/support/). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
-1. Az a **föld Gorilla ügyfél tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/landgorilla-tutorial/tutorial_landgorilla_url_02.png)
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-    a. Az a **azonosító** szövegmezőbe írja be az értéket a következő mintának egyikével: 
-    
-    `https://<customer domain>.landgorilla.com/` 
-    
-    `https://www.<customer domain>.landgorilla.com`
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. Válassza ki **új felhasználó** a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
+   1. A **Név** mezőbe írja a következőt: `B.Simon`.  
+   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
-    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe:
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-    `https://<customer domain>.landgorilla.com/simplesaml/module.php/core/authenticate.php`
+Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a Land gorilla szolgáltatáshoz.
 
-    `https://www.<customer domain>.landgorilla.com/simplesaml/module.php/core/authenticate.php`
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. Az alkalmazások listában válassza a **Land gorilla**elemet.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-    `https://<customer domain>.landgorilla.com/simplesaml/module.php/saml/sp/saml2-acs.php/default-sp`
-    
-    `https://www.<customer domain>.landgorilla.com/simplesaml/module.php/saml/sp/saml2-acs.php/default-sp`
+   ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-    > [!NOTE] 
-    > Vegye figyelembe, hogy ezek nem állnak a valós értékeket. Az értékeket módosítsa a tényleges azonosítója és a válasz URL-címet kell. Itt javasoljuk, hogy az azonosító egyedi karakterlánc értékét használhatja. Kapcsolattartó [föld Gorilla ügyfél csapat](https://www.landgorilla.com/support/) beolvasni ezeket az értékeket. 
+1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
-1. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse az XML-fájlt a számítógépen.
+    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/landgorilla-tutorial/tutorial_landgorilla_certificate.png) 
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-1. Kattintson a **mentése** gombra.
+### <a name="create-land-gorilla-test-user"></a>Land gorilla-teszt felhasználó létrehozása
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/landgorilla-tutorial/tutorial_general_400.png) 
+Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a Land Gorillaben. Működjön együtt a [Land gorilla-támogatási csapattal](https://www.landgorilla.com/support/) , hogy hozzáadja a felhasználókat a Land gorilla platformhoz. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-1. Egyszeri bejelentkezési konfigurációjának teljes lekérése a föld Gorilla végén az alkalmazáshoz, lépjen kapcsolatba a [föld Gorilla ügyfél-támogatási csapatának](https://www.landgorilla.com/support/) és adja meg a letöltött **"metaadatainak XML** fájlt.
-
-
-### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása
-Ez a szakasz célja az Azure felügyeleti portálján, Britta Simon nevű hozzon létre egy tesztfelhasználót.
-
-![Az Azure AD-felhasználó létrehozása][100]
-
-**Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
-
-1. Az a **Azure Management portal**, a bal oldali navigációs panelén kattintson **Azure Active Directory** ikonra.
-
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/landgorilla-tutorial/create_aaduser_01.png) 
-
-1. Lépjen a **felhasználók és csoportok** kattintson **minden felhasználó** felhasználók listájának megjelenítéséhez.
-    
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/landgorilla-tutorial/create_aaduser_02.png) 
-
-1. Kattintson a párbeszédpanel tetején **Hozzáadás** megnyitásához a **felhasználói** párbeszédpanel.
- 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/landgorilla-tutorial/create_aaduser_03.png) 
-
-1. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
- 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/landgorilla-tutorial/create_aaduser_04.png) 
-
-    a. Az a **neve** szövegmezőbe írja be **BrittaSimon**.
-
-    b. Az a **felhasználónév** szövegmezőbe írja be a **e-mail-cím** BrittaSimon az.
-
-    c. Válassza ki **jelszó megjelenítése** és jegyezze fel az értékét a **jelszó**.
-
-    d. Kattintson a **Create** (Létrehozás) gombra. 
-
-### <a name="creating-a-land-gorilla-test-user"></a>A föld Gorilla tesztfelhasználó létrehozása
-
-Együttműködve [föld Gorilla támogatási csapatának](https://www.landgorilla.com/support/) a felhasználók hozzáadása a föld Gorilla platformon.
-    
-### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
-
-Ebben a szakaszban engedélyezze Britta Simon föld Gorilla ügyfél számára a hozzáférés biztosításával az Azure egyszeri bejelentkezés használatára.
-
-![Felhasználó hozzárendelése][200] 
-
-**Britta Simon rendel a föld Gorilla ügyfél, hajtsa végre az alábbi lépéseket:**
-
-1. Az Azure felügyeleti portálon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
-
-    ![Felhasználó hozzárendelése][201] 
-
-1. Az alkalmazások listájában jelölje ki a **föld Gorilla ügyfél**.
-
-    ![Egyszeri bejelentkezés konfigurálása](./media/landgorilla-tutorial/tutorial_landgorilla_app.png) 
-
-1. A bal oldali menüben kattintson **felhasználók és csoportok**.
-
-    ![Felhasználó hozzárendelése][202] 
-
-1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
-
-    ![Felhasználó hozzárendelése][203]
-
-1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
-
-1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
-
-1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
-    
-
-
-### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen a föld Gorilla ügyfél csempére kattint, akkor kell lekérése automatikusan bejelentkezett a föld Gorilla ügyfélalkalmazás.
-
+Ha a hozzáférési panelen a Land gorilla csempére kattint, automatikusan be kell jelentkeznie arra a tartományi gorilla-területre, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/landgorilla-tutorial/tutorial_general_01.png
-[2]: ./media/landgorilla-tutorial/tutorial_general_02.png
-[3]: ./media/landgorilla-tutorial/tutorial_general_03.png
-[4]: ./media/landgorilla-tutorial/tutorial_general_04.png
-
-[100]: ./media/landgorilla-tutorial/tutorial_general_100.png
-[200]: ./media/landgorilla-tutorial/tutorial_general_200.png
-[201]: ./media/landgorilla-tutorial/tutorial_general_201.png
-[202]: ./media/landgorilla-tutorial/tutorial_general_202.png
-[203]: ./media/landgorilla-tutorial/tutorial_general_203.png
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

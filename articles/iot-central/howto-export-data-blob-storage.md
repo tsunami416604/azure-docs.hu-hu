@@ -1,112 +1,114 @@
 ---
-title: Az adatok exportálása az Azure Blob Storage |} A Microsoft Docs
-description: Az Azure IoT Central alkalmazásból az Azure Blob Storage-adatok exportálása
+title: Exportálja adatait az Azure Blob Storageba | Microsoft Docs
+description: Adatok exportálása az Azure IoT Central alkalmazásból az Azure-ba Blob Storage
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 12/07/2018
+ms.date: 07/08/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: f6e44b21a2a2e174ffa49073fdeb8cc96910a69e
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 7366072dbf6b000981899a56ca1c8cfe6af6f04a
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295079"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876052"
 ---
-# <a name="export-your-data-to-azure-blob-storage"></a>Az adatok exportálása az Azure Blob Storage
+# <a name="export-your-data-to-azure-blob-storage"></a>Exportálja adatait az Azure Blob Storageba
 
-*Ez a témakör a rendszergazdák vonatkozik.*
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
-Ez a cikk ismerteti a folyamatos exportálás funkció használata az Azure IoT Central, hogy az adatokat rendszeresen exportálják a **Azure Blob storage-fiók**. Exportálhatja **mérések**, **eszközök**, és **eszközsablonok** fájlok Apache Avro formátumban. Az exportált adatok például az Azure Machine Learning betanítási modellek vagy hosszú távú tendenciája, a Microsoft Power bi-ban a ritka elérésű útvonal elemzéshez használható.
+*Ez a témakör a rendszergazdákra vonatkozik.*
+
+Ez a cikk azt ismerteti, hogyan használható az Azure IoT Central folyamatos adatexportálás funkciója az **Azure Blob Storage**-fiókba való rendszeres adatexportáláshoz. Az Apache Avroformátumban is exportálhatja a mértékeket, **eszközöket**és az eszközök **sablonjait** . Az exportált adatokat felhasználhatja a ritkán használt módszerekhez, például a Azure Machine Learning vagy a Microsoft Power BI hosszú távú trendek elemzéséhez.
 
 > [!Note]
-> Ismét bekapcsolja a folyamatos exportálás, kap csak az adatok ettől a pillanattól kezdve. Jelenleg adatokat nem lehet beolvasni egy alkalommal, amikor folyamatos adatexportálás ki volt kapcsolva. További korábbi adatok megőrzése, kapcsolja be a folyamatos exportálás korai.
+> Ha ismét bekapcsolja a folyamatos adatexportálást, az adott pillanattól kezdve csak az adott adatot kapja meg. Jelenleg nem lehet lekérni az adatgyűjtési időt, amikor a folyamatos adatexportálás ki lett kapcsolva. Több korábbi adat megtartásához kapcsolja be a folyamatos adatexportálást.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy rendszergazdának kell lennie az IoT-központ alkalmazásában
+- A IoT Central-alkalmazásban rendszergazdának kell lennie
 
 
-## <a name="set-up-export-destination"></a>Exportálási cél beállítása
+## <a name="set-up-export-destination"></a>Exportálás célhelyének beállítása
 
-Ha nem rendelkezik egy meglévő Storage exportálása, kövesse az alábbi lépéseket:
+Ha nem rendelkezik meglévő tárolóval az exportáláshoz, kövesse az alábbi lépéseket:
 
 ## <a name="create-storage-account"></a>Storage-fiók létrehozása
 
-1. Hozzon létre egy [új storage-fiókot az Azure Portalon](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). További a [Azure Storage-docs](https://aka.ms/blobdocscreatestorageaccount).
-2. Adja meg a fiók típusú tárfiók, **általános célú** vagy **a Blob storage-**.
-3. Válasszon előfizetést. 
+1. Hozzon létre egy [új Storage-fiókot a Azure Portal](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). További információt az [Azure Storage docs](https://aka.ms/blobdocscreatestorageaccount)-ban olvashat.
+2. A fiók típusa területen válassza az **általános célú** vagy a **blob Storage**lehetőséget.
+3. Válasszon egy előfizetést. 
 
     > [!Note] 
-    > Most már exportálhatja az adatokat más előfizetésekre, amelyek **nem azonos** azzal, az utólagos elszámolású IoT Central alkalmazáshoz. Ebben az esetben a kapcsolati karakterlánc használatával csatlakozik.
+    > Mostantól exportálhat más előfizetésekre is, amelyek **nem egyeznek** meg az utólagos elszámolású IoT Central alkalmazása során. Ebben az esetben kapcsolati sztringet fog használni.
 
-4. Hozzon létre egy tárolót a tárfiókjában. Lépjen a tárfiókhoz. A **Blob Service**válassza **Blobok tallózása**. Válassza ki **+ tároló** tetején, egy új tároló létrehozása
+4. Hozzon létre egy tárolót a Storage-fiókban. Nyissa meg a Storage-fiókját. A **blob szolgáltatás**alatt válassza a **Tallózás Blobok**lehetőséget. Egy új tároló létrehozásához kattintson a felül található **+ tároló** elemre.
 
 
-## <a name="set-up-continuous-data-export"></a>Állítsa be a folyamatos exportálás
+## <a name="set-up-continuous-data-export"></a>Folyamatos adatexportálás beállítása
 
-Most, hogy egy célhelyet exportálhatja az adatokat, az alábbi lépésekkel állítsa be a folyamatos exportálás. 
+Most, hogy van egy tárolási célhelye az adatexportáláshoz, kövesse az alábbi lépéseket a folyamatos adatexportálás beállításához. 
 
-1. Jelentkezzen be az IoT Central alkalmazáshoz.
+1. Jelentkezzen be IoT Central alkalmazásba.
 
-2. A bal oldali menüben válassza ki a **folyamatos adatexportálás**.
+2. A bal oldali menüben válassza a **folyamatos adatexportálás**lehetőséget.
 
     > [!Note]
-    > Ha nem látja a folyamatos adatexportálás bal oldali menüben lévő, Ön nem rendszergazda az alkalmazásban. Kérdezze meg a rendszergazda állíthatja be az adatok exportálása.
+    > Ha a bal oldali menüben nem látja a folyamatos adatexportálást, akkor Ön nem rendszergazda az alkalmazásban. Az adatexportálás beállításához forduljon a rendszergazdához.
 
-    ![Új cde Eseményközpont létrehozása](media/howto-export-data/export_menu.PNG)
+    ![Új CDE-esemény hub létrehozása](media/howto-export-data/export_menu1.png)
 
-3. Válassza ki a **+ új** gombra a jobb felső sarokban. Válasszon **Azure Blob Storage** az exportálás céljaként. 
-
-    > [!NOTE] 
-    > Export alkalmazásonként maximális száma öt. 
-
-    ![Hozzon létre új folyamatos adatexportálás](media/howto-export-data/export_new.PNG)
-
-4. A legördülő listában jelölje ki a **Tárfiók névtér**. A legutóbbi lehetőséget is kiválaszthat a listában, amely **adjon meg egy kapcsolati karakterláncot**. 
+3. Kattintson a jobb felső sarokban található **+ új** gombra. Válassza az **Azure Blob Storage** lehetőséget az Exportálás célhelye. 
 
     > [!NOTE] 
-    > Csak akkor jelenik meg a Storage-fiókok névtereket a **megegyező előfizetésben, az IoT-központ alkalmazás**. Ha szeretne exportálni egy célhelyre kívül ehhez az előfizetéshez, válasszon **adjon meg egy kapcsolati karakterláncot** , és tekintse meg az 5. lépés.
+    > Az alkalmazások exportálásának maximális száma öt. 
+
+    ![Új folyamatos adatexportálás létrehozása](media/howto-export-data/export_new1.png)
+
+4. A legördülő listában válassza ki a **Storage-fiók névterét**. A lista utolsó elemét is kiválaszthatja, amely a **kapcsolatok karakterláncát adja meg**. 
 
     > [!NOTE] 
-    > Próbaverziós alkalmazások, csak úgy konfigurálja a folyamatos exportálás 7 napon keresztül egy kapcsolati karakterláncot történik. Ennek oka az, 7 napos próbaverziós alkalmazások nem rendelkeznek társított Azure-előfizetéssel.
+    > A Storage-fiókok névtereit a **IoT Central alkalmazással megegyező**előfizetésben fogja látni. Ha az előfizetésen kívüli célhelyre szeretne exportálni, válassza **az adja meg a kapcsolati karakterláncot** , és tekintse meg az 5. lépést.
 
-    ![Új cde Eseményközpont létrehozása](media/howto-export-data/export-create-blob.png)
+    > [!NOTE] 
+    > A 7 napos próbaverziós alkalmazások esetében az egyetlen módszer a folyamatos adatexportálás konfigurálására egy kapcsolódási karakterláncon keresztül. Ennek az az oka, hogy a 7 napos próbaverziós alkalmazások nem rendelkeznek társított Azure-előfizetéssel.
 
-5. (Nem kötelező) Ha úgy döntött **adjon meg egy kapcsolati karakterláncot**, egy új mező jelenik meg, hogy illessze be a kapcsolati karakterláncot. Kapcsolati karakterláncára beolvasni a:
-    - Storage-fiókot, nyissa meg a Storage-fiókba az Azure Portalon.
-        - A **beállítások**válassza **hozzáférési kulcsok**
-        - 1. kulcs kapcsolati karakterláncát vagy a 2. kulcs kapcsolati karakterlánc másolása
+    ![Új CDE-esemény hub létrehozása](media/howto-export-data/export-create-blob.png)
+
+5. Választható Ha a **kapcsolódási karakterlánc megadása**lehetőséget választotta, a rendszer egy új mezőt jelenít meg a kapcsolódási karakterlánc beillesztéséhez. A következőhöz tartozó kapcsolódási karakterlánc lekérése:
+    - A Storage-fiókban nyissa meg a Azure Portal Storage-fiókját.
+        - A **Beállítások**területen válassza a **hozzáférési kulcsok** elemet.
+        - Másolja a key1-vagy a key2-kapcsolatok karakterláncát
  
-6. A legördülő listából válassza ki egy tárolót.
+6. Válasszon egy tárolót a legördülő listából.
 
-7. A **exportálható adatot**, adja meg az egyes adattípusok úgy, hogy a típus exportálása **a**.
+7. Az **exportálni kívánt adat**területen adja meg az exportálandó adattípusokat, ha a típust be értékre állítja.
 
-6. Folyamatos adatexportálás bekapcsolása, ellenőrizze, hogy **adatexportálás** van **a**. Kattintson a **Mentés** gombra.
+6. A folyamatos adatexportálás bekapcsolásához ellenőrizze, hogy be van-e **kapcsolva**az adatexportálás. Kattintson a **Mentés** gombra.
 
-  ![Folyamatos adatexportálás konfigurálása](media/howto-export-data/export-list-blob.png)
+   ![Folyamatos adatexportálás konfigurálása](media/howto-export-data/export-list-blob.png)
 
-7. Néhány perc elteltével az adatok megjelennek a kiválasztott cél.
+7. Néhány perc elteltével az adatai megjelennek a választott célhelyen.
 
 
-## <a name="export-to-azure-blob-storage"></a>Az Azure Blob Storage-exportálás
+## <a name="export-to-azure-blob-storage"></a>Exportálás az Azure Blob Storageba
 
-Mértékek, eszközök és sablonok eszközadatok lesznek exportálva az percenként egyszer, a tárfiók az egyes fájlt, amely tartalmazza a változások a batch, mivel az utolsó exportált fájl. Az exportált adatok [Apache Avro](https://avro.apache.org/docs/current/index.html) formázhatja, és exportálja a három mappákhoz. A tárfiókban lévő alapértelmezett elérési utakhoz a következők:
-- Üzenet: {container}/measurements/{hubname}/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
-- Eszközök: {container}/devices/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
-- Eszközsablonok: {container}/deviceTemplates/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
+A mérések, az eszközök és az eszközök sablonjainak adatai percenként egyszer lesznek exportálva a Storage-fiókba, és minden olyan fájl, amely tartalmazza a legutóbbi exportált fájl változási kötegét. Az exportált adatértékek [Apache Avro](https://avro.apache.org/docs/current/index.html) formátumban jelennek meg, és három mappába lesznek exportálva. A Storage-fiók alapértelmezett elérési útjai a következők:
+- Üzenetek: {Container}/measurements/{hubname}/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
+- Eszközök: {Container}/devices/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
+- Eszközök sablonjai: {Container}/deviceTemplates/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
 
 ### <a name="measurements"></a>Mérések
 
-Az exportált mérési adatokat az új üzenetek IoT-központ által fogadott összes eszközről idő alatt van. Az exportált fájlokat ugyanazt a formátumot használja az exportált fájlokat [IoT Hub üzenet-útválasztása](https://docs.microsoft.com/azure/iot-hub/iot-hub-csharp-csharp-process-d2c) a Blob storage.
+Az exportált mérések adatainak minden olyan új üzenete van, amelyet az összes eszköz IoT Central fogadott az adott idő alatt. Az exportált fájlok ugyanazt a formátumot használják, mint a blob Storage-ba [IoT hub üzenet-útválasztás](https://docs.microsoft.com/azure/iot-hub/iot-hub-csharp-csharp-process-d2c) által exportált üzenet-fájlok.
 
 > [!NOTE]
-> Az eszközöket, amelyek a mérések küldése (lásd a következő szakaszok) eszköz azonosítóját képviseli. Az eszközök nevei lekéréséhez exportálja az eszköz pillanatképeket. Vesse össze az egyes üzenetrekordok használatával a **connectionDeviceId** , amely megfelel a **deviceId** eszköz rekord.
+> A méréseket küldő eszközöket az eszközök azonosítói jelölik (lásd a következő részeket). Az eszközök nevének lekéréséhez exportálja az eszköz pillanatképeit. Az egyes üzeneteket az **connectionDeviceId** megegyező, az eszközhöz tartozó rekordra vonatkozó adatokkal korrelálhatja.
 
-Az alábbi példa bemutatja egy rekordot egy dekódolt Avro fájlban:
+A következő példa egy olyan rekordot mutat be a dekódolású Avro fájlban:
 
 ```json
 {
@@ -124,25 +126,25 @@ Az alábbi példa bemutatja egy rekordot egy dekódolt Avro fájlban:
 
 ### <a name="devices"></a>Eszközök
 
-Amikor először folyamatos adatexportálás van kapcsolva, az összes eszköz egyetlen pillanatkép exportálása. Egyes eszközök a következőket tartalmazza:
-- `id` az eszköz az IoT-központ
-- `name` az eszköz
-- `deviceId` a [Device Provisioning Service](https://aka.ms/iotcentraldocsdps)
-- Eszköz sablon adatai
+Ha a folyamatos adatexportálás be van kapcsolva, az összes eszközön egyetlen pillanatkép lesz exportálva. Minden eszköz a következőket tartalmazza:
+- `id`az eszköz IoT Central
+- `name`az eszköz
+- `deviceId`a [Device kiépítési szolgáltatásból](https://aka.ms/iotcentraldocsdps)
+- Eszköz sablonjának adatai
 - Tulajdonságok értékei
-- Beállításértékek
+- Értékek beállítása
 
-Új pillanatkép percenkénti van megírva. A pillanatkép tartalmazza:
+Az új Pillanatképek percenként egyszer írhatók. A pillanatkép a következőket tartalmazza:
 
-- A legutolsó pillanatfelvétel óta hozzáadott új eszközök.
-- Az eszközök módosított tulajdonsággal, és állítsa az értékeket a legutolsó pillanatfelvétel óta.
+- Új eszközök lettek hozzáadva a legutóbbi pillanatkép óta.
+- A módosított tulajdonsággal rendelkező eszközök és a legutóbbi pillanatkép óta beállított értékek.
 
 > [!NOTE]
-> Az eszközök történt, a legutolsó pillanatfelvétel nem exportálható. A pillanatképek jelenleg nem rendelkezik a törölt eszközök mutatók.
+> A legutóbbi pillanatkép óta törölt eszközök nem lesznek exportálva. A pillanatképek jelenleg nem rendelkeznek kijelzővel a törölt eszközökhöz.
 >
-> Az eszköz a sablon, amely minden eszközhöz tartozik egy eszközazonosítót sablon. által jelölt A kiszolgáló nevének az eszköz sablon exportálása az eszköz sablon pillanatképeket.
+> Az eszközök sablonja, amelyhez az egyes eszközök tartoznak, egy eszköz-sablon azonosítója jelöli. Az eszköz sablonjának lekéréséhez exportálja az eszköz sablonjának pillanatképeit.
 
-Egy rekordot a dekódolt Avro-fájl is látható:
+A dekódolású Avro fájlban található egyik rekord a következőképpen néz ki:
 
 ```json
 {
@@ -172,25 +174,25 @@ Egy rekordot a dekódolt Avro-fájl is látható:
 }
 ```
 
-### <a name="device-templates"></a>Eszköz-sablonok
+### <a name="device-templates"></a>Eszközök sablonjai
 
-Amikor először folyamatos adatexportálás van kapcsolva, az összes eszköz-sablonokkal egyetlen pillanatkép exportálása. Minden eszköz sablon tartalmazza:
-- `id` az eszköz sablon
-- `name` az eszköz sablon
-- `version` az eszköz sablon
-- Mérési az adattípusok és a minimális/maximális értékei.
-- Vlastnost adattípusokat és az alapértelmezett értékeket.
-- A beállítás az adattípusok és az alapértelmezett értékeket.
+Ha a folyamatos adatexportálás be van kapcsolva, az összes eszköz sablonja egyetlen pillanatképet exportál. Minden eszköz sablonja a következőket tartalmazza:
+- `id`az eszköz sablonja
+- `name`az eszköz sablonja
+- `version`az eszköz sablonja
+- Mérési adattípusok és minimális/maximális értékek.
+- A tulajdonság adattípusai és az alapértelmezett értékek.
+- Az adattípusok és az alapértelmezett értékek beállítása.
 
-Új pillanatkép percenkénti van megírva. A pillanatkép tartalmazza:
+Az új Pillanatképek percenként egyszer írhatók. A pillanatkép a következőket tartalmazza:
 
-- A legutolsó pillanatfelvétel óta hozzáadott új eszközsablonok.
-- Eszköz-sablonok módosított mérések, tulajdonságot és definíciókat beállítása a legutolsó pillanatfelvétel óta.
+- Új, a legutóbbi pillanatkép óta hozzáadott eszközök.
+- A legutóbbi pillanatkép óta módosult mérési, tulajdonság-és definíciós eszközök.
 
 > [!NOTE]
-> A legutolsó pillanatfelvétel óta törölve eszközsablonok nem exportálható. A pillanatképek jelenleg nem rendelkezik a törölt sablonok mutatók.
+> A legutóbbi pillanatkép óta törölt eszközök sablonjai nem lesznek exportálva. Jelenleg a pillanatképek nem rendelkeznek kijelzővel a törölt eszközök sablonjaihoz.
 
-A dekódolt Avro-fájlt egy rekordot fog kinézni:
+A dekódolású Avro fájlban található egyik rekord a következőképpen néz ki:
 
 ```json
 {
@@ -266,25 +268,26 @@ A dekódolt Avro-fájlt egy rekordot fog kinézni:
 }
 ```
 
-## <a name="read-exported-avro-files"></a>Olvassa el a Avro-fájlok exportálása
+## <a name="read-exported-avro-files"></a>Exportált Avro-fájlok olvasása
 
-Avro-hoz, a bináris formátum, így a fájlok nyers állapotban nem olvasható. A fájlok vissza tudja fejteni JSON formátumba. Az alábbi példák bemutatják, hogyan elemezhető a mérést, eszközök és eszközsablonok Avro-fájlok. A példák megegyeznek az előző szakaszban leírt példák.
+A Avro bináris formátum, így a fájlok nem olvashatók be a nyers állapotukban. A fájlokat JSON formátumba lehet dekódolni. Az alábbi példák bemutatják, hogyan elemezheti a méréseket, az eszközöket és az Avro fájlokat. A példák az előző szakaszban leírt példáknak felelnek meg.
 
 ### <a name="read-avro-files-by-using-python"></a>Avro-fájlok olvasása a Python használatával
 
-#### <a name="install-pandas-and-the-pandavro-package"></a>Pandas és a pandavro csomag telepítése
+#### <a name="install-pandas-and-the-pandavro-package"></a>A Panda és a pandavro csomag telepítése
 
 ```python
 pip install pandas
 pip install pandavro
 ```
 
-#### <a name="parse-a-measurements-avro-file"></a>A mértékek az Avro-fájl elemzése
+#### <a name="parse-a-measurements-avro-file"></a>Mérések Avro-fájljának értelmezése
 
 ```python
 import json
 import pandavro as pdx
 import pandas as pd
+
 
 def parse(filePath):
     # Pandavro loads the Avro file into a pandas DataFrame
@@ -297,24 +300,26 @@ def parse(filePath):
 
     # The SystemProperties column contains a dictionary
     # with the device ID located under the connectionDeviceId key.
-    transformed["device_id"] = measurements["SystemProperties"].apply(lambda x: x["connectionDeviceId"])
+    transformed["device_id"] = measurements["SystemProperties"].apply(
+        lambda x: x["connectionDeviceId"])
 
     # The Body column is a series of UTF-8 bytes that is stringified
     # and parsed as JSON. This example pulls the humidity property
     # from each column to get the humidity field.
-    transformed["humidity"] = measurements["Body"].apply(lambda x: json.loads(bytes(x).decode('utf-8'))["humidity"])
+    transformed["humidity"] = measurements["Body"].apply(
+        lambda x: json.loads(bytes(x).decode('utf-8'))["humidity"])
 
     # Finally, print the new DataFrame with our device IDs and humidities.
     print(transformed)
-
 ```
 
-#### <a name="parse-a-devices-avro-file"></a>Egy eszköz Avro-fájl elemzése
+#### <a name="parse-a-devices-avro-file"></a>Eszközök Avro-fájljának értelmezése
 
 ```python
 import json
 import pandavro as pdx
 import pandas as pd
+
 
 def parse(filePath):
     # Pandavro loads the Avro file into a pandas DataFrame
@@ -330,25 +335,28 @@ def parse(filePath):
 
     # The template ID and version are present in a dictionary under
     # the deviceTemplate column.
-    transformed["template_id"] = devices["deviceTemplate"].apply(lambda x: x["id"])
-    transformed["template_version"] = devices["deviceTemplate"].apply(lambda x: x["version"])
+    transformed["template_id"] = devices["deviceTemplate"].apply(
+        lambda x: x["id"])
+    transformed["template_version"] = devices["deviceTemplate"].apply(
+        lambda x: x["version"])
 
     # The fanSpeed setting value is located in a nested dictionary
     # under the settings column.
-    transformed["fan_speed"] = devices["settings"].apply(lambda x: x["device"]["fanSpeed"])
+    transformed["fan_speed"] = devices["settings"].apply(
+        lambda x: x["device"]["fanSpeed"])
 
     # Finally, print the new DataFrame with our device and template
     # information, along with the value of the fan speed.
     print(transformed)
-
 ```
 
-#### <a name="parse-a-device-templates-avro-file"></a>Egy eszköz sablonok az Avro-fájl elemzése
+#### <a name="parse-a-device-templates-avro-file"></a>Az eszközök sablonjainak Avro-fájljának elemzése
 
 ```python
 import json
 import pandavro as pdx
 import pandas as pd
+
 
 def parse(filePath):
     # Pandavro loads the Avro file into a pandas DataFrame
@@ -365,22 +373,23 @@ def parse(filePath):
 
     # The fanSpeed setting value is located in a nested dictionary
     # under the settings column.
-    transformed["fan_speed"] = templates["settings"].apply(lambda x: x["device"]["fanSpeed"])
+    transformed["fan_speed"] = templates["settings"].apply(
+        lambda x: x["device"]["fanSpeed"])
 
     # Finally, print the new DataFrame with our device and template
     # information, along with the value of the fan speed.
     print(transformed)
 ```
 
-### <a name="read-avro-files-by-using-c"></a>Olvassa el az Avro-fájlok használatávalC#
+### <a name="read-avro-files-by-using-c"></a>Avro-fájlok olvasása a következő használatával:C#
 
-#### <a name="install-the-microsofthadoopavro-package"></a>A Microsoft.Hadoop.Avro csomag telepítése
+#### <a name="install-the-microsofthadoopavro-package"></a>A Microsoft. Hadoop. Avro csomag telepítése
 
 ```csharp
 Install-Package Microsoft.Hadoop.Avro -Version 1.5.6
 ```
 
-#### <a name="parse-a-measurements-avro-file"></a>A mértékek az Avro-fájl elemzése
+#### <a name="parse-a-measurements-avro-file"></a>Mérések Avro-fájljának értelmezése
 
 ```csharp
 using Microsoft.Hadoop.Avro;
@@ -420,7 +429,7 @@ public static async Task Run(string filePath)
 }
 ```
 
-#### <a name="parse-a-devices-avro-file"></a>Egy eszköz Avro-fájl elemzése
+#### <a name="parse-a-devices-avro-file"></a>Eszközök Avro-fájljának értelmezése
 
 ```csharp
 using Microsoft.Hadoop.Avro;
@@ -471,7 +480,7 @@ public static async Task Run(string filePath)
 
 ```
 
-#### <a name="parse-a-device-templates-avro-file"></a>Egy eszköz sablonok az Avro-fájl elemzése
+#### <a name="parse-a-device-templates-avro-file"></a>Az eszközök sablonjainak Avro-fájljának elemzése
 
 ```csharp
 using Microsoft.Hadoop.Avro;
@@ -515,15 +524,15 @@ public static async Task Run(string filePath)
 }
 ```
 
-### <a name="read-avro-files-by-using-javascript"></a>Olvassa el az Avro-fájlok a Javascript használatával
+### <a name="read-avro-files-by-using-javascript"></a>Avro-fájlok olvasása JavaScript használatával
 
-#### <a name="install-the-avsc-package"></a>A avsc csomag telepítése
+#### <a name="install-the-avsc-package"></a>A avsc-csomag telepítése
 
 ```javascript
 npm install avsc
 ```
 
-#### <a name="parse-a-measurements-avro-file"></a>A mértékek az Avro-fájl elemzése
+#### <a name="parse-a-measurements-avro-file"></a>Mérések Avro-fájljának értelmezése
 
 ```javascript
 const avro = require('avsc');
@@ -560,7 +569,7 @@ function load(filePath) {
 }
 ```
 
-#### <a name="parse-a-devices-avro-file"></a>Egy eszköz Avro-fájl elemzése
+#### <a name="parse-a-devices-avro-file"></a>Eszközök Avro-fájljának értelmezése
 
 ```javascript
 const avro = require('avsc');
@@ -598,7 +607,7 @@ function load(filePath) {
 }
 ```
 
-#### <a name="parse-a-device-templates-avro-file"></a>Egy eszköz sablonok az Avro-fájl elemzése
+#### <a name="parse-a-device-templates-avro-file"></a>Az eszközök sablonjainak Avro-fájljának elemzése
 
 ```javascript
 const avro = require('avsc');
@@ -635,7 +644,7 @@ function load(filePath) {
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy tudja, hogyan exportálhatja az adatokat, folytassa a következő lépéssel:
+Most, hogy már tudja, hogyan exportálhatja az adatait, folytassa a következő lépéssel:
 
 > [!div class="nextstepaction"]
-> [Hogyan jelenítheti meg az adatok a Power bi-ban](howto-connect-powerbi.md)
+> [Az adataik megjelenítése Power BIban](howto-connect-powerbi.md)

@@ -4,17 +4,17 @@ description: Ebből a cikkből, egy gyors leckében a Powershellt szerzői adott
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 12/14/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c5764c36a646b9639c0eb6463c39b9f014c4272d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 085fcd6269663cb0055aaefe11ddc9434e8da7a1
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58168085"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477000"
 ---
 # <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>Automatizálási runbookok Windows PowerShell-munkafolyamat alapfogalmak tanulási
 
@@ -224,7 +224,7 @@ Workflow Copy-Files
 > [!NOTE]
 > Gyermek runbookok a párhuzamosan futó, mivel ez kimutatták, hogy megbízhatatlan eredményekhez nem ajánlott. Néha a gyermekrunbook kimenetét nem jelenik meg, és a egy gyermek runbook beállítás hatással lehet a többi párhuzamos gyermekrunbookokra. Változók, például a $VerbosePreference, $WarningPreference, a gyermek runbook számára nem lesznek továbbítva. És ezeket az értékeket a gyermekrunbookok módosításakor, előfordulhat, hogy nem megfelelően után visszaállították meghívása.
 
-## <a name="checkpoints"></a>Ellenőrzőpontok
+## <a name="checkpoints"></a>Az ellenőrzőpontok
 
 A *ellenőrzőpont* egy pillanatkép, amely tartalmazza a változók aktuális értékét és bármi addig létrejött adott pontra a munkafolyamat aktuális állapotáról. Ha egy munkafolyamatot ér véget a hibás, vagy fel van függesztve, majd a következő futtatáskor elindul, az utolsó ellenőrzőponttól helyett a munkafolyamat elején.  Ön állíthat be ellenőrzőpontot egy munkafolyamatban a **Checkpoint-Workflow** tevékenység. Az Azure Automation szolgáltatás rendelkezik [igazságos elosztás](automation-runbook-execution.md#fair-share), ahol bármelyik runbookhoz, amely 3 óráig fut. van eltávolítva a memóriából, hogy a többi runbookok futtatását. Végül a memóriából runbook lesz töltve, és, ha azt a legutóbbi ellenőrzőponttól venni a runbook végrehajtása folytatódik. Így garantálható, hogy a runbook idővel fog befejeződni, hozzá kell adnia az ellenőrzőpontokat, amely kisebb, mint 3 óra időközönként. Ha minden egyes futtatás során egy új ellenőrzőpont hozzáadásakor, ha a runbook egy hiba miatt 3 óra után lekérdezi zárni, majd a runbook folytatódik határozatlan időre.
 

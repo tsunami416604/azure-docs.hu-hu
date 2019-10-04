@@ -3,110 +3,87 @@ title: Biztonsági riasztások kezelése az Azure Security Centerben | Microsoft
 description: Ez a dokumentum segít az Azure Security Center biztonsági riasztások kezelésére és a riasztásokra való válaszadásra szolgáló funkcióinak használatában.
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: b88a8df7-6979-479b-8039-04da1b8737a7
 ms.service: security-center
 ms.topic: conceptual
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/22/2018
-ms.author: rkarlin
-ms.openlocfilehash: 28a9b90e23d0d182197450e6449b8d3296fe99d6
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.date: 08/27/2019
+ms.author: memildin
+ms.openlocfilehash: c3134988452efe16044ab7b7740cafd02e8cf27a
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56112920"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71201919"
 ---
-# <a name="managing-and-responding-to-security-alerts-in-azure-security-center"></a>Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben
-Ez a dokumentum segít az Azure Security Center biztonsági riasztások kezelésére és a riasztásokra való válaszadásra szolgáló funkcióinak használatában.
+# <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>Biztonsági riasztások kezelése és reagálás Azure Security Center
+
+Ebből a témakörből megtudhatja, hogyan tekintheti meg és dolgozza fel a kapott riasztásokat az erőforrások megóvása érdekében. 
+
+* A különböző típusú riasztásokról a [biztonsági riasztások típusai](security-center-alerts-overview.md#security-alert-types)című témakörben olvashat bővebben.
+* A Security Center riasztások létrehozási módjának áttekintését lásd: [how Azure Security Center észleli és reagál a fenyegetésekre](security-center-alerts-overview.md#detect-threats).
 
 > [!NOTE]
-> A speciális észlelések eléréséhez frissítsen az Azure Security Center Standard verzióra. Az ingyenes próbaverzió is elérhető. A frissítéshez a [Biztonsági szabályzat](tutorial-security-policy.md) beállításnál válassza ki a kívánt tarifacsomagot. További információkért lásd: [Az Azure Security Center díjszabása](security-center-pricing.md).
->
->
+> A speciális észlelések eléréséhez frissítsen az Azure Security Center Standard verzióra. Ennek létezik egy ingyenesen elérhető próbaverziója. A frissítéshez a [Biztonsági szabályzat](tutorial-security-policy.md) beállításnál válassza ki a kívánt tarifacsomagot. További információkért lásd: [Az Azure Security Center díjszabása](security-center-pricing.md).
 
 ## <a name="what-are-security-alerts"></a>Mik azok a biztonsági riasztások?
 A Security Center automatikusan gyűjti, elemzi és integrálja az Azure-erőforrások, a hálózat és a csatlakoztatott partneri megoldások, például a tűzfalak és a végpontvédelmi megoldások naplóadatait a valós fenyegetések észlelése és a téves riasztások számának csökkentése érdekében. A Security Centerben megtekinthető a rangsorolt biztonsági riasztások listája, ezenkívül a probléma gyors vizsgálatára vonatkozó információk és a támadás elhárításával kapcsolatos javaslatok is megjelennek.
 
-
 > [!NOTE]
-> Ha részletes tájékoztatást szeretne kapni a Security Center észlelési funkcióinak működéséről, olvassa el [Az Azure Security Center észlelési funkciói](security-center-detection-capabilities.md) című cikket.
->
->
+> További információ a Security Center észlelési képességeinek működéséről: [how Azure Security Center észleli és reagál a fenyegetésekre](security-center-alerts-overview.md#detect-threats).
 
-## <a name="managing-security-alerts"></a>Biztonsági riasztások kezelése
-A **Biztonsági riasztások** csempén áttekintheti az aktuális riasztásokat. Az egyes riasztásokkal kapcsolatos további részletek megjelenítéséhez kövesse az alábbi lépéseket:
+## <a name="manage-your-security-alerts"></a>Biztonsági riasztások kezelése
 
-1. A Security Center irányítópultján található a **Biztonsági riasztások** csempe.
+1. A Security Center irányítópulton tekintse meg a **fenyegetések elleni védelem** csempéjét a riasztások megtekintéséhez és áttekintéséhez.
 
-    ![Biztonsági riasztások csempe a Security Centerben](./media/security-center-managing-and-responding-alerts/security-center-managing-and-responding-alerts-fig1-ga.png)
+    ![Biztonsági riasztások csempe a Security Centerben](./media/security-center-managing-and-responding-alerts/security-center-dashboard-alert.png)
 
-2. A csempére kattintva nyissa meg a **Biztonsági riasztások** oldalt, amely további információkat tartalmaz a riasztásokról.
+1. A riasztásokkal kapcsolatos további részletek megtekintéséhez kattintson a csempére.
 
-   ![A Biztonsági riasztások oldal a Security Centerben](./media/security-center-managing-and-responding-alerts/security-center-managing-and-responding-alerts-fig2-ga.png)
+   ![A Biztonsági riasztások oldal a Security Centerben](./media/security-center-managing-and-responding-alerts/security-center-manage-alerts.png)
 
-Az oldal alsó részén találhatók az egyes riasztások részletei. Rendezésükhöz kattintson arra az oszlopra, amely szerint rendezni szeretné a riasztásokat. Az oszlopok meghatározása:
+1. A megjelenített riasztások szűréséhez kattintson a **szűrő**lehetőségre, és a megnyíló **szűrő** panelen válassza ki az alkalmazni kívánt szűrési beállításokat. A lista a kiválasztott szűrőnek megfelelően frissíti a frissítéseket. A szűrés nagyon hasznos lehet. Például olyankor, ha az elmúlt 24 órában történt biztonsági riasztásokat szeretné kezelni, mert egy, a rendszerbe történő lehetséges behatolást vizsgál.
 
-* **Leírás**: A riasztás rövid leírása.
-* **Száma**: A riasztások listája az adott típusú észlelt egy adott napon.
-* **Által észlelt**: A riasztás kiváltásáért felelős szolgáltatás.
-* **Dátum**: Az esemény előfordulásának dátuma.
-* **állapot**: A riasztás aktuális állapota. Kétféle állapot létezik:
-  * **Aktív**: A biztonsági riasztást észlelték.
-  * **Elvetett**: A felhasználó elvetette a biztonsági riasztást. Ez az állapot jellemzően a riasztásokat, amelyek került sor, és vagy megoldottak, vagy azok nem bizonyultak tényleges támadásnak.
-* **Súlyosság**: A súlyosság szintje lehet magas, közepes vagy alacsony.
+    ![A riasztások szűrése a Security Centerben](./media/security-center-managing-and-responding-alerts/security-center-filter-alerts.png)
 
-> [!NOTE]
-> A Security Center által létrehozott riasztások az Azure tevékenységnapló területén is megjelennek. További információk az Azure tevékenységnaplójának eléréséről: [A tevékenységnaplók megtekintése az erőforrásokon végzett műveletek naplózásához](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit).
->
+## <a name="respond-to-security-alerts"></a>Válaszadás a biztonsági riasztásokra
 
+1. A **biztonsági riasztások** listából válassza ki a biztonsági riasztást. Megjelenik az érintett erőforrások és a támadások elhárításához szükséges lépések.
 
-### <a name="alert-severity"></a>Riasztás fontossága
+    ![Válaszadás a biztonsági riasztásokra](./media/security-center-managing-and-responding-alerts/security-center-alert.png)
 
-> [!NOTE]
-> Riasztás súlyossága eltérően megjelenik a portálon és a REST API-t, a különbségeket az alábbi listán jeleztük.
+1. Az információk áttekintése után kattintson a megtámadott erőforrásra.
 
--   **Magas**: Nincs nagy valószínűséggel, hogy az erőforrás biztonsága sérül. Meg kell megvizsgáljuk azt azonnal. A Security Center megbízható rendelkezik, mindkét az illető ártó szándékkal és a megállapításokat, a riasztás kiadására szolgál. Ha például egy riasztást, amely észleli az ismert kártékony eszköz például a Mimikatz, a hitelesítő adatok ellopását használt gyakori eszköz végrehajtása. 
--   **Közepes (alacsony, a REST API-ban)**: Ennek oka valószínűleg egy gyanús tevékenységet, amelyek azt jelzik, hogy egy erőforrás biztonsága sérül.
-A Security Center bizalom elemzési vagy keresése a közepes és az illető ártó szándékkal magabiztosan közepes és nagy. Ezek általában lenne, machine learning vagy alapú anomáliadetektálás észleléseket. Ha például egy bejelentkezési kísérlet egy szokatlan helyről.
--   **Alacsony (információk a REST API-ban)**: Ez lehet egy ártalmatlan pozitív és a egy letiltott támadás. 
-    - A Security Center nem benne, elég, hogy az célja a rosszindulatú és lehet, hogy a tevékenység álcázva. Például a napló törlése egy műveletet, amely akkor fordulhat elő, amikor egy támadó megpróbálja elrejteni a nyomait, de sok esetben egy szokásos műveletet végzi a rendszergazdák.
-    - A Security Center nem általában meg, ha letiltott támadásokkal szemben, kivéve, ha egy érdekes eset, javasoljuk, hogy megvizsgáljuk. 
--   **Tájékoztató (csendes mód a REST API-ban)**: Csak akkor jelenik meg tájékoztatási szintű riasztások, amikor egyetlen biztonsági incidensben részletezi, vagy ha a REST API használata egy adott riasztás. Az incidens általában épül fel egy ezek közül néhány jelenhet meg a saját kell csak tájékoztató jellegű, de az egyéb riasztásokat kontextusában lehet közelebbről összefügg riasztások száma. 
+    ![Javaslatok a biztonsági riasztásokkal kapcsolatos teendők](./media/security-center-managing-and-responding-alerts/security-center-alert-remediate.png)
 
-### <a name="filtering-alerts"></a>A riasztások szűrése
-A riasztások dátum, állapot és súlyosság alapján szűrhetők. A riasztások szűrése olyan esetekben lehet hasznos, amikor szűkíteni kell a megjelenített biztonsági riasztások körét. Például olyankor, ha az elmúlt 24 órában történt biztonsági riasztásokat szeretné kezelni, mert egy, a rendszerbe történő lehetséges behatolást vizsgál.
+    Az **általános információ** szakasz betekintést nyújt a biztonsági riasztás kiváltott részébe. Olyan információkat jelenít meg, mint például a cél erőforrás, a forrás IP-címe (ha van ilyen), ha a riasztás még aktív, és javaslatokat tesz a megoldására.  
 
-1. Kattintson a **Szűrő** elemre a **Biztonsági riasztások** oldalon. A **Szűrő** megnyitása után válassza ki azokat a dátumra, állapotra és súlyosságra vonatkozó értékeket, amelyeket meg kíván tekinteni.
+    > [!NOTE]
+    >Bizonyos esetekben a forrás IP-címe nem érhető el, néhány Windows biztonsági eseménynapló nem tartalmazza az IP-címet.
 
-    ![A riasztások szűrése a Security Centerben](./media/security-center-managing-and-responding-alerts/security-center-managing-and-responding-alerts-fig3-2017.png)
+1. A Security Center által javasolt szervizelési lépések a biztonsági riasztástól függően változnak. Mindegyik riasztásnál kövesse ezeket. Bizonyos esetekben a fenyegetések észlelésével kapcsolatos riasztások enyhítése érdekében előfordulhat, hogy más Azure-vezérlőket vagy-szolgáltatásokat kell használnia az ajánlott szervizelés megvalósításához. 
 
-### <a name="respond-to-security-alerts"></a>Válaszadás a biztonsági riasztásokra
-Válasszon ki egy biztonsági riasztást, ha többet szeretne megtudni a riasztást kiváltó esemény(ek)ről, és arról, hogy milyen lépéseket kell tennie a támadás elhárítása érdekében. A biztonsági riasztások típus és dátum szerint vannak csoportosítva. Ha valamelyik biztonsági riasztásra kattint, megnyílik egy oldal, amely a csoportosított riasztások listáját tartalmazza.
-
-![Válaszadás a biztonsági riasztásokra az Azure Security Centerben](./media/security-center-managing-and-responding-alerts/security-center-managing-and-responding-alerts-fig5-ga.png)
-
-Ebben az esetben a riasztásokat gyanús RDP-tevékenység váltotta ki. Az első oszlopban a támadásnak kitett erőforrások jelennek meg, a másodikban az erőforrást érő támadások száma szerepel, a harmadikban a támadás időpontja látható, a negyedik a riasztás állapotát mutatja, az ötödik pedig a riasztás súlyosságát. Ezen információk áttekintése után kattintson a támadásnak kitett erőforrásra.
-
-![Javaslatok az Azure Security Centerben: mi a teendő a biztonsági riasztással kapcsolatban](./media/security-center-managing-and-responding-alerts/security-center-managing-and-responding-alerts-fig6-ga.png)
-
-A **Leírás** mezőben további információkat talál az eseményről. Ezek az információk áttekintést nyújtanak a biztonsági riasztás kiváltó okáról, a célerőforrásról, (adott esetben) a forrás IP-címéről, valamint a fenyegetés elhárítására vonatkozó javaslatokról.  Bizonyos esetekben a forrás IP-címe üres (nem érhető el), mert a Windows nem minden biztonsági eseménynaplója tartalmazza az IP-címet.
-
-A Security Center által javasolt elhárítási műveletek a biztonsági riasztástól függően eltérők lehetnek. Bizonyos esetekben előfordulhat, hogy az Azure egyéb funkcióit kell használnia a javasolt elhárítási művelet végrehajtásához. A példánkban a támadás elhárításának javasolt módja az, hogy a támadást végrehajtó IP-címet tiltólistára kell helyezni egy [hálózati hozzáférés-vezérlési lista](../virtual-network/virtual-networks-acl.md) vagy egy [hálózati biztonsági csoport](../virtual-network/security-overview.md#security-rules) típusú szabály használatával. A különböző típusú riasztásokkal kapcsolatos további információkért olvassa el [Security Alerts by Type in Azure Security Center](security-center-alerts-type.md) (Az Azure Security Centerben használható biztonsági riasztások típus szerint) című cikket.
-
-> [!NOTE]
-> A Security Centernek korlátozott előzetes verzióként kiadott új észlelései naplózott rekordokat használnak egy közös naplózási keretrendszerben a Linux rendszerű gépek rosszindulatú viselkedésének észlelésére. Amennyiben csatlakozni szeretne az előzetes verzióhoz, küldjön [nekünk](mailto:ASC_linuxdetections@microsoft.com) egy e-mailt, amely tartalmazza az előfizetés-azonosítóit.
-
-
+    Az alábbi témakörök a különböző riasztásokat ismertetik az erőforrástípusok szerint:
+    
+    * [IaaS virtuális gépek és kiszolgálók riasztásai](security-center-alerts-iaas.md)
+    * [Natív számítási riasztások](security-center-alerts-compute.md)
+    * [Adatszolgáltatási riasztások](security-center-alerts-data-services.md)
+    
+    A következő témakörök azt ismertetik, hogyan használják a Security Center az Azure-infrastruktúrával való integrálás során gyűjtött különböző telemetria, hogy az Azure-ban üzembe helyezett erőforrások további védelmi rétegeit is alkalmazni lehessen:
+    
+    * [Szolgáltatási réteggel kapcsolatos riasztások](security-center-alerts-service-layer.md)
+    * [Integráció az Azure Security-termékekkel](security-center-alerts-integration.md)
+    
 ## <a name="see-also"></a>Lásd még
+
 Ebből a dokumentumból megismerte a Security Center biztonsági szabályzatainak konfigurálását. A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
-* [Biztonsági incidensek kezelése az Azure Security Centerben](security-center-incident.md)
-* [Az Azure Security Center észlelési funkciói](security-center-detection-capabilities.md)
+* [Azure Security Center biztonsági riasztások](security-center-alerts-overview.md).
+* [Biztonsági incidensek kezelésével](security-center-incident.md)
 * [Útmutató az Azure Security Center tervezéséhez és működtetéséhez](security-center-planning-and-operations-guide.md)
 * [Azure Security Center FAQ](security-center-faq.md) (Azure Security Center: Gyakran ismételt kérdések) – Válaszok a szolgáltatás használatára vonatkozó gyakori kérdésekre.
 * [Azure Security blog](https://blogs.msdn.com/b/azuresecurity/) – Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.

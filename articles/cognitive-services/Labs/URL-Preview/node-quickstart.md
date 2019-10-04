@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Projekt URL-címet a minta Node.js'
+title: 'Gyors útmutató: Projekt URL-címének előzetes verziója, Node. js'
 titlesuffix: Azure Cognitive Services
 description: Az URL-előnézet használatának első lépései a Microsoft Cognitive Servicesben az Azure-ban.
 services: cognitive-services
@@ -10,20 +10,21 @@ ms.subservice: url-preview
 ms.topic: quickstart
 ms.date: 03/16/2018
 ms.author: rosh
-ms.openlocfilehash: 5c373505cd381108366206c21ff09f25516d7969
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4a1045be62f3bdbf75f399c894f825fa99f8e671
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884290"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706891"
 ---
-# <a name="quickstart-url-preview-with-nodejs"></a>Gyors útmutató: A node.js használatával URL-cím előnézete 
+# <a name="quickstart-url-preview-with-nodejs"></a>Gyors útmutató: URL-előnézet a Node. js-sel 
 
 Az alábbi Node-példa létrehozza a SwiftKey webhely URL-előnézetét: https://swiftkey.com/en.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Hozzáférési kulcs lekérése a [Cognitive Services Labs](https://aka.ms/answersearchsubscription) ingyenes próbaverziójához
+Hozzáférési kulcs lekérése a [Cognitive Services Labs](https://labs.cognitive.microsoft.com/en-us/project-answer-search) ingyenes próbaverziójához
 
 ## <a name="code-scenario"></a>Kódforgatókönyv 
 

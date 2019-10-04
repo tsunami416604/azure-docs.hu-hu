@@ -14,14 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: c0571e202448951de0994d34f68e1649eabd5519
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 65e5b5502b7d63d89845781487443f539a708816
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259074"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64866964"
 ---
 # <a name="configure-content-protection-policies-by-using-the-azure-portal"></a>A content protection-szabályzatok konfigurálása az Azure portal használatával
+
+> [!NOTE]
+> Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).   > A Media Services v2 jelennek meg nincs új szolgáltatásokat és funkciókat. <br/>Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még [v3 a v2 migrálási útmutató](../latest/migrate-from-v2-to-v3.md)
+>
+
  Az Azure Media Services akkor hagyja, hogy a számítógép tárolási, feldolgozási és kézbesítési kezdve a media gondoskodhat. A Media Services segítségével a 128 bites titkosítás kulcsok használatával dinamikusan és az Advanced Encryption Standard (AES) titkosított tartalmat. Is használhatja az általános titkosítás (CENC) a PlayReady és/vagy Widevine digitális jogkezelési (technológia DRM), és az Apple FairPlay használatával. 
 
 A Media Services DRM-licencek továbbításának szolgáltatást nyújt, és a titkosítatlan kulcsokat az arra jogosult ügyfelek. Az Azure portal használatával hozzon létre egy kulcs/engedélyezési házirend minden típusú titkosítás.
@@ -37,7 +42,7 @@ A portál használatával globális a tartalomvédelem konfigurálása a Media S
 
     ![Tartalomvédelem](./media/media-services-portal-content-protection/media-services-content-protection001.png)
 
-## <a name="keylicense-authorization-policy"></a>Kulcs-/engedélyezési házirend
+## <a name="keylicense-authorization-policy"></a>Kulcs/engedélyezési házirend
 A Media Services támogatja a több különböző módot a felhasználókat, akik vagy licencelési kérelmeket. Konfigurálnia kell a tartalomkulcs hitelesítési szabályzatát. Az ügyfél ezután meg kell felelnie a házirendet ahhoz, hogy a kulcs/licenc kézbesíthető. A tartalomkulcs-hitelesítési szabályzat egy vagy több hitelesítési korlátozást tartalmazhat: ezek lehetnek nyitott vagy jogkivonat-korlátozások is.
 
 A portál használatával hozzon létre egy kulcs/engedélyezési házirend minden típusú titkosítás.
@@ -50,7 +55,7 @@ A jogkivonattal korlátozott szabályzatokat a biztonsági jogkivonatokkal kapcs
 
 Amikor a jogkivonattal korlátozott szabályzatokat konfigurál, az elsődleges ellenőrzőkulcs, a kibocsátó és a célközönség paramétereket kell megadnia. Az elsődleges ellenőrzőkulcs tartalmazza a kulcsot, a jogkivonat írták-e. A kibocsátó a biztonságos jogkivonat-szolgáltatás, amely a jogkivonatot. A célközönség (más néven hatókör) ismerteti a jogkivonat a leképezést, vagy az erőforrás a token engedélyezi a hozzáférést. A Media Services kulcstovábbítást ellenőrzi, hogy ezeket az értékeket a jogkivonat egyezik a sablonban szereplő értékeket.
 
-![Kulcs-/engedélyezési házirend](./media/media-services-portal-content-protection/media-services-content-protection002.png)
+![Kulcs/engedélyezési házirend](./media/media-services-portal-content-protection/media-services-content-protection002.png)
 
 ## <a name="playready-license-template"></a>PlayReady-licencsablon
 A PlayReady-licencsablon beállítása, amelyen engedélyezve van a funkciót a PlayReady-licenc. A PlayReady-engedélysablonról további részletekért tekintse meg a [a Media Services PlayReady licencsablon áttekintése](media-services-playready-license-template-overview.md).
@@ -60,7 +65,7 @@ Ha egy licenc nonpersistent, adja meg, azt tárolt memória csak, míg a Windows
 
 ![A content protection nonpersistent](./media/media-services-portal-content-protection/media-services-content-protection003.png)
 
-### <a name="persistent"></a>Tartós
+### <a name="persistent"></a>Állandó
 Ha állandó, adja meg a licenc, elmentette állandó tárolóban az ügyfélen.
 
 ![A content protection állandó](./media/media-services-portal-content-protection/media-services-content-protection004.png)
@@ -112,7 +117,7 @@ Az AES tiszta kulcs titkosítás engedélyezve van az összes streamelési proto
 
 1. A FairPlay-titkosítás engedélyezése a **Content Protection globális beállítások** panelen válassza ki **FairPlay-konfiguráció**. Válassza ki a **alkalmazástanúsítvány**, és adja meg a **alkalmazás titkos kulcsát**.
 
-    ![Titkosítás típusa](./media/media-services-portal-content-protection/media-services-content-protection009.png)
+    ![Titkosítási típus](./media/media-services-portal-content-protection/media-services-content-protection009.png)
 
 1. Miután elvégezte a kijelölt titkosítás, válassza ki a **alkalmaz**.
 

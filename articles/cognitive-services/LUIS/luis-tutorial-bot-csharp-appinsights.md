@@ -1,249 +1,193 @@
 ---
-title: Az Application Insights használatávalC#
+title: 'Oktatóanyag: Application Insights, C# -Luis'
 titleSuffix: Azure Cognitive Services
-description: A robot a LUIS alkalmazás és a C# használatával az Application Insights szolgáltatással integrált hozhat létre.
+description: Ez az oktatóanyag a robotokat és a Language Understanding információt adja hozzá Application Insights telemetria adattároláshoz.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 01/23/2019
+ms.topic: tutorial
+ms.date: 09/06/2019
 ms.author: diberry
-ms.openlocfilehash: d546951cf283cf15874b1b6d95da75549a8a93ac
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 51860efdcc440d6b8a4ea57777ad31fa718657b5
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884936"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772825"
 ---
-# <a name="add-luis-results-to-application-insights-with-a-bot-in-c"></a>A LUIS-eredményeket ad hozzá egy robottal az Application InsightsC#
+# <a name="tutorial-add-luis-results-to-application-insights-from-a-bot-in-c"></a>Oktatóanyag: LUIS-eredmények hozzáadása a Application Insights egy robotbólC#
 
-Ez az oktatóanyag hozzáad a LUIS válasz információkat [Application Insights](https://azure.microsoft.com/services/application-insights/) telemetriai adatok tárolására. Miután az adatokat, kérdezhet le róla a Kusto-nyelv, vagy elemezheti, összesítése, a Power bi és a jelentés a szándékok és entitások, valós idejű utterance (kifejezés). Az elemzés segít annak meghatározásában, ha kell hozzáadása vagy szerkesztése a szándékok és entitások, a LUIS-alkalmazás.
-
-A robot épül fel a Bot keretrendszer 3.x és az Azure Web app bot.
+Ez az oktatóanyag a robotokat és a Language Understanding információt adja hozzá [Application Insights](https://azure.microsoft.com/services/application-insights/) telemetria adattároláshoz. Az ilyen adatokat lekérdezheti a Kusto nyelvével vagy Power BI a leképezések elemzéséhez, összesítéséhez és jelentésekhez, valamint a teljes körű, valós idejű entitások megjelenítéséhez. Az elemzés segít annak meghatározásában, ha kell hozzáadása vagy szerkesztése a szándékok és entitások, a LUIS-alkalmazás.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Application Insights web app-robot hozzáadása
-> * Rögzíti és továbbítja a LUIS lekérdezés eredményeit az Application Insights
-> * Az Application Insights lekérdezési felső szándékot, pontszám és utterance (kifejezés)
+> * A robot és a Language Understanding-adatértelmezések rögzítése Application Insights
+> * Language Understanding-adatApplication Insights lekérdezése
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A LUIS web app bot származó a **[előző oktatóanyagban](luis-csharp-tutorial-build-bot-framework-sample.md)** az Application Insights-e kapcsolva.
-* [A Visual Studio 2017](https://www.visualstudio.com/downloads/) helyben telepítve a számítógépen.
-
-> [!Tip]
-> Ha Ön még nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
-
-Ebben az oktatóanyagban kódja érhető el a [Azure-minták GitHub-adattár](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-web-app-bot-application-insights/csharp) és ebben az oktatóanyagban társított minden egyes sor van ellátva a `//LUIS Tutorial:`.
-
-## <a name="review-luis-web-app-bot"></a>Tekintse át a LUIS web app bot
-
-Ez az oktatóanyag feltételezi, hogy a kódot, hogy a következőképpen néz ki: a következő vagy az, hogy végrehajtotta a [többi oktatóanyag](luis-csharp-tutorial-build-bot-framework-sample.md):
-
-   [!code-csharp[Web app bot with LUIS](~/samples-luis/documentation-samples/tutorial-web-app-bot/csharp/BasicLuisDialog.cs "Web app bot with LUIS")]
-
-## <a name="application-insights-in-web-app-bot"></a>Application Insights a web app bot
-
-Jelenleg az Application Insights szolgáltatás, hozzáadni a web app bot service létrehozását, gyűjt a robot telemetriája általános állapota. A LUIS válasz adatokat nem gyűjt. Méréséhez és növeléséhez, LUIS, LUIS válasz információk kell.  
-
-Annak érdekében, hogy rögzíti a LUIS-válasz, a web app bot kell **[Application Insights](https://www.nuget.org/packages/Microsoft.ApplicationInsights/)** telepítette és konfigurálta a projekthez.
-
-## <a name="download-web-app-bot"></a>Töltse le a web app bot
-
-Használat [Visual Studio 2017](https://www.visualstudio.com/downloads/) hozzáadása és konfigurálása az Application Insights a web app-robot. A web app bot használatához a Visual Studióban, töltse le a web app bot kódot.
-
-1. A web app-robot esetén az Azure Portalon válassza ki a **összeállítása**.
-
-    ![Build kiválasztása a portálon](./media/luis-tutorial-bot-csharp-appinsights/download-build-menu.png)
-
-2. Válassza ki **zip-fájl letöltési** és várjon, amíg a fájl elkészül.
-
-    ![Zip-fájl letöltése](./media/luis-tutorial-bot-csharp-appinsights/download-link.png)
-
-3. Válassza ki **zip-fájl letöltési** a felugró ablakban. Emlékszik a helyre a számítógépen, a következő szakaszban szükség lesz rá.
-
-    ![Töltse le a zip-fájl menü](./media/luis-tutorial-bot-csharp-appinsights/download-popup.png)
-
-## <a name="open-solution-in-visual-studio-2017"></a>Nyissa meg a megoldást a Visual Studio 2017
-
-1. Bontsa ki a fájlt egy mappába.
-
-2. Nyissa meg a Visual Studio 2017-et, és nyissa meg a megoldásfájlt `Microsoft.Bot.Sample.LuisBot.sln`. Ha a biztonsági figyelmeztetést kap, miszerint, válassza az "OK gombra".
-
-    ![Nyissa meg a megoldást a Visual Studio 2017](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-security-warning.png)
-
-3. A Visual Studio adja a függőségeket a megoldáshoz szükséges. Az a **Megoldáskezelőben**, kattintson a jobb gombbal a **hivatkozások**, és válassza ki **NuGet-csomagok kezelése...** .
-
-    ![NuGet-csomagok kezelése](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-manage-nuget-packages.png)
-
-4. A NuGet Package manager egy telepített csomagok listáját jeleníti meg. Válassza ki **visszaállítása** a sárga sáv. Várjon, amíg a visszaállítási folyamat befejezéséhez.
-
-    ![NuGet-csomagok visszaállítása](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-restore-packages.png)
-
-## <a name="add-application-insights-to-the-project"></a>Az Application Insights hozzáadása a projekthez
-
-Telepítse és konfigurálja az Application Insights a Visual Studióban.
-
-1. A Visual Studio 2017, a felső menüben válassza **projekt**, majd **Application Insights Telemetria hozzáadása...** .
-
-2. Az a **az Application Insights konfigurációjának** ablakban válassza **ingyenes próba megkezdése**
-
-    ![Indítsa el az Application Insights konfigurálása](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-configure-app-insights.png)
-
-3. Regisztrálja az alkalmazást az Application insights segítségével. Előfordulhat, hogy az Azure portal hitelesítő adatait.
-
-4. A Visual Studio hozzáadja az Application Insights a projekthez, mint ez az állapot megjelenítése.
-
-    ![Application Insights állapota](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-adding-application-insights-to-project.png)
-
-    A folyamat befejeződése után a **az Application Insights konfigurációjának** végrehajtási állapotát jeleníti meg.
-
-    ![Application Insights folyamat állapota](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-configured-application-insights-to-project.png)
-
-    A **gyűjthet nyomkövetési** piros, ami azt jelenti, nincs engedélyezve. Ebben az oktatóanyagban a funkció nem használható.
-
-## <a name="build-and-resolve-errors"></a>Hozhat létre, és ki a hibákat
-
-1. A megoldás felépítéséhez kiválasztásával a **hozhat létre** menüben, majd válassza ki **Rebuild Solution**. Várjon, amíg befejeződik a build.
-
-2. Ha a létrehozás sikertelen, és `CS0104` hibák kijavításához szükséges őket. Az a `Controllers` mappába, a a `MessagesController.cs file`, javítsa ki a nem egyértelmű használatát `Activity` írja be a tevékenység típusát az összekötő típusú előtaggal. Ehhez módosítsa a nevet `Activity` sorok 22-es és a 36 `Activity` való `Connector.Activity`. Hozza létre újra a megoldást. Nincs több fordítási hibákat kell lennie.
-
-    A teljes fájl forrása:
-
-    [!code-csharp[MessagesController.cs file](~/samples-luis/documentation-samples/tutorial-web-app-bot-application-insights/csharp/MessagesController.cs "MessagesController.cs file")]
-
-## <a name="publish-project-to-azure"></a>Projekt közzététele az Azure-bA
-
-A **Application Insights** csomagot a projektben már van, és megfelelően konfigurálva a hitelesítő adatokat az Azure Portalon. A módosítások a projekt kell közzé tenni az Azure-bA.
-
-1. Az a **Megoldáskezelőben**, kattintson a jobb gombbal a projekt nevére, majd válassza ki **közzététel**.
-
-    ![Projekt közzététele a portálra](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-publish.png)
-
-2. Az a **közzététel** ablakban válassza **új profil létrehozásához**.
-
-    ![Közzététel részeként az új profil létrehozásához.](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-publish-1.png)
-
-3. Válassza ki **profil importálása**, és válassza ki **OK**.
-
-    ![Közzététel részeként a profil importálása](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-publish-2.png)
-
-4. Az a **közzététele beállításfájl importálása** windows, lépjen a projektmappába, keresse meg a `PostDeployScripts` mappát, válassza ki a fájlt, amely `.PublishSettings`, és válassza ki `Open`. Most már konfigurálta a projekt közzététele.
-
-5. A helyi forráskód közzétételére a Bot Service kiválasztásával a **közzététel** gombra. A **kimeneti** ablak állapotát jeleníti meg. Az oktatóanyag további részeinek befejezése az Azure Portalon. Zárja be a Visual Studio 2017-ben.
-
-## <a name="open-three-browser-tabs"></a>Nyissa meg böngészőben három lap
-
-Az Azure Portalon keresse meg a web app bot, és nyissa meg. Az alábbi lépéseket használja a web app bot három különböző nézetét. Elképzelhető, hogy könnyebben három külön lap van megnyitva a böngészőben:
-  
->  * A webes csevegési tesztelése
->  * Nyissa meg a build/online Kódszerkesztő -> az App Service Editor
->  * App Service Editor nyissa meg/Kudu konzol -> diagnosztikai konzol
-
-## <a name="modify-basicluisdialogcs-code"></a>BasicLuisDialog.cs kód módosítása
-
-1. Az a **az App Service Editor** böngészőlapon, nyissa meg a `BasicLuisDialog.cs` fájlt.
-
-2. Adja hozzá a következő NuGet-függőséget alatt a meglévő `using` sorok:
-
-   [!code-csharp[Add using statement](~/samples-luis/documentation-samples/tutorial-web-app-bot-application-insights/csharp/BasicLuisDialog.cs?range=11-12 "Add using statement")]
-
-3. Adja hozzá a `LogToApplicationInsights` függvény:
-
-   [!code-csharp[Add the LogToApplicationInsights function](~/samples-luis/documentation-samples/tutorial-web-app-bot-application-insights/csharp/BasicLuisDialog.cs?range=61-92 "Add the LogToApplicationInsights function")]
-
-    Az Application Insights-kialakítási kulcs már szerepel a web app bot alkalmazás nevű beállításhoz `BotDevInsightsKey`.
-
-    A függvény utolsó sora az adatokat ad hozzá az Application Insights. A nyomkövetés neve `LUIS`, a web app bot által gyűjtött egyéb telemetriai adatokat szereplőkkel egy egyedi nevet. Az összes tulajdonság is van fűzve előtagként `LUIS_` így láthatja, hogy milyen adatokat ebben az oktatóanyagban hozzáadja képest a web app-robot által megadott adatok.
-
-4. Hívja a `LogToApplicationInsights` függvény felső részén a `ShowLuisResult` függvény:
-
-   [!code-csharp[Use the LogToApplicationInsights function](~/samples-luis/documentation-samples/tutorial-web-app-bot-application-insights/csharp/BasicLuisDialog.cs?range=114-115 "Use the LogToApplicationInsights function")]
-
-## <a name="build-web-app-bot"></a>Web app bot létrehozása
-
-1. A web app bot a két módszer egyikével hozhat létre. Az első módszer, hogy a jobb gombbal a `build.cmd` a a **az App Service Editor**, majd **futtatása konzolról**. A konzol kimenetét jeleníti meg, és elvégzi az `Finished successfully.`
-
-2. Ha ez nem fejeződik be sikeresen, nyissa meg a konzolt, keresse meg a parancsfájl, és futtassa az alábbi lépéseket követve szüksége. Az a **az App Service Editor**, válassza a felső kék sávban a robot neve, majd válassza ki **Kudu konzol megnyitása** a legördülő listában.
-
-    ![Nyissa meg a Kudu konzol](./media/luis-tutorial-bot-csharp-appinsights/open-kudu-console.png)
-
-3. A konzolablakban adja meg a következő parancsot:
-
-    ```console
-    cd site\wwwroot && build.cmd
+* Egy Azure bot Service-robot, amely Application Insights engedélyezve lett létrehozva.
+* Az előző robot- **[oktatóanyagból](luis-csharp-tutorial-bf-v4.md)** letöltött robot-kód. 
+* [Bot Emulator](https://aka.ms/abs/build/emulatordownload)
+* [Visual Studio Code](https://code.visualstudio.com/Download)
+
+Az oktatóanyagban szereplő összes kód elérhető az [Azure-samples Language Understanding GitHub-tárházban](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-web-app-bot-application-insights/v4/luis-csharp-bot-johnsmith-src-telemetry). 
+
+## <a name="add-application-insights-to-web-app-bot-project"></a>Application Insights hozzáadása a webalkalmazás-robot projekthez
+
+Jelenleg az Application Insights szolgáltatás a web app bot használt gyűjt a robot telemetriája általános állapotát. Nem gyűjti a LUIS-információkat. 
+
+A LUIS-információk rögzítéséhez a webalkalmazás-robotnak telepítve és konfigurálva kell lennie a **[Microsoft. ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights/)** NuGet csomagnak.  
+
+1. A Visual studióból adja hozzá a függőséget a megoldáshoz. A **megoldáskezelő**kattintson a jobb gombbal a projekt nevére, és válassza a **NuGet-csomagok kezelése..** . lehetőséget. A NuGet Package manager egy telepített csomagok listáját jeleníti meg. 
+1. Válassza a **Tallózás** lehetőséget, majd keressen rá a **Microsoft. ApplicationInsights**kifejezésre.
+1. Telepítse a csomagot. 
+
+## <a name="capture-and-send-luis-query-results-to-application-insights"></a>Rögzíti és továbbítja a LUIS lekérdezés eredményeit az Application Insights
+
+1. Nyissa `LuisHelper.cs` meg a fájlt, és cserélje le a tartalmát a következő kódra. A **LogToApplicationInsights** metódus rögzíti a robotot és a Luis-adatokat, és elküldi Application Insightsként `LUIS`egy nevű nyomkövetési eseményként.
+
+    ```csharp
+    // Copyright (c) Microsoft Corporation. All rights reserved.
+    // Licensed under the MIT License.
+    
+    using System;
+    using System.Linq;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using Microsoft.Bot.Builder;
+    using Microsoft.Bot.Builder.AI.Luis;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.Logging;
+    using Microsoft.ApplicationInsights;
+    using System.Collections.Generic;
+    
+    namespace Microsoft.BotBuilderSamples
+    {
+        public static class LuisHelper
+        {
+            public static async Task<BookingDetails> ExecuteLuisQuery(IConfiguration configuration, ILogger logger, ITurnContext turnContext, CancellationToken cancellationToken)
+            {
+                var bookingDetails = new BookingDetails();
+    
+                try
+                {
+                    // Create the LUIS settings from configuration.
+                    var luisApplication = new LuisApplication(
+                        configuration["LuisAppId"],
+                        configuration["LuisAPIKey"],
+                        "https://" + configuration["LuisAPIHostName"]
+                    );
+    
+                    var recognizer = new LuisRecognizer(luisApplication);
+    
+                    // The actual call to LUIS
+                    var recognizerResult = await recognizer.RecognizeAsync(turnContext, cancellationToken);
+    
+                    LuisHelper.LogToApplicationInsights(configuration, turnContext, recognizerResult);
+    
+                    var (intent, score) = recognizerResult.GetTopScoringIntent();
+                    if (intent == "Book_flight")
+                    {
+                        // We need to get the result from the LUIS JSON which at every level returns an array.
+                        bookingDetails.Destination = recognizerResult.Entities["To"]?.FirstOrDefault()?["Airport"]?.FirstOrDefault()?.FirstOrDefault()?.ToString();
+                        bookingDetails.Origin = recognizerResult.Entities["From"]?.FirstOrDefault()?["Airport"]?.FirstOrDefault()?.FirstOrDefault()?.ToString();
+    
+                        // This value will be a TIMEX. And we are only interested in a Date so grab the first result and drop the Time part.
+                        // TIMEX is a format that represents DateTime expressions that include some ambiguity. e.g. missing a Year.
+                        bookingDetails.TravelDate = recognizerResult.Entities["datetime"]?.FirstOrDefault()?["timex"]?.FirstOrDefault()?.ToString().Split('T')[0];
+                    }
+                }
+                catch (Exception e)
+                {
+                    logger.LogWarning($"LUIS Exception: {e.Message} Check your LUIS configuration.");
+                }
+    
+                return bookingDetails;
+            }
+            public static void LogToApplicationInsights(IConfiguration configuration, ITurnContext turnContext, RecognizerResult result)
+            {
+                // Create Application Insights object
+                TelemetryClient telemetry = new TelemetryClient();
+    
+                // Set Application Insights Instrumentation Key from App Settings
+                telemetry.InstrumentationKey = configuration["BotDevAppInsightsKey"];
+    
+                // Collect information to send to Application Insights
+                Dictionary<string, string> logProperties = new Dictionary<string, string>();
+    
+                logProperties.Add("BotConversation", turnContext.Activity.Conversation.Name);
+                logProperties.Add("Bot_userId", turnContext.Activity.Conversation.Id);
+    
+                logProperties.Add("LUIS_query", result.Text);
+                logProperties.Add("LUIS_topScoringIntent_Name", result.GetTopScoringIntent().intent);
+                logProperties.Add("LUIS_topScoringIntentScore", result.GetTopScoringIntent().score.ToString());
+    
+    
+                // Add entities to collected information
+                int i = 1;
+                if (result.Entities.Count > 0)
+                {
+                    foreach (var item in result.Entities)
+                    {
+                        logProperties.Add("LUIS_entities_" + i++ + "_" + item.Key, item.Value.ToString());
+                    }
+                }
+    
+                // Send to Application Insights
+                telemetry.TrackTrace("LUIS", ApplicationInsights.DataContracts.SeverityLevel.Information, logProperties);
+    
+            }
+        }
+    }
     ```
 
-    Várja meg, végezze el a build `Finished successfully.`
+## <a name="add-application-insights-instrumentation-key"></a>Application Insights kialakítási kulcs hozzáadása 
 
-## <a name="test-the-web-app-bot"></a>A web app bot tesztelése
+Az Application-elemzésekhez való adathozzáadáshoz szükség van a kialakítási kulcsra.
 
-1. A web app bot teszteléséhez nyissa meg a **tesztelni, webes csevegési** funkció a portálon.
+1. A böngészőben a [Azure Portal](https://portal.azure.com)keresse meg a robot **Application Insights** erőforrását. A neve lesz a robot neve, majd a név végén található véletlenszerű karakterek, például `luis-csharp-bot-johnsmithxqowom`:. 
+1. A Application Insights erőforrás **Áttekintés** lapján másolja a kialakítási **kulcsot**.
+1. A Visual Studióban nyissa meg a **appSettings. JSON** fájlt a robot-projekt gyökerében. Ez a fájl tartalmazza az összes környezeti változót.
+1. Adjon hozzá egy új változót `BotDevAppInsightsKey` a kialakítási kulcs értékével. A értékének idézőjelek közé kell esnie. 
 
-2. Adja meg a kifejezés `Coffee bar on please`.  
+## <a name="build-and-start-the-bot"></a>A robot létrehozása és elindítása
 
-    ![Tesztelje a web app bot Csevegésben](./media/luis-tutorial-bot-csharp-appinsights/test-in-web-chat.png)
+1. A Visual Studióban hozza létre és futtassa a robotot. 
+1. Indítsa el a robot-emulátort, és nyissa meg a robotot. Ez a [lépés](luis-csharp-tutorial-bf-v4.md#use-the-bot-emulator-to-test-the-bot) az előző oktatóanyagban van megadva.
 
-3. Nincs különbség a csevegőrobot választ kell megjelennie. A módosítás adatokat továbbít felé az Application Insights, nem a robot a válaszokat. Adja meg néhány további utterances, így egy kicsit több adat az Application insights szolgáltatásban:
-
-|Beszédmódok|
-|--|
-|Küldje el a kétpizzás|
-|Kapcsolja ki az összes lámpa|
-|Kapcsolja be a hall világos|
-
+1. Kérdezze meg a robot kérdését. Ez a [lépés](luis-csharp-tutorial-bf-v4.md##use-the-bot-emulator-to-test-the-bot) az előző oktatóanyagban van megadva.
 
 ## <a name="view-luis-entries-in-application-insights"></a>Nézet LUIS bejegyzések az Application insights szolgáltatásban
 
-Nyissa meg az Application Insights a LUIS-bejegyzések megtekintéséhez.
+Nyissa meg az Application Insights a LUIS-bejegyzések megtekintéséhez. Néhány percet is igénybe vehet, hogy az adat megjelenjen a Application Insightsban.
 
-1. Válassza a portál **összes erőforrás** majd szűrés a webalkalmazás robot neve. Kattintson az erőforráson típusú **Application Insights**. Az ikonra az Application Insights egy villanykörte.
+1. A [Azure Portal](https://portal.azure.com)nyissa meg a robot Application Insights erőforrását. 
+1. Amikor megnyílik az erőforrás, válassza a **Keresés** lehetőséget, és az utolsó **30 percben** keresse meg az összes adat kifejezést a **nyomkövetési**esemény típusával. Válassza ki a **Luis**nevű nyomkövetést. 
+1. A bot és a LUIS információ az **Egyéni tulajdonságok**területen érhető el. 
 
-    ![Keresés az app insights az Azure Portalon](./media/luis-tutorial-bot-csharp-appinsights/portal-service-list-app-insights.png)
-
-2. Az erőforrás megnyitása után kattintson a a **keresési** ikonjára a Nagyító ikonra a jobb szélen panelen. Egy új panel a jobb oldali jeleníti meg. Telemetriai adatok mennyiségétől függően található, a panel megjelenítéséhez egy második is igénybe vehet. Keressen a `LUIS` kifejezésre. A listában csak a LUIS lekérdezési eredmények ebben az oktatóanyagban hozzáadja van szűkíthető.
-
-    ![Nyomok keresése](./media/luis-tutorial-bot-csharp-appinsights/portal-service-list-app-insights-search-luis-trace.png)
-
-3. Válassza ki a legfelső bejegyzésre. Egy új ablakban jeleníti meg a részletes – jobb szélen a LUIS lekérdezés egyéni adatokat is beleértve. A felső célt, és a pontszám szerepel.
-
-    ![Tekintse át a nyomkövetési elem](./media/luis-tutorial-bot-csharp-appinsights/portal-service-list-app-insights-search-luis-trace-item.png)
-
-    Amikor elkészült, válassza a jobb szélső felső **X** térjen vissza a függőségi elemek listáját.
-
-> [!Tip]
-> Ha azt szeretné, mentheti a függőségi listát, és később még visszatérünk rá, kattintson a **... További** kattintson **mentés kedvenc**.
+    ![Az Application Insightsban tárolt LUIS egyéni tulajdonságok áttekintése](./media/luis-tutorial-appinsights/application-insights-luis-trace-custom-properties-csharp.png)
 
 ## <a name="query-application-insights-for-intent-score-and-utterance"></a>Lekérdezés az Application Insights szándékot, pontszám és utterance (kifejezés)
+Application Insights lehetővé teszi az adatlekérdezést a [Kusto](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview#what-language-do-log-queries-use) nyelvével, valamint a [Power BIba](https://powerbi.microsoft.com)való exportálással. 
 
-Az Application Insights lehetővé teszi az adatok lekérdezéséhez a [Kusto](https://docs.microsoft.com/azure/application-insights/app-insights-analytics#query-data-in-analytics) nyelven, valamint exportálási, hogy [Power bi](https://powerbi.microsoft.com).
-
-1. Kattintson a **Analytics** felső részén a függőség, listázása, fent a Szűrő mezőbe.
-
-    ![Elemzés gomb](./media/luis-tutorial-bot-csharp-appinsights/portal-service-list-app-insights-search-luis-analytics-button.png)
-
-2. Egy lekérdezési ablak tetején, és a egy tábla ablak, amely alatt megjelenik egy új ablak. Ha a használt adatbázisokat korábban, ezzel az elrendezéssel fokozott tisztában van-e. A lekérdezés tartalmazza az elmúlt 24 órában nevét kezdetű elemeivel `LUIS`. A **CustomDimensions** oszlopnak a LUIS-lekérdezés eredménye név/érték párokként.
-
-    ![Alapértelmezett analitikai jelentés](./media/luis-tutorial-bot-csharp-appinsights/analytics-query-1.png)
-
-3. Is, a felső szándékot, pontszám és utterance (kifejezés), adja hozzá a következő felett az utolsó sort a lekérdezési ablakban:
+1. Válassza a **napló (elemzés)** lehetőséget. Egy lekérdezési ablak tetején, és a egy tábla ablak, amely alatt megjelenik egy új ablak. Ha a használt adatbázisokat korábban, ezzel az elrendezéssel fokozott tisztában van-e. A lekérdezés az előző szűrt adatait jelöli. A **CustomDimensions** oszlop a bot és a Luis információval rendelkezik.
+1. A felső szándék, a pontszám és a Kimondás lekéréséhez adja hozzá a következőt a lekérdezési ablak utolsó `|top...` sora (a sor) fölé:
 
     ```kusto
-    | extend topIntent = tostring(customDimensions.LUIS_topScoringIntent)
+    | extend topIntent = tostring(customDimensions.LUIS_topScoringIntent_Name)
     | extend score = todouble(customDimensions.LUIS_topScoringIntentScore)
     | extend utterance = tostring(customDimensions.LUIS_query)
     ```
 
-4. Futtassa a lekérdezést. Görgessen az adatok tábla jobb szélén. Az új oszlopok topIntent, pontszám és utterance (kifejezés) érhetők el. Kattintson a topIntent oszlopra kattintva rendezheti a.
+1. Futtassa a lekérdezést. Az új oszlopok topIntent, pontszám és utterance (kifejezés) érhetők el. Válassza ki a rendezni kívánt topIntent oszlopot.
 
-    ![Egyéni elemzési jelentés](./media/luis-tutorial-bot-csharp-appinsights/analytics-query-2.png)
+Tudjon meg többet a [Kusto lekérdezési nyelvéről](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries) , vagy [exportálja az adatait Power BIba](https://docs.microsoft.com/azure/application-insights/app-insights-export-power-bi). 
 
-Tudjon meg többet a [Kusto-lekérdezés nyelvi](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries) vagy [az adatok exportálása Power bi-bA](https://docs.microsoft.com/azure/application-insights/app-insights-export-power-bi).
 
 ## <a name="learn-more-about-bot-framework"></a>További tudnivalók a Bot Frameworkről
 
@@ -251,7 +195,7 @@ Tudjon meg többet [Bot Framework](https://dev.botframework.com/).
 
 ## <a name="next-steps"></a>További lépések
 
-Egyéb információkat, érdemes hozzáadni az application insights-adatok tartalmazza Alkalmazásazonosító, a verzió azonosítója, a legutóbbi modell dátuma, a legutóbbi train dátuma, a legutóbbi közzététel dátuma. Ezek az értékek vagy olvashatók be a végpont URL-címe, (Alkalmazásazonosító és verzió azonosítója), vagy a egy [API szerzői](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3d) hívja, majd a web app bot beállítások, és onnan kéri le.  
+Egyéb információkat, érdemes hozzáadni az application insights-adatok tartalmazza Alkalmazásazonosító, a verzió azonosítója, a legutóbbi modell dátuma, a legutóbbi train dátuma, a legutóbbi közzététel dátuma. Ezek az értékek lekérhető a végpont URL-címéről (az alkalmazás azonosítója és a verziószáma), vagy egy szerzői API-hívásból, majd a webalkalmazás bot-beállításaiban, majd onnan kihúzva.  
 
 Végpont ugyanahhoz az előfizetéshez egynél több LUIS alkalmazás használ, akkor is tartalmaznia kell az előfizetés-azonosító és a egy tulajdonság arról, hogy egy megosztott kulcsot.
 

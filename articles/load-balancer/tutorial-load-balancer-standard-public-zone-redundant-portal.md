@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: Ez az oktatóanyag bemutatja, hogyan hozzon létre egy standard terheléselosztót zónaredundáns előtérrel a rendelkezésre állási zónák közötti virtuális gépek Azure Portal használatával történő terheléselosztásához
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 manager: twooley
 Customer intent: As an IT administrator, I want to create a load balancer that load balances incoming internet traffic to virtual machines across availability zones in a region, so that the customers can still access the web service if a datacenter is unavailable.
 ms.service: load-balancer
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2019
-ms.author: kumud
+ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 912307e6509ea66be887838e875076b7a895ca94
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 5b024321a18c6dec4f56a7cbc12c5a8fa748f903
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57888152"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68273476"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Oktatóanyag: Virtuális gépek terheléselosztása rendelkezésre állási zónák között a Standard Load Balancer az Azure portal használatával
 
@@ -54,15 +54,15 @@ A Standard Load Balancer csak a standard nyilvános IP-címeket támogatja. Ha a
 
     | Beállítás                 | Érték                                              |
     | ---                     | ---                                                |
-    | Előfizetés               | Válassza ki előfizetését.    |    
-    | Erőforráscsoport         | Válassza ki **új létrehozása** , és írja be *MyResourceGroupLBAZ* a szövegmezőben.|
+    | Subscription               | Válassza ki előfizetését.    |    
+    | Resource group         | Válassza ki **új létrehozása** , és írja be *MyResourceGroupLBAZ* a szövegmezőben.|
     | Name (Név)                   | *myLoadBalancer*                                   |
     | Régió         | Válassza a **Nyugat-Európa** régiót.                                        |
-    | Typo          | Válassza ki **nyilvános**.                                        |
+    | Type          | Válassza ki **nyilvános**.                                        |
     | SKU           | Válassza ki **Standard**.                          |
     | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. |
     | Nyilvános IP-cím neve              | Típus *myPublicIP* a szövegmezőben.   |
-    |Rendelkezésre állási zóna| Válassza ki **Zónaredundáns**.    |
+    |Rendelkezésre állási zónában| Válassza ki **Zónaredundáns**.    |
    
 
 ## <a name="create-backend-servers"></a>Háttérkiszolgálók létrehozása
@@ -179,7 +179,7 @@ Annak érdekében, hogy a forgalmat el lehessen osztani a virtuális gépek köz
     - Válassza a **Virtuális gép** legördülő menüben a **myVM1** lehetőséget.
     - Az **IP-cím** esetében a legördülő menüben kattintson a myVM1 IP-címére.
 4. Kattintson az **Új háttérerőforrás hozzáadása** lehetőségre a virtuális gépek (*myVM2* és *myVM3*) a terheléselosztó háttérkészletéhez való hozzáadásához.
-5. Kattintson a **Hozzáadás** parancsra.
+5. Kattintson a **Hozzáadás**lehetőségre.
 
     ![Hozzáadás a háttércímkészlethez –](./media/load-balancer-standard-public-availability-zones-portal/add-backend-pool.png)
 

@@ -2,18 +2,18 @@
 title: Fejlesztés az Azure Files c++ |} A Microsoft Docs
 description: Megtudhatja, hogyan fejleszthet c++ nyelven írt alkalmazások és szolgáltatások, amelyek az Azure Files használatának a fájladatok tárolásához.
 services: storage
-author: renashahmsft
+author: roygara
 ms.service: storage
 ms.topic: article
 ms.date: 09/19/2017
-ms.author: renashahmsft
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 3432794c6b6d2323392f0b56b364400d05b10afc
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 424db4435c569475f9463894b5364fc22190689a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649699"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64717917"
 ---
 # <a name="develop-for-azure-files-with-c"></a>Fejlesztés az Azure Files c++
 

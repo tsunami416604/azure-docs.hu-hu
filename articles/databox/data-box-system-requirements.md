@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 07/11/2019
 ms.author: alkohli
-ms.openlocfilehash: 7d52af9e3948f40936795efab5b6671c3f71007a
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: e232ad131b1c0930afcf5e7e78b386aba2c9490b
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55206747"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839749"
 ---
 # <a name="azure-data-box-system-requirements"></a>Az Azure Data Box rendszerre vonatkozó követelmények
 
@@ -31,68 +31,35 @@ A szoftverkövetelményeknek tartalmazza a támogatott operációs rendszerek, a
 
 ### <a name="supported-operating-systems-for-clients"></a>Ügyfelek támogatott operációs rendszerek
 
-Itt van az adatmásolási műveletet keresztül az ügyfelek a Data Box-eszköz csatlakozik a támogatott operációs rendszerek listáját.
-
-| **Operációs rendszer** | **Verziók** | 
-| --- | --- | 
-| Windows Server |2008 R2 SP1 <br> 2012 <br> 2012 R2 <br> 2016 | 
-| Windows |7, 8, 10 | 
-|Linux    |         |
+[!INCLUDE [data-box-supported-os-clients](../../includes/data-box-supported-os-clients.md)]
 
 ### <a name="supported-file-systems-for-linux-clients"></a>Támogatott Linux-ügyfelek fájlrendszereket
 
-| **Protokollok** | **Verziók** | 
-| --- | --- | 
-| SMB |2.x-es és újabb verziók |
-| NFS | 4.1 including az összes verzió|
+[!INCLUDE [data-box-supported-file-systems-clients](../../includes/data-box-supported-file-systems-clients.md)]
 
 ### <a name="supported-storage-accounts"></a>Támogatott tárfiókok
 
-Íme a támogatott tárfiókok és a tárolási típusokat a Data Box-eszköz listáját. Összes különböző típusú tárfiókok és a teljes képességek teljes listáját lásd: [a tárfiókok típusai](/azure/storage/common/storage-account-overview#types-of-storage-accounts).
-
-| **Storage-fiók / támogatott tárolási típusok** | **Blokkblob** |**Lapblob*** |**Az Azure Files** |**Megjegyzések**|
-| --- | --- | -- | -- | -- |
-| Klasszikus Standard | I | I | I |
-| Általános célú v1 Standard  | I | I | I | Gyakori és ritka elérésű egyaránt támogatottak.|
-| Általános célú v1-támogatás  |  | I| | |
-| Általános célú v2 Standard  | I | I | I | Gyakori és ritka elérésű egyaránt támogatottak.|
-| General-purpose v2 Premium  |  |I | | |
-| A BLOB storage Standard |I | | |Gyakori és ritka elérésű egyaránt támogatottak. |
-
-\* *– Lapblobok feltöltött adatok igazítva, például VHD-k, 512 bájt kell lennie.*
-
->[!NOTE]
-> Az Azure Data Lake Storage 2. generációs gyűjtések fiókok nem támogatottak.
-
+[!INCLUDE [data-box-supported-storage-accounts](../../includes/data-box-supported-storage-accounts.md)]
 
 ### <a name="supported-storage-types"></a>Támogatott tárolási típus
 
-Íme a támogatott tárolási típusokat a Data Box-eszköz listáját.
-
-| **Fájlformátum** | **Megjegyzések** |
-| --- | --- |
-| Az Azure blokkblob | |
-| Oldala az Azure blob  | Az adatok igazítva 512 bájt lehet.|
-| Azure Files | |
-
+[!INCLUDE [data-box-supported-storage-types](../../includes/data-box-supported-storage-types.md)]
 
 ### <a name="supported-web-browsers"></a>Támogatott webböngészők
 
-Íme a helyi webes felhasználói felület támogatott böngészők listája.
-
-| **Böngésző** | **Verziók** | **További követelmények és megjegyzések** |
-| --- | --- | --- |
-| Google Chrome |Legújabb verziója |A Chrome tesztelése|
-| Microsoft Edge |Legújabb verziója | |
-| FireFox | Legújabb verziója | A FireFox tesztelése|
-| Internet Explorer |Legújabb verziója |Ha nem tud bejelentkezni, ellenőrizze a cookie-k és a Javascript engedélyezve vannak-e. A Kezelőfelület elérésének engedélyezéséhez vegye fel az eszköz IP-cím **adatvédelmi műveletek** úgy, hogy az eszköz létesíthet-e a cookie-k. |
-
+[!INCLUDE [data-box-supported-web-browsers](../../includes/data-box-supported-web-browsers.md)]
 
 ## <a name="networking-requirements"></a>Hálózati követelmények
 
 Az adatközpontnak nagy sebességű hálózattal kell rendelkeznie. Határozottan javasoljuk, hogy legalább 10 GbE sebességű kapcsolattal rendelkezzen. 10-GbE kapcsolatot nem érhető el, ha egy 1-GbE adatkapcsolat másolja az adatokat, de a sebesség érintett példány használható.
 
-## <a name="next-step"></a>Következő lépés
+### <a name="port-requirements"></a>Port követelményei
+
+Az alábbi táblázat felsorolja a portot, amelyet meg kell nyitni a tűzfalon az SMB vagy NFS-forgalom engedélyezése. Ebben a táblázatban *a* vagy *bejövő* irányát hivatkozik, mely a bejövő kérések ügyfélelérési az eszközre. *Ki* vagy *kimenő* hivatkozik, amelyben a Data Box-eszköz kívülről, adatokat küld a központi telepítés meghaladja a irány: például kimenő internetkapcsolattal.
+
+[!INCLUDE [data-box-port-requirements](../../includes/data-box-port-requirements.md)]
+
+
+## <a name="next-steps"></a>További lépések
 
 * [Az Azure Data Box üzembe helyezése](data-box-deploy-ordered.md)
-

@@ -13,12 +13,12 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
-ms.openlocfilehash: 069a2a5b3b26bf517b57034f05ab7080ab392319
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 01d3af14963e92393d34a952bddc8097b7b08f18
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60013806"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65232610"
 ---
 # <a name="work-with-r-and-sql-data-in-azure-sql-database-machine-learning-services-preview"></a>R- és SQL adatok használata Azure SQL Database, Machine Learning Services (előzetes verzió)
 
@@ -291,7 +291,7 @@ STDOUT message(s) from external script: $ Amount       : num  3400 16925 20350 1
 - A dátum/idő oszlop feldolgozása megtörtént az R adattípust **POSIXct**.
 - A szöveges oszlop, "ProductSeries" néven azonosított egy **tényező**, ami azt jelenti, egy kategorikus változó. Karakterlánc-értékek alapértelmezés szerint tényezőként kezeli. Ha az R egy karakterlánc, belső használatra egész számra konvertálni, és majd leképezve a karakterlánc a kimenetet.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Még ezeket rövid példákból láthatja szükség az adatok átalakítása a hatásait amikor átadása az SQL-lekérdezések bemenetként. Mivel egyes SQL-adattípusok nem támogatottak az R, vegye figyelembe a következő módokon hibák elkerülése érdekében:
 
@@ -300,4 +300,4 @@ Még ezeket rövid példákból láthatja szükség az adatok átalakítása a h
 - Hajtható végre explicit típuskonverziók szükség szerint, ha a bemeneti adatok elkerülheti a meglepetéseket.
 - Kerülje a megadásának oszlopait, amelyek hibákat okozhatnak, és nem hasznos, ha modellezési adatok (például a GUID-AZONOSÍTÓI vagy frissíthetők).
 
-A támogatott és nem támogatott R-adattípusok további információkért lásd: [R-kódtárak és adattípusok](/sql/advanced-analytics/r/r-libraries-and-data-types.md).
+A támogatott és nem támogatott R-adattípusok további információkért lásd: [R-kódtárak és adattípusok](/sql/advanced-analytics/r/r-libraries-and-data-types).

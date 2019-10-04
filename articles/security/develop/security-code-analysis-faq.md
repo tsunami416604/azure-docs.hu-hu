@@ -1,0 +1,230 @@
+---
+title: A Microsoft biztonsági kód elemzésének dokumentációja – GYIK
+description: Ez a cikk a Microsoft biztonsági kód elemzése bővítménysel kapcsolatos gyakori kérdéseket tartalmaz
+author: vharindra
+manager: sukhans
+ms.author: terrylan
+ms.date: 07/31/2019
+ms.topic: article
+ms.service: security
+services: azure
+ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
+ms.devlang: na
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.openlocfilehash: b28d02dd0ca375451f6ff75b1253ae8874bf2ab4
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828247"
+---
+# <a name="frequently-asked-questions"></a>Gyakori kérdések
+Kérdése van? További információért tekintse meg az alábbi gyakori kérdéseket.
+
+## <a name="general-faq"></a>Általános GYIK
+
+### <a name="can-i-install-the-extension-on-my-visual-studio-team-foundation-server-instance-instead-of-on-an-azure-devops-instance"></a>Telepíthetem a bővítményt a Visual Studio Team Foundation Server példányára egy Azure DevOps-példány helyett?
+
+Nem. A bővítmény nem érhető el a Visual Studio Team Foundation Server letöltéséhez és telepítéséhez.
+
+### <a name="do-i-have-to-run-microsoft-security-code-analysis-with-my-build"></a>Futtatni kell a Microsoft biztonsági kód elemzését a buildtel? 
+
+Lehetséges. Ez az Analysis Tool típustól függ. Lehetséges, hogy a forráskód csak az egyetlen szükséges dolog, vagy a létrehozási kimenet szükséges.
+
+Például a hitelesítőadat-olvasó (CredScan) elemzi a fájlokat a tárház mappastruktúrát. Az elemzés miatt futtathatja a CredScan, és közzéteheti a biztonsági elemzési naplókat egy önálló buildben az eredmények eléréséhez.
+
+Az olyan egyéb eszközökhöz, mint a BinSkim, amelyek a Build utáni összetevők elemzését végzik, először a Build szükséges.
+
+### <a name="can-i-break-my-build-when-results-are-found"></a>Megtörhetem a buildet, ha az eredmények megtalálhatók?
+
+Igen. Ha bármilyen eszköz problémát vagy hibát jelez a naplófájljában, bevezetheti a létrehozási megszakítást. Csak adja hozzá az elemzés utáni Build feladatot, és jelölje be a jelölőnégyzetet minden olyan eszközhöz, amelyre el szeretné törni a buildet.
+
+Az elemzés utáni feladat felhasználói felületén megadhatja, hogy a buildet megszakítsa, ha bármely eszköz csak a hibákat vagy a hibákat és a figyelmeztetéseket jelenti.
+
+### <a name="how-do-the-command-line-arguments-in-azure-devops-differ-from-those-arguments-in-the-standalone-desktop-tools"></a>Hogyan különböznek az Azure DevOps parancssori argumentumai a különálló asztali eszközökben lévő argumentumokkal? 
+
+A legtöbb esetben az Azure DevOps felépítési feladatai a biztonsági eszközök parancssori argumentumai körüli közvetlen burkolók. Átadhat argumentumként egy felépítési feladatnak, amelyet általában egy parancssori eszköznek továbbít.
+
+Észrevehető különbségek:
+
+- Az eszközök az ügynök $ (Build. SourcesDirectory) vagy a (z)% BUILD_SOURCESDIRECTORY% forrás mappájából futnak. Példa a C:\agent @ no__t-0work\1\s.
+- Az argumentumok elérési útjai a korábban felsorolt forrás könyvtár gyökeréhez képest relatívak lehetnek. Az elérési utak is lehetnek abszolútak. Az abszolút elérési utakat az Azure DevOps Build változók használatával vagy egy helyszíni ügynök futtatásával, a helyi erőforrások ismert telepítési helyeivel érheti el.
+- Az eszközök automatikusan biztosítják a kimeneti fájl elérési útját vagy mappáját. Ha kimeneti helyet ad meg egy felépítési feladathoz, a rendszer lecseréli a helyet a naplófájlok jól ismert helyének elérési útjára a Build-ügynökön.
+- Néhány további parancssori argumentum módosul bizonyos eszközök esetében. Az egyik példa a grafikus felhasználói felület indítását biztosító beállítások hozzáadása vagy eltávolítása.
+
+### <a name="can-i-run-a-build-task-like-credential-scanner-across-multiple-repositories-in-an-azure-devops-build"></a>Futtathatok olyan felépítési feladatot, mint például a hitelesítőadat-olvasó több tárházban egy Azure DevOps-Builden?
+
+Nem. A biztonságos fejlesztői eszközök egyetlen folyamaton belüli több tárházban való futtatása nem támogatott.
+
+### <a name="the-output-file-i-specified-isnt-being-created-or-i-cant-find-the-output-file-i-specified"></a>A megadott kimeneti fájl nem jön létre, vagy nem találom a megadott kimeneti fájlt
+
+A felépítési feladatok szűrnek néhány felhasználói adatot. Erre a kérdésre konkrétan a létrehozott kimeneti fájl helyét frissíti, hogy az a Build ügynök közös helye legyen. További információ erről a helyről: az alábbi kérdések.
+
+### <a name="where-are-the-output-files-generated-by-the-tools-saved"></a>Hol jönnek létre a mentett eszközök által létrehozott kimeneti fájlok? 
+
+A Build-feladatok automatikusan hozzáadjanak a kimeneti elérési utakat ehhez a jól ismert helyhez a Build ügynökön: $ (Agent. BuildDirectory) \_sdt \ naplók. Mivel ezen a helyen szabványosítjuk az adatokat, a Code-Analysis naplókat előállító vagy használó csapatok hozzáférhetnek a kimenethez.
+
+### <a name="can-i-queue-a-build-to-run-these-tasks-on-a-hosted-build-agent"></a>Várólistára helyezhetek egy buildet a feladatok futtatásához egy üzemeltetett Build-ügynökön? 
+
+Igen. A bővítmény összes feladatát és eszközét üzemeltetett Build-ügynökön lehet végrehajtani.
+
+>[!NOTE]
+> A kártevő szoftverek elleni ellenőrzőeszköz felépítési feladatához szükség van egy Build ügynökre, amelyen engedélyezve van a Windows Defender. Az üzemeltetett Visual Studio 2017-es és újabb verziói biztosítják ezt az ügynököt. A Build feladat nem fut a Visual Studio 2015 üzemeltetett ügynökön.
+>
+> Bár az aláírások nem frissíthetők ezen az ügynökökön, az aláírásoknak mindig kevesebbnek kell lenniük, mint három órával régebbiek.
+
+### <a name="can-i-run-these-build-tasks-as-part-of-a-release-pipeline-as-opposed-to-a-build-pipeline"></a>Futtathatom ezeket a felépítési feladatokat egy kiadási folyamat részeként egy build-folyamat helyett?
+
+A legtöbb esetben igen.
+
+Az Azure DevOps azonban nem támogatja a kiadási folyamatokon belüli feladatok futtatását, amikor ezek a feladatok az összetevőket teszik közzé. Ez a támogatás hiánya megakadályozza, hogy a közzétételi biztonsági elemzési naplók feladat sikeresen fusson egy kiadási folyamatban. A feladat Ehelyett egy leíró hibaüzenettel meghiúsul.
+
+### <a name="from-where-do-the-build-tasks-download-the-tools"></a>Honnan töltheti le az eszközöket a Build-feladatok közül?
+
+A felépítési feladatok letölthetik az eszközök NuGet csomagjait az [Azure DevOps Package Management-hírcsatornából](https://securitytools.pkgs.visualstudio.com/_packaging/SecureDevelopmentTools/nuget/v3/index.json). A felépítési feladatok a Node csomagkezelő kezelőjét is használhatják, amelyet előre kell telepíteni a Build-ügynökön. Ilyen telepítés például a **NPM telepítése tslint**.
+
+### <a name="what-effect-does-installing-the-extension-have-on-my-azure-devops-organization"></a>Milyen hatással van a bővítmény telepítése az Azure DevOps-szervezetre? 
+
+A telepítéskor a bővítmény által biztosított biztonsági Build-feladatok a szervezet összes felhasználója számára elérhetővé válnak. Azure-folyamat létrehozásakor vagy szerkesztésekor ezek a feladatok a Build-Task gyűjtemény listából érhetők el. Ellenkező esetben a bővítmény Azure DevOps-szervezetben való telepítése nincs hatással. A telepítés nem módosítja a Fiókbeállítások, a projekt beállításait vagy a folyamatokat.
+
+### <a name="does-installing-the-extension-modify-my-existing-azure-pipelines"></a>Módosítja a bővítményt a meglévő Azure-folyamatokkal? 
+
+Nem. A bővítmény telepítése lehetővé teszi a biztonsági Build-feladatok elérhetővé tételét a folyamatokon kívül. A Build-definíciók hozzáadására vagy frissítésére továbbra is szükség van, hogy az eszközök működjenek a létrehozási folyamattal.
+
+## <a name="task-specific-faq"></a>Feladat-specifikus gyakori kérdések
+
+A felépítési feladatokra vonatkozó kérdések ebben a szakaszban találhatók.
+
+### <a name="credential-scanner"></a>Hitelesítőadat-olvasó
+
+#### <a name="what-are-common-suppression-scenarios-and-examples"></a>Mik azok a gyakori elnyomási forgatókönyvek és példák?
+
+Az alábbiakban a leggyakoribb elnyomási forgatókönyvek közül kettőt olvashat.
+
+##### <a name="to-suppress-all-occurrences-of-a-given-secret-within-the-specified-path"></a>Egy adott titok összes előfordulásának letiltása a megadott elérési úton
+
+A CredScan kimeneti fájljából származó titkos kód kivonatának kulcsát az alábbi mintában látható módon kell megadnia.
+
+        {
+            "tool": "Credential Scanner",
+            "suppressions": [
+            {
+                "hash": "CLgYxl2FcQE8XZgha9/UbKLTkJkUh3Vakkxh2CAdhtY=",
+                "_justification": "Secret used by MSDN sample, it is fake."
+            }
+          ]
+        }
+
+>[!WARNING]
+> A kivonatoló kulcsot a rendszer az egyező érték vagy a fájl tartalmának egy részével hozza létre. Bármely forráskód-változat megváltoztathatja a kivonatoló kulcsot, és letilthatja az elnyomási szabályt.
+
+##### <a name="to-suppress-all-secrets-in-a-specified-file-or-to-suppress-the-secrets-file-itself"></a>Egy adott fájl összes titkának letiltásához, vagy a titkos fájl mellőzéséhez
+
+A fájl kifejezés lehet fájlnév. Egy teljes fájl elérési útjának vagy fájlnevének basename része is lehet. Helyettesítő karakterek nem használhatók.
+
+Az alábbi példák bemutatják, hogyan lehet letiltani a következő fájlt: \<InputPath > \src\JS\lib\angular.js
+
+Példák az érvényes letiltási szabályokra:
+
+- \<InputPath > \src\JS\lib\angular.js – a megadott elérési úton letiltja a fájlt
+- \src\JS\lib\angular.js
+- \JS\lib\angular.js
+- \lib\angular.js
+- szögletes. js – bármely azonos nevű fájl letiltása
+
+        {
+            "tool": "Credential Scanner",
+            "suppressions": [
+            {
+                "file": "\\files\\AdditonalSearcher.xml", 
+                "_justification": "Additional CredScan searcher specific to my team"
+            },
+            {
+                "file": "\\files\\unittest.pfx", 
+                "_justification": "Legitimate UT certificate file with private key"
+            }
+          ]
+        }      
+
+>[!WARNING] 
+> A rendszer a fájlhoz hozzáadott összes jövőbeli titkot is automatikusan letiltja.
+
+#### <a name="what-are-recommended-guidelines-for-managing-secrets"></a>Mik azok a javasolt irányelvek a titkok kezeléséhez?
+
+A következő források segítenek a titkok biztonságos kezelésében és a bizalmas adatok elérésében az alkalmazásokon belül:
+
+ - [Azure Key Vault](../../key-vault/index.yml)
+ - [Azure Active Directory (Azure AD)](../../sql-database/sql-database-aad-authentication.md)
+ - [Azure AD-Managed Service Identity (MSI)](https://azure.microsoft.com/blog/keep-credentials-out-of-code-introducing-azure-ad-managed-service-identity/)
+ - [Azure-erőforrások felügyelt identitásai](../../active-directory/managed-identities-azure-resources/overview.md)
+ - [Felügyelt identitások Azure App Service és Azure Functions](../../app-service/overview-managed-identity.md)
+ - [AppAuthentication-könyvtár](../../key-vault/service-to-service-authentication.md)
+
+
+További információkért tekintse meg a [titkok biztonságos kezelését a felhőben](https://devblogs.microsoft.com/visualstudio/managing-secrets-securely-in-the-cloud/)című blogbejegyzésben.
+
+#### <a name="can-i-write-my-own-custom-searchers"></a>Írhatok saját egyéni keresőket?
+
+A hitelesítő adatok képolvasó a buildsearchers. xml fájlban általában definiált tartalomszolgáltatókon alapul. A fájl a **ContentSearcher** OBJEKTUMOT képviselő XML szerializált objektumok tömbjét tartalmazza. A program kiosztása jól tesztelt keresők készletével történik. Saját egyéni keresőket is megvalósíthat.
+
+A tartalmi kereső a következőképpen van definiálva:
+
+- **Név**: A hitelesítő adatok Lapolvasójának kimeneti fájljaiban használandó leíró kereső neve. Javasoljuk, hogy a keresőmotor neveként a teve-Case elnevezési konvenciót használja.
+- **RuleId**: A kereső stabil átlátszatlan azonosítója:
+    - A hitelesítő adatok képolvasó alapértelmezett keresője egy **RuleId** , például a CSCAN0010, a CSCAN0020 vagy a CSCAN0030 értékhez van rendelve. Az utolsó számjegy a keresési csoportok lehetséges egyesítésére és a reguláris kifejezések (regex) használatával való felosztására van fenntartva.
+    - A testreszabott kereső **RuleId** értékének saját névtérrel kell rendelkeznie. Ilyenek például a következők: CSCAN-\<Namespace @ no__t-10010, CSCAN-\<Namespace @ no__t-30020 és CSCAN-\<Namespace @ no__t-50030.
+    - A teljes kereső neve egy **RuleId** érték és egy kereső neve kombinációja. Ilyenek például a CSCAN0010. KeyStoreFiles és CSCAN0020. Base64EncodedCertificate.
+- **ResourceMatchPattern**: A keresővel való kereséshez szükséges fájlkiterjesztések regexje.
+- **ContentSearchPatterns**: A megfelelő regex-utasításokat tartalmazó karakterláncok tömbje. Ha nincs megadva keresési minta, a rendszer az **ResourceMatchPattern** értékkel egyező összes fájlt visszaadja.
+- **ContentSearchFilters**: Olyan karakterláncok tömbje, amelyekben a keresőmotor-specifikus hamis pozitív értékek szűrésére szolgáló regex-utasítások szerepelnek.
+- **MatchDetails**: Egy leíró üzenet, enyhítő utasítások vagy mindkettő, amelyet a kereső minden egyeztetéséhez fel kell venni.
+- **Javaslat**: A javaslatok – mező tartalmának egyezése az előgyors jelentés formátumának használatával.
+- **Súlyosság**: Egy egész szám, amely a probléma súlyossági szintjét tükrözi. A legmagasabb súlyossági szint értéke 1.
+
+  ![A hitelesítő adatok képolvasó-telepítőjét ábrázoló XML](./media/security-tools/6-credscan-customsearchers.png)
+
+### <a name="roslyn-analyzers"></a>-Elemzők
+
+#### <a name="what-are-common-errors-when-using-the-roslyn-analyzers-task"></a>Mik azok a gyakori hibák, amikor a-elemzők feladatait használják?
+
+##### <a name="the-project-was-restored-using-a-wrong-microsoftnetcoreapp-version"></a>A projekt nem megfelelő Microsoft. NETCore. app verzióval lett visszaállítva
+
+A teljes hibaüzenet:
+
+Hiba A projekt a Microsoft. NETCore. app *x. x. x*verziójával lett visszaállítva, de az aktuális beállításokkal az *y. y.* y verzió lesz használatban. A probléma megoldásához ellenőrizze, hogy ugyanazokat a beállításokat használja-e a rendszer a visszaállításhoz és a későbbi műveletekhez, például a létrehozáshoz vagy a közzétételhez. Ez a probléma általában akkor fordulhat elő, ha a RuntimeIdentifier tulajdonságot a Build vagy a publish elemnél állítja be, de a visszaállítás során nem. "
+
+Mivel a (z) a (z) a gyűjtemény részeként futtatott a a-elemzők, a kiépíthető állapotban kell lennie a forrás fájának.
+
+Előfordulhat, hogy a fő Build és a a a a a a a a a a a a a (a)-elemzők lépései között a forrás fát olyan állapotba helyezi Ezt az extra lépést valószínűleg a **DotNet. exe teszi közzé**. Próbálja megismételni azt a lépést, amely egy NuGet-visszaállítást végez közvetlenül a a a-elemzők lépése előtt. Ez a duplikált lépés felépíthető állapotba helyezheti a forrás faszerkezetét.
+
+##### <a name="cscexe-cant-create-an-analyzer-instance"></a>a CSC. exe nem tud elemző példányt létrehozni
+
+A teljes hibaüzenet:
+
+"a CSC. exe fájl kilépett a következő hibakóddal: 1 – az Analyzer *AAAA* -példánya nem hozható létre a C: \\*BBBB*. dll fájlból: Nem tölthető be a következő fájl vagy szerelvény: "Microsoft. CodeAnalysis, Version =*X. x. x. x*, Culture = semleges, PublicKeyToken = 31bf3856ad364e35" vagy annak valamelyik függősége. A rendszer nem találja a megadott fájlt."
+
+Győződjön meg arról, hogy a fordító támogatja a a a a a a "a" A **CSC. exe** verziójának futtatásához a 2,6-es vagy újabb verziójú verziószámot kell jelenteni.
+
+Előfordulhat, hogy egy. csproj-fájl felülbírálja a Build Machine Visual Studio telepítését a Microsoft.Net. Compilers csomagból való hivatkozással. Ha nem kívánja használni a fordító egy adott verzióját, távolítsa el a Microsoft.Net. Compilers mutató hivatkozásait. Ellenkező esetben győződjön meg arról, hogy a hivatkozott csomag verziószáma 2,6 vagy újabb.
+
+Próbálja meg lekérni a hiba-napló elérési útját, amely a **CSC. exe/errorlog** beállításban van megadva. A beállítás és az elérési út megjelenik a következő naplóban: a-elemzők felépítési feladata. Ilyenek például a **/errorlog: F:\ts-Services-123 @ no__t-1work\456\s\Some\Project\Code\Code.csproj.Sarif**
+
+##### <a name="the-c-compiler-version-isnt-recent-enough"></a>A C# fordító verziója nem elég közelmúltbeli
+
+A C# fordító legújabb verzióinak beszerzéséhez nyissa meg a következőt: [Microsoft.net. compilers](https://www.nuget.org/packages/Microsoft.Net.Compilers). A telepített verziójának lekéréséhez futtassa a **CSC. exe Version** parancsot a parancssorból. Győződjön meg arról, hogy a 2,6-es vagy újabb verziójú Microsoft.Net. Compilers NuGet-csomagra hivatkozik.
+
+##### <a name="msbuild-and-vsbuild-logs-arent-found"></a>Az MSBuild és a VSBuild naplók nem találhatók
+
+A DevOps-elemzők létrehozási feladatának le kell kérdezni az MSBuild-napló Azure-beli az MSBuild-Build feladatból. Ha az analizátor feladat közvetlenül az MSBuild feladat után fut, a napló még nem lesz elérhető. Helyezzen el más feladatokat az MSBuild-feladat és a a a a a a a a a a a a a a ( További feladatok például a BinSkim és a kártevők elleni képolvasó.
+
+## <a name="next-steps"></a>További lépések
+
+Ha további segítségre van szüksége, a Microsoft biztonsági kód elemzésének támogatása hétfőtől péntekig 9:00-tól 5:00-ig, a csendes-óceáni téli időpontig érhető el.
+
+  - Bevezetési Az első lépésekhez forduljon a technikai menedzserekhez.
+  
+  - Támogatja Küldjön e-mailt a csapatnak a [Microsoft biztonsági kódok elemzésének támogatásához](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Support%20Request).
+
+  >[!NOTE] 
+  >Előfordulhat, hogy nem rendelkezik fizetős támogatási kapcsolattal a Microsofttal. Vagy rendelkezhet olyan támogatási ajánlattal, amely megakadályozza a szolgáltatások megvásárlását a Phoenix-katalógusból. Ha ezek a feltételek teljesülnek, tekintse meg a [támogatási szolgáltatások kezdőlapját](https://www.microsoft.com/enterprise/services/support) .

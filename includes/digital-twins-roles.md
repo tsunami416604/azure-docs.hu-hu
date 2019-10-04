@@ -5,26 +5,26 @@ services: digital-twins
 author: kingdomofends
 ms.service: digital-twins
 ms.topic: include
-ms.date: 12/20/2018
-ms.author: adgera
+ms.date: 09/30/2019
+ms.author: v-adgera
 ms.custom: include file
-ms.openlocfilehash: 7e4760990229433b2ea40fadd0d17de0b52fcb36
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
-ms.translationtype: MT
+ms.openlocfilehash: f9b9341be32e5707ef646bd6d08d9d7ec92a8575
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53795922"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827719"
 ---
-A következő táblázat ismerteti az Azure digitális Twins elérhető szerepkörök:
+Az alábbi táblázat az Azure Digital Twins szolgáltatásban elérhető szerepköröket ismerteti:
 
-| **Szerepkör** | **Leírás** | **azonosító** |
+| **Szerepkör** | **Leírás** | **Azonosító** |
 | --- | --- | --- |
-| Hely rendszergazdája | *Hozzon létre*, *OLVASÁSI*, *frissítés*, és *törlése* engedéllyel a megadott hely és az összes csomópont alatt. Globális engedélyt. | 98e44ad7-28d4-4007-853b-b9968ad132d1 |
-| Felhasználói rendszergazda| *Hozzon létre*, *OLVASÁSI*, *frissítés*, és *törlése* engedéllyel a felhasználók és felhasználói biztonsággal kapcsolatos objektumok. *Olvassa el* tárolóhelyek engedély. | dfaac54c-f583-4dd2-b45d-8d4bbc0aa1ac |
-| Eszközadminisztrátor | *Hozzon létre*, *OLVASÁSI*, *frissítés*, és *törlése* eszközök és az eszközzel kapcsolatos objektumokra vonatkozó engedélyt. *Olvassa el* tárolóhelyek engedély. | 3cdfde07-bc16-40d9-bed3-66d49a8f52ae |
-| Kulcs-rendszergazda | *Hozzon létre*, *OLVASÁSI*, *frissítés*, és *törlése* tárelérési kulcsok engedély. *Olvassa el* tárolóhelyek engedély. | 5a0b1afc-e118-4068-969f-b50efb8e5da6 |
-| Jogkivonat rendszergazdák |  *Olvassa el* és *frissítés* tárelérési kulcsok engedély. *Olvassa el* tárolóhelyek engedély. | 38a3bb21-5424-43b4-b0bf-78ee228840c3 |
-| Felhasználó |  *Olvassa el* tárolóhelyek eszközök, érzékelők és felhasználókat, beleértve a kapcsolódó engedély kapcsolódó objektumok. | b1ffdb77-c635-4e7e-ad25-948237d85b30 |
-| Támogatási szakértő |  *Olvassa el* tárelérési kulcsok kivételével minden engedélyt. | 6e46958b-dc62-4e7c-990c-c3da2e030969 |
-| Eszköz-telepítő | *Olvassa el* és *frissítés* eszközeit és érzékelőit, amely tartalmazza a megfelelő engedély kapcsolódó objektumok. *Olvassa el* tárolóhelyek engedély. | b16dd9fe-4efe-467b-8c8c-720e2ff8817c |
-| Átjáróeszköz | *Hozzon létre* engedély érzékelő számára. *Olvassa el* eszközeit és érzékelőit, amely tartalmazza a megfelelő engedély kapcsolódó objektumok. | d4c69766-e9bd-4e61-BFC1-d8b6e686c7a8 |
+| Hely rendszergazdája | *Hozzon létre*, *Olvasson*, *frissítsen*és *töröljön* engedélyt a megadott helyhez és az alatta lévő összes csomóponthoz. Globális engedély. | 98e44ad7-28d4-4007-853b-b9968ad132d1 |
+| Felhasználói rendszergazda| Engedélyek *létrehozása*, *olvasása*, *frissítése*és *törlése* a felhasználókhoz és a felhasználóhoz kapcsolódó objektumokhoz. *Olvasási* engedély a szóközökhöz. | dfaac54c-f583-4dd2-b45d-8d4bbc0aa1ac |
+| Eszköz rendszergazdája | Engedélyek *létrehozása*, *olvasása*, *frissítése*és *törlése* az eszközök és az eszközhöz kapcsolódó objektumok számára. *Olvasási* engedély a szóközökhöz. | 3cdfde07-bc16-40d9-bed3-66d49a8f52ae |
+| Kulcs rendszergazdája | Hozzáférési kulcsok létrehozási, *olvasási*, *frissítési*és *törlési* engedélye. *Olvasási* engedély a szóközökhöz. | 5a0b1afc-e118-4068-969f-b50efb8e5da6 |
+| Jogkivonat-rendszergazda |  *Olvasási* és *frissítési* engedély a hozzáférési kulcsokhoz. *Olvasási* engedély a szóközökhöz. | 38a3bb21-5424-43b4-b0bf-78ee228840c3 |
+| Felhasználó |  *Olvasási* engedély a tárhelyek, érzékelők és felhasználók számára, beleértve a hozzájuk kapcsolódó objektumokat is. | b1ffdb77-c635-4e7e-ad25-948237d85b30 |
+| Támogatási szakember |  *Olvasási* engedély mindenhez, kivéve a hozzáférési kulcsokat. | 6e46958b-dc62-4e7c-990c-c3da2e030969 |
+| Eszköz telepítője | *Olvasási* és *frissítési* engedély az eszközök és érzékelők számára, beleértve a hozzájuk kapcsolódó objektumokat is. *Olvasási* engedély a szóközökhöz. | b16dd9fe-4efe-467b-8c8c-720e2ff8817c |
+| Átjáró eszköz | *Hozzon létre* engedélyt az érzékelőkhöz. *Olvasási* engedély az eszközök és érzékelők számára, beleértve a hozzájuk kapcsolódó objektumokat is. | d4c69766-e9bd-4e61-bfc1-d8b6e686c7a8 |

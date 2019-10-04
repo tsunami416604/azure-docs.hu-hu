@@ -1,7 +1,7 @@
 ---
-title: A projekt áttelepítése a 3.0-s API
-titlesuffix: Azure Cognitive Services
-description: Ismerje meg a Custom Vision projektek áttelepítése az API az előző verzióhoz képest a 3.0-s API-t.
+title: A projekt migrálása a 3,0 API-ba
+titleSuffix: Azure Cognitive Services
+description: Ismerje meg, hogyan telepíthet át Custom Vision projekteket az API előző verziójáról az 3,0 API-ra.
 services: cognitive-services
 author: areddish
 manager: nitinme
@@ -10,57 +10,57 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: areddish
-ms.openlocfilehash: 9dd473aadd7123cafc27209f5c34322fdbcffb71
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 353fc0a2d8396def17b8e23d9a1c685c755349c5
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59044006"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560897"
 ---
-# <a name="migrate-to-the-30-api"></a>A 3.0-s át API
+# <a name="migrate-to-the-30-api"></a>Migrálás a 3,0 API-ra
 
-Egyéni vizuális most már elérte az általános rendelkezésre állás és ment keresztül az API frissítése.
-A frissítés néhány új szolgáltatása, és ami fontosabb, néhány kompatibilitástörő változásokat tartalmazza:
+A Custom Vision mostantól elérte az általános elérhetőséget, és egy API-frissítésen esett át.
+Ez a frissítés néhány új funkciót tartalmaz, és fontos, hogy néhány megszakítási változás:
 
-* Az előrejelzési API-t most már van felosztva, amelyek két projekt típusa alapján.
-* A Vision AI Developer Kit (VAIDK) exportálási beállítás azt igényli,-projekt létrehozása a meghatározott módon.
-* Alapértelmezett ismétlések értéke közzétételi el lettek távolítva, vagy egy nevesített iteráció közzétételének visszavonása.
+* Az előrejelzési API mostantól két, a projekt típusa alapján oszlik meg.
+* A jövőkép AI Developer Kit (VAIDK) exportálási beállításához adott módon kell létrehozni egy projektet.
+* Az alapértelmezett iterációk el lettek távolítva a közzététel vagy a Közzététel visszavonása egy elnevezett iteráció mellett.
 
-Ez az útmutató bemutatja, hogyan működik az új API-verzió a projektek frissítését. Tekintse meg a [kibocsátási megjegyzések](release-notes.md) a változások teljes listáját.
+Ez az útmutató bemutatja, hogyan frissítheti projektjeit az új API-verzióval való együttműködéshez. A módosítások teljes listájáért tekintse meg a [kibocsátási megjegyzéseket](release-notes.md) .
 
-## <a name="use-the-updated-prediction-api"></a>A frissített előrejelzési API-val
+## <a name="use-the-updated-prediction-api"></a>A frissített előrejelzési API használata
 
-A 2.x-es API-kat használja az adott előrejelzési hívásban kép besorolások és a objektum detector használatával projektek. Mindkét projekt típusa is számára elfogadható az **PredictImage** és **PredictImageUrl** hívások. 3.0 kezdve rendelkezik osztottuk fel, az API-t, hogy a projekt típusa, a hívásnak egyeznie kell:
+A 2. x API-k ugyanazt az előrejelzési hívást használták mind a képosztályozó, mind az objektum-Kiderítő projekt esetében. Mindkét projekttípus elfogadható volt a **PredictImage** és a **PredictImageUrl** -hívások esetében is. Az 3,0-es verziótól kezdődően az API-t felosztjuk, így a projekt típusának meg kell egyeznie a hívással:
 
-* Használat **[ClassifyImage](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c15)** és **[ClassifyImageUrl](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c14)** való kaphatnak előjelzéseket kép besorolási projektekhez.
-* Használat **[DetectImage](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c19)** és **[DetectImageUrl](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c18)** objektum észlelési projektek adatokat beolvasni.
+* A **[ClassifyImage](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c15)** és a **[ClassifyImageUrl](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c14)** használatával előrejelzéseket kaphat a képbesorolási projektekhez.
+* Az **[DetectImage](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c19)** és a **[DetectImageUrl](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c18)** használatával megtekintheti az objektum-észlelési projektek előrejelzéseit.
 
-## <a name="use-the-new-iteration-publishing-workflow"></a>Az új közzétételi iteráció-munkafolyamat
+## <a name="use-the-new-iteration-publishing-workflow"></a>Az új iterációs közzétételi munkafolyamat használata
 
-A 2.x-es API-k az alapértelmezett iterációhoz vagy a megadott iteráció ID segítségével válassza ki a használandó előrejelzési verzió továbbfejlesztésében. A 3.0-től kezdődően a Microsoft elfogadta egy közzétételi folyamatot, amelynek során először tegye közzé egy iterációját a képzési API megadott név alatt. Akkor továbbítja a nevét adja meg, mely az iteráció használandó előrejelzési módszereket.
+A 2. x API-k az alapértelmezett iterációt vagy egy megadott iterációs azonosítót használták az előrejelzéshez használandó iteráció kiválasztásához. A 3,0-től kezdődően egy közzétételi folyamatot hoztunk létre, amelynek során először közzé kell tenni egy iterációt a betanítási API megadott neve alatt. Ezután adja át a nevet az előrejelzési metódusoknak a használni kívánt iteráció megadásához.
 
 > [!IMPORTANT]
-> A 3.0-s API-k ne használja az alapértelmezett iteráció funkciót. Amíg nem tudjuk kivezetjük a régebbi API-k, továbbra is ki-és bekapcsolásához egy iterációját alapértelmezés szerint a 2.x-es API-k használatával. Ezen API-k egy ideig maradnak, és meghívhatja a **[UpdateIteration](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.0/operations/5c771cdcbf6a2b18a0c3b818)** megjelölni egy iterációját az alapértelmezett mód.
+> Az 3,0 API-k nem az alapértelmezett iterációs funkciót használják. Amíg a régebbi API-k elavultak, továbbra is használhatja a 2. x API-kat az iterációk alapértelmezettként való váltásához. Ezek az API-k egy adott időszakban megmaradnak, és meghívhatja a **[UpdateIteration](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.0/operations/5c771cdcbf6a2b18a0c3b818)** metódust az iteráció alapértelmezettként való megjelölésére.
 
-### <a name="publish-an-iteration"></a>Egy iteráció közzététele
+### <a name="publish-an-iteration"></a>Iteráció közzététele
 
-Egy iteráció be van tanítva, miután elérhetővé teheti azt előrejelzési használatának a **[PublishIteration](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.0/operations/5c82db28bf6a2b11a8247bbc)** metódust. Az előrejelzési erőforrás-azonosító, a beállítások lapon a CustomVision webhelyen elérhető kell egy iterációját közzétételéhez.
+Az iteráció betanítása után elérhetővé teheti az előrejelzést a **[PublishIteration](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.0/operations/5c82db28bf6a2b11a8247bbc)** metódus használatával. Az iteráció közzétételéhez szüksége lesz a CustomVision webhely beállítások lapján elérhető előrejelzési erőforrás-AZONOSÍTÓra.
 
-![A Custom Vision webhely beállításai lapon ismertetett előrejelzési erőforrás-azonosító.](./media/update-application-to-3.0-sdk/prediction-id.png)
+![A Custom Vision webhely beállításai lap, amely az előrejelzési erőforrás AZONOSÍTÓját ismerteti.](./media/update-application-to-3.0-sdk/prediction-id.png)
 
 > [!TIP]
-> Ezeket az adatokat is megtekintheti a [az Azure Portal](https://portal.azure.com) fog az egyéni vizuális előrejelzési erőforráshoz, és válassza **tulajdonságok**.
+> Ezt az információt az [Azure Portalon](https://portal.azure.com) is megtekintheti, ha a Custom Vision előrejelzési erőforrást választja, és kiválasztja a **Tulajdonságok**elemet.
 
-Az ismétlés közzététele után alkalmazások használhatnak, az előrejelzési az előrejelzési API-hívás az a név megadásával. Ahhoz, hogy egy iterációját előrejelzési hívások nem érhető el, használja a **[UnpublishIteration](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.0/operations/5c771cdcbf6a2b18a0c3b81a)** API-t.
+Miután közzétette az iterációt, az alkalmazások az előrejelzési API-hívásban megadhatják a nevet az előrejelzéshez. Ha nem szeretné, hogy egy iteráció előrejelzési hívásokhoz ne legyen elérhető, használja a **[UnpublishIteration](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.0/operations/5c771cdcbf6a2b18a0c3b81a)** API-t.
 
-## <a name="additional-export-options"></a>További exportálási lehetőségek
+## <a name="additional-export-options"></a>További exportálási beállítások
 
-A 3.0-val is közzéteheti, hogy két további API-k exportálása célok: ARM architektúra és vizuális AI szoftverfejlesztői készlet.
+A 3,0 API-kkal két további exportálási célpontot teszünk közzé: ARM Architecture és a jövőkép AI fejlesztői készlet.
 
-* ARM használatához egyszerűen válasszon ki egy kompakt tartományhoz és válassza a docker-fájlban, és az exportálási beállításokat, majd ARM.
-* Vizuális AI Dev csomag, a projekt együtt kell létrehozni a __általános (CD)__ tartományban, valamint a VAIDK megadásáról a célként megadott platformok argumentum exportálása.
+* Az ARM használatához csak egy kompakt tartományt kell kiválasztania, majd az exportálási lehetőségként válassza a Docker, majd a ARM lehetőséget.
+* A jövőkép AI fejlesztői csomag esetében a projektet az __általános (Compact)__ tartománnyal kell létrehozni, valamint a VAIDK megadását a cél-exportálási platformok argumentumban.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Képzési API referenciadokumentációt tartalmaz (REST)](https://go.microsoft.com/fwlink/?linkid=865446)
-* [Az előrejelzési API dokumentációja (REST)](https://go.microsoft.com/fwlink/?linkid=865445)
+* [A képzés API-referenciájának dokumentációja (REST)](https://go.microsoft.com/fwlink/?linkid=865446)
+* [Előrejelzési API-referenciák dokumentációja (REST)](https://go.microsoft.com/fwlink/?linkid=865445)

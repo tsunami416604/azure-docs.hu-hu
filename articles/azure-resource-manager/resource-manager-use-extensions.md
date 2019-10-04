@@ -13,11 +13,11 @@ ms.workload: na
 ms.date: 12/14/2018
 ms.author: jgao
 ms.openlocfilehash: eb46966c3a28b3fa4c2b23668109b7c5d23a609b
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53414378"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60390868"
 ---
 # <a name="provide-post-deployment-configurations-by-using-extensions"></a>Adja meg az üzembe helyezés utáni konfigurációk a bővítmények
 
@@ -28,9 +28,9 @@ A sablon a bővítmények olyan kisebb alkalmazásoknál, amelyek az üzembe hel
 A meglévő bővítmények a következők:
 
 - [Microsoft.Compute/virtualMachines/extensions](https://docs.microsoft.com/azure/templates/microsoft.compute/2018-10-01/virtualmachines/extensions)
-- [Microsoft.Compute virtualMachineScaleSets/bővítmények](https://docs.microsoft.com/azure/templates/microsoft.compute/2018-10-01/virtualmachinescalesets/extensions)
+- [Microsoft.Compute virtualMachineScaleSets/extensions](https://docs.microsoft.com/azure/templates/microsoft.compute/2018-10-01/virtualmachinescalesets/extensions)
 - [Regisztrációra a Microsoft.HDInsight fürtök/bővítmények](https://docs.microsoft.com/azure/templates/microsoft.hdinsight/2018-06-01-preview/clusters/extensions)
-- [Kiszolgálók és adatbázisok/bővítmények Microsoft.Sql](https://docs.microsoft.com/azure/templates/microsoft.sql/2014-04-01/servers/databases/extensions) 
+- [Microsoft.Sql servers/databases/extensions](https://docs.microsoft.com/azure/templates/microsoft.sql/2014-04-01/servers/databases/extensions) 
 - [Microsoft.Web/sites/siteextensions](https://docs.microsoft.com/azure/templates/microsoft.web/2016-08-01/sites/siteextensions)
 
 Hogy megtudja, az elérhető bővítmények, keresse meg a [sablonreferenciája](https://docs.microsoft.com/azure/templates/). A **szűrés cím szerint**, adja meg **bővítmény**.

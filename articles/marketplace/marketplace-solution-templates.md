@@ -1,45 +1,39 @@
 ---
-title: Az Azure-alkalmazások megoldás sablon ajánlat közzétételi útmutató
-description: Ez a cikk ismerteti a megoldássablon közzététele az Azure piactéren.
+title: Azure-alkalmazások megoldási sablon ajánlatának közzétételi útmutatója | Azure piactér
+description: Ez a cikk a megoldási sablon Azure Marketplace-en való közzétételének követelményeit ismerteti.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: ellacroi
 manager: nunoc
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
-ms.date: 11/15/2018
+ms.date: 9/25/2019
 ms.author: ellacroi
-ms.openlocfilehash: bbf9ab56bd7e070e40e2454a69f0a5e313597f14
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 725be2ee239a879be8200d33acaf566b1d42d446
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57215371"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300344"
 ---
-# <a name="azure-applications-solution-template-offer-publishing-guide"></a>Az Azure-alkalmazások: Megoldás sablon az ajánlat közzétételi útmutató
+# <a name="azure-applications-solution-template-offer-publishing-guide"></a>Azure-alkalmazások: Megoldási sablon ajánlatának közzétételi útmutatója
 
-Megoldássablonok a fő módon lehet a megoldás a piactéren közzétett tartoznak. Ez az útmutató segítségével áttekinteni a követelményeket, ezt az ajánlatot. 
+A megoldási sablonok az egyik fő módszer a megoldás közzétételére a piactéren. Az útmutató segítségével megismerheti az ajánlat követelményeit. 
 
-Az Azure-alkalmazást használja: a megoldáshoz szükséges túl egyetlen virtuális gép további telepítési és konfigurációs automation megoldás sablon ajánlat típusát. Előfordulhat, hogy automatizálja az Azure-alkalmazások használata egy vagy több virtuális gép üzembe helyezése: megoldássablonok. Hálózati és tárolási erőforrásokat is üzembe helyezése. Az Azure apps: megoldássablonok ajánlat típus automation értékelemeket biztosít a virtuális gépekre, és a teljes IaaS-alapú megoldásokat.
+Az Azure-alkalmazás: megoldás-sablon típusú ajánlat típusa akkor használható, ha a megoldás további üzembe helyezést és konfigurációs automatizálást igényel egy virtuális gépen kívül. Egy vagy több virtuális gép üzembe helyezését az Azure apps: megoldás-sablonok használatával automatizálhatja. A hálózatkezelési és tárolási erőforrásokat is kiépítheti. Azure-alkalmazások: a megoldási sablonok ajánlat típusa automatizálási előnyöket biztosít az egyes virtuális gépek és a teljes IaaS-alapú megoldások számára.
 
-A megoldás sablonok tranzakció ajánlatok, amelyek üzembe helyezve, és a Marketplace-en keresztül számlázott. Művelet, amely a felhasználó kap, a hívást a "Letöltés most."
+Ezek a megoldási sablonok nem tranzakciós ajánlatok, de használhatók a fizetős virtuális gépeknek a Microsoft kereskedelmi piactéren keresztüli számlázására is. A felhasználó által megjelenő művelet hívása "Letöltés most".
 
 
-## <a name="requirements-for-solution-templates"></a>Megoldássablonok követelményei
+## <a name="requirements-for-solution-templates"></a>A megoldási sablonokra vonatkozó követelmények
 
 | **Követelmények** | **Részletek**  |
 | ---------------  | -----------  |
-|Számlázással és méréssel    |  Az erőforrások lesznek üzembe helyezve, az ügyfél Azure-előfizetésében. Használatalapú fizetés (ÁTTÉRÉSHEZ) virtuális gépek az ügyfélnél, Microsoft, a számlázás az ügyfél az Azure-előfizetés (ÁTTÉRÉSHEZ) keresztül lesz kell feldolgozva.  <br/> Esetén bring-your-saját licenc használata (BYOL) amíg az ügyfél-előfizetés infrastrukturális költségeit a Microsoft ki, fog transact a szoftverlicenc-díjak, az ügyfél közvetlenül.   |
-|Azure-kompatibilis virtuális merevlemez (VHD)  |   Windows vagy Linux rendszerű virtuális gépek kell épül.  További információ [lásd az Azure-kompatibilis virtuális merevlemez létrehozása](./cloud-partner-portal/virtual-machine/cpp-create-vhd.md). |
-| Ügyfél használati megnevezése | Az Azure piactéren közzétett minden megoldássablonok ügyfél használati tesznek elérhetővé; ilyenek engedélyezése szükséges. Az ügyfél használati tesznek elérhetővé; ilyenek és engedélyezését a további információkért lásd: [Azure-partneri ügyfél használati tesznek elérhetővé; ilyenek](./azure-partner-customer-usage-attribution.md).  |
-|  |  |
+|Számlázás és mérés    |  Az erőforrások az ügyfél Azure-előfizetésében lesznek kiépítve. Az utólagos elszámolású (ÁTTÉRÉSHEZ) virtuális gépeket a Microsofton keresztül, az ügyfél Azure-előfizetésével (ÁTTÉRÉSHEZ) számoljuk el.  <br/> Ha saját licencet (BYOL) használ, míg a Microsoft az ügyfél-előfizetésben felmerülő infrastrukturális költségeket számlázza, akkor a szoftver licencelési díját közvetlenül az ügyfélnek kell átirányítani.   |
+|Azure-kompatibilis virtuális merevlemez (VHD)  |   A virtuális gépeket Windows vagy Linux rendszerre kell építeni.  További információ [: Azure-kompatibilis virtuális merevlemez létrehozása](./cloud-partner-portal/virtual-machine/cpp-create-vhd.md). |
+| Ügyfél-használati jóváírás | Az Azure Marketplace-en közzétett összes megoldási sablonban engedélyezni kell az ügyfél-használati jóváírást. Az ügyfél-használati jóváírással és annak engedélyezésével kapcsolatos további információkért tekintse meg az [Azure-partneri ügyfél használati](./azure-partner-customer-usage-attribution.md)feltételét ismertető témakört.  |
+| Felügyelt lemezek használata | A [Managed Disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) az alapértelmezett beállítás a IaaS virtuális gépek megőrzött lemezei számára az Azure-ban. A megoldási sablonokban Managed Diskst kell használnia. <br> <br> 1. A megoldási sablonok frissítéséhez kövesse az Azure ARM-sablonok Managed Disks használatának [útmutatását](https://docs.microsoft.com/azure/virtual-machines/windows/using-managed-disks-template-deployments) és [mintáit](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md) . <br> <br> 2. Az alábbi útmutatást követve importálja a Managed Disks mögöttes VHD-jét egy Storage-fiókba, hogy a virtuális merevlemezt rendszerképként tegye közzé a piactéren: <br> <ul> <li> [PowerShell](https://docs.microsoft.com/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-vhd?toc=%2fpowershell%2fmodule%2ftoc.json) </li> <li> [Parancssori felület](https://docs.microsoft.com/azure/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-vhd?toc=%2fcli%2fmodule%2ftoc.json) </li> </ul> |
 
 ## <a name="next-steps"></a>További lépések
-Ha ezt még nem tette meg, [regisztrálása](https://azuremarketplace.microsoft.com/sell) a Marketplace-en.
+Ha még nem tette meg, [regisztráljon](https://azuremarketplace.microsoft.com/sell) a piactéren.
 
-Ha regisztrálva van, és hozza létre egy új ajánlat vagy az dolgozik egy meglévő, jelentkezzen be a [Cloud Partner Portalon](https://cloudpartner.azure.com) létrehozni, vagy végezze el az ajánlatot.
+Ha regisztrálva van, és új ajánlatot hoz létre, vagy egy meglévőt használ, jelentkezzen be [](https://cloudpartner.azure.com) a Cloud Partner Portalba az ajánlat létrehozásához vagy befejezéséhez.

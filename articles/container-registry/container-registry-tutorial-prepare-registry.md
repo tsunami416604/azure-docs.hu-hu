@@ -1,19 +1,20 @@
 ---
-title: Oktatóanyag – georeplikált Docker-tárolójegyzék létrehozása az Azure-ban
+title: Oktatóanyag – geo-replikált Docker-beállításjegyzék létrehozása az Azure-ban
 description: Létrehozhat egy Azure Container Registryt, georeplikációt konfigurálhat, előkészíthet egy Docker-rendszerképet, és üzembe helyezheti azt a tárolójegyzékben. Ez egy háromrészes sorozat első része.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: tutorial
 ms.date: 04/30/2017
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 7aec257335e3380fa99669c1191ee89857ec975d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 87746bd39e624699612bf5221258ad757cd462b3
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57533664"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68309586"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Oktatóanyag: Georeplikált Azure Container Registry előkészítése
 
@@ -49,7 +50,7 @@ Válassza az **Erőforrás létrehozása** > **Tárolók** > **Azure Container R
 
 Konfigurálja az új tárolójegyzéket a következő beállításokkal:
 
-* **Beállításjegyzék neve**: Hozzon létre egy beállításjegyzék-nevet, amely globálisan egyedi Azure-ban, és 5 – 50 alfanumerikus karaktereket tartalmaz
+* **Beállításjegyzék neve**: Hozzon létre egy globálisan egyedi beállításjegyzék-nevet az Azure-on belül, és 5-50 alfanumerikus karaktereket tartalmaz
 * **Erőforráscsoport**: **Új létrehozása** > `myResourceGroup`
 * **Hely**: `West US`
 * **Rendszergazdai felhasználó**: `Enable` (a Web App for Containershez szükséges, a rendszerképek lekéréséhez)
@@ -110,13 +111,13 @@ git clone https://github.com/Azure-Samples/acr-helloworld.git
 cd acr-helloworld
 ```
 
-Ha a `git` nincs telepítve, közvetlenül a GitHubról [töltheti le a ZIP-archívumot][acr-helloworld-zip].
+Ha nincs `git` telepítve, a zip-archívumot közvetlenül a githubról [töltheti le][acr-helloworld-zip] .
 
 ## <a name="update-dockerfile"></a>A Dockerfile frissítése
 
 A mintában szereplő Dockerfile bemutatja a tároló összeállításának menetét. Egy hivatalos [aspnetcore][dockerhub-aspnetcore]-rendszerképből indul ki, a tárolóba másolja az alkalmazásfájlokat, telepíti a függőségeket, összeállítja a hivatalos [aspnetcore-build][dockerhub-aspnetcore-build]-rendszerképet, és végül egy optimalizált aspnetcore-rendszerképet hoz létre.
 
-A [Dockerfile][dockerfile] a klónozott forrásban a következő helyen található: `./AcrHelloworld/Dockerfile`.
+A [Docker][dockerfile] a klónozott forrásban található `./AcrHelloworld/Dockerfile` .
 
 ```Dockerfile
 FROM microsoft/aspnetcore:2.0 AS base

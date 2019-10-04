@@ -14,11 +14,11 @@ ms.date: 06/07/2018
 ms.reviewer: harelbr
 ms.author: mbullwin
 ms.openlocfilehash: 219ba632d7688f1a428378309828b689698d2fe5
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019474"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60409550"
 ---
 # <a name="alert-on-issues-in-azure-cloud-services-using-the-azure-diagnostics-integration-with-azure-application-insights"></a>Problémák az Azure Cloud Services használata az Azure diagnostics-integráció az Azure Application Insights-riasztás
 

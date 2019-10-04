@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/26/2019
 ms.author: juliako
 ms.openlocfilehash: 39a1dd5c3d26eeb6545a96aa35f9457bd9859c21
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58516484"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61247243"
 ---
 # <a name="customizing-media-encoder-standard-presets"></a>Testreszabás Media Encoder Standard készletek  
 
@@ -267,7 +267,7 @@ namespace CustomizeMESPresests
 ## <a name="see-also"></a>Lásd még
 
 - [Az egyéni átalakítási kódolása a parancssori felület használatával](../latest/custom-preset-cli-howto.md)
-- [Kódolás a Media Services v3](../latest/encoding-concept.md)
+- [Kódolás a Media Services v3 használatával](../latest/encoding-concept.md)
 
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

@@ -5,21 +5,21 @@ services: media-services
 author: Juliako
 ms.service: media-services
 ms.topic: include
-ms.date: 11/11/2018
+ms.date: 05/01/2019
 ms.author: juliako
 ms.custom: include file
-ms.openlocfilehash: 4dde0a47f0452da2dd951df86ccb6e02a44521ed
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: b0f93f950b55052ea8d8b31538c47226413dc82a
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51616639"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179210"
 ---
 ## <a name="access-the-media-services-api"></a>Hozzáférés a Media Services API-hoz
 
 Az Azure Media Services API-khoz való csatlakozáshoz használja az Azure AD szolgáltatásnév hitelesítését. Az alábbi parancs létrehoz egy Azure AD-alkalmazást, majd egy szolgáltatásnevet csatol a fiókhoz. A visszaadott értékeket használja az alkalmazás konfigurálásához.
 
-A szkript futtatása előtt kicserélheti az `amsaccount` és `amsResourceGroup` értékeket az erőforrások létrehozásakor választott nevekkel. `amsaccount`: a szolgáltatásnév csatolásához használni kívánt Azure Media Services-fiók neve.
+A szkript futtatása előtt kell cserélni a `amsaccount` és `amsResourceGroup` ezek az erőforrások létrehozásakor megadott nevét. `amsaccount`: a szolgáltatásnév csatolásához használni kívánt Azure Media Services-fiók neve.
 
 Az alábbi parancs egy `json` kimenetet ad vissza:
 

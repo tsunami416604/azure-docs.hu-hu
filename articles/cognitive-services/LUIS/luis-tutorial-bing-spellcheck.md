@@ -1,6 +1,6 @@
 ---
-title: Megfelelő kijavítsa a hibásan leírt szavakat
-titleSuffix: Azure
+title: Helytelenül beírt szavak – LUIS
+titleSuffix: Azure Cognitive Services
 description: Beszédmódok LUIS végpont lekérdezések ad hozzá a Bing Spell ellenőrzés API 7-es megfelelő kijavítsa a hibásan leírt szavakat.
 services: cognitive-services
 author: diberry
@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 03/04/2019
+ms.topic: conceptual
+ms.date: 09/25/2019
 ms.author: diberry
-ms.openlocfilehash: 1e5536b08b3b78f35426207369f444e6eb21c87d
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 3bde609c83425d660c867939e034247d7e6898c5
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57341790"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300270"
 ---
 # <a name="correct-misspelled-words-with-bing-spell-check"></a>A Bing Spell Check megfelelő kijavítsa a hibásan leírt szavakat
 
@@ -89,7 +89,13 @@ A végpont URL-címnek megfelelően átadandó igénylő több értéket. A Bing
 ```
 
 ## <a name="ignore-spelling-mistakes"></a>Hagyja figyelmen kívül a helyesírási hibákat
-Ha nem szeretné a Bing Spell Check API 7-es verziója szolgáltatást használja, a címkézés, amelyek rendelkeznek a helyesírási hibákat, hogy a megfelelő helyesírás-ellenőrzés, valamint a benne elgépelések tudhat meg a LUIS kimondott szöveg. Ez a beállítás nagyobb címkézési munkát, mint a helyesírás-ellenőrzés használata szükséges.
+
+Ha nem szeretné használni a Bing Spell Check API v7 szolgáltatást, hozzá kell adnia a helyes és helytelen helyesírást. 
+
+Két megoldás a következők:
+
+* Címkézheti például az összes különböző helyesírású hosszúságú kimondott szöveg, hogy LUIS el tudja sajátítani a megfelelő helyesírást és elírásokat. Ez a beállítás nagyobb címkézési munkát, mint a helyesírás-ellenőrzés használata szükséges.
+* Hozzon létre egy kifejezés listát a szó összes változatával. Ezzel a megoldással nem kell megcímkézni a példában szereplő hosszúságú kimondott szöveg. 
 
 ## <a name="publishing-page"></a>Közzétételi lap
 A [közzétételi](luis-how-to-publish-app.md) oldal rendelkezik egy **engedélyezése a Bing helyesírás-ellenőrzővel** jelölőnégyzetet. Ez az a kényelmi célokat szolgál, a kulcs létrehozásához, és megismerheti, hogyan változik a végpont URL-CÍMÉT. Továbbra is meg kell ahhoz, hogy minden kimondásakor korrigálni helyesírási rendelkezik a megfelelő végpontra paraméterek használatával. 

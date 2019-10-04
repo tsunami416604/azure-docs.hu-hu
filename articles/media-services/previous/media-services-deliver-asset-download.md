@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 21fcc6ae09718ffbb22e1d438926586dd3cde71d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58182659"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61465660"
 ---
 # <a name="how-to-deliver-an-asset-by-download"></a>Útmutató: Továbbítás letöltésen adategység keresztül  
 Ez a cikk ismerteti a médiatartalmak ellátásához feltöltése Media Services-továbbításának beállítások. A Media Services tartalomkézbesítés az számos olyan alkalmazási esetekben. Kódolás, után töltse le a létrehozott médiatartalmak ellátásához, vagy a streamelési lokátorok használatával érheti el őket. A jobb teljesítmény és méretezhetőség érdekében hogy is tartalmat továbbít egy Content Delivery Network (CDN) használatával.

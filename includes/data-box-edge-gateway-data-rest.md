@@ -2,19 +2,18 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 04/16/2019
+ms.date: 08/21/2019
 ms.author: alkohli
-ms.openlocfilehash: d8570c0be6b64d4e289575ce3f3f1721c4a65074
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: eb55d993ad8960f821c2b72f0a53602166b7cc7e
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59684472"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900615"
 ---
-Az adatok inaktív: a
+Inaktív adatok:
 
-- Az adatok inaktív, a BitLocker az XTS-AES-256 titkosítás segítségével a helyi adatok védelme érdekében.
-- Az adatok a megosztásokat a hozzáférés korlátozva.
+- A megosztásokban tárolt információhoz való hozzáférés korlátozott.
 
-    - A megosztás adatokhoz hozzáférő SMB-ügyfelek esetében van szükségük a megosztás társított felhasználói hitelesítő adatokat. Ezeket a hitelesítő adatokat határozza meg a megosztás létrehozása idején.
-    - Az NFS-ügyfelek, amelyek éri el a megosztásokat az ügyfelek IP-címét kell adható hozzá a megosztás létrehozásakor.
+    - A megosztási adatokhoz hozzáférő SMB-ügyfeleknek a megosztáshoz társított felhasználói hitelesítő adatokra van szükségük. Ezek a hitelesítő adatok a megosztás létrehozásakor vannak meghatározva.
+    - A megosztás létrehozásakor hozzá kell adni a megosztáshoz hozzáférő NFS-ügyfelek IP-címeit.

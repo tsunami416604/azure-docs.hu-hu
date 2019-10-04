@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Felhasználók automatikus átadása az Azure Active Directory konfigurálása Bonusly |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az Azure Active Directoryban történő automatikus kiépítésének és megszüntetésének Bonusly felhasználói fiókokat.
+title: 'Oktatóanyag: A Azure Active Directory-vel való automatikus kiépítés esetén a bónuszok konfigurálása | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -14,44 +14,44 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
-ms.author: v-wingf-msft
+ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ad0ee590572dbc92e67be9f84ffc65afc3e8473
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 692eff26dbbc2289ec589a327dbe58958b414a56
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59278734"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70842726"
 ---
-# <a name="tutorial-configure-bonusly-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása Bonusly konfigurálása
+# <a name="tutorial-configure-bonusly-for-automatic-user-provisioning"></a>Oktatóanyag: Bónusz konfigurálása a felhasználók automatikus üzembe helyezéséhez
 
-Ez az oktatóanyag célja a lépéseket kell végrehajtania a Bonusly és Azure Active Directory (Azure AD) konfigurálása az Azure AD automatikus kiépítésének és megszüntetésének felhasználók és csoportok a Bonusly bemutatása.
+Ennek az oktatóanyagnak a célja, hogy bemutassa a Bonus és Azure Active Directory (Azure AD) szolgáltatásban elvégzendő lépéseket, hogy az Azure AD konfigurálja a felhasználókat és/vagy csoportokat a bónuszok automatikus kiépítéséhez és kiépítéséhez.
 
 > [!NOTE]
-> Ez az oktatóanyag az Azure AD-felhasználó Provisioning Service-ra épülő összekötők ismerteti. Ez a szolgáltatás leírása, hogyan működik és gyakran ismételt kérdések a fontos tudnivalókat tartalmaz [automatizálhatja a felhasználókiépítés és -átadás megszüntetése SaaS-alkalmazásokban az Azure Active Directory](../manage-apps/user-provisioning.md).
+> Ez az oktatóanyag az Azure AD-beli felhasználói kiépítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](../manage-apps/user-provisioning.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az ebben az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik az alábbiakkal:
+Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következőkkel:
 
-* Az Azure AD-bérlő
-* A [Bonusly bérlő](https://bonus.ly/pricing)
-* Bonusly rendszergazdai engedélyekkel rendelkező felhasználói fiók
+* Azure AD-bérlő
+* [Prémium bérlő](https://bonus.ly/pricing)
+* Rendszergazdai engedélyekkel rendelkező felhasználói fiók
 
 > [!NOTE]
-> Az Azure AD létesítési integrációs támaszkodik a [Bonusly Rest API](https://bonusly.gelato.io/reference), amely Bonusly a fejlesztők rendelkezésére áll.
+> Az Azure AD kiépítési integrációja a prémium rendelkezésre állású [API](https://konghq.com/solutions/gateway/)-ra támaszkodik, amely a prémium fejlesztők számára érhető el.
 
-## <a name="adding-bonusly-from-the-gallery"></a>Bonusly hozzáadása a katalógusból
+## <a name="adding-bonusly-from-the-gallery"></a>Bónuszok hozzáadása a katalógusból
 
-Mielőtt konfigurálná a Bonusly a felhasználók automatikus átadása az Azure ad-vel, szüksége az Azure AD alkalmazáskatalógusában Bonusly hozzáadása a felügyelt SaaS-alkalmazások listája.
+Az Azure AD-vel való automatikus felhasználói kiépítés előtt bónuszokat kell hozzáadnia az Azure AD-alkalmazás-katalógusból a felügyelt SaaS-alkalmazások listájára.
 
-**Az Azure AD alkalmazáskatalógusában Bonusly hozzáadásához hajtsa végre az alábbi lépéseket:**
+**Az Azure AD-alkalmazás-katalógusban található bónuszok hozzáadásához hajtsa végre a következő lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
+2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
     ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
@@ -59,111 +59,111 @@ Mielőtt konfigurálná a Bonusly a felhasználók automatikus átadása az Azur
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **Bonusly**válassza **Bonusly** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A keresőmezőbe írja be a következőt: **Bonus**, válassza a **bónuszok** az eredmények panelen lehetőséget, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-    ![Az eredmények listájában Bonusly](common/search-new-app.png)
+    ![Bónuszok az eredmények listájában](common/search-new-app.png)
 
-## <a name="assigning-users-to-bonusly"></a>Felhasználók hozzárendelése Bonusly
+## <a name="assigning-users-to-bonusly"></a>Felhasználók kiosztása bónuszhoz
 
-Az Azure Active Directory "-hozzárendelések" nevű fogalma használatával határozza meg, hogy mely felhasználók kell kapnia a kiválasztott alkalmazásokhoz való hozzáférés. Felhasználók automatikus átadása kontextusában csak a felhasználók, illetve "rendelt" egy alkalmazás az Azure AD-csoportok szinkronizálódnak. 
+Azure Active Directory a "hozzárendelések" nevű fogalom használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. Az automatikus felhasználó-kiépítés kontextusában a rendszer csak azokat a felhasználókat és/vagy csoportokat szinkronizálja, akik az Azure AD-alkalmazáshoz lettek rendelve. 
 
-Felhasználók automatikus kiépítés engedélyezése és konfigurálása, mielőtt, meg kell határoznia, melyik felhasználók, illetve a csoportok az Azure ad-ben Bonusly hozzáférésre van szükségük. Ha úgy döntött, hozzárendelheti a felhasználók és csoportok Bonusly utasításokat követve:
+Az automatikus felhasználó-kiépítés konfigurálása és engedélyezése előtt el kell döntenie, hogy az Azure AD-beli felhasználóknak és/vagy csoportoknak milyen jogosultságokkal kell rendelkezniük a bónuszok eléréséhez. A döntés megkezdése után a felhasználókat és/vagy csoportokat a következő utasítások követésével lehet bónuszhoz rendelni:
 
-* [Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+* [Felhasználó vagy csoport társítása vállalati alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
-### <a name="important-tips-for-assigning-users-to-bonusly"></a>Felhasználók hozzárendelése Bonusly fontos tippek
+### <a name="important-tips-for-assigning-users-to-bonusly"></a>Fontos Tippek a felhasználók bónuszok hozzárendeléséhez
 
-* Javasoljuk, hogy egyetlen Azure AD-felhasználó van rendelve Bonusly a felhasználók automatikus konfiguráció teszteléséhez. További felhasználók és csoportok később is rendelhető.
+* Azt javasoljuk, hogy egyetlen Azure AD-felhasználó legyen kiosztva az automatikus felhasználó-kiépítési konfiguráció teszteléséhez. Később további felhasználókat és/vagy csoportokat is hozzá lehet rendelni.
 
-* Amikor egy felhasználó hozzárendelése Bonusly, a hozzárendelés párbeszédpanelen válassza ki bármely érvényes alkalmazás-specifikus szerepkört (ha elérhető). A felhasználók a **alapértelmezett hozzáférési** szerepkör nem tartoznak kiépítése.
+* Ha egy felhasználót a bónuszhoz rendel hozzá, a hozzárendelés párbeszédpanelen ki kell választania bármely érvényes alkalmazásspecifikus szerepkört (ha elérhető). Az **alapértelmezett hozzáférési** szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítés alól.
 
-## <a name="configuring-automatic-user-provisioning-to-bonusly"></a>Bonusly történő automatikus felhasználókiépítés konfigurálása
+## <a name="configuring-automatic-user-provisioning-to-bonusly"></a>Automatikus felhasználó-kiépítés beállítása a bónuszok megadásához
 
-Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás létrehozása, frissítése és tiltsa le a felhasználók konfigurálásáról és/vagy az Azure AD-felhasználói és/vagy a csoport-hozzárendelések alapján csoportosítja a Bonusly.
+Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy az Azure AD-ben felhasználói és/vagy csoportos hozzárendelések alapján hozzon létre, frissítsen és tiltsa le a felhasználókat és/vagy csoportokat.
 
 > [!TIP]
-> Előfordulhat, hogy meg az SAML-alapú egyszeri bejelentkezés az Bonusly engedélyezése, a biztonsági utasítások megadott a [Bonusly egyszeri bejelentkezéses oktatóanyag](bonus-tutorial.md). Egyszeri bejelentkezés konfigurálható függetlenül, hogy a felhasználók automatikus átadása, abban az esetben, ha e két szolgáltatás segítőosztályok egymással.
+> Azt is megteheti, hogy az SAML-alapú egyszeri bejelentkezést is lehetővé teszi a prémium szintű egyszeri [bejelentkezésre vonatkozó oktatóanyagban](bonus-tutorial.md)foglalt utasítások alapján. Az egyszeri bejelentkezés az automatikus felhasználó-kiépítés függetlenül is konfigurálható, bár ez a két funkció egymáshoz tartozik.
 
-### <a name="to-configure-automatic-user-provisioning-for-bonusly-in-azure-ad"></a>Konfigurálhatja a felhasználók automatikus átadása Bonusly az Azure AD-ben:
+### <a name="to-configure-automatic-user-provisioning-for-bonusly-in-azure-ad"></a>Az automatikus felhasználó-kiépítés konfigurálása az Azure AD-ben való Többlettámogatáshoz:
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) , és válassza ki **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **Bonusly**.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **bónuszok**lehetőséget.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában jelölje ki a **Bonusly**.
+2. Az alkalmazások listában válassza a **bónuszok**lehetőséget.
 
-    ![Az alkalmazások listáját a Bonusly hivatkozásra](common/all-applications.png)
+    ![Az alkalmazások listájában szereplő prémium hivatkozás](common/all-applications.png)
 
-3. Válassza ki a **kiépítési** fülre.
+3. Válassza ki a kiépítés lapot.
 
-    ![Bonusly kiépítése](./media/bonusly-provisioning-tutorial/ProvisioningTab.png)
+    ![Prémium kiépítés](./media/bonusly-provisioning-tutorial/ProvisioningTab.png)
 
-4. Állítsa be a **Kiépítési mód** való **automatikus**.
+4. Állítsa a **kiépítési módot** **automatikus**értékre.
 
-    ![Bonusly kiépítése](./media/bonusly-provisioning-tutorial/ProvisioningCredentials.png)
+    ![Prémium kiépítés](./media/bonusly-provisioning-tutorial/ProvisioningCredentials.png)
 
-5. Alatt a **rendszergazdai hitelesítő adataival** szakaszban adjon meg a **titkos jogkivonat** a Bonusly a fiók a 6. lépésben leírtak szerint.
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a Bonus-fiók **titkos jogkivonatát** a 6. lépésben leírtak szerint.
 
-    ![Bonusly kiépítése](./media/bonusly-provisioning-tutorial/secrettoken.png)
+    ![Prémium kiépítés](./media/bonusly-provisioning-tutorial/secrettoken.png)
 
-6. A **titkos jogkivonat** a Bonusly fiók találhatók **rendszergazda > Vállalati > Integrációk**. Az a **Ha kód** területén kattintson a **API > új API Access Token létrehozása** hozhat létre egy új titkos jogkivonat.
+6. A prémium fiók **titkos jogkivonata** a következő helyen található: **Admin > vállalati > integrációk**. Ha a **kódot szeretné használni** , kattintson az **API-> új API-hozzáférési jogkivonat létrehozása** lehetőségre új titkos jogkivonat létrehozásához.
 
-    ![Bonusly kiépítése](./media/bonusly-provisioning-tutorial/BonuslyIntegrations.png)
+    ![Prémium kiépítés](./media/bonusly-provisioning-tutorial/BonuslyIntegrations.png)
 
-    ![Bonusly kiépítése](./media/bonusly-provisioning-tutorial/BonsulyRestApi.png)
+    ![Prémium kiépítés](./media/bonusly-provisioning-tutorial/BonsulyRestApi.png)
 
-    ![Bonusly kiépítése](./media/bonusly-provisioning-tutorial/CreateToken.png)
+    ![Prémium kiépítés](./media/bonusly-provisioning-tutorial/CreateToken.png)
 
-7. A következő képernyőn adjon meg egy nevet a hozzáférési jogkivonatot a megadott szövegmezőbe, majd nyomja le az **Api-kulcs létrehozása**. Az új jogkivonat néhány másodpercet a egy előugró ablak jelenik meg.
+7. A következő képernyőn írja be a hozzáférési jogkivonat nevét a megadott szövegmezőbe, majd nyomja le az API- **kulcs létrehozása**elemet. Az új hozzáférési jogkivonat néhány másodpercig megjelenik egy előugró ablakban.
 
-    ![Bonusly kiépítése](./media/bonusly-provisioning-tutorial/Token01.png)
+    ![Prémium kiépítés](./media/bonusly-provisioning-tutorial/Token01.png)
 
-    ![Bonusly kiépítése](./media/bonusly-provisioning-tutorial/Token02.png)
+    ![Prémium kiépítés](./media/bonusly-provisioning-tutorial/Token02.png)
 
-8. 5. lépésben megjelenő mezők feltöltése, után kattintson a **kapcsolat tesztelése** annak biztosítása érdekében az Azure AD Bonusly csatlakozhat. Ha a kapcsolat hibája esetén, győződjön meg arról, Bonusly fiókja rendszergazdai engedélyekkel rendelkező, és próbálkozzon újra.
+8. Az 5. lépésben megjelenő mezők kitöltése után kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad tud csatlakozni a bónuszokhoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a prémium fiók rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
-    ![Bonusly kiépítése](./media/bonusly-provisioning-tutorial/TestConnection.png)
+    ![Prémium kiépítés](./media/bonusly-provisioning-tutorial/TestConnection.png)
 
-9. Az a **értesítő e-mailt** mezőbe írja be az e-mail-címét egy személyt vagy csoportot, akik üzembe helyezési hiba értesítéseket fogadni, és jelölje be a jelölőnégyzetet kell **e-mail-értesítés küldése, ha hiba történik**.
+9. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be az **e-mail-értesítés küldése hiba**esetén jelölőnégyzetet.
 
-    ![Bonusly kiépítése](./media/bonusly-provisioning-tutorial/EmailNotification.png)
+    ![Prémium kiépítés](./media/bonusly-provisioning-tutorial/EmailNotification.png)
 
 10. Kattintson a **Save** (Mentés) gombra.
 
-11. Alatt a **leképezések** szakaszban jelölje be **szinkronizálása az Azure Active Directory-felhasználók a Bonusly**.
+11. A **leképezések** szakaszban válassza a **Azure Active Directory-felhasználók szinkronizálása bónuszra**lehetőséget.
 
-    ![Bonusly kiépítése](./media/bonusly-provisioning-tutorial/UserMappings.png)
+    ![Prémium kiépítés](./media/bonusly-provisioning-tutorial/UserMappings.png)
 
-12. Tekintse át a Bonusly a az Azure AD-ből szinkronizált felhasználói attribútumok a **attribútumleképzés** szakaszban. A kiválasztott attribútumok **megfelelést kiváltó** tulajdonságok segítségével felel meg a frissítési műveletek Bonusly levő felhasználói fiókokat. Válassza ki a **mentése** gombra kattintva véglegesítse a módosításokat.
+12. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az attribútum- **hozzárendelési** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok használatával a rendszer a frissítési műveletekhez bónuszban lévő felhasználói fiókokat is egyezteti. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-    ![Bonusly kiépítése](./media/bonusly-provisioning-tutorial/UserAttributeMapping.png)
+    ![Prémium kiépítés](./media/bonusly-provisioning-tutorial/UserAttributeMapping.png)
 
-13. Hatókörszűrő konfigurálásához tekintse meg a következő utasításokat a [Scoping szűrő oktatóanyag](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+13. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
-14. Az Azure AD létesítési szolgáltatás Bonusly engedélyezéséhez módosítsa a **üzembe helyezési állapotra** való **a** a a **beállítások** szakaszban.
+14. Ahhoz, hogy az Azure AD-kiépítési szolgáltatás bónuszok **után is engedélyezve** legyen, módosítsa a **kiépítési állapotot** a **Beállítások** szakaszban.
 
-    ![Bonusly kiépítése](./media/bonusly-provisioning-tutorial/ProvisioningStatus.png)
+    ![Prémium kiépítés](./media/bonusly-provisioning-tutorial/ProvisioningStatus.png)
 
-15. A felhasználók és/vagy a kívánt csoportok definiálása Bonusly való kiépítéséhez válassza ki a kívánt értékeket a **hatókör** a a **beállítások** szakaszban.
+15. Adja meg azokat a felhasználókat és/vagy csoportokat, akiket ki szeretne próbálni a bónuszok kiválasztásához. Ehhez válassza a **Settings (beállítások** ) szakaszban a kívánt értékeket a **hatókörben** .
 
-    ![Bonusly kiépítése](./media/bonusly-provisioning-tutorial/ScopeSync.png)
+    ![Prémium kiépítés](./media/bonusly-provisioning-tutorial/ScopeSync.png)
 
-16. Ha készen áll rendelkezésre, kattintson a **mentése**.
+16. Ha készen áll a létesítésre, kattintson a **Mentés**gombra.
 
-    ![Bonusly kiépítése](./media/bonusly-provisioning-tutorial/SaveProvisioning.png)
+    ![Prémium kiépítés](./media/bonusly-provisioning-tutorial/SaveProvisioning.png)
 
-Ez a művelet elindítja a kezdeti szinkronizálás, az összes olyan felhasználó és/vagy meghatározott csoportoknak **hatókör** a a **beállítások** szakaszban. A kezdeti szinkronizálás végrehajtásához, mint az ezt követő szinkronizálások, amely körülbelül 40 percenként történik, amennyiben az Azure AD létesítési szolgáltatás fut-e több időt vesz igénybe. Használhatja a **szinkronizálás részleteivel** szakasz előrehaladásának figyeléséhez, és kövesse a hivatkozásokat kiépítés tevékenységgel kapcsolatos jelentés, amely az Azure AD létesítési szolgáltatás a Bonusly által végrehajtott összes műveletet ismerteti.
+Ez a művelet elindítja a **Beállítások** szakasz hatókörében meghatározott összes felhasználó és/vagy csoport kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenységek jelentésére mutató hivatkozásokat, amelyek az Azure ad-kiépítési szolgáltatás által a bónuszok után végrehajtott összes műveletet ismertetik.
 
 Az Azure AD létesítési naplók olvasása további információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>További források
 
-* [Felhasználói fiók kiépítése a vállalati alkalmazások kezelése](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>További lépések
 
-* [Tekintse át a naplók és jelentések készítése a tevékenység kiépítése](../manage-apps/check-status-user-account-provisioning.md)
+* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../manage-apps/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 [1]: ./media/bonusly-provisioning-tutorial/tutorial_general_01.png

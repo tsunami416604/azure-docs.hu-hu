@@ -13,12 +13,12 @@ ms.date: 08/03/2018
 ms.author: lizross
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfd38e775ba418fbe31cafa8df5f37b45c3b0643
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 62faa47c116cceb941f575a9f76052e8bc57f036
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59524368"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66243269"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>A munkahelyi eszköz csatlakoztatása a vállalati hálózaton
 A munkahelyi tulajdonú Windows 10 rendszerű eszköz csatlakoztatása a vállalati hálózaton potenciálisan korlátozott erőforrások eléréséhez.
@@ -86,7 +86,7 @@ Ha már rendelkezik egy ideig, és ez az eszköz már létre van hozva, hajtsa v
 
 5. Az a **jelszó** képernyőn írja be a jelszavát, majd válassza ki **jelentkezzen be a**.
 
-    ![Írja be a jelszót](./media/user-help-join-device-on-network/join-device-setup-password.png)
+    ![Adja meg a jelszót](./media/user-help-join-device-on-network/join-device-setup-password.png)
 
 6. A mobileszközén hagyja jóvá az eszköz, ezért a fiók hozzáférhessen. 
 
@@ -116,3 +116,4 @@ Miután az eszköz csatlakoztatása a szervezet hálózatához, elérhető minde
 
 - Ha a szervezet azt szeretné, hogy regisztrálja a személyes eszköz, például a telefon [regisztrálja a személyes eszköz a vállalati hálózaton](user-help-register-device-on-network.md).
 
+- Ha a szervezete a Microsoft Intune-nal felügyelt és a regisztrációval kapcsolatos kérdése van, jelentkezzen be, vagy bármely egyéb Intune-nal kapcsolatos probléma, tekintse meg a [Intune felhasználói súgó tartalma](https://docs.microsoft.com/intune-user-help/use-managed-devices-to-get-work-done).

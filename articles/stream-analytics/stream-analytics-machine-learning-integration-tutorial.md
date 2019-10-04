@@ -7,17 +7,17 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 06/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: b06fec8ab726f48e1937bae4cfbdbd9842788d0a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ab510f7ee2f95a2c3373c0514c31554598451b27
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58109307"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173331"
 ---
-# <a name="performing-sentiment-analysis-by-using-azure-stream-analytics-and-azure-machine-learning"></a>Hangulatelemzés végrehajtása az Azure Stream Analytics és az Azure Machine Learning használatával
-Ez a cikk bemutatja, hogyan gyorsan beállíthat egy egyszerű Azure Stream Analytics-feladatot, amely integrálható az Azure Machine Learning. Segítségével elemzési modell Machine Learning vélemények a Cortana Intelligence-katalógusban a streamadatok szöveg elemzése, és döntse el, valós idejű értelmezhetőségi pontszámot. A Cortana Intelligence Suite használatával teszi lehetővé a feladatnak a róluk szóló véleményeket elemzési modellek létrehozásához jainak részleteivel kellene bajlódnia.
+# <a name="perform-sentiment-analysis-with-azure-stream-analytics-and-azure-machine-learning-studio-preview"></a>Azure Stream Analytics és Azure Machine Learning Studio (előzetes verzió) – hangulat elemzése
+Ez a cikk azt ismerteti, hogyan lehet gyorsan beállítani egy egyszerű Azure Stream Analytics feladatot, amely integrálja Azure Machine Learning Studio. Segítségével elemzési modell Machine Learning vélemények a Cortana Intelligence-katalógusban a streamadatok szöveg elemzése, és döntse el, valós idejű értelmezhetőségi pontszámot. A Cortana Intelligence Suite használatával teszi lehetővé a feladatnak a róluk szóló véleményeket elemzési modellek létrehozásához jainak részleteivel kellene bajlódnia.
 
 Alkalmazhat témák Ez a cikk a például a következő forgatókönyvekre:
 
@@ -45,7 +45,7 @@ Mielőtt hozzálátna, győződjön meg róla, hogy rendelkezik az alábbiakkal:
 Magas szinten a feladatokat, ebben a cikkben bemutatott, tegye a következőket:
 
 1. Hozzon létre egy Azure storage-fiók és a egy blob storage-tárolóba, és a egy CSV formátumú bemeneti fájl feltöltése a tárolóba.
-3. A Cortana Intelligence-katalógusban a róluk szóló véleményeket elemzési modellek hozzáadása az Azure Machine Learning-munkaterületet, és ez a modell üzembe webszolgáltatásként, amely a Machine Learning-munkaterület.
+3. Vegyen fel egy hangulati elemzési modellt a Cortana Intelligence Galleryból a Azure Machine Learning Studio munkaterületre, és telepítse a modellt webszolgáltatásként a Machine Learning munkaterületen.
 5. Hozzon létre egy Stream Analytics-feladat, amely meghívja a webszolgáltatás függvényében, hogy megállapítsuk a bemeneti szövegben a róluk szóló véleményeket.
 6. Indítsa el a Stream Analytics-feladatot, és a kimenet ellenőrzése.
 
@@ -119,7 +119,7 @@ Mostantól létrehozhat egy Stream Analytics-feladatot, amely a minta tweetek be
 
 1. Nyissa meg az [Azure Portal](https://portal.azure.com).  
 
-2. Kattintson a **erőforrás létrehozása** > **IOT-** > **Stream Analytics-feladat**. 
+2. Kattintson a **erőforrás létrehozása** > **IOT-**  > **Stream Analytics-feladat**. 
 
 3. Nevezze el a feladat `azure-sa-ml-demo`, adja meg az előfizetés, adjon meg egy meglévő erőforráscsoportot vagy hozzon létre egy új, és válassza ki a feladat helyét.
 
@@ -152,7 +152,7 @@ A feladat küldése eredmények ugyanezen a blobtárolón belül hol lekérdezi 
 
 1. A **Feladattopológia** feladat panelen kattintson a **kimenetek** lehetőséget.  
 
-2. Az a **kimenetek** panelen kattintson a **Hozzáadás** >**a Blob storage-**, majd adja hozzá a kimenetben az alias `datamloutput`. 
+2. Az a **kimenetek** panelen kattintson a **Hozzáadás** >**a Blob storage-** , majd adja hozzá a kimenetben az alias `datamloutput`. 
 
 3. Töltse ki a **Blob Storage** panel ezekkel az értékekkel:
 
@@ -175,7 +175,7 @@ Az oktatóanyag ezen szakaszában adja meg a Stream állapotelemzési feladat eg
 
 1. Győződjön meg arról, hogy a web service URL-CÍMÉT és API-kulcsát az Excel-munkafüzet a korábban letöltött.
 
-2. Keresse meg a feladat panelt > **funkciók** > **+ Hozzáadás** > **AzureML**
+2. Keresse meg a feladat panelt > **funkciók** >  **+ Hozzáadás** > **AzureML**
 
 3. Töltse ki a **Azure Machine Learning-függvény** panel ezekkel az értékekkel:
 
@@ -252,7 +252,7 @@ Az Azure Machine Learning-függvény kapcsolatos metrikákat is megtekintheti. J
 ## <a name="next-steps"></a>További lépések
 
 * [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)
-* [Azure Stream Analytics Query Language Reference](https://msdn.microsoft.com/library/azure/dn834998.aspx) (Referencia az Azure Stream Analytics lekérdezési nyelvhez)
+* [Azure Stream Analytics Query Language Reference](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) (Referencia az Azure Stream Analytics lekérdezési nyelvhez)
 * [Integrálása a REST API-t és a gépi tanulás](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
 * [Az Azure Stream Analytics felügyeleti REST API referenciája](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 

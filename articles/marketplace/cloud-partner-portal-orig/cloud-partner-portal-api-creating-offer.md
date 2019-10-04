@@ -1,25 +1,18 @@
 ---
-title: Létrehozása vagy módosítása egy ajánlatot |} A Microsoft Docs
+title: Létrehozása vagy módosítása egy ajánlatot |} Az Azure Marketplace-en
 description: Hozzon létre egy új, vagy frissíteni az API és a meglévő ajánlat.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: c7aed97c442c414e86c9531f9b0a8431e22b8b44
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.author: pabutler
+ms.openlocfilehash: 55f6aa60c836d55333e1c5b02a44114b91df822d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809697"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64935527"
 ---
 <a name="create-or-modify-an-offer"></a>Létrehozása vagy módosítása egy ajánlatra
 =========================
@@ -34,9 +27,9 @@ A hívás a közzétevő névtéren belül egy adott ajánlat frissíti, vagy l�
 
 |  **Name (Név)**         |  **Leírás**                      |  **Adattípus**  |
 |  --------         |  ----------------                     |  -------------  |
-| publisherId       |  Például a közzétevő azonosítója `contoso` |   Sztring |
-| OfferId           |  Ajánlat azonosítója                     |   Sztring        |
-| API-verzió       |  Az API legújabb verziója            |   Dátum           |
+| publisherId       |  Például a közzétevő azonosítója `contoso` |   String |
+| offerId           |  Ajánlat azonosítója                     |   String        |
+| api-version       |  Az API legújabb verziója            |   Dátum           |
 |  |  |  |
 
 <a name="header"></a>Fejléc

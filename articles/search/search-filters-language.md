@@ -1,8 +1,8 @@
 ---
-title: A keresési index – Azure Search többnyelvű tartalmához nyelvi szűrők
-description: Szűrési feltételt, több nyelvű keresés nyelvspecifikus mezők hatókörkezelési lekérdezés végrehajtása támogatja.
+title: Nyelvi szűrők többnyelvű tartalomhoz egy keresési indexben – Azure Search
+description: Szűrési feltételek a többnyelvű keresés támogatásához, a lekérdezés végrehajtásának hatóköre nyelvspecifikus mezőkhöz.
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.workload: search
@@ -10,46 +10,46 @@ ms.topic: conceptual
 ms.date: 10/23/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 695fdfba1573ff97b05f8e8b50a05bef9dbf48de
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 1eced868b180a916355d6f9fbfc8cd47a5d7d6e2
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58846160"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69649867"
 ---
-# <a name="how-to-filter-by-language-in-azure-search"></a>Az Azure Search nyelven szűrése 
+# <a name="how-to-filter-by-language-in-azure-search"></a>Szűrés nyelv alapján Azure Search 
 
-A legfontosabb követelmény, többnyelvű keresés-alkalmazásokban, kereshet, és a felhasználó saját nyelvén eredmények lekéréséhez. Az Azure Search szolgáltatásban egy nyelvet a többnyelvű alkalmazások követelményeinek módja hozzon létre egy dedikált karakterláncok tárolásához egy adott nyelven mezők sorozatát, és ezután korlátozhatja a teljes szöveges keresés csak ezekhez a mezőkhöz lekérdezéskor.
+A többnyelvű keresőalkalmazás egyik kulcsfontosságú követelménye, hogy a felhasználó saját nyelvén kereshet át és kérhet le eredményeket. Azure Search a többnyelvű alkalmazások nyelvi követelményeinek való megfelelés egyik módja, ha a karakterláncok egy adott nyelven való tárolásához dedikált mezőket hoz létre, majd a teljes szöveges keresést csak a lekérdezési időpontra korlátozza.
 
-Lekérdezési paraméterek a kérésben mind a keresési műveletet terjed ki, és az eredmények, amelyek nem biztosítják a tartalmat a keresési funkciót szeretne kompatibilis mezőket, majd trim szolgálnak.
+A kérelemben szereplő lekérdezési paraméterek a keresési művelet hatókörére vonatkoznak, majd levágja azokat a mezőket, amelyek nem biztosítanak tartalmat a kézbesíteni kívánt keresési felülettel.
 
 | Paraméterek | Cél |
 |-----------|--------------|
-| **searchFields** | Korlátok teljes szöveges keresés elnevezett mezők listája. |
-| **$select** | A válasz csak a megadott mezőket levágja. Alapértelmezés szerint minden lekérdezhető mezők vissza. A **$select** paraméter lehetővé teszi válassza ki, melyiket adja vissza. |
+| **searchFields** | A teljes szöveges keresést a megnevezett mezők listájára korlátozza. |
+| **$select** | Levágja a választ, hogy csak a megadott mezőket foglalja bele. Alapértelmezés szerint a rendszer az összes beolvasható mezőt visszaadja. A **$Select** paraméterrel kiválaszthatja, hogy melyeket kell visszaadnia. |
 
-Ezzel a technikával sikere attól függ, hogy integritását, mező tartalmát. Az Azure Search nem karakterláncok fordítása, és hajtsa végre a nyelvfelismerés. Feladata, hogy győződjön meg arról, hogy a mezőket a várt karakterláncokat tartalmaznak.
+Ennek a technikának a sikere a mezők tartalmának integritására támaszkodik. A Azure Search nem fordítja le a karakterláncokat, és nem végez nyelvi észlelést. Így gondoskodhat arról, hogy a mezők tartalmazzák a várt karakterláncokat.
 
-## <a name="define-fields-for-content-in-different-languages"></a>Tartalom mezők a különböző nyelvekhez
+## <a name="define-fields-for-content-in-different-languages"></a>Mezők definiálása különböző nyelveken lévő tartalomhoz
 
-Az Azure Search szolgáltatásban a lekérdezések egyetlen index célként. A fejlesztők számára az egyetlen keresési funkciókat nyelvspecifikus karakterláncok általában biztosít az értékek tárolásához dedikált mezők definiálása: egy mezőt az angol nyelvű tájékoztatáshoz karakterláncok, egy a francia, és így tovább. 
+Azure Search a lekérdezések egyetlen indexet céloznak meg. A fejlesztők, akik egy adott keresési élményben szeretnék megadni a nyelvspecifikus karakterláncokat, jellemzően az értékek tárolására szolgáló dedikált mezőket határozzák meg: az angol karakterláncok egy mezője, egy a francia, és így tovább. 
 
-A minták tallózása, beleértve a [ingatlan minta](search-get-started-portal.md) alább látható, előfordulhat, hogy látott Meződefiníciók az alábbi képernyőfelvételhez hasonlóan. Figyelje meg, hogyan Ez a példa bemutatja a nyelvi elemző eszköz-hozzárendelések a mezők az index. Karakterláncokat tartalmazó mezők egy elemző fejthetők vissza a Célnyelv nyelvi szabályainak kezeléséhez párosítva a teljes szöveges keresés jobban hajtsa végre.
+A mintákban, beleértve az alább látható [Real-Estate mintát](search-get-started-portal.md) is, előfordulhat, hogy az alábbi képernyőképhez hasonló mezők definíciói láthatók. Figyelje meg, hogy ez a példa az index mezőihez tartozó Language Analyzer-hozzárendeléseket mutatja. A karakterláncokat tartalmazó mezők jobban teljesítik a teljes szöveges keresést, ha a cél nyelv nyelvi szabályainak kezelésére szolgáló elemzővel párosítva van.
 
   ![](./media/search-filters-language/lang-fields.png)
 
 > [!Note]
-> Hitelesítésikód-példák Meződefiníciók nyelvek esetén a megjelenítő, lásd: [(.NET) index definiálása](https://docs.microsoft.com/azure/search/search-create-index-dotnet) és [definiálása az indexekben (REST)](search-create-index-rest-api.md).
+> A következő kódrészletek esetében a nyelvi elemzőket bemutató példákat lásd: [index (.net) definiálása](https://docs.microsoft.com/azure/search/search-create-index-dotnet) és [index (REST) definiálása](search-create-index-rest-api.md).
 
-## <a name="build-and-load-an-index"></a>Hozhat létre és index betöltése
+## <a name="build-and-load-an-index"></a>Index létrehozása és betöltése
 
-Egy közbenső (és talán nyilvánvaló) lépés az kell, hogy [hozhat létre, és töltse fel az index](https://docs.microsoft.com/azure/search/search-create-index-dotnet) mielőtt egy lekérdezést. Ebben a lépésben Itt a teljesség megemlíteni azt. Egyik módja határozza meg, hogy rendelkezésre áll-e az index, indexeket lista ellenőrzésével a [portál](https://portal.azure.com).
+Egy közbenső (és talán nyilvánvaló) lépés az, hogy az indexet fel kell építenie és fel kell [töltenie a](https://docs.microsoft.com/azure/search/search-create-index-dotnet) lekérdezés kialakítása előtt. Ez a lépés a teljesség kedvéért van megemlítve. Az indexek elérhetővé tételének egyik módja a [portál](https://portal.azure.com)indexek listájának ellenőrzése.
 
-## <a name="constrain-the-query-and-trim-results"></a>A lekérdezés megtartása és a tároló visszaigénylésének eredmények
+## <a name="constrain-the-query-and-trim-results"></a>A lekérdezés és a vágás eredményének korlátozása
 
-A lekérdezés a paraméterek használhatók korlátozza a keresési bizonyos mezők, és ezután trim nem hasznos a forgatókönyvéhez mezőket eredményeit. Omezující vlastnost keresés cél adott francia karakterláncokat tartalmazó mezők, használhat, **searchFields** , amelyekre az adott nyelveken karakterláncokat tartalmazó mezők a lekérdezésnek. 
+A lekérdezés paraméterei a keresés adott mezőkre való korlátozására szolgálnak, majd az adott forgatókönyvnek nem megfelelő mezők eredményeinek levágása. A francia sztringeket tartalmazó mezők keresésének célja, hogy a **searchFields** az adott nyelven sztringeket tartalmazó mezőkre célozza. 
 
-Alapértelmezés szerint a keresés minden mező lekérdezhetőként jelölt adja vissza. Ezért érdemes kizárja a mezőket, amelyek nem felelnek meg a nyelvspecifikus keresés élményt szeretne biztosítani. Pontosabban a mező francia karakterláncok a keresést, hogy csak korlátozott, valószínűleg szeretné-e angol nyelvű karakterláncot tartalmazó mezők kizárni az eredményeket. Használatával a **$select** lekérdezési paraméter lehetővé teszi szabályozhatja, hogy a hívó alkalmazás visszaadott mezők fölé.
+Alapértelmezés szerint a keresés visszaadja az összes olyan mezőt, amely beolvasható van megjelölve. Ezért érdemes lehet olyan mezőket kizárni, amelyek nem felelnek meg a megadni kívánt nyelvspecifikus keresési élménynek. Pontosabban, ha a keresés egy francia sztringet tartalmazó mezőre korlátozódik, valószínűleg ki szeretné zárni az eredményekből származó angol nyelvű mezőket. A **$Select** lekérdezési paraméterrel szabályozhatja, hogy a rendszer mely mezőket adja vissza a hívó alkalmazásnak.
 
 ```csharp
 parameters =
@@ -60,12 +60,12 @@ parameters =
     };
 ```
 > [!Note]
-> Bár a lekérdezés no $filter argumentuma van, ezt a használati esetet erősen kapcsolt szűrő fogalmakat, így azt megjelenítheti azokat egy szűrési forgatókönyv.
+> Bár a lekérdezésnek nincs $filter argumentuma, ez a használati eset erősen kapcsolódik a szűrési fogalmakhoz, ezért szűrési forgatókönyvként jelennek meg.
 
 ## <a name="see-also"></a>Lásd még
 
-+ [Szűrők az Azure Search szolgáltatásban](search-filters.md)
++ [Szűrők a Azure Searchban](search-filters.md)
 + [Nyelvi elemzők](https://docs.microsoft.com/rest/api/searchservice/language-support)
-+ [Teljes szöveges keresés működése az Azure Search szolgáltatásban](search-lucene-query-architecture.md)
-+ [REST API-val dokumentumok keresése](https://docs.microsoft.com/rest/api/searchservice/search-documents)
++ [A teljes szöveges keresés működése Azure Search](search-lucene-query-architecture.md)
++ [Dokumentumok keresése REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)
 

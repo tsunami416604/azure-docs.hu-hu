@@ -1,23 +1,23 @@
 ---
 title: Az Azure Data Lake Storage Gen2-storage-fiók létrehozása |} A Microsoft Docs
-description: Gyorsan megismerheti a Data Lake Storage Gen2-re az Azure Portalon, az Azure PowerShell vagy az Azure CLI használatával hozzáféréssel rendelkező új tárfiók létrehozása
-services: storage
-author: jamesbak
+description: Gyorsan megtudhatja, hogyan hozhat létre Data Lake Storage Gen2 hozzáféréssel rendelkező új Storage-fiókot a Azure Portal, a Azure PowerShell vagy az Azure CLI használatával.
+author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
-ms.date: 12/06/2018
-ms.author: jamesbak
-ms.openlocfilehash: 50cd039395b477a93d050458c2a014e768fc5f0a
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.date: 08/19/2019
+ms.author: normesta
+ms.reviewer: stewu
+ms.openlocfilehash: 2063dd22e3253b0707f6920f3a5c0c7a6bb01126
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59995676"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992326"
 ---
-# <a name="quickstart-create-an-azure-data-lake-storage-gen2-storage-account"></a>Gyors útmutató: Az Azure Data Lake Storage Gen2-storage-fiók létrehozása
+# <a name="create-an-azure-data-lake-storage-gen2-storage-account"></a>Azure Data Lake Storage Gen2 Storage-fiók létrehozása
 
-Az Azure Data Lake Storage Gen2 [támogatja a hierarchikus névtér](data-lake-storage-introduction.md) directory-alapú natív biztosító fájlrendszer működik együtt a Hadoop elosztott fájlrendszer (HDFS) felhasználva. A 2. generációs Data Lake Storage-adatok a HDFS-ből az [ABFS illesztőprogramon](data-lake-storage-abfs-driver.md) keresztül érhetők el.
+Azure Data Lake Storage Gen2 [támogatja a hierarchikus névteret](data-lake-storage-introduction.md) , amely a Hadoop-ELOSZTOTT fájlrendszer (HDFS) való együttműködésre szabott natív címtár-alapú tárolót biztosít. A 2. generációs Data Lake Storage-adatok a HDFS-ből az [ABFS illesztőprogramon](data-lake-storage-abfs-driver.md) keresztül érhetők el.
 
 Ez a rövid útmutató bemutatja, hogyan hozhat létre fiókot az [Azure Portal](https://portal.azure.com/), az [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) vagy az [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) használatával.
 
@@ -28,8 +28,8 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 |           | Előfeltétel |
 |-----------|--------------|
 |Portál     | None         |
-|PowerShell | Ez a rövid útmutatóhoz a PowerShell-modul Az.Storage verzió **0,7** vagy újabb. Az aktuális verzió azonosításához futtassa a `Get-Module -ListAvailable Az.Storage` parancsot. Ha nincs találat jelenik meg ez a parancs futtatása után, vagy ha egy eltérő verziójú **0,7** jelenik meg, akkor az a powershell-modul frissítéséhez. Tekintse meg a [frissítése a powershell-modul](#upgrade-your-powershell-module) című szakaszában talál.
-|parancssori felület        | Jelentkezzen be az Azure-ba, és az Azure CLI parancsainak futtatásához a két módszer egyikével: <ul><li>A CLI-parancsok az Azure Portalról, az Azure Cloud Shell felületén futtathatók </li><li>Telepítheti a parancssori felületet, így helyben is futtathatja a CLI-parancsokat</li></ul>|
+|PowerShell | Ez a rövid útmutatóhoz a PowerShell-modul Az.Storage verzió **0,7** vagy újabb. Az aktuális verzió azonosításához futtassa a `Get-Module -ListAvailable Az.Storage` parancsot. Ha a parancs futtatása után nem jelenik meg eredmény, vagy ha a **0,7** -nál kisebb verzió jelenik meg, akkor frissítenie kell a PowerShell-modult. Tekintse meg a [frissítése a powershell-modul](#upgrade-your-powershell-module) című szakaszában talál.
+|parancssori felület        | Jelentkezzen be az Azure-ba, és futtassa az Azure CLI-parancsokat kétféleképpen: <ul><li>A CLI-parancsok az Azure Portalról, az Azure Cloud Shell felületén futtathatók </li><li>Telepítheti a parancssori felületet, így helyben is futtathatja a CLI-parancsokat</li></ul>|
 
 Ha a parancssori felületet használja, futtathatja az Azure Cloud Shellt vagy telepítheti a parancssori felületet helyileg.
 
@@ -76,7 +76,7 @@ Az Azure Portalon a következő lépések végrehajtásával hozhat létre egy e
 5. Válassza ki az erőforráscsoport helyét.
 6. Kattintson a **Létrehozás** gombra.  
 
-   ![Képernyőfelvétel: az erőforrás-csoport létrehozása az Azure Portalon](./media/data-lake-storage-quickstart-create-account/create-resource-group.png)
+   ![Az erőforráscsoport létrehozását bemutató képernyőfelvétel a Azure Portal](./media/data-lake-storage-quickstart-create-account/create-resource-group.png)
 
 ### <a name="create-a-general-purpose-v2-storage-account"></a>Általános célú 2-es verziójú tárfiók létrehozása
 
@@ -89,14 +89,14 @@ Kövesse az alábbi lépéseket egy általános célú v2-tárfiók létrehozás
 2. Válassza ki a **előfizetés** és a **erőforráscsoport** korábban létrehozott.
 3. Adja meg a tárfiók nevét.
 4. A **Hely** mezőben adja meg az **USA 2. nyugati régiója** értéket.
-5. Hagyja meg a következő mezők alapértelmezett értékeit: **Teljesítmény**, **fióktípus**, **replikációs**, **hozzáférési szint**.
+5. Hagyja meg a következő mezőket az alapértelmezett értékekre: **Teljesítmény**, **Fiók típusa**, **replikálás**, **hozzáférési szintek**.
 6. Válassza ki azt az előfizetést, amelyikben létre kívánja hozni a tárfiókot.
-7. Válassza ki **tovább: Speciális >**
+7. Válassza **a Next (tovább) lehetőséget: Speciális >**
 8. Az értékek területen hagyja **biztonsági** és **virtuális hálózatok** mezők megmaradnak az alapértelmezett értéke.
-9. Az a **Data Lake Storage Gen2** beállítása című **hierarchikus névtér** való **engedélyezve**.
+9. A **Data Lake Storage Gen2** szakaszban a **hierarchikus névtér** beállítása **engedélyezve**értékre.
 10. Kattintson a **felülvizsgálat + létrehozás** a tárfiók létrehozásához.
 
-    ![Képernyőfelvétel: a tárfiók létrehozása az Azure Portalon](./media/data-lake-storage-quickstart-create-account/azure-data-lake-storage-account-create-advanced.png)
+    ![A Storage-fiók létrehozását bemutató képernyőkép a Azure Portal](./media/data-lake-storage-quickstart-create-account/azure-data-lake-storage-account-create-advanced.png)
 
 Ezzel a tárfiók létrejött a portálon.
 
@@ -105,14 +105,14 @@ Ezzel a tárfiók létrejött a portálon.
 Erőforráscsoport eltávolítása az Azure Portallal:
 
 1. Az Azure Portalon bontsa ki a bal oldalon a szolgáltatásmenüt, és válassza az **Erőforráscsoportok** lehetőséget az erőforráscsoportok listájának megjelenítéséhez.
-2. Keresse meg a törölni kívánt erőforráscsoportot, és kattintson a jobb gombbal a lista jobb oldalán lévő **Továbbiak** gombra (**...**).
+2. Keresse meg a törölni kívánt erőforráscsoportot, és kattintson a jobb gombbal a lista jobb oldalán lévő **Továbbiak** gombra ( **...** ).
 3. Válassza az **Erőforráscsoport törlése** elemet, és erősítse meg a választását.
 
 ## <a name="create-an-account-using-powershell"></a>Fiók létrehozása a PowerShell használatával
 
 Először telepítse a legújabb verzióját a [PowerShellGet](https://docs.microsoft.com/powershell/gallery/installing-psget) modul.
 
-Ezután a powershell-modul frissítése, jelentkezzen be az Azure-előfizetése, hozzon létre egy erőforráscsoportot, és majd a storage-fiók létrehozása.
+Ezután frissítse a PowerShell-modult, jelentkezzen be az Azure-előfizetésbe, hozzon létre egy erőforráscsoportot, majd hozzon létre egy Storage-fiókot.
 
 ### <a name="upgrade-your-powershell-module"></a>A PowerShell-modul frissítése
 
@@ -125,10 +125,10 @@ Először nyissa meg egy PowerShell-munkamenetet emelt szintű engedélyekkel.
 A Az.Storage modul telepítése
 
 ```powershell
-Install-Module Az.Storage -Repository PSGallery -AllowPrerelease -AllowClobber -Force
+Install-Module Az.Storage -Repository PSGallery -AllowClobber -Force
 ```
 
-### <a name="sign-in-to-your-azure-subscription"></a>Jelentkezzen be az Azure-előfizetés
+### <a name="sign-in-to-your-azure-subscription"></a>Jelentkezzen be az Azure-előfizetésbe
 
 Használja a `Login-AzAccount` paranccsal, és kövesse a képernyőn megjelenő utasításokat hitelesítéséhez.
 
@@ -138,7 +138,7 @@ Login-AzAccount
 
 ### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-A PowerShell használatával egy új erőforráscsoport létrehozásához használja a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancsot: 
+Új erőforráscsoport PowerShell-lel való létrehozásához használja a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancsot: 
 
 > [!NOTE]
 > A hierarchikus névtér jelenleg minden nyilvános régióban elérhető.
@@ -153,7 +153,7 @@ New-AzResourceGroup -Name $resourceGroup -Location $location
 
 ### <a name="create-a-general-purpose-v2-storage-account"></a>Általános célú 2-es verziójú tárfiók létrehozása
 
-Egy általános célú v2-tárfiók létrehozásához a PowerShellben a helyileg redundáns tárolás (LRS) használja a [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) parancsot:
+Ha egy általános célú v2-es Storage-fiókot szeretne létrehozni a PowerShellből a helyileg redundáns tárolással (LRS), használja a [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) parancsot:
 
 ```powershell
 $location = "westus2"
@@ -168,7 +168,7 @@ New-AzStorageAccount -ResourceGroupName $resourceGroup `
 
 ### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Eltávolítható az erőforráscsoport és az összes kapcsolódó erőforrás, beleértve az új tárfiókot is a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) parancsot: 
+Az erőforráscsoport és a hozzá tartozó erőforrások eltávolításához, beleértve az új Storage-fiókot is, használja a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) parancsot: 
 
 ```powershell
 Remove-AzResourceGroup -Name $resourceGroup
@@ -176,9 +176,9 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 ## <a name="create-an-account-using-azure-cli"></a>Fiók létrehozása az Azure CLI használatával
 
-Azure Cloud Shell indításához jelentkezzen be a [az Azure portal](https://portal.azure.com).
+Azure Cloud Shell indításához jelentkezzen be a Azure Portalba [](https://portal.azure.com).
 
-Ha szeretne bejelentkezni a parancssori felület helyi telepítésen, futtassa a bejelentkezési parancsot:
+Ha be szeretné jelentkezni a CLI helyi telepítésére, futtassa a login parancsot:
 
 ```cli
 az login

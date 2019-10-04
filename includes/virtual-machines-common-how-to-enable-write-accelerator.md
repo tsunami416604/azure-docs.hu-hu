@@ -5,15 +5,15 @@ services: virtual-machines
 author: msraiye
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 02/22/2019
+ms.date: 05/23/2019
 ms.author: raiye
 ms.custom: include file
-ms.openlocfilehash: 72d9ec52732a78e39f6481e2cb2d40f17f86f028
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 7b9b30f1598f7e50d25b15aaf2fda896ee9e5012
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58494779"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66249047"
 ---
 # <a name="enable-write-accelerator"></a>Írásgyorsító engedélyezése
 
@@ -48,6 +48,7 @@ Az Azure Premium Storage virtuális merevlemezek Írásgyorsító támogató vir
 
 | A VM-TERMÉKVÁLTOZATOK | Írásgyorsító lemezek száma | Írható gyorsító lemez iops-t, virtuális gépenként |
 | --- | --- | --- |
+| M208ms_v2, M208s_v2| 8 | 10000 |
 | M128ms, 128s | 16 | 20000 |
 | M64ms, M64ls, M64s | 8 | 10000 |
 | M32ms, M32ls, M32ts, M32s | 4 | 5000 |

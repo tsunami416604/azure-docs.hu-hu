@@ -8,17 +8,17 @@ ms.service: event-grid
 ms.topic: tutorial
 ms.date: 01/13/2019
 ms.author: spelluru
-ms.openlocfilehash: c2c49563bf505ce70c4900c6c0a8e41c0f6ac9c5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1ae7a18660d2a7324bc5897d6b3952da42b6c4b2
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58176616"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65603440"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>Oktatóanyag: Big Data típusú adatok streamelése adattárházba
 Azure [Event Grid](overview.md) egy intelligens esemény-útválasztó szolgáltatás, amely lehetővé teszi értesítések (események) reagálni az alkalmazások és szolgáltatások. Például képes aktiválhat egy Azure-függvény, amely egy Azure Blob storage vagy az Azure Data Lake Storage rögzítésének befejeztével az Event Hubs-adatok feldolgozásához, és egyéb az adattárak az adatok áttelepítését. Ez [az Event Hubs és az Event Grid integráció minta](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) bemutatja, hogyan használatával az Event Hubs az Event Griddel áttelepíthetik rögzített az Event Hubs-adatok a blob storage-ból egy SQL Data Warehouse.
 
-![Az alkalmazás áttekintése](media/event-grid-event-hubs-integration/overview.png)
+![Alkalmazások – áttekintés](media/event-grid-event-hubs-integration/overview.png)
 
 Ez az ábra a megoldás hoz létre, ebben az oktatóanyagban a munkafolyamat ábrázolja: 
 
@@ -45,7 +45,7 @@ Ebben a cikkben hajtsa végre a következő lépéseket:
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
-* [Visual Studio 2017 15.3.2-es vagy újabb verziója](https://www.visualstudio.com/vs/) a következőkhöz készült számítási feladatokkal: .NET asztali fejlesztés, Azure-fejlesztés, ASP.NET- és webfejlesztés, Node.js-fejlesztés és Python-fejlesztés.
+* [A Visual studio 2019](https://www.visualstudio.com/vs/) a számítási feladatokkal: .NET asztali fejlesztés, Azure-fejlesztési, az ASP.NET és webfejlesztési, Node.js-fejlesztés és a Python fejlesztési.
 * Töltse le a [EventHubsCaptureEventGridDemo mintaprojektet](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) a számítógépre.
 
 ## <a name="deploy-the-infrastructure"></a>Az infrastruktúra üzembe helyezése
@@ -196,7 +196,7 @@ Hozzon létre egy táblát az adattárház futtatásával a [CreateDataWarehouse
 
 ## <a name="publish-the-azure-functions-app"></a>Az Azure Functions-alkalmazás közzététele
 
-1. Indítsa el a Visual Studio 2017-ben. 
+1. Indítsa el a Visual Studiót.
 2. Nyissa meg a **EventHubsCaptureEventGridDemo.sln** megoldás, amelyikbe kibontotta a [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) az Előfeltételek részeként.
 3. A Megoldáskezelőben kattintson a jobb gombbal a **FunctionEGDWDumper** elemre, majd válassza a **Közzététel** lehetőséget.
 

@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 04/15/2019
+ms.date: 08/12/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: bc244ecb62655d1e95046fb0eb8548fdacdcc2a1
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 448d416ce4915aeae048639f6021197ed8c1d334
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59679726"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967876"
 ---
 # <a name="azure-importexport-system-requirements"></a>Az Azure Import/Export rendszerre vonatkozó követelmények
 
@@ -41,9 +41,9 @@ A merevlemez-meghajtókat a WAImportExport eszközzel, a következő előkészí
 
 Az Azure Import/Export szolgáltatás támogatja a következő típusú storage-fiókok:
 
-- Általános célú v2 storage-fiókok (a legtöbb forgatókönyvek esetén ajánlott)
+- Standard általános célú v2 Storage-fiókok (a legtöbb esetben ajánlott)
 - Blob Storage-fiókok
-- Általános célú v1-tárfiókok (klasszikus és a Azure Resource Manager üzembe helyezések), 
+- Általános célú v1 Storage-fiókok (klasszikus vagy Azure Resource Manager üzemelő példányok), 
 
 Storage-fiókokkal kapcsolatos további információkért lásd: [az Azure storage-fiókok áttekintése](storage-account-overview.md).
 
@@ -72,11 +72,15 @@ Az Azure Import/Export szolgáltatás az adatok másolása támogatott lemez sz�
 Lemezek a következők közül az Import/Export szolgáltatás használata támogatott.
 
 
-|Lemez típusa  |Méret  |Támogatott |Nem támogatott  |
-|---------|---------|---------|---------|
-|SSD    |   2,5"      |SATA III.          |  USB       |
-|HDD     |  2,5"<br>3,5"       |SATA II, SATA III.         |Beépített USB-adapterrel rendelkező külső HDD <br> A kis-és a egy külső HDD belül a lemez         |
+|Lemez típusa  |Méret  |Támogatott |
+|---------|---------|---------|
+|SSD    |   2,5"      |SATA III          | 
+|HDD     |  2,5"<br>3,5"       |SATA II, SATA III.         |
 
+A következő típusú lemezek nem támogatottak:
+- USBs.
+- Külső HDD beépített USB-adapterrel.
+- Külső HDD házán belüli lemezek.
 
 Egy egyetlen importálási/exportálási feladat veheti fel:
 - Legfeljebb 10 HDD és SSD-kkel.

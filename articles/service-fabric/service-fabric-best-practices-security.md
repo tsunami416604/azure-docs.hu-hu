@@ -1,6 +1,6 @@
 ---
-title: Az Azure Service Fabric ajánlott biztonsági eljárások |} A Microsoft Docs
-description: Ajánlott eljárások az Azure Service Fabric biztonsága.
+title: Azure Service Fabric – ajánlott biztonsági eljárások | Microsoft Docs
+description: Az Azure Service Fabric biztonsággal kapcsolatos ajánlott eljárások.
 services: service-fabric
 documentationcenter: .net
 author: peterpogorski
@@ -14,35 +14,35 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 350aef037f019733e02331623758c14a3c64ab50
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 75edb385a86be849ec7c165759d3b451eab804f6
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56804992"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828513"
 ---
 # <a name="azure-service-fabric-security"></a>Az Azure Service Fabric biztonsága 
 
-További információ [Azure ajánlott biztonsági eljárások](https://docs.microsoft.com/azure/security/), tekintse át [Azure Service Fabric ajánlott biztonsági eljárások](https://docs.microsoft.com/azure/security/azure-service-fabric-security-best-practices)
+További információ az [Azure biztonsági eljárásairól](https://docs.microsoft.com/azure/security/): az [Azure Service Fabric ajánlott biztonsági eljárásainak](https://docs.microsoft.com/azure/security/fundamentals/service-fabric-best-practices) áttekintése
 
 ## <a name="key-vault"></a>Key Vault
 
-[Az Azure Key Vault](https://docs.microsoft.com/azure/key-vault/) van a javasolt titkos kulcsok Azure Service Fabric-alkalmazások és-fürtök a felügyeleti szolgáltatás.
+[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/) a javasolt Secrets Management szolgáltatás az Azure Service Fabric-alkalmazásokhoz és-fürtökhöz.
 > [!NOTE]
-> Ha a Virtual Machine Scale Set-titokként egy virtuális gép méretezési beállítása a Key vault tanúsítványokkal vagy titkos kódokkal van telepítve, majd a Key Vault és a Virtual Machine Scale Set kell közös elhelyezésű.
+> Ha egy Key Vault tanúsítványait/titkos kulcsait virtuálisgép-méretezési csoportként telepítik, akkor a Key Vaultnak és a virtuálisgép-méretezési csoportnak közös helyen kell lennie.
 
-## <a name="create-certificate-authority-issued-service-fabric-certificate"></a>A Service Fabric-tanúsítványt kiállító hitelesítésszolgáltató létrehozása
+## <a name="create-certificate-authority-issued-service-fabric-certificate"></a>Service Fabric tanúsítványt kiállító hitelesítésszolgáltató létrehozása
 
-Az Azure Key Vault-tanúsítvánnyal vagy létrehozott vagy importált egy Key Vaultot. Amikor a Key Vault-tanúsítvánnyal jön létre, a titkos kulcsot a Key vaultban létrejött, és sosem hagyja el a tanúsítvány tulajdonosának. Az alábbiakban hozzon létre egy tanúsítványt a Key Vaultban módjai:
+Egy Azure Key Vault tanúsítvány hozható létre vagy importálható egy Key Vaultba. Key Vault-tanúsítvány létrehozásakor a titkos kulcs a Key Vaulton belül jön létre, és soha nem lesz kitéve a tanúsítvány tulajdonosának. A következő módszerekkel hozhat létre tanúsítványokat a Key Vaultban:
 
-- Hozzon létre egy nyilvános-titkos kulcspár létrehozása, és társíthatja azt egy tanúsítvány egy önaláírt tanúsítványt. A tanúsítvány a saját kulcs alá fogja írni. 
-- Hozzon létre egy új tanúsítványt manuálisan hozzon létre egy nyilvános-titkos kulcspárt, és hozzon létre egy X.509 tanúsítvány-aláírási kérelmet. Az aláírási kérelmet a regisztrációszolgáltató vagy hitelesítésszolgáltató által írhatók alá. A tanúsítvány egyesíthető a függőben lévő kulccsal aláírt x509 párosítsa a KV tanúsítványt a Key Vaultban végrehajtásához. Bár ez a módszer további lépéseket igényel, azt biztosítja a nagyobb biztonságot, mert a titkos kulcs létrehozott, és a Key Vault korlátozott. Ennek az az alábbi ábrán a magyarázatát. 
+- Hozzon létre egy önaláírt tanúsítványt egy nyilvános titkos kulcspár létrehozásához, és társítsa azt egy tanúsítványhoz. A tanúsítványt a saját kulcsa fogja aláírni. 
+- Hozzon létre egy új tanúsítványt manuálisan egy nyilvános titkos kulcspár létrehozásához, és hozzon létre egy X. 509 tanúsítvány-aláírási kérelmet. Az aláírási kérelmet a regisztrációs hatóság vagy a hitelesítésszolgáltató aláírhatja. Az aláírt x509-tanúsítvány egyesíthető a függőben lévő kulcspár használatával, hogy elvégezze a KV-os tanúsítványt Key Vaultban. Bár ez a módszer több lépést igényel, nagyobb biztonságot nyújt, mivel a titkos kulcsot a-ben hozza létre, és a Key Vaultre korlátozódik. Ezt az alábbi ábra ismerteti. 
 
-Felülvizsgálat [Azure Keyvault tanúsítvány létrehozásának módszerei](https://docs.microsoft.com/azure/key-vault/create-certificate) további részleteket.
+További részletekért tekintse át az [Azure kulcstartó tanúsítvány-létrehozási módszereit](https://docs.microsoft.com/azure/key-vault/create-certificate) .
 
-## <a name="deploy-key-vault-certificates-to-service-fabric-cluster-virtual-machine-scale-sets"></a>A Key Vault tanúsítványok telepítése a Service Fabric-fürt virtuális gépek méretezési
+## <a name="deploy-key-vault-certificates-to-service-fabric-cluster-virtual-machine-scale-sets"></a>Key Vault tanúsítványok központi telepítése Service Fabric fürt virtuálisgép-méretezési csoportjaihoz
 
-Egy virtuálisgép-méretezési csoportban egy közös elhelyezésű keyvault a tanúsítványok központi telepítéséhez használja a Virtual Machine Scale Set [osProfile](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosprofile). A Resource Manager-sablon tulajdonságai a következők:
+Ha egy közös elhelyezésű kulcstartóból szeretne tanúsítványokat telepíteni egy virtuálisgép-méretezési csoportba, használja a virtuálisgép-méretezési csoport [osProfile](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosprofile). A Resource Manager-sablon tulajdonságai a következők:
 
 ```json
 "secrets": [
@@ -61,12 +61,12 @@ Egy virtuálisgép-méretezési csoportban egy közös elhelyezésű keyvault a 
 ```
 
 > [!NOTE]
-> A tároló engedélyezni kell a Resource Manager-sablon üzembe helyezése.
+> A tárolót engedélyezni kell a Resource Manager-sablonok telepítéséhez.
 
-## <a name="apply-an-access-control-list-acl-to-your-certificate-for-your-service-fabric-cluster"></a>Egy hozzáférés-vezérlési lista (ACL) vonatkoznak a tanúsítványt a Service Fabric-fürthöz
+## <a name="apply-an-access-control-list-acl-to-your-certificate-for-your-service-fabric-cluster"></a>Access Control listájának (ACL) alkalmazása a Service Fabric-fürthöz tartozó tanúsítványra
 
-[Virtuális gépek méretezési csoportjának bővítményei](https://docs.microsoft.com/cli/azure/vmss/extension?view=azure-cli-latest) közzétevő Microsoft.Azure.ServiceFabric a csomópontok biztonsági konfigurálására szolgál.
-Egy ACL alkalmazza a tanúsítványokat a Service Fabric-fürt folyamatok, használja a következő Resource Manager-sablon tulajdonságainak:
+A [virtuális gépek méretezési csoportjának bővítményei](https://docs.microsoft.com/cli/azure/vmss/extension?view=azure-cli-latest) a Microsoft. Azure. ServiceFabric a csomópontok biztonságának konfigurálására szolgálnak.
+Ha ACL-t szeretne alkalmazni a Service Fabric-fürt folyamataihoz tartozó tanúsítványokra, használja az alábbi Resource Manager-sablon tulajdonságait:
 
 ```json
 "certificate": {
@@ -77,9 +77,9 @@ Egy ACL alkalmazza a tanúsítványokat a Service Fabric-fürt folyamatok, haszn
 }
 ```
 
-## <a name="secure-a-service-fabric-cluster-certificate-by-common-name"></a>Biztonságos Service Fabric-fürt tanúsítvány köznapi név szerint
+## <a name="secure-a-service-fabric-cluster-certificate-by-common-name"></a>Service Fabric-fürt tanúsítványának védelme köznapi név szerint
 
-A Service Fabric-fürt tanúsítvánnyal biztonságos `Common Name`, használja a Resource Manager-sablon tulajdonságot [certificateCommonNames](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterproperties#certificatecommonnames), az alábbiak szerint:
+Ha Service Fabric-fürtöt a (z) `Common Name` tanúsítvánnyal szeretné biztonságossá tenni, használja a Resource Manager-sablon tulajdonságának [certificateCommonNames](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterproperties#certificatecommonnames)a következő módon:
 
 ```json
 "certificateCommonNames": {
@@ -94,55 +94,55 @@ A Service Fabric-fürt tanúsítvánnyal biztonságos `Common Name`, használja 
 ```
 
 > [!NOTE]
-> Service Fabric-fürtök az első érvényes tanúsítvány úgy találja, a gazdagép tanúsítványtárolóban fogja használni. A Windows ez lesz a legújabb lejáró dátum, amely megfelel a köznapi neve és kiállító ujjlenyomata a tanúsítvány.
+> Service Fabric-fürtök az első érvényes tanúsítványt fogják használni, amelyet a gazdagép tanúsítványtárolójában talál. Windows rendszeren ez az a tanúsítvány, amelynek a legkésőbbi lejárati dátuma megegyezik a köznapi névvel és a kiállító ujjlenyomatával.
 
-Azure-tartomány, például a *\<az ALTARTOMÁNY\>. cloudapp.Azure.com formát követi vagy \<az ALTARTOMÁNY\>. trafficmanager.net, a Microsoft tulajdonában. Jogosulatlan felhasználók hitelesítésszolgáltatók tanúsítványainak tartományok nem ad ki. A legtöbb felhasználó kell tartományregisztrálótól egy tartományhoz, vagy egy meghatalmazott tartományi rendszergazda, a hitelesítésszolgáltató a tanúsítványt állít ki, a közös néven.
+Az Azure-tartományok, például * \<YOUR SUBDOMAIN\>.cloudapp.azure.com vagy \<YOUR SUBDOMAIN\>.trafficmanager.net, a Microsoft tulajdonában vannak. A hitelesítésszolgáltatók nem adnak ki tanúsítványokat a tartományokhoz a jogosulatlan felhasználók számára. A legtöbb felhasználónak meg kell vásárolnia egy tartományt a regisztrátorból, vagy pedig a hitelesítő tartományi rendszergazdának kell lennie ahhoz, hogy egy hitelesítésszolgáltató kiadja az adott köznapi névvel rendelkező tanúsítványt.
 
-A további részleteket a Microsoft IP-cím, oldja fel a tartomány DNS-szolgáltatás konfigurálásához tekintse át a konfigurálása [üzemeltessen saját tartományt az Azure DNS](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns).
+Ha további információt szeretne arról, hogyan konfigurálhatja a DNS-szolgáltatást a tartomány Microsoft IP-címhez való feloldására, tekintse át a Azure DNS konfigurálása a [tartomány üzemeltetéséhez](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns)című témakört.
 
 > [!NOTE]
-> After delegating your domains name servers to your Azure DNS zone name servers, add the following two records to your DNS Zone:
-> - Egy "A" rekord, amely nem APEX-tartomány egy `Alias record set` minden IP-cím az egyéni tartomány megoldja.
-> - A Microsoft alárendelt tartományok számára kiépített nem "C" rekord egy `Alias record set`. Használhatja például a Traffic Manager vagy a terheléselosztó DNS-nevét.
+> Miután delegálta a tartományneveket a Azure DNS zónák névkiszolgálók számára, adja hozzá a következő két rekordot a DNS-zónához:
+> - A tartományhoz tartozó "A" rekord, amely nem `Alias record set` minden IP-címhez, amelyet az egyéni tartomány fel fog oldani.
+> - "C" rekord a kiépített Microsoft sub-tartományokhoz, amelyek nem `Alias record set`. Használhatja például a Traffic Manager vagy a Load Balancer DNS-nevét.
 
-A portálon megjelenjen egy egyéni DNS-nevet a Service Fabric-fürt frissítése `"managementEndpoint"`, frissítéséhez kövesse a Service Fabric-fürt Resource Manager-sablon tulajdonságait:
+Ha a portált úgy szeretné frissíteni, hogy az Service Fabric-fürthöz tartozó egyéni DNS-nevet jelenítse meg @no__t – 0, frissítse a következő Service Fabric fürterőforrás-kezelő sablon tulajdonságait:
 
 ```json
  "managementEndpoint": "[concat('https://<YOUR CUSTOM DOMAIN>:',parameters('nt0fabricHttpGatewayPort'))]",
 ```
 
-## <a name="encrypting-service-fabric-package-secret-values"></a>Titkos értékkel a Service Fabric-csomag titkosítása
+## <a name="encrypting-service-fabric-package-secret-values"></a>Service Fabric csomag titkos értékeinek titkosítása
 
-Gyakori a Service Fabric-csomagokhoz titkosított tartalmazzák-e az Azure Container Registry (ACR) hitelesítő adatait, a környezeti változók, beállítások és Azure kötet beépülő modul tárfiókkulcsok.
+Service Fabric csomagokba titkosított közös értékek közé tartoznak a Azure Container Registry (ACR) hitelesítő adatai, a környezeti változók, a beállítások és az Azure Volume plugin Storage-fiók kulcsa.
 
-A [állítsa be a titkosítási tanúsítványt, és Windows-fürtök a titkos kulcsok titkosítására](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-secret-management-windows):
+[Titkosítási tanúsítvány beállítása és a titkok titkosítása Windows-fürtökön](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-secret-management-windows):
 
-Hozzon létre egy önaláírt tanúsítványt a titkos kulcs titkosításához:
+Önaláírt tanúsítvány létrehozása a titkos kulcs titkosításához:
 
 ```powershell
 New-SelfSignedCertificate -Type DocumentEncryptionCert -KeyUsage DataEncipherment -Subject mydataenciphermentcert -Provider 'Microsoft Enhanced Cryptographic Provider v1.0'
 ```
 
-Kövesse az utasításokat a [Service Fabric-fürt virtuális gép üzembe helyezése Key Vault-tanúsítványokat a méretezési csoportokat](#deploy-key-vault-certificates-to-service-fabric-cluster-virtual-machine-scale-sets) Key Vault Certificates központi telepítése a Service Fabric-fürt a virtuálisgép-méretezési csoportok.
+A [Key Vault tanúsítványok központi telepítése Service Fabric fürt virtuálisgép-méretezési csoportokban](#deploy-key-vault-certificates-to-service-fabric-cluster-virtual-machine-scale-sets) található utasításokkal Key Vault tanúsítványokat telepíthet a Service Fabric fürt Virtual Machine Scale sets.
 
-Titkosítani a titkos kód a következő PowerShell-paranccsal, és ezután frissítse a Service Fabric-alkalmazás jegyzékfájlja a titkosított értékkel:
+Titkosítsa a titkos kulcsot a következő PowerShell-parancs használatával, majd frissítse a Service Fabric alkalmazás jegyzékfájlját a titkosított értékkel:
 
 ``` powershell
 Invoke-ServiceFabricEncryptText -CertStore -CertThumbprint "<thumbprint>" -Text "mysecret" -StoreLocation CurrentUser -StoreName My
 ```
 
-A [állítsa be a titkosítási tanúsítványt, és titkosítani a titkos kulcsokat a Linux-fürtökön](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-secret-management-linux):
+[Titkosítási tanúsítvány beállítása és a titkok titkosítása Linux-fürtökön](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-secret-management-linux):
 
-Hozzon létre egy önaláírt tanúsítványt a titkos kulcsok titkosítására:
+Önaláírt tanúsítvány létrehozása a titkos kulcsok titkosításához:
 
 ```bash
 user@linux:~$ openssl req -newkey rsa:2048 -nodes -keyout TestCert.prv -x509 -days 365 -out TestCert.pem
 user@linux:~$ cat TestCert.prv >> TestCert.pem
 ```
 
-Kövesse az utasításokat a [Service Fabric-fürt virtuális gép üzembe helyezése Key Vault-tanúsítványokat a méretezési csoportokat](#deploy-key-vault-certificates-to-service-fabric-cluster-virtual-machine-scale-sets) , a Service Fabric-fürt a virtuálisgép-méretezési csoportok.
+A [Key Vault tanúsítványok központi telepítése Service Fabric fürt virtuálisgép-méretezési csoportokra](#deploy-key-vault-certificates-to-service-fabric-cluster-virtual-machine-scale-sets) vonatkozó utasításokat a Service Fabric fürt Virtual Machine Scale sets.
 
-Titkosítani a titkos kód a következő parancsokat, és frissítse a Service Fabric Application Manifest titkosított értékre:
+Titkosítsa a titkos kulcsot a következő parancsokkal, majd frissítse a Service Fabric alkalmazás jegyzékfájlját a titkosított értékkel:
 
 ```bash
 user@linux:$ echo "Hello World!" > plaintext.txt
@@ -150,25 +150,37 @@ user@linux:$ iconv -f ASCII -t UTF-16LE plaintext.txt -o plaintext_UTF-16.txt
 user@linux:$ openssl smime -encrypt -in plaintext_UTF-16.txt -binary -outform der TestCert.pem | base64 > encrypted.txt
 ```
 
-A védett értékek titkosítása után [adja meg a titkosított titkos kulcsok a Service Fabric-alkalmazás](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-secret-management#specify-encrypted-secrets-in-an-application), és [visszafejteni a titkosított titkos kulcsok szolgáltatás kódból](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-secret-management#decrypt-encrypted-secrets-from-service-code).
+A védett értékek titkosítása után [adja meg a titkosított titkokat Service Fabric alkalmazásban](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-secret-management#specify-encrypted-secrets-in-an-application), és [fejtse vissza a titkosított titkokat a szolgáltatási kódból](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-secret-management#decrypt-encrypted-secrets-from-service-code).
 
-## <a name="authenticate-service-fabric-applications-to-azure-resources-using-managed-service-identity-msi"></a>Felügyeltszolgáltatás-identitás (MSI) Azure-erőforrások a Service Fabric-alkalmazások hitelesítése
+## <a name="include-certificate-in-service-fabric-applications"></a>Tanúsítvány belefoglalása Service Fabric alkalmazásokban
 
-Az Azure-erőforrások felügyelt identitások kapcsolatos további információkért lásd: [Mi az Azure-erőforrások felügyelt identitások?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview#how-does-it-work).
-Az Azure Service Fabric-fürtök a Virtual Machine Scale Sets, amely támogatja a tárolt [Felügyeltszolgáltatás-identitás](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-msi#azure-services-that-support-managed-identities-for-azure-resources).
-A szolgáltatások listájának lekéréséhez, hogy MSI használható hitelesítésre, tekintse meg [Azure-szolgáltatások, amelyek támogatják az Azure Active Directory-hitelesítéssel](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-msi#azure-services-that-support-azure-ad-authentication).
+Ha hozzáférést szeretne adni az alkalmazáshoz a titkokhoz, vegye fel a tanúsítványt egy **SecretsCertificate** elem hozzáadásával az alkalmazás jegyzékfájlba.
+
+```xml
+<ApplicationManifest … >
+  ...
+  <Certificates>
+    <SecretsCertificate Name="MyCert" X509FindType="FindByThumbprint" X509FindValue="[YourCertThumbrint]"/>
+  </Certificates>
+</ApplicationManifest>
+```
+## <a name="authenticate-service-fabric-applications-to-azure-resources-using-managed-service-identity-msi"></a>Service Fabric-alkalmazások hitelesítése az Azure-erőforrásokhoz Managed Service Identity (MSI) használatával
+
+Az Azure-erőforrások felügyelt identitásának megismeréséhez tekintse meg a [Mi az Azure-erőforrások felügyelt identitásai?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview#how-does-it-work)című témakört.
+Az Azure Service Fabric-fürtök a [Managed Service Identityt](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-msi#azure-services-that-support-managed-identities-for-azure-resources)támogató Virtual Machine Scale sets futnak.
+Az MSI-t használó szolgáltatások listájának lekéréséhez tekintse meg az [Azure Active Directory hitelesítést támogató Azure-szolgáltatásokat](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-msi#azure-services-that-support-azure-ad-authentication).
 
 
-Ahhoz, hogy a rendszer által hozzárendelt felügyelt identitás egy virtuálisgép-méretezési csoportot, vagy egy meglévő virtuális gépek méretezési létrehozása során, a következő deklarálja `"Microsoft.Compute/virtualMachinesScaleSets"` tulajdonság:
+Ha engedélyezni szeretné a rendszerhez rendelt felügyelt identitást a virtuálisgép-méretezési csoport vagy egy meglévő virtuálisgép-méretezési csoport létrehozása során, állapítsa meg a következő `"Microsoft.Compute/virtualMachinesScaleSets"` tulajdonságot:
 
 ```json
 "identity": { 
     "type": "SystemAssigned"
 }
 ```
-Lásd: [Mi az Azure-erőforrások felügyelt identitások?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vmss#system-assigned-managed-identity) további információt.
+További információért lásd: [Mi az az Azure-erőforrások felügyelt identitása?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vmss#system-assigned-managed-identity) .
 
-Ha létrehozott egy [felhasználó által hozzárendelt felügyelt identitás](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm#create-a-user-assigned-managed-identity), a sablonban, a virtuálisgép-méretezési csoporthoz rendelje hozzá a következő erőforrás deklarálható. Cserélje le `\<USERASSIGNEDIDENTITYNAME\>` a felhasználó által hozzárendelt nevű felügyelt identitás hozott létre:
+Ha [felhasználó által hozzárendelt felügyelt identitást](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm#create-a-user-assigned-managed-identity)hozott létre, deklarálja a sablonban a következő erőforrást a virtuálisgép-méretezési csoporthoz való hozzárendeléshez. Cserélje le a `\<USERASSIGNEDIDENTITYNAME\>` értéket a létrehozott felhasználó által hozzárendelt felügyelt identitás nevére:
 
 ```json
 "identity": {
@@ -179,8 +191,8 @@ Ha létrehozott egy [felhasználó által hozzárendelt felügyelt identitás](h
 }
 ```
 
-Mielőtt a Service Fabric application győződjön meg arról is, használja egy felügyelt identitás, engedélyt kell biztosítani az Azure-erőforrások hitelesíteni kell.
-Az alábbi parancsokat a hozzáférést az Azure-erőforrás:
+Ahhoz, hogy a Service Fabric alkalmazás használhassa a felügyelt identitást, engedélyeket kell adni a hitelesítéshez szükséges Azure-erőforrásokhoz.
+Az alábbi parancsok hozzáférést biztosítanak egy Azure-erőforráshoz:
 
 ```bash
 principalid=$(az resource show --id /subscriptions/<YOUR SUBSCRIPTON>/resourceGroups/<YOUR RG>/providers/Microsoft.Compute/virtualMachineScaleSets/<YOUR SCALE SET> --api-version 2018-06-01 | python -c "import sys, json; print(json.load(sys.stdin)['identity']['principalId'])")
@@ -188,23 +200,37 @@ principalid=$(az resource show --id /subscriptions/<YOUR SUBSCRIPTON>/resourceGr
 az role assignment create --assignee $principalid --role 'Contributor' --scope "/subscriptions/<YOUR SUBSCRIPTION>/resourceGroups/<YOUR RG>/providers/<PROVIDER NAME>/<RESOURCE TYPE>/<RESOURCE NAME>"
 ```
 
-A Service Fabric-alkalmazás kódba hozzáférési jogkivonat beszerzésére az Azure Resource Manager azáltal, hogy a többi összes hasonló a következőhöz:
+A Service Fabric alkalmazás kódjában [szerezzen be egy hozzáférési jogkivonatot](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-http) a Azure Resource Managerhoz, és az alábbihoz hasonló Rest-t biztosít:
 
 ```bash
 access_token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -H Metadata:true | python -c "import sys, json; print json.load(sys.stdin)['access_token']")
 
 ```
 
-A Service Fabric-alkalmazás a hozzáférési jogkivonatot az Azure-erőforrások, amelyek támogatják az Active Directory hitelesítést használhatja.
-Az alábbi példa bemutatja, hogyan teheti ezt a Cosmos DB-erőforráshoz:
+A Service Fabric alkalmazás a hozzáférési token használatával hitelesítheti a Active Directory támogató Azure-erőforrásokat.
+Az alábbi példa bemutatja, hogyan végezheti el ezt Cosmos DB erőforráshoz:
 
 ```bash
 cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBSCRIPTION>/resourceGroups/<YOUR RG>/providers/Microsoft.DocumentDB/databaseAccounts/<YOUR ACCOUNT>/listKeys?api-version=2016-03-31' -X POST -d "" -H "Authorization: Bearer $access_token" | python -c "import sys, json; print(json.load(sys.stdin)['primaryMasterKey'])")
 ```
+## <a name="windows-security-baselines"></a>Windows biztonsági alaptervek
+[Javasoljuk, hogy olyan iparági szabványnak megfelelő konfigurációt alkalmazzon, amely széles körben ismert és jól tesztelt, mint például a Microsoft biztonsági alapkonfigurációi, és ne hozzon létre egy alaptervet](https://docs.microsoft.com/windows/security/threat-protection/windows-security-baselines); Ha ezeket a Virtual Machine Scale Sets szeretné kiépíteni, az Azure desired State Configuration (DSC) bővítmény kezelőjét kell használnia a virtuális gépek online állapotba való konfigurálásához, hogy azok az éles szoftvert használják.
+
+## <a name="azure-firewall"></a>Azure Firewall
+a [Azure tűzfal felügyelt, felhőalapú hálózati biztonsági szolgáltatás, amely az Azure Virtual Network-erőforrásokat védi. Ez egy teljesen állapot-nyilvántartó tűzfal, amely beépített, magas rendelkezésre állású és korlátlan Felhőbeli méretezhetőséggel rendelkezik. ](https://docs.microsoft.com/azure/firewall/overview); Ez lehetővé teszi, hogy a kimenő HTTP/S forgalmat a teljes tartománynevek (FQDN) egy adott listájára korlátozza, beleértve a helyettesítő kártyákat is. Ehhez a szolgáltatáshoz nem szükséges SSL-lezárás. Javasoljuk, hogy a Windows-frissítések [Azure Firewall FQDN-címkéit](https://docs.microsoft.com/azure/firewall/fqdn-tags) használja, és engedélyezze a hálózati forgalmat a Microsoft Windows Update végpontok számára a tűzfalon keresztül. [Azure Firewall üzembe helyezése sablon használatával](https://docs.microsoft.com/azure/firewall/deploy-template) a Microsoft. Network/azureFirewalls erőforrás-sablon definícióját tartalmazza. Az Service Fabric alkalmazások számára közös tűzfalszabályok lehetővé teszik a következők használatát a fürtök virtuális hálózata számára:
+
+- *download.microsoft.com
+- *servicefabric.azure.com
+- *.core.windows.net
+
+Ezek a tűzfalszabályok kiegészítik az engedélyezett kimenő hálózati biztonsági csoportokat, amelyek a ServiceFabric és a tárterületet is tartalmazzák a virtuális hálózatból engedélyezett célhelyként.
+
+## <a name="tls-12"></a>TLS 1,2
+[TSG](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md)
 
 ## <a name="windows-defender"></a>Windows Defender 
 
-Alapértelmezés szerint a Windows Defender víruskereső Windows Server 2016 telepítve van. További információkért lásd: [Windows Defender víruskereső Windows Server 2016 rendszeren](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016). A felhasználói felület néhány termékváltozat alapértelmezés szerint telepítve van, de nem kötelező. Semmilyen teljesítménycsökkenést hatás és erőforrás-felhasználás többletterhelést felmerült a Windows Defender, és ha a biztonsági házirendek lehetővé teszik, hogy a folyamatok és a nyílt forráskódú szoftverek esetén elérési utak kizárása a következő virtuális gép méretezési bővítmény erőforrás deklarálja A Service Fabric-fürt kizárását vizsgálatok sablontulajdonságok Manager:
+Alapértelmezés szerint a Windows Defender víruskereső a Windows Server 2016 rendszerre van telepítve. Részletekért lásd: [Windows Defender víruskereső a Windows Server 2016](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016)rendszeren. A felhasználói felület néhány SKU-ban alapértelmezés szerint telepítve van, de nem szükséges. A Windows Defender által felmerülő teljesítmény-és erőforrás-felhasználás csökkentése érdekében, valamint ha a biztonsági szabályzatok lehetővé teszik a nyílt forráskódú szoftverek folyamatainak és elérési útjának kizárását, állapítsa meg a következő virtuálisgép-méretezési csoport kiterjesztési erőforrását: A Service Fabric-fürt a vizsgálatokból való kizárásához a felettes sablonjának tulajdonságai:
 
 
 ```json
@@ -234,12 +260,24 @@ Alapértelmezés szerint a Windows Defender víruskereső Windows Server 2016 te
 ```
 
 > [!NOTE]
-> Tekintse meg a kártevőirtó dokumentációjában a konfigurációs szabályok, ha nem használja a Windows Defender. A Windows Defender Linux rendszeren nem támogatott.
+> Ha nem a Windows Defendert használja, tekintse meg a konfigurációs szabályok antimalware-dokumentációját. A Windows Defender Linux rendszeren nem támogatott.
+
+## <a name="platform-isolation"></a>Platform elkülönítése
+Alapértelmezés szerint Service Fabric alkalmazások hozzáférést kapnak a Service Fabric futtatókörnyezethez, amely különböző formákban nyilvánul meg: a [környezeti változók](service-fabric-environment-variables-reference.md) az alkalmazás és a háló fájljainak megfelelő gazdagép elérési útjaira mutatnak, a folyamaton belüli kommunikációs végpont, amely az alkalmazásspecifikus kérelmeket fogadja el, valamint azt az ügyféltanúsítványt, amelyet a háló arra vár, hogy az alkalmazás hitelesítse magát. Abban az esetben, ha a szolgáltatás nem megbízható programkódot üzemeltet, célszerű letiltani ezt a hozzáférést az SF futtatókörnyezethez – hacsak erre nincs kifejezetten szükség. A futtatókörnyezet elérését az alkalmazás jegyzékfájljának szabályzatok szakaszának következő nyilatkozata alapján távolítja el a rendszer: 
+
+```xml
+<ServiceManifestImport>
+    <Policies>
+        <ServiceFabricRuntimeAccessPolicy RemoveServiceFabricRuntimeAccess="true"/>
+    </Policies>
+</ServiceManifestImport>
+
+```
 
 ## <a name="next-steps"></a>További lépések
 
-* Fürt létrehozása a virtuális gépet, vagy Windows Server rendszerű számítógépek: [A Service Fabric-fürt létrehozása a Windows Server](service-fabric-cluster-creation-for-windows-server.md).
-* Virtuális gépek és a számítógépeken, Linux rendszerű fürt létrehozása: [Linux-fürt létrehozása](service-fabric-cluster-creation-via-portal.md).
-* Ismerje meg [Service Fabric támogatási lehetőségeinek](service-fabric-support.md).
+* Hozzon létre egy fürtöt a Windows Servert futtató virtuális gépeken vagy számítógépeken: [Service Fabric fürt létrehozása a Windows Server](service-fabric-cluster-creation-for-windows-server.md)rendszerhez.
+* Hozzon létre egy fürtöt a virtuális gépeken vagy a Linuxon futó számítógépeken: [Hozzon létre egy Linux](service-fabric-cluster-creation-via-portal.md)-fürtöt.
+* További információ a [Service Fabric támogatási lehetőségeiről](service-fabric-support.md).
 
 [Image1]: ./media/service-fabric-best-practices/generate-common-name-cert-portal.png

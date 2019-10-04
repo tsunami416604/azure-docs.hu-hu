@@ -1,6 +1,6 @@
 ---
-title: Intelligent Insights – Azure SQL Database-adatbázis teljesítményének figyelése |} A Microsoft Docs
-description: Intelligent Insights az Azure SQL Database beépített intelligenciával folyamatosan mesterséges intelligencia révén az adatbázis-használat figyeléséhez, és észleli azokat a káros eseményeket, amelyek gyenge teljesítményhez vezethetnek használ.
+title: Az adatbázis teljesítményének figyelése Intelligent Insights-Azure SQL Databasesal | Microsoft Docs
+description: A Azure SQL Database Intelligent Insights a beépített intelligenciával folyamatosan figyeli az adatbázis-használatot mesterséges intelligenciával, és felderíti a gyenge teljesítményt okozó zavaró eseményeket.
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -10,174 +10,173 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-manager: craigg
 ms.date: 12/19/2018
-ms.openlocfilehash: 15154844c954e53ca1add5d3fbaa3e9d02152ad2
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 70498c5f4c824681ee59b7232e9409235d7f6a93
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55568243"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262164"
 ---
-# <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance"></a>Mesterséges Intelligencia használatával monitorozásának és hibaelhárításának intelligens elemzési adatbázis-teljesítmény
+# <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance"></a>Intelligent Insights AI használata az adatbázis teljesítményének figyeléséhez és hibakereséséhez
 
-Az Azure SQL Database Intelligent Insights lehetővé teszi, hogy mi történik az SQL Database és a felügyelt példány az adatbázis teljesítményét.
+Azure SQL Database Intelligent Insights segítségével megtudhatja, mi történik a SQL Database és a felügyelt példány adatbázisának teljesítményében.
 
-Intelligent Insights használ beépített intelligenciával folyamatosan mesterséges intelligencia révén az adatbázis-használat figyeléséhez, és észleli azokat a káros eseményeket, amelyek gyenge teljesítményhez vezethetnek. Ha azt észleli, részletes elemzés történik, amely az intelligens értékelése a probléma egy diagnosztikai naplót hoz létre. Az értékelés a kiváltó okok elemzése az adatbázis teljesítményét probléma áll, és ahol lehetséges, javaslatokat, a teljesítmény.
+A Intelligent Insights a beépített intelligenciával folyamatosan figyeli az adatbázis-használatot a mesterséges intelligencián, és felismeri a gyenge teljesítményt okozó zavaró eseményeket. Az észlelést követően a rendszer részletes elemzést végez, amely a probléma intelligens értékelésével létrehoz egy diagnosztikai naplót. Ez az értékelés az adatbázis teljesítményével kapcsolatos probléma okának elemzését, és ahol lehetséges, a teljesítménnyel kapcsolatos javításokra vonatkozó javaslatokat tartalmaz.
 
-## <a name="what-can-intelligent-insights-do-for-you"></a>Intelligent Insights Teendők az Ön számára
+## <a name="what-can-intelligent-insights-do-for-you"></a>Mit tehet Intelligent Insights
 
-Intelligent Insights egy egyedi képesség az Azure beépített intelligenciával, amely a következő értéket kínálja:
+A Intelligent Insights az Azure beépített intelligenciának egyedülálló funkciója, amely a következő értéket biztosítja:
 
 - Proaktív figyelés
-- Testre szabott teljesítmény elemzéseihez
-- Adatbázis-teljesítmény romlását korai észlelése
-- Alapvető okok problémák észlelhetők
-- Javaslatok a teljesítmény fokozása
-- Horizontális felskálázás funkció a több százezer adatbázis
-- Pozitív hatással lehet a DevOps-erőforrások és a teljes birtoklási költség
+- Testreszabott teljesítmény-felismerés
+- Az adatbázis-teljesítmény romlásának korai észlelése
+- Az észlelt problémák kiváltó okának elemzése
+- Teljesítmény-javító javaslatok
+- Több százezer adatbázisra kibővíthető képesség
+- Pozitív hatással van a DevOps-erőforrásokra és a teljes tulajdonlási díjakra
 
-## <a name="how-does-intelligent-insights-work"></a>Hogyan működik az Intelligent Insights
+## <a name="how-does-intelligent-insights-work"></a>Hogyan működik Intelligent Insights
 
-Intelligent Insights összehasonlítja az adatbázis feladata az elmúlt hét nap alapkonfiguráció számítási feladatok az elmúlt órában a elemzi az adatbázis teljesítményét. Adatbázis-tevékenységprofil lekérdezések az adatbázis teljesítményét, például: ismétlődő és a legnagyobb lekérdezések a legjelentősebb minősül tevődik össze. Mivel minden adatbázis egyedi struktúra, adatok, használati, és alkalmazás alapján, minden egyes számítási feladatok alapterv, amely akkor jön létre, csak az egyedi egy egyedi példányára. Intelligent Insights, a számítási feladatok alapkonfiguráció független is abszolút működési küszöbérték figyeli, és észleli a hibákat túlzott várakoznia, kritikus kivételeket és lekérdezési parameterizations teljesítményt befolyásoló problémák.
+Intelligent Insights elemzi az adatbázis teljesítményét, ha összehasonlítja az elmúlt órában az elmúlt hét napos alapkonfiguráció számítási feladatait. Az adatbázis-munkaterhelés olyan lekérdezésekből áll, amelyek úgy vannak meghatározva, hogy az adatbázis teljesítményének legjelentősebb részét, például a legtöbbször ismétlődő és legnagyobb lekérdezéseket. Mivel az egyes adatbázisok egyediek a szerkezettől, az adatoktól, a használattól és az alkalmazástól függően, az egyes generált számítási feladatok egyediek és egyediek az egyes példányok esetében. Intelligent Insights a munkaterhelés alapkonfigurációtól függetlenül az abszolút működési küszöbértékeket is figyeli, és észleli a túlzott várakozási idő, a kritikus kivételek és a teljesítményre hatással lehet a lekérdezési parameterizations kapcsolatos problémákat.
 
-Miután egy teljesítményprobléma teljesítménycsökkenés több megfigyelt metrikák a mesterséges intelligencia használatával észlel, elemzési történik. Az intelligens adatforgalmáról mi történik az adatbázis egy diagnosztikai napló jön létre. Intelligent Insights megkönnyíti az adatbázis teljesítményét a probléma megoldásáig az első megjelenés nyomon. Minden egyes azt észlelte, hogy probléma van és nyomon követni a életciklus kezdeti probléma észlelése és a teljesítmény fokozása ellenőrzése annak befejezését.
+Ha a teljesítmény romlása problémát észlelt több megfigyelt metrika alapján mesterséges intelligencia használatával, az elemzés elvégzése történik. A diagnosztikai naplót intelligens betekintéssel generáljuk, hogy mi történik az adatbázissal. A Intelligent Insights segítségével egyszerűen nyomon követheti az adatbázis teljesítményét a megoldás első megjelenése után. A rendszer minden észlelt problémát az életciklusa alapján követ nyomon a kezdeti probléma észlelése és a teljesítmény javításának ellenőrzése után.
 
-![Adatbázis teljesítménye az árelemzési munkafolyamat](./media/sql-database-intelligent-insights/intelligent-insights-concept.png)
+![Adatbázis-teljesítmény elemzésének munkafolyamata](./media/sql-database-intelligent-insights/intelligent-insights-concept.png)
 
-A metrikák mérni, és az adatbázis teljesítménybeli problémák észleléséhez használt lekérdezés időtartama, időkorlát kérelmek, túlzott mértékű várakozási időt és hibát eredményező kérések alapulnak. A metrikák további információkért lásd: a [észlelési metrikák](sql-database-intelligent-insights.md#detection-metrics) szakasz ebben a dokumentumban.
+Az adatbázis-teljesítménnyel kapcsolatos problémák méréséhez és észleléséhez használt mérőszámok lekérdezési időtartamon, időtúllépési kérelmeken, túlzott várakozási időpontokon és hibás kérelmeken alapulnak. A metrikákkal kapcsolatos további információkért tekintse meg a jelen dokumentum [észlelési mérőszámok](sql-database-intelligent-insights.md#detection-metrics) című szakaszát.
 
-Azonosítja a teljesítmény romlását rögzíti a diagnosztikai naplóban intelligens bejegyzéseket, amelyek a következő tulajdonságok állnak az SQL Database:
+Azonosított SQL Database a teljesítmény romlását a diagnosztikai naplóban a következő tulajdonságokkal rendelkező intelligens bejegyzésekből kell rögzíteni:
 
 | Tulajdonság             | Részletek              |
 | :------------------- | ------------------- |
-| adatbázis-információ | Egy adatbázis, amelyre egy elemzést észlelt, például egy erőforrás-URI metaadatait. |
-| Megfigyelt időtartomány | Az észlelt insight időszak kezdési és befejezési idő. |
-| Érintett metrika | Létrejön egy elemzést okozó metrikák: <ul><li>A lekérdezés időtartamának növelése [másodperc].</li><li>Túl sok várakozó [másodperc].</li><li>Lejárt kérések [százalék].</li><li>Hibát eredményező kimenő kérelmek [százalék].</li></ul>|
-| Hatás érték | Metrika értékének mérni. |
-| Érintett lekérdezések és hibakódok | A lekérdezés kivonata vagy hibakód. Ezek a könnyen korrelációját, ha az érintett lekérdezések használhatók. Lekérdezés időtartamának növelése, várakozási idő, időkorlát számát, vagy hibakódok álló metrikákat. |
-| Észlelések | Az észlelési azonosítani az adatbázist egy eseményt az alatt. Nincsenek 15 észlelési mintákat. További információkért lásd: [adatbázis teljesítményproblémák megoldásában az Intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md). |
-| Kiváltó okok elemzése | Alapvető okok az emberek számára olvasható formátumban azonosított probléma. Elkészítette az elemzéseket a teljesítmény fokozása javaslat tartalmazhatja, ahol csak lehetséges. |
+| adatbázis-információk | Metaadatok egy olyan adatbázisról, amelyen a rendszer betekintést észlelt, például egy erőforrás-URI-t. |
+| Megfigyelt időtartam tartománya | Az észlelt elemzés időszakának kezdési és befejezési időpontja. |
+| Érintett mérőszámok | A betekintést kiváltó mérőszámok: <ul><li>A lekérdezés időtartama növekszik [másodperc].</li><li>Túlzott várakozás [másodperc].</li><li>Időtúllépési kérelmek [százalék].</li><li>Hiba miatti kérelmek [százalék].</li></ul>|
+| Hatás értéke | A mért metrika értéke. |
+| Érintett lekérdezések és hibakódok | Lekérdezési kivonat vagy hibakód. Ezek az érintett lekérdezések egyszerű összekapcsolására használhatók. A lekérdezés időtartamának növekedését, a várakozási időt, az időtúllépési számokat vagy a hibakódokat tartalmazó mérőszámok vannak megadva. |
+| Észlelések | Az esemény során azonosított észlelés az adatbázisban. 15 észlelési minta van. További információ: [az adatbázis teljesítményével kapcsolatos hibák elhárítása Intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md). |
+| Alapvető okok elemzése | Az ember által olvasható formátumban azonosított probléma okának elemzése. Egyes bepillantások teljesítmény-javító javaslatot is tartalmazhatnak, ahol lehetséges. |
 |||
 
-A gyakorlati áttekintése az Azure SQL Analytics Intelligent Insights használatával és a jellemző használati forgatókönyvei: a beágyazott videót:
+A Intelligent Insights és a Azure SQL Analytics használatának gyakorlati áttekintéséhez, valamint a tipikus használati forgatókönyvek esetében tekintse meg a beágyazott videót:
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Get-Intelligent-Insights-for-Improving-Azure-SQL-Database-Performance/player]
 >
 
-Intelligent Insights a szabadban, ragyogó felderítése és az SQL Database teljesítménnyel kapcsolatos problémák elhárítása. Az SQL Database és a felügyelt példány database teljesítménnyel kapcsolatos problémáinak elhárítása Intelligent Insights használatához lásd: [teljesítményproblémák elhárítása Azure SQL Database intelligens elemzésekkel](sql-database-intelligent-insights-troubleshoot-performance.md).
+Intelligent Insights a SQL Database teljesítménnyel kapcsolatos problémák felderítésében és hibaelhárításában. A Intelligent Insights a SQL Database és a felügyelt példányok adatbázisával kapcsolatos hibák elhárításához tekintse meg [a Azure SQL Database teljesítményével kapcsolatos hibák elhárítása a Intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md)használatával című témakört.
 
 ## <a name="configure-intelligent-insights"></a>Intelligent Insights konfigurálása
 
-Az Intelligent Insights kimenete egy intelligens diagnosztika teljesítménynaplóban. Ez a napló - streameli az Azure SQL Analytics az Azure Event Hubs és az Azure storage segítségével többféle módon használhatók fel vagy harmadik féltől származó terméket.
+A Intelligent Insights kimenete egy intelligens teljesítménnyel kapcsolatos diagnosztikai napló. Ez a napló több módon is felhasználható – az Azure SQL Analytics, az Azure Event Hubs és az Azure Storage szolgáltatásba, vagy egy harmadik féltől származó termékbe való továbbítással.
 
-- A termék használata [Azure SQL Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql) elemzések megtekintése az Azure portal felhasználói felületén keresztül. Ez egy, az integrált Azure-megoldás, és a leggyakoribb módja elemzések megtekintése.
-- A termék használatához az Azure Event Hubs egyéni monitorozási és riasztási forgatókönyvek fejlesztéséhez
-- A termék használatához és az Azure storage az egyéni alkalmazásfejlesztéshez, ilyen például egyéni adatokról szóló jelentéseket, hosszú távú archiválás és így tovább.
+- A termékkel [Azure SQL Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql) használatával megtekintheti az információkat a Azure Portal felhasználói felületén. Ez az integrált Azure-megoldás, amely a legfontosabb módszer az ismeretek megtekintésére.
+- A termék használata az Azure Event Hubs az egyéni figyelési és riasztási forgatókönyvek fejlesztéséhez
+- A terméket az Azure Storage szolgáltatással használhatja az egyéni alkalmazások fejlesztéséhez, például az egyéni jelentéskészítéshez, a hosszú távú adatarchiváláshoz és így tovább.
 
-Intelligent Insights más termékekkel Azure SQL Analytics, Azure Event Hub, az Azure storage vagy harmadik féltől származó termékek felhasználásra integrációja első engedélyezése Intelligent Insights naplózás (a "SQLInsights" napló) található a diagnosztika keresztül történik egy adatbázist, és az Intelligent Insights ezután konfigurálása (beállítások) panelén ezeket a termékeket egy közzétett adatok naplózása.
+A Intelligent Insights integrációja más termékekkel Azure SQL Analytics, az Azure Event hub, az Azure Storage vagy a harmadik féltől származó termékek fogyasztásra történő használatának első engedélyezése Intelligent Insights naplózás (a "SQLInsights" log) a diagnosztika során az adatbázis beállítások panelje, majd a Intelligent Insights naplózási adatnaplóba való továbbítása az egyik termékbe.
 
-Intelligent Insights naplózás engedélyezése és konfigurálása a fogyasztó termékhez is streamelhetők naplóadatok kapcsolatos további információkért lásd: [Azure SQL Database-metrikák és diagnosztikai célú naplózásának](sql-database-metrics-diag-logging.md).
+További információ a Intelligent Insights naplózásának engedélyezéséről, valamint a naplófájlok egy felhasználható termékre való továbbításának konfigurálásáról: [Azure SQL Database metrikák és diagnosztikai naplózás](sql-database-metrics-diag-logging.md).
 
-### <a name="set-up-with-azure-sql-analytics"></a>Az Azure SQL Analytics beállítása
+### <a name="set-up-with-azure-sql-analytics"></a>Beállítás a Azure SQL Analytics
 
-Az Azure SQL Analytics megoldás biztosítja a grafikus felhasználói felület, jelentéskészítési és riasztási funkciókat az adatbázis teljesítményét, és az Intelligent Insights diagnosztikai naplója adatait.
+Azure SQL Analytics a megoldás grafikus felhasználói felületet, jelentéskészítési és riasztási képességeket biztosít az adatbázis teljesítményére vonatkozóan, valamint a Intelligent Insights diagnosztikai napló adatait.
 
 > [!TIP]
-> Gyors bevezetés: Az első ki az alapoktól való használatakor az Intelligent Insights legegyszerűbben vele együtt az Azure SQL Analytics, amely adatbázis teljesítményproblémák grafikus felhasználói felületet biztosít. A marketplace-ről az Azure SQL Analytics megoldás hozzáadása, hozzon létre egy munkaterületet a megoldás belül, és az Intelligent Insights engedélyezni kívánt minden egyes adatbázishoz, adja meg a diagnosztikai beállítások paneljén látható az adatbázis "SQLInsights" bejelentkezés adatfolyamként a az Azure SQL Analytics munkaterületén.
+> Gyors első lépések: A Intelligent Insights használatával történő használatának legegyszerűbb módja, ha Azure SQL Analytics, amely grafikus felhasználói felületet biztosít az adatbázis teljesítményével kapcsolatos problémákhoz. Vegyen fel Azure SQL Analytics megoldást a piactéren belül, hozzon létre egy munkaterületet ebben a megoldásban, majd minden egyes adatbázishoz, amely számára engedélyezni kívánja a Intelligent Insightsét, konfigurálja az adatbázis diagnosztikai Beállítások paneljén a "SQLInsights Azure SQL Analytics munkaterülete.
 >
 
-Üzem előtti követelmény, hogy rendelkezik Azure SQL Analytics hozzáadott a marketplace-ről az Azure portal Irányítópultjára, és hozzon létre egy munkaterületet, lásd: [konfigurálása az Azure SQL Analytics](../azure-monitor/insights/azure-sql.md#configuration)
+Az előfeltétel, hogy a piactéren Azure SQL Analytics a Azure Portal irányítópulthoz, és a munkaterület létrehozásához lásd: [Azure SQL Analytics konfigurálása](../azure-monitor/insights/azure-sql.md#configuration)
 
-Az Azure SQL Analytics Intelligent Insights használatához konfigurálja az Intelligent Insights naplóadatokat az előző lépésben létrehozott Azure SQL Analytics-munkaterületnek is streamelhetők lásd [Azure SQL Database metrikák és diagnosztikai naplózás](sql-database-metrics-diag-logging.md).
+Ha Intelligent Insightst szeretne használni a Azure SQL Analytics, konfigurálja Intelligent Insights naplózási adatokat az előző lépésben létrehozott Azure SQL Analytics munkaterületre, és tekintse meg a [Azure SQL Database metrikák és diagnosztika naplózása](sql-database-metrics-diag-logging.md)című témakört.
 
-Az alábbi példa bemutatja, hogy az Azure SQL Analytics az Intelligent Insights tekinthetők meg:
+Az alábbi példa egy Azure SQL Analyticson keresztül megtekintett Intelligent Insights mutat be:
 
 ![Intelligent Insights jelentés](./media/sql-database-intelligent-insights/intelligent-insights-azure-sql-analytics.png)
 
-### <a name="set-up-with-event-hubs"></a>Állítsa be az Event hubs szolgáltatással
+### <a name="set-up-with-event-hubs"></a>Beállítás a Event Hubs
 
-Az Event Hubs Intelligent Insights használatához konfigurálja az Intelligent Insights naplóadatok streamelés az Event hubs szolgáltatásban, lásd: [Stream Azure diagnostics logs szolgáltatásba és az Event Hubs](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md).
+Ha Intelligent Insightst szeretne használni a Event Hubs, konfigurálja Intelligent Insights naplózási adatait, hogy a rendszer továbbítsa a Event Hubsba, lásd: [stream Azure Diagnostics-naplók a Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md).
 
-Az Event Hubs segítségével egyéni monitorozási és riasztási beállítása, lásd: [mit kell tenni a metrikák és diagnosztikai naplók az Event Hubs](sql-database-metrics-diag-logging.md#what-to-do-with-metrics-and-diagnostics-logs-in-event-hubs).
+Ha Event Hubst szeretne használni az egyéni figyelés és a riasztások beállításához, tekintse meg a [Mi a teendő a metrikákkal és a diagnosztikai naplókkal foglalkozó](sql-database-metrics-diag-logging.md#what-to-do-with-metrics-and-diagnostics-logs-in-event-hubs)témakört Event Hubs.
 
-### <a name="set-up-with-azure-storage"></a>Állítsa be az Azure Storage
+### <a name="set-up-with-azure-storage"></a>Beállítás az Azure Storage-ban
 
-Intelligent Insights használata a Storage, konfigurálja az Intelligent Insights naplóadatok Storage streamként, lásd: [Azure Storage-bA Stream](sql-database-metrics-diag-logging.md#stream-into-storage).
+Ha Intelligent Insightst szeretne használni a Storage szolgáltatással, konfigurálja Intelligent Insights naplófájlok adatfolyamként való továbbítását az [Azure Storage-ba](sql-database-metrics-diag-logging.md#stream-into-storage).
 
-### <a name="custom-integrations-of-intelligent-insights-log"></a>Egyéni integrációkat intelligens elemzési napló
+### <a name="custom-integrations-of-intelligent-insights-log"></a>Intelligent Insights napló egyéni integrációja
 
-Harmadik féltől származó eszközökkel, és így egyéni riasztási és fejlődés figyelése Intelligent Insights használatához lásd: [használja az adatbázis teljesítményét Intelligent Insights diagnosztikai naplója](sql-database-intelligent-insights-use-diagnostics-log.md).
+Ha a Intelligent Insightst harmadik féltől származó eszközökkel szeretné használni, vagy egyéni riasztási és figyelési fejlesztésre van használatban, tekintse meg [a Intelligent Insights adatbázis-diagnosztika naplójának használata](sql-database-intelligent-insights-use-diagnostics-log.md)című részt.
 
 ## <a name="detection-metrics"></a>Észlelési metrikák
 
-Észlelési modellek, amelyek létrehozzák az Intelligent Insights használt mérőszámok alapján figyelése:
+A Intelligent Insightst létrehozó modellek észleléséhez használt metrikák a figyelésen alapulnak:
 
 - Lekérdezés időtartama
-- Kérelem időtúllépése
-- Túl sok várakozási idő
-- Hibát eredményező kérések ki
+- Időtúllépési kérelmek
+- Túlzott várakozási idő
+- Hiba történt a kérelmeknél
 
-Lekérdezés időtartama és időtúllépése kérelmek használják elsődleges modelleket a problémák az adatbázis számítási feladatok teljesítményére. Használhatók, mert ezek közvetlenül mérik, hogy mi történik, a számítási feladatok. Észleli a számítási feladatok teljesítményére, minden lehetséges esetben teljesítményromlását tapasztalja, túlzott mértékű várakozási időt, és kibővített hibát eredményező kérések jelzi a problémákat, amelyek a számítási feladatok teljesítményére hatással, további modellek szolgálnak.
+A lekérdezés időtartama és az időtúllépési kérelmek elsődleges modellként használatosak az adatbázis-munkaterhelés teljesítményével kapcsolatos problémák észlelése érdekében. Ezeket azért használják, mert közvetlenül mérik, hogy mi történik a munkaterhelés esetében. A számítási feladatok teljesítményének összes lehetséges esetének észlelése érdekében a túlzott várakozási idő és a hibás kimenő kérelmek további modellként használatosak a munkaterhelés teljesítményét befolyásoló problémák jelzéséhez.
 
-A rendszer automatikusan tekinti a számítási feladatok módosításait, és a lekérdezési kérelmek száma az adatbázishoz való dinamikusan változásai döntse el, normál és out-egyaránt az adatbázis teljesítmény-küszöbértékeket.
+A rendszer automatikusan megtekinti a számítási feladatok változásait, és megváltoztatja az adatbázisra irányuló lekérdezési kérelmek számát, hogy dinamikusan meghatározza a normál és az általános adatbázis-teljesítmény küszöbértékeit.
 
-A metrikák mindegyikét együttese, amely kategorizálja a minden egyes teljesítménybeli problémát észlelt tudományosan származtatott adatok modellel különböző kapcsolatban. Egy intelligens elemzést keresztül adatokat tartalmazza:
+Az összes mérőszámot egy tudományosan származtatott adatmodellben, amely az észlelt teljesítménnyel kapcsolatos problémákat kategorizálja, különböző kapcsolatokban tekinti át. Az intelligens betekintés által biztosított információk a következők:
 
-- Részletes információk a teljesítménybeli problémát észlelt.
-- A kiváltó okok elemzése az észlelt problémát.
-- Javaslatokat tesz a megfigyelt SQL-adatbázis teljesítményének növelése érdekében ahol csak lehetséges.
+- Az észlelt teljesítménnyel kapcsolatos probléma részletei.
+- Az észlelt probléma kiváltó okának elemzése.
+- Javaslatok a figyelt SQL-adatbázis teljesítményének növeléséhez, ahol lehetséges.
 
 ## <a name="query-duration"></a>Lekérdezés időtartama
 
-A lekérdezési időtartam teljesítménycsökkenése modell egyes lekérdezések elemzi, és észleli a növekedés fordításához és a egy lekérdezést a teljesítmény alapkonfigurációval összevetett szükséges időt.
+A lekérdezés időtartamának romlási modellje elemzi az egyes lekérdezéseket, és észleli a lekérdezés fordításához és végrehajtásához szükséges időt a teljesítménnyel kapcsolatos alaptervhez képest.
 
-Ha az SQL Database beépített intelligenciával jelentősen növelheti a lekérdezés fordításához vagy lekérdezés végrehajtási idő, amely hatással van a számítási feladatok teljesítményére észlel, ezeket a lekérdezéseket, a lekérdezés időtartama vannak-e megjelölve teljesítménycsökkenési hibák.
+Ha SQL Database beépített intelligencia jelentős növekedést észlel a lekérdezések fordításában vagy a lekérdezés végrehajtási idején, amely hatással van a munkaterhelés teljesítményére, a lekérdezések lekérdezési időtartamának romlási problémái lesznek megjelölve.
 
-Az intelligens elemzési diagnosztikai naplót jelenít meg a lekérdezés romlik a teljesítmény lekérdezés kivonata. A lekérdezés kivonata azt jelzi, hogy a teljesítményromlást volt kapcsolatos lekérdezés fordításához vagy végrehajtási idő növekedése, ami nagyobb lekérdezési időtartamát.
+A Intelligent Insights diagnosztikai napló kimenetében a lekérdezés kivonata lecsökkentett teljesítményű. A lekérdezési kivonat azt jelzi, hogy a teljesítmény romlása kapcsolódott-e a lekérdezés fordításához vagy a végrehajtási idő növeléséhez, ami megnövelte a lekérdezés időtartamának időpontját.
 
-## <a name="timeout-requests"></a>Kérelem időtúllépése
+## <a name="timeout-requests"></a>Időtúllépési kérelmek
 
-Az időtúllépési kérelmek teljesítménycsökkenés modell elemzi az egyes lekérdezések, és növelése észleli a lekérdezés végrehajtási szintjén időtúllépések és az általános kérés időtúllépések, az adatbázis szintjén, a teljesítmény alapkonfiguráció időszak képest.
+Az időtúllépési kérelmek romlási modellje egyéni lekérdezéseket elemez, és észleli az időtúllépések növekedését a lekérdezés végrehajtási szintjén, valamint a kérelmek összesített időtúllépését az adatbázis szintjén, a teljesítmény-alapidőszakhoz képest.
 
-A lekérdezések némelyikének előfordulhat, hogy időtúllépés elérnék a végrehajtási fázis előtt is. Az azt jelenti, hogy a megszakított munkavállalók és a kérelmek az SQL Database beépített intelligenciával méri és elemzi az összes olyan lekérdezést, amely az adatbázis elérte a készülékeiken a végrehajtási fázisba, vagy nincs-e.
+Előfordulhat, hogy néhány lekérdezés időtúllépést okoz, még mielőtt elérné a végrehajtási szakaszt. A megszakított feldolgozók és a benyújtott kérelmek, SQL Database a beépített intelligenciával kapcsolatos intézkedések és az adatbázishoz tartozó összes olyan lekérdezés elemzése, amely elérte az adatbázist, függetlenül attól, hogy azok a végrehajtási fázisba kerültek-e.
 
-Után végrehajtott lekérdezések időtúllépések száma vagy a megszakított kérelem feldolgozók száma átlép a rendszer által felügyelt küszöbértéket, intelligens elemzési diagnosztikai naplót megjelenik.
+Miután a futtatott lekérdezések időtúllépési száma vagy a megszakított kérelmek száma átlépi a rendszer által felügyelt küszöbértéket, a diagnosztikai naplót intelligens megállapítások töltik fel.
 
-Az insights jön létre a lejárt kérések száma és időkorlátot lekérdezések száma tartalmaznak. Arra utalhat, hogy a teljesítményromlást kapcsolódó időtúllépési növelését a végrehajtási szakaszában, vagy az általános adatbázis-szint biztosítja. A növekedés időtúllépéseket sikertelennek az adatbázis teljesítményének jelentős, ha ezeket a lekérdezéseket, időkorlát teljesítménycsökkenési hibák vannak megjelölve.
+A generált megállapítások az időtúllépési kérelmek számát és az időtúllépési lekérdezések számát tartalmazzák. A teljesítmény romlásának jelzése a végrehajtási fázis időtúllépési növekedésével vagy az adatbázis teljes szintjének megadásával kapcsolatos. Ha az időtúllépések növekedése az adatbázis teljesítményének jelentős része, akkor ezek a lekérdezések időtúllépési teljesítménybeli romlási problémákként vannak megjelölve.
 
-## <a name="excessive-wait-times"></a>Túl sok várakozási időt
+## <a name="excessive-wait-times"></a>Túlzott várakozási idő
 
-A túlzott várakozási idő modell figyeli az egyes adatbázis-lekérdezések. Azt észleli, amelyek áthaladnak a rendszer által felügyelt abszolút küszöbértékek szokatlanul magas lekérdezés várakozási statisztikái. A következő lekérdezés túl sok várakozni metrikák jelennek meg az új SQL Server szolgáltatást, a Query Store várakozási statisztikái (sys.query_store_wait_stats) használatával:
+A túlzott várakozási idő modell figyeli az egyes adatbázis-lekérdezéseket. Szokatlanul nagy lekérdezések várakozási statisztikáit észleli, amelyek átlépték a rendszer által felügyelt abszolút küszöbértékeket. Az új SQL Server funkció, a lekérdezési tároló várakozási statisztikái (sys. query_store_wait_stats) használatával megfigyelhető a következő lekérdezés túlzott várakozási idejének mérőszámai:
 
-- Ért el erőforráskorlátok
-- Ért el a rugalmas készlet erőforráskorlátok
-- Túl sok dolgozó vagy munkamenet szálak
-- Túl sok adatbázis zárolása
-- Rendelkezésre álló memória mennyisége
-- Más várakozási statisztikái
+- Erőforrás-korlátok elérése
+- Rugalmas készlet erőforrás-korlátainak elérése
+- A munkavégző vagy a munkamenet szála túl sok
+- Túlzott adatbázis-zárolás
+- Memória nyomása
+- Egyéb várakozási statisztikák
 
-Ért el erőforráskorlátok vagy a rugalmas készlet erőforráskorlátok jelöl, hogy egy adott előfizetés vagy a rugalmas készlet rendelkezésre álló erőforrások fogyasztásának átlépni abszolút küszöbértékeket. Statisztikánkat a számítási feladatok teljesítménycsökkenés jelzik. Feldolgozó vagy munkamenet szálak száma azt jelzi, hogy egy feltételt, amelyben a munkaszálak vagy által kezdeményezett munkamenetek száma túllépte a abszolút küszöbértékeket. Statisztikánkat a számítási feladatok teljesítménycsökkenés jelzik.
+Az erőforrás-korlátok vagy a rugalmas készlet erőforrás-korlátainak elérése azt jelzi, hogy az előfizetésben vagy a rugalmas készletben elérhető erőforrások felhasználása túllépte az abszolút küszöbértékeket. Ezek a statisztikák a munkaterhelés teljesítményének csökkenését jelzik. A munkavégző vagy a munkamenet-szálak túlzott száma azt jelzi, hogy a feldolgozói szálak vagy munkamenetek száma az abszolút küszöbértékeket eredményezte. Ezek a statisztikák a munkaterhelés teljesítményének csökkenését jelzik.
 
-Túl sok adatbázis-zárolást azt jelzi, hogy egy feltételt, amelyben a zárolások az adatbázisok száma elért abszolút küszöbértékeket. Ez az állapot azt jelzi, egy számítási feladat teljesítménycsökkenés. Egy feltétel, a memória kérő szálak száma biztosít, amelyben nyomás memóriát túllépte az egy abszolút küszöbértéket. Ez az állapot azt jelzi, egy számítási feladat teljesítménycsökkenés.
+A túlzott adatbázis-zárolás olyan feltételt jelöl, amelyben az adatbázis Zárolások száma abszolút küszöbértéket eredményezett. Ez a stat a munkaterhelés teljesítményének csökkenését jelzi. A memória-nyomás olyan feltétel, amelyben a memóriát kérő szálak száma abszolút küszöbértéket eredményezett. Ez a stat a munkaterhelés teljesítményének csökkenését jelzi.
 
-Más várakozási statisztikái észlelési azt jelzi, hogy egy feltételt, amelyben a Query Store várakozási statisztikái keresztül mért vegyes metrikák túllépte az abszolút küszöbértéket. Statisztikánkat a számítási feladatok teljesítménycsökkenés jelzik.
+Az egyéb várakozási statisztikák észlelése azt a feltételt jelzi, hogy a lekérdezési tároló várakozási statisztikájában mért különféle mérőszámok abszolút küszöbértéket mutatnak. Ezek a statisztikák a munkaterhelés teljesítményének csökkenését jelzik.
 
-Miután túlzott várakozási időt észlelése esetén érhető el, az adatoktól függően a Intelligent Insights diagnosztikai jelentkezzen kimenetek kivonatok romlik a teljesítmény, a lekérdezések Várakozás, végrehajtás okozó metrikák részleteit hatású és az érintett lekérdezések és mért várakozási idő.
+Ha a rendszer túlzott várakozási időt észlel, a rendelkezésre álló adatoktól függően a Intelligent Insights diagnosztikai napló kimenete a teljesítményre gyakorolt hatásnak és az érintett lekérdezéseknek az eredményét eredményezi mért várakozási idő.
 
-## <a name="errored-requests"></a>Hibát eredményező kérések
+## <a name="errored-requests"></a>Hibás kérelmek
 
-A hibát eredményező kérések teljesítménycsökkenés modell, figyelők egyéni lekérdezések és növelését észleli, hogy ki a hibát eredményező képest az alapkonfiguráció időszak lekérdezések száma. Ez a modell is figyeli a kritikus kivételek, amelyek áthaladnak a beépített intelligenciával az SQL Database által kezelt abszolút küszöbértékeket. A rendszer automatikusan tekinti a figyelt időszakban az adatbázis és a fiókok számára bármilyen számítási feladat változását követő végzett lekérdezésekre vonatkozó kérelmek száma.
+A hibás kérelmek romlási modellje figyeli az egyes lekérdezéseket, és az alapidőszakhoz képest hibát okozó lekérdezések számának növekedését észleli. Ez a modell azokat a kritikus kivételeket is figyeli, amelyek SQL Database beépített intelligencia által kezelt abszolút küszöbértékeket. A rendszer automatikusan figyelembe veszi az adatbázisnak küldött lekérdezési kérések számát, valamint a figyelt időszakban felmerülő munkaterhelés-változásokhoz tartozó fiókokat.
 
-A hibát eredményező kérések kérelmek teljes száma képest mért növekedése a számítási feladatok teljesítményére is jelentős sikertelennek, amikor a rendszer megjelölt érintett lekérdezések hibát eredményező kérések teljesítménycsökkenési hibák.
+Ha a hibás kérelmeknek a kérelmek teljes számához viszonyított megváltozása a számítási teljesítmény szempontjából jelentősnek számít, az érintett lekérdezések hibát jeleznek a teljesítmény romlásával kapcsolatban.
 
-Az Intelligent Insights napló jelenít meg a hibát eredményező kérések száma. Azt jelzi, hogy a teljesítményromlást volt kapcsolatos-e hibát eredményező kérések növekedését, vagy egy figyelt kritikus küszöbérték és a teljesítmény romlását mért időt határainak átlépése.
+A Intelligent Insights napló a hibás kérelmek számát adja eredményül. Ez azt jelzi, hogy a teljesítmény romlása a hibás kérelmek növekedésével vagy a figyelt kritikus kivételek küszöbértékének és a teljesítmény romlásának mért idejével kapcsolatos-e.
 
-A figyelt kritikus kivételek adatbázisközi a abszolút küszöbértékeket a rendszer kezeli, a kritikus kivétel részletei jön létre egy intelligens elemzés.
+Ha a figyelt kritikus kivételek bármelyike átlépi a rendszer által kezelt abszolút küszöbértékeket, akkor a kritikus kivétel részleteivel intelligens elemzés jön létre.
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg, hogyan [intelligens elemzésekkel SQL Database teljesítménnyel kapcsolatos problémáinak elhárítása](sql-database-intelligent-insights-troubleshoot-performance.md).
-- Használja a [Intelligent Insights az SQL Database teljesítményét diagnosztikai napló](sql-database-intelligent-insights-use-diagnostics-log.md).
-- Ismerje meg, hogyan [figyeli az SQL Database használatával az SQL Analytics](../azure-monitor/insights/azure-sql.md).
-- Ismerje meg, hogyan [gyűjtése és felhasználása a naplófájlok adatait az Azure-erőforrások](../azure-monitor/platform/diagnostic-logs-overview.md).
+- Ismerje meg, hogyan lehet [elhárítani a Intelligent Insightsokkal kapcsolatos teljesítményproblémák SQL Database](sql-database-intelligent-insights-troubleshoot-performance.md).
+- Használja a [Intelligent Insights SQL Database Performance Diagnostics-naplót](sql-database-intelligent-insights-use-diagnostics-log.md).
+- Megtudhatja, hogyan [figyelheti SQL Database az SQL Analytics használatával](../azure-monitor/insights/azure-sql.md).
+- Ismerje meg, hogyan [gyűjthet és használhat adatokat az Azure-erőforrásokból](../azure-monitor/platform/resource-logs-overview.md).

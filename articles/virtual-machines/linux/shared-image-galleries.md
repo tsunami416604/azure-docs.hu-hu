@@ -1,33 +1,32 @@
 ---
-title: Virtuálisgép-rendszerképek megoszthatja megosztott katalógusok |} A Microsoft Docs
-description: Megtudhatja, hogyan shread kép katalógusok használata Virtuálisgép-rendszerképek a szervezetben.
+title: Virtuálisgép-lemezképek megosztása megosztott galériákkal | Microsoft Docs
+description: Megtudhatja, hogyan használhatja a megosztott képtárakat a virtuális gépek rendszerképeinek megosztására a szervezeten belül.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: axayjo
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/10/2018
-ms.author: akjosh; cynthn
+ms.date: 05/06/2019
+ms.author: akjosh
+ms.reviewer: cynthn
 ms.custom: ''
-ms.openlocfilehash: 8f2253c70a75a7494c840155a2b032e1b5c55dfb
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 862f9f3001d67845c1177e65fb09de7f6ec17ec9
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47047493"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70091399"
 ---
-# <a name="shared-image-galleries-overview"></a>Megosztott kép katalógusok áttekintése
+# <a name="shared-image-galleries-overview"></a>Megosztott képgyűjtemények – áttekintés
 
 [!INCLUDE [virtual-machines-common-shared-image-galleries](../../../includes/virtual-machines-common-shared-image-galleries.md)]
 
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg, hogyan [megosztott rendszerképek üzembe helyezése](shared-images.md).
+Ismerje meg, hogyan [telepíthet megosztott lemezképeket](shared-images.md).

@@ -1,6 +1,6 @@
 ---
-title: Hitelesítő adatokat küldenie a Desired State Configuration használatával
-description: Útmutató a biztonságos hitelesítő adatok átadása az Azure virtual machines használatával a PowerShell Desired State Configuration (DSC).
+title: Hitelesítő adatok továbbítása az Azure-ba a kívánt állapot-konfigurációval
+description: Ismerje meg, hogyan továbbíthatja biztonságosan a hitelesítő adatokat az Azure Virtual Machines szolgáltatásba a PowerShell desired State Configuration (DSC) használatával.
 services: virtual-machines-windows
 documentationcenter: ''
 author: bobbytreed
@@ -10,32 +10,31 @@ tags: azure-resource-manager
 keywords: dsc
 ms.assetid: ea76b7e8-b576-445a-8107-88ea2f3876b9
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: 6618906f7b1b063de18a4f8a418c1c2744ca1533
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 38a302545f2dd46a8123816a41c97ae26ee4c260
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55975784"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092513"
 ---
-# <a name="pass-credentials-to-the-azure-dscextension-handler"></a>Hitelesítő adatokat adnak át az Azure DSCExtension kezelő
+# <a name="pass-credentials-to-the-azure-dscextension-handler"></a>Hitelesítő adatok továbbítása az Azure DSCExtension-kezelőhöz
 
-Ez a cikk ismerteti a Desired State Configuration (DSC) bővítmény az Azure-hoz. A DSC-bővítmény kezelő áttekintését lásd: [bemutatása az Azure Desired State Configuration bővítmény kezelő](dsc-overview.md).
+Ez a cikk az Azure kívánt State Configuration (DSC) bővítményét ismerteti. A DSC bővítmény kezelőjének áttekintését lásd: [Az Azure desired State Configuration Extension kezelő bemutatása](dsc-overview.md).
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
-## <a name="pass-in-credentials"></a>A hitelesítő adatokat adja át
+## <a name="pass-in-credentials"></a>Hitelesítő adatok továbbítása
 
-A konfigurációs folyamat részeként, előfordulhat, hogy kell beállítása a felhasználói fiókok,-szolgáltatások eléréséhez, vagy program telepítése a felhasználói környezetben. Ehhez az ezekről a dolgokról, meg kell adnia hitelesítő adatokat.
+A konfigurációs folyamat részeként felhasználói fiókokat, hozzáférési szolgáltatásokat kell beállítania, vagy telepítenie kell egy programot egy felhasználói környezetben. Ezen dolgok végrehajtásához hitelesítő adatokat kell megadnia.
 
-DSC segítségével állítsa be a paraméteres konfigurációkat. A paraméteres configuration hitelesítő adatok a konfiguráció átadott és .mof fájlokat biztonságosan tárolva. Az Azure Bővítménykezelő hitelesítőadat-kezelés azáltal, hogy a tanúsítványok automatikus felügyeleti egyszerűbbé teszi.
+A DSC használatával lehet beállítani a paraméteres konfigurációkat. A paraméteres konfigurációban a hitelesítő adatok átkerülnek a konfigurációba, és biztonságosan tárolódnak a. MOF fájlban. Az Azure-bővítmény kezelője leegyszerűsíti a hitelesítő adatok kezelését a tanúsítványok automatikus felügyeletének biztosításával.
 
-A következő DSC-konfiguráció parancsfájl egy helyi felhasználói fiókot hoz létre a megadott jelszó:
+A következő DSC-konfigurációs szkript létrehoz egy helyi felhasználói fiókot a megadott jelszóval:
 
 ```powershell
 configuration Main
@@ -61,13 +60,13 @@ configuration Main
 }
 ```
 
-Fontos, hogy tartalmazzák **csomópont localhost** a konfiguráció részeként. A kiterjesztés kezelő kifejezetten keres a **csomópont localhost** utasítást. A jelen nyilatkozat hiányzik, a következő lépések nem működnek. Emellett az is fontos, hogy tartalmazza a typecast **[PsCredential]**. Az adott típusú elindítja a bővítményt a hitelesítő adatok titkosításához.
+Fontos, hogy a konfiguráció részeként belefoglalja a **localhost csomópontot** . A bővítmény kezelője kifejezetten a **Node localhost** utasítást keresi. Ha ez az utasítás hiányzik, a következő lépések nem működnek. Fontos továbbá a typecast **[PsCredential]** belefoglalása is. Az adott típus aktiválja a bővítményt a hitelesítő adatok titkosításához.
 
-Ez a szkript közzététele az Azure Blob storage:
+A szkript közzététele az Azure Blob Storage-ban:
 
 `Publish-AzVMDscConfiguration -ConfigurationPath .\user_configuration.ps1`
 
-Az Azure-DSC-bővítmény és a hitelesítő adatok megadása:
+Az Azure DSC-bővítmény beállításához és a hitelesítő adatok megadásához:
 
 ```powershell
 $configurationName = 'Main'
@@ -80,15 +79,15 @@ $vm = Set-AzVMDscExtension -VMName $vm -ConfigurationArchive $configurationArchi
 $vm | Update-AzVM
 ```
 
-## <a name="how-a-credential-is-secured"></a>A hitelesítő adatok titkosításának módját
+## <a name="how-a-credential-is-secured"></a>A hitelesítő adatok biztonságossá tétele
 
-Ezt a kódot futtató kéri a hitelesítő adatait. A hitelesítő adat áll rendelkezésre, miután rövid ideig tárolja a memóriában. Ha a hitelesítő adatok használatával van közzétéve a **Set-AzVMDscExtension** parancsmagot, a hitelesítő adatok átkerülnek a virtuális gép HTTPS-kapcsolaton keresztül. A virtuális gépen az Azure tárolja a hitelesítő adatokat a lemezen a helyi virtuális gép tanúsítvány használatával titkosítja. A hitelesítő adatok visszafejtése röviden a memóriában, és ezután újból titkosított átadása, DSC.
+A kód futtatása hitelesítő adatokat kér. A hitelesítő adatok megadása után a rendszer röviden tárolja a memóriában. Ha a hitelesítő adatok a **set-AzVMDscExtension** parancsmaggal lettek közzétéve, a hitelesítő adatokat a rendszer HTTPS-kapcsolaton keresztül továbbítja a virtuális géphez. A virtuális gépen az Azure a helyi virtuális gép tanúsítványával tárolja a lemezen titkosított hitelesítő adatokat. A hitelesítő adatokat a rendszer röviden visszafejti a memóriában, majd újra titkosítja, hogy átadja a DSC-nek.
 
-Ez a folyamat eltér attól az [biztonságos konfigurációval anélkül, hogy a kiterjesztés kezelő](/powershell/dsc/securemof). Az Azure-környezet akadályozható meg a tanúsítványok segítségével biztonságosan konfigurációs adatok továbbítására. A DSC-bővítmény kezelő használatakor nem kell megadnia **$CertificatePath** vagy egy **$CertificateID**/ **$Thumbprint** bejegyzést**ConfigurationData**.
+Ez a folyamat eltér [a bővítmény-kezelő nélküli biztonságos konfigurációk használatával](/powershell/dsc/securemof). Az Azure-környezet lehetővé teszi, hogy biztonságos módon továbbítsa a konfigurációs adatokat a tanúsítványokon keresztül. A DSC bővítmény kezelőjének használatakor nem kell **$CertificatePath** vagy **$CertificateID**/  **$thumbprint** bejegyzést megadnia a **ConfigurationData**-ben.
 
 ## <a name="next-steps"></a>További lépések
 
-- Get- [Azure DSC bővítmény kezelő bemutatása](dsc-overview.md).
-- Vizsgálja meg a [Azure Resource Manager-sablon a DSC-bővítmény](dsc-template.md).
-- További információ a PowerShell DSC, nyissa meg a [PowerShell dokumentációs központban](/powershell/dsc/overview).
-- A további funkciókat, amelyeket felügyelhet a PowerShell DSC használatával, és további DSC-erőforrásokat, keresse meg a [PowerShell-galériából](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0).
+- Bevezetés az [Azure DSC bővítmény kezelőjébe](dsc-overview.md).
+- Vizsgálja [meg a DSC-bővítmény Azure Resource Manager sablonját](dsc-template.md).
+- A PowerShell DSC-vel kapcsolatos további információkért nyissa meg a [PowerShell dokumentációs](/powershell/dsc/overview)központját.
+- Ha további funkciókat szeretne kezelni a PowerShell DSC használatával, és további DSC-erőforrásokhoz, keresse fel a [PowerShell](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0)-galériát.

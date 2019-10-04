@@ -1,157 +1,151 @@
 ---
-title: Kapcsolatok konfigurálása a virtuális gépekről az Azure-ban (nagyméretű példányok) SAP Hana-hoz |} A Microsoft Docs
-description: Kapcsolatok konfigurálása a virtuális gépeket, az SAP HANA használata az Azure-ban (nagyméretű példányok).
+title: Kapcsolat beállítása virtuális gépekről az Azure-ba SAP HANA (nagyméretű példányok) | Microsoft Docs
+description: Kapcsolat beállítása virtuális gépekről az Azure-beli SAP HANA használatára (nagyméretű példányok).
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: jeconnoc
+author: msjuergent
+manager: patfilot
 editor: ''
+tags: azure-resource-manager
+keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/10/2018
-ms.author: rclaus
+ms.date: 05/25/2019
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2628cafada47b2602b195c44d4b6f2e6b16012ef
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 919e253b6d9ddf8d65f86897a299416e93f3e660
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58092769"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099913"
 ---
-# <a name="connecting-azure-vms-to-hana-large-instances"></a>Az Azure virtuális gépek csatlakoztatásához a nagyméretű HANA-példányok
+# <a name="connecting-azure-vms-to-hana-large-instances"></a>Azure-beli virtuális gépek csatlakozása nagy méretű HANA-példányokhoz
 
-A cikk [Mi az SAP HANA az Azure-ban (nagyméretű példányok)?](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) említi, hogy a minimális telepítéssel HANA nagyméretű példányok az Azure-ban az SAP alkalmazásrétegre az alábbihoz hasonló:
+Mi a [SAP HANA az Azure-ban (nagyméretű példányok)?](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) megemlíti, hogy a HANA nagyméretű példányainak az Azure-beli SAP-alkalmazási réteggel való minimális üzembe helyezése a következőhöz hasonlít:
 
-![SAP HANA az Azure-ban (nagyméretű példányok) és a helyszínen csatlakoztatott Azure virtuális hálózat](./media/hana-overview-architecture/image3-on-premises-infrastructure.png)
+![Azure-VNet az Azure-ban (nagyméretű példányok) és a helyszíni SAP HANAhoz csatlakoztatva](./media/hana-overview-architecture/image1-architecture.png)
 
-Keresése az Azure virtuális hálózat oldalán közelebb, tisztában vagyunk vele van szükség:
+Az Azure Virtual Network oldalának alaposabban megkeresve a következőkre van szükség:
 
-- A SAP alkalmazás réteg a virtuális gépek telepítéséhez fog, amelybe az Azure virtuális hálózat definíciója.
-- Az Azure virtuális hálózatban, amely tényleg, amelybe a virtuális gépek üzembe egy alapértelmezett alhálózat definíciója.
-- A létrehozott Azure virtuális hálózat rendelkeznie kell legalább egy Virtuálisgép-alhálózatot és egy Azure ExpressRoute virtuális hálózati átjáró-alhálózat. Ezen alhálózatok IP-címtartományok megadott és tárgyaltuk, a következő szakaszokban kell rendelni.
+- Annak az Azure-beli virtuális hálózatnak a definíciója, amelyre telepíteni fogja az SAP-alkalmazás rétegében lévő virtuális gépeket.
+- Egy alapértelmezett alhálózat definíciója az Azure Virtual Networkben, amely valójában a virtuális gépek üzembe helyezésének egyike.
+- A létrehozott Azure-beli virtuális hálózatnak rendelkeznie kell legalább egy virtuálisgép-alhálózattal és egy Azure ExpressRoute virtuális hálózati átjáró-alhálózattal. Ezeket az alhálózatokat az IP-címtartományok a következő szakaszokban meghatározott módon kell kiosztani.
 
-Lássunk erre egy kicsit közelebb HANA nagyméretű példányok az Azure virtuális hálózat létrehozásakor.
 
-## <a name="create-the-azure-virtual-network-for-hana-large-instances"></a>HANA nagyméretű példányok az Azure virtuális hálózat létrehozása
+## <a name="create-the-azure-virtual-network-for-hana-large-instances"></a>Azure-beli virtuális hálózat létrehozása a HANA nagyméretű példányaihoz
 
 >[!Note]
->Az Azure virtuális hálózat HANA nagyméretű példányok az Azure Resource Manager üzemi modellel kell létrehozni. A régi Azure üzembehelyezési modell, a klasszikus üzemi modellt gyakran nevezik a nagyméretű HANA-példány megoldás által nem támogatott.
+>A HANA nagyméretű példányok Azure-beli virtuális hálózatát a Azure Resource Manager üzemi modell használatával kell létrehozni. A HANA nagyméretű példány megoldás nem támogatja a régebbi Azure-alapú üzemi modellt, amelyet gyakran a klasszikus üzemi modellnek is nevezünk.
 
-Az Azure portal, PowerShell, Azure-sablon vagy az Azure CLI segítségével a virtuális hálózat létrehozásához. (További információkért lásd: [hozzon létre egy virtuális hálózatot az Azure portal használatával](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network)). Az alábbi példában áttekintjük az Azure portal használatával létrehozott virtuális hálózat.
+A virtuális hálózat létrehozásához használhatja a Azure Portal, a PowerShell, az Azure-sablon vagy az Azure CLI-t. (További információ: [virtuális hálózat létrehozása a Azure Portal használatával](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network)). Az alábbi példában a Azure Portal használatával létrehozott virtuális hálózatot tekintjük át.
 
-Láthatjuk, hogy hogyan kapcsolódik egymáshoz a virtuális hálózatok azon mi látható, különböző IP-címtartományok. Amikor hogy beszélünk a **címtér**, az Azure virtuális hálózat számára engedélyezett a címtér alatt azt értjük. Ezt a címteret is a címtartományt, amely a virtuális hálózatot használ a BGP-útvonalpropagálás. Ez **címtér** Itt láthatók:
+Ha a jelen dokumentációban található **címterület** hivatkozik arra, hogy az Azure-beli virtuális hálózat által használt címtartomány engedélyezve legyen. Ez a Címterület azt a címtartományt is használja, amelyet a virtuális hálózat a BGP-útvonal propagálásához használ. Ez a **címterület** itt látható:
 
-![Megjelenik az Azure Portalon egy Azure virtuális hálózat címtere](./media/hana-overview-connectivity/image1-azure-vnet-address-space.png)
+![A Azure Portalban megjelenített Azure-beli virtuális hálózat címterület](./media/hana-overview-connectivity/image1-azure-vnet-address-space.png)
 
-Az Azure virtuális hálózat megadott 10.16.0.0/16, az előző példában egy inkább nagy és széles IP-címtartomány használatára. További alhálózatokat a virtuális hálózaton belüli összes IP-címtartományok, így azok a tartományok,-címtéren belüli rendelkezhet. Általában nem ajánlott ilyen egy nagy-címtartományt az Azure-ban egyetlen virtuális hálózaton. Azonban az alhálózatok, az Azure virtuális hálózat meghatározott vizsgáljuk meg:
+Az előző példában a 10.16.0.0/16 esetében az Azure-beli virtuális hálózat a használathoz meglehetősen nagy és széles körű IP-címtartományt kapott. Ezért az ezen a virtuális hálózaton belüli további alhálózatok összes IP-címének tartománya az adott címtartomány tartományán belül lehet. Az Azure-beli virtuális hálózatok esetében általában nem ajánlott egy ilyen nagy címtartomány használata. Nézzük meg az Azure Virtual Networkben definiált alhálózatokat:
 
-![Az Azure virtual network-alhálózatokat és az IP-címtartományok](./media/hana-overview-connectivity/image2b-vnet-subnets.png)
+![Azure-beli virtuális hálózati alhálózatok és azok IP-címtartományok](./media/hana-overview-connectivity/image2b-vnet-subnets.png)
 
-Áttekintjük a virtuális hálózat (Itt "alapértelmezett" is nevezik) első Virtuálisgép-alhálózat és a egy "GatewaySubnet" nevű alhálózat.
+Megvizsgálunk egy virtuális hálózatot az első virtuálisgép-alhálózattal (itt az "alapértelmezett") és egy "GatewaySubnet" nevű alhálózatot.
 
-Az a két előző grafikus a **virtuális hálózat címtere** egyaránt vonatkozik a **az alhálózati IP-címtartományt az Azure virtuális gépek** , és hogy a virtuális hálózati átjárót.
+A két előző ábrán a **virtuális hálózati címtartomány** az Azure virtuális gép és a virtuális hálózati átjáró ALHÁLÓZATI **IP-címének tartományát** is tartalmazza.
 
-Korlátozhatja a **virtuális hálózat címtere** az adott tartományokra, minden egyes alhálózatot használja. Azt is megadhatja a **virtuális hálózat címtere** egy virtuális hálózat több adott címtartományok beállítását is, itt látható módon:
+A **virtuális hálózati címtartomány** az egyes alhálózatok által használt meghatározott tartományokra korlátozható. A virtuális hálózatok virtuális hálózati **címterület** több megadott tartományként is definiálható, ahogy az itt látható:
 
-![Az Azure virtuális hálózat címtere a két szóközt tartalmazó](./media/hana-overview-connectivity/image3-azure-vnet-address-space_alternate.png)
+![Azure-beli virtuális hálózati címtartomány két szóközzel](./media/hana-overview-connectivity/image3-azure-vnet-address-space_alternate.png)
 
-Ebben az esetben a **virtuális hálózat címtere** definiált két szóközt tartalmaz. Ezek ugyanazok, mint az, hogy az alhálózati IP-címtartományt a virtuális hálózati átjáró és az Azure virtuális Géphez tartozó IP-címtartományok. 
+Ebben az esetben a **virtuális hálózati címtartomány** két szóközzel van definiálva. Ugyanazok, mint az Azure-beli virtuális gép és a virtuális hálózati átjáró alhálózat IP-címének tartományában definiált IP-címtartományok. 
 
-Bármely elnevezési szabványnak, például a bérlői alhálózathoz (Virtuálisgép-alhálózatok) is használhatja. Azonban **mindig kell egyet, és csak egyet, az egyes virtuális hálózati átjáró-alhálózat** az SAP HANA az Azure-ban (nagyméretű példányok) ExpressRoute-kapcsolatcsoporthoz csatlakozik. És **az átjáró-alhálózat "GatewaySubnet" névvel rendelkezik** , győződjön meg arról, hogy az ExpressRoute-átjárót megfelelően kerül.
+Bármely, a bérlői alhálózathoz (VM-alhálózatokhoz) hasonló elnevezési szabványt használhat. Az Azure-beli (nagyméretű példányok) ExpressRoute áramkörön lévő SAP HANAhoz **tartozó virtuális hálózatok esetében azonban mindig csak egy, és csak egy átjáró-alhálózat tartozhat** . Az **átjáró-alhálózat neve "GatewaySubnet" kell legyen** , hogy a ExpressRoute-átjáró megfelelően legyen elhelyezve.
 
 > [!WARNING] 
-> Rendkívül fontos, hogy az átjáró-alhálózat mindig neve "GatewaySubnet".
+> Fontos, hogy az átjáró alhálózatának neve mindig "GatewaySubnet" legyen.
 
-Több Virtuálisgép-alhálózatok és a nem összefüggő címtartományok is használhatja. Ezek címtartományokat kell fedezni az **virtuális hálózat címtere** a virtuális hálózat. Ezek lehetnek az összesített formában. Ezek is lehetnek a Virtuálisgép-alhálózatok és az átjáró-alhálózat pontos tartományok listáján.
+Több virtuálisgép-alhálózatot és nem folytonos címtartományt is használhat. Ezeket a címtartományt a virtuális hálózat **virtuális hálózati címterület** fedi le. Lehetnek aggregált formában. Emellett a virtuálisgép-alhálózatok és az átjáró-alhálózatok pontos tartományának listáját is megtekinthetik.
 
-Következő található egy összefoglaló az a fontos alapvető tudnivalók az Azure virtuális hálózat, amely kapcsolódik a HANA nagyméretű példányok:
+Az alábbiakban összefoglaljuk a HANA nagyméretű példányokhoz csatlakozó Azure-beli virtuális hálózat fontos tényeit:
 
-- Kell küldenie a **virtuális hálózat címtere** a Microsoftnak, amikor egy nagyméretű HANA-példányok kezdeti telepítése. 
-- A **virtuális hálózat címtere** egy körére, amely lefedi a tartományokat mindkét az alhálózati IP-címtartományt a virtuális hálózati átjáró és az Azure virtuális gép is lehet.
-- Vagy több tartomány, mind a különböző IP-címtartományok VM alhálózati IP-cím tranzakciónaplók és a virtuális hálózati átjáró IP-címtartomány küldhet.
-- A definiált **virtuális hálózat címtere** útválasztási BGP-útvonalpropagálás szolgál.
-- Az átjáró-alhálózat nevét kell lennie: **"GatewaySubnet"**.
-- A címtér a nagyméretű HANA-példány oldalon szűrőként engedélyezése vagy letiltása a forgalom, a nagyméretű HANA-példány egység az Azure-ból szolgál. Az Azure virtuális hálózat és az IP-címtartományok, a nagyméretű HANA-példány oldalon szűréshez konfigurált BGP útválasztási adatokat meg kell egyeznie. Ellenkező esetben fordulhat elő kapcsolódási problémák.
-- Az átjáró alhálózatának ismertetése egyes részletei később, a szakaszban tárgyalt **két virtuális hálózat HANA nagyméretű példány expressroute.**
+- Ha a HANA nagyméretű példányainak kezdeti üzembe helyezését végzi, a **virtuális hálózati címtartomány** elküldését a Microsoftnak kell elküldenie. 
+- A **virtuális hálózati címtartomány** egy nagyobb tartomány, amely az Azure virtuális gép és a virtuális hálózati átjáró ALHÁLÓZATI IP-címeinek tartományait fedi le.
+- Vagy több olyan tartományt is elküldhet, amely a virtuálisgép-alhálózatok IP-címeinek és a virtuális hálózati átjáró IP-címének különböző IP-címtartományok körét fedi le.
+- A **virtuális hálózati címtartomány** definiálása a BGP-útválasztás propagálásához használatos.
+- Az átjáró-alhálózat nevének a következőket kell tennie: **"GatewaySubnet"** .
+- A címtartomány a HANA nagyméretű példányának szűrője, amely engedélyezi vagy letiltja az Azure-ból származó HANA nagyméretű példány-egységek forgalmát. Az Azure-beli virtuális hálózat BGP-útválasztási információi, valamint a HANA nagyméretű példányának szűrésére konfigurált IP-címtartományok egyezniük kell egymással. Ellenkező esetben csatlakozási problémák léphetnek fel.
+- A későbbiekben tárgyalt átjáró-alhálózatról a **virtuális hálózat a HANA nagyméretű példány ExpressRoute** való csatlakoztatásáról szóló szakaszban olvashat bővebben.
 
 
 
-## <a name="different-ip-address-ranges-to-be-defined"></a>Különböző IP-címtartományokat meghatározni 
+## <a name="different-ip-address-ranges-to-be-defined"></a>Különböző IP-címtartományok definiálása 
 
-Már bevezettük a nagyméretű HANA-példányok üzembe helyezéséhez szükséges IP-címtartományok egyes. Azonban további IP-címtartományokat, amelyek is fontos. Vegyünk át néhány további részleteket. A következő IP-címek nem az összes szükséges küldhető el a Microsoftnak. Azonban szüksége határozza meg azokat a kezdeti telepítés kérelem elküldése előtt:
+A HANA nagyméretű példányok üzembe helyezéséhez szükséges IP-címtartományok némelyike már be lett vezetve. Azonban további IP-címtartományok is fontosak. A következő IP-címtartományok egyikét sem kell elküldenie a Microsoftnak. Azonban a kezdeti központi telepítésre vonatkozó kérelem elküldése előtt meg kell határoznia őket:
 
-- **Virtuális hálózat címtere**: A **virtuális hálózat címtere** van a cím terület paraméter az Azure virtuális hálózathoz rendelt IP-címtartományokat. Ezeket a hálózatokat a SAP HANA nagyméretű példányok környezet csatlakozni.
+- **Virtuális hálózati címtartomány**: A **virtuális hálózati címtartomány** az Azure-beli virtuális hálózatok címtartomány-paraméteréhez hozzárendelt IP-címtartományok. Ezek a hálózatok a SAP HANA nagyméretű példány-környezethez csatlakoznak. Javasoljuk, hogy ez a Címterület-paraméter többsoros érték legyen. Tartalmaznia kell az Azure-beli virtuális gép alhálózati tartományát és az Azure-átjáró alhálózatának tartományát. Ez az alhálózat-tartomány az előző ábrán látható. NEM lehet átfedésben a helyszíni vagy a kiszolgáló IP-készletével vagy az ER-P2P címtartományok. Hogyan érheti el ezeket az IP-címtartományt (ka) t? A vállalati hálózati csapatának vagy szolgáltatójának egy vagy több olyan IP-címtartományt kell megadnia, amely nem használatos a hálózaton belül. Az Azure-beli virtuális gép alhálózata például 10.0.1.0/24, az Azure Gateway-alhálózat alhálózata pedig 10.0.2.0/28.  Javasoljuk, hogy az Azure-beli virtuális hálózati címtartomány a következőképpen legyen definiálva: 10.0.1.0/24 és 10.0.2.0/28. Bár a címtartomány értéke összesíthető, javasoljuk, hogy az alhálózati tartományokhoz egyeztesse őket. Így véletlenül elkerülhető a nem használt IP-címtartományok újrafelhasználása a hálózatban máshol lévő nagyobb címeken belül. **A virtuális hálózati címtartomány egy IP-címtartomány. A kezdeti telepítés**megkezdése előtt el kell küldeni a Microsoftnak.
+- **Azure virtuális gép alhálózatának IP-címtartomány:** Ezt az IP-címtartományt az Azure Virtual Network alhálózati paraméterhez rendeli. Ez a paraméter az Azure Virtual Networkben található, és a SAP HANA nagyméretű példány-környezethez csatlakozik. Ez az IP-címtartomány az IP-címek Azure-beli virtuális gépekhez való hozzárendelésére szolgál. A tartományon kívüli IP-címek csatlakozhatnak a SAP HANA nagyméretű példány-kiszolgáló (k) hoz. Ha szükséges, több Azure VM-alhálózatot is használhat. Az egyes Azure-beli virtuálisgép-alhálózatokhoz egy/24 CIDR-blokkot ajánlunk. Ez a címtartomány az Azure-beli virtuális hálózati címtartomány által használt értékek részét képezi. Hogyan érheti el ezt az IP-címtartományt? A vállalati hálózati csapatának vagy szolgáltatójának olyan IP-címtartományt kell megadnia, amely nincs használatban a hálózaton belül.
+- **Virtuális hálózati átjáró alhálózati IP-címtartomány:** A használni kívánt funkcióktól függően az ajánlott méret a következő:
+   - Ultra-Performance ExpressRoute Gateway:/26 címterület – az SKU-i típushoz szükséges.
+   - A VPN és a ExpressRoute együttes használata nagy teljesítményű ExpressRoute virtuális hálózati átjáró (vagy kisebb) használatával:/27 címterület.
+   - Minden más helyzet:/28 címterület. Ez a címtartomány a "VNet címtartomány" értékeiben használt értékek részét képezi. Ez a címtartomány a Microsoft számára elküldött Azure virtuális hálózati címtartomány-értékekben használt értékek részét képezi. Hogyan érheti el ezt az IP-címtartományt? A vállalati hálózati csapatának vagy szolgáltatójának olyan IP-címtartományt kell megadnia, amelyet jelenleg nem használ a hálózaton belül. 
+- **Címtartomány az ER-P2P kapcsolathoz:** Ez a tartomány a SAP HANA nagyméretű példányú ExpressRoute (ER) P2P-kapcsolatok IP-tartománya. Az IP-címtartományok ezen tartományának egy/29 CIDR IP-címtartomány kell lennie. Ez a tartomány nem lehet átfedésben a helyszíni vagy más Azure IP-címtartományok. Ez az IP-címtartomány a ExpressRoute virtuális átjáróról a SAP HANA nagyméretű példány-kiszolgálókhoz való kapcsolat beállítására szolgál. Hogyan érheti el ezt az IP-címtartományt? A vállalati hálózati csapatának vagy szolgáltatójának olyan IP-címtartományt kell megadnia, amelyet jelenleg nem használ a hálózaton belül. **Ez a tartomány egy IP-címtartomány. A kezdeti telepítés**megkezdése előtt el kell küldeni a Microsoftnak.  
+- **Kiszolgálói IP-címkészlet címtartomány:** Ez az IP-címtartomány az egyedi IP-cím és a HANA nagyméretű példány-kiszolgálók hozzárendelésére szolgál. Az ajánlott alhálózat mérete egy/24 CIDR blokk. Ha szükséges, kisebb lehet, mindössze 64 IP-címmel. Ebből a tartományból az első 30 IP-cím a Microsoft számára van fenntartva. A tartomány méretének kiválasztásakor győződjön meg arról, hogy ezt a tényt veszi figyelembe. Ez a tartomány nem lehet átfedésben a helyszíni vagy más Azure IP-címekkel. Hogyan érheti el ezt az IP-címtartományt? A vállalati hálózati csapatának vagy szolgáltatójának olyan IP-címtartományt kell megadnia, amelyet jelenleg nem használ a hálózaton belül.  **Ez a tartomány egy IP-címtartomány, amelyet a Microsoftnak kell elküldenie, amikor egy kezdeti telepítést kér**.
 
-  Azt javasoljuk, hogy a cím terület paraméter értéke egy többsoros. Ez az alhálózati tartományhoz az Azure virtuális gépek és az Azure-átjáró az alhálózat tranzakciónaplók kell állnia. Az alhálózati címtartomány látható volt az előző képek. A helyszíni vagy a kiszolgáló IP-készlet vagy ER-P2P címtartományok nem lehetnek átfedésben. 
+Választható IP-címtartományok, amelyeket végül el kell küldeni a Microsoftnak:
+
+- Ha úgy dönt, hogy a [ExpressRoute Global REACH](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) használatával engedélyezi a közvetlen útválasztást a helyszíni rendszerből a nagyméretű példányok számára, egy másik/29 IP-címtartományt kell fenntartania. Ez a tartomány nem fedi át a korábban definiált többi IP-címtartományt.
+- Ha úgy dönt, hogy a [ExpressRoute Global REACH](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) használatával engedélyezi az egyik Azure-régióban található Hana nagyméretű példány-bérlőtől egy másik Azure-régióban lévő másik Hana nagyméretű példány bérlőhöz való közvetlen útválasztást, egy másik/29 IP-címtartományt kell fenntartania. Ez a tartomány nem fedi át a korábban definiált többi IP-címtartományt.
+
+A ExpressRoute Global Reach és a HANA nagyméretű példányok használatáról a következő dokumentumokban talál további információt:
+
+- [SAP HANA (nagyméretű példányok) hálózati architektúrája](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture)
+- [Virtuális hálózat összekapcsolása a HANA nagyméretű példányaival](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-connect-vnet-express-route)
  
-Hogyan be ezen IP-cím tranzakciónaplók? 
+Meg kell határoznia és meg kell terveznie a korábban ismertetett IP-címtartományt. Azonban nem kell továbbítania őket a Microsoftnak. A Microsoft számára a következő IP-címtartományok szükségesek:
 
-A vállalati hálózat csapata vagy a service provider biztosítania kell egy vagy több IP-cím átküldeni a hálózaton belüli nincsenek használva. Például tegyük az Azure virtuálisgép-alhálózat 10.0.1.0/24, és az alhálózat az Azure-átjáró-alhálózat 10.0.2.0/28.  Javasoljuk, hogy az Azure virtuális hálózat címterét-e a következő sort: 10.0.1.0/24 és 10.0.2.0/28. 
+- Azure-beli virtuális hálózati címtartomány (ok)
+- Címtartomány az ER-P2P kapcsolathoz
+- Kiszolgálói IP-címkészlet címtartomány
 
-Bár a cím terület értékeik összesíthetők, javasoljuk, hogy az alhálózati címtartományokhoz megfelelő őket. Ezzel a módszerrel véletlenül elkerülheti a nem használt IP-címtartományok a hálózaton lévő máshol nagyobb címterek belül újbóli használata. **A virtuális hálózati címtér az IP-címtartományt. Hamarosan a Microsoftnak, amikor Ön feltesz egy kezdeti üzembe helyezéshez szükséges**.
+Ha további virtuális hálózatokat ad hozzá, amelyeknek a HANA nagyméretű példányaihoz kell csatlakozniuk, el kell küldenie a Microsoft számára hozzáadott új Azure-beli virtuális hálózati címtartományt. 
 
-- **Az Azure virtuális gép alhálózati IP-címtartomány:** Az IP-címtartományt rendel az Azure virtuális hálózat alhálózati paraméter lesz. Ez a paraméter az Azure virtuális hálózat és az SAP HANA nagyméretű példányok környezethez kapcsolódik. Az IP-címtartományt az IP-címek hozzárendelése az Azure-beli virtuális gépek szolgál. Az IP-címek a tartományon való csatlakozáshoz az SAP HANA nagyméretű példányok kiszolgáló(k) engedélyezettek. Ha szükséges, használhatja a több Azure-beli Virtuálisgép-alhálózatot. Azt javasoljuk, hogy egy/24 minden Azure-beli Virtuálisgép-alhálózat CIDR-blokkja. Ez a címtartomány egy Azure virtuális hálózat címterében használt értékeket részének kell lennie. 
+A következőkben egy példa látható a különböző tartományokra és néhány olyan tartományra, amelyet a Microsoft számára kell konfigurálnia és végül nyújtani. Az Azure-beli virtuális hálózati címtartomány értéke nincs összesítve az első példában. Ez azonban az első Azure virtuálisgép-alhálózat IP-címtartomány és a virtuális hálózati átjáró alhálózati IP-címtartomány tartományában van meghatározva. 
 
-Hogyan be az IP-címtartomány? 
+Az Azure virtuális hálózatban több virtuálisgép-alhálózatot is használhat, ha a további virtuálisgép-alhálózatok további IP-címeinek konfigurálását és elküldését az Azure virtuális hálózati címtartomány részeként konfigurálja és elküldi.
 
-A vállalati hálózat csapata vagy a service provider egy IP-címtartományt, amely nincs használatban a hálózaton belüli kell biztosítania.
+![Az Azure-ban SAP HANA szükséges IP-címtartományok (nagyméretű példányok) minimális üzembe helyezés](./media/hana-overview-connectivity/image4b-ip-addres-ranges-necessary.png)
 
-- **Virtuális hálózati átjáró alhálózati IP-címtartomány:** Attól függően, a Funkciók, amelyet használni szeretne az ajánlott mérete a következő:
-   - Ultranagy teljesítményű ExpressRoute-átjáró:, / 26 címterület – II. típusú osztályhoz termékváltozatok szükséges.
-   - Együttműködés a VPN és ExpressRoute használatával egy nagy teljesítményű ExpressRoute virtuális hálózati átjáró (vagy kisebb): / 27-es címterület.
-   - Minden más helyzetekben: / 28 címterület. Ez a címtartomány a "Virtuális hálózati címtér" értékeket használt értékek egy részének kell lennie. A címtartományt, amely elküldés a Microsoftnak az Azure virtual network terület értékeket használt értékeket egy részének kell lennie. Hogyan be az IP-címtartomány? A vállalati hálózat csapata vagy a service provider egy IP-címtartományt, amely a hálózaton belüli jelenleg nem használt kell biztosítania. 
+A kép nem jeleníti meg azokat a további IP-címtartományt, amelyek szükségesek a ExpressRoute Global Reach opcionális használatához.
 
-- **ER-P2P kapcsolat címtartomány:** Ezt a tartományt az IP-címtartomány a SAP HANA nagyméretű példányok az ExpressRoute (ER) P2P kapcsolat. Ez az IP-címeket kell lennie egy/29 CIDR IP-címtartományt. Ez a tartomány nem lehet átfedésben a helyszíni vagy más Azure IP-címtartományok. Az IP-címtartományt az ER-kapcsolat beállítása az ExpressRoute virtuális átjáró, az SAP HANA nagyméretű példányok kiszolgálókra szolgál. Hogyan be az IP-címtartomány? A vállalati hálózat csapata vagy a service provider egy IP-címtartományt, amely a hálózaton belüli jelenleg nem használt kell biztosítania. **Ebben a tartományban egy IP-címtartományt. Hamarosan a Microsoftnak, amikor Ön feltesz egy kezdeti üzembe helyezéshez szükséges**.
-  
-- **Kiszolgáló IP-készlet címtartomány:** Az IP-címtartományt az egyes IP-cím hozzárendelése a HANA nagyméretű példányok kiszolgálók szolgál. Ajánlott alhálózat mérete egy/24 CIDR-blokkja. Ha szükséges, mindössze 64 IP-címek kisebb lehet. Ebből a tartományból az első 30 IP-címek vannak használatra fenntartva a Microsoft által. Győződjön meg arról, hogy Ön fiók számára Emiatt ha úgy dönt, hogy a tartomány méretétől. Ez a tartomány nem lehet átfedésben a helyszíni vagy más Azure IP-címeket. Hogyan be az IP-címtartomány? A vállalati hálózat csapata vagy a service provider egy IP-címtartományt, amely a hálózaton belüli jelenleg nem használt kell biztosítania. 
+Összesítheti a Microsoftnak elküldött adatokat is. Ebben az esetben az Azure-beli virtuális hálózat címterület csak egy szóközt tartalmaz. A korábbi példában szereplő IP-címtartományok használatával az összesített virtuális hálózati címtartomány a következő képhez hasonlóan néz ki:
 
-  **Ebben a tartományban egy IP-címtartományt, amelyet be kell nyújtani a Microsoft kérése az első üzembe helyezés során**.
- 
-Adja meg, és az előzőekben leírt IP-címtartományok megtervezése kell. Azonban nem kell továbbítja azokat a Microsoftnak. Nevezze el a Microsoftnak kell az IP-címtartományok a következők:
+![A SAP HANA az Azure-ban (nagyméretű példányok) a minimális üzembe helyezéshez szükséges IP-címtartományok második lehetősége](./media/hana-overview-connectivity/image5b-ip-addres-ranges-necessary-one-value.png)
 
-- Az Azure virtual network-cím (tárolóhelyeit)
-- ER-P2P kapcsolat címtartománya
-- Kiszolgáló IP-készlet címtartománya
+A példában két kisebb tartomány helyett, amely az Azure-beli virtuális hálózat címterületet definiálta, egy nagyobb tartományunk van, amely 4096 IP-címet foglal magában. A Címterület ilyen nagy meghatározása a nem használt, hanem a nagy tartományokat is elhagyja. Mivel a virtuális hálózati címtartomány értéke (i) a BGP-útvonal propagálásához használatos, a használaton kívüli tartományok vagy a hálózat más részei útválasztási problémákhoz vezethetnek. A kép nem jeleníti meg azokat a további IP-címtartományt, amelyek szükségesek a ExpressRoute Global Reach opcionális használatához.
 
-Ha további virtuális hálózatok, amelyek nagyméretű HANA-példányokhoz való kapcsolódáshoz szükséges hozzá, akkor küldje el az új Azure virtuális hálózat címterét, amely a Microsoft adja hozzá. 
-
-Következő egy példa a különböző tartományok és néhány példa címtartományok, konfigurálhatja, és végül adja meg a Microsoft szükség szerint. Az Azure virtuális hálózat címtere értéke az első példában nem összesíti. Azonban az első Azure virtuális gép alhálózati IP-címtartományt az tartományait és a virtuális hálózati átjáró alhálózati IP-címtartomány van definiálva. 
-
-Használhatja az Azure virtuális hálózaton belül több Virtuálisgép-alhálózatok, konfigurálásakor, és küldje el a további IP-címtartományokat, a további Virtuálisgép-alhálózat az Azure virtuális hálózat címtere része.
-
-![Az SAP HANA Azure-ban (nagyméretű példányok) minimális üzemelő példányon szükséges IP-címtartományok](./media/hana-overview-connectivity/image4b-ip-addres-ranges-necessary.png)
-
-Az adatokat a Microsoftnak elküldött is lehet összesíteni. Ebben az esetben az Azure virtuális hálózat címteréhez csak egy tárolóhely tartalmazza. Az összesített virtuális hálózat címtere rákeresve használja a korábbi példából származó IP-címtartományokat, a következő képhez hasonlóan:
-
-![Második lehetőségét, hogy az SAP HANA Azure-ban (nagyméretű példányok) minimális üzemelő példányon szükséges IP-címtartományok](./media/hana-overview-connectivity/image5b-ip-addres-ranges-necessary-one-value.png)
-
-A példában két kisebb tartományt, amely az Azure virtuális hálózat címterében meghatározott helyett, amely lefedi a 4096 IP-címek egy körére van. A címtér ilyen nagy definíciójának hagy egyes inkább nagy adattartományokat fel nem használt. Mivel a virtuális hálózati cím terület értékeket használja a BGP-útvonalpropagálás, használat, a fel nem használt tartományok a helyszínen vagy más helyen a hálózat útválasztási problémák léphetnek fel. 
-
-Ezért azt javasoljuk, hogy őrizze meg a címtartományt, a tényleges alhálózat címtere használt szorosan igazítva. Ha szükséges, járó a virtuális hálózaton, leállás nélkül mindig később is hozzáadhat új cím terület értékeket.
+Javasoljuk, hogy a címtartomány szorosan illeszkedjen az Ön által használt alhálózati címtartomány-területhez. Ha szükséges, anélkül, hogy állásidőt kellene felvennie a virtuális hálózaton, később bármikor hozzáadhat új címterület-értékeket.
  
 > [!IMPORTANT] 
-> Minden IP-címtartomány ER-P2P, a kiszolgáló IP-készlet és az Azure virtuális hálózat címtere kell **nem** átfedésben vannak egymással, vagy bármely más a hálózaton használt tartománnyal. Minden egyes diszkrétnek kell lennie. Látható a két előző grafikák, azok nem is egy alhálózat bármely más tartomány. Átfedésben van a tartományok között fordul elő, ha az az Azure virtuális hálózat nem lehet csatlakozni az ExpressRoute-kapcsolatcsoport.
+> Az ER-P2P, a kiszolgálói IP-címkészlet és az Azure virtuális hálózati címtartomány minden IP-címtartomány **nem** lehet átfedésben egymással, sem a hálózatban használt többi tartománnyal. Mindegyiknek különállónak kell lennie. Ahogy a két előző ábrán is látható, nem lehet más tartomány alhálózata is. Ha átfedések történnek a tartományok között, előfordulhat, hogy az Azure-beli virtuális hálózat nem csatlakozik a ExpressRoute áramkörhöz.
 
-## <a name="next-steps-after-address-ranges-have-been-defined"></a>Címtartomány definiálva követő lépések
-Az IP-címtartományok meghatározása után a következőkre van szükség:
+## <a name="next-steps-after-address-ranges-have-been-defined"></a>A címtartomány meghatározása utáni következő lépések
+Az IP-címtartományok meghatározása után a következő lépések szükségesek:
 
-1. Küldje el az Azure virtuális hálózat címterét, a ER-P2P kapcsolat és a kiszolgáló IP-készlet címtartomány, és egyéb adatok, a dokumentum elején szereplő IP-címtartományokat. Ezen a ponton sikerült is elindítható a virtuális hálózat és a Virtuálisgép-alhálózatok létrehozása. 
-2. ExpressRoute-kapcsolatcsoport hozza létre a Microsoft az Azure-előfizetés és a HANA nagyméretű szolgáltatáspéldányban között.
-3. A bérlői hálózathoz a Microsoft által a nagyméretű szolgáltatáspéldányban jön létre.
-4. A Microsoft hálózati konfigurálja az SAP HANA az Azure-ban (nagyméretű példányok) infrastruktúra, fogadja el az Azure virtuális hálózat címterét, amely kommunikál a HANA nagyméretű példányok IP-címeket.
-5. Attól függően, az adott SAP HANA az Azure (nagyméretű példányok) Termékváltozat, amelytől vásárolta a Microsoft hozzárendel egy számítási egység a bérlői hálózathoz. Azt is foglalja le és csatlakoztatja a storage, és telepíti az operációs rendszert (SUSE vagy Red Hat Linux). Ezek az egységek IP-címek a kiszolgáló IP-készlet címtartománya elküldött kiveszik a Microsoftnak.
+1. Küldje el az IP-címtartományt az Azure-beli virtuális hálózati címtartomány, az ER-P2P kapcsolat és a kiszolgáló IP-címkészlet címtartomány, valamint a dokumentum elején felsorolt egyéb adatmennyiségek között. Ezen a ponton a virtuális hálózat és a virtuálisgép-alhálózatok létrehozását is megkezdheti. 
+2. A Microsoft létrehoz egy ExpressRoute áramkört az Azure-előfizetés és a HANA nagyméretű példány bélyegzője között.
+3. A Microsoft a nagy példányszámú bélyegzőn hozza létre a bérlői hálózatot.
+4. A Microsoft az Azure-beli (nagyméretű példányok) infrastruktúra SAP HANA konfigurálja a hálózatkezelést, hogy fogadja az Azure-beli virtuális hálózati címtartomány IP-címeit, amelyek a HANA nagyméretű példányaival kommunikálnak.
+5. A vásárolt Azure-beli (nagyméretű példányok) SKU-ra vonatkozó SAP HANA függően a Microsoft egy számítási egységet rendel a bérlői hálózathoz. Emellett lefoglalja és csatlakoztatja a tárolót, és telepíti az operációs rendszert (SUSE vagy Red Hat Linux). Az ezen egységek IP-címei kikerülnek a Microsoft számára elküldött kiszolgáló IP-címkészlet címtartományból.
 
-A telepítési folyamat végén a Microsoft a következő adatokat biztosít Önnek:
-- Olyan információkat, amelyeket a nagyméretű HANA-példányok Azure virtuális hálózatokhoz csatlakozó ExpressRoute-kapcsolatcsoporthoz az Azure virtuális hálózat csatlakozni:
-     - Engedélyezési kulcsával
-     - Az ExpressRoute PeerID
-- Adatok nagyméretű HANA-példányok eléréséhez ExpressRoute-kapcsolatcsoport és az Azure virtuális hálózat létrehozása után.
+A telepítési folyamat végén a Microsoft a következő adatforrásokat biztosítja Önnek:
+- Az Azure-beli virtuális hálózatoknak a ExpressRoute-áramkörhöz való csatlakoztatásához szükséges információk, amelyek az Azure-beli virtuális hálózatokat a HANA nagyméretű példányokhoz csatlakoztatják:
+     - Engedélyezési kulcs (ok)
+     - ExpressRoute PeerID
+- A HANA nagyméretű példányainak a ExpressRoute-áramkör és az Azure-beli virtuális hálózat létrehozása után történő elérésére vonatkozó adatok.
 
-A HANA nagyméretű példányok összekapcsolása a dokumentum sorozatát is megtalálhatja [SAP HANA az Azure-ban (nagyméretű példányok) telepítő](https://azure.microsoft.com/resources/sap-hana-on-azure-large-instances-setup/). Számos, a következő lépéseket a dokumentum a központi telepítésre példát látható. 
+Megtalálhatja a HANA nagyméretű példányok összekapcsolásának sorozatát is az Azure-beli [(nagyméretű példányok) telepítő SAP HANA](https://azure.microsoft.com/resources/sap-hana-on-azure-large-instances-setup/). Az alábbi lépések többsége az adott dokumentumban található központi telepítésben látható. 
 
 ## <a name="next-steps"></a>További lépések
 
-- Tekintse meg [két virtuális hálózat HANA nagyméretű példány expressroute](hana-connect-vnet-express-route.md).
+- Tekintse át [a virtuális hálózat csatlakoztatása a HANA nagyméretű példány ExpressRoute](hana-connect-vnet-express-route.md)című témakört.

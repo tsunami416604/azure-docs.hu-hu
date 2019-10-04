@@ -10,11 +10,11 @@ ms.date: 09/03/2018
 ms.author: raynew
 ms.custom: include file
 ms.openlocfilehash: afeae4af9b41bf434b26833a3bd927118a4697ae
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58887015"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179345"
 ---
 **A fizikai kiszolgáló replikációjához Configuration/Process server-követelményei**
 
@@ -23,7 +23,7 @@ ms.locfileid: "58887015"
 **HARDVERBEÁLLÍTÁSOK** | 
 Processzormagok | 8 
 RAM | 16 GB
-Lemezek száma | 3., beleértve az operációs rendszer lemez, a folyamatkiszolgálói gyorsítótárlemez és az adatmegőrzési meghajtó a feladat-visszavételhez 
+Lemezek száma | 3\., beleértve az operációs rendszer lemez, a folyamatkiszolgálói gyorsítótárlemez és az adatmegőrzési meghajtó a feladat-visszavételhez 
 Szabad lemezterület (folyamatkiszolgálói gyorsítótár) | 600 GB
 Szabad területe (adatmegőrzési lemez) | 600 GB
  | 

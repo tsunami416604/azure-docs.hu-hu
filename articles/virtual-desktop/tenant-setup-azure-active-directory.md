@@ -1,92 +1,131 @@
 ---
-title: Windows virtuális asztal előzetes verziója – Azure-bérlő létrehozása
-description: Ismerteti, hogyan állíthatja be Windows virtuális asztal előzetes bérlők számára az Azure Active Directoryban.
+title: Bérlő létrehozása a Windows rendszerű virtuális asztalon – Azure
+description: Leírja, hogyan kell beállítani a Windows rendszerű virtuális asztali bérlőket a Azure Active Directoryban.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 03/21/2019
+ms.date: 09/06/2019
 ms.author: helohr
-ms.openlocfilehash: 1c66b3de9e18cb74c43f20499e4065c7ec7ae5ca
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 04a65442e86168239f08fb71303b8d9e9e152e72
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58801679"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679472"
 ---
-# <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-preview"></a>Oktatóanyag: Bérlő létrehozása a Windows virtuális asztal előzetes verzióban érhető el
+# <a name="tutorial-create-a-tenant-in-windows-virtual-desktop"></a>Oktatóanyag: Bérlő létrehozása a Windows Virtual Desktopon
 
-Felé az asztali virtualizálási megoldás kiépítésének első lépése egy bérlő létrehozása a Windows virtuális asztal előzetes verzióban. A bérlő egy olyan egy vagy több gazdagép-készletek. Minden gazdagép készlet több munkamenet gazdagépek, virtuális gépként az Azure-ban futó és a Windows virtuális asztal szolgáltatásban regisztrált áll. Minden gazdagép készlet egy vagy több távoli asztal és a Távsegítség alkalmazás-erőforrások közzététele a felhasználók számára használt alkalmazáscsoportok is áll. A bérlőhöz hozhatja létre a gazdagép-készletek, az alkalmazás létrehozása, hozzárendelése a felhasználók és kapcsolatok a szolgáltatáson keresztül.
+A bérlők létrehozása a Windows Virtual Desktopban az első lépés az asztali virtualizálási megoldás felépítése felé. A bérlő egy vagy több gazdagép egy csoportja. Mindegyik gazdagép több munkamenet-gazdagépből áll, és virtuális gépekként fut az Azure-ban, és regisztrálva van a Windows rendszerű virtuális asztali szolgáltatásban. Az egyes címkészlet egy vagy több olyan alkalmazáscsoportből is áll, amelyek a távoli asztal és a távoli alkalmazás erőforrásainak közzétételére szolgálnak a felhasználók számára. A Bérlővel létrehozhatók a gazdagépek, létrehozhatók alkalmazások, felhasználók rendelhetők, és a szolgáltatáson keresztül is csatlakozhatnak.
 
 Az oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
-> * A virtuális asztali Windows-szolgáltatás biztosítása az Azure Active Directory engedélyekkel.
-> * Az alkalmazás-szerepkör TenantCreator hozzárendelni egy felhasználóhoz, az Azure Active Directory-bérlőben.
-> * Hozzon létre egy virtuális asztali Windows-bérlő.
+> * Azure Active Directory engedélyek megadása a Windows rendszerű virtuális asztali szolgáltatásnak.
+> * Rendelje hozzá a TenantCreator-alkalmazás szerepkört a Azure Active Directory bérlő egyik felhasználója számára.
+> * Hozzon létre egy Windows rendszerű virtuális asztali bérlőt.
 
-A következő szükséges állítsa be a Windows virtuális asztal bérlő:
+A következőképpen kell beállítania a Windows rendszerű virtuális asztali bérlőt:
 
-* A [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) bérlői azonosító a Windows virtuális asztal felhasználói.
-* Egy globális rendszergazdai fiókkal az Azure Active Directory-bérlőn belül.
-   * Ez a Cloud Solution Provider (CSP) szervezetek ügyfelek számára, akik Windows virtuális asztal bérlő létrehozására is vonatkozik. Ha egy CSP-szervezet, jelentkezhet be az ügyfél az Azure Active Directory globális rendszergazdájaként kell lennie.
-   * A rendszergazdai fiókot kell lennie származási hely az Azure Active Directory-bérlővel, amelyben próbál létrehozni a virtuális asztali Windows-bérlőt. Ez a folyamat nem támogatja az Azure Active Directory B2B (a Vendég).
-   * A rendszergazdai fiók egy munkahelyi vagy iskolai fióknak kell lennie.
-* Egy Azure-előfizetés azonosítója
+* A [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) bérlő azonosítója a Windows rendszerű virtuális asztali felhasználók számára.
+* Globális rendszergazdai fiók a Azure Active Directory bérlőn belül.
+   * Ez olyan felhőalapú megoldás-szolgáltatói (CSP) szervezetekre is vonatkozik, amelyek egy Windows rendszerű virtuális asztali bérlőt hoznak létre ügyfeleiknek. Ha egy CSP-szervezetben van, akkor az ügyfél Azure Active Directory példányának globális rendszergazdájaként kell tudnia bejelentkeznie.
+   * A rendszergazdai fióknak a Azure Active Directory bérlőtől kell származnia, amelyben létre kívánja hozni a Windows rendszerű virtuális asztali bérlőt. Ez a folyamat nem támogatja Azure Active Directory B2B-(vendég-) fiókokat.
+   * A rendszergazdai fióknak munkahelyi vagy iskolai fióknak kell lennie.
+* Azure-előfizetés.
 
-## <a name="grant-azure-active-directory-permissions-to-the-windows-virtual-desktop-preview-service"></a>A Windows Virtual Desktop előzetes verziójú szolgáltatások biztosítása az Azure Active Directory engedélyekkel
+## <a name="grant-permissions-to-windows-virtual-desktop"></a>Engedélyek megadása a Windows rendszerű virtuális asztal számára
 
-Ha az Azure Active Directory Windows virtuális asztali már kapott engedélyt, kihagyhatja ezt a szakaszt.
+Ha már engedélyezte a Windows rendszerű virtuális asztal számára a Azure Active Directory példányra vonatkozó engedélyeket, ugorja át ezt a szakaszt.
 
-Hogyan adható engedély a virtuális asztali Windows-szolgáltatás lehetővé teszi, hogy azt az Azure Active Directory, a lekérdezés rendszergazdai és végfelhasználói feladatokkal.
+A Windows rendszerű virtuális asztali szolgáltatás engedélyeinek megadása lehetővé teszi, hogy lekérdezze Azure Active Directory felügyeleti és végfelhasználói feladatokhoz.
 
-A szolgáltatás-engedélyek megadására:
+A szolgáltatás engedélyeinek megadása:
 
-1. Nyisson meg egy böngészőt, és csatlakozzon a [Windows virtuális asztal hozzájárulást kérő lap](https://rdweb.wvd.microsoft.com).
-2. A **hozzájárulás beállítás** > **kiszolgálóalkalmazás**, adja meg az Azure Active Directory-bérlő neve vagy a címtár-azonosító, majd válassza ki **küldés**.
-        A Cloud Solution Provider rendelkező ügyfelek esetén a Azonosítóra az ügyfél a Microsoft ID a partnerportálról. Nagyvállalati ügyfeleink esetén az azonosító alatt található **Azure Active Directory** > **tulajdonságok** > **címtár-azonosító**.
-3. Jelentkezzen be a Windows virtuális asztal hozzájárulást kérő lap egy globális rendszergazdai fiókkal. Például, ha a Contoso vállalattal, a fiók lehet admin@contoso.com vagy admin@contoso.onmicrosoft.com.  
-4. Válassza ki az **Elfogadás** lehetőséget.
-5. Várjon egy percet.
-6. Lépjen vissza a [Windows virtuális asztal hozzájárulást kérő lap](https://rdweb.wvd.microsoft.com).
-7. Lépjen a **hozzájárulás beállítás** > **ügyfélalkalmazás**, adja meg az ugyanazon az Azure AD-bérlő neve vagy a címtár-azonosító, majd válassza ki **küldés**.
-8. Jelentkezzen be globális rendszergazdaként, például vissza a 3. lépés a Windows virtuális asztal hozzájárulást kérő lap.
-9. Válassza ki az **Elfogadás** lehetőséget.
+1. Nyisson meg egy böngészőt, és kezdje meg a rendszergazdai jogosultságokat a [Windows rendszerű virtuális asztali kiszolgáló alkalmazásban](https://login.microsoftonline.com/common/adminconsent?client_id=5a0aa725-4958-4b0c-80a9-34562e23f3b7&redirect_uri=https%3A%2F%2Frdweb.wvd.microsoft.com%2FRDWeb%2FConsentCallback).
+   > [!NOTE]
+   > Ha felügyel egy ügyfelet, és rendszergazdai jóváhagyást kell adnia az ügyfél címtárához, adja meg a következő URL-címet a böngészőben, és cserélje le a {bérlő} értéket az ügyfél Azure AD-tartománynevére. Ha például az ügyfél szervezete regisztrálta a contoso.onmicrosoft.com Azure AD-tartománynevet, cserélje le a (z) {bérlő} nevet a contoso.onmicrosoft.com.
+   >```
+   >https://login.microsoftonline.com/{tenant}/adminconsent?client_id=5a0aa725-4958-4b0c-80a9-34562e23f3b7&redirect_uri=https%3A%2F%2Frdweb.wvd.microsoft.com%2FRDWeb%2FConsentCallback
+   >```
 
-## <a name="assign-the-tenantcreator-application-role-to-a-user-in-your-azure-active-directory-tenant"></a>Az alkalmazás-szerepkör TenantCreator hozzárendelni egy felhasználóhoz, az Azure Active Directory-bérlőben
+2. Jelentkezzen be a Windows rendszerű virtuális asztal engedélyezési lapjára egy globális rendszergazdai fiókkal. Ha például a contoso szervezete volt, a fiókja lehet admin@contoso.com vagy. admin@contoso.onmicrosoft.com
+3. Válassza ki az **Elfogadás** lehetőséget.
+4. Várjon egy percet, hogy az Azure AD jegyezze fel a beleegyező engedélyt.
+5. Nyisson meg egy böngészőt, és kezdje meg a rendszergazdai jogosultságokat a [Windows rendszerű virtuális asztali ügyfélalkalmazás](https://login.microsoftonline.com/common/adminconsent?client_id=fa4345a4-a730-4230-84a8-7d9651b86739&redirect_uri=https%3A%2F%2Frdweb.wvd.microsoft.com%2FRDWeb%2FConsentCallback)számára.
+   >[!NOTE]
+   > Ha felügyel egy ügyfelet, és rendszergazdai jóváhagyást kell adnia az ügyfél címtárához, adja meg a következő URL-címet a böngészőben, és cserélje le a {bérlő} értéket az ügyfél Azure AD-tartománynevére. Ha például az ügyfél szervezete regisztrálta a contoso.onmicrosoft.com Azure AD-tartománynevet, cserélje le a (z) {bérlő} nevet a contoso.onmicrosoft.com.
+   >```
+   > https://login.microsoftonline.com/{tenant}/adminconsent?client_id=fa4345a4-a730-4230-84a8-7d9651b86739&redirect_uri=https%3A%2F%2Frdweb.wvd.microsoft.com%2FRDWeb%2FConsentCallback
+   >```
 
-A TenantCreator alkalmazás-szerepkör hozzárendelése egy Azure Active Directory-felhasználó lehetővé teszi, hogy a felhasználó az Azure Active Directory társított Windows virtuális asztal bérlő létrehozása. A TenantCreator szerepkör hozzárendelése a globális rendszergazdai fiók használatával kell.
+6. Jelentkezzen be a Windows rendszerű virtuális asztal engedélyezési lapjára globális rendszergazdaként, ahogy azt a 2. lépésben elvégezte.
+7. Válassza ki az **Elfogadás** lehetőséget.
 
-A globális rendszergazdai fiókkal TenantCreator alkalmazás-szerepkör hozzárendelése:
+## <a name="assign-the-tenantcreator-application-role"></a>A TenantCreator-alkalmazás szerepkörének kiosztása
 
-1. Nyisson meg egy böngészőt, és csatlakozzon a [Azure Active Directory portálon](https://aad.portal.azure.com) globális rendszergazdai fiókjával.
-   - Ha több Azure AD-bérlő dolgozik, nyisson meg egy privát böngésző-munkamenetet, és másolja és illessze be a címet URL-címek ajánlott eljárás.
-2. Válassza ki **vállalati alkalmazások**, keressen **Windows virtuális asztal**. Látni fogja a két alkalmazás beleegyezés kérése az előző szakaszban megadott. Válassza ki a két alkalmazásokat, **Windows virtuális asztal**.
-3. Válassza ki **felhasználók és csoportok**, majd **felhasználó hozzáadása**.
-4. Válassza ki a felhasználók és csoportok a **hozzárendelés hozzáadása** panel
-5. Keressen rá egy felhasználói fiókot, amely létrehozza a virtuális asztali Windows-bérlő.
-   - Az egyszerűség kedvéért ez a globális rendszergazdai fiók is lehet.
-6. Válassza ki a felhasználói fiókot, kattintson a **kiválasztása** gombra, és válassza ki **hozzárendelése**.
+Azure Active Directory felhasználó kiosztása a TenantCreator alkalmazási szerepkör lehetővé teszi, hogy a felhasználó létrehoz egy Windows rendszerű virtuális asztali bérlőt, amely társítva van a Azure Active Directory példányhoz. A TenantCreator szerepkör hozzárendeléséhez globális rendszergazdai fiókot kell használnia.
 
-## <a name="create-a-windows-virtual-desktop-preview-tenant"></a>Windows virtuális asztal előzetes bérlő létrehozása
+A TenantCreator-alkalmazás szerepkörének hozzárendeléséhez:
 
-Most, hogy jogosultságot kap a Windows virtuális asztal szolgáltatás az Azure Active Directory lekérdezése, és rendelje hozzá a TenantCreator szerepkört egy felhasználói fiókhoz, egy Windows virtuális asztal bérlőt is létrehozhat.
+1. Nyisson meg egy böngészőt, és kapcsolódjon a [Azure Portalhoz](https://portal.azure.com) a globális rendszergazdai fiókkal.
+   
+   Ha több Azure Active Directory Bérlővel dolgozik, ajánlott megnyitnia egy privát böngésző-munkamenetet, és az URL-címeket a címsorba másolhatja és beillesztheti.
+2. A Azure Portal található keresési sávban keresse meg a **vállalati alkalmazások** kifejezést, és válassza ki a **szolgáltatások** kategória alatt megjelenő bejegyzést.
+3. A **vállalati alkalmazásokban**keresse meg a **Windows rendszerű virtuális asztal**kifejezést. Ekkor megjelenik a két, az előző szakaszban megadott beleegyezett alkalmazás. A két alkalmazás közül válassza a **Windows virtuális asztal**lehetőséget.
+   @no__t – a 0A képernyőképe a "Windows virtuális asztal" kifejezésre való kereséskor a "vállalati alkalmazásokban". A "Windows virtuális asztal" nevű alkalmazás ki van emelve. ](media/tenant-enterprise-app.png)
+4. Válassza a **Felhasználók és csoportok** elemet. Láthatja, hogy az alkalmazáshoz beleegyezett jogosultsággal rendelkező rendszergazda már szerepel a hozzárendelt **alapértelmezett hozzáférési** szerepkörben. Ez nem elég a Windows rendszerű virtuális asztali bérlő létrehozásához. Kövesse az alábbi utasításokat a **TenantCreator** szerepkör felhasználóhoz való hozzáadásához.
+   ![A képernyőkép a "Windows virtuális asztal" vállalati alkalmazás kezeléséhez hozzárendelt felhasználókról és csoportokról. A képernyőképen csak egy hozzárendelés látható, amely az "alapértelmezett hozzáférés" értékre mutat. @no__t – 0
+5. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** panelen válassza a **felhasználók és csoportok** lehetőséget.
+6. Keressen egy olyan felhasználói fiókot, amely létrehozza a Windows rendszerű virtuális asztali bérlőt. Az egyszerűség kedvéért ez lehet a globális rendszergazdai fiók.
+   - Ha a (z) rendszerhez hasonló contosoadmin@live.com contosoadmin@outlook.comMicrosoft-identitás-szolgáltatót használ, előfordulhat, hogy nem tud bejelentkezni a Windows virtuális asztalra. Azt javasoljuk, hogy használjon egy, a tartományra admin@contoso.onmicrosoft.com vonatkozó fiókot (például admin@contoso.com vagy inkább).
 
-Először [töltse le és importálja a modult a Windows virtuális asztal](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) használatához a PowerShell-munkamenetben, ha még nem tette.
+   ![Képernyőkép a "TenantCreator" felvenni kívánt felhasználó kiválasztásáról.](media/tenant-assign-user.png)
 
-Jelentkezzen be Windows virtuális asztalok használata a TenantCreator felhasználói fiók ezzel a parancsmaggal:
+   > [!NOTE]
+   > Ki kell választania egy felhasználót (vagy egy csoportot, amely tartalmazza a felhasználót) Ebből az Azure Active Directory-példányból származik. Nem választhat vendég (B2B) felhasználót vagy egyszerű szolgáltatásnevet.
+
+7. Válassza ki a felhasználói fiókot, kattintson a **kiválasztás** gombra, majd válassza a **hozzárendelés**lehetőséget.
+8. A **Windows rendszerű virtuális asztal – felhasználók és csoportok** lapon ellenőrizze, hogy megjelenik-e egy új bejegyzés a **TenantCreator** szerepkörrel, amely ahhoz a felhasználóhoz van rendelve, aki létrehozza a Windows rendszerű virtuális asztali bérlőt.
+   ![A képernyőkép a "Windows virtuális asztal" vállalati alkalmazás kezeléséhez hozzárendelt felhasználókról és csoportokról. A képernyőkép most már tartalmaz egy, a "TenantCreator" szerepkörhöz rendelt felhasználó második bejegyzését. ](media/tenant-tenant-creator-added.png)
+
+Mielőtt továbblépne a Windows rendszerű virtuális asztali bérlő létrehozásához, két információra van szüksége:
+- Az Azure Active Directory bérlői AZONOSÍTÓját (vagy a **CÍMTÁR azonosítóját**)
+- Az Azure-előfizetés azonosítója
+
+A Azure Active Directory bérlői AZONOSÍTÓjának (vagy a **könyvtár azonosítójának**) megkeresése:
+1. Ugyanebben a Azure Portal-munkamenetben keresse meg **Azure Active Directory** a keresősáv alatt, és válassza ki a **szolgáltatások** kategória alatt megjelenő bejegyzést.
+   ![A képernyőkép a "Azure Active Directory" keresési eredményeiről a Azure Portalban. A "szolgáltatások" alatt található keresési eredmény ki van emelve. ](media/tenant-search-azure-active-directory.png)
+2. Görgessen lefelé, amíg meg nem találja a **tulajdonságokat**, majd válassza ki.
+3. Keresse meg a **CÍMTÁR azonosítóját**, majd válassza a vágólap ikont. Illessze be egy praktikus helyre, hogy később a **AadTenantId** értékeként is használhassa.
+   ![Képernyőkép a Azure Active Directory tulajdonságairól. Az egérmutatót a vágólap ikon fölé helyezi a másoláshoz és beillesztéshez. ](media/tenant-directory-id.png)
+
+Az Azure-előfizetés AZONOSÍTÓjának megkeresése:
+1. Ugyanebben a Azure Portal-munkamenetben keresse meg az **előfizetéseket** a keresősáv alatt, és válassza ki a **szolgáltatások** kategória alatt megjelenő bejegyzést.
+   ![A képernyőkép a "Azure Active Directory" keresési eredményeiről a Azure Portalban. A "szolgáltatások" alatt található keresési eredmény ki van emelve. ](media/tenant-search-subscription.png)
+2. Válassza ki azt az Azure-előfizetést, amelyet a Windows rendszerű virtuális asztali szolgáltatás értesítéseinek fogadásához használni kíván.
+3. Keresse meg az **előfizetés azonosítóját**, majd vigye a kurzort az érték fölé, amíg meg nem jelenik a vágólap ikonja. Válassza a vágólap ikont, és illessze be egy praktikus helyre, hogy később a **AzureSubscriptionId** értékeként is használhassa.
+   ![Képernyőkép az Azure-előfizetés tulajdonságairól. Az egérmutatót a vágólap ikon fölé helyezi a másoláshoz és beillesztéshez "előfizetés-azonosító". ](media/tenant-subscription-id.png)
+
+## <a name="create-a-windows-virtual-desktop-tenant"></a>Windows rendszerű virtuális asztali bérlő létrehozása
+
+Most, hogy megadta a Windows rendszerű virtuális asztali szolgáltatásnak a Azure Active Directory lekérdezésére vonatkozó engedélyeit, és hozzárendelte a TenantCreator szerepkört egy felhasználói fiókhoz, létrehozhat egy Windows rendszerű virtuális asztali bérlőt.
+
+Először [töltse le és importálja a Windows rendszerű virtuális asztali modult](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) a PowerShell-munkamenetben való használathoz, ha még nem tette meg.
+
+Jelentkezzen be a Windows rendszerű virtuális asztalra a TenantCreator felhasználói fiók használatával a következő parancsmaggal:
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 ```
 
-Ezt követően hozzon létre egy új Windows virtuális asztal bérlőhöz társított Azure Active Directory-bérlő:
+Ezután hozzon létre egy új, a Azure Active Directory bérlőhöz társított Windowsos virtuális asztali bérlőt:
 
 ```powershell
 New-RdsTenant -Name <TenantName> -AadTenantId <DirectoryID> -AzureSubscriptionId <SubscriptionID>
 ```
 
-A zárójeles értékek le kell cserélni, a szervezet és a bérlői megfelelő értékeket. Például tegyük fel, Ön a Windows virtuális asztal TenantCreator a Contoso szervezet számára. A következő parancsot kellene futtatnia parancsmag kellene kinéznie:
+Cserélje le a zárójelben lévő értékeket a szervezete és a bérlője szempontjából releváns értékekre. Az új Windowsos virtuális asztali bérlőhöz választott névnek globálisan egyedinek kell lennie. Tegyük fel például, hogy a contoso szervezet Windows rendszerű virtuális asztali TenantCreator van. A futtatni kívánt parancsmag a következőképpen fog kinézni:
 
 ```powershell
 New-RdsTenant -Name Contoso -AadTenantId 00000000-1111-2222-3333-444444444444 -AzureSubscriptionId 55555555-6666-7777-8888-999999999999
@@ -94,7 +133,7 @@ New-RdsTenant -Name Contoso -AadTenantId 00000000-1111-2222-3333-444444444444 -A
 
 ## <a name="next-steps"></a>További lépések
 
-A bérlő létrehozása után kell tenni egy gazdagép-készletet. Gazdagép-készletek kapcsolatos további információkért folytassa az oktatóanyag során egy gazdagép-készlet létrehozása a Windows virtuális asztal.
+A bérlő létrehozása után létre kell hoznia egy egyszerű szolgáltatásnevet a Azure Active Directoryban, és hozzá kell rendelnie egy szerepkört a Windows rendszerű virtuális asztalon belül. Az egyszerű szolgáltatásnév lehetővé teszi a Windows rendszerű virtuális asztali Azure Marketplace-ajánlat sikeres üzembe helyezését egy gazda készlet létrehozásához. Ha többet szeretne megtudni a gazdagép-készletekről, folytassa a gazdagépek Windows rendszerű virtuális asztali gépen való létrehozásának oktatóanyagával.
 
 > [!div class="nextstepaction"]
-> [Windows virtuális asztali állomás készlet oktatóanyag](./create-host-pools-azure-marketplace.md)
+> [Szolgáltatásnevek létrehozása és szerepkörök hozzárendelése a PowerShell-lel](./create-service-principal-role-powershell.md)

@@ -1,91 +1,90 @@
 ---
-title: Trend Micro Deep Security telepítése a virtuális gép |} A Microsoft Docs
-description: Ez a cikk ismerteti, hogyan security telepítése és konfigurálása a Trend Micro Azure-beli klasszikus üzemi modellel létrehozott virtuális gépen.
+title: A Trend Micro Deep Security telepítése virtuális gépen | Microsoft Docs
+description: Ez a cikk bemutatja, hogyan telepítheti és konfigurálhatja a Trend Micro Security szolgáltatást a klasszikus üzembe helyezési modellel létrehozott virtuális gépeken az Azure-ban.
 services: virtual-machines-windows
 documentationcenter: ''
-author: roiyz-msft
-manager: jeconnoc
+author: axayjo
+manager: gwallace
 editor: ''
 tags: azure-service-management
 ms.assetid: e991b635-f1e2-483f-b7ca-9d53e7c22e2a
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-multiple
-ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2018
-ms.author: roiyz
-ms.openlocfilehash: 0bb49d3d75b88f197a42e02f03f89480563537ef
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: akjosh
+ms.openlocfilehash: 14ef0a94cb8b2b735b3dc02cf5ccdcc65a6c1beb
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58005480"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71168799"
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>A Trend Micro Deep Security szolgáltatásként való telepítése és konfigurálása windowsos virtuális gépen
 [!INCLUDE [virtual-machines-extensions-deprecation-statement](../../../includes/virtual-machines-extensions-deprecation-statement.md)]
-Ez a cikk bemutatja, hogyan telepítése és konfigurálása a Trend Micro Deep Security szolgáltatás egy új vagy meglévő virtuális gépen (VM) a Windows Server operációs rendszert futtató. Deep Security szolgáltatásként is magában foglalja a kártevők elleni védelem, tűzfal, olyan behatolásvédelmi rendszer és a fájlintegritási monitorozás.
+Ez a cikk bemutatja, hogyan telepítheti és konfigurálhatja a Trend Micro Deep Security szolgáltatást a Windows Servert futtató új vagy meglévő virtuális gépen (VM). A fokozott biztonság, mint a szolgáltatás kártevők elleni védelmet, tűzfalat, behatolás-megelőzési rendszereket és integritás-figyelést tartalmaz.
 
-Az ügyfél biztonsági bővítményeként keresztül a Virtuálisgép-ügynök telepítve van. Új virtuális gépet telepíti a Deep Security Agent, a Virtuálisgép-ügynök automatikusan hozza létre az Azure Portalon.
+Az ügyfél biztonsági bővítményként települ a virtuálisgép-ügynök használatával. Egy új virtuális gépen telepítse a Deep Security ügynököt, mivel a Azure Portal automatikusan létrehozza a virtuálisgép-ügynököt.
 
-Egy meglévő virtuális gép létrehozása az Azure portal, az Azure CLI vagy a PowerShell használatával lehet, hogy rendelkezik egy Virtuálisgép-ügynök. Meglévő virtuális gép, amelyen a Virtuálisgép-ügynök nincs telepítve letöltése és telepítése, először szüksége. Ez a cikk ismerteti mind helyzetekben.
+Előfordulhat, hogy a Azure Portal, az Azure CLI vagy a PowerShell használatával létrehozott meglévő virtuális gép nem rendelkezik virtuálisgép-ügynökkel. Egy meglévő virtuális gép esetében, amely nem rendelkezik virtuálisgép-ügynökkel, először le kell töltenie és telepítenie kell azt. Ez a cikk mindkét helyzetet magában foglalja.
 
-Ha egy helyszíni megoldás a Trend Micro érvényes előfizetéssel rendelkezik, használhatja az Azure-beli virtuális gépek védelme érdekében. Ha még nem vagyunk ügyfél, akkor regisztráljon egy próba-előfizetést. Ez a megoldás kapcsolatos további információkért lásd: a Trend Micro blogbejegyzést [a Microsoft Azure VM Agent bővítmény a Deep Security](https://go.microsoft.com/fwlink/p/?LinkId=403945).
+Ha a Trend Micro egy aktuális előfizetéssel rendelkezik egy helyszíni megoldáshoz, használhatja az Azure-beli virtuális gépek védelméhez. Ha még nem ügyfél, regisztrálhat egy próbaverziós előfizetésre. A megoldással kapcsolatos további információkért tekintse meg a Trend Micro blog post Microsoft Azure virtuálisgép- [ügynök bővítményt a Deep Security](https://go.microsoft.com/fwlink/p/?LinkId=403945)szolgáltatáshoz.
 
-## <a name="install-the-deep-security-agent-on-a-new-vm"></a>A Deep Security Agent telepítése egy új virtuális Gépre
+## <a name="install-the-deep-security-agent-on-a-new-vm"></a>A mély biztonsági ügynök telepítése új virtuális gépre
 
-A [az Azure portal](https://portal.azure.com) lehetővé teszi a Trend Micro biztonsági bővítmény telepítését, a lemezkép használatakor a **Marketplace** a virtuális gép létrehozásához. Ha egy virtuális gépen hoz létre, könnyen adhat védelmet a Trend Micro a portál használatával.
+A [Azure Portal](https://portal.azure.com) lehetővé teszi a Trend Micro biztonsági bővítmény telepítését, ha a **piactéren** rendszerkép használatával hozza létre a virtuális gépet. Ha egyetlen virtuális gépet hoz létre, a portál használatával egyszerűen adhat hozzá védelmet a Trend Micro-ből.
 
-Használatával egy bejegyzést a **Marketplace** megnyílik egy varázsló, amely segítséget nyújt a virtuális gép beállítása. Használja a **beállítások** panelen, a harmadik panelen, a varázsló, a Trend Micro biztonsági bővítmény telepítéséhez.  Általános útmutatás: [létrehozása az Azure Portalon Windows rendszerű virtuális gép](../windows/classic/tutorial.md).
+A **piactéren** egy bejegyzés használatával megnyílik egy varázsló, amely segít a virtuális gép beállításában. A Trend Micro biztonsági bővítmény telepítéséhez a varázsló harmadik paneljén a **Beállítások** panelt kell használni.  Általános útmutatásért lásd: [Windows rendszerű virtuális gép létrehozása a Azure Portalban](../windows/classic/tutorial.md).
 
-Amikor juthat el a **beállítások** varázsló panelen tegye a következőket:
+A varázsló **Beállítások** paneljén hajtsa végre a következő lépéseket:
 
-1. Kattintson a **bővítmények**, majd kattintson a **bővítmény hozzáadása** a következő oldalon.
+1. Kattintson a **bővítmények**, majd a bővítmény **hozzáadása** elemre a következő ablaktáblán.
 
-   ![Indítsa el a bővítményt][1]
+   ![A bővítmény hozzáadásának megkezdése][1]
 
-2. Válassza ki **Deep Security Agent** a a **új erőforrás** ablaktáblán. Kattintson a Deep Security Agent ablaktáblában **létrehozás**.
+2. Az **új erőforrás** ablaktáblán válassza a **Deep Security Agent** lehetőséget. A Deep Security Agent ablaktáblán kattintson a **Létrehozás**elemre.
 
-   ![A Deep Security Agent azonosítása][2]
+   ![Mélyreható biztonsági ügynök azonosítása][2]
 
-3. Adja meg a **Bérlőazonosító** és **Bérlőaktivációs jelszó** a bővítmény. Igény szerint megadhat egy **biztonsági házirend-azonosító**. Kattintson a **OK** hozzáadni az ügyfél.
+3. Adja meg a **bérlő azonosítóját** és a **bérlő aktiválási jelszavát** a kiterjesztéshez. Szükség esetén megadhat egy **biztonsági szabályzat azonosítóját**. Ezután kattintson az **OK** gombra az ügyfél hozzáadásához.
 
-   ![Adja meg a bővítmény részletei][3]
+   ![Adja meg a bővítmény részleteit][3]
 
-## <a name="install-the-deep-security-agent-on-an-existing-vm"></a>A meglévő virtuális gép a Deep Security Agent telepítése
-Telepítse az ügynököt egy meglévő virtuális Gépet, a következő elemeket kell:
+## <a name="install-the-deep-security-agent-on-an-existing-vm"></a>A mély biztonsági ügynök telepítése meglévő virtuális gépre
+Az ügynök meglévő virtuális gépen való telepítéséhez a következő elemek szükségesek:
 
-* Az Azure PowerShell-modul, a 0.8.2 verzió vagy újabb, telepített, a helyi számítógépen. Azure PowerShell használatával telepített verziójának ellenőrizheti a **Get-Module azure |} táblázat formázása verzió** parancsot. Útmutatás és a egy hivatkozást a legújabb verzióra: [telepítése és konfigurálása az Azure PowerShell-lel](/powershell/azure/overview). Az Azure-előfizetés használatával jelentkezzen be `Add-AzureAccount`.
-* A Virtuálisgép-ügynök telepítve van a cél virtuális gépen.
+* A Azure PowerShell modul, a 0.8.2 vagy újabb verziója telepítve van a helyi számítógépen. A telepített Azure PowerShell verziószámát a **Get-Module Azure | Format-Table Version** paranccsal tudja megtekinteni. Útmutatást és a legújabb verzióra mutató hivatkozást a [Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview)című témakörben talál. Jelentkezzen be az Azure-előfizetésbe a használatával `Add-AzureAccount`.
+* A virtuális gépre telepített virtuálisgép-ügynök.
 
-Először is győződjön meg arról, hogy a Virtuálisgép-ügynök már telepítve van. Töltse ki a felhőszolgáltatás neve és a virtuális gép nevét, és futtassa a következő parancsokat egy rendszergazda szintű Azure PowerShell parancssorban. Cserélje le a mindent, ami az ajánlatokat, többek között a < és > karakterek.
+Először ellenőrizze, hogy a virtuálisgép-ügynök már telepítve van-e. Adja meg a felhőalapú szolgáltatás nevét és a virtuális gép nevét, majd futtassa a következő parancsokat egy rendszergazda szintű Azure PowerShell parancssorban. Cserélje le az idézőjelek közé eső összes karaktert, beleértve a < és a > karaktereket is.
 
     $CSName = "<cloud service name>"
     $VMName = "<virtual machine name>"
     $vm = Get-AzureVM -ServiceName $CSName -Name $VMName
     write-host $vm.VM.ProvisionGuestAgent
 
-Ha nem ismeri a felhőszolgáltatás és a virtuális gép nevét, futtassa **Get-AzureVM** , hogy a virtuális gépek adatainak megjelenítése az aktuális előfizetésben.
+Ha nem ismeri a Cloud Service-t és a virtuális gépet, futtassa a **Get-AzureVM** parancsot a jelenlegi előfizetésben lévő összes virtuális gép adatainak megjelenítéséhez.
 
-Ha a **write-host** értéket ad vissza a parancs **igaz**, a Virtuálisgép-ügynök telepítve van. Ha a visszaadott érték **false (hamis)**, tekintse meg az utasításokat, és az Azure ebben a blogbejegyzésben a letöltésére mutató hivatkozást [Virtuálisgép-ügynök és -bővítmények – 2. rész](https://go.microsoft.com/fwlink/p/?LinkId=403947).
+Ha a **Write-Host** parancs **igaz**értéket ad vissza, a rendszer telepíti a virtuálisgép-ügynököt. Ha **hamis**értéket ad vissza, tekintse meg az utasításokat és a letöltésre mutató hivatkozást az Azure [-beli VM-ügynök és-bővítmények – 2. rész](https://go.microsoft.com/fwlink/p/?LinkId=403947).
 
-Ha a Virtuálisgép-ügynök van telepítve, futtassa a következő parancsokat.
+Ha a virtuálisgép-ügynök telepítve van, futtassa ezeket a parancsokat.
 
     $Agent = Get-AzureVMAvailableExtension TrendMicro.DeepSecurity -ExtensionName TrendMicroDSA
 
     Set-AzureVMExtension -Publisher TrendMicro.DeepSecurity –Version $Agent.Version -ExtensionName TrendMicroDSA -VM $vm | Update-AzureVM
 
 ## <a name="next-steps"></a>További lépések
-Az ügynök indítsa el a telepítés néhány percet vesz igénybe. Ezt követően kell aktiválnia a virtuális gépen Deep Security, így azt a Deep Security Manager kezelhetők. További útmutatást a következő cikkekben talál:
+Néhány percet vesz igénybe, amíg az ügynök elindul a telepítéskor. Ezt követően aktiválnia kell a mély biztonságot a virtuális gépen, hogy azt egy Deep Security Manager kezelje. További útmutatásért tekintse meg a következő cikkeket:
 
-* Trend a cikk arról, hogy ez a megoldás [Instant-On Cloud Security for Microsoft Azure](https://go.microsoft.com/fwlink/?LinkId=404101)
-* A [Windows PowerShell-mintaparancsfájl](https://go.microsoft.com/fwlink/?LinkId=404100) a virtuális gép konfigurálása
-* [Utasítások](https://go.microsoft.com/fwlink/?LinkId=404099) a minta
+* A trendről szóló cikk a megoldásról, [az azonnali Felhőbeli biztonságról Microsoft Azure](https://go.microsoft.com/fwlink/?LinkId=404101)
+* Egy [minta Windows PowerShell-parancsfájl](https://go.microsoft.com/fwlink/?LinkId=404100) a virtuális gép konfigurálásához
+* A minta [utasításai](https://go.microsoft.com/fwlink/?LinkId=404099)
 
 ## <a name="additional-resources"></a>További források
-[Hogyan lehet bejelentkezni a Windows Server rendszerű virtuális gép]
+[Bejelentkezés Windows Servert futtató virtuális gépre]
 
-[Az Azure Virtuálisgép-bővítmények és szolgáltatások]
+[Azure-beli virtuálisgép-bővítmények és-funkciók]
 
 <!-- Image references -->
 [1]: ./media/trend/new_vm_Blade3.png
@@ -93,5 +92,5 @@ Az ügynök indítsa el a telepítés néhány percet vesz igénybe. Ezt követ�
 [3]: ./media/trend/SecurityAgentDetails.png
 
 <!-- Link references -->
-[Hogyan lehet bejelentkezni a Windows Server rendszerű virtuális gép]:../windows/classic/connect-logon.md
-[Az Azure Virtuálisgép-bővítmények és szolgáltatások]: https://go.microsoft.com/fwlink/p/?linkid=390493&clcid=0x409
+[Bejelentkezés Windows Servert futtató virtuális gépre]:../windows/classic/connect-logon.md
+[Azure-beli virtuálisgép-bővítmények és-funkciók]: https://go.microsoft.com/fwlink/p/?linkid=390493&clcid=0x409

@@ -1,64 +1,64 @@
 ---
-title: Az Azure Renderelés referenciaarchitektúrák – Azure Batch
-description: Architektúrák Azure Batch- és más Azure-szolgáltatások használatával kiterjesztheti helyszíni renderelési farm által tartalékkapacitás képzése a felhőben
+title: Az Azure megjelenítési referenciájának architektúrái – Azure Batch
+description: A Azure Batch és más Azure-szolgáltatások használatára szolgáló architektúrák a helyszíni Render farmok kibővítéséhez a felhőbe való Betöréssel
 services: batch
 ms.service: batch
 author: davefellows
-manager: jeconnoc
+manager: gwallace
 ms.author: lahugh
 ms.date: 02/07/2019
 ms.topic: conceptual
 ms.custom: seodec18
-ms.openlocfilehash: ae4680c948ce8e1efd32207dc37821d61182f2d8
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: fa2d59b2a6d2dea72276ab38a5cb1ca7bfb579a4
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791205"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68323109"
 ---
-# <a name="reference-architectures-for-azure-rendering"></a>Az Azure renderelési referenciaarchitektúrák
+# <a name="reference-architectures-for-azure-rendering"></a>Az Azure rendering architektúrái
 
-Ez a cikk bemutatja a magas szintű architektúra-diagramok forgatókönyvek bővítése, vagy "burst", egy helyszíni renderelési farm az Azure-bA. A példák bemutatják az Azure számítási, hálózati és tárolási szolgáltatások különböző lehetőségei.
+Ez a cikk magas szintű architektúrát ábrázoló ábrákat mutat be a helyszíni rendering-farmok Azure-ba történő kiterjesztéséhez, vagy "burst". A példák az Azure számítási, hálózati és tárolási szolgáltatásainak különböző lehetőségeit mutatják be.
 
-## <a name="hybrid-with-nfs-or-cfs"></a>Az NFS vagy CFS hibrid
+## <a name="hybrid-with-nfs-or-cfs"></a>Hibrid NFS vagy CFS
 
-Az alábbi ábrán látható, amely tartalmazza a következő Azure-szolgáltatások hibrid forgatókönyvek:
+Az alábbi ábrán egy hibrid forgatókönyv látható, amely a következő Azure-szolgáltatásokat tartalmazza:
 
-* **COMPUTE** – Azure Batch-készlet vagy virtuálisgép-méretezési csoportot.
+* **Számítás** – Azure batch készlet vagy virtuálisgép-méretezési csoport.
 
-* **Hálózati** – helyszíni: Az Azure ExpressRoute vagy VPN. Azure: Az Azure virtuális hálózat.
+* Helyszíni **hálózat** : Azure ExpressRoute vagy VPN. Azure: Azure-VNet.
 
-* **Tárolási** – a bemeneti és kimeneti fájlok: NFS vagy Azure virtuális gépekkel, CFS szinkronizálva az Azure File Sync vagy RSync keresztül a helyszíni tárolók. Azt is megteheti: Avere vFXT bemeneti vagy kimeneti fájlok az NFS használata a helyszíni NAS-eszközökön.
+* **Storage** – bemeneti és kimeneti fájlok: Az Azure-beli virtuális gépeket használó NFS-vagy CFS-eszközök Azure File Sync vagy RSync használatával szinkronizálhatók a helyszíni tárolással. Vagylagosan A avere a helyszíni NAS-eszközökről az NFS használatával vFXT a bemeneti vagy kimeneti fájlokat.
 
-  ![Felhőbeli tartalékkapacitás – hibrid NFS vagy CFS](./media/batch-rendering-architectures/hybrid-nfs-cfs-avere.png)
+  ![Cloud burst – hibrid NFS vagy CFS](./media/batch-rendering-architectures/hybrid-nfs-cfs-avere.png)
 
-## <a name="hybrid-with-blobfuse"></a>Hibrid Blobfuse
+## <a name="hybrid-with-blobfuse"></a>Hibrid és Blobfuse
 
-Az alábbi ábrán látható, amely tartalmazza a következő Azure-szolgáltatások hibrid forgatókönyvek:
+Az alábbi ábrán egy hibrid forgatókönyv látható, amely a következő Azure-szolgáltatásokat tartalmazza:
 
-* **COMPUTE** – Azure Batch-készlet vagy virtuálisgép-méretezési csoportot.
+* **Számítás** – Azure batch készlet vagy virtuálisgép-méretezési csoport.
 
-* **Hálózati** – helyszíni: Az Azure ExpressRoute vagy VPN. Azure: Az Azure virtuális hálózat.
+* Helyszíni **hálózat** : Azure ExpressRoute vagy VPN. Azure: Azure-VNet.
 
-* **Tárolási** – a bemeneti és kimeneti fájlok: A BLOB storage, a számítási erőforrások elérése az Azure Blobfuse csatlakoztatva van.
+* **Storage** – bemeneti és kimeneti fájlok: BLOB Storage, amely a számítási erőforrásokhoz van csatlakoztatva az Azure Blobfuse használatával.
 
-  ![Felhőbeli tartalékkapacitás – hibrid Blobfuse](./media/batch-rendering-architectures/hybrid-blob-fuse.png)
+  ![Cloud burst – hibrid és Blobfuse](./media/batch-rendering-architectures/hybrid-blob-fuse.png)
 
-## <a name="hybrid-compute-and-storage"></a>Hibrid számítási és tárolási
+## <a name="hybrid-compute-and-storage"></a>Hibrid számítás és tárolás
 
-Az alábbi ábrán egy teljes mértékben csatlakoztatott hibrid forgatókönyv látható a számítási és tárolási, és az alábbi Azure-szolgáltatásokat tartalmazza:
+Az alábbi ábrán egy teljes mértékben csatlakoztatott hibrid forgatókönyv látható a számítási és a tárolási kapacitáshoz, és a következő Azure-szolgáltatásokat tartalmazza:
 
-* **COMPUTE** – Azure Batch-készlet vagy virtuálisgép-méretezési csoportot.
+* **Számítás** – Azure batch készlet vagy virtuálisgép-méretezési csoport.
 
-* **Hálózati** – helyszíni: Az Azure ExpressRoute vagy VPN. Azure: Az Azure virtuális hálózat.
+* Helyszíni **hálózat** : Azure ExpressRoute vagy VPN. Azure: Azure-VNet.
 
-* **Tárolási** -létesítmények közötti: Avere vFXT. Választható archiválása a helyszíni Azure Data Box-n keresztül a Blob storage-fájlokat, vagy a helyszíni Avere FXT NAS-gyorsítás esetében.
+* **Tárolás** – létesítmények közötti: Avere vFXT. Helyszíni fájlok opcionális archiválása Azure Data Box használatával a blob Storage-ba vagy a helyszíni avere FXT a NAS-gyorsításhoz.
 
-  ![Felhőbeli tartalékkapacitás – hibrid számítási és tárolási](./media/batch-rendering-architectures/hybrid-compute-storage-avere.png)
+  ![Cloud burst – hibrid számítási és tárolási kapacitás](./media/batch-rendering-architectures/hybrid-compute-storage-avere.png)
 
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ [jelennek meg a kezelők](batch-rendering-render-managers.md) az Azure Batch segítségével.
+* További információ a [Render managerek](batch-rendering-render-managers.md) Azure batch használatával történő használatáról.
 
-* További információk az [megjelenítése az Azure-ban](batch-rendering-service.md).
+* További információ az [Azure-ban történő renderelés](batch-rendering-service.md)lehetőségeiről.

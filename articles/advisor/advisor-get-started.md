@@ -9,12 +9,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/01/2019
 ms.author: kasparks
-ms.openlocfilehash: a7e82fffdd9c865de6040c05ec28bc8bd2dced61
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f91e48a532a278c95d50775e135ac6379e8d8070
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58111395"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67332057"
 ---
 # <a name="get-started-with-azure-advisor"></a>Ismerkedés az Azure Advisor szolgáltatással
 
@@ -94,9 +94,9 @@ Előfordulhat, hogy erőforráscsoport vagy előfizetés, amelyeket nem szeretne
 
 Ezzel az eljárással az átlagos CPU kihasználtsága szabály az alacsony kihasználtságú virtuális gépre vonatkozó javaslatok.
 
-Az Advisor 14 nap a virtuális gép használatát figyeli, és alacsony-kihasználtság virtuális gépek azonosítja. Virtuális gépek amelynek átlagos processzorhasználat 5 %-os vagy kisebb, és a hálózati forgalom 7 MB vagy belül a négy vagy több napot számítanak a kis-kihasználtság virtuális gépeket.
+Az Advisor 7 napig a virtuális gép használatát figyeli, és alacsony-kihasználtság virtuális gépek azonosítja. Virtuális gépek számítanak a kis-kihasználtsága a CPU-kihasználtság esetén 5 % vagy kevesebb és a hálózathasználat kevesebb mint 2 %, vagy ha a jelenlegi terhelés is elhelyezkedhetnek, a kisebb méretű virtuális gépet.
 
-Ha szeretné, az alacsony kihasználtságú virtuális gépek azonosítása agresszívebb legyen, módosíthatja a átlagos CPU kihasználtsága szabály minden előfizetés.  A átlagos CPU-kihasználtság szabály állítható 5 %-os, 10 %-os, 15 %-os vagy 20 %-át.
+Ha szeretné, az alacsony kihasználtságú virtuális gépek azonosítása agresszívebb legyen, módosíthatja a átlagos CPU kihasználtsága szabály minden előfizetés.  A CPU-kihasználtság szabály állítható 5 %-os, 10 %-os, 15 %-os vagy 20 %-át.
 
 > [!NOTE]
 > Módosíthatja a Processzor átlagos kihasználtsága szabály alacsony kihasználtságú virtuális gépek azonosítására szolgáló, rendelkeznie kell egy előfizetés *tulajdonosa*.  Ha nem rendelkezik a szükséges engedélyeket egy előfizetést, vagy az erőforráscsoportot, vagy kizárja a azt a beállítást letiltja a felhasználói felületen. 

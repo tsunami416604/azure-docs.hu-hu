@@ -1,6 +1,6 @@
 ---
-title: A tartalmat, a Media Services dinamikus titkosítás használata – Azure |} A Microsoft Docs
-description: Ez a cikk áttekintést nyújt a dinamikus titkosítás segítségével a content protection adott. Azt is ismerteti a streamelési protokollok és a titkosítási típusok.
+title: A tartalom Media Services dinamikus titkosítással történő ellátása – Azure | Microsoft Docs
+description: Ez a cikk áttekintést nyújt a tartalom védelméről a dinamikus titkosítással. Emellett a streaming protokollokat és a titkosítási típusokat is tárgyalja.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,162 +11,226 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 07/25/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 984c5d6b5e6e2010489533a3889501c5b524a6bd
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 1d95d14398bc6b5acdec89428ebe22a672551a8a
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311322"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338784"
 ---
-# <a name="content-protection-with-dynamic-encryption"></a>A Content protection, a dinamikus titkosítás segítségével
+# <a name="protect-your-content-by-using-media-services-dynamic-encryption"></a>A tartalmak Media Services dinamikus titkosítással védhetők
 
-Az Azure Media Services segítségével az az idő, akkor hagyja, hogy a számítógép tárolási, feldolgozási és kézbesítési a médiatartalmak védelmét. A Media Services élő és igény szerinti tartalmait az Advanced Encryption Standard (AES-128) vagy a három fő digitális jogkezelési (technológia DRM) felügyeleti rendszerek bármelyikét dinamikusan titkosított juttathat el: A Microsoft PlayReady, a Google Widevine és az Apple fairplay által. Media Services is biztosít a modult az AES-kulcsok és a DRM (PlayReady, Widevine és FairPlay) licenceket az arra jogosult ügyfelek. 
+A Azure Media Services segítségével biztonságossá teheti az adathordozót, amikor a számítógépét tárolás, feldolgozás és kézbesítés útján elhagyja. A Media Services használatával dinamikusan titkosíthatja az élő és igény szerinti tartalmat Advanced Encryption Standard (AES-128) vagy a három jelentős digitális jogkezelési (DRM) rendszerből: Microsoft PlayReady, Google Widevine és Apple FairPlay. Media Services is biztosít a modult az AES-kulcsok és a DRM (PlayReady, Widevine és FairPlay) licenceket az arra jogosult ügyfelek.  
 
-Az alábbi ábrán a Media Services content protection munkafolyamat: 
+A Media Services v3-as verziójában a tartalmi kulcs a streaming Lokátorhoz van társítva (lásd [a példát](protect-with-aes128.md)). Ha a Media Services Key Delivery Service-t használja, lehetővé teheti, hogy Azure Media Services létrehozza a tartalmi kulcsot. Ha a saját kulcsú kézbesítési szolgáltatást használja, vagy ha magas rendelkezésre állást szeretne kezelni, akkor a tartalmi kulcsnak két adatközpontban kell lennie.
 
-![Tartalom védelme](./media/content-protection/content-protection.svg)
+Adatfolyam-lejátszó kér, amikor a Media Services a megadott kulcs használatával dinamikusan titkosítani a titkosítatlan AES vagy a DRM-titkosítás segítségével. Visszafejteni a streamet, a Windows Media player kér a kulcsot a Media Services kulcstovábbítást vagy a kulcstovábbítást megadott. Annak eldöntéséhez, hogy-e a felhasználó jogosult-e a kulcs lekérése, a szolgáltatás kiértékeli a tartalom a kulcshoz megadott kulcs házirend.
 
-&#42;*a dinamikus titkosítás AES-128 "tiszta kulcsot" CBCS és CENC támogatja. További részletekért lásd: a támogatási mátrix [Itt](#streaming-protocols-and-encryption-types).*
+A REST API vagy egy Media Services ügyféloldali kódtárának használatával konfigurálhat a licencekkel és a kulcsok a hitelesítési és engedélyezési házirendeket.
 
-Ez a cikk ismerteti az alapelvek és fogalmak ismertetése a Media Services content protection kapcsolódik.
+Az alábbi ábra a Media Services a tartalomvédelem munkafolyamatát szemlélteti:
 
-## <a name="main-components-of-a-content-protection-system"></a>A rendszer a content protection fő összetevőinek
-
-Fejezze be a "content protection" rendszer vagy alkalmazás-tervezés, teljes ismertetése az részéről az erőfeszítés hatókörének kell. Az alábbi lista áttekintést ad végrehajtására kellene három részből áll. 
-
-1. Az Azure Media Services-kódot
+![Media Services tartalomvédelem munkafolyamata](./media/content-protection/content-protection.svg)
   
-   A [DRM](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs) minta bemutatja, hogyan multi-DRM-rendszer a Media Services v3 megvalósítása, és a Media Services/licenckulcs-továbbítási szolgáltatást is használhatja. Minden objektumot több titkosítási típussal titkosíthat (AES-128, PlayReady, Widevine, FairPlay). A [streamelési protokollokkal és a titkosítási típusokkal](#streaming-protocols-and-encryption-types) kapcsolatos szakaszban megtekintheti, hogy mit mivel érdemes kombinálni.
-  
-   A példa bemutatja, hogyan:
+&#42;@no__t – a 1Dynamic titkosítás támogatja az AES-128 Clear Key, CBCS és CENC használatát. Részletekért tekintse meg a [támogatási mátrixot](#streaming-protocols-and-encryption-types). *
 
-   1. Létrehozhat és konfigurálhat [Tartalomszabályzat kulcs](https://docs.microsoft.com/rest/api/media/contentkeypolicies).
+Ez a cikk azokat a fogalmakat és terminológiát ismerteti, amelyek segítenek megérteni a tartalomvédelem Media Services.
 
-      * Adja meg a licenc kézbesítési engedélyezési, adja meg a JWT jogcímszolgáltatói alapján jogosultsági ellenőrzés logikáját.
-      * DRM-titkosítás konfigurálja a tartalomkulcs megadásával.
-      * Konfigurálása [PlayReady](playready-license-template-overview.md), [Widevine](widevine-license-template-overview.md), és/vagy [FairPlay](fairplay-license-overview.md) licenceket. A sablonok segítségével beállíthatja, hogy jogosultságai és engedélyei a használt DRMs mindegyikéhez.
+## <a name="main-components-of-a-content-protection-system"></a>A Content Protection rendszer fő összetevői
 
-        ```
-        ContentKeyPolicyPlayReadyConfiguration playReadyConfig = ConfigurePlayReadyLicenseTemplate();
-        ContentKeyPolicyWidevineConfiguration widevineConfig = ConfigureWidevineLicenseTempate();
-        ContentKeyPolicyFairPlayConfiguration fairPlayConfig = ConfigureFairPlayPolicyOptions();
-        ```
-   2. Hozzon létre egy [Streamelési lokátor](https://docs.microsoft.com/rest/api/media/streaminglocators) megfelelően van konfigurálva, a titkosított adategység továbbításához. 
-  
-      A **Streamelési lokátor** társítva van egy [Streamelési házirend](https://docs.microsoft.com/rest/api/media/streamingpolicies). A példában a StreamingLocator.StreamingPolicyName állítjuk a "Predefined_MultiDrmCencStreaming" szabályzat. Ez a szabályzat azt jelzi, hogy használni kívánt két tartalomkulcs (boríték és CENC) jön létre, és állítsa be a lokátor. Így az envelope, a PlayReady és a Widevine titkosítások lesznek alkalmazva (a kulcsot a konfigurált DRM-licencek alapján továbbítja a rendszer a lejátszást végző ügyfelének). Ha CBCS (FairPlay) licenccel is titkosítani szeretné a streamet, használja a következőt: „Predefined_MultiDrmStreaming”.
-    
-      Titkosíthatja a videót, mivel a **tartalom kulcs házirend** , hogy korábban beállított is van társítva, a **Streamelési lokátor**. 
-    
-   3. A test-token létrehozásához.
-
-      A **GetTokenAsync** módszer bemutatja, hogyan hozzon létre egy tesztet token.
-   4. A streamelési URL-cím összeállítását.
-
-      A **GetDASHStreamingUrlAsync** metódus azt mutatja be, hogyan hozhat létre a streamelési URL-CÍMÉT. Ebben az esetben az URL-cím Streamek a **DASH** tartalmat.
-
-2. A Player AES vagy DRM-ügyféllel. Egy videolejátszó alkalmazást, a lejátszó SDK-t (natív vagy böngészőalapú) alapján kell az alábbi követelményeknek:
-   * A lejátszó SDK támogatja a szükséges DRM-ügyfelek
-   * A lejátszó SDK-t a szükséges streamelési protokollokat támogatja: A Smooth, DASH és/vagy a HLS
-   * A lejátszó SDK képesnek kell lennie a JWT jogkivonat passing licenc beszerzési kérés kezelésére
-  
-     A player használatával hozhat létre a [az Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/). Használja a [az Azure Media Player ProtectionInfo API](https://amp.azure.net/libs/amp/latest/docs/) , adja meg, melyik DRM-technológiával használandó DRM különböző platformokon.
-
-     A tesztelési AES vagy CENC (Widevine és/vagy a PlayReady) titkosított tartalmat használhatja [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html). Győződjön meg arról, kattintson a "Speciális beállítások", és ellenőrizze a titkosítási beállításokat.
-
-     Ha titkosított FairPlay teszttartalmat szeretne, használja a [ezen teszt player](https://aka.ms/amtest). A Windows Media player támogatja, a PlayReady, Widevine és FairPlay DRMs, valamint az AES-128 titkosítatlan kulcs titkosítás. 
-    
-     Válassza ki a megfelelő böngészőt másik DRMs teszteléséhez szüksége: Chrome/Opera/Firefox Widevine, a Microsoft Edge/IE11 a PlayReady, a Safari a fairplay rendszerhez macOS rendszeren.
-
-3. A biztonságos jogkivonat-szolgáltatás (STS), amely JSON webes jogkivonat (JWT), a hozzáférési jogkivonatot az háttérbeli erőforrások eléréséhez. Az AMS licenctovábbítási szolgáltatások a háttérerőforrásra is használhatja. Az STS szolgáltatással rendelkezik, az alábbiak megadásához:
-
-   * Kibocsátó és a célközönség (vagy hatókör)
-   * A jogcímek, ami függ a content protection az üzleti követelmények
-   * A szimmetrikus vagy aszimmetrikus ellenőrzési aláírás-ellenőrzés
-   * Kulcsváltás támogatás (ha szükséges)
-
-     Használhat [az STS eszköz](https://openidconnectweb.azurewebsites.net/DRMTool/Jwt) tesztelési STS, amely támogatja az ellenőrzőkulcs 3 típusú: szimmetrikus, aszimmetrikus vagy az Azure AD-kulcshoz kapcsolódó kulcsváltás. 
+A tartalomkezelő rendszerek sikeres befejezéséhez teljes mértékben ismernie kell a tevékenység hatókörét. A következő részek áttekintést nyújtanak a megvalósításához szükséges három részről. 
 
 > [!NOTE]
-> Azt javasoljuk hogy teljes körű tesztelését az egyes részek (lásd fent), és mielőtt a következő részére. A "content protection" rendszer teszteléséhez használja a fenti listában megadott eszközök.  
+> Javasoljuk, hogy a következő részre való áttérés előtt koncentráljon és teljes mértékben tesztelje az alábbi szakaszokban szereplő részeket. A Content Protection-rendszerek teszteléséhez használja a szakaszban megadott eszközöket.
+
+### <a name="media-services-code"></a>Media Services kód
+  
+A [DRM-minta](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs) bemutatja, hogyan valósítható meg egy több-DRM rendszer a Media Services v3-vel a .NET használatával. Azt is bemutatja, hogyan használhatja a Media Services licenc/kulcs kézbesítési szolgáltatást.   
+  
+Minden objektumot több titkosítási típussal titkosíthat (AES-128, PlayReady, Widevine, FairPlay). Ha szeretné megtekinteni, hogy mit érdemes egyesíteni, tekintse meg a [streaming protokollok és a titkosítási típusok](#streaming-protocols-and-encryption-types)témakört.
+
+A példa bemutatja, hogyan:
+
+1. Hozzon létre és konfiguráljon egy [tartalmi kulcsra vonatkozó házirendet](content-key-policy-concept.md).    
+
+   Hozzon létre egy tartalmi kulcsra vonatkozó házirendet, amely azt adja meg, hogy a tartalom kulcsa (amely biztonságos hozzáférést biztosít az eszközeihez) a végfelhasználók számára legyen elérhető:  
+ 
+   * Adja meg a licenc kézbesítésének engedélyezését. Adja meg az engedélyezési ellenőrzési logikáját JSON Web Token (JWT) jogcímein alapuló jogcímek alapján.
+   * [PlayReady](playready-license-template-overview.md)-, [Widevine](widevine-license-template-overview.md)-és/vagy [Fairplay](fairplay-license-overview.md) -licencek konfigurálása. A sablonok lehetővé teszik az egyes DRMs vonatkozó jogosultságok és engedélyek konfigurálását.
+
+     ```
+     ContentKeyPolicyPlayReadyConfiguration playReadyConfig = ConfigurePlayReadyLicenseTemplate();
+     ContentKeyPolicyWidevineConfiguration widevineConfig = ConfigureWidevineLicenseTempate();
+     ContentKeyPolicyFairPlayConfiguration fairPlayConfig = ConfigureFairPlayPolicyOptions();
+     ```
+2. Hozzon létre egy [folyamatos átviteli lokátort](streaming-locators-concept.md) , amely a titkosított eszköz továbbítására van konfigurálva. 
+  
+   Az adatfolyam-keresőt egy [folyamatos átviteli házirenddel](streaming-policy-concept.md)kell társítani. A példában a `StreamingLocator.StreamingPolicyName` értéket a "Predefined_MultiDrmCencStreaming" házirendre állítjuk be. 
+      
+   A rendszer alkalmazza a PlayReady és a Widevine titkosítást, és a kulcsot a konfigurált DRM-licencek alapján továbbítja a rendszer a lejátszási ügyfélnek. Ha a streamet a CBCS (FairPlay) használatával is titkosítani szeretné, használja a "Predefined_MultiDrmStreaming" házirendet.
+
+   A folyamatos átviteli lokátor a megadott tartalmi kulcs házirendjéhez is társítva van.
+3. A test-token létrehozásához.
+
+   A `GetTokenAsync` metódus azt mutatja be, hogyan lehet létrehozni egy teszt jogkivonatot.
+4. A streamelési URL-cím összeállítását.
+
+   A `GetDASHStreamingUrlAsync` metódus a streaming URL-cím összeállítását mutatja be. Ebben az esetben az URL-cím továbbítja a kötőjel tartalmát.
+
+### <a name="player-with-an-aes-or-drm-client"></a>AES-vagy DRM-ügyféllel rendelkező lejátszó 
+
+Egy videolejátszó alkalmazást, a lejátszó SDK-t (natív vagy böngészőalapú) alapján kell az alábbi követelményeknek:
+
+* A Player SDK támogatja a szükséges DRM-ügyfeleket.
+* A Player SDK támogatja a szükséges folyamatos átviteli protokollokat: Smooth, DASH és/vagy HLS.
+* A Player SDK képes kezelni egy JWT-token átadását a licenc-beszerzési kérelemben.
+
+A player használatával hozhat létre a [az Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/). Használja a [az Azure Media Player ProtectionInfo API](https://amp.azure.net/libs/amp/latest/docs/) , adja meg, melyik DRM-technológiával használandó DRM különböző platformokon.
+
+A tesztelési AES vagy CENC (Widevine és/vagy a PlayReady) titkosított tartalmat használhatja [Azure Media Player](https://aka.ms/azuremediaplayer). Ügyeljen arra, hogy válassza a **Speciális beállítások lehetőséget** , és ellenőrizze a titkosítási beállításokat.
+
+Ha titkosított FairPlay teszttartalmat szeretne, használja a [ezen teszt player](https://aka.ms/amtest). A lejátszó támogatja a Widevine, a PlayReady és a FairPlay DRMs, valamint az AES-128 titkosítatlan kulcs titkosítását. 
+
+Válassza ki a megfelelő böngészőt a különböző DRMs teszteléséhez:
+
+* Widevine Chrome, Opera vagy Firefox
+* Microsoft Edge vagy Internet Explorer 11 a PlayReady
+* Safari macOS rendszeren FairPlay
+
+### <a name="security-token-service"></a>Biztonsági jogkivonat szolgáltatás
+
+A biztonságijogkivonat-szolgáltatás (STS) a háttérbeli erőforrás-hozzáférés hozzáférési JWT. A Azure Media Services licenc/kulcs kézbesítési szolgáltatását használhatja háttérként szolgáló erőforrásként. Az STS szolgáltatással rendelkezik, az alábbiak megadásához:
+
+* Kibocsátó és a célközönség (vagy hatókör)
+* A jogcímek, ami függ a content protection az üzleti követelmények
+* A szimmetrikus vagy aszimmetrikus ellenőrzési aláírás-ellenőrzés
+* Kulcsváltás támogatás (ha szükséges)
+
+[Ezt az STS-eszközt](https://openidconnectweb.azurewebsites.net/DRMTool/Jwt) használhatja az STS teszteléséhez. Az ellenőrző kulcsok mindhárom típusát támogatja: szimmetrikus, aszimmetrikus vagy Azure Active Directory (Azure AD) a kulcsok átváltásával. 
 
 ## <a name="streaming-protocols-and-encryption-types"></a>Adatfolyam-továbbítási protokollok és a titkosítási típusok
 
-A Media Services segítségével dinamikusan az AES-kulcsok vagy titkosított DRM-titkosítást a PlayReady, Widevine vagy FairPlay használatával a tartalmat. Jelenleg hogy titkosítsa a HTTP Live Streaming (HLS), MPEG DASH és Smooth Streaming formátumban. Minden egyes protokollhoz a következő titkosítási módszereket támogatja:
+A Media Services segítségével dinamikusan az AES-kulcsok vagy titkosított DRM-titkosítást a PlayReady, Widevine vagy FairPlay használatával a tartalmat. Jelenleg hogy titkosítsa a HTTP Live Streaming (HLS), MPEG DASH és Smooth Streaming formátumban. A protokollok a következő titkosítási módszereket támogatják.
 
 ### <a name="hls"></a>HLS
 
-A HLS-protokoll támogatja a következő tároló formátumok és a titkosítási sémát.
+A HLS protokoll a következő tároló-formátumokat és titkosítási sémákat támogatja.
 
-|Tároló-formátum|Titkosítási sémával|Példa URL-címe|
+|Tároló-formátum|Titkosítási sémával|URL-példa|
 |---|---|---|
-|Összes|AES|`https://amsv3account-usw22.streaming.media.azure.net/<id>/ignite.ism/manifest(format=m3u8-aapl,encryption=cbc)`|
-|MPG2 – TS |CBCS (FairPlay) ||
-|CMAF(fmp4) |CBCS (FairPlay) |`https://amsv3account-usw22.streaming.media.azure.net/<id>/ignite.ism/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)`|
-|MPG2 – TS |CENC (PlayReady) ||
-|CMAF(fmp4) |CENC (PlayReady) ||
+|Összes|AES|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-aapl,encryption=cbc)`|
+|MPG2 – TS |CBCS (FairPlay) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-aapl,encryption=cbcs-aapl)`|
+|CMAF(fmp4) |CBCS (FairPlay) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)`|
+|MPG2 – TS |CENC (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-aapl,encryption=cenc)`|
+|CMAF(fmp4) |CENC (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-cmaf,encryption=cenc)`|
 
-Fairplay HLS/CMAF (beleértve a HEVC / H.265) a következő eszközökön támogatott:
+A HLS/CMAF + FairPlay (beleértve a HEVC/H. 265-et) a következő eszközökön támogatott:
 
-* iOS 11-es verziójú vagy újabb 
+* iOS 11 vagy újabb verzió 
 * iPhone 8 vagy újabb
-* Az Intel a MacOS high Sierra 7. általános CPU
+* MacOS magas Sierra az Intel hetedik generációs PROCESSZORával
 
 ### <a name="mpeg-dash"></a>MPEG-DASH
 
-Az MPEG-DASH-protokoll támogatja a következő tároló formátumok és a titkosítási sémát.
+Az MPEG-DASH protokoll a következő tároló-formátumokat és titkosítási sémákat támogatja.
 
-|Tároló-formátum|Titkosítási sémával|URL-cím-példák
+|Tároló-formátum|Titkosítási sémával|URL-példák
 |---|---|---|
-|Összes|AES|`https://amsv3account-usw22.streaming.media.azure.net/<id>/ignite.ism/manifest(format=mpd-time-csf,encryption=cbc)`|
-|CSF(fmp4) |CENC (Widevine + PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/<id>/ignite.ism/manifest(format=mpd-time-csf,encryption=cenc)`|
-|CMAF(fmp4)|CENC (Widevine + PlayReady)||
+|Összes|AES|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=mpd-time-csf,encryption=cbc)`|
+|CSF(fmp4) |CENC (Widevine + PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=mpd-time-csf,encryption=cenc)`|
+|CMAF(fmp4)|CENC (Widevine + PlayReady)|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=mpd-time-cmaf,encryption=cenc)`|
 
 ### <a name="smooth-streaming"></a>Smooth Streaming
 
-A Smooth Streaming protokoll támogatja a következő tároló formátumok és a titkosítási sémát.
+A Smooth Streaming protokoll a következő tároló-formátumokat és titkosítási sémákat támogatja.
 
-|Protokoll|Tároló-formátum|Titkosítási sémával|
+|Protocol|Tároló-formátum|Titkosítási sémával|
 |---|---|---|
-|fMP4|AES||
-|fMP4 | CENC (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/<id>/ignite.ism/manifest(encryption=cenc)`|
+|fMP4|AES|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=cbc)`|
+|fMP4 | CENC (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=cenc)`|
 
 ### <a name="browsers"></a>Böngészők
 
-Közös böngésző támogatja a következő DRM-ügyfelek:
+Az általános böngészők a következő DRM-ügyfeleket támogatják:
 
-|Böngésző|Titkosítás|
+|Browser|Encryption|
 |---|---|
 |Chrome|Widevine|
-|Edge, IE 11|PlayReady|
+|Microsoft Edge, Internet Explorer 11|PlayReady|
 |Firefox|Widevine|
 |Opera|Widevine|
 |Safari|FairPlay|
 
-## <a name="aes-128-clear-key-vs-drm"></a>AES-128-kulcsok vs. DRM
+## <a name="controlling-content-access"></a>Tartalom-hozzáférés szabályozása
 
-Ügyfeleink gyakran wonder, hogy használják inkább a AES-titkosítás vagy a DRM-rendszer. Az a két rendszer közötti elsődleges különbség az, hogy az AES-titkosítás a tartalomkulcs az ügyfél a hálózaton keresztül továbbított TLS, hogy a kulcs titkosítva van az átvitel során, de minden további titkosítás nélkül ("a titkosítatlan"). Ennek eredményeképpen a kulcs használatával fejti vissza a tartalom elérhető ügyfél Windows Media player számára, és tekintheti meg a hálózati nyomkövetés egyszerű szöveges az ügyfélen. AES-128-kulcsok titkosítási ideális használati esetekben, amikor a jelentésmegjelenítő egy megbízható entitás (például titkosított vállalati videók megtekintését a az alkalmazottak által a vállalaton belül terjesztett).
+Szabályozhatja, hogy ki férhet hozzá a tartalom a content key házirend konfigurálásával. A Media Services szolgáltatásban több különböző módot is beállíthat, amelyek segítségével a rendszer hitelesítheti a kulcskérelmet küldő felhasználókat. A tartalom fő házirendet kell konfigurálnia. Az ügyfélnek (lejátszó) meg kell felelnie a szabályzat, a kulcs letöltéséhez az ügyfél előtt. A tartalom kulcs házirendhez *nyissa meg a* vagy *token* korlátozás. 
 
-DRM-rendszerek, például a PlayReady, Widevine és FairPlay összes egy további titkosítási szint adja meg a kulcs használatával fejti vissza a tartalom AES-128 titkosítatlan kulcs képest. A tartalomkulcsot a DRM-modul az által védett kulcs van titkosítva, bármely átviteli fájlszintű titkosítás TLS által biztosított további. Ezenkívül a visszafejtési az operációs rendszer szintjén, ahol nehezebb a támadásokkal szemben egy rosszindulatú felhasználó biztonságos környezetben történik. DRM ajánlott használati esetek, ahol a megjelenítő lehetséges, hogy nem egy megbízható entitás, és Ön a legmagasabb szintű biztonságot követelhetnek meg.
+Nyílt hozzáférésű tartalomra vonatkozó szabályzatot akkor lehet használni, ha engedély nélkül szeretne licencet kiadni valakinek. Ha például a bevétele ad-alapú, és nem előfizetés-alapú.  
 
-## <a name="dynamic-encryption-and-key-delivery-service"></a>A dinamikus titkosítás és kulcstovábbítást
+A jogkivonat-korlátozott tartalmi kulcs házirendje csak olyan ügyfélnek küldi el a tartalmat, amely érvényes JWT jogkivonatot vagy egyszerű webes jogkivonatot (SWT) biztosít a licenc/kulcs kérelmében. Ezt a tokent egy STS-nek kell kiállítania. 
 
-A Media Services v3, tartalomkulcs Streamelési lokátor társítva (lásd: [ebben a példában](protect-with-aes128.md)). Ha használja a Media Services kulcstovábbítást, hagyhatja, hogy az Ön számára a tartalomkulcs létrehozása az Azure Media Services. Kell létrehoznia a tartalomkulcs saját kezűleg használatakor, saját kulcstovábbítást, vagy ha egy magas rendelkezésre állású forgatókönyv kezel, amelyekben két adatközpontban tartalom ugyanazzal a kulccsal van szükségük.
+Az Azure AD-t STS-ként vagy [Egyéni STS](#using-a-custom-sts)üzembe helyezésével is használhatja. Az STS-re kell állítani a megadott kulcs és a probléma jogcímek jogkivonat korlátozás konfigurációjában megadott aláírt jogkivonat létrehozásához. A Media Services licenc/kulcs kézbesítési szolgáltatása visszaadja a kért licencet vagy kulcsot az ügyfélnek, ha mindkét feltétel teljesül:
 
-Adatfolyam-lejátszó kér, amikor a Media Services a megadott kulcs használatával dinamikusan titkosítani a titkosítatlan AES vagy a DRM-titkosítás segítségével. Visszafejteni a streamet, a Windows Media player kér a kulcsot a Media Services kulcstovábbítást vagy a kulcstovábbítást megadott. Annak eldöntéséhez, hogy-e a felhasználó jogosult-e a kulcs lekérése, a szolgáltatás kiértékeli a tartalom a kulcshoz megadott kulcs házirend.
+* A jogkivonat érvényes. 
+* A jogkivonatban szereplő jogcímek egyeznek a licenccel vagy a kulccsal konfigurált jogcímekkel.
 
-A Media Services DRM (PlayReady, Widevine, FairPlay) licencek és az AES-kulcsok kézbesítéséhez a hitelesített ügyfelek kulcskézbesítési szolgáltatást biztosít. A REST API vagy egy Media Services ügyféloldali kódtárának használatával konfigurálhat a licencekkel és a kulcsok a hitelesítési és engedélyezési házirendeket.
+Ha a jogkivonat-korlátozott szabályzatot konfigurálja, meg kell adnia az elsődleges ellenőrző kulcsot, a kiállítót és a célközönség paramétereit. Az elsődleges ellenőrzőkulcs tartalmazza a kulcsot, a jogkivonat írták-e. A kibocsátó a jogkivonatot kiállító STS. A célközönség, más néven hatókör, leírja a jogkivonat szándékát vagy azt az erőforrást, amelyhez a jogkivonat hozzáférést engedélyez. A Media Services licenc/kulcs kézbesítési szolgáltatás ellenőrzi, hogy a jogkivonat értékei egyeznek-e a sablon értékeivel.
 
-### <a name="custom-key-and-license-acquisition-url"></a>Egyéni kulcs és a licenc licenckérési URL-cím
+### <a name="token-replay-prevention"></a>Jogkivonat-újrajátszás megelőzése
 
-Ha meg szeretné határozni a más kulcs és a licenc kézbesítési szolgáltatás (nem a Media Services), használja az alábbi sablonok. A sablonok két cserélhető mezőinek vannak-e, hogy a Streamelési szabályzat megosztása számos eszközök eszközönként egy adatfolyam-szabályzat létrehozása helyett. 
+A *jogkivonat* -Visszajátszások megelőzési funkciója lehetővé teszi, hogy Media Services ügyfelek megszabják, hogy egy adott jogkivonat hányszor használható kulcs vagy licenc igénylésére. Az ügyfél hozzáadhat egy típusú `urn:microsoft:azure:mediaservices:maxuses` jogcímet a jogkivonathoz, ahol az érték az a szám, ahányszor a jogkivonat használható licenc vagy kulcs beszerzéséhez. Az ugyanazzal a jogkivonattal rendelkező összes további kérelem nem engedélyezett választ ad vissza. Lásd: a jogcím hozzáadása a DRM- [mintában](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L601).
+ 
+#### <a name="considerations"></a>Megfontolandó szempontok
 
-* EnvelopeEncryption.CustomKeyAcquisitionUrlTemplate - sablon az egyéni szolgáltatás, amely a kulcsok végfelhasználói lejátszók URL-címe. Az Azure Media Services számára kibocsátott kulcsok használata esetén nem szükséges. A sablon támogatja a cserélhető jogkivonatok, amelyek a szolgáltatás futásidőben a kérelemre adott értékkel frissíti.  A jelenleg támogatott jogkivonat értékek: {AlternativeMediaId}, amelyet a rendszer felhasználónévre StreamingLocatorId.AlternativeMediaId és {ContentKeyId} értékét, amely helyébe a következő értékkel: a kért kulcs azonosítója.
-* StreamingPolicyPlayReadyConfiguration.CustomLicenseAcquisitionUrlTemplate - sablon az egyéni szolgáltatás, amely a licencek végfelhasználói lejátszók URL-címe. Licencek kiadása az Azure Media Services használata esetén nem szükséges. A sablon támogatja a cserélhető jogkivonatok, amelyek a szolgáltatás futásidőben a kérelemre adott értékkel frissíti. A jelenleg támogatott jogkivonat értékek: {AlternativeMediaId}, amelyet a rendszer felhasználónévre StreamingLocatorId.AlternativeMediaId és {ContentKeyId} értékét, amely helyébe a következő értékkel: a kért kulcs azonosítója. 
-* StreamingPolicyWidevineConfiguration.CustomLicenseAcquisitionUrlTemplate - Same as above, only for Widevine. 
-* StreamingPolicyFairPlayConfiguration.CustomLicenseAcquisitionUrlTemplate - Same as above, only for FairPlay.  
+* Az ügyfeleknek meg kell határoznia a jogkivonat-generálást. A jogcímet maga a jogkivonatban kell elhelyezni.
+* A szolgáltatás használatakor a rendszer nem engedélyezett válaszként utasítja el azokat a jogkivonatokat, amelyek lejárati ideje meghaladja a kérés fogadásának idejét.
+* A jogkivonatokat az aláírásuk egyedileg azonosítja. A hasznos adatok (például a lejárati idő vagy a jogcím frissítése) változása megváltoztatja a jogkivonat aláírását, és új tokenként fog megjelenni, amelyet a kulcs kézbesítése még nem észlelt.
+* A lejátszás meghiúsul, ha a jogkivonat túllépte `maxuses` az ügyfél által beállított értéket.
+* Ez a szolgáltatás az összes meglévő védett tartalomhoz használható (csak a kiállított jogkivonat módosítására van szükség).
+* Ez a szolgáltatás a JWT és a SWT egyaránt működik.
+
+## <a name="using-a-custom-sts"></a>Egyéni STS használata
+
+Az ügyfél dönthet úgy, hogy egyéni STS-t használ a jogkivonatok biztosításához. Okok a következők:
+
+* Az ügyfél által használt identitás-szolgáltató (IDENTITÁSSZOLGÁLTATÓ) nem támogatja az STS használatát. Ebben az esetben egy egyéni STS lehet egy lehetőséget.
+* Az ügyfél rugalmas vagy szigorúbb vezérlőelem STS integrálhatja az ügyfél előfizető számlázórendszerrel igényelhet. 
+
+   Előfordulhat például, hogy az [ott](https://en.wikipedia.org/wiki/Over-the-top_media_services) szolgáltatás-kezelő több előfizetői csomagot is kínál, például a prémium, az alapszintű és a sport. Az operátor érdemes felel meg a jogcímeket a jogkivonatot az előfizető csomagot, hogy egy adott csomag csak a tartalom elérhetővé válnak. Ebben az esetben egy egyéni STS a szükséges rugalmasságot és irányítást biztosít.
+* Ha egyéni jogcímeket szeretne szerepeltetni a jogkivonatban, válassza a különböző DRM-licenccel rendelkező különböző ContentKeyPolicyOptions (előfizetési licenc és bérleti licenc) közötti választást.
+* Annak a kulcsnak a tartalmi kulcs-azonosítóját képviselő jogcím belefoglalása, amelyhez a jogkivonat hozzáférést biztosít.
+
+Egy egyéni STS használata esetén két módosításokat kell végrehajtani:
+
+* Az adott eszköz számára szolgáltatásra vonatkozó konfigurálásakor adja meg a biztonsági kulcs ellenőrzése az Azure AD-ből a jelenlegi kulcs helyett egyéni STS által használt kell.
+* JTW jogkivonat jön létre, amikor a biztonsági kulcs helyett az aktuális X509 titkos kulcsa van megadva a tanúsítvány az Azure ad-ben.
+
+Biztonsági kulcsok két típusa van:
+
+* Szimmetrikus kulcs: A rendszer ugyanazt a kulcsot használja a JWT létrehozásához és ellenőrzéséhez.
+* Aszimmetrikus kulcs: Az X509-tanúsítványban található nyilvános titkos kulcspár titkos kulccsal van ellátva a JWT titkosításához/létrehozásához, valamint a nyilvános kulccsal a jogkivonat ellenőrzéséhez.
+
+Ha .NET-keretrendszer / C#, a fejlesztési platform, a X509 az aszimmetrikus kulcs használt tanúsítványnak rendelkeznie kell legalább 2048 bites kulcshosszt használ. Ez az osztály a .NET-keretrendszer System.IdentityModel.Tokens.X509AsymmetricSecurityKey mindenképpen szükséges. Ellenkező esetben a következő kivétel történt: IDX10630: Az aláíráshoz használt "System. IdentityModel. tokens. X509AsymmetricSecurityKey" nem lehet kisebb, mint "2048" bit.
+
+## <a name="custom-key-and-license-acquisition-url"></a>Egyéni kulcs-és licenc-beszerzési URL-cím
+
+Ha másik licenc/kulcs kézbesítési szolgáltatást szeretne megadni (nem Media Services), használja a következő sablonokat. A sablonok két cserélhető mezője van, így megoszthatja az adatfolyam-szabályzatot számos eszközön, nem pedig adatátviteli szabályzatot létrehozni az eszközönként. 
+
+* `EnvelopeEncryption.CustomKeyAcquisitionUrlTemplate`: Sablon azon egyéni szolgáltatás URL-címéhez, amely kulcsokat biztosít a végfelhasználók számára. A kulcsok kiadásához Azure Media Services használata nem kötelező. 
+
+   A sablon támogatja a visszahelyezhető jogkivonatokat, amelyeket a szolgáltatás a kérelemhez megadott értékkel fog frissíteni futásidőben.  A jelenleg támogatott jogkivonat-értékek a következők:
+   * @no__t – 0, amelyet a StreamingLocatorId. AlternativeMediaId értékkel cserél a rendszer.
+   * @no__t – 0, amely a kért kulcs azonosítójának értékével van lecserélve.
+* `StreamingPolicyPlayReadyConfiguration.CustomLicenseAcquisitionUrlTemplate`: Sablon azon egyéni szolgáltatás URL-címéhez, amely licenceket biztosít a végfelhasználók számára. A licencek kiadásához Azure Media Services használata nem kötelező. 
+
+   A sablon támogatja a visszahelyezhető jogkivonatokat, amelyeket a szolgáltatás a kérelemhez megadott értékkel fog frissíteni futásidőben. A jelenleg támogatott jogkivonat-értékek a következők:  
+   * @no__t – 0, amelyet a StreamingLocatorId. AlternativeMediaId értékkel cserél a rendszer.
+   * @no__t – 0, amely a kért kulcs azonosítójának értékével van lecserélve. 
+* `StreamingPolicyWidevineConfiguration.CustomLicenseAcquisitionUrlTemplate`: Ugyanaz, mint az előző sablon, csak a Widevine esetében. 
+* `StreamingPolicyFairPlayConfiguration.CustomLicenseAcquisitionUrlTemplate`: Ugyanaz, mint az előző sablon, csak a FairPlay esetében.  
 
 Példa:
 
@@ -174,43 +238,25 @@ Példa:
 streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://mykeyserver.hostname.com/envelopekey/{AlternativeMediaId}/{ContentKeyId}";
 ```
 
-A `ContentKeyId` -kérelem vonatkozik a kulcs értéke és a `AlternativeMediaId` is használható, ha azt szeretné, a kérelem leképezése egy entitás az oldalon. Ha például a `AlternativeMediaId` segítségével megkeresheti a engedélyeket is használható.
+@no__t – 0 a kért kulcs értéke. Ha a kérést az Ön oldalán lévő entitásra szeretné leképezni, használhatja a `AlternativeMediaId` értéket. A `AlternativeMediaId` például segítséget nyújt az engedélyek kereséséhez.
 
-Egyéni használó REST-példák kulcs, és a licenc-licenckérési URL-címek, lásd: [Streamelési házirendek – létrehozása](https://docs.microsoft.com/rest/api/media/streamingpolicies/create)
-
-## <a name="control-content-access"></a>Tartalom-hozzáférés vezérlése
-
-Szabályozhatja, hogy ki férhet hozzá a tartalom a content key házirend konfigurálásával. A Media Services szolgáltatásban több különböző módot is beállíthat, amelyek segítségével a rendszer hitelesítheti a kulcskérelmet küldő felhasználókat. A tartalom fő házirendet kell konfigurálnia. Az ügyfélnek (lejátszó) meg kell felelnie a szabályzat, a kulcs letöltéséhez az ügyfél előtt. A tartalom kulcs házirendhez **nyissa meg a** vagy **token** korlátozás. 
-
-A jogkivonattal korlátozott tartalom kulcs szabályzattal a tartalomkulcs van csak ügyfélnek küldött, amely egy érvényes JSON webes jogkivonat (JWT) vagy simple web Tokens (SWT) jeleníti meg a kulcs kérésben. Ez a token biztonsági jogkivonatokkal kapcsolatos szolgáltatás (STS) kell kiállítaniuk. Használja az Azure Active Directory, az STS szolgáltatással, vagy egy egyéni STS üzembe helyezése. Az STS-re kell állítani a megadott kulcs és a probléma jogcímek jogkivonat korlátozás konfigurációjában megadott aláírt jogkivonat létrehozásához. A Media Services kulcstovábbítást adja vissza a kért kulcs licenc az ügyfélnek, ha a jogkivonat érvényes, és a jogkivonat jogcímeiben megfelelnek a kulcs/licenc.
-
-A tokennel korlátozott szabályzatokhoz konfigurálásakor adjon meg, hogy az elsődleges ellenőrzőkulcs, a kibocsátó és a célközönség paramétereket. Az elsődleges ellenőrzőkulcs tartalmazza a kulcsot, a jogkivonat írták-e. A kibocsátó a biztonságos jogkivonat-szolgáltatás, amely a jogkivonatot. A célközönség, más néven a hatókör, ismerteti a token szándéka, vagy az erőforrás a token engedélyezi a hozzáférést. A Media Services kulcstovábbítást ellenőrzi, hogy ezeket az értékeket a jogkivonat egyezik a sablonban szereplő értékeket.
-
-Ügyfeleink gyakran használják egyéni STS egyéni jogcímek foglalandó választhat másik ContentKeyPolicyOptions különböző paraméterekkel DRM licenc (egy előfizetési licenc és a egy bérleti licencet) vagy a tartalomkulcs jelölő jogcím tartalmazza a tokent a token engedélyt biztosít a kulcs azonosítója.
- 
-## <a name="storage-side-encryption"></a>Storage ügyféloldali titkosítása
-
-Az inaktív eszközök védelmére, titkosítani kell az eszközök által a storage ügyféloldali titkosítása. Az alábbi táblázat a storage ügyféloldali titkosítása működését mutatja a Media Services v3:
-
-|Titkosítási beállítás|Leírás|Media Services v3|
-|---|---|---|
-|Media Services, tárolás titkosítása| AES-256 titkosítással, kulcsfontosságú a Media Services által felügyelt|Nem támogatott<sup>(1)</sup>|
-|[A Storage Service Encryption for Data at Rest](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|A kiszolgálóoldali titkosítást az Azure Storage által kínált kulcs felügyelt ügyfél vagy Azure által|Támogatott|
-|[Storage ügyféloldali titkosítás](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Az Azure storage, a Key Vault az ügyfél által felügyelt kulcs által kínált ügyféloldali titkosítás|Nem támogatott|
-
-<sup>1</sup> a Media Services v3, tárolás titkosítása (AES-256 titkosítás) van csak támogatott a visszamenőleges kompatibilitás a Media Services v2 létrehozásakor a rendszer az eszközöket. Tehát v3 együttműködik a meglévő tárhely eszközök titkosított, de nem teszi meg újakat.
+ Az egyéni licenc/kulcs beszerzési URL-címeket használó REST-Példákért lásd: streaming policys [– create](https://docs.microsoft.com/rest/api/media/streamingpolicies/create).
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
-Ha a `MPE_ENC_ENCRYPTION_NOT_SET_IN_DELIVERY_POLICY` hiba, győződjön meg arról, adja meg a Streamelési megfelelő szabályzatot.
+Ha a `MPE_ENC_ENCRYPTION_NOT_SET_IN_DELIVERY_POLICY` hibát kapja, győződjön meg arról, hogy a megfelelő folyamatos átviteli házirendet adta meg.
 
-Ha hibaüzenet jelenik meg, amely végződhet `_NOT_SPECIFIED_IN_URL`, győződjön meg arról, hogy az URL-címben adja meg a titkosításának formátuma. Például: `…/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)`. Lásd: [Streamelési protokollok és a titkosítási típusok](#streaming-protocols-and-encryption-types).
+Ha a végén `_NOT_SPECIFIED_IN_URL`hibákat kap, ügyeljen arra, hogy a titkosítási formátumot az URL-címben megadja. Például: `…/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)`. Lásd: [adatfolyam-protokollok és titkosítási típusok](#streaming-protocols-and-encryption-types).
 
+## <a name="ask-questions-give-feedback-get-updates"></a>Kérdések feltevése, visszajelzés küldése, frissítések beszerzése
+
+Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
 ## <a name="next-steps"></a>További lépések
 
 * [Az AES-titkosítással védeni](protect-with-aes128.md)
 * [DRM védelme](protect-with-drm.md)
-* [A hozzáférés-vezérléssel DRM-mel a content protection rendszer tervezése](design-multi-drm-system-with-access-control.md)
+* [Többplatformos DRM-védelemmel ellátott tartalomkezelő rendszerek tervezése hozzáférés-vezérléssel](design-multi-drm-system-with-access-control.md)
+* [Tárolási oldal titkosítása](storage-account-concept.md#storage-side-encryption)
 * [Gyakori kérdések](frequently-asked-questions.md)
-
+* [JSON Web Token kezelő](https://docs.microsoft.com/dotnet/framework/security/json-web-token-handler)

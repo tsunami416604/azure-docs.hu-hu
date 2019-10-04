@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 16ccd89fe6eaad3fd6c2704b2f324f486eee45e1
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59532335"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179097"
 ---
 # <a name="common-errors-during-classic-to-azure-resource-manager-migration"></a>Gyakran előforduló hibák a klasszikusból Azure Resource Manager-alapú környezetbe való migrálás során
 Ez a cikk összegyűjti az IaaS-erőforrások klasszikus Azure üzemi modellből Azure Resource Manager verembe történő migrálása során leggyakrabban előforduló hibákat és kezelési lehetőségeiket.

@@ -1,9 +1,9 @@
 ---
-title: Typ uzlu hozzáadása egy Azure Service Fabric-fürtön |} A Microsoft Docs
-description: Ismerje meg, hogyan skálázhatja fel horizontálisan a Service Fabric-fürt hozzáadásával egy virtuálisgép-méretezési csoportban.
+title: Csomópont-típus hozzáadása Azure Service Fabric-fürthöz | Microsoft Docs
+description: Megtudhatja, hogyan bővítheti Service Fabric-fürtöt egy virtuálisgép-méretezési csoport hozzáadásával.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: 5441e7e0-d842-4398-b060-8c9d34b07c48
@@ -13,21 +13,21 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/13/2019
-ms.author: aljo
-ms.openlocfilehash: ed5bf829e2fbff6c286acdb21a8d0158148483d9
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.author: atsenthi
+ms.openlocfilehash: 1414e656a358af1e258c823cc7ec747fefa986ba
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662839"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598689"
 ---
-# <a name="scale-a-service-fabric-cluster-out-by-adding-a-virtual-machine-scale-set"></a>Service Fabric-fürt ki egy virtuálisgép-méretezési csoportot hozzáadásával méretezhető
-Ez a cikk ismerteti, hogyan méretezzünk át egy Azure Service Fabric-fürtöt egy meglévő fürthöz ad hozzá egy új csomópont típusa. Service Fabric-fürt, amelybe mikroszolgáltatásokat helyezhet üzembe és felügyelhet virtuális vagy fizikai gépek hálózaton keresztül csatlakozó készlete áll. Egy számítógép vagy virtuális Gépet, amely egy fürt része csomópontoknak nevezzük. Virtuálisgép-méretezési csoportok olyan számítási Azure-erőforrások üzembe helyezése és kezelése a virtuális gépek gyűjteményét készletként használt. Minden csomópont-típus egy Azure-fürtön definiált [külön méretezési csoportként](service-fabric-cluster-nodetypes.md). Mindegyik csomóponttípus kezelhetők külön-külön. Egy Service Fabric-fürt létrehozását követően akkor is egy fürt hozzáadásával horizontálisan skálázhatja egy új csomópont típusa (virtuálisgép-méretezési csoportot) egy meglévő fürthöz.  Méretezheti a fürt bármikor, még akkor is, ha a számítási feladatok a fürtön futnak.  A fürt skálázható, mivel az alkalmazások automatikus méretezése is.
+# <a name="scale-a-service-fabric-cluster-out-by-adding-a-virtual-machine-scale-set"></a>Service Fabric-fürt méretezése virtuálisgép-méretezési csoport hozzáadásával
+Ez a cikk azt ismerteti, hogyan méretezhető egy Azure Service Fabric-fürt, ha új csomópont-típust ad hozzá egy meglévő fürthöz. A Service Fabric-fürt olyan virtuális vagy fizikai gépek hálózathoz csatlakoztatott készlete, amelybe a rendszer üzembe helyezi és kezeli a szolgáltatásait. Egy fürt részét képező gépet vagy virtuális gépet csomópontnak nevezzük. A virtuálisgép-méretezési csoportok egy Azure-beli számítási erőforrás, amely készletként telepíti és felügyeli a virtuális gépek gyűjteményét. Az Azure-fürtben definiált összes csomópont-típus [külön méretezési csoportként van beállítva](service-fabric-cluster-nodetypes.md). Ezután mindegyik csomópont-típust külön lehet kezelni. Service Fabric-fürt létrehozása után vízszintesen méretezheti a fürtöt úgy, hogy új csomópont-típust (virtuálisgép-méretezési csoport) ad hozzá egy meglévő fürthöz.  A fürtöt bármikor méretezheti, még akkor is, ha a munkaterhelések futnak a fürtön.  A fürt skálázása esetén az alkalmazások is automatikusan méretezhetők.
 
-## <a name="add-an-additional-scale-set-to-an-existing-cluster"></a>Adjon hozzá egy további méretezési csoport meglévő fürthöz
-Egy új csomópont típusa (amely egy virtuálisgép-méretezési készlet biztonsági) hozzáadása egy meglévő fürthöz hasonlít a [történő frissítését az elsődleges csomóponttípushoz](service-fabric-scale-up-node-type.md), azzal a különbséggel nem fog használni az azonos nodetyperef hivatkozással; természetesen nem kell szükségesekre aktívan használt Virtuálisgép-méretezési csoportok, és a fürt rendelkezésre állását nem vesznek el, ha nem frissíti az elsődleges csomóponttípushoz. 
+## <a name="add-an-additional-scale-set-to-an-existing-cluster"></a>További méretezési csoport hozzáadása meglévő fürthöz
+Ha egy új csomópont-típust (amely egy virtuálisgép-méretezési csoport) használ egy meglévő fürthöz, az [elsődleges csomópont típusának frissítése](service-fabric-scale-up-node-type.md)hasonló, kivéve, ha nem ugyanazt a NodeTypeRef használja; Természetesen nem fogja letiltani a virtuálisgép-méretezési csoportok aktív használatát, és nem fogja elveszíteni a fürt rendelkezésre állását, ha nem frissíti az elsődleges csomópont típusát. 
 
-Nodetyperef hivatkozással tulajdonság lett deklarálva belül a virtuális gép méretezési Service Fabric-bővítmény tulajdonságai:
+A NodeTypeRef tulajdonság deklarálva van a virtuálisgép-méretezési csoporton belül Service Fabric bővítmény tulajdonságaiban:
 ```json
 <snip>
 "publisher": "Microsoft.Azure.ServiceFabric",
@@ -39,7 +39,7 @@ Nodetyperef hivatkozással tulajdonság lett deklarálva belül a virtuális gé
 <snip>
 ```
 
-Emellett szüksége lesz a Service Fabric-fürt erőforrás ad hozzá az új csomópont típusa:
+Emellett ezt az új csomópont-típust is hozzá kell adnia a Service Fabric fürterőforrás-erőforráshoz:
 
 ```json
 <snip>
@@ -64,9 +64,9 @@ Emellett szüksége lesz a Service Fabric-fürt erőforrás ad hozzá az új cso
 ```
 
 ## <a name="next-steps"></a>További lépések
-* Ismerje meg, hogyan [vertikális felskálázása az elsődleges csomópont típusa](service-fabric-scale-up-node-type.md)
-* Ismerje meg [alkalmazás méretezhetőségi](service-fabric-concepts-scalability.md).
-* [Egy Azure-fürtön lévő vagy horizontális skálázása](service-fabric-tutorial-scale-cluster.md).
-* [Egy Azure-fürtön programozott skálázása](service-fabric-cluster-programmatic-scaling.md) az fluent Azure compute SDK-t.
-* [Vagy önálló fürt méretezése](service-fabric-cluster-windows-server-add-remove-nodes.md).
+* Ismerje meg, hogyan [méretezheti fel az elsődleges csomópont típusát](service-fabric-scale-up-node-type.md)
+* Az [alkalmazások méretezhetőségének](service-fabric-concepts-scalability.md)megismerése.
+* [Azure-fürt méretezése vagy](service-fabric-tutorial-scale-cluster.md)kibontása.
+* Az [Azure-fürtöket programozott módon méretezheti](service-fabric-cluster-programmatic-scaling.md) a Fluent Azure számítási SDK használatával.
+* [Önálló fürt méretezése vagy](service-fabric-cluster-windows-server-add-remove-nodes.md)kibontása.
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: b049b6526b0053c79b313d3d51a94a7706d5f93c
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: 43b24bec557d1cc879be9568bea451f1a8b0b310
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565733"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625315"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insperity-expensable"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Insperity ExpensAble
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a Insperity ExpensAble konfigurálásához hozzá kell
 
 **Adja hozzá a Insperity ExpensAble a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -108,7 +108,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Insperity ExpensAble
     Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím:  `https://server.expensable.com/esapp/Authenticate?companyId=<company ID>`
 
     > [!NOTE]
-    > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-CÍMÉT. Kapcsolattartó [Insperity ExpensAble ügyfél-támogatási csapatának](http://expensable.com/support/support-overview) a gépkulcsengedélyek értékének. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-CÍMÉT. Kapcsolattartó [Insperity ExpensAble ügyfél-támogatási csapatának](https://www.insperity.com/products/expense-management/support/express/) a gépkulcsengedélyek értékének. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
 5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 
@@ -126,7 +126,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Insperity ExpensAble
 
 ### <a name="configure-insperity-expensable-single-sign-on"></a>Insperity ExpensAble egyszeri bejelentkezés konfigurálása
 
-Az egyszeri bejelentkezés konfigurálása **Insperity ExpensAble** oldalon kell küldenie a letöltött **tanúsítvány (Base64)** és az Azure Portalról másolt URL-címek megfelelő [Insperity ExpensAble támogatási csoport](http://expensable.com/support/support-overview). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+Az egyszeri bejelentkezés konfigurálása **Insperity ExpensAble** oldalon kell küldenie a letöltött **tanúsítvány (Base64)** és az Azure Portalról másolt URL-címek megfelelő [Insperity ExpensAble támogatási csoport](https://www.insperity.com/products/expense-management/support/express/). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
@@ -181,7 +181,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 ### <a name="create-insperity-expensable-test-user"></a>Insperity ExpensAble tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy felhasználói nevű Britta Simon Insperity ExpensAble hoz létre. Együttműködve [Insperity ExpensAble ügyfélszolgálathoz](http://expensable.com/support/support-overview) a felhasználók hozzáadása az Insperity ExpensAble platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ebben a szakaszban egy felhasználói nevű Britta Simon Insperity ExpensAble hoz létre. Együttműködve [Insperity ExpensAble ügyfélszolgálathoz](https://www.insperity.com/products/expense-management/support/express/) a felhasználók hozzáadása az Insperity ExpensAble platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 

@@ -1,49 +1,58 @@
 ---
-title: Figyelés az Azure Database for MySQL-hez
-description: Ez a cikk ismerteti a monitorozási és riasztási az Azure Database for MySQL, többek között a Processzor, a storage és a kapcsolat statisztikai mérőszámait.
-author: rachel-msft
-ms.author: raagyema
+title: Figyelés Azure Database for MySQL
+description: Ez a cikk a Azure Database for MySQL figyelésére és riasztására vonatkozó mérőszámokat ismerteti, beleértve a CPU-t, a tárolást és a kapcsolatok statisztikáit.
+author: ajlam
+ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/05/2018
-ms.openlocfilehash: 9dcb79e7f4ebd43da3f6c6fd35fa0707898d7ec8
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 06/05/2019
+ms.openlocfilehash: 0122f952e586d0535fc2e482c7b78266f8809272
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58111004"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "67062437"
 ---
-# <a name="monitoring-in-azure-database-for-mysql"></a>Figyelés az Azure Database for MySQL-hez
-A kiszolgálók adatainak segítségével hibaelhárítása és optimalizálhatja a számítási feladatok számára. Azure Database for MySQL-hez különböző mérőszámokat, amelyek a kiszolgáló viselkedését betekintést biztosít.
+# <a name="monitoring-in-azure-database-for-mysql"></a>Figyelés Azure Database for MySQL
+A kiszolgálók figyelési adatai segítenek a számítási feladatok megoldásában és optimalizálásában. A Azure Database for MySQL különböző mérőszámokat biztosít, amelyek betekintést nyújtanak a kiszolgáló működésére.
 
 ## <a name="metrics"></a>Mérőszámok
-Az összes Azure-metrikagyűjtéshez rendelkezik egy egy perces gyakoriságot, és mindegyik metrikát biztosít előzmények 30 nap. A metrikákhoz riasztásokat is beállíthatja. Lépésenkénti útmutatásért lásd: [riasztások beállítása](howto-alert-on-metric.md). Egyéb feladatok közé tartozik, automatizált műveletek, speciális analitikai végrehajtása és archiváláshoz előzmények. További információkért lásd: a [Azure metrikáinak áttekintésében](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
+Minden Azure-metrika egyperces gyakorisággal rendelkezik, és minden metrika 30 napos előzményt biztosít. A mérőszámokra vonatkozó riasztásokat is beállíthat. Részletes útmutatást a [riasztások beállítása](howto-alert-on-metric.md)című témakörben talál. Az egyéb feladatok közé tartozik az automatizált műveletek beállítása, a speciális elemzések végrehajtása és az archiválási előzmények. További információt az [Azure mérőszámok áttekintése](../monitoring-and-diagnostics/monitoring-overview-metrics.md)című témakörben talál.
 
-### <a name="list-of-metrics"></a>Mérőszámok listája
-Ezek a metrikák érhetők el az Azure Database for MySQL-hez:
+### <a name="list-of-metrics"></a>Metrikák listája
+Ezek a metrikák a Azure Database for MySQL számára érhetők el:
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Leírás|
 |---|---|---|---|
-|cpu_percent|Százalékos Processzorhasználat|Százalék|Processzorhasználat százalékos használja.|
-|memory_percent|Memória százalékos aránya|Százalék|Használt memória aránya.|
-|io_consumption_percent|I/o-százalék|Százalék|Százalékos i/o-használja.|
-|storage_percent|Tárolási százalékos aránya|Százalék|A kiszolgálón kívül felhasznált tárterület százalékos által legnagyobb.|
-|storage_used|Felhasznált tárterület|Bájt|A használatban lévő tárterület mérete. A szolgáltatás által használt tárterület tartalmazhatják az adatbázisfájlokat, tranzakciós naplókhoz és a webkiszolgáló-naplókkal.|
-|serverlog_storage_percent|Server Log storage százalékban|Százalék|A százalékos aránya ki a kiszolgáló maximális kiszolgálói naplók tárolására használt kiszolgálói naplók tárolásához.|
-|serverlog_storage_usage|Kiszolgálói naplók tárolására használt|Bájt|Kiszolgálói naplók tárolására használt mennyisége.|
-|serverlog_storage_limit|Log storage maximális|Bájt|A maximális kiszolgálói naplók tárolásához, ehhez a kiszolgálóhoz.|
-|storage_limit|Tárolási kapacitása|Bájt|Ez a kiszolgáló maximális tárterülete.|
-|active_connections|Az aktív kapcsolatok|Darabszám|A kiszolgáló aktív kapcsolatok száma.|
-|connections_failed|Sikertelen kapcsolatok|Darabszám|Nem sikerült a kiszolgálóval létesített kapcsolatok száma.|
-|seconds_behind_master|Replikációs késés másodpercben|Darabszám|Az adatbázisreplika-kiszolgálót a fő kiszolgálón van elmaradt másodpercek számát.|
-|network_bytes_egress|Kimenő hálózat|Bájt|Kimenő hálózati forgalom az aktív kapcsolatok között.|
-|network_bytes_ingress|Bejövő hálózat|Bájt|Hálózati az aktív kapcsolatok között.|
-|backup_storage_used|Felhasznált biztonsági mentési tár|Bájt|A felhasznált biztonsági mentési tárterület mennyisége.|
+|cpu_percent|CPU-százalék|Percent|A használatban lévő CPU százalékos aránya.|
+|memory_percent|Memória százaléka|Percent|A használatban lévő memória százalékos aránya.|
+|io_consumption_percent|IO-százalék|Percent|A használatban lévő IO százalékos aránya.|
+|storage_percent|Tárolási százalék|Percent|A kiszolgáló maximális száma által felhasznált tárterület százalékos aránya.|
+|storage_used|Felhasznált tároló|Bájt|A használatban lévő tárterület mennyisége. A szolgáltatás által használt tárterület magában foglalhatja az adatbázisfájlok, a tranzakciós naplók és a kiszolgáló naplófájljait is.|
+|serverlog_storage_percent|Kiszolgáló naplójának tárolási százaléka|Percent|A kiszolgáló naplófájl-tárolási helyének maximális tárterületének százalékos értéke.|
+|serverlog_storage_usage|Kiszolgáló naplójának tárolója|Bájt|A kiszolgáló által használt log-tároló mennyisége.|
+|serverlog_storage_limit|Kiszolgáló naplójának tárolási korlátja|Bájt|A kiszolgáló maximális kiszolgálói naplózási tárterülete.|
+|storage_limit|Tárolási korlát|Bájt|A kiszolgáló maximális tárterülete.|
+|active_connections|Aktív kapcsolatok|Count|A kiszolgálóval létesített aktív kapcsolatok száma.|
+|connections_failed|Sikertelen kapcsolatok|Count|A kiszolgálóhoz való sikertelen kapcsolódások száma.|
+|seconds_behind_master|Replikálás késése másodpercben|Count|Azon másodpercek száma, ameddig a replika kiszolgáló lemarad a főkiszolgálón.|
+|network_bytes_egress|Hálózat kimenő adatforgalma|Bájt|A hálózat aktív kapcsolatokon keresztül.|
+|network_bytes_ingress|Hálózat bejövő adatforgalma|Bájt|A hálózat aktív kapcsolatokon keresztül.|
+|backup_storage_used|Felhasznált biztonsági mentési tár|Bájt|A felhasznált biztonsági mentési tár mennyisége.|
 
-## <a name="server-logs"></a>Kiszolgálói naplók
-Engedélyezheti a naplózást a kiszolgáló a lassú lekérdezések. Ezek a naplók keresztül is elérhetőek az Azure diagnosztikai naplók a Azure Monitor naplók, az Event Hubs és a Storage-fiókot. Naplózásával kapcsolatos további tudnivalókért látogasson el a [kiszolgálónaplók](concepts-server-logs.md) lapot.
+## <a name="server-logs"></a>Kiszolgálónaplók
+Engedélyezheti a lassú lekérdezést és a naplózást a kiszolgálón. Ezek a naplók Azure Monitor naplók, Event Hubs és Storage-fiók Azure diagnosztikai naplóiban is elérhetők. Ha többet szeretne megtudni a naplózásról, látogasson el a [naplók](concepts-audit-logs.md) és a [lassú lekérdezések naplóinak](concepts-server-logs.md) cikkeibe.
+
+## <a name="query-store"></a>Lekérdezéstár
+A [query Store](concepts-query-store.md) egy nyilvános előzetes funkció, amely a lekérdezési teljesítmény időbeli nyomon követését, beleértve a lekérdezési futtatókörnyezet statisztikáit és a várakozási eseményeket. A szolgáltatás megtartja a lekérdezés futásidejű teljesítményére vonatkozó információkat a **MySQL** -sémában. Az adatgyűjtést és-tárolást különböző konfigurációs gombokon keresztül szabályozhatja.
+
+## <a name="query-performance-insight"></a>Lekérdezési terheléselemző
+A [lekérdezési terheléselemző](concepts-query-performance-insight.md) a lekérdezési tárolóval együtt a Azure Portal elérhető vizualizációk biztosítására is használható. Ezek a diagramok lehetővé teszik a teljesítményre gyakorolt legfontosabb lekérdezések azonosítását. Lekérdezési terheléselemző nyilvános előzetes verzióban érhető el, és a Azure Database for MySQL-kiszolgáló portál lapjának **intelligens teljesítmény** szakaszában érhető el.
+
+## <a name="performance-recommendations"></a>Teljesítménnyel kapcsolatos javaslatok
+A [teljesítményre vonatkozó javaslatok](concepts-performance-recommendations.md) funkció a munkaterhelés teljesítményének növelésére szolgáló lehetőségeket azonosítja. A teljesítményre vonatkozó javaslatok nyilvános előzetes kiadása olyan új indexek létrehozásához nyújt javaslatokat, amelyek képesek a számítási feladatok teljesítményének javítására. Az indexelési javaslatok előállításához a funkció figyelembe veszi a különböző adatbázis-jellemzőket, beleértve annak sémáját és a lekérdezési tároló által jelentett munkaterhelést. A teljesítményre vonatkozó javaslat bevezetését követően az ügyfeleknek tesztelni kell a teljesítményt a változások hatásának kiértékeléséhez.
 
 ## <a name="next-steps"></a>További lépések
-- Lásd: [riasztások beállítása](howto-alert-on-metric.md) riasztás létrehozása a metrika az útmutatást.
-- Elérése és exportálása a metrikák az Azure Portalon, a REST API vagy a parancssori felület használatával kapcsolatos további információkért lásd: a [Azure metrikáinak áttekintésében](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
-- Blogunkból a [ajánlott eljárások a server figyelési](https://azure.microsoft.com/blog/best-practices-for-alerting-on-metrics-with-azure-database-for-mysql-monitoring/).
+- A riasztások metrikai létrehozásával kapcsolatos útmutatást a riasztások [beállítása](howto-alert-on-metric.md) című témakörben tekintheti meg.
+- A metrikák Azure Portal, REST API vagy parancssori felülettel való eléréséről és exportálásáról további információt az [Azure mérőszámok áttekintése](../monitoring-and-diagnostics/monitoring-overview-metrics.md)című témakörben talál.
+- A [kiszolgáló figyelésére vonatkozó ajánlott eljárásokért](https://azure.microsoft.com/blog/best-practices-for-alerting-on-metrics-with-azure-database-for-mysql-monitoring/)olvassa el a blogot.

@@ -1,82 +1,131 @@
 ---
-title: Térkép vezérlők hozzáadása az Azure Maps |} A Microsoft Docs
-description: Hogyan lehet hozzáadni egy térkép az Azure Maps-nagyítási vezérlő, a lényegét ellenőrzési, a rotálása vezérlő és a egy stílus kiválasztása.
+title: Vezérlőelemek hozzáadása a Azure Mapshoz | Microsoft Docs
+description: Nagyítás-vezérlés, szurok-vezérlőelem hozzáadása, a vezérlés elforgatása és a stílus kiválasztása a Azure Maps térképen.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 10/08/2018
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: c1f5dd329f34d64478d605c21d229d8c75a99300
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 7267f77ed3d296ac586dcfd0f525b94d5e6eb7a0
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58260140"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976224"
 ---
-# <a name="add-map-controls-to-azure-maps"></a>Térkép vezérlők hozzáadása az Azure Maps
+# <a name="add-controls-to-a-map"></a>Vezérlőelemek hozzáadása térképhez
 
-Ez a cikk bemutatja, hogyan térképvezérlőket hozzáadása egy térképen. Azt is megtudhatja, hogyan térkép létrehozásához az összes vezérlő és a egy [stílus kiválasztása](https://docs.microsoft.com/azure/azure-maps/choose-map-style).
+Ez a cikk bemutatja, hogyan adhat hozzá vezérlőket térképekhez. Azt is megtudhatja, hogyan hozhat létre egy térképet az összes vezérlővel és egy [Style választóval](https://docs.microsoft.com/azure/azure-maps/choose-map-style).
 
-## <a name="add-zoom-control"></a>A nagyítási vezérlő hozzáadása
+## <a name="add-zoom-control"></a>Nagyítási vezérlő hozzáadása
 
-<iframe height='500' scrolling='no' title='A nagyítási vezérlő hozzáadása' src='//codepen.io/azuremaps/embed/WKOQyN/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll típusú <a href='https://codepen.io/azuremaps/pen/WKOQyN/'>nagyítási vezérlő hozzáadása</a> által az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
+A nagyítás-vezérlés gombokkal bővítheti a térképet és a nagyítást. A következő mintakód létrehozza a [ZoomControl](/javascript/api/azure-maps-control/atlas.control.zoomcontrol) osztály egy példányát, és hozzáadja a Térkép jobb alsó sarkához.
+
+```javascript
+//Construct a zoom control and add it to the map.
+map.controls.add(new atlas.control.ZoomControl(), {
+    position: 'bottom-right'
+});
+```
+
+Alább látható a fenti funkciók teljes futási kódjának mintája.
+
+<br/>
+
+<iframe height='500' scrolling='no' title='Nagyítási vezérlő hozzáadása' src='//codepen.io/azuremaps/embed/WKOQyN/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg <a href='https://codepen.io/azuremaps/pen/WKOQyN/'></a> a Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) nagyítási vezérlőt a <a href='https://codepen.io'>CodePen</a>-on való hozzáadását ismertető tollat.
 </iframe>
 
-Az első kódblokkot beállítja az előfizetési kulcsot, és előre a stílus beállítása nélkül egy térkép objektumot hoz létre. Lásd: [térkép létrehozásához](./map-create.md) térkép létrehozásához útmutatást.
+## <a name="add-pitch-control"></a>Pitch vezérlőelem hozzáadása
 
-A nagyítási vezérlő leehetővé a térkép adataikkal nagyítás. A második kódblokk objektumot hoz létre nagyítási vezérlő használatával a atlas [ZoomControl](/javascript/api/azure-maps-control/atlas.control.zoomcontrol) , és hozzáadja a térkép segítségével térkép [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metódust. A térkép belül van a nagyítási vezérlő **eseményfigyelő** után a térkép teljes betölti a változóból biztosításához.
+A Pitch vezérlő gombok hozzáadásával megdöntheti, hogy a szurok a horizonthoz viszonyítva legyen-e leképezve. A következő mintakód létrehozza a [PitchControl](/javascript/api/azure-maps-control/atlas.control.pitchcontrol) osztály egy példányát, és hozzáadja a Térkép jobb felső sarkához.
 
-## <a name="add-pitch-control"></a>Lényegét vezérlőelem felvétele
+```javascript
+//Construct a pitch control and add it to the map.
+map.controls.add(new atlas.control.PitchControl(), {
+    position: 'top-right'
+});
+```
 
-<iframe height='500' scrolling='no' title='A terv lényegét vezérlőelem hozzáadása' src='//codepen.io/azuremaps/embed/xJrwaP/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll típusú <a href='https://codepen.io/azuremaps/pen/xJrwaP/'>felébresztve vezérlőelem hozzáadása</a> által az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
+Alább látható a fenti funkciók teljes futási kódjának mintája.
+
+<br/>
+
+<iframe height='500' scrolling='no' title='Pitch vezérlőelem hozzáadása' src='//codepen.io/azuremaps/embed/xJrwaP/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg <a href='https://codepen.io/azuremaps/pen/xJrwaP/'></a> a tollat a <a href='https://codepen.io'>CodePen</a>-on<a href='https://codepen.io/azuremaps'>@azuremaps</a>Azure Maps () használatával.
 </iframe>
 
-Az első kódblokkot beállítja az előfizetési kulcsot, és előre a stílus beállítása nélkül egy térkép objektumot hoz létre. Lásd: [térkép létrehozásához](./map-create.md) térkép létrehozásához útmutatást.
+## <a name="add-compass-control"></a>Iránytű vezérlőelem hozzáadása
 
-Lényegét vezérlő leehetővé a térkép a térköz módosítása. A második kódblokkot objektumot hoz létre Felébresztve vezérlőelem használatával a atlas [PitchControl](/javascript/api/azure-maps-control/atlas.control.pitchcontrol) , és hozzáadja a térkép segítségével térkép [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metódust. A térkép belül van a terv lényegét vezérlő **eseményfigyelő** után a térkép teljes betölti a változóból biztosításához.
+Az iránytű vezérlőelem egy gombot helyez el a Térkép elforgatásához. Az alábbi mintakód az [iránytű vezérlő](/javascript/api/azure-maps-control/atlas.control.compasscontrol) osztály egy példányát hozza létre, és hozzáadja a térkép bal alsó sarkához.
 
-## <a name="add-compass-control"></a>Iránytűn vezérlőelem felvétele
+```javascript
+//Construct a compass control and add it to the map.
+map.controls.add(new atlas.control.Compass(), {
+    position: 'bottom-left'
+});
+```
 
-<iframe height='500' scrolling='no' title='Forgatás vezérlő hozzáadása' src='//codepen.io/azuremaps/embed/GBEoRb/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll típusú <a href='https://codepen.io/azuremaps/pen/GBEoRb/'>rotálása vezérlőelem hozzáadása</a> által az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
+Alább látható a fenti funkciók teljes futási kódjának mintája.
+
+<br/>
+
+<iframe height='500' scrolling='no' title='Forgatás vezérlőelem hozzáadása' src='//codepen.io/azuremaps/embed/GBEoRb/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a tollat a <a href='https://codepen.io'>CodePen</a>-on<a href='https://codepen.io/azuremaps'>@azuremaps</a>Azure Maps () elforgatási <a href='https://codepen.io/azuremaps/pen/GBEoRb/'>vezérlő hozzáadásával</a> .
 </iframe>
 
-Az első kódblokkot beállítja az előfizetési kulcsot, és előre a stílus beállítása nélkül egy térkép objektumot hoz létre. Lásd: [térkép létrehozásához](./map-create.md) térkép létrehozásához útmutatást.
+## <a name="a-map-with-all-controls"></a>Térkép az összes vezérlővel
 
-A második kódblokkot objektumot hoz létre Compass vezérlőelem használatával a atlas [Compass vezérlő](/javascript/api/azure-maps-control/atlas.control.compasscontrol). Hozzáadja a iránytűn vezérlő a térkép segítségével térképhez [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metódust. A térkép belül van a Compass vezérlő **eseményfigyelő** után a térkép teljes betölti a változóból biztosításához.
+A következő mintakód hozzáadja a Style Picker, a nagyítás, a szurok és az iránytű vezérlőket a Térkép jobb alsó sarkához. Figyelje meg, hogy a rendszer hogyan automatikusan verembe. A parancsfájlban lévő vezérlőelem-objektumok sorrendje azt diktálja, hogy milyen sorrendben jelenjenek meg a térképen. A térképen a vezérlőelemek sorrendjének módosításához megváltoztathatja a parancsfájlban található sorrendet.
 
-## <a name="a-map-with-all-controls"></a>A térkép összes vezérlőkkel
+<br/>
 
-<iframe height='500' scrolling='no' title='Az összes vezérlőjével térkép' src='//codepen.io/azuremaps/embed/qyjbOM/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll típusú <a href='https://codepen.io/azuremaps/pen/qyjbOM/'>egy térképen az összes vezérlőjével</a> által az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Térkép az összes vezérlővel' src='//codepen.io/azuremaps/embed/qyjbOM/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a térképes tollat az <a href='https://codepen.io/azuremaps/pen/qyjbOM/'>összes</a> vezérlővel<a href='https://codepen.io/azuremaps'>@azuremaps</a>Azure Maps () használatával a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Az első kódblokkot beállítja az előfizetési kulcsot, és előre a stílus beállítása nélkül egy térkép objektumot hoz létre. Lásd: [térkép létrehozásához](./map-create.md) térkép létrehozásához útmutatást.
+A Style Picker vezérlőt a [StyleControl](/javascript/api/azure-maps-control/atlas.control.stylecontrol) osztály határozza meg. A Style Picker vezérlő használatával kapcsolatos további információkért lásd: [Térkép stílusának kiválasztása](choose-map-style.md).
 
-A második kódblokk objektumot hoz létre Compass vezérlőelem használatával a atlas [CompassControl](/javascript/api/azure-maps-control/atlas.control.compasscontrol) , és hozzáadja a térkép segítségével térkép [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metódust.
+## <a name="customize-controls"></a>Vezérlők testreszabása
 
-A harmadik kódblokkot az atlas használatával nagyítás objektumot hoz létre [ZoomControl](/javascript/api/azure-maps-control/atlas.control.zoomcontrol) , és hozzáadja a térkép segítségével térkép [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metódust.
+Itt található egy eszköz, amellyel kipróbálhatja a vezérlők testreszabásának különböző lehetőségeit.
 
-A negyedik kódblokk objektumot hoz létre Felébresztve vezérlőelem használatával a atlas [PitchControl](/javascript/api/azure-maps-control/atlas.control.pitchcontrol) , és hozzáadja a térkép segítségével térkép [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metódust.
+<br/>
 
-A legutóbbi kódblokkot objektumot hoz létre stílus kiválasztása a atlas használatával [StyleControl](/javascript/api/azure-maps-control/atlas.control.stylecontrol) , és hozzáadja a térkép segítségével térkép [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metódust. Az összes vezérlő objektum kerülnek, a térkép belül **eseményfigyelő** annak érdekében, hogy betöltése után a térkép teljes tölti be.
+<iframe height="700" style="width: 100%;" scrolling="no" title="Navigációs vezérlőelem beállításai" src="//codepen.io/azuremaps/embed/LwBZMx/?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Tekintse meg a <a href='https://codepen.io'>CodePen</a>-on Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) által felügyelt tollas <a href='https://codepen.io/azuremaps/pen/LwBZMx/'>Navigálás beállításait</a> .
+</iframe>
 
-A parancsfájl a vezérlő objektumok sorrendje előírja a sorrendben jelenjenek meg a térképen. A térkép vezérlőelem sorrendjének módosításához a szkriptben sorrendjét módosíthatja.
+Ha testreszabott navigációs vezérlőket szeretne létrehozni, hozzon létre egy osztályt, amely `atlas.Control` kiterjeszti az osztályból, vagy hozzon létre egy HTML-elemet, és helyezze a Térkép div fölé. Ez a felhasználói felületi vezérlő hívja `setCamera` meg a Maps függvényt a Térkép áthelyezéséhez. 
 
 ## <a name="next-steps"></a>További lépések
 
-További információ az osztályok és módszerek a cikk ezt használja:
+További információ a cikkben használt osztályokról és módszerekről:
 
 > [!div class="nextstepaction"]
-> [Térkép](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [Iránytű vezérlő](/javascript/api/azure-maps-control/atlas.control.compasscontrol)
 
 > [!div class="nextstepaction"]
-> [Atlas](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas?view=azure-iot-typescript-latest)
-
-A teljes kódja a következő cikkekben talál:
+> [PitchControl](/javascript/api/azure-maps-control/atlas.control.pitchcontrol) 
 
 > [!div class="nextstepaction"]
-> [A PIN-kód hozzáadása](./map-add-pin.md)
+> [StyleControl](/javascript/api/azure-maps-control/atlas.control.stylecontrol) 
 
 > [!div class="nextstepaction"]
-> [Egy előugró ablak hozzáadása](./map-add-popup.md)
+> [ZoomControl](/javascript/api/azure-maps-control/atlas.control.zoomcontrol) 
+
+A következő cikkekben talál teljes kódot:
+
+> [!div class="nextstepaction"]
+> [PIN-kód hozzáadása](./map-add-pin.md)
+
+> [!div class="nextstepaction"]
+> [Felugró ablak hozzáadása](./map-add-popup.md)
+
+> [!div class="nextstepaction"]
+> [Vonal rétegének hozzáadása](map-add-line-layer.md)
+
+> [!div class="nextstepaction"]
+> [Sokszög réteg hozzáadása](map-add-shape.md)
+
+> [!div class="nextstepaction"]
+> [Buborék réteg hozzáadása](map-add-bubble-layer.md)
+

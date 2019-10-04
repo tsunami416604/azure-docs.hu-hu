@@ -1,6 +1,6 @@
 ---
-title: Automatikus javítás SQL Server rendszerű virtuális gépekhez (Resource Manager) |} A Microsoft Docs
-description: Az automatikus javítás funkció az SQL Server Virtual Machines Resource Manager használatával Azure-ban futó ismerteti.
+title: Automatikus javítás SQL Server virtuális gépekhez (Resource Manager) | Microsoft Docs
+description: Ismerteti az Azure-ban futó SQL Server Virtual Machines automatikus javítási funkcióját a Resource Manager használatával.
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
@@ -9,26 +9,25 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: 58232e92-318f-456b-8f0a-2201a541e08d
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 348979a53bff76c85e6d1531bd16cd695145e21b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 0900dd1809ecb1e93906b57483f334d0f12f6582
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59425985"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102073"
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-resource-manager"></a>Az SQL Server automatikus javítása az Azure Virtual Machines szolgáltatásban (Resource Manager)
 > [!div class="op_single_selector"]
 > * [Resource Manager](virtual-machines-windows-sql-automated-patching.md)
 > * [Klasszikus](../sqlclassic/virtual-machines-windows-classic-sql-automated-patching.md)
 
-Automatikus javítás az Azure virtuális gépként futó SQL Server karbantartási időszak hoz létre. Az automatikus frissítéseket csak ebben a karbantartási időszakban lehet telepíteni. Az SQL Server esetén ez a korlátozás gondoskodik róla, hogy a rendszerfrissítésekre és az esetleges újraindításokra az adatbázis számára a lehető legkedvezőbb időpontban kerüljön sor. 
+Az automatikus javítás karbantartási időszakot hoz létre egy SQL Server rendszert futtató Azure-beli virtuális géphez. Az automatikus frissítéseket csak ebben a karbantartási időszakban lehet telepíteni. Az SQL Server esetén ez a korlátozás gondoskodik róla, hogy a rendszerfrissítésekre és az esetleges újraindításokra az adatbázis számára a lehető legkedvezőbb időpontban kerüljön sor. 
 
 > [!IMPORTANT]
 > Csak a **Fontos** jelzéssel ellátott Windows-frissítések települnek. Az SQL Server további frissítéseit, például az összegző frissítéseket, manuálisan kell telepíteni. 
@@ -36,96 +35,98 @@ Automatikus javítás az Azure virtuális gépként futó SQL Server karbantart�
 Az automatikus javítás az [SQL Server IaaS-ügynök bővítményétől](virtual-machines-windows-sql-server-agent-extension.md) függ.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Automatikus javítás használatához vegye figyelembe a következő előfeltételek vonatkoznak:
+Az automatikus javítás használatához vegye figyelembe a következő előfeltételeket:
 
 **Operációs rendszer**:
 
+* Windows Server 2008 R2
 * Windows Server 2012
 * Windows Server 2012 R2
 * Windows Server 2016
 
-**SQL Server-verzió**:
+**SQL Server verziója**:
 
+* SQL Server 2008 R2
 * SQL Server 2012
 * SQL Server 2014
 * SQL Server 2016
+* SQL Server 2017
 
 **Azure PowerShell**:
 
-* [Telepítse a legújabb Azure PowerShell-parancsok](/powershell/azure/overview) Ha azt tervezi, hogy az automatikus javítás beállítása a PowerShell használatával.
+* [Telepítse a legújabb Azure PowerShell-parancsokat](/powershell/azure/overview) , ha automatikus javítást szeretne konfigurálni a PowerShell-lel.
 
 [!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 
 > [!NOTE]
-> Automatikus javítás az SQL Server IaaS-ügynök bővítmény támaszkodik. Aktuális SQL virtuálisgép-katalógus rendszerképek alapértelmezés szerint ez a bővítmény hozzáadása. További információkért lásd: [SQL Server IaaS-ügynök bővítmény](virtual-machines-windows-sql-server-agent-extension.md).
+> Az automatikus javítás a SQL Server IaaS-ügynök bővítményére támaszkodik. Az aktuális SQL-virtuálisgép-katalógus lemezképei alapértelmezés szerint a bővítményt adja hozzá. További információ: [SQL Server IaaS-ügynök bővítmény](virtual-machines-windows-sql-server-agent-extension.md).
 > 
 > 
 
 ## <a name="settings"></a>Beállítások
-A következő táblázat ismerteti a beállításokat, amelyeket az automatikus javítás állítható be. A tényleges konfigurációs lépések eltérőek lehetnek, ha használja az Azure portal vagy az Azure Windows PowerShell-parancsokat.
+Az alábbi táblázat az automatikus javításhoz konfigurálható beállításokat ismerteti. A tényleges konfigurációs lépések attól függően változnak, hogy az Azure Portal vagy az Azure Windows PowerShell-parancsokat használja-e.
 
 | Beállítás | Lehetséges értékek | Leírás |
 | --- | --- | --- |
-| **Automatikus javítás** |Engedélyezés/letiltás (letiltva) |Engedélyezi vagy letiltja az automatikus javítás az Azure virtuális gépként. |
-| **Karbantartási ütemezés** |Mindennap., hétfő, kedd, szerda, csütörtök, péntek, szombat, vasárnap |A virtuális gép Windows, az SQL Server és a Microsoft frissítések letöltése és telepítése a ütemezését. |
-| **A karbantartás indításának időpontja** |0-24 |A helyi ideje frissíteni a virtuális gép elindításához. |
-| **Karbantartási időszak hossza** |30-180 |A letöltés és frissítések telepítésének befejezéséhez engedélyezett percek számát. |
-| **Javítás kategória** |Fontos | A kategória Windows-frissítések letöltése és telepítése.|
+| **Automatikus javítás** |Engedélyezés/letiltás (letiltva) |Engedélyezheti vagy letilthatja az Azure-beli virtuális gépek automatikus javítását. |
+| **Karbantartási ütemterv** |Mindennap, hétfő, kedd, szerda, csütörtök, péntek, szombat, vasárnap |A virtuális géphez tartozó Windows-, SQL Server-és Microsoft-frissítések letöltésének és telepítésének ütemterve. |
+| **Karbantartási kezdési óra** |0-24 |A virtuális gép frissítésének helyi indítási ideje. |
+| **Karbantartási időszak időtartama** |30-180 |A frissítések letöltésének és telepítésének befejezéséhez szükséges percek száma. |
+| **Javítás kategóriája** |Fontos | A letölteni és telepíteni kívánt Windows-frissítések kategóriája.|
 
-## <a name="configuration-in-the-portal"></a>Konfigurációját a portálon
-Az Azure portal segítségével a konfigurálása az automatikus javítás kiépítése során, vagy a meglévő virtuális gépek.
+## <a name="configuration-in-the-portal"></a>Konfigurálás a portálon
+A Azure Portal a kiépítés vagy a meglévő virtuális gépek automatikus javításának konfigurálására használható.
 
 ### <a name="new-vms"></a>Új virtuális gépek
-Az Azure portal segítségével konfigurálhatja a automatikus javítás, amikor egy új SQL Server virtuális gépet hoz létre a Resource Manager-alapú üzemi modellben.
+Ha új SQL Server virtuális gépet hoz létre a Resource Manager-alapú üzemi modellben, használja a Azure Portal az automatikus javítás konfigurálásához.
 
-Az a **SQL Server-beállítások** panelen válassza ki **automatikus javítás**. Az alábbi Azure-portál képernyőképe látható a **SQL automatikus javítás** panelen.
+A **SQL Server beállítások** lapon válassza a **konfiguráció módosítása** az **Automatikus javítás**alatt lehetőséget. Az alábbi Azure Portal képernyőképen az **SQL-alapú automatikus javítás** panel látható.
 
-![SQL automatikus javítás az Azure Portalon](./media/virtual-machines-windows-sql-automated-patching/azure-sql-arm-patching.png)
+![SQL-alapú automatikus javítás a Azure Portal](./media/virtual-machines-windows-sql-automated-patching/azure-sql-arm-patching.png)
 
-Környezet, tekintse meg a teljes témakör [az Azure-ban az SQL Server virtuális gép üzembe helyezésének](virtual-machines-windows-portal-sql-server-provision.md).
+A környezettel kapcsolatban tekintse meg a [SQL Server virtuális gép üzembe helyezése az Azure-ban](virtual-machines-windows-portal-sql-server-provision.md)című témakört.
 
 ### <a name="existing-vms"></a>Meglévő virtuális gépek
-Meglévő SQL Server virtuális gépek esetében válassza ki az SQL Server virtuális gépet. Válassza ki a **SQL Server-konfiguráció** szakaszában a **beállítások** panelen.
 
-![SQL automatikus javítás meglévő virtuális gépek](./media/virtual-machines-windows-sql-automated-patching/azure-sql-rm-patching-existing-vms.png)
+[!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
-Az a **SQL Server-konfiguráció** panelen kattintson a **szerkesztése** gombra az automatikus javítás szakaszban.
+Meglévő SQL Server virtuális gépekhez nyissa meg az [SQL Virtual Machines](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource) -erőforrást, és válassza a **javítás** lehetőséget a **Beállítások**területen. 
 
-![Meglévő virtuális gépek SQL automatikus javítás beállítása](./media/virtual-machines-windows-sql-automated-patching/azure-sql-rm-patching-configuration.png)
+![SQL automatikus javítás a meglévő virtuális gépekhez](./media/virtual-machines-windows-sql-automated-patching/azure-sql-rm-patching-existing-vms.png)
 
-Ha elkészült, kattintson a **OK** gomb alján a **SQL Server-konfiguráció** panelen a módosítások mentéséhez.
 
-Ha engedélyezi a automatikus javítás először, akkor az Azure az SQL Server IaaS-ügynök úgy konfigurálja a háttérben. Ebben az időszakban az Azure Portalon nem jelenik meg, hogy konfigurálva van-e az automatikus javítás. Várjon néhány percet az ügynök telepítve van, úgy konfigurálni. Ezt követően az Azure Portalon jeleníti meg az új beállítások.
+Ha elkészült, kattintson az **SQL Server konfiguráció** panel alján található **OK** gombra a módosítások mentéséhez.
 
-## <a name="configuration-with-powershell"></a>PowerShell-konfiguráció
-Az SQL virtuális gép kiépítése, után a PowerShell segítségével konfigurálhatja az automatikus javítás.
+Ha első alkalommal engedélyezi az automatikus javítást, az Azure a háttérben konfigurálja a SQL Server IaaS-ügynököt. Ebben az időszakban előfordulhat, hogy a Azure Portal nem jelzi, hogy az automatikus javítás konfigurálva van. Várjon néhány percet, amíg az ügynök telepítve van, konfigurálva van. Ezt követően a Azure Portal az új beállításokat tükrözi.
 
-A következő példában a PowerShell konfigurálása az automatikus javítás az SQL Server meglévő virtuális gép szolgál. A **New-AzVMSqlServerAutoPatchingConfig** parancs konfigurálja az automatikus frissítések egy új karbantartási időszakot.
+## <a name="configuration-with-powershell"></a>Konfigurálás a PowerShell-lel
+Az SQL-alapú virtuális gép üzembe helyezése után a PowerShell használatával konfigurálja az automatikus javítást.
+
+A következő példában a PowerShell segítségével konfigurálhatja az automatikus javítást egy meglévő SQL Server VMon. A **New-AzVMSqlServerAutoPatchingConfig** parancs új karbantartási időszakot konfigurál az automatikus frissítésekhez.
 
     $vmname = "vmname"
     $resourcegroupname = "resourcegroupname"
     $aps = New-AzVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -MaintenanceWindowStartingHour 11 -MaintenanceWindowDuration 120  -PatchCategory "Important"
-
-    Set-AzVMSqlServerExtension -AutoPatchingSettings $aps -VMName $vmname -ResourceGroupName $resourcegroupname
+s set-AzVMSqlServerExtension-AutoPatchingSettings $aps-VMName $vmname-ResourceGroupName $resourcegroupname
 
 > [!IMPORTANT]
-> Ha a bővítmény nem telepítette, a bővítmény telepítése újraindítja az SQL Server szolgáltatást.
+> Ha a bővítmény még nincs telepítve, a bővítmény telepítése újraindítja a SQL Server szolgáltatást.
 
-Ebben a példában alapján, a következő táblázat ismerteti a gyakorlati hatást a cél Azure virtuális Gépen:
+A jelen példa alapján a következő táblázat ismerteti a cél Azure-beli virtuális gép gyakorlati hatását:
 
 | Paraméter | Következmény |
 | --- | --- |
-| **DayOfWeek** |Javítások telepítése minden csütörtökön tartjuk. |
-| **MaintenanceWindowStartingHour** |11:00 órakor kezdje a frissítések. |
-| **MaintenanceWindowsDuration** |Javítások követő 120 percen belül kell telepíteni. A kezdési időpont alapján, el kell végezniük 1:00 -kor szerint. |
-| **PatchCategory** |Az egyetlen lehetséges beállítása ez a paraméter **fontos**. Ez fontos; megjelölt Windows-frissítés telepítése ebbe a kategóriába nem szerepelnek az SQL Server frissítéseket nem telepít. |
+| **DayOfWeek** |A javítások minden csütörtökön telepítve vannak. |
+| **MaintenanceWindowStartingHour** |A frissítés megkezdése 11:00 órakor. |
+| **MaintenanceWindowsDuration** |A javításokat 120 percen belül kell telepíteni. A kezdési időpont alapján a befejezésük 1 – 16:00. |
+| **PatchCategory** |A paraméter egyetlen lehetséges beállítása **fontos**. Ez telepíti a Windows Update fontos jelölését; nem telepít olyan SQL Server frissítéseket, amelyek nem szerepelnek ebben a kategóriában. |
 
-Telepítse és konfigurálja az SQL Server IaaS-ügynök több percet igénybe vehet.
+A SQL Server IaaS-ügynök telepítése és konfigurálása több percet is igénybe vehet.
 
-Automatikus javítás letiltásához futtassa ugyanazt a parancsprogramot nélkül a **-engedélyezése** paramétert a **New-AzVMSqlServerAutoPatchingConfig**. Hiányában a **-engedélyezése** paraméter jelzi a parancs a funkció letiltásához.
+Az automatikus javítás letiltásához futtassa ugyanazt a parancsfájlt anélkül, hogy a **-enable** paramétert a **New-AzVMSqlServerAutoPatchingConfig**. A **-enable** paraméter hiánya jelzi, hogy a parancs letiltja a funkciót.
 
 ## <a name="next-steps"></a>További lépések
-Más elérhető automation-feladatokkal kapcsolatos további információkért lásd: [SQL Server IaaS-ügynök bővítmény](virtual-machines-windows-sql-server-agent-extension.md).
+További információ az egyéb rendelkezésre álló automatizálási feladatokról: [SQL Server IaaS-ügynök bővítmény](virtual-machines-windows-sql-server-agent-extension.md).
 
-További információ az Azure virtuális gépeken futó SQL Server: [SQL Server on Azure Virtual Machines – áttekintés](virtual-machines-windows-sql-server-iaas-overview.md).
+A SQL Server Azure-beli virtuális gépeken való futtatásával kapcsolatos további információkért lásd: [SQL Server az azure Virtual Machines áttekintése](virtual-machines-windows-sql-server-iaas-overview.md).
 

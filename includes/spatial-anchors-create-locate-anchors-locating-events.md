@@ -1,9 +1,14 @@
 ---
-ms.openlocfilehash: c4339aa8548ef66c862200ad61b6aaca90332ad0
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+author: ramonarguelles
+ms.service: azure-spatial-anchors
+ms.topic: include
+ms.date: 08/23/2019
+ms.author: rgarcia
+ms.openlocfilehash: 9a02dfbf3f2976489c10ccfeb935915a65d8dc84
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58632360"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71180053"
 ---
-A figyelő létrehozása után a `AnchorLocated` esemény esetében minden kért forráshorgony aktiválódnak. Ez az esemény akkor következik be, található horgonyra esetén, vagy ha a horgony nem található. Ez a helyzet akkor fordul elő, ha az OK állapotát ismerteti. Miután a figyelő minden horgonyok lesz feldolgozva, található, vagy nem található, akkor a `LocateAnchorsCompleted` események aktiválódnak.
+A figyelő létrehozása után az `AnchorLocated` esemény minden kért horgonyra kigyullad. Ez az esemény akkor következik be, amikor egy horgony található, vagy ha a horgony nem található. Ha ez a helyzet történik, az ok az állapotban szerepel. Ha egy figyelőhöz tartozó összes horgonyt feldolgozták, megtalálták vagy nem `LocateAnchorsCompleted` találják, akkor az esemény tüzet fog eredményezni. A figyelők száma legfeljebb 35 azonosító lehet. 

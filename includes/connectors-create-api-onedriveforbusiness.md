@@ -4,26 +4,26 @@ ms.service: logic-apps
 ms.topic: include
 ms.date: 11/03/2016
 ms.author: estfan
-ms.openlocfilehash: 48cd41d432c5969fc4128b055ca61fc86a57bdd2
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 6c905842778f43196ac463b99993a3cbcd436fa5
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50134334"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036715"
 ---
 ### <a name="prerequisites"></a>Előfeltételek
-* A [OneDrive](http://OneDrive.com) fiók 
+* Egy [OneDrive](https://OneDrive.com) -fiók 
 
-A onedrive vállalati verziójához tartozó fiókban, a logikai alkalmazás használata előtt engedélyeznie kell a logikai alkalmazás a OneDrive-fiókkal való kapcsolódáshoz. Szerencsére a ehhez egyszerűen, a logikai alkalmazás az Azure Portal webhelyen belül. 
+Ahhoz, hogy a OneDrive vállalati fiókhoz használhassa a logikai alkalmazásokban, engedélyeznie kell a logikai alkalmazásnak, hogy kapcsolódjon a OneDrive for Business-fiókhoz. Szerencsére ezt könnyedén elvégezheti az Azure Portalon a logikai alkalmazáson belül. 
 
-A logikai alkalmazás csatlakozni a OneDrive vállalati verzióbeli fiók hitelesítéséhez lépései a következők:
+Az alábbi lépésekkel engedélyezheti a logikai alkalmazásnak, hogy csatlakozhasson a OneDrive for Business-fiókhoz:
 
-1. Hozzon létre egy kapcsolatot a onedrive vállalati verzióba, a Logic app Designerben, jelölje be **megjelenítése a Microsoft által felügyelt API-k** a legördülő listában adja meg *OneDrive vállalati verzióba* kifejezést a keresőmezőbe. Válassza ki az eseményindítót vagy műveletet fogja kíván használni:  
+1. A OneDrive for Business kapcsolat létrehozásához a Logic app Designerben válassza a **Microsoft felügyelt API** -k megjelenítése lehetőséget a legördülő listában, majd írja be a *OneDrive for Business* kifejezést a keresőmezőbe. Válassza ki a használni kívánt triggert vagy műveletet:  
    ![](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-1.png)
-2. Ha még nem hozott létre a onedrive vállalati verzióba előtt kapcsolatokat, a rendszer adja meg a onedrive-hoz tartozó hitelesítő adatait fogja kérni. Ezeket a hitelesítő adatokat szeretne csatlakozni a logikai alkalmazás hitelesítéséhez használható, és a OneDrive vállalati fiók adatainak eléréséhez:  
+2. Ha még nem hozott létre kapcsolatot a vállalati OneDrive, a rendszer kérni fogja, hogy adja meg a OneDrive az üzleti hitelesítő adatokhoz. Ezek a hitelesítő adatok arra szolgálnak, hogy engedélyezzék a logikai alkalmazás kapcsolódását, és hozzáférhessenek a OneDrive a vállalati fiók adataihoz:  
    ![](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-2.png)
-3. Adja meg a OneDrive vállalati üzleti felhasználónevet és jelszót a logikai alkalmazás engedélyezése:  
+3. A logikai alkalmazás engedélyezéséhez adja meg a OneDrive for Business-felhasználónevet és-jelszót:  
    ![](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-3.png)   
-4. Figyelje meg, hogy a kapcsolat létrejött, és most már szabadon folytassa a további lépésekkel, a logikai alkalmazásban:  
+4. Figyelje meg, hogy létrejött a kapcsolódás, és most már ingyenesen folytathatja a logikai alkalmazás egyéb lépéseit:  
    ![](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-4.png)   
 

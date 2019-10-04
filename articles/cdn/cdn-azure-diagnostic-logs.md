@@ -7,19 +7,19 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2018
 ms.author: magattus
-ms.openlocfilehash: a5fab3e2bf9908fa35cf5f5485df3116b7718d8c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 86696ed6715b4e43a9d02232c013eb64feb61f67
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57881129"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594205"
 ---
 # <a name="azure-diagnostic-logs"></a>Azure diagnosztikai naplók
 
@@ -73,7 +73,7 @@ A naplók tárolásához egy storage-fiók használatához kövesse az alábbi l
  
 2. Válassza ki **archiválás tárfiókba**, majd **CoreAnalytics**. 
 
-2. A **megőrzés (nap)**, válassza ki a megőrzési napok számát. Egy nulla napnyi adatmegőrzéshez határozatlan ideig tárolja a naplókat. 
+2. A **megőrzés (nap)** , válassza ki a megőrzési napok számát. Egy nulla napnyi adatmegőrzéshez határozatlan ideig tárolja a naplókat. 
 
     ![Portál – diagnosztikai naplók](./media/cdn-diagnostics-log/04_Diagnostics-logs-storage.png) 
 
@@ -176,7 +176,7 @@ Próbál hozzáférni a core analytics-adatok egy Azure storage-fiókból, szük
 2.  Keresse meg a storage-fiók
 3.  Bontsa ki a **Blobtárolók** csomópont alatt ezt a tárfiókot.
 4.  Válassza ki a tárolót nevű *insights-logs-coreanalytics*.
-5.  Eredmények megjelenítése fel a jobb oldali ablaktáblán, mint az első szintű, kezdve a *resourceId =*. Folytassa az egyes fenyegetési kijelölését, amíg meg nem találja a fájl *PT1H.json*. Az elérési út egy ismertetése: [Blob elérési út formátuma](cdn-azure-diagnostic-logs.md#blob-path-format).
+5.  Eredmények megjelenítése fel a jobb oldali ablaktáblán, mint az első szintű, kezdve a *resourceId =* . Folytassa az egyes fenyegetési kijelölését, amíg meg nem találja a fájl *PT1H.json*. Az elérési út egy ismertetése: [Blob elérési út formátuma](cdn-azure-diagnostic-logs.md#blob-path-format).
 6.  Minden egyes blob *PT1H.json* fájlt jelöli az elemzési naplók egy adott CDN-végpont vagy az egyéni tartomány egy órán keresztül.
 7.  A séma a JSON-fájl tartalmát, a core analytics naplók szakasz sémája ismerteti.
 
@@ -189,7 +189,7 @@ Alapvető elemzési naplók óránként jönnek létre, és az adatokat gyűjt, 
 
 **Mező leírása:**
 
-|Érték|Leírás|
+|Value|Leírás|
 |-------|---------|
 |Előfizetés azonosítója    |Az Azure-előfizetés Guid formátumú azonosítója.|
 |Erőforráscsoport neve |Az erőforrás nevét, amely a CDN-erőforrások tartoznak.|
@@ -353,7 +353,7 @@ Az alábbi táblázat az alapvető elérhető metrikáinak listája látható az
 | EgressCacheUncacheable | Kimenő adatforgalom az eszközök, amelyek ebben az esetben az eszköz Cache-Control és/vagy a lejárat fejlécek alapján a gyorsítótárba. Azt jelzi, hogy azt nem gyorsítótárazza a POP- vagy HTTP-ügyfél által. | Igen | Igen | Nem |
 | EgressCacheOthers | Kimenő adatátvitel más gyorsítótár-forgatókönyvekhez. | Nem | Igen | Nem |
 
-* Kimenő adatátviteli forgalom CDN POP-kiszolgálókról továbbítja az ügyfélnek hivatkozik.
+\* Kimenő adatátviteli forgalom CDN POP-kiszolgálókról továbbítja az ügyfélnek hivatkozik.
 
 
 ### <a name="schema-of-the-core-analytics-logs"></a>A core analytics naplók sémája 

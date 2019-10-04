@@ -1,7 +1,7 @@
 ---
-title: Előre összeállított szándékok és entitások felismerésére
+title: 'Oktatóanyag: Előre összeépített leképezések és entitások – LUIS'
 titleSuffix: Azure Cognitive Services
-description: Ebben az oktatóanyagban egy alkalmazást, amellyel gyorsan nyerhetnek szándék előrejelzési és adatok kivonása előre összeállított szándékok és entitások hozzá. A kimondott szövegeket nem szükséges megcímkézni előre összeállított entitásokkal. Az entitást a rendszer automatikusan észleli.
+description: Ebben az oktatóanyagban előre elkészített leképezéseket és entitásokat ad hozzá egy alkalmazáshoz, amellyel gyorsan elsajátíthatja a szándék előrejelzését és az kinyerést. A kimondott szövegeket nem szükséges megcímkézni előre összeállított entitásokkal. Az entitást a rendszer automatikusan észleli.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,20 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 08/20/2019
 ms.author: diberry
-ms.openlocfilehash: 87e006cc5d56e0c7eb5455147c5ce9eb40afc162
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: aaeddac98e3f192d5e6a87ecfd48005526379ff2
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58086615"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390982"
 ---
 # <a name="tutorial-identify-common-intents-and-entities"></a>Oktatóanyag: Közös szándékok és entitások azonosítása
 
-Ebben az oktatóanyagban adhat gyorsan nyerhetnek szándék előrejelzési és adatok kivonása az emberi erőforrások oktatóanyag a előre összeállított szándékokat és entitásokat. Nem kell megjelölni az előre összeállított entitások megszólalásokat, mert az entitás automatikusan észlelt.
+Ebben az oktatóanyagban előre elkészített leképezéseket és entitásokat ad hozzá egy emberi erőforrásokkal foglalkozó oktatóanyag-alkalmazáshoz, amellyel gyorsan elsajátíthatja a szándék előrejelzését és az kinyerést. Nem kell megjelölnie egy hosszúságú kimondott szöveg az előre elkészített entitásokkal, mert a rendszer automatikusan észleli az entitást.
 
-Előre összeállított modellek (tartományokban, szándékok és entitások) segítségével gyorsan hozhat létre a modellben.
+Az előre elkészített modellek (tartományok, leképezések és entitások) segítenek a modell gyors létrehozásában.
 
 **Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
@@ -41,7 +41,7 @@ Előre összeállított modellek (tartományokban, szándékok és entitások) s
 [!INCLUDE [Follow these steps to create a new LUIS app](../../../includes/cognitive-services-luis-create-new-app-steps.md)]
 
 
-## <a name="add-prebuilt-intents-to-help-with-common-user-intentions"></a>A gyakori felhasználói céljaira segítségével előre összeállított leképezések hozzáadása
+## <a name="add-prebuilt-intents-to-help-with-common-user-intentions"></a>Előre összeépített leképezések hozzáadása a gyakori felhasználói szándékok segítésére
 
 A LUIS számos előre összeállított szándékot biztosít, amelyek segítenek a gyakori felhasználói szándékokban.  
 
@@ -51,20 +51,9 @@ A LUIS számos előre összeállított szándékot biztosít, amelyek segítenek
 
 1. Keressen a `Utilities` kifejezésre. 
 
-    [![A keresőmezőbe segédprogramok előre összeállított leképezések párbeszédpanel képernyőképe](./media/luis-tutorial-prebuilt-intents-and-entities/prebuilt-intent-utilities.png)](./media/luis-tutorial-prebuilt-intents-and-entities/prebuilt-intent-utilities.png#lightbox)
+1. Válassza ki az összes leképezést, majd válassza a **kész**lehetőséget. Ezek a szándékok segítenek megállapítani, hogy hol, a beszélgetésben, a felhasználó, és mit kérnek. 
 
-1. Válassza ki a következő szándékokat, majd a **Done** (Kész) lehetőséget: 
-
-   * Utilities.Cancel
-   * Utilities.Confirm
-   * Utilities.Help
-   * Utilities.StartOver
-   * Utilities.Stop
-
-     Ezek a szándék hasznosak meghatározhatja a beszélgetést, ha a felhasználó van, és mi azok arra kérjük, hajtsa végre. 
-
-
-## <a name="add-prebuilt-entities-to-help-with-common-data-type-extraction"></a>Gyakori típus adatkinyerés kiküszöbölni előre összeállított entitások hozzáadása
+## <a name="add-prebuilt-entities-to-help-with-common-data-type-extraction"></a>Előre összeépített entitások hozzáadása a közös adattípusok kinyerésének megkönnyítéséhez
 
 A LUIS számos előre összeállított entitást biztosít a gyakori adatok kinyeréséhez. 
 
@@ -72,28 +61,28 @@ A LUIS számos előre összeállított entitást biztosít a gyakori adatok kiny
 
 1. Válassza az **Add prebuilt entity** (Előre összeállított entitás hozzáadása) gombot.
 
-1. Válassza ki a következő entitásokat előre összeállított entitások listájából, majd válassza ki **kész**:
+1. Válassza ki a következő entitásokat az előre elkészített entitások listájából, majd válassza a **kész**lehetőséget:
 
    * **[PersonName](luis-reference-prebuilt-person.md)** 
    * **[GeographyV2](luis-reference-prebuilt-geographyV2.md)**
 
-     ![Képernyőkép: számválasztó az előre összeállított entitások párbeszédpanelen](./media/luis-tutorial-prebuilt-intents-and-entities/select-prebuilt-entities.png)
+     ![Képernyőkép az előre elkészített entitások párbeszédpanelen kiválasztott számról](./media/luis-tutorial-prebuilt-intents-and-entities/select-prebuilt-entities.png)
 
-     Ezek az entitások neve és helye felismerés ad hozzá az ügyfélalkalmazás nyújt segítséget.
+     Ezek az entitások segítséget nyújtanak a név és a hely felismerésének hozzáadásához az ügyfélalkalmazás számára.
 
-## <a name="add-example-utterances-to-the-none-intent"></a>A none szándék példa beszédmódok hozzáadása 
+## <a name="add-example-utterances-to-the-none-intent"></a>Példa hosszúságú kimondott szöveg hozzáadása a none szándékhoz 
 
 [!INCLUDE [Follow these steps to add the None intent to the app](../../../includes/cognitive-services-luis-create-the-none-intent.md)]
 
-## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Az alkalmazás betanításához, így a módosítások a leképezés tesztelhető legyen 
+## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Az alkalmazás betanítása, hogy tesztelni lehessen a szándék változásait 
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>Tegye közzé az alkalmazást, így a betanított modell lekérdezhető a végpontról
+## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>Tegye közzé az alkalmazást, hogy a betanított modell lekérdezhető legyen a végpontról.
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Leképezés és egyéb entitások előrejelzés beolvasása végpont
+## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Cél-és entitás-előrejelzés beolvasása a végpontról
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
@@ -101,35 +90,75 @@ A LUIS számos előre összeállított entitást biztosít a gyakori adatok kiny
 
     ```json
     {
-      "query": "I want to cancel my trip to Seattle to see Bob Smith",
+      "query": "I want to cancel my trip to Seattle to see Bob Smith.",
       "topScoringIntent": {
-        "intent": "Utilities.Cancel",
-        "score": 0.807676256
+        "intent": "Utilities.ReadAloud",
+        "score": 0.100361854
       },
       "intents": [
         {
-          "intent": "Utilities.Cancel",
-          "score": 0.807676256
-        },
-        {
-          "intent": "Utilities.StartOver",
-          "score": 0.0487322025
-        },
-        {
-          "intent": "Utilities.Help",
-          "score": 0.0208660364
-        },
-        {
-          "intent": "None",
-          "score": 0.008789532
+          "intent": "Utilities.ReadAloud",
+          "score": 0.100361854
         },
         {
           "intent": "Utilities.Stop",
-          "score": 0.006929268
+          "score": 0.08102781
+        },
+        {
+          "intent": "Utilities.SelectNone",
+          "score": 0.0398852825
+        },
+        {
+          "intent": "Utilities.Cancel",
+          "score": 0.0277276486
+        },
+        {
+          "intent": "Utilities.SelectItem",
+          "score": 0.0220712926
+        },
+        {
+          "intent": "Utilities.StartOver",
+          "score": 0.0145813478
+        },
+        {
+          "intent": "None",
+          "score": 0.012434179
+        },
+        {
+          "intent": "Utilities.Escalate",
+          "score": 0.0122632384
+        },
+        {
+          "intent": "Utilities.ShowNext",
+          "score": 0.008534077
+        },
+        {
+          "intent": "Utilities.ShowPrevious",
+          "score": 0.00547111453
+        },
+        {
+          "intent": "Utilities.SelectAny",
+          "score": 0.00152912608
+        },
+        {
+          "intent": "Utilities.Repeat",
+          "score": 0.0005556819
+        },
+        {
+          "intent": "Utilities.FinishTask",
+          "score": 0.000169488427
         },
         {
           "intent": "Utilities.Confirm",
-          "score": 0.00136293867
+          "score": 0.000149565312
+        },
+        {
+          "intent": "Utilities.GoBack",
+          "score": 0.000141017343
+        },
+        {
+          "intent": "Utilities.Reject",
+          "score": 6.27324E-06
         }
       ],
       "entities": [
@@ -149,7 +178,7 @@ A LUIS számos előre összeállított entitást biztosít a gyakori adatok kiny
     }
     ```
 
-    Az eredmény a Utilities.Cancel célt előrejelzett 80 %-os, és ki kell olvasni a város és személy neve adatokat. 
+    Az eredmény előre jelezte a segédprogramokat. az 80%-os megbízhatósággal megszakítja a szándékot, és kibontotta a város és a személy nevét. 
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
@@ -158,17 +187,17 @@ A LUIS számos előre összeállított entitást biztosít a gyakori adatok kiny
 
 ## <a name="related-information"></a>Kapcsolódó információk
 
-További információ az előre összeállított modellek:
+További információ az előre elkészített modellekről:
 
-* [Előre összeállított tartományok](luis-reference-prebuilt-domains.md): ezek a gyakori tartományok, amelyek csökkentik a teljes LUIS alkalmazás készítése
-* Előre összeállított leképezések: ezek a gyakori tartományainak az egyes leképezések. Külön-külön helyett a teljes tartományban szándékok adhat hozzá.
-* [Előre összeállított entitások](luis-prebuilt-entities.md): javasoljuk, hogy a legtöbb LUIS alkalmazás általános adatait adattípusok.
+* [Előre elkészített tartományok](luis-reference-prebuilt-domains.md): ezek olyan általános tartományok, amelyek csökkentik a teljes Luis-alkalmazások készítését
+* Előre elkészített leképezések: ezek a közös tartományok egyedi céljait jelentik. A teljes tartomány hozzáadása helyett a leképezéseket külön is hozzáadhatja.
+* [Előre elkészített entitások](luis-prebuilt-entities.md): ezek a leggyakoribb adattípusok a legtöbb Luis-alkalmazás esetében hasznosak.
 
-További információ a LUIS-alkalmazás használata:
+További információ a LUIS-alkalmazás használatáról:
 
-* [Hogyan betanítása](luis-how-to-train.md)
+* [Betanítás](luis-how-to-train.md)
 * [Közzétételi útmutató](luis-how-to-publish-app.md)
-* [A LUIS-portál tesztelése](luis-interactive-test.md)
+* [Tesztelés a LUIS portálon](luis-interactive-test.md)
 
 ## <a name="next-steps"></a>További lépések
 

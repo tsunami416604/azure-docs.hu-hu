@@ -5,14 +5,12 @@ metadata:
   title: Az Azure CDN dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
   description: 'Az Azure Content Delivery Network egy globális CDN-megoldás a nagy sávszélességű tartalmak továbbítására. Az Azure-ban bármilyen más helyen is üzemeltethető. Az Azure CDN-nel a legközelebbi POP-kiszolgáló használatával gyorsítótárazhatók az Azure Blob Storage-ból, webalkalmazásokból vagy bármilyen nyilvánosan elérhető webkiszolgálóról betöltött statikus objektumok. Az Azure CDN a különféle hálózati és útválasztási optimalizációk kihasználásával felgyorsíthatja a dinamikus, nem gyorsítótárazható tartalmak kézbesítését is.'
   services: cdn
-  author: czeumault
-  manager: carolz
-  ms.service: cdn
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  author: twooley
+  manager: twooley
+  ms.service: azure-cdn
   ms.topic: landing-page
   ms.date: 06/08/2018
-  ms.author: carolz
+  ms.author: twooley
 abstract:
   description: 'Az Azure Content Delivery Network egy globális CDN-megoldás a nagy sávszélességű tartalmak továbbítására. Az Azure-ban bármilyen más helyen is üzemeltethető. Az Azure CDN-nel a legközelebbi POP-kiszolgáló használatával gyorsítótárazhatók az Azure Blob Storage-ból, webalkalmazásokból vagy bármilyen nyilvánosan elérhető webkiszolgálóról betöltött statikus objektumok. Az Azure CDN a különféle hálózati és útválasztási optimalizációk kihasználásával felgyorsíthatja a dinamikus, nem gyorsítótárazható tartalmak kézbesítését is.'
 sections:

@@ -3,18 +3,18 @@ title: Diagnosztika és hibaelhárítás az Azure Cosmos DB Java aszinkron SDK
 description: Szolgáltatások használata, mint az ügyféloldali naplózás és más külső eszközök, diagnosztika, problémák azonosítása és elhárítása az Azure Cosmos DB.
 author: moderakh
 ms.service: cosmos-db
-ms.topic: troubleshooting
-ms.date: 10/28/2018
+ms.date: 04/30/2019
 ms.author: moderakh
 ms.devlang: java
 ms.subservice: cosmosdb-sql
+ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 0a2bbb33182fcdef3cc6ed7ff213557f90be4544
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 572139743c66546622450cef8f8a0fa264d24779
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57880075"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65519982"
 ---
 # <a name="troubleshoot-issues-when-you-use-the-java-async-sdk-with-azure-cosmos-db-sql-api-accounts"></a>Hibák elhárításához, ha az aszinkron Java SDK használata Azure Cosmos DB SQL API-fiókok
 Ez a cikk ismerteti gyakori problémák, megoldások, diagnosztikai lépések és eszközök használata esetén a [Java SDK-val aszinkron](sql-api-sdk-async-java.md) az Azure Cosmos DB SQL API-fiókok.
@@ -57,6 +57,16 @@ Ha az alkalmazás van üzembe helyezve az Azure Virtual machines szolgáltatásb
 
     Ha a szolgáltatásvégpont engedélyezve van, a már nem küld a nyilvános IP-cím az Azure Cosmos DB. Ehelyett a virtuális hálózat és alhálózat identitást kapnak. Ez a változás tűzfal csepp eredményezhet, ha csak nyilvános IP-címek használata engedélyezett. Ha a szolgáltatásvégpont engedélyezésekor, tűzfalat használ, adjon hozzá egy alhálózatot a tűzfal használatával [virtuális hálózati hozzáférés-vezérlési listák](https://docs.microsoft.com/azure/virtual-network/virtual-networks-acl).
 * Az Azure virtuális gép nyilvános IP-cím hozzárendelése.
+
+##### <a name="cant-connect"></a>Nem érhető el a szolgáltatás - tűzfal
+``ConnectTimeoutException`` azt jelzi, hogy az SDK nem érhető el a szolgáltatást.
+Hiba a következőhöz hasonló kaphat, a közvetlen mód használatakor:
+```
+GoneException{error=null, resourceAddress='https://cdb-ms-prod-westus-fd4.documents.azure.com:14940/apps/e41242a5-2d71-5acb-2e00-5e5f744b12de/services/d8aa21a5-340b-21d4-b1a2-4a5333e7ed8a/partitions/ed028254-b613-4c2a-bf3c-14bd5eb64500/replicas/131298754052060051p//', statusCode=410, message=Message: The requested resource is no longer available at the server., getCauseInfo=[class: class io.netty.channel.ConnectTimeoutException, message: connection timed out: cdb-ms-prod-westus-fd4.documents.azure.com/101.13.12.5:14940]
+```
+
+Ha van egy tűzfal, az alkalmazás a gépen futó, nyissa meg a 10 000-et a 20 000 a közvetlen mód által használt porttartomány.
+Emellett kövesse a [kapcsolathoz megadott korlátot gazdagépen](#connection-limit-on-host).
 
 #### <a name="http-proxy"></a>A HTTP-proxy
 

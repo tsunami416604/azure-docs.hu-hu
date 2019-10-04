@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 94e5893caa4dc19702f45e9b42727aab4f884bcd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a55ec7afc94440ea8b6a48ed1507476d362df6c0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59273855"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67087424"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vidyard"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Vidyard
 
@@ -55,7 +55,7 @@ Az Azure AD integrálása a Vidyard konfigurálásához hozzá kell Vidyard a ka
 
 **Vidyard hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -180,7 +180,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Vidyard, hajtsa vég
     ![Vidyard konfiguráció](./media/vidyard-tutorial/configure6.png)
 
     > [!NOTE]
-    > További információkért tekintse meg [feljegyzett](https://knowledge.vidyard.com/saml-single-sign-on-authentication/saml-based-single-sign-on-sso-in-vidyard).
+    > További információkért tekintse meg [feljegyzett](https://knowledge.vidyard.com/hc/articles/360009990033-SAML-based-Single-Sign-On-SSO-in-Vidyard).
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
 

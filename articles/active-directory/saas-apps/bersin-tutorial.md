@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f250a5ac5f6fefa099303b033a9687f1a219efd8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 8bc292be68879a608df6662418bb9f59c758f660
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59262312"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67106318"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bersin"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Bersin
 
@@ -51,9 +51,9 @@ Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri b
 
 Az Azure AD integrálása a Bersin konfigurálásához hozzá kell Bersin a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
-**Bersin hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
+**A katalógus Bersin adhat hozzá**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -86,7 +86,7 @@ Az Azure AD egyszeri bejelentkezés az Bersin tesztelése és konfigurálása, h
 
 Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
 
-Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Bersin, hajtsa végre az alábbi lépéseket:
+Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Bersin, tegye a következőket:
 
 1. Az a [az Azure portal](https://portal.azure.com/), az a **Bersin** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
 
@@ -100,7 +100,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Bersin, hajtsa végr
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az a **alapszintű SAML-konfigurációja** szakaszra, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód, hajtsa végre a következő lépést:
+4. Az a **alapszintű SAML-konfigurációja** szakaszra, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód, a következő lépésre van szükség:
 
     ![Bersin tartomány és URL-címeket egyetlen bejelentkezési adatait](common/idp-identifier-relay.png)
 
@@ -132,7 +132,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Bersin, hajtsa végr
 
 ### <a name="configure-bersin-single-sign-on"></a>Bersin egyszeri bejelentkezés konfigurálása
 
-Az egyszeri bejelentkezés konfigurálása **Bersin** oldalon kell küldenie a letöltött **összevonási metaadatainak XML** és az Azure Portalról másolt URL-címek megfelelő [Bersin támogatási csapatának](mailto:ramansabde@gmail.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+Az egyszeri bejelentkezés konfigurálása **Bersin** oldalán, a letöltött küldése **összevonási metaadatainak XML** és az Azure Portalról másolt URL-címek megfelelő [Bersin támogatási csapatának](mailto:ramansabde@gmail.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
 
@@ -146,13 +146,13 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     ![Új felhasználó gomb](common/new-user.png)
 
-3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
+3. A felhasználói tulajdonságok kövesse az alábbi lépéseket.
 
     ![A felhasználó párbeszédpanel](common/user-properties.png)
 
-    a. Az a **neve** mezőbe írja be **BrittaSimon**.
+    a. Az a **neve** írja be a következőt **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be a **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
@@ -181,13 +181,13 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
 
-6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
+6. Ha vár semmilyen szerepkör értéke a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználóhoz a listából. Kattintson a **kiválasztása** gombra a képernyő alján.
 
 7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
 
 ### <a name="create-bersin-test-user"></a>Bersin tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy felhasználói Britta Simon nevű Bersin hoz létre. Együttműködik a [Bersin támogatási csapatával](mailto:USBersinServiceClient@deloitte.com) a felhasználók hozzáadása a Bersin platform vagy a tartományt, amely a Bersin platform az engedélyezéshez van szükség. Ha a tartomány a csapata által hozzáadott, a Bersin platform automatikusan kiépítve felhasználók. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ebben a szakaszban egy felhasználói Britta Simon nevű Bersin hoz létre. Együttműködik a [Bersin támogatási csapatának](mailto:USBersinServiceClient@deloitte.com) a felhasználók hozzáadása a Bersin platform vagy a tartományban, amelyhez hozzá kell adni egy engedélyezési listája a Bersin platform. Ha a tartomány a csapata által hozzáadott, a Bersin platform automatikusan kiépítve felhasználók. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 

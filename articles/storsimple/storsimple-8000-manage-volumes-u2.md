@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 12/08/2017
 ms.author: alkohli
 ms.openlocfilehash: f7bfe41b4cdc9989c6b949011bc240275886b6f0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58093330"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60634820"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>A StorSimple-Eszközkezelő szolgáltatás használata kezelheti a kötetek (Update 3 vagy újabb)
 
@@ -40,7 +40,7 @@ Az archív kötetek olyan rétegzett kötet. Az archív kötetek esetén haszná
 
 Ha szükséges, módosíthatja a kötet rétegzett típusát a helyi vagy a rétegzett a helyi számítógépre. További információért ugorjon [a kötet típusának módosításához](#change-the-volume-type).
 
-### <a name="locally-pinned-volumes"></a>A gyors helyi kötetek
+### <a name="locally-pinned-volumes"></a>Helyileg rögzített kötetek
 
 Helyileg rögzített kötetek teljesen kiosztott köteteket, amelyeket nem csomag adatait a felhőbe, ezzel biztosítva a helyi garantálja, hogy az elsődleges adatokat, független a felhővel. Az adatok gyors helyi kötetek nem deduplikált és tömörített; azonban a helyileg rögzített kötetek pillanatképek deduplikálásának. 
 

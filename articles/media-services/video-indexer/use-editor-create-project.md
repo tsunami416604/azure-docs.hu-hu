@@ -6,15 +6,16 @@ services: media-services
 author: Juliako
 manager: femila
 ms.service: media-services
+ms.subservice: video-indexer
 ms.topic: article
 ms.date: 04/02/2019
 ms.author: juliako
-ms.openlocfilehash: a9d6396cab560a201b98497e787af4b6c7c2dabb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 725e265bb7f8c98db19971c50e690974cb38a0d2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58896460"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65518137"
 ---
 # <a name="use-the-video-indexer-editor-to-create-projects"></a>A Video Indexer-szerkesztő segítségével hozható létre
 
@@ -72,7 +73,7 @@ Ha minden videó jobb oldalán lévő lefelé mutató nyílra kattint, ekkor meg
 
 1. Válassza ki **elemzések megtekintése** melyik insights testreszabásához tekintse meg és melyik nem szeretné megtekinteni kívánt. 
 
-    ![Megállapítások megtekintése](./media/video-indexer-view-edit/insights.png)
+    ![Elemzések megtekintése](./media/video-indexer-view-edit/insights.png)
 1. Az adott klipek lekérdezések létrehozásához használja a keresési mezőbe, amely szerint a "Keresés a szövegben, vizuális szöveg, személyek és címkék a".
 1. Vegyen fel szűrőket annak további adja meg a részleteket a milyen kiválasztásával keresett jelenetek **szűrési lehetőségek**.
 
@@ -80,7 +81,7 @@ Ha minden videó jobb oldalán lévő lefelé mutató nyílra kattint, ekkor meg
 
     Például érdemes, ahol említett GitHub, a képernyőn megjelenő Donovan Brown pedig klipek megtekintéséhez. Ehhez hozzá kell egy "include" szűrőt, amely rendelkezik a "Felhasználók" insight típusaként. Szeretne írja be a "Donovan Brown" kifejezést a keresőmezőbe, a szűrő.
     
-    ![Belefoglalás](./media/video-indexer-view-edit/include.png)
+    ![Belefoglalása](./media/video-indexer-view-edit/include.png)
     
     Ha azt szeretné, ha GitHub említett Donovan Brown pedig a klipek _nem_ képernyőn lenne egyszerűen módosítsa a "include" szűrő egy "kizárása" szűrési a legördülő menüben. 
 
@@ -88,7 +89,7 @@ Ha minden videó jobb oldalán lévő lefelé mutató nyílra kattint, ekkor meg
     
     Kattintson a lista menüelem mellett látható a videó és a kiválasztja a videó minden szegmensek hozzáadása **válassza ki az összes szegmensek**. 
 
-    ![Összes hozzáadása](./media/video-indexer-view-edit/add-all.png)
+    ![Adja hozzá az összes](./media/video-indexer-view-edit/add-all.png)
 
     A kijelölt összes kijelölés törlése kiválasztásával törölheti.
 
@@ -118,7 +119,7 @@ Ne felejtse el menteni a projekthez, ha megváltozik kiválasztásával **menté
 
     Ha ez a projekt, láthatja az elemzés és a támadás idővonalának, a projekt. Ha **videó szerkesztő**, folytathatja a szerkesztéseket a projekthez. Módosítások fel videókat és a klipek eltávolítása vagy átnevezése a projekt tartalmazza.
 
-    ![Videószerkesztő](./media/video-indexer-view-edit/video-editor.png)
+    ![Videó szerkesztő](./media/video-indexer-view-edit/video-editor.png)
      
 ## <a name="create-a-project-from-your-video"></a>Hozzon létre egy projektet a videót
 

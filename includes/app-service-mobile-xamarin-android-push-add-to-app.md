@@ -4,12 +4,12 @@ ms.author: crdun
 ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
-ms.openlocfilehash: 3ced8c9fdadf547ec234c6d1bd5f3ddb8af7bc05
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: baf0f07002a21a8e4e60bc17186107b471243202
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42817440"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179626"
 ---
 1. Hozzon létre egy új osztályt a nevű projekt `ToDoBroadcastReceiver`.
 2. Adja hozzá a következő using utasításokat a **ToDoBroadcastReceiver** osztály:
@@ -66,7 +66,7 @@ ms.locfileid: "42817440"
     Vegye figyelembe, hogy ez az osztály származtatható a **GcmServiceBase** , és hogy a **szolgáltatás** Ez az osztály attribútumot kell alkalmazni.
 
     > [!NOTE]
-    > A **GcmServiceBase** osztály megvalósítja a **OnRegistered()**, **OnUnRegistered()**, **OnMessage()** és  **OnError()** módszereket. Ezek a módszerek felül kell írnia a **PushHandlerService** osztály.
+    > A **GcmServiceBase** osztály megvalósítja a **OnRegistered()** , **OnUnRegistered()** , **OnMessage()** és  **OnError()** módszereket. Ezek a módszerek felül kell írnia a **PushHandlerService** osztály.
 
 6. Adja hozzá a következő kódot a **PushHandlerService** osztály, amely felülbírálja a **OnRegistered** eseménykezelő.
 
@@ -109,7 +109,7 @@ ms.locfileid: "42817440"
     }
     ```
 
-    Ez a módszer a visszaadott GCM regisztrációs Azonosítót használja az Azure-ral leküldéses értesítések regisztrálása. A címkék csak lehet hozzáadni a regisztrációt a létrehozást követően. További információkért lásd: [hogyan: címkék hozzáadása egy eszköz telepítése leküldéses-a-tags engedélyezéséhez](../articles/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#tags).
+    Ez a módszer a visszaadott GCM regisztrációs Azonosítót használja az Azure-ral leküldéses értesítések regisztrálása. A címkék csak lehet hozzáadni a regisztrációt a létrehozást követően. További információkért lásd: [hogyan: Címkék hozzáadása egy eszköz telepítése leküldéses-a-tags engedélyezéséhez](../articles/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#tags).
 
 7. Bírálja felül a **OnMessage** metódus az **PushHandlerService** a következő kóddal:
 

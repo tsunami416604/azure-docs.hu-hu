@@ -1,109 +1,111 @@
 ---
-title: Az Azure SQL Database-kiszolgálóhoz erőforráskorlátok |} A Microsoft Docs
-description: Ez a cikk áttekintést nyújt az Azure SQL Database-kiszolgálóhoz erőforráskorlátok önálló adatbázisokhoz és rugalmas készleteket. Mi történik, ha ezek erőforráskorlátok találati vagy túllépte a vonatkozó információkat is biztosít.
+title: Azure SQL Database kiszolgálói erőforrás korlátai | Microsoft Docs
+description: Ez a cikk áttekintést nyújt az önálló adatbázisok és a rugalmas készletek Azure SQL Database kiszolgálói erőforrásának korlátairól. Emellett tájékoztatást nyújt arról is, hogy mi történik, ha az erőforrás korlátai elérik vagy túllépik azokat.
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
+author: stevestein
+ms.author: sstein
 ms.reviewer: sashan,moslake,josack
-manager: craigg
 ms.date: 04/18/2019
-ms.openlocfilehash: 04a5b98daf94275c6a95503c518248abeaeaeaa6
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 175f694cbe46f871349136c9ce91888b6de48d21
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59998277"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566852"
 ---
-# <a name="sql-database-resource-limits-for-azure-sql-database-server"></a>Az Azure SQL Database-kiszolgálóhoz tartozó SQL Database erőforráskorlátok
+# <a name="sql-database-resource-limits-for-azure-sql-database-server"></a>Azure SQL Database-kiszolgáló erőforrás-korlátainak SQL Database
 
-Ez a cikk egy SQL Database-kiszolgáló, amely felügyeli az önálló adatbázisok és rugalmas készletek az SQL Database erőforrás-korlátozások áttekintést nyújt. Mi történik, ha ezek erőforráskorlátok találati vagy túllépte a vonatkozó információkat is biztosít.
+Ez a cikk áttekintést nyújt az önálló adatbázisokat és rugalmas készleteket kezelő SQL Database kiszolgálók SQL Database erőforrás-korlátairól. Emellett tájékoztatást nyújt arról is, hogy mi történik, ha az erőforrás korlátai elérik vagy túllépik azokat.
 
 > [!NOTE]
-> Felügyelt példányok korlátozásairól lásd: [SQL Database erőforrás-korlátozások felügyelt példányok](sql-database-managed-instance-resource-limits.md).
+> A felügyelt példányok korlátaival kapcsolatban lásd: [a felügyelt példányok erőforrás-korlátainak SQL Database](sql-database-managed-instance-resource-limits.md).
 
-## <a name="maximum-resource-limits"></a>Maximális erőforráskorlátok
+## <a name="maximum-resource-limits"></a>Erőforrás-korlátok maximális száma
 
-| Erőforrás | Korlát |
+| Resource | Korlát |
 | :--- | :--- |
-| Adatbázisok kiszolgálónként | 5000 |
-| Kiszolgálók száma előfizetésenként bármelyik régióban alapértelmezett száma | 20 |
-| Kiszolgálók száma előfizetésenként bármelyik régióban maximális száma | 200 |  
-| Dtu-k vagy eDTU-kvóta kiszolgálónként | 54,000 |  
-| virtuális mag kvóta server-példány | 540 |
-| Maximális készletek kiszolgálónként | A dtu-k vagy virtuális magok száma korlátozott. Ha például minden készlet 1000 dtu-k használata, majd egy kiszolgáló támogatják-e 54 készletek.|
+| Adatbázisok száma kiszolgálónként | 5000 |
+| Az előfizetéshez tartozó kiszolgálók alapértelmezett száma bármely régióban | 20 |
+| Kiszolgálók/előfizetés maximális száma bármely régióban | 200 |  
+| DTU/eDTU kvóta kiszolgálónkénti bontásban | 54,000 |  
+| Virtuális mag-kvóta kiszolgálónkénti/példányon | 540 |
+| Készletek maximális száma kiszolgálónként | Korlátozott számú DTU vagy virtuális mag. Ha például az egyes készletek 1000 DTU, akkor a kiszolgáló támogatja az 54-es készleteket.|
 |||
 
 > [!NOTE]
-> További /eDTU DTU-kvótába, virtuális mag kvóta vagy további kiszolgálókat, mint az alapértelmezett érték beszerzéséhez egy új támogatási kérelmet az Azure Portalon, a probléma típusa "Kvóta" az előfizetés beküldhető. A dtu-k / eDTU kvóta- és adatbázis-korlát kiszolgálónként kiszolgálónként rugalmas készletek száma korlátozza.
+> Ha további DTU/eDTU-kvótát, virtuális mag-kvótát vagy több kiszolgálót szeretne beszerezni az alapértelmezett értéknél, új támogatási kérést küldhet a "kvóta" típusú előfizetéshez tartozó Azure Portalban. A DTU/eDTU kvóta és az adatbázis-korlát kiszolgálónként korlátozza a rugalmas készletek másodpercenkénti számát.
 > [!IMPORTANT]
-> Adatbázisok száma megközelíti a korlátot, egy SQL Database-kiszolgálón, ahogy az alábbi fordulhat elő:
-> - Növelje a várakozási ideje a lekérdezések futtatása a master adatbázison.  Ez magában foglalja az erőforrás-kihasználtsági statisztikáinak például sys.resource_stats nézetét.
-> - A felügyeleti műveletek késése növelése, és a renderelési enumerálni a kiszolgálón lévő adatbázisokat érintő portál modelladatok között.
+> Mivel az adatbázisok száma SQL Database kiszolgálón megközelíti a korlátot, a következő műveletek végezhetők el:
+> - Növekvő késés a főadatbázison futó lekérdezések futtatásakor.  Ide tartoznak az erőforrás-kihasználtsági statisztikák, például a sys. resource_stats nézetei.
+> - Növekvő késés a felügyeleti műveletekben és a portálon olyan nézőpontok, amelyek a kiszolgáló adatbázisainak számbavételét foglalják magukban.
 
-## <a name="what-happens-when-database-resource-limits-are-reached"></a>Mi történik, ha az adatbázis erőforrás-korlátozások elérésekor
+### <a name="storage-size"></a>Tároló mérete
+- Önálló adatbázisok esetén a rources a [DTU-alapú erőforrás-korlátokat](sql-database-dtu-resource-limits-single-databases.md) vagy a [virtuális mag-alapú erőforrás-](sql-database-vcore-resource-limits-single-databases.md) korlátokat tekintheti meg.
 
-### <a name="compute-dtus-and-edtus--vcores"></a>COMPUTE (dtu-król és edtu-k / virtuális mag)
+## <a name="what-happens-when-database-resource-limits-are-reached"></a>Mi történik az adatbázis-erőforrások korlátainak elérésekor
 
-(Dtu-k és edtu-k vagy virtuális magok szerint mért) adatbázis számítási mértéke túlságosan megnő, a késés növekedése lekérdezése és még akkor is, időtúllépés is. Ezen feltételek mellett a lekérdezések előfordulhat, hogy a szolgáltatás várólistára kerül, és biztosítják az erőforrások erőforrásként végrehajtás ingyenes válnak.
-Amikor magas számítási kihasználtságát, kockázatcsökkentési lehetőségek a következők:
+### <a name="compute-dtus-and-edtus--vcores"></a>Számítás (DTU és Edtu/virtuális mag)
 
-- Az adatbázis vagy az adatbázis további számítási erőforrásokat biztosít a rugalmas készlet számítási méretének növelését. Lásd: [egyetlen adatbázis-erőforrások skálázása](sql-database-single-database-scale.md) és [méretezhető rugalmas adatbáziskészlet erőforrásainak](sql-database-elastic-pool-scale.md).
-- Az erőforrás-használatot, az egyes lekérdezések csökkentése érdekében a lekérdezések optimalizálását. További információkért lásd: [lekérdezés hangolása/Hinting](sql-database-performance-guidance.md#query-tuning-and-hinting).
+Ha az adatbázis számítási kihasználtsága (DTU és Edtu, illetve virtuális mag alapján mérve) magas, a lekérdezés késése megnő, és akár időtúllépés is lehet. Ilyen körülmények között előfordulhat, hogy a szolgáltatás várólistára helyezi a lekérdezéseket, és erőforrásokat biztosít a végrehajtáshoz, mivel az erőforrás ingyenesvé válik.
+Ha magas számítási kihasználtságot tapasztal, a kockázatcsökkentő lehetőségek a következők:
+
+- Az adatbázis vagy a rugalmas készlet számítási méretének növelése az adatbázis további számítási erőforrásokkal való biztosításához. Lásd: [önálló adatbázis-erőforrások méretezése](sql-database-single-database-scale.md) és [rugalmas készlet erőforrásainak méretezése](sql-database-elastic-pool-scale.md).
+- A lekérdezések optimalizálása az egyes lekérdezések erőforrás-kihasználtságának csökkentése érdekében. További információ: a [lekérdezés finomhangolása/célzása](sql-database-performance-guidance.md#query-tuning-and-hinting).
 
 ### <a name="storage"></a>Storage
 
-Ha használt adatbázis-terület eléri a maximális méretkorlátot, adatbázis szúr be és frissítéseket, amelyek az adatok méretének növelése sikertelen, és azok az ügyfelek kapnak egy [hibaüzenet](sql-database-develop-error-messages.md). Adatbázis-KIVÁLASZTJA és TÖRLÉSEK továbbra is sikeres legyen.
+Ha az adatbázis-terület eléri a maximális méretkorlátot, az adatbázis-beszúrások és az adatméretet növelő frissítések sikertelenek [](sql-database-develop-error-messages.md)lesznek, és az ügyfelek hibaüzenetet kapnak. Az adatbázis kiválasztása és törlése a folytatás sikeres lesz.
 
-Amikor magas lemezterület-kihasználás, kockázatcsökkentési lehetőségek a következők:
+A magas lemezterület-használat során a megoldás a következőkre terjed ki:
 
-- Az adatbázisához vagy rugalmas maximális méretének növelését tárolókészlet, vagy vegyen fel további tárolókat. Lásd: [egyetlen adatbázis-erőforrások skálázása](sql-database-single-database-scale.md) és [méretezhető rugalmas adatbáziskészlet erőforrásainak](sql-database-elastic-pool-scale.md).
-- Ha az adatbázis egy rugalmas készletben, majd azt is megteheti az adatbázis áthelyezhetők a készlet kívül, hogy a tárolóhely nincsenek megosztva, más adatbázisok.
-- Az adatbázis nem használt terület felszabadítását zsugorítani. További információkért lásd: [területe az Azure SQL Database kezelése](sql-database-file-space-management.md)
+- Az adatbázis vagy a rugalmas készlet maximális méretének növelése, vagy további tárhely hozzáadása. Lásd: [önálló adatbázis-erőforrások méretezése](sql-database-single-database-scale.md) és [rugalmas készlet erőforrásainak méretezése](sql-database-elastic-pool-scale.md).
+- Ha az adatbázis egy rugalmas készletben található, akkor azt is megteheti, hogy az adatbázist a készleten kívülre helyezi, hogy a tárolóhelye ne legyen megosztva más adatbázisokkal.
+- Adatbázis zsugorítása a nem használt terület felszabadításához. További információ: [a tárterület kezelése a Azure SQL Databaseban](sql-database-file-space-management.md)
 
-### <a name="sessions-and-workers-requests"></a>A munkamenetek és feldolgozók (kérelmek)
+### <a name="sessions-and-workers-requests"></a>Munkamenetek és feldolgozók (kérelmek)
 
-A munkamenetek és a feldolgozók maximális száma határozza meg a szolgáltatási rétegben, és a számítási méret (dtu-król és edtu-k). Új kérelmek azért lettek elutasítva munkamenet vagy feldolgozói korlát elérésekor, és az ügyfelek hibaüzenetet kaphat. Bár a rendelkezésre álló kapcsolatok számát az alkalmazás által szabályozható, egyidejű feldolgozók száma nehezebb, gyakran becslése és ellenőrzését. Ez különösen igaz csúcsidőszakokban terhelés amikor adatbázis erőforráskorlátok eléri és feldolgozók egymásra hosszabb ideig futó lekérdezések miatt.
+A munkamenetek és a feldolgozók maximális számát a szolgáltatási szintek és a számítási méret (DTU és Edtu) határozzák meg. A rendszer elutasítja az új kérelmeket, ha a munkamenet-vagy feldolgozói korlátok elérésekor az ügyfelek hibaüzenetet kapnak. Míg az elérhető kapcsolatok száma az alkalmazás által szabályozható, az egyidejű feldolgozók száma gyakran nehezebb a becsléshez és a szabályozáshoz. Ez különösen igaz a maximális betöltési időszakok során, amikor az adatbázis-erőforrások korlátai elérik, és a feldolgozók a hosszabb ideig futó lekérdezések miatt halmoznak fel.
 
-Amikor magas munkamenet vagy feldolgozói kihasználtság, kockázatcsökkentési lehetőségek a következők:
+A magas munkamenet vagy munkavégző kihasználtsága esetén a kockázatcsökkentő lehetőségek a következők:
 
-- Növelése a szolgáltatási szint, vagy számítási az adatbázisához vagy rugalmas készlet mérete. Lásd: [egyetlen adatbázis-erőforrások skálázása](sql-database-single-database-scale.md) és [méretezhető rugalmas adatbáziskészlet erőforrásainak](sql-database-elastic-pool-scale.md).
-- A számítási erőforrások optimalizálása minden egyes lekérdezés az erőforrás-használat csökkentésére, ha a megnövekedett feldolgozó kihasználtsági oka miatt a versengés a lekérdezéseket. További információkért lásd: [lekérdezés hangolása/Hinting](sql-database-performance-guidance.md#query-tuning-and-hinting).
+- Az adatbázis vagy a rugalmas készlet szolgáltatási szintjeinek vagy számítási méretének növelése. Lásd: [önálló adatbázis-erőforrások méretezése](sql-database-single-database-scale.md) és [rugalmas készlet erőforrásainak méretezése](sql-database-elastic-pool-scale.md).
+- A lekérdezések optimalizálása az egyes lekérdezések erőforrás-kihasználtságának csökkentése érdekében, ha a munkavégzők nagyobb kihasználtságának oka a számítási erőforrások miatti kihasználása. További információ: a [lekérdezés finomhangolása/célzása](sql-database-performance-guidance.md#query-tuning-and-hinting).
 
-## <a name="transaction-log-rate-governance"></a>Tranzakciós napló arány Cégirányítási 
-Tranzakciós napló arány cégirányítási egy Azure SQL Database magas Adatbetöltési díjait számoljuk fel, például a kötegelt számítási feladatok esetében korlátozhatja a folyamat insert, SELECT INTO és indexek. Ezek a korlátok követ nyomon és érvényesítése a másodperc törtrésze szintjén, a napló rekord létrehozásakor díjaival, előfordulhat, hogy korlátozó átviteli sebesség függetlenül attól, hogy hány IOs állították adatfájlokat.  Tranzakciódíjak naplófájl létrehozásának jelenleg lineárisan lehessen skálázni addig a pontig, amely a függő hardver, a napló a maximális sebesség engedélyezett folyamatban van a virtuális mag modell megvásárlása a 96 MB/s. 
+## <a name="transaction-log-rate-governance"></a>Tranzakciós naplók arányának szabályozása 
+A tranzakciós napló arányának szabályozása Azure SQL Database folyamat, amellyel korlátozható a nagy mennyiségű betöltési arány a számítási feladatok, például a tömeges Beszúrás, a kiválasztás és az index-buildek esetében. Ezeket a korlátokat nyomon követheti és érvényesítheti az almásodik szinten a naplózási rekordok létrehozásának arányában, az átviteli sebességet pedig attól függetlenül, hogy hány IOs-t lehet kiadni az adatfájlok ellen.  A tranzakciónapló-generálási díjak jelenleg lineárisan méretezhetők egy olyan pontra, amely a hardvertől függ, és a maximálisan megengedett naplózási sebesség 96 MB/s a virtuális mag beszerzési modellel. 
 
 > [!NOTE]
-> A tényleges fizikai IOs, a tranzakciós naplófájlok nem szabályozott, vagy korlátozott. 
+> A tényleges fizikai IOs – tranzakciós naplófájlok nem szabályozottak vagy korlátozottak. 
 
-Napló díjszabás szerint vannak beállítva, hogy azok érhető el, és különböző forgatókönyveket, hosszabb ideig, amíg a teljes rendszer is fenntartható a funkcióit, és kis méretű hatással lehet a felhasználói terhelést. Napló arány irányítás biztosítja, hogy a tranzakciós napló biztonsági mentések közzétett helyreállíthatóságnak SLA-k belülre.  Ez a cégirányítási egyben megakadályozza, hogy egy túl sok várakozó fájlok számát a másodlagos replikákon.
+A naplózási díjszabás úgy van beállítva, hogy különböző forgatókönyvekben legyenek elérhetők és fenntarthatók, míg a teljes rendszer a felhasználói terhelésnek való lehető legkisebbre csökkentheti a funkcionalitását. A naplózási sebesség szabályozása biztosítja, hogy a tranzakciónapló biztonsági mentései a közzétett helyreállító SLA-ban maradjanak.  Ez a szabályozás a másodlagos replikák túlzott lemaradását is megakadályozza.
 
-A naplórekordok, ahogy az egyes műveletek értékeli ki és megfelelését ellenőrizni kívánja az e azt később kell alkalmazni a kívánt napló maximális sebesség (MB/s / másodperc) fenntartása érdekében. Az késleltetések nem kerülnek a naplóbejegyzések kiürített a tárolóhoz, hanem amikor arány cégirányítási napló log arány létrehozásakor magát van alkalmazva.
+A naplóbejegyzések létrehozásakor a rendszer minden egyes műveletet kiértékel és értékel ki, hogy késleltetve legyen-e a maximálisan szükséges naplózási sebesség (MB/s/másodperc) fenntartása érdekében. A rendszer nem adja hozzá a késéseket a naplófájlok tárolóba történő kiürítéséhez, hanem a naplózási sebesség szabályozására a naplózási arány létrehozásakor.
 
-A napló tényleges generációs futási időben kivetett díjak is befolyásolhatja visszajelzési funkcióját, ideiglenesen csökkenti az engedélyezett napló díjszabás, így a rendszer stabilizálását is. Log fájl címterület-kezelés, elkerülve a replikációs mechanizmusok log vonatkozó feltételek és a rendelkezésre állási csoport futó átmenetileg csökkentheti a rendszer általános korlátozások. 
+A tényleges log-generálási sebességet a futtatási időszakban is befolyásolhatja a visszajelzési mechanizmusok, ami átmenetileg csökkenti az engedélyezett naplók sebességét, így a rendszer képes stabilizálni. A naplófájlok kezelése, amelyekkel elkerülhető, hogy a naplózási terület feltételeit és a rendelkezésre állási csoport replikálási mechanizmusa átmenetileg csökkentse a teljes rendszerkorlátot. 
 
-Napló arány vezérlő forgalomformálásra van illesztett keresztül a következő várakozási típusok (között szerepelnek a [sys.dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) DMV):
+A log Rate kormányzó Traffic Shaping a következő várakozási típusok (a [sys. DM _db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) DMV) felületén keresztül van felszínben:
 
-| Várjon típusa | Megjegyzések |
+| Várakozás típusa | Megjegyzések |
 | :--- | :--- |
 | LOG_RATE_GOVERNOR | Adatbázis korlátozása |
 | POOL_LOG_RATE_GOVERNOR | Készlet korlátozása |
-| INSTANCE_LOG_RATE_GOVERNOR | Példány szintű korlátozása |  
-| HADR_THROTTLE_LOG_RATE_SEND_RECV_QUEUE_SIZE | Visszajelzés-vezérlés, a rendelkezésre állási csoport fizikai replikációs a prémium és üzletileg kritikus nem |  
-| HADR_THROTTLE_LOG_RATE_LOG_SIZE | Visszajelzés-vezérlés, korlátozza a díjak elkerülése érdekében kívüli naplófeltétel terület |
+| INSTANCE_LOG_RATE_GOVERNOR | Példány szintjének korlátozása |  
+| HADR_THROTTLE_LOG_RATE_SEND_RECV_QUEUE_SIZE | Visszajelzés-vezérlés, rendelkezésre állási csoport fizikai replikálása prémium/üzletileg kritikus nem kell tartani |  
+| HADR_THROTTLE_LOG_RATE_LOG_SIZE | Visszajelzés-vezérlés, a díjszabás korlátozása, hogy elkerülje a naplón kívüli hely feltételeit |
 |||
 
-Amikor egy napló költési korlát, amely a méretezhetőség kívánt akadályozása, vegye figyelembe a következő beállításokat:
-- Vertikális felskálázás nagyobb csomagra a maximális 96 MB/s log sebesség eléréséhez. 
-- Adatok betöltése nem átmeneti, ha egy ETL-folyamattal adatokat pl. átmeneti, töltődnek be a tempdb (amely minimálisan kerül). 
-- Elemzési forgatókönyvek esetén töltse be a hatálya alá tartozó fürtözött oszlopcentrikus táblába. Ez csökkenti a szükséges log tömörítés miatt. Ez a módszer megnöveli a CPU-kihasználtság, és csak akkor érvényes, az adatkészleteket, amelyek a fürtözött oszloptár-indexekben. 
+Ha egy, a kívánt skálázhatóságot akadályozó naplózási sebességre vonatkozó korlátot tapasztal, vegye figyelembe a következő lehetőségeket:
+- A maximális 96 MB/s naplózási arány megszerzéséhez akár nagyobb szintet is felnagyíthat. 
+- Ha a betöltés alatt álló adatmennyiség átmeneti, azaz egy ETL-folyamatban lévő átmeneti állapotú, akkor a tempdb-be (amely minimálisan naplózva van). 
+- Elemzési forgatókönyvek esetén helyezzen betöltést egy fürtözött oszlopcentrikus-táblázatba. Ez csökkenti a szükséges naplózási sebességet a tömörítés miatt. Ezzel a technikával növelheti a CPU-kihasználtságot, és csak olyan adatkészletekre alkalmazható, amelyek kihasználják a fürtözött oszlopcentrikus indexeket. 
 
 ## <a name="next-steps"></a>További lépések
 
-- Azure – általános korlátozások kapcsolatos információkért lásd: [Azure-előfizetés és a szolgáltatások korlátozásai, kvótái és megkötései](../azure-subscription-service-limits.md).
-- További információ a dtu-król és edtu-k: [dtu-król és edtu-k](sql-database-purchase-models.md#dtu-based-purchasing-model).
-- A tempdb méretbeli korlátokat kapcsolatos információkért lásd: [Azure SQL Database-ben a TempDB](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database).
+- Az általános Azure-korlátokkal kapcsolatos információkért lásd: Azure-előfizetések [és-szolgáltatások korlátai, kvótái és](../azure-subscription-service-limits.md)megkötései.
+- További információ a DTU és a Edtu: [DTU és edtu](sql-database-purchase-models.md#dtu-based-purchasing-model).
+- További információ a tempdb méretéről: [tempdb Azure SQL Database](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database).

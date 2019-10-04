@@ -1,6 +1,6 @@
 ---
-title: Az SQL Database vészhelyreállítása |} A Microsoft Docs
-description: Ismerje meg, hogyan regionális adatközpont-meghibásodás után vagy hiba az Azure SQL-adatbázis aktív georeplikációt, és a geo-visszaállítás képességek az adatbázis helyreállítása.
+title: SQL Database vész-helyreállítás | Microsoft Docs
+description: Megtudhatja, hogyan állíthatja helyre az adatbázisokat regionális adatközpontok meghibásodása esetén, illetve ha a Azure SQL Database aktív földrajzi replikálást és a Geo-visszaállítási képességeket.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -10,115 +10,114 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 1e1bc92c684bf6ddbb7dc4ff0f882ad61ddeb27e
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.date: 06/21/2019
+ms.openlocfilehash: 95814805d0bcb2532c09f4f68c6b8d97c3b8c6a5
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540482"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568832"
 ---
-# <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>Visszaállítása egy Azure SQL Database vagy feladatátvétel a másodlagos kiszolgálóra
+# <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>Azure SQL Database vagy feladatátvétel visszaállítása másodlagosra
 
-Az Azure SQL Database-beli szolgáltatáskimaradás utáni helyreállításhoz a következő lehetőségeket biztosítja:
+Azure SQL Database a következő képességeket biztosítja az áramszünetek helyreállításához:
 
 - [Aktív georeplikáció](sql-database-active-geo-replication.md)
 - [Automatikus feladatátvételi csoportok](sql-database-auto-failover-group.md)
 - [Geo-restore](sql-database-recovery-using-backups.md#point-in-time-restore)
-- [Zónaredundáns adatbázisok](sql-database-high-availability.md)
+- [Zóna – redundáns adatbázisok](sql-database-high-availability.md)
 
-Folyamatos üzletmenet – forgatókönyvek és a szolgáltatások ezeket a forgatókönyveket támogató kapcsolatos további információkért lásd: [üzletmenet-folytonossági](sql-database-business-continuity.md).
-
-> [!NOTE]
-> Zónaredundáns prémium és az üzletileg kritikus adatbázisokat vagy készleteket használ, ha a helyreállítási folyamat automatikus, és a többi anyag nem vonatkozik.
+Az üzletmenet-folytonossági forgatókönyvek és az ilyen forgatókönyveket támogató funkciók megismeréséhez tekintse meg az [üzletmenet folytonosságát](sql-database-business-continuity.md)ismertető témakört.
 
 > [!NOTE]
-> Elsődleges és másodlagos adatbázisok ugyanazon a szolgáltatásszinten van szüksége. Is erősen ajánlott, hogy a másodlagos adatbázis jön létre a számítási mérete (dtu-k vagy virtuális magok) megegyezik az elsődleges. További információkért lásd: [verzióra történő frissítéshez vagy az elsődleges adatbázis alacsonyabb szolgáltatásszintre](sql-database-active-geo-replication.md#upgrading-or-downgrading-a-primary-database).
+> Ha a prémium szintű vagy üzletileg kritikus-adatbázisokat vagy-készleteket használja, a helyreállítási folyamat automatizálható, és a többi anyag nem alkalmazható.
 
 > [!NOTE]
-> Egy vagy több, feladatátvételi csoportok segítségével kezelheti a több adatbázis feladatátvételét.
-> Ha a feladatátvételi csoporthoz ad hozzá egy meglévő georeplikációs kapcsolatban, győződjön meg arról, a geo-secondary van konfigurálva, az ugyanazon a szolgáltatásszinten és a számítási méret elsődlegesként. További információkért lásd: [automatikus feladatátvételi csoportok használatával engedélyezhető az átlátható és koordinált több adatbázis feladatátvételét](sql-database-auto-failover-group.md).
-
-## <a name="prepare-for-the-event-of-an-outage"></a>Az esemény szolgáltatáskimaradások előkészítése
-
-A sikeres a helyreállítás egy másik adatrégióba feladatátvételi csoportok vagy georedundáns biztonsági mentés használatával, elő kell készíteni egy kiszolgáló egy másik adatközpontban szolgáltatáskimaradás, az új elsődleges kiszolgáló lesz szükség kell merülnek fel, valamint rendelkezik, jól definiált lépéseit és tesztelt a zökkenőmentes helyreállítás biztosítása érdekében. Előkészítő lépések a következők:
-
-- Azonosítsa az SQL Database-kiszolgálóhoz egy másik régióban az új elsődleges kiszolgáló lesz. Geo-visszaállítás esetén ez általában a kiszolgáló a [párosított régióra](../best-practices-availability-paired-regions.md) a régió, amelyben az adatbázis nem található. Ezzel elkerülhető a további adatforgalom költség a geo-visszaállítás műveletek során.
-- Azonosítsa, és igény szerint határozza meg, a kiszolgálói szintű IP-tűzfalszabályainak a felhasználók számára az új elsődleges adatbázis eléréséhez szükséges.
-- Határozza meg, hogyan kívánja irányítsa át a felhasználókat az új elsődleges kiszolgáló, például kapcsolati karakterláncok módosításával, vagy meg szeretné változtatni a DNS-bejegyzéseket.
-- Azonosítsa, és újat is létrehozhat, a bejelentkezések, amelyek kell jelen lennie a master adatbázisban az új elsődleges kiszolgáló, és győződjön meg arról, ezek a bejelentkezéseket a master adatbázisban, rendelkezik megfelelő engedélyekkel, ha van ilyen. További információkért lásd: [SQL Database biztonsági katasztrófa utáni helyreállítás után](sql-database-geo-replication-security-config.md)
-- Azonosítsa a riasztási szabályok, amelyek az új elsődleges adatbázis leképezése frissíteni kell.
-- A dokumentum a az aktuális elsődleges adatbázis naplózási konfiguráció
-- Hajtsa végre egy [vészhelyreállítási próba végrehajtása](sql-database-disaster-recovery-drills.md). A geo-visszaállítás leállások szimulálását, törölheti, vagy nevezze át a forrásadatbázis az alkalmazás hibája miatt. Feladatátvételi csoportok használata a leállások szimulálását, letilthatja, hogy a webalkalmazás vagy virtuális gép csatlakozik az adatbázishoz vagy az adatbázis feladatátvételi alkalmazás csatlakozási hibákhoz vezethet.
-
-## <a name="when-to-initiate-recovery"></a>Mikor érdemes elindítani a helyreállítást
-
-A helyreállítási műveletet az alkalmazás hatással van. Ez az SQL-kapcsolati karakterlánc vagy a DNS-sel átirányítás módosítani kell, és végleges adatvesztést eredményezhet. Ezért el kell végezni csak akkor, ha a szolgáltatáskimaradás elhárítása után valószínű, hogy az alkalmazás helyreállítási idő célkitűzése hosszabb ideig. Ha az alkalmazás éles üzembe helyezés az alkalmazás állapotáról rendszeres figyelése, és használja a következő adatpontokhoz fogadhatja, hogy indokolt-e a helyreállítás:
-
-1. Állandó csatlakozási hiba az alkalmazás szintről az adatbázishoz.
-2. Az Azure Portalon a régióban, széles körű hatással van egy incidens kapcsolatos riasztás jelenik meg.
+> Mind az elsődleges, mind a másodlagos adatbázisnak azonos szolgáltatási szinten kell lennie. Javasoljuk továbbá, hogy a másodlagos adatbázis ugyanazzal a számítási mérettel (DTU vagy virtuális mag) legyen létrehozva, mint az elsődleges. További információ: [frissítés vagy visszalépés elsődleges adatbázisként](sql-database-active-geo-replication.md#upgrading-or-downgrading-primary-database).
 
 > [!NOTE]
-> Ha feladatátvételi csoportokat használ, és automatikus feladatátvételi választotta, a helyreállítási folyamat az automatizált és átlátható az alkalmazás.
+> Több adatbázis feladatátvételének kezeléséhez használjon egy vagy több feladatátvételi csoportot.
+> Ha egy meglévő geo-replikációs kapcsolatot ad hozzá a feladatátvételi csoporthoz, győződjön meg arról, hogy a Geo-másodlagos kiszolgáló ugyanazzal a szolgáltatási réteggel és számítási mérettel van konfigurálva, mint az elsődleges. További információ: [automatikus feladatátvételi csoportok használata több adatbázis átlátható és koordinált feladatátvételének engedélyezéséhez](sql-database-auto-failover-group.md).
 
-Az alkalmazás tolerancia állásidő és a lehetséges üzleti felelősséget függően érdemes lehet a következő helyreállítási beállítások.
+## <a name="prepare-for-the-event-of-an-outage"></a>Felkészülés a leállás esetére
 
-Használja a [helyreállítható adatbázishibák első](https://msdn.microsoft.com/library/dn800985.aspx) (*LastAvailableBackupDate*), a legújabb georeplikált visszaállítási pont beolvasása.
+Ha a helyreállítást egy másik adatterületre feladatátvételi csoport vagy a Geo-redundáns biztonsági másolatok segítségével kívánja végezni, elő kell készítenie egy kiszolgálót egy másik adatközpont-kimaradásban, hogy az új elsődleges kiszolgálónak kellene lennie, és jól definiált lépéseket kelljen dokumentálni, és a rendszer tesztelte a zökkenőmentes helyreállítás érdekében. Az előkészítés lépései a következők:
 
-## <a name="wait-for-service-recovery"></a>Várjon, amíg a kiszolgáló helyreállítás
+- Azonosítsa a SQL Database kiszolgálót egy másik régióban, hogy az új elsődleges kiszolgáló legyen. A Geo-visszaállítás esetében ez általában egy kiszolgáló a párosított [régióban](../best-practices-availability-paired-regions.md) azon régió esetében, amelyben az adatbázis található. Ez kiküszöböli a további forgalmi költségeket a Geo-visszaállítási műveletek során.
+- Azonosítsa és opcionálisan definiálja a kiszolgálói szintű IP-tűzfalszabályok szükségesek a felhasználók számára az új elsődleges adatbázis eléréséhez.
+- Határozza meg, hogyan fogja átirányítani a felhasználókat az új elsődleges kiszolgálóra, például a kapcsolódási karakterláncok módosításával vagy a DNS-bejegyzések módosításával.
+- Azonosítsa és opcionálisan hozza létre azokat a bejelentkezéseket, amelyeknek szerepelniük kell a főadatbázisban az új elsődleges kiszolgálón, és biztosítania kell, hogy ezek a bejelentkezések megfelelő engedélyekkel rendelkezzenek a Master adatbázisban, ha van ilyen. További információ: [SQL Database biztonság a katasztrófa utáni helyreállítás után](sql-database-geo-replication-security-config.md)
+- Azonosítsa azokat a riasztási szabályokat, amelyeket frissíteni kell az új elsődleges adatbázishoz való leképezéshez.
+- A naplózási konfiguráció dokumentálása az aktuális elsődleges adatbázisban
+- Végezzen vész- [helyreállítási gyakorlatot](sql-database-disaster-recovery-drills.md). A Geo-visszaállítás kimaradásának szimulálása érdekében törölheti vagy átnevezheti a forrás-adatbázist az alkalmazás kapcsolódási hibája miatt. A feladatátvételi csoportok használatával történő kimaradás szimulálása érdekében letilthatja az adatbázishoz csatlakozó webalkalmazást vagy virtuális gépet, vagy feladatátvételt hajthat végre az adatbázison az alkalmazások kapcsolódási hibái miatt.
 
-Azure csapatok munka térségekre való kiterjesztésén állítsa vissza a szolgáltatás rendelkezésre állása, gyorsan lehető, de attól függően, a legfelső szintű okozhatnak, órákig vagy napokig eltarthat.  Ha az alkalmazás működését jelentős állásidőt egyszerűen várja meg a helyreállítás végrehajtásához. Ebben az esetben az Ön részéről semmit nem kell. A szolgáltatás aktuális állapotát megtekintheti a [Azure szolgáltatásállapot-irányítópult](https://azure.microsoft.com/status/). A régió helyreállítása után az alkalmazás rendelkezésre állási szintet.
+## <a name="when-to-initiate-recovery"></a>Mikor kell kezdeményezni a helyreállítást
 
-## <a name="fail-over-to-geo-replicated-secondary-server-in-the-failover-group"></a>Feladatátvétel georeplikált másodlagos kiszolgáló feladatátvételi csoport
+A helyreállítási művelet hatással van az alkalmazásra. Ehhez az SQL-kapcsolati karakterláncot vagy a DNS-sel való átirányítást kell módosítania, és maradandó adatvesztést eredményezhet. Ezért csak akkor kell elvégezni, ha a leállás valószínűleg hosszabb ideig tart, mint az alkalmazás helyreállítási idejének célkitűzése. Ha az alkalmazást éles környezetben telepítik, akkor az alkalmazás állapotának rendszeres figyelését kell végeznie, és a következő adatpontokat kell használnia, hogy a helyreállítás indokolt legyen:
 
-Ha az alkalmazás állásidőt eredményezhet üzleti felelősség, kellene használni feladatátvételi csoportok. Lehetővé teszi az alkalmazások rendelkezésre állását szolgáltatáskimaradás esetén más régióban gyors visszaállításához. Foglalkozó oktatóanyagért lásd: [földrajzilag elosztott adatbázis implementálása](sql-database-implement-geo-distributed-database.md).
+1. Állandó csatlakozási hiba az alkalmazás szintjéről az adatbázisba.
+2. A Azure Portal a régión belüli incidensek széles körű hatásával kapcsolatos riasztást jelenít meg.
 
-Kezdeményezze a feladatátvételt a másodlagos kiszolgálóra, a támogatott módszerek egyikének használatával kell az adatbázis(ok) rendelkezésre állásának visszaállítása.
+> [!NOTE]
+> Ha feladatátvételi csoportokat használ, és az automatikus feladatátvételt választotta, a helyreállítási folyamat automatizált és transzparens módon történik az alkalmazás számára.
 
-A következő útmutatók használatával feladatátvételt egy georeplikált másodlagos adatbázis:
+Az alkalmazási toleranciára és az esetleges üzleti felelősségre függően a következő helyreállítási lehetőségek közül választhat.
 
-- [Feladatátvétel georeplikált másodlagos kiszolgáló használatával az Azure portal használatával](sql-database-geo-replication-portal.md)
-- [Átadja a feladatokat a másodlagos kiszolgáló PowerShell-lel](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
-- [Átadja a feladatokat egy másodlagos kiszolgáló Transact-SQL (T-SQL) használatával](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#e-failover-to-a-geo-replication-secondary)
+Használja a helyreállítható [adatbázis](https://msdn.microsoft.com/library/dn800985.aspx) beolvasása (*LastAvailableBackupDate*) lehetőséget a legújabb földrajzi replikálási visszaállítási pont lekéréséhez.
 
-## <a name="recover-using-geo-restore"></a>Helyreállítása geo-visszaállítás használatával
+## <a name="wait-for-service-recovery"></a>Várakozás a szolgáltatás helyreállítására
 
-Ha az alkalmazás állásidőt eredményez üzleti felelősség [geo-visszaállítás](sql-database-recovery-using-backups.md) módszerként az alkalmazás-adatbázis helyreállításához. A legújabb georedundáns biztonsági másolatból létrehoz egy másolatot az adatbázisról.
+Az Azure-csapatok szorgalmasan dolgoznak a szolgáltatás rendelkezésre állásának lehető leggyorsabb helyreállításához, de a kiváltó okoktól függően órákig vagy napokig is eltarthat.  Ha az alkalmazása jelentős állásidőt képes elviselni, egyszerűen várjon, amíg a helyreállítás befejeződik. Ebben az esetben nincs szükség beavatkozásra a részen. A szolgáltatás aktuális állapotát a [Azure Service Health irányítópulton](https://azure.microsoft.com/status/)tekintheti meg. A régió helyreállítása után az alkalmazás rendelkezésre állása helyreáll.
 
-## <a name="configure-your-database-after-recovery"></a>A helyreállítás után az adatbázis konfigurálása
+## <a name="fail-over-to-geo-replicated-secondary-server-in-the-failover-group"></a>Feladatátvétel a feladatátvételi csoportban található másodlagos kiszolgálóra
 
-A kimaradás utáni helyreállítása geo-visszaállítás használ, ha győződjön meg arról, hogy a kapcsolatot az új adatbázisok megfelelően van konfigurálva, hogy a normál alkalmazási függvény folytathatók. Ez a ellenőrzőlistája, feladatok, a helyreállított adatbázis éles készen álljon.
+Ha az alkalmazás leállása üzleti felelősséghez vezethet, akkor feladatátvételi csoportokat kell használnia. Lehetővé teszi az alkalmazás számára, hogy leállás esetén gyorsan visszaállítsa a rendelkezésre állást egy másik régióban. Oktatóanyag: [földrajzilag elosztott adatbázis implementálása](sql-database-implement-geo-distributed-database.md).
+
+Az adatbázis (ok) rendelkezésre állásának visszaállításához a feladatátvételt a másodlagos kiszolgálóra kell kezdeményezni a támogatott módszerek egyikének használatával.
+
+A következő útmutatók egyikével végezheti el a feladatátvételt egy földrajzilag replikált másodlagos adatbázisra:
+
+- [Feladatátvétel egy földrajzilag replikált másodlagos kiszolgálóra a Azure Portal használatával](sql-database-geo-replication-portal.md)
+- [Feladatátvétel a másodlagos kiszolgálóra a PowerShell használatával](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
+- [Feladatátvétel másodlagos kiszolgálóra a Transact-SQL (T-SQL) használatával](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#e-failover-to-a-geo-replication-secondary)
+
+## <a name="recover-using-geo-restore"></a>Helyreállítás a Geo-visszaállítás használatával
+
+Ha az alkalmazás leállása nem jelent üzleti felelősséget, a [geo-visszaállítási](sql-database-recovery-using-backups.md) módszer használatával helyreállíthatja az alkalmazás-adatbázis (oka) t. Létrehoz egy másolatot az adatbázisról a legújabb geo-redundáns biztonsági mentésből.
+
+## <a name="configure-your-database-after-recovery"></a>Az adatbázis konfigurálása a helyreállítás után
+
+Ha a Geo-visszaállítás segítségével állítja helyre a helyreállítást, meg kell győződnie arról, hogy az új adatbázisokhoz való kapcsolódás megfelelően van konfigurálva, hogy a normál alkalmazás-funkció folytatódni lehessen. Ez egy ellenőrzőlista a feladatokról, amelyekkel készen áll a helyreállított adatbázis gyártására.
 
 ### <a name="update-connection-strings"></a>Kapcsolati sztringek frissítése
 
-A helyreállított adatbázis egy másik kiszolgálón található, mert azt frissítenie kell az alkalmazás kapcsolati karakterláncában, erre a kiszolgálóra mutasson.
+Mivel a helyreállított adatbázis egy másik kiszolgálón található, frissítenie kell az alkalmazás kapcsolódási karakterláncát, hogy erre a kiszolgálóra mutasson.
 
-Kapcsolati karakterláncok módosításával kapcsolatos további információkért tekintse meg a megfelelő fejlesztési nyelvét a [kapcsolat könyvtár](sql-database-libraries.md).
+A kapcsolatok sztringek módosításával kapcsolatos további információkért tekintse meg a [Csatlakozáskezelő](sql-database-libraries.md)megfelelő fejlesztői nyelvét.
 
 ### <a name="configure-firewall-rules"></a>Tűzfalszabályok konfigurálása
 
-Győződjön meg arról, hogy a tűzfalszabályok konfigurálása a kiszolgálón és az adatbázis megegyeznek az elsődleges kiszolgálón és az elsődleges adatbázis konfigurált kell. További információkért lásd: [hogyan: Konfigurálhatja a tűzfal beállításait (az Azure SQL Database)](sql-database-configure-firewall-settings.md).
+Győződjön meg arról, hogy a kiszolgálón és az adatbázison konfigurált tűzfalszabályok megfelelnek az elsődleges kiszolgálón és az elsődleges adatbázisban konfigurált szabályoknak. További információkért lásd: [hogyan: Adja meg a tűzfalbeállítások beállításait (](sql-database-configure-firewall-settings.md)Azure SQL Database).
 
-### <a name="configure-logins-and-database-users"></a>Bejelentkezések és felhasználók adatbázis konfigurálása
+### <a name="configure-logins-and-database-users"></a>Bejelentkezések és adatbázis-felhasználók konfigurálása
 
-Győződjön meg arról, hogy az alkalmazása által használt összes bejelentkezések a kiszolgálón, amely a helyreállított adatbázis létezik-e szüksége. További információkért lásd: [biztonsági konfiguráció georeplikációhoz](sql-database-geo-replication-security-config.md).
+Meg kell győződnie arról, hogy az alkalmazás által használt összes bejelentkezés a helyreállított adatbázist futtató kiszolgálón található. További információ: [biztonsági konfiguráció a Geo-replikációhoz](sql-database-geo-replication-security-config.md).
 
 > [!NOTE]
-> Állítsa be, és a kiszolgáló tűzfalszabályait és a bejelentkezések (és a rájuk vonatkozó engedélyek) tesztelje a vészhelyreállítási próba végrehajtása során. Ezen kiszolgálói szintű objektumok és azok konfigurációja nem lehet elérhető a szolgáltatáskimaradás közben.
+> A vész-helyreállítási gyakorlat során konfigurálni és tesztelni kell a kiszolgáló tűzfalszabályok és bejelentkezési adatait (és azok engedélyeit). Előfordulhat, hogy ezek a kiszolgálói szintű objektumok és azok konfigurációja nem érhető el a leállás során.
 
-### <a name="setup-telemetry-alerts"></a>Telemetria beállítása
+### <a name="setup-telemetry-alerts"></a>Telemetria-riasztások beállítása
 
-Győződjön meg arról, hogy a meglévő riasztásiszabály-beállításokat a helyreállított adatbázis és a másik kiszolgáló leképezése frissülnek kell.
+Győződjön meg arról, hogy a meglévő riasztási szabály beállításainak frissítése a helyreállított adatbázisra és a másik kiszolgálóra való leképezéshez szükséges.
 
-Adatbázis-riasztási szabályok kapcsolatos további információkért lásd: [riasztás értesítések fogadása](../monitoring-and-diagnostics/insights-receive-alert-notifications.md) és [nyomon követése a Service Health](../monitoring-and-diagnostics/insights-service-health.md).
+Az adatbázis-riasztási szabályokról további információt a [Riasztási értesítések fogadása](../monitoring-and-diagnostics/insights-receive-alert-notifications.md) és a [Service Health nyomon követése](../monitoring-and-diagnostics/insights-service-health.md)című témakörben talál.
 
-### <a name="enable-auditing"></a>A naplózás engedélyezéséhez
+### <a name="enable-auditing"></a>Naplózás engedélyezése
 
-Naplózás az adatbázis eléréséhez szükséges, ha szüksége az adatbázis helyreállítása után a naplózás engedélyezése. További információkért lásd: [Database auditing](sql-database-auditing.md).
+Ha az adatbázis eléréséhez naplózásra van szükség, engedélyeznie kell a naplózást az adatbázis helyreállítása után. További információ: adatbázis- [naplózás](sql-database-auditing.md).
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ az Azure SQL Database automatikus biztonsági mentések, lásd: [SQL-adatbázis automatikus biztonsági másolatai](sql-database-automated-backups.md)
-- Folyamatos üzletmenet – tervezési és helyreállítási forgatókönyvek kapcsolatos további információkért lásd: [folyamatos üzletmenet – forgatókönyvek](sql-database-business-continuity.md)
-- Az automatikus biztonsági másolatokból helyreállítási kapcsolatos további információkért lásd: [adatbázis visszaállítása a szolgáltatás által létrehozott biztonsági másolatokból](sql-database-recovery-using-backups.md)
+- Az automatikus biztonsági mentések Azure SQL Databaseával kapcsolatos további tudnivalókért lásd: [SQL Database automatikus biztonsági mentések](sql-database-automated-backups.md)
+- További információ az üzletmenet-folytonosság kialakításáról és a helyreállítási forgatókönyvekről: [folytonossági forgatókönyvek](sql-database-business-continuity.md)
+- További információ a helyreállítás automatizált biztonsági mentések használatáról: [adatbázis visszaállítása a szolgáltatás által kezdeményezett biztonsági másolatokból](sql-database-recovery-using-backups.md)

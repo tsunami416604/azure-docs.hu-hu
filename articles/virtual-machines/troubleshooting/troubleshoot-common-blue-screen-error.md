@@ -1,73 +1,72 @@
 ---
-title: Kék képernyő hibák, amikor egy Azure virtuális gép elindítása |} A Microsoft Docs
-description: Ismerje meg a probléma elhárításához a kék képernyő hibát fogadott történő rendszerindítás esetén |} A Microsoft Docs
+title: Blue Screen-hibák egy Azure-beli virtuális gép indításakor | Microsoft Docs
+description: Megtudhatja, hogyan lehet elhárítani a rendszerindításkor a kék képernyő hibája miatti hibát. Microsoft Docs
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: genli
-ms.openlocfilehash: 7e37d8e732408e70dbcdc86d3e21556f553506cd
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 921e97fa393a3005e3ba392502d291301df3d65c
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57768484"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058068"
 ---
-# <a name="windows-shows-blue-screen-error-when-booting-an-azure-vm"></a>Windows kék képernyő hibát jeleníti meg, ha egy Azure virtuális gép elindítása
-Ez a cikk ismerteti, amely felmerülhet, amikor elindítja a Windows virtuális gép (VM) a Microsoft Azure-ban kék képernyő hibákat. Ismerteti egy támogatási jegyet az adatgyűjtéshez nyújt segítséget. 
+# <a name="windows-shows-blue-screen-error-when-booting-an-azure-vm"></a>A Windows egy Azure-beli virtuális gép indításakor kék képernyős hibát jelez
+Ez a cikk a Windows rendszerű virtuális gépek (VM-EK) Microsoft Azure-ben való indításakor felmerülő kék képernyős hibákat ismerteti. Ez a témakör segítséget nyújt a támogatási jegy adatainak gyűjtéséhez. 
 
 > [!NOTE] 
-> Az Azure az erőforrások létrehozásához és használatához két különböző üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk ismerteti, javasoljuk, hogy az új központi telepítéseknél helyett a klasszikus üzemi modell használatával Resource Manager üzemi modell használatával.
+> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk a Resource Manager-alapú üzemi modell használatát ismerteti, amelyet a klasszikus üzemi modell helyett új központi telepítések esetén ajánlott használni.
 
 ## <a name="symptom"></a>Jelenség 
 
-Windows virtuális gép nem indul el. Amikor ellenőrizheti a rendszerindító képernyőképek a [rendszerindítási diagnosztika](./boot-diagnostics.md), az alábbi hibaüzenetek kékképernyős egyikét látja:
+Egy Windows rendszerű virtuális gép nem indul el. Amikor bejelöli a rendszerindítási [diagnosztika](./boot-diagnostics.md)rendszerindítási funkcióit, a következő hibaüzenetek egyike jelenik meg egy kék képernyőn:
 
-- a számítógép hibába ütközött egy problémát, és indítsa újra kell. Csak adatok néhány hiba adatait, és majd újraindíthatja.
-- A számítógép hibába ütközött egy problémát, és indítsa újra kell.
+- a számítógép hibába ütközött, és újra kell indítani. Most gyűjtünk néhány hibaüzenetet, majd újraindíthatjuk.
+- A számítógép hibát észlelt, és újra kell indítania.
 
-Ez a szakasz ismerteti a Gyakori hibaüzenetek jelentkezhetnek, ha a virtuális gépek kezelése:
+Ez a szakasz a virtuális gépek kezelésekor felmerülő gyakori hibaüzeneteket sorolja fel:
 
 ## <a name="cause"></a>Ok
 
-Miért leállási hiba számíthat, több oka lehet. A leggyakoribb okok a következők:
+Több oka is lehet annak, hogy miért lenne leállítási hiba. A leggyakoribb okok a következők:
 
-- Egy illesztőprogram-probléma
-- A rendszer sérült fájl vagy a memória
-- Egy alkalmazás eléri egy tiltott szektort a memória
+- Probléma egy illesztőprogrammal
+- Sérült rendszerfájl vagy memória
+- Egy alkalmazás a memória tiltott szektorához fér hozzá
 
-## <a name="collect-memory-dump-file"></a>Memóriakép gyűjtése
+## <a name="collect-memory-dump-file"></a>Memóriakép-fájl gyűjtése
 
-A probléma megoldásához, gyűjtse össze az összeomlási memóriakép fájlt, és forduljon az ügyfélszolgálathoz a memóriakép-fájl első kell lennie. A memóriakép-fájl összegyűjtése, kövesse az alábbi lépéseket:
+A probléma megoldásához először össze kell gyűjtenie az összeomláshoz tartozó memóriakép-fájlt, és kapcsolatba kell lépnie a memóriakép fájllal. A memóriakép-fájl összegyűjtéséhez kövesse az alábbi lépéseket:
 
 ### <a name="attach-the-os-disk-to-a-recovery-vm"></a>Csatlakoztassa az operációsrendszer-lemezt egy helyreállítási virtuális Géphez
 
-1. Pillanatkép készítése az operációsrendszer-lemez az érintett virtuális gépek biztonsági mentéséhez. További információkért lásd: [lemez pillanatképének elkészítése](../windows/snapshot-copy-managed-disk.md).
+1. Készítsen pillanatképet az érintett virtuális gép operációsrendszer-lemezéről biztonsági másolatként. További információkért lásd: [lemez pillanatképének elkészítése](../windows/snapshot-copy-managed-disk.md).
 2. [Csatlakoztassa az operációsrendszer-lemezt egy helyreállítási virtuális Géphez](../windows/troubleshoot-recovery-disks-portal.md). 
-3. Távoli asztal, a helyreállítási virtuális Gépet.
+3. Távoli asztalról a helyreállítási virtuális gépre.
 
-### <a name="locate-dump-file-and-submit-a-support-ticket"></a>Keresse meg a memóriakép-fájl, és a egy támogatási jegyet is küldhet
+### <a name="locate-dump-file-and-submit-a-support-ticket"></a>Memóriaképfájl megkeresése és támogatási jegy beküldése
 
-1. A helyreállítási virtuális Gépet lépjen a csatlakoztatott operációsrendszer-lemez a windows-mappában. Ha van rendelve a csatlakoztatott operációsrendszer-lemez meghajtóbetűjelét F, kell F:\Windows Ugrás.
-2. Th memory.dmp fájlt, keresse meg, majd [támogatási jegyet is küldhet](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) memóriakép-fájllal. 
+1. A helyreállítási virtuális gépen nyissa meg a Windows mappát a csatolt operációsrendszer-lemezen. Ha a csatlakoztatott operációsrendszer-lemezhez hozzárendelt illesztőprogram betűjele F, akkor a F:\Windows. kell lépnie.
+2. Keresse meg a Memory. dmp fájlt, majd [küldjön el egy támogatási jegyet](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a memóriakép fájljában. 
 
-Ha nem találja a memóriakép-fájl, helyezze át a következő lépéssel engedélyezheti a memóriakép naplóját és a soros konzol.
+Ha nem találja a memóriaképet, helyezze át a következő lépést a memóriakép és a soros konzol engedélyezéséhez.
 
 ### <a name="enable-dump-log-and-serial-console"></a>Memóriakép napló és a soros konzol engedélyezése
 
 Memóriakép napló és a soros konzol engedélyezéséhez futtassa a következő szkriptet.
 
-1. -Munkamenetet emelt szintű parancssorból (Futtatás rendszergazdaként).
+1. Nyisson meg egy rendszergazda jogú parancssor-munkamenetet (Futtatás rendszergazdaként).
 2. Futtassa a következő parancsfájlt:
 
-    Ez a szkript feltételezzük, hogy a meghajtóbetűjel van rendelve a csatlakoztatott operációsrendszer-lemez-e f  Cserélje le a megfelelő értéket a virtuális gépen.
+    Ebben a parancsfájlban feltételezzük, hogy a csatlakoztatott operációsrendszer-lemezhez rendelt meghajtóbetűjel F.  Cserélje le a megfelelő értékre a virtuális gépen.
 
     ```powershell
     reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
@@ -91,8 +90,8 @@ Memóriakép napló és a soros konzol engedélyezéséhez futtassa a következ�
     reg unload HKLM\BROKENSYSTEM
     ```
 
-    1. Győződjön meg arról, hogy van-e elég hely a lemezen a legtöbb memóriát lefoglalni, a RAM, amely kiválasztja a virtuális gép méretétől függ.
-    2. Ha nem áll elég hely, vagy egy nagy méretű virtuális gép (G, GS vagy E sorozat), majd sikerült módosítani a helyet, ahol ez a fájl jön létre, és tekintse meg, amely bármely más adatlemezt a virtuális géphez van csatolva. Ehhez szüksége lesz a következő kulcs módosítása:
+    1. Győződjön meg arról, hogy elegendő lemezterület áll rendelkezésre a lemezen a RAM memóriájának lefoglalásához, amely a virtuális gép számára kiválasztott mérettől függ.
+    2. Ha nincs elég hely, vagy nagy méretű virtuális gép (G, GS vagy E sorozat), akkor megváltoztathatja a fájl létrehozásának helyét, és a virtuális géphez csatolt bármely más adatlemezre hivatkozni fog. Ehhez módosítania kell a következő kulcsot:
 
             reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
 
@@ -101,9 +100,9 @@ Memóriakép napló és a soros konzol engedélyezéséhez futtassa a következ�
 
             reg unload HKLM\BROKENSYSTEM
 
-3. [Az operációsrendszer-lemez leválasztása, és ezután csatlakoztassa újra az érintett virtuális gépre az operációsrendszer-lemez](../windows/troubleshoot-recovery-disks-portal.md).
-4. Indítsa el a virtuális Gépet reprodukálnia a hibát, majd a memóriakép-fájl jön.
-5. Csatlakoztassa az operációsrendszer-lemezt egy helyreállítási virtuális Géphez, gyűjtése memóriakép-fájl, majd [támogatási jegyet is küldhet](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) memóriakép-fájllal.
+3. [Válassza le az operációsrendszer-lemezt, majd csatlakoztassa újra az operációsrendszer-lemezt az érintett virtuális géphez](../windows/troubleshoot-recovery-disks-portal.md).
+4. Indítsa el a virtuális gépet a probléma újbóli előállításához, majd hozzon létre egy memóriaképfájl-fájlt.
+5. Csatolja az operációsrendszer-lemezt egy helyreállítási virtuális géphez, gyűjtsön egy memóriakép-fájlt, majd [küldjön be egy támogatási jegyet](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a memóriakép fájljába.
 
 
 

@@ -1,6 +1,6 @@
 ---
-title: 'Az Azure Cosmos DB: SQL .NET API, SDK és -erőforrások'
-description: Mindent megtudhat a SQL .NET API és az SDK, beleértve a kiadási dátum, kivezetési dátum és az Azure Cosmos DB .NET SDK minden verziója között végrehajtott módosítások.
+title: 'Az Azure Cosmos DB: SQL .NET API, SDK & erőforrások'
+description: Ismerkedjen meg az SQL .NET API-val és az SDK-val, beleértve a kiadási dátumokat, a nyugdíjazási dátumokat és a Azure Cosmos DB .NET SDK egyes verzióiban végrehajtott módosításokat.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -8,16 +8,17 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/09/2018
 ms.author: sngun
-ms.openlocfilehash: 83a866b20d2802b7d49363b7c6451356e938eac1
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 8017f02e694f5c9e2cd677c7b1f28c5de973d077
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57838918"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932573"
 ---
-# <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Az Azure Cosmos DB .NET SDK-t az SQL API-hoz: Töltse le és kibocsátási megjegyzések
+# <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK az SQL API-hoz: Megjegyzések letöltése és kibocsátási megjegyzései
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
+> * [.NET](sql-api-sdk-dotnet-standard.md)
 > * [.NET-módosítási hírcsatorna](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
@@ -27,54 +28,78 @@ ms.locfileid: "57838918"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST erőforrás-szolgáltató](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [BulkExecutor – .NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [BulkExecutor – Java](sql-api-sdk-bulk-executor-java.md)
+> * [Tömeges végrehajtó – .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Tömeges végrehajtó – Java](sql-api-sdk-bulk-executor-java.md)
 
 | |  |
 |---|---|
 |**SDK letöltése**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)|
 |**API-dokumentáció**|[.NET API dokumentációja](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)|
-|**Példák**|[.NET platformra írt kódmintái](sql-api-dotnet-samples.md)|
-|**Első lépések**|[Az Azure Cosmos DB .NET SDK használatának első lépései](sql-api-get-started.md)|
+|**Példák**|[.NET platformra írt kódmintái](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples)|
+|**Első lépések**|[Ismerkedés a Azure Cosmos DB .NET SDK-val](sql-api-get-started.md)|
 |**Alapú webappokról szóló oktatóanyagunkat**|[Webalkalmazás-fejlesztés az Azure Cosmos DB használatával](sql-api-dotnet-application.md)|
 |**Aktuális támogatott keretrendszer**|[Microsoft .NET-keretrendszer 4.5](https://www.microsoft.com/download/details.aspx?id=30653)|
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
-### <a name="a-name3001-preview3001-preview"></a><a name="3.0.0.1-preview"/>3.0.0.1-Preview
-* 1 előzetes verziójának [3.0.0-s verziójának](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) a .NET SDK a nyilvános előzetes verziójához.
-* Cél .NET Standard, amely támogatja a .NET-keretrendszer 4.6.1+ és a .NET Core 2.0 +
-* Új hálózatiobjektum-modellt, a legfelső szintű CosmosClient és módszerek elosztja a megfelelő CosmosDatabases, CosmosContainers és CosmosItems osztályokat. 
-* Streamek támogatását. 
-* Frissített CosmosResponseMessage állapotkódot adja vissza, és csak throw kivétel, ha nem érkezik válasz-kiszolgálóról. 
+> [!NOTE]
+> Ha a .NET-keretrendszert használja, tekintse meg a .net-szabványnak megfelelő .net [SDK](sql-api-sdk-dotnet-standard.md)legújabb 3. x verzióját. 
+
+### <a name="a-name260260"></a><a name="2.6.0"/>2.6.0
+
+* PortReusePolicy hozzáadva a ConnectionPolicy-hoz
+* Rögzített ntdll! RtlGetVersion TypeLoadException probléma, ha az SDK-t egy UWP-alkalmazásban használják
+
+### <a name="a-name251251"></a><a name="2.5.1"/>2.5.1
+
+* Az SDK System .net. http verziója mostantól megegyezik a NuGet csomagban definiált értékkel.
+* Egy másik régióba történő írási kérelmek engedélyezése, ha az eredeti hiba meghiúsul.
+* Munkamenet-újrapróbálkozási szabályzat hozzáadása írási kérelemhez.
+
+### <a name="a-name241241"></a><a name="2.4.1"/>2.4.1
+
+* Kijavítja az üres lapokat okozó lekérdezések nyomkövetési versenyhelyzet-feltételeit
+
+### <a name="a-name240240"></a><a name="2.4.0"/>2.4.0
+
+* Nagyobb decimális pontossági méret a LINQ-lekérdezéseknél.
+* Új osztályok lettek hozzáadva a CompositePath, a CompositePathSortOrder, a SpatialSpec, a SpatialType és a PartitionKeyDefinitionVersion
+* TimeToLivePropertyPath hozzáadva a DocumentCollection-hoz
+* CompositeIndexes és SpatialIndexes hozzáadva a IndexPolicy-hez
+* PartitionKeyDefinition-verzió hozzáadva
+* Nincs hozzáadva a PartitionKey
+
+### <a name="a-name230230"></a><a name="2.3.0"/>2.3.0
+
+ * A IdleTcpConnectionTimeout, a OpenTcpConnectionTimeout, a MaxRequestsPerTcpConnection és a MaxTcpConnectionsPerEndpoint hozzáadva a ConnectionPolicy.
 
 ### <a name="a-name223223"></a><a name="2.2.3"/>2.2.3
 
-* Diagnosztikai
+* Diagnosztika fejlesztése
 
 ### <a name="a-name222222"></a><a name="2.2.2"/>2.2.2.
 
-* Hozzáadott környezeti változó beállítása "POCOSerializationOnly".
+* Környezeti változó hozzáadva a "POCOSerializationOnly" beállításhoz.
 
-* DocumentDB.Spatial.Sql.dll eltávolítva, és most már szerepel a Microsoft.Azure.Documents.ServiceInterop.dll
+* A DocumentDB. térbeli. SQL. dll fájl el lett távolítva, és már megtalálható a Microsoft. Azure. Documents. ServiceInterop. dll fájlban
 
 ### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
 
-* Fokozása újrapróbálkozási logikát a feladatátvétel során a tárolt eljárás végrehajtása hívásokat.
+* Az újrapróbálkozási logika fejlesztése a feladatátvétel során a StoredProcedure végrehajtásához.
 
-* Kezdeményezni DocumentClientEventSource egypéldányos. 
+* A DocumentClientEventSource egyszer készült. 
 
-* Javítsa ki a nem érvényesítenie ConnectionPolicy RequestTimeout GatewayAddressCache időkorlátja.
+* Javítsa ki a GatewayAddressCache időtúllépését, és ne tartsa tiszteletben a ConnectionPolicy-RequestTimeout.
 
 ### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
 
-* Közvetlen/TCP átviteli diagnosztikai hozzáadott TransportException, egy belső kivétel típusa, az SDK-t. Kivétel üzenetek szerepelnek, ha ez a típus jelenít meg további információt az ügyfél kapcsolódási problémák elhárításához.
+* A Direct/TCP Transport Diagnostics szolgáltatáshoz hozzáadott TransportException, az SDK belső kivételének típusa. Ha a kivételben lévő üzenetekben szerepel, ez a típus további információkat jelenít meg az ügyfelek kapcsolódási problémáinak elhárításához.
 
-* A hozzáadott új konstruktor túlterhelési egy HttpMessageHandler, egy HTTP-kezelő verem (pl. HttpClientHandler) HttpClient kérelmek küldéséhez használt foglalnak.
+* Új konstruktor-túlterhelést adott hozzá, amely egy HttpMessageHandler-t, egy HTTP-kezelői veremet használ a HttpClient-kérelmek küldéséhez (például HttpClientHandler).
 
-* Javításra ahol fejléc null értékű volt nem megfelelő kezelésének biztosítása érdekében.
+* Javítsa ki a hibát, hogy a null értékű fejlécek ne legyenek megfelelően kezelve.
 
-* Továbbfejlesztett gyűjtemény gyorsítótár érvényesítése.
+* Továbbfejlesztett gyűjtemények gyorsítótárának ellenőrzése.
 
 ### <a name="a-name213213"></a><a name="2.1.3"/>2.1.3
 
@@ -82,7 +107,7 @@ ms.locfileid: "57838918"
 
 ### <a name="a-name212212"></a><a name="2.1.2"/>2.1.2
 
-* Diagnosztikai nyomkövetés fejlesztései
+* A diagnosztikai nyomkövetés fejlesztése
 
 ### <a name="a-name211211"></a><a name="2.1.1"/>2.1.1
 
@@ -123,11 +148,11 @@ ms.locfileid: "57838918"
 ### <a name="a-name12111211"></a><a name="1.21.1"/>1.21.1
 
 * Rögzített KeyNotFoundException a partíció rendelés közötti esetekben a lekérdezések által.
-* Kijavítva a hiba, a select záradékban a LINQ-lekérdezések JsonProperty attribútum lett nem folyamatban figyelembe véve.
+* Kijavítva a hiba, ahol a JsonProperty attribútum a Select záradékban a LINQ-lekérdezésekhez nem lett betartva.
 
 ### <a name="a-name12021202"></a><a name="1.20.2"/>1.20.2
 
-* Kijavítva a hiba, amely bizonyos fajta feltételek elérte az eredmények az időszakos "Microsoft.Azure.Documents.NotFoundException: Az olvasási munkamenet a bemeneti munkamenet-jogkivonat nem érhető el"hiba munkamenet konzisztenciaszint használatakor.
+* Bizonyos versenyfeltételek miatt megjelenő rögzített hiba, amely a "Microsoft. Azure. Documents. NotFoundException" időszakot eredményezi: A munkamenet-konzisztencia szintjének használata esetén az olvasási munkamenet nem érhető el a bemeneti munkamenet tokenje számára.
 
 ### <a name="a-name12011201"></a><a name="1.20.1"/>1.20.1
 
@@ -150,7 +175,7 @@ ms.locfileid: "57838918"
 
 ### <a name="a-name11811181"></a><a name="1.18.1"/>1.18.1 
 
-* A Microsoft barátok szerelvények belső módosítása.
+* A Microsoft barátok szerelvények belső módosításai.
 
 ### <a name="a-name11801180"></a><a name="1.18.0"/>1.18.0 
 
@@ -165,14 +190,14 @@ ms.locfileid: "57838918"
 * Kijavítva a JsonSerializable osztály, amely a stack overflow kivételt okozhat.
 
 ### <a name="a-name11601160"></a><a name="1.16.0"/>1.16.0
-*   Javítva lett egy probléma, amely szükséges az alkalmazás JsonSerializerSettings bevezetése miatt a DocumentClient konstruktor nem kötelező paraméterként újrafordítás.
-* A DocumentClient konstruktor elavultként megjelölve az, hogy az alapértelmezett értékek ConnectionPolicy utolsó paraméterként és ConsistencyLevel paraméterek a szükséges JsonSerializerSettings JsonSerializerSettings paraméterrel történő átadásakor.
+*   Kijavítva egy olyan problémát, amely szükséges az alkalmazás újrafordításához a JsonSerializerSettings a DocumentClient konstruktorban választható paramétereként való bevezetése miatt.
+* A DocumentClient konstruktor elavultként jelölte meg, hogy a kötelező JsonSerializerSettings az utolsó paraméterként, amely lehetővé teszi a ConnectionPolicy és a ConsistencyLevel paraméterek alapértelmezett értékeit a JsonSerializerSettings paraméterben való továbbításkor.
 
 ### <a name="a-name11501150"></a><a name="1.15.0"/>1.15.0
-*   Támogatás hozzáadva az egyéni JsonSerializerSettings megadása közben hárítható el [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient?view=azure-dotnet).
+*   Az egyéni JsonSerializerSettings megadásának támogatása a [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient?view=azure-dotnet)példányának használata közben.
 
 ### <a name="a-name11411141"></a><a name="1.14.1"/>1.14.1
-*   Kijavítva, hogy x64 érintett gépek, amelyek nem támogatják a SSE4 utasítást, és egy SEHException throw, amikor az Azure Cosmos DB SQL-lekérdezések futtatásához.
+*   Kijavított egy olyan problémát, amely a SSE4 utasítást nem támogató x64-es gépeket érintette, és Azure Cosmos DB SQL-lekérdezések futtatásakor dob egy SEHException.
 
 ### <a name="a-name11401140"></a><a name="1.14.0"/>1.14.0
 *   Egy új konzisztenciaszint támogatása az új ConsistentPrefix nevezik.
@@ -182,10 +207,10 @@ ms.locfileid: "57838918"
 *   Bizonyos teljesítménnyel kapcsolatos fejlesztések készült SDK-ban.
 
 ### <a name="a-name11341134"></a><a name="1.13.4"/>1.13.4
-* Funkcionális ugyanaz, mint a 1.13.3. Néhány belső módosításokat.
+* Ugyanúgy működik, mint a 1.13.3. Némi belső módosítás történt.
 
 ### <a name="a-name11331133"></a><a name="1.13.3"/>1.13.3
-* Funkcionális ugyanaz, mint a 1.13.2. Néhány belső módosításokat.
+* Ugyanúgy működik, mint a 1.13.2. Némi belső módosítás történt.
 
 ### <a name="a-name11321132"></a><a name="1.13.2"/>1.13.2
 * Kijavítva, hogy a rendszer figyelmen kívül hagyja a PartitionKey értéket FeedOptions megadott összesítő lekérdezésekhez.
@@ -198,7 +223,7 @@ ms.locfileid: "57838918"
 * Javít, hogy rugalmasabb SDK bizonyos körülmények között az automatikus feladatátvételre.
 
 ### <a name="a-name11221122"></a><a name="1.12.2"/>1.12.2
-* Javítás a WebException alkalmanként okozó hibát: A távoli név nem oldható fel.
+* Javítsa ki a problémát, amely esetenként egy webszolgáltatást okoz: A távoli név nem oldható fel.
 * A beírt dokumentumok közvetlenül olvasásakor ReadDocumentAsync API új hozzáadásával támogatása hozzáadva.
 
 ### <a name="a-name11211121"></a><a name="1.12.1"/>1.12.1
@@ -208,214 +233,223 @@ ms.locfileid: "57838918"
 * Javítsa ki egy problémát a viselkedésmintáit közötti partíció az order by lekérdezések folytatása nem dolgozott rendezésekor karakterlánc típusú.
 
 ### <a name="a-name11201120"></a><a name="1.12.0"/>1.12.0
-* Összesítés lekérdezések (száma, MIN, MAX, SUM és átlagos) támogatása. Lásd: [összesítési támogatási](how-to-sql-query.md#Aggregates).
+* Összesítés lekérdezések (száma, MIN, MAX, SUM és átlagos) támogatása. Lásd: [összesítési támogatási](sql-query-aggregates.md).
 * Süllyesztett minimálisan 2500 RU/s 10,100 RU/s a particionált gyűjtemények átviteli sebességet.
 
 ### <a name="a-name11141114"></a><a name="1.11.4"/>1.11.4
-* Javít egy problémát viselkedésmintáit a partícióra kiterjedő lekérdezések némelyike nem került sor a gazdagép 32 bites folyamatban.
-* Javít egy problémát viselkedésmintáit a munkamenet-tároló nem frissítése a jogkivonattal a sikertelen kérelmek átjáró módban.
-* Bizonyos esetekben javít egy problémát viselkedésmintáit egy lekérdezést az UDF-leképezés hívások volt sikertelen.
-* Ügyféloldali teljesítményt javítását, növelve az olvasási és írási kérelmeket.
+* Javítsa ki azt a problémát, amelyben a több partíciós lekérdezés végrehajtása sikertelen volt a 32 bites gazdagép-folyamat során.
+* Javítsa ki azt a problémát, amelyben a munkamenet-tároló nem frissült az átjáró módban sikertelen kérések jogkivonatával.
+* Javítsa ki azt a problémát, amelyben a kivetítésben UDF-hívásokat tartalmazó lekérdezés bizonyos esetekben sikertelen volt.
+* Az ügyféloldali teljesítmény megjavítja a kérelmek olvasási és írási sebességének növelését.
 
 ### <a name="a-name11131113"></a><a name="1.11.3"/>1.11.3
-* Javít egy problémát viselkedésmintáit a munkamenet-tároló nem frissítése a jogkivonattal a sikertelen kérelmek.
-* Az SDK-t egy 32-bit-es gazdagép folyamatban lévő munka támogatása. Vegye figyelembe, hogy közötti partíciós lekérdezések használatakor, 64 bites gazdagép feldolgozása ajánlott jobb teljesítmény érdekében.
-* Javított teljesítménye nagy számú partíciós kulcs értékeit az IN kifejezés lekérdezések forgatókönyveket.
-* A dokumentum egy dokumentumgyűjteményben olvasási kérelmek, ha PopulateQuotaInfo kérelem beállítás értéke a ResourceResponse statisztikái, különböző erőforrás kvóta feltöltve.
+* Javítsa ki azt a problémát, amelyben a munkamenet-tároló nem frissült a sikertelen kérelmek jogkivonatával.
+* Az SDK támogatása egy 32 bites gazdagép-folyamaton való működéshez. Vegye figyelembe, hogy ha több partíciós lekérdezést használ, a jobb teljesítmény érdekében ajánlott a 64 bites gazdagép-feldolgozás.
+* Jobb teljesítmény olyan forgatókönyvek esetében, amelyek nagy számú partíciós kulccsal rendelkező lekérdezéseket tartalmaznak egy IN kifejezésben.
+* Különböző erőforrás-kvóták statisztikáinak feltöltése a ResourceResponse az olvasási kérelmek esetében, ha be van állítva a PopulateQuotaInfo kérése beállítás.
 
 ### <a name="a-name11111111"></a><a name="1.11.1"/>1.11.1
-* Kisebb teljesítményt javítás 1.11.0 rendszerben bevezetett Createdocumentcollectionasync API-hoz.
-* Teljesítmény javítása forgatókönyvekről, egyidejű kérelmek magas fokú az SDK-ban.
+* A 1.11.0-ben bevezetett Createdocumentcollectionifnotexistsasync metódusával API kisebb teljesítményű javítása.
+* A teljesítmény javítása az SDK-ban olyan forgatókönyvek esetében, amelyek nagy mértékben egyidejű kérelmeket foglalnak magukban.
 
 ### <a name="a-name11101110"></a><a name="1.11.0"/>1.11.0
-* Új osztályok és módszerek feldolgozni támogatása a [módosításcsatornáját](change-feed.md) dokumentumok egy gyűjteményen belül.
-* Partícióra kiterjedő lekérdezések folytatása és néhány teljesítmény a partícióra kiterjedő lekérdezések támogatása.
-* Createdatabaseasync és Createdocumentcollectionasync metódusok hozzáadásával.
-* A rendszer függvények LINQ-támogatás: IsDefined, IsNull és IsPrimitive.
-* Javítsa ki az automatikus binplacing Microsoft.Azure.Documents.ServiceInterop.dll és DocumentDB.Spatial.Sql.dll sestavení alkalmazás bin mappát, vannak olyan eszközök project.json projektek a Nuget-csomag használata esetén.
-* Támogatja az ügyfél oldalán ETW-nyomkövetések hibakeresés közben forgatókönyvek hasznosak lehetnek, amelyek kibocsátó.
+* Új osztályok és metódusok támogatása a dokumentumok egy [](change-feed.md) gyűjteményen belüli változási csatornájának feldolgozásához.
+* A több partíciós lekérdezések folytatásának támogatása és a több partíciós lekérdezések teljesítményének fejlesztése.
+* Createdatabaseifnotexistasync metódusának és Createdocumentcollectionifnotexistsasync metódusával metódusok hozzáadása.
+* A System functions LINQ-támogatása: IsDefined, IsNull és IsPrimitive.
+* Javítsa ki a Microsoft. Azure. Documents. ServiceInterop. dll és a DocumentDB. térbeli. SQL. dll-szerelvények automatikus binplacing az alkalmazás bin mappájába, amikor a Nuget-csomagot a Project. JSON eszközzel rendelkező projektekkel használja.
+* Ügyféloldali ETW-Nyomkövetések kibocsátásának támogatása, amelyek hasznosak lehetnek a hibakeresési helyzetekben.
 
 ### <a name="a-name11001100"></a><a name="1.10.0"/>1.10.0
-* A hozzáadott közvetlen kapcsolat támogatja a particionált gyűjtemények.
-* A korlátozott frissesség konzisztenciaszint javított teljesítménye.
+* Közvetlen kapcsolódási támogatás hozzáadva a particionált gyűjtemények számára.
+* Javított teljesítmény a megkötött elavult konzisztencia-szintnél.
 * A hozzáadott sokszög és LineString adattípusok közben adja meg a gyűjtemény indexelési szabályzat a geokerítés-térinformatikai lekérdezéseket.
-* LINQ támogatása StringEnumConverter, IsoDateTimeConverter és UnixDateTimeConverter predikátumok részére történő lefordításakor.
-* Különböző SDK-t hibajavításokat tartalmaz.
+* LINQ-támogatás hozzáadva a StringEnumConverter, a IsoDateTimeConverter és a UnixDateTimeConverterhoz a predikátumok lefordítása során.
+* Különböző SDK-hibajavítások.
 
 ### <a name="a-name195195"></a><a name="1.9.5"/>1.9.5
-* A következő NotFoundException okozó probléma kijavítva: Az olvasási munkamenet a bemeneti munkamenet-jogkivonat nem érhető el. A kivétel történt bizonyos esetekben egy földrajzilag elosztott fiók olvasási-régió lekérdezésekor.
-* A responseStream kimeneti tulajdonság a ResourceResponse osztály, amely lehetővé teszi a közvetlen hozzáférés az alapul szolgáló Stream választ el.
+* Kijavított egy problémát, amely a következő NotFoundException okozta: Az olvasási munkamenet nem érhető el a bemeneti munkamenet tokenje számára. Ez a kivétel bizonyos esetekben egy földrajzilag elosztott fiók olvasási régiójának lekérdezésekor fordul elő.
+* A ResourceResponse osztályban elérhetővé teszi a ResponseStream tulajdonságot, amely közvetlen hozzáférést biztosít az alapul szolgáló adatfolyamhoz a válaszból.
 
 ### <a name="a-name194194"></a><a name="1.9.4"/>1.9.4
-* A megfelelő nyilvános felület megvalósítása, hogy azok tesztelési üzembe helyezés (TDD) alapuló kell mocked ResourceResponse, FeedResponse, StoredProcedureResponse és MediaResponse osztályok módosítani.
-* Rögzített egyéni JsonSerializerSettings objektumot használ a szerializálási adatok helytelenül formázott partíció key fejléc kiváltó problémát.
+* Módosította a ResourceResponse, a FeedResponse, a StoredProcedureResponse és a MediaResponse osztályt a megfelelő nyilvános felület megvalósításához, hogy a tesztelésen alapuló üzembe helyezéshez (TDD) legyenek kialakítva.
+* Kijavított egy olyan problémát, amely egy helytelenül formázott partíciós fejlécet okozott az adatszerializáláshoz használt egyéni JsonSerializerSettings-objektum használatakor.
 
 ### <a name="a-name193193"></a><a name="1.9.3"/>1.9.3
-* Kijavítva a hiba hosszabb ideig futó lekérdezések okozó problémát: Engedélyezési token nem érvényes az aktuális időpontban.
-* Kijavítva az eredeti SqlParameterCollection partíció felső /-rendezés lekérdezések közötti eltávolítva.
+* Kijavított egy hibát, amely miatt a hosszú ideig futó lekérdezések sikertelenek voltak: Az engedélyezési jogkivonat az aktuális időpontban nem érvényes.
+* Kijavított egy problémát, amely eltávolította az eredeti SqlParameterCollection a több partíciós Top/Order-by lekérdezésekből.
 
 ### <a name="a-name192192"></a><a name="1.9.2"/>1.9.2
-* Particionált gyűjteményeknél végezzen párhuzamos lekérdezések támogatása.
-* Támogatás hozzáadva a partíció ORDER BY és a LEGGYAKORIBB lekérdezések a particionált gyűjtemények közötti.
-* A hiányzó hivatkozás DocumentDB.Spatial.Sql.dll és Microsoft.Azure.Documents.ServiceInterop.dll meg lesz szükség, ha egy Azure Cosmos DB-projekt hivatkozik egy hivatkozást az Azure Cosmos DB Nuget-csomagot a rögzített.
-* Rögzített használhatja a paraméterek különböző típusú LINQ a felhasználó által definiált függvények használata esetén. 
-* Globálisan replikált fiókok hibája kijavítva, ahol Upsert-hívások olvasási helyek helyett írási helyek is irányítja.
-* Új módszerek a IDocumentClient felületre, amelyek nem szerepeltek: 
-  * UpsertAttachmentAsync metódus túlterhelését, amely mediaStream és a paraméterek beállításai
-  * CreateAttachmentAsync metódus túlterhelését, amely beállítások paraméterként
-  * CreateOfferQuery metódus túlterhelését, amely querySpec paraméterként.
-* Lezáratlan nyilvános osztályokat is, amelyeket a IDocumentClient felületén érhetők el.
+* Párhuzamos lekérdezések támogatása a particionált gyűjteményekhez.
+* A több partíciós megrendelés és a particionált gyűjtemények leggyakoribb lekérdezésének támogatása.
+* Rögzítette a hiányzó hivatkozásokat a DocumentDB. térbeli. SQL. dll és a Microsoft. Azure. Documents. ServiceInterop. dll fájlra, amelyekre szükség van, amikor egy Azure Cosmos DB-projektre hivatkozik a Azure Cosmos DB Nuget-csomagra mutató hivatkozással.
+* Kijavítottuk a különböző típusú paraméterek paramétereinek használatát, amikor felhasználó által definiált függvényeket használ a LINQ-ben. 
+* Kijavítva egy hiba a globálisan replikált fiókok esetében, ahol a Upsert-hívások írási hely helyett olvasási helyekre vannak irányítva.
+* A IDocumentClient felülethez hozzáadott metódusok lettek megadva: 
+  * UpsertAttachmentAsync metódus, amely mediaStream és beállításokat fogad paraméterként
+  * CreateAttachmentAsync metódus, amely a paramétereket paraméterként veszi igénybe
+  * CreateOfferQuery metódus, amely paraméterként a querySpec.
+* Lezáratlan nyilvános osztályok, amelyek ki vannak téve a IDocumentClient felületén.
 
 ### <a name="a-name180180"></a><a name="1.8.0"/>1.8.0
 * Többrégiós adatbázisfiókhoz támogatása.
-* Támogatás hozzáadva a próbálkozást az szabályozott kérelmeinek száma.  Felhasználó szabhatja testre az újrapróbálkozások számának és a maximális várakozási idő a ConnectionPolicy.RetryOptions tulajdonság beállításával.
-* Hozzáadott új IDocumentClient adaptert, amely meghatározza az összes DocumentClient tulajdonságok és metódusok az aláírások.  Ez a változás részeként is módosította, amely IQueryable és IOrderedQueryable létrehozása a metódusokhoz a DocumentClient osztály maga a bővítő metódusokat.
-* A hozzáadott konfigurációs beállítást állítsa be a ServicePoint.ConnectionLimit egy adott Azure Cosmos DB végpont URI-t.  ConnectionPolicy.MaxConnectionLimit segítségével módosíthatja az alapértelmezett érték, amely 50 értékre van állítva.
-* Elavult IPartitionResolver és a megvalósítás.  IPartitionResolver támogatása elavult. Magasabb tárolási és átviteli sebesség particionált gyűjtemények használata ajánlott.
+* Az újrapróbálkozások támogatása a szabályozott kérelmek esetében.  A felhasználó testreszabhatja az újrapróbálkozások számát és a maximális várakozási időt a ConnectionPolicy. RetryOptions tulajdonság konfigurálásával.
+* Új IDocumentClient-felület lett hozzáadva, amely meghatározza az összes DocumentClient-tulajdonság és-metódus aláírását.  Ennek a változásnak a részeként olyan bővítmény-metódusok is módosultak, amelyek IQueryable és IOrderedQueryable hoznak létre a DocumentClient osztály metódusai alapján.
+* Konfigurációs beállítás hozzáadva a ServicePoint. ConnectionLimit egy adott Azure Cosmos DB végponti URI azonosítóhoz.  Az ConnectionPolicy. MaxConnectionLimit használatával módosítsa az alapértelmezett értéket, amely 50 értékre van beállítva.
+* Elavult IPartitionResolver és annak implementálása.  A IPartitionResolver támogatása már elavult. Azt javasoljuk, hogy particionált gyűjtemények használatával nagyobb tárterületet és átviteli sebességet használjon.
 
 ### <a name="a-name171171"></a><a name="1.7.1"/>1.7.1
-* Hozzáadott URI túlterhelés alapú ExecuteStoredProcedureAsync metódus túlterhelését, amely RequestOptions paramétert.
+* Túlterhelést adott az URI-alapú ExecuteStoredProcedureAsync metódushoz, amely paraméterként a RequestOptions-t veszi igénybe.
 
 ### <a name="a-name170170"></a><a name="1.7.0"/>1.7.0
 * Dokumentumok élő (TTL) támogatási hozzáadott ideje.
 
 ### <a name="a-name163163"></a><a name="1.6.3"/>1.6.3
-* Kijavítva a hiba a .NET SDK Nuget csomagolási becsomagolásához egy Azure Cloud Service megoldás részeként.
+* Egy Azure Cloud Service-megoldás részeként a .NET SDK Nuget csomagolása hibát rögzített.
 
 ### <a name="a-name162162"></a><a name="1.6.2"/>1.6.2
 * Megvalósított [particionált gyűjtemények](partition-data.md) és [felhasználó által definiált teljesítményszintek](performance-levels.md). 
 
 ### <a name="a-name153153"></a><a name="1.5.3"/>1.5.3
-* **[Rögzített]**  Lekérdezése az Azure Cosmos DB végpont jelez: 'System.Net.Http.HttpRequestException: Hiba történt a tartalom másolása adatfolyamba ".
+* **[Kijavítva]** Azure Cosmos DB végpontok lekérdezése: 'System.Net.Http.HttpRequestException: Hiba történt a tartalom adatfolyamba való másolása közben.
 
 ### <a name="a-name152152"></a><a name="1.5.2"/>1.5.2
-* Kibontott LINQ támogatja a lapozófájl, a feltételes kifejezések új operátorokat, és a tartomány összehasonlítása.
-  * Válassza ki a felső engedélyezni kívánja a LINQ operátor igénybe
-  * Ahhoz, hogy a karakterlánc-összehasonlítások tartomány compareto metódus végrehajtása operátor
-  * Feltételes (?), és egyesítse a operátorok (?)
-* **[Rögzített]**  : ArgumentOutOfRangeException modell leképezése összevonásakor helyét a LINQ-lekérdezésekre. [#81](https://github.com/Azure/azure-documentdb-dotnet/issues/81)
+* Bővített LINQ-támogatás, beleértve az új operátorokat a lapozáshoz, a feltételes kifejezésekhez és a tartomány-összehasonlításhoz.
+  * Válassza ki az operátort a legjobb viselkedés kiválasztásának engedélyezéséhez a LINQ-ben
+  * Compareto metódus végrehajtása operátor a karakterlánc-tartomány összehasonlításának engedélyezéséhez
+  * Feltételes (?) és egyesítő operátorok (??)
+* **[Kijavítva]** ArgumentOutOfRangeException a modell kivetítésének kombinálása egy LINQ-lekérdezésben. [#81](https://github.com/Azure/azure-documentdb-dotnet/issues/81)
 
 ### <a name="a-name151151"></a><a name="1.5.1"/>1.5.1
-* **[Rögzített]**  Ha válassza nem az utolsó kifejezés a LINQ-szolgáltató nincs leképezés feltételezi, és előállított VÁLASSZA * nem megfelelően.  [#58](https://github.com/Azure/azure-documentdb-dotnet/issues/58)
+* **[Kijavítva]** Ha a Select * nem az utolsó kifejezés, akkor a LINQ-szolgáltató nem feltételezi, hogy nincs kivetítés és nem megfelelő.  [#58](https://github.com/Azure/azure-documentdb-dotnet/issues/58)
 
 ### <a name="a-name150150"></a><a name="1.5.0"/>1.5.0
-* Megvalósított Upsert, hozzáadott UpsertXXXAsync módszerek
-* Összes kérelem a teljesítménnyel kapcsolatos fejlesztések
-* LINQ szolgáltató támogatása feltételes, coalesce, és karakterláncok módszerek compareto metódus végrehajtása
-* **[Rögzített]**  LINQ-szolgáltató--> metódus megvalósítása tartalmaz a listán az azonos SQL létrehozni az IEnumerable illesztőfelületet, illetve tömb
-* **[Rögzített]**  BackoffRetryUtility használja ugyanazt a HttpRequestMessage újra egy új újrapróbálkozáskor létrehozása helyett
-* **[Elavult]**  UriFactory.CreateCollection--> UriFactory.CreateDocumentCollection használja
+* Megvalósított Upsert, hozzáadott UpsertXXXAsync metódusok
+* Az összes kérelem teljesítményének fejlesztése
+* A LINQ Provider támogatja a karakterláncok feltételes, egyesítési és Compareto metódus végrehajtása módszereit
+* **[Kijavítva]** LINQ Provider – > megvalósítás metódust tartalmaz a listáról, hogy ugyanazt az SQL-t hozza létre, mint a IEnumerable és a Array
+* **[Kijavítva]** A BackoffRetryUtility ugyanazt a HttpRequestMessage használja újra, ahelyett, hogy újat hozna létre újra
+* **[Elavult]** UriFactory. CreateCollection – > a UriFactory. CreateDocumentCollection használatát kell használnia
 
 ### <a name="a-name141141"></a><a name="1.4.1"/>1.4.1
-* **[Rögzített]**  Honosítási problémák használatakor nem en kulturális környezet adatai, például nl-NL, és így tovább. 
+* **[Kijavítva]** Honosítási problémák a nem en kulturális adatok, például az nl-NL használata esetén. 
 
 ### <a name="a-name140140"></a><a name="1.4.0"/>1.4.0
-* Hozzáadott azonosítóalapú Útválasztás
-  * Új UriFactory segítő, amelyek segítik a hozhat létre, azonosító-alapú erőforrás-hivatkozások
-  * A DocumentClient lépése URI új túlterheléssel
-* Hozzáadott IsValid() és a LINQ a térinformatikai IsValidDetailed()
-* Továbbfejlesztett LINQ szolgáltató támogatása:
-  * **Matematikai** -Abs, Acos, Asin, Atan, felső határa, Cos, az Exp, emelet, Log, Log10, Pow, ciklikus, bejelentkezési, Sin, Sqrt, Tan, Truncate
-  * **Karakterlánc** -Concat, tartalmaz, EndsWith, IndexOf, Count, ToLower, TrimStart, cserélje le, fordított TrimEnd, StartsWith, SubString, ToUpper
-  * **Tömb** -Concat, tartalmaz, száma
-  * **India** operátor
+* AZONOSÍTÓ-alapú útválasztás hozzáadva
+  * Új UriFactory segítő, amely segítséget nyújt az azonosító-alapú erőforrás-hivatkozások létrehozásában
+  * Új túlterhelések a DocumentClient az URI-n való elvégzéséhez
+* Hozzáadott IsValid () és IsValidDetailed () a "LINQ for térinformatika" esetében
+* A LINQ Provider támogatása Továbbfejlesztve:
+  * **Math** -ABS, ACO, ASIN, Atan, felső, cos, exp, floor, log, Log10, Pow, Round, Sign, Sin, SQRT, Tan, csonkítás
+  * **String** -concat, tartalmaz, EndsWith, IndexOf, Count, ToLower, TrimStart, replace, reverse, TrimEnd, StartsWith, alstring, ToUpper
+  * **Tömb** – Összefűzés, tartalmazza, darabszám
+  * **Az** operátorban
 
 ### <a name="a-name130130"></a><a name="1.3.0"/>1.3.0
-* Támogatás hozzáadva az indexelési szabályzatok módosításához.
-  * A DocumentClient új ReplaceDocumentCollectionAsync metódus
-  * Új IndexTransformationProgress tulajdonság ResourceResponse<T> index az irányelvek változásai készültségi állapotának nyomon követéséhez
-  * Most már ezekre kapott válaszokon DocumentCollection.IndexingPolicy
-* Támogatás hozzáadva a térbeli indexelést és lekérdezést.
-  * A térbeli típusok szerializálása vagy deszerializálása új Microsoft.Azure.Documents.Spatial névtéren, például pont és sokszög
-  * Új SpatialIndex osztályt GeoJSON, Cosmos DB-ben tárolt adatok indexelése
-* **[Rögzített]**  Helytelen SQL-lekérdezés a LINQ kifejezés által létrehozott [#38](https://github.com/Azure/azure-documentdb-net/issues/38).
+* Az indexelési házirendek módosításának támogatása.
+  * Új ReplaceDocumentCollectionAsync metódus a DocumentClient-ben
+  * A ResourceResponse\<> T új IndexTransformationProgress tulajdonsága, amely nyomon követi az index-házirendek változásainak százalékos előrehaladását
+  * A DocumentCollection. IndexingPolicy mostantól változékony
+* További támogatás a térbeli indexeléshez és a lekérdezéshez.
+  * Új Microsoft. Azure. Documents. térbeli névtér a térbeli típusok, például a pont és a sokszög szerializálásához/deszerializálásához
+  * Új SpatialIndex-osztály a Cosmos DBban tárolt GeoJSON-adatértékek indexeléséhez
+* **[Kijavítva]** Nem megfelelő SQL-lekérdezés lett létrehozva egy LINQ kifejezésből [#38](https://github.com/Azure/azure-documentdb-net/issues/38).
 
 ### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
-* Függőség hozzáadása a Newtonsoft.Json v5.0.7.
-* Az Order By támogatásához módosításokat:
+* Függőség hozzáadva a Newtonsoft. JSON v 5.0.7.
+* A következő módosításokat hajtotta végre a támogatási sorrend szerint:
   
-  * LINQ által támogatott szolgáltatók OrderBy() vagy OrderByDescending()
-  * Az Order By támogatásához IndexingPolicy 
+  * LINQ Provider-támogatás a OrderBy () vagy a OrderByDescending () szolgáltatáshoz
+  * IndexingPolicy az Order by 
     
-    **Lehetséges használhatatlanná tévő változást** 
+    **Lehetséges megszakítási változás** 
     
-    Ha meglévő kódot, hogy rendelkezések gyűjteményeket, amelyek egyéni indexelési házirendet, majd a meglévő kód frissíteni kell az új IndexingPolicy osztály támogatásához. Ha nincs egyéni indexelési házirendet, majd a változás nem befolyásolja.
+    Ha meglévő kóddal rendelkezik, amely egyéni indexelési házirenddel rendelkező gyűjteményeket tartalmaz, akkor a meglévő kódot frissíteni kell az új IndexingPolicy osztály támogatásához. Ha nem rendelkezik egyéni indexelési házirenddel, akkor ez a változás nem érinti Önt.
 
 ### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
-* Támogatás hozzáadva az adatok particionálása az új HashPartitionResolver és RangePartitionResolver osztályok és a IPartitionResolver használatával.
-* A hozzáadott DataContract szerializálási.
-* Új GUID Azonosítót a LINQ-szolgáltató támogatja.
-* Új UDF LINQ támogatja.
+* Az új HashPartitionResolver és RangePartitionResolver osztályok és a IPartitionResolver használatával az adatparticionálás támogatása is támogatott.
+* DataContract szerializálás hozzáadva.
+* GUID-támogatás hozzáadva a LINQ providerben.
+* UDF-támogatás hozzáadva a LINQ-ben.
 
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
 * GA SDK
 
-## <a name="release--retirement-dates"></a>Állapot tárolá & kivezetési dátum
-A Microsoft biztosít értesítési legalább **12 hónapig** kivonása egy SDK-t kiegyenlítse az a és újabb támogatott verzióra váltás előtt.
+## <a name="release--retirement-dates"></a>Kiadási & nyugdíjazási dátumok
+A Microsoft legalább **12 hónappal** korábban értesítést küld az SDK kivonásáról, hogy zökkenőmentes legyen az áttérés egy újabb/támogatott verzióra.
 
-Új szolgáltatások és funkciók és optimalizálási lehetőségek csak hozzá az aktuális SDK-hoz, ezért javasoljuk, hogy mindig a legújabb SDK verzióra frissít leghamarabb lehető. 
+Az új funkciók és funkciók és optimalizálás csak a jelenlegi SDK-hoz adódik hozzá, ezért azt javasoljuk, hogy a lehető leghamarabb frissítsen a legújabb SDK-verzióra. 
 
-Az Azure Cosmos DB egy kivont SDK használatával bármilyen kérelmeket a szolgáltatás által a rendszer elutasítja.
+A szolgáltatás elutasítja a kivont SDK használatával Azure Cosmos DB kérelmeket.
 
+> [!WARNING]
+> Az SQL API-hoz készült .NET SDK összes verziójának **1. x** verziója a **2020-es augusztus 30-ig**megszűnik.
+> 
+>
 <br/>
 
-| Verzió | Kiadás dátuma | Visszavonás dátuma |
+| Version | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
-| [2.2.3](#2.2.3) |2019. február 11. |--- |
-| [2.2.2](#2.2.2) |2019. február 06. |--- |
-| [2.2.1](#2.2.1) |2018. december 24. |--- |
-| [2.2.0](#2.2.0) |2018. december 07. |--- |
+| [2.6.0](#2.6.0) |2019. augusztus 30-ig |--- |
+| [2.5.1](#2.5.1) |Július 02, 2019 |--- |
+| [2.4.1](#2.4.1) |2019. június 20. |--- |
+| [2.4.0](#2.4.0) |Május 05., 2019 |--- |
+| [2.3.0](#2.3.0) |Április 04., 2019 |--- |
+| [2.2.3](#2.2.3) |Február 11., 2019 |--- |
+| [2.2.2](#2.2.2) |Február 06, 2019 |--- |
+| [2.2.1](#2.2.1) |December 24., 2018 |--- |
+| [2.2.0](#2.2.0) |December 07, 2018 |--- |
 | [2.1.3](#2.1.3) |2018. október 15. |--- |
 | [2.1.2](#2.1.2) |2018. október 04. |--- |
 | [2.1.1](#2.1.1) |2018. szeptember 27. |--- |
 | [2.1.0](#2.1.0) |2018. szeptember 21. |--- |
 | [2.0.0](#2.0.0) |2018. szeptember 07. |--- |
-| [1.22.0](#1.22.0) |2018. április 19. |--- |
-| [1.21.1](#1.20.1) |2018. március 09. |--- |
-| [1.20.2](#1.20.1) |2018. február 21. |--- |
-| [1.20.1](#1.20.1) |2018. február 05 |--- |
-| [1.19.1](#1.19.1) |2017. november 16. |--- |
-| [1.19.0](#1.19.0) |2017. november 10. |--- |
-| [1.18.1](#1.18.1) |2017. november 07. |--- |
-| [1.18.0](#1.18.0) |2017. október 17. |--- |
-| [1.17.0](#1.17.0) |2017. augusztus 10. |--- |
-| [1.16.1](#1.16.1) |2017. augusztus 07. |--- |
-| [1.16.0](#1.16.0) |2017. augusztus 02 |--- |
-| [1.15.0](#1.15.0) |2017. június 30. |--- |
-| [1.14.1](#1.14.1) |2017. május 23. |--- |
-| [1.14.0](#1.14.0) |2017. május 10. |--- |
-| [1.13.4](#1.13.4) |2017. május 09. |--- |
-| [1.13.3](#1.13.3) |2017. május 06. |--- |
-| [1.13.2](#1.13.2) |2017. április 19. |--- |
-| [1.13.1](#1.13.1) |2017. március 29. |--- |
-| [1.13.0](#1.13.0) |2017. március 24. |--- |
-| [1.12.2](#1.12.2) |2017. március 20. |--- |
-| [1.12.1](#1.12.1) |2017. március 14. |--- |
-| [1.12.0](#1.12.0) |2017. február 15-én |--- |
-| [1.11.4](#1.11.4) |2017. február 06. |--- |
-| [1.11.3](#1.11.3) |2017. január 26. |--- |
-| [1.11.1](#1.11.1) |2016. december 21-én |--- |
-| [1.11.0](#1.11.0) |2016. december 08 |--- |
-| [1.10.0](#1.10.0) |2016. szeptember 27. |--- |
-| [1.9.5](#1.9.5) |2016. szeptember 01. |--- |
-| [1.9.4](#1.9.4) |2016. augusztus 24-én |--- |
-| [1.9.3](#1.9.3) |2016. augusztus 15-én |--- |
-| [1.9.2](#1.9.2) |2016. július 23. |--- |
-| [1.8.0](#1.8.0) |2016. június 14-én |--- |
-| [1.7.1](#1.7.1) |2016. május 06. |--- |
-| [1.7.0](#1.7.0) |2016. április 26. |--- |
-| [1.6.3](#1.6.3) |2016. április 08 |--- |
-| [1.6.2](#1.6.2) |2016. március 29-én |--- |
-| [1.5.3](#1.5.3) |2016. február 19-én |--- |
-| [1.5.2](#1.5.2) |14, 2015. december |--- |
-| [1.5.1](#1.5.1) |2015. november 23. |--- |
-| [1.5.0](#1.5.0) |2015. október 05 |--- |
-| [1.4.1](#1.4.1) |2015. augusztus 25-én |--- |
-| [1.4.0](#1.4.0) |13, 2015. augusztus |--- |
-| [1.3.0](#1.3.0) |2015. augusztus 05 |--- |
-| [1.2.0](#1.2.0) |2015. július 06. |--- |
-| [1.1.0](#1.1.0) |2015. április 30. |--- |
-| [1.0.0](#1.0.0) |2015. április 08. |--- |
+| [1.22.0](#1.22.0) |2018. április 19. | 2020. augusztus 30-ig |
+| [1.21.1](#1.20.1) |2018. március 09. |2020. augusztus 30-ig |
+| [1.20.2](#1.20.1) |2018. február 21. |2020. augusztus 30-ig |
+| [1.20.1](#1.20.1) |2018. február 05 |2020. augusztus 30-ig |
+| [1.19.1](#1.19.1) |2017. november 16. |2020. augusztus 30-ig |
+| [1.19.0](#1.19.0) |2017. november 10. |2020. augusztus 30-ig |
+| [1.18.1](#1.18.1) |November 07., 2017 |2020. augusztus 30-ig |
+| [1.18.0](#1.18.0) |2017. október 17. |2020. augusztus 30-ig |
+| [1.17.0](#1.17.0) |2017. augusztus 10. |2020. augusztus 30-ig |
+| [1.16.1](#1.16.1) |2017. augusztus 07. |2020. augusztus 30-ig |
+| [1.16.0](#1.16.0) |2017. augusztus 02 |2020. augusztus 30-ig |
+| [1.15.0](#1.15.0) |Június 30., 2017 |2020. augusztus 30-ig |
+| [1.14.1](#1.14.1) |2017. május 23. |2020. augusztus 30-ig |
+| [1.14.0](#1.14.0) |2017. május 10. |2020. augusztus 30-ig |
+| [1.13.4](#1.13.4) |Május 09., 2017 |2020. augusztus 30-ig |
+| [1.13.3](#1.13.3) |Május 06., 2017 |2020. augusztus 30-ig |
+| [1.13.2](#1.13.2) |2017. április 19. |2020. augusztus 30-ig |
+| [1.13.1](#1.13.1) |2017. március 29. |2020. augusztus 30-ig |
+| [1.13.0](#1.13.0) |Március 24., 2017 |2020. augusztus 30-ig |
+| [1.12.2](#1.12.2) |2017. március 20. |2020. augusztus 30-ig |
+| [1.12.1](#1.12.1) |2017. március 14. |2020. augusztus 30-ig |
+| [1.12.0](#1.12.0) |Február 15., 2017 |2020. augusztus 30-ig |
+| [1.11.4](#1.11.4) |Február 06, 2017 |2020. augusztus 30-ig |
+| [1.11.3](#1.11.3) |2017. január 26. |2020. augusztus 30-ig |
+| [1.11.1](#1.11.1) |2016. december 21-én |2020. augusztus 30-ig |
+| [1.11.0](#1.11.0) |December 08., 2016 |2020. augusztus 30-ig |
+| [1.10.0](#1.10.0) |Szeptember 27., 2016 |2020. augusztus 30-ig |
+| [1.9.5](#1.9.5) |Szeptember 01., 2016 |2020. augusztus 30-ig |
+| [1.9.4](#1.9.4) |Augusztus 24, 2016 |2020. augusztus 30-ig |
+| [1.9.3](#1.9.3) |Augusztus 15., 2016 |2020. augusztus 30-ig |
+| [1.9.2](#1.9.2) |2016. július 23. |2020. augusztus 30-ig |
+| [1.8.0](#1.8.0) |2016. június 14-én |2020. augusztus 30-ig |
+| [1.7.1](#1.7.1) |Május 06., 2016 |2020. augusztus 30-ig |
+| [1.7.0](#1.7.0) |Április 26., 2016 |2020. augusztus 30-ig |
+| [1.6.3](#1.6.3) |2016. április 08. |2020. augusztus 30-ig |
+| [1.6.2](#1.6.2) |2016. március 29-én |2020. augusztus 30-ig |
+| [1.5.3](#1.5.3) |Február 19., 2016 |2020. augusztus 30-ig |
+| [1.5.2](#1.5.2) |December 14., 2015 |2020. augusztus 30-ig |
+| [1.5.1](#1.5.1) |November 23., 2015 |2020. augusztus 30-ig |
+| [1.5.0](#1.5.0) |2015. október 05 |2020. augusztus 30-ig |
+| [1.4.1](#1.4.1) |Augusztus 25., 2015 |2020. augusztus 30-ig |
+| [1.4.0](#1.4.0) |Augusztus 13., 2015 |2020. augusztus 30-ig |
+| [1.3.0](#1.3.0) |2015. augusztus 05 |2020. augusztus 30-ig |
+| [1.2.0](#1.2.0) |Július 06., 2015 |2020. augusztus 30-ig |
+| [1.1.0](#1.1.0) |Április 30., 2015 |2020. augusztus 30-ig |
+| [1.0.0](#1.0.0) |2015. április 08. | 2020. augusztus 30-ig |
 
 
 ## <a name="faq"></a>GYIK

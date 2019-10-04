@@ -1,55 +1,54 @@
 ---
-title: Hiba- és kivételkezelés – Azure Logic Apps |} A Microsoft Docs
-description: Ismerje meg a hiba- és kivételkezelés Azure Logic Apps a minták
+title: Hibák és kivételek kezelésére szolgáló Azure Logic Apps
+description: További tudnivalók a hibák és kivételek kezelésére vonatkozó mintákról Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: dereklee
 ms.author: deli
-manager: jeconnoc
+ms.reviewer: klam, estfan, LADocs
 ms.date: 01/31/2018
 ms.topic: article
-ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: 3f812c1142b5cd40169f7340163295b0f7ea6a4d
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 828bea50a66b90f35843901ae2d7c703ffa58f2d
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57779147"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208175"
 ---
-# <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Hibák és az Azure Logic Appsben kivételek kezelése
+# <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Hibák és kivételek kezelése Azure Logic Appsban
 
-Minden integrációs architektúra megfelelően kezeli az állásidő és a függő rendszerek által okozott problémák módon kihívást is jelenthet. A Logic Apps segítségével hozhat létre hatékony és rugalmas integrációja, amely a problémák és hibák kezelésére, kiváló élményt nyújt a hibák és kivételek kezelése. 
+Az integrációs architektúra megfelelő módon kezeli az állásidőt vagy a függő rendszerek által okozott problémákat. A problémák és hibák zökkenőmentes kezelésére szolgáló robusztus és rugalmas integrációk létrehozásához Logic Apps a hibák és kivételek kezelésének első osztályú élményét nyújtja. 
 
 <a name="retry-policies"></a>
 
 ## <a name="retry-policies"></a>Újrapróbálkozási szabályzatok
 
-A legalapvetőbb kivétel és a hibakezelés, használhat egy *újrapróbálkozási szabályzat* minden művelet vagy eseményindítót, ahol támogatott. Ez az újrapróbálkozási szabályzat meghatározza, hogyan művelettel vagy eseményindítóval újrapróbálkozik egy kérelmet, ha az eredeti kérés túllépi az időkorlátot vagy meghiúsul, amely minden olyan kérelmet, amely egy 408, 429-es vagy 5xx válasz eredményez. Ha nincs más újrapróbálkozási szabályzatot használja, az alapértelmezett házirend szolgál. 
+A legalapvetőbb kivételek és hibák kezelésére az újrapróbálkozási szabályzatot bármilyen művelet vagy trigger esetében használhatja, ahol a támogatott. Az újrapróbálkozási szabályzat meghatározza, hogy a művelet vagy az indítás hogyan próbálkozik újra egy kéréssel, amikor az eredeti kérelem időtúllépése vagy meghibásodása meghiúsul, ami 408, 429 vagy 5xx választ eredményez. Ha nincs más újrapróbálkozási szabályzat, a rendszer az alapértelmezett házirendet használja. 
 
-Az újrapróbálkozási szabályzat típusok a következők: 
+Az újrapróbálkozási szabályzatok típusai: 
 
-| Typo | Leírás | 
+| Type | Leírás | 
 |------|-------------| 
-| **Alapértelmezett** | Ez a szabályzat legfeljebb négy újrapróbálkozás küld *ezzel exponenciálisan növelve* időközök, méretezhető, 7.5 másodperc, de 5 és 45 másodperc között vannak korlátozzuk. | 
-| **Exponenciális időköz**  | Ez a szabályzat kiválasztott exponenciálisan egyre bővülő tartományból a kérések elküldése előtt egy véletlenszerű időköz vár. | 
-| **Rögzített időköz**  | Ez a szabályzat a megadott időszak vár, a kérések elküldése előtt. | 
-| **Nincsenek**  | Ne küldje el újra a kérelmet. | 
+| **Alapértelmezett** | Ez a szabályzat legfeljebb négy újrapróbálkozást küld el *exponenciálisan növekvő* intervallumokban, amelyek mérete 7,5 másodperc, de 5 – 45 másodpercre van korlátozva. | 
+| **Exponenciális időköz**  | Ez a szabályzat egy exponenciálisan növekvő tartományból érkező véletlenszerű intervallumot vár a következő kérelem elküldése előtt. | 
+| **Rögzített intervallum**  | Ez a házirend a következő kérelem elküldése előtt megvárja a megadott intervallumot. | 
+| **Nincsenek**  | Ne küldje újra a kérelmet. | 
 ||| 
 
-Újrapróbálkozási házirend korlát kapcsolatos információkért lásd: [Logic Apps-korlátozások és konfiguráció](../logic-apps/logic-apps-limits-and-config.md#request-limits). 
+További információ az újrapróbálkozási házirend korlátairól: [Logic apps korlátok és konfiguráció](../logic-apps/logic-apps-limits-and-config.md#request-limits). 
 
 ### <a name="change-retry-policy"></a>Újrapróbálkozási szabályzat módosítása
 
-Egy eltérő újrapróbálkozási házirendet választ ki, kövesse az alábbi lépéseket: 
+Másik újrapróbálkozási házirend kiválasztásához kövesse az alábbi lépéseket: 
 
-1. Nyissa meg a logikai alkalmazás a Logikaialkalmazás-tervezőben. 
+1. Nyissa meg a logikai alkalmazást a Logic app Designerben. 
 
-2. Nyissa meg a **beállítások** számára egy műveletet vagy eseményindítót.
+2. Nyisson meg egy művelet vagy trigger **beállításait** .
 
-3. Ha a műveletet vagy eseményindítót támogatja újrapróbálkozási szabályzatot, alatt **ismételje meg a házirend**, válassza ki a kívánt típusát. 
+3. Ha a művelet vagy az aktiválás támogatja az újrapróbálkozási szabályzatokat, az újrapróbálkozási **házirend**területen válassza ki a kívánt típust. 
 
-Vagy manuálisan is megadhatja az újrapróbálkozási szabályzat a `inputs` egy műveletet vagy eseményindítót, amely támogatja a következő szakaszban újrapróbálkozási szabályzatok. Ez az újrapróbálkozási szabályzat nem ad meg, ha a művelet használja az alapértelmezett szabályzat.
+Vagy manuálisan is megadhatja az újrapróbálkozási házirendet az `inputs` újrapróbálkozási szabályzatokat támogató művelet vagy trigger szakaszban. Ha nem ad meg újrapróbálkozási házirendet, a művelet az alapértelmezett házirendet használja.
 
 ```json
 "<action-name>": {
@@ -71,30 +70,30 @@ Vagy manuálisan is megadhatja az újrapróbálkozási szabályzat a `inputs` eg
 
 *Kötelező*
 
-| Érték | Typo | Leírás |
+| Value | Type | Leírás |
 |-------|------|-------------|
-| <*retry-policy-type*> | String | A használni kívánt újrapróbálkozási házirendtípus: `default`, `none`, `fixed`, vagy `exponential` | 
-| <*újrapróbálkozási-időköz*> | String | Az újrapróbálkozási időköz, ahol az értéket kell használnia [ISO 8601 formátumú](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). Az alapértelmezett minimális gyakoriság `PT5S` és a maximális időköz `PT1D`. Az exponenciális időköz szabályzat használatakor különböző minimális és maximális értékeket is megadhat. | 
-| <*újrapróbálkozások*> | Egész szám | 1 és 90 között kell lennie újrapróbálkozások száma | 
+| <*retry-policy-type*> | String | A használni kívánt újrapróbálkozási szabályzat típusa: `default` `fixed`, `none`,, vagy`exponential` | 
+| <*retry-interval*> | String | Az újrapróbálkozási időköz, amelyben az értéknek [ISO 8601 formátumot](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)kell használnia. Az alapértelmezett minimális időköz `PT5S` , a maximális `PT1D`intervallum. Az exponenciális időközi szabályzat használatakor különböző minimális és maximális értékeket adhat meg. | 
+| <*retry-attempts*> | Integer | Az újrapróbálkozási kísérletek száma, amelynek 1 és 90 között kell lennie | 
 ||||
 
-*Nem kötelező*
+*Választható*
 
-| Érték | Typo | Leírás |
+| Value | Type | Leírás |
 |-------|------|-------------|
-| <*minimum-interval*> | String | Az exponenciális időköz házirend, a legkisebb időköze a véletlenszerűen kiválasztott időköz [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) | 
-| <*maximum-interval*> | String | Az exponenciális időköz házirend, a véletlenszerűen kiválasztott időszakban a legnagyobb időközönként [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) | 
+| <*minimum-interval*> | Sztring | Az exponenciális időközi házirend esetében a véletlenszerűen kiválasztott időköz ( [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) ) legkisebb intervalluma | 
+| <*maximális időköz*> | Sztring | Az exponenciális időközi házirend esetében a véletlenszerűen kiválasztott időköz ( [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) ) legnagyobb intervalluma | 
 |||| 
 
-Itt látható a különböző Házirendtípusok további információt.
+További információ a különböző házirend-típusokról.
 
 <a name="default-retry"></a>
 
 ### <a name="default"></a>Alapértelmezett
 
-Ez az újrapróbálkozási szabályzat nem ad meg, ha a művelet használja-e az alapértelmezett házirendet, amely ténylegesen egy [exponenciális időköz házirend](#exponential-interval) , amely legfeljebb négy újrapróbálkozás exponenciálisan növeli a magánkészletekben 7,5 másodperc intervallumok küld. Az időköz 5 és 45 másodperc között van korlátozzuk. 
+Ha nem ad meg újrapróbálkozási házirendet, a művelet az alapértelmezett házirendet használja, amely tulajdonképpen egy [exponenciális időközi házirend](#exponential-interval) , amely akár négy újrapróbálkozást is küld, exponenciálisan növekvő időközönként, 7,5 másodpercek között. Az intervallum 5 és 45 másodperc közötti értékre van korlátozva. 
 
-Abban az esetben, ha nincs kifejezetten definiált a műveletet vagy eseményindítót, Íme egy példa HTTP-művelet az alapértelmezett házirend működését:
+Bár a művelet vagy trigger explicit módon nincs definiálva, az alapértelmezett házirend egy példa HTTP-műveletben a következőképpen viselkedik:
 
 ```json
 "HTTP": {
@@ -114,17 +113,17 @@ Abban az esetben, ha nincs kifejezetten definiált a műveletet vagy eseményind
 }
 ```
 
-### <a name="none"></a>None
+### <a name="none"></a>Nincsenek
 
-Adja meg, hogy a művelet vagy trigger nem újra a sikertelen kérelmek, állítsa be a <*újrapróbálkozási házirendtípus*> való `none`.
+Annak megadásához, hogy a művelet vagy az aktiválás Ne próbálkozzon újra a sikertelen kérelmekkel, állítsa be a `none`< újrapróbálkozási*házirend típusú*> a következőre:.
 
-### <a name="fixed-interval"></a>Rögzített időköz
+### <a name="fixed-interval"></a>Rögzített intervallum
 
-Adja meg, hogy a művelet vagy trigger vár, a megadott időszak a kérések elküldése előtt, állítsa be a <*újrapróbálkozási házirendtípus*> való `fixed`.
+Annak megadásához, hogy a művelet vagy az indítás a következő kérelem elküldése előtt megvárja-e a megadott intervallumot, állítsa be `fixed`a < újrapróbálkozási *-házirend típusú*>.
 
 *Példa*
 
-Az újrapróbálkozási szabályzat megkísérli a legfrissebb két alkalommal egyes kísérletek közötti késleltetés 30 másodperces első sikertelen kérelem után:
+Ez az újrapróbálkozási szabályzat az első sikertelen kérelem után még két alkalommal kísérli meg a legfrissebb híreket, az egyes kísérletek közötti 30 másodperces késleltetéssel:
 
 ```json
 "Get_latest_news": {
@@ -145,26 +144,26 @@ Az újrapróbálkozási szabályzat megkísérli a legfrissebb két alkalommal e
 
 ### <a name="exponential-interval"></a>Exponenciális időköz
 
-Adja meg, hogy a művelet vagy trigger vár egy véletlenszerűen kiválasztott időszakban a kérések elküldése előtt, állítsa be a <*újrapróbálkozási házirendtípus*> való `exponential`. A véletlenszerű időköz exponenciálisan egyre bővülő tartományból van kiválasztva. Igény szerint felülbírálhatja az alapértelmezett minimális és maximális időköze a saját minimális és maximális intervallumok megadásával.
+Annak megadásához, hogy a művelet vagy az indítás a következő kérelem elküldése előtt megvárja-e a véletlenszerű intervallumot, állítsa be `exponential`a < újrapróbálkozási*házirend típusú*> a értékre. A véletlenszerű intervallum egy exponenciálisan növekvő tartományból van kiválasztva. Igény szerint felülbírálhatja az alapértelmezett minimális és maximális intervallumot is a saját minimális és maximális intervallumának megadásával.
 
-**Véletlen változó tartományok**
+**Véletlenszerű változók tartományai**
 
-Ez a táblázat bemutatja, hogyan Logic Apps a hoz létre egy egységes véletlen változó megadott egyes újra az újrapróbálkozások számát bezárólag:
+Ez a táblázat azt mutatja be, hogy a Logic Apps hogyan generál egységes véletlenszerű változót a megadott tartományban az újrapróbálkozások számára, beleértve az újrapróbálkozások számát is:
 
-| Ismételje meg a számot | Minimális időköz | Maximális időköz |
+| Újrapróbálkozás száma | Minimális időköz | Maximális időköz |
 |--------------|------------------|------------------|
-| 1 | max(0, <*minimum-interval*>) | min(interval, <*maximum-interval*>) |
-| 2 | max(interval, <*minimum-interval*>) | min(2 * interval, <*maximum-interval*>) |
-| 3 | max(2 * interval, <*minimum-interval*>) | min(4 * interval, <*maximum-interval*>) |
-| 4 | max(4 * interval, <*minimum-interval*>) | min(8 * interval, <*maximum-interval*>) |
+| 1 | max(0, <*minimum-interval*>) | min (intervallum, <*maximális intervallum*>) |
+| 2 | max(interval, <*minimum-interval*>) | min (2 * időköz, <*maximális intervallum*>) |
+| 3 | Max (2 * intervallum, <*minimális intervallum*>) | min (4 * intervallum, <*maximális intervallum*>) |
+| 4 | Max (4 * intervallum, <*minimális intervallum*>) | min (8 * időköz, <*maximális intervallum*>) |
 | .... | .... | .... | 
 |||| 
 
-## <a name="catch-and-handle-failures-with-the-runafter-property"></a>A tényleges és RunAfter tulajdonság hibáinak a kezelése
+## <a name="catch-and-handle-failures-with-the-runafter-property"></a>A hibák befogása és kezelése a RunAfter tulajdonsággal
 
-Minden egyes logikaialkalmazás-művelet deklarálja a műveleteket, amelyeket le kell futnia ahhoz, hogy a művelet elindult, hasonló adhatja meg a lépések sorrendje a munkafolyamatban. Egy művelet definíciójában a **runAfter** tulajdonság határozza meg, a rendezés és a egy olyan objektum, amely leírja, hogy mely műveletek és a művelet állapotát a művelet hajtható végre.
+Minden logikai alkalmazás művelete deklarálja azokat a műveleteket, amelyeket a művelet elkezdése előtt kell befejezni, hasonlóan ahhoz, ahogy a munkafolyamat lépéseinek sorrendjét megadja. Egy művelet definíciójában a **runAfter** tulajdonság határozza meg ezt a sorrendet, és egy objektum, amely leírja, hogy mely műveletek és tevékenységek futnak a művelet végrehajtásakor.
 
-Alapértelmezés szerint az összes olyan műveleteket, adja hozzá a Logic App Designerben vannak beállítva az előző lépés után futtassa, ha az előző lépésben eredmény **sikeres**. Azonban testre szabhatja a **runAfter** értékét úgy, hogy a műveletek értesíti, ha a korábbi műveletek tárigénye **sikertelen**, **kihagyva**, vagy valamilyen kombinációját ezeket az értékeket. Például vegyen fel egy elemet egy adott Service Bus-témakör egy adott után **Insert_Row** művelet meghiúsul, ebben a példában használhatja **runAfter** definíciója:
+Alapértelmezés szerint a Logic app Designerben hozzáadott összes művelet úgy van beállítva, hogy az előző lépés **sikeres**végrehajtása után fusson. A **runAfter** értékét azonban testreszabhatja úgy, hogy a műveletek akkor legyenek láthatók, ha az előző műveletek **meghiúsult**, kihagyva vagy az értékek valamilyen kombinációját eredményezik. Ha például egy adott **Insert_Row** művelet végrehajtása után egy adott Service Bus témakörhöz szeretne elemeket hozzáadni, akkor ezt a példát **runAfter** -definíciót használhatja:
 
 ```json
 "Send_message": {
@@ -192,7 +191,7 @@ Alapértelmezés szerint az összes olyan műveleteket, adja hozzá a Logic App 
 }
 ```
 
-A **runAfter** tulajdonsága futtatható, ha a **Insert_Row** műveleti állapota **sikertelen**. A művelet futtatásához, ha a művelet állapota **sikeres**, **sikertelen**, vagy **kihagyva**, a következő szintaxist használja:
+A **runAfter** tulajdonság akkor fut, ha a **Insert_Row** művelet állapota **sikertelen**. A művelet futtatásához, ha a művelet **sikeres**, **sikertelen**vagy kihagyvaállapotú, használja a következő szintaxist:
 
 ```json
 "runAfter": {
@@ -203,31 +202,33 @@ A **runAfter** tulajdonsága futtatható, ha a **Insert_Row** műveleti állapot
 ```
 
 > [!TIP]
-> Műveletek futtató és a fenti művelet sikertelen volt, miután sikeresen be vannak megjelölve **sikeres**. Ez a viselkedés azt jelenti, hogy ha Ön egy munkafolyamatban, magát a Futtatás sikeresen általános hibák van megjelölve **sikeres**.
+> Az előző művelet meghiúsulása után sikeresen futtatott és befejezési műveletek sikeresként vannakmegjelölve. Ez azt jelenti, hogy ha sikeresen elvégezte az összes hibát a munkafolyamatban, a Futtatás **sikeresként**van megjelölve.
 
 <a name="scopes"></a>
 
-## <a name="evaluate-actions-with-scopes-and-their-results"></a>Műveleteket a hatóköröket és az eredményeket kiértékelése
+## <a name="evaluate-actions-with-scopes-and-their-results"></a>Hatókörökkel és azok eredményeivel kapcsolatos műveletek kiértékelése
 
-Hasonló lépéseket futtatása után az egyes műveletek a **runAfter** tulajdonság, csoportosíthatja műveletek belül egy [hatókör](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md). Hatókörök is használhatja, ha meg szeretné logikailag egy csoportba műveletek, a hatókör összesített állapotának felmérése és állapota alapján műveleteket. A hatókör az összes művelet után a magát a hatókör lekéri a saját állapotát. 
+Az egyes műveletek a **runAfter** tulajdonsággal való elvégzéséhez hasonlóan a műveletek hatókörön belüli csoportosítására [](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)is lehetőség van. Hatóköröket akkor használhat, ha logikailag csoportosítja a műveleteket, felméri a hatókör összesített állapotát, és végrehajtja a műveleteket az adott állapot alapján. A hatókör összes műveletének futása után a hatókör maga kapja meg a saját állapotát. 
 
-A hatókör állapotának ellenőrzéséhez használhatja ugyanezeket a feltételeket, például ellenőrizze a futtatási állapot egy logikai alkalmazást, amellyel **sikeres**, **sikertelen**, és így tovább. 
+A hatókör állapotának ellenőrzését a logikai alkalmazás futtatási állapotának (például **sikeres**, **sikertelen**stb.) ellenőrzési feltételeit is használhatja. 
 
-Alapértelmezés szerint a hatókör művelet sikeres legyen, a hatókör állapot megjelölve **sikeres**. Ha az utolsó műveletnek a hatókör **sikertelen** vagy **Aborted**, állapota a hatókör meg van jelölve **sikertelen**. 
+Alapértelmezés szerint ha a hatókör összes művelete sikeres, a hatókör állapota **sikeres**lesz. Ha a hatókör végső művelete meghiúsult vagy megszakított eredményt eredményez, a hatókör állapota **nem sikerült**. 
 
-A kivételeket, egy **sikertelen** hatókör és futtatási műveletek, amelyek kezelik ezeket a hibákat, használhatja a **runAfter** tulajdonsága, amely **sikertelen** hatókör. Így ha *bármely* hatókörében a műveletek meghiúsulnak, és használja a **runAfter** tulajdonság az adott hatókörnél, hozhat létre egyetlen művelettel hibák olvasásra.
+Ha a kivételeket egy **sikertelen** hatókörben szeretné megfogni, és a hibákat kezelő műveleteket futtat, a **runAfter** tulajdonságot használhatja az adott **sikertelen** hatókörhöz. Így ha a hatókör *bármelyik* művelete meghiúsul, és az **runAfter** tulajdonságot használja erre a hatókörre vonatkozóan, létrehozhat egyetlen műveletet a hibák kifogásához.
 
-Hatókörök korlátozásairól lásd: [határértékek és konfiguráció](../logic-apps/logic-apps-limits-and-config.md).
+A hatókörök korlátozásait lásd: [korlátok és konfiguráció](../logic-apps/logic-apps-limits-and-config.md).
 
-### <a name="get-context-and-results-for-failures"></a>Környezet és az eredmények lekérése sikertelen
+<a name="get-results-from-failures"></a>
 
-Bár egy hatókörből hibák megelőzésével akkor hasznos, érdemes lehet a környezeti segítenek megérteni, hogy pontosan milyen műveleteket végezzen ezen kívül az esetleges hibákat vagy állapotkódokkal is sikertelen volt. A `@result()` kifejezése egy hatókör összes művelet eredménye kapcsolatos kontextust biztosít a.
+### <a name="get-context-and-results-for-failures"></a>A hibák kontextusának és eredményének beolvasása
 
-A `@result()` kifejezés (a hatókör neve) egyetlen paramétert fogad, és minden művelet eredményeinek hatókörön belüli tömbjét adja vissza. E művelet objektumok például őket a  **\@actions()** objektumot, például a művelet kezdési idő, befejezési időpontja, állapota, bemenetei, korrelációs azonosítók és kimenetek. Hatókörön belüli bármely művelet, amelyet nem sikerült a környezet elküldéséhez, könnyen összepárosíthassa egy  **\@result()** függvény és egy **runAfter** tulajdonság.
+Bár a hibák egy hatókörből való kifogása hasznos, előfordulhat, hogy olyan kontextust is szeretne, amely segít megérteni, hogy pontosan milyen műveletek sikertelenek, valamint a visszaadott hibák vagy állapotkódok.
 
-Minden egyes művelethez művelet futtatása egy hatókör, amely rendelkezik egy **sikertelen** eredményt, és az eredmények a sikertelen műveletek le a tömb szűrése, párosítsa  **\@result()** az egy **[ Tömb szűrése](../connectors/connectors-native-query.md)** művelet és a egy [ **minden** ](../logic-apps/logic-apps-control-flow-loops.md) ciklus. A szűrt eredmények tömb igénybe és a egy műveletet minden egyes hiba a a **minden** ciklus. 
+A [`result()`](../logic-apps/workflow-definition-language-functions-reference.md#result) függvény kontextust biztosít a hatókör összes műveletének eredményeiről. A `result()` függvény egyetlen paramétert fogad el, amely a hatókör neve, és egy olyan tömböt ad vissza, amely az adott hatókörből származó összes művelet eredményét tartalmazza. Ezek a műveleti objektumok ugyanazokat az attribútumokat `@actions()` tartalmazzák, mint az objektum, például a művelet kezdési ideje, befejezési időpontja, állapota, bemenetei, korrelációs azonosítói és kimenetei. Ha a hatókörön belül meghiúsult műveletek kontextusát szeretné elküldeni, egyszerűen párosíthat egy `@result()` kifejezést a `runAfter` tulajdonsággal.
 
-Íme egy példa, kiegészítve a részletes magyarázatát, amely minden művelettel nem sikerült a válasz törzse a HTTP POST-kérelmet küld a "My_Scope" hatókörön belül:
+Ha műveletet szeretne futtatni egy olyan hatókörben lévő művelethez, amely egy **sikertelen** eredménnyel rendelkezik, és az eredmények tömbjét a sikertelen műveletek alapján szűri, `@result()` akkor a kifejezéseket egy szűrési [**tömb**](../connectors/connectors-native-query.md) művelettel és [**minden**](../logic-apps/logic-apps-control-flow-loops.md) hurokhoz társíthatja. Elvégezheti a szűrt eredmény tömböt, és végrehajthat egy műveletet minden egyes hibához a **minden hurok esetében** .
+
+Az alábbi példát követve részletes magyarázatot talál, amely egy HTTP POST-kérelmet küld a válasz törzsének a "My_Scope" hatókörön belül sikertelen műveletekhez:
 
 ```json
 "Filter_array": {
@@ -268,24 +269,24 @@ Minden egyes művelethez művelet futtatása egy hatókör, amely rendelkezik eg
 }
 ```
 
-Részletes útmutató, amely leírja, mi történik, ebben a példában a következő:
+Íme egy részletes útmutató, amely leírja, hogy mi történik ebben a példában:
 
-1. Minden művelet belül "My_Scope", az eredmény eléréséhez a **tömb szűrése** művelet használja a szűrési kifejezés: `@result('My_Scope')`
+1. A "My_Scope" összes műveletének eredményének lekéréséhez a **tömb szűrése** művelet ezt a szűrési kifejezést használja:`@result('My_Scope')`
 
-2. Feltételét **tömb szűrése** tetszőleges `@result()` egyenlő állapotú elem **sikertelen**. Ez az állapot a tömb, amely rendelkezik az összes művelet eredményeinek "My_Scope" le egy tömb csak a sikertelen művelet eredményeket szűri.
+2. A **szűrő tömb** feltétele bármely `@result()` olyan elem, amelynek állapota **sikertelen**. Ez az állapot szűri azt a tömböt, amely az összes művelet eredményét a "My_Scope" értékről egy olyan tömbre szűri, amely csak a sikertelen művelet eredményeit eredményezi.
 
-3. Hajtsa végre egy **minden** a hurok a művelet a *szűrt tömb* adja vissza. Ebben a lépésben minden korábban szűrt volt sikertelen művelet eredménye egy műveletet végez.
+3. Hajtson végre **minden** hurok műveletet a *szűrt tömb* kimenetén. Ez a lépés végrehajt egy műveletet a korábban szűrt összes sikertelen művelet eredményéhez.
 
-   Ha a hatókörében egyetlen művelettel sikertelen volt a műveletek a **minden** hurok csak egyszer futtatni. 
-   Több sikertelen műveletek egy művelet egy hiba miatt.
+   Ha a hatókörben egyetlen művelet meghiúsult, akkor az **egyes** ciklusokban végrehajtott műveletek csak egyszer futnak. 
+   Több sikertelen művelet hibát okoz egy művelet végrehajtásakor.
 
-4. Küldjön egy HTTP POST az a **minden** konfigurációelem-válasz törzsében, amely a `@item()['outputs']['body']` kifejezés. 
+4. Küldjön egy http-bejegyzést a **minden** elem válasz törzséhez, amely a `@item()['outputs']['body']` kifejezés. 
 
-   A `@result()` elem alakzat pedig ugyanaz, mint a `@actions()` formázhatja, és ugyanúgy elemezhető legyen.
+   Az `@result()` elem alakzata megegyezik az `@actions()` alakzattal, és ugyanúgy elemezhető.
 
-5. Sikertelen művelet nevű két egyéni fejlécek belefoglalása (`@item()['name']`) és a sikertelen Futtatás követési azonosító: ügyfél (`@item()['clientTrackingId']`).
+5. Adjon meg két egyéni fejlécet a sikertelen művelet nevével (`@item()['name']`) és a sikertelen Futtatás ügyfél-követési azonosítóval (`@item()['clientTrackingId']`).
 
-Referenciaként, Íme egy példa egy adott `@result()` konfigurációelem, amely a **neve**, **törzs**, és **clientTrackingId** , amely elemzi a korábbi tulajdonságai Példa. Kívül egy **minden** művelet `@result()` ezek az objektumok tömbjét adja vissza.
+Hivatkozásként Íme egy példa `@result()` egyetlen elemre, amely az előző példában elemzett **nevet**, **törzset**és **clientTrackingId** tulajdonságokat mutatja. **Az egyes** műveleteken `@result()` kívül az objektumok tömbjét adja vissza.
 
 ```json
 {
@@ -317,19 +318,19 @@ Referenciaként, Íme egy példa egy adott `@result()` konfigurációelem, amely
 }
 ```
 
-Különböző kivételkezelési minták végrehajtásához használhatja a jelen cikkben korábban ismertetett kifejezések. Előfordulhat, hogy egyetlen kivételkezelési hatálya alá, amely a teljes szűrt tömb hibák művelet végrehajtásához válassza ki, és távolítsa el a **minden** művelet. Egyéb fontos tulajdonságait is használható a  **\@result()** választ az előzőleg ismertetett módon.
+A különböző kivételek kezelésére szolgáló mintázatok végrehajtásához használhatja a cikkben korábban ismertetett kifejezéseket. Dönthet úgy is, hogy egyetlen kivétel-kezelési műveletet hajt végre a hatókörön kívül, amely elfogadja a hibák teljes szűrt tömbjét, és eltávolítja az **összes** műveletet. Más hasznos tulajdonságokat is hozzáadhat az  **\@eredmény ()** válaszához az előzőekben leírtak szerint.
 
-## <a name="azure-diagnostics-and-metrics"></a>Azure-diagnosztika és metrikák
+## <a name="azure-diagnostics-and-metrics"></a>Azure Diagnostics és mérőszámok
 
-Az előző minták remek módja a hibák és kivételek belül futtató kezelése, de is azonosíthatja, és független a Futtatás magát a hibáknak. 
-[Az Azure Diagnostics](../logic-apps/logic-apps-monitor-your-logic-apps.md) küldése az összes munkafolyamat eseményeket, többek között a minden futtatás és műveleti állapot, egy Azure Storage-fiókot vagy egy eseményközpontba, az Azure Event hubs használatával létrehozott egyszerű módszert kínál. 
+Az előző minták nagyszerű módon kezelik a hibákat és a kivételeket egy futtatáson belül, de a futtatástól függetlenül is azonosíthatók és reagálnak a hibákra. 
+A [Azure Diagnostics](../logic-apps/logic-apps-monitor-your-logic-apps.md) egyszerű módot biztosít az összes munkafolyamat-esemény, beleértve az összes futtatási és művelet állapotát, egy Azure Storage-fiókba vagy egy azure-Event Hubs létrehozott Event hub küldésére. 
 
-Futtatási állapotának értékeléséhez, a naplók és metrikák figyelése, vagy közzéteheti őket bármely előnyben részesített figyelési eszközbe. Egy lehetséges megoldás, ha az Event Hubs használatával az események streamelése [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/). A Stream Analytics a rendellenességekre, átlagokat, vagy sikertelen a diagnosztikai naplók alapján élő lekérdezésekre írhat. Stream Analytics segítségével adatokat küld más adatforrások, például várólisták, témakörök, SQL, Azure Cosmos DB vagy Power bi-ban.
+A futtatási állapotok kiértékeléséhez nyomon követheti a naplókat és a metrikákat, vagy közzéteheti azokat bármely figyelési eszközön. Az egyik lehetséges lehetőség az, hogy az összes eseményt Event Hubs- [](https://azure.microsoft.com/services/stream-analytics/)ba Azure stream Analyticsba továbbítsa. Stream Analytics élő lekérdezéseket írhat a diagnosztikai naplókból származó rendellenességek, átlagok vagy hibák alapján. A Stream Analytics használatával adatokat küldhet más adatforrásoknak, például várólistákat, témaköröket, SQL-, Azure Cosmos DB-vagy Power BI.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Tekintse meg, hogyan ügyfél hoz létre az Azure Logic Apps hibakezelés](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)
-* [További Logic Apps-példák és forgatókönyvek keresése](../logic-apps/logic-apps-examples-and-scenarios.md)
+* [Megtudhatja, hogy az ügyfél hogyan épít a hibakezelés során Azure Logic Apps](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)
+* [További Logic Apps példák és forgatókönyvek](../logic-apps/logic-apps-examples-and-scenarios.md)
 
 <!-- References -->
 [retryPolicyMSDN]: https://docs.microsoft.com/rest/api/logic/actions-and-triggers#Anchor_9

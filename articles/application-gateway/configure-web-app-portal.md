@@ -1,87 +1,105 @@
 ---
-title: Forgalom több-bérlős alkalmazások, például az App service web Apps alkalmazások az Azure Application Gatewayjel – portál
-description: Ez a cikk konfigurálása az Azure App service web apps szolgáltatásban, a meglévő vagy új application gateway háttérkészlet tagjainak nyújt útmutatást.
+title: Több-bérlős alkalmazások, például az App Service Web Apps és az Azure Application Gateway-Portal közötti forgalom kezelése
+description: Ez a cikk útmutatást nyújt ahhoz, hogyan konfigurálhatja az Azure app Service Web Apps-t a háttér-készlet tagjaiként egy meglévő vagy egy új Application Gateway-átjárón.
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
 ms.date: 3/11/2019
 ms.author: absha
-ms.openlocfilehash: 4dae04c14f9132c54dcc0575ccb2841a4742a626
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: dee4859c57172a703517848510a31b70ff1f24cd
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58176208"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "68370426"
 ---
-# <a name="configure-app-service-with-application-gateway"></a>Az App Service az Application Gateway konfigurálása
+# <a name="configure-app-service-with-application-gateway"></a>App Service konfigurálása Application Gateway
 
-Az Application gateway lehetővé teszi, hogy rendelkezik egy Azure App service-webalkalmazás vagy egyéb több-bérlős szolgáltatások háttérkészlet-tagként. 
+Mivel az App Service egy több-bérlős szolgáltatás, amely a központi telepítés helyett a gazdagép fejlécét használja a bejövő kérelemben a megfelelő app Service-végpontra irányuló kérés feloldásához. Az alkalmazás DNS-neve általában az App Service-hez kapcsolódó Application Gateway-hez társított DNS-név, amely eltér a háttér-alkalmazás szolgáltatás tartománynevétől. Ezért az Application Gateway által fogadott eredeti kérelemben szereplő állomásfejléc nem egyezik meg a háttér-szolgáltatás állomásneve nevével. Emiatt, ha az Application Gateway-ből a háttérbe irányuló kérelemben szereplő állomásfejléc nem változik a háttérrendszer állomásneve, a több-bérlős háttérrendszer nem tudja feloldani a kérést a megfelelő végpontra.
+
+A Application Gateway egy nevű `Pick host name from backend address` kapcsolót biztosít, amely felülbírálja a kérelemben található állomásfejléc állomásnevét, ha a kérést a Application Gateway a háttérbe irányítja. Ez a funkció lehetővé teszi a több-bérlős back-végpontok támogatását, például az Azure app Service és az API Management használatát. 
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
 >
-> - Hozzon létre egy háttérkészlet és a egy App Service-ben hozzáadása
-> - HTTP-beállítások és az egyéni mintavétel létrehozása "Válasszon állomásnév" kapcsolók engedélyezve
+> - Háttérbeli készlet létrehozása és App Service hozzáadása
+> - HTTP-beállítások és egyéni mintavétel létrehozása a "pick hostname" kapcsolók engedélyezésével
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Az Application gateway: Ha nem rendelkezik meglévő application gateway, hogyan [application gateway létrehozása](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
-- App Service-ben: Ha nem rendelkezik egy meglévő App service, [App service-dokumentáció](https://docs.microsoft.com/azure/app-service/).
+- Application Gateway: Ha nem rendelkezik meglévő Application Gateway-átjáróval, tekintse meg [az Application Gateway létrehozása](https://docs.microsoft.com/azure/application-gateway/quick-create-portal) című témakört.
+- App Service: Ha nem rendelkezik meglévő app Service-vel, tekintse meg az [app Service dokumentációját](https://docs.microsoft.com/azure/app-service/).
 
-## <a name="add-app-service-as-backend-pool"></a>App Service-ben háttérkészlet hozzáadása
+## <a name="add-app-service-as-backend-pool"></a>App Service hozzáadása háttér-készletként
 
-1. Az Azure Portalon nyissa meg az application gateway konfigurációs nézete.
+1. A Azure Portal nyissa meg az Application Gateway konfigurációs nézetét.
 
-2. A **háttérkészletek**, kattintson a **Hozzáadás** hozhat létre egy új háttérkészletet.
+2. A **háttér-készletek**területen kattintson a **Hozzáadás** elemre egy új háttér-készlet létrehozásához.
 
-3. Adjon meg egy megfelelő nevet a háttérkészlethez. 
+3. Adjon meg egy megfelelő nevet a háttér-készletnek. 
 
-4. A **célok**, kattintson a legördülő listából, és válassza a **App Services** paramétert.
+4. A **célok**területen kattintson a legördülő listára, és válassza a **app Services** lehetőséget.
 
-5. Azonnal az alábbi legördülő lista a **célok** legördülő menü jelenik meg az App Services listáját tartalmazó. A legördülő listából válassza ki az App Service háttérrendszer készlettag szerint adja hozzá, és kattintson a Hozzáadás gombra.
+5. Megjelenik egy legördülő lista, amely közvetlenül a **célok** legördülő listájában jelenik meg, amely tartalmazni fogja a app Services listáját. Ebből a legördülő listából válassza ki a háttérbeli készlet tagjaként hozzáadni kívánt App Service, majd kattintson a Hozzáadás gombra.
 
-   ![App service háttérrendszer](./media/configure-web-app-portal/backendpool.png)
+   ![App Service-háttérrendszer](./media/configure-web-app-portal/backendpool.png)
+   
+   > [!NOTE]
+   > A legördülő lista csak azokat az alkalmazás-szolgáltatásokat tölti fel, amelyek ugyanabban az előfizetésben vannak, mint a Application Gateway. Ha olyan app Service-t szeretne használni, amely egy másik előfizetésben található, mint a Application Gateway, **app Services** akkor a **célok** legördülő menüben válassza az **IP-cím vagy állomásnév** lehetőséget, majd adja meg a állomásnév (példa. azurewebsites.net) az App Service-ben.
 
-## <a name="create-http-settings-for-app-service"></a>Az App Service-ben HTTP-beállítások létrehozása
+## <a name="create-http-settings-for-app-service"></a>Az App Service HTTP-beállításainak létrehozása
 
-1. A **HTTP-beállítások**, kattintson a **Hozzáadás** hozhat létre egy új HTTP-beállítás.
+1. A **http-beállítások**területen kattintson a **Hozzáadás** ELEMre egy új http-beállítás létrehozásához.
 
-2. Adjon meg egy nevet a HTTP-beállítás és, engedélyezheti vagy letilthatja a Cookie-alapú affinitás alapján a követelmény.
+2. Adja meg a HTTP-beállítás nevét, és a követelménynek megfelelően engedélyezheti vagy letilthatja a cookie-alapú affinitást.
 
-3. Válassza ki a HTTP vagy HTTPS protokoll megfelelően a használati eset. 
+3. Használati esetként válassza a protokollt HTTP-ként vagy HTTPS-ként. 
 
-4. Jelölje be a **használata az App Service** fog kapcsolja a **mintavétel létrehozása az állomásnévvel kiválasztása a háttérkiszolgálói címen** és **címet válasszon állomásnévvel** beállítások. Ez a beállítás is mintavétel létrehozása automatikusan engedélyezve van a kapcsolóval, és társítsa azt a HTTP-beállítás.
+   > [!NOTE]
+   > Ha a HTTPS lehetőséget választja, nem kell feltöltenie semmilyen hitelesítési tanúsítványt vagy megbízható főtanúsítványt az App Service-háttér engedélyezési listájára, mivel az App Service egy megbízható Azure-szolgáltatás.
 
-5. Kattintson a **OK** a HTTP-beállítás létrehozásához.
+4. Jelölje be a jelölőnégyzetet a **app Service használatához** . Vegye figyelembe, hogy `Create a probe with pick host name from backend address` a `Pick host name from backend address` kapcsolók és a automatikusan engedélyezve lesz.`Pick host name from backend address` felülírja a kérelemben szereplő állomásfejléc-fejlécet, ha a kérést a Application Gateway a háttérbe irányítja a rendszer.  
+
+   `Create a probe with pick host name from backend address`a automatikusan létrehoz egy állapot-mintavételt, és hozzárendeli azt ehhez a HTTP-beállításhoz. Ehhez a HTTP-beállításhoz nem kell más állapot-mintavételt létrehoznia. Azt is megteheti, hogy egy új, a <HTTP Setting name> névvel <Unique GUID> ellátott mintavétel hozzá lett adva az állapot-mintavételek listájában, és `Pick host name from backend http settings enabled`már rendelkezik a kapcsolóval.
+
+   Ha már rendelkezik egy vagy több olyan http-beállítással, amelyet az App Service használ, és ha ezek a http-beállítások ugyanazt a protokollt használják, mint amelyet a létrehozott, akkor a `Create a probe with pick host name from backend address` kapcsoló helyett a legördülő listából választhatja ki az egyiket a c Egyéni mintavételek. Ennek az az oka, hogy mivel már létezik egy HTTP-beállítás az App Service-szel, ezért a kapcsolóval `Pick host name from backend http settings enabled` rendelkező állapot-mintavétel is létezik. Válassza ki az egyéni mintavételt a legördülő listából.
+
+5. A HTTP-beállítás létrehozásához kattintson **az OK** gombra.
 
    ![HTTP-setting1](./media/configure-web-app-portal/http-setting1.png)
 
    ![HTTP-setting2](./media/configure-web-app-portal/http-setting2.png)
 
-## <a name="create-rule-to-tie-the-listener-backend-pool-and-http-setting"></a>Hozzon létre szabályt, hogy be lehessen vonni a figyelőt, a Háttérkészlet és a HTTP-beállítás
 
-1. A **szabályok**, kattintson a **alapszintű** új alapszintű szabály létrehozásához.
 
-2. Adjon meg egy megfelelő nevet, és válassza ki a figyelő, amely a bejövő kérelmek, az App Service létesít.
+## <a name="create-rule-to-tie-the-listener-backend-pool-and-http-setting"></a>Szabály létrehozása a figyelő, a háttér-készlet és a HTTP-beállítás összekötéséhez
 
-3. Az a **háttérkészlet** legördülő menüben válassza a háttérkiszolgáló-készlet fent létrehozott.
+1. A **szabályok**területen kattintson az **alapszintű** elemre egy új alapszabály létrehozásához.
 
-4. Az a **HTTP-beállítás** legördülő menüben válassza a HTTP-beállítás a fent létrehozott.
+2. Adjon meg egy megfelelő nevet, és válassza ki azt a figyelőt, amely elfogadja az App Service-be érkező kéréseket.
 
-5. Kattintson a **OK** Ez a szabály mentéséhez.
+3. A **háttérbeli készlet** legördülő menüben válassza ki a fent létrehozott háttér-készletet.
+
+4. A **http-beállítások** legördülő menüben válassza ki a fent létrehozott http-beállítást.
+
+5. A szabály mentéséhez kattintson **az OK** gombra.
 
    ![Szabály](./media/configure-web-app-portal/rule.png)
 
+## <a name="additional-configuration-in-case-of-redirection-to-app-services-relative-path"></a>További konfiguráció az App Service relatív elérési útjára történő átirányítás esetén
+
+Amikor az App Service átirányítási választ küld az ügyfélnek, hogy átirányítsa a relatív elérési útjára (például egy átirányítást a contoso.azurewebsites.net/path1-ből a contoso.azurewebsites.net/path2-be), ugyanazt a gazdagépet használja a válasz helye fejlécében. az Application gatewaytől kapott kérelemben szereplőként. Így az ügyfél közvetlenül a contoso.azurewebsites.net/path2 küldi a kérést az Application Gateway (contoso.com/path2) helyett. Az Application Gateway megkerülése nem kívánatos.
+
+Ha használja a használati esetet, vannak olyan helyzetek, amikor az App Service-nek át kell küldenie egy átirányítási választ az ügyfélnek, a [további lépéseket végrehajtva írja felül a hely fejlécét](https://docs.microsoft.com/azure/application-gateway/troubleshoot-app-service-redirection-app-service-url#sample-configuration).
+
 ## <a name="restrict-access"></a>Hozzáférés korlátozása
 
-Az ezekben a példákban üzembe helyezett webalkalmazások közvetlenül az internetről elérhető nyilvános IP-címek használatára. A hibaelhárítás, amikor egy új funkciót működésével ismerkedik, és új néhány dolgot, így. Azonban éles üzembe helyezés egy szolgáltatást szeretne, ha szeretné hozzáadhat több korlátozást.
+A példákban telepített webalkalmazások nyilvános IP-címeket használnak, amelyek közvetlenül az internetről érhetők el. Ez segít a hibaelhárításban az új funkciók megismerése és új dolgok kipróbálása során. Ha azonban éles környezetben szeretne üzembe helyezni egy szolgáltatást, további korlátozásokat is fel szeretne venni.
 
-A web Apps korlátozhatja a hozzáférést egy módja [statikus IP-korlátozások az Azure App Service](../app-service/app-service-ip-restrictions.md). Például korlátozhatja a web app, hogy ez csak származó forgalmat megkapja az application gateway. Az app service IP korlátozás szolgáltatás használatával az application gateway virtuális IP-CÍMEK listája csak címként hozzáféréssel rendelkező.
+A webalkalmazásokhoz való hozzáférés korlátozásának egyik módja a [Azure app Service statikus IP-korlátozások](../app-service/app-service-ip-restrictions.md)használata. Például korlátozhatja a webalkalmazást úgy, hogy az csak az Application gatewaytől kapjon forgalmat. Az App Service IP-korlátozási funkciója segítségével az Application Gateway VIP-t csak az elérési címmel listázhatja.
 
 ## <a name="next-steps"></a>További lépések
 
-Az App Service-ben és az egyéb több-bérlős támogatással, az application gateway szolgáltatással kapcsolatos további tudnivalókért lásd: [több-bérlős szolgáltatás támogatása az application gatewayen](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-app-overview).
-
-Abban az esetben, ha az App service válasza az App service URL-cím átirányítása, lásd: hogyan [átirányítás, az App service URL-címet a probléma elhárításához](https://docs.microsoft.com/azure/application-gateway/troubleshoot-app-service-redirection-app-service-url).
+Ha többet szeretne megtudni az App Service-ről és az Application Gateway további több-bérlős támogatásáról, tekintse meg a [több-bérlős szolgáltatás támogatása az Application gatewayrel](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-app-overview)című témakört.

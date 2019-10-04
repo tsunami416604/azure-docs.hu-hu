@@ -1,6 +1,6 @@
 ---
-title: Python használata Azure Data Lake Analytics kezelése
-description: Ez a cikk ismerteti, hogyan használhatja a Pythont Data Lake Analytics-fiókok, adatforrások, felhasználók & feladatok kezelésére.
+title: Azure Data Lake Analytics kezelése a Python használatával
+description: Ez a cikk azt ismerteti, hogyan használható a Python a Data Lake Analytics fiókok, adatforrások, felhasználók és & feladatok kezelésére.
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: matt1883
@@ -9,43 +9,43 @@ ms.reviewer: jasonwhowell
 ms.assetid: d4213a19-4d0f-49c9-871c-9cd6ed7cf731
 ms.topic: conceptual
 ms.date: 06/08/2018
-ms.openlocfilehash: 82007c780a0c9ff3bb2e1a50a4826499f9df9c9f
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: d40658e1510c9ae8a2e3e1f865df7ac95f61abfb
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518966"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68355983"
 ---
-# <a name="manage-azure-data-lake-analytics-using-python"></a>Python használata Azure Data Lake Analytics kezelése
+# <a name="manage-azure-data-lake-analytics-using-python"></a>Azure Data Lake Analytics kezelése a Python használatával
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
-Ez a cikk ismerteti az Azure Data Lake Analytics-fiókok, adatforrások, felhasználók és feladatok kezelése Python használatával.
+Ez a cikk bemutatja, hogyan kezelheti Azure Data Lake Analytics fiókokat, adatforrásokat, felhasználókat és feladatokat a Python használatával.
 
 ## <a name="supported-python-versions"></a>Támogatott Python-verziók
 
-* Egy Python 64 bites verzióját használja.
-* Használhatja a Python elosztási címen található standard  **[Python.org letölti](https://www.python.org/downloads/)**. 
-* Sok fejlesztő található is használhatók a  **[Anaconda Python elosztási](https://www.anaconda.com/download/)**.  
-* Ez a cikk a Python 3.6-os verziója a normál terjesztési Python használatával készült
+* A Python 64-bites verzióját használja.
+* A **[Python.org downloads](https://www.python.org/downloads/)** címen található standard Python-disztribúciót is használhatja. 
+* Számos fejlesztő úgy találja, hogy kényelmes az **[anaconda Python-eloszlás](https://www.anaconda.com/download/)** használatát.  
+* Ez a cikk a Python 3,6-es verziójának a standard Python-disztribúcióból való használatával lett írva.
 
 ## <a name="install-azure-python-sdk"></a>Az Azure Python SDK telepítése
 
-A következő modulok telepítéséhez:
+Telepítse a következő modulokat:
 
-* A **azure-mgmt-resource** modul egyéb Azure-modulokat tartalmaz az Active Directory és más eszközökhöz.
-* A **azure-datalake-store** modul az Azure Data Lake Store fájlrendszer-műveleteit tartalmazza. 
-* A **azure-mgmt-datalake-store** modul az Azure Data Lake Store fiókkezelési műveleteit tartalmazza.
-* A **azure-mgmt-datalake-analytics** modul az Azure Data Lake Analytics-műveleteit tartalmazza. 
+* Az **Azure-mgmt-Resource** modul más Azure-modulokat is tartalmaz Active Directoryekhez stb.
+* Az **Azure-datalake-Store** modul tartalmazza a Azure Data Lake Store fájlrendszeri műveleteket. 
+* Az **Azure-mgmt-datalake-Store** modul tartalmazza a Azure Data Lake Store Fiókkezelés műveleteit.
+* Az **Azure-mgmt-datalake-Analytics** modul tartalmazza a Azure Data Lake Analytics műveleteket. 
 
-Először is győződjön meg arról, hogy a legújabb `pip` a következő parancs futtatásával:
+Először győződjön meg arról, hogy rendelkezik `pip` a legújabb paranccsal a következő parancs futtatásával:
 
 ```
 python -m pip install --upgrade pip
 ```
 
-Ez a dokumentum használatával készült `pip version 9.0.1`.
+Ez a dokumentum a használatával `pip version 9.0.1`lett írva.
 
-Használja a következő `pip` parancsok a modulok telepítése a parancssor:
+A következő `pip` parancsokkal telepítheti a modulokat a parancssorból:
 
 ```
 pip install azure-mgmt-resource
@@ -54,77 +54,83 @@ pip install azure-mgmt-datalake-store
 pip install azure-mgmt-datalake-analytics
 ```
 
-## <a name="create-a-new-python-script"></a>Hozzon létre egy új Python-szkript
+## <a name="create-a-new-python-script"></a>Új Python-szkript létrehozása
 
-Illessze be a parancsfájlt a következő kódot:
+Illessze be a következő kódot a szkriptbe:
 
 ```python
-## Use this only for Azure AD service-to-service authentication
+# Use this only for Azure AD service-to-service authentication
 #from azure.common.credentials import ServicePrincipalCredentials
 
-## Use this only for Azure AD end-user authentication
+# Use this only for Azure AD end-user authentication
 #from azure.common.credentials import UserPassCredentials
 
-## Required for Azure Resource Manager
+# Required for Azure Resource Manager
 from azure.mgmt.resource.resources import ResourceManagementClient
 from azure.mgmt.resource.resources.models import ResourceGroup
 
-## Required for Azure Data Lake Store account management
+# Required for Azure Data Lake Store account management
 from azure.mgmt.datalake.store import DataLakeStoreAccountManagementClient
 from azure.mgmt.datalake.store.models import DataLakeStoreAccount
 
-## Required for Azure Data Lake Store filesystem management
+# Required for Azure Data Lake Store filesystem management
 from azure.datalake.store import core, lib, multithread
 
-## Required for Azure Data Lake Analytics account management
+# Required for Azure Data Lake Analytics account management
 from azure.mgmt.datalake.analytics.account import DataLakeAnalyticsAccountManagementClient
 from azure.mgmt.datalake.analytics.account.models import DataLakeAnalyticsAccount, DataLakeStoreAccountInformation
 
-## Required for Azure Data Lake Analytics job management
+# Required for Azure Data Lake Analytics job management
 from azure.mgmt.datalake.analytics.job import DataLakeAnalyticsJobManagementClient
 from azure.mgmt.datalake.analytics.job.models import JobInformation, JobState, USqlJobProperties
 
-## Required for Azure Data Lake Analytics catalog management
+# Required for Azure Data Lake Analytics catalog management
 from azure.mgmt.datalake.analytics.catalog import DataLakeAnalyticsCatalogManagementClient
 
-## Use these as needed for your application
-import logging, getpass, pprint, uuid, time
+# Use these as needed for your application
+import logging
+import getpass
+import pprint
+import uuid
+import time
 ```
 
-Futtassa ezt a szkriptet, ellenőrizze, hogy a modulok importálhatók.
+Futtassa ezt a szkriptet annak ellenőrzéséhez, hogy a modulok importálhatók-e.
 
 ## <a name="authentication"></a>Authentication
 
-### <a name="interactive-user-authentication-with-a-pop-up"></a>Egy előugró ablak az interaktív felhasználói hitelesítéssel
+### <a name="interactive-user-authentication-with-a-pop-up"></a>Interaktív felhasználói hitelesítés előugró ablakban
 
-Ez a metódus nem támogatott.
+A módszer nem támogatott.
 
-### <a name="interactive-user-authentication-with-a-device-code"></a>Interaktív felhasználói hitelesítéssel rendelkező eszköz
+### <a name="interactive-user-authentication-with-a-device-code"></a>Interaktív felhasználói hitelesítés egy eszköz kódjával
 
 ```python
-user = input('Enter the user to authenticate with that has permission to subscription: ')
+user = input(
+    'Enter the user to authenticate with that has permission to subscription: ')
 password = getpass.getpass()
 credentials = UserPassCredentials(user, password)
 ```
 
-### <a name="noninteractive-authentication-with-spi-and-a-secret"></a>Nem interaktív hitelesítéssel ÜTI vagy titkos kulcs
+### <a name="noninteractive-authentication-with-spi-and-a-secret"></a>Nem interaktív hitelesítés SPI-vel és titkos kulccsal
 
 ```python
-credentials = ServicePrincipalCredentials(client_id = 'FILL-IN-HERE', secret = 'FILL-IN-HERE', tenant = 'FILL-IN-HERE')
+credentials = ServicePrincipalCredentials(
+    client_id='FILL-IN-HERE', secret='FILL-IN-HERE', tenant='FILL-IN-HERE')
 ```
 
-### <a name="noninteractive-authentication-with-api-and-a-certificate"></a>Az API-t és a egy tanúsítványt a nem interaktív hitelesítés
+### <a name="noninteractive-authentication-with-api-and-a-certificate"></a>Nem interaktív hitelesítés API-val és tanúsítvánnyal
 
-Ez a metódus nem támogatott.
+A módszer nem támogatott.
 
-## <a name="common-script-variables"></a>Parancsfájl-változókat
+## <a name="common-script-variables"></a>Gyakori parancsfájl-változók
 
-Ezeket a változókat a mintákat használják.
+Ezeket a változókat a minták használják.
 
 ```python
-subid= '<Azure Subscription ID>'
+subid = '<Azure Subscription ID>'
 rg = '<Azure Resource Group Name>'
-location = '<Location>' # i.e. 'eastus2'
+location = '<Location>'  # i.e. 'eastus2'
 adls = '<Azure Data Lake Store Account Name>'
 adla = '<Azure Data Lake Analytics Account Name>'
 ```
@@ -134,18 +140,20 @@ adla = '<Azure Data Lake Analytics Account Name>'
 ```python
 resourceClient = ResourceManagementClient(credentials, subid)
 adlaAcctClient = DataLakeAnalyticsAccountManagementClient(credentials, subid)
-adlaJobClient = DataLakeAnalyticsJobManagementClient( credentials, 'azuredatalakeanalytics.net')
+adlaJobClient = DataLakeAnalyticsJobManagementClient(
+    credentials, 'azuredatalakeanalytics.net')
 ```
 
 ## <a name="create-an-azure-resource-group"></a>Azure-erőforráscsoport létrehozása
 
 ```python
-armGroupResult = resourceClient.resource_groups.create_or_update( rg, ResourceGroup( location=location ) )
+armGroupResult = resourceClient.resource_groups.create_or_update(
+    rg, ResourceGroup(location=location))
 ```
 
 ## <a name="create-data-lake-analytics-account"></a>Data Lake Analytics-fiók létrehozása
 
-Először hozzon létre egy store-fiókot.
+Először hozzon létre egy áruházbeli fiókot.
 
 ```python
 adlsAcctResult = adlsAcctClient.account.create(
@@ -170,7 +178,7 @@ adlaAcctResult = adlaAcctClient.account.create(
 ).wait()
 ```
 
-## <a name="submit-a-job"></a>Feladat elküldése
+## <a name="submit-a-job"></a>Feladatok elküldése
 
 ```python
 script = """
@@ -198,20 +206,21 @@ jobResult = adlaJobClient.job.create(
 )
 ```
 
-## <a name="wait-for-a-job-to-end"></a>Várjon, amíg a feladat befejezése
+## <a name="wait-for-a-job-to-end"></a>Várakozás a feladatok befejezésére
 
 ```python
 jobResult = adlaJobClient.job.get(adla, jobId)
 while(jobResult.state != JobState.ended):
-    print('Job is not yet done, waiting for 3 seconds. Current state: ' + jobResult.state.value)
+    print('Job is not yet done, waiting for 3 seconds. Current state: ' +
+          jobResult.state.value)
     time.sleep(3)
     jobResult = adlaJobClient.job.get(adla, jobId)
 
-print ('Job finished with result: ' + jobResult.result.value)
+print('Job finished with result: ' + jobResult.result.value)
 ```
 
-## <a name="list-pipelines-and-recurrences"></a>Lista folyamatok és ismétlődések
-Attól függően, hogy a feladatok rendelkeznek-e a csatlakoztatott folyamat vagy ismétlődési metaadatok, listázhatja a folyamatok és ismétlődések.
+## <a name="list-pipelines-and-recurrences"></a>Folyamatok és ismétlődések listázása
+Attól függően, hogy a feladatokhoz van-e csatolva folyamat vagy ismétlődési metaadatok, a folyamatokat és az ismétlődéseket is listázhatja.
 
 ```python
 pipelines = adlaJobClient.pipeline.list(adla)
@@ -223,28 +232,31 @@ for r in recurrences:
     print('Recurrence: ' + r.name + ' ' + r.recurrenceId)
 ```
 
-## <a name="manage-compute-policies"></a>Compute-szabályzatok kezelése
+## <a name="manage-compute-policies"></a>Számítási házirendek kezelése
 
-A DataLakeAnalyticsAccountManagementClient objektum tartalmazza a számítási házirendek a Data Lake Analytics-fiók kezelése módszerei.
+A DataLakeAnalyticsAccountManagementClient objektum olyan metódusokat biztosít, amelyekkel felügyelhető a Data Lake Analytics fiók számítási házirendjeinek kezelése.
 
-### <a name="list-compute-policies"></a>Compute-házirendek felsorolása
+### <a name="list-compute-policies"></a>Számítási szabályzatok listázása
 
-A következő kód lekéri a Data Lake Analytics-fiók számítási szabályzatok listája.
+A következő kód lekéri egy Data Lake Analytics fiók számítási házirendjeinek listáját.
 
 ```python
 policies = adlaAccountClient.computePolicies.listByAccount(rg, adla)
 for p in policies:
-    print('Name: ' + p.name + 'Type: ' + p.objectType + 'Max AUs / job: ' + p.maxDegreeOfParallelismPerJob + 'Min priority / job: ' + p.minPriorityPerJob)
+    print('Name: ' + p.name + 'Type: ' + p.objectType + 'Max AUs / job: ' +
+          p.maxDegreeOfParallelismPerJob + 'Min priority / job: ' + p.minPriorityPerJob)
 ```
 
 ### <a name="create-a-new-compute-policy"></a>Új számítási szabályzat létrehozása
 
-Az alábbi kód létrehoz egy Data Lake Analytics-fiók, a megadott felhasználó 50-re, és a minimális feladat prioritása a 250 beállítást a maximális au-k rendelkezésre álló számítási egy új szabályzatot.
+A következő kód egy új számítási szabályzatot hoz létre egy Data Lake Analytics-fiókhoz, amely a megadott felhasználó számára elérhető maximális értéket adja meg 50-re, a feladat minimális prioritását pedig 250-re állítja.
 
 ```python
 userAadObjectId = "3b097601-4912-4d41-b9d2-78672fc2acde"
-newPolicyParams = ComputePolicyCreateOrUpdateParameters(userAadObjectId, "User", 50, 250)
-adlaAccountClient.computePolicies.createOrUpdate(rg, adla, "GaryMcDaniel", newPolicyParams)
+newPolicyParams = ComputePolicyCreateOrUpdateParameters(
+    userAadObjectId, "User", 50, 250)
+adlaAccountClient.computePolicies.createOrUpdate(
+    rg, adla, "GaryMcDaniel", newPolicyParams)
 ```
 
 ## <a name="next-steps"></a>További lépések

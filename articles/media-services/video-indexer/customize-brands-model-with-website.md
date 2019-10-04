@@ -6,15 +6,16 @@ services: media-services
 author: anikaz
 manager: johndeu
 ms.service: media-services
+ms.subservice: video-indexer
 ms.topic: article
-ms.date: 12/03/2018
+ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: 2522ede85c290fa238c0d5a5604d2dfbab984cdc
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 721fde63aeae8704761b3c21f489dcad77cb89e3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53285290"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65799603"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-website"></a>A Video Indexer webhely márkái modell testreszabása
 

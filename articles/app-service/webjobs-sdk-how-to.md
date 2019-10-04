@@ -1,6 +1,6 @@
 ---
-title: Az Azure WebJobs SDK - használata
-description: További információ a WebJobs SDK-hoz készült kód írásával. Hozzon létre eseményvezérelt háttér-feldolgozási feladataikat az Azure-szolgáltatások és a külső szolgáltatások által adatok elérésére.
+title: A webjobs SDK használata – Azure
+description: További információ a webjobs SDK kódjának írásához. Az Azure-szolgáltatásokban és külső szolgáltatásokban tárolt adatokhoz hozzáférő eseményvezérelt háttér-feldolgozási feladatok hozhatók létre.
 services: app-service\web, storage
 documentationcenter: .net
 author: ggailey777
@@ -13,46 +13,46 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 38d8bdfcba48d2080b434ebec192b41f3663ae6a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 67cd7f82597d306c8bf3c463d11457199aec7277
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58895207"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71815740"
 ---
-# <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Az Azure WebJobs SDK használata az eseményvezérelt háttérben történő feldolgozás
+# <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Az Azure WebJobs SDK használata eseményvezérelt háttérben végzett feldolgozáshoz
 
-Ez a cikk az Azure WebJobs SDK használata nyújt útmutatást. WebJobs-feladatokkal rögtön használatba, lásd: [eseményvezérelt háttérbeli feldolgozásra az Azure WebJobs SDK használatának első lépései](webjobs-sdk-get-started.md). 
+Ez a cikk útmutatást nyújt a Azure WebJobs SDK-val való együttműködéshez. A webjobs-feladatok azonnal elérhetővé tételéhez lásd: Ismerkedés [a Azure WEBJOBS SDK-val az eseményvezérelt háttér-feldolgozáshoz](webjobs-sdk-get-started.md). 
 
-## <a name="webjobs-sdk-versions"></a>A WebJobs SDK-verziókra
+## <a name="webjobs-sdk-versions"></a>Webjobs SDK-verziók
 
-Ezek azok a 3-as verziójú közötti fő különbségeket. *x* és 2. *x* , a WebJobs SDK-val:
+Ezek a 3. verzió közötti fő különbségek. *x* és 2-es verzió. a webjobs SDK *x* -je:
 
-* 3. verziója. *x* támogatja a .NET Core.
-* A 3-as verziójú. *x*, a WebJobs SDK által igényelt, a Storage kötési bővítmény explicit módon telepíteni kell. A 2. verzióban. *x*, a Storage-kötések szerepeljenek az SDK-t.
-* Visual Studio-eszközöket a .NET Core (3. *x*) projektek eltér a .NET-keretrendszer-felügyeleti (2. *x*) projektek. További tudnivalókért lásd: [fejlesztés és üzembe helyezése a Visual Studio használatával – az Azure App Service WebJobs](webjobs-dotnet-deploy-vs.md).
+* 3\. verzió. az *x* támogatja a .net Core-ot.
+* A 3. verzióban. *x*, explicit módon telepítenie kell a webjobs SDK által igényelt tárolási kötési bővítményt. A 2. verzióban. *x*, a tárolási kötések szerepeltek az SDK-ban.
+* Visual Studio-eszközök a .NET Core-hoz (3) *x*) a projektek eltérnek a .NET-keretrendszer (2) eszközeitől. *x*) projektek. További információ: [webjobs-feladatok fejlesztése és üzembe helyezése a Visual Studio-Azure app Service használatával](webjobs-dotnet-deploy-vs.md).
 
-Ha lehetséges, példák mindkét 3-as verziójú-okat. *x* és 2. *x*.
+Ha lehetséges, a 3. verzióra vonatkozó példákat is meg kell adni. *x* és 2-es verzió. *x*.
 
 > [!NOTE]
-> [Az Azure Functions](../azure-functions/functions-overview.md) épül, a WebJobs SDK-t, és ez a cikk az Azure Functions dokumentációját az egyes témakörök mutató hivatkozásokat biztosít. Megjegyzés: a Functions és a WebJobs SDK közötti különbségeket:
-> * Az Azure Functions 2. verzió. *x* felel meg a WebJobs SDK 3-as verziójú. *x*, és az Azure Functions 1. *x* felel meg a WebJobs SDK-t 2. *x*. Forráskódtárházak használata a WebJobs SDK számozása.
-> * Mintakód az Azure Functions C# osztálykódtárakat van, a WebJobs SDK a kódhoz hasonlóan, azzal a különbséggel, nem kell egy `FunctionName` attribútum a WebJobs SDK-projektben.
-> * Néhány kötési típusok támogatottak, csak az funkciók, például a HTTP (Webhookok) és az Event Grid (amely a HTTP alapul).
+> [Azure functions](../azure-functions/functions-overview.md) a webjobs SDK-ra épül, és ez a cikk néhány témakörre mutató hivatkozásokat tartalmaz Azure functions dokumentációhoz. Figyelje meg a függvények és a webjobs SDK közötti különbségeket:
+> * Azure Functions 2. verzió. az *x* a webjobs SDK 3-as verziójának felel meg. *x*és Azure functions 1. az *x* a webjobs SDK 2-nak felel meg. *x*. A forráskód-Tárházak a webjobs SDK-számozást használják.
+> * Azure Functions C# Class-kódtárak például a webjobs SDK-kód, például ha nincs szüksége egy `FunctionName` attribútumra egy webjobs SDK-projektben.
+> * Bizonyos kötési típusok csak olyan függvényekben támogatottak, mint például a HTTP (webhookok) és a Event Grid (amely HTTP-alapú).
 >
-> További információkért lásd: [összehasonlítása a WebJobs SDK-val és az Azure Functions](../azure-functions/functions-compare-logic-apps-ms-flow-webjobs.md#compare-functions-and-webjobs).
+> További információ: [a Webjobs SDK és a Azure functions összevetése](../azure-functions/functions-compare-logic-apps-ms-flow-webjobs.md#compare-functions-and-webjobs).
 
-## <a name="webjobs-host"></a>Webjobs-feladatok gazdagép
+## <a name="webjobs-host"></a>Webjobs-gazdagép
 
-A gazdagép az functions runtime tárolója.  Azt figyeli, a functions eseményindítók és a hívások. A 3-as verziójú. *x*, a gazdagép megvalósítását `IHost`. A 2. verzióban. *x*, használja a `JobHost` objektum. Gazdagép-példány létrehozása a kódban, és testre szabhatja annak viselkedését, kód írása.
+A gazdagép a függvények futásidejű tárolója.  Ez figyeli az eseményindítókat és a hívási függvényeket. A 3. verzióban. *x*, a gazdagép a `IHost` implementációja. A 2. verzióban. *x*, használja a `JobHost` objektumot. Hozzon létre egy gazdagép-példányt a kódban, és írja be a kódot a viselkedésének testre szabásához.
 
-Ez a fő különbség a közvetlenül a WebJobs SDK-val és az Azure Functions keresztül közvetve használatával. Az Azure Functions a szolgáltatás vezérli a gazdagépen, és nem szabhatja testre a gazdagép kód írásával. Azure Functions segítségével testre szabható gazdagép viselkedése a host.json fájl beállításain keresztül. Ezek a beállítások olyan karakterláncok, nem a kódban, és ezzel a megoldással a típusú testreszabásokat is végezhet.
+Ez kulcsfontosságú különbség a webjobs SDK közvetlen használata és a Azure Functions használatával közvetve. Azure Functions a szolgáltatás vezérli a gazdagépet, és nem tudja testreszabni a gazdagépet a kód írásával. Azure Functions lehetővé teszi a gazdagép viselkedésének testreszabását a Host. JSON fájl beállításain keresztül. Ezek a beállítások karakterláncok, nem pedig kódok, és ez korlátozza az elvégezhető testreszabások fajtáit.
 
-### <a name="host-connection-strings"></a>Gazdagép kapcsolati karakterláncok
+### <a name="host-connection-strings"></a>Gazdagép-kapcsolatok karakterláncai
 
-A WebJobs SDK a local.settings.json fájlban, ha helyileg futtatja, vagy a környezet a webjobs-feladatot az Azure Storage és az Azure Service Bus-kapcsolati karakterláncok keres, amikor az Azure-ban futtatja. Alapértelmezés szerint egy tárolási kapcsolati karakterlánc nevű beállítás `AzureWebJobsStorage` megadása kötelező.  
+A webjobs SDK megkeresi az Azure Storage-t, és Azure Service Bus a helyi. Settings. JSON fájlban lévő kapcsolódási karakterláncokat a helyileg futtatott vagy az Azure-ban futtatott Webjobs környezetében. Alapértelmezés szerint a `AzureWebJobsStorage` nevű Storage-karakterlánc-beállítást kötelező megadni.  
 
-2. verziója. *x* az SDK lehetővé teszi a saját nevét a kapcsolati karakterláncok használata vagy máshol tárolhatja őket. A kód használatával beállíthatja a neveket a [ `JobHostConfiguration` ], ahogy az itt látható:
+2\. verzió. Az SDK *x* -je lehetővé teszi, hogy saját nevét használja ezeket a kapcsolatok sztringeket, vagy máshol tárolja őket. A kódban szereplő neveket a [`JobHostConfiguration`]paranccsal állíthatja be, ahogy az itt látható:
 
 ```cs
 static void Main(string[] args)
@@ -72,23 +72,23 @@ static void Main(string[] args)
 }
 ```
 
-Mivel a 3-as verziójú. *x* konfigurációt használja az alapértelmezett .NET Core API-k, nincs API módosítható kapcsolati karakterlánc neve van.
+Mivel a 3. verzió. az *x* az alapértelmezett .net Core konfigurációs API-kat használja, nincs API a kapcsolódási karakterlánc nevének módosításához.
 
-### <a name="host-development-settings"></a>Gazdagép fejlesztői beállítások
+### <a name="host-development-settings"></a>Gazdagép-fejlesztési beállítások
 
-A gazdagépen futtathatja a helyi fejlesztési hatékonyabbá teheti a fejlesztői módban. Íme néhány, a beállításokat, amelyek módosítják a fejlesztői módban futtatásakor:
+A helyi fejlesztés hatékonyabbá tételéhez a gazdagépet fejlesztői módban is futtathatja. Íme néhány olyan beállítás, amely a fejlesztői módban történő futtatáskor módosul:
 
 | Tulajdonság | Fejlesztési beállítás |
 | ------------- | ------------- |
-| `Tracing.ConsoleLevel` | `TraceLevel.Verbose` maximalizálhatja a napló kimenetét. |
-| `Queues.MaxPollingInterval`  | Alacsony értéket annak biztosítása érdekében az üzenetsor-módszereket a azonnal aktiválódnak.  |
-| `Singleton.ListenerLockPeriod` | 15 másodperc, ezzel elősegítve az gyors, iteratív fejlesztés. |
+| `Tracing.ConsoleLevel` | @no__t – 0 a napló kimenetének maximalizálása érdekében. |
+| `Queues.MaxPollingInterval`  | A várólista-metódusok azonnali indításának alacsony értéke.  |
+| `Singleton.ListenerLockPeriod` | 15 másodperc a gyors iterációs fejlesztésben való segítségnyújtáshoz. |
 
-Fejlesztői mód engedélyezéséhez a folyamat függ, az SDK-verzió. 
+A fejlesztési mód engedélyezésének folyamata az SDK verziójától függ. 
 
-#### <a name="version-3x"></a>3. verziója. *x*
+#### <a name="version-3x"></a>3\. verzió. *x*
 
-3. verziója. *x* a standard szintű ASP.NET Core API-k. Hívja a [ `UseEnvironment` ](/dotnet/api/microsoft.extensions.hosting.hostinghostbuilderextensions.useenvironment) metódust a [ `HostBuilder` ](/dotnet/api/microsoft.extensions.hosting.hostbuilder) példány. Egy sztring át `development`, amint az ebben a példában:
+3\. verzió. az *x* a standard ASP.net Core API-kat használja. Hívja meg a [`UseEnvironment`](/dotnet/api/microsoft.extensions.hosting.hostinghostbuilderextensions.useenvironment) metódust a [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder) példányon. Adjon át egy `development` nevű karakterláncot, ahogy az alábbi példában látható:
 
 ```cs
 static void Main()
@@ -107,9 +107,9 @@ static void Main()
 }
 ```
 
-#### <a name="version-2x"></a>2. verziója. *x*
+#### <a name="version-2x"></a>2\. verzió. *x*
 
-A `JobHostConfiguration` osztálya rendelkezik egy `UseDevelopmentSettings` metódushoz, amely lehetővé teszi a fejlesztői módban.  Az alábbi példa bemutatja, hogyan fejlesztői beállítások használatára. Győződjön meg arról, hogy `config.IsDevelopment` vissza `true` helyben fut, amikor egy nevű helyi környezeti változó beállítása `AzureWebJobsEnv` értékkel `Development`.
+A `JobHostConfiguration` osztály egy `UseDevelopmentSettings` metódussal rendelkezik, amely lehetővé teszi a fejlesztési módot.  Az alábbi példa bemutatja, hogyan használhatók a fejlesztői beállítások. Ahhoz, hogy a `config.IsDevelopment` visszaadja `true` értéket, ha helyileg fut, állítson be egy `AzureWebJobsEnv` nevű helyi környezeti változót a (z) `Development` értékkel.
 
 ```cs
 static void Main()
@@ -126,19 +126,19 @@ static void Main()
 }
 ```
 
-### <a name="jobhost-servicepointmanager-settings"></a>Egyidejű kapcsolatok kezelése (2. verzióban. *x*)
+### <a name="jobhost-servicepointmanager-settings"></a>Egyidejű kapcsolatok kezelése (2. verzió). *x*)
 
-A 3-as verziójú. *x*, végtelen kapcsolatok az alapértelmezett a kapcsolathoz megadott korlátot. Ha valamilyen okból módosítania ezt a korlátot, akkor használhatja a [ `MaxConnectionsPerServer` ](/dotnet/api/system.net.http.winhttphandler.maxconnectionsperserver) tulajdonságát a [ `WinHttpHandler` ](/dotnet/api/system.net.http.winhttphandler) osztály.
+A 3. verzióban. *x*, a kapcsolat korlátja alapértelmezés szerint a végtelen kapcsolatok. Ha valamilyen okból módosítania kell ezt a korlátot, használhatja a [`WinHttpHandler`](/dotnet/api/system.net.http.winhttphandler) osztály [`MaxConnectionsPerServer`](/dotnet/api/system.net.http.winhttphandler.maxconnectionsperserver) tulajdonságát.
 
-A 2. verzióban. *x*, segítségével szabályozhatja az egyidejű kapcsolatok száma egy gazdagépre a [ServicePointManager.DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit#System_Net_ServicePointManager_DefaultConnectionLimit) API-t. A 2. *x*, ezt az értéket az alapértelmezett 2. növelje a webjobs-feladatok gazdagép indítása előtt.
+A 2. verzióban. *x*, a [ServicePointManager. DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit#System_Net_ServicePointManager_DefaultConnectionLimit) API használatával szabályozható a gazdagépek egyidejű kapcsolatainak száma. 2\. *x*, a webjobs-gazdagép elindítása előtt növelje ezt az értéket az alapértelmezett 2 értékről.
 
-Az összes kimenő HTTP-kéréseket, amelyek egy függvény használatával teszik `HttpClient` áramlása `ServicePointManager`. Ha eléri beállított érték `DefaultConnectionLimit`, `ServicePointManager` üzenetsor kérelmek elindítja őket elküldése előtt. Tegyük fel, hogy a `DefaultConnectionLimit` értéke 2. és a kód révén az 1000 HTTP-kérelmekre. Kezdetben csak két kérelmek engedélyezettek keresztül az operációs rendszerre. A többi 998 a rendszer várólistára helyezi addig, amíg nincs hely a számukra. Azt jelenti, hogy a `HttpClient` előfordulhat, hogy időkorlátja, mert úgy tűnik, hogy a kérést leadó rendelkezik, de a kérést küldött az operációs rendszer soha nem a célkiszolgálón. Ezért előfordulhat, hogy nem Microsoft-jelentéssel bírnak viselkedés: a helyi `HttpClient` teljesítse a kérelmet 10 másodpercet vesz igénybe, de a szolgáltatás minden kérelemnél adja vissza a 200 ms. 
+Minden olyan kimenő HTTP-kérelem, amelyet egy függvényből `HttpClient` folyamattal `ServicePointManager` használatával végez. Miután elérte a `DefaultConnectionLimit` értékre beállított értéket, a `ServicePointManager` elindítja az üzenetsor-kezelési kérelmeket a küldés előtt. Tegyük fel, hogy a `DefaultConnectionLimit` értéke 2, a kód pedig 1 000 HTTP-kéréseket tesz lehetővé. Kezdetben csak két kérelem engedélyezett az operációs rendszerre. A többi 998 várólistára kerül, amíg el nem helyezi a helyet. Ez azt jelenti, hogy a `HttpClient` időtúllépés miatt megszakadt, mert úgy tűnik, hogy elvégezte a kérést, de az operációs rendszer nem küldte el a kérést a célkiszolgálóra. Tehát előfordulhat, hogy olyan viselkedést tapasztal, amely úgy tűnik, hogy nem lenne értelme: a helyi `HttpClient` 10 másodpercet vesz igénybe a kérelem teljesítéséhez, de a szolgáltatás a 200 MS-ban minden kérést visszaad. 
 
-Az alapértelmezett érték az ASP.NET-alkalmazások `Int32.MaxValue`, és valószínűleg esetén működik megfelelően a webjobs-feladatok futtatása egy legalább alapszintű App Service-csomag. Webjobs-feladatok általában a mindig bekapcsolva beállítást kell, és csak az alapszintű és a magasabb szintű App Service-csomagban, amely támogatott.
+A ASP.NET-alkalmazások alapértelmezett értéke `Int32.MaxValue`, és ez valószínűleg jól működik az alapszintű vagy magasabb App Service-tervben futó webjobs-feladatok esetében. A webjobs-nek jellemzően az Always On beállításra van szüksége, amelyet csak az alapszintű és a magasabb App Service csomagok támogatnak.
 
-Ha a webjobs-feladat fut, az ingyenes vagy közös App Service-csomag, az alkalmazás az App Service tesztkörnyezetben, amely jelenleg rendelkezik korlátozza egy [kapcsolathoz megadott korlátot, 300](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#per-sandbox-per-appper-site-numerical-limits). Egy kötetlen kapcsolathoz megadott korlátot, az a `ServicePointManager`, nagyobb a valószínűsége, hogy a tesztkörnyezet kapcsolati küszöbértéke érhető el, és a hely le fog állni. Ebben az esetben beállítás `DefaultConnectionLimit` valami alacsonyabb, mint 50 vagy 100, ezzel akadályozható és továbbra is engedélyezi a megfelelő átviteli sebességet.
+Ha a Webjobs ingyenes vagy megosztott App Service-csomagban fut, az alkalmazást a App Service sandbox korlátozza, amely jelenleg 300-as [korláttal](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#per-sandbox-per-appper-site-numerical-limits)rendelkezik. A `ServicePointManager` korlátozás nélküli kapcsolati korláttal nagyobb a valószínűsége, hogy a rendszer elérte a sandbox kapcsolati küszöbértékét, és a hely leáll. Ebben az esetben előfordulhat, hogy a `DefaultConnectionLimit` értékre (például 50 vagy 100) való beállítás megakadályozza ezt a folyamatot, és továbbra is lehetővé teszi a megfelelő átviteli sebességet.
 
-A beállítás konfigurálni kell, mielőtt bármilyen HTTP-kérések. Ebből kifolyólag a WebJobs-gazdagép nem szükség esetén módosítsa a beállítást automatikusan. Mielőtt a gazdagép elindul, nem várt viselkedést okozhat HTTP-kérelmekre is lehet. A legjobb módszer az, hogy az azonnal értékre állítja be a `Main` inicializálása előtt `JobHost`, ahogy az itt látható:
+A beállítást a HTTP-kérelmek elfogadását megelőzően kell konfigurálni. Emiatt a webjobs-gazdagépnek nem szabad automatikusan módosítania a beállítást. Lehetnek HTTP-kérelmek, amelyek a gazdagép elindítása előtt történnek, ami váratlan viselkedéshez vezethet. A legjobb módszer az, ha a `Main` metódusban azonnal beállítja az értéket az `JobHost` inicializálásához, ahogy az itt látható:
 
 ```csharp
 static void Main(string[] args)
@@ -151,13 +151,13 @@ static void Main(string[] args)
 }
 ```
 
-## <a name="triggers"></a>Eseményindítók
+## <a name="triggers"></a>Triggerek
 
-Functions nyilvános metódusok kell lennie, és rendelkeznie kell egy eseményindító attribútumon vagy a [ `NoAutomaticTrigger` ](#manual-triggers) attribútum.
+A függvényeknek nyilvános metódusoknak kell lenniük, és rendelkezniük kell egy trigger attribútummal vagy a [`NoAutomaticTrigger`](#manual-triggers) attribútummal.
 
 ### <a name="automatic-triggers"></a>Automatikus eseményindítók
 
-Automatikus eseményindítók egy esemény bekövetkeztekor függvény hívása. Fontolja meg ebben a példában egy üzenet hozzáadva az Azure Queue storage által aktivált függvény. Ezt úgy válaszol, hogy egy blob olvasása az Azure Blob storage-ból:
+Az automatikus eseményindítók meghívnak egy függvényt egy eseményre válaszul. Gondolja át ezt a példát egy olyan függvényre, amelyet az Azure üzenetsor-tárolóba felvett üzenet indít el. Az Azure Blob Storage-ból származó Blobok beolvasásával válaszol:
 
 ```cs
 public static void Run(
@@ -169,12 +169,13 @@ public static void Run(
 }
 ```
 
-A `QueueTrigger` attribútum a függvény meghívásához, amikor egy üzenetsor üzenet jelenik meg a futtatókörnyezet arra utasítja a `myqueue-items` várólista. A `Blob` attribútum arra utasítja a futtatókörnyezet, az üzenetsorban található üzenet használatával olvassa el a blobok a *minta-workitems* tároló. A függvény az átadott, az üzenetsorban található üzenet tartalmának a `myQueueItem` paraméter, a blob nevével.
+A `QueueTrigger` attribútum arra utasítja a futtatókörnyezetet, hogy hívja meg a függvényt, amikor egy üzenetsor-üzenet jelenik meg a `myqueue-items` várólistában. A `Blob` attribútum azt jelzi, hogy a futásidejű üzenet a workitems tárolóban lévő blob beolvasására használja az üzenetsor *-* üzenetet. A `myQueueItem` paraméterben a függvénynek átadott üzenetsor-üzenet tartalma a blob neve.
 
+[!INCLUDE [webjobs-always-on-note](../../includes/webjobs-always-on-note.md)]
 
 ### <a name="manual-triggers"></a>Manuális eseményindítók
 
-Egy függvény manuális aktiválásához használhatja az `NoAutomaticTrigger` attribútum, az itt látható módon:
+A függvények manuális elindításához használja a `NoAutomaticTrigger` attribútumot, ahogy az itt látható:
 
 ```cs
 [NoAutomaticTrigger]
@@ -188,9 +189,9 @@ string value,
 }
 ```
 
-A folyamat manuális indítására, a függvény az SDK verziójától függ.
+A függvény manuális aktiválásának folyamata az SDK verziójától függ.
 
-#### <a name="version-3x"></a>3. verziója. *x*
+#### <a name="version-3x"></a>3\. verzió. *x*
 
 ```cs
 static async Task Main(string[] args)
@@ -217,7 +218,7 @@ static async Task Main(string[] args)
 }
 ```
 
-#### <a name="version-2x"></a>2. verziója. *x*
+#### <a name="version-2x"></a>2\. verzió. *x*
 
 ```cs
 static void Main(string[] args)
@@ -229,17 +230,17 @@ static void Main(string[] args)
 
 ## <a name="input-and-output-bindings"></a>Bemeneti és kimeneti kötések
 
-Bemeneti adatok az Azure-ban vagy külső szolgáltatások számára elérhetővé szeretné tenni a kód deklaratív módszert biztosítanak. Kimeneti kötések lehetővé teszik egy frissítheti az adatokat. A [Ismerkedés](webjobs-sdk-get-started.md) cikk egyes egy példát mutat be.
+A bemeneti kötések deklaratív módszert biztosítanak az Azure-ból vagy külső szolgáltatásokból származó adatoknak a kód számára elérhetővé tételéhez. A kimeneti kötések lehetővé teszik az adatfrissítést. Az [első lépések](webjobs-sdk-get-started.md) című cikk egy példát mutat be.
 
-A metódus visszatérési értékek használható egy kimeneti kötést az attribútum a metódus visszatérési érték alkalmazásával. A példa a [használata az Azure-függvény visszatérési érték](../azure-functions/functions-bindings-return-value.md).
+A metódus visszatérési értékét egy kimeneti kötéshez használhatja, ha az attribútumot a metódus visszatérési értékére alkalmazza. Tekintse meg a példát az [Azure Function Return értékének használatával](../azure-functions/functions-bindings-return-value.md).
 
-## <a name="binding-types"></a>Kötési típus
+## <a name="binding-types"></a>Kötési típusok
 
-A telepítése és kezelése a kötési típusok folyamata attól függ, hogy 3-as verziójú használ. *x* vagy 2-es verzió. *x* SDK. A csomag telepítéséhez, egy adott kötési típus a "Packages" szakaszban az Azure Functions a kötési típus a annak [áttekintésével foglalkozó cikkben](#binding-reference-information). Kivétel ez alól a fájlok trigger és kötése (a helyi fájlrendszerben;), amely nem támogatott az Azure Functions.
+A kötési típusok telepítésének és kezelésének folyamata attól függ, hogy a 3. verziót használja-e. *x* vagy 2-es verzió. Az SDK *x* -je. Az adott kötési típushoz telepítendő csomagot a kötési típus Azure Functions [hivatkozási cikkének](#binding-reference-information)"csomagok" szakaszában találja. Kivételt képeznek a fájlok triggerei és kötései (a helyi fájlrendszer esetében), amelyet a Azure Functions nem támogat.
 
-#### <a name="version-3x"></a>3. verziója. *x*
+#### <a name="version-3x"></a>3\. verzió. *x*
 
-A 3-as verziójú. *x*, a storage-kötések szerepelnek a `Microsoft.Azure.WebJobs.Extensions.Storage` csomagot. Hívja a `AddAzureStorage` a metódust a `ConfigureWebJobs` módszerhez, ahogy az itt látható:
+A 3. verzióban. *x*, a tárolási kötések a `Microsoft.Azure.WebJobs.Extensions.Storage` csomagban találhatók. Hívja meg a `AddAzureStorage` kiterjesztési módszert a `ConfigureWebJobs` metódusban, ahogy az itt látható:
 
 ```cs
 static void Main()
@@ -258,7 +259,7 @@ static void Main()
 }
 ```
 
-Más eseményindítók és kötési típusok szeretné használni, telepítse a NuGet-csomagot, amely tartalmazza őket, és hívja a `Add<binding>` megvalósítva a bővítmény metódust. Például, ha szeretne egy Azure Cosmos DB-kötést használja, telepítse `Microsoft.Azure.WebJobs.Extensions.CosmosDB` hívja `AddCosmosDB`, ehhez hasonló:
+Más triggerek és kötési típusok használatához telepítse az azokat tartalmazó NuGet-csomagot, és hívja meg a bővítményben megvalósított `Add<binding>` kiterjesztési módszert. Ha például Azure Cosmos DB kötést szeretne használni, telepítse a `Microsoft.Azure.WebJobs.Extensions.CosmosDB` értéket, és hívja meg a `AddCosmosDB`-et, például:
 
 ```cs
 static void Main()
@@ -277,17 +278,17 @@ static void Main()
 }
 ```
 
-Az időzítő eseményindító vagy a fájlok használata kötelező, alapvető szolgáltatások részét képező, a hívások a `AddTimers` vagy `AddFiles` bővítő metódusokat, jelölik.
+Az alapszolgáltatások részét képező időzítő vagy fájlok kötésének használatához hívja meg a `AddTimers` vagy `AddFiles` kiterjesztési metódusokat.
 
-#### <a name="version-2x"></a>2. verziója. *x*
+#### <a name="version-2x"></a>2\. verzió. *x*
 
-Ezek a trigger és a kötési típusok 2-es verzió szerepel. *x* , a `Microsoft.Azure.WebJobs` csomag:
+Ezek az triggerek és kötési típusok a 2. verzióban szerepelnek. a `Microsoft.Azure.WebJobs` csomag *x* -je:
 
 * Blob Storage
 * Queue Storage
-* Table Storage
+* Táblatároló
 
-Más eseményindítók és kötési típusok szeretné használni, telepítse a NuGet-csomagot, amely tartalmazza őket, és hívja a `Use<binding>` metódust a `JobHostConfiguration` objektum. Például ha egy időzítő indítófeltételt használni kívánt, telepítse `Microsoft.Azure.WebJobs.Extensions` hívja `UseTimers` a a `Main` módszerhez, ahogy az itt látható:
+Más triggerek és kötési típusok használatához telepítse az azokat tartalmazó NuGet-csomagot, és hívja meg a `Use<binding>` metódust a `JobHostConfiguration` objektumon. Ha például időzítő triggert szeretne használni, telepítse a `Microsoft.Azure.WebJobs.Extensions` metódust, és hívja meg a `UseTimers` értéket a `Main` metódusban, ahogy az itt látható:
 
 ```cs
 static void Main()
@@ -299,11 +300,11 @@ static void Main()
 }
 ```
 
-a fájlok telepítése kötelező, `Microsoft.Azure.WebJobs.Extensions` hívja `UseFiles`.
+A fájlok kötésének használatához telepítse a `Microsoft.Azure.WebJobs.Extensions` fájlt, és hívja meg a `UseFiles` értéket.
 
 ### <a name="executioncontext"></a>ExecutionContext
 
-Webjobs-feladatok lehetővé teszi a kötést létrehozni egy [ `ExecutionContext` ]. Ennek a kötésnek a hozzáférhet a [ `ExecutionContext` ] a függvényfej paraméterként. Például a következő kódot a Hívásazonosítót, amellyel korrelációját, ha egy adott függvény meghívási által előállított összes napló eléréséhez használja a context objektumot.  
+A webjobs lehetővé teszi a kötést egy [`ExecutionContext`-]hez. Ezzel a kötéssel elérheti a [`ExecutionContext`] paramétert a függvény aláírásában. Az alábbi kód például a környezeti objektum használatával fér hozzá a Meghívási AZONOSÍTÓhoz, amellyel az adott függvény által létrehozott összes naplót összekapcsolhatja.  
 
 ```cs
 public class Functions
@@ -317,11 +318,11 @@ public class Functions
 }
 ```
 
-A folyamat a kötést a [ `ExecutionContext` ] az SDK verziójától függ.
+A [`ExecutionContext`] kötésének folyamata az SDK verziójától függ.
 
-#### <a name="version-3x"></a>3. verziója. *x*
+#### <a name="version-3x"></a>3\. verzió. *x*
 
-Hívja a `AddExecutionContextBinding` a metódust a `ConfigureWebJobs` módszerhez, ahogy az itt látható:
+Hívja meg a `AddExecutionContextBinding` kiterjesztési módszert a `ConfigureWebJobs` metódusban, ahogy az itt látható:
 
 ```cs
 static void Main()
@@ -340,9 +341,9 @@ static void Main()
 }
 ```
 
-#### <a name="version-2x"></a>2. verziója. *x*
+#### <a name="version-2x"></a>2\. verzió. *x*
 
-A `Microsoft.Azure.WebJobs.Extensions` a korábban említett csomag is biztosít egy speciális kötési típus, amely meghívásával regisztrálhatja a `UseCore` metódust. Ez a kötés lehetővé teszi, hogy meghatározhatja egy [ `ExecutionContext` ] parametr obecného a függvény, amely engedélyezve van az ehhez hasonló:
+A korábban említett `Microsoft.Azure.WebJobs.Extensions` csomag egy speciális kötési típust is biztosít, amelyet a `UseCore` metódus meghívásával regisztrálhat. Ez a kötés lehetővé teszi, hogy egy [`ExecutionContext`] paramétert határozzon meg a függvény aláírásában, amely a következőképpen van engedélyezve:
 
 ```cs
 class Program
@@ -357,26 +358,26 @@ class Program
 }
 ```
 
-## <a name="binding-configuration"></a>Kötés konfigurálása
+## <a name="binding-configuration"></a>Kötési konfiguráció
 
-Konfigurálhatja az egyes eseményindítók és kötések viselkedését. A konfigurálás folyamata attól függ, hogy az SDK-verzió.
+Beállíthatja egyes eseményindítók és kötések viselkedését. A konfigurálásának folyamata az SDK verziójától függ.
 
-* **3. verziója. *x*:** Konfiguráció beállítása során a `Add<Binding>` módszert hívja meg `ConfigureWebJobs`.
-* **2. verziója. *x*:** Egy konfigurációs objektumot, amelyeket átad a tulajdonságainak beállításával konfigurálásának `JobHost`.
+* **3. verzió. *x*:** Állítsa be a konfigurációt, ha a `Add<Binding>` metódust `ConfigureWebJobs` értékben hívja meg.
+* **2. verzió. *x*:** Állítsa be a konfigurációt egy olyan konfigurációs objektum tulajdonságainak beállításával, amelyet a `JobHost` értékre adott át.
 
-Ezeket a kötés-specifikus beállításokat egyenértékűek beállításait a [host.json soubor projektu](../azure-functions/functions-host-json.md) az Azure Functions szolgáltatásban.
+Ezek a kötési beállítások egyenértékűek a [Host. JSON projektfájl](../azure-functions/functions-host-json.md) Azure Functionsban található beállításokkal.
 
-A következő kötéseket konfigurálhatja:
+A következő kötéseket állíthatja be:
 
-* [Azure cosmos DB-eseményindító](#azure-cosmosdb-trigger-configuration-version-3x)
-* [Event Hubs-trigger](#event-hubs-trigger-configuration-version-3x)
-* Queue storage-eseményindító
-* [A SendGrid-kötés](#sendgrid-binding-configuration-version-3x)
-* [Service Bus-trigger](#service-bus-trigger-configuration-version-3x)
+* [Azure CosmosDB trigger](#azure-cosmosdb-trigger-configuration-version-3x)
+* [Event Hubs trigger](#event-hubs-trigger-configuration-version-3x)
+* [Üzenetsor-tárolási trigger](#queue-storage-trigger-configuration)
+* [SendGrid kötés](#sendgrid-binding-configuration-version-3x)
+* [Service Bus trigger](#service-bus-trigger-configuration-version-3x)
 
-### <a name="azure-cosmosdb-trigger-configuration-version-3x"></a>Az Azure cosmos DB-eseményindító konfigurálása (3-as verziójú. *x*)
+### <a name="azure-cosmosdb-trigger-configuration-version-3x"></a>Az Azure CosmosDB trigger konfigurációja (3. verzió). *x*)
 
-Ez a példa bemutatja, hogyan konfigurálhatja az Azure Cosmos DB-eseményindító:
+Ez a példa bemutatja, hogyan konfigurálhatja a Azure Cosmos DB triggert:
 
 ```cs
 static void Main()
@@ -402,11 +403,11 @@ static void Main()
 }
 ```
 
-További részletekért tekintse meg a [Azure cosmos DB-kötés](../azure-functions/functions-bindings-cosmosdb-v2.md#hostjson-settings) cikk.
+További részletekért tekintse meg az [Azure CosmosDB-kötést](../azure-functions/functions-bindings-cosmosdb-v2.md#hostjson-settings) ismertető cikket.
 
-### <a name="event-hubs-trigger-configuration-version-3x"></a>Az Event Hubs-trigger konfiguráció (3-as verziójú. *x*)
+### <a name="event-hubs-trigger-configuration-version-3x"></a>Event Hubs trigger konfigurációja (3. verzió). *x*)
 
-Ez a példa bemutatja, hogyan konfigurálhatja az Event Hubs-eseményindító:
+Ez a példa bemutatja, hogyan konfigurálhatja a Event Hubs triggert:
 
 ```cs
 static void Main()
@@ -431,13 +432,13 @@ static void Main()
 }
 ```
 
-További részletekért tekintse meg a [az Event Hubs-kötés](../azure-functions/functions-bindings-event-hubs.md#hostjson-settings) cikk.
+További részletekért tekintse meg a [Event Hubs kötést](../azure-functions/functions-bindings-event-hubs.md#hostjson-settings) ismertető cikket.
 
-### <a name="queue-storage-trigger-configuration"></a>Queue storage trigger konfigurációja
+### <a name="queue-storage-trigger-configuration"></a>Várólista-tároló triggerének konfigurációja
 
-Ezek a példák bemutatják, hogyan konfigurálhatja a Queue storage-eseményindító:
+A következő példák bemutatják, hogyan konfigurálhatja a várólista-tároló triggert:
 
-#### <a name="version-3x"></a>3. verziója. *x*
+#### <a name="version-3x"></a>3\. verzió. *x*
 
 ```cs
 static void Main()
@@ -462,9 +463,9 @@ static void Main()
 }
 ```
 
-További részletekért tekintse meg a [tárkötéshez várólistára](../azure-functions/functions-bindings-storage-queue.md#hostjson-settings) cikk.
+További részletekért tekintse meg a [várólista-tároló kötését](../azure-functions/functions-bindings-storage-queue.md#hostjson-settings) ismertető cikket.
 
-#### <a name="version-2x"></a>2. verziója. *x*
+#### <a name="version-2x"></a>2\. verzió. *x*
 
 ```cs
 static void Main(string[] args)
@@ -479,11 +480,11 @@ static void Main(string[] args)
 }
 ```
 
-További részletekért tekintse meg a [v1.x host.json-referencia](../azure-functions/functions-host-json-v1.md#queues).
+További részletekért tekintse meg a [Host. JSON v1. x hivatkozást](../azure-functions/functions-host-json-v1.md#queues).
 
-### <a name="sendgrid-binding-configuration-version-3x"></a>A SendGrid kötés konfiguráció (3-as verziójú. *x*)
+### <a name="sendgrid-binding-configuration-version-3x"></a>SendGrid-kötési konfiguráció (3. verzió). *x*)
 
-Ez a példa bemutatja, hogyan konfigurálhatja a SendGrid kimeneti kötést:
+Ez a példa bemutatja, hogyan konfigurálhatja a SendGrid kimeneti kötését:
 
 ```cs
 static void Main()
@@ -507,11 +508,11 @@ static void Main()
 }
 ```
 
-További részletekért tekintse meg a [SendGrid kötés](../azure-functions/functions-bindings-sendgrid.md#hostjson-settings) cikk.
+További részletekért tekintse meg a [SendGrid-kötést](../azure-functions/functions-bindings-sendgrid.md#hostjson-settings) ismertető cikket.
 
-### <a name="service-bus-trigger-configuration-version-3x"></a>A Service Bus-trigger konfigurációja (3-as verziójú. *x*)
+### <a name="service-bus-trigger-configuration-version-3x"></a>Service Bus trigger konfigurációja (3. verzió). *x*)
 
-Ez a példa bemutatja, hogyan konfigurálhatja a Service Bus-trigger:
+Ez a példa bemutatja, hogyan konfigurálhatja a Service Bus triggert:
 
 ```cs
 static void Main()
@@ -535,13 +536,13 @@ static void Main()
 }
 ```
 
-További részletekért tekintse meg a [a Service Bus-kötés](../azure-functions/functions-bindings-service-bus.md#hostjson-settings) cikk.
+További részletekért tekintse meg a [Service Bus kötést](../azure-functions/functions-bindings-service-bus.md#hostjson-settings) ismertető cikket.
 
-### <a name="configuration-for-other-bindings"></a>Konfigurációs más kötések
+### <a name="configuration-for-other-bindings"></a>Egyéb kötések konfigurálása
 
-Bizonyos eseményindítót és a kötési típusok saját egyéni konfigurációs típust határoznak meg. Például a fájl eseményindító megadhatja a gyökér elérési útja a következő példákhoz hasonlóan monitorozásához:
+Egyes triggerek és kötési típusok saját egyéni konfigurációs típusokat határoznak meg. A fájl-triggerrel például megadhatja a figyelni kívánt gyökér elérési utat, ahogy az alábbi példákban is látható:
 
-#### <a name="version-3x"></a>3. verziója. *x*
+#### <a name="version-3x"></a>3\. verzió. *x*
 
 ```cs
 static void Main()
@@ -561,7 +562,7 @@ static void Main()
 }
 ```
 
-#### <a name="version-2x"></a>2. verziója. *x*
+#### <a name="version-2x"></a>2\. verzió. *x*
 
 ```cs
 static void Main()
@@ -577,9 +578,9 @@ static void Main()
 }
 ```
 
-## <a name="binding-expressions"></a>Kötési kifejezésekben
+## <a name="binding-expressions"></a>Kötési kifejezések
 
-Attribútum konstruktor paramétereket, az értékek oldja fel a különböző forrásokból származó kifejezésekkel is használhatja. Például az alábbi kódot, az elérési útját a `BlobTrigger` attribútum hoz létre egy elnevezett kifejezés `filename`. Ha a kimeneti kötés használja `filename` feloldja a riasztást kiváltó blob nevével.
+Az attribútumok konstruktorának paraméterei között olyan kifejezéseket használhat, amelyek különböző forrásokból származó értékekre vannak feloldva. A következő kódban például a `BlobTrigger` attribútum elérési útja létrehoz egy `filename` nevű kifejezést. A kimeneti kötés használatakor a `filename` feloldja az indító blob nevét.
 
 ```cs
 public static void CreateThumbnail(
@@ -593,13 +594,13 @@ public static void CreateThumbnail(
 }
 ```
 
-Kötési kifejezésekben kapcsolatos további információkért lásd: [kifejezések és a minták](../azure-functions/functions-bindings-expressions-patterns.md) az Azure Functions dokumentációjában.
+A kötési kifejezésekkel kapcsolatos további információkért tekintse meg a Azure Functions dokumentációjában található [kötési kifejezések és minták](../azure-functions/functions-bindings-expressions-patterns.md) című témakört.
 
-### <a name="custom-binding-expressions"></a>Egyéni kötési kifejezésekben
+### <a name="custom-binding-expressions"></a>Egyéni kötési kifejezések
 
-Néha szeretne megadni egy üzenetsor neve, a blob neve vagy a tároló vagy egy Táblanév fix kódolása, helyett kódot. Például érdemes a várólista nevét adja meg a `QueueTrigger` attribútum egy konfigurációs fájlban vagy környezeti változóban.
+Időnként meg kell adnia egy üzenetsor nevét, egy blob nevét vagy tárolóját, vagy egy kódot a kódban, nem pedig a rögzített kódolást. Előfordulhat például, hogy egy konfigurációs fájlban vagy környezeti változóban szeretné megadni a `QueueTrigger` attribútumhoz tartozó üzenetsor nevét.
 
-Úgy teheti meg, amely átadja egy `NameResolver` az objektumot a `JobHostConfiguration` objektum. A trigger vagy kötési attribútum konstruktor paraméterek helyőrzőket tartalmaznak, és a `NameResolver` kódot biztosít a tényleges értékek ezeket a helyőrzők helyett használható. Azonosíthatja a helyőrzők téve őket a százalék (%) jelentkezik, itt látható módon:
+Ezt úgy teheti meg, hogy egy `NameResolver` objektumot továbbít a `JobHostConfiguration` objektumba. Helyőrzőket is felvesz az trigger vagy a kötési attribútumok konstruktorában lévő paraméterekbe, és a `NameResolver` kód megadja a helyőrzők helyett használandó tényleges értékeket. A helyőrzőket a százalék (%) alapján azonosíthatja. jelek, ahogy az itt látható:
 
 ```cs
 public static void WriteLog([QueueTrigger("%logqueue%")] string logMessage)
@@ -608,11 +609,11 @@ public static void WriteLog([QueueTrigger("%logqueue%")] string logMessage)
 }
 ```
 
-Ez a kód használatát teszi lehetővé egy nevű üzenetsor `logqueuetest` a tesztkörnyezetet és egy nevű `logqueueprod` éles környezetben. Egy szokott várólista neve helyett nevét adja meg, egy bejegyzés a `appSettings` gyűjtemény.
+Ez a kód lehetővé teszi, hogy a tesztkörnyezetben egy `logqueuetest` nevű várólistát használjon, és egy `logqueueprod` névvel rendelkezik az éles környezetben. A rögzített üzenetsor neve helyett meg kell adnia egy bejegyzés nevét a `appSettings` gyűjteményben.
 
-Van egy alapértelmezett `NameResolver` , amely lép érvénybe, ha nem ad meg egy egyéni besorolás. Az alapértelmezett értékek az alkalmazásbeállítások és a környezeti változók beolvasása.
+Létezik egy alapértelmezett @no__t – 0, amely akkor lép érvénybe, ha nem ad meg egyénit. Az alapértelmezett érték az Alkalmazásbeállítások vagy a környezeti változók értékeinek beolvasása.
 
-A `NameResolver` osztály lekéri az üzenetsor neve, a `appSettings`, ahogy az itt látható:
+A `NameResolver` osztály beolvassa az üzenetsor nevét `appSettings` értékről, ahogy az itt látható:
 
 ```cs
 public class CustomNameResolver : INameResolver
@@ -624,15 +625,15 @@ public class CustomNameResolver : INameResolver
 }
 ```
 
-#### <a name="version-3x"></a>3. verziója. *x*
+#### <a name="version-3x"></a>3\. verzió. *x*
 
-A feloldási függőségi beszúrást segítségével konfigurálhatja. Ezek a minták a szükséges `using` utasítást:
+A feloldót függőségi befecskendezés használatával konfigurálhatja. A mintákhoz a következő `using` utasítás szükséges:
 
 ```cs
 using Microsoft.Extensions.DependencyInjection;
 ```
 
-A feloldó meghívásával adja hozzá a [ `ConfigureServices` ] metódust a [ `HostBuilder` ](/dotnet/api/microsoft.extensions.hosting.hostbuilder), amint az ebben a példában:
+A feloldót úgy adja hozzá, hogy az [`ConfigureServices`] kiterjesztési módszert hívja meg [`HostBuilder`-](/dotnet/api/microsoft.extensions.hosting.hostbuilder)on, a jelen példában látható módon:
 
 ```cs
 static async Task Main(string[] args)
@@ -652,9 +653,9 @@ static async Task Main(string[] args)
 }
 ```
 
-#### <a name="version-2x"></a>2. verziója. *x*
+#### <a name="version-2x"></a>2\. verzió. *x*
 
-Adja át a `NameResolver` az osztály a `JobHost` objektumot, ahogy az itt látható:
+Adja át a `NameResolver` osztályt a `JobHost` objektumnak az itt látható módon:
 
 ```cs
  static void Main(string[] args)
@@ -666,13 +667,13 @@ Adja át a `NameResolver` az osztály a `JobHost` objektumot, ahogy az itt láth
 }
 ```
 
-Az Azure Functions valósítja meg `INameResolver` való lekérjük az értékeket alkalmazásbeállításokat, a példában látható módon. Közvetlenül a WebJobs SDK használata esetén, amely lekérdezi a helyőrző csereértékeket bármilyen forrásból, inkább az egyéni kialakítások írhat.
+A Azure Functions `INameResolver` értéket valósít meg az Alkalmazásbeállítások értékének beolvasásához, ahogy az a példában látható. Ha közvetlenül használja a webjobs SDK-t, megírhat egy egyéni implementációt, amely helyőrző helyettesítő értékeket kap bármilyen forrástól.
 
 ## <a name="binding-at-runtime"></a>Kötés futásidőben
 
-Ha ehhez néhány dolgot a függvényben, például egy kötelező attribútum használata előtt kell `Queue`, `Blob`, vagy `Table`, használhatja a `IBinder` felületet.
+Ha a függvényben valamilyen műveletet kell végrehajtania, mielőtt olyan kötési attribútumot használ, mint például a `Queue`, `Blob` vagy a `Table`, használhatja a `IBinder` felületet.
 
-Az alábbi példa egy bemeneti üzenetsor vesz igénybe, és egy új üzenetet hoz létre ugyanahhoz a tartalomhoz egy kimeneti várólista. A kimeneti várólista neve kódot a függvény törzsében állítja be.
+A következő példa egy bemeneti üzenetsor-üzenetet hoz létre, és létrehoz egy új üzenetet ugyanazzal a tartalommal egy kimeneti várólistában. A kimeneti várólista nevét a függvény törzsében található kód állítja be.
 
 ```cs
 public static void CreateQueueMessage(
@@ -686,25 +687,25 @@ public static void CreateQueueMessage(
 }
 ```
 
-További információkért lásd: [futásidőben kötés](../azure-functions/functions-dotnet-class-library.md#binding-at-runtime) az Azure Functions dokumentációjában.
+További információkért lásd: a Azure Functions dokumentációjában a [futásidejű kötés](../azure-functions/functions-dotnet-class-library.md#binding-at-runtime) .
 
-## <a name="binding-reference-information"></a>Kötési információ
+## <a name="binding-reference-information"></a>Kötési hivatkozási információ
 
-Az Azure Functions dokumentációját tájékoztatással egyes kötési típus. Az alábbi adatokat az egyes kötés áttekintésével foglalkozó cikkben találhat. (Ebben a példában tárolási üzenetsor alapul.)
+Az Azure Functions dokumentációja az egyes kötési típusokra vonatkozó hivatkozási információkat tartalmazza. Az alábbi információkat az egyes kötési dokumentációban találja. (Ez a példa a tárolási üzenetsor alapján történik.)
 
-* [Csomagok](../azure-functions/functions-bindings-storage-queue.md#packages---functions-1x). A WebJobs SDK-projektben a kötési támogatását telepítenie kell a csomag.
-* [Példák](../azure-functions/functions-bindings-storage-queue.md#trigger---example). Kódminták. A C# class library Példa érvényes a WebJobs SDK-val. Egyszerűen hagyja el a `FunctionName` attribútum.
-* [Attribútumok](../azure-functions/functions-bindings-storage-queue.md#trigger---attributes). A kötési típus használandó attribútumok.
-* [Konfigurációs](../azure-functions/functions-bindings-storage-queue.md#trigger---configuration). Az attribútum tulajdonságainak és konstruktor paraméterek találja.
-* [Használat](../azure-functions/functions-bindings-storage-queue.md#trigger---usage) – A kell kötni típusát és a kötés működésével kapcsolatos információkat. Példa: ciklikus lekérdezés algoritmus, ártalmas várólista feldolgozása.
+* [Csomagok](../azure-functions/functions-bindings-storage-queue.md#packages---functions-1x). A telepíteni kívánt csomag tartalmazza a kötés támogatását egy webjobs SDK-projektben.
+* [Példák](../azure-functions/functions-bindings-storage-queue.md#trigger---example). Kód minták. Az C# osztály könyvtára példa a webjobs SDK-ra. Csak hagyja ki a `FunctionName` attribútumot.
+* [Attribútumok](../azure-functions/functions-bindings-storage-queue.md#trigger---attributes). A kötési típushoz használandó attribútumok
+* [Konfiguráció](../azure-functions/functions-bindings-storage-queue.md#trigger---configuration). Az attribútum tulajdonságainak és a konstruktor paramétereinek magyarázata.
+* [Használat](../azure-functions/functions-bindings-storage-queue.md#trigger---usage) – A kötéshez köthető típusok, valamint a kötés működésével kapcsolatos információk. Például: lekérdezési algoritmus, méreg-várólista feldolgozása.
   
-Kötelező hivatkozás cikkek listáját lásd a "Támogatott kötések" a [eseményindítók és kötések](../azure-functions/functions-triggers-bindings.md#supported-bindings) a cikk az Azure Functions szolgáltatáshoz. A listában az Event Grid, HTTP és Webhookok kötések támogatottak, csak az Azure Functions, nem pedig a WebJobs SDK-val.
+A kötési hivatkozási cikkek listáját a Azure Functions [Eseményindítók és kötések](../azure-functions/functions-triggers-bindings.md#supported-bindings) című cikkben, a "támogatott kötések" című részben találja. Ebben a listában a HTTP-t, webhookokat és Event Grid kötéseket csak Azure Functions, a webjobs SDK nem támogatja.
 
 ## <a name="disable-attribute"></a>Attribútum letiltása 
 
-A [ `Disable` ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/DisableAttribute.cs) attribútum lehetővé teszi, hogy egy függvény is elindítható. 
+A [`Disable`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/DisableAttribute.cs) attribútummal szabályozhatja, hogy a függvény aktiválható-e. 
 
-A következő példában ha az Alkalmazásbeállítás `Disable_TestJob` értéke `1` vagy `True` (kis-és nagybetűket), a függvény nem futtatja. Ebben az esetben a futtatókörnyezet hoz létre egy naplófájlüzenetre *"Functions.TestJob" funkció le van tiltva*.
+Ha a következő példában az `Disable_TestJob` Alkalmazásbeállítás értéke `1` vagy `True` (kis-és nagybetűk megkülönböztetése), a függvény nem fog futni. Ebben az esetben a futtatókörnyezet létrehoz egy *"functions. TestJob" nevű log Message függvényt, amely le van tiltva*.
 
 ```cs
 [Disable("Disable_TestJob")]
@@ -714,13 +715,13 @@ public static void TestJob([QueueTrigger("testqueue2")] string message)
 }
 ```
 
-Ha megváltoztatja az alkalmazás beállítás értékeit az Azure Portalon, a webjobs-feladatot az új beállítás csomópontmetrikák újraindul.
+Ha megváltoztatja az Alkalmazásbeállítások értékét a Azure Portalban, a Webjobs újraindul, hogy felvegye az új beállítást.
 
-Az attribútum a paramétert, a metódus vagy az osztály szintjén deklarálható. A beállítás neve is tartalmazhat kötési kifejezésekben.
+Az attribútum deklarálható a paraméter, a metódus vagy az osztály szintjén. A beállítás neve is tartalmazhat kötési kifejezéseket.
 
-## <a name="timeout-attribute"></a>Időtúllépés attribútumot
+## <a name="timeout-attribute"></a>Időtúllépési attribútum
 
-A [ `Timeout` ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TimeoutAttribute.cs) attribútum okozza egy függvényt, amely szakítható meg, ha nem a megadott időn belül fejeződik be. A következő példában az a függvény az időtúllépési attribútumban nélkül egy napon futna. Időtúllépés a függvény 15 másodperc elteltével megszakítandó okoz.
+A [`Timeout`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TimeoutAttribute.cs) attribútum azt eredményezi, hogy a függvényt megszakítja a rendszer, ha az adott időtartamon belül nem fejeződik be. A következő példában a függvény egy napig fog futni az időkorlát attribútum nélkül. Az időtúllépés miatt a függvény 15 másodperc után meg lesz szakítva.
 
 ```cs
 [Timeout("00:00:15")]
@@ -735,13 +736,13 @@ public static async Task TimeoutJob(
 }
 ```
 
-Az időtúllépési attribútumot az osztály vagy metódus szintjén is alkalmazhat, és megadhat egy globális időtúllépést használatával `JobHostConfiguration.FunctionTimeout`. Osztály- vagy metódus-szintjén időtúllépések globális időtúllépések bírálhatja felül.
+Az időtúllépési attribútumot az osztály vagy a metódus szintjén is alkalmazhatja, és a `JobHostConfiguration.FunctionTimeout` értékkel megadhat egy globális időkorlátot. Az osztály szintű vagy a metódus szintű időtúllépések felülbírálják a globális időtúllépéseket.
 
 ## <a name="singleton-attribute"></a>Egyszeres attribútum
 
-A [ `Singleton` ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/SingletonAttribute.cs) attribútum biztosítja, hogy egy függvény csak egy példányban fut le, még akkor is, ha a gazdagép webes alkalmazás több példánya. Ennek segítségével hajtja [elosztott zárolás](#viewing-lease-blobs).
+A [`Singleton`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/SingletonAttribute.cs) attribútum biztosítja, hogy a függvény csak egy példánya fusson, még akkor is, ha a gazda webalkalmazásnak több példánya is van. Ezt az [elosztott zárolás](#viewing-lease-blobs)használatával végezheti el.
 
-Ebben a példában csak egy példány lehet a `ProcessImage` lefut egy adott időpontban:
+Ebben a példában a `ProcessImage` függvény egyetlen példánya fut a megadott időpontban:
 
 ```cs
 [Singleton]
@@ -753,17 +754,17 @@ public static async Task ProcessImage([BlobTrigger("images")] Stream image)
 
 ### <a name="singletonmodelistener"></a>SingletonMode.Listener
 
-Egyes eseményindítók tartalmaz beépített támogatást az egyidejűség kezelése:
+Egyes eseményindítók beépített támogatást biztosítanak a párhuzamosságok kezeléséhez:
 
-* **QueueTrigger**. Állítsa be `JobHostConfiguration.Queues.BatchSize` való `1`.
-* **ServiceBusTrigger**. Állítsa be `ServiceBusConfiguration.MessageOptions.MaxConcurrentCalls` való `1`.
-* **FileTrigger**. Állítsa be `FileProcessor.MaxDegreeOfParallelism` való `1`.
+* **QueueTrigger**. Állítsa a `JobHostConfiguration.Queues.BatchSize` értéket `1` értékre.
+* **ServiceBusTrigger**. Állítsa a `ServiceBusConfiguration.MessageOptions.MaxConcurrentCalls` értéket `1` értékre.
+* **FileTrigger**. Állítsa a `FileProcessor.MaxDegreeOfParallelism` értéket `1` értékre.
 
-Ezek a beállítások segítségével győződjön meg arról, hogy a függvény akkor fut, egypéldányosként egyetlen példányán. Győződjön meg arról, hogy a függvény csak egyetlen példánya fut, amikor a webalkalmazás elvégzi a horizontális felskálázást több példányra, egy figyelő szintű egyszeres zárolási alkalmazni a függvény (`[Singleton(Mode = SingletonMode.Listener)]`). Figyelő zárolások megszerzése a JobHost indításakor. Ha kiterjesztett három, minden példány egy időben indul el, csak egy példányt beszerzi a zárolást, és csak egy figyelő elindul.
+Ezekkel a beállításokkal biztosíthatja, hogy a függvény önállóként fusson egyetlen példányon. Annak biztosítása érdekében, hogy csak a függvény egyetlen példánya fusson, amikor a webalkalmazás több példányra is méretezhető, alkalmazza a figyelő szintű önálló zárolást a függvényre (`[Singleton(Mode = SingletonMode.Listener)]`). A JobHost indításakor a figyelő zárolásai is beszerezhetők. Ha három Felskálázási példány indul el egyszerre, csak az egyik példány szerzi be a zárolást, és csak egy figyelő indul el.
 
-### <a name="scope-values"></a>A hatókör értékei
+### <a name="scope-values"></a>Hatókör értékei
 
-Megadhat egy *hatókör-érték kifejezés* az Egypéldányos. Kifejezés értéke biztosítja, hogy egy adott hatókörnél a függvény az összes végrehajtás szerializálható lesz. Részletesebb zárolás ezzel a módszerrel a végrehajtási lehetővé teszik bizonyos szintű párhuzamosság a függvény által igényeinek más indítások szerializálásakor. Ha például az alábbi kódot, a hatókör-kifejezés van kötve a `Region` értéket a bejövő üzenet. A várólista régióban három üzeneteket tartalmaz, a keleti, a keleti és nyugati, illetve, ha az üzeneteket, amelyek tárolókonfigurációhoz futnak, keleti régió során nyugati fut párhuzamosan, a keleti régió rendelkező üzenet.
+Egy egypéldányos *hatókör-kifejezés/érték* is megadható. A kifejezés/érték biztosítja, hogy egy adott hatókörben lévő függvény összes végrehajtása szerializálva lesz. A részletesebb zárolás ily módon történő megvalósítása lehetővé teszi a függvény bizonyos szintű párhuzamosságát, miközben más, a követelmények által diktált meghívások szerializálására is képes. A következő kódban például a hatókör kifejezés a bejövő üzenet `Region` értékéhez kötődik. Ha a várólista három üzenetet tartalmaz a keleti, a keleti és a nyugati régiókban, akkor a keleti régióval rendelkező üzenetek sorosan futnak, miközben a West régióval párhuzamosan futtatott üzenet a Kelettel együtt fut.
 
 ```csharp
 [Singleton("{Region}")]
@@ -783,7 +784,7 @@ public class WorkItem
 
 ### <a name="singletonscopehost"></a>SingletonScope.Host
 
-Az alapértelmezett hatókör zárolásra `SingletonScope.Function`, ami azt jelenti, a zárolás hatóköre (a blob lease elérési út) van kötve a teljesen minősített függvény nevét. Zárolási funkciók között, adja meg a `SingletonScope.Host` és hatókör azonosító nevet, amelyet el ugyanaz az összes függvényt, amelyet szeretne egyszerre futtatni. A következő példában csak egy példányban `AddItem` vagy `RemoveItem` egyszerre fut:
+A zárolás alapértelmezett hatóköre @no__t – 0, ami azt jelenti, hogy a zárolási hatókör (a blob címbérleti útvonala) a teljes függvény nevéhez van kötve. A függvények közötti zároláshoz adja meg a `SingletonScope.Host` értéket, és használja a hatókör-azonosító nevét, amely az összes olyan függvénynél azonos, amelyet nem szeretne egyszerre futtatni. A következő példában a `AddItem` vagy `RemoveItem` egy példánya egyszerre fut:
 
 ```csharp
 [Singleton("ItemsLock", SingletonScope.Host)]
@@ -799,63 +800,63 @@ public static void RemoveItem([QueueTrigger("remove-item")] string message)
 }
 ```
 
-### <a name="viewing-lease-blobs"></a>Bérlet blobok megtekintése
+### <a name="viewing-lease-blobs"></a>Címbérleti Blobok megtekintése
 
-A WebJobs SDK-t használ [az Azure blob-bérletek](../storage/common/storage-concurrency.md#pessimistic-concurrency-for-blobs) elosztott zárolás megvalósításához a háttérben. A bérlet blobok egyszeres által használt található a `azure-webjobs-host` tárolót az a `AzureWebJobsStorage` storage-fiók "zárolását" útvonalon. Ha például a bérlet blob elérési útja az első `ProcessImage` korábban bemutatott példák lehetnek `locks/061851c758f04938a4426aa9ab3869c0/WebJobs.Functions.ProcessImage`. Összes elérési út tartalmazza a JobHost Azonosítót, ez megkülönbözteti a kis 061851c758f04938a4426aa9ab3869c0.
+A webjobs SDK az [Azure Blob bérleteit](../storage/common/storage-concurrency.md#pessimistic-concurrency-for-blobs) használja a borítók alatt az elosztott zárolás megvalósításához. Az Egypéldányos bérlet Blobok a (z) `AzureWebJobsStorage` Storage-fiókban található `azure-webjobs-host` tárolóban találhatók a "zárolások" elérési úton. Például az első `ProcessImage` példa címbérleti blobjának elérési útja `locks/061851c758f04938a4426aa9ab3869c0/WebJobs.Functions.ProcessImage` lehet. Az összes elérési út tartalmazza a JobHost AZONOSÍTÓját, ebben az esetben a 061851c758f04938a4426aa9ab3869c0.
 
-## <a name="async-functions"></a>Az aszinkron funkciók
+## <a name="async-functions"></a>Aszinkron függvények
 
-Az aszinkron kódfunkciók kapcsolatos információkért lásd: a [Azure Functions dokumentációját](../azure-functions/functions-dotnet-class-library.md#async).
+További információ az aszinkron függvények kódolásáról: [Azure functions dokumentáció](../azure-functions/functions-dotnet-class-library.md#async).
 
-## <a name="cancellation-tokens"></a>Megszakítási tokeneket
+## <a name="cancellation-tokens"></a>Visszavonási tokenek
 
-Hogyan kezelje a megszakítási tokeneket kapcsolatos információkért tekintse meg az Azure Functions dokumentációját [megszakítási tokeneket, és biztonságos leállításának](../azure-functions/functions-dotnet-class-library.md#cancellation-tokens).
+A lemondási tokenek kezelésével kapcsolatos információkért tekintse meg a [lemondási tokenek](../azure-functions/functions-dotnet-class-library.md#cancellation-tokens)Azure functions dokumentációját, valamint a zökkenőmentes leállítást.
 
 ## <a name="multiple-instances"></a>Több példány
 
-A webes alkalmazás több példánya fut, ha egy folyamatos webjobs-feladat figyeli a eseményindítók és a függvény hívása futtat minden egyes előfordulás esetén. A különböző eseményindító kötéseket úgy tervezték, hogy hatékonyan megoszthatja munkáját elősegítése érdekében,-példányok között, hogy a horizontális felskálázás több példányra lehetővé teszi további terhelés kezeléséhez.
+Ha a webalkalmazás több példányon fut, folyamatos Webjobs fut az egyes példányokon, és figyeli az eseményindítókat és hívja a függvényeket. A különféle trigger-kötések úgy vannak kialakítva, hogy hatékonyan megosszák egymással a különböző példányokat, így a több példányra történő horizontális felskálázás lehetővé teszi a nagyobb terhelés kezelését.
 
-Az üzenetsor és a blob-eseményindítók automatikusan megakadályozza, hogy a függvény egy üzenetsor-üzenet feldolgozása, vagy egynél többször; blob függvények nem rendelkezik, hogy idempotensek legyenek.
+Míg egyes eseményindítók kettős feldolgozást eredményezhetnek, a várólista-és blob-tároló-eseményindítók automatikusan megakadályozzák, hogy egy függvény egynél többször dolgozza fel a várólista-üzenetet vagy a blobot. További információ: az Azure Functions dokumentációban megjelenő [azonos adatbevitel megtervezése](../azure-functions/functions-idempotent.md) .
 
-Az időzítő eseményindító automatikusan biztosítja az időzítő fut, hogy csak egy példánya, így egy adott ütemezett időben futó több függvény példány nem kap.
+Az időzítő-trigger automatikusan biztosítja, hogy az időzítő csak egy példányban fusson, így egy adott ütemezett időpontban nem fog egynél több függvényt futtatni.
 
-Ha azt szeretné, hogy csak egy példánya, a függvény akkor fut, akkor is, ha a gazdagép webes alkalmazás több példánya, használja a [ `Singleton` ](#singleton-attribute) attribútum.
+Ha azt szeretné, hogy a függvény csak egy példánya fusson, akkor is, ha a gazda webalkalmazás több példánya van, használhatja a [`Singleton`](#singleton-attribute) attribútumot.
 
 ## <a name="filters"></a>Szűrők
 
-Függvény szűrők (előzetes verzió) teszik lehetővé a webjobs-feladatok végrehajtási folyamat saját logika a testre szabhatja. Szűrők hasonlóak [ASP.NET Core-szűrők](https://docs.microsoft.com/aspnet/core/mvc/controllers/filters). Azok a funkciók vagy osztályok alkalmazott deklaratív attribútumként valósítható meg. További információkért lásd: [függvény szűrők](https://github.com/Azure/azure-webjobs-sdk/wiki/Function-Filters).
+A függvények szűrői (előzetes verzió) lehetőséget biztosítanak a webjobs-végrehajtási folyamat saját logikával való testreszabására. A szűrők a [ASP.net Core szűrőkhöz](https://docs.microsoft.com/aspnet/core/mvc/controllers/filters)hasonlítanak. Ezeket a függvények vagy osztályok által alkalmazott deklaratív attribútumokként implementálhatja. További információ: [Function Filters](https://github.com/Azure/azure-webjobs-sdk/wiki/Function-Filters).
 
 ## <a name="logging-and-monitoring"></a>Naplózás és figyelés
 
-Azt javasoljuk, hogy a naplózási keretrendszer fejlesztett ASP.NET-hez. A [Ismerkedés](webjobs-sdk-get-started.md) a cikk bemutatja, hogyan kell használni. 
+Javasoljuk a ASP.NET fejlesztett naplózási keretrendszert. Az [első lépéseket](webjobs-sdk-get-started.md) ismertető cikk bemutatja, hogyan használhatja azt. 
 
-### <a name="log-filtering"></a>Napló szűrése
+### <a name="log-filtering"></a>Naplózási szűrés
 
-Minden naplót hoz létre egy `ILogger` példányhoz tartozik egy társított `Category` és `Level`. [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel) az enumerálás, és az egész kód azt jelzi, hogy relatív fontosságát:
+Minden `ILogger` példány által létrehozott naplóhoz társítva van egy `Category` és `Level`. a [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel) egy enumerálás, és az egész szám kód relatív fontosságot jelez:
 
 |LogLevel    |Kód|
 |------------|---|
-|Nyomkövetés       | 0 |
+|Híváslánc       | 0 |
 |Hibakeresés       | 1 |
-|Információ | 2 |
+|Information | 2 |
 |Figyelmeztetés     | 3 |
 |Hiba       | 4 |
 |Kritikus    | 5 |
-|None        | 6 |
+|Nincsenek        | 6 |
 
-Egymástól függetlenül szűrheti egy adott legördülőmenü [ `LogLevel` ](/dotnet/api/microsoft.extensions.logging.loglevel). Például előfordulhat, hogy szeretné az összes blob eseményindító feldolgozása azonban csak a naplófájlokban `Error` és minden más magasabb.
+Az egyes kategóriák egymástól függetlenül szűrhetők egy adott [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel)értékre. Előfordulhat például, hogy meg szeretné jeleníteni az összes naplót a blob-triggerek feldolgozásához, de csak `Error` és újabb értékre van szükség minden más számára.
 
-#### <a name="version-3x"></a>3. verziója. *x*
+#### <a name="version-3x"></a>3\. verzió. *x*
 
-3. verziója. *x* az SDK támaszkodik a .NET Core épített szűrést. A `LogCategories` osztály lehetővé teszi, hogy az egyes függvények, eseményindítók vagy felhasználók kategóriái határozhatók meg. Azt is meghatározza az adott gazdagép államok, szűrők például `Startup` és `Results`. Ez lehetővé teszi, hogy a naplózás kimeneti finomhangolásához. Ha nem talál egyezést a meghatározott kategóriákba belül, a szűrő visszavált a `Default` értékét, amikor eldönti, hogy az üzenet szűrésére.
+3\. verzió. Az SDK *x* -je a .net Core-ba épített szűrésre támaszkodik. A `LogCategories` osztály lehetővé teszi adott függvények, eseményindítók vagy felhasználók kategóriáinak definiálását. Emellett meghatározott gazdagépi állapotokhoz is definiál szűrőket, például `Startup` és `Results`. Ez lehetővé teszi a naplózási kimenet finomhangolását. Ha a megadott kategóriákban nem találhatók egyezések, a szűrő visszakerül a `Default` értékre, amikor eldönti, hogy szűrni kívánja-e az üzenetet.
 
-`LogCategories` szükséges a következő using utasítást:
+a `LogCategories` a következő using utasítást igényli:
 
 ```cs
 using Microsoft.Azure.WebJobs.Logging; 
 ```
 
-Az alábbi példa létrehoz egy működő szűrő, alapértelmezés szerint az összes napló, a `Warning` szintjét. A `Function` és `results` kategóriák (egyenértékű `Host.Results` a 2. verzióban. *x*) szűr a rendszer a `Error` szintjét. A szűrő hasonlítja össze az aktuális kategória az összes regisztrált szinteket a `LogCategories` példányra, és úgy dönt, a leghosszabb egyezést. Ez azt jelenti, hogy a `Debug` szint regisztrált `Host.Triggers` megegyezik `Host.Triggers.Queue` vagy `Host.Triggers.Blob`. Ez lehetővé teszi, hogy szabályozza a szélesebb körű kategóriák anélkül, hogy mindegyikhez adjon hozzá.
+Az alábbi példa egy olyan szűrőt állít össze, amely alapértelmezés szerint a `Warning` szinten lévő összes naplót szűri. A `Function` és a `results` kategória (amely egyenértékű a 2. verzióban `Host.Results` értékkel. *x*) a `Error` szinten vannak szűrve. A szűrő összehasonlítja az aktuális kategóriát a `LogCategories` példány összes regisztrált szintjével, és kiválasztja a leghosszabb egyezést. Ez azt jelenti, hogy a `Host.Triggers` számára regisztrált `Debug` szint megfelel `Host.Triggers.Queue` vagy `Host.Triggers.Blob` értéknek. Ez lehetővé teszi a szélesebb kategóriák szabályozását anélkül, hogy hozzá kellene adni egyet.
 
 ```cs
 static async Task Main(string[] args)
@@ -882,13 +883,13 @@ static async Task Main(string[] args)
 }
 ```
 
-#### <a name="version-2x"></a>2. verziója. *x*
+#### <a name="version-2x"></a>2\. verzió. *x*
 
-A 2. verzióban. *x* SDK, használja a `LogCategoryFilter` szabályozhatja a szűrés osztály. A `LogCategoryFilter` rendelkezik egy `Default` tulajdonság a kezdeti értékkel `Information`, azt jelenti, hogy olyan üzeneteket, a `Information`, `Warning`, `Error`, vagy `Critical` szintek jelentkezett, de a következő üzeneteket a `Debug` vagy `Trace` szintek azonnal vannak szűrve.
+A 2. verzióban. Az SDK *x* -je az `LogCategoryFilter` osztály használatával szabályozza a szűrést. A `LogCategoryFilter` egy `Default` tulajdonsággal rendelkezik, amely `Information` kezdeti értékkel rendelkezik, ami azt jelenti, hogy a `Information`, `Warning`, `Error` vagy `Critical` szinten lévő összes üzenet naplózva van, de a `Debug` vagy `Trace` szinten lévő üzeneteket a rendszer szűri.
 
-A `LogCategories` a 3-as verziójú. *x*, a `CategoryLevels` tulajdonság lehetővé teszi, hogy adja meg a naplózási szintjeivel a megjelölt kategóriákat úgy finomhangolhatja a naplózás kimenetét. Ha nem talál egyezést belül a `CategoryLevels` szótárban, a szűrő visszavált a `Default` értékét, amikor eldönti, hogy az üzenet szűrésére.
+A 3. verzióban @no__t – 0. *x*, a `CategoryLevels` tulajdonság lehetővé teszi, hogy meghatározott kategóriáknál adja meg a naplózási szinteket, így a naplózási kimenet finomhangolása is megadható. Ha a `CategoryLevels` szótárban nem talál egyezést, a szűrő visszakerül a `Default` értékre, amikor a rendszer eldönti, hogy szűrni kívánja-e az üzenetet.
 
-Az alábbi példa létrehoz egy szűrőt, amely alapértelmezés szerint minden naplókat, szűri a `Warning` szintjét. A `Function` és `Host.Results` kategóriák szűr a rendszer a `Error` szintjét. A `LogCategoryFilter` hasonlítja össze az aktuális kategória minden regisztrált `CategoryLevels` és úgy dönt, a leghosszabb egyezést. Ezért a `Debug` szint regisztrált `Host.Triggers` egyezni fog `Host.Triggers.Queue` vagy `Host.Triggers.Blob`. Ez lehetővé teszi, hogy szabályozza a szélesebb körű kategóriák anélkül, hogy mindegyikhez adjon hozzá.
+A következő példa egy szűrőt állít össze, amely alapértelmezés szerint a `Warning` szinten lévő összes naplót szűri. A `Function` és a `Host.Results` kategória a `Error` szinten van szűrve. A `LogCategoryFilter` összehasonlítja az aktuális kategóriát az összes regisztrált `CategoryLevels` értékkel, és kiválasztja a leghosszabb egyezést. Így a `Host.Triggers` számára regisztrált `Debug` szint megfelel `Host.Triggers.Queue` vagy `Host.Triggers.Blob` értéknek. Ez lehetővé teszi a szélesebb kategóriák szabályozását anélkül, hogy hozzá kellene adni egyet.
 
 ```csharp
 var filter = new LogCategoryFilter();
@@ -902,20 +903,20 @@ config.LoggerFactory = new LoggerFactory()
     .AddConsole(filter.Filter);
 ```
 
-### <a name="custom-telemetry-for-application-insights"></a>Egyéni telemetriát az Application Insights
+### <a name="custom-telemetry-for-application-insights"></a>Application Insights egyéni telemetria
 
-Az egyéni telemetriája megvalósításának folyamata [Application Insights](../azure-monitor/app/app-insights-overview.md) SDK verziójától függ. Az Application Insights konfigurálása kapcsolatban lásd: [Application Insights hozzáadása naplózási](webjobs-sdk-get-started.md#add-application-insights-logging).
+A [Application Insights](../azure-monitor/app/app-insights-overview.md) egyéni telemetria megvalósításának folyamata az SDK verziójától függ. A Application Insights konfigurálásának megismeréséhez tekintse meg [Application Insights naplózás hozzáadása](webjobs-sdk-get-started.md#add-application-insights-logging)című témakört.
 
-#### <a name="version-3x"></a>3. verziója. *x*
+#### <a name="version-3x"></a>3\. verzió. *x*
 
-Mivel a 3-as verziójú. *x* a WebJobs SDK a .NET Core, már nem nyújt általános gazdagépre, egy egyéni telemetriai adatokat előállító támaszkodik. De adhat hozzá egyéni telemetriát a folyamat függőségi beszúrást használatával. Ebben a szakaszban szereplő példák a szükséges `using` utasításokat:
+Mivel a 3. verzió. a webjobs SDK *x* -je a .net Core általános gazdagépre támaszkodik, és az egyéni telemetria-gyár már nincs megadva. A függőségi befecskendezés használatával azonban egyéni telemetria is hozzáadhat a folyamathoz. Az ebben a szakaszban szereplő példákhoz a következő `using` utasítások szükségesek:
 
 ```cs
 using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.ApplicationInsights.Channel;
 ```
 
-A következő egyéni végrehajtása [ `ITelemetryInitializer` ] vehet fel a saját [ `ITelemetry` ](/dotnet/api/microsoft.applicationinsights.channel.itelemetry) alapértelmezett [ `TelemetryConfiguration` ].
+A [`ITelemetryInitializer`] következő egyéni implementálása lehetővé teszi, hogy saját [`ITelemetry`](/dotnet/api/microsoft.applicationinsights.channel.itelemetry) értéket adjon hozzá az alapértelmezett [`TelemetryConfiguration`]értékhez.
 
 ```cs
 internal class CustomTelemetryInitializer : ITelemetryInitializer
@@ -927,7 +928,7 @@ internal class CustomTelemetryInitializer : ITelemetryInitializer
 }
 ```
 
-Hívás [ `ConfigureServices` ] a jelentéskészítőt az egyéni hozzáadása a [ `ITelemetryInitializer` ] folyamatra.
+Hívja meg a [`ConfigureServices`-] et a Builder-ben, hogy hozzáadja az egyéni [`ITelemetryInitializer`-] ot a folyamathoz.
 
 ```cs
 static void Main()
@@ -963,17 +964,17 @@ static void Main()
 }
 ```
 
-Ha a [ `TelemetryConfiguration` ] jön létre, az összes regisztrált típusú [ `ITelemetryInitializer` ] tartalmazza. További tudnivalókért lásd: [Application Insights API egyéni eseményekhez és a metrikák](../azure-monitor/app/api-custom-events-metrics.md).
+A [`TelemetryConfiguration`] kiépítésekor a rendszer a [`ITelemetryInitializer`] összes regisztrált típusát tartalmazza. További információ: [Application INSIGHTS API egyéni eseményekhez és mérőszámokhoz](../azure-monitor/app/api-custom-events-metrics.md).
 
-A 3-as verziójú. *x*, már nem rendelkezik kiüríteni a [ `TelemetryClient` ] amikor a gazdagép leáll. A .NET Core függőségi injektálási rendszer automatikusan elveti, a regisztrált `ApplicationInsightsLoggerProvider`, mely kiürítéseinek száma a [ `TelemetryClient` ].
+A 3. verzióban. *x*, már nem kell kiürítenie a [`TelemetryClient`] , ha a gazdagép leáll. A .NET Core függőségi befecskendező rendszer automatikusan elvégzi a regisztrált `ApplicationInsightsLoggerProvider`, amely kiüríti a [`TelemetryClient`]értéket.
 
-#### <a name="version-2x"></a>2. verziója. *x*
+#### <a name="version-2x"></a>2\. verzió. *x*
 
-A 2. verzióban. *x*, a [ `TelemetryClient` ] belsőleg az Application Insights-szolgáltató által létrehozott a WebJobs SDK-t használ a [ `ServerTelemetryChannel` ](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/ServerTelemetryChannel/ServerTelemetryChannel.cs). Az Application Insights-végpont esetén nem érhető el, vagy a sávszélesség-szabályozási bejövő kérelmek, ez a csatorna [kérelmek menti a webalkalmazás-fájlrendszer, és később újra elküldi](https://apmtips.com/blog/2015/09/03/more-telemetry-channels).
+A 2. verzióban. *x*, a Webjobs SDK Application Insights-szolgáltatója által belsőleg létrehozott [`TelemetryClient`] [`ServerTelemetryChannel`](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/ServerTelemetryChannel/ServerTelemetryChannel.cs). Ha a Application Insights végpont nem érhető el, vagy a bejövő kérelmek szabályozása folyamatban van, a csatorna [a webalkalmazás fájlrendszerében menti a kérelmeket, és később újra elküldi őket](https://apmtips.com/blog/2015/09/03/more-telemetry-channels).
 
-A [ `TelemetryClient` ] jön létre, amely megvalósítja az osztályok által `ITelemetryClientFactory`. Ez az alapértelmezés szerint a [ `DefaultTelemetryClientFactory` ](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/DefaultTelemetryClientFactory.cs).
+A [`TelemetryClient`-] et egy `ITelemetryClientFactory` implementációs osztály hozza létre. Alapértelmezés szerint ez a [`DefaultTelemetryClientFactory`](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/DefaultTelemetryClientFactory.cs).
 
-Ha szeretné módosítani az Application Insights folyamat bármely része, megadhatja a saját `ITelemetryClientFactory`, és a gazdagép létrehozására fogja használni az osztály egy [ `TelemetryClient` ]. Például ez a kód felülírja `DefaultTelemetryClientFactory` egy tulajdonságának módosítása `ServerTelemetryChannel`:
+Ha módosítani szeretné a Application Insights folyamat bármely részét, megadhatja a saját `ITelemetryClientFactory` értéket, és a gazdagép az osztályt fogja használni a [`TelemetryClient`]létrehozásához. Ez a kód például felülbírálja a `DefaultTelemetryClientFactory` értéket `ServerTelemetryChannel` tulajdonságának módosításához:
 
 ```csharp
 private class CustomTelemetryClientFactory : DefaultTelemetryClientFactory
@@ -995,9 +996,9 @@ private class CustomTelemetryClientFactory : DefaultTelemetryClientFactory
 }
 ```
 
-A `SamplingPercentageEstimatorSettings` objektum konfigurálja [adaptív mintavételezés](https://docs.microsoft.com/azure/application-insights/app-insights-sampling). Ez azt jelenti, hogy bizonyos nagy mennyiségű helyzetekben Applications Insights elküldi a kiválasztott részhalmazát telemetriai adatokat a kiszolgáló.
+A `SamplingPercentageEstimatorSettings` objektum [adaptív mintavételezést](https://docs.microsoft.com/azure/application-insights/app-insights-sampling)konfigurál. Ez azt jelenti, hogy bizonyos nagy mennyiségű forgatókönyvekben az alkalmazás-elemzések a telemetria-adatok kiválasztott részhalmazát küldi el a kiszolgálónak.
 
-Miután létrehozta a telemetriai adatokat feldolgozó, adja át azt az Application Insights-naplózás szolgáltatóhoz:
+A telemetria-előállító létrehozása után átadja azt a Application Insights naplózási szolgáltatónak:
 
 ```csharp
 var clientFactory = new CustomTelemetryClientFactory(instrumentationKey, filter.Filter);
@@ -1008,7 +1009,7 @@ config.LoggerFactory = new LoggerFactory()
 
 ## <a id="nextsteps"></a> Következő lépések
 
-Ebben a cikkben nyújtott kódrészletek azt mutatják be, hogyan legyen kezelve a gyakori forgatókönyvek és a WebJobs SDK együttes használata. Teljes minta, lásd: [azure-webjobs-sdk-minták](https://github.com/Azure/azure-webjobs-sdk-samples).
+Ez a cikk kódrészleteket adott meg, amelyek bemutatják, hogyan kezelheti a webjobs SDK-val való használat gyakori forgatókönyveit. A teljes mintákat lásd: [Azure-webjobs-SDK-Samples](https://github.com/Azure/azure-webjobs-sdk/tree/dev/sample/SampleHost).
 
 [`ExecutionContext`]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Core/ExecutionContext.cs
 [`TelemetryClient`]: /dotnet/api/microsoft.applicationinsights.telemetryclient

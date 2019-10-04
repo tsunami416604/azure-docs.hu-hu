@@ -1,25 +1,18 @@
 ---
-title: Az Azure Cloud Partner Portal Tour |} A Microsoft Docs
-description: .
+title: Azure Cloud Partner Portal Tour | Azure Marketplace
+description: Az Azure Marketplace-en a Cloud Partner portálra a felhasználói élmény áttekintése.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/08/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 01b93a667fef8c56d6b7c78e8c6346357a2ff36c
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.author: pabutler
+ms.openlocfilehash: b0bf7af9b81025202c2fffa2a264982c9986e10b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52266941"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64943385"
 ---
 # <a name="cloud-partner-portal-tour"></a>Cloud Partner Portal bemutatása
 

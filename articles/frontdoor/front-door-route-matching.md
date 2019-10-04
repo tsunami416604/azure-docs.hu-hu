@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: eec99bde0ea73a99a9dc1345f938b821a95a7c05
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58111837"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60736283"
 ---
 # <a name="how-front-door-matches-requests-to-a-routing-rule"></a>Kérelem-útválasztási szabály bejárati ajtajának illeszkedése
 
@@ -48,7 +48,7 @@ Előtérbeli gazdagépek egyeztetéséhez, amikor a logikai használjuk, az alá
 
 Ez a folyamat további magyarázat: a nézzünk egy példa konfiguráció látható bejárati ajtajának útvonalak (csak a bal oldalon):
 
-| Útválasztási szabály | Előtérbeli gazdagépek | Útvonal |
+| Útválasztási szabály | Előtér-gazdagépek | Útvonal |
 |-------|--------------------|-------|
 | A | foo.contoso.com | /\* |
 | B | foo.contoso.com | /Users/\* |
@@ -60,11 +60,11 @@ A következő bejövő kérelmek bejárati ajtajának lettek küldve, ha azok eg
 |---------------------|---------------|
 | foo.contoso.com | A, B |
 | www\.fabrikam.com | C |
-| images.fabrikam.com | 400. hiba: Hibás kérelem |
+| images.fabrikam.com | 400\. hiba: Hibás kérelem |
 | foo.adventure-works.com | C |
-| contoso.com | 400. hiba: Hibás kérelem |
-| www\.adventure-works.com | 400. hiba: Hibás kérelem |
-| www\.northwindtraders.com | 400. hiba: Hibás kérelem |
+| contoso.com | 400\. hiba: Hibás kérelem |
+| www\.adventure-works.com | 400\. hiba: Hibás kérelem |
+| www\.northwindtraders.com | 400\. hiba: Hibás kérelem |
 
 ### <a name="path-matching"></a>A megfelelő elérési útja
 Az adott előtérbeli állomás meghatározása és a lehetséges útválasztási szabályok csak az üzemeltető előtér-útvonalakat a szűrés után bejárati ajtajának majd az útválasztási szabályokat a kérelem elérési útja alapján szűri. Egy hasonló logika előtérbeli gazdagépként használjuk:
@@ -78,7 +78,7 @@ Az adott előtérbeli állomás meghatározása és a lehetséges útválasztás
 
 További magyarázat: a nézzünk egy másik hárompéldányos készletet példák:
 
-| Útválasztási szabály | Előtérbeli gazdagép    | Útvonal     |
+| Útválasztási szabály | Előtér-gazdagép    | Útvonal     |
 |-------|---------|----------|
 | A     | www\.contoso.com | /        |
 | B     | www\.contoso.com | /\*      |
@@ -120,7 +120,7 @@ A következő példa egyező tábla eredményezi, hogy a konfigurációban:
 >
 > | Bejövő kérelem       | Egyeztetett útvonal |
 > |------------------------|---------------|
-> | profile.domain.com/other | Nincs. 400. hiba: Hibás kérelem |
+> | profile.domain.com/other | Nincs. 400\. hiba: Hibás kérelem |
 
 ### <a name="routing-decision"></a>Útválasztási döntés
 Miután már összevetettük a bejárati ajtajának egyetlen útválasztási szabályt, majd válassza ki a kérés feldolgozása kell. Ha az egyeztetett útválasztási szabály bejárati ajtajának rendelkezik elérhető gyorsítótárazott válasz majd azonos lekérdezi szolgálja ki, az ügyfélnek. Ellenkező esetben a következő lépés, lekérdezi kiértékelése, hogy konfigurálta [URL-újraíró (egyéni, továbbító elérési út)](front-door-url-rewrite.md) az egyező útválasztás szabály vagy sem. Ha nincs definiált egyéni, továbbító elérési utat, majd továbbítja a kérést lekérdezi a konfigurált háttérkészletben, mert a megfelelő háttérrendszerre. Más esetben a kérelem elérési útját megfelelően frissül a [egyéni továbbítási útvonal](front-door-url-rewrite.md) meghatározott és majd továbbítsa a háttérrendszerhez.

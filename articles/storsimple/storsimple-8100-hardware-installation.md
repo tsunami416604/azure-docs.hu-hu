@@ -1,6 +1,6 @@
 ---
-title: Telepítse a Microsoft Azure StorSimple 8100 sorozatú eszköz |} A Microsoft Docs
-description: Ismerteti, hogyan lehet kicsomagolása, állványra és a StorSimple 8100 sorozatú eszköz kábelezése üzembe helyezése és a szoftver konfigurálása előtt.
+title: Microsoft Azure StorSimple 8100-eszköz telepítése | Microsoft Docs
+description: Útmutató a StorSimple 8100-eszköz kicsomagolásához, rack csatlakoztatásához és kábelhez a szoftver telepítése és konfigurálása előtt.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,238 +14,241 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 5fbc407a9792d033037fdaa2b14f4055d94c15ab
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 0b2301c1c9b846e2ea005f049c5aadb3d4634a81
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38701942"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68963584"
 ---
-# <a name="unpack-rack-mount-and-cable-your-storsimple-8100-device"></a>Kicsomagolása, állványra csatlakoztatást és a StorSimple 8100 sorozatú eszköz kábelezése
+# <a name="unpack-rack-mount-and-cable-your-storsimple-8100-device"></a>A StorSimple 8100-eszköz kicsomagolása, rack-csatlakoztatása és kábele
+
+[!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
+
 ## <a name="overview"></a>Áttekintés
-A Microsoft Azure StorSimple 8100 egy egyetlen lemezház, állványra szerelt eszköz. Ez az oktatóanyag azt ismerteti, hogyan kicsomagolása, állványra-szerelheti és kábellel StorSimple 8100-as eszköz hardverének beállítása és a StorSimple eszköz üzembe helyezése előtt.
+A Microsoft Azure StorSimple 8100 egyetlen ház, állványra csatlakoztatott eszköz. Ez az oktatóanyag azt ismerteti, hogyan lehet a StorSimple-eszköz konfigurálása és telepítése előtt kicsomagolni, állványra csatlakoztatni és csatlakoztatni a StorSimple 8100 eszköz hardverét.
 
-## <a name="unpack-your-storsimple-8100-device"></a>A StorSimple 8100 sorozatú eszköz kicsomagolása
-Az alábbi lépéseket a StorSimple 8100 tárolóeszköz kicsomagolása egyértelmű, részletes utasításokat biztosítanak. Ez az eszköz egyetlen lista tartalmazza a szükséges.
+## <a name="unpack-your-storsimple-8100-device"></a>A StorSimple 8100-eszköz kicsomagolása
+Az alábbi lépések részletesen ismertetik a StorSimple 8100 Storage-eszköz kicsomagolásának módját. Az eszköz egyetlen dobozban érkezik.
 
-### <a name="prepare-to-unpack-your-device"></a>Csomagolja ki az eszköz előkészítése
-Mielőtt, az eszköz kicsomagolása, tekintse át a következő információkat.
+### <a name="prepare-to-unpack-your-device"></a>Felkészülés az eszköz kicsomagolására
+Az eszköz kicsomagolása előtt tekintse át a következő információkat.
 
-![Figyelmeztetés ikon](./media/storsimple-safety/IC740879.png)![nagy súly ikon](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) **figyelmeztetés!**
+![Figyelmeztetés ikon](./media/storsimple-safety/IC740879.png)![nagy súly ikon](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) **Figyelmeztetés!**
 
-1. Győződjön meg arról, hogy a két személynek a ház súlyát kezelhető, ha manuálisan is kezel. Egy teljes körűen konfigurált ház legfeljebb 32 kg (70 lbs.) is mérjük.
-2. Helyezze el a box egy egybesimított, szolgáltatásiszint-felületen.
+1. Győződjön meg arról, hogy két személy áll rendelkezésre a ház súlyának kezeléséhez, ha manuálisan végzi a kezelést. Egy teljesen konfigurált ház súlya 32 kg (70 lbs) lehet.
+2. Helyezze a csomagot egy sima, vízszintes felületre.
 
-Ezután kövesse az alábbi lépéseket az eszköz kicsomagolása.
+Ezután végezze el az alábbi lépéseket az eszköz kicsomagolásához.
 
 #### <a name="to-unpack-your-device"></a>Az eszköz kicsomagolása
-1. Vizsgálja meg a box és a csomagolási habgumiból készült crushes, darabok, víz sérülés vagy bármely más nyilvánvaló sérülések. Ha a lista vagy a csomagolási súlyosan sérült, nem a megnyitása. Adjon [forduljon a Microsoft Support](storsimple-8000-contact-microsoft-support.md) segítséget ellenőrzéséhez, hogy az eszköz működőképes állapotban van.
-2. Csomagolja ki a mezőbe. Az alábbi képen a StorSimple-eszköz a kicsomagolt nézetét mutatja be.
+1. Vizsgálja meg a dobozt és a térkitöltő anyagot, hogy nincsenek-e rajta ütődés, vágás, nedvesség vagy más egyértelmű sérülés nyomai. Ha a csomagon jelentős sérülések láthatók, ne nyissa ki. Vegye [fel a kapcsolatot a Microsoft ügyfélszolgálata](storsimple-8000-contact-microsoft-support.md) segítségével, és mérje fel, hogy az eszköz megfelelően működik-e.
+2. Bontsa ki a dobozt. Az alábbi képen a StorSimple-eszköz kicsomagolt nézete látható.
    
-     ![Csomagolja ki a tárolóeszköz](./media/storsimple-8100-hardware-installation/HCSUnpackyour2Udevice.png)
+     ![A tárolóeszköz kicsomagolása](./media/storsimple-8100-hardware-installation/HCSUnpackyour2Udevice.png)
    
     **A tárolóeszköz kicsomagolt nézete**
    
    | Címke | Leírás |
    | --- | --- |
-   |   1 |Balí se mezőbe |
-   |   2 |Alsó habgumiból készült |
+   |   1 |Csomagolási mező |
+   |   2 |Alsó hab |
    |   3 |Eszköz |
-   |   4 |Felső habgumiból készült |
-   |   5 |Kiegészítő mezőben |
-3. Után kicsomagolása, a box, győződjön meg arról, hogy:
+   |   4 |Felső hab |
+   |   5 |Kiegészítő mező |
+3. A csomag felbontása után ellenőrizze, hogy megvannak-e a következők:
    
-   * egyetlen lemezház 1 eszköz
-   * 2 tápkábelek
-   * 1 fordított Ethernet-kábelek
-   * 2 soros kábelt
-   * a soros hozzáféréshez 1 sorozat – USB-átalakító
-   * 1 hamisíthatatlan T10 csavarhúzóra
-   * 4 QSFP-az-SFP + adapter 10 GbE hálózati adapterek való használatra
-   * 1. állvány-csatlakoztatási kit (2 ügyféloldali rails rendelkező csatlakoztatásával hardver)
-   * Első lépések a dokumentáció
+   * 1 egyetlen bekerítés eszköz
+   * 2 tápkábel
+   * 1 crossover Ethernet-kábel
+   * 2 soros konzolos kábelek
+   * 1 soros USB-átalakító a soros hozzáféréshez
+   * 1 illetéktelen hozzáférést igazoló T10 csavarhúzó
+   * 4 QSFP-to-SFP + adapterek 10 GbE hálózati adapterrel való használatra
+   * 1 rack-Mount csomag (2 oldalsó sín csatlakoztatási hardverrel)
+   * Első lépések dokumentáció
      
-     Ha Ön nem kapott az elemek a fent felsorolt [forduljon a Microsoft Support](storsimple-8000-contact-microsoft-support.md).
+     Ha nem kapta meg a fent felsorolt elemek egyikét sem, [forduljon](storsimple-8000-contact-microsoft-support.md)a Microsoft ügyfélszolgálatahoz.
 
-A következő lépés, hogy az eszköz állvány-csatlakoztatási.
+A következő lépés az eszköz állványra szerelése.
 
-## <a name="rack-mount-your-storsimple-8100-device"></a>A StorSimple 8100 sorozatú eszköz állvány-csatlakoztatás
-A következő lépésekkel telepítse a StorSimple 8100 tárolóeszköz, az első és hátsó bejegyzések standard 19 hüvelyk állvány. A StorSimple 8100 sorozatú eszköz rendelkezik egy önálló elsődleges ház.
+## <a name="rack-mount-your-storsimple-8100-device"></a>StorSimple 8100-eszköz csatlakoztatása
+A következő lépésekkel telepítheti a StorSimple 8100 tárolóeszközt standard 19 hüvelykes, elölről és hátulról származó bejegyzésekből álló állványra. A StorSimple 8100-eszköz egyetlen elsődleges bekerítéssel rendelkezik.
 
-A telepítés több lépést tárgyalt, amelyek a következő eljárások áll.
+A telepítés több lépésből áll, amelyek mindegyikét a következő eljárásokban tárgyaljuk.
 
 > [!IMPORTANT]
-> A StorSimple-eszközök kell lennie az állványra szerelt megfelelő működéséhez.
+> A StorSimple-eszközöknek rack-csatlakoztatással kell rendelkezniük a megfelelő működéshez.
 > 
 > 
 
 ### <a name="prepare-the-site"></a>A hely előkészítése
-Az eszköz egy standard szintű 19 hüvelyk állványra, amely rendelkezik az első és hátsó bejegyzések is telepíteni kell. A következő eljárással rack telepítés előkészítéséhez.
+Az eszközt olyan standard 19 hüvelykes állványra kell telepíteni, amely elöl és hátul is van. A következő eljárással készítheti elő az állvány telepítését.
 
-#### <a name="to-prepare-the-site-for-rack-installation"></a>A hely állvány telepítés előkészítéséhez
-1. Győződjön meg arról, hogy az eszköz biztonságos alapja a strukturálatlan, stabil és szintű munkahelyi surface (vagy hasonlót).
-2. Ellenőrizze, hogy a hely, ahol szeretne beállítani rendelkezik-e a szabványos hálózati áramellátás Visszaállt egy független forrás vagy egy állvány power terjesztési egység (PDU) szünetmentes tápegység (UPS).
-3. Győződjön meg arról, hogy egy 2U tárolóhely érhető el az állványra szerelt, amelyben szeretné az eszköz csatlakoztatása.
+#### <a name="to-prepare-the-site-for-rack-installation"></a>A hely előkészítése a rack telepítéséhez
+1. Győződjön meg arról, hogy az eszköz egy sima, stabil és vízszintes munkafelületen (vagy ahhoz hasonlón) helyezkedik el.
+2. Győződjön meg arról, hogy a hely, ahol be kívánja állítani a standard szintű AC-áramellátást egy független forrásból vagy egy, a szünetmentes áramforrást (UPS-t) biztosító Power Distribution Unit (PDU) szolgáltatásból.
+3. Győződjön meg arról, hogy az állványon egy 2U-tárolóhely áll rendelkezésre, amelyhez csatlakoztatni kívánja az eszközt.
 
-![Figyelmeztetés ikon](./media/storsimple-safety/IC740879.png)![nagy súly ikon](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) **figyelmeztetés!**
+![Figyelmeztetés ikon](./media/storsimple-safety/IC740879.png)![nagy súly ikon](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) **Figyelmeztetés!**
 
-Győződjön meg arról, hogy a két személynek a súly kezelése, ha azt manuálisan kezelik az eszköz beállítása rendelkezésre. Egy teljes körűen konfigurált ház legfeljebb 32 kg (70 lbs.) is mérjük.
+Ügyeljen arra, hogy a súlyozás kezeléséhez két személy legyen elérhető, ha az eszköz telepítését manuálisan végzi. Egy teljesen konfigurált ház súlya 32 kg (70 lbs) lehet.
 
-### <a name="rack-prerequisites"></a>Állványra előfeltételei
-A 8100-as ház készült egy standard szintű 19 hüvelyk állványra a kabinet telepítését:
+### <a name="rack-prerequisites"></a>A rack előfeltételei
+Az 8100-es ház a következőhöz készült standard 19 hüvelykes rack szekrényben telepíthető:
 
-* A bejegyzés a post rack 27.84 hüvelyk minimális mélységét.
-* Az eszköz 32 kg legnagyobb súlyú
-* 5 Pascal (0,5 mm víz mérőműszer) maximális vissza nyomás.
+* A beosztás utáni, a post értékre 27,84 cm-es minimális mélység.
+* Az eszköz maximális 32 kg-os súlya
+* Maximális ellennyomás 5 Pascal (0,5 mm vízmérőműszer).
 
-### <a name="rack-mounting-rail-kit"></a>Állvány csatlakoztatást sín csomag
-Csatlakoztatási rails készlete áll rendelkezésre a 19 hüvelyk rack kabinet való használatra. A rails teszteltük maximális ház súlyát kezelni. Ezek a rails lehetővé teszi több ház belül az állványra szerelt terület adatveszteség nélküli telepítését.
+### <a name="rack-mounting-rail-kit"></a>Állványra szerelhető vasúti készlet
+A 19 hüvelykes rack kabinet használva a csatlakoztatási sínek készlete is elérhető. A sínek tesztelték a maximális bekerítési súlyt. Ezek a sínek lehetővé teszik több ház telepítését anélkül, hogy helyet szabadítanak fel az állványon belül.
 
-#### <a name="to-install-the-device-on-the-rails"></a>A rails az eszköz telepítése
-1. Hajtsa végre ezt a lépést, csak akkor, ha a belső rails nincsenek telepítve az eszközön. A belső rails általában gyári vannak telepítve. Rails nem települnek, ha ezután telepítse a bal oldali-sín és jobb-sín diák a ház váz oldalát. Ezek csatolás a hat metrika csavart használatával minden oldalán. Annak érdekében, a tájolás, a sín diák vannak megjelölve **LH – első** és **RH – első**, és érdekében, hogy a ház hátulról dobozának kúpos rendelkezik.<br/>
+#### <a name="to-install-the-device-on-the-rails"></a>Az eszköz telepítése a Rails-re
+1. Ezt a lépést csak akkor hajtsa végre, ha a belső sínek nincsenek telepítve az eszközön. A belső sínek jellemzően a gyárban települnek. Ha a Rails nincs telepítve, akkor telepítse a bal oldali és a jobb oldali vasúti diát a ház vázájának oldalaira. Mindkét oldalon hat metrikus csavart használnak. A tájolással kapcsolatos segítség érdekében a vasúti diaképek az **LH – eleje** és az **RH – elöl**vannak megjelölve, a ház hátulján elhelyezett végpont pedig kúpos végű.<br/>
    
-    ![Sín diák ház váz csatolása](./media/storsimple-8100-hardware-installation/HCSAttachingRailSlidestoEnclosureChassis.png)
+    ![Vasúti adatkockák csatlakoztatása a ház vázához](./media/storsimple-8100-hardware-installation/HCSAttachingRailSlidestoEnclosureChassis.png)
 
-    **A partnerek a ház belső sín diák csatolása**
+    **Belső vasúti diaképek csatlakoztatása a ház oldalaihoz**
    
     Címke | Leírás
     ----- | -----------
-    1     | 3 x 4 millió csavart gomb-fő
-    2     | Váz diák
+    1     | M 3x4 gomb – Head csavarok
+    2     | Alváz-diák
 
-2. A bal oldali külső sín és a külső megfelelő sín szerelvények csatolása az állvány kabinet függőleges tagok. A szögletes zárójelek lesznek megjelölve **LH**, **RH**, és **ezt oldal fel** végigvezeti a megfelelő tájolását.
-3. Keresse meg az sín PIN-kód, az első és hátsó sín sestavení. A sín illeszkedjen az állvány-bejegyzések között, és a PIN-kód beillesztése az első és hátsó állvány post függőleges tag lyuk kiterjesztése. Győződjön meg arról, hogy a sín szerelvény szintjét.
-4. A megadott metrika csavart közül kettő az védheti sín sestavení do az állványra szerelt függőleges tagok. Az előtér és a egy hátsó egy csavart használja.
-5. Ismételje meg ezeket a lépéseket más sín sestavení.<br/>
+2. A külső bal oldali sín és a külső jobb oldali vasút szerelvényeit csatlakoztassa a rack kabinet függőleges tagjaihoz. A szögletes zárójelek az **LH**, az **RH**, és **Ez az oldal felfelé** mutatnak a megfelelő tájolási útmutatóban.
+3. Keresse meg a sín csapjait a sínszerelvény elülső és hátsó végénél. Kiterjesztheti a vasútot úgy, hogy illeszkedjen a rack-bejegyzések között, és beszúrja a PIN-kód behelyezését az első és a hátsó állványba a függőleges tag Győződjön meg arról, hogy a vasúti szerelvény szintje.
+4. A megadott metrikai csavarok közül kettővel biztonságossá teheti a vasúti szerelvényt az állvány függőleges tagjai számára. Használjon egy csavart az elülső és egy hátsó oldalon.
+5. Ismételje meg ezeket a lépéseket a másik vasúti szerelvény esetében.<br/>
    
-     ![Sín diák kabinet rack csatolása](./media/storsimple-8100-hardware-installation/HCSAttachingRailSlidestoRackCabinet.png)
+     ![Vasúti diaképek összekapcsolása rack szekrénysel](./media/storsimple-8100-hardware-installation/HCSAttachingRailSlidestoRackCabinet.png)
    
-    **Az állványra szerelt külső sín szerelvények csatolása**
+    **Külső sín szerelvények csatlakoztatása a rackhez**
    
    | Címke | Leírás |
    | --- | --- |
-   |   1 |Csavart korlátozását. |
-   |   2 |Szögletes lyuk első rack post csavart |
-   |   3 |Bal oldali sín első helyen PIN-kódok |
-   |   4 |Csavart korlátozását. |
-   |   5 |Bal oldali sín hátsó hely PIN-kódok |
+   |   1 |Befogó csavar |
+   |   2 |Szögletes furatos elülső állvány utáni csavar |
+   |   3 |Bal oldali sín elülső helye PIN-kód |
+   |   4 |Befogó csavar |
+   |   5 |Bal oldali sín – hátsó hely PIN-kód |
 
-### <a name="mounting-the-device-in-the-rack"></a>Csatlakoztassa az eszközt, az állvány egyik kiszolgálója
-Az imént telepített rack rails használja, hajtsa végre az alábbi lépések végrehajtásával csatlakoztassa az eszközt, az állvány egyik kiszolgálója.
+### <a name="mounting-the-device-in-the-rack"></a>Az eszköz csatlakoztatása a rackben
+Az imént telepített rack Rails használatával hajtsa végre az alábbi lépéseket az eszköz állványra csatlakoztatásához.
 
 #### <a name="to-mount-the-device"></a>Az eszköz csatlakoztatása
-1. Az asszisztens a ház lift- and, az állvány rails igazodva.
-2. Gondosan helyezze az eszközt a rails, és majd leküldése az eszköz teljes mértékben az állványra szerelt kabinetfájl.<br/>
+1. Egy asszisztenssel emelje fel a bekerítést, és igazítsa a rack railshoz.
+2. Óvatosan helyezze be az eszközt a railsba, majd az eszközt teljes egészében küldje el a rack-szekrénybe.<br/>
    
-    ![Eszköz Beszúrás, az állvány egyik kiszolgálója](./media/storsimple-8100-hardware-installation/HCSInsertingDeviceintheRack.png)
+    ![Eszköz beszúrása a rackbe](./media/storsimple-8100-hardware-installation/HCSInsertingDeviceintheRack.png)
    
-    **Csatlakoztassa az eszközt, az állvány egyik kiszolgálója**
-3. Távolítsa el a bal és jobb első nyomkarima caps ingyenes caps kiindulásként. A nyomkarima caps egyszerűen alakzatot fekszenek beépülő modul.
-4. A ház, az állvány egyik kiszolgálója biztonságos egy megadott Phillips – fő csavart keresztül minden egyes nyomkarima bal és jobb telepítésével.
-5. Telepítse a nyomkarima caps lenyomásával őket egy helyen, és helyben illesztésének őket.<br/>
+    **Az eszköz csatlakoztatása a rackben**
+3. Távolítsa el a bal és a jobb oldali véglapos sapkát a Caps ingyenes kihúzásával. A véglapos sapkák egyszerűen a karimák felületére illeszkednek.
+4. Gondoskodjon róla, hogy a szekrényben egy megadott Phillips-fej csavart telepítsen az egyes karimák, balra és jobbra.
+5. A karima-sapkákat úgy telepítheti, hogy megnyomja őket a helyükre, és a helyükre pattintja őket.<br/>
    
-     ![Nyomkarima caps telepítése](./media/storsimple-8100-hardware-installation/HCSInstallingFlangeCaps.png)
+     ![A karima-sapkák telepítése](./media/storsimple-8100-hardware-installation/HCSInstallingFlangeCaps.png)
    
-    **A nyomkarima caps telepítése**
+    **A karima-sapkák telepítése**
    
    | Címke | Leírás |
    | --- | --- |
-   |   1 |A lemezház rögzítési csavart |
+   |   1 |Rögzítési csavar |
 
-A következő lépés, hogy bekábelezése, hálózati és a soros hozzáféréshez.
+A következő lépés az eszköz csatlakoztatása az áramellátáshoz, a hálózathoz és a soros eléréshez.
 
-## <a name="cable-your-storsimple-8100-device"></a>A StorSimple 8100 sorozatú eszköz kábelezése
-A következő eljárások azt ismertetik, hogyan, hálózati és a soros kapcsolat a StorSimple 8100 sorozatú eszköz kábelezése.
+## <a name="cable-your-storsimple-8100-device"></a>A StorSimple 8100-eszköz csatlakoztatása
+Az alábbi eljárások azt ismertetik, hogyan lehet a StorSimple 8100-eszközt a Power, a Network és a soros kapcsolatok számára összekapcsolni.
 
 ### <a name="prerequisites"></a>Előfeltételek
-Az eszköz a kábelezést elkezdéséhez lesz szüksége:
+Az eszköz kábelezésének megkezdéséhez az alábbiakra lesz szüksége:
 
-* A tárolóeszköz teljesen kicsomagolása és állványra szerelt.
-* az eszköz használati utasításának megfelelően 2 kábelek
-* A hozzáférést a (javasolt) 2 Áramelosztó egységek.
-* Hálózati kábeleket
-* A megadott soros kábelt
-* Soros, USB átalakító a megfelelő illesztőprogram telepítve a számítógépen (ha szükséges)
-* A megadott 4 QSFP-az-SFP + adapter 10 GbE hálózati adapterek való használatra
-* [A StorSimple eszköz 10 GbE hálózati adapterek támogatott hardver](storsimple-supported-hardware-for-10-gbe-network-interfaces.md)
+* A tárolóeszköz, amely teljesen ki van csomagolva és rackben csatlakoztatva van.
+* 2 az eszközzel ellátott hálózati kábelek
+* Hozzáférés 2 hálózati elosztási egységhez (ajánlott).
+* Hálózati kábelek
+* Megadott soros kábelek
+* Soros USB-átalakító a számítógépen telepített megfelelő illesztőprogrammal (ha szükséges)
+* 4 QSFP-to-SFP + adapterek biztosítva 10 GbE hálózati adapterrel való használatra
+* [A StorSimple-eszköz 10 GbE hálózati adapterének támogatott hardverei](storsimple-supported-hardware-for-10-gbe-network-interfaces.md)
 
-### <a name="power-cabling"></a>Energiagazdálkodási kábelezése
-Az eszköz redundáns energiagazdálkodási és hűtéssel modulok (PCMs) tartalmaz. Mindkét PCMs telepítve legyen, és csatlakozik a különböző áramforrásokhoz magas rendelkezésre állás biztosítása érdekében.
+### <a name="power-cabling"></a>Energiaellátási kábelek
+Az eszköz redundáns energiaellátási és hűtési modulokat (PCMs) tartalmaz. A magas rendelkezésre állás biztosítása érdekében mindkét PCMs telepíteni és csatlakoztatni kell a különböző áramforrásokhoz.
 
-A következő lépésekkel bekábelezése teljesítményhez.
+A következő lépések végrehajtásával csatlakoztassa az eszközt a powerhez.
 
 [!INCLUDE [storsimple-cable-8100-for-power](../../includes/storsimple-cable-8100-for-power.md)]
 
-### <a name="network-cabling"></a>Hálózati kábelezése
-Az eszköz egy aktív-készenléti konfigurációban áll: egy adott időpontban egy vezérlő modul aktív és feldolgozása közben a tartományvezérlő modul összes lemez és hálózat műveletek készenléti módban futhat. Ha egy tartományvezérlő sikertelen, a készenléti állapotban lévő vezérlőnek azonnal aktiválni, és továbbra is fennáll, a lemez és a hálózati műveletek.
+### <a name="network-cabling"></a>Hálózati kábelezés
+Az eszköz aktív-készenléti konfiguráció: bármikor, az egyik vezérlő modul aktív, és az összes lemezt és hálózati műveletet dolgozza fel, míg a másik vezérlő modul készenléti állapotban van. Ha egy vezérlő meghibásodik, a készenléti vezérlő azonnal aktiválódik, és folytatja az összes lemezt és hálózati műveletet.
 
-Támogatja a zónaredundáns vezérlő feladatátvétele, kábelezése az eszköz hálózathoz, a következő lépésben ismertetett módon kell.
+A redundáns vezérlő feladatátvételének támogatásához csatlakoztassa az eszközt a következő lépésekben leírtaknak megfelelően.
 
-#### <a name="to-cable-for-network-connection"></a>A hálózati kapcsolat kábelezése
-1. Az eszköz minden tartományvezérlőn hat hálózati adapterrel rendelkezik: négy 1 GB/s, és két 10 GB/s sebességű Ethernet-portokat. Azonosíthatja a különféle adatok portokat az eszköz a csatlakozópanel meghibásodása.
+#### <a name="to-cable-for-network-connection"></a>Hálózati kapcsolatok kábele
+1. Az eszköz hat hálózati csatolóval rendelkezik az egyes vezérlőkön: négy 1 GB/s és 2 10 GB/s Ethernet-port. Azonosítsa a különböző adatportokat az eszköz hátlapján.
    
-    ![A 8100-as eszközön csatlakozópanel meghibásodása](./media/storsimple-8100-hardware-installation/HCSBackplaneof2UDevicewithPortsLabeled.jpg)
+    ![8100-eszköz hátlapja](./media/storsimple-8100-hardware-installation/HCSBackplaneof2UDevicewithPortsLabeled.jpg)
    
-    **Vissza az eszközt az adatok portok megjelenítése**
+    **Az eszköz hátoldala, amely az adatportokat mutatja**
    
    | Címke | Leírás |
    | --- | --- |
    |   0,1,4,5 |1 GbE hálózati adapterek |
-   |   2,3 |10 GbE hálózati adapterek |
+   |   2,3 |10 GbE hálózati adapter |
    |   6 |Soros portok |
-2. Az alábbi ábrában hálózati kábeleket. (A minimálisan hálózatkonfigurálás folytonos kék vonal jelenik meg. A magas rendelkezésre állás és teljesítmény szükséges további konfigurációs látható pontozott vonal.)
+2. Tekintse meg a hálózati kábelezés következő ábráját. (A minimális hálózati konfigurációt a folytonos kék vonalak mutatják. A magas rendelkezésre álláshoz és a teljesítményhez szükséges további konfigurációt pontozott vonalak mutatják.)
 
-    ![Hálózat 2U eszköz kábelezése](./media/storsimple-8100-hardware-installation/HCSCableYour2UDeviceforNetwork.png)
+    ![A 2U-eszköz hálózati csatlakoztatása](./media/storsimple-8100-hardware-installation/HCSCableYour2UDeviceforNetwork.png)
 
-    **Hálózat, az eszköz kábelezése**
+    **Az eszköz hálózati kábelezései**
 
    |Címke | Leírás |
    |----- | ----------- |
-   | A    | Helyi Internet-hozzáféréssel rendelkező hálózat |
-   | B    | 0. vezérlő |
-   | C    | PCM 0-BAN |
-   | D    | 1. vezérlő |
-   | E    | A PCM 1 |
-   | F, G | Hosts |
-   | 0-5  | Hálózati illesztők |
+   | J    | Helyi Internet-hozzáféréssel rendelkező LAN |
+   | B    | Vezérlő 0 |
+   | C    | PCM 0 |
+   | D    | Vezérlő 1 |
+   | E    | PCM 1 |
+   | F, G | Gazdagépek |
+   | 0-5  | Hálózati adapterek |
 
 
 
-Ha az eszköz kábelezése, a minimális konfigurációs van szükség:
+Az eszköz kábelezése esetén a minimális konfigurációhoz az alábbiak szükségesek:
 
-* Legalább két hálózati adaptert minden vezérlő egy cloud-Access és egy iSCSI-hálózathoz csatlakoznak. Az adat 0 port automatikusan engedélyezve és konfigurálva az eszköz soros konzolon keresztül. Adatok egy másik portra DATA 0, szereplőkkel is kell a klasszikus Azure portálon keresztül konfigurálható. Ebben az esetben a DATA 0 csatlakozás portot pedig az elsődleges hálózati Ébresztés (Internet-hozzáféréssel rendelkező hálózat). Az adatok más portok a hálózat, attól függően, a kívánt szerepkört az iSCSI SAN/LAN (VLAN) szegmens csatlakoztathatók.
-* Minden vezérlő azonos adaptereinek ugyanazon a hálózaton rendelkezésre állásának biztosításához a vezérlő feladatátvétele esetén csatlakozik. Például ha az adatok 0 és DATA 3 az egyik vezérlő választja, meg kíván csatlakoztatni a megfelelő DATA 0 és DATA 3 a másik vezérlőre.
+* Legalább két hálózati adapter csatlakozik minden vezérlőhöz, egy a felhőhöz való hozzáféréshez, egyet pedig az iSCSI-hez. A 0. számú port automatikusan engedélyezve és konfigurálva van az eszköz soros konzolján keresztül. A 0. ADATOKon kívül egy másik adatportot is konfigurálni kell a klasszikus Azure portálon. Ebben az esetben az adat0 portot az elsődleges helyi hálózathoz (internet-hozzáféréssel rendelkező hálózat) kapcsolja. A többi adatport a kívánt szerepkörtől függően a hálózat SAN/iSCSI LAN-(VLAN-) szegmenséhez is csatlakoztatható.
+* Azonos illesztőfelületek az ugyanahhoz a hálózathoz csatlakoztatott vezérlőknél, hogy a rendelkezésre állást a vezérlő feladatátvétele esetén biztosítsa. Ha például a 0. és a 3. adattábla összekapcsolását választja, akkor a másik vezérlőn a megfelelő adatmennyiség 0 és a 3. adatkapcsolattal kell csatlakoznia.
 
-A magas rendelkezésre állást és teljesítményt szem előtt tartani:
+Tartsa szem előtt a magas rendelkezésre állást és a teljesítményt:
 
-* Ha lehetséges, minden vezérlő konfigurálása két hálózati adapter (1 GbE) felhőalapú hozzáférés és a egy másik pár iSCSI (10 GbE ajánlott).
-* Ha lehetséges, csatlakoztassa hálózati adapterek minden vezérlő két különböző kapcsolókhoz egy kapcsoló meghibásodása elleni rendelkezésre állás biztosítása érdekében. Az ábrán látható a két 10 GbE hálózati adapterek, DATA 2 és DATA 3, minden tartományvezérlőről, két különböző kapcsolókhoz csatlakozik.
+* Ha lehetséges, konfiguráljon egy pár hálózati interfészt a felhőalapú hozzáféréshez (1 GbE) és egy másikat az iSCSI-hez (10 GbE ajánlott) minden vezérlőn.
+* Ha lehetséges, kapcsolja össze az egyes vezérlők hálózati adaptereit két különböző kapcsolóval, hogy biztosítsa a rendelkezésre állást egy kapcsoló meghibásodása esetén. Az ábrán a 2 10 GbE hálózati adapterek, a 2. adat és a 3. adatok láthatók a két különböző kapcsolóhoz csatlakozó vezérlőkből.
 
-További információkért tekintse meg a **hálózati adapterek** alatt a [magas rendelkezésre állással, a StorSimple eszköz](storsimple-8000-system-requirements.md#high-availability-requirements-for-storsimple).
-
-> [!NOTE]
-> Ha a 10 GbE hálózati adapterek SFP + adó használ, használja a megadott QSFP-SFP + adapter. További információért ugorjon [hardver támogatja a 10 GbE hálózati adapterek a StorSimple eszköz](storsimple-supported-hardware-for-10-gbe-network-interfaces.md).
-> 
-> 
-
-### <a name="serial-port-cabling"></a>Soros portos kábelezése
-A következő lépésekkel kábelezése a soros port.
-
-#### <a name="to-cable-for-serial-connection"></a>A soros kapcsolat kábelezése
-1. Az eszköz minden vezérlő, amely egy csavarkulcs ikon azonosítja a soros port van. Tekintse meg az az ábrán a [hálózati kábeleket](#network-cabling) szakaszban keresse meg a soros portok az eszköz a csatlakozópanel meghibásodása.
-2. Az eszköz csatlakozópanel meghibásodása a az aktív vezérlő megkeresése. Egy villogó kék LED azt jelzi, hogy a vezérlő aktív.
-3. A megadott soros kábelt (ha szükséges, a laptopján USB – soros átalakítója) használja, és csatlakozzon a konzolon vagy a számítógép (a terminálemulációs az eszközhöz), az aktív vezérlőt a soros port.
-4. A sorozat – USB-illesztőprogramok (az eszköz rendszerrel szállított) telepítése a számítógépre.
-5. Az alábbiak szerint állíthatja a soros kapcsolat: 115 200 átviteli, 8 adatbitek, 1 stop bit, nincs paritásos és adatfolyam vezérlés nincs értékre van állítva.
-6. Győződjön meg arról, hogy a kapcsolat működik-e a konzol az Enter billentyű lenyomásával. A soros konzol menüjének kell megjelennie.
+További információkért tekintse meg a **hálózati adaptereket** a [StorSimple-eszköz magas rendelkezésre állási követelményeinek](storsimple-8000-system-requirements.md#high-availability-requirements-for-storsimple)megfelelően.
 
 > [!NOTE]
-> **Lights-Out felügyeleti**: Ha az eszköz telepítve van, korlátozott hozzáférésű számítógép szoba vagy egy távoli adatközpontban, győződjön meg arról, a soros kapcsolatokat mindkét vezérlő, mindig csatlakoztatva egy soros konzol kapcsoló vagy egy hasonló berendezések. Ez lehetővé teszi a sávon kívüli a távvezérlés és a támogatási operations, ha hálózati hibákat okozhatnak, vagy váratlan meghibásodások esetén.
+> Ha SFP + adóvevőt használ a 10 GbE hálózati adapterrel, használja a megadott QSFP-SFP + adaptereket. További információkért keresse fel a [StorSimple-eszköz 10 GbE hálózati adapterének támogatott hardvereit](storsimple-supported-hardware-for-10-gbe-network-interfaces.md).
 > 
 > 
 
-Az eszköz most már csatlakoztatva, a, a hálózati hozzáférés és a soros kapcsolat. A következő lépés, hogy konfigurálja a szoftvert, és az eszköz üzembe helyezése.
+### <a name="serial-port-cabling"></a>Soros port kábelezése
+A soros port csatlakoztatásához hajtsa végre az alábbi lépéseket.
+
+#### <a name="to-cable-for-serial-connection"></a>Csatlakoztatás soros kapcsolathoz
+1. Az eszköz soros porttal rendelkezik minden olyan vezérlőn, amelyet egy Csavarkulcs ikon azonosít. Az eszköz hátlapján található soros portok megkereséséhez tekintse meg a [hálózati kábelezés](#network-cabling) szakasz ábráját.
+2. Azonosítsa az aktív vezérlőt az eszköz hátlapján. A villogó kék LED azt jelzi, hogy a vezérlő aktív.
+3. A megadott soros kábelek (szükség esetén a laptop USB-soros átalakítója) használata, valamint a konzol vagy számítógép csatlakoztatása (a terminál emulációja az eszközhöz) az aktív vezérlő soros portjára.
+4. Telepítse a számítógépen a soros USB-illesztőprogramokat (az eszközön szállított).
+5. A soros kapcsolat beállítása a következőképpen történik: 115 200 Baud, 8 adatbitek, 1 leállítási bit, nincs paritás, és a flow vezérlőelem nincs értékre van állítva.
+6. A konzolon az ENTER billentyű lenyomásával ellenőrizze, hogy működik-e a kapcsolat. Meg kell jelennie A soros konzol menüjének.
+
+> [!NOTE]
+> **Fények – felügyelet**: Ha az eszköz egy távoli adatközpontban vagy egy korlátozott hozzáférésű számítógép-helyiségben van telepítve, ügyeljen arra, hogy a soros kapcsolatok mindkét vezérlőhöz mindig a soros konzol kapcsolóhoz vagy hasonló eszközökhöz kapcsolódjanak. Ez lehetővé teszi a sávon kívüli távvezérlési és-támogatási műveleteket, ha hálózati fennakadások vagy váratlan hibák történtek.
+> 
+> 
+
+Az eszköz most már a Power, a hálózati hozzáférés és a soros kapcsolat számára is kábeles. A következő lépés a szoftver konfigurálása és az eszköz üzembe helyezése.
 
 ## <a name="next-steps"></a>További lépések
-Ismerje meg, hogyan [telepítse és konfigurálja a helyszíni StorSimple eszköz](storsimple-8000-deployment-walkthrough-u2.md).
+Ismerje meg, hogyan [helyezheti üzembe és konfigurálhatja helyszíni StorSimple-eszközét](storsimple-8000-deployment-walkthrough-u2.md).
 

@@ -5,18 +5,15 @@ services: azure-resource-manager,azure-portal
 documentationcenter: ''
 author: mumian
 ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 20bf38b87ce29f8506a5611ecd25cf38f6d4ed61
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: a4ff94a98514041290518e72e1b13c76722b9d4f
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56825240"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205600"
 ---
 # <a name="manage-azure-resources-by-using-the-azure-portal"></a>Azure-erőforrások kezelése az Azure portal használatával
 
@@ -103,7 +100,7 @@ További információ: [Erőforrások zárolása az Azure Resource Manager eszk�
 Az erőforráscsoport és erőforrások rendszerezéséhez logikailag címkézési segít. 
 
 1. Nyissa meg az erőforrást a portálon. A lépésekért lásd: [megnyithat erőforrásokat](#open-resources).
-2. Válassza ki **címkék**. Az alábbi képernyőfelvételen egy storage-fiók a felügyeleti beállításokat.
+2. Válassza a **Címkék** lehetőséget. Az alábbi képernyőfelvételen egy storage-fiók a felügyeleti beállításokat.
 
     ![a címke az azure-erőforrás](./media/manage-resources-portal/manage-azure-resources-portal-tag-resource.png)
 3. Adja meg a címke tulajdonságait, és válassza ki **mentése**.

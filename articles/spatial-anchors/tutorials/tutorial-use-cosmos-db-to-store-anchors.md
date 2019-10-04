@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: d955654eee1d02994f303b6270b156eb9a61c29b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: fc172b5327d72687fea7d13ddb706ecc7ab630b6
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58915254"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "67135344"
 ---
 # <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices-with-an-azure-cosmos-db-back-end"></a>Oktatóanyag: Megosztás Azure térbeli horgonyok munkamenetek és az eszközök között egy Azure Cosmos DB-háttéralkalmazáshoz
 
@@ -44,7 +44,7 @@ A következőket fogja megtanulni:
 
 Másolás a `Connection String` mert, szüksége lesz rá.
 
-## <a name="open-the-sample-project-in-unity"></a>Nyissa meg a mintaprojektet a Unity-nél
+## <a name="download-the-unity-sample-project"></a>Töltse le a Unity mintaprojektet
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
@@ -70,7 +70,7 @@ Keresse meg a `StorageConnectionString` tulajdonságot, és adja meg kell egyezn
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban az Azure Cosmos DB felhasználta megosztani a forráshorgony azonosítók különböző eszközökön. Azure térbeli horgonyok az új Android-alkalmazás használatával kapcsolatos további információkért folytassa a következő oktatóanyaggal.
+Ebben az oktatóanyagban az Azure Cosmos DB felhasználta megosztani a forráshorgony azonosítók különböző eszközökön. Azure térbeli horgonyok egy új Unity HoloLens-alkalmazás használatával kapcsolatos további információkért folytassa a következő oktatóanyaggal.
 
 > [!div class="nextstepaction"]
-> [Új Android-alkalmazás indítása](./tutorial-new-android-app.md)
+> [Új Android-alkalmazás indítása](./tutorial-new-unity-hololens-app.md)

@@ -2,24 +2,25 @@
 title: Megismerheti az Azure Security Center az IoT biztonsági modul twins előzetes verzió |} A Microsoft Docs
 description: Ismerje meg a biztonsági ikermodulokkal és azok hogyan használhatók az Azure Security Centerben az IoT fogalmát.
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
-manager: barbkess
+manager: rkarlin
 editor: ''
 ms.assetid: a5c25cba-59a4-488b-abbe-c37ff9b151f9
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: c5814b188c73ea03094d7dae565e40ca09e705c2
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 8f964fd2b121c6232081673666f5babb160e1721
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58862437"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67618310"
 ---
 # <a name="security-module"></a>Biztonsági modul
 

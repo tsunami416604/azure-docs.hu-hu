@@ -5,17 +5,17 @@ keywords: runbook, runbook-sablon, runbook automation, azure runbook
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 04/13/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: be811d0dc2ce2eca0b20ca12165eaf0799bd6b5d
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 043a39fbcb908e4c277e5eba9972a2a17ca23813
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54426794"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67478685"
 ---
 # <a name="my-first-graphical-runbook"></a>Az első grafikus forgatókönyvem
 
@@ -151,7 +151,7 @@ Most hozzáad egy **Start-AzureRmVM** tevékenységet, amellyel egy virtuális g
 1. A Könyvtár vezérlőben írja be a keresési szövegmezőbe a következőt: **Start-AzureRm**.
 2. Adja hozzá a **Start-AzureRmVM** elemet a vászonhoz, és húzza az **Előfizetés azonosítójának megadása** alá.
 1. Vigye a kurzort a **Előfizetés azonosítójának megadása** fölé, és várja meg, amíg megjelenik az alakzat alján egy kör. Kattintson a körre, és húzza a nyilat a **Start-AzureRmVM** elemre.
-1. Jelölje ki a **Start-AzureRmVM** elemet. A **Start-AzureRmVM** készleteinek megtekintéséhez kattintson a **Paraméterek**, majd a **Paraméterkészlet** lehetőségre. Válassza ki a **ResourceGroupNameParameterSetName** paraméterkészletet. A **ResourceGroupName** és a **Name** mellett felkiáltójel van. Ez azt jelzi, hogy ezek kötelező paraméterek. Azt is észreveheti, hogy mindkét helyen szöveges értéket kell megadni.
+1. Jelölje ki a **Start-AzureRmVM** elemet. A **Start-AzureRmVM** készleteinek megtekintéséhez kattintson a **Paraméterek**, majd a **Paraméterkészlet** lehetőségre. Válassza ki a **ResourceGroupNameParameterSetName** paraméterkészletet. A **ResourceGroupName** és a **Name** mellett felkiáltójel van. Ez azt jelzi, hogy ezek kötelező paraméterek. Azt is észreveheti, hogy mindkét helyen sztring értéket kell megadni.
 1. Válassza ki a **Name** paramétert. Válassza ki a **PowerShell-kifejezés** elemet az **Adatforrás** területen, majd írja be idézőjelek között a runbookkal elindított virtuális gép nevét. Kattintson az **OK** gombra.
 1. Válassza a **ResourceGroupName** elemet. Használja a **PowerShell-kifejezés** elemet az **Adatforrás** mezőben, majd írja be az erőforráscsoport nevét idézőjelek között. Kattintson az **OK** gombra.
 1. Kattintson a Teszt panelre, hogy tesztelhesse a runbookot.
@@ -185,7 +185,7 @@ Most úgy módosítja a runbookot, hogy csak akkor próbálja meg elindítani a 
 1. Távolítsa el az **Előfizetés azonosítójának megadása** és a **Start-AzureRmVM** közötti hivatkozást. Ehhez kattintson rá, majd nyomja le a *Delete* billentyűt.
 1. A Könyvtár vezérlőben írja be a keresési szövegmezőbe a következőt: **Get-AzureRm**.
 1. Adja hozzá a vászonhoz a **Get-AzureRmVM** elemet.
-1. A **Get-AzureRmVM** készleteinek megtekintéséhez válassza a **Get-AzureRmVM**, majd a **Paraméterkészlet** lehetőséget. Válassza ki a **GetVirtualMachineInResourceGroupNameParamSet** paraméterkészletet. A **ResourceGroupName** és a **Name** mellett felkiáltójel van. Ez azt jelzi, hogy ezek kötelező paraméterek. Azt is észreveheti, hogy mindkét helyen szöveges értéket kell megadni.
+1. A **Get-AzureRmVM** készleteinek megtekintéséhez válassza a **Get-AzureRmVM**, majd a **Paraméterkészlet** lehetőséget. Válassza ki a **GetVirtualMachineInResourceGroupNameParamSet** paraméterkészletet. A **ResourceGroupName** és a **Name** mellett felkiáltójel van. Ez azt jelzi, hogy ezek kötelező paraméterek. Azt is észreveheti, hogy mindkét helyen sztring értéket kell megadni.
 1. A **Name** paraméterhez tartozó **Adatforrás** elemét módosítsa a **Forgatókönyv bemenet** beállításra, majd válassza a **VMName** lehetőséget. Kattintson az **OK** gombra.
 1. A **ResourceGroupName** paraméterhez tartozó **Adatforrás** elemét módosítsa a **Forgatókönyv bemenet** beállításra, majd válassza a **ResourceGroupName** lehetőséget. Kattintson az **OK** gombra.
 1. A **Status** paraméterhez tartozó **Adatforrás** elemét módosítsa a **Konstans érték** beállításra, majd kattintson az **Igaz** gombra. Kattintson az **OK** gombra.
@@ -209,13 +209,13 @@ Most úgy módosítja a runbookot, hogy csak akkor próbálja meg elindítani a 
 
 1. Hozzon létre egy hivatkozást az **Állapot kérése** és a **Start-AzureRmVM** között.<br> ![Runbook kódmodullal](media/automation-first-runbook-graphical/runbook-startvm-get-status.png)  
 1. Jelölje ki a hivatkozást, majd a Konfiguráció panelen módosítsa a **Feltétel alkalmazása** értékét ara, hogy **Igen**. Figyelje meg, hogy a hivatkozás egy szaggatott vonallá változik, amely azt jelzi, hogy a céltevékenység csak akkor fut, ha a feltétel igazzá válik.  
-1. A **Feltételkifejezés** területen írja be a következőt: *$ActivityOutput['Get Status'] -eq "Stopped"*. A **Start-AzureRmVM** most csak akkor fog futni, ha a virtuális gép le van állítva.
+1. A **Feltételkifejezés** területen írja be a következőt: *$ActivityOutput['Get Status'] -eq "Stopped"* . A **Start-AzureRmVM** most csak akkor fog futni, ha a virtuális gép le van állítva.
 1. A Könyvtár vezérlőben bontsa ki a **Parancsmagok** elemet, és válassza a **Microsoft.PowerShell.Utility** lehetőséget.
 1. Adja hozzá a vászonhoz kétszer a következőt: **Write-Output**.
 1. Az első **Write-Output** vezérlőn kattintson a **Paraméterek** elemre, és módosítsa a **Címke** értéket a következőre: *Értesítés a virtuális gép indulásáról*.
-1. Az **InputObject** elemnél módosítsa az **Adatforrás** beállítását a **PowerShell-kifejezés** értékre, és írja be a következő kifejezést:*„$VMName sikeresen elindult.”*.
+1. Az **InputObject** elemnél módosítsa az **Adatforrás** beállítását a **PowerShell-kifejezés** értékre, és írja be a következő kifejezést: *„$VMName sikeresen elindult.”* .
 1. A második **Write-Output** vezérlőn kattintson a **Paraméterek** elemre, és módosítsa a **Címke** értéket a következőre: *Értesítés a virtuális gép indulásának meghiúsulásáról*
-1. Az **InputObject** elemnél módosítsa az **Adatforrás** beállítását a **PowerShell-kifejezés** értékre, és írja be a következő kifejezést:*„VMName nem tudott elindulni.”*.
+1. Az **InputObject** elemnél módosítsa az **Adatforrás** beállítását a **PowerShell-kifejezés** értékre, és írja be a következő kifejezést: *„VMName nem tudott elindulni.”* .
 1. Hozzon létre egy hivatkozást a **Start-AzureRmVM** és az **Értesítés a virtuális gép indulásáról**, valamint az **Értesítés a virtuális gép indulásának meghiúsulásáról** között.
 1. Válassza ki az **Értesítés a virtuális gép indulásáról** felé mutató hivatkozást, és módosítsa a **Feltétel alkalmazása** beállítást arra, hogy **Igaz**.
 1. A **Feltételkifejezéshez** írja be a következőt: *$ActivityOutput['Start-AzureRmVM'].IsSuccessStatusCode -eq $true*. A Write-Output vezérlés most csak akkor fog futni, ha a virtuális gép sikeresen elindult.

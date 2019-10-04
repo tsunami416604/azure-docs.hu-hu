@@ -3,16 +3,16 @@ title: Eszköz konfigurációs ajánlott eljárások az Azure IoT Hub |} A Micro
 description: Nagy mennyiségű IoT-eszköz konfigurálásával kapcsolatos bevált gyakorlatok megismeréséhez
 author: chrisgre
 ms.author: chrisgre
-ms.date: 06/24/2018
+ms.date: 06/28/2019
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: c97395981ea3af90c7b0c590cb049fccc7392304
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: 33e77d63b958df292ee9b4ac8ded41f3693cb6bc
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59797192"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485814"
 ---
 # <a name="best-practices-for-device-configuration-within-an-iot-solution"></a>Ajánlott eljárások az IoT-megoldás belüli eszközök konfigurálása
 
@@ -64,9 +64,11 @@ Ajánlott eljárások az IoT megoldás a fejlesztőknek, akik készítenek az Az
 
 * **Rendezik az eszközöket, device twin címkék használatával:** A megoldás lehetővé teszi az üzemeltető minőségi körök vagy más eszközök Kanári például számos központi telepítési stratégia alapján részhalmazához. Eszköz szervezet valósítható meg a device twin címkék használatával megoldáson belül, és [lekérdezések](iot-hub-devguide-query-language.md). Eszköz szervezet szükség, hogy a konfigurációs összegző mintáit, biztonságosan és nagy pontossággal.
 
-* **Alkalmazzon [automatikus eszközkonfigurációkat](iot-hub-auto-device-config.md):** Automatikus eszköz-konfigurációk üzembe helyezése, és nagy mennyiségű IoT-eszközöket az ikereszközök figyelő konfigurációs módosításokat. Automatikus eszközkonfigurációkat célként az ikereszközök használatával beállítja a **feltétel, cél** ami az a lekérdezés eszköz az ikereszköz – címkék vagy a jelentett tulajdonságok. A **tartalmat** belül a célzott eszközök ikerállapotának beállított kívánt tulajdonságokat készlete. A célként megadott tartalom eszköz ikereszköz struktúráját határozza meg az IoT hardver gyártója/integráló kell igazítani.
+* **Alkalmazzon [automatikus eszközkonfigurációkat](iot-hub-auto-device-config.md):** Automatikus eszköz-konfigurációk üzembe helyezése, és nagy mennyiségű IoT-eszközöket az ikereszközök figyelő konfigurációs módosításokat.
 
-   A **metrikák** ikereszköz-lekérdezéseket a jelentett tulajdonságok és kell igazítani, az eszköz ikereszköz struktúrával határozzák meg az IoT hardver gyártója/integráló is. Automatikus eszköz-konfigurációk is, hogy az előnye, hogy az IoT Hub device twin műveleteket gyakorisággal, amely soha nem haladhatja meg a [szabályozási korlátait](iot-hub-devguide-quotas-throttling.md) eszköz ikerírási és frissítéseket.
+   Automatikus eszközkonfigurációkat célként az ikereszközök használatával beállítja a **feltétel, cél** ami az a lekérdezés eszköz az ikereszköz – címkék vagy a jelentett tulajdonságok. A **tartalmat** belül a célzott eszközök ikerállapotának beállított kívánt tulajdonságokat készlete. A célként megadott tartalom eszköz ikereszköz struktúráját határozza meg az IoT hardver gyártója/integráló kell igazítani. A **metrikák** ikereszköz-lekérdezéseket a jelentett tulajdonságok és kell igazítani, az eszköz ikereszköz struktúrával határozzák meg az IoT hardver gyártója/integráló is.
+
+   Automatikus eszközkonfigurációkat futtassa először jön létre a konfigurációt követően rövid időn belül, majd öt perces időközönként. Ezek előnyeit is kihasználhatják az IoT Hub device twin műveleteket gyakorisággal, amely soha nem haladhatja meg a [szabályozási korlátait](iot-hub-devguide-quotas-throttling.md) eszköz ikerírási és frissítéseket.
 
 * **Használja a [Device Provisioning Service](../iot-dps/how-to-manage-enrollments.md):** Megoldás fejlesztők használjon a Device Provisioning Service eszköz ikereszköz címkéket társíthat az új eszközökre, hogy azok automatikusan megtörténik a **automatikus eszközkonfigurációkat** , amelyek adott címkével rendelkező twins célozzák. 
 

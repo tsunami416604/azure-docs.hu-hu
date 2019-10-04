@@ -1,153 +1,171 @@
 ---
-title: Az Apache Hive, a (az Apache Hadoop) a Data Lake tools for Visual Studio – Azure HDInsight
-description: Megtudhatja, hogyan futtathat Apache Hive-lekérdezések az Apache Hadoop Azure HDInsight a Data Lake tools for Visual Studio használatával.
-services: hdinsight
+title: Apache Hive a Visual Studio Data Lake Tools szolgáltatásával – Azure HDInsight
+description: Ismerje meg, hogy a Visual studióhoz készült Data Lake Tools segítségével hogyan futtathat Apache Hive-lekérdezéseket az Azure HDInsight Apache Hadoop használatával.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/16/2018
+ms.date: 05/14/2019
 ms.author: hrasheed
-ms.openlocfilehash: 1412e644a0c824be3612e14a1059661092805682
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 1e5e3854f0b132ede38e182f99435a569c04d49e
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58447426"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076285"
 ---
-# <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>A Data Lake tools for Visual Studio használatával, az Apache Hive-lekérdezések futtatása
+# <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>Apache Hive lekérdezések futtatása a Visual studióhoz készült Data Lake Tools használatával
 
-Útmutató a Data Lake tools for Visual Studio segítségével az Apache Hive-lekérdezést. A Data Lake-eszközök lehetővé teszik egyszerűen létrehozása, küldése és monitorozása az Azure HDInsight az Apache Hadoop Hive-lekérdezéseket.
+Megtudhatja, hogyan használhatja a Visual studióhoz készült Data Lake-eszközöket a Apache Hive lekérdezéséhez. A Data Lake-eszközök lehetővé teszik a kaptár-lekérdezések egyszerű létrehozását, beküldését és figyelését az Azure HDInsight Apache Hadoop.
 
 ## <a id="prereq"></a>Előfeltételek
 
-* Egy Azure HDInsight (a HDInsight Apache Hadoop) fürtön
-
-  > [!IMPORTANT]  
-  > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
+* Egy Apache Hadoop-fürt a HDInsight-on. Lásd: Ismerkedés [a HDInsight Linux rendszeren](./apache-hadoop-linux-tutorial-get-started.md).
 
 * Visual Studio (a következő verziók egyike):
 
-    * A Visual Studio 2013 Community/Professional/Premium/Ultimate 4. frissítéssel
+    * Visual Studio 2015, 2017 (bármilyen kiadás)
+    * Visual Studio 2013 Community/Professional/Premium/Ultimate, 4. frissítéssel
 
-    * Visual Studio 2015 (any edition)
+* A Visual studióhoz készült HDInsight-eszközök és a Visual studióhoz készült Azure Data Lake eszközök. Az eszközök telepítésével és konfigurálásával kapcsolatos információkért tekintse meg a [Visual Studio Hadoop-eszközök HDInsight való használatának első lépéseit](apache-hadoop-visual-studio-tools-get-started.md) ismertető témakört.
 
-    * Visual Studio 2017 (any edition)
+## <a id="run"></a>Apache Hive lekérdezések futtatása a Visual Studio használatával
 
-* HDInsight tools for Visual Studio vagy az Azure Data Lake tools for Visual Studio. Lásd: [Visual Studio Hadoop tools for HDInsight használatának első lépései](apache-hadoop-visual-studio-tools-get-started.md) információ telepítésével és konfigurálásával az eszközöket.
+Hive-lekérdezések létrehozására és futtatására két lehetősége van:
 
-## <a id="run"></a> A Visual Studio használatával, az Apache Hive-lekérdezések futtatása
+* Alkalmi lekérdezések létrehozása
+* Hive alkalmazás létrehozása
 
-1. Nyissa meg **Visual Studio** válassza **új** > **projekt** > **az Azure Data Lake**  >   **HIVE-** > **Hive alkalmazás**. Adja meg a projekt nevét.
+### <a name="ad-hoc"></a>Ad hoc
 
-2. Nyissa meg a **Script.hql** jön létre a projektet, és illessze be a következő hiveql:
+Az alkalmi lekérdezések **kötegelt** vagy **interaktív** módban is végrehajthatók.
 
-   ```hiveql
-   set hive.execution.engine=tez;
-   DROP TABLE log4jLogs;
-   CREATE EXTERNAL TABLE log4jLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
-   ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
-   STORED AS TEXTFILE LOCATION '/example/data/';
-   SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs WHERE t4 = '[ERROR]' AND  INPUT__FILE__NAME LIKE '%.log' GROUP BY t4;
-   ```
+1. Nyissa meg a **Visual studiót**.
 
-    Ezek az utasítások hajtsa végre a következő műveleteket:
+2. A **Server Explorerben**navigáljon az **Azure** > **HDInsight**.
 
-   * `DROP TABLE`: Ha a tábla létezik, ez az utasítás törli őket.
+3. Bontsa ki a **HDInsight**csomópontot, majd kattintson a jobb gombbal arra a fürtre, amelyen futtatni szeretné a lekérdezést, majd válassza a **kaptár-lekérdezés írása**lehetőséget.
 
-   * `CREATE EXTERNAL TABLE`: A Hive egy új "külső" táblát hoz létre. Külső táblák csak Hive (az adatok az eredeti helyen van balra) a tábladefiníció tárolja.
+4. Adja meg a következő kaptár-lekérdezést:
+
+    ```hql
+    SELECT * FROM hivesampletable;
+    ```
+
+5. Válassza a **Végrehajtás** lehetőséget. Vegye figyelembe, hogy a végrehajtási mód alapértelmezés szerint **interaktív**.
+
+    ![Képernyőkép az interaktív Hive-lekérdezések végrehajtásáról](./media/apache-hadoop-use-hive-visual-studio/vs-execute-hive-query.png)
+
+6. Ha ugyanezt a lekérdezést **Batch** módban szeretné futtatni, a legördülő listát az **Interaktívról** a **kötegbe**kapcsolhatja. Vegye figyelembe, hogy a végrehajtás gomb **a végrehajtásról** a **Küldés**elemre változik.
+
+    ![Képernyőkép Hive-lekérdezés futtatásáról](./media/apache-hadoop-use-hive-visual-studio/visual-studio-batch-query.png)
+
+    A Hive szerkesztője támogatja az IntelliSense-t. A Data Lake Tools for Visual Studio támogatja a távoli metaadatok betöltését a Hive-szkript szerkesztésekor. Ha például a (z) `SELECT * FROM`értéket adja meg, az IntelliSense felsorolja az összes javasolt táblanév nevét. Amikor megad egy táblanevet, az IntelliSense listázza az oszlopneveket. Az eszközök a legtöbb Hive DML-utasítást, -segédlekérdezést és beépített UDF-et támogatják. Az IntelliSense csak a HDInsight eszköztáron kijelölt fürt metaadatait javasolja.
+
+    ![Képernyőkép a HDInsight Visual Studio Tools IntelliSense 1. példájáról](./media/apache-hadoop-use-hive-visual-studio/vs-intellisense-table-name.png "U-SQL IntelliSense")
+   
+    ![Képernyőkép a HDInsight Visual Studio Tools IntelliSense 2. példájáról](./media/apache-hadoop-use-hive-visual-studio/vs-intellisense-column-name.png "U-SQL IntelliSense")
+
+7. Kattintson a **Submit** (Küldés) vagy a **Submit (Advanced)** (Küldés (Speciális)) elemre.
+
+   A speciális küldési lehetőséggel konfigurálja a szkript **Job Name** (Feladat neve), **Arguments** (Argumentumok), **Additional Configurations** (További konfigurációk) és **Status Directory** (Állapot könyvtár) elemeit:
+
+    ![Képernyőkép egy HDInsight Hadoop Hive-lekérdezésről](./media/apache-hadoop-use-hive-visual-studio/vs-tools-submit-jobs-advanced.png "Lekérdezések küldése")
+
+### <a name="hive-application"></a>Struktúra alkalmazása
+
+1. Nyissa meg a **Visual studiót**.
+
+2. A menüsávban navigáljon a **fájl** > **új** > **projekt**elemre.
+
+3. Az **új projekt** ablakban navigáljon a **sablonok** > **Azure Data Lake** > **struktúra (HDInsight)**  > **struktúra alkalmazáshoz**. 
+
+4. Adja meg a projekt nevét, majd kattintson **az OK gombra**.
+
+5. Nyissa meg a projekttel létrehozott **script. HQL** fájlt, és illessze be a következő HiveQL-utasításokat:
+
+    ```hiveql
+    set hive.execution.engine=tez;
+    DROP TABLE log4jLogs;
+    CREATE EXTERNAL TABLE log4jLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
+    STORED AS TEXTFILE LOCATION '/example/data/';
+    SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs WHERE t4 = '[ERROR]' AND  INPUT__FILE__NAME LIKE '%.log' GROUP BY t4;
+    ```
+
+    Ezek az utasítások a következő műveleteket hajtják végre:
+
+   * `DROP TABLE`: Ha a tábla létezik, az utasítás törli.
+
+   * `CREATE EXTERNAL TABLE`: Létrehoz egy új "külső" táblát a kaptárban. A külső táblák csak a struktúra tábla definícióját tárolják (az eredeti helyen maradnak).
 
      > [!NOTE]  
-     > Külső táblák kell használni, amikor várhatóan az alapul szolgáló adatokat egy külső forrás frissíteni kell. Ha például egy MapReduce-feladatot vagy Azure-szolgáltatás.
+     > Külső táblákat kell használni, ha várható, hogy a mögöttes adatokat külső forrás frissíti. Például egy MapReduce-feladatot vagy egy Azure-szolgáltatást.
      >
-     > A külső tábla elvetését does **nem** törölheti az adatokat, csak a tábla definícióját.
+     > Egy külső tábla eldobása **nem** törli az adatforrást, csak a tábla definícióját.
 
-   * `ROW FORMAT`: Arra utasítja a Hive, az adatok formázását. Ebben az esetben minden napló mezőinek vesszővel elválasztva.
+   * `ROW FORMAT`: Azt jelzi, hogyan történik az adat formázása. Ebben az esetben az egyes naplók mezői szóközzel vannak elválasztva.
 
-   * `STORED AS TEXTFILE LOCATION`: Hive arról tájékoztatja, hogy az adatokat a példaadatokat/könyvtárban tárolja, és szövegként tárolt.
+   * `STORED AS TEXTFILE LOCATION`: Azt jelzi, hogy a struktúra a példa/adatkönyvtárban tárolja az adattárolási struktúrát, és azt szövegként tárolja.
 
-   * `SELECT`: Válassza ki az összes sor számát ahol oszlop `t4` értéket tartalmazza `[ERROR]`. A jelen nyilatkozat egy értékét adja vissza `3` mert három sort, amely tartalmazza ezt az értéket.
+   * `SELECT`: Válassza ki az összes olyan sor számát, `t4` amelyben az oszlop `[ERROR]`tartalmazza az értéket. Ez az utasítás egy értéket ad `3` vissza, mert három sor tartalmazza ezt az értéket.
 
-   * `INPUT__FILE__NAME LIKE '%.log'` -Arra utasítja a Hive, hogy azt kell csak adatokat adja vissza a végződésű fájlokból. napló. Ehhez a záradékhoz korlátozza a keresést a sample.log fájlt, amely tartalmazza az adatokat.
+   * `INPUT__FILE__NAME LIKE '%.log'`– A struktúra azt jelzi, hogy csak a. log fájlban végződő fájlok adatait kell visszaadnia. Ez a záradék korlátozza a keresést a sample. log fájlban, amely tartalmazza az adathalmazt.
 
-3. Az eszköztáron válassza ki a **HDInsight-fürt** , amely ehhez a lekérdezéshez használandó. Válassza ki **küldés** fiókként való futtatásra az utasításokat egy Hive-feladatot.
+6. Az eszköztáron válassza ki a lekérdezéshez használni kívánt **HDInsight-fürtöt** . Válassza a **Submit (Küldés** ) lehetőséget az utasítások struktúra-feladatokként való futtatásához.
 
-   ![Küldje el sáv](./media/apache-hadoop-use-hive-visual-studio/toolbar.png)
+   ![Az Azure HDInsight eszköztárának elküldése](./media/apache-hadoop-use-hive-visual-studio/hdinsight-toolbar-submit.png)
 
-4. A **Hive feladat összegzése** jelenik meg, és megjeleníti a futó feladat adatait. Használja a **frissítése** frissítse a feladat adatait, amíg a hivatkozás a **feladatállapot** vált **befejezve**.
+7. Megjelenik a **kaptár-feladatok összegzése** , és megjeleníti a futó feladattal kapcsolatos információkat. A **frissítés** hivatkozásra kattintva frissítse a feladatokat, amíg a **feladatok állapota** **Befejezve**nem változik.
 
-   ![Feladat összegzése feladat megjelenítése](./media/apache-hadoop-use-hive-visual-studio/jobsummary.png)
+   ![befejezett feladatot megjelenítő feladatok összegzése](./media/apache-hadoop-use-hive-visual-studio/hdinsight-job-summary.png)
 
-5. Használja a **Feladatkimenet** hivatkozásra a feladat kimenetének megtekintéséhez. Megjeleníti `[ERROR] 3`, azaz a lekérdezés által visszaadott értéket.
+8. A feladatok kimenetének megtekintéséhez használja a **feladatok kimeneti** hivatkozását. Ekkor megjelenik `[ERROR] 3`a lekérdezés által visszaadott érték.
 
-6. Hive-lekérdezések a projekt létrehozása nélkül is futtathatja. Használatával **Server Explorer**, bontsa ki a **Azure** > **HDInsight**, kattintson a jobb gombbal a HDInsight-kiszolgáló, és válassza **egy Hive-lekérdezés írása** .
+### <a name="additional-example"></a>További példa
 
-7. Az a **temp.hql** dokumentum, amely akkor jelenik meg, adja hozzá a következő hiveql:
+Ez a példa az `log4jLogs` előző lépésben létrehozott táblára támaszkodik.
 
-   ```hiveql
-   set hive.execution.engine=tez;
-   CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) STORED AS ORC;
-   INSERT OVERWRITE TABLE errorLogs SELECT t1, t2, t3, t4, t5, t6, t7 FROM log4jLogs WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log';
-   ```
+1. A **Server Explorerben**kattintson a jobb gombbal a fürtre, és válassza a **kaptár-lekérdezés írása**lehetőséget.
 
-    Ezek az utasítások hajtsa végre a következő műveleteket:
+2. Adja meg a következő kaptár-lekérdezést:
 
-   * `CREATE TABLE IF NOT EXISTS`: Egy táblát hoz létre, ha azt nem létezik. Mivel a `EXTERNAL` kulcsszó nem használható, ez az utasítás létrehoz egy belső táblázatban. A belső táblázatok Hive adattárházban tárolódnak, és Hive kezeli.
+    ```hql
+    set hive.execution.engine=tez;
+    CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) STORED AS ORC;
+    INSERT OVERWRITE TABLE errorLogs SELECT t1, t2, t3, t4, t5, t6, t7 FROM log4jLogs WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log';
+    ```
 
-     > [!NOTE]  
-     > Ellentétben `EXTERNAL` táblákat, egy belső tábla elvetését is törli az alapul szolgáló adatokat.
+    Ezek az utasítások a következő műveleteket hajtják végre:
 
-   * `STORED AS ORC`: Tárolja az adatokat optimalizált sor Oszlopalapú (ORC formátumban). ORC Hive-adatok tárolására szolgáló nagymértékben optimalizált és hatékony formátumban.
+    * `CREATE TABLE IF NOT EXISTS`: Létrehoz egy táblát, ha még nem létezik. Mivel a `EXTERNAL` kulcsszó nincs használatban, az utasítás belső táblát hoz létre. A belső táblákat a rendszer a struktúra adattárházában tárolja, és a struktúra kezeli.
+    
+    > [!NOTE]  
+    > A `EXTERNAL` táblákkal ellentétben a belső táblák eldobása is törli az alapul szolgáló adatokat.
 
-   * `INSERT OVERWRITE ... SELECT`: A sorok kiválasztása a `log4jLogs` tartalmazó tábla `[ERROR]`, majd beszúrja az adatokat a `errorLogs` tábla.
+    * `STORED AS ORC`: Az adatok az optimalizált sorok oszlopos (ORK) formátumban vannak tárolva. Az ork kiválóan optimalizált és hatékony formátum a kaptárak adatok tárolására.
+    
+    * `INSERT OVERWRITE ... SELECT`: Kiválasztja azokat a sorokat `log4jLogs` , amelyek tartalmazzák `[ERROR]`a táblát, majd beszúrja az `errorLogs` adatait a táblába.
 
-8. Az eszköztáron válassza **küldés** futtatja a feladatot. Használja a **feladatállapot** meghatározni, hogy a feladat sikeresen befejeződött.
+3. Futtassa a lekérdezést **Batch** módban.
 
-9. Győződjön meg arról, hogy a feladat létrehozása a táblában, használja a **Server Explorer** csomópontot **Azure** > **HDInsight** > a HDInsight-fürt >  **Hive-adatbázisok** > **alapértelmezett**. A **hibanaplókat** tábla és a **log4jLogs** táblázatban szerepelnek.
+4. Annak ellenőrzéséhez, hogy a feladatot hozta-e létre, használja a **Server Explorert** , és bontsa ki az **Azure** > **HDInsight** > a HDInsight-fürtöt > **kaptár-adatbázisok** > **alapértelmezésben** Megjelenik a **alkalmazásnaplókat** tábla és a **log4jLogs** tábla.
 
 ## <a id="nextsteps"></a>Következő lépések
 
-Amint láthatja, a HDInsight tools for Visual Studio a HDInsight Hive-lekérdezések dolgozhat egyszerű módot biztosítanak.
+Amint láthatja, a Visual studióhoz készült HDInsight Tools egyszerű módszert biztosít a HDInsight-beli kaptár-lekérdezésekkel való együttműködésre.
 
-Általános információk a HDInsight Hive-ról:
+Általános információk a HDInsight-struktúrával kapcsolatban:
 
-* [Apache Hive használata a HDInsight Apache Hadoop-keretrendszerrel](hdinsight-use-hive.md)
+* [Apache Hive használata a HDInsight Apache Hadoop használatával](hdinsight-use-hive.md)
 
-Egyéb módjaival kapcsolatos további információk a HDInsight Hadoop-keretrendszerrel használhatja:
+További információ a Hadoop a HDInsight-ben való használatával kapcsolatos egyéb módszerekről:
 
-* [Az Apache Pig használata a HDInsight Apache Hadoop-keretrendszerrel](hdinsight-use-pig.md)
+* [Az Apache Pig használata a Apache Hadoop on HDInsight](hdinsight-use-pig.md)
 
-* [A HDInsight az Apache Hadoop MapReduce használata](hdinsight-use-mapreduce.md)
+* [A MapReduce használata a HDInsight Apache Hadoop használatával](hdinsight-use-mapreduce.md)
 
-Kapcsolatos további részletekért a HDInsight tools for Visual Studio:
+További információ a Visual studióhoz készült HDInsight-eszközökről:
 
-* [Ismerkedés a HDInsight tools for Visual Studio](apache-hadoop-visual-studio-tools-get-started.md)
-
-[azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
-
-[apache-tez]: https://tez.apache.org
-[apache-hive]: https://hive.apache.org/
-[apache-log4j]: https://en.wikipedia.org/wiki/Log4j
-[hive-on-tez-wiki]: https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez
-[import-to-excel]: https://azure.microsoft.com/documentation/articles/hdinsight-connect-excel-power-query/
-
-
-[hdinsight-use-oozie]: hdinsight-use-oozie-linux-mac.md
-
-
-
-[hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
-
-[hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md
-[hdinsight-submit-jobs]:submit-apache-hadoop-jobs-programmatically.md
-[hdinsight-upload-data]: hdinsight-upload-data.md
-[hdinsight-get-started]:apache-hadoop-linux-tutorial-get-started.md
-
-[powershell-here-strings]: https://technet.microsoft.com/library/ee692792.aspx
-
-[image-hdi-hive-powershell]: ./media/hdinsight-use-hive/HDI.HIVE.PowerShell.png
-[img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png
-[image-hdi-hive-architecture]: ./media/hdinsight-use-hive/HDI.Hive.Architecture.png
+* [A HDInsight Tools for Visual Studio első lépései](apache-hadoop-visual-studio-tools-get-started.md)

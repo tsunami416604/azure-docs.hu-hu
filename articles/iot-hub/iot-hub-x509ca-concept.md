@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
 ms.openlocfilehash: 3c7e1167b3326620863d35cb2d4b07235cbd5517
-ms.sourcegitcommit: e89b9a75e3710559a9d2c705801c306c4e3de16c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59571345"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61320230"
 ---
 # <a name="conceptual-understanding-of-x509-ca-certificates-in-the-iot-industry"></a>Az IoT-iparág x.509-es Hitelesítésszolgáltatói tanúsítványok fogalmi ismertetése
 
@@ -117,7 +117,7 @@ Utolsó, de nem a hitelesítésszolgáltató a hitelesítési módszer infuses b
 
 Ez a folyamat támaszkodik bizonyos Előfeltételek, amely a teljesség kell jelennek meg. Független eszköz egyedi nyilvános/titkos kulcspár létrehozása és a titkos kulccsal védeni az eszközön belül van szükség. Szerencsére létezik biztonságos szilícium lapkák formájában a Hardver biztonságos modulok (HSM) képes a belső generálása kulcsok és titkos kulcsok védelme. X vállalat csak hozzá kell adnia egy ilyen lapkák intelligenskártya-X-Widget a összetevő anyagjegyzék be.
 
-## <a name="device-connection"></a>Eszköz kapcsolata
+## <a name="device-connection"></a>Eszköz kapcsolat
 
 A fenti korábbi szakaszokban rendelkezik lett halmoz fel a eszköz kapcsolat. Egyszerűen regisztrálja az IoT Hub-x.509-es Hitelesítésszolgáltatói tanúsítványok egy időben, hogyan potenciálisan több millió eszköz csatlakoztatása és első hitelesítést hajtottak végre az első alkalommal?  Egyszerű; az azonos tanúsítvány feltöltése és a koncepció-az-birtokában folyamat azt korábban észlelt az x.509-es Hitelesítésszolgáltatói tanúsítvány regisztrálása.
 

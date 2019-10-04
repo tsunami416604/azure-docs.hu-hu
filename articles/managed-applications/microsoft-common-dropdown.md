@@ -1,6 +1,6 @@
 ---
-title: Az Azure legördülő felhasználói felületi elem |} Microsoft Docs
-description: Azure-portálon a Microsoft.Common.DropDown felhasználói felületi elem ismerteti.
+title: Az Azure legördülő felhasználói felületi elemben |} A Microsoft Docs
+description: Az Azure portal a Microsoft.Common.DropDown felhasználói felületi elem ismerteti.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: f953e1dc15e12c37c30a86ebd7536b1126bf18f7
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: e78fa419b067c0bad48229dcfd8d4e986fc16903
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062000"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62117301"
 ---
-# <a name="microsoftcommondropdown-ui-element"></a>Microsoft.Common.DropDown felhasználói felületi elem
-A legördülő lista kijelölési vezérlőt.
+# <a name="microsoftcommondropdown-ui-element"></a>Microsoft.Common.DropDown UI element
+Egy legördülő lista kiválasztása vezérlőt.
 
 ## <a name="ui-sample"></a>Felhasználói felület minta
 ![Microsoft.Common.DropDown](./media/managed-application-elements/microsoft.common.dropdown.png)
@@ -53,10 +53,10 @@ A legördülő lista kijelölési vezérlőt.
 
 ## <a name="remarks"></a>Megjegyzések
 
-- A címke `constraints.allowedValues` a megjelenített szöveg-e egy elem, és a kimeneti értéket, az elem kiválasztásakor értéke.
+- A címke `constraints.allowedValues` egy elem a megjelenített szöveg, és a kimeneti érték, amikor a kijelölt elem értéke.
 - Ha meg van adva, az alapértelmezett érték lehet egy címke szerepel `constraints.allowedValues`. Ha nincs megadva, az első elem az `constraints.allowedValues` van kiválasztva. Az alapértelmezett érték **null**.
-- `constraints.allowedValues` legalább egy elemmel kell rendelkeznie.
-- Nem kötelező értéket emulációjához, vegyen fel egy elemet, címke és értékének `""` (üres karakterlánc) való `constraints.allowedValues`.
+- `constraints.allowedValues` rendelkeznie kell legalább egy elemet.
+- Nem kötelező értéket emulációjához, vegyen fel egy elemet, egy címke és érték `""` (üres karakterlánc) való `constraints.allowedValues`.
 
 ## <a name="sample-output"></a>Példa kimenet
 ```json
@@ -64,5 +64,5 @@ A legördülő lista kijelölési vezérlőt.
 ```
 
 ## <a name="next-steps"></a>További lépések
-* A bevezetést UI-definíciók létrehozásáról lásd: [Ismerkedés a CreateUiDefinition](create-uidefinition-overview.md).
-* Általános tulajdonságok felhasználói felületi elemei ismertetését lásd: [CreateUiDefinition elemek](create-uidefinition-elements.md).
+* Felhasználóifelület-definíciók létrehozása bevezetésért lásd: [CreateUiDefinition használatának első lépései](create-uidefinition-overview.md).
+* Egy felhasználói felületi elemeket általános tulajdonságok leírásáért lásd: [CreateUiDefinition elemek](create-uidefinition-elements.md).

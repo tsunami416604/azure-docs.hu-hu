@@ -3,8 +3,8 @@ title: Az Azure Active Directory hozzájárulási keretrendszer
 description: További információ az Azure Active Directory és az hogyan, megkönnyíti a több-bérlős webes és natív ügyfélalkalmazások fejlesztéséhez a hozzájárulási keretrendszer.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/30/2018
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f01555933ca8b3d0c48a956d3deb4b3356b4e1a2
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: 7b9d272c8a01eeed58278a6e7f0cec147b01a10e
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59564958"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482936"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Az Azure Active Directory hozzájárulási keretrendszer
 
@@ -40,7 +40,7 @@ A következő lépések bemutatják, hogyan beleegyezése élmény az alkalmazá
 
 1. Fel, hogy egy ügyfél webalkalmazást, amely egy erőforrás és az API eléréséhez adott engedélyek kéréséhez szükséges. Megtudhatja, hogyan ehhez a következő szakaszban Ez a konfiguráció, de alapvetően az Azure portal segítségével alkalmazásengedély-kérelmeket deklarálja a konfiguráláskor. Egyéb olyan konfigurációs beállításoknak, például az alkalmazás Azure AD-regisztrációs részét képezik azok:
 
-    ![Egyéb alkalmazások engedélyei](./media/quickstart-v1-integrate-apps-with-azure-ad/requiredpermissions.png)
+    ![Egyéb alkalmazások engedélyei](./media/consent-framework/permissions.png)
 
 1. Vegye figyelembe, hogy az Alkalmazásengedélyek frissítve lett-e, az alkalmazás fut, és egy felhasználó arra készül, hogy első alkalommal használja. Az alkalmazás először szüksége van egy engedélyezési kód beszerzése az Azure AD-ből `/authorize` végpont. Az engedélyezési kód majd egy új hozzáférési beszerezni, és a jogkivonat frissítésére használható.
 
@@ -50,7 +50,7 @@ A következő lépések bemutatják, hogyan beleegyezése élmény az alkalmazá
 
 1. Miután a felhasználó jelentkezett be, az Azure AD határozza meg, ha a felhasználónak megjelenítendő egy hozzájárulást kérő lap. Ez a döntés e a felhasználó (vagy a szervezet rendszergazdája) már megadta az alkalmazás jóváhagyásának alapul. Jóváhagyás nem már rendelkezik, ha az Azure AD felkéri a felhasználót a hozzájárulásra, és megjeleníti a működéséhez szükséges engedélyekkel. A beleegyezés párbeszédpanelen megjelenő engedélykészletet egyeznek a kiválasztott azokkal a **delegált engedélyek** az Azure Portalon.
 
-    ![Felhasználói jóváhagyás élmény](./media/quickstart-v1-integrate-apps-with-azure-ad/consent.png)
+    ![A beleegyezés párbeszédpanelen látható engedélyeket egy példát mutat be](./media/quickstart-v1-integrate-apps-with-azure-ad/consent.png)
 
 1. Miután a felhasználó engedélyezi a jóváhagyás, az engedélyezési kódot az alkalmazás, amely váltják a hozzáférési jogkivonat beszerzése és a frissítési token vissza küld vissza. Ezzel a folyamattal kapcsolatos további információkért lásd: [webes API-alkalmazás típusa](web-api.md).
 
@@ -58,11 +58,10 @@ A következő lépések bemutatják, hogyan beleegyezése élmény az alkalmazá
 
     **Hogy engedélyt adjanak az alkalmazás a delegált engedélyek**
 
-   1. Nyissa meg a **beállítások** oldalon az alkalmazás
-   1. Válassza ki **szükséges engedélyek**.
-   1. Kattintson a **engedélyeket** gombra.
+   1. Nyissa meg a **API-engedélyek** oldalon az alkalmazás
+   1. Kattintson a **biztosítson rendszergazdai jóváhagyás** gombra.
 
-      ![Engedélyek megadása az explicit rendszergazdai jóváhagyás](./media/quickstart-v1-integrate-apps-with-azure-ad/grantpermissions.png)
+      ![Engedélyek megadása az explicit rendszergazdai jóváhagyás](./media/consent-framework/grant-consent.png)
 
    > [!IMPORTANT]
    > Hozzájárulás megadása az explicit használatával a **engedélyeket** gomb ADAL.js használó egyoldalas alkalmazások (SPA) jelenleg szükség. Ellenkező esetben a kérelem sikertelen lesz, amikor a hozzáférési jogkivonatot kér.

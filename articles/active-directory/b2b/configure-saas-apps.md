@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 05/23/2017
 ms.author: mimart
 author: msmimart
-manager: daveba
+manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7a652ab4283321c5934b32fdc5478bb5d79e4a7
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 35dad420aa004e27ec974c494dc66e9b8e13c733
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58293130"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65811942"
 ---
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>B2B-együttműködés a SaaS-alkalmazások konfigurálása
 
@@ -81,7 +81,7 @@ Engedélyezheti a felhasználók be vendég felhasználók hitelesítése az Azu
 
    ![Az egyszeri bejelentkezés beállításainak beállításait bemutató képernyőkép](media/configure-saas-apps/configure-box-sso.png)
 
-   a. Az a **bejelentkezési URL-cím** ellenőrizze, hogy, hogy a bejelentkezési URL-cím van beállítva megfelelően be az Azure Portalon. Az URL-címet a Box.com-bérlői URL-címe. Azt az elnevezési konvenciót kell követniük *https://.box.com*.  
+   a. Az a **bejelentkezési URL-cím** ellenőrizze, hogy, hogy a bejelentkezési URL-cím van beállítva megfelelően be az Azure Portalon. Az URL-címet a Box.com-bérlői URL-címe. Azt az elnevezési konvenciót kell követniük *https://.box.com* .  
    A **azonosító** nem vonatkozik az alkalmazáshoz, de is megjelenik a kötelező mező.
 
    b. Az a **felhasználóazonosító** mezőbe írja be **user.mail** (az egyszeri bejelentkezés az vendégfiókok).

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/06/2018
 ms.author: magoedte
-ms.openlocfilehash: c8a5c839d6d662f9d330099f89c97eb83c4fe516
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: e1d47be159d4721aed4b055a51acf675688b855e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577084"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65071795"
 ---
 # <a name="how-to-manage-the-azure-monitor-for-containers-agent"></a>Az Azure Monitor tárolók ügynök kezelése
 Tárolókhoz az Azure Monitor egy tárolóalapú verzióját használja, a Log Analytics-ügynök Linux rendszeren. Kezdeti telepítés után nincsenek rutin vagy választható feladatok végrehajtásához életciklusa során szükség lehet. Ez a cikk részletesen manuálisan frissítse az ügynököt, és tiltsa le az adott tároló környezeti változóit. 
@@ -35,7 +35,7 @@ Az ügynök frissítési folyamata két egyszerű lépésből áll. Az első lé
 >Ezt a karbantartási tevékenységet hajt végre, gyűjtött adatokat nem továbbítja a fürt csomópontjainak, majd azt teljesítménynézetet nem jelenik meg az adatok közötti idő eltávolíthatja az ügynököt, és az új verzió telepítése. 
 >
 
-Az ügynök az új verzió telepítéséhez kövesse a leírt lépéseket követve a [előkészítése figyelési](container-insights-onboard.md?#enable-using-azure-cli) című cikket, a folyamat befejezéséhez az Azure CLI használatával.  
+Az ügynök az új verzió telepítéséhez kövesse a leírt lépéseket követve a [engedélyezze a monitorozást az Azure CLI-vel](container-insights-enable-new-cluster.md#enable-using-azure-cli), a folyamat befejezéséhez.  
 
 Miután a figyelés újbóli engedélyezését, körülbelül 15 percet, mielőtt a fürt frissített mérőszámok megtekintéséhez vehet igénybe. Az ügynök frissítése sikerült ellenőrzéséhez futtassa a parancsot: `kubectl logs omsagent-484hw --namespace=kube-system`
 

@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 2/23/2018
 ms.author: atsenthi
 ms.openlocfilehash: b8e66a9d5bba0c48f15b1ccd3f2d47e5405db792
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59785598"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60718368"
 ---
 # <a name="package-an-application"></a>Alkalmazás becsomagolása
 
@@ -216,7 +216,7 @@ Visual Studio csomagokat a központi telepítést a tömörítendő hozzáadás�
 
 ## <a name="create-an-sfpkg"></a>Hozzon létre egy sfpkg
 
-6.1-es verzióval kezdődően a Service Fabric lehetővé teszi a külső adattárba kiépítése.
+6\.1-es verzióval kezdődően a Service Fabric lehetővé teszi a külső adattárba kiépítése.
 Ezzel a beállítással az alkalmazáscsomag nem kell átmásolni a lemezképtároló. Ehelyett létrehozhat egy `sfpkg` , és töltse fel az egy külső tároló, majd adja meg a letöltési URI-t a Service Fabric üzembe helyezésekor. Több fürt ugyanaz a csomag építhető ki. Másolja a csomagot minden egyes fürt szükséges idő a külső tárolóból kiépítés menti.
 
 A `sfpkg` fájlt a zip, a kezdeti alkalmazáscsomag tartalmazza, és a bővítmény ".sfpkg".

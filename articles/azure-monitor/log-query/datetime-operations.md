@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.openlocfilehash: 402511ba3c45e8bd12cb7f92ecd54f6084c8ada2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58009013"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62112357"
 ---
 # <a name="working-with-date-time-values-in-azure-monitor-log-queries"></a>Dátum idő értékek az Azure Monitor log-lekérdezések használata
 
@@ -39,8 +39,8 @@ Mérföldkövei időegységet követ tizedes fejezik ki:
 |:---|:---|
 |n           | nap          |
 |ó           | óra         |
-|p           | perc       |
-|s           | másodperc       |
+|p           | Percenként       |
+|s           | A másodpercenként       |
 |ms          | ezredmásodpercnél  |
 |mikroszekundumos | mikroszekundumos  |
 |osztásjelek        | nanoszekundumos   |
@@ -134,7 +134,7 @@ Event
 
 Ez a lekérdezés eredménye a következő:
 
-|időbélyeg|count_|
+|timestamp|count_|
 |--|--|
 |2018-07-28T00:00:00.000|7,136|
 |2018-07-29T00:00:00.000|12,315|
@@ -153,7 +153,7 @@ Event
 
 ## <a name="related-functions"></a>Kapcsolódó függvények
 
-| Kategória | Függvény |
+| Category | Függvény |
 |:---|:---|
 | Az adattípusok konvertálása | [ToDateTime](/azure/kusto/query/todatetimefunction)[totimespan](/azure/kusto/query/totimespanfunction)  |
 | A dobozméretet kerek érték | [bin](/azure/kusto/query/binfunction) |

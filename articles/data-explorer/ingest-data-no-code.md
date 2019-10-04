@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: tutorial
-ms.date: 04/07/2019
-ms.openlocfilehash: 9f4b7ee0dcc87ca03fd051be0dacedf0912b5320
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 04/29/2019
+ms.openlocfilehash: 187aa4b02e389c485b24ad7de256422d1880182b
+ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59262907"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64872586"
 ---
 # <a name="tutorial-ingest-data-in-azure-data-explorer-without-one-line-of-code"></a>Oktatóanyag: Az Azure Data Explorer adatokat egyetlen sor kód nélkül
 
@@ -380,7 +380,7 @@ Most meg kell a adatkapcsolatokat, a diagnosztikai naplók és a vizsgálati nap
     |---|---|---|
     | **Tábla** | *DiagnosticLogsRawRecords* | A létrehozott tábla a *TestDatabase* adatbázis. |
     | **Adatformátum** | *JSON* | A formátumot használja a táblában. |
-    | **Oszlopleképezés** | *DiagnosticLogsRecordsMapping* | A létrehozott hozzárendelést a *TestDatabase* adatbázis, amely bejövő JSON-adatokat az oszlop nevükkel és adattípusukkal a *DiagnosticLogsRecords* tábla.|
+    | **Oszlopleképezés** | *DiagnosticLogsRecordsMapping* | A létrehozott hozzárendelést a *TestDatabase* adatbázis, amely bejövő JSON-adatokat az oszlop nevükkel és adattípusukkal a *DiagnosticLogsRawRecords* tábla.|
     | | |
 
 1. Kattintson a **Létrehozás** gombra.  

@@ -1,64 +1,63 @@
 ---
-title: Teljesítménycsökkenés – az Azure App Service – hibaelhárítás |} A Microsoft Docs
-description: Ez a cikk segít a lassú alkalmazástelepítések teljesítményproblémák elhárítása az Azure App Service-ben.
+title: A teljesítmény romlásának megoldása – Azure App Service | Microsoft Docs
+description: Ez a cikk segítséget nyújt a lassú alkalmazások teljesítményével kapcsolatos hibák elhárításában Azure App Service.
 services: app-service\web
 documentationcenter: ''
 author: cephalin
 manager: erikre
 editor: ''
 tags: top-support-issue
-keywords: webes alkalmazások teljesítményét, lassú alkalmazástelepítések alkalmazás lassú
+keywords: webalkalmazás teljesítménye, lassú alkalmazás, alkalmazás lassú
 ms.assetid: b8783c10-3a4a-4dd6-af8c-856baafbdde5
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2d17991854f13f889c4e8c3a8c6f18e933655546
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3f7389022eaee4268d5d4fc5439b64d7f7f1bf07
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57884222"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066529"
 ---
-# <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>Az Azure App Service szolgáltatásban lassú teljesítménybeli problémáinak hibaelhárítása
-Ez a cikk segítséget nyújt a lassú alkalmazástelepítések teljesítménnyel kapcsolatos problémáinak elhárítása [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714).
+# <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>A lassú alkalmazások teljesítményével kapcsolatos hibák elhárítása Azure App Service
+Ez a cikk segítséget nyújt a lassú alkalmazások teljesítményével kapcsolatos hibák elhárításában [Azure app Service](https://go.microsoft.com/fwlink/?LinkId=529714).
 
-Ha ebben a cikkben bármikor további segítségre van szüksége, forduljon az Azure-szakértőket a [az MSDN Azure és a Stack Overflow-fórumok](https://azure.microsoft.com/support/forums/). Másik megoldásként is fájl is egy Azure-támogatási esemény. Nyissa meg a [Azure támogatási webhelyén](https://azure.microsoft.com/support/options/) , majd kattintson a **támogatás kérése**.
+Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel [az MSDN Azure-ban és a stack overflow fórumokon](https://azure.microsoft.com/support/forums/). Azt is megteheti, hogy Azure-támogatási incidenst is beküld. Nyissa meg az [Azure támogatási](https://azure.microsoft.com/support/options/) webhelyét, és kattintson a **támogatás kérése**lehetőségre.
 
 ## <a name="symptom"></a>Jelenség
-Amikor, keresse meg az alkalmazást, a lapok terhelés lassan és néha időkorlátja.
+Amikor megkeresi az alkalmazást, az oldalak lassan és időnként időtúllépéssel töltődnek be.
 
 ## <a name="cause"></a>Ok
-Ezt gyakran okozza alkalmazás szintű problémákat, például:
+Ezt a problémát gyakran az alkalmazási szintű problémák okozzák, például:
 
-* hosszú ideig tart a hálózati kérések
-* alkalmazás éppen nem elég hatékony kód vagy az adatbázis lekérdezések
-* magas memória és CPU-t használó alkalmazás
-* az alkalmazás összeomlik kivétel miatt
+* a hálózati kérelmek hosszú időt vesznek igénybe
+* az alkalmazás kódja vagy az adatbázis lekérdezése nem hatékony
+* nagy memóriát/CPU-t használó alkalmazás
+* az alkalmazás összeomlik egy kivétel miatt
 
 ## <a name="troubleshooting-steps"></a>Hibaelhárítási lépések
-Hibaelhárítási három különböző feladatokat, egymást követő sorrendben osztható:
+A hibaelhárítás három különálló feladatra osztható, szekvenciális sorrendben:
 
-1. [Figyelje meg, és figyelheti az alkalmazások viselkedése](#observe)
-2. [Adatok gyűjtése](#collect)
-3. [A probléma megoldásához](#mitigate)
+1. [Az alkalmazások viselkedésének megfigyelése és figyelése](#observe)
+2. [Adatgyűjtés](#collect)
+3. [A probléma enyhítése](#mitigate)
 
-[App Service-ben](overview.md) minden lépésnél különféle lehetőségeket kínál.
+[App Service](overview.md) az egyes lépésekben különböző lehetőségeket biztosít.
 
 <a name="observe" />
 
-### <a name="1-observe-and-monitor-application-behavior"></a>1. Figyelje meg, és figyelheti az alkalmazások viselkedése
-#### <a name="track-service-health"></a>Szolgáltatások állapotának nyomon követése
-A Microsoft Azure publicizes minden alkalommal, amikor a szolgáltatás megszakítás és a teljesítmény teljesítménycsökkenés van. A szolgáltatás állapotának követheti a a [az Azure portal](https://portal.azure.com/). További információkért lásd: [szolgáltatások állapotának nyomon követése](../monitoring-and-diagnostics/insights-service-health.md).
+### <a name="1-observe-and-monitor-application-behavior"></a>1. Az alkalmazások viselkedésének megfigyelése és figyelése
+#### <a name="track-service-health"></a>Szolgáltatás állapotának nyomon követése
+Microsoft Azure minden alkalommal nyilvánosságra kerül, amikor a szolgáltatás megszakad vagy a teljesítmény romlása. A szolgáltatás állapotát a [Azure Portal](https://portal.azure.com/)követheti nyomon. További információ: a [szolgáltatás állapotának nyomon követése](../monitoring-and-diagnostics/insights-service-health.md).
 
-#### <a name="monitor-your-app"></a>Figyelje alkalmazását
-Ez a beállítás lehetővé teszi, hogy ismerje meg, ha az alkalmazás van-e bármilyen probléma fel. Az app (webalkalmazás) panelen kattintson a **kérelmek és hibák** csempére. A **metrika** panel tartalmazza a mérőszámok is hozzáadhat.
+#### <a name="monitor-your-app"></a>Az alkalmazás figyelése
+Ezzel a beállítással megtudhatja, hogy az alkalmazás problémákba ütközik-e. Az alkalmazás paneljén kattintson a **kérelmek és hibák** csempére. A **metrika** panel megjeleníti az összes felvehető mérőszámot.
 
-A metrikák, amelyeket érdemes az alkalmazás figyelése néhány
+Előfordulhat, hogy az alkalmazáshoz figyelni kívánt metrikák némelyike
 
 * Átlagos memória-munkakészlet
 * Átlagos válaszidő
@@ -66,109 +65,109 @@ A metrikák, amelyeket érdemes az alkalmazás figyelése néhány
 * Memória-munkakészlet
 * Kérelmek
 
-![alkalmazás teljesítményének monitorozása](./media/app-service-web-troubleshoot-performance-degradation/1-monitor-metrics.png)
+![alkalmazás teljesítményének figyelése](./media/app-service-web-troubleshoot-performance-degradation/1-monitor-metrics.png)
 
 További információkért lásd:
 
-* [Alkalmazások figyelése az Azure App Service-ben](web-sites-monitor.md)
+* [Alkalmazások figyelése Azure App Service](web-sites-monitor.md)
 * [Riasztási értesítések fogadása](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)
 
 #### <a name="monitor-web-endpoint-status"></a>Webes végpont állapotának figyelése
-Ha az alkalmazás fut a **Standard** tarifacsomag, App Service lehetővé teszi két végpontot három földrajzi helyekről figyelése.
+Ha az alkalmazást a **standard** szintű díjszabásban futtatja, app Service két végpont figyelését teszi lehetővé három földrajzi helyről.
 
-Végpont-monitorozás konfigurálása a webes tesztek a földrajzilag elosztott helyeken, amelyek a válaszidő és a webes URL-címek, hasznos üzemidőt teszteléséhez. A vizsgálat egy HTTP GET művelet a válaszidő és a hasznos üzemidő meghatározni az egyes helyek a webes URL-címen hajt végre. Minden egyes konfigurált helyre egy teszt 5 percenként fut.
+A végpontok figyelése olyan földrajzilag elosztott helyekről konfigurálja a webes teszteket, amelyek a válaszadási időt és a webes URL-címek üzemidőét tesztelik. A teszt végrehajt egy HTTP GET műveletet a webes URL-címen, hogy meghatározza a válaszidő és az üzemidőt az egyes helyekről. Minden konfigurált hely 5 percenként futtat egy tesztet.
 
-HTTP-válaszkódot üzemidő felügyelik, és válasz ideje ezredmásodpercben. Egy figyelési teszt sikertelen, ha a HTTP-válaszkód nagyobb vagy egyenlő a 400-as vagy a válasz több mint 30 másodperc. A végpont elérhető, ha a figyelési tesztek futtatásához a megadott helyek sikeres számít.
+A üzemidőt a HTTP-válasz kódok használatával figyeli a rendszer, a válaszidő mérése pedig ezredmásodpercben történik. A figyelési teszt sikertelen, ha a HTTP-válasz kódja nagyobb vagy egyenlő, mint 400, vagy ha a válasz 30 másodpercnél hosszabb időt vesz igénybe. Egy végpont akkor tekinthető elérhetőnek, ha a figyelési tesztek az összes megadott helyről sikeresek voltak.
 
-Állítsa be, lásd: [alkalmazások figyelése az Azure App Service](web-sites-monitor.md).
+A beállításához lásd: [alkalmazások figyelése Azure app Serviceban](web-sites-monitor.md).
 
-Lásd még [megőrzése Azure-webhelyek mentése, valamint a végpont-Monitorozás – a Lengyel Schackow](https://channel9.msdn.com/Shows/Azure-Friday/Keeping-Azure-Web-Sites-up-plus-Endpoint-Monitoring-with-Stefan-Schackow) videó a végpont-monitorozás.
+Lásd még: az [Azure-webhelyek és a végpontok figyelése – Stefan Schackow](https://channel9.msdn.com/Shows/Azure-Friday/Keeping-Azure-Web-Sites-up-plus-Endpoint-Monitoring-with-Stefan-Schackow) a végpontok figyelésével kapcsolatos videókhoz.
 
-#### <a name="application-performance-monitoring-using-extensions"></a>Alkalmazásteljesítmény-figyelési bővítményekkel
-Az alkalmazás teljesítményéhez használatával is ellenőrizheti a *webhelybővítmény*.
+#### <a name="application-performance-monitoring-using-extensions"></a>Alkalmazások teljesítményének monitorozása bővítmények használatával
+Az alkalmazások teljesítményét a *hely bővítményének*használatával is nyomon követheti.
 
-Minden App Service-alkalmazás egy bővíthető felügyeleti végpontot, amely lehetővé teszi, hogy üzembe helyezett eszközök hatékony gyűjteménye, mint webhelybővítmények biztosít. Bővítmények a következők: 
+Az egyes App Service alkalmazások egy bővíthető felügyeleti végpontot biztosítanak, amely lehetővé teszi, hogy a helyi bővítményként telepített eszközök hatékony készletét használja. A bővítmények a következők: 
 
-- Kód szerkesztők, mint [Azure DevOps](https://www.visualstudio.com/products/what-is-visual-studio-online-vs.aspx). 
-- Felügyeleti eszközök csatlakoztatott források, például egy MySQL-adatbázishoz csatlakozik egy alkalmazást.
+- Forráskód-szerkesztők, például az [Azure DevOps](https://www.visualstudio.com/products/what-is-visual-studio-online-vs.aspx). 
+- A csatlakoztatott erőforrások, például egy alkalmazáshoz csatlakoztatott MySQL-adatbázis felügyeleti eszközei.
 
-[Az Azure Application Insights](https://azure.microsoft.com/services/application-insights/) egy teljesítményfigyelési webhelybővítmény is rendelkezésre áll. Az Application Insights használatához újra kell építeni a kód egy SDK-val. Bővítménye által biztosított további adatokhoz való hozzáférés is telepítheti. Az SDK lehetővé teszi, hogy írhat kódot a használatot és a további részleteket az alkalmazás teljesítményét. További információkért lásd: [webalkalmazások teljesítményének monitorozása](../azure-monitor/app/web-monitor-performance.md).
+Az [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) egy teljesítmény-figyelési hely kiterjesztése, amely szintén elérhető. Application Insights használatához újra kell építenie a kódot egy SDK-val. Olyan bővítményt is telepíthet, amely hozzáférést biztosít a további információkhoz. Az SDK lehetővé teszi, hogy kódot írjon az alkalmazás használatának és teljesítményének figyelésére részletesebben. További információ: [a teljesítmény figyelése a](../azure-monitor/app/web-monitor-performance.md)webalkalmazásokban.
 
 <a name="collect" />
 
 ### <a name="2-collect-data"></a>2. Adatok gyűjtése
-App Service-ben diagnosztikai funkciókat biztosít a naplózási információk a webalkalmazás-kiszolgáló és a webes alkalmazás. Az információk elkülönített web server diagnostics és az application diagnostics.
+A App Service diagnosztikai funkciókat biztosít a webkiszolgálóról és a webalkalmazásból származó adatok naplózásához. Az információk a webkiszolgáló-diagnosztika és az Application Diagnostics szolgáltatásban vannak elkülönítve.
 
-#### <a name="enable-web-server-diagnostics"></a>Web server diagnosztika engedélyezése
-Engedélyezheti vagy letilthatja a naplók a következő típusú:
+#### <a name="enable-web-server-diagnostics"></a>Webkiszolgáló-diagnosztika engedélyezése
+Engedélyezheti vagy letilthatja a következő típusú naplókat:
 
-* **Részletes hibanaplózás** – részletes (állapotkód: 400 vagy nagyobb) hibát jelző HTTP-állapotkódok hiba adatait. Ez tartalmazhat, amelyek segíthetnek meghatározni, miért érdemes a kiszolgáló a következő hibakódot adta vissza információt.
-* **Sikertelen kérelmek nyomkövetésére vonatkozó** – részletes információk a sikertelen kérelmek, beleértve a nyomkövetés feldolgozni a kérelmet, és az egyes összetevőkben ideje használja az IIS-összetevőt. Ez akkor lehet hasznos, ha próbált megnövelheti az alkalmazások teljesítményét, illetve meghatározhatja a mi egy adott HTTP hiba okozza.
-* **Webalkalmazás-kiszolgáló naplózási** -információ a W3C bővített naplófájlformátum használata HTTP-tranzakciót. Ez akkor hasznos, ha a teljes alkalmazás mérőszámokat, például a kezelt kérések, vagy hogy hány kérésnek egy adott IP-címről száma meghatározása.
+* **Részletes hiba naplózása** – a hibát jelző HTTP-állapotkódok részletes információi (400 vagy újabb állapotkód). Ez olyan információkat tartalmazhat, amelyek segíthetnek meghatározni, hogy a kiszolgáló miért adta vissza a hibakódot.
+* **Sikertelen** kérelmek nyomkövetése – részletes információk a sikertelen kérésekről, beleértve a kérés feldolgozásához és az egyes összetevőkben használt IIS-összetevők nyomkövetését. Ez akkor lehet hasznos, ha az alkalmazás teljesítményének javítására vagy egy adott HTTP-hiba okozta elkülönítésére tesz kísérletet.
+* **Webkiszolgáló-naplózás** – a W3C bővített naplófájl formátumával http-tranzakciókra vonatkozó információk. Ez hasznos lehet az alkalmazás általános metrikáinak, például a kezelt kérelmek számának vagy egy adott IP-címről érkező kérések meghatározásakor.
 
-#### <a name="enable-application-diagnostics"></a>Az application diagnostics engedélyezése
-Alkalmazásteljesítmény-adatokat gyűjteni az App Service-ben az alkalmazás a Visual Studióból élő, vagy módosítsa az alkalmazás kódjában, hogy a naplófájl további információkat és nyomkövetési profil többféle módon lehet. Lehetősége van a beállítások alapján az eszközök milyen mértékben fér hozzá az alkalmazás és a megfigyelt a figyelésből.
+#### <a name="enable-application-diagnostics"></a>Application Diagnostics engedélyezése
+Számos lehetőség áll rendelkezésre az alkalmazások teljesítményadatait App Serviceból való összegyűjtésére, az alkalmazás a Visual studióból való beolvasására, vagy az alkalmazás kódjának módosítására további információk és Nyomkövetések naplózása érdekében. A beállításokat az alkalmazáshoz és a figyelési eszközöktől megfigyelt hozzáférések alapján választhatja ki.
 
 ##### <a name="use-application-insights-profiler"></a>Application Insights Profiler használata
-Engedélyezheti az Application Insights Profiler részletes teljesítmény-nyomkövetések rögzítése elindításához. Akár rögzített nyomkövetések érheti el a múltban történt öt nappal ezelőtt mikor kell vizsgálni a problémákat. Ezt a lehetőséget is választja, mindaddig, amíg az alkalmazás Application Insights-erőforráshoz hozzáféréssel rendelkezik az Azure Portalon.
+Engedélyezheti a Application Insights Profiler a részletes teljesítmény-nyomkövetés rögzítésének megkezdéséhez. A nyomkövetéseket akár öt nappal ezelőtt is elérheti, ha a múltban történt problémák vizsgálatára van szükség. Ezt a beállítást akkor válassza, ha az alkalmazás Application Insights erőforrását Azure Portalon szeretné elérni.
 
-Application Insights Profiler válaszideje minden webes hívás- és nyomkövetési, amely jelzi, hogy melyik kódsort az okozza, a lassú válaszai nyújt információkat. Egyes esetekben az App Service-alkalmazás azért lassú bizonyos kód nem fog szerepelni a nagy teljesítményt nyújtva módja. Ilyenek például a szekvenciális kódot futtathat párhuzamos és a nemkívánatos adatbázis zárolási versenyt válthat ki. A kód a szűk keresztmetszetek eltávolítása növeli a teljesítményt az alkalmazás, de nehezen észlelhető összetettebb nyomkövetéseket és a naplók beállítása nélkül. Az Application Insights Profiler által összegyűjtött nyomok segít a lelassul, az alkalmazás kódsorokat azonosítása, és a nehézség App Service-alkalmazások számára.
+Application Insights Profiler statisztikai adatokat biztosít minden olyan webes hívás és nyomkövetés esetében, amely azt jelzi, hogy a kód mely sorában okozta a lassú válaszokat. Előfordulhat, hogy a App Service alkalmazás lassú, mert bizonyos kódok nem a megfelelő módon íródnak. Ilyenek például a szekvenciális kód, amely párhuzamos és nem kívánt adatbázis-zárolási tartalommal futtatható. Ha eltávolítja ezeket a szűk keresztmetszeteket a kódban, az megnöveli az alkalmazás teljesítményét, de nehéz felderíteni, hogy nem lettek kidolgozva a Nyomkövetések és a naplók. A Application Insights Profiler által összegyűjtött nyomkövetési funkció segítségével azonosíthatja a kód azon sorait, amelyek lelassítják az alkalmazást, és elhárítják ezt a kihívást App Service alkalmazások esetében.
 
- További információkért lásd: [profilkészítés az Azure App Service az Application Insights élő alkalmazások](../azure-monitor/app/profiler.md).
+ További információ: a [Azure app Service élő alkalmazásainak profilkészítése a Application Insights](../azure-monitor/app/profiler.md).
 
 ##### <a name="use-remote-profiling"></a>Távoli profilkészítés használata
-Az Azure App Service-webalkalmazások, API apps, mobil háttérrendszer, és a webjobs-feladatok távoli profilozhatók. Válassza ezt a lehetőséget, ha hozzáfér az alkalmazás-erőforrást, és tudja, hogyan reprodukálnia a hibát, vagy történik, ha ismeri a pontos időtartam alatt a teljesítménnyel kapcsolatos problémák.
+A Azure App Service a webalkalmazások, az API-alkalmazások, a mobil háttérrendszer és a webjobs távolról is létrehozhatók. Akkor válassza ezt a lehetőséget, ha rendelkezik hozzáféréssel az alkalmazás-erőforráshoz, és tudja, hogyan reprodukálja a problémát, vagy ha ismeri a probléma pontos időintervallumát.
 
-Távoli Profilace akkor hasznos, ha a folyamat CPU-használata túl magas és a folyamat a vártnál lassabban fut, vagy a HTTP-kérések késleltetésére értéke a szokásosnál magasabb, akkor távolról a folyamat kiértékelése és elemezheti a folyamat CPU mintavételi hívás vermek beolvasása tevékenység és a kód gyors elérésű útvonalak.
+A távoli profilkészítés akkor hasznos, ha a folyamat CPU-használata magas, és a folyamat a vártnál lassabban fut, vagy a HTTP-kérelmek késése a Normálnál magasabb, a folyamat lekérése és a CPU mintavételezési hívási verem a folyamat elemzéséhez tevékenység-és kód-elérési utak.
 
-További információkért lásd: [távoli profilkészítés támogatása az Azure App Service](https://azure.microsoft.com/blog/remote-profiling-support-in-azure-app-service).
+További információ: [távoli profilkészítés támogatása Azure app Service](https://azure.microsoft.com/blog/remote-profiling-support-in-azure-app-service).
 
-##### <a name="set-up-diagnostic-traces-manually"></a>Állítsa be a diagnosztikai nyomkövetéseket manuálisan
-Ha rendelkezik hozzáféréssel a webes alkalmazás forráskódjához, az Application diagnostics lehetővé teszi a webalkalmazások által létrehozott adatok rögzítését. ASP.NET-alkalmazások használhatják a `System.Diagnostics.Trace` osztályt az alkalmazásnaplóba diagnosztikai információk naplózása. Azonban szüksége a kódot, és újból üzembe helyeznie az alkalmazást. Ezt a módszert akkor ajánlott, ha az alkalmazás fut, a tesztelési környezeteket.
+##### <a name="set-up-diagnostic-traces-manually"></a>Diagnosztikai Nyomkövetések manuális beállítása
+Ha rendelkezik hozzáféréssel a webalkalmazás forráskódhoz, az Application Diagnostics lehetővé teszi a webalkalmazások által létrehozott információk rögzítését. A ASP.NET-alkalmazások az `System.Diagnostics.Trace` osztály használatával naplózzák az adatokat az Application Diagnostics-naplóba. Azonban módosítania kell a kódot, és újra kell telepítenie az alkalmazást. Ez a módszer akkor javasolt, ha az alkalmazás tesztelési környezetben fut.
 
-Az alkalmazás naplózásának konfigurálásáról részletes utasításokért lásd: [az Azure App Service-alkalmazások diagnosztikai célú naplózásának engedélyezése](troubleshoot-diagnostic-logs.md).
+Az alkalmazás naplózáshoz való konfigurálásának részletes ismertetését lásd: a [diagnosztikai naplózás engedélyezése a Azure app Service alkalmazásokhoz](troubleshoot-diagnostic-logs.md).
 
-#### <a name="use-the-diagnostics-tool"></a>A diagnosztikai eszközt használhatja
-Az App Service biztosítja egy intelligens és interaktív élmény szükséges konfiguráció nélkül az alkalmazás háríthatja el. Ha problémákat tapasztal az alkalmazással, a diagnosztikai eszköz, mi okozza a végigvezeti Önt a megfelelő információk könnyen és gyorsan elhárítása és a probléma megoldásához fog mutatni.
+#### <a name="use-the-diagnostics-tool"></a>A diagnosztikai eszköz használata
+A App Service egy intelligens és interaktív élményt nyújt, amely segít a szükséges konfigurációval kapcsolatos hibák megoldásában. Ha az alkalmazással kapcsolatos problémákba ütközik, a diagnosztikai eszköz kimutatja, hogy mi a baj, hogy a probléma megoldásához könnyebben és gyorsan javítsa a megfelelő információkat.
 
-Az App Service diagnosztikái eléréséhez keresse meg az App Service-alkalmazás vagy az App Service-környezet a [az Azure portal](https://portal.azure.com). A bal oldali navigációs sávján kattintson a **diagnosztizálása és a problémák megoldásához**.
+App Service diagnosztika eléréséhez nyissa meg a App Service alkalmazást vagy App Service Environment a [Azure Portalban](https://portal.azure.com). A bal oldali navigációs sávon kattintson a **problémák diagnosztizálása és megoldása**elemre.
 
-#### <a name="use-the-kudu-debug-console"></a>A Kudu hibakereső konzol használata
-App Service-ben tartalmaz egy hibakeresési konzolt, amely a hibakeresés, felfedezését, fájlok, valamint a környezet kapcsolatos információk lekérése JSON végpontjainak feltöltése is használhat. Ez a konzol nevezzük a *Kudu konzol* vagy a *SCM irányítópultján* az alkalmazáshoz.
+#### <a name="use-the-kudu-debug-console"></a>A kudu hibakeresési konzoljának használata
+A App Service egy hibakeresési konzolt tartalmaz, amellyel hibakeresést végezhet, megvizsgálhatja, feltöltheti és feltölthet fájlokat, valamint JSON-végpontokat a környezettel kapcsolatos információk beszerzéséhez. Ezt a konzolt az alkalmazás *kudu* -konzoljának vagy *SCM* -irányítópultjának nevezzük.
 
-Ezt az irányítópultot elérheti a hivatkozás a **https://&lt;az alkalmazás neve >.scm.azurewebsites.net/**.
+Ehhez az irányítópulthoz az **alkalmazás&lt;https://>. SCM. azurewebsites. net/** .
 
-Néhány dolog, ami a Kudu biztosít a következők:
+A kudu által biztosított néhány dolog:
 
-* az alkalmazás környezeti beállítások
-* naplóstream
+* az alkalmazás környezeti beállításai
+* napló Stream
 * diagnosztikai memóriakép
-* a hibakeresési konzolt, amelyben futtathatja a Powershell-parancsmagok és alapvető DOS-parancsok.
+* hibakeresési konzol, amelyen PowerShell-parancsmagokat és alapszintű DOS-parancsokat futtathat.
 
-Egy másik hasznos funkció, a Kudu, abban az esetben, ha az alkalmazás az első-alkalommal kivételeket dob, használhatja a Kudu, és kiírja a SysInternals eszköz Procdump memória létrehozásához. Ezek a memóriaképek pillanatfelvételei a folyamat, és gyakran segíthet az alkalmazás összetettebb hibáinak elhárítása.
+A kudu egy másik hasznos funkciója, hogy ha az alkalmazás első alkalommal kivételeket vált ki, akkor a kudu és a SysInternals eszköz Procdump használatával hozhat létre memóriaképeket. Ezek a memóriaképek a folyamat pillanatképei, és gyakran segítenek az alkalmazással kapcsolatos bonyolultabb problémák megoldásában.
 
-A Kudu elérhető funkciókról további információkért lásd: [kell tudni az Azure DevOps-eszközök](https://azure.microsoft.com/blog/windows-azure-websites-online-tools-you-should-know-about/).
+A kudu-ben elérhető szolgáltatásokkal kapcsolatos további információkért lásd: [Azure DevOps-eszközök](https://azure.microsoft.com/blog/windows-azure-websites-online-tools-you-should-know-about/).
 
 <a name="mitigate" />
 
-### <a name="3-mitigate-the-issue"></a>3. A probléma megoldásához
-#### <a name="scale-the-app"></a>Alkalmazások skálázása
-Az Azure App Service a jobb teljesítmény és az átviteli sebesség, módosíthatja a méretezési csoport, amikor az alkalmazás futtatásakor. Alkalmazás vertikális felskálázásával jár két kapcsolódó műveletek: az App Service-csomag módosítása egy magasabb díjszabási csomagot, és bizonyos beállítások konfigurálása után a magasabb tarifacsomagra vált.
+### <a name="3-mitigate-the-issue"></a>3. A probléma enyhítése
+#### <a name="scale-the-app"></a>Az alkalmazás méretezése
+Azure App Service a teljesítmény és az átviteli sebesség növelése érdekében módosíthatja azt a méretezést, amelyen az alkalmazást futtatja. Az alkalmazások horizontális felskálázása két kapcsolódó művelettel jár: a App Service terv magasabb árképzési szintre való módosításával, valamint bizonyos beállítások konfigurálásával, miután átváltotta a magasabb díjszabási szintet.
 
-Méretezéssel kapcsolatos további információkért lásd: [Skálázhatja őket egy Azure App Service-ben](web-sites-scale.md).
+További információ a skálázásról: [alkalmazások méretezése Azure app Serviceban](manage-scale-up.md).
 
-Emellett kiválaszthatja az alkalmazás futtatásához egynél több példányon. A horizontális skálázás nem csupán nyújt további feldolgozási képesség, de emellett bizonyos mennyiségű hibatűrést biztosít. Ha a folyamat több példányon leáll, a többi példány továbbra is kiszolgálni a kérelmeket.
+Emellett dönthet úgy is, hogy az alkalmazást egynél több példányon futtatja. A horizontális felskálázás nem csupán nagyobb feldolgozási képességet biztosít, ugyanakkor bizonyos mennyiségű hibatűrést is biztosít. Ha a folyamat egy példányon leáll, a többi példány továbbra is kéri a kérelmek kiszolgálását.
 
-Beállíthatja, hogy manuális vagy automatikus skálázása.
+Beállíthatja, hogy a méretezés manuális vagy automatikus legyen.
 
-#### <a name="use-autoheal"></a>Használja az autoheal funkciót
-Automatikus javítás funkció újrahasznosítja a munkavégző folyamat az alkalmazáshoz (például a konfigurációs módosítások, kérelmek, memória-alapú korlátok vagy a kérés végrehajtásához szükséges idő) kiválasztott beállítások alapján. Az esetek többségében a folyamat újraindítása a leggyorsabban úgy tudja elhárítani a problémát. Bár mindig újraindíthatja az alkalmazást közvetlenül az Azure Portalon, automatikus javítás funkció mindezt automatikusan megteszi Ön helyett. Ehhez szüksége néhány eseményindítók hozzáadása az alkalmazáshoz a legfelső szintű web.config. Ezek a beállítások akkor ugyanúgy működik, még ha az alkalmazás nem .NET-alkalmazás.
+#### <a name="use-autoheal"></a>Az autoheal használata
+Az automatikus gyógyulás a választott beállítások alapján újrahasznosítja az alkalmazás munkavégző folyamatát (például a konfiguráció módosításait, a kérelmeket, a memória alapú korlátokat vagy a kérelem végrehajtásához szükséges időt). A legtöbb esetben a folyamat újrahasznosítása a leggyorsabb módszer a probléma megoldására. Bár bármikor újraindíthatja az alkalmazást közvetlenül a Azure Portal belül, az automatikus javítás automatikusan elvégzi Önt. Mindössze annyit kell tennie, hogy a root web. config fájlban ad hozzá néhány eseményindítót az alkalmazásához. Ezek a beállítások ugyanúgy működnek, még akkor is, ha az alkalmazás nem .NET-alkalmazás.
 
-További információkért lásd: [Azure-webhelyek automatikus javításáról](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites/).
+További információ: az [Azure webhelyek automatikus](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites/)javítása.
 
-#### <a name="restart-the-app"></a>Indítsa újra az alkalmazást
-Újraindítás legtöbbször helyreállíthatja az egyszeri hibák legegyszerűbb módja. Az a [az Azure portal](https://portal.azure.com/), az alkalmazás paneljén a közül leállítani, vagy indítsa újra az alkalmazást.
+#### <a name="restart-the-app"></a>Az alkalmazás újraindítása
+Az újraindítás gyakran a legegyszerűbb módszer az egyszeri problémák elhárítására. A [Azure Portal](https://portal.azure.com/)az alkalmazás paneljén lehetősége van az alkalmazás leállítására vagy újraindítására.
 
- ![Indítsa újra az alkalmazást a teljesítménnyel kapcsolatos problémák megoldásához](./media/app-service-web-troubleshoot-performance-degradation/2-restart.png)
+ ![az alkalmazás újraindítása a teljesítménnyel kapcsolatos problémák megoldásához](./media/app-service-web-troubleshoot-performance-degradation/2-restart.png)
 
-Az alkalmazás az Azure Powershell használatával is kezelheti. További információ: [Az Azure PowerShell használata az Azure Resource Manager eszközzel](../powershell-azure-resource-manager.md).
+Az alkalmazást az Azure PowerShell használatával is kezelheti. További információ: [Az Azure PowerShell használata az Azure Resource Manager eszközzel](../powershell-azure-resource-manager.md).

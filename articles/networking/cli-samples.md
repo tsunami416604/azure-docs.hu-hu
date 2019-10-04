@@ -1,6 +1,6 @@
 ---
-title: Az Azure CLI minták |} Microsoft Docs
-description: Az Azure CLI-minták
+title: Azure CLI-minták | Microsoft Docs
+description: Azure CLI-minták
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -15,26 +15,26 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 04/25/2017
 ms.author: kumud
-ms.openlocfilehash: 7977460f61bfdabd399e45e86d9bbf2e5083992b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c612cdefa3f915212c43d7bdc4d48b10a593150b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23864125"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64705585"
 ---
-# <a name="azure-cli-samples-for-networking"></a>Hálózati Azure CLI-minták
+# <a name="azure-cli-samples-for-networking"></a>Hálózatkezelés az Azure CLI-minták
 
-A következő táblázat a bash parancsfájlok az Azure parancssori felület használatával készített mutató hivatkozásokat tartalmaz.
+A következő táblázat az Azure CLI használatával létrehozott bash parancsfájlokra mutató hivatkozásokat tartalmaz.
 
 | | |
 |-|-|
 |**Azure-erőforrások közötti kapcsolat**||
-| [A többrétegű alkalmazások virtuális hálózat létrehozása](./scripts/virtual-network-cli-sample-multi-tier-application.md?toc=%2fazure%2fnetworking%2ftoc.json) | Előtér- és alhálózatok hoz létre a virtuális hálózat. Az előtér-alhálózat felé irányuló forgalom korlátozódik HTTP és az SSH-közben az adatforgalom a háttér-alhálózathoz MySQL, port 3306 korlátozódik. |
-| [A két partner virtuális hálózatok](./scripts/virtual-network-cli-sample-peer-two-virtual-networks.md?toc=%2fazure%2fnetworking%2ftoc.json) | Hoz létre, és két virtuális hálózat ugyanabban a régióban kapcsolódik. |
-| [A hálózati virtuális készülék-útvonal forgalmát](./scripts/virtual-network-cli-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetworking%2ftoc.json) | Hoz létre egy virtuális hálózati előtér- és alhálózatok és virtuális gép, amely képes irányíthatja a forgalmat a két alhálózat között. |
-| [Bejövő és kimenő virtuális gép hálózati forgalom szűrésére](./scripts/virtual-network-filter-network-traffic.md?toc=%2fazure%2fnetworking%2ftoc.json) | Előtér- és alhálózatok hoz létre a virtuális hálózat. Az előtér-alhálózat bejövő hálózati forgalmának HTTP, HTTPS és SSH korlátozódik. Kimenő forgalom az internethez, a háttér-alhálózatból nem engedélyezett. |
-|**Terheléselosztás és a forgalom iránya betöltése**||
-| [Betöltési oszthatja el a forgalmat a virtuális gépek magas rendelkezésre álláshoz](./scripts/load-balancer-linux-cli-sample-nlb.md?toc=%2fazure%2fnetworking%2ftoc.json) | Több magas rendelkezésre állású virtuális gépek és az elosztott terhelésű konfigurációs hoz létre. |
-| [Terhelésének elosztása több webhely virtuális gépeken](./scripts/load-balancer-linux-cli-load-balance-multiple-websites-vm.md?toc=%2fazure%2fnetworking%2ftoc.json) | Hoz létre két virtuális gépek több IP-konfigurációk, csatlakozik Azure rendelkezésre állási csoport, az Azure Load Balancer keresztül érhető el. |
-| [A magas rendelkezésre állásának különféle régiókban közvetlen forgalom](./scripts/traffic-manager-cli-websites-high-availability.md?toc=%2fazure%2fnetworking%2ftoc.json) |  Két app service-csomagokról, a két web apps, a traffic manager-profil és a két traffic manager-végpont létrehozása |
+| [Virtuális hálózat létrehozása többrétegű alkalmazásokhoz](./scripts/virtual-network-cli-sample-multi-tier-application.md?toc=%2fazure%2fnetworking%2ftoc.json) | Egy virtuális hálózatot hoz létre előtérbeli és háttérbeli alhálózatokkal. Az előtérbeli alhálózat felé irányuló forgalom a HTTP- és az SSH-protokollon, a háttérbeli alhálózat felé irányuló forgalom pedig a MySQL-en, a 3306-os porton keresztül engedélyezett. |
+| [Társviszony létesítése két virtuális hálózat között](./scripts/virtual-network-cli-sample-peer-two-virtual-networks.md?toc=%2fazure%2fnetworking%2ftoc.json) | Két virtuális hálózatot hoz létre és csatlakoztat ugyanabban a régióban. |
+| [Forgalom irányítása hálózati virtuális készüléken keresztül](./scripts/virtual-network-cli-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetworking%2ftoc.json) | Egy virtuális hálózatot hoz létre előtérbeli és háttérbeli alhálózatokkal, valamint egy virtuális gépet, amely képes a két alhálózat közötti forgalom irányítására. |
+| [Virtuális gép kimenő és bejövő hálózati forgalmának szűrése](./scripts/virtual-network-filter-network-traffic.md?toc=%2fazure%2fnetworking%2ftoc.json) | Egy virtuális hálózatot hoz létre előtérbeli és háttérbeli alhálózatokkal. Az előtérbeli alhálózat bejövő hálózati forgalma HTTP, HTTPS és az SSH korlátozódik. A háttérbeli alhálózat felől az internetre irányuló kimenő forgalom nem engedélyezett. |
+|**Terheléselosztás és az adatforgalom irányának betöltése**||
+| [Bejövő forgalmának terheléselosztása virtuális gépek magas rendelkezésre állás érdekében](./scripts/load-balancer-linux-cli-sample-nlb.md?toc=%2fazure%2fnetworking%2ftoc.json) | Több magas rendelkezésre állású virtuális gépek és az elosztott terhelésű konfigurációs hoz létre. |
+| [A virtuális gépek több webhely terheléselosztását kezelheti](./scripts/load-balancer-linux-cli-load-balance-multiple-websites-vm.md?toc=%2fazure%2fnetworking%2ftoc.json) | Két virtuális gépet hoz létre több IP-konfiguráció, csatlakozik az Azure rendelkezésre állási csoport, egy Azure Load Balanceren keresztül érhető el. |
+| [Közvetlen forgalom több régióban a magas rendelkezésre állása](./scripts/traffic-manager-cli-websites-high-availability.md?toc=%2fazure%2fnetworking%2ftoc.json) |  Két app service-csomagot, két webalkalmazást, egy traffic manager-profilt és két traffic manager-végpontot hoz létre. |
 | | |

@@ -1,81 +1,80 @@
 ---
-title: Microsoft Graph-kötések az Azure Functions szolgáltatáshoz
-description: Megtudhatja, hogyan használhatja a Microsoft Graph-eseményindítók és kötések az Azure Functions szolgáltatásban.
+title: Azure Functions-kötések Microsoft Graph
+description: Megtudhatja, hogyan használhatók Microsoft Graph eseményindítók és kötések a Azure Functionsban.
 services: functions
 author: craigshoemaker
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: f112bdf9eacf51852659ab49a5673b0c8bfb0e46
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bf60ba7d940ab3ea3f4d30fc9fb1d76f9304ec1b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57997545"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70086582"
 ---
-# <a name="microsoft-graph-bindings-for-azure-functions"></a>Microsoft Graph-kötések az Azure Functions szolgáltatáshoz
+# <a name="microsoft-graph-bindings-for-azure-functions"></a>Azure Functions-kötések Microsoft Graph
 
-Ez a cikk bemutatja, hogyan konfigurálhat és a Microsoft Graph eseményindítók és kötések az Azure Functions használata. Az ilyen az Azure Functions használatával adatait, elemzéseket és események használata az [Microsoft Graph](https://developer.microsoft.com/graph).
+Ez a cikk azt ismerteti, hogyan lehet konfigurálni és dolgozni Microsoft Graph eseményindítókat és kötéseket a Azure Functionsban. Ezekkel a Azure Functions használatával dolgozhat a [Microsoft Graph](https://developer.microsoft.com/graph)adatokkal, elemzésekkel és eseményekkel.
 
-A Microsoft Graph-bővítmény a következő kötéseket biztosít:
-- Egy [hitelesítési tokent bemeneti kötést](#token-input) lehetővé teszi, hogy bármely Microsoft Graph API használatához.
-- Egy [Excel-táblázatot a bemeneti kötést](#excel-input) lehetővé teszi, hogy adatokat olvasni az Excel.
-- Egy [Excel-tábla kimeneti kötésének](#excel-output) lehetővé teszi, hogy módosítsa az Excel-adatok.
-- A [OneDrive-fájl bemeneti kötést](#onedrive-input) lehetővé teszi, hogy olvassa el a fájlokat a onedrive-ról.
-- A [OneDrive-fájl kimeneti kötésének](#onedrive-output) lehetővé teszi, hogy a onedrive vállalati verzióbeli fájlok írni.
-- Egy [Outlook-üzenet kimeneti kötésének](#outlook-output) lehetővé teszi, hogy az Outlook használatával e-mailt.
-- A gyűjtemény [Microsoft Graph-webhook eseményindítók és kötések](#webhooks) lehetővé teszi, hogy a Microsoft Graph reagálhat rájuk.
+A Microsoft Graph bővítmény a következő kötéseket biztosítja:
+- Az [Auth token bemeneti kötése](#token-input) lehetővé teszi, hogy bármilyen Microsoft Graph API-val kommunikáljon.
+- Az [Excel-táblázat bemeneti kötése](#excel-input) lehetővé teszi az adatok Excelből való beolvasását.
+- Az Excel- [táblázat kimeneti kötése](#excel-output) lehetővé teszi az Excel-adatokat módosítását.
+- A [OneDrive fájl bemeneti kötése](#onedrive-input) lehetővé teszi fájlok olvasását a OneDrive.
+- A [OneDrive fájl kimeneti kötése](#onedrive-output) lehetővé teszi a OneDrive-fájlokba való írást.
+- Az [Outlook-üzenet kimeneti kötése](#outlook-output) lehetővé teszi e-mailek küldését az Outlookon keresztül.
+- [Microsoft Graph webhook-eseményindítók és-kötések](#webhooks) gyűjteménye lehetővé teszi, hogy reagáljon a Microsoft Graph eseményeire.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 > [!Note]
-> A Microsoft Graph-kötések jelenleg az Azure Functions verziója előzetes verzióban 2.x. Nem támogatott funkciók verzióban 1.x.
+> Microsoft Graph kötések jelenleg előzetes verzióban érhetők el a Azure Functions 2. x verziójához. Nem támogatottak a functions 1. x verziójában.
 
 ## <a name="packages"></a>Csomagok
 
-A hitelesítési jogkivonat bemeneti kötés van megadva a [Microsoft.Azure.WebJobs.Extensions.AuthTokens](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.AuthTokens/) NuGet-csomagot. Az egyéb Microsoft Graph-kötések szerepelnek a [Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph/) csomagot. A csomagok forráskódja a [azure-functions-microsoftgraph-bővítmény](https://github.com/Azure/azure-functions-microsoftgraph-extension/) GitHub-adattárban.
+Az Auth token bemeneti kötése a [Microsoft. Azure. webjobs. Extensions. AuthTokens](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.AuthTokens/) NuGet csomagban található. A többi Microsoft Graph kötést a [Microsoft. Azure. webjobs. Extensions. MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph/) csomagban biztosítjuk. A csomagok forráskódja az [Azure-functions-microsoftgraph-Extension](https://github.com/Azure/azure-functions-microsoftgraph-extension/) GitHub-tárházban található.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
 ## <a name="setting-up-the-extensions"></a>A bővítmények beállítása
 
-A Microsoft Graph-kötések keresztül érhetők el _kötési bővítményeket_. Kötési bővítményeket is választható összetevők az Azure Functions futtatókörnyezettel. Ez a szakasz bemutatja, hogyan állíthatja be a Microsoft Graph és a hitelesítési jogkivonat bővítmények.
+Microsoft Graph kötések a _kötési bővítmények_segítségével érhetők el. A kötési bővítmények választható összetevők a Azure Functions futtatókörnyezethez. Ez a szakasz bemutatja, hogyan állíthatja be a Microsoft Graph és az Auth token bővítményeket.
 
-### <a name="enabling-functions-20-preview"></a>Functions 2.0 előzetes verziójának engedélyezése
+### <a name="enabling-functions-20-preview"></a>Függvények engedélyezése 2,0 előzetes verzió
 
-Kötési bővítményeket csak az Azure Functions 2.0 előzetes verzióban érhető el. 
+A kötési bővítmények csak Azure Functions 2,0 előzetes verzió esetén érhetők el. 
 
-Egy függvényalkalmazás 2.0 előzetes verzióját, a Functions futtatókörnyezete használandó beállításával kapcsolatos további információkért lásd: [bemutatásához az Azure Functions runtime verziók](set-runtime-version.md).
+További információ arról, hogyan állíthatja be a functions alkalmazást a functions Runtime előzetes 2,0-verziójának használatára: [Azure functions futtatókörnyezet verzióinak](set-runtime-version.md)megcélzása.
 
 ### <a name="installing-the-extension"></a>A bővítmény telepítése
 
--Bővítményének telepítése az Azure Portalon lépjen a sablon és kötése hivatkozik rá. Hozzon létre egy új függvényt, és a sablon kiválasztására szolgáló képernyő megjelenítéséhez válassza a "Microsoft Graph" forgatókönyvet. Válassza ki a forgatókönyvet a sablonok egyikét. Azt is megteheti egy meglévő függvényt "Integrálás" lapján keresse meg és válassza ki a kötéseket a cikkben szereplő egyik.
+Egy bővítménynek a Azure Portalból való telepítéséhez navigáljon egy olyan sablonhoz vagy kötéshez, amely hivatkozik rá. Hozzon létre egy új függvényt, és a sablon kiválasztása képernyőn válassza a "Microsoft Graph" forgatókönyvet. Válasszon ki egy sablont ebből a forgatókönyvből. Másik lehetőségként megnyithatja egy meglévő függvény "integrálás" lapját, és kiválaszthatja a cikkben ismertetett kötések egyikét.
 
-Mindkét esetben figyelmeztetés fog megjelenni, amely megadja, hogy a bővítmény telepíthető. Kattintson a **telepítése** a bővítmény beszerzése. Minden bővítmény csak függvény alkalmazásonként egyszer telepíteni kell. 
-
-> [!Note] 
-> A portál a telepítési folyamat a használatalapú csomag is igénybe vehet akár 10 percet.
-
-Ha használja a Visual Studio, a bővítmények beszerezheti telepítésével [a NuGet-csomagokat a cikk korábbi részében felsorolt](#packages).
-
-### <a name="configuring-authentication--authorization"></a>Hitelesítés / engedélyezés
-
-A következő cikkben ismertetett kötések szükséges használandó identitást. Ez lehetővé teszi a Microsoft Graph kényszerítése az engedélyeket, és kapcsolati naplózása. Az identitás lehet egy felhasználó az alkalmazás vagy maga az alkalmazás eléréséhez. Adja meg ezt az identitást, állítsa be a [App Service-hitelesítés / engedélyezés](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) az Azure Active Directoryval. Akkor is kell kérnie a függvényekben erőforrás engedélyek.
+Mindkét esetben egy figyelmeztetés jelenik meg, amely megadja a telepítendő bővítményt. A bővítmény beszerzéséhez kattintson a **telepítés** gombra. Az egyes bővítményeket csak egyszer kell telepíteni egy Function App-alkalmazásban. 
 
 > [!Note] 
-> A Microsoft Graph-bővítmény csak az Azure AD-hitelesítést támogatja. Felhasználók kell bejelentkezni a munkahelyi vagy iskolai fiókkal jelentkezik be.
+> A portálon belüli telepítési folyamat akár 10 percet is igénybe vehet a használati tervben.
 
-Használata az Azure Portalon, megjelenik egy figyelmeztetés alatt a rendszer kéri a bővítmény telepítéséhez. A figyelmeztetés felszólítja, hogy konfigurálja az App Service-hitelesítés / engedélyezés és a kérés a sablonból vagy a kötés engedélyeket igényel. Kattintson a **konfigurálása most már Azure ad-ben** vagy **engedélyek hozzáadása** megfelelő módon.
+Ha a Visual studiót használja, a bővítményeket [a cikkben korábban felsorolt NuGet-csomagok](#packages)telepítésével érheti el.
+
+### <a name="configuring-authentication--authorization"></a>Hitelesítés/engedélyezés konfigurálása
+
+Az ebben a cikkben ismertetett kötések használatához identitást kell használni. Ez lehetővé teszi, hogy a Microsoft Graph érvényesítse az engedélyeket és naplózza az interakciókat. Az identitás lehet az alkalmazáshoz vagy az alkalmazáshoz hozzáférő felhasználó is. Az identitás konfigurálásához állítsa be [app Service hitelesítés/engedélyezés](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) lehetőséget Azure Active Directory. A függvények által igényelt erőforrás-engedélyeket is kérnie kell.
+
+> [!Note] 
+> Az Microsoft Graph-bővítmény csak az Azure AD-hitelesítést támogatja. A felhasználóknak munkahelyi vagy iskolai fiókkal kell bejelentkezniük.
+
+Ha a Azure Portal használja, a bővítmény telepítéséhez a rendszer figyelmeztetést jelenít meg. A figyelmeztetés felszólítja App Service hitelesítés/engedélyezés konfigurálására, valamint a sablon vagy a kötés által igényelt engedélyek igénylésére. Kattintson az **Azure ad konfigurálása most** vagy az **engedélyek megadása most** lehetőségre.
 
 
 
 <a name="token-input"></a>
 ## <a name="auth-token"></a>Hitelesítési jogkivonat
 
-A hitelesítési jogkivonat bemeneti kötést egy Azure AD-token beolvasása egy adott erőforráshoz, és átadja a kód karakterláncként. Az erőforrás, amelynek bármilyen lehet az alkalmazás engedélyekkel rendelkezik. 
+Az Auth token bemeneti kötése egy Azure AD-tokent kap egy adott erőforráshoz, és karakterláncként adja meg a kódot. Az erőforrás lehet bármely, amelyhez az alkalmazás rendelkezik engedéllyel. 
 
 Ez a szakasz a következő alszakaszokat tartalmazza:
 
@@ -84,18 +83,18 @@ Ez a szakasz a következő alszakaszokat tartalmazza:
 * [Konfigurálás](#auth-token---configuration)
 * [Használat](#auth-token---usage)
 
-### <a name="auth-token---example"></a>Hitelesítési tokent – példa
+### <a name="auth-token---example"></a>Hitelesítési jogkivonat – példa
 
 Tekintse meg az adott nyelvű példa:
 
 * [C# script (.csx)](#auth-token---c-script-example)
 * [JavaScript](#auth-token---javascript-example)
 
-#### <a name="auth-token---c-script-example"></a>Hitelesítési jogkivonat - C#-szkript példa
+#### <a name="auth-token---c-script-example"></a>Hitelesítési jogkivonat – C# parancsfájl-példa
 
-Az alábbi példa lekéri a felhasználói profil adatait.
+A következő példa beolvassa a felhasználói profil adatait.
 
-A *function.json* fájl határozza meg a HTTP-trigger egy token bemeneti kötéssel:
+A *function. JSON* fájl definiál egy http-triggert, amely jogkivonat-beviteli kötést eredményez:
 
 ```json
 {
@@ -122,7 +121,7 @@ A *function.json* fájl határozza meg a HTTP-trigger egy token bemeneti kötés
 }
 ```
 
-A C#-szkriptkódot használja a jogkivonatot, hogy a Microsoft Graph HTTP-hívás, és visszaadja az eredményt:
+A C# szkript kód a token használatával http-hívást hajt végre a Microsoft Graph, és visszaadja az eredményt:
 
 ```csharp
 using System.Net; 
@@ -138,11 +137,11 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, string
 }
 ```
 
-#### <a name="auth-token---javascript-example"></a>Hitelesítési jogkivonat - JavaScript-példa
+#### <a name="auth-token---javascript-example"></a>Hitelesítési jogkivonat – JavaScript-példa
 
-Az alábbi példa lekéri a felhasználói profil adatait.
+A következő példa beolvassa a felhasználói profil adatait.
 
-A *function.json* fájl határozza meg a HTTP-trigger egy token bemeneti kötéssel:
+A *function. JSON* fájl definiál egy http-triggert, amely jogkivonat-beviteli kötést eredményez:
 
 ```json
 {
@@ -169,7 +168,7 @@ A *function.json* fájl határozza meg a HTTP-trigger egy token bemeneti kötés
 }
 ```
 
-A JavaScript-kódot használja a jogkivonatot, hogy a Microsoft Graph HTTP-hívás, és visszaadja az eredményt.
+A JavaScript-kód a token használatával HTTP-hívást hajt végre a Microsoft Graph, és visszaadja az eredményt.
 
 ```js
 const rp = require('request-promise');
@@ -201,39 +200,39 @@ module.exports = function (context, req) {
 };
 ```
 
-### <a name="auth-token---attributes"></a>Hitelesítési jogkivonat - attribútumok
+### <a name="auth-token---attributes"></a>Hitelesítési jogkivonat – attribútumok
 
-A [C#-osztálykódtárakat](functions-dotnet-class-library.md), használja a [Token](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/TokenBinding/TokenAttribute.cs) attribútum.
+Az [ C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a [jogkivonat](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/TokenBinding/TokenAttribute.cs) attribútumot.
 
-### <a name="auth-token---configuration"></a>Hitelesítési jogkivonat - konfiguráció
+### <a name="auth-token---configuration"></a>Hitelesítési jogkivonat – konfiguráció
 
 A következő táblázat ismerteti a megadott kötés konfigurációs tulajdonságaiban a *function.json* fájlt, és a `Token` attribútum.
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**name**||Kötelező – a függvénykódot a hitelesítési jogkivonat használt változó neve. Lásd: [egy hitelesítési tokent használó bemeneti kötést kódból](#token-input-code).|
-|**type**||Kötelező – kell állítani `token`.|
-|**direction**||Kötelező – kell állítani `in`.|
-|**Identitás**|**Identitáskezelés**|Szükséges – az identitás, a művelet végrehajtásához használt. A következő értékek egyike lehet:<ul><li><code>userFromRequest</code> – Csak érvényes [HTTP-eseményindító]. A hívó felhasználó identitást használja.</li><li><code>userFromId</code> – Egy korábban bejelentkezett felhasználó használja a megadott azonosítóval. Tekintse meg a <code>userId</code> tulajdonság.</li><li><code>userFromToken</code> – A megadott jogkivonat által képviselt identitást használja. Tekintse meg a <code>userToken</code> tulajdonság.</li><li><code>clientCredentials</code> – A függvény alkalmazás identitását használja.</li></ul>|
-|**userId**|**UserId**  |Ha szükséges, és csak akkor, ha _identitás_ értékre van állítva `userFromId`. A felhasználó résztvevő-azonosító egy korábban bejelentkezett felhasználóhoz társított.|
-|**userToken**|**userToken**|Ha szükséges, és csak akkor, ha _identitás_ értékre van állítva `userFromToken`. A jogkivonat érvényes, a függvényalkalmazás. |
-|**Erőforrás**|**resource**|Szükséges – az Azure ad-ben erőforrás URL-címe, amelyhez a jogkivonatot kért.|
+|**name**||Kötelező – a hitelesítési jogkivonat kódjában használt változó neve. Lásd: [hitelesítési jogkivonat bemeneti kötésének használata kódból](#token-input-code).|
+|**type**||Kötelező – a `token`következőre kell beállítani:.|
+|**direction**||Kötelező – a `in`következőre kell beállítani:.|
+|**identitás**|**Identitás**|Kötelező – a művelet végrehajtásához használt identitás. A következő értékek egyike lehet:<ul><li><code>userFromRequest</code>– Csak http- [HTTP-trigger]esetén érvényes. A hívó felhasználó identitását használja.</li><li><code>userFromId</code>– Egy korábban bejelentkezett felhasználó identitását használja a megadott AZONOSÍTÓval. Tekintse <code>userId</code> meg a tulajdonságot.</li><li><code>userFromToken</code>-A megadott jogkivonat által jelölt identitást használja. Tekintse <code>userToken</code> meg a tulajdonságot.</li><li><code>clientCredentials</code>– A Function alkalmazás identitását használja.</li></ul>|
+|**userId**|**UserId**  |Csak akkor szükséges, ha az _identitás_ `userFromId`értéke:. Egy korábban bejelentkezett felhasználóhoz társított egyszerű felhasználói azonosító.|
+|**userToken**|**UserToken**|Csak akkor szükséges, ha az _identitás_ `userFromToken`értéke:. A Function alkalmazáshoz érvényes jogkivonat. |
+|**Erőforrás**|**resource**|Kötelező – egy Azure AD-erőforrás URL-címe, amelyhez a jogkivonatot kéri.|
 
 <a name="token-input-code"></a>
-### <a name="auth-token---usage"></a>Hitelesítési jogkivonat - használat
+### <a name="auth-token---usage"></a>Hitelesítési jogkivonat – használat
 
-Maga a kötés nem igényel minden olyan Azure AD-engedélyekről, de attól függően, hogyan használja a jogkivonatot, szükség lehet további engedélyek kéréséhez. Az erőforrás-hozzáférési jogkivonattal kíván a követelmények ellenőrzéséhez.
+Maga a kötés nem igényel Azure AD-engedélyeket, azonban a jogkivonat felhasználási módjától függően előfordulhat, hogy további engedélyeket kell kérnie. Tekintse át a jogkivonattal elérni kívánt erőforrás követelményeit.
 
-A jogkivonat mindig megjelenik kód karakterláncként.
+A jogkivonat mindig karakterláncként jelenik meg a kódban.
 
 > [!Note]
-> Mindkét esetben helyi fejlesztése során `userFromId`, `userFromToken` vagy `userFromRequest` beállítások, a szükséges jogkivonat lehet [kézzel](https://github.com/Azure/azure-functions-microsoftgraph-extension/issues/54#issuecomment-392865857) és a megadott `X-MS-TOKEN-AAD-ID-TOKEN` kérelem fejléce a hívó ügyfélalkalmazás.
+> Ha a-t vagy `userFromId` `userFromRequest` a- `userFromToken` t helyi fejlesztéssel fejleszti, a szükséges `X-MS-TOKEN-AAD-ID-TOKEN` tokent [manuálisan](https://github.com/Azure/azure-functions-microsoftgraph-extension/issues/54#issuecomment-392865857) is megszerezheti, és a kérések fejlécében megadható a hívó ügyfélalkalmazás.
 
 
 <a name="excel-input"></a>
-## <a name="excel-input"></a>Az Excel-bemenet
+## <a name="excel-input"></a>Excel-bemenet
 
-Az Excel-táblázat bemeneti kötésnek a onedrive vállalati verzióban tárolt Excel-táblázat tartalmának beolvasása.
+Az Excel-táblázat bemeneti kötése beolvassa a OneDrive-ben tárolt Excel-táblázat tartalmát.
 
 Ez a szakasz a következő alszakaszokat tartalmazza:
 
@@ -242,16 +241,16 @@ Ez a szakasz a következő alszakaszokat tartalmazza:
 * [Konfigurálás](#excel-input---configuration)
 * [Használat](#excel-input---usage)
 
-### <a name="excel-input---example"></a>Excel-bevitel – példa
+### <a name="excel-input---example"></a>Excel input – példa
 
 Tekintse meg az adott nyelvű példa:
 
 * [C# script (.csx)](#excel-input---c-script-example)
 * [JavaScript](#excel-input---javascript-example)
 
-#### <a name="excel-input---c-script-example"></a>Az Excel bemeneti – C#-szkript példa
+#### <a name="excel-input---c-script-example"></a>Excel input – C# parancsfájl – példa
 
-A következő *function.json* fájl határozza meg a HTTP-trigger bemeneti kötéssel Excel:
+A következő *function. JSON* fájl definiál egy olyan http-triggert, amely egy Excel bemeneti kötéssel rendelkezik:
 
 ```json
 {
@@ -280,7 +279,7 @@ A következő *function.json* fájl határozza meg a HTTP-trigger bemeneti köt�
 }
 ```
 
-A következő C#-szkriptkódot beolvassa a megadott tábla tartalmát, és visszaadja azokat a felhasználó számára:
+A következő C# parancsfájl beolvassa a megadott tábla tartalmát, és visszaadja azokat a felhasználónak:
 
 ```csharp
 using System.Net;
@@ -294,9 +293,9 @@ public static IActionResult Run(HttpRequest req, string[][] excelTableData, ILog
 }
 ```
 
-#### <a name="excel-input---javascript-example"></a>Az Excel - bemeneti JavaScript-példa
+#### <a name="excel-input---javascript-example"></a>Excel-bemenet – JavaScript-példa
 
-A következő *function.json* fájl határozza meg a HTTP-trigger bemeneti kötéssel Excel:
+A következő *function. JSON* fájl definiál egy olyan http-triggert, amely egy Excel bemeneti kötéssel rendelkezik:
 
 ```json
 {
@@ -325,7 +324,7 @@ A következő *function.json* fájl határozza meg a HTTP-trigger bemeneti köt�
 }
 ```
 
-A következő JavaScript-kódot beolvassa a megadott tábla tartalmát, és visszaadja azokat a felhasználó.
+A következő JavaScript-kód beolvassa a megadott tábla tartalmát, és visszaadja azokat a felhasználónak.
 
 ```js
 module.exports = function (context, req) {
@@ -336,39 +335,39 @@ module.exports = function (context, req) {
 };
 ```
 
-### <a name="excel-input---attributes"></a>Az Excel - bemeneti attribútumok
+### <a name="excel-input---attributes"></a>Excel-bemenet – attribútumok
 
-A [C#-osztálykódtárakat](functions-dotnet-class-library.md), használja a [Excel](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/ExcelAttribute.cs) attribútum.
+Az [ C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja az [Excel](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/ExcelAttribute.cs) -attribútumot.
 
-### <a name="excel-input---configuration"></a>Excel-input - konfiguráció
+### <a name="excel-input---configuration"></a>Excel-bemenet – konfiguráció
 
 A következő táblázat ismerteti a megadott kötés konfigurációs tulajdonságaiban a *function.json* fájlt, és a `Excel` attribútum.
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**name**||Kötelező – a az Excel-táblázatban a függvény kódját a használt változó neve. Lásd: [használatával egy Excel-táblázat bemeneti kötést kódból](#excel-input-code).|
-|**type**||Kötelező – kell állítani `excel`.|
-|**direction**||Kötelező – kell állítani `in`.|
-|**Identitás**|**Identitáskezelés**|Szükséges – az identitás, a művelet végrehajtásához használt. A következő értékek egyike lehet:<ul><li><code>userFromRequest</code> – Csak érvényes [HTTP-eseményindító]. A hívó felhasználó identitást használja.</li><li><code>userFromId</code> – Egy korábban bejelentkezett felhasználó használja a megadott azonosítóval. Tekintse meg a <code>userId</code> tulajdonság.</li><li><code>userFromToken</code> – A megadott jogkivonat által képviselt identitást használja. Tekintse meg a <code>userToken</code> tulajdonság.</li><li><code>clientCredentials</code> – A függvény alkalmazás identitását használja.</li></ul>|
-|**userId**|**UserId**  |Ha szükséges, és csak akkor, ha _identitás_ értékre van állítva `userFromId`. A felhasználó résztvevő-azonosító egy korábban bejelentkezett felhasználóhoz társított.|
-|**userToken**|**userToken**|Ha szükséges, és csak akkor, ha _identitás_ értékre van állítva `userFromToken`. A jogkivonat érvényes, a függvényalkalmazás. |
-|**path**|**Elérési út**|Kötelező – a onedrive-on az Excel-munkafüzet elérési útját.|
-|**worksheetName**|**worksheetName**|A táblázatot tartalmazó munkalap.|
-|**Táblanév**|**TableName**|A tábla neve. Ha nincs megadva, a munkalap tartalmát fogja használni.|
+|**name**||Kötelező – az Excel-táblázat függvény kódjában használt változó neve. Lásd: [Excel-táblázat bemeneti kötésének használata kódból](#excel-input-code).|
+|**type**||Kötelező – a `excel`következőre kell beállítani:.|
+|**direction**||Kötelező – a `in`következőre kell beállítani:.|
+|**identitás**|**Identitás**|Kötelező – a művelet végrehajtásához használt identitás. A következő értékek egyike lehet:<ul><li><code>userFromRequest</code>– Csak http- [HTTP-trigger]esetén érvényes. A hívó felhasználó identitását használja.</li><li><code>userFromId</code>– Egy korábban bejelentkezett felhasználó identitását használja a megadott AZONOSÍTÓval. Tekintse <code>userId</code> meg a tulajdonságot.</li><li><code>userFromToken</code>-A megadott jogkivonat által jelölt identitást használja. Tekintse <code>userToken</code> meg a tulajdonságot.</li><li><code>clientCredentials</code>– A Function alkalmazás identitását használja.</li></ul>|
+|**userId**|**UserId**  |Csak akkor szükséges, ha az _identitás_ `userFromId`értéke:. Egy korábban bejelentkezett felhasználóhoz társított egyszerű felhasználói azonosító.|
+|**userToken**|**UserToken**|Csak akkor szükséges, ha az _identitás_ `userFromToken`értéke:. A Function alkalmazáshoz érvényes jogkivonat. |
+|**path**|**Path**|Kötelező – a OneDrive elérési útja az Excel-munkafüzethez.|
+|**worksheetName**|**WorksheetName**|Az a munkalap, amelyben a tábla található.|
+|**Táblanév**|**Táblanév**|A tábla neve. Ha nincs megadva, a rendszer a munkalap tartalmát fogja használni.|
 
 <a name="excel-input-code"></a>
-### <a name="excel-input---usage"></a>Az Excel bemeneti - használat
+### <a name="excel-input---usage"></a>Excel input – használat
 
-Ennek a kötésnek a következő Azure AD-engedélyekkel kell rendelkeznie:
+Ehhez a kötéshez a következő Azure AD-engedélyek szükségesek:
 
-|Erőforrás|Engedély|
+|Resource|Engedély|
 |--------|--------|
 |Microsoft Graph|Felhasználók fájljainak olvasása|
 
-A kötés tünteti fel a .NET-funkciók a következők:
-- String [] []
+A kötés a következő típusokat teszi elérhetővé a .NET-függvények számára:
+- karakterlánc [] []
 - Microsoft.Graph.WorkbookTable
-- Egyéni objektumtípusok (szerkezeti modellek kötés használatával)
+- Egyéni objektumtípusok (a strukturális modell kötésének használatával)
 
 
 
@@ -380,9 +379,9 @@ A kötés tünteti fel a .NET-funkciók a következők:
 
 
 <a name="excel-output"></a>
-## <a name="excel-output"></a>Az Excel-kimenet
+## <a name="excel-output"></a>Excel-kimenet
 
-Az Excel kimeneti kötés módosítja a onedrive vállalati verzióban tárolt Excel-táblázatot a tartalmát.
+Az Excel kimeneti kötése módosítja a OneDrive-ben tárolt Excel-táblázat tartalmát.
 
 Ez a szakasz a következő alszakaszokat tartalmazza:
 
@@ -391,18 +390,18 @@ Ez a szakasz a következő alszakaszokat tartalmazza:
 * [Konfigurálás](#excel-output---configuration)
 * [Használat](#excel-output---usage)
 
-### <a name="excel-output---example"></a>Excel-kimenet – példa
+### <a name="excel-output---example"></a>Excel kimenet – példa
 
 Tekintse meg az adott nyelvű példa:
 
 * [C# script (.csx)](#excel-output---c-script-example)
 * [JavaScript](#excel-output---javascript-example)
 
-#### <a name="excel-output---c-script-example"></a>Az Excel kimenete – C#-szkript példa
+#### <a name="excel-output---c-script-example"></a>Excel kimenet – C# parancsfájl-példa
 
-Az alábbi példa sorokat ad hozzá egy Excel-táblázatban.
+A következő példa sorokat szúr be egy Excel-táblába.
 
-A *function.json* fájl határozza meg a HTTP-trigger egy Excel-kimeneti kötést:
+A *function. JSON* fájl egy olyan http-triggert határoz meg, amely Excel kimeneti kötéssel rendelkezik:
 
 ```json
 {
@@ -432,7 +431,7 @@ A *function.json* fájl határozza meg a HTTP-trigger egy Excel-kimeneti kötés
 }
 ```
 
-A C#-szkriptkódot ad hozzá egy új sort a táblában (feltételezni, hogy egy oszlop), a bemeneti lekérdezési karakterlánc alapján:
+A C# szkript kódja új sort hoz létre a táblához (feltételezhető, hogy egyoszlopos) a lekérdezési karakterlánc bemenete alapján:
 
 ```csharp
 using System.Net;
@@ -452,11 +451,11 @@ public static async Task Run(HttpRequest req, IAsyncCollector<object> newExcelRo
 }
 ```
 
-#### <a name="excel-output---javascript-example"></a>Az Excel kimenete – JavaScript-példa
+#### <a name="excel-output---javascript-example"></a>Excel kimenet – JavaScript-példa
 
-Az alábbi példa sorokat ad hozzá egy Excel-táblázatban.
+A következő példa sorokat szúr be egy Excel-táblába.
 
-A *function.json* fájl határozza meg a HTTP-trigger egy Excel-kimeneti kötést:
+A *function. JSON* fájl egy olyan http-triggert határoz meg, amely Excel kimeneti kötéssel rendelkezik:
 
 ```json
 {
@@ -486,7 +485,7 @@ A *function.json* fájl határozza meg a HTTP-trigger egy Excel-kimeneti kötés
 }
 ```
 
-A következő JavaScript-kód hozzáadja a bemeneti lekérdezési karakterlánc alapján egy új sort a táblázathoz (feltételezni, hogy egy oszlop).
+A következő JavaScript-kód egy új sort szúr be a táblába (feltételezve, hogy egyoszlopos) a lekérdezési karakterlánc bemenete alapján.
 
 ```js
 module.exports = function (context, req) {
@@ -498,50 +497,50 @@ module.exports = function (context, req) {
 };
 ```
 
-### <a name="excel-output---attributes"></a>Az Excel - kimeneti attribútumok
+### <a name="excel-output---attributes"></a>Excel-kimenet – attribútumok
 
-A [C#-osztálykódtárakat](functions-dotnet-class-library.md), használja a [Excel](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/ExcelAttribute.cs) attribútum.
+Az [ C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja az [Excel](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/ExcelAttribute.cs) -attribútumot.
 
-### <a name="excel-output---configuration"></a>Excel-kimenet - konfiguráció
+### <a name="excel-output---configuration"></a>Excel-kimenet – konfiguráció
 
 A következő táblázat ismerteti a megadott kötés konfigurációs tulajdonságaiban a *function.json* fájlt, és a `Excel` attribútum.
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**name**||Kötelező – a függvénykódot a hitelesítési jogkivonat használt változó neve. Lásd: [használatával egy Excel-táblázat kimeneti kötés kódból](#excel-output-code).|
-|**type**||Kötelező – kell állítani `excel`.|
-|**direction**||Kötelező – kell állítani `out`.|
-|**Identitás**|**Identitáskezelés**|Szükséges – az identitás, a művelet végrehajtásához használt. A következő értékek egyike lehet:<ul><li><code>userFromRequest</code> – Csak érvényes [HTTP-eseményindító]. A hívó felhasználó identitást használja.</li><li><code>userFromId</code> – Egy korábban bejelentkezett felhasználó használja a megadott azonosítóval. Tekintse meg a <code>userId</code> tulajdonság.</li><li><code>userFromToken</code> – A megadott jogkivonat által képviselt identitást használja. Tekintse meg a <code>userToken</code> tulajdonság.</li><li><code>clientCredentials</code> – A függvény alkalmazás identitását használja.</li></ul>|
-|**UserId** |**userId** |Ha szükséges, és csak akkor, ha _identitás_ értékre van állítva `userFromId`. A felhasználó résztvevő-azonosító egy korábban bejelentkezett felhasználóhoz társított.|
-|**userToken**|**userToken**|Ha szükséges, és csak akkor, ha _identitás_ értékre van állítva `userFromToken`. A jogkivonat érvényes, a függvényalkalmazás. |
-|**path**|**Elérési út**|Kötelező – a onedrive-on az Excel-munkafüzet elérési útját.|
-|**worksheetName**|**worksheetName**|A táblázatot tartalmazó munkalap.|
-|**Táblanév**|**TableName**|A tábla neve. Ha nincs megadva, a munkalap tartalmát fogja használni.|
-|**updateType**|**UpdateType**|Kötelező – a táblázaton végrehajtani kívánt módosítás típusa. A következő értékek egyike lehet:<ul><li><code>update</code> -Váltja fel a OneDrive-ban a tábla tartalmát.</li><li><code>append</code> – Ad hozzá a tartalom a onedrive-on a tábla végére új sorok létrehozásával.</li></ul>|
+|**name**||Kötelező – a hitelesítési jogkivonat kódjában használt változó neve. Lásd: [Excel-táblázat kimeneti kötésének használata kódból](#excel-output-code).|
+|**type**||Kötelező – a `excel`következőre kell beállítani:.|
+|**direction**||Kötelező – a `out`következőre kell beállítani:.|
+|**identitás**|**Identitás**|Kötelező – a művelet végrehajtásához használt identitás. A következő értékek egyike lehet:<ul><li><code>userFromRequest</code>– Csak http- [HTTP-trigger]esetén érvényes. A hívó felhasználó identitását használja.</li><li><code>userFromId</code>– Egy korábban bejelentkezett felhasználó identitását használja a megadott AZONOSÍTÓval. Tekintse <code>userId</code> meg a tulajdonságot.</li><li><code>userFromToken</code>-A megadott jogkivonat által jelölt identitást használja. Tekintse <code>userToken</code> meg a tulajdonságot.</li><li><code>clientCredentials</code>– A Function alkalmazás identitását használja.</li></ul>|
+|**UserId** |**userId** |Csak akkor szükséges, ha az _identitás_ `userFromId`értéke:. Egy korábban bejelentkezett felhasználóhoz társított egyszerű felhasználói azonosító.|
+|**userToken**|**UserToken**|Csak akkor szükséges, ha az _identitás_ `userFromToken`értéke:. A Function alkalmazáshoz érvényes jogkivonat. |
+|**path**|**Path**|Kötelező – a OneDrive elérési útja az Excel-munkafüzethez.|
+|**worksheetName**|**WorksheetName**|Az a munkalap, amelyben a tábla található.|
+|**Táblanév**|**Táblanév**|A tábla neve. Ha nincs megadva, a rendszer a munkalap tartalmát fogja használni.|
+|**updateType**|**Frissítés típusa**|Kötelező – a táblára való váltás típusa. A következő értékek egyike lehet:<ul><li><code>update</code>– Lecseréli a tábla tartalmát a OneDrive.</li><li><code>append</code>– Új sorok létrehozásával hozzáadja a hasznos adatokat a OneDrive tábla végéhez.</li></ul>|
 
 <a name="excel-output-code"></a>
-### <a name="excel-output---usage"></a>Az Excel kimenete – használat
+### <a name="excel-output---usage"></a>Excel-kimenet – használat
 
-Ennek a kötésnek a következő Azure AD-engedélyekkel kell rendelkeznie:
+Ehhez a kötéshez a következő Azure AD-engedélyek szükségesek:
 
-|Erőforrás|Engedély|
+|Resource|Engedély|
 |--------|--------|
-|Microsoft Graph|Teljes hozzáférés a felhasználó fájljaihoz|
+|Microsoft Graph|Teljes hozzáférés a felhasználói fájlokhoz|
 
-A kötés tünteti fel a .NET-funkciók a következők:
-- String [] []
+A kötés a következő típusokat teszi elérhetővé a .NET-függvények számára:
+- karakterlánc [] []
 - Newtonsoft.Json.Linq.JObject
 - Microsoft.Graph.WorkbookTable
-- Egyéni objektumtípusok (szerkezeti modellek kötés használatával)
+- Egyéni objektumtípusok (a strukturális modell kötésének használatával)
 
 
 
 
 
 <a name="onedrive-input"></a>
-## <a name="file-input"></a>Bemeneti fájllal
+## <a name="file-input"></a>Fájl bemenete
 
-A OneDrive-fájl bemeneti kötésnek a onedrive-on tárolt fájl tartalmának beolvasása.
+A OneDrive fájl bemeneti kötése beolvassa a OneDrive-ben tárolt fájl tartalmát.
 
 Ez a szakasz a következő alszakaszokat tartalmazza:
 
@@ -550,18 +549,18 @@ Ez a szakasz a következő alszakaszokat tartalmazza:
 * [Konfigurálás](#file-input---configuration)
 * [Használat](#file-input---usage)
 
-### <a name="file-input---example"></a>Fájl bevitel – példa
+### <a name="file-input---example"></a>Fájl bemenet – példa
 
 Tekintse meg az adott nyelvű példa:
 
 * [C# script (.csx)](#file-input---c-script-example)
 * [JavaScript](#file-input---javascript-example)
 
-#### <a name="file-input---c-script-example"></a>Fájl bemeneti – C#-szkript példa
+#### <a name="file-input---c-script-example"></a>File input – C# parancsfájl – példa
 
-Az alábbi példa egy fájlt a onedrive vállalati verzióban tárolt beolvasása.
+A következő példa egy OneDrive tárolt fájlt olvas be.
 
-A *function.json* fájl határozza meg a HTTP-trigger egy OneDrive-fájl bemeneti kötéssel:
+A *function. JSON* fájl definiál egy http-triggert egy OneDrive-fájl bemeneti kötésével:
 
 ```json
 {
@@ -589,7 +588,7 @@ A *function.json* fájl határozza meg a HTTP-trigger egy OneDrive-fájl bemenet
 }
 ```
 
-A C#-szkriptkódot beolvassa a fájlt, a lekérdezési karakterláncban megadott, és naplózza az hossza:
+A C# szkript kódja beolvassa a lekérdezési karakterláncban megadott fájlt, és naplózza a hosszát:
 
 ```csharp
 using System.Net;
@@ -601,11 +600,11 @@ public static void Run(HttpRequestMessage req, Stream myOneDriveFile, ILogger lo
 }
 ```
 
-#### <a name="file-input---javascript-example"></a>Bemeneti - fájlt a JavaScript-példa
+#### <a name="file-input---javascript-example"></a>Fájl bevitele – JavaScript-példa
 
-Az alábbi példa egy fájlt a onedrive vállalati verzióban tárolt beolvasása.
+A következő példa egy OneDrive tárolt fájlt olvas be.
 
-A *function.json* fájl határozza meg a HTTP-trigger egy OneDrive-fájl bemeneti kötéssel:
+A *function. JSON* fájl definiál egy http-triggert egy OneDrive-fájl bemeneti kötésével:
 
 ```json
 {
@@ -633,7 +632,7 @@ A *function.json* fájl határozza meg a HTTP-trigger egy OneDrive-fájl bemenet
 }
 ```
 
-A következő JavaScript-kódot beolvassa a lekérdezési karakterláncban megadott fájlt, és annak hosszát adja vissza.
+A következő JavaScript-kód beolvassa a lekérdezési karakterláncban megadott fájlt, és visszaadja a hosszát.
 
 ```js
 module.exports = function (context, req) {
@@ -644,37 +643,37 @@ module.exports = function (context, req) {
 };
 ```
 
-### <a name="file-input---attributes"></a>Fájl – bemeneti attribútumok
+### <a name="file-input---attributes"></a>Fájl bemenete – attribútumok
 
-A [C#-osztálykódtárakat](functions-dotnet-class-library.md), használja a [OneDrive](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/OneDriveAttribute.cs) attribútum.
+Az [ C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a [OneDrive](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/OneDriveAttribute.cs) attribútumot.
 
-### <a name="file-input---configuration"></a>Bemenet - fájl konfigurálása
+### <a name="file-input---configuration"></a>Fájl bemenete – konfiguráció
 
 A következő táblázat ismerteti a megadott kötés konfigurációs tulajdonságaiban a *function.json* fájlt, és a `OneDrive` attribútum.
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**name**||Kötelező – a fájl a függvény kódját a használt változó neve. Lásd: [egy OneDrive-fájl használatával bemeneti kötést kódból](#onedrive-input-code).|
-|**type**||Kötelező – kell állítani `onedrive`.|
-|**direction**||Kötelező – kell állítani `in`.|
-|**Identitás**|**Identitáskezelés**|Szükséges – az identitás, a művelet végrehajtásához használt. A következő értékek egyike lehet:<ul><li><code>userFromRequest</code> – Csak érvényes [HTTP-eseményindító]. A hívó felhasználó identitást használja.</li><li><code>userFromId</code> – Egy korábban bejelentkezett felhasználó használja a megadott azonosítóval. Tekintse meg a <code>userId</code> tulajdonság.</li><li><code>userFromToken</code> – A megadott jogkivonat által képviselt identitást használja. Tekintse meg a <code>userToken</code> tulajdonság.</li><li><code>clientCredentials</code> – A függvény alkalmazás identitását használja.</li></ul>|
-|**userId**|**UserId**  |Ha szükséges, és csak akkor, ha _identitás_ értékre van állítva `userFromId`. A felhasználó résztvevő-azonosító egy korábban bejelentkezett felhasználóhoz társított.|
-|**userToken**|**userToken**|Ha szükséges, és csak akkor, ha _identitás_ értékre van állítva `userFromToken`. A jogkivonat érvényes, a függvényalkalmazás. |
-|**path**|**Elérési út**|Kötelező – a onedrive-on a fájl elérési útját.|
+|**name**||Kötelező – a fájlhoz tartozó függvény kódjában használt változó neve. Lásd: [OneDrive-fájl bemeneti kötésének használata kódból](#onedrive-input-code).|
+|**type**||Kötelező – a `onedrive`következőre kell beállítani:.|
+|**direction**||Kötelező – a `in`következőre kell beállítani:.|
+|**identitás**|**Identitás**|Kötelező – a művelet végrehajtásához használt identitás. A következő értékek egyike lehet:<ul><li><code>userFromRequest</code>– Csak http- [HTTP-trigger]esetén érvényes. A hívó felhasználó identitását használja.</li><li><code>userFromId</code>– Egy korábban bejelentkezett felhasználó identitását használja a megadott AZONOSÍTÓval. Tekintse <code>userId</code> meg a tulajdonságot.</li><li><code>userFromToken</code>-A megadott jogkivonat által jelölt identitást használja. Tekintse <code>userToken</code> meg a tulajdonságot.</li><li><code>clientCredentials</code>– A Function alkalmazás identitását használja.</li></ul>|
+|**userId**|**UserId**  |Csak akkor szükséges, ha az _identitás_ `userFromId`értéke:. Egy korábban bejelentkezett felhasználóhoz társított egyszerű felhasználói azonosító.|
+|**userToken**|**UserToken**|Csak akkor szükséges, ha az _identitás_ `userFromToken`értéke:. A Function alkalmazáshoz érvényes jogkivonat. |
+|**path**|**Path**|Kötelező – a fájl OneDrive elérési útja.|
 
 <a name="onedrive-input-code"></a>
-### <a name="file-input---usage"></a>Fájl bemeneti - használat
+### <a name="file-input---usage"></a>Fájl bevitele – használat
 
-Ennek a kötésnek a következő Azure AD-engedélyekkel kell rendelkeznie:
+Ehhez a kötéshez a következő Azure AD-engedélyek szükségesek:
 
-|Erőforrás|Engedély|
+|Resource|Engedély|
 |--------|--------|
 |Microsoft Graph|Felhasználók fájljainak olvasása|
 
-A kötés tünteti fel a .NET-funkciók a következők:
-- byte[]
+A kötés a következő típusokat teszi elérhetővé a .NET-függvények számára:
+- bájt []
 - Stream
-- sztring
+- Karakterlánc
 - Microsoft.Graph.DriveItem
 
 
@@ -683,9 +682,9 @@ A kötés tünteti fel a .NET-funkciók a következők:
 
 
 <a name="onedrive-output"></a>
-## <a name="file-output"></a>Kimeneti fájl
+## <a name="file-output"></a>Fájl kimenete
 
-A OneDrive-fájl kimeneti kötés módosítja egy onedrive-on tárolt fájl tartalmát.
+A OneDrive fájl kimeneti kötése módosítja a OneDrive-ben tárolt fájl tartalmát.
 
 Ez a szakasz a következő alszakaszokat tartalmazza:
 
@@ -694,18 +693,18 @@ Ez a szakasz a következő alszakaszokat tartalmazza:
 * [Konfigurálás](#file-output---configuration)
 * [Használat](#file-output---usage)
 
-### <a name="file-output---example"></a>Fájl kimeneti – példa
+### <a name="file-output---example"></a>Fájl kimenete – példa
 
 Tekintse meg az adott nyelvű példa:
 
 * [C# script (.csx)](#file-output---c-script-example)
 * [JavaScript](#file-output---javascript-example)
 
-#### <a name="file-output---c-script-example"></a>Fájl kimenete – C#-szkript példa
+#### <a name="file-output---c-script-example"></a>Fájl kimenete C# – parancsfájl – példa
 
-Az alábbi példa egy onedrive vállalati verzióban tárolt fájlba írja.
+Az alábbi példa egy, a OneDrive-ben tárolt fájlba ír.
 
-A *function.json* fájl határozza meg a HTTP-trigger egy onedrive-on a kimeneti kötést:
+A *function. JSON* fájl egy http-triggert definiál OneDrive kimeneti kötéssel:
 
 ```json
 {
@@ -733,7 +732,7 @@ A *function.json* fájl határozza meg a HTTP-trigger egy onedrive-on a kimeneti
 }
 ```
 
-A C#-szkriptkódot szöveget olvas be a lekérdezési karakterláncot, és a hívó OneDrive gyökérmappájában írja azt egy szövegfájlt (ahogyan az előző példában FunctionsTest.txt):
+A C# parancsfájl szövege beolvassa a lekérdezési karakterlánc szövegét, és egy szövegfájlba (FunctionsTest. txt fájlba) írja azt a hívó OneDrive gyökerében:
 
 ```csharp
 using System.Net;
@@ -753,9 +752,9 @@ public static async Task Run(HttpRequest req, ILogger log, Stream myOneDriveFile
 
 #### <a name="file-output---javascript-example"></a>Fájl kimenete – JavaScript-példa
 
-Az alábbi példa egy onedrive vállalati verzióban tárolt fájlba írja.
+Az alábbi példa egy, a OneDrive-ben tárolt fájlba ír.
 
-A *function.json* fájl határozza meg a HTTP-trigger egy onedrive-on a kimeneti kötést:
+A *function. JSON* fájl egy http-triggert definiál OneDrive kimeneti kötéssel:
 
 ```json
 {
@@ -783,7 +782,7 @@ A *function.json* fájl határozza meg a HTTP-trigger egy onedrive-on a kimeneti
 }
 ```
 
-A JavaScript-kódot szöveget olvas be a lekérdezési karakterláncot, és írja azt egy szövegfájlt (a fenti konfigurációban meghatározott FunctionsTest.txt) a hívó OneDrive gyökérmappájában.
+A JavaScript-kód beolvassa a lekérdezési karakterlánc szövegét, és egy szövegfájlba (FunctionsTest. txt fájlba) írja azt a hívó OneDrive gyökerében.
 
 ```js
 module.exports = function (context, req) {
@@ -792,37 +791,37 @@ module.exports = function (context, req) {
 };
 ```
 
-### <a name="file-output---attributes"></a>Fájl kimeneti - attribútumok
+### <a name="file-output---attributes"></a>Fájl kimenete – attribútumok
 
-A [C#-osztálykódtárakat](functions-dotnet-class-library.md), használja a [OneDrive](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/OneDriveAttribute.cs) attribútum.
+Az [ C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a [OneDrive](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/OneDriveAttribute.cs) attribútumot.
 
-### <a name="file-output---configuration"></a>A fájl kimeneti - konfiguráció
+### <a name="file-output---configuration"></a>Fájl kimenete – konfiguráció
 
 A következő táblázat ismerteti a megadott kötés konfigurációs tulajdonságaiban a *function.json* fájlt, és a `OneDrive` attribútum.
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**name**||Kötelező – a fájl a függvény kódját a használt változó neve. Lásd: [használatával egy OneDrive-fájl kimeneti kötés kódból](#onedrive-output-code).|
-|**type**||Kötelező – kell állítani `onedrive`.|
-|**direction**||Kötelező – kell állítani `out`.|
-|**Identitás**|**Identitáskezelés**|Szükséges – az identitás, a művelet végrehajtásához használt. A következő értékek egyike lehet:<ul><li><code>userFromRequest</code> – Csak érvényes [HTTP-eseményindító]. A hívó felhasználó identitást használja.</li><li><code>userFromId</code> – Egy korábban bejelentkezett felhasználó használja a megadott azonosítóval. Tekintse meg a <code>userId</code> tulajdonság.</li><li><code>userFromToken</code> – A megadott jogkivonat által képviselt identitást használja. Tekintse meg a <code>userToken</code> tulajdonság.</li><li><code>clientCredentials</code> – A függvény alkalmazás identitását használja.</li></ul>|
-|**UserId** |**userId** |Ha szükséges, és csak akkor, ha _identitás_ értékre van állítva `userFromId`. A felhasználó résztvevő-azonosító egy korábban bejelentkezett felhasználóhoz társított.|
-|**userToken**|**userToken**|Ha szükséges, és csak akkor, ha _identitás_ értékre van állítva `userFromToken`. A jogkivonat érvényes, a függvényalkalmazás. |
-|**path**|**Elérési út**|Kötelező – a onedrive-on a fájl elérési útját.|
+|**name**||Kötelező – a fájlhoz tartozó függvény kódjában használt változó neve. Lásd: [OneDrive-fájl kimeneti kötésének használata kódból](#onedrive-output-code).|
+|**type**||Kötelező – a `onedrive`következőre kell beállítani:.|
+|**direction**||Kötelező – a `out`következőre kell beállítani:.|
+|**identitás**|**Identitás**|Kötelező – a művelet végrehajtásához használt identitás. A következő értékek egyike lehet:<ul><li><code>userFromRequest</code>– Csak http- [HTTP-trigger]esetén érvényes. A hívó felhasználó identitását használja.</li><li><code>userFromId</code>– Egy korábban bejelentkezett felhasználó identitását használja a megadott AZONOSÍTÓval. Tekintse <code>userId</code> meg a tulajdonságot.</li><li><code>userFromToken</code>-A megadott jogkivonat által jelölt identitást használja. Tekintse <code>userToken</code> meg a tulajdonságot.</li><li><code>clientCredentials</code>– A Function alkalmazás identitását használja.</li></ul>|
+|**UserId** |**userId** |Csak akkor szükséges, ha az _identitás_ `userFromId`értéke:. Egy korábban bejelentkezett felhasználóhoz társított egyszerű felhasználói azonosító.|
+|**userToken**|**UserToken**|Csak akkor szükséges, ha az _identitás_ `userFromToken`értéke:. A Function alkalmazáshoz érvényes jogkivonat. |
+|**path**|**Path**|Kötelező – a fájl OneDrive elérési útja.|
 
 <a name="onedrive-output-code"></a>
-#### <a name="file-output---usage"></a>Fájl kimeneti - használat
+#### <a name="file-output---usage"></a>Fájl kimenete – használat
 
-Ennek a kötésnek a következő Azure AD-engedélyekkel kell rendelkeznie:
+Ehhez a kötéshez a következő Azure AD-engedélyek szükségesek:
 
-|Erőforrás|Engedély|
+|Resource|Engedély|
 |--------|--------|
-|Microsoft Graph|Teljes hozzáférés a felhasználó fájljaihoz|
+|Microsoft Graph|Teljes hozzáférés a felhasználói fájlokhoz|
 
-A kötés tünteti fel a .NET-funkciók a következők:
-- byte[]
+A kötés a következő típusokat teszi elérhetővé a .NET-függvények számára:
+- bájt []
 - Stream
-- sztring
+- Karakterlánc
 - Microsoft.Graph.DriveItem
 
 
@@ -832,7 +831,7 @@ A kötés tünteti fel a .NET-funkciók a következők:
 <a name="outlook-output"></a>
 ## <a name="outlook-output"></a>Outlook-kimenet
 
-Az Outlook-üzenet kimeneti kötés küld egy e-mail üzenetet az Outlook keresztül.
+Az Outlook-üzenet kimeneti kötése e-mail üzenetet küld az Outlookon keresztül.
 
 Ez a szakasz a következő alszakaszokat tartalmazza:
 
@@ -841,18 +840,18 @@ Ez a szakasz a következő alszakaszokat tartalmazza:
 * [Konfigurálás](#outlook-output---configuration)
 * [Használat](#outlook-output---usage)
 
-### <a name="outlook-output---example"></a>Outlook-kimenet – példa
+### <a name="outlook-output---example"></a>Outlook kimenet – példa
 
 Tekintse meg az adott nyelvű példa:
 
 * [C# script (.csx)](#outlook-output---c-script-example)
 * [JavaScript](#outlook-output---javascript-example)
 
-#### <a name="outlook-output---c-script-example"></a>Az Outlook kimenete – C#-szkript példa
+#### <a name="outlook-output---c-script-example"></a>Outlook kimenet – C# parancsfájl – példa
 
-Az alábbi példában az Outlook használatával e-mailt küld.
+Az alábbi példa egy e-mailt küld az Outlookon keresztül.
 
-A *function.json* fájl határozza meg a HTTP-trigger egy Outlook-üzenet kimeneti kötést:
+A *function. JSON* fájl egy http-triggert definiál egy Outlook-üzenet kimeneti kötésével:
 
 ```json
 {
@@ -873,7 +872,7 @@ A *function.json* fájl határozza meg a HTTP-trigger egy Outlook-üzenet kimene
 }
 ```
 
-A C#-szkriptkódot a hívó egy levelet küld egy címzettnek, a lekérdezési karakterláncban megadott:
+A C# szkript kódja a hívótól érkező e-mailt küld a lekérdezési karakterláncban megadott címzettnek:
 
 ```csharp
 using System.Net;
@@ -903,11 +902,11 @@ public class Recipient {
 }
 ```
 
-#### <a name="outlook-output---javascript-example"></a>Az Outlook kimenete – JavaScript-példa
+#### <a name="outlook-output---javascript-example"></a>Outlook kimenet – JavaScript-példa
 
-Az alábbi példában az Outlook használatával e-mailt küld.
+Az alábbi példa egy e-mailt küld az Outlookon keresztül.
 
-A *function.json* fájl határozza meg a HTTP-trigger egy Outlook-üzenet kimeneti kötést:
+A *function. JSON* fájl egy http-triggert definiál egy Outlook-üzenet kimeneti kötésével:
 
 ```json
 {
@@ -928,7 +927,7 @@ A *function.json* fájl határozza meg a HTTP-trigger egy Outlook-üzenet kimene
 }
 ```
 
-A JavaScript-kódot a hívó egy levelet küld egy címzettnek, a lekérdezési karakterláncban megadott:
+A JavaScript-kód a hívótól érkező e-mailt küld a lekérdezési karakterláncban megadott címzettnek:
 
 ```js
 module.exports = function (context, req) {
@@ -943,53 +942,53 @@ module.exports = function (context, req) {
 };
 ```
 
-### <a name="outlook-output---attributes"></a>Outlook - kimeneti attribútumok
+### <a name="outlook-output---attributes"></a>Outlook kimenete – attribútumok
 
-A [C#-osztálykódtárakat](functions-dotnet-class-library.md), használja a [Outlook](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/OutlookAttribute.cs) attribútum.
+Az [ C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja az [Outlook](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/OutlookAttribute.cs) attribútumot.
 
-### <a name="outlook-output---configuration"></a>A kimenet az Outlook - konfiguráció
+### <a name="outlook-output---configuration"></a>Outlook kimenet – konfiguráció
 
 A következő táblázat ismerteti a megadott kötés konfigurációs tulajdonságaiban a *function.json* fájlt, és a `Outlook` attribútum.
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**name**||Kötelező – a függvénykódot az e-mail-üzenetet az használt változó neve. Lásd: [az Outlook-üzenet használata kimeneti kötés kódból](#outlook-output-code).|
-|**type**||Kötelező – kell állítani `outlook`.|
-|**direction**||Kötelező – kell állítani `out`.|
-|**Identitás**|**Identitáskezelés**|Szükséges – az identitás, a művelet végrehajtásához használt. A következő értékek egyike lehet:<ul><li><code>userFromRequest</code> – Csak érvényes [HTTP-eseményindító]. A hívó felhasználó identitást használja.</li><li><code>userFromId</code> – Egy korábban bejelentkezett felhasználó használja a megadott azonosítóval. Tekintse meg a <code>userId</code> tulajdonság.</li><li><code>userFromToken</code> – A megadott jogkivonat által képviselt identitást használja. Tekintse meg a <code>userToken</code> tulajdonság.</li><li><code>clientCredentials</code> – A függvény alkalmazás identitását használja.</li></ul>|
-|**userId**|**UserId**  |Ha szükséges, és csak akkor, ha _identitás_ értékre van állítva `userFromId`. A felhasználó résztvevő-azonosító egy korábban bejelentkezett felhasználóhoz társított.|
-|**userToken**|**userToken**|Ha szükséges, és csak akkor, ha _identitás_ értékre van állítva `userFromToken`. A jogkivonat érvényes, a függvényalkalmazás. |
+|**name**||Kötelező – a levelezési üzenethez tartozó függvény kódjában használt változó neve. Lásd: [Outlook-üzenet kimeneti kötésének használata kódból](#outlook-output-code).|
+|**type**||Kötelező – a `outlook`következőre kell beállítani:.|
+|**direction**||Kötelező – a `out`következőre kell beállítani:.|
+|**identitás**|**Identitás**|Kötelező – a művelet végrehajtásához használt identitás. A következő értékek egyike lehet:<ul><li><code>userFromRequest</code>– Csak http- [HTTP-trigger]esetén érvényes. A hívó felhasználó identitását használja.</li><li><code>userFromId</code>– Egy korábban bejelentkezett felhasználó identitását használja a megadott AZONOSÍTÓval. Tekintse <code>userId</code> meg a tulajdonságot.</li><li><code>userFromToken</code>-A megadott jogkivonat által jelölt identitást használja. Tekintse <code>userToken</code> meg a tulajdonságot.</li><li><code>clientCredentials</code>– A Function alkalmazás identitását használja.</li></ul>|
+|**userId**|**UserId**  |Csak akkor szükséges, ha az _identitás_ `userFromId`értéke:. Egy korábban bejelentkezett felhasználóhoz társított egyszerű felhasználói azonosító.|
+|**userToken**|**UserToken**|Csak akkor szükséges, ha az _identitás_ `userFromToken`értéke:. A Function alkalmazáshoz érvényes jogkivonat. |
 
 <a name="outlook-output-code"></a>
-### <a name="outlook-output---usage"></a>Az Outlook kimenete – használat
+### <a name="outlook-output---usage"></a>Outlook-kimenet – használat
 
-Ennek a kötésnek a következő Azure AD-engedélyekkel kell rendelkeznie:
+Ehhez a kötéshez a következő Azure AD-engedélyek szükségesek:
 
-|Erőforrás|Engedély|
+|Resource|Engedély|
 |--------|--------|
-|Microsoft Graph|E-mail küldése a felhasználó nevében|
+|Microsoft Graph|E-mail küldése felhasználóként|
 
-A kötés tünteti fel a .NET-funkciók a következők:
+A kötés a következő típusokat teszi elérhetővé a .NET-függvények számára:
 - Microsoft.Graph.Message
 - Newtonsoft.Json.Linq.JObject
-- sztring
-- Egyéni objektumtípusok (szerkezeti modellek kötés használatával)
+- Karakterlánc
+- Egyéni objektumtípusok (a strukturális modell kötésének használatával)
 
 
 
 
 
 
-## <a name="webhooks"></a>Webhookok
+## <a name="webhooks"></a>webhooks
 
-Webhookok lehetővé teszik a Microsoft Graph reagálhat rájuk. Webhookok támogatása érdekében függvények létrehozása, frissítése és reagálhat a szükséges _webhookelőfizetését_. Egy webhook teljes körű megoldás a következő kötéseket kombinációja van szükség:
-- A [Microsoft Graph-webhook eseményindító](#webhook-trigger) lehetővé teszi, hogy egy bejövő webhook reagálhat rájuk.
-- A [Microsoft Graph-webhookelőfizetés bemeneti kötést](#webhook-input) lehetővé teszi, hogy a meglévő előfizetések listában, és szükség esetén frissítse azokat.
-- A [Microsoft Graph-webhookelőfizetés kimeneti kötésének](#webhook-output) lehetővé teszi, hogy hozzon létre vagy webhook előfizetések törlése.
+A webhookok lehetővé teszik a Microsoft Graph eseményeire való reagálást. A webhookok támogatásához a függvényeknek a _webhook_-előfizetések létrehozásához, frissítéséhez és az azokra való reagáláshoz is szükségük van. A teljes webhook-megoldás a következő kötések kombinációját igényli:
+- A [Microsoft Graph webhook-trigger](#webhook-trigger) lehetővé teszi, hogy reagáljon egy bejövő webhookra.
+- A [Microsoft Graph webhook előfizetésének bemeneti kötése](#webhook-input) lehetővé teszi a meglévő előfizetések listázását és igény szerint frissítését.
+- A [Microsoft Graph webhook-előfizetés kimeneti kötése](#webhook-output) lehetővé teszi webhook-előfizetések létrehozását vagy törlését.
 
-Maguk a kötések nem szükséges minden olyan Azure AD-engedélyekről, de kell igényelnie reagálhat a kívánt erőforrások típusának megfelelő engedélyekkel. Egyes erőforrástípusok szükséges engedélyek, amelyek listáját lásd: [előfizetése engedélyei](https://docs.microsoft.com/graph/api/subscription-post-subscriptions?view=graph-rest-1.0).
+Maguk a kötések nem igényelnek Azure AD-engedélyeket, de a reagálni kívánt erőforrás típusára vonatkozó engedélyeket kell kérnie. Az egyes erőforrástípusok számára szükséges engedélyek listáját itt tekintheti meg: előfizetés- [engedélyek](https://docs.microsoft.com/graph/api/subscription-post-subscriptions?view=graph-rest-1.0).
 
-További információ a webhookok: [webhookok a Microsoft Graph-használata].
+A webhookokkal kapcsolatos további információkért lásd: [Webhookok használata Microsoft Graph].
 
 
 
@@ -997,7 +996,7 @@ További információ a webhookok: [webhookok a Microsoft Graph-használata].
 
 ## <a name="webhook-trigger"></a>Webhook trigger
 
-A Microsoft Graph-webhook eseményindító lehetővé teszi, hogy a Microsoft Graph reagálni egy bejövő webhook függvény. Ez az eseményindító minden példánya reagálhat a Microsoft Graph-erőforrás egy típusa.
+A Microsoft Graph webhook-trigger lehetővé teszi, hogy a függvény reagáljon egy bejövő webhookra a Microsoft Graph. Az trigger minden példánya reagálhat egy Microsoft Graph erőforrástípust.
 
 Ez a szakasz a következő alszakaszokat tartalmazza:
 
@@ -1006,18 +1005,18 @@ Ez a szakasz a következő alszakaszokat tartalmazza:
 * [Konfigurálás](#webhook-trigger---configuration)
 * [Használat](#webhook-trigger---usage)
 
-### <a name="webhook-trigger---example"></a>Webhook-eseményindító – példa
+### <a name="webhook-trigger---example"></a>Webhook-trigger – példa
 
 Tekintse meg az adott nyelvű példa:
 
 * [C# script (.csx)](#webhook-trigger---c-script-example)
 * [JavaScript](#webhook-trigger---javascript-example)
 
-#### <a name="webhook-trigger---c-script-example"></a>Webhook-eseményindító - C#-szkript példa
+#### <a name="webhook-trigger---c-script-example"></a>Webhook-trigger C# – parancsfájl – példa
 
-A következő példában bejövő Outlook-üzenetek webhookjait kezeli. Használandó webhook aktiválja, [hozzon létre egy előfizetést](#webhook-output---example), és [az előfizetés frissítése](#webhook-subscription-refresh) megakadályozhatja, hogy hamarosan lejár.
+Az alábbi példa a beérkező Outlook-üzenetekhez tartozó webhookokat kezeli. Webhook-trigger használatához létre kell [hoznia egy](#webhook-output---example)előfizetést, és [frissítheti az](#webhook-subscription-refresh) előfizetést, hogy megakadályozza a lejáratát.
 
-A *function.json* fájl határozza meg a webhook eseményindítóhoz:
+A *function. JSON* fájl egy webhook-triggert definiál:
 
 ```json
 {
@@ -1033,7 +1032,7 @@ A *function.json* fájl határozza meg a webhook eseményindítóhoz:
 }
 ```
 
-A C#-szkriptkódot reagál a beérkező e-mail üzenetek, és naplózza a címzett által küldött és az "Azure Functions" tartalmazó a tárgy törzse:
+A C# szkript kódja a beérkező levelek üzeneteire lép át, és naplózza a címzett által küldött és a tárgyban található "Azure functions" kifejezést tartalmazó törzset:
 
 ```csharp
 #r "Microsoft.Graph"
@@ -1052,11 +1051,11 @@ public static async Task Run(Message msg, ILogger log)
 }
 ```
 
-#### <a name="webhook-trigger---javascript-example"></a>Webhook-eseményindító - JavaScript-példa
+#### <a name="webhook-trigger---javascript-example"></a>Webhook-trigger – JavaScript-példa
 
-A következő példában bejövő Outlook-üzenetek webhookjait kezeli. Használandó webhook aktiválja, [hozzon létre egy előfizetést](#webhook-output---example), és [az előfizetés frissítése](#webhook-subscription-refresh) megakadályozhatja, hogy hamarosan lejár.
+Az alábbi példa a beérkező Outlook-üzenetekhez tartozó webhookokat kezeli. Webhook-trigger használatához létre kell [hoznia egy](#webhook-output---example)előfizetést, és [frissítheti az](#webhook-subscription-refresh) előfizetést, hogy megakadályozza a lejáratát.
 
-A *function.json* fájl határozza meg a webhook eseményindítóhoz:
+A *function. JSON* fájl egy webhook-triggert definiál:
 
 ```json
 {
@@ -1072,7 +1071,7 @@ A *function.json* fájl határozza meg a webhook eseményindítóhoz:
 }
 ```
 
-A JavaScript-kódot reagál a beérkező e-mail üzenetek, és naplózza a címzett által küldött és az "Azure Functions" tartalmazó a tárgy törzse:
+A JavaScript-kód a beérkező levelek üzeneteire lép át, és naplózza a címzett által küldött és a tárgyban található "Azure Functions" kifejezést tartalmazó törzset:
 
 ```js
 module.exports = function (context) {
@@ -1086,37 +1085,37 @@ module.exports = function (context) {
 };
 ```
 
-### <a name="webhook-trigger---attributes"></a>Webhook-eseményindító - attribútumok
+### <a name="webhook-trigger---attributes"></a>Webhook-trigger – attribútumok
 
-A [C#-osztálykódtárakat](functions-dotnet-class-library.md), használja a [GraphWebHookTrigger](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebHookTriggerAttribute.cs) attribútum.
+Az [ C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a [GraphWebHookTrigger](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebHookTriggerAttribute.cs) attribútumot.
 
-### <a name="webhook-trigger---configuration"></a>Webhook-eseményindító - konfiguráció
+### <a name="webhook-trigger---configuration"></a>Webhook-trigger – konfiguráció
 
 A következő táblázat ismerteti a megadott kötés konfigurációs tulajdonságaiban a *function.json* fájlt, és a `GraphWebHookTrigger` attribútum.
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**name**||Kötelező – a függvénykódot az e-mail-üzenetet az használt változó neve. Lásd: [az Outlook-üzenet használata kimeneti kötés kódból](#outlook-output-code).|
-|**type**||Kötelező – kell állítani `graphWebhook`.|
-|**direction**||Kötelező – kell állítani `trigger`.|
-|**resourceType**|**ResourceType**|Kötelező – a graph-erőforrás, amelynek ez a függvény válaszolnia kell webhook. A következő értékek egyike lehet:<ul><li><code>#Microsoft.Graph.Message</code> – Outlook-üzenetek végzett módosítások.</li><li><code>#Microsoft.Graph.DriveItem</code> – OneDrive legfelső szintű elemek végzett módosítások.</li><li><code>#Microsoft.Graph.Contact</code> – személyes Outlook-névjegyek formájában módosításait.</li><li><code>#Microsoft.Graph.Event</code> -az Outlook naptári elemek végzett módosítások.</li></ul>|
+|**name**||Kötelező – a levelezési üzenethez tartozó függvény kódjában használt változó neve. Lásd: [Outlook-üzenet kimeneti kötésének használata kódból](#outlook-output-code).|
+|**type**||Kötelező – a `graphWebhook`következőre kell beállítani:.|
+|**direction**||Kötelező – a `trigger`következőre kell beállítani:.|
+|**resourceType**|**ResourceType**|Kötelező – a Graph-erőforrás, amelynek a függvénynek válaszolnia kell a webhookokra. A következő értékek egyike lehet:<ul><li><code>#Microsoft.Graph.Message</code>– az Outlook-üzenetekben végrehajtott módosítások.</li><li><code>#Microsoft.Graph.DriveItem</code>– a OneDrive-gyökér elemein végrehajtott módosítások.</li><li><code>#Microsoft.Graph.Contact</code>– a személyes névjegyek módosításai az Outlookban.</li><li><code>#Microsoft.Graph.Event</code>– az Outlook naptár elemein végrehajtott módosítások.</li></ul>|
 
 > [!Note]
-> A függvényalkalmazás csak rendelkezhet egy függvényt, amely regisztrálva van egy adott `resourceType` értéket.
+> A Function alkalmazásnak csak egy függvénye lehet, amely egy adott `resourceType` értékre van regisztrálva.
 
-### <a name="webhook-trigger---usage"></a>Webhook-eseményindító - használat
+### <a name="webhook-trigger---usage"></a>Webhook-trigger – használat
 
-A kötés tünteti fel a .NET-funkciók a következők:
-- Például az erőforrás típusa, a Microsoft Graph SDK típusokat `Microsoft.Graph.Message` vagy `Microsoft.Graph.DriveItem`.
-- Egyéni objektumtípusok (szerkezeti modellek kötés használatával)
+A kötés a következő típusokat teszi elérhetővé a .NET-függvények számára:
+- Microsoft Graph az erőforrástípus, például `Microsoft.Graph.Message` vagy. `Microsoft.Graph.DriveItem`
+- Egyéni objektumtípusok (a strukturális modell kötésének használatával)
 
 
 
 
 <a name="webhook-input"></a>
-## <a name="webhook-input"></a>Webhook input
+## <a name="webhook-input"></a>Webhook bemenet
 
-A Microsoft Graph-webhook bemeneti kötés lehetővé teszi, hogy a függvényalkalmazás által kezelt előfizetések listájának beolvasása. A kötés beolvassa a függvény alkalmazástár, így azt nem tükrözi az alkalmazáson kívül létrehozott más előfizetések.
+A Microsoft Graph webhook bemeneti kötése lehetővé teszi a Function app által kezelt előfizetések listájának beolvasását. A kötés beolvassa a Function app Storage-ból, így az nem tükrözi az alkalmazáson kívül létrehozott egyéb előfizetéseket.
 
 Ez a szakasz a következő alszakaszokat tartalmazza:
 
@@ -1125,18 +1124,18 @@ Ez a szakasz a következő alszakaszokat tartalmazza:
 * [Konfigurálás](#webhook-input---configuration)
 * [Használat](#webhook-input---usage)
 
-### <a name="webhook-input---example"></a>Webhook bevitel – példa
+### <a name="webhook-input---example"></a>Webhook bemenet – példa
 
 Tekintse meg az adott nyelvű példa:
 
 * [C# script (.csx)](#webhook-input---c-script-example)
 * [JavaScript](#webhook-input---javascript-example)
 
-#### <a name="webhook-input---c-script-example"></a>Webhook bemeneti – C#-szkript példa
+#### <a name="webhook-input---c-script-example"></a>Webhook bemenet – C# példa parancsfájlra
 
-Az alábbi példa lekéri az összes előfizetés hívó felhasználó esetében, és törli őket.
+A következő példa lekéri a hívó felhasználó összes előfizetését, és törli őket.
 
-A *function.json* fájl határozza meg a HTTP-trigger egy előfizetés bemeneti kötéssel és a egy előfizetés kimeneti kötést, amely a törlési művelet használja:
+A *function. JSON* fájl olyan http-triggert definiál, amely előfizetési beviteli kötést és előfizetési kimeneti kötést használ, amely a DELETE műveletet használja:
 
 ```json
 {
@@ -1169,7 +1168,7 @@ A *function.json* fájl határozza meg a HTTP-trigger egy előfizetés bemeneti 
 }
 ```
 
-A C#-szkriptkódot az előfizetések beolvasása, és törli őket:
+A C# szkript kódja lekéri az előfizetéseket, és törli őket:
 
 ```csharp
 using System.Net;
@@ -1186,11 +1185,11 @@ public static async Task Run(HttpRequest req, string[] existingSubscriptions, IA
 }
 ```
 
-#### <a name="webhook-input---javascript-example"></a>Webhook bemeneti – JavaScript-példa
+#### <a name="webhook-input---javascript-example"></a>Webhook bemenet – JavaScript-példa
 
-Az alábbi példa lekéri az összes előfizetés hívó felhasználó esetében, és törli őket.
+A következő példa lekéri a hívó felhasználó összes előfizetését, és törli őket.
 
-A *function.json* fájl határozza meg a HTTP-trigger egy előfizetés bemeneti kötéssel és a egy előfizetés kimeneti kötést, amely a törlési művelet használja:
+A *function. JSON* fájl olyan http-triggert definiál, amely előfizetési beviteli kötést és előfizetési kimeneti kötést használ, amely a DELETE műveletet használja:
 
 ```json
 {
@@ -1223,7 +1222,7 @@ A *function.json* fájl határozza meg a HTTP-trigger egy előfizetés bemeneti 
 }
 ```
 
-A JavaScript-kódot az előfizetések beolvasása, és törli őket:
+A JavaScript-kód lekéri az előfizetéseket, és törli őket:
 
 ```js
 module.exports = function (context, req) {
@@ -1238,26 +1237,26 @@ module.exports = function (context, req) {
 };
 ```
 
-### <a name="webhook-input---attributes"></a>Webhook bemeneti - attribútumok
+### <a name="webhook-input---attributes"></a>Webhook bemenete – attribútumok
 
-A [C#-osztálykódtárakat](functions-dotnet-class-library.md), használja a [GraphWebHookSubscription](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebHookSubscriptionAttribute.cs) attribútum.
+Az [ C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a [GraphWebHookSubscription](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebHookSubscriptionAttribute.cs) attribútumot.
 
-### <a name="webhook-input---configuration"></a>Webhook bemenet - konfiguráció
+### <a name="webhook-input---configuration"></a>Webhook bemenete – konfiguráció
 
 A következő táblázat ismerteti a megadott kötés konfigurációs tulajdonságaiban a *function.json* fájlt, és a `GraphWebHookSubscription` attribútum.
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**name**||Kötelező – a függvénykódot az e-mail-üzenetet az használt változó neve. Lásd: [az Outlook-üzenet használata kimeneti kötés kódból](#outlook-output-code).|
-|**type**||Kötelező – kell állítani `graphWebhookSubscription`.|
-|**direction**||Kötelező – kell állítani `in`.|
-|**filter**|**Szűrő**| Ha beállítása `userFromRequest`, majd a kötés csak lekéri a hívó felhasználó tulajdonában lévő előfizetéseket (csak érvényes [HTTP-eseményindító]).| 
+|**name**||Kötelező – a levelezési üzenethez tartozó függvény kódjában használt változó neve. Lásd: [Outlook-üzenet kimeneti kötésének használata kódból](#outlook-output-code).|
+|**type**||Kötelező – a `graphWebhookSubscription`következőre kell beállítani:.|
+|**direction**||Kötelező – a `in`következőre kell beállítani:.|
+|**filter**|**Szűrő**| Ha a értékre van állítva `userFromRequest`, akkor a kötés csak a hívó felhasználó tulajdonában lévő előfizetéseket kéri le (csak a http- [HTTP-trigger]érvényes).| 
 
-### <a name="webhook-input---usage"></a>Webhook bemeneti - használat
+### <a name="webhook-input---usage"></a>Webhook bevitele – használat
 
-A kötés tünteti fel a .NET-funkciók a következők:
-- String]
-- Egyéni objektum típusú tömbök
+A kötés a következő típusokat teszi elérhetővé a .NET-függvények számára:
+- karakterlánc []
+- Egyéni objektumtípus-tömbök
 - Newtonsoft.Json.Linq.JObject[]
 - Microsoft.Graph.Subscription[]
 
@@ -1265,9 +1264,9 @@ A kötés tünteti fel a .NET-funkciók a következők:
 
 
 
-## <a name="webhook-output"></a>Webhook output
+## <a name="webhook-output"></a>Webhook kimenete
 
-A webhook előfizetés kimeneti kötés lehetővé teszi létrehozása, törlése és frissítése a Microsoft Graph-webhook előfizetések.
+A webhook előfizetésének kimeneti kötése lehetővé teszi a Microsoft Graph webhook-előfizetések létrehozását, törlését és frissítését.
 
 Ez a szakasz a következő alszakaszokat tartalmazza:
 
@@ -1283,11 +1282,11 @@ Tekintse meg az adott nyelvű példa:
 * [C# script (.csx)](#webhook-output---c-script-example)
 * [JavaScript](#webhook-output---javascript-example)
 
-#### <a name="webhook-output---c-script-example"></a>Webhook kimenete – C#-szkript példa
+#### <a name="webhook-output---c-script-example"></a>Webhook kimenet- C# parancsfájl – példa
 
-Az alábbi példa létrehoz egy előfizetést. Is [az előfizetés frissítése](#webhook-subscription-refresh) megakadályozhatja, hogy hamarosan lejár.
+A következő példa létrehoz egy előfizetést. Frissítheti [az](#webhook-subscription-refresh) előfizetést, hogy megakadályozza a lejáratát.
 
-A *function.json* fájl egy előfizetés kimeneti kötés létrehozása művelet használata a HTTP-trigger határozza meg:
+A *function. JSON* fájl egy előfizetési kimenettel rendelkező http-triggert definiál a Create művelet használatával:
 
 ```json
 {
@@ -1318,7 +1317,7 @@ A *function.json* fájl egy előfizetés kimeneti kötés létrehozása művelet
 }
 ```
 
-A C#-szkriptkódot regisztrál egy webhookot, amely a függvényalkalmazás értesíteni fogjuk, ha a hívó felhasználó kap egy Outlook-üzenet:
+A C# parancsfájl regisztrál egy webhookot, amely értesíti a Function alkalmazást, ha a hívó felhasználó Outlook-üzenetet kap:
 
 ```csharp
 using System;
@@ -1333,11 +1332,11 @@ public static HttpResponseMessage run(HttpRequestMessage req, out string clientS
 }
 ```
 
-#### <a name="webhook-output---javascript-example"></a>Webhook kimenete – JavaScript-példa
+#### <a name="webhook-output---javascript-example"></a>Webhook kimenet – JavaScript-példa
 
-Az alábbi példa létrehoz egy előfizetést. Is [az előfizetés frissítése](#webhook-subscription-refresh) megakadályozhatja, hogy hamarosan lejár.
+A következő példa létrehoz egy előfizetést. Frissítheti [az](#webhook-subscription-refresh) előfizetést, hogy megakadályozza a lejáratát.
 
-A *function.json* fájl egy előfizetés kimeneti kötés létrehozása művelet használata a HTTP-trigger határozza meg:
+A *function. JSON* fájl egy előfizetési kimenettel rendelkező http-triggert definiál a Create művelet használatával:
 
 ```json
 {
@@ -1368,7 +1367,7 @@ A *function.json* fájl egy előfizetés kimeneti kötés létrehozása művelet
 }
 ```
 
-A JavaScript-kódot egy webhookot, amely a függvényalkalmazás értesíteni fogjuk, ha a hívó felhasználó kap egy Outlook-üzenet regisztrálása:
+A JavaScript-kód regisztrálja a webhookot, amely értesíti a Function alkalmazást, ha a hívó felhasználó Outlook-üzenetet kap:
 
 ```js
 const uuidv4 = require('uuid/v4');
@@ -1381,58 +1380,58 @@ module.exports = function (context, req) {
 
 ### <a name="webhook-output---attributes"></a>Webhook kimenete – attribútumok
 
-A [C#-osztálykódtárakat](functions-dotnet-class-library.md), használja a [GraphWebHookSubscription](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebHookSubscriptionAttribute.cs) attribútum.
+Az [ C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a [GraphWebHookSubscription](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebHookSubscriptionAttribute.cs) attribútumot.
 
-### <a name="webhook-output---configuration"></a>Webhook kimeneti - konfiguráció
+### <a name="webhook-output---configuration"></a>Webhook kimenete – konfiguráció
 
 A következő táblázat ismerteti a megadott kötés konfigurációs tulajdonságaiban a *function.json* fájlt, és a `GraphWebHookSubscription` attribútum.
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**name**||Kötelező – a függvénykódot az e-mail-üzenetet az használt változó neve. Lásd: [az Outlook-üzenet használata kimeneti kötés kódból](#outlook-output-code).|
-|**type**||Kötelező – kell állítani `graphWebhookSubscription`.|
-|**direction**||Kötelező – kell állítani `out`.|
-|**Identitás**|**Identitáskezelés**|Szükséges – az identitás, a művelet végrehajtásához használt. A következő értékek egyike lehet:<ul><li><code>userFromRequest</code> – Csak érvényes [HTTP-eseményindító]. A hívó felhasználó identitást használja.</li><li><code>userFromId</code> – Egy korábban bejelentkezett felhasználó használja a megadott azonosítóval. Tekintse meg a <code>userId</code> tulajdonság.</li><li><code>userFromToken</code> – A megadott jogkivonat által képviselt identitást használja. Tekintse meg a <code>userToken</code> tulajdonság.</li><li><code>clientCredentials</code> – A függvény alkalmazás identitását használja.</li></ul>|
-|**userId**|**UserId**  |Ha szükséges, és csak akkor, ha _identitás_ értékre van állítva `userFromId`. A felhasználó résztvevő-azonosító egy korábban bejelentkezett felhasználóhoz társított.|
-|**userToken**|**userToken**|Ha szükséges, és csak akkor, ha _identitás_ értékre van állítva `userFromToken`. A jogkivonat érvényes, a függvényalkalmazás. |
-|**a művelet**|**Művelet**|Kötelező – meghatározza a kötés műveletet végre kell hajtania. A következő értékek egyike lehet:<ul><li><code>create</code> – Egy új előfizetést regisztrál.</li><li><code>delete</code> – A megadott előfizetés törlése.</li><li><code>refresh</code> – Frissíti egy megadott előfizetés, amely megakadályozza az hamarosan lejár.</li></ul>|
-|**subscriptionResource**|**SubscriptionResource**|Ha szükséges, és csak akkor, ha a _művelet_ értékre van állítva `create`. Adja meg a Microsoft Graph-erőforrás figyelni kívánt módosítások. Lásd: [webhookok a Microsoft Graph-használata]. |
-|**changeType**|**ChangeType**|Ha szükséges, és csak akkor, ha a _művelet_ értékre van állítva `create`. Az előfizetett erőforrásban, amely kiváltja az értesítést a módosítás típusát jelzi. A támogatott értékek a következők: `created`, `updated`, `deleted`. Több érték kombinálhatók, vesszővel tagolt lista használatával.|
+|**name**||Kötelező – a levelezési üzenethez tartozó függvény kódjában használt változó neve. Lásd: [Outlook-üzenet kimeneti kötésének használata kódból](#outlook-output-code).|
+|**type**||Kötelező – a `graphWebhookSubscription`következőre kell beállítani:.|
+|**direction**||Kötelező – a `out`következőre kell beállítani:.|
+|**identitás**|**Identitás**|Kötelező – a művelet végrehajtásához használt identitás. A következő értékek egyike lehet:<ul><li><code>userFromRequest</code>– Csak http- [HTTP-trigger]esetén érvényes. A hívó felhasználó identitását használja.</li><li><code>userFromId</code>– Egy korábban bejelentkezett felhasználó identitását használja a megadott AZONOSÍTÓval. Tekintse <code>userId</code> meg a tulajdonságot.</li><li><code>userFromToken</code>-A megadott jogkivonat által jelölt identitást használja. Tekintse <code>userToken</code> meg a tulajdonságot.</li><li><code>clientCredentials</code>– A Function alkalmazás identitását használja.</li></ul>|
+|**userId**|**UserId**  |Csak akkor szükséges, ha az _identitás_ `userFromId`értéke:. Egy korábban bejelentkezett felhasználóhoz társított egyszerű felhasználói azonosító.|
+|**userToken**|**UserToken**|Csak akkor szükséges, ha az _identitás_ `userFromToken`értéke:. A Function alkalmazáshoz érvényes jogkivonat. |
+|**művelet**|**Művelet**|Kötelező – meghatározza azt a műveletet, amelyet a kötésnek végre kell hajtania. A következő értékek egyike lehet:<ul><li><code>create</code>-Új előfizetés regisztrálása.</li><li><code>delete</code>-Egy megadott előfizetés törlése.</li><li><code>refresh</code>– Frissíti a megadott előfizetést, hogy a lejárati állapotban maradjon.</li></ul>|
+|**subscriptionResource**|**SubscriptionResource**|Csak akkor szükséges, ha a _művelet_ a következőre `create`van beállítva:. Meghatározza a változásokhoz figyelni kívánt Microsoft Graph erőforrást. Lásd: webhookok [Webhookok használata Microsoft Graph]. |
+|**changeType**|**ChangeType**|Csak akkor szükséges, ha a _művelet_ a következőre `create`van beállítva:. Megadja az előfizetett erőforrás változásának típusát, amely értesítést fog létrehozni. A támogatott értékek a következők `created`: `updated`, `deleted`,. Vesszővel tagolt lista használatával több érték is egyesíthető.|
 
 ### <a name="webhook-output---usage"></a>Webhook kimenete – használat
 
-A kötés tünteti fel a .NET-funkciók a következők:
-- sztring
+A kötés a következő típusokat teszi elérhetővé a .NET-függvények számára:
+- Karakterlánc
 - Microsoft.Graph.Subscription
 
 
 
 
 <a name="webhook-examples"></a>
-## <a name="webhook-subscription-refresh"></a>Webhook előfizetés frissítése
+## <a name="webhook-subscription-refresh"></a>Webhook-előfizetés frissítése
 
-Az előfizetések frissítése kétféleképpen történhet:
+Az előfizetések frissítésének két módja van:
 
-- Az alkalmazásazonosító használatával az összes előfizetés kezelése. Ehhez az Azure Active Directory rendszergazdája. a jóváhagyás szükséges Ez az Azure Functions által támogatott összes nyelv által használható.
-- Az identitáshoz társított minden egyes előfizetés manuálisan kötés az egyes felhasználói azonosítóját. Ezt a beállítást egyéni kódokat végrehajtja a kötést. Ez csak használható .NET-függvényekkel.
+- Az alkalmazás identitásával kezelheti az összes előfizetést. Ehhez hozzá kell járulnia egy Azure Active Directory-rendszergazdától. Ezt a Azure Functions által támogatott összes nyelv használhatja.
+- Az egyes előfizetésekhez tartozó identitást az egyes felhasználói AZONOSÍTÓk manuális kötésével használhatja. Ehhez szükség lesz egy egyéni kódra a kötés végrehajtásához. Ezt csak a .NET függvények használhatják.
 
-Ez a szakasz tartalmaz például ezek a módszerek mindegyike esetében:
+Ez a szakasz példákat tartalmaz a következő módszerekre:
 
-* [Alkalmazás-identitást példa](#webhook-subscription-refresh---app-identity-example)
-* [Felhasználói identitás példa](#webhook-subscription-refresh---user-identity-example)
+* [Példa az alkalmazás identitására](#webhook-subscription-refresh---app-identity-example)
+* [Példa felhasználói identitásra](#webhook-subscription-refresh---user-identity-example)
 
-### <a name="webhook-subscription-refresh---app-identity-example"></a>Webhook előfizetés frissítése - alkalmazás identitását példa
+### <a name="webhook-subscription-refresh---app-identity-example"></a>Webhook-előfizetés frissítése – példa az alkalmazás identitására
 
 Tekintse meg az adott nyelvű példa:
 
 * [C# script (.csx)](#app-identity-refresh---c-script-example)
 * JavaScript
 
-### <a name="app-identity-refresh---c-script-example"></a>Alkalmazás identitás frissítése – C#-szkript példa
+### <a name="app-identity-refresh---c-script-example"></a>Alkalmazás-identitás frissítése C# – példa parancsfájlra
 
-Az alábbi példában az identitása előfizetés frissítése.
+Az alábbi példa az alkalmazás identitását használja az előfizetés frissítéséhez.
 
-A *function.json* előfizetéssel időzítő eseményindító meghatározása bemeneti kötést és a egy előfizetés kimeneti kötést:
+A *function. JSON* egy előfizetési bemeneti kötést és egy előfizetési kimeneti kötést tartalmazó időzítő triggert definiál:
 
 ```json
 {
@@ -1460,7 +1459,7 @@ A *function.json* előfizetéssel időzítő eseményindító meghatározása be
 }
 ```
 
-A C#-szkriptkódot az előfizetések frissítése:
+A C# szkript kódja frissíti az előfizetéseket:
 
 ```csharp
 using System;
@@ -1479,11 +1478,11 @@ public static void Run(TimerInfo myTimer, string[] existingSubscriptions, IColle
 }
 ```
 
-### <a name="app-identity-refresh---c-script-example"></a>Alkalmazás identitás frissítése – C#-szkript példa
+### <a name="app-identity-refresh---c-script-example"></a>Alkalmazás-identitás frissítése C# – példa parancsfájlra
 
-Az alábbi példában az identitása előfizetés frissítése.
+Az alábbi példa az alkalmazás identitását használja az előfizetés frissítéséhez.
 
-A *function.json* előfizetéssel időzítő eseményindító meghatározása bemeneti kötést és a egy előfizetés kimeneti kötést:
+A *function. JSON* egy előfizetési bemeneti kötést és egy előfizetési kimeneti kötést tartalmazó időzítő triggert definiál:
 
 ```json
 {
@@ -1511,7 +1510,7 @@ A *function.json* előfizetéssel időzítő eseményindító meghatározása be
 }
 ```
 
-A JavaScript-kód frissíti az előfizetések:
+A JavaScript-kód frissíti az előfizetéseket:
 
 ```js
 // This template uses application permissions and requires consent from an Azure Active Directory admin.
@@ -1529,11 +1528,11 @@ module.exports = function (context) {
 };
 ```
 
-### <a name="webhook-subscription-refresh---user-identity-example"></a>Webhook előfizetés frissítése – például a felhasználói identitás
+### <a name="webhook-subscription-refresh---user-identity-example"></a>Webhook-előfizetés frissítése – példa felhasználói identitásra
 
-Az alábbi példában a felhasználói identitás egy előfizetés frissítése.
+Az alábbi példa a felhasználói identitást használja az előfizetés frissítéséhez.
 
-A *function.json* fájl egy időzítő eseményindító meghatározása, és az előfizetés bemeneti kötést a függvénykódot késleltet:
+A *function. JSON* fájl egy időzítő triggert határoz meg, és elhalasztja az előfizetés bemeneti kötését a következő függvény kódjában:
 
 ```json
 {
@@ -1554,7 +1553,7 @@ A *function.json* fájl egy időzítő eseményindító meghatározása, és az 
 }
 ```
 
-A C#-szkriptkódot az előfizetések frissül, és létrehozza a kimeneti kötés a code-ban minden egyes felhasználói identitás használatával:
+A C# szkript kód frissíti az előfizetéseket, és létrehozza a kimeneti kötést a kódban az egyes felhasználói identitások használatával:
 
 ```csharp
 using System;
@@ -1592,5 +1591,5 @@ public class UserSubscription {
 > [!div class="nextstepaction"]
 > [Tudjon meg többet az Azure functions eseményindítók és kötések](functions-triggers-bindings.md)
 
-[HTTP-eseményindító]: functions-bindings-http-webhook.md
-[Webhookok a Microsoft Graph-használata]: https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/webhooks
+[HTTP-trigger]: functions-bindings-http-webhook.md
+[Webhookok használata Microsoft Graph]: https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/webhooks

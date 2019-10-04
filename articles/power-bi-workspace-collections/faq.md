@@ -2,18 +2,18 @@
 title: A Power BI munkaterületi gyűjtemények – gyakori kérdések
 description: A Power BI munkaterületi gyűjteményekkel kapcsolatos gyakori kérdésekre.
 services: power-bi-workspace-collections
-ms.service: power-bi-workspace-collections
-author: markingmyname
-ms.author: maghan
+ms.service: power-bi-embedded
+author: rkarlin
+ms.author: rkarlin
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/25/2017
-ms.openlocfilehash: 2de9d57e6febd0f0bec3bbbf1a175700c5b0bf71
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: b737c7753ce374d0360738e37d83609d1db995b1
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518906"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672423"
 ---
 # <a name="power-bi-workspace-collections-faq"></a>A Power BI munkaterületi gyűjtemények – gyakori kérdések
 

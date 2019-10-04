@@ -1,35 +1,35 @@
 ---
-title: Konfigurálja a jelszó módosítása az Azure Active Directory B2C-vel egyéni szabályzatok használatával |} A Microsoft Docs
-description: Ismerje meg, hogyan engedélyezhet felhasználókat az Azure Active Directory B2C-vel egyéni szabályzatok használatával jelszó módosítására.
+title: A jelszó módosításának konfigurálása egyéni házirendek használatával Azure Active Directory B2Cban | Microsoft Docs
+description: Ismerje meg, hogy a felhasználók miként módosíthatják a jelszavukat egyéni szabályzatok használatával Azure Active Directory B2Cban.
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/13/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a9e58139d248daed19f4fe35c7d33ede9dfe64b0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 0775920e1d6572223253edbfc066123a515b5480
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55195970"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065534"
 ---
-# <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurálja a jelszó módosítása az Azure Active Directory B2C-vel egyéni szabályzatok használatával
+# <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>A jelszó módosításának konfigurálása egyéni házirendek használatával Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Az Azure Active Directory (Azure AD) B2C-vel engedélyezheti a felhasználók, akik a helyi fiókkal jelentkezik be jelszómódosításra hitelességét nélkül által aláírt e-mailes ellenőrzés. Ha a munkamenet lejárt az idő a felhasználó által a folyamat módosítsa a jelszót, jelentkezzen be újra kell adnia. Ez a cikk bemutatja, hogyan konfigurálja a jelszó módosítása [egyéni szabályzatok](active-directory-b2c-overview-custom.md). Akkor is konfigurálhatja a [önkiszolgáló jelszó-visszaállítási](active-directory-b2c-reference-sspr.md) felhasználókövetési adatai számára.
+Azure Active Directory B2C (Azure AD B2C) esetében engedélyezheti, hogy a helyi fiókkal bejelentkezett felhasználók a jelszavukat úgy változtassák meg, hogy az e-mail-ellenőrzésen alapuló eredetiségük bizonyítása nélkül is megváltozzon. Ha a munkamenet lejár, amikor a felhasználó megkapja a jelszó módosítási folyamatát, a rendszer kéri, hogy jelentkezzen be újra. Ez a cikk bemutatja, hogyan konfigurálhatja a jelszó módosítását az [Egyéni házirendekben](active-directory-b2c-overview-custom.md). A felhasználói folyamatok önkiszolgáló [jelszó-visszaállítását](active-directory-b2c-reference-sspr.md) is konfigurálhatja.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Hajtsa végre a [az Active Directory B2C-vel egyéni szabályzatok – első lépések](active-directory-b2c-get-started-custom.md).
+Hajtsa végre a következő témakörben ismertetett lépéseket: Ismerkedés az [Egyéni szabályzatokkal Active Directory B2Cban](active-directory-b2c-get-started-custom.md).
 
-## <a name="add-the-elements"></a>Az elemek hozzáadása 
+## <a name="add-the-elements"></a>Elemek hozzáadása
 
-1. Nyissa meg a *TrustframeworkExtensions.xml* fájlt, és adja hozzá a következő **takar** elem azonosítója, amelyet az `oldPassword` , a [ClaimsSchema](claimsschema.md) elem: 
+1. Nyissa meg a *TrustframeworkExtensions. XML* fájlt, és adja hozzá a következő **claimType** elemet `oldPassword` egy azonosítóval a [ClaimsSchema](claimsschema.md) elemhez:
 
     ```XML
     <BuildingBlocks>
@@ -44,7 +44,7 @@ Hajtsa végre a [az Active Directory B2C-vel egyéni szabályzatok – első lé
     </BuildingBlocks>
     ```
 
-2. A [ClaimsProvider](claimsproviders.md) elem tartalmazza a technikai profil, amely hitelesíti a felhasználót. Adja hozzá a következő jogcím-szolgáltatók számára a **ClaimsProviders** elem:
+2. A [ClaimsProvider](claimsproviders.md) elem tartalmazza azt a technikai profilt, amely hitelesíti a felhasználót. Adja hozzá a következő jogcím-szolgáltatókat a **ClaimsProviders** elemhez:
 
     ```XML
     <ClaimsProviders>
@@ -120,9 +120,9 @@ Hajtsa végre a [az Active Directory B2C-vel egyéni szabályzatok – első lé
     </ClaimsProviders>
     ```
 
-    Cserélje le `IdentityExperienceFrameworkAppId` IdentityExperienceFramework alkalmazás, amelyet az előfeltételnek számító oktatóanyagot az alkalmazás azonosítójával. Cserélje le `ProxyIdentityExperienceFrameworkAppId` ProxyIdentityExperienceFramework alkalmazás, amelyet korábban hozott létre az alkalmazás azonosítójával.
+    A `IdentityExperienceFrameworkAppId` helyére írja be az előfeltételként megadott oktatóanyagban létrehozott IdentityExperienceFramework alkalmazás alkalmazás-azonosítóját. Cserélje `ProxyIdentityExperienceFrameworkAppId` le a helyére a korábban létrehozott ProxyIdentityExperienceFramework-alkalmazás alkalmazás-azonosítóját.
 
-3. A [UserJourney](userjourneys.md) elem definiálja az útvonal, amely a felhasználó az alkalmazás való interakció során. Adja hozzá a **UserJourneys** Ha még nem létezik az elem a **UserJourney** azonosította az eseményt `PasswordChange`:
+3. A [UserJourney](userjourneys.md) elem azt az elérési utat határozza meg, amelyet a felhasználó az alkalmazással való interakció során használ. Adja hozzá a **UserJourneys** elemet, ha az nem létezik a következőképpen `PasswordChange`azonosított UserJourney:
 
     ```XML
     <UserJourneys>
@@ -150,35 +150,35 @@ Hajtsa végre a [az Active Directory B2C-vel egyéni szabályzatok – első lé
     </UserJourneys>
     ```
 
-4. Mentse a *TrustFrameworkExtensions.xml* szabályzatot tartalmazó fájlt.
-5. Másolás a *ProfileEdit.xml* fájlt, hogy letöltötte az alapszintű csomaggal, és adja neki *ProfileEditPasswordChange.xml*.
-6. Nyissa meg az új fájlt, és frissítse a **PolicyId** attribútumnak egyedi értékkel. Ez az érték a házirend nevét. Ha például *B2C_1A_profile_edit_password_change*.
-7. Módosítsa a **hivatkozásazonosító** attribútum `<DefaultUserJourney>` megfelelő az Ön által létrehozott új felhasználói interakciósorozat azonosítója. Ha például *PasswordChange*.
+4. Mentse a *TrustFrameworkExtensions. XML* házirend-fájlt.
+5. Másolja az alapszintű csomaggal letöltött *ProfileEdit. XML* fájlt, és nevezze el a *ProfileEditPasswordChange. XML*néven.
+6. Nyissa meg az új fájlt, és frissítse a **PolicyId** attribútumot egyedi értékkel. Ez az érték a szabályzat neve. Például: *B2C_1A_profile_edit_password_change*.
+7. Módosítsa a **ReferenceId** attribútumát `<DefaultUserJourney>` , hogy az megfeleljen a létrehozott új felhasználói út azonosítójának. Például: *PasswordChange*.
 8. Mentse a módosításokat.
 
-A minta házirendet annak [Itt](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/password-change). 
+[Itt](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/password-change)megtekintheti a minta szabályzatot.
 
-## <a name="test-your-policy"></a>A házirend tesztelése
+## <a name="test-your-policy"></a>A szabályzat tesztelése
 
-Ha teszteli az alkalmazások Azure AD B2C-ben, hasznos lehet az Azure AD B2C jogkivonat vissza lehet `https://jwt.ms` lehet majd tekinteni a jogcímek, az.
+Az alkalmazások Azure ad B2C-ben történő tesztelésekor hasznos lehet, hogy a Azure ad B2C token visszaadja `https://jwt.ms` a jogcímeket, hogy áttekintse a benne lévő jogcímeket.
 
 ### <a name="upload-the-files"></a>A fájlok feltöltése
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő kattintva tartalmazó könyvtárba a **címtár és előfizetés-szűrő** a felső menüben, és a könyvtár, amely tartalmazza a bérlő kiválasztása.
-3. Válasszon **minden szolgáltatás** az Azure Portalon, és majd keresse meg és válassza a bal felső sarkában lévő **Azure AD B2C-vel**.
-4. Válassza ki **identitás-kezelőfelületi keretrendszer**.
-5. Egyéni szabályzatok lapon kattintson **szabályzat feltöltése**.
-6. Válassza ki **szabályzat felülírása, ha létezik**, és keressen rá, és válassza ki a *TrustframeworkExtensions.xml* fájlt.
+2. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki a bérlőt tartalmazó könyvtárat.
+3. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
+4. Válassza az **identitási élmény keretrendszert**.
+5. Az egyéni házirendek lapon kattintson a **házirend feltöltése**elemre.
+6. **Ha létezik**, válassza a házirend felülírása lehetőséget, majd keresse meg és válassza ki a *TrustframeworkExtensions. XML* fájlt.
 7. Kattintson a **Feltöltés** gombra.
-8. Ismételje meg az 5 – 7 a függő entitás fájlt például *ProfileEditPasswordChange.xml*.
+8. Ismételje meg az 5 – 7. lépést a függő entitás fájljánál (például *ProfileEditPasswordChange. XML*).
 
-### <a name="run-the-policy"></a>Futtassa a szabályzat
+### <a name="run-the-policy"></a>Szabályzat futtatása
 
-1. Nyissa meg a módosított szabályzatot. Ha például *B2C_1A_profile_edit_password_change*.
-2. A **alkalmazás**, válassza ki az alkalmazását, amely korábban regisztrálva. A jogkivonatot, hogy a **válasz URL-cím** megjelennie `https://jwt.ms`.
-3. Kattintson a **Futtatás most** parancsra. Jelentkezzen be a acouunt korábban létrehozott. Érdemes most már lehetősége van a jelszó módosítására. 
+1. Nyissa meg a módosított szabályzatot. Például: *B2C_1A_profile_edit_password_change*.
+2. **Alkalmazás**esetén válassza ki a korábban regisztrált alkalmazást. A token megjelenítéséhez a **Válasz URL-címének** meg kell jelennie `https://jwt.ms`.
+3. Kattintson a **Futtatás most** parancsra. Jelentkezzen be a korábban létrehozott acouunt. Most lehetősége van a jelszó módosítására.
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg, hogyan zajlik [állítsa be az Azure Active Directory B2C-vel egyéni szabályzatok használatával, a jelszó erősségét](active-directory-b2c-reference-password-complexity-custom.md). 
+- Ismerje meg, hogyan [konfigurálhatja a jelszó-bonyolultságot a Azure Active Directory B2C lévő egyéni szabályzatok használatával](active-directory-b2c-reference-password-complexity-custom.md).

@@ -1,48 +1,48 @@
 ---
-title: Egyetlen bejelentkezési munkamenet-kezelés az Azure Active Directory B2C-vel egyéni szabályzatok használatával |} A Microsoft Docs
-description: Ismerje meg, hogyan kezelheti az Azure AD B2C-vel egyéni szabályzatok használatával egyszeri bejelentkezési munkamenetek.
+title: Egyszeri bejelentkezéses munkamenet-kezelés az egyéni szabályzatok használatával Azure Active Directory B2Cban | Microsoft Docs
+description: Megtudhatja, hogyan kezelheti az egyszeri bejelentkezéses munkameneteket a Azure AD B2C egyéni házirendjeivel.
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d1d76e3ac995d4ee63e36ac3560d20f473d3ea2d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 5ae30b316133b7479b66a69a3467497a7151dbc8
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55187216"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065381"
 ---
-# <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Egyszeri bejelentkezés munkamenet-kezelés az Azure Active Directory B2C-vel
+# <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Egyszeri bejelentkezés munkamenet-kezelés a Azure Active Directory B2C-ben
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Egyszeri bejelentkezéses (SSO) munkamenet-kezelés az Azure Active Directory (Azure AD) B2C lehetővé teszi, hogy egy felhasználói vezérlő interakció a rendszergazda a felhasználó már rendelkezik hitelesítése után. Ha például a rendszergazda szabályozhatja jelenik-e a választott Identitásszolgáltatók meg, vagy hogy helyi fiók adatainak kell újra megadni. Ez a cikk ismerteti az Azure AD B2C az egyszeri bejelentkezési beállításainak konfigurálására.
+Az egyszeri bejelentkezés (SSO) munkamenet-kezelője Azure Active Directory B2C (Azure AD B2C) lehetővé teszi a rendszergazda számára, hogy a felhasználó már hitelesített hitelesítése után vezérelje a felhasználókkal való interakciót. A rendszergazda például megadhatja, hogy megjelenjenek-e az identitás-szolgáltatók, vagy hogy meg kell-e adni a helyi fiók adatait. Ez a cikk a Azure AD B2C egyszeri bejelentkezéses beállításainak konfigurálását ismerteti.
 
-Egyszeri bejelentkezés munkamenet-kezelés két részből áll. Az első közvetlenül az Azure AD B2C a felhasználói interakció, és a külső felek, például a Facebookhoz a felhasználói interakció más ügyletek foglalkozik. Az Azure AD B2C nem bírálja felül, és egyszeri Bejelentkezést olyan munkamenetek, amelyek a külső felek által menthető megkerülése. Inkább az útvonal keresztül az Azure AD B2C-vel a külső fél lekérése "megőrzése", nem kell a felhasználót, hogy válassza ki a közösségi vagy vállalati identitásszolgáltatóval reprompt. A végső SSO döntést a külső fél maradnak.
+Az egyszeri bejelentkezéses munkamenetek kezelése két részből áll. Az első a felhasználó interakcióit a Azure AD B2C és a másikkal együtt a külső felekkel, például a Facebooktal folytatott interakciókkal foglalkozik. Azure AD B2C nem bírál felül vagy mellőzi az SSO-munkameneteket, amelyeket külső felek is tárolhatnak. Ahelyett, hogy a külső fél felé irányuló, Azure AD B2C útvonalon áthaladó útvonalat "megjegyezték", a felhasználónak nem kell újrakérnie a felhasználót, hogy válassza ki a közösségi vagy vállalati identitás-szolgáltatót. A végső SSO-döntés a külső fél számára is fennáll.
 
-Egyszeri bejelentkezés munkamenet-kezelés azonos használja, mint az egyéni házirendek egyéb technikai profil. Egy vezénylési lépés végrehajtásakor a technikai profil a lépéshez kapcsolódó lekérik a egy `UseTechnicalProfileForSessionManagement` hivatkozást. Ha van ilyen, akkor az egyszeri bejelentkezés munkamenet hivatkozott szolgáltató majd ellenőrzi, hogy a felhasználói munkamenet résztvevő-e. Ha tehát az egyszeri bejelentkezés munkamenet-szolgáltató segítségével tudja kezelni a munkamenetet. Hasonlóképpen, egy vezénylési lépés végrehajtásának befejeződése után a szolgáltatót használja a információkat tárolja a munkamenet, ha az egyszeri bejelentkezés munkamenet-szolgáltató van megadva.
+Az egyszeri bejelentkezéses munkamenet-kezelés ugyanazt a szemantikai kapcsolatot használja, mint bármely más technikai profil az egyéni házirendekben. Egy előkészítési lépés végrehajtásakor a rendszer a lépéshez társított technikai profilt kérdezi `UseTechnicalProfileForSessionManagement` le. Ha van ilyen, a rendszer ellenőrzi a hivatkozott SSO munkamenet-szolgáltatót, hogy a felhasználó munkamenet-résztvevő-e. Ha igen, az SSO-munkamenet-szolgáltató a munkamenet újrafeltöltésére szolgál. Hasonlóképpen, ha egy előkészítési lépés végrehajtása befejeződött, a szolgáltató a munkamenetben lévő információk tárolására szolgál, ha meg van adva egy egyszeri bejelentkezéses munkamenet-szolgáltató.
 
-Az Azure AD B2C az egyszeri bejelentkezés munkamenet-szolgáltatói használható számos definiálva van:
+Azure AD B2C több SSO munkamenet-szolgáltatót definiált:
 
 * NoopSSOSessionProvider
 * DefaultSSOSessionProvider
 * ExternalLoginSSOSessionProvider
 * SamlSSOSessionProvider
 
-Egyszeri bejelentkezés felügyeleti osztályainak használatával vannak megadva a `<UseTechnicalProfileForSessionManagement ReferenceId=“{ID}" />` technikai profil elemhez.
+Az `<UseTechnicalProfileForSessionManagement ReferenceId=“{ID}" />` egyszeri bejelentkezéses felügyeleti osztályok egy technikai profil eleme alapján vannak megadva.
 
 ## <a name="noopssosessionprovider"></a>NoopSSOSessionProvider
 
-Előírja a neve, ahogy ez a szolgáltató nem csinál semmit. Ez a szolgáltató egy adott technikai profil egyszeri bejelentkezés működése újrainduljanak használható.
+Ahogy a név diktálja, a szolgáltató nem tesz semmit. Ez a szolgáltató használható egy adott technikai profil SSO-viselkedésének letiltására.
 
 ## <a name="defaultssosessionprovider"></a>DefaultSSOSessionProvider
 
-Ez a szolgáltató munkamenetben jogcímek tárolására használható. Ez a szolgáltató általában egy helyi felhasználói fiókok felügyeletének technikai profil hivatkozik. A DefaultSSOSessionProvider jogcímek tárolni a munkamenet használatakor győződjön meg arról, hogy a jogcímeket, az alkalmazásba visszaküldött vagy a későbbi lépésekben előtti feltételei által használt kell tárolni a munkamenet vagy a felhasználói profilt a forrásszint kiegészítve kell a könyvtár. Ez biztosítja, hogy a hitelesítési világába nem fog meghiúsulni hiányzó jogcímek.
+Ezt a szolgáltatót a jogcímek egy munkamenetben való tárolására lehet használni. Ez a szolgáltató általában a helyi fiókok kezeléséhez használt technikai profilban hivatkozik. Ha a DefaultSSOSessionProvider használatával tárolja a jogcímeket egy munkamenetben, gondoskodnia kell arról, hogy az alkalmazásnak visszaadott, az azt követő lépések során visszaadott jogcímek a munkamenetben legyenek tárolva, vagy kiegészítve legyenek a felhasználók profiljából beolvasott Directory. Ezzel biztosíthatja, hogy a hitelesítési útvonal nem fog meghiúsulni a hiányzó jogcímek esetében.
 
 ```XML
 <TechnicalProfile Id="SM-AAD">
@@ -59,11 +59,11 @@ Ez a szolgáltató munkamenetben jogcímek tárolására használható. Ez a szo
 </TechnicalProfile>
 ```
 
-A munkamenet jogcímek hozzáadásához használja a `<PersistedClaims>` elem a technikai profil. Amikor a szolgáltató segítségével tudja kezelni a munkamenetet, a megőrzött jogcímeket a jogcímkezelési tulajdonságcsomag kerülnek. `<OutputClaims>` a munkamenet jogcímeket kér le szolgál.
+Ha jogcímeket szeretne felvenni a munkamenetbe, használja `<PersistedClaims>` a technikai profil elemét. Ha a szolgáltató a munkamenet újrafeltöltésére szolgál, a rendszer hozzáadja a megőrzött jogcímeket a jogcímek táskához. `<OutputClaims>`a jogcímek munkamenetből való beolvasására szolgál.
 
 ## <a name="externalloginssosessionprovider"></a>ExternalLoginSSOSessionProvider
 
-Ez a szolgáltató le a "Identitásszolgáltató kiválasztása" képernyő szolgál. Egy technikai profilban konfigurált külső identitásszolgáltató, például a Facebookhoz általában hivatkozik rá. 
+Ez a szolgáltató a "személyazonossági szolgáltató választása" képernyő letiltására szolgál. Általában egy külső identitás-szolgáltatóhoz, például a Facebookhoz konfigurált technikai profil hivatkozik rá.
 
 ```XML
 <TechnicalProfile Id="SM-SocialLogin">
@@ -74,7 +74,7 @@ Ez a szolgáltató le a "Identitásszolgáltató kiválasztása" képernyő szol
 
 ## <a name="samlssosessionprovider"></a>SamlSSOSessionProvider
 
-Ez a szolgáltató kezelése az Azure AD B2C-vel SAML-munkamenet alkalmazásokat, valamint a külső SAML Identitásszolgáltatók között szolgál.
+Ez a szolgáltató az alkalmazások és a külső SAML-szolgáltatók közötti SAML-munkamenetek Azure AD B2C kezelésére szolgál.
 
 ```XML
 <TechnicalProfile Id="SM-Reflector-SAML">
@@ -87,12 +87,12 @@ Ez a szolgáltató kezelése az Azure AD B2C-vel SAML-munkamenet alkalmazásokat
 </TechnicalProfile>
 ```
 
-A technikai profilban találhatók két metaadat-elemek:
+A technikai profilban két metaadat-elem található:
 
 | Elem | Alapértelmezett érték | Lehetséges értékek | Leírás
 | --- | --- | --- | --- |
-| IncludeSessionIndex | true | Igaz/hamis | Azt jelzi, hogy a szolgáltató, hogy a munkamenet indexe kell tárolni. |
-| RegisterServiceProviders | true | Igaz/hamis | Azt jelzi, hogy a szolgáltatót regisztrálnia kell az összes SAML szolgáltatók, kiadott egy helyességi feltétel. |
+| IncludeSessionIndex | true | Igaz/hamis | Azt jelzi, hogy a szolgáltatónak tárolnia kell a munkamenet-indexet. |
+| RegisterServiceProviders | true | Igaz/hamis | Azt jelzi, hogy a szolgáltatónak regisztrálnia kell az összes olyan SAML-szolgáltatót, amely kiállított egy állítást. |
 
-A szolgáltató egy SAML-identity provider munkamenetek tárolására szolgáló használatakor a fenti mindkét értéke csak hamis lehet. A szolgáltató a B2C SAML-munkamenetek tárolására szolgáló használatakor a fenti kell igaz vagy nincs megadva az alapértelmezett beállításokat is igaz. SAML-munkamenet kijelentkeztetése igényel a `SessionIndex` és `NameID` befejezéséhez.
+Ha a szolgáltatót az SAML-identitás szolgáltatói munkamenetének tárolására használja, a fenti elemeknek is false értékűnek kell lenniük. A B2C SAML-munkamenet tárolására szolgáló szolgáltató használata esetén a fenti elemeknek igaznak kell lenniük, vagy el kell hagyni őket, mert az alapértelmezett értékek igazak. Az SAML-munkamenet kijelentkezéséhez a `SessionIndex` és `NameID` a Befejezés szükséges.
 

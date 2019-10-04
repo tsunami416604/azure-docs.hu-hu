@@ -1,6 +1,6 @@
 ---
-title: Az Azure Cloud Shell ablak használata |} A Microsoft Docs
-description: Hogyan használható az Azure Cloud Shell-ablakról áttekintése.
+title: A Azure Cloud Shell ablak használata | Microsoft Docs
+description: Az Azure Cloud Shell ablak használatának áttekintése.
 services: azure
 documentationcenter: ''
 author: maertendMSFT
@@ -14,79 +14,79 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: damaerte
-ms.openlocfilehash: 2511f2c8fb706e232cde9ee4c02c7f8114bd3a2b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 3435d958049012750e775e2a17f43f463a0cc358
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59699219"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860324"
 ---
-# <a name="using-the-azure-cloud-shell-window"></a>Az Azure Cloud Shell ablak használatával
+# <a name="using-the-azure-cloud-shell-window"></a>A Azure Cloud Shell ablak használata
 
-Ez a dokumentum ismerteti, hogyan használhatja a Cloud Shell ablakába.
+Ez a dokumentum a Cloud Shell ablak használatát ismerteti.
 
-## <a name="swap-between-bash-and-powershell-environments"></a>Váltás a Bash és a PowerShell-környezetek között
+## <a name="swap-between-bash-and-powershell-environments"></a>Csere a bash és a PowerShell környezet között
 
-A környezet választómezőt használja a Cloud Shell eszköztárában a Bash és a PowerShell környezetek közötti váltás.  
+A Cloud Shell eszköztár környezeti választójának használatával válthat a bash és a PowerShell környezetek között.  
 ![Környezet kiválasztása](media/using-the-shell-window/env-selector.png)
 
 ## <a name="restart-cloud-shell"></a>Cloud Shell újraindítása
-Kattintson a Cloud Shell eszköztárában alaphelyzetbe állítani a gép állapota az újraindítás ikonra.  
+A gép állapotának alaphelyzetbe állításához kattintson a Cloud Shell eszköztárán található újraindítás ikonra.  
 ![Cloud Shell újraindítása](media/using-the-shell-window/restart.png)
 > [!WARNING]
-> A Cloud Shell újraindítása visszaállítja a gép állapotát, és nem megőrzött fájlok az Azure által fájlmegosztás el fog veszni.
+> A Cloud Shell újraindítása a gép állapotának alaphelyzetbe állítását és az Azure-fájlmegosztás által nem megőrzött fájlok elvesztését eredményezi.
 
-## <a name="change-the-text-size"></a>A betűméret megváltoztatása
-Kattintson az ablak bal felső a beállítások ikonra, majd mutasson a "Szöveg mérete" lehetőséget, és válassza ki a kívánt szöveg méretét. A kijelölt maradnak a munkamenetek között.
-![Szöveg mérete](media/using-the-shell-window/text-size.png)
+## <a name="change-the-text-size"></a>A szöveg méretének módosítása
+Kattintson a Beállítások ikonra az ablak bal felső részén, majd vigye a kurzort a "szövegméret" lehetőség fölé, és válassza ki a kívánt szövegméret-méretet. A kiválasztás a munkamenetek között marad.
+![Szövegméret](media/using-the-shell-window/text-size.png)
 
 ## <a name="change-the-font"></a>A betűtípus módosítása
-Kattintson az ablak bal felső a beállítások ikonra, majd mutasson a "Betűtípus" beállítás, és jelölje ki a kívánt betűtípust.  A kijelölt maradnak a munkamenetek között.
+Kattintson a Beállítások ikonra az ablak bal felső részén, majd vigye a kurzort a "betűkészlet" lehetőség fölé, és válassza ki a kívánt betűtípust.  A kiválasztás a munkamenetek között marad.
 ![Betűtípus](media/using-the-shell-window/text-font.png)
 
 ## <a name="upload-and-download-files"></a>Fájlok fel- és letöltése
-Kattintson az ablak bal a feltöltési/letöltési fájlok ikonra a felső ezután válassza ki, fel- vagy letöltést.  
-![Fájlok fel-és letöltése](media/using-the-shell-window/uploaddownload.png)
-* Fájlok feltöltése használatával előugró keresse meg a fájlt a helyi számítógépen, válassza ki a kívánt fájlt, majd kattintson a "Nyitott" gombra.  A fájl feltölti a `/home/user` könyvtár.
-* Fájlok letöltéséhez, a fájl teljes elérési útját írja be az előugró ablakban, és válassza a "Letöltés" gombra.  
+Kattintson a fájlok feltöltése/letöltése ikonra az ablak bal felső részén, majd válassza a feltöltés vagy a letöltés lehetőséget.  
+![Fájlok feltöltése/letöltése](media/using-the-shell-window/uploaddownload.png)
+* Fájlok feltöltéséhez az előugró ablakban keresse meg a fájlt a helyi számítógépen, válassza ki a kívánt fájlt, majd kattintson a Megnyitás gombra.  A rendszer feltölti `/home/user` a fájlt a könyvtárba.
+* Fájl letöltéséhez adja meg a fájl teljes elérési útját az előugró ablakban (azaz alapvetően a könyvtár alatt található `/home/user` elérési utat, amely alapértelmezés szerint megjelenik), majd kattintson a "Letöltés" gombra.  
 > [!NOTE] 
-> Fájlok és elérési utat és nagybetűk a Cloud Shellben. Gondosan ellenőrizze a kis-és a fájl elérési úton.
+> A fájlok és a fájlelérési utak kis-és nagybetűket Cloud Shell. A fájl elérési útjában ellenőrizze a burkolatot.
 
-## <a name="open-another-cloud-shell-window"></a>A Cloud Shell egy másik ablak megnyitása
-A cloud Shell lehetővé teszi, hogy több egyidejű munkamenetek különböző böngészőlapokon azáltal, hogy a jelen vannak egy külön folyamat minden egyes munkamenetnél.
-Ha egy munkamenetben kilép, ügyeljen arra, lépjen ki az egyes munkameneti ablakban, minden egyes folyamat függetlenül fut, de ugyanazon a számítógépen futnak.  
-Kattintson az ablak bal az új munkamenet megnyitása ikonra a felső. Az a meglévő tárolóhoz csatlakoztatott egy másik munkamenet egy új lapon nyílik meg.
+## <a name="open-another-cloud-shell-window"></a>Másik Cloud Shell ablak megnyitása
+Cloud Shell lehetővé teszi több egyidejű munkamenet használatát a böngésző lapjain azáltal, hogy az egyes munkamenetek külön folyamatként léteznek.
+Ha kilép egy munkamenetből, mindenképpen lépjen ki az egyes munkamenet-ablakokból, mivel az egyes folyamatok egymástól függetlenül futnak, bár ugyanazon a gépen futnak.  
+Kattintson az új munkamenet megnyitása ikonra az ablak bal felső részén. Megnyílik egy új lap, amely egy másik, a meglévő tárolóhoz csatlakoztatott munkamenettel fog megnyílni.
 ![Új munkamenet megnyitása](media/using-the-shell-window/newsession.png)
 
-## <a name="cloud-shell-editor"></a>Cloud Shell-szerkesztő
-* Tekintse meg a [az Azure Cloud Shell-szerkesztő használatával](using-cloud-shell-editor.md) lapot.
+## <a name="cloud-shell-editor"></a>Cloud Shell szerkesztő
+* Tekintse át a [Azure Cloud Shell-szerkesztő használata](using-cloud-shell-editor.md) lapot.
 
 ## <a name="web-preview"></a>Webes előnézet
-A webes előnézet ikonra a felső kattintson az ablak bal, válassza ki a "Konfigurálás", adja meg a kívánt port megnyitásához.  Válassza ki bármelyik "nyílt port" csak nyissa meg a portot, vagy a "nyissa meg, és keresse meg" nyissa meg a portot, és a egy új lapon port megtekintéséhez.  
+Kattintson az ablak bal felső részén található webes előnézet ikonra, válassza a "Konfigurálás" lehetőséget, és adja meg a megnyitni kívánt portot.  Válassza a "nyitott port" lehetőséget, hogy csak a portot nyissa meg, vagy a "Megnyitás és Tallózás" lehetőségre kattintva nyissa meg a portot, és tekintse meg a portot egy új lapon.  
 ![Webes előnézet](media/using-the-shell-window/preview.png)  
 <br>
 ![Port konfigurálása](media/using-the-shell-window/preview-configure.png)  
-Kattintson az ablak bal felső a webes előnézet ikon kiválasztása a "Port megtekintése..." az előzetes verzióra port megnyitása új lapon. Kattintson az ablak bal felső a webes előnézet ikon kiválasztása a "Port bezárása..." gombra kattintva zárja be a port megnyitása.  
+Kattintson a webes előnézet ikonra az ablak bal felső részén, majd válassza az "előnézet port..." lehetőséget. egy új lapon lévő nyitott port előnézete. Kattintson a webes előnézet ikonra az ablak bal felső részén, majd válassza a "Port lezárása..." lehetőséget. a nyitott port bezárásához.  
 ![Előnézet/Bezárás port](media/using-the-shell-window/preview-options.png)
 
-## <a name="minimize--maximize-cloud-shell-window"></a>Minimalizálja a & maximalizálása érdekében a Cloud Shell-ablakról
-Kattintson a felül található kis méret ikonra kattintva rejtheti el őket az ablak, jobb. Kattintson a Cloud Shell ismét az ikonra kattintva felfedése.
-Kattintson az ablak maximális Oszlopmagasság állítsa teljes méret ikonra. Ablak előző mérete visszaállításához kattintson a visszaállítás.  
-![Kis méretre vagy a teljes méret](media/using-the-shell-window/minmax.png)
+## <a name="minimize--maximize-cloud-shell-window"></a>& Maximalizálása Cloud Shell ablak méretének csökkentése
+Az ablak jobb felső sarkában található Minimalizálás ikonra kattintva elrejtheti azt. Kattintson ismét a Cloud Shell ikonra az elrejtéshez.
+A teljes méret ikonra kattintva beállíthatja, hogy az ablak maximális magasságra legyen beállítva. Az ablak előző méretre való visszaállításához kattintson a visszaállítás gombra.  
+![Az ablak méretének csökkentése vagy maximalizálása](media/using-the-shell-window/minmax.png)
 
 ## <a name="copy-and-paste"></a>Másolás és beillesztés
 [!INCLUDE [copy-paste](../../includes/cloud-shell-copy-paste.md)]
 
-## <a name="resize-cloud-shell-window"></a>Méretezze át a Cloud Shell-ablakról
-Kattintással és húzással az eszköztár felső széle felfelé vagy lefelé átméretezése a Cloud Shell ablakába.
+## <a name="resize-cloud-shell-window"></a>Cloud Shell ablak átméretezése
+Az Cloud Shell ablak átméretezéséhez kattintson és húzza az eszköztár felső szegélyét.
 
-## <a name="scrolling-text-display"></a>Görgethető szöveges megjelenítése
-Görgessen az egérrel és touchpad áthelyezése a Terminálszolgáltatások szöveget.
+## <a name="scrolling-text-display"></a>Görgethető szöveg megjelenítése
+A terminál szövegének áthelyezéséhez görgessen az egérrel vagy az érintőpadba.
 
-## <a name="exit-command"></a>Kilépés paranccsal
-Futó `exit` leállítja az aktív munkamenetét. Ez a viselkedés beavatkozás nélkül 20 perc után alapértelmezés szerint történik.
+## <a name="exit-command"></a>Kilépés parancs
+A `exit` Futtatás megszakítja az aktív munkamenetet. Ez a viselkedés alapértelmezés szerint 20 percen belül, interakció nélkül történik.
 
 ## <a name="next-steps"></a>További lépések
 
-[A bash Cloud Shell rövid](quickstart.md) <br>
-[A PowerShell Cloud Shell rövid](quickstart-powershell.md)
+[Bash Cloud Shell rövid útmutatóban](quickstart.md) <br>
+[PowerShell Cloud Shell rövid útmutató](quickstart-powershell.md)

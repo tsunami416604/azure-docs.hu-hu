@@ -1,8 +1,8 @@
 ---
-title: Az offline streamelési PlayReady által védett tartalom – Azure-fiók konfigurálása
-description: Ez a cikk bemutatja, hogyan konfigurálhatja a folyamatos átviteli offline PlayReady Windows 10-es Azure Media Services-fiók.
+title: Fiók konfigurálása a PlayReady által védett tartalom offline folyamatos átviteléhez – Azure
+description: Ez a cikk bemutatja, hogyan konfigurálhatja Azure Media Services-fiókját a Windows 10 rendszerű streaming PlayReady.
 services: media-services
-keywords: DASH, DRM, Widevine ExoPlayer, a kapcsolat nélküli módban Android
+keywords: DASH, DRM, Widevine offline üzemmód, ExoPlayer, Android
 documentationcenter: ''
 author: willzhan
 manager: steveng
@@ -14,58 +14,61 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/01/2019
 ms.author: willzhan
-ms.openlocfilehash: 9e29b08da35b9fd2f479f1d4e3b0d89ed881344b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 25559c7a6f66a1092007054c72f601b428fa4e7b
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57902001"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845508"
 ---
-# <a name="offline-playready-streaming-for-windows-10"></a>Offline PlayReady Windows 10-es Streaming
+# <a name="offline-playready-streaming-for-windows-10"></a>Offline PlayReady streaming a Windows 10 rendszerhez
 
-Az Azure Media Services támogatja a DRM-védelemmel rendelkező offline letöltési/lejátszását. Ez a cikk ismerteti az Azure Media Services for Windows 10-es vagy PlayReady ügyfelek offline támogatást. IOS/FairPlay és Android/Widevine eszközökhöz az alábbi cikkekben olvashat bővebben az offline mód támogatása:
+Azure Media Services támogatja az offline letöltést/lejátszást a DRM-védelemmel. Ez a cikk a Azure Media Services Windows 10-es/PlayReady-ügyfelekhez való offline támogatását ismerteti. Az alábbi cikkekben olvashat az iOS/FairPlay és az Android/Widevine rendszerű eszközök offline üzemmódjának támogatásáról:
 
-- [Offline FairPlay Streaming iOS-hez](offline-fairplay-for-ios.md)
-- [Offline Widevine androidhoz Streaming](offline-widevine-for-android.md)
+- [Offline FairPlay-streamelés iOS-hez](offline-fairplay-for-ios.md)
+- [Offline Widevine streaming Android rendszerhez](offline-widevine-for-android.md)
+
+> [!NOTE]
+> Az offline DRM-t csak akkor számítjuk fel, ha egy licencre vonatkozó kérést készítenek a tartalom letöltésekor. A hibák számlázása nem történik meg.
 
 ## <a name="overview"></a>Áttekintés
 
-Ez a szakasz áttekintést nyújt a bizonyos tapasztalattal a lejátszás kapcsolat nélküli üzemmódban különösen miért:
+Ez a szakasz az offline üzemmód lejátszásának hátterét ismerteti, különösen miért:
 
-* Egyes országokban Internet rendelkezésre állási és/vagy a sávszélesség korlátozva. Előfordulhat, hogy a felhasználók megadhatják nézheti elég nagy felbontású kielégítő élményt a tartalom letöltéséhez először. Ebben az esetben gyakrabban, a probléma nem hálózat rendelkezésre állásának, hanem azt korlátozott a sávszélesség. OTT/OVP szolgáltatók arra utasítja a kapcsolat nélküli módban támogatás.
-* Közzétett Netflix 2016 3. negyedévi részvényes konferencián, letölti a tartalmat egy olyan "szélén a kért funkció" és "vagyunk rá nyissa meg" kifejezés utal Reed Hastings, a Netflix Vezérigazgató által.
-* Néhány tartalomszolgáltatók előfordulhat, hogy ne engedélyezze a DRM-licenckézbesítés túl egy ország szegély. Ha a felhasználó továbbítani a külföldön van szüksége, és tekintse meg a tartalom továbbra is szeretné, offline letöltési van szükség.
+* Egyes országokban/régiókban az Internet rendelkezésre állása és/vagy sávszélessége továbbra is korlátozott. A felhasználók úgy dönthetnek, hogy először letöltik a tartalmat, hogy a megfelelő megjelenítési élmény érdekében elég nagy felbontásban láthassák a tartalmakat. Ebben az esetben a probléma gyakran nem a hálózat rendelkezésre állása, hanem korlátozott hálózati sávszélesség. Az OTT/OVP szolgáltatók az offline üzemmód támogatását kérik.
+* A Netflix 2016 Q3 részvényesi konferencián közzétett tartalom letöltése a "gyakran igényelt szolgáltatás", a "nyitottak vagyunk", és a Netflix, a Netflix VEZÉRIGAZGATÓJA.
+* Egyes tartalomszolgáltatók nem engedélyezhetik az ország/régió szegélyén túli DRM-licencek kézbesítését. Ha a felhasználónak külföldön kell utaznia, és továbbra is szeretné megtekinteni a tartalmat, offline letöltésre van szükség.
  
-A kihívás, mi a face megvalósításában kapcsolat nélküli módban a következő:
+Az offline mód megvalósítása során feltett kihívás a következő:
 
-* MP4 számos lejátszó, kódoló eszközök által támogatott, de nem létezik a kötés nélküli MP4-tároló és a DRM; között
-* A hosszú távú CFF CENC az módja a go. Azonban még ma, az eszközök/player támogatási ökoszisztéma még nem létezik. A Microsoft olyan megoldásra van szüksége, még ma.
+* Az MP4-t sok játékos, kódoló eszköz támogatja, de az MP4-tároló és a DRM között nincs kötés.
+* Hosszú távon a CFF és a CENC a következő módon érhető el:. Napjainkban azonban az eszközök/lejátszó-támogatás ökoszisztémája még nem létezik. Jelenleg egy megoldásra van szükségünk.
  
-Az elképzelés: smooth streaming ([PIFF](https://go.microsoft.com/?linkid=9682897)) H264/AAC-formátum egy kötés PlayReady (AES-128 Parancsra) rendelkezik. Egyedi smooth streaming .ismv fájl (feltételezve hang egyesített a videóban) önmagában egy fMP4 és lejátszás is használható. Egy smooth streaming tartalom végighalad a PlayReady-titkosítás, ha egyes .ismv fájl lesz-e a PlayReady-védelemmel töredékes MP4. Válasszon egy .ismv fájlt az előnyben részesített sávszélességű lehet és letölthető .mp4, nevezze át.
+Az ötlet a következő: Smooth streaming ([PIFF](https://docs.microsoft.com/iis/media/smooth-streaming/protected-interoperable-file-format)) fájlformátum (h264/aac) PLAYREADY (AES-128 CTR) kötéssel rendelkezik. Az egyéni Smooth streaming. ismv-fájl (feltéve, hogy a hang egyesített a videóban) önmagában egy fMP4, és használható a lejátszáshoz. Ha egy zökkenőmentes adatfolyam-továbbítási tartalom PlayReady-titkosításon halad át, akkor mindegyik. ismv fájl PlayReady védett töredezett MP4-re vált. Kiválaszthat egy. ismv-fájlt az előnyben részesített bitrátával, és átnevezheti. mp4-ként a letöltéshez.
 
-Két lehetőség van a PlayReady üzemeltető védett MP4 progresszív letöltés:
+A PlayReady Protected MP4 a progresszív letöltéshez két lehetőség áll rendelkezésre:
 
-* Egy adott tároló/media service objektum a MP4 helyezni, és kihasználhatja az Azure Media Services a progresszív letöltés; streamvégpont
-* Az SAS-kereső progresszív letöltés közvetlenül az Azure Storage, a rendszer megkerüli az Azure Media Services egyik is használhatja.
+* Ezt az MP4-t ugyanabba a tárolóba/adathordozó szolgáltatásba helyezheti el, és kihasználhatja Azure Media Services streaming-végpontot a progresszív letöltéshez;
+* A közvetlenül az Azure Storage-ból, a Azure Media Services megkerülésével az SAS-lokátort használhatja a progresszív letöltéshez.
  
-A PlayReady-licencekkel történő kézbesítés két típusú használhatja:
+Kétféle PlayReady-licencet használhat:
 
-* PlayReady szolgáltatásra vonatkozó az Azure Media Servicesben;
-* A PlayReady-licenc kiszolgálók üzemeltetett.
+* PlayReady-licenc kézbesítési szolgáltatása a Azure Media Services;
+* A bárhol üzemeltetett PlayReady-kiszolgálók.
 
-Az alábbiakban két készlet tesztelési eszközök, az elsőt a PlayReady-licencekkel történő kézbesítés a másodiknál, használatával egy Azure virtuális Gépen lévő üzemeltetett saját PlayReady-licenckiszolgáló az AMS használatával:
+Az alábbi két PlayReady-licencet használja az AMS-ben, a másodikban pedig egy Azure-beli virtuális gépen üzemeltetett PlayReady-licenckiszolgálót:
 
-#1. eszköz:
+Eszköz #1:
 
-* A progresszív letöltési URL-címe: [https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4")
-* PlayReady LA_URL (AMS): [https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/](https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/)
+* Progresszív letöltési URL-cím:[https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4")
+* PlayReady LA_URL (AMS):[https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/](https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/)
 
-#2. eszköz:
+Eszköz #2:
 
-* A progresszív letöltési URL-címe: [https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
-* PlayReady LA_URL (helyszíni): [https://willzhan12.cloudapp.net/playready/rightsmanager.asmx](https://willzhan12.cloudapp.net/playready/rightsmanager.asmx)
+* Progresszív letöltési URL-cím:[https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
+* PlayReady LA_URL (helyszíni):[https://willzhan12.cloudapp.net/playready/rightsmanager.asmx](https://willzhan12.cloudapp.net/playready/rightsmanager.asmx)
 
-Lejátszási vizsgálatára, használtuk egy univerzális Windows-alkalmazás a Windows 10-es. A [univerzális Windows 10-minták](https://github.com/Microsoft/Windows-universal-samples), egy alapszintű player mintáját nevű [adaptív Streamelés minta](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/AdaptiveStreaming). Mindössze azt kell az adja hozzá a kódot ahhoz, hogy válassza ki a letöltött videót, és szeretné használni a forrás, az adaptív adatfolyam-továbbítási forrás helyett. A változások a következők gomb eseménykezelő gombra:
+A lejátszás teszteléséhez egy univerzális Windows-alkalmazást használtunk a Windows 10 rendszeren. A [Windows 10-es univerzális példákban](https://github.com/Microsoft/Windows-universal-samples)van egy [adaptív adatfolyam-minta](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/AdaptiveStreaming)nevű alapszintű lejátszó minta. Mindössze annyit kell tennie, hogy hozzáadjuk a kódot a letöltött videó kiválasztásához és forrásként való használatához, az adaptív adatfolyam-forrás helyett. A változtatások gombon kattintson az eseménykezelő elemre:
 
 ```csharp
 private async void LoadUri_Click(object sender, RoutedEventArgs e)
@@ -108,18 +111,18 @@ private async void LoadUri_Click(object sender, RoutedEventArgs e)
 }
 ```
 
-![Kapcsolat nélküli módban lejátszási PlayReady-védelemmel fMP4](./media/offline-playready-for-windows/offline-playready1.jpg)
+![PlayReady által védett fMP4 kapcsolat nélküli módban való lejátszása](./media/offline-playready-for-windows/offline-playready1.jpg)
 
 
-Mivel a videó alatt PlayReady-védelmet, a képernyőképen nem lesz képes a videókat is tartalmazhatnak.
+Mivel a videó a PlayReady védelme alatt áll, a képernyőkép nem fogja tudni felvenni a videót.
 
-Összefoglalva az Azure Media Services kapcsolat nélküli módban el:
+Összefoglalva, a Azure Media Services offline üzemmódját is elértük:
 
-* Tartalom átkódolása és a PlayReady-titkosítás teheti meg az Azure Media Services vagy más eszközökkel;
-* Tartalom lehet üzemeltetni az Azure Media Services vagy az Azure Storage a progresszív letöltés;
-* A PlayReady-licencekkel történő kézbesítés lehet az Azure Media Services vagy máshol;
-* A előkészített smooth streaming tartalom továbbra is használható online streamelés DASH-n keresztül, vagy a PlayReady, a DRM smooth.
+* A tartalom átkódolása és PlayReady titkosítása Azure Media Services vagy más eszközökön végezhető el;
+* A tartalom a progresszív letöltéshez Azure Media Services vagy Azure Storage-ban is üzemeltethető.
+* A PlayReady-licencek kézbesítése Azure Media Services vagy máshol is lehet.
+* Az előkészített Smooth streaming-tartalom továbbra is használható az online streaminghez DASH vagy Smooth használatával a PlayReady-mel.
 
 ## <a name="next-steps"></a>További lépések
 
-[Egy DRM-mel a content protection rendszert a hozzáférés-vezérléssel](design-multi-drm-system-with-access-control.md)
+[Hozzáférés-vezérléssel ellátott Multi-DRM-rendszerek tervezése](design-multi-drm-system-with-access-control.md)

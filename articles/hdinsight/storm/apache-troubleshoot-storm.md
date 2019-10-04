@@ -2,79 +2,86 @@
 title: Az Azure HDInsight Storm hibaelhárítása
 description: Az Azure HDInsight alapú Apache Storm használatával kapcsolatos gyakori kérdésekre adott válaszok.
 keywords: Az Azure HDInsight, a Storm, gyakori kérdések hibaelhárítási útmutató gyakori problémák
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.topic: conceptual
-ms.date: 12/06/2018
+ms.topic: troubleshooting
+ms.date: 08/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5634d812b3fbd4e904516767b008f63104b3d7b7
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 70030c9014e83984b2cd493ba0d3b2a36180feb3
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632738"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575064"
 ---
 # <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>Az Azure HDInsight az Apache Storm hibaelhárítása
 
 Ismerje meg a leggyakoribb problémák és azok megoldásait való munkához [Apache Storm](https://storm.apache.org/) hasznos adatot [Apache Ambari](https://ambari.apache.org/).
 
 ## <a name="how-do-i-access-the-storm-ui-on-a-cluster"></a>Hogyan férhetek hozzá a Storm felhasználói felülete egy fürtön?
+
 A Storm felhasználói felülete eléréséhez egy böngészőben két lehetősége van:
 
-### <a name="ambari-ui"></a>Az Ambari felhasználói felületén
+### <a name="apache-ambari-ui"></a>Apache Ambari felhasználói felület
+
 1. Nyissa meg az Ambari irányítópultot.
 2. A szolgáltatások listájában jelölje ki **Storm**.
 3. Az a **Gyorshivatkozások** menüjében válassza **Storm felhasználói felülete**.
 
 ### <a name="direct-link"></a>Közvetlen hivatkozás
+
 A Storm felhasználói felülete a következő URL-címen érhető el:
 
-https://\<fürt DNS-név\>/stormui
+`https://<cluster DNS name>/stormui`
 
-Példa:
-
- https://stormcluster.azurehdinsight.net/stormui
+Például: `https://stormcluster.azurehdinsight.net/stormui`
 
 ## <a name="how-do-i-transfer-storm-event-hub-spout-checkpoint-information-from-one-topology-to-another"></a>Hogyan ruházhatom át Storm event hub spout ellenőrzőpont információk adatainak egy másikra?
 
 Olvassa el az Azure Event Hubsból topológiák fejlesztése során segítségével a HDInsight Storm event hub spout a .jar-fájl, telepítenie kell egy-egy új fürtön ugyanazzal a névvel rendelkező topológia. Azonban meg kell őrizni, amely fontos, hogy az ellenőrzőpont-adatok [Apache ZooKeeper](https://zookeeper.apache.org/) a régi fürtön.
 
 ### <a name="where-checkpoint-data-is-stored"></a>Ellenőrzőpont-adatok tárolására
+
 Az event hub spout, ZooKeeper a gyökér elérési utat a tárol az eltolások ellenőrzőpont adatokat:
-- Nem tranzakciós spout ellenőrzőpontok /eventhubspout vannak tárolva.
-- Tranzakciós spout ellenőrzőpont-adatok be / tranzakciós tárolja.
+
+- A nem tranzakciós kiöntő ellenőrzőpontok a `/eventhubspout`ben tárolódnak.
+
+- A tranzakciós kiöntő ellenőrzőpont-adatkészletek tárolása a-ben `/transactional`történik.
 
 ### <a name="how-to-restore"></a>Visszaállítása
+
 A szkriptek és -kódtárak együttese segítségével exportálhatja az adatokat ZooKeeper és majd importálja vissza a ZooKeeper, egy új nevet az adatok lekéréséhez lásd: [HDInsight Storm-példák](https://github.com/hdinsight/hdinsight-storm-examples/tree/master/tools/zkdatatool-1.0).
 
 Lib mappájába rendelkezik a .jar fájlokat, amelyek tartalmazzák az exportálási/importálási művelet végrehajtására. A bash-mappába, amely azt ismerteti, hogyan adatok exportálása a ZooKeeper-kiszolgáló a régi fürtön, és ezután importálja vissza a ZooKeeper-kiszolgáló, az új fürtön példa parancsfájl rendelkezik.
 
 Futtassa a [stormmeta.sh](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/tools/zkdatatool-1.0/bash/stormmeta.sh) parancsfájlt a ZooKeeper-csomópontok exportálhatja és importálhatja az adatokat. Frissítse a parancsfájlt a megfelelő Hortonworks Data Platform (HDP) verzióra. (Is dolgozunk a HDInsight általános így ezeket a parancsfájlokat. Az általános parancsfájlok futtatásához bármely olyan csomópontról módosítások nélkül a fürtön a felhasználó.)
 
-Az exportálási parancs egy Apache Hadoop elosztott fájlrendszer (HDFS) elérési út (az Azure Blob Storage vagy Azure Data Lake Storage) egy Ön által beállított helyen a metaadatokat ír.
+Az export parancs a metaadatokat egy Apache Hadoop elosztott fájlrendszer (HDFS) elérési útra írja (az Azure Blob Storage vagy a Azure Data Lake Storage) egy megadott helyen.
 
 ### <a name="examples"></a>Példák
 
 #### <a name="export-offset-metadata"></a>Eltolási metaadatainak exportálásához
-1. SSH-val, amelyről az ellenőrzőpont eltolás exportálni kell a fürtön nyissa meg a ZooKeeper-fürtön.
-2. Futtassa a következő parancsot (miután frissítette a HDP verzió-karakterlánc) ZooKeeper eltolási adatainak exportálása a /stormmetadta/zkdata HDFS elérési útja:
 
-    ```apache   
+1. SSH-val, amelyről az ellenőrzőpont eltolás exportálni kell a fürtön nyissa meg a ZooKeeper-fürtön.
+2. Futtassa a következő parancsot (miután frissítette a HDP-verzió sztringjét), hogy exportálja a `/stormmetadta/zkdata` ZooKeeper eltolási értékeit a HDFS elérési útjába:
+
+    ```apache
     java -cp ./*:/etc/hadoop/conf/*:/usr/hdp/2.5.1.0-56/hadoop/*:/usr/hdp/2.5.1.0-56/hadoop/lib/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/lib/*:/etc/failover-controller/conf/*:/etc/hadoop/* com.microsoft.storm.zkdatatool.ZkdataImporter export /eventhubspout /stormmetadata/zkdata
     ```
 
 #### <a name="import-offset-metadata"></a>Eltolási metaadatainak importálása
+
 1. SSH-val, amelyről az ellenőrzőpont eltolás importálni kell a fürtön nyissa meg a ZooKeeper-fürtön.
-2. Futtassa a következő parancsot (miután frissítette a HDP verzió-karakterlánc) ZooKeeper eltolási adatok a HDFS elérési útja /stormmetadata/zkdata a ZooKeeper-kiszolgáló a célfürtön importálhatja:
+2. Futtassa a következő parancsot (miután frissítette a HDP-verzió sztringjét), hogy az ZooKeeper-eltolási `/stormmetadata/zkdata` adatok importálása a HDFS elérési útjáról a cél fürt ZooKeeper-kiszolgálójára:
 
     ```apache
     java -cp ./*:/etc/hadoop/conf/*:/usr/hdp/2.5.1.0-56/hadoop/*:/usr/hdp/2.5.1.0-56/hadoop/lib/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/lib/*:/etc/failover-controller/conf/*:/etc/hadoop/* com.microsoft.storm.zkdatatool.ZkdataImporter import /eventhubspout /home/sshadmin/zkdata
     ```
-   
+
 #### <a name="delete-offset-metadata-so-that-topologies-can-start-processing-data-from-the-beginning-or-from-a-timestamp-that-the-user-chooses"></a>Topológiák megkezdheti az adatok feldolgozását, az elejétől, illetve időbélyeg, amely a felhasználó úgy dönt, hogy a eltolási metaadatok törlése
+
 1. SSH-val, amelyről az ellenőrzőpont eltolás törölni kell a fürtön nyissa meg a ZooKeeper-fürtön.
 2. Futtassa a következő parancsot (HDP verzió-karakterlánca frissítése) után törli az összes ZooKeeper eltolási adatokat az aktuális fürt:
 
@@ -83,24 +90,28 @@ Az exportálási parancs egy Apache Hadoop elosztott fájlrendszer (HDFS) elér�
     ```
 
 ## <a name="how-do-i-locate-storm-binaries-on-a-cluster"></a>Hogyan találom meg a Storm bináris egy fürtön?
-A Storm bináris az aktuális HDP verem /usr/hdp/current/storm-client találhatók. A hely az azonos fő csomópontból és feldolgozó csomópontokat.
- 
-Előfordulhat, hogy több bináris fájljait (például /usr/hdp/2.5.0.1233/storm) /usr/hdp a HDP verzióját. A /usr/hdp/current/storm-client mappa nem a legújabb verzióra a fürtön futó symlinked.
 
-További információkért lásd: [egy HDInsight-fürthöz SSH használatával csatlakozhat](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix) és [Apache Storm](https://storm.apache.org/).
- 
+Az aktuális HDP-verem Storm bináris fájljai a `/usr/hdp/current/storm-client`következőben találhatók:. A hely az azonos fő csomópontból és feldolgozó csomópontokat.
+
+Több bináris fájl is lehet a/usr/HDP adott HDP-verzióihoz (például `/usr/hdp/2.5.0.1233/storm`). A `/usr/hdp/current/storm-client` mappa a fürtön futó legújabb verzióra van összekapcsolva.
+
+További információ: [Kapcsolódás HDInsight-fürthöz SSH](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix) és [Apache Storm](https://storm.apache.org/)használatával.
+
 ## <a name="how-do-i-determine-the-deployment-topology-of-a-storm-cluster"></a>Hogyan állapítható meg a telepítési topológia a Storm-fürt?
+
 Először azonosítsa az összes telepített összetevőinek támogatásához a HDInsight Storm. A Storm-fürtök négy csomópont kategória áll:
 
 * Az átjárócsomópontok
 * Átjárócsomópontok
 * ZooKeeper-csomópontok
 * Munkavégző csomópontok
- 
+
 ### <a name="gateway-nodes"></a>Az átjárócsomópontok
+
 Átjáró csomópontnak számít egy átjárót, és a fordított proxy szolgáltatás, amely lehetővé teszi a nyilvános hozzáférést egy aktív Ambari felügyeleti szolgáltatáshoz. Az Ambari vezetőválasztási is kezeli.
- 
+
 ### <a name="head-nodes"></a>Átjárócsomópontok
+
 A Storm fő csomópontok futtassa a következő szolgáltatásokat:
 * Nimbus
 * Az Ambari kiszolgáló
@@ -108,45 +119,61 @@ A Storm fő csomópontok futtassa a következő szolgáltatásokat:
 * Az Ambari metrikákat gyűjtő
  
 ### <a name="zookeeper-nodes"></a>ZooKeeper-csomópontok
+
 HDInsight egy három csomópontos ZooKeeper kvórum tartalmaz. A kvórum mérete rögzített, és nem állítható át.
- 
+
 A Storm-szolgáltatásokat a fürt automatikusan a ZooKeeper kvórum használatára vannak konfigurálva.
- 
+
 ### <a name="worker-nodes"></a>Munkavégző csomópontok
+
 A Storm munkavégző csomópontok futtassa a következő szolgáltatásokat:
 * Felügyeleti
 * Feldolgozó Java virtuális gépek (JVMs), a futó topológiák
 * Ambari-ügynök
- 
-## <a name="how-do-i-locate-storm-event-hub-spout-binaries-for-development"></a>Hogyan találom meg a Storm event hub spout bináris fejlesztéshez?
- 
-A topológia a Storm event hub spout .jar fájlokat használatával kapcsolatos további információkért lásd a következőket.
- 
-### <a name="java-based-topology"></a>Java-alapú topológia
-[Események feldolgozása az Azure Event Hubsból az Apache Storm on HDInsight (Java)](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-develop-java-event-hub-topology)
- 
-### <a name="c-based-topology-mono-on-hdinsight-34-linux-storm-clusters"></a>C#-alapú topológia (HDInsight 3.4-es + Linux Storm-fürtök a Mono)
-[Dolgozza fel az Azure Event hubs Eseményközpontokból a HDInsight-alapú Apache Storm (C#)](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-develop-csharp-event-hub-topology)
- 
-### <a name="latest-apache-storm-event-hub-spout-binaries-for-hdinsight-35-linux-storm-clusters"></a>Legújabb Apache Storm event hub spout bináris fájljai, a HDInsight 3.5-ös + Linux Storm-fürtök
-A legújabb Storm event hub spout, amely együttműködik a HDInsight 3.5-ös + Linux Storm-fürtök használatával kapcsolatban lásd: a mvn-tárház [információs fájl](https://github.com/hdinsight/mvn-repo/blob/master/README.md).
- 
-### <a name="source-code-examples"></a>Forrás hitelesítésikód-példák
-Lásd: [példák](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub) bemutatja, hogyan olvashatja és írhatja az Azure Event Hubs egy Apache Storm-topológia (Java nyelven írt) használatával az Azure HDInsight-fürtön.
- 
-## <a name="how-do-i-locate-storm-log4j-2-configuration-files-on-clusters"></a>Hogyan találom meg a Storm Log4J 2 konfigurációs fájlok fürtökön?
- 
-Azonosításához [Apache Log4j 2](https://logging.apache.org/log4j/2.x/) konfigurációs fájlokat, a Storm-szolgáltatásokhoz.
- 
-### <a name="on-head-nodes"></a>A fő csomópontok
-A Nimbus Log4J konfigurációjának olvasása az/usr/hdp/\<HDP verzió\>/storm/log4j2/cluster.xml.
- 
-### <a name="on-worker-nodes"></a>A feldolgozó csomópontok
-A felügyelő Log4J konfigurációját olvasni usr/hdp/\<HDP verzió\>/storm/log4j2/cluster.xml.
- 
-A feldolgozó Log4J konfigurációs fájl olvasása az/usr/hdp/\<HDP verzió\>/storm/log4j2/worker.xml.
- 
-Példák: /usr/hdp/2.6.0.2-76/storm/log4j2/cluster.xml /usr/hdp/2.6.0.2-76/storm/log4j2/worker.xml
 
-### <a name="see-also"></a>Lásd még:
-[Hibaelhárítás az Azure HDInsight segítségével](../../hdinsight/hdinsight-troubleshoot-guide.md)
+## <a name="how-do-i-locate-storm-event-hub-spout-binaries-for-development"></a>Hogyan találom meg a Storm event hub spout bináris fejlesztéshez?
+
+A topológia a Storm event hub spout .jar fájlokat használatával kapcsolatos további információkért lásd a következőket.
+
+### <a name="java-based-topology"></a>Java-alapú topológia
+
+[Események feldolgozása az Azure Event Hubsból az Apache Storm on HDInsight (Java)](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-develop-java-event-hub-topology)
+
+### <a name="c-based-topology-mono-on-hdinsight-34-linux-storm-clusters"></a>C#-alapú topológia (HDInsight 3.4-es + Linux Storm-fürtök a Mono)
+
+[Dolgozza fel az Azure Event hubs Eseményközpontokból a HDInsight-alapú Apache Storm (C#)](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-develop-csharp-event-hub-topology)
+
+### <a name="latest-apache-storm-event-hub-spout-binaries-for-hdinsight-35-linux-storm-clusters"></a>Legújabb Apache Storm event hub spout bináris fájljai, a HDInsight 3.5-ös + Linux Storm-fürtök
+
+Ha szeretné megtudni, hogyan használhatja a HDInsight 3.5 + Linux Storm-fürtöket használó legújabb Storm Event hub kiöntőt, tekintse meg a [MVN-tárház információs fájlját](https://github.com/hdinsight/mvn-repo/blob/master/README.md).
+
+### <a name="source-code-examples"></a>Forrás hitelesítésikód-példák
+
+Lásd: [példák](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub) bemutatja, hogyan olvashatja és írhatja az Azure Event Hubs egy Apache Storm-topológia (Java nyelven írt) használatával az Azure HDInsight-fürtön.
+
+## <a name="how-do-i-locate-storm-log4j-2-configuration-files-on-clusters"></a>Hogyan találom meg a Storm Log4J 2 konfigurációs fájlok fürtökön?
+
+Azonosításához [Apache Log4j 2](https://logging.apache.org/log4j/2.x/) konfigurációs fájlokat, a Storm-szolgáltatásokhoz.
+
+### <a name="on-head-nodes"></a>A fő csomópontok
+
+A rendszer `/usr/hdp/\<HDP version>/storm/log4j2/cluster.xml`beolvassa a Nimbus Log4J konfigurációját.
+
+### <a name="on-worker-nodes"></a>A feldolgozó csomópontok
+
+A felügyelő Log4J- `/usr/hdp/\<HDP version>/storm/log4j2/cluster.xml`konfigurációjának beolvasása.
+
+A Worker Log4J konfigurációs fájljának olvasása `/usr/hdp/\<HDP version>/storm/log4j2/worker.xml`:.
+
+Példák`/usr/hdp/2.6.0.2-76/storm/log4j2/cluster.xml`
+`/usr/hdp/2.6.0.2-76/storm/log4j2/worker.xml`
+
+## <a name="next-steps"></a>További lépések
+
+Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
+
+- Azure-szakértőktől kaphat válaszokat az [Azure közösségi támogatásával](https://azure.microsoft.com/support/community/).
+
+- Kapcsolódjon [@AzureSupport](https://twitter.com/azuresupport) a-a hivatalos Microsoft Azure fiókhoz a felhasználói élmény javítása érdekében. Az Azure-Közösség összekapcsolása a megfelelő erőforrásokkal: válaszok, támogatás és szakértők.
+
+- Ha további segítségre van szüksége, támogatási kérést küldhet a Azure Portaltól [](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.

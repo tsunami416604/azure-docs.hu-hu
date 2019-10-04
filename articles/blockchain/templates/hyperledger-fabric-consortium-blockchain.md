@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 01/23/2019
+ms.date: 05/09/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: caleteet
 manager: femila
-ms.openlocfilehash: ce1afbd5499e798888e77f52d7b652e7e1f548fc
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 80de4e1479fac7296889e45289a5f20e586e3f57
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58005817"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65510749"
 ---
 # <a name="hyperledger-fabric-consortium-network"></a>Hyperledger Fabric consortium network
 
@@ -139,7 +139,7 @@ Kattintson az **OK** gombra.
 
 A **összefoglalás**, tekintse át a megadott bemeneti adatok és a központi telepítés előtti Alapszintű ellenőrzés futtatásához.
 
-![Összegzés](./media/hyperledger-fabric-consortium-blockchain/summary.png)
+![Összefoglalás](./media/hyperledger-fabric-consortium-blockchain/summary.png)
 
 Jogi tudnivalók és adatvédelem feltételek áttekintése és kiválasztása **beszerzési** üzembe helyezéséhez. Virtuális gépek kiépítése folyamatban számától függően üzembe helyezési idő perc alatt több tíz, változhat pár percet vagy.
 

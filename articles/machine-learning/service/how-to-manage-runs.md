@@ -1,7 +1,7 @@
 ---
-title: Indítsa el, figyelését és a Python a betanítási Futtatás megszakítása
-titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan indítsa el, a címke állapotát állítja, és a machine-learning kísérletek rendezéséhez.
+title: A betanítási futtatások elindítása, figyelése és megszakítása a Pythonban
+titleSuffix: Azure Machine Learning
+description: Megtudhatja, hogyan indíthatja el, állíthatja be a gépi tanulási kísérletek állapotát, címkézheti és rendszerezheti azokat.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,46 +10,50 @@ ms.author: roastala
 author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 04/05/2019
-ms.openlocfilehash: c0c1c1353b12944fa913dfb0789192917b99f234
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.date: 07/31/2019
+ms.openlocfilehash: 6615b5c277577ee2238434591c61362885f2fec6
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59543593"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002730"
 ---
-# <a name="start-monitor-and-cancel-training-runs-in-python"></a>Indítsa el, figyelését és a Python a betanítási Futtatás megszakítása
+# <a name="start-monitor-and-cancel-training-runs-in-python"></a>A betanítási futtatások elindítása, figyelése és megszakítása a Pythonban
 
-A [Azure Machine Learning SDK Pythonhoz készült](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) figyelése, rendszerezése és kezelése a képzés és a Kísérletezési futtatások többféle módszerrel teszi lehetővé.
+A Python és [Machine learning parancssori](reference-azure-machine-learning-cli.md) felülethez készült [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) különböző módszereket biztosít a futtatások monitorozásához, rendszerezéséhez és felügyeletéhez.
 
-Ez a cikk bemutatja a példák a következő feladatok közül:
+Ez a cikk a következő feladatokra mutat be példákat:
 
-* Teljesítmény figyelése
-* Szakítsa meg, vagy sikertelen futtatások.
+* A futtatási teljesítmény figyelése.
+* Megszakítás vagy sikertelen Futtatás.
 * Gyermek-futtatások létrehozása.
-* Címke, és keresse meg a futtatások.
+* Címke és keresés futtatása.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A következőkre lesz szüksége:
+A következő elemekre lesz szüksége:
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot megkezdése előtt. Próbálja ki a [Azure Machine Learning szolgáltatás ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
-* Egy [Azure Machine Learning szolgáltatás munkaterület](setup-create-workspace.md).
+* Egy [Azure Machine learning munkaterület](how-to-manage-workspace.md).
 
-* Az Azure Machine Learning SDK Pythonhoz készült (1.0.21 verzió vagy újabb). Telepíteni, vagy frissítsen az SDK legújabb verzióját, lásd: [telepítése vagy frissítése az SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
+* A Pythonhoz készült Azure Machine Learning SDK (1.0.21 vagy újabb verzió). Az SDK legújabb verziójának telepítéséhez vagy frissítéséhez lásd: [az SDK telepítése vagy frissítése](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
 
-    Az Azure Machine Learning SDK verziójának ellenőrzéséhez használja a következő kódot:
+    A Azure Machine Learning SDK verziójának vizsgálatához használja a következő kódot:
 
-    ```Python
+    ```python
     print(azureml.core.VERSION)
     ```
 
-## <a name="start-a-run-and-its-logging-process"></a>Indítsa el a futtató és a naplózás folyamata
+* Az [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) és [cli bővítmény a Azure Machine Learninghoz](reference-azure-machine-learning-cli.md).
 
-Állítsa be a kísérlethez importálásával a [munkaterület](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py), [kísérletezhet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py), [futtatása](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py), és [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) származó a [azureml.core](https://docs.microsoft.com/python/api/azureml-core/azureml.core?view=azure-ml-py) csomagot.
+## <a name="start-a-run-and-its-logging-process"></a>Futtatás és a naplózási folyamat elindítása
 
-```Python
+### <a name="using-the-sdk"></a>Az SDK használata
+
+Állítsa be a kísérletet a [munkaterület](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py), a [kísérlet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py), a [Futtatás](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py)és a [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) osztályok importálásával a [azureml. Core](https://docs.microsoft.com/python/api/azureml-core/azureml.core?view=azure-ml-py) csomagból.
+
+```python
 import azureml.core
 from azureml.core import Workspace, Experiment, Run
 from azureml.core import ScriptRunConfig
@@ -58,75 +62,148 @@ ws = Workspace.from_config()
 exp = Experiment(workspace=ws, name="explore-runs")
 ```
 
-Indítsa el a futtató és a és a naplózási folyamatot a [ `start_logging()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#start-logging--args----kwargs-) metódust.
+Indítsa el a futtatást és a naplózási [`start_logging()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#start-logging--args----kwargs-) folyamatot a metódussal.
 
-```Python
+```python
 notebook_run = exp.start_logging()
-
 notebook_run.log(name="message", value="Hello from run!")
 ```
 
-## <a name="monitor-the-status-of-a-run"></a>A futtatási állapotának figyelése
+### <a name="using-the-cli"></a>A parancssori felület használata
 
-Az állapotát a Futtatás a [ `get_status()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#get-status--) metódust.
+A kísérlet futtatásának elindításához kövesse az alábbi lépéseket:
 
-```Python
+1. Egy rendszerhéjból vagy parancssorból az Azure CLI használatával hitelesítheti az Azure-előfizetését:
+
+    ```azurecli-interactive
+    az login
+    ```
+
+1. Csatoljon egy munkaterület-konfigurációt a betanítási parancsfájlt tartalmazó mappához. Cserélje `myworkspace` le a t a Azure Machine learning munkaterületére. Cserélje `myresourcegroup` le a helyére a munkaterületet tartalmazó Azure-erőforráscsoportot:
+
+    ```azurecli-interactive
+    az ml folder attach -w myworkspace -g myresourcegroup
+    ```
+
+    Ez a parancs létrehoz `.azureml` egy alkönyvtárat, amely tartalmazza például a runconfig és a Conda környezeti fájlokat. Emellett tartalmaz egy `config.json` fájlt is, amely a Azure Machine learning munkaterülettel folytatott kommunikációhoz használható.
+
+    További információ: [az ml mappa csatolása](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/folder?view=azure-cli-latest#ext-azure-cli-ml-az-ml-folder-attach).
+
+2. A Futtatás elindításához használja a következő parancsot. Ha ezt a parancsot használja, adja meg a runconfig-fájl nevét (a \*. runconfig karakterláncot, ha a fájlrendszert keresi) a-c paraméterrel.
+
+    ```azurecli-interactive
+    az ml run submit-script -c sklearn -e testexperiment train.py
+    ```
+
+    > [!TIP]
+    > A `az ml folder attach` parancs létrehozott egy `.azureml` alkönyvtárat, amely két példa runconfig-fájlt tartalmaz.
+    >
+    > Ha olyan Python-szkripttel rendelkezik, amely programozott módon hozza létre a futtatási konfigurációs objektumot, a [RunConfig. Save ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py#save-path-none--name-none--separate-environment-yaml-false-) paranccsal mentheti RunConfig-fájlként.
+    >
+    > További példák a runconfig-fájlokra [https://github.com/MicrosoftDocs/pipelines-azureml/tree/master/.azureml](https://github.com/MicrosoftDocs/pipelines-azureml/tree/master/.azureml):.
+
+    További információ: [az ml Run Submit-script](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script).
+
+## <a name="monitor-the-status-of-a-run"></a>Futtatás állapotának figyelése
+
+### <a name="using-the-sdk"></a>Az SDK használata
+
+Egy Futtatás állapotának lekérése a [`get_status()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#get-status--) metódussal.
+
+```python
 print(notebook_run.get_status())
 ```
 
-További részletek a Futtatás lekéréséhez használja a [ `get_details()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#get-details--) metódust.
+A futtatási azonosító, a végrehajtási idő és a Futtatás további részleteinek beszerzéséhez használja [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#get-details--) a metódust.
 
-```Python
-notebook_run.get_details()
+```python
+print(notebook_run.get_details())
 ```
 
-Ha a Futtatás sikeres befejezését követően a [ `complete()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#complete--set-status-true-) befejezettként jelöli azt a módszert.
+Ha a Futtatás sikeresen befejeződött, a metódus használatával [`complete()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#complete--set-status-true-) fejezze be a befejezést.
 
-```Python
+```python
 notebook_run.complete()
 print(notebook_run.get_status())
 ```
 
-A Python használatakor `with...as` mintát, a Futtatás lesz automatikusan olvasottként jelöli meg magát, amikor a hatókörén kívül esik a Futtatás befejeződött. Nem kell manuálisan megjelölése a Futtatás befejeződött.
+Ha a Python tervezési mintát `with...as` használja, a Futtatás automatikusan befejezettként jelenik meg, ha a Futtatás nem a hatókörön kívül van. Nem kell manuálisan megjelölni a futtatást befejezettként.
 
-```Python
+```python
 with exp.start_logging() as notebook_run:
     notebook_run.log(name="message", value="Hello from run!")
-    print("Is it still running?",notebook_run.get_status())
+    print(notebook_run.get_status())
 
-print("Has it completed?",notebook_run.get_status())
+print(notebook_run.get_status())
 ```
 
-## <a name="cancel-or-fail-runs"></a>Szakítsa meg, vagy sikertelen futtatások
+### <a name="using-the-cli"></a>A parancssori felület használata
 
- Ha figyelje meg, hogy a hibát, vagy ha a Futtatás befejeződik, túl sokáig tart az [ `cancel()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#cancel--) metódus a Futtatás leállítása, mielőtt végzett, és szabadként, meg lett szakítva.
+1. A kísérlet futtatási listájának megtekintéséhez használja a következő parancsot. Cserélje `experiment` le a nevet a kísérlet nevére:
 
-```Python
+    ```azurecli-interactive
+    az ml run list --experiment-name experiment
+    ```
+
+    Ez a parancs egy JSON-dokumentumot ad vissza, amely felsorolja a kísérlet futtatásával kapcsolatos információkat.
+
+    További információ: [az ml-kísérletek listája](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/experiment?view=azure-cli-latest#ext-azure-cli-ml-az-ml-experiment-list).
+
+2. Egy adott futtatással kapcsolatos információk megtekintéséhez használja az alábbi parancsot. Cserélje `runid` le a parancsot a Futtatás azonosítójának helyére:
+
+    ```azurecli-interactive
+    az ml run show -r runid
+    ```
+
+    Ez a parancs egy JSON-dokumentumot ad vissza, amely felsorolja a futtatással kapcsolatos információkat.
+
+    További információ: [az ml Run show](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-show).
+
+## <a name="cancel-or-fail-runs"></a>Megszakítás vagy sikertelen Futtatás
+
+Ha hibát észlel, vagy ha a futtatása túl sokáig tart, megszakíthatja a futtatást.
+
+### <a name="using-the-sdk"></a>Az SDK használata
+
+Ha az SDK használatával szeretne lemondani egy futtatást, használja a [`cancel()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#cancel--) következő metódust:
+
+```python
 run_config = ScriptRunConfig(source_directory='.', script='hello_with_delay.py')
-
 local_script_run = exp.submit(run_config)
-print("Did the run start?",local_script_run.get_status())
+print(local_script_run.get_status())
 
 local_script_run.cancel()
-print("Did the run cancel?",local_script_run.get_status())
-```
-
-Ha a Futtatás befejeződik, de hibát tartalmaz (például a helytelen tanítási szkriptet használta), használhatja a [ `fail()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#fail-error-details-none---set-status-true-) megjelölése sikertelenként metódust.
-
-```Python
-local_script_run = exp.submit(run_config)
-local_script_run.fail()
-
 print(local_script_run.get_status())
 ```
 
+Ha a Futtatás véget ér, de hibát tartalmaz (például a nem megfelelő betanítási parancsfájlt használta), a [`fail()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)#fail-error-details-none--error-code-none---set-status-true-) metódussal nem lehet megjelölést végrehajtani.
+
+```python
+local_script_run = exp.submit(run_config)
+local_script_run.fail()
+print(local_script_run.get_status())
+```
+
+### <a name="using-the-cli"></a>A parancssori felület használata
+
+Ha a parancssori felületen szeretné megszakítani a futtatást, használja a következő parancsot. Cserélje `runid` le a parancsot a Futtatás azonosítójának helyére.
+
+```azurecli-interactive
+az ml run cancel -r runid
+```
+
+További információ: [az ml Run Cancel](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-cancel).
+
 ## <a name="create-child-runs"></a>Gyermek-futtatások létrehozása
 
-Hozzon létre gyermek futtatások csoportosíthatja kapcsolódó fut le, például különböző hiperparaméter finomhangolása iteráció során.
+Hozzon létre egy alárendelt futtatásokat a kapcsolódó futtatások csoportosításához, például a különböző hiperparaméter-hangolási ismétlésekhez.
 
-Ez a kód példa a `hello_with_children.py` hozhat létre egy beküldött sorozaton belül az öt gyermek futtatások kötegelt parancsprogram a [ `child_run()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#child-run-name-none--run-id-none--outputs-none-) módszer:
+> [!NOTE]
+> A gyermek-futtatásokat csak az SDK használatával lehet létrehozni.
 
-```Python
+Ez a kód például a `hello_with_children.py` szkripttel hozza létre az öt gyermekből álló köteget egy elküldött futtatásból a [`child_run()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#child-run-name-none--run-id-none--outputs-none-) következő metódus használatával:
+
+```python
 !more hello_with_children.py
 run_config = ScriptRunConfig(source_directory='.', script='hello_with_children.py')
 
@@ -141,30 +218,55 @@ with exp.start_logging() as parent_run:
 ```
 
 > [!NOTE]
-> Mozgás hatókörén kívül, gyermek fut automatikusan állapotúként befejeződött.
+> A hatókörből való kilépéskor a gyermek-futtatások automatikusan befejezettként vannak megjelölve.
 
-Gyermek futtatások egyenként is elindíthatja, de egyes létrehozása hálózati hívását eredményezi, mert egy kötegelt futtatások-nél kevésbé hatékonyak.
+Sok gyermek hatékony futtatásához használja a [`create_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#create-children-count-none--tag-key-none--tag-values-none-) metódust. Mivel az egyes létrehozási eredmények hálózati hívást eredményeznek, a futtatások kötegének létrehozása hatékonyabb, mint az egyiket a létrehozásuk.
 
-Lekérdezés az egy adott szülő-gyermek fut, használja a [ `get_children()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#get-children-recursive-false--tags-none--properties-none--type-none--status-none---rehydrate-runs-true-) metódust.
+### <a name="submit-child-runs"></a>Alárendelt futtatások küldése
 
-```Python
-list(parent_run.get_children())
+Alárendelt futtatásokat is el lehet küldeni egy szülő futtatásból. Ez lehetővé teszi a szülő-és gyermek-futtatási hierarchiák létrehozását, amelyek mindegyike különböző számítási célokon fut.
+
+A ["submit_child ()"](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#submit-child-config--tags-none----kwargs-) metódus használatával küldheti el a gyermek futtatását szülő futtatásból. Ehhez a szülő futtatási parancsfájlban le kell kérni a futtatási környezetet, és el kell küldenie a gyermek futtatását a környezeti példány "submit_child" metódusának használatával.
+
+```python
+## In parent run script
+parent_run = Run.get_context()
+child_run_config = ScriptRunConfig(source_directory='.', script='child_script.py')
+parent_run.submit_child(child_run_config)
 ```
 
-## <a name="tag-and-find-runs"></a>Címke és a futtatások keresése
+Gyermeken belüli futtatáskor megtekintheti a szülő futtatási AZONOSÍTÓját:
 
-Az Azure Machine Learning szolgáltatás segítségével tulajdonságait és címkéit rendezése és lekérdezése a futtatások fontos információkat.
+```python
+## In child run script
+child_run = Run.get_context()
+child_run.parent.id
+```
 
-### <a name="add-properties-and-tags"></a>Tulajdonságok és címkék hozzáadása
+### <a name="query-child-runs"></a>Lekérdezési gyermek futtatása
 
-A futtatások kereshető metaadatokkal hozzáadásához használja a [ `add_properties()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#add-properties-properties-) metódust. Például az alábbi kód hozzáadja a `"author"` a Futtatás tulajdonságát:
+Egy adott szülő alárendelt futtatásának lekérdezéséhez használja a [`get_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#get-children-recursive-false--tags-none--properties-none--type-none--status-none---rehydrate-runs-true-) metódust. A "" rekurzív = true "" argumentum lehetővé teszi gyermekek és unokák beágyazott fájának lekérdezését.
+
+```python
+print(parent_run.get_children())
+```
+
+## <a name="tag-and-find-runs"></a>Címke és keresés futtatása
+
+Azure Machine Learning a tulajdonságok és címkék segítségével rendszerezheti és lekérdezheti a futtatásokat a fontos információkhoz.
+
+### <a name="add-properties-and-tags"></a>Tulajdonságok és Címkék hozzáadása
+
+#### <a name="using-the-sdk"></a>Az SDK használata
+
+Ha kereshető metaadatokat szeretne hozzáadni a futtatásokhoz, használja [`add_properties()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#add-properties-properties-) a metódust. A következő kód például hozzáadja `"author"` a tulajdonságot a futtatáshoz:
 
 ```Python
 local_script_run.add_properties({"author":"azureml-user"})
 print(local_script_run.get_properties())
 ```
 
-Tulajdonságok nem módosíthatók, így azok naplózási célokra állandó rekord létrehozása. A következő kód például eredményez hibát, mert már hozzáadott `"azureml-user"` , a `"author"` tulajdonság értéke az a fenti kód:
+A tulajdonságok nem változtathatók meg, ezért állandó rekordot hoznak létre naplózási célokra. A következő kódrészlet egy hibát eredményez, mivel a `"azureml-user"` `"author"` tulajdonság értékeként már hozzáadva lett az előző kódban:
 
 ```Python
 try:
@@ -173,7 +275,7 @@ except Exception as e:
     print(e)
 ```
 
-Tulajdonságok, ellentétben a címkék olyan módosítható. A kísérlet a fogyasztók kereshető és jelentéssel bíró adatokat hozzáadásához használja a [ `tag()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#tag-key--value-none-) metódust.
+A tulajdonságoktól eltérően a címkék változhatnak. A kísérlet felhasználói számára kereshető és hasznos információk hozzáadásához használja a [`tag()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#tag-key--value-none-) metódust.
 
 ```Python
 local_script_run.tag("quality", "great run")
@@ -183,30 +285,60 @@ local_script_run.tag("quality", "fantastic run")
 print(local_script_run.get_tags())
 ```
 
-Egyszerű karakterlánc-címkéket is hozzáadhat. Ezekkel a címkékkel a címke szótár jelenik meg, ha rendelkeznek-e érték `None`.
+Hozzáadhat egyszerű karakterlánc-címkéket is. Ha ezek a címkék a címke szótárában kulcsként jelennek meg, akkor a `None`értékük a következő:.
 
 ```Python
 local_script_run.tag("worth another look")
 print(local_script_run.get_tags())
 ```
 
-### <a name="query-properties-and-tags"></a>Lekérdezés tulajdonságait és címkéit
+#### <a name="using-the-cli"></a>A parancssori felület használata
 
-Futtatások lekérdezheti a konkrét tulajdonságok és címkék megfelelő futtatások listáját adja vissza egy kísérleten belülről.
+> [!NOTE]
+> A CLI használatával csak címkéket adhat hozzá vagy frissíthet.
+
+Címke hozzáadásához vagy frissítéséhez használja a következő parancsot:
+
+```azurecli-interactive
+az ml run update -r runid --add-tag quality='fantastic run'
+```
+
+További információ: [az ml Run Update](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-update).
+
+### <a name="query-properties-and-tags"></a>Lekérdezés tulajdonságai és címkék
+
+A kísérletek futtatásával lekérdezheti az adott tulajdonságokkal és címkékkel egyező futtatások listáját.
+
+#### <a name="using-the-sdk"></a>Az SDK használata
 
 ```Python
 list(exp.get_runs(properties={"author":"azureml-user"},tags={"quality":"fantastic run"}))
 list(exp.get_runs(properties={"author":"azureml-user"},tags="worth another look"))
 ```
 
+#### <a name="using-the-cli"></a>A parancssori felület használata
+
+Az Azure CLI támogatja a [JMESPath](http://jmespath.org) -lekérdezéseket, amelyek a tulajdonságok és címkék alapján szűrhetik a futtatásokat. Ha JMESPath-lekérdezést szeretne használni az Azure CLI-vel, a `--query` paraméterrel kell megadnia. Az alábbi példák a tulajdonságok és címkék használatával történő alapszintű lekérdezéseket mutatják be:
+
+```azurecli-interactive
+# list runs where the author property = 'azureml-user'
+az ml run list --experiment-name experiment [?properties.author=='azureml-user']
+# list runs where the tag contains a key that starts with 'worth another look'
+az ml run list --experiment-name experiment [?tags.keys(@)[?starts_with(@, 'worth another look')]]
+# list runs where the author property = 'azureml-user' and the 'quality' tag starts with 'fantastic run'
+az ml run list --experiment-name experiment [?properties.author=='azureml-user' && tags.quality=='fantastic run']
+```
+
+Az Azure CLI eredményeinek lekérdezésével kapcsolatos további információkért lásd: az [Azure CLI-parancs kimenetének lekérdezése](https://docs.microsoft.com/cli/azure/query-azure-cli?view=azure-cli-latest).
+
 ## <a name="example-notebooks"></a>Példa notebookok
 
-A következő notebookok ebben a cikkben fogalmakat mutatják be:
+A következő jegyzetfüzetek a cikkben ismertetett fogalmakat mutatják be:
 
-* Az API-k naplózásával kapcsolatos további tudnivalókért tekintse meg a [naplózási API notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/logging-api/logging-api.ipynb).
+* A naplózási API-kkal kapcsolatos további tudnivalókért tekintse meg a [naplózási API jegyzetfüzetet](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/logging-api/logging-api.ipynb).
 
-* Az Azure Machine Learning SDK fut, kezelésével kapcsolatos további információért, lásd: a [futtatások notebook kezelése](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training/manage-runs).
+* A Azure Machine Learning SDK-val való futtatásával kapcsolatos további információkért tekintse meg a [futtatási jegyzetfüzet kezelése](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training/manage-runs)című témakört.
 
 ## <a name="next-steps"></a>További lépések
 
-* Című cikk nyújt tájékoztatást, hogyan jelentkezhet a kísérletek metrikáit, [metrikák jelentkezzen a betanítási futtatások során](how-to-track-experiments.md).
+* Ha szeretné megtudni, hogyan naplózhatja a kísérletek mérőszámait, [](how-to-track-experiments.md)tekintse meg a következő témakört: a betanítási mérőszámok.

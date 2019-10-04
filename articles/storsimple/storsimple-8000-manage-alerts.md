@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 03/14/2019
 ms.author: alkohli
 ms.openlocfilehash: c3be0cdf2ef33c26dfa9d177e9b34f808b1b862a
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59525528"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60320388"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>A StorSimple-Eszközkezelő szolgáltatás segítségével a StorSimple-riasztások megtekintése és kezelése
 
@@ -72,7 +72,7 @@ Miután engedélyezte az eszköz e-mail-értesítések, a notification lista tag
       
 3. Egy teszt e-mail értesítés küldése, kattintson a **tesztelő e-mail küldése**. A StorSimple-Eszközkezelő szolgáltatás állapotüzenetek jelenik meg, akkor továbbítja a tesztértesítés.
 
-    ![Riasztás beállításai](./media/storsimple-8000-manage-alerts/configure-alerts-email3.png)
+    ![riasztási beállítások](./media/storsimple-8000-manage-alerts/configure-alerts-email3.png)
 
 4. Megjelenik egy értesítés, amikor a teszt e-mailt küld. 
    
@@ -154,13 +154,13 @@ Ha felhőkapcsolatra meghiúsul üzemi a StorSimple-eszköz, majd az eszköz ál
 |:--- |:--- |:--- |
 | Az eszköz feladatátvételére <*eszköznév*>. |Eszköz karbantartási módban van. |Eszköz keresztül belépő vagy a karbantartási módból való kilépéssel miatt nem sikerült. Ez nem jelent problémát, és nem kell módosítania. Miután tudomásul vette a riasztást, törölje a riasztások oldaláról. |
 | Az eszköz feladatátvételére <*eszköznév*>. |Eszköz belső vezérlőprogramjának vagy a szoftver csak frissítve lett. |Fürt-feladatátvétel miatt frissítés történt. Ez nem jelent problémát, és nem kell módosítania. Miután tudomásul vette a riasztást, törölje a riasztások oldaláról. |
-| Az eszköz feladatátvételére <*eszköznév*>. |Vezérlőt leállítása vagy újraindítása. |Eszköz feladatátvételére, mert az aktív vezérlőn leállította vagy újraindította a rendszergazda. Nincs szükség beavatkozásra. Miután tudomásul vette a riasztást, törölje a riasztások oldaláról. |
+| Az eszköz feladatátvételére <*eszköznév*>. |Vezérlőt leállítása vagy újraindítása. |Eszköz feladatátvételére, mert az aktív vezérlőn leállította vagy újraindította a rendszergazda. Nem kell módosítania. Miután tudomásul vette a riasztást, törölje a riasztások oldaláról. |
 | Az eszköz feladatátvételére <*eszköznév*>. |Tervezett feladatátvétel. |Győződjön meg arról, hogy a tervezett feladatátvétel volt. Megfelelő művelet végrehajtása után törölje ezt a riasztást a riasztások oldaláról. |
 | Az eszköz feladatátvételére <*eszköznév*>. |Nem tervezett feladatátvételt. |A StorSimple épül, hogy automatikusan helyreálljon a nem tervezett feladatátvételeket. Ha nagy számú ilyen riasztást lát, forduljon a Microsoft Support. |
 | Az eszköz feladatátvételére <*eszköznév*>. |Ismeretlen/egyéb ok. |Ha nagy számú ilyen riasztást lát, forduljon a Microsoft Support. Miután a probléma megoldódott, törölje a riasztást a riasztások oldaláról. |
 | Egy kritikus fontosságú szolgáltatás sikertelenként állapotjelentést. |DataPath szolgáltatás hibája. |Segítségért forduljon a Microsoft Support. |
-| Virtuális hálózati adapter IP-címet <*DATA #*> állapotjelentést, mert nem sikerült. |Ismeretlen/egyéb ok. |Néha átmeneti körülmények okozhatják ezek a riasztások. Ha ez a helyzet, majd ezt a riasztást automatikusan törlődik egy kis idő múlva. Ha nem szűnik meg a probléma, forduljon a Microsoft támogatási szolgálatához. |
-| Virtuális hálózati adapter IP-címet <*DATA #*> állapotjelentést, mert nem sikerült. |Kapcsolat neve: <*DATA #*> IP-cím `<IP address>` nem hozható online állapotba, mert ismétlődő IP-címet észlelt a hálózaton. |Győződjön meg arról, hogy az ismétlődő IP-cím van-e távolítani a hálózatról, vagy konfigurálja újra a felület másik IP-címmel. |
+| Virtuális hálózati adapter IP-címet <*DATA #* > állapotjelentést, mert nem sikerült. |Ismeretlen/egyéb ok. |Néha átmeneti körülmények okozhatják ezek a riasztások. Ha ez a helyzet, majd ezt a riasztást automatikusan törlődik egy kis idő múlva. Ha nem szűnik meg a probléma, forduljon a Microsoft támogatási szolgálatához. |
+| Virtuális hálózati adapter IP-címet <*DATA #* > állapotjelentést, mert nem sikerült. |Kapcsolat neve: <*DATA #* > IP-cím `<IP address>` nem hozható online állapotba, mert ismétlődő IP-címet észlelt a hálózaton. |Győződjön meg arról, hogy az ismétlődő IP-cím van-e távolítani a hálózatról, vagy konfigurálja újra a felület másik IP-címmel. |
 
 ### <a name="disaster-recovery-alerts"></a>Vész-helyreállítási riasztások
 

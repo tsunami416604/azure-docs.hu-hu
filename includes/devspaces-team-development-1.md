@@ -11,11 +11,11 @@ ms.date: 12/17/2018
 ms.topic: include
 manager: yuvalm
 ms.openlocfilehash: 40c1be20df845b975c023616e38cbb932c985735
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439532"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179557"
 ---
 # <a name="team-development-with-azure-dev-spaces"></a>Csoportos fejlesztés az Azure Dev Spaces használatával
 
@@ -58,7 +58,7 @@ Először azt telepítenie kell egy alapkonfiguráció-szolgáltatásaink. A kö
 
 1. Klónozás a [fejlesztési tárolóhelyek mintaalkalmazás](https://github.com/Azure/dev-spaces): `git clone https://github.com/Azure/dev-spaces && cd dev-spaces`
 1. A távoli ág kivétele *azds_updates*: `git checkout -b azds_updates origin/azds_updates`
-1. Válassza ki a _fejlesztési_ terület: `azds space select --name dev`. Amikor a rendszer kéri, válassza ki a szülő fejlesztési szóközzel, válassza ki a  _\<nincs\>_.
+1. Válassza ki a _fejlesztési_ terület: `azds space select --name dev`. Amikor a rendszer kéri, válassza ki a szülő fejlesztési szóközzel, válassza ki a  _\<nincs\>_ .
 1. Keresse meg a _mywebapi_ könyvtárat, és hajtsa végre: `azds up -d`
 1. Keresse meg a _webfrontend_ könyvtárat, és hajtsa végre: `azds up -d`
 1. Hajtsa végre `azds list-uris` megtekintheti a nyilvános végpontot _webfrontend_

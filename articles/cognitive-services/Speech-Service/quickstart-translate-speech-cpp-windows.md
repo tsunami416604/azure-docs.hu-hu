@@ -1,73 +1,69 @@
 ---
-title: 'Gyors útmutató: Beszéd, a C++ (Windows) – beszédszolgáltatások fordítása'
+title: 'Gyors útmutató: Beszéd fordítása C++ , (Windows) – beszédfelismerési szolgáltatás'
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban fog létrehozni egy egyszerű C++-alkalmazás felhasználói speech rögzítése, azt fordítása más nyelvre, és a szöveg a parancssorba. Ez az útmutató Windows-felhasználók számára tervezték.
+description: Ebben a rövid útmutatóban létrehoz egy C++ alkalmazást, amely rögzíti a felhasználói beszédet, lefordítja egy másik nyelvre, és kiírja a szöveget a parancssorba. Ez az útmutató Windows-felhasználók számára készült.
 services: cognitive-services
 author: wolfma61
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 03/13/2019
+ms.date: 08/24/2019
 ms.author: erhopf
-ms.openlocfilehash: f7120e80d079723ed8265320ba4b38d76a825a00
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 6ba4e44efc7ff24aa48f9f16840b2248423f7241
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59499818"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382682"
 ---
-# <a name="quickstart-translate-speech-with-the-speech-sdk-for-c"></a>Gyors útmutató: Beszédfelismerés, beszédfelismerési SDK-val fordítása Pro C++
+# <a name="quickstart-translate-speech-in-c-on-windows-by-using-the-speech-sdk"></a>Gyors útmutató: Beszédfelismerés a Windows C++ rendszeren a Speech SDK használatával
 
-Ebben a rövid útmutatóban fog létrehozni egy egyszerű C++-alkalmazás, amely rögzíti a felhasználó beszéd, a számítógép mikrofon, a rendszer lefordítja a beszédfelismerési és transcribes a lefordított szöveg valós időben a parancssorba. Ez az alkalmazás a 64 bites Windows rendszerhez készült, és a beépített a [beszéd SDK NuGet-csomagot](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2017-ben.
+A [beszédfelismerést](quickstart-cpp-windows.md) és a [beszédfelismerést](quickstart-text-to-speech-cpp-windows.md)is elérhetővé teszi.
 
-Beszédalapú fordítási elérhető nyelvek teljes listáját lásd: [nyelvi támogatás](language-support.md).
+Ebben a rövid útmutatóban egy olyan C++ alkalmazást fog létrehozni, amely rögzíti a felhasználói beszédet a számítógép mikrofonjában, lefordítja a beszédet, és valós időben írja át a lefordított szöveget a parancssorba. Ez az alkalmazás a [SPEECH SDK NuGet csomagjával](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2019 (bármely kiadással) készült.
+
+A beszédfelismeréshez elérhető nyelvek teljes listáját a [nyelvi támogatás](language-support.md)című témakörben tekintheti meg.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ehhez a rövid útmutatóhoz a következőkre van szükség:
-
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
-* A beszédfelismerési szolgáltatás egy Azure-előfizetés kulcs. [Igényeljen ingyenesen egy](get-started.md).
+A rövid útmutató elvégzéséhez szüksége lesz egy Speech Services-előfizetési kulcsra. amelyet ingyenesen is beszerezhet. További részletekért tekintse [meg a Speech Services ingyenes kipróbálása](get-started.md) című témakört.
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio-projekt létrehozása
 
-[!INCLUDE[](../../../includes/cognitive-services-speech-service-quickstart-cpp-create-proj.md)]
+[!INCLUDE [Quickstart C++ project](../../../includes/cognitive-services-speech-service-quickstart-cpp-create-proj.md)]
 
 ## <a name="add-sample-code"></a>Mintakód hozzáadása
 
-1. Nyissa meg a *helloworld.cpp* forrásfájlt. Cserélje le a kezdeti „include” állítás (`#include "stdafx.h"` vagy `#include "pch.h"`) alatt található teljes kódot a következőre:
+1. Nyissa meg a **helloworld.cpp** forrásfájlt.
 
-    [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/speech-translation/cpp-windows/helloworld/helloworld.cpp#code)]
+1. Cserélje le az összes kódot a következő kódrészletre:
+
+   [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/speech-translation/cpp-windows/helloworld/helloworld.cpp?range=2-#code)]
 
 1. Ugyanabban a fájlban cserélje le a `YourSubscriptionKey` sztringet az előfizetői azonosítóra.
 
 1. Cserélje le a `YourServiceRegion` sztringet az előfizetéséhez társított [régióra](regions.md) (ez a `westus` régió, ha az ingyenes próbaverzióra regisztrált).
 
-1. Mentse a projekt módosításait.
+1. A menüsávban válassza a **fájl** > **Mentés összes mentése**elemet.
 
-## <a name="build-and-run-the-app"></a>Az alkalmazás létrehozása és futtatása
+## <a name="build-and-run-the-application"></a>Az alkalmazás fordítása és futtatása
 
-1. Hozza létre az alkalmazást. A menüsávon válassza a **Létrehozás** > **Megoldás fordítása** elemet. A kód fordításának hiba nélkül kell végbe mennie.
+1. Az alkalmazás létrehozásához a > menüsávon **válassza a Build** **Build megoldás** elemet. A kód fordításának hiba nélkül végbe kell mennie.
 
-   ![A Visual Studio képernyőképe, amelyen ki van emelve a Megoldás fordítása lehetőség](media/sdk/qs-cpp-windows-06-build.png)
+1. A HelloWorld alkalmazás indításához válassza a hibakeresés indítása hibakeresést (vagy nyomja le az F5 billentyűt). > 
 
-1. Indítsa el az alkalmazást. A menüsávon válassza a **Hibakeresés** > **Hibakeresés indítása** lehetőséget, vagy nyomja le az **F5** billentyűt.
+1. Mondjon ki egy angol nyelvű kifejezést vagy mondatot. Az alkalmazás elküldi a beszédét a Speech Services szolgáltatásnak, amely szöveget (ebben az esetben francia és német nyelven) fordít le és mutat be. A Speech Services ezután visszaküldi a szöveget az alkalmazásnak a megjelenítéshez.
 
-   ![A Visual Studio képernyőképe, amelyen ki van emelve a Hibakeresés indítása lehetőség](media/sdk/qs-cpp-windows-07-start-debugging.png)
-
-1. Megjelenik egy konzolablak, amely arra kéri Önt, hogy mondjon valamit. Mondjon ki egy angol nyelvű kifejezést vagy mondatot. A beszéd a Speech továbbításakor, lefordított és megjelenített érzéseket szöveg, amely ugyanabban az ablakban jelenik meg.
-
-   ![Képernyőfelvétel a konzol kimenete a sikeres fordítás után](media/sdk/qs-translate-cpp-windows-output.png)
+   ![Konzol kimenete a sikeres beszéd fordítás után](media/sdk/qs-translate-cpp-windows-output.png)
 
 ## <a name="next-steps"></a>További lépések
 
-További példákat, beszéd olvasni hangfájl, és a lefordított szöveg szintetizált, mint például a Githubon érhetők el.
+További minták, például a hangfájlok beszédének beolvasása vagy a fordítás szövegének szintetizált beszédbe való bekapcsolása a GitHubon érhető el.
 
 > [!div class="nextstepaction"]
-> [Ismerkedés a C++-mintákat a Githubon](https://aka.ms/csspeech/samples)
+> [Minták C++ feltárása a githubon](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>Lásd még
 
-- [Akusztikai modellek testreszabása](how-to-customize-acoustic-models.md)
-- [Nyelvi modellek testreszabása](how-to-customize-language-model.md)
+- [Custom Speech modell betanítása](how-to-custom-speech-train-model.md)

@@ -13,11 +13,11 @@ ms.date: 01/07/2019
 ms.reviewer: sergkanz
 ms.author: mbullwin
 ms.openlocfilehash: fef016d87cc60bc916fdcb08f92171e115221fe5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57884120"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60900533"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>Kérelmek telemetriai adatai: Application Insights-adatmodell
 
@@ -33,19 +33,19 @@ Application Insights webes SDK kérelem neve "adott állapotában" küldi a nagy
 
 Maximális hossz: 1024 karakternél
 
-## <a name="id"></a>ID (Azonosító)
+## <a name="id"></a>azonosító
 
 Egy kérelem hívás példány azonosítója. Kérelem és egyéb telemetriát elemek között használt. Lehet, hogy globálisan egyedi azonosítója. További információkért lásd: [korrelációs](../../azure-monitor/app/correlation.md) lapot.
 
 Maximális hossz: 128 karakter hosszú lehet
 
-## <a name="url"></a>URL-cím
+## <a name="url"></a>URL
 
 Kérelem URL-címe és az összes lekérdezési karakterlánc paramétert.
 
 Maximális hossz: 2048 karakternél
 
-## <a name="source"></a>Forrás
+## <a name="source"></a>source
 
 A kérelem forrását. Példák a kialakítási kulcsot a hívó vagy a hívó ip-címét. További információkért lásd: [korrelációs](../../azure-monitor/app/correlation.md) lapot.
 
@@ -61,9 +61,9 @@ Egy kérelem végrehajtásának eredménye. HTTP-állapotkódot a HTTP-kérések
 
 Maximális hossz: 1024 karakternél
 
-## <a name="success"></a>Sikeres
+## <a name="success"></a>Siker
 
-A sikeres vagy sikertelen hívás megjelölése. Ezt a mezőt kötelező kitölteni. Ha nincs beállítva az explicit módon `false` -kérelem sikeres számít. Ez az érték `false` Ha művelet kivétel által megszakított vagy a következő eredmény hibakódot adta vissza.
+A sikeres vagy sikertelen hívás megjelölése. Ez a mező kitöltése kötelező. Ha nincs beállítva az explicit módon `false` -kérelem sikeres számít. Ez az érték `false` Ha művelet kivétel által megszakított vagy a következő eredmény hibakódot adta vissza.
 
 A webalkalmazások esetén az Application Insights meghatározni egy kérelmet, a sikeres a válaszkód esetén kevesebb mint `400` vagy egyenlő `401`. Azonban előfordulhatnak olyan esetek, amikor az alapértelmezett leképezés nem egyezik a kérelem a szemantikai. Válaszkód `404` utalhat a "nincs rekordok" rendszeres folyamat része lehet. Azt is jelentheti egy megszakadt hivatkozás. A hibás hivatkozást talál még akkor is Megvalósíthat az összetettebb logika. Csak akkor, ha a hivatkozások URL-cím hivatkozó elemzésével ugyanazon a helyen található kódhibáiként jelölheti meg hibás hivatkozást talál. Vagy hibák során érhető el, amely a vállalat mobilalkalmazás megjelölni. Hasonlóképpen `301` és `302` azt jelzi, hogy a hiba, amikor az ügyfél, amely nem támogatja az átirányítási érik el.
 

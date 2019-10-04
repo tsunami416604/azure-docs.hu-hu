@@ -1,44 +1,103 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Az Azure Blueprints szolgáltatás dokumentációja
+### YamlMime:Landing
+title: Az Azure Blueprints dokumentációja
+summary: Egyszerűsítheti az üzembe helyezéseket, ha a különbözők összetevőket, például Azure Resource Manager-sablonokat, szerepköralapú hozzáférés-vezérlőket és szabályzatokat egyetlen tervdefinícióba csomagolja.
 metadata:
-  title: Az Azure Blueprints dokumentációja – oktatóanyagok és API-referencia
-  description: 'Az Azure Blueprints az Azure egy szolgáltatása, amelynek használatával összetevőket hozhat létre, definiálhat és helyezhet üzembe az Azure-környezetben.'
-  author: DCtheGeek
-  manager: carmonm
+  title: Az Azure Blueprints dokumentációja
+  description: Egyszerűsítheti az üzembe helyezéseket, ha a különbözők összetevőket, például Azure Resource Manager-sablonokat, szerepköralapú hozzáférés-vezérlőket és szabályzatokat egyetlen tervdefinícióba csomagolja.
   ms.service: blueprints
   ms.topic: landing-page
-  ms.date: 03/26/2019
+  ms.collection: collection
+  author: DCtheGeek
   ms.author: dacoulte
-abstract:
-  description: 'Az Azure Blueprints lehetővé teszi felhőkörnyezetek megismételhető üzembe helyezését és frissítését összeállítható összetevők, például erőforrás-kiosztásra szolgáló Azure Resource Manager-sablonok, szerepköralapú hozzáférés-vezérlők és szabályzatok használatával.'
-sections:
-  - title: 5 perces gyors útmutatók
-    items:
-      - type: paragraph
-        text: 'Megtudhatja, hogyan hozhat létre, rendelhet hozzá és kezelhet tervrajz-definíciókat az Azure-ban.'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              alt: Azure Portal
-              src: ./media/portal.svg
-            text: Azure Portal
-            href: create-blueprint-portal.md
-          - image:
-              alt: REST
-              src: ./media/rest.svg
-            text: REST
-            href: create-blueprint-rest-api.md
-  - title: Referencia
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Parancssor
-            html: '<p><a href="/powershell/module/az.blueprint/#blueprint">Azure PowerShell</a></p>'
-          - title: Nyelvek
-            html: <p><a href="/dotnet/api/overview/azure/blueprints/management">Azure SDK for .NET</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/blueprints/">API-referencia</a></p>
+  ms.date: 09/01/2019
+  ms.openlocfilehash: 44d21c07a81dc3fe5912137691b67af1a3e910e2
+  ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 09/04/2019
+  ms.locfileid: "70239206"
+landingContent:
+- title: Az Azure Blueprints bemutatása
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az Azure Blueprints?
+      url: ./overview.md
+    - text: Az üzembe helyezés szakaszai
+      url: ./concepts/deployment-stages.md
+    - text: A tervek életciklusa
+      url: ./concepts/lifecycle.md
+  - linkListType: video
+    links:
+    - text: Azure Friday – Az Azure Blueprints áttekintése
+      url: https://channel9.msdn.com/Shows/Azure-Friday/An-overview-of-Azure-Blueprints
+- title: Bevezetés
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Új terv létrehozása (portál)
+      url: ./create-blueprint-portal.md
+    - text: Új terv létrehozása (PowerShell)
+      url: ./create-blueprint-powershell.md
+    - text: Új terv létrehozása (REST API)
+      url: ./create-blueprint-rest-api.md
+  - linkListType: tutorial
+    links:
+    - text: Tervminta használata
+      url: ./tutorials/create-from-sample.md
+  - linkListType: deploy
+    links:
+    - text: Tervminták indexe
+      url: ./samples/index.md
+- title: Tervek testreszabása
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Dinamikus paraméterek
+      url: ./concepts/parameters.md
+    - text: Összetevők sorba rendezése
+      url: ./concepts/sequencing-order.md
+    - text: Üzembe helyezett erőforrások zárolása
+      url: ./concepts/resource-locking.md
+  - linkListType: tutorial
+    links:
+    - text: Új erőforrások védelme zárolásokkal
+      url: ./tutorials/protect-new-resources.md
+- title: Áttérés „nagy léptékre”
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Meglévő tervek frissítése
+      url: ./how-to/update-existing-assignments.md
+    - text: Hozzárendelések kezelése a PowerShell-lel
+      url: ./how-to/manage-assignments-ps.md
+    - text: Importálás és exportálás a PowerShell-lel
+      url: ./how-to/import-export-ps.md
+    - text: Tervoperátorok implementálása
+      url: ./how-to/configure-for-blueprint-operator.md
+    - text: Tervek kezelése kódként
+      url: https://github.com/Azure/azure-blueprints/blob/master/README.md
+- title: Közösségi részvétel
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Az Azure Governance YouTube-csatornája
+      url: https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ
+    - text: Termékfunkció kérése
+      url: https://feedback.azure.com/forums/915958-azure-governance
+    - text: Az Azure Governance technikai közössége
+      url: https://techcommunity.microsoft.com/t5/Azure-Governance/bd-p/AzureGovernance
+- title: Referencia
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Tervspecifikus függvények
+      url: ./reference/blueprint-functions.md
+    - text: PowerShell-modul (PSGallery)
+      url: https://www.powershellgallery.com/packages/Az.Blueprint
+    - text: Azure PowerShell
+      url: /powershell/module/az.blueprint/#blueprint
+    - text: REST API
+      url: /rest/api/blueprints/
+    - text: .NET
+      url: /dotnet/api/overview/azure/blueprints/management

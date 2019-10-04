@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 05/23/2017
+ms.date: 05/29/2019
 ms.author: mimart
 author: msmimart
-manager: daveba
-ms.reviewer: sasubram
+manager: celestedg
+ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7bf4d1d0f510ccad614452db74c291f6c61dcf54
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: b45277c89193c51f70836bcef8a21636fc9c7973
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56672304"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67113125"
 ---
 # <a name="limitations-of-azure-ad-b2b-collaboration"></a>Az Azure AD B2B együttműködés korlátozásai
 Az Azure Active Directory (Azure AD) B2B-együttműködés jelenleg a jelen cikkben ismertetett korlátozások vonatkoznak.
@@ -29,6 +29,9 @@ A B2B-együttműködés folyamatok hozunk felhasználók hozzáadása a címtár
 
 ## <a name="azure-ad-directories"></a>Az Azure AD-címtár
 Az Azure AD B2B van vonatkoznak az Azure AD szolgáltatás directory korlátok. A felhasználó létrehozhat könyvtárak száma és a könyvtárak száma, amely egy felhasználó vagy a Vendég felhasználó is tartozhat, lásd: [az Azure AD szolgáltatási korlátozások](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-service-limits-restrictions).
+
+## <a name="national-clouds"></a>Országos felhők
+[Országos felhők](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud) Azure fizikailag izolált példánya. B2B-együttműködés országos felhőbeli határokon nem támogatott. Ha az Azure-bérlőhöz van a nyilvános, globális, felhőalkalmazások, például nem egy felhasználói fiók az országos felhőben hívhatja. Működik együtt a felhasználó, kérje meg őket egy másik e-mail-cím, vagy hozzon létre egy tag felhasználói fiók számukra a címtárban.
 
 ## <a name="next-steps"></a>További lépések
 

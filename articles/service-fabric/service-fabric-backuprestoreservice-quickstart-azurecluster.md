@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/29/2018
+ms.date: 5/24/2019
 ms.author: hrushib
-ms.openlocfilehash: 4d4bc69f00f86bc81c353ef0cc40f37f000ba6c4
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 7078a1a5edc310c799690f0f7236dd0947e3290b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670438"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059196"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Rendszeres biztonsági mentése és visszaállítása az Azure Service Fabricben 
 > [!div class="op_single_selector"]
@@ -55,12 +55,34 @@ A Service Fabric egy érhet el a következő funkciók kapcsolatos rendszeres bi
 - A biztonsági mentések (későbbi) megőrzési kezelése
 
 ## <a name="prerequisites"></a>Előfeltételek
-* Service Fabric-fürtön a Fabric verziója 6.2 vagy újabb. A Windows Server létre kell hozni a fürtöt. Ebben [cikk](service-fabric-cluster-creation-via-arm.md) létrehozás a Service Fabric-fürt Azure-erőforrás-sablon használatával.
+* Service Fabric-fürtön a Fabric 6.4 verzió vagy újabb. Ebben [cikk](service-fabric-cluster-creation-via-arm.md) létrehozás a Service Fabric-fürt Azure-erőforrás-sablon használatával.
 * X.509-tanúsítvány a titkos kulcsok tárolási való csatlakozáshoz szükséges titkosítási biztonsági másolatok tárolására. Tekintse meg [cikk](service-fabric-cluster-creation-via-arm.md) szeretné elsajátítani, vagy hozzon létre egy X.509 tanúsítvány.
 * Service Fabric Reliable Stateful alkalmazás használatával a Service Fabric SDK 3.0-s verzió vagy újabb. Alkalmazások .NET Core 2.0, kérelmet kell kialakítani, Service Fabric SDK verziója 3.1-es vagy újabb.
 * Hozzon létre az Azure Storage-fiók alkalmazás biztonsági mentések tárolására.
+* Telepítse a Microsoft.ServiceFabric.Powershell.Http modul [az előzetes verzió] konfigurációs hívások.
+
+```powershell
+    Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
+```
+
+* Győződjön meg arról, hogy a fürt csatlakoztatva van-e használatával, a `Connect-SFCluster` parancs bármilyen konfigurációs kérést Microsoft.ServiceFabric.Powershell.Http modul elvégzése előtt.
+
+```powershell
+
+    Connect-SFCluster -ConnectionEndpoint 'https://mysfcluster.southcentralus.cloudapp.azure.com:19080'   -X509Credential -FindType FindByThumbprint -FindValue '1b7ebe2174649c45474a4819dafae956712c31d3' -StoreLocation 'CurrentUser' -StoreName 'My' -ServerCertThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'  
+
+```
 
 ## <a name="enabling-backup-and-restore-service"></a>Biztonsági mentés és visszaállítás szolgáltatás engedélyezése
+
+### <a name="using-azure-portal"></a>Az Azure Portal használata
+
+Engedélyezése `Include backup restore service` jelölőnégyzet jelölését a `+ Show optional settings` a `Cluster Configuration` fülre.
+
+![A portál Backup Restore szolgáltatás engedélyezése][1]
+
+
+### <a name="using-azure-resource-manager-template"></a>Az Azure Resource Manager-sablon használatával
 Először engedélyeznie kell a _biztonsági mentés és visszaállítás szolgáltatás_ a fürtben. Szerezze be a sablon a fürt, amely számára telepíteni kívánja. Használhatja a [mintasablon](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype) , vagy hozzon létre egy Resource Manager-sablon. Engedélyezze a _biztonsági mentés és visszaállítás szolgáltatás_ az alábbi lépéseket követve:
 
 1. Ellenőrizze, hogy a `apiversion` értékre van állítva **`2018-02-01`** a a `Microsoft.ServiceFabric/clusters` erőforrás, és ha nem, frissítse azt az alábbi kódrészletben látható módon:
@@ -117,6 +139,18 @@ Ismertető a biztonsági mentési ütemezés biztonsági mentési szabályzat l�
 
 Biztonsági mentési tár használja az Azure Storage a fent létrehozott fiók. Tároló `backup-container` biztonsági mentések tárolására van beállítva. Egy ilyen nevű tároló jön létre, ha ezt még nem létezik, biztonsági mentési feltöltésekor. Töltse fel `ConnectionString` egy érvényes kapcsolati karakterlánccal, az Azure Storage-fiókok cseréje `account-name` az a tárfiók nevét, és `account-key` az a tárfiók kulcsára.
 
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Microsoft.ServiceFabric.Powershell.Http modult használó PowerShell
+
+Hajtsa végre a következő PowerShell-parancsmagok új biztonsági mentési szabályzat létrehozását. Cserélje le `account-name` az a tárfiók nevét, és `account-key` az a tárfiók kulcsára.
+
+```powershell
+
+New-SFBackupPolicy -Name 'BackupPolicy1' -AutoRestoreOnDataLoss $true -MaxIncrementalBackups 20 -FrequencyBased -Interval 00:15:00 -AzureBlobStore -ConnectionString 'DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net' -ContainerName 'backup-container' -Basic -RetentionDuration '10.00:00:00'
+
+```
+
+#### <a name="rest-call-using-powershell"></a>REST-hívást PowerShell-lel
+
 Hajtsa végre a következő PowerShell-parancsfájl az új szabályzat létrehozásához szükséges REST API meghívása. Cserélje le `account-name` az a tárfiók nevét, és `account-key` az a tárfiók kulcsára.
 
 ```powershell
@@ -148,13 +182,20 @@ $body = (ConvertTo-Json $BackupPolicy)
 $url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/BackupRestore/BackupPolicies/$/Create?api-version=6.4"
 
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json' -CertificateThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'
-```
 
-> [!IMPORTANT]
-> A futtatókörnyezet hibája miatt győződjön meg arról, hogy a megőrzési időtartamát a megtartási házirend van beállítva 24 napnál kisebb különbségnek kell, különben szolgáltatás biztonsági mentése és helyreállítása kvórum elvesztése replika feladatátvétel után lép eredményez.
+```
 
 ### <a name="enable-periodic-backup"></a>Rendszeres biztonsági mentés engedélyezése
 Után az alkalmazás adatvédelmi követelmények teljesítéséhez biztonsági mentési házirend meghatározása, a biztonsági mentési szabályzat az alkalmazás társítva kell lennie. Követelmény, függően a biztonsági mentési szabályzathoz társított egy alkalmazást, a szolgáltatás és a partíció is lehet.
+
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Microsoft.ServiceFabric.Powershell.Http modult használó PowerShell
+
+```powershell
+
+Enable-SFApplicationBackup -ApplicationId 'SampleApp' -BackupPolicyName 'BackupPolicy1'
+
+```
+#### <a name="rest-call-using-powershell"></a>REST-hívást PowerShell-lel
 
 Hajtsa végre a következő PowerShell-szkript meghívása szükséges REST API-t a biztonsági mentési házirend társítása neve `BackupPolicy1` fenti alkalmazással létrehozott `SampleApp`.
 
@@ -179,6 +220,15 @@ Miután engedélyezte a biztonsági mentés az alkalmazás szintjén, az alkalma
 
 A Reliable Stateful services és Reliable Actors-alkalmazás tartozó összes partíció társított biztonsági másolatok használatával lehet enumerálni _GetBackups_ API-t. Biztonsági másolatok számba vehetők egy alkalmazás, szolgáltatás vagy egy partíciót.
 
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Microsoft.ServiceFabric.Powershell.Http modult használó PowerShell
+
+```powershell
+    
+Get-SFApplicationBackupList -ApplicationId WordCount
+```
+
+#### <a name="rest-call-using-powershell"></a>REST-hívást PowerShell-lel
+
 Hajtsa végre a következő PowerShell-parancsprogram enumerálni az összes partíción belül létrehozott biztonsági mentéseket a HTTP API meghívása a `SampleApp` alkalmazás.
 
 ```powershell
@@ -189,6 +239,7 @@ $response = Invoke-WebRequest -Uri $url -Method Get -CertificateThumbprint '1b7e
 $BackupPoints = (ConvertFrom-Json $response.Content)
 $BackupPoints.Items
 ```
+
 Futtassa a fenti kimeneti példa:
 
 ```
@@ -230,15 +281,13 @@ FailureError            :
 ```
 
 ## <a name="limitation-caveats"></a>Korlátozás / kikötések
-- Nem Service Fabric beépített PowerShell-parancsmagokat.
+- A Service Fabric PowerShell-parancsmagok jelenleg előzetes módban van.
 - Nem támogatja a Service Fabric-fürtök Linux rendszeren.
-
-## <a name="known-issues"></a>Ismert problémák
-- Győződjön meg arról, hogy a megőrzési időtartam 24 napnál kisebb különbségnek kell van konfigurálva. 
 
 ## <a name="next-steps"></a>További lépések
 - [Rendszeres biztonsági mentési konfiguráció ismertetése](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
 - [Biztonsági másolat visszaállítása – REST API-referencia](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
 
 [0]: ./media/service-fabric-backuprestoreservice/PartitionBackedUpHealthEvent_Azure.png
+[1]: ./media/service-fabric-backuprestoreservice/enable-backup-restore-service-with-portal.png
 

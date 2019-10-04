@@ -9,11 +9,11 @@ ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
 ms.openlocfilehash: 00e226134039d29efd744290c4bc63abd50adc89
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697832"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61478606"
 ---
 # <a name="azure-importexport-service-log-file-format"></a>Az Azure Import/Export szolgáltatás naplófájljainak formátuma
 Ha a Microsoft Azure Import/Export szolgáltatás végrehajt egy műveletet az importálási feladat vagy exportálási feladat részeként egy meghajtón, naplók írja a blokkblobok az adott feladathoz társított storage-fiókban.  
@@ -101,7 +101,7 @@ properties-status ::=
 
 A következő táblázat ismerteti az elemek a naplófájl.  
   
-|XML-elem|Typo|Leírás|  
+|XML-elem|Típus|Leírás|  
 |-----------------|----------|-----------------|  
 |`DriveLog`|XML-elem|Meghajtó a napló jelöli.|  
 |`Version`|Attribútum, karakterlánc|A napló formátuma verziója.|  

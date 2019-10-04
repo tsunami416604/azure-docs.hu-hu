@@ -3,7 +3,7 @@ title: Service Fabric-fürt törlése az Azure-ban | Microsoft Docs
 description: Ez az oktatóanyag azt mutatja be, hogyan kell törölni egy Azure-ban üzemeltetett Service Fabric-fürtöt és annak összes erőforrását. Dönthet úgy, hogy a fürtöt tartalmazó teljes erőforráscsoportot törli, de az erőforrások külön-külön is törölhetők.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: ''
@@ -12,19 +12,19 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/26/2018
-ms.author: aljo
+ms.date: 07/22/2019
+ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 0e5137a8183f378ee5960846e281222c6ecaaa47
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: c6fd4234257cbb19580a5b406750cc72d03609c0
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59995710"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598861"
 ---
-# <a name="tutorial-remove-a-service-fabric-cluster-running-in-azure"></a>Oktatóanyag: Távolítsa el az Azure-ban futó Service Fabric-fürt
+# <a name="tutorial-remove-a-service-fabric-cluster-running-in-azure"></a>Oktatóanyag: Azure-ban futó Service Fabric-fürt eltávolítása
 
-Ez az oktatóanyag része, öt egy sorozat harmadik része, és bemutatja, hogyan lehet törölni az Azure-ban futó Service Fabric-fürt. A Service Fabric-fürtök teljes törléséhez a fürt által használt összes erőforrást is törölnie kell. Két lehetősége van: törölheti a fürtöt tartalmazó erőforráscsoportot (amivel a fürterőforrás mellett az erőforráscsoport összes többi erőforrását is törli), vagy törölheti az adott fürterőforrást és az ahhoz társított erőforrásokat (meghagyva az erőforráscsoport többi erőforrását).
+Ez az oktatóanyag egy sorozat ötödik része, és bemutatja, hogyan törölheti az Azure-ban futó Service Fabric-fürtöt. A Service Fabric-fürtök teljes törléséhez a fürt által használt összes erőforrást is törölnie kell. Két lehetősége van: törölheti a fürtöt tartalmazó erőforráscsoportot (amivel a fürterőforrás mellett az erőforráscsoport összes többi erőforrását is törli), vagy törölheti az adott fürterőforrást és az ahhoz társított erőforrásokat (meghagyva az erőforráscsoport többi erőforrását).
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -34,8 +34,8 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 > [!div class="checklist"]
-> * Hozzon létre egy biztonságos [Windows-fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) az Azure-ban sablon használatával
-> * [-Fürt monitorozása](service-fabric-tutorial-monitor-cluster.md)
+> * Biztonságos Windows- [fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) létrehozása az Azure-ban sablon használatával
+> * [Fürt figyelése](service-fabric-tutorial-monitor-cluster.md)
 > * [Fürt horizontális fel- és leskálázása](service-fabric-tutorial-scale-cluster.md)
 > * [Fürt futtatókörnyezetének frissítése](service-fabric-tutorial-upgrade-cluster.md)
 > * Fürt törlése
@@ -48,13 +48,13 @@ Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 Az oktatóanyag elkezdése előtt:
 
 * Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Telepítés [az Azure Powershell](https://docs.microsoft.com/powershell/azure//install-Az-ps) vagy [az Azure CLI](/cli/azure/install-azure-cli).
-* Hozzon létre egy biztonságos [Windows-fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) az Azure-ban
+* Telepítse az [Azure PowerShellt](https://docs.microsoft.com/powershell/azure//install-Az-ps) vagy az [Azure CLI](/cli/azure/install-azure-cli)-t.
+* Biztonságos Windows- [fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) létrehozása az Azure-ban
 
 ## <a name="delete-the-resource-group-containing-the-service-fabric-cluster"></a>A Service Fabric-fürtöt tartalmazó erőforráscsoport törlése
 A fürt és az összes általa használt erőforrás törlésének legegyszerűbb módja az erőforráscsoport törlése.
 
-Jelentkezzen be az Azure-ba, és válassza ki az előfizetés-azonosító, amellyel el szeretné távolítani a fürtöt.  Az [Azure Portalra](https://portal.azure.com) bejelentkezve keresheti meg az előfizetés azonosítóját. Törölje az erőforráscsoportot és a fürt erőforrásai használatával az [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) parancsmag vagy [az csoport törlése](/cli/azure/group?view=azure-cli-latest) parancsot.
+Jelentkezzen be az Azure-ba, és válassza ki azt az előfizetés-azonosítót, amellyel el szeretné távolítani a fürtöt.  Az [Azure Portalra](https://portal.azure.com) bejelentkezve keresheti meg az előfizetés azonosítóját. Törölje az erőforráscsoportot és az összes fürterőforrás-erőforrást a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) parancsmag vagy az [Group delete](/cli/azure/group?view=azure-cli-latest) paranccsal.
 
 ```powershell
 Connect-AzAccount
@@ -119,5 +119,5 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 Most, hogy elvégezte az oktatóanyagot, tekintse át a következőket:
 * Ismerje meg, hogyan vizsgálhat meg és kezelhet egy Service Fabric-fürtöt a [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) használatával.
-* Ismerje meg, hogyan [a Windows operációs rendszer](service-fabric-patch-orchestration-application.md) a fürtcsomópontokat.
-* Ismerje meg, hogyan összesítheti és eseményeket gyűjtő [Windows-fürtök](service-fabric-diagnostics-event-aggregation-wad.md) és [Log Analytics beállítása](service-fabric-diagnostics-oms-setup.md) fürthöz kapcsolódó események figyelésére.
+* Útmutató a fürtcsomópontok [Windows operációs rendszerének javításához](service-fabric-patch-orchestration-application.md) .
+* Ismerje meg, hogyan összesítheti és gyűjtheti a [Windows](service-fabric-diagnostics-event-aggregation-wad.md) -fürtökhöz kapcsolódó eseményeket, és [beállíthatja log Analytics](service-fabric-diagnostics-oms-setup.md) a fürt eseményeinek figyeléséhez.

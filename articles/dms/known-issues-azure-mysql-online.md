@@ -1,6 +1,6 @@
 ---
-title: A cikk kapcsolatos ismert problémák és a migrálás korlátozások az online migrálást az Azure Database MySQL-hez |} A Microsoft Docs
-description: Ismerje meg az online migrálást az Azure Database MySQL-hez készült ismert problémák és a migrálás korlátozások.
+title: A Azure Database for MySQL online áttelepítéssel kapcsolatos ismert problémákkal/áttelepítési korlátozásokkal foglalkozó cikk | Microsoft Docs
+description: Ismerje meg a Azure Database for MySQL online áttelepítésével kapcsolatos ismert problémákat/áttelepítési korlátozásokat.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -10,33 +10,34 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 03/12/2019
-ms.openlocfilehash: cf5215ff5acaf08125cf280103ba8ff0123dc116
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.date: 08/06/2019
+ms.openlocfilehash: fc5565ab9e3be21b96ce5aa5a938cf22ec3caeb0
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523817"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848488"
 ---
-# <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-mysql"></a>Ismert problémák és a migrálás korlátozások az online migrálást az Azure-adatbázis MySQL-hez
+# <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-mysql"></a>Ismert problémák/áttelepítési korlátozások a MySQL-hez készült Azure DB-vel való online áttelepítéssel
 
-Ismert problémák és korlátozások online migrálást a MySQL az Azure Database for MySQL-hez társított a következő szakaszokban ismertetett. 
+A MySQL-ről Azure Database for MySQLre való online áttelepítéssel kapcsolatos ismert problémák és korlátozások a következő szakaszokban olvashatók.
 
-## <a name="online-migration-configuration"></a>Online migrálás konfiguráció
-- A MySQL-kiszolgáló verziójának forrás kell lennie: 5.6.35, 5.7.18 vagy újabb
-- Azure Database for MySQL támogatja:
-    - MySQL közösségi kiadása
-    - InnoDB motor
-- Azonos verziójú áttelepítés. Azure database for MySQL 5.7-es áttelepítése MySQL 5.6 nem támogatott.
-- Bináris naplózás engedélyezése a my.ini (Windows) vagy my.cnf (Unix)
-    - Állítsa be a Server_id akárhány nagyobb vagy egyenlő 1, például a Server_id = 1 (csak a MySQL 5.6-os)
-    - Állítsa be a log-bin = \<elérési útja > (csak a MySQL 5.6-os)
-    - Állítsa be a binlog_format = sor
-    - Expire_logs_days = 5 (ajánlott – csak a MySQL 5.6-os)
-- Felhasználónak a ReplicationAdmin szerepkörrel kell rendelkeznie.
-- A forrás MySQL-adatbázishoz meghatározott rendezések ugyanazok, mint a kapcsolatok meghatározott cél Azure Database for MySQL-hez.
-- MySQL-hez készült séma forrás MySQL-adatbázis és a céladatbázis, Azure Database-ben között meg kell egyeznie.
-- A célhelyen, Azure Database for MySQL séma nem rendelkeznie kell a külső kulcsok. Idegen kulcsok használja a következő lekérdezést:
+## <a name="online-migration-configuration"></a>Online áttelepítési konfiguráció
+
+- A forrás MySQL-kiszolgáló verziójának 5.6.35, 5.7.18 vagy újabb verziójúnak kell lennie
+- Azure Database for MySQL a következőket támogatja:
+  - MySQL Community Edition
+  - InnoDB motor
+- Azonos verziójú áttelepítés. A MySQL 5,6 áttelepítése Azure Database for MySQL 5,7-re nem támogatott.
+- Bináris naplózás engedélyezése a My. ini (Windows) vagy a My. cnf (UNIX) rendszeren
+  - Server_id beállítása tetszőleges számú vagy egyenlő értékre, például Server_id = 1 (csak MySQL 5,6 esetén)
+  - A log-bin = \<Path > beállítása (csak MySQL 5,6 esetén)
+  - Binlog_format beállítása = sor
+  - Expire_logs_days = 5 (csak a MySQL 5,6 esetén ajánlott)
+- A felhasználónak rendelkeznie kell a ReplicationAdmin szerepkörrel.
+- A forrás MySQL-adatbázishoz definiált rendezések ugyanazok, mint a TARGET Azure Database for MySQLban definiált beállítások.
+- A sémának meg kell egyeznie a forrás MySQL-adatbázis és a célként megadott adatbázis között Azure Database for MySQL.
+- A cél Azure Database for MySQL sémája nem rendelkezhet idegen kulcsokkal. A külső kulcsok eldobásához használja az alábbi lekérdezést:
     ```
     SET group_concat_max_len = 8192;
     SELECT SchemaName, GROUP_CONCAT(DropQuery SEPARATOR ';\n') as DropQuery, GROUP_CONCAT(AddQuery SEPARATOR ';\n') as AddQuery
@@ -54,44 +55,79 @@ Ismert problémák és korlátozások online migrálást a MySQL az Azure Databa
     ```
 
     Futtassa a ’drop foreign key’-t (ez a második oszlop) a lekérdezési eredményben.
-- A célhelyen, Azure Database for MySQL séma kell nem tartozhat eseményindító. Eseményindítók eldobni a céladatbázisban:
+- A cél Azure Database for MySQL sémájában nem lehetnek eseményindítók. Eseményindítók eldobása a céladatbázisben:
     ```
     SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGGERS WHERE TRIGGER_SCHEMA = 'your_schema';
     ```
 
 ## <a name="datatype-limitations"></a>Adattípus-korlátozások
-- **Korlátozás**: Ha a MySQL-adatbázisban egy JSON-adattípus, migrálás sikertelen lesz a folyamatos szinkronizálás során.
 
-    **Megkerülő megoldás**: Módosítsa a JSON datatype közepes szöveg-vagy longtext MySQL-adatbázisban.
+- **Korlátozás**: Ha JSON-adattípust talál a forrás MySQL-adatbázisban, a Migrálás a folyamatos szinkronizálás során meghiúsul.
 
-- **Korlátozás**: Ha nincs elsődleges kulcs azokon a táblákon, a folyamatos szinkronizálás sikertelen lesz.
- 
-    **Megkerülő megoldás**: Ideiglenesen állítsa be az áttelepítés folytatásához tábla elsődleges kulcsot. Adatok áttelepítés befejezése után eltávolíthatja az elsődleges kulcsot.
+    **Áthidaló megoldás**: A JSON-adattípust közepes szöveggé vagy LONGTEXT módosíthatja a forrás MySQL-adatbázisban.
+
+- **Korlátozás**: Ha a táblákban nincs elsődleges kulcs, a folyamatos szinkronizálás sikertelen lesz.
+
+    **Áthidaló megoldás**: A folytatáshoz átmenetileg állítsa be a tábla elsődleges kulcsát az áttelepítéshez. Az elsődleges kulcsot az adatáttelepítés befejeződése után is eltávolíthatja.
 
 ## <a name="lob-limitations"></a>LOB-korlátozások
-Nagyméretű objektum (LOB) oszlopot, amely a nagy méretű tudta növelni oszlopok. A MySQL, közepes méretű szöveges Longtext, Blob, Mediumblob, Longblob, stb. néhány a adattípusokat a LOB-ot.
 
-- **Korlátozás**: Ha ÜZLETÁGI adattípusokat elsődleges kulcsként használja, az áttelepítés sikertelen lesz.
+A nagyméretű objektumok (LOB) oszlopai olyan oszlopok, amelyek mérete nagy méretekben nőhet. MySQL-hez, közepes szövegekhez, LONGTEXT, Blobhoz, mediumblob, dereglye stb., a LOB egyes adattípusai.
 
-    **Megkerülő megoldás**: Cserélje le az elsődleges kulcs oszlopokat, amelyeket nem az ÜZLETÁGI és más adattípusok.
+- **Korlátozás**: Ha a LOB-adattípusok elsődleges kulcsként használatosak, az áttelepítés sikertelen lesz.
 
-- **Korlátozás**: Ha nagyméretű objektum (LOB) oszlop hossza 32 KB-nál nagyobb, adatok lerövidítheti a cél. Ez a lekérdezés használatával LOB oszlop hossza ellenőrizheti:
+    **Áthidaló megoldás**: Cserélje le az elsődleges kulcsot más adattípusokra vagy nem LOB oszlopokra.
+
+- **Korlátozás**: Ha a nagyméretű objektum (LOB) oszlop hossza meghaladja a 32 KB-ot, a rendszer az adatmennyiséget csonkolja a célhelyen. A LOB-oszlop hosszát a következő lekérdezéssel tekintheti meg:
     ```
     SELECT max(length(description)) as LEN from catalog;
     ```
 
-    **Megkerülő megoldás**: Ha ÜZLETÁGI objektum, amely 32 KB-nál nagyobb méretű, lépjen kapcsolatba a mérnöki csapathoz a következő címen [kérje meg az Azure adatbázis-Migrálási](mailto:AskAzureDatabaseMigrations@service.microsoft.com). 
+    **Áthidaló megoldás**: Ha 32 KB-nál nagyobb LOB-objektummal rendelkezik, forduljon a mérnöki csapathoz az [Azure-adatbázis](mailto:AskAzureDatabaseMigrations@service.microsoft.com)áttelepítésekor. 
 
-## <a name="other-limitations"></a>Egyéb korlátozások is érvényesek
-- A jelszó karakterlánc, amely rendelkezik a nyitó és záró kapcsos zárójelek közé {} elején és végén a jelszó-karakterlánc nem támogatott. Ez a korlátozás vonatkozik, mindkét való kapcsolódás forrás MySQL és a cél Azure Database for MySQL-hez.
+## <a name="limitations-when-migrating-online-from-aws-rds-mysql"></a>Korlátozások az AWS RDS MySQL-ről való online áttelepítés során
+
+Ha az AWS RDS MySQL-ről a Azure Database for MySQLra próbál online áttelepítést végezni, akkor a következő hibák merülhetnek fel.
+
+- **Hiba:** A ({0}z) "" adatbázis külső kulcsa a cél. Javítsa a célt, és indítson új adatmigrálási tevékenységet. Futtassa az alábbi szkriptet a célhelyen a külső kulcs (ok) listázásához
+
+  **Korlátozás**: Ha a sémában idegen kulcsok szerepelnek, a migrálás első betöltése és folyamatos szinkronizálása sikertelen lesz.
+  **Áthidaló megoldás**: Futtassa az alábbi szkriptet a MySQL Workbenchben a drop foreign key szkript (külső kulcs elvetése) és az add foreign key (külső kulcs hozzáadása) szkript kibontásához:
+
+  ```
+  SET group_concat_max_len = 8192; SELECT SchemaName, GROUP_CONCAT(DropQuery SEPARATOR ';\n') as DropQuery, GROUP_CONCAT(AddQuery SEPARATOR ';\n') as AddQuery FROM (SELECT KCU.REFERENCED_TABLE_SCHEMA as SchemaName, KCU.TABLE_NAME, KCU.COLUMN_NAME, CONCAT('ALTER TABLE ', KCU.TABLE_NAME, ' DROP FOREIGN KEY ', KCU.CONSTRAINT_NAME) AS DropQuery, CONCAT('ALTER TABLE ', KCU.TABLE_NAME, ' ADD CONSTRAINT ', KCU.CONSTRAINT_NAME, ' FOREIGN KEY (`', KCU.COLUMN_NAME, '`) REFERENCES `', KCU.REFERENCED_TABLE_NAME, '` (`', KCU.REFERENCED_COLUMN_NAME, '`) ON UPDATE ',RC.UPDATE_RULE, ' ON DELETE ',RC.DELETE_RULE) AS AddQuery FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE KCU, information_schema.REFERENTIAL_CONSTRAINTS RC WHERE KCU.CONSTRAINT_NAME = RC.CONSTRAINT_NAME AND KCU.REFERENCED_TABLE_SCHEMA = RC.UNIQUE_CONSTRAINT_SCHEMA AND KCU.REFERENCED_TABLE_SCHEMA = 'SchemaName') Queries GROUP BY SchemaName;
+  ```
+
+- **Hiba:** A ({0}z) "" adatbázis nem létezik a kiszolgálón. A megadott MySQL-forráskiszolgáló esetében különbözőnek számítanak a kis- és nagybetűk. Ellenőrizze az adatbázis nevét.
+
+  **Korlátozás**: A MySQL-adatbázis a parancssori felület használatával az Azure-ba migrálásakor a felhasználók tapasztalhatják ezt a hibát. A szolgáltatás nem találta meg az adatbázist a forráskiszolgálón, mert lehetséges, hogy helytelen adatbázisnevet adott meg, vagy az adatbázis nem létezik a felsorolt kiszolgálón. Megjegyzés: az adatbázisok nevei megkülönböztetik a kis-és nagybetűket.
+
+  **Áthidaló megoldás**: Adja meg az adatbázis pontos nevét, majd próbálkozzon újra.
+
+- **Hiba:** A (z) {Database} adatbázisban azonos nevű táblák találhatók. Az Azure Database for MySQL nem támogatja a kis- és nagybetűket megkülönböztető táblákat.
+
+  **Korlátozás**: Ez a hiba akkor fordul elő, ha két azonos nevű tábla található a forrásadatbázisban. A Azure Database for MySQL nem támogatja a kis-és nagybetűket megkülönböztető táblákat.
+
+  **Áthidaló megoldás**: Frissítse a táblák nevét egyedire, majd próbálkozzon újra.
+
+- **Hiba:** A célként megadott adatbázis ({Database}) üres. Migrálja a sémát.
+
+  **Korlátozás**: Ez a hiba akkor fordul elő, ha a célként megadott Azure Database for MySQL adatbázis nem rendelkezik a szükséges sémával. A séma áttelepítése szükséges ahhoz, hogy lehetővé váljon az adatáttelepítés a célhelyre.
+
+  **Áthidaló megoldás**: [Telepítse át a sémát](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online#migrate-the-sample-schema) a forrás-adatbázisból a célként megadott adatbázisba.
+
+## <a name="other-limitations"></a>Egyéb korlátozások
+
+- A jelszó karakterláncának elején és végén lévő kapcsos zárójelek {} nyitó és záró karakterlánca nem támogatott. Ez a korlátozás a Source MySQL-hez és a TARGET Azure Database for MySQLhoz való csatlakozásra egyaránt vonatkozik.
 - A következő DDLs nem támogatottak:
-    - Az összes partíció DDLs
-    - DROP table
-    - Táblázat átnevezése
-- Használatával a *alter tábla < táblanév > < oszlopnév > oszlop hozzáadása* utasítással elején vagy közepén levő táblázat oszlopok hozzáadása nem támogatott. A *az alter table < table_name > < oszlopnév > oszlop hozzáadása* hozzáadja az oszlop a tábla végén.
-- Csak az oszlopok adatainak egy része a létrehozott indexek nem támogatottak. A következő egy példa, amely létrehoz egy indexet az oszlopadatok csak egy részét használja a következő utasítást:
+  - Minden partíciós DDLs
+  - Táblázat eldobása
+  - Táblázat átnevezése
+- Az *Alter table < table_name > oszlop hozzáadása < column_name >* utasítás az oszlopok a tábla elejéhez vagy közepéhez való hozzáadásához nem támogatott. Az *Alter table < table_name > oszlop hozzáadása < column_name >* hozzáadja a tábla végén található oszlopot.
+- Az oszlopok adattípusának csak egy részén létrehozott indexek nem támogatottak. Az alábbi utasítás egy olyan példát mutat be, amely egy indexet hoz létre az oszlop adatai csak egy részének használatával:
+
     ``` 
     CREATE INDEX partial_name ON customer (name(10));
     ```
 
-- A DMS egy egyetlen migrálási tevékenységet a migrálni kívánt adatbázisok határérték négy.
+- A DMS-ben az egyetlen áttelepítési tevékenységben az áttelepítéshez szükséges adatbázisok maximális száma négy.

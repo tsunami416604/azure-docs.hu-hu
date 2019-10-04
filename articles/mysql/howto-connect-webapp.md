@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 09/26/2018
-ms.openlocfilehash: eb2fee7c76bcf29aee2dcd70d7975d7631bb23f6
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 5/21/2019
+ms.openlocfilehash: 3fbffc805afb540499e38f1c0853260968228b22
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548952"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66002007"
 ---
 # <a name="connect-an-existing-azure-app-service-to-azure-database-for-mysql-server"></a>Csatlakozás a meglévő Azure App Service az Azure Database for MySQL-kiszolgáló
 Ez a témakör azt ismerteti, hogyan csatlakozhat az Azure Database for MySQL-kiszolgáló egy meglévő Azure App Service.
@@ -31,7 +31,7 @@ Azure Database for MySQL tűzfalat használ az adatok védelme érdekében hozz�
 2. Válassza ki **ON** a **Azure-szolgáltatásokhoz való hozzáférés engedélyezése**, majd **mentése**.
    ![Az Azure portal – engedélyezi az Azure-hozzáférés](./media/howto-connect-webapp/allow-azure.png)
 
-## <a name="solution-2---create-a-firewall-rule-to-explicitly-allow-outbound-ips"></a>2. megoldás, hozzon létre egy tűzfalszabályt, hogy kifejezetten engedélyezzék a kimenő IP-címek
+## <a name="solution-2---create-a-firewall-rule-to-explicitly-allow-outbound-ips"></a>2\. megoldás, hozzon létre egy tűzfalszabályt, hogy kifejezetten engedélyezzék a kimenő IP-címek
 Minden a kimenő IP-címet az Azure App Service explicit módon adhat hozzá.
 
 1. App Service-tulajdonságok paneljén megtekintheti a **kimenő IP-cím**.
@@ -48,6 +48,23 @@ Bár az Azure App Service-ben, hogy állandó IP-címek idővel megpróbálja, n
 
 ## <a name="ssl-configuration"></a>SSL-konfigurációja
 Azure Database for MySQL-hez SSL alapértelmezés szerint engedélyezve van. Ha az alkalmazás nem használ SSL az adatbázishoz való csatlakozáshoz, majd szeretné tiltani az SSL a MySQL-kiszolgálón. További részletek az SSL konfigurálása: [SSL használatával az Azure Database for MySQL](howto-configure-ssl.md).
+
+### <a name="django-pymysql"></a>Django (PyMySQL)
+```python
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'quickstartdb',
+        'USER': 'myadmin@mydemoserver',
+        'PASSWORD': 'yourpassword',
+        'HOST': 'mydemoserver.mysql.database.azure.com',
+        'PORT': '3306',
+        'OPTIONS': {
+            'ssl': {'ssl-ca': '/var/www/html/BaltimoreCyberTrustRoot.crt.pem'}
+        }
+    }
+}
+```
 
 ## <a name="next-steps"></a>További lépések
 Kapcsolati karakterláncokkel kapcsolatos további információkért tekintse meg [kapcsolati karakterláncok](howto-connection-string.md).

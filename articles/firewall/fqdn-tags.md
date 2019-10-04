@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 4/22/2019
+ms.date: 4/23/2019
 ms.author: victorh
-ms.openlocfilehash: 740b0ac505edfff1f703c2831ec5608e72851610
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
-ms.translationtype: HT
+ms.openlocfilehash: 7a412589f4e86f2a49d07f2d01ca34bf30fd528b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149767"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64721165"
 ---
 # <a name="fqdn-tags-overview"></a>Teljes tartománynév címkék áttekintése
 
@@ -35,7 +35,7 @@ Az alábbi táblázat a jelenlegi teljes tartománynév címkét lehet használn
 |Microsoft Active Protection Service (MAPS)|Engedélyezi a kimenő hozzáférést a [MAPS](https://cloudblogs.microsoft.com/enterprisemobility/2016/05/31/important-changes-to-microsoft-active-protection-service-maps-endpoint/).|
 |App Service Environment (ASE)|ASE platform forgalmat kimenő hozzáférést biztosít. Ez a címke nem fedi le az ASE által létrehozott ügyfél-specifikus tárolási és SQL végpontok. Ezek segítségével engedélyezni kell [Szolgáltatásvégpontok](../virtual-network/tutorial-restrict-network-access-to-resources.md) vagy manuálisan hozzáadni.<br><br>Az ASE Azure tűzfal integrálásával kapcsolatos további információkért lásd: [App Service-környezet sémákra](../app-service/environment/firewall-integration.md#configuring-azure-firewall-with-your-ase).|
 |Azure Backup|Lehetővé teszi a kimenő hozzáférést az Azure Backup szolgáltatás.|
-|Azure HDInsight<br>(Előzetes verzió)|Lehetővé teszi a kimenő hozzáférést a HDInsight platformon forgalmat. Ez a címke nem fedi le ügyfél-specifikus tárolási vagy az SQL forgalmi a HDInsight. Ezek engedélyezve vannak keresztül [Szolgáltatásvégpontok](../virtual-network/tutorial-restrict-network-access-to-resources.md) vagy manuálisan hozzáadni.|
+|Azure HDInsight<br>(Előzetes verzió)|Lehetővé teszi a kimenő hozzáférést a HDInsight platformon forgalmat. Ez a címke nem fedi le ügyfél-specifikus tárolási vagy az SQL forgalmi a HDInsight. Ezek segítségével engedélyezése [Szolgáltatásvégpontok](../virtual-network/tutorial-restrict-network-access-to-resources.md) vagy manuálisan is hozzáadhatja.|
 
 > [!NOTE]
 > Egy alkalmazás a szabály a teljes tartománynév-címke kiválasztásakor a protokoll: port mezőben állítsa **https**.

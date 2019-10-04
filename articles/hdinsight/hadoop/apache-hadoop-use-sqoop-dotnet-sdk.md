@@ -3,19 +3,18 @@ title: Az Apache Sqoop feladatok futtatása a .NET-keretrendszer és a HDInsight
 description: Útmutató a HDInsight .NET SDK használata futtatása az Apache Sqoop-importálás és exportálása az Apache Hadoop-fürt és a egy Azure SQL database között.
 keywords: sqoop feladat
 ms.reviewer: jasonh
-services: hdinsight
 author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: bca61c652953cd7fb9745c49773d22dc372b0f35
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 1bdf1318f93697cd7b479d404f44b7617ad875dc
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58448820"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67450155"
 ---
 # <a name="run-apache-sqoop-jobs-by-using-net-sdk-for-apache-hadoop-in-hdinsight"></a>Az Apache Sqoop-feladatok futtatása HDInsight az Apache Hadoophoz készült .NET SDK használatával
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -26,12 +25,12 @@ Ismerje meg, hogyan használhatja az Azure HDInsight .NET SDK Apache Sqoop-felad
 > Bár ebben a cikkben ismertetett mindkettővel egy Windows-alapú vagy Linux-alapú HDInsight-fürt, csak a Windows ügyfél működnek. Egyéb módszerek kiválasztásához, ez a cikk tetején lapon választómezőt használja.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez az oktatóanyag elkezdéséhez a következő elemet kell rendelkeznie:
+Ez a cikk elkezdéséhez kell rendelkeznie a következő elemet:
 
 * Egy HDInsight az Apache Hadoop-fürtöt. További információkért lásd: [hozzon létre egy fürtöt és a egy SQL-adatbázis](hdinsight-use-sqoop.md#create-cluster-and-sql-database).
 
 ## <a name="use-sqoop-on-hdinsight-clusters-with-the-net-sdk"></a>A Sqoop használata a HDInsight-fürtökön a .NET SDK használatával
-A HDInsight .NET SDK-val .NET-ügyfélkönyvtárak, biztosít, így könnyebben működik a HDInsight-fürtökkel a .NET használatával. Ebben a szakaszban hozzon létre egy C# konzolalkalmazást a hivesampletable exportálása az Azure SQL Database tábla, amely ebben az oktatóanyagban korábban létrehozott.
+A HDInsight .NET SDK-val .NET-ügyfélkönyvtárak, biztosít, így könnyebben működik a HDInsight-fürtökkel a .NET használatával. Ebben a szakaszban hozzon létre egy C# a hivesampletable exportálhatja a cikkben korábban létrehozott Azure SQL Database adatbázistábla-Konzolalkalmazás.
 
 ## <a name="submit-a-sqoop-job"></a>Sqoop feladat elküldése
 

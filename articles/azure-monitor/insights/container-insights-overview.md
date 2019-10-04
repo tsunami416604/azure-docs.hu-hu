@@ -11,39 +11,53 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/27/2019
+ms.date: 08/02/2019
 ms.author: magoedte
-ms.openlocfilehash: a31380c8581503a340c55c374afc02c6e1fa290b
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: e1fca1532352c4955f478df70f818ee3151053c1
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577169"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742208"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>Az Azure Monitor tárolók áttekintése
 
 A tárolók az Azure Monitor egy olyan szolgáltatás, vagy az Azure Container Instances szolgáltatásban, vagy a felügyelt Azure Kubernetes Service (AKS) az üzemeltetett Kubernetes-fürtök üzembe tárolóalapú számítási feladatok teljesítményének figyelésére tervezett. A tárolók alapvető fontosságú, különösen akkor, ha nagy mennyiségű, több alkalmazással rendelkező egy éles fürtöt futtat.
 
-Tárolók az Azure Monitor lehetővé teszi gyűjtését memória és a mérőszámok a processzor teljesítménye látható-e a tartományvezérlők, a csomópontok és a Kubernetes, a metrikák API-n keresztül a rendelkezésre álló tárolók. A rendszer a tárolónaplókat is gyűjti.  Miután engedélyezte a Kubernetes-fürtök figyelése, ezek a metrikák és naplók automatikusan az Ön számára a Linuxhoz készült Log Analytics-ügynököt egy tárolóalapú verziója gyűjtött és tárolt a [Log Analytics](../log-query/log-query-overview.md) munkaterületen. 
+Tárolók az Azure Monitor lehetővé teszi gyűjtését memória és a mérőszámok a processzor teljesítménye látható-e a tartományvezérlők, a csomópontok és a Kubernetes, a metrikák API-n keresztül a rendelkezésre álló tárolók. A rendszer a tárolónaplókat is gyűjti.  Miután engedélyezte a Kubernetes-fürtök figyelését, a rendszer automatikusan összegyűjti a metrikákat és a naplókat a linuxos Log Analytics-ügynök egy tárolós verziójában. A metrikák a metrikák tárolójába íródnak, és a rendszer a napló adatait a [log Analytics](../log-query/log-query-overview.md) munkaterülethez társított naplók tárolójába írja. 
+
+![Azure Monitor a tárolók architektúrához](./media/container-insights-overview/azmon-containers-architecture-01.png)
  
 ## <a name="what-does-azure-monitor-for-containers-provide"></a>Az Azure Monitor-tárolók biztosítják a funkciója?
 
-A tárolók az Azure Monitor számos előre meghatározott nézeteket, amelyek bemutatják az adataihoz, tárolókhoz kapcsolódó számítási feladatot, és milyen hatással van a figyelt Kubernetes-fürt teljesítménybeli állapotát, így is tartalmazza:  
+A Azure Monitor a tárolók számára átfogó figyelési élményt nyújt Azure Monitor különböző funkciói segítségével, így megismerheti a Kubernetes-fürt teljesítményét és állapotát, valamint a tároló munkaterheléseit. A tárolók Azure Monitor a következőket teheti:
 
 * AKS-tárolók, a csomópont és a processzor és memória átlagos kihasználtság futó azonosításához. A Tudásbázis segítségével erőforrás szűk keresztmetszetek azonosítása.
 * Azonosítsa a tárolócsoportok és a tárolók az Azure Container Instances szolgáltatásban üzemeltetett processzor és memória felhasználását.  
-* Azonosítsa, amelyben a tároló található a vezérlő vagy podot. A Tudásbázis segítségével megtekintheti a vezérlő vagy a pod általános teljesítménye.
+* Annak meghatározása, hogy a tároló hol található egy vezérlőben vagy egy Pod-ban. A Tudásbázis segítségével megtekintheti a vezérlő vagy a pod általános teljesítménye.
 * Tekintse át az erőforrás-használat, a gazdagépen futó számítási feladatok, amely a szabványos folyamatokat, amelyek támogatják a pod kapcsolódnak.
 * Ismerje meg a fürt átlagos és a leggyakrabban használt terhelések viselkedését. Ennek segítségével azonosíthatja a kapacitásbeli szükségleteket, és döntse el, a legnagyobb terhelést, amely képes elviselni a fürt. 
+* Riasztásokat állíthat be, amelyekkel proaktívan értesítheti Önt, vagy rögzítheti azt, ha a csomópontokon vagy tárolókban a CPU és a memória kihasználtsága túllépi a küszöbértéket.
+* A [Prometheus](https://prometheus.io/docs/introduction/overview/) -nal integrálva megtekintheti a csomópontokból és Kubernetes származó alkalmazások és munkaterhelések mérőszámait, és [lekérdezésekkel](container-insights-log-search.md) egyéni riasztásokat, irányítópultokat és részletes elemzéseket készíthet.
 
-Proaktív módon Önt, és jegyezze fel, amikor a CPU és memória kihasználtságáról, a csomópontok és a tárolók túllépi a küszöbértékek riasztásokat is lehet konfigurálni.  
+    >[!NOTE]
+    >A Prometheus támogatása jelenleg a nyilvános előzetes verzióban érhető el.
+    >
+
+* Figyelje [az AK-motor üzembe helyezett](https://github.com/microsoft/OMS-docker/tree/aks-engine)tárolók munkaterheléseit.
+
+Tekintse meg az alábbi videót, amely egy köztes szintű részletes bemutatót biztosít, amely segít megismerni az AK-fürt Azure Monitor for containers szolgáltatással való figyelését.
+
+> [!VIDEO https://www.youtube.com/embed/RjsNmapggPU]
 
 ## <a name="how-do-i-access-this-feature"></a>Hogyan érhetem el ezt a szolgáltatást?
-Az Azure Monitor-tárolókhoz az Azure Monitor vagy közvetlenül a kijelölt AKS-fürt két módon érheti el. Az Azure Monitor rendelkezik az összes tárolót egy globális szempontjából telepített, amely monitorozza, és amelyek nincsenek, amely lehetővé teszi a Keresés és szűrés az előfizetések és erőforráscsoportok, és a kiválasztott tárolók az Azure Monitor ezután részletes a tároló.  Ellenkező esetben egyszerűen a funkció eléréséhez közvetlenül a kijelölt AKS tároló az AKS oldalról.  
 
-![Hozzáférés az Azure Monitor-tárolók módszereinek áttekintése](./media/container-insights-overview/azmon-containers-views-1812.png)
+Az Azure Monitor-tárolókhoz az Azure Monitor vagy közvetlenül a kijelölt AKS-fürt két módon érheti el. A Azure Monitor globális perspektívát biztosít az összes üzembe helyezett tárolóról, amelyek figyelése és nem, így lehetővé teszi az előfizetések és az erőforráscsoportok keresését és szűrését, majd a tárolók Azure Monitor való részletezését kiválasztott tároló.  Ellenkező esetben közvetlenül egy kiválasztott AK-tárolóból is elérheti a szolgáltatást az AK-ból származó lapról.  
 
-Ha érdekli, figyelése és kezelése a Docker és a Windows a tárológazdagép konfiguráció megtekintése, naplózási és erőforrás-használatot, tekintse meg a [Tárolómonitorozási megoldás](../../azure-monitor/insights/containers.md).
+![Hozzáférés az Azure Monitor-tárolók módszereinek áttekintése](./media/container-insights-overview/azmon-containers-experience.png)
+
+Ha az AK-n kívül futó Docker-és Windows-tároló gazdagépek figyelését és felügyeletét érdekli, tekintse meg a [tároló-figyelési megoldást](../../azure-monitor/insights/containers.md).
 
 ## <a name="next-steps"></a>További lépések
-Az AKS-fürt a figyelés megkezdése előtt tekintse át a [hogyan üzembe helyezni az Azure figyeli, hogy tárolók](container-insights-onboard.md) engedélyezése a figyelési követelmények és választható módszerek.  
+
+Az AK-fürt figyelésének megkezdéséhez tekintse át az [Azure monitor a tárolók](container-insights-onboard.md) számára című témakört, és Ismerje meg a figyelés engedélyezésének követelményeit és rendelkezésre álló módszereit.  

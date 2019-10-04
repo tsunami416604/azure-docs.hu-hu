@@ -2,27 +2,21 @@
 title: A Windows 10 roaming beállítások referenciája |} A Microsoft Docs
 description: Forrásul vagy a biztonsági másolat a Windows 10-es beállítások teljes listáját.
 services: active-directory
-keywords: Vállalati állapothordozás, a windows-felhő
-documentationcenter: ''
+ms.service: active-directory
+ms.subservice: devices
+ms.topic: troubleshooting
+ms.date: 06/28/2019
+ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-editor: curtand
-ms.subservice: devices
-ms.assetid: 17cffc3e-2928-4235-91f7-a685bd6bdcbf
-ms.service: active-directory
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 01/30/2019
-ms.author: joflore
+ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6c80ee5d2a4d72be131c6a781cf793d1981e780
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 9489228b6ba81ae8d09e0f6880634532d0c836c6
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521074"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67481810"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Windows 10 roaming beállítások referenciája
 Forrásul vagy a biztonsági másolat a Windows 10-es beállítások teljes listáját a következő: 
@@ -30,7 +24,7 @@ Forrásul vagy a biztonsági másolat a Windows 10-es beállítások teljes list
 ## <a name="devices-and-endpoints"></a>Eszközök és a végpontok
 Az alábbi táblázat összefoglalja azokat az eszközöket és a szinkronizálás, a biztonsági mentési és által támogatott fióktípusok, és állítsa vissza a Windows 10-keretrendszer.
 
-| Fiók típusa és a művelet | Asztal | Mobiltelefon |
+| Fiók típusa és a művelet | Asztali | mobil |
 | --- | --- | --- |
 | Azure Active Directory: sync |Igen |Nem |
 | Az Azure Active Directory: biztonsági mentés/visszaállítás |Nem |Nem |
@@ -67,7 +61,7 @@ Az alábbi táblázatban más bejegyzéseket a csoport oszlop hivatkozik beáll�
 Belső bejegyzéseket a csoport oszlopban tekintse meg a beállításokat és alkalmazásokat, amelyek csak letiltható az alkalmazáson belül, vagy tiltsa le a szinkronizálást a teljes eszköz mobileszköz-felügyelet (MDM) vagy a csoportházirend-beállítások szinkronizálása.
 Nem hordozhatók a beállításokat, vagy szinkronizálási csoporthoz nem fog tartozni.
 
-| Beállítások | Asztal | Mobiltelefon | Csoport |
+| Beállítások | Asztali | mobil | Csoport |
 | --- | --- | --- | --- |
 | **Fiókok**: fiók kép |Szinkronizálás |X |Téma |
 | **Fiókok**: egyéb Fiókbeállítások |X |X | |
@@ -76,7 +70,7 @@ Nem hordozhatók a beállításokat, vagy szinkronizálási csoporthoz nem fog t
 | **Alkalmazáslista**: a telepített alkalmazások listája |X |biztonsági mentés |Egyéb |
 | **Bluetooth**: az összes Bluetooth-beállítások |X |X | |
 | **Parancssor**: Parancsot a parancssorba "Alapértelmezett" beállítások |Szinkronizálás |X |Belső |
-| **hitelesítő adatok**: Hitelesítő adatok Széfjét |Szinkronizálás |Szinkronizálás |jelszó |
+| **hitelesítő adatok**: Hitelesítő adatok Széfjét |Szinkronizálás |Szinkronizálás |password |
 | **Dátum, idő és régióját**: automatikus idő (Internet idő szinkronizálása) |Szinkronizálás |Szinkronizálás |language |
 | **Dátum, idő és régióját**: 24 órás formátumban |Szinkronizálás |X |language |
 | **Dátum, idő és régióját**: dátum és idő |Szinkronizálás |X |language |
@@ -145,25 +139,25 @@ Nem hordozhatók a beállításokat, vagy szinkronizálási csoporthoz nem fog t
 | **Nyelvi**: helyesírás-ellenőrzés – az automatikus javítás és a kiemelés elírások |Szinkronizálás |biztonsági mentés |Nyelv |
 | **Nyelvi**: billentyűzetek listája |Szinkronizálás |biztonsági mentés |Nyelv |
 | **Zárolási képernyő**: összes zárolási képernyő beállításai |X |X | |
-| **A Nagyító**: be- vagy kikapcsolása (fő váltógomb) |X |X |Könnyű kezelés |
-| **A Nagyító**: szín invertálásának engedélyezése vagy letiltása (alapértelmezés szerint kikapcsolva) |Szinkronizálás |X |Könnyű kezelés |
-| **A Nagyító**: nyomon követése – kövesse a billentyűzetfókusz |Szinkronizálás |X |Könnyű kezelés |
-| **A Nagyító**: nyomon követése – hajtsa végre az egérmutatót |Szinkronizálás |X |Könnyű kezelés |
-| **A Nagyító**: kezdődik, amikor a felhasználók bejelentkezhetnek (alapértelmezés szerint kikapcsolva) |Szinkronizálás |X |Könnyű kezelés |
+| **A Nagyító**: be- vagy kikapcsolása (fő váltógomb) |X |X |könnyű elérés |
+| **A Nagyító**: szín invertálásának engedélyezése vagy letiltása (alapértelmezés szerint kikapcsolva) |Szinkronizálás |X |könnyű elérés |
+| **A Nagyító**: nyomon követése – kövesse a billentyűzetfókusz |Szinkronizálás |X |könnyű elérés |
+| **A Nagyító**: nyomon követése – hajtsa végre az egérmutatót |Szinkronizálás |X |könnyű elérés |
+| **A Nagyító**: kezdődik, amikor a felhasználók bejelentkezhetnek (alapértelmezés szerint kikapcsolva) |Szinkronizálás |X |könnyű elérés |
 | **Egér**: egérmutatót méretének módosítása |Szinkronizálás |X |egyéb |
 | **Egér**: egérmutatót színének módosítása |Szinkronizálás |X |egyéb |
 | **Egér**: a többi beállítás |X |X | |
-| **A Narrátor**: Gyorsindítás |Szinkronizálás |X |Könnyű kezelés |
-| **A Narrátor**: a felhasználók megváltoztathatják a Narrátor, és beszéljen felébresztve |Szinkronizálás |X |Könnyű kezelés |
-| **A Narrátor**: felhasználók is be- és kikapcsolása a Narrátor mutatók gyakori elemek olvasása (az alapértelmezés szerint) |Szinkronizálás |X |Könnyű kezelés |
-| **A Narrátor**: felhasználók is be- és kikapcsolása e is beírt karakterek nélkül (az alapértelmezés szerint) |Szinkronizálás |X |Könnyű kezelés |
-| **A Narrátor**: felhasználók is be- és kikapcsolása e azok hallható beírt szavakat (az alapértelmezés szerint) |Szinkronizálás |X |Könnyű kezelés |
-| **A Narrátor**: Narrátor következő beszúrása a kurzor rendelkezik (az alapértelmezés szerint) |Szinkronizálás |X |Könnyű kezelés |
-| **A Narrátor**: engedélyezése a Narrátor kurzor visual kiemelés (az alapértelmezés szerint) |Szinkronizálás |X |Könnyű kezelés |
-| **A Narrátor**: hangjelzések lejátszása (az alapértelmezés szerint) |Szinkronizálás |X |Könnyű kezelés |
-| **A Narrátor**: a touch billentyűzet aktiválása, ha Ön helyezheti át az ujját (alapértelmezés szerint kikapcsolva) |Szinkronizálás |X |Könnyű kezelés |
-| **Könnyű elérés**: állítsa be a parancssorablakba vastagsága |Szinkronizálás |X |Könnyű kezelés |
-| **Könnyű elérés**: távolítsa el a háttérképeket (alapértelmezés szerint kikapcsolva) |Szinkronizálás |X |Könnyű kezelés |
+| **A Narrátor**: Gyorsindítás |Szinkronizálás |X |könnyű elérés |
+| **A Narrátor**: a felhasználók megváltoztathatják a Narrátor, és beszéljen felébresztve |Szinkronizálás |X |könnyű elérés |
+| **A Narrátor**: felhasználók is be- és kikapcsolása a Narrátor mutatók gyakori elemek olvasása (az alapértelmezés szerint) |Szinkronizálás |X |könnyű elérés |
+| **A Narrátor**: felhasználók is be- és kikapcsolása e is beírt karakterek nélkül (az alapértelmezés szerint) |Szinkronizálás |X |könnyű elérés |
+| **A Narrátor**: felhasználók is be- és kikapcsolása e azok hallható beírt szavakat (az alapértelmezés szerint) |Szinkronizálás |X |könnyű elérés |
+| **A Narrátor**: Narrátor következő beszúrása a kurzor rendelkezik (az alapértelmezés szerint) |Szinkronizálás |X |könnyű elérés |
+| **A Narrátor**: engedélyezése a Narrátor kurzor visual kiemelés (az alapértelmezés szerint) |Szinkronizálás |X |könnyű elérés |
+| **A Narrátor**: hangjelzések lejátszása (az alapértelmezés szerint) |Szinkronizálás |X |könnyű elérés |
+| **A Narrátor**: a touch billentyűzet aktiválása, ha Ön helyezheti át az ujját (alapértelmezés szerint kikapcsolva) |Szinkronizálás |X |könnyű elérés |
+| **Könnyű elérés**: állítsa be a parancssorablakba vastagsága |Szinkronizálás |X |könnyű elérés |
+| **Könnyű elérés**: távolítsa el a háttérképeket (alapértelmezés szerint kikapcsolva) |Szinkronizálás |X |könnyű elérés |
 | **Energiagazdálkodási és alvási**: összes beállítás |X |X | |
 | **Indítsa el a képernyőn személyre szabása**: hangsúlyos színe (csak phone) |X |Szinkronizálás |Téma |
 | **Írja be**: helyesírási szótár |Szinkronizálás |biztonsági mentés |Nyelv |
@@ -178,10 +172,9 @@ Nem hordozhatók a beállításokat, vagy szinkronizálási csoporthoz nem fog t
 | **Írja be**: data individuálního nastavení Pro érintőbillentyűzet |Szinkronizálás |biztonsági mentés |Nyelv |
 | **Wi-Fi**: Wi-Fi profilok (csak WPA) |Szinkronizálás |Szinkronizálás |Jelszavak |
 
-###### <a name="footnote-1"></a>1. lábjegyzet
+###### <a name="footnote-1"></a>1\. lábjegyzet
 Minimális Windows Creators Update (Build 15063) operációsrendszer-verziója támogatott. 
 
 ## <a name="next-steps"></a>További lépések
 
 Áttekintéséhez lásd: [vállalati állapothordozás áttekintése](enterprise-state-roaming-overview.md).
-

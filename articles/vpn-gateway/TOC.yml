@@ -42,6 +42,8 @@
           href: ../networking/connectivty-interoperability-control-plane.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
         - name: Adatsík elemzése
           href: ../networking/connectivty-interoperability-data-plane.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
+    - name: Beépített biztonsági vezérlők
+      href: vpn-gateway-security-controls.md
 - name: Útmutatók
   items:
     - name: VPN-átjáró létrehozása és kezelése
@@ -136,8 +138,10 @@
               href: vpn-gateway-howto-openvpn.md
             - name: Az OpenVPN-ügyfelek konfigurálása
               href: vpn-gateway-howto-openvpn-clients.md
-        - name: Váltás nyilvános hitelesítésszolgáltatói átjárótanúsítványra a P2S-kapcsolatok esetében
-          href: vpn-gateway-point-to-site-gateway-public-ca.md
+        - name: AlwaysOn VPN-eszközalagút konfigurálása
+          href: vpn-gateway-howto-always-on-device-tunnel.md
+        - name: Egyéni útvonalak hirdetése P2S-ügyfelek számára
+          href: vpn-gateway-p2s-advertise-custom-routes.md
     - name: Zónaredundáns virtuális hálózati átjáró létrehozása az Azure Availability Zones szolgáltatásban
       href: create-zone-redundant-vnet-gateway.md
     - name: IPsec/IKE kapcsolati házirendjeinek konfigurálása
@@ -176,6 +180,12 @@
           href: vpn-gateway-download-vpndevicescript.md
         - name: 'Minta: Minta: Cisco ASA-eszköz (IKEv2/nincs BGP)'
           href: vpn-gateway-3rdparty-device-config-cisco-asa.md
+    - name: Monitorozás és riasztások
+      items:
+        - name: Metrikákon alapuló riasztások beállítása
+          href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md
+        - name: Diagnosztikai naplón alapuló riasztások beállítása
+          href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md
     - name: Hibaelhárítás
       href: vpn-gateway-troubleshoot.md
       items:

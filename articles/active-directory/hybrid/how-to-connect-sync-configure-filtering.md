@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: eeb2af6283e5c9d8a41e74152a94b85efdae1866
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487316"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60243505"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Az Azure AD Connect szinkronizálása: A szűrés konfigurálása
 Szűrés segítségével szabályozhatja, mely objektumai jelenjenek meg az Azure Active Directory (Azure AD) a helyszíni címtárból. Az alapértelmezett konfiguráció minden objektumot a konfigurált erdőben lévő minden tartományban vesz igénybe. Ez általában az ajánlott konfiguráció. Felhasználók használják az Office 365 számítási feladatok, például az Exchange Online és Skype vállalati verzió, egy teljes globális címlista előnyös, így e-mailt, és mindenki hívja. Az alapértelmezett konfigurációnál, ugyanazt a felhasználói élményt, hogy azok egy a helyszíni Exchange-hez vagy a Lync végrehajtásának kellene.
@@ -123,7 +123,7 @@ Válassza ki a szinkronizálandó tartományok két módja van:
 Állítsa a tartomány, hajtsa végre a következő lépéseket:
 
 1.  Az Azure AD Connect varázsló indítása
-2.  Kattintson a **Configure** (Konfigurálás) elemre.
+2.  Kattintson a **Konfigurálás** elemre.
 3.  Válassza ki **szinkronizálási beállítások testreszabása** kattintson **tovább**.
 4.  Adja meg Azure AD hitelesítő adatait
 5.  Az a **csatlakoztatott könyvtárak** kattintson képernyő **tovább**.
@@ -218,7 +218,7 @@ A bejövő szűrés hatékonyságát használhatja **hatókör** meghatározni, 
 
 Lássunk egy példát:  
 ![Hatókör](./media/how-to-connect-sync-configure-filtering/scope.png)  
-Ez olvassa el **(részleg = informatikai) vagy (részleg = értékesítési és c = US)**.
+Ez olvassa el **(részleg = informatikai) vagy (részleg = értékesítési és c = US)** .
 
 Az alábbi minták és lépéseket a felhasználói objektum használja példaként, de ezzel minden objektum esetében.
 

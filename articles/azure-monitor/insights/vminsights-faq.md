@@ -10,39 +10,39 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/09/2018
 ms.author: magoedte
-ms.openlocfilehash: ade12225a470b64278b9d27676ceab768f64d904
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 420ba9d74532095c2d028fef8f549d532e5dfa05
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698272"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65522210"
 ---
 # <a name="azure-monitor-for-vms-preview-frequently-asked-questions"></a>Az Azure Monitor-beli virtuális gépek (előzetes verzió) gyakran ismételt kérdések
 A Microsoft FAQ az összetevővel kapcsolatos gyakori kérdésekre az Azure Monitor-beli virtuális gépek listája. Ha a megoldásról a további kérdése van, lépjen a [fórum](https://feedback.azure.com/forums/34192--general-feedback) és felteheti kérdéseit. Egy kérdést gyakran ismételt, amikor hozzáadjuk ehhez a cikkhez, hogy gyorsan és könnyen megtalálhatók.
 
 ## <a name="can-i-onboard-to-an-existing-workspace"></a>Lehetőségeket felvétele egy meglévő munkaterületet?
-Ha a virtuális gépek már kapcsolódik egy Log Analytics-munkaterületet, továbbra is munkaterületet használja, ha bevezetése az Azure monitornak a virtuális gépek esetében megadtuk a felsorolt támogatott régiók egyikében [Itt](vminsights-onboard.md#prerequisites).
+Ha a virtuális gépek már kapcsolódik egy Log Analytics-munkaterületet, továbbra is munkaterületet használja, ha bevezetése az Azure monitornak a virtuális gépek esetében megadtuk a felsorolt támogatott régiók egyikében [Itt](vminsights-enable-overview.md#prerequisites).
 
 Amikor végzett előkészítési műveletekhez, konfigurálnánk teljesítményszámlálóit a munkaterületet, amely újraindítja a virtuális gépek mindegyikének adatokról szóló jelentéseket küldeni a munkaterületre való gyűjtésére a virtuális gépek megjelenítése és elemzése az Azure monitorban információit.  Ennek eredményeképpen a virtuális gépeket a kijelölt munkaterülethez kapcsolódó összes teljesítményadatokat megjelenik.  Az egészségügyi és térkép funkciók csak engedélyezve vannak a virtuális gépek, amelyek a megadott felvétele.
 
-További információ a teljesítményszámlálók számlálók engedélyezve vannak, tekintse meg a [bevezetési](vminsights-onboard.md) cikk.
+További információ a teljesítményszámlálók számlálók engedélyezve vannak, tekintse meg a [engedélyezése – áttekintés](vminsights-enable-overview.md#performance-counters-enabled) cikk.
 
 ## <a name="can-i-onboard-to-a-new-workspace"></a>Lehetőségeket felvétele egy új munkaterületet? 
-Ha a virtuális gépek jelenleg nem csatlakoznak a meglévő Log Analytics-munkaterületet, létre kell hozzon létre egy új munkaterületet, az adatok tárolásához.  Egy új alapértelmezett munkaterületet automatikusan történik, ha konfigurál egy Azure virtuális Gépen az Azure Monitor-beli virtuális gépek az Azure Portalon keresztül.
+Ha a virtuális gépek jelenleg nem csatlakoznak a meglévő Log Analytics-munkaterületet, létre kell hozzon létre egy új munkaterületet, az adatok tárolásához. Egy új alapértelmezett munkaterületet automatikusan történik, ha konfigurál egy Azure virtuális Gépen az Azure Monitor-beli virtuális gépek az Azure Portalon keresztül.
 
-Ha használja a parancsprogramfájlon alapuló módszert választja, ezeket a lépéseket ismertetjük a [bevezetési](vminsights-onboard.md) cikk. 
+Ha használja a parancsprogramfájlon alapuló módszert választja, ezeket a lépéseket ismertetjük a [engedélyezése az Azure Monitor (előzetes verzió) virtuális gépek Azure PowerShell vagy a Resource Manager-sablon használatával](vminsights-enable-at-scale-powershell.md) cikk. 
 
 ## <a name="what-do-i-do-if-my-vm-is-already-reporting-to-an-existing-workspace"></a>Mit tegyek, ha a virtuális gépem egy létező munkaterülethez már jelent?
 Már a virtuális gépekről származó adatokat gyűjt, ha lehetséges, hogy már konfigurálta a azt a jelentésadatok meglévő Log Analytics-munkaterülethez.  Mindaddig, amíg a munkaterület a támogatott régiók valamelyikében van, a már meglévő munkaterületet az Azure Monitor engedélyezheti a virtuális gépek.  Ha már használja a munkaterületet nem a támogatott régiók egyikében, nem kell üzembe helyezni az Azure monitornak a virtuális gépek jelenleg.  Aktívan dolgozunk további régiók támogatása.
 
 >[!NOTE]
->A munkaterület-e kíván üzembe helyezni őket az Azure Monitor-beli virtuális gépek összes virtuális gépet, amely a munkaterületnek érintő teljesítményszámlálóit konfigurálja azt. A teljesítményszámlálók konfigurációjától a munkaterületre vonatkozó további információért tekintse meg a [dokumentáció](../../azure-monitor/platform/data-sources-performance-counters.md). A virtuális gépek az Azure Monitor konfigurált számlálók kapcsolatos információkért tekintse meg a [előkészítési dokumentáció](vminsights-onboard.md#performance-counters-enabled).  
+>A munkaterület-e kíván üzembe helyezni őket az Azure Monitor-beli virtuális gépek összes virtuális gépet, amely a munkaterületnek érintő teljesítményszámlálóit konfigurálja azt. A teljesítményszámlálók konfigurációjától a munkaterületre vonatkozó további információért tekintse meg a [dokumentáció](../../azure-monitor/platform/data-sources-performance-counters.md). A virtuális gépek az Azure Monitor konfigurált számlálók kapcsolatos információkért tekintse meg a [engedélyezése az Azure Monitor-beli virtuális gépek](vminsights-enable-overview.md#performance-counters-enabled) cikk.  
 
 ## <a name="why-did-my-vm-fail-to-onboard"></a>A virtuális gépem miért volt sikertelen üzembe helyezni?
 Ha az Azure Portalon egy Azure virtuális Gépen végzett előkészítési műveletekhez, a következő lépések történnek:
 
 * Alapértelmezett Log Analytics-munkaterület jön létre, ha, amely lehetőséget választotta.
-* A teljesítményszámlálók kijelölt munkaterülethez van konfigurálva. Ha ezt a lépést nem sikerül, megfigyelheti, hogy adatokat a teljesítmény-diagramok és táblázatok némelyike nem jelennek meg a virtuális gép előkészítése. A dokumentált PowerShell-parancsfájl futtatásával is megoldásához [Itt](vminsights-onboard.md#enable-with-powershell).
+* A teljesítményszámlálók kijelölt munkaterülethez van konfigurálva. Ha ezt a lépést nem sikerül, megfigyelheti, hogy adatokat a teljesítmény-diagramok és táblázatok némelyike nem jelennek meg a virtuális gép előkészítése. A dokumentált PowerShell-parancsfájl futtatásával is megoldásához [Itt](vminsights-enable-at-scale-powershell.md#enable-performance-counters).
 * A Log Analytics-ügynök telepítve van egy VM-bővítmény használata az Azure virtuális gépek esetén szükség rá.  
 * A virtuális gépek térkép függőségi ügynök az Azure Monitor-bővítmény használata Azure virtuális gépeken telepítve van, ha szükség rá.  
 * Az állapotfigyelő szolgáltatást támogató Azure figyelő-összetevőkkel vannak konfigurálva, ha szükséges, és a virtuális gép van beállítva a jelentés egészségügyi adatok.
@@ -89,7 +89,7 @@ A következő Linux állapotára vonatkozó feltételek küszöbértékek nem m�
 Riasztási szabályok esetében minden egyes állapotfigyelő feltétel megadott nem jelennek meg az Azure Portalon. Engedélyezheti vagy letilthatja a Szolgáltatásállapot-riasztás kizárólag a szabály a [számítási feladatok a figyelő API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components). Emellett nem lehet hozzárendelni egy [Azure Monitor műveletcsoport](../../azure-monitor/platform/action-groups.md) health-riasztások az Azure Portalon. Az értesítési beállítás API segítségével csak műveletcsoport, amint egy szolgáltatásállapot-riasztás aktiválódik aktiválását konfigurálhatja. Jelenleg a virtuális gépek elleni a Műveletcsoportok rendelhet, hogy az összes *állapotriasztások* ugyanazt a Műveletcsoportok ellen a virtuális gép eseményindító aktiválva. Ellentétben a hagyományos Azure-riasztások, és nincs külön művelet minden szolgáltatásállapot-riasztási szabály a csoport. Emellett a csak adja meg az e-mailben vagy SMS-értesítések konfigurált Műveletcsoportok health-riasztások előállítása esetén támogatottak. 
 
 ## <a name="i-dont-see-some-or-any-data-in-the-performance-charts-for-my-vm"></a>Virtuális gép nem látható a teljesítménydiagramok néhány vagy minden olyan adatok
-Ha a teljesítményadatokat a lemez táblában vagy a teljesítmény diagramok némelyike nem jelenik meg, akkor a teljesítményszámlálók nem konfigurálható a munkaterületen. Futtassa a következő [PowerShell-parancsprogram](vminsights-onboard.md#enable-with-powershell).
+Ha a teljesítményadatokat a lemez táblában vagy a teljesítmény diagramok némelyike nem jelenik meg, akkor a teljesítményszámlálók nem konfigurálható a munkaterületen. Futtassa a következő [PowerShell-parancsprogram](vminsights-enable-at-scale-powershell.md#enable-with-powershell).
 
 ## <a name="how-is-azure-monitor-for-vms-map-feature-different-from-service-map"></a>Miben különbözik az Azure Monitor szolgáltatás virtuális gépek térkép a Service Map?
 Virtuális gépek térkép funkció az Azure Monitor Service Map alapul, de rendelkezik a következő eltérésekkel:
@@ -138,4 +138,4 @@ Ha már konfigurálta az Azure Monitor egy Log Analytics munkaterület használa
 Ez a feltétel alapján meg kell adnia a a **próbálja ki most** beállítást, nyissa meg a virtuális Gépet, majd válassza **Insights (előzetes verzió)** a bal oldali panelen, még akkor is, miután a virtuális gépen már telepítették.  Azonban nem kéri a beállításokkal, akkor általában fordulhat elő, ha a virtuális gép nem lett előkészítve az Azure Monitor-beli virtuális gépek. 
 
 ## <a name="next-steps"></a>További lépések
-Felülvizsgálat [előkészítése az Azure Monitor-beli virtuális gépek](vminsights-onboard.md) követelmények és módszerek ahhoz, hogy a virtuális gépek figyelése.
+Felülvizsgálat [engedélyezése az Azure Monitor-beli virtuális gépek](vminsights-enable-overview.md) követelmények és módszerek ahhoz, hogy a virtuális gépek figyelése.

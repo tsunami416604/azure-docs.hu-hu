@@ -2,20 +2,22 @@
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 10/26/2018
+ms.date: 06/20/2019
 ms.author: tamram
-ms.openlocfilehash: a8b4e3038bfa6a2e937de91804159e340ed13224
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 5ab03b682dd0ed1dc7b198e89c86e7a74c6275cd
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553696"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "67457374"
 ---
-| Erőforrás | Cél |
+| Resource | Target |
 |----------|---------------|
 | Egyetlen tábla maximális mérete | 500 TiB |
 | Egy tábla entitás maximális mérete | 1 MiB |
-| Legfeljebb egy table-entitás tulajdonságai | 255, amely három rendszertulajdonsággal tartalmazza: PartitionKey, RowKey és időbélyeg |
-| Táblánként tárolt hozzáférési szabályzatok maximális számát | 5 |
-| Kérelem maximális díj / storage-fiók | 20 000 tranzakció / másodperc, amely feltételezi, hogy egy 1 – KiB entitás mérete |
-| Egyetlen tábla partíciója (1 KiB-entitások) a célként megadott átviteli sebesség | Másodpercenként legfeljebb 2000 entitások |
+| Tulajdonságok maximális száma egy tábla entitásban | 255, amely három rendszertulajdonságot tartalmaz: PartitionKey, RowKey és timestamp |
+| Az entitásokban lévő tulajdonságértékek maximális teljes mérete | 1 MiB |
+| Az entitásban lévő egyes tulajdonságok maximális teljes mérete | A tulajdonság típusa szerint változhat. További információ: **Property types** ( [a Table Service adatmodell ismertetése](/rest/api/storageservices/understanding-the-table-service-data-model)). |
+| Tárolt hozzáférési szabályzatok maximális száma táblában | 5 |
+| Kérelmek maximális száma Storage-fiókban | 20 000 tranzakció/másodperc, amely egy 1 – KiB értékű entitás méretét feltételezi |
+| Cél átviteli sebesség egyetlen tábla partícióhoz (1 KiB – entitások) | Legfeljebb 2 000 entitás másodpercenként |

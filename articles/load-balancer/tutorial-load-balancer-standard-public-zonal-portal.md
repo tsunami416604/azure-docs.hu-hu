@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: Ez az oktatóanyag bemutatja, hogyan hozhat létre egy standard Load Balancert zónaszintű előtérrel a rendelkezésre állási zónában lévő virtuális gépek Azure Portal használatával történő terheléselosztásához
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 manager: twooley
 Customer intent: As an IT administrator, I want to create a load balancer that load balances incoming internet traffic to virtual machines within a specific zone in a region.
 ms.service: load-balancer
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2019
-ms.author: kumud
+ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 563b54fe9b4ab65cd8d3008e9d3955618194031f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0ec9fae1ce4ef976d5f50e1d8d8412354706c5f8
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57899546"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68273386"
 ---
 # <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>Oktatóanyag: Virtuális gépek terheléselosztása rendelkezésre állási zónában belül a Standard Load Balancer az Azure portal használatával
 
@@ -52,15 +52,15 @@ A Standard Load Balancer csak a szabványos nyilvános IP-címeket támogatja. H
 
     | Beállítás                 | Érték                                              |
     | ---                     | ---                                                |
-    | Előfizetés               | Válassza ki előfizetését.    |    
-    | Erőforráscsoport         | Válassza ki **új létrehozása** , és írja be *MyResourceGroupZLB* a szövegmezőben.|
+    | Subscription               | Válassza ki előfizetését.    |    
+    | Resource group         | Válassza ki **új létrehozása** , és írja be *MyResourceGroupZLB* a szövegmezőben.|
     | Name (Név)                   | *myLoadBalancer*                                   |
     | Régió         | Válassza a **Nyugat-Európa** régiót.                                        |
-    | Typo          | Válassza ki **nyilvános**.                                        |
+    | Type          | Válassza ki **nyilvános**.                                        |
     | SKU           | Válassza ki **Standard**.                          |
     | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. |
     | Nyilvános IP-cím neve              | Típus *myPublicIP* a szövegmezőben.   |
-    |Rendelkezésre állási zóna| Válassza az **1** lehetőséget.    |
+    |Rendelkezésre állási zónában| Válassza az **1** lehetőséget.    |
 3. Az a **felülvizsgálat + létrehozása** lapra, majd **létrehozás**.   
 
    ## <a name="create-backend-servers"></a>Háttérkiszolgálók létrehozása

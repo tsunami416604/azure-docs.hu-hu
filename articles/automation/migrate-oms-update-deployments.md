@@ -4,17 +4,17 @@ description: Ez a cikk bemutatja, hogyan telepítheti át az OMS frissítéstele
 services: automation
 ms.service: automation
 ms.subservice: update-management
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 07/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4d11dfcb66a545cbecc80b6bdad558ca6d328ed2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2cc05dc0970211b066d9e431cc7aba06cbd126eb
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57999681"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67478306"
 ---
 # <a name="migrate-your-oms-update-deployments-to-azure"></a>Az OMS Frissítéstelepítések migrálása az Azure-bA
 
@@ -57,7 +57,7 @@ A **új frissítéstelepítés** panel nyílik meg. Adja meg az értékeket az a
 
 Frissítendő gépek válassza ki a mentett keresésnek, használja a meglévő OMS-telepítés.
 
-| Tulajdonság | Leírás |
+| Tulajdonság | Description |
 | --- | --- |
 |Name (Név) |A frissítéstelepítést beazonosító egyedi név. |
 |Operációs rendszer| Válassza ki **Linux** vagy **Windows**.|

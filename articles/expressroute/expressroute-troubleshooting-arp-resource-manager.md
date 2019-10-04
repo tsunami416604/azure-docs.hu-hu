@@ -9,11 +9,11 @@ ms.date: 01/30/2017
 ms.author: ganesr
 ms.custom: seodec18
 ms.openlocfilehash: 76e242adb07f4e6176bbdc6c03c75950e3732c2b
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58622076"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66151585"
 ---
 # <a name="getting-arp-tables-in-the-resource-manager-deployment-model"></a>ARP-táblák a Resource Manager-alapú üzemi modellben
 > [!div class="op_single_selector"]
@@ -174,7 +174,7 @@ vagy
 * Nyisson meg egy támogatási jegyet a [a Microsoft támogatási](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Adja meg, hogy a 2. rétegbeli kapcsolódási probléma. 
 
 ## <a name="next-steps"></a>További lépések
-* 3. rétegbeli konfigurációi az ExpressRoute-kapcsolatcsoport ellenőrzése
+* 3\. rétegbeli konfigurációi az ExpressRoute-kapcsolatcsoport ellenőrzése
   * Route BGP-munkamenetek állapotának meghatározásához összefoglalójának lekérése 
   * Szerezze be az útvonaltábla meghatározni, melyik előtagokat hirdet meg között ExpressRoute
 * Ellenőrizze az adatátvitel / kimenő bájtok áttekintésével

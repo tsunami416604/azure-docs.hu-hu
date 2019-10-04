@@ -7,18 +7,18 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: sdgilley
-ms.author: sgilleye
+ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: d38a5066304a11ff2cd53a0168e51a0d74fda555
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 1d9475b49b3ef8a2e672e1ce505a7d94d19cb14f
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370346"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875325"
 ---
 # <a name="is-your-data-ready-for-data-science"></a>Készen állnak adatai az elemzésre?
-## <a name="video-2-data-science-for-beginners-series"></a>2. Videó: Adatelemzés kezdőknek sorozat
+## <a name="video-2-data-science-for-beginners-series"></a>2\. videó: Adatelemzés kezdőknek sorozat
 Útmutató: az adatok, hogy megfelel-e, készen áll az adatelemzés alapvető feltételek.
 
 A lehető leghatékonyabban a sorozat, tekintse meg az összes. [Nyissa meg a videók listájában](#other-videos-in-this-series)
@@ -31,13 +31,13 @@ A lehető leghatékonyabban a sorozat, tekintse meg az összes. [Nyissa meg a vi
 ## <a name="other-videos-in-this-series"></a>Ez a sorozat egyéb videók
 *Adatelemzés kezdőknek* egy gyors bevezetőt az öt rövid videóban a rendszer.
 
-* 1. Videó: [A 5 kérdés adatelemzés választ ad](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 perc 14 mp)*
-* 2. Videó: Készen állnak adatai az elemzésre?
-* 3. Videó: [Tegyen fel kérdést az adatok a válasz](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 perc 17 másodperc)*
-* 4. Videó: [Egy egyszerű modellel válasz előrejelzése](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 perc 42 másodperc)*
-* 5. Videó: [Más emberek munkájának lemásolása az adatelemzéshez való másolása](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 perc 18 másodperc)*
+* 1\. videó: [Az 5 kérdés adatelemzési válasz](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 perc 14 mp)*
+* 2\. videó: Készen állnak adatai az elemzésre?
+* 3\. videó: [Kérdés feltevése az adatkezeléssel kapcsolatban](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 perc 17 mp)*
+* 4\. videó: [Válasz Megjósolása egy egyszerű modellel](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 perc 42 mp)*
+* 5\. videó: [Más személyek munkájának másolása az](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) adatelemzéshez *(3 perc 18 mp)*
 
-## <a name="transcript-is-your-data-ready-for-data-science"></a>A szövegben: Készen állnak adatai az elemzésre?
+## <a name="transcript-is-your-data-ready-for-data-science"></a>Átirat Készen állnak adatai az elemzésre?
 Üdvözli az "Az adatok készen áll a data science?" az a sorozat második videó *adatelemzés kezdőknek*.  
 
 Előtt adatelemzési adhat meg a kívánt válaszokat, akkor adjon meg néhány kiváló minőségű nyersanyagok dolgozhat. Csakúgy, mint egy kétpizzás, annál jobbak az összetevők, először a, annál jobb végtermékben elvégzése. 
@@ -100,7 +100,7 @@ További adatok hozzáadása a kép világosabb lesz, és döntéseket hozhat r�
 
 A megfelelő, a csatlakoztatott, a pontos adatokat, és ahhoz, hogy rendelkezik minden összetevője szükséges néhány kiváló minőségű adatelemzés.
 
-Ügyeljen arra, hogy tekintse meg a további négy videókat *adatelemzés kezdőknek* a Microsoft Azure Machine Learning Studióban.
+Tekintse meg a további négy videót az adatelemzésben a Microsoft Azure Machine Learning Studio *kezdőknek* .
 
 ## <a name="next-steps"></a>További lépések
 * [Egy első adatelemzési kísérlet a Machine Learning Studio kipróbálása](create-experiment.md)

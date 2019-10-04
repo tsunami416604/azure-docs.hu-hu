@@ -1,51 +1,51 @@
 ---
 title: A párhuzamosság kezelése a Microsoft Azure Storage szolgáltatásban
-description: A Blob, üzenetsor, tábla és fájl szolgáltatások egyidejűség kezelése
+description: A Blobok, üzenetsor, táblák és Fájlszolgáltatások egyidejűségének kezelése
 services: storage
 author: jasontang501
 ms.service: storage
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/11/2017
-ms.author: jasontang501
+ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: c45061db77c21b82744f69f00265870d5e1a8d00
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 427cc34cc5a2801a2da98259f932678cdcf71ef7
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56883841"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67870832"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>A párhuzamosság kezelése a Microsoft Azure Storage szolgáltatásban
 ## <a name="overview"></a>Áttekintés
-Internet alapú modern alkalmazások megtekintése és adatok frissítése egyszerre több felhasználó általában rendelkeznek. Alaposan gondolja kiszámítható felhasználói élményt nyújtson a végfelhasználóik számára, különösen a forgatókönyvek, ahol több felhasználó is frissítheti a ugyanazokat az adatokat az útmutató segítségével az alkalmazásfejlesztők ehhez. Nincsenek a fejlesztők általában érdemes három fő egyidejűségi stratégiák:  
+A modern internetes alkalmazások általában több felhasználóval is megtekintik és frissítik az adatfeldolgozást. Ehhez az alkalmazás-fejlesztőknek körültekintően kell megfontolniuk, hogyan biztosíthat kiszámítható felhasználói élményt a végfelhasználók számára, különösen olyan helyzetekben, ahol több felhasználó is frissítheti ugyanazt az információt. Három fő adatpárhuzamossági stratégia létezik, amelyeket a fejlesztők általában figyelembe vesznek:  
 
-1. Optimista párhuzamosság – egy kérelem végrehajtása egy frissítést a frissítés részeként ellenőrzi, hogy ha az adatok változtak-e az alkalmazás óta utolsó olvassa el az adatokat. Például ha két a felhasználók számára látható egy wikioldal frissítés ugyanazon az oldalon majd a wiki platform biztosítania kell, hogy a második frissítés nem ír felül az első frissítés – és, hogy mindkét felhasználók megérteni, hogy a frissítés sikeres volt-e vagy sem. Ez a stratégia leggyakrabban használják a webes alkalmazások.
-2. A pesszimista egyidejűségi – zárolást egy objektumot, más felhasználók meggátolja, hogy az adatok frissítése, amíg nem szabadul fel a zárolást a frissítés végrehajtásához egy alkalmazás keresi vesz igénybe. Például egy elsődleges és tartalék kiszolgálók közötti adatok replikációs forgatókönyvben, ahol csak a fő frissítések végrehajtása a fő általában feladatelemeket kizárólagos zárolást hosszabb ideje, annak érdekében, hogy senki más nem frissítheti az adatokat.
-3. Legutolsó író wins – az adatok beolvasása, amely lehetővé teszi, hogy bármely frissítési műveleteket, ha más alkalmazás az adatok óta frissített az alkalmazás első ellenőrzése nélkül folytatja a műveletet. A stratégia (vagy egy hivatalos stratégia hiánya) általában használt adatok particionálása ahol oly módon, hogy nincs-e nem valószínű, hogy több felhasználó hozzá fog férni ugyanazokat az adatokat. Is lehet hasznos, ahol rövid ideig tartó adatfolyamok feldolgozott.  
+1. Optimista Egyidejűség – egy frissítést végrehajtó alkalmazás a frissítés részeként ellenőrzi, hogy az adatok módosultak-e, mivel az alkalmazás utoljára olvasta az adott adatforrást. Ha például két felhasználó egy wiki oldalt tekint meg, akkor a wiki platformnak biztosítania kell, hogy a második frissítés ne írja felül az első frissítést, és hogy a felhasználók tisztában legyenek azzal, hogy a frissítés sikeres volt-e. Ezt a stratégiát leggyakrabban a webes alkalmazásokban használják.
+2. Pesszimista Egyidejűség – a frissítés elvégzését végző alkalmazás zárolást eredményez egy objektumon, amely megakadályozza, hogy más felhasználók frissítse az adatait, amíg a zárolás fel nem szabadít. Például egy fő-vagy alárendelt adatreplikálási forgatókönyvben, ahol csak a főkiszolgáló végez frissítéseket, a főkiszolgáló általában egy kizárólagos zárolást tart fenn az adatok hosszabb ideig, így biztosítva, hogy senki más nem tudja frissíteni.
+3. Utolsó író WINS – egy olyan megközelítés, amely lehetővé teszi, hogy a frissítési műveletek ellenőrzés nélkül folytatódnak, ha bármely más alkalmazás az adatok első beolvasása óta frissítette az adatfrissítést. Ez a stratégia (vagy a formális stratégia hiánya) általában olyankor használatos, ahol az adatparticionálás úgy történik, hogy nem valószínű, hogy több felhasználó is hozzáfér ugyanahhoz az adatszolgáltatáshoz. Hasznos lehet a rövid élettartamú adatfolyamok feldolgozásakor is.  
 
-Ez a cikk áttekintést hogyan teszi egyszerűbbé a az Azure Storage-platform a fejlesztési, mindhárom alábbi egyidejűségi stratégiák első osztályú támogatást biztosít.  
+Ez a cikk áttekintést nyújt arról, hogy az Azure Storage platform Hogyan egyszerűsíti a fejlesztést azáltal, hogy mind a három ilyen párhuzamossági stratégia első osztályú támogatását biztosítja.  
 
-## <a name="azure-storage--simplifies-cloud-development"></a>Az Azure Storage – egyszerűsíti a Felhőbeli fejlesztéshez
-Bár ragadni ezt a lehetőséget a teljes körű támogatást nyújt az optimista és pesszimista egyidejűségi, mert egy erős konzisztencia modell, amely garantálja, hogy amikor kihasználásának úgy lett kialakítva, hogy az Azure storage szolgáltatás támogatja az összes három stratégia, a Storage szolgáltatás adatok insert véglegesítések, vagy frissítési művelet az összes további céljából hozzáfér, adatokat fog látni a legújabb frissítést. Storage-platformokat, amelyek a végleges konzisztenciájú modellt használja közötti késéssel rendelkeznek, egy felhasználó, és a frissített adatokat tekinthet meg más felhasználók, így megfelel a fejlesztését az inkonzisztenciák elkerülése érdekében az ügyfélalkalmazások által végrehajtott írási Ez hatással lenne a végfelhasználók számára.  
+## <a name="azure-storage--simplifies-cloud-development"></a>Azure Storage – leegyszerűsíti a felhőalapú fejlesztést
+Az Azure Storage szolgáltatás mind a három stratégiát támogatja, bár ez a sajátossága annak, hogy teljes körű támogatást nyújtson az optimista és a pesszimista párhuzamosságok számára, mivel úgy lett kialakítva, hogy egy erős konzisztencia-modellt biztosítson, amely garantálja, hogy a A Storage szolgáltatás véglegesíti az adatbeszúrási vagy-frissítési műveletet, hogy az összes további hozzáférés a legújabb frissítést fogja látni. A végleges konzisztencia-modellt használó tárolási platformok késése az egyik felhasználó írásának elvégzése, valamint a frissített adatoknak a más felhasználók által történő észlelése, így az ügyfélalkalmazások fejlesztésének megakadályozása érdekében a végfelhasználók befolyásolása.  
 
-Egy megfelelő párhuzamossági stratégiát jelölje a fejlesztők is figyelembe kell, hogyan különíti el a tárolási platform módosítások – különösen tranzakciók között ugyanazon az objektumon. Az Azure storage szolgáltatás pillanatkép-elkülönítés használatával lehetővé teszi az olvasási műveletek történjen, már létesítve lett az írási műveletek ugyanazon a partíción belül. Ellentétben más elkülönítési szinten a pillanatkép-elkülönítés garantálja, hogy az olvasások történnek a frissítések – lényegében az utolsó véglegesített értékeket egy frissítés során visszatérő tranzakció feldolgozása közben is látják az adatok egy egységes pillanatképet.  
+A megfelelő egyidejűségi stratégiák kiválasztásán kívül érdemes tisztában lennie azzal is, hogy a tárolási platform hogyan különíti el a változásokat – különösen az objektum tranzakción belüli változásait. Az Azure Storage szolgáltatás pillanatkép-elkülönítést használ az olvasási műveletek egyazon partíción belüli írási műveletekkel való egyidejű megtörténésének engedélyezéséhez. A többi elkülönítési szinttől eltérően a pillanatkép-elkülönítés garantálja, hogy az összes olvasás az adatok konzisztens pillanatképét tekinti meg, még a frissítések előfordulásakor is – lényegében a legutóbbi véglegesített értékek visszaadásával a frissítési tranzakció feldolgozása közben.  
 
-## <a name="managing-concurrency-in-blob-storage"></a>Az egyidejűség kezelése a Blob storage-ban
-Kérheti, blobok és tárolók az a blob szolgáltatáshoz való hozzáférés kezeléséhez vagy optimista vagy pesszimista egyidejűségi modellek használata. Ha explicit módon nem ad egy stratégia utolsó írás wins az alapértelmezett érték.  
+## <a name="managing-concurrency-in-blob-storage"></a>Egyidejűség kezelése a blob Storage-ban
+Dönthet úgy is, hogy optimista vagy pesszimista párhuzamossági modelleket használ a blobok és tárolók elérésének kezeléséhez a blob szolgáltatásban. Ha nem ad meg explicit módon egy stratégia utolsó írását, a WINS az alapértelmezett.  
 
-### <a name="optimistic-concurrency-for-blobs-and-containers"></a>A blobok és tárolók Optimista párhuzamosság
-A Storage szolgáltatás azonosítót rendel minden tárolt objektum. Ez az azonosító frissül minden alkalommal, amikor egy objektum frissítési művelet történik. Az azonosító az ügyfél részeként az ETag (entitáscímkét) fejlécet, amely a HTTP-protokoll van meghatározva egy HTTP GET választ küld vissza. Egy felhasználó egy frissítést végez ilyen objektum elküldhető együtt egy feltételes fejléc eredeti Etaggel annak biztosításához, hogy a frissítés akkor történik, ha egy bizonyos feltétel teljesül, – ebben az esetben az feltétele egy "If-Match" fejlécet, amely igényel a Társzolgáltatásnak-t o győződjön meg arról, az ETag címke, a frissítés kérelemben megadott értéke ugyanaz, mint amellyel a Storage szolgáltatásban tárolt.  
+### <a name="optimistic-concurrency-for-blobs-and-containers"></a>A blobok és tárolók optimista párhuzamossága
+A Storage szolgáltatás minden tárolt objektumhoz hozzárendel egy azonosítót. Ez az azonosító minden alkalommal frissül, amikor egy adott objektumon frissítési művelet történik. Az azonosítót a http GET válasz részeként a rendszer visszaküldi az ügyfélnek a HTTP protokollon belül definiált ETag (Entity címke) fejléc használatával. Egy ilyen objektum frissítését végző felhasználó az eredeti ETag és egy feltételes fejléccel is elküldhető, így biztosítható, hogy a frissítés csak akkor történjen meg, ha egy bizonyos feltétel teljesült – ebben az esetben a feltétel egy "If-Match" fejléc, amelyhez a Storage szolgáltatás t kell használnia o ellenőrizze, hogy a frissítési kérelemben megadott ETag értéke megegyezik-e a Storage szolgáltatásban tárolt értékkel.  
 
-Ez a folyamat röviden ismerteti a következőképpen történik:  
+A folyamat körvonala a következő:  
 
-1. A blob lekérése a storage szolgáltatás, a válasz egy HTTP-ETag fejlécet érték, amely azonosítja az objektumot a storage szolgáltatás jelenlegi verziója tartalmazza.
-2. Frissítjük a blobot, ha az ETag-érték az 1. lépésben kapott tartalmazzák a **If-Match** feltételes fejlécében a kérelmet küld a szolgáltatásnak.
-3. A szolgáltatás az ETag-érték a kérés a blob ETag aktuális értékét hasonlítja össze.
-4. Ha a jelenlegi ETag-érték a BLOB nem található ETag címkével eltérő verzióval a **If-Match** feltételes fejléc a kérelemben, a szolgáltatás egy 412 hibát ad vissza az ügyfélnek. Ez azt jelzi, hogy az ügyfél számára, hogy egy másik folyamat frissítette a blob, mivel az ügyfél a lekérdezés.
-5. Ha a jelenlegi ETag-érték a BLOB nem található ETag címkével verzióval azonos verziójúnak a **If-Match** feltételes fejléc a kérelemben, a szolgáltatás elvégzi a kért műveletet, és frissíti az aktuális, megjelenítéséhez a rendszer létrehozta a BLOB ETag-érték egy új verziója.  
+1. Egy blob lekérése a Storage szolgáltatásból, a válasz tartalmaz egy HTTP ETag fejléc-értéket, amely az objektum aktuális verzióját azonosítja a Storage szolgáltatásban.
+2. A blob frissítésekor adja meg az 1. lépésben kapott ETag értéket a szolgáltatásnak küldött kérelem **IF-Match** feltételes fejlécében.
+3. A szolgáltatás összehasonlítja a kérelemben szereplő ETag értéket a blob aktuális ETag értékével.
+4. Ha a blob aktuális ETag értéke eltér a kérelemben található **IF-Match** feltételes fejlécben szereplő ETAG, a szolgáltatás 412 hibát ad vissza az ügyfélnek. Ez azt jelzi, hogy az ügyfél számára egy másik folyamat frissítette a blobot, mivel az ügyfél beolvasta azt.
+5. Ha a blob aktuális ETag-értéke megegyezik a kérelemben **szereplő feltételes** fejlécben található ETAG, a szolgáltatás végrehajtja a kért műveletet, és frissíti a blob aktuális ETAG értékét annak megjelenítéséhez, hogy az új verziót hozott létre.  
 
-Az alábbi C# (a Storage Ügyfélkódtár használatával 4.2.0) látható egy egyszerű példa bemutatja, hogyan hozhat létre egy **If-Match AccessCondition** , amely egy blobot, amely korábban vagy tulajdonságait szeretné elérni, az ETag-érték alapján beolvasott vagy beszúrni. Ezután a **AccessCondition** objektumot, amikor frissíti a blob: a **AccessCondition** objektumot ad hozzá a **If-Match** fejlécet a kérelemhez. Egy másik folyamat frissítette a blobot, ha a blobszolgáltatás egy HTTP 412 (előfeltétel nem teljesült) állapotüzenetet adja vissza. A teljes mintát Itt töltheti le: [Az Azure Storage használata az egyidejűség kezelése](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).  
+A következő C# kódrészlet (az ügyféloldali tár 4.2.0 használatával) egy egyszerű példát mutat be arra, hogyan hozhat létre egy **IF-Match AccessCondition** a korábban beolvasott blob tulajdonságaiból elérhető ETAG-érték alapján. egészül. Ezután a **AccessCondition** objektum használatával frissíti a blobot: a **AccessCondition** objektum hozzáadja az **IF-Match** fejlécet a kérelemhez. Ha egy másik folyamat frissítette a blobot, a blob szolgáltatás a HTTP 412 (előfeltétel sikertelen) állapotjelző üzenetet adja vissza. A teljes minta innen tölthető le: [A párhuzamosság kezelése az Azure Storage használatával](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).  
 
 ```csharp
 // Retrieve the ETag from the newly created blob
@@ -80,53 +80,53 @@ catch (StorageException ex)
 }  
 ```
 
-A Storage szolgáltatás támogatását is magában foglalja a feltételes további fejlécek például **If-módosítás-óta**, **If-társítandó-óta** és **If-None-Match** , valamint ezek kombinációi. További információkért lásd: [feltételes fejlécek megadásával a Blob szolgáltatási műveletek](https://msdn.microsoft.com/library/azure/dd179371.aspx) az MSDN Webhelyén.  
+A Storage szolgáltatás emellett támogatja a további feltételes fejléceket is, például **Ha-módosítva-óta**, **Ha-nem módosítva – óta** és **If-None-Match** , valamint ezek kombinációit. További információkért lásd: [feltételes fejlécek megadása a blob Service](https://msdn.microsoft.com/library/azure/dd179371.aspx) -műveletekhez az MSDN-ben.  
 
-A következő táblázat összefoglalja a tárolóművelet, mint például a feltételes fejlécek elfogadó **If-Match** a kérelmet, amely a válaszban ETag értéket adnak vissza.  
+A következő táblázat összefoglalja azokat a tároló-műveleteket, amelyek elfogadják a feltételes fejléceket, például ha a kérésben **egyeznek** , és amelyek ETAG értéket adnak vissza a válaszban.  
 
-| Művelet | Tároló ETag-érték visszaadása | Fogadja el a feltételes fejlécek |
+| Művelet | A tároló ETag értékét adja vissza. | Feltételes fejlécek elfogadása |
 |:--- |:--- |:--- |
 | Tároló létrehozása |Igen |Nem |
-| A tároló tulajdonságainak beolvasása |Igen |Nem |
+| Tároló tulajdonságainak beolvasása |Igen |Nem |
 | Tároló metaadatainak beolvasása |Igen |Nem |
-| Set Container Metadata |Igen |Igen |
+| Tároló metaadatainak beállítása |Igen |Igen |
 | Tároló ACL lekérése |Igen |Nem |
-| Set Container ACL |Igen |Igen (*) |
+| Tároló ACL beállítása |Igen |Igen (*) |
 | Tároló törlése |Nem |Igen |
-| Címbérlet-tárolók |Igen |Igen |
+| Bérlet tárolója |Igen |Igen |
 | Blobok listázása |Nem |Nem |
 
-(*) A SetContainerACL által meghatározott engedélyekkel vannak gyorsítótárazva, és ezeket az engedélyeket a frissítések érvénybe propagálása 30 másodperc, hogy mely időszakban frissítések nem garantált konzisztens.  
+(*) A SetContainerACL által meghatározott engedélyek gyorsítótárazva vannak, és az engedélyek frissítései 30 másodpercet vesznek igénybe, hogy az adott időszak frissítései ne legyenek konzisztensek.  
 
-A következő táblázat összefoglalja a blob-műveletek, például feltételes fejlécek elfogadó **If-Match** a kérelmet, amely a válaszban ETag értéket adnak vissza.
+A következő táblázat összefoglalja azokat a blob-műveleteket, amelyek elfogadják a kérésben szereplő feltételes fejléceket, például **Ha-egyeznek** , és amelyek ETAG értéket adnak vissza a válaszban.
 
-| Művelet | Az ETag értéket ad vissza | Fogadja el a feltételes fejlécek |
+| Művelet | ETag értéket ad vissza. | Feltételes fejlécek elfogadása |
 |:--- |:--- |:--- |
 | Put Blob |Igen |Igen |
-| A Blob lekérése |Igen |Igen |
-| A Blob tulajdonságainak lekérése |Igen |Igen |
-| A Blob tulajdonságainak megadása |Igen |Igen |
-| Blob metaadatainak beolvasása |Igen |Igen |
-| Állítsa be a Blob metaadatai |Igen |Igen |
-| A Blobbérlet (*) |Igen |Igen |
+| BLOB beolvasása |Igen |Igen |
+| BLOB tulajdonságainak beolvasása |Igen |Igen |
+| BLOB tulajdonságainak beállítása |Igen |Igen |
+| BLOB metaadatainak beolvasása |Igen |Igen |
+| BLOB metaadatainak beállítása |Igen |Igen |
+| Címbérleti blob (*) |Igen |Igen |
 | Snapshot Blob |Igen |Igen |
-| Blob másolása |Igen |Igen (a forrás- és blob) |
-| Abort Copy Blob |Nem |Nem |
+| Blob másolása |Igen |Igen (a forrás és a cél blob esetében) |
+| BLOB másolásának megszakítása |Nem |Nem |
 | Delete Blob |Nem |Igen |
-| PUT letiltása |Nem |Nem |
-| PUT tiltólista |Igen |Igen |
-| Blokk-lista lekérése |Igen |Nem |
-| PUT lap |Igen |Igen |
-| Laptartomány-beolvasási |Igen |Igen |
+| Put blokk |Nem |Nem |
+| Tiltási lista |Igen |Igen |
+| Tiltási lista lekérése |Igen |Nem |
+| Oldal elhelyezése |Igen |Igen |
+| Oldalak tartományának beolvasása |Igen |Igen |
 
-(*) Címbérleti Blobhoz nem módosítja az ETag egy BLOB.  
+(*) A címbérleti blob nem változtatja meg a blob ETag.  
 
-### <a name="pessimistic-concurrency-for-blobs"></a>A pesszimista egyidejűségi blobok
-Kizárólagos használatra blob zárolásához, szerezzen be egy [bérleti](https://msdn.microsoft.com/library/azure/ee691972.aspx) rajta. Amikor bérletet, megadhatja, hogy mennyi ideig kell a bérletet: Ez lehet 15 – 60 másodpercet vagy végtelen, amely kizárólagos zárolást szolgál. Megújítható a kiterjesztéshez véges bérletét, és semmilyen címbérlet fel lehet szabadítani, ha végzett vele. A blob szolgáltatás automatikusan felszabadítja véges bérletek a lejárat után.  
+### <a name="pessimistic-concurrency-for-blobs"></a>A Blobok pesszimista párhuzamossága
+Egy blob kizárólagos használatra történő zárolásához megszerezheti a [bérletet](https://msdn.microsoft.com/library/azure/ee691972.aspx) . Bérlet beszerzése esetén meg kell adnia, hogy mennyi ideig szükséges a bérlet: ez lehet 15 – 60 másodperc vagy végtelen érték között, amely egy exkluzív zárolásnak minősül. Megújíthat egy véges bérletet, amellyel kiterjesztheti, és bármely bérletet kiszabadíthat, ha elkészült. A blob szolgáltatás automatikusan felszabadítja a véges bérleteket, amikor lejárnak.  
 
-A bérletek engedélyezése különböző szinkronizálási stratégiák is támogatja, beleértve az exkluzív írási / olvasási, exkluzív írási megosztott / kizárólagos olvasási és írási megosztott / kizárólagos olvasási. Ahol a bérlet létezik a storage szolgáltatás érvényesíti exkluzív írási műveletek (put, beállítása és törlési műveletek) azonban biztosító kizárólagosságot az olvasási műveletek igényel a fejlesztő győződjön meg arról, hogy minden ügyfél alkalmazást használja a bérlet Azonosítóját, és egyszerre csak egy ügyfél rendelkezik egy érvényes a bérlet azonosítóját. Olvassa el, ne foglalja bele a bérlet azonosítója eredmény megosztott olvasási műveleteket.  
+A bérletek lehetővé teszik a különböző szinkronizálási stratégiák támogatását, beleértve az exkluzív írási/közös olvasási, kizárólagos írási/kizárólagos olvasási és közös írási/kizárólagos olvasást. Ha egy bérlet létezik, a tárolási szolgáltatás kikényszeríti az exkluzív írásokat (Put, set és DELETE művelet), azonban a kizárólagosságot az olvasási műveletekhez a fejlesztőnek biztosítania kell, hogy az összes ügyfélalkalmazás címbérlet-azonosítót használjon, és hogy egyszerre csak egy ügyfél legyen érvényes címbérlet-azonosító. Azok az olvasási műveletek, amelyek nem tartalmaznak címbérlet-azonosítót, megosztott olvasást eredményeznek.  
 
-Az alábbi C#-kódrészlet egy kizárólagos bérlet beszerzése egy BLOB 30 másodpercig, a blob tartalmának frissítése és majd a bérlet feloldása egy példát mutat be. Már van egy érvényes bérletet a blob új bérletet meg, ha a blobszolgáltatás egy "HTTP (409) ütközés" állapot eredményt adja vissza. A következő kódrészlet egy **AccessCondition** objektum magába foglalja a címbérleti információkat, amikor azt egy kérelmet a blob, a storage szolgáltatás frissítéséhez.  A teljes mintát Itt töltheti le: [Az Azure Storage használata az egyidejűség kezelése](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).
+Az alábbi C# kódrészlet egy példát mutat be arra, hogy egy blobon 30 másodpercig egy exkluzív bérletet szerezzen be, frissítse a blob tartalmát, majd felszabadítsa a bérletet. Ha a blobban már van érvényes bérlet, amikor új bérletet próbál meg beszerezni, a blob szolgáltatás "HTTP (409) ütközés" állapotot ad vissza. Az alábbi kódrészlet egy **AccessCondition** objektumot használ a címbérleti információk beágyazására, amikor a a blobnak a Storage szolgáltatásban való frissítésére vonatkozó kérést küld.  A teljes minta innen tölthető le: [A párhuzamosság kezelése az Azure Storage használatával](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).
 
 ```csharp
 // Acquire lease for 15 seconds
@@ -155,60 +155,60 @@ catch (StorageException ex)
 }  
 ```
 
-A bérelt blob írási művelet a bérlet Azonosítóját át nem kísérli meg, ha a kérelem sikertelen, és a 412. Vegye figyelembe, hogy ha a bérlet meghívása előtt lejár a **UploadText** módszer, de továbbra is át a bérlet Azonosítóját, a kérelem is sikertelen, az egy **412** hiba. Címbérlet lejárati idő és a bérlet azonosítóját kezelésével kapcsolatos további információkért lásd: a [címbérleti Blobhoz](https://msdn.microsoft.com/library/azure/ee691972.aspx) REST-dokumentációnkhoz.  
+Ha a bérlet AZONOSÍTÓjának átadása nélkül próbál meg írási műveletet végrehajtani egy bérelt blobon, a kérelem 412-as hibával meghiúsul. Vegye figyelembe, hogy ha a bérlet a **UploadText** metódus meghívása előtt lejár, de továbbra is átadja a címbérlet azonosítóját, a kérelem **412** -as hibával meghiúsul. A bérlet lejárati idejének és a címbérleti azonosítók kezelésével kapcsolatos további információkért tekintse meg a [bérleti blob](https://msdn.microsoft.com/library/azure/ee691972.aspx) Rest dokumentációját.  
 
-A következő blob műveletek bérletek használatával pesszimista egyidejűség kezelése:  
+A következő blob-műveletek használhatnak címbérleteket a pesszimista Egyidejűség kezeléséhez:  
 
 * Put Blob
-* A Blob lekérése
-* A Blob tulajdonságainak lekérése
-* A Blob tulajdonságainak megadása
-* Blob metaadatainak beolvasása
-* Állítsa be a Blob metaadatai
+* BLOB beolvasása
+* BLOB tulajdonságainak beolvasása
+* BLOB tulajdonságainak beállítása
+* BLOB metaadatainak beolvasása
+* BLOB metaadatainak beállítása
 * Delete Blob
-* PUT letiltása
-* PUT tiltólista
-* Blokk-lista lekérése
-* PUT lap
-* Laptartomány-beolvasási
-* Blob pillanatkép - bérlet Azonosítóját kötelező, ha a bérlet létezik
-* Blob - azonosító szükséges, ha egy bérlet létezik-e a cél BLOB lease másolása
-* A Blob másolásához megszakítási - bérlet Azonosítóját szükséges, ha egy végtelen bérlet létezik-e a cél blob
-* Címbérleti Blobhoz  
+* Put blokk
+* Tiltási lista
+* Tiltási lista lekérése
+* Oldal elhelyezése
+* Oldalak tartományának beolvasása
+* Pillanatkép-blob – a bérlet azonosítója nem kötelező, ha létezik bérlet
+* A blob-bérlet AZONOSÍTÓjának másolása szükséges, ha a cél blobon van egy bérlet
+* A Blobok másolásának megszakítása akkor szükséges, ha a cél blobon létezik végtelen bérlet
+* Címbérleti blob  
 
-### <a name="pessimistic-concurrency-for-containers"></a>A pesszimista egyidejűség-tárolókhoz
-Bérletek a tárolókat, mint a blobok támogatott szinkronizálási ugyanezen stratégiák engedélyezése (kizárólagos írási és olvasási, exkluzív írási megosztott / kizárólagos olvasási és írási megosztott / kizárólagos olvasási) azonban blobok ellentétben a storage szolgáltatás csak kényszerít kizárólagosság törlési műveletek. Töröl egy tárolót, a rendszer aktív bérletet, egy ügyfél tartalmaznia kell a törlési kérelem a aktív bérlet Azonosítóját. A bérlet Azonosítóját használata nélkül egy bérelt tárolón sikeres tároló minden egyéb művelet ebben az esetben vannak közös műveleteket. Kötelező kizárólagosság (put vagy set) frissítési vagy olvasási műveletek esetén győződjön meg a fejlesztők kell, hogy minden ügyfél használja a bérlet Azonosítóját, és csak egy ügyfél egyszerre rendelkezik egy érvényes bérletet.  
+### <a name="pessimistic-concurrency-for-containers"></a>A tárolók pesszimista egyidejűsége
+A tárolók bérletei lehetővé teszik ugyanazokat a szinkronizálási stratégiákat, mint a Blobok (kizárólagos írási/megosztott olvasási, kizárólagos írási/kizárólagos olvasási és közös írási/kizárólagos olvasás), azonban a Blobokkal ellentétben a tárolási szolgáltatás csak a kizárólagosságot alkalmazza törlési műveletek. Egy aktív bérlettel rendelkező tároló törléséhez az ügyfélnek tartalmaznia kell az aktív címbérlet AZONOSÍTÓját a törlési kérelemmel. Az összes többi tároló-művelet sikeres egy bérelt tárolón anélkül, hogy a bérlet AZONOSÍTÓját, amely esetben megosztott műveleteket hajt végre. Ha a frissítés (Put vagy set) vagy az olvasási műveletek kizárólagossága szükséges, a fejlesztőknek biztosítaniuk kell, hogy az összes ügyfél címbérlet-azonosítót használjon, és hogy egyszerre csak egy ügyfél érvényes címbérleti AZONOSÍTÓval rendelkezik.  
 
-A következő tárolóművelet bérletek használatával pesszimista egyidejűség kezelése:  
+A következő tároló-műveletek használhatnak címbérleteket a pesszimista Egyidejűség kezeléséhez:  
 
 * Tároló törlése
-* A tároló tulajdonságainak beolvasása
+* Tároló tulajdonságainak beolvasása
 * Tároló metaadatainak beolvasása
-* Set Container Metadata
+* Tároló metaadatainak beállítása
 * Tároló ACL lekérése
-* Set Container ACL
-* Címbérlet-tárolók  
+* Tároló ACL beállítása
+* Bérlet tárolója  
 
 További információkért lásd:  
 
-* [Blob szolgáltatás műveletek által használt feltételes fejlécek megadása](https://msdn.microsoft.com/library/azure/dd179371.aspx)
-* [Címbérlet-tárolók](https://msdn.microsoft.com/library/azure/jj159103.aspx)
-* [Címbérleti Blobhoz](https://msdn.microsoft.com/library/azure/ee691972.aspx)
+* [A blob Service-műveletek feltételes fejlécének megadása](https://msdn.microsoft.com/library/azure/dd179371.aspx)
+* [Bérlet tárolója](https://msdn.microsoft.com/library/azure/jj159103.aspx)
+* [Címbérleti blob](https://msdn.microsoft.com/library/azure/ee691972.aspx)
 
-## <a name="managing-concurrency-in-the-table-service"></a>A Table Service szolgáltatásban az egyidejűség kezelése
-A table service használja az optimista egyidejűség ellenőrzi az alapértelmezett viselkedésként entitásokkal, a blob szolgáltatás, explicit módon választania kell az optimista egyidejűséget ellenőrzéséhez eltérően működik. A tábla- és blobtárolókat szolgáltatások közötti különbség az, hogy csak kezelheti az entitások egyidejűségi viselkedését, mivel a blob szolgáltatással kezelheti az egyidejűséget, tárolók és blobok.  
+## <a name="managing-concurrency-in-the-table-service"></a>A párhuzamosság kezelése a Table Service-ben
+A Table szolgáltatás optimista egyidejűségi ellenőrzéseket használ az entitások használatakor, a blob szolgáltatástól eltérően, ahol explicit módon kell kiválasztania az optimista Egyidejűség-ellenőrzéseket. A tábla és a blob szolgáltatások közötti különbség az, hogy csak az entitások egyidejűségi viselkedését tudja kezelni, míg a blob szolgáltatással a tárolók és a Blobok párhuzamosságát is kezelheti.  
 
-Használjon optimista egyidejűséget, és ellenőrizze, hogy egy másik folyamat módosítása egy entitás, a table storage szolgáltatásból való lekérdezés óta, amikor a table service adja vissza egy entitás ETag-érték is használhatja. Ez a folyamat röviden ismerteti a következőképpen történik:  
+Ha optimista párhuzamosságot szeretne használni, és annak ellenőrzése, hogy egy másik folyamat módosította-e az entitást a Table Storage szolgáltatásból való lekérése óta, akkor használhatja a ETag értéket, amelyet akkor kap, ha a Table Service egy entitást ad vissza. A folyamat körvonala a következő:  
 
-1. Kérje le egy entitást a table storage szolgáltatásból, a válasz egy ETag-érték, amely azonosítja a társzolgáltatás az adott entitással kapcsolatos aktuális azonosítóját tartalmazza.
-2. Amikor frissíti az entitás, például a kötelező az 1. lépésben kapott ETag-érték **If-Match** küldeni a szolgáltatásnak a kérelem fejlécében.
-3. A szolgáltatás az ETag-érték a kérés az entitás jelenlegi ETag értékét hasonlítja össze.
-4. Ha az entitás jelenlegi ETag-érték eltér a kötelező a Etaggel **If-Match** fejléc a kérelemben, a szolgáltatás egy 412 hibát ad vissza az ügyfélnek. Ez azt jelzi, hogy az ügyfél számára, hogy egy másik folyamat frissítette az entitást, mivel az ügyfél a lekérdezés.
-5. Ha a jelenlegi ETag-érték az entitás nem ugyanaz, mint a kötelező a Etaggel **If-Match** a kérelemben szereplő tartományfejléc vagy a **If-Match** fejlécet tartalmaz a helyettesítő karakter (*), a szolgáltatás hajtja végre a a kért műveletet, és frissíti az entitás megjelenítéséhez, hogy frissült a jelenlegi ETag-érték.  
+1. Egy entitás beolvasása a Table Storage szolgáltatásból, a válasz tartalmaz egy ETag értéket, amely azonosítja az adott entitáshoz társított aktuális azonosítót a Storage szolgáltatásban.
+2. Az entitás frissítésekor adja meg az 1. lépésben kapott ETag értéket a szolgáltatásnak küldött kérés kötelező **IF-Match** fejlécében.
+3. A szolgáltatás összehasonlítja a kérelemben szereplő ETag értéket az entitás aktuális ETag értékével.
+4. Ha az entitás aktuális ETag értéke eltér a kérelemben szereplő kötelező **IF-Match** fejlécben szereplő ETAG, a szolgáltatás 412 hibát ad vissza az ügyfélnek. Ez azt jelzi, hogy az ügyfél számára egy másik folyamat frissítette az entitást, mivel az ügyfél beolvasta azt.
+5. Ha az entitás aktuális ETag értéke megegyezik a kérelemben szereplő kötelező **IF-Match** fejlécben szereplő ETAG, vagy az **IF-Match** fejléc tartalmazza a helyettesítő karaktert (*), a szolgáltatás végrehajtja a kért műveletet, és frissíti az aktuális ETAG az entitás értéke, amely megjeleníti, hogy frissítve lett-e.  
 
-Vegye figyelembe, hogy a blob szolgáltatás eltérően a table service igényel tartalmazza az ügyfél egy **If-Match** fejléc a következő frissítési kérelmet. Azonban lehetséges kényszerítése egy feltétel (legutolsó író wins stratégia) frissíti, és az egyidejűség-ellenőrzés megkerülését, ha beállítja az ügyfél a **If-Match** fejlécet a helyettesítő karakter (*) a kérésben.  
+Vegye figyelembe, hogy a blob szolgáltatástól eltérően a Table Service-nek tartalmaznia kell egy **IF-Match** fejlécet a frissítési kérelmekben. Azonban lehetséges egy feltétel nélküli frissítés (utolsó író WINS-stratégia) kényszerítése és a párhuzamosságok mellőzése, ha az ügyfél az **IF-Match** fejlécet a kérelemben szereplő helyettesítő karakter (*) értékre állítja.  
 
-Az alábbi C# látható egy ügyfélentitást vagy korábban létrehozott vagy frissített e-mail-címükkel kellene beolvasni. A kezdeti beszúrása vagy művelet tárolja az ügyfél objektum ETag-érték lekéréséhez, és a mintát használja ugyanazt az objektumpéldányt, a Csere műveletet végrehajtása során, mert azt automatikusan elküldi az ETag-érték vissza a table service, a szolgáltatás engedélyezése Ellenőrizze, hogy egyidejűségi megsértése. Ha egy másik folyamat frissítette az entitást a táblatárolóba, a szolgáltatás egy HTTP 412 (előfeltétel nem teljesült) állapotüzenetet adja vissza.  A teljes mintát Itt töltheti le: [Az Azure Storage használata az egyidejűség kezelése](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).
+Az alábbi C# kódrészlet egy korábban létrehozott vagy lekért ügyfél-entitást mutat be, amely az e-mail-címüket frissítette. A kezdeti beszúrási vagy beolvasási művelet a ETag értéket tárolja az ügyfél objektumban, és mivel a minta ugyanazt az objektumot használja, amikor végrehajtja a Replace műveletet, automatikusan elküldi a ETag értéket a Table szolgáltatásnak, amely lehetővé teszi a szolgáltatás számára a a Egyidejűség megsértésének keresése. Ha egy másik folyamat frissítette az entitást a Table Storage-ban, a szolgáltatás egy HTTP 412 (előfeltétel-sikertelen) állapotjelző üzenetet ad vissza.  A teljes minta innen tölthető le: [A párhuzamosság kezelése az Azure Storage használatával](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).
 
 ```csharp
 try
@@ -227,62 +227,62 @@ catch (StorageException ex)
 }  
 ```
 
-Az explicit módon letiltja az egyidejűség-ellenőrzést, állítsa be a **ETag** tulajdonságát a **alkalmazott** az objektum "*" a csere művelet végrehajtása előtt.  
+A Egyidejűség-ellenőrzés explicit letiltásához a Replace művelet végrehajtása előtt állítsa az **Employee** objektum **ETAG** tulajdonságát "*" értékre.  
 
 ```csharp
 customer.ETag = "*";  
 ```
 
-A következő táblázat összefoglalja, hogyan a tábla entitás műveletek ETag értékek használata:
+Az alábbi táblázat összefoglalja, hogyan használják a tábla entitások a ETag értékeket:
 
-| Művelet | Az ETag értéket ad vissza | If-Match kérelem fejléce igényel |
+| Művelet | ETag értéket ad vissza. | A-Match kérelem fejlécének megadását igényli |
 |:--- |:--- |:--- |
-| Entitáslekérdezés |Igen |Nem |
+| Lekérdezési entitások |Igen |Nem |
 | Entitás beszúrása |Igen |Nem |
-| Entitások frissítése |Igen |Igen |
+| Entitás frissítése |Igen |Igen |
 | Entitás egyesítése |Igen |Igen |
 | Entitás törlése |Nem |Igen |
 | Entitás beszúrása vagy cseréje |Igen |Nem |
 | Entitás beszúrása vagy egyesítése |Igen |Nem |
 
-Vegye figyelembe, hogy a **entitás cseréje vagy beszúrása** és **vagy egyesítési entitás beszúrása** műveletek tegye *nem* bármely egyidejűségi ellenőrzések elvégzéséhez, mert a tábla nem küldenek egy ETag-érték a szolgáltatás.  
+Vegye figyelembe, hogy a **INSERT vagy replace entitás** és az **INSERT vagy Merge entitás** műveletek *nem* végeznek Egyidejűség-ellenőrzéseket, mert nem küldenek ETAG értéket a Table szolgáltatásnak.  
 
-Általában a fejlesztők táblák használata támaszkodhat optimista egyidejűséget skálázható alkalmazások fejlesztése során. A pesszimista zárolással van szükség, ha egy megközelítés a fejlesztők táblák elérése esetén minden egyes kijelölt blob hozzárendelése, majd próbálja meg a blob bérletét hajtania mielőtt azok a tábla is igénybe vehet. Ez a megközelítés szükséges az alkalmazás számára biztosítani az összes adat elérési utak előtt lépked végig az a tábla a bérlet beszerzése. Emellett vegye figyelembe, hogy a minimális bérleti ideje-e 15 másodperc, amely a méretezhetőség érdekében alapos megfontolás igényel.  
-
-További információkért lásd:  
-
-* [Műveleti entitások](https://msdn.microsoft.com/library/azure/dd179375.aspx)  
-
-## <a name="managing-concurrency-in-the-queue-service"></a>A Queue szolgáltatás az egyidejűség kezelése
-Milyen egyidejűségi a fontos az üzenetsor-szolgáltatás egy forgatókönyv, ahol több ügyfél hívnak le üzeneteket az üzenetsorból. Egy üzenetet az üzenetsorból beolvasásakor a válasz tartalmazza, az üzenet és a egy pop beérkezési értéket, amely az üzenet törléséhez. Az üzenet nem törlődnek automatikusan, az üzenetsorból, de rendelkezik lekérve, után már nem látható más ügyfelek számára a a visibilitytimeout paraméter által megadott időtartam alatt. Az ügyfél, amely lekéri az üzenet az üzenet törlése után a feldolgozásukat és a TimeNextVisible által megadott idő előtti elem, amelynek kiszámítása a válasz alapján a visibilitytimeout paraméter várt. Az idő, amikor a lekért TimeNextVisible értékének meghatározása visibilitytimeout értéke kerül.  
-
-A queue szolgáltatás nem rendelkezik az optimista vagy pesszimista egyidejűségi támogatása, és ennek dolgoz fel üzeneteket az üzenetsorból lekért OK ügyfelek biztosítania kell az üzenetek idempotens módon feldolgozása. A frissítési műveletek, például SetQueueServiceProperties, SetQueueMetaData, SetQueueACL és UpdateMessage legutolsó író wins stratégia használható.  
+A táblázatokat használó általános fejlesztőknek optimista párhuzamosságot kell alkalmazniuk a méretezhető alkalmazások fejlesztésekor. Ha pesszimista zárolásra van szükség, az egyik módszer a fejlesztők számára is igénybe vehet, ha a táblákhoz való hozzáféréskor egy kijelölt blobot rendel hozzá az egyes táblákhoz, és a táblán való működés előtt megpróbál bérletet készíteni a blobon. Ehhez a megközelítéshez az alkalmazásnak meg kell győződnie arról, hogy az összes adatelérési útvonal beszerezze a bérletet a táblán való működés előtt. Azt is vegye figyelembe, hogy a minimális bérleti idő 15 másodperc, ami alapos megfontolást igényel a méretezhetőség érdekében.  
 
 További információkért lásd:  
 
-* [Queue szolgáltatás REST API-val](https://msdn.microsoft.com/library/azure/dd179363.aspx)
+* [Entitások műveletei](https://msdn.microsoft.com/library/azure/dd179375.aspx)  
+
+## <a name="managing-concurrency-in-the-queue-service"></a>A párhuzamosság kezelése a várólista-szolgáltatásban
+Egy olyan forgatókönyv, amelyben a párhuzamosság a várólista-kezelési szolgáltatás egyik problémája, hogy több ügyfél is beolvassa az üzeneteket egy várólistából. Amikor egy üzenet beolvasása a sorból történik, a válasz tartalmazza az üzenetet és egy pop-beérkezési értéket, amely az üzenet törléséhez szükséges. Az üzenet nem törlődik automatikusan a várólistából, de a lekérése után a visibilitytimeout paraméter által megadott időintervallumban nem látható a többi ügyfél. Az üzenetet lekérő ügyfélnek a feldolgozás után törölni kell az üzenetet, és a válasz TimeNextVisible eleme által megadott idő előtt, amelyet a visibilitytimeout paraméter értéke alapján számítunk ki. A visibilitytimeout értékét a rendszer az üzenet lekérésének időpontjához adja, hogy meghatározza a TimeNextVisible értékét.  
+
+A várólista-szolgáltatás nem támogatja az optimista vagy a pesszimista párhuzamosságot, és emiatt az ügyfelek várólistából beolvasott üzenetek feldolgozásával biztosítaniuk kell, hogy az üzenetek idempotens módon legyenek feldolgozva. A legutóbbi író WINS-stratégia olyan frissítési műveletekhez használható, mint például a SetQueueServiceProperties, a SetQueueMetaData, a SetQueueACL és a UpdateMessage.  
+
+További információkért lásd:  
+
+* [Üzenetsor-szolgáltatás REST API](https://msdn.microsoft.com/library/azure/dd179363.aspx)
 * [Üzenetek beolvasása](https://msdn.microsoft.com/library/azure/dd179474.aspx)  
 
-## <a name="managing-concurrency-in-the-file-service"></a>A szolgáltatás az egyidejűség kezelése
-A szolgáltatás két különböző protokollvégpontokat – a SMB és a REST használatával is elérhetők. A REST-szolgáltatás nem rendelkezik optimista vagy pesszimista zárolással támogatása, és minden frissítés egy utolsó író wins stratégiát követi. Fájlmegosztásokat csatlakoztatni az SMB-ügyfelek használhatják a file system mechanizmusok megosztott fájlok – például hajthatnak végre pesszimista zárolással való hozzáférés kezelése. Ha egy SMB-ügyfél megnyit egy fájlt, adja meg a fájl hozzáférés- és a megosztáshoz mód. Fájlhozzáférés "Write" vagy "Olvasási/írási" és a egy fájlmegosztás mód "None" beállítás azt eredményezi, hogy a fájl egy SMB-ügyfél által a fájl bezárásáig zárolva. Ha a REST-művelet egy fájlt, amelyben egy SMB-ügyfél rendelkezik-e a fájl zárolva próbálta meg végrehajtani a REST-szolgáltatás SharingViolation. Hibakód: 409 (Ütközés) állapotkódot ad vissza.  
+## <a name="managing-concurrency-in-the-file-service"></a>A párhuzamosság kezelése a file Service-ben
+A file Service két különböző protokoll-végponttal (SMB és REST) érhető el. A REST szolgáltatás nem támogatja az optimista zárolást vagy a pesszimista zárolást, és az összes frissítés a legutóbbi író WINS-stratégiát követi majd. A fájlmegosztást csatlakoztató SMB-ügyfelek használhatnak fájlrendszer-zárolási mechanizmusokat a megosztott fájlokhoz való hozzáférés kezeléséhez – beleértve a pesszimisták zárolásának lehetőségét is. Amikor egy SMB-ügyfél megnyit egy fájlt, a fájl-hozzáférési és megosztási módot is megadja. Ha "Write" vagy "Read/Write" fájl-hozzáférési lehetőséget ad meg, és a "None" fájlmegosztás mód is megjelenik, akkor a rendszer az SMB-ügyfél zárolja a fájlt, amíg a fájl be nem zárul. Ha a REST-művelet olyan fájlon próbálkozik, ahol az SMB-ügyfél zárolta a fájlt, a REST szolgáltatás a 409 (ütközés) állapotkódot fogja visszaadni a hibakód SharingViolation.  
 
-Ha egy SMB-ügyfél megnyit egy fájlt a delete, azt jelöli meg a fájlt, amíg az összes többi SMB-ügyfél törlése függőben lévő megnyitott kezelőkkel fájl nincs megnyitva. Fájl törlése folyamatban van megjelölve, amíg minden olyan REST-művelet a fájl SMBDeletePending. Hibakód: 409 (Ütközés) állapotkódot ad vissza. Mivel előfordulhat, hogy az SMB-ügyfél eltávolítása előtt a fájl bezárásakor a függőben lévő törlési jelző állapotkód: 404 (nem található) nem adja vissza. 404 (nem található) állapotkódot más szóval csak várható, ha a fájl el lett távolítva. Vegye figyelembe, hogy amíg egy fájlt egy SMB, a függő állapotú törlés van, akkor nem szerepelni fog a tulajdonságlista-fájlok eredmények. Ezenkívül vegye figyelembe, hogy a többi fájl törlése és REST törlése könyvtárműveletek szolgáltatásfrissítést elkötelezettek törlés Függőben állapotba eredményez.  
+Amikor egy SMB-ügyfél egy fájlt nyit meg a törléshez, az a fájlt függőben lévő törlésként jelöli meg, amíg az összes többi SMB-ügyfél nem nyitja meg a fájlt. Míg a fájl függőben lévő törlésként van megjelölve, a fájl REST művelete a 409 (ütközés) állapotkódot fogja visszaadni a hibakód SMBDeletePending. Az 404-as állapotkód (nem található) nem lesz visszaadva, mert lehetséges, hogy az SMB-ügyfél el szeretné távolítani a függőben lévő törlési jelzőt a fájl bezárása előtt. Más szóval a 404 (nem található) állapotkód csak a fájl eltávolításakor várt. Vegye figyelembe, hogy amíg egy fájl egy, az SMB függőben lévő törlési állapotban van, nem fog szerepelni a fájlok listájának eredményei között. Azt is vegye figyelembe, hogy a REST delete fájl-és REST-törlési műveleteit a rendszer atomian véglegesíti, és nem eredményez függőben lévő törlési állapotot.  
 
 További információkért lásd:  
 
-* [Zárolja fájl kezelése](https://msdn.microsoft.com/library/azure/dn194265.aspx)  
+* [Fájlok zárolásának kezelése](https://msdn.microsoft.com/library/azure/dn194265.aspx)  
 
-## <a name="summary-and-next-steps"></a>Összegzés és további lépések
-A Microsoft Azure Storage szolgáltatás úgy lett kialakítva igényeinek a legösszetettebb online alkalmazások veszélyezteti, vagy például egyidejűség és adatkonzisztencia által akkor végrehajtandó fő tervezési feltételezések újragondolja a fejlesztők kényszerítése nélkül nyújtani.  
+## <a name="summary-and-next-steps"></a>Összefoglalás és további lépések
+A Microsoft Azure Storage szolgáltatás úgy lett kialakítva, hogy megfeleljen a legösszetettebb online alkalmazások igényeinek, anélkül, hogy a fejlesztőket kényszeríteni kellene, vagy gondolja át a kulcsfontosságú tervezési feltételezéseket, például a párhuzamosságot és az adatkonzisztenciaot nyújtott.  
 
-A blog hivatkozott teljes mintaalkalmazás:  
+Az ebben a blogban hivatkozott teljes minta alkalmazáshoz:  
 
-* [Az Azure Storage - mintaalkalmazás használata az egyidejűség kezelése](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)  
+* [Egyidejűség kezelése az Azure Storage használatával – minta alkalmazás](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)  
 
-További információ az Azure Storage lásd:  
+Az Azure Storage-ról további információt a következő témakörben talál:  
 
-* [A Microsoft Azure Storage kezdőlapja](https://azure.microsoft.com/services/storage/)
+* [Microsoft Azure Storage Kezdőlap](https://azure.microsoft.com/services/storage/)
 * [A Microsoft Azure Storage bemutatása](storage-introduction.md)
-* Bevezetés a Storage [Blob](../blobs/storage-dotnet-how-to-use-blobs.md), [tábla](../../cosmos-db/table-storage-how-to-use-dotnet.md), [üzenetsorok](../storage-dotnet-how-to-use-queues.md), és [fájlok](../storage-dotnet-how-to-use-files.md)
-* Tároló-architektúra – [az Azure Storage: Magas rendelkezésre állású Felhőbeli Tárolószolgáltatásba erős konzisztencia](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
+* A [blob](../blobs/storage-dotnet-how-to-use-blobs.md), a [tábla](../../cosmos-db/table-storage-how-to-use-dotnet.md), a [várólisták](../storage-dotnet-how-to-use-queues.md)és a [fájlok](../storage-dotnet-how-to-use-files.md) tárolási első lépések
+* Tárolási architektúra – [Azure Storage: Magas rendelkezésre állású felhőalapú tárolási szolgáltatás erős konzisztencia](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
 

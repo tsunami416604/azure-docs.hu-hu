@@ -1,25 +1,26 @@
 ---
-title: Beszélgetés Learner támogatott nyelvek – a Microsoft Cognitive Services |} A Microsoft Docs
+title: Conversation Learner támogatott nyelvek – Microsoft Cognitive Services | Microsoft Docs
 titleSuffix: Azure
 description: ''
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: ef3d50a9d31f86f646ccaea1edaaf46171f174a0
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.author: nitinme
+ROBOTS: NOINDEX
+ms.openlocfilehash: 7870a12ba1338579b02e077d00d365c200ebac1c
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57781867"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705204"
 ---
 # <a name="supported-languages"></a>Támogatott nyelvek
 
-Beszélgetéstanuló jelenleg a következő nyelvekhez és területi beállításokhoz támogatja.
+A Conversation Learner jelenleg a következő nyelveket és területi beállításokat támogatja.
 
 |Támogatott nyelvek| Területi beállítás|
 |-----|----|

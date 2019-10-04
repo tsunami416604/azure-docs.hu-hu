@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 29377492b90f366227ca7bedf85890b7734ea25f
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663417"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62118415"
 ---
 # <a name="configuring-and-using-service-affinity-in-service-fabric"></a>Konfigurálása és a szolgáltatási affinitás használata a Service Fabricben
 Kapcsolat az elsősorban biztosított a vezérlőelem megkönnyítése érdekében a Váltás nagyobb monolitikus alkalmazások, a felhő- és mikroszolgáltatás-alapú világ segítségével. Szolgáltatások teljesítményének növelése, bár ezt egy optimalizálási mellékhatása is van, mivel is használható.

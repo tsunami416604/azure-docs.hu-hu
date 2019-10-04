@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 06/22/2018
 ms.author: twooley
 ms.custom: include file
-ms.openlocfilehash: f5c395bd03fab2613a28aa35c9975ec71ffa34eb
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 8bae952db0bb1617bddcd736fba6fd60652f2ebc
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55885140"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68968878"
 ---
 > [!NOTE]
-> Az Azure Data Lake Storage Gen2 már általánosan elérhető. Azt javasoljuk, hogy még ma használatának megkezdéséhez. További információkért lásd: a [termékoldalán](https://aka.ms/adlsgen2-product).
+> Az Azure Data Lake Storage Gen2 mostantól általánosan elérhető. Javasoljuk, hogy már ma kezdje el használni. További információkért tekintse meg a [termék oldalát](https://aka.ms/adlsgen2-product).
 > 
 
 

@@ -1,5 +1,5 @@
 ---
-title: 'Az Azure AD Connect szinkronizálása: Az architektúra ismertetése |} A Microsoft Docs'
+title: 'Az Azure AD Connect szinkronizálása: Az architektúra – az Azure ismertetése'
 description: Ez a témakör ismerteti az Azure AD Connect-szinkronizálás architektúrája, és a használt kifejezések magyarázatát tartalmazza.
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60a648b24ad16c1b5ea404b5ad9f1f18fd5041da
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: fac0f9143918d3f273812e53abfb88d6a56f7a71
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56193849"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65138585"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-architecture"></a>Az Azure AD Connect szinkronizálása: Az architektúra ismertetése
 Ez a témakör ismerteti az alapszintű architektúra az Azure AD Connect szinkronizálási szolgáltatás. Bizonyos szempontokból hasonlít az rövidítés a MIIS 2003 ILM 2007 és a FIM 2010. Az Azure AD Connect szinkronizálása, ezek a technológiák rendszergazdánál veszi kezdetét. Ha ismeri az esetleges technológiák korábbi, ez a témakör tartalma lesz ismeretlen az Ön számára is. Ha most ismerkedik a szinkronizáláshoz, majd a témakör Önnek szól. Azonban nincs olyan követelmény tudni, hogy ez a témakör a testreszabási (néven a szinkronizálási motor ebben a témakörben) az Azure AD Connect szinkronizálásának részleteit.

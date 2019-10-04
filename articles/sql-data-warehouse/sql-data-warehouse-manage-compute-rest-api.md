@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 03/29/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 658b35163e20d024118bc7a3142c86614540f00c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 5b8652a0b08b426e708a909ff988e51eee9c0821
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59790246"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66476072"
 ---
 # <a name="rest-apis-for-azure-sql-data-warehouse"></a>Az Azure SQL Data warehouse-hoz, a REST API-k
 REST API-k kezelése az Azure SQL Data Warehouse számítási.
@@ -51,6 +51,9 @@ POST https://management.azure.com/subscriptions/{subscription-id}/resourceGroups
 ```
 
 ## <a name="check-database-state"></a>Adatbázis állapotának ellenőrzése
+
+> [!NOTE]
+> Jelenleg ellenőrizze az adatbázis állapota előfordulhat, hogy ONLINE vissza, miközben az adatbázis online munkafolyamat, ezért csatlakozási hibák történtek hiba. Szüksége lehet 2-3 percig késleltetés hozzáadása az alkalmazás kódjában, ha használja az API-hívás való csatlakozási kísérletek.
 
 ```
 GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}?api-version=2014-04-01 HTTP/1.1

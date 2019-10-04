@@ -13,14 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 3576a50cd1510a4da562981ff9ae98e12a357fc9
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 930420240d7b0f116f72056404e809ca94820f11
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317002"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65991427"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Forgatókönyvek és a Media Services-szolgáltatások rendelkezésre állása az egyes adatközpontokban
+
+> [!NOTE]
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még [v3 a v2 migrálási útmutató](../latest/migrate-from-v2-to-v3.md)
 
 A Microsoft Azure Media Services (AMS) lehetővé teszi különböző videó- és hangtartalmak biztonságos feltöltését, tárolását, kódolását és becsomagolását, majd igény szerinti és élő streamként történő továbbítását különböző ügyfelek részére (például tévékészülékekre, számítógépekre és mobileszközökre).
 
@@ -174,7 +177,7 @@ A Media Services ügyfelei **standard** szintű streamvégpontot vagy **prémium
 
 #### <a name="availability"></a>Rendelkezésre állás
 
-|Name (Név)|status|Adatközpontok
+|Name (Név)|Állapot|Adatközpontok
 |---|---|---|
 |Standard|FE|Összes|
 |Prémium|FE|Összes|
@@ -191,7 +194,7 @@ Az AMS két igény szerinti kódolót nyújt: a **Media Encoder Standard** kódo
 
 #### <a name="availability"></a>Rendelkezésre állás
 
-|Médiafeldolgozó neve|status|Adatközpontok
+|Médiafeldolgozó neve|Állapot|Adatközpontok
 |---|---|---|
 |Media Encoder Standard|FE|Összes|
 |Media Encoder Premium-munkafolyamat|FE|Kína kivételével|
@@ -202,10 +205,9 @@ A Médiaelemzés beszéd- és vizuális összetevők gyűjteménye, amely egysze
 
 #### <a name="availability"></a>Rendelkezésre állás
 
-|Médiafeldolgozó neve|status|Adatközpontok
+|Médiafeldolgozó neve|Állapot|Adatközpontok
 |---|---|---|
 |Azure Media Face Detector|Előzetes verzió|Összes|
-|Azure Media Hyperlapse|Előzetes verzió|Összes|
 |Azure Media Indexer|FE|Összes|
 |Azure Media Motion Detector|Előzetes verzió|Összes|
 |Azure Media OCR|Előzetes verzió|Összes|
@@ -220,7 +222,7 @@ A Microsoft Azure Media Services lehetővé teszi a médiatartalmak védelmét a
 
 #### <a name="availability"></a>Rendelkezésre állás
 
-|Titkosítás|status|Adatközpontok|
+|Encryption|Állapot|Adatközpontok|
 |---|---|---| 
 |Storage|FE|Összes|
 |AES-128-kulcsok|FE|Összes|
@@ -246,7 +248,7 @@ További információt a [méretezésről](#scaling) szóló szakaszban talál.
 
 #### <a name="availability"></a>Rendelkezésre állás
 
-|RU típusának neve|status|Adatközpontok
+|RU típusának neve|Állapot|Adatközpontok
 |---|---|---|
 |S1|FE|Összes|
 |S2|FE|Mindenhol, kivéve Dél-Brazíliát és Nyugat-Indiát|

@@ -9,11 +9,11 @@ services: iot-accelerators
 ms.date: 10/05/2018
 ms.topic: conceptual
 ms.openlocfilehash: ccb1a7ff6abbc68f42c7632a8ba7a392b2c48794
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167426"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61447114"
 ---
 # <a name="add-a-custom-flyout-to-the-remote-monitoring-solution-accelerator-web-ui"></a>A távoli figyelési megoldás gyorsító webes felhasználói felületen ad hozzá egy egyéni úszó menü
 
@@ -39,7 +39,7 @@ A folytatás előtt kell végeznie az alábbi cikkekben leírt lépéseket:
 - [Egy egyéni szolgáltatás hozzáadása a távoli figyelési megoldás gyorsító webes felhasználói felületen](iot-accelerators-remote-monitoring-customize-service.md)
 - [Egy egyéni rács ad hozzá a távoli figyelési megoldás gyorsító webes felhasználói felületen](iot-accelerators-remote-monitoring-customize-grid.md)
 
-## <a name="add-a-flyout"></a>Adjon hozzá egy úszó menü
+## <a name="add-a-flyout"></a>Úszó panel hozzáadása
 
 Adjon hozzá egy úszó menü a webes felhasználói Felületére, szüksége adja hozzá a forrásfájlokat, amelyek meghatározzák az úszó menü, és néhány meglévő fájlokat, hogy a webes felhasználói felület az új összetevő tisztában módosításához.
 

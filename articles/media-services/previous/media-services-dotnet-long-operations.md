@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 752c502268ef53d3c0575d92e75ce6a965fccd9f
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59520816"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61464980"
 ---
 # <a name="delivering-live-streaming-with-azure-media-services"></a>Az Azure Media Services élő Stream továbbítása
 
@@ -30,7 +30,7 @@ A Microsoft Azure Media Services kínál kérést küld a műveletek indítása 
 A Media Services .NET SDK biztosítja a kérelem elküldéséhez, és várjon, amíg a művelet végrehajtásához API-k (belsőleg, az API-k vannak lekérdezési művelet folyamatban van a bizonyos időközönként). Ha például meghívásakor csatorna. Start(), a metódus a csatorna indítása után adja vissza. Az aszinkron verziója is használhatja: await csatorna. StartAsync() (feladatalapú aszinkron minta kapcsolatos információkért lásd: [KOPPINTSON](https://msdn.microsoft.com/library/hh873175\(v=vs.110\).aspx)). Egy művelet kérelem küldése, és majd lekérdezi a állapotát, amíg a művelet be nem fejeződik API-k "lekérdezési módszerek" nevezzük. Ezek a metódusok (különösen az aszinkron verzió) használata akkor javasolt gazdagügyfél-alkalmazásokkal és/vagy állapotalapú szolgáltatások.
 
 Vannak helyzetek, ahol egy alkalmazás egy hosszú ideig futó http-kérelem nem várja meg, és kérdezzen le a műveleti folyamatot manuálisan szeretné. Például lehet egy böngészőben, egy állapot nélküli webes szolgáltatással való interakcióhoz: amikor a böngésző csatornát létrehozni, a webszolgáltatás kezdeményezi egy hosszú ideig futó művelet, és adja vissza a művelet azonosítója a böngészőben. A böngésző majd kérheti a webszolgáltatást a azonosító alapján műveleti állapotának beolvasása A Media Services .NET SDK API-k, melyek ebben a forgatókönyvben biztosít. Ezen API-k "nem lekérdezési módszerek" nevezzük.
-A "nem lekérdezési módszerek" rendelkezik a következő elnevezési mintának: Küldés*OperationName*műveletet (például SendCreateOperation). Küldés*OperationName*műveleti metódusoknál adja vissza a **IOperation** objektum; a visszaadott objektum tartalmaz információkat, amelyek segítségével nyomon követheti a műveletet. A Küldés*OperationName*OperationAsync módszerek is szolgálnak **feladat\<IOperation >**.
+A "nem lekérdezési módszerek" rendelkezik a következő elnevezési mintának: Küldés*OperationName*műveletet (például SendCreateOperation). Küldés*OperationName*műveleti metódusoknál adja vissza a **IOperation** objektum; a visszaadott objektum tartalmaz információkat, amelyek segítségével nyomon követheti a műveletet. A Küldés*OperationName*OperationAsync módszerek is szolgálnak **feladat\<IOperation >** .
 
 A következő osztályok jelenleg nem lekérdezési módszereket támogatja:  **Csatorna**, **Streamvégpontok**, és **Program**.
 

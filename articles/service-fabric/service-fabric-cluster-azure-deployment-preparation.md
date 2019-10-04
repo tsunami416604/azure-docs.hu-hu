@@ -1,11 +1,10 @@
 ---
-title: Az Azure Service Fabric-fürt központi telepítésének megtervezése |} A Microsoft Docs
-description: Ismerje meg tervezése és előkészítése a Service Fabric fürtök üzembe helyezése az Azure-bA egy éles üzemi környezetek részei.
+title: Azure Service Fabric-fürt üzembe helyezésének megtervezése | Microsoft Docs
+description: Ismerje meg, hogyan tervezheti meg és készítse elő az Azure-beli üzemi Service Fabric-fürtök üzembe helyezését.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
-editor: aljo
 ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -13,66 +12,66 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/20/2019
-ms.author: aljo
-ms.openlocfilehash: 0f3a9010805ec1a18490f6f530f60d7a3c763398
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.author: atsenthi
+ms.openlocfilehash: a130e9bc8859360704c9be1c0a7fe066d2ed4567
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663238"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68600004"
 ---
-# <a name="plan-and-prepare-for-a-cluster-deployment"></a>Tervezés és felkészülés egy fürt üzembe helyezése
+# <a name="plan-and-prepare-for-a-cluster-deployment"></a>A fürt üzembe helyezésének megtervezése és előkészítése
 
-Tervezés és felkészülés egy éles fürtök üzembe helyezése nagyon fontos.  Nincsenek számos tényezőt kell figyelembe venni.  Ez a cikk végigvezeti a lépéseken, a fürt üzembe helyezés előkészítése.
+Éles fürtök üzembe helyezésének tervezése és előkészítése nagyon fontos.  Számos szempontot figyelembe kell venni.  Ez a cikk végigvezeti a fürt üzembe helyezésének előkészítésének lépésein.
 
-## <a name="read-the-best-practices-information"></a>Az ajánlott eljárások adatok olvasása
-Az Azure Service Fabric-alkalmazások és -fürtök felügyelete a sikeres, vannak, hogy kifejezetten ajánljuk a megbízhatóság az éles környezet optimalizálása hajt végre műveleteket.  További információkért olvassa el [gyakorlati tanácsok a Service Fabric-alkalmazás és fürt](service-fabric-best-practices-overview.md).
+## <a name="read-the-best-practices-information"></a>Az ajánlott eljárásokat ismertető információk
+Az Azure Service Fabric-alkalmazások és-fürtök sikeres kezeléséhez olyan műveletekre van szükség, amelyeket kifejezetten ajánlott elvégezni az éles környezet megbízhatóságának optimalizálása érdekében.  További információért olvassa el [Service Fabric alkalmazás-és fürt ajánlott eljárásait](service-fabric-best-practices-overview.md).
 
-## <a name="select-the-os-for-the-cluster"></a>A fürt operációs rendszerének kiválasztása
-A Service Fabric lehetővé teszi, hogy minden olyan virtuális gépeket vagy a Windows Server vagy Linux rendszerű számítógépeken a Service Fabric-fürtök létrehozásához.  A fürt üzembe helyezése előtt ki kell választania az operációs rendszer:  Windows vagy Linux.  A fürt minden csomópontján (virtuális gép) futtatja az ugyanazon operációs rendszer, nem használhatók vegyesen Windows és Linux rendszerű virtuális gépek ugyanazon fürt.
+## <a name="select-the-os-for-the-cluster"></a>Válassza ki a fürt operációs rendszerét
+Service Fabric lehetővé teszi Service Fabric-fürtök létrehozását a Windows Servert vagy Linuxot futtató virtuális gépeken vagy számítógépeken.  A fürt üzembe helyezése előtt ki kell választania az operációs rendszert:  Windows vagy Linux.  A fürt minden csomópontja (virtuális gép) ugyanazt az operációs rendszert futtatja, nem keverheti össze a Windows-és Linux-alapú virtuális gépeket ugyanabban a fürtben.
 
 ## <a name="capacity-planning"></a>Kapacitástervezés
-Éles rendszerek üzembe a kapacitástervezés egy fontos lépés. Az alábbiakban néhány dolog láthat, amelyet érdemes a folyamat részeként figyelembe vennie.
+Az éles üzembe helyezéshez a kapacitás megtervezése fontos lépés. Az alábbiakban néhány dolog láthat, amelyet érdemes a folyamat részeként figyelembe vennie.
 
-* A csomóponttípusok a fürt kezdeti száma 
-* Az egyes csomóponttípusok (mérete, elsődleges példányok száma, az internetre irányuló, virtuális gépek száma stb.) tulajdonságai
+* A fürthöz tartozó csomópont-típusok kezdeti száma 
+* A csomópontok típusának tulajdonságai (méret, példányok száma, elsődleges, internetre irányuló, virtuális gépek száma stb.)
 * A fürt megbízhatóságra és tartósságra vonatkozó jellemzői.
 
-### <a name="select-the-initial-number-of-node-types"></a>Válassza ki a kezdeti csomóponttípusok száma
-Először döntse el, mi a fürt létrehozásakor fog használni a. Milyen típusú alkalmazásokat kíván a fürt üzembe helyezése a? Az alkalmazás nem rendelkezik több szolgáltatást, és ezek közül bármelyik szükséges nyilvános vagy az internetre? Rendelkezik a szolgáltatások (alkotó az alkalmazás) infrastruktúra különböző igényeinek megfelelően, például a nagyobb RAM vagy nagyobb CPU-ciklusok? Service Fabric-fürt több csomóponttípus is állhat: egy elsődleges csomóponttípusok és a egy vagy több nem elsődleges csomóponttípusok. Mindegyik csomóponttípus van rendelve egy virtuálisgép-méretezési csoportot. Ezután mindegyik csomóponttípus egymástól függetlenül skálázható vertikálisan le vagy fel, eltérő nyitott portokkal rendelkezhet, és eltérő kapacitásmetrikái lehetnek. [Csomópont tulajdonságai és elhelyezési korlátozások] [ placementconstraints] korlátozhatja az adott szolgáltatások adott csomóponttípusok is beállítható.  További információkért olvassa el [kell kezdődnie a fürt csomóponttípusok száma](service-fabric-cluster-capacity.md#the-number-of-node-types-your-cluster-needs-to-start-out-with).
+### <a name="select-the-initial-number-of-node-types"></a>Válassza ki a csomópontok típusának kezdeti számát
+Először is meg kell állapítania, hogy a létrehozandó fürt milyen módon lesz használatban. Milyen típusú alkalmazásokat kíván telepíteni a fürtbe? Az alkalmazása több szolgáltatással rendelkezik, és ezek közül bármelyiknek nyilvánosnak vagy internetkapcsolatnak kell lennie? Különböző infrastrukturális igényeket (például nagyobb RAM-ot vagy magasabb CPU-ciklusokat) igényelnek a szolgáltatásai (az alkalmazást alkotó alkalmazások)? Egy Service Fabric fürt több csomópontból állhat: egy elsődleges csomópont-típusból és egy vagy több nem elsődleges csomópont típusból. Mindegyik csomópont-típus egy virtuálisgép-méretezési csoportra van leképezve. Ezután mindegyik csomóponttípus egymástól függetlenül skálázható vertikálisan le vagy fel, eltérő nyitott portokkal rendelkezhet, és eltérő kapacitásmetrikái lehetnek. A [csomópont-tulajdonságok és elhelyezési][placementconstraints] megkötések beállítható úgy, hogy bizonyos szolgáltatásokat bizonyos csomópont-típusokra korlátozzanak.  További információért olvassa el [a fürthöz szükséges csomópontok számát](service-fabric-cluster-capacity.md#the-number-of-node-types-your-cluster-needs-to-start-out-with).
 
-### <a name="select-node-properties-for-each-node-type"></a>Válassza ki az egyes csomóponttípusok csomópont tulajdonságai
-A társított méretezési csomóponttípusok határozzák meg a Virtuálisgép-Termékváltozat, szám és a virtuális gépek tulajdonságait.
+### <a name="select-node-properties-for-each-node-type"></a>Csomópont-tulajdonságok kiválasztása minden csomópont-típushoz
+A csomópont-típusok a társított méretezési csoportba tartozó virtuális gépek SKU-azonosítóját, számát és tulajdonságait határozzák meg.
 
-Az egyes csomóponttípusok virtuális gép minimális mérete határozza meg a [tartóssági szint] [ durability] typ uzlu ki.
+Az egyes csomópont-típusokhoz tartozó virtuális gépek minimális méretét a csomópont típusához választott [tartóssági szint][durability] határozza meg.
 
-A minimális számú virtuális gépet az elsődleges csomópont típusa határozza meg a [megbízhatósági szint] [ reliability] választja.
+Az elsődleges csomópont típusához tartozó virtuális gépek minimális számát a választott megbízhatósági [szint][reliability] határozza meg.
 
-Tekintse meg a minimális javaslatok [elsődleges csomóponttípusok](service-fabric-cluster-capacity.md#primary-node-type---capacity-guidance), [nem elsődleges csomóponttípusok az állapotalapú alkalmazások és szolgáltatások](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateful-workloads), és [állapot nélküli munkaterhelés nem elsődleges csomóponttípusok a](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateless-workloads). 
+Tekintse meg az [elsődleges csomópontok típusaira](service-fabric-cluster-capacity.md#primary-node-type---capacity-guidance)vonatkozó minimális javaslatokat, a [nem elsődleges csomópont-típusokra vonatkozó állapot-nyilvántartó](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateful-workloads)munkaterheléseket, valamint az [állapot nélküli munkaterheléseket a nem elsődleges csomópontok típusainál](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateless-workloads). 
 
-Bármely több, mint a csomópontok minimális száma alapján kell, hogy ennek a csomóponttípusnak futtatni kívánt alkalmazás/szolgáltatás replikák száma.  [Kapacitás megtervezése a Service Fabric-alkalmazások](service-fabric-capacity-planning.md) segítséget nyújt az alkalmazások futtatásához szükséges erőforrásokat becslései szerint. Mindig a fürt vertikális felskálázás vagy lefelé később módosíthatja a változó az alkalmazás számítási feladatait. 
+A csomópontok minimális számánál nagyobbnak kell lennie az ebben a csomópont-típusban futtatni kívánt alkalmazás/szolgáltatások replikáinak száma alapján.  [Service Fabric alkalmazások kapacitásának](service-fabric-capacity-planning.md) megtervezése segít megbecsülni az alkalmazások futtatásához szükséges erőforrásokat. Az alkalmazások számítási feladatainak módosításához a későbbiekben akár később, akár lejjebb is méretezheti a fürtöt. 
 
-### <a name="select-the-durability-and-reliability-levels-for-the-cluster"></a>Válassza ki a fürt a tartósság és a megbízhatósági szintek
-A tartóssági szint, amelyek jelzik, hogy a rendszer a jogosultságokat, amely a virtuális gépek rendelkeznek az alapul szolgáló Azure-infrastruktúra-szolgál. Az elsődleges csomóponttípushoz Ez a jogosultság lehetővé teszi a Service Fabric bármely virtuális gép szintű infrastruktúra kérelem (például egy virtuális gép újraindítása, a virtuális gép rendszerképét alaphelyzetbe állítani vagy a virtuális gépek migrálása), amely hatással van a kvórum követelményei a helyrendszeri szolgáltatások és az állapotalapú szolgáltatások felfüggesztését. Ez a jogosultság nem elsődleges csomóponttípusok megállítja a virtuális gép szintű infrastruktúra kérések eredményéről (például a virtuális gép újraindítása, a virtuális gép rendszerképét alaphelyzetbe állítani és a virtuális gépek migrálása), amely hatással van a kvórum követelményei az állapotalapú szolgáltatások Service Fabric lehetővé teszi.  A magánfelhőmodell előnyeit a különböző szintek és használni, és amikor, hogy milyen szintű ajánlásokat [a fürt tartóssági jellemzőit][durability].
+### <a name="select-the-durability-and-reliability-levels-for-the-cluster"></a>A fürt tartóssági és megbízhatósági szintjeinek kiválasztása
+A tartóssági szint azt jelzi, hogy a rendszer a virtuális gépek által a mögöttes Azure-infrastruktúrához tartozó jogosultságokat használja. Az elsődleges csomópont típusában ez a jogosultság lehetővé teszi, hogy a Service Fabric szüneteltetni lehessen a rendszerszolgáltatások és az állapot-nyilvántartó szolgáltatások Kvórumának követelményeit érintő virtuálisgép-szintű infrastruktúra-kérelmeket (például a virtuális gépek újraindítását, a virtuális gépek rendszerképét vagy a virtuális gépek áttelepítését). A nem elsődleges csomópontok típusainál ez a jogosultság lehetővé teszi, hogy a Service Fabric szüneteltetni lehessen a virtuálisgép-szintű infrastruktúra-kérelmeket (például a virtuális gépek újraindítását, a virtuális gép rendszerképét és a virtuális gépek áttelepítését), amelyek hatással vannak az állapot-nyilvántartó szolgáltatásokra  A különböző szintek és javaslatok előnyeit, amelyeken a használni kívánt szintet és a-t használja, tekintse meg a [fürt tartóssági jellemzőit][durability].
 
-A megbízhatósági szint segítségével állítsa be a replikákat a rendszer szolgáltatások a fürtben futó az elsődleges csomóponttípushoz kívánt számát. A további a replikák száma, a megbízhatóbb a helyrendszeri szolgáltatások vannak, a fürtben.  A magánfelhőmodell előnyeit a különböző szintek és használni, és amikor, hogy milyen szintű ajánlásokat [a fürt megbízhatósági jellemzőit][reliability]. 
+A megbízhatósági szint azon rendszerszolgáltatások replikáinak a megadására szolgál, amelyeket ebben a fürtben szeretne futtatni az elsődleges csomópont típusán. Minél több replikát, annál megbízhatóbb a rendszerszolgáltatások a fürtben.  A különböző szintek és javaslatok előnyeit, amelyeken a használni kívánt szintet és a-t használja, tekintse meg a [fürt megbízhatósági jellemzőit][reliability]. 
 
 ## <a name="enable-reverse-proxy-andor-dns"></a>Fordított proxy és/vagy DNS engedélyezése
-Szolgáltatások csatlakozik egymáshoz egy fürtben általában közvetlenül hozzáférhet a végpontok az más szolgáltatások, mert a fürt csomópontjainak azonos helyi hálózatra. Legyen a csatlakoztathatók a szolgáltatások közötti, a Service Fabric kiegészítő szolgáltatásokat nyújtja: A [DNS-szolgáltatás](service-fabric-dnsservice.md) és a egy [fordított proxy szolgáltatás](service-fabric-reverseproxy.md).  Mindkét szolgáltatás engedélyezhető, ha a fürt üzembe helyezése.
+A fürtön belül egymáshoz csatlakozó szolgáltatások általában közvetlenül hozzáférhetnek más szolgáltatások végpontjait, mert a fürt csomópontjai ugyanazon a helyi hálózaton találhatók. Ahhoz, hogy könnyebb legyen csatlakozni a szolgáltatások között, Service Fabric további szolgáltatásokat nyújt: Egy [DNS-szolgáltatás](service-fabric-dnsservice.md) és egy [fordított proxy szolgáltatás](service-fabric-reverseproxy.md).  A fürt telepítésekor mindkét szolgáltatás engedélyezhető.
 
-Óta számos szolgáltatás különösen tárolóalapú szolgáltatásokat is rendelkezik egy meglévő URL-címet, ezek elhárításához használatával a standard DNS protokoll (helyett az elnevezési szolgáltatásban protokoll) magától kényelmes, különösen az alkalmazások "átemelése" forgatókönyvek. Ez a pontosan, a DNS-szolgáltatás leírása. Lehetővé teszi, hogy a DNS-név leképezése a szolgáltatás nevét, és ezért a végpont IP-címek feloldása.
+Mivel számos szolgáltatás – különösen a tároló-szolgáltatások – rendelkezhet egy meglévő URL-névvel, amely képes a szabványos DNS protokoll használatával (a elnevezési szolgáltatás protokoll helyett), különösen az alkalmazás "lift and SHIFT" forgatókönyvekben való feloldására. Pontosan ez a DNS-szolgáltatás. Lehetővé teszi a DNS-nevek hozzárendelését a szolgáltatás neveként, így a végponti IP-címek feloldását.
 
-A fordított proxy-címek (beleértve a HTTPS) HTTP-végpontokat tesznek közzé szolgáltatások a fürtben. A fordított proxy jelentősen leegyszerűsíti a más szolgáltatások meghívása azáltal, hogy egy adott URI-formátum.  A fordított proxy kezelésére is alkalmas a feloldás, csatlakozzon, és próbálkozzon újra egy másik kommunikálni egy szolgáltatáshoz szükséges lépéseket.
+A fordított proxy a fürtben a HTTP-végpontokat (a HTTPS-t is beleértve) elérhetővé teszi. A fordított proxy nagy mértékben leegyszerűsíti az egyéb szolgáltatások meghívását egy adott URI-formátum megadásával.  A fordított proxy az egyes szolgáltatásokhoz szükséges feloldási, csatlakozási és újrapróbálkozási lépéseket is kezeli.
 
 ## <a name="prepare-for-disaster-recovery"></a>Felkészülés vészhelyreállításra
-Magas rendelkezésre állás biztosítása kritikus része annak ellenőrzése, hogy szolgáltatásokat az összes különböző típusú hibák hibatűrését. Ez különösen fontos a nem tervezett hibák és a hatáskörén kívül esik. [Felkészülés vészhelyreállításra](service-fabric-disaster-recovery.md) néhány gyakori hibaállapotra katasztrófák lehet, ha nem modellezése, és megfelelően felügyelt ismerteti. Megoldások és a teendő, ha vészhelyzet történt ennek ellenére is ismerteti.
+A magas rendelkezésre állás megvalósításának kritikus része annak biztosítása, hogy a szolgáltatások képesek legyenek túlélni az összes különböző típusú hibát. Ez különösen fontos a nem tervezett és a vezérlőn kívüli hibák esetén. [A](service-fabric-disaster-recovery.md) vész-helyreállítási előkészületek olyan gyakori meghibásodási módokat ismertetnek, amelyek a modellezés és a kezelés nem megfelelő kezelése esetén lehetnek katasztrófák. Emellett azt is ismerteti, hogy milyen kockázatcsökkentő és műveletek történnek, ha a katasztrófa amúgy is történt.
 
 ## <a name="production-readiness-checklist"></a>Termelési készenlét ellenőrzőlistája
-Az alkalmazás és a fürt készen áll az éles forgalmat is? A fürt telepítése éles környezetbe, mielőtt haladjon végig a [éles készültségi ellenőrzőlista](service-fabric-production-readiness-checklist.md). Tartsa meg az alkalmazás és a fürt feldolgozása révén a feladatlista elemeinek működőkre. Erősen ajánlott ezeket éles környezetben való elhelyezés előtt ellenőrizni kell az összes elemet.
+Készen áll az alkalmazás és a fürt a termelési forgalom elvégzésére? Mielőtt üzembe helyezné a fürtöt az éles környezetben, futtassa az [éles készültségi ellenőrzőlistát](service-fabric-production-readiness-checklist.md). Az alkalmazás és a fürt zökkenőmentesen működik az ellenőrzőlista elemeinek használatával. Erősen ajánlott az összes ilyen elemet kijelölni az éles környezetben való üzembe helyezés előtt.
 
 ## <a name="next-steps"></a>További lépések
-* [A Windows rendszert futtató Service Fabric-fürt létrehozása](service-fabric-best-practices-overview.md)
-* [Linux operációs rendszert futtató Service Fabric-fürt létrehozása](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
+* [Windows rendszerű Service Fabric-fürt létrehozása](service-fabric-best-practices-overview.md)
+* [Linux rendszerű Service Fabric-fürt létrehozása](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
 
 [placementconstraints]: service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints
 [durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster

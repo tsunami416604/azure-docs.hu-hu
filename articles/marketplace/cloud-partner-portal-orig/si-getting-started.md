@@ -1,25 +1,18 @@
 ---
-title: Ismerkedés az értékesítői Insights |} A Microsoft Docs
+title: Ismerkedés az értékesítői insights szolgáltatással
 description: A Cloud Partner portálra, az értékesítői elemzés szolgáltatás bemutatása.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.author: pbutlerm
-ms.openlocfilehash: f9bcc05fb02d2324d0546f2ed8286b27e5f8e296
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.author: pabutler
+ms.openlocfilehash: 6c903c87bc153864381a3f1763afaeeb7796090a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810545"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64943055"
 ---
 <a name="getting-started-with-seller-insights"></a>Ismerkedés az értékesítői insights szolgáltatással
 ====================================

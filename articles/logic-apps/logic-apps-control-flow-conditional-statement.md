@@ -10,11 +10,11 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 10/09/2018
 ms.openlocfilehash: 9ee484971e217b0ca4dd7ad855e9e6dc3313e5d4
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230335"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60684810"
 ---
 # <a name="create-conditional-statements-that-control-workflow-actions-in-azure-logic-apps"></a>Hozzon létre feltételes utasításokat, amelyek vezérlik a munkafolyamat-műveletek az Azure Logic Appsben
 
@@ -39,13 +39,13 @@ Tegyük fel például, egy logikai alkalmazást, amely túl sok e-mailt küld, a
 
 1. Adjon hozzá egy feltételt a kívánt helyen található. 
 
-   Lépések közötti feltétel hozzáadása, vigye az egérmutatót a nyíl felett, amelyre a feltétel hozzáadása. Válassza ki a **plusz jelre** (**+**), amely akkor jelenik meg, majd válassza a **művelet hozzáadása**. Példa:
+   Lépések közötti feltétel hozzáadása, vigye az egérmutatót a nyíl felett, amelyre a feltétel hozzáadása. Válassza ki a **plusz jelre** ( **+** ), amely akkor jelenik meg, majd válassza a **művelet hozzáadása**. Példa:
 
    ![Lépések közötti művelet hozzáadása](./media/logic-apps-control-flow-conditional-statement/add-action.png)
 
    Ha szeretne hozzáadni egy feltételt, alján, a logikai alkalmazás a munkafolyamat végén **új lépés** > **művelet hozzáadása**.
 
-1. A Keresés mezőbe írja be a "feltétel" szűrőként. Válassza a következő műveletet: **feltétel – szabályozza**
+1. A Keresés mezőbe írja be a "feltétel" szűrőként. Ez a művelet kiválasztása: **Az állapot - ellenőrzés**
 
    ![Feltétel hozzáadása](./media/logic-apps-control-flow-conditional-statement/add-condition.png)
 

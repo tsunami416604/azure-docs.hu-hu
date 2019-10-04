@@ -1,95 +1,96 @@
 ---
-title: Entitások használata a beszélgetés Learner modell – a Microsoft Cognitive Services |} A Microsoft Docs
+title: Az entitások használata Conversation Learner modellel – Microsoft Cognitive Services | Microsoft Docs
 titleSuffix: Azure
-description: Ismerje meg, hogyan használhatja az entitásokat a beszélgetés Learner modellel.
+description: Ismerje meg, hogyan használhatók Conversation Learner modellel rendelkező entitások.
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: a42a2ec36d9ce4fb9c139dfddcde0fe0c188c888
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.author: nitinme
+ROBOTS: NOINDEX
+ms.openlocfilehash: cba12b6c09c1bdbf4e8f7841676a609c34109d93
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55210352"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707334"
 ---
-# <a name="introduction-to-entities"></a>Entitások bemutatása
+# <a name="introduction-to-entities"></a>Az entitások bemutatása
 
-Ez az oktatóanyag bemutatja a entitásokat, kizárásának entitások, szükséges entitások és azok Beszélgetéstanuló belüli használat.
+Ez az oktatóanyag bemutatja az entitásokat, az entitásokat, a szükséges entitásokat és azok használatát Conversation Learneron belül.
 
 ## <a name="video"></a>Videó
 
-[![Bevezetés az entitások oktatóanyag előzetes verzió](https://aka.ms/cl_Tutorial_v3_IntroEntities_Preview)](https://aka.ms/cl_Tutorial_v3_IntroEntities)
+[![Bevezetés az entitások oktatóanyagának előzetes verziójába](https://aka.ms/cl_Tutorial_v3_IntroEntities_Preview)](https://aka.ms/cl_Tutorial_v3_IntroEntities)
 
 ## <a name="requirements"></a>Követelmények
 
-Ehhez az oktatóanyaghoz, hogy az általános oktatóanyag Bot fut.
+Ehhez az oktatóanyaghoz az általános oktatóanyag robotjának futtatására van szükség
 
     npm run tutorial-general
 
 ## <a name="details"></a>Részletek
 
-Entitások, amelyek a robot kell elvégezni a feladatot, kinyerési felhasználói utterances vagy egyéni kód hozzárendelés keresztül információk rögzítése. Entitások maguk is kijelölhetjük művelet rendelkezésre állása által éppen explicit módon kell besorolni "Kötelező" vagy "Kizárásának."
+Az entitások rögzítik azokat az információkat, amelyeket a robotnak el kell végeznie a feladat elvégzéséhez a felhasználói hosszúságú kimondott szöveg való kivonás vagy egyéni kód szerinti hozzárendelés útján. Az entitások maguk is korlátozhatja a beavatkozások rendelkezésre állását azáltal, hogy explicit módon "kötelező" vagy "nem megfelelő" minősítéssel vannak osztályozva.
 
-- Szükséges entitások szerepelnie kell a modellt a memóriában ahhoz, hogy a művelet csak akkor érhető el
-- Entitások kizárásának kell *nem* szerepelnie a modellben a memóriában ahhoz, hogy a művelet csak akkor érhető el
+- Ahhoz, hogy a művelet elérhető legyen, a szükséges entitásoknak jelen kell lenniük a modell memóriájában.
+- A nem megfelelő entitások *nem* lehetnek jelen a modell memóriájában ahhoz, hogy a művelet elérhető legyen
 
-Ez az oktatóanyag az egyéni entitások összpontosít. Előre betanított, többértékű, negálható programozott alá tartozó alanyokra és jelennek meg a többi.
+Ez az oktatóanyag az egyéni entitásokra koncentrál. Az előre betanított, többértékű, megtagadható entitások és programozott entitások más oktatóanyagokban is elérhetők.
 
 ## <a name="steps"></a>Lépések
 
 ### <a name="create-the-model"></a>A modell létrehozása
 
-1. A webes felhasználói felületén kattintson az "új Model" kifejezésekre.
-2. A "Name" mezőben írja be a "IntroToEntities" és az enter.
-3. A "Létrehozás" gombra.
+1. A webes felhasználói felületen kattintson az "új modell" elemre.
+2. A "név" mezőbe írja be a "IntroToEntities" kifejezést, és nyomja le az ENTER billentyűt.
+3. Kattintson a "létrehozás" gombra.
 
 ### <a name="entity-creation"></a>Entitás létrehozása
 
-1. A bal oldali panelen kattintson a "Entitás", majd az "Új entitás" gombra.
-2. Válassza ki a "Custom betanított" a "entitástípus."
-3. Írja be a "city" a "entitás neve."
-4. A "Létrehozás" gombra.
+1. A bal oldali panelen kattintson az "entitások", majd az "új entitás" gombra.
+2. Válassza a "Custom betanítva" lehetőséget az "entitás típusa" elemnél.
+3. Írja be a "város" kifejezést az "entitás neve" értékre.
+4. Kattintson a "létrehozás" gombra.
 
 > [!NOTE]
-> A "Custom betanított" entitástípus azt jelenti, hogy az entitás is vélik, ellentétben más típusú entitásokat.
+> A "Custom betanított" entitás típusa azt jelenti, hogy ez az entitás kitanítható, más típusú entitásokkal ellentétben.
 
 ### <a name="create-the-actions"></a>A műveletek létrehozása
 
-1. A bal oldali panelen kattintson a "Műveletek", majd az "Új Action" gombra.
-2. A "Bot a válaszban..." mezőbe írja be a "Nem tudom, melyik városban kívánt."
-3. A "Kizárásának entitások" mezőben írja be a "city".
-4. A "Létrehozás" gombra.
+1. A bal oldali panelen kattintson a "műveletek", majd az "új művelet" gombra.
+2. A "bot válaszában..." mezőben írja be a következőt: "nem tudom, hogy melyik várost szeretné."
+3. A "nem feljogosító entitások" mezőben írja be a "City" kifejezést.
+4. Kattintson a "létrehozás" gombra.
 
 > [!NOTE]
-> Hozzáadása a "city" entitás "Kizárásának entitások" lenne, akkor diszkvalifikálhatjuk, ennek a műveletnek a robot szempont, ha a "city" entitás van definiálva a robot a memóriában.
+> Ha a "város" entitást "az entitások kizárása" értékkel adja hozzá, akkor a robot által érintett "város" entitást a bot memóriájában kell megállapítania.
 
 Most hozzon létre egy második műveletet.
 
-1. A bal oldali panelen kattintson a "Műveletek", majd az "Új Action" gombra.
-2. A "Bot a válaszban..." mezőbe írja be a "a $city az időjárás Ez valószínűleg napsütéses."
-3. A "Létrehozás" gombra.
+1. A bal oldali panelen kattintson a "műveletek", majd az "új művelet" gombra.
+2. A "bot válaszában..." mezőjébe írja be a következőt: "az időjárás a $city valószínűleg napos."
+3. Kattintson a "létrehozás" gombra.
 
 > [!NOTE]
-> A "city" entitás hozzá lett adva automatikusan a szükséges entitásainak listája a válaszban hivatkozással.
+> A "város" entitást a rendszer automatikusan felvette a szükséges entitások listájában a válaszra való hivatkozással.
 
 ![](../media/tutorial3_actions.PNG)
 
-### <a name="train-the-model"></a>A modell betanítását
+### <a name="train-the-model"></a>A modell betanítása
 
-1. A bal oldali panelen kattintson a "Train-párbeszédpanelekhez", majd az "új Train" gomb.
-2. A Csevegés panelen, ahol allocated "Írja be az üzenetet...", típus a "hello".
-    - Ez szimulálja a beszélgetést a felhasználó oldalán.
-3. A "Score műveletek" gombra.
-4. Válassza ki a választ, a "Nem tudom, melyik városban kívánt."
-5. A felhasználó a "Seattle" válaszol.
-6. A "Score műveletek" gombra.
-7. Válassza ki a választ, a "$city az időjárás valószínűleg napsütéses."
-8. A "Mentés" gombra.
+1. A bal oldali panelen kattintson a "betanítási párbeszédablakok", majd az "új vonat párbeszédpanel" gombra.
+2. Írja be a "Hello" kifejezést a csevegés panelen, ahol a "begépelheti az üzenetet..." kifejezést.
+    - Ez szimulálja a beszélgetés felhasználójának oldalát.
+3. Kattintson a "pontszám műveletek" gombra.
+4. Válassza ki a választ, "nem tudom, melyik várost szeretné."
+5. Felhasználóként válaszoljon a "Seattle" kifejezésre.
+6. Kattintson a "pontszám műveletek" gombra.
+7. Válassza ki a választ, "az időjárás $city valószínűleg napos."
+8. Kattintson a Save (Mentés) gombra.
 
 ![](../media/tutorial3_entities.PNG)
 

@@ -7,19 +7,19 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2018
 ms.author: magattus
-ms.openlocfilehash: eac699a68558f0a8c9f94f0a8b75aabee561ebb3
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 488f7bc4cb715e9cdb99b7a7c79407b9bbc0d29c
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60006000"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593600"
 ---
 # <a name="azure-cdn-pop-locations-by-abbreviation"></a>Az Azure CDN POP-helyek rövidítés alapján
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "60006000"
 
 Ez a cikk felsorolja a POP-helyek, a jelenléti pontra Irányíthatja rövidítése, rendezve **verizon Azure CDN**.
 
-Rövidítés | Location egység | Régió
+Rövidítés | Location | Régió
 | --- | --- | --- |
 AGA | Atlanta, Grúzia, USA | Észak-Amerika esetén: USA keleti parti
 AGB | Atlanta, Grúzia, USA | Észak-Amerika esetén: USA keleti parti
@@ -41,7 +41,7 @@ AMS | Amszterdam, Hollandia | Európa
 ARN | Stockholm, Svédország | Európa
 ATL | Atlanta, Grúzia, USA | Észak-Amerika esetén: USA keleti parti
 BAQ | Barranquilla, Kolumbia | Latin-Amerika
-BLR | Bangalore, India | Ázsia
+BLR | Bengaluru (Bangalore), India | Ázsia
 BNJ | Amerikai Egyesült Államok New Jersey zártuk | Észak-Amerika esetén: USA keleti parti
 BOS | Boston, Massachusetts, USA | Észak-Amerika esetén: USA keleti parti
 BTH | Batam, Indonézia | Ázsia
@@ -131,7 +131,7 @@ POX | Párizs, Franciaország | Európa
 QRO | Santiago de Querétaro, Mexico | Észak-Amerika
 RHV | A San Jose, California, USA | Észak-Amerika esetén: USA nyugati partján
 RIB | Rio de Janeiro, Brazília | Latin-Amerika
-RIX | Riga, Lettország | Európa
+RIX | Riga, Latvia | Európa
 RTM | Amszterdam, Hollandia | Európa
 SAA | A San Jose, California, USA | Észak-Amerika esetén: USA nyugati partján
 SAB | A San Jose, California, USA | Észak-Amerika esetén: USA nyugati partján

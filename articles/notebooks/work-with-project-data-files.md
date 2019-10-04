@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
 ms.openlocfilehash: b522b0bd641d0147518843b11be4cd3a1430ae20
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59265338"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60240435"
 ---
 # <a name="work-with-data-files-in-azure-notebook-projects"></a>Az adatfájlokat az Azure-jegyzetfüzet projektek használata
 
@@ -62,11 +62,11 @@ Közzétehet fájlokat a projektbe a projekt irányítópultján, illetve egy fu
 
 1. Az a **feltöltési állapot** előugró ablak, amely akkor jelenik meg, válassza ki a **célmappa** a legördülő listából:
 
-    - Munkamenet-mappa (*~/* ): Feltölti az aktuális munkamenetbe notebook fájlokat, de nem hoz létre fájlokat a projektben. A munkamenet mappa társ a mappájára, de nem tárol, miután a munkamenet azért ér véget. A kódban munkamenet fájlok eléréséhez, a fájlneveket, a következő relatív elérési előtag *... /*.
+    - Munkamenet-mappa ( *~/* ): Feltölti az aktuális munkamenetbe notebook fájlokat, de nem hoz létre fájlokat a projektben. A munkamenet mappa társ a mappájára, de nem tárol, miután a munkamenet azért ér véget. A kódban munkamenet fájlok eléréséhez, a fájlneveket, a következő relatív elérési előtag *... /* .
 
         A munkamenet mappa használata Kísérletezési hasznos, és elkerülhető, hogy a projekt elárasztanák rendelkező fájlokat is, illetve előfordulhat, hogy nem kell a hosszú távon. A munkamenet-mappába, amelyeket azonos nevek a projekt fájlokat anélkül, hogy ez ütközéseket, és nevezze át a fájlokat anélkül is feltölthet fájlokat. Tegyük fel például, a egy verziójával rendelkezik *data.csv* a projektben már, de szeretné kísérletezhet a különböző verzióit *data.csv*. A fájl feltöltésével a munkamenet-mappába, a jegyzetfüzet-adatok a feltöltött fájl a futtathatja (az arra való hivatkozás a kód használatával *... /Data.csv*) ahelyett, hogy a projekt fájlban lévő adatokat.
 
-    - Projektmappa (*/project*): feltölti a fájlokat a projektbe, ahol el lehet elérni a relatív elérési használata a kódban. Ha fájlt tölt fel a mappa ugyanaz, mint a projekt irányítópultján fájlt feltölteni. A fájl is mentve lesz a projektet, és későbbi munkamenetek érhető el.
+    - Projektmappa ( */project*): feltölti a fájlokat a projektbe, ahol el lehet elérni a relatív elérési használata a kódban. Ha fájlt tölt fel a mappa ugyanaz, mint a projekt irányítópultján fájlt feltölteni. A fájl is mentve lesz a projektet, és későbbi munkamenetek érhető el.
 
         Ha megpróbálja feltölteni egy fájlt a projektben már létezik egy azonos nevű, feltöltése sikertelen. Felülírja a fájlt, töltse fel az új fájlt a projekt irányítópultján, amely lehetővé teszi felülírásához.
 

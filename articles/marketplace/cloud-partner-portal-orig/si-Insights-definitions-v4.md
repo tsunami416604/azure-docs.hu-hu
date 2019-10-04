@@ -1,25 +1,18 @@
 ---
-title: Értékesítői Insights definíciók |} A Microsoft Docs
+title: Értékesítői Insights definíciók
 description: Biztosít jelentésdefiníciókat több értékesítői Insights található meg a feltételeket
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: cc90ee0506203433a61fe68d97055ea32f061f11
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.author: pabutler
+ms.openlocfilehash: 8b3447b8094eb95bd2f61baed7371bf718fdf730
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57240643"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65606903"
 ---
 <a name="seller-insights-definitions"></a>Értékesítői Insights definíciók
 =======================
@@ -44,7 +37,7 @@ Az alábbi táblázatban számos, az értékesítői Insights használt kifejez�
 | **Ügyfél városa**  | A város nevét, az ügyfél által biztosított. Ez lehet egy ügyfél az Azure-előfizetés az városa eltér.  |
 | **Ügyfél-kommunikáció nyelv**        | A nyelv, az ügyfél-kommunikációhoz ajánlott.                                  |
 | **Ügyfél cég neve**                  | A vállalat nevét az ügyfél által biztosított. Ez lehet egy ügyfél az Azure-előfizetés az városa eltér.                                  |
-| **Vevői ország**                       | Az ügyfél által megadott ország neve.  Ez lehet egy ügyfél az Azure-előfizetés az ország eltér.                               |
+| **Vevői ország**                       | Az ügyfél által megadott ország/régió neve.  Ez lehet egy ügyfél az Azure-előfizetés ország/régió eltér.                               |
 | **Ügyfél pénznem (CC)**                 | Az ügyfél előnyben részesített árak és számlázás pénzneme.                            |
 | **Ügyfél e-mailben**                         | A végfelhasználó ügyfél által biztosított e-mail-címe.  Ez lehet egy ügyfél az Azure-előfizetés az e-mail-cím eltér.                   |
 | **Ügyfél első neve**                              | Az Utónév, az ügyfél által biztosított.  Ez lehet egy ügyfél az Azure-előfizetéshez biztosított helyadatbáziséval.                    |

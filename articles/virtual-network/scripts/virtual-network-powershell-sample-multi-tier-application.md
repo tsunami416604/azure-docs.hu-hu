@@ -3,8 +3,8 @@ title: Azure PowerShell-példaszkript – Hálózat létrehozása többszintű a
 description: Azure PowerShell-példaszkript – Hálózat létrehozása többszintű alkalmazásokhoz.
 services: virtual-network
 documentationcenter: virtual-network
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: ''
 ms.assetid: ''
@@ -14,13 +14,13 @@ ms.topic: sample
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 12/13/2018
-ms.author: jdial
-ms.openlocfilehash: efd496f2f69f243b958f4e780b9f3455d2ffece3
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.author: kumud
+ms.openlocfilehash: 2fad78db4fdc92f3dc9c0f320c36d12dea554a61
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56648694"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64725391"
 ---
 # <a name="create-a-network-for-multi-tier-applications-script-sample"></a>Hálózat létrehozása többszintű alkalmazásokhoz – példaszkript
 
@@ -34,7 +34,8 @@ A szkriptet az Azure [Cloud Shellben](https://shell.azure.com/powershell) vagy e
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-<!-- gitHub issue https://github.com/MicrosoftDocs/azure-docs/issues/17748 --> Alhálózati azonosító hozzá van rendelve, miután létrehozta a virtuális hálózat; pontosabban, a New-AzVirtualNetwork parancsmaggal a - alhálózati beállítással. Ha az alhálózat, a New-AzVirtualNetworkSubnetConfig parancsmaggal a New-AzVirtualNetwork hívása előtt konfigurálja, az alhálózati azonosító, amíg New-AzVirtualNetwork meghívása után nem jelenik meg.
+<!-- gitHub issue https://github.com/MicrosoftDocs/azure-docs/issues/17748 -->
+Alhálózati azonosító hozzá van rendelve, miután létrehozta a virtuális hálózat; pontosabban, a New-AzVirtualNetwork parancsmaggal a - alhálózati beállítással. Ha az alhálózat, a New-AzVirtualNetworkSubnetConfig parancsmaggal a New-AzVirtualNetwork hívása előtt konfigurálja, az alhálózati azonosító, amíg New-AzVirtualNetwork meghívása után nem jelenik meg.
 
 [!code-azurepowershell-interactive[main](../../../powershell_scripts/virtual-network/virtual-network-multi-tier-application/virtual-network-multi-tier-application.ps1  "Virtual network for multi-tier application")]
 

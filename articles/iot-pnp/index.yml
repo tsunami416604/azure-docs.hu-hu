@@ -1,0 +1,39 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Az IoT Plug and Play előzetes verziójának dokumentációja
+metadata:
+  title: Az IoT Plug and Play előzetes verziójának dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
+  description: 'Megismerheti az IoT Plug and Play használatát oktatóanyagok, API-referenciák, videók és egyéb dokumentációk segítségével.'
+  author: dominicbetts
+  manager: philmea
+  ms.service: iot-pnp
+  services: iot-pnp
+  ms.topic: landing-page
+  ms.date: 07/23/2019
+  ms.author: dobett
+abstract:
+  description: 'Megtudhatja, hogyan határozhat meg az IoT Plug and Play előzetes verziójának használatával egy olyan eszközmodellt, amely engedélyezi a felhőmegoldásokat az eszköz automatikus megértése és annak kezelése érdekében – mindezt kód írása nélkül. Az oktatóanyagok, API-referenciák, videók és egyéb dokumentációk segítségével eszközöket csatlakoztathat az olyan felhőmegoldásokhoz, mint az Azure IoT Central vagy a partneralkalmazások.'
+  aside:
+    image:
+      alt: null
+      height: 110
+      src: media/index/video-thumb-pnp-introduction.png
+      width: 250
+    title: 'Az IoT Plug and Play bemutatása. (11:54)'
+    href: 'https://channel9.msdn.com/Shows/Internet-of-Things-Show/Introduction-to-IoT-Plug-and-Play/player'
+    width: 250
+sections:
+  - title: 5 perces gyors útmutatók
+    items:
+      - type: paragraph
+        text: Megismerheti az <a href="quickstart-create-pnp-device">eszközképesség-modellek eszköz létrehozásához történő használatát</a>.
+      - type: paragraph
+        text: Megismerheti az <a href="quickstart-connect-pnp-device-solution">eszközök megoldáshoz történő csatlakoztatásának módját</a>.
+  - title: Részletes útmutatók
+    items:
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="tutorial-pnp-visual-studio-code">Eszköz létrehozása a Visual Studio Code használatával</a>
+          - html: <a href="tutorial-build-device-certification">Minősítésre kész eszköz létrehozása</a>
+          - html: <a href="tutorial-certification-test">Eszköz minősítése</a>

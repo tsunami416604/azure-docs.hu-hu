@@ -1,11 +1,11 @@
 ---
-title: A Notification Hubs használata javával
-description: Útmutató az Azure Notification hubs szolgáltatás használata egy Java-háttérrendszert.
+title: A Notification Hubs használata Javával
+description: Ismerje meg, hogyan használhatja az Azure Notification Hubst Java háttérrendszer használatával.
 services: notification-hubs
 documentationcenter: ''
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 4c3f966d-0158-4a48-b949-9fa3666cb7e4
 ms.service: notification-hubs
 ms.workload: mobile
@@ -13,41 +13,43 @@ ms.tgt_pltfrm: java
 ms.devlang: java
 ms.topic: article
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 993eafd5a0b74be706d13fe8e06483c223f81eb6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 532ffc7a7393f016f27264b67b4ee5d3e6e5888f
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57901185"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213209"
 ---
-# <a name="how-to-use-notification-hubs-from-java"></a>A Notification Hubs javából használata
+# <a name="how-to-use-notification-hubs-from-java"></a>A Notification Hubs használata a Java-ból
 
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
-Ez a témakör ismerteti az új teljes mértékben támogatott hivatalos Azure Notification Hub Java SDK fő funkcióira.
-Ez a projekt egy nyílt forráskódú projekt, és megtekintheti a teljes SDK kódot [Java SDK].
+Ez a témakör az új, teljes mértékben támogatott Azure Notification hub Java SDK főbb funkcióit ismerteti.
+Ez a projekt egy nyílt forráskódú projekt, amely a teljes SDK-kódot a [Java SDK]-ban tekintheti meg.
 
-Általánosságban elmondható, elérheti az összes Notification Hubs szolgáltatás háttérrendszerből egy Java/PHP vagy Python vagy Ruby használatával a Notification Hub REST-felület, az MSDN-témakörben leírtak szerint [Notification Hubs – REST API-k](https://msdn.microsoft.com/library/dn223264.aspx). A Java SDK-val dinamikusan burkolót biztosít a REST-felületeihez Java-környezetben keresztül.
+Általánosságban elmondható, hogy egy Java/PHP/Python/Ruby háttérrendszer összes Notification Hubs funkcióját az értesítési központ REST felületén keresztül érheti el az MSDN témakör [Notification HUBS REST API](https://msdn.microsoft.com/library/dn223264.aspx)-k című részében leírtak szerint. Ez a Java SDK egy vékony burkolót biztosít ezen REST-felületek javában.
 
-Az SDK jelenleg támogatja:
+Az SDK jelenleg a következőket támogatja:
 
-* CRUD-MŰVELETEKKEL, a Notification hubs szolgáltatásban
-* Regisztrációs CRUD-MŰVELETEKKEL
-* Felügyeleti telepítés
+* SZIFILISZ Notification Hubs
+* SZIFILISZ a regisztrációnál
+* Telepítés kezelése
 * Importálási/exportálási regisztrációk
-* Rendszeresen küld
-* Ütemezett küldése
-* Az aszinkron műveletek Java NIO keresztül
-* Támogatott platformok: Az APNS (iOS), FCM (Android), a WNS (Windows Store apps), az MPNS (Windows Phone), ADM (Amazon Kindle Fire), Baidu (Android Google services nélkül)
+* Normál küldés
+* Ütemezett küldés
+* Aszinkron műveletek Java NIO-n keresztül
+* Támogatott platformok: APNS (iOS), FCM (Android), WNS (Windows áruházbeli alkalmazások), MPNS (Windows Phone-telefon), ADM (Amazon Kindle Fire), Baidu (Android Google Services nélkül)
 
-## <a name="sdk-usage"></a>SDK-használata
+## <a name="sdk-usage"></a>SDK-használat
 
-### <a name="compile-and-build"></a>Fordítás és felépítés
+### <a name="compile-and-build"></a>Fordítás és létrehozás
 
-Használat [Maven 3]
+[Maven 3] használata
 
-Hozhat létre:
+Létrehozás:
 
     mvn package
 
@@ -94,15 +96,15 @@ Hozhat létre:
     namespaceManager.deleteNotificationHub("hubname");
     ```
 
-### <a name="registration-cruds"></a>Regisztrációs CRUDs
+### <a name="registration-cruds"></a>Regisztrációs SZIFILISZek
 
-**Hozzon létre ügyfél-értesítési központ:**
+**Értesítési központ ügyfelének létrehozása:**
 
     ```java
     hub = new NotificationHub("connection string", "hubname");
     ```
 
-**Windows regisztrációs létrehozása:**
+**Windows-regisztráció létrehozása:**
 
     ```java
     WindowsRegistration reg = new WindowsRegistration(new URI(CHANNELURI));
@@ -111,7 +113,7 @@ Hozhat létre:
     hub.createRegistration(reg);
     ```
 
-**IOS-es regisztrációs létrehozása:**
+**IOS-regisztráció létrehozása:**
 
     ```java
     AppleRegistration reg = new AppleRegistration(DEVICETOKEN);
@@ -120,9 +122,9 @@ Hozhat létre:
     hub.createRegistration(reg);
     ```
 
-Hasonlóképpen létrehozhat regisztrációk Androidra (FCM), a Windows Phone (MPNS) és a Kindle Fire (ADM).
+Hasonlóképpen létrehozhatók az Android (FCM), a Windows Phone-telefon (MPNS) és a Kindle Fire (ADM) regisztrációi is.
 
-**Sablonregisztrációk létrehozása:**
+**Sablon regisztrációjának létrehozása:**
 
     ```java
     WindowsTemplateRegistration reg = new WindowsTemplateRegistration(new URI(CHANNELURI), WNSBODYTEMPLATE);
@@ -130,9 +132,9 @@ Hasonlóképpen létrehozhat regisztrációk Androidra (FCM), a Windows Phone (M
     hub.createRegistration(reg);
     ```
 
-**Hozzon létre regisztrációk használatával hozzon létre regisztrációs Azonosítót + upsert minta:**
+**Regisztrációk létrehozása a regisztrációs azonosító és a upsert minta használatával:**
 
-Eltávolítja az ismétlődéseket miatt elveszett válaszokat, ha az eszköz regisztrációs azonosítókkal tárolására:
+Eltávolítja az összes elveszett válasz miatti ismétlődéseket, ha a regisztrációs azonosítókat az eszközön tárolja:
 
     ```java
     String id = hub.createRegistrationId();
@@ -146,56 +148,56 @@ Eltávolítja az ismétlődéseket miatt elveszett válaszokat, ha az eszköz re
     hub.updateRegistration(reg);
     ```
 
-**Odstranit registrace:**
+**Regisztrációk törlése:**
 
     ```java
     hub.deleteRegistration(regid);
     ```
 
-**Lekérdezés regisztrációk:**
+**Regisztrációk lekérdezése:**
 
-* **Egyetlen regisztrációs lekérése:**
+* **Egyszeri regisztráció beolvasása:**
 
     ```java
     hub.getRegistration(regid);
     ```
 
-* **Kérje le az összes regisztrációk hub:**
+* **Az összes regisztráció beolvasása a központban:**
 
     ```java
     hub.getRegistrations();
     ```
 
-* **Kérje le a regisztrációk címkével:**
+* **Regisztrációk beszerzése a címkével:**
 
     ```java
     hub.getRegistrationsByTag("myTag");
     ```
 
-* **Csatorna regisztrációk lekéréséhez:**
+* **Regisztrációk beolvasása csatornán keresztül:**
 
     ```java
     hub.getRegistrationsByChannel("devicetoken");
     ```
 
-Minden gyűjtemény lekérdezések $top és a folytatási token támogatja.
+A gyűjtemény összes lekérdezése támogatja a $top és a folytatási jogkivonatokat.
 
-### <a name="installation-api-usage"></a>Telepítés API-használat
+### <a name="installation-api-usage"></a>Telepítési API-használat
 
-Telepítés API regisztrációkezelés alternatív módszereket is. Több regisztrációk, amely nem triviális, és előfordulhat, hogy könnyedén elvégezheti, vagy helytelenül töredezetté, karbantartása helyett, most már lehetőség egyetlen telepítés objektummal.
+A telepítési API egy alternatív mechanizmus a regisztrációs felügyelethez. Ahelyett, hogy több regisztrációt kellene fenntartania, amelyek nem triviálisak, és könnyen, helytelenül vagy nem hatékonyan végezhetők el, mostantól egyetlen telepítési objektumot is használhat.
 
-Telepítés tartalmaz minden szükséges: channel (eszköztoken), a címkéket, a sablonok, a másodlagos csempék leküldéses (a WNS és APNS). Nem kell többé Azonosítójának lekéréséhez – csak hoznak létre GUID Azonosítót vagy bármely más azonosító, legyen az eszközön és küldeni a háttérrendszerhez leküldéses channel (eszköztoken) együtt a szolgáltatás hívásához.
+A telepítés mindent tartalmaz, amire szüksége van: push Channel (eszköz token), címkék, sablonok, másodlagos csempék (WNS és APNS). Nem kell meghívnia a szolgáltatást az azonosító többé-csak a GUID-azonosító vagy bármely más azonosító beszerzéséhez, tartsa azt az eszközön, és küldje el a háttérnek a leküldéses csatornával (eszköz token) együtt.
 
-A háttérrendszer csak akkor egyetlen meghívása `CreateOrUpdateInstallation`; teljesen idempotens legyen, így nyugodtan szükség esetén ismételje meg.
+A háttérben csak egyetlen hívást kell végrehajtania, hogy `CreateOrUpdateInstallation`teljesen idempotens, ezért szükség esetén próbálkozzon újra.
 
-Az Amazon Kindle Fire példaként:
+Példa az Amazon Kindle Fire:
 
     ```java
     Installation installation = new Installation("installation-id", NotificationPlatform.Adm, "adm-push-channel");
     hub.createOrUpdateInstallation(installation);
     ```
 
-Ha frissíteni szeretne:
+Ha frissíteni kívánja:
 
     ```java
     installation.addTag("foo");
@@ -204,7 +206,7 @@ Ha frissíteni szeretne:
     hub.createOrUpdateInstallation(installation);
     ```
 
-Speciális forgatókönyvek esetén használja a részleges frissítési funkció, amely lehetővé teszi, hogy a telepítési objektum csak adott tulajdonságainak módosítása. Részleges frissítést futtathatja a telepítési objektum JSON-javítás műveletek részhalmazát.
+Speciális forgatókönyvek esetén használja a részleges frissítési képességet, amely lehetővé teszi a telepítési objektum csak bizonyos tulajdonságainak módosítását. A részleges frissítés a telepítési objektumon futtatható JSON-javítási műveletek részhalmaza.
 
     ```java
     PartialUpdateOperation addChannel = new PartialUpdateOperation(UpdateOperationType.Add, "/pushChannel", "adm-push-channel2");
@@ -219,16 +221,16 @@ Telepítés törlése:
     hub.deleteInstallation(installation.getInstallationId());
     ```
 
-`CreateOrUpdate`, `Patch`, és `Delete` a végül konzisztens `Get`. A kért művelet csak a hívás során a rendszer várólistára kerül, és a háttérben hajtja végre. Get nem alkalmas a futtatókörnyezet fő forgatókönyv, de csak a hibakeresési és hibaelhárítási célokra, szigorúan szabályozott a szolgáltatás által.
+`CreateOrUpdate`, `Patch` `Get`és `Delete` végül konzisztensek a-val. A kért művelet csak a rendszer várólistára kerül a hívás során, és a háttérben kerül végrehajtásra. A Get nem a fő futtatókörnyezeti forgatókönyvhöz készült, hanem csak hibakeresési és hibaelhárítási célból, ezért a szolgáltatás szigorúan szabályozza.
 
-Küldési telepítés folyamatábrája Registrace azonos. Értesítés az adott telepítési cél – címke használja "InstallationId: {desired-id}". Ebben az esetben a kódja:
+A küldési folyamat ugyanaz, mint a regisztrációk esetében. Értesítés küldése az adott telepítéshez – csak a "telepítésazonosító: {desired-id}" címkét használja. Ebben az esetben a kód a következő:
 
     ```java
     Notification n = Notification.createWindowsNotification("WNS body");
     hub.sendNotification(n, "InstallationId:{installation-id}");
     ```
 
-Egy vagy több sablont:
+Több sablon közül:
 
     ```java
     Map<String, String> prop =  new HashMap<String, String>();
@@ -237,11 +239,11 @@ Egy vagy több sablont:
     hub.sendNotification(n, "InstallationId:{installation-id} && tag-for-template1");
     ```
 
-### <a name="schedule-notifications-available-for-standard-tier"></a>Ütemezett értesítések (STANDARD szinten érhető el)
+### <a name="schedule-notifications-available-for-standard-tier"></a>Ütemezett értesítések (a STANDARD szintű csomaghoz érhető el)
 
-A ugyanaz, mint a rendszeres küldési, de egy további paraméter - scheduledTime, amikor értesítési kézbesítési alkalmazásszabályzatban. A szolgáltatás bármikor now + 5 perc közötti elfogadja és now + 7 nap.
+Ugyanaz, mint a normál küldés, de egy további paraméter-scheduledTime, amely azt mondja, hogy mikor kell elküldeni az értesítést. A szolgáltatás minden olyan időpontot elfogad, amely már 5 perc és most 7 nap között van.
 
-**A Windows natív értesítési ütemezése:**
+**Windows natív értesítésének beütemezett időpontja:**
 
     ```java
     Calendar c = Calendar.getInstance();
@@ -250,11 +252,11 @@ A ugyanaz, mint a rendszeres küldési, de egy további paraméter - scheduledTi
     hub.scheduleNotification(n, c.getTime());
     ```
 
-### <a name="importexport-available-for-standard-tier"></a>Import/Export (STANDARD szinten érhető el)
+### <a name="importexport-available-for-standard-tier"></a>Importálás/Exportálás (STANDARD szintű csomag esetén érhető el)
 
-Szükség lehet a regisztrációk tömeges művelet végrehajtásához. Általában célszerű az integráció az egy másik system és a egy nagy paranccsal frissítheti a címkéket. Nem ajánlott a használata a lekérdezéséhez/frissítéséhez folyamatot, ha ezer van szó. A rendszer importálási/exportálási funkciót azért hoztuk terjed ki a forgatókönyvet. Bejövő adatok és a kimeneti helyet forrásként storage-fiókja alatt fog biztosít hozzáférést a blobtárolóba.
+Előfordulhat, hogy tömeges műveletet kell végrehajtania a regisztrációk ellen. Általában egy másik rendszerrel való integráció vagy egy nagy javítás a címkék frissítéséhez. Nem javasoljuk a Get/Update folyamat használatát, ha több ezer regisztrációt vesznek igénybe. A rendszer importálási/exportálási funkciója a forgatókönyvnek megfelelően lett kialakítva. A Storage-fiókhoz tartozó blob-tárolóhoz hozzáférést biztosíthat a bejövő adat forrásaként, illetve a kimenet helyét.
 
-**Exportálási feladat elküldése:**
+**Exportálási feladatok elküldése:**
 
     ```java
     NotificationHubJob job = new NotificationHubJob();
@@ -263,7 +265,7 @@ Szükség lehet a regisztrációk tömeges művelet végrehajtásához. Általá
     job = hub.submitNotificationHubJob(job);
     ```
 
-**Importálási feladat elküldése:**
+**Importálási feladatok elküldése:**
 
     ```java
     NotificationHubJob job = new NotificationHubJob();
@@ -273,7 +275,7 @@ Szükség lehet a regisztrációk tömeges művelet végrehajtásához. Általá
     job = hub.submitNotificationHubJob(job);
     ```
 
-**Várjon, amíg a feladat történik:**
+**Várakozás a feladatok elvégzésére:**
 
     ```java
     while(true){
@@ -284,21 +286,21 @@ Szükség lehet a regisztrációk tömeges művelet végrehajtásához. Általá
     }
     ```
 
-**Minden feladat beolvasása:**
+**Az összes feladat beolvasása:**
 
     ```java
     List<NotificationHubJob> jobs = hub.getAllNotificationHubJobs();
     ```
 
-**Az SAS-aláírás URI:**
+**URI SAS-aláírással:**
 
- Az URL-cím egy blob fájl vagy blob-tároló URL-CÍMÉT és a különböző paraméterek, például engedélyek és a lejárati idő plusz aláírását, ezeket a módosításokat végzett a fiók SAS-kulcs használatával. Az Azure Storage Java SDK-t többek között az URI-k létrehozását, a széles körű lehetőségekkel rendelkezik. Egyszerű helyett, vessen egy pillantást a `ImportExportE2E` tesztelése (a helyről GitHub) osztály, amely rendelkezik aláírási algoritmus alap- és kompakt megvalósítását.
+ Ez az URL-cím a blob-fájl vagy a blob-tároló URL-címe, valamint a paraméterek, például az engedélyek és a lejárati idő, valamint a fiók SAS-kulcsával létrehozott összes művelet aláírása. Az Azure Storage Java SDK sokoldalú képességekkel rendelkezik, beleértve az URI-k létrehozását is. Az egyszerű Alternatív megoldásként tekintse meg a `ImportExportE2E` teszt osztályt (a GitHub helyéről), amely az aláírási algoritmus alapszintű és kompakt implementációját használja.
 
 ### <a name="send-notifications"></a>Értesítések küldése
 
-Értesítési objektum egyszerűen csak a fejlécek törzséhez, a natív és a sablon értesítések objektumok épületben érdekében bizonyos segédprogram-metódusokat.
+Az értesítési objektum egyszerűen egy fejléceket tartalmazó törzs, néhány segédprogram-módszer segíti a natív és sablonos értesítések objektumainak összeállítását.
 
-* **Windows Store és a Windows Phone 8.1-es (nem Silverlight)**
+* **Windows áruház és Windows Phone-telefon 8,1 (nem Silverlight)**
 
     ```java
     String toast = "<toast><visual><binding template=\"ToastText01\"><text id=\"1\">Hello from Java!</text></binding></visual></toast>";
@@ -322,7 +324,7 @@ Szükség lehet a regisztrációk tömeges művelet végrehajtásához. Általá
     hub.sendNotification(n);
     ```
 
-* **Windows Phone 8.0-s és 8.1 Silverlight**
+* **Windows Phone-telefon 8,0 és 8,1 Silverlight**
 
     ```java
     String toast = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
@@ -335,7 +337,7 @@ Szükség lehet a regisztrációk tömeges művelet végrehajtásához. Általá
     hub.sendNotification(n);
     ```
 
-* **A kindle Fire**
+* **Kindle-Tűz**
 
     ```java
     String message = "{\"data\":{\"msg\":\"Hello from Java!\"}}";
@@ -343,7 +345,7 @@ Szükség lehet a regisztrációk tömeges művelet végrehajtásához. Általá
     hub.sendNotification(n);
     ```
 
-* **A címkék küldése**
+* **Küldés címkékre**
   
     ```java
     Set<String> tags = new HashSet<String>();
@@ -352,13 +354,13 @@ Szükség lehet a regisztrációk tömeges művelet végrehajtásához. Általá
     hub.sendNotification(n, tags);
     ```
 
-* **Címkét alkotó kifejezés küldése**
+* **Küldés a címkére kifejezés**
 
     ```java
     hub.sendNotification(n, "foo && ! bar");
     ```
 
-* **Sablon-értesítés küldése**
+* **Sablon küldése – értesítés**
 
     ```java
     Map<String, String> prop =  new HashMap<String, String>();
@@ -368,25 +370,25 @@ Szükség lehet a regisztrációk tömeges művelet végrehajtásához. Általá
     hub.sendNotification(n);
     ```
 
-A Java-kód futtatása most kell előállítania egy értesítés jelenik meg a céleszközön.
+A Java-kód futtatásának most egy értesítést kell létrehoznia a céleszköz.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ez a témakör láthatta, hogyan hozhat létre egy egyszerű Java REST-ügyfél a Notification hubs szolgáltatásra. Itt a következőket teheti:
+Ez a témakör bemutatja, hogyan hozhat létre egy egyszerű Java REST-ügyfelet Notification Hubs számára. Innen a következőket teheti:
 
-* Töltse le a teljes [Java SDK], amely tartalmazza a teljes SDK kódot.
-* Próbálja ki a mintákat:
-  * [Notification Hubs használatának első lépései]
-  * [Legfrissebb hírek elküldése]
-  * [Honosított legfrissebb hírek elküldése]
+* Töltse le a teljes [Java SDK]-t, amely tartalmazza a teljes SDK-kódot.
+* Játsszon a mintákkal:
+  * [Ismerkedés a Notification Hubs]
+  * [Legfrissebb hírek küldése]
+  * [Honosított feltörési Hírek küldése]
   * [Értesítések küldése hitelesített felhasználóknak]
   * [Platformfüggetlen értesítések küldése hitelesített felhasználóknak]
 
 [Java SDK]: https://github.com/Azure/azure-notificationhubs-java-backend
 [Get started tutorial]: notification-hubs-ios-apple-push-notification-apns-get-started.md
-[Notification Hubs használatának első lépései]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
-[Legfrissebb hírek elküldése]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
-[Honosított legfrissebb hírek elküldése]: notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md
+[Ismerkedés a Notification Hubs]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
+[Legfrissebb hírek küldése]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
+[Honosított feltörési Hírek küldése]: notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md
 [Értesítések küldése hitelesített felhasználóknak]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
 [Platformfüggetlen értesítések küldése hitelesített felhasználóknak]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
 [Maven 3]: https://maven.apache.org/

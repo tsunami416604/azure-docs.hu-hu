@@ -3,19 +3,19 @@ title: A beszélgetés Learner modell – a Microsoft Cognitive Services Pre-Tra
 titleSuffix: Azure
 description: Ismerje meg, hogyan Pre-trained entitásokat ad hozzá a beszélgetés Learner modell.
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: dade442cb04f79ef75e65d6eb29128b105e72b40
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.author: nitinme
+ms.openlocfilehash: fb70983c2f9fd20368bb8c6803c9568b27141af7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565410"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66389255"
 ---
 # <a name="how-to-add-pre-trained-entities"></a>Pre-trained entitások hozzáadása
 Ez az oktatóanyag bemutatja, hogyan Pre-Trained entitásokat ad hozzá a beszélgetés Learner modell.

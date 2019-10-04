@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: 543e237a4a8390a8ebf74d0eb2a1f4be41dcd911
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60000589"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60193713"
 ---
 # <a name="backends-and-backend-pools-in-azure-front-door-service"></a>Háttérrendszerek és a háttérkiszolgáló készletek Azure bejárati ajtajának Service-ben
 Ez a cikk csatlakoztatásáról, az alkalmazástelepítés Azure bejárati ajtajának szolgáltatással kapcsolatos fogalmakat ismerteti. Ezen kívül ismerteti a különböző feltételek háttéralkalmazások bejárati ajtajának-konfigurációt.
@@ -71,7 +71,7 @@ Bejárati ajtajának szolgáltatás a konfigurált háttérrendszerekre mindegyi
 
 - **Protokoll**. Határozza meg, hogy az állapot-mintavételi kérések küldése bejárati ajtajának szolgáltatásból a háttérrendszerekre HTTP vagy HTTPS protokollal.
 
-- **Időköz (másodperc)**. Határozza meg az állapot-mintavételei gyakorisága a háttérrendszerek vagy az intervallumok mintavétel bejárati ajtajának környezeteket küld.
+- **Időköz (másodperc)** . Határozza meg az állapot-mintavételei gyakorisága a háttérrendszerek vagy az intervallumok mintavétel bejárati ajtajának környezeteket küld.
 
     >[!NOTE]
     >A gyorsabb feladatátvételi teszteket adjon meg alacsonyabb értéket beállítani az időközt. A kisebb az érték, annál egészségügyi mintavételi kötet a háttérrendszerekre kapnak. Például, ha a időköze 90 bejárati ajtajának környezetek vagy kapcsolódási 30 másodperces globálisan, az egyes háttérrendszerek kap kapcsolatos 3-5 mintavételi kérések száma másodpercenként.
@@ -85,7 +85,7 @@ Terheléselosztási beállítások háttérkészlete számára határozzák meg,
 
 - **A sikeres mintanagyság**. A mintanagyság mint már említettük, kifogástalan állapotú a háttéralkalmazás hívásához szükséges sikeres minták számát határozza meg. Tegyük fel például, egy bejárati ajtajának állapot-mintavételi időköz érték 30 másodperc, a minta mérete 5 és a sikeres minta mérete 3. Minden alkalommal, amikor az egészségügyi kiértékeljük a háttérbeli mintavételei, nézzük meg azt az utolsó öt minták több mint 150 másodpercig (5 x 30). Legalább három sikeres mintavételek szükséges deklarálja a háttérrendszer állapota kifogástalan.
 
-- **Késés érzékenységi (további késleltetés)**. Meghatározza, hogy kívánja-e a kérés küldése a háttérrendszerek késés mérési érzékenységi tartományon belül, vagy továbbítja a kérést a legközelebbi háttérrendszere bejárati ajtajának.
+- **Késés érzékenységi (további késleltetés)** . Meghatározza, hogy kívánja-e a kérés küldése a háttérrendszerek késés mérési érzékenységi tartományon belül, vagy továbbítja a kérést a legközelebbi háttérrendszere bejárati ajtajának.
 
 További információkért lásd: [legkisebb késés esetén használt útválasztási módszer alapján](front-door-routing-methods.md#latency).
 

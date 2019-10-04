@@ -1,64 +1,116 @@
-### YamlMime:YamlDocument
-ms.openlocfilehash: 0a1c495362ef38723c61eace25ebb13ec9ed3a6a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57883644"
-documentType: LandingData
+### YamlMime:Landing
 title: Az Azure Databricks dokumentációja
+summary: Ismerkedjen meg az egyetlen kattintással beállítható, Apache Spark-alapú Azure Databricks elemzési platform használatával, amely zökkenőmentes munkafolyamatokat tesz lehetővé, valamint olyan interaktív munkaterületet biztosít, amellyel lehetővé válik az adatszakértők, a mérnökök és az üzleti elemzők közötti együttműködés.
 metadata:
   title: Az Azure Databricks dokumentációja
-  description: Az itt elérhető rövid útmutatók és egyéb hivatkozások segítségével megismerheti az Azure Databricks használatát. Az Azure Databricks a Microsoft Azure Cloud Services platformra optimalizált Apache Spark-alapú elemzési platform.
+  description: Ismerkedjen meg az egyetlen kattintással beállítható, Apache Spark-alapú Azure Databricks elemzési platform használatával, amely zökkenőmentes munkafolyamatokat tesz lehetővé, valamint olyan interaktív munkaterületet biztosít, amellyel lehetővé válik az adatszakértők, a mérnökök és az üzleti elemzők közötti együttműködés.
   services: azure-databricks
-  author: mamccrea
   ms.service: azure-databricks
   ms.topic: landing-page
-  ms.date: 03/19/2018
+  ms.collection: collection
+  author: mamccrea
   ms.author: mamccrea
-abstract:
-  description: Ismerkedjen meg az Azure Databricks egyetlen kattintással beállítható Apache Spark-alapú elemzési platform használatával, amely zökkenőmentes munkafolyamatokat tesz lehetővé, valamint olyan interaktív munkaterületet biztosít, amellyel lehetővé válik az adatszakértők, az adatmérnökök és az üzleti elemzők közötti együttműködés. A rövid útmutatók és oktatóanyagok bemutatják az Azure Databricks használatának első lépéseit és más Azure-szolgáltatásokkal való integrálását.
-  aside:
-    image:
-      alt: 
-      height: 110
-      src: media/index/video.png
-      width: 250
-    title: Az Azure Databricks bemutatása (3:38)
-    href: https://azure.microsoft.com/resources/videos/connect-2017-introduction-to-azure-databricks/
-    width: 250
-sections:
-- title: 5 perces gyors útmutatók
-  items:
-  - type: paragraph
-    text: 'Megtudhatja, hogyan hozhat létre Azure Databricks-munkaterületet, Spark-fürtöt, és hogyan futtathat feladatokat a következővel:'
-  - type: list
-    style: icon48
-    items:
-    - image:
-        src: /azure/azure-databricks/media/index/portal.svg
-      text: Azure Portal
-      href: /azure/azure-databricks/quickstart-create-databricks-workspace-portal
-    - image:
-        src: /azure/azure-databricks/media/index/logo_azure_resource_manager.svg
-      text: Resource Manager-sablon
-      href: /azure/azure-databricks/quickstart-create-databricks-workspace-resource-manager-template
-- title: Részletes útmutatók
-  items:
-  - type: paragraph
-    text: 'Megismerheti az Azure Databricks használatát:'
-  - type: list
-    style: ordered
-    items:
-    - html: <a href="/azure/azure-databricks/databricks-extract-load-sql-data-warehouse">Adatok kinyerése, átalakítás és betöltése</a>
-    - html: <a href="/azure/azure-databricks/databricks-stream-from-eventhubs">Adatok streamelése az Event Hubsból</a>
-    - html: <a href="/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services">Hangulatelemzés a Cognitive Services használatával</a>
-    - html: <a href="https://docs.azuredatabricks.net/spark/latest/structured-streaming/kafka.html" target="_blank">Adatok streamelése a HDInsight Kafkából</a>
-- title: Referencia
-  items:
-  - type: list
-    style: cards
-    className: cardsD
-    items:
-    - title: REST
-      html: <p><a href="/rest/api/databricks">REST API</a></p>
+  ms.date: 09/11/2019
+  ms.openlocfilehash: 40a023ee9498f8d5c487ab7317bc020260b98cce
+  ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 09/12/2019
+  ms.locfileid: "70933528"
+landingContent:
+- title: Tudnivalók az Azure Databricksről
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az Azure Databricks?
+      url: what-is-azure-databricks.md
+  - linkListType: concept
+    links:
+    - text: Gyakori kérdések
+      url: frequently-asked-questions-databricks.md
+  - linkListType: reference
+    links:
+    - text: Kibocsátási megjegyzések
+      url: https://docs.azuredatabricks.net/release-notes/index.html
+  - linkListType: learn
+    links:
+    - text: Az Azure Databricks bemutatása
+      url: https://docs.microsoft.com/learn/modules/intro-to-azure-databricks
+- title: Bevezetés
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Databricks-munkaterület létrehozása az Azure Portal használatával
+      url: quickstart-create-databricks-workspace-portal.md
+    - text: Apache Spark-feladatok futtatása Databricksen az Azure Resource Manager-sablon használatával
+      url: quickstart-create-databricks-workspace-resource-manager-template.md
+  - linkListType: how-to-guide
+    links:
+    - text: Apache Spark-fürt létrehozása
+      url: https://docs.azuredatabricks.net/user-guide/clusters/index.html
+    - text: Kapcsolódás adatforrásokhoz
+      url: databricks-connect-to-data-sources.md
+    - text: A Databricks parancssori felület használata az Azure Cloud Shellből
+      url: databricks-cli-from-azure-cloud-shell.md
+  - linkListType: reference
+    links:
+    - text: Azure Resource Manager-sablon
+      url: /azure/templates/microsoft.databricks/workspaces
+- title: Azure-megoldások tervezése
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Jegyzetfüzet futtatása az Azure Data Factoryből
+      url: ../data-factory/transform-data-using-databricks-notebook.md
+    - text: Hangulatelemzés végrehajtása a Cognitive Services használatával
+      url: databricks-sentiment-analysis-cognitive-services.md
+    - text: Cosmos DB-szolgáltatásvégpont használata
+      url: service-endpoint-cosmosdb.md
+    - text: Tárterület elérése az Azure Key Vault használatával
+      url: store-secrets-azure-key-vault.md
+    - text: ETL-műveletek végrehajtása az Azure Data Lake Storage Gen2 és az SQL Data Warehouse használatával
+      url: databricks-extract-load-sql-data-warehouse.md
+  - linkListType: how-to-guide
+    links:
+    - text: Kapcsolódás Excelhez, R-hez és Pythonhoz
+      url: connect-databricks-excel-python-r.md
+- title: Virtuális hálózat használata
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Databricks-munkaterület létrehozása egy virtuális hálózaton belül
+      url: quickstart-create-databricks-workspace-vnet-injection.md
+  - linkListType: deploy
+    links:
+    - text: Az Azure Databricks üzembe helyezése virtuális hálózaton
+      url: vnet-injection.md
+  - linkListType: tutorial
+    links:
+    - text: Virtuális hálózaton belüli SQL Server Linux Docker-tároló lekérdezése Azure Databricks-jegyzetfüzetből
+      url: vnet-injection-sql-server.md
+- title: Adatok streamelése
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Streamelési adatok használata az Azure Databricksben
+      url: https://docs.microsoft.com/learn/modules/streaming-in-azure-databricks/
+  - linkListType: tutorial
+    links:
+    - text: Adatok streamelése az Event Hubs használatával
+      url: databricks-stream-from-eventhubs.md
+    - text: Adatok streamelése a HDInsight Kafkából
+      url: https://docs.azuredatabricks.net/spark/latest/structured-streaming/kafka.html
+- title: Fejlesztői útmutatók
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Mély tanulás az Azure Databricksben
+      url: https://docs.microsoft.com/learn/modules/deep-learning-in-azure-databricks
+    - text: Szövegelemzés végrehajtása
+      url: https://docs.microsoft.com/learn/modules/perform-text-analytics-with-azure-databricks
+  - linkListType: reference
+    links:
+    - text: A Databricks REST API-ja
+      url: /rest/api/databricks
+    - text: R fejlesztői útmutató
+      url: ../machine-learning/r-developers-guide.md

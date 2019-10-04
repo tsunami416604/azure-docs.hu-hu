@@ -2,22 +2,22 @@
 title: Rövid útmutató eléréséhez, és hozzon létre egy új bérlőt – Azure Active Directory |} A Microsoft Docs
 description: Azure Active Directoryban található, illetve hogyan hozhat létre egy új bérlőt a szervezetén belül kapcsolatos utasításokat.
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: quickstart
 ms.date: 09/10/2018
-ms.author: lizross
+ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fafa3974eb01b36015254307ba1a52a9bc221da
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: 4bc3e3bb178efbbc8f4cee6d81417ce70bd7a662
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59798638"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562066"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>Gyors útmutató: Új bérlő létrehozása az Azure Active Directoryban
 Az Azure Active Directory (Azure AD) portált használva elvégezheti valamennyi felügyeleti feladatát, a szervezet számára új bérlő létrehozását is beleértve. 
@@ -29,13 +29,13 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 Jelentkezzen be az [Azure portálra](https://portal.azure.com/) globális rendszergazdai fiókkal.
 
-![Az Azure portal képernyő, és az Azure AD lehetőséget](media/active-directory-access-create-new-tenant/azure-ad-portal.png)
+![Azure Portal képernyő az Azure AD lehetőséggel](media/active-directory-access-create-new-tenant/azure-ad-portal.png)
 
 ## <a name="create-a-new-tenant-for-your-organization"></a>Új bérlő létrehozása a szervezetén belül
 Miután bejelentkezett az Azure portálra, létrehozhat egy új bérlőt a szervezet számára. Az új bérlő a szervezetét képviseli és segíti a Microsoft felhőszolgáltatások konkrét példányának kezelését a belső és külső felhasználók számára.
 
 ### <a name="to-create-a-new-tenant"></a>Új bérlő létrehozása
-1. Válassza ki **erőforrás létrehozása**válassza **identitás**, majd válassza ki **Azure Active Directory**.
+1. Válassza **az erőforrás létrehozása**lehetőséget, válassza az **identitás**lehetőséget, majd válassza a **Azure Active Directory**lehetőséget.
 
     Megjelenik a **Címtár létrehozása** lap.
 
@@ -60,7 +60,7 @@ Ha nem fogja használni az alkalmazást, törölheti a bérlőt a következő l�
 
     A bérlő és a hozzá kapcsolódó információk törlődnek.
 
-    ![Áttekintő oldala, amelyen kiemelt törlés directory gombra.](media/active-directory-access-create-new-tenant/azure-ad-delete-new-tenant.png)
+    ![Áttekintő lap, a kijelölt könyvtár törlése gombbal](media/active-directory-access-create-new-tenant/azure-ad-delete-new-tenant.png)
 
 ## <a name="next-steps"></a>További lépések
 - Tartománynevek módosítása és továbbiak felvétele: [Egyéni tartománynév hozzáadása az Azure Active Directoryhoz](add-custom-domain.md)
@@ -69,6 +69,6 @@ Ha nem fogja használni az alkalmazást, törölheti a bérlőt a következő l�
 
 - Csoportok és tagok hozzáadása: [Alapszintű csoport létrehozása és tagok hozzáadása](active-directory-groups-create-azure-portal.md)
 
-- A szervezete alkalmazás- és erőforrás-hozzáférés kezelésének megkönnyítése érdekében ismerje meg a [Szerepkörön alapuló hozzáférést a Privileged Identity Management használatával](../../role-based-access-control/pim-azure-resource.md) és a [Feltételes hozzáférést](../../role-based-access-control/conditional-access-azure-management.md).
+- Tudnivalók a [szerepköralapú hozzáférésről Privileged Identity Management](../../role-based-access-control/pim-azure-resource.md) és [feltételes hozzáférés](../../role-based-access-control/conditional-access-azure-management.md) használatával a szervezet alkalmazás-és erőforrás-hozzáférésének kezeléséhez.
 
 - Tudnivalók az Azure Active Directoryról, beleértve [az alapszintű licenceléssel, a terminológiával és a társított szolgáltatásokkal](active-directory-whatis.md) kapcsolatos információkat.

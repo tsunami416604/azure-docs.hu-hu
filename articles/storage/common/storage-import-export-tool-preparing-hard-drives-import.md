@@ -9,11 +9,11 @@ ms.date: 06/29/2017
 ms.author: muralikk
 ms.subservice: common
 ms.openlocfilehash: 777e0aac46dbffb1e491874b5889667a888aadf5
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57898686"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61478512"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>Merevlemezek előkészítése importálási feladatokhoz
 
@@ -112,7 +112,7 @@ H,Format,SilentMode,Encrypt,
 | DriveLetter | **[Kötelező]**<br/> Minden olyan meghajtó, amely a folyamatban van az eszköz, a cél egy egyszerű NTFS-kötetre, és egy hozzá rendelt meghajtóbetűjelet kell rendelkeznie.<br/> <br/>**Példa**: R vagy az r |
 | FormatOption | **[Kötelező]**  Formátum &#124; AlreadyFormatted<br/><br/> **Formátum**: Adja meg ezt fogja formázni a lemezen lévő összes adatot. <br/>**AlreadyFormatted**: Az eszköz kihagyja a formázást, ha ez az érték meg van adva. |
 | SilentOrPromptOnFormat | **[Kötelező]**  SilentMode &#124; PromptOnFormat<br/><br/>**SilentMode**: Ez az érték lehetővé teszi a felhasználó az eszköz futtatásához csendes módban. <br/>**PromptOnFormat**: Az eszköz meg fogja kérni a felhasználót, hogy e a művelet nagyon irányul, minden formátum.<br/><br/>Ha nincs beállítva, parancs fog megszakítása és hibaüzenet megjelenítése: "Beállítás értéke helytelen SilentOrPromptOnFormat: nincs" |
-| Titkosítás | **[Required]** Encrypt &#124; AlreadyEncrypted<br/> Ez a mező értékét úgy dönt, hogy mely lemez titkosításához, és amely nem az. <br/><br/>**titkosítása**: Eszköz fogja formázni a meghajtó. Ha az érték "FormatOption" mező "Formátum" majd ezt az értéket szükséges "Titkosítás" lehet. "AlreadyEncrypted" van megadva ebben az esetben, ha okoz hibába ütközött "Formátum van megadva, amikor titkosítása is meg kell adni".<br/>**AlreadyEncrypted**: Eszköz fejti vissza a meghajtót a "ExistingBitLockerKey" mezőjében megadott BitLockerKey. Ha "FormatOption" mező értéke "AlreadyFormatted", majd ez az érték lehet "Titkosítás" vagy "AlreadyEncrypted" |
+| Encryption | **[Required]** Encrypt &#124; AlreadyEncrypted<br/> Ez a mező értékét úgy dönt, hogy mely lemez titkosításához, és amely nem az. <br/><br/>**titkosítása**: Eszköz fogja formázni a meghajtó. Ha az érték "FormatOption" mező "Formátum" majd ezt az értéket szükséges "Titkosítás" lehet. "AlreadyEncrypted" van megadva ebben az esetben, ha okoz hibába ütközött "Formátum van megadva, amikor titkosítása is meg kell adni".<br/>**AlreadyEncrypted**: Eszköz fejti vissza a meghajtót a "ExistingBitLockerKey" mezőjében megadott BitLockerKey. Ha "FormatOption" mező értéke "AlreadyFormatted", majd ez az érték lehet "Titkosítás" vagy "AlreadyEncrypted" |
 | ExistingBitLockerKey | **[Kötelező]**  Ha "Titkosítás" mező értéke "AlreadyEncrypted"<br/> Ez a mező értéke a BitLocker-kulcs, amely az adott lemezt társítva van. <br/><br/>Ezt a mezőt üresen, ha az érték "Titkosítás" mező "Titkosítás" kell hagyni.  BitLocker-kulcs van megadva ebben az esetben, ha okoz hibába ütközött "BitLocker-kulcs nem adható meg".<br/>  **Példa**: 060456-014509-132033-080300-252615-584177-672089-411631|
 
 ##  <a name="preparing-disk-for-import-job"></a>Lemez előkészítése importálási feladatokhoz
@@ -366,7 +366,7 @@ Az összes Microsoft .NET-keretrendszer-verziókat települnek a következő kö
 
 Keresse meg a fent említett részére, amelyben a célgépen, ahol az eszköz futtatásához szükséges. Keressen a "v4" kezdetű mappa neve. Hiányában egy ilyen directory azt jelenti, hogy a .NET-4 nincs telepítve a gépén. Letöltheti a Microsoft .NET-4 használatával [a Microsoft .NET-keretrendszer 4 (webes telepítő)](https://www.microsoft.com/download/details.aspx?id=17851).
 
-### <a name="limits"></a>Korlátok
+### <a name="limits"></a>Limits
 
 #### <a name="how-many-drives-can-i-preparesend-at-the-same-time"></a>Hány meghajtókat is szeretnék előkészítése/küldés egyszerre?
 

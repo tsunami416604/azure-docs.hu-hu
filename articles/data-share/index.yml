@@ -1,0 +1,61 @@
+### YamlMime:Landing
+title: Az Azure Data Share (előzetes verzió) dokumentációja
+summary: Az Azure Data Share előzetes verziója egy megbízható és biztonságos szolgáltatás az adatok külső szervezetekkel történő megosztására.
+metadata:
+  title: Azure Data Share (előzetes verzió)
+  description: Az Azure Data Share (előzetes verzió) egy megbízható és biztonságos szolgáltatás az adatok külső szervezetekkel történő megosztására.
+  services: data-share
+  ms.service: data-share
+  ms.subservice: subservice
+  ms.topic: landing-page
+  ms.collection: collection
+  author: hrasheed-msft
+  ms.author: hrasheed
+  ms.date: 09/13/2019
+  ms.openlocfilehash: d75af1eea77bea89f3facf782b836a26fcdabdde
+  ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 09/24/2019
+  ms.locfileid: "71218009"
+landingContent:
+- title: Tudnivalók az Azure Data Share-ről
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az Azure Data Share?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Az Azure Data Share alapelvei
+      url: terminology.md
+    - text: Az Azure Data Share szerepkörei és követelményei
+      url: concepts-roles-permissions.md
+- title: Adatok megosztása
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Adatok megosztása az Azure Data Share használatával
+      url: share-your-data.md
+    - text: Adatok elfogadása és fogadása az Azure Data Share használatával
+      url: subscribe-to-data-share.md
+  - linkListType: how-to-guide
+    links:
+    - text: Adathalmaz-leképezések konfigurálása
+      url: how-to-configure-mapping.md
+    - text: Adathalmazok hozzáadása
+      url: how-to-add-datasets.md
+- title: Monitorozás és kezelés
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Az Azure Data Share monitorozása
+      url: how-to-monitor.md
+    - text: Gyakori problémák megoldása
+      url: data-share-troubleshoot.md
+    - text: Adathalmazok hozzáadása
+      url: how-to-add-datasets.md
+    - text: Meghívó törlése
+      url: how-to-delete-invitation.md
+    - text: Megosztási előfizetés visszavonása
+      url: how-to-revoke-share-subscription.md

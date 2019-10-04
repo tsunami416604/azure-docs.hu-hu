@@ -1,6 +1,6 @@
 ---
-title: Állítsa be az Azure NetApp fájljait, és hozzon létre egy kötetet |} A Microsoft Docs
-description: Ismerteti, hogyan lehet gyorsan Azure NetApp fájlok beállítását, és hozzon létre egy kötetet.
+title: Gyors útmutató – Azure NetApp Files beállítása és NFS-kötet létrehozása | Microsoft Docs
+description: Rövid útmutató – útmutatást nyújt a Azure NetApp Files gyors beállításához és kötet létrehozásához.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,120 +12,408 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 2/20/2019
+ms.date: 9/11/2019
 ms.author: b-juche
-ms.openlocfilehash: 634f23cf3161fff09f21c79fd8300cb269dcc5b7
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: d7bc07ddce605838cf7aa966c6c94b85dad6b58c
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59546576"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212213"
 ---
-# <a name="set-up-azure-netapp-files-and-create-a-volume"></a>Az Azure NetApp Files beállítása és kötet létrehozása 
+# <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Gyors útmutató: Az Azure NetApp Files beállítása és NFS-kötet létrehozása 
 
-Ez a cikk bemutatja, hogyan gyorsan Azure NetApp fájlok beállítását, és hozzon létre egy kötetet. 
+Ez a cikk bemutatja, hogyan állíthatja be gyorsan a Azure NetApp Filest, és hogyan hozhat létre kötetet. 
+
+Ebben a rövid útmutatóban a következő elemeket fogja beállítani:
+
+- Regisztráció a Azure NetApp Files és a NetApp erőforrás-szolgáltatóhoz
+- Egy NetApp-fiók
+- Egy kapacitás-készlet
+- Egy NFS-kötet a Azure NetApp Files
+
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="before-you-begin"></a>Előkészületek 
 
-Kell tartoznia a nyilvános előzetes program és az engedélyezési listához hozzáadni kívánt Microsoft.NetApp erőforrás-szolgáltató elérésére. A nyilvános előzetes verzió programjához való csatlakozással kapcsolatos részletekért lásd az [Azure NetApp Files nyilvános előzetes verzió regisztrációs lapját](https://aka.ms/nfspublicpreview). 
+> [!IMPORTANT] 
+> Hozzáférést kell biztosítania a Azure NetApp Files szolgáltatáshoz.  Ha hozzáférést szeretne kérni a szolgáltatáshoz, tekintse meg a [Azure NetApp Files várólista-beküldési lapot](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR8cq17Xv9yVBtRCSlcD_gdVUNUpUWEpLNERIM1NOVzA5MzczQ0dQR1ZTSS4u).  A folytatás előtt meg kell várnia a hivatalos visszaigazoló e-mailt a Azure NetApp Files csapattól. 
 
-## <a name="register-for-azure-netapp-files-and-netapp-resource-provider"></a>A Azure NetApp-fájlok és a NetApp erőforrás-szolgáltató regisztrálása
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-1. Az Azure Portalon kattintson a jobb felső sarokban található Azure Cloud Shell ikonjára.
+---
 
-      ![Az Azure Cloud Shell ikon](../media/azure-netapp-files/azure-netapp-files-azure-cloud-shell.png)
+## <a name="register-for-azure-netapp-files-and-netapp-resource-provider"></a>Regisztráljon Azure NetApp Files és a NetApp erőforrás-szolgáltatóra
 
-2. Adja meg az előfizetést, amely már szerepel az engedélyezési listán NetApp Azure-fájlok:
-    
-        az account set --subscription <subscriptionId>
+> [!NOTE]
+> A regisztrációs folyamat hosszabb időt is igénybe vehet.
+>
 
-3. Az Azure-erőforrás-szolgáltató regisztrálásához: 
-    
-        az provider register --namespace Microsoft.NetApp --wait  
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
-    A regisztrációs folyamat befejezése hosszabb időt is igénybe vehet.
+A portál használatával történő regisztráció lépéseihez nyisson meg egy Cloud Shell-munkamenetet a fent jelzett módon, és kövesse az alábbi Azure CLI-lépéseket:
+
+[!INCLUDE [azure-netapp-files-cloudshell-include](../../includes/azure-netapp-files-azure-cloud-shell-window.md)]
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
+Ennek a cikknek a használatához a Azure PowerShell modul az a Version 2.6.0 vagy újabb verziója szükséges. Az aktuális verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket. Ha szeretné, használhatja a Cloud Shell-konzolt egy PowerShell-munkamenetben.
+
+1. A PowerShell-parancssorban (vagy a PowerShell Cloud Shell-munkamenetben) határozza meg a Azure NetApp Files engedélyezési előfizetését:
+    ```powershell-interactive
+    Select-AzSubscription -Subscription <subscriptionId>
+    ```
+
+2. Regisztrálja az Azure erőforrás-szolgáltatót:
+    ```powershell-interactive
+    Register-AzResourceProvider -ProviderNamespace Microsoft.NetApp
+    ```
+
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+[!INCLUDE [azure-netapp-files-cloudshell-include](../../includes/azure-netapp-files-azure-cloud-shell-window.md)]
+
+---
 
 ## <a name="create-a-netapp-account"></a>NetApp-fiók létrehozása
 
-1. Az Azure Portalon a keresőmezőbe írja be a **Azure NetApp fájlok** majd **Azure NetApp fájlok (előzetes verzió)** a listából, amely akkor jelenik meg.
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
-      ![Válassza ki a Azure NetApp-fájlok](../media/azure-netapp-files/azure-netapp-files-select-azure-netapp-files.png)
+1. A Azure Portal keresési mezőjébe írja be a **Azure NetApp Files** , majd a megjelenő listából válassza a **Azure NetApp Files** lehetőséget.
+
+      ![Azure NetApp Files kiválasztása](../media/azure-netapp-files/azure-netapp-files-select-azure-netapp-files.png)
 
 2. Új NetApp-fiók létrehozásához kattintson a **+ Hozzáadás** gombra.
 
-     ![NetApp új fiók létrehozása](../media/azure-netapp-files/azure-netapp-files-create-new-netapp-account.png)
+     ![Új NetApp-fiók létrehozása](../media/azure-netapp-files/azure-netapp-files-create-new-netapp-account.png)
 
-3. Az új NetApp ablakról adja meg a következő információkat: 
-   1. Adja meg **myaccount1** a fiók neve. 
+3. Az új NetApp-fiók ablakban adja meg a következő információkat: 
+   1. Adja meg a **myaccount1** nevét. 
    2. Válassza ki előfizetését.
-   3. Válassza ki **új létrehozása** új erőforráscsoport létrehozásához. Adja meg **myRG1** az erőforráscsoport neveként. Kattintson az **OK** gombra. 
-   4. Válassza ki a fiók helye.  
+   3. Válassza az **új létrehozása** lehetőséget az új erőforráscsoport létrehozásához. Adja meg az erőforráscsoport-név **myRG1** . Kattintson az **OK** gombra. 
+   4. Válassza ki a fiókja helyét.  
 
-      ![Új NetApp fiókokat felsoroló ablakról](../media/azure-netapp-files/azure-netapp-files-new-account-window.png)  
+      ![Új NetApp-fiók ablak](../media/azure-netapp-files/azure-netapp-files-new-account-window.png)  
 
-      ![Erőforrás-csoport ablak](../media/azure-netapp-files/azure-netapp-files-resource-group-window.png)
+      ![Erőforráscsoport ablak](../media/azure-netapp-files/azure-netapp-files-resource-group-window.png)
 
-4. Kattintson a **létrehozás** NetApp új fiók létrehozásához.
+4. Az új NetApp-fiók létrehozásához kattintson a **Létrehozás** gombra.
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
+1. Definiáljon néhány változót, hogy a többi példa során is hivatkozhatunk rájuk:
+
+    ```powershell-interactive
+    $resourceGroup = "myRG1"
+    $location = "eastus"
+    $anfAccountName = "myaccount1"
+    ``` 
+
+    > [!NOTE]
+    > A támogatott régiók listájának megtekintéséhez tekintse meg a [régiók számára elérhető termékeket](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=netapp&regions=all) .
+    > A parancssori eszközök által támogatott régió nevének beszerzéséhez használja a következőt:`Get-AzLocation | select Location`
+    >
+
+1. Hozzon létre egy új erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancs használatával:
+
+    ```powershell-interactive
+    New-AzResourceGroup -Name $resourceGroup -Location $location
+    ```
+
+2. Hozzon létre Azure NetApp Files fiókot a [New-AzNetAppFilesAccount](/powershell/module/az.netappfiles/New-AzNetAppFilesAccount) paranccsal:
+   
+    ```powershell-interactive
+    New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $location -Name $anfAccountName
+    ```
+
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+1. Definiáljon néhány változót, hogy a többi példa során is hivatkozhatunk rájuk:
+
+    ```azurecli-interactive
+    RESOURCE_GROUP="myRG1"
+    LOCATION="eastus"
+    ANF_ACCOUNT_NAME="myaccount1"
+    ``` 
+
+    > [!NOTE]
+    > A támogatott régiók listájának megtekintéséhez tekintse meg a [régiók számára elérhető termékeket](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=netapp&regions=all) .
+    > A parancssori eszközök által támogatott régió nevének beszerzéséhez használja a következőt:`az account list-locations -query "[].{Region:name}" --out table`
+    >
+
+2. Hozzon létre egy új erőforráscsoportot az az [Group Create](/cli/azure/group#az-group-create) paranccsal:
+
+    ```azurecli-interactive
+    az group create \
+        --name $RESOURCE_GROUP \
+        --location $LOCATION
+    ```
+
+3. Azure NetApp Files fiók létrehozása az [az netappfiles Account Create](/cli/azure/netappfiles/account#az-netappfiles-account-create) paranccsal:
+   
+    ```azurecli-interactive
+    az netappfiles account create \
+        --resource-group $RESOURCE_GROUP \
+        --location $LOCATION \
+        --account-name $ANF_ACCOUNT_NAME
+    ```
+---
 
 ## <a name="set-up-a-capacity-pool"></a>Kapacitáskészlet beállítása
 
-1. Az Azure Files-NetApp felügyeleti panelen válassza ki a NetApp fiókját (**myaccount1**).
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
-    ![NetApp fiók kiválasztása](../media/azure-netapp-files/azure-netapp-files-select-netapp-account.png)  
+1. A Azure NetApp Files-kezelés panelen válassza ki a NetApp-fiókját (**myaccount1**).
 
-2. NetApp fiókja az Azure Files-NetApp felügyeleti panelen kattintson az **kapacitás készletek**.
+    ![NetApp-fiók kiválasztása](../media/azure-netapp-files/azure-netapp-files-select-netapp-account.png)  
 
-    ![Kattintson a kapacitás-készletek](../media/azure-netapp-files/azure-netapp-files-click-capacity-pools.png)  
+2. A NetApp-fiók Azure NetApp Files felügyelet paneljén kattintson a **Kapacitási készletek**elemre.
 
-3. Kattintson a **+ készletek hozzáadása**. 
+    ![Kattintson a kapacitási készletek elemre.](../media/azure-netapp-files/azure-netapp-files-click-capacity-pools.png)  
 
-    ![Kattintson az Add-készletek](../media/azure-netapp-files/azure-netapp-files-click-add-pools.png)  
+3. Kattintson a **+ készletek hozzáadása**lehetőségre. 
 
-4. Adja meg a kapacitás készlet adatait: 
-    1. Adja meg **mypool1** a készlet neveként.
-    2. Válassza ki **prémium** a szolgáltatási szint. 
-    3. Adja meg **4 (TiB)** , a készlet méretét. 
+    ![Kattintson a készletek hozzáadása gombra.](../media/azure-netapp-files/azure-netapp-files-click-add-pools.png)  
+
+4. Adja meg a kapacitási készlet adatait: 
+    1. Adja meg a **mypool1** a készlet neveként.
+    2. Válassza a **prémium** lehetőséget a szolgáltatási szinthez. 
+    3. A készlet méreteként **4 (TiB)** adható meg. 
 
 5. Kattintson az **OK** gombra.
 
-## <a name="create-a-volume-for-azure-netapp-files"></a>Kötet létrehozása az Azure NetApp Files számára
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-1. NetApp fiókja az Azure Files-NetApp felügyeleti panelen kattintson az **kötetek**.
+1. Új változók definiálása jövőbeli referenciához
+
+    ```powershell-interactive
+    $poolName = "mypool1"
+    $poolSizeBytes = 4398046511104 # 4TiB
+    $serviceLevel = "Premium" # Valid values are Standard, Premium and Ultra
+    ```
+
+1. Új kapacitási készlet létrehozása a [New-AzNetAppFilesPool](/powershell/module/az.netappfiles/new-aznetappfilespool) használatával
+
+    ```powershell-interactive
+    New-AzNetAppFilesPool -ResourceGroupName $resourceGroup -Location $location -AccountName $anfAccountName -Name $poolName -PoolSize $poolSizeBytes -ServiceLevel $serviceLevel
+    ```
+
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+1. Új változók definiálása jövőbeli referenciához
+
+    ```azurecli-interactive
+    POOL_NAME="mypool1"
+    POOL_SIZE_TiB=4 # Size in Azure CLI needs to be in TiB unit (minimum 4 TiB)
+    SERVICE_LEVEL="Premium" # Valid values are Standard, Premium and Ultra
+    ```
+
+2. Hozzon létre egy új kapacitási készletet az az [netappfiles Pool Create](/cli/azure/netappfiles/pool#az-netappfiles-pool-create) paranccsal. 
+
+    ```azurecli-interactive
+    az netappfiles pool create \
+        --resource-group $RESOURCE_GROUP \
+        --location $LOCATION \
+        --account-name $ANF_ACCOUNT_NAME \
+        --pool-name $POOL_NAME \
+        --size $POOL_SIZE_TiB \
+        --service-level $SERVICE_LEVEL
+    ```
+
+---
+
+## <a name="create-nfs-volume-for-azure-netapp-files"></a>NFS-kötet létrehozása a Azure NetApp Fileshoz
+
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+
+1. A NetApp-fiók Azure NetApp Files felügyelet paneljén kattintson a **kötetek**elemre.
 
     ![Kattintson a kötetek elemre](../media/azure-netapp-files/azure-netapp-files-click-volumes.png)  
 
 2. Kattintson a **+ Kötet hozzáadása** gombra.
 
-    ![Kattintson a kötetek hozzáadása](../media/azure-netapp-files/azure-netapp-files-click-add-volumes.png)  
+    ![Kattintson a kötetek hozzáadása gombra.](../media/azure-netapp-files/azure-netapp-files-click-add-volumes.png)  
 
-3. A létrehozását egy kötet ablakot adja meg a kötet adatait: 
-   1. Adja meg **myvol1** a kötet neveként. 
-   2. Adja meg **myfilepath1** , a fájl elérési útját az exportálási útvonal a kötet létrehozásához használt.
-   3. Válassza ki a kapacitás-készletet (**mypool1**).
-   4. Használja az alapértelmezett érték a kvótát. 
-   5. Kattintson a virtuális hálózat **új létrehozása** hozhat létre egy új Azure virtuális hálózat (Vnet).  Ezután adja meg a következő információkat:
-       * Adja meg **myvnet1** a virtuális hálózat neveként.
-       * A beállítás, például 10.7.0.0/16-címtereket határozhat meg
-       * Adja meg **myANFsubnet** alhálózati nevet.
-       * Adja meg az alhálózat címtartományának, például 10.7.0.0/24. Vegye figyelembe, hogy nem oszthat meg a kijelölt alhálózatot más erőforrásokkal.
-       * Válassza ki **Microsoft.NetApp/volumes** alhálózati delegáláshoz.
-       * Kattintson a **OK** a virtuális hálózat létrehozásához.
-   6. Része az alhálózatnak, válassza ki az újonnan létrehozott virtuális hálózat (**myvnet1**) egy delegált alhálózata.
+3. A kötet létrehozása ablakban adja meg a kötet adatait: 
+   1. A kötet neveként adja meg a **myvol1** . 
+   2. Válassza ki a kapacitási készletet (**mypool1**).
+   3. Használja a kvóta alapértelmezett értékét. 
+   4. A virtuális hálózat területen kattintson az **új létrehozása** lehetőségre egy új Azure-beli virtuális hálózat (vnet) létrehozásához.  Ezután adja meg a következő információkat:
+       * Adja meg a **myvnet1** nevet a vnet neveként.
+       * Adja meg a beállításhoz tartozó címtartományt, például 10.7.0.0/16
+       * Adja meg a **myANFsubnet** nevet az alhálózat neveként.
+       * Az alhálózati címtartomány megadása, például 10.7.0.0/24. Vegye figyelembe, hogy a dedikált alhálózat nem osztható meg más erőforrásokkal.
+       * Válassza a **Microsoft. NetApp/kötetek** lehetőséget az alhálózati delegáláshoz.
+       * A vnet létrehozásához kattintson **az OK** gombra.
+   5. Az alhálózat területen jelölje ki az újonnan létrehozott vnet (**myvnet1**) delegált alhálózatként.
 
-      ![Hozzon létre egy kötetet ablak](../media/azure-netapp-files/azure-netapp-files-create-volume-window.png)  
+      ![Kötet ablak létrehozása](../media/azure-netapp-files/azure-netapp-files-create-volume-window.png)  
 
-      ![Virtuális hálózat időszak létrehozása](../media/azure-netapp-files/azure-netapp-files-create-virtual-network-window.png)  
+      ![Virtuális hálózat létrehozása ablak](../media/azure-netapp-files/azure-netapp-files-create-virtual-network-window.png)  
 
-4. Kattintson az **Áttekintés + létrehozás** elemre.
+4. Kattintson a **protokoll**elemre, majd válassza az **NFS** lehetőséget a kötethez tartozó protokoll típusaként.   
 
-    ![Tekintse át és időszak létrehozása](../media/azure-netapp-files/azure-netapp-files-review-and-create-window.png)  
+    Adja meg a **myfilepath1** a kötet exportálási elérési útjának létrehozásához használt fájl elérési útjaként. 
 
-5. Tekintse át a kötet adatait, majd kattintson a **létrehozás**.  
-    A kötet létrehozása a kötetek panel jelenik meg.
+    ![Az NFS protokoll megadása a gyors üzembe helyezéshez](../media/azure-netapp-files/azure-netapp-files-quickstart-protocol-nfs.png)
 
-    ![Kötet létrehozása](../media/azure-netapp-files/azure-netapp-files-create-volume-created.png)  
+5. Kattintson az **Áttekintés + létrehozás** elemre.
+
+    ![Áttekintés és létrehozás ablak](../media/azure-netapp-files/azure-netapp-files-review-and-create-window.png)  
+
+6. Tekintse át a kötetre vonatkozó információkat, majd kattintson a **Létrehozás**gombra.  
+    A létrehozott kötet megjelenik a kötetek panelen.
+
+    ![Kötet létrehozva](../media/azure-netapp-files/azure-netapp-files-create-volume-created.png)  
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
+1. Hozzon létre egy alhálózati delegálást a "Microsoft. NetApp/Volumes" kifejezésre a [New-AzDelegation](/powershell/module/az.network/new-azdelegation) paranccsal.
+
+    ```powershell-interactive
+    $anfDelegation = New-AzDelegation -Name ([guid]::NewGuid().Guid) -ServiceName "Microsoft.NetApp/volumes"
+    ```
+
+2. Hozzon létre egy alhálózat-konfigurációt a [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) parancs használatával.
+
+    ```powershell-interactive
+    $subnet = New-AzVirtualNetworkSubnetConfig -Name "myANFSubnet" -AddressPrefix "10.7.0.0/24" -Delegation $anfDelegation
+    ```
+
+3. Hozza létre a virtuális hálózatot a [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) parancs használatával.
+    
+    ```powershell-interactive
+    $vnet = New-AzVirtualNetwork -Name "myvnet1" -ResourceGroupName $resourceGroup -Location $location -AddressPrefix "10.7.0.0/16" -Subnet $subnet
+    ```
+
+4. Hozza létre a kötetet a [New-AzNetAppFilesVolume](/powershell/module/az.netappfiles/new-aznetappfilesvolume) parancs használatával.
+   
+    ```powershell-interactive
+    $volumeSizeBytes = 1099511627776 # 100GiB
+    $subnetId = $vnet.Subnets[0].Id
+
+    New-AzNetAppFilesVolume -ResourceGroupName $resourceGroup `
+        -Location $location `
+        -AccountName $anfAccountName `
+        -PoolName $poolName `
+        -Name "myvol1" `
+        -UsageThreshold $volumeSizeBytes `
+        -SubnetId $subnetId `
+        -CreationToken "myfilepath1" `
+        -ServiceLevel $serviceLevel `
+        -ProtocolType NFSv3
+    ```
+
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+1. Néhány változó meghatározása a későbbi használathoz.
+    
+    ```azurecli-interactive
+    VNET_NAME="myvnet1"
+    SUBNET_NAME="myANFSubnet"
+    ```
+
+1. Hozzon létre egy alhálózat nélküli virtuális hálózatot az az [Network vnet Create](/cli/azure/network/vnet#az-network-vnet-create) parancs használatával.
+    
+    ```azurecli-interactive
+    az network vnet create \
+        --resource-group $RESOURCE_GROUP \
+        --name $VNET_NAME \
+        --location $LOCATION \
+        --address-prefix "10.7.0.0/16"
+
+    ```
+
+2. Hozzon létre egy delegált alhálózatot az [az Network vnet subnet Create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) parancs használatával.
+
+    ```azurecli-interactive
+    az network vnet subnet create \
+        --resource-group $RESOURCE_GROUP \
+        --vnet-name $VNET_NAME \
+        --name $SUBNET_NAME \
+        --address-prefixes "10.7.0.0/24" \
+        --delegations "Microsoft.NetApp/volumes"
+    ```
+
+3. Hozza létre a kötetet az az [netappfiles Volume Create](/cli/azure/netappfiles/volume#az-netappfiles-volume-create) parancs használatával.
+   
+    ```azurecli-interactive
+    VNET_ID=$(az network vnet show --resource-group $RESOURCE_GROUP --name $VNET_NAME --query "id" -o tsv)
+    SUBNET_ID=$(az network vnet subnet show --resource-group $RESOURCE_GROUP --vnet-name $VNET_NAME --name $SUBNET_NAME --query "id" -o tsv)
+    VOLUME_SIZE_GiB=100 # 100 GiB
+    UNIQUE_FILE_PATH="myfilepath2" # Please note that creation token needs to be unique within all ANF Accounts
+
+    az netappfiles volume create \
+        --resource-group $RESOURCE_GROUP \
+        --location $LOCATION \
+        --account-name $ANF_ACCOUNT_NAME \
+        --pool-name $POOL_NAME \
+        --name "myvol1" \
+        --service-level $SERVICE_LEVEL \
+        --vnet $VNET_ID \
+        --subnet $SUBNET_ID \
+        --usage-threshold $VOLUME_SIZE_GiB \
+        --creation-token $UNIQUE_FILE_PATH \
+        --protocol-types "NFSv3"
+    ```
+
+---
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+
+Ha elkészült, és ha szeretné, törölheti az erőforráscsoportot. Egy erőforráscsoport törlésének művelete visszafordíthatatlan.  
+
+> [!IMPORTANT]
+> Az erőforráscsoportok összes erőforrása véglegesen törölve lesz, és nem vonható vissza. 
+
+1. A Azure Portal keresési mezőjébe írja be a **Azure NetApp Files** , majd a megjelenő listából válassza a **Azure NetApp Files** lehetőséget.
+
+2. Az előfizetések listájában kattintson a törölni kívánt erőforráscsoport (myRG1) elemre. 
+
+    ![Az erőforráscsoportok navigálása](../media/azure-netapp-files/azure-netapp-files-azure-navigate-to-resource-groups.png)
+
+
+3. Az erőforráscsoport lapon kattintson az **erőforráscsoport törlése**elemre.
+
+    ![Erőforráscsoport törlése](../media/azure-netapp-files/azure-netapp-files-azure-delete-resource-group.png) 
+
+    Ekkor megnyílik egy ablak, mely figyelmezteti az erőforráscsoporttal törölt erőforrásokról.
+
+4. Adja meg az erőforráscsoport nevét (myRG1) annak megerősítéséhez, hogy véglegesen törölni kívánja az erőforráscsoportot és az összes erőforrást, majd kattintson a **Törlés**gombra.
+
+    ![Erőforráscsoport törlése](../media/azure-netapp-files/azure-netapp-files-azure-confirm-resource-group-deletion.png ) 
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
+Ha elkészült, és ha szeretné, törölheti az erőforráscsoportot. Egy erőforráscsoport törlésének művelete visszafordíthatatlan.  
+
+> [!IMPORTANT]
+> Az erőforráscsoportok összes erőforrása véglegesen törölve lesz, és nem vonható vissza.
+
+1. Törölje az erőforráscsoportot a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) parancs használatával.
+   
+    ```powershell-interactive
+    Remove-AzResourceGroup -Name $resourceGroup
+    ```
+
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Ha elkészült, és ha szeretné, törölheti az erőforráscsoportot. Egy erőforráscsoport törlésének művelete visszafordíthatatlan.  
+
+> [!IMPORTANT]
+> Az erőforráscsoportok összes erőforrása véglegesen törölve lesz, és nem vonható vissza.
+
+1. Törölje az erőforráscsoportot az az [Group delete](/cli/azure/group#az-group-delete) paranccsal.
+   
+    ```azurecli-interactive
+    az group delete \
+        --name $RESOURCE_GROUP
+    ```
+---
 
 ## <a name="next-steps"></a>További lépések  
 
-* [Megismerheti a NetApp Azure-fájlok hierarchiája](azure-netapp-files-understand-storage-hierarchy.md)
-* [Kötetek kezelése az Azure Files-NetApp használatával](azure-netapp-files-manage-volumes.md) 
+> [!div class="nextstepaction"]
+> [Kötetek kezelése Azure NetApp Files használatával](azure-netapp-files-manage-volumes.md)  

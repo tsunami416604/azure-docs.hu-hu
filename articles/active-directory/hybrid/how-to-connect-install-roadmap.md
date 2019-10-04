@@ -13,12 +13,12 @@ ms.date: 09/18/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee64fe8643362c6a75e288d78e163317fd8a44d8
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 5d6cce859aa26935f0b6007fe8e5ff2c2239b210
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193150"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67109447"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Az Azure AD Connect és az Azure AD Connect Health telepítési ütemterve
 
@@ -68,7 +68,7 @@ A [jelszókivonat-szinkronizálás](how-to-connect-password-hash-synchronization
 
 A [jelszóvisszaíró](../authentication/quickstart-sspr.md) szolgáltatás lehetővé teszi a felhasználók számára jelszavak módosítását és visszaállítását a felhőben, valamint a helyszíni jelszóházirend alkalmazását.
 
-Az [eszközvisszaíró](how-to-connect-device-writeback.md) szolgáltatás lehetővé teszi egy regisztrált Azure AD-eszköz visszaírását a helyszíni Active Directoryra, így ott feltételes hozzáféréssel használható.
+[Eszközvisszaírás](how-to-connect-device-writeback.md) lehetővé teszi egy eszköz visszaírását a helyszíni Active Directory, a feltételes hozzáféréshez használható az Azure AD-ben regisztrált.
 
 A [véletlen törlések megakadályozása](how-to-connect-sync-feature-prevent-accidental-deletes.md) szolgáltatás alapértelmezés szerint be van kapcsolva, és a felhőcímtárat védi az egy időben végrehajtott többszörös törlésektől. Alapértelmezés szerint futtatásonként 500 törlést tesz lehetővé. Ezt a beállítást szervezetének mérete alapján módosíthatja.
 
@@ -160,7 +160,7 @@ Az Azure AD Connect Health portálon riasztásokat, teljesítményfigyelési ada
 ![Az Azure AD Connect Health portál](./media/whatis-hybrid-identity-health/portalsidebar.png)
 
 * **Gyors üzembe helyezési**: Ha ezt a beállítást, a **gyors üzembe helyezés** panel nyílik meg. A **Get Tools** (Eszközök beszerzése) lehetőség kiválasztásával letöltheti az Azure AD Connect Health-ügynököt. Emellett hozzáférhet a dokumentációkhoz, és visszajelzést is küldhet.
-* **Az Azure Active Directory Connect (sync)**: Ez a lehetőség az Azure AD Connect Health által aktuálisan figyelt Azure AD Connect-kiszolgálók mutatja. A **Szinkronizálási hibák** bejegyzés az első bevezetett szinkronizálási szolgáltatása alapszintű szinkronizálási hibáit jeleníti meg kategóriák szerint. Ha kiválasztja a **Szinkronizálási szolgáltatások** bejegyzést, a megnyíló panel az Azure AD Connect-kiszolgálókra vonatkozó információkat tartalmazza. További információ ezekről a képességekről: [Az Azure AD Connect Health szinkronizálási szolgáltatás használata az AD FS szolgáltatással](how-to-connect-health-sync.md).
+* **Az Azure Active Directory Connect (sync)** : Ez a lehetőség az Azure AD Connect Health által aktuálisan figyelt Azure AD Connect-kiszolgálók mutatja. A **Szinkronizálási hibák** bejegyzés az első bevezetett szinkronizálási szolgáltatása alapszintű szinkronizálási hibáit jeleníti meg kategóriák szerint. Ha kiválasztja a **Szinkronizálási szolgáltatások** bejegyzést, a megnyíló panel az Azure AD Connect-kiszolgálókra vonatkozó információkat tartalmazza. További információ ezekről a képességekről: [Az Azure AD Connect Health szinkronizálási szolgáltatás használata az AD FS szolgáltatással](how-to-connect-health-sync.md).
 * **Active Directory összevonási szolgáltatások**: Ez a lehetőség az Azure AD Connect Health által aktuálisan figyelt összes AD FS szolgáltatást mutatja. Ha kiválaszt egy példányt, a megnyíló panel az adott szolgáltatáspéldányra vonatkozó információkat tartalmazza. Az információk között tulajdonságokat, riasztásokat, megfigyelési adatokat, használatelemzést és egy áttekintést talál. További információ ezekről a képességekről: [Az Azure AD Connect Health használata az AD FS szolgáltatással](how-to-connect-health-adfs.md).
 * **Active Directory Domain Services**: Ez a lehetőség az Azure AD Connect Health által aktuálisan figyelt összes AD DS-erdőt mutatja. Ha kiválaszt egy erdőt, a megnyíló panel az adott erdőre vonatkozó információkat tartalmazza. Ezek az adatok a következők áttekintését teszik lehetővé: lényeges információk, tartományvezérlő irányítópult, replikáció állapota irányítópult, riasztások és figyelés. További információ ezekről a képességekről: [Az Azure AD Connect Health használata az AD DS szolgáltatással](how-to-connect-health-adds.md).
 * **Konfigurálása**: Ez a szakasz az alábbi funkciók be- és kikapcsolása lehetőséget kínál:

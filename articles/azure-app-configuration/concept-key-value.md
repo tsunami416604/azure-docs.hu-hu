@@ -4,22 +4,22 @@ description: Konfigurációs adatok tárolási módját az Azure-alkalmazások k
 services: azure-app-configuration
 documentationcenter: ''
 author: yegu-ms
-manager: balans
+manager: maiye
 editor: ''
 ms.service: azure-app-configuration
 ms.devlang: na
 ms.topic: overview
 ms.workload: tbd
-ms.date: 02/24/2019
+ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: 24216d1bf82789d2d0fc312d9af4c06fa3c8cf4e
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: c7a7e7994ef5e16640f59efdc672f6793bc4f18d
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011282"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706478"
 ---
-# <a name="key-value-store"></a>Kulcs-érték tároló
+# <a name="keys-and-values"></a>Kulcsok és értékek
 
 Az Azure App konfigurációs kulcs-érték párok konfigurációs adatokat tárolja. Kulcs-érték párok módon egy egyszerű, de a rugalmas alkalmazásbeállításokat, amelyek a fejlesztők számára is felismerhetők a különböző típusú jelölik.
 
@@ -27,7 +27,7 @@ Az Azure App konfigurációs kulcs-érték párok konfigurációs adatokat táro
 
 Kulcsok számára a kulcs-érték párok szolgál, és tárolására és beolvasására a megfelelő értékeket használják. Egy általános gyakorlat a hierarchikus névtér a határolójel, például a kulcsok szervezheti `/` vagy `:`. Az alkalmazás, amely a leginkább megfelelő megoldást szabályt használ. Alkalmazás konfigurálása kulcsok teljes kezeli. Döntse el, hogyan nevük struktúrája vagy kényszerítése minden szabály azokat a kulcsokat, nem elemezni.
 
-A konfigurációs adattároló belüli alkalmazás-keretrendszerek használata függhet, adott elnevezési sémát kulcs értékeit. Tegyük fel, a Java Spring Cloud keretrendszerben meghatározása `Environment` megadhatja azokat a beállításokat tartalmazó változókat lehet paraméterezni a Spring-alkalmazás az erőforrások *alkalmazásnév* és *profil*. Kulcsok Spring Cloud kapcsolatos konfigurációs adatok általában indítsa el a két elem egy elválasztó karakter választja el.
+Konfigurációs adatok belüli alkalmazás-keretrendszerek használata függhet, adott elnevezési sémát kulcs értékeit. Tegyük fel, a Java Spring Cloud keretrendszerben meghatározása `Environment` megadhatja azokat a beállításokat tartalmazó változókat lehet paraméterezni a Spring-alkalmazás az erőforrások *alkalmazásnév* és *profil*. Kulcsok Spring Cloud kapcsolatos konfigurációs adatok általában indítsa el a két elem egy elválasztó karakter választja el.
 
 Alkalmazáskonfiguráció tárolt kulcsok olyan kis-és nagybetűket, unicode-alapú karakterláncok. A kulcsok *app1* és *App1* nem azonos egy alkalmazás a konfigurációs adattárolónál a. Ne feledje az alkalmazáson belül a konfigurációs beállítások használatakor, mivel bizonyos keretrendszerek konfigurációs kulcsok case-insensitively kezeli. Például az ASP.NET Core konfigurációs kezeli a rendszer kulcsok nem betűérzékeny karakterláncként. Alkalmazások konfigurálása az ASP.NET Core-alkalmazáson belül lekérdezheti, kiszámíthatatlan viselkedés elkerülése érdekében, ne használjon, amelyet csak a kis-és nagybetűhasználatának eltérő kulcsok.
 
@@ -45,29 +45,27 @@ Kulcsokat az Alkalmazáskonfigurációt számos módon hierarchikusan rendezhet�
 
 Íme néhány példa hogyan strukturálhatja a kulcsnevek hierarchiára:
 
-* A környezetek alapján
-
-        AppName:Test:DB:Endpoint
-        AppName:Staging:DB:Endpoint
-        AppName:Production:DB:Endpoint
-
 * A Komponensszolgáltatások alapján
 
-        AppName:Service1:Test:DB:Endpoint
-        AppName:Service1:Staging:DB:Endpoint
-        AppName:Service1:Production:DB:Endpoint
-        AppName:Service2:Test:DB:Endpoint
-        AppName:Service2:Staging:DB:Endpoint
-        AppName:Service2:Production:DB:Endpoint
+        AppName:Service1:ApiEndpoint
+        AppName:Service2:ApiEndpoint
 
 * A telepítési régió alapján
 
-        AppName:Production:Region1:DB:Endpoint
-        AppName:Production:Region2:DB:Endpoint
+        AppName:Region1:DbEndpoint
+        AppName:Region2:DbEndpoint
+
+### <a name="label-keys"></a>Címke kulcsok
+
+Az alkalmazás konfigurációs értékek igény szerint rendelkezhet egy címke attribútum. Címkék segítségével különbséget tenni a kulcs értékeit ugyanazzal a kulccsal. A kulcs *app1* , a címkék *A* és *B* forms-alkalmazás a konfigurációs adattárolónál a két külön kulcs. Alapértelmezés szerint a kulcs értékét a címke az üres, vagy `null`.
+
+Címke hozzon létre egy kulcsot változatának kényelmes módot biztosít. Egyik gyakori felhasználási címkéket, hogy adja meg az ugyanazon kulcshoz több környezetet:
+
+    Key = AppName:DbEndpoint & Label = Test
+    Key = AppName:DbEndpoint & Label = Staging
+    Key = AppName:DbEndpoint & Label = Production
 
 ### <a name="version-key-values"></a>Verzió kulcsértékek
-
-Az alkalmazás konfigurációs értékek igény szerint rendelkezhet egy címke attribútum. Címkék segítségével különbséget tenni a kulcs értékeit ugyanazzal a kulccsal. A kulcs *app1* , a címkék *v1* és *v2* két külön kulcsérték-alkalmazás a konfigurációs adattárolónál az űrlapon. Alapértelmezés szerint a kulcs értékét a címke az üres, vagy `null`.
 
 Alkalmazáskonfiguráció éppen módosított automatikusan nem verzió kulcs értékeit. Címkék használata arra, hogy a kulcs értékét több verzióját. Például megadhatja, hogy egy alkalmazás verziószáma, vagy egy adott build társított egy Git véglegesítési Azonosítóját, a címkék értékek azonosításához.
 
@@ -96,7 +94,7 @@ A következő címke minták is lehetnek:
 | `label=1.0.*` | Megegyezik a kezdődő címkéket **1.0-t.** |
 | `label=*.0.0` | Megegyezik a címkék, amelyek végződhet **.0.0** |
 | `label=*.0.*` | Megegyezik a címkék tartalmazó **.0.** |
-| `label=%00,1.0.0` | Megegyezik a címkék `null` vagy **1.0.1**, legfeljebb öt CSV-k |
+| `label=%00,1.0.0` | Megegyezik a címkék `null` vagy **1.0.0-s**, legfeljebb öt CSV-k |
 
 ## <a name="values"></a>Értékek
 
@@ -106,5 +104,5 @@ Egy alkalmazás a konfigurációs adattároló, amely tartalmazza az összes kul
 
 ## <a name="next-steps"></a>További lépések
 
-> [!div class="nextstepaction"]
-> [Időponthoz pillanatkép](./concept-point-time-snapshot.md)  
+* [Időponthoz pillanatkép](./concept-point-time-snapshot.md)  
+* [A szolgáltatás kezelése](./concept-feature-management.md)  

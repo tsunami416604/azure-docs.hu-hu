@@ -6,14 +6,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 04/14/2019
+ms.date: 07/03/2019
 ms.author: ramamill
-ms.openlocfilehash: 5f0578026e95378065fc68198434e347a87eb1fe
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
-ms.translationtype: HT
+ms.openlocfilehash: 902c14211e91a1500c6b50cd790b347e337c4f70
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149019"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67589062"
 ---
 # <a name="set-up-the-configuration-server-for-disaster-recovery-of-physical-servers-to-azure"></a>Állítsa be a konfigurációs kiszolgáló, valamint fizikai kiszolgálók Azure-bA
 
@@ -24,7 +24,7 @@ Ez a cikk ismerteti, hogyan állítható be a helyszíni környezetben való fiz
 A cikk feltételezi, hogy már rendelkezik:
 - A Recovery Services-tároló az a [az Azure portal](https://portal.azure.com "az Azure portal").
 - Fizikai számítógép, amelyen a konfigurációs kiszolgáló telepítése.
-- Ha, le lett tiltva a TLS 1.0-t a gépen, amelyen a konfigurációs kiszolgálót telepít, ellenőrizze, hogy engedélyezve van-e a TLs 1.2-es és, hogy a .NET-keretrendszer 4.6-os vagy újabb verziója telepítve van a számítógépen (az erős titkosítás le van tiltva). [További információk](https://support.microsoft.com/help/4033999/how-to-resolve-azure-site-recovery-agent-issues-after-disabling-tls-1).
+- Ha, le lett tiltva a TLS 1.0-t a gépen, amelyen a konfigurációs kiszolgálót telepít, ellenőrizze, hogy engedélyezve van-e a TLs 1.2-es és, hogy a .NET-keretrendszer 4.6-os vagy újabb verziója telepítve van a számítógépen (az erős titkosítás engedélyezve van). [További információk](https://support.microsoft.com/help/4033999/how-to-resolve-azure-site-recovery-agent-issues-after-disabling-tls-1).
 
 ### <a name="configuration-server-minimum-requirements"></a>Konfigurációs kiszolgáló minimális követelményei
 A következő táblázat felsorolja a minimális hardver-, szoftver, és a konfigurációs kiszolgáló hálózati követelményei.
@@ -50,7 +50,7 @@ A következő táblázat felsorolja a minimális hardver-, szoftver, és a konfi
    ![A forrás beállítása](./media/physical-azure-set-up-source/plus-config-srv.png)
 2. Az a **-kiszolgáló hozzáadása** panelen ellenőrizze, hogy **konfigurációs kiszolgáló** megjelenik **kiszolgálótípus**.
 4. A Site Recovery egyesített telepítőjének telepítőfájl letöltéséhez.
-5. Töltse le a tároló regisztrációs kulcsát. A regisztrációs kulcs egyesített telepítő futtatásakor kell. A kulcs a generálásától számított öt napig érvényes.
+5. Töltse le a tárolóregisztrációs kulcsot. A regisztrációs kulcs egyesített telepítő futtatásakor kell. A kulcs a generálásától számított öt napig érvényes.
 
     ![A forrás beállítása](./media/physical-azure-set-up-source/set-source2.png)
 6. A számítógépen, mint a konfigurációs kiszolgálót használ, futtassa **Azure Site Recovery egyesített telepítőjének** a konfigurációs kiszolgáló, a folyamatkiszolgáló és a fő célkiszolgáló telepítéséhez.

@@ -1,9 +1,9 @@
 ---
-title: A PIM - használata az Azure Active Directory licenckövetelményekért |} A Microsoft Docs
-description: Az Azure AD Privileged Identity Management (PIM) használata a licencelési követelményeket ismerteti.
+title: A PIM használatára vonatkozó licencfeltételek – Azure Active Directory | Microsoft Docs
+description: A Azure AD Privileged Identity Management (PIM) használatára vonatkozó licencelési követelményeket ismerteti.
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 editor: markwahl-msft
 ms.assetid: 34367721-8b42-4fab-a443-a2e55cdbf33d
@@ -14,57 +14,57 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: pim
 ms.date: 01/16/2019
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40e16209a185623b6e15650f70141edd6394e337
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 83c31c2731a8e872dfd2750fced8b91d283d0892
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576148"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804074"
 ---
-# <a name="license-requirements-to-use-pim"></a>Licenckövetelmények vonatkoznak, miközben a PIM használata
+# <a name="license-requirements-to-use-pim"></a>A PIM használatára vonatkozó licencfeltételek
 
-Az Azure Active Directory (Azure AD) Privileged Identity Management (PIM) használatához egy könyvtárat egy érvényes licenccel kell rendelkeznie. Ezenkívül licencet hozzá kell rendelni a rendszergazdák és a megfelelő felhasználók. Ez a cikk ismerteti a PIM használatát tervezi a licenckövetelmények vonatkoznak.
+Azure Active Directory (Azure AD) Privileged Identity Management (PIM) használatához a címtárnak érvényes licenccel kell rendelkeznie. A licenceket továbbá a rendszergazdák és a kapcsolódó felhasználók számára is hozzá kell rendelni. Ez a cikk a PIM használatára vonatkozó licencfeltételeket ismerteti.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A PIM használatát tervezi, a következő fizetett vagy a próbaverziós licencek a címtárban kell rendelkeznie:
+A PIM használatához a címtárnak a következő fizetős vagy próbaverziós licencek egyikével kell rendelkeznie:
 
-- Prémium szintű Azure AD P2
+- Azure AD Premium P2
 - Enterprise Mobility + Security (EMS) E5
-- Microsoft 365 M5
+- M5 Microsoft 365
 
 További információkért lásd: [Mi az az Azure Active Directory?](../fundamentals/active-directory-whatis.md).
 
-## <a name="which-users-must-have-licenses"></a>Mely felhasználók rendelkeznie kell licencekkel?
+## <a name="which-users-must-have-licenses"></a>Mely felhasználóknak kell licenccel rendelkezniük?
 
-Minden egyes rendszergazda vagy a felhasználó kommunikál, vagy fogad az egyik előnye a PIM-licenccel kell rendelkeznie. Példák erre vonatkozóan:
+Minden olyan rendszergazdának vagy felhasználónak, aki a PIM-t vagy-t használja, licencre van szükség. Példák erre vonatkozóan:
 
-- A rendszergazdák az Azure AD-szerepkörök felügyelt PIM használatával
-- A rendszergazdák a felügyelt, miközben a PIM használata Azure-erőforrásszerepkörök
-- A kiemelt szerepkörű Rendszergazda szerepkörhöz hozzárendelt rendszergazdák
-- A felügyelt hozzárendelni az Azure AD-szerepkörök jogosultak felhasználó a PIM használata
-- A felhasználók tudni a PIM kérések jóváhagyása vagy elutasítása
-- A just-in-time vagy közvetlen (időalapú) hozzárendelést egy Azure-erőforrás szerepkörhöz rendelt felhasználók  
-- Hozzáférési felülvizsgálat rendelt felhasználók
-- A hozzáférési felülvizsgálatok végrehajtó felhasználók
+- A PIM használatával felügyelt Azure AD-szerepkörökkel rendelkező rendszergazdák
+- A PIM használatával felügyelt Azure-erőforrás-szerepkörökkel rendelkező rendszergazdák
+- A Kiemelt szerepkörű rendszergazda szerepkörhöz rendelt rendszergazdák
+- A PIM használatával felügyelt Azure AD-szerepköröknek megfelelőként hozzárendelt felhasználók
+- A felhasználók a PIM-ban hagyhatják jóvá/utasítsa el a kérelmeket
+- Az igény szerinti vagy közvetlen (időalapú) hozzárendeléssel rendelkező Azure-erőforrás-szerepkörhöz hozzárendelt felhasználók  
+- Hozzáférési felülvizsgálathoz rendelt felhasználók
+- Hozzáférési felülvizsgálatokat végrehajtó felhasználók
 
-Licencek hozzárendelése a által használt kapcsolatos információkért lásd: [hozzárendelni, vagy távolítsa el az Azure Active Directory portálon licenceit](../fundamentals/license-users-groups.md).
+További információ a licencek felhasználási módjaihoz való hozzárendeléséről: [licencek kiosztása vagy eltávolítása a Azure Active Directory portál használatával](../fundamentals/license-users-groups.md).
 
 ## <a name="what-happens-when-a-license-expires"></a>Mi történik, ha egy licenc lejár?
 
-Ha egy Azure AD Premium P2, EMS E5 vagy próbaverziós licenc lejár, miközben a PIM szolgáltatás már nem a címtárban érhető el:
+Ha egy prémium szintű Azure AD P2, EMS E5 vagy próbaverziós licenc lejár, a PIM-funkciók többé nem lesznek elérhetők a címtárban:
 
-- Az Azure AD-szerepkörök állandó szerepkör-hozzárendelések nem érinti.
-- A PIM szolgáltatáshoz az Azure Portalon, valamint a Graph API-parancsmagok és a PowerShell-felületek, miközben a PIM, már nem lesz elérhető a felhasználók emelt szintű szerepkörök aktiválása, emelt szintű hozzáférések kezeléséhez, vagy a kiemelt szerepkörök hozzáférési felülvizsgálatai.
-- Az Azure AD-szerepkörök jogosult szerepkör-hozzárendelés lesz eltávolítva, ahogy a felhasználók többé nem fognak tudni emelt szintű szerepkörök aktiválása.
-- Minden folyamatban lévő hozzáférési felülvizsgálatok az Azure AD-szerepkörök megszűnik, és a PIM-konfigurációs beállítások törlődnek.
-- A PIM szerepkör-hozzárendelési módosítások a már nem küld e-maileket.
+- Az Azure AD-szerepkörökhöz tartozó állandó szerepkör-hozzárendelések nem lesznek hatással.
+- A Azure Portal PIM szolgáltatása, valamint a PIM Graph API-parancsmagjai és PowerShell-kapcsolatai többé nem lesznek elérhetők a felhasználók számára a Kiemelt szerepkörök aktiválásához, a privilegizált hozzáférés felügyeletéhez, illetve a Kiemelt szerepkörök hozzáférési felülvizsgálatának elvégzéséhez.
+- Az Azure AD-szerepkörök jogosult szerepkör-hozzárendelései el lesznek távolítva, mivel a felhasználók többé nem tudják aktiválni a Kiemelt szerepköröket.
+- Az Azure AD-szerepkörök folyamatos hozzáférési felülvizsgálatai megszűnnek, és a rendszer eltávolítja a PIM konfigurációs beállításait.
+- A PIM többé nem küld e-maileket a szerepkör-hozzárendelés változásairól.
 
 ## <a name="next-steps"></a>További lépések
 
-- [A PIM telepítése](pim-deployment-plan.md)
+- [PIM üzembe helyezése](pim-deployment-plan.md)
 - [Ismerkedés a PIM-mel](pim-getting-started.md)
-- [Nem kezelheti a PIM szerepkörök](pim-roles.md)
+- [A PIM-ben nem felügyelhető szerepkörök](pim-roles.md)

@@ -2,17 +2,17 @@
 title: Ajánlott eljárások operátor - identitás az Azure Kubernetes-szolgáltatások (AKS)
 description: Ismerje meg a fürt operátor gyakorlati tanácsok a hogyan kezelheti a hitelesítési és engedélyezési fürtök az Azure Kubernetes Service (AKS)
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 11/26/2018
-ms.author: iainfou
-ms.openlocfilehash: 42f6fefa930a36fbfcca7b3f792cc749723f7b99
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.date: 04/24/2019
+ms.author: mlearned
+ms.openlocfilehash: 82bf59dddeecab0addf00a935f55be8d1d7952d3
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60001490"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614782"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>Hitelesítés és engedélyezés az Azure Kubernetes Service (AKS) ajánlott eljárásai
 
@@ -48,7 +48,7 @@ Az Azure AD használó egy AKS-fürt létrehozása: [integrálása az Azure Acti
 
 **Ajánlott eljárásokkal kapcsolatos útmutatás** -használata Kubernetes rbac-t a fürt erőforrásaihoz, felhasználók vagy csoportok engedélyeinek megadásához. Hozzon létre a szerepkörök és a kötéseket, hogy a lehető legkevesebb szükséges engedélyek hozzárendelése. Az Azure AD integrálása a felhasználói állapot vagy a csoporttagság bármilyen módosítása automatikusan frissül, és fürt-erőforrásokhoz való hozzáférés jelenlegi.
 
-A Kubernetes szabályozhatja a hozzáférést a fürtben lévő erőforrásokat biztosíthat. Engedélyek a fürt szintjén, vagy az alkalmazásspecifikus névtereket lehet definiálni. Megadhatja, milyen erőforrások is kezelhetők, és milyen engedélyekkel. Ezek a szerepkörök felelnek a alkalmazott felhasználókhoz vagy csoportokhoz a kötés. További információ *szerepkörök*, *ClusterRoles*, és *kötések*, lásd: [hozzáférési és azonosító beállításai az Azure Kubernetes Service (AKS)] [aks-concepts-identity].
+A Kubernetes szabályozhatja a hozzáférést a fürtben lévő erőforrásokat biztosíthat. Engedélyek a fürt szintjén, vagy az alkalmazásspecifikus névtereket lehet definiálni. Megadhatja, milyen erőforrások is kezelhetők, és milyen engedélyekkel. Ezek a szerepkörök felelnek a alkalmazott felhasználókhoz vagy csoportokhoz a kötés. További információ *szerepkörök*, *ClusterRoles*, és *kötések*, lásd: [hozzáférési és azonosító beállításai az Azure Kubernetes Service (AKS)][aks-concepts-identity].
 
 Például, létrehozhat egy szerepkör, amely teljes hozzáférést biztosít az erőforrásokhoz nevű névtér *pénzügyi alkalmazások*, ahogyan az a következő példa YAML jegyzékfájl:
 
@@ -84,11 +84,11 @@ roleRef:
 
 Amikor *developer1\@contoso.com* hitelesítése szemben az AKS-fürtöt, az erőforrásokhoz való teljes körű engedélyekkel rendelkeznek a *pénzügyi alkalmazások* névtér. Ez egyébként logikailag elkülönítve, és a vezérlő elérhető erőforrások. Kubernetes RBAC az Azure-ral összefüggésben használandó AD-integráció, az előző szakaszban leírt módon.
 
-RBAC segítségével Kubernetes-erőforrásokhoz való hozzáférés szabályozása Azure AD-csoportok használatával, olvassa el [szerepköralapú hozzáférés-vezérlés és az Azure Active Directory-identitásokkal használata az aks-ben fürt erőforrásokhoz való hozzáférésének] [ azure-ad-rbac].
+RBAC segítségével Kubernetes-erőforrásokhoz való hozzáférés szabályozása Azure AD-csoportok használatával, olvassa el [szerepköralapú hozzáférés-vezérlés és az Azure Active Directory-identitásokkal használata az aks-ben fürt erőforrásokhoz való hozzáférésének][azure-ad-rbac].
 
 ## <a name="use-pod-identities"></a>Használja a pod-identitások
 
-**Ajánlott eljárásokkal kapcsolatos útmutatás** – ne használja a podok vagy tárolórendszerképek belül a rögzített hitelesítő adatokat, azok fennáll a kockázata, kitettség használatra vagy visszaélésre. Ehelyett használja a pod identitások használva automatikusan kéri a központi hozzáférés az Azure AD identitáskezelési megoldás.
+**Ajánlott eljárásokkal kapcsolatos útmutatás** – ne használja a podok vagy tárolórendszerképek belül a rögzített hitelesítő adatokat, azok fennáll a kockázata, kitettség használatra vagy visszaélésre. Ehelyett használja a pod identitások használva automatikusan kéri a központi hozzáférés az Azure AD identitáskezelési megoldás. Pod identitások Linux podok és csak a tárolórendszerképek való használatra szolgál.
 
 Ha a podok más Azure-szolgáltatásokhoz, például a Cosmos DB, a Key Vault vagy a Blob Storage-ban való hozzáférésre van szükségük a pod kell eléréséhez szükséges hitelesítő adatokat. A hozzáférési hitelesítő adatokat akkor beszélünk, ha a tároló rendszerképét az vagy egy Kubernetes-titokként alkalmazza, de kell manuálisan létrehozott és hozzárendelt. Gyakran előfordul a hitelesítő adatok között podok újra felhasználhatók, és nem rendszeresen elforgatva.
 
@@ -108,7 +108,8 @@ A következő példában egy fejlesztői igényelhet hozzáférést egy Azure SQ
 1. A fejlesztő üzembe helyezi egy felügyelt identitás, amely a NMI kiszolgálón keresztül egy hozzáférési jogkivonatot kér rendelkező podot.
 1. A jogkivonat a pod vissza, és a egy Azure SQL Server-példány eléréséhez használt.
 
-A pod felügyelt identitások egy AKS nyílt forráskódú projekt, és nem támogatja a technikai Azure-támogatást. A visszajelzések és a hibák gyűjtsön közösségünkhöz nyújtja. A projekt nem ajánlott éles környezetben való használatra.
+> [!NOTE]
+> A pod felügyelt identitások egy nyílt forráskódú projekt, és nem támogatja a technikai Azure-támogatást.
 
 A pod-identitásokat használ, tekintse meg a [Kubernetes-alkalmazások Azure Active Directory identitásainak][aad-pod-identity].
 

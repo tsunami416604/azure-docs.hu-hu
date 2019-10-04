@@ -5,32 +5,29 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 08/02/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: d9825ea41937dc9436fe8b465b48b378e13407c1
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 9c18a2c74d03a636a0865f3008eb421ab8d7412d
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53444160"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68781457"
 ---
-1. A portál **Minden erőforrás** területén kattintson a **+Hozzáadás** gombra.
-2. Az a **mindent** írja be a lap keresőmezőjébe írja **helyi hálózati átjáró**, majd kattintson ide az erőforrások listáját adja vissza. Kattintson a **Helyi hálózati átjáró** elemre a lap megnyitásához, majd kattintson a **Létrehozás** elemre a **Helyi hálózati átjáró létrehozása** lap megnyitásához.
+1. A portálon kattintson az **+Erőforrás létrehozása** gombra.
+2. A keresőmezőbe írja be a **Helyi hálózati átjáró** kifejezést, majd nyomja le az **Enter** billentyűt a kereséshez. Ez visszaad egy listát az eredményekkel. Kattintson a **Helyi hálózati átjáró** elemre, majd kattintson a **Létrehozás** gombra a **Helyi hálózati átjáró létrehozása** lap megnyitásához.
 
-   ![helyi hálózati átjáró létrehozása](./media/vpn-gateway-add-lng-rm-portal-include/lng.png)
+   ![Helyi hálózati átjáró létrehozása](./media/vpn-gateway-add-lng-rm-portal-include/local-network-gateway.png "Helyi hálózati átjáró létrehozása")
+
 3. A **Helyi hálózati átjáró létrehozása** lapon adja meg a helyi hálózati átjáró értékeit.
 
-   - **név:** Adja meg a helyi hálózati átjáróobjektum nevét. Ha lehetséges, használjon egy intuitív, mint például **ClassicVNetLocal** vagy **TestVNet1Local**. Így könnyebben azonosíthatja a helyi hálózati átjárót a portálon.
-   - **IP-cím:** Adjon meg egy érvényes nyilvános **IP-cím** a VPN-eszköz vagy virtuális hálózati átjárót, amelyhez szeretné csatlakoztatni.
-
-     * **Ha a helyi hálózat egy helyszíni helyet képvisel:** Adja meg, amelyhez csatlakozni kíván a VPN-eszköz nyilvános IP-címét. Ez nem lehet a NAT mögött, és elérhetőnek kell lennie az Azure számára.
-     * **Ha a helyi hálózat egy másik virtuális hálózatot képvisel:** Adja meg, hogy a virtuális hálózathoz rendelt hozzá a virtuális hálózati átjáró nyilvános IP-címét.
-     * **Ha még nem rendelkezik az IP-cím:** Egy érvényes helyőrző IP-címet alkotó, és ezután térjen vissza, és módosíthatja ezt a beállítást a csatlakozás előtt.
-   - A **Címtartomány** annak a hálózatnak a címtartományára utal, amelyet a helyi hálózat képvisel. Több címtartományt is felvehet. Győződjön meg arról, hogy az itt megadott címtartományok ne legyenek átfedésben a tartományok, amelyhez csatlakozni más hálózatokhoz.
-   - **BGP-beállítások konfigurálása:** Csak BGP konfigurálásakor használja. Más esetben ne jelölje be ezt a jelölőnégyzetet.
-   - **Előfizetés:** Győződjön meg arról, hogy a megfelelő előfizetés jelenik-e meg.
+   - **név:** Adja meg a helyi hálózati átjáró objektum nevét.
+   - **IP-cím:** Ez annak a VPN-eszköznek a nyilvános IP-címe, amelyhez csatlakozni szeretne az Azure-ban. Adjon meg egy érvényes nyilvános IP-címet. Ha most még nem rendelkezik az IP-címmel, használhatja a példában látható értékeket, később azonban vissza kell térnie ide, és lecserélni a helyőrző IP-címet a VPN-eszköz nyilvános IP-címére. Ellenkező esetben az Azure nem fog tudni csatlakozni.
+   - A **Címtartomány** annak a hálózatnak a címtartományára utal, amelyet a helyi hálózat képvisel. Több címtartományt is felvehet. Ügyeljen arra, hogy az itt megadott címtartományok ne legyenek átfedésben olyan egyéb hálózatok címtartományaival, amelyekhez csatlakozni kíván. Az Azure a helyszíni VPN-eszköz IP-címéhez irányítja át a megadott címtartományt. *A saját értékeit használja itt a helyszíni hellyel való kapcsolódáshoz, ne a példában látható értékeket*.
+   - **BGP-beállítások konfigurálása:** Csak a BGP konfigurálásakor használható. Más esetben ne jelölje be ezt a jelölőnégyzetet.
+   - **Előfizetés** Ellenőrizze, hogy a megfelelő előfizetés jelenik-e meg.
    - **Erőforráscsoport:** Válassza ki a használni kívánt erőforráscsoportot. Létrehozhat egy új erőforráscsoportot, vagy kiválaszthat egy korábban létrehozottat.
-   - **Hely:** Válassza ki a hellyel, ez az objektum létrejön. Érdemes ugyanazt a helyet kiválasztani, ahol a virtuális hálózat is található, de ez nem kötelező.
+   - **Helyen** Válassza ki azt a helyet, ahol az objektumot létre kívánja hozni. Érdemes ugyanazt a helyet kiválasztani, ahol a virtuális hálózat is található, de ez nem kötelező.
 
-4. A helyi hálózati átjáró létrehozásához kattintson a **Create** (Létrehozás) gombra.
+4. Ha végzett az értékek megadásával, kattintson a **Létrehozás** gombra az átjáró létrehozásához.

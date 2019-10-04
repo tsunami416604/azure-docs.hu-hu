@@ -1,6 +1,6 @@
 ---
-title: Az Azure API Management-példány automatikus skálázás konfigurálása |} A Microsoft Docs
-description: Ez a témakör ismerteti az Azure API Management-példány automatikus skálázási viselkedés beállítása.
+title: Azure API Management-példányok méretezésének konfigurálása | Microsoft Docs
+description: Ez a témakör azt ismerteti, hogyan állíthatja be az Azure API Management-példányok autoskálázási viselkedését.
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -11,121 +11,124 @@ ms.workload: integration
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: a01e50debf11daf2f1163a56726f5574f7e3e379
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 8c1c96fdb1f4f42c7592791881b855f74d411171
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444802"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018283"
 ---
-# <a name="automatically-scale-an-azure-api-management-instance"></a>Automatikus skálázása az Azure API Management-példány  
+# <a name="automatically-scale-an-azure-api-management-instance"></a>Azure API Management-példány automatikus méretezése  
 
-Az Azure API Management szolgáltatáspéldány automatikusan skálázhatja a szabályok alapján. Ez a viselkedés is engedélyezni és konfigurálni az Azure monitoron keresztül, és csak a támogatott **Standard** és **prémium** az Azure API Management szolgáltatási szint.
+Az Azure API Management Service-példányok automatikusan méretezhetők egy adott szabálykészlet alapján. Ez a viselkedés engedélyezhető és konfigurálható Azure Monitoron keresztül, és csak az Azure API Management szolgáltatás **standard** és **prémium** szintjein támogatott.
 
-A cikk végigvezeti az automatikus skálázási konfigurálásának folyamatán, és az automatikus skálázási szabályok optimális konfigurációt javasol.
+A cikk végigvezeti az automatikus méretezés konfigurálásának folyamatán, és az automatikus skálázási szabályok optimális konfigurálását javasolja.
+
+> [!NOTE]
+> API Management szolgáltatás a használati szinten automatikusan a forgalomtól függ, és nincs szükség további konfigurálásra.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a cikk a lépések követéséhez a következőket kell tennie:
+A cikk lépéseinek követéséhez a következőket kell tennie:
 
 + Aktív Azure-előfizetéssel rendelkezik.
-+ Az Azure API Management-példány van. További információkért lásd: [Azure API Management szolgáltatáspéldány létrehozása](get-started-create-service-instance.md).
-+ Megismerése fogalmat [az Azure API Management-példány kapacitása](api-management-capacity.md).
-+ Megismerheti [manuális skálázása az Azure API Management-példány folyamatán](upgrade-and-scale.md), többek között a költségek következményeit.
++ Azure API Management-példánnyal rendelkezik. További információ: [Azure API Management-példány létrehozása](get-started-create-service-instance.md).
++ Ismerje meg az [Azure API Management-példány kapacitásának](api-management-capacity.md)koncepcióját.
++ [Az Azure API Management-példányok manuális skálázási folyamatának](upgrade-and-scale.md)megismerése, beleértve a költségeket.
 
-[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
+[!INCLUDE [premium-standard.md](../../includes/api-management-availability-premium-standard.md)]
 
-## <a name="azure-api-management-autoscale-limitations"></a>Az Azure API Management automatikus skálázási korlátozások
+## <a name="azure-api-management-autoscale-limitations"></a>Az Azure API Management az autoskálázás korlátozásai
 
-Bizonyos korlátozások és méretezési döntések következményeinek figyelembe kell venni az automatikus skálázási viselkedés beállítása előtt.
+Az automatikus skálázási viselkedés konfigurálása előtt figyelembe kell venni bizonyos korlátozásokat és a skálázási döntések következményeit.
 
-+ Az automatikus méretezés csak akkor engedélyezhető **Standard** és **prémium** Azure API Management szolgáltatási szint.
-+ Tarifacsomag is adjon meg egy szolgáltatáspéldány egységek maximális száma.
-+ Méretezés a folyamat legalább 20 percet vesz igénybe.
-+ Ha a szolgáltatás zárolva van egy másik művelet, méretezésére vonatkozó kérés meghiúsul, és próbálkozzon újra automatikusan.
-+ A többszörös regionálisan üzemelő példányokba, a csak az egység egy szolgáltatás esetén a **elsődleges hely** skálázhatók. Más helyeken egység nem lehet méretezni.
++ Az autoscale csak az Azure API Management szolgáltatás **standard** és **prémium** szintjein engedélyezhető.
++ Az árképzési szintek meghatározzák a szolgáltatási példányok maximális számát is.
++ A skálázási folyamat legalább 20 percet vesz igénybe.
++ Ha a szolgáltatást egy másik művelet zárolja, a skálázási kérelem sikertelen lesz, és automatikusan újrapróbálkozik.
++ Többrégiós környezetekben üzemelő szolgáltatások esetében csak az **elsődleges helyen** lévő egységek méretezhetők. A más helyen lévő egységek nem méretezhetők.
 
-## <a name="enable-and-configure-autoscale-for-azure-api-management-service"></a>Engedélyezze és konfigurálja az automatikus méretezés az Azure API Management szolgáltatás
+## <a name="enable-and-configure-autoscale-for-azure-api-management-service"></a>Az Azure API Management szolgáltatáshoz tartozó autoskálázás engedélyezése és konfigurálása
 
-Automatikus skálázás az Azure API Management szolgáltatás konfigurálása az alábbi lépésekkel:
+Az alábbi lépéseket követve konfigurálhatja az Azure API Management szolgáltatáshoz tartozó autoskálázást:
 
-1. Navigáljon a **figyelő** példány az Azure Portalon.
+1. Navigáljon a Azure Portal **figyelő** példányához.
 
     ![Azure Monitor](media/api-management-howto-autoscale/01.png)
 
-2. Válassza ki **automatikus skálázási** a bal oldali menüből.
+2. A bal oldali menüben válassza az autoskálázás lehetőséget.
 
-    ![Az Azure Monitor automatikus méretezés erőforrás](media/api-management-howto-autoscale/02.png)
+    ![Erőforrás-méretezés Azure Monitor](media/api-management-howto-autoscale/02.png)
 
-3. Keresse meg az Azure API Management szolgáltatás a legördülő menük szűrők alapján.
-4. Válassza ki a kívánt Azure API Management-szolgáltatáspéldányt.
-5. Kattintson az újonnan létrehozott csoport a **automatikus skálázás engedélyezése** gombra.
+3. Keresse meg az Azure API Management szolgáltatást a legördülő menük szűrői alapján.
+4. Válassza ki a kívánt Azure API Management Service-példányt.
+5. Az újonnan megnyitott szakaszban kattintson az autoskálázás **engedélyezése** gombra.
 
-    ![Az Azure Monitor automatikus méretezés engedélyezése](media/api-management-howto-autoscale/03.png)
+    ![Azure Monitor az autoskálázás engedélyezése](media/api-management-howto-autoscale/03.png)
 
-6. Az a **szabályok** területén kattintson **és a egy szabály hozzáadásához**.
+6. A **szabályok** szakaszban kattintson a **+ szabály hozzáadása**lehetőségre.
 
-    ![Az Azure Monitor automatikus skálázási szabály hozzáadása](media/api-management-howto-autoscale/04.png)
+    ![Új szabály Azure Monitor](media/api-management-howto-autoscale/04.png)
 
-7. Adjon meg egy új horizontális felskálázási szabály.
+7. Új kibővítő szabály definiálása.
 
-   Egy horizontális felskálázási szabály például elindíthat egy egy Azure API Management egységek hozzáadásával, amikor az átlagos kapacitás a metrika az elmúlt 30 perc meghaladja a 80 %-os. Az alábbi táblázat az ilyen szabályok konfigurációja.
+   Egy Felskálázási szabály például kiválthatja egy Azure API Management egység hozzáadását, ha az elmúlt 30 percben az átlagos kapacitási metrika meghaladja a 80%-ot. Az alábbi táblázat egy ilyen szabály konfigurációját tartalmazza.
 
-    | Paraméter             | Érték             | Megjegyzések                                                                                                                                                                                                                                                                           |
+    | Paraméter             | Value             | Megjegyzések                                                                                                                                                                                                                                                                           |
     |-----------------------|-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | Metrikaforrás         | Aktuális erőforrás  | Adja meg a szabály az Azure API Management aktuális erőforrás-metrikák alapján.                                                                                                                                                                                                     |
+    | Metrikaforrás         | Aktuális erőforrás  | Határozza meg a szabályt az aktuális Azure API Management erőforrás-metrikák alapján.                                                                                                                                                                                                     |
     | *Feltételek*            |                   |                                                                                                                                                                                                                                                                                 |
-    | Idő összesítése      | Átlag           |                                                                                                                                                                                                                                                                                 |
-    | Metrika neve           | Kapacitás          | A kapacitás a metrika egy Azure API Management-metrika tükröző erőforrások az Azure API Management-példány.                                                                                                                                                            |
-    | Időfelbontási szint statisztikája  | Átlag           |                                                                                                                                                                                                                                                                                 |
-    | Művelet              | Nagyobb, mint      |                                                                                                                                                                                                                                                                                 |
-    | Küszöbérték             | 80 %-os               | A kapacitás átlagolt mérőszám a küszöbértéket.                                                                                                                                                                                                                                 |
-    | Időtartam (perc) | 30                | Az időtartomány, a kapacitás metrika átlagos csak használati mintákat. Minél hosszabb az adott időszakban, a egyenletesebb lesz reakciója – időnként ugrásszerűen lesz kisebb hatással a horizontális felskálázás döntést. Azonban azt is késleltetni fogja a horizontális felskálázás eseményindító. |
+    | Idő összesítése      | Average           |                                                                                                                                                                                                                                                                                 |
+    | Metrika neve           | Kapacitás          | A kapacitás mérőszáma egy Azure API Management metrika, amely az Azure API Management-példány erőforrásainak használatát tükrözi.                                                                                                                                                            |
+    | Időfelbontási szint statisztikája  | Average           |                                                                                                                                                                                                                                                                                 |
+    | Operator              | Nagyobb, mint      |                                                                                                                                                                                                                                                                                 |
+    | Küszöbérték             | 80%               | Az átlagos kapacitási metrika küszöbértéke.                                                                                                                                                                                                                                 |
+    | Időtartam (perc) | 30                | A TimeSpan átlagosan a kapacitás mérőszáma a használati mintákra jellemző. Minél hosszabb az időszak, annál simább lesz a reakció – az időszakos tüskék kevesebb hatással lesznek a kibővíthető döntésre. Ugyanakkor a kibővíthető triggert is késleltetni fogja. |
     | *Művelet*              |                   |                                                                                                                                                                                                                                                                                 |
     | Művelet             | Mennyiség növelése a következővel: |                                                                                                                                                                                                                                                                                 |
-    | Példányszám        | 1                 | Horizontális felskálázás az Azure API Management-példány által 1 egység.                                                                                                                                                                                                                          |
-    | Lehűlés (percben)   | 60                | Az Azure API Management szolgáltatás horizontális felskálázási legalább 20 percet vesz igénybe. A legtöbb esetben a nyugalomba kerülési időszakban 60 percet megakadályozza, hogy sok méretezési mintáit elindítása.                                                                                                  |
+    | Példányszám        | 1                 | Az Azure API Management-példány felskálázása 1 egységgel.                                                                                                                                                                                                                          |
+    | Lehűlni (perc)   | 60                | Az Azure API Management szolgáltatás méretezése legalább 20 percet vesz igénybe. A legtöbb esetben a 60 perces lassú elérési idő megakadályozza, hogy a Kibővítés számos felskálázást indítson el.                                                                                                  |
 
-8. Kattintson a **Hozzáadás** a szabály mentéséhez.
+8. A szabály mentéséhez kattintson a **Hozzáadás** gombra.
 
-    ![Az Azure Monitor horizontális felskálázási szabály](media/api-management-howto-autoscale/05.png)
+    ![Felskálázási szabály Azure Monitor](media/api-management-howto-autoscale/05.png)
 
-9. Kattintson ismét a **és a egy szabály hozzáadásához**.
+9. Kattintson ismét a **+ szabály hozzáadása**lehetőségre.
 
-    Ennek során egy horizontális leskálázási szabály kell definiálni. Erőforrások vannak nem folyamatban adattisztítást, amikor az API-k használata csökkenti a biztosítja.
+    Ezúttal meg kell határozni egy méretezési szabályt. Gondoskodik arról, hogy a rendszer ne pazarolja az erőforrásokat, amikor az API-k használata csökken.
 
-10. Adjon meg egy új méretezési a szabályt.
+10. Új skála definiálása a szabályban.
 
-    Például egy horizontális leskálázási szabály válthatja ki egy eltávolító az Azure API Management egység, amikor az átlagos kapacitás a metrika az elmúlt 30 perc volt 35 %-nál kevesebb. Az alábbi táblázat az ilyen szabályok konfigurációja.
+    A szabály skálázása például kiválthatja egy Azure API Management egység eltávolítását, ha az elmúlt 30 percben az átlagos kapacitási metrika 35%-nál kisebb. Az alábbi táblázat egy ilyen szabály konfigurációját tartalmazza.
 
-    | Paraméter             | Érték             | Megjegyzések                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+    | Paraméter             | Value             | Megjegyzések                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
     |-----------------------|-------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | Metrikaforrás         | Aktuális erőforrás  | Adja meg a szabály az Azure API Management aktuális erőforrás-metrikák alapján.                                                                                                                                                                                                                                                                                                                                                                                                                         |
+    | Metrikaforrás         | Aktuális erőforrás  | Határozza meg a szabályt az aktuális Azure API Management erőforrás-metrikák alapján.                                                                                                                                                                                                                                                                                                                                                                                                                         |
     | *Feltételek*            |                   |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-    | Idő összesítése      | Átlag           |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-    | Metrika neve           | Kapacitás          | Ez a metrika azonos, amelyet a horizontális felskálázási szabályt használ.                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-    | Időfelbontási szint statisztikája  | Átlag           |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-    | Művelet              | Kisebb mint         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-    | Küszöbérték             | 35 %-a               | Hasonlóképpen, a horizontális felskálázási szabály, ezt az értéket az erősen attól függ, a használati minták az Azure API Management. |
-    | Időtartam (perc) | 30                | Ugyanazt az értéket, amelyet a horizontális felskálázási szabályt használ.                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+    | Idő összesítése      | Average           |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+    | Metrika neve           | Kapacitás          | A kibővítő szabályhoz használt metrika.                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+    | Időfelbontási szint statisztikája  | Average           |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+    | Operator              | Kisebb, mint         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+    | Küszöbérték             | 35%               | A Felskálázási szabályhoz hasonlóan ez az érték nagy mértékben függ az Azure-API Management használati szokásaitól. |
+    | Időtartam (perc) | 30                | A kibővítő szabályhoz használt érték megegyezik.                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
     | *Művelet*              |                   |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-    | Művelet             | Mennyiség csökkentése a következővel: | Milyen leváló használták a horizontális felskálázási szabály.                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-    | Példányszám        | 1                 | Ugyanazt az értéket, amelyet a horizontális felskálázási szabályt használ.                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-    | Lehűlés (percben)   | 90                | A nyugalomba kerülési időszakban hosszabbnak kell lennie, hogy a méretezési csoport korlátozóbb, mint a horizontális felskálázás, kell lennie.                                                                                                                                                                                                                                                                                                                                                                                                    |
+    | Művelet             | Mennyiség csökkentése a következővel: | Ezzel szemben a kibővítő szabályhoz használttal.                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+    | Példányszám        | 1                 | A kibővítő szabályhoz használt érték megegyezik.                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+    | Lehűlni (perc)   | 90                | A skálázásnak szigorúbbnak kell lennie, mint a felskálázás, így a lassú elérési idő hosszabbnak kell lennie.                                                                                                                                                                                                                                                                                                                                                                                                    |
 
-11. Kattintson a **Hozzáadás** a szabály mentéséhez.
+11. A szabály mentéséhez kattintson a **Hozzáadás** gombra.
 
-    ![Az Azure Monitor horizontális leskálázási szabály](media/api-management-howto-autoscale/06.png)
+    ![Azure Monitor skálázás a szabályban](media/api-management-howto-autoscale/06.png)
 
-12. Állítsa be a **maximális** Azure API Management-egységek számát.
+12. Az Azure API Management-egységek **maximális** számának beállítása.
 
     > [!NOTE]
-    > Az Azure API Management-példányt lehet horizontálisan egységek esetében. A korlát szolgáltatásréteg függ.
+    > Az Azure API Management egy példányra vonatkozó korláttal rendelkezhet. A korlát a szolgáltatási szinttől függ.
 
-    ![Az Azure Monitor horizontális leskálázási szabály](media/api-management-howto-autoscale/07.png)
+    ![Azure Monitor skálázás a szabályban](media/api-management-howto-autoscale/07.png)
 
-13. Kattintson a **Save** (Mentés) gombra. Az automatikus skálázási lett konfigurálva.
+13. Kattintson a **Save** (Mentés) gombra. Az autoskálázás konfigurálva van.
 
 ## <a name="next-steps"></a>További lépések
 
-+ [Az Azure API Management-szolgáltatáspéldány üzembe helyezése több Azure-régióban](api-management-howto-deploy-multi-region.md)
++ [Azure API Management-szolgáltatáspéldány üzembe helyezése több Azure-régióban](api-management-howto-deploy-multi-region.md)

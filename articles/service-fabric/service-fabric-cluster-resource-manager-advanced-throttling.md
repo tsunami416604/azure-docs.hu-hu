@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 4abc3e4a28b8b98070affe19b7b7ca38f904c45b
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669826"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60384969"
 ---
 # <a name="throttling-the-service-fabric-cluster-resource-manager"></a>A Service Fabric-fürt Resource Manager-szabályozás
 Akkor is, ha megfelelően konfigurálta a fürterőforrás-kezelő, a fürt is első szakadhat meg. Lehetnek például egyidejű csomópont és a tartalék tartomány meghibásodása – mi történne, amely történt a frissítés során? A fürterőforrás-kezelő mindig próbálja meg mindent, javítsa ki a fürt erőforrásokat próbál átrendezése, és javítsa ki a fürt. Szabályozások érdekében, hogy a fürt használhatja a kerülési - erőforrások, adjon meg egy backstop térjen vissza a csomópontok, a hálózati partíciókat javítása, a javított bits telepítve.

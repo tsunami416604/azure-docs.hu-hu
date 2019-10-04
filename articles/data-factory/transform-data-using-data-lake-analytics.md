@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: abnarain
 ms.openlocfilehash: d5b074fcf182bcc9bf4dc17ba21215d27e13cbdd
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57760970"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60888435"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Adatok átalakítása az Azure Data Lake Analytics U-SQL-parancsfájlok futtatásával 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
 > * [1-es verzió](v1/data-factory-usql-activity.md)
 > * [Aktuális verzió](transform-data-using-data-lake-analytics.md)
 
@@ -34,7 +34,7 @@ Létrehoz egy **Azure Data Lake Analytics** társított szolgáltatást, az Azur
 
 Az alábbi táblázat ismerteti a JSON-definíciójában használt általános tulajdonságokat. 
 
-| Tulajdonság                 | Leírás                              | Szükséges                                 |
+| Tulajdonság                 | Leírás                              | Kötelező                                 |
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
 | **type**                 | A type tulajdonságot kell beállítani: **AzureDataLakeAnalytics**. | Igen                                      |
 | **accountName**          | Azure Data Lake Analytics Account Name.  | Igen                                      |
@@ -119,15 +119,15 @@ A következő táblázat ismerteti a neveket és leírásokat erre a tevékenys�
 
 | Tulajdonság            | Leírás                              | Szükséges |
 | :------------------ | :--------------------------------------- | :------- |
-| név                | A folyamat a tevékenység neve     | Igen      |
-| leírás         | A tevékenység leírása leíró szöveg.  | Nem       |
+| name                | A folyamat a tevékenység neve     | Igen      |
+| description         | A tevékenység leírása leíró szöveg.  | Nem       |
 | type                | Data Lake Analytics U-SQL-tevékenység, a tevékenység típusa van **DataLakeAnalyticsU-SQL**. | Igen      |
 | linkedServiceName   | Az Azure Data Lake Analytics hivatkozott szolgáltatást. Ezt a társított szolgáltatást kapcsolatos további információkért lásd: [társított szolgáltatások számítása](compute-linked-services.md) cikk.  |Igen       |
 | scriptPath          | A U-SQL parancsfájlt tartalmazó mappa elérési útja. A fájl neve, a kis-és nagybetűket. | Igen      |
 | scriptLinkedService | Társított szolgáltatás, amely összekapcsolja a **Azure Data Lake Store** vagy **Azure Storage** , amely tartalmazza a parancsfájl a data factoryhoz | Igen      |
 | degreeOfParallelism | A feladat futtatásához egyidejűleg használt csomópontok maximális száma. | Nem       |
 | prioritás            | Meghatározza, hogy mely feladatok közül, hogy a rendszer várólistára helyezi, melyet futtatni kíván van kiválasztva. Az alacsonyabb a szám, annál magasabb a prioritás. | Nem       |
-| paraméterek          | A U-SQL parancsfájl átadandó paramétereket.    | Nem       |
+| parameters          | A U-SQL parancsfájl átadandó paramétereket.    | Nem       |
 | runtimeVersion      | Futtatókörnyezet-verzióját a U-SQL-motort használja. | Nem       |
 | compilationMode     | <p>Fordítási mód az U-SQL. Ezek az értékek egyikének kell lennie: **Szemantikai:** Csak a szükséges megerősítések, és a szemantikai ellenőrzési végre **teljes:** Hajtsa végre a teljes fordítás, beleértve a szintaxis-ellenőrzés, optimalizálás, generování kódu, stb., **SingleBox:** Hajtsa végre a teljes fordítás SingleBox TargetType beállítással együtt. Ez a tulajdonság értékét nem adja meg, ha a kiszolgáló meghatározza, hogy az optimális fordítási mód. | Nem |
 

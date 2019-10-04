@@ -1,6 +1,6 @@
 ---
-title: Tartalék tartományok az Azure-beli virtuálisgép-méretezési csoportok kezelése |} A Microsoft Docs
-description: Ismerje meg, hogyan válassza ki a megfelelő számú tartalék tartományok között, a virtuálisgép-méretezési csoport létrehozása közben.
+title: Tartalék tartományok kezelése az Azure-beli virtuálisgép-méretezési csoportokban | Microsoft Docs
+description: Megtudhatja, hogyan választhatja ki a megfelelő számú tartalék a virtuálisgép-méretezési csoport létrehozásakor.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: rajsqr
@@ -14,24 +14,24 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2018
-ms.author: rajraj
-ms.openlocfilehash: bab264769576b6e5478236c452d7de920d887c1a
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.author: drewm
+ms.openlocfilehash: d6207a1a77ff00ff36fe6b3b748c3f8f7279b62d
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56670916"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639957"
 ---
-# <a name="choosing-the-right-number-of-fault-domains-for-virtual-machine-scale-set"></a>A megfelelő számú tartalék tartomány a virtuális gép méretezési csoportjának kiválasztása
-A Virtual machine scale sets jönnek létre öt tartalék tartományok az Azure-régióban zónák nélkül alapértelmezés szerint. A régiók, amelyek támogatják a virtuálisgép-méretezési csoportok a zónaszintű telepítését az alapértelmezett érték a tartalék tartományok száma az egyes zónák 1. FD = 1 Ebben az esetben is, hogy a méretezési csoportba tartozó Virtuálisgép-példányok az elérhető legjobb lehetőség alapján számos állványt között lehetnek elosztva.
+# <a name="choosing-the-right-number-of-fault-domains-for-virtual-machine-scale-set"></a>A virtuálisgép-méretezési csoporthoz tartozó tartalék tartományok megfelelő számának kiválasztása
+A virtuálisgép-méretezési csoportok alapértelmezés szerint öt tartalék tartománnyal jönnek létre a zónák nélküli Azure-régiókban. A virtuálisgép-méretezési csoportok zónákra épülő telepítését támogató régiók esetén a tartalék tartomány alapértelmezett értéke 1 az egyes zónák esetében. Ebben az esetben az FD = 1 érték azt jelenti, hogy a méretezési csoportba tartozó virtuálisgép-példányok számos rackben lesznek elosztva a legjobb erőfeszítés alapján.
 
-Igazítás, a méretezési csoport tartalék tartományok a felügyelt lemezek tartalék tartományok számát száma is használni. Ez a kiosztás segíthet a kvórum az adatvesztés elkerülése érdekében, ha leáll egy teljes felügyelt lemezek tartalék tartományt. Az FD száma állítható kisebb vagy egyenlő a felügyelt lemezek számát a tartalék tartományok az egyes régiókban érhető el. Ebben [dokumentum](../virtual-machines/windows/manage-availability.md) kapcsolatos régiónként felügyelt lemezek tartalék tartományok számát.
+Azt is megteheti, hogy összehangolja a méretezési csoport tartalék tartományának számát Managed Disks tartalék tartományok számával. Ez az igazítás segíthet megakadályozni a kvórum elvesztését, ha egy teljes Managed Disks tartalék tartomány leáll. Az FD-szám beállítható úgy, hogy az egyes régiókban elérhető Managed Disks tartalék tartományok száma kisebb vagy egyenlő legyen. Tekintse át ezt a [dokumentumot](../virtual-machines/windows/manage-availability.md) , és ismerkedjen meg az Managed Disks a tartalék tartományok régiónként való számával.
 
 ## <a name="rest-api"></a>REST API
-Beállíthatja a tulajdonságot `properties.platformFaultDomainCount` , 1, 2 vagy 3 (alapértelmezés szerint 5, ha nincs megadva). A REST API dokumentációjában [Itt](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate).
+A tulajdonság `properties.platformFaultDomainCount` értéke 1, 2 vagy 3 (az alapértelmezett érték 5, ha nincs megadva). Tekintse [meg REST API](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate)dokumentációját.
 
 ## <a name="azure-cli"></a>Azure CLI
-Beállíthatja, hogy a paraméter `--platform-fault-domain-count` , 1, 2 vagy 3 (alapértelmezés szerint 5, ha nincs megadva). Az Azure CLI dokumentációjában [Itt](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az-vmss-create).
+A paramétert `--platform-fault-domain-count` beállíthatja 1, 2 vagy 3 értékre (ha nincs megadva az alapértelmezett 5). Tekintse meg az Azure CLI dokumentációját [itt](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az-vmss-create).
 
 ```azurecli-interactive
 az vmss create \
@@ -47,4 +47,4 @@ az vmss create \
 A méretezési csoport erőforrásainak és virtuális gépeinek létrehozása és konfigurálása néhány percet vesz igénybe.
 
 ## <a name="next-steps"></a>További lépések
-- Tudjon meg többet [rendelkezésre állási és redundanciával kapcsolatos szolgáltatásairól](../virtual-machines/windows/regions-and-availability.md) Azure környezetben.
+- További információ az Azure-környezetek [rendelkezésre állásával és redundanciával kapcsolatos funkcióival](../virtual-machines/windows/availability.md) kapcsolatban.

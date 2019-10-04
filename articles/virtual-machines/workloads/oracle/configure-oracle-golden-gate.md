@@ -1,57 +1,56 @@
 ---
-title: Az Azure Linux virtuális Gépen futó Oracle Golden kapu megvalósítása |} A Microsoft Docs
-description: Gyorsan, az Oracle Golden be és az Azure környezetben futó.
+title: Az Oracle Golden Gate megvalósítása Azure Linux rendszerű virtuális gépen | Microsoft Docs
+description: Gyorsan beszerezhet egy Oracle Golden-kaput az Azure-környezetben.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: romitgirdhar
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 1d0905900b81a0c7775011774b55565217d13b71
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 31137bba8c9b6b88c6a8b9569c02ae887e73e8d0
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58011552"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309601"
 ---
-# <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Az Azure Linux virtuális Gépen futó Oracle Golden kapu megvalósítása 
+# <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Az Oracle Golden Gate megvalósítása Azure Linux rendszerű virtuális gépen 
 
-Az Azure CLI az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Ez az útmutató részletesen 12c Oracle-adatbázis, az Azure Marketplace-en katalógus lemezkép alapján üzembe helyezése az Azure CLI használatával. 
+Az Azure CLI az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Ez az útmutató részletesen ismerteti, hogyan használható az Azure CLI egy Oracle 12c-adatbázis üzembe helyezéséhez az Azure Marketplace Gallery-rendszerképből. 
 
-Ez a dokumentum lépésről lépésre bemutatja létrehozása, telepítése és konfigurálása az Oracle Golden kapu-beli virtuális gépen.
+Ez a dokumentum részletesen ismerteti, hogyan hozhat létre, telepíthet és konfigurálhat Oracle Golden Gate-t egy Azure-beli virtuális gépen. Ebben az oktatóanyagban két virtuális gép van beállítva egy rendelkezésre állási csoportba egyetlen régióban. Ugyanez az oktatóanyag használható a OracleGolden-kapuk beállítására a különböző Availability Zones lévő virtuális gépekhez egyetlen Azure-régióban, illetve két különböző régióban lévő virtuális gépek beállításához is.
 
 A kezdés előtt győződjön meg arról, hogy az Azure CLI telepítve van. További információért lásd az [Azure CLI telepítési útmutatóját](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ## <a name="prepare-the-environment"></a>A környezet előkészítése
 
-Az Oracle Golden kapu telepítés végrehajtásához szüksége ugyanahhoz a rendelkezésre állási csoporthoz a két Azure-beli virtuális gépek létrehozásához. A Piactéri rendszerkép hozhat létre a virtuális gépek **Oracle: Oracle-adatbázis – Ee:12.1.0.2:latest**.
+Az Oracle Golden Gate telepítésének elvégzéséhez két Azure-beli virtuális gépet kell létrehoznia ugyanazon rendelkezésre állási csoporton belül. A virtuális gépek létrehozásához használt Piactéri lemezkép **Oracle: Oracle-Database-EE: 12.1.0.2: Latest**.
 
-Is kell Unix szerkesztő vi ismernie kell, és x11 (X-Windows) alapvető ismeretekkel.
+Emellett ismernie kell a UNIX-szerkesztő VI-t, és alapvető ismeretekkel kell rendelkeznie az X11-ről (X Windows).
 
-Az alábbiakban látható a környezet konfigurációjának összefoglalása:
+A környezeti konfiguráció összegzése a következő:
 > 
 > |  | **Elsődleges hely** | **Hely replikálása** |
 > | --- | --- | --- |
-> | **Oracle-kiadás** |Oracle 12c Release 2 – (12.1.0.2) |Oracle 12c Release 2 – (12.1.0.2)|
-> | **Gép neve** |myVM1 |myVM2 |
-> | **Operációs rendszer** |Oracle Linux 6.x |Oracle Linux 6.x |
+> | **Oracle-kiadás** |Oracle 12c-kiadás 2 – (12.1.0.2) |Oracle 12c-kiadás 2 – (12.1.0.2)|
+> | **Számítógépnév** |myVM1 |myVM2 |
+> | **Operációs rendszer** |Oracle Linux 6. x |Oracle Linux 6. x |
 > | **Oracle SID** |CDB1 |CDB1 |
 > | **Replikációs séma** |TEST|TEST |
-> | **Tulajdonos/replikálás Golden kapu** |C##GGADMIN |REPUSER |
-> | **Folyamat Golden kapu** |EXTORA |REPORA|
+> | **Golden Gate-tulajdonos/replikálás** |C##GGADMIN |REPUSER |
+> | **Golden Gate-folyamat** |EXTORA |REPORA|
 
 
 ### <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba 
 
-Jelentkezzen be az Azure-előfizetésbe a [az bejelentkezési](/cli/azure/reference-index) parancsot. Ezután kövesse a képernyőn megjelenő utasításokat.
+Jelentkezzen be az Azure-előfizetésbe az az [login](/cli/azure/reference-index) paranccsal. Ezután kövesse a képernyőn megjelenő utasításokat.
 
 ```azurecli
 az login
@@ -59,7 +58,7 @@ az login
 
 ### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. Azure-erőforráscsoport olyan logikai tároló, mely Azure-erőforrások vannak telepítve, és amelyek felügyelhetők a rendszer. 
+Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi az Azure-erőforrásokat, és amelyekről felügyelhető. 
 
 A következő példában létrehozunk egy `westus` nevű erőforráscsoportot a `myResourceGroup` helyen.
 
@@ -69,7 +68,7 @@ az group create --name myResourceGroup --location westus
 
 ### <a name="create-an-availability-set"></a>Rendelkezésre állási csoport létrehozása
 
-A következő lépéseként opcionális de javasolt. További információkért lásd: [Azure rendelkezésre állási csoportok útmutató](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines).
+A következő lépés nem kötelező, de ajánlott. További információ: [Azure rendelkezésre állási készletek útmutatója](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines).
 
 ```azurecli
 az vm availability-set create \
@@ -83,9 +82,9 @@ az vm availability-set create \
 
 Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm) paranccsal. 
 
-Az alábbi példa létrehoz két virtuális gépet nevű `myVM1` és `myVM2`. Hozzon létre SSH-kulcsokat, ha azok még nem léteznek a kulcsok alapértelmezett helyén. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást.
+A következő példa két virtuális gépet hoz `myVM1` létre `myVM2`, és a nevet. Hozzon létre SSH-kulcsokat, ha azok még nem léteznek az alapértelmezett kulcs helyén. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást.
 
-#### <a name="create-myvm1-primary"></a>Hozzon létre myVM1 (elsődleges):
+#### <a name="create-myvm1-primary"></a>MyVM1 létrehozása (elsődleges):
 ```azurecli
 az vm create \
      --resource-group myResourceGroup \
@@ -96,7 +95,7 @@ az vm create \
      --generate-ssh-keys \
 ```
 
-A virtuális gép létrehozása után az Azure CLI hasonló információkat jelenít meg az alábbi példában. (Jegyezze fel a `publicIpAddress`. Ez a cím segítségével eléri a virtuális Gépet.)
+A virtuális gép létrehozása után az Azure CLI az alábbi példához hasonló információkat jelenít meg. (Jegyezze fel a `publicIpAddress`következőt:. Ez a címe a virtuális gép elérésére szolgál.)
 
 ```azurecli
 {
@@ -111,7 +110,7 @@ A virtuális gép létrehozása után az Azure CLI hasonló információkat jele
 }
 ```
 
-#### <a name="create-myvm2-replicate"></a>Hozzon létre myVM2 (replikáció):
+#### <a name="create-myvm2-replicate"></a>MyVM2 létrehozása (replikálás):
 ```azurecli
 az vm create \
      --resource-group myResourceGroup \
@@ -122,13 +121,13 @@ az vm create \
      --generate-ssh-keys \
 ```
 
-Jegyezze fel a `publicIpAddress` , valamint a létrehozásuk után.
+Jegyezze fel azt is `publicIpAddress` , hogy a létrehozása után is megtörtént.
 
-### <a name="open-the-tcp-port-for-connectivity"></a>Nyissa meg a TCP-kapcsolathoz
+### <a name="open-the-tcp-port-for-connectivity"></a>A TCP-port megnyitása a kapcsolathoz
 
-A következő lépés, hogy konfigurálja a külső végpontokat, így lehetővé teszi a távoli kezeléséhez a tártallózónak az Oracle-adatbázishoz. A külső végpontokat konfigurálásához futtassa a következő parancsokat.
+A következő lépés a külső végpontok konfigurálása, amelyek lehetővé teszik az Oracle-adatbázis távoli elérését. A külső végpontok konfigurálásához futtassa a következő parancsokat.
 
-#### <a name="open-the-port-for-myvm1"></a>Nyissa meg a myVM1 portja:
+#### <a name="open-the-port-for-myvm1"></a>Nyissa meg a myVM1 portját:
 
 ```azurecli
 az network nsg rule create --resource-group myResourceGroup\
@@ -138,7 +137,7 @@ az network nsg rule create --resource-group myResourceGroup\
     --destination-address-prefix '*' --destination-port-range 1521 --access allow
 ```
 
-Az eredmények a következő választ hasonlóan kell kinéznie:
+Az eredményeknek a következőhöz hasonlóan kell kinéznie:
 
 ```bash
 {
@@ -159,7 +158,7 @@ Az eredmények a következő választ hasonlóan kell kinéznie:
 }
 ```
 
-#### <a name="open-the-port-for-myvm2"></a>Nyissa meg a myVM2 portja:
+#### <a name="open-the-port-for-myvm2"></a>Nyissa meg a myVM2 portját:
 
 ```azurecli
 az network nsg rule create --resource-group myResourceGroup\
@@ -177,17 +176,17 @@ Használja az alábbi parancsot egy SSH-munkamenet létrehozásához a virtuáli
 ssh <publicIpAddress>
 ```
 
-### <a name="create-the-database-on-myvm1-primary"></a>Az adatbázis létrehozása a myVM1 (elsődleges)
+### <a name="create-the-database-on-myvm1-primary"></a>Adatbázis létrehozása a myVM1 (elsődleges)
 
-Az Oracle-szoftver már telepítve van a Marketplace-beli rendszerképpel, a következő lépés az, hogy az adatbázis telepítése. 
+Az Oracle-szoftver már telepítve van a Piactéri rendszerképre, ezért a következő lépés az adatbázis telepítése. 
 
-A szoftvert futtató az "oracle" superuser:
+Futtassa a szoftvert az "Oracle" rendszeradminisztrátorként:
 
 ```bash
 sudo su - oracle
 ```
 
-Az adatbázis létrehozásához:
+Hozza létre az adatbázist:
 
 ```bash
 $ dbca -silent \
@@ -208,7 +207,7 @@ $ dbca -silent \
    -storageType FS \
    -ignorePreReqs
 ```
-Kimenet a következő választ hasonlóan kell kinéznie:
+A kimeneteknek a következőhöz hasonlóan kell kinézniük:
 
 ```bash
 Copying database files
@@ -240,7 +239,7 @@ Creating Pluggable Databases
 Look at the log file "/u01/app/oracle/cfgtoollogs/dbca/cdb1/cdb1.log" for more details.
 ```
 
-Állítsa be a ORACLE_SID és ORACLE_HOME változókat.
+Állítsa be a ORACLE_SID és a ORACLE_HOME változót.
 
 ```bash
 $ ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1; export ORACLE_HOME
@@ -248,7 +247,7 @@ $ ORACLE_SID=cdb1; export ORACLE_SID
 $ LD_LIBRARY_PATH=ORACLE_HOME/lib; export LD_LIBRARY_PATH
 ```
 
-Igény szerint hozzáadhat ORACLE_HOME és ORACLE_SID a .bashrc fájlt, így ezek a beállítások mentve a későbbi bejelentkezések:
+Opcionálisan hozzáadhat ORACLE_HOME-és ORACLE_SID a. bashrc-fájlhoz, így ezek a beállítások a jövőbeli bejelentkezésekhez lesznek mentve:
 
 ```bash
 # add oracle home
@@ -259,18 +258,17 @@ export ORACLE_SID=cdb1
 export LD_LIBRARY_PATH=$ORACLE_HOME/lib
 ```
 
-### <a name="start-oracle-listener"></a>Indítsa el az Oracle-figyelő
+### <a name="start-oracle-listener"></a>Oracle-figyelő indítása
 ```bash
-$ sudo su - oracle
 $ lsnrctl start
 ```
 
-### <a name="create-the-database-on-myvm2-replicate"></a>Az adatbázis létrehozása a következőn myVM2 (replikáció)
+### <a name="create-the-database-on-myvm2-replicate"></a>Adatbázis létrehozása a myVM2 (replikálás)
 
 ```bash
 sudo su - oracle
 ```
-Az adatbázis létrehozásához:
+Hozza létre az adatbázist:
 
 ```bash
 $ dbca -silent \
@@ -291,7 +289,7 @@ $ dbca -silent \
    -storageType FS \
    -ignorePreReqs
 ```
-Állítsa be a ORACLE_SID és ORACLE_HOME változókat.
+Állítsa be a ORACLE_SID és a ORACLE_HOME változót.
 
 ```bash
 $ ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1; export ORACLE_HOME
@@ -299,7 +297,7 @@ $ ORACLE_SID=cdb1; export ORACLE_SID
 $ LD_LIBRARY_PATH=ORACLE_HOME/lib; export LD_LIBRARY_PATH
 ```
 
-Igény szerint is hozzáadott ORACLE_HOME és ORACLE_SID a .bashrc fájlt, így ezek a beállítások mentve a későbbi bejelentkezések.
+Szükség esetén a ORACLE_HOME és a ORACLE_SID is hozzáadhatja a. bashrc-fájlhoz, így ezek a beállítások a későbbi bejelentkezésekhez lesznek mentve.
 
 ```bash
 # add oracle home
@@ -310,16 +308,16 @@ export ORACLE_SID=cdb1
 export LD_LIBRARY_PATH=$ORACLE_HOME/lib
 ```
 
-### <a name="start-oracle-listener"></a>Indítsa el az Oracle-figyelő
+### <a name="start-oracle-listener"></a>Oracle-figyelő indítása
 ```bash
 $ sudo su - oracle
 $ lsnrctl start
 ```
 
-## <a name="configure-golden-gate"></a>Configure Golden Gate 
-Golden kapu konfigurálásához hajtsa végre a lépéseket ebben a szakaszban.
+## <a name="configure-golden-gate"></a>A Golden Gate konfigurálása 
+A Golden Gate konfigurálásához hajtsa végre a szakasz lépéseit.
 
-### <a name="enable-archive-log-mode-on-myvm1-primary"></a>A myVM1 (elsődleges) archív naplózási mód engedélyezése
+### <a name="enable-archive-log-mode-on-myvm1-primary"></a>Archiválási napló üzemmódjának engedélyezése a myVM1 (elsődleges)
 
 ```bash
 $ sqlplus / as sysdba
@@ -334,7 +332,7 @@ SQL> STARTUP MOUNT;
 SQL> ALTER DATABASE ARCHIVELOG;
 SQL> ALTER DATABASE OPEN;
 ```
-Kényszerített naplózás engedélyezése, és ellenőrizze, hogy legalább egy log fájl jelen.
+Engedélyezze a kényszerített naplózást, és győződjön meg arról, hogy legalább egy naplófájl található.
 
 ```bash
 SQL> ALTER DATABASE FORCE LOGGING;
@@ -346,25 +344,25 @@ SQL> ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
 SQL> EXIT;
 ```
 
-### <a name="download-golden-gate-software"></a>Golden kapu szoftver letöltése
-Töltse le, és készítse elő a Golden kapu Oracle-szoftver, hajtsa végre az alábbi lépéseket:
+### <a name="download-golden-gate-software"></a>A Golden Gate szoftver letöltése
+Az Oracle Golden Gate szoftver letöltéséhez és előkészítéséhez végezze el a következő lépéseket:
 
-1. Töltse le a **fbo_ggs_Linux_x64_shiphome.zip** fájlt a [Oracle Golden kapu letöltési oldal](https://www.oracle.com/technetwork/middleware/goldengate/downloads/index.html). A letöltési címe **Oracle GoldenGate 12.x.x.x az Oracle Linux x86 – 64**, töltse le a .zip fájlokat kell lennie.
+1. Töltse le a **fbo_ggs_Linux_x64_shiphome. zip** fájlt az [Oracle Golden Gate letöltési oldaláról](https://www.oracle.com/technetwork/middleware/goldengate/downloads/index.html). A letöltési cím **Oracle GoldenGate 12. x. x. x Oracle Linux x86-64-es verziójában**a letölteni kívánt. zip-fájlok készletének kell lennie.
 
-2. Miután letöltötte a .zip fájlokat az ügyfélszámítógépre, a biztonságos másolás protokoll (SCP) használatával másolja a fájlokat a virtuális géphez:
+2. Miután letöltötte a. zip-fájlokat az ügyfélszámítógépre, a biztonságos másolási protokoll (SCP) használatával másolja a fájlokat a virtuális gépre:
 
    ```bash
    $ scp fbo_ggs_Linux_x64_shiphome.zip <publicIpAddress>:<folder>
    ```
 
-3. A .zip fájlokat, és helyezze át a **/ opt** mappát. Ezután módosítsa a fájlok tulajdonosa az alábbiak szerint:
+3. Helyezze át a. zip-fájlokat a **/opt** mappába. Ezután módosítsa a fájlok tulajdonosát a következőképpen:
 
    ```bash
    $ sudo su -
    # mv <folder>/*.zip /opt
    ```
 
-4. Csomagolja ki a fájlokat (telepítés a Linuxos csomagolja ki segédprogram ha van még nem telepítette):
+4. Bontsa ki a fájlokat (telepítse a Linux unzip segédprogramot, ha még nincs telepítve):
 
    ```bash
    # yum install unzip
@@ -372,30 +370,30 @@ Töltse le, és készítse elő a Golden kapu Oracle-szoftver, hajtsa végre az 
    # unzip fbo_ggs_Linux_x64_shiphome.zip
    ```
 
-5. Engedélyek módosítása:
+5. Módosítási engedély:
 
    ```bash
    # chown -R oracle:oinstall /opt/fbo_ggs_Linux_x64_shiphome
    ```
 
-### <a name="prepare-the-client-and-vm-to-run-x11-for-windows-clients-only"></a>Az ügyfél és a virtuális gép számára való futás x11 (csak Windows-ügyfelek) előkészítése
-Ez az egy választható lépés. Ezt a lépést kihagyhatja, ha már rendelkezik x11 vagy használ egy Linux-ügyfél beállítása.
+### <a name="prepare-the-client-and-vm-to-run-x11-for-windows-clients-only"></a>Az ügyfél és a virtuális gép előkészítése az X11 futtatására (csak Windows-ügyfelek esetén)
+Ez az egy választható lépés. Ezt a lépést kihagyhatja, ha Linux-ügyfelet használ, vagy már rendelkezik az X11 telepítőjének beállításával.
 
-1. A Windows-számítógépre töltse le a putty-t és Xming:
+1. A PuTTY és a Xming letöltése a Windows rendszerű számítógépre:
 
-   * [Töltse le a putty-kapcsolaton keresztül](https://www.putty.org/)
-   * [Töltse le a Xming](https://xming.en.softonic.com/)
+   * [A PuTTY letöltése](https://www.putty.org/)
+   * [Xming letöltése](https://xming.en.softonic.com/)
 
-2. Miután telepítette a putty-kapcsolaton keresztül, a PuTTY mappában (például C:\Program Files\PuTTY), futtassa a puttygen.exe (PuTTY Key Generator).
+2. A PuTTY telepítése után a PuTTY mappában (például C:\Program Files\PuTTY) futtassa a PuTTYgen. exe (Putty Key Generator) parancsot.
 
-3. A PuTTY Key Generator:
+3. A PuTTY Key Generatorban:
 
-   - Hozzon létre egy kulcsot, jelölje be a **Generate** gombra.
-   - Másolja a tartalmat, a kulcs (**Ctrl + C**).
-   - Válassza ki a **titkos kulcs mentése** gombra.
-   - Figyelmen kívül hagyhatja a figyelmeztetést, amely akkor jelenik meg, és válassza ki **OK**.
+   - Kulcs létrehozásához kattintson a **Létrehozás** gombra.
+   - Másolja a kulcs tartalmát (**CTRL + c**).
+   - Kattintson a **titkos kulcs mentése** gombra.
+   - Hagyja figyelmen kívül a megjelenő figyelmeztetést, majd kattintson **az OK gombra**.
 
-   ![A PuTTY key generator oldalát bemutató képernyőkép](./media/oracle-golden-gate/puttykeygen.png)
+   ![A PuTTY Key Generator oldalának képernyőképe](./media/oracle-golden-gate/puttykeygen.png)
 
 4. A virtuális gépen futtassa a következő parancsokat:
 
@@ -405,61 +403,61 @@ Ez az egy választható lépés. Ezt a lépést kihagyhatja, ha már rendelkezik
    $ cd .ssh
    ```
 
-5. Hozzon létre egy fájlt **authorized_keys**. Ebben a fájlban illessze be a kulcs tartalmát, és mentse a fájlt.
+5. Hozzon létre egy **authorized_keys**nevű fájlt. Illessze be a kulcs tartalmát a fájlban, majd mentse a fájlt.
 
    > [!NOTE]
-   > A kulcsot kell tartalmaznia a karakterlánc `ssh-rsa`. Ezenkívül a kulcs a tartalmát egy egysoros szöveg kell lennie.
+   > A kulcsnak tartalmaznia kell a `ssh-rsa`karakterláncot. Emellett a kulcs tartalmának egysoros szövegnek kell lennie.
    >  
 
-6. Indítsa el a PuTTY alkalmazást. Az a **kategória** ablaktáblán válassza előbb **kapcsolat** > **SSH** > **Auth**. Az a **titkos kulcs fájlját a hitelesítéshez** mezőben tallózással keresse meg a korábban létrehozott kulcsot.
+6. Indítsa el a PuTTY alkalmazást. A **Kategória** ablaktáblán válassza a **kapcsolatok** > **SSH** > -**hitelesítés**lehetőséget. A **hitelesítő fájl titkos kulcsa** mezőben keresse meg a korábban létrehozott kulcsot.
 
-   ![A titkos kulcs beállítása oldalát bemutató képernyőkép](./media/oracle-golden-gate/setprivatekey.png)
+   ![A titkos kulcs beállítása lap képernyőképe](./media/oracle-golden-gate/setprivatekey.png)
 
-7. Az a **kategória** ablaktáblán válassza előbb **kapcsolat** > **SSH** > **X11**. Válassza ki a **engedélyezése X11 továbbítási** mezőbe.
+7. A **Kategória** ablaktáblán válassza a **kapcsolatok** > **SSH** > **X11**elemet. Ezután jelölje be az **X11 továbbításának engedélyezése** jelölőnégyzetet.
 
-   ![Az engedélyezés X11 oldalát bemutató képernyőkép](./media/oracle-golden-gate/enablex11.png)
+   ![Az X11 engedélyezése lap képernyőképe](./media/oracle-golden-gate/enablex11.png)
 
-8. Az a **kategória** panelen lépjen a **munkamenet**. Adja meg a gazdagép adatait, és válassza ki **nyílt**.
+8. A **Kategória** ablaktáblán lépjen a **munkamenet**elemre. Adja meg a gazdagép adatait, majd kattintson a **Megnyitás**gombra.
 
-   ![A munkamenet oldalát bemutató képernyőkép](./media/oracle-golden-gate/puttysession.png)
+   ![A munkamenet oldalának képernyőképe](./media/oracle-golden-gate/puttysession.png)
 
-### <a name="install-golden-gate-software"></a>Golden kapu szoftver telepítése
+### <a name="install-golden-gate-software"></a>A Golden Gate szoftver telepítése
 
-Oracle Golden kapu telepítéséhez kövesse az alábbi lépéseket:
+Az Oracle Golden Gate telepítéséhez hajtsa végre a következő lépéseket:
 
-1. Jelentkezzen be, mint az oracle. (Kell jelszó megadása nélkül jelentkezhet be.) Győződjön meg arról, hogy a Xming fut-e, a telepítés megkezdése előtt.
+1. Jelentkezzen be Oracle-ként. (Be kell jelentkeznie anélkül, hogy jelszót kellene megadnia.) A telepítés megkezdése előtt győződjön meg arról, hogy a Xming fut.
  
    ```bash
    $ cd /opt/fbo_ggs_Linux_x64_shiphome/Disk1
    $ ./runInstaller
    ```
-2. Válassza ki az "Oracle GoldenGate az Oracle Database 12c". Válassza ki **tovább** folytatásához.
+2. Válassza az "Oracle GoldenGate for Oracle Database 12c" lehetőséget. Ezután kattintson **a Tovább gombra a** folytatáshoz.
 
-   ![A telepítő telepítési kiválasztása lap képernyőképe](./media/oracle-golden-gate/golden_gate_install_01.png)
+   ![A telepítő képernyőképe – a telepítés kiválasztása lap](./media/oracle-golden-gate/golden_gate_install_01.png)
 
-3. Módosíthatja a szoftver helyét. Válassza ki a **Start Manager** mezőbe, majd adja meg az adatbázis helyét. A folytatáshoz kattintson a **Tovább** gombra.
+3. A szoftver helyének módosítása Ezután válassza a **Start Manager** mezőt, és adja meg az adatbázis helyét. A folytatáshoz kattintson a **Tovább** gombra.
 
    ![A telepítés kiválasztása lap képernyőképe](./media/oracle-golden-gate/golden_gate_install_02.png)
 
-4. Módosítsa a készlet könyvtárat, és válassza ki **tovább** folytatásához.
+4. Módosítsa a leltári könyvtárat, majd a folytatáshoz kattintson a **tovább** gombra.
 
    ![A telepítés kiválasztása lap képernyőképe](./media/oracle-golden-gate/golden_gate_install_03.png)
 
-5. Az a **összefoglalás** képernyőn válassza ki **telepítése** folytatásához.
+5. Az **Összefoglalás** képernyőn kattintson a **telepítés** gombra a folytatáshoz.
 
-   ![A telepítő telepítési kiválasztása lap képernyőképe](./media/oracle-golden-gate/golden_gate_install_04.png)
+   ![A telepítő képernyőképe – a telepítés kiválasztása lap](./media/oracle-golden-gate/golden_gate_install_04.png)
 
-6. "Root", parancsfájllal kérheti. Ha igen, nyissa meg egy külön munkamenetben ssh a virtuális géphez, a sudo legfelső szintű, és futtassa a szkriptet. Válassza ki **OK** továbbra is.
+6. Előfordulhat, hogy a rendszer a "root" parancsfájl futtatására kéri. Ha igen, nyisson meg egy különálló munkamenetet, SSH-t a virtuális gépre, majd a sudo-t a root-ra, majd futtassa a szkriptet. Kattintson **az OK tovább gombra** .
 
    ![A telepítés kiválasztása lap képernyőképe](./media/oracle-golden-gate/golden_gate_install_05.png)
 
-7. Ha a telepítés befejeződött, válassza ki a **Bezárás** a folyamat befejezéséhez.
+7. A telepítés befejezését követően a **Bezárás** gombra kattintva fejezze be a folyamatot.
 
    ![A telepítés kiválasztása lap képernyőképe](./media/oracle-golden-gate/golden_gate_install_06.png)
 
-### <a name="set-up-service-on-myvm1-primary"></a>Állítsa be a szolgáltatást a myVM1 (elsődleges)
+### <a name="set-up-service-on-myvm1-primary"></a>Szolgáltatás beállítása a myVM1 (elsődleges)
 
-1. Hozzon létre vagy frissíti a tnsnames.ora fájlt:
+1. Hozza létre vagy frissítse a tnsnames. ora fájlt:
 
    ```bash
    $ cd $ORACLE_HOME/network/admin
@@ -492,10 +490,10 @@ Oracle Golden kapu telepítéséhez kövesse az alábbi lépéseket:
     )
    ```
 
-2. A Golden kapu tulajdonosi és felhasználói fiókokat hozhat létre.
+2. Hozza létre a Golden Gate-tulajdonost és a felhasználói fiókokat.
 
    > [!NOTE]
-   > A tulajdonos fiókja C# előtaggal kell rendelkeznie.
+   > A tulajdonos fiókjának C## előtaggal kell rendelkeznie.
    >
 
     ```bash
@@ -508,7 +506,7 @@ Oracle Golden kapu telepítéséhez kövesse az alábbi lépéseket:
     SQL> EXIT;
     ```
 
-3. Hozzon létre a Golden kapu tesztfelhasználói fiókja:
+3. A Golden Gate-teszt felhasználói fiókjának létrehozása:
 
    ```bash
    $ cd /u01/app/oracle/product/12.1.0/oggcore_1
@@ -522,9 +520,9 @@ Oracle Golden kapu telepítéséhez kövesse az alábbi lépéseket:
    SQL> EXIT;
    ```
 
-4. Konfigurálja a kinyerési alkalmazásparaméter-fájlt.
+4. Állítsa be a kinyerési paraméter fájlját.
 
-   Indítsa el a hamisított Kerberos kapu parancssori felület (ggsci):
+   A Golden Gate parancssori felületének (ggsci) elindítása:
 
    ```bash
    $ sudo su - oracle
@@ -538,7 +536,7 @@ Oracle Golden kapu telepítéséhez kövesse az alábbi lépéseket:
 
    GGSCI> EDIT PARAMS EXTORA
    ```
-5. Adja hozzá a következőket a KINYERÉSI alkalmazásparaméter-fájlt (vi parancsok használatával). Nyomja le az Esc billentyűt, ': wq! " fájl mentéséhez. 
+5. Adja hozzá a következőt a kinyerési paraméter fájlhoz (a VI-parancsok használatával). Nyomja le az ESC billentyűt, ": wq!" a fájl mentéséhez. 
 
    ```bash
    EXTRACT EXTORA
@@ -552,7 +550,7 @@ Oracle Golden kapu telepítéséhez kövesse az alábbi lépéseket:
    TABLE pdb1.test.TCUSTMER;
    TABLE pdb1.test.TCUSTORD;
    ```
-6. Regisztráció nyerje ki – integrált kivonat:
+6. A kivonat regisztrálása – integrált kivonat:
 
    ```bash
    $ cd /u01/app/oracle/product/12.1.0/oggcore_1
@@ -567,7 +565,7 @@ Oracle Golden kapu telepítéséhez kövesse az alábbi lépéseket:
 
    GGSCI> exit
    ```
-7. Állítsa be a kinyerési ellenőrzőpontokat, és indítsa el a valós idejű kivonat:
+7. A kinyerési ellenőrzőpontok beállítása és a valós idejű kinyerés elindítása:
 
    ```bash
    $ ./ggsci
@@ -589,7 +587,7 @@ Oracle Golden kapu telepítéséhez kövesse az alábbi lépéseket:
    MANAGER     RUNNING
    EXTRACT     RUNNING     EXTORA      00:00:11      00:00:04
    ```
-   Ebben a lépésben a kiindulási Állapotváltozás, amelyek később fogja használni, a másik szakaszban talál:
+   Ebben a lépésben megtalálhatja a kezdeti ÁLLAPOTVÁLTOZÁS-visszalépést, amelyet később a későbbiekben fog használni, egy másik szakaszban:
 
    ```bash
    $ sqlplus / as sysdba
@@ -618,10 +616,10 @@ Oracle Golden kapu telepítéséhez kövesse az alábbi lépéseket:
    GGSCI> ADD EXTRACT INITEXT, SOURCEISTABLE
    ```
 
-### <a name="set-up-service-on-myvm2-replicate"></a>Állítsa be a szolgáltatást a myVM2 (replikáció)
+### <a name="set-up-service-on-myvm2-replicate"></a>Szolgáltatás beállítása a myVM2 (replikálás)
 
 
-1. Hozzon létre vagy frissíti a tnsnames.ora fájlt:
+1. Hozza létre vagy frissítse a tnsnames. ora fájlt:
 
    ```bash
    $ cd $ORACLE_HOME/network/admin
@@ -654,7 +652,7 @@ Oracle Golden kapu telepítéséhez kövesse az alábbi lépéseket:
     )
    ```
 
-2. Hozzon létre egy párhuzamos fiókot:
+2. Replikálási fiók létrehozása:
 
    ```bash
    $ sqlplus / as sysdba
@@ -666,7 +664,7 @@ Oracle Golden kapu telepítéséhez kövesse az alábbi lépéseket:
    SQL> EXIT;
    ```
 
-3. Hozzon létre egy Golden kapu tesztfelhasználói fiókja:
+3. Golden Gate-teszt felhasználói fiók létrehozása:
 
    ```bash
    $ cd /u01/app/oracle/product/12.1.0/oggcore_1
@@ -679,14 +677,14 @@ Oracle Golden kapu telepítéséhez kövesse az alábbi lépéseket:
    SQL> EXIT;
    ```
 
-4. A paraméterfájl REPLICAT replikálni a módosításokat: 
+4. REPLIKÁCIÓS paraméter fájlja a módosítások replikálásához: 
 
    ```bash
    $ cd /u01/app/oracle/product/12.1.0/oggcore_1
    $ ./ggsci
    GGSCI> EDIT PARAMS REPORA  
    ```
-   REPORA paraméter fájl tartalma:
+   A REPORA-paraméter fájljának tartalma:
 
    ```bash
    REPLICAT REPORA
@@ -699,7 +697,7 @@ Oracle Golden kapu telepítéséhez kövesse az alábbi lépéseket:
    MAP pdb1.test.*, TARGET pdb1.test.*;
    ```
 
-5. Replikálás ellenőrzőpont beállítása:
+5. Replikálási ellenőrzőpont beállítása:
 
    ```bash
    GGSCI> ADD REPLICAT REPORA, INTEGRATED, EXTTRAIL ./dirdat/rt
@@ -719,22 +717,22 @@ Oracle Golden kapu telepítéséhez kövesse az alábbi lépéseket:
    GGSCI> ADD REPLICAT INITREP, SPECIALRUN
    ```
 
-### <a name="set-up-the-replication-myvm1-and-myvm2"></a>A replikáció (myVM1 és myVM2) beállítása
+### <a name="set-up-the-replication-myvm1-and-myvm2"></a>A replikáció beállítása (myVM1 és myVM2)
 
-#### <a name="1-set-up-the-replication-on-myvm2-replicate"></a>1. A replikáció myVM2 beállítása (replikáció)
+#### <a name="1-set-up-the-replication-on-myvm2-replicate"></a>1. A replikálás beállítása a myVM2 (replikálás)
 
   ```bash
   $ cd /u01/app/oracle/product/12.1.0/oggcore_1
   $ ./ggsci
   GGSCI> EDIT PARAMS MGR
   ```
-A fájl frissítése a következőre:
+Frissítse a fájlt a következővel:
 
   ```bash
   PORT 7809
   ACCESSRULE, PROG *, IPADDR *, ALLOW
   ```
-Indítsa újra a kezelő szolgáltatás:
+Ezután indítsa újra a Manager szolgáltatást:
 
   ```bash
   GGSCI> STOP MGR
@@ -742,9 +740,9 @@ Indítsa újra a kezelő szolgáltatás:
   GGSCI> EXIT
   ```
 
-#### <a name="2-set-up-the-replication-on-myvm1-primary"></a>2. Állítsa be a replikálást a myVM1 (elsődleges)
+#### <a name="2-set-up-the-replication-on-myvm1-primary"></a>2. A replikáció beállítása a myVM1 (elsődleges)
 
-Indítsa el a kezdeti betöltés és a hibák:
+Indítsa el a kezdeti betöltést, és keresse meg a hibákat:
 
 ```bash
 $ cd /u01/app/oracle/product/12.1.0/oggcore_1
@@ -752,53 +750,53 @@ $ ./ggsci
 GGSCI> START EXTRACT INITEXT
 GGSCI> VIEW REPORT INITEXT
 ```
-#### <a name="3-set-up-the-replication-on-myvm2-replicate"></a>3. A replikáció myVM2 beállítása (replikáció)
+#### <a name="3-set-up-the-replication-on-myvm2-replicate"></a>3. A replikálás beállítása a myVM2 (replikálás)
 
-A módosítás előtt beszerzett számot száma az Állapotváltozás:
+Módosítsa az ÁLLAPOTVÁLTOZÁS számát a korábban beszerzett számra:
 
   ```bash
   $ cd /u01/app/oracle/product/12.1.0/oggcore_1
   $ ./ggsci
   START REPLICAT REPORA, AFTERCSN 1857887
   ```
-A replikáció megkezdődött, és új rekordok teszt táblák beszúrásával tesztelheti.
+A replikálás megkezdődött, és tesztelheti úgy, hogy új rekordokat szúr be a táblákba.
 
 
-### <a name="view-job-status-and-troubleshooting"></a>Feladat állapotának megtekintése és hibaelhárítás
+### <a name="view-job-status-and-troubleshooting"></a>A feladatok állapotának és hibaelhárításának megtekintése
 
 #### <a name="view-reports"></a>Jelentések megtekintése
-MyVM1 jelentések megtekintéséhez futtassa a következő parancsokat:
+A myVM1-jelentések megtekintéséhez futtassa a következő parancsokat:
 
   ```bash
   GGSCI> VIEW REPORT EXTORA 
   ```
  
-MyVM2 jelentések megtekintéséhez futtassa a következő parancsokat:
+A myVM2-jelentések megtekintéséhez futtassa a következő parancsokat:
 
   ```bash
   GGSCI> VIEW REPORT REPORA
   ```
 
-#### <a name="view-status-and-history"></a>Nézet állapota és előzményei
-A myVM1 állapota és előzményei megtekintéséhez futtassa a következő parancsokat:
+#### <a name="view-status-and-history"></a>Állapot és előzmények megtekintése
+A myVM1 állapotának és előzményeinek megtekintéséhez futtassa a következő parancsokat:
 
   ```bash
   GGSCI> dblogin userid c##ggadmin, password ggadmin 
   GGSCI> INFO EXTRACT EXTORA, DETAIL
   ```
 
-Állapota és előzményei myVM2 megtekintéséhez futtassa a következő parancsokat:
+A myVM2 állapotának és előzményeinek megtekintéséhez futtassa a következő parancsokat:
 
   ```bash
   GGSCI> dblogin userid repuser@pdb1 password rep_pass 
   GGSCI> INFO REP REPORA, DETAIL
   ```
-Ezzel befejezte a telepítési és konfigurációs Golden kapu Oracle linux rendszeren.
+Ezzel befejezte a Golden Gate telepítését és konfigurálását az Oracle Linuxon.
 
 
-## <a name="delete-the-virtual-machine"></a>A virtuális gép törlése
+## <a name="delete-the-virtual-machine"></a>Törölje a következő virtuális gépet:
 
-Ha már nincs rá szükség, az alábbi parancs segítségével eltávolítható az erőforráscsoport, a virtuális gép és minden kapcsolódó erőforrás.
+Ha már nincs rá szükség, az alábbi parancs használatával távolíthatja el az erőforráscsoportot, a virtuális gépet és az összes kapcsolódó erőforrást.
 
 ```azurecli
 az group delete --name myResourceGroup

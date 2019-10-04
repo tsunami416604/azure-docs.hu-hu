@@ -4,7 +4,7 @@ description: Alkalmazás-szerepkörök felvétele az Azure Active Directoryban r
 services: active-directory
 documentationcenter: ''
 author: kkrishna
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -17,12 +17,12 @@ ms.author: kkrishna
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 427e293c28f634df9f66a7210d79e0df0d4d063c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 24e933399454942f4ee50440cffd791599679074
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56164039"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66299144"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Útmutató: Alkalmazás-szerepkörök hozzáadása az alkalmazásban, és fogadhatók a jogkivonat
 
@@ -51,7 +51,9 @@ E alkalmazás-szerepkörök vannak meghatározva a [az Azure portal](https://por
 1. Az alkalmazásjegyzék szerkesztése megkeresésével a `appRoles` beállítást, és az alkalmazás-szerepkörök hozzáadása.
 
      > [!NOTE]
-     > Minden egyes szerepkör-definíció a jegyzékfájlban rendelkeznie kell egy másik érvényes **Guid** az "Id" tulajdonsághoz. A `"value"` tulajdonságot az egyes szerepkörök pontosan egyeznie kell a karakterláncokat az alkalmazás a kódban használhatók.
+     > Minden alkalmazás szerepkör-definíció a jegyzékfájlban rendelkeznie kell egy másik érvényes GUID Azonosítót a `id` tulajdonság. 
+     > 
+     > A `value` minden alkalmazás szerepkör-definíció tulajdonságának pontosan egyeznie kell a karakterláncokat a kódban az alkalmazásban használt. A `value` tulajdonság nem tartalmazhat szóközt. Ha igen, hibaüzenetet kap a jegyzékfájl mentése.
      
 1. A jegyzékfájl mentése.
 
@@ -60,7 +62,7 @@ E alkalmazás-szerepkörök vannak meghatározva a [az Azure portal](https://por
 A következő példa bemutatja a `appRoles` , amelyeket hozzárendelhet a `users`.
 
 > [!NOTE]
->  A `id` egyedi GUID azonosítónak kell lennie.
+>A `id` egyedi GUID azonosítónak kell lennie.
 
 ```Json
 "appId": "8763f1c4-f988-489c-a51e-158e9ef97d6a",
@@ -79,6 +81,9 @@ A következő példa bemutatja a `appRoles` , amelyeket hozzárendelhet a `users
 "availableToOtherTenants": false,
 ```
 
+> [!NOTE]
+>A `displayName` nem tartalmazhat szóközt.
+
 Cél meghatározhatja az alkalmazás-szerepkörök `users`, `applications`, vagy mindkettőt. Ha az elérhető `applications`, alkalmazás-szerepkörök jelennek meg Alkalmazásengedélyek, az a **szükséges engedélyek** panelen. Az alábbi példa bemutatja egy alkalmazás-szerepkör céloz egy `Application`.
 
 ```Json
@@ -88,7 +93,7 @@ Cél meghatározhatja az alkalmazás-szerepkörök `users`, `applications`, vagy
       "allowedMemberTypes": [
         "Application"
       ],
-      "displayName": "Consumer Apps",
+      "displayName": "ConsumerApps",
       "id": "47fbb575-859a-4941-89c9-0f7a6c30beac",
       "isEnabled": true,
       "description": "Consumer apps have access to the consumer data.",
@@ -97,6 +102,8 @@ Cél meghatározhatja az alkalmazás-szerepkörök `users`, `applications`, vagy
   ],
 "availableToOtherTenants": false,
 ```
+
+Megadott szerepkörök száma a korlátokat, amely rendelkezik az alkalmazás jegyzékfájlja van hatással. Ezek rendelkezik lett cikkben talál részletes információkat a a [korlátok manifest](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#manifest-limits) lap.
 
 ### <a name="assign-users-and-groups-to-roles"></a>Felhasználók és csoportok hozzárendelése szerepkörökhöz
 

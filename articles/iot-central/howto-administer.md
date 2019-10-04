@@ -3,17 +3,17 @@ title: Felügyelheti az Azure IoT Central alkalmazáshoz |} A Microsoft Docs
 description: A rendszergazdák az Azure IoT központi alkalmazás felügyelete
 author: viv-liu
 ms.author: viviali
-ms.date: 02/20/2019
+ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 29ded279e2a76940049c257b954b1dae75f14836
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 87ed31836fcda922b085ec951eb6d9d14542db6a
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57778603"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65467563"
 ---
 # <a name="administer-your-iot-central-application"></a>Az IoT-központ alkalmazás felügyelete
 
@@ -26,7 +26,10 @@ Miután létrehozott egy IoT-központ alkalmazás, nyissa meg a **felügyeleti**
 - A próbaidőszak váltson használatalapú fizetésre
 - Adatok exportálása
 - Eszköz kapcsolat kezelése
-- Hozzáférési kódok használata
+- Hozzáférési kódok használata a fejlesztői eszközök
+- Az alkalmazás a felhasználói felület testreszabása
+- Súgóhivatkozások az alkalmazás testreszabása
+- IoT-központ programozással felügyelheti
 
 Hogy eléri és használja a **felügyeleti** szakaszban kell lennie a a **rendszergazda** szerepkört az Azure IoT Central alkalmazáshoz. Azure IoT Central alkalmazást hoz létre, ha automatikusan kapott a **rendszergazda** szerepkör az adott alkalmazáshoz. A [felhasználók kezelése](#manage-users) szakasz ebben a cikkben a hozzárendelése több ismerteti a **rendszergazda** szerepkör más felhasználók számára.
 
@@ -37,6 +40,8 @@ Az a **Alkalmazásbeállítások** lapon módosítsa a nevét és az alkalmazás
 
 ![Alkalmazás-Beállítások lap](media/howto-administer/image0-a.png)
 
+Ha a rendszergazda létrehoz egy egyéni téma az alkalmazás, ezen a lapon beállítással rendelkezik, amely elrejtése a **alkalmazásnév** a felhasználói felületen. Ez akkor hasznos, ha az alkalmazás emblémája, az egyéni témában tartalmazza az alkalmazás nevét. További információkért lásd: [testreszabása az Azure IoT Central felhasználói felület](./howto-customize-ui.md).
+
 > [!Note]
 > Ha megváltoztatja az URL-CÍMÉT, a régi URL-CÍMÉT egy másik Azure IoT Central ügyfél elvégezhet. Ha ez történik, már nem érhető el, amelyet használhat. Ha megváltoztatja az URL-CÍMÉT, a régi URL-cím már nem működik, és értesíti a felhasználókat arról, hogy az új URL-cím használatára kell.
 
@@ -46,13 +51,13 @@ Ha módosítani szeretné az alkalmazás rendszerképét, lásd: [előkészíté
 ### <a name="copy-an-application"></a>Alkalmazás másolása
 Minden olyan alkalmazás, bármely eszköz példányok, az adatok eszközelőzmények és a felhasználói adatok mínusz egy másolatát is létrehozhat. A példány egy használatalapú fizetéses alkalmazást, amely akkor kell fizetnie. Ezzel a módszerrel egy próba-alkalmazás nem hozható létre.
 
-Válassza ki **másolási**. A párbeszédpanelen adja meg, hogy az új használatalapú fizetéses alkalmazás. Válassza ki **másolási** annak ellenőrzéséhez, hogy végre szeretné hajtani. További információ a mezőket az űrlapon található [hozzon létre egy alkalmazást](quick-deploy-iot-central.md) rövid.
+Válassza ki **másolási**. A párbeszédpanelen adja meg, hogy az új használatalapú fizetéses alkalmazás. Válassza ki **másolási** annak ellenőrzéséhez, hogy szeretné-e továbbra is. További információ a mezőket az űrlapon található [hozzon létre egy alkalmazást](quick-deploy-iot-central.md) rövid.
 
 ![Alkalmazás-Beállítások lap](media/howto-administer/appcopy2.png)
 
-Miután az alkalmazás másolási művelet sikeres, az új alkalmazást, az alkalmazás használatával, amely megjelenik a hivatkozás másolása által létrehozott léphet.
+Miután az alkalmazás másolási művelet sikeres, az új alkalmazást, a hivatkozás használatával navigálhat.
 
-![Alkalmazás-Beállítások lap](media/howto-administer/appCopy3.png)
+![Alkalmazás-Beállítások lap](media/howto-administer/appcopy3a.png)
 
 > [!Note]
 > Alkalmazás másolása is átmásolja a szabályok és műveletek definíciója. De az eredeti alkalmazáshoz hozzáféréssel rendelkező felhasználók nem másolja át a másolt alkalmazást, mert a felhasználók manuális hozzáadása műveleteket, például e-mail, amelyhez felhasználók előfeltétele. Általában célszerű a szabályokat és műveleteket, győződjön meg arról, hogy azok az új alkalmazás naprakész, ellenőrizze, hogy legyen.
@@ -62,7 +67,7 @@ Miután az alkalmazás másolási művelet sikeres, az új alkalmazást, az alka
 > [!Note]
 > Egy alkalmazás törléséhez, jogosultnak kell lennie is törölje az erőforrást az Azure-előfizetésében választotta, az alkalmazás létrehozásakor. További tudnivalókért lásd: [az Azure-előfizetések erőforrásaihoz való hozzáférés kezelése szerepköralapú hozzáférés-vezérlés használatával](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure).
 
-Használja a **törlése** gombra kattintva véglegesen törli az IoT Central alkalmazáshoz. Ezzel véglegesen törli az adott alkalmazáshoz tartozó összes adatot.
+Használja a **törlése** gombra kattintva véglegesen törli az IoT Central alkalmazáshoz. Ez a művelet véglegesen törli az alkalmazáshoz tartozó összes adatot.
 
 ## <a name="manage-users"></a>Felhasználók kezelése
 
@@ -103,13 +108,13 @@ A felhasználók a **rendszergazda** szerepkör hozzáférése az összes funkci
 
 A felhasználó, aki alkalmazást hoz létre automatikusan hozzá van rendelve a **rendszergazda** szerepkör. Mindig kell legalább egy felhasználója a **rendszergazda** szerepkör.
 
-### <a name="application-builder"></a>Alkalmazásszerkesztő
+### <a name="application-builder"></a>Alkalmazáskészítő
 
-A felhasználók a **alkalmazás Builder** szerepkör műveletek mindegyikét egy alkalmazásban, kivéve az alkalmazás felügyeletét. Ez azt jelenti, hogy sikerei is létrehozásához, szerkesztéséhez és eszközsablonok és eszközök törlése, eszköz készletek felügyelete és analytics és a feladatok futtatásához. Kapcsolat építői többé nem fér hozzá a **felügyeleti** szakaszban az alkalmazás.
+A felhasználók a **alkalmazás Builder** szerepkör műveletek mindegyikét egy alkalmazásban, kivéve az alkalmazás felügyeletét. Sikerei is létrehozása, szerkesztése, és törölje eszközsablonok és az eszközök, eszköz készletek felügyelete és analytics és a feladatok futtatásához. Kapcsolat építői többé nem fér hozzá a **felügyeleti** szakaszban az alkalmazás.
 
 ### <a name="application-operator"></a>Alkalmazásoperátor
 
-A felhasználók a **alkalmazást üzemeltető** szerepkör nem hajthat végre változtatásokat eszközsablonok és az alkalmazás nem tudja felügyelni. Ez azt jelenti, operátorok is hozzáadások és törlések eszközök, eszköz-készletek felügyelete és analytics és a feladatok futtatásához. Operátorok többé nem fér hozzá a **alkalmazás Builder** és **felügyeleti** oldalakat.
+A felhasználók a **alkalmazást üzemeltető** szerepkör nem hajthat végre változtatásokat eszközsablonok és az alkalmazás nem tudja felügyelni. Operátorok hozzáadása és eszközök, eszköz készletek felügyelete, és analytics és a feladatok futtatásához. Operátorok többé nem fér hozzá a **alkalmazás Builder** és **felügyeleti** oldalakat.
 
 ## <a name="view-your-bill"></a>A számla megtekintése
 
@@ -119,8 +124,8 @@ A számla megtekintéséhez nyissa meg a **számlázási** lapját a **felügyel
 
 Átválthat egy használatalapú fizetéses alkalmazás próbaverzió alkalmazását. Az alábbiakban az ilyen típusú alkalmazások közötti különbségeket.
 
-- A **próbaalkalmazások** 7 napig ingyenesek, azután lejárnak. A lejárat előtt bármikor átalakíthatók használatalapú fizetéses alkalmazássá.
-- A **használatalapú fizetéses** alkalmazások díjának felszámítása eszközönként történik. Az első 5 eszköz ingyenes.
+- **Próbaverzió** alkalmazások ingyenesek az hét napig járnak. A lejárat előtt bármikor átalakíthatók használatalapú fizetéses alkalmazássá.
+- **Használatalapú fizetés** alkalmazások után felszámított díjak eszközt, az első öt ingyenes eszközökkel.
 
 További információk a díjszabásról az [Azure IoT Central díjszabását ismertető oldalon](https://azure.microsoft.com/pricing/details/iot-central/) találhatók.
 
@@ -148,15 +153,23 @@ Csatlakozás az alkalmazásban, a kulcsok és tanúsítványok ide használatáv
 
 ## <a name="use-access-tokens"></a>Hozzáférési kódok használata
 
-A fejlesztői eszközök használandó hozzáférési jogkivonatokat hoz létre. Jelenleg nincs egy fejlesztői elérhető eszköz, amely az IoT-központ explorer van az eszközre, és a változások tulajdonságokat és beállításokat a figyelés. Tudjon meg többet a [IoT-központ explorer](howto-use-iotc-explorer.md).
+A fejlesztői eszközök használandó hozzáférési jogkivonatokat hoz létre. A csak fejlesztői eszköz, amely jelenleg az IoT-központ explorer figyelési eszközüzenetek és tulajdonságokat és beállításokat a módosításokat. Tudjon meg többet a [IoT-központ explorer](howto-use-iotc-explorer.md).
 
-## <a name="use-the-azure-sdks-for-control-plane-operations"></a>Az Azure SDK-k használata vezérlési síkjával végzett műveletek
+## <a name="customize-your-application"></a>Az alkalmazás testreszabása
 
-A Node, Python, C#, Ruby, a Java és Go IoT Central Azure Resource Manager SDK-csomagok érhetők el. E kódtárak támogatási vezérlési síkjával végzett műveletek az IoT-központ, így lehetővé teszi a létrehozása, listázása, frissítésére, vagy törölje az IoT Central-alkalmazást. Hitelesítési többé vesződnie a sérült segítők is rendelkeznek, és a hibakezelési, amely csak a különböző nyelveken. 
+Színek és az alkalmazás az ikonok megváltoztatásával kapcsolatos további információkért lásd: [testreszabása az Azure IoT Central felhasználói felület](./howto-customize-ui.md).
+
+## <a name="customize-help"></a>A súgó testreszabása
+
+Az alkalmazás egyéni súgóhivatkozások hozzáadásával kapcsolatos további információkért lásd: [testreszabása az Azure IoT Central felhasználói felület](./howto-customize-ui.md).
+
+## <a name="manage-programatically"></a>Amellyel programozott módon kezelése
+
+A Node, Python, C#, Ruby, a Java és Go IoT Central Azure Resource Manager SDK-csomagok érhetők el. Ezek a csomagok segítségével létrehozása, listázása, frissíteni vagy törölje az IoT Central-alkalmazást. A csomagok tartalmazzák a hitelesítés és a hibakezelés kezelését segítő.
 
 Példa bemutatja, hogyan használhatja az Azure Resource Manager SDK-k, annak [ https://github.com/emgarten/iotcentral-arm-sdk-examples ](https://github.com/emgarten/iotcentral-arm-sdk-examples).
 
-További tudnivalókért tekintse meg ezeket a csomagokat a Githubon.
+További tudnivalókért tekintse meg az alábbi GitHub-adattárak és a csomagok:
 
 | Nyelv | Adattár | Csomag |
 | ---------| ---------- | ------- |
@@ -165,7 +178,7 @@ További tudnivalókért tekintse meg ezeket a csomagokat a Githubon.
 | C# | [https://github.com/Azure/azure-sdk-for-net](https://github.com/Azure/azure-sdk-for-net) | [https://www.nuget.org/packages/Microsoft.Azure.Management.IotCentral](https://www.nuget.org/packages/Microsoft.Azure.Management.IotCentral)
 | Ruby | [https://github.com/Azure/azure-sdk-for-ruby](https://github.com/Azure/azure-sdk-for-ruby) | [https://rubygems.org/gems/azure_mgmt_iot_central](https://rubygems.org/gems/azure_mgmt_iot_central)
 | Java | [https://github.com/Azure/azure-sdk-for-java](https://github.com/Azure/azure-sdk-for-java) | [https://search.maven.org/search?q=a:azure-mgmt-iotcentral](https://search.maven.org/search?q=a:azure-mgmt-iotcentral)
-| Indítás | [https://github.com/Azure/azure-sdk-for-go](https://github.com/Azure/azure-sdk-for-go) | [https://github.com/Azure/azure-sdk-for-go](https://github.com/Azure/azure-sdk-for-go)
+| Ugrás | [https://github.com/Azure/azure-sdk-for-go](https://github.com/Azure/azure-sdk-for-go) | [https://github.com/Azure/azure-sdk-for-go](https://github.com/Azure/azure-sdk-for-go)
 
 ## <a name="next-steps"></a>További lépések
 

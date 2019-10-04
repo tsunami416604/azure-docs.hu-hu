@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 64b28fc0db56be77bce9c22f9332110205a42b1d
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 4d854aef62af1004faacf73c11bb417cf508a727
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437343"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64727140"
 ---
 # <a name="azure-maps-supported-categories"></a>Az Azure Maps támogatott kategóriák
 
@@ -45,7 +45,7 @@ Amikor egy [kategória keresési](https://docs.microsoft.com/rest/api/maps/searc
 | COLLEGE\_UNIVERSITY | beosztott főiskolák és egyéb felsőoktatási intézmények, főiskolai és egyetemi, főiskolák, egyetem előkészítő iskola, university |
 | COMMERCIAL\_BUILDING | épület, kereskedelmi park központ létrehozása |
 | KÖZÖSSÉGI\_CENTER | közösségi center |
-| VÁLLALAT | adózási Electronics, gyártási, a számítógép adatszolgáltatások, közegészségügyi technológiák, változatos financials, állat megóvja, légitársaság, berendezések bérleti, szolgáltatás, levelezési/csomag/árufuvarozási kézbesítési, busz sorok, otthoni készülék javítása, szolgáltatások, oem, tisztítása szolgáltatások, olaj, gáz, jogi szolgáltatások, konstrukció, telekommunikációs, átviteli, autó gyártási, chemicals, temetési szolgáltatás mortuaries, híd alagút műveletek, automobile, gépi mérnöki csapathoz, szolgáltatások, befektetés-tanácsadók hirdetés/marketing, áthelyezése a storage, megtakarítás intézmény, biztosítási, számítógépes szoftverek, pharmaceuticals, vendéglátás, lakodalmát szolgáltatások, mezőgazdasági technológia, ingatlan, taxi, limousine shuttle szolgáltatás busz-bérleti bérlését, adatbányászati, közzététele technológiák, kábel telefonon, importálási/exportálási terjesztési, vállalati, menedékjog, szén mine(s), estate(s), brewery cégeknél, gold mine(s) |
+| VÁLLALATI | adózási Electronics, gyártási, a számítógép adatszolgáltatások, közegészségügyi technológiák, változatos financials, állat megóvja, légitársaság, berendezések bérleti, szolgáltatás, levelezési/csomag/árufuvarozási kézbesítési, busz sorok, otthoni készülék javítása, szolgáltatások, oem, tisztítása szolgáltatások, olaj, gáz, jogi szolgáltatások, konstrukció, telekommunikációs, átviteli, autó gyártási, chemicals, temetési szolgáltatás mortuaries, híd alagút műveletek, automobile, gépi mérnöki csapathoz, szolgáltatások, befektetés-tanácsadók hirdetés/marketing, áthelyezése a storage, megtakarítás intézmény, biztosítási, számítógépes szoftverek, pharmaceuticals, vendéglátás, lakodalmát szolgáltatások, mezőgazdasági technológia, ingatlan, taxi, limousine shuttle szolgáltatás busz-bérleti bérlését, adatbányászati, közzététele technológiák, kábel telefonon, importálási/exportálási terjesztési, vállalati, menedékjog, szén mine(s), estate(s), brewery cégeknél, gold mine(s) |
 | COURTHOUSE | courthouse |
 | KULTURÁLIS\_CENTER | kulturális központ |
 | DENTIST | dentist |
@@ -105,7 +105,7 @@ Amikor egy [kategória keresési](https://docs.microsoft.com/rest/api/maps/searc
 | REPAIR\_FACILITY | bodyshops, gumiabroncs (kulcsszava) szolgáltatások, javítás üzletekben, autó üveg helyettesítő boltok, karbantartásához, motorkerékpár javítása, teherautó szolgáltatás, autó Kellékek, értékesítés telepítésének általános autó javítási létesítmény javítása |
 | KUTATÁSI\_LÉTESÍTMÉNY | kutatási létesítmény |
 | A HELYI\_VENDÉGLÁTÓIPAR | kivezetési közösségi, összetett townhouse, lakások/apartman összetett, condominium összetett, lakcímét hagyatéki, lakcímét vendéglátóipar |
-| RESTAURANT | Német, creole-Cajun, holland, banquet termek, bistro, izraeli, szlovák, jamaicai, vegetarian, tengeri, vietnami, máltai, Szecsuan, welsh, kínai, japán, algériai, Californian fúziós, Shandong, saláta sávon Savoy egy, spanyol, Etióp, tajvani, doughnuts, Iráni, kanadai, amerikai, norvég, francia, Hunan, Polynesian, afghan, közúti, keleti, Svájc, erotic, crêperie, Surinamese, Egyiptomi, magyar, Nepáli, barbecue, gyakran használt adatok pot, hamburgers, mediterrán, Latin-amerikai, agrárstatisztikák, brit, Mexikói, Kuangtung, ázsiai (egyéb), buffet, sushi, mongol, nemzetközi, kagyló, Thai, venezuelai, Rumanian, csirke, leves kosher, steak ház, joghurt/lé sáv, olasz, koreai, Cypriot, bosnyák, Bolíviai, Dominikai, belga, tunéziai, Skót, Angol, pakisztáni, Cseh, Hawaii, Maghrib, tibeti, arab, keleti, chilei középen, Sanghai, lengyel, Fülöp-szigetek, szudáni, örmény, burmai, brazíliai, skandináv, Bulgária, lelket élelmiszer, kolumbiai, zsidó, kétpizzás Sicilian, szerves, görög, baszk, Uruguayi, kávézók, finn, afrikai, korzikai, Szíriai, Karib-szigetek, Dongbei, orosz, rács, sávdiagrammá, gyors élelmiszer, Ausztrália, ír, közzétételi és előfizetési élelmiszer, fondue Libanoni, indonéz, dán, Provençal, teppanyaki, indiai, mauritiusi, nyugati kontinentális területén tároljuk Perui, kambodzsai, között, svéd, macrobiotic, ice cream parlor Szláv, török, Argentinean, osztrák, egzotikus, portugál, luxemburgi, Tamazight, sandwich, kubai, éttermi |
+| RESTAURANT | Német, creole-Cajun, holland, banquet termek, bistro, izraeli, szlovák, jamaicai, vegetarian, tengeri, vietnami, máltai, Szecsuan, welsh, kínai, japán, algériai, Californian fúziós, Shandong, saláta sávon Savoy egy, spanyol, Etióp, tajvani, doughnuts, Iráni, kanadai, amerikai, norvég, francia, Hunan, Polynesian, afghan, közúti, ázsiai, Svájc, erotic, crêperie, Surinamese, Egyiptomi, magyar, Nepáli, barbecue, gyakran használt adatok pot, hamburgers, mediterrán, Latin-amerikai, agrárstatisztikák, brit, Mexikói, Kuangtung, ázsiai (egyéb), buffet, sushi, mongol, nemzetközi, kagyló, Thai, venezuelai, Rumanian, csirke, leves kosher, steak ház, joghurt/lé sáv, olasz, koreai, Cypriot, bosnyák, Bolíviai, Dominikai, belga, tunéziai, Skót, Angol, pakisztáni, Cseh, Hawaii, Maghrib, tibeti, arab, keleti, chilei középen, Sanghai, lengyel, Fülöp-szigetek, szudáni, örmény, burmai, brazíliai, skandináv, Bulgária, lelket élelmiszer, kolumbiai, zsidó, kétpizzás Sicilian, szerves, görög, baszk, Uruguayi, kávézók, finn, afrikai, korzikai, Szíriai, Karib-szigetek, Dongbei, orosz, rács, sávdiagrammá, gyors élelmiszer, Ausztrália, ír, közzétételi és előfizetési élelmiszer, fondue Libanoni, indonéz, dán, Provençal, teppanyaki, indiai, mauritiusi, nyugati kontinentális területén tároljuk Perui, kambodzsai, között, svéd, macrobiotic, ice cream parlor Szláv, török, Argentinean, osztrák, egzotikus, portugál, luxemburgi, Tamazight, sandwich, kubai, éttermi |
 | RESTAURANT\_AREA | éttermek terület |
 | REST\_AREA | REST-területen hely leállítása |
 | SCENIC\_PANORAMIC\_VIEW | tájkép panoráma nézet, megfigyelési pont |

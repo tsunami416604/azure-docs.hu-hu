@@ -1,6 +1,6 @@
 ---
-title: Az OpenShift Container Platform önállóan felügyelt Piactéri ajánlat az Azure-beli üzembe helyezése |} A Microsoft Docs
-description: Telepítse az OpenShift Container Platform önállóan felügyelt Piactéri ajánlat az Azure-ban.
+title: A OpenShift-tároló platform saját üzemeltetésű Piactéri ajánlatának üzembe helyezése az Azure-ban | Microsoft Docs
+description: A OpenShift Container platform önállóan felügyelt Marketplace-ajánlatát az Azure-ban helyezheti üzembe.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldwongms
@@ -9,188 +9,187 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/18/2019
+ms.date: 05/7/2019
 ms.author: haroldw
-ms.openlocfilehash: 1228c770799de37c85b8a48b1dc923ac8294eeca
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 87b5c4ab006d9129d7530b06d8b31df35e288c75
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60014136"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70091905"
 ---
 # <a name="configure-prerequisites"></a>Előfeltételek konfigurálása
 
-Mielőtt a Marketplace-ajánlat használatával helyezhet üzembe önállóan felügyelt OpenShift Tárolóplatform-fürtöt az Azure-ban, néhány előfeltételt kell konfigurálni.  Olvassa el a [OpenShift előfeltételei](https://docs.microsoft.com/azure/virtual-machines/linux/openshift-prerequisites) cikk utasításait követve hozzon létre egy ssh kulcs (nélkül egy hozzáférési kódot), az Azure key vault, a key vault titkos kulcsot és egy egyszerű szolgáltatást.
+Mielőtt felhasználja a Piactéri ajánlatot egy önállóan felügyelt OpenShift-tároló platform-fürt üzembe helyezéséhez az Azure-ban, néhány előfeltételt be kell állítani.  A [OpenShift](https://docs.microsoft.com/azure/virtual-machines/linux/openshift-prerequisites) előfeltételeit ismertető cikkben megtudhatja, hogyan hozhat létre SSH-kulcsot (jelszó nélkül), az Azure Key vaultot, a Key Vault secrett és egy egyszerű szolgáltatást.
 
  
-## <a name="deploy-using-the-marketplace-offer"></a>Üzembe helyezés a Marketplace-ajánlat
+## <a name="deploy-using-the-marketplace-offer"></a>Üzembe helyezés a Piactéri ajánlat használatával
 
-Azure önállóan felügyelt OpenShift Tárolóplatform-fürt üzembe helyezése a legegyszerűbb módja az, hogy használja a [Azure Marketplace-ajánlat](https://azuremarketplace.microsoft.com/marketplace/apps/redhat.openshift-container-platform?tab=Overview).
+Az önfelügyelt OpenShift-tárolók Azure-beli üzembe helyezésének legegyszerűbb módja az [Azure Marketplace-ajánlat](https://azuremarketplace.microsoft.com/marketplace/apps/redhat.openshift-container-platform?tab=Overview)használata.
 
-Ez a lehetőség akkor a legegyszerűbb, de azt is korlátozott testreszabási lehetőségeket. A Piactéri ajánlat OpenShift Tárolóplatform 3.11.82 telepíti, és az alábbi konfigurációs lehetőségeket tartalmazza:
+Ez a legegyszerűbb, de korlátozott testreszabási lehetőségekkel is rendelkezik. A Piactéri ajánlat üzembe helyezi a OpenShift-tároló platformjának 3.11.82, és a következő konfigurációs beállításokat tartalmazza:
 
-- **Fő csomópontok**: Írja be a három (3) fő csomópontok konfigurálható példánnyal.
-- **Infrastruktúra csomópontok**: Írja be a három (3) infrastruktúra csomópontok konfigurálható példánnyal.
-- **Csomópontok**: A szám (1 – 9) között csomópontok és a példány típusát is konfigurálható.
-- **Lemez típusa**: Felügyelt lemezeket használnak.
-- **Hálózatkezelés**: Támogatja az új vagy meglévő hálózati és egyéni CIDR-tartományt.
-- **CNS**: CNS engedélyezhető.
-- **Metrikák**: Metrikák engedélyezhető.
-- **Naplózás**: Naplózás is engedélyezhető.
-- **Az Azure Felhőszolgáltató**: Alapértelmezés szerint engedélyezve lehet letiltani.
+- **Fő csomópontok**: Három (3) fő csomópont konfigurálható példány típussal.
+- **Infra**-csomópontok: Három (3) infra csomópont konfigurálható példány típussal.
+- **Csomópontok**: A csomópontok száma (1 és 9 között), a példány típusa pedig konfigurálható.
+- **Lemez típusa**: Managed Disks használatban van.
+- **Hálózatkezelés**: Új vagy meglévő hálózati és egyéni CIDR-tartomány támogatása.
+- **CNS**: A CNS engedélyezhető.
+- **Metrikák**: Hawkular metrikák engedélyezhetők.
+- **Naplózás**: A EFK naplózása engedélyezve lehet.
+- **Azure Cloud Provider**: Alapértelmezés szerint engedélyezve van, le lehet tiltani.
 
-Az Azure portal bal felső sarokban kattintson **erőforrás létrehozása**, adja meg a "openshift tárolóplatform" szót a keresőmezőbe, és nyomja le az ENTER billentyűt.
+A Azure Portal bal felső részén kattintson az **erőforrás létrehozása**elemre, írja be a "openshift Container platform" kifejezést a keresőmezőbe, és nyomja le az ENTER billentyűt.
 
    ![Új erőforrás-keresés](media/openshift-marketplace-self-managed/ocp-search.png)  
 <br>
 
-Az eredmények lapon nyílik meg, **Red Hat OpenShift Container Platform Self-Managed** a listában. 
+Az eredmények lap a listában a **Red Hat OpenShift Container platformmal** együtt fog megnyílni. 
 
-   ![Új erőforrás-keresési eredmény](media/openshift-marketplace-self-managed/ocp-searchresult.png)  
+   ![Új erőforrás-keresés eredménye](media/openshift-marketplace-self-managed/ocp-searchresult.png)  
 <br>
 
-Kattintson az ajánlat az ajánlat a részletek megtekintéséhez. Ez az ajánlat üzembe helyezéséhez kattintson **létrehozás**. Adja meg a szükséges paramétereket, a felhasználói felületen jelenik meg. Az első képernyője a **alapjai** panelen.
+Kattintson az ajánlatra az ajánlat részleteinek megtekintéséhez. Az ajánlat üzembe helyezéséhez kattintson a **Létrehozás**gombra. Ekkor megjelenik a szükséges paraméterek megadására szolgáló felhasználói felület. Az első képernyő az **alapvető beállítások** panel.
 
-   ![Az ajánlat címe lap](media/openshift-marketplace-self-managed/ocp-titlepage.png)  
+   ![Ajánlat címe lap](media/openshift-marketplace-self-managed/ocp-titlepage.png)  
 <br>
 
 **Alapvető beállítások**
 
-Segítséget a bemeneti paraméterek egyikét, mutasson a ***i*** a paraméter neve mellett.
+Ha segítséget szeretne kérni bármelyik bemeneti paraméterről, vigye a kurzort a paraméter neve melletti fölé.
 
-Adja meg az értékeket a bemeneti paraméterek, és kattintson a **OK**.
+Adja meg a bemeneti paraméterek értékeit, majd kattintson **az OK**gombra.
 
 | Bemeneti paraméter | Paraméter leírása |
 |-----------------------|-----------------|
-| Virtuális gép rendszergazdai felhasználóneve | A rendszergazda felhasználó összes Virtuálisgép-példányt létrehozni |
-| SSH Public Key for Admin User | Nyilvános SSH-kulcs VM - szolgáltatásba való bejelentkezéshez használt jelszó nem lehet |
-| Előfizetés | Azure-előfizetés-fürt üzembe helyezése |
-| Erőforráscsoport | Hozzon létre egy új erőforráscsoportot, vagy válasszon ki egy meglévő üres erőforráscsoportot a fürt erőforrásai |
-| Location egység | Azure-régiót, a fürt üzembe helyezése |
+| Virtuális gép rendszergazdájának felhasználóneve | Az összes virtuálisgép-példányon létrehozandó rendszergazda felhasználó |
+| Nyilvános SSH-kulcs rendszergazdai felhasználóhoz | Virtuális gépre való bejelentkezéshez használt nyilvános SSH-kulcs – nem lehet hozzáférési kód |
+| Subscription | Azure-előfizetés a fürt üzembe helyezéséhez |
+| Erőforráscsoport | Hozzon létre egy új erőforráscsoportot, vagy válasszon ki egy meglévő üres erőforráscsoportot a fürt erőforrásaihoz |
+| Location | Azure-régió a fürt üzembe helyezéséhez |
 
-   ![Az ajánlat alapvető beállítások panel](media/openshift-marketplace-self-managed/ocp-basics.png)  
+   ![Ajánlat alapjai panel](media/openshift-marketplace-self-managed/ocp-basics.png)  
 <br>
 
-**Infrastruktúra-beállításokat**
+**Infrastruktúra-beállítások**
 
-Adja meg az értékeket a bemeneti paraméterek, és kattintson a **OK**.
+Adja meg a bemeneti paraméterek értékeit, majd kattintson **az OK**gombra.
 
 | Bemeneti paraméter | Paraméter leírása |
 |-----------------------|-----------------|
-| OCP fürt nevének előtagja | A rendszergazda felhasználó összes Virtuálisgép-példányt létrehozni |
-| Fő csomópont mérete | Fogadja el az alapértelmezett virtuális gép méretét, vagy kattintson a **méretének módosítása** jelölje be egy másik Virtuálisgép-méretet.  Válassza ki a terhelésnek megfelelő virtuális gép mérete |
-| Infrastruktúra-csomópont mérete | Fogadja el az alapértelmezett virtuális gép méretét, vagy kattintson a **méretének módosítása** jelölje be egy másik Virtuálisgép-méretet.  Válassza ki a terhelésnek megfelelő virtuális gép mérete |
-| Alkalmazás-csomópontok száma | Fogadja el az alapértelmezett virtuális gép méretét, vagy kattintson a **méretének módosítása** jelölje be egy másik Virtuálisgép-méretet.  Válassza ki a terhelésnek megfelelő virtuális gép mérete |
-| Alkalmazás csomópont mérete | Fogadja el az alapértelmezett virtuális gép méretét, vagy kattintson a **méretének módosítása** jelölje be egy másik Virtuálisgép-méretet.  Válassza ki a terhelésnek megfelelő virtuális gép mérete |
-| Megerősített gazdagép mérete | Fogadja el az alapértelmezett virtuális gép méretét, vagy kattintson a **méretének módosítása** jelölje be egy másik Virtuálisgép-méretet.  Válassza ki a terhelésnek megfelelő virtuális gép mérete |
-| Új vagy meglévő virtuális hálózat | Hozzon létre egy új virtuális hálózatot (alapértelmezett), vagy használjon egy meglévő virtuális hálózat |
-| Válassza ki az alapértelmezett CIDR-beállítások, vagy testre szabhatja a IP-címtartomány (CIDR) | Fogadja el az alapértelmezett CIDR-tartományt, vagy válasszon **egyéni IP-címtartomány** , és adja meg egyéni CIDR-adatait.  Alapértelmezett beállítások hoz létre virtuális hálózatok közötti, 10.0.0.0/14, 10.1.0.0/16, infrastruktúra-főkiszolgálói alhálózat CIDR 10.2.0.0/16 az alhálózatot, és a számítási és cns alhálózat 10.3.0.0/16 |
-| Key Vault-erőforráscsoport neve | Az erőforráscsoport, amely tartalmazza a kulcstároló nevét |
-| Kulcstartó neve | A Key Vault, amely tartalmazza a titkos kulcsnak a nevét a ssh titkos kulcsot.  Csak alfanumerikus karaktereket és kötőjeleket tartalmazhat engedélyezettek, valamint 3 – 24 karakter hosszúságú lehet |
-| Název tajného kódu | A titkos kulcsot tartalmazó nevére az ssh titkos kulcsot.  Csak alfanumerikus karaktereket és kötőjeleket tartalmazhat engedélyezettek |
+| OCP-fürt neve előtag | Az összes csomóponthoz tartozó állomásnevek konfigurálásához használt fürt-előtag. 1 és 20 karakter között |
+| Fő csomópont mérete | Fogadja el az alapértelmezett virtuálisgép-méretet, vagy kattintson a **méret módosítása** lehetőségre egy másik virtuálisgép-méret kiválasztásához.  Válassza ki a megfelelő virtuálisgép-méretet a munkahelyi terheléshez |
+| Infrastruktúra-csomópont mérete | Fogadja el az alapértelmezett virtuálisgép-méretet, vagy kattintson a **méret módosítása** lehetőségre egy másik virtuálisgép-méret kiválasztásához.  Válassza ki a megfelelő virtuálisgép-méretet a munkahelyi terheléshez |
+| Alkalmazás-csomópontok száma | Fogadja el az alapértelmezett virtuálisgép-méretet, vagy kattintson a **méret módosítása** lehetőségre egy másik virtuálisgép-méret kiválasztásához.  Válassza ki a megfelelő virtuálisgép-méretet a munkahelyi terheléshez |
+| Alkalmazás-csomópont mérete | Fogadja el az alapértelmezett virtuálisgép-méretet, vagy kattintson a **méret módosítása** lehetőségre egy másik virtuálisgép-méret kiválasztásához.  Válassza ki a megfelelő virtuálisgép-méretet a munkahelyi terheléshez |
+| Megerősített gazdagép mérete | Fogadja el az alapértelmezett virtuálisgép-méretet, vagy kattintson a **méret módosítása** lehetőségre egy másik virtuálisgép-méret kiválasztásához.  Válassza ki a megfelelő virtuálisgép-méretet a munkahelyi terheléshez |
+| Új vagy meglévő Virtual Network | Új vNet létrehozása (alapértelmezett) vagy meglévő vNet használata |
+| Alapértelmezett CIDR-beállítások kiválasztása vagy az IP-címtartomány testreszabása (CIDR) | Fogadja el az alapértelmezett CIDR-tartományokat, vagy válassza az **Egyéni IP-címtartomány** lehetőséget, és adja meg az egyéni CIDR  Az alapértelmezett beállítások a vNet-t, a CIDR-t, a 10.0.0.0/14-et, a 10.1.0.0/16-ot, az infra alhálózatot 10.2.0.0/16, valamint a számítási és a CNS-alhálózatot 10.3.0.0/16 |
+| Key Vault erőforráscsoport neve | Az Key Vault tartalmazó erőforráscsoport neve |
+| Kulcstartó neve | Annak a Key Vaultnak a neve, amely a titkos SSH-kulccsal rendelkező titkot tartalmazza.  Csak alfanumerikus karakterek és kötőjelek megengedettek, és 3 – 24 karakter közé kell esnie. |
+| Titok neve | Az SSH titkos kulcsot tartalmazó titok neve.  Csak alfanumerikus karakterek és kötőjelek engedélyezettek |
 
-   ![Az ajánlat infrastruktúra panel](media/openshift-marketplace-self-managed/ocp-inframain.png)  
+   ![Infrastruktúra-ajánlati panel](media/openshift-marketplace-self-managed/ocp-inframain.png)  
 <br>
 
 **Méret módosítása**
 
-Egy másik virtuális gép méretének kiválasztásához kattintson ***méretének módosítása***.  A virtuális gép kiválasztása ablak nyílik meg.  Válassza ki, majd kattintson a Virtuálisgép-méretet **kiválasztása**.
+Egy másik virtuálisgép-méret kiválasztásához kattintson a ***méret módosítása***gombra.  Ekkor megnyílik a virtuális gép kiválasztási ablaka.  Válassza ki a kívánt virtuálisgép-méretet, és kattintson a **kiválasztás**elemre.
 
-   ![Válassza ki a virtuális gép mérete](media/openshift-marketplace-self-managed/ocp-selectvmsize.png)  
+   ![Virtuális gép méretének kiválasztása](media/openshift-marketplace-self-managed/ocp-selectvmsize.png)  
 <br>
 
-**Existing Virtual Network**
+**Meglévő Virtual Network**
 
 | Bemeneti paraméter | Paraméter leírása |
 |-----------------------|-----------------|
-| Meglévő virtuális hálózat neve | A meglévő virtuális hálózat neve |
-| Fő csomópontok alhálózat neve | Fő csomópontok meglévő alhálózat neve.  Kell tartalmaznia legalább 16 IP-címet, és hajtsa végre az RFC 1918 |
-| Alhálózat neve az infrastruktúra csomópontok | Neve a meglévő alhálózatot infra csomópontok.  Legalább 32 IP-címeket tartalmaz, és hajtsa végre az RFC 1918 van szükség |
-| Alhálózat neve cns és a számítási csomópontok | Meglévő alhálózat neve cns és a számítási csomópontok.  Legalább 32 IP-címeket tartalmaz, és hajtsa végre az RFC 1918 van szükség |
-| A meglévő virtuális hálózatot az erőforráscsoport | A meglévő Vnetet tartalmazó erőforráscsoport neve |
+| Meglévő Virtual Network neve | A meglévő vNet neve |
+| Fő csomópontok alhálózatának neve | A fő csomópontok meglévő alhálózatának neve.  Legalább 16 IP-címet kell tartalmaznia, és követnie kell az RFC 1918-et |
+| Az infra-csomópontok alhálózatának neve | Az infra-csomópontok meglévő alhálózatának neve.  Legalább 32 IP-címet kell tartalmaznia, és követnie kell az RFC 1918-et |
+| A számítási és CNS-csomópontok alhálózatának neve | A meglévő alhálózat neve a számítási és a CNS-csomópontokhoz.  Legalább 32 IP-címet kell tartalmaznia, és követnie kell az RFC 1918-et |
+| Erőforráscsoport a meglévő Virtual Network | A meglévő vNet tartalmazó erőforráscsoport neve |
 
-   ![Ajánlat infrastruktúra meglévő virtuális hálózat](media/openshift-marketplace-self-managed/ocp-existingvnet.png)  
+   ![Infrastruktúra meglévő vnet](media/openshift-marketplace-self-managed/ocp-existingvnet.png)  
 <br>
 
 **Egyéni IP-címtartomány**
 
 | Bemeneti paraméter | Paraméter leírása |
 |-----------------------|-----------------|
-| A virtuális hálózat címtartománya | A virtuális hálózat címtere CIDR egyéni |
-| A fő csomópontot tartalmazó alhálózat címtartománya | Egyéni CIDR fő alhálózat |
-| Az infrastruktúra-csomópontokat tartalmazó alhálózat címtartománya | Infrastruktúra-alhálózat CIDR egyéni |
-| A számítási és cns csomópontokat tartalmazó alhálózat címtartománya | A számítási és cns csomópontok egyéni CIDR |
+| Címtartomány a Virtual Network | A vNet egyéni CIDR |
+| A fő csomópontokat tartalmazó alhálózat címtartomány | Egyéni CIDR a fő alhálózathoz |
+| Az infrastruktúra-csomópontokat tartalmazó alhálózat címtartomány | Egyéni CIDR az infrastruktúra-alhálózathoz |
+| A számítási és CNS-csomópontokat tartalmazó alhálózat címtartomány | A számítási és a CNS-csomópontok egyéni CIDR |
 
-   ![Ajánlat infrastruktúra egyéni IP-címtartomány](media/openshift-marketplace-self-managed/ocp-customiprange.png)  
+   ![Ajánlat-infrastruktúra egyéni IP-tartománya](media/openshift-marketplace-self-managed/ocp-customiprange.png)  
 <br>
 
-**OpenShift Container Platform**
+**OpenShift-tároló platform**
 
-Adja meg az értékeket a bemeneti paramétereket, és kattintson a **OK**
+Adja meg a bemeneti paraméterek értékeit, majd kattintson **az OK** gombra.
 
 | Bemeneti paraméter | Paraméter leírása |
 |-----------------------|-----------------|
-| OpenShift Admin User Password | A kezdeti OpenShift-felhasználó jelszavát.  Ez a felhasználó is lesz a fürt rendszergazdája |
-| OpenShift rendszergazdai jelszó megerősítése | Az OpenShift rendszergazdai jelszó megerősítése |
-| Red Hat-előfizetés-kezelő felhasználó neve | Felhasználónév hozzáférhetnek a Red Hat-előfizetésüket vagy a szervezet azonosítója.  Ez a hitelesítő adat az RHEL-példányt az előfizetés regisztrálásához használatos, és nem tárolja a rendszer a Microsoft vagy a Red Hat által |
-| Red Hat-előfizetés-kezelő felhasználói jelszó | A jelszó hozzáférhetnek a Red Hat-előfizetésüket vagy az aktiválási kulcs.  Ez a hitelesítő adat az RHEL-példányt az előfizetés regisztrálásához használatos, és nem tárolja a rendszer a Microsoft vagy a Red Hat által |
-| Red Hat-előfizetés-kezelő OpenShift készlet azonosítója | Készlet azonosítója, amely tartalmazza az OpenShift Tárolóplatform jogosultság. Ellenőrizze, hogy az OpenShift Tárolóplatform, a telepítéshez, a fürt elegendő jogosultság |
-| Red Hat-előfizetés-kezelő OpenShift készlet azonosítója Broker / fő csomópontok | Tárolókészlet azonosítója, amely tartalmazza az OpenShift Tárolóplatform jogosultságok Broker / fő csomópontok. Győződjön meg arról, hogy a az OpenShift Tárolóplatform, a telepítéshez, a fürt elegendő jogosultság. Ha nem használ broker / fő készlet azonosítója, adja meg a készlet Azonosítóját az alkalmazás csomópont |
-| Az Azure felhőalapú szolgáltatók konfigurálása | Az OpenShift Azure Felhőszolgáltató használatára konfigurálja. Ha állandó kötetek használata az Azure-lemez csatolása szükséges.  Alapértelmezett érték az Igen |
-| Az Azure AD egyszerű szolgáltatás ügyfél-azonosító GUID | Az Azure AD egyszerű szolgáltatás ügyfél azonosító GUID – más néven az AppID. Csak akkor szükséges, ha konfigurálása Azure Felhőszolgáltató **Igen** |
-| Az Azure AD egyszerű szolgáltatás ügyfél-azonosító titkos | Az Azure AD-szolgáltatásnév Azonosítóját titkos Ügyfélkódja. Csak akkor szükséges, ha konfigurálása Azure Felhőszolgáltató **Igen** |
+| OpenShift rendszergazdai felhasználói jelszava | A kezdeti OpenShift-felhasználó jelszava.  Ez a felhasználó a fürt rendszergazdája is lesz. |
+| OpenShift rendszergazdai felhasználói jelszavának megerősítése | Írja be újra a OpenShift-rendszergazda felhasználói jelszavát |
+| Red Hat előfizetés-kezelő felhasználóneve | A Red Hat-előfizetés vagy a szervezet AZONOSÍTÓjának eléréséhez használt Felhasználónév.  Ezzel a hitelesítő adatokkal regisztrálja az RHEL-példányt az előfizetésében, és nem a Microsoft vagy a Red Hat tárolja. |
+| Red Hat előfizetés-kezelő felhasználói jelszava | A Red Hat-előfizetéshez vagy az aktiválási kulcshoz való hozzáféréshez használt jelszó.  Ezzel a hitelesítő adatokkal regisztrálja az RHEL-példányt az előfizetésében, és nem a Microsoft vagy a Red Hat tárolja. |
+| Red Hat előfizetés-kezelő OpenShift-készlet azonosítója | Az OpenShift-tároló platformjának jogosultságát tartalmazó készlet azonosítója. Győződjön meg arról, hogy elegendő jogosultsága van a OpenShift tároló platform számára a fürt telepítéséhez |
+| Red Hat előfizetés-kezelő OpenShift-készlet azonosítója a Broker/főcsomópontok számára | A OpenShift tároló platformra vonatkozó jogosultságokat tartalmazó készlet azonosítója a Broker/főcsomópontok számára. Győződjön meg arról, hogy elegendő jogosultsága van a OpenShift tároló platform számára a fürt telepítéséhez. Ha nem a Broker/Master Pool ID-t használja, adja meg az alkalmazás-csomópontok készletének AZONOSÍTÓját. |
+| Az Azure Cloud Provider konfigurálása | Konfigurálja a OpenShift az Azure Cloud Provider használatára. Akkor szükséges, ha az Azure Disk Attach-t használ állandó kötetekhez.  Az alapértelmezett érték az igen |
+| Azure AD egyszerű szolgáltatásnév – ügyfél-azonosító GUID | Azure AD egyszerű ügyfél-azonosító GUID – más néven AppID. Csak akkor szükséges, ha az Azure Cloud Provider konfigurálása **Igen** értékre van állítva |
+| Azure AD szolgáltatás egyszerű ügyfél-AZONOSÍTÓjának titka | Az Azure AD szolgáltatás egyszerű ügyfél-AZONOSÍTÓjának titka. Csak akkor szükséges, ha az Azure Cloud Provider konfigurálása **Igen** értékre van állítva |
  
-   ![Az ajánlat az OpenShift panel](media/openshift-marketplace-self-managed/ocp-ocpmain.png)  
+   ![Ajánlat OpenShift panel](media/openshift-marketplace-self-managed/ocp-ocpmain.png)  
 <br>
 
 **További beállítások**
 
-A további beállítások panel lehetővé teszi, hogy a CNS konfigurációjának glusterfs tároláshoz, naplózás, metrikákat és útválasztó Sub tartományhoz.  Az alapértelmezett nem ezek a beállítások bármelyikét telepítik, és fogja használni, az útválasztó altartomány nip.io tesztelési célokra. CNS engedélyezése három további csatlakoztatott adatlemezekkel, glusterfs podok üzemeltető rendelkező telepíti a három további számítási csomópontok.  
+A további beállítások panelen engedélyezheti a glusterfs-tárolás, a naplózás, a metrikák és az útválasztó altartomány konfigurálását.  Az alapértelmezett érték nem telepíti ezeket a beállításokat, és a nip.io-t az útválasztó altartományként fogja használni tesztelési célokra. A CNS engedélyezése három további számítási csomópontot telepít három további csatlakoztatott lemezzel, amely glusterfs-hüvelyeket fog üzemeltetni.  
 
-Adja meg az értékeket a bemeneti paramétereket, és kattintson a **OK**
+Adja meg a bemeneti paraméterek értékeit, majd kattintson **az OK** gombra.
 
 | Bemeneti paraméter | Paraméter leírása |
 |-----------------------|-----------------|
-| Konfigurálja a tároló natív tároló (CNS) | Az OpenShift CNS telepíti a fürt, majd engedélyezze tárolóként. Ha az Azure-szolgáltató le van tiltva lesz alapértelmezés szerint |
-| Fürt-naplózás beállítása | A fürt EFK naplózási funkció telepíti.  Infrastruktúra megfelelő gazdagép EFK podok csomópontok mérete |
-| A fürt metrikák konfigurálása | Az OpenShift fürtbe telepíti a Hawkular metrikákat.  Infrastruktúra megfelelő gazdagép Hawkular metrikák podok csomópontok mérete |
-| Alapértelmezett útválasztó-altartomány | Válassza ki a tesztelési vagy éles környezetben a saját altartomány meg egyéni nipio |
+| Tároló natív tárolójának konfigurálása (CNS) | Telepíti a CNS-t a OpenShift-fürtben, és engedélyezi azt tárolóként. Ha az Azure-szolgáltató le van tiltva, az alapértelmezett érték lesz. |
+| A fürt naplózásának konfigurálása | Telepíti a EFK naplózási funkcióit a fürtbe.  A EFK-hüvelyek üzemeltetéséhez megfelelő méretű infra-csomópontok |
+| Metrikák konfigurálása a fürthöz | Telepíti a Hawkular-metrikákat a OpenShift-fürtbe.  Az Hawkular-metrikai hüvelyek tárolásához megfelelő méretű infra-csomópontok |
+| Alapértelmezett útválasztó altartománya | Válassza a nipio lehetőséget a teszteléshez vagy az egyéni beállításhoz a saját altartományának megadásához éles környezetben |
  
-   ![Az ajánlat kiegészítő panel](media/openshift-marketplace-self-managed/ocp-additionalmain.png)  
+   ![További panel ajánlat](media/openshift-marketplace-self-managed/ocp-additionalmain.png)  
 <br>
 
 **További beállítások – további paraméterek**
 
 | Bemeneti paraméter | Paraméter leírása |
 |-----------------------|-----------------|
-| (CNS) A csomópont mérete | Fogadja el az alapértelmezett csomópontméret vagy válasszon **méretének módosítása** új virtuális gép méretének kiválasztásához |
-| Adja meg az egyéni altartomány | Az útválasztó az OpenShift fürtön keresztül alkalmazások által használandó egyéni útválasztási tartomány.  Ügyeljen arra, hogy a megfelelő helyettesítő karaktert tartalmazó DNS-bejegyzés létrehozása] |
+| CNS Csomópont mérete | Az új virtuálisgép-méret kiválasztásához fogadja el az alapértelmezett csomópont-méretet, vagy válassza a **méret módosítása** lehetőséget. |
+| Adja meg az egyéni altartományt | Az alkalmazásoknak az OpenShift-fürtön keresztül az útválasztón keresztül történő kiküldéséhez használandó egyéni útválasztási tartomány.  Győződjön meg arról, hogy a megfelelő helyettesítő DNS-bejegyzést hozza létre] |
  
-   ![További cns ajánlat telepítése](media/openshift-marketplace-self-managed/ocp-additionalcnsall.png)  
+   ![További telepítési CNS-telepítés](media/openshift-marketplace-self-managed/ocp-additionalcnsall.png)  
 <br>
 
 **összegzés**
 
-Érvényesítési ezen a ponton annak ellenőrzésére, Processzormagok kvótája elegendő ahhoz, hogy a teljes száma a fürthöz kiválasztott virtuális gép üzembe helyezése történik.  Tekintse át a megadott paramétereket.  Ha a bemeneti adatok elfogadható, kattintson a **OK** folytatásához.
+Ezen a ponton az ellenőrzés az alapvető kvóta ellenőrzéséhez elegendő a fürthöz kiválasztott virtuális gépek teljes számának üzembe helyezéséhez.  Tekintse át az összes megadott paramétert.  Ha a bemenetek elfogadhatók, kattintson **az OK** gombra a folytatáshoz.
 
-   ![Az ajánlat összefoglalás panelje](media/openshift-marketplace-self-managed/ocp-summary.png)  
+   ![Ajánlat összegzése panel](media/openshift-marketplace-self-managed/ocp-summary.png)  
 <br>
 
-**Vásárlás**
+**Buy**
 
-Erősítse meg a kapcsolattartási adatokat a vásárlás oldalon, és kattintson a **beszerzési** fogadja el a használati feltételeket, és az OpenShift Tárolóplatform-fürt üzembe helyezésének megkezdéséhez.
+Erősítse meg a kapcsolattartási adatokat a vásárlás lapon, és kattintson a **vásárlás** gombra a használati feltételek elfogadásához és a OpenShift-tároló platform fürt üzembe helyezésének megkezdéséhez.
 
-   ![Az ajánlat beszerzési panel](media/openshift-marketplace-self-managed/ocp-purchase.png)  
+   ![Ajánlat vásárlása panel](media/openshift-marketplace-self-managed/ocp-purchase.png)  
 <br>
 
 
-## <a name="connect-to-the-openshift-cluster"></a>Csatlakozzon az OpenShift-fürthöz
+## <a name="connect-to-the-openshift-cluster"></a>Kapcsolódás a OpenShift-fürthöz
 
-Az üzembe helyezést követően a kimeneti szakaszban az üzemelő példány lekérdezni a kapcsolatot. Csatlakozás a böngészőjében az OpenShift konzol használatával a **OpenShift-konzol URL-címe**. Akkor is SSH, a bástyagazdagép. Következő egy példa, ahol a rendszergazda felhasználóneve clusteradmin, a megerősített nyilvános IP-cím DNS teljes Tartományneve pedig bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com:
+Az üzembe helyezés befejezésekor a rendszer lekéri a kapcsolódást a központi telepítés kimenet szakaszából. Kapcsolódjon a OpenShift-konzolhoz a böngészőben a **OpenShift-konzol URL-címének**használatával. azt is megteheti, hogy SSH-t használ a megerősített gazdagépen. Az alábbi példa egy olyan példát mutat be, ahol a rendszergazdai Felhasználónév clusteradmin, a megerősített nyilvános IP-cím DNS teljes tartományneve pedig bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com:
 
 ```bash
 $ ssh clusteradmin@bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com
@@ -198,7 +197,7 @@ $ ssh clusteradmin@bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Használja a [az csoport törlése](/cli/azure/group) paranccsal eltávolítható az erőforráscsoport, az OpenShift fürt, és az összes kapcsolódó erőforrást, amikor azok már nincs szükség van.
+Az az [Group delete](/cli/azure/group) paranccsal távolítsa el az erőforráscsoportot, a OpenShift-fürtöt és az összes kapcsolódó erőforrást, ha már nincs rájuk szükség.
 
 ```azurecli 
 az group delete --name openshiftrg
@@ -207,6 +206,6 @@ az group delete --name openshiftrg
 ## <a name="next-steps"></a>További lépések
 
 - [Üzembe helyezés utáni feladatok](./openshift-post-deployment.md)
-- [Az Azure-ban az OpenShift telepítés hibaelhárítása](./openshift-troubleshooting.md)
-- [Ismerkedés az OpenShift Tárolóplatform](https://docs.openshift.com/container-platform)
+- [A OpenShift üzembe helyezésének hibája az Azure-ban](./openshift-troubleshooting.md)
+- [OpenShift-tároló platform – első lépések](https://docs.openshift.com/container-platform)
 

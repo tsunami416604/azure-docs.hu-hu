@@ -1,59 +1,70 @@
 ---
-title: Az operációs rendszer javításai a Linux-alapú HDInsight-fürtök – Azure ütemezésének konfigurálása
-description: Ismerje meg az operációs rendszer javításai a Linux-alapú HDInsight-fürtök ütemezés konfigurálása.
-services: hdinsight
-author: omidm1
-ms.author: omidm
+title: A Linux-alapú HDInsight-fürtök operációsrendszer-javítási ütemtervének konfigurálása – Azure
+description: Útmutató a Linux-alapú HDInsight-fürtök operációsrendszer-javítási ütemtervének konfigurálásához.
+author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/24/2019
-ms.openlocfilehash: ef57608d092c05b30be63a54bb41ba87558eabc3
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.date: 07/01/2019
+ms.openlocfilehash: 06111ec35a127cf17fdcc77ff717de7a4bc7299f
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694618"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076861"
 ---
-# <a name="os-patching-for-hdinsight"></a>Operációs rendszer javításai a HDInsight 
+# <a name="configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>A Linux-alapú HDInsight-fürtök operációsrendszer-javítási ütemtervének konfigurálása 
 
 > [!IMPORTANT]
-> Ubuntu-rendszerképek válnak elérhetővé az új HDInsight-fürt létrehozása közzétehető 3 hónapon belül. Január a 2019-tól futó fürtök vannak **nem** automatikus tudjon fókuszálni. Ügyfeleink a futó fürt javítására irányuló szkriptműveletek vagy más mechanizmusok kell használnia. Újonnan létrehozott fürtök mindig a legújabb elérhető frissítések, többek között a legújabb biztonsági javítások tartozik.
+> Az Ubuntu-lemezképek az új Azure HDInsight-fürt létrehozása során elérhetővé válnak a közzétételtől számított három hónapon belül. Január 2019-én a futó fürtök nem automatikusan lettek kijavítani. Az ügyfeleknek parancsfájl-műveleteket vagy más mechanizmusokat kell használniuk a futó fürtök javításához. Az újonnan létrehozott fürtök mindig rendelkeznek a legújabb elérhető frissítésekkel, beleértve a legfrissebb biztonsági javításokat is.
 
-## <a name="how-to-configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>Az operációs rendszer javítási ütemezése a Linux-alapú HDInsight-fürtök konfigurálása
-Egy HDInsight-fürtön lévő virtuális gépek kell alkalmanként indítani, hogy fontos biztonsági javításokat is telepíthető. 
+Időnként a fontos biztonsági javítások telepítéséhez újra kell indítania a virtuális gépeket (VM) egy HDInsight-fürtben.
 
-A jelen cikkben ismertetett szkriptműveletek használatával, módosíthatja az operációs rendszer következő javítási ütemezése:
-1. Engedélyezi vagy letiltja az automatikus újraindítások
-2. Set gyakorisága (napokban újraindításnál) újraindul
-3. Ha újraindítás történik a hét napját beállítása
+A cikkben ismertetett parancsfájl-műveletek használatával a következőképpen módosíthatja az operációsrendszer-javítási ütemtervet:
+
+1. Telepítse az összes frissítést, vagy telepítsen csak a kernel + biztonsági frissítéseket vagy a kernel-frissítéseket.
+2. Végezzen azonnali újraindítást, vagy ütemezzen egy újraindítást a virtuális gépen.
 
 > [!NOTE]  
-> Ez a parancsprogram-művelet csak a 2016. augusztus 1. után létrehozott Linux-alapú HDInsight-fürtökkel működik. Javítások től lép érvénybe, csak akkor, ha a virtuális gépek indulnak újra. 
+> Az ebben a cikkben ismertetett parancsfájl-műveletek csak a 2016 augusztus 1. után létrehozott Linux-alapú HDInsight-fürtökkel fognak működni. A javítások csak a virtuális gépek újraindítása után lépnek érvénybe.
+> A parancsfájl-műveletek nem fogják automatikusan alkalmazni a frissítéseket az összes jövőbeli frissítési ciklusra. Futtassa a parancsfájlokat minden alkalommal, amikor új frissítéseket kell alkalmazni a frissítések telepítéséhez, majd indítsa újra a virtuális gépet.
 
-## <a name="how-to-use-the-script"></a>A parancsfájl használata 
+## <a name="add-information-to-the-script"></a>Információk hozzáadása a parancsfájlhoz
 
-Ha ez a szkript használatához a következő információkat:
-1. A parancsprogram helye: https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv01/os-patching-reboot-config.sh.  HDInsight ezt az URI használatával keresse meg és futtassa a parancsfájlt a fürt összes virtuális gépet.
+A szkriptek használatához a következő információk szükségesek:
+
+- A Install-Updates-Schedule-reboots parancsfájl helye https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/install-updates-schedule-reboots.sh:.
+    
+   A HDInsight ezzel az URI-val keresi és futtatja a parancsfájlt a fürtön lévő összes virtuális gépen. Ez a parancsfájl a frissítések telepítésére és a virtuális gép újraindítására vonatkozó beállításokat tartalmaz.
   
-2. A alkalmazni a parancsfájl fürtcsomópont-típusokat: átjárócsomópontjával, workernode, zookeeper. Ez a szkript a fürt minden csomópont típusokat kell alkalmazni. Ez a csomópont típusa nem alkalmazható, ha a virtuális gépek adott csomóponttípus továbbra korábbi javítási ütemezésének használja.
+- Az ütemterv-újraindítási parancsfájl helye: https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/schedule-reboots.sh.
+    
+   A HDInsight ezzel az URI-val keresi és futtatja a parancsfájlt a fürtön lévő összes virtuális gépen. Ez a szkript újraindítja a virtuális gépet.
+  
+- A fürtcsomópont azon típusai, amelyeken a parancsfájlt alkalmazza a átjárócsomóponthoz, a workernode és a Zookeeper. Alkalmazza a parancsfájlt a fürt összes csomópont-típusára. Ha a parancsfájl nincs alkalmazva a csomópont típusára, az adott csomóponthoz tartozó virtuális gépek nem lesznek frissítve vagy újraindulva.
 
-
-3.  A paraméter: Ez a szkript numerikus három paramétert fogad el:
+- Az Install-Updates-Schedule-reboots parancsfájl két numerikus paramétert fogad el:
 
     | Paraméter | Meghatározás |
     | --- | --- |
-    | Engedélyezi/letiltja az automatikus újraindítások |0 vagy 1. A 0 érték letiltja az automatikus újraindítások 1: engedélyezi az automatikus újraindítások során. |
-    | Gyakoriság |7 – 90 (a szélsőértékek megengedettek). Hány nap után újraindul a javításokat az újraindítást igénylő virtuális gépek száma. |
-    | Hét napja |1 és 7 (a szélsőértékek megengedettek). Az 1 érték azt jelzi, az újraindítás megtörténik, hétfőn, és 7 azt jelzi, hogy egy Sunday.For paraméterek használatával a példában 1 60 2 eredmények automatikus újraindul 60 naponta (legfeljebb) keddjén. |
-    | Adatmegőrzés |Egy meglévő fürthöz szkriptműveletet alkalmazásakor, megőrzött meg lehet jelölni a parancsfájl. A megőrzött szkriptek akkor lépnek fel, amikor új workernodes hozzáadódnak a fürtnek a méretezési műveletek. |
+    | Csak a kernel frissítéseinek telepítése/az összes frissítés telepítése/kernel + biztonsági frissítések telepítése|0, 1 vagy 2. A 0 érték csak a kernel frissítéseit telepíti. Az 1 érték minden frissítést telepít, és a 2 csak a kernel + biztonsági frissítéseket telepíti. Ha nincs megadva paraméter, az alapértelmezett érték a 0. |
+    | Nincs újraindítás/az ütemezett újraindítás engedélyezése/azonnali újraindítás engedélyezése |0, 1 vagy 2. A 0 érték letiltja az újraindítást. Az 1 érték lehetővé teszi az ütemezett újraindítást, a 2 pedig lehetővé teszi az azonnali újraindítást. Ha nincs megadva paraméter, az alapértelmezett érték a 0. A felhasználónak módosítania kell az 1. bemeneti paramétert a 2. paraméterre. |
+   
+ - Az ütemezett újraindítások parancsfájl egy numerikus paramétert fogad el:
 
-> [!NOTE]  
-> Ez a szkript, egy meglévő fürthöz alkalmazásakor megőrzött kell megjelölni. Ellenkező esetben a méretezési műveletek során létrehozott minden új csomópontok fogja használni az alapértelmezett javítási ütemezése.  Ha a parancsfájl a Fürtlétrehozási folyamat részeként, állandó automatikusan.
+    | Paraméter | Meghatározás |
+    | --- | --- |
+    | Az ütemezett újraindítás engedélyezése/azonnali újraindítás engedélyezése |1 vagy 2. Az 1 érték lehetővé teszi az ütemezés újraindítását (12-24 órán belül ütemezve). A 2 érték azonnali újraindítást tesz lehetővé (5 perc). Ha nincs megadva paraméter, az alapértelmezett érték 1. |  
+
+> [!NOTE]
+> Azt követően, hogy egy meglévő fürtre alkalmazza, meg kell jelölnie egy parancsfájlt. Ellenkező esetben a skálázási műveletekkel létrehozott új csomópontok az alapértelmezett javítási ütemtervet fogják használni. Ha a parancsfájlt a fürt létrehozási folyamatának részeként alkalmazza, a rendszer automatikusan megőrzi azt.
+
 
 ## <a name="next-steps"></a>További lépések
 
-A script actionnel részletes lépéseit lásd a következő szakaszai a [testreszabása Linux-alapú HDInsight-fürtök szkriptműveletekkel](hdinsight-hadoop-customize-cluster-linux.md):
+A parancsfájl-műveletek használatával kapcsolatos konkrét lépésekért tekintse meg a [Linux-alapú HDInsight-fürtök testre szabása parancsfájl-művelettel](hdinsight-hadoop-customize-cluster-linux.md)című szakaszt a következő részekben:
 
-* [Fürt létrehozása során egy parancsfájlművelettel](hdinsight-hadoop-customize-cluster-linux.md#use-a-script-action-during-cluster-creation)
-* [Egy futó fürt szkriptműveletet vonatkozik](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster)
+* [Parancsfájl-művelet használata a fürt létrehozása során](hdinsight-hadoop-customize-cluster-linux.md#use-a-script-action-during-cluster-creation)
+* [Parancsfájl-művelet alkalmazása futó fürtre](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster)

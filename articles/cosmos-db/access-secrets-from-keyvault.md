@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 08/21/2018
+ms.date: 05/23/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 36b0a2f18cf2917251a87405456980811af1bc3d
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 157ccd284c25cb5c7275aa942823ade2a40795cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242192"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66239855"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>Biztonságos Azure Key Vault használatával az Azure Cosmos-kulcsok 
 
@@ -67,7 +67,7 @@ A következő lépések szükségesek, tárolására, és olvassa el az Azure Co
 
 5. Miután a rendszer telepíti az alkalmazást. Az Azure Portalon lépjen a üzembe helyezett Azure web App, és kapcsolja be a **felügyeltszolgáltatás-identitás** az alkalmazás.  
 
-   ![Managed Service Identity](./media/access-secrets-from-keyvault/turn-on-managed-service-identity.png)
+   ![Felügyeltszolgáltatás-identitás](./media/access-secrets-from-keyvault/turn-on-managed-service-identity.png)
 
 Most az alkalmazást szeretné futtatni, látni fogja a következő hibát, ahogy bármilyen engedéllyel ehhez az alkalmazáshoz a Key Vault nem ad.
 

@@ -1,6 +1,6 @@
 ---
-title: Az Azure Maps store lokátorok létrehozásához |} A Microsoft Docs
-description: Egy tároló-lokátor létrehozása az Azure Maps használatával.
+title: Tároló-lokátor létrehozása a Azure Maps használatával | Microsoft Docs
+description: Hozzon létre egy áruházbeli lokátort Azure Maps használatával.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/15/2018
@@ -9,119 +9,119 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: f53e21b8121006a6a6a1d2099b26e7cb28ca0ed9
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: bf30e805a06222bf8c74429df54565073d7d919b
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545297"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933072"
 ---
-# <a name="create-a-store-locator-by-using-azure-maps"></a>Egy tároló-lokátor létrehozása az Azure Maps használatával
+# <a name="create-a-store-locator-by-using-azure-maps"></a>Tároló-lokátor létrehozása Azure Maps használatával
 
-Ez az oktatóanyag végigvezeti egy egyszerű store kereső az Azure Maps használatával történő létrehozásának folyamatán. Store lokátorok gyakoriak. Az ilyen típusú alkalmazás által használt fogalmak számos sok más típusú alkalmazások alkalmazható. A legtöbb vállalatok körében, amelyek közvetlenül a fogyasztók értékesíthetik kell egy tároló-lokátor kínál az ügyfeleknek. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag végigvezeti egy egyszerű tároló-lokátor létrehozásának folyamatán Azure Maps használatával. Az áruházbeli lokátorok gyakoriak. Az ilyen típusú alkalmazásokban használt fogalmak számos más típusú alkalmazásra alkalmazhatók. Az ügyfeleknek nyújtott áruházi lokátort a legtöbb, közvetlenül a fogyasztóknak értékesítő vállalat számára ajánlott biztosítani. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
     
 > [!div class="checklist"]
-> * Egy új weblap létrehozása az Azure térkép vezérlőelem API használatával.
-> * Egyéni adatok betöltése egy fájlból, és megjeleníti azt a térképen.
-> * Az Azure Maps Search szolgáltatás használata egy címet, vagy adjon meg egy lekérdezést.
-> * A felhasználói helyadatok lekérése a böngészőből, és jelenítse meg azt a térképen.
-> * Egyesíthet több réteget hozhat létre egyéni szimbólumok a térképen.  
-> * A fürt adatpontokat.  
-> * A térkép nagyítási vezérlőket.
+> * Hozzon létre egy új weblapot az Azure térképkezelés API használatával.
+> * Egyéni adatok betöltése egy fájlból, és megjelenítése egy térképen.
+> * A Azure Maps keresési szolgáltatással megkeresheti a címeket, vagy megadhat egy lekérdezést.
+> * Szerezze be a felhasználó helyét a böngészőben, és jelenítse meg a térképen.
+> * Több réteg egyesítésével egyéni szimbólumokat hozhat létre a térképen.  
+> * Fürt adatpontjai.  
+> * Nagyítási vezérlők hozzáadása a térképhez
 
 <a id="Intro"></a>
 
-Ugorhat a [élő store kereső példa](https://azuremapscodesamples.azurewebsites.net/?sample=Simple%20Store%20Locator) vagy [forráskódját](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator). 
+Ugorjon az [élő áruház kereső példájának](https://azuremapscodesamples.azurewebsites.net/?sample=Simple%20Store%20Locator) vagy [forráskódjának](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator)a fölé. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ebben az oktatóanyagban a lépések elvégzéséhez szüksége lesz a [létrehozása az Azure Maps-fiók](./tutorial-search-location.md#createaccount) és [lekérése a fiókja előfizetési kulcsát](./tutorial-search-location.md#getkey).
+Az oktatóanyag lépéseinek elvégzéséhez először [létre kell hoznia Azure Maps-fiókját](./tutorial-search-location.md#createaccount) , és a fiók elsődleges előfizetési kulcsának beszerzéséhez kövesse az [elsődleges kulcs lekérése](./tutorial-search-location.md#getkey) című rész lépéseit.
 
 ## <a name="design"></a>Tervezés
 
-Mielőtt megkezdi a munkát a kódba, célszerű olyan kialakítás megkezdéséhez. A tároló kereső lehet egyszerű vagy összetett, célszerű lehet. Ebben az oktatóanyagban létrehozunk egy egyszerű store lokátort. Néhány tipp a vizualizáción érdekében bizonyos funkciók kiterjesztheti, ha úgy dönt, hogy tartalmazza. Egy tároló kereső Contoso kávé nevű kitalált vállalat hozunk létre. A következő ábrán látható egy Drótvázdiagram készítünk ebben az oktatóanyagban a tároló-lokátor általános elrendezésének:
+A kód beugrása előtt érdemes megkezdeni a kialakítást. Az áruház lokátora lehet olyan egyszerű vagy összetett, amennyire csak szeretné. Ebben az oktatóanyagban egy egyszerű tároló-lokátort hozunk létre. Néhány tippet is tartalmaz, amely segítséget nyújt bizonyos funkciók kibővítéséhez, ha úgy dönt, hogy a lehetőséget választja. A contoso Coffee nevű kitalált vállalathoz hozzunk létre egy áruházbeli lokátort. Az alábbi ábrán az oktatóanyagban felépített áruházi lokátor általános elrendezését láthatja:
 
 <br/>
 <center>
 
-![A Contoso kávé kávézóban helyek egy tároló kereső Drótvázdiagram](./media/tutorial-create-store-locator/SimpleStoreLocatorWireframe.png)</center>
+![A contoso Coffee Coffee Shop helyeihez tartozó tároló-lokátor drótváza](./media/tutorial-create-store-locator/SimpleStoreLocatorWireframe.png)</center>
 
-Ezt a keresőt store hasznosságát maximalizálása reszponzív elrendezést alakítottunk ki, amely beállítja, ha a felhasználó képernyő szélessége kisebb, mint 700 képpont széles tartalmazza. Reszponzív elrendezést alakítottunk ki megkönnyíti az áruház-kereső kis képernyőn, például használja a mobileszközökön. Itt látható egy kis-elrendezés az egy Drótvázdiagram:  
+Az áruház kereső hasznosságának maximalizálása érdekében olyan rugalmas elrendezést is tartalmazunk, amely akkor módosítható, ha a felhasználó képernyő szélessége kisebb, mint 700 képpont. A rugalmas elrendezés megkönnyíti az áruházbeli lokátor használatát egy kis képernyőn, például egy mobileszközön. Íme egy kis képernyős elrendezés drótváza:  
 
 <br/>
 <center>
 
-![A Contoso kávé Drótvázdiagram kereső mobil eszközön tárolja.](./media/tutorial-create-store-locator/SimpleStoreLocatorMobileWireframe.png)</center>
+![A contoso Coffee Store-lokátor drótváza egy mobileszközön](./media/tutorial-create-store-locator/SimpleStoreLocatorMobileWireframe.png)</center>
 
-A wireframes viszonylag egyszerű alkalmazás megjelenítése. Az alkalmazás egy keresőmezőt, a közeli tárolók listáját, a látható, hogy van néhány jelölők (szimbólum) és a egy előugró ablak, amely további információkat jelenít meg, amikor a felhasználó kiválaszt egy jelölő rendelkezik. Részletesebben Íme az ebben az oktatóanyagban be ezt a keresőt tároló beépített funkciók:
+A drótváz egy meglehetősen egyszerű alkalmazást mutat be. Az alkalmazás tartalmaz egy keresőmezőt, a közeli áruházak listáját, egy olyan térképet, amely tartalmaz néhány jelölőt (szimbólumot), valamint egy előugró ablakot, amely további információkat jelenít meg, amikor a felhasználó kiválaszt egy jelölőt. Részletesebben itt láthatók a következő oktatóanyagban az áruház-lokátorban felépített funkciók:
 
-* Az importált tabulátorral tagolt adatfájlból minden hely töltődnek be a térképen.
-* A felhasználó Pásztázás és nagyíthatja a térképet, hajtsa végre a keresést, és válassza ki a saját helyét GPS gombot.
-* Az oldal elrendezése az eszköz képernyőjén szélessége alapján állítja be.  
-* Egy fejléc a store emblémája jeleníti meg.  
-* A felhasználó használhatja egy keresőmező és a Keresés gombra, keressen egy helyen, például egy cím, irányítószám vagy város. 
-* A `keypress` esemény ablakhoz történő a keresőmezőbe egy keresési aktivál, ha a felhasználó lenyomja az ENTER billentyűt. Ez a funkció gyakran van kihagyott, de jobb felhasználói élményt hoz létre.
-* Ha a térkép helyezi, és az egyes helyekre középpontja a térkép közötti távolságot számítható ki. Az eredmények listájában a legközelebbi hely megjelenítése a térkép tetején frissül.  
-* Az eredmények listájából válasszon ki egy eredményt, ha a térkép a kiválasztott helyen keresztül közepén, és helyének adatait az előugró ablakban jelenik meg.  
-* Egy adott helyen a térképen kiválasztásával is aktivál az előugró ablak.
-* Amikor a felhasználó lekicsinyíti, a fürtök helyek vannak csoportosítva. Fürtök a körben több kör jelöli. Fürtök formájában, és külön, a felhasználó megváltoztatja a nagyítási szint.
-* Fürt kiválasztása a térkép két szinten nagyítása és középpontba keresztül a fürt helye állítása.
+* Az importált tabulátorral tagolt adatfájlból származó összes hely betöltődik a térképen.
+* A felhasználó megadhatja és nagyíthatja a térképet, keresést végezhet, és kiválaszthatja a saját hely GPS-gombját.
+* A lapelrendezés az eszköz képernyőjének szélessége alapján állítható be.  
+* A fejlécben az áruház emblémája látható.  
+* A felhasználó keresési és keresési gomb használatával kereshet meg egy helyet, például egy cím, egy irányítószám vagy egy város. 
+* Ha a felhasználó megnyomja az ENTER billentyűt, a keresőmezőbe felvett eseményelindítjaakeresést.`keypress` Ez a funkció gyakran megtekinthető, de jobb felhasználói élményt nyújt.
+* A Térkép mozgatásakor a rendszer kiszámítja az egyes helyek távolságát a Térkép közepétől. A rendszer frissíti az eredmények listáját a Térkép tetején található legközelebbi hely megjelenítéséhez.  
+* Ha kijelöl egy eredményt az eredmények listájában, a Térkép középpontba kerül a kijelölt helyen, és a helyhez tartozó információk egy előugró ablakban jelennek meg.  
+* Egy adott hely kiválasztása a térképen is elindítja az előugró ablakot.
+* Ha a felhasználó nagyítja, a helyszínek fürtökbe vannak csoportosítva. A fürtöket egy kör jelöli egy számmal a körben belül. A fürtök űrlapja és elkülönítése, amikor a felhasználó megváltoztatja a nagyítási szintet.
+* Ha kijelöl egy fürtöt, a két szint és a középpontban, a fürt helyén nagyítja a térképet.
 
 <a id="create a data-set"></a>
 
-## <a name="create-the-store-location-dataset"></a>A tároló helye adatkészlet létrehozása
+## <a name="create-the-store-location-dataset"></a>Az áruházbeli hely adatkészletének létrehozása
 
-Egy kereső áruházbeli alkalmazás kifejlesztett, mielőtt kell a tárolók a térképen megjelenítendő szeretnénk az adatkészlet létrehozása. Ebben az oktatóanyagban egy adatkészletet egy kitalált, Contoso kávé nevű kávézóban használunk. Ez egyszerű store keresőként az adatkészlet egy Excel-munkafüzet kezelik. Az adatkészlet 10,213 kilenc országok elosztva Contoso kávé kávézóban helyeket tartalmaz: az Egyesült Államokban, Kanadában, az Egyesült Királyság, Franciaország, Németország, Olaszország, Hollandia, Dánia, és Spanyolország. A következő képernyőkép: az adatok a következőhöz hasonló:
+Az áruházbeli lokátor alkalmazás fejlesztése előtt létre kell hoznia egy adatkészletet a térképen megjelenítendő áruházakból. Ebben az oktatóanyagban egy contoso Coffee nevű fiktív Coffee Shop adatkészletét használjuk. Az egyszerű tároló-lokátor adatkészlete egy Excel-munkafüzetben van kezelve. Az adatkészlet 10 213 contoso Coffee Coffee Shop-helyet tartalmaz kilenc ország/régió között: a Egyesült Államok, Kanadában, az Egyesült Királyságban, Franciaországban, Németországban, Olaszországban, Hollandiában, Dániában és Spanyolországban. Itt látható egy képernyőkép arról, hogy az adatnézet milyen módon néz ki:
 
 <br/>
 <center>
 
-![A kereső adatokat egy Excel-munkafüzet képernyőképe](./media/tutorial-create-store-locator/StoreLocatorDataSpreadsheet.png)</center>
+![Képernyőfelvétel az áruházbeli lokátorról egy Excel-munkafüzetben](./media/tutorial-create-store-locator/StoreLocatorDataSpreadsheet.png)</center>
 
-Is [az Excel-munkafüzet letöltése](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data). 
+[Letöltheti az Excel-munkafüzetet](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data). 
 
-Az adatok képernyőkép megnézzük, jobban láthatóvá tesszük a következő megfigyeléseken:
+Az alábbi észrevételeket követve megtekintheti az adatképernyőképet:
     
-* Helyadatok használatával tárolja a **addressLine elemhez**, **Város**, **település** (megye), **AdminDivision** (állam/megye) , **Postai irányítószám** (irányítószám), és **ország** oszlopokat.  
-* A **szélességi** és **hosszúsági** oszlopok a Contoso kávé kávézóban helyek koordinátákat tartalmaznak. Ha koordináták információ nem rendelkezik, használhatja a keresési szolgáltatások az Azure Maps-meghatározni a hely koordinátái.
-* Néhány további oszlopokat a kávézóban – üzemelő hálózathoz kapcsolódó metaadatokat tartalmaz: egy telefonszám, Wi-Fi elérési pontokról készített és tolószéket kisegítő lehetőségek, valamint a tároló megnyitása és bezárása 24 órás formátumban többször logikai típusú oszlopokat. A saját számára a helyadatok fontosabb metaadatokat tartalmazó oszlopokat hozhat létre.
+* A helyadatok tárolása a **AddressLine**, a **város**, az **önkormányzat** (megye), a **AdminDivision** (állam/tartomány), az **Irányítószám** (postai kód) és az **ország** oszlopai alapján történik.  
+* A **szélesség** és **hosszúság** oszlop az egyes contoso Coffee Coffee Shop-helyek koordinátáit tartalmazza. Ha nem rendelkezik koordináta-információkkal, a Azure Maps keresési szolgáltatásaival meghatározhatja a hely koordinátáit.
+* Néhány további oszlop a kávézókkal kapcsolatos metaadatokat tartalmaz: egy telefonszámot, logikai oszlopokat a Wi-Fi elérési ponthoz és a kerekesszékes hozzáférhetőséghez, valamint 24 órás formátumban tárolja a nyitó és záró időpontokat. Létrehozhat saját oszlopokat is, amelyek a tartózkodási hely adataihoz kapcsolódó metaadatokat tartalmaznak.
 
 > [!Note]
-> Az Azure Maps rendereli a gömbös Mercator vetületet "EPSG:3857" adatokat, de olvassa be az adatokat a "EPSG:4325", amely a WGS84 datum használja. 
+> Azure Maps megjeleníti az adatokat a gömb Mercator-kivetítés "EPSG: 3857" elemben, de a WGS84 datumt használó "EPSG: 4325" adatokat olvas be. 
 
-Számos módon tegye elérhetővé az alkalmazáshoz az adatkészletet. Egy megoldás, az adatok betöltéséhez az adatbázisba, és elérhetővé tehettük egy webszolgáltatás, amelyet le az adatokat, és elküldi az eredményeket a felhasználó böngészőjében. Ez a beállítás ideális a nagy adatkészletek vagy adatkészleteket, amelyek gyakran frissülnek. Ez a beállítás azonban jóval több fejlesztési munkát igényel, és magasabb költsége. 
+Számos módon teheti elérhetővé az adatkészletet az alkalmazás számára. Az egyik módszer az, ha az adatokat egy adatbázisba tölti be, és olyan webszolgáltatást tesz elérhetővé, amely lekérdezi az adatokat, és elküldi az eredményeket a felhasználó böngészőjének. Ez a lehetőség nagy adathalmazok vagy gyakran frissített adatkészletek esetén ideális. Ez a lehetőség azonban jelentősen nagyobb fejlesztési munkát igényel, és magasabb a díjszabása. 
 
-Egy másik megoldás, ez az adatkészlet alakítható át egy egyszerű szöveges fájl, amelyet a könnyen elemezhetők a böngészőben. Magát a fájlt az alkalmazás többi lehet üzemeltetni. Ez a beállítás áramvonalasíthatók, de csak kisebb adatkészletek esetében jó választás, mert a felhasználó letölti az összes adatot. Használjuk a sima szöveges fájlt ehhez az adatkészlethez, mert az adatok mérete 1 MB-nál kisebb.  
+Egy másik módszer az adatkészlet átalakítása egy egyszerű szövegfájlba, amelyet a böngésző könnyen elemez. Maga a fájl a többi alkalmazással is üzemeltethető. Ez a lehetőség egyszerűen megtartja a dolgokat, de ez a lehetőség csak kisebb adatkészletek esetében hasznos, mert a felhasználó letölti az összes adatát. Ehhez az adatkészlethez az egyszerű szövegfájlt használjuk, mert az adatfájl mérete kisebb, mint 1 MB.  
 
-A munkafüzet egy egyszerű szöveges fájl konvertálásához a munkafüzet mentéséhez tabulátorral tagolt-fájlként. Minden oszlop egy tabulátor karakter, ami lehetővé teszi az oszlopok elemezhetők a kódban van elválasztva. Vesszővel tagolt (CSV) formátum használhat, de ez a beállítás szükséges további elemzési logikai. Bármely mező, amely rendelkezik egy vesszővel tagolt körülötte lenne kell csomagolni, tegye idézőjelek közé. Exportálhatja az adatokat egy tabulátorokkal tagolt fájlt az Excelben, válassza ki a **Mentés másként**. Az a **Fájltípus** legördülő listában válassza **szöveg (delimited)(*.txt) lapon**. A fájl neve *ContosoCoffee.txt*. 
-
-<br/>
-<center>
-
-![A Mentés másként párbeszédpanel képernyőképe](./media/tutorial-create-store-locator/SaveStoreDataAsTab.png)</center>
-
-Ha a szöveges fájlt a Jegyzettömbben nyílik meg, akkor hasonlít az alábbi ábra:
+Ha a munkafüzetet egy sima szövegfájlba szeretné átalakítani, mentse a munkafüzetet tabulátorral tagolt fájlként. Az egyes oszlopokat tabulátor karakterekkel tagoljuk, így az oszlopok könnyen elemezhetők a kódban. Vesszővel tagolt (CSV) formátumot használhat, de ez a beállítás több elemzési logikát igényel. A körülötte található vesszőt tartalmazó mezők idézőjelekkel lesznek becsomagolva. Ha ezeket az adatfájlokat tabulátorral tagolt fájlként szeretné exportálni az Excelben, válassza a **Mentés másként**lehetőséget. A fájltípus **legördülő listából** válassza a **szöveg (tabulátorral tagolt) (*. txt)** lehetőséget. Nevezze el a *ContosoCoffee. txt*fájlt. 
 
 <br/>
 <center>
 
-![Egy Jegyzettömb-fájlt egy tabulátorokkal tagolt adatkészletet megjelenítő képernyőkép](./media/tutorial-create-store-locator/StoreDataTabFile.png)</center>
+![Képernyőfelvétel a fájltípus párbeszédpanelről](./media/tutorial-create-store-locator/SaveStoreDataAsTab.png)</center>
+
+Ha a Jegyzettömbben megnyitja a szövegfájlt, az a következő ábrához hasonlóan néz ki:
+
+<br/>
+<center>
+
+![Képernyőfelvétel egy tabulátorral tagolt adatkészletet megjelenítő Jegyzettömb-fájlról](./media/tutorial-create-store-locator/StoreDataTabFile.png)</center>
 
 
 ## <a name="set-up-the-project"></a>A projekt beállítása
 
-A projekt létrehozásához használhatja [Visual Studio](https://visualstudio.microsoft.com) vagy tetszőleges Kódszerkesztő. Hozzon létre három fájlt a projektmappa fájllistájának: *index.html*, *index.css*, és *index.js*. Ezek a fájlok határozza meg, az elrendezést, stílusának és az alkalmazás logikáját. Hozza létre a *adatok* , és adja hozzá *ContosoCoffee.txt* azt a mappát. Hozzon létre egy másik mappát nevű *lemezképek*. Tíz képek az alkalmazásban, ikonok, gombok és jelölőket küldhet a térképen a használjuk. Is [töltse le a lemezképek](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data). Az alábbi ábra a projektmappa fájllistájának kell hasonlítania:
+A projekt létrehozásához használhatja a [Visual studiót](https://visualstudio.microsoft.com) vagy az Ön által választott programkód-szerkesztőt. A Project mappában hozzon létre három fájlt: *index. html*, *index. css*és *index. js*. Ezek a fájlok határozzák meg az alkalmazás elrendezését, stílusát és logikáját. Hozzon létre egy adatmappa nevű mappát *, és adja* hozzá a *ContosoCoffee. txt fájlt* a mappához. Hozzon létre egy másik mappát a *képek*nevű mappában. Ebben az alkalmazásban tíz lemezképet használunk a térképen látható ikonokhoz, gombokhoz és jelölőhöz. [Ezeket a lemezképeket letöltheti](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data). A projekt mappájának ekkor az alábbi ábrához hasonlóan kell kinéznie:
 
 <br/>
 <center>
 
-![Az egyszerű Store kereső projektmappa képernyőképe](./media/tutorial-create-store-locator/StoreLocatorVSProject.png)</center>
+![Az egyszerű tároló-lokátor projekt mappájának képernyőképe](./media/tutorial-create-store-locator/StoreLocatorVSProject.png)</center>
 
-## <a name="create-the-user-interface"></a>A felhasználói felület létrehozása
+## <a name="create-the-user-interface"></a>Felhasználói felület létrehozása
 
-A felhasználói felület létrehozásához adja hozzá a kódot *index.html*:
+A felhasználói felület létrehozásához vegyen fel egy kódot az *index. html fájlba*:
 
-1. Adja hozzá a következő `meta` -címkék a `head` , *index.html*. A címkék megadása a karakterkészletet (UTF-8), ossza meg az Internet Explorer és a Microsoft Edge böngésző legújabb használandó, és adja meg a nézőpont, amely jól működik a rugalmas elrendezés.
+1. Adja hozzá a `meta` következő címkéket az `head` *index. html*fájlhoz. A címkék határozzák meg a karakterkészletet (UTF-8), az Internet Explorer és a Microsoft Edge segítségével a legújabb böngésző-verziókat használják, és olyan nézőpontot adjon meg, amely jól működik a rugalmas elrendezésekhez.
 
     ```HTML
     <meta charset="utf-8">
@@ -129,27 +129,27 @@ A felhasználói felület létrehozásához adja hozzá a kódot *index.html*:
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     ```
 
-1. Adja hozzá hivatkozásokat az Azure-térképek webes vezérlőinek JavaScript és CSS-fájlokat:
+1. Hivatkozások hozzáadása a Azure Maps webes vezérlő JavaScript-és CSS-fájlokhoz:
 
     ```HTML
     <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
     <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
     ```
 
-1. Adjon hozzá egy hivatkozást az Azure Maps Services modul. A modul az egy JavaScript-függvénytárat, amely becsomagolja az Azure Maps REST szolgáltatások, és lehetővé teszi a JavaScript gyerekjáték. A modul hasznos motorja olyan keresési funkciókat.
+1. Adjon hozzá egy hivatkozást a Azure Maps Services modulhoz. A modul egy JavaScript-kódtár, amely a Azure Maps REST-szolgáltatásokat csomagolja, és könnyen használható a JavaScriptben. A modul hasznos a keresési funkciók bekapcsolásához.
 
     ```HTML
-    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas-service.min.js"></script>
+    <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
     ```
 
-1. Adja hozzá hivatkozásokat *index.js* és *index.css*:
+1. Adja hozzá a hivatkozásokat az *index. js* és az *index. css*fájlhoz:
 
     ```HTML
     <link rel="stylesheet" href="index.css" type="text/css">
     <script src="index.js"></script>
     ```
 
-1. A dokumentum törzsében, adjon hozzá egy `header` címke. Belül a `header` címkével, adja hozzá az embléma és a vállalat nevét.
+1. A dokumentum törzsében adjon hozzá egy `header` címkét. `header` A címkén belül adja hozzá az emblémát és a vállalat nevét.
 
     ```HTML
     <header>
@@ -158,7 +158,7 @@ A felhasználói felület létrehozásához adja hozzá a kódot *index.html*:
     </header>
     ```
 
-1. Adjon hozzá egy `main` címkét, és hozzon létre egy keresés panelen text box és a keresési gombot. Adja hozzá `div` a térképen, a lista panel és a saját helyét GPS gombra mutató hivatkozásokat.
+1. Adjon hozzá `main` egy címkét, és hozzon létre egy szövegmezőt és egy keresési gombot tartalmazó keresési panelt. Továbbá adjon hozzá `div` hivatkozásokat a térképhez, a lista panelhez és a saját hely GPS gombhoz.
 
     ```HTML
     <main>
@@ -174,9 +174,9 @@ A felhasználói felület létrehozásához adja hozzá a kódot *index.html*:
     </main>
     ```
 
-Ha elkészült, *index.html* hasonlóan kell kinéznie [ebben a példában index.html fájlt](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/index.html).
+Ha elkészült, az *index. html* [fájlnak a következőhöz](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/index.html)hasonlóan kell kinéznie: index. html.
 
-A következő lépés, hogy a CSS-stílust határozza meg. CSS-stílust határozza meg, hogyan vannak leírva az alkalmazás-összetevők és az alkalmazás megjelenése. Nyissa meg *index.css* , és adja hozzá a következő kód azt. A `@media` stílus stílust beállításokat használja, ha a képernyő szélessége 700 képpontnál kisebb határozza meg.  
+A következő lépés a CSS-stílusok definiálása. A CSS-stílusok határozzák meg az alkalmazás-összetevők elrendezésének és az alkalmazás megjelenésének módját. Nyissa meg az *index. css* programot, és adja hozzá a következő kódot. A `@media` stílus alternatív stílusú beállításokat határoz meg, amelyeket akkor kell használni, ha a képernyő szélessége 700 képpontnál kisebb.  
 
    ```CSS
     html, body {
@@ -381,13 +381,13 @@ A következő lépés, hogy a CSS-stílust határozza meg. CSS-stílust határoz
     }
    ```
 
-Ha futtatja az alkalmazást, láthatja a fejlécet, a keresőmezőbe, és a Keresés gombra, de a leképezés nem látható, mert azt még nem lett betöltve. Keresés próbál, nem történik semmi. Állítsa be a JavaScript-logika a funkciókat az áruház-kereső eléréséhez a következő szakaszban leírt kell.
+Ha most futtatja az alkalmazást, a fejléc, a keresőmező és a Keresés gomb jelenik meg, de a Térkép nem látható, mert még nem töltődött be. Ha keresést próbál végrehajtani, semmi nem történik. Be kell állítania a következő szakaszban ismertetett JavaScript-logikát az áruház kereső összes funkciójának eléréséhez.
 
-## <a name="wire-the-application-with-javascript"></a>Az alkalmazás JavaScript átviteli
+## <a name="wire-the-application-with-javascript"></a>Az alkalmazás drótba való átvitele JavaScript-sel
 
-Ezen a ponton minden van beállítva a felhasználói felületen. Most hogy kell adja hozzá a JavaScript betölteni és elemezni az adatokat, és a térképen adatok jelennek majd meg. Első lépésként nyissa meg a *index.js* és adja hozzá a kódot, a következő lépésben ismertetett módon.
+Ekkor minden be van állítva a felhasználói felületen. Most hozzá kell adnia a JavaScriptet az adatgyűjtés betöltéséhez és elemzéséhez, majd a térképen az adatmegjelenítést. Első lépésként nyissa meg az *index. js fájlt* , és adja hozzá a kódot az alábbi lépések szerint.
 
-1. Adja hozzá a globális beállítások megkönnyítik a beállítások frissítése. A térkép, egy előugró ablak, egy adatforrást, egy ikon réteget, egy HTML-jelölő, amely megjeleníti az egy keresőmezőt, és a egy példányát az Azure Maps keresési szolgáltatás ügyfél-központ változót is, megadni.
+1. Globális beállítások hozzáadásával könnyebben frissítheti a beállításokat. Emellett definiálhat változókat a térképhez, egy előugró ablakhoz, egy adatforráshoz, egy ikon réteghez, egy keresési terület középpontját megjelenítő HTML-jelölőhöz, valamint a Azure Maps keresési szolgáltatás ügyfelének egy példányához.
 
     ```JavaScript
     //The maximum zoom level to cluster data point data on the map.
@@ -401,14 +401,14 @@ Ezen a ponton minden van beállítva a felhasználói felületen. Most hogy kell
     var map, popup, datasource, iconLayer, centerMarker, searchURL;
     ```
 
-1. Adja hozzá kódot *index.js*. A következő kódot a térkép inicializálja, hozzáad egy [eseményfigyelő](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) , amely megvárja, amíg befejeződik az oldal betöltése, másolatot események figyelése a Betöltés a térkép kábeleket, és használja a Keresés és a saját helyét gomb.
+1. Adja hozzá a kódot az *index. js*fájlhoz. A következő kód inicializálja a térképet, egy olyan [esemény-figyelőt](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) hoz létre, amely megvárja, amíg az oldal be nem fejeződik, és bekapcsolja az eseményeket a Térkép betöltésének figyeléséhez, és a keresés és a saját hely gombra kattint.
 
-   Amikor a felhasználó kiválasztja a Keresés gombra, vagy ha a felhasználó lenyomja a billentyűt után kifejezést a keresőmezőbe írja be egy olyan helyre, szemben a felhasználó lekérdezése egy intelligens keresés kezdeményezik. Ország ISO 2 értékeket tömbjét adja át a `countrySet` beállítással korlátozhatja a keresési eredmények között, az adott országban. Korlátozza az országok keresés segítségével növelheti a visszaadott eredmények pontosságát. 
+   Ha a felhasználó a Keresés gombra kattint, vagy amikor a felhasználó megnyomja az ENTER billentyűt a keresőmezőbe való belépés után, a rendszer megkezdi a felhasználó lekérdezésével kapcsolatos fuzzy keresést. Adja át az ország ISO 2 értékének egy tömbjét `countrySet` a keresési eredmények ezen országokban/régiókban való korlátozásához. Az országok és régiók keresésének korlátozása segít a visszaadott eredmények pontosságának növelésében. 
   
-   Ha a keresés befejeződött, az első eredmény igénybe vehet, és állítsa be a térkép kamera a terület fölé. Amikor a felhasználó a saját helyét gombot választja, a HTML5-alapú földrajzi hely meghatározásának API, amely a böngészőbe, és a felhasználó földrajzi helye a térkép középre helyükre keresztül használja.  
+   Ha a keresés elkészült, végezze el az első eredményt, és állítsa be a Térkép kamerát ezen a területen. Amikor a felhasználó kiválasztja a saját hely gombot, használja a böngészőben beépített HTML5 Térinformatikai API-t, hogy lekérje a felhasználó helyét, és középpontba helyezi a térképet a helyükön.  
 
    > [!Tip]
-   > Előugró ablakok használatakor érdemes létrehozni egy `Popup` példány, és újra felhasználhatja a példány annak tartalmát és pozícióját frissítésével. A minden `Popup`példányt ad hozzá a kódot, több DOM-elemek hozzáadásakor a lapot. A további DOM van elemei lapon nyomon követheti, hogy rendelkezik a böngésző dolgot. Ha túl sok elem, a böngésző lassú válhat.
+   > Amikor felugró ablakokat használ, érdemes egyetlen `Popup` példányt létrehoznia, és újra felhasználni a példányt a tartalom és a pozíció frissítésével. A kódhoz `Popup`hozzáadott minden példányhoz több Dom-elemet adnak hozzá a laphoz. Minél több DOM-elem van egy oldalon, annál több dolog szükséges a böngésző nyomon követésében. Ha túl sok elem van, előfordulhat, hogy a böngésző lassú lesz.
 
     ```JavaScript
     function initialize() {
@@ -417,7 +417,7 @@ Ezen a ponton minden van beállítva a felhasználói felületen. Most hogy kell
             center: [-90, 40],
             zoom: 2,
 
-            //Add your Azure Maps subscription key to the map SDK.
+            //Add your Azure Maps primary subscription key to the map SDK.
             authOptions: {
                 authType: 'subscriptionKey',
                 subscriptionKey: '<Your Azure Maps Key>'
@@ -432,7 +432,7 @@ Ezen a ponton minden van beállítva a felhasználói felületen. Most hogy kell
 
         //Use subscriptionKeyCredential to create a pipeline
         const pipeline = atlas.service.MapsURL.newPipeline(subscriptionKeyCredential, {
-            retryOptions: { maxTries: 4 }, // Retry options
+            retryOptions: { maxTries: 4 } // Retry options
         });
 
         //Create an instance of the SearchURL client.
@@ -516,7 +516,7 @@ Ezen a ponton minden van beállítva a felhasználói felületen. Most hogy kell
     window.onload = initialize;
     ```
 
-1. A térkép `ready` eseményfigyelő, adja hozzá a nagyítási vezérlő és a egy HTML jelölő egy keresési terület megjelenítéséhez.
+1. A Térkép `ready` esemény-figyelőben adjon hozzá egy nagyítás vezérlőelemet és egy HTML-jelölőt a keresési terület középpontjának megjelenítéséhez.
 
     ```JavaScript
     //Add a zoom control to the map.
@@ -533,7 +533,7 @@ Ezen a ponton minden van beállítva a felhasználói felületen. Most hogy kell
     map.markers.add(centerMarker);
     ```
 
-1. A térkép `ready` eseményfigyelő, adjon hozzá egy adatforrást. Ezt követően hívás betölteni és elemezni az adatkészletet. Az adatforrás fürtözésének engedélyezésére. A fürtszolgáltatás az adatokat a forrás csoportok egymással átfedésben lévő pontok együtt egy fürtben. A fürtök külön be felhasználóként az egyes pontok közeledik. Ez lehetővé teszi egy több képlékeny felhasználói felülettel, és növeli a teljesítményt.
+1. A Térkép `ready` esemény-figyelőben adjon hozzá egy adatforrást. Ezután hívja meg az adatkészlet betöltését és elemzését. Fürtözés engedélyezése az adatforráson. Az adatforrás-csoportok fürtözése a fürtben egymással átfedésben lévő pontokra mutat. A fürtök különálló pontokra vannak osztva, ahogy a felhasználó nagyítja. Ez a felhasználói élmény növelését és a teljesítmény javítását teszi lehetővé.
 
     ```JavaScript
     //Create a data source, add it to the map, and then enable clustering.
@@ -548,9 +548,9 @@ Ezen a ponton minden van beállítva a felhasználói felületen. Most hogy kell
     loadStoreData();
     ```
 
-1. Miután betöltöttük az adatkészlet, a térkép `ready` eseményfigyelő, meghatározhatja egy adott szinten is adatok jelennek meg. Egy buborék réteg fürtözött adatpontok előállítására szolgál. A szimbólum réteg jelennek meg az egyes csoportokban a buborék réteg felett pontok száma szolgál. Szimbólum beállítása egy egyéni ikon az egyes helyeken a térképen jeleníti meg.
+1. Miután betöltötte az adatkészletet a `ready` Térkép esemény-figyelőben, Definiáljon egy réteget az adat megjelenítéséhez. A fürtözött adatpontok megjelenítéséhez buborék réteget kell használni. A szimbólum réteg az egyes fürtökben lévő pontok számát jeleníti meg a buborék réteg felett. A második szimbólum réteg egyéni ikont jelenít meg a térképen lévő egyes helyszínekhez.
 
-   Adjon hozzá `mouseover` és `mouseout` eseményeket a buborék és ikon rétegek módosítása az egérmutatót, amikor a felhasználó rámutat egy fürt vagy a térképen ikonra. Adjon hozzá egy `click` eseményhez, és a fürt buborék réteget. Ez `click` a térkép alatt két szinttel nagyítása és középpontba a térkép keresztül a fürt, amikor a felhasználó kiválasztja az összes fürt állítása esemény. Adjon hozzá egy `click` esemény a ikon réteghez. Ez `click` esemény megjelenik egy előugró ablak, amely egy kávézóban részleteit jeleníti meg, ha a felhasználó kiválaszt egy adott helyhez ikont. Vegyen fel egy eseményt a térképen, a figyelő észleli, ha a térkép áthelyezése befejeződött. Ha ez az esemény akkor következik be, frissítse az elemeket a lista panelen.  
+   A `mouseover` buborék `mouseout` -és ikon-rétegek hozzáadásával és eseményeivel megváltoztathatja az egérmutatót, amikor a felhasználó egy fürt vagy ikon fölé viszi a térképet. Adjon hozzá `click` egy eseményt a fürt buborék rétegéhez. Ez `click` az esemény két szinten nagyítja a térképet, és a térképet a fürtön keresztül középpontba veszi, amikor a felhasználó kiválaszt egy fürtöt. Adjon hozzá `click` egy eseményt az ikon réteghez. Ez `click` az esemény egy olyan előugró ablakot jelenít meg, amely a kávézó részleteit mutatja be, amikor a felhasználó egy adott hely ikonját választja ki. Adjon hozzá egy eseményt a térképhez, és figyelje, hogy mikor fejeződik be a Térkép. Ha ez az esemény következik be, frissítse a lista panel elemeit.  
 
     ```JavaScript
     //Create a bubble layer to render clustered data points.
@@ -633,7 +633,7 @@ Ezen a ponton minden van beállítva a felhasználói felületen. Most hogy kell
     });
     ```
 
-1. Ha a kávézóban adathalmaz betöltődik, azt kell először letölti. Ezt követően a szövegfájl sorokat kell osztani. Az első sor a fejléc-információkat tartalmazza. Ahhoz, hogy a kód könnyebb követhetősége érdekében, hogy a fejléc a be olyan objektum, amely majd használatával minden egyes tulajdonság cella indexét keressük kell elemezni. Az első sor után a fennmaradó sorok hurkot, és hozzon létre egy pont funkció. A pont funkció hozzáadása az adatforráshoz. Végül frissítse a listát panelen.
+1. A Coffee Shop-adatkészlet betöltését követően először le kell tölteni. Ezt követően a szövegfájlt sorba kell bontani. Az első sor tartalmazza a fejléc információit. Annak érdekében, hogy a kód könnyebben követhető legyen, a fejlécet egy objektumba elemezzük, amelyet aztán az egyes tulajdonságok cellás indexének megkereséséhez használhatunk. Az első sor után hurkot a többi sorban, és hozzon létre egy pont funkciót. Adja hozzá a pont szolgáltatást az adatforráshoz. Végül frissítse a lista panelt.
 
     ```JavaScript
     function loadStoreData() {
@@ -692,7 +692,7 @@ Ezen a ponton minden van beállítva a felhasználói felületen. Most hogy kell
     }
     ```
 
-1. Ha a lista panel frissül, a térkép a központ az aktuális nézetben térképen minden pont szolgáltatás közötti távolságot számítása. A szolgáltatások majd távolság szerint vannak rendezve. HTML jön létre minden egyes helyet megjelenítéséhez a listában panelen.
+1. Ha frissíti a lista panelt, a rendszer kiszámítja a Térkép középpontjának és az aktuális Térkép nézet összes funkciójának a távolságát. A funkciók ezután távolság szerint rendezve jelennek meg. A rendszer létrehoz egy HTML-kódot, amely megjeleníti az egyes helyeket a lista paneljén.
 
     ```JavaScript
     var listItemTemplate = '<div class="listItem" onclick="itemSelected(\'{id}\')"><div class="listItem-title">{title}</div>{city}<br />Open until {closes}<br />{distance} miles away</div>';
@@ -706,21 +706,6 @@ Ezen a ponton minden van beállítva a felhasználói felületen. Most hogy kell
         //Get the current camera and view information for the map.
         var camera = map.getCamera();
         var listPanel = document.getElementById('listPanel');
-
-        //Get all the shapes that have been rendered in the bubble layer.
-        var data = map.layers.getRenderedShapes(map.getCamera().bounds, [iconLayer]);
-
-        data.forEach(function(shape) {
-            if (shape instanceof atlas.Shape) {
-                //Calculate the distance from the center of the map to each shape, and then store the data in a distance property.  
-                shape.distance = atlas.math.getDistanceTo(camera.center, shape.getCoordinates(), 'miles');
-            }
-        });
-
-        //Sort the data by distance.
-        data.sort(function(x, y) {
-            return x.distance - y.distance;
-        });
 
         //Check to see whether the user is zoomed out a substantial distance. If they are, tell the user to zoom in and to perform a search or select the My Location button.
         if (camera.zoom < maxClusterZoomLevel) {
@@ -747,6 +732,25 @@ Ezen a ponton minden van beállítva a felhasználói felületen. Most hogy kell
             </div>
             */
 
+            //Get all the shapes that have been rendered in the bubble layer. 
+            var data = map.layers.getRenderedShapes(map.getCamera().bounds, [iconLayer]);
+
+            //Create an index of the distances of each shape.
+            var distances = {};
+
+            data.forEach(function (shape) {
+                if (shape instanceof atlas.Shape) {
+
+                    //Calculate the distance from the center of the map to each shape and store in the index. Round to 2 decimals.
+                    distances[shape.getId()] = Math.round(atlas.math.getDistanceTo(camera.center, shape.getCoordinates(), 'miles') * 100) / 100;
+                }
+            });
+
+            //Sort the data by distance.
+            data.sort(function (x, y) {
+                return distances[x.getId()] - distances[y.getId()];
+            });
+
             data.forEach(function(shape) {
                 properties = shape.getProperties();
                 html.push('<div class="listItem" onclick="itemSelected(\'', shape.getId(), '\')"><div class="listItem-title">',
@@ -760,8 +764,8 @@ Ezen a ponton minden van beállítva a felhasználói felületen. Most hogy kell
                 getOpenTillTime(properties),
                 '<br />',
 
-                //Route the distance to two decimal places.  
-                (Math.round(shape.distance * 100) / 100),
+                //Get the distance of the shape.
+                distances[shape.getId()],
                 ' miles away</div>');
             });
 
@@ -826,7 +830,7 @@ Ezen a ponton minden van beállítva a felhasználói felületen. Most hogy kell
     }
     ```
 
-1. Amikor a felhasználó kiválaszt egy elemet a listában panelen, a rendszer beolvassa az alakzatot, amelyhez az elem kapcsolódik az adatforrás. Egy előugró ablak az alakzat tárolt adatok a tulajdonság alapján jön létre. A térkép az alakzat fölé közepén. Ha a térkép kisebb, mint 700 képpont széles, a térképnézet eltolás van, így az előugró ablakban látható.
+1. Amikor a felhasználó kiválaszt egy elemet a lista paneljén, az az alakzat, amelyhez az elem kapcsolódik, beolvassa az adatforrásból. Létrejön egy előugró ablak, amely az alakzatban tárolt tulajdonságok adatai alapján jön létre. A Térkép középpontban van az alakzaton. Ha a Térkép kevesebb, mint 700 képpont széles, a Térkép nézet eltolással jelenik meg, hogy az előugró ablak látható legyen.
 
     ```JavaScript
     //When a user selects a result in the side panel, look up the shape by its ID value and display the pop-up window.
@@ -872,6 +876,9 @@ Ezen a ponton minden van beállítva a felhasználói felületen. Most hogy kell
             </div>
         */
 
+         //Calculate the distance from the center of the map to the shape in miles, round to 2 decimals.
+        var distance = Math.round(atlas.math.getDistanceTo(map.getCamera().center, shape.getCoordinates(), 'miles') * 100)/100;
+
         var html = ['<div class="storePopup">'];
         html.push('<div class="popupTitle">',
             properties['AddressLine'],
@@ -882,8 +889,8 @@ Ezen a ponton minden van beállítva a felhasználói felületen. Most hogy kell
             //Convert the closing time to a format that's easier to read.
             getOpenTillTime(properties),
 
-            //Route the distance to two decimal places.  
-            '<br/>', (Math.round(shape.distance * 100) / 100),
+            //Add the distance information.  
+            '<br/>', distance,
             ' miles away',
             '<br /><img src="images/PhoneIcon.png" title="Phone Icon"/><a href="tel:',
             properties['Phone'],
@@ -896,11 +903,11 @@ Ezen a ponton minden van beállítva a felhasználói felületen. Most hogy kell
             html.push('<br/>Amenities: ');
 
             if (properties['IsWiFiHotSpot']) {
-                html.push('<img src="images/WiFiIcon.png" title="Wi-Fi Hotspot"/>')
+                html.push('<img src="images/WiFiIcon.png" title="Wi-Fi Hotspot"/>');
             }
 
             if (properties['IsWheelchairAccessible']) {
-                html.push('<img src="images/WheelChair-small.png" title="Wheelchair Accessible"/>')
+                html.push('<img src="images/WheelChair-small.png" title="Wheelchair Accessible"/>');
             }
         }
 
@@ -919,47 +926,47 @@ Ezen a ponton minden van beállítva a felhasználói felületen. Most hogy kell
     }
     ```
 
-Most már rendelkezik egy teljesen működőképes store lokátort. Egy webböngészőben nyissa meg a *index.html* az áruház-kereső fájlt. Amikor a fürtök jelenik meg a térképen, kereshet egy adott helyre vonatkozóan a keresőmező használatával, a saját helyét gomb kiválasztásával, a fürt kiválasztásával vagy kinagyítva egyes helyek megtekintéséhez a térképen.
+Most már van egy teljesen működőképes tároló-lokátora. A böngészőben nyissa meg az *index. html* fájlt az áruház keresője számára. Ha a fürtök megjelennek a térképen, a keresőmező használatával kereshet egy helyet a saját hely gomb kiválasztásával, egy fürt kiválasztásával, vagy a Térkép nagyításával az egyes helyek megjelenítéséhez.
 
-Először egy felhasználó a saját helyét gombot választja a böngészőben, amely kéri a felhasználó földrajzi helye hozzáférési engedélyt a biztonsági figyelmeztetést jelenít meg. Ha a felhasználó elfogadja a megosztását a saját helyét, a térkép ráközelít az a felhasználó földrajzi helye, és a közeli kávézókban látható. 
-
-<br/>
-<center>
-
-![Képernyőkép a böngészőben a felhasználó a felhasználó földrajzi helye hozzáférési kérelem](./media/tutorial-create-store-locator/GeolocationApiWarning.png)</center>
-
-Ha ráközelít közel kávézóban helyeket tartalmazó területen, a fürtök szét az egyes helyeken. Válasszon ki egy, az ikonok a térképen, vagy jelöljön ki egy elemet a oldalpanel egy előugró ablak, amely megjeleníti az adott hely információk megtekintéséhez.
+Amikor a felhasználó először kiválasztja a saját hely gombot, a böngésző egy biztonsági figyelmeztetést jelenít meg, amely engedélyt kér a felhasználó tartózkodási helyének elérésére. Ha a felhasználó beleegyezik, hogy megosztja a helyüket, a Térkép nagyítja a felhasználó helyét, és megjelenik a közeli kávézók. 
 
 <br/>
 <center>
 
-![A befejezett store lokátor képernyőképe](./media/tutorial-create-store-locator/FinishedSimpleStoreLocator.png)</center>
+![Képernyőfelvétel a böngésző azon kérelméről, amely hozzáfér a felhasználó helyéhez](./media/tutorial-create-store-locator/GeolocationApiWarning.png)</center>
 
-Méretezze át a böngészőablakot, és kevesebb mint 700 képpont széles vagy a mobileszközökön az alkalmazás megnyitásakor, a kedvezőbb elrendezéssel járó módosítások olyan kisebb képernyőkön. 
+Ha egy Coffee Shop-hellyel rendelkező területen közelíti meg a nagyítást, a fürtök különálló helyekre vannak osztva. Válassza ki az egyik ikont a térképen, vagy válasszon ki egy elemet az oldalsó panelen egy előugró ablak megjelenítéséhez, amely az adott hely információit jeleníti meg.
 
 <br/>
 <center>
 
-![Képernyőkép a kis képernyőn verzióját a tároló-lokátor](./media/tutorial-create-store-locator/FinishedSimpleStoreLocatorSmallScreen.png)</center>
+![A befejezett tároló-lokátor képernyőképe](./media/tutorial-create-store-locator/FinishedSimpleStoreLocator.png)</center>
+
+Ha a böngészőablakot kevesebb, mint 700 képpont szélesre módosítja, vagy egy mobileszközön nyitja meg az alkalmazást, az elrendezés úgy változik, hogy jobban megfeleljen a kisebb képernyőknek. 
+
+<br/>
+<center>
+
+![Képernyőkép az áruházi lokátor kis képernyős verziójáról](./media/tutorial-create-store-locator/FinishedSimpleStoreLocatorSmallScreen.png)</center>
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megismerheti, hogyan alapszintű store lokátorok létrehozásához az Azure Maps használatával. Az ebben az oktatóanyagban létrehozott tároló kereső előfordulhat, hogy a szükséges funkciókat. A tároló kereső szolgáltatások hozzáadása, vagy további előzetes funkciók használata több egyéni felhasználói élményt: 
+Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre alapszintű tároló-lokátort Azure Maps használatával. Előfordulhat, hogy az oktatóanyagban létrehozott áruház-lokátor rendelkezik az összes szükséges funkcióval. Lehetőség van az áruházbeli lokátor szolgáltatásainak hozzáadására, vagy további speciális funkciók használatára az egyéni felhasználói élmény érdekében: 
 
 > [!div class="checklist"]
-> * Engedélyezése [javaslatokat a beírás](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20Autosuggest%20and%20JQuery%20UI) kifejezést a keresőmezőbe.  
-> * Adjon hozzá [több nyelv támogatása](https://azuremapscodesamples.azurewebsites.net/?sample=Map%20Localization). 
-> * Engedélyezi a felhasználó számára [útvonalon helyek szűrése](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Data%20Along%20Route). 
-> * Adja hozzá a teszi [beállítása szűrőket](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Symbols%20by%20Property). 
-> * Adja hozzá a támogatási egy lekérdezési karakterláncot adjon meg egy kezdeti keresett érték. Ha ezt a beállítást a tároló lokátort a, felhasználók könyvjelző formájában elmentheti és megoszthatja a kereséseket. Azt is, hogy ezen a lapon egy másik lapon keresések át egyszerű módszert kínál.  
-> * A tároló lokátort, üzembe helyezése egy [Azure App Service Web Appsban](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-html). 
-> * Store az adatok egy adatbázisban, és keresse meg a közeli helyeket. További tudnivalókért tekintse meg a [SQL Server térbeli adattípusok áttekintése](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-types-overview?view=sql-server-2017) és [térbeli adatok lekérdezése a legközelebbi szomszéd](https://docs.microsoft.com/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor?view=sql-server-2017).
+> * A keresőmezőbe való [beíráskor](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20Autosuggest%20and%20JQuery%20UI) engedélyezze a javaslatokat.  
+> * [Több nyelv támogatásának](https://azuremapscodesamples.azurewebsites.net/?sample=Map%20Localization)megadása. 
+> * Lehetővé teszi a felhasználók számára, hogy [egy útvonal mentén szűrhetik a tárolóhelyeket](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Data%20Along%20Route). 
+> * Adja [meg a szűrők beállításának](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Symbols%20by%20Property)lehetőségét. 
+> * Adja meg a támogatást egy kezdeti keresési érték megadásához egy lekérdezési karakterlánc használatával. Ha ezt a lehetőséget használja az áruház lokátorában, a felhasználók könyvjelzőket és megosztási kereséseket is tartalmazhatnak. Emellett egyszerű módszert is biztosít, amellyel egy másik oldalról átadhatja a keresést ezen a lapon.  
+> * Az áruházbeli lokátor üzembe helyezése [Azure app Service webalkalmazásként](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-html). 
+> * Tárolja adatait egy adatbázisban, és keressen a közeli helyekre. További információ: [SQL Server térbeli adattípusok áttekintése](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-types-overview?view=sql-server-2017) és [térbeli adatainak lekérdezése a legközelebbi szomszédban](https://docs.microsoft.com/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor?view=sql-server-2017).
 
 > [!div class="nextstepaction"]
 > [Teljes forráskód megtekintése](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator)
 
 > [!div class="nextstepaction"]
-> [Élő mintájának megtekintése](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Simple%20Store%20Locator)
+> [Élő minta megtekintése](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Simple%20Store%20Locator)
 
 További információ az Azure Maps lefedettségéről és képességeiről:
 
@@ -972,4 +979,4 @@ További példakódok és az interaktív kódolási felület bemutatása:
 > [A térkép vezérlőelem használata](how-to-use-map-control.md)
 
 > [!div class="nextstepaction"]
-> [Az adatvezérelt stílus kifejezések használata](data-driven-style-expressions-web-sdk.md)
+> [Adatvezérelt stílusú kifejezések használata](data-driven-style-expressions-web-sdk.md)

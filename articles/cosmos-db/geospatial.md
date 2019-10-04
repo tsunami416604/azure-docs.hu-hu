@@ -4,14 +4,14 @@ description: Megtudhatja, hogyan hozhat létre, index és az Azure Cosmos DB és
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/01/2017
+ms.date: 07/23/2019
 ms.author: sngun
-ms.openlocfilehash: 9c6ea982d9a605696dad0c943aa6dd2ae155d6bd
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 1b26f78c6d44123ef1baa3c55fd16c3340d59dd4
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770737"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616845"
 ---
 # <a name="use-geospatial-and-geojson-location-data-with-azure-cosmos-db-sql-api-account"></a>Térinformatikai és GeoJSON helyadatok használata az Azure Cosmos DB SQL API-fiók
 
@@ -142,7 +142,7 @@ await client.CreateDocumentAsync(
     });
 ```
 
-Ha nem rendelkezik a szélességi és hosszúsági adatokat, de a fizikai címeket vagy a hely neve, mint például a városok vagy országok, kereshet a tényleges koordináták egy geokódolási szolgáltatásokat, például a Bing Maps REST-szolgáltatások használatával. További tudnivalók a Bing térképek geokódolás [Itt](https://msdn.microsoft.com/library/ff701713.aspx).
+Ha nem rendelkezik a szélességi és a hosszúsági adatokkal, de a fizikai címeket vagy a hely nevét, például a várost vagy az országot/régiót, megkeresheti a tényleges koordinátákat egy olyan helymeghatározáshoz-szolgáltatás használatával, mint a Bing Maps REST Services. További tudnivalók a Bing térképek geokódolás [Itt](https://msdn.microsoft.com/library/ff701713.aspx).
 
 ## <a name="querying-spatial-types"></a>Térbeli típusok lekérdezése
 Most, hogy készített egy pillantást a földrajzi adatok beszúrása, vessünk egy pillantást az Azure Cosmos DB SQL és a LINQ használatával az adatok lekérdezésére.
@@ -249,12 +249,12 @@ Ezek a függvények is használható poligonok ellenőrzése. Például itt hasz
 ### <a name="linq-querying-in-the-net-sdk"></a>A LINQ lekérdezése a .NET SDK-ban
 Az SQL .NET SDK-t is a szolgáltatók helyettes módszerek `Distance()` és `Within()` LINQ kifejezés belüli használathoz. Az SQL LINQ-szolgáltató fordítja le ezt a módszert a megfelelő SQL beépített függvényhívások-hívások (ST_DISTANCE és ST_WITHIN jelölik). 
 
-Íme egy példa egy LINQ-lekérdezést, amely megkeresi az összes dokumentum a Azure Cosmos DB-gyűjtemény, amelynek "hely" érték van 30 km-re, a megadott sugarú körön belül pont LINQ használatával.
+Íme egy példa egy LINQ-lekérdezésre, amely megkeresi az Azure Cosmos-tárolóban található összes olyan dokumentumot, amelynek "helye" értéke a megadott pont 30 km-es sugarán belül van a LINQ használatával.
 
 **Távolság a LINQ-lekérdezésekre**
 
     foreach (UserProfile user in client.CreateDocumentQuery<UserProfile>(UriFactory.CreateDocumentCollectionUri("db", "profiles"))
-        .Where(u => u.ProfileType == "Public" && a.Location.Distance(new Point(32.33, -4.66)) < 30000))
+        .Where(u => u.ProfileType == "Public" && u.Location.Distance(new Point(32.33, -4.66)) < 30000))
     {
         Console.WriteLine("\t" + user);
     }

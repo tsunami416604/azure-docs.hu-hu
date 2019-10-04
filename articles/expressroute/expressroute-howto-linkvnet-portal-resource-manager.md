@@ -1,19 +1,19 @@
 ---
-title: 'Virtuális hálózat összekapcsolása az ExpressRoute - kapcsolatcsoport: Az Azure portal |} A Microsoft Docs'
+title: 'Virtuális hálózat összekapcsolása egy áramkör-ExpressRoute: Azure Portal | Microsoft Docs'
 description: Virtuális hálózat csatlakozni egy Azure ExpressRoute-Kapcsolatcsoportot. Útmutató lépéseit.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 09/17/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 66c43556e698063b95ce1c3787458e40c9d71504
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 6185540340bba4299eb9307432480c91d531779a
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58079468"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71088913"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>Virtuális hálózat összekapcsolása egy ExpressRoute-kapcsolatcsoporthoz a portál használatával
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ Ezen cikk segítségével létrehozhat egy kapcsolatot a virtuális hálózat ö
 
 * Egy aktív ExpressRoute-kapcsolatcsoportra lesz szüksége.
   * Kövesse az utasításokat [ExpressRoute-kapcsolatcsoport létrehozása](expressroute-howto-circuit-portal-resource-manager.md) , és a kapcsolatcsoport a kapcsolatszolgáltató által engedélyezett.
-  * Gondoskodjon arról, hogy az Azure privát társviszony-létesítést a kapcsolatcsoporthoz konfigurálva. Tekintse meg a [útválasztás konfigurálását](expressroute-howto-routing-portal-resource-manager.md) cikk vonatkozó útválasztási utasításokat.
+  * Gondoskodjon arról, hogy az Azure privát társviszony-létesítést a kapcsolatcsoporthoz konfigurálva. A társítási és útválasztási utasításokért tekintse meg a [társítás létrehozása és módosítása ExpressRoute áramkörhöz](expressroute-howto-routing-portal-resource-manager.md) című cikket.
   * Győződjön meg arról, hogy az Azure privát társviszony-létesítés konfigurálva legyen, és a BGP társviszony-létesítés a hálózat és a Microsoft között működik, így engedélyezheti a végpontok közötti kapcsolat.
   * Gondoskodjon arról, hogy egy virtuális hálózat és a egy virtuális hálózati átjáró létrehozása, és teljesen kiépítve. Kövesse az utasításokat [az ExpressRoute virtuális hálózati átjáró létrehozása](expressroute-howto-add-gateway-resource-manager.md). Az ExpressRoute virtuális hálózati átjáró a "ExpressRoute", nem gatewaytype VPN típust használja.
 
@@ -52,15 +52,16 @@ Ezen cikk segítségével létrehozhat egy kapcsolatot a virtuális hálózat ö
 
 ### <a name="to-create-a-connection"></a>Kapcsolat létrehozása
 
-1. Győződjön meg arról, hogy az ExpressRoute-kapcsolatcsoportot, és az Azure privát társviszony-létesítés konfigurált sikeresen megtörtént. Kövesse a [ExpressRoute-kapcsolatcsoport létrehozása](expressroute-howto-circuit-arm.md) és [útválasztás konfigurálását](expressroute-howto-routing-arm.md). Az ExpressRoute-kapcsolatcsoportot az alábbi képhez hasonlóan kell kinéznie:
+1. Győződjön meg arról, hogy az ExpressRoute-kapcsolatcsoportot, és az Azure privát társviszony-létesítés konfigurált sikeresen megtörtént. Kövesse a ExpressRoute- [áramkör létrehozása](expressroute-howto-circuit-arm.md) és a [ExpressRoute-kör társításának létrehozása és módosítása](expressroute-howto-routing-arm.md)című témakör utasításait. Az ExpressRoute-kapcsolatcsoportot az alábbi képhez hasonlóan kell kinéznie:
 
-   ![Az ExpressRoute-kapcsolatcsoport képernyőképe](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1.png)
+   [![Képernyőkép a ExpressRoute áramkörről](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1.png "Áramkör megtekintése")](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1-exp.png#lightbox)
 2. Most elkezdheti csatolni a virtuális hálózati átjáró az ExpressRoute-kapcsolatcsoportot a kapcsolat kiépítése. Kattintson a **kapcsolat** > **Hozzáadás** megnyitásához a **kapcsolat hozzáadása** lapon, és adja meg az értékeket.
 
-   ![Képernyőfelvétel a kapcsolat hozzáadása](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1.png)
+   [A ![kapcsolatok hozzáadása képernyőkép] A (./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1.png "kapcsolatok hozzáadása képernyőkép")](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1-exp.png#lightbox)
 3. Miután a kapcsolat sikeresen konfigurálva lett, a kapcsolat objektumot jelennek meg a kapcsolat adatait.
 
    ![Kapcsolat objektum képernyőképe](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub2.png)
+
 
 ## <a name="connect-a-vnet-to-a-circuit---different-subscription"></a>Virtuális hálózat csatlakozni egy áramkör - másik előfizetésre
 
@@ -70,7 +71,7 @@ ExpressRoute-kapcsolatcsoport több előfizetésre kiterjedő megoszthatja. Az a
 
 - A nagyméretű felhőbeli belül a kisebb felhők mindegyike egy szervezet különböző részlegei tartozó előfizetések megjelenítésére szolgál.
 - Minden, a szervezeti egységek, a szervezeten belül a saját előfizetés használata a szolgáltatások üzembe helyezése, de meg is oszthatják egyetlen ExpressRoute-kapcsolatcsoporthoz szeretne csatlakozni a helyszíni hálózathoz.
-- Egyetlen részleg (ebben a példában: Informatikai) is a saját ExpressRoute-kapcsolatcsoportot. Más előfizetésekre, a szervezeten belül használható az ExpressRoute-kapcsolatcsoport és a kapcsolatcsoportot, beleértve a kapcsolódó egyéb Azure Active Directory-bérlők és a nagyvállalati szerződés regisztrációk előfizetéseket társított engedélyeket.
+- Egyetlen részleg (ebben a példában: IT) a ExpressRoute áramkör tulajdonosa lehet. Más előfizetésekre, a szervezeten belül használható az ExpressRoute-kapcsolatcsoport és a kapcsolatcsoportot, beleértve a kapcsolódó egyéb Azure Active Directory-bérlők és a nagyvállalati szerződés regisztrációk előfizetéseket társított engedélyeket.
 
   > [!NOTE]
   > Az ExpressRoute-kapcsolatcsoport tulajdonosát a kapcsolatot és a sávszélesség díjak a dedikált kapcsolatcsoport lépnek érvénybe. Minden virtuális hálózat ossza meg ugyanazt a sávszélesség.
@@ -90,7 +91,7 @@ A kapcsolatcsoport tulajdonosát a rendelkezik módosítja, és bármikor enged�
 A kapcsolatcsoport tulajdonosát egy engedélyezési hoz létre. Az eredmény egy kapcsolatcsoport felhasználó által a virtuális hálózati átjárók az ExpressRoute-kapcsolatcsoporthoz való csatlakozáshoz használható hitelesítési kulcs létrehozását. Egy engedélyezési csak egy kapcsolat érvényességét.
 
 > [!NOTE]
-> Minden egyes kapcsolathoz egy külön engedély szükséges.
+> Minden kapcsolathoz külön engedély szükséges.
 >
 
 1. Az ExpressRoute oldalon kattintson **engedélyek** és írja be a **neve** az engedélyezési, és kattintson a **mentése**.
@@ -121,7 +122,7 @@ A kapcsolatcsoport-felhasználó erőforrás-azonosító és a egy engedélyezé
 
    ![Alapvető beállítások lap](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection3.png)
 5. Az a **beállítások** lapon, válassza ki a **virtuális hálózati átjáró** , és ellenőrizze a **beváltása** jelölőnégyzetet.
-6. Adja meg a **engedélyezési kulcsot** és a **Társkapcsolatcsoport URI** , és adja meg a kapcsolat nevét. Kattintson az **OK** gombra.
+6. Adja meg a **engedélyezési kulcsot** és a **Társkapcsolatcsoport URI** , és adja meg a kapcsolat nevét. Kattintson az **OK** gombra. A **társ áramköri URI** a ExpressRoute áramkör erőforrás-azonosítója (amelyet a ExpressRoute-áramkör tulajdonságok beállítása paneljén talál).
 
    ![Beállítások lap](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection4.png)
 7. Tekintse át az adatokat a a **összefoglalás** lapot, és kattintson **OK**.

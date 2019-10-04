@@ -1,10 +1,10 @@
 ---
-title: Statikus belső magánhálózati IP - Azure-beli Virtuálisgép - klasszikus
-description: Statikus belső IP-címek (DIP) és a kezelésük módjával ismertetése
+title: Statikus belső magánhálózati IP – Azure VM – klasszikus
+description: A statikus belső IP-címek (DIPs) ismertetése és azok kezelése
 services: virtual-network
 documentationcenter: na
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: tysonn
 ms.assetid: 93444c6f-af1b-41f8-a035-77f5c0302bf0
 ms.service: virtual-network
@@ -14,27 +14,27 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: b83a6e2c81eac9993c481561e3cebbed681d2c4a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c37c49d8f7e09334014af290bf3a8c8e6d35f04b
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58096044"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058353"
 ---
-# <a name="how-to-set-a-static-internal-private-ip-address-using-powershell-classic"></a>Hogyan állítható be a statikus belső magánhálózati IP-cím (klasszikus) PowerShell-lel
-A legtöbb esetben nem kell a virtuális gép statikus belső IP-címet adjon meg. Egy virtuális hálózatban lévő virtuális gépek automatikusan fog kapni a belső IP-cím megadott tartományból. De bizonyos esetekben egy adott virtuális gép által használt statikus IP-cím megadása van értelme. Ha például a virtuális gép kívánja futtatni a DNS vagy a tartományvezérlő lesz. Statikus belső IP-címet a virtuális gép akár keresztül olyan leállítása vagy megszüntetési állapotban marad. 
+# <a name="how-to-set-a-static-internal-private-ip-address-using-powershell-classic"></a>Statikus belső magánhálózati IP-cím beállítása a PowerShell (klasszikus) használatával
+A legtöbb esetben nem kell statikus belső IP-címet megadnia a virtuális géphez. A virtuális hálózatban lévő virtuális gépek automatikusan egy belső IP-címet kapnak egy megadott tartományból. Bizonyos esetekben azonban egy adott virtuális géphez statikus IP-címet kell megadni. Ha például a virtuális gép a DNS-t futtatja, vagy tartományvezérlőként fog futni. A statikus belső IP-címek a virtuális géppel együtt maradnak, még leállítás/megszüntetési állapotban is. 
 
 > [!IMPORTANT]
-> Az Azure az erőforrások létrehozásához és használatához két különböző üzembe helyezési modellel rendelkezik:  [Resource Manager és klasszikus](../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén használja a [Resource Manager üzemi modell](virtual-networks-static-private-ip-arm-ps.md).
+> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához:  [Resource Manager és klasszikus](../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. A Microsoft azt javasolja, hogy a legtöbb új központi telepítés a [Resource Manager](virtual-networks-static-private-ip-arm-ps.md)-alapú üzemi modellt használja.
 > 
 > 
-> ## <a name="install-the-azure-powershell-service-management-module"></a>Az Azure PowerShell Service Management moduljának telepítése
+> ## <a name="install-the-azure-powershell-service-management-module"></a>A Azure PowerShell Service Management modul telepítése
 
-Futtassa a következő parancsokat, előtt győződjön meg arról, hogy a [Azure PowerShell Service Management modul](https://docs.microsoft.com/powershell/azure/servicemanagement/install-azure-ps?view=azuresmps-4.0.0
-) telepítve van a gépen. Azure PowerShell Service Management modul korábbi verzióinak, lásd: [Azure-modul a PowerShell-galériában](https://www.powershellgallery.com/packages/Azure/5.3.0).
+A következő parancsok futtatása előtt győződjön meg arról, hogy a [Azure PowerShell Service Management modul](https://docs.microsoft.com/powershell/azure/servicemanagement/install-azure-ps?view=azuresmps-4.0.0
+) telepítve van a számítógépen. Azure PowerShell Service Management modul verziótörténete: [PowerShell-Galéria Azure-modul](https://www.powershellgallery.com/packages/Azure/5.3.0).
 
-## <a name="how-to-verify-if-a-specific-ip-address-is-available"></a>Azt, hogyan ellenőrizheti egy adott IP-cím elérhető-e
-Arra, ha az IP-cím *10.0.0.7* érhető el egy vnet nevű *TestVnet*, futtassa a következő PowerShell-parancsot, és ellenőrizze a értéke *IsAvailable*.
+## <a name="how-to-verify-if-a-specific-ip-address-is-available"></a>Annak ellenőrzése, hogy elérhető-e egy adott IP-cím
+Annak ellenőrzéséhez, hogy az IP- *10.0.0.7* elérhető-e egy *TestVnet*nevű vnet, futtassa a következő PowerShell-parancsot, és ellenőrizze a *IsAvailable*értékét.
 
 
     Test-AzureStaticVNetIP –VNetName TestVNet –IPAddress 10.0.0.7 
@@ -46,12 +46,12 @@ Arra, ha az IP-cím *10.0.0.7* érhető el egy vnet nevű *TestVnet*, futtassa a
     OperationStatus      : Succeeded
 
 > [!NOTE]
-> Ha szeretné tesztelni a fenti parancsot egy biztonságos környezetben irányelvekhez [hozzon létre egy virtuális hálózat (klasszikus)](virtual-networks-create-vnet-classic-pportal.md) hozhat létre egy vnetet nevű *TestVnet* és ellenőrizze, hogy használja a *10.0.0.0/8*  címtér.
+> Ha a fenti parancsot egy biztonságos környezetben szeretné tesztelni, kövesse a [virtuális hálózat létrehozása (klasszikus)](virtual-networks-create-vnet-classic-pportal.md) című témakör útmutatását a *TestVnet* nevű vnet létrehozásához, és győződjön meg róla, hogy a *10.0.0.0/8* címtartomány használatát használja.
 > 
 > 
 
-## <a name="how-to-specify-a-static-internal-ip-when-creating-a-vm"></a>Statikus belső IP-cím megadása a virtuális gép létrehozásakor
-Az alábbi PowerShell-parancsfájlt hoz létre egy új felhőszolgáltatást nevű *TestService*, majd egy képet lekérő az Azure-ból, majd létrehoz egy virtuális Gépet nevű *TestVM* a beolvasott kép használatával új felhőszolgáltatás úgy állítja be a A virtuális gép egy nevű alhálózatban lehet *Subnet-1*, és beállítja a *10.0.0.7* a virtuális gép statikus belső IP-címként:
+## <a name="how-to-specify-a-static-internal-ip-when-creating-a-vm"></a>Statikus belső IP-cím megadása virtuális gép létrehozásakor
+Az alábbi PowerShell-szkript létrehoz egy *TestService*nevű új felhőalapú szolgáltatást, majd beolvas egy rendszerképet az Azure-ból, majd létrehoz egy *TestVM* nevű virtuális gépet az új felhőalapú szolgáltatásban a beolvasott képpel, beállítja, hogy a virtuális gép az *alhálózat-1*alhálózatban legyen. és a *10.0.0.7* beállítása statikus belső IP-ként a virtuális géphez:
 
     New-AzureService -ServiceName TestService -Location "Central US"
     $image = Get-AzureVMImage|?{$_.ImageName -like "*RightImage-Windows-2012R2-x64*"}
@@ -61,8 +61,8 @@ Az alábbi PowerShell-parancsfájlt hoz létre egy új felhőszolgáltatást nev
     | Set-AzureStaticVNetIP -IPAddress 10.0.0.7 `
     | New-AzureVM -ServiceName "TestService" –VNetName TestVnet
 
-## <a name="how-to-retrieve-static-internal-ip-information-for-a-vm"></a>Hogyan kérheti le a statikus belső IP-információit a virtuális gép
-Az a virtuális Gépet létrehozni a fenti szkript a statikus belső IP-információk megtekintéséhez futtassa a következő PowerShell-parancsot, és tekintse meg a tartozó értékeket *IP-cím*:
+## <a name="how-to-retrieve-static-internal-ip-information-for-a-vm"></a>Statikus belső IP-információk lekérése egy virtuális géphez
+A fenti parancsfájllal létrehozott virtuális gép statikus belső IP-adatainak megtekintéséhez futtassa a következő PowerShell-parancsot, és figyelje meg az *IP*-címek értékeit:
 
     Get-AzureVM -Name TestVM -ServiceName TestService
 
@@ -93,24 +93,24 @@ Az a virtuális Gépet létrehozni a fenti szkript a statikus belső IP-informá
     OperationId                 : 34c1560a62f0901ab75cde4fed8e8bd1
     OperationStatus             : OK
 
-## <a name="how-to-remove-a-static-internal-ip-from-a-vm"></a>Virtuális gép statikus belső IP-cím eltávolítása
-A statikus belső IP-cím hozzáadódik a szkriptben a virtuális gép eltávolításához futtassa a következő PowerShell-parancsot:
+## <a name="how-to-remove-a-static-internal-ip-from-a-vm"></a>Statikus belső IP-cím eltávolítása virtuális gépről
+A fenti szkriptben a virtuális géphez hozzáadott statikus belső IP-cím eltávolításához futtassa a következő PowerShell-parancsot:
 
     Get-AzureVM -ServiceName TestService -Name TestVM `
     | Remove-AzureStaticVNetIP `
     | Update-AzureVM
 
-## <a name="how-to-add-a-static-internal-ip-to-an-existing-vm"></a>Egy meglévő virtuális gép statikus belső IP-cím hozzáadása
-A fenti szkript használatával létrehozott virtuális géphez statikus belső IP-cím hozzáadásához futtassa a következő parancsot:
+## <a name="how-to-add-a-static-internal-ip-to-an-existing-vm"></a>Statikus belső IP-cím hozzáadása meglévő virtuális géphez
+Ha statikus belső IP-címet szeretne hozzáadni a fenti szkript használatával létrehozott virtuális géphez, futtassa a következő parancsot:
 
     Get-AzureVM -ServiceName TestService000 -Name TestVM `
     | Set-AzureStaticVNetIP -IPAddress 10.10.0.7 `
     | Update-AzureVM
 
 ## <a name="next-steps"></a>További lépések
-[Fenntartott IP-cím](virtual-networks-reserved-public-ip.md)
+[Fenntartott IP](virtual-networks-reserved-public-ip.md)
 
-[Instance-Level Public IP (ILPIP)](virtual-networks-instance-level-public-ip.md)
+[Példány szintű nyilvános IP-cím (ILPIP)](virtual-networks-instance-level-public-ip.md)
 
-[Fenntartott IP-címet REST API-k](https://msdn.microsoft.com/library/azure/dn722420.aspx)
+[Fenntartott IP REST API-k](https://msdn.microsoft.com/library/azure/dn722420.aspx)
 

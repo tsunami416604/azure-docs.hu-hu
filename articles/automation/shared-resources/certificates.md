@@ -4,17 +4,17 @@ description: Tanúsítványok biztonságosan vannak az Azure Automationben, így
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 04/02/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d230fa97d009f0ee2a3bc86a0b6b7c8d40687a46
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: da116dd8c84e4aa96cc3254218f1ab5d14a8bd6b
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60010279"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67478180"
 ---
 # <a name="certificate-assets-in-azure-automation"></a>Tanúsítványeszközök az Azure Automationben
 

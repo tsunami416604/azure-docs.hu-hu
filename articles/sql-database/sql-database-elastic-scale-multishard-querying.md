@@ -13,11 +13,11 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: 35759f03d7cf09a4114ca6dca74bd3ee92fdcbfa
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462171"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60761692"
 ---
 # <a name="multi-shard-querying-using-elastic-database-tools"></a>Többszegmenses lekérdezés a rugalmas Adatbáziseszközök használatáról
 
@@ -61,7 +61,7 @@ using (MultiShardConnection conn = new MultiShardConnection(myShardMap.GetShards
 
 A fő különbség többszegmenses kapcsolatok építését. Ahol **SqlConnection** egy önálló adatbázis működik a **MultiShardConnection** vesz igénybe egy ***szegmensek gyűjteményét*** bemenetként. Adja meg a gyűjtemény horizontálispartíció-térkép a szegmens. A lekérdezés majd hajtja végre a szegmensek gyűjteményét **UNION ALL** szemantika egy teljes eredmény összegyűjtése. Szükség esetén a szegmens, ahol a sor származik nevét a kimeneti történő is hozzáadhatók a **ExecutionOptions** parancssori tulajdonságot.
 
-Vegye figyelembe a hívást **myShardMap.GetShards()**. Ez a módszer minden szegmensre lekéri a szegmenstérkép, és minden megfelelő adatbázis-lekérdezés futtatható egy egyszerűbb megoldást kínál. A gyűjtemény szegmens többszegmenses lekérdezés finomított is lehet további keresztül a gyűjtemény egy LINQ-lekérdezésekre elvégzésével által visszaadott hívása **myShardMap.GetShards()**. És a részleges eredményeket szabályzat együttes alkalmazásával a jelenlegi képességről többszegmenses lekérdezés esetén működik megfelelően a szegmensek több száz legfeljebb tíz úgy lett kialakítva.
+Vegye figyelembe a hívást **myShardMap.GetShards()** . Ez a módszer minden szegmensre lekéri a szegmenstérkép, és minden megfelelő adatbázis-lekérdezés futtatható egy egyszerűbb megoldást kínál. A gyűjtemény szegmens többszegmenses lekérdezés finomított is lehet további keresztül a gyűjtemény egy LINQ-lekérdezésekre elvégzésével által visszaadott hívása **myShardMap.GetShards()** . És a részleges eredményeket szabályzat együttes alkalmazásával a jelenlegi képességről többszegmenses lekérdezés esetén működik megfelelően a szegmensek több száz legfeljebb tíz úgy lett kialakítva.
 
 Egy, a több szegmensre vonatkozó lekérdezésekkel kapcsolatos korlátozás jelenleg szegmens és shardlet, hogy a rendszer megkérdezi a érvényesítése hiánya. Adatfüggő útválasztás ellenőrzi, hogy egy adott szegmens a szegmenstérkép része a lekérdezés időpontjában, amíg több horizontális partíciós lekérdezések ne végezze el ezt az ellenőrzést. Több horizontális partíciós lekérdezések adatbázisokon, amelyek a szegmenstérkép el lettek távolítva vezethet.
 

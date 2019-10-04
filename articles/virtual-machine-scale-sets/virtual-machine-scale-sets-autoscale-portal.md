@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
 ms.openlocfilehash: 648bc0295cd5435e9c3e44f33b7ae80522fa8e0e
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888533"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60618878"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>Az Azure portal virtuális gép méretezési csoport automatikus méretezése
 Méretezési csoport létrehozásakor meghatározza a futtatni kívánt virtuálisgép-példányok számát. Az alkalmazás igényeihez igazodva automatikusan növelheti vagy csökkentheti a virtuálisgép-példányok számát. Az automatikus méretezésnek köszönhetően lépést tarthat az ügyfeleik igényeivel és az alkalmazás teljes élettartama alatt reagálhat az alkalmazás teljesítményében bekövetkezett változásokra.
@@ -55,7 +55,7 @@ Az alkalmazás növekvő igényeivel párhuzamosan a méretezési csoportban lé
     | *Operátor*             | A metrikaadatok és a küszöbérték összehasonlításához használt operátor.                                                     | Nagyobb, mint   |
     | *Küszöbérték*            | A százalékos aránya, amelyek hatására az automatikus skálázási szabály aktivál egy műveletet.                                                 | 70             |
     | *Időtartam*             | A mérőszám és a küszöbértékek összehasonlítása előtt monitorozott időtartam.                                   | 10 perc     |
-    | *Művelet*            | Meghatározza, hogy a méretezési csoport felfelé vagy lefelé a szabály alkalmazásakor és milyen növekményű                        | Százalék növelése a következővel: |
+    | *Művelet*            | Meghatározza, hogy a méretezési csoport felfelé vagy lefelé a szabály alkalmazásakor és milyen növekményű                        | Százalék szerint növelése |
     | *Példányok száma*       | Megadja, hogy a virtuálisgép-példányok hány százalékát kell módosítani a szabály aktiválásakor.                                            | 20             |
     | *Lehűlés (percben)*  | Mennyi idő teljen el a szabály újbóli alkalmazása előtt, hogy az automatikus skálázási műveletek kifejthessék a hatásukat. | 5 perc      |
 
@@ -76,9 +76,9 @@ Az este vagy a hétvége folyamán az alkalmazás igényei csökkenhetnek. Ha a 
     
     | Paraméter              | Magyarázat                                                                                                          | Érték          |
     |------------------------|----------------------------------------------------------------------------------------------------------------------|----------------|
-    | *Operátor*             | A metrikaadatok és a küszöbérték összehasonlításához használt operátor.                                                      | Kisebb mint   |
+    | *Operátor*             | A metrikaadatok és a küszöbérték összehasonlításához használt operátor.                                                      | Kisebb, mint   |
     | *Küszöbérték*            | A százalékos aránya, amelyek hatására az automatikus skálázási szabály aktivál egy műveletet.                                                 | 30             |
-    | *Művelet*            | Meghatározza, hogy a méretezési csoport felfelé vagy lefelé a szabály alkalmazásakor és milyen növekményű                         | Százalék csökkentése a következővel: |
+    | *Művelet*            | Meghatározza, hogy a méretezési csoport felfelé vagy lefelé a szabály alkalmazásakor és milyen növekményű                         | Százalék szerint csökkentése a következővel |
     | *Példányok száma*       | Megadja, hogy a virtuálisgép-példányok hány százalékát kell módosítani a szabály aktiválásakor.                                             | 20             |
 
 3. A szabály létrehozásához válassza **hozzáadása**

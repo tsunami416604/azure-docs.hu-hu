@@ -1,71 +1,80 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Az Azure Container Instances dokumentációja
+summary: Igény szerinti Docker-tárolók futtatása felügyelt, kiszolgáló nélküli Azure-környezetben. Az Azure Container Instances egy megoldás olyan forgatókönyvek számára, amelyek elkülönített tárolókban valósulhatnak meg, vezénylés nélkül. Futtathat eseményvezérelt alkalmazásokat, gyorsan üzembe helyezheti a tárolófejlesztési folyamatokat, és futtathatja az adatfeldolgozási és buildelési feladatokat.
 metadata:
-  title: Az Azure Container Instances dokumentációja – oktatóanyagok | Microsoft Docs
-  description: 'Az Azure Container Instances a tárolók Azure-ban való futtatásának leggyorsabb és legegyszerűbb módját nyújtja anélkül, hogy virtuális gépeket kellene kiépítenie vagy magasabb szintű szolgáltatást kellene alkalmaznia.'
-  services: container-instances
-  author: czeumault
-  manager: carolz
+  title: Az Azure Container Instances dokumentációja – kiszolgáló nélküli tárolók, igény szerint
+  description: Docker-tárolók futtatása felügyelt, kiszolgáló nélküli Azure-környezetben.
+  services: 
   ms.service: container-instances
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 07/26/2017
-  ms.author: carolz
-abstract:
-  description: 'Az Azure Container Instances a tárolók Azure-ban való futtatásának leggyorsabb és legegyszerűbb módját nyújtja anélkül, hogy virtuális gépeket kellene kiépítenie vagy magasabb szintű szolgáltatást kellene alkalmaznia. Rövid útmutatóink, oktatóanyagaink és példáink segítségével megtudhatja, hogyan hozhat létre és kezelhet tárolópéldányokat.<p>Ha teljes körű tárolóvezénylési megoldásra van szüksége, tekintse meg az <a href="/azure/aks/">Azure Kubernetes Service (AKS) dokumentációját</a>.</p>'
-sections:
-  - title: 5 perces gyors útmutatók
-    items:
-      - type: paragraph
-        text: 'Megtudhatja, hogyan helyezhet üzembe rendszerképeket az Azure Container Instances használatával.'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_cligeneric.svg'
-            text: Azure CLI
-            href: /azure/container-instances/container-instances-quickstart
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
-            text: Azure Portal
-            href: /azure/container-instances/container-instances-quickstart-portal
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_powershell.svg'
-            text: Azure PowerShell
-            href: /azure/container-instances/container-instances-quickstart-powershell
-  - title: Részletes útmutatók
-    items:
-      - type: paragraph
-        text: 'Megtudhatja, hogyan csomagolhat kódot egy tárolórendszerképbe, illetve hogyan futtathatja azt egy Azure-tárolópéldányon.'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-app">Alkalmazás becsomagolása tárolórendszerképbe</a>
-          - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-acr">Azure-tároló beállításjegyzékének létrehozása és a tárolórendszerkép feltöltése</a>
-          - html: <a href="/azure/container-instances/container-instances-tutorial-deploy-app">A tárolórendszerkép üzembe helyezése egy Azure-tárolópéldányon</a>
-  - title: Fejlessze a készségeit a Microsoft Learnnel
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Docker-tárolók futtatása az Azure Container Instances szolgáltatással
-            href: /learn/modules/run-docker-with-azure-container-instances/
-            image:
-              src: /learn/achievements/run-docker-with-azure-container-instances.svg
-      - type: paragraph
-        text: <a href="/learn/browse/?products=azure-container-instances">További interaktív oktatóanyagok...</a>
-  - title: Referencia
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Parancssor
-            html: <p><a href="/cli/azure/container">Azure CLI</a></p><p><a href="/powershell/module/az.containerinstance">PowerShell</a></p>
-          - title: Nyelvek
-            html: <p><a href="/dotnet/api/overview/azure/containerinstance">.NET</a></p><p><a href="/python/api/overview/azure/containerinstance">Python</a></p><p><a href="/java/api/overview/azure/containerinstance">Java</a></p><p><a href="/javascript/api/overview/azure/containerinstances">Node.js</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/container-instances">REST API-referencia</a></p><p><a href="/azure/templates/microsoft.containerinstance/containergroups">Resource Manager-sablon</a></p>
+  ms.collection: collection
+  author: dlepow
+  ms.author: danlep
+  ms.date: 09/25/2019
+  ms.openlocfilehash: a031f70cfaad9369f79a0e18f3527250eb82bfeb
+  ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 09/27/2019
+  ms.locfileid: "71326956"
+landingContent:
+- title: Az Azure Container Instances bemutatása
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az Azure Container Instances?
+      url: container-instances-overview.md
+    - text: Tárolócsoportok
+      url: container-instances-container-groups.md
+    - text: GYIK
+      url: container-instances-faq.md
+- title: Bevezetés
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Tárolópéldány üzembe helyezése – parancssori felület
+      url: container-instances-quickstart.md
+    - text: Tárolópéldány üzembe helyezése – portál
+      url: container-instances-quickstart-portal.md
+  - linkListType: learn
+    links:
+    - text: Docker-tárolók futtatása az Azure Container Instances szolgáltatással
+      url: /learn/modules/run-docker-with-azure-container-instances/
+- title: Többtárolós csoportok létrehozása
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Tárolócsoport üzembe helyezése – YAML
+      url: container-instances-multi-container-yaml.md
+    - text: Tárolócsoport üzembe helyezése – sablon
+      url: container-instances-multi-container-group.md
+- title: Üzembe helyezési forgatókönyvek
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Csatlakozás virtuális hálózathoz
+      url: container-instances-vnet.md
+    - text: Újraindítási szabályzat konfigurálása
+      url: container-instances-restart-policy.md
+    - text: Környezeti változók beállítása
+      url: container-instances-environment-variables.md
+- title: Tárolóalkalmazások kezelése
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Tárolók leállítása és indítása
+      url: container-instances-stop-start.md
+    - text: Futó tárolók frissítése
+      url: container-instances-update.md
+    - text: Adatok megosztása tárolók között
+      url: container-instances-volume-emptydir.md
+- title: Integrálás az Azure-ral
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Rendszerkép üzembe helyezése az Azure Container Registryből
+      url: container-instances-using-azure-container-registry.md
+    - text: Felügyelt identitás használata
+      url: container-instances-managed-identity.md
+    - text: Azure-fájlmegosztás csatlakoztatása
+      url: container-instances-volume-azure-files.md

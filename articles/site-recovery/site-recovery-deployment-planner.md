@@ -1,20 +1,20 @@
 ---
-title: Tudnivalók az Azure Site Recovery Deployment Planner a VMware virtuális gépek vészhelyreállítása az Azure-bA |} A Microsoft Docs
-description: További információ az Azure Site Recovery Deployment Planner a VMware virtuális gépek vészhelyreállítása az Azure-bA.
+title: A VMware virtuális gépek Azure-ba való vész-helyreállításának Azure Site Recovery Deployment Planner Microsoft Docs
+description: Ismerje meg a VMware virtuális gépek Azure-ba való vész-helyreállításának Azure Site Recovery Deployment Plannerét.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 04/18/2019
+ms.date: 07/29/2019
 ms.author: mayg
-ms.openlocfilehash: 0597f185df35a92696ed9287d23778180319b3de
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 4e1d27d133b2eb4e0d4d45a5de563e119513c79f
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60005689"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68620055"
 ---
-# <a name="about-the-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>Tudnivalók az Azure Site Recovery Deployment Planner VMware – Azure
+# <a name="about-the-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>Tudnivalók a VMware-ről az Azure-ra való Azure Site Recovery Deployment Planner
 Ez a cikk az Azure Site Recovery Deployment Planner felhasználói útmutatója a VMware–Azure éles környezetben való üzembe helyezéséhez.
 
 ## <a name="overview"></a>Áttekintés
@@ -41,10 +41,9 @@ Az eszköz a következő részleteket biztosítja:
 
 **Azure infrastruktúra-követelmények**
 
-* A tárolótípus (standard vagy prémium szintű tárfiók) követelménye az egyes virtuális gépekhez
-* A replikáláshoz beállítandó standard és prémium szintű tárfiókok teljes száma
+* A tárolási típus (standard vagy Premium Storage) követelménye az egyes virtuális gépekhez
+* A replikáláshoz beállítani kívánt standard és Premium Storage-fiókok teljes száma (tartalmazza a cache Storage-fiókokat is)
 * Tárfiókok elnevezési javaslatai a Storage útmutatója alapján
-* Az összes virtuális gép tárfiókjának elhelyezése
 * A feladatátvételi teszt vagy feladatátvétel előtt beállítandó Azure-magok száma az előfizetésen
 * Az Azure virtuális gépek javasolt mérete az egyes helyszíni virtuális gépeknél
 
@@ -66,7 +65,7 @@ Az eszköz a következő részleteket biztosítja:
 | | **VMware – Azure** |**Hyper-V – Azure**|**Azure – Azure**|**Hyper-V – másodlagos hely**|**VMware – másodlagos hely**
 --|--|--|--|--|--
 Támogatott esetek |Igen|Igen|Nem|Igen*|Nem
-Támogatott verzió | vCenter 6.7, 6.5-ös, 6.0 vagy 5.5| Windows Server 2016, Windows Server 2012 R2 | NA |Windows Server 2016, Windows Server 2012 R2|NA
+Támogatott verzió | vCenter 6,7, 6,5, 6,0 vagy 5,5| Windows Server 2016, Windows Server 2012 R2 | NA |Windows Server 2016, Windows Server 2012 R2|NA
 Támogatott konfiguráció|vCenter, ESXi| Hyper-V fürt, Hyper-V gazdagép|NA|Hyper-V fürt, Hyper-V gazdagép|NA|
 Azon kiszolgálók száma, amelyek profilozhatók a Site Recovery Deployment Planner futó példányaihoz |Egyszeres (az egy vCenter Serverhez vagy egy ESXi-kiszolgálóhoz tartozó virtuális gépek profilozhatók egyszerre)|Többszörös (több gazdagéphez vagy gazdagépfürthöz tartozó virtuális gépek profilozhatók egyszerre)| NA |Többszörös (több gazdagéphez vagy gazdagépfürthöz tartozó virtuális gépek profilozhatók egyszerre)| NA
 
@@ -77,8 +76,8 @@ Az eszköz két fő fázisból áll: a profil- és jelentéskészítésből. Van
 
 | Kiszolgálókövetelmények | Leírás|
 |---|---|
-|Profilkészítés és az átviteli sebesség mérése| <ul><li>Operációs rendszer: A Windows Server 2016 vagy Windows Server 2012 R2 rendszerben<br>(ideális esetben legalább a [konfigurációs kiszolgáló javasolt méretével egyezik](https://aka.ms/asr-v2a-on-prem-components))</li><li>Gépkonfiguráció: 8 Vcpu, 16 GB RAM, 300 GB HDD</li><li>[.NET-keretrendszer 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli)</li><li>[A Visual Studio 2012 szoftverhez készült Visual C++ terjeszthető változata](https://aka.ms/vcplusplus-redistributable)</li><li>Internet-hozzáférés az Azure-szolgáltatáshoz erről a kiszolgálóról</li><li>Azure Storage-fiók</li><li>Rendszergazdai hozzáférés a kiszolgálón</li><li>Minimális szabad lemezterület 100 GB (feltéve, hogy 1000 virtuális gépen átlagosan gépenként három lemezről 30 napig készít profilokat)</li><li>VMware vCenter statisztikaszint-beállításait lehet 1 vagy magasabb szintű</li><li>VCenter-portot (443-as alapértelmezett érték) engedélyezése: A Site Recovery Deployment Planner ezt a portot használja a vCenter kiszolgálóhoz/ESXi-gazdagéphez való kapcsolódáshoz</ul></ul>|
-| Jelentéskészítés | Windows PC vagy Windows Server, az Excel 2013 vagy újabb.<li>[.NET-keretrendszer 4.5](https://aka.ms/dotnet-framework-45)</li><li>[A Visual Studio 2012 szoftverhez készült Visual C++ terjeszthető változata](https://aka.ms/vcplusplus-redistributable)</li><li>[A VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli) csak akkor adja át – a jelentés projektlétrehozási parancsot a virtuális gépek legutóbbi konfigurációs adatait a virtuális gépek beolvasása a felhasználó beállítás kötelező. A Deployment Planner a vCenter-kiszolgáló csatlakozik. Engedélyezi a vCenter portot (443-as alapértelmezett érték) vCenter-kiszolgálóhoz való csatlakozáshoz.</li>|
+|Profilkészítés és az átviteli sebesség mérése| <ul><li>Operációs rendszer: Windows Server 2016 vagy Windows Server 2012 R2<br>(ideális esetben legalább a [konfigurációs kiszolgáló javasolt méretével egyezik](https://aka.ms/asr-v2a-on-prem-components))</li><li>Számítógép konfigurációja: 8 vCPU, 16 GB RAM, 300 GB HDD</li><li>[.NET-keretrendszer 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli)</li><li>[A Visual Studio 2012 szoftverhez készült Visual C++ terjeszthető változata](https://aka.ms/vcplusplus-redistributable)</li><li>Internet-hozzáférés az Azure-szolgáltatáshoz erről a kiszolgálóról</li><li>Azure Storage-fiók</li><li>Rendszergazdai hozzáférés a kiszolgálón</li><li>Minimális szabad lemezterület 100 GB (feltéve, hogy 1000 virtuális gépen átlagosan gépenként három lemezről 30 napig készít profilokat)</li><li>A VMware vCenter statisztikai szintjének beállítása 1 vagy magasabb szintű lehet</li><li>VCenter-port engedélyezése (alapértelmezett 443): Site Recovery Deployment Planner ezt a portot használja a vCenter-kiszolgálóhoz/ESXi-gazdagéphez való csatlakozáshoz</ul></ul>|
+| Jelentéskészítés | Windows rendszerű számítógép vagy Windows Server Excel 2013 vagy újabb verzióval.<li>[.NET-keretrendszer 4.5](https://aka.ms/dotnet-framework-45)</li><li>[A Visual Studio 2012 szoftverhez készült Visual C++ terjeszthető változata](https://aka.ms/vcplusplus-redistributable)</li><li>[VMware vSphere PowerCLI 6,0 R3](https://aka.ms/download_powercli) megadása csak akkor szükséges, ha a jelentés generálására szolgáló parancs pass-User beállításával beolvassa a virtuális gépek legújabb virtuálisgép-konfigurációs információit. A Deployment Planner csatlakozik a vCenter-kiszolgálóhoz. A vCenter port (alapértelmezett 443) portjának engedélyezése a vCenter-kiszolgálóhoz való csatlakozáshoz.</li>|
 | Felhasználói engedélyek | Csak olvasási jogosultság a felhasználói fióknak a VMware vCenter/VMware vSphere ESXi kiszolgáló profilkészítés közben való hozzáféréséhez |
 
 > [!NOTE]
@@ -104,6 +103,9 @@ A mappa több fájlt és almappát tartalmaz. Az ASRDeploymentPlanner.exe futtat
     E:\ASR Deployment Planner_v2.3\ASRDeploymentPlanner.exe
 
 ### <a name="update-to-the-latest-version-of-deployment-planner"></a>Frissítés a Deployment Planner legújabb verziójára
+
+A legújabb frissítéseket a Deployment Planner [korábbi verzióiban](site-recovery-deployment-planner-history.md)tekintjük össze.
+
 Ha a Deployment Planner korábbi verziójával rendelkezik, tegye az alábbiak egyikét:
  * Ha a legújabb verzió nem tartalmaz profilkészítést érintő javítást, és a profilkészítés már folyamatban van a Planner aktuális verzióján, folytassa a profilkészítést.
  * Ha a legújabb verzió tartalmaz profilkészítést érintő javítást, javasoljuk, hogy állítsa le az aktuális verzión a profilkészítést, és indítsa újra a profilkészítést az új verzióval.
@@ -117,8 +119,8 @@ Ha a Deployment Planner korábbi verziójával rendelkezik, tegye az alábbiak e
 
 
 ## <a name="version-history"></a>Verzióelőzmények
-A legutóbbi Site Recovery Deployment Planner eszköz verziószáma 2.4.
-Az egyes frissítésekben hozzáadott javításokról a [Site Recovery Deployment Planner verzióelőzményeinek oldalán](https://social.technet.microsoft.com/wiki/contents/articles/51049.asr-deployment-planner-version-history.aspx) lehet tájékozódni.
+A legújabb Site Recovery Deployment Planner eszköz verziója 2,5.
+Az egyes frissítésekben hozzáadott javításokról a [Site Recovery Deployment Planner verzióelőzményeinek oldalán](https://docs.microsoft.com/azure/site-recovery/site-recovery-deployment-planner-history) lehet tájékozódni.
 
 ## <a name="next-steps"></a>További lépések
 [A Site Recovery Deployment Planner futtatása](site-recovery-vmware-deployment-planner-run.md)

@@ -1,69 +1,82 @@
 ---
-title: A B2B-együttműködés – Azure Active Directory vendégmeghívás beváltása |} A Microsoft Docs
-description: Ismerteti az Azure AD B2B együttműködés meghívó érvényesítési élmény a végfelhasználók számára, beleértve a szerződést, adatvédelmi feltételeket.
+title: Meghívás megváltása B2B-együttműködésben – Azure Active Directory | Microsoft Docs
+description: Ismerteti az Azure AD B2B együttműködés meghívásának beváltási élményét a végfelhasználók számára, beleértve az adatvédelmi feltételeket is.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 12/14/2018
+ms.date: 06/12/2019
 ms.author: mimart
 author: msmimart
-manager: daveba
-ms.reviewer: sasubram
+manager: celestedg
+ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e5a8d46f67553cc10bd9cdb31cf64511858948f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 2d32818f9e96e931f9e8c3c13554752327c5c456
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59046495"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69622610"
 ---
-# <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Az Azure Active Directory B2B együttműködés vendégmeghívás beváltása
+# <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B együttműködés meghívásának beváltása
 
-Azure Active Directory (Azure AD) B2B-együttműködés keretében partnerszervezetek felhasználóinak együttműködni, meghívhatja a vendég felhasználók férhetnek hozzá a megosztott alkalmazásokat. Miután vendégfelhasználó van felvéve a címtárba, a felhasználói felületen keresztül, vagy a felhasználó Powershellen keresztül a cégbe, vendégfelhasználók ahol engedélyt megadják, az első jóváhagyási folyamat használatával kell lépnie [adatvédelmi feltételek](#privacy-policy-agreement). Ez a folyamat a következő módon történik:
+Ez a cikk bemutatja, hogyan érhetik el a vendég felhasználói az erőforrásokat és az azokhoz való belekapcsolódási folyamatot. Ha meghívó e-mailt küld a vendégnek, a meghívás tartalmaz egy hivatkozást, amely beválthat, hogy hozzáférjen az alkalmazáshoz vagy a portálhoz. A meghívás e-mail-címe csak egyike annak, hogy a vendégek hozzáférjenek az erőforrásokhoz. Másik lehetőségként hozzáadhat vendégeket a címtárhoz, és közvetlenül a megosztani kívánt portálra vagy alkalmazásra mutató hivatkozást adhat hozzájuk. Az általuk használt módszertől függetlenül a vendégek az első alkalommal történő belefoglalási folyamaton keresztül vezérlik. Ez a folyamat biztosítja, hogy a vendégek elfogadják az adatvédelmi feltételeket, és elfogadják a beállított használati [feltételeket](https://docs.microsoft.com/azure/active-directory/governance/active-directory-tou) .
 
-- A Vendég meghívója egy megosztott alkalmazás közvetlen hivatkozást küld. A meghívott a bejelentkezési hivatkozásra kattint, fogadja el az adatvédelmi szabályzat feltételeit, és zökkenőmentesen fér hozzá a megosztott erőforrás. (A Vendég felhasználó továbbra is megkapja a meghívó e-mail beváltási URL-címet, de bizonyos speciális esetekben eltérő, már nincs rá szükség, a meghívó e-mailben.)  
-- A Vendég felhasználó kap egy meghívót tartalmazó e, majd a beváltási URL-CÍMÉT. Az első bejelentkezés részeként azok kéri, hogy fogadja el az adatvédelmi szabályzat feltételeit.
+Amikor vendég felhasználót ad hozzá a címtárhoz, a vendég felhasználói fióknak van egy engedélyezési állapota (megtekinthető a PowerShellben), amely eredetileg **PendingAcceptance**-re van állítva. Ez a beállítás addig marad, amíg a vendég elfogadja a meghívót, és elfogadja az adatvédelmi szabályzatát és használati feltételeit. Ezt követően a hozzájárulási állapot elfogadvaértékűre változik, és a jóváhagyás lapjai már nem jelennek meg a vendég számára.
 
-## <a name="redemption-through-a-direct-link"></a>Közvetlen hivatkozás segítségével elvégezhetné beváltása
+## <a name="redemption-through-the-invitation-email"></a>Visszaváltás a meghívó e-mailben
 
-A vendégmeghívó meghívhatja a vendégfelhasználó küldésével, egy [közvetlen hivatkozás egy megosztott alkalmazás](../manage-apps/end-user-experiences.md#direct-sign-on-links). A vendégfelhasználót a beváltási élmény megírásához jelentkezik be a velük megosztott alkalmazást. Akkor is egy hivatkozásra kattintva az alkalmazás, tekintse át és fogadja el az adatvédelmi szabályzat feltételeit, és zökkenőmentesen hozzáférhessen az alkalmazáshoz. A legtöbb esetben a vendégfelhasználók már nincs szüksége kattintson a meghívó e-mailben beváltási URL.
+Ha [a Azure Portal használatával](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-add-guest-users-portal)ad hozzá egy vendég felhasználót a címtárhoz, a rendszer meghívót küld a vendégnek a folyamatban. Azt is megteheti, hogy a [PowerShell használatával](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-invite-powershell) küldi el a meghívó e-maileket, ha vendég felhasználókat ad hozzá a címtárhoz. Itt látható a vendég felhasználói felületének leírása, amikor beváltják a hivatkozást az e-mailben.
 
-Ha a felhasználói felületen keresztül vendégfelhasználókat, vagy úgy döntött, a meghívást tartalmazó e-mail küldése a PowerShell-meghívó élmény részeként, a meghívott felhasználó továbbra is kap egy meghívót tartalmazó e. E-mailt a következő speciális esetekben hasznos:
+1. A vendég a **Microsoft**meghívótól kapott [meghívó e-mailt](https://docs.microsoft.com/azure/active-directory/b2b/invitation-email-elements) kap.
+2. A vendég kiválasztja az **első lépéseket** az e-mailben.
+3. Ha a vendég nem rendelkezik Azure AD-fiókkal, egy Microsoft-fiókkal (MSA) vagy egy összevont szervezethez tartozó e-mail-fiókkal, a rendszer kéri, hogy hozzon létre egy MSA (kivéve, ha az [egyszeri jelszó](https://docs.microsoft.com/azure/active-directory/b2b/one-time-passcode) funkció engedélyezve van, és nincs szükség MSA).
+4. A vendég irányítását az alábbiakban ismertetett belefoglalási [élmény](#consent-experience-for-the-guest) vezérli.
 
-- A felhasználó nem rendelkezik egy Azure AD-fiókot vagy egy Microsoft-fiókkal (MSA). Ebben az esetben a felhasználó előtt létre kell hoznia egy MSA a hivatkozásra kattintanak, vagy a meghívó e-mailben a beváltási URL-címet használhatnak. Az érvényesítési folyamat automatikusan kéri a felhasználót, hozzon létre egy MSA.
-- Egyes esetekben a meghívott felhasználó objektumot nem lehet egy e-mail-cím kapcsolatobjektummal (például az Outlook kapcsolattartási objektum) való ütközés miatt. Ebben az esetben a felhasználónak rá kell kattintania a beváltási URL-címet a meghívó e-mailben.
-- A felhasználó lehet, hogy jelentkezzen be az e-mail-cím, amely meghívták alias. (Alias az e-mail-fiók társított további e-mail címmel.) Ebben az esetben a felhasználónak rá kell kattintania a beváltási URL-címet a meghívó e-mailben.
+## <a name="redemption-through-a-direct-link"></a>Váltás közvetlen kapcsolaton keresztül
 
-Ha ilyen speciális esetekben fontos a szervezetben, azt javasoljuk, hogy a felhasználók a meghívó e-mailben is elküldheti módszerrel meghívása. Emellett a felhasználó nem tartozik egy különleges esetben, ha továbbra is kattintva törölheti az URL-cím meghívó e-mailben érhet el.
+A meghívót tartalmazó e-mailek alternatívájaként az alkalmazásra vagy a portálra mutató közvetlen hivatkozást is megadhat. Először hozzá kell adnia a vendég felhasználót a címtárhoz a [Azure Portal](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-add-guest-users-portal) vagy a [PowerShell](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-invite-powershell)használatával. Ezután bármilyen [testreszabható módszert használhat az alkalmazások felhasználók számára történő központi telepítéséhez](https://docs.microsoft.com/azure/active-directory/manage-apps/end-user-experiences), beleértve a közvetlen bejelentkezési hivatkozásokat is. Ha egy vendég közvetlen hivatkozást használ a meghívó e-mail-címe helyett, a rendszer továbbra is az első belefoglalási élményt fogja követni.
 
-## <a name="redemption-through-the-invitation-email"></a>A meghívó e-mailes beváltása
+> [!IMPORTANT]
+> A közvetlen hivatkozásnak bérlő-specifikusnak kell lennie. Más szóval tartalmaznia kell egy bérlői azonosítót vagy egy ellenőrzött tartományt, hogy a vendég hitelesíthető legyen a bérlőben, ahol a megosztott alkalmazás található. Egy közös URL- https://myapps.microsoft.com cím, például nem fog működni a vendég számára, mert az átirányítja a saját bérlőre a hitelesítéshez. Íme néhány példa a bérlői környezettel kapcsolatos közvetlen hivatkozásokra:
+ > - Alkalmazások hozzáférési panelje https://myapps.microsoft.com/?tenantid=&lt:; bérlő azonosítója&gt; 
+ > - Az ellenőrzött tartományhoz tartozó alkalmazások hozzáférési panelje: https://myapps.microsoft.com/&lt; ellenőrzött tartomány&gt;
+ > - Azure Portal: https://portal.azure.com/&lt; bérlő azonosítója&gt;
+ > - Egyéni alkalmazás: lásd a [közvetlen bejelentkezési hivatkozás](../manage-apps/end-user-experiences.md#direct-sign-on-links) használatát ismertető témakört.
 
-Meghívott módszerrel, amely a meghívó e-mailt küld, ha felhasználók is beválthatja a meghívó e-mailes meghívót. Egy meghívott felhasználó kattintson a beváltási URL-címe az e-mailben, és tekintse át és fogadja el az adatvédelmi szabályzat feltételeit. A folyamat Itt részletesen leírt:
+Vannak olyan esetek, amikor a meghívó e-mail-címe közvetlen hivatkozáson keresztül ajánlott. Ha ezek a speciális esetek fontosak a szervezet számára, javasoljuk, hogy a meghívó e-mailt még elküldő metódusok használatával meghívja a felhasználókat:
+ - A felhasználónak nincs Azure AD-fiókja, MSA vagy e-mail-fiókja egy összevont szervezetben. Hacsak nem használja az egyszeri PIN-kódot, a vendégnek be kell váltania a meghívó e-mail-címét, hogy a MSA létrehozásának lépésein legyenek vezérelve.
+ - Előfordulhat, hogy a meghívott felhasználói objektum nem rendelkezik e-mail-címmel, mert ütközik egy Contact objektummal (például egy Outlook Contact objektummal). Ebben az esetben a felhasználónak a meghívót tartalmazó e-mailben kell kattintania a beváltási URL-címre.
+ - A felhasználó a meghívott e-mail-cím aliasával jelentkezhet be. (Az alias egy e-mail-fiókhoz társított e-mail-cím.) Ebben az esetben a felhasználónak a meghívót tartalmazó e-mailben kell kattintania a beváltási URL-címre.
 
-1.  Meghívásának, miután a meghívott személy által küldött e-mailes meghívót kap **Microsoft Invitations**.
-2.  A meghívott személy kijelölése **Ismerkedés** az e-mailben.
-3.  Ha a meghívott személy nem rendelkezik egy Azure AD-fiókot vagy egy MSA, hozzon létre egy MSA kell adnia.
-4.  A meghívott a rendszer átirányítja a **tekintse át az engedélyek** képernyőn, ahonnan a meghívó szervezetet adatvédelmi nyilatkozat tekintse át és fogadja el a feltételeket.
+## <a name="consent-experience-for-the-guest"></a>A vendég beleegyezett a felhasználói élménybe
 
-## <a name="privacy-policy-agreement"></a>Adatvédelmi szabályzat szerződés
+Amikor egy vendég először jelentkezik be a partner szervezet erőforrásaihoz, a következő lapokon keresztül vezérelheti őket. 
 
-Bármely Vendég felhasználó bejelentkezése után az első alkalommal egy fiókpartner-szervezet erőforrásaihoz, megjelenik egy **tekintse át az engedélyek** képernyő. Áttekintheti itt, azok a meghívó szervezetet adatvédelmi nyilatkozatát. A felhasználó el kell fogadnia azok az információk felhasználása a meghívó szervezetet adatvédelmi szabályzatokat továbbra is megfelelően.
+1. A vendég áttekinti a **felülvizsgálati engedélyek** lapot, amely a meghívó szervezet adatvédelmi nyilatkozatát ismerteti. A felhasználóknak **el kell fogadniuk** az adataikat a meghívó szervezet adatvédelmi szabályzatai alapján a folytatáshoz.
 
-![Képernyőfelvétel a hozzáférési panelen felhasználói beállításokat:](media/redemption-experience/ConsentScreen.png) 
+   ![A felülvizsgálati engedélyek oldalát ábrázoló képernyőkép](media/redemption-experience/review-permissions.png) 
 
-További információ a hogyan bérlői rendszergazdaként hozzákapcsolhatja a szervezete adatvédelmi nyilatkozatát: [Útmutató: Adja hozzá a szervezet adatvédelmi információ az Azure Active Directoryban](https://aka.ms/adprivacystatement).
+   > [!NOTE]
+   > Arról, hogy a bérlői rendszergazda hogyan hivatkozhat a szervezete adatvédelmi nyilatkozatára, tekintse [meg a útmutató: Adja hozzá a szervezete adatvédelmi adatait Azure Active Directory](https://aka.ms/adprivacystatement).
 
-## <a name="terms-of-use"></a>Használati feltételek
+2. Ha a használati feltételek konfigurálva vannak, a vendég megnyílik, és áttekinti a használati feltételeket, majd kiválasztja az **elfogadás**lehetőséget. 
 
-A kezdeti érvényesítési folyamat során, a vendégfelhasználó használati feltételeket tartalmazó fájl is jelenthet a az Azure AD használati feltételek funkció használatával. Az Azure Active Directoryban, ez a szolgáltatás alatt elérheti **kezelés** > **szervezeti kapcsolatok** > **használati feltételeket tartalmazó fájl** vagy alatt **Biztonsági** > **feltételes hozzáférési** > **használati feltételeket tartalmazó fájl**. További információkért lásd: [az Azure AD használati feltételek funkció](../conditional-access/terms-of-use.md).
+   ![Az új használati feltételeket bemutató képernyőkép](media/redemption-experience/terms-of-use-accept.png) 
 
-![Képernyőfelvétel: az új használati feltételek](media/redemption-experience/organizational-relationships-terms-of-use.png) 
+   > [!NOTE]
+   > A következő témakörben megadhatja a [használati feltételeket](../governance/active-directory-tou.md) a**szervezeti kapcsolatok** >  **kezelése** > **használati feltételek**.
+
+3. Ha másként nincs megadva, a rendszer átirányítja a vendéget az alkalmazások hozzáférési paneljére, amely felsorolja a vendég által elérhető alkalmazásokat.
+
+   ![Az alkalmazások hozzáférési paneljét ábrázoló képernyőfelvétel](media/redemption-experience/myapps.png) 
+
+A címtárban a vendég meghívásának **elfogadott** értéke **Igen**értékre változik. Ha létrejött egy MSA, a vendég **forrása** a Microsoft- **fiókot**jeleníti meg. További információ a vendég felhasználói fiók tulajdonságairól: [Azure ad B2B csoportmunka-felhasználó tulajdonságai](user-properties.md). 
 
 ## <a name="next-steps"></a>További lépések
 
 - [Mi az az Azure AD B2B együttműködés?](what-is-b2b.md)
 - [Azure Active Directory B2B együttműködés felhasználók hozzáadása az Azure Portalon](add-users-administrator.md)
-- [Az információkkal dolgozó szakemberek hogyan hozzá B2B együttműködési felhasználókat az Azure Active Directory?](add-users-information-worker.md)
-- [Azure Active Directory B2B együttműködési felhasználókat adja hozzá a PowerShell használatával](customize-invitation-api.md#powershell)
-- [Egy szervezet meg vendégként](leave-the-organization.md)
+- [Hogyan vehetik igénybe az Information Worker VÁLLALATKÖZI együttműködési felhasználókat a Azure Active Directory?](add-users-information-worker.md)
+- [Azure Active Directory B2B csoportmunka-felhasználók hozzáadása a PowerShell használatával](customize-invitation-api.md#powershell)
+- [A szervezet kihagyása vendég felhasználóként](leave-the-organization.md)

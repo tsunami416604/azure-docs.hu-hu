@@ -1,7 +1,7 @@
 ---
-title: Mérsékelt SMS-t egyéni kifejezéslisták - Content Moderator
-titlesuffix: Azure Cognitive Services
-description: A lista felügyeleti API-val a feltételek a moderálási API használata egyéni listák létrehozásához.
+title: Mérsékelt szöveg egyéni kifejezési listával – Content Moderator
+titleSuffix: Azure Cognitive Services
+description: A List Management API használatával létrehozhat egyéni, a szöveges moderálási API-val használható feltételeket tartalmazó listát.
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
@@ -10,24 +10,24 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 28029fe92a207dba85e2ab5a22c08879b7172925
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0a4e9b7925c2309a9682156934e9d94fa83c0d4b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58105777"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564388"
 ---
-# <a name="moderate-with-custom-term-lists-in-the-api-console"></a>Üzletmenetre gyakorolt közepes az egyéni kifejezéslisták az API-konzolon
+# <a name="moderate-with-custom-term-lists-in-the-api-console"></a>Mérsékelt az API-konzol egyéni feltételekkel rendelkező listája
 
 Az Azure Content Moderator alapértelmezett globális kifejezéslistája a legtöbb tartalommoderálási igénynek megfelel. Azonban szükség lehet bizonyos szervezetspecifikus kifejezések szűrésére is. Például elképzelhető, hogy meg szeretné címkézni az üzleti vetélytársak neveit további ellenőrzés céljából. 
 
-Használja a [lista felügyeleti API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f) egyéni listák a moderálási API használata a feltételek létrehozásához. A **szöveg – a képernyő** művelet megkeresi a trágárság cenzúrázása a szöveget, és megosztott és az egyéni feketelistákkal összeveti is összehasonlítja.
+A [List Management API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f) használatával létrehozhat egyéni, a szöveges MODERÁLÁSi API-val használható feltételeket tartalmazó listát. A  szöveges képernyős művelet megkeresi a szöveget a káromkodáshoz, és összehasonlítja az egyéni és a közös feketelistán lévő szöveget is.
 
 > [!NOTE]
 > A maximális korlát **5 kifejezéslista**, amelyek egyenként **nem haladhatják meg a 10 000 kifejezést**.
 >
 
-A lista Management API segítségével a következő feladatokat végezheti el:
+A következő feladatok elvégzéséhez használhatja a List Management API-t:
 - Lista létrehozása.
 - Kifejezések hozzáadása egy listához.
 - Egy listán szereplő kifejezések szűrése.
@@ -38,44 +38,44 @@ A lista Management API segítségével a következő feladatokat végezheti el:
 
 ## <a name="use-the-api-console"></a>Az API-konzol használata
 
-Az API az online konzolon is próbálhatják ki őket, meg kell az előfizetési kulcs. Ez a kulcs található a **beállítások** lap a **Ocp-Apim-Subscription-Key** mezőbe. További információkért lásd az [Áttekintést](overview.md).
+Mielőtt tesztelni tudja az API-t az online konzolon, szüksége lesz az előfizetési kulcsra. Ez a kulcs a **Beállítások** lap **OCP-APIM-előfizetés-Key** mezőjében található. További információkért lásd az [Áttekintést](overview.md).
 
-## <a name="refresh-search-index"></a>Frissítse a search-index
+## <a name="refresh-search-index"></a>Keresési index frissítése
 
-A kifejezéslista módosítása után frissítenie kell az index későbbi vizsgálataiba szereplő módosítások. Ebben a lépésben a hasonló hogyan egy keresőmotor, az asztalon (Ha engedélyezve van) és a egy webes keresőmotor folyamatosan frissíti új fájlok és lapok indexét.
+Miután módosította a feltételek listáját, frissítenie kell az indexét, hogy a módosítások szerepeljenek a későbbi vizsgálatokban. Ez a lépés hasonló ahhoz, ahogy a keresőmotor az asztalon (ha engedélyezve van), vagy egy webkeresőmotor folyamatosan frissíti az indexét új fájlok vagy lapok felvételéhez.
 
-1. Az a [kifejezés lista felügyeleti API-referencia](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f), a bal oldali menüben válassza ki a **kifejezés sorolja fel**, majd válassza ki **Search-Index frissítése**. 
+1. A [kifejezés-felügyeleti API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f)-referenciában a bal oldali menüben válassza ki a **kifejezések listáját**, majd kattintson a **keresési index frissítése**elemre. 
 
-   A **kifejezés listázza - Search-Index frissítése** lap megnyitásakor.
+   Megnyílik a **kifejezések listája – keresési index frissítése** oldal.
 
-2. A **Open API tesztelési konzollal**, válassza ki a régiót, amelyben leginkább a tartózkodási ismerteti. 
+2. Az **Open API Testing Console**esetében válassza ki azt a régiót, amely a legszorosabban leírja a helyét. 
 
-   ![Kifejezéslisták - frissítés Search-Index lapot régió kiválasztása](images/test-drive-region.png)
+   ![Feltételek listája – keresési index frissítése oldal régiójának kiválasztása](images/test-drive-region.png)
 
-   A **kifejezés listázza - Search-Index frissítése** API-konzol megnyitása.
+   Megjelenik a **lists-refresh Search index API-** konzol.
 
-3. Az a **listId** mezőbe írja be a lista azonosítóját. Adja meg az előfizetési kulcs, és válassza ki **küldése**.
+3. A **listId** mezőben adja meg a lista azonosítóját. Adja meg az előfizetési kulcsot, majd válassza a **Küldés**lehetőséget.
 
-   ![API - frissítés Search-Index konzol válasz tartalmú panelen Kifejezéslisták](images/try-terms-list-refresh-1.png)
+   ![A kifejezés felsorolja az API-t keresési index frissítése konzol válaszának tartalma mező](images/try-terms-list-refresh-1.png)
 
 ## <a name="create-a-term-list"></a>Kifejezéslista létrehozása
-1. Nyissa meg a [kifejezés lista felügyeleti API-referencia](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f). 
+1. Nyissa meg a [kifejezés lista kezelési API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f)-referenciáját. 
 
-   A **sorolja fel a kifejezés - létrehozása** lap megnyitásakor.
+   Megnyílik a **kifejezések listája – létrehozás** lap.
 
-2. A **Open API tesztelési konzollal**, válassza ki a régiót, amelyben leginkább a tartózkodási ismerteti. 
+2. Az **Open API Testing Console**esetében válassza ki azt a régiót, amely a legszorosabban leírja a helyét. 
 
-   ![Listák távon – létrehozása lap régió kiválasztása](images/test-drive-region.png)
+   ![Lejárati listák – oldal régiójának létrehozása kijelölés](images/test-drive-region.png)
 
-   A **sorolja fel a kifejezés - létrehozása** API-konzol megnyitása.
+   Megnyílik a **lists-Create API-** konzol.
  
-3. Az a **Ocp-Apim-Subscription-Key** adja meg az előfizetési kulcs.
+3. Az **OCP-APIM-Subscription-Key** mezőbe írja be az előfizetési kulcsot.
 
-4. Az a **kérelem törzse** mezőben adjon meg értéket a **neve** (például MyList) és **leírás**.
+4. A **kérelem törzse** mezőben adja meg a **név** (például MyList) és a **Leírás**értékeit.
 
-   ![Listák távú - konzol kérelem törzse név és leírás létrehozása](images/try-terms-list-create-1.png)
+   ![Kifejezések listája – a konzol kérelem törzsének neve és leírása](images/try-terms-list-create-1.png)
 
-5. Kulcs-érték pár helyőrző használata több leíró metaadatok rendelhet hozzá a listához.
+5. A kulcs-érték párok helyőrzői segítségével további leíró metaadatokat rendelhet a listához.
 
        {
           "Name": "MyExclusionList",
@@ -87,89 +87,89 @@ A kifejezéslista módosítása után frissítenie kell az index későbbi vizsg
           }
        }
 
-   Adja hozzá listametaadatok kulcs-érték párok, és nem tényleges feltételeket.
+   Lista metaadatainak hozzáadása kulcs-érték párokként, és nem a tényleges kifejezések.
  
-6. Kattintson a **Küldés** gombra. A lista létrejön. Megjegyzés: a **azonosító** érték, amely az új lista társítva van. Ez az azonosító más kifejezés lista felügyeleti funkciók van szükség.
+6. Kattintson a **Küldés** gombra. A lista létrejött. Jegyezze fel az új listához társított **azonosító** értéket. Erre az AZONOSÍTÓra szüksége lesz a más feltételek listázása felügyeleti funkcióihoz.
 
-   ![Listák távon – válasz konzol tartalom mezőre a Listaazonosító létrehozása](images/try-terms-list-create-2.png)
+   ![Kifejezések listája – a konzol válaszának létrehozása mező megjeleníti a lista AZONOSÍTÓját](images/try-terms-list-create-2.png)
  
-7. Feltételek hozzáadása MyList. A bal oldali menü alatt **kifejezés**válassza **kifejezés hozzáadása**. 
+7. Adjon hozzá feltételeket a MyList. A bal oldali menüben a **kifejezés**területen válassza a **feltétel hozzáadása**lehetőséget. 
 
-   A **távú - kifejezés hozzáadása** lap megnyitásakor. 
+   Megnyílik a **feltételek hozzáadása** lap. 
 
-8. A **Open API tesztelési konzollal**, válassza ki a régiót, amelyben leginkább a tartózkodási ismerteti. 
+8. Az **Open API Testing Console**esetében válassza ki azt a régiót, amely a legszorosabban leírja a helyét. 
 
-   ![Távon – kifejezés lapon kiválasztott terület hozzáadása](images/test-drive-region.png)
+   ![Kifejezés – feltétel hozzáadása oldal régiójának kiválasztása](images/test-drive-region.png)
 
-   A **távú - kifejezés hozzáadása** API-konzol megnyitása.
+   Megnyílik a kifejezés **– feltétel hozzáadása API-** konzol.
  
-9. Az a **listId** mezőbe írja be a lista azonosítója, ami akkor jön létre, és válassza ki, hogy **nyelvi**. Adja meg az előfizetési kulcs, és válassza ki **küldése**.
+9. A **listId** mezőben adja meg a GENERÁLT lista azonosítóját, és válasszon egy értéket a nyelvhez . Adja meg az előfizetési kulcsot, majd válassza a **Küldés**lehetőséget.
 
-   ![Távon – kifejezés konzol lekérdezési paraméterek hozzáadása](images/try-terms-list-create-3.png)
+   ![Kifejezés – kifejezés hozzáadása konzol lekérdezési paramétereinek](images/try-terms-list-create-3.png)
  
-10. Győződjön meg arról, hogy a kifejezés hozzáadta-e a listában, a bal oldali menüben válassza a **kifejezés**, majd válassza ki **minden használati első**. 
+10. Annak ellenőrzéséhez, hogy a kifejezés hozzá lett-e adva a listához, a bal oldali menüben válassza a **kifejezés**lehetőséget, majd kattintson az **összes feltétel**beolvasása lehetőségre. 
 
-    A **kifejezés - minden használati első** API-konzol megnyitása.
+    Megnyílik a **kifejezés – az összes kifejezés** beolvasása API-konzol.
 
-11. Az a **listId** mezőbe, majd adja meg az előfizetési kulcs és adja meg a lista azonosítója. Kattintson a **Küldés** gombra.
+11. A **listId** mezőben adja meg a lista azonosítóját, majd írja be az előfizetési kulcsot. Kattintson a **Küldés** gombra.
 
-12. Az a **válasz tartalma** ellenőrizze a megadott feltételeket.
+12. A **válasz tartalma** mezőben ellenőrizze a beírt feltételeket.
 
-    ![Kifejezés - Get minden használati konzol válasz tartalmú listák a feltételeket, amelyeket a megadott](images/try-terms-list-create-4.png)
+    ![Kifejezés – minden kifejezés beolvasása a konzol válaszának tartalma mező felsorolja a beírt feltételeket](images/try-terms-list-create-4.png)
  
-13. Adjon hozzá néhány további feltételeket. Most, hogy létrehozott egy egyéni neveinek listáját, próbálja meg [valamilyen szöveget vizsgálatának](try-text-api.md) egyéni kifejezés használatával. 
+13. Vegyen fel néhány további kifejezést. Most, hogy létrehozta a feltételek egyéni listáját, próbáljon meg [néhány szöveget](try-text-api.md) beszkennelni az egyéni kifejezés lista használatával. 
 
 ## <a name="delete-terms-and-lists"></a>Kifejezések és listák törlése
 
-Egy kifejezés vagy egy lista törlése nagyon egyszerű. Az API-t használja a következő feladatokat végezheti el:
+Egy kifejezés vagy egy lista törlése nagyon egyszerű. Az API használatával a következő feladatokat hajthatja végre:
 
-- Egy kifejezés törlése. (**Távon – Törlés**)
-- Egy listán szereplő összes kifejezés törlése a lista törlése nélkül. (**Távon – minden feltételek törlése**)
-- Egy lista törlése annak teljes tartalmával együtt. (**Kifejezéslisták - törlési**)
+- Egy kifejezés törlése. (**Kifejezés – törlés**)
+- Egy listán szereplő összes kifejezés törlése a lista törlése nélkül. (**Kifejezés – az összes feltétel törlése**)
+- Egy lista törlése annak teljes tartalmával együtt. (**Kifejezések listája – törlés**)
 
-Ebben a példában egyetlen kifejezés törlése.
+Ez a példa egyetlen kifejezést töröl.
 
-1. Az a [kifejezés lista felügyeleti API-referencia](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f), a bal oldali menüben válassza ki a **kifejezés**, majd válassza ki **törlése**. 
+1. A lejárati [lista kezelése API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f)-referenciában a bal oldali menüben válassza a **kifejezés**, majd a **Törlés**lehetőséget. 
 
-   A **távon – Törlés** nyílik meg.
+   Megnyílik a **törlési feltétel** .
 
-2. A **Open API tesztelési konzollal**, válassza ki a régiót, amelyben leginkább a tartózkodási ismerteti. 
+2. Az **Open API Testing Console**esetében válassza ki azt a régiót, amely a legszorosabban leírja a helyét. 
 
-   ![Kifejezés - törlési lap régió kiválasztása](images/test-drive-region.png)
+   ![Kifejezés – az oldal régiója kijelölésének törlése](images/test-drive-region.png)
 
-   A **távon – Törlés** API-konzol megnyitása.
+   Megnyílik az API **-törlési** konzol.
   
-3. Az a **listId** mezőbe írja be a lista, amely egy kifejezés, a törölni kívánt azonosítója. Ezt az Azonosítót az a szám (ebben a példában **122**) adja vissza, amely a **kifejezés - Get részletei láthatók** MyList konzolon. Adja meg a kifejezés, és válasszon egy nyelvet.
+3. A **listId** mezőben adja meg annak a listának az azonosítóját, amelyből törölni kívánja a kifejezést. Ez az azonosító a következő szám (a példában, **122**), amelyet a rendszer a MyList lekérése **– részletek** konzoljában ad vissza. Adja meg a kifejezést, és válassza ki a kívánt nyelvet.
  
-   ![Kifejezés - törlési konzol lekérdezési paraméterek](images/try-terms-list-delete-1.png)
+   ![Kifejezés – a konzol lekérdezési paramétereinek törlése](images/try-terms-list-delete-1.png)
 
-4. Adja meg az előfizetési kulcs, és válassza ki **küldése**.
+4. Adja meg az előfizetési kulcsot, majd válassza a **Küldés**lehetőséget.
 
-5. Győződjön meg arról, hogy a kifejezés törölve lett, használja a **kifejezés listája – mindezt** konzolon.
+5. Annak ellenőrzéséhez, hogy a kifejezés törölve lett-e, használja a következő **kifejezést: lists-Get all** Console.
 
-   ![Listák távon – minden konzol válasz content mezőre, hogy törölte-e időszak beolvasása](images/try-terms-list-delete-2.png)
+   ![Kifejezések listája – az összes konzol válaszának beolvasása mező mutatja, hogy a rendszer törli a kifejezést](images/try-terms-list-delete-2.png)
  
-## <a name="change-list-information"></a>Módosítsa a lista adatai
+## <a name="change-list-information"></a>Lista adatainak módosítása
 
-A lista nevének és leírásának szerkesztése, és adja hozzá a metaadatokat elemek.
+Szerkesztheti a lista nevét és leírását, és metaadatokat is hozzáadhat.
 
-1. Az a [kifejezés lista felügyeleti API-referencia](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f), a bal oldali menüben válassza ki a **kifejezés sorolja fel**, majd válassza ki **részletek frissítése**. 
+1. A lejárati [lista kezelése API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f)-referenciában a bal oldali menüben válassza a **kifejezés listák**lehetőséget, majd válassza a **részletek frissítése**elemet. 
 
-   A **kifejezés - frissítés részletei láthatók** lap megnyitásakor.
+   Megnyílik a **feltételek listája – részletek frissítése** oldal.
 
-2. A **Open API tesztelési konzollal**, válassza ki a régiót, amelyben leginkább a tartózkodási ismerteti. 
+2. Az **Open API Testing Console**esetében válassza ki azt a régiót, amely a legszorosabban leírja a helyét. 
 
-   ![Kifejezéslisták - frissítés részletei lap régió kiválasztása](images/test-drive-region.png)
+   ![Lejárati listák – részletek frissítése oldal régió kiválasztása](images/test-drive-region.png)
 
-   A **kifejezés - frissítés részletei láthatók** API-konzol megnyitása.
+   Megnyílik a Details ( **részletek frissítése** ) API-konzol.
 
-3. Az a **listId** mezőbe, majd adja meg az előfizetési kulcs és adja meg a lista azonosítója.
+3. A **listId** mezőben adja meg a lista azonosítóját, majd írja be az előfizetési kulcsot.
 
-4. Az a **kérelem törzse** mezőbe, majd válassza ki és a beküldéshez **küldése**.
+4. A **kérelem törzse** mezőbe írja be a módosításokat, majd válassza a **Küldés**lehetőséget.
 
-   ![Kifejezéslisták – részletek frissítése konzol kérelem törzse módosítások](images/try-terms-list-change-1.png)
+   ![Lejárati listák – részletek frissítése konzol kérelem törzsének szerkesztése](images/try-terms-list-change-1.png)
  
 
 ## <a name="next-steps"></a>További lépések
 
-A REST API használata a kódban, vagy kezdje a [kifejezés tartalmazza a .NET – rövid útmutató](term-lists-quickstart-dotnet.md) integrálhatja az alkalmazást.
+Az alkalmazással való integrációhoz használja a kódban szereplő REST API, vagy Kezdje a [kifejezést a .net](term-lists-quickstart-dotnet.md) gyors útmutatóval.

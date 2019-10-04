@@ -1,6 +1,6 @@
 ---
-title: Az Azure Service Fabric parancssori felület - sfctl háló üzembe helyezése |} A Microsoft Docs
-description: A Service Fabric parancssori felület sfctl háló üzembe helyezési parancsok ismerteti.
+title: Azure Service Fabric CLI – sfctl Mesh üzembe helyezése | Microsoft Docs
+description: Ismerteti a Service Fabric CLI sfctl Mesh telepítési parancsait.
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
@@ -8,64 +8,63 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: e6b484dabd77a142961db2d97242896790fa3d8b
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: b3f506b46ef563f47fc7c67b759d3fcd08b7509d
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58668466"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035191"
 ---
 # <a name="sfctl-mesh-deployment"></a>sfctl mesh üzembe helyezése
-Service Fabric-háló az erőforrások létrehozásához.
+Hozzon létre Service Fabric Mesh-erőforrásokat.
 
 ## <a name="commands"></a>Parancsok
 
 |Parancs|Leírás|
 | --- | --- |
-| létrehozás | Hozza létre a Service Fabric-háló erőforrások üzembe helyezése. |
+| create | Service Fabric Mesh-erőforrások központi telepítését hozza létre. |
 
-## <a name="sfctl-mesh-deployment-create"></a>sfctl-háló üzembe helyezés létrehozása
-Hozza létre a Service Fabric-háló erőforrások üzembe helyezése.
+## <a name="sfctl-mesh-deployment-create"></a>sfctl háló üzembe helyezésének létrehozása
+Service Fabric Mesh-erőforrások központi telepítését hozza létre.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --input-yaml-files [Required] | Vesszővel tagolt relatív és abszolút Fájlelérési utak a yaml-fájlokat vagy a relatív és abszolút elérési útját a könyvtárat (a rekurzív) yaml fájlokat tartalmaznak. |
-| – Paraméterek | Relatív és abszolút elérési útját a yaml-fájlt vagy egy json-objektum, amely tartalmazza a következő paramétereket kell Alkalmazásszint felülbírálását. |
+| --input-YAML-Files [kötelező] | Az összes YAML-fájl vagy a YAML-fájlokat tartalmazó könyvtár relatív/abszolút elérési útjának vesszővel tagolt relatív/abszolút fájlelérési útja. |
+| – paraméterek | Egy relatív/abszolút elérési út a YAML fájlhoz vagy egy JSON-objektumhoz, amely tartalmazza azokat a paramétereket, amelyeket felül kell bírálni. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --debug | Növelése a naplózás az összes hibakeresési naplók megjelenítése. |
-| --help -h | A súgóüzenetet és kilépési jelennek meg. |
-| --kimeneti -o | Kimeneti formátum.  Megengedett értékek\: JSON-t, jsonc, tábla, tsv.  Alapértelmezett\: json. |
-| – lekérdezés | JMESPath lekérdezési karakterláncot. Tekintse meg a http\://jmespath.org/ további információt és példákat. |
-| --verbose | Növelése a naplózást. Használja a--debug teljes hibakeresési naplók. |
+| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
+| --Help-h | A súgó üzenet megjelenítése és kilépés. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 ### <a name="examples"></a>Példák
 
-Vonja össze és üzembe helyezi a fürt letiltásával a paramétereket a yaml-fájlt az említett összes erőforrás
+Összevonja és telepíti az összes erőforrást a fürtbe úgy, hogy felülbírálja a YAML fájlban említett paramétereket.
 
 ```
 sfctl mesh deployment create --input-yaml-files ./app.yaml,./network.yaml --parameters
 ./param.yaml
 ```
 
-Összesíti és telepít egy könyvtárban található összes erőforrást fürt letiltásával a yaml-fájl paraméterekkel.
+A YAML fájlban említett paraméterek felülbírálásával összevonja és telepíti a címtárban lévő összes erőforrást a fürtbe.
 
 ```
 sfctl mesh deployment create --input-yaml-files ./resources --parameters ./param.yaml
 ```
 
-Vonja össze és helyez üzembe egy könyvtárban található összes erőforrást fürthöz letiltásával a paraméterek, amelyek adhatók közvetlenül be a json-objektum
+Egy címtárban lévő összes erőforrás konszolidálása és üzembe helyezése a fürthöz a közvetlenül JSON-objektumként továbbított paraméterek felülbírálásával
 
 ```
 sfctl mesh deployment create --input-yaml-files ./resources --parameters "{ 'my_param' :
@@ -74,5 +73,5 @@ sfctl mesh deployment create --input-yaml-files ./resources --parameters "{ 'my_
 
 
 ## <a name="next-steps"></a>További lépések
-- [Állítsa be a](service-fabric-cli.md) a Service Fabric parancssori felület.
-- Ismerje meg, hogyan használható a Service Fabric parancssori felület használatával a [-szkript minták](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- [Állítsa be](service-fabric-cli.md) a Service Fabric CLI-t.
+- Megtudhatja, hogyan használhatja a Service Fabric CLI-t a [minta-parancsfájlok](/azure/service-fabric/scripts/sfctl-upgrade-application)használatával.

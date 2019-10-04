@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/07/2019
-ms.openlocfilehash: 8492f736e64366802b3601f9b5fc8bd1d9b6ea79
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7415e13a445a73af197362c6cfbd3a865a2fea02
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59273073"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65604051"
 ---
 # <a name="time-series-analysis-in-azure-data-explorer"></a>Az Azure Data Explorer idősoros elemzés
 
@@ -34,7 +34,7 @@ Az eredményül kapott tábla időbélyegző-oszlopa, három környezetfüggő d
 
 |   |   |   |   |   |
 | --- | --- | --- | --- | --- |
-|   | Időbélyeg | BrowserVer | OsVer | Ország |
+|   | TimeStamp | BrowserVer | OsVer | Ország/régió |
 |   | 2016-08-25 09:12:35.4020000 | Chrome 51.0 | Windows 7 | Egyesült Királyság |
 |   | 2016-08-25 09:12:41.1120000 | Chrome 52.0 | Windows 10 |   |
 |   | 2016-08-25 09:12:46.2300000 | Chrome 52.0 | Windows 7 | Egyesült Királyság |
@@ -72,7 +72,7 @@ A fenti táblázatban három partíció van. Létrehozhatunk egy külön idősor
 Ebben a szakaszban azt feldolgozási funkciók jellemző sorozat kell végrehajtani.
 A time series készletét létrehozása után ADX támogatja az egyre nagyobb számban elérhető függvények feldolgozására és elemzésére azokat, amelyek megtalálhatók a [sorozat dokumentációja idő](/azure/kusto/query/machine-learning-and-tsa). Néhány reprezentatív funkciók feldolgozásához és elemzéséhez a time series bemutatunk néhányat.
 
-### <a name="filtering"></a>Szűrés
+### <a name="filtering"></a>Filtering
 
 Szűrés egy gyakori eljárás a jel feldolgozási és hasznos idősorozat-feldolgozási feladatokat (például zajos jel smooth, észlelés módosításához).
 - Nincsenek két általános szűrési funkciók:
@@ -142,7 +142,7 @@ demo_series3
 
 |   |   |   |   |
 | --- | --- | --- | --- |
-|   | időszakok | Pontszámok | nap |
+|   | időszakok | Pontszámok | days |
 |   | 84 | 0.820622786055595 | 7 |
 |   | 12 | 0.764601405803502 | 1 |
 
@@ -180,7 +180,7 @@ demo_many_series1
 
 |   |   |   |   |   |   |
 | --- | --- | --- | --- | --- | --- |
-|   | IDŐBÉLYEG | hely | anonOp | DB | DataRead |
+|   | TIMESTAMP | hely | anonOp | DB | DataRead |
 |   | 2016-09-11 21:00:00.0000000 | Hely 9 | 5117853934049630089 | 262 | 0 |
 |   | 2016-09-11 21:00:00.0000000 | Hely 9 | 5117853934049630089 | 241 | 0 |
 |   | 2016-09-11 21:00:00.0000000 | Hely 9 | -865998331941149874 | 262 | 279862 |
@@ -222,7 +222,7 @@ demo_many_series1
 
 |   |   |
 | --- | --- |
-|   | Darabszám |
+|   | Count |
 |   | 18339 |
 
 Most fogunk olvasási száma mérőszám 18339 idősorozat csoportját hozhatja létre. Adjuk hozzá a `by` záradékot a márka sorozat utasítás lineáris regressziós érvényesek, és válassza a felső két idősorozat, akinek a legjelentősebb csökkenő trend:
@@ -260,3 +260,8 @@ demo_many_series1
 Kevesebb mint két perc alatt ADX közel 20 000 idősorozat elemzett, és azt észlelte, amelyben az olvasási száma hirtelen eldobott két rendellenes idősorozat.
 
 Speciális képességek ADX gyors teljesítményt kombinálva adja meg a idősoros elemzés egyedi és hatékony megoldást.
+
+## <a name="next-steps"></a>További lépések
+
+* Ismerje meg [alkalommal sorozat rendellenességek észlelése és előrejelzés](/azure/data-explorer/anomaly-detection) az Azure Data Explorer.
+* Ismerje meg [gépi tanulási funkciókat](/azure/data-explorer/machine-learning-clustering) az Azure Data Explorer.

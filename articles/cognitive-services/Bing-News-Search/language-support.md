@@ -3,19 +3,19 @@ title: Nyelvi támogatás – Bing News Search API
 titleSuffix: Azure Cognitive Services
 description: Természetes nyelvek, ország és a Bing News Search API által támogatott régiók listáját.
 services: cognitive-services
-author: MikeDodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 1/10/2019
-ms.author: v-gedod
-ms.openlocfilehash: f94ebb9b46ade0c03f65fdeb78bc7be96794a3d2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.author: aahi
+ms.openlocfilehash: d15058126f43fff328acfc563ffd081164a69a90
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55866747"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66384983"
 ---
 # <a name="language-and-region-support-for-the-bing-news-search-api"></a>A Bing News Search API nyelvéhez és régiójához támogatása
 
@@ -137,7 +137,7 @@ Az alábbiakban a ország/régió kódokat, amelyeket lehet, hogy a `cc` lekérd
 |Németország|DE|  
 |Hongkong (KKT)|HK|  
 |India|IN|  
-|Indonézia|ID|  
+|Indonézia|azonosító|  
 |Olaszország|IT|  
 |Japán|JP|  
 |Korea|KR|  
@@ -162,4 +162,4 @@ Az alábbiakban a ország/régió kódokat, amelyeket lehet, hogy a `cc` lekérd
 |Egyesült Államok|USA|
 
 ## <a name="next-steps"></a>További lépések
-A Bing News Search végpontok kapcsolatos további információkért lásd: [News Search API 7-es referencia](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference).
+A Bing News Search végpontok kapcsolatos további információkért lásd: [News Search API 7-es referencia](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference).

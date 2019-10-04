@@ -1,28 +1,25 @@
 ---
-title: SQL Data Warehouse-besorolás |} A Microsoft Docs
+title: Az Azure SQL Data Warehouse besorolási |} A Microsoft Docs
 description: Útmutató a fájlbesorolás segítségével egyidejűséget, fontos, kezeléséhez, és a számítási erőforrásokat az Azure SQL Data Warehouse lekérdezések.
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: workload management
-ms.date: 03/13/2019
+ms.subservice: workload-management
+ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 888a64de29178834fc47199a033eb6bc62858e57
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: 4988d284bed46a918f85eec8d7b4a5b89fc6549e
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617750"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67588488"
 ---
-# <a name="sql-data-warehouse-workload-classification-preview"></a>Az SQL Data Warehouse számítási feladatok besorolás (előzetes verzió)
+# <a name="azure-sql-data-warehouse-workload-classification"></a>Az Azure SQL Data Warehouse számítási feladatok besorolás
 
 Ez a cikk bemutatja az SQL Data Warehouse számítási feladatok besorolási folyamata egy erőforrásosztály és a fontosság hozzárendelése a bejövő kérelmeket.
-
-> [!Note]
-> Számítási feladatok besorolás az SQL Data Warehouse Gen2 előzetes verzióban érhető el. Számítási feladat felügyeleti besorolást és a fontosság preview buildek 2019. április 9 vagy újabb kiadás dátummal rendelkező szól.  Felhasználók ne buildek ennél a dátumnál korábban munkaterhelés-kezelés teszteléshez.  Határozza meg, ha a build megadása nem képes a számítási feladatok kezeléséhez, futtassa a select @@version az SQL Data Warehouse-példányhoz való csatlakozáskor.
 
 ## <a name="classification"></a>Besorolás
 
@@ -63,10 +60,10 @@ Rendszer osztályozó eszközökkel, az Ön nevében létrehozott egy egyszerű 
 
 Vegye figyelembe az alábbi forgatókönyvet:
 
-Meglévő adatraktár •an DBAUser a largerc erőforrásosztály-szerepkörhöz rendelt adatbázis-felhasználó rendelkezik. Az erőforrás osztály-hozzárendelési sp_addrolemember volt végzett.
-•A adattárház számítási feladatok kezelése most frissült.
-•A tesztelje az új besorolást szintaxist, az adatbázis-szerepkör (amely DBAUser tagja) DBARole, rendelkezik egy osztályozó jönnek létre számukra a leképezése mediumrc és nagyon fontosként megjelölve.
-•When DBAUser jelentkezik be a lekérdezést, és a lekérdezés largerc hozzá lesz rendelve. Mivel a felhasználó élvez a szerepkör tagságát.
+- Egy meglévő data warehouse egy adatbázis-felhasználót a largerc erőforrásosztály-szerepkörhöz rendelt DBAUser rendelkezik. Az erőforrás osztály-hozzárendelési sp_addrolemember volt végzett.
+- Az adatraktár számítási feladatok kezelése most frissült.
+- Ha tesztelni szeretné az új besorolást szintaxist, az adatbázis-szerepkör (amely DBAUser tagja) DBARole, rendelkezik egy osztályozó jönnek létre számukra a leképezése mediumrc és nagyon fontosként megjelölve.
+- Amikor lekérdezést DBAUser bejelentkezik, a lekérdezés largerc rendel. Mivel a felhasználó élvez a szerepkör tagságát.
 
 Hibaelhárítási téves besorolás egyszerűsítése érdekében, javasoljuk, számítási feladatok osztályozó létrehozása erőforrás osztály szerepkör-hozzárendelések eltávolítása.  Az alábbi kódot az osztály szerepkörtagságai meglévő erőforrás adja vissza.  Futtatás [sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql) megfelelő erőforrásosztály által visszaadott minden tag név.
 
@@ -84,4 +81,7 @@ sp_droprolemember ‘[Resource Class]’, membername
 
 ## <a name="next-steps"></a>További lépések
 
-Az SQL Data Warehouse a számítási feladatok besorolás és a fontosság kapcsolatos további információkért lásd: [hozzon létre egy számítási feladat osztályozó](quickstart-create-a-workload-classifier-tsql.md) és [SQL Data Warehouse fontosság](sql-data-warehouse-workload-importance.md). Lásd: [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) a lekérdezések és a hozzárendelt fontosságát.
+- Besorolás létrehozásával kapcsolatos további információkért lásd: a [MUNKATERHELÉS OSZTÁLYOZÓ létrehozása (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql).  
+- Tekintse meg a rövid útmutatóban egy számítási feladat osztályozó létrehozása [hozzon létre egy számítási feladat osztályozó](quickstart-create-a-workload-classifier-tsql.md).
+- Tekintse meg az útmutatók a [konfigurálása számítási feladatok fontossági](sql-data-warehouse-how-to-configure-workload-importance.md) és annak [felügyelheti és figyelheti a számítási feladatok kezeléséhez](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md).
+- Lásd: [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) a lekérdezések és a hozzárendelt fontosságát.

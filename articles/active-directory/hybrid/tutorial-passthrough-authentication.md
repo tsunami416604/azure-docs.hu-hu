@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag:  Az Azure-ban az átmenő hitelesítés (ESP) egyerdős AD integrálása |} A Microsoft Docs'
+title: 'Oktatóanyag:  Az Azure-ban ESP egyerdős AD integrálása'
 description: Bemutatja, hogyan állíthatja be az átmenő hitelesítést használó hibrid identitás környezetben.
 services: active-directory
 author: billmath
@@ -7,20 +7,20 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/18/2018
+ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b951cc81d2f957214eb4c78125bde36b61ff64b8
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 96846d75111fe11b225704a248baeb006a3df3fb
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58098042"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66473008"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-pass-through-authentication-pta"></a>Oktatóanyag:  Egyetlen AD-erdő integrálása átmenő hitelesítéssel (PTA)
 
-![Létrehozás](media/tutorial-passthrough-authentication/diagram.png)
+![Hozzon létre](media/tutorial-passthrough-authentication/diagram.png)
 
 A következő oktatóanyag végigvezeti egy átmenő hitelesítést használó hibrid identitás-környezet létrehozása.  Ebben a környezetben felhasználható, tesztelési vagy az első több megismerkedhet a hibrid identitás működésével.
 
@@ -143,6 +143,7 @@ $LogPath = "c:\windows\NTDS"
 $SysVolPath = "c:\windows\SYSVOL"
 $featureLogPath = "c:\poshlog\featurelog.txt" 
 $Password = "Pass1w0rd"
+$SecureString = ConvertTo-SecureString $Password -AsPlainText -Force
 
 #Install AD DS, DNS and GPMC 
 start-job -Name addFeature -ScriptBlock { 
@@ -153,7 +154,7 @@ Wait-Job -Name addFeature
 Get-WindowsFeature | Where installed >>$featureLogPath
 
 #Create New AD Forest
-Install-ADDSForest -CreateDnsDelegation:$false -DatabasePath $DatabasePath -DomainMode $DomainMode -DomainName $DomainName -SafeModeAdministratorPassword $Password -DomainNetbiosName $DomainNetBIOSName -ForestMode $ForestMode -InstallDns:$true -LogPath $LogPath -NoRebootOnCompletion:$false -SysvolPath $SysVolPath -Force:$true
+Install-ADDSForest -CreateDnsDelegation:$false -DatabasePath $DatabasePath -DomainMode $DomainMode -DomainName $DomainName -SafeModeAdministratorPassword $SecureString -DomainNetbiosName $DomainNetBIOSName -ForestMode $ForestMode -InstallDns:$true -LogPath $LogPath -NoRebootOnCompletion:$false -SysvolPath $SysVolPath -Force:$true
 ```
 
 ## <a name="create-a-windows-server-ad-user"></a>A Windows Server AD-felhasználó létrehozása
@@ -180,7 +181,7 @@ New-ADUser -Name $Name -GivenName $Givenname -Surname $Surname -DisplayName $Dis
 Set-ADUser -Identity $Identity -PasswordNeverExpires $true -ChangePasswordAtLogon $false -Enabled $true
 ```
 
-## <a name="create-an-azure-ad-tenant"></a>Az Azure AD-bérlő létrehozása
+## <a name="create-an-azure-ad-tenant"></a>Azure AD-bérlő létrehozása
 Most meg kell, hogy azt is szinkronizálhatja a felhőbe felhasználóink Azure AD-bérlő létrehozásához.  Hozhat létre egy új Azure AD-bérlőhöz, tegye a következőket.
 
 1. Keresse meg a [az Azure portal](https://portal.azure.com) és a egy Azure-előfizetéssel rendelkező fiókkal jelentkezzen be.

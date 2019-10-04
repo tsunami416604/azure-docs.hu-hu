@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 01877e4d982433608dd10fb44f2506b8bf71aff6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 33d6ddb4434813e87e0fa1be3b5335795e9774cb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57858827"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67106047"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bugsnag"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Bugsnag
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a Bugsnag konfigurálásához hozzá kell Bugsnag a ka
 
 **Bugsnag hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

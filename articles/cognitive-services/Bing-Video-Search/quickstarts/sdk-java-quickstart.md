@@ -3,23 +3,23 @@ title: 'Gyors útmutató: A Bing Video Search SDK használata Javához készült
 titleSuffix: Azure Cognitive Services
 description: Ez a rövid útmutató segítségével a Bing Video Search SDK használata Javához készült videókeresési kérelmek küldésére.
 services: cognitive-services
-author: mikedodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 01/31/2019
-ms.author: rosh
-ms.openlocfilehash: d421abf0a3cc402cf8d040363dfe79b07b66bf95
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 06/26/2019
+ms.author: aahi
+ms.openlocfilehash: 3051f663f277c216fe18513b816bb86478a2efbd
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58105709"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447011"
 ---
 # <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-java"></a>Gyors útmutató: Hajtsa végre a videókeresési Bing Video Search SDK-val Java
 
-Ez a rövid útmutató segítségével kezdeni a keresést hírkeresés a Bing Video Search SDK a Javához készült együtt. Míg a Bing Video Search REST API-val kompatibilis szinte bármelyik programozási nyelvével, az SDK biztosít egy egyszerű módja annak, hogy a szolgáltatás integrálása az alkalmazásokba. Ehhez a mintához a forráskód találhatók [GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingVideoSearch), amely további jegyzetek és a Bing Videókeresési funkciókat tartalmazza.
+Ez a rövid útmutató segítségével kezdeni a keresést hírkeresés a Bing Video Search SDK a Javához készült együtt. Míg a Bing Video Search REST API-val kompatibilis szinte bármelyik programozási nyelvével, az SDK biztosít egy egyszerű módja annak, hogy a szolgáltatás integrálása az alkalmazásokba. Ez a minta forráskódja találhatók [GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingVideoSearch)további megjegyzéseket, valamint a szolgáltatások.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

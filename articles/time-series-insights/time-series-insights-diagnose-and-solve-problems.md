@@ -1,118 +1,120 @@
 ---
-title: Diagnosztizálhatja, hibaelhárításához és az Azure Time Series Insightsban előforduló problémák megoldására |} A Microsoft Docs
-description: Ez a cikk bemutatja, hogyan diagnosztizálhatja, hibaelhárításához és találkozhat az Azure Time Series Insights környezetben gyakran előforduló problémák megoldására.
+title: Problémák diagnosztizálása, hibaelhárítása és megoldása a Azure Time Series Insightsban | Microsoft Docs
+description: Ez a cikk a Azure Time Series Insights-környezetben felmerülő gyakori problémák diagnosztizálását, hibaelhárítását és megoldását ismerteti.
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
-ms.reviewer: v-mamcge, jasonh, kfile, anshan
+ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 04/09/2018
+ms.date: 08/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: 36ea2b8d3649fbda5a5cd6cc5f2cd05cdc095902
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: e7c5786f4510e11d431f9e80dd52d1ffc3adb410
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53555812"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129119"
 ---
-# <a name="diagnose-and-solve-issues-in-your-time-series-insights-environment"></a>Diagnosztizálása és megoldása problémák egy részét a Time Series Insights-környezet
+# <a name="diagnose-and-solve-issues-in-your-time-series-insights-environment"></a>A Time Series Insights-környezet problémáinak diagnosztizálása és megoldása
 
-Ez a cikk ismerteti az egyes Azure Time Series Insights-környezete fellépő esetleges problémákat. A cikk nyújt, lehetséges okait és megoldásait a feloldásához.
+Ez a cikk a Azure Time Series Insights-környezetben felmerülő problémákat ismerteti. A cikk a megoldás lehetséges okait és megoldásait kínálja.
 
-## <a name="video"></a>Videó: 
+## <a name="video"></a>Videó
 
-Ez a videó ismerteti közös Time Series Insights ügyfél kihívások és megoldások:</br>
+### <a name="learn-about-common-time-series-insights-customer-challenges-and-mitigationsbr"></a>Ismerkedjen meg a gyakori Time Series Insights felhasználói kihívásokkal és megoldásokkal.</br>
 
 > [!VIDEO https://www.youtube.com/embed/7U0SwxAVSKw]
 
-## <a name="problem-1-no-data-is-shown"></a>1. hiba: Nincs adat jelenik meg
+## <a name="problem-no-data-is-shown"></a>Probléma: nincs megjeleníthető érték
 
-Az adatok nem a [Azure Time Series Insights explorer](https://insights.timeseries.azure.com) számos gyakori okok miatt fordulhat elő:
+A [Azure Time Series Insights Explorer](https://insights.timeseries.azure.com) számos gyakori okból nem fordulhat elő:
 
-### <a name="cause-a-event-source-data-isnt-in-json-format"></a>V: OK Eseményadatok forrása nem JSON formátumban
+### <a name="cause-a-event-source-data-isnt-in-json-format"></a>A ok: az eseményforrás-adatforrások nem JSON formátumúak
 
-Csak az Azure Time Series Insights támogatja a JSON-adatokat. JSON-minták, lásd: [támogatott JSON-alakzatok](./how-to-shape-query-json.md).
+A Azure Time Series Insights csak a JSON-adatkezelést támogatja. JSON-minták, lásd: [támogatott JSON-alakzatok](./how-to-shape-query-json.md).
 
-### <a name="cause-b-the-event-source-key-is-missing-a-required-permission"></a>"B" OK Az esemény forrása kulcs hiányzik egy szükséges engedély
+### <a name="cause-b-the-event-source-key-is-missing-a-required-permission"></a>B ok: az eseményforrás kulcsa hiányzik egy szükséges engedély
 
-* Az Azure IoT Hub IoT hub, meg kell adnia a kulcsot, amelynek **szolgáltatás csatlakozása** engedélyeket. Valamelyikét a **iothubowner** vagy **szolgáltatás** házirendek fog működni, mert mindkét **szolgáltatás csatlakozása** engedélyeket.
+* Az Azure IoT Hub IoT hub esetében meg kell adnia a **szolgáltatás-csatlakozási** engedélyekkel rendelkező kulcsot. A **iothubowner** vagy a **szolgáltatási** házirendek egyike is működni fog, mivel mindkettőnek van **Service-csatlakozási** engedélye.
 
-   ![Az IoT Hub szolgáltatás csatlakozása engedélyek](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)
+   [![IoT Hub szolgáltatás csatlakozási engedélyei](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png#lightbox)
 
+* Az Azure Event Hubsban található Event hub esetében meg kell adnia a **figyelési** engedélyekkel rendelkező kulcsot. Az **olvasási** vagy a **kezelési** szabályzatok egyike sem fog működni, mert mindkettő figyelési engedéllyel rendelkezik.
 
-* Az Azure Event hubs eseményközpontok felé, meg kell adnia a kulcsot, amelynek **figyelésére** engedélyeket. Valamelyikét a **olvasási** vagy **kezelése** házirendek fog működni, mert mindkét **figyelésére** engedélyeket.
+   [![Event hub – figyelési engedélyek](media/diagnose-and-solve-problems/eventhub-listen-permissions.png)](media/diagnose-and-solve-problems/eventhub-listen-permissions.png#lightbox)
 
-   ![Event hub listen engedélyek](media/diagnose-and-solve-problems/eventhub-listen-permissions.png)
+### <a name="cause-c-the-consumer-group-provided-isnt-exclusive-to-time-series-insights"></a>C: a megadott fogyasztói csoport nem kizárólag Time Series Insights
 
-### <a name="cause-c-the-consumer-group-provided-isnt-exclusive-to-time-series-insights"></a>OK: C: A megadott fogyasztói csoportot nem kizárólagos, a Time Series Insights
+IoT hub vagy Event hub regisztrálása esetén fontos beállítani az adatolvasáshoz használni kívánt fogyasztói csoportot. Ez a fogyasztói csoport *nem*osztható meg. Ha a fogyasztói csoport meg van osztva, a mögöttes IoT hub vagy Event hub automatikusan és véletlenszerűen bontja le az egyik olvasót. Adjon meg egy egyedi fogyasztói csoportot, amelyből a Time Series Insights olvasható.
 
-Amikor regisztrál egy IoT hubot vagy egy eseményközpontba, fontos a fogyasztói csoportot, amely az adatok olvasásához használni kívánt beállítása. Ezt a fogyasztói csoportot *nem oszthatók meg*. A fogyasztói csoportot meg van osztva, ha az alapul szolgáló IoT hub- vagy event hub véletlenszerűen és automatikusan bontja a kapcsolatot az olvasók egyikét. Adjon meg egy egyedi felhasználói csoport számára a Time Series Insights olvasni.
+## <a name="problem-some-data-is-shown-but-data-is-missing"></a>Probléma: bizonyos adatértékek megjelennek, de hiányoznak az adathalmazok.
 
-## <a name="problem-2-some-data-is-shown-but-data-is-missing"></a>2. hiba: Bizonyos adatokat, de hiányzik néhány adat
+Ha az adathalmazok csak részben jelennek meg, és az adatvesztésnek tűnik, érdemes több lehetőséget is megfontolni.
 
-Amikor az adatok úgy tűnik, hogy lehet elmaradt adatok csak részben jelenik meg, érdemes több lehetőség.
+### <a name="cause-a-your-environment-is-being-throttled"></a>A ok: a környezet szabályozása folyamatban van
 
-### <a name="cause-a-your-environment-is-being-throttled"></a>V: OK A környezet szabályozás alatt áll
+A szabályozás gyakori probléma, ha a környezetek kiépítését az adatforrást tartalmazó eseményforrás létrehozása után kell kiépíteni. Az Azure IoT Hub és az Azure Events hubok akár hét napig tárolják az adattárolást. Time Series Insights mindig a legrégebbi eseménysel kezdjen az esemény forrásában (első, első vagy *FIFO*).
 
-Általános hiba szabályozás akkor, ha a környezetben felhasznált adatokat eseményforrás létrehozása után. Az Azure IoT Hub és az Azure-események Hubs legfeljebb 7 napig tárolhatja az adatokat. A Time Series Insights mindig kezdje a legrégebbi esemény az adatforrás (érkezési sorrendben, vagy *FIFO*). 
+5 000 000 ha például egy S1-hez, egy egység Time Series Insights környezethez csatlakozik, akkor a Time Series Insights naponta körülbelül 1 000 000 eseményt olvas be. Előfordulhat, hogy a Time Series Insights öt nap késést tapasztal. Azonban mi történik, a környezet szabályozása folyamatban van.
 
-Például ha 5 millió eseményt az eseményforrás egy S1 szintű való csatlakozáskor, single-egységet a Time Series Insights környezetet, Time Series Insights körülbelül 1 millió esemény naponta beolvasása. A Time Series Insights öt nappal késést tapasztal, előfordulhat, hogy keresse meg. Azonban mi történik, hogy a környezet szabályozás alatt áll. 
+Ha a régi események szerepelnek az eseményforrásban, kétféleképpen is megközelítheti a szabályozást:
 
-Ha az eseményforrás a régi események, megközelítést a szabályozást a két módszer egyikével:
+- Módosítsa az eseményforrás megőrzési korlátait, hogy eltávolítsa a régi, Time Series Insightsban nem megjeleníteni kívánt eseményeket.
+- A régi események átviteli sebességének növeléséhez hozzon létre nagyobb méretű környezeti méretet (egységek száma). Ha ugyanezt az S1-környezetet egy nap alatt 5 egységre emeli, akkor az előző példában a környezetnek egy napon belül kell megjelennie. Ha az állandó állapotú események termelése naponta 1 000 000 vagy kevesebb eseményt mutat be, akkor az esemény kapacitását egy egységre csökkentheti.
 
-- Módosítsa az eseményforrás adatmegőrzési korlátok, távolítsa el a régi események, amelyet szeretne megjelenjen a Time Series Insights segítségével.
-- Üzembe helyezhető egy nagyobb méretű környezet (egység száma) növelhető a régi események. Az előző példában használja, ha egy nap növeli az azonos környezetben S1 egység öt, a környezetet kell olvasásra egy napon belül. Ha az egyenletes esemény éles üzemben futó 1 millió vagy kevesebb esemény naponta, csökkentheti a eseményhez, és a egy egység kapacitását, után ez behozza.
+A szabályozási korlátot a környezet SKU-típusa és kapacitása alapján kényszerítjük ki. A környezetben lévő összes eseményforrás megosztja ezt a kapacitást. Ha az IoT hub vagy az Event hub eseményforrás a kényszerített határértékeken felül küldi az adatforrást, akkor a szabályozás és a késés is megjelenik.
 
-A szabályozási korlát kényszerítve van a környezet Termékváltozatának típusa és a kapacitás alapján. A környezet összes eseményforrások megosztani a kapacitást. Ha az eseményforrás az IoT hub vagy az eseményközpont leküldi az adatok meghaladják a beállított a kényszerített korlátokat, szabályozás és a késéssel láthatja.
+Az alábbi ábrán egy olyan Time Series Insights-környezet látható, amely egy S1-es SKU-t és 3 kapacitást tartalmaz. Naponta 3 000 000 eseményt tud beáramlani.
 
-A következő ábrán látható egy Time Series Insights-környezet, amely rendelkezik egy S1 Termékváltozat és a egy 3 kapacitását. Azt is, hogy a bejövő forgalom 3 millió esemény naponta.
+[![A környezeti SKU jelenlegi kapacitása](media/diagnose-and-solve-problems/environment-sku-current-capacity.png)](media/diagnose-and-solve-problems/environment-sku-current-capacity.png#lightbox)
 
-![Környezet Termékváltozata jelenlegi kapacitás](media/diagnose-and-solve-problems/environment-sku-current-capacity.png)
+Tegyük fel például, hogy egy környezet az Event hub üzeneteit tölti be. A napi bejövő forgalom aránya ~ 67 000 üzenet. Ez a sebesség percenként körülbelül 46 üzenetet fordít. 
 
-Tegyük fel azt feltételezik, hogy ebben a környezetben fogadnak-e az üzeneteket egy eseményközpontból. A következő ábrán látható, a bejövő forgalom:
+* Ha az Event hub minden üzenete egyetlen Time Series Insightsi eseményre van lelapulva, a szabályozás nem történik meg. 
+* Ha az Event hub összes üzenete 100 Time Series Insights eseményre van lelapulva, a 4 600-es eseményeket percenként kell bevezetni. 
 
-![Bejövő forgalom például egy eseményközpont](media/diagnose-and-solve-problems/eventhub-ingress-rate.png)
+A 3 kapacitású S1 SKU-környezetek percenként csak 2 100 eseményt tudnak beáramlani (naponta 1 000 000 esemény = 700 esemény percenként három egységben = 2 100 esemény percenként). 
 
-A napi bejövő forgalom ~ 67,000 üzenetek. Ez a díjszabás a rendszer lefordítja arra körülbelül 46 üzenetek percenként. Minden event hub üzenet lett simítva egyetlen Time Series Insights esemény, ha szabályozás nem jelentkezik. Ha minden event hub üzenet 100 Time Series Insights-eseményekre lett simítva, érdemes 4,600 események betöltött percenként. 3 kapacitása S1 Termékváltozat környezetben is csak 2,100 beáramlási események minden perc (1 millió esemény naponta három egységet a percenkénti 700 események 2,100 események / perc). A telepítő szabályozás miatt késéssel láthatja. 
+A következő témakörben tájékozódhat arról, hogyan működik a kisimítási logika: [támogatott JSON-alakzatok](./how-to-shape-query-json.md).
 
-Összefoglaló jellegű ismertetése, hogyan működik az egybesimítás logikai, lásd: [támogatott JSON-alakzatok](./how-to-shape-query-json.md).
+#### <a name="recommended-resolutions-for-excessive-throttling"></a>Ajánlott megoldások a túlzott szabályozáshoz
 
-#### <a name="recommended-resolutions-for-excessive-throttling"></a>Túl sok szabályozási ajánlott felbontás
+A késés kijavításához növelje a környezet SKU-kapacitását. További információ: [a Time Series Insights-környezet skálázása](time-series-insights-how-to-scale-your-environment.md).
 
-A lag javításához a környezet Termékváltozata kapacitásának növelése. További információkért lásd: [a Time Series Insights-környezet skálázása](time-series-insights-how-to-scale-your-environment.md).
+### <a name="cause-b-initial-ingestion-of-historical-data-slows-ingress"></a>B ok: a korábbi adatmennyiség kezdeti betöltése lassú a bejövő forgalomtól
 
-### <a name="cause-b-initial-ingestion-of-historical-data-slows-ingress"></a>"B" OK Előzményadatok kezdeti betöltési lelassítja a bejövő forgalom
+Meglévő eseményforrás összekapcsolásakor valószínű, hogy az IoT hub vagy az Event hub már tartalmaz adatforrást. A környezet elkezdi az adatok áthúzását az eseményforrás üzenetének megőrzési időszakának elejétől. Ez az alapértelmezett feldolgozás nem bírálható felül. A szabályozást is elvégezheti. A szabályozás hosszabb időt is igénybe vehet, miközben betölti a korábbi adatmennyiséget.
 
-Ha csatlakoztat egy meglévő eseményforrás, akkor valószínű, hogy az IoT hub- vagy event hub-adatokat tartalmaz. A környezet elindítja az adatgyűjtés az eseményforrás üzenet megőrzési időszak kezdetétől fogva. Ez az alapértelmezett feldolgozása, és nem bírálható felül. Is vegye fel a kapcsolatot szabályozás. Szabályozás eltarthat egy ideig, az azt betöltő előzményadatok olvasásra.
+#### <a name="recommended-resolutions-for-large-initial-ingestion"></a>Ajánlott megoldások a nagyméretű kezdeti betöltéshez
 
-#### <a name="recommended-resolutions-for-large-initial-ingestion"></a>Nagy méretű kezdeti támogatunk ajánlott felbontás
+A késés kijavítása:
 
-A lag elhárításához:
+1. Növelje az SKU kapacitását a maximálisan megengedett értékre (ebben az esetben 10). A kapacitás növelését követően a beáramló folyamat sokkal gyorsabban fog megjelenni. A megnövekedett kapacitásért díjat számítunk fel. A rendelkezésre állási diagram megjelenítéséhez a [Time Series Insights Explorerben](https://insights.timeseries.azure.com)tekintheti meg a rendelkezésre állási diagramot.
 
-1. Növelje a Termékváltozat-kapacitást, a megengedett maximális értéket (10, ebben az esetben). Miután növeli a kapacitást, a bejövő forgalom folyamat elindul, sokkal gyorsabban feltárkózni. A nagyobb kapacitást díjkötelesek. Milyen gyorsan kölcsönhatásai megjelenítése akár, megtekintheti a rendelkezésre állási diagram a [Time Series Insights explorer](https://insights.timeseries.azure.com). 
+2. Ha a késés bekövetkezik, csökkentse az SKU kapacitását a normál bejövő forgalom arányára.
 
-2. Amikor a késés naprakész, a normál bejövő forgalom Termékváltozat kapacitása csökkenthető.
+## <a name="problem-my-event-sources-timestamp-property-name-setting-doesnt-work"></a>Probléma: az esemény forrásának időbélyeg-tulajdonságának neve beállítás nem működik
 
-## <a name="problem-3-my-event-sources-timestamp-property-name-setting-doesnt-work"></a>3. hiba: A forrás timestamp tulajdonság neve beállítás nem működik
+Győződjön meg arról, hogy az időbélyeg-tulajdonság neve és értéke megfelel a következő szabályoknak:
 
-Győződjön meg arról, hogy az időbélyegző-tulajdonság neve és értéke megfelelnek-e a következő szabályok:
 * Az időbélyeg-tulajdonság neve megkülönbözteti a kis-és nagybetűket.
-* A timestamp tulajdonság értéke, amely az esemény forrásból származnak, JSON-karakterláncot kell rendelkeznie a formátum _éééé-hh-nnTóó: pp:. FFFFFFFK_. Például **2008-04-12T12:53Z**.
+* Az eseményforrás egy JSON-karakterláncként kapott időbélyeg-tulajdonságának az _éééé-hh-NNTóó: PP: mm formátumúnak kell lennie. FFFFFFFK formátumban_. Példa **: 2008-04-12T12:53Z**.
 
-Győződjön meg arról, hogy az időbélyegző-tulajdonság neveként rögzített, és megfelelően működik a Time Series Insights explorer használandó legegyszerűbb módja. A Time Series Insights explorer használatával a diagramot válassza ki egy bizonyos idő után az időbélyegző-tulajdonság neve a beírt. Kattintson a jobb gombbal a kijelölt, és válassza a **események tallózása** lehetőséget. 
+Az időbélyeg-tulajdonságnév rögzítésének és megfelelő működésének legegyszerűbb módja a Time Series Insights Explorer használata. A Time Series Insights Explorerben a diagramot használva válasszon ki egy időszakot, miután megadta az időbélyeg-tulajdonság nevét. Kattintson a jobb gombbal a kijelölésre, majd válassza az **események feltárása** lehetőséget.
 
-Az első oszlop fejlécére kell lennie az időbélyegző-tulajdonság neve. A word mellett **időbélyeg**, megtekintheti az **($ts)**. 
+Az első oszlop fejlécének az időbélyeg-tulajdonságnév kell lennie. A szó időbélyege mellett a következő jelenik meg: **($TS)** .
 
-Nem kell megjelennie a következő értékeket:
-- *(abc)* : Azt jelzi, hogy a Time Series Insights éppen olvas az adatértékek karakterláncként.
-- *Naptár ikonra*: Azt jelzi, hogy a Time Series Insights éppen olvas az adatérték, *datetime*.
-- *#*: Azt jelzi, hogy a Time Series Insights az adatértékek olvasó egész számként.
+A következő értékek nem láthatók:
 
+- *(ABC)* : Azt jelzi, hogy Time Series Insights karakterláncként olvassa be az adatértékeket.
+- *Naptár ikonja*: Azt jelzi, hogy Time Series Insights az adatértéket *datetime*típusúként olvassa.
+- *#* : Azt jelzi, hogy Time Series Insights egész számként olvassa az adatértékeket.
 
 ## <a name="next-steps"></a>További lépések
 
-- További segítségért beszélgetés indítása a [MSDN-fórum](https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights) vagy [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-timeseries-insights). 
-- Személyes támogatási lehetőségek, használja a [az Azure-támogatás](https://azure.microsoft.com/support/options/).
+- Segítségért kezdjen el beszélgetni az [MSDN fórumon](https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights) vagy [stack overflow](https://stackoverflow.com/questions/tagged/azure-timeseries-insights).
+
+- A támogatott támogatási lehetőségekért használja az [Azure-támogatást](https://azure.microsoft.com/support/options/).

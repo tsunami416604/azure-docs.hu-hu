@@ -4,28 +4,27 @@ description: Ebből a rövid útmutatóból elsajátíthatja, hogyan használhat
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 01/22/2019
+ms.date: 07/02/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 44da9bc528883b2686adca6f4310212d785847d8
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 0a8e6ab04cbb1c5a3ef9be299a08380912aad7ef
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55981485"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70088798"
 ---
-# <a name="quickstart-create-a-windows-virtual-machine-in-azure-with-powershell"></a>Gyors útmutató: Windows virtuális gép létrehozása az Azure-ban a PowerShell-lel
+# <a name="quickstart-create-a-windows-virtual-machine-in-azure-with-powershell"></a>Gyors útmutató: Windows rendszerű virtuális gép létrehozása az Azure-ban a PowerShell használatával
 
-Az Azure PowerShell-modul az Azure-erőforrások PowerShell-parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Ez a rövid útmutató bemutatja, hogyan használja az Azure PowerShell modult a Windows Server 2016-ot futtató virtuális gép üzembe helyezésére az Azure-ban. A program az RDP a virtuális géphez, és telepítse az IIS-webkiszolgálón, a művelet a virtuális gép megjelenítéséhez.
+Az Azure PowerShell-modul az Azure-erőforrások PowerShell-parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Ez a rövid útmutató bemutatja, hogyan használja az Azure PowerShell modult a Windows Server 2016-ot futtató virtuális gép üzembe helyezésére az Azure-ban. Az RDP-t a virtuális gépre is telepíti, és telepítenie kell az IIS-webkiszolgálót a virtuális gép működésének megjelenítéséhez.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -38,7 +37,7 @@ A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy k�
 
 ## <a name="create-resource-group"></a>Erőforráscsoport létrehozása
 
-Hozzon létre egy Azure-erőforráscsoportot [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup). Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
+Hozzon létre egy Azure-erőforráscsoportot a [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup). Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroup -Location EastUS
@@ -46,9 +45,9 @@ New-AzResourceGroup -Name myResourceGroup -Location EastUS
 
 ## <a name="create-virtual-machine"></a>Virtuális gép létrehozása
 
-Egy virtuális gépet a [új AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm). Adja meg az erőforrások neveit és a `New-AzVM` parancsmag hoz létre, ha azok még nem léteznek.
+Hozzon létre egy virtuális gépet a [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm). Adja meg az egyes erőforrások nevét, a parancsmag `New-AzVM` pedig akkor hozza létre, ha még nem léteznek.
 
-Amikor a rendszer kéri, adja meg egy felhasználónevet és jelszót, hogy a virtuális gép bejelentkezési hitelesítő adatok használhatók:
+Ha a rendszer kéri, adja meg a virtuális gép bejelentkezési hitelesítő adataiként használandó felhasználónevet és jelszót:
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -66,7 +65,7 @@ New-AzVm `
 
 Az üzembe helyezés befejeződése után hozzon létre RDP-kapcsolatot a virtuális géphez. A virtuális gép működés közbeni megtekintéséhez telepítse az IIS webkiszolgálót.
 
-A virtuális gép nyilvános IP-cím megtekintéséhez használja a [Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) parancsmagot:
+A virtuális gép nyilvános IP-címének megtekintéséhez használja a [Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) parancsmagot:
 
 ```powershell
 Get-AzPublicIpAddress -ResourceGroupName "myResourceGroup" | Select "IpAddress"
@@ -100,7 +99,7 @@ Miután az IIS telepítve lett, és a 80-as port meg van nyitva a virtuális gé
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, használhatja a [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) parancsmag segítségével távolítsa el az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrást:
+Ha már nincs rá szükség, használhatja a [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) parancsmagot az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás eltávolításához:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup

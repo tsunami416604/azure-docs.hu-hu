@@ -1,5 +1,5 @@
 ---
-title: Azure Analysis Services telepítése a Visual Studio (SSDT) használatával |} A Microsoft Docs
+title: Üzembe helyezés a Azure Analysis Services a Visual Studio (SSDT) használatával | Microsoft Docs
 description: Megismerheti, hogyan helyezhet üzembe egy táblázatos modellt az Azure Analysis Servicesre az SSDT-vel.
 author: minewiskan
 manager: kfile
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b9740d74a25964286ea92b4238684db81a64c9e2
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 2811685df678730b90f2fdb28d472f8fa268ec6a
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59793319"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932457"
 ---
 # <a name="deploy-a-model-from-visual-studio"></a>Modell üzembe helyezése a Visual Studióból
 
@@ -24,7 +24,7 @@ Miután létrehozott egy kiszolgálót az Azure-előfizetésében, készen áll 
 A kezdéshez a következők szükségesek:
 
 * **Analysis Services-kiszolgáló** az Azure-ban. További információkért lásd [az Azure Analysis Services-kiszolgáló létrehozásával kapcsolatos](analysis-services-create-server.md) témakört.
-* **Táblázatosmodell-projekt** az SSDT-n, vagy egy meglévő táblázatos modell az 1200-as vagy magasabb kompatibilitási szinten. Korábban még nem hozott létre egyet sem? Próbálkozzon [az Adventure Works internetes értékesítési modell központi telepítésének útmutatójával](/sql/analysis-services/tabular-modeling-adventure-works-tutorial).
+* **Táblázatosmodell-projekt** az SSDT-n, vagy egy meglévő táblázatos modell az 1200-as vagy magasabb kompatibilitási szinten. Korábban még nem hozott létre egyet sem? Próbálkozzon [az Adventure Works internetes értékesítési modell központi telepítésének útmutatójával](https://docs.microsoft.com/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial).
 * **Helyszíni átjáró** – Ha a szervezete hálózatában egy vagy több helyszíni adatforrás található, telepítenie kell egy [helyszíni adatátjárót](analysis-services-gateway.md). Az átjáróra azért van szükség, hogy a felhőben található kiszolgálója csatlakozni tudjon a helyszíni adatforrásaihoz a modellben található adatok feldolgozásához és frissítéséhez.
 
 > [!TIP]
@@ -32,13 +32,13 @@ A kezdéshez a következők szükségesek:
 > 
 > 
 
-## <a name="get-the-server-name"></a>A kiszolgáló nevének lekérése
+## <a name="get-the-server-name"></a>Kiszolgáló nevének lekérése
 
 Másolja a kiszolgáló nevét az **Azure Portal** > kiszolgáló > **Áttekintés** > **Kiszolgálónév** részéből.
    
 ![A kiszolgáló nevének lekérése az Azure-ban](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
 
-## <a name="to-deploy-from-ssdt"></a>Az SSDT telepítése
+## <a name="to-deploy-from-ssdt"></a>Üzembe helyezés a SSDT
 
 1. Az SSDT > **Megoldáskezelőben** kattintson a jobb gombbal a projektre, majd kattintson a **Tulajdonságok** lehetőségre. Ezután az **Üzembe helyezés** > **Kiszolgáló** területre illessze be a kiszolgáló nevét.   
    

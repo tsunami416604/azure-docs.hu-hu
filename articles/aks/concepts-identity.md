@@ -1,89 +1,89 @@
 ---
-title: Alapelvei – hozzáférési és azonosító az Azure Kubernetes-szolgáltatások (AKS)
-description: Ismerje meg a hozzáférési és azonosító az Azure Kubernetes Service (AKS), beleértve az Azure Active Directory-integráció, a Kubernetes szerepköralapú hozzáférés-vezérlést (RBAC), és a szerepkörök és a kötéseket.
+title: Fogalmak – hozzáférés és identitás az Azure Kubernetes Servicesben (ak)
+description: Ismerje meg az Azure Kubernetes szolgáltatás (ak) hozzáférését és identitását, beleértve a Azure Active Directory integrációt, az Kubernetes szerepköralapú hozzáférés-vezérlést (RBAC), valamint a szerepköröket és kötéseket.
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.author: iainfou
-ms.openlocfilehash: 3432ba671431c25b7cd9ee58decc638861e884c3
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.author: mlearned
+ms.openlocfilehash: a1ed1eccd7a10d78cd503559469654e5562cde0c
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60000674"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "67615862"
 ---
-# <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Hozzáférési és azonosító beállításai az Azure Kubernetes Service (AKS)
+# <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service (ak) hozzáférési és identitási lehetőségei
 
-A hitelesítéshez, és tegye biztonságossá a Kubernetes-fürtök különböző módja van. Szerepköralapú hozzáférés-vezérlést (RBAC) révén biztosíthat a felhasználók vagy csoportok hozzáférés csak a számukra szükséges erőforrásokhoz. Az Azure Kubernetes Service (AKS), tovább javíthatja a biztonság és az engedélyek struktúra az Azure Active Directoryval. Ezek a módszerek segíti elő az alkalmazások számítási feladatai és az ügyféladatok védelmét.
+A hitelesítés és a biztonságos Kubernetes-fürtök többféleképpen is elvégezhető. A szerepköralapú hozzáférés-vezérlés (RBAC) használatával a felhasználók vagy csoportok csak a számukra szükséges erőforrások elérését biztosíthatják. Az Azure Kubernetes szolgáltatással (ak) Azure Active Directory használatával tovább javíthatja a biztonsági és az engedélyezési struktúrát is. Ezek a módszerek segítenek az alkalmazás számítási feladatainak és az ügyféladatok védelmében.
 
-Ez a cikk bemutatja az alapvető fogalmakat, amelyek segítségével hitelesíteni, és az engedélyeket az aks-ben:
+Ez a cikk bemutatja azokat az alapvető fogalmakat, amelyek segítséget nyújtanak az AK-beli engedélyek hitelesítéséhez és hozzárendeléséhez:
 
 - [Kubernetes-szolgáltatásfiókok](#kubernetes-service-accounts)
-- [Az Azure Active Directory-integráció](#azure-active-directory-integration)
-- [Szerepköralapú hozzáférés-vezérlést (RBAC)](#role-based-access-controls-rbac)
+- [Azure Active Directory integráció](#azure-active-directory-integration)
+- [Szerepköralapú hozzáférés-vezérlés (RBAC)](#role-based-access-controls-rbac)
 - [Szerepkörök és ClusterRoles](#roles-and-clusterroles)
 - [RoleBindings és ClusterRoleBindings](#rolebindings-and-clusterrolebindings)
 
 ## <a name="kubernetes-service-accounts"></a>Kubernetes-szolgáltatásfiókok
 
-Az elsődleges felhasználó begépeli a Kubernetes egyik egy *szolgáltatásfiók*. A szolgáltatási fiók létezik, és felügyeli, a Kubernetes API-t. Szolgáltatásfiókok hitelesítő adatait, Kubernetes titkos adatait, amely lehetővé teszi, hogy jogosult podok által az API-kiszolgálóval való kommunikációhoz használandó tárolódnak. A legtöbb API-kérések egy szolgáltatásfiók vagy egy normál felhasználói fiók számára biztosítson egy hitelesítési tokent.
+A Kubernetes egyik elsődleges felhasználói típusa egy *szolgáltatásfiók*. Egy szolgáltatásfiók létezik a-ben, amelyet a a Kubernetes API felügyel. A szolgáltatásfiókok hitelesítő adatait a rendszer Kubernetes titokként tárolja, ami lehetővé teszi számukra, hogy az engedélyezett hüvelyek használják az API-kiszolgálóval való kommunikációt. A legtöbb API-kérelem hitelesítési jogkivonatot biztosít egy szolgáltatásfiók vagy egy normál felhasználói fiók számára.
 
-Normál felhasználói fiókok hagyományosabb hozzáférést emberi rendszergazdák vagy a fejlesztők, nem csak szolgáltatások és folyamatokat. Kubernetes önmagában nem biztosít egy normál felhasználói fiókok és jelszavak tárolására identitáskezelési megoldás. Ehelyett a külső identitáskezelési megoldások Kubernetes integrálhatók. Az AKS-fürtök esetén az integrált megoldást az Azure Active Directoryban.
+A normál felhasználói fiókok több hagyományos hozzáférést tesznek lehetővé az emberi rendszergazdák vagy a fejlesztők számára, nem csupán a szolgáltatásokhoz és folyamatokhoz. A Kubernetes önmagában nem biztosít Identitáskezelés-kezelési megoldást, ahol a rendszer normál felhasználói fiókokat és jelszavakat tárol. Ehelyett a külső identitási megoldások integrálhatók a Kubernetes-be. AK-fürtök esetében ez az integrált Identity megoldás Azure Active Directory.
 
-A Kubernetes identitáskezelési lehetőségei további információkért lásd: [Kubernetes hitelesítési][kubernetes-authentication].
+További információ a Kubernetes identitási lehetőségeiről: Kubernetes- [hitelesítés][kubernetes-authentication].
 
 ## <a name="azure-active-directory-integration"></a>Azure Active Directory-integráció
 
-Az AKS-fürtök biztonsági fokozni lehet az Azure Active Directory (AD) integrációjával. Vállalati identitáskezelési évtizedes épülő Azure ad-ben egy több-bérlős, felhőalapú címtár, és identitáskezelési szolgáltatása, amely ötvözi az alapvető címtárszolgáltatásokat, az alkalmazáshozzáférés-felügyeletet és az identity protection. Az Azure ad-vel a helyszíni identitások integrálható az AKS-fürtök egyetlen forrásként nyújt a fiók felügyeleti és biztonsági.
+Az AK-fürtök biztonsága javítható Azure Active Directory (AD) integrálásával. Az Azure AD egy több-bérlős, felhőalapú címtár-és Identitáskezelés-kezelő szolgáltatás, amely az alapszintű címtárszolgáltatások, az alkalmazások és az identitások védelmét ötvözi. Az Azure AD lehetővé teszi, hogy a helyszíni identitásokat AK-fürtökbe integrálva egyetlen forrást biztosítson a fiókok kezeléséhez és biztonságához.
 
-![Az AKS-fürtök az Azure Active Directory-integráció](media/concepts-identity/aad-integration.png)
+![Azure Active Directory-integráció AK-fürtökkel](media/concepts-identity/aad-integration.png)
 
-Az Azure Active Directoryba integrált AKS-fürtökkel biztosíthat a felhasználók vagy csoportok hozzáférést egy adott névtéren belül, vagy a fürtben Kubernetes-erőforrást. Beszerzése egy `kubectl` konfigurációs környezet, a felhasználó futtathatja a [az aks get-credentials] [ az-aks-get-credentials] parancsot. Amikor egy felhasználó majd kommunikál az AKS-fürtöt `kubectl`, bekapcsolják jelentkezzen be az Azure AD hitelesítő adatait. Ez a megközelítés egy egyetlen forrásból felhasználóifiók-kezelés és a jelszavas hitelesítő adatokat biztosít. A felhasználó csak akkor tudja elérni az erőforrásokat, a fürt rendszergazdája által meghatározott módon.
+Az Azure AD-vel integrált AK-fürtök segítségével a felhasználók vagy csoportok hozzáférést biztosíthatnak a Kubernetes-erőforrásokhoz a névtérben vagy a fürtön belül. A `kubectl` konfigurációs környezet beszerzéséhez a felhasználó az az [AK Get-hitelesítőadats][az-aks-get-credentials] parancsot futtathatja. Ha a felhasználó ezután együttműködik az AK-val a- `kubectl`vel, a rendszer felszólítja, hogy jelentkezzen be az Azure ad-beli hitelesítő adataival. Ez a megközelítés egyetlen forrást biztosít a felhasználói fiókok felügyeletéhez és a jelszó hitelesítő adataihoz. A felhasználó csak a fürt rendszergazdája által meghatározott erőforrásokat érheti el.
 
-Az AKS-fürtök az Azure AD-hitelesítést használ, OpenID Connect, az identitási rétegben épülő az OAuth 2.0 protokollt. OAuth 2.0 mechanizmusok beszerzése és a védett erőforrások eléréséhez hozzáférési jogkivonatok használatával határozza meg, és OpenID Connect hitelesítést valósít meg az OAuth 2.0 engedélyezési folyamat bővítményeként. Az OpenID Connect további információkért lásd: a [Open ID Connect dokumentáció][openid-connect]. AKS-fürtök révén OpenID Connect Azure AD-ből kapott a hitelesítési tokenek ellenőrzéséhez használja a Kubernetes Webhook Eszközjogkivonattal történő hitelesítés. További információkért lásd: a [Webhook tokent használó hitelesítés biztosítását dokumentáció][webhook-token-docs].
+Az AK-fürtökön futó Azure AD-hitelesítés OpenID connectet használ, amely az OAuth 2,0 protokollra épülő identitási réteg. A OAuth 2,0 a védett erőforrások eléréséhez szükséges hozzáférési jogkivonatok beszerzésére és használatára vonatkozó mechanizmusokat határoz meg, az OpenID Connect pedig a OAuth 2,0 engedélyezési folyamat kiterjesztését valósítja meg a hitelesítéshez. Az OpenID Connecttel kapcsolatos további információkért tekintse meg az [ID Connect dokumentációját][openid-connect]. Az Azure AD által az OpenID Connect használatával beszerzett hitelesítési tokenek ellenőrzéséhez az AK-fürtök Kubernetes webhook token-hitelesítést használnak. További információt a [webhook token hitelesítési dokumentációjában][webhook-token-docs]talál.
 
-## <a name="role-based-access-controls-rbac"></a>Szerepköralapú hozzáférés-vezérlést (RBAC)
+## <a name="role-based-access-controls-rbac"></a>Szerepköralapú hozzáférés-vezérlés (RBAC)
 
-Ahhoz, hogy a felhasználók által végrehajtható műveletek részletes szűrést, a Kubernetes szerepköralapú hozzáférés-vezérlést (RBAC) használ. A vezérlési mechanizmus lehetővé teszi a felhasználók hozzárendelése, vagy felhasználói számára többek között a csoportok hozzon létre vagy módosítsa erőforrások, vagy az alkalmazás-alapú számítási feladatait a naplók megtekintéséhez. Ezek az engedélyek hatóköre egyetlen névtér, vagy a teljes AKS-fürtön kapnak. A Kubernetes RBAC, létrehozhat *szerepkörök* engedélyeket határozhat meg, és hozzárendelheti ezeket a szerepköröket a felhasználók *szerepkör kötések*.
+A felhasználók által elvégezhető műveletek részletes szűrésének biztosításához a Kubernetes szerepköralapú hozzáférés-vezérlést (RBAC) használ. Ez a vezérlési mechanizmus lehetővé teszi a felhasználók vagy felhasználói csoportok hozzárendelését, például az erőforrások létrehozását és módosítását, illetve a naplók megtekintését az alkalmazás-munkaterhelések futtatásához. Ezek az engedélyek egyetlen névtérre is érvényesek, vagy a teljes AK-fürtön keresztül is megadhatók. A Kubernetes RBAC segítségével létrehozhat szerepköröket az engedélyek definiálásához, majd hozzárendelheti ezeket a szerepköröket a felhasználókhoz *szerepkör-kötésekkel*.
 
-További információkért lásd: [használatával RBAC-hitelesítés][kubernetes-rbac].
+További információ: RBAC- [hitelesítés használata][kubernetes-rbac].
 
-### <a name="azure-role-based-access-controls-rbac"></a>Az Azure szerepköralapú hozzáférés-vezérlők (RBAC)
-Egy kiegészítő mechanizmust erőforrásokhoz való hozzáférés szabályozása Azure szerepköralapú hozzáférés-vezérlők (RBAC). Kubernetes RBAC úgy tervezték, hogy az AKS-fürt belüli erőforrásokon működjön, és az Azure RBAC úgy tervezték, hogy az Azure-előfizetésen belüli erőforrásokon működjön. Az Azure RBAC, hozzon létre egy *szerepkör-definíció* , amely ismerteti a alkalmazni az engedélyeket. Egy felhasználó vagy csoport a rendszer hozzárendeli a szerepkör-definíció egy adott *hatókör*, amely egyedi erőforrásokat, csoport vagy az előfizetés erőforrás lehet.
+### <a name="azure-role-based-access-controls-rbac"></a>Azure szerepköralapú hozzáférés-vezérlés (RBAC)
+Az erőforrásokhoz való hozzáférés szabályozásának egyik további mechanizmusa az Azure szerepköralapú hozzáférés-vezérlés (RBAC). A Kubernetes RBAC úgy van kialakítva, hogy az AK-fürtön belüli erőforrásokkal működjön, az Azure RBAC pedig az Azure-előfizetésen belüli erőforrásokkal való együttműködésre lett tervezve. Az Azure RBAC létrehoz egy szerepkör- *definíciót* , amely az alkalmazandó engedélyeket ismerteti. Ezután egy felhasználó vagy csoport rendeli hozzá ezt a szerepkör-definíciót egy adott *hatókörhöz*, amely lehet egy egyedi erőforrás, egy erőforráscsoport vagy az előfizetés egésze.
 
-További információkért lásd: [Mi az Azure RBAC?][azure-rbac]
+További információ: [Mi az az Azure RBAC?][azure-rbac]
 
 ## <a name="roles-and-clusterroles"></a>Szerepkörök és ClusterRoles
 
-Mielőtt Kubernetes RBAC-engedélyek rendel felhasználókhoz, először meghatározhatja ezeket az engedélyeket egy *szerepkör*. Kubernetes-szerepkörök *biztosítson* engedélyeket. Nem létezik a fogalma nem egy *megtagadása* engedéllyel.
+Mielőtt engedélyeket rendel a felhasználókhoz a Kubernetes RBAC, először az engedélyeket *szerepkörként*kell megadnia. A Kubernetes szerepkörei engedélyeket biztosítanak. Nem létezik a megtagadási engedély fogalma.
 
-Szerepkörök segítségével engedélyek egy adott névtéren belül. Engedélyek megadása az egész fürt között, vagy a fürt erőforrásai kívül egy adott névtér van szüksége, ha ehelyett használható *ClusterRoles*.
+A szerepkörök a névtéren belüli engedélyek megadására szolgálnak. Ha engedélyeket kell megadnia a teljes fürtön, vagy az erőforrásokat egy adott névtéren kívül kell megadnia, akkor Ehelyett használhatja a *ClusterRoles*.
 
-Egy ClusterRole engedélyeket az erőforrásokhoz ugyanúgy működik, de az erőforrások között a teljes fürtöt, egy adott névtér nem alkalmazható.
+A ClusterRole ugyanúgy működik, hogy engedélyeket biztosítson az erőforrásokhoz, de a teljes fürtön lévő erőforrásokra, nem pedig egy adott névtérre is alkalmazható.
 
 ## <a name="rolebindings-and-clusterrolebindings"></a>RoleBindings és ClusterRoleBindings
 
-Miután a szerepkörök vannak megadva, hogy engedélyeket az erőforrásokhoz, hozzárendelhet-e ezeket a Kubernetes RBAC-engedélyek egy *RoleBinding*. Az AKS-fürt együttműködik az Azure Active Directoryval, ha a kötések, hogyan ezeket az Azure AD-felhasználók kapnak-e jogosultságokkal a fürtön belül műveletek végrehajtásához.
+Ha a szerepkörök úgy vannak meghatározva, hogy engedélyeket adjanak az erőforrásoknak, akkor ezeket a Kubernetes RBAC engedélyeket egy *RoleBinding*kell rendelnie. Ha az AK-fürt integrálva van Azure Active Directory, akkor a kötések azt jelentik, hogy az Azure AD-felhasználók hogyan kapnak engedélyeket a fürtön belüli műveletek végrehajtásához.
 
-Szerepkör-kötések segítségével egy adott névtér szerepkörök hozzárendelése. Ez a megközelítés lehetővé teszi egy egy AKS-fürtöt, a felhasználók csak fér hozzá az alkalmazás erőforrásokhoz a hozzárendelt névtér logikailag elkülönítse. Ha kell kötni a szerepkörök, az egész fürt között, vagy a fürt erőforrásai kívül egy adott névtér, Ehelyett használhatja *ClusterRoleBindings*.
+A szerepkör-kötések egy adott névtér szerepköreinek hozzárendelésére szolgálnak. Ez a megközelítés lehetővé teszi, hogy logikailag elkülönítse egyetlen AK-beli fürtöt, és a felhasználók csak a hozzárendelt névtérben lévő alkalmazás-erőforrásokat tudják elérni. Ha a szerepköröket a teljes fürtön kell megkötnie, vagy egy adott névtéren kívüli fürt erőforrásaira van szüksége, használhatja a *ClusterRoleBindings*.
 
-Egy ClusterRoleBinding kötést létrehozni a szerepkörök felhasználókhoz ugyanúgy működik, de az erőforrások között a teljes fürtöt, egy adott névtér nem alkalmazható. Ez a megközelítés lehetővé teszi biztosítása a rendszergazdák vagy az AKS-fürtöt a mérnökök erőforrásokhoz való teljes hozzáférés támogatásához.
+A ClusterRoleBinding ugyanúgy működik, mint a szerepkörök felhasználókhoz való kötése, de a teljes fürtön lévő erőforrásokra, nem pedig egy adott névtérre is alkalmazhatók. Ez a megközelítés lehetővé teszi, hogy a rendszergazdák vagy a támogatási mérnökök hozzáférjenek az AK-fürt összes erőforrásához.
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerkedés az Azure ad-vel és a Kubernetes RBAC, lásd: [integrálása az Azure Active Directory az aks-sel][aks-aad].
+Az Azure AD és a Kubernetes RBAC megismeréséhez tekintse meg a következőt: [Azure Active Directory integrálása az AK-val][aks-aad].
 
-További kapcsolódó ajánlott eljárások: [gyakorlati tanácsok a hitelesítés és engedélyezés az aks-ben][operator-best-practices-identity].
+A kapcsolódó ajánlott eljárásokért lásd: [ajánlott eljárások a hitelesítéshez és engedélyezéshez az AK-ban][operator-best-practices-identity].
 
-És további információkat az alapvető Kubernetes AKS fogalmait tekintse meg a következő cikkeket:
+Az alapvető Kubernetes és az AK-fogalmakkal kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-- [Kubernetes AKS-fürtök / és a számítási feladatok][aks-concepts-clusters-workloads]
-- [Kubernetes / AKS biztonsági][aks-concepts-security]
-- [Kubernetes / AKS virtuális hálózatok][aks-concepts-network]
-- [Kubernetes és az AKS-tároló][aks-concepts-storage]
-- [Kubernetes AKS méretezése /][aks-concepts-scale]
+- [Kubernetes/AK-fürtök és-munkaterhelések][aks-concepts-clusters-workloads]
+- [Kubernetes/AK biztonság][aks-concepts-security]
+- [Kubernetes/AK virtuális hálózatok][aks-concepts-network]
+- [Kubernetes/AK-tároló][aks-concepts-storage]
+- [Kubernetes/AK-skála][aks-concepts-scale]
 
 <!-- LINKS - External -->
 [kubernetes-authentication]: https://kubernetes.io/docs/reference/access-authn-authz/authentication

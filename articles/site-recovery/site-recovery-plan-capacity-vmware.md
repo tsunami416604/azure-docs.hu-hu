@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 4/9/2019
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: c198e6cd9d5c5e0aca69491db9df5d0ab8e08c7a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 9a77b3982d8aed6ae694c32baecd7ae194c51724
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59358011"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64924832"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Kapacitás és méretezés az Azure-bA VMware vész-helyreállítási terv
 
@@ -120,7 +120,7 @@ A Site Recovery-infrastruktúra beállítása előtt férhet hozzá a környezet
 
 ## <a name="deploy-additional-process-servers"></a>További folyamatkiszolgálók üzembe helyezése
 
-Ha a központi telepítés meghaladja a 200 forrásgépek horizontális felskálázása, vagy ha több mint 2 TB-os napi adatváltozásának összesen rendelkezik, hozzá kell adnia a folyamatkiszolgálók kezelése a forgalom mennyisége. Ismerje meg, hogyan állítható be a folyamatkiszolgáló, lásd: [feladat-visszavétel további folyamatkiszolgálók használatával nagy számú](vmware-azure-set-up-process-server-scale.md). Miután beállította a folyamatkiszolgáló, áttelepítheti forrásgépek használhatja azt.
+Ha a központi telepítés meghaladja a 200 forrásgépek horizontális felskálázása, vagy ha több mint 2 TB-os napi adatváltozásának összesen rendelkezik, hozzá kell adnia a folyamatkiszolgálók kezelése a forgalom mennyisége. A Microsoft rendelkezik fokozott 9.24 verziójában, adja meg a termék [kiszolgálóriasztások feldolgozni](vmware-physical-azure-monitor-process-server.md#process-server-alerts) a horizontális felskálázási folyamatkiszolgáló beállításának. [Állítsa be a folyamatkiszolgáló](vmware-azure-set-up-process-server-scale.md) új forrás-gépek védelméhez vagy [a terhelés kiegyenlítése](vmware-azure-manage-process-server.md#move-vms-to-balance-the-process-server-load).
 
 ### <a name="migrate-machines-to-use-the-new-process-server"></a>Az új folyamatkiszolgáló használandó gépek migrálása
 

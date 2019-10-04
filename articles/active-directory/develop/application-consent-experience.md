@@ -1,89 +1,90 @@
 ---
-title: Az Azure AD alkalmazás jóváhagyásának ismertetése során lép |} A Microsoft Docs
-description: Ismerje meg, további információt az Azure AD beleegyezik, hogy tekintse meg, hogyan használhatja, amikor a kezelése és az Azure AD-alkalmazások fejlesztéséhez használható kezelőfelülete
+title: Az Azure AD-alkalmazásra vonatkozó beleegyezési tapasztalatok ismertetése | Microsoft Docs
+description: 'További információ az Azure AD-beli beleegyező élményekről: az Azure AD-alkalmazások kezelésekor és fejlesztésekor használható'
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
-ms.subservice: app-mgmt
+ms.subservice: develop
+ms.custom: aaddev
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/27/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: zachowd
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7de892143e1c69953cc60429ea0d24df194f0df
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: 012a79969f2fa72589ba6b70aa5398b6f4e7e811
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59795185"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68835247"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>Az Azure AD-alkalmazások hozzájárulási folyamatának ismertetése
 
-Ismerje meg, további információt az Azure Active Directory (Azure AD-) alkalmazás hozzájárulás megadása a felhasználói élmény. Így intelligensen kezelheti az alkalmazásokat a szervezet számára, illetve a jóváhagyás a zökkenőmentes felhasználói élmény alkalmazások fejlesztéséhez.
+További információ az Azure Active Directory (Azure AD) alkalmazás-engedélyezési felhasználói élményről. Így intelligens módon kezelheti a szervezete alkalmazásait és/vagy fejlesztheti az alkalmazásokat, és így zökkenőmentesen megadhatja a felhasználói élményt.
 
-## <a name="consent-and-permissions"></a>Jóváhagyás és engedélyek
+## <a name="consent-and-permissions"></a>Engedély és engedélyek
 
-Hozzájárulás az a folyamat egy felhasználó egy alkalmazást, hogy a felhasználók nevében védett erőforrások eléréséhez engedély. Egy rendszergazda vagy a felhasználó beleegyezését, hogy a vállalat vagy személy adatokhoz való hozzáférés is kéri.
+A hozzájárulás egy olyan felhasználó, aki engedélyt ad egy alkalmazásnak a védett erőforrások elérésére a nevükben. A rendszergazda vagy a felhasználó megkérheti, hogy engedélyezze a hozzáférést a szervezethez vagy az egyes adatszolgáltatásokhoz.
 
-Hozzájárulás a tényleges felhasználói élményét eltér attól függően, a felhasználó bérlőjéhez, a felhasználó hatókörén hatóság (vagy szerepkör) és típusát beállított [engedélyek](https://docs.microsoft.com/azure/active-directory/develop/active-directory-permissions) ügyfélalkalmazás által kért. Ez azt jelenti, hogy az alkalmazásfejlesztők és a bérlői rendszergazdák szabályozhatják, néhány a jóváhagyási felületen. A rendszergazdák rugalmasan és beállítási házirendeket egy bérlő vagy az alkalmazás szabályozhatja a bérlőben a jóváhagyási felületen letiltása. Az alkalmazásfejlesztők is szabályozzák, milyen típusú engedélyeket kérnek, és szeretné-e végigvezetik a felhasználókat a felhasználó hozzájárul a flow vagy a rendszergazdai jóváhagyási folyamatot.
+A jogosultság megadásának tényleges felhasználói élménye a felhasználó bérlője, a felhasználó jogosultsági köre (vagy szerepkör), valamint az ügyfélalkalmazás által kért [engedélyek](https://docs.microsoft.com/azure/active-directory/develop/active-directory-permissions) típusa szerint változhat. Ez azt jelenti, hogy az alkalmazás-fejlesztőknek és a bérlői rendszergazdáknak van némi hozzáférésük a beleegyező felhasználói élményhez A rendszergazdák rugalmasan állíthatják be és letilthatják a szabályzatokat a bérlőn vagy az alkalmazáson a bérlőn való részvételi élmény szabályozása érdekében. Az alkalmazások fejlesztői megadhatják, hogy milyen típusú engedélyekre van szükség, és ha a felhasználókat a felhasználói beleegyező folyamaton vagy a rendszergazdai beleegyező folyamaton keresztül szeretnék irányítani.
 
-- **Felhasználói jóváhagyási folyamatot** alkalmazásfejlesztő arra utasítja a felhasználók az engedélyezési végponton a célja, hogy csak az aktuális felhasználó rekord jóváhagyás esetén.
-- **Rendszergazdai jóváhagyás folyamathoz** akkor, ha a alkalmazásfejlesztő arra utasítja a felhasználók számára a rendszergazdai hozzájárulás célja, hogy a teljes bérlő rekord jóváhagyási végpont. Annak érdekében, hogy a rendszergazdai jóváhagyási folyamat megfelelően működik, az alkalmazásfejlesztők az összes engedélyt kell tüntetniük a `RequiredResourceAccess` tulajdonság az alkalmazásjegyzékben. További információ: [alkalmazásjegyzék](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest).
+- A **felhasználói hozzájárulás folyamata** az, amikor egy alkalmazás fejlesztője a felhasználókat az engedélyezési végpontra irányítja, hogy csak az aktuális felhasználó belefoglalását jegyezze fel.
+- A rendszergazdai belefoglalási **folyamat** az, amikor egy alkalmazás fejlesztője a felhasználókat a rendszergazdai belefoglalási végpontra irányítja azzal a szándékkal, hogy rögzítse a teljes bérlőhöz való hozzájárulásukat. Annak biztosítása érdekében, hogy a rendszergazdai jogosultságok folyamata megfelelően működjön, az alkalmazás- `RequiredResourceAccess` fejlesztőknek az alkalmazás jegyzékfájljában szereplő összes engedélyt listáznia kell. További információ: [Application manifest](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest).
 
-## <a name="building-blocks-of-the-consent-prompt"></a>A beleegyezést kérő építőelemei
+## <a name="building-blocks-of-the-consent-prompt"></a>A hozzájárulási kérés építőelemei
 
-A beleegyezést kérő felhasználók rendelkezzenek elegendő információt határozza meg, ha azokat megbízható-e a felhasználók nevében védett erőforrások eléréséhez az ügyfélalkalmazás célja. Építőelemeket megismerése segít a hozzájárulási ügyeljen biztosítása, további tájékoztatást a döntések és, segít a fejlesztőknek a jobb felhasználói élményt hozhat létre felhasználókat.
+A beleegyezés kérése úgy van kialakítva, hogy a felhasználók elegendő információval rendelkezzenek annak megállapításához, hogy megbízhatók-e az ügyfélalkalmazás a védett erőforrások nevében való eléréséhez. Az építőelemek megismerése segíti a felhasználókat abban, hogy jobban tájékozott döntéseket hozhassanak, így a fejlesztők jobb felhasználói élményt hozhatnak létre.
 
-A következő ábra és táblázat a beleegyezést kérő építőelemeket információt biztosítanak.
+A következő diagram és táblázat a hozzájárulási kérés építőelemeit ismerteti.
 
-![A beleegyezést kérő építőelemei](./media/application-consent-experience/consent_prompt.png)
+![A hozzájárulási kérés építőelemei](./media/application-consent-experience/consent_prompt.png)
 
 | # | Összetevő | Cél |
 | ----- | ----- | ----- |
-| 1 | Felhasználóazonosító | Ez az azonosító képviseli a felhasználót, hogy az ügyfél alkalmazás nevében védett erőforrások eléréséhez. |
-| 2 | Cím | A cím módosításainak alapján, hogy a felhasználók a felhasználó vagy rendszergazda hozzájárulását flow szolgáltatáson keresztül fog. A felhasználói jóváhagyási folyamatot a cím lesz "Engedélyeket kért" pedig a rendszergazdai jóváhagyás folyamatban a cím lesz rendelkeznek egy további sort "A szervezet elfogadás". |
-| 3 | Alkalmazásembléma | Ez a rendszerkép segíthet a felhasználóknak egy vizuális köteg, hogy az alkalmazás az alkalmazás azokat kívánják elérni. Ez a rendszerkép az alkalmazásfejlesztők által biztosított, és a tulajdonjogát, a lemezkép nincs érvényesítve. |
-| 4 | App neve | Ezt az értéket kell tájékoztatják a felhasználókat, hogy mely alkalmazás férhetnek hozzá az adataikhoz. Megjegyzés: ezt a nevet a fejlesztők által biztosított és az alkalmazás neve a tulajdonjogát nem ellenőrzi. |
-| 5 | Közzétevő tartomány | Ezt az értéket kell biztosítania a felhasználók értékelhetik a megbízhatósága lehet egy tartomány. Ezt a tartományt a fejlesztők által biztosított, és a rendszer érvényesíti a közzétevő tartomány tulajdonjogát. |
-| 6 | Engedélyek | Ez a lista tartalmazza az ügyfélalkalmazás által kért engedélyeket. Felhasználók mindig ki kell értékelni a típusú tudni, hogy milyen adatok eléréséhez a felhasználók nevében, ha elfogadja őket az ügyfélalkalmazás lesz jogosult a kért engedélyeket. Az alkalmazás fejlesztőjeként célszerű hozzáférés kéréséhez, a minimális jogosultságokkal rendelkező az engedélyeket. |
-| 7 | Engedély leírása | Ez az érték az engedélyeket a szolgáltatás által biztosított. Szeretné az engedély leírása, akkor mellett az engedélyt a sávnyílra kell váltani. |
-| 8 | Alkalmazás-feltételek | Ezeket a feltételeket az alkalmazás és az adatvédelmi nyilatkozat feltételeit hivatkozásokat tartalmaznak. A kiadó felelős szabályainak sbalování a a szolgáltatási feltételeket. Ezenkívül a kiadó felelős a módszert használja, és a felhasználói adatokat az adatvédelmi nyilatkozat a megosztás nyilvánosságra. Ha a közzétevő nem biztosítja ezeket az értékeket mutat, több-bérlős alkalmazásokhoz, félkövér figyelmeztetést a beleegyezést kérő üzenetet a lesz. |
-| 9 | https://myapps.microsoft.com | Ez az a hivatkozás, amelyben a felhasználók áttekinthetik és adataik hozzáféréssel rendelkező-Microsoft alkalmazások eltávolításához. |
+| 1 | Felhasználóazonosító | Ez az azonosító azt a felhasználót jelöli, akit az ügyfélalkalmazás a következő nevében a védett erőforrásokhoz való hozzáférésre kéri. |
+| 2 | Beosztás | A cím változása attól függően változik, hogy a felhasználók a felhasználói vagy a rendszergazdai beleegyező folyamaton keresztül mennek keresztül. A felhasználói beleegyező folyamatokban a cím "engedély kérése", míg a rendszergazda beleegyező folyamatában a cím egy további, "elfogadás a szervezet számára" sort fog tartalmazni. |
+| 3 | Alkalmazásembléma | Ennek a képnek a segítségével a felhasználóknak vizuálisan kell megjelenniük, hogy az alkalmazás az elérni kívánt alkalmazás-e. Ezt a rendszerképet az alkalmazások fejlesztői biztosítják, és a rendszerkép tulajdonjoga nincs érvényesítve. |
+| 4 | App neve | Ennek az értéknek tájékoztatnia kell a felhasználókat arról, hogy az alkalmazásnak hozzáférést kell kérnie az adatkezeléshez. Megjegyzés: ezt a nevet a fejlesztők biztosítják, és ennek az alkalmazásnak a tulajdonjoga nincs érvényesítve. |
+| 5 | Közzétevő tartomány | Ennek az értéknek biztosítania kell a felhasználók számára, hogy a megbízhatóságot ki tudják értékelni. Ezt a tartományt a fejlesztők biztosítják, és a közzétevő tartomány tulajdonjoga érvényesítve van. |
+| 6 | Engedélyek | Ez a lista tartalmazza az ügyfélalkalmazás által kért engedélyeket. A felhasználóknak mindig értékelniük kell, hogy milyen típusú engedélyekre van szükség ahhoz, hogy megértsük, milyen az ügyfélalkalmazás jogosult a nevében való hozzáférésre. Alkalmazás-fejlesztőként a legkevesebb jogosultsággal rendelkező engedélyekhez ajánlott a hozzáférés kérése. |
+| 7 | Engedély leírása | Ezt az értéket az a szolgáltatás kapja meg, amely kiteszi az engedélyeket. Az engedélyek leírásának megtekintéséhez az engedély mellett be kell váltania a francia idézőjelet. |
+| 8 | Alkalmazási feltételek | A jelen feltételek a szolgáltatás használati feltételeire és az adatvédelmi nyilatkozatra mutató hivatkozásokat tartalmaznak. A kiadó feladata a szabályok megjelölése a szolgáltatási feltételekben. Emellett a közzétevő feladata a felhasználói adatok saját adatvédelmi nyilatkozatban való használatának és megosztásának a kiosztása. Ha a közzétevő nem ad meg ezekre az értékekre mutató hivatkozásokat a több-bérlős alkalmazások számára, a jóváhagyásra figyelmeztető üzenet jelenik meg. |
+| 9 | https://myapps.microsoft.com | Ez a hivatkozás, ahol a felhasználók áttekinthetik és eltávolíthatják azokat a nem Microsoft-alkalmazásokat, amelyek jelenleg hozzáférnek az adataihoz. |
 
-## <a name="common-consent-scenarios"></a>Jóváhagyás gyakori helyzetek
+## <a name="common-consent-scenarios"></a>Közös engedélyezési forgatókönyvek
 
-Az alábbiakban a hozzájárulási megtapasztalhatják, hogy egy felhasználó jelenhetnek meg a jóváhagyási gyakori helyzetek:
+A felhasználók a közös engedélyezési forgatókönyvekben láthatják a beleegyező felhasználói élményeket:
 
-1. Egyéni felhasználók számára, amely vezeti őket a felhasználói alkalmazások elérése hozzájárul a folyamat során igénylő egy engedélycsoportot, amely a szolgáltató hatókörén belül van.
+1. Azok a felhasználók, akik egy olyan alkalmazást érnek el, amely a felhasználó beleegyezési folyamatához irányítja őket, miközben a szolgáltatói hatókörén belül egy engedélyezési készletre van szükségük.
     
-    1. Rendszergazdák akkor láthatnak, az további vezérlők a hagyományos beleegyezést kérő üzenetet, amely lehetővé teszi jóváhagyás nevében a teljes bérlőn. A vezérlő lesz alapértelmezés szerint megjelenő kapcsolja ki, így csak amikor rendszergazdák explicit módon ellenőrizze a box beleegyeznek kell megadni a nevében a teljes bérlőn. Mai a jelölőnégyzet csak akkor jelenik meg a globális rendszergazdai szerepkörhöz, felhőalapú felügyelet és az alkalmazás felügyeleti nem látják ezt a jelölőnégyzetet.
+    1. A rendszergazdák további szabályozást fognak látni a hagyományos engedélyezési kérdésben, amely lehetővé teszi számukra a teljes bérlő nevében való hozzájárulást. A vezérlő alapértelmezés szerint ki lesz kapcsolva, így csak akkor, ha a rendszergazdának explicit módon be kell állítani a jóváhagyást a teljes bérlő nevében. A mai naptól kezdve ez a jelölőnégyzet csak a globális rendszergazdai szerepkörre mutat, így a Felhőbeli rendszergazda és az alkalmazás rendszergazdája nem fogja látni ezt a jelölőnégyzetet.
 
-        ![A forgatókönyv 1a beleegyezést kérő üzenete](./media/application-consent-experience/consent_prompt_1a.png)
+        ![Beleegyezés kérése az 1a forgatókönyvhöz](./media/application-consent-experience/consent_prompt_1a.png)
     
-    2. A felhasználók a hagyományos beleegyezést kérő üzenetet látnak.
+    2. A felhasználók láthatják a hagyományos beleegyezés kérését.
 
-        ![Jóváhagyás kérése 1b forgatókönyv](./media/application-consent-experience/consent_prompt_1b.png)
+        ![Beleegyezés kérése 1b forgatókönyv esetén](./media/application-consent-experience/consent_prompt_1b.png)
 
-2. Egyéni felhasználók számára, amely kívül esik a hitelesítésszolgáltató hatókörébe tartozó legalább egy engedélyt igénylő alkalmazások elérése.
-    1. A rendszergazdák, a fenti 1.i a ugyanazon üzenet jelenik meg.
-    2. Felhasználók le lesz tiltva a hozzájárulás az alkalmazáshoz, és kérje meg a rendszergazda az alkalmazáshoz való hozzáféréshez használ. 
+2. Olyan alkalmazásokhoz hozzáférő személyek, amelyek legalább egy olyan engedélyt igényelnek, amely a szolgáltatói hatókörén kívül esik.
+    1. A rendszergazdák ugyanazt a kérést fogják látni, mint 1. a fentebb látható.
+    2. A felhasználók nem kapnak engedélyt az alkalmazásnak, és megkérik a rendszergazdát, hogy hozzáférjenek az alkalmazáshoz. 
                 
-        ![Jóváhagyás kérése 1b forgatókönyv](./media/application-consent-experience/consent_prompt_2b.png)
+        ![Beleegyezés kérése 1b forgatókönyv esetén](./media/application-consent-experience/consent_prompt_2b.png)
 
-3. Személyeket, keresse meg, vagy a rendszergazda a rendszer átirányítja a folyamat jóváhagyás.
-    1. Rendszergazda felhasználók a rendszergazda beleegyezést kérő üzenetet jelenik meg. A cím és a megváltoztatja a a kérdés, a módosítások jelölje ki azt a tényt, hogy a válasszal megkapja az alkalmazás elérése a kért adatokat a teljes bérlő nevében engedély leírása.
+3. Azok a személyek, akik navigálnak a rendszergazdai beleegyező folyamathoz, vagy átirányítják őket.
+    1. A rendszergazda felhasználók láthatják a rendszergazdai jóváhagyást kérő üzenetet. Ebben a kérésben a cím és az engedély leírása módosult, a módosítások kiemelik azt a tényt, hogy a kérés elfogadásával az alkalmazás a teljes bérlő nevében hozzáférést biztosít a kért adathoz.
         
-        ![Jóváhagyás kérése 1b forgatókönyv](./media/application-consent-experience/consent_prompt_3a.png)
+        ![Beleegyezés kérése 1b forgatókönyv esetén](./media/application-consent-experience/consent_prompt_3a.png)
         
-    1. A nem rendszergazda felhasználók ugyanazon a képernyőn megjelenik a fenti 2. II.
+    1. A nem rendszergazda felhasználók ugyanazt a képernyőt fogják látni, mint 2. II.
 
 ## <a name="next-steps"></a>További lépések
-- Részletes áttekintést [hogyan valósítja meg az Azure ad-ben hozzájárulási keretrendszer az hozzájárulási](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).
-- Ismerje meg részletesebben olvashat róluk, a [több-bérlős alkalmazás használatát a hozzájárulási keretrendszer](active-directory-devhowto-multi-tenant-overview.md) megvalósítása a "user" és "rendszergazda" engedélyt, támogató további speciális többrétegű alkalmazásminták.
-- Ismerje meg, [konfigurálása az alkalmazás közzétevőjének tartománya](howto-configure-publisher-domain.md).
+- Részletes áttekintést kaphat [arról, hogy az Azure ad-beli engedélyezési keretrendszer hogyan valósítja meg a hozzájárulásukat](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).
+- További részletekért tekintse meg, [Hogyan használhatják a több-bérlős alkalmazások a](active-directory-devhowto-multi-tenant-overview.md) "felhasználó" és a "rendszergazda" jogosultságot a "felhasználói" és "rendszergazdai" engedély megvalósításához, és támogatják a fejlettebb többrétegű alkalmazás-mintákat.
+- Ismerje meg [, hogyan konfigurálhatja az alkalmazás közzétevő tartományát](howto-configure-publisher-domain.md).

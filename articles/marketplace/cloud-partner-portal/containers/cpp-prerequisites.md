@@ -1,25 +1,18 @@
 ---
-title: Azure-tárolók ajánlat Előfeltételek |} A Microsoft Docs
+title: Azure-tárolók ajánlat Előfeltételek |} Az Azure Marketplace-en
 description: Közzététel az Azure container előfeltételei.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.author: pbutlerm
-ms.openlocfilehash: 09c9afcf3126f7f84c20f5514bc038a65b2ea1b2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: pabutler
+ms.openlocfilehash: 87727d23b407853aa9dad8a52c0a1cea446353bd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57990728"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64942558"
 ---
 # <a name="container-publishing-prerequisites"></a>Tároló közzétételi Előfeltételek
 

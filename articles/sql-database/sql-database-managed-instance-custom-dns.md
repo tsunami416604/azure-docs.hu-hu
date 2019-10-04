@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Database Managed Instance Custom DNS | Microsoft Docs
-description: Ez a témakör ismerteti egy egyéni DNS-ben az Azure SQL Database felügyelt példánya a konfigurációs beállításait.
+title: Azure SQL Database felügyelt példány egyéni DNS-je | Microsoft Docs
+description: Ez a témakör egy Azure SQL Database felügyelt példánnyal rendelkező egyéni DNS konfigurációs beállításait ismerteti.
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -10,42 +10,28 @@ ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
-manager: craigg
-ms.date: 12/13/2018
-ms.openlocfilehash: bb5890b883b6062d834b928bff28a26a3664fb64
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 07/17/2019
+ms.openlocfilehash: 588fac1fc48396584188eec44f21a7005dc8ed96
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59787900"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567555"
 ---
-# <a name="configuring-a-custom-dns-for-azure-sql-database-managed-instance"></a>Egy egyéni DNS konfigurálása az Azure SQL Database felügyelt példánya
+# <a name="configuring-a-custom-dns-for-azure-sql-database-managed-instance"></a>Egyéni DNS konfigurálása Azure SQL Database felügyelt példányhoz
 
-Kell egy Azure-ban üzembe helyezni egy Azure SQL Database felügyelt példányába [virtuális hálózat (VNet)](../virtual-network/virtual-networks-overview.md). Néhány forgatókönyv (például db mail, csatolt kiszolgálók más SQL-példányok a felhőalapú vagy hibrid környezetben) fel kell oldani a felügyelt példányon a privát állomásnevek igénylő közül választhat. Ebben az esetben, konfigurálnia kell egy egyéni DNS az Azure-on belül. Felügyelt példány az azonos DNS-t használ a belső működésével, mivel a virtuális hálózat DNS-konfigurációt kell lennie a felügyelt példány kompatibilis.
+Azure SQL Database felügyelt példányt egy Azure [-beli virtuális hálózaton (VNet)](../virtual-network/virtual-networks-overview.md)belül kell üzembe helyezni. Van néhány forgatókönyv (például db-posta, csatolt kiszolgálók a Felhőbeli vagy hibrid környezet más SQL-példányaihoz), amelyekhez privát állomásnevek szükségesek a felügyelt példányból. Ebben az esetben egyéni DNS-t kell konfigurálnia az Azure-on belül. 
 
-   > [!IMPORTANT]
-   > Mindig használja a teljes tartománynevek (FQDN) a levelezési kiszolgáló, SQL Server-kiszolgálók és más szolgáltatások számára, akkor is, ha a saját DNS-zóna belül. Például `smtp.contoso.com` levelezési kiszolgáló mert egyszerű `smtp` nem lesz megfelelően feloldani.
-
-Olyan egyéni DNS-konfigurációs van kompatibilis a felügyelt példány, meg kell:
-
-- Egyéni DNS-kiszolgáló konfigurálása, hogy legyen képes feloldani a tartományneveket
-- Helyezze az Azure rekurzív feloldó DNS IP-cím 168.63.129.16 a virtuális hálózat DNS-lista végén
-
-## <a name="setting-up-custom-dns-servers-configuration"></a>Egyéni DNS-kiszolgálók konfigurációjának beállítása
-
-1. Az Azure Portalon keresse meg az egyéni DNS-beállítás a virtuális hálózat számára.
-
-   ![egyéni DNS-beállítás](./media/sql-database-managed-instance-custom-dns/custom-dns-option.png)
-
-2. Egyéni váltson, és adja meg az egyéni DNS-kiszolgáló IP-címét, valamint az Azure rekurzív feloldók IP-cím 168.63.129.16.
-
-   ![egyéni DNS-beállítás](./media/sql-database-managed-instance-custom-dns/custom-dns-server-ip-address.png)
+Mivel a felügyelt példány ugyanazt a DNS-t használja belső működéséhez, konfigurálnia kell az egyéni DNS-kiszolgálót, hogy fel tudja oldani a nyilvános tartományneveket.
 
    > [!IMPORTANT]
-   > A DNS-listája nem beállítása az Azure rekurzív feloldó okozhat a felügyelt példány hibás állapotba lép, ha valamilyen okból a egyéni DNS-kiszolgáló nem érhető el. Utáni helyreállítás állapot megkövetelhetik, hogy hozzon létre új példányt a megfelelő hálózati szabályzatok rendelkező virtuális hálózaton, példány szintű adatok létrehozásához, és az adatbázisok visszaállítása. Az Azure rekurzív feloldó beállítást, mivel biztosítja, hogy a legutóbbi bejegyzést a DNS-listában, akkor is, ha az összes egyéni DNS-kiszolgáló meghibásodik, nyilvános nevek továbbra is feloldható.
+   > Mindig teljes tartománynevet (FQDN) használjon a levelezési kiszolgálókhoz, az SQL-kiszolgálókhoz és más szolgáltatásokhoz, még akkor is, ha azok a saját DNS-zónán belül vannak. Például a levelezési `smtp.contoso.com` kiszolgáló használata, mert az `smtp` egyszerű nem lesz megfelelően feloldva.
+
+   > [!IMPORTANT]
+   > A virtuális hálózati DNS-kiszolgálók frissítése nem érinti azonnal a felügyelt példányt. A felügyelt példány DNS-konfigurációja a DHCP-bérlet lejárta után vagy a platform upgarade után lesz frissítve. **A felhasználóknak javasoljuk, hogy az első felügyelt példány létrehozása előtt állítsa be a virtuális hálózat DNS-konfigurációját.**
 
 ## <a name="next-steps"></a>További lépések
 
-- Áttekintéséhez lásd: [mit jelent a felügyelt példány](sql-database-managed-instance.md)
-- Bemutatja, hogyan hozzon létre egy új felügyelt példány oktatóanyagért lásd: [hozzon létre egy felügyelt példányt](sql-database-managed-instance-get-started.md).
-- A felügyelt példányhoz egy virtuális hálózat konfigurálásával kapcsolatos további információkért lásd: [felügyelt példányok VNet-konfiguráció](sql-database-managed-instance-connectivity-architecture.md)
+- Az áttekintést lásd: [Mi az a felügyelt példány](sql-database-managed-instance.md) ?
+- Az új felügyelt példányok létrehozásával kapcsolatos oktatóanyagért lásd: [felügyelt példány létrehozása](sql-database-managed-instance-get-started.md).
+- A felügyelt példányok VNet konfigurálásával kapcsolatos információkért lásd: [VNet-konfiguráció felügyelt](sql-database-managed-instance-connectivity-architecture.md) példányokhoz

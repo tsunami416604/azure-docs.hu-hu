@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 05/11/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 547b6a629677830b6f37883a4be835c12a62e599
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: f0faad91e9e3ff9384dcae57ed27c21fa21946b5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59524047"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64573773"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>A prediktív karbantartási megoldásokat az Azure AI útmutatója
 
@@ -92,7 +92,7 @@ Ez a szakasz a PdM alkalmazási helyzetek, például a légi közlekedésben, se
 |**Pénzügyi** |                         |
 |_ATM hiba_ gyakran okoz problémát a banki iparágon belül van. A probléma itt, hogy a jelentés a valószínűsége annak, hogy egy ATM készpénz kivonási tranzakció az készpénz adagolót egy tanulmány és részben vagy egészben hiba miatt beolvasása megszakítva. Tranzakciós hibák előrejelzésen alapuló, adatközponthoz karbantarthatók a proaktív módon megakadályozza, hogy a hiba lépett fel.| Hanem engedélyezi a gép midway keresztül egy tranzakció sikertelen, a kívánatos Ez esetben a program, szolgáltatás megtagadása a gép az előrejelzések alapján.|
 |**Energiafogyasztás** |                          |
-|_Megszünteti a turbina hibák_: A szél turbina a fő energiaforrás kímélő országban, és olyan magas tőkeköltségek terén. A szél turbina legfontosabb összetevője a készítő motor. a hiba jelenik meg a turbina hatástalanok. Emellett akkor is rendkívül költséges javításához.|Előrejelzésére MTTF (átlagos idő) például KPI-k segítségével az energiaszolgáltató vállalatok számára turbina hibák megelőzése, valamint a minimális üzemen kívüli idővel. Hiba valószínűségek figyelésére, amelyek várhatóan hamarosan sikertelen turbina szerelők értesíti, és karbantartási idő-alapú rendszerek ütemezése. Prediktív modelleket adjon meg másik tényező befolyásolja a hiba, amely segítségével a technikusok betekintést jobban megismerheti az esetleges problémák okait.|
+|_Megszünteti a turbina hibák_: A szél turbina a fő energiaforrás kímélő országban és régióban, és olyan magas tőkeköltségek terén. A szél turbina legfontosabb összetevője a készítő motor. a hiba jelenik meg a turbina hatástalanok. Emellett akkor is rendkívül költséges javításához.|Előrejelzésére MTTF (átlagos idő) például KPI-k segítségével az energiaszolgáltató vállalatok számára turbina hibák megelőzése, valamint a minimális üzemen kívüli idővel. Hiba valószínűségek figyelésére, amelyek várhatóan hamarosan sikertelen turbina szerelők értesíti, és karbantartási idő-alapú rendszerek ütemezése. Prediktív modelleket adjon meg másik tényező befolyásolja a hiba, amely segítségével a technikusok betekintést jobban megismerheti az esetleges problémák okait.|
 |_Áramkör-megszakító hibák_: Terjesztés a lakhelyek és vállalkozások számára szükséges power sorok garantálja az energia kézbesítési mindig működőképes legyen. Áramkör-megszakítók segítségével korlátozható vagy power sérülésének elkerülése érdekében az időjárási viszonyok során terhelve vagy káros sorokat. Itt az üzleti problémát az áramkör-megszakító előforduló hibák előrejelzésében.| PdM megoldások javítási költségek csökkentése és a gyűjteményszintű az eszközökre, például az áramkör-megszakítók növelése érdekében. Segítik az energiagazdálkodási hálózati minőségének javítása a váratlan meghibásodások és szolgáltatáskiesések csökkentésével.|
 |**Szállítási és logisztikai** |    |
 |_Itt ajtó hibák_: Itt nagy méretű vállalatok számára működési elevator világszerte több millió teljes verem szolgáltatást biztosítanak. Itt biztonságát, megbízhatóságát és üzemidő olyan ügyfelek számára, akik fő területtel kell foglalkoznunk. Ezek a vállalatok keresztül érzékelők, javítási és megelőző jellegű karbantartással segítségével nyomon követheti ezeket és más jellemzők különböző. Az itt található a legjelentősebb ügyfél probléma itt ajtók hibásan működik. Az üzleti problémát ebben az esetben, hogy egy Tudásbázis prediktív alkalmazás, amely előrejelzi a lehetséges okai ajtó hibák.| Elevator tőkeberuházás potenciálisan egy 20-30 éves időtartama van a rendszer. Így lehet, hogy minden lehetséges értékesítés versenyhelyzetében; ezért a keresésről szolgáltatás és a támogatási. Prediktív karbantartás is ezek a vállalatok a termékeikben versenytársaik használhatóságát és szolgáltatásajánlatok.|
@@ -229,11 +229,11 @@ Az adatok előkészítési erőfeszítéseket eddig tárgyalt folyamatban vannak
 
 | Eszközazonosító | Time | \<Oszlopok funkció > | Címke |
 | ---- | ---- | --- | --- |
-| A123 |1. napi | . . . | . |
-| A123 |2. napon | . . . | . |
+| A123 |1\. napi | . . . | . |
+| A123 |2\. napon | . . . | . |
 | ...  |...   | . . . | . |
-| B234 |1. napi | . . . | . |
-| B234 |2. napon | . . . | . |
+| B234 |1\. napi | . . . | . |
+| B234 |2\. napon | . . . | . |
 | ...  |...   | . . . | . |
 
 Az utolsó lépés funkciófejlesztési a **címkézés** a cél változó. Ez a folyamat szolgáltatás a modellezési technika függ. Viszont a modellezési módszer az üzleti probléma megoldására és a rendelkezésre álló adatok jellegétől függ. A következő szakaszban tárgyalt címkézést.
@@ -291,7 +291,7 @@ Itt a kérdés van: "Mi a valószínűsége annak, hogy egy eszköz meghiúsul a
 
 ![5. ábra Hiba ideje előrejelzési többosztályos osztályozási címkék](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-failure-time-prediction.png) 5. ábra. Hiba ideje előrejelzési többcsoportos besorolási címkézés
 
-Itt a kérdés van: "Mi a valószínűsége annak, hogy az eszköz meghiúsul a következő alapvető ok/probléma miatt időegységben X _P<sub>i</sub>_?" ahol _i_ kiválthatja a száma. A kérdés, a Címke X rekordokat egy eszköz, a meghibásodás előtt válaszolnia "alapvető ok miatt sikertelen about _P<sub>i</sub>_" (címke = _P<sub>i</sub>_). Minden más rögzíti, hogy "normál" címke (label = 0). Ez a módszer a címkék is kategorikus (lásd a 6. ábra).
+Itt a kérdés van: "Mi a valószínűsége annak, hogy az eszköz meghiúsul a következő alapvető ok/probléma miatt időegységben X _P<sub>i</sub>_ ?" ahol _i_ kiválthatja a száma. A kérdés, a Címke X rekordokat egy eszköz, a meghibásodás előtt válaszolnia "alapvető ok miatt sikertelen about _P<sub>i</sub>_ " (címke = _P<sub>i</sub>_ ). Minden más rögzíti, hogy "normál" címke (label = 0). Ez a módszer a címkék is kategorikus (lásd a 6. ábra).
 
 ![6. ábra Alapvető ok többosztályos osztályozási címkék előrejelzési](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-root-cause-prediction.png) 6. ábra. Alapvető ok előrejelzési többcsoportos besorolási címkézés
 
@@ -327,7 +327,7 @@ Ez a szakasz ismerteti az időfüggő split megvalósításához ajánlott eljá
 
 Tegyük fel, az időbélyegzővel események például a különféle érzékelőktől származó mérések adatfolyam. Adja meg a funkciók és címkék a tanítási és tesztelési példák több esemény tartalmazó időkereteknek keresztül. Például a bináris osztályozási funkciói elmúlt események alapján hozzon létre, és címkék alapján az "X" egységet jövőbeli időpontot a jövőbeni események létrehozása (a következő szakaszokban talál a [jellemzőkiemelés](#feature-engineering) és a modellezési technikák). A címkézési időkereten egy példa, így később, mint az időkeretet funkcióját származnak.
 
-Időfüggő felosztása, válasszon egy _képzés a megszakítási idő T<sub>c</sub>_  , amikor egy modell betanításához hiperparaméterek lehetőségeire az előzményadatok T akár a<sub>c</sub>. Jövőbeli címkék, amely nem T kiszivárgását elkerülése érdekében<sub>c</sub> a betanítási adatok, válassza ki a legújabb képzési példák címke, x idő előtt T egységek<sub>c</sub>. 7. ábra a példában minden egyes négyzeten egy rekordot a az adatkészlet, ahol funkciók és címkék számítja ki a fent leírt módon. Az ábra bemutatja a rekordokat, amelyek kell képzés és egy tesztelési X = 2 és W = 3:
+Időfüggő felosztása, válasszon egy _képzés a megszakítási idő T<sub>c</sub>_  , amikor egy modell betanításához hiperparaméterek lehetőségeire az előzményadatok T akár a<sub>c</sub>. Jövőbeli címkék, amely nem T kiszivárgását elkerülése érdekében<sub>c</sub> a betanítási adatok, válassza ki a legújabb képzési példák címke, x idő előtt T egységek<sub>c</sub>. 7\. ábra a példában minden egyes négyzeten egy rekordot a az adatkészlet, ahol funkciók és címkék számítja ki a fent leírt módon. Az ábra bemutatja a rekordokat, amelyek kell képzés és egy tesztelési X = 2 és W = 3:
 
 ![7. ábra Bináris osztályozás felosztást időfüggő](./media/cortana-analytics-playbook-predictive-maintenance/time-dependent-split-for-binary-classification.png) 7. ábra. Bináris osztályozás felosztást időfüggő
 

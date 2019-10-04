@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 6547a640f6e56865d44b6848cf37078161faa538
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: cf40686adcee757db065fa6f68f990ea122b9747
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59261538"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67095863"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-officespace-software"></a>Oktatóanyag: Az Azure Active Directory-integráció OfficeSpace szoftverrel
 
@@ -55,7 +55,7 @@ Az Azure AD-be OfficeSpace szoftver integráció konfigurálásához, kell Offic
 
 **OfficeSpace szoftver hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -122,8 +122,8 @@ Az Azure AD egyszeri bejelentkezés konfigurálása OfficeSpace szoftverrel, haj
 
     | Name (Név) | Adatforrás-attribútum|
     | ---------------| --------------- |
-    | e-mail | user.mail |
-    | név | user.displayname |
+    | email | user.mail |
+    | name | user.displayname |
     | first_name | user.givenname |
     | last_name | user.surname |
 

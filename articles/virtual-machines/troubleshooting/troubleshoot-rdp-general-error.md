@@ -1,32 +1,31 @@
 ---
-title: Az Azure-beli Windows virtuális gépekhez RDP általános hiba elhárítása |} A Microsoft Docs
-description: Ismerje meg, az Azure-beli Windows virtuális gépekhez RDP általános hiba elhárítása |} A Microsoft Docs
+title: Általános RDP-hiba megoldása az Azure-beli Windows rendszerű virtuális gépeken | Microsoft Docs
+description: Megtudhatja, hogyan lehet elhárítani az RDP általános hibáit az Azure-beli Windows rendszerű virtuális gépeken | Microsoft Docs
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: f290a7e16938c66d45fab9b78086f77bfdfe4839
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7fc0fbf3362d18284ad6a80afa6396b6be1270a9
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58100411"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058003"
 ---
-# <a name="troubleshoot-an-rdp-general-error-in-azure-vm"></a>Az Azure virtuális Gépen RDP általános hiba elhárítása
+# <a name="troubleshoot-an-rdp-general-error-in-azure-vm"></a>Az RDP általános hibáinak megoldása az Azure-beli virtuális gépen
 
-Ez a cikk ismerteti egy általános hibát tapasztalhat, ha a kapcsolat létrehozása távoli asztal protokoll (RDP) a Windows virtuális gép (VM) az Azure-ban.
+Ez a cikk általános hibát ismertet, ha egy Azure-beli Windows rendszerű virtuális géphez (VM) RDP protokoll (RDP) való csatlakozást végez.
 
 ## <a name="symptom"></a>Jelenség
 
-Ha egy RDP-kapcsolat ablak virtuális géphez az Azure-ban, a következő általános hibaüzenet jelenhet meg:
+Amikor RDP-kapcsolattal rendelkezik az Azure-beli Windows rendszerű virtuális géppel, a következő általános hibaüzenet jelenhet meg:
 
 **A távoli asztal az alábbi okok valamelyike nem tud kapcsolódni a távoli számítógéphez:**
 
@@ -44,42 +43,42 @@ Ez a probléma a következő okok miatt fordulhat elő:
 
 ### <a name="cause-1"></a>OK: 1
 
-Az RDP-összetevő módon le van tiltva:
+Az RDP-összetevő a következőképpen van Letiltva:
 
-- Az összetevők szintjén
+- Az összetevő szintjén
 - A figyelő szintjén
-- A terminálkiszolgáló
-- A távoli asztali munkamenetgazda szerepkör
+- A terminálkiszolgálón
+- Távoli asztal munkamenet-gazdagép szerepkör
 
 ### <a name="cause-2"></a>OK 2
 
-Nem fut a távoli asztali szolgáltatások (TermService).
+A Távoli asztali szolgáltatások (TermService) nem fut.
 
-### <a name="cause-3"></a>OK: 3
+### <a name="cause-3"></a>3\. ok
 
 Az RDP-figyelő helytelenül van konfigurálva.
 
 ## <a name="solution"></a>Megoldás
 
-Ez a probléma megoldásához [készítsen biztonsági másolatot az operációsrendszer-lemez](../windows/snapshot-copy-managed-disk.md), és [az operációsrendszer-lemez csatolása a virtuális gép mentési](troubleshoot-recovery-disks-portal-windows.md), majd kövesse a lépéseket.
+A probléma megoldásához [végezze el az operációsrendszer-lemez biztonsági mentését](../windows/snapshot-copy-managed-disk.md), és [csatlakoztassa az operációs rendszer lemezét egy mentési virtuális géphez](troubleshoot-recovery-disks-portal-windows.md), majd kövesse a lépéseket.
 
 ### <a name="serial-console"></a>Soros konzol
 
-#### <a name="step-1-open-cmd-instance-in-serial-console"></a>1. lépés: A soros konzol CMD példány megnyitása
+#### <a name="step-1-open-cmd-instance-in-serial-console"></a>1\. lépés: A CMD-példány megnyitása a Serial consoleban
 
-1. Hozzáférés a [soros konzol](serial-console-windows.md) kiválasztásával **támogatás és hibaelhárítás** > **soros konzol (előzetes verzió)**. A szolgáltatás engedélyezve van a virtuális gépen, a virtuális gép sikeresen csatlakoztathatja.
+1. A [soros konzolt](serial-console-windows.md) a **support & hibaelhárítás** > **Serial Console (előzetes verzió)** lehetőség kiválasztásával érheti el. Ha a szolgáltatás engedélyezve van a virtuális gépen, akkor a virtuális gép sikeresen csatlakoztatható.
 
-2. Hozzon létre egy új csatorna a CMD-példányhoz. Típus **CMD** elindítja a csatornát a csatorna nevének lekérése érdekében.
+2. Hozzon létre egy új csatornát egy CMD-példányhoz. Írja be a **cmd** parancsot a csatorna nevének lekéréséhez.
 
-3. Váltson a csatornát a CMD-példányt futtató, ebben az esetben 1 csatornát kell lennie.
+3. Váltson át a CMD-példányt futtató csatornára, ebben az esetben az 1. csatornát kell megadnia.
 
    ```
    ch -si 1
    ```
 
-#### <a name="step-2-check-the-values-of-rdp-registry-keys"></a>2. lépés: Ellenőrizze az RDP-beállításkulcsok értékeit:
+#### <a name="step-2-check-the-values-of-rdp-registry-keys"></a>2\. lépés: Az RDP-beállításkulcsok értékének keresése:
 
-1. Annak ellenőrzése, hogy az RDP által le van tiltva a szabályzatokat.
+1. Ellenőrizze, hogy a házirendek letiltották-e az RDP-t.
 
       ```
       REM Get the local policy 
@@ -89,68 +88,68 @@ Ez a probléma megoldásához [készítsen biztonsági másolatot az operációs
       reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections
       ```
 
-      - Ha a tartományi házirend létezik, a rendszer felülírja a telepítőt a helyi házirend.
-      - Ha a tartományi házirend arról, hogy RDP letiltva (1), majd a frissítés az AD szabályzat a tartományvezérlő.
-      - Ha a tartományi házirend arról, hogy az RDP engedélyezve (0), majd nincs szükség frissítésre.
-      - Ha a tartományi házirend nem létezik, és a helyi házirend szerint az, hogy RDP le van tiltva (1), engedélyezze az RDP a következő paranccsal: 
+      - Ha a tartományi házirend létezik, a rendszer felülírja a helyi házirend beállítását.
+      - Ha a tartományi házirend azt állítja be, hogy az RDP le van tiltva (1), akkor frissítse az AD-házirendet a tartományvezérlőről.
+      - Ha a tartományi házirend azt állítja be, hogy az RDP engedélyezve van (0), akkor nincs szükség frissítésre.
+      - Ha a tartományi házirend nem létezik, és a helyi házirend tiltja, hogy az RDP le van tiltva (1), engedélyezze az RDP-t a következő parancs használatával: 
       
             reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
                   
 
-2. Ellenőrizze a terminálkiszolgáló aktuális konfigurációját.
+2. Keresse meg a terminálkiszolgáló aktuális konfigurációját.
 
       ```
       reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSEnabled
       ```
 
-      A parancs a 0 értéket adja vissza, ha a Terminálszolgáltatások kiszolgáló le van tiltva. Ezt követően engedélyezze a terminálkiszolgáló módon:
+      Ha a parancs 0 értéket ad vissza, a terminálkiszolgáló le van tiltva. Ezután engedélyezze a terminálkiszolgálót a következőképpen:
 
       ```
       reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSEnabled /t REG_DWORD /d 1 /f
       ```
 
-3. A terminálkiszolgáló modul a kiürítési módot, ha a kiszolgáló a Terminálszolgáltatások kiszolgálófarmon (a távoli asztali szolgáltatások vagy Citrix) értékre van állítva. Ellenőrizze a Terminálszolgáltatások kiszolgáló-modul az aktuális módja.
+3. A terminálkiszolgálói modul a kiürítési módra van beállítva, ha a kiszolgáló egy terminálkiszolgálói farmon (RDS vagy Citrix) található. A terminálkiszolgáló-modul aktuális üzemmódjának megtekintése.
 
       ```
       reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSServerDrainMode
       ```
 
-      Ha a parancs visszaadja az 1, a Terminálszolgáltatások kiszolgáló-modul értéke kiürítési módot. Ezután állítsa be a modul működő módra a következő:
+      Ha a parancs 1 értéket ad vissza, a terminálkiszolgáló modulja kiürítési módba van állítva. Ezután állítsa a modult a következőre:
 
       ```
       reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSServerDrainMode /t REG_DWORD /d 0 /f
       ```
 
-4. Ellenőrizze, hogy terminálkiszolgáló csatlakozhat.
+4. Győződjön meg arról, hogy tud-e csatlakozni a terminálkiszolgálóhoz.
 
       ```
       reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSUserEnabled
       ```
 
-      A parancs visszaadja az 1, akkor tud csatlakozni a Terminálszolgáltatások kiszolgáló. Ezt követően engedélyezze a kapcsolatot a következő:
+      Ha a parancs 1 értéket ad vissza, nem tud csatlakozni a terminálkiszolgálóhoz. Ezután engedélyezze a következőt a kapcsolatban:
 
       ```
       reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSUserEnabled /t REG_DWORD /d 0 /f
       ```
-5. Ellenőrizze a RDP-figyelő aktuális konfigurációját.
+5. Keresse meg az RDP-figyelő aktuális konfigurációját.
 
       ```
       reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp" /v fEnableWinStation
       ```
 
-      A parancs a 0 értéket adja vissza, ha az RDP-figyelő le van tiltva. Ezt követően engedélyezze a figyelő a következő:
+      Ha a parancs 0 értéket ad vissza, az RDP-figyelő le van tiltva. Ezután engedélyezze a figyelőt a következőképpen:
 
       ```
       reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp" /v fEnableWinStation /t REG_DWORD /d 1 /f
       ```
 
-6. Ellenőrizze, hogy csatlakozhat az RDP-figyelő.
+6. Győződjön meg arról, hogy tud-e csatlakozni az RDP-figyelőhöz.
 
       ```
       reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp" /v fLogonDisabled
       ```
 
-   Ha a parancs 1 ad vissza, nem lehet csatlakozni az RDP-figyelő. Ezt követően engedélyezze a kapcsolatot a következő:
+   Ha a parancs 1 értéket ad vissza, nem tud csatlakozni az RDP-figyelőhöz. Ezután engedélyezze a következőt a kapcsolatban:
 
       ```
       reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp" /v fLogonDisabled /t REG_DWORD /d 0 /f
@@ -158,29 +157,29 @@ Ez a probléma megoldásához [készítsen biztonsági másolatot az operációs
 
 7. Indítsa újra a virtuális gépet.
 
-8. Írja be a CMD-példányból kilépési `exit`, és nyomja le az **Enter** kétszer.
+8. Lépjen ki a cmd-példányból `exit`, írja be a parancsot, majd nyomja le kétszer az **ENTER billentyűt** .
 
-9. Írja be a virtuális gép újraindítása `restart`, majd csatlakozzon a virtuális Gépet.
+9. Indítsa újra a virtuális gépet `restart`a paranccsal, majd kapcsolódjon a virtuális géphez.
 
-Ha a probléma továbbra is történik, helyezze át a 2. lépés.
+Ha a probléma továbbra is fennáll, lépjen a 2. lépésre.
 
-#### <a name="step-2-enable-remote-desktop-services"></a>2. lépés: A távoli asztali szolgáltatások engedélyezése
+#### <a name="step-2-enable-remote-desktop-services"></a>2\. lépés: Távoli asztali szolgáltatások engedélyezése
 
-További információkért lásd: [távoli asztali szolgáltatások-beli virtuális gépen nem indítása](troubleshoot-remote-desktop-services-issues.md).
+További információ: [Távoli asztali szolgáltatások nem egy Azure-beli virtuális gépen indul](troubleshoot-remote-desktop-services-issues.md)el.
 
-#### <a name="step-3-reset-rdp-listener"></a>3. lépés: RDP-figyelő alaphelyzetbe állítása
+#### <a name="step-3-reset-rdp-listener"></a>3\. lépés: RDP-figyelő visszaállítása
 
-További információkért lásd: [a távoli asztal gyakran leválasztja az Azure virtuális Gépen](troubleshoot-rdp-intermittent-connectivity.md).
+További információ: [Távoli asztal gyakori leválasztása az Azure-beli virtuális gépen](troubleshoot-rdp-intermittent-connectivity.md).
 
-### <a name="offline-repair"></a>Offline javítása
+### <a name="offline-repair"></a>Offline javítás
 
-#### <a name="step-1-turn-on-remote-desktop"></a>1. lépés: Kapcsolja be a távoli asztal
+#### <a name="step-1-turn-on-remote-desktop"></a>1\. lépés: Távoli asztal bekapcsolása
 
 1. [Csatlakoztassa az operációsrendszer-lemezt egy helyreállítási virtuális Géphez](../windows/troubleshoot-recovery-disks-portal.md).
 2. Indítsa el a helyreállítási virtuális Gépet egy távoli asztali kapcsolatot.
 3. Győződjön meg arról, hogy a lemez megjelölt **Online** a Lemezkezelés konzol. Vegye figyelembe a meghajtóbetűjelet, amely a csatlakoztatott operációsrendszer-lemez van rendelve.
 4. Indítsa el a helyreállítási virtuális Gépet egy távoli asztali kapcsolatot.
-5. Nyisson meg egy rendszergazda jogú parancssort munkamenetet (**Futtatás rendszergazdaként**). Futtassa a következő szkripteket. Ez a szkript feltételezzük, hogy a meghajtóbetűjel van rendelve a csatlakoztatott operációsrendszer-lemez-e F. cserélje le ezt a meghajtóbetűjelet, a virtuális gép a megfelelő értékkel.
+5. Nyisson meg egy rendszergazda jogú parancssort munkamenetet (**Futtatás rendszergazdaként**). Futtassa a következő parancsfájlokat. Ez a szkript feltételezzük, hogy a meghajtóbetűjel van rendelve a csatlakoztatott operációsrendszer-lemez-e F. cserélje le ezt a meghajtóbetűjelet, a virtuális gép a megfelelő értékkel.
 
       ```
       reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv 
@@ -216,32 +215,32 @@ További információkért lásd: [a távoli asztal gyakran leválasztja az Azur
       reg unload HKLM\BROKENSOFTWARE 
       ```
 
-6. Ha a virtuális gép tartományhoz csatlakoztatott, ellenőrizze a következő beállításkulcsot, ha van-e olyan csoportházirenddel, amely letiltja az RDP. 
+6. Ha a virtuális gép tartományhoz csatlakozik, a következő beállításkulcs segítségével ellenőrizze, hogy van-e olyan csoportházirend, amely letiltja az RDP-t. 
 
       ```
       HKLM\BROKENSOFTWARE\Policies\Microsoft\Windows NT\Terminal Services\fDenyTSConnectionS
       ```
 
-      Ha ezt a kulcsértéket értéke 1, amely azt jelenti, hogy az RDP a házirend le van tiltva. Távoli asztal engedélyezése a csoportházirend-objektum csoportházirend segítségével, a tartományvezérlő következő szabályzatának módosítása:
+      Ha a kulcs értéke 1, ez azt jelenti, hogy az RDP-t letiltja a házirend. Az Távoli asztal csoportházirend-objektumon keresztüli engedélyezéséhez módosítsa a következő házirendet a tartományvezérlőről:
 
    
-      **Számítógép konfigurációja\Házirendek\Felügyeleti sablonok:**
+      **Számítógépes Computer-sablonok:**
 
-      A házirend definitions\Windows összetevők\Távoli Desktop szolgáltatások\Távoli asztali munkamenet Host\Connections\Allow felhasználók távolról kapcsolódni a távoli asztali szolgáltatások használatával
+      A szabályzat definitions\Windows Windows-összetevők asztali Windows-összetevők asztali munkamenet-Host\Connections\Allow a felhasználókat a Távoli asztali szolgáltatások használatával történő távoli kapcsolódáshoz
   
-1. Válassza le a lemezt a virtuális gép mentési.
-1. [Hozzon létre egy új virtuális Gépet a lemezről](../windows/create-vm-specialized.md).
+1. Válassza le a lemezt a mentési virtuális gépről.
+1. [Hozzon létre egy új virtuális gépet a lemezről](../windows/create-vm-specialized.md).
 
-Ha a probléma továbbra is történik, helyezze át a 2. lépés.
+Ha a probléma továbbra is fennáll, lépjen a 2. lépésre.
 
-#### <a name="step-2-enable-remote-desktop-services"></a>2. lépés: A távoli asztali szolgáltatások engedélyezése
+#### <a name="step-2-enable-remote-desktop-services"></a>2\. lépés: Távoli asztali szolgáltatások engedélyezése
 
-További információkért lásd: [távoli asztali szolgáltatások-beli virtuális gépen nem indítása](troubleshoot-remote-desktop-services-issues.md).
+További információ: [Távoli asztali szolgáltatások nem egy Azure-beli virtuális gépen indul](troubleshoot-remote-desktop-services-issues.md)el.
 
-#### <a name="step-3-reset-rdp-listener"></a>3. lépés: RDP-figyelő alaphelyzetbe állítása
+#### <a name="step-3-reset-rdp-listener"></a>3\. lépés: RDP-figyelő visszaállítása
 
-További információkért lásd: [a távoli asztal gyakran leválasztja az Azure virtuális Gépen](troubleshoot-rdp-intermittent-connectivity.md).
+További információ: [Távoli asztal gyakori leválasztása az Azure-beli virtuális gépen](troubleshoot-rdp-intermittent-connectivity.md).
 
-## <a name="need-help-contact-support"></a>Segítség Kapcsolatfelvétel a támogatási szolgáltatással
+## <a name="need-help-contact-support"></a>Segítség Forduljon a támogatási szolgálathoz.
 
-Ha továbbra is segítségre van szüksége, [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.
+Ha további segítségre van szüksége, [vegye fel a kapcsolatot az ügyfélszolgálattal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.

@@ -4,19 +4,19 @@ description: fájl belefoglalása
 services: functions
 author: ggailey777
 manager: jeconnoc
-ms.service: functions
+ms.service: azure-functions
 ms.topic: include
 ms.date: 08/15/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 0e865465b6566e290dd59d061385510e7c0a2d46
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: a20fdb2ddefbd0cd89c655d29c6c4309f73e9d35
+ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669755"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "67608210"
 ---
-Többféleképpen is, hogy Ön is hozzáadása, frissítése és törlése a függvényalkalmazás-beállításokat:
+A Function app-beállítások több módon is hozzáadhatók, frissíthetők és törölhetők:
 
-+ [Az Azure Portalon.](../articles/azure-functions/functions-how-to-use-azure-function-app-settings.md#settings)
-+ [Az Azure parancssori felület használatával.](https://docs.microsoft.com/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set)
++ [A Azure Portal.](../articles/azure-functions/functions-how-to-use-azure-function-app-settings.md#settings)
++ [Az Azure CLI használatával.](https://docs.microsoft.com/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set)

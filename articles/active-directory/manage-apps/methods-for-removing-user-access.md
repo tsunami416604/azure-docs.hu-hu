@@ -3,8 +3,8 @@ title: A felhasználó hozzáférést egy alkalmazáshoz eltávolítása |} A Mi
 description: Megtudhatja, hogyan távolítsa el a felhasználó hozzáférést egy alkalmazáshoz
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/17/2018
-ms.author: celested
+ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db9ac671b616e2b5af59c033d08768c9e572876f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 5b69502995eff88df53af3671a8e611809f83e59
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58105369"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65826102"
 ---
 # <a name="how-to-remove-a-users-access-to-an-application"></a>Alkalmazásokhoz való hozzáférés egy felhasználó eltávolítása
 

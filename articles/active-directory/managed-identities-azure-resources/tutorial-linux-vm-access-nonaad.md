@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/20/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7a4ce0419e3a5615cc5a6d57fe2f1cfecad2f09
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 26d434069870fbfa52687a3abc7913fd121687a1
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58444856"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000072"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>Oktatóanyag: Az Azure Key Vault elérése Linux VM-beli, rendszer által hozzárendelt felügyelt identitással 
 
@@ -70,7 +70,7 @@ A lépések elvégzéséhez szüksége lesz egy SSH-ügyfélre.  Windows haszn�
  
 1. A portálon lépjen a Linux virtuális gépre, és az **Áttekintés** területen kattintson a **Csatlakozás** gombra. 
 2. **Csatlakozzon** a virtuális géphez a választott SSH-ügyféllel. 
-3. A terminálablakban a CURL, használatával indítson egy hozzáférési jogkivonat beszerzése az Azure Key Vault az Azure-erőforrások végpont a helyi felügyelt identitások.  
+3. A terminál ablakban a CURL használatával hozzon végre egy kérést az Azure-erőforrások végpontjának helyi felügyelt identitásai számára, hogy hozzáférési jogkivonatot kapjon Azure Key Vaulthoz.  
  
     A hozzáférési jogkivonatra vonatkozó CURL-kérelmet alább láthatja.  
     
@@ -110,7 +110,7 @@ Miután lekérte a titkos kódot a Key Vaultból, a használatával hitelesíté
 Az oktatóanyag bemutatta, hogyan érhető el Azure Key Vault a Linux VM-beli, rendszer által hozzárendelt felügyelt identitással.  További információ az Azure Key Vault szolgáltatásról:
 
 > [!div class="nextstepaction"]
->[Azure Key Vault](/azure/key-vault/key-vault-whatis)
+>[Azure Key Vault](/azure/key-vault/key-vault-overview)
 
 
 

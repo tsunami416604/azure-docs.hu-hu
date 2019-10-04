@@ -3,17 +3,17 @@ title: Rendszerhéj-parancsfájlok futtatása egy Linux rendszerű virtuális g�
 description: Ez a témakör ismerteti, hogyan lehet egy Azure-beli Linuxos virtuális gép futtatása paranccsal belül parancsfájlok futtatása
 services: automation
 ms.service: automation
-author: georgewallace
-ms.author: gwallace
-ms.date: 10/25/2018
+author: bobbytreed
+ms.author: robreed
+ms.date: 04/26/2019
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: e865d4e9cbad2c2064d961bc6e407440ce8556fc
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: abf0f69ea70bae4102806214f0ef0fcfc25aad3a
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158805"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477046"
 ---
 # <a name="run-shell-scripts-in-your-linux-vm-with-run-command"></a>A Linux rendszerű virtuális gép futtatása paranccsal shell-szkript futtatása
 
@@ -71,16 +71,16 @@ Ha ki van választva a parancsot, kattintson **futtatása** a parancsfájl futta
 
 Ez a táblázat a Linux rendszerű virtuális gépekhez elérhető parancsok listáját jeleníti meg. A **RunShellScript** parancs bármilyen kívánt egyéni szkript futtatásához használható.
 
-|**Name (Név)**|**Leírás**|
+|**Name**|**Leírás**|
 |---|---|
 |**RunShellScript**|Linux shellt szkriptet hajt végre.|
 |**ifconfig**| Összes hálózati adapter konfigurációjának beszerzéséhez.|
 
 ## <a name="limiting-access-to-run-command"></a>Futtatása paranccsal való hozzáférés korlátozása
 
-A futtatási parancsok listázása és a egy parancs részleteit megjelenítő szükséges a `Microsoft.Compute/locations/runCommands/read` engedéllyel, amely a beépített [olvasó](../../role-based-access-control/built-in-roles.md#reader) szerepkört, és magasabb.
+A futtatási parancsok listázása és a egy parancs részleteit megjelenítő szükséges a `Microsoft.Compute/locations/runCommands/read` engedélyt az előfizetés szintjén, amely a beépített [olvasó](../../role-based-access-control/built-in-roles.md#reader) szerepkör, és magasabb.
 
-A parancs futtatásához szükség van a `Microsoft.Compute/virtualMachines/runCommand/action` engedéllyel, amely a [közreműködői](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) szerepkör, és magasabb.
+Parancs futtatásához szükség van a `Microsoft.Compute/virtualMachines/runCommand/action` engedélyt az előfizetés szintjén, amely a [virtuális gépek Közreműködője](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) szerepkör és újabb.
 
 Használhatja az egyik a [beépített](../../role-based-access-control/built-in-roles.md) szerepkörök, vagy hozzon létre egy [egyéni](../../role-based-access-control/custom-roles.md) szerepkör-parancs futtatása.
 

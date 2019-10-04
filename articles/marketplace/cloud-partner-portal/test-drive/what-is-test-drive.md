@@ -1,27 +1,21 @@
 ---
-title: Mi a Test Drive? | Microsoft Docs
+title: Mi a Tesztverzió? | Az Azure Marketplace-en
 description: Marketplace-en Test Drive funkció ismertetése
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: pbutlerm
 manager: Ricardo.Villalobos
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 0bdff77a4be6a28e2799d4f481492d2c7ba6bda0
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.author: pabutler
+ms.openlocfilehash: 5b23a5e93dcbb9c13243240bda760a16d108d731
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456936"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64938459"
 ---
-<a name="what-is-test-drive"></a>Mi a Test Drive?
+<a name="what-is-test-drive"></a>Mi a Tesztverzió?
 ===================
 
 Test Drive kiválóan alkalmas lehetőségét, így az Ön ajánlatát a lehetséges ügyfelek bemutatására \'vásárlás előtt próbálja\', ez pedig nagyobb konverziós és magasan képzett érdeklődők generációja.
@@ -53,8 +47,8 @@ A potenciális ügyfelek felderíti az alkalmazás a Marketplace-en, bejelentkez
 
 Függetlenül attól, hogy bonyolult az alkalmazás a Microsoft Test Drive segít a termék keltse életre az ügyfél számára. Ma a Tesztverzió alapján a termék, a forgatókönyv és a piactér három különböző típusú biztosítunk.
 
-- **[Az Azure Resource Manager](./azure-resource-manager-test-drive.md)**: Egy Azure Resource Manager Test Drive egy központi telepítési sablont, amely tartalmazza az összes Azure-erőforrást, amely tartalmazza a megoldás a közzétevő létrehozása folyamatban. Ebben a forgatókönyvben igazodó termékek, amelyekről csak Azure-erőforrások használatához.
-- **[Logikai alkalmazás](./logic-app-test-drive.md)**: Egy logikai alkalmazás Tesztverziós, amelynek szinkronban kell foglalnia az összes összetett megoldások létrehozására szolgáló architektúrák központi telepítési sablont. Az összes Dynamics-alkalmazások vagy egyéni termékek Test Drive az ilyen típusú kell használnia.
+- **[Az Azure Resource Manager](./azure-resource-manager-test-drive.md)** : Egy Azure Resource Manager Test Drive egy központi telepítési sablont, amely tartalmazza az összes Azure-erőforrást, amely tartalmazza a megoldás a közzétevő létrehozása folyamatban. Ebben a forgatókönyvben igazodó termékek, amelyekről csak Azure-erőforrások használatához.
+- **[Logikai alkalmazás](./logic-app-test-drive.md)** : Egy logikai alkalmazás Tesztverziós, amelynek szinkronban kell foglalnia az összes összetett megoldások létrehozására szolgáló architektúrák központi telepítési sablont. Az összes Dynamics-alkalmazások vagy egyéni termékek Test Drive az ilyen típusú kell használnia.
 - **Power BI**: A Power bi-ban próbálja ki az egyéni kialakítású irányítópulton egyszerűen egy beágyazott kapcsolat. Minden olyan terméket, amely egyszerűbb egy interaktív Power BI vizuális kell használnia a Test Drive az ilyen típusú megoldást szeretne.
     Fel kell töltenie az itt csak a Power BI embedded URL-CÍMÉT.
 

@@ -1,96 +1,149 @@
 ---
-title: Gyakori Azure Kubernetes Service-problémák hibaelhárítása
-description: Útmutató a gyakori problémák elhárítására Azure Kubernetes Service (AKS) használata esetén
+title: Az Azure Kubernetes szolgáltatással kapcsolatos gyakori problémák elhárítása
+description: Útmutató az Azure Kubernetes szolgáltatás (ak) használata során felmerülő gyakori problémák elhárításához és megoldásához
 services: container-service
 author: sauryadas
 ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 56d91d7801c576064b941ac6089a52e74b4a3b7b
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 6ff273236f9f8465de9ec0cda89ed3ff8996ecec
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540924"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932665"
 ---
-# <a name="aks-troubleshooting"></a>AKS-hibaelhárítás
+# <a name="aks-troubleshooting"></a>AK-hibaelhárítás
 
-Amikor hoz létre, vagy az Azure Kubernetes Service (AKS)-fürtök kezelése, előfordulhat, hogy időnként tapasztal. Ez a cikk részletesen néhány gyakori probléma és a hibaelhárítási lépéseket.
+Az Azure Kubernetes szolgáltatásbeli (ak-beli) fürtök létrehozásakor és kezelésekor időnként problémákba ütközhet. Ez a cikk néhány gyakori problémát és hibaelhárítási lépést részletez.
 
-## <a name="in-general-where-do-i-find-information-about-debugging-kubernetes-problems"></a>Általánosságban elmondható, hol található információ a Kubernetes hibakeresésével?
+## <a name="in-general-where-do-i-find-information-about-debugging-kubernetes-problems"></a>Általánosságban Hol találhatok információt a Kubernetes kapcsolatos hibák elhárításáról?
 
-Próbálja ki a [hivatalos útmutató a Kubernetes-fürtök hibaelhárítási](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/).
-Emellett van egy [hibaelhárítási útmutató](https://github.com/feiskyer/kubernetes-handbook/blob/master/en/troubleshooting/index.md), egy Microsoft-mérnök podok, csomópontok, fürtök és egyéb funkciókkal kapcsolatos hibaelhárításhoz tett közzé.
+Próbálja ki a [hivatalos útmutatót a Kubernetes-fürtök hibaelhárításához](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/).
+A Microsoft Engineering által kiadott [hibaelhárítási útmutató](https://github.com/feiskyer/kubernetes-handbook/blob/master/en/troubleshooting/index.md)a hüvelyek, a csomópontok, a fürtök és az egyéb funkciók hibaelhárítására is használható.
 
-## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>Egy "kvóta túllépve" hiba kapok létrehozása vagy frissítése során. Mit tegyek? 
+## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>"A kvóta túllépve" hibaüzenetet kapok a létrehozás vagy a frissítés során. Mit tegyek? 
 
-Kell [magok kérelem](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
+[Magot kell kérnie](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
 
-## <a name="what-is-the-maximum-pods-per-node-setting-for-aks"></a>Mi az a maximális podok száma csomópontonként beállítás az aks-ben?
+## <a name="what-is-the-maximum-pods-per-node-setting-for-aks"></a>Mekkora a hüvelyek maximális száma az AK-ban?
 
-A maximális podok száma csomópontonként értéke alapértelmezés szerint 30, ha telepít egy AKS-fürtöt az Azure Portalon.
-A maximális podok száma csomópontonként értéke 110 alapértelmezés szerint ha telepít egy AKS-fürtöt az Azure CLI-ben. (Ügyeljen rá, hogy az Azure CLI legújabb verzióját használja). Ez az alapértelmezett beállítás használatával módosítható a `–-max-pods` a jelzőt a `az aks create` parancsot.
+A hüvelyek maximális száma alapértelmezés szerint 30, ha AK-fürtöt helyez üzembe a Azure Portalban.
+Alapértelmezés szerint a hüvelyek maximális száma 110, ha az Azure CLI-ben helyez üzembe egy AK-fürtöt. (Ügyeljen arra, hogy az Azure CLI legújabb verzióját használja). Ez az alapértelmezett beállítás a `–-max-pods` `az aks create` parancsban megjelenő jelző használatával módosítható.
 
-## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>InsufficientSubnetSize hibaüzenetet kapok speciális hálózatkezelés az AKS-fürt üzembe helyezése során. Mit tegyek?
+## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>InsufficientSubnetSize hibaüzenetet kapok egy AK-fürt speciális hálózatkezeléssel való üzembe helyezése során. Mit tegyek?
 
-Ha Azure CNI (speciális networking) használ, az AKS preallocates IP-Címének egyikét a "max-podok" konfigurálva csomópontonként alapján. AKS-fürt a csomópontok száma 1 és a 110-es közötti bárhol lehet. A beállított maximális podok száma csomópontonként alapján, az alhálózat méretét nagyobbnak kell lennie a "termék, a csomópontok száma és a csomópontonkénti maximális pod". A következő alapvető egyenlet Ez ismerteti:
+Ha az Azure CNI (speciális Hálózatkezelés) van használatban, a (z) "Max-hüvelyek" által konfigurált csomópontok alapján a rendszer előre lefoglalja az IP-címet. Egy AK-fürt csomópontjainak száma 1 és 110 között lehet. A konfigurált maximális hüvelyek/csomópontok alapján az alhálózat méretének nagyobbnak kell lennie, mint a csomópontok számának és a maximális Pod/csomópontnak a szorzata. A következő alapegyenlet körvonalazza ezt:
 
-Alhálózat méretét > (figyelembe véve a jövőbeli méretezési követelmények) a fürtben található csomópontok száma * podok csomópontonkénti maximális száma.
+Az alhálózati méret > a fürt csomópontjainak száma (a jövőbeli skálázási követelmények figyelembevételével) * a maximális hüvely/csomópont.
 
-További információkért lásd: [megtervezése IP-címkezelés a fürt](configure-azure-cni.md#plan-ip-addressing-for-your-cluster).
+További információt [a fürt IP-címzésének megtervezése](configure-azure-cni.md#plan-ip-addressing-for-your-cluster)című témakörben talál.
 
-## <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>A pod CrashLoopBackOff módban elakadt. Mit tegyek?
+## <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>A My Pod CrashLoopBackOff módban ragadt. Mit tegyek?
 
-Előfordulhat, hogy a pod folyamatban elakadt ebben a módban a különböző okok miatt. Az nézhet ki:
+Előfordulhat, hogy a pod nem ragadja meg ezt a módot. A következőket tekintheti meg:
 
-* Maga a pod használatával `kubectl describe pod <pod-name>`.
-* A naplók segítségével `kubectl log <pod-name>`.
+* Maga a pod, a használatával `kubectl describe pod <pod-name>`.
+* A naplók a használatával `kubectl log <pod-name>`.
 
-A pod-problémák elhárításáról további információk: [-alkalmazások hibakeresését](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/#debugging-pods).
+A pod-problémák hibaelhárításával kapcsolatos további információkért lásd: [alkalmazások hibakeresése](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/#debugging-pods).
 
-## <a name="im-trying-to-enable-rbac-on-an-existing-cluster-how-can-i-do-that"></a>A tapasztalataimat szeretném RBAC ahhoz, hogy egy meglévő fürt. Hogyan tehetem ezt?
+## <a name="im-trying-to-enable-rbac-on-an-existing-cluster-how-can-i-do-that"></a>Megpróbálom engedélyezni a RBAC egy meglévő fürtön. Hogyan tehetem meg?
 
-Sajnos engedélyezése szerepköralapú hozzáférés-vezérlés (RBAC) a meglévő fürtökön nem támogatott. Explicit módon létre kell hoznia az új fürtök. Ha a parancssori Felületet használja, az RBAC alapértelmezés szerint engedélyezve van. Az AKS portal használatakor egy váltógomb engedélyezése az RBAC a létrehozási munkafolyamat érhető el.
+Sajnos a szerepköralapú hozzáférés-vezérlés (RBAC) a meglévő fürtökön történő engedélyezése jelenleg nem támogatott. Explicit módon létre kell hoznia egy új fürtöt. Ha a CLI-t használja, a RBAC alapértelmezés szerint engedélyezve van. Ha az AK-portált használja, a RBAC engedélyezésére szolgáló váltógomb a létrehozási munkafolyamatban érhető el.
 
-## <a name="i-created-a-cluster-with-rbac-enabled-by-using-either-the-azure-cli-with-defaults-or-the-azure-portal-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>Az RBAC engedélyezve van az alapértelmezett értékeket, vagy az Azure Portalon az Azure CLI használatával létrehozott egy fürtöt, és most már sok figyelmeztetések jelennek meg a Kubernetes-irányítópultot. Az Irányítópult segítségével megvalósítható, ha figyelmeztetéseket. Mit tegyek?
+## <a name="i-created-a-cluster-with-rbac-enabled-by-using-either-the-azure-cli-with-defaults-or-the-azure-portal-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>Létrehozott egy RBAC engedélyező fürtöt az alapértelmezett vagy a Azure Portal Azure CLI használatával, és most már sok figyelmeztetés jelenik meg a Kubernetes-irányítópulton. A figyelmeztetés nélküli működéshez használt irányítópult. Mit tegyek?
 
-A figyelmeztetések az irányítópulton az oka, hogy a fürt engedélyezve van az RBAC, és hozzáférést alapértelmezés szerint le van tiltva. Ez a megközelítés általában célszerű, mert az alapértelmezett kitettség az irányítópult a fürt minden felhasználó számára a biztonsági fenyegetések vezethet. Ha továbbra is engedélyezni szeretné az irányítópulton, kövesse a [ebben a blogbejegyzésben](https://pascalnaber.wordpress.com/2018/06/17/access-dashboard-on-aks-with-rbac-enabled/).
+A figyelmeztetések az irányítópulton az oka, hogy a fürt most már engedélyezve van a RBAC, és a hozzáférése alapértelmezés szerint le van tiltva. Általánosságban véve ez a megközelítés jó gyakorlat, mert az irányítópultnak a fürt összes felhasználójára vonatkozó alapértelmezett expozíciója biztonsági fenyegetésekhez vezethet. Ha továbbra is engedélyezni szeretné az irányítópultot, kövesse az [ebben a blogbejegyzésben](https://pascalnaber.wordpress.com/2018/06/17/access-dashboard-on-aks-with-rbac-enabled/)leírt lépéseket.
 
-## <a name="i-cant-connect-to-the-dashboard-what-should-i-do"></a>Nem lehet csatlakozni az irányítópulton. Mit tegyek?
+## <a name="i-cant-connect-to-the-dashboard-what-should-i-do"></a>Nem tudok csatlakozni az irányítópulthoz. Mit tegyek?
 
-A legegyszerűbben úgy, hogy hozzáférhessen a szolgáltatáshoz a fürtön kívül, hogy futtassa `kubectl proxy`, mely proxyk kéréseket küldeni a a localhost-8001 a Kubernetes API-kiszolgálóhoz. Itt az API-kiszolgáló is a szolgáltatás proxy: `http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/node?namespace=default`.
+A szolgáltatásnak a fürtön kívülre való hozzáférésének legegyszerűbb módja `kubectl proxy`a Futtatás, amelyet a rendszer a localhost 8001-as portra küldött a Kubernetes API-kiszolgálónak. Innen az API-kiszolgáló proxyt tud a szolgáltatáshoz: `http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/node?namespace=default`.
 
-Ha nem látja a Kubernetes-irányítópult, ellenőrizze-e a `kube-proxy` pod fut a `kube-system` névtér. Ha nem futó állapotban, törölje a pod, és újra fog.
+Ha nem látja a Kubernetes irányítópultot, ellenőrizze, hogy `kube-proxy` a pod fut-e `kube-system` a névtérben. Ha nem fut állapotban van, törölje a pod-t, majd indítsa újra.
 
-## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Naplók nem jelenik meg a kubectl-naplók használatával, vagy nem tud kapcsolódni az API-kiszolgálóhoz. Érkeznek meg hozzám a "kiszolgálótól érkező hiba: hiba hangtárcsázás háttér: tárcsázza a tcp …". Mit tegyek?
+## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Nem tudok naplókat beolvasni a kubectl-naplók használatával, vagy nem tudok csatlakozni az API-kiszolgálóhoz. "Hiba a kiszolgálóról: hiba a háttérrendszer tárcsázásakor: telefonos TCP...". Mit tegyek?
 
-Győződjön meg arról, hogy az alapértelmezett hálózati biztonsági csoport nem módosul, és, hogy 22-es port meg nyitva, az API-kiszolgálóhoz való csatlakozáshoz. Ellenőrizze-e a `tunnelfront` pod fut a *kube rendszer* névtér használatával a `kubectl get pods --namespace kube-system` parancsot. Ha nem, a pod és kényszerített törlése újraindul.
+Győződjön meg arról, hogy az alapértelmezett hálózati biztonsági csoport nincs módosítva, és hogy a 22-es és a 9000-as port is nyitva van az API-kiszolgálóhoz való csatlakozáshoz. `tunnelfront` A`kubectl get pods --namespace kube-system` parancs használatával győződjön meg arról, hogy a pod a *Kube-System* névtérben fut-e. Ha nem, akkor kényszerítse a pod törlését, és a rendszer újraindul.
 
-## <a name="im-trying-to-upgrade-or-scale-and-am-getting-a-message-changing-property-imagereference-is-not-allowed-error-how-do-i-fix-this-problem"></a>I frissítésével, vagy méretezheti a tapasztalataimat és érkeznek meg hozzám a "üzenet: Hiba a "ImageReference" tulajdonság módosítása nem engedélyezett". Hogyan lehet kijavítani a hibát a probléma?
+## <a name="im-trying-to-upgrade-or-scale-and-am-getting-a-message-changing-property-imagereference-is-not-allowed-error-how-do-i-fix-this-problem"></a>Megpróbálok frissíteni vagy méretezni, és kapok egy üzenetet: A "imageReference" tulajdonság módosítása nem engedélyezett "hiba". Hogyan kijavítani ezt a problémát?
 
-Előfordulhat, hogy lehet első ezt a hibát, mert az ügynökcsomópontok az AKS-fürtben lévő címkéket módosította. Módosítása és törlése a címkék és egyéb tulajdonságait a MC_ * erőforráscsoportban lévő erőforrásokat váratlan eredményekhez vezethet. Az AKS MC_ * tartozó az erőforrások módosítását a fürt a szolgáltatásiszint-célkitűzés (SLO) működésképtelenné válik.
+Előfordulhat, hogy ez a hiba azért fordul elő, mert a címkéket az AK-fürtön belüli ügynök-csomópontokban módosította. A címkék és a MC_ * erőforráscsoport erőforrásainak más tulajdonságainak módosítása és törlése váratlan eredményekhez vezethet. Az AK-fürt MC_ * csoportjában található erőforrások módosítása megszakítja a szolgáltatási szint célkitűzését (SLO).
 
-## <a name="im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed"></a>A hibákat, a fürt hibás állapotban van, és frissítése, illetve skálázás csak fog működni, rögzített kapok
+## <a name="im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed"></a>Hibaüzeneteket kapok, hogy a fürtem hibás állapotban van, és a frissítés vagy a skálázás nem fog működni, amíg meg nem történik a javítás.
 
-*A hibaelhárítási segítséget a van irányítva. https://aka.ms/aks-cluster-failed*
+*Ez a hibaelhárítási segítség a következő címről származik: https://aka.ms/aks-cluster-failed*
 
-Ez akkor fordul elő, amikor a fürtök több okból sikertelen állapotba adja meg. Oldja meg a fürt nem sikerült állapota a korábban meghiúsult művelet megkísérlése előtt az alábbi lépésekkel:
+Ez a hiba akkor fordul elő, ha a fürtök több okból is hibás állapotba kerülnek. Kövesse az alábbi lépéseket a fürt sikertelen állapotának feloldásához a korábban sikertelen művelet újbóli megkísérlése előtt:
 
-1. Amíg a fürtön kívüli `failed` állapot, `upgrade` és `scale` művelet nem sikerült. Legfelső szintű gyakori problémák és megoldásuk a következők:
-    * A méretezés **(CRP) nincs elegendő számítási kvótával**. Oldja meg, hogy először egy cél stabil állapotba kvótán belül fürt méretezése. Ezután kövesse az alábbi [lépéseket egy számítási kvótát növelése](../azure-supportability/resource-manager-core-quotas-request.md) vertikális felskálázása újra nem csupán kezdeti kvótakorlát kísérlet előtt.
-    * Fürtök méretezése speciális hálózatkezelés és **megfelelő alhálózati (hálózat) erőforrások**. Oldja meg, hogy először egy cél stabil állapotba kvótán belül fürt méretezése. Ezután kövesse [növelheti ezeket a lépéseket egy erőforráscsoport-kvótát](../azure-resource-manager/resource-manager-quota-errors.md#solution) újra nem csupán kezdeti kvótakorlát vertikális felskálázása előtt.
-2. Az alapul szolgáló frissítési hiba okát megszűnése után a fürt állapot kell lennie. Állapot ellenőrzése után próbálkozzon újra az eredeti művelet.
+1. Amíg a fürt `failed` állapota nem áll fenn `scale` , `upgrade` a műveletek sikertelenek lesznek. A leggyakoribb gyökérszintű problémák és megoldások a következők:
+    * A nem **megfelelő számítási (CRP-) kvóta**skálázása. A megoldáshoz először a kvótán belüli, stabil cél állapotba kell állítani a fürtöt. Ezután kövesse az alábbi [lépéseket a számítási kvóta növelésének](../azure-supportability/resource-manager-core-quotas-request.md) megkezdéséhez, mielőtt a kezdeti kvóta-korlátokon felül ismét fel kellene mérni.
+    * Fürt méretezése speciális hálózatkezeléssel és nem **elegendő alhálózat (Hálózatkezelés) erőforrásokkal**. A megoldáshoz először a kvótán belüli, stabil cél állapotba kell állítani a fürtöt. Ezután kövesse az [alábbi lépéseket az erőforrás-kvóta növelésének](../azure-resource-manager/resource-manager-quota-errors.md#solution) megkezdéséhez, mielőtt a kezdeti kvóta-korlátokon felül ismét fel kellene mérni a skálázást.
+2. Miután megoldotta a frissítési hiba kiváltó okát, a fürtnek sikeres állapotban kell lennie. A sikeres állapot ellenőrzése után próbálja megismételni az eredeti műveletet.
 
-## <a name="im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-currently-being-upgraded-or-has-failed-upgrade"></a>Ha szeretne frissíteni vagy a méretezési csoport, amely a fürt állapot folyamatban van jelenleg folyamatban hibák kapok frissítésének vagy a frissítés sikertelen volt
+## <a name="im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-currently-being-upgraded-or-has-failed-upgrade"></a>Hibákba ütközik, amikor megpróbálja frissíteni vagy méretezni az adott állapotot, mert jelenleg folyamatban van a fürt frissítése vagy frissítése
 
-*A hibaelhárítási segítséget a van irányítva. https://aka.ms/aks-pending-upgrade*
+*Ez a hibaelhárítási segítség a következő címről származik: https://aka.ms/aks-pending-upgrade*
 
-Fürtműveletek korlátozva, ha aktív frissítési műveletek történnek, vagy frissítés történt kísérlet, de ezt követően nem sikerült. Futtassa a probléma diagnosztizálása érdekében `az aks show -g myResourceGroup -n myAKSCluster -o table` a fürt részletes állapot lekéréséhez. Az eredmény alapján:
+Egyetlen csomóponttal rendelkező fürtön lévő műveletek frissítése és méretezése, illetve a [több csomóponttal](use-multiple-node-pools.md) rendelkező fürtök kölcsönösen kizárják egymást. Nem lehet egyszerre frissíteni és méretezni a fürt vagy a csomópont készletét. Ehelyett minden Művelettípus a következő, ugyanazon az erőforráson megjelenő kérelem előtt fejeződik be a cél erőforráson. Ennek eredményeképpen a műveletek korlátozottak, ha az aktív verziófrissítési vagy méretezési műveletek történnek, és a későbbiekben sikertelenek voltak. 
 
-* Ha folyamatosan frissíti a fürt, várjon, amíg a művelet véget nem ér. Ha sikeres, próbálja meg újra a korábban sikertelen műveletet.
-* Ha a fürt frissítése nem sikerült, hajtsa végre a fenti lépéseket
+A probléma `az aks show -g myResourceGroup -n myAKSCluster -o table` diagnosztizálásához a fürt részletes állapotának lekéréséhez. Az eredmény alapján:
 
-## <a name="can-i-move-my-cluster-to-a-different-subscription-or-my-subscription-with-my-cluster-to-a-new-tenant"></a>Áthelyezhető a fürt egy másik előfizetésben vagy az előfizetés az új bérlőhöz fürt?
+* Ha a fürt aktívan frissít, várjon, amíg a művelet leáll. Ha sikerült, próbálkozzon újra a korábban sikertelen művelettel.
+* Ha a fürt nem tudta frissíteni a frissítést, kövesse az előző szakaszban ismertetett lépéseket.
 
-Az AKS-fürt egy másik előfizetésben, vagy a fürt egy új bérlő előfizetésének tulajdonos erőforrásfájljait áthelyezték, a fürt miatt elveszett szerepkör-hozzárendelések és a szolgáltatás egyszerű jogok funkciók elvesznek. **Az AKS nem támogatja a mozgó fürtök előfizetések vagy a bérlők között** miatt ez a korlátozás.
+## <a name="can-i-move-my-cluster-to-a-different-subscription-or-my-subscription-with-my-cluster-to-a-new-tenant"></a>Áthelyezhetem a fürtöt egy másik előfizetésbe vagy az előfizetésem a fürttel egy új bérlőre?
+
+Ha már áthelyezte az AK-fürtöt egy másik előfizetésbe vagy a fürt tulajdonosának előfizetését egy új bérlőre, akkor a fürt a szerepkör-hozzárendelések és az egyszerű szolgáltatásokra vonatkozó jogosultságok elvesztése miatt elveszíti a funkcionalitást. Az **AK nem támogatja a fürtök áthelyezését az előfizetések vagy a bérlők között** a jelen megkötés miatt.
+
+## <a name="im-receiving-errors-trying-to-use-features-that-require-virtual-machine-scale-sets"></a>A virtuálisgép-méretezési csoportokat igénylő szolgáltatások használatára vonatkozó hibák jelentkeznek
+
+*Ez a hibaelhárítási segítség a aka.ms/aks-vmss-enablement*
+
+Olyan hibák jelenhetnek meg, amelyek jelzik, hogy az AK-fürt nem egy virtuálisgép-méretezési csoporton van, például a következő példában:
+
+**A "AgentPool" AgentPool engedélyezte az automatikus skálázást, de nem Virtual Machine Scale Sets**
+
+Ha olyan szolgáltatásokat szeretne használni, mint például a fürt autoskálázása vagy több csomópontos készlet, a virtuálisgép-méretezési csoportokat használó AK-fürtöket kell létrehoznia. A rendszer hibaüzeneteket küld, ha olyan szolgáltatásokat próbál használni, amelyek a virtuálisgép-méretezési csoportokon alapulnak, és egy normál, nem virtuálisgép-méretezési csoportba tartozó AK-fürtöt céloz meg. A virtuálisgép-méretezési csoport támogatása jelenleg előzetes verzióban érhető el az AK-ban.
+
+A szükséges dokumentációban szereplő lépések *elkezdése előtt* végezze el a megfelelő regisztrációt a virtuálisgép-méretezési csoport funkciójának előzetes verziójában, és hozzon létre egy AK-fürtöt:
+
+* [A fürt automéretező használata](cluster-autoscaler.md)
+* [Több Node-készlet létrehozása és használata](use-multiple-node-pools.md)
+ 
+## <a name="what-naming-restrictions-are-enforced-for-aks-resources-and-parameters"></a>Milyen elnevezési korlátozásokat kell kikényszeríteni az AK-erőforrások és-paraméterek esetében?
+
+*Ez a hibaelhárítási segítség a aka.ms/aks-naming-rules*
+
+Az elnevezési korlátozásokat az Azure platform és az AK is implementálja. Ha egy erőforrás neve vagy paramétere megszakítja az egyik ilyen korlátozást, a rendszer hibaüzenetet küld, amely megkéri, hogy adjon meg egy másik bemenetet. A következő közös elnevezési irányelvek érvényesek:
+
+* Az AK- *MC_* erőforráscsoport neve kombinálja az erőforráscsoport nevét és az erőforrás nevét. Az automatikusan generált szintaxisának `MC_resourceGroupName_resourceName_AzureRegion` nem lehet nagyobb, mint 80 karakter. Ha szükséges, csökkentse az erőforráscsoport-név vagy az AK-fürt nevének hosszát.
+* A *dnsPrefix* alfanumerikus értékekkel kell kezdődnie és végződnie. Az érvényes karakterek alfanumerikus értékeket és kötőjeleket (-) tartalmazhatnak. A *dnsPrefix* nem tartalmazhat speciális karaktereket, például pontot (.).
+
+## <a name="im-receiving-errors-when-trying-to-create-update-scale-delete-or-upgrade-cluster-that-operation-is-not-allowed-as-another-operation-is-in-progress"></a>Hibák léptek fel a fürt létrehozása, frissítése, skálázása, törlése vagy frissítése során, ez a művelet nem engedélyezett, mert folyamatban van egy másik művelet.
+
+*Ez a hibaelhárítási segítség a aka.ms/aks-pending-operation*
+
+A fürt műveletei korlátozottak, ha egy korábbi művelet még folyamatban van. A fürt részletes állapotának lekéréséhez használja az `az aks show -g myResourceGroup -n myAKSCluster -o table` parancsot. Igény szerint használja a saját erőforráscsoport és az AK-fürt nevét.
+
+A fürt állapotának kimenete alapján:
+
+* Ha a fürt bármilyen kiépítési állapotban van, amely nem *sikeres* vagy *sikertelen volt*, várjon, amíg a művelet (*frissítés/frissítés/létrehozás/méretezés/törlés/áttelepítés*) leáll. Ha az előző művelet befejeződött, próbálja meg újra a fürt legújabb műveletét.
+
+* Ha a fürtön sikertelen volt a frissítés, kövesse az itt leírt lépéseket, [amelyek a fürt hibás állapotba kerülnek, és a frissítés vagy a skálázás nem fog működni, amíg meg nem történik a javítás](#im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed).
+
+## <a name="im-receiving-errors-that-my-service-principal-was-not-found-when-i-try-to-create-a-new-cluster-without-passing-in-an-existing-one"></a>Hibaüzenetet kapok, hogy a szolgáltatásnév nem található, amikor új fürtöt próbálok létrehozni anélkül, hogy egy meglévőt kellene átadni.
+
+AK-fürt létrehozásakor a szolgáltatáshoz egy egyszerű szolgáltatásnév szükséges, amely az Ön nevében hoz létre erőforrásokat. Az AK lehetővé teszi, hogy egy újat hozzon létre a fürt létrehozási időpontjában, de ehhez Azure Active Directory szükséges, hogy az új egyszerű szolgáltatást ésszerű időn belül teljes mértékben propagálja ahhoz, hogy a fürt sikeres legyen a létrehozásban. Ha ez a propagálás túl hosszú időt vesz igénybe, a fürt nem fogja tudni létrehozni az érvényesítést, mert nem talál elérhető egyszerű szolgáltatásnevet. 
+
+Ehhez használja a következő megkerülő megoldásokat:
+1. Olyan meglévő szolgáltatásnevet használjon, amely már propagálva van a régiók között, és létezik, hogy a fürt létrehozási ideje alatt adja át az ak-nak.
+2. Ha Automation-parancsfájlokat használ, adja hozzá az egyszerű szolgáltatás létrehozása és az AK-fürt létrehozása közötti késleltetést.
+3. Ha Azure Portal használ, térjen vissza a fürt beállításaihoz a létrehozás során, és néhány perc múlva próbálja megismételni az érvényesítési oldalt.
+
+## <a name="im-receiving-errors-after-restricting-my-egress-traffic"></a>Hibák jelentkeznek a kimenő forgalom korlátozása után
+
+Ha a kimenő forgalmat egy AK-fürtből korlátozza, akkor szükség van a [szükséges és választható](limit-egress-traffic.md) kimeneti portokra/hálózati szabályokra, valamint a teljes tartománynevek/alkalmazási szabályokra az AK-ra vonatkozóan. Ha a beállítások ütköznek ezekkel a szabályokkal, előfordulhat, hogy nem fog tudni bizonyos `kubectl` parancsokat futtatni. Egy AK-fürt létrehozásakor hibák is megjelenhetnek.
+
+Győződjön meg arról, hogy a beállítások nem ütköznek a szükséges vagy választható választható kimenő portok/hálózati szabályok, valamint a teljes tartománynév/alkalmazás szabályaival.

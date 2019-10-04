@@ -1,22 +1,22 @@
 ---
-title: 'Gyors útmutató: Adatokat az Azure SDK-val Data Explorer .NET Standard (előzetes verzió)'
-description: Ez a rövid útmutatóban megismerheti, hogyan (betöltés) adatok betöltését az Azure Data Explorer Standard .NET SDK használatával.
+title: Adatokat az Azure SDK-val Data Explorer .NET Standard (előzetes verzió)
+description: Ebből a cikkből megismerheti, hogyan (betöltés) adatok betöltését az Azure Data Explorer Standard .NET SDK használatával.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-ms.topic: quickstart
-ms.date: 11/18/2018
-ms.openlocfilehash: 6a068c45a13bd45a09ed51fd154b5842938e0c5e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.topic: conceptual
+ms.date: 06/03/2019
+ms.openlocfilehash: 53cf055a0900a25923fe67b961755c1f4367e1fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59044668"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66496888"
 ---
-# <a name="quickstart-ingest-data-using-the-azure-data-explorer-net-standard-sdk-preview"></a>Gyors útmutató: Adatokat az Azure SDK-val Data Explorer .NET Standard (előzetes verzió)
+# <a name="ingest-data-using-the-azure-data-explorer-net-standard-sdk-preview"></a>Adatokat az Azure SDK-val Data Explorer .NET Standard (előzetes verzió)
 
-Az Azure Data Explorer (ADX) az adatok gyors és hatékonyan méretezhető exploration szolgáltatás napló és a telemetriai adatok. ADX két ügyfélkódtárakat biztosít a .NET Standard: egy [könyvtár betöltési](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest.NETStandard) és [egy könyvtára](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard). Ezekkel a kódtárakkal adatokat tölthet be egy fürtbe, illetve adatokat kérdezhet le a kódból. Ebben a rövid útmutatóban először létrehoz egy táblát és egy adatleképezést egy tesztfürtben. A fürt egy feldolgozó várólistára és ellenőrzik az eredményeket.
+Az Azure Data Explorer (ADX) az adatok gyors és hatékonyan méretezhető exploration szolgáltatás napló és a telemetriai adatok. ADX két ügyfélkódtárakat biztosít a .NET Standard: egy [könyvtár betöltési](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest.NETStandard) és [egy könyvtára](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard). Ezekkel a kódtárakkal adatokat tölthet be egy fürtbe, illetve adatokat kérdezhet le a kódból. Ebben a cikkben, először hozzon létre egy tábla és a egy teszt fürtben megfeleltetése. A fürt egy feldolgozó várólistára és ellenőrzik az eredményeket.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -30,7 +30,7 @@ Az Azure Data Explorer (ADX) az adatok gyors és hatékonyan méretezhető explo
 Install-Package Microsoft.Azure.Kusto.Ingest.NETStandard
 ```
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Hitelesítés
 
 Az alkalmazás hitelesítéséhez az Azure Data Explorer az AAD-bérlő azonosítóját használja. A bérlőazonosító megkereséséhez használja a következő URL-címet úgy, hogy a *YourDomain* kifejezés helyére a saját tartományát írja be.
 
@@ -226,7 +226,7 @@ Futtassa a következő parancsot az elmúlt négy órában végzett összes bet�
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha el szeretné végezni a többi rövid útmutatót és oktatóanyagot, őrizze meg a létrehozott erőforrásokat. Ha nem szeretné, futtassa a következő parancsot az adatbázisban a `StormEvents`-tábla felesleges elemeinek eltávolításához.
+Ha azt tervezi, hajtsa végre a más cikkeket, megtarthatja a létrehozott erőforrásokat. Ha nem szeretné, futtassa a következő parancsot az adatbázisban a `StormEvents`-tábla felesleges elemeinek eltávolításához.
 
 ```Kusto
 .drop table StormEvents
@@ -234,5 +234,4 @@ Ha el szeretné végezni a többi rövid útmutatót és oktatóanyagot, őrizze
 
 ## <a name="next-steps"></a>További lépések
 
-> [!div class="nextstepaction"]
-> [Lekérdezések írása](write-queries.md)
+* [Lekérdezések írása](write-queries.md)

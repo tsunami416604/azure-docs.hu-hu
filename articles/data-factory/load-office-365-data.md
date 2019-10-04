@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: jingwang
 ms.openlocfilehash: fe3a3b673f6512856f3640b3e103db8623570a88
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58445778"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60548109"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>Adatok betöltése az Office 365-ből az Azure Data Factory használatával
 
@@ -32,7 +32,7 @@ Ez a cikk bemutatja, hogyan használható a Data Factory _adatok betöltése az 
       
    ![Új adat-előállító lap](./media/load-office-365-data/new-azure-data-factory.png)
  
-    * **Név**: Adja meg az Azure data factory egy globálisan egyedi nevet. Ha a hibaüzenetet kapja "adat-előállító nevét \"LoadFromOffice365Demo\" nem érhető el" adja meg a data Factory egy másik nevet. Például használhatja a név  _**sajátneve**_**LoadFromOffice365Demo**. Próbálja meg újra létrehozni az adat-előállító. A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
+    * **Név**: Adja meg az Azure data factory egy globálisan egyedi nevet. Ha a hibaüzenetet kapja "adat-előállító nevét \"LoadFromOffice365Demo\" nem érhető el" adja meg a data Factory egy másik nevet. Például használhatja a név  _**sajátneve**_ **LoadFromOffice365Demo**. Próbálja meg újra létrehozni az adat-előállító. A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
     * **Előfizetés**: Válassza ki az Azure-előfizetés, amelyben az adat-előállító létrehozásához. 
     * **Erőforráscsoport**: A legördülő listából válasszon ki egy meglévő erőforráscsoportot, vagy válassza ki a **új létrehozása** lehetőséget, majd adja meg az erőforráscsoport nevét. Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
     * **Verzió**: Válassza ki **V2**.
@@ -119,7 +119,7 @@ Megtekintheti a folyamat társított kód kattintson a jobb felső sarokban a JS
 
 A felső eszköztáron válassza **összes közzététele**. Ez a művelet közzéteszi a létrehozott entitásokat (adatkészleteket és folyamatokat) a Data Factoryben.
 
-![Módosítások mentése](./media/load-office-365-data/publish-changes.png) 
+![Módosítások közzététele](./media/load-office-365-data/publish-changes.png) 
 
 ## <a name="trigger-the-pipeline-manually"></a>A folyamat manuális aktiválása
 
@@ -137,7 +137,7 @@ A folyamat futásához társított tevékenységfuttatások megtekintéséhez ka
 
 Ha első alkalommal a kért adatokat az ebben a környezetben (kombinációjával, hogy mely tábla folyamatban van a hozzáférés, mely cél fiók be az adatokat, és mely felhasználói identitás, hogy így az adatok hozzáférési kérés), megjelenik a másolási tevékenység állapot szerint "**folyamatban**", és csak akkor, ha a "Details" hivatkozást a műveletek megoldásra kattint, megjelenik az állapot szerint "**RequesetingConsent**".  Az adatelérési jóváhagyó csoportja tagjának kell jóváhagyhatja a kérést a Privileged Access Management, mielőtt konfigurálhatná az adatok kinyerése.
 
-_Kérelmező hozzájárul állapota:_
+_Kérelmező hozzájárul állapota:_ 
 ![a tevékenység végrehajtásának részletei – jóváhagyási kérelem](./media/load-office-365-data/activity-details-request-consent.png) 
 
 _Adatok kinyerése, állapot:_

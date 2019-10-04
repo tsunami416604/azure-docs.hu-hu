@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: zhshang
 ms.openlocfilehash: 7660e1405598676599cab30467d22ac979438deb
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58003682"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66128333"
 ---
 # <a name="azure-signalr-service-authentication"></a>Az Azure SignalR Service-hitelesítés
 
@@ -54,7 +54,7 @@ Az oktatóanyag elvégzéséhez az alábbi előfeltételekkel kell rendelkeznie:
 
 1. Nyisson meg egy webböngészőt, navigáljon a `https://github.com` helyre, és jelentkezzen be a fiókjába.
 
-2. A fiókjában lépjen a **Settings (Beállítások)** > **Developer settings (Fejlesztői beállítások)** részre, majd az *OAuth Apps (OAuth-alkalmazások)* területen kattintson a **Register a new application (Új alkalmazás regisztrálása)** vagy a **New OAuth App (Új OAuth-alkalmazás)** lehetőségre.
+2. A fiókjában lépjen a **Settings (Beállítások)**  > **Developer settings (Fejlesztői beállítások)** részre, majd az *OAuth Apps (OAuth-alkalmazások)* területen kattintson a **Register a new application (Új alkalmazás regisztrálása)** vagy a **New OAuth App (Új OAuth-alkalmazás)** lehetőségre.
 
 3. Adja meg a következő beállításokat az új OAuth-alkalmazás számára, majd kattintson a **Register application (Alkalmazás regisztrálása)** lehetőségre:
 
@@ -539,7 +539,7 @@ A kód üzembe helyezéséhez hajtsa végre az alábbi parancsokat egy Git-rends
 
 A legutolsó dolog, amit el kell végeznie, az a GitHub OAuth-alkalmazás **Homepage URL** (Kezdőlap URL-címe) és **Authorization callback URL** (Engedélyezés-visszahívási URL-cím) tulajdonságának frissítését, hogy azok az új üzemeltetett alkalmazásra mutassanak.
 
-1. Nyissa meg a [https://github.com](https://github.com) webhelyet egy böngészőben, majd lépjen a fiókja **Settings (Beállítások)** > **Developer settings (Fejlesztői beállítások)** > **Oauth Apps (OAuth-alkalmazások)** elemére.
+1. Nyissa meg a [https://github.com](https://github.com) webhelyet egy böngészőben, majd lépjen a fiókja **Settings (Beállítások)**  > **Developer settings (Fejlesztői beállítások)**  > **Oauth Apps (OAuth-alkalmazások)** elemére.
 
 2. Kattintson a hitelesítő alkalmazásra, és a frissítse a **Homepage URL** (Kezdőlap URL-címe) és **Authorization callback URL** (Engedélyezés-visszahívási URL-cím) tulajdonságát a lent látható módon:
 

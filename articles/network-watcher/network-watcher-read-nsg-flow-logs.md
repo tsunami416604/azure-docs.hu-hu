@@ -3,8 +3,8 @@ title: Olvasási NSG-Folyamatnaplók |} A Microsoft Docs
 description: Ez a cikk bemutatja, hogyan NSG-forgalom naplóinak elemzése
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: timlt
+author: KumudD
+manager: twooley
 editor: ''
 ms.service: network-watcher
 ms.devlang: na
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
-ms.author: jdial
-ms.openlocfilehash: cddf6526a798195e3e3091af766fee28791ac522
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.author: kumud
+ms.openlocfilehash: becae0f085fcaf4b0d0c7b29e102aaa3186fb85e
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59795480"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67653749"
 ---
 # <a name="read-nsg-flow-logs"></a>NSG-forgalom naplóinak olvasása
 
@@ -39,7 +39,7 @@ Mielőtt hozzákezd, rendelkeznie kell hálózati biztonsági csoport Flow napl�
 
 ## <a name="retrieve-the-block-list"></a>A blokk-lista lekérése
 
-Az alábbi PowerShell-lel beállítja a változókat az NSG-t a folyamat log blob lekérdezése és listán belüli blokkokat szükséges a [CloudBlockBlob](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob?view=azurestorage-8.1.3) blokkblob típusú. Frissítse a parancsfájlt a környezetnek érvényes értékeket tartalmaznak.
+Az alábbi PowerShell-lel beállítja a változókat az NSG-t a folyamat log blob lekérdezése és listán belüli blokkokat szükséges a [CloudBlockBlob](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblockblob) blokkblob típusú. Frissítse a parancsfájlt a környezetnek érvényes értékeket tartalmaznak.
 
 ```powershell
 function Get-NSGFlowLogCloudBlockBlob {
@@ -116,7 +116,7 @@ ZjAyZTliYWE3OTI1YWZmYjFmMWI0MjJhNzMxZTI4MDM=      2      True
 
 ## <a name="read-the-block-blob"></a>A blokkblobok olvasása
 
-Ezután kell olvasni az `$blocklist` változó adatok lekéréséhez. Ebben a példában azt a tiltólista iterálódnak a bájtot olvas minden egyes, és szövegegység őket a tömbben. Használja a [DownloadRangeToByteArray](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob.downloadrangetobytearray?view=azurestorage-8.1.3#Microsoft_WindowsAzure_Storage_Blob_CloudBlob_DownloadRangeToByteArray_System_Byte___System_Int32_System_Nullable_System_Int64__System_Nullable_System_Int64__Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) metódusának segítéségével lekérheti az adatokat.
+Ezután kell olvasni az `$blocklist` változó adatok lekéréséhez. Ebben a példában azt a tiltólista iterálódnak a bájtot olvas minden egyes, és szövegegység őket a tömbben. Használja a [DownloadRangeToByteArray](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadrangetobytearray) metódusának segítéségével lekérheti az adatokat.
 
 ```powershell
 function Get-NSGFlowLogReadBlock  {

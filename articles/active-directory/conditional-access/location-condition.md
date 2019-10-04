@@ -1,5 +1,5 @@
 ---
-title: Mi a helyfeltétel az Azure Active Directory feltételes hozzáférés? | Microsoft Docs
+title: Mi az a hely feltétel, az Azure Active Directory feltételes hozzáférés? | Microsoft Docs
 description: Megtudhatja, hogyan férhet hozzá a felhőalapú alkalmazások, a felhasználó hálózati helye alapján a hely feltétel használatával.
 services: active-directory
 ms.service: active-directory
@@ -12,14 +12,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6771cf093f62ef7823e57ced8223e4cc6c0dc57e
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: bd62cda209a8ac95a41fa271ce3a96001a3b4811
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59563427"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164776"
 ---
-# <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Mi a helyfeltétel az Azure Active Directory feltételes hozzáférés? 
+# <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Mi az a hely feltétel, az Azure Active Directory feltételes hozzáférés? 
 
 A [Azure Active Directory (Azure AD) feltételes hozzáférés](../active-directory-conditional-access-azure-portal.md), szabályozhatja, hogy jogosult felhasználók hozzáférhetnek a felhőbeli alkalmazásokat. A hely feltétel egy feltételes hozzáférési szabályzat segítségével elősegítsék a hálózati helyek, a felhasználók a hozzáférés vezérlők beállításai.
 
@@ -32,9 +32,9 @@ Az Azure AD lehetővé teszi, hogy egyszeri bejelentkezést az eszközöket, alk
 - Többtényezős hitelesítés megkövetelése a felhasználók a szolgáltatás elérésére, amelyek a vállalati hálózatról.
 - Blokkolja a hozzáférést a felhasználók bizonyos országokban vagy régiókban a szolgáltatás elérésére.
 
-Egy hely a címkét, egy hálózati helyre, vagy jelöli egy elnevezett helyet, vagy a multi-factor authentication megbízható IP-címek.
+Egy hely egy címkét egy hálózati helyre, vagy az elnevezett hely vagy a multi-factor authentication megbízható IP-címek jelöli.
 
-## <a name="named-locations"></a>Névvel ellátott helyek
+## <a name="named-locations"></a>Nevesített helyek
 
 Nevesített helyek, az IP-címtartományok vagy más országokból és régiókból logikai csoportosításán hozhat létre.
 
@@ -50,18 +50,18 @@ Egy elnevezett helye a következő összetevőket tartalmazza:
 - **IP-címtartományok** – legalább egy IPv4-címtartományokat CIDR formátumban. Egy IPv6-címtartomány megadása nem támogatott.
 
    > [!NOTE]
-   > Egy elnevezett locationThis measn IPv6-címtartományok nem zárható ki a feltételes hozzáférési szabályzat jelenleg nem IPv6 cím rangess szerepelnek.
+   > Egy elnevezett hely jelenleg nem IPv6 cím rangess szerepelnek. Ez measn IPv6-címtartományok nem zárható ki a feltételes hozzáférési szabályzat.
 
 - **Megjelölés megbízható helyként** -jelzőt beállíthat egy elnevezett helyet megbízható helyen jelzi. Megbízható helyek jellemzően az IT-részleg által vezérelt hálózati területek. Feltételes hozzáférés mellett megbízható nevesített helyek is használják az Azure Identity Protection és az Azure AD biztonsági jelentések csökkentése érdekében [vakriasztások](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations-1).
 - **Országok/régiók** – Ez a beállítás lehetővé teszi egy vagy több országban vagy régióban, adjon meg egy nevesített.
-- **Ismeretlen területek belefoglalása** -néhány IP-címek nincsenek leképezve egy adott országban. Ezzel a beállítással kiválaszthatja, ha az IP-címeket kell szerepelnie a nevű helyen. Használja ezt a beállítást, ha ismeretlen helyekről alkalmazni kell a házirendet, a nevesített hely használatával.
+- **Ismeretlen területek belefoglalása** -néhány IP-címek nincsenek leképezve egy adott ország vagy régió. Ezzel a beállítással kiválaszthatja, ha az IP-címeket kell szerepelnie a nevű helyen. Használja ezt a beállítást, ha ismeretlen helyekről alkalmazni kell a házirendet, a nevesített hely használatával.
 
 Az Azure ad-ben a kapcsolódó objektum mérete konfigurálható nevesített helyek száma korlátozza. Konfigurálhatja a helyek alapján a következő korlátozásokat:
 
 - Az egyik nevű akár 1200-as IP-címtartományok helyét.
 - Legfeljebb 90 nevesített helyek, a hozzájuk rendelt egy IP-címtartományt.
 
-Feltételes hozzáférési szabályzat vonatkozik az IPv4 és IPv6-forgalmat. Jelenleg nevesített helyek nem teszik lehetővé az IPv6-tartományok konfigurálását. Ez a korlátozás hatására a következő helyzetekben:
+IPv4 és IPv6-forgalmat a feltételes hozzáférési szabályzat vonatkozik. Jelenleg nevesített helyek nem teszik lehetővé az IPv6-tartományok konfigurálását. Ez a korlátozás hatására a következő helyzetekben:
 
 - Feltételes hozzáférési szabályzat nem tudja megcélozni megadott IPv6-tartományok
 - Feltételes hozzáférési szabályzat nem zárhatók ki egyedi IPV6-tartományok
@@ -72,7 +72,7 @@ A házirend "Bármely helyre" alkalmazására van konfigurálva, ez a beállít�
 
 A szervezet helyi intranet jelölő IP-címtartományok is konfigurálhatja a [multi-factor authentication szolgáltatás beállításainak](https://account.activedirectory.windowsazure.com/usermanagement/mfasettings.aspx). Ez a funkció lehetővé teszi legfeljebb 50 IP-címtartományok. Az IP-címtartományok a CIDR-formátumban vannak. További információkért lásd: [megbízható IP-címek](../authentication/howto-mfa-mfasettings.md#trusted-ips).  
 
-A megbízható IP-címek konfigurálása, ha azok megjelenjen **MFA megbízható IP-CÍMEK** az a hely feltétel helyek listáját.
+Ha megbízható IP-címek konfigurálva van, hogy megjelenjen **MFA megbízható IP-CÍMEK** az a hely feltétel helyek listáját.
 
 ### <a name="skipping-multi-factor-authentication"></a>A multi-factor authentication kihagyása
 
@@ -91,13 +91,13 @@ Ha mindkét lépés sikertelen, a felhasználó már nem kell a megbízható IP-
 
 Amikor konfigurálja a hely feltétel, lehetősége van között:
 
-- Bármely hely
+- Bármilyen olyan helyre
 - Minden megbízható hely
 - Kijelölt helyek
 
 ![A feltétel a tartalomhely konfigurációját](./media/location-condition/01.png)
 
-### <a name="any-location"></a>Bármely hely
+### <a name="any-location"></a>Bármilyen olyan helyre
 
 Alapértelmezés szerint kiválasztja **bármely helyre** alkalmazható összes IP-címet egy szabályzatot, amely azt jelenti, hogy az interneten bármely cím okoz. Ez a beállítás nem korlátozott elnevezett helyként konfigurált IP-címeket. Ha bejelöli **bármely helyre**, adott helyeken továbbra is kizárhat a szabályzat alól. Például egy házirendet alkalmazhatja a hatókör beállítása mindenhol, kivéve a vállalati hálózathoz való megbízható helyek kivételével az összes hely.
 
@@ -148,5 +148,5 @@ API és PowerShell még nem támogatott nevesített helyek vagy feltételes hozz
 
 ## <a name="next-steps"></a>További lépések
 
-- Ha azt szeretné tudni, hogyan lehet feltételes hozzáférési szabályzat konfigurálása, lásd: [többtényezős hitelesítés megkövetelése az Azure Active Directory feltételes hozzáférés az adott alkalmazások](app-based-mfa.md).
-- Ha kész feltételes hozzáférési szabályzatokat konfigurálni a környezetében, tekintse át [az Azure Active Directory feltételes hozzáféréssel kapcsolatos ajánlott eljárásait](best-practices.md).
+- Ha azt szeretné tudni, hogyan lehet feltételes hozzáférési szabályzat konfigurálása, lásd: [megkövetelése MFA konkrét alkalmazások esetén az Azure Active Directory feltételes hozzáférés](app-based-mfa.md).
+- Ha készen áll a környezetre vonatkozó feltételes hozzáférési szabályzatok konfigurálására, tekintse meg a [gyakorlati tanácsok az Azure Active Directory feltételes hozzáférés](best-practices.md).

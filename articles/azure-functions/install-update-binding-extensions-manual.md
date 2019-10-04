@@ -1,52 +1,51 @@
 ---
-title: Manuálisan telepítse, vagy az Azure Functions kötés bővítmények frissítése
-description: Ismerje meg, hogyan kell telepíteni vagy frissíteni az Azure Functions kötési bővítményeket telepített alkalmazások esetében.
+title: Azure Functions kötési bővítmények manuális telepítése vagy frissítése
+description: Megtudhatja, hogyan telepíthet vagy frissíthet Azure Functions kötési bővítményeket a telepített functions-alkalmazásokhoz.
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: jeconnoc
-keywords: az Azure functions, függvények, kötési bővítményeket, NuGet, frissítések
+keywords: Azure functions, functions, kötési bővítmények, NuGet, frissítések
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/26/2018
 ms.author: glenga
-ms.openlocfilehash: cda977ba59070c3ddaac05784277d6c0b5109f0f
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 7686a9b2df6df6b54851e9c9957186f76be3fafd
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56727111"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70085049"
 ---
-# <a name="manually-install-or-update-azure-functions-binding-extensions-from-the-portal"></a>Manuálisan telepítse vagy frissítse az Azure Functions kötési bővítményeket a portálról
+# <a name="manually-install-or-update-azure-functions-binding-extensions-from-the-portal"></a>Azure Functions kötési bővítmények manuális telepítése vagy frissítése a portálról
 
-Az Azure Functions verzió 2.x verziójú futtatókörnyezet kötési bővítményeket használ, az eseményindítók és kötések kód megvalósítását. Kötési bővítményeket NuGet-csomagok vannak megadva. Bővítmények regisztrálásához, lényegében telepít egy csomagot. Függvények fejlesztése, ha a kötési bővítményeket telepíteni módja függ a fejlesztési környezet. További információkért lásd: [regisztrálja a kötési bővítményeket](./functions-bindings-register.md) az eseményindítók és kötések cikk.
+A Azure Functions 2. x verziójú futtatókörnyezet kötési kiterjesztéseket használ az eseményindítók és kötések kódjának megvalósításához. A kötési bővítmények a NuGet-csomagokban vannak megadva. A bővítmények regisztrálásához lényegében telepítenie kell egy csomagot. A függvények fejlesztésekor a kötési bővítmények telepítésének módja a fejlesztési környezettől függ. További információ: [kötési bővítmények regisztrálása](./functions-bindings-register.md) az eseményindítók és a kötések cikkben.
 
-Egyes esetekben kell manuálisan telepíteni vagy frissíteni a kötési bővítményeket az Azure Portalon. Például szükség lehet egy regisztrált kötés frissítése újabb verzióra. Szükség lehet regisztrálni egy támogatott kötést, amely nem telepíthető a **integráció** lapot a portálon.
+Időnként manuálisan kell telepítenie vagy frissítenie a kötési bővítményeket a Azure Portal. Előfordulhat például, hogy frissítenie kell egy regisztrált kötést egy újabb verzióra. Előfordulhat, hogy regisztrálnia kell egy olyan támogatott kötést is, amely nem telepíthető a portál **integrálás** lapján.
 
-## <a name="install-a-binding-extension"></a>A kötési bővítmény telepítése
+## <a name="install-a-binding-extension"></a>Kötési bővítmény telepítése
 
-A következő lépések segítségével manuálisan telepíteni, vagy a portálról bővítmények frissítése.
+A bővítmények a portálról történő manuális telepítéséhez és frissítéséhez kövesse az alábbi lépéseket.
 
-1. Az a [az Azure portal](https://portal.azure.com), keresse meg a függvényalkalmazást, és jelölje ki. Válassza ki a **áttekintése** lapot, és válasszon **leállítása**.  A függvényalkalmazás leállítása feloldja a fájlokat, hogy a módosítás.
+1. A [Azure Portal](https://portal.azure.com)keresse meg a Function alkalmazást, és válassza ki. Válassza az **Áttekintés** lapot, és válassza a **Leállítás**lehetőséget.  A Function alkalmazás leállítása a fájlok zárolásának feloldása, hogy a módosítások elvégezhető legyen.
 
-1. Válassza ki a **platformfunkciók** lapon és a **Fejlesztőeszközök** kiválasztása **speciális eszközök (Kudu)**. A Kudu-végpont (`https://<APP_NAME>.scm.azurewebsites.net/`) egy új ablakban nyílik meg.
+1. Válassza a **platform szolgáltatásai** lapot, és a **fejlesztői eszközök** területen válassza a **speciális eszközök (kudu)** lehetőséget. A kudu-végpont`https://<APP_NAME>.scm.azurewebsites.net/`() új ablakban van megnyitva.
 
-1. Jelölje ki a Kudu ablakban **hibakereső konzol** > **CMD**.  
+1. A kudu ablakban válassza a **Debug konzol** > **cmd**elemet.  
 
-1. A parancsablakban lépjen `D:\home\site\wwwroot` , és kattintson a Tovább gombra a Törlés ikonra `bin` törli a mappát. Válassza ki **OK** a törlés megerősítéséhez.
+1. A parancssorablakban navigáljon `D:\home\site\wwwroot` a `bin` következőre, és válassza a törlés ikont a mappa törléséhez. A törlés megerősítéséhez kattintson **az OK gombra** .
 
-1. Kattintson a Tovább gombra a Szerkesztés ikonra a `extensions.csproj` fájlt, amely meghatározza a függvényalkalmazás a kötési bővítményeket. A projekt fájl megnyitása a online szerkesztőjében.
+1. Válassza a `extensions.csproj` fájl melletti Szerkesztés ikont, amely meghatározza a Function alkalmazás kötési bővítményeit. A projektfájl az online szerkesztőben nyílik meg.
 
-1. Győződjön meg arról, a szükséges hozzáadások és frissítéseinek **PackageReference** elemeket a **ItemGroup**, majd **mentése**. A jelenlegi támogatott alkalmazáscsomag-verziók listája megtalálható a [milyen csomagok van szükségem?](https://github.com/Azure/azure-functions-host/wiki/Updating-your-function-app-extensions#what-nuget-packages-do-i-need) wikicikket. Az összes három Azure Storage-kötések a Microsoft.Azure.WebJobs.Extensions.Storage csomag szükséges.
+1. Végezze el a **PackageReference** elemek szükséges kiegészítéseit és frissítéseit a **ItemGroup**, majd válassza a **Mentés**lehetőséget. A támogatott csomag-verziók aktuális listája megtalálható a [Mi szükséges csomagok?](https://github.com/Azure/azure-functions-host/wiki/Updating-your-function-app-extensions#what-nuget-packages-do-i-need) wiki-cikkben. Mindhárom Azure Storage-kötéshez a Microsoft. Azure. webjobs. Extensions. Storage csomag szükséges.
 
-1. Az a `wwwroot` mappában futtassa a következő parancsot a hivatkozott szerelvények építse újra a `bin` mappát.
+1. A mappából futtassa a következő parancsot a hivatkozott szerelvények újraépítéséhez a `bin` mappában. `wwwroot`
 
     ```cmd
     dotnet build extensions.csproj -o bin --no-incremental --packages D:\home\.nuget
     ```
 
-1. Térjen vissza a **áttekintése** lapra a portálon, majd **Start** , indítsa újra a függvényalkalmazást.
+1. A portál **Áttekintés** lapján kattintson a **Start** gombra a Function alkalmazás újraindításához.
 
 ## <a name="next-steps"></a>További lépések
 

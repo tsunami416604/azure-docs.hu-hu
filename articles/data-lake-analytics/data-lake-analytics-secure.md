@@ -8,12 +8,12 @@ ms.author: mahi
 ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 05/30/2018
-ms.openlocfilehash: c6b86e25602f36896855d2593952609904396879
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 9fbc94259d6fdfb6758204efd6e6f0a346dc58da
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43051584"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60813365"
 ---
 # <a name="configure-user-access-to-job-information-to-job-information-in-azure-data-lake-analytics"></a>A feladat adatainak feladatinformációkat felhasználói elérésének konfigurálása az Azure Data Lake Analytics 
 
@@ -33,16 +33,16 @@ Ha többre van szüksége szabályozható, vagy a parancsfájl az engedélyeket 
    - /
    
 2. Támogatás **végrehajtása** és **olvasása** engedélyeket (keresztül hozzáférési ACL-t és a egy alapértelmezett ACL-t) a feladat mappákat tartalmazó. Ha például egy adott feladat, a 2018. május 25., ezek a mappák kell érhető el:
-   - vagy
-   - / rendszer/jobservice
-   - /System/jobservice/Jobs
+   - /system
+   - /system/jobservice
+   - /system/jobservice/jobs
    - /System/jobservice/Jobs/Usql
    - /System/jobservice/Jobs/Usql/2018
    - /System/jobservice/Jobs/Usql/2018/05
-   - /System/jobservice/Jobs/Usql/2018/05/25
+   - /system/jobservice/jobs/Usql/2018/05/25
    - /System/jobservice/Jobs/Usql/2018/05/25/11
    - /System/jobservice/Jobs/Usql/2018/05/25/11/01
-   - rendszer/jobservice/feladatok/Usql/2018/05/25/11/01/b074bd7a-1448-d879-9d75-f562b101bd3d
+   - /system/jobservice/jobs/Usql/2018/05/25/11/01/b074bd7a-1448-d879-9d75-f562b101bd3d
 
 ## <a name="next-steps"></a>További lépések
 [Új felhasználó hozzáadása](data-lake-analytics-manage-use-portal.md#add-a-new-user)

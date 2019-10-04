@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/02/2019
 ms.author: babanisa
-ms.openlocfilehash: 9464ab89e08f53f61cb6f5a4b1e91da35b785af0
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 6129c7f498ce6c52fce4266f693c6a304642f8c3
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54460822"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845459"
 ---
 # <a name="event-grid-subscription-schema"></a>Event Grid előfizetési séma
 
@@ -35,24 +35,24 @@ Az Eseményelőfizetés neve 3 – 64 karakter hosszúságúnak kell lennie, és
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| cél | objektum | Az objektum, amely meghatározza a végpontot. |
-| szűrő | objektum | Eseménytípusok szűrése a választható mező. |
+| destination | object | Az objektum, amely meghatározza a végpontot. |
+| filter | object | Eseménytípusok szűrése a választható mező. |
 
 ### <a name="destination-object"></a>Célobjektum
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| endpointType | sztring | Az előfizetés (a HTTP/webhook, Event Hub vagy üzenetsor) végpont típusa. | 
-| endpointUrl | sztring | Az Eseményelőfizetés események cél URL-CÍMÉT. | 
+| endpointType | string | Az előfizetés (a HTTP/webhook, Event Hub vagy üzenetsor) végpont típusa. | 
+| endpointUrl | string | Az Eseményelőfizetés események cél URL-CÍMÉT. | 
 
 ### <a name="filter-object"></a>szűrő objektum
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | includedEventTypes | tömb | Egyezés, ha az esemény típusa az eseményüzenetben pontos egyezés az egyik ezek az események típus neve. Hibát jelez, amikor az esemény neve nem egyezik meg a regisztrált esemény típusa az eseményforrás nevét. Alapértelmezett illeszkedik az összes eseménytípust. |
-| subjectBeginsWith | sztring | Előtag-egyezés szűrheti a tulajdonos mezőben az üzenetet. Az alapértelmezett vagy üres karakterlánc megfelel. | 
-| subjectEndsWith | sztring | Utótag-egyezés szűrheti a tulajdonos mezőben az üzenetet. Az alapértelmezett vagy üres karakterlánc megfelel. |
-| isSubjectCaseSensitive | sztring | Kis-és nagybetűket szűrőknek megfelelő szabályozza. |
+| subjectBeginsWith | string | Előtag-egyezés szűrheti a tulajdonos mezőben az üzenetet. Az alapértelmezett vagy üres karakterlánc megfelel. | 
+| subjectEndsWith | string | Utótag-egyezés szűrheti a tulajdonos mezőben az üzenetet. Az alapértelmezett vagy üres karakterlánc megfelel. |
+| isSubjectCaseSensitive | string | Kis-és nagybetűket szűrőknek megfelelő szabályozza. |
 
 
 ## <a name="example-subscription-schema"></a>Példa előfizetési séma
@@ -68,7 +68,7 @@ Az Eseményelőfizetés neve 3 – 64 karakter hosszúságúnak kell lennie, és
     },
     "filter": {
       "includedEventTypes": [ "Microsoft.Storage.BlobCreated", "Microsoft.Storage.BlobDeleted" ],
-      "subjectBeginsWith": "blobServices/default/containers/mycontainer/log",
+      "subjectBeginsWith": "/blobServices/default/containers/mycontainer/log",
       "subjectEndsWith": ".jpg",
       "isSubjectCaseSensitive ": "true"
     }

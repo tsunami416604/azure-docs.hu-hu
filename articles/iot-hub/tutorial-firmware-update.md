@@ -10,14 +10,14 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/22/2019
+ms.date: 06/28/2019
 ms.custom: mvc
-ms.openlocfilehash: 1418a9815e155a0c491fc65b16307fa2755bd964
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c576020118778e34b80187ec056fca22a4d9c5b1
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59008902"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485827"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>Oktatóanyag: Egy eszköz belső vezérlőprogram frissítési folyamata megvalósítása
 
@@ -41,7 +41,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A rövid útmutatóban futtatott két mintaalkalmazás a Node.js használatával készült. A fejlesztői gépen szükség lesz a Node.js 4.x.x. vagy újabb változatára.
+A rövid útmutatóban futtatott két mintaalkalmazás a Node.js használatával készült. Node.js v10.x.x, vagy később a fejlesztői gépén van szüksége.
 
 A Node.js-t a [nodejs.org](https://nodejs.org) oldalról töltheti le többféle platformra.
 
@@ -73,7 +73,7 @@ az group create --name tutorial-iot-hub-rg --location $location
 az iot hub create --name $hubname --location $location --resource-group tutorial-iot-hub-rg --sku F1
 
 # Make a note of the service connection string, you need it later
-az iot hub show-connection-string --name $hubname -o table
+az iot hub show-connection-string --name $hubname -policy-name service -o table
 
 ```
 
@@ -95,8 +95,7 @@ az iot hub device-identity show-connection-string --device-id MyFirmwareUpdateDe
 ```
 
 > [!TIP]
-> Ha ezeket a parancsokat Windows-parancssorban vagy PowerShell-parancssorban futtatja, tekintse meg az [azure-iot-cli-extension tippek](https://github.com/Azure/azure-iot-cli-extension/wiki/Tips
-) oldalt a JSON-sztringek idézésével kapcsolatos tudnivalókért.
+> Ha ezeket a parancsokat Windows-parancssorban vagy PowerShell-parancssorban futtatja, tekintse meg az [azure-iot-cli-extension tippek](https://github.com/Azure/azure-iot-cli-extension/wiki/Tips) oldalt a JSON-sztringek idézésével kapcsolatos tudnivalókért.
 
 ## <a name="start-the-firmware-update"></a>A belsővezérlőprogram-frissítés elindítása
 
@@ -187,7 +186,7 @@ A következő képernyőkép a háttéralkalmazás kimenetét mutatja, és kieme
 
 ![Háttéralkalmazás](./media/tutorial-firmware-update/BackEnd2.png)
 
-Az IoT Hub eszközidentitás-jegyzékének késése miatt előfordulhat, hogy nem jelenik meg a háttéralkalmazásnak küldött összes állapotfrissítés. A mérőszámokat a portálon is megtekintheti az IoT Hub **Automatikus eszközkezelés -> IoT-eszköz konfigurációja** szakaszában:
+Mivel az automatikus eszközkonfigurációkat futtassa a létrehozás időpontjában, és majd át 5 percenként, akkor előfordulhat, hogy nem jelenik meg minden állapotának frissítése a háttéralkalmazás küld. A mérőszámokat a portálon is megtekintheti az IoT Hub **Automatikus eszközkezelés -> IoT-eszköz konfigurációja** szakaszában:
 
 ![A konfiguráció megtekintése a portálon](./media/tutorial-firmware-update/portalview.png)
 

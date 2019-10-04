@@ -1,6 +1,6 @@
 ---
-title: Rövid útmutató – HoloLens-alkalmazás létrehozása az Azure térbeli horgonyok |} A Microsoft Docs
-description: Ez a rövid útmutatóban megismerheti, hogyan készíthetők térbeli horgonyok használatával HoloLens alkalmazások.
+title: Rövid útmutató – HoloLens-alkalmazás létrehozása az Azure térbeli Horgonyokkal | Microsoft Docs
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre HoloLens-alkalmazást térbeli horgonyok használatával.
 author: craigktreasure
 manager: aliemami
 services: azure-spatial-anchors
@@ -8,72 +8,71 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 7a9eedfe851bb8b5519d0831f47cf6787345a1f8
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 94cae186cee099618772f53d2b820e12f20cad64
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59996288"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562402"
 ---
-# <a name="quickstart-create-a-hololens-app-with-azure-spatial-anchors-in-cwinrt-and-directx"></a>Gyors útmutató: HoloLens-alkalmazás létrehozása a C + Azure térbeli horgonyok +/ WinRT és DirectX segítségével
+# <a name="quickstart-create-a-hololens-app-with-azure-spatial-anchors-in-cwinrt-and-directx"></a>Gyors útmutató: HoloLens-alkalmazás létrehozása az Azure térbeli Horgonyokkal, a C++/WinRT és a DirectX szolgáltatásban
 
-Ez a rövid útmutató bemutatja, hogyan hozhat létre a HoloLens használatával [Azure térbeli horgonyok](../overview.md) a C++/WinRT és DirectX segítségével. Az Azure térbeli horgonyok platformfüggetlen fejlesztői szolgáltatása lehetővé teszi, hogy a vegyes valóság élmény helyükre kivonatuk eszközök idővel-objektumok segítségével. Ha elkészült, a HoloLens-alkalmazást, amely mentheti, és egy térbeli kapcsolati alapot visszahívása lesz.
+Ez a rövid útmutató ismerteti, hogyan hozhat létre HoloLens-alkalmazást az [Azure térbeli](../overview.md) /WinRT és a C++DirectX használatával. Az Azure térbeli horgonyok egy többplatformos fejlesztői szolgáltatás, amely lehetővé teszi, hogy vegyes valóságot hozzon létre olyan objektumok használatával, amelyek az adott helyen maradnak a helyükön az egyes eszközökön. Ha elkészült, egy HoloLens-alkalmazás fog rendelkezni, amely képes a térbeli horgonyok mentésére és visszahívására.
 
 A következőket fogja megtanulni:
 
 > [!div class="checklist"]
 > * Térbeli horgonyok fiók létrehozása
-> * A térbeli horgonyok fiók azonosítóját és a fiókkulcsot konfigurálása
-> * Üzembe helyezése és futtatása a HoloLens eszköz
+> * A térbeli horgonyok fiókazonosító és a fiók kulcsának konfigurálása
+> * Üzembe helyezés és Futtatás HoloLens-eszközön
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A rövid útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik az alábbiakkal:
-
-- Olyan Windows-gépeken, <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017 +</a> telepített a **univerzális Windows Platform fejlesztési** számítási feladatok és a **Windows 10 SDK (10.0.17763.0 vagy újabb)** az összetevőt, és <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a>.
-- A [ C++WinRT Visual Studio bővítmény (VSIX)](https://aka.ms/cppwinrt/vsix) a Visual Studióban telepítenie kell a a [Visual Studio-piactér](https://marketplace.visualstudio.com/).
-- HoloLens eszköz [fejlesztői mód](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio) engedélyezve van. Ez a cikk a HoloLens eszköz van szükség a [Windows 2018. október 10. frissítés](https://docs.microsoft.com/windows/mixed-reality/release-notes-october-2018 ) (más néven RS5). A legújabb verziót a HoloLens frissítéséhez nyissa meg a **beállítások** alkalmazást, lépjen a **frissítés és biztonság**, majd válassza a **frissítések keresése** gombra.
-- Az alkalmazás be kell állítani a **spatialPerception** funkció az AppX-jegyzékfájlban.
+- Egy Windows rendszerű gép, amelyen a <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> telepítve van a **univerzális Windows-platform-fejlesztési** számítási feladattal és a **Windows 10 SDK (10.0.18362.0 vagy újabb)** összetevővel, valamint a <a href="https://git-scm.com/download/win" target="_blank">git for Windows</a>rendszerrel.
+- A [ C++Visual studióhoz készült/WinRT Visual Studio-bővítményt (VSIX)](https://aka.ms/cppwinrt/vsix) a [Visual Studio piactérről](https://marketplace.visualstudio.com/)kell telepíteni.
+- HoloLens-eszköz, amelyen engedélyezve van a [fejlesztői mód](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio) . Ehhez a cikkhez egy HoloLens-eszközre van szükség, amely a [Windows 10 október 2018 frissítését](https://docs.microsoft.com/windows/mixed-reality/release-notes-october-2018 ) (más néven RS5) ismerteti. A HoloLens legújabb kiadásának frissítéséhez nyissa meg a **Beállítások** alkalmazást, lépjen a **frissítés & biztonság**elemre, majd kattintson a **frissítések keresése** gombra.
+- Az alkalmazásnak a AppX-jegyzékben kell beállítania a **spatialPerception** képességet.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
-## <a name="open-the-sample-project"></a>Nyissa meg a mintaprojektet
+## <a name="open-the-sample-project"></a>A minta projekt megnyitása
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
-Nyissa meg `HoloLens\DirectX\SampleHoloLens.sln` a Visual Studióban.
+Megnyitás `HoloLens\DirectX\SampleHoloLens.sln` a Visual Studióban.
 
-## <a name="configure-account-identifier-and-key"></a>Fiókazonosító és kulcsának konfigurálása
+## <a name="configure-account-identifier-and-key"></a>Fiók azonosítójának és kulcsának konfigurálása
 
-A következő lépés, hogy a fiók azonosítóját és kulcsát az alkalmazás konfigurálása. Másolja őket egy szövegszerkesztőbe, amikor [beállítása a térbeli horgonyok erőforrás](#create-a-spatial-anchors-resource).
+A következő lépés az alkalmazás konfigurálása a fiók azonosítójának és a fiók kulcsának használatára. [A térbeli horgonyok erőforrásának beállításakor](#create-a-spatial-anchors-resource)egy szövegszerkesztőbe másolta őket.
 
-Nyissa meg `HoloLens\DirectX\SampleHoloLens\ViewController.cpp`.
+Nyissa meg `HoloLens\DirectX\SampleHoloLens\ViewController.cpp`a t.
 
-Keresse meg a `SpatialAnchorsAccountKey` mezőt, és cserélje le `Set me` és a fiókkulcsot.
+Keresse meg `SpatialAnchorsAccountKey` a mezőt, `Set me` és cserélje le a fiókot a fiók kulcsára.
 
-Keresse meg a `SpatialAnchorsAccountId` mezőt, és cserélje le `Set me` fiók azonosítóval.
+Keresse meg `SpatialAnchorsAccountId` a mezőt, `Set me` és cserélje le a azonosítót a fiókazonosító értékre.
 
 ## <a name="deploy-the-app-to-your-hololens"></a>Az alkalmazás üzembe helyezése a HoloLens
 
-Módosítsa a **megoldás konfigurációs** a **kiadási**, módosítása **megoldás platformját** való **x86**, válassza ki **eszköz**  az üzembe helyezés cél közül.
+Módosítsa a **megoldás** konfigurációját a kiadásra, módosítsa a megoldási **platformot** **x86**-ra, majd válassza az **eszköz** lehetőséget a telepítési cél beállításai közül.
 
-HoloLens 2 használata esetén használja **ARM** , a **megoldás platformját**, hanem **x86**.
+Ha a 2. HoloLens használja, az **ARM** -et használja a **megoldási platformként**az **x86**helyett.
 
-![Visual Studio Configuration](./media/get-started-hololens/visual-studio-configuration.png)
+![Visual Studio-konfiguráció](./media/get-started-hololens/visual-studio-configuration.png)
 
-A HoloLens eszköz Power, jelentkezzen be, és csatlakoztassa a Számítógépet, USB-kábel segítségével.
+Kapcsolja be a HoloLens eszközt, jelentkezzen be, és csatlakoztassa a számítógéphez egy USB-kábellel.
 
-Válassza ki **Debug** > **hibakeresés indítása** helyezze üzembe az alkalmazást, és a hibakeresés elindításához.
+Válassza a hibakeresés**indítása** az alkalmazás üzembe helyezéséhez és a hibakeresés megkezdéséhez lehetőséget.  > 
 
-Kövesse az utasításokat az alkalmazásban kívánja helyezni horgonyra visszaírásához.
+A horgonyok elhelyezéséhez és felidézéséhez kövesse az alkalmazás utasításait.
 
-A Visual Studióban, állítsa le az alkalmazást a kiválasztásával **hibakeresés leállításához** vagy megnyomásával **Shift + F5**.
+A Visual Studióban állítsa le az alkalmazást úgy, hogy kiválasztja a **hibakeresés leállítása** vagy a **SHIFT + F5**billentyűkombinációt.
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 
 [!INCLUDE [Next steps](../../../includes/spatial-anchors-quickstarts-nextsteps.md)]
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Megosztás térbeli horgonyok eszközök között](../tutorials/tutorial-share-anchors-across-devices.md)
+> [Oktatóanyag: Térbeli horgonyok megosztása az eszközök között](../tutorials/tutorial-share-anchors-across-devices.md)

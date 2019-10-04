@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2019
 ms.author: sharadag
-ms.openlocfilehash: 256435dfd016ebbd86dbbe49f4abbb346fb1cd19
-ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
+ms.openlocfilehash: 37ec8a611f94b869c8277c135f8e6dc5d2108392
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407748"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442902"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door-service"></a>Az Azure bejárati ajtajának Service kapcsolatos gyakori kérdések
 
@@ -75,29 +75,38 @@ Az Azure bejárati ajtajának Service ugyanezt a listát (jelenléti pontok) POP
 
 ### <a name="is-azure-front-door-service-a-dedicated-deployment-for-my-application-or-is-it-shared-across-customers"></a>Az Azure bejárati ajtajának Service az alkalmazásomhoz tartozó dedikált üzemelő, megosztott vagy ügyfelek között?
 
-Az Azure bejárati ajtajának szolgáltatás egy olyan globálisan elosztott több-bérlős szolgáltatás. Tehát bejárati ajtajának infrastruktúráját közösen használja az összes ügyfeleinek. Azonban a bejárati ajtajának létrehozásával meghatározhatja az alkalmazás számára szükséges konfigurációs és 
+Az Azure bejárati ajtajának szolgáltatás egy olyan globálisan elosztott több-bérlős szolgáltatás. Tehát bejárati ajtajának infrastruktúráját közösen használja az összes ügyfeleinek. Azonban a bejárati ajtajának profilt hoz létre, a az alkalmazás számára szükséges konfigurációs határoz meg, és nem a bejárati ajtajának végrehajtott módosítások hatással más bejárati ajtajának konfigurációs.
 
 ### <a name="is-http-https-redirection-supported"></a>Is HTTP->HTTPS redirection supported?
 
-Bejárati ajtajának jelenleg nem támogatja a átirányítási URL-címe.
+Igen. Sőt az Azure bejárati ajtajának szolgáltatás támogatja a gazdagép, elérési út, és a lekérdezési karakterlánc átirányítás, valamint átirányítási URL-cím része. Tudjon meg többet [URL-átirányítás](front-door-url-redirect.md). 
 
 ### <a name="in-what-order-are-routing-rules-processed"></a>Milyen sorrendben útválasztási szabályok feldolgozása?
 
 A bejárati ajtajának útvonalai nem vannak rendezve, és a egy adott útvonal alapján választja ki a legmegfelelőbb. Tudjon meg többet [hogyan bejárati ajtajának megfelelő kérelem-útválasztási szabály](front-door-route-matching.md).
 
-### <a name="how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door-service"></a>Hogyan tegye I zárolhatja a hozzáférést a háttérrendszer csak Azure bejárati ajtajának Service?
+### <a name="how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door"></a>Hogyan do I zárolhatja a hozzáférést a háttérrendszerhez való csak Azure bejárati ajtajának?
 
-Csak Azure-szolgáltatásból bejárati ajtajának forgalom fogadására a a háttérrendszerek IP ACLing konfigurálhatja. Korlátozhatja az alkalmazás csak a háttérbeli IP-címtér Azure bejárati ajtajának szolgáltatás a bejövő kapcsolatokat fogadjon. Dolgozunk az felé integrálása [Azure IP-címtartományok és Szolgáltatáscímkék](https://www.microsoft.com/download/details.aspx?id=56519) , de most tekintse meg az alábbi IP-címtartományok esetében:
+Zárolhatja az alkalmazás csak az adott bejárati ajtajának érkező forgalmat fogad, be kell biztosítani a háttérbeli IP ACL-ek beállítása, majd korlátozza az elfogadott értékek a Azure bejárati ajtajának által küldött "X-továbbított-Host" fejléc. Ezek a lépések részletes leírást talál meg látható:
+
+- Konfigurálja az IP-ACLing a a háttérrendszerek Azure bejárati ajtajának háttérbeli IP-címtér és csak az Azure infrastruktúraszolgáltatások érkező forgalom fogadására. Dolgozunk az felé integrálása [Azure IP-címtartományok és Szolgáltatáscímkék](https://www.microsoft.com/download/details.aspx?id=56519) , de most tekintse meg az alábbi IP-címtartományok esetében:
  
-- **IPv4** - `147.243.0.0/16`
-- **IPv6** - `2a01:111:2050::/44`
+    - Bejárati ajtajának **IPv4** háttérbeli IP-címtér: `147.243.0.0/16`
+    - Bejárati ajtajának **IPv6** háttérbeli IP-címtér: `2a01:111:2050::/44`
+    - Az Azure [alapszintű infrastruktúra-szolgáltatások](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) virtuális gazdagép IP-címekkel: `168.63.129.16` és `169.254.169.254`
 
-> [!WARNING]
-> A háttérbeli IP-címtér később módosíthatja, azonban, hogy gondoskodik arról, hogy előtt történik, hogy lenne integráltuk az [Azure IP-címtartományok és Szolgáltatáscímkék](https://www.microsoft.com/download/details.aspx?id=56519). Azt javasoljuk, hogy az előfizetett [Azure IP-címtartományok és Szolgáltatáscímkék](https://www.microsoft.com/download/details.aspx?id=56519) a módosításaiért vagy frissítéseiért. 
+    > [!WARNING]
+    > Bejárati ajtajának háttérbeli IP-címtér később módosíthatja, azonban, hogy gondoskodik arról, hogy előtt történik, hogy lenne integráltuk az [Azure IP-címtartományok és Szolgáltatáscímkék](https://www.microsoft.com/download/details.aspx?id=56519). Azt javasoljuk, hogy az előfizetett [Azure IP-címtartományok és Szolgáltatáscímkék](https://www.microsoft.com/download/details.aspx?id=56519) a módosításaiért vagy frissítéseiért.
+
+-   Az értékeket a bejövő fejléc szűrőt "**X továbbított gazdagép**" bejárati ajtajának által küldött. A fejléc csak engedélyezett értékek kell lennie, az összes előtér-gazdagépeken a bejárati ajtajának config meghatározottak szerint. Valójában még pontosabban, csak a gazdagép neve, amelynek meg szeretné fogadja el a forgalmat, az adott háttérrendszer terveztük.
+    - Példa – hozzunk tegyük a bejárati ajtajának config rendelkezik a következő előtérbeli gazdagépek _`contoso.azurefd.net`_ (A) _`www.contoso.com`_ (B), _ (C), és _`notifications.contoso.com`_ (D). Tegyük fel, hogy rendelkezik-e két háttérrendszerek X és Y. 
+    - Háttérrendszer X csak kell vennie A állomásnevek érkező forgalmat és a háttérrendszer i b forgalmat a, C és a d
+    - Így a háttérrendszer X csak elfogadása, tartalmaz a forgalom "**X továbbított gazdagép**" beállítása termékeken _`contoso.azurefd.net`_ vagy _`www.contoso.com`_ . Minden más a háttérbeli X kell utasítania a forgalmat.
+    - Ehhez hasonlóan a háttérrendszer i csak elfogadása, forgalom, amely rendelkezik a fejléc "**X továbbított gazdagép**" beállítása termékeken _`contoso.azurefd.net`_ , _`api.contoso.com`_ vagy  _`notifications.contoso.com`_ . Minden más a háttérrendszer i kell utasítania a forgalmat.
 
 ### <a name="can-the-anycast-ip-change-over-the-lifetime-of-my-front-door"></a>A csomópontválasztásos IP-címet módosíthatja a bejárati ajtó élettartama során?
 
-Az előtérbeli csomópontválasztásos IP számára a bejárati ajtajának általában nem kell módosítani, és előfordulhat, hogy kezdettől fogva élettartama statikus marad. Vannak azonban **nincs garancia** esetében azonos. Könyvtárából nem lépnek közvetlen függőségek az IP-címen.  
+Az előtérbeli csomópontválasztásos IP számára a bejárati ajtajának általában nem kell módosítani, és előfordulhat, hogy kezdettől fogva élettartama statikus marad. Vannak azonban **nincs garancia** esetében azonos. Könyvtárából nem lépnek közvetlen függőségek az IP-címen.
 
 ### <a name="does-azure-front-door-service-support-static-or-dedicated-ips"></a>Támogatja az Azure bejárati ajtajának Service statikus vagy dedikált IP-címek?
 
@@ -142,6 +151,11 @@ Bejárati ajtajának támogatja a TLS 1.0, 1.1 és 1.2-es. A TLS 1.3 még nem t�
 Ahhoz, hogy biztonságosan tartalomtovábbításhoz bejárati ajtajának egyéni tartomány HTTPS-protokollt, kiválaszthatja az Azure bejárati ajtajának szolgáltatás által kezelt tanúsítványt használjon, vagy a saját tanúsítványt használjon.
 Kezdettől fogva beállítás rendelkezések egy szabványos SSL-tanúsítvány Digicert keresztül felügyelt, és tárolja az előtérben ajtó a Key Vault. Ha úgy dönt, hogy a saját tanúsítványt használ, akkor segítségével készítheti elő egy támogatott Hitelesítésszolgáltatótól származó tanúsítványt, és a egy szabványos SSL, a bővített ellenőrzés tanúsítvány vagy a helyettesítő tanúsítvány is lehet. Önaláírt tanúsítványok használata nem támogatott. Ismerje meg, [HTTPS engedélyezése egyéni tartomány](https://aka.ms/FrontDoorCustomDomainHTTPS).
 
+### <a name="does-front-door-support-autorotation-of-certificates"></a>Támogatja a bejárati ajtajának illesztőprogramja tanúsítványok?
+
+A felügyelt bejárati ajtajának tanúsítvány lehetőséget választotta a tanúsítványok autorotated bejárati ajtajának szerint. Ha felügyelt bejárati ajtajának tanúsítványt használ, és figyelje meg, hogy a tanúsítvány lejárati dátuma kevesebb, mint 60 nap múlva, egy támogatási jegyet fájlt.
+</br>A saját egyéni SSL-tanúsítvány illesztőprogramja nem támogatott. Hasonlóan hogyan hozták létre, először egy adott egyéni tartomány fogja pont bejárati ajtajának kell a megfelelő verziójának a Key vaultban és győződjön meg arról, hogy a szolgáltatásnév számára a bejárati ajtajának továbbra is rendelkezik-e a Key Vaulthoz való hozzáférése. A frissített tanúsítvány bevezetési művelet által bejárati ajtajának atomi, és nem okozza a termelési hatással a tulajdonos nevét a megadott, vagy a tanúsítvány SAN nem változik.
+
 ### <a name="what-are-the-current-cipher-suites-supported-by-azure-front-door-service"></a>Mik azok az aktuális Azure bejárati ajtajának szolgáltatás által támogatott titkosító csomagok?
 
 Az aktuális Azure bejárati ajtajának szolgáltatás által támogatott titkosító csomagok a következők:
@@ -171,7 +185,7 @@ Igen, Azure bejárati ajtajának Service támogatja az SSL-alapú kiszervezéshe
 
 ### <a name="can-i-configure-ssl-policy-to-control-ssl-protocol-versions"></a>Konfigurálhatja az SSL-szabályzat az SSL-protokollverziók vezérlésére?
 
-Nem, jelenleg nem támogatja a bejárati ajtajának megtagadni konkrét TLS-verziók és nem állíthatja a TLS minimális verziója. 
+Nem, jelenleg nem támogatja a bejárati ajtajának megtagadni konkrét TLS-verziók és nem állíthatja a TLS minimális verzióját. 
 
 ### <a name="can-i-configure-front-door-to-only-support-specific-cipher-suites"></a>Konfigurálhatja a bejárati ajtajának csak az adott titkosító csomagok támogatásához?
 

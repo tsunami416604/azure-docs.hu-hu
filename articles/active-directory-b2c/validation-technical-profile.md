@@ -2,20 +2,20 @@
 title: Egy egyéni házirendek az Azure Active Directory B2C egy érvényesítési technikai profil meghatározása |} A Microsoft Docs
 description: Adja meg az Azure Active Directory B2C-vel egyéni szabályzatok az Azure Active Directory technikai profil.
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 466ed4c2bd353e4a5ec3bec5535b70a90446ee0b
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 3f20c3c6d6821b5a8bbdb74101095431f6f7f18f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58483896"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66511906"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Egyéni Azure Active Directory B2C-házirendek egy érvényesítési technikai profil meghatározása
 
@@ -43,7 +43,7 @@ Az önellenőrzött technikai profil egy érvényesítési technikai profil elle
 
 A **ValidationTechnicalProfiles** elem a következő elemeket tartalmazza:
 
-| Elem | Ismétlődések | Leírás |
+| Elem | Előfordulás | Leírás |
 | ------- | ----------- | ----------- |
 | ValidationTechnicalProfile | 1:n | A technikai profil ellenőrzése vagy azok egy részét a kimeneti jogcímek a hivatkozó technikai profil használható. |
 
@@ -57,20 +57,20 @@ A **ValidationTechnicalProfile** elem tartalmazza a következő attribútumot:
 
 A **ValidationTechnicalProfile** elem tartalmazza a következő elemet:
 
-| Elem | Ismétlődések | Leírás |
+| Elem | Előfordulás | Leírás |
 | ------- | ----------- | ----------- |
 | Az Előfeltételek | 0:1 | Az érvényesítés technikai profil végrehajtásához kell biztosítani az Előfeltételek listáját. |
 
 A **előfeltétel** elem tartalmazza a következő attribútumot:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | `Type` | Igen | Ellenőrizze vagy végrehajtani az előfeltétel-lekérdezés típusa. Mindkét `ClaimsExist` van megadva, győződjön meg arról, hogy műveleteket kell elvégezni, ha a megadott jogcím szerepel a felhasználó aktuális jogcímek készletében, vagy `ClaimEquals` van megadva, hogy a műveleteket kell elvégezni, ha a megadott jogcím létezik, és a hozzá tartozó érték megegyezik a megadott értéket. |
 | `ExecuteActionsIf` | Igen | Azt jelzi, hogy e előfeltétele a műveleteket kell elvégezni, ha a tesztelés true vagy FALSE (hamis). |
 
 A **előfeltétel** elem a következő elemeket tartalmazza:
 
-| Elem | Ismétlődések | Leírás |
+| Elem | Előfordulás | Leírás |
 | ------- | ----------- | ----------- |
 | Érték | 1:n | Az ellenőrzés által használt adatokat. Ha ez az ellenőrzés típusát `ClaimsExist`, ebben a mezőben adja meg egy ClaimTypeReferenceId lekérdezéséhez. Ha a jelölőnégyzet típusú `ClaimEquals`, ebben a mezőben adja meg egy ClaimTypeReferenceId lekérdezéséhez. Míg egy másik értéket elem tartalmazza az ellenőrizendő értékkel.|
 | Műveletek | 1:1 | Az előfeltétel-ellenőrzés belül egy vezénylési lépés teljesülése esetén végrehajtandó művelet. Értékét a **művelet** értékre van állítva `SkipThisValidationTechnicalProfile`. Itt adhatja meg, hogy a társított ellenőrzési technikai profil nem lehet végrehajtani. |

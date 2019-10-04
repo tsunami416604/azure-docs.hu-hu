@@ -3,9 +3,8 @@ title: Incidensek és riasztások vizsgálata az Azure Security Centerben | Micr
 description: Ez a dokumentum segítséget nyújt a biztonsági incidensek és riasztások vizsgálatához az Azure Security Center vizsgálati funkciójának használatával.
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: a8e894a9-8781-4749-ae8f-8c8e01658566
 ms.service: security-center
 ms.devlang: na
@@ -13,16 +12,19 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
-ms.author: rkarlin
-ms.openlocfilehash: 6ba21c6eacd5b72d13706c08f0cc9883ccc91388
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: memildin
+ms.openlocfilehash: 32cc4b01d68ee7a15ae7cfa2259d234cbcd143c4
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58107474"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202061"
 ---
-# <a name="investigate-incidents-and-alerts-in-azure-security-center-preview"></a>Incidensek és riasztások vizsgálata az Azure Security Centerben (előzetes verzió)
-Ez a dokumentum segítséget nyújt a biztonsági incidensek és riasztások vizsgálatához az Azure Security Center vizsgálati funkciójának használatával.
+# <a name="investigate-incidents-and-alerts-in-azure-security-center-retired"></a>Incidensek és riasztások vizsgálata Azure Security Center (kivont)
+Ez a dokumentum segítséget nyújt a Azure Security Center vizsgálati funkciójának (előzetes verzió) használatában a biztonsági incidensek és riasztások kivizsgálásához.
+
+> [!NOTE]
+> A riasztások és incidensek vizsgálatának (előzetes verzió) élményét a 2019. július 31-én kivonták. További információ és alternatív szolgáltatások: [Security Center szolgáltatások kivonása (július 2019)](security-center-features-retirement-july2019.md#menu_investigate).
 
 ## <a name="what-is-investigation-in-security-center"></a>Mit jelent a vizsgálat a Security Centerben?
 A Security Center Vizsgálat szolgáltatásával osztályozhatja a potenciális [biztonsági incidenseket](https://docs.microsoft.com/azure/security-center/security-center-incident), feltérképezheti a hatókörüket, és azonosíthatja a kiváltó okokat.
@@ -31,8 +33,8 @@ A szolgáltatás célja, hogy megkönnyítse a vizsgálati eljárást a vizsgál
 
 
 > [!NOTE]
-> * [Egyéni riasztások](security-center-custom-alert.md) a Security Center vizsgálati funkciójáról nem támogatottak.
-> * Vizsgálat csak a támogatott Windows kiszolgálókról összegyűjtött adatokon alapuló riasztások.
+> * Security Center vizsgálati funkciója nem támogatja az [Egyéni riasztásokat](security-center-custom-alert.md) .
+> * A vizsgálat csak a Windows-kiszolgálókról összegyűjtött adatokon alapuló riasztások esetén támogatott.
 
 
 ## <a name="how-investigation-works"></a>A vizsgálat működése
@@ -74,7 +76,7 @@ A **Feltárás** lapon a vizsgáló az entitáshoz kapcsolódó különféle hib
 
 ![Feltárás](./media/security-center-investigation/security-center-investigation-fig6.png)
 
-### <a name="timeline"></a>Idővonal
+### <a name="timeline"></a>Idősor
 
 A gráfon és a különféle füleken megjelenő adatok zöme egy adott időszakra vonatkozik. Az időszak az időszakválasztón állítható be a gráf bal oldalán. Különféle módszerek állnak a vizsgáló rendelkezésére az időszak kiválasztásához.
 
@@ -96,7 +98,7 @@ Az alábbi elemek megjelenítése a kiválasztott időszaktól független:
 
 ## <a name="how-to-perform-an-investigation"></a>Vizsgálat végrehajtása
 
-A vizsgálatok biztonsági incidensből vagy riasztásból indíthatók, attól függően, hogy mi felel meg jobban az igényeinek. A következő lépéseket egy vizsgálat indítása riasztásból használhatók:
+A vizsgálatok biztonsági incidensből vagy riasztásból indíthatók, attól függően, hogy mi felel meg jobban az igényeinek. Az alábbi lépések a riasztások vizsgálatának elindítására szolgálnak:
 
 1.  Nyissa meg a **Security Center** irányítópultját.
 2.  Kattintson a **Biztonsági riasztások** gombra, és válassza ki a kivizsgálni kívánt incidenst.

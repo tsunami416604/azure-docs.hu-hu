@@ -9,17 +9,16 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 9b9a691cb2bce2357d184420912ab340aee534e8
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: HT
+ms.openlocfilehash: 6841695cca5d3864e6823085520d8e9162e54043
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412740"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70067941"
 ---
 # <a name="mock-api-responses"></a>API-válaszok utánzása
 
@@ -42,7 +41,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 + Az [Azure API Management terminológiájának](api-management-terminology.md) ismerete.
 + Az [Azure API Management-szabályzatok alapelveinek](api-management-howto-policies.md) ismerete.
-+ Tekintse át a következő rövid útmutatót: [Azure API Management-példány létrehozása](get-started-create-service-instance.md).
++ Hajtsa végre a következő rövid útmutatót: [Hozzon létre egy Azure API Management-példányt](get-started-create-service-instance.md).
 
 ## <a name="create-a-test-api"></a>Tesztelési API létrehozása 
 
@@ -50,7 +49,7 @@ A jelen szakaszban ismertetett lépések bemutatják, hogyan hozható létre egy
 
 ![Üres API létrehozása](./media/mock-api-responses/03-MockAPIResponses-01-CreateTestAPI.png)
 
-1. Az **API Management** szolgáltatásban válassza az **API** lehetőséget.
+1. Az **API Management**t szolgáltatásban válassza az **API** lehetőséget.
 2. A bal oldali menüben válassza az **+ API hozzáadása** elemet.
 3. Válassza az **Üres API** elemet a listából.
 4. A **Megjelenítendő név** mezőben adja meg a „*Tesztelési API*” nevet.
@@ -79,7 +78,7 @@ A jelen szakaszban ismertetett lépések bemutatják, hogyan hozható létre egy
 5. Válassza a **200 OK** elemet a listából.
 6. A jobb oldali **Ábrázolások** fejléc alatt válassza a **+ Ábrázolás hozzáadása** lehetőséget.
 7. Írja be az „*alkalmazás/json*” kifejezést a keresőmezőbe, és válassza ki az **alkalmazás/json** tartalomtípust.
-8. A **Minta** szövegmezőbe írja be a következőt: `{ 'sampleField' : 'test' }`.
+8. A **Minta** szövegmezőbe írja be a következőt: `{ "sampleField" : "test" }`.
 9. Kattintson a **Létrehozás** gombra.
 
 ## <a name="enable-response-mocking"></a>Válaszutánzás engedélyezése

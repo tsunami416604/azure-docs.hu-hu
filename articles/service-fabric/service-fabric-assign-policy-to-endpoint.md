@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 03/21/2018
 ms.author: atsenthi
 ms.openlocfilehash: 3e892e443f5e3309add48f939f26ba14eaf5a51b
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670404"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60614190"
 ---
 # <a name="assign-a-security-access-policy-for-http-and-https-endpoints"></a>A HTTP vagy HTTPS-végpontokat biztonsági hozzáférési szabályzat hozzárendelése
 Ha futtató szabályzat alkalmazásához, és a szolgáltatásjegyzék deklarálja a HTTP-végpont erőforrásokat, meg kell adnia egy **SecurityAccessPolicy**.  **SecurityAccessPolicy** biztosítja, hogy ezeket a végpontokat hozzárendelt portok megfelelően korlátozva vannak, amelyek a szolgáltatás fut, a felhasználói fiókhoz. Ellenkező esetben **http.sys** nem rendelkezik a szolgáltatáshoz való hozzáférést, és sikertelen hívások kap az ügyfélről. Az alábbi példa a Customer1 fiók érvényes nevű végpont **Végpontneve**, amely teljes körű hozzáférési jogosultságokat biztosít azt.

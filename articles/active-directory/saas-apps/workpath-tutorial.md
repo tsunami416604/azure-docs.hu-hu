@@ -1,266 +1,237 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Workpath |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Workpath között.
+title: 'Oktatóanyag: Azure Active Directory integráció a Workpath-szel | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Workpath között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 320b0daf-14be-4813-b59b-25a6a5070690
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 05/22/2017
+ms.topic: tutorial
+ms.date: 03/28/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e8b334998983684d50c4faddceb03a0f30fd257
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 6d8d077dbc467dc06ebbe0d93001a363c624a1e1
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58878162"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68826001"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-workpath"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Workpath
+# <a name="tutorial-azure-active-directory-integration-with-workpath"></a>Oktatóanyag: Azure Active Directory integráció a Workpath
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan Workpath integrálása az Azure Active Directory (Azure AD).
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Workpath a Azure Active Directory (Azure AD) szolgáltatással.
+A Workpath és az Azure AD integrálásával a következő előnyöket nyújtja:
 
-Workpath integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
+* Az Azure AD-ben beállíthatja, hogy ki férhet hozzá a Workpath.
+* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a Workpath (egyszeri bejelentkezés) az Azure AD-fiókokkal.
+* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-- Szabályozhatja, hogy ki férhet hozzá Workpath Azure AD-ben
-- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett Workpath (egyszeri bejelentkezés) az Azure AD-fiókjukkal
-- Kezelheti a fiókokat, egyetlen központi helyen – az Azure Portalon
-
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Workpath az Azure AD-integráció konfigurálásához a következőkre van szükség:
+Az Azure AD-integráció Workpath való konfigurálásához a következő elemek szükségesek:
 
-- Azure AD-előfizetés
-- Egy Workpath egyszeri bejelentkezéses engedélyezett előfizetés
-
-> [!NOTE]
-> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
-
-Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
-
-- Ne használja az éles környezetben, csak szükség esetén.
-- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, beszerezheti a egy egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/).
+* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* Workpath egyszeri bejelentkezésre engedélyezett előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. Workpath hozzáadása a katalógusból
-1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
-## <a name="adding-workpath-from-the-gallery"></a>Workpath hozzáadása a katalógusból
-Az Azure AD integrálása a Workpath konfigurálásához hozzá kell Workpath a katalógusból a felügyelt SaaS-alkalmazások listájára.
+* A Workpath támogatja az **SP** és a **identitásszolgáltató** által kezdeményezett SSO
 
-**Workpath hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
+* A Workpath **csak időben támogatja a** felhasználók kiépítési folyamatát
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+## <a name="adding-workpath-from-the-gallery"></a>Workpath hozzáadása a gyűjteményből
 
-    ![Active Directory][1]
+A Workpath Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Workpath a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+**Ha Workpath szeretne hozzáadni a katalógusból, hajtsa végre a következő lépéseket:**
 
-    ![Alkalmazások][2]
-    
-1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
-    ![Alkalmazások][3]
+    ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-1. A Keresés mezőbe írja be a **Workpath**.
+2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/workpath-tutorial/tutorial_workpath_search.png)
+    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-1. Az eredmények panelen válassza ki a **Workpath**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/workpath-tutorial/tutorial_workpath_addfromgallery.png)
+    ![Az új alkalmazás gomb](common/add-new-app.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
-Ebben a szakaszban konfigurálja, és a teszt "Britta Simon." nevű felhasználó Workpath az Azure AD egyszeri bejelentkezés tesztelése
+4. A keresőmezőbe írja be a **Workpath**kifejezést, válassza a **Workpath** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó Workpath mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó Workpath hivatkozás kapcsolata kell létrehozni.
+     ![Workpath az eredmények listájában](common/search-new-app.png)
 
-Workpath, rendelje hozzá az értékét a **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Az Azure AD egyszeri bejelentkezés az Workpath tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az Workpath-mel konfigurálja és teszteli a **Britta Simon**nevű tesztelési felhasználó alapján.
+Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Workpath kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-1. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-1. **[Workpath tesztfelhasználó létrehozása](#creating-a-workpath-test-user)**  – egy megfelelője a Britta Simon Workpath, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-1. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-1. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+Az Azure AD egyszeri bejelentkezés Workpath való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Workpath egyszeri bejelentkezés konfigurálása](#configure-workpath-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. **[Hozzon létre Workpath-teszt felhasználót](#create-workpath-test-user)** – hogy a Workpath Britta, a felhasználó Azure ad-képviseletéhez kapcsolódó partnerrel rendelkezzen.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és Workpath alkalmazását az egyszeri bejelentkezés konfigurálása.
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-**Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Workpath, hajtsa végre az alábbi lépéseket:**
+Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
 
-1. Az Azure Portalon az a **Workpath** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
+Az Azure AD egyszeri bejelentkezés Workpath való konfigurálásához hajtsa végre a következő lépéseket:
 
-    ![Egyszeri bejelentkezés konfigurálása][4]
+1. A [Azure Portal](https://portal.azure.com/) **Workpath** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
 
-1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
- 
-    ![Egyszeri bejelentkezés konfigurálása](./media/workpath-tutorial/tutorial_workpath_samlbase.png)
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-1. Az a **Workpath tartomány és URL-címek** szakaszra, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett módban a következő lépésekkel:
+2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/workpath-tutorial/tutorial_workpath_url.png)
+    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-    a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: `https://api.workpath.com/v1/saml/metadata/<instancename>`
+3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
 
-    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://api.workpath.com/v1/saml/assert/<instancename>`
+    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Ellenőrizze **speciális URL-beállítások megjelenítése**. Ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód, hajtsa végre az alábbi lépéseket:
+4. Az alapszintű **SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/workpath-tutorial/tutorial_workpath_url1.png)
+    ![Workpath tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
 
-    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<subdomain>.workpath.com/`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://api.workpath.com/v1/saml/metadata/<instancename>`
 
-    > [!NOTE] 
-    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL-, azonosítóját és válasz URL-cím. Kapcsolattartó [Workpath támogatási csapatának](https://help.workpath.com) beolvasni ezeket az értékeket.
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://api.workpath.com/v1/saml/assert/<instancename>`
 
-1. Workpath alkalmazás a SAML helyességi feltételek vár egy megadott formátumban. Konfigurálja a következő jogcímek ehhez az alkalmazáshoz. Ezek az attribútumok értékeinek kezelheti a "**felhasználói attribútumok**" szakasz alkalmazás integráció lapján. A következő képernyőképen látható egy példa az ehhez a konfigurációhoz. 
+5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/workpath-tutorial/tutorial_workpath_attributes.png)
-    
-1. Az a **felhasználói attribútumok** szakaszában a **egyszeri bejelentkezési** párbeszédpanelen konfigurálja a SAML-jogkivonat attribútum, az ábrán látható módon, és hajtsa végre az alábbi lépéseket:
-    
-    | Attribútum neve | Attribútum értéke |
+    ![Workpath tartomány és URL-címek egyszeri bejelentkezési adatai](common/metadata-upload-additional-signon.png)
+
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<subdomain>.workpath.com/`
+
+    > [!NOTE]
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Az értékek lekéréséhez forduljon a [Workpath](https://help.workpath.com/) ügyfélszolgálati csapatához. Az Azure Portal alapszintű **SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+
+6. A Workpath alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható. Kattintson a **Szerkesztés** ikonra a **felhasználói attribútumok** párbeszédpanel megnyitásához.
+
+    ![image](common/edit-attribute.png)
+
+7. A fentieken kívül a Workpath alkalmazás néhány további attribútumot vár, amelyeket az SAML-válaszban vissza kell adni. A **felhasználó attribútumai** párbeszédpanel **felhasználói** jogcímek szakaszában a következő lépésekkel adja hozzá az SAML-jogkivonat attribútumát az alábbi táblázatban látható módon:
+
+    | Name (Név) | Forrás attribútum|
     | ------------------- | -------------------- |    
-    | first_name | user.givenname |
-    | last_name | user.surname |
-    
-    a. Kattintson a **attribútum hozzáadása** megnyitásához a **attribútum hozzáadása** párbeszédpanel.
+    | first_name | User. givenName |
+    | last_name | felhasználó. vezetéknév |
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/workpath-tutorial/tutorial_attribute_04.png)
+    a. Kattintson az **új jogcím hozzáadása** elemre a **felhasználói jogcímek kezelése** párbeszédpanel megnyitásához.
 
-    b. Az a **neve** szövegmezőbe írja be azon attribútum nevét, a sorhoz látható.
+    ![image](common/new-save-attribute.png)
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/workpath-tutorial/tutorial_attribute_05.png)
+    ![image](common/new-attribute-details.png)
 
-    c. Az a **érték** list, írja be az adott sorhoz feltüntetett attribútumot értéket.
+    b. A **név** szövegmezőbe írja be az adott sorhoz megjelenített attribútum nevét.
 
-    d. Hagyja a **Namespace** szövegbeviteli mező üres.
-    
-    e. Kattintson az **OK** gombra.
-    
+    c. Hagyja üresen a **névteret** .
 
-1. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
+    d. Válassza a forrás **attribútumként**lehetőséget.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/workpath-tutorial/tutorial_workpath_certificate.png) 
+    e. A **forrás attribútum** listáról írja be az adott sorhoz megjelenő attribútum értékét.
 
-1. Kattintson a **mentése** gombra.
+    f. Kattintson a **Ok**
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/workpath-tutorial/tutorial_general_400.png)
+    g. Kattintson a **Save** (Mentés) gombra.
 
-1. Az a **Workpath konfigurációs** területén kattintson **konfigurálása Workpath** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
+8. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/workpath-tutorial/tutorial_workpath_configure.png) 
+    ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
 
-1. Az egyszeri bejelentkezés konfigurálása **Workpath** oldalon kell küldenie a letöltött **metaadatainak XML**, **kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** , [Workpath támogatási csapatának](https://help.workpath.com). 
+9. A **Workpath beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények szerint.
 
-> [!TIP]
-> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Az Azure AD embedded dokumentációja]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása
+    a. Bejelentkezési URL
+
+    b. Azure AD-azonosító
+
+    c. Kijelentkezési URL
+
+### <a name="configure-workpath-single-sign-on"></a>Workpath egyszeri bejelentkezés konfigurálása
+
+Ha az egyszeri bejelentkezést szeretné konfigurálni a **Workpath** oldalon, el kell küldenie a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** és a megfelelő másolt url-címeket a Azure Portal a [Workpath támogatási csapatának](https://help.workpath.com/). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
+
 Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-![Az Azure AD-felhasználó létrehozása][100]
+1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
 
-**Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
+    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
 
-1. Az a **az Azure portal**, a bal oldali navigációs panelén kattintson **Azure Active Directory** ikonra.
+2. Válassza ki **új felhasználó** a képernyő tetején.
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/workpath-tutorial/create_aaduser_01.png) 
+    ![Új felhasználó gomb](common/new-user.png)
 
-1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
-    
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/workpath-tutorial/create_aaduser_02.png) 
+3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
 
-1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
- 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/workpath-tutorial/create_aaduser_03.png) 
+    ![A felhasználó párbeszédpanel](common/user-properties.png)
 
-1. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
- 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/workpath-tutorial/create_aaduser_04.png) 
+    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
+  
+    b. A **Felhasználónév** mezőbe írja be brittasimon@yourcompanydomain.extensiona nevet. Például: BrittaSimon@contoso.com
 
-    a. Az a **neve** szövegmezőbe írja be **BrittaSimon**.
-
-    b. Az a **felhasználónév** szövegmezőbe írja be a **e-mail-cím** BrittaSimon az.
-
-    c. Válassza ki **jelszó megjelenítése** és jegyezze fel az értékét a **jelszó**.
+    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
- 
-### <a name="creating-a-workpath-test-user"></a>Workpath tesztfelhasználó létrehozása
 
-Workpath közvetlenül alkalommal felhasználókiépítés támogatja. A hitelesítés után felhasználók, az alkalmazás automatikusan létrehozza. 
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
+Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a Workpath hozzáférésének biztosításával.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **Workpath**lehetőséget.
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Workpath Azure egyszeri bejelentkezés használatára.
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-![Felhasználó hozzárendelése][200] 
+2. Az alkalmazások listában válassza a **Workpath**lehetőséget.
 
-**Britta Simon rendel Workpath, hajtsa végre az alábbi lépéseket:**
+    ![Az Workpath hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
+3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
 
-    ![Felhasználó hozzárendelése][201] 
+    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-1. Az alkalmazások listájában jelölje ki a **Workpath**.
+4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/workpath-tutorial/tutorial_workpath_app.png) 
+    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
-1. A bal oldali menüben kattintson **felhasználók és csoportok**.
+5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
 
-    ![Felhasználó hozzárendelése][202] 
+6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
 
-1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-    ![Felhasználó hozzárendelése][203]
+### <a name="create-workpath-test-user"></a>Workpath-tesztelési felhasználó létrehozása
 
-1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre a Workpath-ben. A Workpath támogatja az igény szerinti felhasználói üzembe helyezést, amely alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Ha egy felhasználó még nem létezik a Workpath-ben, a rendszer egy újat hoz létre a hitelesítés után.
 
-1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
-
-1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
-    
-### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen a Workpath csempére kattint, meg kell lekérése automatikusan bejelentkezett az Workpath alkalmazáshoz.
-A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md).
+Ha a hozzáférési panelen a Workpath csempére kattint, automatikusan be kell jelentkeznie arra a Workpath, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/workpath-tutorial/tutorial_general_01.png
-[2]: ./media/workpath-tutorial/tutorial_general_02.png
-[3]: ./media/workpath-tutorial/tutorial_general_03.png
-[4]: ./media/workpath-tutorial/tutorial_general_04.png
-
-[100]: ./media/workpath-tutorial/tutorial_general_100.png
-
-[200]: ./media/workpath-tutorial/tutorial_general_200.png
-[201]: ./media/workpath-tutorial/tutorial_general_201.png
-[202]: ./media/workpath-tutorial/tutorial_general_202.png
-[203]: ./media/workpath-tutorial/tutorial_general_203.png
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

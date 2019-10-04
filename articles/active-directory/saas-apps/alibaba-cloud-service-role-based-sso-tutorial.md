@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Alibaba Felhőszolgáltatás (Role-based SSO) az Azure Active Directory-integráció |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és az Alibaba Felhőszolgáltatás (Role-based SSO) között.
+title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az Alibaba Cloud Service-szel (szerepköralapú SSO) | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és az Alibaba Cloud Service (szerepköralapú SSO) között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,226 +13,253 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/05/2019
+ms.date: 09/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0ab129d7b215f0f10841b13fc2835af59227198
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: 99b9173c817cc3ecf4b9a34ec6906af0b4de70e6
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565241"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71120768"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-alibaba-cloud-service-role-based-sso"></a>Oktatóanyag: Az Alibaba Felhőszolgáltatás (Role-based SSO) az Azure Active Directory-integráció
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-alibaba-cloud-service-role-based-sso"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az Alibaba Cloud Service-szel (szerepköralapú SSO)
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan integrálhatja az Alibaba Felhőszolgáltatás (Role-based SSO) az Azure Active Directoryval (Azure AD).
-Az Alibaba Felhőszolgáltatás (Role-based SSO) integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja az Alibaba Cloud Service-t (szerepköralapú SSO) Azure Active Directory (Azure AD-val). Az Alibaba Cloud Service (szerepköralapú SSO) Azure AD-vel való integrálásakor a következőket teheti:
 
-* Szabályozhatja, ki férhet hozzá az Alibaba Felhőszolgáltatás (Role-based SSO) az Azure AD-ben.
-* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezett az Alibaba felhőszolgáltatáshoz (Role-based SSO) (egyszeri bejelentkezés) az Azure AD-fiókjukat.
-* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* Az Alibaba Cloud Service-hez (szerepköralapú SSO) hozzáférő Azure AD-beli vezérlés.
+* Engedélyezze, hogy a felhasználók automatikusan bejelentkezzenek az Alibaba Cloud Service-be (szerepköralapú SSO) az Azure AD-fiókjával.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció konfigurálása az Alibaba felhőszolgáltatás (Role-based SSO), a következőkre van szükség:
+Első lépésként a következő elemeket kell megadnia:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a [ingyenes fiókkal](https://azure.microsoft.com/free/)
-* Az Alibaba Felhőszolgáltatás (Role-based SSO) az egyszeri bejelentkezés engedélyezve van az előfizetés
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* Az Alibaba Cloud Service (szerepköralapú SSO) egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-* Az Alibaba Felhőszolgáltatás (Role-based SSO) támogatja a **Identitásszolgáltató** által kezdeményezett egyszeri bejelentkezés
+* Az Alibaba Cloud Service (szerepköralapú SSO) támogatja a **identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést
 
-## <a name="adding-alibaba-cloud-service-role-based-sso-from-the-gallery"></a>Az Alibaba Felhőszolgáltatás (Role-based SSO) hozzáadása a katalógusból
+## <a name="adding-alibaba-cloud-service-role-based-sso-from-the-gallery"></a>Az Alibaba Cloud Service (szerepköralapú SSO) hozzáadása a katalógusból
 
-Az Alibaba felhőszolgáltatás (Role-based SSO) az Azure AD-be integráció konfigurálásához, hozzá kell Alibaba Felhőszolgáltatás (Role-based SSO) a katalógusból a felügyelt SaaS-alkalmazások listájára.
+Az Alibaba Cloud Service (szerepköralapú SSO) Azure AD-be való integrálásának konfigurálásához hozzá kell adnia az Alibaba Cloud Service-t (szerepköralapú SSO) a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**Az Alibaba Felhőszolgáltatás (Role-based SSO) hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
+1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a keresőmezőbe az **Alibaba Cloud Service (szerepköralapú SSO)** kifejezést.
+1. Válassza az **Alibaba Cloud Service (SZEREPKÖRALAPÚ SSO)** lehetőséget az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
+5. Az **Alibaba Cloud Service (SZEREPKÖRALAPÚ SSO)** lapon kattintson a **Tulajdonságok** elemre a bal oldali navigációs ablaktáblán, és másolja az **objektumazonosítót** , és mentse a számítógépre a későbbi használat érdekében.
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+    ![Tulajdonságok konfiguráció](./media/alibaba-cloud-service-role-based-sso-tutorial/Properties.png)
 
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
+## <a name="configure-and-test-azure-ad-single-sign-on-for-alibaba-cloud-service-role-based-sso"></a>Azure AD-alapú egyszeri bejelentkezés konfigurálása és tesztelése az Alibaba Cloud Service-hez (szerepköralapú SSO)
 
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+Konfigurálja és tesztelje az Azure AD SSO-t az Alibaba Cloud Service-szel (szerepköralapú SSO) egy **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között az Alibaba Cloud Service-ben (szerepköralapú SSO).
 
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+Az Azure AD SSO és az Alibaba Cloud Service (szerepköralapú SSO) konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+    1. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+    1. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+2. **[Szerepköralapú egyszeri bejelentkezés konfigurálása az Alibaba Cloud Service-ben](#configure-role-based-single-sign-on-in-alibaba-cloud-service)** – lehetővé teszi a felhasználók számára a funkció használatát.
+    1. Az **[Alibaba Cloud Service (SZEREPKÖRALAPÚ SSO) egyszeri bejelentkezés konfigurálása](#configure-alibaba-cloud-service-role-based-sso-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+    1. **[Hozzon létre Alibaba Cloud Service-t (SZEREPKÖRALAPÚ SSO](#create-alibaba-cloud-service-role-based-sso-test-user)** -t), hogy az a felhasználó Azure ad-beli képviseletéhez kapcsolódó, az Alibaba Cloud Service-ben (szerepköralapú SSO) található Britta Simon-ügyféllel rendelkezzen.
+3. **[Egyszeri egyszeri bejelentkezés tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
-4. A Keresés mezőbe írja be a **Alibaba Felhőszolgáltatás (Role-based SSO)**, jelölje be **Alibaba Felhőszolgáltatás (Role-based SSO)** eredmény panelen kattintson a **Hozzáadás** gombra kattintva adhat hozzá a az alkalmazás.
+## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-    ![Az Alibaba Felhőszolgáltatás (Role-based SSO) a találatok listájában](common/search-new-app.png)
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+1. A [Azure Portal](https://portal.azure.com/)az **Alibaba Cloud Service (szerepköralapú SSO)** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az Alibaba felhőszolgáltatás (Role-based SSO) nevű tesztfelhasználó alapján **Britta Simon**.
-Egyszeri bejelentkezés működjön, az Azure AD-felhasználót és a kapcsolódó felhasználó Alibaba felhőszolgáltatásban (Role-based SSO) közötti kapcsolat kapcsolatot kell hozható létre.
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-Az Azure AD egyszeri bejelentkezés az Alibaba felhőszolgáltatás (Role-based SSO) tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
+4. Az **alapszintű SAML-konfiguráció** szakaszban, ha **szolgáltatói metaadatokat tartalmazó fájllal**rendelkezik, hajtsa végre a következő lépéseket:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Az Alibaba Felhőszolgáltatás (Role-based SSO) egyszeri bejelentkezés konfigurálása](#configure-alibaba-cloud-service-role-based-sso-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Az Alibaba Felhőszolgáltatás (Role-based SSO) tesztfelhasználó létrehozása](#create-alibaba-cloud-service-role-based-sso-test-user)**  – egy megfelelője a Britta Simon van az Alibaba Cloud Service (Role-based SSO), amely kapcsolódik az Azure AD felhasználói ábrázolása.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+    >[!NOTE]
+    >A szolgáltatói metaadatokat ebből az [URL-címről](https://signin.alibabacloud.com/saml-role/sp-metadata.xml) kapja
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+    a. Kattintson a **metaadatfájl feltöltése**.
 
-Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
+    b. Kattintson a **mappa embléma** válassza ki a metaadat-fájlt, és kattintson a **feltöltése**.
 
-Az Azure AD egyszeri bejelentkezés konfigurálása az Alibaba felhőszolgáltatás (Role-based SSO), hajtsa végre az alábbi lépéseket:
+    c. A metaadat-fájl feltöltése után az **azonosító** és a **Válasz URL-** értékei automatikusan fel lesznek töltve az Alibaba Cloud Service (szerepköralapú SSO) szakasz szövegmezőbe:
 
-1. Az a [az Azure portal](https://portal.azure.com/), a a **Alibaba Felhőszolgáltatás (Role-based SSO)** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezési**.
+    > [!Note]
+    > Ha az **azonosító** és a **Válasz URL-címe** nem kap automatikus kitöltést, akkor a követelménynek megfelelően adja meg manuálisan az értékeket.
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
+1. Az Alibaba Cloud Service (szerepköralapú SSO) megköveteli a szerepkörök konfigurálását az Azure AD-ben. A szerepkör-jogcím előre konfigurálva van, így nem kell konfigurálnia, de az Azure AD-ben is létre kell hoznia őket a jelen [cikk](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management)használatával.
 
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
-
-    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
-
-3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
-
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
-
-4. Az a **állítsa be egyszeri bejelentkezést az SAML** lapon, a következő lépésekkel:
-
-    ![Az Alibaba Felhőszolgáltatás (Role-based SSO) tartomány és URL-címeket egyetlen bejelentkezési adatait](common/idp-intiated.png)
-
-    a. Az a **azonosító** szöveg írja be az URL-cím bármelyikét:
-    
-    | |
-    |--|
-    | `urn:alibaba:cloudcomputing` |
-    | `urn:alibaba:cloudcomputing:international` |
-
-    b. Az a **válasz URL-cím** szöveg írja be az URL-cím bármelyikét:
-
-    | |
-    |--|
-    | `https://signin.aliyun.com/saml-role/SSO` |
-    | `https://signin.alibabacloud.com/saml-role/SSO` |
-
-5. Az Alibaba Felhőszolgáltatás (Role-based SSO) alkalmazás a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg. Kattintson a **szerkesztése** ikonra kattintva nyissa meg a **felhasználói attribútumok** párbeszédpanel.
-
-    ![image](common/edit-attribute.png)
-
-6. Emellett a fent az Alibaba Felhőszolgáltatás (Role-based SSO) alkalmazás vár néhány további attribútumok vissza SAML-válasz átadni. A a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok** párbeszédpanelen a következő lépésekkel adja hozzá a SAML-jogkivonat attribútumot, ahogyan az alábbi táblázatban:
-
-    | Name (Név) | Adatforrás-attribútum|
-    | ---------------| --------------- |
-    | Szerepkör | user.assignedroles |
-    | RoleSessionName | user.mail |
-
-    > [!NOTE]
-    > Kattintson a [Itt](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management) konfigurálása tudni **szerepkör** az Azure ad-ben
-
-    a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
-
-    ![image](common/new-save-attribute.png)
-
-    ![image](common/new-attribute-details.png)
-
-    b. Az a **neve** szövegmezőbe írja be azon attribútum nevét, a sorhoz látható.
-
-    c. Hagyja a **Namespace** üres.
-
-    d. Válassza ki a forrás, **attribútum**.
-
-    e. Az a **forrásattribútum** list, írja be az adott sorhoz feltüntetett attribútumot értéket.
-
-    f. Kattintson a **Save** (Mentés) gombra.
-
-7. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **összevonási metaadatainak XML**  a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML-fájlját** , és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
 
     ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
 
-8. Az a **Alibaba Felhőszolgáltatás (Role-based SSO) beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+1. Az **Alibaba Cloud Service (SZEREPKÖRALAPÚ SSO) beállítása** szakaszban másolja ki a megfelelő URL-címet (ka) t a követelmény alapján.
 
-    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-    a. Bejelentkezési URL
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-    b. Azure AD-azonosító
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-    c. Kijelentkezési URL
-
-### <a name="configure-alibaba-cloud-service-role-based-sso-single-sign-on"></a>Az Alibaba Cloud Service (Role-based SSO) egyszeri bejelentkezés konfigurálása
-
-Az egyszeri bejelentkezés konfigurálása **Alibaba Felhőszolgáltatás (Role-based SSO)** oldalon kell küldenie a letöltött **összevonási metaadatainak XML** és a megfelelő másolt URL-címek az Azure Portalról [ Az Alibaba Felhőszolgáltatás (Role-based SSO) támogatási csoportjának](https://www.aliyun.com/service/). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
-
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
-
-Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
-
-1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
-
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
-
-2. Válassza ki **új felhasználó** a képernyő tetején.
-
-    ![Új felhasználó gomb](common/new-user.png)
-
-3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
-
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
-
-    a. Az a **neve** mezőbe írja be **BrittaSimon**.
-  
-    b. Az a **felhasználónév** mezőbe írja be `brittasimon@yourcompanydomain.extension`. Például: BrittaSimon@contoso.com
-
-    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
-
-    d. Kattintson a **Create** (Létrehozás) gombra.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. Válassza ki **új felhasználó** a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
+   1. A **Név** mezőbe írja a következőt: `B.Simon`.  
+   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon Azure egyszeri bejelentkezést a hozzáférés biztosításával az Alibaba felhőszolgáltatáshoz (Role-based SSO) használatára.
+Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentkezés használatát azáltal, hogy hozzáférést biztosít az Alibaba Cloud Service-hez (szerepköralapú SSO).
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **Alibaba Felhőszolgáltatás (Role-based SSO)**.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. Az alkalmazások listában válassza az **Alibaba Cloud Service (SZEREPKÖRALAPÚ SSO)** lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+   ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-2. Az alkalmazások listájában jelölje ki a **Alibaba Felhőszolgáltatás (Role-based SSO)**.
+1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
-    ![Az Alibaba Felhőszolgáltatás (szerepkör-alapú egyszeri bejelentkezés) hivatkozásra az alkalmazások listáját](common/all-applications.png)
+    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-3. A bal oldali menüben válassza **felhasználók és csoportok**.
+1. A **felhasználók és csoportok** lapon válassza a U2 lehetőséget a felhasználók listából, majd kattintson a **kiválasztás**gombra. Ezután kattintson a **hozzárendelés**elemre.
 
-    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+    ![Konfiguráció tesztelése](./media/alibaba-cloud-service-role-based-sso-tutorial/test01.png)
 
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
+1. Tekintse meg a hozzárendelt szerepkört és az Alibaba Cloud Service (szerepköralapú SSO) tesztelését.
 
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
+    ![Konfiguráció tesztelése](./media/alibaba-cloud-service-role-based-sso-tutorial/test02.png)
 
-5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
+    >[!NOTE]
+    >Miután hozzárendelte a felhasználót (U2), a létrehozott szerepkör automatikusan csatolva lesz a felhasználóhoz. Ha több szerepkört hozott létre, szükség szerint csatolja a megfelelő szerepkört a felhasználóhoz. Ha a szerepköralapú egyszeri bejelentkezést több Alibaba Felhőbeli fiókkal szeretné megvalósítani az Azure AD-ből, ismételje meg a fenti lépéseket.
 
-6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
+## <a name="configure-role-based-single-sign-on-in-alibaba-cloud-service"></a>Szerepköralapú egyszeri bejelentkezés konfigurálása az Alibaba Cloud Service-ben
 
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+1. Jelentkezzen be az Alibaba Cloud [RAM-konzolra](https://account.alibabacloud.com/login/login.htm?oauth_callback=https%3A%2F%2Fram.console.aliyun.com%2F%3Fspm%3Da2c63.p38356.879954.8.7d904e167h6Yg9) a Account1 használatával.
 
-### <a name="create-alibaba-cloud-service-role-based-sso-test-user"></a>Az Alibaba Felhőszolgáltatás (Role-based SSO) tesztfelhasználó létrehozása
+2. A bal oldali navigációs ablaktáblán válassza az **egyszeri bejelentkezés**lehetőséget.
 
-Ebben a szakaszban egy Britta Simon nevű Alibaba felhőszolgáltatásban (Role-based SSO) felhasználói hoz létre. Együttműködve [Alibaba Felhőszolgáltatás (Role-based SSO) támogatási csoportjának](https://www.aliyun.com/service/) a felhasználók hozzáadása az Alibaba Felhőszolgáltatás (Role-based SSO) platform. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+3. A **szerepköralapú egyszeri bejelentkezés** lapon kattintson a **identitásszolgáltató létrehozása**elemre.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+4. A megjelenő lapon írja `AAD` be a identitásszolgáltató neve mezőbe a **Leírás mezőt, és kattintson a** **feltöltés** gombra a letöltött összevonási metaadat-fájl feltöltéséhez, majd kattintson **az OK**gombra.
 
-Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
+5. A identitásszolgáltató sikeres létrehozása után kattintson a **RAM-szerepkör létrehozása**lehetőségre.
 
-Ha a hozzáférési panelen az Alibaba Felhőszolgáltatás (Role-based SSO) csempére kattint, akkor kell is automatikusan megtörténik a, amelynek beállítása egyszeri bejelentkezés az Alibaba felhőszolgáltatáshoz (Role-based SSO). A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+6. A **RAM-szerepkör neve** mezőbe írja `AADrole`be a `AAD` következőt: válasszon a **identitásszolgáltató kiválasztása** legördülő listából, majd kattintson az OK gombra.
+
+    >[!NOTE]
+    >Szükség esetén engedélyt adhat a szerepkörnek. A identitásszolgáltató és a hozzá tartozó szerepkör létrehozása után azt javasoljuk, hogy mentse a identitásszolgáltató és a szerepkör ARNs a későbbi használatra. A ARNs a identitásszolgáltató-információ lapon és a szerepkör adatai lapon szerezheti be.
+
+7. Társítsa az Alibaba Cloud RAM-szerepkört (AADrole) az Azure AD-felhasználóval (U2): Ha a RAM-szerepkört az Azure AD-felhasználóhoz szeretné rendelni, az alábbi lépéseket követve létre kell hoznia egy szerepkört az Azure AD-ben:
+
+    a. Jelentkezzen be az [Azure ad Graph Explorerben](https://developer.microsoft.com/graph/graph-explorer?spm=a2c63.p38356.879954.9.7d904e167h6Yg9).
+
+    b. A szerepkör létrehozásához szükséges engedélyek beszerzéséhez kattintson az **engedélyek módosítása** elemre.
+
+    ![Graph-konfiguráció](./media/alibaba-cloud-service-role-based-sso-tutorial/graph01.png)
+
+    c. Válassza ki az alábbi engedélyeket a listából, majd kattintson az **engedélyek módosítása**lehetőségre az alábbi ábrán látható módon.
+
+    ![Graph-konfiguráció](./media/alibaba-cloud-service-role-based-sso-tutorial/graph02.png)
+
+    >[!NOTE]
+    >Az engedélyek megadása után jelentkezzen be újra a Graph Explorerben.
+
+    d. A Graph Explorer lapon válassza az első legördülő lista **beolvasása** lehetőséget a második legördülő listából. Ezután írja `https://graph.microsoft.com/beta/servicePrincipals` be a mezőt a legördülő lista melletti mezőbe, és kattintson a **lekérdezés futtatása**elemre.
+
+    ![Graph-konfiguráció](./media/alibaba-cloud-service-role-based-sso-tutorial/graph03.png)
+
+    >[!NOTE]
+    >Ha több könyvtárat használ, `https://graph.microsoft.com/beta/contoso.com/servicePrincipals` megadhatja a lekérdezés mezőjét.
+
+    e. A **Válasz előnézete** szakaszban bontsa ki a appRoles tulajdonságot a "szolgáltatásnév" értékről a későbbi használat érdekében.
+
+    ![Graph-konfiguráció](./media/alibaba-cloud-service-role-based-sso-tutorial/graph05.png)
+
+    >[!NOTE]
+    >A appRoles tulajdonság megkereséséhez írja `https://graph.microsoft.com/beta/servicePrincipals/<objectID>` be a lekérdezést a mezőbe. Vegye figyelembe, `objectID` hogy az az objektum-azonosító, amelyet az Azure ad **tulajdonságlapján** másolt.
+
+    f. Lépjen vissza a Graph Explorer programba, módosítsa a metódust a **beolvasás** **javításba**, illessze be a következő tartalmat a **kérelem törzse** szakaszba, és kattintson a **lekérdezés futtatása**gombra:
+    ```
+    { 
+    "appRoles": [
+        { 
+        "allowedMemberTypes":[
+            "User"
+        ],
+        "description": "msiam_access",
+        "displayName": "msiam_access",
+        "id": "41be2db8-48d9-4277-8e86-f6d22d35****",
+        "isEnabled": true,
+        "origin": "Application",
+        "value": null
+        },
+        { "allowedMemberTypes": [
+            "User"
+        ],
+        "description": "Admin,AzureADProd",
+        "displayName": "Admin,AzureADProd",
+        "id": "68adae10-8b6b-47e6-9142-6476078cdbce",
+        "isEnabled": true,
+        "origin": "ServicePrincipal",
+        "value": "acs:ram::187125022722****:role/aadrole,acs:ram::187125022722****:saml-provider/AAD"
+        }
+    ]
+    }
+    ```
+    > [!NOTE]
+    > A `value` a identitásszolgáltató és a RAM-konzolon létrehozott szerepkör ARNs. Itt több szerepkört is hozzáadhat, ha szükséges. Az Azure AD a következő szerepkörök értékét küldi el az SAML-válaszban szereplő jogcím-értékként. A javítási művelet `msiam_access` részeként azonban csak új szerepköröket adhat hozzá. A létrehozási folyamat zökkenőmentes kihasználása érdekében javasoljuk, hogy használjon azonosító-generátort, például GUID-generátort, hogy valós időben hozza létre az azonosítókat.
+
+    g. Miután a "szolgáltatásnév" a szükséges szerepkörrel rendelkezik, csatolja a szerepkört az Azure AD-felhasználóhoz (U2) az oktatóanyag **Azure ad-teszt felhasználójának hozzárendelése** című szakaszának lépéseit követve.
+
+### <a name="configure-alibaba-cloud-service-role-based-sso-sso"></a>Az Alibaba Cloud Service (szerepköralapú SSO) egyszeri bejelentkezésének konfigurálása
+
+Ha az egyszeri bejelentkezést az **Alibaba Cloud Service (SZEREPKÖRALAPÚ SSO)** oldalon szeretné konfigurálni, el kell küldenie a letöltött **összevonási METAADATOKat tartalmazó XML** -fájlt és a megfelelő másolt url-címeket a Azure Portalról az [ALIBABA Cloud Service (szerepköralapú SSO) támogatási csapatának.](https://www.aliyun.com/service/) . Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+
+### <a name="create-alibaba-cloud-service-role-based-sso-test-user"></a>Az Alibaba Cloud Service (szerepköralapú SSO) tesztelési felhasználó létrehozása
+
+Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre az Alibaba Cloud Service-ben (szerepköralapú SSO). Az [Alibaba Cloud Service (SZEREPKÖRALAPÚ SSO) támogatási csapatának](https://www.aliyun.com/service/) használata a felhasználók hozzáadásához az Alibaba Cloud Service (szerepköralapú SSO) platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
+
+Az előző konfigurációk befejezése után tesztelje az Alibaba Cloud Service-t (szerepköralapú SSO) a következő lépések végrehajtásával:
+
+1. A Azure Portal lépjen az **Alibaba Cloud Service (SZEREPKÖRALAPÚ SSO)** lapra, válassza az **egyszeri bejelentkezés**lehetőséget, majd kattintson a **teszt**gombra.
+
+    ![Konfiguráció tesztelése](./media/alibaba-cloud-service-role-based-sso-tutorial/test03.png)
+
+2. Kattintson a **Bejelentkezés az aktuális felhasználóként** elemre.
+
+    ![Konfiguráció tesztelése](./media/alibaba-cloud-service-role-based-sso-tutorial/test04.png)
+
+3. A fiók kiválasztása lapon válassza a U2 lehetőséget.
+
+    ![Konfiguráció tesztelése](./media/alibaba-cloud-service-role-based-sso-tutorial/test05.png)
+
+4. A következő oldal jelenik meg, amely azt jelzi, hogy a szerepköralapú egyszeri bejelentkezés sikeres.
+
+    ![Konfiguráció tesztelése](./media/alibaba-cloud-service-role-based-sso-tutorial/test06.png)
 
 ## <a name="additional-resources"></a>További források
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Az Alibaba Cloud Service (szerepköralapú SSO) kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
 

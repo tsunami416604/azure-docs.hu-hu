@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/11/2018
+ms.date: 04/24/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 598ddaa98b0c98d2123f0084a0b8b6dfaf615deb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a57681cc9f44593ceea6b2c1795274c1b16d3a94
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59045713"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "64726209"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-classic"></a>ExpressRoute-kapcsolatcsoport (klasszikus) társviszony létesítése és módosítása
 > [!div class="op_single_selector"]
@@ -187,6 +187,10 @@ Remove-AzureBGPPeering -AccessType Private -ServiceKey "************************
 ## <a name="azure-public-peering"></a>Azure nyilvános társviszony-létesítés
 
 Ez a szakasz tartalmazza az ExpressRoute-kapcsolatcsoport Azure nyilvános társviszony-létesítési konfigurációjának létrehozására, lekérésére, frissítésére és törlésére vonatkozó utasításokat.
+
+> [!NOTE]
+> Azure nyilvános társviszony-létesítés esetén új kapcsolatcsoportot elavultnak számít.
+>
 
 ### <a name="to-create-azure-public-peering"></a>Azure nyilvános társviszony-létesítés létrehozása
 

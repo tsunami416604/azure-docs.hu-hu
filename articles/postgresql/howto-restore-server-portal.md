@@ -1,19 +1,19 @@
 ---
-title: Visszaállítása egy kiszolgálót az Azure Database for postgresql-hez
-description: Ez a cikk ismerteti, hogyan lehet visszaállítani egy kiszolgálót az Azure Database for postgresql-hez az Azure portal használatával.
+title: Visszaállítása egy kiszolgálót az Azure Database for PostgreSQL – egyetlen kiszolgáló
+description: Ez a cikk ismerteti, hogyan lehet visszaállítani egy kiszolgálót az Azure Database for PostgreSQL – egyetlen kiszolgáló az Azure portal használatával.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 04/01/2018
-ms.openlocfilehash: 60489e3fc7fc6482a14a241e777066b3805a4d5e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 5/6/2019
+ms.openlocfilehash: 1950b43e0922eebe34463c06db9a5d67dce76f56
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58095109"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65068883"
 ---
-# <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql-using-the-azure-portal"></a>Biztonsági mentése és visszaállítása egy kiszolgálót az Azure Database for postgresql-hez az Azure portal használatával
+# <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Biztonsági mentése és visszaállítása egy kiszolgálót az Azure Database for PostgreSQL – egyetlen kiszolgáló az Azure portal használatával
 
 ## <a name="backup-happens-automatically"></a>Biztonsági mentés automatikusan történik
 Azure Database for PostgreSQL-kiszolgálók biztonsági mentése rendszeres visszaállítási szolgáltatások engedélyezése. Ezzel a funkcióval, előfordulhat, hogy állítsa vissza a kiszolgáló és az összes adatbázis egy korábbi-időponthoz, egy új kiszolgálón.

@@ -1,6 +1,6 @@
 ---
-title: Csatlakozni, konfigurálja és aktiválni az Azure Data Box Edge-eszköz, az Azure Portalon |} A Microsoft Docs
-description: A Data Box Edge üzembe helyezése harmadik oktatóanyag arra utasítja, hogy csatlakozzon, és állítsa be, és a fizikai eszköz aktiválása.
+title: Szeretne csatlakozni, konfigurálja, az oktatóanyag az Azure Portalon az Azure Data Box Edge-eszköz aktiválása |} A Microsoft Docs
+description: Az oktatóanyagban a Data Box Edge üzembe helyezése arra utasítja, hogy csatlakozzon, és állítsa be, és a fizikai eszköz aktiválása.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: b97334ae60715f021cce387f9d73b5ea69eea7fc
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: cf2aa9bc1234f8bc92829b107d1a788b75d56a6b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59998107"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075072"
 ---
 # <a name="tutorial-connect-set-up-and-activate-azure-data-box-edge"></a>Oktatóanyag: Csatlakozás, beállítása és aktiválni az Azure Data Box Edge 
 
@@ -44,7 +44,7 @@ Mielőtt konfigurálja, és állítsa be a Data Box peremhálózati eszköz, ell
     ![Egy bekábelezett eszköz hátlapja](./media/data-box-edge-deploy-install/backplane-cabled.png)
 
 
-3. Nyisson meg egy böngészőablakot és hozzáférés a helyi webes felhasználói felülete a következő címen https://192.168.100.10.  
+3. Nyisson meg egy böngészőablakot és hozzáférés a helyi webes felhasználói felülete a következő címen `https://192.168.100.10`.  
     Ez a művelet már az eszköz bekapcsolása után néhány percet is igénybe vehet. 
 
     Láthatja, hogy egy hiba vagy figyelmeztetés jelzi, hogy nincs-e a webhely biztonsági tanúsítványával kapcsolatos problémára. 

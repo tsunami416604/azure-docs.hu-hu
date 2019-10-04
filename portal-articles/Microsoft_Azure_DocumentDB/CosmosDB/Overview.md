@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: article
 ms.date: 12/13/2017
 ms.author: sewatson
-ms.openlocfilehash: 13fe8d81c656aeb07947fcd8b2c8a9157b810ca6
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: bd5951fe86bde7e71c77d5564216421c1d2d1ea4
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32187842"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "64708464"
 ---
 # <a name="azure-cosmos-db-documentation"></a>Azure Cosmos DB-dokumentáció
 

@@ -1,25 +1,27 @@
 ---
-title: Az Azure Notification Hubs-minták
-description: Az elérhető az Azure Notification Hubs SDK-k listája
+title: Azure Notification Hubs-minták
+description: Az elérhető Azure Notification Hubs SDK-k listája
 services: notification-hubs
 documentationcenter: ''
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.service: notification-hubs
 ms.workload: mobile
 ms.topic: article
-ms.author: jowargo
 ms.date: 03/28/2019
-ms.openlocfilehash: 1d035513418147b8fae1d8e2f217d20d19f02f2e
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 03/28/2019
+ms.openlocfilehash: 5c7c2b073d0684d908b677d3dda1586f6baa8f61
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59524845"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213304"
 ---
-# <a name="azure-notification-hubs-samples"></a>Az Azure Notification Hubs-minták
-Ez a cikk a mintákat, amelyek bemutatják az Azure Notification hubs szolgáltatás legfontosabb funkcióit mutató hivatkozásokat tartalmaz.
+# <a name="azure-notification-hubs-samples"></a>Azure Notification Hubs-minták
+Ez a cikk olyan mintákra mutató hivatkozásokat tartalmaz, amelyek az Azure Notification Hubs legfontosabb funkcióit mutatják be.
 
 ## <a name="samples"></a>Példák
 
@@ -30,4 +32,4 @@ Ez a cikk a mintákat, amelyek bemutatják az Azure Notification hubs szolgálta
 - [iOS](https://github.com/Azure/azure-notificationhubs-ios/tree/master/Samples)
 
 ## <a name="next-steps"></a>További lépések
-Az oktatóanyagok megtekintéséhez a **oktatóanyagok** a tartalomjegyzék (TOC) szakaszában.
+Tekintse meg az oktatóanyagok szakaszt a tartalomjegyzékben (Tartalomjegyzék).

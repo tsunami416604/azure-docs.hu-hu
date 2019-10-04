@@ -1,21 +1,21 @@
 ---
 title: 'Oktatóanyag: A Face APIC#'
 titleSuffix: Azure Cognitive Services
-description: Hozzon létre egy egyszerű Windows-alkalmazást, amely a Cognitive Services Face API segítségével arcok jellemzőket észlel egy képen.
+description: Hozzon létre egy Windows-alkalmazást, amely a Cognitive Services Face API funkcióit arcok észlelése a képet.
 services: cognitive-services
 author: ghogen
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: tutorial
-ms.date: 05/07/2018
+ms.date: 07/03/2019
 ms.author: ghogen
-ms.openlocfilehash: aafa115ee1e270b903e958e5b43826dfb4ff8bdb
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 7907a79289149d9e165dd6df0c09bee596e624e2
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57435226"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606810"
 ---
 # <a name="connecting-to-cognitive-services-face-api-by-using-connected-services-in-visual-studio"></a>Csatlakozás a Cognitive Services arcfelismerési API-hoz a Visual Studio csatlakoztatott szolgáltatásai használatával
 
@@ -25,8 +25,8 @@ Ez a cikk és kísérő cikkek részletesen ismertetik, hogyan lehet a Visual St
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- **Azure-előfizetés**. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes fiókkal](https://azure.microsoft.com/pricing/free-trial/).
-- A **Visual Studio 2017 15.7-es verziója**, telepített **webfejlesztési** számítási feladattal. [Töltse le most](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
+- Azure-előfizetés. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes fiókkal](https://azure.microsoft.com/pricing/free-trial/).
+- A Visual Studio 2017 15.7 vagy újabb verzióját a **webfejlesztés** számítási feladattal. [Ezt innen töltheti le](https://www.visualstudio.com/downloads/).
 
 [!INCLUDE [vs-install-cognitive-services-vsix](../../../includes/vs-install-cognitive-services-vsix.md)]
 
@@ -147,9 +147,9 @@ Ez a cikk és kísérő cikkek részletesen ismertetik, hogyan lehet a Visual St
             });
         }
    ```
-    Ebben a lépésben a kód létrehoz egy HTTP-kérést Face REST API-hívással a csatlakoztatott szolgáltatás hozzáadásakor hozzáadott kulccsal.
+    Ebben a lépésben a kód létrehoz egy HTTP-kérelem a csatlakoztatott szolgáltatás hozzáadásakor hozzáadott kulccsal a Face REST API-hívással.
 
-1. Adja hozzá a GetImageAsByteArray és JsonPrettyPrint segédfüggvényeket.
+1. Adja hozzá a GetImageAsByteArray és a JsonPrettyPrint segítő függvényt.
 
    ```csharp
         /// <summary>

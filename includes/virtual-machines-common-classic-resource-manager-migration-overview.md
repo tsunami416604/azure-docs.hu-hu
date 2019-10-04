@@ -2,18 +2,18 @@
 title: fájl belefoglalása
 description: fájl belefoglalása
 services: virtual-machines
-author: jpconnock
+author: singhkays
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/18/2018
-ms.author: jeconnoc
+ms.date: 04/25/2019
+ms.author: kasing
 ms.custom: include file
-ms.openlocfilehash: d1a6ff8dbd17d2792709a1ce065bcf793154e585
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: de2e33ceb182383d9529bfe41afffbbf28e1e493
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37780672"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671298"
 ---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>A platform által támogatott áttelepítés IaaS-erőforrások klasszikusból Azure Resource Manager
 Ez a cikk bemutatja az infrastruktúra áttelepítése egy szolgáltatás (IaaS) erőforrásokat a klasszikusból Resource Manager üzembe helyezési modellek és részleteivel kapcsolatban, a virtual network használatával az előfizetésében fennálló két üzemi modellekből származó erőforrások összekapcsolása helyek közötti átjárók. További információ [Azure Resource Manager-funkciók és előnyök](../articles/azure-resource-manager/resource-group-overview.md). 
@@ -28,10 +28,10 @@ A klasszikus IaaS-erőforrások támogatottak az áttelepítés során
 
 * Virtuális gépek
 * Rendelkezésre állási csoportok
-* Cloud Services és a virtuális gépek
+* Felhőszolgáltatások virtuális gépekkel
 * Tárfiókok
 * Virtuális hálózatok
-* VPN Gateway átjárók
+* VPN-átjárók
 * Express Route-átjárók _(azonos előfizetésben található virtuális hálózat csak)_
 * Network Security Groups (Hálózati biztonsági csoportok)
 * Útvonaltáblák
@@ -74,7 +74,20 @@ A storage-fiók nem rendelkezik társított lemezek vagy a virtuális gépek ada
 
 > [!NOTE]
 > A Resource Manager üzemi modell nem rendelkezik a klasszikus lemezképek és lemezek fogalmát. Ha a tárfiók áttelepített, klasszikus lemezképek és lemezek nem láthatók a Resource Manager-készletben, de a mögöttes VHD-k a tárfiókban maradnak.
->
+
+Az alábbi képernyőfelvételnek megfelelően klasszikus tárfiók frissítése az Azure portal használatával egy Azure Resource Manager-tárfiókba megjelenítése:
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+2. Nyissa meg a tárfiókot.
+3. Az a **beállítások** területén kattintson **ARM átállás**.
+4. Kattintson a **ellenőrzése** migrálási megvalósíthatósági meghatározásához.
+5. Ha az ellenőrzés eredménye, kattintson a **előkészítése** áttelepített tárfiók létrehozásához.
+6. Típus **Igen** a migrálás jóváhagyásához, és kattintson az **véglegesítése** az áttelepítés befejezéséhez.
+
+    ![Storage-fiók érvényesítése](../includes/media/storage-account-upgrade-classic/storage-migrate-resource-manager-1.png)
+    
+    ![Készítse elő a Storage-fiók](../includes/media/storage-account-upgrade-classic/storage-migrate-resource-manager-2.png)
+    
+    ![Tárfiók Migrálásához véglegesítése](../includes/media/storage-account-upgrade-classic/storage-migrate-resource-manager-3.png)
 
 ### <a name="migration-of-unattached-resources"></a>Nem csatolt erőforrások migrálása
 Nincs társított lemezek vagy a virtuális gépek adatainak a Storage-fiókok egymástól függetlenül is telepíthető át.
@@ -86,10 +99,10 @@ Hálózati biztonsági csoportok, útválasztási táblázatokat és a fenntarto
 ## <a name="unsupported-features-and-configurations"></a>Nem támogatott funkciók és konfigurációk
 Egyes szolgáltatások és a konfiguráció jelenleg nem támogatott; a következő szakaszok ismertetik az ajánlásokat közöttük.
 
-### <a name="unsupported-features"></a>Nem támogatott szolgáltatások
+### <a name="unsupported-features"></a>Nem támogatott funkciók
 A következő funkciók jelenleg nem támogatottak. Szükség esetén távolítsa el ezeket a beállításokat, a virtuális gépek migrálása, és majd engedélyezze újra a beállításokat a Resource Manager-alapú üzemi modellben.
 
-| Erőforrás-szolgáltató | Szolgáltatás | Ajánlás |
+| Erőforrás-szolgáltató | Funkció | Ajánlás |
 | --- | --- | --- |
 | Compute | Társítatlan virtuálisgép-lemezeket. | Mögött ezek a lemezek Virtuálismerevlemez-blobokat fog települnek, ha telepít át a Storage-fiók |
 | Compute | Virtuálisgép-lemezképeket. | Mögött ezek a lemezek Virtuálismerevlemez-blobokat fog települnek, ha telepít át a Storage-fiók |
@@ -102,7 +115,7 @@ A következő konfigurációk jelenleg nem támogatottak.
 
 | Szolgáltatás | Konfiguráció | Ajánlás |
 | --- | --- | --- |
-| Resource Manager |Szerepkör alapú hozzáférés-vezérlés (RBAC) a klasszikus erőforrások |Mivel URI-ját az erőforrásokat az áttelepítés után módosult, javasoljuk, hogy az RBAC szabályzatok történjen a migrálás után szükséges frissítését tervezi. |
+| Resource Manager |Szerepköralapú hozzáférés-vezérlés (RBAC) a klasszikus erőforrások |Mivel URI-ját az erőforrásokat az áttelepítés után módosult, javasoljuk, hogy az RBAC szabályzatok történjen a migrálás után szükséges frissítését tervezi. |
 | Compute |Több alhálózattal társított virtuális gép |Frissítse az alhálózati konfigurációt való hivatkozáshoz csak egy alhálózat. Ez előfordulhat, hogy távolítsa el a másodlagos hálózati adapter (amely egy másik alhálózatra hivatkozik) a virtuális gépről, és csatlakoztassa újra a migrálás befejezése után. |
 | Compute |Virtuális gépek, virtuális hálózathoz tartozó, de még nincs hozzárendelve egy explicit alhálózat |Szükség esetén törölheti a virtuális Gépet. |
 | Compute |Riasztások, szabályzatok automatikus skálázási rendelkező virtuális gépek |Az áttelepítés halad végig, és ezeket a beállításokat a rendszer elveti. Azt javasoljuk, hogy a környezet kiértékelése, az áttelepítés előtt. Újrakonfigurálhatja azt is megteheti, a riasztási beállítások az áttelepítés befejezése után. |
@@ -118,5 +131,4 @@ A következő konfigurációk jelenleg nem támogatottak.
 | Azure HDInsight |Virtuális hálózatok, amelyek tartalmazzák a HDInsight-szolgáltatások |Ez jelenleg nem támogatott. |
 | A Microsoft Dynamics Lifecycle Services |Dynamics Lifecycle Services által felügyelt virtuális gépeket tartalmazó virtuális hálózatok |Ez jelenleg nem támogatott. |
 | Azure AD Domain Services |Virtuális hálózatok, amelyek tartalmazzák az Azure AD tartományi szolgáltatások |Ez jelenleg nem támogatott. |
-| Azure RemoteApp |Virtuális hálózatok, amelyek tartalmazzák az Azure RemoteApp központi telepítések |Ez jelenleg nem támogatott. |
 | Azure API Management |Virtuális hálózatok, amelyek tartalmazzák az Azure API Management-telepítések |Ez jelenleg nem támogatott. Az IaaS virtuális hálózat migrálása, módosítsa a virtuális hálózat, az API Management központi telepítését, amely nincs állásidő művelet. |

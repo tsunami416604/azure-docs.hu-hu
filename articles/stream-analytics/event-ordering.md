@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: 970eeb871775e24abb87c8b977e214645e514d3b
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: 47a8ee2c03e67d4fd9b34888430ed0cc702205f6
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58190533"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273180"
 ---
 # <a name="configuring-event-ordering-policies-for-azure-stream-analytics"></a>Az Azure Stream Analytics eseményrendezési szabályzatok konfigurálása
 
@@ -73,7 +73,9 @@ Az ugyanazon bemeneti streamből több partíciót együttesen a késedelmes ér
 <br><code>
 {"message Time":"2/3/2019 8:54:16 PM UTC","message":"Input Partition [2] does not have additional data for more than [5] minute(s). Partition will not progress until either events arrive or late arrival threshold is met.","type":"InputPartitionNotProgressing","correlation ID":"2328d411-52c7-4100-ba01-1e860c757fc2"} 
 </code><br><br>
-Ez az üzenet tájékoztatja, hogy legalább egy partíciót a bemeneti adatok üres, és a késedelmes érkezési küszöbértéket által a kimeneti késleltetni fogja. Ez áthidalható, ajánlott, hogy mindkét: 1. Győződjön meg arról, fogadja az Event Hub és IoT hub összes partíciót. 2. Használja a Partition by PartitionID záradékot a lekérdezésben. 
+Ez az üzenet tájékoztatja, hogy legalább egy partíciót a bemeneti adatok üres, és a késedelmes érkezési küszöbértéket által a kimeneti késleltetni fogja. Ez áthidalható, ajánlott, hogy mindkét:  
+1. Győződjön meg arról, fogadja az Event Hub és IoT hub összes partíciót. 
+2. Használja a Partition by PartitionID záradékot a lekérdezésben. 
 
 ## <a name="next-steps"></a>További lépések
 * [Idő kezelési kapcsolatos szempontok](stream-analytics-time-handling.md)

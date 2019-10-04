@@ -1,19 +1,18 @@
 ---
 title: Azure CLI-minták a Blob Storage-hez | Microsoft Docs
 description: Azure CLI-minták az Azure Blob Storage használatához
-services: storage
-author: tamram
-ms.custom: mvc
-ms.service: storage
-ms.topic: sample
+author: mhopkins-msft
+ms.author: mhopkins
 ms.date: 06/13/2017
-ms.author: tamram
-ms.openlocfilehash: 070a2675b67c0d52bd9e3e3cb951fa9052112ad4
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
-ms.translationtype: HT
+ms.service: storage
+ms.subservice: blobs
+ms.topic: sample
+ms.openlocfilehash: 345710e1ade459d49602c18820d47826141e6f81
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397124"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68721949"
 ---
 # <a name="azure-cli-samples-for-azure-blob-storage"></a>Azure CLI-minták az Azure Blob Storage-hez
 

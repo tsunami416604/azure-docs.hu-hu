@@ -1,27 +1,27 @@
 ---
-title: 'Gyors útmutató: C#SDK-t lekérdezés előrejelzési végpont'
+title: 'Gyors útmutató: C#SDK-lekérdezés előrejelzési végpontja – LUIS'
 titleSuffix: Azure Cognitive Services
-description: Használja a C# előrejelzési egy felhasználó utterance (kifejezés) küldhet a LUIS és SDK-val.
+description: Az C# SDK használatával elküldheti a felhasználóknak a Luis-t, és előrejelzést kaphat.
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 services: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 02/14/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 086f55094474d4c06e52001d77630932cd04213c
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 4d7c02d8cf37f155af1fd9c0d5de7fa8ec948c4b
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404093"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703127"
 ---
-# <a name="quickstart-query-prediction-endpoint-with-c-net-sdk"></a>Gyors útmutató: Előrejelzési koncového bodu lekérdezése C# .NET SDK-val
+# <a name="quickstart-query-v2-prediction-endpoint-with-c-net-sdk"></a>Gyors útmutató: Lekérdezés v2 előrejelzési végpont C# a .net SDK-val
 
-A .NET SDK használata, található [NuGet](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/), hogy küldjön egy felhasználó utterance (kifejezés) a Language Understanding (LUIS) és a felhasználó szándékának előrejelzése fogadjon. 
+Használja a [NuGet](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)címen található .net SDK-t, hogy küldjön egy felhasználót Language UNDERSTANDING (Luis), és megkapja a felhasználó szándékának előrejelzését. 
 
-Ez a rövid útmutató küld egy felhasználó utterance (kifejezés), mint például `turn on the bedroom light`, egy nyilvános Language Understanding alkalmazáshoz, majd fogadja az előrejelzés, és megjeleníti a felső pontozási célt `HomeAutomation.TurnOn` és az entitás `HomeAutomation.Room` az utterance (kifejezés) található. 
+Ebben a rövid útmutatóban egy felhasználó, például a `turn on the bedroom light`, egy nyilvános Language Understanding alkalmazás számára küldi el az előrejelzést, és megjeleníti a legfelső pontozási `HomeAutomation.TurnOn` értéket, és a megtalált `HomeAutomation.Room` entitást. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -30,18 +30,18 @@ Ez a rövid útmutató küld egy felhasználó utterance (kifejezés), mint pél
 * A df67dcdb-c37d-46af-88e1-8b97951ca1c2 azonosítójú nyilvános alkalmazás
 
 > [!Note]
-> A teljes megoldás érhető el a [cognitive-szolgáltatások – nyelvi értelmezésre](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/sdk-quickstarts/c%23/UsePredictionRuntime) GitHub-adattárban.
+> A teljes megoldás a [kognitív szolgáltatások – Language-Understanding](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/sdk-quickstarts/c%23/UsePredictionRuntime) GitHub-tárházban érhető el.
 
-További dokumentáció keres?
+További dokumentációt keres?
 
- * [SDK-forrásdokumentáció](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-dotnet)
+ * [Az SDK dokumentációja](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-dotnet)
 
 
-## <a name="get-cognitive-services-or-language-understanding-key"></a>Cognitive Services és a Language Understanding kulcs lekérése
+## <a name="get-cognitive-services-or-language-understanding-key"></a>Cognitive Services vagy Language Understanding kulcs beolvasása
 
-A nyilvános alkalmazás otthoni Automation használatához egy érvényes kulcs végpont ismeretekkel kell. Is használhatja, vagy a Cognitive Services kulcs (hozza létre alább az Azure CLI-vel), amely a cognitive services számos érvényes, vagy egy `Language Understanding` kulcsot. 
+Ahhoz, hogy a nyilvános alkalmazást otthoni automatizálásra használhassa, érvényes kulcsra van szüksége a végpontok előrejelzéséhez. Használhatja az Azure CLI-vel létrehozott Cognitive Services kulcsot, amely számos kognitív szolgáltatáshoz, vagy egy `Language Understanding` kulcshoz is érvényes. 
 
-Használja a következő [kulcs Cognitive Services-szolgáltatás létrehozásához Azure CLI-paranccsal](https://docs.microsoft.com/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-create):
+A következő [Azure CLI-paranccsal hozzon létre egy kognitív szolgáltatási kulcsot](https://docs.microsoft.com/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-create):
 
 ```azurecli-interactive
 az cognitiveservices account create \
@@ -55,18 +55,18 @@ az cognitiveservices account create \
 
 ## <a name="create-net-core-project"></a>.NET Core-projekt létrehozása
 
-Hozzon létre egy .NET Core console projektet a Visual Studio Community 2017.
+Hozzon létre egy .NET Core Console-projektet a Visual Studio Community 2017-ben.
 
-1. Open Visual Studio Community 2017.
-1. Hozzon létre egy új projektet a **Visual C#**  válassza **Console App (.NET Core)**.
-1. Adja meg a projekt nevét `QueryPrediction`, hagyja a többi alapértelmezett értéket, és válassza ki **OK**.
-    Ez létrehoz egy egyszerű projekt nevű fájl elsődleges kód **Program.cs**.
+1. Nyissa meg a Visual Studio Community 2017 alkalmazást.
+1. Hozzon létre egy új projektet a **vizualizáció C#**  szakaszban, majd válassza a **Console app (.net Core)** lehetőséget.
+1. Adja meg a projekt nevét `QueryPrediction`, hagyja meg a fennmaradó alapértelmezett értékeket, majd kattintson **az OK gombra**.
+    Ez egy egyszerű projektet hoz létre az **program.cs**nevű elsődleges kóddal.
 
-## <a name="add-sdk-with-nuget"></a>Adja hozzá a NuGet-SDK
+## <a name="add-sdk-with-nuget"></a>SDK hozzáadása a NuGet
 
-1. Az a **Megoldáskezelőben**, válassza ki a projektet a faszerkezetes nézetben nevű **QueryPrediction**, kattintson a jobb gombbal. Válassza a menü **NuGet-csomagok kezelése...** .
-1. Válassza ki **Tallózás** verziójúra `Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime`. Ha a csomag információkat jelenít meg, válassza ki a **telepítése** a csomag telepítéséhez a projektbe a Finderből. 
-1. Adja hozzá a következő _használatával_ tetején utasításokkal **Program.cs**. Nem távolítja el a meglévő _használatával_ nyilatkozata `System`. 
+1. A **megoldáskezelő**válassza ki a projektet a **QueryPrediction**nevű fanézetben, majd kattintson a jobb gombbal a elemre. A menüben válassza a **NuGet-csomagok kezelése...** lehetőséget.
+1. Válassza a **Tallózás** lehetőséget, majd írja be a `Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime` értéket. Ha a csomag adatai megjelennek, válassza a **telepítés** lehetőséget a csomag projektbe való telepítéséhez. 
+1. Adja hozzá a következő _using_ utasításokat a **program.cs**elejéhez. Ne távolítsa el a meglévő _using_ utasítást a következőhöz: `System`. 
 
 ```csharp
 using System.Threading;
@@ -75,20 +75,20 @@ using Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime;
 using Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime.Models;
 ```
 
-## <a name="create-a-new-method-for-the-prediction"></a>Hozzon létre egy új módszer az előrejelzés
+## <a name="create-a-new-method-for-the-prediction"></a>Új módszer létrehozása az előrejelzéshez
 
-Hozzon létre egy új módszer `GetPrediction` kérés küldése a lekérdezés előrejelzési végpontnak. A metódus a későbbiekben létrehozása és konfigurálása szükséges minden objektumot ezután adja vissza egy `Task` együtt a [ `LuisResult` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime.models.luisresult?view=azure-dotnet) előrejelzési eredményeket. 
+Hozzon létre egy új metódust, `GetPrediction`, hogy elküldje a lekérdezést a lekérdezés előrejelzési végpontjának. A metódus létrehozza és konfigurálja az összes szükséges objektumot, majd visszaadja a `Task` értéket a [`LuisResult`](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime.models.luisresult?view=azure-dotnet) előrejelzési eredményekkel. 
 
 ```csharp
 static async  Task<LuisResult> GetPrediction() {
 }
 ```
 
-## <a name="create-credentials-object"></a>Hitelesítő objektum létrehozása
+## <a name="create-credentials-object"></a>Hitelesítő adatok létrehozása objektum
 
-Adja hozzá a következő kódot a `GetPrediction` metódus az ügyfél hitelesítő adatok létrehozása a Cognitive Services-szolgáltatás a kulccsal.
+Adja hozzá a következő kódot a `GetPrediction` metódushoz, és hozza létre az ügyfél hitelesítő adatait a kognitív szolgáltatás kulcsával.
 
-Cserélje le `<REPLACE-WITH-YOUR-KEY>` -régióhoz a Cognitive Services-szolgáltatás kulcs. A kulcs a következő helyen a [az Azure portal](https://portal.azure.com) kulcsok oldalán az adott erőforráshoz.
+Cserélje le a `<REPLACE-WITH-YOUR-KEY>` értéket a kognitív szolgáltatás kulcsának régiójára. A kulcs a [Azure Portal](https://portal.azure.com) az adott erőforrás kulcsai lapján.
 
 ```csharp
 // Use Language Understanding or Cognitive Services key
@@ -97,11 +97,11 @@ var endpointPredictionkey = "<REPLACE-WITH-YOUR-KEY>";
 var credentials = new ApiKeyServiceClientCredentials(endpointPredictionkey);
 ```
 
-## <a name="create-language-understanding-client"></a>Language Understanding ügyfél létrehozása
+## <a name="create-language-understanding-client"></a>Language Understanding-ügyfél létrehozása
 
-Az a `GetPrediction` metódus az előző kód után adja a következő kódot az új hitelesítő adatok létrehozása egy [ `LUISRuntimeClient` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime.luisruntimeclient.-ctor?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Language_LUIS_Runtime_LUISRuntimeClient__ctor_Microsoft_Rest_ServiceClientCredentials_System_Net_Http_DelegatingHandler___) objektumot. 
+A `GetPrediction` metódusban az előző kód után adja hozzá a következő kódot az új hitelesítő adatok használatához, és hozzon létre egy [`LUISRuntimeClient`](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime.luisruntimeclient.-ctor?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Language_LUIS_Runtime_LUISRuntimeClient__ctor_Microsoft_Rest_ServiceClientCredentials_System_Net_Http_DelegatingHandler___) Client objektumot. 
 
-Cserélje le `<REPLACE-WITH-YOUR-KEY-REGION>` -régióhoz a kulcsot, például `westus`. A kulcs régióban van a [az Azure portal](https://portal.azure.com) Áttekintés lapján az adott erőforráshoz.
+Cserélje le a `<REPLACE-WITH-YOUR-KEY-REGION>` értéket a kulcs régiójába, például: `westus`. A kulcsfontosságú régió a [Azure Portal](https://portal.azure.com) az adott erőforráshoz tartozó áttekintés oldalon.
 
 ```csharp
 // Create Luis client and set endpoint
@@ -112,7 +112,7 @@ luisClient.Endpoint = "https://<REPLACE-WITH-YOUR-KEY-REGION>.api.cognitive.micr
 
 ## <a name="set-query-parameters"></a>Lekérdezési paraméterek beállítása
 
-Az a `GetPrediction` metódus az előző kód után adja a következő kódot a lekérdezési paraméterek beállítása.
+A `GetPrediction` metódusban az előző kód után adja hozzá a következő kódot a lekérdezési paraméterek beállításához.
 
 ```csharp
 // public Language Understanding Home Automation app
@@ -132,7 +132,7 @@ var log = false;
 
 ## <a name="query-prediction-endpoint"></a>Előrejelzési végpont lekérdezése
 
-Az a `GetPrediction` metódus az előző kód után adja a következő kódot a lekérdezési paraméterek beállítása:
+A `GetPrediction` metódusban az előző kód után adja hozzá a következő kódot a lekérdezési paraméterek beállításához:
 
 ```csharp
 // Create prediction client
@@ -142,9 +142,9 @@ var prediction = new Prediction(luisClient);
 return await prediction.ResolveAsync(appId, query, timezoneOffset, verbose, staging, spellCheck, bingSpellCheckKey, log, CancellationToken.None);
 ```
 
-## <a name="display-prediction-results"></a>Előrejelzési eredmények megjelenítése
+## <a name="display-prediction-results"></a>Előrejelzés eredményeinek megjelenítése
 
-Módosítsa a **fő** metódus hívása az új `GetPrediction` metódust, és lépjen vissza az előrejelzési eredmények:
+Módosítsa a **Main** metódust az új `GetPrediction` metódus meghívásához és az előrejelzés eredményének visszaadásához:
 
 ```csharp
 static void Main(string[] args)
@@ -171,7 +171,7 @@ static void Main(string[] args)
 
 ## <a name="run-the-project"></a>A projekt futtatása
 
-A Studio a projekt buildjének elkészítéséhez, és a lekérdezés kimenetének futtassa a projektet lásd:
+Hozza létre a projektet a Studióban, és futtassa a projektet a lekérdezés kimenetének megtekintéséhez:
 
 ```console
 Query:'turn on the bedroom light'
@@ -181,7 +181,7 @@ HomeAutomation.Room:'bedroom' begins at position 12 and ends at position 18
 
 ## <a name="next-steps"></a>További lépések
 
-Tudjon meg többet a [.NET SDK-val](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/) és a [.NET dokumentációjában](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-dotnet). 
+További információ a [.net SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/) -ról és a [.net-dokumentációról](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-dotnet). 
 
 > [!div class="nextstepaction"] 
-> [Oktatóanyag: Felhasználói céljaira meghatározni a LUIS-alkalmazás létrehozása](luis-quickstart-intents-only.md) 
+> [Oktatóanyag: LUIS-alkalmazás létrehozása a felhasználói szándékok meghatározásához @ no__t-0 

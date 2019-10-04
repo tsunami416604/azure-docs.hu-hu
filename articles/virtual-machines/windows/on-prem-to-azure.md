@@ -1,6 +1,6 @@
 ---
-title: AWS-ről és más platformokra át az Azure Managed Disks |} A Microsoft Docs
-description: Virtuális gép létrehozása az Azure-ban a VHD-k más felhőkben, mint az AWS vagy más virtualizációs platformokról feltöltött, és kihasználhatja az Azure Managed Disks.
+title: Migrálás AWS-ről és más platformokról az Azure-ba való Managed Disksre | Microsoft Docs
+description: Hozzon létre virtuális gépeket az Azure-ban más felhőktől (AWS vagy más virtualizációs platformok) feltöltött VHD-k használatával, és használja ki az Azure-Managed Disks
 services: virtual-machines-windows
 documentationcenter: ''
 author: roygara
@@ -11,92 +11,91 @@ ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 10/07/2017
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 05e687ab31b6c19193076033e1350952549d26e0
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 4611efa8767094ea8f92dac584a5610811947620
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330749"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102592"
 ---
-# <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>Az Amazon Web Services (AWS) és más platformokra át az Azure Managed Disks
+# <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>Migrálás Amazon Web Servicesról (AWS) és más platformokról az Azure-ba Managed Disks
 
-Az Azure-bA hozhat létre virtuális gépeket, amelyek kihasználják a Managed Disks AWS vagy helyi virtualizációs megoldások a VHD-fájlokat tölthet fel. Az Azure Managed Disks feleslegessé teszi a storage-fiókok kezelése az Azure IaaS virtuális gépek. Csak adja meg a típusát (prémium vagy Standard) és a méretét kell lemez van szüksége, és az Azure létrehozza és felügyeli a lemezt Ön helyett. 
+Az AWS-ből vagy helyszíni virtualizálási megoldásokból származó VHD-fájlokat az Azure-ba feltöltve olyan virtuális gépeket hozhat létre, amelyek kihasználják Managed Disks. Az Azure Managed Disks eltávolítja az Azure IaaS virtuális gépekhez tartozó Storage-fiókok felügyeletének szükségességét. Csak a szükséges típust (prémium vagy standard) és a lemez méretét kell megadnia, az Azure pedig létrehozza és kezeli a lemezt. 
 
-Általános, és speciális virtuális merevlemezek tölthet fel. 
-- **Általános virtuális Merevlemezből** -volt-e minden személyes fiókadatot a Sysprep segítségével távolítja el. 
-- **Specializált virtuális merevlemez** – a felhasználói fiókok, alkalmazások és más állapot adatait az eredeti virtuális gép kezeli. 
+Feltöltheti az általánosított és a speciális virtuális merevlemezeket is. 
+- **Általánosított VHD** – az összes személyes fiók adata el lett távolítva a Sysprep használatával. 
+- **Speciális VHD** – karbantartja az eredeti virtuális gépről származó felhasználói fiókokat, alkalmazásokat és egyéb állapotinformációkat. 
 
 > [!IMPORTANT]
-> Minden olyan VHD feltöltése az Azure-ba, mielőtt követendő [Windows VHD vagy VHDX feltöltése az Azure előkészítése](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+> A virtuális merevlemezek Azure-ba való feltöltése előtt kövesse az Azure-ba való feltöltéshez szükséges [Windows VHD vagy VHDX előkészítését](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) ismertető témakört.
 >
 >
 
 
 | Forgatókönyv                                                                                                                         | Dokumentáció                                                                                                                       |
 |----------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
-| Felügyelt lemezek használata Azure virtuális gépeket áttelepíteni kívánt meglévő AWS EC2-példányok rendelkezik                              | [Az Amazon Web Servicesből (AWS) virtuális gép áthelyezése az Azure-bA](aws-to-azure.md)                           |
-| Rendelkezik egy virtuális Gépet, amely szeretné képként használatával több Azure virtuális gép létrehozása egy másik virtualizációs platformról. | [Általános VHD feltöltése és ezzel hozzon létre egy új virtuális Gépet az Azure-ban](upload-generalized-managed.md) |
-| Rendelkezik egy egyedileg testre szabott virtuális Gépet, amelyet szeretne az Azure-ban hozza létre újra.                                                      | [Egyéni VHD feltöltése az Azure-ba, és a egy új virtuális gép létrehozása](create-vm-specialized.md)         |
+| Meglévő AWS EC2-példányokkal rendelkezik, amelyeket felügyelt lemezek használatával szeretne áttelepíteni az Azure-beli virtuális gépekre                              | [Virtuális gép áthelyezése Amazon Web Servicesból (AWS) az Azure-ba](aws-to-azure.md)                           |
+| Van olyan virtuális gépe, amelyet egy másik virtualizációs platformon szeretne használni több Azure-beli virtuális gép létrehozásához. | [Töltse fel az általánosított virtuális merevlemezt, és használja az új virtuális gép létrehozásához az Azure-ban](upload-generalized-managed.md) |
+| Rendelkezik egy egyedileg testre szabott virtuális géppel, amelyet újra létre szeretne hozni az Azure-ban.                                                      | [Speciális virtuális merevlemez feltöltése az Azure-ba, és új virtuális gép létrehozása](create-vm-specialized.md)         |
 
 
-## <a name="overview-of-managed-disks"></a>A felügyelt lemezek áttekintése
+## <a name="overview-of-managed-disks"></a>A Managed Disks áttekintése
 
-Az Azure Managed Disks Virtuálisgép-kezelés felügyelnie tárfiókokat eltávolításával egyszerűbbé teszi. A Managed Disks emellett juttatás a rendelkezésre állási csoportban lévő virtuális gépek nagyobb megbízhatóságot. Ez biztosítja, hogy a rendelkezésre állási csoport különböző virtuális lemezek egy meghibásodási pont elkerülése érdekében hibapontok. A rendelkezésre állási csoport a különböző tárolási skálázási egységeket (stampek), amely korlátozza a egyetlen skálázási egységek hibáival oka a hardver és szoftver hibák különböző virtuális lemezek automatikusan helyezi.
-Igényei alapján választhat a négy típusú tárolási lehetőségeket. A rendelkezésre álló lemeztípusok kapcsolatos további információkért tekintse meg ezt a cikket [válassza ki a lemez típusát](disks-types.md).
+Az Azure Managed Disks leegyszerűsíti a virtuális gépek felügyeletét azáltal, hogy eltávolítja a Storage-fiókok felügyeletének szükségességét. A Managed Disks a rendelkezésre állási csoportokban lévő virtuális gépek jobb megbízhatóságát is kihasználhatja. Gondoskodik arról, hogy a rendelkezésre állási csoportokban lévő különböző virtuális gépek lemezei elég elszigeteltek legyenek egymástól, hogy elkerülje az egyes meghibásodási pontokat. A szolgáltatás automatikusan áthelyezi a különböző virtuális gépek lemezeit egy rendelkezésre állási csoportba a különböző tárolási skálázási egységekben (bélyegzők), ami korlátozza a hardveres és a szoftver meghibásodása miatti egyetlen tárolási skálázási egység meghibásodásának hatását.
+Az igények alapján négyféle tárolási lehetőség közül választhat. A rendelkezésre álló lemez típusok megismeréséhez tekintse meg a [lemez típusának kiválasztása](disks-types.md)című cikket.
 
-## <a name="plan-for-the-migration-to-managed-disks"></a>Tervezze meg a migrálás a Managed Disks szolgáltatásba
+## <a name="plan-for-the-migration-to-managed-disks"></a>A Managed Disksre való Migrálás megtervezése
 
-Ez a szakasz segít, hogy a legjobb döntést a virtuális gép és a lemez típusa.
+Ez a szakasz segíti a legjobb döntést a virtuális gépek és a lemezek típusairól.
 
-Ha azt tervezi, nem felügyeltről felügyelt lemezessé szolgáltatásba, célszerű tisztában lennie a felhasználók által a [virtuális gépek Közreműködője](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) szerepkör nem tudják módosítani a Virtuálisgép-méret (mivel azok sikerült előzetes átalakítás). Ennek az az oka a felügyelt lemezekkel rendelkező virtuális gépek a felhasználót, hogy az operációsrendszer-lemezek Microsoft.Compute/disks/write engedélye szükséges.
+Ha nem felügyelt lemezekről felügyelt lemezekre kíván áttelepítést végrehajtani, vegye figyelembe, hogy a virtuálisgép-közreműködő szerepkörrel rendelkező felhasználók nem változtathatják meg a [virtuális gép](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) méretét (ahogy a konverzió megtörtént). Ennek az az oka, hogy a felügyelt lemezekkel rendelkező virtuális gépeken a felhasználónak rendelkeznie kell a Microsoft. számítás/lemezek/írási engedéllyel az operációsrendszer-lemezeken.
 
-### <a name="location"></a>Hely
+### <a name="location"></a>Location
 
-Jelöljön ki egy helyet, ahol érhetők el az Azure Managed Disks. Ha az áttelepítés a Premium Managed Disks szolgáltatásba, is elérhető legyen a Premium storage a régióban, ahol kíván áttelepíteni. Lásd: [Azure-szolgáltatások régió szerint](https://azure.microsoft.com/regions/#services) naprakész információk az elérhető helyek.
+Válasszon ki egy helyet, ahol elérhetők az Azure Managed Disks. Ha prémium szintű Managed Disksra végez áttelepítést, győződjön meg arról, hogy a Premium Storage elérhető abban a régióban, ahol az áttelepítést tervezi. Tekintse meg az [Azure-szolgáltatások régiónként](https://azure.microsoft.com/regions/#services) az elérhető helyszínekről szóló naprakész információkat.
 
 ### <a name="vm-sizes"></a>A virtuális gépek mérete
 
-Ha az áttelepítés a Premium Managed Disks szolgáltatásba, akkor frissítse a virtuális gép méretét a Premium Storage képes a méret elérhető a régióban, ahol a virtuális gép is található. Tekintse át a Premium Storage képes a a Virtuálisgép-méretek. Az Azure virtuális gép mérete előírások felsorolt [virtuális gépek méretei](sizes.md).
-Tekintse át a teljesítményt nyújt, amely a Premium Storage működnek, és válassza ki a leginkább megfelelő Virtuálisgép-méretet a számítási feladathoz leginkább megfelelő virtuális gépek. Győződjön meg arról, hogy van-e elegendő sávszélesség érhető el a meghajtó a lemez forgalmat a virtuális gép.
+Ha prémium szintű Managed Disksra végez áttelepítést, frissítenie kell a virtuális gép méretét, hogy Premium Storage a virtuális gép helyét tartalmazó régióban elérhető méretet. Tekintse át a Premium Storage képes virtuális gépek méretét. Az Azure-beli virtuális gép méretének specifikációi a [virtuális gépek méretei](sizes.md)szerint vannak felsorolva.
+Tekintse át a Premium Storaget használó virtuális gépek teljesítményének jellemzőit, és válassza ki a legmegfelelőbb virtuálisgép-méretet, amely legjobban megfelel a számítási feladatnak. Győződjön meg arról, hogy elegendő sávszélesség áll rendelkezésre a virtuális gépen a lemez forgalmának elvégzéséhez.
 
 ### <a name="disk-sizes"></a>Lemezméretek
 
-**Premium Managed Disks**
+**Prémium Managed Disks**
 
-Prémium szintű felügyelt lemezek, amelyek használhatók a virtuális gép hét típusa van, mindegyik adott IOPs és átviteli sebesség korlátok. Figyelembe ezeket a korlátokat a prémium szintű lemeztípus kiválasztása a virtuális gép kapacitását, teljesítmény, méretezhetőség tekintetében az alkalmazás igényeinek megfelelően, és csúcs tölti be.
+A virtuális géppel, valamint a IOPs és az átviteli sebességével kapcsolatban hét különféle prémium szintű felügyelt lemez használható. Vegye figyelembe ezeket a korlátokat, amikor az alkalmazás igényeinek megfelelően kiválasztja a prémium szintű lemez típusát a kapacitás, a teljesítmény, a méretezhetőség és a maximális terhelés tekintetében.
 
 | Prémium szintű lemezek típusa  | P4    | P6    | P10   | P15   | P20   | P30   | P40   | P50   | 
 |---------------------|-------|-------|-------|-------|-------|-------|-------|-------|
 | Lemezméret           | 32 GB| 64 GB| 128 GB| 256 GB|512 GB | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
 | IOPS-érték lemezenként       | 120   | 240   | 500   | 1100  |2300              | 5000              | 7500              | 7500              | 
-| Adattovábbítás lemezenként | 25 MB / s  | 50 MB / s  | 100 MB / s | 125 MB / s |150 MB / s | 200 MB / s | 250 MB / s | 250 MB / s |
+| Adattovábbítás lemezenként | 25 MB/másodperc  | 50 MB/másodperc  | 100 MB/másodperc | 125 MB/másodperc |150 MB/másodperc | 200 MB/másodperc | 250 MB/másodperc | 250 MB/másodperc |
 
-**Standard szintű felügyelt lemezekre**
+**Standard Managed Disks**
 
-Hét típusa, a standard szintű felügyelt lemezek, amelyek használhatók a virtuális gép van. Azok a más kapacitásokhoz de azonos IOPS- és feldolgozásisebesség-korlátait. Válassza ki a standard szintű Managed disks kapacitást az alkalmazás igényeinek megfelelően.
+A virtuális géppel a standard szintű felügyelt lemezek hét típusa használható. Mindegyiknek külön kapacitása van, de azonos a IOPS és az átviteli sebesség korlátaival. Válassza ki a szabványos felügyelt lemezek típusát az alkalmazás kapacitási igényei alapján.
 
 | Standard lemez típusa  | S4               | S6               | S10              | S15              | S20              | S30              | S40              | S50              | 
 |---------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------| 
 | Lemezméret           | 30 GB            | 64 GB            | 128 GB           | 256 GB           |512 GB           | 1024 GB (1 TB)   | 2048 GB (2TB)    | 4095 GB (4 TB)   | 
 | IOPS-érték lemezenként       | 500              | 500              | 500              | 500              |500              | 500              | 500             | 500              | 
-| Adattovábbítás lemezenként | 60 MB / s | 60 MB / s | 60 MB / s | 60 MB / s |60 MB / s | 60 MB / s | 60 MB / s | 60 MB / s | 
+| Adattovábbítás lemezenként | 60 MB/másodperc | 60 MB/másodperc | 60 MB/másodperc | 60 MB/másodperc |60 MB/másodperc | 60 MB/másodperc | 60 MB/másodperc | 60 MB/másodperc | 
 
-### <a name="disk-caching-policy"></a>Lemez gyorsítótárazási házirend 
+### <a name="disk-caching-policy"></a>Lemezes gyorsítótárazási házirend 
 
-**Premium Managed Disks**
+**Prémium Managed Disks**
 
-Alapértelmezés szerint a lemez gyorsítótárazási házirend a *csak olvasható* minden a prémium szintű adatlemezek esetén és *olvasási és írási* a prémium szintű operációsrendszer-lemez a virtuális Géphez csatlakoztatva. Ezt a konfigurációs beállítást az optimális teljesítmény érdekében az alkalmazás IOs-hez javasolt. Írási vagy csak írási adatlemezek (például az SQL Server-naplófájlok) tiltsa le a lemezek gyorsítótárazása, így jobb alkalmazásteljesítményt érhet el.
+Alapértelmezés szerint a lemezes gyorsítótárazási házirend a prémium szintű adatlemezek esetében *csak olvasható* , és a virtuális géphez csatlakoztatott prémium operációsrendszer-lemezre írható *írás* . Ez a konfigurációs beállítás ajánlott az alkalmazás IOs-es optimális teljesítményének eléréséhez. A írható vagy írható adatlemezek (például SQL Server naplófájlok) esetében tiltsa le a lemezes gyorsítótárazást, hogy jobban elérhető legyen az alkalmazás teljesítménye.
 
 ### <a name="pricing"></a>Díjszabás
 
-Tekintse át a [a felügyelt lemezek díjszabása](https://azure.microsoft.com/pricing/details/managed-disks/). Prémium szintű Managed Disks díjszabása megegyezik a prémium szintű Unmanaged Disks. Azonban a standard szintű Managed Disks díjszabása eltér attól a standard szintű nem felügyelt lemezek.
+Tekintse át a [Managed Disks díjszabását](https://azure.microsoft.com/pricing/details/managed-disks/). A prémium szintű Managed Disks díjszabása megegyezik a prémium nem felügyelt lemezekkel. A standard szintű Managed Disks díjszabása azonban eltér a szabványos nem felügyelt lemezektől.
 
 
 ## <a name="next-steps"></a>További lépések
 
-- Minden olyan VHD feltöltése az Azure-ba, mielőtt követendő [Windows VHD vagy VHDX feltöltése az Azure előkészítése](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+- A virtuális merevlemezek Azure-ba való feltöltése előtt kövesse az Azure-ba való feltöltéshez szükséges [Windows VHD vagy VHDX előkészítését](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) ismertető témakört.

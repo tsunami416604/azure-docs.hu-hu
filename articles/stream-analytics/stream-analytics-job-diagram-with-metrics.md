@@ -1,6 +1,6 @@
 ---
-title: Adatalapú Azure Stream Analytics-hibakeresés
-description: Ez a cikk ismerteti az Azure Stream Analytics-feladat hibaelhárítása az Azure-portálon a feladat ábra és metrikák használatával.
+title: Az adatvezérelt Hibakeresés az Azure Stream Analytics szolgáltatásban
+description: Ez a cikk ismerteti az Azure Stream Analytics-feladat hibaelhárítása az Azure Portalon a feladatábra és metrikák használatával.
 services: stream-analytics
 author: jseb225
 ms.author: jeanb
@@ -9,83 +9,83 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/01/2017
-ms.openlocfilehash: 3d50f96f3dea3646bb32a3a42d0248957dabf9f0
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 472d7fcbca1a221b69d681ce33d39978b53a3204
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31526821"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620949"
 ---
-# <a name="data-driven-debugging-by-using-the-job-diagram"></a>Adatalapú hibakeresést keresztül a feladat ábra
+# <a name="data-driven-debugging-by-using-the-job-diagram"></a>Az adatvezérelt hibakeresés a feladatábra használatával
 
-A feladat ábra: a **figyelés** panel az Azure portál segítségével jelenítheti meg a feladat folyamat. Azt illusztrálja, bemenetek, kimenetek és lekérdezések lépéseit. A feladat ábra segítségével vizsgálja meg a metrikák minden egyes lépést, a problémák elhárításakor gyorsabban elkülöníteni a probléma forrását.
+A feladat ábra: a **figyelés** panel az Azure Portal segítségével jelenítheti meg a feladat folyamatot. Az ábra a bemeneteket, kimeneteket és a lekérdezések lépéseit mutatja. A feladatábrával ellenőrizheti az egyes lépések metrikáit, és a problémák elhárítása során gyorsabban felmérheti az egyes hibák eredetét.
 
-## <a name="using-the-job-diagram"></a>A feladat ábra használatával
+## <a name="using-the-job-diagram"></a>A feladatdiagramról használatával
 
-Az Azure-portálon alatt a Stream Analytics-feladatot, miközben **támogatási + hibaelhárítás**, jelölje be **feladat ábra**:
+Az Azure Portalon alatt a Stream Analytics-feladat, miközben **támogatás + hibaelhárítás**válassza **feladatábra**:
 
-![A metrika - hely feladat diagramja](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-1.png)
+![Feladatábra metrikákkal - helye](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-1.png)
 
-Válassza ki az összes lekérdezés lépést a lekérdezés-szerkesztő ablakban megfelelő szakaszában talál. A lépés metrika diagramot az oldalon egy alsó ablaktáblán jelennek meg.
+Válassza ki a megfelelő szakaszában egy lekérdezés-szerkesztő ablakban megtekintheti a lekérdezés mindegyik lépése. A lépés egy metrikadiagram egy kisebb ablaktábla az oldalon jelenik meg.
 
-![A metrika - alapvető feladat feladat diagramja](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-2.png)
+![Feladatábra metrikákkal – alapszintű feladat](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-2.png)
 
-A partíciók az Azure Event Hubs bemeneti megtekintéséhez válasszon **...** A helyi menü megjelenik. A bemeneti egyesülés is látható.
+Az Azure Event Hubs-bemenet a partíciók megtekintéséhez válasszon **...** Megjelenik egy helyi menü. A bemeneti egyesülés is láthatja.
 
-![A metrika - feladat ábra bontsa ki a partíció](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-3.png)
+![Feladatábra metrikákkal - bontsa ki a partíciós](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-3.png)
 
-A metrika csak egyetlen partícióra diagramot, jelölje ki a partíció csomópont. A metrikák jelennek meg a lap alján.
+A metrika csak egyetlen partition diagramot, jelölje ki a partíciós csomópontot. A metrikák jelennek meg a lap alján.
 
-![A metrika - további metrikák feladat diagramja](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-4.png)
+![Feladatábra metrikákkal – további metrikák megtekintése](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-4.png)
 
-A metrikák diagramot egyesülés megtekintéséhez jelölje ki az egyesülés csomópontot. Az alábbi ábra mutatja, hogy események nem eldobni vagy módosítani.
+A teljesítménymetrikák diagramja ahhoz, hogy válassza ki a egyesülés. A következő diagram mutatja, hogy nem eseményeket a rendszer eldobott vagy módosított.
 
-![A metrika - feladat ábra rács](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-5.png)
+![Feladatábra metrikákkal - rács](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-5.png)
 
-A metrika értékét, és az idő a részletek megtekintéséhez, majd a diagram.
+A metrika értékének és az idő a részletek megtekintéséhez, majd a diagram.
 
-![Diagram metrikákat a sikertelen feladat - vigye](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-6.png)
+![Feladat-metrikákkal diagramja – rámutatáskor](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-6.png)
 
-## <a name="troubleshoot-by-using-metrics"></a>Hibaelhárítása mérőszámok segítségével
+## <a name="troubleshoot-by-using-metrics"></a>Hibaelhárítás mérőszámok segítségével
 
-A **QueryLastProcessedTime** metrika azt jelzi, ha egy adott lépésre adatokat kapott. A topológia megtekintésével is dolgozhat visszafelé a kimeneti processzor, hogy mely lépés nem kapja az adatokat. Ha a lépés nem sikerül adatokat, ugorjon a lekérdezés azt megelőzően. Ellenőrizze, hogy rendelkezik-e az előző lekérdezés lépés egy olyan időkeretet, és ha elegendő idő az megfelelt kimeneti adatokat. (Vegye figyelembe, időpont windows rendszer diagramobjektum a óra.)
+A **QueryLastProcessedTime** metrika azt jelzi, ha egy adott fogadtak adatokat. A topológia megnézzük, is dolgozhat visszafelé a kimeneti processzor melyik lépés nem fogadott adatok megtekintéséhez. Ha egy lépés nem fogad adatokat, ugorjon a lekérdezés azt megelőzően. Ellenőrizze, hogy rendelkezik-e az előző lekérdezés lépés egy olyan időkeretet, és ha elég idő telt-e a kimeneti adatokat. (Megjegyzés: az időpont windows rendszer diagramobjektum a órára.)
  
-Ha az előző lekérdezés lépés egy bemeneti processzor, használja a bemeneti metrikák amely választ adhat ezekre a következő célzott kérdésekre. Segít meghatározni, hogy egy feladat van adat lekérésekor a bemeneti forrásból. Ha a lekérdezés particionálva van, vizsgálja meg az összes partíciót.
+Ha az előző lekérdezés lépés egy, akkor a bemeneti metrikákból választ kaphat az arra irányuló célzott kérdésekre. Ezek segítségével meghatározhatja, hogy egy feladat az adatok beolvasása a bemeneti forrásoktól. Ha a lekérdezés particionálva van, vizsgálja meg az összes partíciót.
  
-### <a name="how-much-data-is-being-read"></a>Mennyi adatot olvasása?
+### <a name="how-much-data-is-being-read"></a>Olvasott adatok mennyiségét?
 
-*   **InputEventsSourcesTotal** olvasható adatok egységek száma. Ha például a blobok száma.
-*   **InputEventsTotal** olvasási események száma. Ez a metrika partíciónként érhető el.
-*   **InputEventsInBytesTotal** olvasott bájtok száma.
-*   **InputEventsLastArrivalTime** minden fogadott események a várólistában levő időpontja frissül.
+*   **InputEventsSourcesTotal** olvasási adategységek száma. Ha például a blobok száma.
+*   **InputEventsTotal** beolvasott események számát. Ez a metrika partíciónként érhető el.
+*   **InputEventsInBytesTotal** beolvasott bájtok száma.
+*   **InputEventsLastArrivalTime** frissül az egyes fogadott események sorba helyezésekor.
  
-### <a name="is-time-moving-forward-if-actual-events-are-read-punctuation-might-not-be-issued"></a>Az idő soron? Ha tényleges események olvasható, előfordulhat, hogy nem adható ki absztrakt.
+### <a name="is-time-moving-forward-if-actual-events-are-read-punctuation-might-not-be-issued"></a>Is time moving forward? Tényleges eseményeket olvasási vannak, előfordulhat, hogy nem adható ki írásjelek.
 
-*   Az **InputEventsLastPunctuationTime** megadja, hogy mikor adtak ki írásjelek, az idő előrehaladása érdekében. Ha nem jelenik meg absztrakt, adatfolyama is blokkolnánk a hozzáférését.
+*   Az **InputEventsLastPunctuationTime** megadja, hogy mikor adtak ki írásjelek, az idő előrehaladása érdekében. Ha a rendszer nem állítja ki írásjelek, az adatfolyam megakadhat.
  
-### <a name="are-there-any-errors-in-the-input"></a>Vannak-e hibák a bemeneti adatok?
+### <a name="are-there-any-errors-in-the-input"></a>Vannak-e hibák a bemenetben?
 
-*   **InputEventsEventDataNullTotal** null adattal rendelkező események száma.
-*   **InputEventsSerializerErrorsTotal** nem deszerializálhatók megfelelően események száma.
-*   **InputEventsDegradedTotal** a szerializálás megszüntetése nem problémába ütközött események száma.
+*   **InputEventsEventDataNullTotal** null adatot tartalmazó események száma.
+*   **InputEventsSerializerErrorsTotal** események, amelyek deszerializálása nem lehet száma.
+*   **InputEventsDegradedTotal** száma eseményeket, amelyek nem a Deszerializálási hiba történt.
  
-### <a name="are-events-being-dropped-or-adjusted"></a>Események eldobott vagy igazítva?
+### <a name="are-events-being-dropped-or-adjusted"></a>Azok az éppen eldobott vagy módosított események?
 
-*   **InputEventsEarlyTotal** eseményeket, amelyek egy alkalmazás időbélyeg előtt a magas vízjel száma.
-*   **InputEventsLateTotal** eseményeket, amelyek egy alkalmazás időbélyeg után a magas vízjel száma.
-*   **InputEventsDroppedBeforeApplicationStartTimeTotal** a szám események eldobása előtt a feladat kezdési időpont.
+*   **InputEventsEarlyTotal** száma, események, amelyek a felső korlát előtti alkalmazás-időbélyeggel rendelkeznek.
+*   **InputEventsLateTotal** a felső korlát utáni alkalmazás-időbélyeggel rendelkező események száma.
+*   **InputEventsDroppedBeforeApplicationStartTimeTotal** a feladat indítási ideje előtt eldobott események számát.
  
-### <a name="are-we-falling-behind-in-reading-data"></a>Amelyek azt alá tartozó az adatok olvasása közben?
+### <a name="are-we-falling-behind-in-reading-data"></a>Hogy csökken az adatok beolvasása?
 
-*   **Adjon meg a várakozó események (összesen)** jelzi, hogy hány több üzenetet kell az Event Hubs és Azure IoT Hub bemeneti adatok olvasását. Ha ez a szám nagyobb, mint 0, az azt jelenti, a feladat nem dolgozható fel az adatok gyors ez várható. Ebben az esetben szükség lehet az adatfolyam-egységek számának növeléséhez, illetve győződjön meg arról, hogy a feladat párhuzamos működésű is lehet. További információk itt tekintheti meg a [lekérdezés párhuzamos folyamatkezelést biztosítja lap](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization). 
+*   **Várakozó események száma (összesen) bemeneti** jelzi, hogy hány több üzenetet kell olvasni az Event Hubs és az Azure IoT Hub-bemenet szükséges. Ha ez a szám nagyobb, mint 0, az azt jelenti, a feladat nem dolgozható fel az adatok gyors, várható. Ebben az esetben szükség lehet növelni a folyamatos átviteli egységek számát és/vagy ellenőrizze, hogy a feladat is méretezésnek megfelelően. Látható, ezzel kapcsolatban további információ a [lekérdezés ezerszer lap](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization). 
 
 
 ## <a name="get-help"></a>Segítségkérés
-Ha további segítségre van szüksége, próbálkozzon a [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics). 
+További segítségért, próbálja meg [Azure Stream Analytics-fórumon](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics). 
 
 ## <a name="next-steps"></a>További lépések
-* [A Stream Analytics bemutatása](stream-analytics-introduction.md)
-* [A Stream Analytics használatába](stream-analytics-real-time-fraud-detection.md)
+* [Stream Analytics bemutatása](stream-analytics-introduction.md)
+* [Stream Analytics használatának első lépései](stream-analytics-real-time-fraud-detection.md)
 * [Stream Analytics-feladatok méretezése](stream-analytics-scale-jobs.md)
-* [Stream Analytics lekérdezési nyelvi referencia](https://msdn.microsoft.com/library/azure/dn834998.aspx)
-* [A Stream Analytics felügyeleti REST API-referencia](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Stream Analytics lekérdezési nyelv leírása](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
+* [Stream Analytics felügyeleti REST API-referencia](https://msdn.microsoft.com/library/azure/dn835031.aspx)

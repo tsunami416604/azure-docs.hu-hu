@@ -3,8 +3,8 @@ title: A probléma jelentkezik be a hozzáférési panel webhelyére |} A Micros
 description: Útmutató jelentkezzen be a hozzáférési Panel használata közben felmerülő problémák hibaelhárítása
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: celested
+ms.author: mimart
 ms.reviwer: japere,asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f7418c16d5d5312d2a9a7913da49941ef0a7870
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a7c6a9c3f26c8939176197a2ecf2fcd6026e9928
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58090457"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65784310"
 ---
 # <a name="problem-signing-in-to-the-access-panel-website"></a>A probléma jelentkezik be a hozzáférési panel webhelyére
 

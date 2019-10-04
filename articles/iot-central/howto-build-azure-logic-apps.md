@@ -4,16 +4,16 @@ description: Az IoT Central-összekötő az Azure Logic Apps használatával akt
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 02/20/2019
+ms.date: 06/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: 635c8d0f149895798eece8cf3b48712ab74374ea
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 2269ede83ad64172e316a208871ab65053b2d10e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57759882"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67053073"
 ---
 # <a name="build-workflows-with-the-iot-central-connector-in-azure-logic-apps"></a>Hozzon létre munkafolyamatokat az IoT Central-összekötő az Azure Logic Appsben
 

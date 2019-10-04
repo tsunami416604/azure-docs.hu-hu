@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 6f9064c6027499fff3a8551ee60722cd66c54dc2
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58883428"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60877695"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-by-using-the-azure-portal"></a>Az Azure Data Lake Storage Gen1 HDInsight-fürtök létrehozása az Azure portal használatával
 > [!div class="op_single_selector"]
@@ -56,7 +56,7 @@ Ebben a szakaszban egy HDInsight-fürt a Data Lake Storage Gen1 fiókokkal, az a
     ![Szolgáltatásnév hozzáadása a HDInsight-fürt](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.1.adls.storage.png "hozzáadása szolgáltatásnévhez a HDInsight-fürthöz")
 
     - **Válassza ki, Data Lake Store-fiók**: Válasszon egy meglévő Data Lake Storage Gen1 fiókot. Egy meglévő Data Lake Storage Gen1 fiókot kell megadni.  Lásd: [Előfeltételek](#prerequisites).
-    - **Gyökér elérési útját**: Adja meg egy elérési utat, ahol a fürtre jellemző fájlok vannak-e tárolni. A képernyőképen az __/fürtök/myhdiadlcluster/__, amelyben a __/fürtök__ mappának léteznie kell, és a portál létrehozza a *myhdicluster* mappát.  A *myhdicluster* a fürt neve.
+    - **Gyökér elérési útját**: Adja meg egy elérési utat, ahol a fürtre jellemző fájlok vannak-e tárolni. A képernyőképen az __/fürtök/myhdiadlcluster/__ , amelyben a __/fürtök__ mappának léteznie kell, és a portál létrehozza a *myhdicluster* mappát.  A *myhdicluster* a fürt neve.
     - **Data Lake Store-hozzáférés**: A Data Lake Storage Gen1 fiók és a HDInsight-fürt közötti hozzáférés konfigurálásához. Útmutatásért tekintse meg a Data Lake Storage Gen1 konfigurálása hozzáférést.
     - **További tárfiókok**: A fürt további tárfiókok hozzáadása az Azure storage-fiókok. Data Lake Storage Gen1 további fiókok hozzáadása a fürt engedélyek a Data Lake Storage Gen1 további fiókok adatokon, így az elsődleges tárolási típusok, egy Data Lake Storage Gen1 fiók konfigurálása során történik. Lásd: Configure Data Lake Storage Gen1 hozzáférést.
 

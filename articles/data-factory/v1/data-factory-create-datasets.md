@@ -1,53 +1,51 @@
 ---
-title: Adatkészletek létrehozása az Azure Data Factoryban |} A Microsoft Docs
-description: Ismerje meg, hogyan-adatkészletek létrehozása az Azure Data Factory által használt tulajdonságokat, például az eltolás és anchorDateTime példákkal.
+title: Adatkészletek létrehozása a Azure Data Factoryban | Microsoft Docs
+description: Megtudhatja, hogyan hozhat létre adatkészleteket Azure Data Factoryban olyan példákkal, amelyek olyan tulajdonságokat használnak, mint például az eltolás és a anchorDateTime.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.assetid: 0614cd24-2ff0-49d3-9301-06052fd4f92a
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 6b16b6c4de8c8d2d7a821dd476f07c8ab1135408
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: af5de469b4c4ca57979b80e691e9a5d12b573bec
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433433"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140123"
 ---
-# <a name="datasets-in-azure-data-factory"></a>Adatkészleteket az Azure Data Factoryban
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+# <a name="datasets-in-azure-data-factory"></a>Adathalmazok a Azure Data Factoryban
+> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
 > * [1-es verzió](data-factory-create-datasets.md)
 > * [2-es verzió (aktuális verzió)](../concepts-datasets-linked-services.md)
 
 > [!NOTE]
-> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a jelenlegi verzió a Data Factory szolgáltatás használ, tekintse meg [a v2-ben adatkészletek](../concepts-datasets-linked-services.md).
+> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, lásd: adatkészletek [a v2-ben](../concepts-datasets-linked-services.md).
 
-Ez a cikk bemutatja, milyen adatkészletek, hogyan vannak definiálva JSON formátumban, és hogy ezek hogyan használhatók az Azure Data Factory-folyamatok. Azt (például a szerkezetet, rendelkezésre állási és házirend) minden szakasz részletesen ismerteti az adatkészlet JSON-definíciójában. A cikk példákat is tartalmaz a a **eltolás**, **anchorDateTime**, és **stílus** az adatkészlet JSON-definíció tulajdonságait.
+Ez a cikk ismerteti, hogy mely adatkészletek, hogyan vannak meghatározva JSON formátumban, és hogyan használják őket Azure Data Factory folyamatokban. Az adatkészlet JSON-definíciójában az egyes szakaszokra (például a szerkezetre, a rendelkezésre állásra és a házirendre) vonatkozó részleteket tartalmaz. A cikk emellett példákat is tartalmaz az **eltolás**, a **anchorDateTime**és a **stílus** tulajdonságainak használatára egy adatkészlet JSON-definíciójában.
 
 > [!NOTE]
-> Ha most ismerkedik a Data Factory, [az Azure Data Factory bemutatását](data-factory-introduction.md) áttekintését. Ha nem rendelkezik adat-előállítók létrehozásának gyakorlati tapasztalatokat, olvassa el jobb megértése szerezhet a [data transformation oktatóanyag](data-factory-build-your-first-pipeline.md) és a [adatok mozgását útmutató](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+> Ha Data Factory új, tekintse meg az áttekintést a [Azure Data Factory bemutatása](data-factory-introduction.md) című témakört. Ha nem rendelkezik gyakorlati tapasztalattal az adatüzemek létrehozásához, akkor jobb megértést nyerhet az Adatátalakítási [oktatóanyag](data-factory-build-your-first-pipeline.md) és az adatáthelyezési [oktatóanyag](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)olvasásával.
 
 ## <a name="overview"></a>Áttekintés
-A data factory egy vagy több folyamattal rendelkezhet. A **folyamat** logikai csoportosítása **tevékenységek** , amelyek együttesen hajtanak végre egy feladatot. A folyamat tevékenységei meghatározzák az adatokon végrehajtandó műveleteket. Például használhat egy másolási tevékenység adatokat másol egy helyszíni SQL Server az Azure Blob storage. Ezt követően használható a Hive-tevékenység, amely egy Hive-szkriptet az Azure HDInsight-fürtön az adatfeldolgozás kimeneti adatok előállításához a Blob storage-ból. Végül egy második másolási tevékenység használatával lehet, hogy a kimeneti adatok másolása az Azure SQL Data Warehouse, amelyre üzletiintelligencia (BI-) jelentéskészítési megoldások épülnek. További információ a folyamatok és tevékenységek: [az Azure Data Factory folyamatai és tevékenységei](data-factory-create-pipelines.md).
+A data factory egy vagy több folyamattal rendelkezhet. A **folyamat** olyan **tevékenységek** logikai csoportosítása, amelyek együttesen végeznek feladatokat. A folyamat tevékenységei meghatározzák az adatokon végrehajtandó műveleteket. Előfordulhat például, hogy egy másolási tevékenységgel másol egy helyszíni SQL Server adatait az Azure Blob Storage szolgáltatásba. Ezt követően felhasználhat egy kaptár-műveletet, amely egy Azure HDInsight-fürtön futó struktúra-parancsfájlt futtat a blob Storage-beli adatok feldolgozásához a kimeneti adatok előállításához. Végezetül pedig egy második másolási tevékenységet is használhat a kimeneti adatok Azure SQL Data Warehouseba másolásához, amelyek alapján az üzleti intelligencia (BI) jelentéskészítési megoldásai épülnek. A folyamatokkal és tevékenységekkel kapcsolatos további információkért lásd: [folyamatok és tevékenységek Azure Data Factoryban](data-factory-create-pipelines.md).
 
-Egy tevékenység is igénybe vehet a nulla vagy több bemeneti **adatkészletek**, és a egy vagy több kimeneti adatkészlet létrehozásához. Bemeneti adatkészlet a folyamat egyik tevékenységének bemeneti, és a egy kimeneti adatkészletet jelenti a tevékenység kimenetét. Az adatkészletek adatokat határoznak meg a különböző adattárakban, például táblákban, fájlokban, mappákban és dokumentumokban. Például az Azure Blob-adatkészlet meghatározza a blobtárolót és mappát, amelyből a folyamat beolvassa az adatokat Blob storage-ban.
+Egy tevékenység nulla vagy több bemeneti adatkészletet is igénybe vehet, és egy vagy több kimeneti adatkészletet hoz létre. A bemeneti adatkészlet a folyamat egy tevékenységének bemenetét jelöli, a kimeneti adatkészlet pedig a tevékenység kimenetét jelöli. Az adatkészletek adatokat határoznak meg a különböző adattárakban, például táblákban, fájlokban, mappákban és dokumentumokban. Az Azure Blob-adatkészlet például meghatározza a blob-tárolóban található BLOB-tárolót és mappát, amelyből a folyamat beolvassa az adatokat.
 
-Mielőtt egy adatkészletet hoz létre, létre kell hoznia egy **társított szolgáltatás** az adattárhoz összekapcsolása a data factoryhoz. A társított szolgáltatások nagyon hasonlóak a kapcsolati sztringekhoz, amelyek meghatározzák azokat a kapcsolati információkat, amelyeket a Data Factory a külső erőforrásokhoz történő csatlakozáshoz igényel. Az adatkészletek azonosíthatja az adatokat a társított adattárakban, mint például az SQL-táblák, fájlok, mappák és dokumentumok belül. Például egy Azure Storage társított szolgáltatás egy storage-fiókot a data factoryhoz. Az Azure Blob-adatkészlet a blobtárolót és a bemeneti blobokat feldolgozású tartalmazó mappát jelöli.
+Adatkészlet létrehozása előtt hozzon létre egy **társított szolgáltatást** , amely az adattárat az adat-előállítóhoz kapcsolja. A társított szolgáltatások nagyon hasonlóak a kapcsolati sztringekhoz, amelyek meghatározzák azokat a kapcsolati információkat, amelyeket a Data Factory a külső erőforrásokhoz történő csatlakozáshoz igényel. Az adathalmazok azonosítják a társított adattárakon belüli adatokat, például az SQL-táblákat, a fájlokat, a mappákat és a dokumentumokat. Egy Azure Storage-beli társított szolgáltatás például egy Storage-fiókhoz csatolja az adatelőállítót. Az Azure Blob-adatkészlet a BLOB-tárolót és a feldolgozandó bemeneti blobokat tartalmazó mappát jelöli.
 
-Íme egy példa forgatókönyv. Adatok másolása Blob storage-ból egy SQL Database-adatbázishoz, akkor hozzon létre két társított szolgáltatást: Az Azure Storage és az Azure SQL-adatbázis. Ezután hozzon létre két adatkészletet: Az Azure Blob-adatkészlet (amely az Azure Storage társított szolgáltatásra vonatkozik) és az Azure SQL Table adatkészlet (amely az Azure SQL Database-beli társított szolgáltatásra vonatkozik). Az Azure Storage és Azure SQL Database-beli társított szolgáltatások tartalmaznak, amelyek a Data Factory használ futtatáskor az Azure Storage és Azure SQL Database-csatlakozás kapcsolati karakterláncok. Az Azure Blob-adatkészlet pedig meghatározza a blobtárolót és a Blob storage-ban a bemeneti blobokat tartalmazó blob mappát. Az Azure SQL Table adatkészlet adja meg az SQL-adatbázis, amelyhez az adatokat kell másolni az SQL-táblát.
+Példa erre a forgatókönyvre. Az adatok blob Storage-ból SQL-adatbázisba való másolásához két társított szolgáltatást kell létrehoznia: Azure Storage és Azure SQL Database. Ezután hozzon létre két adatkészletet: Azure Blob-adatkészlet (amely az Azure Storage társított szolgáltatásra vonatkozik) és az Azure SQL Table adatkészlet (amely a Azure SQL Database társított szolgáltatásra hivatkozik). Az Azure Storage és a Azure SQL Database társított szolgáltatások olyan kapcsolati karakterláncokat tartalmaznak, amelyeket a futtatókörnyezet az Azure Storage-hoz és a Azure SQL Databasehoz való kapcsolódáshoz Data Factory használ. Az Azure Blob-adatkészlet meghatározza a blob-tárolóban található bemeneti blobokat tartalmazó BLOB-tárolót és blob mappát. Az Azure SQL Table adatkészlet meghatározza azt az SQL-táblázatot az SQL-adatbázisban, amelybe az adatokat másolni kívánja.
 
-Az alábbi ábrán látható a folyamat, a tevékenység, az adatkészlet és a társított szolgáltatás közötti kapcsolatokat a Data Factoryban:
+A következő ábra a folyamat, a tevékenység, az adatkészlet és a társított szolgáltatás közötti kapcsolatokat mutatja Data Factoryban:
 
-![Folyamat, a tevékenység, az adatkészlet, a társított szolgáltatások közötti kapcsolat](media/data-factory-create-datasets/relationship-between-data-factory-entities.png)
+![Kapcsolat a folyamat, a tevékenység, az adatkészlet és a társított szolgáltatások között](media/data-factory-create-datasets/relationship-between-data-factory-entities.png)
 
 ## <a name="dataset-json"></a>Adatkészlet JSON
-Egy adatkészletet a Data Factory a következőképpen van meghatározva JSON formátumban:
+A Data Factoryban található adatkészlet JSON formátumban van definiálva, a következőképpen:
 
 ```json
 {
@@ -77,20 +75,20 @@ Egy adatkészletet a Data Factory a következőképpen van meghatározva JSON fo
 }
 ```
 
-A következő táblázat ismerteti a fenti JSON-tulajdonságok:
+A fenti JSON-tulajdonságokat a következő táblázat ismerteti:
 
-| Tulajdonság | Leírás | Szükséges | Alapértelmezett |
+| Tulajdonság | Leírás | Kötelező | Alapértelmezett |
 | --- | --- | --- | --- |
-| név |Az adatkészlet nevét. Lásd: [Azure Data Factory – elnevezési szabályok](data-factory-naming-rules.md) elnevezési szabályait. |Igen |NA |
-| type |Az adatkészlet típusa. Adja meg a Data Factory által támogatott típusú (például: AzureBlob, AzureSqlTable). <br/><br/>További információkért lásd: [adatkészlettípus](#Type). |Igen |NA |
-| struktúra |Az adatkészlet sémája.<br/><br/>További információkért lásd: [adatkészlet-szerkezetekben](#Structure). |Nem |NA |
-| typeProperties | A típus tulajdonságokat különböznek az egyes (például: Az Azure Blob, az Azure SQL-tábla). További információ a támogatott típusok és a hozzájuk tartozó tulajdonságok: [adatkészlettípus](#Type). |Igen |NA |
-| external | Adja meg, hogy data factory-folyamatok explicit módon előállított adatkészlet vagy nem a logikai jelzőt. Ha a tevékenység bemeneti adatkészlete nem a jelenlegi folyamat által előállított, ezt a jelzőt true értékre. Ezt a jelzőt igaz értékre a folyamat az első tevékenység bemeneti adatkészlete esetében.  |Nem |false |
-| rendelkezésre állás | Határozza meg (például óránként vagy naponta) feldolgozási időszakának vagy a slicing az adatkészlet üzemi modellt. Egy tevékenység futtatása által felhasznált és előállított adatok minden egysége adatszelet nevezzük. Kimeneti adatkészlet rendelkezésre állásának napi (gyakorisága –, időköz – 1 nap) értékre van állítva, ha a szelet előállítása naponta. <br/><br/>További információkért lásd: az adatkészlet rendelkezésre. <br/><br/>Felosztási modelljét a adatkészlet részletes ismertetéséért tekintse meg a [ütemezés és végrehajtás](data-factory-scheduling-and-execution.md) cikk. |Igen |NA |
-| szabályzat |Határozza meg a feltételeket és a feltétellel, hogy az adatkészlet szeleteit meg kell felelniük. <br/><br/>További információkért lásd: a [adatkészlet házirend](#Policy) szakaszban. |Nem |NA |
+| name |Az adatkészlet neve. Lásd: [Azure Data Factory-elnevezési szabályok](data-factory-naming-rules.md) az elnevezési szabályokhoz. |Igen |NA |
+| type |Az adatkészlet típusa. A Data Factory által támogatott típusok egyikét kell megadnia (például: AzureBlob, AzureSqlTable). <br/><br/>Részletekért lásd: [adatkészlet típusa](#Type). |Igen |NA |
+| structure |Az adatkészlet sémája.<br/><br/>Részletekért lásd az [adatkészlet szerkezetét](#Structure)ismertető témakört. |Nem |NA |
+| typeProperties | A típus tulajdonságai eltérőek az egyes típusoknál (például: Azure-Blob, Azure SQL-tábla). A támogatott típusokkal és azok tulajdonságaival kapcsolatos részletekért lásd: [adatkészlet típusa](#Type). |Igen |NA |
+| külső | Logikai jelző annak megadásához, hogy az adatkészletet explicit módon állították-e be egy adat-előállító folyamat vagy sem. Ha egy tevékenység bemeneti adatkészletét nem az aktuális folyamat állítja elő, a jelzőt állítsa igaz értékre. Ezt a jelzőt állítsa igaz értékre a folyamat első tevékenységének bemeneti adatkészletében.  |Nem |false |
+| availability | Meghatározza a feldolgozási időszakot (például óránként vagy naponta), vagy az adatkészlet-termelés szeletelő modelljét. A tevékenység-Futtatás által felhasznált és előállított adategységeket adatszeletnek nevezzük. Ha a kimeneti adatkészlet rendelkezésre állása napi (Frequency, Interval-1) értékre van beállítva, a szeletek naponta készülnek. <br/><br/>Részletekért lásd: adatkészlet rendelkezésre állása. <br/><br/>Az adatkészlet szeletelő modelljével kapcsolatos részletekért tekintse meg az [Ütemezés és végrehajtás](data-factory-scheduling-and-execution.md) című cikket. |Igen |NA |
+| policy |Meghatározza azokat a feltételeket vagy feltételt, amelyeknek az adatkészlet-szeleteknek teljesíteniük kell. <br/><br/>Részletekért tekintse meg az [adatkészlet-házirend](#Policy) szakaszt. |Nem |NA |
 
-## <a name="dataset-example"></a>Példa adatkészlet
-A következő példában az adatkészlet jelöli nevű tábla **MyTable** egy SQL database-ben.
+## <a name="dataset-example"></a>Adatkészlet – példa
+Az alábbi példában az adatkészlet egy **sajáttábla** nevű táblázatot JELÖL egy SQL-adatbázisban.
 
 ```json
 {
@@ -113,12 +111,12 @@ A következő példában az adatkészlet jelöli nevű tábla **MyTable** egy SQ
 
 Vegye figyelembe a következő szempontokat:
 
-* **típus** AzureSqlTable értékre van állítva.
-* **Táblanév** típusa (jellemző AzureSqlTable típus) tulajdonsága MyTable.
-* **linkedServiceName** AzureSqlDatabase, amelyet a következő JSON-kódrészletben típusú társított szolgáltatás hivatkozik.
-* **rendelkezésre állási gyakorisága** napja, és **időköz** 1 értékre van állítva. Ez azt jelenti, hogy az adatkészlet szelet előállítása naponta.
+* a **típus** értéke tulajdonsága azuresqltable.
+* a **Táblanév** Type tulajdonsága (amely a tulajdonsága azuresqltable típusra vonatkozik) a sajáttábla értékre van beállítva.
+* a **linkedServiceName** egy AzureSqlDatabase típusú társított szolgáltatásra hivatkozik, amely a következő JSON-kódrészletben van meghatározva.
+* a **rendelkezésre állási gyakoriság** beállítása nap, az **intervallum** értéke pedig 1. Ez azt jelenti, hogy az adatkészlet szelete naponta készül.
 
-**AzureSqlLinkedService** a következők:
+A **AzureSqlLinkedService** a következőképpen van definiálva:
 
 ```json
 {
@@ -133,25 +131,25 @@ Vegye figyelembe a következő szempontokat:
 }
 ```
 
-A fenti JSON-kódrészletben:
+Az előző JSON-kódrészletben:
 
-* **típus** AzureSqlDatabase értékre van állítva.
-* **connectionString** tulajdonság adatait egy SQL-adatbázishoz való csatlakozáshoz adja meg.
+* a **típus** értéke AzureSqlDatabase.
+* a **ConnectionString** Type tulajdonság az SQL Database-hez való kapcsolódáshoz szükséges adatokat adja meg.
 
-Amint láthatja, a társított szolgáltatás hogyan csatlakozhat egy SQL-adatbázis határozza meg. Az adatkészlet határozza meg, melyik táblát bemenetként használja, és a folyamat a tevékenység kimeneti.
+Amint láthatja, a társított szolgáltatás határozza meg, hogyan csatlakozhat egy SQL-adatbázishoz. Az adatkészlet határozza meg, hogy a rendszer milyen táblát használ bemenetként és kimenetként egy folyamat tevékenységében.
 
 > [!IMPORTANT]
-> A folyamat egy adatkészlet előállítása, hacsak azt kell megjelölni **külső**. Ez a beállítás általában az első tevékenységet a folyamat bemeneti adatai vonatkozik.
+> Ha a folyamat nem állít elő adatkészletet, akkor azt külsőnek kellmegjelölni. Ez a beállítás általában a folyamat első tevékenységének bemenetére vonatkozik.
 
-## <a name="Type"></a> Forrásadatkészlet típusa
-Az adatkészlet típusa attól függ, hogy az adattár használata. Tekintse meg az alábbi táblázat a Data Factory által támogatott adattárak listáját. Kattintson egy adattár kiválasztásával megtudhatja, hogyan hozhat létre a társított szolgáltatás és az adattár egy adatkészletet.
+## <a name="Type"></a>Adatkészlet típusa
+Az adatkészlet típusa a használt adattártól függ. A Data Factory által támogatott adattárak listáját a következő táblázat tartalmazza. Kattintson egy adattárra, és Ismerje meg, hogyan hozhat létre egy társított szolgáltatást és egy adatkészletet az adott adattárhoz.
 
 [!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]
 
 > [!NOTE]
-> Az adattárak * a helyszínen vagy az Azure infrastruktúra-szolgáltatás (IaaS). Ezek adattárak telepítését igénylik [adatkezelési átjáró](data-factory-data-management-gateway.md).
+> A *-ban tárolt adattárak a helyszínen vagy az Azure-infrastruktúra szolgáltatásként (IaaS) is lehetnek. Ezek az adattárak a [adatkezelés átjáró](data-factory-data-management-gateway.md)telepítéséhez szükségesek.
 
-A példában az előző szakaszban az adatkészlet típusa értéke **AzureSqlTable**. Ehhez hasonlóan az Azure Blob-adatkészlet az adatkészlet típusa értéke **AzureBlob**, ahogyan az az alábbi JSON-ra:
+Az előző szakaszban szereplő példában az adatkészlet típusa **tulajdonsága azuresqltable**értékre van állítva. Hasonlóképpen, az Azure Blob-adatkészletek esetében az adatkészlet típusa **AzureBlob**értékre van állítva, ahogy az a következő JSON-ban látható:
 
 ```json
 {
@@ -177,8 +175,8 @@ A példában az előző szakaszban az adatkészlet típusa értéke **AzureSqlTa
 }
 ```
 
-## <a name="Structure"></a>Adatkészlet-szerkezetekben
-A **struktúra** szakasz nem kötelező. A séma az adatkészlet nevét és az oszlopok adattípusát gyűjteményét tartalmazó szerint határozza meg. A struktúra szakasz segítségével konvertálása típusok és oszlopait a forrásból a cél típusa információkat tartalmaznak. A következő példában az adatkészlet három oszlopot tartalmaz: `slicetimestamp`, `projectname`, és `pageviews`. Típusúak karakterlánc, karakterlánc, és tizedes tört, illetve.
+## <a name="Structure"></a>Adatkészlet szerkezete
+A **struktúra** szakasz nem kötelező. Meghatározza az adatkészlet sémáját úgy, hogy az oszlopok neveinek és adattípusának gyűjteményét tartalmazza. A struktúra szakasz használatával megadhatja a típusokat és a leképezési oszlopokat a forrásról a célhelyre. A következő példában az adatkészlet három oszloppal rendelkezik: `slicetimestamp`, `projectname`és `pageviews`. Karakterlánc, karakterlánc és decimális típusúak.
 
 ```json
 structure:
@@ -189,30 +187,30 @@ structure:
 ]
 ```
 
-Minden egyes oszlopának struktúrája a következő tulajdonságokat tartalmazza:
+A struktúra minden oszlopa a következő tulajdonságokat tartalmazza:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| név |Az oszlop neve. |Igen |
-| type |Az oszlop adattípusát.  |Nem |
-| kulturális környezet |. NET-alapú kulturális környezetet használni, amikor a típus a .NET-típus: `Datetime` vagy `Datetimeoffset`. A mező alapértelmezett értéke: `en-us`. |Nem |
-| Formátum |Formázó karakterlánc típus egy .NET-típus esetén használandó: `Datetime` vagy `Datetimeoffset`. |Nem |
+| name |Az oszlop neve. |Igen |
+| type |Az oszlop adattípusa.  |Nem |
+| culture |. A .net-típus használata esetén használandó, NET-alapú kulturális környezet: `Datetime` vagy. `Datetimeoffset` A mező alapértelmezett értéke: `en-us`. |Nem |
+| format |A típus .net-típusú típusaként használandó formázó karakterlánc: `Datetime` vagy. `Datetimeoffset` |Nem |
 
-Az alábbi irányelvek segítségével eldöntheti, hogy mikor struktúra információval, és mit kell foglalni a **struktúra** szakaszban.
+A következő irányelvek segítenek meghatározni, hogy mikor kell belefoglalni a szerkezeti adatokat, és mit kell belefoglalni a **struktúra** szakaszba.
 
-* **A strukturált adatok források**, adja meg a struktúrát a szakasz csak akkor, ha azt szeretné, hogy a forrás oszlopait fogadó oszlopokat, és a nevek nem azonosak. Strukturált adatok forrása az ilyen típusú adatok séma- és a típus adatait együtt az adat tárolja. Strukturált adatforrások közé tartoznak az SQL Server, Oracle- és Azure-tábla.
+* **Strukturált**adatforrások esetén csak akkor válassza a struktúra szakaszt, ha a forrás oszlopokat a fogadó oszlopokra szeretné leképezni, és a nevük nem egyeznek. Az ilyen strukturált adatforrás az adatsémát és a beírási adatokat az adatok mellett tárolja. Strukturált adatforrások például a következők: SQL Server, Oracle és Azure table.
   
-    Ha típussal kapcsolatos információk már elérhető a strukturált adatok források, műveket nem szabad típussal kapcsolatos információk Ha belefoglalja a struktúra szakaszban.
-* **Az olvasási adatforráson (ebben az esetben blobtárolót) séma**, dönthet úgy, hogy adatokat tárolni az adatokat bármely séma vagy típusú adatok tárolására nélkül. Az ilyen típusú adatforrások közé tartozik az struktúra, ha le szeretné képezni a fogadó-oszlopok forrásoszlopok. Struktúra is tartalmazhatnak, ha az adatkészlet egy másolási tevékenység bemeneti, és forrásadatkészlet adattípusát át kell alakítani natív típusai a fogadóhoz.
+    A strukturált adatforrásokhoz már rendelkezésre áll a típus adatai, ezért a szerkezet szakasza nem tartalmazhat beírási adatokat.
+* **Az olvasási adatforrások (konkrétan blob Storage) sémája esetében**dönthet úgy, hogy az adatokat bármilyen séma vagy típus adatainak tárolása nélkül tárolja. Ilyen típusú adatforrások esetén olyan struktúrát kell használni, amikor a forrás oszlopokat a fogadó oszlopokra szeretné leképezni. Olyan struktúrát is magában foglal, amelyben az adatkészlet egy másolási tevékenység bemenete, és a forrás-adatkészlet adattípusait át kell alakítani a fogadó natív típusaira.
     
-    A Data Factory szerkezetét írja be az adatokat, amelyek biztosítják a következő értékeket támogatja: **Int16, Int32, Int64, egyetlen, Double, tizedes tört, Byte [], logikai érték, karakterlánc, Guid, Datetime, Datetimeoffset és Timespan**. Ezek az értékek Common Language Specification (CLS)-kompatibilis. NET-alapú típusú értékek.
+    A Data Factory a következő értékeket támogatja a típusú adatok szerkezetbeli biztosításához: **Int16, Int32, Int64, Single, Double, decimális, byte [], Boolean, string, GUID, datetime, DateTimeOffset és TimeSpan**. Ezek az értékek Common Language Specification (CLS)-kompatibilisek. NET-alapú típusú értékek.
 
-A Data Factory automatikusan típuskonverziók hajt végre, amikor, amely adatokat helyez át egy forrásadattárból egy fogadó adattárba.
+Data Factory automatikusan végrehajtja a típus-konverziókat, amikor a forrás adattárból egy fogadó adattárba helyezi át az adatátvitelt.
 
 ## <a name="dataset-availability"></a>Adatkészlet rendelkezésre állása
-A **rendelkezésre állási** szakasz egy adatkészlet feldolgozási időszakának (például óránként, naponta, vagy hetente) az adatkészlet határozza meg. Tevékenységablakok kapcsolatos további információkért lásd: [ütemezés és végrehajtás](data-factory-scheduling-and-execution.md).
+Az adatkészlet **rendelkezésre állási** szakasza meghatározza a feldolgozási időszakot (például óránként, naponta vagy hetente) az adatkészlethez. További információ a tevékenységek Windowsról: [Ütemezés és végrehajtás](data-factory-scheduling-and-execution.md).
 
-A következő rendelkezésre állási szakasz meghatározza, hogy a kimeneti adatkészlet vagy előállítása óránként, vagy a bemeneti adatkészlet érhető el Óránként:
+A következő rendelkezésre állási szakasz azt határozza meg, hogy a kimeneti adatkészlet vagy óránként jön létre, vagy a bemeneti adatkészlet óránként elérhető:
 
 ```json
 "availability":
@@ -222,27 +220,27 @@ A következő rendelkezésre állási szakasz meghatározza, hogy a kimeneti ada
 }
 ```
 
-Ha a folyamat a következő kezdő és befejező időpontok:
+Ha a folyamat a következő kezdési és befejezési időpontokkal rendelkezik:
 
 ```json
     "start": "2016-08-25T00:00:00Z",
     "end": "2016-08-25T05:00:00Z",
 ```
 
-A kimeneti adatkészlet előállítása óránként belül a folyamat elindításához és befejezési időpontja. Vannak, ezért ez a folyamat, egy egyes tevékenységablakot (12 AM - 1 AM, 1 AM - 2 AM, hajnali 2 óra – 3 AM, 3 AM - 4 AM, 4 AM - 05-kor) az előállított öt adatkészlet szeleteit.
+A kimeneti adatkészlet óránként jön létre a folyamat kezdési és befejezési időpontjain belül. Ezért a folyamat öt adatkészlet-szeletet állít elő, egyet az egyes tevékenységek ablakokhoz (12 – 1, 1 – 2, 2, 3, 3 – 4, 4 – 5).
 
-A következő táblázat ismerteti a rendelkezésre állási szakaszban használható tulajdonságok:
+A következő táblázat a rendelkezésre állási szakaszban használható tulajdonságokat ismerteti:
 
-| Tulajdonság | Leírás | Szükséges | Alapértelmezett |
+| Tulajdonság | Leírás | Kötelező | Alapértelmezett |
 | --- | --- | --- | --- |
-| frequency |Megadja az adatkészlet szelet éles üzemi környezetek részei.<br/><br/><b>Támogatott gyakoriság</b>: Perc, óra, nap, hét, hónap |Igen |NA |
-| interval |Megadja egy szorzóval gyakoriság esetén.<br/><br/>"X időköz" határozza meg, hogy milyen gyakran a szelet előállítása. Például ha az adatkészlet óradíjat kell szeletelt van szüksége, akkor be <b>gyakorisága</b> való <b>óra</b>, és <b>időköz</b> való <b>1</b>.<br/><br/>Vegye figyelembe, hogy ha megad **gyakorisága** , **perc**, az intervallum nem lehet kisebb, mint 15-re kell beállítani. |Igen |NA |
-| stílus |Itt adhatja meg, hogy a szeletet, vagy az időszak végén kell mutatni.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul>Ha **gyakorisága** értékre van állítva **hónap**, és **stílus** értékre van állítva **EndOfInterval**, a szelet előállítása a hónap utolsó napján. Ha **stílus** értékre van állítva **StartOfInterval**, a szelet előállítása a hónap első napján.<br/><br/>Ha **gyakorisága** értékre van állítva **nap**, és **stílus** értékre van állítva **EndOfInterval**, a szelet előállítása a nap az elmúlt órában.<br/><br/>Ha **gyakorisága** értékre van állítva **óra**, és **stílus** értékre van állítva **EndOfInterval**, a szelet előállítása a óra végén. Például egy szelet az du. 1-2 PM időszakban, a rendszer óránként létrehoz egy 2-kor. |Nem |EndOfInterval |
-| anchorDateTime |Az ütemező által használt adatkészlet szelet határok számítási idő abszolút pozícióját határozza meg. <br/><br/>Vegye figyelembe, hogy ha ez a tulajdonság a dátum részei, amelyek részletesebben, mint a megadott gyakorisággal rendelkezik, a részletesebb részek figyelmen kívül hagyja. Például ha a **időköz** van **óránként** (frequency: hour és interval: 1.), és a **anchorDateTime** tartalmaz **perceket és másodperceket**, akkor a perceket és másodperceket részeit **anchorDateTime** figyelmen kívül hagyja. |Nem |01/01/0001 |
-| offset |Időtartam, amely szerint a kezdő és befejező az összes adatkészlet szeleteit áttért. <br/><br/>Ne feledje, ha mindkét **anchorDateTime** és **eltolás** meg van adva, a kombinált shift eredménye. |Nem |NA |
+| frequency |Megadja az adatkészlet-szelet gyártásának időegységét.<br/><br/><b>Támogatott gyakoriság</b>: Perc, óra, nap, hét, hónap |Igen |NA |
+| tartam |A gyakoriság szorzóját adja meg.<br/><br/>A "Frequency x Interval" érték határozza meg, hogy milyen gyakran történjen a szelet előállítása. Ha például az adatkészletet óránként kell darabolni, a gyakoriságot <b>óra</b>értékre kell beállítani, <b></b> és az <b>intervallumot</b> <b>1-re</b>kell állítania.<br/><br/>Vegye figyelembe, hogy ha a gyakoriságot **percben**adja meg, az intervallumot 15-nél nem kisebbre kell beállítani. |Igen |NA |
+| style |Megadja, hogy a szelet az intervallum elején vagy végén készüljön-e.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul>Ha a **gyakoriság** értéke **hónap**, és a **Style** értéke **EndOfInterval**, a szelet a hónap utolsó napján jön létre. Ha a **stílus** értéke **StartOfInterval**, a szelet a hónap első napján jön létre.<br/><br/>Ha a **gyakoriság** beállítása **nap**, és a **Style** értéke **EndOfInterval**, a szelet a nap utolsó órájában jön létre.<br/><br/>Ha a **gyakoriság** értéke **óra**, és a **Style** értéke **EndOfInterval**, a szelet az óra végén jön létre. Például az 1 PM-2 PM-időszakhoz tartozó szeletek esetében a SZELET 2 ÓRAKOR jön létre. |Nem |EndOfInterval |
+| anchorDateTime |Az ütemező által az adatkészlet-szeletek határainak kiszámításához használt abszolút időpontot határozza meg. <br/><br/>Vegye figyelembe, hogy ha ez a tulajdonság a megadott gyakoriságnál részletesebb részletességi részeket tartalmaz, a rendszer figyelmen kívül hagyja a részletesebb részeket. Ha például az **intervallum** **óránként** (frekvencia: óra és időköz: 1.) és a **anchorDateTime** **perceket és másodperceket**tartalmaz, a **anchorDateTime** perc és másodperc részeit figyelmen kívül hagyja a rendszer. |Nem |01/01/0001 |
+| offset |TimeSpan, amely az összes adatkészlet összes szeletének kezdetét és végét eltolja. <br/><br/>Vegye figyelembe, hogy ha a **anchorDateTime** és az **eltolás** is meg van adva, az eredmény a kombinált eltolás. |Nem |NA |
 
-### <a name="offset-example"></a>a példában eltolása
-Alapértelmezetten naponta (`"frequency": "Day", "interval": 1`) a szeletek start, Éjfélkor (éjfél) egyezményes világidő (UTC). Ha azt szeretné, reggel 6 óra UTC idő helyett lennie a kezdési időpont, állítsa be az eltolás az alábbi kódrészletben látható módon:
+### <a name="offset-example"></a>eltolási példa
+Alapértelmezés szerint a napi (`"frequency": "Day", "interval": 1`) szeletek az egyezményes világidő (UTC) szerint kezdődnek: 12 órakor (éjfélkor). Ha a kezdési időpontot 6 UTC-időre szeretné használni, állítsa be az eltolást az alábbi kódrészletben látható módon:
 
 ```json
 "availability":
@@ -252,8 +250,8 @@ Alapértelmezetten naponta (`"frequency": "Day", "interval": 1`) a szeletek star
     "offset": "06:00:00"
 }
 ```
-### <a name="anchordatetime-example"></a>anchorDateTime example
-A következő példában az adatkészlet 23 óránként jön létre. A megadott időtartam indul az első szelet **anchorDateTime**, amelynek beállítása `2017-04-19T08:00:00` (UTC).
+### <a name="anchordatetime-example"></a>anchorDateTime példa
+A következő példában az adatkészlet 23 óránként egyszer jön létre. Az első szelet a **anchorDateTime**által megadott időpontban kezdődik, amely a `2017-04-19T08:00:00` következőre van beállítva: (UTC).
 
 ```json
 "availability":
@@ -264,8 +262,8 @@ A következő példában az adatkészlet 23 óránként jön létre. A megadott 
 }
 ```
 
-### <a name="offsetstyle-example"></a>Példa offset/stílusa
-A következő adatkészlet havonta, és a 3. 8:00 órakor minden hónap előállítása (`3.08:00:00`):
+### <a name="offsetstyle-example"></a>eltolás/stílus – példa
+A következő adatkészlet havonta történik, és minden hónap harmadik napján, 8:00-kor (`3.08:00:00`) jön létre:
 
 ```json
 "availability": {
@@ -277,13 +275,13 @@ A következő adatkészlet havonta, és a 3. 8:00 órakor minden hónap előáll
 ```
 
 ## <a name="Policy"></a>Adatkészlet-házirend
-A **házirend** az adatkészlet-definícióban szakasz definiálja a feltételeket és a feltétellel, hogy az adatkészlet szeleteit meg kell felelniük.
+Az adatkészlet definíciójának **szabályzat** szakasza határozza meg azokat a feltételeket vagy feltételt, amelyeknek az adatkészlet-szeleteknek teljesíteniük kell.
 
-### <a name="validation-policies"></a>Érvényesítési házirendek
-| Házirend neve | Leírás | A alkalmazni | Szükséges | Alapértelmezett |
+### <a name="validation-policies"></a>Ellenőrzési házirendek
+| Házirend neve | Leírás | Alkalmazva erre | Kötelező | Alapértelmezett |
 | --- | --- | --- | --- | --- |
-| minimumSizeMB |Azt ellenőrzi, hogy az adatok **Azure Blob storage** megfelel a minimális méret (megabájtban). |Azure Blob Storage |Nem |NA |
-| minimumRows |Azt ellenőrzi, hogy az adatok egy **Azure SQL database** vagy egy **Azure-tábla** sorok legkisebb számát tartalmazza. |<ul><li>Azure SQL-adatbázis</li><li>Azure-tábla</li></ul> |Nem |NA |
+| minimumSizeMB |Ellenőrzi, hogy az **Azure Blob Storage** -ban tárolt adat megfelel-e a minimális méretre vonatkozó követelményeknek (megabájtban). |Azure Blob Storage |Nem |NA |
+| minimumRows |Ellenőrzi, hogy egy **Azure SQL Database-adatbázisban** vagy egy **Azure-táblában** lévő összes érték tartalmazza-e a sorok minimális számát. |<ul><li>Azure SQL-adatbázis</li><li>Azure-tábla</li></ul> |Nem |NA |
 
 #### <a name="examples"></a>Példák
 **minimumSizeMB:**
@@ -311,45 +309,44 @@ A **házirend** az adatkészlet-definícióban szakasz definiálja a feltételek
 }
 ```
 
-### <a name="external-datasets"></a>Külső adathalmazok
-Külső adatkészlet azok, amelyekre nem hoz létre egy futó folyamatot az adat-előállítóban. Ha az adatkészlet van megjelölve **külső**, a **ExternalData** házirend előfordulhat, hogy kell meghatározni, hogy az adatkészlet szelet elérhetősége viselkedését befolyásolják.
+### <a name="external-datasets"></a>Külső adatkészletek
+Azokat a külső adatkészleteket, amelyeket nem az adat-előállító futó folyamata állít elő. Ha az adatkészlet külsőként vanmegjelölve, a **ExternalData** házirend úgy definiálható, hogy befolyásolja az adatkészlet-szelet rendelkezésre állásának viselkedését.
 
-Adat-előállítók által adatkészlet előállítása, hacsak azt kell megjelölni **külső**. Ezzel a beállítással általában vonatkozik egy folyamatot, az első tevékenység bemenetei, kivéve, ha a tevékenység vagy csővezeték-láncolás használatban van.
+Ha Data Factory nem állít elő adatkészletet, akkor azt külsőnek kellmegjelölni. Ez a beállítás általában a folyamat első tevékenységének bemenetére vonatkozik, kivéve, ha a tevékenység vagy a folyamat láncolására kerül sor.
 
-| Name (Név) | Leírás | Szükséges | Alapértelmezett érték |
+| Name (Név) | Leírás | Kötelező | Alapértelmezett érték |
 | --- | --- | --- | --- |
-| dataDelay |Az ellenőrzés rendelkezésre állását a külső adatokat az adott szeletre vonatkozó késleltetés ideje. Például egy óránkénti ellenőrzést késleltetheti a beállítás használatával.<br/><br/>A beállítás csak a jelenlegi idő vonatkozik. Például ha 1:00 Órakor most, és ez az érték 10 perc, az érvényesítési kezdődik, 1:10 PM.<br/><br/>Vegye figyelembe, hogy ez a beállítás nem befolyásolja a szeletek múltbeli. Az a szeleteket **Adatszelet befejezési időpontja** + **dataDelay** < **most** dolgozzák fel késedelem nélkül.<br/><br/>Időpontokban nagyobb, mint a 23:59 óra használatával adható meg a `day.hours:minutes:seconds` formátumban. Ha például annak megadásához, 24 órában, ne használjon 24:00:00. Ehelyett használjon 1.00:00:00. Ha 24:00:00 használ, azt számít 24 nap (24.00:00:00). 1 nap és 4 órán keresztül adja meg a 1:04:00:00. |Nem |0 |
-| retryInterval |A várakozási idő hiba és a következő kísérlet között. Ez a beállítás jelenlegi idő vonatkozik. Ha az előző sikertelen, a következő kísérlet után van-e a **retryInterval** időszak. <br/><br/>Ha 1:00 Órakor most, hogy első próbálkozáskor kezdődik. Ha az első érvényesítési ellenőrzés idejére 1 perc, és a művelet sikertelen volt, a következő újrapróbálkozás jelenleg 1:00 + 1 perc (időtartam) + 1 perc (újrapróbálkozási időköz) = 13:02-kor. <br/><br/>A múltban szeletek nem lesz késleltetés. Az újrapróbálkozás akkor történik meg azonnal. |Nem |00:01:00 (1 perc) |
-| retryTimeout |Minden egyes újrapróbálkozási kísérlet időtúllépés.<br/><br/>Ez a tulajdonság értéke 10 perc, ha az érvényesítés 10 percen belül meg kell adni. Az érvényesítés végrehajtásához 10 percnél hosszabb ideig tart, ha az újrapróbálkozás időkorlátja.<br/><br/>Ha az érvényesítés időkorlát minden kísérleteit, a szelet van megjelölve **időtúllépés miatt megszakadt**. |Nem |00:10:00 (10 perc) |
-| maximumRetry |A külső adatok rendelkezésre állásának ellenőrzéséhez hányszor. A megengedett maximális értéket értéke 10. |Nem |3 |
+| dataDelay |Az adott szelet külső adatának rendelkezésre állására vonatkozó ellenőrzések késleltetésének ideje. A beállítással például késleltetheti az óránkénti ellenőrzéseket.<br/><br/>A beállítás csak a jelen időpontra érvényes. Ha például ez a 1:00 PM, és ez az érték 10 perc, az érvényesítés 1:10 ÓRAKOR kezdődik.<br/><br/>Vegye figyelembe, hogy ez a beállítás nem érinti a szeleteket a múltban. A szeletek**dataDelay** < - **befejezési idejét** + tartalmazó szeletek késleltetés nélkül lesznek feldolgozva.<br/><br/>23:59 óránál nagyobb időt kell megadni a `day.hours:minutes:seconds` formátum használatával. Ha például 24 órát szeretne megadni, ne használja a 24:00:00-et. Ehelyett használja az 1.00:00:00 értéket. Ha 24:00:00-et használ, azt 24 nap (24.00:00:00) kezeli. 1 és 4 óra esetén a 1:04:00:00-es megadását kell megadnia. |Nem |0 |
+| retryInterval |A hiba és a következő próbálkozás közötti várakozási idő. Ez a beállítás a jelenlegi időpontra vonatkozik. Ha az előző próbálkozás sikertelen volt, a következő próbálkozás a **retryInterval** időszak után következik be. <br/><br/>Ha jelenleg 1:00 PM, kezdjük az első próbálkozással. Ha az első érvényesítési ellenőrzés befejezésének időtartama 1 perc, és a művelet meghiúsult, a következő újrapróbálkozás a 1:00 + 1min (időtartam) + 1min (újrapróbálkozás időköze) = 1:02 PM címen érhető el. <br/><br/>A múltban a szeletek esetében nincs késés. Az újrapróbálkozás azonnal megtörténik. |Nem |00:01:00 (1 perc) |
+| retryTimeout |Az újrapróbálkozási kísérletek időtúllépése.<br/><br/>Ha ez a tulajdonság 10 percre van beállítva, az érvényesítést 10 percen belül el kell végezni. Ha az ellenőrzés elvégzése 10 percnél hosszabb időt vesz igénybe, az újrapróbálkozások időtúllépést jelentenek.<br/><br/>Ha a rendszer minden alkalommal megkísérli az érvényesítést, a szelet **időtúllépés**lesz megjelölve. |Nem |00:10:00 (10 perc) |
+| maximumRetry |A külső adatforrások rendelkezésre állását megkereső időpontok száma. A maximálisan megengedett érték 10. |Nem |3 |
 
 
 ## <a name="create-datasets"></a>Adatkészletek létrehozása
-Az adatkészletek a következő eszközök és SDK-k használatával hozhat létre:
+Adatkészleteket az alábbi eszközök vagy SDK-k egyikével hozhat létre:
 
 - Másolás varázsló
-- Azure Portal
 - Visual Studio
 - PowerShell
 - Azure Resource Manager-sablon
 - REST API
 - .NET API
 
-A folyamatok és adatkészletek egyet a következő eszközök és SDK-k használatával történő létrehozásának részletes útmutatás a következő oktatóanyagokban talál:
+A következő oktatóanyagok részletes útmutatást biztosítanak a folyamatok és adatkészletek létrehozásához az alábbi eszközök vagy SDK-k egyikével:
 
 - [Adatátalakítási tevékenységgel rendelkező folyamat létrehozása](data-factory-build-your-first-pipeline.md)
-- [Adatok áthelyezése tevékenységgel rendelkező folyamat létrehozása](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+- [Adatátviteli tevékenységgel rendelkező folyamat létrehozása](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 
-Miután a folyamat a létrehozása és telepítése, kezelése, és -folyamatok figyelése az Azure portal paneleit vagy a Monitoring and Management app használatával. Az alábbi témakörökben részletes útmutatás:
+A folyamat létrehozása és üzembe helyezése után a folyamatokat a Azure Portal-pengék, illetve a figyelési és felügyeleti alkalmazás használatával kezelheti és figyelheti. Részletes útmutatásért tekintse meg a következő témaköröket:
 
-- [Folyamatok figyelése és felügyelete az Azure portal paneljeinek használatával](data-factory-monitor-manage-pipelines.md)
-- [Folyamatok figyelése és felügyelete a Monitoring and Management app használatával](data-factory-monitor-manage-app.md)
+- [Folyamatok monitorozása és kezelése Azure Portal pengék használatával](data-factory-monitor-manage-pipelines.md)
+- [Folyamatok monitorozása és kezelése a figyelési és felügyeleti alkalmazás használatával](data-factory-monitor-manage-app.md)
 
 ## <a name="scoped-datasets"></a>Hatókörrel rendelkező adatkészletek
-Létrehozhat adatkészleteket a folyamat használatával is meghatározhat az **adatkészletek** tulajdonság. Ezek az adatkészletek csak a tevékenységek a folyamaton belül, más folyamatok a tevékenységek által nem használható. Az alábbi példa meghatároz egy folyamatot a két adatkészletet (az rdc – InputDataset és OutputDataset-rdc) a folyamaton belül használható.
+Az adatkészletek tulajdonság használatával olyan adatkészleteket hozhat létre, amelyek hatóköre egy folyamatra terjed ki. Ezeket az adatkészleteket csak a folyamaton belüli tevékenységek használhatják, nem pedig más folyamatok tevékenységei. A következő példa egy folyamatot definiál két adatkészlettel (InputDataset-RDC és OutputDataset-RDC), amelyet a folyamaton belül szeretne használni.
 
 > [!IMPORTANT]
-> Hatókörrel rendelkező adatkészletek csak egyszer használatos folyamatok támogatottak (ahol **pipelineMode** értékre van állítva **OneTime**). Lásd: [Onetime folyamat](data-factory-create-pipelines.md#onetime-pipeline) részleteiről.
+> A hatókörrel rendelkező adatkészletek csak egyszeri folyamatokkal támogatottak (ahol a **pipelineMode** az **egyszeri**bejelentkezésre van állítva). Részletekért lásd: az [egykori folyamat](data-factory-create-pipelines.md#onetime-pipeline) .
 >
 >
 
@@ -445,5 +442,5 @@ Létrehozhat adatkészleteket a folyamat használatával is meghatározhat az **
 ```
 
 ## <a name="next-steps"></a>További lépések
-- További információ a folyamatok: [folyamatokat hozhat létre](data-factory-create-pipelines.md).
-- A folyamatok ütemezése és végrehajtott további információkért lásd: [ütemezés és végrehajtás az Azure Data Factoryban](data-factory-scheduling-and-execution.md).
+- A folyamatokkal kapcsolatos további információkért lásd: [folyamatok létrehozása](data-factory-create-pipelines.md).
+- További információ a folyamatok ütemezéséről és végrehajtásáról: [Ütemezés és végrehajtás Azure Data Factoryban](data-factory-scheduling-and-execution.md).

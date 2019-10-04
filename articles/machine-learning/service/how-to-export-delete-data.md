@@ -1,7 +1,7 @@
 ---
 title: Exportálja, vagy a munkaterület adatainak törlése
-titleSuffix: Azure Machine Learning service
-description: Ismerje meg, hogyan exportálhatja, vagy az Azure portal, a CLI, az SDK-t és a hitelesített REST API-k és-munkaterület törlése.
+titleSuffix: Azure Machine Learning
+description: Ismerje meg, hogyan exportálhatja vagy törölheti a munkaterületet a Azure Portal, a CLI, az SDK és a hitelesített REST API-k használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: ph-com
 ms.author: pahusban
-ms.date: 09/24/2018
+ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3f40606d5fae3b3784ac7f1fdcf4977b7fd9eb1f
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 18e2ab18dac214e73eaf6ad7dfcb9dbbab0b5cf5
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251775"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002844"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Exportálja, vagy a Machine Learning szolgáltatás munkaterület adatainak törlése 
 
@@ -27,9 +27,9 @@ Az Azure Machine Learning exportál, vagy törölje a munkaterület adatainak hi
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="control-your-workspace-data"></a>Munkaterület adatfelügyelet
-Terméken belüli, az Azure Machine Learning-szolgáltatások által tárolt adatok exportálási és törlése az Azure Portalon, CLI, SDK, keresztül érhető el, és a hitelesített REST API-k. Az adatvédelem az Azure Portalon keresztül elérhető telemetriai adatokat. 
+A Azure Machine Learning által tárolt termékbeli adatok a Azure Portal, a CLI, az SDK és a hitelesített REST API-k használatával exportálhatók és törlésre használhatók. Az adatvédelem az Azure Portalon keresztül elérhető telemetriai adatokat. 
 
-Az Azure Machine Learning-szolgáltatások, a személyes adatok felhasználói adatokat a futtatási előzmények dokumentumok és a szolgáltatás egyes felhasználói interakció telemetriai rekordjait áll.
+Azure Machine Learning a személyes adatok a futtatási előzmények dokumentumaiban lévő felhasználói adatokból és a szolgáltatással kapcsolatos egyes felhasználói interakciók telemetria állnak.
 
 ## <a name="delete-workspace-data-with-the-rest-api"></a>A REST API-val a munkaterület adatainak törlése 
 
@@ -231,3 +231,29 @@ Sablonok szerezhető be:
 Adatforrások szerezhető be:
 
     https://{location}.aether.ms/api/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/DataSources/{id}
+
+## <a name="delete-visual-interface-assets"></a>Visual Interface-eszközök törlése
+
+A kísérletet létrehozó vizualizációs felületen törölje az egyes eszközöket:
+
+1. A bal oldalon válassza ki a törölni kívánt eszköz típusát.
+
+    ![Eszközök törlése](media/how-to-export-delete-data.md/delete-experiment.png)
+
+1. A listából válassza ki a törölni kívánt eszközöket.
+
+1. A lap alján válassza a **Törlés**lehetőséget.
+
+## <a name="export-visual-interface-data"></a>Visual Interface-adatexportálás
+
+A kísérletet létrehozó vizualizáció felületén exportálja a hozzáadott adatait:
+
+1. A bal **oldalon válassza az adatelemet**.
+
+1. A felső részen válassza a **saját adatkészletek** vagy **minták** lehetőséget az exportálni kívánt adat megkereséséhez.
+
+    ![Az adatletöltés](media/how-to-export-delete-data.md/download-data.png)
+
+1. A listából válassza ki az exportálandó egyes adatkészleteket.
+
+1. A lap alján válassza a **Letöltés**lehetőséget.

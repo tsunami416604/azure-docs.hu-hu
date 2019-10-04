@@ -1,6 +1,6 @@
 ---
-title: Webalkalmazás üzembe helyezése az Azure Cache-ben a redis Cache
-description: Az Azure Resource Manager-sablon használatával helyezze üzembe a webalkalmazását az Azure Cache redis.
+title: Webalkalmazás kiépítése az Azure cache Redis
+description: Azure Resource Manager sablonnal üzembe helyezheti a webalkalmazást az Azure cache használatával a Redis.
 services: app-service
 documentationcenter: ''
 author: yegu-ms
@@ -10,29 +10,28 @@ ms.assetid: 6e99c71f-ef8e-4570-a307-e4c059e60c35
 ms.service: app-service
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
 ms.author: yegu
-ms.openlocfilehash: 23b8e4e7e88f5b993f9b0f9981bbae6b884e2818
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b28ed58159545bca10ec89375b82b9c97ae38630
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57880008"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098241"
 ---
-# <a name="create-a-web-app-plus-azure-cache-for-redis-using-a-template"></a>Hozzon létre egy webalkalmazás és az Azure Cache redis-sablon használatával
+# <a name="create-a-web-app-plus-azure-cache-for-redis-using-a-template"></a>Webalkalmazás és Azure cache létrehozása a Redis sablon használatával
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Ebben a témakörben megtudhatja, hogyan hozhat létre egy Azure Resource Manager-sablon üzembe helyez egy Azure-webalkalmazást az Azure Cache redis. Megtudhatja, hogyan határozza meg, mely erőforrások vannak telepítve, és a megadott paramétereket definiálása az üzembe helyezés végrehajtása esetén. Ez a sablont használhatja a saját környezeteiben, vagy testre is szabhatja a saját követelményeinek megfelelően.
+Ebben a témakörben megtudhatja, hogyan hozhat létre olyan Azure Resource Manager-sablont, amely egy Azure-webalkalmazást telepít az Azure cache Redis. Megtudhatja, hogyan határozhatja meg, hogy mely erőforrások legyenek telepítve, és Hogyan határozható meg a központi telepítés végrehajtásakor megadott paraméterek. Ez a sablont használhatja a saját környezeteiben, vagy testre is szabhatja a saját követelményeinek megfelelően.
 
-Sablonok létrehozásával kapcsolatos további információkért lásd: [Azure Resource Manager-sablonok készítése](../azure-resource-manager/resource-group-authoring-templates.md). A JSON-szintaxist és a gyorsítótár erőforrástípusok tulajdonságaival kapcsolatos tudnivalókért lásd: [a Microsoft.Cache erőforrás-típus](/azure/templates/microsoft.cache/allversions).
+További információ a sablonok létrehozásáról: [Azure Resource Manager-sablonok](../azure-resource-manager/resource-group-authoring-templates.md)készítése. A gyorsítótár-erőforrástípusok JSON-szintaxisának és-tulajdonságainak megismeréséhez tekintse meg a [Microsoft. cache típusú erőforrástípusok](/azure/templates/microsoft.cache/allversions)című témakört.
 
-A teljes sablonját, lásd: [webalkalmazást az Azure Cache Redis-sablon](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-with-redis-cache/azuredeploy.json).
+A teljes sablon: webalkalmazás [Az Azure cache for Redis sablonban](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-with-redis-cache/azuredeploy.json).
 
-## <a name="what-you-will-deploy"></a>Mit fog üzembe helyezni
-Ez a sablon telepíti:
+## <a name="what-you-will-deploy"></a>Üzembe helyezés
+Ebben a sablonban a következőket fogja telepíteni:
 
 * Azure Web App
 * Azure Cache for Redis
@@ -41,13 +40,13 @@ Az automatikus üzembe helyezéshez kattintson az alábbi gombra:
 
 [![Üzembe helyezés az Azure-ban](./media/cache-web-app-arm-with-redis-cache-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-with-redis-cache%2Fazuredeploy.json)
 
-## <a name="parameters-to-specify"></a>Adja meg a paramétereket
+## <a name="parameters-to-specify"></a>Megadható paraméterek
 [!INCLUDE [app-service-web-deploy-web-parameters](../../includes/app-service-web-deploy-web-parameters.md)]
 
 [!INCLUDE [cache-deploy-parameters](../../includes/cache-deploy-parameters.md)]
 
-## <a name="variables-for-names"></a>Nevek változói
-Ez a sablon változók használatával hozhat létre az erőforrások nevét. Használja a [uniqueString](../azure-resource-manager/resource-group-template-functions-string.md#uniquestring) függvény létrehozására egy értéket az erőforráscsoport azonosítója alapján.
+## <a name="variables-for-names"></a>Nevekre vonatkozó változók
+Ez a sablon változók használatával hozza létre az erőforrások nevét. A [uniqueString](../azure-resource-manager/resource-group-template-functions-string.md#uniquestring) függvény használatával hoz létre értéket az erőforráscsoport azonosítója alapján.
 
     "variables": {
       "hostingPlanName": "[concat('hostingplan', uniqueString(resourceGroup().id))]",
@@ -60,9 +59,9 @@ Ez a sablon változók használatával hozhat létre az erőforrások nevét. Ha
 [!INCLUDE [app-service-web-deploy-web-host](../../includes/app-service-web-deploy-web-host.md)]
 
 ### <a name="azure-cache-for-redis"></a>Azure Cache for Redis
-Az Azure Cache Redis a webalkalmazáshoz használt hoz létre. A gyorsítótár neve szerepel a **cacheName** változó.
+Létrehozza az Azure cache-t a webalkalmazáshoz használt Redis. A gyorsítótár neve a **cacheName** változóban van megadva.
 
-A sablon létrehozza a gyorsítótár megegyezik az erőforráscsoport ugyanazon a helyen.
+A sablon ugyanazon a helyen hozza létre a gyorsítótárat, mint az erőforráscsoportot.
 
     {
       "name": "[variables('cacheName')]",
@@ -83,10 +82,10 @@ A sablon létrehozza a gyorsítótár megegyezik az erőforráscsoport ugyanazon
     }
 
 
-### <a name="web-app"></a>Webalkalmazás
-Létrehozza a webalkalmazást a megadott név a **Webhelynév helyére írja be** változó.
+### <a name="web-app"></a>Web app
+Létrehozza a **webSiteName** változóban megadott nevű webalkalmazást.
 
-Figyelje meg, hogy a web app alkalmazás beállítás tulajdonságokkal, amelyek lehetővé teszik az való együttműködés az Azure Cache redis van konfigurálva. Ezen beállítások dinamikusan létrehozott alkalmazás üzembe helyezése során megadott értékek alapján.
+Figyelje meg, hogy a webalkalmazás az Alkalmazásbeállítások tulajdonságaival van konfigurálva, amelyek lehetővé teszik, hogy együttműködjön a Redis készült Azure cache-sel. Az alkalmazás beállításai dinamikusan jönnek létre az üzembe helyezés során megadott értékek alapján.
 
     {
       "apiVersion": "2015-08-01",

@@ -7,13 +7,13 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 02/26/2018
-ms.openlocfilehash: dfb1e0093893fadf22c7a92ef5f351ae8920a977
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.date: 02/26/2019
+ms.openlocfilehash: 8fc66d70b840578bff086519a7b39e5f389a3de3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036460"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66479613"
 ---
 # <a name="how-to-globally-distribute-reads-using-azure-cosmos-dbs-api-for-mongodb"></a>Hogyan terjessze globálisan olvassa be az Azure Cosmos DB API használatával a mongodb-hez
 
@@ -75,11 +75,11 @@ readFromSecondaryfunc query completed!
 
 MongoDB-protokoll biztosítja az ügyfelek számára a következő olvasási beállítás mód:
 
-1. ELSŐDLEGES
+1. PRIMARY
 2. PRIMARY_PREFERRED
 3. MÁSODLAGOS
 4. SECONDARY_PREFERRED
-5. LEGKÖZELEBBI
+5. NEAREST
 
 Tekintse meg a részletes [MongoDB olvasási beállítás viselkedése](https://docs.mongodb.com/manual/core/read-preference-mechanics/#replica-set-read-preference-behavior) ezekről a működését a dokumentációt, olvassa el előnyben módokat. Cosmos dB-ben elsődleges írási régiót és a másodlagos OLVASÁSI régióban leképezések rendeli hozzá.
 

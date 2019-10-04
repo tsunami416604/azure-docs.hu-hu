@@ -3,7 +3,7 @@ title: A Xamarin.iOS-alkalmazást az Azure App Service leküldéses értesítés
 description: Ismerje meg, hogyan küldhet leküldéses értesítéseket a Xamarin.iOS-alkalmazást az Azure App Service használatával
 services: app-service\mobile
 documentationcenter: xamarin
-author: conceptdev
+author: elamalani
 manager: crdun
 editor: ''
 ms.assetid: 2921214a-49f8-45e1-a306-a85ce21defca
@@ -12,18 +12,22 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/12/2016
-ms.author: crdun
-ms.openlocfilehash: 32a8c36d223e2b0c12f5d82ec748af66ae841b01
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: 9edd5e755b4a42fe881a0863bb284039299ec713
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42819022"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446272"
 ---
 # <a name="add-push-notifications-to-your-xamarinios-app"></a>Leküldéses értesítések Xamarin.iOS-alkalmazás hozzáadása
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
+
+> [!NOTE]
+> A Visual Studio App Center fektet a mobilalkalmazás-fejlesztés központi új, integrált szolgáltatások. A fejlesztők a **hozhat létre**, **teszt** és **terjesztése** állíthat be folyamatos integrációt és teljesítést folyamat szolgáltatások. Az alkalmazás telepítve van, a fejlesztők monitorozható az állapot és az alkalmazás használatával használatát a **Analytics** és **diagnosztikai** -szolgáltatásokat, és kapcsolatba léphet a felhasználókat a **leküldéses** a szolgáltatás. A fejlesztők is kihasználhatják a **Auth** azok a felhasználók hitelesítéséhez és **adatok** szolgáltatás és a felhőbeli alkalmazások adatainak szinkronizálása. Tekintse meg [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-xamarin-ios-get-started-push) még ma.
+>
 
 ## <a name="overview"></a>Áttekintés
 
@@ -147,7 +151,7 @@ Az alkalmazás most már frissül, és támogatja a leküldéses értesítéseke
    > [!NOTE]
    > Az alkalmazásból explicit módon el kell fogadnia a leküldéses értesítések. Ezt a kérelmet csak akkor történik meg, amely az alkalmazás első alkalommal.
 
-2. Az alkalmazásban írjon be egy feladatot, és kattintson a plusz (**+**) ikonra.
+2. Az alkalmazásban írjon be egy feladatot, és kattintson a plusz ( **+** ) ikonra.
 3. Győződjön meg arról, hogy értesítés érkezik, majd kattintson a **OK** az értesítés elvetéséhez.
 4. Ismételje meg a 2. lépés azonnal zárja be az alkalmazást, majd győződjön meg arról, hogy egy értesítés jelenik meg.
 

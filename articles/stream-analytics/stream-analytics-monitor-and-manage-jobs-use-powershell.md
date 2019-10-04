@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: 27ee1980fd60a2e301830f198a5f65c4d89df59f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: cdc09973a192924c5b9a81cd4ed49b9f36fc0eb1
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59046529"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "67612302"
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-azure-powershell-cmdlets"></a>Figyelheti és kezelheti a Stream Analytics-feladatok az Azure PowerShell-parancsmagok
 Ismerje meg, hogyan figyelheti és a Stream Analytics-erőforrások kezelése a az Azure PowerShell-parancsmagok és a powershell-parancsprogramok, amelyek az alapszintű Stream Analytics-feladatok végrehajtásához.
@@ -52,13 +52,13 @@ New-AzResourceGroup -Name <YOUR RESOURCE GROUP NAME> -Location <LOCATION>
 
 
 > [!NOTE]
-> Stream Analytics-feladatok programozott módon létrehozott nem rendelkezik a figyelés alapértelmezés szerint engedélyezve van.  Manuálisan engedélyezheti figyelése az Azure Portalon, a feladat figyelése oldalára, és az Engedélyezés gombra kattint, vagy ezt megteheti is programozott módon a helyen található lépéseket követve [Azure Stream Analytics – Stream Analytics-feladatok figyelése Programozott módon](stream-analytics-monitor-jobs.md).
+> Stream Analytics-feladatok programozott módon létrehozott nem rendelkezik a figyelés alapértelmezés szerint engedélyezve van.  Az Azure Portalon manuálisan engedélyezheti a figyelést, ha megnyitja a feladat figyelője lapját, és az Engedélyezés gombra kattint, vagy ezt programozott módon hajthatja végre a következő helyen található lépések végrehajtásával: [Azure stream Analytics-Monitor stream Analytics Jobs Programozott](stream-analytics-monitor-jobs.md)módon.
 > 
 > 
 
 ## <a name="azure-powershell-cmdlets-for-stream-analytics"></a>Stream Analytics az Azure PowerShell-parancsmagok
 A következő Azure PowerShell-parancsmagok segítségével figyelheti és kezelheti az Azure Stream Analytics-feladatok. Vegye figyelembe, hogy az Azure PowerShell rendelkezik-e a különböző verziók. 
-**Az első parancs van a felsorolt példák az Azure PowerShell 0.9.8-as verzióját használja, a második parancs van az Azure PowerShell 1.0-t.** Az Azure PowerShell 1.0-parancsok mindig lesz "Az" a parancsot.
+**Az első parancs van a felsorolt példák az Azure PowerShell 0.9.8-as verzióját használja, a második parancs van az Azure PowerShell 1.0-t.** A Azure PowerShell 1,0 parancsok mindig az "az" parancsot fogják tartalmazni a parancsban.
 
 ### <a name="get-azurestreamanalyticsjob--get-azstreamanalyticsjob"></a>Get-AzureStreamAnalyticsJob | Get-AzStreamAnalyticsJob
 Felsorolja az összes Stream Analytics-feladatok az Azure-előfizetés vagy a megadott erőforráscsoportban, vagy egy adott feladat egy erőforráscsoporton belül feladat adatainak beolvasása.
@@ -228,7 +228,7 @@ Ha egy már létező bemeneti adja meg, és ne adja meg a – Force paraméterek
 
 Ha megad a – Force paramétert, és adjon meg egy meglévő adjon meg nevet, a bemeneti váltja megerősítés nélkül.
 
-A JSON-fájl szerkezete és annak tartalmát a részletes információkért tekintse meg a [bemeneti létrehozása (Azure Stream Analytics)] [ msdn-rest-api-create-stream-analytics-input] szakaszában a [Stream Analytics felügyeleti REST API-referencia Szalagtár][stream.analytics.rest.api.reference].
+A JSON-fájl struktúrájával és tartalmával kapcsolatos részletes információkért tekintse meg a [stream Analytics Management REST API hivatkozási könyvtár][stream.analytics.rest.api.reference] [bemenetének létrehozása (Azure stream Analytics)][msdn-rest-api-create-stream-analytics-input] szakaszát.
 
 **1. példa**
 
@@ -287,7 +287,7 @@ Ha egy már létező feladat nevét adja meg, és ne adja meg a – Force param�
 
 Ha megad a – Force paramétert, és adja meg egy meglévő feladat nevét, a feladat definíciója váltja megerősítés nélküli.
 
-A JSON-fájl szerkezete és annak tartalmát a részletes információkért tekintse meg a [Stream Analytics-feladat létrehozása] [ msdn-rest-api-create-stream-analytics-job] szakaszában a [Stream Analytics felügyeleti REST API-referencia függvénytár] [stream.analytics.rest.api.reference].
+A JSON-fájl struktúrájával és tartalmával kapcsolatos részletes információkért tekintse meg az [stream Analytics Management REST API hivatkozási könyvtárának][stream.analytics.rest.api.reference] [stream Analytics feladatok létrehozása][msdn-rest-api-create-stream-analytics-job] című szakaszát.
 
 **1. példa**
 
@@ -330,7 +330,7 @@ Ha egy már létező kimenetet adja meg, és ne adja meg a – Force paramétere
 
 Ha megad a – Force paramétert, és adjon meg egy meglévő kimeneti név, a kimeneti váltja megerősítés nélkül.
 
-A JSON-fájl szerkezete és annak tartalmát a részletes információkért tekintse meg a [kimeneti létrehozása (Azure Stream Analytics)] [ msdn-rest-api-create-stream-analytics-output] szakaszában a [Stream Analytics felügyeleti REST API-referencia Szalagtár][stream.analytics.rest.api.reference].
+A JSON-fájl struktúrájával és tartalmával kapcsolatos részletes információkért tekintse meg a [stream Analytics Management REST API-függvénytár][stream.analytics.rest.api.reference] [kimenetének létrehozása (Azure stream Analytics)][msdn-rest-api-create-stream-analytics-output] szakaszát.
 
 **1. példa**
 
@@ -373,7 +373,7 @@ Ha egy már létező átalakítás adja meg, és ne adja meg a – Force paramé
 
 Ha megad a – Force paramétert, és adjon meg egy meglévő transzformációjának a neve, az átalakítás váltja megerősítés nélkül.
 
-A JSON-fájl szerkezete és annak tartalmát a részletes információkért tekintse meg a [átalakítási létrehozása (Azure Stream Analytics)] [ msdn-rest-api-create-stream-analytics-transformation] szakaszában a [Stream Analytics felügyeleti REST API Referenciatárában][stream.analytics.rest.api.reference].
+A JSON-fájl struktúrájával és tartalmával kapcsolatos részletes információkért tekintse meg a [stream Analytics felügyeleti REST API hivatkozási könyvtár][stream.analytics.rest.api.reference] [átalakításának létrehozása (Azure stream Analytics)][msdn-rest-api-create-stream-analytics-transformation] szakaszát.
 
 **1. példa**
 
@@ -550,7 +550,7 @@ További segítségre van szüksége, próbálja meg [Azure Stream Analytics-fó
 * [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Scale Azure Stream Analytics jobs](stream-analytics-scale-jobs.md) (Azure Stream Analytics-feladatok méretezése)
-* [Azure Stream Analytics Query Language Reference](https://msdn.microsoft.com/library/azure/dn834998.aspx) (Referencia az Azure Stream Analytics lekérdezési nyelvhez)
+* [Azure Stream Analytics Query Language Reference](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) (Referencia az Azure Stream Analytics lekérdezési nyelvhez)
 * [Az Azure Stream Analytics felügyeleti REST API referenciája](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
 [msdn-switch-azuremode]: https://msdn.microsoft.com/library/dn722470.aspx

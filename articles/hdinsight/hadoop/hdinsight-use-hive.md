@@ -2,20 +2,19 @@
 title: Mi az Apache Hive és a HiveQL – Azure HDInsight
 description: Az Apache Hive-egy rendszer data warehouse az Apache Hadoop. A Hive használata a HiveQL, tárolt adatok lekérdezheti, amely hasonló Transact-SQL. Ebből a dokumentumból megtudhatja, hogyan használata Azure HDInsight Hive és a HiveQL.
 keywords: hiveql, mi az a hive, a hadoop hiveql, hogyan használható a hive, ismerje meg a hive, mi az a hive
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 03/26/2019
-ms.openlocfilehash: 1f0746436fa980b6becfa7a88560734aa07a54e2
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 06/06/2019
+ms.openlocfilehash: ea8f14a7013a937ddd77baf0f50b8dca09cabad6
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58801929"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076314"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Mi az Apache Hive és az Azure HDInsight HiveQL?
 
@@ -49,7 +48,7 @@ Használja az alábbi táblázat a Hive használata a HDInsight különböző m�
 
 ## <a name="hiveql-language-reference"></a>HiveQL nyelvi referencia
 
-HiveQL nyelvi dokumentáció áll rendelkezésre a [nyelv manuális (https://cwiki.apache.org/confluence/display/Hive/LanguageManual)](https://cwiki.apache.org/confluence/display/Hive/LanguageManual).
+HiveQL nyelvi dokumentáció áll rendelkezésre a [nyelv manuális](https://cwiki.apache.org/confluence/display/Hive/LanguageManual).
 
 ## <a name="hive-and-data-structure"></a>Hive-val és az adatok struktúrája
 
@@ -92,11 +91,11 @@ Olyan táblázatot, amely a Hive használatával is létrehozhat két típusa va
     * Szüksége lesz egy egyéni helyen, például egy nem alapértelmezett tárfiók.
     * Nem a hive kezeli a adatformátum, tartózkodási hely, stb.
 
-További információkért lásd: a [Hive belső és külső táblák bevezető] [ cindygross-hive-tables] blogbejegyzést.
+További információkért lásd: a [Hive belső és külső táblák bevezető](https://blogs.msdn.microsoft.com/cindygross/2013/02/05/hdinsight-hive-internal-and-external-tables-intro/) blogbejegyzést.
 
 ## <a name="user-defined-functions-udf"></a>Felhasználó által definiált függvények (UDF)
 
-Hive is kiterjeszthető keresztül **felhasználó által definiált függvények (UDF)**. Egy UDF funkciók vagy logika, amely nem könnyen modellezett bevezetése a HiveQL teszi lehetővé. Például egy UDF-EK használata a Hive az alábbi dokumentumokban talál:
+Hive is kiterjeszthető keresztül **felhasználó által definiált függvények (UDF)** . Egy UDF funkciók vagy logika, amely nem könnyen modellezett bevezetése a HiveQL teszi lehetővé. Például egy UDF-EK használata a Hive az alábbi dokumentumokban talál:
 
 * [Az Apache Hive egy Java-felhasználó által definiált függvény használata](../hadoop/apache-hadoop-hive-java-udf.md)
 
@@ -144,7 +143,7 @@ Az előző példában a hiveql hajtsa végre a következő műveleteket:
 
 * `STORED AS TEXTFILE LOCATION`: Arra utasítja a Hive, az adatok tárolására (a `example/data` directory), és hogy szövegként lesz tárolva. Az adatok egyetlen fájlban vagy több fájl a könyvtárban lévő elosztva.
 
-* `SELECT`: Kiválasztja az összes sor számát, az oszlop **t4** értéket tartalmazza **[hiba]**. A jelen nyilatkozat egy értékét adja vissza **3** mert három sort, amely tartalmazza ezt az értéket.
+* `SELECT`: Kiválasztja az összes sor számát, az oszlop **t4** értéket tartalmazza **[hiba]** . A jelen nyilatkozat egy értékét adja vissza **3** mert három sort, amely tartalmazza ezt az értéket.
 
 * `INPUT__FILE__NAME LIKE '%.log'` -Hive megkísérli a alkalmazni a sémát a címtárban található összes fájl. Ebben az esetben a könyvtárban található fájlok, amelyek nem egyeznek a sémát. Szemétgyűjtési adatokat a eredmények elkerülése érdekében a jelen nyilatkozat arra utasítja a Hive, hogy azt kell csak adatokat adja vissza a végződésű fájlokból. napló.
 
@@ -176,7 +175,7 @@ Ezek az utasítások hajtsa végre a következő műveleteket:
 
 * `STORED AS ORC`: Optimalizált sor Oszlopalapú (ORC) formátumban tárolja az adatokat. ORC Hive-adatok tárolására szolgáló nagymértékben optimalizált és hatékony formátumban.
 
-* `INSERT OVERWRITE ... SELECT`: A sorok kiválasztása a **log4jLogs** tartalmazó tábla **[hiba]**, majd beszúrja az adatokat, és a **hibanaplókat** tábla.
+* `INSERT OVERWRITE ... SELECT`: A sorok kiválasztása a **log4jLogs** tartalmazó tábla **[hiba]** , majd beszúrja az adatokat, és a **hibanaplókat** tábla.
 
 > [!NOTE]  
 > Ellentétben a külső táblák elvetését egy belső táblát is törli az alapul szolgáló adatokat.
@@ -205,50 +204,20 @@ Az Azure Data Factory lehetővé teszi, hogy HDInsight a Data Factory-folyamatok
 
 Az SQL Server Integration Services (SSIS) használatával egy Hive-feladat futtatása. Az Azure Feature Pack for SSIS biztosít a következő összetevőket, amely a HDInsight Hive-feladatok dolgozhat.
 
-* [Az Azure HDInsight Hive-tevékenység][hivetask]
+* [Az Azure HDInsight Hive-tevékenység](https://docs.microsoft.com/sql/integration-services/control-flow/azure-hdinsight-hive-task)
 
-* [Azure Subscription Connection Manager][connectionmanager]
+* [Azure Subscription Connection Manager](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-subscription-connection-manager)
 
-További információkért lásd: a [Azure Feature Pack] [ ssispack] dokumentációját.
+További információkért lásd: a [Azure Feature Pack](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis) dokumentációját.
 
 ### <a name="apache-oozie"></a>Az Apache Oozie
 
 Az Apache Oozie egy rendszer munkafolyamat és összehangoláshoz, amely a Hadoop-feladatokat kezeli. Az Oozie használata a Hive használatával további információkért lásd: a [használata Apache Oozie megadásához és a munkafolyamat futtatása](../hdinsight-use-oozie-linux-mac.md) dokumentumot.
 
-## <a id="nextsteps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy már Hive van, és hogyan használható a HDInsight a Hadoop-keretrendszerrel, egyéb módon az Azure HDInsight használata az alábbi hivatkozások segítségével.
 
-* [Adatok feltöltése a HDInsightba][hdinsight-upload-data]
-* [Az Apache Pig használata a HDInsight][hdinsight-use-pig]
-* [HDInsight MapReduce-feladatok használata][hdinsight-use-mapreduce]
-
-[azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
-
-[apache-tez]: https://tez.apache.org
-[apache-hive]: https://hive.apache.org/
-[apache-log4j]: https://en.wikipedia.org/wiki/Log4j
-[hive-on-tez-wiki]: https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez
-[import-to-excel]: https://azure.microsoft.com/documentation/articles/hdinsight-connect-excel-power-query/
-[hivetask]: https://msdn.microsoft.com/library/mt146771(v=sql.120).aspx
-[connectionmanager]: https://msdn.microsoft.com/library/mt146773(v=sql.120).aspx
-[ssispack]: https://msdn.microsoft.com/library/mt146770(v=sql.120).aspx
-
-[hdinsight-use-pig]: hdinsight-use-pig.md
-[hdinsight-use-oozie]: hdinsight-use-oozie-linux-mac.md
-[hdinsight-use-mapreduce]: hdinsight-use-mapreduce.md
-
-
-[hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
-
-[hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md
-[hdinsight-submit-jobs]: hdinsight-submit-hadoop-jobs-programmatically.md
-[hdinsight-upload-data]: ../hdinsight-upload-data.md
-
-[Powershell-install-configure]: /powershell/azureps-cmdlets-docs
-[powershell-here-strings]: https://technet.microsoft.com/library/ee692792.aspx
-
-
-[cindygross-hive-tables]: https://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
+* [Adatok feltöltése a HDInsight](../hdinsight-upload-data.md)
+* [Használható Python felhasználói függvények (UDF) az Apache Hive és a HDInsight Apache Pig](./python-udf-hdinsight.md)
+* [MapReduce-feladatok használata a HDInsightban](hdinsight-use-mapreduce.md)

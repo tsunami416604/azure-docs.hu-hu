@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: fbefe233ce0d2477982faf0a9f38a73062e0c7a1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58884465"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60878800"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen1"></a>Adatok másolása az Azure Storage-blobokat és az Azure Data Lake Storage Gen1 között a Distcp használatával
 > [!div class="op_single_selector"]
@@ -40,13 +40,13 @@ A Distcp segédprogram, amely segítségével különböző forrásokból szárm
 
 1. Az asztalon SSH használatával csatlakozhat a fürthöz. Lásd: [csatlakozás Linux-alapú HDInsight-fürthöz](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md). Futtassa a parancsokat a SSH használatával.
 
-2. Győződjön meg arról, hogy hozzáférhet-e az Azure Storage Blobs (WASB). Futtassa az alábbi parancsot:
+2. Győződjön meg arról, hogy hozzáférhet-e az Azure Storage Blobs (WASB). Futtassa a következő parancsot:
 
         hdfs dfs –ls wasb://<container_name>@<storage_account_name>.blob.core.windows.net/
 
     A kimenet kell biztosítania az storage blob tartalmának listáját.
 
-3. Ehhez hasonlóan ellenőrizze, hogy a Data Lake Storage Gen1 fiók hozzáférhet a fürtből. Futtassa az alábbi parancsot:
+3. Ehhez hasonlóan ellenőrizze, hogy a Data Lake Storage Gen1 fiók hozzáférhet a fürtből. Futtassa a következő parancsot:
 
         hdfs dfs -ls adl://<data_lake_storage_gen1_account>.azuredatalakestore.net:443/
 

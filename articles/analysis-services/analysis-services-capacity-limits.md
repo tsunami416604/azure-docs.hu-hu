@@ -1,75 +1,44 @@
 ---
-title: Az Azure Analysis Services-erőforrás és objektum korlátozásai |} A Microsoft Docs
-description: Azure Analysis Services erőforrás- és korlátokat ismerteti.
+title: Erőforrás-és objektum-korlátok Azure Analysis Servicesa | Microsoft Docs
+description: Ismerteti Azure Analysis Services erőforrás-és objektum-korlátozásokat.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/11/2019
+ms.date: 08/23/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 0ffbffc788baaffd4a0532c3918ed82cc3eaf5c3
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 40a5b68a12724f2574af19bb10c276c54c5afba0
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527812"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997586"
 ---
-# <a name="analysis-services-resource-and-object-limits"></a>Analysis Services erőforrás- és objektum korlátozásai
+# <a name="analysis-services-resource-and-object-limits"></a>Erőforrás-és objektum-korlátok Analysis Services
 
-Ez a cikk bemutatja az erőforrás és a modell korlátok objektumot.
+Ez a cikk az erőforrás-és modell-objektumok korlátait ismerteti.
 
-## <a name="tier-limits"></a>Csomag
+## <a name="tier-limits"></a>Rétegek korlátai
 
-### <a name="developer-tier"></a>Fejlesztői szint
+A fejlesztői, alapszintű és standard szintű QPU és a memória korlátozásait a [Azure Analysis Services díjszabását ismertető oldalon](https://azure.microsoft.com/pricing/details/analysis-services/)tekintheti meg.
 
-Ezt a szintet kiértékeléshez, valamint fejlesztési és tesztelési forgatókönyvekhez ajánljuk. Egyetlen csomagban tartalmazza a standard szintű csomagéval megegyező funkciókat, de korlátozott feldolgozási teljesítménnyel, QPU-val és memóriamérettel rendelkezik. A kibővített lekérdezésreplika lekérdezés nem érhető el ezen a szinten. Ehhez a szinthez nem tartozik SLA.
+## <a name="object-limits"></a>Objektum korlátai
 
-|Felkészülés  |QPU-k  |Memória (GB)  |
-|---------|---------|---------|
-|D1    |    20     |    3     |
+Ezek a korlátok elméletiak. A teljesítmény csökkenése alacsonyabb számokkal történik.
 
-
-### <a name="basic-tier"></a>Alapszintű csomag
-
-Ezt a szintet olyan éles környezetben való használatra ajánlunk, amelyben kis méretű táblázatos modellek, korlátozott mennyiségű párhuzamos felhasználó és egyszerűbb adatfrissítési követelmények szerepelnek. Kibővített lekérdezésreplika lekérdezése *nem érhető el* ezen a szinten. A réteg perspektívák, több partíciót és DirectQuery táblázatosmodell-funkciók nem támogatottak.  
-
-|Felkészülés  |QPU-k  |Memória (GB)  |
-|---------|---------|---------|
-|B1    |    40     |    10     |
-|B2    |    80     |    20     |
-
-### <a name="standard-tier"></a>Standard csomag
-
-Ez a szint olyan létfontosságú, éles környezetben használt alkalmazásokhoz ideális, amelyek rugalmasságot követelnek meg a párhuzamos felhasználói tevékenységekre vonatkozóan, és amelyek gyorsan növekvő adatmodelleket használnak. Támogatja a speciális adatfrissítést az adatmodellek közel valós idejű frissítése érdekében, valamint az összes táblázatos modellezési funkciót is.
-
-|Felkészülés  |QPU-k  |Memória (GB)  |
-|---------|---------|---------|
-|S1    |    40     |    10     |
-|S2    |    100     |    25     |
-|S3    |    200     |    50     |
-|S4    |    400     |    100     |
-|S8*    |    320     |    200     |
-|S9*    |    640    |    400     |
-
-\* Nem érhető el az összes régióban.  
-
-## <a name="object-limits"></a>Objektum korlátok
-
-Ezek a korlátok elméleti. Teljesítmény fog csökkenteni kell a alacsonyabb sorszámúak címen.
-
-|Objektum|Maximális méret és számok|  
+|Object|Maximális méretek/számok|  
 |------------|----------------------------|  
-|Adatbázis-példány|16,000|  
-|Táblák és oszlopok adatbázisban összesített száma|16,000|  
-|Egy tábla sorainak|Korlátlan<br /><br /> **Figyelmeztetés:** A korlátozás, hogy nincs egyetlen oszlop a tábla több mint 1,999,999,997 különböző értékekkel rendelkezhet.|  
-|Egy tábla hierarchiák|15,999|  
-|A hierarchia szintek|15,999|  
+|Példányban lévő adatbázisok|16,000|  
+|Táblák és oszlopok együttes száma egy adatbázisban|16,000|  
+|Táblázat sorai|Korlátlan<br /><br /> **Figyelmeztetés** Azzal a korlátozással, hogy a táblában egyetlen oszlop sem rendelkezhet több mint 1 999 999 997 különböző értékkel.|  
+|Hierarchiák egy táblában|15 999|  
+|Hierarchia szintjei|15 999|  
 |Kapcsolatok|8,000|  
-|Az összes tábla oszlopainak kulcs|15,999|  
-|Mértékek a táblák|2^31-1 = 2,147,483,647|  
-|Egy lekérdezés által visszaadott cellák|2^31-1 = 2,147,483,647|  
-|Az adatforrás-lekérdezés rögzítése mérete|64 K|  
-|Objektum nevének hossza|512 karakter|  
+|A kulcsok oszlopai az összes táblában|15 999|  
+|Mértékek a táblákban|2 ^ 31-1 = 2 147 483 647|  
+|Lekérdezés által visszaadott cellák|2 ^ 31-1 = 2 147 483 647|  
+|A forrás-lekérdezés rekordjának mérete|64 K|  
+|Az objektumok neveinek hossza|512 karakter|  
 
 

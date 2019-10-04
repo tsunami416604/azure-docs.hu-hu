@@ -17,11 +17,11 @@ ms.date: 06/12/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 895fb0d83e383618818325263ac80c5919a0ee7b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56164149"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "65406953"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Az Azure Active Directory integrálása az értékesítési vezető Remix E
 
@@ -103,14 +103,14 @@ Engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és egyszer
 
     a. Az a **bejelentkezési URL-** mezőbe írja be egy URL-címet a következő formátumban: *https://\<Server-alapú-URL > /\<altartomány > / esales-pc*.
 
-    b. Az a **azonosító** mezőbe írja be egy URL-címet a következő formátumban: *https://\<Server-alapú-URL > /\<altartomány > /*.
+    b. Az a **azonosító** mezőbe írja be egy URL-címet a következő formátumban: *https://\<Server-alapú-URL > /\<altartomány > /* .
 
     c. Megjegyzés: a **azonosító** értéket az oktatóanyag későbbi használatra.
     
     > [!NOTE] 
     > Az előző értékek nem valódi. Frissítse azokat a tényleges bejelentkezési URL-CÍMÉT és azonosító. Az értékek beszerzéséhez forduljon [E Sales Manager Remix ügyfélalkalmazás támogatási csapatának](mailto:esupport@softbrain.co.jp).
 
-1. Alatt **SAML-aláíró tanúsítvány**válassza **tanúsítvány (Base64)**, majd mentse a tanúsítványfájlt, a számítógépen.
+1. Alatt **SAML-aláíró tanúsítvány**válassza **tanúsítvány (Base64)** , majd mentse a tanúsítványfájlt, a számítógépen.
 
     ![A tanúsítvány (Base64) letöltési hivatkozás](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_certificate.png) 
 
@@ -120,7 +120,7 @@ Engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és egyszer
 
     A **attribútum szerkesztése** ablak nyílik meg.
 
-1. Másolás a **Namespace** és **neve** értékeket. Az érték létrehozása a mintában  *\<Namespace > /\<neve >*, és ez az oktatóanyag későbbi használatra mentse azt.
+1. Másolás a **Namespace** és **neve** értékeket. Az érték létrehozása a mintában  *\<Namespace > /\<neve >* , és ez az oktatóanyag későbbi használatra mentse azt.
 
     ![Az attribútum szerkesztése ablakban](./media/esalesmanagerremix-tutorial/configure2.png)
 
@@ -158,7 +158,7 @@ Engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és egyszer
     
     b. Az a **együttműködés elem** szakaszban, a legördülő listában válassza ki **e-mail**.
 
-    c. Az a **együttműködés elem** mezőbe illessze be a korábban az Azure Portalról másolt jogcímérték (azt jelenti, **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**).
+    c. Az a **együttműködés elem** mezőbe illessze be a korábban az Azure Portalról másolt jogcímérték (azt jelenti, **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** ).
 
     d. Az a **kibocsátó (entitás azonosítója)** mezőbe illessze be az értéket, amely a korábban kimásolt a **E Sales Manager Remix tartomány és URL-címek** szakaszában az Azure Portalon.
 

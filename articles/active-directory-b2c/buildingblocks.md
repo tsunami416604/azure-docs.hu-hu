@@ -1,27 +1,27 @@
 ---
-title: BuildingBlocks – az Azure Active Directory B2C |} A Microsoft Docs
-description: Adja meg az egyéni szabályzat BuildingBlocks elem Azure Active Directory B2C-t.
+title: BuildingBlocks – Azure Active Directory B2C | Microsoft Docs
+description: A Azure Active Directory B2C egyéni házirendjének BuildingBlocks elemének megadásához.
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: afa064232c10d3e84e9c301d44b82faae4904253
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 5ab2b11749aa57065a1a4d688b02fed97731ab7c
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55152977"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68464747"
 ---
 # <a name="buildingblocks"></a>BuildingBlocks
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-A **BuildingBlocks** elem belül bekerül a [TrustFrameworkPolicy](trustframeworkpolicy.md) elemet.
+A **BuildingBlocks** elem hozzá van adva a [TrustFrameworkPolicy](trustframeworkpolicy.md) elemhez.
 
 ```XML
 <TrustFrameworkPolicy
@@ -55,21 +55,23 @@ A **BuildingBlocks** elem belül bekerül a [TrustFrameworkPolicy](trustframewor
  </BuildingBlocks>
 ```
 
-A **BuildingBlocks** elem a meghatározott sorrendben kell adni a következő elemeket tartalmazza:
+A **BuildingBlocks** elem a következő elemeket tartalmazza, amelyeket meg kell adni a megadott sorrendben:
 
-- [ClaimsSchema](claimsschema.md) – határozza meg, amely lehet hivatkozni a jogcímtípusok, amelyeket a szabályzat részeként. A jogcímek séma az a hely, ahol a jogcímtípusok deklarálhatja. Számos programozási nyelvet egy változót egy jogcímtípust hasonlít. A jogcímtípus segítségével adatokat gyűjteni az alkalmazás a felhasználó, jogcímeket fogad a közösségi identitásszolgáltatókat, adatokat küldeni és fogadni egy egyéni REST API-ból, vagy az egyéni házirend által használt belső adatokat tárolja. 
+- [ClaimsSchema](claimsschema.md) – meghatározza a szabályzat részeként hivatkozható jogcím-típusokat. A jogcím-séma az a hely, ahol deklarálja a jogcímek típusait. A jogcím típusa hasonló egy változóhoz számos programozási nyelven. A jogcím típusa segítségével adatokat gyűjthet az alkalmazás felhasználója számára, fogadhat jogcímeket a közösségi identitás-szolgáltatóktól, adatokat küldhet és fogadhat az egyéni REST APItól, vagy az egyéni házirend által használt belső adatokat is tárolhatja. 
 
-- [Predikátumok és PredicateValidationsInput](predicates.md) – lehetővé teszi, hogy egy érvényesítési folyamat győződjön meg arról, hogy csak a megfelelően formázott adatok írja be a rendszer egy jogcímet.
+- [Predikátumok és PredicateValidationsInput](predicates.md) – lehetővé teszi egy érvényesítési folyamat elvégzését annak biztosítására, hogy csak a megfelelően formázott adatok legyenek beírva a jogcímek.
  
-- [ClaimsTransformations](claimstransformations.md) -jogcímek átalakítása a szabályzatban használt listáját tartalmazza.  A jogcímek átalakításáról alakít át egy jogcím egy másik. A jogcímek átalakítását, adja meg egy átalakítási módszer, például: 
-    - A kis-és a megadott karakterlánc jogcím módosítása. Például egy karakterlánc történő módosítása kisbetűket nagybetűvé.
-    - Két jogcímek összehasonlításával, és a egy jogcímet igaz jelzi, hogy a jogcímek megfelel, egyébként hamis értéket visszaadó.
-    - A házirendben a megadott paraméter egy karakterlánc jogcímet hoz létre.
-    - A véletlenszám-generátor használatával véletlenszerű karakterlánc létrehozása.
-    - Formázási jogcím alapján megadott formázó karakterlánc. Az átalakítás használja a C# `String.Format` metódust.
+- [ClaimsTransformations](claimstransformations.md) – a szabályzatban használható jogcímek átalakításának listáját tartalmazza.  A jogcím-átalakítás egy jogcímet konvertál egy másikra. A jogcím-átalakításban meg kell adnia egy átalakítási metódust, például: 
+    - Egy karakterlánc-jogcím esetének módosítása a megadott értékre. Például egy sztring kisbetűsről nagybetűre való módosítása.
+    - Két jogcím összevetése és a jogcímek visszaküldése igaz értékkel, ami azt jelzi, hogy a jogcímek egyeznek.
+    - Karakterlánc-jogcím létrehozása a házirendben megadott paraméter alapján.
+    - Véletlenszerű karakterlánc létrehozása a véletlenszám-generátor használatával.
+    - Jogcím formázása a megadott formázó sztringnek megfelelően. Ez a transzformáció a C# `String.Format` metódust használja.
+    
+- InputValidation – ez az elem lehetővé teszi, hogy olyan logikai összesítéseket végezzen el, amelyek hasonlóak a *és* a és a *vagy*a rendszerhez.
 
-- [ContentDefinitions](contentdefinitions.md) -tartalmaz URL-címek a HTML5-sablonok használata a felhasználói interakciósorozat. Egyéni házirend tartalomdefiníció határozza meg a HTML5-alapú oldal URI-ja, amely egy adott lépés a felhasználói interakciósorozatban szereplő szolgál. Ha például a bejelentkezési vagy regisztrációs, jelszó-visszaállítás, vagy hibalapok. A HTML5-fájl a LoadUri letiltásával módosíthatja a megjelenését és működését. Vagy létrehozhat új tartalomdefiníciók igény szerint. Ez az elem egy honosítási azonosítójával honosított erőforrások hivatkozást tartalmazhat
+- [ContentDefinitions](contentdefinitions.md) – a felhasználói úton használandó HTML5-sablonok URL-jeit tartalmazza. Egy egyéni szabályzatban a tartalom definíciója határozza meg a felhasználói út adott lépéséhez használt HTML5-oldal URI-JÁT. Például a bejelentkezés vagy a regisztráció, a jelszó alaphelyzetbe állítása vagy a hibák lapja. A megjelenést és a működést úgy változtathatja meg, hogy felülbírálja a HTML5-fájl Tartalomdefinícióban. Az igényeknek megfelelően új tartalmi definíciókat is létrehozhat. Ez az elem honosított erőforrás-referenciát tartalmazhat a honosítási azonosító használatával.
 
-- [A honosítás](localization.md) – lehetővé teszi, hogy több nyelv támogatása. A szabályzatok a honosítási támogatás lehetővé teszi, hogy beállít egy házirendet a támogatott nyelvek listáját, és válasszon egy alapértelmezett nyelvet. Nyelvspecifikus karakterláncok és a gyűjtemények is támogatottak.
+- [Honosítás](localization.md) – lehetővé teszi több nyelv támogatását. A házirendek honosítási támogatása lehetővé teszi, hogy beállítsa a szabályzatban támogatott nyelvek listáját, és válasszon egy alapértelmezett nyelvet. A nyelvspecifikus karakterláncok és gyűjtemények is támogatottak.
 
 

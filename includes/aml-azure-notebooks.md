@@ -9,14 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 01/25/2019
-ms.openlocfilehash: d90034e3de77f67ec3a74123c9655fda95b113fe
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: b53d3d6ad5471cfe4ce105a3aace3bc55390a610
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55302227"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533896"
 ---
-1. Végezze el a [Machine Learning az Azure portal rövid útmutatójának](../articles/machine-learning/service/quickstart-get-started.md) hozzon létre egy munkaterületet, majd indítsa el az Azure-jegyzetfüzeteket. Nyugodtan hagyja ki a **a notebook használata** szakaszt, ha szeretné.
-1. Ha már végrehajtotta a [rövid](../articles/machine-learning/service/quickstart-get-started.md), újból be kell jelentkeznie az [Azure notebookok](https://notebooks.azure.com/) , és nyissa meg a **bevezetés** projekt.  
-1. Ne feledje, a projekt indításához, ha az állapot leállítva.
-    ![A projekt indítása](./media/aml-azure-notebooks/start-project.png)
+* Fejezze be [az oktatóanyagot: Környezet és munkaterület](../articles/machine-learning/service/tutorial-1st-experiment-sdk-setup.md) beállítása munkaterületek létrehozásához és a notebook weblapjának elindításához. 
+

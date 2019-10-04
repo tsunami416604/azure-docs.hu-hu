@@ -1,88 +1,89 @@
 ---
-title: Várja meg és nem várja meg műveletek használata Beszélgetéstanuló modell – a Microsoft Cognitive Services |} A Microsoft Docs
+title: A várakozási és a nem várt műveletek használata Conversation Learner modellel – Microsoft Cognitive Services | Microsoft Docs
 titleSuffix: Azure
-description: Ismerje meg, hogyan használja a wait és nem várja meg műveleteket Beszélgetéstanuló modell.
+description: Megtudhatja, hogyan használhatja a várakozási és a nem várt műveleteket egy Conversation Learner modellel.
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: 2869e6c59388adf548e5f239d3a831a5a3f060dd
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.author: nitinme
+ROBOTS: NOINDEX
+ms.openlocfilehash: 5d9a67f0b413b624baec369a219547cf18e9dbd2
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55214262"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705608"
 ---
-# <a name="wait-and-non-wait-actions"></a>Várjon, és nem várakozási művelet
+# <a name="wait-and-non-wait-actions"></a>Várakozás és nem várt műveletek
 
-Ebben az oktatóanyagban a Beszélgetéstanuló várakozási műveletek és nem várja meg műveletek közötti különbséget mutatja.
+Ez az oktatóanyag a várakozási műveletek és a Conversation Learner nem várt műveletei közötti különbséget mutatja.
 
 ## <a name="video"></a>Videó
 
-[![Várjon, és nem-Wait oktatóanyag előzetes verzió](https://aka.ms/cl_Tutorial_v3_WaitnonWait_Preview)](https://aka.ms/cl_Tutorial_v3_WaitnonWait)
+[![WAIT vs nem-WAIT oktatóanyag – előzetes verzió](https://aka.ms/cl_Tutorial_v3_WaitnonWait_Preview)](https://aka.ms/cl_Tutorial_v3_WaitnonWait)
 
 ## <a name="requirements"></a>Követelmények
-Ehhez az oktatóanyaghoz, hogy fut-e az általános oktatóanyag robotot
+Ehhez az oktatóanyaghoz az általános oktatóanyag robotjának futtatására van szükség
 
     npm run tutorial-general
 
 ## <a name="details"></a>Részletek
 
-- Várjon a művelet: Miután a rendszer a "wait" művelet vesz igénybe, azt műveleteket, leáll, és várnak felhasználói bevitelre.
-- Nem-wait művelet: Miután a rendszer egy "nem-wait" művelet vesz igénybe, azt azonnal lehetőség egy másik művelet (Várakozás a felhasználói bevitel) nélkül.
+- Várakozási művelet: Miután a rendszer "WAIT" műveletet végez, a művelet leállítja a műveleteket, és megvárja a felhasználói adatbevitelt.
+- Nem várt művelet: Miután a rendszer "nem várt" műveletet végez, azonnal kiválaszthat egy másik műveletet (anélkül, hogy a felhasználói adatbevitelre kellene várnia).
 
 ## <a name="steps"></a>Lépések
 
 ### <a name="create-a-new-model"></a>Új modell létrehozása
 
-1. A webes felhasználói felületén kattintson az új modell
-2. A "Name" mezőbe írja be a "Várakozás nem-Wait", találati aránya adja meg, vagy a "Create" gombra.
+1. A webes felhasználói felületen kattintson az új modell elemre.
+2. A "név" mezőbe írja be a "WAIT not-WAIT" kifejezést, majd nyomja meg az ENTER billentyűt, vagy kattintson a "létrehozás" gombra.
 
-### <a name="create-the-first-two-wait-actions"></a>Az első két várjon műveletek létrehozása
+### <a name="create-the-first-two-wait-actions"></a>Az első két várakozási művelet létrehozása
 
-1. A bal oldali panelen kattintson a "Műveletek", majd az "Új Action" gombra.
-2. A "Bot a válaszban..." mezőbe írja be a "milyen kétpizzás szeretné használni?".
-    - Ez a várakozási művelet, ezért üresen hagyja a "Várakozás a Response" be van jelölve.
-3. A "Létrehozás" gombra.
-4. Ismételje meg ezeket a lépéseket, hozzon létre egy másik műveletet a "Kétpizzás von!" a robot válaszként.
+1. A bal oldali panelen kattintson a "műveletek", majd az "új művelet" gombra.
+2. A "bot válaszában..." mezőjébe írja be a "mi pizzát szeretne?" kifejezést.
+    - Ez egy várakozási művelet, ezért hagyja bejelölve a "Várakozás a válaszhoz" jelölőnégyzetet.
+3. Kattintson a "létrehozás" gombra.
+4. Ismételje meg ezeket a lépéseket, hozzon létre egy másik műveletet a "pizza az úton!" a bot válasza.
 
-### <a name="train-using-those-wait-actions"></a>Várjon műveletek használatával betanítása
+### <a name="train-using-those-wait-actions"></a>Betanítás a várakozási műveletek használatával
 
-1. A bal oldali panelen kattintson a "Train-párbeszédpanelekhez", majd az "új Train" gomb.
-2. A Csevegés panelen, ahol allocated "Írja be az üzenetet...", "Hi" típusra. 
-    - Ez szimulálja a beszélgetést a felhasználó oldalán.
-3. A "Score műveletek" gombra.
-4. Válassza ki a választ, a "milyen kétpizzás szeretné?".
-5. A felhasználó válaszolni a "Margherita".
-6. A "Score műveletek" gombra.
-7. Válassza ki a választ, a "Kétpizzás von!".
-8. A "Mentés" gombra.
+1. A bal oldali panelen kattintson a "betanítási párbeszédablakok", majd az "új vonat párbeszédpanel" gombra.
+2. A csevegési panelen írja be a következőt: "az üzenet beírása...", írja be a "Hi" kifejezést. 
+    - Ez szimulálja a beszélgetés felhasználójának oldalát.
+3. Kattintson a "pontszám műveletek" gombra.
+4. Válassza ki a választ, "mit szeretne a pizza?" kifejezésre.
+5. A felhasználó a "Margherita" kifejezéssel válaszol.
+6. Kattintson a "pontszám műveletek" gombra.
+7. Válassza ki a választ, "pizza az úton!".
+8. Kattintson a Save (Mentés) gombra.
 
-### <a name="create-a-non-wait-action-while-training"></a>Képzés során nem várakozási művelet létrehozása
-Bár nem-Wait művelet sikerült létrehozni, mint a korábban végrehajtott, is létrehozhat, a képzési munkameneten belül.
-1. A "Train párbeszédpanel" gombra.
-2. A felhasználó típusaként a "Hello".
-3. A "Score műveletek" gombra.
+### <a name="create-a-non-wait-action-while-training"></a>Nem várakozási művelet létrehozása a betanítás során
+Bár létrehozhatja a nem várt műveletet, mint korábban, létrehozhat egy betanítási munkamenetből is.
+1. Kattintson az "új vonat párbeszédpanel" gombra.
+2. A felhasználó típusa: "Hello".
+3. Kattintson a "pontszám műveletek" gombra.
 4. Kattintson a "+ művelet" gombra. 
-    - Ekkor a jól ismert (an Action létrehozása) párbeszédpanelt.
-5. Írja be a robot válasz való, "Üdvözöljük Kétpizzás Bot!"
-6. Ellenőrzés megszünteti a "Várakozás a Response" jelölőnégyzetet.
-7. A "Létrehozás" gombra.
-    - Figyelje meg, hogy a robot reagál, azonnal a "Üdvözöljük Kétpizzás Bot!" és szeretné újra egy másik Bot választ kér. Ennek az oka a robot válasz volt az imént létrehozott nem-Wait művelet.
-9. Válassza ki a választ, a "milyen kétpizzás szeretné?".
-10. A felhasználó válaszolni a "Margherita".
-11. A "Score műveletek" gombra.
-12. Válassza ki a választ, a "Kétpizzás von!".
-13. A "Mentés" gombra.
+    - Ekkor megnyílik az ismerős "művelet létrehozása" párbeszédpanel.
+5. Írja be a robot válaszát a következőre: "Welcome to pizza bot!"
+6. Törölje a jelet a "Várakozás a válaszhoz" jelölőnégyzetből.
+7. Kattintson a "létrehozás" gombra.
+    - Figyelje meg, hogy a bot azonnal válaszol a következővel: "Welcome to pizza bot!" és a rendszer ismét rákérdez egy másik bot-válaszra. Ennek az az oka, hogy a bot válasza volt az imént létrehozott, nem várt művelet.
+9. Válassza ki a választ, "mit szeretne a pizza?" kifejezésre.
+10. A felhasználó a "Margherita" kifejezéssel válaszol.
+11. Kattintson a "pontszám műveletek" gombra.
+12. Válassza ki a választ, "pizza az úton!".
+13. Kattintson a Save (Mentés) gombra.
 
 > [!NOTE]
-> A robot válaszok várakozási és nem várja meg műveleteket érdemes sorrendjét.
+> A bot-válaszok sorozata a várakozási és a várakozáson kívüli műveletekre vonatkozóan.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Entitások bemutatása](./04-introduction-to-entities.md)
+> [Az entitások bemutatása](./04-introduction-to-entities.md)

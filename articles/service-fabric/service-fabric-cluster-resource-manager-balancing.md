@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 74fe4f7c4c231f80c7555f39f840a85baae310e9
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 3ea95405f68938906ba010836753cd74ab0f775e
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662023"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446748"
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>Terheléselosztás a service fabric-fürt
 A Service Fabric-fürt Resource Manager támogatja a dinamikus terhelésének változásaihoz igazodik, bővítésekkel vagy a csomópontok vagy szolgáltatások eltávolítására való reagálás. Automatikusan kijavítja a megkötés megsértésének, és proaktív módon rebalances a fürtöt. De gyakoriságát. Ezek a műveletek megnyílik, és mi elindítja őket?
@@ -36,9 +36,9 @@ Terheléselosztás körül első meg olyan időzítők. Ezek időzítők szabál
 Minden ezeket a fürterőforrás-kezelő győződjön meg arról is, javításokat különböző típusú szabályozza egy másik számlálót, amely annak gyakoriságát szabályozza. Minden egyes időzítő akkor aktiválódik, amikor a feladat ütemezése. Alapértelmezés szerint az erőforrás-kezelő:
 
 * megvizsgálja az állapotba, és alkalmazza a frissítéseket (például, hogy a csomópont nem rögzítés) minden 1/10 másodperc
-* az elhelyezési ellenőrzést jelzőjének beállítása 
+* Beállítja az elhelyezési ellenőrzést jelző másodpercenként
 * Beállítja azt a korlátozást ellenőrzés jelzőt másodpercenként
-* Beállítja azt a terheléselosztási jelzőt öt másodpercenként.
+* Beállítja azt a terheléselosztási jelzőt öt másodpercenként
 
 A konfiguráció ezek időzítők vonatkozó példák alatt van:
 

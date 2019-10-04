@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/08/2018
+ms.date: 06/06/2019
 ms.author: magoedte
-ms.openlocfilehash: 40f0705cfa7f0e9bb45d300a629adebd0cc5be47
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: dd5e0749116ef335887ea634b9d2790c63bf171d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58883672"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66751924"
 ---
 # <a name="troubleshooting-the-log-analytics-vm-extension-in-azure-monitor"></a>Az Azure monitorban a Log Analytics Virtuálisgép-bővítmény hibáinak elhárítása
 Ez a cikk ismerteti a hibaelhárítást hibákat tapasztalhat a Microsoft Azure platformon futó Windows és Linux rendszerű virtuális gépekhez a Log Analytics Virtuálisgép-bővítmény, és azok megoldását lehetséges megoldásokat javasol.
@@ -45,16 +45,11 @@ Ha a *Microsoft Monitoring Agent* Virtuálisgép-bővítmény telepítése nélk
    * Emellett áttekintheti a Virtuálisgép-ügynök naplófájlját `C:\WindowsAzure\logs\WaAppAgent.log`
    * Ha a napló nem létezik, a Virtuálisgép-ügynök nincs telepítve.
    * [Az Azure Virtuálisgép-ügynök telepítése](../../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)
-2. Ellenőrizze a Microsoft Monitoring Agent bővítményt szívverés feladat fut-e az alábbi lépéseket követve:
-   * Jelentkezzen be a virtuális gép
-   * Nyissa meg a Feladatütemezőt, és keresse meg a `update_azureoperationalinsight_agent_heartbeat` feladat
-   * Erősítse meg a feladat engedélyezve van, és a egy percenként fut.
-   * A szívverés logfile beadás `C:\WindowsAzure\Logs\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent\heartbeat.log`
-3. A Microsoft Monitoring Agent VM bővítmény a naplófájlok áttekintése `C:\Packages\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent`
-4. Győződjön meg arról, a virtuális gép PowerShell parancsfájlok futtathatók.
-5. Győződjön meg arról, nem módosította a C:\Windows\temp vonatkozó engedélyek
-6. A Microsoft Monitoring Agent állapotának megtekintéséhez írja be a következőt egy emelt szintű PowerShell-ablakot a virtuális gépen `(New-Object -ComObject 'AgentConfigManager.MgmtSvcCfg').GetCloudWorkspaces() | Format-List`
-7. Tekintse át a Microsoft Monitoring Agent telepítési naplófájlok `C:\Windows\System32\config\systemprofile\AppData\Local\SCOM\Logs`
+2. A Microsoft Monitoring Agent VM bővítmény a naplófájlok áttekintése `C:\Packages\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent`
+3. Győződjön meg arról, a virtuális gép PowerShell parancsfájlok futtathatók.
+4. Győződjön meg arról, nem módosította a C:\Windows\temp vonatkozó engedélyek
+5. A Microsoft Monitoring Agent állapotának megtekintéséhez írja be a következőt egy emelt szintű PowerShell-ablakot a virtuális gépen `(New-Object -ComObject 'AgentConfigManager.MgmtSvcCfg').GetCloudWorkspaces() | Format-List`
+6. Tekintse át a Microsoft Monitoring Agent telepítési naplófájlok `C:\Windows\System32\config\systemprofile\AppData\Local\SCOM\Logs`
 
 További információkért lásd: [Windows-bővítmények hibaelhárítása](../../virtual-machines/extensions/oms-windows.md).
 

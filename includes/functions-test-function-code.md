@@ -2,31 +2,21 @@
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 09/04/2018
+ms.date: 04/24/2019
 ms.author: glenga
-ms.openlocfilehash: 914c006daf49e22ebec870a549bfdbc63f882647
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 44eb25be12b908c8f951cb20948068da3bfc2928
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55148019"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203124"
 ---
-## <a name="test"></a>A függvény tesztelése
+## <a name="test"></a>A függvény ellenőrzése az Azure-ban
 
-Tesztelje a Mac vagy Linux rendszerű számítógépen vagy a Windows Powershell használatával üzembe helyezett függvényt a cURL használatával. Hajtsa végre a következő cURL parancsot úgy, hogy a `<app_name>` helyőrzőt lecseréli a függvényalkalmazás nevére. Fűzze hozzá a `&name=<yourname>` lekérdezési sztringet az URL-hez.
+A cURL használatával ellenőrizze az üzembe helyezett függvényt. Az előző lépésben átmásolt URL-cím (például a Function Key) használatával fűzze hozzá a lekérdezési `&name=<yourname>` karakterláncot az URL-címhez.
 
-```powershell
-Invoke-WebRequest -Uri "https://<app_name>.azurewebsites.net/api/MyHttpTrigger?name=<yourname>"
-```
+![a cURL használatával hívja meg a függvényt az Azure-ban.](./media/functions-test-function-code/functions-azure-cli-function-test-curl.png) 
 
-```bash
-curl https://<app_name>.azurewebsites.net/api/MyHttpTrigger?name=<yourname>
-```  
+A vágólapra másolt URL-címet, beleértve a funkcióbillentyű is, a webböngésző címsorába is beillesztheti. A kérés végrehajtása előtt fűzze hozzá `&name=<yourname>` a lekérdezési karakterláncot az URL-címhez.
 
-![A függvény válasza a böngészőben jelenik meg.](./media/functions-test-function-code/functions-azure-cli-function-test-curl.png)  
-
-Ha nem rendelkezik `cURL`vagy `Invoke-WebRequest` érhető el a parancssorban adja meg az ugyanazon URL-CÍMÉT a webböngésző címsorába. Ezúttal is helyettesítse be a `<app_name>` helyőrző helyére a függvényalkalmazás nevét, az URL-címhez pedig fűzze hozzá a `&name=<yourname>` lekérdezési sztringértéket, majd hajtsa végre a kérést.
-
-    https://<app_name>.azurewebsites.net/api/MyHttpTrigger?name=<yourname>
-   
-![A függvény válasza a böngészőben jelenik meg.](./media/functions-test-function-code/functions-azure-cli-function-test-browser.png)  
+![A függvény meghívásához egy webböngészőt használjon.](./media/functions-test-function-code/functions-azure-cli-function-test-browser.png)  

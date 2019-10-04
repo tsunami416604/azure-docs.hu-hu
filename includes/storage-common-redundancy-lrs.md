@@ -5,21 +5,23 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 02/12/2019
+ms.date: 09/23/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 32032f729283cb3f2a786412b563fdee88ba4c8a
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 8908ded31b96aac50db1fc25e92c2c0a8e960453
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238567"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219034"
 ---
-Helyileg redundáns tárolás (LRS) biztosít legalább 99,999999999 %-os (11 nines) tárolt objektumok számára egy adott évben. LRS ezen objektum tartósságot biztosít az adatok replikálásával tárolóskálázási egységben. Egy adatközpontban, ahol létrehozta a tárfiókot, a régióban a storage skálázási egység üzemelteti. LRS tárfiók írási kérelem sikeresen visszaadja, csak azt követően az adatok írása az összes replika. Minden egyes replikának külön tartalék tartományokban és frissítési tartományokba, tárolóskálázási egységben belül található.
+A helyileg redundáns tárolás (LRS) egy adatközponton belül háromszor replikálja az adatait. A LRS legalább 99,999999999%-os (11 kilenc) tartósságot biztosít az objektumok számára egy adott évben. A LRS a legalacsonyabb árú replikálási lehetőség, amely a lehető legkevesebb tartósságot kínálja a többi lehetőséghez képest.
 
-Tárolóskálázási egységben tárolási csomópontok rackszekrények gyűjteménye. Egy tartalék tartományt (FD) hiba fizikai egység képviselő csomópontok egy csoportját. Úgy egy tartalék tartományt, mint az azonos fizikai állványra szerelt tartozó csomópontokat. A frissítési tartomány (UD) olyan csomópontok, amelyek együtt vannak frissítve egy szolgáltatás frissítése (Bevezetés) folyamata során. A replikák vannak elosztva frissítési és tartalék tartományok belül egy tárolóskálázási egységben. Ez az architektúra biztosítja az adatok érhető el, ha hardverhiba egyetlen állványon hatással van, vagy amikor a csomópont frissítése szolgáltatás frissítése során.
+Ha adatközpont-szintű katasztrófa (például tűz vagy árvíz) történik, a LRS használó összes replika elveszhet vagy helyreállíthatatlan lehet. A kockázat enyhítése érdekében a Microsoft a ZRS-t, a Geo-redundáns tárolást (GRS) vagy a Geo-zóna redundáns tárolást (GZRS) javasolja.
 
-LRS a legalacsonyabb költségű replikációs beállítást, és az egyéb lehetőségek képest legalább tartósságot biztosít. (Például fire vagy -elárasztás) adatközpont-szintű katasztrófa történik, ha az összes replika lehet elveszett vagy helyreállíthatatlan. A kockázat csökkentése érdekében a Microsoft azt javasolja, a zónaredundáns tárolás (ZRS) vagy georedundáns tárolást (GRS) használatával.
+A LRS Storage-fiók írási kérelme csak az adatok mindhárom replikába való írását követően sikeresnek számít.
 
-* Ha az alkalmazás, amely egyszerűen rekonstruálható, adatvesztés esetén adatokat tárolja, az lrs esetén is választhat.
-* Az adatreplikálás adatok cégirányítási követelmények miatt országon belül csak bizonyos alkalmazások korlátozódnak. Bizonyos esetekben a párosított régiók között, amelyek a rendszer replikálja az adatokat GRS-fiók esetén lehet egy másik országban. A párosított régiók további információkért lásd: [Azure-régiók](https://azure.microsoft.com/regions/).
+A LRS a következő helyzetekben érdemes használni:
+
+* Ha az alkalmazás adatvesztés esetén könnyen újraépíthető adatait tárolja, a LRS is dönthet.
+* Egyes alkalmazások az adatirányítási követelmények miatt csak az országon/régión belül replikálják az adatreplikálást. Bizonyos esetekben azok a párosított régiók, amelyeken keresztül az GRS-fiókok replikálása történik, egy másik országban vagy régióban is lehetnek. A párosított régiókkal kapcsolatos további információkért lásd: [Azure-régiók](https://azure.microsoft.com/regions/).

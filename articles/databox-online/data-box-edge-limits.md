@@ -1,6 +1,6 @@
 ---
 title: Az Azure Data Box Edge korlátozza |} A Microsoft Docs
-description: A Microsoft Azure Data Box Edge ismerteti a rendszer korlátok és az ajánlott méreteket.
+description: Ismerteti az Azure Data Box Edge rendszer korlátok és az ajánlott méreteket.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: alkohli
-ms.openlocfilehash: a687398032adffe5e787ef1469abe0b2627a38fe
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: b454b563cdb870ca8f07a45b796dc6b1e272502d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403544"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64924596"
 ---
 # <a name="azure-data-box-edge-limits"></a>Azure Data Box Edge korlátai
 

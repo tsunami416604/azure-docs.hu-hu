@@ -1,50 +1,75 @@
 ---
-title: Az Azure Maps forgalom megjelenítése |} A Microsoft Docs
-description: Forgalmi adatok megjelenítését a Javascript térképen
+title: Forgalom megjelenítése a Azure Mapskal | Microsoft Docs
+description: Forgalmi adatok megjelenítése a Azure Maps web SDK-ban.
 author: jingjing-z
 ms.author: jinzh
-ms.date: 11/10/2018
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 7cd7c0dbb375dad78927183dbaffe574a0dc10c2
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: b765f6f35cecfdd3183b4432954fcfb2548de046
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753539"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69874864"
 ---
 # <a name="show-traffic-on-the-map"></a>Forgalom megjelenítése a térképen
 
-Ez a cikk bemutatja, hogyan forgalom és események információk megjelenítéséhez a térképen.
+A Azure Mapsban kétféle forgalmi adatok érhetők el:
 
-## <a name="understand-the-code"></a>A kód értelmezése
+- Incidensek – olyan pont-és vonal-alapú adatmennyiségből állnak, mint például az építőipar, a közúti bezárások és a balesetek.
+- Flow-adatok – mérőszámokat biztosít a forgalom forgalmáról az utakon. A forgalomra vonatkozó adatokat gyakran használják az utak színezésére, attól függően, hogy mekkora forgalom lassul le a folyamat során a sebességi korláthoz képest, vagy egy másik metrika. Azure Maps adatforgalmának adatai három különböző mérőszámtal rendelkeznek:
+    - `relative`-az út szabad áramlási sebességéhez viszonyítva.
+    - `absolute`– az összes jármű teljes sebessége az úton.
+    - `relative-delay`– a vártnál lassabban megjelenő területeket jeleníti meg.
 
-<iframe height='456' scrolling='no' title='Forgalom megjelenítése térképen' src='//codepen.io/azuremaps/embed/WMLRPw/?height=456&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll típusú <a href='https://codepen.io/azuremaps/pen/WMLRPw/'>forgalom megjelenítése térképen</a> által az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
+A következő kód bemutatja, hogyan jelenítheti meg a forgalmi adatokat a térképen.
+
+```javascript
+//Show traffic on the map using the traffic options.
+map.setTraffic({
+    incidents: true,
+    flow: 'relative'
+});
+```
+
+Alább látható a fenti funkciók teljes futási kódjának mintája.
+
+<br/>
+
+<iframe height='500' scrolling='no' title='Térkép forgalmának megjelenítése' src='//codepen.io/azuremaps/embed/WMLRPw/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>A <a href='https://codepen.io'>CodePen</a>-on található Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) használatával megtekintheti az <a href='https://codepen.io/azuremaps/pen/WMLRPw/'>adatforgalom megjelenítése a térképen</a> .
 </iframe>
 
-A fenti kód az első kódblokkot egy térkép-objektumot hoz létre. Látható [térkép létrehozásához](map-create.md) útmutatást.
+## <a name="traffic-overlay-options"></a>Forgalom átfedési beállításai
 
-A második kódblokkot használ [setTraffic](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) belül a térkép [eseményfigyelő](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) függvényt, hogy a forgalom adatfolyamait és incidensek a térképen jelennek meg.
+A következő eszköz lehetővé teszi a különböző forgalom átfedési beállításainak közötti váltást, hogy megtekintse a renderelés változásait. 
+
+<br/>
+
+<iframe height="700" style="width: 100%;" scrolling="no" title="Forgalom átfedési beállításai" src="//codepen.io/azuremaps/embed/RwbPqRY/?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Tekintse meg a tollas <a href='https://codepen.io/azuremaps/pen/RwbPqRY/'>forgalom átfedési beállításait</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) alapján a <a href='https://codepen.io'>CodePen</a>.
+</iframe>
 
 ## <a name="next-steps"></a>További lépések
 
-További információ az osztályok és módszerek a cikk ezt használja:
+További információ a cikkben használt osztályokról és módszerekről:
 
 > [!div class="nextstepaction"]
-> [Térkép](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
-
-A teljes kódmintát a következő cikkekben talál:
+> [Térkép](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
-> [Znaková stránka-minta](https://aka.ms/AzureMapsSamples)
+> [TrafficOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.trafficoptions)
 
-A felhasználói élmény fokozása:
-
-> [!div class="nextstepaction"]
-> [Térkép interakció egérrel](./map-events.md)
+Fejlessze felhasználói élményeit:
 
 > [!div class="nextstepaction"]
-> [Egy elérhető térkép létrehozása](./map-accessibility.md)
+> [Térkép interakciója az egér eseményeivel](map-events.md)
+
+> [!div class="nextstepaction"]
+> [Akadálymentes Térkép létrehozása](map-accessibility.md)
+
+> [!div class="nextstepaction"]
+> [Kód mintájának lapja](https://aka.ms/AzureMapsSamples)

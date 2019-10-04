@@ -1,65 +1,63 @@
 ---
-title: Az Azure Active Directory Identity Protection által észlelt biztonsági rések
-description: Az Azure Active Directory Identity Protection által észlelt biztonsági rések áttekintése.
+title: A Azure Active Directory Identity Protection által észlelt biztonsági rések
+description: A Azure Active Directory Identity Protection által észlelt biztonsági rések áttekintése.
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80faf1899da0f16d25b9b7c68cb0edcbc1276632
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 446e2ef33b714afe06f24f3dbfc46bc6a42790b8
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59488233"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335149"
 ---
-# <a name="vulnerabilities-detected-by-azure-active-directory-identity-protection"></a>Az Azure Active Directory Identity Protection által észlelt biztonsági rések
+# <a name="vulnerabilities-detected-by-azure-active-directory-identity-protection"></a>A Azure Active Directory Identity Protection által észlelt biztonsági rések
 
-Biztonsági rések olyan gyengeségek olyan környezetben, a támadók kihasználhatnák. Azt javasoljuk, hogy a rendszergazdák oldja meg a biztonsági rések javítása a szervezete biztonsági állapotát.
+A biztonsági rések a támadók által kihasználható környezetek gyengeségei. Javasoljuk, hogy a rendszergazdák ezeket a biztonsági réseket a szervezete biztonsági helyzetének javítására használják.
 
-![Biztonsági rések jelentette az Identity Protection](./media/vulnerabilities/identity-protection-vulnerabilities.png)
+![Az Identity Protection által jelentett biztonsági rések](./media/vulnerabilities/identity-protection-vulnerabilities.png)
 
-A következő szakaszok a biztonsági rések jelentette az Identity Protection áttekintése.
+A következő szakaszokban áttekintheti az Identity Protection által jelentett biztonsági réseket.
 
-## <a name="multi-factor-authentication-registration-not-configured"></a>Nincs konfigurálva a többtényezős hitelesítési regisztráció
+## <a name="multi-factor-authentication-registration-not-configured"></a>Nincs konfigurálva a multi-Factor Authentication-regisztráció
 
-A biztonsági rés segítségével felmérheti a szervezet Azure multi-factor Authentication szolgáltatás telepítését.
+Ez a biztonsági rés segít felmérni az Azure multi-Factor Authentication üzembe helyezését a szervezetben.
 
-Megtekintéséhez a száma, a felhasználók, amelyek nem a multi-factor Authentication, kattintson a, és a biztonsági rés irányítja át statisztika identitás biztonságos pontszám belül.
-
-Az Azure multi-factor Authentication a második biztonsági szintként, felhasználói hitelesítés biztosít. Ez segít iránt támasztott felhasználói igényeknek egy egyszerű bejelentkezési folyamat adatokhoz és alkalmazásokhoz való hozzáférés védelme érdekében. Az Azure multi-factor Authentication nyújt egyszerű ellenőrzési lehetőség, például:
+Az Azure multi-Factor Authentication egy második biztonsági réteget biztosít a felhasználói hitelesítéshez. Segít az adatvédelemhez és az alkalmazásokhoz való hozzáférésben, miközben a felhasználói igényeket egy egyszerű bejelentkezési folyamatra is megtarthatja. Az Azure multi-Factor Authentication egyszerűen használható ellenőrzési lehetőségeket kínál, például:
 
 * Telefonhívás
 * Szöveges üzenet
-* Mobilalkalmazás-értesítés
-* Egyszeri Jelszavas ellenőrző kód
+* Mobilalkalmazásbeli értesítés
+* OTP ellenőrző kód
 
-Azt javasoljuk, hogy a felhasználói bejelentkezéseket az Azure multi-factor Authentication szükséges. A multi-factor authentication kulcsfontosságú szerepet játszik a kockázatalapú feltételes hozzáférési szabályzatok Identity Protection keresztül érhető el.
+Javasoljuk, hogy az Azure multi-Factor Authentication használatát igényli a felhasználói bejelentkezésekhez. A többtényezős hitelesítés kulcsfontosságú szerepet játszik az Identity Protection által elérhető kockázatalapú feltételes hozzáférési szabályzatokban.
 
 További információt [az Azure Multi-Factor Authentication](../authentication/multi-factor-authentication.md) ismertetőjében talál.
 
-## <a name="unmanaged-cloud-apps"></a>Nem felügyelt felhőalkalmazások
+## <a name="unmanaged-cloud-apps"></a>Nem kezelt felhőalkalmazások
 
-A biztonsági rés segítségével azonosíthatja a nem kezelt felhőalkalmazások a szervezetben.
+Ez a biztonsági rés segítséget nyújt a nem felügyelt felhőalapú alkalmazások azonosításában a szervezetben.
 
-Informatikai szakemberek gyakran deduplikálta a szervezet a felhőalapú alkalmazások. Legyen könnyen látható, hogy miért a rendszergazdák lenne vállalati adatokat, lehetséges, az adatok kiszivárgásának és egyéb biztonsági kockázatokat való jogosulatlan hozzáféréssel kapcsolatos elvárásainak.
+Az informatikai munkatársak gyakran nem ismerik a szervezeten belüli összes felhőalapú alkalmazást. Könnyen megtekintheti, hogy a rendszergazdák miért ütköznek a vállalati adatvédelemmel, a lehetséges adatszivárgással és más biztonsági kockázatokkal kapcsolatos nem megfelelő jogosultságokkal.
 
-Javasoljuk, hogy a Cloud Discovery nem kezelt felhőalkalmazások felderítése, és ezek az alkalmazások Azure Active Directory használatával kezelheti.
+Javasoljuk, hogy Cloud Discovery üzembe helyezését a nem felügyelt felhőalapú alkalmazások felderítéséhez, valamint az alkalmazások Azure Active Directory használatával történő kezeléséhez.
 
-További információkért lásd: [Cloud Discovery](/cloud-app-security/set-up-cloud-discovery).
+További információ: [Cloud Discovery](/cloud-app-security/set-up-cloud-discovery).
 
-## <a name="security-alerts-from-privileged-identity-management"></a>A Privileged Identity Management szolgáltatástól származó biztonsági riasztások
+## <a name="security-alerts-from-privileged-identity-management"></a>A Privileged Identity Management biztonsági riasztásai
 
-A biztonsági rés segít felderíteni, és oldja meg a szervezet emelt szintű identitások kapcsolatos riasztásokat.  
+Ez a biztonsági rés segít felderíteni és elhárítani a szervezetében található emelt szintű identitásokkal kapcsolatos riasztásokat.  
 
-Ahhoz, hogy a felhasználók számára a privilegizált műveleteket végezni, szervezetek kell biztosítania a felhasználók ideiglenes vagy állandó emelt szintű hozzáférés az Azure AD-ben erőforrásokhoz, Azure vagy Office 365 vagy más SaaS-alkalmazások. Kiemelt jogosultságú felhasználók növeli a támadási felületet a szervezet. A biztonsági rés segítséget nyújt a szükségtelen emelt szintű hozzáféréssel rendelkező felhasználók azonosítása, és megteheti a szükséges lépéseket, csökkentheti vagy elkerülheti a kockázatot jelentenek.
+Ahhoz, hogy a felhasználók elvégezzék a Kiemelt műveleteket, a szervezeteknek ideiglenes vagy állandó jogosultságú hozzáférést kell biztosítaniuk a felhasználóknak az Azure AD-ben, az Azure-ban, az Office 365-erőforrásokban vagy más SaaS-alkalmazásokban. A Kiemelt jogosultságú felhasználók mindegyike növeli a szervezet támadási felületét. Ez a biztonsági rés lehetővé teszi a szükségtelen jogosultsági szintű hozzáféréssel rendelkező felhasználók azonosítását, és megfelelő lépéseket tehet az általuk jelentett kockázat csökkentése vagy kiküszöbölése érdekében.
 
-Azt javasoljuk a szervezeteknek használata kezelheti, az Azure AD Privileged Identity Management vezérlőelemet, és figyelheti az Azure ad-ben emelt jogosultsági szintű identitásait, valamint más Microsoft online szolgáltatásaihoz, például az Office 365 vagy a Microsoft Intune.
+Azt javasoljuk, hogy a Azure AD Privileged Identity Management szervezetek az Azure AD-ben és más Microsoft-online szolgáltatások, például az Office 365-as vagy a Microsoft Intune-ban felügyelni, ellenőrizni és figyelni tudják a Kiemelt identitásokat.
 
 További információkért lásd: [Azure AD Privileged Identity Management](../privileged-identity-management/pim-configure.md).
 

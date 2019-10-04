@@ -2,7 +2,7 @@
   href: index.yml
 - name: Áttekintés
   items:
-    - name: Mi a feltételes hozzáférés?
+    - name: Mi az a feltételes hozzáférés?
       href: overview.md
 - name: Gyors útmutatók
   items:
@@ -19,8 +19,10 @@
 - name: Alapelvek
   expanded: false
   items:
-    - name: Alapvető védelem
-      href: baseline-protection.md
+    - name: Gyakori feltételes hozzáférési szabályzatok
+      href: concept-conditional-access-policy-common.md
+    - name: Feltételes hozzáférési szabályzatok komponensei
+      href: concept-conditional-access-policies.md
     - name: Feltételek
       href: conditions.md
     - name: Helyfeltételek
@@ -31,6 +33,8 @@
       href: service-dependencies.md
     - name: Lehetőségelemzési eszköz
       href: what-if-tool.md
+    - name: Alapvető védelmi szabályzatok
+      href: concept-baseline-protection.md
 - name: Útmutatók
   expanded: true
   items:
@@ -38,12 +42,26 @@
       href: plan-conditional-access.md
     - name: Ajánlott eljárások
       href: best-practices.md
+    - name: Gyakori feltételes hozzáférési szabályzatok
+      items:
+        - name: MFA megkövetelése a rendszergazdáktól
+          href: howto-conditional-access-policy-admin-mfa.md
+        - name: MFA megkövetelése az Azure-beli felügyelethez
+          href: howto-conditional-access-policy-azure-management.md
+        - name: Régi hitelesítési folyamat letiltása
+          href: howto-conditional-access-policy-block-legacy.md
+        - name: Kockázatalapú feltételes hozzáférés
+          href: howto-conditional-access-policy-risk.md
+        - name: Megbízható helyek megkövetelése az MFA-regisztrációhoz
+          href: howto-conditional-access-policy-registration.md
+        - name: Hozzáférés letiltása hely alapján
+          href: howto-conditional-access-policy-location.md
+        - name: Megfelelő eszközök megkövetelése
+          href: howto-conditional-access-policy-compliant-device.md
     - name: Régi hitelesítési folyamat letiltása
       href: block-legacy-authentication.md
-    - name: Az Exchange Online-hoz és a SharePoint Online-hoz való hozzáférés vezérlése
-      href: conditional-access-for-exo-and-spo.md
-    - name: Klasszikus szabályzatok migrálása
-      href: policy-migration.md
+    - name: Feltételes hozzáférés MFA-regisztrációhoz
+      href: '../authentication/howto-registration-mfa-sspr-combined.md#conditional-access-policies-for-combined-registration'
     - name: Jóváhagyott ügyfélalkalmazások megkövetelése
       href: app-based-conditional-access.md
     - name: Alkalmazásvédelmi szabályzat megkövetelése
@@ -54,6 +72,26 @@
       href: untrusted-networks.md
     - name: Használati feltételek megkövetelése
       href: terms-of-use.md
+    - name: Bejelentkezési gyakoriság és a böngésző adatmegőrzési vezérlői
+      href: howto-conditional-access-session-lifetime.md
+    - name: Klasszikus szabályzatok migrálása
+      href: policy-migration.md
+    - name: Alapvető szabályzatok
+      items:
+        - name: MFA megkövetelése rendszergazdáktól
+          href: howto-baseline-protect-administrators.md
+        - name: Végfelhasználói védelem
+          href: howto-baseline-protect-end-users.md
+        - name: Régi hitelesítési folyamat letiltása
+          href: howto-baseline-protect-legacy-auth.md
+        - name: MFA megkövetelése szolgáltatáskezeléshez
+          href: howto-baseline-protect-azure.md
+    - name: Feltételes hozzáférés bevezetése
+      href: howto-conditional-access-adoption-kit.md
+    - name: Hibaelhárítás
+      items:
+        - name: Hibaelhárítás a Lehetőségelemzési eszközzel
+          href: troubleshoot-conditional-access-what-if.md
 - name: Referencia
   items:
     - name: Technikai útmutató

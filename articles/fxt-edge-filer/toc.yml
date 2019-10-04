@@ -1,0 +1,38 @@
+- name: Azure FXT Edge Filer – dokumentáció
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Mi az az Azure FXT Edge Filer?
+      href: fxt-overview.md
+- name: Oktatóanyagok
+  items:
+    - name: 1 – A hardver telepítése
+      href: fxt-install.md
+    - name: 2 – Kábelhálózati portok és energiaellátás
+      href: fxt-network-power.md
+    - name: 3 – Hardverjelszók beállítása
+      href: fxt-node-password.md
+    - name: 4 – Fürt létrehozása
+      href: fxt-cluster-create.md
+    - name: 5 – Fürtcsomópontok hozzáadása
+      href: fxt-add-nodes.md
+    - name: 6 – Háttérben működő tárolás hozzáadása és virtuális névtér konfigurálása
+      href: fxt-add-storage.md
+    - name: 7 – A fürt hálózati beállításainak konfigurálása
+      href: fxt-configure-network.md
+- name: Útmutatók
+  items:
+    - name: Ügyfelek csatlakoztatása
+      href: fxt-mount-clients.md
+    - name: Az Azure FXT Edge Filer hardver monitorozása
+      href: fxt-monitor.md
+    - name: Hardvercsomópont biztonságos kikapcsolása
+      href: fxt-power-off.md
+- name: További források
+  items:
+    - name: Hardverspecifikációk
+      href: fxt-specs.md
+    - name: További dokumentáció
+      href: fxt-additional-doc.md
+    - name: Támogatási jegy megnyitása
+      href: fxt-support-ticket.md

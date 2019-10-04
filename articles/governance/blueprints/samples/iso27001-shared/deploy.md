@@ -1,168 +1,168 @@
 ---
-title: Minta – ISO 27001, a megosztott szolgáltatások tervezetet – a telepítés lépéseit
-description: Telepítés lépéseit, az ISO 27001, a megosztott szolgáltatások tervezet minta.
+title: Minta-ISO 27001 megosztott szolgáltatások tervrajza – üzembe helyezési lépések
+description: Az ISO 27001 Shared Services Blueprint-minta lépéseinek üzembe helyezése.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: d27f2495c70dbe6e10fb3adf5370a31903be3abf
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 882228c7cb49a6a419b2b5e0bb200da3391d4584
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792401"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802570"
 ---
-# <a name="deploy-the-iso-27001-shared-services-blueprint-sample"></a>Az ISO 27001, a megosztott szolgáltatások tervezet-minta üzembe helyezése
+# <a name="deploy-the-iso-27001-shared-services-blueprint-sample"></a>Az ISO 27001 Shared Services Blueprint minta üzembe helyezése
 
-Az Azure tervezetek ISO 27001 megosztott szolgáltatások tervezet minta üzembe helyezéséhez az alábbi lépéseket kell tenni:
+Az Azure BluePrints ISO 27001 Shared Services Blueprint minta üzembe helyezéséhez a következő lépéseket kell elvégeznie:
 
 > [!div class="checklist"]
-> - Hozzon létre egy új tervezet arról a minta
-> - Jelölje meg a mintát, másolatának **közzétett**
-> - A másolatát a tervezet hozzárendelése egy meglévő előfizetés
+> - Új terv létrehozása a mintából
+> - A minta másolatának megjelölése **közzétettként**
+> - A terv másolatának kiosztása meglévő előfizetéshez
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="create-blueprint-from-sample"></a>Tervrajz létrehozása mintából
+## <a name="create-blueprint-from-sample"></a>Terv létrehozása mintából
 
-Először meg a tervezet minta létrehoz egy új tervezet alapszintű, a minta az környezet.
+Először is implementálja a terv mintáját úgy, hogy létrehoz egy új tervet a környezetben a minta kezdőként való használatával.
 
-1. Válassza ki **minden szolgáltatás** , és keresse meg és válassza **házirend** a bal oldali panelen. Az a **házirend** lapon jelölje be **tervezetek**.
+1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali ablaktáblán. Keresse meg és válassza ki a **tervrajzokat**.
 
-1. Az a **bevezetés** oldal bal oldalán válassza a **létrehozás** gomb alatt _tervrajz létrehozása_.
+1. A bal oldali **első lépések** lapon kattintson a **Létrehozás** gombra a _terv létrehozása_területen.
 
-1. Keresse meg a **ISO 27001: Megosztott szolgáltatások** tervezet minta alapján _egyéb minták_ válassza **a minta használata**.
+1. Az **ISO 27001 megkeresése: A megosztott** szolgáltatások tervezetének mintája _más minták_ alatt, majd válassza **a minta használata**lehetőséget.
 
-1. Adja meg a _alapjai_ a tervezet-minta:
+1. Adja meg a tervezet mintájának _alapjait_ :
 
-   - **Tervrajz neve**: Adja meg a az ISO 27001, a megosztott szolgáltatások tervezet minta példányának nevét.
-   - **Definíció helye**: Használja a három pontra, és válassza ki a felügyeleti csoport a minta másolatának mentése.
+   - **Terv neve**: Adja meg az ISO 27001 Shared Services Blueprint minta példányának nevét.
+   - **Definíció helye**: Használja a három pontot, és válassza ki a felügyeleti csoportot, és mentse a minta másolatát a következőre:.
 
-1. Válassza ki a _összetevők_ fülre az oldal tetején lévő vagy **tovább: Összetevők** az oldal alján.
+1. Válassza ki az _összetevők fület_ a lap tetején, vagy **a következőt:**  Az oldal alján található összetevők.
 
-1. Tekintse át a tervezet minta alkotó összetevők listáját. Az összetevők számos rendelkezik, paraméterek, amelyeket később fogunk meghatározni. Válassza ki **Piszkozat mentése** amikor befejezte a tervezet-minta áttekintése.
+1. Tekintse át a terv mintáját alkotó összetevők listáját. Számos összetevőhöz vannak olyan paraméterek, amelyeket később definiálunk. Válassza a **Piszkozat mentése** lehetőséget, amikor befejezte a tervezet mintájának áttekintését.
 
-## <a name="publish-the-sample-copy"></a>A minta másolási közzététele
+## <a name="publish-the-sample-copy"></a>A minta másolatának közzététele
 
-A tervezet minta másolatának létrehozása megtörtént a környezetben. A létrehozást **Draft** módban kell lennie, és **közzétett** előtt az hozzárendelve, és telepítve. A tervezet minta másolatát is beállítható, hogy a környezet és az igényeinek, azonban, hogy a módosítás lehet, hogy esniük, az ISO 27001 szabványnak.
+A terv mintájának másolata már létre lett hozva a környezetében. A rendszer **Piszkozat** módban jön létre, és **közzé** kell tenni ahhoz, hogy hozzá lehessen rendelni és telepíteni lehessen. A terv mintájának másolata testreszabható a környezet és a szükséges igények alapján, de ez a módosítás az ISO 27001 szabványból is áthelyezhető.
 
-1. Válassza ki **minden szolgáltatás** , és keresse meg és válassza **házirend** a bal oldali panelen. Az a **házirend** lapon jelölje be **tervezetek**.
+1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali ablaktáblán. Keresse meg és válassza ki a **tervrajzokat**.
 
-1. Válassza ki a **definíciók tervezetet** a bal oldalon. A szűrők segítségével keresse meg a tervezet minta példányát, és válassza ki azt.
+1. Válassza a bal oldali **terv-definíciók** lapot. A szűrők használatával megkeresheti a tervezet mintájának másolatát, majd kiválaszthatja.
 
-1. Válassza ki **közzététel tervezet** az oldal tetején. A jobb oldalon az új lap, adja meg egy **verzió** a tervezet-minta a másolatát. Ez a tulajdonság hasznos Ha később egy módosítása. Adja meg **megjegyzések módosítása** például az "első verziója közzé az ISO 27001 tervezet mintából." Válassza ki **közzététel** az oldal alján.
+1. Válassza a **terv közzététele** lehetőséget az oldal tetején. A jobb oldalon található új lapon adjon meg egy **verziót** a tervezet mintájának másolatához. Ez a tulajdonság akkor hasznos, ha később módosítja a módosítást. Adjon meg olyan **módosítási megjegyzéseket** , mint az "első verzió, amely az ISO 27001 Blueprint Sample-ből lett közzétéve." Ezután válassza a **Közzététel** elemet az oldal alján.
 
-## <a name="assign-the-sample-copy"></a>A minta másolási hozzárendelése
+## <a name="assign-the-sample-copy"></a>A minta másolatának kiosztása
 
-Miután a tervezet minta másolata sikeresen megtörtént **közzétett**, előfizetésre történő mentése felügyeleti csoporton belül is hozzárendelhető. Ez a lépés nem, melyekben a paraméterek vannak-e adva az, hogy az egyes telepítések a példány a tervezet minta egyedi.
+Miután a tervezet mintájának **közzététele**sikeresen megtörtént, hozzárendelhető egy előfizetéshez, amely a felügyeleti csoporton belül lett mentve. Ezzel a lépéssel megadhatja, hogy az egyes központi telepítések egyediek legyenek-e.
 
-1. Válassza ki **minden szolgáltatás** , és keresse meg és válassza **házirend** a bal oldali panelen. Az a **házirend** lapon jelölje be **tervezetek**.
+1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali ablaktáblán. Keresse meg és válassza ki a **tervrajzokat**.
 
-1. Válassza ki a **definíciók tervezetet** a bal oldalon. A szűrők segítségével keresse meg a tervezet minta példányát, és válassza ki azt.
+1. Válassza a bal oldali **terv-definíciók** lapot. A szűrők használatával megkeresheti a tervezet mintájának másolatát, majd kiválaszthatja.
 
-1. Válassza ki **tervezet hozzárendelése** a tervrajz-definíció lap tetején.
+1. Válassza a terv **kiosztása** elemet a terv definíciója oldal tetején.
 
-1. Adja meg a paraméter értékét a tervezet-hozzárendelést:
+1. Adja meg a tervrajz-hozzárendelés paramétereinek értékét:
 
    - Alapvető beállítások
 
-     - **Előfizetések**: Válasszon ki egy vagy több az előfizetéseket, amelyek a felügyeleti csoportban, a tervezet minta másolatának mentése. Ha egynél több előfizetéssel, hozzárendelést a megadott paraméterek használatával hozható létre.
-     - **Hozzárendelés neve**: Az Ön a tervrajz neve alapján előre megadott név.
-       Szükség szerint változtassa meg, vagy hagyja üresen, mivel.
-     - **Hely**: Válassza ki a régiót, a felügyelt identitás kell létrehozni. Az Azure Blueprint a hozzárendelt tervben lévő összes összetevő üzembe helyezéséhez ezt a felügyelt identitást használja. További tudnivalók: [Azure-erőforrások felügyelt identitásai](../../../../active-directory/managed-identities-azure-resources/overview.md).
-     - **Tervrajz-definíció verziója**: Válasszon ki egy **közzétett** a tervezet minta másolatának verzióját.
+     - **Előfizetések**: Válasszon ki egy vagy több olyan előfizetést, amely a felügyeleti csoportban található, a terv mintájának másolatát a következőre mentette:. Ha egynél több előfizetést választ ki, a rendszer minden megadott paraméterrel létrehoz egy hozzárendelést.
+     - **Hozzárendelés neve**: A név előre ki van töltve a terv neve alapján.
+       Szükség szerint módosítsa a változást, vagy hagyja a következőt:.
+     - **Hely**: Válassza ki azt a régiót, amelyben létre kívánja hozni a felügyelt identitást. Az Azure Blueprint a hozzárendelt tervben lévő összes összetevő üzembe helyezéséhez ezt a felügyelt identitást használja. További tudnivalók: [Azure-erőforrások felügyelt identitásai](../../../../active-directory/managed-identities-azure-resources/overview.md).
+     - **Terv definíciójának verziója**: Válasszon egy **közzétett** verziót a tervezet mintájának másolatáról.
 
    - Hozzárendelés zárolása
 
-     Válassza ki a tervezet zárolás, a környezet beállítása. További információkat talál a [terv-erőforrások zárolásáról](../../concepts/resource-locking.md) szóló cikkben.
+     Válassza ki a környezethez tartozó terv zárolási beállítását. További információkat talál a [terv-erőforrások zárolásáról](../../concepts/resource-locking.md) szóló cikkben.
 
    - Felügyelt identitás
 
-     Hagyja meg az alapértelmezett _rendszerhez rendelt_ felügyelt identitás lehetőséget.
+     Hagyja meg az alapértelmezett _rendszerhez rendelt_ felügyelt identitás beállítást.
 
-   - Tervparaméterek
+   - Terv paraméterei
 
-     Ebben a szakaszban definiált paraméterek segítségével számos, az összetevőket a tervezetdefiníciót a konzisztenciát.
+     Az ebben a szakaszban meghatározott paramétereket a terv definíciójában található számos összetevő használja a konzisztencia biztosításához.
 
-     - **Szervezet neve**: Adjon meg egy rövid nevet a szervezet számára. Ez a tulajdonság erőforrások elnevezési elsősorban.
-     - **Megosztott szolgáltatások alhálózati cím előtagja**: Adja meg a CIDR-jelölés érték hálózati az üzembe helyezett erőforrások együtt.
-     - **Megosztott szolgáltatások hely**: Meghatározza, hogy milyen helyet az összetevők telepítve vannak. Nem minden szolgáltatás az összes hely érhető el. Ilyen szolgáltatások üzembe helyezése összetevők lehetőséget nyújtanak olyan paramétert a lehívandó összetevő telepítése a helyen.
-     - **Engedélyezett helyének (szabályzat: Kezdeményezés tervezetet ISO 27001)**: Érték, amely azt jelzi, hogy az engedélyezett helyek, az erőforráscsoport és erőforrások.
-     - **Analytics-munkaterületen keresse meg a Virtuálisgép-ügynökök (szabályzat: Kezdeményezés tervezetet ISO 27001)**: Itt adhatja meg a munkaterület erőforrás-Azonosítóját. Ezt a paramétert használ egy `concat` függvény létrehozására, az erőforrás-azonosító.
+     - **Szervezet neve**: Adjon meg egy rövid nevet a szervezetnek. Ez a tulajdonság elsősorban az erőforrások elnevezésére használatos.
+     - **Megosztott szolgáltatások alhálózati címének előtagja**: Adja meg a CIDR-jelölési értéket a telepített erőforrások egyesítéséhez.
+     - **Megosztott szolgáltatások helye**: Meghatározza, hogy az összetevők milyen helyen legyenek telepítve. Nem minden szolgáltatás érhető el minden helyen. Az ilyen szolgáltatásokat üzembe helyező összetevők paraméteres lehetőséget biztosítanak ahhoz, hogy az adott összetevő üzembe helyezése megtörténjen.
+     - **Engedélyezett hely (házirend: Tervezet kezdeményezés ISO 27001)** : Az erőforráscsoportok és erőforrások engedélyezett helyét jelző érték.
+     - **Virtuálisgép-ügynökök Log Analytics munkaterülete (házirend: Tervezet kezdeményezés ISO 27001)** : Meghatározza a munkaterület erőforrás-AZONOSÍTÓját. Ez a paraméter egy `concat` függvényt használ az erőforrás-azonosító létrehozásához.
 
    - Összetevő paraméterei
 
-     A lehívandó összetevő definiálva van ebben a szakaszban definiált paraméterek érvényesek. Ezek a paraméterek [dinamikus paraméterek](../../concepts/parameters.md#dynamic-parameters) mivel azok van megadva a a tervezet-hozzárendelés során. A teljes listát vagy összetevő paraméterek és ezek leírását: [összetevő paramétereket tartalmazó](#artifact-parameters-table).
+     Az ebben a szakaszban meghatározott paraméterek a definiált összetevőre vonatkoznak. Ezek a paraméterek [dinamikus paraméterek](../../concepts/parameters.md#dynamic-parameters) , mert a terv hozzárendelése során vannak meghatározva. A teljes listát vagy az összetevő paramétereit és azok leírását lásd: összetevő- [Paraméterek táblázata](#artifact-parameters-table).
 
-1. Után minden paraméter van megadva, válassza a **hozzárendelése** az oldal alján. A tervezet-hozzárendelést jön létre, és összetevő telepítési kezdődik. Üzembe helyezés eltarthat nagyjából egy óra. Üzembe helyezés állapotának ellenőrzéséhez nyissa meg a tervezet-hozzárendelést.
+1. Az összes paraméter megadása után válassza a lap alján található **hozzárendelés** elemet. A terv-hozzárendelés létrejött, és az összetevő üzembe helyezése megkezdődik. Az üzembe helyezés nagyjából egy órát vesz igénybe. Az üzembe helyezés állapotának megtekintéséhez nyissa meg a terv-hozzárendelést.
 
 > [!WARNING]
-> Az Azure-tervek szolgáltatás és a beépített tervezet minták **díjmentes**. Az Azure-erőforrások [termék díjszabása](https://azure.microsoft.com/en-us/pricing/). Használja a [díjkalkulátor](https://azure.microsoft.com/pricing/calculator/) a tervezet minta által üzembe helyezett erőforrások futtatásával járó költségeket megbecsülheti.
+> Az Azure BluePrints szolgáltatás és a beépített tervrajzi minták **díjmentesek**. Az Azure-erőforrások [díjszabása termékenként](https://azure.microsoft.com/pricing/)történik. A [díjszabási számológép](https://azure.microsoft.com/pricing/calculator/) használatával megbecsülheti a tervrajzi minta által üzembe helyezett erőforrások futtatásának költségeit.
 
-## <a name="artifact-parameters-table"></a>Összetevő paraméterek táblában
+## <a name="artifact-parameters-table"></a>Összetevő-paraméterek táblázata
 
-A következő táblázat felsorolja a tervezet összetevő paraméterek:
+A következő táblázat a tervrajz-összetevő paramétereinek listáját tartalmazza:
 
-|Elemnév|Összetevő típusa|Paraméter neve|Leírás|
+|Elemnév|Összetevő típusa|Paraméternév|Leírás|
 |-|-|-|-|
-|[Előzetes verzió]: Log Analytics-ügynököket Linux Virtuálisgép-méretezési csoportok (VMSS) üzembe helyezése|Szabályzat-hozzárendelés|Nem kötelező: Hogy támogatott Linux operációs rendszer hatókör hozzáadása Virtuálisgép-rendszerképek listája|(Nem kötelező) Alapértelmezett érték _["none"]_.|
-|[Előzetes verzió]: Log Analytics-ügynök Linux rendszerű virtuális gépek üzembe helyezése|Szabályzat-hozzárendelés|Nem kötelező: Hogy támogatott Linux operációs rendszer hatókör hozzáadása Virtuálisgép-rendszerképek listája|(Nem kötelező) Alapértelmezett érték _["none"]_.|
-|[Előzetes verzió]: Log Analytics-ügynököket Windows Virtuálisgép-méretezési csoportok (VMSS) üzembe helyezése|Szabályzat-hozzárendelés|Nem kötelező: Hatókör hozzáadása a Windows operációs rendszer rendelkezik támogatott Virtuálisgép-rendszerképek listája|(Nem kötelező) Alapértelmezett érték _["none"]_.|
-|[Előzetes verzió]: Log Analytics-ügynököket Windows virtuális gépek üzembe helyezése|Szabályzat-hozzárendelés|Nem kötelező: Hatókör hozzáadása a Windows operációs rendszer rendelkezik támogatott Virtuálisgép-rendszerképek listája|(Nem kötelező) Alapértelmezett érték _["none"]_.|
-|Engedélyezett erőforrástípusok|Szabályzat-hozzárendelés|Engedélyezett erőforrástípusok|Engedélyezett üzembe helyezhető erőforrástípusok listája. Ebben a listában megosztott szolgáltatásaiban üzembe helyezett összes erőforrástípus tevődik össze.|
-|Engedélyezett tárfiók-termékváltozatok|Szabályzat-hozzárendelés|Engedélyezett termékváltozatok tárhelyet|Diagnosztikai lista engedélyezett termékváltozatok tárolási naplózza. Alapértelmezett érték _["Standard_LRS"]_.|
-|Engedélyezett VM-termékváltozatok|Szabályzat-hozzárendelés|VM-termékváltozatok listájának engedélyezett üzembe helyezni. Alapértelmezett érték _["Standard_DS1_v2", "Standard_DS2_v2"]_.|
-|ISO 27001-alapú tervkezdeményezés|Szabályzat-hozzárendelés|Erőforrástípusok diagnosztikai naplók|Ha diagnosztikai naplót a beállítás nincs engedélyezve a naplózandó erőforrástípusok listája. Elfogadható értékek található [Azure Monitor-diagnosztikai naplók sémák](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type).|
-|Log Analytics-erőforráscsoport|Erőforráscsoport|Name (Név)|**Zárolt** -fűzi össze a **szervezetnevet** a `-sharedsvsc-log-rg` , hogy az erőforráscsoport egyedi.|
-|Log Analytics-erőforráscsoport|Erőforráscsoport|Földrajzi egység|**Zárolt** – a tervezet paraméterrel.|
-|Log Analytics-sablon|Resource Manager-sablon|Szolgáltatásszint|A Log Analytics-munkaterület szintjének beállítása. Alapértelmezett érték _PerNode_.|
-|Log Analytics-sablon|Resource Manager-sablon|Naplófájlok megőrzése (nap)|Adatok megőrzése napokban. Alapértelmezett érték _365_.|
-|Log Analytics-sablon|Resource Manager-sablon|Földrajzi egység|A Log Analytics-munkaterület létrehozásához használt régió. Alapértelmezett érték _USA 2. nyugati_.|
-|Hálózati erőforrás-csoport|Erőforráscsoport|Name (Név)|**Zárolt** -fűzi össze a **szervezetnevet** a `-sharedsvcs-net-rg` , hogy az erőforráscsoport egyedi.|
-|Hálózati erőforrás-csoport|Erőforráscsoport|Földrajzi egység|**Zárolt** – a tervezet paraméterrel.|
-|Azure Firewall-sablon|Resource Manager-sablon|Azure Firewall magánhálózati IP-címe|Konfigurálja a magánhálózati IP-címét a [Azure tűzfal](../../../../firewall/overview.md). Ez az érték a megosztott szolgáltatások alhálózata alapértelmezett útválasztási tábla is szolgál. A meghatározott CIDR jelölésrendszer szerint kell **Azure tűzfal alhálózati cím előtagja**. Alapértelmezett érték _címe: 10.0.4.4_.|
-|Azure Firewall-sablon|Resource Manager-sablon|Naplófájlok megőrzése (nap)|Adatok megőrzése napokban. Alapértelmezett érték _365_.|
-|Hálózati biztonsági csoport – sablon|Resource Manager-sablon|Naplófájlok megőrzése (nap)|Adatok megőrzése napokban. Alapértelmezett érték _365_.|
-|Virtuális hálózat és útvonaltábla – sablon|Resource Manager-sablon|Virtuális hálózat címelőtagja|A virtuális hálózat CIDR-jelölésrendszerben. Alapértelmezett érték _10.0.0.0/16_.|
-|Virtuális hálózat és útvonaltábla – sablon|Resource Manager-sablon|Virtuális hálózat DDoS elleni védelmének engedélyezése|Konfigurálja a virtuális hálózat DDoS-védelem. Alapértelmezett érték _igaz_.|
-|Virtuális hálózat és útvonaltábla – sablon|Resource Manager-sablon|Megosztott szolgáltatások alhálózati cím előtagja|A megosztott szolgáltatások alhálózata CIDR-jelölésrendszerben. Alapértelmezett érték _10.0.0.0/24_.|
-|Virtuális hálózat és útvonaltábla – sablon|Resource Manager-sablon|DMZ alhálózati címelőtagja|A DMZ-alhálózat CIDR-jelölésrendszerben. Alapértelmezett érték _10.0.1.0/24_.|
-|Virtuális hálózat és útvonaltábla – sablon|Resource Manager-sablon|Application Gateway-átjáró alhálózati címelőtagja|Az application gateway alhálózatának CIDR-jelölésrendszerben. Alapértelmezett érték _10.0.2.0/24_.|
-|Virtuális hálózat és útvonaltábla – sablon|Resource Manager-sablon|Virtuális hálózati átjáró alhálózati címelőtagja|A virtuális hálózati átjáró-alhálózat CIDR-jelölésrendszerben. Alapértelmezett érték _10.0.3.0/24_.|
-|Virtuális hálózat és útvonaltábla – sablon|Resource Manager-sablon|Azure Firewall alhálózati címelőtagja|A CIDR-jelölés a [Azure tűzfal](../../../../firewall/overview.md) alhálózat. Tartalmaznia kell a **Azure tűzfal magánhálózati IP-címe** paraméter.|
-|A Key Vault-erőforráscsoport|Erőforráscsoport|Name (Név)|**Zárolt** -fűzi össze a **szervezetnevet** a `-sharedsvcs-kv-rg` , hogy az erőforráscsoport egyedi.|
-|A Key Vault-erőforráscsoport|Erőforráscsoport|Földrajzi egység|**Zárolt** – a tervezet paraméterrel.|
-|Kulcstartósablon|Resource Manager-sablon|Jumpbox-rendszergazda felhasználóneve|A felhasználónév a jumpbox számára. Meg kell egyeznie az azonos tulajdonság értéke **Jumpbox sablon**. Alapértelmezett érték _jb rendszergazda_.|
-|Kulcstartósablon|Resource Manager-sablon|Jumpbox-rendszergazda SSH-kulcsa vagy jelszava|Kulcs vagy a jumpbox fiókjához tartozó jelszót. Meg kell egyeznie az azonos tulajdonság értéke **Jumpbox sablon**. Nem alapértelmezett értékét, és nem lehet üres.|
-|Kulcstartósablon|Resource Manager-sablon|Tartományi rendszergazda felhasználóneve|A felhasználónév az Active Directory virtuális gép eléréséhez, és más virtuális gépek tartományhoz csatlakoztatására. Meg kell egyeznie **tartományi rendszergazda felhasználó** tulajdonságértéket **Active Directory Domain Services sablon**. Alapértelmezett érték _tartományi rendszergazda_.|
-|Kulcstartósablon|Resource Manager-sablon|Tartományi rendszergazda jelszava|Tartományi rendszergazda felhasználó jelszavát. Nem alapértelmezett értékét, és nem lehet üres.|
-|Kulcstartósablon|Resource Manager-sablon|AAD-objektum-azonosító|A fiókot, amelyet hozzá kell férnie a Key Vault-példány AAD-objektum azonosítója. Nem alapértelmezett értékét, és nem lehet üres. Keresse meg ezt az értéket az Azure Portalról, keresse meg és válassza ki a "Felhasználók" alatt _szolgáltatások_. Használja a _neve_ be a fiók neve szűrését, és válassza ki azt a fiókot. Az a _felhasználói profil_ lapra, jelölje be a "Kattintson a másoláshoz" ikon mellett a _Objektumazonosító_.  |
-|Kulcstartósablon|Resource Manager-sablon|Naplófájlok megőrzése (nap)|Adatok megőrzése napokban. Alapértelmezett érték _365_.|
-|Kulcstartósablon|Resource Manager-sablon|Key Vault-termékváltozat|Adja meg a létrehozott Key Vault-Termékváltozat. Alapértelmezett érték _prémium_.|
-|Jumpbox erőforráscsoport|Erőforráscsoport|Name (Név)|**Zárolt** -fűzi össze a **szervezetnevet** a `-sharedsvcs-jb-rg` , hogy az erőforráscsoport egyedi.|
-|Jumpbox erőforráscsoport|Erőforráscsoport|Földrajzi egység|**Zárolt** – a tervezet paraméterrel.|
-|Jumpbox-sablon|Resource Manager-sablon|Jumpbox-rendszergazda felhasználóneve|A jumpbox virtuális gép eléréséhez használt felhasználónév. Meg kell egyeznie az azonos tulajdonság értéke **Key Vault sablon**. Alapértelmezett érték _jb rendszergazda_.|
-|Jumpbox-sablon|Resource Manager-sablon|Jumpbox rendszergazdai jelszó (Key Vault erőforrás-azonosító)|A Key Vault erőforrás-Azonosítóját. Használat "/ subscriptions/{subscriptionId}/resourceGroups/{orgName}-sharedsvcs-kv-rg/providers/Microsoft.KeyVault/vaults/{orgName}-sharedsvcs-kv", és cserélje le `{subscriptionId}` meg előfizetési azonosítóját és `{orgName}` együtt a  **Szervezet neve** tervezetet paraméter.|
-|Jumpbox-sablon|Resource Manager-sablon|Jumpbox rendszergazdai jelszó (a kulcstartó titkos kód nevét)|A jumpbox rendszergazda felhasználóneve Egyeznie kell azzal az értékkel **Key Vault sablon** tulajdonság **Jumpbox rendszergazdai felhasználónév**.|
-|Jumpbox-sablon|Resource Manager-sablon|Jumpbox operációs rendszere|A jumpbox virtuális gép operációs rendszere határozza meg. Alapértelmezett érték _Windows_.|
-|Az Active Directory Domain Services-erőforráscsoport|Erőforráscsoport|Name (Név)|**Zárolt** -fűzi össze a **szervezetnevet** a `-sharedsvcs-adds-rg` , hogy az erőforráscsoport egyedi.|
-|Az Active Directory Domain Services-erőforráscsoport|Erőforráscsoport|Földrajzi egység|**Zárolt** – a tervezet paraméterrel.|
-|Active Directory tartományi szolgáltatások sablonja|Resource Manager-sablon|Tartományi rendszergazda felhasználóneve|Az ADDS jumpbox felhasználónév. Meg kell egyeznie az azonos tulajdonság értéke **Key Vault sablon**. Alapértelmezett érték _ad-rendszergazda-user_.|
-|Active Directory tartományi szolgáltatások sablonja|Resource Manager-sablon|Tartományi rendszergazdai jelszó (Key Vault erőforrás-azonosító)|A Key Vault erőforrás-Azonosítóját. Használat "/ subscriptions/{subscriptionId}/resourceGroups/{orgName}-sharedsvcs-kv-rg/providers/Microsoft.KeyVault/vaults/{orgName}-sharedsvcs-kv", és cserélje le `{subscriptionId}` meg előfizetési azonosítóját és `{orgName}` együtt a  **Szervezet neve** tervezetet paraméter.|
-|Active Directory tartományi szolgáltatások sablonja|Resource Manager-sablon|Tartományi rendszergazdai jelszó (a kulcstartó titkos kód nevét)|A tartományi rendszergazda felhasználóneve Egyeznie kell azzal az értékkel **Key Vault sablon** tulajdonság **tartományi rendszergazdai felhasználónév**.|
-|Active Directory tartományi szolgáltatások sablonja|Resource Manager-sablon|Tartománynév|Az Active Directory, a példaszkript által létrehozott neve. Alapértelmezett érték _contoso.com_.|
-|Active Directory tartományi szolgáltatások sablonja|Resource Manager-sablon|Tartomány-rendszergazdai felhasználó|A felhasználónév a AD rendszergazdai fiókkal és az eszközök az AD-tartományhoz történő csatlakoztatásához. Meg kell egyeznie **AD rendszergazdai felhasználónév** tulajdonságértéket **Key Vault sablon**. Alapértelmezett érték _tartományi rendszergazda_.|
-|Active Directory tartományi szolgáltatások sablonja|Resource Manager-sablon|Tartományi rendszergazda jelszava|Adja meg a jelszót tároló a Key Vault részleteit. Nem alapértelmezett értékét, és nem lehet üres.|
+|\[Előzetes\]verzió: A Linux VM Scale Sets (VMSS) Log Analytics-ügynökének üzembe helyezése|Szabályzat-hozzárendelés|Nem kötelező: A hatókörbe felvenni kívánt Linux operációs rendszert futtató virtuálisgép-rendszerképek listája|Választható Az alapértelmezett érték _["None"]_ .|
+|\[Előzetes\]verzió: A Linux rendszerű virtuális gépek Log Analytics ügynökének üzembe helyezése|Szabályzat-hozzárendelés|Nem kötelező: A hatókörbe felvenni kívánt Linux operációs rendszert futtató virtuálisgép-rendszerképek listája|Választható Az alapértelmezett érték _["None"]_ .|
+|\[Előzetes\]verzió: A Windows VM Scale Sets (VMSS) Log Analytics ügynökének üzembe helyezése|Szabályzat-hozzárendelés|Nem kötelező: A hatókörbe felvenni kívánt Windows operációs rendszert futtató virtuálisgép-rendszerképek listája|Választható Az alapértelmezett érték _["None"]_ .|
+|\[Előzetes\]verzió: Windows rendszerű virtuális gépek Log Analytics ügynökének üzembe helyezése|Szabályzat-hozzárendelés|Nem kötelező: A hatókörbe felvenni kívánt Windows operációs rendszert futtató virtuálisgép-rendszerképek listája|Választható Az alapértelmezett érték _["None"]_ .|
+|Engedélyezett erőforrástípusok|Szabályzat-hozzárendelés|Engedélyezett erőforrástípusok|Az üzembe helyezhető erőforrástípusok listája. Ez a lista a megosztott szolgáltatásokban üzembe helyezett összes erőforrás-típusból tevődik össze.|
+|Engedélyezett tárfiók-termékváltozatok|Szabályzat-hozzárendelés|Engedélyezett tárolási SKU-ket|A diagnosztikai naplók Storage-fiókjának SKU-ban engedélyezett listája. Az alapértelmezett érték: _["Standard_LRS"]_ .|
+|Engedélyezett VM-termékváltozatok|Szabályzat-hozzárendelés|A telepítendő virtuálisgép-SKU-ket tartalmazó lista. Az alapértelmezett érték a következő: _["Standard_DS1_v2", "Standard_DS2_v2"]_ .|
+|ISO 27001-alapú tervkezdeményezés|Szabályzat-hozzárendelés|A diagnosztikai naplók naplózására szolgáló erőforrástípusok|A naplózni kívánt erőforrástípusok listája, ha a diagnosztikai napló beállítása nincs engedélyezve. Elfogadható értékek találhatók [Azure monitor diagnosztikai naplók sémái](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type)között.|
+|Log Analytics erőforráscsoport|Resource group|Name (Név)|**Zárolva** – összefűzi a **szervezet nevét** , `-sharedsvsc-log-rg` hogy az erőforráscsoport egyedi legyen.|
+|Log Analytics erőforráscsoport|Resource group|Location|**Zárolt** – a terv paramétert használja.|
+|Log Analytics-sablon|Resource Manager-sablon|Szolgáltatási szint|Beállítja a Log Analytics munkaterület szintjét. Az alapértelmezett érték a _PerNode_.|
+|Log Analytics-sablon|Resource Manager-sablon|Naplófájlok megőrzése (nap)|Adatok megőrzése napokban. Az alapértelmezett érték a _365_.|
+|Log Analytics-sablon|Resource Manager-sablon|Location|A Log Analytics munkaterület létrehozásához használt régió. Az alapértelmezett érték az _USA 2. nyugati_régiója.|
+|Hálózati erőforráscsoport|Resource group|Name (Név)|**Zárolva** – összefűzi a **szervezet nevét** , `-sharedsvcs-net-rg` hogy az erőforráscsoport egyedi legyen.|
+|Hálózati erőforráscsoport|Resource group|Location|**Zárolt** – a terv paramétert használja.|
+|Azure Firewall-sablon|Resource Manager-sablon|Azure Firewall magánhálózati IP-címe|Az [Azure tűzfal](../../../../firewall/overview.md)magánhálózati IP-címének konfigurálása. Ez az érték a megosztott szolgáltatások alhálózatán alapértelmezett útválasztási táblázatként is használatos. A **Azure Firewall alhálózati**CIDR definiált jelölésnek kell lennie. Az alapértelmezett érték a _10.0.4.4_.|
+|Azure Firewall-sablon|Resource Manager-sablon|Naplófájlok megőrzése (nap)|Adatok megőrzése napokban. Az alapértelmezett érték a _365_.|
+|Hálózati biztonsági csoport – sablon|Resource Manager-sablon|Naplófájlok megőrzése (nap)|Adatok megőrzése napokban. Az alapértelmezett érték a _365_.|
+|Virtual Network és útválasztási táblázat sablonja|Resource Manager-sablon|Virtuális hálózat címelőtagja|A virtuális hálózat CIDR-jelölése. Az alapértelmezett érték a _10.0.0.0/16_.|
+|Virtual Network és útválasztási táblázat sablonja|Resource Manager-sablon|Virtuális hálózat DDoS elleni védelmének engedélyezése|A DDoS Protection beállítása a virtuális hálózathoz. Az alapértelmezett érték _true (igaz_).|
+|Virtual Network és útválasztási táblázat sablonja|Resource Manager-sablon|Megosztott szolgáltatások alhálózati címének előtagja|A megosztott szolgáltatások alhálózatának CIDR-jelölése. Az alapértelmezett érték a _10.0.0.0/24_.|
+|Virtual Network és útválasztási táblázat sablonja|Resource Manager-sablon|DMZ alhálózati címelőtagja|A DMZ-alhálózat CIDR-jelölése. Az alapértelmezett érték a _10.0.1.0/24_.|
+|Virtual Network és útválasztási táblázat sablonja|Resource Manager-sablon|Application Gateway-átjáró alhálózati címelőtagja|Az Application Gateway-alhálózat CIDR-jelölése. Az alapértelmezett érték a _10.0.2.0/24_.|
+|Virtual Network és útválasztási táblázat sablonja|Resource Manager-sablon|Virtual Network átjáró alhálózati címének előtagja|A virtuális hálózati átjáró alhálózatának CIDR-jelölése. Az alapértelmezett érték a _10.0.3.0/24_.|
+|Virtual Network és útválasztási táblázat sablonja|Resource Manager-sablon|Azure Firewall alhálózati címelőtagja|Az [Azure tűzfal](../../../../firewall/overview.md) alhálózatának CIDR-jelölése. Tartalmaznia kell az **Azure tűzfal magánhálózati IP-** paraméterét.|
+|Key Vault erőforráscsoport|Resource group|Name (Név)|**Zárolva** – összefűzi a **szervezet nevét** , `-sharedsvcs-kv-rg` hogy az erőforráscsoport egyedi legyen.|
+|Key Vault erőforráscsoport|Resource group|Location|**Zárolt** – a terv paramétert használja.|
+|Kulcstartósablon|Resource Manager-sablon|Jumpbox-rendszergazda felhasználóneve|A Jumpbox tartozó Felhasználónév. Meg kell egyeznie a **Jumpbox-sablonban**szereplő tulajdonság értékével. Az alapértelmezett érték a _JB-Admin-User_.|
+|Kulcstartósablon|Resource Manager-sablon|Jumpbox rendszergazdai SSH-kulcs vagy jelszó|A Jumpbox lévő fiók kulcsa vagy jelszava. Meg kell egyeznie a **Jumpbox-sablonban**szereplő tulajdonság értékével. Nincs alapértelmezett érték, és nem hagyható üresen.|
+|Kulcstartósablon|Resource Manager-sablon|Tartományi rendszergazda felhasználóneve|A Active Directory virtuális gép eléréséhez és más virtuális gépek tartományhoz való csatlakoztatásához használt Felhasználónév. Meg kell egyeznie a **tartományi rendszergazda felhasználói** tulajdonság értékével **Active Directory tartományi szolgáltatások sablonban**. Az alapértelmezett érték a _tartományi rendszergazda – felhasználó_.|
+|Kulcstartósablon|Resource Manager-sablon|Tartományi rendszergazda jelszava|A tartományi rendszergazda felhasználói jelszava. Nincs alapértelmezett érték, és nem hagyható üresen.|
+|Kulcstartósablon|Resource Manager-sablon|AAD-objektum-azonosító|Annak a fióknak a HRE-azonosítója, amelyhez hozzáférést kell adni a Key Vault-példányhoz. Nincs alapértelmezett érték, és nem hagyható üresen. Ha meg szeretné keresni ezt az értéket a Azure Portal, keresse meg és válassza a "felhasználók" lehetőséget a _szolgáltatások_területen. A _Name (név_ ) mező használatával szűrheti a fióknevet, és kiválaszthatja a fiókot. A _felhasználói profil_ lapon válassza az _objektumazonosító_melletti "kattintson ide a másoláshoz" ikont.  |
+|Kulcstartósablon|Resource Manager-sablon|Naplófájlok megőrzése (nap)|Adatok megőrzése napokban. Az alapértelmezett érték a _365_.|
+|Kulcstartósablon|Resource Manager-sablon|Key Vault-termékváltozat|A létrehozott Key Vault SKU-jának meghatározása. Az alapértelmezett érték a _prémium_.|
+|Jumpbox erőforráscsoport|Resource group|Name (Név)|**Zárolva** – összefűzi a **szervezet nevét** , `-sharedsvcs-jb-rg` hogy az erőforráscsoport egyedi legyen.|
+|Jumpbox erőforráscsoport|Resource group|Location|**Zárolt** – a terv paramétert használja.|
+|Jumpbox-sablon|Resource Manager-sablon|Jumpbox-rendszergazda felhasználóneve|A Jumpbox virtuális gépek eléréséhez használt Felhasználónév. Meg kell egyeznie a tulajdonság értékével **Key Vault sablonban**. Az alapértelmezett érték a _JB-Admin-User_.|
+|Jumpbox-sablon|Resource Manager-sablon|Jumpbox rendszergazdai jelszava (Key Vault erőforrás-azonosító)|A Key Vault erőforrás-azonosítója. Használja a "/Subscriptions/{subscriptionId}/resourceGroups/{orgName}-sharedsvcs-kV-RG/Providers/Microsoft.KeyVault/Vaults/{orgName}-sharedsvcs-kV" kifejezést `{subscriptionId}` , és cserélje le az `{orgName}` előfizetés-azonosítóval és a **szervezettel Name** Blueprint paraméter.|
+|Jumpbox-sablon|Resource Manager-sablon|Jumpbox rendszergazdai jelszava (Key Vault Secret Name)|A Jumpbox-rendszergazda felhasználóneve. Az értéknek meg kell egyeznie **Key Vault sablon** tulajdonságában a **Jumpbox rendszergazdai felhasználóneve**.|
+|Jumpbox-sablon|Resource Manager-sablon|Jumpbox operációs rendszere|Meghatározza a Jumpbox virtuális gép operációs rendszerét. Az alapértelmezett érték a _Windows_.|
+|Active Directory tartományi szolgáltatások erőforráscsoport|Resource group|Name (Név)|**Zárolva** – összefűzi a **szervezet nevét** , `-sharedsvcs-adds-rg` hogy az erőforráscsoport egyedi legyen.|
+|Active Directory tartományi szolgáltatások erőforráscsoport|Resource group|Location|**Zárolt** – a terv paramétert használja.|
+|Active Directory tartományi szolgáltatások sablonja|Resource Manager-sablon|Tartományi rendszergazda felhasználóneve|A Jumpbox HOZZÁADÁSához használt Felhasználónév. Meg kell egyeznie a tulajdonság értékével **Key Vault sablonban**. Az alapértelmezett érték a _Add-admin-User_.|
+|Active Directory tartományi szolgáltatások sablonja|Resource Manager-sablon|Tartományi rendszergazdai jelszó (Key Vault erőforrás-azonosító)|A Key Vault erőforrás-azonosítója. Használja a "/Subscriptions/{subscriptionId}/resourceGroups/{orgName}-sharedsvcs-kV-RG/Providers/Microsoft.KeyVault/Vaults/{orgName}-sharedsvcs-kV" kifejezést `{subscriptionId}` , és cserélje le az `{orgName}` előfizetés-azonosítóval és a **szervezettel Name** Blueprint paraméter.|
+|Active Directory tartományi szolgáltatások sablonja|Resource Manager-sablon|Tartományi rendszergazda jelszava (Key Vault titkos kulcs neve)|A tartományi rendszergazda felhasználóneve. Az értéknek meg kell egyeznie **Key Vault sablon** tulajdonságának **tartományi rendszergazdai felhasználóneve**.|
+|Active Directory tartományi szolgáltatások sablonja|Resource Manager-sablon|Tartománynév|A minta által létrehozott Active Directory neve. Az alapértelmezett érték a _contoso.com_.|
+|Active Directory tartományi szolgáltatások sablonja|Resource Manager-sablon|Tartományi rendszergazda felhasználó|A rendszergazdai AD-fiókhoz tartozó Felhasználónév és az eszközök AD-tartományhoz való csatlakoztatása. Meg kell egyeznie az **ad admin username** tulajdonság értékével **Key Vault sablonban**. Az alapértelmezett érték a _tartományi rendszergazda – felhasználó_.|
+|Active Directory tartományi szolgáltatások sablonja|Resource Manager-sablon|Tartományi rendszergazda jelszava|Adja meg a Jelszó tárolásának Key Vault részleteit. Nincs alapértelmezett érték, és nem hagyható üresen.|
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy áttekintette az ISO 27001, a megosztott szolgáltatások tervezet-minta üzembe helyezése a lépéseket, keresse fel az architektúra és a vezérlő leképezés a következő cikkeket:
+Most, hogy áttekintette az ISO 27001 Shared Services Blueprint-minta üzembe helyezésének lépéseit, tekintse meg az alábbi cikkeket az architektúra és a vezérlés leképezésének megismeréséhez:
 
 > [!div class="nextstepaction"]
-> [ISO 27001, a megosztott szolgáltatások tervezet - áttekintés](./index.md)
-> [ISO 27001, a megosztott szolgáltatások tervezet - vezérlő leképezés](./control-mapping.md)
+> [ISO 27001 megosztott szolgáltatások tervrajza – áttekintés](./index.md)
+> [ISO 27001 megosztott szolgáltatások tervezete – vezérlés leképezése](./control-mapping.md)
 
 További cikkek a tervekről és azok használatáról:
 

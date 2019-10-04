@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: 63e538ab43eaf4a34226b0084cf55334e2cc782b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58883299"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60195293"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Biztonság az Azure Data Lake Storage Gen1
 Sok vállalat is kihasználhatja a big data-analitika, amelyekkel az intelligens döntések üzleti elemzések készítése. Egy szervezet rendelkezhet egy összetett és szabályozott környezettel, és az egyre növekvő számú különböző felhasználók. A vállalatok számára, győződjön meg arról, hogy kritikus fontosságú üzleti adatokat tárolja biztonságosabban, és egyéni felhasználók számára a hozzáférést a megfelelő szintű, elengedhetetlen, hogy. Az Azure Data Lake Storage Gen1 célja biztonsági követelményeknek. Ez a cikk többek között a Data Lake Storage Gen1 biztonsági funkcióinak bemutatása:
 
-* Authentication
+* Hitelesítés
 * Engedélyezés
 * A hálózatok elkülönítéséhez
 * Adatvédelem
@@ -34,7 +34,7 @@ Hitelesítés az a folyamat, amellyel a felhasználó identitásának ellenőrz�
 Lehet, hogy minden Azure-előfizetés társítva az Azure Active Directory példányát. Csak a felhasználók és az Azure Active Directory szolgáltatásban definiált szolgáltatásidentitások elérheti a Data Lake Storage Gen1 fiók az Azure Portalon, a parancssori eszközök vagy ügyfélalkalmazások keresztül a szervezet a Data Lake használatával hoz létre Tárolási Gen1 SDK-t. Az Azure Active Directoryval, a központi hozzáférés-vezérlési mechanizmus fő előnyei a következők:
 
 * Identitás-életciklus-felügyelete egyszerűbb. Egy felhasználó vagy szolgáltatás (a szolgáltatásnév-identitás) identitásának gyorsan létrehozhatók és gyorsan visszavont egyszerűen törlése vagy letiltja a fiókot a címtárban.
-* Többtényezős hitelesítés [A multi-factor authentication](../active-directory/authentication/multi-factor-authentication.md) egy további biztonsági réteget nyújt a felhasználói bejelentkezéseket és tranzakciókat.
+* A multi-factor authentication. [A multi-factor authentication](../active-directory/authentication/multi-factor-authentication.md) egy további biztonsági réteget nyújt a felhasználói bejelentkezéseket és tranzakciókat.
 * A hitelesítés egy szabványos protokoll nevű nyílt, például az OAuth vagy OpenID keresztül bármilyen ügyféltől.
 * Összevonás az enterprise directory services és a felhőalapú identitás-szolgáltatóktól.
 
@@ -104,7 +104,7 @@ Adatok hozzáférés naplózása és az Azure Portal diagnosztikai naplózás en
 
 A diagnosztikai naplók a Data Lake Storage Gen1 további információkért lásd: [diagnosztikai naplóinak elérése a Data Lake Storage Gen1](data-lake-store-diagnostic-logs.md).
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 Nagyvállalati ügyfeleink kereslet egy data analytics felhőalapú platform, amely biztonságos és könnyen használható. Data Lake Storage Gen1 megtervezett segítségünkre ezeknek a követelményeknek, az Identitáskezelés és a hitelesítést az Azure Active Directory-integráció, ACL-alapú hitelesítést, a hálózatok elkülönítéséhez, az átvitel során, míg az inaktív adatok titkosítását, és a naplózási.
 
 Ha meg szeretné tekinteni a új szolgáltatások a Data Lake Storage Gen1, küldjön nekünk visszajelzést a [Data Lake Storage Gen1 UserVoice fórumot](https://feedback.azure.com/forums/327234-data-lake).

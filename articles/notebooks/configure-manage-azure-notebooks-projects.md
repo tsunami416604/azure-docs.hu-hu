@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/25/2019
+ms.date: 05/13/2019
 ms.author: kraigb
-ms.openlocfilehash: d1f94c5fd774b51f57da2885d1ccd8eb909cd3c0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 0440e498451ee141fa03851b78418caf911d0e32
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59268007"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65596746"
 ---
 # <a name="manage-and-configure-projects"></a>Projektek kezelése és konfigurálása
 
@@ -35,40 +35,9 @@ A projekt Azure notebookok lényegében a mögöttes Linux rendszerű virtuális
 
 Azure notebookok a mögöttes virtuális gép elindul, ha a jegyzetfüzet vagy más fájl futtatását. A kiszolgáló automatikusan menti a fájlokat, és 60 perc inaktivitás után leáll. A kiszolgáló is bármikor leállíthatja a **leállítási** parancsot (billentyűparancs: h).
 
-## <a name="compute-tier"></a>Számítási szint
+## <a name="compute-tier"></a>COMPUTE-kapacitás
 
-A **futtatása** legördülő listából válassza ki a projekt irányítópultján Itt választhatja ki a számítási kapacitás, amelyen futtatja a projektet. Alapértelmezés szerint a projektek futnak a **ingyenes számítási** szint, amely a 4 GB memóriát és 1 GB adatot visszaélések megelőzése érdekében:
-
-![COMPUTE csomag legördülő listából válassza ki a projekt irányítópultján](media/project-compute-tier-list.png)
-
-Elkerülheti, hogy ezek a korlátozások használatával már kiépített egy Azure-előfizetésében lévő másik virtuális gépet. Telepítse, és JupyterHub futtatása a virtuális gépen. Az adatelemző virtuális gép (operációs rendszer) rendszerképekkel jó döntések alapértelmezés szerint JupyterHub, tartalmazza.
-
-Ha már rendelkezik egy megfelelően konfigurált Azure virtuális gép, jelölje be a **közvetlen számítási** lehetőséget a legördülő listából válassza ki, amely kéri a nevet (való megjelenítéséhez a listában), a virtuális gép IP-cím és (általában 8000-es portot, amelyhez az alapértelmezett port a JupyterHub figyeli), és a virtuális gép hitelesítő adatokat:
-
-![Rákérdezés a közvetlen Compute option server adatainak összegyűjtése](media/project-compute-tier-direct.png)
-
-Az alábbi feltételek teljesülése esetén a legördülő listában megtalálhatók [adatelemzési virtuális gépet (DSVM)](/azure/machine-learning/data-science-virtual-machine) példányok. (Ha ezek a feltételek nem teljesülnek, továbbra is csatlakozhat a dsvm-hez a közvetlen Compute option megnyitva az Azure Portalon szerzett értékek.)
-
-- Egy olyan fiókkal, amely használja az Azure Active Directory (AAD), például egy vállalati fiók jelentkezett be az Azure-jegyzetfüzeteket.
-- A fiók Azure-előfizetés csatlakoztatva van.
-- Egy vagy több virtuális gépekkel rendelkezik, az adott előfizetésben való legalább olvasó access, az adatelemző virtuális gép Linux (Ubuntu) lemezképet használó.)
-
-![A legördülő listából válassza ki a projekt irányítópultján található adatok adatelemzési virtuálisgép-példányok](media/project-compute-tier-dsvm.png)
-
-Amikor kiválaszt egy DSVM-példányt, Azure notebookok kérheti az adott gép hitelesítő adatainak a virtuális gép létrehozásakor használt.
-
-Új DSVM-példány létrehozásához kövesse az utasításokat [hozzon létre egy Ubuntu adatelemző virtuális gép](/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro). Használja a **adatelemző virtuális gép Linux (Ubuntu)** képfájl, ha azt szeretné, hogy a dsvm-hez, megjelenik a legördülő listából válassza ki az Azure-jegyzetfüzeteket.  Ha szeretné használni a Windows- vagy CentOS kép más okokból is használhatja a **közvetlen számítási** a dsvm-hez való kapcsolódáshoz a manuális beállítást.
-
-> [!IMPORTANT]
-> Közvetlen számítási vagy a Data Science virtuális gépek használata esetén a notebookok rajtuk futtatása teljesen önállóan kell lennie. Jelenleg az Azure-jegyzetfüzetek másolja át csak a *.ipynb* fájlt a virtuális géphez, de nem másolja a többi fájlt a projektben. Ennek eredményeképpen notebookok más virtuális gépeken futó egyéb project fájlok keresése sikertelen.
->
-> Ez a viselkedés kétféleképpen oldható meg:
->
-> 1. Soubory projektu manuálisan másolja a virtuális Gépet.
->
-> 2. A telepítő jegyzetfüzet belül a fájlok beágyazása, hogy futtassa az elsődleges jegyzetfüzet futtatása előtt. A telepítő jegyzetfüzet hozzon létre egy kódcellát, az egyes fájlok, ahol a cellát tartalmaz-e a fájl tartalmát. Minden cella tetején helyezze be a parancs `%%writefile <filename>`, ahol `<filename>` fogadni a tartalmát a fájl neve. A notebook futtatásakor fájlokhoz a virtuális gépen hoz létre. Egy vonatkozó példáért tekintse meg a [setup.ipynb fájlt a Microsoft Kisállat detector használatával bemutató](https://github.com/Microsoft/connect-petdetector/blob/master/setup.ipynb) (GitHub).
->
->     ![Használatával egy %% writefile parancs egy kódcellát elején](media/setup-notebook-writefile-command.png)
+Alapértelmezés szerint a projektek futnak a **ingyenes számítási** szint, amely a 4 GB memóriát és 1 GB adatot visszaélések megelőzése érdekében. Ezek a korlátozások megkerülésére, és növelheti a számítási teljesítmény már kiépített egy Azure-előfizetésében lévő másik virtuális gép használatával. További információkért lásd: [Adatelemző Virtuális Gépek Használata](use-data-science-virtual-machine.md).
 
 ## <a name="edit-project-metadata"></a>Projekt metaadatainak szerkesztése
 

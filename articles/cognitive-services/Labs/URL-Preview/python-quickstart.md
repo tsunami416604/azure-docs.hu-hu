@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Projekt URL-cím előnézete, Python'
+title: 'Gyors útmutató: Projekt URL-címének előzetes verziója, Python'
 titlesuffix: Azure Cognitive Services
 description: Az URL-cím előnézete projekt Python nyelvvel való azonnali használatába bevezető szkriptminta.
 services: cognitive-services
@@ -10,20 +10,21 @@ ms.subservice: url-preview
 ms.topic: quickstart
 ms.date: 03/29/2018
 ms.author: rosh
-ms.openlocfilehash: afb64b799e826abc3e6aad661a97211b43304dc6
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ROBOTS: NOINDEX
+ms.openlocfilehash: e9b145b0786b2ab59552e5dfda6f0db63677443e
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55873274"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706885"
 ---
-# <a name="quickstart-url-preview-with-python"></a>Gyors útmutató: A Python URL-cím előnézete
+# <a name="quickstart-url-preview-with-python"></a>Gyors útmutató: URL-előnézet a Pythonban
 
 Az alábbi Python-példa létrehoz egy URL-előnézetet a SwiftKey webhelyhez: https://swiftkey.com/en.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Hozzáférési kulcs lekérése a [Cognitive Services Labs](https://aka.ms/answersearchsubscription) ingyenes próbaverziójához
+Hozzáférési kulcs lekérése a [Cognitive Services Labs](https://labs.cognitive.microsoft.com/en-us/project-answer-search) ingyenes próbaverziójához
 
 Ez a példa a Python 3.6-ot használja.
 

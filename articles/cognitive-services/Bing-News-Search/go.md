@@ -3,19 +3,19 @@ title: 'Gyors útmutató: Hírek a Bing News Search REST API és a Go használat
 titleSuffix: Azure Cognitive Services
 description: Ismerje meg, hogyan hírkeresési eredmények lekérése a Bing News Search API.
 services: cognitive-services
-author: mikedodaro
-manager: rosh
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 2/21/2019
-ms.author: rosh
-ms.openlocfilehash: 295c32c1e14dc6a69a37040f92d27a6862359228
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.author: aahi
+ms.openlocfilehash: 79e93e3ba0bbf9ac71a01bad0502b84dfee85297
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57545037"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65798504"
 ---
 # <a name="quickstart-get-news-results-using-the-bing-news-search-rest-api-and-go"></a>Gyors útmutató: A Bing News Search REST API és a Go használatával hírek eredményeinek beolvasása
 
@@ -151,7 +151,7 @@ resp, err := client.Do(req)
 defer resp.Body.Close()
 
 // Read the results
-resbody, err := ioutil.ReadAll(resp.Body)
+body, err := ioutil.ReadAll(resp.Body)
 if err != nil {
     panic(err)
 }

@@ -1,6 +1,6 @@
 ---
-title: Hibatűrés másolási tevékenységgel az Azure Data Factoryban |} A Microsoft Docs
-description: További információ a másolási tevékenység az Azure Data Factory által az inkompatibilis sorok kihagyása hibatűrés hozzáadása.
+title: A másolási tevékenység hibatűrése Azure Data Factoryban | Microsoft Docs
+description: A nem kompatibilis sorok kihagyásával megtudhatja, hogyan adhat hozzá hibatűrést Azure Data Factory másolási tevékenységhez.
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
@@ -12,45 +12,45 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: yexu
-ms.openlocfilehash: ef0bb3716a32a0f25b90e74bc44d7291c146b431
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 0af35748ee9fd5db45668ae4c6619a32f905d0db
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59267463"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827441"
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Másolási tevékenység hibatűrése az Azure Data Factoryban
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-copy-activity-fault-tolerance.md)
 > * [Aktuális verzió](copy-activity-fault-tolerance.md)
 
-A másolási tevékenység az Azure Data Factory kezeli az inkompatibilis sorok, példatípust az adatok forrásaként és fogadó adattár közötti adatáthelyezéshez két lehetőséget kínál:
+A Azure Data Factory másolási tevékenysége két módszert kínál a nem kompatibilis sorok kezelésére, amikor Adatmásolást végez a forrás-és fogadó adattárolók között:
 
-- Megszakítja, és nem sikerül a másolási tevékenység, amikor nem kompatibilis adatok során (alapértelmezés).
-- Továbbra is másolhatja az összes, az adatok hozzáadásával a hibatűrést, és nem kompatibilis adatokat sorok kihagyása. Emellett az inkompatibilis sorok bejelentkezhet az Azure Blob storage vagy az Azure Data Lake Store. Ismerje meg a hiba okát, javítsa ki az adatokat az adatforrásban, és ismételje meg a másolási tevékenység a napló majd ellenőrizheti.
+- A másolási tevékenység megszakítható, ha nem kompatibilis adat észlelhető (alapértelmezett viselkedés).
+- Az összes adattal folytathatja a hibatűrés hozzáadásával és a nem kompatibilis adatsorok kihagyásával. Emellett naplózhatja a nem kompatibilis sorokat az Azure Blob Storage-ban vagy a Azure Data Lake Storeban. Ezután megvizsgálhatja a naplót, hogy megismerje a hiba okát, javítsa ki az adatforráson lévő információkat, majd próbálja megismételni a másolási tevékenységet.
 
 ## <a name="supported-scenarios"></a>Támogatott esetek
-A másolási tevékenység, a rendszer kihagyja, és nem kompatibilis adatok naplózása három forgatókönyv támogatja:
+A másolási tevékenység három olyan forgatókönyvet támogat, amelyek nem kompatibilis adatok észlelésére, kihagyására és naplózására alkalmasak:
 
-- **Az adattípusra és a fogadó nativní typ között inkompatibilitás**. 
+- Nem **kompatibilis a forrás adattípusa és a fogadó natív típusa között**. 
 
-    Példa: Adatok másolása Blob storage-ban CSV-fájlból egy SQL Database egy séma-definícióval, amely három INT típusú oszlopokat tartalmaz. A numerikus adatok, például 123,456,789 tartalmazó CSV-fájl sorok sikeresen lesz másolva a fogadótároló. Azonban 123,456, például a nem numerikus értékeket tartalmazó sorok abc észlelhetők a nem kompatibilis, és a rendszer kihagyja.
+    Példa: Adatok másolása a blob Storage-ból egy CSV-fájlból egy SQL-adatbázisba olyan séma-definícióval, amely három INT típusú oszlopot tartalmaz. A numerikus adatértékeket tartalmazó CSV-fájlok sorai, például az 123 456 789-es sorok sikeres másolása a fogadó tárolóba. Azonban a nem numerikus értékeket tartalmazó sorok, például az 123 456, az ABC nem kompatibilisként és kimarad.
 
-- **A forrás és a fogadó oszlopok száma nem egyezik**.
+- A **forrás és a fogadó közötti oszlopok száma nem egyezik**.
 
-    Példa: Adatok másolása Blob storage-ban CSV-fájlból egy SQL Database egy séma-definícióval, amely hat oszlopokat tartalmazza. A hat oszlopokat tartalmazó CSV-fájl sorok sikeresen lesz másolva a fogadótároló. Több vagy kevesebb, mint 6 oszlopokat tartalmazó CSV-fájl sorok észlelhetők a nem kompatibilis, és a rendszer kihagyja.
+    Példa: Adatok másolása a blob Storage-ból egy CSV-fájlból egy SQL-adatbázisba egy hat oszlopot tartalmazó séma-definícióval. A hat oszlopot tartalmazó CSV-fájl sorainak másolása sikeresen megtörtént a fogadó tárolóba. A több vagy kevesebb, mint hat oszlopot tartalmazó CSV-fájl sorai nem kompatibilisként észlelhetők, és a rendszer kihagyja őket.
 
-- **Elsődleges kulcsok protokollmegsértési írásakor az SQL Server vagy az Azure SQL Database vagy az Azure Cosmos DB**.
+- **Az elsődleges kulcs megsértése SQL Server/Azure SQL Database/Azure Cosmos db írásakor**.
 
-    Példa: Adatmásolás az SQL-kiszolgáló SQL-adatbázishoz. A fogadó SQL database-ben meg van adva egy elsődleges kulcs, de nincs ilyen elsődleges kulcs van definiálva a forrás SQL-kiszolgálón. A duplikált sorokat, amelyek szerepelnek a forrás nem lehet másolni a fogadó. Másolási tevékenység az adatok csak az első sor mobilkészülékét a lefolyóba másol. Az ismétlődő elsődleges kulcs értékét a következő forrás a sorokat észlelhetők a nem kompatibilis, és a rendszer kihagyja.
+    Példa: Adatok másolása SQL-kiszolgálóról SQL-adatbázisba. Elsődleges kulcs van definiálva a fogadó SQL-adatbázisban, de nincs ilyen elsődleges kulcs definiálva a forrás SQL-kiszolgálón. A forrásban található duplikált sorok nem másolhatók a fogadóba. A másolási tevékenység csak a forrásadatok első sorát másolja a fogadóba. A duplikált elsődleges kulcs értékét tartalmazó következő forrásfájlokat inkompatibilisként észleli a rendszer, és kihagyja.
 
 >[!NOTE]
->- Az adatok betöltése az SQL Data Warehouse-bA a PolyBase, beállításokat kell megadni a PolyBase a natív tartalék tolerancia visszautasítási szabályzatokat megadásával "[kapcsolódó polyBaseSettings](connector-azure-sql-data-warehouse.md#azure-sql-data-warehouse-as-sink)" a másolási tevékenység. Átirányítás a PolyBase inkompatibilis sorok Blobhoz vagy a szokásos módon, ahogy az alábbi ADLS továbbra is engedélyezheti.
->- Ez a funkció nem vonatkozik a másolási tevékenység meghívásához konfigurálásakor [Amazon Redshift eltávolítása](connector-amazon-redshift.md#use-unload-to-copy-data-from-amazon-redshift).
-
+>- Az adatoknak a SQL Data Warehouse használatával történő betöltéséhez a "[polyBaseSettings](connector-azure-sql-data-warehouse.md#azure-sql-data-warehouse-as-sink)" beállítással állítsa be a natív hibatűrési beállításokat úgy, hogy a másolási tevékenységben megadta a "visszautasítási házirendek" beállítást. A lent látható módon továbbra is engedélyezheti a "Base inkompatibilis" sorok átirányítását a blob-vagy ADLS.
+>- Ez a funkció nem érvényes, ha a másolási tevékenység úgy van konfigurálva, hogy meghívja az [Amazon vöröseltolódásának eltávolítását](connector-amazon-redshift.md#use-unload-to-copy-data-from-amazon-redshift).
+>- Ez a funkció nem érvényes, ha a másolási tevékenység konfigurálva van egy tárolt eljárás meghívására [egy SQL-](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#invoke-a-stored-procedure-from-a-sql-sink)fogadóból.
 
 ## <a name="configuration"></a>Konfiguráció
-Az alábbi példában egy JSON-definíciót a másolási tevékenység az inkompatibilis sorok kihagyása konfigurálása biztosítja:
+A következő példa egy JSON-definíciót biztosít a nem kompatibilis sorok másolási tevékenységbe való kihagyásának konfigurálásához:
 
 ```json
 "typeProperties": {
@@ -71,15 +71,15 @@ Az alábbi példában egy JSON-definíciót a másolási tevékenység az inkomp
 }
 ```
 
-Tulajdonság | Leírás | Megengedett értékek | Szükséges
+Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | -------- 
-enableSkipIncompatibleRow | Megadja, hogy az inkompatibilis sorok kihagyása másolása során, vagy sem. | True (Igaz)<br/>FALSE (alapértelmezett) | Nem
-redirectIncompatibleRowSettings | Egy csoport tulajdonságok, amelyek a megadott való bejelentkezéshez az inkompatibilis sorok. | &nbsp; | Nem
-linkedServiceName | A társított szolgáltatás [Azure Storage](connector-azure-blob-storage.md#linked-service-properties) vagy [Azure Data Lake Store](connector-azure-data-lake-store.md#linked-service-properties) tárolja a naplót, hogy a rendszer kihagyta sorokat tartalmaz-e. | Neve az `AzureStorage` vagy `AzureDataLakeStore` írja be a társított szolgáltatás, amely a napló tárolásához használni kívánt szolgáltató példányt jelenti. | Nem
-elérési út | A rendszer kihagyta sorokat tartalmaz-e a naplófájl elérési útja. | Adja meg, hogy a nem kompatibilis adatok naplózása használni kívánt elérési. Ha nem ad meg elérési utat, a szolgáltatás létrehoz egy tárolót az Ön számára. | Nem
+enableSkipIncompatibleRow | Meghatározza, hogy a nem kompatibilis sorok kihagyása a másolás során vagy sem. | True<br/>False (alapértelmezett) | Nem
+redirectIncompatibleRowSettings | A nem kompatibilis sorok naplózásához megadható tulajdonságok csoportja. | &nbsp; | Nem
+linkedServiceName | Az [Azure Storage](connector-azure-blob-storage.md#linked-service-properties) vagy [Azure Data Lake Store](connector-azure-data-lake-store.md#linked-service-properties) társított szolgáltatása, amely a kihagyott sorokat tartalmazó naplót tárolja. | Egy `AzureStorage` vagy`AzureDataLakeStore` típusú társított szolgáltatás neve, amely arra a példányra hivatkozik, amelyet a naplófájl tárolására kíván használni. | Nem
+path | A kihagyott sorokat tartalmazó naplófájl elérési útja. | Itt adhatja meg a nem kompatibilis adatfájlok naplózásához használni kívánt elérési utat. Ha nem ad meg elérési utat, a szolgáltatás létrehoz egy tárolót. | Nem
 
-## <a name="monitor-skipped-rows"></a>A rendszer kihagyta sorok figyelése
-A másolási tevékenység futtatási befejeződése után láthatja a kimenetben látható a másolási tevékenység kihagyva sorok száma:
+## <a name="monitor-skipped-rows"></a>A kihagyott sorok figyelése
+A másolási tevékenység futtatása után a másolási tevékenység kimenetében a kihagyott sorok száma látható:
 
 ```json
 "output": {
@@ -94,11 +94,11 @@ A másolási tevékenység futtatási befejeződése után láthatja a kimenetbe
         },
 
 ```
-Ha konfigurálja az inkompatibilis sorok bejelentkezni, Észreveheti, hogy ezt az elérési utat a naplófájl: `https://[your-blob-account].blob.core.windows.net/[path-if-configured]/[copy-activity-run-id]/[auto-generated-GUID].csv`. 
+Ha úgy konfigurálja, hogy naplózza a nem kompatibilis sorokat, a naplófájl ezen az elérési úton található `https://[your-blob-account].blob.core.windows.net/[path-if-configured]/[copy-activity-run-id]/[auto-generated-GUID].csv`:. 
 
-A naplófájlok a csv-fájlokat csak lehet. Kihagyta az eredeti adatok bekerülnek a naplóba vesszővel válassza el egymástól oszlophatároló, ha szükséges. A Microsoft két további oszlopok hozzáadása "ErrorCode" és "ErrorMessage" további az eredeti forrás adatok naplófájlban, ahol megtekintheti a legfelső szintű a kompatibilitási okát. Az ErrorCode és ErrorMessage ajánlatokban idézőjelekkel együtt. 
+A naplófájlok csak a CSV-fájlok lehetnek. Ha szükséges, a kihagyott eredeti adatértékek vesszővel elválasztott oszlopként lesznek naplózva. A naplófájlban az eredeti forrásadatok további két oszlopát ("ErrorCode" és "ErrorMessage") is hozzáadjuk, ahol megtekintheti az inkompatibilitás kiváltó okát. A ErrorCode és a ErrorMessage idézőjelek alapján történik. 
 
-A log fájl tartalma például a következőképpen történik:
+A naplófájl tartalmának példája a következő:
 
 ```
 data1, data2, data3, "UserErrorInvalidDataValue", "Column 'Prop_2' contains an invalid value 'data3'. Cannot convert 'data3' to type 'DateTime'."
@@ -109,6 +109,6 @@ data4, data5, data6, "2627", "Violation of PRIMARY KEY constraint 'PK_tblintstrd
 A másolási tevékenység egyéb cikkekben talál:
 
 - [Másolási tevékenység áttekintése](copy-activity-overview.md)
-- [Másolási tevékenység](copy-activity-performance.md)
+- [Másolási tevékenység teljesítménye](copy-activity-performance.md)
 
 

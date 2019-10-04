@@ -1,40 +1,40 @@
 ---
-title: Nyelvi támogatás – a Bing Visual Search API
+title: Nyelvi támogatás – Bing Visual Search API
 titleSuffix: Azure Cognitive Services
-description: Természetes nyelvek, ország és a Bing Visual Search API által támogatott régiók listáját. A Bing Visual Search API több mint három tucat országok/régiók, számos, az egynél több nyelvet támogat.
+description: A Bing Visual Search API által támogatott természetes nyelvek, országok és régiók listája. Az Bing Visual Search API több mint három tucat országot/régiót támogat, több mint egy nyelvet.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: scottwhi
-ms.openlocfilehash: 511a95eaea65c1a0e67973ef56942bc05bb43f81
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: b17341bc234ff3dfecc2c6dcd84ef77116a95d61
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60002783"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883547"
 ---
-# <a name="language-and-region-support-for-the-bing-visual-search-api"></a>A Bing Visual Search API nyelvéhez és régiójához támogatása
+# <a name="language-and-region-support-for-the-bing-visual-search-api"></a>A Bing Visual Search API nyelvi és területi támogatása
 
-A Bing Visual Search API több mint három tucat országok/régiók, számos, az egynél több nyelvet támogat. Minden kérelmet tartalmaznia kell a felhasználó országot/régiót és tetszőleges nyelven. A Bing megfelelő eredményeket adja vissza, hogy a felhasználó piaci segítségével. Ha nem ad meg egy ország/régió és nyelv, a Bing teszi egy ajánlott annak érdekében, hogy a felhasználó ország/régió és nyelv meghatározása. Az eredményeket a Bing hivatkozásokat tartalmazhatnak, mert az ország/régió és nyelv ismerete előfordulhat, hogy egy előnyben részesített honosított Bing felhasználói felületet tudjon biztosítani, ha a felhasználó rákattint a Bing hivatkozásokat.
+Bing Visual Search API több mint három tucat országot/régiót támogat, több mint egy nyelvet. Minden kérelemnek tartalmaznia kell a felhasználó országát/régióját és a választott nyelvet. A felhasználó piacának ismerete segít a Bingnek a megfelelő eredmények visszaküldésében. Ha nem ad meg országot/régiót és nyelvet, a Bing a legmegfelelőbb módon határozza meg a felhasználó országát/régióját és nyelvét. Mivel az eredmények a Bingre mutató hivatkozásokat is tartalmazhatnak, az ország/régió és a nyelv ismerete előnyben részesített honosított Bing felhasználói élményt biztosíthat, ha a felhasználó a Bing hivatkozásokra kattint.
 
-Adja meg az országot/régiót és a nyelvet, állítsa be a `mkt` (piaci) lekérdezési paraméter a kódot a **piacok** az alábbi táblázat. A piacon ország/régió és nyelv is megadja. Ha a felhasználó részesíti előnyben, hogy különböző nyelveken jelenítse meg, és állítsa `setLang` lekérdezési paraméter, a megfelelő nyelvi kódot.
+Az ország/régió és a nyelv megadásához állítsa `mkt` be a (piaci) lekérdezési paramétert az alábbi **piacok** táblából származó kódra. A piac egy országot/régiót és nyelvet is meghatároz. Ha a felhasználó egy másik nyelven szeretné megtekinteni a megjelenítendő szöveget, állítsa `setLang` a lekérdezési paramétert a megfelelő nyelvi kódra.
 
-Másik lehetőségként megadhatja az országot/régiót használ a `cc` lekérdezési paraméter. Ha megad egy adott ország/régió, meg kell adnia egy vagy több nyelvi kódot használ a `Accept-Language` HTTP-fejléc. Ország/régió; szerint változik a támogatott nyelvek a piacon tábla országokra generálnak számukra.
+Azt is megteheti, hogy a `cc` lekérdezési paraméterrel megadhatja az országot/régiót. Ha országot vagy régiót ad meg, meg kell adnia egy vagy több nyelvi kódot is a `Accept-Language` HTTP-fejléc használatával. A támogatott nyelvek ország/régió szerint változnak; Ezek az egyes országok számára a piacok táblában vannak megadva.
 
 
 
 > [!NOTE]
-> A következő piaci korlátozások vonatkoznak:
+> A következő piaci korlátozások érvényesek:
 >
-> - Kép felismerés jegyzetek csak angol nyelven érhető el.
-> - Recept, a vásárlás és a lapok – beleértve a insights csak az en-US piacon érhetők el.
+> - A képfelismerési jegyzetek csak angol nyelven érhetők el.
+> - A recept, a vásárlás és a lapok – beleértve az bepillantást is – csak az Egyesült államokbeli piacon érhetők el.
 
 
-## <a name="countries"></a>Országok/régiók
+## <a name="countriesregions"></a>Országok/régiók
 
 |Ország/régió|Kód|
 |-------|----|
@@ -51,7 +51,7 @@ Másik lehetőségként megadhatja az országot/régiót használ a `cc` lekérd
 |Németország|DE|
 |Hongkong (KKT)|HK|
 |India|IN|
-|Indonézia|ID (Azonosító)|
+|Indonézia|id|
 |Olaszország|IT|
 |Japán|JP|
 |Korea|KR|
@@ -84,7 +84,7 @@ Másik lehetőségként megadhatja az országot/régiót használ a `cc` lekérd
 |Ausztrália|Angol|en-Ausztrália|
 |Ausztria|német|Németország-AT|
 |Belgium|holland|nl-BE|
-|Belgium|francia|FR-lehet|
+|Belgium|francia|fr-BE|
 |Brazília|portugál|pt-BR|
 |Kanada|Angol|en-hitelesítésszolgáltató|
 |Kanada|francia|FR-hitelesítésszolgáltató|
@@ -93,9 +93,9 @@ Másik lehetőségként megadhatja az országot/régiót használ a `cc` lekérd
 |Finnország|finn|fi-FI|
 |Franciaország|francia|FR-FR|
 |Németország|német|de-DE|
-|Hongkong (KKT)|Kínai (hagyományos)|zh-HK|
+|Hongkong (KKT)|Hagyományos kínai|zh-HK|
 |India|Angol|en-IN|
-|Indonézia|Angol|en-azonosító|
+|Indonézia|Angol|EN-ID|
 |Olaszország|olasz|it-IT|
 |Japán|japán|ja-JP|
 |Korea|koreai|ko-KR|
@@ -106,7 +106,7 @@ Másik lehetőségként megadhatja az országot/régiót használ a `cc` lekérd
 |Kína|kínai|zh-CN|
 |Lengyelország|lengyel|pl-PL|
 |Portugália|portugál|PT-PT|
-|Fülöp-szigetek|Angol|en-PH|
+|Fülöp-szigetek|Angol|EN-PH|
 |Oroszország|orosz|ru-RU|
 |Szaúd-Arábia|arab|ar-SA|
 |Dél-Afrika|Angol|en-ZA|
@@ -114,7 +114,7 @@ Másik lehetőségként megadhatja az országot/régiót használ a `cc` lekérd
 |Svédország|svéd|SV-SE|
 |Svájc|francia|FR-CH|
 |Svájc|német|Németország – CH|
-|Tajvan|Kínai (hagyományos)|zh-TW|
+|Tajvan|Hagyományos kínai|zh-TW|
 |Törökország|török|tr-TR|
 |Egyesült Királyság|Angol|en-GB|
 |Egyesült Államok|Angol|en-US|

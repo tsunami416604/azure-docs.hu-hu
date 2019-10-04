@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/18/2019
+ms.date: 05/20/2019
 ms.topic: troubleshooting
 ms.service: cost-management
 manager: benshy
 ms.custom: ''
-ms.openlocfilehash: df86c3723a16a0ed6d090e940684a5a1737aeae5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2553d08b55aff45e52b9d8c5a64db141a668eb62
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58175947"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65967109"
 ---
 # <a name="create-a-support-request-for-cloudyn"></a>Hozzon létre egy támogatási kérést a Cloudyn
 
@@ -34,7 +34,7 @@ Is nyisson egy támogatási kérelmet, ha nem találja a keresett adatokat. Vagy
 9. A **Problem type** válassza **Cloudyn örökölt**, majd válassza ki a **kategória**.
 10. Az a **cím** mezőbe írjon be egy címet, amely leírja a kérést.
 11. Az a **részletek** mezőbe írja be a további információkat.
-12. A **mikor jelentkezett először a probléma?**, válasszon ki egy hozzávetőleges dátumot és időt az, majd kattintson **tovább**.  
+12. A **mikor jelentkezett először a probléma?** , válasszon ki egy hozzávetőleges dátumot és időt az, majd kattintson **tovább**.  
 14. Az a **kapcsolattartási adatok** területen válassza a kívánt kapcsolatfelvételi mód adja meg a kapcsolattartási adatokat, majd kattintson a **létrehozás**.  
 
 A támogatási jegy létrehozását követően a támogatási várólistára kerül. Válaszidő változik, a támogatási csomagot, és a probléma súlyosságától (üzletmenetre gyakorolt hatás) alapján. További információkért lásd: [támogatás hatóköre és válaszideje](https://azure.microsoft.com/support/plans/response/).

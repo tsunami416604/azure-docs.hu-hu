@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: c0fe63e395ee08cb65e9bbbadc4ce1f03032ce95
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 4c2b774c304e46f9fc68f3beaf64218e614ecad1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58880083"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66234059"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Végfelhasználói hitelesítés az Azure Data Lake Storage Gen1 Azure Active Directory használatával
 > [!div class="op_single_selector"]
@@ -45,12 +45,12 @@ Ez a cikk ismerteti hogyan hozhat létre egy **végfelhasználói hitelesítés 
   
     ![Első AAD-tartomány](./media/data-lake-store-end-user-authenticate-using-active-directory/get-aad-domain.png)
 
-* Az Azure-bérlő azonosítóját. A Bérlőazonosító lekéréséhez kapcsolatos utasításokért lásd: [a Bérlőazonosító beszerzése](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id).
+* Az Azure-bérlő azonosítóját. A Bérlőazonosító lekéréséhez kapcsolatos utasításokért lásd: [a Bérlőazonosító beszerzése](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
 
 ## <a name="end-user-authentication"></a>Végfelhasználói hitelesítés
-Ez a hitelesítési mechanizmus használata az ajánlott módszer, ha azt szeretné, hogy a végfelhasználó jelentkezzen be az alkalmazás Azure AD-n keresztül. Az alkalmazás ezután is képes az ugyanazt a hozzáférési szintet, a felhasználó bejelentkezett az Azure-erőforrások eléréséhez. A végfelhasználó adja meg a hitelesítő adatokat rendszeres időközönként, hogy az alkalmazás megtartásához sorrendben kell.
+Ez a hitelesítési mechanizmus használata az ajánlott módszer, ha azt szeretné, hogy a végfelhasználó jelentkezzen be az Azure AD-n keresztül az alkalmazás számára. Az alkalmazás ezután is képes az ugyanazt a hozzáférési szintet, a felhasználó bejelentkezett az Azure-erőforrások eléréséhez. A végfelhasználó adja meg a hitelesítő adatokat rendszeres időközönként, hogy az alkalmazás megtartásához sorrendben kell.
 
-A végfelhasználói bejelentkezési kellene eredménye, hogy az alkalmazás egy hozzáférési jogkivonatot, és a egy frissítési jogkivonat van-e megadva. Data Lake Storage Gen1 vagy a Data Lake Analytics felé irányuló kérések kapcsolódik a hozzáférési jogkivonatot, és alapértelmezés szerint egy órán keresztül érvényes legyen. A frissítési jogkivonat segítségével szerezzen be egy új hozzáférési jogkivonatot, és alapértelmezés szerint legfeljebb két hétig érvényes legyen. A végfelhasználói bejelentkezési két különböző megközelítést használhat.
+A végfelhasználó jelentkezzen be kellene eredménye, hogy az alkalmazás egy hozzáférési jogkivonatot, és a egy frissítési jogkivonat van-e megadva. Data Lake Storage Gen1 vagy a Data Lake Analytics felé irányuló kérések kapcsolódik a hozzáférési jogkivonatot, és alapértelmezés szerint egy órán keresztül érvényes legyen. A frissítési jogkivonat segítségével szerezzen be egy új hozzáférési jogkivonatot, és alapértelmezés szerint legfeljebb két hétig érvényes legyen. A végfelhasználói bejelentkezési két különböző megközelítést használhat.
 
 ### <a name="using-the-oauth-20-pop-up"></a>Az OAuth 2.0 előugró ablak használatával
 Az alkalmazás is indíthat egy OAuth 2.0 engedélyezési előugró, amelyben a felhasználó megadhatja a hitelesítő adatait. Ez az előugró ablak az Azure AD-kétfaktoros hitelesítés (2FA) folyamattal is működik, ha szükséges. 
@@ -72,7 +72,7 @@ Az alkalmazás az Azure AD közvetlenül biztosíthat felhasználói hitelesít�
 * Delegált engedélyek beállítása
 
 
-## <a name="step-1-create-an-active-directory-native-application"></a>1. lépés: Az Active Directory natív alkalmazás létrehozása
+## <a name="step-1-create-an-active-directory-native-application"></a>1\. lépés: Az Active Directory natív alkalmazás létrehozása
 
 Létrehozhat és konfigurálhat egy natív Azure AD-alkalmazást, a végfelhasználói hitelesítés a Data Lake Storage Gen1 Azure Active Directory használatával. Útmutatásért lásd: [hozzon létre egy Azure AD-alkalmazást](../active-directory/develop/howto-create-service-principal-portal.md).
 
@@ -80,9 +80,9 @@ A hivatkozás utasításait, miközben mindenképpen jelölje ki **natív** alka
 
 ![Webalkalmazás létrehozása](./media/data-lake-store-end-user-authenticate-using-active-directory/azure-active-directory-create-native-app.png "natív alkalmazás létrehozása")
 
-## <a name="step-2-get-application-id-and-redirect-uri"></a>2. lépés: Alkalmazás Azonosítójának lekéréséhez és átirányítási URI
+## <a name="step-2-get-application-id-and-redirect-uri"></a>2\. lépés: Alkalmazás Azonosítójának lekéréséhez és átirányítási URI
 
-Lásd: [alkalmazás Azonosítójának lekéréséhez](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key) lekérni az alkalmazás azonosítója.
+Lásd: [alkalmazás Azonosítójának lekéréséhez](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in) lekérni az alkalmazás azonosítója.
 
 Az átirányítási URI azonosító lekéréséhez kövesse az alábbi lépéseket.
 
@@ -95,7 +95,7 @@ Az átirányítási URI azonosító lekéréséhez kövesse az alábbi lépések
 3. Másolja a megjelenített érték.
 
 
-## <a name="step-3-set-permissions"></a>3. lépés: Engedélyek beállítása
+## <a name="step-3-set-permissions"></a>3\. lépés: Engedélyek beállítása
 
 1. Az Azure Portalon, válassza ki a **Azure Active Directory**, kattintson a **alkalmazásregisztrációk**, majd keresse meg és kattintson a létrehozott natív Azure AD-alkalmazást.
 

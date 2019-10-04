@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: e275411f9fd9dfb672bb0815e83e37bcd5d1dda9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 50a653648f3ae4b40e0bfe2c6f168cfb890bcc59
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58077020"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839103"
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>1 TB adat betöltése az Azure SQL Data Warehouse-bA a Data Factory 15 perc alatt
 > [!NOTE]
@@ -41,7 +41,7 @@ Ebben a cikkben részletes útmutatást nyújt az adatok áthelyezése az Azure 
 > [!NOTE]
 >  Általános információk képességekkel kapcsolatos adat-előállító az adatok áthelyezését és- tárolókról az Azure SQL Data Warehouse: [adatok importálására és az Azure Data Factory használatával az Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md) cikk.
 >
-> Is létrehozható Azure Portalon, a Visual Studio, PowerShell, folyamatokat stb. Lásd: [oktatóanyag: Adatok másolása Azure blobból az Azure SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) gyors bemutató részletes utasításokat a másolási tevékenységgel az Azure Data Factoryban.  
+> Használatával a Visual Studio, a PowerShell és az egyéb folyamatokat is létrehozható. Lásd: [oktatóanyag: Adatok másolása Azure blobból az Azure SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) gyors bemutató részletes utasításokat a másolási tevékenységgel az Azure Data Factoryban.  
 >
 >
 
@@ -117,7 +117,7 @@ Ebben a cikkben részletes útmutatást nyújt az adatok áthelyezése az Azure 
 3. Az a **új adat-előállító** panelen:
 
    1. Adja meg **LoadIntoSQLDWDataFactory** számára a **neve**.
-       Az Azure data factory nevének globálisan egyedinek kell lennie. Ha a hibaüzenetet kapja: **Nem érhető el a Data factory name "LoadIntoSQLDWDataFactory"**, módosítsa a nevet az adat-előállító (például yournameLoadIntoSQLDWDataFactory), és próbálkozzon újra a létrehozással. A Data Factory-összetevők elnevezési szabályait a [Data Factory - Naming Rules](data-factory-naming-rules.md) (Data Factory – Elnevezési szabályok) című témakörben találhatja.  
+       Az Azure data factory nevének globálisan egyedinek kell lennie. Ha a hibaüzenetet kapja: **Nem érhető el a Data factory name "LoadIntoSQLDWDataFactory"** , módosítsa a nevet az adat-előállító (például yournameLoadIntoSQLDWDataFactory), és próbálkozzon újra a létrehozással. A Data Factory-összetevők elnevezési szabályait a [Data Factory - Naming Rules](data-factory-naming-rules.md) (Data Factory – Elnevezési szabályok) című témakörben találhatja.  
    2. Jelölje ki az Azure-**előfizetést**.
    3. Az erőforráscsoportban hajtsa végre a következő lépések egyikét:
       1. Meglévő erőforráscsoport kiválasztásához kattintson a **Use existing** (Meglévő használata) elemre.
@@ -135,18 +135,18 @@ Ebben a cikkben részletes útmutatást nyújt az adatok áthelyezése az Azure 
    >
    >
 
-## <a name="step-1-configure-data-loading-schedule"></a>1. lépés: Adatok betöltése az ütemezés konfigurálása
+## <a name="step-1-configure-data-loading-schedule"></a>1\. lépés: Adatok betöltése az ütemezés konfigurálása
 Az első lépés, hogy az adatok betöltése az ütemezés konfigurálása.  
 
 A **Properties** (Tulajdonságok) oldalon:
 
 1. Adja meg **CopyFromBlobToAzureSqlDataWarehouse** a **feladat neve**
 2. Válassza ki **futtatása után azonnal** lehetőséget.   
-3. Kattintson a **tovább**.  
+3. Kattintson a **Tovább** gombra.  
 
     ![Másolás varázsló – Tulajdonságok lap](media/data-factory-load-sql-data-warehouse/copy-wizard-properties-page.png)
 
-## <a name="step-2-configure-source"></a>2. lépés: Forrás konfigurálása
+## <a name="step-2-configure-source"></a>2\. lépés: Forrás konfigurálása
 Ez a szakasz bemutatja, a forrás konfigurálásának lépéseit: Az 1 TB-os TPC tartalmazó Azure Blob-H sortételt fájlokat.
 
 1. Válassza ki a **Azure Blob Storage** , az adatok tárolására, és kattintson a **tovább**.
@@ -165,7 +165,7 @@ Ez a szakasz bemutatja, a forrás konfigurálásának lépéseit: Az 1 TB-os TPC
 
     ![Másolás varázsló - fájlformátum beállításai](media/data-factory-load-sql-data-warehouse/file-format-settings.png)
 
-## <a name="step-3-configure-destination"></a>3. lépés: Cél konfigurálása
+## <a name="step-3-configure-destination"></a>3\. lépés: Cél konfigurálása
 Ez a szakasz bemutatja, hogyan konfigurálhatja a cél: `lineitem` az Azure SQL Data Warehouse-adatbázis táblája.
 
 1. Válasszon **Azure SQL Data Warehouse** céljaként tárolja, és kattintson a **tovább**.
@@ -182,13 +182,13 @@ Ez a szakasz bemutatja, hogyan konfigurálhatja a cél: `lineitem` az Azure SQL 
 
 4. A séma hozzárendelése oldal, hagyja "Oszlop-hozzárendelés alkalmazás" beállítás nincs bejelölve, és kattintson a **tovább**.
 
-## <a name="step-4-performance-settings"></a>4. lépés: Teljesítményadat-beállításai
+## <a name="step-4-performance-settings"></a>4\. lépés: Teljesítményadat-beállításai
 
-**A polybase lehetővé** alapértelmezés szerint be van jelölve.  Kattintson a **tovább**.
+**A polybase lehetővé** alapértelmezés szerint be van jelölve.  Kattintson a **Tovább** gombra.
 
 ![Másolás varázsló - séma hozzárendelése oldal](media/data-factory-load-sql-data-warehouse/performance-settings-page.png)
 
-## <a name="step-5-deploy-and-monitor-load-results"></a>5. lépés: Telepítheti és figyelheti a betöltési eredmények
+## <a name="step-5-deploy-and-monitor-load-results"></a>5\. lépés: Telepítheti és figyelheti a betöltési eredmények
 1. Kattintson a **Befejezés** telepítése gombra.
 
     ![Másolás varázsló – Összegzés lapján](media/data-factory-load-sql-data-warehouse/summary-page.png)

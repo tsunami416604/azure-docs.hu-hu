@@ -1,19 +1,19 @@
 ---
 title: Az Azure Maps API-használat megtekintése |} A Microsoft Docs
 description: Ismerje meg, a metrikák az Azure Maps API-hívások megtekintése a portálon.
-author: dsk-2015
-ms.author: dkshir
+author: walsehgal
+ms.author: v-musehg
 ms.date: 08/06/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: d14088ed940ab83be29756a26f8612704bb9aebd
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 716f9fbc02905a8981771c2fd9dd2be0baeb8196
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58079878"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67460197"
 ---
 # <a name="view-azure-maps-api-usage"></a>Azure Maps API-használati adatok megtekintése
 
@@ -59,6 +59,11 @@ Ha testre kell szabnia az adott elemzéshez diagramokra továbbra is a következ
 ## <a name="next-steps"></a>További lépések
 
 További információ az Azure Maps API-k használatának nyomon követéséhez szeretné:
+> [!div class="nextstepaction"] 
+> [Az Azure Maps Web SDK-útmutató](how-to-use-map-control.md)
+
+> [!div class="nextstepaction"] 
+> [Az Azure Maps Android SDK-útmutató](how-to-use-android-map-control-library.md)
 
 > [!div class="nextstepaction"]
 > [Az Azure Maps REST API dokumentációja](https://docs.microsoft.com/rest/api/maps)

@@ -4,19 +4,19 @@ description: Az Azure Virtual machines gépeken beágyazott virtualizálás enge
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 ms.author: cynthn
 ms.date: 10/09/2017
 ms.topic: conceptual
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: f90ca51349eef92bd25095f5a2a10d7d181fdb2c
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 843dfa64cdf0af3ad6cfd3a9f83c16f0ce85fcd0
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57766529"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67720209"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Egy Azure virtuális Gépen a beágyazott virtualizálás engedélyezése
 
@@ -52,7 +52,7 @@ Hozzon létre egy távoli asztali kapcsolatot a virtuális géppel.
 Konfigurálhatja ezeket a beállításokat manuálisan vagy adtunk meg egy PowerShell-parancsprogram segítségével automatizálhatja a konfigurálását.
 
 ### <a name="option-1-use-a-powershell-script-to-configure-nested-virtualization"></a>Option 1: Beágyazott virtualizálás konfigurálása egy PowerShell-parancsprogram használatával
-Egy PowerShell-parancsfájlt egy Windows Server 2016 gazdagépen beágyazott virtualizálás engedélyezése érhető el az [GitHub](https://github.com/charlieding/Virtualization-Documentation/tree/live/hyperv-tools/Nested). A parancsfájl ellenőrzi az előfeltételeket, és ezután beállítja a beágyazott virtualizálás az Azure virtuális gépen. Az Azure virtuális gép újraindítására szükség a konfiguráció befejezéséhez. Ez a szkript más környezetekben is működhet, azonban nem garantált. Tekintse meg az Azure blog bejegyzésében az élő videó bemutatója a beágyazott virtualizálás az Azure-ban! https://aka.ms/AzureNVblog.
+Egy PowerShell-parancsfájlt egy Windows Server 2016 gazdagépen beágyazott virtualizálás engedélyezése érhető el az [GitHub](https://github.com/charlieding/Virtualization-Documentation/tree/live/hyperv-tools/Nested). A parancsfájl ellenőrzi az előfeltételeket, és ezután beállítja a beágyazott virtualizálás az Azure virtuális gépen. Az Azure virtuális gép újraindítására szükség a konfiguráció befejezéséhez. Ez a szkript más környezetekben is működhet, azonban nem garantált. Tekintse meg az Azure blog bejegyzésében az élő videó bemutatója a beágyazott virtualizálás az Azure-ban! [https://aka.ms/AzureNVblog](https://aka.ms/AzureNVblog ).
 
 ### <a name="option-2-configure-nested-virtualization-manually"></a>Option 2: Beágyazott virtualizálás kézi konfigurálása
 
@@ -80,7 +80,7 @@ Hozzon létre egy új virtuális hálózati adapter a Vendég virtuális gép, �
 2. Hozzon létre egy belső kapcsoló.
 
     ```powershell
-    New-VMSwitch -Name "InternalNATSwitch" -SwitchType Internal
+    New-VMSwitch -Name "InternalNAT" -SwitchType Internal
     ```
 
 3. A kapcsoló tulajdonságainak megtekintése, és jegyezze fel az új adapter a ifIndex.
@@ -119,6 +119,10 @@ New-NetNat -Name "InternalNat" -InternalIPInterfaceAddressPrefix 192.168.0.0/24
 
 
 ## <a name="create-the-guest-virtual-machine"></a>A Vendég virtuális gép létrehozása
+
+>[!IMPORTANT] 
+>
+>Az Azure-vendégügynök nem támogatott a beágyazott virtuális gép, és a gazdagép és a beágyazott virtuális gépek problémákat okozhat. Ne telepítse az Azure-ügynököt a beágyazott virtuális gépeken, és a kép ne használjon, amely már rendelkezik a telepített Azure-vendégügynök beágyazott virtuális gépek létrehozása.
 
 1. Nyissa meg a Hyper-V kezelőjében, és hozzon létre egy új virtuális gépet. Konfigurálja a virtuális gép használata a létrehozott új belső hálózatot.
     

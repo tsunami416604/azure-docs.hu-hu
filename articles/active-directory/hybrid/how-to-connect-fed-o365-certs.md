@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d98a1aabef2de505e66b2127226b9e89cd791e20
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58883445"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60244842"
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>-Office 365 és az Azure Active Directory összevonási tanúsítványainak megújítása
 ## <a name="overview"></a>Áttekintés
@@ -59,7 +59,7 @@ Az Azure AD megpróbálja az összevonási metaadatok monitorozása, és a jogki
 >
 
 ## Ellenőrizze a tanúsítványokat kell-e frissíteni kell <a name="managecerts"></a>
-### <a name="step-1-check-the-autocertificaterollover-state"></a>1. lépés: Az autocertificaterollover funkció állapotának ellenőrzése
+### <a name="step-1-check-the-autocertificaterollover-state"></a>1\. lépés: Az autocertificaterollover funkció állapotának ellenőrzése
 Az AD FS-kiszolgálóra nyissa meg a Powershellt. Ellenőrizze, hogy az AutoCertificateRollover érték a True értékre van állítva.
 
     Get-Adfsproperties
@@ -69,7 +69,7 @@ Az AD FS-kiszolgálóra nyissa meg a Powershellt. Ellenőrizze, hogy az AutoCert
 >[!NOTE] 
 >Ha az AD FS 2.0 használja, először futtassa az Add-Pssnapin Microsoft.Adfs.Powershell.
 
-### <a name="step-2-confirm-that-ad-fs-and-azure-ad-are-in-sync"></a>2. lépés: Győződjön meg róla, hogy az AD FS és az Azure AD szinkronizálása
+### <a name="step-2-confirm-that-ad-fs-and-azure-ad-are-in-sync"></a>2\. lépés: Győződjön meg róla, hogy az AD FS és az Azure AD szinkronizálása
 Az AD FS-kiszolgálón nyissa meg az MSOnline PowerShell-parancssort, és az Azure AD connect.
 
 > [!NOTE]
@@ -93,7 +93,7 @@ Ellenőrizze a tanúsítványok konfigurálása az AD FS és az Azure AD megbíz
 
 A mindkét kimenetekben az ujjlenyomatok egyeznek, ha az Azure ad-val szinkronizálva a tanúsítványai.
 
-### <a name="step-3-check-if-your-certificate-is-about-to-expire"></a>3. lépés: Ellenőrizze, hogy-e a tanúsítvány hamarosan lejár
+### <a name="step-3-check-if-your-certificate-is-about-to-expire"></a>3\. lépés: Ellenőrizze, hogy-e a tanúsítvány hamarosan lejár
 A Get-MsolFederationProperty vagy a Get-AdfsCertificate kimenetben ellenőrizze az időpontra a "Nem később." Ha a dátum 30 napnál kevesebb azonnal, a művelet kell tennie.
 
 | AutoCertificateRollover | Az Azure ad-vel szinkronizált tanúsítványok | Összevonási metaadatok nyilvánosan elérhető-e | Érvényesség | Műveletek |
@@ -129,7 +129,7 @@ Előfordulhat, hogy a jogkivonat-aláíró tanúsítványok manuális megújít�
 
 Ezekben a forgatókönyvekben minden alkalommal, amikor frissíti a jogkivonat-aláíró tanúsítványokat, is frissítenie kell az Office 365-tartomány Update-MsolFederatedDomain PowerShell-parancs használatával.
 
-### <a name="step-1-ensure-that-ad-fs-has-new-token-signing-certificates"></a>1. lépés: Győződjön meg arról, hogy az AD FS rendelkezik-e az új jogkivonat-aláíró tanúsítványok
+### <a name="step-1-ensure-that-ad-fs-has-new-token-signing-certificates"></a>1\. lépés: Győződjön meg arról, hogy az AD FS rendelkezik-e az új jogkivonat-aláíró tanúsítványok
 **Nem alapértelmezett konfigurációja**
 
 Ha egy nem alapértelmezett AD FS konfigurációját használja (ahol **AutoCertificateRollover** értékre van állítva **hamis**), valószínűleg használ (nem önaláírt) egyéni tanúsítványokat. Az AD FS jogkivonat-aláíró tanúsítványok megújítása kapcsolatos további információkért lásd: [az ügyfelek nem használja az AD FS önaláírt tanúsítványok](https://msdn.microsoft.com/library/azure/JJ933264.aspx#BKMK_NotADFSCert).
@@ -154,7 +154,7 @@ Másrészről Ha **AutoCertificateRollover** értékre van állítva **igaz**, a
 
 Most már két tanúsítványt kell szerepelnie, amelyek közül az egyik rendelkezik egy **NotAfter** körülbelül egy évet a jövőben a, és amelyekre a **IsPrimary** érték **hamis**.
 
-### <a name="step-2-update-the-new-token-signing-certificates-for-the-office-365-trust"></a>2. lépés: Az új jogkivonat-aláíró tanúsítványok az Office 365 bizalmi kapcsolat frissítése
+### <a name="step-2-update-the-new-token-signing-certificates-for-the-office-365-trust"></a>2\. lépés: Az új jogkivonat-aláíró tanúsítványok az Office 365 bizalmi kapcsolat frissítése
 Frissítse az új jogkivonat-aláíró tanúsítványokat kell használni, a bizalmi kapcsolat a következő Office 365-höz.
 
 1. Nyissa meg a Microsoft Azure Active Directory-modul Windows Powershellhez készült.

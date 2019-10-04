@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: c57a45145d9abc43d0ca79839ea297dfc025db9b
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59524089"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66161419"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-as-default-storage-by-using-powershell"></a>HDInsight fürtök létrehozása az Azure Data Lake Storage Gen1 alapértelmezett tárolóként PowerShell-lel
 
@@ -45,7 +45,7 @@ Ez az oktatóanyag elkezdéséhez győződjön meg arról, hogy megfelel-e az al
 
 * **Azure-előfizetés**: Lépjen a [lekérése az Azure ingyenes próbaverzió](https://azure.microsoft.com/pricing/free-trial/).
 * **Azure PowerShell 1.0-ás vagy újabb**: Lásd: [telepítése és konfigurálása PowerShell](/powershell/azure/overview).
-* **Windows szoftverfejlesztői készlet (SDK)**: Telepítse a Windows SDK-t, lépjen a [letölti és a Windows 10-es eszközök](https://dev.windows.com/downloads). Az SDK segítségével hozzon létre egy biztonsági tanúsítványt.
+* **Windows szoftverfejlesztői készlet (SDK)** : Telepítse a Windows SDK-t, lépjen a [letölti és a Windows 10-es eszközök](https://dev.windows.com/downloads). Az SDK segítségével hozzon létre egy biztonsági tanúsítványt.
 * **Az Azure Active Directory egyszerű szolgáltatás**: Ez az oktatóanyag leírja, hogyan hozhat létre egyszerű szolgáltatást az Azure Active Directoryban (Azure AD). Azonban egy szolgáltatásnév létrehozásához, hogy Azure AD-rendszergazda kell lennie. Ha Ön rendszergazda, kihagyhatja ezt az előfeltételt, és folytassa az oktatóanyagot.
 
     >[!NOTE]
@@ -133,7 +133,7 @@ Ellenőrizze, hogy [Windows SDK](https://dev.windows.com/en-us/downloads) telep�
         makecert -sv mykey.pvk -n "cn=HDI-ADL-SP" CertFile.cer -r -len 2048
 
     Adja meg a titkos kulcs jelszavát kéri. Miután a parancs végrehajtása sikeres, megjelenik **CertFile.cer** és **mykey.pvk** a megadott tanúsítvány-könyvtárban.
-2. Használja a [Pvk2Pfx] [ pvk2pfx] segédprogramot a MakeCert által létrehozott .pvk, és .cer fájlokat átalakítása egy .pfx fájlba. Futtassa az alábbi parancsot:
+2. Használja a [Pvk2Pfx] [ pvk2pfx] segédprogramot a MakeCert által létrehozott .pvk, és .cer fájlokat átalakítása egy .pfx fájlba. Futtassa a következő parancsot:
 
         pvk2pfx -pvk mykey.pvk -spc CertFile.cer -pfx CertFile.pfx -po <password>
 

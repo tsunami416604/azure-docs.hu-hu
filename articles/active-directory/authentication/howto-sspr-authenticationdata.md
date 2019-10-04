@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5a0d7edb6c7faafcad55e827c2d9e3d2eeea40f5
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371366"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60358029"
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>Jelszó-visszaállítás anélkül, hogy a végfelhasználói regisztrációs üzembe helyezése
 
@@ -79,7 +79,7 @@ A következő mezőket a PowerShell használatával állítható:
 * **Mobiltelefon**
 * **Irodai telefon**: Csak akkor állítható, ha egy helyszíni címtár nem vagyunk szinkronizálása
 
-### <a name="use-powershell-version-1"></a>1. verzió PowerShell-lel
+### <a name="use-powershell-version-1"></a>1\. verzió PowerShell-lel
 
 Első lépésként kell [töltse le és telepítse az Azure AD PowerShell modul](https://msdn.microsoft.com/library/azure/jj151815.aspx#bkmk_installmodule). Ha már van telepítve, használhatja az egyes mezők konfigurálása szükséges.
 
@@ -117,7 +117,7 @@ Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthentic
 Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthenticationUserDetails | select Email
 ```
 
-### <a name="use-powershell-version-2"></a>2. verziójú PowerShell-lel
+### <a name="use-powershell-version-2"></a>2\. verziójú PowerShell-lel
 
 Első lépésként kell [töltse le és telepítse az Azure AD 2. verziójú PowerShell-modul](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0). Ha már van telepítve, használhatja az egyes mezők konfigurálása szükséges.
 

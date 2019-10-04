@@ -6,16 +6,16 @@ keywords: ''
 author: bandersmsft
 manager: vitavor
 ms.author: banders
-ms.date: 03/14/2018
+ms.date: 05/21/2019
 ms.topic: conceptual
 ms.service: cost-management
 ms.custom: seodec18
-ms.openlocfilehash: c7b5472c6a10e7a184d6db9d4c889b8fd37a9186
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: e1d0beb6ced0d582166d556c1ae2fc17b375dddf
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58000785"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695364"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>Azure-beli virtuális gépek kiterjesztett metrikák hozzáadása
 
@@ -28,10 +28,10 @@ Miután engedélyezte a metrika gyűjtemény, akkor a következőket teheti:
 - Méretezési használat alapján szabályozhatja a költségeket.
 - Költség hatékony méretezése a Cloudyn optimalizálási javaslatokat kaphat.
 
-Például előfordulhat, hogy szeretné figyelni a CPU-memória %-át az Azure-beli virtuális. Az Azure-beli Virtuálisgép-metrikák megfelelnek _[gazdagép] százalékos Processzorhasználat_ és _[Vendég] memóriahasználat (%)_.
+Például előfordulhat, hogy szeretné figyelni a CPU-memória %-át az Azure-beli virtuális. Az Azure-beli virtuális gépek mérőszámai a CPU és a _\Memory @ no__t-2 előjegyzett bájtok_ _százalékos arányának_ felelnek meg.
 
 > [!NOTE]
-> Kiterjesztett metrikaadatok gyűjtemény csak az Azure vendégszintű figyelést is támogatja. A Cloudyn, ezért nem kompatibilis az Azure Monitor naplók Virtuálisgép-bővítményt.
+> Kiterjesztett metrikaadatok gyűjtemény csak az Azure vendégszintű figyelést is támogatja. A Cloudyn nem kompatibilis a [log Analytics ügynökkel](../azure-monitor/platform/agents-overview.md). 
 
 ## <a name="determine-whether-extended-metrics-are-enabled"></a>Határozza meg, hogy engedélyezi-e kiterjesztett metrikák
 
@@ -44,7 +44,7 @@ Az előző példában korlátozott számú standard metrikák érhetők el a gaz
 
 ## <a name="enable-extended-metrics-in-the-azure-portal"></a>Az Azure Portalon kiterjesztett metrikák engedélyezése
 
-Standard mérőszámok gazdagépmetrikák számítógépen. A _[gazdagép] százalékos Processzorhasználat_ metrika egy példa. Is vannak a Vendég virtuális gépek alapvető metrikákat, és azok használ kiterjesztett metrikák is nevezik. Kiterjesztett metrikák közé _[Vendég] memóriahasználat (%)_ és _[Vendég] rendelkezésre álló memória_.
+Standard mérőszámok gazdagépmetrikák számítógépen. A _százalékos CPU_ -metrika egy példa. Is vannak a Vendég virtuális gépek alapvető metrikákat, és azok használ kiterjesztett metrikák is nevezik. Kiterjesztett mérőszámok például a _\Memory @ no__t-1 véglegesített bájtok használatban_ és _\Memory\Available bájtban_.
 
 Kiterjesztett metrikák engedélyezése rendkívül egyszerű. Minden virtuális gép vendégszintű figyelés engedélyezése. Ha engedélyezi a vendégszintű figyelést, az Azure diagnostics-ügynök telepítve van a virtuális gépen. Alapértelmezés szerint egy alapvető házirendcsoport kiterjesztett metrikák kerülnek. Az alábbi eljárás megegyezik a klasszikus és a normál virtuális gépek és a Windows és Linux rendszerű virtuális gépek azonos.
 
@@ -58,7 +58,7 @@ Ne feledje, hogy a tárfiók Azure és a Linux vendégszintű monitorozás szük
     ![Vendég szinten figyelés az Áttekintés lap engedélyezése](./media/azure-vm-extended-metrics/enable-guest-monitoring.png)
 4. Néhány perc elteltével az Azure diagnostics-ügynök telepítve van a virtuális gépen. Egy alapvető házirendcsoport metrikák kerülnek. Frissítse az oldalt. A hozzáadott teljesítményszámlálók az Áttekintés lapon jelennek meg.
 5. Válassza ki a figyelés területen **metrikák**.
-6. A metrikák diagram alatt **metrika Namespace**válassza **Vendég (klasszikus)**.
+6. A metrikák diagram alatt **metrika Namespace**válassza **Vendég (klasszikus)** .
 7. A metrika listában megtekintheti az összes rendelkezésre álló teljesítményszámlálók vonatkozóan a Vendég virtuális Gépen.  
     ![kiterjesztett példa mérőszámok listája](./media/azure-vm-extended-metrics/extended-metrics.png)
 

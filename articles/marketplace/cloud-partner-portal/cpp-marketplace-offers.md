@@ -1,72 +1,65 @@
 ---
-title: Az Azure és az appsource-ban Marketplace-ajánlat |} A Microsoft Docs
-description: Az Azure és az appsource-ban Piacterein kínál létrehozása és kezelése
+title: Azure-és AppSource Marketplace-ajánlatok
+description: Azure-és AppSource-Piactéri ajánlatok létrehozása és kezelése
 services: Azure, AppSource, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 03/27/2019
-ms.author: pbutlerm
-ms.openlocfilehash: f537a43f5d4d0431e1659daa258e0c1453f2295b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: pabutler
+ms.openlocfilehash: 746b1b51d593b21bdf85bca4eeb75c135196093a
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59010583"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962856"
 ---
-# <a name="azure-and-appsource-marketplace-offers"></a>Az Azure és az appsource-ban Marketplace-ajánlat
+# <a name="azure-and-appsource-marketplace-offers"></a>Azure-és AppSource Marketplace-ajánlatok
 
-Ez ez a szakasz első része bemutatja a hozhat létre és kezelheti a ajánlatok az Azure és az AppSource-piactér általános műveleteiről.  Ez a rész a meghatározott típusú kezeléséhez ismernie kell a háttérben, valamint a közös technikai információkat kínálnak típusokat.  Ez a szakasz a legtöbb hozhat létre és kezelhet meghatározott típusú részletes utasításokat tartalmaz.  
+Ez a szakasz első része az Azure-és AppSource-Piactéri ajánlatok létrehozásához és kezeléséhez használt általános műveleteket ismerteti.  Ez a rész az egyes ajánlati típusok kezeléséhez szükséges hátteret, valamint az összes ajánlat típusával közös technikai információkat tartalmazza.  Ennek a szakasznak a többsége részletes útmutatást tartalmaz az egyes ajánlatok létrehozásának és kezelésének módjáról.  
 
-A következő videó bemutatja a különböző képességekkel és az Azure Marketplace-en vagy az appsource-ban elérhető ajánlatáról típus.  Emellett fontos műszaki és üzleti alkalmazások vagy szolgáltatások közzététele a piactér aspektusait ismerteti.
+A következő videó bemutatja az Azure Marketplace-en vagy AppSource-ban elérhető különböző funkciókat és különböző ajánlati típusokat.  Az alkalmazás vagy szolgáltatás ezen piacokon való közzétételének fontos technikai és üzleti szempontjait is ismerteti.
 
 > [!VIDEO https://channel9.msdn.com/Events/Build/2018/BRK2513/player]
 
-**Alkalmazások létrehozása és a szolgáltatások az Azure Marketplace és AppSource - Build 2018.**
+**Alkalmazások és szolgáltatások létrehozása az Azure Marketplace-hez és a AppSource – Build 2018**
 
-Ezek a piactér kapcsolatos további információkért lásd: [közzétételi útmutató az Azure Marketplace és AppSource](../marketplace-publishers-guide.md).
-
-
-## <a name="common-offer-operations"></a>Az ajánlat olyan gyakori műveleteket
-
-A folyamaton, létrehozhat egy új ajánlat szolgáltatásfrissítési jelentősen különböző típusú, például egy [Azure alkalmazásra vonatkozó ajánlat](./azure-applications/cpp-azure-app-offer.md) és a egy [tanácsadási szolgáltatási ajánlat](./consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md).  Ezzel szemben a többi művelet számos hajt végre egy ajánlatot az a [Cloud Partner Portalon](https://cloudpartner.azure.com) viszonylag szabványosítottak ajánlattípusokról között.  Ezek olyan gyakori műveleteket – beleértve a közzététel, állapot megtekintése, frissítési és törlési – a szakaszban ismertetett [ajánlatok kezelése](./manage-offers/cpp-manage-offers.md)
+További információ ezekről a piactérekről: az [Azure Marketplace és az AppSource közzétételi útmutatója](../marketplace-publishers-guide.md).
 
 
-## <a name="test-drive"></a>Tesztverzió
+## <a name="common-offer-operations"></a>Gyakori ajánlati műveletek
 
-*Próbálja ki a* lehetővé az ügyfelek számára egy bemutató "próbálja ki a vásárlás előtt" beállítást engedélyezve ajánlatok piactéren funkció.  A Test Drive funkció korlátozódik ajánlattípusokról következő részét: [Az Azure-alkalmazások](./azure-applications/cpp-azure-app-offer.md), [Dynamics 365 Business Central](../cloud-partner-portal-orig/cpp-business-central-offer.md), [Dynamics 365 for Customer Engagement](./dyn365ce/cpp-customer-engagement-offer.md), [Dynamics 365 for Finance and Operations](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md), [ SaaS-alkalmazások](./saas-app/cpp-saas-offer.md), és [virtuális gépek](./virtual-machine/cpp-virtual-machine-offer.md).  Ez a funkció a közzétevő számára hozzon létre egy Test Drive-sablont, az ajánlat testre szabott van szükség.  További információkért lásd: a szakasz [Test Drive](./test-drive/what-is-test-drive.md).
-
-Megnyithatja a meglévő marketplace-ajánlat, amelyek rendelkeznek a Test Drive bemutatók alkalmazásával a [test drive szűrő](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?filters=test-drive). 
+Az új ajánlat létrehozásának folyamata nagy mértékben különbözik az ajánlati típusoktól, például egy [Azure-alkalmazás ajánlata](./azure-applications/cpp-azure-app-offer.md) és egy [tanácsadói szolgáltatás ajánlata](./consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md)között.  Ezzel szemben a [Cloud Partner Portal](https://cloudpartner.azure.com) egy ajánlatán végrehajtott egyéb műveletek többsége meglehetősen szabványosított az ajánlati típusok között.  Ezek a gyakori műveletek – beleértve a közzétételt, a megtekintési állapotot, a frissítést és a törlést – az [ajánlatok kezelése](./manage-offers/cpp-manage-offers.md) részben szerepelnek.
 
 
-## <a name="azure-marketplace-and-appsource-offer-types"></a>Az Azure Marketplace és AppSource ajánlat típusok
+## <a name="test-drive"></a>Kipróbálás
 
-A következő táblázat felsorolja az aktuális az ajánlat által támogatott típusok a [Cloud Partner Portalon](https://cloudpartner.azure.com).  Az ajánlat alkalmazástípust lista felsorolja az ajánlat listázó marketplace(s), valamint az ajánlat megoldás technológia általános leírása.
+A *Test Drive* egy Piactéri szolgáltatás, amely a "kipróbálás előtt" lehetőséget nyújt az ügyfeleknek az egyes ajánlatokhoz.  A test Drive funkció a következő típusú ajánlatokra korlátozódik: [Azure-alkalmazások](./azure-applications/cpp-azure-app-offer.md), [Dynamics 365 Business Central](../cloud-partner-portal-orig/cpp-business-central-offer.md), [Dynamics 365 a Customer engagement](./dyn365ce/cpp-customer-engagement-offer.md), a [Dynamics 365 for Finance és Operations](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md), [SaaS-alkalmazások](./saas-app/cpp-saas-offer.md)és [virtuális gépek](./virtual-machine/cpp-virtual-machine-offer.md).  Ehhez a funkcióhoz a közzétevőnek létre kell hoznia egy, az ajánlatához testreszabott tesztelési meghajtó-sablont.  További információt a [Test Drive](./test-drive/what-is-test-drive.md)című szakaszban talál.
+
+A test Drive- [szűrők](https://azuremarketplace.microsoft.com/marketplace/apps?filters=test-drive)alkalmazásával tallózhat a meglévő Piactéri ajánlatokban. 
+
+
+## <a name="azure-marketplace-and-appsource-offer-types"></a>Azure Marketplace-és AppSource-ajánlatok típusai
+
+A következő táblázat felsorolja a [Cloud Partner Portal](https://cloudpartner.azure.com)által támogatott aktuális ajánlatokat.  Minden ajánlat típusa esetén felsorolja azokat a piactér (eke) t, amelyeken az ajánlat listázható, valamint az ajánlat megoldási technológiájának általános leírását.
 
 |                Csomag típusa                |  Piactér  |   Leírás                                                           |
 |                ----------                |  -----------  |   -----------                                                           |
-| [Azure-alkalmazás](./azure-applications/cpp-azure-app-offer.md) | Azure | Megoldás áll egy vagy több telepített virtuális gépek (VM), nem kötelező egyéni Azure code egy Azure Resource Manager-sablon segítségével.  Üzembe helyezés lehet megoldássablon az ügyfél vagy a közzétevő felügyeli. Ez a típus segítségével, mint a megadott virtuális gép ajánlattípusra nagyobb rugalmasságot biztosítanak.  |
-| [Tanácsadási szolgáltatás](./consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md) | Mindkét | A Microsoft minősített tanácsadók listázhatja a tartomány-specifikus szolgáltatások az Azure Marketplace-en vagy az appsource-ban.  Összpontosíthassák segítséget nyújt az ügyfeleknek értékelésekor problémák és a létrehozott és a megfelelő megoldások az üzleti célok eléréséhez.  |
-| [Tároló](./containers/cpp-containers-offer.md)  | Azure | Megoldás, vagy egy Kubernetes-alapú szolgáltatás, vagy az Azure Container Instances szolgáltatásban üzembe helyezett Docker-tároló rendszerképét. |
-| [Dynamics 365 Business Central](../cloud-partner-portal-orig/cpp-business-central-offer.md) | AppSource | Csomag, amely kiterjeszti a vállalat erőforrás tervezési (ERP) és üzleti felügyeleti rendszer. |
-| [Dynamics 365 for Customer Engagement](./dyn365ce/cpp-customer-engagement-offer.md) | AppSource | Egy csomagot, amely kibővíti az ügyfelek erőforrás-kezelő (CRM) rendszer a sales, a szolgáltatás, a project service és a mező szolgáltatás modulok  |
-| [Dynamics 365 for Finance and Operations](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md) | AppSource | Egy csomagot, amely kiterjeszti a vállalatierőforrás-tervezési (ERP) szolgáltatást, hogy támogatja a speciális pénzügyi, műveletek, gyártási és ellátásilánc-kezelés |
-| [IoT Edge-modul](./iot-edge-module/cpp-offer-process-parts.md) | Azure | A Docker-kompatibilis tároló, amely IoT Edge-eszköz futtat.  Az egyéni kódot, más Azure-szolgáltatások és a 3. fél szolgáltatások kombinációját használó, kis számítási modulokat tartalmaz. |
-| [Power BI App](./power-bi/cpp-power-bi-offer.md) | AppSource | Csomagok, testre szabható Power BI-tartalmakat, beleértve az adatkészlet, jelentések és irányítópultok Power BI-alkalmazás |
-| [SaaS-alkalmazás](./saas-app/cpp-saas-offer.md) | Azure | Megoldás, a szoftver--szolgáltatásként előfizetés, a közzétevő, hogy mely felhasználók jelentkezzen be, amely az Azure Active Directory testre szabott felületen keresztül kezeli. |
-| [Virtuális gép](./virtual-machine/cpp-virtual-machine-offer.md)  | Azure  | Megoldás az ügyfél-előfizetés keretében üzembe egy virtuális gépen belül található.  |
+| [Azure-alkalmazás](./azure-applications/cpp-azure-app-offer.md) | Azure | A megoldás egy vagy több virtuális gépről (VM), opcionális egyéni Azure-kódra épül, amely Azure Resource Manger-sablonon keresztül helyezhető üzembe.  Az üzembe helyezés lehet az ügyfél vagy egy megoldás sablonja, vagy a közzétevő által felügyelt. Ez a típus nagyobb rugalmasságot biztosít, mint a virtuális gép által kínált ajánlat típusa.  |
+| [Tanácsadási szolgáltatás](./consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md) | mind | A Microsoft által minősített tanácsadók az Azure Marketplace-en vagy a AppSource-on is listázhatja a tartományra jellemző szolgáltatásokat.  Szakértelmük segítséget nyújt az ügyfeleknek a problémáik felméréséhez, valamint a megfelelő megoldások létrehozásához és üzembe helyezéséhez az üzleti célok teljesítése érdekében.  |
+| [Tároló](./containers/cpp-containers-offer.md)  | Azure | A megoldás egy Kubernetes-alapú szolgáltatásként vagy Azure Container instances-ben kiépített Docker-tároló képe. |
+| [Dynamics 365 Business Central](../cloud-partner-portal-orig/cpp-business-central-offer.md) | AppSource | Egy csomag, amely kibővíti ezt a vállalati erőforrás-tervezési (ERP) és az üzleti felügyeleti rendszerét. |
+| [Dynamics 365 ügyfél-engagement](./dyn365ce/cpp-customer-engagement-offer.md) | AppSource | Egy csomag, amely kiterjeszti ezt az ügyfél-erőforrás-kezelési (CRM) rendszert az értékesítés, a szolgáltatás, a Project Service és a Field Service moduljain keresztül.  |
+| [Dynamics 365 pénzügyi és üzemeltetési műveletekhez](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md) | AppSource | Olyan csomag, amely kiterjeszti ezt a vállalati erőforrás-tervezési (ERP) szolgáltatást, amely támogatja a fejlett pénzügyi, üzemeltetési, gyártási és ellátási láncok kezelését. |
+| [IoT Edge modul](./iot-edge-module/cpp-offer-process-parts.md) | Azure | Egy IoT Edge eszközön futó Docker-kompatibilis tároló.  Olyan kis számítási modulokból áll, amelyek egyéni kód, más Azure-szolgáltatások és harmadik féltől származó szolgáltatások kombinációját használják. |
+| [Power BI alkalmazás](./power-bi/cpp-power-bi-offer.md) | AppSource | Olyan Power BI alkalmazás, amely testreszabható Power BI tartalmakat, például adatkészleteket, jelentéseket és irányítópultokat csomagol |
+| [SaaS-alkalmazás](./saas-app/cpp-saas-offer.md) | Azure | A megoldás egy, a közzétevő által kezelt szoftver-szolgáltatás előfizetése, amelyet a felhasználók a Azure Active Directoryt használó testreszabott felületen keresztül jelentkeznek be. |
+| [Virtuális gép](./virtual-machine/cpp-virtual-machine-offer.md)  | Azure  | A megoldás az ügyfél előfizetésében üzembe helyezett egyetlen virtuális gépen belül található.  |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |   |   |
 
-További információkért lásd: [közzétételi útmutató ajánlat típus szerint](../publisher-guide-by-offer-type.md).
+További információ: [közzétételi útmutató ajánlat típusa szerint](../publisher-guide-by-offer-type.md).
 
 
 ## <a name="next-steps"></a>További lépések
 
-Megtudhatja, hogyan hajthat végre a marketplace-ajánlat és a gyakori technikai attribútumok és eszközök a cikk általános műveleteiről [ajánlatok kezelése](./manage-offers/cpp-manage-offers.md).
+A piactéren elérhető általános műveletekről, valamint azok közös műszaki attribútumairól és eszközeiről az [ajánlatok kezelése](./manage-offers/cpp-manage-offers.md)című cikkben tájékozódhat.

@@ -1,10 +1,10 @@
 ---
-title: Egy Azure virtuális hálózat konfigurálása (klasszikus) – hálózati konfigurációs fájl |} A Microsoft Docs
-description: Ismerje meg, hogyan hozhat létre, és módosítsa a virtuális hálózatok (klasszikus), módosítás, importálása és exportálása révén a hálózati konfigurációs fájlt.
+title: Azure-Virtual Network (klasszikus) – hálózati konfigurációs fájl konfigurálása | Microsoft Docs
+description: Megtudhatja, hogyan hozhat létre és módosíthat virtuális hálózatokat (klasszikus) egy hálózati konfigurációs fájl exportálásával, módosításával és importálásával.
 services: virtual-network
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: azure-service-management
 ms.assetid: c29b9059-22b0-444e-bbfe-3e35f83cde2f
@@ -16,29 +16,29 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2017
 ms.author: genli
 ms.custom: ''
-ms.openlocfilehash: e26ec4d268b9bd8852ef8cd2c522995902e15923
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ab4faa0f727469e27eb30af54f24036292ec3118
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57992389"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058703"
 ---
-# <a name="configure-a-virtual-network-classic-using-a-network-configuration-file"></a>Konfigurálja a hálózati konfigurációs fájl használatával virtuális hálózat (klasszikus)
+# <a name="configure-a-virtual-network-classic-using-a-network-configuration-file"></a>Virtuális hálózat (klasszikus) konfigurálása hálózati konfigurációs fájl használatával
 > [!IMPORTANT]
-> Az Azure az erőforrások létrehozásához és használatához két különböző üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén használja a Resource Manager üzemi modell.
+> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. A Microsoft azt javasolja, hogy a legtöbb új központi telepítés a Resource Manager-alapú üzemi modellt használja.
 
-Hozzon létre, és a egy virtuális hálózat (klasszikus) konfigurálja a hálózati konfigurációs fájlt az Azure klasszikus parancssori felület (CLI) vagy az Azure PowerShell használatával. Nem hozható létre, vagy módosítsa a virtuális hálózat az Azure Resource Manager-alapú üzemi modellel, a hálózati konfigurációs fájl használatával. Az Azure Portalon létrehozása vagy módosítása egy virtuális hálózat (klasszikus) használatával a hálózati konfigurációs fájlt az Azure portal segítségével hozzon létre egy virtuális hálózat (klasszikus), azonban nem használható a hálózati konfigurációs fájl nélkül.
+Létrehozhat és konfigurálhat egy virtuális hálózatot (klasszikus) egy hálózati konfigurációs fájllal a klasszikus Azure parancssori felületen (CLI) vagy Azure PowerShell használatával. Hálózati konfigurációs fájllal nem hozhat létre és nem módosíthat virtuális hálózatot a Azure Resource Manager üzemi modell használatával. Nem használhatja a Azure Portal virtuális hálózat (klasszikus) létrehozására vagy módosítására hálózati konfigurációs fájl használatával, azonban a Azure Portal használatával hálózati konfigurációs fájl nélkül is létrehozhat egy virtuális hálózatot (klasszikus).
 
-Létrehozása és konfigurálása virtuális hálózat (klasszikus) egy hálózati konfigurációs fájllal szükséges exportálása, módosítása és a fájl importálásakor.
+Egy hálózati konfigurációs fájllal rendelkező virtuális hálózat (klasszikus) létrehozása és konfigurálása szükséges a fájl exportálásához, módosításához és importálásához.
 
-## <a name="export"></a>Exportálhatja a hálózati konfigurációs fájlt
+## <a name="export"></a>Hálózati konfigurációs fájl exportálása
 
-PowerShell vagy a klasszikus Azure CLI segítségével exportálhatja a hálózati konfigurációs fájlt. PowerShell XML-fájlba exportálja, míg a klasszikus Azure CLI exportálja egy json-fájlt.
+Hálózati konfigurációs fájl exportálásához használhatja a PowerShellt vagy a klasszikus Azure CLI-t. A PowerShell XML-fájlt exportál, míg a klasszikus Azure CLI egy JSON-fájlt exportál.
 
 ### <a name="powershell"></a>PowerShell
  
-1. [Telepítse az Azure Powershellt, és jelentkezzen be az Azure-bA](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-install).
-2. Módosítsa a könyvtárat (és győződjön meg arról, hogy létezik-e) és a következő paranccsal igény szerint, majd futtassa a parancsot, exportálhatja a hálózati konfigurációs fájlt:
+1. [Telepítse Azure PowerShellt, és jelentkezzen be az Azure](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-install)-ba.
+2. Módosítsa a könyvtárat (és győződjön meg róla, hogy létezik) és a fájlnevet a következő parancsban, igény szerint, majd futtassa a parancsot a hálózati konfigurációs fájl exportálásához:
 
     ```powershell
     Get-AzureVNetConfig -ExportToFile c:\azure\networkconfig.xml
@@ -46,28 +46,28 @@ PowerShell vagy a klasszikus Azure CLI segítségével exportálhatja a hálóza
 
 ### <a name="azure-classic-cli"></a>Azure klasszikus parancssori felület
 
-1. [A klasszikus Azure CLI telepítése](../cli-install-nodejs.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Fejezze be a klasszikus parancssori felület parancssorból a hátralévő lépéseket.
-2. Jelentkezzen be az Azure-bA írja be a `azure login` parancsot.
-3. Győződjön meg arról, verziójában asm mód megadásával Ön a `azure config mode asm` parancsot.
-4. Módosítsa a könyvtárat (és győződjön meg arról, hogy létezik-e) és a következő paranccsal igény szerint, majd futtassa a parancsot, exportálhatja a hálózati konfigurációs fájlt:
+1. [Telepítse a klasszikus Azure CLI](../cli-install-nodejs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)-t. Hajtsa végre a többi lépést a klasszikus CLI-parancssorból.
+2. Jelentkezzen be az Azure-ba `azure login` a parancs beírásával.
+3. A `azure config mode asm` parancs beírásával ellenőrizze, hogy az ASM módban van-e.
+4. Módosítsa a könyvtárat (és győződjön meg róla, hogy létezik) és a fájlnevet a következő parancsban, igény szerint, majd futtassa a parancsot a hálózati konfigurációs fájl exportálásához:
     
     ```azurecli
     azure network export c:\azure\networkconfig.json
     ```
 
-## <a name="create-or-modify-a-network-configuration-file"></a>Hozzon létre vagy módosítsa a hálózati konfigurációs fájlt
+## <a name="create-or-modify-a-network-configuration-file"></a>Hálózati konfigurációs fájl létrehozása vagy módosítása
 
-A hálózati konfigurációs fájlt egy XML-fájlt (Ha a PowerShell használatával) vagy egy json-fájlt (használata esetén a klasszikus parancssori felület). Szerkesztheti a fájlt bármilyen szöveget vagy XML vagy json-szerkesztőt. A [hálózati konfigurációs fájl séma beállítások](https://msdn.microsoft.com/library/azure/jj157100.aspx) cikk összes beállítások részleteit tartalmazza. A beállítások további ismertetése: [virtuális hálózatok és a beállítások megtekintéséhez](manage-virtual-network.md#view-virtual-networks-and-settings). A módosításokat a fájlhoz:
+A hálózati konfigurációs fájl egy XML-fájl (a PowerShell használatakor) vagy egy JSON-fájl (a klasszikus CLI használatakor). A fájlt bármilyen szöveges vagy XML/JSON-szerkesztőben szerkesztheti. A [hálózati konfigurációs fájl sémájának beállításai](https://msdn.microsoft.com/library/azure/jj157100.aspx) cikk az összes beállítás részleteit tartalmazza. A beállításokról további magyarázatot a [virtuális hálózatok és beállítások megtekintése](manage-virtual-network.md#view-virtual-networks-and-settings)című témakörben talál. A fájl módosításai:
 
-- Meg kell felelnie a séma vagy importálása sikertelen lesz, a hálózati konfigurációs fájlt.
-- Az előfizetéshez tartozó minden olyan meglévő hálózati beállításokat, ezért járjon el körültekintően, ha a végzett módosítások. A példa hálózati konfigurációs fájlokat, amelyek például hivatkozhat. Tegyük fel, hogy az eredeti fájl található, két **VirtualNetworkSite** példányok, és módosítani, a példákban szemléltetett módon. Amikor importálja a fájlt, az Azure törli a virtuális hálózat számára a **VirtualNetworkSite** példány eltávolította a fájlban. Ezen egyszerű forgatókönyv feltételezi, hogy nincsenek erőforrások a virtuális hálózat is, ha vannak, a virtuális hálózat nem törölhető, és az importálás sikertelen lesz.
+- Be kell tartania a sémát, vagy a hálózati konfigurációs fájl importálása sikertelen lesz.
+- Írja felül az előfizetés meglévő hálózati beállításait, ezért a módosítások végrehajtásakor rendkívül körültekintően járjon el. Hivatkozzon például az alábbi hálózati konfigurációs fájlokra. Tegyük fel, hogy az eredeti fájl két **VirtualNetworkSite** példányt tartalmaz, és módosította azt a példákban látható módon. A fájl importálásakor az Azure törli a fájlból eltávolított **VirtualNetworkSite** -példány virtuális hálózatát. Ez az egyszerűsített forgatókönyv feltételezi, hogy egyetlen erőforrás sincs a virtuális hálózaton, mintha a virtuális hálózat nem törölhető, és az importálás meghiúsul.
 
 > [!IMPORTANT]
-> Az Azure úgy ítéli meg, egy alhálózatot, amelyen rajta, valami **használatban**. Ha egy alhálózat használatban van, nem lehet módosítani. Alhálózati információ a hálózati konfigurációs fájl módosítása, előtt helyezze át, amelyeket az alhálózathoz, egy másik alhálózatot, amely nem módosított telepítése. Lásd: [áthelyezése egy másik alhálózatot a virtuális gép vagy Szerepkörpéldány](virtual-networks-move-vm-role-to-subnet.md) részleteiről.
+> Az Azure olyan alhálózatot tekint, amely **használatban**van. Ha egy alhálózat használatban van, nem módosítható. Mielőtt módosítani szeretné az alhálózati adatokat egy hálózati konfigurációs fájlban, helyezze át az alhálózatra központilag telepített adatokat egy másik, nem módosított alhálózatra. További részletekért lásd: [virtuális gép vagy szerepkör-példány áthelyezése másik alhálózatra](virtual-networks-move-vm-role-to-subnet.md) .
 
-### <a name="example-xml-for-use-with-powershell"></a>Például XML, a PowerShell segítségével
+### <a name="example-xml-for-use-with-powershell"></a>Példa az XML használatára a PowerShell-lel
 
-A következő példa hálózati konfigurációs fájlt egy nevű virtuális hálózatot hoz létre *myVirtualNetwork* -címtere a *10.0.0.0/16* a a *USA keleti Régiójában* Azure régió. A virtuális hálózat tartalmaz nevű alhálózattal *mySubnet* címelőtaggal rendelkező *10.0.0.0/24*.
+A következő példa hálózati konfigurációs fájl egy *myVirtualNetwork* nevű virtuális hálózatot hoz létre az *USA keleti* régiójában található *10.0.0.0/16* címtartomány mellett. A virtuális hálózat egy *mySubnet* nevű alhálózatot tartalmaz, amelynek a *10.0.0.0/24*címnek kell szerepelnie.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -90,11 +90,11 @@ A következő példa hálózati konfigurációs fájlt egy nevű virtuális hál
 </NetworkConfiguration>
 ```
 
-Ha a hálózati konfigurációs fájlt exportált nincs tartalom tartalmaz, az előző példában az XML-fájl másolása, és illessze be egy új fájlt.
+Ha az exportált hálózati konfigurációs fájl nem tartalmaz tartalmat, akkor az előző példában szereplő XML-fájlt másolhatja, majd beillesztheti egy új fájlba.
 
-### <a name="example-json-for-use-with-the-classic-cli"></a>Példa JSON-a a klasszikus parancssori felület segítségével
+### <a name="example-json-for-use-with-the-classic-cli"></a>Példa JSON-ra a klasszikus CLI-vel való használatra
 
-A következő példa hálózati konfigurációs fájlt egy nevű virtuális hálózatot hoz létre *myVirtualNetwork* -címtere a *10.0.0.0/16* a a *USA keleti Régiójában* Azure régió. A virtuális hálózat tartalmaz nevű alhálózattal *mySubnet* címelőtaggal rendelkező *10.0.0.0/24*.
+A következő példa hálózati konfigurációs fájl egy *myVirtualNetwork* nevű virtuális hálózatot hoz létre az *USA keleti* régiójában található *10.0.0.0/16* címtartomány mellett. A virtuális hálózat egy *mySubnet* nevű alhálózatot tartalmaz, amelynek a *10.0.0.0/24*címnek kell szerepelnie.
 
 ```json
 {
@@ -117,16 +117,16 @@ A következő példa hálózati konfigurációs fájlt egy nevű virtuális hál
 }
 ```
 
-Ha a hálózati konfigurációs fájlt exportált nincs tartalmát, másolja a json az előző példában, és illessze be egy új fájlt.
+Ha az exportált hálózati konfigurációs fájl nem tartalmaz tartalmat, a JSON-t átmásolhatja az előző példába, és beillesztheti egy új fájlba.
 
 ## <a name="import"></a>Hálózati konfigurációs fájl importálása
 
-PowerShell vagy a klasszikus parancssori felület használatával importálhatja a hálózati konfigurációs fájlt. PowerShell XML-fájlba importálja, míg a klasszikus parancssori felület importál egy json-fájlt. Ha az importálás sikertelen lesz, ellenőrizze, hogy a fájl megfelel a [network konfigurációs séma](https://msdn.microsoft.com/library/azure/jj157100.aspx). 
+Hálózati konfigurációs fájl importálásához használhatja a PowerShellt vagy a klasszikus CLI-t. A PowerShell XML-fájlt importál, míg a klasszikus CLI egy JSON-fájlt importál. Ha az importálás sikertelen, győződjön meg arról, hogy a fájl megfelel a [hálózati konfigurációs sémának](https://msdn.microsoft.com/library/azure/jj157100.aspx). 
 
 ### <a name="powershell"></a>PowerShell
  
-1. [Telepítse az Azure Powershellt, és jelentkezzen be az Azure-bA](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-install).
-2. Módosítsa a könyvtárat és a fájlnév szükség szerint, az alábbi parancsban majd a parancs futtatásával importálhatja a hálózati konfigurációs fájlt:
+1. [Telepítse Azure PowerShellt, és jelentkezzen be az Azure](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-install)-ba.
+2. Szükség szerint módosítsa a könyvtárat és a fájlnevet a következő parancsban, majd futtassa a parancsot a hálózati konfigurációs fájl importálásához:
  
     ```powershell
     Set-AzureVNetConfig  -ConfigurationPath c:\azure\networkconfig.xml
@@ -134,10 +134,10 @@ PowerShell vagy a klasszikus parancssori felület használatával importálhatja
 
 ### <a name="azure-classic-cli"></a>Azure klasszikus parancssori felület
 
-1. [A klasszikus Azure CLI telepítése](/cli/azure/install-classic-cli). Fejezze be a klasszikus parancssori felület parancssorból a hátralévő lépéseket.
-2. Jelentkezzen be az Azure-bA írja be a `azure login` parancsot.
-3. Győződjön meg arról, verziójában asm mód megadásával Ön a `azure config mode asm` parancsot.
-4. Módosítsa a könyvtárat és a fájlnév szükség szerint, az alábbi parancsban majd a parancs futtatásával importálhatja a hálózati konfigurációs fájlt:
+1. [Telepítse a klasszikus Azure CLI](/cli/azure/install-classic-cli)-t. Hajtsa végre a többi lépést a klasszikus CLI-parancssorból.
+2. Jelentkezzen be az Azure-ba `azure login` a parancs beírásával.
+3. A `azure config mode asm` parancs beírásával ellenőrizze, hogy az ASM módban van-e.
+4. Szükség szerint módosítsa a könyvtárat és a fájlnevet a következő parancsban, majd futtassa a parancsot a hálózati konfigurációs fájl importálásához:
 
     ```azurecli
     azure network import c:\azure\networkconfig.json

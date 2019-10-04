@@ -1,25 +1,18 @@
 ---
-title: Gyakori hitelesítési hibák elhárítása |} A Microsoft Docs
+title: Gyakori hitelesítési hibák elhárítása |} Az Azure Marketplace-en
 description: A gyakori hitelesítési hibák segítségnyújtást kínál a Cloud Partner Portal API-k használata esetén.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 12ed395855b9d870f8f6e3564dc5b3b899b9c6c1
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.author: pabutler
+ms.openlocfilehash: ddf3c9ce26a1538d91f1e6d6bcc04fd0d18e7936
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53313870"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64935805"
 ---
 # <a name="troubleshooting-common-authentication-errors"></a>Gyakori hitelesítési hibák elhárítása
 
@@ -32,7 +25,7 @@ Ha rendszeresen kap `401 unauthorized` hibát, ellenőrizze, hogy rendelkezik-e 
 ![A 401-es hiba elhárítása](./media/cloud-partner-portal-api-troubleshooting-authentication-errors/troubleshooting-401-error.jpg)
 
 
-## <a name="forbidden-error"></a>Tiltott hibaüzenet
+## <a name="forbidden-error"></a>Forbidden error
 
 Ha egy `403 forbidden` hiba, győződjön meg arról, hogy a megfelelő szolgáltatásnévhez hozzáadta-e a Cloud Partner portálra a kiadói fiókjában.
 Kövesse a [Előfeltételek](./cloud-partner-portal-api-prerequisites.md) lapot, az egyszerű szolgáltatást a portálra.

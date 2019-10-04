@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 03/29/2018
 ms.author: aljo
 ms.openlocfilehash: 28cd1162d7cae2b3a16062bdf18a2971e1f05aad
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58664437"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60621173"
 ---
 # <a name="run-a-service-as-a-local-user-account-or-local-system-account"></a>Szolgáltatás futtatása egy helyi felhasználói fiók vagy helyi rendszerfiók
 Az Azure Service Fabric használatával gondoskodhat a különböző felhasználói fiókok a fürtben futó alkalmazásokat. Alapértelmezés szerint Service Fabric-alkalmazásokat, amely a Fabric.exe folyamatban fut, a fiók alatt fut. A Service Fabric emellett lehetővé teszi a helyi felhasználói vagy rendszer fiókja alatt alkalmazások futtatására. Támogatott helyi rendszer fiók típusok a következők **LocalUser**, **NetworkService**, **LocalService**, és **LocalSystem**.  Ha a Service Fabric Windows önálló fürtön futtatja, a szolgáltatás alatt futtathatja [Active Directory tartományi fiókok](service-fabric-run-service-as-ad-user-or-group.md) vagy [csoportosan felügyelt szolgáltatásfiókok](service-fabric-run-service-as-gmsa.md).

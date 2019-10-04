@@ -1,116 +1,232 @@
 ---
-title: A PyTorch modelleket taníthat be
-titleSuffix: Azure Machine Learning service
-description: Ismerje meg, hogyan futtathat egy csomópontos és elosztott képzési PyTorch modellek a PyTorch estimator
+title: Mély tanulási neurális hálózat betanítása a PyTorch
+titleSuffix: Azure Machine Learning
+description: Megtudhatja, hogyan futtathatja nagyvállalati szintű PyTorch-betanítási parancsfájljait Azure Machine Learning PyTorch kalkulátor-osztályának használatával.  A példaként szolgáló parancsfájlok a csirkét és a pulyka képét sorolják fel, hogy PyTorch az adatátviteli tanulási oktatóanyag alapján mély tanulási neurális hálózatot hozzanak létre.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: minxia
-author: mx-iao
-ms.reviewer: sgilley
-ms.date: 12/04/2018
+ms.author: maxluk
+author: maxluk
+ms.reviewer: peterlu
+ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9ae7795381f036bb819ce24554d8cea94ceb5552
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: c688f5a59a9a6d980f50a726f9da4dc4379ce073
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59548545"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002566"
 ---
-# <a name="train-pytorch-models-with-azure-machine-learning-service"></a>PyTorch modellek Azure Machine Learning szolgáltatással
+# <a name="train-pytorch-deep-learning-models-at-scale-with-azure-machine-learning"></a>A Pytorch mély tanulási modelljeinek betanítása Azure Machine Learning
 
-Neurális hálózat (DNN) képzést nyújt PyTorch, az Azure Machine Learning biztosít egyéni [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py) osztályát az `Estimator`. Az Azure SDK `PyTorch` estimator lehetővé teszi, hogy könnyedén beküldhető PyTorch mind egyetlen csomópontot, és elosztott futtatások az Azure-beli számítási feladatok.
+Ebből a cikkből megtudhatja, hogyan futtathatja nagyvállalati szintű [PyTorch](https://pytorch.org/) -betanítási parancsfájljait Azure Machine learning [PyTorch kalkulátor](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py) -osztályának használatával.  
 
-## <a name="single-node-training"></a>Egy csomópontos képzés
-A képzés a `PyTorch` estimator hasonlít a használatával a [alap `Estimator` ](how-to-train-ml-models.md), ezért először olvassa el a cikkben található útmutató, és ellenőrizze, hogy tisztában van a bemutatott fogalmakkal.
-  
-Hozza létre a PyTorch feladatok futtatásához egy `PyTorch` objektum. Már létrehozott kell a [számítási célt](how-to-set-up-training-targets.md#amlcompute) objektum `compute_target` és a [adattárolója](how-to-access-data.md) objektum `ds`.
+Az ebben a cikkben szereplő szkriptek a csirkék és a Törökország képeinek osztályozására szolgálnak, hogy a PyTorch az adatátviteli tanulási [oktatóanyaga](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html)alapján mély tanulási neurális hálózatot hozzanak létre. 
+
+Legyen szó akár egy mély tanulási PyTorch modellről az alapoktól, akár egy meglévő modellt hoz létre a felhőben, a Azure Machine Learning segítségével rugalmas Felhőbeli számítási erőforrásokkal bővítheti a nyílt forráskódú képzési feladatokat. A Azure Machine Learning használatával előkészítheti, üzembe helyezheti, telepítheti és figyelheti a termelési szintű modelleket. 
+
+További információ a [Deep learning és a Machine learning](concept-deep-learning-vs-machine-learning.md)szolgáltatásról.
+
+## <a name="prerequisites"></a>Előfeltételek
+
+Futtassa ezt a kódot ezen környezetek bármelyikén:
+
+ - Azure Machine Learning notebook VM – nincs szükség letöltésre vagy telepítésre
+
+    - Fejezze be [az oktatóanyagot: Az SDK-val](tutorial-1st-experiment-sdk-setup.md) és a minta adattárral előre betöltött dedikált jegyzetfüzet-kiszolgáló létrehozásához beállíthatja a környezetet és a munkaterületet.
+    - A notebook-kiszolgáló minták Deep learning mappájában keresse meg a befejezett és kibontott jegyzetfüzetet a következő könyvtárra való navigálással: **How-to-use-azureml > Training-with-Deep-learning > Train-hiperparaméter-Tune-Deploy-with-pytorch** Folder. 
+ 
+ - Saját Jupyter Notebook-kiszolgáló
+
+    - [Telepítse a Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)-t.
+    - [Hozzon létre egy munkaterület-konfigurációs fájlt](how-to-configure-environment.md#workspace).
+    - [A minta parancsfájl fájljainak letöltése](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch)`pytorch_train.py`
+     
+    Az útmutató egy befejezett [Jupyter notebook verzióját](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch/train-hyperparameter-tune-deploy-with-pytorch.ipynb) is megtalálhatja a GitHub-minták lapon. A jegyzetfüzet tartalmaz kibővített szakaszt az intelligens hiperparaméter hangolás, a modell üzembe helyezése és a notebook widgetek számára.
+
+## <a name="set-up-the-experiment"></a>A kísérlet beállítása
+
+Ez a szakasz a betanítási kísérletet a szükséges Python-csomagok betöltésével, egy munkaterület inicializálásával, egy kísérlet létrehozásával, valamint a betanítási adat és a betanítási parancsfájlok feltöltésével állítja be.
+
+### <a name="import-packages"></a>Csomagok importálása
+
+Először importálja a szükséges Python-kódtárakat.
 
 ```Python
+import os
+import shutil
+
+from azureml.core.workspace import Workspace
+from azureml.core import Experiment
+
+from azureml.core.compute import ComputeTarget, AmlCompute
+from azureml.core.compute_target import ComputeTargetException
 from azureml.train.dnn import PyTorch
-
-script_params = {
-    '--data_dir': ds
-}
-
-pt_est = PyTorch(source_directory='./my-pytorch-proj',
-                 script_params=script_params,
-                 compute_target=compute_target,
-                 entry_script='train.py',
-                 use_gpu=True)
 ```
 
-Itt hogy adja meg az alábbi paramétereket a PyTorch konstruktor:
+### <a name="initialize-a-workspace"></a>Munkaterület inicializálása
 
-Paraméter | Leírás
---|--
-`source_directory` |  Helyi könyvtár, amely tartalmazza az összes a betanítási feladathoz szükséges kódot. Ez a mappa a távoli számítási átmásolódnak a helyi gépen
-`script_params` |  A parancssori paraméterek, a tanítási szkriptet megadása szótárban `entry_script`, < parancssori argumentum, érték > formájában párokat.  Adja meg a részletes azt a jelzőt, `script_params`, használjon `<command-line argument, "">`.
-`compute_target` |  Arról, hogy az a tanítási szkriptet, ebben az esetben az Azure Machine Learning Compute távoli számítási célnak ([AmlCompute](how-to-set-up-training-targets.md#amlcompute)) fürt
-`entry_script` |  Fájl elérési útja (viszonyítva a `source_directory`), a tanítási szkriptet futtatandó távoli számítási. Ezt a fájlt, és a további fájlokat attól függ, ebben a mappában kell elhelyezni.
-`conda_packages` |  Szükség szerint a tanítási szkriptet conda-n keresztül kell telepíteni a Python-csomagok listáját. A konstruktor rendelkezik egy másik nevű paramétert `pip_packages` használható az esetleges pip csomagokat szükséges
-`use_gpu` |  Ezt a jelzőt `True` kihasználhatja a GPU, a betanításhoz. Az alapértelmezett érték `False`
+A [Azure Machine learning munkaterület](concept-workspace.md) a szolgáltatás legfelső szintű erőforrása. Központi helyet biztosít az összes létrehozott összetevővel való együttműködéshez. A Python SDK-ban egy [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) objektum létrehozásával érheti el a munkaterület összetevőit.
 
-Mivel használ a `PyTorch` estimator, a képzési használt tároló tartalmazza a PyTorch csomag és a kapcsolódó függőségeket, a processzorok és gpu-k képzéshez szükséges.
+Hozzon létre egy munkaterület- `config.json` objektumot az [Előfeltételek szakaszban](#prerequisites)létrehozott fájlból.
 
-Ezután küldje el a PyTorch feladatot:
 ```Python
-run = exp.submit(pt_est)
+ws = Workspace.from_config()
+```
+
+### <a name="create-a-deep-learning-experiment"></a>Mélyreható tanulási kísérlet létrehozása
+
+Hozzon létre egy kísérletet és egy mappát a betanítási szkriptek tárolásához. Ebben a példában hozzon létre egy "pytorch-Birds" nevű kísérletet.
+
+```Python
+project_folder = './pytorch-birds'
+os.makedirs(project_folder, exist_ok=True)
+
+experiment_name = 'pytorch-birds'
+experiment = Experiment(ws, name=experiment_name)
+```
+
+### <a name="get-the-data"></a>Az adatok lekérése
+
+Az adatkészlet körülbelül 120 betanítási képet tartalmaz a pulykák és csirkék számára, az egyes osztályokhoz 100 érvényesítési lemezképekkel. Az adathalmazt a betanítási szkript `pytorch_train.py`részeként fogjuk letölteni és kinyerni. A képek a [megnyitott lemezképek V5-adatkészlet](https://storage.googleapis.com/openimages/web/index.html)részhalmazai.
+
+### <a name="prepare-training-scripts"></a>Betanítási parancsfájlok előkészítése
+
+Ebben az oktatóanyagban már meg van biztosítva a betanítási szkript `pytorch_train.py`. A gyakorlatban bármilyen egyéni tanítási szkriptet igénybe vehet, és futtathatja a Azure Machine Learning használatával.
+
+Töltse fel a Pytorch betanítási szkriptjét `pytorch_train.py`.
+
+```Python
+shutil.copy('pytorch_train.py', project_folder)
+```
+
+Ha azonban Azure Machine Learning követési és mérőszám-képességeket szeretne használni, egy kis mennyiségű kódot kell hozzáadnia a betanítási parancsfájlban. A metrikák nyomon követésének példái a `pytorch_train.py`következő címen találhatók:.
+
+## <a name="create-a-compute-target"></a>Hozzon létre egy számítási célnak
+
+Hozzon létre egy számítási célt a PyTorch-feladatokhoz a futtatásához. Ebben a példában hozzon létre egy GPU-kompatibilis Azure Machine Learning számítási fürtöt.
+
+```Python
+cluster_name = "gpucluster"
+
+try:
+    compute_target = ComputeTarget(workspace=ws, name=cluster_name)
+    print('Found existing compute target')
+except ComputeTargetException:
+    print('Creating a new compute target...')
+    compute_config = AmlCompute.provisioning_configuration(vm_size='STANDARD_NC6', 
+                                                           max_nodes=4)
+
+    compute_target = ComputeTarget.create(ws, cluster_name, compute_config)
+
+    compute_target.wait_for_completion(show_output=True, min_node_count=None, timeout_in_minutes=20)
+```
+
+A számítási célokkal kapcsolatos további információkért tekintse meg a [Mi az a számítási cél](concept-compute-target.md) című cikket.
+
+## <a name="create-a-pytorch-estimator"></a>PyTorch-kalkulátor létrehozása
+
+A [PyTorch kalkulátor](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py) egyszerű módszert kínál a PyTorch-betanítási feladatok számítási célra való elindítására.
+
+A PyTorch kalkulátor az általános [`estimator`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) osztályon keresztül valósul meg, amely bármely keretrendszer támogatásához használható. További információ a képzési modellekről az általános kalkulátor használatával: [modellek betanítása Azure Machine learning a kalkulátor használatával](how-to-train-ml-models.md)
+
+Ha a képzési szkriptnek további pip-vagy Conda-csomagokat kell futtatnia, akkor az eredményül kapott Docker-rendszerképre is telepítheti a csomagokat `pip_packages` , `conda_packages` ha a és az argumentumokat át szeretné adni a nevüknek.
+
+```Python
+script_params = {
+    '--num_epochs': 30,
+    '--output_dir': './outputs'
+}
+
+estimator = PyTorch(source_directory=project_folder, 
+                    script_params=script_params,
+                    compute_target=compute_target,
+                    entry_script='pytorch_train.py',
+                    use_gpu=True,
+                    pip_packages=['pillow==5.4.1'])
+```
+
+## <a name="submit-a-run"></a>Futtatás küldése
+
+A [Run objektum](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py) biztosítja a felületet a futtatási előzményekhez, miközben a feladatot futtatja, és a művelet befejeződött.
+
+```Python
+run = experiment.submit(estimator)
+run.wait_for_completion(show_output=True)
+```
+
+A Futtatás végrehajtásakor a következő szakaszokon halad végig:
+
+- **Felkészülés**: A Docker-rendszerkép létrehozása a PyTorch-kalkulátor alapján történik. A rendszer feltölti a rendszerképet a munkaterület tároló-Hivatalához, és a gyorsítótárba helyezi a későbbi futtatásokhoz. A naplók a futtatási előzményekre is továbbítva lesznek, és a folyamat figyelésére is megtekinthetők.
+
+- **Méretezés**: A fürt akkor kísérli meg a skálázást, ha a Batch AI-fürthöz több csomópont szükséges a jelenleg elérhető futtatáshoz.
+
+- **Futtatás**: A rendszer a parancsfájl mappájában lévő összes parancsfájlt feltölti a számítási célra, az adattárakat csatlakoztatja vagy másolja, és a entry_script hajtja végre. Az stdout és a./Logs mappa kimeneteit a rendszer a futtatási előzményekre továbbítja, és a Futtatás figyelésére használható.
+
+- **Feldolgozás utáni**: A Futtatás./outputs mappáját a rendszer átmásolja a futtatási előzményekbe.
+
+## <a name="register-or-download-a-model"></a>Modell regisztrálása vagy letöltése
+
+A modell kiképzése után regisztrálhatja azt a munkaterületre. A modell regisztrálása lehetővé teszi a modellek tárolását és verzióját a munkaterületen a [modell kezelésének és üzembe helyezésének](concept-model-management-and-deployment.md)egyszerűsítése érdekében.
+
+```Python
+model = run.register_model(model_name='pt-dnn', model_path='outputs/')
+```
+
+A modell helyi másolatát a Run objektum használatával is letöltheti. A betanítási `pytorch_train.py`parancsfájlban a PyTorch mentése objektum megőrzi a modellt egy helyi mappába (helyi a számítási célra). A Futtatás objektum használatával letöltheti a másolatokat.
+
+```Python
+# Create a model folder in the current directory
+os.makedirs('./model', exist_ok=True)
+
+for f in run.get_file_names():
+    if f.startswith('outputs/model'):
+        output_file_path = os.path.join('./model', f.split('/')[-1])
+        print('Downloading from {} to {} ...'.format(f, output_file_path))
+        run.download_file(name=f, output_file_path=output_file_path)
 ```
 
 ## <a name="distributed-training"></a>Elosztott betanítás
-A `PyTorch` estimator lehetővé teszi, hogy ipari méretekben a modellek betanítása Azure-beli virtuális Processzor és GPU fürtök között. Könnyedén futtathat elosztott PyTorch képzési néhány API-hívások, amíg az Azure Machine Learning fogja kezelni a háttérben, az infrastruktúra és a vezénylési ilyen számítási feladat végrehajtásához szükséges.
 
-Az Azure Machine Learning jelenleg támogatja a Horovod keretrendszerrel PyTorch elosztott képzésének MPI-alapú.
+A [`PyTorch`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py) kalkulátor a CPU-és a GPU-fürtökön egyaránt támogatja az elosztott képzést. Könnyedén futtathatja az elosztott PyTorch-feladatokat, és Azure Machine Learning felügyeli az Ön számára.
 
 ### <a name="horovod"></a>Horovod
-[Horovod](https://github.com/uber/horovod) Uber által fejlesztett elosztott betanítás egy kör-allreduce nyílt forráskódú keretrendszer van.
+A [Horovod](https://github.com/uber/horovod) egy nyílt forráskódú, amely az Über által fejlesztett elosztott képzések összes csökkentési keretrendszerét csökkenti. Az elosztott GPU PyTorch feladatok egyszerű elérési útját kínálja.
 
-A Horovod keretrendszerrel elosztott PyTorch futtatásához a következőképpen hozhat létre a PyTorch objektum:
+A Horovod használatához meg kell adnia [`MpiConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py) egy objektumot `distributed_training` a paraméterhez a PyTorch konstruktorban. Ez a paraméter biztosítja, hogy a Horovod-függvénytár telepítve legyen a betanítási parancsfájlban.
+
 
 ```Python
 from azureml.train.dnn import PyTorch
 
-pt_est = PyTorch(source_directory='./my-pytorch-project',
-                 script_params={},
-                 compute_target=compute_target,
-                 entry_script='train.py',
-                 node_count=2,
-                 process_count_per_node=1,
-                 distributed_backend='mpi',
-                 use_gpu=True)
+estimator= PyTorch(source_directory=project_folder,
+                      compute_target=compute_target,
+                      script_params=script_params,
+                      entry_script='script.py',
+                      node_count=2,
+                      process_count_per_node=1,
+                      distributed_training=MpiConfiguration(),
+                      framework_version='1.13',
+                      use_gpu=True)
 ```
+A Horovod és a hozzá tartozó függőségek telepítve lesznek, így a következő módon importálhatja azt a `train.py` betanítási parancsfájlba:
 
-Ez a kód a következő új paraméterek a PyTorch konstruktor tünteti fel:
-
-Paraméter | Leírás | Alapértelmezett
---|--|--
-`node_count` |  A betanítási feladathoz használandó csomópontok száma. | `1`
-`process_count_per_node` |  Minden egyes csomóponton futtatandó folyamatok (vagy "dolgozó szakemberek") száma. | `1`
-`distributed_backend` |  Háttérbeli indításakor elosztott képzés, így az a Estimator MPI-n keresztül.  Párhuzamos és elosztott képzési elvégzésére (pl. `node_count`> 1 vagy `process_count_per_node`> 1 vagy mindkét) beállítása MPI (és Horovod) `distributed_backend='mpi'`. Az Azure Machine Learning által használt MPI végrehajtása [nyílt MPI](https://www.open-mpi.org/). | `None`
-
-A fenti példában fognak futni az elosztott képzési két feldolgozó egy feldolgozó csomópontonkénti.
-
-Horovod és annak függőségeit lesz telepítve, így egyszerűen importálhatja azt a tanítási szkriptet a `train.py` módon:
 ```Python
 import torch
 import horovod
 ```
+## <a name="export-to-onnx"></a>Exportálás ONNX
 
-Végül küldje el az elosztott PyTorch feladatot:
-```Python
-run = exp.submit(pt_est)
-```
-
-## <a name="examples"></a>Példák
-
-Notebooks az elosztott deep learninget tekintse meg:
-* [How-to-use-azureml/Training-with-deep-Learning](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning)
-
-[!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
+Ha optimalizálni szeretné a következtetést a [ONNX futtatókörnyezettel](concept-onnx.md), alakítsa át a betanított PyTorch modelljét a ONNX formátumba. A következtetés vagy a modell pontozása az a fázis, ahol az üzembe helyezett modellt az előrejelzéshez használják, leggyakrabban a termelési adatforgalomban. Példaként tekintse meg az [oktatóanyagot](https://github.com/onnx/tutorials/blob/master/tutorials/PytorchOnnxExport.ipynb) .
 
 ## <a name="next-steps"></a>További lépések
+
+Ebben a cikkben a PyTorch-on Azure Machine Learning-on keresztül tanult és regisztrált egy mély tanulási és neurális hálózatot. A modellek üzembe helyezésének megismeréséhez folytassa a modell üzembe helyezésével kapcsolatos cikket.
+
+> [!div class="nextstepaction"]
+> [Modellek üzembe helyezésének módja és helye](how-to-deploy-and-where.md)
 * [Metrikák futtatása a betanítás során nyomon követése](how-to-track-experiments.md)
 * [Hiperparaméterek hangolása](how-to-tune-hyperparameters.md)
 * [A betanított modell üzembe helyezése](how-to-deploy-and-where.md)
+* [Az Azure-ban elosztott Deep learning-képzés hivatkozási architektúrája](/azure/architecture/reference-architectures/ai/training-deep-learning)

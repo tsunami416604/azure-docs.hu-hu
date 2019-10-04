@@ -1,21 +1,21 @@
 ---
-title: Az Azure-ban a Cloudyn költségvetések kezeléséhez |} A Microsoft Docs
+title: Cloudyn-költségvetések kezelése az Azure-ban
 description: Ez a cikk segítséget nyújt a létre gyorsan költségvetéshez, és azokat a Cloudyn kezelésének megkezdéséhez.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/14/2018
+ms.date: 05/20/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
 ms.custom: seodec18
-ms.openlocfilehash: e6afa7eb91daec95c44d76007ea793fca90b61bb
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ad0566f0b93593140d217767f8d97f410dfcbb3b
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58009118"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259243"
 ---
 # <a name="manage-azure-budgets-with-cloudyn"></a>A Cloudyn Azure költségvetése kezelése
 

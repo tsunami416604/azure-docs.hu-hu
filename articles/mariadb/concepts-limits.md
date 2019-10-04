@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: e191c656c5485377f62073f52dec0b3dbee7537b
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: b78671cc61a4fe755b908ed9f71052cbd0a70b38
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59616271"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65550515"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>Azure Database for MariaDB korlátozásai
 A következő szakaszok ismertetik a kapacitást, motor támogatása, jogosultság támogatja, adatok adatkezelési utasítást, és az adatbázis-szolgáltatás működési korlátai.
@@ -82,6 +82,9 @@ Amikor kapcsolatokat meghaladják a korlátot, a következő hiba jelenhet meg:
 
 ### <a name="vnet-service-endpoints"></a>Virtuális hálózati Szolgáltatásvégpontok
 - Virtuális hálózati Szolgáltatásvégpontok támogatása csak az általános célú és memóriahasználatra optimalizált kiszolgálók esetében érhető el.
+
+### <a name="storage-size"></a>Tároló mérete
+- Tekintse meg [tarifacsomagok](concepts-pricing-tiers.md) a tároló mérete vonatkozó korlátok tarifacsomag.
 
 ## <a name="current-known-issues"></a>Jelenlegi ismert problémák
 - MariaDB-server-példány a megfelelő verziója a kapcsolat létrejötte után jeleníti meg. A megfelelő kiszolgáló példány motor verziója, amelyet a `select version();` parancsot.

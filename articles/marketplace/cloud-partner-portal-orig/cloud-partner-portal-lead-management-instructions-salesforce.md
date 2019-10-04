@@ -1,25 +1,18 @@
 ---
-title: Salesforce-hoz |} A Microsoft Docs
-description: Konfigurálja a lead felügyelet, a Salesforce-hoz.
+title: Konfigurálható érdeklődő a Salesforce-hoz |} Az Azure Marketplace-en
+description: Konfigurálja a lead felügyelet a Salesforce-hoz az Azure Marketplace ügyfelei.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 2f2a96e46b76ce41131b8e745075648bf0c68716
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.author: pabutler
+ms.openlocfilehash: 0be5cd84e9ed8314584b5cea064b5c0241db1ab5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56867337"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64935099"
 ---
 # <a name="configure-lead-management-for-salesforce"></a>Konfigurálható érdeklődő a Salesforce-hoz
 

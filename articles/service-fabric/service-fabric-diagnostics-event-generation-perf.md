@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
 ms.openlocfilehash: ee1608c40801f568b38ace4670b0d5ea7f73003c
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663077"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60392891"
 ---
 # <a name="performance-metrics"></a>Teljesítmény-mérőszámok
 
@@ -45,7 +45,7 @@ A gépek a fürtben fontolja meg a következő teljesítményszámlálók adatai
 | Processor(total) | Processzoridő |
 | Folyamat (szolgáltatásonként) | Processzoridő |
 | Folyamat (szolgáltatásonként) | Folyamat azonosítója |
-| Folyamat (szolgáltatásonként) | Saját [nem megosztható] memória (bájt) |
+| Folyamat (szolgáltatásonként) | A saját memória |
 | Folyamat (szolgáltatásonként) | Szálak száma |
 | Folyamat (szolgáltatásonként) | Virtuális memória |
 | Folyamat (szolgáltatásonként) | Pracovní Sada |

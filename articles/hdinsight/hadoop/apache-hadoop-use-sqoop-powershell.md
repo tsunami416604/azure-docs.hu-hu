@@ -2,19 +2,18 @@
 title: Az Apache Sqoop-feladatok futtatása a PowerShell és az Azure HDInsight használatával
 description: Megtudhatja, hogyan használhatja az Azure Powershellt egy munkaállomásról futtatása az Apache Sqoop-importálás és exportálása az Apache Hadoop-fürt és a egy Azure SQL database között.
 ms.reviewer: jasonh
-services: hdinsight
 author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: hrasheed
-ms.openlocfilehash: fb15a6389577e8d132b9c5a895a9995a9f7da208
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: f178d07666eda3552c18f581a926305e76ecb697
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59607361"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67450134"
 ---
 # <a name="run-apache-sqoop-jobs-by-using-azure-powershell-for-apache-hadoop-in-hdinsight"></a>Az Apache Sqoop-feladatok futtatása HDInsight az Apache Hadoophoz készült Azure PowerShell használatával
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -23,7 +22,7 @@ ms.locfileid: "59607361"
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
+Ez a cikk elkezdéséhez a következőkkel kell rendelkeznie:
 
 * Egy munkaállomás Azure PowerShell-lel [AZ modul](https://docs.microsoft.com/powershell/azure/overview) telepítve.
 

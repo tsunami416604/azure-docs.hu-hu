@@ -12,14 +12,14 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 ms.openlocfilehash: 914bc37552a80886df16ed69fba4e31b3f22ac22
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57574916"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61399522"
 ---
 # <a name="transform-data-using-hadoop-pig-activity-in-azure-data-factory"></a>Adatok átalakítása Hadoop Pig-tevékenység használatával az Azure Data Factoryban
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
 > * [1-es verzió](v1/data-factory-pig-activity.md)
 > * [Aktuális verzió](transform-data-using-hadoop-pig.md)
 
@@ -58,15 +58,15 @@ Ha most ismerkedik az Azure Data Factory, olvassa el az [az Azure Data Factory b
 
 | Tulajdonság            | Leírás                              | Szükséges |
 | ------------------- | ---------------------------------------- | -------- |
-| név                | A tevékenység neve                     | Igen      |
-| leírás         | Mire használható a tevékenységet leíró szöveg | Nem       |
+| name                | A tevékenység neve                     | Igen      |
+| description         | Mire használható a tevékenységet leíró szöveg | Nem       |
 | type                | A Hive-tevékenység a tevékenység típusát HDinsightPig | Igen      |
 | linkedServiceName   | Referencia a HDInsight-fürthöz társított szolgáltatásként a Data Factory regisztrálva. Ezt a társított szolgáltatást kapcsolatos további információkért lásd: [társított szolgáltatások számítása](compute-linked-services.md) cikk. | Igen      |
 | scriptLinkedService | A Pig-parancsprogram végrehajtását tárolására használt Azure Storage társított szolgáltatás hivatkozik. Ha nem adja meg ezt a társított szolgáltatást, az Azure Storage társított szolgáltatás a HDInsight társított szolgáltatásban meghatározott használja. | Nem       |
 | scriptPath          | Adja meg a scriptlinkedservice szolgáltatás által hivatkozott Azure Storage-ban tárolt a parancsfájl elérési útját. A fájlnév formátuma a kis-és nagybetűket. | Nem       |
 | getDebugInfo        | Itt adhatja meg, amikor a naplófájlok másolja az Azure Storage HDInsight-fürt által használt (vagy) scriptlinkedservice szolgáltatás által megadott. Megengedett értékek: Nincs, mindig, vagy sikertelen. Alapértelmezett érték: Nincs. | Nem       |
 | argumentumok           | Argumenty Pro Hadoop-feladatok egy tömbjét adja meg. Az argumentumok adhatók be a parancssori argumentumok minden egyes tevékenységhez. | Nem       |
-| határozza meg             | A Pig-parancsprogram belül való kulcs/érték párok paramétereket adja meg. | Nem       |
+| defines             | A Pig-parancsprogram belül való kulcs/érték párok paramétereket adja meg. | Nem       |
 
 ## <a name="next-steps"></a>További lépések
 Tekintse meg a következő cikkek, amelyek bemutatják, hogyan alakíthat át adatokat, egyéb módon: 

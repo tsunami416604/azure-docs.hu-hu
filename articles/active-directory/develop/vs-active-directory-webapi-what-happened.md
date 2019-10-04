@@ -1,81 +1,80 @@
 ---
-title: Azure ad-ben való csatlakozáskor a WebAPI-projekt végrehajtott módosítások
-description: Leírja, mi történik a WebAPI-projekthez, amikor a Visual Studio segítségével az Azure AD connect
-services: active-directory
+title: WebAPI-projekt módosításai az Azure AD-hez való csatlakozáskor
+description: Leírja, hogy mi történik a WebAPI-projekttel, amikor az Azure AD-hez csatlakozik a Visual Studióval
 author: ghogen
-manager: douge
+manager: jillfra
 ms.assetid: 57630aee-26a2-4326-9dbb-ea2a66daa8b0
-ms.prod: visual-studio-dev15
-ms.technology: vs-azure
 ms.workload: azure-vs
+ms.prod: visual-studio-windows
+ms.technology: vs-azure
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f4946251cf72d7869ec5fc2f0fd844b9c06ac34
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 32fc72d22d3f739018df22c315d7a1a3124c8823
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56161932"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851807"
 ---
-# <a name="what-happened-to-my-webapi-project-visual-studio-azure-active-directory-connected-service"></a>Mi történt a WebAPI-projektemmel (a Visual Studio Azure Active Directory csatlakoztatott szolgáltatás)
+# <a name="what-happened-to-my-webapi-project-visual-studio-azure-active-directory-connected-service"></a>Mi történt a WebAPI-projekttel (Visual Studio Azure Active Directory csatlakoztatott szolgáltatás)
 
 > [!div class="op_single_selector"]
 > - [Első lépések](vs-active-directory-webapi-getting-started.md)
 > - [mi történt](vs-active-directory-webapi-what-happened.md)
 
-Ez a cikk azonosítja a pontos módosításait ASP.NET WebAPI egyoldalas alkalmazást az ASP.NET és ASP.NET az Azure API-projektek hozzáadásakor a [Azure Active Directory csatlakoztatott szolgáltatás Visual studióval](vs-active-directory-add-connected-service.md). Az ASP.NET az Azure Mobile Service projekteket a Visual Studio 2015 is vonatkozik.
+Ez a cikk a ASP.NET WebAPI, a ASP.NET egyoldalas alkalmazás és a ASP.NET Azure API-projektek pontos módosításait mutatja be, amikor a [Visual Studio használatával hozzáadja a Azure Active Directory csatlakoztatott szolgáltatást](vs-active-directory-add-connected-service.md). A Visual Studio 2015 ASP.NET Azure Mobile Service-projektjeire is vonatkozik.
 
-A csatlakoztatott szolgáltatás való használatáról információkért lásd: [bevezetés](vs-active-directory-webapi-getting-started.md).
+További információ a csatlakoztatott szolgáltatás használatáról: [első lépések](vs-active-directory-webapi-getting-started.md).
 
-## <a name="added-references"></a>A hozzáadott referenciák
+## <a name="added-references"></a>Hozzáadott referenciák
 
-A projekt fájlhivatkozásokat *.NET befolyásolja) és `packages.config` (NuGet-hivatkozás).
+Hatással van a (*. net-referenciák `packages.config` ) projektfájl és a (NuGet-hivatkozások) fájlra.
 
-| Typo | Leírások |
+| Type | Hivatkozás |
 | --- | --- |
-| .NET; NuGet | Microsoft.Owin |
-| .NET; NuGet | Microsoft.Owin.Host.SystemWeb |
-| .NET; NuGet | Microsoft.Owin.Security |
-| .NET; NuGet | Microsoft.Owin.Security.ActiveDirectory |
-| .NET; NuGet | Microsoft.Owin.Security.Jwt |
-| .NET; NuGet | Microsoft.Owin.Security.OAuth |
-| .NET; NuGet | Owin |
-| .NET; NuGet | System.IdentityModel.Tokens.Jwt |
+| NET NuGet | Microsoft.Owin |
+| NET NuGet | Microsoft.Owin.Host.SystemWeb |
+| NET NuGet | Microsoft.Owin.Security |
+| NET NuGet | Microsoft.Owin.Security.ActiveDirectory |
+| NET NuGet | Microsoft.Owin.Security.Jwt |
+| NET NuGet | Microsoft.Owin.Security.OAuth |
+| NET NuGet | Owin |
+| NET NuGet | System.IdentityModel.Tokens.Jwt |
 
-További hivatkozások, ha bejelölte a **címtáradatok olvasása** lehetőséget:
+További hivatkozások ha a címtár- **adatok olvasása** lehetőséget választotta:
 
-| Typo | Leírások |
+| Type | Hivatkozás |
 | --- | --- |
-| .NET; NuGet | EntityFramework |
-| .NET        | EntityFramework.SqlServer (Visual Studio 2015 only) |
-| .NET; NuGet | Microsoft.Azure.ActiveDirectory.GraphClient |
-| .NET; NuGet | Microsoft.Data.Edm |
-| .NET; NuGet | Microsoft.Data.OData |
-| .NET; NuGet | Microsoft.Data.Services.Client |
-| .NET; NuGet | Microsoft.IdentityModel.Clients.ActiveDirectory |
-| .NET        | Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms<br>(A visual Studio 2015-ös csak) |
-| .NET; NuGet | System.Spatial |
+| NET NuGet | EntityFramework |
+| .NET        | EntityFramework. SqlServer (csak Visual Studio 2015) |
+| NET NuGet | Microsoft.Azure.ActiveDirectory.GraphClient |
+| NET NuGet | Microsoft.Data.Edm |
+| NET NuGet | Microsoft.Data.OData |
+| NET NuGet | Microsoft.Data.Services.Client |
+| NET NuGet | Microsoft.IdentityModel.Clients.ActiveDirectory |
+| .NET        | Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms<br>(Csak Visual Studio 2015) |
+| NET NuGet | System.Spatial |
 
-A következő hivatkozásokat el lesznek távolítva (ASP.NET 4-projektek, mint a Visual Studio 2015):
+A következő hivatkozások törlődnek (csak ASP.NET 4 projekt, a Visual Studio 2015-as verziójában):
 
-| Typo | Leírások |
+| Type | Hivatkozás |
 | --- | --- |
-| .NET; NuGet | Microsoft.AspNet.Identity.Core |
-| .NET; NuGet | Microsoft.AspNet.Identity.EntityFramework |
-| .NET; NuGet | Microsoft.AspNet.Identity.Owin |
+| NET NuGet | Microsoft.AspNet.Identity.Core |
+| NET NuGet | Microsoft.AspNet.Identity.EntityFramework |
+| NET NuGet | Microsoft.AspNet.Identity.Owin |
 
-## <a name="project-file-changes"></a>Projekt fájlmódosítás
+## <a name="project-file-changes"></a>Projektfájl módosításai
 
-- A tulajdonság értéke `IISExpressSSLPort` egyedi szám.
-- A tulajdonság értéke `WebProject_DirectoryAccessLevelKey` 0 vagy 1, ha bejelölte a **címtáradatok olvasása** lehetőséget.
-- A tulajdonság értéke `IISUrl` való `https://localhost:<port>/` ahol `<port>` megegyezik a `IISExpressSSLPort` értéket.
+- Állítsa a tulajdonságot `IISExpressSSLPort` egy külön számra.
+- Állítsa a tulajdonságot `WebProject_DirectoryAccessLevelKey` 0 vagy 1 értékre, ha a **Címtáradatok olvasása** lehetőséget választotta.
+- Állítsa be a `IISUrl` tulajdonságot `<port>` , hogy `IISExpressSSLPort` `https://localhost:<port>/` a hol egyezzen az értékkel.
 
-## <a name="webconfig-or-appconfig-changes"></a>Web.config vagy az App.config fájlt módosítások
+## <a name="webconfig-or-appconfig-changes"></a>a web. config vagy az app. config módosítása
 
-- Adja hozzá a következő konfigurációs bejegyzéseket:
+- A következő konfigurációs bejegyzések lettek hozzáadva:
 
     ```xml
     <appSettings>
@@ -85,33 +84,33 @@ A következő hivatkozásokat el lesznek távolítva (ASP.NET 4-projektek, mint 
     </appSettings>
     ```
 
-- A Visual Studio 2017 csak: A következő bejegyzés alatt is hozzá `<appSettings>`"
+- Csak Visual Studio 2017 esetén: A következő bejegyzést `<appSettings>`is hozzáadta a "
 
     ```xml
     <add key="ida:MetadataAddress" value="<domain URL + /federationmetadata/2007-06/federationmetadata.xml>" />
     ```
 
-- Hozzáadott `<dependentAssembly>` elemek alatt a `<runtime><assemblyBinding>` csomópont `System.IdentityModel.Tokens.Jwt`.
+- Hozzáadott `<dependentAssembly>` elemek a `<runtime><assemblyBinding>` csomópont alatt a `System.IdentityModel.Tokens.Jwt`következőhöz:.
 
-- Ha bejelölte a **címtáradatok olvasása** beállítást, a következő konfigurációs bejegyzés alatt hozzáadott `<appSettings>`:
+- Ha a címtárbeli **adat olvasása** lehetőséget választotta, a következő konfigurációs bejegyzést `<appSettings>`adta hozzá a következőhöz:
 
     ```xml
     <add key="ida:Password" value="<Your Azure AD app's new password>" />
     ```
 
-## <a name="code-changes-and-additions"></a>Kód módosításairól és kínálatáról
+## <a name="code-changes-and-additions"></a>Kód módosításai és kiegészítései
 
-- Hozzáadja a `[Authorize]` attribútumot `Controllers/ValueController.cs` és más, meglévő tartományvezérlőkön.
+- `[Authorize]` Az`Controllers/ValueController.cs` attribútum hozzá lett adva a és más meglévő vezérlőkhöz.
 
-- Hozzáadva egy hitelesítést indítási osztályt `App_Start/Startup.Auth.cs`, az Azure AD-hitelesítés ügyfélindítási logikája tartalmazó vagy módosítani azt. Ha bejelölte a **címtáradatok olvasása** beállítást, ez a fájl is tartalmazza kódot, hogy megkapja az OAuth-kódot, és azt exchange-hozzáférési jogkivonatot.
+- Egy hitelesítési indítási osztályt `App_Start/Startup.Auth.cs`adott hozzá, amely az Azure ad-hitelesítés indítási logikáját tartalmazza, vagy ennek megfelelően módosította. Ha a **Címtáradatok olvasása** lehetőséget választotta, ez a fájl a OAuth-kód fogadására és a hozzáférési tokenek cseréjére szolgáló kódot is tartalmaz.
 
-- (A visual Studio 2015-höz, az ASP.NET 4 csak alkalmazás) Eltávolított `App_Start/IdentityConfig.cs` , és hozzá `Controllers/AccountController.cs`, `Models/IdentityModel.cs`, és `Providers/ApplicationAuthProvider.cs`.
+- (Visual Studio 2015 csak ASP.NET 4 alkalmazással) Eltávolítva `App_Start/IdentityConfig.cs` és `Controllers/AccountController.cs` `Providers/ApplicationAuthProvider.cs`hozzáadva:, és. `Models/IdentityModel.cs`
 
-- Hozzáadott `Connected Services/AzureAD/ConnectedService.json` (Visual Studio 2017) vagy `Service References/Azure AD/ConnectedService.json` (Visual Studio 2015), amely információkat tartalmaz, amely a Visual Studio segítségével nyomon követheti a csatlakoztatott szolgáltatás.
+- Hozzáadva `Connected Services/AzureAD/ConnectedService.json` (Visual Studio 2017) `Service References/Azure AD/ConnectedService.json` vagy (Visual Studio 2015), amely azokat az információkat tartalmazza, amelyeket a Visual Studio használ a csatlakoztatott szolgáltatás hozzáadásának nyomon követésére.
 
-### <a name="file-backup-visual-studio-2015"></a>Biztonsági mentés (Visual Studio 2015)
+### <a name="file-backup-visual-studio-2015"></a>Fájl biztonsági mentése (Visual Studio 2015)
 
-A csatlakoztatott szolgáltatás hozzáadása, ha Visual Studio 2015 eltávolított és a módosított fájlok mentését. A mappa összes érintett fájlok lesznek mentve `Backup/AzureAD`. A Visual Studio 2017 nem hoz létre a biztonsági mentéseket.
+A csatlakoztatott szolgáltatás hozzáadásakor a Visual Studio 2015 biztonsági mentést készít a módosított és eltávolított fájlokról. A rendszer az összes érintett fájlt menti a `Backup/AzureAD`mappába. A Visual Studio 2017 nem hoz létre biztonsági másolatokat.
 
 - `Startup.cs`
 - `App_Start\IdentityConfig.cs`
@@ -123,12 +122,12 @@ A csatlakoztatott szolgáltatás hozzáadása, ha Visual Studio 2015 eltávolít
 
 ## <a name="changes-on-azure"></a>Változások az Azure-ban
 
-- Létrehozott egy Azure AD-alkalmazást a tartományban, amikor a csatlakoztatott szolgáltatás hozzáadása a kiválasztott.
-- Az alkalmazás frissítése a **címtáradatok olvasása** engedélyt, ha ezt a lehetőséget választotta.
+- Létrehozott egy Azure AD-alkalmazást abban a tartományban, amelyet a csatlakoztatott szolgáltatás hozzáadásakor kiválasztott.
+- Frissítette az alkalmazást, hogy tartalmazza a **címtár** -adatolvasási engedélyt, ha ez a beállítás be van jelölve.
 
-[További információ az Azure Active Directory](https://azure.microsoft.com/services/active-directory/).
+[További információ a Azure Active Directoryról](https://azure.microsoft.com/services/active-directory/).
 
 ## <a name="next-steps"></a>További lépések
 
-- [Hitelesítési forgatókönyvek az Azure Active Directory](authentication-scenarios.md)
-- [Jelentkezzen be a Microsoft ASP.NET-webalkalmazás hozzáadása](quickstart-v1-aspnet-webapp.md)
+- [Hitelesítési forgatókönyvek Azure Active Directory](authentication-scenarios.md)
+- [Bejelentkezés felvétele a Microsofttal egy ASP.NET-webalkalmazásba](quickstart-v1-aspnet-webapp.md)

@@ -9,11 +9,11 @@ ms.date: 03/20/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: b1a9d93d9fccf02ba1517e429625150736e539e9
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58305203"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179004"
 ---
 Egy virtuális hálózati átjáró létrehozásakor meg kell adni a használni kívánt termékváltozatot. Válassza ki a számítási feladatok, az átviteli sebesség, a funkciók és a szolgáltatói szerződés igényeinek megfelelő termékváltozatot. Virtuális hálózati átjáró SKU-k az Azure-beli rendelkezésre állási zónák, lásd: [Azure rendelkezésre állási zónák átjáró-termékváltozatok](../articles/vpn-gateway/about-zone-redundant-vnet-gateways.md).
 

@@ -1,6 +1,6 @@
 ---
-title: Csatlakozás az Apache Hadoop használatával a Data Lake Tools for Visual Studio – Azure HDInsight
-description: Megtudhatja, hogyan kell telepíteni, és az Apache Hadoop fürtök csatlakoztatásához az Azure HDInsight a Data Lake Tools for Visual Studio használatával és majd a Hive-lekérdezések futtatásához.
+title: A Visual studióhoz készült Apache Hadoop és Data Lake Tools – Azure HDInsight
+description: Megtudhatja, hogyan telepítheti és használhatja a Visual studióhoz készült Data Lake-eszközöket az Azure HDInsight-beli Apache Hadoop-fürtökhöz való kapcsolódáshoz, majd a kaptár-lekérdezések futtatásához.
 keywords: hadoop-eszközök,hive-lekérdezés,visual studio,visual studio hadoop
 services: hdinsight
 author: hrasheed-msft
@@ -9,60 +9,60 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
-ms.date: 02/21/2019
-ms.openlocfilehash: cf392bb254e38b2e07a92e87927b12e144b26f16
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.date: 06/03/2019
+ms.openlocfilehash: 44a076ee6979e207ac3992f76d3b89cc188d53b8
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58447474"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076295"
 ---
-# <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>A Data Lake Tools for Visual Studio használatával csatlakozhat az Azure HDInsight és az Apache Hive-lekérdezések futtatása
+# <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>Data Lake Tools for Visual Studio használata az Azure HDInsight való kapcsolódáshoz és Apache Hive lekérdezések futtatásához
 
-Ismerje meg, hogyan használható [a Microsoft Azure Data Lake and Stream Analytics Tools for Visual Studio](https://www.microsoft.com/download/details.aspx?id=49504) (más néven is néven a Data Lake Tools) szeretne csatlakozni az Apache Hadoop-fürtök a [Azure HDInsight](../hdinsight-hadoop-introduction.md) és Hive-lekérdezések elküldéséhez.  
+Ismerje meg, hogyan használhatók a [Visual Studio Microsoft Azure Data Lake és stream Analytics eszközei](https://www.microsoft.com/download/details.aspx?id=49504) (más néven Data Lake eszközök) az [Azure-HDInsight](../hdinsight-hadoop-introduction.md) Apache Hadoop-fürtökhöz való kapcsolódáshoz és a kaptár-lekérdezések elküldéséhez.  
 
 További információ a HDInsight használatáról: [A HDInsight bemutatása](../hdinsight-hadoop-introduction.md) és [HDInsight – első lépések](apache-hadoop-linux-tutorial-get-started.md).  
 
-Csatlakozás az Apache Storm fürthöz kapcsolatos további információkért lásd: [Develop C# Visual Studio használatával a HDInsight Apache Storm-topológiák](../storm/apache-storm-develop-csharp-visual-studio-topology.md).
+A Apache Storm-fürtökhöz való csatlakozással kapcsolatos további információkért lásd: [a HDInsight-hez készült topológiák fejlesztése C# a Visual studióval való Apache Stormhoz](../storm/apache-storm-develop-csharp-visual-studio-topology.md).
 
 A Data Lake Tools for Visual Studio mind az Azure Data Lake Analytics, mind a HDInsight eléréséhez használható. A Data Lake Tools eszközökkel kapcsolatos információkért lásd: [U-SQL-szkriptek fejlesztése Data Lake Tools for Visual Studio használatával](../../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elvégzéséhez és a Data Lake Tools for Visual Studio használatához a következőkre van szüksége:
+A cikk elvégzéséhez és a Visual studióhoz készült Data Lake Tools használatához a következő elemek szükségesek:
 
-* Egy Azure-beli HDInsight-fürt. Egy HDInsight-fürt létrehozása: [Azure HDInsight az Apache Hadoop használatának első lépései](apache-hadoop-linux-tutorial-get-started.md). Interaktív Apache Hive-lekérdezések futtatásához, szükség van egy [HDInsight interaktív lekérdezés](../interactive-query/apache-interactive-query-get-started.md) fürt.  
+* Egy Azure-beli HDInsight-fürt. HDInsight-fürt létrehozásához tekintse [meg az Apache Hadoop Azure HDInsight való használatának](apache-hadoop-linux-tutorial-get-started.md)első lépéseit ismertető témakört. Az interaktív Apache Hive lekérdezések futtatásához [HDInsight interaktív lekérdezési](../interactive-query/apache-interactive-query-get-started.md) fürtre van szükség.  
 
-* [A Visual Studio](https://visualstudio.microsoft.com/downloads/) (2013-as vagy újabb).  A [Visual Studio Community edition](https://visualstudio.microsoft.com/vs/community/) ingyenes.  Lásd még a [Visual Studio 2017 telepítése](https://docs.microsoft.com/visualstudio/install/install-visual-studio).
+* [Visual Studio](https://visualstudio.microsoft.com/downloads/) (2013 vagy újabb).  A [Visual Studio Community Edition](https://visualstudio.microsoft.com/vs/community/) ingyenes.  Lásd még: a [Visual studio 2017](https://docs.microsoft.com/visualstudio/install/install-visual-studio) és a [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)telepítése. A Visual Studio 2019 enyhe felületi változatokkal rendelkezik.
 
   > [!IMPORTANT]  
-  > A Data Lake Tools for Visual Studio 2013 már nem támogatott. 
+  > A Visual Studio 2013 már nem támogatja a Data Lake eszközöket.
 
 ## <a name="install-data-lake-tools-for-visual-studio"></a>A Data Lake Tools for Visual Studio telepítése  
 <a name="install-or-update-data-lake-tools-for-visual-studio"></a>
 
-* Visual Studio 2017  
-  A telepítés során, ellenőrizze, akkor tartalmaznia kell legalább számítási feladatok **Azure-fejlesztési** vagy **adattárolási és feldolgozási**.  
+* Visual Studio 2017 vagy Visual Studio 2019  
+  A telepítés során győződjön meg róla, hogy legalább az **Azure-fejlesztést** , az **adattárolást és-feldolgozást**is magában foglalja.  
 
-  A meglévő telepítések esetén a menüsoron lépjen **eszközök** > **első eszközök és szolgáltatások...**  Visual Studio telepítőjének megnyitása.  Válassza ki legalább számítási feladatok **Azure-fejlesztési** vagy **adattárolási és feldolgozási**.
+  Meglévő telepítések esetén a menüsávban navigáljon > az eszközök**lekérése eszközök és szolgáltatások...** elemre a Visual Studio telepítőjének megnyitásához.  Ezután válassza ki az Azure- **fejlesztés** vagy **az adattárolás és-feldolgozás minimális számítási feladatait**.
 
-  ![Képernyőfelvétel a Visual Studio telepítőjének](./media/apache-hadoop-visual-studio-tools-get-started/vs2017_installation.png)
+  ![A Visual Studio telepítő képernyőképe](./media/apache-hadoop-visual-studio-tools-get-started/vs-2017-installation.png)
 
-* Visual Studio 2013 and 2015  
-  [Töltse le a Data Lake Tools](https://www.microsoft.com/download/details.aspx?id=49504). Válassza ki a Data Lake Tools azon verzióját, amely megfelel a Visual Studio verziójának.  
+* Visual Studio 2013 és 2015  
+  [Data Lake eszközök letöltése](https://www.microsoft.com/download/details.aspx?id=49504). Válassza ki a Data Lake Tools azon verzióját, amely megfelel a Visual Studio verziójának.  
 
 > [!NOTE]  
 > A Data Lake Tools for Visual Studio jelenleg csak angol nyelven érhető el.
 
-## <a name="update-data-lake-tools-for-visual-studio"></a>Frissítés a Data Lake Tools for Visual Studio  
+## <a name="update-data-lake-tools-for-visual-studio"></a>A Visual studióhoz készült Data Lake Tools frissítése  
 
 1. Nyissa meg a Visual Studiót.
 
-2. Lépjen a menüsoron **eszközök** > **bővítmények és frissítések...** .
+2. A menüsávban navigáljon az **eszközök** > **bővítmények és frissítések...** elemre.
 
-3. Az a **bővítmények és frissítések** ablakában bontsa ki a **frissítések** a bal oldalon.
+3. A **bővítmények és frissítések** ablakban bontsa ki a **frissítések** elemet a bal oldalon.
 
-4. Frissítés érhető el, ha **az Azure Data Lake és Stream Analytics Tools** jelenik meg a fő ablakot.  Válassza ki **frissítés**.
+4. Ha van elérhető frissítés, a főablakban megjelennek a **Azure Data Lake és a stream analitikai eszközei** .  Válassza a **frissítés**lehetőséget.
 
 > [!NOTE]  
 > Csak a Data Lake Tools 2.3.0.0-s és újabb verziói támogatják az interaktív lekérdezési fürtökhöz való csatlakozást és az interaktív Hive-lekérdezések futtatását.
@@ -77,192 +77,207 @@ Csatlakozás az Azure-előfizetéshez:
 
 1. Nyissa meg a Visual Studiót.
 
-2. Lépjen a menüsoron **nézet** > **Server Explorer**.
+2. A menüsávban navigáljon a**Server Explorer** **megtekintése** > elemre.
 
-3. A Server Explorer eszközben kattintson a jobb gombbal **Azure**válassza **kapcsolódás a Microsoft Azure-előfizetéshez...** , és a bejelentkezési folyamat befejezéséhez.
+3. A Server Explorerben kattintson a jobb gombbal az **Azure**elemre, válassza a **Kapcsolódás Microsoft Azure előfizetéshez**... lehetőséget, és fejezze be a bejelentkezési folyamatot.
 
-4. Server Explorer eszközben meglévő HDInsight-fürtök listája jelenik meg. Ha nincsenek fürtjei, létrehozhat egyet az Azure Portal, az Azure PowerShell vagy a HDInsight SDK használatával. További információ: [HDInsight-fürtök létrehozása](../hdinsight-hadoop-provision-linux-clusters.md).
+4. A Server Explorerben megjelenik a meglévő HDInsight-fürtök listája. Ha nincsenek fürtjei, létrehozhat egyet az Azure Portal, az Azure PowerShell vagy a HDInsight SDK használatával. További információ: [HDInsight-fürtök létrehozása](../hdinsight-hadoop-provision-linux-clusters.md).
 
-   ![Fürtök listája a Data Lake Tools for Visual Studio Server Explorerében – képernyőkép](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.server.explorer.png "Fürtök listája a Data Lake Tools for Visual Studio Server Explorerében")
+   A ![Visual Studio-fürtök Data Lake eszközei a Server Explorerben] A (./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-server-explorer.png "Visual Studio-fürtök Data Lake eszközei a Server Explorerben")
 
-5. Bontson ki egy HDInsight-fürtöt. Megjelenik a **Hive Databases** (Hive-adatbázisok), egy alapértelmezett tárfiók, a társított tárfiókok és a **Hadoop-szolgáltatásnapló**. Ennél jobban is kibonthatja az elemeket.
+5. Bontson ki egy HDInsight-fürtöt. A **kaptár-adatbázisok**, az alapértelmezett Storage-fiók, a társított Storage-fiókok és a **Hadoop szolgáltatás naplója** jelenik meg. Ennél jobban is kibonthatja az elemeket.
 
-Miután csatlakozott az Azure-előfizetéshez, akkor a következő feladatok végrehajtására.
+Az Azure-előfizetéshez való csatlakozás után a következő feladatokat végezheti el.
 
 Csatlakozás az Azure Portalhoz a Visual Studióból:
 
-1. Lépjen a Server Explorer eszközből **Azure** > **HDInsight** , és válassza ki a fürtöt.
+1. A Server Explorerben navigáljon az **Azure** > **HDInsight** , és válassza ki a fürtöt.
 
-2. Kattintson a jobb gombbal egy HDInsight-fürtöt, és válassza ki **fürt kezelése az Azure Portalon**.
+2. Kattintson a jobb gombbal egy HDInsight-fürtre, majd válassza **a fürt kezelése a Azure Portal [sic]** elemet.
 
-Tegyen fel kérdéseket, és/vagy visszajelzés a Visual Studióból:
+Tegye fel kérdéseit és/vagy küldjön visszajelzést a Visual Studiótól:
 
-1. Lépjen a Server Explorer eszközből **Azure** > **HDInsight**.
+1. A Server Explorerben navigáljon az **Azure** > **HDInsight**.
 
-2. Kattintson a jobb gombbal **HDInsight** válassza **MSDN-fórum** Kérdés feltevéséhez, vagy **visszajelzés** visszajelzés küldéséhez.
+2. Kattintson a jobb gombbal a **HDInsight** elemre, és válassza az **MSDN-fórum** lehetőséget a kérdések feltevéséhez, vagy **küldjön visszajelzést** a visszajelzésről.
+
+## <a name="link-a-cluster"></a>Fürt csatolása
+A fürt összekapcsolásához kattintson a jobb gombbal a **HDInsight** elemre, majd válassza **a HDInsight-fürt csatolása**lehetőséget. Adja meg a **hálózati URL-címet**, a **felhasználónevet** és a **jelszót** **, majd kattintson**a **tovább** gombra, a fürtnek a HDInsight csomópont alatt kell szerepelnie.
+
+![Képernyőkép a Visual Studio hivatkozás-fürthöz készült Data Lake eszközökről](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-link-cluster-dialog.png)
+
+Kattintson a jobb gombbal a csatolt fürtre, válassza a **Szerkesztés**lehetőséget, a felhasználó frissítheti a fürt adatait. HDInsight-fürt hozzáadásával most már csak a kaptárt támogatja.
+
+![Képernyőkép a Visual Studio link-fürt frissítésének Data Lake eszközeiről](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-link-cluster-update.png)
 
 ## <a name="explore-linked-resources"></a>Kapcsolt erőforrások vizsgálata
 A Server Explorer eszközből láthatja az alapértelmezett tárfiókot és az összes kapcsolt tárfiókot. Ha kibontja az alapértelmezett tárfiókot, láthatja a tárfiókon lévő tárolókat. Az alapértelmezett tárfiók és az alapértelmezett tároló meg van jelölve. Bármely tárolóra a jobb gombbal kattintva megtekintheti azok tartalmát.
 
-![Kapcsolt erőforrások listázása a Data Lake Tools for Visual Studio Server Explorerével – képernyőkép](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.linked.resources.png "Kapcsolt erőforrások listázása")
+A ![Visual Studio kapcsolódó erőforrásainak Data Lake eszközei a Server Explorerben](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-linked-resources.png "Csatolt erőforrások listázása")
 
 Egy tároló megnyitása után a következő gombokkal tölthet fel, törölhet vagy tölthet le blobokat:
 
-![Blobműveletek a Data Lake Tools for Visual Studio Server Explorerében – képernyőkép](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.blob.operations.png "Blobok feltöltése, törlése és letöltése a Server Explorerben")
+![A Visual Studio blob-műveletek Data Lake eszközei a Server Explorerben](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-blob-operations.png "Blobok feltöltése, törlése és letöltése a Server Explorerben")
 
-## <a name="run-interactive-apache-hive-queries"></a>Az Apache Hive interaktív lekérdezések futtatása
-Az [Apache Hive](https://hive.apache.org) egy Hadoop-alapú adattárház-infrastruktúra. A Hive adatösszegzéseket, lekérdezéseket és elemzéseket biztosít. A Data Lake Tools for Visual Studio segítségével Hive-lekérdezéseket futtathat a Visual Studióból. Hive-ról további információkért lásd: [Apache Hive használata a HDInsight](hdinsight-use-hive.md).
+## <a name="run-interactive-apache-hive-queries"></a>Interaktív Apache Hive-lekérdezések futtatása
+Az [Apache Hive](https://hive.apache.org) egy Hadoop-alapú adattárház-infrastruktúra. A Hive adatösszegzéseket, lekérdezéseket és elemzéseket biztosít. A Data Lake Tools for Visual Studio segítségével Hive-lekérdezéseket futtathat a Visual Studióból. További információ a Kaptárról: [Apache Hive használata a HDInsight](hdinsight-use-hive.md).
 
-Az [interaktív lekérdezés](../interactive-query/apache-interactive-query-get-started.md) az Apache Hive 2.1-en futó [Hive LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP) funkcióit használja. Az interaktív lekérdezés interaktivitást biztosít a nagy tárolt adathalmazokon végzett összetett, adattárház-jellegű lekérdezésekhez. A Hive-lekérdezések futtatása sokkal gyorsabb az interaktív lekérdezésekben, mint a hagyományos Hive-alapú kötegelt feladatokban. További információkért lásd: kötegelt feladatok futtatása az Apache Hive.
+Az [interaktív lekérdezés](../interactive-query/apache-interactive-query-get-started.md) az Apache Hive 2.1-en futó [Hive LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP) funkcióit használja. Az interaktív lekérdezés interaktivitást biztosít a nagy tárolt adathalmazokon végzett összetett, adattárház-jellegű lekérdezésekhez. A Hive-lekérdezések futtatása sokkal gyorsabb az interaktív lekérdezésekben, mint a hagyományos Hive-alapú kötegelt feladatokban. 
 
 > [!NOTE]  
 > Interaktív Hive-lekérdezéseket csak akkor futtathat, ha kapcsolódik egy [HDInsight interaktív lekérdezési](../interactive-query/apache-interactive-query-get-started.md) fürthöz.
 
 A Data Lake Tools for Visual Studio segítségével a Hive-feladatok tartalmát is megtekintheti. A Data Lake Tools for Visual Studio begyűjti és a felszínre hozza bizonyos Hive-feladatok YARN-naplóit.
 
-Lépjen a Server Explorer eszközből **Azure** > **HDInsight** , és válassza ki a fürtöt.  Ez lesz a kiindulási pont, a Kiszolgálókezelőben, kövesse a szakaszokat.
+A Server Explorerben navigáljon az **Azure** > **HDInsight** , és válassza ki a fürtöt.  Ez lesz a Server Explorer kiindulópontja a következő szakaszoknak.
 
-### <a name="view-hivesampletable"></a>Nézet hivesampletable
-Az összes HDInsight-fürtök rendelkeznek egy nevű alapértelmezett minta Hive táblát `hivesampletable`.  
+### <a name="view-hivesampletable"></a>Hivesampletable megtekintése
+Az összes HDInsight-fürthöz egy alapértelmezett minta nevű `hivesampletable`struktúra-tábla tartozik.  
 
-Lépjen a fürtről **Hive-adatbázisok** > **alapértelmezett** > **hivesampletable**.
+A fürtből navigáljon a **kaptár adatbázisok** > **alapértelmezett** > **hivesampletable**.
 
-* Megtekintéséhez `hivesampletable` séma:  
+* Séma megtekintése `hivesampletable` :  
 Bontsa ki a **hivesampletable**.
 
-* Megtekintéséhez `hivesampletable` adatokat:  
-Kattintson a jobb gombbal **hivesampletable**, és válassza ki **View Top 100 sor**.  Ez a következő Hive-lekérdezés Hive ODBC-illesztővel végzett futtatásával egyenlő:
+* `hivesampletable` Az adatmegjelenítéshez:  
+Kattintson a jobb gombbal a **hivesampletable**elemre, majd válassza a **felső 100-sorok megtekintése**lehetőséget.  Ez a következő Hive-lekérdezés Hive ODBC-illesztővel végzett futtatásával egyenlő:
 
    `SELECT * FROM hivesampletable LIMIT 100`
 
   Testreszabhatja a sorok számát.
 
-  ![Képernyőkép egy HDInsight Hive Visual Studio-sémalekérdezésről](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.hive.schema.png "Hive-lekérdezés eredményei")
+  ![Képernyőkép egy HDInsight Hive Visual Studio-sémalekérdezésről](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-hive-schema.png "Hive-lekérdezés eredményei")
 
 ### <a name="create-hive-tables"></a>Hive táblák létrehozása
-Hive-tábla létrehozásához használhatja a grafikus felhasználói felületet vagy a Hive-lekérdezéseket. Hive-lekérdezések használatával kapcsolatos információkért lásd: [futtatása Apache Hive-lekérdezések](#run.queries).
+Hive-tábla létrehozásához használhatja a grafikus felhasználói felületet vagy a Hive-lekérdezéseket. További információ a kaptár-lekérdezések használatáról: [Apache Hive lekérdezések futtatása](#run.queries).
 
-1. Lépjen a fürtről **Hive-adatbázisok** > **alapértelmezett**.
+1. A fürtből navigáljon a **kaptár-adatbázisok** > **alapértelmezett értékére**.
 
-2. Kattintson a jobb gombbal **alapértelmezett**, és válassza ki **Create Table**.
+2. Kattintson a jobb gombbal az **alapértelmezett**elemre, majd válassza a **tábla létrehozása**lehetőséget.
 
-3. Konfigurálja a táblát a kívánt módon.  
+3. Konfigurálja a táblázatot igény szerint.  
 
 4. Kattintson a **Create Table** (Tábla létrehozása) parancsra az új Hive-tábla létrehozására szolgáló feladat elküldéséhez.
 
-    ![Képernyőkép a HDInsight Visual Studio Tools Create Table (Tábla létrehozása) ablakáról](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.create.hive.table.png "Hive-tábla létrehozása")
+    ![Képernyőkép a HDInsight Visual Studio Tools Create Table (Tábla létrehozása) ablakáról](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-create-hive-table.png "Hive-tábla létrehozása")
 
-### <a name="run.queries"></a>Hozzon létre, és Hive-lekérdezések futtatása
+### <a name="run.queries"></a>Struktúra-lekérdezések létrehozása és futtatása
 Hive-lekérdezések létrehozására és futtatására két lehetősége van:
 
 * Alkalmi lekérdezések létrehozása
 * Hive alkalmazás létrehozása
 
-Hozzon létre, és alkalmi lekérdezések futtatása:
+Alkalmi lekérdezések létrehozása és futtatása:
 
-1. Kattintson a jobb gombbal a fürt, ahol szeretné futtatni a lekérdezést, és válassza ki **egy Hive-lekérdezés írása**.  
+1. Kattintson a jobb gombbal arra a fürtre, amelyen futtatni szeretné a lekérdezést, majd válassza a **kaptár-lekérdezés írása**lehetőséget.  
 
-2. Adja meg a Hive-lekérdezéseket.  
+2. Adja meg a következő kaptár-lekérdezést:
 
-    A Hive szerkesztője támogatja az IntelliSense-t. A Data Lake Tools for Visual Studio támogatja a távoli metaadatok betöltését a Hive-szkript szerkesztésekor. Például, ha beírja `SELECT * FROM`, IntelliSense listázza az összes javasolt táblanevet. Amikor megad egy táblanevet, az IntelliSense listázza az oszlopneveket. Az eszközök a legtöbb Hive DML-utasítást, -segédlekérdezést és beépített UDF-et támogatják.
+    ```sql
+    SELECT devicemodel, COUNT(devicemodel) AS deviceCount
+    FROM hivesampletable
+    GROUP BY devicemodel
+    ORDER BY devicemodel
+    ```
 
-    ![Képernyőkép a HDInsight Visual Studio Tools IntelliSense 1. példájáról](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.intellisense.table.names.png "U-SQL IntelliSense")
+    A Hive szerkesztője támogatja az IntelliSense-t. A Data Lake Tools for Visual Studio támogatja a távoli metaadatok betöltését a Hive-szkript szerkesztésekor. Ha például a (z) `SELECT * FROM`értéket adja meg, az IntelliSense felsorolja az összes javasolt táblanév nevét. Amikor megad egy táblanevet, az IntelliSense listázza az oszlopneveket. Az eszközök a legtöbb Hive DML-utasítást, -segédlekérdezést és beépített UDF-et támogatják.
 
-    ![Képernyőkép a HDInsight Visual Studio Tools IntelliSense 2. példájáról](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.intellisense.column.names.png "U-SQL IntelliSense")
+    ![Képernyőkép a HDInsight Visual Studio Tools IntelliSense 1. példájáról](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-intellisense-table-names.png "U-SQL IntelliSense")
+
+    ![Képernyőkép a HDInsight Visual Studio Tools IntelliSense 2. példájáról](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-intellisense-column-names.png "U-SQL IntelliSense")
 
    > [!NOTE]  
    > Az IntelliSense csak a HDInsight eszköztáron kijelölt fürt metaadatait javasolja.
 
-3. Válassza ki a végrehajtási mód:
+3. Válassza ki a végrehajtási módot:
 
     * **Interaktív**  
 
-      Győződjön meg, hogy **interaktív** van kiválasztva, majd **Execute**.
+      Jelölje be az **interaktív** jelölőnégyzetet, majd válassza a **végrehajtás**lehetőséget.
 
-      ![Képernyőkép a lekérdezést, és hajtsa végre](./media/apache-hadoop-visual-studio-tools-get-started/execute.png)  
+      ![A lekérdezés és a végrehajtás képernyőképe](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-query-execute.png)  
 
     * **Batch**  
 
-      Győződjön meg, hogy **Batch** van kiválasztva, majd **küldés**.  Ha a speciális küldés lehetőséggel konfigurálja **feladat neve**, **argumentumok**, **további konfigurációs beállítások**, és **állapot Directory**a szkript esetében.
+      Győződjön meg arról, hogy a **Batch** be van jelölve, majd válassza a **Küldés**lehetőséget.  Ha a speciális küldés lehetőséget választja, konfigurálja a **feladatok nevét**, **argumentumait**, a **további konfigurációkat**és az **állapot könyvtárat** a parancsfájlhoz.
 
-      ![Képernyőkép a lekérdezés és a batch](./media/apache-hadoop-visual-studio-tools-get-started/batch.png)  
+      ![A Visual Studio lekérdezési és batch-beállításai](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-query-batch.png)  
 
-      ![Képernyőkép egy HDInsight Hadoop Hive-lekérdezésről](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.submit.jobs.advanced.png "Lekérdezések küldése")
+      ![Képernyőkép egy HDInsight Hadoop Hive-lekérdezésről](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-submit-jobs-advanced.png "Lekérdezések küldése")
 
       > [!NOTE]  
-      > Nem interaktív lekérdezési fürtökhöz való kötegek küldhet.  Interaktív módot kell használniuk.
+      > Nem küldhet kötegeket interaktív lekérdezési fürtökbe.  Interaktív módot kell használnia.
 
 Hive-megoldás létrehozása és futtatása:
 
-1. Lépjen a menüsoron **fájl** > **új** > **projekt...** .
+1. A menüsávban navigáljon a **fájl** > **új** > **projekt...** elemre.
 
-2. A bal oldali panelen lépjen **telepített** > **az Azure Data Lake** > **HIVE (HDInsight)**.  
+2. A bal oldali ablaktáblán navigáljon a **telepített** > **Azure Data Lake** > **struktúra (HDInsight)** elemre.  
 
 3. A középső panelen válassza a **Hive Application** (Hive-alkalmazás) elemet. Adja meg a tulajdonságokat, majd kattintson az **OK** gombra.
 
-    ![Képernyőkép a HDInsight Visual Studio Toolsban az új Hive-projekt létrehozásáról](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.new.hive.project.png "Hive-alkalmazások létrehozása a Visual Studióból")
+    ![Képernyőkép a HDInsight Visual Studio Toolsban az új Hive-projekt létrehozásáról](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-new-hive-project.png "Hive-alkalmazások létrehozása a Visual Studióból")
 
 4. A **Solution Explorerben** (Megoldáskezelőben) kattintson duplán a **Script.hql** fájlra a szkript megnyitásához.
 
-### <a name="view-job-summary-and-output"></a>Feladat összegzésének megtekintése és kimenet
+### <a name="view-job-summary-and-output"></a>Feladatok összegzésének és kimenetének megtekintése
 
-A feladat összegzésében némiképp eltérő **Batch** és **interaktív** mód.
+A feladatok összegzése némileg eltér a **Batch** és az **interaktív** mód között.
 
-![Feladat összegzése](./media/apache-hadoop-visual-studio-tools-get-started/jobSummary.png "Hive-feladat összegzése")
+![Apache Hive feladatok összegzése lap megjelenítése](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-job-summary.png "Struktúra-feladatok összegzése")
 
-Használja a **frissítése** gombra kattintva frissítheti az állapotot, amíg a feladat állapota **befejezett**.  
+A **frissítés** gomb használatával frissítse az állapotot, amíg a feladatok állapota **Befejezettre**nem változik.  
 
-* A feladat részleteit a **Batch** módot, válassza ki, tekintse meg az alul lévő hivatkozásokra **Job Query**, **Feladatkimenet**, **Job log**, vagy **a yarn-naplók**.
+* A feladatok részleteinek **Batch** -módból való megjelenítéséhez válassza a lenti hivatkozásokat **a feladatok lekérdezése**, a **feladatok kimenete**, a **Projektnapló**vagy a **fonal-napló**megtekintéséhez.
 
-* A feladat részleteit a **interaktív** mód, lásd: lapok **kimeneti** és **hiveserver2-n keresztül kimeneti**.
+* Az **interaktív** módból származó feladatok részleteiért lásd: lapok **kimeneti** és **HiveServer2 kimenete**.
 
-  ![feladat részletei](./media/apache-hadoop-visual-studio-tools-get-started/tabs.png "Hive-feladat részletei")
+  ![Visual Studio Apache Hive feladatok részletei](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-job-details.png "Kaptár-feladatok részletei")
 
-### <a name="view-job-graph"></a>A feladatgrafikon megtekintése
+### <a name="view-job-graph"></a>Feladatok gráfjának megtekintése
 
-Feladatok grafikonjai jelenleg csak használata a Tez végrehajtómotor Hive-feladatok láthatók.  További információ a Tez engedélyezéséről: [Apache Hive használata a HDInsight](hdinsight-use-hive.md).  Lásd még a [Mapreduce helyett használja az Apache Tez](../hdinsight-hadoop-optimize-hive-query.md#use-apache-tez-instead-of-map-reduce).  
+Jelenleg a feladatok gráfok csak olyan kaptár-feladatok esetében jelennek meg, amelyek a TEZ-t használják végrehajtó motorként.  További információ a TEZ engedélyezéséről: [Apache Hive használata a HDInsight-ben](hdinsight-use-hive.md).  Lásd még: [az Apache TEZ használata a Térkép csökkentése helyett](../hdinsight-hadoop-optimize-hive-query.md#use-apache-tez-instead-of-map-reduce).  
 
 A feladatgrafikon csúcspontjaira duplán kattintva láthatja a csúcsponton belüli összes operátort. Egy adott operátorra mutatva megtekintheti az operátor részleteit.
 
-A feladatgrafikon nem jelenhet meg akkor is, ha a Tez végrehajtómotor van megadva, ha nincs Tez alkalmazás elindításakor.  Ez akkor fordulhat elő, mert a feladat nem tartalmaz DML-utasítást, vagy a DML-utasítást a Tez alkalmazás megnyitása nélkül adhat vissza. Ha például `SELECT * FROM table1` nem indulnak el a Tez-alkalmazás.
+A feladatütemezés akkor sem jelenhet meg, ha a TEZ meg van adva végrehajtó motorként, ha nincs TEZ-alkalmazás elindítva.  Ez azért fordulhat elő, mert a feladatokban nem szerepelnek DML-utasítások, vagy a DML-utasítások TEZ-alkalmazás elindítása nélkül is visszatérhetnek. Például `SELECT * FROM table1` nem fogja elindítani a TEZ alkalmazást.
 
-![A feladatgrafikon](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.fast.path.hive.execution.png "Hive-feladat összegzése")
-
+![Visual Studio Apache Hive feladatok gráfja](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-fast-path-hive-execution.png "Struktúra-feladatok összegzése")
 
 ### <a name="task-execution-detail"></a>Feladat-végrehajtás részletei
 
-A feladatgrafikon kiválaszthatja **feladat-végrehajtás részletei** beolvasni a strukturált és vizualizált információkhoz a Hive-feladatokról. További feladatrészleteket is lekérhet. Teljesítményproblémák esetén a nézet segítségével részletesebb információkat szerezhet a problémáról. Például információhoz juthat arról, hogy az egyes feladatok hogyan működnek, és részletes információt kaphat mindegyik feladatról (adatírás/-olvasás, ütemezés/kezdő/záró idő stb.). A megjelenített információk alapján pedig finomhangolhatja a feladatkonfigurációkat vagy a rendszerarchitektúrát.
+A feladat-gráfból kiválaszthatja a **feladat-végrehajtási részletességet** a struktúra-feladatok strukturált és vizualizációs információinak beszerzéséhez. További feladatrészleteket is lekérhet. Teljesítményproblémák esetén a nézet segítségével részletesebb információkat szerezhet a problémáról. Például információhoz juthat arról, hogy az egyes feladatok hogyan működnek, és részletes információt kaphat mindegyik feladatról (adatírás/-olvasás, ütemezés/kezdő/záró idő stb.). A megjelenített információk alapján pedig finomhangolhatja a feladatkonfigurációkat vagy a rendszerarchitektúrát.
 
-![Képernyőkép a Data Lake Visual Studio Tools feladat-végrehajtási nézetének ablakáról](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.task.execution.view.png "Feladat-végrehajtási nézet")
+![Data Lake Visual Studio-eszközök feladat-végrehajtási nézetének ablaka](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-task-execution-view.png "Feladat-végrehajtási nézet")
 
 
 ### <a name="view-hive-jobs"></a>Hive-feladatok megtekintése
 Megtekintheti a Hive-feladatok feladatlekérdezéseit, feladatkimenetét, feladatnaplóit és Yarn naplóit.
 
-Az eszköz legújabb kiadásával láthatja, mi van a Hive-feladatokban, ha begyűjti és felszínre hozza a Yarn-naplókat. A YARN-naplók segíthetnek a teljesítménnyel kapcsolatos problémák vizsgálatában. További információ arról, hogy a HDInsight hogyan gyűjti be a YARN-naplókat: [HDInsight alkalmazásnaplók szoftveres elérése](../hdinsight-hadoop-access-yarn-app-logs-linux.md).
+Az eszköz legújabb kiadásával láthatja, mi van a Hive-feladatokban, ha begyűjti és felszínre hozza a Yarn-naplókat. A YARN-naplók segíthetnek a teljesítménnyel kapcsolatos problémák vizsgálatában. További információ arról, hogy a HDInsight hogyan gyűjti be a YARN-naplókat: [HDInsight alkalmazásnaplók szoftveres elérése](../hdinsight-hadoop-access-yarn-app-logs.md).
 
 Hive-feladatok megtekintése:
 
-1. Kattintson a jobb gombbal egy HDInsight-fürtöt, és válassza ki **feladatok megtekintése**. Ekkor megjelenik azon Hive-feladatok listája, amelyek a fürtön futottak.  
+1. Kattintson a jobb gombbal egy HDInsight-fürtre, majd válassza a **feladatok megtekintése**lehetőséget. Ekkor megjelenik azon Hive-feladatok listája, amelyek a fürtön futottak.  
 
 2. Válasszon ki egy feladatot. A **Hive Job Summary** (Hive-feladat összegzése) ablakban válassza a következők egyikét:
-   - **Job Query** (Feladat lekérdezése)
-   - **Job Output** (Feladat kimenete)
-   - **Job Log** (Feladatnapló)  
-   - **Yarn log** (Yarn-napló)
+    - **Job Query** (Feladat lekérdezése)
+    - **Job Output** (Feladat kimenete)
+    - **Job Log** (Feladatnapló)  
+    - **Yarn log** (Yarn-napló)
 
-     ![Képernyőkép a HDInsight Visual Studio Tools Hive-feladatok megtekintését biztosító ablakáról](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.view.hive.jobs.png "Hive-feladatok megtekintése")
+    ![Képernyőkép a HDInsight Visual Studio Tools Hive-feladatok megtekintését biztosító ablakáról](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-view-hive-jobs.png "Hive-feladatok megtekintése")
 
 
-## <a name="run-apache-pig-scripts"></a>Az Apache Pig-parancsfájlok futtatása
+## <a name="run-apache-pig-scripts"></a>Apache Pig-parancsfájlok futtatása
 
-1. Lépjen a menüsoron **fájl** > **új** > **projekt...** .
+1. A menüsávban navigáljon a **fájl** > **új** > **projekt...** elemre.
 
-2. A bal oldali panelen lépjen **telepített** > **az Azure Data Lake** > **Pig (HDInsight)**.  
+2. A bal oldali panelen navigáljon a **telepített** > **Azure Data Lake** > **Pig (HDInsight)** elemre.  
 
-3. A középső ablaktáblán válassza ki a **Pig alkalmazás**. Adja meg a tulajdonságokat, majd kattintson az **OK** gombra.
+3. A középső ablaktáblán válassza a **Pig-alkalmazás**lehetőséget. Adja meg a tulajdonságokat, majd kattintson az **OK** gombra.
 
-4. A **Megoldáskezelőben**, kattintson duplán a **Script.pig** a szkript megnyitásához.
+4. A **megoldáskezelő**kattintson duplán a **script. Pig** elemre a parancsfájl megnyitásához.
 
 ## <a name="feedback-and-known-issues"></a>Visszajelzés és ismert problémák
 * Kijavítottunk egy hibát, amelynek következtében a null értékekkel induló eredmények nem jelentek meg. Ha elakad ennél a hibánál, lépjen kapcsolatba a támogatási csapattal.
@@ -271,9 +286,9 @@ Hive-feladatok megtekintése:
 ## <a name="next-steps"></a>További lépések
 Ebben a cikkben megtanulta, hogyan csatlakozhat a HDInsight-fürtökhöz a Visual Studióból a Data Lake Tools for Visual Studio csomaggal. Emellett azt is megtanulta, hogyan futtathat Hive-lekérdezéseket. További információval a következő cikkek szolgálnak:
 
-* [A Data Lake tools for Visual Studio használatával, az Apache Hive-lekérdezések futtatása](apache-hadoop-use-hive-visual-studio.md)
+* [Apache Hive-lekérdezések futtatása a Data Lake Tools for Visual Studióval](apache-hadoop-use-hive-visual-studio.md)
 * [A Hadoop Hive használata a HDInsightban](hdinsight-use-hive.md)
-* [A HDInsight Apache Hadoop használatának első lépései](apache-hadoop-linux-tutorial-get-started.md)
-* [A HDInsight Apache Hadoop-feladatok elküldése](submit-apache-hadoop-jobs-programmatically.md)
-* [A HDInsight Apache Hadoop-keretrendszerrel Twitter-adatok elemzése](../hdinsight-analyze-twitter-data-linux.md)
+* [A Apache Hadoop használatának első lépései a HDInsight](apache-hadoop-linux-tutorial-get-started.md)
+* [Apache Hadoop feladatok elküldése a HDInsight-ben](submit-apache-hadoop-jobs-programmatically.md)
+* [Twitter-adatApache Hadoopek elemzése a HDInsight-ben](../hdinsight-analyze-twitter-data.md)
 

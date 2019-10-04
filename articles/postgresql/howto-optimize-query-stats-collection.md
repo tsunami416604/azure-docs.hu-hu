@@ -1,19 +1,19 @@
 ---
-title: Lekérdezési statisztikák gyűjtése az egy Azure Database for PostgreSQL-kiszolgáló optimalizálása
-description: Ez a cikk bemutatja, hogyan optimalizálhatók a lekérdezési statisztikák gyűjtése az egy Azure Database for PostgreSQL-kiszolgálóhoz.
+title: Lekérdezési statisztikák gyűjtemény egy Azure database for PostgreSQL - kiszolgáló egyetlen optimalizálása
+description: Ez a cikk bemutatja, hogyan optimalizálhatók a lekérdezési statisztikák gyűjtemény egy Azure database for PostgreSQL – egyetlen kiszolgáló
 author: dianaputnam
 ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/25/2018
-ms.openlocfilehash: 428a22f79008130448bef65f14322d6880b1b367
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.date: 5/6/2019
+ms.openlocfilehash: 7425ee7916fd71625f336a7af35f6481d1ed2474
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814367"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65068959"
 ---
-# <a name="optimize-query-statistics-collection-on-an-azure-database-for-postgresql-server"></a>Lekérdezési statisztikák gyűjtését az Azure Database for PostgreSQL-kiszolgáló-optimalizálása 
+# <a name="optimize-query-statistics-collection-on-an-azure-database-for-postgresql---single-server"></a>Lekérdezési statisztikák gyűjtését az Azure Database for PostgreSQL - kiszolgáló egyetlen optimalizálása
 Ez a cikk ismerteti, hogyan optimalizálható a lekérdezési statisztikák gyűjtését az Azure Database for PostgreSQL-kiszolgálót.
 
 ## <a name="use-pgstatsstatements"></a>Pg_stats_statements használata

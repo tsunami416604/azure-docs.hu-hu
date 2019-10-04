@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 01/12/2017
 ms.author: yushwang
 ms.openlocfilehash: 91e9fe1eb6b3df0b64d05f2b1e300403a9e01db9
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54306522"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60762281"
 ---
 # <a name="about-bgp-with-azure-vpn-gateway"></a>Az Azure VPN Gateway a BGP ismertetése
 Ez a cikk áttekinti az Azure VPN Gateway a BGP (Border Gateway Protocol) támogatását.

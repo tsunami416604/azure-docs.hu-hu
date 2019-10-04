@@ -1,39 +1,39 @@
 ---
-title: Csoport használatával az Azure SQL Data Warehouse beállítások |} A Microsoft Docs
-description: Ötletek a csoport beállításai az Azure SQL Data Warehouse által használható megoldások fejlesztéséhez.
+title: Csoportosítási lehetőségek használata a Azure SQL Data Warehouseban | Microsoft Docs
+description: Tippek a csoportok megvalósítási lehetőségeinek végrehajtásához Azure SQL Data Warehouse a megoldások fejlesztéséhez.
 services: sql-data-warehouse
-author: ronortloff
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: implement
+ms.subservice: query
 ms.date: 04/17/2018
-ms.author: rortloff
+ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 69a76ae9d6f355fe401b438ec2ab89d6606ba46c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 2f6614f32c31338c9cf4f00307c475db4e02f553
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463480"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479637"
 ---
-# <a name="group-by-options-in-sql-data-warehouse"></a>Az SQL Data Warehouse beállítások szerint
-Ötletek a csoport beállításai az Azure SQL Data Warehouse által használható megoldások fejlesztéséhez.
+# <a name="group-by-options-in-sql-data-warehouse"></a>Csoportosítási lehetőségek a SQL Data Warehouseban
+Tippek a csoportok megvalósítási lehetőségeinek végrehajtásához Azure SQL Data Warehouse a megoldások fejlesztéséhez.
 
-## <a name="what-does-group-by-do"></a>Mit jelent a GROUP BY?
+## <a name="what-does-group-by-do"></a>Mit tesz a GROUP BY do?
 
-A [GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql) T-SQL-záradék összesíti az adatokat sorok összefoglaló körét. GROUP BY van néhány lehetőség, amely nem támogatja az SQL Data warehouse-bA. Ezek a beállítások a lehetséges megoldások rendelkezik.
+A [Group By](/sql/t-sql/queries/select-group-by-transact-sql) T-SQL záradék összesíti az adatokat egy sorok összesítési halmazával. A CSOPORTOSÍTÁSi lehetőségek a SQL Data Warehouse nem támogatottak. Ezek a beállítások megkerülő megoldásokkal rendelkeznek.
 
-Ezek a lehetőségek
+Ezek a beállítások
 
-* A GROUP BY összesítő
-* GROUPING SETS
-* A GROUP BY ADATKOCKA
+* Csoportosítás ÖSSZESÍTÉSsel
+* CSOPORTOSÍTÁSI KÉSZLETEK
+* Csoportosítás a KOCKÁval
 
-## <a name="rollup-and-grouping-sets-options"></a>Összesítő és grouping sets beállítások
-Itt a legegyszerűbb lehetőség segítségével UNION ALL ehelyett végezze el a kumulatív frissítést egy nem explicit szintaxisa hagyatkozik. Eredménye nem pontosan ugyanaz
+## <a name="rollup-and-grouping-sets-options"></a>Kumulatív és csoportosítási beállítások
+A legegyszerűbb lehetőség az, hogy a UNION ALL utasítást használja az összesítés végrehajtásához ahelyett, hogy az explicit szintaxisra kellene támaszkodnia. Az eredmény pontosan ugyanaz
 
-Az alábbi példa az ÖSSZESÍTÉSI beállítás a GROUP BY utasítás használatával:
+A következő példa a GROUP BY utasítást használja a kumulatív beállítással:
 ```sql
 SELECT [SalesTerritoryCountry]
 ,      [SalesTerritoryRegion]
@@ -47,13 +47,13 @@ GROUP BY ROLLUP (
 ;
 ```
 
-ÖSSZESÍTŐ használatával az az előző példában a következő összesítések kéri:
+A kumulatív használatával az előző példa a következő összesítéseket kéri:
 
 * Ország és régió
-* Ország
-* Teljes összeg százalékában
+* Country
+* Végösszeg
 
-Cserélje le a KUMULATÍV, és ugyanazokat az eredményeket ad vissza, használja a UNION ALL, és explicit módon adja meg a szükséges összesítések:
+Ha az ÖSSZESÍTÉSt cserélni szeretné, és ugyanazokat az eredményeket adja vissza, használhatja a UNION ALL utasítást, és explicit módon megadhatja a szükséges összesítéseket:
 
 ```sql
 SELECT [SalesTerritoryCountry]
@@ -80,14 +80,14 @@ FROM  dbo.factInternetSales s
 JOIN  dbo.DimSalesTerritory t     ON s.SalesTerritoryKey       = t.SalesTerritoryKey;
 ```
 
-Cserélje le a GROUPING SETS, a minta elvet a alkalmazni. Csak ki kell létre UNION ALL szakaszok az összesítési szintekhez meg szeretné tekinteni.
+A CSOPORTOSÍTÁSi készletek lecseréléséhez a minta elve érvényes. Csak a megtekinteni kívánt összesítési szintekhez kell létrehoznia a UNION összes szakaszt.
 
 ## <a name="cube-options"></a>Adatkocka-beállítások
-Azt is létrehozhat egy CSOPORTOT a WITH CUBE a UNION ALL megközelítéssel. A probléma, hogy a kód gyorsan válhat nehézkes és nehézkessé. A hiba elhárítása érdekében ez a megközelítés speciális használhatja.
+Létrehozhat egy CSOPORTOT az adatkockával a UNION ALL megközelítés használatával. A probléma az, hogy a kód gyors és nehézkes lehet. Ennek enyhítéséhez ezt a fejlettebb megközelítést használhatja.
 
-A fenti példa használja.
+A fenti példát fogjuk használni.
 
-Az első lépés, hogy a "adatkocka", amely meghatározza, hogy a létrehozni kívánt összesítő minden szintjének megadása. Fontos jegyezze fel a CROSS JOIN a két származtatott tábla. Ez létrehoz minden szintet a számunkra. A kód a többi van valóban formázására.
+Az első lépés a "Cube" meghatározása, amely meghatározza a létrehozni kívánt összesítési szinteket. Fontos, hogy jegyezze fel a két származtatott tábla KERESZTbe ILLESZTÉSét. Ez minden szintet létrehoz. A kód többi része valóban létezik a formázáshoz.
 
 ```sql
 CREATE TABLE #Cube
@@ -118,11 +118,11 @@ SELECT Cols
 FROM GrpCube;
 ```
 
-Az alábbiakban látható a CTAS eredményei:
+A következő CTAS eredményei láthatók:
 
-![Adatkocka csoportosítás](media/sql-data-warehouse-develop-group-by-options/sql-data-warehouse-develop-group-by-cube.png)
+![Csoportosítás adatkockával](media/sql-data-warehouse-develop-group-by-options/sql-data-warehouse-develop-group-by-cube.png)
 
-A második lépés, hogy a céloldali tábla tárolja a köztes eredményeket adja meg:
+A második lépés egy cél tábla meghatározása a közbenső eredmények tárolásához:
 
 ```sql
 DECLARE
@@ -145,7 +145,7 @@ WITH
 ;
 ```
 
-A harmadik lépésben pedig történő végighaladásra az összesítés végrehajtása oszlopok a kocka. A lekérdezés a #Cube ideiglenes tábla minden sorára egyszer futtatja és tárolja az eredményeket az #Results ideiglenes tábla
+A harmadik lépés az összesítést végző oszlopok adatkockájának áthurkolása. A lekérdezés egyszer fut a #Cube ideiglenes tábla minden sorában, és az eredményeket a #Results ideiglenes táblában tárolja.
 
 ```sql
 SET @nbr =(SELECT MAX(Seq) FROM #Cube);
@@ -169,7 +169,7 @@ BEGIN
 END
 ```
 
-Végül lépjen vissza az eredményeket a #Results ideiglenes táblából egyszerűen olvassa el
+Végül visszaállíthatja az eredményeket úgy, hogy egyszerűen az #Results ideiglenes táblából olvassa be a következőt:
 
 ```sql
 SELECT *
@@ -178,8 +178,8 @@ ORDER BY 1,2,3
 ;
 ```
 
-A kód felosztani szakaszokra, és uvozuje konstruktor cyklu generálása, a kód a kezelhetőbbé és fenntartható válik.
+A kód szakaszokra bontásával és a hurkos szerkezet létrehozásával a kód hatékonyabban kezelhető és karbantartható lesz.
 
 ## <a name="next-steps"></a>További lépések
-További fejlesztési tippek: [fejlesztői áttekintés](sql-data-warehouse-overview-develop.md).
+További fejlesztési tippek: a [fejlesztés áttekintése](sql-data-warehouse-overview-develop.md).
 

@@ -1,6 +1,6 @@
 ---
-title: Frissítés és skálázás az Azure API Management-példány |} A Microsoft Docs
-description: Ez a témakör ismerteti a frissítés és skálázás az Azure API Management-példány.
+title: Azure API Management-példány frissítése és méretezése | Microsoft Docs
+description: Ez a témakör az Azure API Management-példányok frissítését és méretezését ismerteti.
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -11,63 +11,70 @@ ms.workload: integration
 ms.topic: article
 ms.date: 08/18/2018
 ms.author: apimpm
-ms.openlocfilehash: ac8babf3a00c73b942ae64ac4cca00c7be7cfcfa
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 64649c86dbd3c3469247308bfc4dd0ed12e06949
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54319860"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018239"
 ---
-# <a name="upgrade-and-scale-an-azure-api-management-instance"></a>Frissítés és skálázás az Azure API Management-példány  
+# <a name="upgrade-and-scale-an-azure-api-management-instance"></a>Azure API Management-példány frissítése és méretezése  
 
-Ügyfeleink az Azure API Management (APIM) példány méretezhetők egységek hozzáadásával vagy eltávolításával. A **egység** szintből áll, dedikált Azure-erőforrások és a egy bizonyos terhelés-hatással kapacitás kifejezett API számos hívások / hó. Ez a szám nem hívás korlátozva, de ahelyett, hogy a nyers kapacitásának tervezéséhez maximális átviteli sebesség értéket képvisel. Tényleges átviteli sebességgel és késéssel széles körben tényezők, például száma és sebessége, az egyidejű kapcsolatok, típusa és száma konfigurált szabályzatok, a kérelem és a válaszok méretétől és a háttéralkalmazás késése függően változnak.
+Az Azure API Management-(APIM-) példányok az egységek hozzáadásával és eltávolításával méretezhetők. Az **egységek** dedikált Azure-erőforrásokból állnak, és egy bizonyos terhelési kapacitással rendelkeznek, amely havonta több API-hívással van kifejezve. Ez a szám nem jelent hívási korlátot, hanem a maximális átviteli sebességet, amely lehetővé teszi a durva kapacitás megtervezését. A tényleges átviteli sebesség és a késés a különböző tényezőktől függ, például az egyidejű kapcsolatok száma és sebessége, a konfigurált szabályzatok típusa és száma, a kérelmek és a válaszok mérete, valamint a háttérbeli késés.
 
-Kapacitás és az egyes egységek díj attól függ, a **szint** az egység létezik. Négy szinten közül választhat: **Fejlesztői**, **alapszintű**, **Standard**, **prémium**. Ha növeli a kapacitást a szinten belüli szolgáltatásként van szüksége, hozzá kell adnia egy egységet. A jelenleg kiválasztott az APIM-példányra a réteg nem engedélyezi a több egység hozzáadása, a magasabb szintű csomagra frissíteni szeretne.
+Az egyes egységek kapacitása és ára attól függ, hogy az egység milyen szinten található. Négy szintet is választhat: **Fejlesztői**,alapszintű, **standard**, **prémium**. Ha a kapacitást egy adott szinten szeretné bővíteni, vegyen fel egy egységet. Ha a APIM-példányban jelenleg kiválasztott réteg nem teszi lehetővé több egység hozzáadását, akkor magasabb szintű szintre kell frissítenie.
 
-Minden egység és a rendelkezésre álló funkciók (például a többrégiós üzembe helyezés) ára attól függ, hogy a szint, az APIM-példányra számára is választott. A [díjszabás](https://azure.microsoft.com/pricing/details/api-management/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) cikk mellett, az ár / egység és funkciónak, az egyes szintek ismerteti. 
+Az egyes egységek és a rendelkezésre álló funkciók (például a többrégiós telepítés) díja a APIM-példányra kiválasztott szinttől függ. A [díjszabás részleteit ismertető](https://azure.microsoft.com/pricing/details/api-management/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) cikk az egyes csomagokban kapott egységenkénti és-funkciók árát ismerteti. 
 
 >[!NOTE]
->A [díjszabás](https://azure.microsoft.com/pricing/details/api-management/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) a cikk bemutatja a egység kapacitás hozzávetőleges számát az egyes szintek. Lekérheti a pontosabb számokat, nézze meg API-k valószerűbb forgatókönyvet kell. Tekintse meg a [az Azure API Management-példány kapacitása](api-management-capacity.md) cikk.
+>A [díjszabási részletekről](https://azure.microsoft.com/pricing/details/api-management/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) szóló cikk az egység kapacitásainak hozzávetőleges számát mutatja az egyes csomagokban. A pontosabb számok megszerzéséhez az API-k reális forgatókönyvét kell megvizsgálnia. Tekintse meg az [Azure API Management-példány kapacitását](api-management-capacity.md) ismertető cikket.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a cikk a lépések követéséhez a következőket kell tennie:
+A cikk lépéseinek követéséhez a következőket kell tennie:
 
 + Aktív Azure-előfizetéssel rendelkezik.
 
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-+ APIM-példány van. További információkért lásd: [Azure API Management szolgáltatáspéldány létrehozása](get-started-create-service-instance.md).
++ Rendelkeznie kell APIM-példánnyal. További információ: [Azure API Management-példány létrehozása](get-started-create-service-instance.md).
 
-+ Megismerése fogalmat [az Azure API Management-példány kapacitása](api-management-capacity.md).
++ Ismerje meg az [Azure API Management-példány kapacitásának](api-management-capacity.md)koncepcióját.
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="upgrade-and-scale"></a>Frissítés és skálázás  
 
-Négy szinten közül választhat: **Fejlesztői**, **alapszintű**, **Standard** és **prémium**. A **fejlesztői** szinten a szolgáltatás értékeléséhez használandó; ez nem használható éles üzemi környezetek részei. A **fejlesztői** szint nem rendelkezik SLA-t, és nem skálázhatja a csomag (egység hozzáadása/eltávolítása). 
+Négy szintet is választhat: **Fejlesztői**,alapszintű, **standard** és **prémium**. A **fejlesztői** szintet a szolgáltatás kiértékeléséhez kell használni; nem használható éles környezetben. A **fejlesztői** szint nem rendelkezik SLA-val, és nem méretezheti ezt a szintet (egység hozzáadása/eltávolítása). 
 
-**Alapszintű**, **Standard** és **prémium** termelési szint, amelyek SLA-t és skálázhatók. A **alapszintű** szintje a legolcsóbb szint, amely rendelkezik SLA-t, és legfeljebb 2 egység skálázhatók **Standard** számítógépréteg bővíthető legfeljebb négy. Tetszőleges számú egységeket is hozzáadhat a **prémium** szint.
+Az alapszintű, a **standard** és a **prémium** a SLA-val rendelkező, és méretezhető. Az alapszintű **csomag** az SLA-val rendelkező legolcsóbb szint, amely akár 2 egységig bővíthető, a **standard** szint pedig akár négy egységig is méretezhető. A **prémium** szinthez tetszőleges számú egységet adhat hozzá.
 
-A **prémium** szint lehetővé teszi, hogy egyetlen Azure API Management példány szét a kívánt Azure-régiók tetszőleges számú. Először létrehoz egy Azure API Management szolgáltatást, ha a példány csak egy egységet tartalmaz, és a egy adott Azure-régióban található. A kezdeti régió elsődlegesként lett megjelölve a **elsődleges** régióban. További régiók könnyedén adhat hozzá. Egy régióban hozzáadásakor meg kell adnia a hozzárendelni kívánt egységek számát. Például használhat egy egységet a **elsődleges** régió és más régióban öt egységek. Testre szabhatja a forgalomra, minden régióban van egységek száma. További információkért lásd: [egy Azure API Management-szolgáltatáspéldány üzembe helyezése több Azure-régióban](api-management-howto-deploy-multi-region.md).
+A **prémium** szint lehetővé teszi egyetlen Azure API Management-példány terjesztését tetszőleges számú, a kívánt Azure-régióban. Amikor először hoz létre egy Azure API Management-szolgáltatást, a példány csak egy egységet tartalmaz, és egyetlen Azure-régióban helyezkedik el. A kezdeti régió **elsődleges** régióként van kijelölve. A további régiók egyszerűen hozzáadhatók. Régió hozzáadásakor meg kell adnia, hogy hány egységet szeretne lefoglalni. Rendelkezhet például egy egységgel az **elsődleges** régióban és öt egységben egy másik régióban. Az egységek számát az egyes régiókban található forgalomhoz igazíthatja. További információ: [azure API Management Service-példány üzembe helyezése több Azure-régióban](api-management-howto-deploy-multi-region.md).
 
-Is, majd, és bármely szintről. Vegye figyelembe, hogy a frissítés vagy alacsonyabb verziójúra változtatása távolíthatja el bizonyos funkciók – például a virtuális hálózatok vagy a több régióból álló üzemelő, ha alacsonyabb szolgáltatásszintre Standard vagy Alapszintűre vált.
+Bármely szintre frissítheti és visszaléphet. Vegye figyelembe, hogy a verziófrissítés vagy a visszalépési művelettel eltávolíthat bizonyos funkciókat – például a virtuális hálózatok vagy a többrégiós telepítést, ha a prémium szintről standard vagy alapszintű értékre vált.
 
->[!NOTE]
->A frissítés vagy a méretezési csoport folyamat is igénybe vehet a 15-45 percre a alkalmazni. Értesítést kaphat, amikor kész van.
+> [!NOTE]
+> A frissítés vagy a méretezési csoport folyamat is igénybe vehet a 15-45 percre a alkalmazni. Értesítést kap, ha elkészült.
 
-## <a name="use-the-azure-portal-to-upgrade-and-scale"></a>Frissítés és skálázás az Azure portal használatával
+> [!NOTE]
+> API Management szolgáltatás a használati szinten automatikusan méretezi a forgalmat a forgalom alapján.
 
-![APIM méretezés az Azure Portalon](./media/upgrade-and-scale/portal-scale.png)
+## <a name="use-the-azure-portal-to-upgrade-and-scale"></a>A Azure Portal használata a frissítéshez és a méretezéshez
 
-1. Keresse meg az APIM-példányra, az a [az Azure portal](https://portal.azure.com/).
-2. Válassza ki **skálázás és díjszabás** a menüből.
-3. Válassza ki a kívánt tarifacsomagot.
-4. Adja meg, hány **egységek** szeretne hozzáadni. A csúszka, vagy írja be az egységek számát.  
-    Ha úgy dönt, a **prémium** szint, először ki kell választania egy régiót.
+![APIM méretezése Azure Portal](./media/upgrade-and-scale/portal-scale.png)
+
+1. Navigáljon a [Azure Portal](https://portal.azure.com/)APIM-példányához.
+2. Válassza a **Méretezés és díjszabás** lehetőséget a menüből.
+3. Válassza ki a kívánt szintet.
+4. Adja meg a hozzáadni kívánt **egységek** számát. Használhatja a csúszkát, vagy megadhatja az egységek számát.  
+    Ha a **prémium** szintet választja, először ki kell választania egy régiót.
 5. Kattintson a **Mentés** gombra.
+
+## <a name="downtime-during-scaling-up-and-down"></a>Leállás a felfelé és lefelé skálázás során
+Ha a fejlesztői szinten vagy a-ból végez méretezést, a rendszer leállást eredményez. Ellenkező esetben nincs leállás. 
+
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az Azure API Management-szolgáltatáspéldány üzembe helyezése több Azure-régióban](api-management-howto-deploy-multi-region.md)
-- [Automatikus méretezése egy Azure API Management-szolgáltatáspéldány](api-management-howto-autoscale.md)
+- [Azure API Management-szolgáltatáspéldány üzembe helyezése több Azure-régióban](api-management-howto-deploy-multi-region.md)
+- [Azure API Management Service-példány automatikus méretezése](api-management-howto-autoscale.md)

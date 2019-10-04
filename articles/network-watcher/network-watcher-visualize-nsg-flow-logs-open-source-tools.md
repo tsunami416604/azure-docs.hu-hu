@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: mareat
 ms.openlocfilehash: 7361eff0f76271564fd5a0e9b8a18221ec4138e3
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56099003"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60860116"
 ---
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>Nyílt forráskódú eszközök használatával az Azure Network Watcher NSG forgalmi naplók megjelenítése
 
@@ -201,7 +201,7 @@ A beépülő modullal kapcsolatos további információkért tekintse meg a [dok
 
 Egy minta-irányítópult a riasztásokat a trendek és a részletek megtekintéséhez a következő képen látható:
 
-![1. ábra][1]
+![1\. ábra][1]
 
 Töltse le a [irányítópult fájl](https://aka.ms/networkwatchernsgflowlogdashboard), a [vizualizációs fájlt](https://aka.ms/networkwatchernsgflowlogvisualizations), és a [adatfájl a keresési mentett](https://aka.ms/networkwatchernsgflowlogsearch).
 
@@ -215,7 +215,7 @@ A minta-irányítópult több vizualizációt, a forgalmi naplók biztosítja:
 
 1. Folyamatok szerint határozat vagy iránya Over Time - idő sorozat diagramok megjelenítése az idő alatt folyamatok száma. Az időegység, és mindkét ezek a Vizualizációk span szerkesztheti. Folyamatok döntési szerint jeleníti meg az időarány, amíg engedélyezik vagy megtagadják a döntések, miközben irány szerinti folyamatokat a bejövő és kimenő forgalom arányát jeleníti meg. Ezeket a vizualizációkat tartalmazó idővel vizsgálja meg a forgalom trendeket, és keresse meg az összes adatforgalmi csúcsokhoz és a szokatlan mintákat.
 
-   ![2. ábra][2]
+   ![2\. ábra][2]
 
 2. A cél/forrásport – folyamatokat a tortadiagramok a megfelelő portok folyamatok áttekintését megjelenítő. Ebben a nézetben látható a leggyakrabban használt portokat. Ha a kördiagramon belül egy adott porton kattint, a rendszer kiszűri az irányítópult a többi le annak a portnak folyamatok.
 
@@ -223,7 +223,7 @@ A minta-irányítópult több vizualizációt, a forgalmi naplók biztosítja:
 
 3. Folyamatok és legkorábbi naplózási idő –-mérőszámok, rögzített folyamatok száma és a dátum a legkorábbi napló rögzített száma.
 
-   ![4. ábra][4]
+   ![4\. ábra][4]
 
 4. NSG-t és a szabály – egy oszlopdiagram, amelyen látható a forgalom megoszlása minden NSG-n belül, valamint az egyes NSG-n belül szabályok a terjesztési folyamatokat. Itt láthatja, melyik NSG-t és a szabályokat a legtöbb forgalmat generált.
 

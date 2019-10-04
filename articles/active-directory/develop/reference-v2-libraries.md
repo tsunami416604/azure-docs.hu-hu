@@ -1,101 +1,118 @@
 ---
-title: Az Azure Active Directory 2.0-s verziójú hitelesítési kódtárai |} A Microsoft Docs
-description: Kompatibilis klienskódtárak és a kiszolgáló közbenső tárak, és a kapcsolódó erőforrástárba, forrás és minták mutató hivatkozásokat, az Azure Active Directory v2.0-végpont.
+title: Microsoft Identity platform hitelesítési kódtárak | Microsoft Docs
+description: Kompatibilis ügyféloldali kódtárak és kiszolgáló köztes kódtárak, valamint a kapcsolódó függvénytár-, forrás-és mintavételi hivatkozások a Microsoft Identity platform végpontja számára.
 services: active-directory
 documentationcenter: ''
 author: negoe
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.assetid: 19cec615-e51f-4141-9f8c-aaf38ff9f746
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/14/2018
+ms.date: 07/25/2019
 ms.author: negoe
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf5821bdfc9dfc284334b2b8b4950c3a54fb73b2
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 94e4199ff15dc63a729a601840e312afeadc8823
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60010744"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71678080"
 ---
-# <a name="azure-active-directory-v20-authentication-libraries"></a>Az Azure Active Directory 2.0-s verziójú hitelesítési kódtárai
+# <a name="microsoft-identity-platform-authentication-libraries"></a>Microsoft Identity platform hitelesítési kódtárak
 
-A [Azure Active Directory (Azure AD) v2.0-végpont](active-directory-v2-compare.md) a szabványos OAuth 2.0 és OpenID Connect 1.0 protokoll használatát támogatja. A Microsoft-hitelesítési tár (MSAL) úgy tervezték, hogy az Azure AD v2.0-végpont használata. Akkor is, amely támogatja az OAuth 2.0 és OpenID Connect 1.0 nyílt forráskódú könyvtáraink használatára.
+A [Microsoft Identity platform végpontja](active-directory-v2-compare.md) támogatja az iparági szabványnak megfelelő OAuth 2,0 és az OpenID Connect 1,0 protokollokat. A Microsoft Authentication Library (MSAL) úgy van kialakítva, hogy működjön a Microsoft Identity platform-végponttal. Használhat olyan nyílt forráskódú kódtárakat is, amelyek támogatják a OAuth 2,0 és az OpenID Connect 1,0-et.
 
-Javasoljuk, hogy használja-e hajtsa végre a biztonságos fejlesztési Életciklussal (SDL) módszer, például protokoll tartomány szakértők által összeállított kódtárak [a Microsoft követ][Microsoft-SDL]. Ha úgy dönt, hogy az aktuális-kódot az protokollok, mint a Microsoft SDL és használatalapú zárja be a biztonsági szempontok a szabványok specifikációk minden protokollhoz a figyelmet a kövesse módszer.
+Azt javasoljuk, hogy a biztonsági fejlesztési életciklus (SDL) módszereit követő protokoll-tartományi szakértők által írt könyvtárakat használjon. Ilyen módszerek közé tartozik [az, amelyet a Microsoft követ][Microsoft-SDL]. Ha kódot használ a protokollok számára, kövesse az olyan módszereket, mint a Microsoft SDL. Ügyeljen arra, hogy az egyes protokollokra vonatkozó szabványok részletes leírásában a biztonsági szempontokat kell figyelembe venni.
 
 > [!NOTE]
-> Az Azure ad-ben 1.0-s verziójú library (ADAL) keres? Kivétel a [ADAL könyvtár az útmutató](active-directory-authentication-libraries.md).
+> A Azure Active Directory hitelesítési függvénytárat (ADAL) keresi? Tekintse meg a [ADAL-könyvtár útmutatóját](active-directory-authentication-libraries.md).
 
-## <a name="types-of-libraries"></a>Szalagtárak típusai
+## <a name="types-of-libraries"></a>Könyvtárak típusai
 
-Az Azure AD v2.0-végpont működik együtt könyvtárak két típusa:
+A Microsoft Identity platform végpontja két típusú kódtáraval működik:
 
-* **Ügyfélkódtárak**: Natív ügyfelek és kiszolgálók klienskódtárak használatával lekérése egy erőforráshoz, például a Microsoft Graph hívásakor vonatkozó hozzáférési jogkivonatait.
-* **Server közbenső könyvtárak**: A felhasználói bejelentkezés kiszolgáló közbenső kódtárakat használó webalkalmazások. Webes API-k server közbenső könyvtárak használatával natív ügyfelek vagy más kiszolgálók által küldött jogkivonatainak érvényesítéséhez.
+* **Ügyféloldali kódtárak**: A natív ügyfelek és kiszolgálók az ügyfél-kódtárak használatával kapnak hozzáférési jogkivonatokat az erőforrások (például Microsoft Graph) meghívásához.
+* **Kiszolgáló middleware**-kódtárai: A webalkalmazások kiszolgálói middleware-kódtárakat használnak a felhasználói bejelentkezéshez. A webes API-k kiszolgálói middleware-kódtárak segítségével érvényesítik a natív ügyfelek vagy más kiszolgálók által eljuttatott jogkivonatokat.
 
-## <a name="library-support"></a>Klienskódtár-támogatásával
+## <a name="library-support"></a>Függvénytár-támogatás
 
-Szalagtárak érkeznek két támogatási kategóriákban:
+A kódtárak két támogatási kategóriába tartoznak:
 
-* **Microsoft-supported**: A Microsoft javításokat nyújt ezek a kódtárak és SDL végzett szerkezetkialakításra, ezek a könyvtárak a.
-* **Kompatibilis**: A Microsoft tesztelte ezek a kódtárak alapszintű forgatókönyvekben és megerősítette, hogy működnek-e a v2.0-végponttal. A Microsoft nem biztosít javítását, ezek a kódtárak és nem végrehajtva ezek a kódtárak áttekintését. Problémák és a funkciókérések legyen átirányítva a tár nyílt forráskódú projekt.
+* **Microsoft által támogatott**: A Microsoft kijavítja ezeket a kódtárakat, és az SDL-átvilágítás miatt megtörtént a kódtárak használata.
+* **Kompatibilis**: A Microsoft alapvető forgatókönyvekben tesztelte ezeket a kódtárakat, és megerősítette, hogy együttműködik a Microsoft Identity platform-végponttal. A Microsoft nem biztosít javításokat ezekhez a könyvtárakhoz, és nem végzett felülvizsgálatot ezen könyvtárakról. A problémákat és a szolgáltatási kérelmeket a könyvtár nyílt forráskódú projektjeire kell irányítani.
 
-Tekintse meg a következő szakasz ebben a cikkben, amelyek együttműködnek a v2.0-végpont könyvtárak listáját.
+A Microsoft Identity platform-végponttal működő könyvtárak listáját a következő részekben találja.
 
-## <a name="microsoft-supported-client-libraries"></a>A Microsoft által támogatott ügyfélkódtárak
+## <a name="microsoft-supported-client-libraries"></a>Microsoft által támogatott ügyféloldali kódtárak
 
-Védett webes API hívása egy token beszerzéséhez használt ügyfél-hitelesítési tárak
+A védett webes API-k meghívásához használjon ügyfél-hitelesítési kódtárakat.
 
-| Platform | Kódtár | Letöltés | Forráskód | Sample | Leírások | Fogalmi doc | Ütemterv |
-| --- | --- | --- | --- | --- | --- | --- | ---|
-| ![JavaScript](media/sample-v2-code/logo_js.png) | MSAL.js (előzetes verzió) | [NPM](https://www.npmjs.com/package/msal) |[GitHubon](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angularjs/README.md) |  [Egyoldalas alkalmazás](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) |  | [wiki](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki)|
+| Platform | Erőforrástár | Letöltés | Forráskód | Minta | Hivatkozás | Fogalmi doc | Ütemterv |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| ![JavaScript](media/sample-v2-code/logo_js.png) | MSAL.js  | [NPM](https://www.npmjs.com/package/msal) |[GitHubon](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/README.md) |  [Egyoldalas alkalmazás](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) | [Referencia](https://htmlpreview.github.io/?https://raw.githubusercontent.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core/docs/classes/_useragentapplication_.useragentapplication.html) | [Fogalmi dokumentumok](msal-overview.md)| [Ütemterv](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap)
 |![Angular JS](media/sample-v2-code/logo_angular.png) | MSAL Angular JS | [NPM](https://www.npmjs.com/package/@azure/msal-angularjs) | [GitHubon](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angularjs/README.md) |  |  | |
-![Angular](media/sample-v2-code/logo_angular.png) | Az MSAL Angular(Preview) | [NPM](https://www.npmjs.com/package/@azure/msal-angular) |[GitHubon](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | | | |
-| ![.NET-keretrendszer](media/sample-v2-code/logo_NET.png) ![UWP](media/sample-v2-code/logo_windows.png) ![Xamarin](media/sample-v2-code/logo_xamarin.png) | Az MSAL .NET (előzetes verzió) |[NuGet](https://www.nuget.org/packages/Microsoft.Identity.Client) |[GitHubon](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) | [Asztali alkalmazás](guidedsetups/active-directory-mobileanddesktopapp-windowsdesktop-intro.md) | [MSAL.NET](https://docs.microsoft.com/dotnet/api/microsoft.identity.client?view=azure-dotnet-preview) |[wiki](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki#conceptual-documentation) | [Ütemterv](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki#roadmap)
-| ![iOS / Objective-C vagy SWIFT nyelven](media/sample-v2-code/logo_iOS.png) | Az MSAL obj_c (előzetes verzió) | [GitHubon](https://github.com/AzureAD/microsoft-authentication-library-for-objc) |[GitHubon](https://github.com/AzureAD/microsoft-authentication-library-for-objc) | [iOS app](https://github.com/Azure-Samples/active-directory-msal-ios-swift) |  |
-|![Android / Java](media/sample-v2-code/logo_Android.png) | Az MSAL (előzetes verzió) | [Központi tárolóhely](https://repo1.maven.org/maven2/com/microsoft/identity/client/msal/) |[GitHubon](https://github.com/AzureAD/microsoft-authentication-library-for-android) | [Android-alkalmazás](quickstart-v2-android.md) | [JavaDocs](https://javadoc.io/doc/com.microsoft.identity.client/msal) | | |
+![Angular](media/sample-v2-code/logo_angular.png) | MSAL szögletes (előzetes verzió) | [NPM](https://www.npmjs.com/package/@azure/msal-angular) |[GitHubon](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | | | |
+| ![.NET-keretrendszer](media/sample-v2-code/logo_NET.png) ![UWP](media/sample-v2-code/logo_windows.png) ![Xamarin](media/sample-v2-code/logo_xamarin.png) | MSAL.NET  |[NuGet](https://www.nuget.org/packages/Microsoft.Identity.Client) |[GitHubon](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) | [Asztali alkalmazás](guidedsetups/active-directory-mobileanddesktopapp-windowsdesktop-intro.md) | [MSAL.NET](https://docs.microsoft.com/dotnet/api/microsoft.identity.client?view=azure-dotnet-preview) |[Fogalmi dokumentumok](msal-overview.md) | [Ütemterv](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki#roadmap)
+| ![Python](media/sample-v2-code/logo_python.png) | MSAL Python (előzetes verzió) | [PyPI](https://pypi.org/project/msal) | [GitHubon](https://github.com/AzureAD/microsoft-authentication-library-for-python) | [Példák](https://github.com/AzureAD/microsoft-authentication-library-for-python/tree/dev/sample) | [ReadTheDocs](https://msal-python.rtfd.io/) | [Wiki](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) | [Ütemterv](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki/Roadmap)
+| ![Java](media/sample-v2-code/logo_java.png) | MSAL Java (előzetes verzió) | [Maven 3](https://mvnrepository.com/artifact/com.microsoft.azure/msal4j) | [GitHubon](https://github.com/AzureAD/microsoft-authentication-library-for-java) | [Példák](https://github.com/AzureAD/microsoft-authentication-library-for-java/tree/dev/src/samples) | | [Wiki](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | [Ütemterv](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki)
+| iOS & macOS | MSAL iOS és macOS | [GitHubon](https://github.com/AzureAD/microsoft-authentication-library-for-objc) |[GitHubon](https://github.com/AzureAD/microsoft-authentication-library-for-objc) | [iOS-alkalmazás](https://github.com/Azure-Samples/ms-identity-mobile-apple-swift-objc), [MacOS-alkalmazás](https://github.com/Azure-Samples/ms-identity-macOS-swift-objc) | [Referencia](https://azuread.github.io/microsoft-authentication-library-for-objc/index.html)  | [Fogalmi dokumentumok](msal-overview.md) | |
+|![Android / Java](media/sample-v2-code/logo_Android.png) | MSAL Android rendszerhez | [Központi tárház](https://repo1.maven.org/maven2/com/microsoft/identity/client/msal/) |[GitHubon](https://github.com/AzureAD/microsoft-authentication-library-for-android) | [Android-alkalmazás](quickstart-v2-android.md) | [JavaDocs](https://javadoc.io/doc/com.microsoft.identity.client/msal) | [Fogalmi dokumentumok](msal-overview.md) |[Ütemterv](https://github.com/AzureAD/microsoft-authentication-library-for-android/wiki/Roadmap)
 
-## <a name="microsoft-supported-server-middleware-libraries"></a>A Microsoft által támogatott kiszolgálói közbenső kódtárak
+## <a name="microsoft-supported-server-middleware-libraries"></a>Microsoft által támogatott kiszolgálói middleware-kódtárak
 
-Közbenső kódtárak webalkalmazások és webes API-k védelmére használhatók. Webalkalmazás vagy írt az ASP.NET- vagy ASP.NET Core webes API, a közbenső szoftver kódtárak használják az ASP.NET és ASP.NET Core
+A webalkalmazások és a webes API-k védelméhez használjon middleware-kódtárakat. A ASP.NET vagy ASP.NET Core által írt webalkalmazások vagy webes API-k a middleware-kódtárakat használják.
 
-| Platform | Kódtár | Letöltés | Forráskód | Sample | Leírások
+| Platform | Erőforrástár | Letöltés | Forráskód | Minta | Hivatkozás
 | --- | --- | --- | --- | --- | --- |
-| ![.NET](media/sample-v2-code/logo_NET.png) ![.NET Core](media/sample-v2-code/logo_NETcore.png) | ASP.NET-biztonság |[NuGet](https://www.nuget.org/packages/Microsoft.AspNet.Mvc/) |[ASP.NET-biztonsági (GitHub)](https://github.com/aspnet/Security) |[MVC-alkalmazás](quickstart-v2-aspnet-webapp.md) |[Az ASP.NET API-referencia](https://docs.microsoft.com/dotnet/api/?view=aspnetcore-2.0) |
-| ![.NET](media/sample-v2-code/logo_NET.png)| IdentityModel Extensions for .NET| |[GitHubon](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) | [MVC-alkalmazás](quickstart-v2-aspnet-webapp.md) |[Referencia](https://docs.microsoft.com/dotnet/api/overview/azure/activedirectory/client?view=azure-dotnet) |
-| ![Node.js](media/sample-v2-code/logo_nodejs.png) | Az Azure AD-Passport |[NPM](https://www.npmjs.com/package/passport-azure-ad) |[GitHubon](https://github.com/AzureAD/passport-azure-ad) | [Webalkalmazás](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs) | |
+| ![.NET](media/sample-v2-code/logo_NET.png) ![.NET Core](media/sample-v2-code/logo_NETcore.png) | ASP.NET biztonság |[NuGet](https://www.nuget.org/packages/Microsoft.AspNet.Mvc/) |[GitHubon](https://github.com/aspnet/AspNetCore) |[MVC-alkalmazás](quickstart-v2-aspnet-webapp.md) |[ASP.NET API-referenciák](https://docs.microsoft.com/dotnet/api/?view=aspnetcore-2.0) |
+| ![.NET](media/sample-v2-code/logo_NET.png)| IdentityModel-bővítmények a .NET-hez| |[GitHubon](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) | [MVC-alkalmazás](quickstart-v2-aspnet-webapp.md) |[Referencia](https://docs.microsoft.com/dotnet/api/overview/azure/activedirectory/client?view=azure-dotnet) |
+| ![Node.js](media/sample-v2-code/logo_nodejs.png) | Azure AD Passport |[NPM](https://www.npmjs.com/package/passport-azure-ad) |[GitHubon](https://github.com/AzureAD/passport-azure-ad) | [Webalkalmazás](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs) | |
 
-## <a name="compatible-client-libraries"></a>Kompatibilis ügyfélkódtárak
+## <a name="microsoft-supported-libraries-by-os--language"></a>Microsoft által támogatott kódtárak operációs rendszer/nyelv szerint
 
-| Platform | Tár neve | A tesztelt verzió | Forráskód | Sample |
+A támogatott operációs rendszerek és nyelvek kifejezésében a megfeleltetés a következő:
+
+|             | Windows    | Linux      | macOS      | iOS | Android    |
+|-------------|------------|------------|------------|------------|------------|
+| ![JavaScript](media/sample-v2-code/logo_js.png)  |  MSAL.js | MSAL.js | MSAL.js | MSAL.js |  MSAL.js |
+| <img alt="C#" src="../../cognitive-services/speech-service/media/index/logo_csharp.svg" width="64px" height="64px" /> | ASP.NET, ASP.NET Core, MSAL.Net (.NET FW, Core, UWP)| ASP.NET Core, MSAL.Net (.NET Core) | ASP.NET Core, MSAL.Net (MacOS)       | MSAL.Net (Xamarin. iOS) | MSAL.Net (Xamarin. Android)|
+| Swift <br> Objective-C |            |            | [MSAL iOS és macOS rendszerhez](msal-overview.md) | [MSAL iOS és macOS rendszerhez](msal-overview.md) |            |
+| ![Java](media/sample-v2-code/logo_java.png) Java | msal4j | msal4j | msal4j | | MSAL Android rendszerhez |
+| ![Python](media/sample-v2-code/logo_python.png) Python | MSAL Python | MSAL Python | MSAL Python |
+| ![Node. js](media/sample-v2-code/logo_nodejs.png) Node.JS | Passport. Node | Passport. Node | Passport. Node |
+
+Lásd még: [forgatókönyvek a támogatott platformok és nyelvek alapján](authentication-flows-app-scenarios.md#scenarios-and-supported-platforms-and-languages)
+
+## <a name="compatible-client-libraries"></a>Kompatibilis ügyféloldali kódtárak
+
+| Platform | Könyvtár neve | Tesztelt verzió | Forráskód | Minta |
 |:---:|:---:|:---:|:---:|:---:|
-|![JavaScript](media/sample-v2-code/logo_js.png)|[Hello.js](https://adodson.com/hello.js/) | 1.13.5 |[Hello.js](https://github.com/MrSwitch/hello.js) |[SPA](https://github.com/Azure-Samples/active-directory-javascript-graphapi-web-v2) |
-| ![Java](media/sample-v2-code/logo_java.png) | [Scribe Java](https://github.com/scribejava/scribejava) | [Verzió 3.2.0](https://github.com/scribejava/scribejava/releases/tag/scribejava-3.2.0) | [ScribeJava](https://github.com/scribejava/scribejava/) | |
-| ![Java](media/sample-v2-code/logo_java.png) | [Gluu OpenID Connect library](https://github.com/GluuFederation/oxAuth) | [Verzió 3.0.2-es](https://github.com/GluuFederation/oxAuth/releases/tag/3.0.2) | [Gluu OpenID Connect library](https://github.com/GluuFederation/oxAuth) | |
+|![JavaScript](media/sample-v2-code/logo_js.png)|[Hello.js](https://adodson.com/hello.js/) | 1\.13.5 verziója |[Hello.js](https://github.com/MrSwitch/hello.js) |[SPA](https://github.com/Azure-Samples/active-directory-javascript-graphapi-web-v2) |
+| ![Java](media/sample-v2-code/logo_java.png) | [Írástudó Java](https://github.com/scribejava/scribejava) | [3.2.0-es verzió](https://github.com/scribejava/scribejava/releases/tag/scribejava-3.2.0) | [ScribeJava](https://github.com/scribejava/scribejava/) | |
+| ![Java](media/sample-v2-code/logo_java.png) | [Gluu OpenID Connect könyvtár](https://github.com/GluuFederation/oxAuth) | [3.0.2 verziója](https://github.com/GluuFederation/oxAuth/releases/tag/3.0.2) | [Gluu OpenID Connect könyvtár](https://github.com/GluuFederation/oxAuth) | |
 | ![Python](media/sample-v2-code/logo_python.png) | [Requests-OAuthlib](https://github.com/requests/requests-oauthlib) | [1.2.0-s vagy annál újabb verzió](https://github.com/requests/requests-oauthlib/releases/tag/v1.2.0) | [Requests-OAuthlib](https://github.com/requests/requests-oauthlib) | |
-| ![Node.js](media/sample-v2-code/logo_nodejs.png) | [openid-client](https://github.com/panva/node-openid-client) | [Verzió 2.4.5](https://github.com/panva/node-openid-client/releases/tag/v2.4.5) | [openid-client](https://github.com/panva/node-openid-client) | |
-| ![PHP](media/sample-v2-code/logo_php.png) | [A PHP az NFL oauth2-ügyfél](https://github.com/thephpleague/oauth2-client) | [1.4.2 verziója](https://github.com/thephpleague/oauth2-client/releases/tag/1.4.2) | [oauth2-client](https://github.com/thephpleague/oauth2-client/) | |
-| ![Ruby](media/sample-v2-code/logo_ruby.png) |[OmniAuth](https://github.com/omniauth/omniauth/wiki) |omniauth:1.3.1<br />omniauth-oauth2:1.4.0 |[OmniAuth](https://github.com/omniauth/omniauth)<br />[OmniAuth OAuth2](https://github.com/intridea/omniauth-oauth2) |  |
-| ![iOS](media/sample-v2-code/logo_iOS.png) ![Android](media/sample-v2-code/logo_Android.png) | [React Native Appauth](https://github.com/FormidableLabs/react-native-app-auth) | [Verzió 4.2.0](https://github.com/FormidableLabs/react-native-app-auth/releases/tag/v4.2.0) | [React Native Appauth](https://github.com/FormidableLabs/react-native-app-auth) | |
+| ![Node.js](media/sample-v2-code/logo_nodejs.png) | [OpenID – ügyfél](https://github.com/panva/node-openid-client) | [2.4.5 verziója](https://github.com/panva/node-openid-client/releases/tag/v2.4.5) | [OpenID – ügyfél](https://github.com/panva/node-openid-client) | |
+| ![PHP](media/sample-v2-code/logo_php.png) | [A PHP Liga oauth2 – ügyfél](https://github.com/thephpleague/oauth2-client) | [1.4.2 verziója](https://github.com/thephpleague/oauth2-client/releases/tag/1.4.2) | [oauth2-client](https://github.com/thephpleague/oauth2-client/) | |
+| ![Ruby](media/sample-v2-code/logo_ruby.png) |[OmniAuth](https://github.com/omniauth/omniauth/wiki) |omniauth: 1.3.1<br />omniauth-oauth2: 1.4.0 |[OmniAuth](https://github.com/omniauth/omniauth)<br />[OmniAuth OAuth2](https://github.com/intridea/omniauth-oauth2) |  |
+| iOS, macOS, & Android  | [Natív alkalmazás hitelesítésének megválaszolása](https://github.com/FormidableLabs/react-native-app-auth) | [4.2.0 verziója](https://github.com/FormidableLabs/react-native-app-auth/releases/tag/v4.2.0) | [Natív alkalmazás hitelesítésének megválaszolása](https://github.com/FormidableLabs/react-native-app-auth) | |
 
-Bármely szabványokkal kompatibilis szalagtár használható a v2.0-végpont, ezért fontos, hogy tudja, hol találhat a támogatást.
+Bármely szabványnak megfelelő kódtár esetében használhatja a Microsoft Identity platform végpontját. Fontos tudni, hogy hová kell menni a támogatáshoz:
 
-* A problémákat, és új funkciókra vonatkozó kérések kódtár kód a szalagtár tulajdonosától.
-* Problémákat és a Szolgáltatásoldali protokollmegvalósítás az új funkciókra vonatkozó kérések forduljon a Microsofthoz.
-* [A fájl-funkcióigénylés](https://feedback.azure.com/forums/169401-azure-active-directory) további funkciók, tekintse meg a protokoll szeretné.
-* [Hozzon létre egy támogatási kérést](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) Ha problémát talál, az Azure AD v2.0-végpont esetében ez nem engedélyezett az OAuth 2.0 vagy OpenID Connect 1.0.
+* A problémákkal és az új szolgáltatási kérelmekkel kapcsolatban a könyvtár kódjában forduljon a könyvtár tulajdonosához.
+* A szolgáltatási oldali protokollok megvalósításával kapcsolatos problémákról és új szolgáltatásokra vonatkozó kérésekhez forduljon a Microsofthoz.
+* A protokollban megjelenő további funkciókra vonatkozó [szolgáltatás kérése](https://feedback.azure.com/forums/169401-azure-active-directory) .
+* [Hozzon létre egy támogatási kérést](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) , ha olyan problémát talál, amelyben a Microsoft Identity platform végpontja nem felel meg a OAuth 2,0 vagy az OpenID Connect 1,0-nek.
 
 ## <a name="related-content"></a>Kapcsolódó tartalom
 
-Az Azure AD v2.0-végpont kapcsolatos további információkért lásd: a [az Azure AD app model v2.0 áttekintése][AAD-App-Model-V2-Overview].
+További információ a Microsoft Identity platform végpontról: a [Microsoft Identity platform áttekintése][AAD-App-Model-V2-Overview].
 
 <!--Image references-->
 

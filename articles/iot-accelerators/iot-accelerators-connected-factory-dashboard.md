@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 07/10/2018
 ms.author: dobett
-ms.openlocfilehash: 4af93b5667181941585cc1ac89f5696379962026
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 82045ddcc204fe369b7330fe9b3c2a8cadd56d88
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39076100"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67067932"
 ---
 # <a name="use-features-in-the-connected-factory-solution-accelerator-dashboard"></a>A csatlakoztatott gyár megoldás gyorsító irányítópultján szolgáltatások használata
 
@@ -42,7 +42,7 @@ Az irányítópulton megjelenő információk szűrheti a a **gyári telephelyek
 
 ## <a name="browse-an-opc-ua-server"></a>OPC UA-kiszolgáló tallózása
 
-A megoldásgyorsító központi telepítésekor automatikusan megkeresheti az irányítópultról szimulált OPC UA-kiszolgálók egy csoportja építhet ki. Szimulált kiszolgálók megkönnyítik, hogy a megoldásgyorsító valós kiszolgálók üzembe helyezése nélkül kísérletezhet. Ha szeretné valós OPC UA-kiszolgálóknak a megoldáshoz történő csatlakoztatásáról, tekintse meg a [az OPC UA-eszköz csatlakoztatása az Okosgyár-megoldásgyorsító](iot-accelerators-connected-factory-gateway-deployment.md) oktatóanyag.
+A megoldásgyorsító központi telepítésekor automatikusan megkeresheti az irányítópultról szimulált OPC UA-kiszolgálók egy csoportja építhet ki. Szimulált kiszolgálók megkönnyítik, hogy a megoldásgyorsító valós kiszolgálók üzembe helyezése nélkül kísérletezhet.
 
 1. Kattintson a **browser ikonja** az irányítópult navigációs sávján:
 
@@ -111,6 +111,5 @@ Ha elkészült, törölheti a megoldásgyorsító az Azure-előfizetését az a 
 
 Most, hogy üzembe helyezett egy működő megoldásgyorsítót, a következő cikkek elolvasásával folytathatja az ismerkedést az IoT-megoldásgyorsítók használatával:
 
-* [Csatlakoztatott Factory megoldásgyorsító bemutatója](iot-accelerators-connected-factory-sample-walkthrough.md)
-* [Az eszköz csatlakoztatása az Okosgyár-megoldásgyorsító](iot-accelerators-connected-factory-gateway-deployment.md)
+* [Az Okosgyár-megoldásgyorsító konfigurálása](iot-accelerators-connected-factory-configure.md)
 * [Engedélyek az azureiotsolutions.com webhelyen](iot-accelerators-permissions.md)

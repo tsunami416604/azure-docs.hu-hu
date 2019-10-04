@@ -14,11 +14,11 @@ ms.date: 02/11/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: e02400ef940efdf42370fbdc1da75bdc7062a8ef
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243705"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62127361"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---company-policy-and-compliance"></a>Irányítás az Azure DevTest Labs-infrastruktúra - vállalati házirend és megfelelőség
 Ez a cikk útmutatást nyújt szabályozó vállalati házirend és megfelelőség az Azure DevTest Labs-infrastruktúrához. 

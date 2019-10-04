@@ -14,11 +14,11 @@ ms.topic: troubleshooting
 ms.date: 03/09/2018
 ms.author: tomfitz
 ms.openlocfilehash: 7938f2c47e4af8d8804191fbb9e55b379f9554ef
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488612"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60390192"
 ---
 # <a name="resolve-errors-for-resource-quotas"></a>Erőforráskvóták hibáinak megoldásához
 
@@ -105,7 +105,7 @@ Kérje egy kvótájának növelését, lépjen a portálra, és a egy támogatá
 
 1. Válassza az **Előfizetések** lehetőséget.
 
-   ![Előfizetések](./media/resource-manager-quota-errors/subscriptions.png)
+   ![Subscriptions](./media/resource-manager-quota-errors/subscriptions.png)
 
 2. Válassza ki az előfizetést, amelynek a kvótáját emelni szeretné.
 

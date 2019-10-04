@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/01/2019
 ms.author: dekapur
-ms.openlocfilehash: b4b7759d1dc23c1a1b3a9b5aeb2a181923e14d40
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 5997526098980220014d9bb2d47efe6c9aedee3d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670710"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66752337"
 ---
 # <a name="overview-of-service-fabric-standalone-clusters"></a>A Service Fabric önálló fürtök – áttekintés
 
@@ -57,7 +57,7 @@ Alkalmazások számára az idő előrehaladtával változik. Szükség lehet nö
 
 További információkért olvassa el [önálló fürtök méretezése](service-fabric-cluster-scaling-standalone.md).
 
-## <a name="upgrading"></a>Frissítés
+## <a name="upgrading"></a>A frissítés
 
 Önálló fürt egy erőforrást, amikor teljesen saját. Ön felelős az alapul szolgáló operációs rendszer javításait, és hálófrissítések indítása. Állítsa be a fürt automatikus futtatókörnyezet frissítését, kapni a Microsoft által kiadott új verzióra, vagy kiválaszthat egy támogatott futtatókörnyezet-verzióra. Hálófrissítések, mellett is javítani az operációs rendszer, és frissítse a fürt konfigurációját, például a tanúsítványokat és alkalmazásportok. 
 
@@ -68,6 +68,7 @@ További információkért olvassa el [önálló fürtök frissítése](service-
 
 * Windows Server 2012 R2
 * Windows Server 2016 
+* A Windows Server 2019
 
 ## <a name="next-steps"></a>További lépések
 Tudjon meg többet [biztonságossá tétele](service-fabric-cluster-security.md), [skálázás](service-fabric-cluster-scaling-standalone.md), és [frissítése](service-fabric-cluster-upgrade-standalone.md) önálló fürtök.

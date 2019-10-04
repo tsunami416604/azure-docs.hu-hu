@@ -1,9 +1,9 @@
 ---
-title: Azure Active Directory-naplók integrálása az Azure Monitor használatával ArcSight |} A Microsoft Docs
-description: 'Útmutató: Azure Active Directory-naplók integrálása az Azure Monitor használatával ArcSight'
+title: Azure Active Directory naplók integrálása a ArcSight a Azure Monitor használatával | Microsoft Docs
+description: Ismerje meg, hogyan integrálhatja Azure Active Directory-naplókat a ArcSight a Azure Monitor használatával
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: b37bef0d-982e-4e28-86b2-6c61ca524ae1
@@ -14,49 +14,49 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 04/19/2019
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08a265637274f396497da37706391bf44e0c9107
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 6e4f0f81c5f135e885fe06d4fb4fa67514e8781b
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59996306"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68988162"
 ---
-# <a name="integrate-azure-active-directory-logs-with-arcsight-using-azure-monitor"></a>Azure Active Directory-naplók integrálása az Azure Monitor használatával ArcSight
+# <a name="integrate-azure-active-directory-logs-with-arcsight-using-azure-monitor"></a>Azure Active Directory-naplók integrálása a ArcSight a Azure Monitor használatával
 
-[Micro fókusz ArcSight](https://software.microfocus.com/products/siem-security-information-event-management/overview) van (egy biztonsági biztonságiadat- és eseménykezelés SIEM) megoldást, amely segítséget nyújt, és reagálhassanak azokra a platform biztonsági fenyegetések ellen. Az Azure Active Directory (Azure AD) naplókban most átirányítása ArcSight a ArcSight connector használata az Azure ad-hez készült Azure Monitor használatával. Ez a funkció lehetővé teszi, hogy a bérlő, a biztonsági sérülés ArcSight használatával figyelheti.  
+A [Micro Focus ArcSight](https://software.microfocus.com/products/siem-security-information-event-management/overview) egy olyan biztonsági információ-és ESEMÉNYKEZELŐ (SIEM) megoldás, amely segít a platformon észlelni és reagálni a biztonsági fenyegetéseket. Az Azure AD-hez készült ArcSight-összekötővel most már átirányíthatja a Azure Active Directory (Azure AD) naplóit a ArcSight Azure Monitor használatával. Ez a funkció lehetővé teszi, hogy a ArcSight használatával figyelje a bérlőt a biztonsági kompromisszumra.  
 
-Ebből a cikkből elsajátíthatja az Azure AD-naplók átirányítása az Azure Monitor használatával ArcSight. 
+Ebből a cikkből megtudhatja, hogyan irányíthatja át az Azure AD-naplókat a ArcSight Azure Monitor használatával. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A szolgáltatás használatához a következőkre lesz szüksége:
-* Azure event hub, amely tartalmazza az Azure Active Directory-naplók. Ismerje meg, hogyan [adatfolyam a Tevékenységnaplók eseményközpontba](quickstart-azure-monitor-stream-logs-to-event-hub.md). 
-* ArcSight Syslog-NG démont-SmartConnector (SmartConnector) vagy ArcSight terheléselosztó konfigurált példánya. Az események ArcSight Load Balancer küldenek, ha azok ebből következően érkeznek a SmartConnector a terheléselosztó által.
+* Az Azure AD-tevékenységek naplóit tartalmazó Azure Event hub. Megtudhatja, hogyan [továbbíthatja a tevékenység naplóit egy Event hubhoz](quickstart-azure-monitor-stream-logs-to-event-hub.md). 
+* A ArcSight syslog NG Daemon SmartConnector (SmartConnector) vagy a ArcSight Load Balancer konfigurált példánya. Ha az eseményeket a ArcSight-Load Balancer küldik, a rendszer Következésképpen a Load Balancer továbbítja azokat a SmartConnector.
 
-Töltse le és nyissa meg a [beállítási útmutató a Azure Monitor eseményközpont ArcSight SmartConnector](https://community.softwaregrp.com/dcvta86296/attachments/dcvta86296/connector-documentation/1232/2/Microsoft%20Azure%20Monitor%20Event%20Hub.pdf). Ez az útmutató tartalmazza a lépéseket, telepítheti és konfigurálhatja az Azure monitor ArcSight SmartConnector kell. 
+Töltse le és nyissa meg az [Azure monitor Event hub ArcSight-SmartConnector tartozó konfigurációs útmutatót](https://community.softwaregrp.com/dcvta86296/attachments/dcvta86296/connector-documentation/1232/2/Microsoft%20Azure%20Monitor%20Event%20Hub.pdf). Ez az útmutató a Azure Monitor ArcSight-SmartConnector telepítéséhez és konfigurálásához szükséges lépéseket tartalmazza. 
 
-## <a name="integrate-azure-ad-logs-with-arcsight"></a>Az Azure AD-naplók integrálása ArcSight
+## <a name="integrate-azure-ad-logs-with-arcsight"></a>Azure AD-naplók integrálása a ArcSight
 
-1. Első lépésként hajtsa végre a a **Előfeltételek** konfigurációs útmutató szakasza. Ez a szakasz a következő lépésekből áll:
-    * Az Azure-ban, annak érdekében, hogy egy felhasználó a felhasználói engedélyek beállítása a **tulajdonosa** szerepkör telepítését és konfigurálását az összekötő.
-    * Nyissa meg a kiszolgáló portjait Syslog-NG démont SmartConnector, így az Azure-ból elérhető. 
-    * Az üzembe helyezés egy Windows PowerShell-parancsprogram fut, így a engedélyeznie kell a PowerShell-parancsfájlok futtatása a számítógépen, ahol szeretné-e az összekötő üzembe helyezése.
+1. Először végezze el a konfigurációs útmutató **Előfeltételek** című szakaszának lépéseit. Ez a szakasz a következő lépéseket tartalmazza:
+    * Felhasználói engedélyek beállítása az Azure-ban annak biztosítása érdekében, hogy az összekötő telepítéséhez és konfigurálásához a **tulajdonos** szerepkörrel rendelkező felhasználó legyen.
+    * Nyissa meg a portokat a kiszolgálón a syslog NG Daemon SmartConnector, hogy az elérhető legyen az Azure-ból. 
+    * A központi telepítés Windows PowerShell-parancsfájlt futtat, ezért engedélyeznie kell a PowerShellt, hogy parancsfájlokat futtasson azon a gépen, amelyen az összekötőt telepíteni kívánja.
 
-2. Kövesse a **az összekötő üzembe helyezése** üzembe helyezéséhez az összekötő konfigurációs útmutató szakasza. Ez a szakasz végigvezeti töltse le és csomagolja ki az összekötő, alkalmazás tulajdonságainak konfigurálása és futtassa a telepítési parancsfájl a kibontott mappát. 
+2. Az összekötő üzembe helyezéséhez kövesse a konfigurációs útmutató **összekötő üzembe helyezése** című szakaszának lépéseit. Ebből a szakaszból megtudhatja, hogyan töltheti le és csomagolhatja ki az összekötőt, konfigurálhatja az alkalmazás tulajdonságait, és futtathatja a kibontott mappában lévő telepítési parancsfájlt. 
 
-3. Kövesse a **az Azure-ban a telepítés ellenőrzésének folyamatát** , hogy az összekötő be van állítva, és megfelelően működik-e. Ellenőrizze a következőket:
-    * Az előfeltételként szükséges az Azure functions az Azure-előfizetésben jönnek létre.
-    * Az Azure AD naplókat a rendszer streamként továbbítja a megfelelő helyre. 
-    * Az alkalmazásbeállítások az üzemelő példányra megmaradnak, az Azure-Függvényalkalmazás alkalmazás beállításaiban. 
-    * Egy új erőforráscsoportot ArcSight ArcSight összekötő és a CEF-formátumban a csatlakoztatott fájljait tartalmazó storage-fiókok Azure AD-alkalmazást az Azure-ban jön létre.
+3. A **központi telepítés ellenőrzése az Azure-ban** című témakör lépéseit követve ellenőrizze, hogy az összekötő helyesen van-e beállítva, és megfelelően működik-e. Ellenőrizze a következőket:
+    * A szükséges Azure-függvények az Azure-előfizetésében jönnek létre.
+    * Az Azure AD-naplók a megfelelő helyre vannak továbbítva. 
+    * A központi telepítés Alkalmazásbeállítások az Azure Function apps alkalmazás beállításaiban maradnak meg. 
+    * A ArcSight új erőforráscsoport jön létre az Azure-ban, egy Azure AD-alkalmazással a ArcSight-összekötőhöz, valamint a leképezett fájlokat CEF formátumban tartalmazó Storage-fiókokhoz.
 
-4. Végül befejeződött az üzembe helyezés utáni lépéseket a **üzembe helyezés utáni konfigurációk** a konfigurációs útmutató. Ez a szakasz azt ismerteti, hogyan további konfigurációra, ha egy App Service-csomag megakadályozza, hogy a függvényalkalmazások fog üresjárati időkorlátja időszak után, konfigurálja a streamelés az event hubs-diagnosztikai naplók és a SysLog-NG démont frissítése SmartConnector keystore tanúsítvány társítsa az újonnan létrehozott tárfiókra.
+4. Végül végezze el a telepítés utáni lépéseket a konfigurációs útmutató **üzembe helyezés utáni konfigurációjában** . Ez a szakasz ismerteti, hogyan hajthat végre további konfigurálást, ha olyan App Service-csomagot használ, amely megakadályozza, hogy a Function apps időtúllépés után tétlen maradjon, konfigurálja a diagnosztikai naplók adatfolyamát az Event hub-ból, és frissítse a SysLog NG démont A SmartConnector-tároló tanúsítványa az újonnan létrehozott Storage-fiókhoz való társítható.
 
-5. A beállítási útmutató is bemutatja, hogyan szabhatja testre az összekötő-tulajdonságok, az Azure-ban, és hogyan frissítését és eltávolítását az összekötőt. Van még egy szakasz a teljesítménnyel kapcsolatos fejlesztések, beleértve a verzióra való egy [Azure Használatalapú csomag](https://azure.microsoft.com/pricing/details/functions) és a egy ArcSight Load Balancer konfigurálása, ha az esemény terhelés nagyobb, mint egyetlen Syslog-NG démont SmartConnector is kezelni.
+5. A konfigurációs útmutató azt is ismerteti, hogyan szabhatja testre az összekötő tulajdonságait az Azure-ban, és hogyan frissítheti és távolíthatja el az összekötőt. A teljesítménnyel kapcsolatos fejlesztéseket is tartalmaz, beleértve az Azure-használati [tervre](https://azure.microsoft.com/pricing/details/functions) való frissítést, valamint az ArcSight Load Balancer konfigurálását is, ha az esemény terhelése nagyobb, mint amit egyetlen syslog ng démon SmartConnector tud kezelni.
 
 ## <a name="next-steps"></a>További lépések
 
-[Beállítási útmutató a Azure Monitor eseményközpont ArcSight SmartConnector](https://community.softwaregrp.com/dcvta86296/attachments/dcvta86296/connector-documentation/1232/2/Microsoft%20Azure%20Monitor%20Event%20Hub.pdf)
+[Konfigurációs útmutató a Azure Monitor Event hub-hoz készült ArcSight-SmartConnector](https://community.softwaregrp.com/dcvta86296/attachments/dcvta86296/connector-documentation/1232/2/Microsoft%20Azure%20Monitor%20Event%20Hub.pdf)

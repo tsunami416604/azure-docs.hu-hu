@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: e7f292db06d4da9206aabd14a68e6acde867f92d
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: e0505960a413308283c4e67e33ec495eedd3b092
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337000"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827721"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Funkciók és az Azure Event Hubs terminológiája
 
@@ -66,30 +66,8 @@ Nem kell előre létrehoznia a közzétevők neveit, azoknak azonban egyezniük 
 [Az Event Hubs Capture](event-hubs-capture-overview.md) lehetővé teszi, hogy automatikusan a streamelt adatokat az Event Hubs capture, és mentse a Blob storage-fiók vagy egy Azure Data Lake Service fiókot választott. Rögzítés funkció engedélyezése az Azure Portalról, és adjon meg egy minimális méret és időtartomány hajtsa végre a rögzítést. Az Event Hubs Capture révén, adja meg a saját Azure Blob Storage-fiók és a tároló vagy az Azure Data Lake szolgáltatás-fiókot, ilyen például a rögzített adatok tárolására szolgál. A rögzített adatok az Apache Avro formátum nyelven van megírva.
 
 ## <a name="partitions"></a>Partíciók
+[!INCLUDE [event-hubs-partitions](../../includes/event-hubs-partitions.md)]
 
-Az Event Hubs üzenetstreamelést biztosít egy particionált felhasználói mintán keresztül, amelyben mindegyik felhasználó az üzenetstream csak egy adott részét, vagyis partícióját olvassa. Ez a minta biztosítja a horizontális skálázhatóságot az eseményfeldolgozáshoz, és egyéb, streamközpontú szolgáltatásokat is nyújt, amelyek az üzenetsorokban vagy témakörökben nem érhetők el.
-
-A partíció események egy rendezett sorozata az eseményközpontban. Ha új esemény érkezik, az a sorozat végére kerül. A partíció elképzelhető egy „véglegesítési naplóként”.
-
-![Event Hubs](./media/event-hubs-features/partition.png)
-
-Eseményközpont összes partíciójára érvényes az eseményközpont konfigurált megőrzési időtartamig őrzi meg az adatokat. Az események időalapon évülnek el – nem törölhetők külön. Mivel a partíciók függetlenek egymástól, és saját adatsorozataikat tartalmazzák, gyakran különböző ütemben nőnek.
-
-![Event Hubs](./media/event-hubs-features/multiple_partitions.png)
-
-A partíciók száma az eseményközpont létrehozásakor határozható meg, és 2 és 32 közé eshet. A partíciószám nem módosítható, a megadásakor tehát hosszú távú szempontokat érdemes mérlegelni. A partíció egy adatrendezési mechanizmus, és a felhasználó alkalmazásokban szükséges alárendeltségi párhuzamossághoz köthető. Az egyes eseményközpontokban található partíciók számának kiválasztása közvetlenül kapcsolódik az egyidejű olvasók várt számához. A partíciószám 32 fölé növeléséhez vegye fel a kapcsolatot az Event Hubs-csapattal.
-
-Jóllehet a partíciók azonosíthatók, és közvetlenül lehet küldeni, nem ajánlott közvetlenül egy partíció küld. Ehelyett használhatja a bemutatott magasabb szintű szerkezeteket a [esemény-közzétevő](#event-publishers) és kapacitás szakaszokat. 
-
-A partíciók eseményadatok az esemény, a felhasználó által definiált tulajdonságcsomagot és a metaadatokat, például eltolását a partícióban vagy a száma a streamsorozatban törzse tartalmazó sorozatát ki vannak töltve.
-
-További információt a partíciókról és a rendelkezésre állás és a megbízhatóság közötti kellő egyensúly kialakításáról az [Event Hubs programozási útmutatójában](event-hubs-programming-guide.md#partition-key) és az [Event Hubs rendelkezésre állásával és következetességével](event-hubs-availability-and-consistency.md) foglalkozó cikkben talál.
-
-### <a name="partition-key"></a>Partíciókulcs
-
-A [partíciókulccsal](event-hubs-programming-guide.md#partition-key) a beérkező eseményadatok képezhetők le adott partíciókra az adatok elrendezése céljából. A partíciókulcs az eseményközpontnak átadott, a küldő által megadott érték. A feldolgozása egy statikus kivonatoló függvénnyel történik, amely létrehozza a partíció-hozzárendelést. Ha nem ad meg partíciókulcsot az események közzétételekor, a rendszer ciklikus időszeleteléses hozzárendelést használ.
-
-Az esemény-közzétevő csak a partíciókulcsot ismeri, azt a partíciót nem, amelyre az esemény közzé lesz téve. A kulcs és a partíció szétválasztása révén a küldőnek nem szükséges behatóan ismernie az alárendelt feldolgozási folyamatokat. Az eszközszintű vagy egyedi felhasználói identitás remek partíciókulcs lehet, de más tulajdonságok, például a földrajzi hely alapján szintén lehetséges az események csoportosítása egyetlen partícióra.
 
 ## <a name="sas-tokens"></a>SAS-tokenek
 
@@ -151,33 +129,6 @@ Eseményadatok:
 * Rendszertulajdonságok
 
 Az eltolás kezelése a felhasználó felelőssége.
-
-## <a name="scaling-with-event-hubs"></a>Az Event Hubs méretezése
-
-Nincsenek két tényező, amely befolyásolhatja az Event Hubs méretezés.
-*   Átviteli egységek
-*   Partíciók
-
-### <a name="throughput-units"></a>Átviteli egységek
-
-Az Event Hubs átviteli kapacitásának szabályozása *átviteli egységek* révén történik. Az átviteli egységek előre megvásárolt kapacitásegységek. Egy átviteli teszi lehetővé:
-
-* Bemenő forgalom: Második vagy 1000 esemény (amelyik előbb bekövetkezik) másodpercenként legfeljebb 1 MB.
-* Kimenő forgalom: Akár 2 MB / másodpercben a második vagy 4096 esemény.
-
-A megvásárolt átviteli egységek kapacitásán túli bemenő forgalmat a rendszer korlátozza, és [ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception) választ ad vissza. A kimenő forgalom nem eredményez korlátozási kivételeket, azonban a megvásárolt átviteli egységek kapacitására van korlátozva. Ha közzétételi sebességhez kapcsolódó kivételeket kap, vagy nagyobb kimenő forgalomra számított, ellenőrizze, hány átviteli egységet vásárolt a névtérhez. Az átviteli egységek segítségével kezelheti a **méretezési** névtereket paneljén a [az Azure portal](https://portal.azure.com). Átviteli egységek használatával programozott módon is kezelhetők a [Event Hubs API-k](event-hubs-api-overview.md).
-
-Átviteli egységek előre megvásárolt és díjszabása óradíjalapú. Miután megvásárolta, az átviteli egységek után legalább egy órányi díjat ki kell fizetni. Legfeljebb 20 átviteli egység vásárolható meg az Event Hubs-névtér és a névtér összes event hubs vannak megosztva.
-
-### <a name="partitions"></a>Partíciók
-
-Partíciók tegye lehetővé, hogy nagy számú az alsóbb feldolgozási. A particionált felhasználói modell, amely az Event Hubs kínál partíciókat, mert meg is horizontális felskálázás az esemény egyidejű feldolgozása közben. Az Event Hub legfeljebb 32 partícióval rendelkezhet.
-
-Azt javasoljuk, hogy optimális méretezhetőség 1:1 átviteli egységek és partíciók kiegyenlítése. Egy partíció rendelkezik egy garantált bejövő és kimenő, legfeljebb egy átviteli egységgel rendelkezhet. Előfordulhat, hogy a partíció nagyobb átviteli sebességet érhet el, amíg a teljesítmény nem garantált. Ezért erősen ajánlott, hogy az eseményközpontokban található partíciók számának nagyobbnak vagy azzal egyenlőnek átviteli egységek számát kell-e.
-
-Adja meg a teljes átviteli sebesség a kellene tervezi, hogy a szükséges átviteli egységek számát és a partíciók minimális száma, de a hány partíciók kell, hogy? Válassza ki az alsóbb rétegbeli párhuzamosság használatával kíván elérni, valamint a jövőbeli átviteli igényei alapján a partíciók számát. Nem jár költségekkel rendelkezik egy eseményközpontban partíciók számát.
-
-Részletes információk az Event Hubs díjszabásáról: [Event Hubs-díjszabás](https://azure.microsoft.com/pricing/details/event-hubs/).
 
 ## <a name="next-steps"></a>További lépések
 

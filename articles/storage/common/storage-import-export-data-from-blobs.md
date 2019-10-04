@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: fc02e830953f8612a077fb219c7fef4e86bc3827
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e542ad59f6fd64b52aef9438ed0f646e9e36fc4a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59263833"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65209624"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Adatok exportálása az Azure Blob storage-ból az Azure Import/Export szolgáltatás használata
 Ebben a cikkben részletes útmutatás az Azure Import/Export szolgáltatás használatával nagy mennyiségű adat biztonságosan exportálása az Azure Blob storage-ból. A szolgáltatás megköveteli, hogy az Azure-adatközpontba üres meghajtókon szállításra. A szolgáltatás adatokat exportál a tárfiók a meghajtók, és vissza a meghajtók majd tartalmaz.
@@ -33,7 +33,7 @@ Viheti át az adatokat az Azure Blob Storage exportálási feladat létrehozása
         - [Hozzon létre egy FedEX fiókot](https://www.fedex.com/en-us/create-account.html), vagy 
         - [Hozzon létre egy DHL fiókot](http://www.dhl-usa.com/en/express/shipping/open_account.html).
 
-## <a name="step-1-create-an-export-job"></a>1. lépés: Exportálási feladat létrehozása
+## <a name="step-1-create-an-export-job"></a>1\. lépés: Exportálási feladat létrehozása
 
 A következő lépésekkel exportálási feladat létrehozása az Azure Portalon.
 
@@ -68,7 +68,7 @@ A következő lépésekkel exportálási feladat létrehozása az Azure Portalon
 
     - Megadhatja, hogy mely tárolók és blobok exportálása.
         - **Exportálandó blobok megadásához**: Használja a **Equal To** választó. Adja meg a blob, a tároló nevét kezdetű relatív elérési útját. Használat *$root* , adja meg a gyökérszintű tárolóban.
-        - **Adja meg az összes BLOB előtaggal kezdődik,**: Használja a **kezdődik** választó. Adja meg az előtag, kezdve a perjellel (/). Az előtag lehet az előtag a tároló nevét, a teljes körű neve vagy a teljes körű neve követ a blobnév előtagja. Ezen a képernyőfelvételen látható módon meg kell adnia a blob elérési útjának érvényes formátumban a feldolgozás során hibák elkerülése érdekében. További információkért lásd: [érvényes blob elérési útjának példái](#examples-of-valid-blob-paths). 
+        - **Adja meg az összes BLOB előtaggal kezdődik,** : Használja a **kezdődik** választó. Adja meg az előtag, kezdve a perjellel (/). Az előtag lehet az előtag a tároló nevét, a teljes körű neve vagy a teljes körű neve követ a blobnév előtagja. Ezen a képernyőfelvételen látható módon meg kell adnia a blob elérési útjának érvényes formátumban a feldolgozás során hibák elkerülése érdekében. További információkért lásd: [érvényes blob elérési útjának példái](#examples-of-valid-blob-paths). 
    
            ![Kiválasztott tárolók és blobok exportálása](./media/storage-import-export-data-from-blobs/export-from-blob5.png) 
 
@@ -83,7 +83,7 @@ A következő lépésekkel exportálási feladat létrehozása az Azure Portalon
 4. A **szállítási adatok visszaadása**:
 
     - A legördülő listából válassza ki a szolgáltató. Ha szeretne egy szolgáltató eltérő FedEx/DHL használja, válasszon egy meglévő lehetőséget a legördülő listából. A csapat kapcsolattartási Azure Data Box Operations `adbops@microsoft.com` együtt tervezi használni a szállítmányozó vonatkozó információkat.
-    - Adjon meg egy érvényes Szállítmányozó számlaszáma, amelyek a szolgáltató létrehozta. A Microsoft ezt a fiókot használja, a meghajtók vissza tehetnek az importálási feladat befejeződése után. 
+    - Adjon meg egy érvényes Szállítmányozó számlaszáma, amelyek a szolgáltató létrehozta. A Microsoft ezt a fiókot használja, a meghajtók vissza tehetnek az exportálási feladat befejeződése után. 
     - Adja meg a kész, érvényes ügyfél nevét, telefonszám, e-mail, utca, házszám, város, zip, államot/megyét és ország/régió.
 
         > [!TIP] 
@@ -99,18 +99,18 @@ A következő lépésekkel exportálási feladat létrehozása az Azure Portalon
 
     - Kattintson a **OK** exportálási feladat létrehozásának befejezéséhez.
 
-## <a name="step-2-ship-the-drives"></a>2. lépés: A meghajtók szállításra
+## <a name="step-2-ship-the-drives"></a>2\. lépés: A meghajtók szállításra
 
 Ha nem tudja, hány meghajtót van szüksége, lépjen a [ellenőrizze, hány meghajtót](#check-the-number-of-drives). Ha tudja, hány meghajtót, folytassa a meghajtók szállításra.
 
 [!INCLUDE [storage-import-export-ship-drives](../../../includes/storage-import-export-ship-drives.md)]
 
-## <a name="step-3-update-the-job-with-tracking-information"></a>3. lépés: A nyomkövetési adatokat a feladat frissítése
+## <a name="step-3-update-the-job-with-tracking-information"></a>3\. lépés: A nyomkövetési adatokat a feladat frissítése
 
 [!INCLUDE [storage-import-export-update-job-tracking](../../../includes/storage-import-export-update-job-tracking.md)]
 
 
-## <a name="step-4-receive-the-disks"></a>4. lépés: A lemezek fogadása
+## <a name="step-4-receive-the-disks"></a>4\. lépés: A lemezek fogadása
 Amikor az irányítópulton jelenti, hogy a feladat befejeződött, a lemezek szállítjuk, és a nyomkövetési azonosító szám a szállításra való előkészítését érhető el a portálon.
 
 1. Miután megkapta az exportált adatokat tartalmazó meghajtókra, kell a meghajtók zárolásának feloldásához a BitLocker-kulcsok beolvasása. Nyissa meg az exportálási feladatot az Azure Portalon. Kattintson a **Import/Export** fülre. 
@@ -193,7 +193,7 @@ Number of drives needed:        3
 
 Az alábbi táblázat érvényes blob elérési útjának példái láthatók:
    
-   | Kiválasztó | BLOB elérési útja | Leírás |
+   | Választó | BLOB elérési útja | Leírás |
    | --- | --- | --- |
    | Ezzel kezdődik |/ |Exportálja az összes BLOB storage-fiókban |
    | Ezzel kezdődik |/$root / |Exportálja a gyökérszintű tárolóban lévő összes BLOB |

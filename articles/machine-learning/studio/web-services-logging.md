@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/15/2017
 ms.openlocfilehash: 727379edb60756ca8cb3e5ebdc29cd38858945e4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57857555"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60345635"
 ---
 # <a name="enable-logging-for-azure-machine-learning-studio-web-services"></a>Az Azure Machine Learning Studio-webszolgáltatások naplózásának engedélyezése
 Ez a dokumentum információt nyújt a Machine Learning Studio-webszolgáltatások naplózási képesség. Naplózás további információt, csak egy hiba száma és a egy üzenet, amely segíthet a hívásokat a Machine Learning Studio API-k hibaelhárítása tartalmaz.  

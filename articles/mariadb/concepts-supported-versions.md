@@ -1,29 +1,46 @@
 ---
-title: Támogatott verziók MariaDB-hez készült Azure Database-ben
-description: Ismerteti a támogatott verziók az Azure Database for MariaDB.
+title: A Azure Database for MariaDB támogatott verziói
+description: A Azure Database for MariaDB támogatott verzióit ismerteti.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 69330e9d5a05fbcc892889f70a04f5eb4a4a2fb9
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 09/12/2019
+ms.openlocfilehash: e5d1dbc8c212d4cdefb12fb740a454324d3adfa1
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53541421"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962922"
 ---
-# <a name="supported-azure-database-for-mariadb-server-versions"></a>Támogatott, Azure Database for MariaDB-server-verziók
-Azure Database for MariaDB fejlesztettek ki, a nyílt forráskódú [MariaDB kiszolgáló](https://downloads.mariadb.org/), az InnoDB motor használatával. Azure Database for MariaDB jelenleg a következő verziót támogatja:
+# <a name="supported-azure-database-for-mariadb-server-versions"></a>Támogatott Azure Database for MariaDB Server-verziók
 
-## <a name="mariadb-version-10217"></a>A MariaDB verzió 10.2.17
-Tekintse meg a [MariaDB dokumentáció](https://downloads.mariadb.org/mariadb/10.2.17/) további fejlesztések és javítások a MariaDB 10.2.17.
+A Azure Database for MariaDB a nyílt forráskódú [MariaDB-kiszolgálóról](https://downloads.mariadb.org/)lett kifejlesztve a InnoDB motor használatával. 
+
+A MariaDB az X. Y. Z elnevezési sémát használja. Az X a főverzió, az Y az alverzió, a Z pedig a javítás verziója.
 
 > [!NOTE]
-> A szolgáltatásban az átjáró segítségével kiszolgálópéldányok irányítsa át a kapcsolatokat. A kapcsolat létrejötte után a MySQL-ügyfél az átjáróban, nem a tényleges verziója fut. a MariaDB-server-példányon állítsa MariaDB verzióját jeleníti meg. A MariaDB server-példány verziója meghatározásához használja a `SELECT VERSION();` parancsot a MySQL-parancssorban.
+> A szolgáltatásban az átjárónak az a feladata, hogy átirányítsa a kapcsolatokat a kiszolgálópéldányokra. A kapcsolatok létrejötte után a MySQL-ügyfél megjeleníti az átjárón beállított MariaDB-verziót, nem pedig a MariaDB-kiszolgáló példányán futó tényleges verziót. A MariaDB Server-példány verziójának meghatározásához használja az `SELECT VERSION();` parancsot.
 
-## <a name="managing-updates-and-upgrades"></a>Frissítések kezelése
-A szolgáltatás automatikusan kezeli a javítása az alverzió frissítéseket.
+A Azure Database for MariaDB jelenleg a következő verziót támogatja:
+
+## <a name="mariadb-version-102"></a>MariaDB 10,2-es verzió
+
+Javítás verziója: 10.2.25
+
+Tekintse meg a [MariaDB dokumentációját](https://mariadb.com/kb/en/library/mariadb-10225-release-notes/) , és ismerkedjen meg a jelen verzióban található javításokkal és javításokkal.
+
+## <a name="mariadb-version-103"></a>MariaDB 10,3-es verzió
+
+Javítás verziója: 10.3.16
+
+Tekintse meg a [MariaDB dokumentációját](https://mariadb.com/kb/en/library/mariadb-10316-release-notes/) , és ismerkedjen meg a jelen verzióban található javításokkal és javításokkal.
+
+## <a name="managing-updates-and-upgrades"></a>Frissítések és frissítések kezelése
+A szolgáltatás automatikusan kezeli a javítások frissítéseit. Például 10.2.21 a 10.2.23.  
+
+Jelenleg a másodlagos és a főverzió frissítése nem támogatott. Például a MariaDB 10,2-ről a MariaDB 10,3-re való frissítés nem támogatott. Ha 10,2-ről 10,3-re szeretne frissíteni, hozzon létre egy [memóriaképet, és állítsa vissza](./howto-migrate-dump-restore.md) egy olyan kiszolgálóra, amely az új motor verziójával lett létrehozva.
 
 ## <a name="next-steps"></a>További lépések
-További információ az adott erőforrás kvótái és korlátai alapján a **szolgáltatásszint**, lásd: [szolgáltatásszintek](./concepts-pricing-tiers.md)
+
+- A **szolgáltatási szintek**alapján meghatározott erőforrás-kvótákkal és korlátozásokkal kapcsolatos információkért lásd: [szolgáltatási szintek](./concepts-pricing-tiers.md).

@@ -7,19 +7,19 @@ author: zhangmanling
 manager: erikre
 editor: ''
 ms.assetid: 86740a96-4269-4060-aba3-a69f00e6f14e
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 3dbf0aea50f382a0b325bf068a200cde42098733
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 204183fa25203a094eecd8df85a8bfd5dcf271cc
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59547591"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593973"
 ---
 # <a name="using-azure-cdn-with-cors"></a>Cors-támogatással rendelkező Azure CDN szolgáltatás használata
 ## <a name="what-is-cors"></a>Mit jelent a CORS?
@@ -30,9 +30,9 @@ CORS-kérések két típusa van *egyszerű kérelmek* és *összetett kérelmeke
 
 ### <a name="for-simple-requests"></a>Egyszerű kérések:
 
-1. A böngésző elküldi a CORS-kérést és a egy további **forrás** HTTP-kérelem fejléce. Ez a fejléc értéke a forrás, amely a szülő oldal, amely kombinációja típusúként van definiálva kiszolgált *protokoll* *tartomány,* és *port.*  Ha egy lapot https://www.contoso.com megpróbál hozzáférni egy felhasználói adatokat a fabrikam.com forrás, a következő kérés fejlécében a fabrikam.com küldi el:
+1. A böngésző elküldi a CORS-kérést és a egy további **forrás** HTTP-kérelem fejléce. Ez a fejléc értéke a forrás, amely a szülő oldal, amely kombinációja típusúként van definiálva kiszolgált *protokoll* *tartomány,* és *port.*  Ha egy lap HTTPS\://www.contoso.com próbál meg elérni a fabrikam.com forrás a felhasználó adatait, a következő kérés fejlécében küldendő fabrikam.com:
 
-   `Origin: https:\//www.contoso.com`
+   `Origin: https://www.contoso.com`
 
 2. A kiszolgáló a következő jelenhetnek meg:
 
@@ -85,7 +85,7 @@ Ha megfelel a reguláris kifejezés, a szabály felülírja az **Access-Control-
 ![A reguláris kifejezéssel szabályok példa](./media/cdn-cors/cdn-cors-regex.png)
 
 #### <a name="request-header-rule-for-each-origin"></a>Kérelem fejléce szabály minden forrás.
-Ahelyett, hogy a reguláris kifejezések, ehelyett létrehozhat egy külön szabályt minden egyes forrás lehetővé teszi a kívánt a **kérelem fejléce helyettesítő** [feltételnek megfelelő](/previous-versions/azure/mt757336(v=azure.100)#Anchor_1). A reguláris kifejezés metódus az önálló szabálymotorral beállítja a CORS fejlécek. 
+Ahelyett, hogy a reguláris kifejezések, ehelyett létrehozhat egy külön szabályt minden egyes forrás lehetővé teszi a kívánt a **kérelem fejléce helyettesítő** [feltételnek megfelelő](/previous-versions/azure/mt757336(v=azure.100)#match-conditions). A reguláris kifejezés metódus az önálló szabálymotorral beállítja a CORS fejlécek. 
 
 ![Szabályok példa nélküli reguláris kifejezés](./media/cdn-cors/cdn-cors-no-regex.png)
 

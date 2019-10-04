@@ -4,12 +4,12 @@ ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: f00909d44ca75dd04eac376fa797dd303403940d
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 540223d28542a78245dfe699d9068accb618ea76
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50226849"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673372"
 ---
-Ez az oktatóanyag végigvezeti a megoldás az Azure Portalról létrehozása. Ha érdekli a megoldás létrehozása sablon alapján, válassza ki a megfelelő sablont a [a Microsoft Azure GitHub-sablonok](http://github.com/Azure/azure-quickstart-templates). A [egy rendelkezésre állási csoport létrehozása az SQL Server 2014 replika virtuális gépek](http://github.com/Azure/azure-quickstart-templates/tree/master/sqlvm-alwayson-cluster) sablont hoz létre ugyanahhoz a megoldáshoz, mint az oktatóanyag. 
+Ez az oktatóanyag végigvezeti a megoldás az Azure Portalról létrehozása. Ha érdekli a megoldás létrehozása sablon alapján, válassza ki a megfelelő sablont a [a Microsoft Azure GitHub-sablonok](https://github.com/Azure/azure-quickstart-templates). A [egy rendelkezésre állási csoport létrehozása az SQL Server 2014 replika virtuális gépek](https://github.com/Azure/azure-quickstart-templates/tree/master/sqlvm-alwayson-cluster) sablont hoz létre ugyanahhoz a megoldáshoz, mint az oktatóanyag. 
 

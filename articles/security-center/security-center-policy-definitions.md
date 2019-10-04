@@ -1,98 +1,92 @@
 ---
-title: Azure szabályzatdefiníciók figyeli az Azure Security Centerben |} A Microsoft Docs
-description: Azure szabályzatdefiníciók az Azure Security Center figyeli.
+title: Az Azure Policy-definíciók figyelése Azure Security Centerban | Microsoft Docs
+description: A Azure Security Centerban figyelt Azure-házirend-definíciók.
 services: security-center
-documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
-ms.assetid: c89cb1aa-74e8-4ed1-980a-02a7a25c1a2f
+author: memildin
+manager: rkarlin
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 1/15/2019
-ms.author: rkarlin
-ms.openlocfilehash: 9d9369afd36f64c27cd2222cab0de5912aa913de
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 8/22/2019
+ms.author: memildin
+ms.openlocfilehash: 892b33f52788bd37d430f221f14ba4c98f764cfb
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57877496"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71201661"
 ---
-# <a name="azure-security-policies-monitored-by-security-center"></a>A Security Center által figyelt Azure biztonsági szabályzatok
-Ez a cikk az Azure Security Center segítségével figyelheti az Azure szabályzatdefiníciók listáját tartalmazza. Biztonsági szabályzatok kapcsolatos további információkért lásd: [biztonsági házirendek használata](tutorial-security-policy.md).
+# <a name="azure-security-policies-monitored-by-security-center"></a>Security Center által figyelt Azure biztonsági szabályzatok
+Ez a cikk azokat a Azure Policy-definíciókat sorolja fel, amelyeket a Azure Security Center figyelheti. További információ a biztonsági házirendekről: [a biztonsági házirendek használata](tutorial-security-policy.md).
 
-## <a name="available-security-policies"></a>Biztonsági szabályzatok
+## <a name="available-security-policies"></a>Elérhető biztonsági szabályzatok
 
-A beépített szabályzatokat, a Security Center által figyelt kapcsolatos további információkért lásd az alábbi táblázatot:
+Ha többet szeretne megtudni a Security Center által figyelt beépített szabályzatokról, tekintse meg a következő táblázatot:
 
 | Szabályzat | A szabályzat működése |
 | --- | --- |
-|Naplózás engedélyezése a diagnosztikai naplók az Azure Service Fabric és a virtual machine scale sets|Azt javasoljuk, hogy egy tevékenység beállításainak érhető el egy incidens- vagy biztonsági sérülés utáni vizsgálati naplók engedélyezése.|
-|Az Event Hubs-névterek naplózási engedélyezési szabályok|Az Azure Event Hubs-ügyfelek ne használja egy névtérszintű hozzáférési szabályzatot, amely valamennyi üzenetsorok és témakörök a névtérben hozzáférést biztosít. A minimális jogosultságon alapuló biztonsági modellel igazításához kell hozzáférési szabályzatokat hoz létre az entitások szintjén, az üzenetsorok és témakörök biztosíthat hozzáférést az adott entitáshoz.|
-|Az Event Hubs entitásokon engedélyezési szabályok meglétének naplózása|Az Event Hubs entitásokon jogosultságon alapuló hozzáférést engedélyezési szabályok meglétének naplózása.|
-|Tárfiókokhoz való korlátlan hálózati hozzáférés naplózása|A storage-fiók tűzfal beállításait a nem korlátozott hálózati hozzáférés naplózása. Konfigurálhatja a hálózati szabályait, hogy csak az engedélyezett hálózatok alkalmazások férhetnek hozzá a tárfiók. Ahhoz, hogy a kapcsolatok meghatározott internetről, vagy olyan helyszíni ügyfelek, hozzáférést biztosít a forgalmat az adott Azure virtuális hálózatok vagy a nyilvános interneten IP-cím-tartományait.|
-|Egyéni RBAC-szabályok használatának naplózása|Naplózza a beépített szerepkörök, például a "Tulajdonos, közreműködő, olvasó" helyett egyéni, szerepköralapú hozzáférés-vezérlés (RBAC) szerepkör, amely a rendszer hibalehetőségeket rejt magában. Egyéni szerepkörök használata kivételként kezeli, és megköveteli a szigorú áttekintése és a fenyegetések modellezése.|
-|Az Azure Stream Analytics-beli diagnosztikai naplók engedélyezésének naplózása|Audit naplók engedélyezése és láthatóan tartja őket a legfeljebb egy évig. Ez létrehoz tevékenység nyomot hagyjanak maguk után a vizsgálat egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül.|
-|Tárfiókokba történő biztonságos átvitel naplózása|Naplózási tárfiókban található biztonságos átvitel követelményeinek. Biztonságos átvitel, amely arra kényszeríti a storage-fiók csak a biztonságos kapcsolat (HTTPS) érkező kérések fogadására lehetőség. A HTTPS használatával biztosítja, hogy a kiszolgáló és a szolgáltatás közötti hitelesítéshez. A hálózati réteg támadásoktól, például a man-in-the-middle, lehallgatást, és a munkamenet-eltérítés – az átvitt adatokat is védi.|
-|Az Azure Active Directory-rendszergazda, az SQL Server üzembe helyezése naplózása|Naplózási kiépítése az Azure Active Directory (Azure AD) az Azure AD-hitelesítés engedélyezése az SQL Server rendszergazdájának. Az Azure AD-hitelesítés egyszerűsített engedélyek kezelését és az adatbázis-felhasználók és más Microsoft-szolgáltatások központi identitáskezeléssel támogatja.|
-|Service Bus-névterek engedélyezési szabályainak naplózása|Az Azure Service Bus-ügyfél ne használja egy névtérszintű hozzáférési szabályzatot, amely valamennyi üzenetsorok és témakörök a névtérben hozzáférést biztosít. Igazítás a minimális jogosultságon alapuló biztonsági modellel, hozzon létre hozzáférési szabályzatok az entitások szintjén, az üzenetsorok és témakörök biztosíthat hozzáférést az adott entitáshoz.|
-|A Service Bus-beli diagnosztikai naplók engedélyezésének naplózása|Audit naplók engedélyezése és az őket az egy év. Ez létrehoz tevékenység nyomot hagyjanak maguk után a vizsgálat egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül.|
-|A ClusterProtectionLevel tulajdonság EncryptAndSign értékre való beállításának naplózása a Service Fabricben|A Service Fabric biztosít az elsődleges fürt tanúsítványt használó csomópontok közötti kommunikáció védelmét három szintje: Nincs, bejelentkezési és EncryptAndSign. Biztosíthatja, hogy a csomópontok közötti üzenetek titkosítva és digitálisan aláírt védelmi szintjének beállítása.|
-|Az Azure Active Directory ügyfél-hitelesítésre való használatának naplózása a Service Fabricben|Ügyfél-hitelesítés csak az Azure AD-t a Service Fabric használatával naplózza.|
-|A Search szolgáltatásbeli diagnosztikai naplók engedélyezésének naplózása|Audit naplók engedélyezése és láthatóan tartja őket a legfeljebb egy évig. Ez létrehoz tevékenység nyomot hagyjanak maguk után a vizsgálat egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül.|
-|A redis Azure Cache csak biztonságos kapcsolatok engedélyezése naplózása|Naplózás engedélyezése csak a redis Azure Cache SSL-en keresztül kapcsolatok. Biztonságos kapcsolat használata biztosítja, hogy a kiszolgáló és a szolgáltatás közötti hitelesítéshez. A hálózati réteg támadásoktól, például a man-in-the-middle, lehallgatást, és a munkamenet-eltérítés – az átvitt adatokat is védi.|
-|A Logic Apps-beli diagnosztikai naplók engedélyezésének naplózása|Audit naplók engedélyezése és láthatóan tartja őket a legfeljebb egy évig. Ez létrehoz tevékenység nyomot hagyjanak maguk után a vizsgálat egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül.|
-|A Key Vault-beli diagnosztikai naplók engedélyezésének naplózása|Audit naplók engedélyezése és láthatóan tartja őket a legfeljebb egy évig. Ez létrehoz tevékenység nyomot hagyjanak maguk után a vizsgálat egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül.|
-|Audit Event hubs-diagnosztikai naplók engedélyezése|Audit naplók engedélyezése és láthatóan tartja őket a legfeljebb egy évig. Ez létrehoz tevékenység nyomot hagyjanak maguk után a vizsgálat egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül.|
-|Az Azure Data Lake Store-beli diagnosztikai naplók engedélyezésének naplózása|Naplók engedélyezése naplózása, és láthatóan tartja őket legfeljebb egy évig. Ez létrehoz tevékenység nyomot hagyjanak maguk után a vizsgálat egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül.|
-|A Data Lake Analytics-beli diagnosztikai naplók engedélyezésének naplózása|Audit naplók engedélyezése és láthatóan tartja őket a legfeljebb egy évig. Ez létrehoz tevékenység nyomot hagyjanak maguk után a vizsgálat egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül.|
-|Klasszikus tárfiókok használatának naplózása|A tárfiókok az Azure Resource Manager használatával biztonsági fejlesztések. Ezek a következők: <br>– Erősebb hozzáférés-vezérlés (RBAC)<br>-Jobban naplózása<br>– Az azure Resource Manager-alapú üzembe helyezési és irányítás<br>-Felügyelt identitások hozzáférést<br>-A hozzáférést az Azure Key Vault titkos kulcsok<br>– Az azure AD-alapú hitelesítés<br>-Támogatása a címkék és -erőforráscsoportok egyszerűbb biztonság kezelése|
-|Klasszikus virtuális gépek használatának naplózása|A virtuális gépek Azure Resource Manager használatával biztonsági fejlesztések.  Ezek a következők: <br>– Erősebb hozzáférés-vezérlés (RBAC)<br>-Jobban naplózása<br>– Az azure Resource Manager-alapú üzembe helyezési és irányítás<br>-Felügyelt identitások hozzáférést<br>-A hozzáférést az Azure Key Vault titkos kulcsok<br>– Az azure AD-alapú hitelesítés<br>-Támogatása a címkék és -erőforráscsoportok egyszerűbb biztonság kezelése|
-|Batch-fiókok metrikaalapú riasztási szabályaira vonatkozó konfiguráció naplózása |Az Azure Batch-fiókok ahhoz, hogy a szükséges metrikát a metrikaalapú riasztási szabályok naplózási konfigurációja.|
-|Az Azure Stream Analytics-beli diagnosztikai naplók engedélyezésének naplózása|Audit naplók engedélyezése és láthatóan tartja őket a legfeljebb egy évig. Ez létrehoz tevékenység nyomot hagyjanak maguk után a vizsgálat egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül.|
-|Automation-fiók változók titkosítási engedélyezése naplózása|Fontos, ha bizalmas adatok titkosítása az Azure Automation-fiók változó adategységek tételéhez.|
-|Az App Service-diagnosztikai naplók engedélyezése naplózása|Naplózza az alkalmazást a diagnosztikai naplók engedélyezése. Ez létrehoz tevékenység nyomot hagyjanak maguk után a vizsgálat egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül.|
-|Transzparens adattitkosítás állapotának naplózása|SQL-adatbázisok transzparens adattitkosítási állapotának naplózása.|
-|Naplózási beállítások SQL kiszolgálószintű naplózás|Az SQL-naplózás a kiszolgáló szintjén meglétének naplózása.|
-|\[Előzetes verzió]: Az Azure Security Centerben a titkosítatlan SQL database monitorozása|Az Azure Security Center figyeli a titkosítatlan SQL-kiszolgálók és adatbázisok javasolt módon.|
-|\[Előzetes verzió]: Az Azure Security Center nem naplózott SQL database monitorozása|Az Azure Security Center figyeli az SQL Server-kiszolgálók és adatbázisok, amelyek nem rendelkeznek az SQL-naplózás engedélyezve van, ajánlott.|
-|\[Előzetes verzió]: Az Azure Security Centerben a hiányzó rendszerfrissítések figyelése|Az Azure Security Center figyeli a kiszolgálók hiányzó biztonsági Rendszerfrissítések, javasolt módon.|
-|\[Előzetes verzió]: Tárfiókok hiányzó blobtitkosításának naplózása|Storage-fiókok, amelyek nem használják a blobtitkosítás naplózása. Ez csak a Microsoft storage erőforrástípus esetében nem más szolgáltatóktól származó tárolási vonatkozik. Az Azure Security Center figyeli a lehetséges hálózati just-in-time hozzáférés javasolt módon.|
-|\[Előzetes verzió]: Az Azure Security Centerben a lehetséges hálózati just-in-time hozzáférés figyelése|Az Azure Security Center figyeli a lehetséges hálózati just-in-time hozzáférés javasolt módon.|
-|\[Előzetes verzió]: Alkalmazások az Azure Security Center engedélyezésének figyelése|Az Azure Security Center figyeli a lehetséges Alkalmazáskonfiguráció engedélyezési listáján.|
-|\[Előzetes verzió]: Az Azure Security Center megengedő hálózati hozzáférés figyelése|Az Azure Security Center figyeli a hálózati biztonsági csoportokat, amelyek túl megengedő szabály, javasolt módon.|
-|\[Előzetes verzió]: Az Azure Security Center az operációs rendszer biztonsági réseinek figyelése|Az Azure Security Center figyeli a kiszolgálókat, amelyek nem a konfigurált alapértékeknek javasolt módon.| 
-|\[Előzetes verzió]: Az Azure Security Centerben a végpontok hiányzó védelmének monitorozása|Az Azure Security Center figyeli a kiszolgálók, amelyek nem rendelkeznek telepített Microsoft System Center Endpoint Protection-ügynök, javasolt módon.|
-|\[Előzetes verzió]: Az Azure Security Center titkosítatlan Virtuálisgép-lemezek monitorozása|Az Azure Security Center figyeli a virtuális gépek, amelyekhez nincs lemeztitkosítás engedélyezve van a javasolt módon.|
-|\[Előzetes verzió]: Az Azure Security Centerben a virtuális gépek biztonsági réseinek figyelése|A biztonságirés-felmérési megoldást, és nem rendelkező virtuális gépeken sebezhetőség-felmérési megoldás az Azure Security Center által közölt által észlelt biztonsági rések figyelésére.|
-|\[Előzetes verzió]: Az Azure Security Center nem védett webalkalmazás figyelése|Az Azure Security Center figyeli webes alkalmazások, amelyek nem webes alkalmazás tűzfal védelmének javasolt módon.|
-|\[Előzetes verzió]: Az Azure Security Center nem védett hálózati végpontok figyelése|Az Azure Security Center figyeli a hálózati végpontokat, amelyek nem rendelkeznek a következő generációs tűzfal védelmének, javasolt módon.|
-|\[Előzetes verzió]: A figyelő SQL-sebezhetőségi felmérés eredménye az Azure Security Centerben|A figyelő a biztonságirés-értékelési a keresési eredményeket, és javasolja az adatbázis biztonsági rések javítása.|
-|\[Előzetes verzió]: Naplózni tulajdonosok egy előfizetéshez tartozó maximális száma|Azt javasoljuk, hogy jelöljön ki legfeljebb három előfizetések tulajdonosai az esetleges incidensek feltört tulajdonosa.|
-|\[Előzetes verzió]: Naplózási előfizetés tulajdonosok minimális száma|Azt javasoljuk, hogy Ön által kijelölt egynél több tulajdonossal, és győződjön meg, hogy a rendszergazdai hozzáférés redundanciájának.|
-|\[Előzetes verzió]: Naplózási, akik nem többtényezős hitelesítés engedélyezve van egy adott előfizetés tulajdonosi engedélyekkel rendelkező fiókok|Többtényezős hitelesítés (MFA) engedélyezni kell az összes előfizetési fiókban, amely a fiókok vagy az erőforrások biztonsági incidenseinek megelőzése tulajdonosi engedélyekkel rendelkeznek.|
-|\[Előzetes verzió]: Naplózási, akik nem többtényezős hitelesítés engedélyezve van egy adott előfizetés írási jogosultsággal rendelkező fiókok|A multi-factor authentication engedélyezni kell az összes előfizetési fiókban, amely rendelkezik írási engedéllyel a fiókok vagy az erőforrások biztonsági incidenseinek megelőzése érdekében.|
-|\[Előzetes verzió]: Naplózási, akik nem többtényezős hitelesítés engedélyezve van egy adott előfizetés olvasási jogosultsággal rendelkező fiókok|A multi-factor authentication engedélyezni kell az összes előfizetési fiókban, amely rendelkezik olvasási engedéllyel a fiókok vagy az erőforrások biztonsági incidenseinek megelőzése érdekében.|
-|\[Előzetes verzió]: Egy adott előfizetés tulajdonosi engedélyekkel rendelkező elavult fiókok naplózása|Elavult fiókok tulajdonosi engedélyekkel rendelkező el kell távolítani az előfizetésből. Elavult fiókokat a rendszer letiltotta a bejelentkezés.|
-|\[Előzetes verzió]: Elavult fiókokat egy előfizetésben naplózása|Az elavult fiókokat el kell távolítani az előfizetésekből. Elavult fiókokat a rendszer letiltotta a bejelentkezés.|
-|\[Előzetes verzió]: Egy adott előfizetés tulajdonosi engedélyekkel rendelkező külső fiókok naplózása|Tulajdonosi engedélyekkel rendelkező külső fiókokat el kell távolítani, hogy megkezdhesse az engedélyek hozzáférések megelőzése céljából.|
-|\[Előzetes verzió]: Naplózási rendelkező külső fiókok írási engedélyekkel egy adott előfizetés|Rendelkező külső fiókok írási engedélyek el kell távolítani az előfizetésből a nem monitorozott hozzáférések megelőzése céljából.|
-|\[Előzetes verzió]: Egy adott előfizetés olvasási jogosultsággal rendelkező külső fiókok naplózása|Amely rendelkezik olvasási engedéllyel a külső fiókokat el kell távolítani az előfizetést nem monitorozott hozzáférések megelőzése céljából.|
+|A Virtual Machine Scale Sets diagnosztikai naplóit engedélyezni kell|Azt javasoljuk, hogy engedélyezze a naplókat, hogy egy adott incidens vagy kompromisszum után egy tevékenység nyomvonala elérhető legyen a vizsgálathoz.|
+|A RootManageSharedAccessKey kivételével az összes engedélyezési szabályt el kell távolítani az Event hub-névtérből|Az Azure Event Hubs-ügyfelek nem használhatnak olyan névtér szintű hozzáférési szabályzatot, amely hozzáférést biztosít a névtérben lévő összes várólistához és témakörhöz. A legkevesebb jogosultsággal rendelkező biztonsági modellhez való igazításhoz hozzáférési házirendeket kell létrehoznia az entitások szintjén a várólistákhoz és a témakörökhöz, hogy csak az adott entitáshoz lehessen hozzáférést biztosítani.|
+|Az Event hub-entitás engedélyezési szabályait definiálni kell|Event Hubs entitásokra vonatkozó engedélyezési szabályok meglétének naplózása a legalacsonyabb jogosultsági szintű hozzáférés biztosításához.|
+|A Storage-fiókokhoz a tűzfal és a virtuális hálózati konfigurációk hozzáférését korlátozni kell|Naplózza a nem korlátozott hálózati hozzáférést a Storage-fiók tűzfala beállításaiban. Konfigurálja a hálózati szabályokat úgy, hogy csak az engedélyezett hálózatokból származó alkalmazások férhessenek hozzá a Storage-fiókhoz. Az adott internetről vagy helyszíni ügyfelekről érkező kapcsolatok engedélyezéséhez adjon hozzáférést bizonyos Azure-beli virtuális hálózatokból vagy nyilvános internetes IP-címtartományok érkező forgalomhoz.|
+|Egyéni RBAC-szabályok használatának naplózása|A beépített szerepkörök, például a "tulajdonos, közreműködő, olvasó" naplózása az egyéni szerepköralapú hozzáférés-vezérlési (RBAC) szerepkörök helyett, amely a hibákra hajlamos. Az egyéni szerepkörök használatát kivételként kezeli a rendszer, és szigorú felülvizsgálati és veszélyforrás-modellezést igényel.|
+|A Azure Stream Analytics diagnosztikai naplóit engedélyezni kell|Naplózhatja a naplók engedélyezését, és akár egy évig is megtarthatja őket. Ez olyan tevékenységi nyomvonalat hoz létre, amely a biztonsági incidensek bekövetkezésekor, vagy a hálózat biztonsága során jelentkezik.|
+|A Storage-fiókoknak való biztonságos átvitelt engedélyezni kell|A biztonságos átvitel naplózási követelményei a Storage-fiókban. A biztonságos átvitel olyan lehetőség, amely arra kényszeríti a Storage-fiókot, hogy csak biztonságos kapcsolatokból (HTTPS) fogadja a kéréseket. A HTTPS használata biztosítja a hitelesítést a kiszolgáló és a szolgáltatás között. Emellett védelmet biztosít a hálózati rétegbeli támadásoktól, például a személyes, a lehallgatási és a munkamenet-eltérített adatoktól.|
+|Az SQL Server Azure AD-rendszergazdájának kiépítve kell lennie|Az Azure AD-hitelesítés engedélyezéséhez Azure Active Directory (Azure AD) rendszergazdájának kiépítés naplózása SQL Server számára. Az Azure AD-hitelesítés támogatja az adatbázis-felhasználók és más Microsoft-szolgáltatások egyszerűsített engedélyek kezelését és központi identitás-kezelését.|
+|A RootManageSharedAccessKey kivételével minden engedélyezési szabályt el kell távolítani Service Bus névtérből|Azure Service Bus ügyfelek nem használhatnak olyan névtér szintű hozzáférési szabályzatot, amely hozzáférést biztosít a névtér összes várólistájához és témaköréhez. A legkevesebb jogosultsággal rendelkező biztonsági modellel való összehangoláshoz hozzon létre hozzáférési házirendeket az entitások szintjén a várólisták és témakörök számára, hogy csak az adott entitáshoz férhessenek hozzá.|
+|A Service Bus diagnosztikai naplóit engedélyezni kell|Naplózhatja a naplók engedélyezését, és megtarthatja őket egy évig. Ez olyan tevékenységi nyomvonalat hoz létre, amely a biztonsági incidensek bekövetkezésekor, vagy a hálózat biztonsága során jelentkezik.|
+|Meg kell adni a ClusterProtectionLevel tulajdonságot, amelyet a Service Fabric EncryptAndSign kell beállítani|A Service Fabric három védelmi szintet biztosít a csomópontok közötti kommunikációhoz, amely elsődleges fürtöt használó tanúsítványt használ: Nincs, aláírás és EncryptAndSign. Biztosíthatja, hogy a csomópontok közötti üzenetek titkosítva és digitálisan aláírt védelmi szintjének beállítása.|
+|Az ügyfél-hitelesítésnek Azure Active Directory kell használnia|Az ügyfél-hitelesítés használatának naplózása csak az Azure AD-n keresztül Service Fabric.|
+|A keresési szolgáltatásokban engedélyezni kell a diagnosztikai naplókat.|Naplózhatja a naplók engedélyezését, és akár egy évig is megtarthatja őket. Ez olyan tevékenységi nyomvonalat hoz létre, amely a biztonsági incidensek bekövetkezésekor, vagy a hálózat biztonsága során jelentkezik.|
+|Csak a Redis Cache biztonságos kapcsolatai legyenek engedélyezve|Csak az SSL-kapcsolaton keresztüli kapcsolatok engedélyezése az Azure cache-Redis. A biztonságos kapcsolatok használatával biztosítható a kiszolgáló és a szolgáltatás közötti hitelesítés. Emellett védelmet biztosít a hálózati rétegbeli támadásoktól, például a személyes, a lehallgatási és a munkamenet-eltérített adatoktól.|
+|A Logic Apps diagnosztikai naplóit engedélyezni kell|Naplózhatja a naplók engedélyezését, és akár egy évig is megtarthatja őket. Ez olyan tevékenységi nyomvonalat hoz létre, amely a biztonsági incidensek bekövetkezésekor, vagy a hálózat biztonsága során jelentkezik.|
+|A Key Vault diagnosztikai naplóit engedélyezni kell|Naplózhatja a naplók engedélyezését, és akár egy évig is megtarthatja őket. Ez olyan tevékenységi nyomvonalat hoz létre, amely a biztonsági incidensek bekövetkezésekor, vagy a hálózat biztonsága során jelentkezik.|
+|Az Event hub diagnosztikai naplóit engedélyezni kell|Naplózhatja a naplók engedélyezését, és akár egy évig is megtarthatja őket. Ez olyan tevékenységi nyomvonalat hoz létre, amely a biztonsági incidensek bekövetkezésekor, vagy a hálózat biztonsága során jelentkezik.|
+|A Azure Data Lake Store diagnosztikai naplóit engedélyezni kell|Naplózhatja a naplók engedélyezését, és akár egy évig is tarthat. Ez olyan tevékenységi nyomvonalat hoz létre, amely a biztonsági incidensek bekövetkezésekor, vagy a hálózat biztonsága során jelentkezik.|
+|A Data Lake Analytics diagnosztikai naplóit engedélyezni kell|Naplózhatja a naplók engedélyezését, és akár egy évig is megtarthatja őket. Ez olyan tevékenységi nyomvonalat hoz létre, amely a biztonsági incidensek bekövetkezésekor, vagy a hálózat biztonsága során jelentkezik.|
+|A Storage-fiókokat át kell telepíteni az új AzureRM-erőforrásokra|A biztonsági fejlesztéseket a Storage-fiókok Azure Resource Manager használatával biztosíthatja. Ezek a következők: <br>-Erősebb hozzáférés-vezérlés (RBAC)<br>– Jobb naplózás<br>-Azure Resource Manager-alapú üzembe helyezés és irányítás<br>-Hozzáférés a felügyelt identitásokhoz<br>– Hozzáférés Azure Key Vault a titkokhoz<br>– Azure AD-alapú hitelesítés<br>– Címkék és erőforráscsoportok támogatása a biztonsági felügyelet megkönnyítéséhez|
+|A virtuális gépeket át kell telepíteni az új AzureRM-erőforrásokra|A virtuális gépek Azure Resource Manager használatával biztosíthatja a biztonsági fejlesztéseket. Ezek a következők: <br>-Erősebb hozzáférés-vezérlés (RBAC)<br>– Jobb naplózás<br>-Azure Resource Manager-alapú üzembe helyezés és irányítás<br>-Hozzáférés a felügyelt identitásokhoz<br>– Hozzáférés Azure Key Vault a titkokhoz<br>– Azure AD-alapú hitelesítés<br>– Címkék és erőforráscsoportok támogatása a biztonsági felügyelet megkönnyítéséhez|
+|A metrika riasztási szabályait a Batch-fiókokon kell konfigurálni|A metrikus riasztási szabályok konfigurációjának naplózása Azure Batch-fiókokon a szükséges metrika engedélyezéséhez.|
+|A Batch-fiókokban lévő diagnosztikai naplókat engedélyezni kell|Naplózhatja a naplók engedélyezését, és akár egy évig is megtarthatja őket. Ez olyan tevékenységi nyomvonalat hoz létre, amely a biztonsági incidensek bekövetkezésekor, vagy a hálózat biztonsága során jelentkezik.|
+|Az Automation-fiók változói esetében engedélyezni kell a titkosítást.|Fontos, hogy a bizalmas adatok tárolása során engedélyezze Azure Automation Account változó eszközök titkosítását.|
+|A App Services diagnosztikai naplóit engedélyezni kell|Diagnosztikai naplók engedélyezésének naplózása az alkalmazásban. Ez olyan tevékenységi nyomvonalat hoz létre, amely a biztonsági incidensek bekövetkezésekor, vagy a hálózat biztonsága során jelentkezik.|
+|Az SQL-adatbázisokon engedélyezni kell transzparens adattitkosítás|Az SQL-adatbázisok transzparens adattitkosítási állapotának naplózása.|
+|Az SQL Server naplózását engedélyezni kell|Ellenőrizze az SQL-naplózás meglétét a kiszolgálói szinten.|
+|\[Előzetes verzió]: Titkosítatlan SQL-adatbázis figyelése Azure Security Center|Azure Security Center a nem titkosított SQL-kiszolgálókat vagy-adatbázisokat a javasolt módon figyeli.|
+|\[Előzetes verzió]: Nem naplózott SQL-adatbázis figyelése Azure Security Center|Azure Security Center az SQL-naplózással nem rendelkező SQL-kiszolgálókat és-adatbázisokat figyeli a javasolt módon.|
+|\[Előzetes verzió]: A számítógépekre telepíteni kell a rendszerfrissítéseket|Azure Security Center az ajánlott módon figyeli a kiszolgálókon hiányzó biztonsági rendszer-frissítéseket.|
+|\[Előzetes verzió]: Hiányzó blob-titkosítás naplózása a Storage-fiókoknál|A blob titkosítást nem használó tárolási fiókok naplózása. Ez csak a Microsoft Storage-erőforrástípusok esetében érvényes, más szolgáltatóktól nem. Azure Security Center figyeli a lehetséges hálózati igény szerinti hozzáférést a javasolt módon.|
+|\[Előzetes verzió]: Igény szerinti hálózati hozzáférés-vezérlést kell alkalmazni a virtuális gépeken|Azure Security Center figyeli a lehetséges hálózati igény szerinti hozzáférést a javasolt módon.|
+|\[Előzetes verzió]: Az adaptív alkalmazások vezérlőit engedélyezni kell a virtuális gépeken|Azure Security Center figyeli az alkalmazás engedélyezési listájának lehetséges konfigurációját.|
+|\[Előzetes verzió]: A virtuális gépekhez hiányzó hálózati biztonsági csoportokat kell konfigurálni.|A Azure Security Center a túl megengedő szabályokkal rendelkező hálózati biztonsági csoportokat figyeli a javasolt módon.|
+|\[Előzetes verzió]: A gépek biztonsági beállításainak sebezhetőségeit szervizelni kell|Azure Security Center figyeli azokat a kiszolgálókat, amelyek nem felelnek meg a konfigurált alapkonfigurációnak.| 
+|\[Előzetes verzió]: Az Endpoint Protection szolgáltatást virtuális gépekre kell telepíteni|Azure Security Center figyeli azokat a kiszolgálókat, amelyek nem rendelkeznek telepített Microsoft System Center Endpoint Protection-ügynökkel.|
+|\[Előzetes verzió]: A lemezes titkosítást a virtuális gépeken kell alkalmazni|Azure Security Center figyeli azokat a virtuális gépeket, amelyeken nincs engedélyezve a lemez titkosítása.|
+|\[Előzetes verzió]: A biztonsági réseket a sebezhetőség-felmérési megoldásnak kell szervizelni|Figyelje a sebezhetőségi felmérési megoldás által észlelt biztonsági réseket, valamint azokat a virtuális gépeket, amelyek nem rendelkeznek sebezhetőségi felmérési megoldással a Azure Security Center ajánlott módon.|
+|\[Előzetes verzió]: Nem védett webalkalmazás figyelése Azure Security Center|Azure Security Center figyeli a webalkalmazás-tűzfalat a javasolt módon nem rendelkező webalkalmazásokat.|
+|\[Előzetes verzió]: Az Endpoint Protection-megoldást virtuális gépekre kell telepíteni|Azure Security Center figyeli azokat a hálózati végpontokat, amelyek nem rendelkeznek a következő generációs tűzfal-védelemmel, ajánlott módon.|
+|\[Előzetes verzió]: Az SQL-adatbázisok biztonsági réseit szervizelni kell|A sebezhetőségi felmérés vizsgálatának eredményeinek figyelése és az adatbázis-biztonsági rések elhárítása.|
+|\[Előzetes verzió]: Az előfizetéshez legfeljebb 3 tulajdonost kell kijelölni|Javasoljuk, hogy legfeljebb három előfizetés-tulajdonost jelöljön ki, hogy csökkentse a feltört tulajdonos általi illetéktelen behatolás lehetőségét.|
+|\[Előzetes verzió]: Az előfizetéshez egynél több tulajdonos rendelhető hozzá|Javasoljuk, hogy egynél több előfizetés-tulajdonost jelöljön ki a rendszergazdai hozzáférés redundancia biztosításához.|
+|\[Előzetes verzió]: Az MFA-t engedélyezni kell az előfizetéshez tartozó tulajdonosi engedélyekkel rendelkező fiókokon |A többtényezős hitelesítést (MFA) engedélyezni kell minden olyan előfizetési fióknál, amely rendelkezik tulajdonosi engedélyekkel a fiókok vagy erőforrások megszegésének megakadályozásához.|
+|\[Előzetes verzió]: Az MFA-t az írási engedélyekkel rendelkező előfizetési fiókokban kell engedélyezni|A többtényezős hitelesítést engedélyezni kell minden olyan előfizetési fióknál, amely rendelkezik írási engedéllyel a fiókok vagy erőforrások megszegésének megakadályozásához.|
+|\[Előzetes verzió]: Az MFA-nak engedélyezve kell lennie az előfizetési fiókokban olvasási engedélyekkel|A többtényezős hitelesítést engedélyezni kell minden olyan előfizetési fióknál, amely olvasási engedéllyel rendelkezik a fiókok vagy erőforrások megszegésének megakadályozásához.|
+|\[Előzetes verzió]: A tulajdonosi engedélyekkel rendelkező elavult fiókokat el kell távolítani az előfizetésből|A tulajdonosi engedélyekkel rendelkező elavult fiókokat el kell távolítani az előfizetésből. A rendszer letiltotta az elavult fiókokat a bejelentkezéshez.|
+|\[Előzetes verzió]: Az elavult fiókokat el kell távolítani az előfizetésből|Az elavult fiókokat el kell távolítani az előfizetésből. A rendszer letiltotta az elavult fiókokat a bejelentkezéshez.|
+|\[Előzetes verzió]: A tulajdonosi engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből|A tulajdonosi engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből az engedélyek elérésének megakadályozása érdekében.|
+|\[Előzetes verzió]: Írási engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből|Az írási engedéllyel rendelkező külső fiókokat el kell távolítani az előfizetésből a nem figyelt hozzáférés megakadályozása érdekében.|
+|\[Előzetes verzió]: Az olvasási engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből|Az olvasási engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből a nem figyelt hozzáférés megakadályozása érdekében.|
 
 
 
 
 ## <a name="next-steps"></a>További lépések
-Ebből a cikkből megismerhette a Security Center biztonsági szabályzatainak konfigurálását. A Security Centerrel kapcsolatos további tudnivalókért tekintse meg a következő cikkeket.
+Ebből a cikkből megismerhette a Security Center biztonsági szabályzatainak konfigurálását. Ha többet szeretne megtudni a Security Centerről, tekintse meg a következő cikkeket.
 
-* [Az Azure Security Center tervezéséhez és működtetéséhez](security-center-planning-and-operations-guide.md): Ismerje meg, hogyan tervezhet és az Azure Security Center tervezési szempontokat.
-* [Biztonsági állapotfigyelés az Azure Security Center](security-center-monitoring.md): Az Azure-erőforrások állapotának figyelését ismertető útmutató.
-* [Kezelése és válaszadás a biztonsági riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md): A biztonsági riasztások kezelésének és a riasztásokra való válaszadás módját ismertető útmutató.
-* [Partneri megoldások monitorozása az Azure Security Center](security-center-partner-solutions.md): A partnermegoldások állapotának figyelését ismertető útmutató.
-* [Az Azure Security Center – gyakori kérdések](security-center-faq.md): Választ találhat a szolgáltatás használatával kapcsolatos gyakori kérdésekre.
-* [Az Azure Security Blog](https://blogs.msdn.com/b/azuresecurity/): Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
+* [Azure Security Center tervezési és üzemeltetési útmutató](security-center-planning-and-operations-guide.md): Megtudhatja, hogyan tervezheti meg és értelmezheti a tervezési szempontokat Azure Security Centerban.
+* [Biztonsági állapot figyelése Azure Security Centerban](security-center-monitoring.md): Az Azure-erőforrások állapotának figyelését ismertető útmutató.
+* [Biztonsági riasztások kezelése és válaszadás a Azure Security Centerban](security-center-managing-and-responding-alerts.md): A biztonsági riasztások kezelésének és a riasztásokra való válaszadás módját ismertető útmutató.
+* [Partneri megoldások monitorozása Azure Security Centerekkel](security-center-partner-solutions.md): A partnermegoldások állapotának figyelését ismertető útmutató.
+* [Azure Security Center gyakori kérdések](security-center-faq.md): Választ találhat a szolgáltatás használatával kapcsolatos gyakori kérdésekre.
+* [Azure biztonsági blog](https://blogs.msdn.com/b/azuresecurity/): Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
 
-Az Azure Policyvel kapcsolatos további információkért lásd: [Mi az Azure Policy?](../governance/policy/overview.md).
+Ha többet szeretne megtudni a Azure Policyről, tekintse meg a [Mi az a Azure Policy?](../governance/policy/overview.md)című témakört.

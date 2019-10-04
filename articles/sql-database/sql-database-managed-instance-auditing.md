@@ -1,6 +1,6 @@
 ---
-title: Az Azure SQL Database felügyelt példány naplózása |} A Microsoft Docs
-description: Ismerje meg, hogyan kezdheti el az Azure SQL Database felügyelt példány auditálás T-SQL használatával
+title: Felügyelt példányok naplózása Azure SQL Database | Microsoft Docs
+description: Megtudhatja, hogyan kezdheti meg Azure SQL Database felügyelt példányok naplózását a T-SQL használatával
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -9,94 +9,93 @@ ms.devlang: ''
 ms.topic: conceptual
 f1_keywords:
 - mi.azure.sqlaudit.general.f1
-author: vainolo
-ms.author: arib
+author: barmichal
+ms.author: mibar
 ms.reviewer: vanto
-manager: craigg
 ms.date: 04/08/2019
-ms.openlocfilehash: 6ada2a5e505bfe37f4f9a956570d8b6f38f55e55
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a4941038288b90bcbfd61660458c564ce64add9e
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59357438"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70958511"
 ---
-# <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Ismerkedés az Azure SQL Database felügyelt példány naplózási szolgáltatásával
+# <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Ismerkedés a Azure SQL Database felügyelt példányok naplózásával
 
-[Felügyelt példány](sql-database-managed-instance.md) naplózás nyomon követi az adatbázisok eseményeit, és az Azure storage-fiókjában található auditálási naplóba írja őket. A naplózás is:
+A [felügyelt példányok](sql-database-managed-instance.md) naplózása nyomon követi az adatbázis eseményeit, és az Azure Storage-fiókban lévő naplóba írja azokat. Naplózás is:
 
-- Segít a jogszabályoknak való megfelelőség, adatbázis-tevékenység megértésében, valamint betekintést nyerhet az eltéréseket és rendellenességeket, amelyek üzleti aggályokra vagy biztonsági problémákat.
-- Lehetővé teszi, hogy, és megkönnyíti a megfelelőségi szabványok betartásának, bár ez nem garantálja a megfelelőség. Az Azure-ral kapcsolatos további információkat a támogatási szabványoknak való megfelelés programokat, tekintse meg a [Azure adatvédelmi központ](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) ahol megtalálhatja a legfrissebb listáját az SQL Database megfelelőségi minősítései közül is bemutat.
+- Segít megőrizni a jogszabályi megfelelőséget, értelmezni az adatbázis tevékenységeit, és betekintést nyerhet olyan eltérésekkel és rendellenességekkel, amelyek üzleti vagy feltételezett biztonsági szabálysértéseket jelezhetnek.
+- Engedélyezi és megkönnyíti a megfelelőségi szabványok betartását, bár nem garantálja a megfelelőséget. A szabványok megfelelőségét támogató Azure-programokkal kapcsolatos további információkért tekintse meg a [Azure biztonsági és adatkezelési központ](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) , ahol megtalálhatja a SQL Database megfelelőségi tanúsítványok legújabb listáját.
 
-## <a name="set-up-auditing-for-your-server-to-azure-storage"></a>A kiszolgáló, az Azure storage-naplózás beállítása
+## <a name="set-up-auditing-for-your-server-to-azure-storage"></a>Naplózás beállítása a kiszolgálóhoz az Azure Storage-hoz
 
-Az alábbi szakasz ismerteti a felügyelt példány naplózásának konfigurálása.
+A következő szakasz ismerteti a felügyelt példány naplózásának konfigurációját.
 
 1. Nyissa meg az [Azure Portal](https://portal.azure.com).
-1. Hozzon létre egy Azure Storage **tároló** naplók tárolására.
+1. Hozzon létre egy Azure Storage- **tárolót** , amelyben a naplók tárolása történik.
 
-   1. Keresse meg az Azure Storage, ahol szeretné a naplófájlok.
+   1. Navigáljon az Azure Storage-ba, ahol a naplókat tárolni szeretné.
 
       > [!IMPORTANT]
-      > Használja a storage-fiók ugyanabban a régióban, mint a felügyelt példány régiók közötti írásának/olvasásának elkerülése érdekében.
+      > A régiók közötti olvasási/írási műveletek elkerülése érdekében használjon a felügyelt példányokkal megegyező régióban található Storage-fiókot.
 
-   1. A storage-fiókban, lépjen a **áttekintése** kattintson **Blobok**.
+   1. A Storage-fiókban válassza az **Áttekintés** lehetőséget, majd kattintson a **Blobok**elemre.
 
-      ![Az Azure Blob-widget](./media/sql-managed-instance-auditing/1_blobs_widget.png)
+      ![Azure Blob widget](./media/sql-managed-instance-auditing/1_blobs_widget.png)
 
-   1. A felső menüben kattintson **+ tároló** hozhat létre egy új tárolót.
+   1. A felső menüben kattintson a **+ tároló** elemre egy új tároló létrehozásához.
 
-      ![Hozzon létre blob tároló ikon](./media/sql-managed-instance-auditing/2_create_container_button.png)
+      ![BLOB-tároló létrehozása ikon](./media/sql-managed-instance-auditing/2_create_container_button.png)
 
-   1. Adjon meg egy tároló **neve**, állítsa a nyilvános hozzáférés szintet **privát**, és kattintson a **OK**.
+   1. Adja meg a tároló **nevét**, állítsa a nyilvános hozzáférési szintet **magán**értékre, majd kattintson **az OK**gombra.
 
-      ![A blob-tároló konfigurációjának létrehozása](./media/sql-managed-instance-auditing/3_create_container_config.png)
+      ![BLOB-tároló konfigurációjának létrehozása](./media/sql-managed-instance-auditing/3_create_container_config.png)
 
-1. Az ellenőrzéshez a tároló létrehozása után naplók van két módon konfigurálja az auditnaplók céljaként: [T-SQL használatával](#blobtsql) vagy [az SQL Server Management Studio (SSMS) felhasználói felület használatával](#blobssms):
+1. Miután létrehozta a tárolót a naplókhoz, kétféleképpen konfigurálható a naplók céljaként: a [T-SQL használatával](#blobtsql) vagy [a SQL Server Management Studio (SSMS) felhasználói felület használatával](#blobssms):
 
-   - <a id="blobtsql"></a>A T-SQL használatával auditnaplók blog storage konfigurálása:
+   - <a id="blobtsql"></a>A blog Storage konfigurálása a naplókhoz a T-SQL használatával:
 
-     1. A tárolók listájában kattintson az újonnan létrehozott tárolóban majd **tároló tulajdonságai**.
+     1. A tárolók listában kattintson az újonnan létrehozott tárolóra, majd a **tároló tulajdonságai**elemre.
 
-        ![BLOB tároló tulajdonságai gomb](./media/sql-managed-instance-auditing/4_container_properties_button.png)
+        ![BLOB-tároló tulajdonságai gomb](./media/sql-managed-instance-auditing/4_container_properties_button.png)
 
-     1. Másolja a tároló URL-címet a másolási ikonra kattintva, és mentse az URL-címe (például a Jegyzettömbben) későbbi használatra. A tároló URL-cím formátumban kell megadni `https://<StorageName>.blob.core.windows.net/<ContainerName>`
+     1. Másolja a tároló URL-címét a másolás ikonra kattintva, és mentse az URL-címet (például a Jegyzettömbben) későbbi használatra. A tároló URL-formátumának`https://<StorageName>.blob.core.windows.net/<ContainerName>`
 
-        ![BLOB tároló példány URL-címe](./media/sql-managed-instance-auditing/5_container_copy_name.png)
+        ![BLOB-tároló másolási URL-címe](./media/sql-managed-instance-auditing/5_container_copy_name.png)
 
-     1. Hozzon létre egy Azure Storage **SAS-Token** naplózás a tárfiók hozzáférési jogosultsággal a felügyelt példány megadását:
+     1. Azure Storage sas- **token** létrehozása a felügyelt példányok naplózásához a Storage-fiókhoz való hozzáférési jogosultságok biztosításához:
 
-        - Keresse meg az Azure Storage-fiók, amelyben az előző lépésben létrehozta a tárolót.
+        - Navigáljon ahhoz az Azure Storage-fiókhoz, ahol az előző lépésben létrehozta a tárolót.
 
-        - Kattintson a **közös hozzáférésű jogosultságkód** tárolási beállítások menüjében.
+        - Kattintson a **megosztott hozzáférés aláírása** lehetőségre a tárolási beállítások menüben.
 
-          ![Megosztott hozzáférési aláírást ikonra a tárolási beállítások menü](./media/sql-managed-instance-auditing/6_storage_settings_menu.png)
+          ![Közös hozzáférésű aláírás ikon a tárolási beállítások menüben](./media/sql-managed-instance-auditing/6_storage_settings_menu.png)
 
-        - Az SAS a következőképpen konfigurálja:
+        - Konfigurálja az SAS-t a következőképpen:
 
           - **Engedélyezett szolgáltatások**: Blob
 
-          - **Kezdő dátum**: időzóna kapcsolatos problémák elkerülése érdekében javasoljuk, hogy tegnapi dátum használata
+          - **Kezdési dátum**: az időzónával kapcsolatos problémák elkerülése érdekében ajánlott a tegnapi dátum használata
 
-          - **Befejező dátum**: válassza ki, amelyen a SAS-jogkivonat lejárati dátumának
+          - **Befejezési dátum**: válassza ki a dátumot, AMELYEN az SAS-jogkivonat lejár
 
             > [!NOTE]
-            > A naplózási hibák elkerülése érdekében a lejárat után-token megújításához.
+            > A naplózási hibák elkerülése érdekében újítsa meg a tokent a lejárat után.
 
           - Kattintson az **SAS előállítása** gombra.
             
             ![SAS-konfiguráció](./media/sql-managed-instance-auditing/7_sas_configure.png)
 
-        - SAS létrehozása gombra kattintva a SAS-Token alján jelenik meg. Jogkivonat másolása a másolási ikonra kattintva, és későbbi használatra mentse azt (például a Jegyzettömbbel).
+        - Miután rákattintott az SAS előállítására, megjelenik az SAS-jogkivonat az alján. Másolja a tokent a másolás ikonra kattintva, és mentse (például a Jegyzettömbben) későbbi használatra.
 
-          ![SAS-jogkivonat másolása](./media/sql-managed-instance-auditing/8_sas_copy.png)
+          ![SAS-token másolása](./media/sql-managed-instance-auditing/8_sas_copy.png)
 
           > [!IMPORTANT]
-          > Távolítsa el a kérdőjel ("?") karaktert a jogkivonat az elejétől.
+          > Eltávolítja a kérdőjel ("?") karaktert a jogkivonat elejétől.
 
-     1. Csatlakozhat a felügyelt példány az SQL Server Management Studio (SSMS) vagy más támogatott eszköz segítségével.
+     1. Kapcsolódjon a felügyelt példányhoz SQL Server Management Studio (SSMS) vagy bármely más támogatott eszköz használatával.
 
-     1. Hajtsa végre a következő T-SQL utasítást **hozzon létre egy új hitelesítő adat** a tároló URL-címe és a SAS-Token, amely az előző lépésekben létrehozott használatával:
+     1. A következő T-SQL-utasítás végrehajtásával **hozzon létre egy új hitelesítő adatot** az előző lépésekben létrehozott Container URL-lel és Sas-token használatával:
 
         ```SQL
         CREATE CREDENTIAL [<container_url>]
@@ -105,7 +104,7 @@ Az alábbi szakasz ismerteti a felügyelt példány naplózásának konfigurál�
         GO
         ```
 
-     1. Hajtsa végre a következő T-SQL utasítást hozzon létre egy új Server Audit (válassza ki a saját naplózási nevét, az előző lépésekben létrehozott tároló URL-cím használata). Ha nincs megadva, `RETENTION_DAYS` alapértelmezett érték a 0 (korlátlan a megőrzés):
+     1. A következő T-SQL-utasítás végrehajtásával hozzon létre egy új kiszolgáló-naplózást (válassza ki a saját napló nevét, használja az előző lépésekben létrehozott tároló URL-címét). Ha nincs megadva, `RETENTION_DAYS` az alapértelmezett érték a 0 (korlátlan megőrzés):
 
         ```SQL
         CREATE SERVER AUDIT [<your_audit_name>]
@@ -113,38 +112,38 @@ Az alábbi szakasz ismerteti a felügyelt példány naplózásának konfigurál�
         GO
         ```
 
-        1. Következő lépésként [Server Audit Specification vagy Specifikációjába létrehozása](#createspec)
+        1. Folytatás [egy kiszolgáló naplózási specifikációjának vagy adatbázis-naplózási specifikációjának létrehozásával](#createspec)
 
-   - <a id="blobssms"></a>Adja meg a blob storage-naplók használatával az SQL Server Management Studio (SSMS) 18-ra (előzetes verzió):
+   - <a id="blobssms"></a>A blob Storage konfigurálása a naplókhoz a SQL Server Management Studio (SSMS) 18 (előzetes verzió) használatával:
 
-     1. Csatlakozhat a felügyelt példány az SQL Server Management Studio (SSMS) felhasználói felület használatával.
+     1. Kapcsolódjon a felügyelt példányhoz SQL Server Management Studio (SSMS) felhasználói felület használatával.
 
-     1. A legfelső szintű jegyezze fel az Object Explorerben bontsa ki.
+     1. Bontsa ki a Object Explorer legfelső szintű megjegyzését.
 
-     1. Bontsa ki a **biztonsági** csomópontot, kattintson a jobb gombbal a a **naplózások** csomópontot, és kattintson az "Új naplózási":
+     1. Bontsa ki a **Biztonság** csomópontot, kattintson a jobb gombbal a **naplózás** csomópontra, majd kattintson az "új naplózás" elemre:
 
-        ![Bontsa ki a biztonsági és naplózási csomópont](./media/sql-managed-instance-auditing/10_mi_SSMS_new_audit.png)
+        ![Biztonsági és naplózási csomópont kibontása](./media/sql-managed-instance-auditing/10_mi_SSMS_new_audit.png)
 
-     1. Győződjön meg arról, hogy "URL" kiválasztott **naplózási cél** , majd kattintson a **Tallózás**:
+     1. Győződjön meg arról, hogy az "URL" elem be van jelölve a **naplózási célhelyen** , és kattintson a **Tallózás**gombra:
 
-        ![Keresse meg az Azure Storage](./media/sql-managed-instance-auditing/11_mi_SSMS_audit_browse.png)
+        ![Az Azure Storage tallózása](./media/sql-managed-instance-auditing/11_mi_SSMS_audit_browse.png)
 
-     1. (Nem kötelező) Jelentkezzen be az Azure-fiókjával:
+     1. Választható Jelentkezzen be az Azure-fiókjába:
 
         ![Bejelentkezés az Azure-ba](./media/sql-managed-instance-auditing/12_mi_SSMS_sign_in_to_azure.png)
 
-     1. Válasszon ki egy előfizetést, a storage-fiók és a Blob-tároló a legördülő menük, vagy a saját tároló létrehozásához kattintson a **létrehozás**. Ha végzett, kattintson **OK**:
+     1. Válassza ki az előfizetést, a Storage-fiókot és a BLOB-tárolót a legördülő listából, vagy hozzon létre egy saját tárolót a **Létrehozás**gombra kattintva. Ha elkészült, kattintson **az OK**gombra:
 
-        ![Válassza ki Azure-előfizetéssel, a storage-fiók és a blob-tároló](./media/sql-managed-instance-auditing/13_mi_SSMS_select_subscription_account_container.png)
+        ![Válassza az Azure-előfizetés, a Storage-fiók és a blob-tároló elemet.](./media/sql-managed-instance-auditing/13_mi_SSMS_select_subscription_account_container.png)
 
-     1. Kattintson a **OK** a "Create Audit" párbeszédpanelen.
+     1. Kattintson az **OK** gombra a "napló létrehozása" párbeszédablakban.
 
-1. <a id="createspec"></a>Konfigurálását követően az auditnaplókhoz, célként a Blob-tároló hozzon létre egy Server Audit Specification vagy adatbázis naplózási specifikáció mint az SQL Server:
+1. <a id="createspec"></a>Miután konfigurálta a BLOB-tárolót a naplók céljának megfelelően, hozzon létre egy kiszolgáló-naplózási specifikációt vagy egy adatbázis-naplózási specifikációt SQL Server:
 
-   - [Hozzon létre a kiszolgáló naplózási specifikáció T-SQL-útmutató](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-specification-transact-sql)
-   - [Hozzon létre az adatbázis naplózási specifikáció T-SQL-útmutató](https://docs.microsoft.com/sql/t-sql/statements/create-database-audit-specification-transact-sql)
+   - [Kiszolgáló naplózási specifikációjának létrehozása T-SQL-útmutató](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-specification-transact-sql)
+   - [Adatbázis-naplózási specifikáció létrehozása T-SQL-útmutató](https://docs.microsoft.com/sql/t-sql/statements/create-database-audit-specification-transact-sql)
 
-1. A 6. lépésben létrehozott kiszolgálói naplózás engedélyezése:
+1. Engedélyezze a 6. lépésben létrehozott kiszolgáló-naplózást:
 
     ```SQL
     ALTER SERVER AUDIT [<your_audit_name>]
@@ -154,95 +153,95 @@ Az alábbi szakasz ismerteti a felügyelt példány naplózásának konfigurál�
 
 További információ:
 
-- [Naplózás az Azure SQL Database és SQL Server-adatbázisok önálló adatbázisok, rugalmas készlet, s és a felügyelt példányok közötti különbségek](#auditing-differences-between-databases-in-azure-sql-database-and-databases-in-sql-server)
-- [KISZOLGÁLÓ NAPLÓZÁSI LÉTREHOZÁSA](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql)
-- [AZ ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql)
+- [Az önálló adatbázisok, rugalmas készlet, s és felügyelt példányok közötti különbségek naplózása Azure SQL Database és adatbázisaiban SQL Server](#auditing-differences-between-databases-in-azure-sql-database-and-databases-in-sql-server)
+- [KISZOLGÁLÓ NAPLÓZÁSÁNAK LÉTREHOZÁSA](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql)
+- [ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql)
 
-## <a name="set-up-auditing-for-your-server-to-event-hub-or-azure-monitor-logs"></a>A kiszolgáló számára Event Hub vagy az Azure Monitor naplók naplózás beállítása
+## <a name="set-up-auditing-for-your-server-to-event-hub-or-azure-monitor-logs"></a>A kiszolgáló naplózásának beállítása az Event hub vagy a Azure Monitor naplók számára
 
-A felügyelt példány auditnaplók még Hubs vagy az Azure Monitor naplóira lehet küldeni. Ez a szakasz ismerteti, hogyan konfigurálhatja ezt:
+A felügyelt példányokból származó naplókat még hubokba vagy Azure Monitor naplókba is lehet elküldeni. Ez a szakasz a konfigurálásának módját ismerteti:
 
-1. Navigálás a [az Azure Portal](https://portal.azure.com/) a felügyelt példányhoz.
+1. Navigáljon az [Azure Portalon](https://portal.azure.com/) a felügyelt példányra.
 
-2. Kattintson a **diagnosztikai beállítások**.
+2. Kattintson a **diagnosztikai beállítások**elemre.
 
-3. Kattintson a **diagnosztika bekapcsolása**. Ha diagnosztikai már engedélyezve van a *+ diagnosztikai beállítás hozzáadása* jelennek meg helyette.
+3. Kattintson a **diagnosztika bekapcsolása**elemre. Ha a diagnosztika már engedélyezve van, a *+ diagnosztika hozzáadása beállítás* jelenik meg helyette.
 
-4. Válassza ki **SQLSecurityAuditEvents** naplók listájában.
+4. A naplók listájában válassza a **SQLSecurityAuditEvents** lehetőséget.
 
-5. Válassza ki a célhelyet a naplózási események – Event Hub, az Azure Monitor naplóira vagy mindkettőt. Minden egyes célhoz konfigurálja a szükséges paramétereket (például: Log Analytics-munkaterület).
+5. Válassza ki a naplózási események (Event hub, Azure Monitor naplók vagy mindkettő) célhelyét. Konfigurálja az egyes célkitűzésekhez a szükséges paramétereket (például Log Analytics munkaterület).
 
 6. Kattintson a **Save** (Mentés) gombra.
 
     ![Diagnosztikai beállítások konfigurálása](./media/sql-managed-instance-auditing/9_mi_configure_diagnostics.png)
 
-7. Csatlakozhat a felügyelt példány használatával **SQL Server Management Studio (SSMS)** vagy más támogatott ügyfél.
+7. Kapcsolódjon a felügyelt példányhoz **SQL Server Management Studio (SSMS)** vagy bármely más támogatott ügyfél használatával.
 
-8. Hajtsa végre a következő T-SQL utasítást a kiszolgáló naplózási létrehozásához:
+8. A következő T-SQL-utasítás végrehajtásával hozzon létre egy kiszolgáló-naplózást:
 
     ```SQL
     CREATE SERVER AUDIT [<your_audit_name>] TO EXTERNAL_MONITOR;
     GO
     ```
 
-9. Hozzon létre egy kiszolgáló naplóspecifikáció vagy a specifikációjába, mint az SQL Server:
+9. Hozzon létre egy kiszolgáló-naplózási specifikációt vagy egy adatbázis-naplózási specifikációt SQL Server:
 
-   - [Hozzon létre a kiszolgáló naplózási specifikáció T-SQL-útmutató](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-specification-transact-sql)
-   - [Hozzon létre az adatbázis naplózási specifikáció T-SQL-útmutató](https://docs.microsoft.com/sql/t-sql/statements/create-database-audit-specification-transact-sql)
+   - [Kiszolgáló naplózási specifikációjának létrehozása T-SQL-útmutató](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-specification-transact-sql)
+   - [Adatbázis-naplózási specifikáció létrehozása T-SQL-útmutató](https://docs.microsoft.com/sql/t-sql/statements/create-database-audit-specification-transact-sql)
 
-10. A 8. lépésben létrehozott kiszolgálói naplózás engedélyezése:
+10. Engedélyezze a 8. lépésben létrehozott kiszolgáló-naplózást:
  
     ```SQL
     ALTER SERVER AUDIT [<your_audit_name>] WITH (STATE=ON);
     GO
     ```
 
-## <a name="consume-audit-logs"></a>A naplófájlok felhasználása
+## <a name="consume-audit-logs"></a>Naplók felhasználása
 
-### <a name="consume-logs-stored-in-azure-storage"></a>Az Azure Storage szolgáltatásban tárolt naplókért felhasználása
+### <a name="consume-logs-stored-in-azure-storage"></a>Az Azure Storage-ban tárolt naplók felhasználása
 
-Többféleképpen naplófájlokat blob megtekintéséhez használhatja.
+Több módszer is használható a blob-naplózási naplók megtekintésére.
 
-- A rendszer függvénnyel `sys.fn_get_audit_file` (T-SQL) a naplózási adatokat vissza a táblázatos formátumban. Ez a funkció használatáról további információkért lásd: a [sys.fn_get_audit_file dokumentáció](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql).
+- A rendszerfunkció `sys.fn_get_audit_file` (T-SQL) segítségével táblázatos formátumban visszaküldheti a naplózási adatokat. A függvény használatával kapcsolatos további információkért tekintse meg a [sys. fn_get_audit_file dokumentációját](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql).
 
-- Például egy eszköz használatával megvizsgálhatja auditnaplók [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/). Az Azure storage-ban naplói a naplók tárolásához megadott tárolóban lévő blob fájlok kerülnek mentésre. A tároló mappa a hierarchiával kapcsolatos további részletekért elnevezési konvenciók és a napló formátuma, tekintse meg a [Blob auditálási napló fájlformátum referenciája](https://go.microsoft.com/fwlink/?linkid=829599).
+- A naplókat a [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)eszközzel is megismerheti. Az Azure Storage-ban a naplózási naplók a naplófájlok tárolására megadott tárolóban lévő blob-fájlok gyűjteményében lesznek mentve. A tárolási mappa hierarchiájának, az elnevezési konvencióknak és a napló formátumának további részleteiért tekintse meg a [blob naplózási napló formátumának referenciáját](https://go.microsoft.com/fwlink/?linkid=829599).
 
-- Auditálási napló felhasználási módszert teljes listájáért tekintse meg a [első lépései az SQL database naplózási szolgáltatásával](sql-database-auditing.md).
+- A naplózási naplók használatának teljes listájáért tekintse meg az [SQL Database naplózásának első lépéseivel](sql-database-auditing.md)foglalkozó témakört.
 
-### <a name="consume-logs-stored-in-event-hub"></a>Event Hub tárolt naplók használata
+### <a name="consume-logs-stored-in-event-hub"></a>Az Event hub-ban tárolt naplók felhasználása
 
-Az Event Hubs naplózási adatok felhasználásához, szüksége lesz egy stream események felhasználásához, és a cél beállítása. További információkért tekintse meg az Azure Event Hubs – dokumentáció.
+Az Event hub naplózási adatainak felhasználása érdekében be kell állítania egy streamet az események felhasználásához, és egy célhoz kell írnia azokat. További információ: Azure Event Hubs dokumentáció.
 
-### <a name="consume-and-analyze-logs-stored-in-azure-monitor-logs"></a>Ugyanúgy használják, és az Azure Monitor naplóira tárolt naplók elemzése
+### <a name="consume-and-analyze-logs-stored-in-azure-monitor-logs"></a>Azure Monitor-naplókban tárolt naplók felhasználása és elemzése
 
-Auditnaplók az Azure Monitor-naplókba írt, ha azok elérhetők a Log Analytics-munkaterületet, ahol a Speciális keresés futtatásához a naplózási adatok. Kiindulási pontként, keresse meg a Log Analytics-munkaterülethez, majd a *általános* szakaszban kattintson *naplók* írjon be egy egyszerű lekérdezéssel, például: `search "SQLSecurityAuditEvents"` naplózza a naplózási megtekintéséhez.  
+Ha a naplókat Azure Monitor naplókba írja a rendszer, azok a Log Analytics munkaterületen érhetők el, ahol a naplózási adatként speciális kereséseket futtathat. Kiindulási pontként lépjen a log Analytics munkaterületre, és az *általános* szakaszban kattintson a *naplók* elemre, és adjon meg egy `search "SQLSecurityAuditEvents"` egyszerű lekérdezést, például: a naplók megtekintéséhez.  
 
-Az Azure Monitor naplóira azonnal elemezze a rekordok millióit, a számítási feladatok és kiszolgálók integrált keresést és egyéni irányítópultok segítségével valós idejű az operational insights biztosítja. További hasznos információkat az Azure Monitor naplók keresési nyelv és a parancsok, lásd: [Azure Monitor naplózza a keresési referencia](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview).
+A Azure Monitor naplók valós idejű üzemeltetési elemzéseket biztosítanak az integrált keresés és az egyéni irányítópultok használatával, amelyekkel a munkaterhelések és a kiszolgálók több millió rekordját is könnyedén elemezheti. További hasznos információk Azure Monitor naplók keresési nyelvéről és parancsairól: [Azure monitor naplók keresési referenciája](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview).
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="auditing-differences-between-databases-in-azure-sql-database-and-databases-in-sql-server"></a>Naplózás az Azure SQL Database és az SQL Server adatbázisok közötti különbségek
+## <a name="auditing-differences-between-databases-in-azure-sql-database-and-databases-in-sql-server"></a>A Azure SQL Database és adatbázisaiban található adatbázisok közötti különbségek naplózása SQL Server
 
-A naplózás az Azure SQL Database és az adatbázisok az SQL Server-adatbázisok közötti fő különbségeket a következők:
+A Azure SQL Database és a SQL Server adatbázisaiban található adatbázisok naplózása közötti fő különbségek a következők:
 
-- Az Azure SQL Database felügyelt példány üzembe helyezési lehetősége, a naplózást a kiszolgáló szintjén, és a tárolók működését `.xel` naplófájlokat az Azure Blob storage-ban.
-- Az önálló adatbázisok és az Azure SQL Database rugalmas készlet üzembe helyezési lehetőséget, a naplózás az adatbázis szintjén működik.
-- A helyszíni SQL Server / virtuális gépek, naplózási működik a kiszolgálón. szintű, de a fájlok rendszer-vagy windows-eseménynaplók az események tárolja.
+- A Azure SQL Database felügyelt példányok központi telepítésének beállításával a naplózás a kiszolgáló szintjén működik `.xel` , és az Azure Blob Storage-ban tárolja a naplófájlokat.
+- A Azure SQL Database az önálló adatbázis és a rugalmas készlet üzembe helyezési lehetőségeivel a naplózás az adatbázis szintjén működik.
+- SQL Server helyszíni/virtuális gépek esetében a naplózás a kiszolgáló szintjén működik, de az eseményeket a fájlrendszer/Windows eseménynaplókban tárolja.
 
-Az XEvent naplózási a felügyelt példány támogatja az Azure Blob storage tárolók. Fájl- és windows-naplók **nem támogatott**.
+A felügyelt példány XEvent-naplózása támogatja az Azure Blob Storage-célokat. A fájl-és Windows-naplók **nem támogatottak**.
 
-A kulcs közötti különbségek a `CREATE AUDIT` vannak a naplózás az Azure Blob storage-szintaxissal:
+Az Azure Blob Storage- `CREATE AUDIT` ba való naplózás szintaxisának főbb eltérései a következők:
 
-- Egy új szintaxis `TO URL` van megadva, és lehetővé teszi a URL-címét az Azure blob Storage-tárolóba, a `.xel` fájlok kerülnek.
-- Egy új szintaxis `TO EXTERNAL MONITOR` ahhoz, hogy még a Hub és az Azure Monitor naplók célok biztosított.
-- A szintaxist `TO FILE` van **nem támogatott** mert SQL-adatbázis nem érhető el Windows-fájlmegosztásokon.
-- Leállítási lehetőség **nem támogatott**.
-- `queue_delay` a 0 van **nem támogatott**.
+- A rendszer új `TO URL` szintaxist biztosít, és lehetővé teszi az Azure Blob Storage-tároló URL-címének megadását, ahol a `.xel` fájlok el vannak helyezve.
+- A rendszer egy `TO EXTERNAL MONITOR` új szintaxist biztosít, amely lehetővé teszi, hogy még a hub és a Azure monitor naplózza a célokat.
+- A szintaxis `TO FILE` **nem támogatott** , mert SQL Database nem fér hozzá a Windows-fájlmegosztást.
+- A Leállítás beállítás **nem támogatott**.
+- `queue_delay`a 0 érték **nem támogatott**.
 
 ## <a name="next-steps"></a>További lépések
 
-- Auditálási napló felhasználási módszert teljes listájáért tekintse meg a [első lépései az SQL database naplózási szolgáltatásával](sql-database-auditing.md).
-- Az Azure-ral kapcsolatos további információkat a támogatási szabványoknak való megfelelés programokat, tekintse meg a [Azure adatvédelmi központ](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) ahol megtalálhatja a legfrissebb listáját az SQL Database megfelelőségi minősítései közül is bemutat.
+- A naplózási naplók használatának teljes listájáért tekintse meg az [SQL Database naplózásának első lépéseivel](sql-database-auditing.md)foglalkozó témakört.
+- A szabványok megfelelőségét támogató Azure-programokkal kapcsolatos további információkért tekintse meg a [Azure biztonsági és adatkezelési központ](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) , ahol megtalálhatja a SQL Database megfelelőségi tanúsítványok legújabb listáját.
 
 <!--Image references-->
 

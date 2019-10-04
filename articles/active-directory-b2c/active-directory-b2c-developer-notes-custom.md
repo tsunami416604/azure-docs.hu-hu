@@ -1,140 +1,142 @@
 ---
-title: Egyéni szabályzatok – Azure Active Directory B2C megjegyzések fejlesztők számára |} A Microsoft Docs
-description: Megjegyzések konfigurálását és karbantartását az Azure AD B2C-vel egyéni szabályzatok a fejlesztők számára készült.
+title: Egyéni szabályzatok fejlesztői megjegyzései – Azure Active Directory B2C | Microsoft Docs
+description: Megjegyzések a Azure AD B2C egyéni szabályzatokkal történő konfigurálásához és karbantartásához szükséges fejlesztőknek.
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: cf9c6f6a54c38f00e477e2a9d62e72ab5faccdef
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: 3f8d1ac217647ee292338da875671ef8bd3f79db
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58418924"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227196"
 ---
-# <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Az Azure Active Directory B2C-vel egyéni szabályzatok megjegyzések fejlesztők számára
+# <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Fejlesztői megjegyzések a Azure Active Directory B2C egyéni házirendjeihez
 
-Már általánosan elérhető az Azure Active Directory B2C-vel egyéni házirend-konfigurációt. Ez a módszer, konfiguráció célja a fejlett identitáskezelési a fejlesztők összetett identitás megoldások létrehozásához. Egyéni szabályzatok az Azure AD B2C-bérlők elérhetővé az identitás-kezelőfelületi keretrendszer hatékonyságát. Speciális egyéni szabályzatok segítségével a fejlesztők támogatásán triggerhez kapcsolódó befejezése és segédanyagok olvasási időt kell terveznie identitás.
+A Azure Active Directory B2C egyéni házirend-konfigurációja már általánosan elérhető. Ez a konfigurációs módszer speciális identitás-fejlesztőknek készült komplex Identity-fejlesztők számára van megcélozva. Az egyéni szabályzatok a Azure AD B2C bérlők számára elérhető Identity Experience keretrendszer hatékonyságát teszik hatékonyabbá.
+Az egyéni szabályzatokat használó speciális identitás-fejlesztőknek meg kell tervezniük egy kis idő betöltését és a tájékoztató dokumentumok olvasását.
 
-A legtöbb elérhető egyéni házirend-beállítások mostantól általánosan elérhetők, amíg nincsenek alapul szolgáló képességek, például a technikai profil típusát és tartalomdefiníció API-k szoftveres életciklusainak különböző szakaszaiban. Sok más érkeznek. Az alábbi táblázat a részletesebb szintű rendelkezésre állás szintjét határozza meg.  
+Habár a rendelkezésre álló egyéni házirend-lehetőségek többsége már általánosan elérhető, olyan mögöttes képességekkel rendelkezik, mint például a technikai profilok típusai és a tartalmi definíciós API-k, amelyek a szoftver életciklusának különböző szakaszaiban találhatók. Számos további újdonság. Az alábbi táblázat a rendelkezésre állás szintjét határozza meg részletesebb szinten.
 
-## <a name="features-that-are-generally-available"></a>Általánosan elérhető
+## <a name="features-that-are-generally-available"></a>Általánosan elérhető funkciók
 
-- Szerző és feltöltése az egyéni hitelesítési felhasználói utak egyéni szabályzatok használatával.  
-    - Felhasználói utak cseréje, részletes közötti Jogcímszolgáltatók ismertetik.  
-    - Adja meg a felhasználói utak feltételes elágaztatás.  
-- Az egyéni hitelesítési felhasználói utak szolgáltatások REST API-támogatású együttműködni.  
-- Összevonják identitásszolgáltatókat, amelyek megfelelnek a OpenIDConnect protokoll.  
-- Identitásszolgáltatók, amelyek igazodnak a SAML 2.0 protokoll összevonják.   
+- Egyéni hitelesítési felhasználói utazások létrehozása és feltöltése egyéni szabályzatok használatával.
+    - A felhasználói útvonalak lépésenkénti ismertetése a jogcímek szolgáltatói közötti cseréjeként.
+    - Feltételes elágazás definiálása felhasználói útvonalakon.
+- A REST API-kompatibilis szolgáltatásokkal való együttműködés az egyéni hitelesítési felhasználói útvonalakon.
+- A összevonása az OpenIDConnect protokollnak megfelelő identitás-szolgáltatókkal.
+- Összevonása az SAML 2,0 protokollnak megfelelő identitás-szolgáltatókkal.
 
-## <a name="responsibilities-of-custom-policy-feature-set-developers"></a>Egyéni szabályzat szolgáltatáskészletet fejlesztők feladatai
+## <a name="responsibilities-of-custom-policy-feature-set-developers"></a>Az egyéni szabályzat funkcióinak beállítása – fejlesztők
 
-Manuális szabályzatkonfiguráció alacsonyabb szintű hozzáférést biztosít az Azure AD B2C-vel és a egy egyedi, bizalmi keretrendszer létrehozásának eredményeit az alapul szolgáló platform. Egyéni Identitásszolgáltatók, megbízhatósági kapcsolatokat, számos lehetséges kombinációinak száma az integrációt a külső szolgáltatások és a munkafolyamatok részletes tervezési és konfigurációs módszeres megközelítést igényelnek. 
+A manuális házirend-konfiguráció alacsonyabb szintű hozzáférést biztosít a Azure AD B2C mögöttes platformhoz, és egy egyedi, megbízhatósági keretrendszer létrehozását eredményezi. Az egyéni identitás-szolgáltatók, a megbízhatósági kapcsolatok, a külső szolgáltatásokkal való integrációk és a lépésenkénti munkafolyamatok számos lehetséges variációja szükséges a tervezéshez és a konfiguráláshoz.
 
-Egyéni szabályzatkészlet funkciót használó fejlesztők számára meg kell felelnie a következő irányelveket:
+Az egyéni házirend-készletet használó fejlesztőknek be kell tartaniuk a következő irányelveket:
 
-- Megismerkedhet az egyéni szabályzatok és a kulcs vagy titkos kódokkal felügyeleti konfiguráció nyelven. További információkért lásd: [TrustFrameworkPolicy](trustframeworkpolicy.md). 
-- Saját tulajdonba vétel forgatókönyveket és egyéni Integrációk. Dokumentálja a munkáját, és tájékoztatja a szervezete élő helyen.  
-- A forgatókönyv módszeres teszt végrehajtása. 
-- Hajtsa végre a szoftverfejlesztést és átmeneti legalább egy fejlesztési és tesztelési környezetet az ajánlott eljárásokról és a egy éles környezetben. 
-- Azonnali tájékozódás az új fejlesztések az identitás-szolgáltatóktól és szolgáltatásokat integrálja. Ha például nyomon követheti, változások a titkos kódok és az ütemezett és nem tervezett módosításokat a szolgáltatásban. 
-- Aktív figyelés beállítása, és figyelheti az alkalmazások válaszkészségét éles környezetben. Az Application insights szolgáltatással való integrációjáról további információkért lásd: [Azure Active Directory B2C: Naplók gyűjtése](active-directory-b2c-custom-guide-eventlogger-appins.md). 
-- Az Azure-előfizetésében naprakészen kapcsolattartási e-mail-címeket, és továbbra is a Microsoft-webhelyek működés közbeni csapatával e-mailekre válaszkész maradhat. 
-- Amikor javasoljuk, hogy a webhelyek működés közbeni csoportja. Ehhez kellő időben művelet végrehajtása.
+- Ismerkedjen meg az egyéni szabályzatok és a kulcs/titkok kezelésének konfigurációs nyelvével. További információ: [TrustFrameworkPolicy](trustframeworkpolicy.md).
+- A forgatókönyvek és az egyéni integrációk saját tulajdonba vételét. Dokumentálja a munkáját, és tájékoztassa az élő hely szervezetét.
+- Végezzen tesztelési módszert.
+- A szoftverfejlesztés és az előkészítési ajánlott eljárások követése legalább egy fejlesztési és tesztelési környezettel, valamint egy éles környezettel.
+- Tájékozódjon arról, hogy az Ön által integrált identitás-szolgáltatók és szolgáltatások milyen új fejleményeket mutatnak be. Például nyomon követheti a titkok és a szolgáltatás ütemezett és nem ütemezett változásainak változásait.
+- Állítsa be az aktív figyelést, és figyelje az éles környezetek érzékenységét. További információ a Application Insights [integrálásával kapcsolatban: Azure Active Directory B2C: Naplók](active-directory-b2c-custom-guide-eventlogger-appins.md)gyűjtése.
+- Lépjen kapcsolatba az Azure-előfizetésben aktuálisan használt e-mail címekkel, és válaszoljon a Microsoft Live-site Team-e-mailekre.
+- Ha a Microsoft Live-site csapata ezt javasolja, végezze el a szükséges lépéseket.
 
-## <a name="terms-for-features-in-public-preview"></a>Nyilvános előzetes verzióban elérhető funkciók feltételek
+## <a name="terms-for-features-in-public-preview"></a>A nyilvános előzetes verzióban elérhető funkciók használati feltételei
 
-- Javasoljuk, hogy a nyilvános előzetes verziójú funkciók használatához csak tesztelési célokra. 
-- Szolgáltatásiszint-szerződések (SLA) nem vonatkoznak a nyilvános előzetes verziójú funkciókat.
-- Nyilvános előzetes verziójú funkciók kapcsolatos támogatási kérelmeket rendszeres támogatási csatornákon keresztül lehet benyújtani. 
+- Javasoljuk, hogy csak kiértékelési célokra használja a nyilvános előzetes verzió funkcióit.
+- A szolgáltatói szerződések (SLA-kat) nem vonatkoznak a nyilvános előzetes verzió szolgáltatásaira.
+- A nyilvános előzetes verziójú funkciókra vonatkozó támogatási kérelmeket rendszeres támogatási csatornákon keresztül lehet benyújtani.
 
-## <a name="features-by-stage-and-known-issues"></a>Funkciók szakasz és ismert problémák
+## <a name="features-by-stage-and-known-issues"></a>Funkciók szakasz és ismert problémák alapján
 
-Egyéni szabályzat/identitás-kezelőfelületi keretrendszer képességek folyamatos és gyors fejlesztés alatt áll. Az alábbi táblázat az a funkciók és -összetevő rendelkezésre állása index.
+Az egyéni házirend-/identitás-keretrendszer képességei állandó és gyors fejlesztés alatt állnak. A következő táblázat a szolgáltatások és az összetevők rendelkezésre állásának indexét tartalmazza.
 
-### <a name="identity-providers-tokens-protocols"></a>Identitás-szolgáltatók jogkivonatok, protokollok
+### <a name="identity-providers-tokens-protocols"></a>Identitás-szolgáltatók, tokenek, protokollok
 
-| Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
-|-------- | ----------- | ------- | -- | ----- |
-| IDP-OpenIDConnect |  |  | X | Ha például a Google +.  |
-| IDP-OAUTH2 |  |  | X | Ha például a Facebook.  |
-| IDP-OAUTH1 (twitter) |  | X |  | Ha például a Twitteren. |
+| Funkció | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
+|-------- | :-----------: | :-------: | :--: | ----- |
+| IDP-OpenIDConnect |  |  | X | Például: Google +.  |
+| IDP-OAUTH2 |  |  | X | Például: Facebook.  |
+| IDP-OAUTH1 (twitter) |  | X |  | Például: Twitter. |
 | IDP-OAUTH1 (ex-twitter) |  |  |  | Nem támogatott |
-| IDP-SAML |  |   | X | Ha például Salesforce-ban, ADFS. |
+| IDP-SAML |  |   | X | Például: Salesforce, ADFS. |
 | IDP-WSFED | X |  |  |  |
 | Függő entitás OAUTH1 |  |  |  | Nem támogatott. |
 | Függő entitás OAUTH2 |  |  | X |  |
 | Függő entitás OIDC |  |  | X |  |
-| Függő entitás SAML | X |  |  |  |
+| Függő entitás SAML-je | X |  |  |  |
 | Függő entitás WSFED | X |  |  |  |
-| Az alapszintű REST API-t és az ügyféltanúsítvány-alapú hitelesítés |  |  | X | Ha például az Azure Logic Apps. |
+| Alapszintű és Tanúsítványos hitelesítés REST API |  |  | X | Például Azure Logic Apps. |
 
 ### <a name="component-support"></a>Összetevő-támogatás
 
-| Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
-| ------- | ----------- | ------- | -- | ----- |
+| Funkció | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
+| ------- | :-----------: | :-------: | :--: | ----- |
 | Azure Multi Factor Authentication |  |  | X |  |
-| Az Azure Active Directory helyi könyvtárként |  |  | X |  |
-| E-mailes ellenőrzés alrendszere Azure e-mailben |  |  | X |  |
-| Több nyelv támogatása|  |  | X |  |
-| Predikátum ellenőrzések |  |  | X | Ha például a jelszó erősségét. |
-| Harmadik féltől származó e-mail-szolgáltatók használata | X |  |  |  |
+| Azure Active Directory helyi könyvtárként |  |  | X |  |
+| E-mail-ellenőrzésre szolgáló Azure E-mail alrendszer |  |  | X |  |
+| Többnyelvű támogatás|  |  | X |  |
+| Predikátumok érvényessége |  |  | X | Például a jelszó bonyolultsága. |
+| Harmadik féltől származó e-mail szolgáltatók használata | X |  |  |  |
 
-### <a name="content-definition"></a>Tartalomdefiníció
+### <a name="content-definition"></a>Tartalom definíciója
 
-| Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
-| ------- | ----------- | ------- | -- | ----- |
-| Error page, api.error |  |  | X |  |
-| Identitásszolgáltató kiválasztása oldal, api.idpselections |  |  | X |  |
-| IDP selection for signup, api.idpselections.signup |  |  | X |  |
+| Funkció | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
+| ------- | :-----------: | :-------: | :--: | ----- |
+| Hiba lap, API. hiba |  |  | X |  |
+| IDENTITÁSSZOLGÁLTATÓ-kiválasztási oldal, API. idpselections |  |  | X |  |
+| IDENTITÁSSZOLGÁLTATÓ kiválasztása a regisztrációhoz, API. idpselections. regisztráció |  |  | X |  |
 | Forgot Password, api.localaccountpasswordreset |  |  | X |  |
-| Local Account Sign-in, api.localaccountsignin |  |  | X |  |
-| Helyi fiók regisztrálási, api.localaccountsignup |  |  | X |  |
-| Többtényezős hitelesítés lap, api.phonefactor |  |  | X |  |
-| Az önellenőrzött közösségi fiók regisztrációs, api.selfasserted |  |  | X |  |
-| Self-asserted profile update, api.selfasserted.profileupdate |  |  | X |  |
-| Egyesített regisztrációs vagy bejelentkezési oldal, api.signuporsignin "disableSignup" paraméterrel |  |  | X |  |
-| JavaScript / oldalon, szerződéses |  | X |  |  |
+| Helyi fiók bejelentkezés, API. localaccountsignin |  |  | X |  |
+| Helyi fiók regisztrálása, API. localaccountsignup |  |  | X |  |
+| MFA-oldal, API. phonefactor |  |  | X |  |
+| Önérvényesített közösségi fiók regisztrálása, API. selfasserted |  |  | X |  |
+| Önérvényesített profil frissítése, API. selfasserted. profileUpdate |  |  | X |  |
+| Egyesített regisztrációs vagy bejelentkezési oldal, API. signuporsignin, "disableSignup" paraméterrel |  |  | X |  |
+| JavaScript/oldal elrendezése |  | X |  |  |
 
-### <a name="app-ief-integration"></a>Alkalmazás-IEF integráció
+### <a name="app-ief-integration"></a>IEF-integráció
 
-| Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
-| ------- | ----------- | ------- | -- | ----- |
-| Lekérdezési karakterlánc paraméter domain_hint |  |  | X | Jogcím, elérhető Identitásszolgáltató adható át. |
-| Lekérdezési karakterlánc paraméter login_hint |  |  | X | Jogcím, elérhető Identitásszolgáltató adható át. |
-| JSON beillesztése UserJourney client_assertion keresztül | X |  |  | Elavulttá válik. |
-| UserJourney id_token_hint, JSON beillesztése |  | X |  | Go-továbbító megközelítés át, JSON. |
-| Az alkalmazás Identitásszolgáltató TOKEN átadása |  | X |  | Például a Facebook-alkalmazáshoz. |
+| Funkció | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
+| ------- | :-----------: | :-------: | :--: | ----- |
+| Lekérdezési karakterlánc paraméterének domain_hint |  |  | X | A jogcímként elérhető lehet a IDENTITÁSSZOLGÁLTATÓ. |
+| Lekérdezési karakterlánc paraméterének login_hint |  |  | X | A jogcímként elérhető lehet a IDENTITÁSSZOLGÁLTATÓ. |
+| JSON beszúrása a UserJourney-be a client_assertion használatával | X |  |  | Elavulttá válik. |
+| JSON beszúrása a UserJourney id_token_hint |  | X |  | Továbbítási megközelítés a JSON továbbítására. |
+| IDENTITÁSSZOLGÁLTATÓ-TOKEN továbbítása az alkalmazásnak |  | X |  | Például a Facebookról az alkalmazásra. |
 
 ### <a name="session-management"></a>Munkamenet-kezelés
 
-| Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
-| ------- | ----------- | ------- | -- | ----- |
-| Egyszeri bejelentkezés munkamenet-szolgáltató |  |  | X |  |
-| Külső bejelentkezés munkamenet-szolgáltató |  |  | X |  |
-| SAML SSO  Session Provider |  |  | X |  |
-| Alapértelmezett egyszeri bejelentkezés munkamenet-szolgáltató |  |  | X |  |
+| Funkció | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
+| ------- | :-----------: | :-------: | :--: | ----- |
+| Egyszeri bejelentkezés munkamenet-szolgáltatója |  |  | X |  |
+| Külső bejelentkezési munkamenet-szolgáltató |  |  | X |  |
+| SAML SSO-munkamenet-szolgáltató |  |  | X |  |
+| Alapértelmezett egyszeri bejelentkezés munkamenet-szolgáltatója |  |  | X |  |
 
 ### <a name="security"></a>Biztonság
 
-| Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
-|-------- | ----------- | ------- | -- | ----- |
-| A házirend kulcsok létrehozása, manuális feltöltése |  |  | X |  |
-| Policy Keys- RSA/Cert, Secrets |  |  | X |  |
-| Szabályzatfeltöltés |  |  | X |  |
+| Funkció | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
+|-------- | :-----------: | :-------: | :--: | ----- |
+| Házirend-kulcsok – generál, manuális, feltöltés |  |  | X |  |
+| Szabályzat kulcsai – RSA/CERT, Secrets |  |  | X |  |
+| Szabályzat feltöltése |  |  | X |  |
 
 ### <a name="developer-interface"></a>Fejlesztői felület
 
-| Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
-| ------- | ----------- | ------- | -- | ----- |
+| Funkció | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
+| ------- | :-----------: | :-------: | :--: | ----- |
 | Azure Portal-IEF UX |  |  | X |  |
-| Application Insights UserJourney naplók |  | X |  | Hibaelhárítás a fejlesztés során használt.  |
-| Application Insights az eseménynaplókat (keresztül vezénylési lépés) |  | X |  | Éles környezetben a felhasználói folyamatok figyelésére használható. |
+| Application Insights UserJourney-naplók |  | X |  | A fejlesztés során hibaelhárításra szolgál.  |
+| Eseménynaplók Application Insights (az előkészítés lépésein keresztül) |  | X |  | Az élesben használt felhasználói folyamatok figyelésére szolgál. |
 
 ## <a name="next-steps"></a>További lépések
-[További információ az egyéni szabályzatok és a felhasználói folyamatok kapcsán](active-directory-b2c-overview-custom.md).
+
+További információ [az egyéni házirendekről és a felhasználói folyamatokkal](active-directory-b2c-overview-custom.md)kapcsolatos különbségekről.

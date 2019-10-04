@@ -7,19 +7,19 @@ author: zhangmanling
 manager: erikre
 editor: ''
 ms.assetid: 1e85b809-e1a9-4473-b835-69d1b4ed3393
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: e20161147aa16456e31aff2bd3cc6337c3690e89
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 4b8cbc27757cf6c321ea4b3c27720a129aa27c1b
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59789923"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593480"
 ---
 # <a name="real-time-alerts-in-microsoft-azure-cdn"></a>A Microsoft Azure CDN Szolgáltatásban valós idejű riasztások
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "59789923"
 ## <a name="overview"></a>Áttekintés
 Ez a dokumentum ismerteti a Microsoft Azure CDN Szolgáltatásban valós idejű riasztások. Ez a funkció biztosítja a végpontok a CDN-profilban teljesítményének valós idejű értesítések.  Beállíthatja a e-mailben vagy a HTTP-riasztások alapján:
 
-* Bandwidth
+* A sávszélesség
 * Állapotkódok
 * Gyorsítótárak Allapota
 * Kapcsolatok

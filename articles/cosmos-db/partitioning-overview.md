@@ -1,54 +1,54 @@
 ---
-title: Az Azure Cosmos DB particionálási
-description: Az Azure Cosmos DB particionálási áttekintése.
+title: Particionálás Azure Cosmos DB
+description: A particionálás áttekintése Azure Cosmos DBban.
 ms.author: rimman
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/31/2019
-ms.openlocfilehash: e88be8e7b94566ff94dd94a8679f8ade9d54c0b6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 07/23/2019
+ms.openlocfilehash: 1bfa7104425b5013f9cdf36ff3c1dd88107d3ec7
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59784519"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467859"
 ---
-# <a name="partitioning-in-azure-cosmos-db"></a>Az Azure Cosmos DB particionálási
+# <a name="partitioning-in-azure-cosmos-db"></a>Particionálás Azure Cosmos DB
 
-Az Azure Cosmos DB használja a particionálás az egyes tárolók méretezését egy adatbázis teljesítmény az alkalmazás igényeinek. A particionálás, a tárolóban lévő elemek vannak osztva, különböző alkészleteiben nevű *logikai partíció*. Logikai partíciókkal értékei alapján kialakított egy *partíciókulcs* társítva a tárolóban lévő egyes elemek. Egy logikai partíció összes elemet az egyazon partíciókulcs-értékkel rendelkezik.
+A Azure Cosmos DB particionálás használatával méretezi az egyes tárolókat egy adatbázisban az alkalmazás teljesítménybeli igényeinek kielégítése érdekében. A particionálás során a tároló elemei a *logikai partíciók*nevű különálló részhalmazokra vannak osztva. A logikai partíciók a tároló egyes elemeihez társított *partíciós kulcs* értéke alapján jönnek létre. Egy logikai partíció összes elemének ugyanaz a partíciós kulcs értéke.
 
-Például a tároló elemeket tartalmazza. Minden cikk rendelkezik egy egyedi értéket a `UserID` tulajdonság. Ha `UserID` adattárat biztosít, a partíciós kulcs a tárolóban lévő elemek, és nincsenek egyedi 1000 `UserID` értékek, 1000 logikai partíció jön létre a tárolót.
+Egy tároló például elemeket tárol. Minden egyes tétel egyedi értékkel rendelkezik a `UserID` tulajdonsághoz. Ha `UserID` a tárolóban lévő elemek partíciós kulcsaként szolgál, és 1 000 egyedi `UserID` érték van, akkor a rendszer 1 000 logikai partíciókat hoz létre a tárolóhoz.
 
-Meghatározza, hogy az elem logikai partíciót egy partíciókulcsot, egy tárolóban lévő egyes elemek most egy *konfigurációelem-azonosító* (egyedi logikai partíción belül). A cikk a partíciókulcs és a munkaelem azonosítója hoz létre *index*, amely egyedileg azonosítja az elemet.
+Egy olyan partíciós kulcs mellett, amely meghatározza az elem logikai partícióját, a tároló minden eleméhez tartozik egy *elem azonosítója* (egyedi logikai partíción belül). A partíciós kulcs és az elem AZONOSÍTÓjának kombinálásával létrejön az elem indexe, amely egyedileg azonosítja az adott tételt.
 
-[Olyan partíciókulcsot](partitioning-overview.md#choose-partitionkey) egy fontos döntés, melyek hatással lesznek az alkalmazás teljesítményét.
+[A partíciós kulcs kiválasztása](partitioning-overview.md#choose-partitionkey) fontos döntés, amely hatással lesz az alkalmazás teljesítményére.
 
-## <a name="managing-logical-partitions"></a>Logikai partíciókkal kezelése
+## <a name="managing-logical-partitions"></a>Logikai partíciók kezelése
 
-Az Azure Cosmos DB átláthatóan és automatikusan felügyeli a logikai partíció hatékonyan a tároló méretezhetőséget és teljesítményt igényeinek kielégítéséhez fizikai partíciók elhelyezését. Egy alkalmazás adatátviteli és tárolási követelményeinek növelése érdekében, Azure Cosmos DB automatikusan a kiszolgálók nagyobb számú között elosztani a terhelést logikai partíciót helyezi át. 
+Azure Cosmos DB átlátható módon, és automatikusan kezeli a logikai partíciók elhelyezését a fizikai partíciókon, hogy hatékonyan kielégítse a tároló méretezhetőségét és teljesítményét. Az alkalmazások átviteli sebességének és tárolási követelményeinek növekedésével Azure Cosmos DB a logikai partíciók mozgatásával automatikusan elosztja a terhelést a több kiszolgáló között. 
 
-Az Azure Cosmos DB használ a kivonat-alapú particionálás érdekében logikai partíció fizikai partíciók között. Az Azure Cosmos DB kivonatolja egy elem a partíciós kulcs értékét. A kivonatolt eredmény meghatározza, hogy a fizikai partíciók. Ezt követően Azure Cosmos DB foglal le a kulcsfontosságú terület partíció kulcs kivonatok egyenlően a fizikai partíciók között.
+A Azure Cosmos DB kivonatoló particionálást használ a logikai partíciók fizikai partíciók közötti elterjesztéséhez. Azure Cosmos DB kivonatok egy adott tétel partíciós kulcsának értékét. A kivonatos eredmény határozza meg a fizikai partíciót. Ezután a Azure Cosmos DB a partíciós kulcsok kivonatait egyenletesen osztja el a fizikai partíciók között.
 
-Egy olyan logikai partíciót adatok elérő lekérdezésekben, költséghatékonyabb, mint a több partíciót elérő lekérdezésekben,. Tranzakciók (a tárolt eljárások és eseményindítók) csak egyetlen logikai partíciót elemeinek szemben engedélyezettek.
+Azok a lekérdezések, amelyek egyetlen logikai partíción belül érik el az adatelérést, költséghatékonyabbak, mint több partícióhoz hozzáférő lekérdezések. A tranzakciókat (tárolt eljárásokban vagy eseményindítókban) csak egyetlen logikai partíció elemeire lehet engedélyezni.
 
-Hogyan kezeli az Azure Cosmos DB a partíciók kapcsolatos további információkért lásd: [logikai partíció](partition-data.md). (Azt nem megértéséhez a belső részleteit, illetve az alkalmazások futtatásához szükséges, de az itt hozzáadott inspirációkkal olvasói.)
+Ha többet szeretne megtudni arról, hogyan kezeli a Azure Cosmos DB a partíciókat, tekintse meg a [logikai partíciókat](partition-data.md). (Nem szükséges megérteni az alkalmazások létrehozásához és futtatásához szükséges belső adatokat, de itt egy kíváncsi olvasóhoz is hozzá lehet adni őket.)
 
-## <a id="choose-partitionkey"></a>Olyan partíciókulcsot
+## <a id="choose-partitionkey"></a>Partíciós kulcs kiválasztása
 
-Az alábbiakban látható egy olyan partíciókulcsot érdemes útmutatást:
+A következő hasznos útmutatást nyújt a partíciós kulcs kiválasztásához:
 
-* Egy olyan logikai partíciót tartalmaz felső korlátja 10 GB tárhelyet.  
+* Egyetlen logikai partíció 10 GB-os felső korláttal rendelkezik.  
 
-* Azure Cosmos-tárolók rendelkezik egy minimum 400 kérelemegység / másodperc (RU/s) átviteli sebességet. Ugyanazzal a partíciókulccsal kérelmeket nem haladhatja meg az átviteli sebességet, amely hozzá van rendelve egy partíciót. Kérelmek száma meghaladja a kiosztott átviteli sebesség, ha a kérések sebessége korlátozott. Ezért fontos, hogy az alkalmazáson belül "hotspotok" nem eredményez olyan partíciókulcsot válasszon.
+* Az Azure Cosmos-tárolók minimális átviteli sebessége 400 másodpercenként (RU/s). Az ugyanahhoz a partíciós kulcshoz küldött kérések nem léphetik túl a partícióhoz lefoglalt átviteli sebességet. Ha a kérések túllépik a lefoglalt átviteli sebességet, a kérések száma korlátozott. Ezért fontos, hogy olyan partíciós kulcsot válasszon, amely nem eredményez "forró pontokat" az alkalmazáson belül.
 
-* Válassza ki a partíciós kulcs, számos különféle értékeket és a hozzáférési mintákat, amelyek egyenlően vannak elosztva a logikai partíciókkal rendelkező. Ez segít az adatok és a tárolót a tevékenység elosztva a logikai partíció készletét, hogy az adatok tárolási és átviteli sebesség erőforrások a logikai partíció szét lehetnek osztva.
+* Válasszon egy olyan partíciós kulcsot, amely az értékek és a hozzáférési minták széles körét és a logikai partíciók közötti egyenletes eloszlást tartalmaz. Ez segít a tárolóban lévő adatok és tevékenységek elosztásában a logikai partíciók készletében, így az adattárolásra és az átviteli sebességre vonatkozó erőforrások eloszthatók a logikai partíciók között.
 
-* Válassza ki a partíciós kulcs, amely a számítási feladat összes partíciójára és egyenletesen idővel egyenlően osztja el. A választott partíciókulcsot kell terheléselosztást végeznie hatékony partíció lekérdezéseket és tranzakciókat a kitűzött célérték elemek elosztása több partíción a skálázhatóság érdekében szükség.
+* Olyan partíciós kulcsot válasszon, amely egyenletesen osztja el a munkaterhelést az összes partíción, és egyenletesen az idő múlásával. Az Ön által választott partíciós kulcsnak egyensúlyba kell hoznia a hatékony partíciós lekérdezéseket és tranzakciókat azzal a céllal, hogy a méretezhetőség érdekében több partíció között ossza ki az elemeket.
 
-* Jelöltek a partíciókulcsok tartalmazhatnak, amelyek gyakran jelennek meg a lekérdezéseket szűrőként tulajdonságai. Lekérdezések a partíciókulcs a szűrőpredikátumban fel hatékonyan továbbíthatók.
+* A partíciós kulcsok pályázói tartalmazhatnak olyan tulajdonságokat, amelyek gyakran megjelennek szűrőként a lekérdezésekben. A lekérdezések hatékonyan irányíthatók úgy, hogy a Filter predikátumban található partíciós kulcsot is megadhatják.
 
 ## <a name="next-steps"></a>További lépések
 
-* Ismerje meg [particionálási és horizontális skálázás az Azure Cosmos DB](partition-data.md).
-* Ismerje meg [kiosztott átviteli sebesség az Azure Cosmos DB](request-units.md).
-* Ismerje meg [az Azure Cosmos DB globális terjesztésének](distribute-data-globally.md).
+* Tudnivalók a [particionálásról és a horizontális skálázásról Azure Cosmos db](partition-data.md).
+* További információ [a kiépített átviteli sebességről Azure Cosmos db](request-units.md).
+* Ismerkedjen meg a [Azure Cosmos db globális eloszlásával](distribute-data-globally.md).

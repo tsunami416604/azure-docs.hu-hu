@@ -1,31 +1,29 @@
 ---
-title: Kiszolgáló nélküli API létrehozása az Azure Functions használatával | Microsoft Docs
-description: Kiszolgáló nélküli API létrehozása az Azure Functions használatával
-services: functions
+title: HTTP-végpont testreszabása Azure Functions
+description: Megtudhatja, hogyan szabhatja testre a HTTP-trigger végpontját Azure Functions
 author: mattchenderson
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
-ms.devlang: multiple
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 05/04/2017
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: f6a678e03818f1e1f2182b3b0dfab221d415dc72
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: f7729f5acb8b7b95004265f6802ba2feb1bc3cd7
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55698241"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70096760"
 ---
-# <a name="create-a-serverless-api-using-azure-functions"></a>Kiszolgáló nélküli API létrehozása az Azure Functions használatával
+# <a name="customize-an-http-endpoint-in-azure-functions"></a>HTTP-végpont testreszabása Azure Functions
 
-Az oktatóanyag bemutatja, hogyan hozhat létre hatékonyan skálázható API-kat az Azure Functions segítségével. Az Azure Functions számos beépített HTTP-eseményindítót és -kötést tartalmaz, így egyszerűen létrehozhat végpontokat különböző nyelveken (például Node.JS, C# stb.). Az oktatóanyag során egy HTTP-eseményindítót hozhat létre, hogy kezelje az API egyes műveleteit. Ezenkívül integrálhatja az API-t az Azure Functions-proxykkal, és API-utánzatokat hozhat létre, ezzel készítve elő az API később bővítését. Mindez a kiszolgáló nélküli Functions-környezetre épül, ezért nem kell aggódnia az erőforrások skálázása miatt – egyelőre koncentráljon API-logikára.
+Ebből a cikkből megtudhatja, hogyan hozhat létre a Azure Functions a jól méretezhető API-kat. Az Azure Functions számos beépített HTTP-eseményindítót és -kötést tartalmaz, így egyszerűen létrehozhat végpontokat különböző nyelveken (például Node.JS, C# stb.). Ebben a cikkben a HTTP-triggerek testre szabását fogja használni az API-kialakításban meghatározott műveletek kezeléséhez. Ezenkívül integrálhatja az API-t az Azure Functions-proxykkal, és API-utánzatokat hozhat létre, ezzel készítve elő az API később bővítését. Mindez a kiszolgáló nélküli Functions-környezetre épül, ezért nem kell aggódnia az erőforrások skálázása miatt – egyelőre koncentráljon API-logikára.
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
 [!INCLUDE [Previous quickstart note](../../includes/functions-quickstart-previous-topics.md)]
 
-Az eredményül kapott függvényt fogja használni az oktatóanyag hátralevő részében.
+Az eredményül kapott függvény a cikk további részében lesz felhasználva.
 
 ### <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -39,14 +37,14 @@ Alapértelmezés szerint a HTTP-eseményindító által aktivált függvény min
 
     ![HTTP-függvény testreszabása](./media/functions-create-serverless-api/customizing-http.png)
 
-1. A HTTP-eseményindító beállításait használja a táblázatban megadott.
+1. Használja a táblázatban megadott HTTP-trigger beállításait.
 
     | Mező | Mintaérték | Leírás |
     |---|---|---|
     | Engedélyezett HTTP-metódusok | Kiválasztott metódusok | Meghatározza, hogy mely HTTP-metódusokkal hívható meg a függvény |
     | Kiválasztott HTTP-metódusok | GET | Csak bizonyos HTTP-metódusoknak engedélyezi a függvény meghívását |
     | Útvonalsablon | /hello | Meghatározza, hogy melyik útvonalat használja a függvény meghívására |
-    | Engedélyszint | Névtelen | Nem kötelező: Lehetővé teszi a funkció elérhető API-kulcs nélkül |
+    | Engedélyszint | Névtelen | Nem kötelező: API-kulcs nélkül elérhetővé teszi a függvényt |
 
     > [!NOTE] 
     > Figyelje meg, hogy az `/api` nem szerepel az útvonalsablon alapútvonal-előtagjában, mivel ezt egy globális beállítás kezeli.
@@ -104,7 +102,7 @@ Ismételje meg a [Függvényalkalmazás létrehozása](https://docs.microsoft.co
     | Mező | Mintaérték | Leírás |
     |---|---|---|
     | Name (Név) | HelloProxy | Felhasználóbarát név, kizárólag kezelési célra |
-    | Útvonalsablon | / api/remotehello | Meghatározza, hogy melyik útvonalat használja a proxy meghívására |
+    | Útvonalsablon | /api/remotehello | Meghatározza, hogy melyik útvonalat használja a proxy meghívására |
     | Háttér-URL | https://%HELLO_HOST%/api/hello | Meghatározza a végpontot, ahova továbbítja a kéréseket a proxyn keresztül |
     
 1. Figyelje meg, hogy a proxyk nem adják hozzá az `/api` alapútvonal-előtagot, azt Önnek kell beírni az útvonalsablonba.
@@ -182,7 +180,7 @@ Az API-utánzat teszteléséhez hívja meg a `<YourProxyApp>.azurewebsites.net/a
 
 ## <a name="next-steps"></a>További lépések
 
-Ez az oktatóanyag bemutatta, hogyan lehet kiépíteni és testreszabni egy API-t az Azure Functions szolgáltatásban. Ezenkívül elsajátította, hogyan lehet több API-t, köztük utánzatokat egyesíteni egyetlen API-felületen. Ezekkel a technikákkal bármilyen összetettségű API-t kiépíthet az Azure Functions kiszolgáló nélküli számítási modelljének használatával.
+Ebből a cikkből megtudhatta, hogyan hozhat létre és szabhat testre API-t Azure Functionson. Ezenkívül elsajátította, hogyan lehet több API-t, köztük utánzatokat egyesíteni egyetlen API-felületen. Ezekkel a technikákkal bármilyen összetettségű API-t kiépíthet az Azure Functions kiszolgáló nélküli számítási modelljének használatával.
 
 A következő referenciák hasznára lehetnek az API továbbfejlesztése során:
 

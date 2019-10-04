@@ -1,99 +1,98 @@
-items:
 - name: A Bing Visual Search dokumentációja
   href: index.yml
 - name: Áttekintés
   items:
-  - name: Mi a Bing Visual Search API?
-    href: overview.md
-  - name: Bing Search API-k összehasonlítása
-    href: ../Bing-Web-Search/bing-api-comparison.md
-    maintainContext: true
+    - name: Mi a Bing Visual Search API?
+      href: overview.md
+    - name: Bing Search API-k összehasonlítása
+      href: ../Bing-Web-Search/bing-api-comparison.md
+      maintainContext: true
 - name: Gyors útmutatók
   items:
-  - name: REST API
-    items:
-    - name: A C# használata
-      href: quickstarts/csharp.md
-    - name: A Java használata
-      href: quickstarts/java.md
-    - name: A Node.js használata
-      href: quickstarts/nodejs.md
-    - name: A Python használata
-      href: quickstarts/python.md
-    - name: A Ruby használata
-      href: quickstarts/ruby.md
-    - name: A Go használata
-      href: quickstarts/go.md
-    expanded: true
-  - name: SDK
-    items:
-    - name: A C# használata
-      href: visual-search-sdk-c-sharp.md
-    - name: A Node.js használata
-      href: visual-search-sdk-node.md
-    - name: A Python használata
-      href: visual-search-sdk-python.md
-    expanded: true
+    - name: REST API
+      expanded: true
+      items:
+        - name: 'A C# használata'
+          href: quickstarts/csharp.md
+        - name: A Java használata
+          href: quickstarts/java.md
+        - name: A Node.js használata
+          href: quickstarts/nodejs.md
+        - name: A Python használata
+          href: quickstarts/python.md
+        - name: A Ruby használata
+          href: quickstarts/ruby.md
+        - name: A Go használata
+          href: quickstarts/go.md
+    - name: SDK
+      expanded: true
+      items:
+        - name: 'A C# használata'
+          href: visual-search-sdk-c-sharp.md
+        - name: A Node.js használata
+          href: visual-search-sdk-node.md
+        - name: A Python használata
+          href: visual-search-sdk-python.md
+        - name: A Java használata
+          href: visual-search-sdk-java.md
 - name: Oktatóanyagok
   items:
-  - name: Kép feltöltése
-    href: tutorial-visual-search-image-upload.md
-  - name: Kép területének kivágása és keresése
-    href: tutorial-visual-search-crop-area-results.md
+    - name: Kép feltöltése
+      href: tutorial-visual-search-image-upload.md
+    - name: Kép területének kivágása és keresése
+      href: tutorial-visual-search-crop-area-results.md
 - name: Példák
   items:
-  - name: Kódminták
-    href: https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Visual+Search
+    - name: Kódminták
+      href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Visual+Search'
 - name: Alapelvek
   items:
-  - name: Lekérdezések küldése
-    href: concepts/sending-queries.md
-  - name: Alapértelmezett rendszerképelemzések
-    href: default-insights-tag.md
-  - name: Bing-elemzések használata
-    href: bing-insights-usage.md
-  - name: Bing Visual Search API elemzése
-    href: bing-visual-search-stats.md
+    - name: Lekérdezések küldése
+      href: concepts/sending-queries.md
+    - name: Alapértelmezett rendszerképelemzések
+      href: default-insights-tag.md
+    - name: Bing-elemzések használata
+      href: bing-insights-usage.md
+    - name: Bing Visual Search API elemzése
+      maintainContext: true
+      href: ../bing-web-search/bing-web-stats.md
 - name: Útmutatók
   items:
-  - name: Elemzések lekérése tokennel
-    href: use-insights-token.md
-  - name: Miniatűrök átméretezése és körülvágása
-    href: resize-and-crop-thumbnails.md
-  - name: Kép keresése a kép megállapítástokenjeinek használatával
-    href: tutorial-visual-search-insights-token.md
-  - name: Egyoldalas webalkalmazás létrehozása
-    href: tutorial-bing-visual-search-single-page-app.md
+    - name: Elemzések lekérése tokennel
+      href: use-insights-token.md
+    - name: Miniatűrök átméretezése és körülvágása
+      maintainContext: true
+      href: ../bing-web-search/resize-and-crop-thumbnails.md
+    - name: Kép keresése a kép megállapítástokenjeinek használatával
+      href: tutorial-visual-search-insights-token.md
+    - name: Egyoldalas webalkalmazás létrehozása
+      href: tutorial-bing-visual-search-single-page-app.md
 - name: Referencia
   items:
-  - name: REST API 7-es verzió
-    href: https://aka.ms/bingvisualsearchreferencedoc
-  - name: SDK-k
-    items:
-    - name: .NET
-      href: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingvisualsearch?view=azure-dotnet
-    - name: Java
-      href: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/visualsearch?view=azure-java-stable
-    - name: Python
-      href: https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/visualsearch?view=azure-python
-  - name: Követelmények használata és megjelenítése
-    href: ../Bing-Web-Search/use-display-requirements.md
-    maintainContext: true
+    - name: REST API 7-es verzió
+      href: 'https://aka.ms/bingvisualsearchreferencedoc'
+    - name: SDK-k
+      items:
+        - name: .NET
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingvisualsearch?view=azure-dotnet'
+        - name: Java
+          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingvisualsearch?view=azure-java-stable'
+        - name: Python
+          href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/visualsearch?view=azure-python'
+    - name: Követelmények használata és megjelenítése
+      href: ../Bing-Web-Search/use-display-requirements.md
+      maintainContext: true
 - name: További források
   items:
-  - name: Nyelvi és régiós támogatás
-    href: language-support.md
-  - name: Ingyenes hozzáférési kulcs lekérése
-    href: https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api
-  - name: Próbálja ki!
-    href: https://aka.ms/bingvisualsearchtryforfree
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/bing-search
-  - name: User Voice
-    href: https://cognitive.uservoice.com/forums/555907-bing-search
-ms.openlocfilehash: 13e61130d7cd1225b00251991540a963c61b0b83
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57314891"
+    - name: Nyelvi és régiós támogatás
+      href: language-support.md
+    - name: Ingyenes hozzáférési kulcs lekérése
+      href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api'
+    - name: Próbálja ki!
+      href: 'https://aka.ms/bingvisualsearchtryforfree'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/bing-search'
+    - name: User Voice
+      href: 'https://cognitive.uservoice.com/forums/555907-bing-search'
+    - name: Megfelelőség
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

@@ -1,69 +1,76 @@
 ---
-title: Az Azure fejlesztési tárolóhelyek hírcsatorna egy egyéni NuGet használatával
+title: Egyéni NuGet-hírcsatorna használata az Azure dev Spaces szolgáltatásban
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-author: johnsta
-ms.author: johnsta
-ms.date: 05/11/2018
+author: zr-msft
+ms.author: zarhoads
+ms.date: 07/17/2019
 ms.topic: conceptual
-description: Egy egyéni NuGet, hogy eléri és használja a NuGet-csomagok egy Azure-fejlesztési területen hírcsatorna használja.
-keywords: Docker, Kubernetes, Azure, az AKS, az Azure Container Service, tárolók
-manager: ghogen
-ms.openlocfilehash: 1a000e378a9b8ecfb09d778fd6444e3f24b3df7b
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+description: Egyéni NuGet-hírcsatorna használata NuGet-csomagok eléréséhez és használatához az Azure fejlesztői tárhelyén.
+keywords: Docker, Kubernetes, Azure, AK, Azure Container Service, tárolók
+manager: gwallace
+ms.openlocfilehash: 9df095011c1ff66ff0c85993c7c85dffe62623b8
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57772466"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873254"
 ---
-#  <a name="use-a-custom-nuget-feed-in-an-azure-dev-space"></a>Egyéni nugettel hírcsatornaelemet egy Azure-fejlesztési terület
+#  <a name="use-a-custom-nuget-feed-in-an-azure-dev-space"></a>Egyéni NuGet-hírcsatorna használata az Azure fejlesztői tárhelyén
 
-A NuGet-hírcsatorna csomagforrások foglalandó projekt kényelmes módot biztosít. Az Azure fejlesztési tárolóhelyek kell érhetik el erre a hírcsatornára ahhoz, hogy a Docker-tárolóban megfelelően telepítve.
+A NuGet-hírcsatornák kényelmes módszert biztosítanak a projektek csomagjainak belefoglalására. Az Azure dev Spaces szolgáltatásnak el kell érnie ezt a hírcsatornát ahhoz, hogy a függőségeket megfelelően lehessen telepíteni a Docker-tárolóba.
 
-## <a name="set-up-a-nuget-feed"></a>Állítsa be a NuGet-hírcsatorna
+## <a name="set-up-a-nuget-feed"></a>NuGet-hírcsatorna beállítása
 
-A hírcsatorna NuGet beállításához:
-1. Adjon hozzá egy [referencia csomag](https://docs.microsoft.com/nuget/consume-packages/package-references-in-project-files) a a `*.csproj` fájlt a `PackageReference` csomópont.
+Adjon hozzá egy [csomag](https://docs.microsoft.com/nuget/consume-packages/package-references-in-project-files) - `*.csproj` referenciát a függőséghez a `PackageReference` csomópont alatt található fájlban. Példa:
 
-   ```xml
-   <ItemGroup>
-       <!-- ... -->
-       <PackageReference Include="Contoso.Utility.UsefulStuff" Version="3.6.0" />
-       <!-- ... -->
-   </ItemGroup>
-   ```
+```xml
+<ItemGroup>
+    <!-- ... -->
+    <PackageReference Include="Contoso.Utility.UsefulStuff" Version="3.6.0" />
+    <!-- ... -->
+</ItemGroup>
+```
 
-2. Hozzon létre egy [NuGet.Config](https://docs.microsoft.com/nuget/reference/nuget-config-file) fájlt a projektmappa fájllistájának.
-     * Használja a `packageSources` való hivatkozáshoz a NuGet-hírcsatorna helye szakaszban. Fontos: A NuGet-hírcsatorna nyilvánosan elérhetőnek kell lennie.
-     * Használja a `packageSourceCredentials` szakaszban beállíthatja a felhasználónév és jelszó hitelesítő adatokat. 
+Hozzon létre egy [NuGet. config](https://docs.microsoft.com/nuget/reference/nuget-config-file) fájlt a Project mappában, és `packageSources` állítsa `packageSourceCredentials` be a és a NuGet-hírcsatornához tartozó szakaszt. A `packageSources` szakasz tartalmazza a hírcsatorna URL-címét, amelynek elérhetőnek kell lennie az AK-fürtből. `packageSourceCredentials` A a hírcsatorna eléréséhez szükséges hitelesítő adatok. Példa:
 
-   ```xml
-   <packageSources>
-       <add key="Contoso" value="https://contoso.com/packages/" />
-   </packageSources>
+```xml
+<packageSources>
+    <add key="Contoso" value="https://contoso.com/packages/" />
+</packageSources>
 
-   <packageSourceCredentials>
-       <Contoso>
-           <add key="Username" value="user@contoso.com" />
-           <add key="ClearTextPassword" value="33f!!lloppa" />
-       </Contoso>
-   </packageSourceCredentials>
-   ```
+<packageSourceCredentials>
+    <Contoso>
+        <add key="Username" value="user@contoso.com" />
+        <add key="ClearTextPassword" value="33f!!lloppa" />
+    </Contoso>
+</packageSourceCredentials>
+```
 
-3. Verziókövetési használata:
-    - Hivatkozás `NuGet.Config` a a `.gitignore` -fájlba, a hitelesítő adatok nem véletlenül véglegesítéséhez, a forrás-tárházhoz.
-    - Nyissa meg a `azds.yaml` fájlt a projektben, és keresse meg a `build` szakaszt, és annak érdekében, hogy az alábbi kódrészlet beszúrása a `NuGet.Config` fájl lesznek szinkronizálva az Azure-ba, hogy azt használni, a tároló létrehozási folyamat során. (Alapértelmezés szerint az Azure fejlesztési szóközt nem szinkronizálja a fájlokat, amelyek megfelelnek `.gitignore` és `.dockerignore` szabályok.)
+Frissítse a Dockerfiles, és másolja `NuGet.Config` a fájlt a rendszerképbe. Példa:
 
-        ```yaml
-        build:
-        useGitIgnore: true
-        ignore:
-        - “!NuGet.Config”
-        ```
+```console
+COPY ["<project folder>/NuGet.Config", "./NuGet.Config"]
+```
 
+> [!TIP]
+> Windows, `NuGet.Config`, `Nuget.Config`, és `nuget.config` minden érvényes fájlnevet működik. Linux rendszeren a fájl `NuGet.Config` csak érvényes fájlnév. Mivel az Azure dev Spaces a Docker és a Linux szolgáltatást használja, `NuGet.Config`ezt a fájlt kell megnevezni. Az elnevezést manuálisan vagy a futtatásával `dotnet restore --configfile nuget.config`is kijavíthatja.
+
+
+Ha a git-t használja, nem kell a NuGet-csatornához tartozó hitelesítő adatokkal rendelkeznie. Adja `NuGet.Config` hozzá a `.gitignore` projektet a projekthez, hogy `NuGet.Config` a fájl ne legyen felvéve a verziókövetésba. Az Azure dev Spaces-nek szüksége lesz erre a fájlra a tároló képfordítási folyamata során, de alapértelmezés szerint `.gitignore` az `.dockerignore` a és a szinkronizálás során definiált szabályokat is figyelembe veszi. Ha módosítani szeretné az alapértelmezett beállítást, és engedélyezi az Azure dev `NuGet.Config` Spaces számára a `azds.yaml` fájl szinkronizálását, frissítse a fájlt:
+
+```yaml
+build:
+useGitIgnore: true
+ignore:
+- “!NuGet.Config”
+```
+
+Ha nem a git-t használja, kihagyhatja ezt a lépést.
+
+Amikor legközelebb a `azds up` Visual Studio `F5` Code-ban vagy a Visual Studióban futtatja, az Azure dev `NuGet.Config` Spaces szinkronizálja a fájlt a csomagok függőségeinek telepítéséhez.
 
 ## <a name="next-steps"></a>További lépések
 
-Miután végzett a fenti lépéseket, amikor legközelebb futtatja `azds up` (vagy nyomja le `F5` VSCode vagy a Visual Studio), Azure fejlesztői tárolóhelyek szinkronizálja a `NuGet.Config` fájlt az Azure-ban, amely majd egyes `dotnet restore` csomag telepítéséhez a tároló függőségeit.
-
+További információ a [NuGet és működéséről](https://docs.microsoft.com/nuget/what-is-nuget).

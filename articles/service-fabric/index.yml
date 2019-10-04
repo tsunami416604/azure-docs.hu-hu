@@ -5,16 +5,13 @@ metadata:
   title: Az Azure Service Fabric dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
   meta.description: 'Learn how to use Service Fabric middleware platform to package and deploy microservices for cloud-scale applications. Tutorials, API references, and code samples.'
   services: service-fabric
-  author: null
-  manager: carolz
+  author: georgewallace
+  manager: gwallace
   layout: LandingPage
-  ms.assetid: null
   ms.service: service-fabric
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 11/03/2017
-  ms.author: carolz
+  ms.author: gwallace
 abstract:
   description: 'Az Azure Service Fabric egy elosztott rendszerplatform, amely megkönnyíti a skálázható és megbízható mikroszolgáltatások és tárolók csomagolását, üzembe helyezését és kezelését. A fejlesztők és a rendszergazdák elkerülhetik az infrastruktúrával kapcsolatos összetett problémákat, és a kritikus fontosságú, nagy erőforrás-igényű, skálázható, megbízható és felügyelhető számítási feladatok megvalósítására koncentrálhatnak. Gyors útmutatóink, oktatóanyagaink és vonatkozó példáink segítenek az Azure Service Fabric szolgáltatás használatának megismerésében.'
 sections:

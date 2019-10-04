@@ -1,21 +1,21 @@
 ---
-title: A számítási feladatok – Azure SQL Data Warehouse elemzése |} A Microsoft Docs
+title: Az Azure SQL Data Warehouse a számítási feladatok elemzése |} A Microsoft Docs
 description: A lekérdezés rangsorolási az Azure SQL Data Warehouse a számítási feladatok elemzése technikákat.
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: workload management
+ms.subservice: workload-management
 ms.date: 03/13/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 434cbb18a109308844dbc7ff219d40948678e86e
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 54652ba573fb2ec2d064b7a85ad5728b73e71db3
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58310727"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67588750"
 ---
 # <a name="analyze-your-workload-in-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse a számítási feladatok elemzése
 

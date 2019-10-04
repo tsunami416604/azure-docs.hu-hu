@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 03/01/2019
 ms.author: danlep
 ms.openlocfilehash: 0a6d617d8aa03344edcfb8c73373e02edb5ee73f
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57552273"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179679"
 ---
 ### <a name="resource-availability"></a>Erőforrás rendelkezésre állása
 

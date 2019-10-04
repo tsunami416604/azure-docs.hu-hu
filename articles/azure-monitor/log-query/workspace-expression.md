@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 09/10/2018
 ms.author: bwren
 ms.openlocfilehash: b4bc652d54150b72cc64898464b3511a860bf011
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57996301"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60785676"
 ---
 # <a name="workspace-expression-in-azure-monitor-log-query"></a>az Azure Monitor naplólekérdezés Workspace() kifejezés
 
@@ -33,11 +33,11 @@ A `workspace` kifejezés szerepel az Azure Monitor lekérdezés adatokat lekérn
 
 - *Azonosító*: A munkaterület az alábbi táblázat a formátumok valamelyikével azonosítja.
 
-| Azonosító | Leírás | Példa
+| azonosító | Leírás | Példa
 |:---|:---|:---|
 | Erőforrás neve | A munkaterület (AVAGY "összetevő neve") emberi olvasható neve | Workspace("contosoretail") |
 | Minősített név | A munkaterület az űrlap a teljes név: "subscriptionName/resourceGroup/componentName" | workspace('Contoso/ContosoResource/ContosoWorkspace') |
-| ID (Azonosító) | A munkaterület GUID | workspace("b438b3f6-912a-46d5-9db1-b42069242ab4") |
+| azonosító | A munkaterület GUID | workspace("b438b3f6-912a-46d5-9db1-b42069242ab4") |
 | Azure-erőforrás azonosítója | Az Azure-erőforrás azonosítója | workspace("/subscriptions/e4227-645-44e-9c67-3b84b5982/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail") |
 
 

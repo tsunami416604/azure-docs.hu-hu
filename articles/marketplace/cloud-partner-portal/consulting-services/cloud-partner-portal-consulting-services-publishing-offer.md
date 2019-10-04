@@ -1,55 +1,49 @@
 ---
-title: Az Azure és a Dynamics 365 tanácsadási szolgáltatási ajánlat |} A Microsoft Docs
-description: Útmutató a meghatározása, és egy Azure-ban vagy a Dynamics 365 tanácsadási szolgáltatási ajánlat közzététele a Cloud Partner portálra.
+title: Az Azure és a Dynamics 365 Consulting Service ajánlata | Azure piactér
+description: Útmutató Azure vagy Dynamics 365 Consulting Service-ajánlat definiálásához és közzétételéhez a Cloud Partner Portalban.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: qianw211
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/30/2018
-ms.author: pbutlerm
-ms.openlocfilehash: e543c24a8e3549bc53d6074c7008f3d01fcc96c4
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.author: pabutler
+ms.openlocfilehash: 6c75664e558602429250420f1896b75a74546e67
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54228759"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71145454"
 ---
-# <a name="azure-and-dynamics-365-consulting-service-offer"></a>Az Azure és a Dynamics 365 tanácsadási szolgáltatás
+# <a name="azure-and-dynamics-365-consulting-service-offer"></a>Az Azure és a Dynamics 365 Consulting Service ajánlata
 
-Ez a cikk azt ismerteti, hogyan tehet közzé egy tanácsadási szolgáltatási ajánlat vagy a Microsoft <a href="https://azuremarketplace.microsoft.com">Azure Marketplace-en</a> vagy <a href="https://appsource.microsoft.com">AppSource</a>. A Microsoft alapuló megoldások <a href="https://dynamics.microsoft.com">Dynamics 365</a>, <a href="https://powerbi.microsoft.com">Power BI</a>, és <a href="https://powerapps.microsoft.com">PowerApps</a> szerepelhet az AppSource-on. Más Microsoft-alapján más ajánlatokra <a href="https://azure.microsoft.com/services">Azure-szolgáltatások</a> is listázva lehet az Azure piactéren.
+Ez a cikk azt ismerteti, hogyan tehet közzé egy tanácsadói szolgáltatást a Microsoft <a href="https://azuremarketplace.microsoft.com">Azure Marketplace</a> -en vagy a <a href="https://appsource.microsoft.com">AppSource</a>. A Microsoft <a href="https://dynamics.microsoft.com">Dynamics 365</a>-, <a href="https://powerbi.microsoft.com">Power bi</a>-és <a href="https://powerapps.microsoft.com">PowerApps</a> -alapú megoldások a AppSource-on is szerepelhetnek. Más Microsoft <a href="https://azure.microsoft.com/services">Azure-szolgáltatásokon</a> alapuló egyéb ajánlatok az Azure piactéren is megtekinthetők.
 
-## <a name="publishing-benefits"></a>Közzétételi lehetőségekről
+## <a name="publishing-benefits"></a>Közzétételi előnyök
 
-Vagy a Microsoft piacterein való közzététel a következő előnyökkel jár:
+A Microsoft piactéren való közzététel a következő előnyökkel jár:
 
-- A vállalat előléptetése a Microsoft márka kihasználva.
-- Vélhetően az appsource-ban több mint 100 millió Office 365 és Dynamics 365-felhasználót érhet el, és az Azure piactéren több mint 200 000 szervezetek számára érhető el.
-- Kiváló minőségű érdeklődők le ezeket a piactér.
-- A szolgáltatások által a Microsoft a mező és telefonos értékesítést csapat előléptetett beolvasása.
+- A Microsoft márka kihasználásával népszerűsítheti vállalatát.
+- Lehetséges, hogy több mint 100 000 000 Office 365-és Dynamics 365-felhasználót AppSource, és az Azure Marketplace-en keresztül több mint 200 000 szervezetet érhet el.
+- Kiváló minőségű érdeklődőket érhet el ezekből a piactérekről.
+- A Microsoft és a kereskedelmi csapat által támogatott szolgáltatások.
 
-## <a name="publish-a-consulting-service-offer"></a>A tanácsadási szolgáltatási ajánlat közzététele
+## <a name="publish-a-consulting-service-offer"></a>Tanácsadási szolgáltatási ajánlat közzététele
 
-Ez a szakasz ismerteti az elemek egy tanácsadási szolgáltatási ajánlat közzétételének. Közzététel a következő fő részre oszlik:
+Ez a szakasz a Consulting Service-ajánlat közzétételének elemeit ismerteti. A közzététel a következő fő részekre oszlik:
 
-- [Tanácsadási szolgáltatás Előfeltételek](./cpp-consulting-service-prerequisites.md) listák ajánlat közzététel tanácsadási szolgáltatás követelményei:
+- A [tanácsadási szolgáltatás előfeltételei](./cpp-consulting-service-prerequisites.md) a tanácsadási szolgáltatások közzétételének követelményeit sorolja fel:
  
+    - Microsoft Azure
     - Dynamics 365 for Customer Engagement 
-    - Dynamics 365 for Finance és Operations 
+    - Dynamics 365 pénzügyi & műveletekhez 
     - Dynamics 365 Business Central 
     - Power BI 
     - PowerApps
-- [Hozzon létre egy új ajánlat](./cpp-consulting-service-create-offer.md) tanácsadási szolgáltatási ajánlat bejegyzés létrehozása a Cloud Partner portálra használatával szükséges lépéseket tartalmazza:
-    - [Az ajánlat beállításainak megadása](./cpp-consulting-service-define-offer-settings.md).
-    - [Adja meg, storefront részletei, és tegye közzé az Azure Marketplace-en vagy az appsource-on-e.](./cpp-consulting-service-storefront-details.md)
-- [Az ajánlat közzététele](./cpp-consulting-service-publish-offer.md) azt ismerteti, hogyan lehet elküldeni az ajánlat közzététele.
+- [Hozzon létre egy új ajánlatot](./cpp-consulting-service-create-offer.md) , amely felsorolja a tanácsadási szolgáltatások ajánlati bejegyzésének létrehozásához szükséges lépéseket a Cloud Partner Portal használatával:
+    - [Adja meg az ajánlat beállításait](./cpp-consulting-service-define-offer-settings.md).
+    - [Adja meg a kirakat adatait, valamint azt, hogy közzé kell-e tenni az Azure Marketplace-en vagy a AppSource.](./cpp-consulting-service-storefront-details.md)
+- Az [ajánlat közzététele](./cpp-consulting-service-publish-offer.md) azt ismerteti, hogyan lehet elküldeni az ajánlatot közzétételre.
 
 ## <a name="next-steps"></a>További lépések
 
-Mielőtt ezeket a lépéseket, hogy a tanácsadási szolgáltatási ajánlat közzététele, hogy meg kell felelnie [az Előfeltételek](./cpp-consulting-service-prerequisites.md) egy tanácsadási szolgáltatási ajánlat közzétételéhez.
+Mielőtt elvégzi ezeket a lépéseket a tanácsadási szolgáltatás ajánlatának közzétételéhez, meg kell felelnie a Consulting Service-ajánlat közzétételének [előfeltételeinek](./cpp-consulting-service-prerequisites.md) .

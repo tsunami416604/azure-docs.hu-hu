@@ -8,11 +8,11 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/09/2018
 ms.openlocfilehash: 8942223ce233d424e2368e90d2fbac92b1a443f3
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53544073"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60525467"
 ---
 # <a name="handling-of-transient-connectivity-errors-for-azure-database-for-mysql"></a>Átmeneti kapcsolati hibákat kezelése az Azure Database for MySQL-hez
 

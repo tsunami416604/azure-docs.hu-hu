@@ -1,126 +1,154 @@
 ---
-title: CI/CD-folyamat létrehozása Node.js-hez az Azure DevOps Projecttel | Rövid útmutató
-description: A DevOps Project megkönnyíti az Azure-ral való ismerkedést. A segítségével néhány gyors lépésben elindíthat egy alkalmazást a választott Azure-szolgáltatásban.
+title: CI/CD-folyamat létrehozása a Node. js-hez Azure DevOps Projects
+description: DevOps Projects megkönnyíti az Azure megkezdését. A segítségével néhány gyors lépésben elindíthat egy alkalmazást a választott Azure-szolgáltatásban.
 ms.prod: devops
 ms.technology: devops-cicd
 services: vsts
 documentationcenter: vs-devops-build
 author: mlearned
-manager: douge
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 07/09/2018
 ms.author: mlearned
-ms.custom: mvc
+ms.custom: mvc, seo-javascript-september2019
 monikerRange: vsts
-ms.openlocfilehash: 3a7b01cbfcf219d8cfe325be1b1b49366f8636e9
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
-ms.translationtype: HT
+ms.openlocfilehash: 9fc276626d2a863f7f2e53cd7312ab8b3be513dd
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47410085"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71815771"
 ---
-# <a name="create-a-cicd-pipeline-for-nodejs-with-the-azure-devops-project"></a>CI/CD-folyamat létrehozása Node.js-hez az Azure DevOps Projecttel
+#  <a name="quickstart-create-a-cicd-pipeline-in-azure-pipelines-for-nodejs-with-azure-devops-projects"></a>Gyors útmutató: CI/CD-folyamat létrehozása az Azure-folyamatokban Node. js-hez Azure DevOps Projects
 
-Az Azure DevOps Projecttel egyszerűen létrehozhat Azure-erőforrásokat, és beállíthat egy folyamatos integrációs (CI) és folyamatos kézbesítési (CD) folyamatot Node.js-alkalmazáshoz az Azure DevOps Services szolgáltatásban.  
+Azure DevOps Projects az Azure-erőforrások létrehozását és a Node. js-alkalmazás folyamatos integrációs (CI) és folyamatos kézbesítési (CD) folyamatát mutatja be az Azure-folyamatokban.  
 
 Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy ingyenes fiókot a [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) segítségével.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Az Azure DevOps Project létrehoz egy CI-/CD-folyamatot az Azure-ban.  Létrehozhat egy ingyenes, **új Azure DevOps Services**-szervezetet, vagy használhat egy **meglévő szervezetet** is.  A DevOps Project az **Azure-erőforrásokat** is létrehozza a választott **Azure-előfizetésben**.
+A DevOps Projects egy CI/CD-folyamatot hoz létre az Azure-folyamatokban. Létrehozhat egy új Azure DevOps-szervezetet, vagy használhat egy meglévő céget is. A DevOps Projects is létrehoz az Azure-erőforrások tetszőleges Azure-előfizetésben.
 
 1. Jelentkezzen be a [Microsoft Azure Portalra](https://portal.azure.com).
 
-1. A bal oldali navigációs sávban válassza az **Erőforrás létrehozása** ikont, majd keresse meg a **DevOps Projectet**.  Válassza a **Létrehozás** elemet.
+1. A bal oldali panelen válassza az **erőforrás létrehozása**lehetőséget, majd keressen rá **DevOps projects**. 
 
     ![Folyamatos kézbesítés konfigurálásának indítása](_img/azure-devops-project-nodejs/fullbrowser.png)
 
 ## <a name="select-a-sample-application-and-azure-service"></a>Mintaalkalmazás és Azure-szolgáltatás kiválasztása
 
-1. Válassza a **Node.js** mintaalkalmazást.  A Node.js-minták esetén több alkalmazási keretrendszer közül választhat.
+1. Válassza ki a Node. js-minta alkalmazást.  
+    A Node.js-minták esetén több alkalmazási keretrendszer közül választhat.
 
-1. Az alapértelmezett mintakeretrendszer az **Express.js**. Hagyja meg az alapértelmezett beállítást, majd válassza a **Tovább** gombot.  
+1. Az alapértelmezett minta keretrendszer Express. js. Hagyja meg az alapértelmezett beállítást, majd kattintson a **tovább**gombra.  
+    Az alapértelmezett üzembehelyezési cél a **Web App on Windows**.  Az alkalmazás-keretrendszer, amelyet korábban választott, az itt elérhető Azure-szolgáltatás telepítési célhelyét diktálja.  
 
-1. Az alapértelmezett üzembehelyezési cél a **Web App on Windows**.  Az előző lépésekben kiválasztott alkalmazás-keretrendszer meghatározza az Azure-szolgáltatás üzembehelyezési céljának itt elérhető típusát.  Hagyja meg az alapértelmezett szolgáltatást, majd válassza a **Tovább** gombot.
+2. Hagyja meg az alapértelmezett szolgáltatást, majd válassza a **tovább**lehetőséget.
  
-## <a name="configure-azure-devops-services-and-an-azure-subscription"></a>Az Azure DevOps Services és egy Azure-előfizetés konfigurálása 
+## <a name="configure-azure-devops-and-an-azure-subscription"></a>Az Azure DevOps és az Azure-előfizetés konfigurálása 
 
-1. Hozzon létre egy **új** Azure DevOps Services-szervezetet, vagy válasszon egy **meglévő** szervezetet.  Válasszon egy **nevet** az Azure DevOps-projektnek.  Válassza ki az **Azure-előfizetését**, a **helyet**, és adjon egy **nevet** az alkalmazásnak.  Ha elkészült, kattintson a **Kész** gombra.
+1. Hozzon létre egy új Azure DevOps-szervezetet, vagy válasszon egy meglévő szervezetet. 
 
-1. Az **Azure DevOps Project irányítópultja** néhány percen belül betöltődik az Azure Portalon.  A rendszer beállít egy mintaalkalmazást az Azure DevOps Services-szervezetben található adattárban, végrehajt egy buildelést, és üzembe helyezi az alkalmazást az Azure-ban.  Ez az irányítópult biztosítja a **kódtár**, az **Azure CI/CD-folyamat** és az **Azure-ban található alkalmazás** áttekinthetőségét.  Az irányítópult jobb oldalán válassza a **Tallózást** a futó alkalmazás megtekintéséhez.
+    a. Adja meg a projekt nevét.
+
+    b. Válassza ki az Azure-előfizetést és-helyet, adjon meg egy nevet az alkalmazásnak, majd válassza a **kész**lehetőséget.  
+    Néhány perc elteltével megjelenik a DevOps Projects irányítópult a Azure Portal. Egy minta alkalmazás az Azure DevOps-szervezet egy tárházában van beállítva, a rendszer létrehoz egy buildet, és az alkalmazást üzembe helyezi az Azure-ban. Ezt az irányítópultot a kódtárat a CI/CD-folyamat és az Azure-ban az alkalmazás rálátást biztosít.
+     
+3. A futó alkalmazás megtekintéséhez válassza a **Tallózás** lehetőséget.
 
     ![Irányítópult nézet](_img/azure-devops-project-nodejs/dashboardnopreview.png) 
     
-Az Azure DevOps Project automatikusan konfigurálja a CI-buildet és a kiadási eseményindítót.  Most már készen áll, hogy egy csapattal közösen dolgozzon a Node.js-alkalmazáson egy olyan CI-/CD-folyamat használatával, amely automatikusan üzembe helyezi a legújabb munkáját a webhelyen.
+DevOps Projects automatikusan konfigurálta a CI-Build és a kiadási triggert.  Most már készen áll arra, hogy együttműködjön egy, a Node. js-alkalmazásban található csapattal a CI/CD folyamattal, amely automatikusan üzembe helyezi a legújabb munkát a webhelyen.
 
 ## <a name="commit-code-changes-and-execute-cicd"></a>Kódmódosítások véglegesítése és a CI/CD végrehajtása
 
-Az Azure DevOps Project létrehozott egy Git-adattárat a Azure DevOps Services-szervezetben vagy a GitHub-fiókban.  Az adattár megtekintéséhez és az alkalmazásban történő kódmódosítások végrehajtásához kövesse az alábbi lépéseket.
+A DevOps Projects egy git-tárházat hoz létre az Azure Reposben vagy a GitHubban. Az alábbi lépéseket követve megtekintheti az adattárat, és programkód-módosításokat hajthat végre az alkalmazásban.
 
-1. A DevOps Project irányítópultjának bal oldalán válassza a **főághoz** tartozó hivatkozást.  Ez a hivatkozás megnyitja az újonnan létrehozott Git-adattár nézetét.
+1. A DevOps Projects irányítópult bal oldalán válassza ki a fő ág hivatkozását.  
+Ez a hivatkozás megnyitja az újonnan létrehozott Git-adattár nézetét.
 
-1. Az adattárklón URL-címének megtekintéséhez válassza a **Klónozás** lehetőséget a böngésző jobb felső részén. A Git-adattárat klónozhatja például a kedvenc IDE-környezetébe.  A következő néhány lépésben a webböngésző segítségével közvetlenül a főágban hajthat végre és véglegesíthet kódmódosításokat.
+1. A tárház klónozási URL-címének megtekintéséhez válassza a böngésző jobb felső sarkában található **klónozás** elemet.   
+    A Git-adattárat klónozhatja például a kedvenc IDE-környezetébe. A következő néhány lépésben a webböngésző segítségével közvetlenül a főágban hajthat végre és véglegesíthet kódmódosításokat.
 
-1. A böngésző bal oldalán keresse meg a **views/index.pug** fájlt.
+1. A böngésző bal oldalán lépjen a **views/index. mopsz** fájlra.
 
-1. Válassza a **Szerkesztés** elemet, és módosítsa a h2 fejlécet.  Írja be például, hogy **Get started right away with the Azure DevOps Project** (Azonnali kezdés az Azure DevOps Projecttel), vagy hajtson végre néhány módosítást.
+1. Válassza a **Szerkesztés**lehetőséget, majd módosítsa a H2-fejlécet.  
+    Írja be például a következőt: **első lépések azonnal Azure DevOps projects** , vagy végezze el a módosítást.
 
-1. Válassza a **Véglegesítés** elemet, majd mentse a módosításokat.
+1. Válassza ki **véglegesítése**, majd mentse a módosításokat.
 
-1. A böngészőjében lépjen az **Azure DevOps Project irányítópultjára**.  Látni fogja, hogy folyamatban van egy build.  Az imént végrehajtott módosítások automatikusan létrejönnek és települnek egy Azure CI/CD-folyamaton keresztül.
+1. A böngészőben nyissa meg a DevOps Projects irányítópultot.   
+Ekkor megjelenik egy Build folyamatban. Az imént létrehozott módosításokat a rendszer automatikusan felépíti és telepíti a CI/CD-folyamaton keresztül.
 
 ## <a name="examine-the-azure-cicd-pipeline"></a>Az Azure CI-/CD-folyamat vizsgálata
 
-Az Azure DevOps Project automatikusan konfigurált egy teljes Azure CI-/CD-folyamatot az Azure DevOps Services-szervezetben.  Vizsgálja meg és szükség szerinti szabja testre a folyamatot.  Az Azure DevOps Services buildelési és kiadási folyamatainak megismeréséhez kövesse az alábbi lépéseket.
+Az előző lépésben DevOps Projects automatikusan konfigurálta a teljes CI/CD-folyamatot. Vizsgálja meg és szükség szerinti szabja testre a folyamatot. Az alábbi lépéseket követve Ismerkedjen meg a létrehozási és a kiadási folyamatokkal.
 
-1. Az Azure DevOps Project irányítópultjának **tetején** válassza a **Buildelési folyamatok** lehetőséget.  Ez a hivatkozás megnyit egy böngészőlapot, és megnyitja az új projekt Azure DevOps Services buildelési folyamatát.
+1. Válassza ki a DevOps Projects irányítópult tetején lévő **hozhat létre folyamatokat**.  
+Ez a hivatkozás egy böngésző fület és az új projekthez tartozó Build folyamatot nyitja meg.
 
-1. Helyezze az egérmutatót a buildelési folyamat jobb oldalára, az **Állapot** mező mellé. Válassza a megjelenő **három pontot**.  Ez a művelet megnyitja a menüt, ahol több tevékenységet is végrehajthat, például várakozási sorba helyezhet egy új buildet, szüneteltethet egy buildet, vagy szerkesztheti a buildfolyamatot.
+1. Mutasson az **állapot** mezőre, majd válassza a három pontot (...).  
+    Ez a művelet egy menüt nyit meg, ahol számos tevékenységet indíthat el, például egy új Build kiépítését, egy Build szüneteltetését és a build folyamat szerkesztését.
 
 1. Válassza a **Szerkesztés** elemet.
 
-1. Ebben a nézetben **megvizsgálhatja a buildelési folyamathoz tartozó különböző feladatokat**.  A build különböző feladatokat hajt végre, például erőforrásokat olvas be a Git-adattárból, visszaállítja a függőségeket, és közzéteszi az üzembe helyezésekhez használt kimeneteket.
+1. Ezen az ablaktáblán keresse meg a különböző feladatok a a buildelési folyamat.  
+A Build számos feladatot hajt végre, például a git-tárházból beolvassa a forrásokat, visszaállítja a függőségeket, és közzéteszi az üzembe helyezéshez használt kimeneteket.
 
-1. A buildelési folyamat tetején válassza a **buildelési folyamat nevét**.
+1. A létrehozási folyamat elején jelölje ki a buildelési folyamat neve.
 
-1. Módosítsa a buildelési folyamat **nevét** egy közérthetőbb névre.  Válassza a **mentésre és várakozási sorba helyezésre** szolgáló elemet, majd a **Mentést**.
+1. Módosítsa a buildelési folyamat nevét egy leíró, jelölje be **várólistára & mentése**, majd válassza ki **mentése**.
 
-1. A buildelési folyamat neve alatt válassza az **Előzményeket**.  Ekkor megjelenik a build legutóbbi módosításainak naplója.  Az Azure DevOps Services nyomon követi a buildelési folyamat módosításait, és lehetővé teszi a verziók összehasonlítását.
+1. A buildelési folyamat neve alatt válassza az **Előzményeket**.   
+Az a **előzmények** panelen láthatja, hogy az útmutató legutóbbi módosításait build auditnapló.  Azure folyamatok nyomon követi, hogy az összeállítási folyamat végzett módosításokat, és lehetővé teszi, hogy verziójának összehasonlítása.
 
-1. Válassza az **Eseményindítókat**.  Az Azure DevOps Project automatikusan létrehozott egy CI-eseményindítót, és az adattárban történő minden véglegesítés egy új buildet indít el.  Lehetősége van belefoglalni az ágakat, vagy kizárni őket a CI-folyamatból.
+1. Válassza az **Eseményindítókat**.   
+ A DevOps Projects automatikusan létrejön egy CI eseményindító, és a tárházban minden véglegesítéshez elindul egy új létrehozást.  Lehetősége van belefoglalni az ágakat, vagy kizárni őket a CI-folyamatból.
 
-1. Válassza a **Megtartást**.  A forgatókönyv alapján megadhat szabályzatokat bizonyos számú build megtartására vagy eltávolítására.
+1. Válassza a **Megtartást**.   
+A forgatókönyvtől függően a szabályzatokat, hogy megtartja vagy eltávolítja a buildek bizonyos számú is megadhat.
 
-1. Válassza ki a **Létrehozás és kiadást**, majd a **Kiadásokat**.  Az Azure DevOps Project létrehozott egy Azure DevOps Services-kiadási folyamatot, amely az Azure-ban történő üzembe helyezéseket kezeli.
+1. Válassza a **Létrehozás és kiadás**, majd a **kiadások**lehetőséget.  
+ DevOps Projects létrehoz egy kiadási folyamatot az Azure-ba történő üzembe helyezések kezeléséhez.
 
-1. A böngésző bal oldalán válassza a kiadási folyamat melletti **három pontot**, majd a **Szerkesztés** elemet.
+1. A bal oldalon válassza a kiadási folyamat melletti három pontot (...), majd válassza a **Szerkesztés**lehetőséget.  
+A kiadási folyamat meghatározza a kiadási folyamatot.
 
-1. A kiadási folyamat tartalmaz egy **folyamatot**, amely meghatározza a kiadási folyamatot.  Az **Összetevők** alatt válassza az **Elvetést**.  Az előző lépésekben megvizsgált buildelési folyamat létrehozza a munkadarabhoz használt kimenetet. 
+12. Az **Összetevők** alatt válassza az **Elvetést**.  
+    Az előző lépésekben megvizsgált buildelési folyamat létrehozza a munkadarabhoz használt kimenetet. 
 
-1. Az **Elvetés** ikontól jobbra lévő területen válassza ki a **folyamatos üzembehelyezési eseményindítót**.  Ez a kiadási folyamat egy olyan engedélyezett CD-eseményindítóval rendelkezik, amely minden alkalommal végrehajtja az üzembe helyezést, amikor elérhetővé válik egy új buildmunkadarab.  Ha szeretné, letilthatja az eseményindítót, így az üzembe helyezéseket manuálisan kell majd végrehajtani. 
+1. Mellett a **Drop** ikonra, válassza ki a **a folyamatos készregyártás eseményindítója**.  
+A kibocsátási folyamat rendelkezik egy engedélyezett CD eseményindító, amely futtatja a központi telepítés minden alkalommal, amikor egy új buildösszetevő áll rendelkezésre. Szükség esetén letilthatja az eseményindítót, hogy a központi telepítések igénylik manuális végrehajtását. 
 
-1. A böngésző bal oldalán válassza a **Feladatokat**.  A feladatok az üzembehelyezési folyamat által végrehajtott tevékenységek.  Ebben a példában létrejött egy feladat az **Azure App Service** üzembe helyezéséhez.
 
-1. A böngésző jobb oldalán válassza a **Kiadások megtekintését**.  Ebben a nézetben a kiadások előzményei jelennek meg.
+1. A bal oldalon válassza ki a **feladatok**.   
+A feladatok olyan tevékenységek, amely végrehajtja a központi telepítési folyamat. Ebben a példában egy feladatot hoztak létre a Azure App Serviceba való üzembe helyezéshez.
 
-1. Válassza az egyik kiadás mellett a **három pontot**, majd a **Megnyitást**.  Ebben a nézetben több menüt is megtekinthet, például a kiadás összegzését, a társított munkaelemeket vagy a teszteket.
 
-1. Válassza a **Véglegesítéseket**.  Ez a nézet az adott üzembe helyezéshez hozzárendelt kódvéglegesítéseket jeleníti meg. 
+1. A jobb oldalon válassza ki a **verziók megtekintéséhez**.  
+Ebben a nézetben a kiadások előzményei jelennek meg.
 
-1. Válassza a **Naplókat**.  A naplók hasznos információkat tartalmaznak az üzembehelyezési folyamattal kapcsolatban.  Ezek az üzembe helyezések alatt és után is megtekinthetők.
+1. A kiadások egyik melletti három pontra (...), majd válassza ki és **nyílt**.  
+Ismerje meg, például a kiadás összegzését, a társított munkaelemekhez és a tesztek a több menük találhatók meg.
+
+1. Válassza a **Véglegesítéseket**.   
+Ez a nézet megjeleníti az adott központi telepítési társított kód véglegesítéseket.
+
+1. Válassza a **Naplókat**.  
+A naplók hasznos információkat tartalmaznak az üzembehelyezési folyamattal kapcsolatban. Ezek az üzembe helyezések alatt és után is megtekinthetők.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rájuk szükség, törölheti az ebben a rövid útmutatóban létrehozott Azure App Service-t és a kapcsolódó erőforrásokat az Azure DevOps Project irányítópultján található **Törléssel**.
+Az Azure App Service és a többi kapcsolódó erőforrást, ha többé már nincs szükség rájuk létrehozott törölheti. Használja a **törlése** funkciókat a DevOps Projects-irányítópulton.
+
 
 ## <a name="next-steps"></a>További lépések
 
-Amikor ebben a rövid útmutatóban konfigurálta a CI-/CD-folyamatot, automatikusan létrejött egy build és egy kiadási folyamat az Azure DevOps Projectben. A csapat igényeihez igazodva módosíthatja ezt a buildet és a kiadási folyamatokat. További tudnivalókért lásd ezt az oktatóanyagot:
+A CI/CD-folyamat beállításakor a rendszer automatikusan létrehozta a létrehozási és kiadási folyamatokat. A csapat igényeihez igazodva módosíthatja ezt a buildet és a kiadási folyamatokat. A CI/CD folyamattal kapcsolatos további tudnivalókért tekintse meg a következőt:
 
 > [!div class="nextstepaction"]
 > [CD-folyamat testreszabása](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)

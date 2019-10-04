@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 01/16/2019
 ms.author: bwren
 ms.openlocfilehash: dc3a754bd1a9f689f4b24b9ee2c1e4cbc0611684
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751361"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60519903"
 ---
 # <a name="transition-from-log-analytics-log-search-to-azure-monitor-logs"></a>Áttérés a Log Analytics naplóbeli keresés a Azure Monitor naplóira
 Közelmúltban váltotta fel új felülettel jelentkezik a Azure Monitor-naplók elemzése a Log Analytics naplóbeli keresés. A keresési oldalon keresztül érhető el jelenleg továbbra is a **naplók (klasszikus)** menüpontja a **Log Analytics-munkaterületek** oldal az Azure portálon, de a rendszer eltávolítja 2019. február 15. Ez a cikk leírja a két megközelítés segítségével közötti különbségeket, áttérés a naplóbeli keresés. 

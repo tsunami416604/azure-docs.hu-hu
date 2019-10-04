@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az ONNX-modell használata Windows gépi tanulás – Custom Vision Service'
-titlesuffix: Azure Cognitive Services
+title: 'Oktatóanyag: ONNX-modell használata Windows ML-Custom Vision Service'
+titleSuffix: Azure Cognitive Services
 description: Megismerheti, hogyan hozhat létre az Azure Cognitive Servicesből exportált ONNX modellt használó Windows UWP-alkalmazást.
 services: cognitive-services
 author: larryfr
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 03/21/2019
+ms.date: 07/03/2019
 ms.author: larryfr
-ms.openlocfilehash: af1b96b4ab47053a6737893832b484372ed37e99
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 65956ab9fa182794b4cb9ac1fc1800198f2dcdaa
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351864"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561112"
 ---
-# <a name="tutorial-use-an-onnx-model-from-custom-vision-with-windows-ml-preview"></a>Oktatóanyag: A Custom Vision az ONNX-modell használata Windows Machine Learning (előzetes verzió)
+# <a name="tutorial-use-an-onnx-model-from-custom-vision-with-windows-ml-preview"></a>Oktatóanyag: Custom Vision ONNX modell használata Windows ML-vel (előzetes verzió)
 
 Megismerheti, hogyan használhatja a Custom Vision Service-ből exportált ONNX modellt Windows ML-gel (előzetes verzió).
 
@@ -67,8 +67,8 @@ Saját modell esetén a következőképpen járjon el:
 
 1. A Megoldáskezelőben válassza ki az ONNX-fájlt az Assets mappából. Módosítsa a fájl következő tulajdonságait:
 
-    * __Build Action (Felépítési művelet)__ -> __Content (Tartalom)__
-    * __Copy to Output Directory (Másolás a kimeneti könyvtárba)__ -> __Copy if newer (Másolás, ha újabb)__
+    * __Build Action (Felépítési művelet)__  -> __Content (Tartalom)__
+    * __Copy to Output Directory (Másolás a kimeneti könyvtárba)__  -> __Copy if newer (Másolás, ha újabb)__
 
 1. Módosítsa az `_onnxFileNames` változót az ONNX-fájl nevére. A `ClassLabel` értékét is módosítsa a modellben szereplő címkék számára.
 
@@ -85,4 +85,4 @@ Egyéb exportálási lehetőségekről és a Custom Vision modell használatár�
 * [Exportált CoreML modell használata Swift iOS-alkalmazásban](https://go.microsoft.com/fwlink/?linkid=857726)
 * [Exportált CoreML modell használata iOS alkalmazásban Xamarinnal](https://github.com/xamarin/ios-samples/tree/master/ios11/CoreMLAzureModel)
 
-Az ONNX-modellek Windows ML-lel történő használatáról bővebb információk találhatók a [Modell integrálása az alkalmazásba a Windows ML használatával](https://docs.microsoft.com/windows/uwp/machine-learning/integrate-model) dokumentumban.
+Az ONNX-modellek Windows ML-lel történő használatáról bővebb információk találhatók a [Modell integrálása az alkalmazásba a Windows ML használatával](/windows/ai/windows-ml/integrate-model) dokumentumban.

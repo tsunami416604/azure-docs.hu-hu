@@ -16,11 +16,11 @@ ms.date: 06/02/2017
 ms.author: alkohli
 ms.custom: ''
 ms.openlocfilehash: e05a37122647d4979089f0ba00b1fc15f9b84b0f
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433654"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60321732"
 ---
 # <a name="replace-a-hardware-component-on-your-storsimple-8000-series-device"></a>A StorSimple 8000 sorozatú eszköz a hardverkomponensek cseréje
 
@@ -34,7 +34,7 @@ A hardver összetevő helyettesítő oktatóanyagok ismertetik a hardverösszete
 ### <a name="safety-icon-conventions"></a>Biztonsági ikon konvenciók
 A következő táblázat ismerteti az ezekben az oktatóanyagokban használt biztonsági ikonokat. Figyeljen biztonsági ikonok távolítsa el, és cserélje le a alkatrészek lépésein.
 
-| Ikon | Szöveg | További információ |
+| Ikon | Text | További információ |
 |:--- |:--- |:--- |
 | ![Figyelmeztetés ikon](./media/storsimple-hardware-component-replacement/Warning.png) |**DANGER!** |Azt jelzi, hogy a veszélyes helyzet eredményező, ha nem kerülni, halála vagy komoly kárt. Ez a jel szó a rendkívüli helyzetekben korlátozódik. |
 | ![Figyelmeztetés ikon](./media/storsimple-hardware-component-replacement/Warning.png) |**FIGYELMEZTETÉS!** |Azt jelzi, hogy nem elkerülhető, ha a haláleset vagy komoly kárt okozhat a veszélyes helyzet. |
@@ -106,8 +106,8 @@ Az elsődleges ház és a EBOD ház is rendelkezik a meghajtó szolgáltatója m
 |:--- |:--- |
 | 1 |PCM 0 |
 | 2 |PCM 1 |
-| 3 |0. vezérlő |
-| 4 |1. vezérlő |
+| 3 |Vezérlő 0 |
+| 4 |Vezérlő 1 |
 
 ![Az eszköz EBOD ház beépülő modulok csatlakozópanel meghibásodása](./media/storsimple-hardware-component-replacement/IC769599.png)
 

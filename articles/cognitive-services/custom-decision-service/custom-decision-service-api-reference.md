@@ -1,7 +1,7 @@
 ---
-title: API-referencia – Custom Decision Service
+title: API-hivatkozás – Custom Decision Service
 titlesuffix: Azure Cognitive Services
-description: A Custom Decision Service teljes körű API útmutatót.
+description: A Custom Decision Service teljes API-útmutatója.
 services: cognitive-services
 author: slivkins
 manager: nitinme
@@ -10,22 +10,23 @@ ms.subservice: custom-decision-service
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: slivkins
-ms.openlocfilehash: be9966f5d8e8d94aa3f49aac91b35b105195b108
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4f263e3b57103174f0084ab3d25430d8c47359fd
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57552061"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707299"
 ---
 # <a name="api"></a>API
 
-Azure Custom Decision Service biztosít két API-k, amelyek az egyes döntési nevezzük: a [rangsorolási API](#ranking-api) műveletek rangsorolását bemeneti és a [ellenszolgáltatás API](#reward-api) a kimenetben a fejében. Ezenkívül rendelkeznek egy [művelet beállítása API](#action-set-api-customer-provided) , adja meg az Azure Custom Decision Service a végrehajtandó műveleteket. Ez a cikk ismerteti ezen három API-k. Egy tipikus forgatókönyv szolgál alábbi megjelenítése, ha a Custom Decision Service optimalizálja a cikkek rangsorolását.
+Az Azure Custom Decision Service két olyan API-t biztosít, amelyek mindegyike meghívja az egyes döntéseket: a [rangsorolási API](#ranking-api) -t, amely a műveletek rangsorolását és a [jutalmazási API](#reward-api) -t adja meg a jutalmak Emellett a [műveleti csoport API](#action-set-api-customer-provided) -t is megadhatja az Azure Custom Decision Service műveletekhez. Ez a cikk a három API-t ismerteti. Az alábbi tipikus forgatókönyvek azt mutatják be, hogy mikor Custom Decision Service optimalizálja a cikkek rangsorolását.
 
-## <a name="ranking-api"></a>API rangsorolása
+## <a name="ranking-api"></a>Rangsorolási API
 
-Az ennek a területnek API-t használja egy standard [JSNOP](https://en.wikipedia.org/wiki/JSONP)-stílus kommunikációs mintát optimalizálja a késést, és figyelmen kívül hagyása az [azonoseredet-](https://en.wikipedia.org/wiki/Same-origin_policy). Az utóbbi megakadályozza, hogy a JavaScript kívül az oldal forrás adatainak beolvasása.
+A rangsorolási API szabványos [jsnop támogatással](https://en.wikipedia.org/wiki/JSONP)-stílusú kommunikációs mintát használ a késés optimalizálása és az [azonos eredetű házirend](https://en.wikipedia.org/wiki/Same-origin_policy)megkerülése érdekében. Az utóbbi tiltja, hogy a JavaScript az oldal forrásán kívülről beolvassa az adatok beolvasását.
 
-Ez a kódrészlet beszúrása a (ahol egy személyre szabott cikkek listája megjelenik) első oldal HTML vezetője:
+Szúrja be ezt a kódrészletet az oldal HTML-fejlécére (ahol a cikkek személyre szabott listája megjelenik):
 
 ```html
 // define the "callback function" to render UI
@@ -41,13 +42,13 @@ Ez a kódrészlet beszúrása a (ahol egy személyre szabott cikkek listája meg
 ```
 
 > [!IMPORTANT]
-> A visszahívási függvény a ranglistán megjelenő API-hívás előtt definiálni kell.
+> A visszahívási függvényt a rangsor API meghívása előtt kell meghatározni.
 
 > [!TIP]
-> Javíthatja a késés, a rangsorolás API elérhetővé HTTP helyett HTTPS, mint a `https://ds.microsoft.com/api/v2/<appId>/rank/*`.
-> Azonban HTTPS-végpontokat kell használni, ha az első oldal kiszolgált HTTPS-en keresztül.
+> A késés javítása érdekében a rangsorolási API HTTPS helyett HTTP-n keresztül érhető el, `https://ds.microsoft.com/api/v2/<appId>/rank/*`a következő módon:.
+> Egy HTTPS-végpontot azonban akkor kell használni, ha az előlapot HTTPS-kapcsolaton keresztül kézbesítik.
 
-Paraméterek nem használhatók, ha a HTTP-válasz, a rangsorolás API egy JSNOP-formátumú karakterláncot:
+Ha nem használja a paramétereket, a rangsorolási API HTTP-válasza egy JSNOP támogatással-formázott karakterlánc:
 
 ```json
 callback({
@@ -58,36 +59,36 @@ callback({
                  {"id":"<A2>","lastRefresh":"2017-04-30T22:34:25.3401438Z"}]});
 ```
 
-A böngésző utána a `callback()` függvény meghívásaként értelmezve végrehajtja ezt a karakterláncot.
+A böngésző utána a `callback()` függvény meghívásaként értelmezve végrehajtja ezt a sztringet.
 
-Az előző példában a visszahívási függvény paraméterének a következő mintát követik:
+Az előző példában szereplő visszahívási függvény paraméterének a következő sémája van:
 
-- `ranking` Itt megjelenő URL-címek rangsorolását.
-- `eventId` belső használatára szolgál a Custom Decision Service a ennek a területnek a megfelelő kattintással megfelelően.
-- `appId` lehetővé teszi a visszahívási függvény, amely a Custom Decision Service a azonos weblap futó több alkalmazás között.
-- `actionSets` minden egyes művelethez állítsa be az ranglistán megjelenő API-hívás, valamint a legutóbbi sikeres frissítés történő küldés időbélyegzője (UTC) használt sorolja fel. A Custom Decision Service a művelet set hírcsatornák rendszeres időközönként frissíti. Például ha a műveleti csoportok némelyike nem aktuális, a visszahívási függvény előfordulhat, hogy kell visszatér az alapértelmezés szerint a rangsorolás.
+- `ranking`a megjelenítendő URL-címek rangsorát adja meg.
+- `eventId`belső használatban van Custom Decision Service, hogy az megfeleljen a megfelelő kattintásoknak.
+- `appId`lehetővé teszi, hogy a visszahívási függvény megkülönböztetse az ugyanazon a weblapon futó Custom Decision Service több alkalmazását.
+- `actionSets`felsorolja a rangsorolási API-hívásban használt összes műveletet, valamint az utolsó sikeres frissítés UTC-időbélyegét. Custom Decision Service rendszeresen frissíti a műveleti készlet hírcsatornáit. Ha például a műveleti készletek némelyike nem aktuális, előfordulhat, hogy a visszahívási függvénynek vissza kell térnie az alapértelmezett rangsorhoz.
 
 > [!IMPORTANT]
-> A megadott művelet készletek feldolgozása, és esetleg törli a cikksorozat alapértelmezés szerint a rangsorolás kialakításához. Alapértelmezés szerint a rangsorolás majd átrendezésekor és a HTTP-válaszban visszaadott. Alapértelmezés szerint a rangsorolás itt van definiálva:
+> A megadott műveleti készletek feldolgozása és feltehetően metszi a cikkek alapértelmezett rangsorolását. Az alapértelmezett rangsorolás ekkor átrendezve lesz, és a HTTP-válaszban visszakerül. Az alapértelmezett rangsor itt van definiálva:
 >
-> - Minden művelet csoporton belül a cikkeket is törli 15 legutóbbi cikkek (Ha a több mint 15 adódik vissza).
-> - Ha több művelet felelnek meg van adva, egyesítés ugyanabban a sorrendben, ahogy az API-hívás. A cikkek eredeti sorrendjét a rendszer megőrzi minden művelet csoporton belül. Ismétlődő értéke a korábbi példányok törlődnek.
-> - Az első `n` cikkek őrzi meg az egyesített listájából cikkeket, ahol `n=20` alapértelmezés szerint.
+> - Az egyes műveleti készleteken belül a cikkek a 15 legutóbbi cikkre lesznek metszve (ha több, mint 15).
+> - Ha több Művelettípus van megadva, a rendszer az API-hívásban megegyező sorrendben egyesíti őket. A cikkek eredeti sorrendje megmarad az egyes műveleti készleteken belül. A rendszer eltávolítja a duplikált elemeket a korábbi másolatok javára.
+> - Az első `n` cikkeket a cikkek összevont listájából kell tárolni, ahol `n=20` alapértelmezés szerint.
 
-### <a name="ranking-api-with-parameters"></a>Paraméterekkel rendelkező API rangsorolása
+### <a name="ranking-api-with-parameters"></a>Rangsor API paraméterekkel
 
-A prioritás API lehetővé teszi, hogy ezeket a paramétereket:
+A rangsor API a következő paramétereket teszi lehetővé:
 
-- `details=1` és `details=2` szúr be a további részleteket kapcsolatban szereplő minden egyes cikk `ranking`.
-- `limit=<n>` Alapértelmezés szerint a rangsorolás cikkek maximális számát adja meg. `n` közé kell esnie `2` és `30` (vagy más csonkolva, `2` vagy `30`, illetve).
-- `dnt=1` letiltja a felhasználói cookie-kat.
+- `details=1`és `details=2` további részleteket szúr be a `ranking`témakörben felsorolt cikkekhez.
+- `limit=<n>`meghatározza a cikkek maximális számát az alapértelmezett rangsorban. `n`és `2` `2` `30`között kell lennie (vagy más, vagy). `30`
+- `dnt=1`letiltja a felhasználói cookie-kat.
 
-Paraméterek kombinálható is a standard szintű, a lekérdezési karakterlánc szintaxisát, például `details=2&dnt=1`.
+A paraméterek kombinálhatók a standard, a lekérdezési karakterlánc szintaxisában, `details=2&dnt=1`például:.
 
 > [!IMPORTANT]
-> Az alapértelmezett beállítás, az Európai kell `dnt=1` mindaddig, amíg az ügyfél elfogadja a cookie-k szalagcím. Az alapértelmezett beállítás a websites kiskorúak célzó is kell lennie. További információkért lásd: a [használati feltételeket tartalmazó fájl](https://www.microsoft.com/cognitive-services/en-us/legal/CognitiveServicesTerms20160804).
+> Az Európai alapértelmezett beállításnak addig kell `dnt=1` lennie, amíg az ügyfél el nem fogadja a cookie-szalagcímet. Azt is meg kell adni, hogy az alapértelmezett beállítás a kiskorúakat célzó webhelyekhez. További információ: használati [feltételek](https://www.microsoft.com/cognitive-services/en-us/legal/CognitiveServicesTerms20160804).
 
-A `details=1` elem beszúrása a cikkhez tartozó `guid`, ha ez a művelet beállítása API által kiszolgált. A HTTP-válasz:
+Az `details=1` elem beszúrja az egyes `guid`cikkeket, ha azokat a Action set API szolgáltatja. A HTTP-válasz:
 
 ```json
 callback({
@@ -100,12 +101,12 @@ callback({
                  {"id":"<A2>","lastRefresh":"timeStamp2"}]});
 ```
 
-A `details=2` elem hozzáadása a további részletek, amelyek a Custom Decision Service a cikkek keresőmotor-Optimalizálást metaadatcímkékről előfordulhat, hogy kinyerése [featurization kód](https://github.com/Microsoft/mwt-ds/tree/master/Crawl):
+Az `details=2` elem további részleteket tartalmaz, amelyeket Custom Decision Service a SEO MetaTags [featurization](https://github.com/Microsoft/mwt-ds/tree/master/Crawl)-kódjából kinyert cikkekből:
 
-- `title` a `<meta property="og:title" content="..." />` vagy `<meta property="twitter:title" content="..." />` vagy `<title>...</title>`
-- `description` a `<meta property="og:description" ... />` vagy `<meta property="twitter:description" content="..." />` vagy `<meta property="description" content="..." />`
-- `image` A `<meta property="og:image" content="..." />`
-- `ds_id` A `<meta name=”microsoft:ds_id” content="..." />`
+- `title``<meta property="og:title" content="..." />` vagy vagy`<meta property="twitter:title" content="..." />``<title>...</title>`
+- `description``<meta property="og:description" ... />` vagy vagy`<meta property="twitter:description" content="..." />``<meta property="description" content="..." />`
+- `image`a`<meta property="og:image" content="..." />`
+- `ds_id`a`<meta name=”microsoft:ds_id” content="..." />`
 
 A HTTP-válasz:
 
@@ -126,11 +127,11 @@ A `<details>` elem:
 [{"guid":"123"}, {"description":"some text", "ds_id":"234", "image":"ImageUrl1", "title":"some text"}]
 ```
 
-## <a name="reward-api"></a>Ellenszolgáltatás API
+## <a name="reward-api"></a>Jutalom API
 
-Egyéni döntési szolgáltatás használja csak a felső tárolóhely kattint. Minden egyes kattintson egy ellenszolgáltatás 1 kerül értelmezésre. Egy-két kattintással hiánya egy ellenszolgáltatás 0 kerül értelmezésre. Kattintással a megfelelő módosítják a rangsort egyező által előállított eseményazonosítók használatával a [rangsorolási API](#ranking-api) hívja. Ha szükséges, esemény azonosítók átadhatók munkamenet cookie-k használatával.
+Custom Decision Service a csak a felső tárolóhelyen található kattintásokat használja. A rendszer az egyes kattintásokat 1 jutalomként értelmezi. A kattintások hiánya 0 jutalomként lesz értelmezve. A kattintások a [rangsor API](#ranking-api) -hívás által generált eseményazonosító használatával egyeznek meg a megfelelő rangsorokkal. Ha szükséges, az eseményazonosító a munkamenet-cookie-kon keresztül adható át.
 
-Elemre kattint a felső tárhely kezelése érdekében helyezze ezt a kódot az első oldalon:
+Ha egy kattintást szeretne kezelni a felső tárolóhelyen, helyezze ezt a kódot az oldalára:
 
 ```javascript
 $.ajax({
@@ -139,21 +140,21 @@ $.ajax({
     contentType: "application/json" })
 ```
 
-Itt `data` az argumentum, a `callback()` működik, az előzőekben leírtak szerint. Használatával `data` lehetőségre a kezelő kódot igényel néhány ellátás. A jelen példa [oktatóanyag](custom-decision-service-tutorial-news.md#use-the-apis).
+Itt `data` látható a `callback()` függvény argumentuma a korábban leírtak szerint. A `data` alkalmazásban kattintson a kód kezelése lehetőségre. Ebben az oktatóanyagban egy példa [](custom-decision-service-tutorial-news.md#use-the-apis)látható.
 
-Csak tesztelés esetén, a ellenszolgáltatás API nem hívható meg keresztül [cURL](https://en.wikipedia.org/wiki/CURL):
+Csak tesztelés esetén a jutalmazási API a [curl](https://en.wikipedia.org/wiki/CURL)használatával hívható meg:
 
 ```sh
 curl -v https://ds.microsoft.com/api/v2/<appId>/reward/<eventId> -X POST -d 1 -H "Content-Type: application/json"
 ```
 
-A várt jár, a 200 (OK) HTTP-választ. Láthatja a naplózott eseményhez 1 a ellenszolgáltatás (Ha egy Azure storage-fiókkulcs lett megadva a portálon).
+A várt hatás a 200-es HTTP-válasz (OK). Az eseményhez tartozó 1 jutalmat a naplóban tekintheti meg (ha az Azure Storage-fiók kulcsát a portálon adták meg).
 
-## <a name="action-set-api-customer-provided"></a>A művelet beállítása API (vásárló által biztosított)
+## <a name="action-set-api-customer-provided"></a>Műveleti set API (ügyfél által biztosított)
 
-Magas szinten a művelet beállítása API (műveletek) cikkek listáját adja vissza. Minden egyes cikk URL-címe és (opcionálisan) a cikk címe és a közzététel dátuma szerint van megadva. Megadhatja, hogy több művelet beállítja a portálon. Egy másik művelet beállítása API használata, az egyes művelet, különböző URL-ként.
+A műveleti készlet API magas szinten a cikkek listáját (műveletek) adja vissza. Minden cikket a saját URL-címe és (opcionálisan) a cikk címe és a közzététel dátuma határoz meg. A portálon több műveleti halmaz is megadható. Egy másik műveleti set API-t kell használni az egyes műveleti készletekhez, külön URL-címként.
 
-Minden művelet beállítása API két módon hajtható végre: az RSS-hírcsatorna vagy Atom-hírcsatorna formájában. Akár egy kell a szabványoknak és a egy megfelelő XML-t adja vissza. Az RSS Íme egy példa:
+Az egyes műveleti set API-k kétféleképpen valósíthatók meg: RSS-hírcsatorna vagy Atom-hírcsatorna. Az egyiknek meg kell felelnie a standardnak, és megfelelő XML-t kell visszaadnia. Az RSS esetében Íme egy példa:
 
 ```xml
 <rss version="2.0">
@@ -171,20 +172,20 @@ Minden művelet beállítása API két módon hajtható végre: az RSS-hírcsato
 </rss>
 ```
 
-Minden felső szintű `<item>` elem leírja egy műveletet:
+Minden legfelső szintű `<item>` elem egy műveletet ír le:
 
-- `<link>` kötelező, és szolgál egy művelet.
-- `<date>` rendszer figyelmen kívül hagyja, ha legfeljebb 15 elemek; Ellenkező esetben azt megadása kötelező.
-  - Ha több mint 15 elemek, 15 legutóbbi azokat használják.
-  - Kell lennie az RSS- vagy Atom, szabványos formátumban jelölik:
-    - [RFC 822](https://tools.ietf.org/html/rfc822) RSS: például `"Fri, 28 Apr 2017 18:02:06 GMT"`
-    - [RFC 3339](https://tools.ietf.org/html/rfc3339) az Atom: például `"2016-12-19T16:39:57-08:00"`
-- `<title>` nem kötelező, és az funkciók, amelyek ismertetik a cikk létrehozására szolgál.
-- `<guid>` nem kötelező, és a rendszer a visszahívási függvény segítségével átadott (Ha a `?details` paraméter meg van adva a ranglistán megjelenő API-hívással).
+- `<link>`kötelező, és műveleti AZONOSÍTÓként van használatban.
+- `<date>`figyelmen kívül hagyja a rendszer, ha a érték kisebb vagy egyenlő, mint 15 elem; Ellenkező esetben kötelező megadni.
+  - Ha több mint 15 elemet használ, a rendszer a 15 legutóbbiat használja.
+  - Az RSS-hez vagy az atomhoz szabványos formátumban kell megadni:
+    - [RFC 822](https://tools.ietf.org/html/rfc822) RSS-hez: például`"Fri, 28 Apr 2017 18:02:06 GMT"`
+    - [RFC 3339](https://tools.ietf.org/html/rfc3339) for Atom: például`"2016-12-19T16:39:57-08:00"`
+- `<title>`a nem kötelező, és a cikkben ismertetett funkciók létrehozásához használatos.
+- `<guid>`a nem kötelező, és a rendszeren keresztül továbbítja a visszahívási függvényt (ha a `?details` paraméter a rangsor API-hívásban van megadva).
 
-Belüli más elemeket egy `<item>` figyelmen kívül hagyja.
+A rendszer figyelmen kívül `<item>` hagyja az egy elemen belüli egyéb elemeket.
 
-Az Atom-hírcsatorna verzióját használja az XML ugyanazt a szintaxist és a konvenciók.
+Az Atom-hírcsatorna verziója ugyanazokat az XML-szintaxist és konvenciókat használja.
 
 > [!TIP]
-> Ha a rendszer a saját cikk azonosítók, azokat is át lehet adni által a visszahívási függvény használatával `<guid>`.
+> Ha a rendszer saját cikk-azonosítókat használ, akkor a használatával `<guid>`a visszahívási függvénynek adhatók át.

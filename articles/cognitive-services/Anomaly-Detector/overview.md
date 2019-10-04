@@ -1,69 +1,89 @@
 ---
-title: Mi az az Anomáliadetektálási detector használatával API-t? | Microsoft Docs
+title: Mi az az Anomaly Detector API?
 titleSuffix: Azure Cognitive Services
-description: Az Anomáliadetektálási detector használatával API korszerű algoritmusokat segítségével azonosíthatja a rendellenességeket az idősoros adatokat.
+description: A rendellenesség-Kiderítő API speciális algoritmusait használva azonosíthatja az idősorozat-adataiban mutatkozó rendellenességeket.
 services: cognitive-services
 author: aahill
+manager: nitinme
 ms.service: cognitive-services
-ms.subservice: anomaly-detection
-ms.topic: article
-ms.date: 03/26/2019
+ms.subservice: anomaly-detector
+ms.topic: overview
+ms.date: 09/05/2019
 ms.author: aahi
-ms.openlocfilehash: 48dffb8853d3def590e434c1683ecf038e2a194e
-ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.openlocfilehash: 3bd60ff1e732940bbb13c2e224084cf7e331266b
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58473199"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934862"
 ---
-# <a name="what-is-the-anomaly-detector-api"></a>Mi az az Anomáliadetektálási detector használatával API-t?
+# <a name="what-is-the-anomaly-detector-api"></a>Mi az az Anomaly Detector API?
 
-A Anomáliadetektálási detector használatával API segítségével figyelheti, és az idősoros adatokat a machine learning észlelheti a rendellenességeket. Az Anomáliadetektálási detector használatával API alkalmazkodik automatikusan azonosításával és a záró titkunkat modellek alkalmazása az adatokhoz, iparági, a forgatókönyv és adatok mennyiségétől függetlenül. Használja az idősoros adatokat, az API határozza meg a határokat a rendellenességek észlelése, a várt értékek, és mely adatpontok rendellenességeket.
+A rendellenesség-Kiderítő API lehetővé teszi, hogy az idősoros adataiban a gépi tanulással figyelje és azonosítsa a rendellenességeket. Az anomália-érzékelő API úgy alkalmazkodik, hogy automatikusan azonosítja és alkalmazza a legjobban illeszkedő modelleket az adataiba, függetlenül az iparágtól, a forgatókönyvtől vagy az adatmennyiségtől. Az idősorozat-adatok használatával az API meghatározza a rendellenességek észlelésére, a várt értékekre vonatkozó határokat, és hogy mely adatpontok rendellenesek.
 
-![A szolgáltatáskérések megoszlásától észlelése](./media/anomaly_detection2.png)
+![A szolgáltatási kérelmekben szereplő minták változásainak észlelése](./media/anomaly_detection2.png)
 
-Az Anomáliadetektálási érzékelő használata nem szükséges minden korábbi tapasztalata az a Machine learning, és a RESTful API lehetővé teszi, hogy könnyedén integrálhatja a szolgáltatást az alkalmazások és folyamatok.
+Az anomália detektor használata nem igényel korábbi felhasználói élményt a gépi tanulásban, és a REST API lehetővé teszi a szolgáltatás egyszerű integrálását az alkalmazásokba és folyamataiba.
 
 ## <a name="features"></a>Szolgáltatások
 
-Az Anomáliadetektálási detector használatával automatikusan észlelheti a rendellenességeket során az idősoros adatokat, vagy a valós idejű előforduló. 
+Az anomáliák detektorral automatikusan észlelheti a rendellenességeket az idősorozat-adataiban, vagy valós időben végezheti el azokat. 
 
-|Szolgáltatás  |Leírás  |
+|Funkció  |Leírás  |
 |---------|---------|
-|A valós idejű előforduló rendellenességek észlelését. | A streamelési adatok rendellenességek észlelése, hogy a legújabb buildszám-anomáliadetektálási korábban látott adatok pontok használatával. Ez a művelet egy modellt az adatpontok küldhet, és meghatározza, hogy a cél pont anomáliát használatával hoz létre. Hívja meg az API-t minden egyes új adatpont hoz létre, az adatok módon a létrehozást lehet figyelni. |
-|A készlet egész rendellenességek észlelése kötegként. | A time series segítségével felismerheti a rendellenességeket, amelyek az adatok során előfordulhat, hogy létezik. Ez a művelet egy modell használatával az egész idősoros adatokat, minden egyes ugyanannak a modellnek az elemzett ponttal állít elő.         |
-| Az adatokkal kapcsolatos további információkat kaphat. | Az adatok és minden megfigyelt rendellenességeket, beleértve a várt értékek, anomáliadetektálási határokat és pozíciók hasznos adatainak beolvasása. |
-| Módosítsa a rendellenességek észlelése határokat. | Az Anomáliadetektálási detector használatával API automatikusan létrehozza az anomáliadetektálást szolgáló határokat. Ezek a hatókörök növelése vagy csökkentése érdekében az API-k bizalmas adatok rendellenességekre módosíthatja, és jobban illeszkednek az adatok. |
+|A valós időben előforduló rendellenességek észlelése. | A korábban látott adatpontok használatával észlelheti a folyamatos adatátviteli hibák észlelését, és meghatározhatja, hogy a legújabb-e anomália. A művelet létrehoz egy modellt a küldött adatpontok használatával, és meghatározza, hogy a célként megadott pont anomáli-e. Ha az API-t az Ön által létrehozott összes új adatpontra hívja fel, az adatait a létrehozásuk során figyelheti. |
+|Az adatkészletekben lévő rendellenességek észlelése kötegként. | Az idősorozat használatával észlelheti az összes olyan rendellenességet, amely létezhet az összes adategységben. A művelet létrehoz egy modellt a teljes idősorozat-adataival, és minden olyan pontot, amely ugyanazzal a modellel lett elemezve.         |
+| További információkat kaphat az adatairól. | Hasznos információkhoz juthat az adatokról és az észlelt rendellenességekről, beleértve a várt értékeket, a rendellenességek határait és a pozíciókat. |
+| Állítsa be a anomália észlelési határait. | Az anomália detektor API automatikusan létrehoz határokat a anomáliák észleléséhez. Állítsa be ezeket a határokat az API-k adatrendellenességekre való érzékenységének növeléséhez vagy csökkentéséhez, és jobban illeszkedjen az adataihoz. |
 
-## <a name="demo"></a>Bemutató
+## <a name="demo"></a>Demó
 
-Gyorsan megkezdheti az Anomáliadetektálási detector használatával API-val, próbálja meg egy [bemutatóra](https://notebooks.azure.com/AzureAnomalyDetection/projects/anomalydetector) , amely a böngészőben futtatható. Ez a bemutató webalkalmazás által üzemeltetett Jupyter notebook fut, és bemutatja, hogyan küldhet egy API-kérelem, és az eredmény megjelenítése.
+Tekintse meg ezt az [interaktív bemutatót](https://aka.ms/adDemo) , hogy megtudja, hogyan működik a rendellenesség-érzékelő.
+A bemutató futtatásához létre kell hoznia egy anomália-detektor erőforrást, és le kell kérnie az API-kulcsot és a végpontot.
 
-A bemutató futtatásához kövesse az alábbi lépéseket:
+## <a name="notebook"></a>Jegyzetfüzet
 
-1. Egy érvényes Anomáliadetektálási detector használatával API előfizetési kulcs és a egy API-végpont lekérése. A lenti utasítások a regisztráció rendelkezik. 
-2. Jelentkezzen be, és a klónozás, kattintson a jobb felső sarkában.
-3. Kattintson a **ingyenes számítási futtathatók**
-4. Válasszon ki egy a notebookok ehhez a mintához.
-5. Az Anomáliadetektálási detector használatával API érvényes előfizetési kulcs, adja hozzá a `subscription_key` változó. Módosítsa a `endpoint` változó a végponthoz. Például:`https://westus2.api.cognitive.microsoft.com`
-1. A felső menüsávon kattintson **cella**, majd **összes futtatása**.
+Ha meg szeretné tudni, hogyan hívhatja meg a rendellenesség-érzékelő API-t, próbálja ki ezt az [Azure notebookot](https://aka.ms/adNotebook). Ez a webkiszolgáló Jupyter Notebook bemutatja, hogyan küldhet API-kéréseket, és hogyan jelenítheti meg az eredményt.
+
+A jegyzetfüzet futtatásához hajtsa végre a következő lépéseket:
+
+1. Szerezzen be egy érvényes anomália-detektor API-előfizetési kulcsot és egy API-végpontot. Az alábbi szakasz útmutatást nyújt a regisztráláshoz.
+1. Jelentkezzen be, és kattintson a jobb felső sarokban található klónozás elemre.
+1. A klónozási művelet befejezése előtt törölje a "nyilvános" lehetőséget a párbeszédpanelen, ellenkező esetben a notebook, beleértve az előfizetési kulcsokat is, nyilvános lesz.
+1. Kattintson **a Futtatás ingyenes számításkor** lehetőségre
+1. Válassza ki az egyik jegyzetfüzetet.
+1. Adja hozzá az érvényes anomália-érzékelő API- `subscription_key` előfizetési kulcsát a változóhoz. 
+1. Módosítsa a `endpoint` változót a végpontra. Például:`https://westus2.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/last/detect`
+1. A felső menüsorban kattintson a **cella**, majd az **összes futtatása**elemre.
 
 ## <a name="workflow"></a>Munkafolyamat
 
-A Anomáliadetektálási detector használatával API egy REST-alapú webszolgáltatás, így könnyen minden programozási nyelvet, amely HTTP-kérelmeket és JSON elemzése, hívja meg.
+Az anomália-detektor API egy REST-alapú webszolgáltatás, amely megkönnyíti a HTTP-kérelmeket és a JSON-elemzést elvégező programozási nyelv meghívását.
 
 [!INCLUDE [cognitive-services-anomaly-detector-data-requirements](../../../includes/cognitive-services-anomaly-detector-data-requirements.md)]
 
 [!INCLUDE [cognitive-services-anomaly-detector-signup-requirements](../../../includes/cognitive-services-anomaly-detector-signup-requirements.md)]
 
-Regisztrációt követő lépések:
+Regisztráció után:
 
-1. Igénybe az idősoros adatokat, és a egy érvényes JSON formátumba konvertálja. Használat [ajánlott eljárások](concepts/anomaly-detection-best-practices.md) az adatok beolvasása a legjobb eredmények elérése érdekében előkészítésekor.
-1. Az Anomáliadetektálási detector használatával API-t az adatok egy kérés küldése.
+1. Készítsen idősoros adatait, és alakítsa át érvényes JSON formátumra. Az adatelőkészítés során [ajánlott eljárásokat](concepts/anomaly-detection-best-practices.md) használhat a legjobb eredmények eléréséhez.
+1. Küldjön egy kérelmet a rendellenesség-Kiderítő API-nak az adataival.
 1. Az API válaszának feldolgozásához elemezze a visszaadott JSON-üzenetet.
+
+## <a name="algorithms"></a>Algoritmusok
+
+* Tekintse meg ezt a technikai blogot, amely bemutatja az [Azure rendellenesség-érzékelő API](https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162) -ját a motorháztető alatt lévő algoritmusokkal kapcsolatban.
+* A Microsoft által fejlesztett élvonalbeli SR-CNN-algoritmusokról a Microsoft (KDD 2019 által elfogadott) [adatsorozat-anomália-észlelési szolgáltatást](https://arxiv.org/abs/1906.03821) ismertető cikkben olvashat.
+
+> [!VIDEO https://www.youtube.com/embed/ERTaAnwCarM]
+
+## <a name="join-the-anomaly-detector-community"></a>Csatlakozás az anomália detektor közösségéhez
+
+* Csatlakozás az [anomália-detektor Advisors csoportjához a Microsoft Teams](https://aka.ms/AdAdvisorsJoin) szolgáltatásban
+* A kiválasztott [felhasználó által létrehozott tartalom](user-generated-content.md) megjelenítése
 
 ## <a name="next-steps"></a>További lépések
 
-* [Rövid útmutató: Rendellenességek észlelése az idősoros adatokat Anomáliadetektálási detector használatával REST API használatával](quickstarts/detect-data-anomalies-csharp.md)
-* Az Anomáliadetektálási detector használatával API [online bemutatót](https://notebooks.azure.com/AzureAnomalyDetection/projects/anomalydetector)
-* Az Anomáliadetektálási érzékelő [REST API-referencia](https://westus2.dev.cognitive.microsoft.com/docs/services/AnomalyDetector/operations/post-timeseries-entire-detect)
+* [Rövid útmutató: Az idősoros adataiban észlelt rendellenességek észlelése az anomália-detektor használatával REST API](quickstarts/detect-data-anomalies-csharp.md)
+* Az anomália érzékelő API [online bemutatója](https://notebooks.azure.com/AzureAnomalyDetection/projects/anomalydetector)
+* Az anomália detektor [REST API referenciája](https://westus2.dev.cognitive.microsoft.com/docs/services/AnomalyDetector/operations/post-timeseries-entire-detect)

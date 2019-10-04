@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: bwren
 ms.openlocfilehash: fb637197139001c67a4cfa773f897e6701dc1e9c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58100649"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61425134"
 ---
 # <a name="splunk-to-azure-monitor-log-query"></a>Az Azure Monitor log-lekérdezéshez Splunk
 
@@ -30,14 +30,14 @@ A következő táblázat összehasonlítja a fogalmakat és adatstruktúrák Spl
 
  | Fogalom  | Splunk | Azure Monitor |  Megjegyzés
  | --- | --- | --- | ---
- | Jednotka nasazení  | fürt |  fürt |  Az Azure Monitor lehetővé teszi tetszőleges fürt lekérdezések közötti. Splunk nem létezik. |
+ | Jednotka nasazení  | Fürt |  Fürt |  Az Azure Monitor lehetővé teszi tetszőleges fürt lekérdezések közötti. Splunk nem létezik. |
  | Felhasználóiadat-gyorsítótárak |  gyűjtők  |  Gyorsítótárazás és -megőrzési szabályok |  Azt szabályozza, az időszak és a gyorsítótárazás az adatok szintjét. Ezzel a beállítással közvetlenül hatással van, a lekérdezések teljesítménye és a költség az üzembe helyezés. |
- | Az adatok logikai partíció  |  index  |  adatbázis  |  Lehetővé teszi az adatok logikai elkülönítését. Mindkét megvalósítását lehetővé teszik, egyesítések és csatlakozás az érintett partíciók között. |
- | Strukturált esemény-metaadatok | – | tábla |  Splunk nem rendelkezik a fogalom a keresési nyelv, az esemény-metaadatok vannak kitéve. Az Azure Monitor naplóira rendelkezik egy táblát, oszlopot tartalmaz, amely a fogalmát. Minden egyes esemény példány egy sorra van leképezve. |
+ | Az adatok logikai partíció  |  index  |  database  |  Lehetővé teszi az adatok logikai elkülönítését. Mindkét megvalósítását lehetővé teszik, egyesítések és csatlakozás az érintett partíciók között. |
+ | Strukturált esemény-metaadatok | – | table |  Splunk nem rendelkezik a fogalom a keresési nyelv, az esemény-metaadatok vannak kitéve. Az Azure Monitor naplóira rendelkezik egy táblát, oszlopot tartalmaz, amely a fogalmát. Minden egyes esemény példány egy sorra van leképezve. |
  | Adatfelderítési rekordok | esemény | sor |  Csak terminológiai változás. |
  | Rekord adatattribútum | A mező |  Oszlop |  Az Azure monitorban ezzel előre a táblázat szerkezetét részeként. A Splunkban mindegyik esemény rendelkezik a saját mezőket. |
  | Típusok | adattípus |  adattípus |  Az Azure Monitor adattípusok több explicit módon az oszlopok vannak beállítva. Az adattípusok és adattípusok többek között a JSON-támogatás nagyjából készletét dinamikusan képességüket is rendelkezik. |
- | Lekérdezés és a keresés  | keresés | lekérdezés |  Fogalmak alapvetően ugyanazok, az Azure Monitor és a Splunk között. |
+ | Lekérdezés és a keresés  | Keresés | lekérdezés |  Fogalmak alapvetően ugyanazok, az Azure Monitor és a Splunk között. |
  | Esemény betöltési ideje | Rendszer pontos ideje | ingestion_time() |  Splunk minden egyes esemény egy időbélyegző az idő, az esemény volt indexelt lesz. Az Azure monitorban meghatározhatja egy szabályzatot, amely elérhetővé teszi a rendszer oszlopot, amely a ingestion_time() funkción keresztül lehet rá hivatkozni ingestion_time nevű. |
 
 ## <a name="functions"></a>Functions
@@ -55,7 +55,7 @@ Az alábbi táblázat felsorolja a functions az Azure monitorban Splunk funkció
 | SUBSTR | Substring() | (1)<br>Azt is vegye figyelembe, hogy a Splunk egy alapú indexek használja. Az Azure Monitor megjegyzi a nulla alapú index. |
 | ToLower |  tolower() | (1) |
 | ToUpper | toupper() | (1) |
-| egyezés | megfelel reguláris kifejezés |  (2)  |
+| Egyezés | megfelel reguláris kifejezés |  (2)  |
 | regex | megfelel reguláris kifejezés | A Splunkban `regex` operátor. Az Azure monitorban az összehasonlító operátor. |
 | searchmatch | == | A Splunkban `searchmatch` lehetővé teszi, hogy a pontos karakterláncokat keresése.
 | véletlenszerű | rand()<br>rand(n) | A Splunk függvény számot ad vissza 2 nulla<sup>31</sup>– 1. Az Azure Monitor "0,0 és 1,0, közötti számot ad vissza, vagy ha egy 0 és n-1 között a megadott paraméter.
@@ -163,8 +163,8 @@ Csatlakozás a Splunkban jelentős korlátokkal rendelkezik. A segédlekérdezé
 
 | |  | |
 |:---|:---|:---|
-| Splunk | **csatlakozás** |  <code>Event.Rule=120103* &#124; stats by Client.Id, Data.Alias \| join Client.Id max=0 [search earliest=-24h Event.Rule="150310.0" Data.Hresult=-2147221040]</code> |
-| Azure Monitor | **csatlakozás** | <code>cluster("OAriaPPT").database("Office PowerPoint").Office_PowerPoint_PPT_Exceptions<br>&#124; where  Data_Hresult== -2147221040<br>&#124; join kind = inner (Office_System_SystemHealthMetadata<br>&#124; summarize by Client_Id, Data_Alias)on Client_Id</code>   |
+| Splunk | **join** |  <code>Event.Rule=120103* &#124; stats by Client.Id, Data.Alias \| join Client.Id max=0 [search earliest=-24h Event.Rule="150310.0" Data.Hresult=-2147221040]</code> |
+| Azure Monitor | **join** | <code>cluster("OAriaPPT").database("Office PowerPoint").Office_PowerPoint_PPT_Exceptions<br>&#124; where  Data_Hresult== -2147221040<br>&#124; join kind = inner (Office_System_SystemHealthMetadata<br>&#124; summarize by Client_Id, Data_Alias)on Client_Id</code>   |
 | | |
 
 

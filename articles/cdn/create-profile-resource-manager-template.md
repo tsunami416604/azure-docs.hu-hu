@@ -7,7 +7,7 @@ author: senthuransivananthan
 manager: danielgi
 editor: ''
 ms.assetid: cbc2ff98-916d-4339-8959-622823c5b772
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/05/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 5c393916bc977f4e0bc51913bdb2dfbbd6677c97
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: cbde4c7fd568e6d9ff9a0d90332da96926e08077
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57727539"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593135"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint-using-resource-manager-template"></a>Gyors útmutató: Azure CDN-profil és -végpont használatával a Resource Manager-sablon létrehozása
 
@@ -51,7 +51,7 @@ az group create --name cdn --location eastus
 
 Ebben a lépésben hozzon létre egy sablon fájlt, amely üzembe helyezi az erőforrásokat.
 
-Ebben a példában egy általános webhely-gyorsítás forgatókönyv bemutatja, amíg nincsenek számos egyéb beállítást is konfigurálható. Ezek a beállítások az Azure Resource Manager sablonreferenciája érhető el. Tekintse át a hivatkozások [CDN-profil](https://docs.microsoft.com/en-us/azure/templates/microsoft.cdn/2017-10-12/profiles) és [profil CDN-végpont](https://docs.microsoft.com/en-us/azure/templates/microsoft.cdn/2017-10-12/profiles/endpoints).
+Ebben a példában egy általános webhely-gyorsítás forgatókönyv bemutatja, amíg nincsenek számos egyéb beállítást is konfigurálható. Ezek a beállítások az Azure Resource Manager sablonreferenciája érhető el. Tekintse át a hivatkozások [CDN-profil](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles) és [profil CDN-végpont](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles/endpoints).
 
 Vegye figyelembe, hogy a Microsoft CDN nem támogatja a módosítása a tartalomtípusok listája.
 
@@ -224,8 +224,8 @@ az group delete --name cdn
 
 ## <a name="references"></a>Referencia
 
-* CDN-profil - [az Azure Resource Manager Sablonreferenciája](https://docs.microsoft.com/en-us/azure/templates/microsoft.cdn/2017-10-12/profiles)
-* CDN-végpont - [az Azure Resource Manager Sablonreferenciája dokumentációja](https://docs.microsoft.com/en-us/azure/templates/microsoft.cdn/2017-10-12/profiles/endpoints)
+* CDN-profil - [az Azure Resource Manager Sablonreferenciája](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles)
+* CDN-végpont - [az Azure Resource Manager Sablonreferenciája dokumentációja](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles/endpoints)
 
 ## <a name="next-steps"></a>További lépések
 

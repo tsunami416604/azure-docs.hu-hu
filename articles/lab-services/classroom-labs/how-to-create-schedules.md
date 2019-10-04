@@ -1,6 +1,6 @@
 ---
-title: Osztályterem-tesztkörnyezetek tartozó ütemezés létrehozásához az Azure Lab Services |} A Microsoft Docs
-description: Ismerje meg, hogy az osztályterem-tesztkörnyezetek ütemezések létrehozása az Azure Lab Services, hogy a labs szolgáltatásban létrehozott virtuális gépek indítása és állítsa le a megadott időpontban.
+title: Tantermi Labs-ütemterv létrehozása Azure Lab Servicesban | Microsoft Docs
+description: Megtudhatja, hogyan hozhat létre ütemterveket a tanterem Labs szolgáltatáshoz Azure Lab Services, hogy a laborokban lévő virtuális gépek egy adott időpontban induljon el és legyenek leállítva.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -13,73 +13,73 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 34bc8263053cd4a701c16ee1832cf1b27340a345
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: f607ba68563aa92797f45cf77db0575ae6802fee
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55501360"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385607"
 ---
-# <a name="create-and-manage-schedules-for-classroom-labs-in-azure-lab-services"></a>Létrehozása és kezelése az Azure Lab Services osztályterem-tesztkörnyezetek ütemezését 
-Ütemezésekkel osztályterem-tesztkörnyezet konfigurálása, hogy a labor virtuális gépeinek automatikusan elindítani, és állítsa le a megadott időpontban. Egyszeri ütemezés szerint vagy ismétlődő ütemezés szerint határozhatja meg. Az alábbi eljárások létrehozásához és kezeléséhez az osztályterem-tesztkörnyezet ütemezések lépéseket biztosít: 
+# <a name="create-and-manage-schedules-for-classroom-labs-in-azure-lab-services"></a>Tantermi Labs-ütemtervek létrehozása és kezelése Azure Lab Services 
+Az ütemtervek lehetővé teszik a tantermi laborok konfigurálását, hogy a laborban lévő virtuális gépek automatikusan elindulnak és leálljanak egy adott időpontban. Meghatározhat egy egyszeri vagy ismétlődő ütemtervet. Az alábbi eljárások egy osztályterem laborhoz tartozó ütemtervek létrehozását és kezelését ismertetik: 
 
 > [!IMPORTANT]
-> Virtuális gépek ütemezett futási ideje nem számítanak bele a [egy felhasználó számára engedélyezett kvóta](how-to-configure-student-usage.md#set-quotas-per-user). A kvóta pedig egy diák foglalkozik a virtuális gépek idő ütemezése kívül alkalommal. 
+> A virtuális gépek ütemezett futási ideje nem számít bele a [felhasználó számára kiosztott kvótába](how-to-configure-student-usage.md#set-quotas-for-users). A kvóta az ütemezett órákon kívüli időre szól, amelyet a tanuló a virtuális gépeken tölt. 
 
-## <a name="add-a-schedule-once"></a>(Ha) ütemezés hozzáadása
+## <a name="add-a-schedule-once"></a>Ütemterv hozzáadása (egyszer)
 
-1. Váltson a **ütemezések** lapon, és válassza ki **Hozzáadás ütemezés** az eszköztáron. 
+1. Váltson az **ütemtervek** lapra, és válassza az **ütemterv hozzáadása** lehetőséget az eszköztáron. 
 
-    ![Az ütemezések lapon ütemezés gomb hozzáadása](../media/how-to-create-schedules/add-schedule-button.png)
-2. A a **Hozzáadás ütemezés** lapon **egyszer** beállítást az oldal tetején. Ha nem, válassza ki a **egyszer**. 
-3. A **ütemezése (kötelező) dátum**, adja meg a dátumot, vagy kattintson a naptár ikonra, válassza ki a dátumot. 
-4. A **kezdési idő**, válassza ki az időpontot, amikor a virtuális gépeket kell elindítani. A kezdési időpontját kötelező megadni, ha nincs beállítva a leállítási ideje. Válassza ki **Remove esemény indítása** Ha meg szeretné határozni a csak a leállítási ideje. Ha a **kezdési idő** van válassza le van tiltva, **Hozzáadás indítása esemény** mellett a legördülő listából válassza ki az engedélyezéshez. 
-5. A **leállítási ideje**, válassza ki az időpontot, amikor a virtuális gépek leállítását. A leállási idő megadása kötelező, ha a kezdési időpont nincs beállítva. Válassza ki **Remove leállási esemény** Ha adja meg a kezdő időpont csak szeretné. Ha a **leállítási ideje** van válassza le van tiltva, **Hozzáadás leállási esemény** mellett a legördülő listából válassza ki az engedélyezéshez.
-6. A **(kötelező) időzóna**, jelölje be a kezdő időzónáját, és állítsa le a megadott időpontok. 
-7. A **megjegyzések**, adja meg az ütemezés bármely leírása, illetve a megjegyzések. 
+    ![Ütemterv hozzáadása gomb az ütemtervek lapon](../media/how-to-create-schedules/add-schedule-button.png)
+2. Az **ütemterv hozzáadása** lapon ellenőrizze, hogy a **felül lehetőség van** -e kiválasztva. Ha nem, akkor válassza a **egyszer**lehetőséget. 
+3. Az **ütemezett dátum (kötelező)** mezőben adja meg a dátumot, vagy válassza a naptár ikont a dátum kiválasztásához. 
+4. A **kezdő időpont**mezőben adja meg, hogy mikor szeretné elindítani a virtuális gépeket. A kezdési időpontot kötelező megadni, ha a leállítási idő nincs beállítva. Válassza a **kezdési esemény eltávolítása** lehetőséget, ha csak a leállítási időt szeretné megadni. Ha a **Kezdési idő** le van tiltva, a legördülő lista melletti **indítási esemény hozzáadása** lehetőséggel engedélyezheti azt. 
+5. A **leállítási idő**beállításnál válassza ki azt az időpontot, amikor a virtuális gépeket le szeretné állítani. A leállítási idő megadása kötelező, ha a kezdési időpont nincs beállítva. Válassza a leállítási **esemény eltávolítása** lehetőséget, ha csak a kezdési időpontot szeretné megadni. Ha a **leállítási idő** le van tiltva, válassza a leállítási **esemény hozzáadása** lehetőséget a legördülő lista mellett az engedélyezéshez.
+6. Az **időzóna (kötelező)** beállításnál válassza ki a megadott kezdési és befejezési időzónát. 
+7. A **Megjegyzések**mezőben adja meg az ütemterv leírását vagy megjegyzéseit. 
 8. Kattintson a **Mentés** gombra. 
 
-    ![Egyszeri ütemezés](../media/how-to-create-schedules/add-schedule-page.png)
+    ![Egyszeri időpont](../media/how-to-create-schedules/add-schedule-page.png)
 
-## <a name="add-a-recurring-schedule-weekly"></a>Adjon hozzá egy ismétlődő ütemezés szerint (hetente)
+## <a name="add-a-recurring-schedule-weekly"></a>Ismétlődő ütemterv hozzáadása (hetente)
 
-1. Váltson a **ütemezések** lapon, és válassza ki **Hozzáadás ütemezés** az eszköztáron. 
+1. Váltson az **ütemtervek** lapra, és válassza az **ütemterv hozzáadása** lehetőséget az eszköztáron. 
 
-    ![Az ütemezések lapon ütemezés gomb hozzáadása](../media/how-to-create-schedules/add-schedule-button.png)
-2. Az a **Hozzáadás ütemezés** lapon, váltson **heti** tetején. 
-3. A **ütemezett nap (kötelező)**, válassza ki azokat a napokat, amelyeken az ütemezés érvénybe szeretné. A következő példában hétfőtől péntekig van kiválasztva. 
-4. Az a **a** mezőbe írja be a **ütemezett kezdési dátum** válasszon dátumot kiválasztásával, vagy a **naptár** gombra. Ezt a mezőt kötelező kitölteni. 
-5. A **az ütemezéshez záró dátumot**adja meg vagy válassza ki a befejező dátum, amelyen a virtuális gépek vannak, le kell állítani. 
-6. A **kezdési idő**, válassza ki az időpontot, amelyeknél szeretné elindítani a virtuális gépeket. A kezdési időpontját kötelező megadni, ha nincs beállítva a leállítási ideje. Válassza ki **Remove esemény indítása** Ha meg szeretné határozni a csak a leállítási ideje. Ha a **kezdési idő** van válassza le van tiltva, **Hozzáadás indítása esemény** mellett a legördülő listából válassza ki az engedélyezéshez. 
-7. A **leállítási ideje**, válassza ki az idő, amelyeknél szeretné a virtuális gépek leállítását. A leállási idő megadása kötelező, ha a kezdési időpont nincs beállítva. Válassza ki **Remove leállási esemény** Ha adja meg a kezdő időpont csak szeretné. Ha a **leállítási ideje** van válassza le van tiltva, **Hozzáadás leállási esemény** mellett a legördülő listából válassza ki az engedélyezéshez.
-8. A **(kötelező) időzóna**, jelölje be a kezdő időzónáját, és állítsa le a megadott időpontok.  
-9. A **megjegyzések**, adja meg az ütemezés bármely leírása, illetve a megjegyzések. 
+    ![Ütemterv hozzáadása gomb az ütemtervek lapon](../media/how-to-create-schedules/add-schedule-button.png)
+2. Az **ütemterv hozzáadása** lapon a felülre váltson **hetente** . 
+3. Az ütemezett **napok (kötelező)** beállításnál válassza ki azokat a napokat, amelyeken az ütemterv érvénybe lép. A következő példában a hétfő-péntek beállítás van kiválasztva. 
+4. A **from (forrás** ) mezőben adja meg az **ütemezett kezdési dátumot** , vagy válasszon ki egy dátumot a **Naptár** gomb kiválasztásával. Ezt a mezőt kötelező kitölteni. 
+5. Az **ütemezett befejezési dátumnál**adja meg vagy válassza ki azt a befejezési dátumot, amikor a virtuális gépeket le szeretné állítani. 
+6. A **kezdési**időponthoz válassza ki azt az időpontot, amikor a virtuális gépeket el szeretné indítani. A kezdési időpontot kötelező megadni, ha a leállítási idő nincs beállítva. Válassza a **kezdési esemény eltávolítása** lehetőséget, ha csak a leállítási időt szeretné megadni. Ha a **Kezdési idő** le van tiltva, a legördülő lista melletti **indítási esemény hozzáadása** lehetőséggel engedélyezheti azt. 
+7. A **leállítási idő**beállításnál válassza ki azt az időpontot, amikor a virtuális gépeket le szeretné állítani. A leállítási idő megadása kötelező, ha a kezdési időpont nincs beállítva. Válassza a leállítási **esemény eltávolítása** lehetőséget, ha csak a kezdési időpontot szeretné megadni. Ha a **leállítási idő** le van tiltva, válassza a leállítási **esemény hozzáadása** lehetőséget a legördülő lista mellett az engedélyezéshez.
+8. Az **időzóna (kötelező)** beállításnál válassza ki a megadott kezdési és befejezési időzónát.  
+9. A **Megjegyzések**mezőben adja meg az ütemterv leírását vagy megjegyzéseit. 
 10. Kattintson a **Mentés** gombra. 
 
-    ![Heti ütemezés](../media/how-to-create-schedules/add-schedule-page-weekly.png)
+    ![Heti ütemterv](../media/how-to-create-schedules/add-schedule-page-weekly.png)
 
-## <a name="view-schedules-in-calendar"></a>A naptár ütemezések megtekintése
-Az ütemezett dátum- és időértékek, kiemelve a Naptár nézetben, a következő képen látható módon tekintheti meg:
+## <a name="view-schedules-in-calendar"></a>Ütemtervek megtekintése a naptárban
+A naptár nézetben Kiemelt dátumok és időpontok a következő képen látható módon jeleníthetők meg:
 
-![A Naptár nézetben ütemezések](../media/how-to-create-schedules/schedules-in-calendar.png)
+![Ütemtervek a naptár nézetben](../media/how-to-create-schedules/schedules-in-calendar.png)
 
-Válassza ki a **Ma** gombra a jobb felső sarokban, váltson át az aktuális dátumra a naptárban. Válassza ki **balra mutató nyíl** váltson át az előző hét és **jobbra mutató nyílra** váltson át a következő hét a naptárban. 
+Kattintson a jobb felső sarokban található **ma** gombra, hogy az aktuális dátumra váltson a naptárban. Kattintson a **balra mutató nyílra** az előző hétre és a **jobbra mutató nyílra** való váltáshoz a naptár következő hetében. 
 
-## <a name="edit-a-schedule"></a>Ütemezés szerkesztése
-Amikor duplán rákattint egy kijelölt ütemezés szerint a naptárban, illetve válassza a **ceruza** gombra az eszköztáron látható a **ütemezés szerkesztése** lapot. Ugyanaz, mint a beállításainak frissítése folyamatban van ezen a lapon beállítások frissítése folyamatban a **Hozzáadás ütemezés** lapon ismertetett módon a [adjon hozzá egy ismétlődő ütemezés szerint](#add-a-recurring-schedule-weekly) szakaszban. 
+## <a name="edit-a-schedule"></a>Ütemterv szerkesztése
+Ha duplán kattint egy kiemelt ütemtervre a naptárban, vagy kiválasztja a **ceruza** gombot az eszköztáron, megjelenik az **ütemterv szerkesztése** lap. Az ezen a lapon található beállítások frissítése megegyeznek az **ütemezett** ütemterv hozzáadása lapon leírt beállítások frissítésével. [](#add-a-recurring-schedule-weekly) 
 
-![Ütemezés lapon szerkesztése](../media/how-to-create-schedules/edit-schedule-page.png)
+![Ütemterv szerkesztése lap](../media/how-to-create-schedules/edit-schedule-page.png)
 
 ## <a name="delete-a-schedule"></a>Ütemezés törlése
 
-1. Ütemezés törléséhez válassza a Kuka is (Törlés) gombra az eszköztáron az alábbi képen látható módon:
+1. Az ütemterv törléséhez válassza a Kuka (Törlés) gombot az eszköztáron az alábbi képen látható módon:
 
-    ![Eszköztár gombja törlése](../media/how-to-create-schedules/delete-schedule-button.png)
+    ![Törlés gomb az eszköztáron](../media/how-to-create-schedules/delete-schedule-button.png)
 
-    A Törlés gombra használhat bármely a ütemezett dátumok és időpontok a naptárban, és válassza ki **törlése**. 
-2. Az a **ütemezések törlése** lapon jelölje be **Igen**.
+    A naptárban az ütemezett dátumok és időpontok bármelyikéhez használhatja a Delete (Törlés) gombot, majd válassza a **Törlés**lehetőséget. 
+2. Az **ütemtervek törlése** lapon válassza az **Igen**lehetőséget.
 
-    ![Törlés ütemezések megerősítése](../media/how-to-create-schedules/delete-schedules-confirmation.png)
+    ![Ütemezett jóváhagyások törlése](../media/how-to-create-schedules/delete-schedules-confirmation.png)
 
 
 
@@ -87,7 +87,7 @@ Amikor duplán rákattint egy kijelölt ütemezés szerint a naptárban, illetve
 ## <a name="next-steps"></a>További lépések
 Lásd az alábbi cikkeket:
 
-- [Rendszergazdaként hozzon létre, és tesztkörnyezetfiókok kezelése](how-to-manage-lab-accounts.md)
-- [Labortulajdonosként hozzon létre és laborok kezelése](how-to-manage-classroom-labs.md)
-- [Labortulajdonosként konfigurálása, és a egy lab használatának szabályozása](how-to-configure-student-usage.md)
-- [Labor felhasználóként osztályterem-tesztkörnyezetek elérése](how-to-use-classroom-lab.md)
+- [Rendszergazdaként, labor-fiókok létrehozása és kezelése](how-to-manage-lab-accounts.md)
+- [Labor tulajdonosaként Labs létrehozása és kezelése](how-to-manage-classroom-labs.md)
+- [Tesztkörnyezet tulajdonosaként konfigurálhatja és szabályozhatja a labor használatát](how-to-configure-student-usage.md)
+- [Labor-felhasználóként az osztályterem Labs eléréséhez](how-to-use-classroom-lab.md)

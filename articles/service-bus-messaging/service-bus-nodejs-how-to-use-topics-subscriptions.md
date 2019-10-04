@@ -14,18 +14,23 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: d3f71382a3f2b15ec0f9764b9913a95c0d32b21d
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: 3dbec81237edd7cbf51e4812e83da068b9a366e0
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59608874"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67540993"
 ---
-# <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs"></a>Hogyan használható a Service Bus-üzenettémák és előfizetések a node.js használatával
+# <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>Hogyan használható a Service Bus-üzenettémák és előfizetések a Node.js és az azure-sb csomag
+> [!div class="op_multi_selector" title1="Programozási nyelv" title2="Node.js pacakge"]
+> - [(Node.js |} azure-sb)](service-bus-nodejs-how-to-use-topics-subscriptions.md)
+> - [(Node.js |} @azure/service-bus)](service-bus-nodejs-how-to-use-topics-subscriptions-new-package.md)
 
-[!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
+Ebben az oktatóanyagban megismerheti, hogyan hozhat létre a Node.js-alkalmazások üzeneteket küldeni a Service Bus-témakörbe, és fogad üzeneteket egy Service Bus-előfizetésébe a [azure-sb](https://www.npmjs.com/package/azure-sb) csomagot. A minták JavaScript nyelven íródtak, és a Node.js használata [Azure-modul](https://www.npmjs.com/package/azure) melyik belső használ a `azure-sb` csomagot.
 
-Ez az útmutató azt ismerteti, hogyan használható a Service Bus-üzenettémák és előfizetések Node.js-alkalmazásokból. Az ismertetett forgatókönyvek a következők:
+A [azure-sb](https://www.npmjs.com/package/azure-sb) használ csomag [Service Bus REST futásidejű API-k](/rest/api/servicebus/service-bus-runtime-rest). Kérheti, hogy egy gyorsabb, az új felület [ @azure/service-bus ](https://www.npmjs.com/package/@azure/service-bus) csomag, amely használja a gyorsabb [AMQP 1.0 protokoll](service-bus-amqp-overview.md). Az új csomag kapcsolatos további információkért lásd: [Service Bus-üzenettémák és előfizetések használata a Node.js és @azure/service-bus csomag](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-topics-subscriptions-new-package), ellenkező esetben kihívásokra, hogyan használhatja a [azure](https://www.npmjs.com/package/azure) csomag.
+
+Az itt ismertetett forgatókönyvek között megtalálható:
 
 - Üzenettémák és előfizetések létrehozása 
 - Előfizetés-szűrők létrehozása 
@@ -36,14 +41,14 @@ Ez az útmutató azt ismerteti, hogyan használható a Service Bus-üzenettémá
 Üzenettémakörökkel és előfizetésekkel kapcsolatos további információkért lásd: [további lépések](#next-steps) szakaszban.
 
 ## <a name="prerequisites"></a>Előfeltételek
-1. Azure-előfizetés. Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Aktiválhatja a [Visual Studio vagy az MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-2. Kövesse lépéseket a [a rövid útmutató: Az Azure portal használatával hozzon létre egy Service Bus-témakörbe, és a témakörbe az előfizetések](service-bus-quickstart-topics-subscriptions-portal.md) hozhat létre egy Service Bus **névtér** , és a **kapcsolati karakterlánc**.
+- Azure-előfizetés. Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Aktiválhatja a [Visual Studio vagy az MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+- Kövesse lépéseket a [a rövid útmutató: Az Azure portal használatával hozzon létre egy Service Bus-témakörbe, és a témakörbe az előfizetések](service-bus-quickstart-topics-subscriptions-portal.md) hozhat létre egy Service Bus **névtér** , és a **kapcsolati karakterlánc**.
 
     > [!NOTE]
     > Létrehozhat egy **témakör** és a egy **előfizetés** használatával a témakörbe **Node.js** ebben a rövid útmutatóban. 
 
 ## <a name="create-a-nodejs-application"></a>Node.js alkalmazás létrehozása
-Hozzon létre egy üres Node.js-alkalmazás. Node.js-alkalmazás létrehozásával kapcsolatos útmutatóért lásd: [Hozzon létre és telepíthet egy Node.js-alkalmazást az Azure-webhelyekre], [Node.js Felhőszolgáltatás] [ Node.js Cloud Service] Windows használatával A PowerShell vagy WebMatrix-webhely.
+Hozzon létre egy üres Node.js-alkalmazás. Node.js-alkalmazás létrehozásával kapcsolatos útmutatóért lásd: [Hozzon létre és telepíthet egy Node.js-alkalmazást az Azure-webhelyekre], [Node.js Felhőszolgáltatás][Node.js Cloud Service] webmatrixban Windows PowerShell vagy a webhely használatával.
 
 ## <a name="configure-your-application-to-use-service-bus"></a>A Service Bus-alkalmazás konfigurálása
 Service Bus használata a Node.js az Azure-csomag letöltése. Ez a csomag tartalmaz-kódtárak, amely a Service Bus REST-szolgáltatásokkal kommunikálni.
@@ -143,9 +148,9 @@ var serviceBusService = azure.createServiceBusService().withFilter(retryOperatio
 Üzenettémakör-előfizetéseket is jönnek létre az a **ServiceBusService** objektum. Előfizetés neve, és rendelkezhetnek olyan szűrőkkel, amelyek az előfizetés virtuális üzenetsorának üzenetet korlátoz.
 
 > [!NOTE]
-> Bármelyik, amíg előfizetések állandó, vagy a témakör társítva, a rendszer törli. Ha az alkalmazás-előfizetés létrehozása logikát tartalmaz, akkor kell először ellenőrizze, hogy az előfizetés használatával a `getSubscription` metódust.
+> Alapértelmezés szerint az előfizetések állandó vagy csak, vagy a témakör társítva, a rendszer törli. Ha az alkalmazás-előfizetés létrehozása logikát tartalmaz, akkor kell először ellenőrizze, hogy az előfizetés használatával a `getSubscription` metódust.
 >
->
+> Használhat az előfizetéseket, azzal automatikusan törli a [AutoDeleteOnIdle tulajdonság](https://docs.microsoft.com/javascript/api/azure-arm-sb/sbsubscription?view=azure-node-latest#autodeleteonidle).
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>Előfizetés létrehozása az alapértelmezett (MatchAll) szűrővel
 A **MatchAll** szűrő abban az esetben az alapértelmezett szűrő, egy előfizetés létrehozásakor használt. A **MatchAll** szűrő használatakor a rendszer a témakörbe közzétett összes üzenetet elhelyezi az előfizetés virtuális üzenetsorában. Az alábbi példa egy AllMessages nevű előfizetést hoz létre, és használja az alapértelmezett **MatchAll** szűrőt.
@@ -161,7 +166,7 @@ serviceBusService.createSubscription('MyTopic','AllMessages',function(error){
 ### <a name="create-subscriptions-with-filters"></a>Előfizetések létrehozása szűrőkkel
 Szűrők, amelyek lehetővé teszik, hogy a hatókör, amely a témakörbe küldött üzenetek meg kell jelennie egy adott témakör-előfizetésben is létrehozhat.
 
-A legrugalmasabb típusú szűrő előfizetések által támogatott a **SqlFilter**, amely megvalósítja az SQL92 egy részhalmazát. Az SQL-szűrők az üzenettémába közzétett üzenetek tulajdonságain működnek. Az SQL-szűrőkkel használható kifejezésekkel kapcsolatos további részletekért tekintse át a [SqlFilter.SqlExpression] [ SqlFilter.SqlExpression] szintaxist.
+A legrugalmasabb típusú szűrő előfizetések által támogatott a **SqlFilter**, amely megvalósítja az SQL92 egy részhalmazát. Az SQL-szűrők az üzenettémába közzétett üzenetek tulajdonságain működnek. Az SQL-szűrőkkel használható kifejezésekkel kapcsolatos további részletekért tekintse át a [SqlFilter.SqlExpression][SqlFilter.SqlExpression] szintaxist.
 
 Szűrők használatával is hozzáadhatók egy előfizetést a `createRule` módszere a **ServiceBusService** objektum. Ez a módszer lehetővé teszi új szűrőket hozzáadni egy meglévő előfizetéshez.
 
@@ -309,7 +314,7 @@ Emellett van egy előfizetésen belül zárolva üzenethez társított időtúll
 Abban az esetben, ha az alkalmazás összeomlik, mielőtt azonban az üzenet feldolgozása után a `deleteMessage` módszert hívja meg, az üzenet újbóli kézbesítése az alkalmazáshoz, amikor újraindul. Ez a jelenség gyakran nevezik *legalább egyszer feldolgozása*. Ez azt jelenti, hogy minden üzenet legalább egyszer dolgozza fel, de bizonyos helyzetekben előfordulhat ugyanazon üzenet előfordulhat, hogy újbóli kézbesítése. Ha a forgatókönyvben nem lehetségesek, akkor hozzá kell adnia logikai az alkalmazás kezeli a duplikált üzenetek kézbesítését. Használhatja a **üzenetazonosító** tulajdonság az üzenet, amely állandó marad a kézbesítési kísérletek során.
 
 ## <a name="delete-topics-and-subscriptions"></a>Témakörök és előfizetések törlése
-Üzenettémák és előfizetések állandóak, és explicit módon kell-e törölve keresztül a [az Azure portal] [ Azure portal] vagy programozott módon.
+Üzenettémák és előfizetések állandóak, kivéve, ha a [autoDeleteOnIdle tulajdonság](https://docs.microsoft.com/javascript/api/azure-arm-sb/sbsubscription?view=azure-node-latest#autodeleteonidle) van beállítva, és explicit módon kell törölni keresztül a [az Azure portal][Azure portal] vagy programozott módon.
 A következő példa bemutatja, hogyan lehet törölni a témakör nevű `MyTopic`:
 
 ```javascript
@@ -329,6 +334,9 @@ serviceBusService.deleteSubscription('MyTopic', 'HighMessages', function (error)
     }
 });
 ```
+
+> [!NOTE]
+> A Service Bus-erőforrások is kezelhetők [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/). A Service Bus Explorer lehetővé teszi, hogy a felhasználók csatlakozni a Service Bus-névtér és üzenetküldési entitások felügyelete egyszerű módon. Az eszköz például importálás/exportálás funkció vagy tesztelhetik, témakör, üzenetsorok, előfizetések, relay-szolgáltatások, a notification hubs és események hubok speciális szolgáltatásokat biztosítja. 
 
 ## <a name="next-steps"></a>További lépések
 Most, hogy megismerte a Service Bus-üzenettémakörök alapjait, kövesse az alábbi hivatkozások további.

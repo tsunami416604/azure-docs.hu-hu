@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 92cb427149e6e6cbddfb96c6e4488017641e6482
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: a07ac40ad3adda486b5216e83d683e00ec93265d
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164908"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620790"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Az Azure Stream Analytics kimenetek hibaelhárítása
 
@@ -79,7 +79,7 @@ Ezeket az adatokat, az Azure Portalon válassza ki a folyamatos átviteli felada
 
 ## <a name="key-violation-warning-with-azure-sql-database-output"></a>Az Azure SQL Database kimeneti kulcsok protokollmegsértési figyelmeztetés
 
-Azure SQL database egy Stream Analytics-feladat kimeneteként konfigurálásakor azt tömeges rekordok szúr be a céltáblázatban. Általánosságban véve az Azure stream analytics biztosítja [legalább egyszer kézbesítési]( https://msdn.microsoft.com/azure/stream-analytics/reference/event-delivery-guarantees-azure-stream-analytics) átadni a kimeneti fogadónak is egy [pontosan elérése – egyszer kézbesítési]( https://blogs.msdn.microsoft.com/streamanalytics/2017/01/13/how-to-achieve-exactly-once-delivery-for-sql-output/) SQL kimeneti, amikor az SQL-tábla meghatározott egyedi korlátozást tartalmaz. 
+Azure SQL database egy Stream Analytics-feladat kimeneteként konfigurálásakor azt tömeges rekordok szúr be a céltáblázatban. Általánosságban véve az Azure stream analytics biztosítja [legalább egyszer kézbesítési](https://docs.microsoft.com/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics) átadni a kimeneti fogadónak is egy [pontosan elérése – egyszer kézbesítési]( https://blogs.msdn.microsoft.com/streamanalytics/2017/01/13/how-to-achieve-exactly-once-delivery-for-sql-output/) SQL kimeneti, amikor az SQL-tábla meghatározott egyedi korlátozást tartalmaz. 
 
 Miután egyedi kulcsra vonatkozó megkötések állíthatók be, az SQL-táblát, és SQL-táblába beszúrt ismétlődő rekordok, az Azure Stream Analytics eltávolítja az ismétlődő rekord. Ez felosztja a az adatok kötegek és rekurzív módon szúr be a kötegek, amíg talál egy egyetlen ismétlődő rekordot. Ha a folyamatos átviteli feladat ismétlődő sorok, ez a felosztás jelentős számú rendelkezik, és helyezze be a folyamat figyelmen kívül hagyja az ismétlődő egy kevésbé hatékony és időigényes feladat, amely rendelkezik. Ha több kulcsok protokollmegsértési figyelmeztető üzenetek a tevékenységnaplóban az elmúlt egy órán belül jelenik meg, akkor valószínű, hogy az SQL-kimenet lelassítanunk van-e a teljes feladat. 
 
@@ -91,6 +91,10 @@ Vegye figyelembe a következő megfigyeléseken, számos különböző típusú 
 * Az IGNORE_DUP_KEY beállítást használja az ALTER INDEX egyedi index, amely nem azonos az elsődleges kulcs vagy UNIQUE megkötést, és a CREATE INDEX vagy az INDEX definícióját használatával létrehozott állíthatja be.  
 * Mivel az ilyen indexek egyedisége nem kényszeríti IGNORE_DUP_KEY oszlopcentrikus indexek nem vonatkozik.  
 
+## <a name="column-names-are-lower-cased-by-azure-stream-analytics"></a>Oszlop nevek a következők szerint az Azure Stream Analytics alacsonyabb kisbetűsek
+Az eredeti (1.0) kompatibilitási szint használatakor az Azure Stream Analytics segítségével kisbetűsre módosítja az oszlopneveket. Ez a viselkedés a rendszerriasztások mechanizmusában újabb kompatibilitási szinten. Annak érdekében, hogy megőrizze a helyzet, azt javasoljuk, hogy az ügyfelek számára, hogy helyezze át az 1.1-es és újabb kompatibilitási szinten. További információt talál a [kompatibilitási szintje az Azure Stream Analytics-feladatok](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level).
+
+
 ## <a name="get-help"></a>Segítségkérés
 
 További segítségre van szüksége, próbálja meg [Azure Stream Analytics-fórumon](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
@@ -100,5 +104,5 @@ További segítségre van szüksége, próbálja meg [Azure Stream Analytics-fó
 * [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Scale Azure Stream Analytics jobs](stream-analytics-scale-jobs.md) (Azure Stream Analytics-feladatok méretezése)
-* [Azure Stream Analytics Query Language Reference](https://msdn.microsoft.com/library/azure/dn834998.aspx) (Referencia az Azure Stream Analytics lekérdezési nyelvhez)
+* [Azure Stream Analytics Query Language Reference](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) (Referencia az Azure Stream Analytics lekérdezési nyelvhez)
 * [Az Azure Stream Analytics felügyeleti REST API referenciája](https://msdn.microsoft.com/library/azure/dn835031.aspx)

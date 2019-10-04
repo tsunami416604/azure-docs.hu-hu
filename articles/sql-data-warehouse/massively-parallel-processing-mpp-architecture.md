@@ -2,20 +2,20 @@
 title: Az Azure SQL Data Warehouse - MPP-architektúra |} A Microsoft Docs
 description: Ismerje meg, hogyan kombinálja az Azure SQL Data Warehouse a nagymértékben párhuzamos feldolgozási (MPP) és az Azure storage nagy teljesítménye és skálázhatósága eléréséhez.
 services: sql-data-warehouse
-author: ronortloff
+author: mlee3gsd
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
 ms.date: 04/17/2018
-ms.author: rortloff
+ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 0c2ad7e5a707c20db2773324e8047eedaad1a48b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 25dc469c9f50dee7d088fccd214020791ff73def
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57835033"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66515799"
 ---
 # <a name="azure-sql-data-warehouse---massively-parallel-processing-mpp-architecture"></a>Az Azure SQL Data Warehouse - nagymértékben párhuzamos feldolgozási (MPP) architektúra
 Ismerje meg, hogyan kombinálja az Azure SQL Data Warehouse a nagymértékben párhuzamos feldolgozási (MPP) és az Azure storage nagy teljesítménye és skálázhatósága eléréséhez. 
@@ -56,7 +56,7 @@ Minden számítási csomópont van egy csomópont-azonosító, amely a rendszer 
 ### <a name="data-movement-service"></a>Adatátviteli szolgáltatás
 Az adatátviteli szolgáltatás (DMS) az, hogy koordinálja a számítási csomópontok közötti adatáthelyezés adatok átviteli technológiát. Néhány lekérdezés annak érdekében, hogy a párhuzamos lekérdezések pontos eredményeket adjon vissza adatáthelyezés van szükség. Amikor szükség az adatmozgatás, a DMS biztosítja, hogy a megfelelő adatokat lekérdezi a megfelelő helyre. 
 
-## <a name="distributions"></a>Felosztások
+## <a name="distributions"></a>Disztribúciók
 
 A terjesztés az tárolása és feldolgozása a párhuzamos lekérdezések elosztott adatokon a Futtatás alapvető egysége. Amikor az SQL Data Warehouse egy lekérdezés fut, a munkahelyi 60 kisebb lekérdezések párhuzamos futtatását van felosztva. A 60 kisebb lekérdezésekre mindegyike futtat az adatok disztribúciók egyik. Minden számítási csomópont egy vagy több a 60 elosztás kezeli. Maximális számítási erőforrásokat az adattárház számítási csomópontok egy terjesztési rendelkezik. Minimális számítási erőforrásokat az adattárház rendelkezik minden disztribúcióján használhatók egy számítási csomóponton.  
 

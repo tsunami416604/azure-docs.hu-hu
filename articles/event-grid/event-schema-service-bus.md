@@ -9,11 +9,11 @@ ms.topic: reference
 ms.date: 01/17/2019
 ms.author: babanisa
 ms.openlocfilehash: f44d2c1c5be6ac895b6f5ea9feca29c0f8ed09f3
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467740"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60561761"
 ---
 # <a name="azure-event-grid-event-schema-for-service-bus"></a>Service Bus számára, az Azure Event Grid eseménysémája
 
@@ -82,25 +82,25 @@ Egy esemény a következő legfelső szintű adatokat tartalmaz:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| témakör | sztring | A forrás teljes erőforrás elérési útja. Ez a mező nem írható. Event Grid biztosítja ezt az értéket. |
-| tárgy | sztring | Az esemény tárgya közzétevő által megadott elérési útja. |
-| eventType | sztring | Ehhez eseményre adatforráshoz regisztrált esemény típusok egyikét. |
-| eventTime | sztring | Az esemény akkor jön létre az idő alapján a szolgáltató UTC idő. |
-| id | sztring | Az esemény egyedi azonosítója. |
-| adat | objektum | A BLOB storage-eseményadatok. |
-| dataVersion | sztring | Az adatobjektum sémaverziója. A közzétevő a sémaverziót határozza meg. |
-| metadataVersion | sztring | Az esemény-metaadatok sémaverziója. Event Grid sémáját, a legfelső szintű tulajdonságait határozza meg. Event Grid biztosítja ezt az értéket. |
+| topic | string | A forrás teljes erőforrás elérési útja. Ez a mező nem írható. Event Grid biztosítja ezt az értéket. |
+| subject | string | Az esemény tárgya közzétevő által megadott elérési útja. |
+| eventType | string | Ehhez eseményre adatforráshoz regisztrált esemény típusok egyikét. |
+| eventTime | string | Az esemény akkor jön létre az idő alapján a szolgáltató UTC idő. |
+| id | string | Az esemény egyedi azonosítója. |
+| data | object | A BLOB storage-eseményadatok. |
+| dataVersion | string | Az adatobjektum sémaverziója. A közzétevő a sémaverziót határozza meg. |
+| metadataVersion | string | Az esemény-metaadatok sémaverziója. Event Grid sémáját, a legfelső szintű tulajdonságait határozza meg. Event Grid biztosítja ezt az értéket. |
 
 Az objektum a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| namespaceName | sztring | A Service Bus-névtér az erőforrás megtalálható. |
-| requestUri | sztring | Az URI-t az adott üzenetsor vagy az esemény kibocsátó előfizetésnek. |
-| entityType | sztring | Események (üzenetsorok vagy előfizetések) kibocsátó Service Bus-entitás típusa. |
-| queueName | sztring | Az üzenetsor, az aktív üzenetek, ha feliratkozik egy üzenetsorba. Érték null, ha a témakörök / előfizetések. |
-| topicName | sztring | A témakör az aktív üzenetek a Service Bus-előfizetéshez tartozik. Hodnota null értékű, ha egy üzenetsor használata. |
-| subscriptionName | sztring | Az aktív üzenetek a Service Bus-előfizetés. Hodnota null értékű, ha egy üzenetsor használata. |
+| namespaceName | string | A Service Bus-névtér az erőforrás megtalálható. |
+| requestUri | string | Az URI-t az adott üzenetsor vagy az esemény kibocsátó előfizetésnek. |
+| entityType | string | Események (üzenetsorok vagy előfizetések) kibocsátó Service Bus-entitás típusa. |
+| queueName | string | Az üzenetsor, az aktív üzenetek, ha feliratkozik egy üzenetsorba. Érték null, ha a témakörök / előfizetések. |
+| topicName | string | A témakör az aktív üzenetek a Service Bus-előfizetéshez tartozik. Hodnota null értékű, ha egy üzenetsor használata. |
+| subscriptionName | string | Az aktív üzenetek a Service Bus-előfizetés. Hodnota null értékű, ha egy üzenetsor használata. |
 
 ## <a name="next-steps"></a>További lépések
 

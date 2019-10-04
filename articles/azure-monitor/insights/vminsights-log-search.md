@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/10/2019
 ms.author: magoedte
-ms.openlocfilehash: 8b6745a2b9afe8d3101585e3f7a13f2fc978c84a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 23ce57add0d55ba5901e2f5fcf82b3279d349cdc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59492088"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66472589"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Az Azure Monitor naplók lekérdezni a virtuális gépek (előzetes verzió)
 A virtuális gépek az Azure Monitor teljesítmény és a kapcsolati metrika, a számítógép és a folyamat leltáradatok és a állapotinformációkat gyűjt, és továbbítja azokat a Log Analytics-munkaterületet az Azure monitorban.  Ezek az adatok érhető el [lekérdezés](../../azure-monitor/log-query/log-query-overview.md) az Azure monitorban. Ezeket az adatokat, beleértve az áttelepítés megtervezése, kapacitáselemzési, felderítési és igény szerinti teljesítménnyel kapcsolatos hibaelhárítás forgatókönyveket is alkalmazhat.
@@ -43,26 +43,26 @@ A következő mezőket és egyezmények a alkalmazni VMConnection és VMBoundPor
 
 - Számítógép: Teljes tartománynév gép Reporting 
 - AgentID: A Log Analytics-ügynökkel rendelkező gép egyedi azonosítója  
-- Számítógép: A gép ServiceMap által elérhetővé tett az Azure Resource Manager-erőforrás neve. A következő formában van *m – {GUID}*, ahol *GUID* ügynökazonosító, ugyanaz a GUID  
-- Folyamat: A folyamat ServiceMap által elérhetővé tett az Azure Resource Manager-erőforrás neve. A következő formában van *p-{hexadecimális karakterlánc}*. Folyamat gép hatókörön belüli egyedi, és hozzon létre egy egyedi folyamat azonosítója gépek között, kombinálhatja a gép és a folyamat mezőket. 
+- Számítógép: A gép ServiceMap által elérhetővé tett az Azure Resource Manager-erőforrás neve. A következő formában van *m – {GUID}* , ahol *GUID* ügynökazonosító, ugyanaz a GUID  
+- Folyamat: A folyamat ServiceMap által elérhetővé tett az Azure Resource Manager-erőforrás neve. A következő formában van *p-{hexadecimális karakterlánc}* . Folyamat gép hatókörön belüli egyedi, és hozzon létre egy egyedi folyamat azonosítója gépek között, kombinálhatja a gép és a folyamat mezőket. 
 - ProcessName: A jelentéskészítési folyamat végrehajtható fájljának nevét.
 - Az összes IP-címek olyan karakterláncok IPv4 kanonikus formátumban, például *13.107.3.160* 
 
 Kezelheti a költségeket és összetettséget, csatlakozási rekordjainak nem felelnek meg az egyes fizikai hálózati kapcsolatokat. Több fizikai hálózati kapcsolatot, amely megjelenik majd a megfelelő tábla logikai kapcsolatot vannak csoportosítva.  Ez azt jelenti, rögzíti a *VMConnection* tábla felel meg a logikai csoportosítása és nem az egyes fizikai kapcsolatokat betartását. Egyetlen logikai rekord összesíti ugyanazt az értéket a következő attribútumok megosztása során egy adott egyperces időszakban, a fizikai hálózati kapcsolatot a rendszer *VMConnection*. 
 
-| Tulajdonság | Leírás |
+| Tulajdonság | Description |
 |:--|:--|
-|Irány |A kapcsolat irányát, értéke *bejövő* vagy *kimenő* |
-|Gép |A számítógép teljes Tartományneve |
-|Feldolgozás |Identitáskezelési folyamat vagy a csoportok a folyamatok, a kapcsolat kezdeményezése és elfogadása |
+|Direction |A kapcsolat irányát, értéke *bejövő* vagy *kimenő* |
+|Machine |A számítógép teljes Tartományneve |
+|Process |Identitáskezelési folyamat vagy a csoportok a folyamatok, a kapcsolat kezdeményezése és elfogadása |
 |SourceIp |A forrás IP-címe |
 |DestinationIp |A cél-IP-cím |
 |DestinationPort |A cél-port száma |
-|Protokoll |A kapcsolathoz használt protokoll.  Értékek *tcp*. |
+|Protocol |A kapcsolathoz használt protokoll.  Értékek *tcp*. |
 
 A fiókra a csoportosítás a hatását, csoportosított fizikai kapcsolatok számával kapcsolatos információkat a rekord a következő tulajdonságok:
 
-| Tulajdonság | Leírás |
+| Tulajdonság | Description |
 |:--|:--|
 |LinksEstablished |A jelentéskészítési időszakban létesített fizikai hálózati kapcsolatok száma |
 |LinksTerminated |A jelentéskészítési időszakban le lett állítva fizikai hálózati kapcsolatok száma |
@@ -73,11 +73,11 @@ A fiókra a csoportosítás a hatását, csoportosított fizikai kapcsolatok sz�
 
 Mellett száma kapcsolati metrika adatmennyiség kapcsolatos információkat küldött, és a egy adott logikai kapcsolat fogadott, vagy hálózati port is szerepelnek a rekord a következő tulajdonságokat:
 
-| Tulajdonság | Leírás |
+| Tulajdonság | Description |
 |:--|:--|
 |BytesSent |A jelentéskészítési időszakban elküldött bájtok száma |
 |BytesReceived |A jelentéskészítési időszakban fogadott bájtok teljes száma |
-|Válaszok |A jelentéskészítési időszakban megfigyelt válaszok száma. 
+|Responses |A jelentéskészítési időszakban megfigyelt válaszok száma. 
 |ResponseTimeMax |A legnagyobb válaszideje (ezredmásodperc) észlelt a jelentéskészítési időszakban. Ha nincs érték a tulajdonság értéke üres.|
 |ResponseTimeMin |A legkisebb válaszideje (ezredmásodperc) észlelt a jelentéskészítési időszakban. Ha nincs érték a tulajdonság értéke üres.|
 |ResponseTimeSum |Az összes válaszidők összege a jelentéskészítési időszakban megfigyelt (ezredmásodperc). Ha nincs érték a tulajdonság értéke üres.|
@@ -99,22 +99,22 @@ Az egyszerűség kedvéért egy kapcsolat a távoli vég IP-címét a RemoteIp t
 #### <a name="geolocation"></a>Földrajzi hely
 *VMConnection* is tartalmaz földrajzi adatokat a távoli kapcsolat rekordokban végén a rekord a következő tulajdonságai: 
 
-| Tulajdonság | Leírás |
+| Tulajdonság | Description |
 |:--|:--|
-|RemoteCountry |Az üzemeltető RemoteIp ország neve.  Ha például *Egyesült Államok* |
+|RemoteCountry |Az országot vagy régiót futtató RemoteIp neve.  Ha például *Egyesült Államok* |
 |RemoteLatitude |A földrajzi szélesség. Ha például *47.68* |
 |RemoteLongitude |A földrajzi hosszúság. Ha például *-122.12* |
 
 #### <a name="malicious-ip"></a>Kártékony IP-cím
 Minden RemoteIp tulajdonság *VMConnection* tábla be van jelölve IP-címek összevetéssel az ismert kártékony tevékenységek. Ha a RemoteIp kártevőként azonosított a következő tulajdonságok lesz kitöltve (azok üres, ha a IP-cím nem számít rosszindulatú) a rekord a következő tulajdonságai:
 
-| Tulajdonság | Leírás |
+| Tulajdonság | Description |
 |:--|:--|
 |MaliciousIp |A RemoteIp címe |
 |IndicatorThreadType |Észlelt fenyegetés mutató a következő értékek egyike *Botnet*, *C2*, *CryptoMining*, *Darknet*, *DDos* , *MaliciousUrl*, *kártevő*, *adathalász*, *Proxy*, *elleni*, *Megnézendők*.   |
-|Leírás |Az észlelt fenyegetés leírása. |
+|Description |Az észlelt fenyegetés leírása. |
 |TLPLevel |Közlekedési lámpa protokoll (TLP) szint egyike a meghatározott értékeknek *fehér*, *zöld*, *sárga*, *Red*. |
-|Megbízhatóság |Értékek a következők *0 – 100*. |
+|Confidence |Értékek a következők *0 – 100*. |
 |Severity |Értékek a következők *0 – 5*, ahol *5* van a legsúlyosabb és *0* nem súlyos egyáltalán. Alapértelmezett érték *3*.  |
 |FirstReportedDateTime |Először a szolgáltató jelenteni a kijelző. |
 |LastReportedDateTime |A kijelző Interflow által látott utolsó időpontját. |
@@ -125,21 +125,14 @@ Minden RemoteIp tulajdonság *VMConnection* tábla be van jelölve IP-címek ös
 ### <a name="ports"></a>Portok 
 Egy gép azon portjait, aktívan bejövő forgalmat fogadja el vagy potenciálisan fogadja el a forgalmat, de a jelentéskészítési időszakban üresjáratban a VMBoundPort táblában írja.  
 
->[!NOTE]
->Az Azure Monitor-beli virtuális gépek nem támogatja, összegyűjtése és port adatok rögzítése a Log Analytics-munkaterület az alábbi régiókban:  
->- USA keleti régiója  
->- Nyugat-Európa
->
-> Az adatgyűjtés engedélyezve van a többi [támogatott régiók](vminsights-onboard.md#log-analytics) Azure Monitor-beli virtuális gépek számára. 
-
 Minden rekord VMBoundPort azonosíthatók a következő mezőket: 
 
-| Tulajdonság | Leírás |
+| Tulajdonság | Description |
 |:--|:--|
-|Feldolgozás | Identitás, amellyel a port társítva folyamat (vagy a folyamatok csoportok).|
-|IP | IP-cím-portot (lehet helyettesítő karaktert tartalmazó IP-Címek használatához *0.0.0.0*) |
+|Process | Identitás, amellyel a port társítva folyamat (vagy a folyamatok csoportok).|
+|Ip | IP-cím-portot (lehet helyettesítő karaktert tartalmazó IP-Címek használatához *0.0.0.0*) |
 |Port |A Port számát |
-|Protokoll | A protokoll.  A példában *tcp* vagy *udp* (csak *tcp* jelenleg támogatott).|
+|Protocol | A protokoll.  A példában *tcp* vagy *udp* (csak *tcp* jelenleg támogatott).|
  
 Az identitás egy portot a fenti öt mezők származik, és a PortId tulajdonságban tárolja. Ez a tulajdonság segítségével gyorsan található rekordok egy adott portot időpontja között. 
 
@@ -160,9 +153,9 @@ Az alábbiakban néhány fontos tudnivalók:
 ### <a name="servicemapcomputercl-records"></a>ServiceMapComputer_CL records
 Típussal rendelkező rekordok *ServiceMapComputer_CL* leltáradatokat a függőségi ügynök esetében van. Ezeket a rekordokat az alábbi táblázatban az jellemzőkkel rendelkeznek:
 
-| Tulajdonság | Leírás |
+| Tulajdonság | Description |
 |:--|:--|
-| Typo | *ServiceMapComputer_CL* |
+| Típus | *ServiceMapComputer_CL* |
 | SourceSystem | *OpsManager* |
 | ResourceId | A munkaterületen belül a gépek egyedi azonosítója |
 | ResourceName_s | A munkaterületen belül a gépek egyedi azonosítója |
@@ -185,9 +178,9 @@ Típussal rendelkező rekordok *ServiceMapComputer_CL* leltáradatokat a függő
 ### <a name="servicemapprocesscl-type-records"></a>ServiceMapProcess_CL Type records
 Típussal rendelkező rekordok *ServiceMapProcess_CL* rendelkezik TCP-kapcsolattal rendelkező folyamatokat a Hardverleltár-adatait a függőségi ügynököt a kiszolgálón. Ezeket a rekordokat az alábbi táblázatban az jellemzőkkel rendelkeznek:
 
-| Tulajdonság | Leírás |
+| Tulajdonság | Description |
 |:--|:--|
-| Typo | *ServiceMapProcess_CL* |
+| Típus | *ServiceMapProcess_CL* |
 | SourceSystem | *OpsManager* |
 | ResourceId | A munkaterületen belül a folyamat egyedi azonosítója |
 | ResourceName_s | A gépen, amelyen fut a folyamat egyedi azonosítója|
@@ -202,9 +195,9 @@ Típussal rendelkező rekordok *ServiceMapProcess_CL* rendelkezik TCP-kapcsolatt
 | ProductVersion_s | A termék verziója |
 | FileVersion_s | A fájl verziója |
 | CommandLine_s | A parancssorból |
-| ExecutablePath z | A végrehajtható fájl elérési útja |
+| ExecutablePath_s | A végrehajtható fájl elérési útja |
 | WorkingDirectory_s | A munkakönyvtárban |
-| Felhasználónév | A fiók, amely alatt a folyamat végrehajtása |
+| UserName | A fiók, amely alatt a folyamat végrehajtása |
 | UserDomain | A tartományhoz, amelyben a folyamat végrehajtása |
 
 ## <a name="sample-log-searches"></a>Naplókeresési minták

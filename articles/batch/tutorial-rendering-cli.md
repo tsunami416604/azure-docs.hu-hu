@@ -3,20 +3,20 @@ title: Jelenetek renderelése a felhőben – Azure Batch
 description: Oktatóanyag – Autodesk 3ds Max jelenetek renderelése az Arnolddal a Batch renderelési szolgáltatás és az Azure parancssori felület használatával
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.service: batch
 ms.topic: tutorial
 ms.date: 12/11/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 5abc2e673438a1ffa22e8d010bf2ee395cd521ae
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
-ms.translationtype: HT
+ms.openlocfilehash: 28914244f7ea84ec133821d4b125cbd3b0378348
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149928"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71272340"
 ---
-# <a name="tutorial-render-a-scene-with-azure-batch"></a>Oktatóanyag: Az Azure Batch álló jelenet renderelése 
+# <a name="tutorial-render-a-scene-with-azure-batch"></a>Oktatóanyag: Jelenet megjelenítése Azure Batch 
 
 Az Azure Batch felhőméretű renderelési képességeket biztosít használatalapú fizetéssel. Az Azure Batch támogatja renderelési alkalmazások, például az Autodesk Maya, a 3ds Max, az Arnold és a V-Ray használatát. Ez az oktatóanyag azt mutatja be, hogy milyen lépésekkel renderelhet kisebb jeleneteket a Batch és az Azure parancssori felület használatával. Az alábbiak végrehajtásának módját ismerheti meg:
 
@@ -168,20 +168,20 @@ az storage container create \
     --name job-myrenderjob
 ```
 
-A kimeneti fájlok a tárolóba való írásához a Batchnek a közös hozzáférésű jogosultságkód- (SAS-) jogkivonatot kell használnia. A jogkivonatot az [az storage account generate-sas](/cli/azure/storage/account#az-storage-account-generate-sas) paranccsal hozhatja létre. Ez a példa egy olyan jogkivonatot hoz létre, amellyel a fiókban lévő bármely blobtároló írható, és amely 2018. november 15-ig érvényes:
+A kimeneti fájlok a tárolóba való írásához a Batchnek a közös hozzáférésű jogosultságkód- (SAS-) jogkivonatot kell használnia. A jogkivonatot az [az storage account generate-sas](/cli/azure/storage/account#az-storage-account-generate-sas) paranccsal hozhatja létre. Ez a példa létrehoz egy jogkivonatot, amely a fiókban található bármelyik blob-tárolóba ír, a jogkivonat pedig 2020 november 15-én lejár:
 
 ```azurecli-interactive
 az storage account generate-sas \
     --permissions w \
     --resource-types co \
     --services b \
-    --expiry 2019-11-15
+    --expiry 2020-11-15
 ```
 
 Jegyezze fel a parancs által visszaadott, a következőhöz hasonló jogkivonatot. A jogkivonatot egy későbbi lépésben fogja használni.
 
 ```
-se=2018-11-15&sp=rw&sv=2017-04-17&ss=b&srt=co&sig=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+se=2020-11-15&sp=rw&sv=2019-09-24&ss=b&srt=co&sig=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
 ## <a name="render-a-single-frame-scene"></a>egyetlen képkockából álló jelenet renderelése;
@@ -217,7 +217,7 @@ Módosítsa a JSON-fájl `blobSource` és `containerURL` elemeit, hogy tartalmaz
   "commandLine": "cmd /c \"%3DSMAX_2018%3dsmaxcmdio.exe -secure off -v:5 -rfw:0 -start:1 -end:1 -outputName:\"dragon.jpg\" -w 400 -h 300 MotionBlur-DragonFlying.max\"",
   "resourceFiles": [
     {
-        "blobSource": "https://mystorageaccount.blob.core.windows.net/scenefiles/MotionBlur-DragonFlying.max",
+        "httpUrl": "https://mystorageaccount.blob.core.windows.net/scenefiles/MotionBlur-DragonFlying.max",
         "filePath": "MotionBlur-DragonFlying.max"
     }
   ],

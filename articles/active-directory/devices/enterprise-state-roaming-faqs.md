@@ -2,27 +2,21 @@
 title: Beállítások és adatroaming GYIK |} A Microsoft Docs
 description: Biztosít a rendszergazdák feltett kérdésekre adott válaszokat beállításairól és az alkalmazás data Sync szolgáltatással rendelkezhet.
 services: active-directory
-keywords: Vállalati állapot barangolási beállításokat, a windows-felhő, vállalati állapothordozás kapcsolatos gyakori kérdésekre
-documentationcenter: ''
+ms.service: active-directory
+ms.subservice: devices
+ms.topic: troubleshooting
+ms.date: 06/28/2019
+ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-editor: curtand
-ms.subservice: devices
-ms.assetid: c0824f5c-129b-4240-969f-921f6a64eae7
-ms.service: active-directory
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 10/25/2018
-ms.author: joflore
+ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a77cf89b7697b7b6b08dead34339ae50dbba8518
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 9f9270aff6bc2aab7e210716ffe3e21efb07b8ed
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517861"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67481960"
 ---
 # <a name="settings-and-data-roaming-faq"></a>Beállítások és adatroaming GYIK
 Ez a cikk rendszergazdák lehet beállításai és alkalmazás data Sync szolgáltatással kapcsolatos kérdésekre ad választ.
@@ -76,7 +70,7 @@ Windows 10-es November, 2015 vagy újabb kiadásaiban Enterprise State Roaming c
 Ha több Azure AD-fiókok a különböző Azure AD-bérlőt ugyanazon az eszközön, frissítenie kell az eszköz beállításjegyzék minden egyes Azure AD-bérlőhöz tartozó Azure Rights Management szolgáltatással való kommunikációra.  
 
 1. A GUID azonosító található minden egyes Azure AD-bérlővel. Nyissa meg az Azure Portalon, és válassza ki az Azure AD-bérlő. A Tulajdonságok lapon a kiválasztott bérlő van a bérlőhöz tartozó GUID (https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties), címkézett **címtár-azonosító**. 
-2. Miután a globálisan egyedi Azonosítót, szüksége lesz a beállításkulcs hozzáadása **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\SettingSync\WinMSIPC\<bérlői azonosító GUID >**.
+2. Miután a globálisan egyedi Azonosítót, szüksége lesz a beállításkulcs hozzáadása **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\SettingSync\WinMSIPC\<bérlői azonosító GUID >** .
    Az a **bérlői azonosító GUID** kulcsban, hozzon létre egy új karakterláncsoros értéket (REG-MULTI-SZ) **AllowedRMSServerUrls**. Adja meg az adatokat, a licencelési terjesztési pont URL-címek az eszköz hozzáfér a többi Azure bérlők számától.
 3. Annak a terjesztési pont licencelési URL-címeket futtatásával a **Get-AadrmConfiguration** parancsmag az AADRM modulban. Ha a tartozó értékeket a **LicensingIntranetDistributionPointUrl** és **LicensingExtranetDistributionPointUrl** eltérőek, mindkét értéket adja meg. Ha az értékek azonosak, csak egyszer adja meg az értéket.
 

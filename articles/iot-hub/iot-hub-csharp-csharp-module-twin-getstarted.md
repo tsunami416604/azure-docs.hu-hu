@@ -6,67 +6,72 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
-ms.date: 04/26/2018
+ms.date: 08/07/2019
 ms.author: menchi
-ms.openlocfilehash: 3b10ae0998acbb010e61ebb41c602c7d42bc14fa
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: abf8b18d13e2990f053dd4273645dd7b9a324c77
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59263162"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147747"
 ---
-# <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-net-back-end-and-net-device"></a>Ismerkedés az IoT Hub identitás- és modul ikermodul .NET-háttérrendszer és a .NET-eszköz használata
+# <a name="get-started-with-iot-hub-module-identity-and-module-twin-net"></a>Ismerkedés a IoT Hub modul identitásával és moduljával (.NET)
+
+[!INCLUDE [iot-hub-selector-module-twin-getstarted](../../includes/iot-hub-selector-module-twin-getstarted.md)]
 
 > [!NOTE]
-> [A modulidentitások és modulikrek](iot-hub-devguide-module-twins.md) az Azure IoT Hub eszközidentitásához és eszközikeréhez hasonlók, de nagyobb részletességet biztosítanak. Amíg az Azure IoT Hub eszközidentitása és eszközikre lehetővé teszi a háttéralkalmazás számára az eszköz konfigurálását, és rálátást nyújt az eszköz feltételeire, a modulidentitás és a moduliker az eszköz egyes összetevőihez biztosítja ezeket a lehetőségeket. A megfelelő, több összetevős eszközök, például az operációs rendszeren vagy a belső vezérlőprogramon alapuló eszközök esetében lehetővé teszi az elkülönített konfigurációk és feltételek beállítását az egyes összetevőkhöz.
+> [A modulidentitások és modulikrek](iot-hub-devguide-module-twins.md) az Azure IoT Hub eszközidentitásához és eszközikeréhez hasonlók, de nagyobb részletességet biztosítanak. Noha az Azure IoT Hub eszköz identitása és az eszköz kettős változata lehetővé teszi a háttér-alkalmazás számára az eszköz konfigurálását, valamint az eszköz feltételeinek láthatóságát, a modul identitása és modulja külön biztosítja ezeket a képességeket az eszközök egyes összetevőihez. A több összetevővel rendelkező kompatibilis eszközökön, például az operációs rendszer-alapú eszközökön vagy a belső vezérlőprogram-eszközökön a modul-identitások és az ikrek modul lehetővé teszi az elkülönített konfigurációt és feltételeket az egyes összetevőkhöz.
 
 Az oktatóanyag végén két .NET-konzolalkalmazással fog rendelkezni:
 
-* A **CreateIdentities** egy eszközidentitást, egy modulidentitást valamint egy társított biztonsági kulcsot hoz létre, amellyel csatlakozhat az eszközhöz és a modulügyfelekhez.
+* **CreateIdentities**. Ez az alkalmazás létrehoz egy eszköz-identitást, egy modul-identitást és egy társított biztonsági kulcsot az eszköz és a modul ügyfeleinek csatlakoztatásához.
 
-* Az **UpdateModuleTwinReportedProperties** a moduliker jelentett tulajdonságainak frissítését továbbítja az IoT Hub részére.
+* **UpdateModuleTwinReportedProperties**. Ez az alkalmazás a frissített modul két jelentett tulajdonságát küldi el az IoT hubhoz.
 
 > [!NOTE]
-> Az Azure IoT SDK-kat használhatja az eszközökön és a megoldás háttérrendszerén futó alkalmazások összeállításához, kapcsolatos információkért lásd: [Azure IoT SDK-k](iot-hub-devguide-sdks.md).
+> További információ az Azure IoT SDK-k használatáról az eszközökön való futtatáshoz és a megoldás hátteréről: [Azure IoT SDK](iot-hub-devguide-sdks.md)-k.
 
-Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
+## <a name="prerequisites"></a>Előfeltételek
 
-* Visual Studio 2017.
+* Visual Studio.
 
-* Aktív Azure-fiók. (Ha nincs fiókja, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) mindössze néhány perc alatt.)
+* Aktív Azure-fiók. Ha nem rendelkezik fiókkal, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) .
 
-## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
+## <a name="create-a-hub"></a>Elosztó létrehozása
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-### <a name="retrieve-connection-string-for-iot-hub"></a>Az IoT hub kapcsolati karakterlánc
+## <a name="get-the-iot-hub-connection-string"></a>Az IoT hub-beli kapcsolatok karakterláncának beolvasása
 
-[!INCLUDE [iot-hub-include-find-connection-string](../../includes/iot-hub-include-find-connection-string.md)]
+[!INCLUDE [iot-hub-howto-module-twin-shared-access-policy-text](../../includes/iot-hub-howto-module-twin-shared-access-policy-text.md)]
 
-Létrehozta az IoT Hubot, és rendelkezik az oktatóanyag további részeinek teljesítéséhez szükséges állomásnévvel és IoT Hub kapcsolati sztringgel.
+[!INCLUDE [iot-hub-include-find-registryrw-connection-string](../../includes/iot-hub-include-find-registryrw-connection-string.md)]
 
 [!INCLUDE [iot-hub-get-started-create-module-identity-csharp](../../includes/iot-hub-get-started-create-module-identity-csharp.md)]
-
 
 ## <a name="update-the-module-twin-using-net-device-sdk"></a>A moduliker frissítése a .NET eszközoldali SDK-val
 
 Ebben a szakaszban egy .NET-konzolalkalmazást hoz létre a szimulált eszközön a moduliker jelentett tulajdonságainak frissítéséhez.
 
-1. **A Visual Studio-projekt létrehozása:** A Visual Studióban adjon hozzá egy Visual C# Windows klasszikus Asztalialkalmazás-projektet az a meglévő megoldás használatával a **Console App (.NET Framework)** projektsablonnal. A Microsoft .NET-keretrendszer 4.6.1-es vagy újabb verzióját használja. Adja a projektnek az **UpdateModuleTwinReportedProperties** nevet.
+Mielőtt elkezdené, szerezze be a modulhoz tartozó kapcsolási karakterláncot. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/). Navigáljon a hubhoz, és válassza a **IoT-eszközök**elemet. **MyFirstDevice**keresése. Válassza a **myFirstDevice** lehetőséget a megnyitásához, majd kattintson a **myFirstModule** elemre a megnyitásához. A **modul identitásának részleteiben**másolja a **kapcsolati karakterláncot (elsődleges kulcs)** , ha szükséges az alábbi eljárásban.
 
-    ![Hozzon létre egy Visual Studio-projektet.](./media/iot-hub-csharp-csharp-module-twin-getstarted/update-twins-csharp1.png)
+   ![Az Azure Portal moduladatai](./media/iot-hub-csharp-csharp-module-twin-getstarted/module-identity-detail.png)
 
-2. **Telepítse a legújabb Azure IoT hubhoz .NET eszközoldali SDK:** Identitás- és modul ikermodul jelenleg nyilvános előzetes verzióban. Csak akkor érhető el az IoT Hub SDK-k előzetes eszközön. A Visual Studióban válassza a Tools (Eszközök) > NuGet Package Manager (NuGet-csomagkezelő) > Manage NuGet Packages for Solution (NuGet-csomagok kezelése a megoldáshoz) elemet. Keresse meg a Microsoft.Azure.Devices.Client csomagot. Győződjön meg arról, hogy az előzetes verzió jelölőnégyzete be van jelölve. Válassza ki a legújabb verziót, és telepítse. Most már az összes modulfunkcióhoz rendelkezik hozzáféréssel. 
+1. A Visual Studióban vegyen fel egy új projektet a megoldásba a **fájl** > **új** > **projekt**lehetőség kiválasztásával. Az új projekt létrehozása területen válassza a **konzol alkalmazás (.NET-keretrendszer)** lehetőséget, és kattintson a **Tovább gombra**.
 
-    ![Az Azure IoT Hub .NET szolgáltatási SDK 1.16.0-preview-005-ös verziójának telepítése](./media/iot-hub-csharp-csharp-module-twin-getstarted/install-sdk.png)
+1. Adja a projektnek az *UpdateModuleTwinReportedProperties* nevet. A **megoldás**mezőben válassza a **Hozzáadás a megoldáshoz**lehetőséget. A Microsoft .NET-keretrendszer 4.6.1-es vagy újabb verzióját használja.
 
-3. **A modul kapcsolati sztring lekérése** – Ha bejelentkezik az [az Azure portal](https://portal.azure.com/). Keresse meg az IoT Hubot, és kattintson az IoT-eszközök elemre. Keresés myFirstDevice, nyissa meg azt, és tekintse meg a myFirstModule sikeresen létrejött. Másolja ki a modul kapcsolati sztringjét. A következő lépés során szükség lesz rá.
+    ![Visual Studio-projekt létrehozása](./media/iot-hub-csharp-csharp-module-twin-getstarted/configure-update-twins-csharp1.png)
 
-    ![Az Azure Portal moduladatai](./media/iot-hub-csharp-csharp-module-twin-getstarted/module-detail.png)
+1. Válassza a **Létrehozás** lehetőséget a projekt létrehozásához.
 
-4. **UpdateModuleTwinReportedProperties Konzolalkalmazás létrehozása**
+1. A Visual Studióban nyissa meg az **eszközök** > **NuGet csomagkezelő** > **NuGet-csomagok kezelése megoldást**. Válassza ki a **Browse** (Tallózás) lapot.
 
-    Adja hozzá a következő `using` utasításokat a **Program.cs** fájl elejéhez:
+1. Keresse meg és válassza ki a **Microsoft. Azure. Devices. Client**elemet, majd válassza a **telepítés**lehetőséget.
+
+    ![Az Azure IoT Hub .NET Service SDK jelenlegi verziójának telepítése](./media/iot-hub-csharp-csharp-module-twin-getstarted/install-client-sdk.png)
+
+1. Adja hozzá a következő `using` utasításokat a **Program.cs** fájl elejéhez:
 
     ```csharp
     using Microsoft.Azure.Devices.Client;
@@ -75,11 +80,10 @@ Ebben a szakaszban egy .NET-konzolalkalmazást hoz létre a szimulált eszközö
     using Newtonsoft.Json;
     ```
 
-    Adja hozzá a **Program** osztályhoz a következő mezőket: A helyőrző értékét írja át a modul kapcsolati sztringjére.
+1. Adja hozzá a **Program** osztályhoz a következő mezőket: A helyőrző értékét írja át a modul kapcsolati sztringjére.
 
     ```csharp
-    private const string ModuleConnectionString = 
-      "<Your module connection string>";
+    private const string ModuleConnectionString = "<Your module connection string>";
     private static ModuleClient Client = null;
     static void ConnectionStatusChangeHandler(ConnectionStatus status, 
       ConnectionStatusChangeReason reason)
@@ -89,7 +93,7 @@ Ebben a szakaszban egy .NET-konzolalkalmazást hoz létre a szimulált eszközö
     }
     ```
 
-    Adja hozzá a **Program** osztályhoz a következő, **OnDesiredPropertyChanged** metódust:
+1. Adja hozzá a **Program** osztályhoz a következő, **OnDesiredPropertyChanged** metódust:
 
     ```csharp
     private static async Task OnDesiredPropertyChanged(TwinCollection desiredProperties, 
@@ -107,7 +111,7 @@ Ebben a szakaszban egy .NET-konzolalkalmazást hoz létre a szimulált eszközö
         }
     ```
 
-    Végül adja a következő sorokat a **Main** metódushoz:
+1. Adja hozzá a következő sorokat a **Main** metódushoz:
 
     ```csharp
     static void Main(string[] args)
@@ -147,7 +151,7 @@ Ebben a szakaszban egy .NET-konzolalkalmazást hoz létre a szimulált eszközö
 
     A kódminta segítségével megtudhatja, hogyan kérheti le a modulikret és frissítheti a jelentett tulajdonságokat az AMQP-protokollal. A nyilvános előzetes verzióban az AMQP csak a moduliker-műveletek esetében támogatott.
 
-5. A fentiek mellett **fő** módszerrel adhat hozzá alábbi kódblokkot, amellyel esemény küldése az IoT hubhoz a modulból:
+1. Ha szeretné, ezeket az utasításokat a **Main** metódushoz is hozzáadhatja, ha egy eseményt szeretne elküldeni IoT hub a modulból. Helyezze el ezeket a sorokat `try catch` a blokk alá.
 
     ```csharp
     Byte[] bytes = new Byte[2];
@@ -160,11 +164,20 @@ Ebben a szakaszban egy .NET-konzolalkalmazást hoz létre a szimulált eszközö
 
 ## <a name="run-the-apps"></a>Az alkalmazások futtatása
 
-Most már készen áll az alkalmazások futtatására. A Visual Studióban a Solution Explorerben (Megoldáskezelőben) kattintson a jobb gombbal a megoldásra, majd kattintson a **Set StartUp projects** (Indítási projektek beállítása) parancsra. Válassza a **Multiple startup projects** (Több indítási projekt) lehetőséget, majd válassza a **Start** (Indítás) elemet a konzolalkalmazás műveleteként. Ezt követően nyomja le az F5 gombot az alkalmazás elindításához.
+Most már futtathatja az alkalmazásokat.
+
+1. A Visual Studióban **megoldáskezelő**kattintson a jobb gombbal a megoldásra, majd válassza az **indítási projektek beállítása**lehetőséget.
+
+1. Az **Általános tulajdonságok**területen válassza az **indítási projekt elemet.**
+
+1. Válasszon **több indítási projektet**, majd válassza a **Start** lehetőséget az alkalmazások művelete elemnél, és az **OK gombra** kattintva fogadja el a módosításokat.
+
+1. Az alkalmazások elindításához nyomja le az **F5** billentyűt.
 
 ## <a name="next-steps"></a>További lépések
 
 További bevezetés az IoT Hub használatába, valamint egyéb IoT-forgatókönyvek megismerése:
 
-* [Ismerkedés az eszközfelügyelettel](iot-hub-node-node-device-management-get-started.md)
-* [Ismerkedés az IoT Edge szolgáltatással](../iot-edge/tutorial-simulate-device-linux.md)
+* [Az eszközkezelés első lépései](iot-hub-node-node-device-management-get-started.md)
+
+* [A IoT Edge első lépései](../iot-edge/tutorial-simulate-device-linux.md)

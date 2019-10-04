@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: juliako
 ms.openlocfilehash: 065cb4daa9501ee658d364dad43b9e03798e4083
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52270374"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179533"
 ---
 A feladat egy észlelt, és a nyomon követett arcok kapcsolatos metaadatokat tartalmazó JSON-kimenet fájlt hoz létre. Metaadatok helyét, arcok, valamint a nyomon követheti, hogy egyes jelző face ID szám jelző koordinátákat tartalmaznak. Face ID számok során gyakran fordul elő alaphelyzetbe körülmények között, ha a elülső face elvesztése vagy a keretbe átfedett bizonyos felhasználók több ID első hozzárendelt eredményez.
 
@@ -31,7 +31,7 @@ A kimenet JSON az alábbi elemeket tartalmazza:
 |Elem|Leírás|
 |---|---|
 | start |A kezdési idejét az első esemény a "órajelben." |
-| időtartam |A "órajelben.", a részlet hossza |
+| Időtartam |A "órajelben.", a részlet hossza |
 | index | (Vonatkozik az Azure Media Redactor csak) határozza meg az aktuális esemény keret indexét. |
 | interval |Az időszak mindegyik esemény bejegyzése a részlet a "órajelben." |
 | események |Minden egyes esemény észlelt, és nyomon követett belül időt töltött az arcok tartalmazza. Az események egy tömb. A külső tömb egy időintervallumot jelöl. A belső tömb 0 vagy több eseményből áll, amelyek az adott időpontban történtek. Egy üres zárójel [] azt jelenti, hogy nincs arcok észlelt. |

@@ -4,7 +4,7 @@ titlesuffix: Azure Virtual Network
 description: Ebben a rövid útmutatóban megismerheti, hogyan hozhat létre virtuális hálózatot az Azure Portal használatával. Virtuális hálózat lehetővé teszi, hogy az Azure-erőforrások, például virtuális gépeket, privát módon kommunikáljanak egymással, és az interneten.
 services: virtual-network
 documentationcenter: virtual-network
-author: jimdial
+author: KumudD
 tags: azure-resource-manager
 Customer intent: I want to create a virtual network so that virtual machines can communicate with privately with each other and with the internet.
 ms.service: virtual-network
@@ -13,13 +13,13 @@ ms.topic: quickstart
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/04/2018
-ms.author: jdial
-ms.openlocfilehash: 57c3b5099c24151794b27f4aeec7845495a4630a
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.author: kumud
+ms.openlocfilehash: 3a21bff9e4c696063458d5734a579fc7c37258a7
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56670407"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66730082"
 ---
 # <a name="quickstart-create-a-virtual-network-using-powershell"></a>Gyors útmutató: Hozzon létre egy virtuális hálózathoz a PowerShell használatával
 
@@ -27,7 +27,7 @@ Virtuális hálózat lehetővé teszi, hogy az Azure-erőforrások, például vi
 
 Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-powershell.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 Ha úgy dönt, hogy a helyi telepítése és használata PowerShell helyette, ebben a rövid útmutatóban előírja, hogy az Azure PowerShell-modul verzióját 1.0.0 vagy újabb. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Lásd: [Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) telepítési és frissítési adatai.
 
@@ -140,9 +140,6 @@ Nyisson meg egy parancssort a helyi számítógépen. Futtassa a következő par
 ```cmd
 mstsc /v:<publicIpAddress>
 ```
-
-Egy Remote Desktop Protocol (*.rdp*) fájlt a számítógép letölti és a egy távoli asztali megnyílik.
-
 1. Ha a rendszer kéri, válassza a **Csatlakozás** lehetőséget.
 
 1. Írja be a virtuális gép létrehozásakor megadott felhasználónevet és jelszót.

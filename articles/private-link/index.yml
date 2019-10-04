@@ -1,0 +1,55 @@
+### YamlMime:Landing
+title: A privát kapcsolat dokumentációja
+summary: Az Azure privát kapcsolat használatával Azure PaaS-szolgáltatásokat (például az Azure Storage-et és az SQL Database-t) és az Azure által üzemeltetett ügyfél-/partneri szolgáltatásokat érhet el a virtuális hálózat privát végpontján keresztül.  A virtuális hálózat és a szolgáltatás közötti forgalom a Microsoft gerinchálózatán keresztül halad át, így kiküszöböli a nyilvános internet jelentette kitettséget. Emellett saját privát kapcsolati szolgáltatást is létrehozhat a virtuális hálózatán, és privát módon teheti elérhetővé az ügyfeleknek.
+metadata:
+  title: A privát kapcsolat dokumentációja – gyorsútmutatók, útmutatók és API-hivatkozások
+  description: Útmutató az Azure privát kapcsolati szolgáltatásának használatához. A gyorsútmutatók és az oktatóanyagok bemutatják, hogyan helyezhet üzembe privát kapcsolati szolgáltatást.
+  ms.service: private-link
+  ms.topic: landing-page
+  ms.collection: collection
+  author: KumudD
+  ms.author: kumud
+  ms.date: 09/16/2019
+  ms.openlocfilehash: 24b6d3ce2514ef25a015182e4a4fcd641ac76d50
+  ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 09/18/2019
+  ms.locfileid: "71104611"
+landingContent:
+- title: Az Azure privát kapcsolat bemutatása
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az a privát kapcsolat?
+      url: private-link-overview.md
+- title: Csatlakozás Azure-szolgáltatásokhoz
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Mi az a privát végpont?
+      url: private-endpoint-overview.md
+  - linkListType: quickstart
+    links:
+    - text: Privát végpont létrehozása
+      url: create-private-endpoint-portal.md
+- title: Saját privát kapcsolati szolgáltatás kialakítása
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Mi az a privát kapcsolati szolgáltatás?
+      url: private-link-service-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Privát kapcsolati szolgáltatás létrehozása
+      url: create-private-link-service-powershell.md
+- title: Referencia
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure CLI
+      url: /cli/azure/network
+    - text: Azure PowerShell
+      url: /powershell/module/az.network
+    - text: REST
+      url: /rest/api/virtualnetwork/privatelinkservices

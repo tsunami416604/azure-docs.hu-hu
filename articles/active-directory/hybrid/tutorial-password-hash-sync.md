@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag:  Az Azure-ban a Jelszókivonat-szinkronizálás (nál) egyerdős AD integrálása |} A Microsoft Docs'
+title: 'Oktatóanyag:  Az Azure-ban nál egyerdős AD integrálása'
 description: Bemutatja, hogyan állíthatja be az egy hibrid identitás környezet Jelszókivonat-szinkronizálás használatával.
 services: active-directory
 documentationcenter: ''
@@ -10,20 +10,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/17/2018
+ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45379f8f955c50e2598ebcebd34e971c29b2c81c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b17300fa69b61c7713c860e2a35e63fcb6584bc4
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58103230"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66474014"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-password-hash-sync-phs"></a>Oktatóanyag:  Egyetlen AD-erdő integrálása jelszókivonat-szinkronizálással (PHS)
 
-![Létrehozás](media/tutorial-password-hash-sync/diagram.png)
+![Hozzon létre](media/tutorial-password-hash-sync/diagram.png)
 
 A következő oktatóanyag végigvezeti a Jelszókivonat-szinkronizálás használatával hibrid identitás-környezet létrehozása.  Ebben a környezetben felhasználható, tesztelési vagy az első több megismerkedhet a hibrid identitás működésével.
 
@@ -177,7 +177,7 @@ New-ADUser -Name $Name -GivenName $Givenname -Surname $Surname -DisplayName $Dis
 Set-ADUser -Identity $Identity -PasswordNeverExpires $true -ChangePasswordAtLogon $false -Enabled $true
 ```
 
-## <a name="create-an-azure-ad-tenant"></a>Az Azure AD-bérlő létrehozása
+## <a name="create-an-azure-ad-tenant"></a>Azure AD-bérlő létrehozása
 Most meg kell, hogy azt is szinkronizálhatja a felhőbe felhasználóink Azure AD-bérlő létrehozásához.  Hozhat létre egy új Azure AD-bérlőhöz, tegye a következőket.
 
 1. Keresse meg a [az Azure portal](https://portal.azure.com) és a egy Azure-előfizetéssel rendelkező fiókkal jelentkezzen be.

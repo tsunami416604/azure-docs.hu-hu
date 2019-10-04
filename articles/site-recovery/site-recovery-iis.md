@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: aa42371692cd5d0dc96835db5b66fe0877b90665
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 66b9342f1a67c4c9d35fda447a297cc64d048c1e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320497"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66480291"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>Vészhelyreállítás beállítása a többrétegű az IIS-alapú webalkalmazás
 
@@ -63,7 +63,7 @@ Forgatókönyv | Egy másodlagos helyre | Az Azure-ba
 Hyper-V | Igen | Igen
 VMware | Igen | Igen
 Fizikai kiszolgáló | Nem | Igen
-Azure|NA|Igen
+Azure|n/a|Igen
 
 ## <a name="replicate-virtual-machines"></a>Virtuális gépek replikálása
 
@@ -109,7 +109,7 @@ Ha a kapcsolati karakterlánc hivatkozik az adatbázis-virtuális gép IP-cím h
         </connectionStrings>
         </configuration>
 
-Frissítse a kapcsolati karakterláncot, a webes szint, adjon hozzá egy [IIS kapcsolat frissítési parancsfájl](https://aka.ms/asr-update-webtier-script-classic) a helyreállítási tervben szereplő 3 csoport után.
+Frissítse a kapcsolati karakterláncot, a webes szint, adjon hozzá egy [IIS kapcsolat frissítési parancsfájl](https://gallery.technet.microsoft.com/Update-IIS-connection-2579aadc) a helyreállítási tervben szereplő 3 csoport után.
 
 #### <a name="site-bindings-for-the-application"></a>Az alkalmazás a hely kötései
 Minden webhely kötési információ áll. Kötési információt tartalmaz, az IP-cím, amelyen az IIS-kiszolgáló figyel a kérések a hely, a port számát és a gazdagépek nevének a hely kötésének típusát. A feladatátvétel során szükség lehet frissíteni az ilyen kötést ahhoz, ha az őket társított IP-cím megváltozik.

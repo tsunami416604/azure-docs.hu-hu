@@ -1,32 +1,25 @@
 ---
-title: Az Azure alkalmazás átjáró Azure CLI minták |} Microsoft Docs
-description: Alkalmazás átjáró Azure CLI-minták
+title: Azure CLI-példák az Azure Application Gateway
+description: Azure CLI-példák az Azure Application Gateway
 services: application-gateway
-documentationcenter: networking
 author: vhorne
-manager: jpconnock
-editor: tysonn
-tags: azure-resource-manager
 ms.service: application-gateway
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure
-ms.date: 01/30/2018
+ms.topic: sample
+ms.date: 08/07/2019
 ms.author: victorh
-ms.custom: mvc
-ms.openlocfilehash: 10857e248382156f7f65b343e3eedb65229f6639
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: eac8569f16c84211c1e881a9cb8daab9d7e602b5
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33201011"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68824499"
 ---
-# <a name="azure-application-gateway-azure-cli-samples"></a>Azure Application Gateway Azure CLI-minták
+# <a name="azure-cli-examples-for-azure-application-gateway"></a>Azure CLI-példák az Azure Application Gateway
 
-A következő táblázat az Azure parancssori felület parancsfájl minták által létrehozott alkalmazásátjárót mutató hivatkozásokat tartalmaz.
+Az alábbi táblázat az Azure CLI parancsfájlokra mutató hivatkozásokat tartalmaz az Azure Application Gateway.
 
 | | |
 |---|---|
-| [Webes forgalom kezelése](./scripts/create-vmss-cli.md) | Alkalmazásátjáró és minden kapcsolódó erőforrás hoz létre. |
-| [Webes forgalom korlátozása](./scripts/create-vmss-waf-cli.md) | Alkalmazásátjáró forgalmát OWASP szabályok használatával hoz létre.|
+| [Webes forgalom kezelése](./scripts/create-vmss-cli.md) | Létrehoz egy Application Gateway-t és minden kapcsolódó erőforrást. |
+| [Webes forgalom korlátozása](./scripts/create-vmss-waf-cli.md) | Egy olyan Application Gatewayt hoz létre, amely a OWASP-szabályok használatával korlátozza a forgalmat.|
 | | |

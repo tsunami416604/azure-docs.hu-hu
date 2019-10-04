@@ -5,37 +5,44 @@ services: iot-hub
 author: chrissie926
 ms.service: iot-hub
 ms.topic: include
-ms.date: 04/26/2018
+ms.date: 08/07/2019
 ms.author: menchi
 ms.custom: include file
-ms.openlocfilehash: 603a4892cc19991532c2858edd8d4ca90f850d1f
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: a5c1ddd085ae65b9920d73f50f993f4646785a69
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43087140"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883738"
 ---
 ## <a name="create-a-module-identity"></a>Modulidentitás létrehozása
 
-Ebben a szakaszban egy .NET-konzolalkalmazást fog létrehozni, amely egy eszközidentitást és egy modulidentitást hoz létre az IoT Hub identitásjegyzékében. Egy eszköz vagy modul csak akkor tud csatlakozni az IoT Hubhoz, ha be van jegyezve az identitásjegyzékbe. További információkért lásd: a [Eszközidentitás-jegyzék szakaszában az IoT Hub fejlesztői útmutatójának](../articles/iot-hub/iot-hub-devguide-identity-registry.md). A konzolalkalmazás a futtatásakor egy egyedi azonosítót és kulcsot állít elő az eszköz és a modul számára. Ezekkel az értékekkel az eszköz és a modul azonosítani tudja magát, amikor az eszközről a felhőbe irányuló üzeneteket küld az IoT Hubnak. Az azonosítók megkülönböztetik a kis- és nagybetűket.
+Ebben a szakaszban egy olyan .NET-konzol alkalmazást hoz létre, amely létrehoz egy eszköz identitását és egy modul-identitást a központ identitás-beállításjegyzékében. Egy eszköz vagy modul nem tud csatlakozni a központhoz, hacsak nem rendelkezik bejegyzéssel az Identity registryben. További információkért tekintse meg a [IoT hub fejlesztői útmutatójának Identity Registry című szakaszát](../articles/iot-hub/iot-hub-devguide-identity-registry.md).
 
+A konzolalkalmazás a futtatásakor egy egyedi azonosítót és kulcsot állít elő az eszköz és a modul számára. Az eszköz és a modul ezeknek az értékeknek a segítségével azonosítja magát, amikor az eszközről a felhőbe irányuló üzeneteket küld IoT Hub. Az azonosítók megkülönböztetik a kis- és nagybetűket.
 
-1. **Visual Studio-projekt létrehozása** – A Visual Studióban adjon hozzá egy Visual C# Windows klasszikus asztalialkalmazás-projektet az új megoldáshoz a **Console App (.NET Framework)** (Konzolalkalmazás (.NET-keretrendszer)) projektsablonnal. A Microsoft .NET-keretrendszer 4.6.1-es vagy újabb verzióját használja. Adja a projektnek a **CreateIdentities** nevet, a megoldásnak pedig az **IoTHubGetStarted** nevet.
+1. Nyissa meg a Visual studiót, és válassza **az új projekt létrehozása**lehetőséget.
 
-    ![Hozzon létre egy Visual Studio-megoldást.](./media/iot-hub-get-started-create-module-identity-csharp/create-identities-csharp1.JPG)
+1. Az **új projekt létrehozása**területen válassza a **Console app (.NET-keretrendszer)** lehetőséget.
 
-2. **Telepítse az Azure IoT Hub .NET szolgáltatási SDK 1.16.0-preview-001-es verzióját** – A modulidentitás és a moduliker nyilvános előzetes verzióban érhető el. Csak akkor érhető el az IoT Hub előzetes szolgáltatás SDK-k. A Visual Studióban válassza a Tools (Eszközök) > NuGet Package Manager (NuGet-csomagkezelő) > Manage NuGet Packages for Solution (NuGet-csomagok kezelése a megoldáshoz) elemet. Keresse meg a Microsoft.Azure.Devices csomagot. Győződjön meg arról, hogy az előzetes verzió jelölőnégyzete be van jelölve. Válassza ki az 1.16.0-preview-001-es verziót, és telepítse azt. Most már az összes modulfunkcióhoz rendelkezik hozzáféréssel. 
+1. Kattintson a **tovább** gombra az **új projekt konfigurálásának**megnyitásához. Adja a projektnek a *CreateIdentities* nevet, a megoldásnak pedig az *IoTHubGetStarted* nevet. A Microsoft .NET-keretrendszer 4.6.1-es vagy újabb verzióját használja.
 
-    ![Az Azure IoT Hub .NET szolgáltatási SDK 1.16.0-preview-001-es verziójának telepítése](./media/iot-hub-get-started-create-module-identity-csharp/install-sdk.png)
+    ![Adja meg a Visual Studio-megoldás nevét és keretrendszerét](./media/iot-hub-get-started-create-module-identity-csharp/configure-createidentities-project.png)
 
-3. Adja hozzá a következő `using` utasításokat a **Program.cs** fájl elejéhez:
+1. A Visual Studióban nyissa meg az **eszközök** > **NuGet csomagkezelő** > **NuGet-csomagok kezelése megoldást**. Válassza ki a **Browse** (Tallózás) lapot.
+
+1. Keressen rá a **Microsoft. Azure. Devices**kifejezésre. Jelölje ki, majd válassza a **telepítés**lehetőséget.
+
+    ![Az Azure IoT Hub .NET Service SDK jelenlegi verziójának telepítése](./media/iot-hub-get-started-create-module-identity-csharp/install-service-sdk.png)
+
+1. Adja hozzá a következő `using` utasításokat a **Program.cs** fájl elejéhez:
 
    ```csharp
    using Microsoft.Azure.Devices;
    using Microsoft.Azure.Devices.Common.Exceptions;
    ```
 
-4. Adja hozzá a **Program** osztályhoz a következő mezőket: A helyőrző értékét cserélje le az előző szakaszban létrehozott IoT Hub kapcsolati sztringre.
+1. Adja hozzá a **Program** osztályhoz a következő mezőket: A helyőrző értékét cserélje le az előző szakaszban létrehozott IoT Hub kapcsolati sztringre.
 
    ```csharp
    const string connectionString = "<replace_with_iothub_connection_string>";
@@ -43,8 +50,8 @@ Ebben a szakaszban egy .NET-konzolalkalmazást fog létrehozni, amely egy eszkö
    const string moduleID = "myFirstModule";
    ```
 
-5. Adja hozzá a következő kódot a **fő** osztály.
-   
+1. Adja hozzá a következő kódot a **Main** osztályhoz.
+
    ```csharp
    static void Main(string[] args)
    {
@@ -53,7 +60,7 @@ Ebben a szakaszban egy .NET-konzolalkalmazást fog létrehozni, amely egy eszkö
    }
    ```
 
-6. Adja hozzá a **Program** osztályhoz a következő metódusokat:
+1. Adja hozzá a **Program** osztályhoz a következő metódusokat:
 
     ```csharp
     private static async Task AddDeviceAsync()
@@ -95,13 +102,13 @@ Ebben a szakaszban egy .NET-konzolalkalmazást fog létrehozni, amely egy eszkö
     }
     ```
 
-    Az AddDeviceAsync() metódus egy eszközidentitást hoz létre a **myFirstDevice** azonosítóval. (Ha ez az eszköz már létezik az identitásjegyzékben, a kód egyszerűen lekéri a meglévő eszközinformációkat.) Az alkalmazás ezután megjeleníti az identitáshoz tartozó elsődleges kulcsot. Ezt a kulcsot a szimulált eszközalkalmazásban használja az IoT Hubhoz való csatlakozáshoz.
+    A `AddDeviceAsync` metódus létrehoz egy **myFirstDevice**azonosítóval rendelkező eszköz identitását. Ha már létezik ilyen AZONOSÍTÓJÚ eszköz az Identity registryben, a kód egyszerűen lekéri a meglévő eszköz adatait. Az alkalmazás ezután megjeleníti az identitáshoz tartozó elsődleges kulcsot. Ezt a kulcsot a szimulált eszköz alkalmazásban használhatja a hubhoz való kapcsolódáshoz.
 
-    Az AddModuleAsync() metódus egy modulidentitást hoz létre a **myFirstModule** azonosítóval a **myFirstDevice** alatt. (Ha ez a modulazonosító már létezik az identitásjegyzékben, a kód egyszerűen lekéri a meglévő modulinformációkat.) Az alkalmazás ezután megjeleníti az identitáshoz tartozó elsődleges kulcsot. Ezt a kulcsot a szimulált modulalkalmazásban használja az IoT Hubhoz való csatlakozáshoz.
+    A `AddModuleAsync` metódus létrehoz egy **myFirstModule** azonosítóval az eszköz **myFirstDevice**alatt. Ha a modul azonosítója már létezik az Identity registryben, a kód egyszerűen lekéri a meglévő modul információit. Az alkalmazás ezután megjeleníti az identitáshoz tartozó elsődleges kulcsot. Ezt a kulcsot a szimulált modul alkalmazásban használhatja a hubhoz való kapcsolódáshoz.
 
    [!INCLUDE [iot-hub-pii-note-naming-device](iot-hub-pii-note-naming-device.md)]
 
-7. Futtassa az alkalmazást, és jegyezze fel az eszköz és a modul kulcsát.
+1. Futtassa az alkalmazást, és jegyezze fel az eszköz kulcsát és a modul kulcsát.
 
 > [!NOTE]
-> Az IoT Hub-identitásjegyzék csak az IoT Hub biztonságos elérésének biztosításához tárolja az eszköz- és modulidentitásokat. Az identitásjegyzék tárolja az eszközazonosítókat és -kulcsot, és biztonsági hitelesítő adatokként használja őket. Az identitásjegyzék minden egyes eszközhöz tárol egy engedélyezve/letiltva jelzőt is, amellyel letilthatja az eszköz hozzáférését. Ha az alkalmazásnak más eszközspecifikus metaadatokat kell tárolnia, egy alkalmazásspecifikus tárolót kell használnia. A modulidentitások esetében nincs engedélyezési/letiltási jelző. További információkért lásd: [IoT Hub fejlesztői útmutatójának](../articles/iot-hub/iot-hub-devguide-identity-registry.md).
+> A IoT Hub Identity Registry csak az eszköz-és modul-identitásokat tárolja a hub biztonságos elérésének engedélyezéséhez. Az identitásjegyzék tárolja az eszközazonosítókat és -kulcsot, és biztonsági hitelesítő adatokként használja őket. Az identitásjegyzék minden egyes eszközhöz tárol egy engedélyezve/letiltva jelzőt is, amellyel letilthatja az eszköz hozzáférését. Ha az alkalmazásnak más, az eszközre jellemző metaadatokat is tárolnia kell, az alkalmazásnak alkalmazásspecifikus tárolót kell használnia. A modulidentitások esetében nincs engedélyezési/letiltási jelző. További információ: [IoT hub fejlesztői útmutató](../articles/iot-hub/iot-hub-devguide-identity-registry.md).

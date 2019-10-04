@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bfd61b78ca3027ade1f2f48dec33e0a8ed508d3d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58003910"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60349844"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: Automatikus frissítés
 Ez a funkció jelent meg a build [(kiadás dátuma: 2016. február) 1.1.105.0](reference-connect-version-history.md#111050).  Ez a szolgáltatás frissítve lett a [1.1.561 összeállítása](reference-connect-version-history.md#115610) és mostantól támogatja a további forgatókönyvek, amelyek korábban nem támogatottak.
@@ -39,11 +39,11 @@ Automatikus frissítés aktuális állapotának tekinthet meg a PowerShell-paran
 
 | Állapot | Megjegyzés |
 | --- | --- |
-| Engedélyezve |Automatikus frissítés engedélyezve van. |
+| Enabled |Automatikus frissítés engedélyezve van. |
 | Felfüggesztve |A rendszer csak állítja be. A rendszer **jelenleg nem** fogadni az automatikus frissítéseket. |
 | Letiltva |Automatikus frissítés le van tiltva. |
 
-Között módosíthatja **engedélyezve** és **letiltott** a `Set-ADSyncAutoUpgrade`. A rendszer kell beállítania az állapot csak **felfüggesztett**.  1.1.750.0 előtt a Set-ADSyncAutoUpgrade parancsmag lenne letiltása Autoupgrade, ha az automatikus frissítési állapot felfüggesztve értékre lett beállítva. Ez a funkció mostantól megváltozott, így nem blokkolja a AutoUpgrade.
+Között módosíthatja **engedélyezve** és **letiltott** a `Set-ADSyncAutoUpgrade`. A rendszer kell beállítania az állapot csak **felfüggesztett**.  1\.1.750.0 előtt a Set-ADSyncAutoUpgrade parancsmag lenne letiltása Autoupgrade, ha az automatikus frissítési állapot felfüggesztve értékre lett beállítva. Ez a funkció mostantól megváltozott, így nem blokkolja a AutoUpgrade.
 
 Automatikus frissítés a frissítési infrastruktúra használ az Azure AD Connect Health. Az automatikus frissítés működik, győződjön meg arról, hogy megnyitotta az URL-címeket a proxykiszolgálót a **az Azure AD Connect Health** leírtak szerint [Office 365 URL-címei és IP-címtartományok](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2).
 
@@ -69,7 +69,7 @@ A eredménykódot tartalmaz egy előtagot a állapotának áttekintése.
 
 | Eredmény kódja előtagja | Leírás |
 | --- | --- |
-| Sikeres |A telepítés sikeresen frissült. |
+| Siker |A telepítés sikeresen frissült. |
 | UpgradeAborted |Egy ideiglenes állapot le a frissítést. Az elvárás, hogy később sikeres-e, és újból próbálkozunk. |
 | UpgradeNotSupported |A rendszer, amely blokkolja a rendszer automatikusan frissítendő konfigurációval rendelkezik. Tekintse meg, ha az állapot módosul, de az elvárás, hogy a rendszer manuálisan kell frissíteni a rendszer megpróbálja. |
 

@@ -1,6 +1,6 @@
 ---
-title: Iteratív Alkalmazástervezés
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Iterációs alkalmazás tervezése – LUIS
+titleSuffix: Azure Cognitive Services
 description: LUIS legjobb megtanulja az iteratív ciklusának adatmodell változásainak, utterance (kifejezés) példákat, közzététel és adatok összegyűjtése a végpont lekérdezések.
 services: cognitive-services
 author: diberry
@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/04/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: 67bcb33727bc808f5e5bea701daffc77dde736ff
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 4356d9e1cd3d6f1a924603f7405d612814d35859
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337481"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70256933"
 ---
-# <a name="authoring-cycle-for-your-luis-app"></a>A LUIS-alkalmazás az Authoring Tool ciklus
+# <a name="authoring-cycle-for-your-luis-app"></a>A LUIS-alkalmazás szerzői ciklusa
 LUIS legjobb megtanulja az iteratív ciklusának adatmodell változásainak, utterance (kifejezés) példákat, közzététel és adatok összegyűjtése a végpont lekérdezések. 
 
 ![Tartalomkészítési ciklus](./media/luis-concept-app-iteration/iteration.png)
@@ -28,7 +28,7 @@ A modell célja döntse el, mi a felhasználó kéri (a blokkolni vagy leképez�
 
 A modell kell lennie az app-tartomány adott szavak, hogy megállapítsuk, és, hogy van megfelelő, valamint a tipikus word rendezés kifejezések. 
 
-A modell szándékkal, entitásokat is tartalmaz. 
+A modellhez leképezések szükségesek, és _rendelkeznie kell_ entitásokkal. 
 
 ## <a name="add-training-examples"></a>Példák hozzáadása
 A LUIS példa utterances a szándék fog vonatkozni a kell. A példák kell elegendő változata, a word választási lehetőség és a szórendjét meg tudja határozni, melyik a cél az utterance (kifejezés) tervezték. Valamennyi példa utterance (kifejezés) rendelkeznie kell címkével ellátott entitásokként szükséges adatokat. 
@@ -36,17 +36,21 @@ A LUIS példa utterances a szándék fog vonatkozni a kell. A példák kell eleg
 A LUIS figyelmen kívül hagyja, hogy nem vonatkoznak az alkalmazás tartományhoz az utterance (kifejezés) való hozzárendelésével megcímkézzen utasította a **nincs** szándékot. Minden olyan szavak vagy kifejezések nem kell az utterance (kifejezés) kihúzott nem kell lesz. Nincs címke szót vagy kifejezést figyelmen kívül van. 
 
 ## <a name="train-and-publish-the-app"></a>Az alkalmazás betanítása és közzététele
-Miután 10 – 15 különböző utterances az egyes szándékot, a címkével ellátott szükséges entitásokkal, betanítását és tegye közzé. A közzététel sikeres értesítésből a hivatkozás segítségével a végpontok beolvasása. Ügyeljen arra, hogy az alkalmazás létrehozása, és tegye közzé az alkalmazást, hogy elérhető legyen a [végpont régiók](luis-reference-regions.md) van szüksége. 
+Ha az egyes szándékokban 15 – 30 különböző hosszúságú kimondott szöveg van, és a szükséges entitások vannak megjelölve, akkor be kell [tanítania](luis-how-to-train.md) , majd [közzé](luis-how-to-publish-app.md)kell tennie. A közzététel sikeres értesítésből a hivatkozás segítségével a végpontok beolvasása. Győződjön meg arról, hogy létrehozta és közzéteszi az alkalmazást, hogy az elérhető legyen a szükséges [végpont-régiókban](luis-reference-regions.md) . 
 
-## <a name="https-endpoint-testing"></a>HTTPS-végpont tesztelése
-A LUIS-alkalmazás a HTTPS-végpont tesztelheti. A végpont a tesztelés lehetővé teszi, hogy a LUIS felülvizsgálatra alacsony – magabiztosan megszólalásokat kiválasztása.  
+## <a name="https-prediction-endpoint-testing"></a>HTTPS-előrejelzési végpont tesztelése
+A LUIS-alkalmazást a HTTPS-előrejelzési végpontról tesztelheti. Az előrejelzési végpont tesztelése lehetővé teszi, hogy a LUIS kiválassza az alacsony megbízhatóságú hosszúságú kimondott szöveg az [ellenőrzéshez](luis-how-to-review-endpoint-utterances.md).  
 
 ## <a name="recycle"></a>Lomtár
-Amikor elkészült, a szerzői műveletek a ciklust, elkezdheti újra. Indítsa el a LUIS megjelölve alacsony magabiztosan végpont utterances áttekintése. Ellenőrizze ezeket mind a szándék entitás kimondott szöveg. Miután utterances tekintse át, a felülvizsgálat lista üresnek kell lennie.  
+
+Amikor elkészült, a szerzői műveletek a ciklust, elkezdheti újra. Első lépésként [tekintse meg az előrejelzési végpont hosszúságú kimondott szöveg](luis-how-to-review-endpoint-utterances.md) , amely alacsony megbízhatósággal van megjelölve. Ellenőrizze ezeket mind a szándék entitás kimondott szöveg. Miután utterances tekintse át, a felülvizsgálat lista üresnek kell lennie.  
+
+Érdemes [lehet](luis-concept-version.md#clone-a-version) az aktuális verziót egy új verzióba beépíteni, majd megkezdeni a szerzői műveletek módosítását az új verzióban. 
 
 ## <a name="batch-testing"></a>Kötegelt tesztelés
-A Batch vizsgálat nem láthatják az hány példa utterances LUIS szerint kell kiértékelni. A példák a LUIS új kell lennie, és megfelelően feliratú szándékot, és azt szeretné, hogy a LUIS található entitások. A teszteredmények azt jelzik, LUIS végre arról, hogy az adott készletét kimondott szöveg. 
+
+A [Batch-teszteléssel](luis-concept-batch-test.md) megtekintheti, hogy a Luis hány példát hosszúságú kimondott szöveg. A példák a LUIS új kell lennie, és megfelelően feliratú szándékot, és azt szeretné, hogy a LUIS található entitások. A teszteredmények azt jelzik, LUIS végre arról, hogy az adott készletét kimondott szöveg. 
 
 ## <a name="next-steps"></a>További lépések
 
-Tudnivalók a fogalmak [együttműködési](luis-concept-collaborator.md).
+Tudnivalók a fogalmak [együttműködési](luis-concept-keys.md).

@@ -1,68 +1,75 @@
 ---
-title: Hálózatkezelés az Azure Functions szolgáltatásban – gyakori kérdések
-description: Adott válaszokat a leggyakoribb kérdéseket és az Azure Functions használatával hálózati forgatókönyvek.
+title: Gyakori kérdések a hálózatkezeléssel kapcsolatban Azure Functions
+description: Válaszok a Azure Functions-vel való hálózatkezeléssel kapcsolatos leggyakoribb kérdésekre és forgatókönyvekre.
 services: functions
 author: alexkarcher-msft
 manager: jeconnoc
 ms.service: azure-functions
 ms.topic: troubleshooting
 ms.date: 4/11/2019
-ms.author: alkarche, glenga
-ms.openlocfilehash: 3cf6a0d080e2d8cafcab8e69a614b59a470c7aba
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.author: alkarche
+ms.reviewer: glenga
+ms.openlocfilehash: 6f363003dc24509bd0b80922d9e34560250cc7ed
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59682202"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779306"
 ---
-# <a name="frequently-asked-questions-about-networking-in-azure-functions"></a>Hálózatkezelés az Azure Functions szolgáltatásban – gyakori kérdések
+# <a name="frequently-asked-questions-about-networking-in-azure-functions"></a>Gyakori kérdések a hálózatkezeléssel kapcsolatban Azure Functions
 
-Ez a cikk az Azure Functions hálózat – gyakori kérdések listája. Egy átfogóbb áttekintése: [hálózatkezelési lehetőségeket függvények](functions-networking-options.md).
+Ez a cikk a hálózatkezeléssel kapcsolatos gyakori kérdéseket ismerteti Azure Functionsban. Az átfogóbb áttekintést lásd: [functions Networking Options](functions-networking-options.md).
 
-## <a name="how-do-i-set-a-static-ip-in-functions"></a>Hogyan állíthatok be egy statikus IP-címet a függvények?
+## <a name="how-do-i-set-a-static-ip-in-functions"></a>Hogyan statikus IP-címet beállítani a functions szolgáltatásban?
 
-App Service Environment-környezetben függvény üzembe helyezése jelenleg az egyetlen módja annak, hogy egy statikus bejövő és kimenő IP-címet a függvény. App Service-környezet használata részletesen, indítsa el a cikkel [létrehozása és használata az App Service-környezet belső terheléselosztó](../app-service/environment/create-ilb-ase.md).
+Egy függvény üzembe helyezése egy App Service Environmentban jelenleg az egyetlen módszer a függvény statikus bejövő és kimenő IP-címének kiosztására. App Service Environment használatáról a [belső terheléselosztó létrehozása és használata app Service Environment](../app-service/environment/create-ilb-ase.md)használatával című cikk nyújt tájékoztatást.
 
-## <a name="how-do-i-restrict-internet-access-to-my-function"></a>Hogyan korlátozhatom internet-hozzáférés a függvényt?
+## <a name="how-do-i-restrict-internet-access-to-my-function"></a>Hogyan korlátozza az internet-hozzáférést a függvényhez?
 
-Internet-hozzáférés a többféleképpen korlátozhatja:
+Az Internet-hozzáférés több módon is korlátozható:
 
-* [Az IP-korlátozások](../app-service/app-service-ip-restrictions.md): Bejövő forgalom korlátozása IP-címtartomány a függvényalkalmazást.
-* Az összes HTTP-eseményindítók eltávolítása. Egyes alkalmazások esetében, ez elegendő egyszerűen elkerülése érdekében a HTTP-eseményindítók és minden más esemény forrása használatával elindítsa a függvényt.
+* [IP-korlátozások](../app-service/app-service-ip-restrictions.md): Korlátozza a függvény alkalmazásának bejövő forgalmát az IP-címtartomány alapján.
+    * Az IP-korlátozások területen olyan [szolgáltatási végpontokat](../virtual-network/virtual-network-service-endpoints-overview.md)is konfigurálhat, amelyek korlátozzák a függvényt, hogy csak egy adott virtuális hálózatról fogadják el a bejövő forgalmat.
+* Az összes HTTP-eseményindító eltávolítása. Egyes alkalmazások esetében elég egyszerűen elkerülni a HTTP-eseményindítókat, és más eseményforrás használatával aktiválhatja a függvényt.
 
-Ne feledje, hogy az Azure portal szerkesztő a futó függvény közvetlen hozzáférést igényel. Az Azure Portalon keresztül kódváltozások az eszköz használatával keresse meg a portálon az IP-alkalmazásátjárónál lesz szükség. De továbbra is használhatja a platform szolgáltatásai lapon semmit a korlátozásait a hálózati helyen.
+Ne feledje, hogy a Azure Portal-szerkesztőnek közvetlen hozzáférésre van szüksége a futó függvényhez. A Azure Portalon végrehajtott bármely kód módosítása megköveteli, hogy az Ön által használt eszköz megkeresse a portálon, hogy az IP-címe engedélyezve legyen. De továbbra is használhatja a platform szolgáltatásai lapot a helyi hálózati korlátozásokkal.
 
-## <a name="how-do-i-restrict-my-function-app-to-a-virtual-network"></a>Hogyan korlátozhatom a függvényalkalmazás egy virtuális hálózaton?
+## <a name="how-do-i-restrict-my-function-app-to-a-virtual-network"></a>Hogyan korlátozza a saját Function alkalmazást egy virtuális hálózatra?
 
-Úgy, hogy minden forgalom egy virtuális hálózaton keresztül teljes mértékben korlátozni a függvény csak úgy, hogy egy belső elosztott terhelésű App Service-környezet. Ezt a beállítást helyez üzembe egy dedikált infrastruktúra egy virtuális hálózaton belül a hely, és elküldi az eseményindítók és a forgalom a virtuális hálózaton keresztül. 
+A [szolgáltatási végpontok](./functions-networking-options.md#private-site-access)használatával korlátozhatja a functions-alkalmazások **bejövő** forgalmát egy virtuális hálózatra. Ez a konfiguráció továbbra is lehetővé teszi, hogy a Function alkalmazás kimenő hívásokat hajtson végre az interneten.
 
-App Service-környezet használata részletesen, indítsa el a cikkel [létrehozása és használata az App Service-környezet belső terheléselosztó](../app-service/environment/create-ilb-ase.md).
+Az egyetlen mód arra, hogy teljes mértékben korlátozza a függvényeket úgy, hogy a virtuális hálózaton keresztül lebonyolított összes forgalom belsőleg elosztott terhelésű App Service Environment használjon. Ez a beállítás a virtuális hálózaton belüli dedikált infrastruktúrán helyezi üzembe a helyet, és az összes eseményindítót és forgalmat a virtuális hálózaton keresztül küldi el. 
 
-## <a name="how-can-i-access-resources-in-a-virtual-network-from-a-function-app"></a>Hogyan érhetem el a virtuális hálózatban lévő erőforrásokra a függvényalkalmazás?
+App Service Environment használatáról a [belső terheléselosztó létrehozása és használata app Service Environment](../app-service/environment/create-ilb-ase.md)használatával című cikk nyújt tájékoztatást.
 
-Egy virtuális hálózatban lévő erőforrásokra futó függvény hozzáférhet a virtuális hálózati integráció használatával. További információkért lásd: [virtuális hálózati integráció](functions-networking-options.md#virtual-network-integration).
+## <a name="how-can-i-access-resources-in-a-virtual-network-from-a-function-app"></a>Hogyan lehet hozzáférni egy virtuális hálózat erőforrásaihoz egy Function alkalmazásból?
 
-## <a name="how-do-i-access-resources-protected-by-service-endpoints"></a>Hogyan érhetem el Szolgáltatásvégpontok által védett erőforrások?
+A virtuális hálózatok erőforrásai egy futó függvényből érhetők el virtuális hálózati integráció használatával. További információ: [Virtual Network Integration (virtuális hálózat integrációja](functions-networking-options.md#virtual-network-integration)).
 
-(Jelenleg előzetes verzióban érhető el) virtuális hálózati integráció révén egy futó függvény hozzáférhetnek a service-végpont védett erőforrásokhoz. További információkért lásd: [virtuális hálózati integráció előzetes](functions-networking-options.md#preview-version-of-virtual-network-integration).
+## <a name="how-do-i-access-resources-protected-by-service-endpoints"></a>Hogyan a szolgáltatási végpontok által védett erőforrások elérését?
 
-## <a name="how-can-i-trigger-a-function-from-a-resource-in-a-virtual-network"></a>Hogyan kiválthatja egy függvény egy erőforráshoz egy virtuális hálózaton?
+A Virtual Network Integration használatával elérheti a szolgáltatás-végpont által védett erőforrásokat egy futó függvényből. További információ: [Virtual Network Integration (virtuális hálózat integrációja](functions-networking-options.md#virtual-network-integration)).
 
-App Service-környezet üzembe helyezése a függvényalkalmazás által csak egy függvényt a virtuális hálózatban lévő erőforrás is indíthat. App Service-környezet használatával kapcsolatos részletekért lásd: [létrehozása és használata az App Service-környezet belső terheléselosztó](../app-service/environment/create-ilb-ase.md).
+## <a name="how-can-i-trigger-a-function-from-a-resource-in-a-virtual-network"></a>Hogyan válthatok ki egy függvényt egy erőforrásból egy virtuális hálózaton?
 
+Lehetővé teszi, hogy a HTTP-eseményindítók a [szolgáltatási végpontok](./functions-networking-options.md#private-site-access)használatával legyenek meghívva egy virtuális hálózatból. 
 
-## <a name="how-can-i-deploy-my-function-app-in-a-virtual-network"></a>Hogyan telepítheti a függvényalkalmazás, egy virtuális hálózaton?
+A függvényt egy virtuális hálózatban lévő erőforrásból is aktiválhatja, ha a Function alkalmazást egy App Service Environment helyezi üzembe. App Service Environment használatáról további információt a [belső terheléselosztó létrehozása és használata app Service Environment](../app-service/environment/create-ilb-ase.md)című témakörben talál.
 
-App Service-környezet üzembe helyezése az egyetlen módja, hozzon létre egy függvényalkalmazást, amely teljes egészében egy virtuális hálózaton belül. Részletek a belső terheléselosztó használata App Service-környezet, indítsa el a cikkel [létrehozása és használata az App Service-környezet belső terheléselosztó](https://docs.microsoft.com/azure/app-service/environment/create-ilb-ase).
+A prémium és App Service csomag támogatja a virtuális hálózatok HTTP-eseményindítóit, de csak egy App Service-környezet támogatja az összes többi függvény eseményindító-típust egy virtuális hálózaton keresztül.
 
-Olyan esetekben, ahol virtuális hálózati erőforrások, illetve kisebb átfogó hálózatelkülönítés csak egyirányú hozzáférésre van szüksége, tekintse meg a [Functions hálózati áttekintése](functions-networking-options.md).
+## <a name="how-can-i-deploy-my-function-app-in-a-virtual-network"></a>Hogyan helyezhetem üzembe a Function alkalmazást egy virtuális hálózaton?
+
+A App Service Environment való üzembe helyezés az egyetlen módszer egy olyan Function-alkalmazás létrehozására, amely teljes egészében egy virtuális hálózaton belül van. A belső terheléselosztó App Service Environment használatával történő használatáról a [belső terheléselosztó létrehozása és használata app Service Environmentkal](https://docs.microsoft.com/azure/app-service/environment/create-ilb-ase)című cikkből tájékozódhat.
+
+Olyan helyzetekben, ahol csak egyirányú hozzáférésre van szükség a virtuális hálózati erőforrásokhoz vagy kevésbé átfogó hálózati elkülönítéshez, tekintse meg a [függvények hálózatkezelésének áttekintése](functions-networking-options.md)című témakört.
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a hálózatkezelés és funkciók további: 
+További információ a hálózatkezelésről és a függvényekről: 
 
-* [A virtuális hálózati integráció használatának első lépéseivel kapcsolatos oktatóanyag](./functions-create-vnet.md)
-* [További információ a hálózati beállításokat az Azure Functions szolgáltatásban](./functions-networking-options.md)
-* [További tudnivalók a virtuális hálózati integráció az App Service és Functions](../app-service/web-sites-integrate-with-vnet.md)
-* [További információ az Azure-beli virtuális hálózatok](../virtual-network/virtual-networks-overview.md)
-* [További hálózati funkciókat és hozzáférés-vezérlés az App Service Environment-környezetek engedélyezése](../app-service/environment/intro.md)
+* [Kövesse a virtuális hálózatok integrálásának első lépéseit ismertető oktatóanyagot](./functions-create-vnet.md)
+* [További információ a Azure Functions hálózatkezelési lehetőségeiről](./functions-networking-options.md)
+* [További információ a App Service és a functions Virtual Network Integration szolgáltatásáról](../app-service/web-sites-integrate-with-vnet.md)
+* [További információ az Azure-beli virtuális hálózatokról](../virtual-network/virtual-networks-overview.md)
+* [További hálózatkezelési funkciók és vezérlés App Service környezetekkel](../app-service/environment/intro.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure biztonsági és megfelelőségi terv – IaaS-webalkalmazás NIST 800-171-SP rendszerhez
-description: Azure biztonsági és megfelelőségi terv – IaaS webes alkalmazás SP-NIST 800-171
+title: Azure Security and Compliance Blueprint-IaaS Web Application for NIST SP 800-171
+description: Azure Security and Compliance Blueprint-IaaS Web Application NIST SP 800-171
 services: security
 author: jomolesk
 ms.assetid: 1f1ad27f-32c3-4e76-abb9-ea768d01747f
@@ -8,203 +8,203 @@ ms.service: security
 ms.topic: article
 ms.date: 07/31/2018
 ms.author: jomolesk
-ms.openlocfilehash: b30094e264086f018acbf84144300df46c60ac4e
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 83d368e419550f38c173a7a1dca42c84db7d542f
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57241323"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259840"
 ---
-# <a name="azure-security-and-compliance-blueprint---iaas-web-application-for-nist-sp-800-171"></a>Azure biztonsági és megfelelőségi terv – IaaS-webalkalmazás NIST 800-171-SP rendszerhez
+# <a name="azure-security-and-compliance-blueprint---iaas-web-application-for-nist-sp-800-171"></a>Azure Security and Compliance Blueprint-IaaS Web Application for NIST SP 800-171
 
 ## <a name="overview"></a>Áttekintés
-[NIST Special Publication 800-171](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-171.pdf) hasznos útmutatást ad a szabályozott nem titkos információ (CUI) nonfederal információs rendszerek és a szervezetek a védelméhez. 800-171 NIST SP hozza létre a 14 termékcsaládok CUI titkosságát védelme kapcsolatos biztonsági követelményeket.
+A 800-171-es [speciális kiadvány](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-171.pdf) a nem szövetségi információs rendszerekben és szervezeteknél található ellenőrzött, nem minősített információk (CUI-) védelmére vonatkozó irányelveket biztosít. A NIST SP 800-171 14 olyan biztonsági követelményt hoz létre, amely a CUI titkosságának védelmét védi.
 
-Az Azure biztonsági és megfelelőségi terv segítségével az ügyfelek központi telepítése egy webalkalmazás-architektúra az Azure-ban, amely megvalósítja egy részhalmazát NIST SP 800-171 vezérlők útmutatást nyújt. Ez a megoldás bemutatja, amelyben ügyfeleink megfelel bizonyos biztonsági és megfelelőségi követelmények módon. Ez az ügyfelek számára hozhat létre, és a saját webes alkalmazások konfigurálása az Azure-ban alapjaként is szolgál.
+Ez a Azure Security and Compliance Blueprint útmutatást nyújt az ügyfeleknek a webalkalmazás-architektúrák üzembe helyezéséhez az Azure-ban, amely a NIST SP 800-171 vezérlők egy részhalmazát valósítja meg. Ez a megoldás azt mutatja be, hogy az ügyfelek milyen módon tudják kielégíteni az egyes biztonsági és megfelelőségi követelményeket. Emellett alapja az ügyfelek számára, hogy saját webalkalmazásaikat hozzanak létre és konfiguráljanak az Azure-ban.
 
-Ez a referenciaarchitektúra társított megvalósítási útmutató és fenyegetések modellezése célja, hogy az ügyfelek számára az adott követelményekhez a felmerülő ismeretekkel szolgál. Nem használható-éles környezetben van. Ez az architektúra módosítás nélküli üzembe helyezése nem elegendő a teljes mértékben a követelményeinek az NIST SP 800-171. Ügyfelei felelősek a megfelelő biztonsági és megfelelőségi értékelést, ez az architektúra használatával létrehozott megoldások elvégzéséhez. Követelmények minden ügyfél megvalósítása tulajdonságairól alapján változhat.
+Ez a hivatkozási architektúra, a társított megvalósítási útmutató és a veszélyforrás-modell arra szolgál, hogy az ügyfelek számára a konkrét követelményekhez alkalmazkodva alapot biztosítson. Nem használhatók éles környezetben. Az architektúra módosítás nélküli üzembe helyezése nem elegendő ahhoz, hogy teljesen megfeleljen a NIST SP 800-171 követelményeinek. Az ügyfelek felelősek az architektúrával létrehozott megoldások megfelelő biztonsági és megfelelőségi felmérésének elvégzéséért. A követelmények az egyes ügyfelek implementációjának sajátosságai alapján változhatnak.
 
-## <a name="architecture-diagram-and-components"></a>Architektúra és összetevők
-Az Azure biztonsági és megfelelőségi terv helyez üzembe egy SQL Server háttéralkalmazását az IaaS-webalkalmazás a referenciaarchitektúra. Az architektúra egy webes réteg, adatrétegbeli, az Active Directory infrastruktúra, az Azure Application Gateway és az Azure Load Balancer tartalmazza. A webes és az adatrétegekhez üzembe helyezett virtuális gépek (VM) egy rendelkezésre állási csoportban vannak konfigurálva. Always On rendelkezésre állási csoport magas rendelkezésre állású SQL Server-példányokat lehet konfigurálni. Virtuális gépek a tartományhoz. Az Active Directory csoportházirendjei érvényesíti a biztonsági és megfelelőségi konfigurációk az operációs rendszer szintjén.
+## <a name="architecture-diagram-and-components"></a>Architektúra ábrája és összetevői
+Ez a Azure Security and Compliance Blueprint egy SQL Server háttérrel rendelkező IaaS-webalkalmazás hivatkozási architektúráját telepíti. Az architektúra egy webes szintet, adatszintet, Active Directory infrastruktúrát, Azure Application Gateway és Azure Load Balancer tartalmaz. A webes és az adatszinten üzembe helyezett virtuális gépek (VM-EK) egy rendelkezésre állási csoportban vannak konfigurálva. A magas rendelkezésre állás érdekében a SQL Server példányok egy always on rendelkezésre állási csoportba vannak konfigurálva. A virtuális gépek tartományhoz csatlakoznak. Active Directory csoportházirendek az operációs rendszer szintjén kényszerítik a biztonsági és megfelelőségi konfigurációkat.
 
-A teljes megoldás az Azure Storage, amely az ügyfelek konfigurálása az Azure Portalról épül. Storage titkosítja az inaktív adatok bizalmas mivoltát a Storage Service Encryption az összes adatot. Georedundáns tárolás biztosítja, hogy az ügyfél elsődleges adatközpont káros eseményt sem adatvesztést eredményez. A másodpéldány egy külön helyen több száz mérfölddel távolabb tárolódik.
+A teljes megoldás az Azure Storage-ra épül, amelyet az ügyfelek a Azure Portal konfigurálnak. A Storage az összes adat titkosításával titkosítja a Storage Service Encryption az inaktív adatok titkosságának fenntartása érdekében. A Geo-redundáns tárolás biztosítja, hogy az ügyfél elsődleges adatközpontjában a kedvezőtlen esemény nem eredményez adatvesztést. A második példányt a rendszer egy külön helyen tárolja, több száz kilométer távolságban.
 
-A fokozott biztonság érdekében ebben a megoldásban az összes erőforrás egy erőforráscsoportba tartozó Azure Resource Manageren keresztül felügyelt. Az Azure Active Directory (Azure AD) szerepköralapú hozzáférés-vezérlés (RBAC) segítségével üzembe helyezett erőforrásokról és kulcsok az Azure Key Vaultban történő hozzáférést. A fájlrendszer állapotának Azure monitoron keresztül figyel. Ügyfelek konfigurálása mindkét figyelési szolgáltatásokat naplók rögzítésére. A fájlrendszer állapotának, amely egyszerűen használható egyetlen irányítópulton jelenik meg.
+A fokozott biztonság érdekében az ebben a megoldásban lévő összes erőforrást erőforráscsoportként kezeli Azure Resource Manageron keresztül. A Azure Active Directory (Azure AD) szerepköralapú hozzáférés-vezérlés (RBAC) használatával szabályozható a telepített erőforrásokhoz és kulcsokhoz való hozzáférés a Azure Key Vaultban. A rendszer állapotának figyelése Azure Monitoron keresztül történik. Az ügyfelek mindkét figyelési szolgáltatást a naplók rögzítésére is konfigurálhatják. A rendszer állapota egyetlen irányítópulton jelenik meg, amely könnyen használható.
 
-Felügyeleti bástyagazdagép biztonságos kapcsolatot biztosít a rendszergazdák számára a hozzáférés üzembe helyezett erőforrásokat. *A Microsoft azt javasolja, hogy a felügyeleti és az adatok importálása a referencia architektúra alhálózatban a VPN- vagy Azure ExpressRoute kapcsolat konfigurálása.*
+A felügyeleti megerősített gazdagépek biztonságos kapcsolatot biztosítanak a rendszergazdák számára az üzembe helyezett erőforrások eléréséhez. *A Microsoft azt javasolja, hogy VPN-vagy Azure ExpressRoute-kapcsolaton keresztül konfigurálja a felügyeleti és adatimportálási kapcsolatokat a hivatkozási architektúra alhálózatára.*
 
 
-![IaaS-webalkalmazás NIST SP 800-171 architekturális diagramja](images/nist171-iaaswa-architecture.png "IaaS-webalkalmazás NIST SP 800-171 architekturális diagramja")
+![IaaS Web Application for NIST SP 800-171 hivatkozási architektúra diagram](images/nist171-iaaswa-architecture.png "IaaS Web Application for NIST SP 800-171 hivatkozási architektúra diagram")
 
-Ez a megoldás a következő Azure-szolgáltatásokat használ. További információkért lásd: a [üzembe helyezési architektúrája](#deployment-architecture) szakaszban.
+Ez a megoldás az alábbi Azure-szolgáltatásokat használja. További információ: [telepítési architektúra](#deployment-architecture) szakasz.
 
-- Azure-alapú virtuális gépek
-    - (1) felügyeleti/megerősített (Windows Server 2016 Datacenter)
-    - (2) az active Directory-tartományvezérlőhöz (Windows Server 2016 Datacenter)
-    - (2) az SQL Server-fürt csomópontjának (Windows Server 2016-on futó SQL Server 2017)
+- Azure Virtual Machines
+    - (1) felügyelet/megerősített (Windows Server 2016 Datacenter)
+    - (2) Active Directory tartományvezérlő (Windows Server 2016 Datacenter)
+    - (2) SQL Server fürtcsomópont (SQL Server 2017 a Windows Server 2016 rendszeren)
     - (2) Web/IIS (Windows Server 2016 Datacenter)
 - Azure Virtual Network
-    - ((1) /16 hálózati
-    - (5) /24 hálózatok
-    - (5) a hálózati biztonsági csoportok
+    - (1)/16 hálózat
+    - (5)/24 hálózat
+    - (5) hálózati biztonsági csoportok
 - Rendelkezésre állási csoportok
-    - (1) az active Directory-tartományvezérlők
-    - (1) az SQL-fürtcsomópont
+    - (1) Active Directory tartományvezérlők
+    - (1) SQL-fürtcsomópontok
     - (1) Web/IIS
 - Azure Application Gateway
-    - (1) a webalkalmazási tűzfal
-        - Tűzfalmód: megelőzése
-        - Szabálykészlet: OWASP 3.0
+    - (1) webalkalmazási tűzfal
+        - Tűzfal mód: megelőzés
+        - Szabály beállítása: OWASP 3,0
         - Figyelő portja: 443
 - Azure Active Directory
 - Azure Key Vault
 - Azure Load Balancer
-- Az Azure Monitor (naplók)
+- Azure Monitor (naplók)
 - Azure Resource Manager
 - Azure Security Center
 - Azure Storage
 - Azure Automation
 - Felhőbeli tanúsító
-- Recovery Services-tároló
+- Helyreállítási tár
 
-## <a name="deployment-architecture"></a>Üzembe helyezési architektúrája
-A következő szakaszt az üzembe helyezés és a megvalósítás elemek részletei.
+## <a name="deployment-architecture"></a>Üzembe helyezési architektúra
+A következő szakasz az üzembe helyezési és megvalósítási elemeket részletezi.
 
-**Bástyagazdagép**: A megerősített gazdagép a központi hely, amely a felhasználók használhatják az ebben a környezetben üzembe helyezett erőforrások eléréséhez. A bástyagazdagép biztosítja, hogy a telepített erőforrások biztonságos kapcsolatot csak nyilvános IP-címekről érkező távoli forgalmat engedélyezi a biztonságos elemek listájához. Távoli asztali forgalmat lehetővé teszik, hogy a forgalom forrását definiálni kell a hálózati biztonsági csoport (NSG).
+**Megerősített gazdagép**: A megerősített gazdagép az a belépési pont, amelyet a felhasználók a környezetbe helyezett erőforrások elérésére használhatnak. A megerősített gazdagép biztonságos kapcsolódást biztosít a központilag telepített erőforrásokhoz azáltal, hogy csak a nyilvános IP-címekről érkező távoli forgalmat biztonságos listaként engedélyezi. A távoli asztal forgalmának engedélyezéséhez meg kell határozni a forgalom forrását a hálózati biztonsági csoportban (NSG).
 
-Ez a megoldás létrehoz egy virtuális Gépet egy tartományhoz csatlakoztatott megerősített gazdagépként az alábbi konfigurációkkal:
--   [A kártevőirtó bővítmény](https://docs.microsoft.com/azure/security/azure-security-antimalware).
--   [Az Azure Diagnostics bővítmény](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template).
--   [Az Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) Key Vault használatával.
--   Egy [automatikus leállítási házirend](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/) amikor nincs használatban a Virtuálisgép-erőforrások felhasználásának csökkentése érdekében.
--   [Windows Defender Credential Guard](https://docs.microsoft.com/windows/access-protection/credential-guard/credential-guard) engedélyezve van, hogy a hitelesítő adatokat, valamint egyéb titkok futtassa az elkülönített védett környezetben futó operációs rendszert.
+Ez a megoldás egy virtuális gépet hoz létre tartományhoz csatlakozó megerősített gazdagépként a következő konfigurációkkal:
+-   [Antimalware-bővítmény](https://docs.microsoft.com/azure/security/fundamentals/antimalware).
+-   [Azure Diagnostics bővítmény](../../virtual-machines/windows/extensions-diagnostics-template.md).
+-   [Azure Disk Encryption](../azure-security-disk-encryption-overview.md) Key Vault használatával.
+-   [Automatikus leállítási szabályzat](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/) , amely csökkenti a virtuálisgép-erőforrások felhasználását, ha nincs használatban.
+-   A [Windows Defender hitelesítő adatainak](https://docs.microsoft.com/windows/access-protection/credential-guard/credential-guard) védelme engedélyezve van, így a hitelesítő adatok és egyéb Titkok a futó operációs rendszertől elkülönített védett környezetekben futnak.
 
 ### <a name="virtual-network"></a>Virtuális hálózat
-Az architektúra egy 10.200.0.0/16 címtere a privát virtuális hálózat határozza meg.
+Az architektúra a 10.200.0.0/16 címtartomány szerinti magánhálózati virtuális hálózatot definiálja.
 
-**Hálózati biztonsági csoportok**: Ez a megoldás üzembe helyezi a webalkalmazás, adatbázis, az Active Directory és felügyeleti virtuális hálózatokon belüli külön alhálózatra rendelkező erőforrások. Alhálózatok logikailag elválasztott az egyes alhálózatokra alkalmazza az NSG-szabályok. A szabályok korlátozzák, hogy csak szükséges rendszer- és felügyeleti funkciók, az alhálózatok közötti adatforgalom.
+**Hálózati biztonsági csoportok**: Ez a megoldás egy olyan architektúrán helyez üzembe erőforrásokat, amely külön alhálózatokat biztosít a webes, adatbázis-, Active Directory-és felügyelethez egy virtuális hálózaton belül. Az alhálózatokat az egyes alhálózatokra alkalmazott NSG-szabályok logikailag elkülönítik. A szabályok az alhálózatok közötti forgalmat csak a rendszer-és felügyeleti funkciókhoz szükséges módon korlátozzák.
 
-Tekintse meg a konfiguráció a [NSG-k](https://github.com/Azure/fedramp-iaas-webapp/blob/master/nestedtemplates/virtualNetworkNSG.json) üzembe helyezett ezzel a megoldással. Szervezetek konfigurálhatja az NSG-k használatával az előző fájl szerkesztésével [ebben a dokumentációban](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) alapján.
+Tekintse meg a megoldással üzembe helyezett [NSG](https://github.com/Azure/fedramp-iaas-webapp/blob/master/nestedtemplates/virtualNetworkNSG.json) konfigurációját. A szervezetek az előző fájl szerkesztésével konfigurálhatják a NSG a [jelen dokumentáció](../../virtual-network/virtual-network-vnet-plan-design-arm.md) használatával.
 
-Egy dedikált NSG minden egyes alhálózatban van:
-- Egy NSG-t az Application Gateway (LBNSG)
-- Egy NSG-t a bástyagazdagép (MGTNSG)
-- Egy NSG-t elsődleges és tartalék tartományvezérlők (ADNSG)
-- Egy NSG-t az SQL Server-kiszolgálók és a Felhőbeli tanúsító (SQLNSG)
-- Egy NSG-t webes réteg (WEBNSG)
+Az alhálózatok mindegyike dedikált NSG rendelkezik:
+- Egy NSG a Application Gatewayhoz (LBNSG)
+- Egy NSG a megerősített gazdagéphez (MGTNSG)
+- Egy NSG az elsődleges és a tartalék tartományvezérlők számára (ADNSG)
+- Egy NSG az SQL-kiszolgálók és a Felhőbeli tanúsító (SQLNSG) számára
+- Egy NSG webes réteghez (WEBNSG)
 
-### <a name="data-in-transit"></a>Az átvitt adatok
-Az Azure és az Azure adatközpontok bemenő kommunikáció alapértelmezés szerint titkosítja. Emellett az Azure Portalon keresztül a tárolási tranzakciók HTTPS-kapcsolaton keresztül történik.
+### <a name="data-in-transit"></a>Átvitt adatok
+Az Azure alapértelmezés szerint titkosítja az Azure-adatközpontok felé irányuló és onnan érkező összes kommunikációt. Emellett a Azure Portalon keresztül lebonyolított összes tranzakció HTTPS-n keresztül történik.
 
 ### <a name="data-at-rest"></a>Inaktív adat
-Az architektúra használatával több mértéket az inaktív adatok védi. Ezeket a mértékeket tartalmazzák, titkosítás és az adatbázis naplózási szolgáltatásával.
+Az architektúra több mértéken keresztül védi a nyugalmi állapotban lévő adatok védelmét. Ezek a mértékek közé tartozik a titkosítás és az adatbázis naplózása.
 
-**Az Azure Storage**: A titkosított adatok inaktív állapotban, igényeinek megfelelően minden [tárolási](https://azure.microsoft.com/services/storage/) használ [a Storage Service Encryption](https://docs.microsoft.com/azure/storage/storage-service-encryption). Ez a funkció segít a szervezeti biztonsági kötelezettségeit, és a NIST 800-171 SP által meghatározott megfelelőségi követelmények támogatásához adatok biztonságos megőrzésében.
+**Azure Storage**: A titkosított adatokra vonatkozó követelmények teljesítése érdekében az [](https://azure.microsoft.com/services/storage/) összes tárterület [Storage Service Encryptiont](../../storage/common/storage-service-encryption.md)használ. Ez a szolgáltatás segít megvédeni és megőrizni az adatvédelmet a NIST SP 800-171 által meghatározott szervezeti biztonsági kötelezettségvállalások és megfelelőségi követelmények támogatásával.
 
-**Az Azure Disk Encryption**: Disk Encryption Windows IaaS virtuális gép titkosított lemezek segítségével. [Lemeztitkosítás](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) kötettitkosítást biztosít az operációs rendszer és az adatlemezeket a Windows BitLocker funkcióját használja. A megoldás integrálva van a Key Vault segítségével szabályozhatja, és kezelhetik a lemeztitkosítási kulcsokat.
+**Azure Disk Encryption**: A lemezes titkosítás a Windows IaaS VM-lemezek titkosítására szolgál. A [lemezes titkosítás](../azure-security-disk-encryption-overview.md) a Windows BitLocker szolgáltatásával biztosítja a kötetek titkosítását az operációs rendszer és az adatlemezek számára. A megoldás integrálva van Key Vault a lemezes titkosítási kulcsok szabályozása és kezelése érdekében.
 
-**SQL Server**: Az SQL Server-példányt használja a következő adatbázis biztonsági intézkedéseket:
--   [Az SQL Server-naplózás](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine?view=sql-server-2017) nyomon követi az adatbázisok eseményeit, és írja őket az auditnaplók.
--   [Transzparens adattitkosítás](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-2017) hajtja végre a valós idejű titkosításához és visszafejtéséhez az adatbázis, azokhoz kapcsolódó biztonsági mentési és tranzakciós naplófájlokra adatok inaktív védelme érdekében. Transzparens adattitkosítás biztosítja, hogy a tárolt adatok még nem vonatkoznak a jogosulatlan hozzáférést.
--   [Tűzfalszabályok](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) megakadályozzák elérését, adatbázis-kiszolgálók, amíg a megfelelő engedélyekkel. A tűzfal biztosítja az adatbázisokhoz való hozzáférést az egyes kérések kiindulási IP-címe alapján.
--   [Titkosított oszlopokat](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-wizard?view=sql-server-2017) győződjön meg arról, hogy bizalmas adatok soha nem jelenik meg az adatbázis-rendszer egyszerű szövegként. Ha engedélyezett az adattitkosítás, csak az ügyfélalkalmazások vagy alkalmazáskiszolgálók hozzáférést a kulcsokhoz hozzáférhet egyszerű szöveges adatokat.
-- [Dinamikus adatmaszkolás](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking?view=sql-server-2017) által a replikaadatok felhasználók vagy alkalmazások, adatok maszkolása korlátozza a bizalmas adatok. Automatikusan potenciálisan bizalmas adatok felderítéséhez és javasoljuk a alkalmazni lehessen a megfelelő maszkokkal. Dinamikus adatmaszkolás segít hozzáférés korlátozása, így bizalmas adatok nem az adatbázis jogosulatlan hozzáférést. *Be kell tartaniuk az adatbázisséma beállítások hangolását ügyfelek felelőssége.*
+**SQL Server**: A SQL Server példány a következő adatbázis-biztonsági mértékeket használja:
+-   [SQL Server naplózás](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine?view=sql-server-2017) nyomon követi az adatbázis eseményeit, és beírja azokat a naplókba.
+-   Az [transzparens adattitkosítás](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-2017) az adatbázis, a társított biztonsági másolatok és a tranzakciós naplófájlok valós idejű titkosítását és visszafejtését hajtja végre a további információk védelme érdekében. Az transzparens adattitkosítás biztosítja, hogy a tárolt adataik nem vonatkoznak a jogosulatlan hozzáférésre.
+-   A [Tűzfalszabályok](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) megakadályozzák az adatbázis-kiszolgálók hozzáférését a megfelelő engedélyek megadása előtt. A tűzfal biztosítja az adatbázisokhoz való hozzáférést az egyes kérések kiindulási IP-címe alapján.
+-   A [titkosított oszlopok](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-wizard?view=sql-server-2017) biztosítják, hogy a bizalmas adatok soha nem egyszerű szövegként jelenjenek meg az adatbázis-rendszeren belül. Az adattitkosítás engedélyezése után csak a kulcsokhoz hozzáféréssel rendelkező ügyfélalkalmazások vagy kiszolgálóalkalmazások férhetnek hozzá az egyszerű szöveges adatértékekhez.
+- A [dinamikus adatmaszkolás](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking?view=sql-server-2017) korlátozza a bizalmas adatokra való adatvédelmet azáltal, hogy az adatokat nem Kiemelt felhasználók vagy alkalmazások számára fedi le. A szolgáltatás automatikusan képes felderíteni a potenciálisan bizalmas adatokat, és javaslatot tesz a megfelelő maszkok alkalmazására. A dinamikus adatmaszkolás segít csökkenteni a hozzáférést, hogy a bizalmas adatok jogosulatlan hozzáférés nélkül ne lépjenek ki az adatbázisból. *Az ügyfelek felelősek a beállítások módosításához az adatbázis-sémájuk betartásához.*
 
 ### <a name="identity-management"></a>Identitáskezelés
-A következő technológiákat az Azure-beli adatokhoz való hozzáférés kezeléséhez képességeket biztosítják:
--   [Az Azure AD](https://azure.microsoft.com/services/active-directory/) van a Microsoft több-bérlős felhőalapú címtár- és identitáskezelési szolgáltatás. Ez a megoldás az összes felhasználó jönnek létre az Azure ad-ben, és az SQL Server-példány hozzáféréssel rendelkező felhasználókat tartalmazzák.
--   Hitelesítés az alkalmazás Azure AD használatával történik. További információkért lásd: hogyan [alkalmazások integrálása az Azure ad-vel](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).
--   [Az Azure RBAC](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) segítségével a rendszergazdák csak olyan mértékű hozzáférést biztosítson, a felhasználóknak frissíteniük kell a munkája elvégzéséhez a minden részletre kiterjedő hozzáférési engedélyek megadása. Helyett az Azure-erőforrások minden felhasználó ugyanolyan korlátlan engedélyeket ad, a rendszergazdák engedélyezhetik csak bizonyos adatok eléréséhez szükséges műveleteket. Az előfizetés-rendszergazda előfizetéshez való hozzáférés korlátozódik.
-- [Az Azure Active Directory Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-getting-started) bizonyos erőforrásokhoz hozzáférő felhasználók számának csökkentése érdekében az ügyfelek által használható. A rendszergazdák Azure AD Privileged Identity Management segítségével Fedezze fel, korlátozhatja és emelt szintű identitások és azok erőforrásokhoz való hozzáférésének figyelése. Ez a funkció is segítségével igény szerinti – igény rendszergazdai hozzáférés kényszerítésére.
-- [Az Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) észleli a szervezet identitásait érintő lehetséges biztonsági résekről. Konfigurálja az automatikus válaszok a szervezet identitásait kapcsolódó észlelt gyanús tevékenységek. Azt is kivizsgálja a problémák megoldásához a megfelelő művelet végrehajtása a gyanús események.
+Az alábbi technológiák az Azure-környezetben tárolt adathozzáférések kezelésére szolgáló képességeket biztosítanak:
+-   Az [Azure ad](https://azure.microsoft.com/services/active-directory/) a Microsoft több-bérlős felhőalapú címtár-és Identitáskezelés-kezelő szolgáltatása. Az ehhez a megoldáshoz tartozó összes felhasználó létrejön az Azure AD-ben, és tartalmazza azokat a felhasználókat, akik hozzáférnek a SQL Server-példányhoz.
+-   Az alkalmazáshoz való hitelesítés az Azure AD használatával történik. További információ: [alkalmazások integrálása az Azure ad-vel](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md).
+-   Az [Azure RBAC](../../role-based-access-control/role-assignments-portal.md) lehetővé teheti a rendszergazdák számára, hogy részletes hozzáférési engedélyeket határozzanak meg, amelyek csak a felhasználóknak a feladataik elvégzéséhez szükséges hozzáférési engedélyek megadására szolgálnak. Ahelyett, hogy az összes felhasználó számára korlátlan engedélyeket adna az Azure-erőforrásokhoz, a rendszergazdák csak bizonyos műveleteket végezhetnek el az adatokhoz való hozzáféréshez. Az előfizetés-hozzáférés az előfizetés rendszergazdájára korlátozódik.
+- A [Azure Active Directory Privileged Identity Management](../../active-directory/privileged-identity-management/pim-getting-started.md) az ügyfelek használhatják az egyes erőforrásokhoz hozzáférő felhasználók számának minimalizálására. A rendszergazdák Azure AD Privileged Identity Management használhatják az emelt szintű identitások felderítését, korlátozását és figyelését, valamint az erőforrásokhoz való hozzáférésüket. Ez a funkció az igény szerinti, igény szerinti rendszergazdai hozzáférés biztosítására is használható, ha szükséges.
+- [Azure Active Directory Identity Protection](../../active-directory/identity-protection/overview.md) észleli a szervezet identitásait érintő lehetséges biztonsági réseket. Automatikus válaszokat konfigurál a szervezet identitásával kapcsolatos gyanús műveletek észlelésére. Emellett a gyanús incidenseket is megvizsgálja, hogy megfelelő lépéseket tegyenek a megoldásához.
 
 ### <a name="security"></a>Biztonság
-**Titkok kezelése**: A megoldás [Key Vault](https://azure.microsoft.com/services/key-vault/) kulcsok és titkos kulcsok felügyeletéhez. Key Vault segít a védelem titkosítási kulcsok és titkos kódok felhőalapú alkalmazások és szolgáltatások által használt. A következő Key Vault-képességek segítségével az ügyfelek adatok védelme érdekében:
-- Speciális hozzáférési szabályzatok kell alapon vannak konfigurálva.
-- A Key Vault hozzáférési szabályzatok a minimálisan szükséges engedélyeket kulcsok és titkos kulcsok vannak meghatározva.
-- Összes kulcsot és titkos kulcsok a Key Vaultban van lejárati dátumát.
-- Speciális hardveres biztonsági modulok által védett összes kulcsok a Key Vaultban. A kulcs típusa a hardveres biztonsági modul által védetté 2048-bites RSA-kulcsok.
-- Minden felhasználó és identitások minimálisan szükséges engedélyeket kapnak az RBAC használatával.
-- Diagnosztikai naplók a Key vault legalább 365 napos megőrzési idővel rendelkező engedélyezve vannak.
-- A szükséges kapcsolatok engedélyezett titkosítási műveletek kulcsok korlátozódnak.
-- A megoldás integrálva van a Key Vault IaaS virtuális gépek lemeztitkosítási kulcsokat és titkos kulcsok kezeléséhez.
+**Titkok kezelése**: A megoldás a kulcsok és titkok kezeléséhez [Key Vault](https://azure.microsoft.com/services/key-vault/) használ. Key Vault segít megőrizni a felhőalapú alkalmazások és szolgáltatások által használt titkosítási kulcsokat és titkokat. Az alábbi Key Vault-képességek segítenek az ügyfeleknek az adatvédelemben:
+- A speciális hozzáférési szabályzatok a szükséges módon vannak konfigurálva.
+- Key Vault hozzáférési házirendek minimálisan szükséges engedélyekkel vannak definiálva a kulcsokhoz és a titkokhoz.
+- Key Vault összes kulcsának és titkának lejárati dátuma van.
+- A Key Vault összes kulcsát speciális hardveres biztonsági modulok védik. A kulcs típusa egy hardveres biztonsági modul által védett 2048 bites RSA-kulcs.
+- Minden felhasználó és identitás minimálisan szükséges engedélyeket kap a RBAC használatával.
+- Key Vault diagnosztikai naplói legalább 365 napos megőrzési időtartammal engedélyezettek.
+- A kulcsok számára engedélyezett titkosítási műveletek csak a szükségesek.
+- A megoldás integrálva van Key Vault a IaaS virtuális gép lemez-titkosítási kulcsainak és titkos kulcsainak kezeléséhez.
 
-**Javítások kezelése**: Ez a referenciaarchitektúra részeként üzembe helyezett Windows virtuális gépek automatikusan frissítéseket kapjanak a Windows Update szolgáltatás alapértelmezés szerint vannak konfigurálva. Ez a megoldás is magában foglalja a [Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro) szolgáltatást, amelyen keresztül frissített telepítések hozható létre virtuális gépeket, ha a szükséges javítási.
+**Javítási felügyelet**: A jelen viszonyítási architektúra részeként telepített Windows rendszerű virtuális gépek alapértelmezés szerint a Windows Update szolgáltatásból származó automatikus frissítések fogadására vannak konfigurálva. Ez a megoldás tartalmazza azt a [Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro) szolgáltatást is, amelyen keresztül a frissített központi telepítések létrehozhatók a virtuális gépek szükség szerinti javításához.
 
-**Kártevők elleni védekezés**: [A Microsoft Antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware) virtuális gépek számára biztosítja a valós idejű védelem funkció, amely alapján azonosíthatja, és távolítsa el a vírusok, kémprogramok és más, kártevő szoftverek. Ügyfelek is beállíthat riasztásokat, amelyek készítése, ha ismert kártevő vagy nemkívánatos szoftverek megpróbálják telepíteni vagy futtatni védett virtuális gépeken.
+**Kártevők elleni védelem**: A virtuális gépekhez készült [Microsoft antimalware](https://docs.microsoft.com/azure/security/fundamentals/antimalware) olyan valós idejű védelmi képességet biztosít, amely lehetővé teszi a vírusok, kémprogramok és más kártevő szoftverek azonosítását és eltávolítását. Az ügyfelek olyan riasztásokat állíthatnak be, amelyek az ismert kártékony vagy nemkívánatos szoftverek által a védett virtuális gépeken történő telepítésére vagy futtatására tett kísérleteket eredményeznek.
 
-**Azure Security Center**: A [a Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro), ügyfelek is központilag alkalmazása és a számítási feladatok biztonsági házirendek kezelése, korlátozhatja a fenyegetéseknek való kitettséget, felismeri és elháríthatja a támadásokat. A Security Center is éri el a meglévő konfigurációk az Azure-szolgáltatások konfigurációs és szolgáltatási javaslatok javíthatja biztonsági helyzetét és adatok védelme érdekében.
+**Azure Security Center**: A [Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)segítségével az ügyfelek központilag alkalmazhatják és kezelhetik a munkaterhelések biztonsági szabályzatait, korlátozhatja a fenyegetéseket, és észlelheti és reagálhat a támadásokra. Security Center az Azure-szolgáltatások meglévő konfigurációit is elérheti, hogy konfigurációs és szolgáltatási javaslatokat nyújtson a biztonsági helyzetek és az adatvédelem javításához.
 
-A Security Center használatával észlelési képességek széles ügyfelek esetleges támadások, hogy a cél riasztás környezetük. Ezek a riasztások értékes információkat tartalmaznak arról, hogy mi váltotta ki a riasztást, valamint a támadás forrásáról és az általa célba vett erőforrásokról. A Security Center készletével rendelkezik [biztonsági riasztások az előre meghatározott](https://docs.microsoft.com/azure/security-center/security-center-alerts-type) , amely vannak aktiválódik, ha a fenyegetések vagy gyanús tevékenységek. Az ügyfelek használhatják [egyéni riasztási szabályok](https://docs.microsoft.com/azure/security-center/security-center-custom-alert) meghatározásához a környezetből már begyűjtött adatok alapján új biztonsági riasztásokat.
+Security Center különböző észlelési képességekkel figyelmezteti az ügyfeleket a környezetét célba vevő lehetséges támadásokra. Ezek a riasztások értékes információkat tartalmaznak arról, hogy mi váltotta ki a riasztást, valamint a támadás forrásáról és az általa célba vett erőforrásokról. A Security Center [előre meghatározott biztonsági riasztásokat](https://docs.microsoft.com/azure/security-center/security-center-alerts-type) tartalmaz, amelyek egy fenyegetés vagy gyanús tevékenység bekövetkeztekor aktiválódnak. Az ügyfelek [Egyéni riasztási szabályok](https://docs.microsoft.com/azure/security-center/security-center-custom-alert) segítségével meghatározhatnak új biztonsági riasztásokat a környezetből már összegyűjtött adatok alapján.
 
-A Security Center rangsorolt biztonsági riasztások és incidensek biztosít. A Security Center egyszerűbbé teszi az ügyfelek felderítéséhez és a potenciális biztonsági problémákat. A [fenyegetésfelderítési jelentés](https://docs.microsoft.com/azure/security-center/security-center-threat-report) jön létre a rendszer minden egyes észlelt fenyegetés. Incidensmegoldási csapat a jelentéseket használhatja, amikor elhárításban, és vizsgálja meg.
+A Security Center rangsorolt biztonsági riasztásokat és incidenseket biztosít. Security Center megkönnyíti az ügyfelek számára a potenciális biztonsági problémák felderítését és megoldását. Minden észlelt fenyegetéshez létrejön egy [fenyegetési intelligencia jelentés](https://docs.microsoft.com/azure/security-center/security-center-threat-report) . Az incidensek válaszait használó csapatok a jelentéseket a fenyegetések kivizsgálására és szervizelésére használhatják.
 
-Ez a referenciaarchitektúra használja a [biztonságirés-értékelési](https://docs.microsoft.com/azure/security-center/security-center-vulnerability-assessment-recommendations) képesség a Security Centerben. Beállítások konfigurálása után a partnerügynök (például a Qualys) jelenti a biztonsági adatok a partner felügyeleti platformjára. Ezután a partner felügyeleti platformja a biztonsági résekre vonatkozó és állapotmonitorozási adatokat küld vissza a Security Centernek. Ügyfelek használhatják ezeket az adatokat gyorsan azonosíthatja a sebezhető virtuális gépeket.
+Ez a hivatkozási architektúra a [sebezhetőség-felmérési](https://docs.microsoft.com/azure/security-center/security-center-vulnerability-assessment-recommendations) funkciót használja Security Centerban. A konfigurálását követően a partner ügynök (például a Qualys) biztonsági réseket küld a partner felügyeleti platformjának. Ezután a partner felügyeleti platformja a biztonsági résekre vonatkozó és állapotmonitorozási adatokat küld vissza a Security Centernek. Az ügyfelek ezeket az információkat a sebezhető virtuális gépek gyors azonosítására használhatják.
 
-**Az Azure Application Gateway**: Az architektúra csökkenti a biztonsági rések kockázatát az application gateway webalkalmazási tűzfal konfigurálva és engedélyezve van az OWASP szabálykészlet használatával. További képességek:
+**Azure Application Gateway**: Az architektúra csökkenti a biztonsági rések kockázatát, ha olyan Application Gateway-t használ, amely konfigurálva van egy webalkalmazási tűzfallal, és a OWASP szabálykészlet engedélyezve van. A további funkciók a következők:
 
 - [End-to-end-SSL](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell).
-- Engedélyezése [SSL-alapú kiszervezéshez](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-portal).
-- Tiltsa le [a TLS 1.0 és 1.1](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell).
-- [Webalkalmazási tűzfal](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-application-firewall-overview) (megelőzés üzemmód).
-- [Megelőzés üzemmód](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-application-firewall-portal) az OWASP 3.0-s szabály beállítása.
-- Engedélyezése [diagnosztikai célú naplózásának](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics).
-- [Egyéni állapotmintákkal](https://docs.microsoft.com/azure/application-gateway/application-gateway-create-gateway-portal).
-- [A Security Center](https://azure.microsoft.com/services/security-center) és [az Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-security-recommendations) nyújtanak további védelmet és értesítések. A Security Center megbízhatóságibesorolás-kezelési rendszert is biztosít.
+- Engedélyezze az [SSL-kiszervezést](../../application-gateway/create-ssl-portal.md).
+- Tiltsa le [a TLS 1.0-s és 1.1-es verzióit](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell).
+- [Webalkalmazási tűzfal](../../application-gateway/waf-overview.md) (megelőzési mód).
+- [Megelőzési mód](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-application-firewall-portal) a OWASP 3,0 szabálykészlet beállításával.
+- [Diagnosztikai naplózás](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)engedélyezése.
+- [Egyéni állapot](../../application-gateway/quick-create-portal.md)-mintavételek.
+- A [Security Center](https://azure.microsoft.com/services/security-center) és [Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-security-recommendations) további védelmet és értesítéseket biztosítanak. A Security Center a hírnév rendszerét is biztosítja.
 
 ### <a name="business-continuity"></a>Az üzletmenet folytonossága
 
-**Magas rendelkezésre állású**: A megoldás az összes virtuális gép üzembe helyezése egy [rendelkezésre állási csoport](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets). Rendelkezésre állási csoportok biztosítják, hogy a virtuális gépek rendelkezésre állás javítása érdekében több elkülönített hardverfürt között legyenek elosztva. Legalább egy virtuális gép érhető el egy tervezett vagy nem tervezett karbantartási események, amely megfelel a 99,95 %-os Azure SLA-t.
+**Magas rendelkezésre állás**: A megoldás minden virtuális gépet üzembe helyez egy [rendelkezésre állási csoporton](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)belül. A rendelkezésre állási csoportok biztosítják, hogy a virtuális gépek több elkülönített hardveres fürt között legyenek elosztva a rendelkezésre állás javítása érdekében. Legalább egy virtuális gép elérhető egy tervezett vagy nem tervezett karbantartási esemény során, amely megfelel az 99,95%-os Azure SLA-nak.
 
-**Recovery Services-tároló**: A [Recovery Services-tároló](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview) Kezelőkód biztonsági mentési adatokat, és védelmet biztosít az összes konfiguráció az Azure Virtual Machines ebben az architektúrában. A Recovery Services-tárolóval, ügyfelek is fájlok és mappák visszaállítása az IaaS virtuális gépről a teljes virtuális gép visszaállítása nélkül. Ez a folyamat felgyorsítja a helyreállítási időt.
+**Recovery Services**tároló: Az [Recovery Services](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview) -tároló a biztonsági mentési és az Azure-Virtual Machines összes konfigurációját védi ebben az architektúrában. Recovery Services-tárolóval az ügyfelek a teljes virtuális gép visszaállítása nélkül állíthatják vissza a fájlokat és mappákat egy IaaS virtuális gépről. Ez a folyamat felgyorsítja a visszaállítási időt.
 
-**Felhőbeli tanúsító**: [Felhőbeli tanúsító](https://docs.microsoft.com/windows-server/failover-clustering/whats-new-in-failover-clustering#BKMK_CloudWitness) egy feladatátvevő fürt kvórum tanúsítójának a Windows Server 2016, amely Azure használja egyeztetési pontként típusú. Felhőbeli tanúsító – más kvórumtanúsítókhoz, például szavazattal rendelkezik, és részt vehet a kvórumszámításokban. A standard szintű nyilvánosan elérhető Azure Blob storage használ. Ezzel az elrendezéssel fokozott kiküszöböli a felesleges karbantartási a nyilvános felhőben üzemeltetett virtuális gépek.
+**Felhőbeli tanúsító**: A [Felhőbeli tanúsító](https://docs.microsoft.com/windows-server/failover-clustering/whats-new-in-failover-clustering#BKMK_CloudWitness) a feladatátvevő fürt Kvórumának tanúsító típusa a Windows Server 2016 rendszerben, amely az Azure-t használja a választottbírósági pontként. A Felhőbeli tanú, mint bármely más kvórum, szavaz, és részt vehet a kvórum számításaiban. A szabványos nyilvánosan elérhető Azure Blob Storage-tárolót használja. Ez a megoldás megszünteti a nyilvános felhőben üzemeltetett virtuális gépek extra karbantartási terhelését.
 
-### <a name="logging-and-auditing"></a>Naplózás és vizsgálat
+### <a name="logging-and-auditing"></a>Naplózás
 
-Azure-szolgáltatások széles körben system és a felhasználói tevékenység, valamint a rendszerállapot jelentkezzen be:
-- **A Tevékenységnaplók**: [A Tevékenységnaplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) adjon meg egy előfizetéshez tartozó erőforrásokon végrehajtott műveletekkel kapcsolatos információk. A Tevékenységnaplók segítségével határozza meg a műveletet kezdeményező, az eseményt, és állapot ideje.
-- **Diagnosztikai naplók**: [Diagnosztikai naplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) minden erőforrás által kibocsátott az összes napló tartalmazza. Ezek a naplók például a Windows rendszer-eseménynaplói, a Storage-naplók, a Key Vault-naplók és a Application Gateway hozzáférés és a tűzfal a naplókat. Az összes diagnosztikai naplók írni egy központosított, titkosított csatornákon történik az Azure storage-fiókját archiválási. Felhasználók is konfigurálhatók a megőrzés időtartamát, legfeljebb 730 napig, az adott igényeknek.
+Az Azure-szolgáltatások széles körben naplózzák a rendszer és a felhasználó tevékenységét, valamint a rendszer állapotát:
+- **Tevékenységek naplói**: A [tevékenységek naplói](../../azure-monitor/platform/activity-logs-overview.md) betekintést nyújtanak az előfizetésben lévő erőforrásokon végrehajtott műveletekre. A Tevékenységnaplók segítenek meghatározni a művelet kezdeményezőjét, az előfordulás időpontját és az állapotot.
+- **Diagnosztikai naplók**: A [diagnosztikai naplók](../../azure-monitor/platform/resource-logs-overview.md) az összes erőforrás által kibocsátott összes naplót tartalmazzák. Ezek a naplók a Windows-események rendszernaplóit, a tárolási naplókat, a Key Vault a naplókat, valamint Application Gateway hozzáférési és tűzfal-naplókat tartalmaznak. Az összes diagnosztikai napló egy központi és titkosított Azure Storage-fiókba írja az archiválást. A felhasználók a megőrzési időtartamot akár 730 napig is konfigurálhatják, hogy megfeleljenek a rájuk vonatkozó követelményeknek.
 
-**Az Azure Monitor naplóira**: Ezeket a naplókat a rendszer összevont [naplózza az Azure Monitor](https://azure.microsoft.com/services/log-analytics/) feldolgozási, tárolására és-irányítópult jelentéseit. Az adatokat a begyűjtésük után azt rendszer adattípusonként külön táblába rendezi az egyes adattípusokhoz Log Analytics-munkaterületek belül. Ily módon az összes adat elemezhetők együtt, az eredeti forrástól függetlenül. A Security Center integrálható az Azure Monitor naplóira. Ügyfelek Kusto-lekérdezés segítségével a biztonsági események adatainak eléréséhez és más szolgáltatások származó adatokat kombinálni.
+**Naplók Azure monitor**: Ezeket a naplókat a rendszer a feldolgozás, tárolás és irányítópult-jelentéskészítés [Azure monitor naplófájljaiban](https://azure.microsoft.com/services/log-analytics/) összesíti. Az adatgyűjtés után a rendszer külön táblákba rendezi az adattípusokat Log Analytics munkaterületeken belül. Így az összes adatforrás együtt is elemezhető, az eredeti forrásától függetlenül. A Security Center Azure Monitor-naplókkal integrálódik. Az ügyfelek használhatnak Kusto-lekérdezéseket a biztonsági események adatainak eléréséhez és más szolgáltatásokból származó adatokkal való összekapcsolásához.
 
-A következő Azure [figyelési megoldások](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions) Ez az architektúra egy része szerepel:
--   [Az Active Directory assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): Az Active Directory állapotának ellenőrzése megoldás rendszeres időközönkénti értékeli az a kockázat és kiszolgálói környezetek állapotát. Biztosít a telepített kiszolgálói infrastruktúra vonatkozó javaslatok rangsorolt listáját.
-- [SQL-értékeléssel](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment): Az SQL Health Check megoldás rendszeres időközönként felméri az a kockázat és kiszolgálói környezetek állapotát. Ügyfelek biztosít a telepített kiszolgálói infrastruktúra vonatkozó javaslatok rangsorolt listáját.
-- [Az ügynök állapota](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth): Az Agent Health megoldás jelentések hány ügynök van telepítve, és a földrajzi eloszlása. Hány ügynök nem válaszol, és küldje el az operatív adatokat, az ügynökök számát is jelenti.
--   [Activity Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): Az Activity Log Analytics megoldás az ügyfél az összes Azure-előfizetések az Azure-Tevékenységnaplók elemzésének segíti.
+Az architektúra részeként az alábbi Azure- [figyelési megoldások](../../monitoring/monitoring-solutions.md) szerepelnek:
+-   [Active Directory értékelés](../../azure-monitor/insights/ad-assessment.md): A Active Directory Health-ellenőrzési megoldás rendszeres időközönként kivizsgálja a kiszolgálói környezetek kockázatait és állapotát. A szolgáltatás a központilag telepített kiszolgálói infrastruktúrára vonatkozó javaslatok rangsorolt listáját tartalmazza.
+- [SQL-értékelés](../../azure-monitor/insights/sql-assessment.md): Az SQL Health-ellenőrzési megoldás rendszeres időközönként kivizsgálja a kiszolgálói környezetek kockázatait és állapotát. Az ügyfelek számára az üzembe helyezett kiszolgálói infrastruktúrára jellemző ajánlások rangsorolt listáját kínálja.
+- [Agent Health](../../monitoring/monitoring-solution-agenthealth.md): A Agent Health-megoldás azt jelenti, hogy hány ügynök van üzembe helyezve és a földrajzi eloszlása. Azt is jelenti, hogy hány ügynök nem válaszol, és az operatív adatküldő ügynökök száma.
+-   [Activity log Analytics](../../azure-monitor/platform/collect-activity-logs.md): Az Activity Log Analytics-megoldás segítséget nyújt az Azure-tevékenységek naplóinak elemzéséhez az ügyfelek összes Azure-előfizetése között.
 
-**Az Azure Automation**: [Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker) tárolja, fut, és kezeli a runbookok. Ebben a megoldásban a runbookok gyűjteni az SQL Server segítségével. Az ügyfelek használhatják az Automation [Change Tracking](https://docs.microsoft.com/azure/automation/automation-change-tracking) megoldás könnyedén azonosíthatja a változtatásokat a környezetben.
+**Azure Automation**: Az [Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker) tárolja, futtatja és felügyeli a runbookok. Ebben a megoldásban a runbookok segítséget nyújt a naplók SQL Serverból való gyűjtésében. Az Automation [change Tracking](../../automation/change-tracking.md) megoldás segítségével könnyedén azonosíthatja a környezet változásait.
 
-**Az Azure Monitor**: [A figyelő](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) segít a felhasználóknak a teljesítmény, a biztonság fenntartására és a trendek azonosítására. Szervezetek használhatják azt a naplózása, létre riasztásokat és archiválhat adatokat. Akkor is nyomon követheti a saját Azure-erőforrások API-hívások.
+**Azure monitor**: A [figyelő](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) segít a felhasználóknak a teljesítmény nyomon követésében, a biztonság fenntartásában és a trendek felismerésében. A szervezetek felhasználhatják a naplózásra, a riasztások létrehozására és az adatok archiválására. Emellett az Azure-erőforrásokban is nyomon követhetik az API-hívásokat.
 
-## <a name="threat-model"></a>Fenyegetések modellezése
+## <a name="threat-model"></a>Veszélyforrások modellje
 
-A referenciaarchitektúra az adatfolyam-diagram érhető el az [letöltése](https://aka.ms/nist171-iaaswa-tm) vagy itt található. Ez a modell segítségével az ügyfelek megismerhetik a pontokat a rendszer infrastruktúra esetleges kockázat, ha azok hajtsa végre a módosításokat.
+A viszonyítási architektúra adatáramlási diagramja [letölthető](https://aka.ms/nist171-iaaswa-tm) , vagy itt található. Ez a modell segítheti az ügyfeleket abban, hogy megértsék a rendszerinfrastruktúra lehetséges kockázatait, amikor módosításokat végeznek.
 
-![IaaS-webalkalmazás NIST SP 800-171 fenyegetések modellezése](images/nist171-iaaswa-threat-model.png "NIST SP 800-171 fenyegetések modellezése az IaaS-webalkalmazás")
+![IaaS-webalkalmazás a NIST SP 800-171 Threat modelhez](images/nist171-iaaswa-threat-model.png "IaaS-webalkalmazás a NIST SP 800-171 Threat modelhez")
 
-## <a name="compliance-documentation"></a>Megfelelőségi dokumentációja
+## <a name="compliance-documentation"></a>Megfelelőségi dokumentáció
 
-A [Azure biztonsági és megfelelőségi terv - 800-171 NIST SP vevő felelőssége mátrix](https://aka.ms/nist171-crm) NIST SP 800-171 által igényelt összes biztonsági vezérlő sorolja fel. Ez a mátrix részletezi a Microsoft, az ügyfél felelőssége végrehajtására az egyes vezérlőelemek-e, vagy a kettő között megosztott.
+A [Azure Security and Compliance Blueprint-NIST sp 800-171 Customer felelősségi mátrix](https://aka.ms/nist171-crm) FELSOROLJA a NIST SP 800-171 által igényelt összes biztonsági ellenőrzést. Ez a mátrix részletesen ismerteti, hogy az egyes vezérlőelemek megvalósítása a Microsoft, az ügyfél vagy a kettő közötti megosztás feladata-e.
 
-A [Azure biztonsági és -megfelelőségi terv - 800-171 NIST SP IaaS webes alkalmazás ellenőrzési megvalósítási mátrix](https://aka.ms/nist171-iaaswa-cim) melyik NIST SP a 800-171 szabályozza az IaaS webalkalmazás-architektúra tárgyalt információkkal. Hogyan megvalósítása megfelel-e a követelményeknek, az egyes kezelt vezérlőelemek a részletes leírását tartalmazza.
+Az [Azure Security and Compliance Blueprint-NIST sp 800-171 IaaS Web Application Control megvalósítási mátrixa](https://aka.ms/nist171-iaaswa-cim) információt nyújt arról, hogy mely NIST SP 800-171-vezérlőkkel foglalkozik a IaaS webalkalmazás-architektúra. Részletes leírást tartalmaz arról, hogy a megvalósítás hogyan teljesíti az egyes kezelt vezérlők követelményeit.
 
 ## <a name="guidance-and-recommendations"></a>Útmutatás és javaslatok
-### <a name="vpn-and-expressroute"></a>VPN és ExpressRoute
-Biztonságos VPN-alagúton vagy [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) konfigurálni kell, hogy biztonságos kapcsolatot az IaaS webalkalmazás referenciaarchitektúrája részeként üzembe helyezett erőforrásokkal. Megfelelően állítja be a VPN-t vagy ExpressRoute, az ügyfelek hozzáadhatja egy védelmi réteget biztosít adatokat átvitel közben.
+### <a name="vpn-and-expressroute"></a>VPN-és ExpressRoute
+A biztonságos VPN-alagutat vagy [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) úgy kell konfigurálni, hogy biztonságosan létesítsen kapcsolatot a IaaS webalkalmazás-hivatkozási architektúrájának részeként üzembe helyezett erőforrásokkal. A VPN-vagy ExpressRoute megfelelő beállításával az ügyfelek hozzáadhatnak egy védelmi réteget az átvitelhez.
 
-Az Azure-ral biztonságos VPN-alagút alkalmazásával egy helyszíni hálózat és a egy Azure virtuális hálózat közötti virtuális magánhálózati kapcsolat hozható létre. Ezt a kapcsolatot az interneten keresztül történik. Ügyfelek használhatják az titkosított kapcsolaton az ügyfél hálózati és az Azure között lévő biztonságosan "csatorna" információkat ezen a kapcsolaton. Site-to-site VPN egy olyan biztonságos, érett technológia, évtizedes a vállalatok által központilag telepített. A [IPsec-alagút módú](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2003/cc786385(v=ws.10)) ezt a beállítást, mint egy titkosítási mechanizmus használatban van.
+A biztonságos VPN-alagút az Azure-nal való megvalósításával létrehozhat egy helyszíni hálózat és egy Azure-Virtual Network közötti virtuális magánhálózati kapcsolatot. Ez a kapcsolat az interneten keresztül zajlik. Az ügyfelek ezt a kapcsolatot az ügyfél hálózata és az Azure közötti titkosított kapcsolaton belül biztonságosan "alagút" információkkal használhatják. A helyek közötti VPN egy olyan biztonságos, érett technológia, amelyet évtizedek óta minden méretben üzembe helyezett a vállalatok. Ebben a beállításban az [IPsec-alagút mód](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2003/cc786385(v=ws.10)) titkosítási mechanizmusként van használatban.
 
-A VPN-alagút belül adatforgalomra site-to-site VPN-nel az internethez, mert a Microsoft kínál egy másik még biztonságosabb kapcsolat lehetőséget. Az ExpressRoute dedikált WAN Azure-ban és a egy helyszíni helyhez vagy egy Exchange-szolgáltató közötti kapcsolat. Az ExpressRoute-kapcsolatok közvetlenül csatlakozhat az ügyfél távközlési szolgáltató. Ennek következtében az adatok nem az interneten keresztül továbbítani, és nincs kitéve. Ezek a kapcsolatok több megbízhatóság megbízhatóbbak, gyorsabbak, kisebb a késésük, és biztonságosabbak a szokásos internetkapcsolatoknál kínálnak. 
+Mivel a VPN-alagúton belüli forgalom helyek közötti VPN-kapcsolaton keresztül halad át az interneten, a Microsoft még egy biztonságosabb kapcsolódási lehetőséget kínál. A ExpressRoute egy dedikált WAN-kapcsolat az Azure és egy helyszíni hely vagy egy Exchange-szolgáltató között. A ExpressRoute-kapcsolatok közvetlenül az ügyfél távközlési szolgáltatójának csatlakoznak. Ennek eredményeképpen az adat nem utazik az interneten keresztül, és nem teszi elérhetővé. Ezek a kapcsolatok nagyobb megbízhatóságot, gyorsabb sebességet, kisebb késést és nagyobb biztonságot nyújtanak, mint a szokásos kapcsolatok. 
 
-Ajánlott eljárások végrehajtásához egy biztonságos hibrid hálózatot, amely kiterjeszti a helyszíni hálózatot az Azure-bA [elérhető](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid).
+Ajánlott eljárások egy biztonságos hibrid hálózat megvalósításához, amely kiterjeszti a helyszíni hálózatot az Azure- [ra.](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid)
 
 ## <a name="disclaimer"></a>Jogi nyilatkozat
 
-- Ez a dokumentum csak tájékoztatási célokat szolgál. A MICROSOFT NEM VÁLLAL SEMMILYEN KIFEJEZETT, KIFEJEZETT, VÉLELMEZETT VAGY KÖTELEZŐ GARANCIÁT A DOKUMENTUMBAN SZEREPLŐ INFORMÁCIÓRA VONATKOZÓAN. Ez a dokumentum biztosított "as-van." Információk és vélemények ebben a dokumentumban URL-CÍMEK és más internetes webhelyekre utaló hivatkozások értesítés nélkül változhatnak. Ez a dokumentum olvasásakor ügyfelek felelősségére használja. 
-- Ez a dokumentum nem biztosít semmilyen jogot semmilyen Microsoft-termék vagy a megoldások a szellemi tulajdonhoz ügyfelek. 
-- Ügyfelek másolhatja és használhatja ezt a dokumentumot belső, hivatkozási célokból. 
-- Bizonyos ajánlások a dokumentum eredményezhet megnövekedett adat-, hálózati vagy számítási erőforrás-használat az Azure-ban, és előfordulhat, hogy növelje az ügyfél Azure licencek vagy előfizetések költségeit. 
-- Ez az architektúra célja, hogy az ügyfelek számára az adott követelményekhez beállítása alapjaként szolgálja ki, és nem használható-éles környezetben van.
-- Ez a dokumentum referenciaként fejlesztik, és nem használható minden olyan eszközt, amely szerint egy ügyfél megfelel a megadott megfelelőségi követelmények és előírások meghatározásához. Ügyfelek jóváhagyott megvalósítás az ügyfeleknél a szervezet jogi támogatást kell kérnie.
+- Ez a dokumentum csak tájékoztató jellegű. A MICROSOFT NEM VÁLLAL SEMMILYEN KIFEJEZETT, VÉLELMEZETT VAGY TÖRVÉNYES GARANCIÁT A JELEN DOKUMENTUMBAN FOGLALT INFORMÁCIÓK ALAPJÁN. Ez a dokumentum "aktuálisként" van megadva. Az ebben a dokumentumban kifejezett információk és nézetek, beleértve az URL-címeket és az internetes webhelyek más hivatkozásait, értesítés nélkül változhatnak. A dokumentumot olvasó ügyfeleink a használatuk kockázatát viselik. 
+- A jelen dokumentum nem biztosít semmilyen jogot semmilyen Microsoft-termékben vagy-megoldásban található szellemi tulajdonhoz. 
+- Az ügyfelek belső referenciák szerint másolhatják és használhatják ezt a dokumentumot. 
+- A jelen dokumentumban szereplő javaslatok megnövelték az adatok, a hálózat vagy a számítási erőforrások használatát az Azure-ban, és növelhetik az ügyfelek Azure-licencét vagy előfizetési költségeit. 
+- Ez az architektúra arra szolgál, hogy az ügyfelek számára a konkrét követelményekhez igazodva és nem használható éles környezetben.
+- Ez a dokumentum hivatkozásként van kifejlesztve, és nem használható az összes olyan eszköz meghatározására, amelyekkel az ügyfél megfelel bizonyos megfelelőségi követelményeknek és előírásoknak. Az ügyfeleknek jóvá kell hagyniuk a szervezeten belüli jogi támogatást a jóváhagyott ügyfél-implementációkban.

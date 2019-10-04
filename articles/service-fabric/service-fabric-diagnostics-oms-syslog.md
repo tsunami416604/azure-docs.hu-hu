@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 10/23/2018
 ms.author: srrengar
 ms.openlocfilehash: 402e3dfe018c94ef068caf918b38aaad00064a49
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670370"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62118390"
 ---
 # <a name="service-fabric-linux-cluster-events-in-syslog"></a>A Syslog Linux-alapú Service Fabric-fürt események
 
@@ -32,9 +32,9 @@ A Service Fabric platform eseményeket tájékoztatják a fürtben található f
 A 6.4-es kiadásban a SyslogConsumer fejlődéséből küldhet a Service Fabric platform eseményeket Syslog Linux-fürtök esetén. Ha bekapcsolta, események automatikusan átkerülnek a Log Analytics-ügynök által küldött és gyűjtött Syslog.
 
 Minden Syslog esemény 4 részből áll
-* Szolgáltatás
+* Létesítmény
 * Identitás
-* Üzenet
+* Message
 * Severity
 
 A SyslogConsumer szolgáltatást használó összes platform eseményt ír `Local0`. Bármely érvényes létesítmény is lehet frissíteni a konfigurációs config módosításával. Az identitás használt `ServiceFabric`. Az üzenet mezőbe a JSON-szerializált, így, lekérdezhetők és eszközök széles által felhasznált teljes eseményt tartalmaz. 

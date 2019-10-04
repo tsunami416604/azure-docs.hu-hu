@@ -4,12 +4,12 @@ ms.author: crdun
 ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
-ms.openlocfilehash: 654bc3745768fccea41d7c3991142bf7183b54be
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: e66e7d4646b650d2d811d3807db04605dfddeded
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42811618"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179633"
 ---
 1. Az a **alkalmazás** projekt, nyissa meg a fájlt `AndroidManifest.xml`. Az alábbi kód után adja hozzá a `application` nyitó kódcímkét:
 

@@ -3,25 +3,25 @@ title: Frissítés az Azure AD-alkalmazásproxyval |} A Microsoft Docs
 description: Válassza ki, melyik proxy megoldás a legjobb, ha frissít, a Microsoft Forefront vagy egyesített Access-átjárón.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/27/2017
-ms.author: celested
+ms.date: 05/17/2019
+ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5fa143aac52fe0024620047eb67f24cc79e55c9b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 4790dc7ebeeee3407e89bcf38d7e3f25699ed328
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59279312"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108412"
 ---
 # <a name="compare-remote-access-solutions"></a>Távelérési megoldások összehasonlítása
 
@@ -32,7 +32,7 @@ Az Azure Active Directory Application Proxy egyike a két távelérési megoldá
 
 Ez a táblázat segítségével megismerheti, hogyan Threat Management Gateway (TMG), a Unified Access-átjáró (UAG), a webalkalmazás-proxykiszolgálóként (WAP) és az Azure AD Application Proxy (AP) hasonlítsa össze egymással.
 
-| Szolgáltatás | TMG | UAG | WAP | AP |
+| Funkció | TMG | UAG | WAP | AP |
 | ------- | --- | --- | --- | --- |
 | Tanúsítványalapú hitelesítés | Igen | Igen | - | - |
 | Alkalmazások szelektív közzététele | Igen | Igen | Igen | Igen |
@@ -65,4 +65,3 @@ Azure AD-alkalmazásproxy hasonló termékek, köztük a képest egyedi előnyö
 ## <a name="next-steps"></a>További lépések
 
 - [A helyszíni alkalmazások biztonságos távoli elérést biztosíthat az Azure AD-alkalmazás használatával](application-proxy.md)
-- [Átállás a Forefront TMG és érdekében, hogy az alkalmazásproxy](https://blogs.technet.microsoft.com/isablog/2015/06/30/modernizing-microsoft-application-access-with-web-application-proxy-and-azure-active-directory-application-proxy/).

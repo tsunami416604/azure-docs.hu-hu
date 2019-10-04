@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 864e9586082ed95bf17135414ec4b879e3034ace
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: fd8e886a78d0689ca60d8ea7c4d16639c81d5733
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56267342"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65602735"
 ---
 # <a name="aggregations-in-azure-monitor-log-queries"></a>Az Azure monitorban összesítések lekérdezések naplózását.
 
@@ -29,7 +29,7 @@ ms.locfileid: "56267342"
 
 Ez a cikk ismerteti az összesítő függvényektől az Azure Monitor log lekérdezések, amelyek kínálnak hasznos módszer az adatok elemzéséhez. Ezek a függvények minden dolgozni a `summarize` operátort, amelynek összesített eredmények a bemeneti tábla egy táblát hoz létre.
 
-## <a name="counts"></a>Darabszámok
+## <a name="counts"></a>Száma
 
 ### <a name="count"></a>count
 Szűrők alkalmazása után az eredményhalmazban sorok számát. Az alábbi példa adja vissza a sorok száma a _Teljesítményoptimalizált_ táblát az elmúlt 30 percben. Az eredményt adja vissza egy adott nevű oszlopban *count_* , kivéve, ha egy adott nevét rendelje hozzá:
@@ -79,7 +79,7 @@ Heartbeat
 ```
 
 ### <a name="evaluating-subgroups"></a>Alcsoportok kiértékelése
-Egy szám vagy más összesítéseket végre az adatok az alcsoportok, használja a `by` kulcsszót. Például különböző Linux rendszerű számítógépek számlálása az egyes országok számát:
+Egy szám vagy más összesítéseket végre az adatok az alcsoportok, használja a `by` kulcsszót. Ha például a szívverések küldése minden ország/régió a különböző Linux-számítógépek számát:
 
 ```Kusto
 Heartbeat 
@@ -96,7 +96,7 @@ Heartbeat
 |Hollandia      | 2                   |
 
 
-Elemezheti az adatokat még kisebb alcsoportok, adjon hozzá további oszlopok az `by` szakaszban. Például előfordulhat, hogy szeretné az egyes országból / OSType különböző számítógépek száma:
+Elemezheti az adatokat még kisebb alcsoportok, adjon hozzá további oszlopok az `by` szakaszban. Például előfordulhat, hogy szeretné az egyes országból/régióból OSType kiszolgálónként eltérő számítógépek száma:
 
 ```Kusto
 Heartbeat 
@@ -107,7 +107,7 @@ Heartbeat
 ## <a name="percentiles-and-variance"></a>Percentiliseinek és eltérés
 Numerikus értékek kiértékelésekor általános gyakorlat, hogy azok átlagos használatával `summarize avg(expression)`. Átlagokat rendkívüli értékek csak néhány esetben írhatók le vannak hatással. A probléma megoldásához használhatja kevésbé érzékeny funkciók például `median` vagy `variance`.
 
-### <a name="percentile"></a>Percentilis
+### <a name="percentile"></a>PERCENTILIS
 A középérték megkereséséhez használja a `percentile` függvény megadása a PERCENTILIS értékkel:
 
 ```Kusto

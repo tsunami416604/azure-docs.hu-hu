@@ -1,6 +1,6 @@
 ---
-title: Megismerheti a foglalások kedvezmény az Azure SQL Database |} A Microsoft Docs
-description: Ismerje meg, hogyan a foglalási kedvezményt kell alkalmazni az Azure SQL Database futtatása.
+title: Az Azure SQL Database-adatbázisok foglalási kedvezményeinek ismertetése | Microsoft Docs
+description: Megtudhatja, hogy a rendszer hogyan alkalmazza a foglalási kedvezményt a futó Azure SQL Database-adatbázisokra.
 documentationcenter: ''
 author: yashesvi
 manager: yashar
@@ -10,55 +10,55 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/13/2019
+ms.date: 09/30/2019
 ms.author: banders
-ms.openlocfilehash: 4b4c6b390e9b3a0cf764f998523fe3c1cdc66026
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: d7a1a451bf40a09b1bd9b9d823e0778d335a690b
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59997427"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71701792"
 ---
-# <a name="how-a-reservation-discount-is-applied-to-azure-sql-databases"></a>Hogyan kell alkalmazni a foglalási kedvezményt az Azure SQL Database
+# <a name="how-a-reservation-discount-is-applied-to-azure-sql-databases"></a>A foglalási kedvezmény alkalmazása futó Azure SQL Database-adatbázisokra
 
-Miután egy Azure SQL Database szolgáltatás számára fenntartott kapacitást vásárol, a rendszer automatikusan alkalmazza a foglalási kedvezményt SQL Database-adatbázisokhoz, amelyek megfelelnek a attribútumok és a Foglalás mennyiségét. Foglalás az SQL-adatbázis számítási költségeit tartalmazza. Szoftverek, tárolási és hálózatkezelési díjkötelesek a normál díjakat. Olyan SQL-adatbázisok esetén is terjed ki a licencelési költségei [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/).
+A fenntartott Azure SQL Database-kapacitás megvásárlása után automatikusan alkalmazva lesz a foglalási kedvezmény a foglalás attribútumaival és mennyiségével egyező SQL Database-adatbázisokra. A foglalás az SQL Database-adatbázis számítási költségeit fedezi. A szoftverért, a tárolásért és a hálózatkezelésért a normál díjakat kell fizetnie. Az [Azure Hybrid Benefittel](https://azure.microsoft.com/pricing/hybrid-benefit/) fedezheti az SQL Database-adatbázisok licencelési költségeit.
 
-A Reserved Virtual Machine Instances, lásd: [megismerheti az Azure Reserved VM Instances kedvezményes](billing-understand-vm-reservation-charges.md).
+A Reserved Virtual Machine Instanceszel kapcsolatban tekintse meg [az Azure Reserved VM Instances-kedvezményt bemutató](billing-understand-vm-reservation-charges.md) cikket.
 
-## <a name="how-reservation-discount-is-applied"></a>Hogyan alkalmazza a foglalási kedvezményt
+## <a name="how-reservation-discount-is-applied"></a>A foglalási kedvezmény alkalmazása
 
-A foglalási kedvezményt a "*használata – it-vagy-elveszíti-it*". Tehát ha az adott órán belül nem rendelkezik megfelelő erőforrásokat, majd elvesznek a foglalási mennyiség az adott órában. Nem sokat fel nem használt fenntartott órán keresztül továbbítja.
+A foglalási kedvezmény csak akkor érvényes, ha *folyamatosan igénybe veszi*. Ez azt jelenti, hogy ha nem rendelkezik megfelelő erőforrásokkal egy adott órában, akkor az arra az órára vonatkozó foglalási mennyiség elveszik. A lefoglalt, de fel nem használt órák nem vihetők tovább.
 
-Ha leállítja egy erőforrást, a foglalási kedvezményt automatikusan alkalmazza a megadott hatókörben lévő másik egyező erőforrás. A megadott hatókörben lévő nem megfelelő erőforrások találhatók, akkor a szolgáltatás számára fenntartott órák *elveszett*.
+Egy erőforrás leállításakor a rendszer a foglalási kedvezményt automatikusan a megadott hatókör egy másik egyező erőforrására alkalmazza. Ha nem találhatók egyező erőforrások a megadott hatókörben, akkor a lefoglalt órák *elvesznek*.
 
-## <a name="discount-applied-to-sql-databases"></a>SQL Database-adatbázisokhoz alkalmazott
+## <a name="discount-applied-to-sql-databases"></a>Az SQL Database-adatbázisokra alkalmazott kedvezmények
 
- Óránként futó SQL-adatbázisok az SQL Database tartalékkapacitást kedvezmény érvényes. A compute használatát a futó SQL-adatbázisok által kibocsátott a foglalást, amely a vásárlás megfeleltetett. A rendszer azon SQL-adatbázisok esetében, amelyek nem futnak egy adott teljes órában, automatikusan a foglalás jellemzőinek megfelelő más SQL-adatbázisokra alkalmazza a foglalást. SQL-adatbázisok, amelyek egy időben futnak a kedvezményeket is alkalmazhat. Ha nem rendelkezik SQL-adatbázisok, amelyek teljes órát futnak, amelyek megfelelnek a Foglalás attribútumok, nem teljes kiaknázásához az adott órában a foglalási kedvezményt kap.
+ A fenntartott SQL Database-kapacitásra érvényes kedvezményt a rendszer óránként alkalmazza a futó SQL Database-adatbázisokra. A megvásárolt foglalást a rendszer megfelelteti a futó SQL Database-adatbázisok általi számításierőforrás-használatnak. Azon SQL Database-adatbázisok esetében, amelyek nem futnak egy teljes órán át, a rendszer automatikusan a foglalási attribútumokkal egyező egyéb SQL Database-adatbázisokra alkalmazza a foglalást. A kedvezmény párhuzamosan futó SQL Database-adatbázisokra is alkalmazható. Ha nem rendelkezik olyan, a foglalási attribútumokkal egyező SQL Database-adatbázisokkal, amelyek egy teljes órán át futnak, akkor arra az órára nem kapja meg a foglalási kedvezménnyel járó teljes előnyt.
 
-Az alábbi példák bemutatják, hogyan a SQL Database szolgáltatás számára fenntartott kapacitás kedvezmény érvényes számától függően a magok, vásárolt, és amikor futnak.
+Az alábbi példák bemutatják, hogyan lesz alkalmazva a fenntartott SQL Database-kapacitásra érvényes kedvezmény a megvásárolt magok száma alapján, és az alapján, mikor futnak.
 
-- 1. forgatókönyv: Egy 8 mag SQL-adatbázis egy SQL Database szolgáltatás számára fenntartott kapacitást vásárol. Egy 16 mag, amelyek megfelelnek a Foglalás attribútumait a többi SQL-adatbázis futtatása. 8 magos SQL-adatbázis számítási használat a használatalapú fizetéssel díjkötelesek. 8 mag, SQL Database a számítási feladatok használatáért egy órányi a foglalási kedvezményt kap.
+- 1\. forgatókönyv: Megvásárol egy fenntartott SQL Database-kapacitást egy 8 magos SQL Database-adatbázishoz. Egy olyan 16 magos SQL Database-adatbázist futtat, amely egyezik a foglalás többi attribútumával. A 8 magos SQL Database-adatbázis számításierőforrás-használatáért használatalapú díjat kell fizetnie. A foglalási kedvezményt a 8 magos SQL-adatbázis egy órányi számításierőforrás-használatára kapja meg.
 
-Ezekben a példákban a többi feltételezik, hogy az SQL Database szolgáltatás számára fenntartott kapacitást vásárol egy 16 Core SQL Database és a többi a Foglalás attribútumok egyeznek a futó SQL-adatbázisok.
+A többi példa esetében azt feltételezzük, hogy a fenntartott SQL Database-kapacitást egy 16 magos SQL Database-adatbázishoz vásárolta, és a többi foglalási attribútum megegyezik a futó SQL Database-adatbázisokkal.
 
-- 2. forgatókönyv: Két SQL-adatbázisok 8 maggal rendelkező, egy óránál futtatja. Compute használat mindkét a 8 mag, SQL Database-adatbázisok a 16 mag foglalási kedvezményt alkalmazza.
-- 3. forgatókönyv: Egyet futtat, 13:30 = 1997031213 16 magos, 1 du az SQL Database. Egy másik 16 mag SQL Database 1:30 2 pm futtassa. A foglalási kedvezményt is tartoznak.
-- 4. forgatókönyv: Egyet futtat, 13:45-kor 16 magos, 1 du az SQL Database. Egy másik 16 mag SQL Database 1:30 2 pm futtassa. A 15 perces átfedési használatalapú fizetéssel díjkötelesek. A compute használatát a hátralevő időben alkalmazza a foglalási kedvezményt.
+- 2\. forgatókönyv: Két 8 magos SQL Database-adatbázist futtat egy-egy óráig. A 16 magos foglalási kedvezményt a rendszer mindkét 8 magos SQL Database-adatbázis számításierőforrás-használatára alkalmazza.
+- 3\. forgatókönyv: Egy 16 magos SQL Database-adatbázist futtat 13:00-tól 13:30-ig. Egy másik 16 magos SQL Database-adatbázist 13:30-tól 14:00-ig futtat. A foglalási kedvezmény mindkettőt fedezi.
+- 4\. forgatókönyv: Egy 16 magos SQL Database-adatbázist futtat 13:00-tól 13:45-ig. Egy másik 16 magos SQL Database-adatbázist 13:30-tól 14:00-ig futtat. A 15 perces átfedésért használatalapú díjat kell fizetnie. A fennmaradó idő számításierőforrás-használatára érvényes a foglalási kedvezmény.
 
-Ismertetése és használati jelentések számlázási megtekintheti az alkalmazást az Azure-foglalások: [ismertetése Azure foglalás használatának](billing-understand-reserved-instance-usage-ea.md).
+Az Azure Reservations számlázási használati jelentésekben történő alkalmazásának megismeréséhez és megtekintéséhez lásd [az Azure Reservations használatát ismertető](billing-understand-reserved-instance-usage-ea.md) cikket.
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolat
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Kapcsolat
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>További lépések
 
-Azure-foglalások kapcsolatos további információkért tekintse meg a következő cikkeket:
+Az Azure Reservationszel kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-- [Mik az Azure-foglalásokat?](billing-save-compute-costs-reservations.md)
+- [Mi az az Azure Reservations?](billing-save-compute-costs-reservations.md)
 - [Előre fizetés Azure-beli fenntartott virtuálisgép-példányokkal rendelkező virtuális gépekért](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [Előre fizetés fenntartott Azure SQL Database-kapacitással rendelkező SQL Database számítási erőforrásokért](../sql-database/sql-database-reserved-capacity.md)
 - [Az Azure Reservations kezelése](billing-manage-reserved-vm-instance.md)
-- [A használatalapú fizetéses előfizetést foglalás használati adatai](billing-understand-reserved-instance-usage.md)
-- [A nagyvállalati beléptetés foglalás használati adatai](billing-understand-reserved-instance-usage-ea.md)
-- [CSP-előfizetésekben foglalás használati adatai](/partner-center/azure-reservations)
+- [A foglalási kihasználtság ismertetése használatalapú fizetéses előfizetésnél](billing-understand-reserved-instance-usage.md)
+- [A foglalási kihasználtság ismertetése vállalati regisztrációnál](billing-understand-reserved-instance-usage-ea.md)
+- [A foglalási kihasználtság ismertetése CSP-előfizetésnél](/partner-center/azure-reservations)

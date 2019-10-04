@@ -3,21 +3,21 @@ title: Azure rövid útmutató – Batch-feladat futtatása – .NET
 description: Batch-feladatok és -tevékenységek gyors futtatása a Batch .NET ügyfélkódtárával.
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.service: batch
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 11/29/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: c13a01b392b9bbc93fff2e997cb6d168a441ad07
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 37cd6fdd2f82af581e27f9341292c484b1cc601e
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679919"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68322331"
 ---
-# <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>Rövid útmutató: Az első Azure Batch-feladat futtatása a .NET API használatával
+# <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>Gyors útmutató: Az első Azure Batch-feladatok futtatása a .NET API-val
 
 Ez a rövid útmutató egy Azure Batch-feladatot futtat egy, az Azure Batch .NET API-ra épülő C#-alkalmazásból. Az alkalmazás feltölt több bemeneti adatfájlt az Azure Storage-ba, majd létrehoz egy Batch számítási csomópontokból (virtuális gépekből) álló *készletet*. Ezután létrehoz egy minta*feladatot*, amely *tevékenységek* futtatásával és egy alapvető parancs használatával minden egyes bemeneti fájlt feldolgoz a készleten. A rövid útmutatóból megismerheti a Batch szolgáltatás fő fogalmait, és készen áll majd a Batch szolgáltatás használatára realisztikusabb számítási feladatokkal, nagyobb léptékben.
 
@@ -27,7 +27,7 @@ Ez a rövid útmutató egy Azure Batch-feladatot futtat egy, az Azure Batch .NET
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Visual Studio 2017](https://www.visualstudio.com/vs) vagy [.NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1) Linux, macOS vagy Windows rendszeren. 
+* [Visual Studio 2017 vagy újabb](https://www.visualstudio.com/vs), vagy [.net Core 2,1](https://www.microsoft.com/net/download/dotnet-core/2.1) Linux, MacOS vagy Windows rendszerhez. 
 
 * Egy Batch-fiók és egy társított Azure Storage-fiók. A fiókok létrehozásához tekintse meg a Batch az [Azure Portallal](quick-create-portal.md) vagy az [Azure CLI-vel](quick-create-cli.md) történő használatát ismertető rövid útmutatókat. 
 
@@ -113,7 +113,7 @@ További részletekért tekintse meg a `Program.cs` fájlt és a következő sza
 
 ### <a name="preliminaries"></a>Előfeltételek
 
-A Storage-fiókkal való kommunikációhoz az alkalmazás a .NET-hez készült Azure Storage ügyféloldali kódtárat használja. Ez létrehoz egy, a fiókra mutató hivatkozást a [CloudStorageAccount](/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount) fiókkal, és ebből létrehoz egy [CloudBlobClient](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobclient) hivatkozást.
+A Storage-fiókkal való kommunikációhoz az alkalmazás a .NET-hez készült Azure Storage ügyféloldali kódtárat használja. Ez létrehoz egy, a fiókra mutató hivatkozást a [CloudStorageAccount](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount) fiókkal, és ebből létrehoz egy [CloudBlobClient](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient) hivatkozást.
 
 ```csharp
 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();

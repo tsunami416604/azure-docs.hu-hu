@@ -1,189 +1,188 @@
 ---
-title: 'Gyors útmutató: Manuális telepítés egypéldányos SAP Hana az Azure Virtual Machinesben |} A Microsoft Docs'
-description: Rövid útmutató egy példányban – SAP HANA manuális telepítéséhez az Azure Virtual machines szolgáltatásban
+title: 'Gyors útmutató: Egypéldányos SAP HANA manuális telepítése az Azure Virtual Machinesban | Microsoft Docs'
+description: Gyors útmutató az Egypéldányos SAP HANA Azure-beli telepítésének manuális telepítéséhez Virtual Machines
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: c51a2a06-6e97-429b-a346-b433a785c9f0
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: hermannd
-ms.openlocfilehash: 5091932989849943f00cb71f72378dd17af23a4a
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 8d4e7b7056f4d5e53785366818fad05e24cfc605
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60001371"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100053"
 ---
-# <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-virtual-machines"></a>Gyors útmutató: Manuális telepítés egypéldányos SAP Hana az Azure Virtual machines szolgáltatásban
+# <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-virtual-machines"></a>Gyors útmutató: Egypéldányos SAP HANA manuális telepítése az Azure-on Virtual Machines
 ## <a name="introduction"></a>Bevezetés
-Az útmutató segítségével állítsa be egy példányban – SAP HANA az Azure Virtual machines szolgáltatásban, az SAP NetWeaver 7,5-öt és az SAP HANA 1.0 SP12 telepítésekor manuálisan. A jelen útmutató célja az Azure-beli SAP HANA üzembe helyezése. Azt nem lecseréli az SAP dokumentációjában. 
+Ez az útmutató segítséget nyújt az Azure Virtual Machines egypéldányos SAP HANA beállításához az SAP NetWeaver 7,5 és SAP HANA 1,0 SP12 manuális telepítésekor. Ennek az útmutatónak a témája a SAP HANA Azure-beli üzembe helyezése. Nem helyettesíti az SAP-dokumentációt. 
 
 > [!NOTE]
-> Ez az útmutató Azure virtuális gépeken futó SAP Hana üzemelő. SAP HANA nagyméretű HANA-példányok üzembe helyezése információkért lásd: [használja az SAP az Azure Virtual Machinesben](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started).
+> Ez az útmutató ismerteti SAP HANA üzembe helyezését az Azure-beli virtuális gépeken. További információ a SAP HANA a HANA Large-példányokban való üzembe helyezéséről: [az SAP használata az Azure-on Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started).
  
 ## <a name="prerequisites"></a>Előfeltételek
-Ez az útmutató feltételezi, hogy ismeri az ilyen infrastruktúra-szolgáltatás (IaaS) alapjait, mint:
- * Hogyan helyezhet üzembe virtuális gépeket (VM) vagy a virtuális hálózatok az Azure Portalon vagy a Powershellen keresztül.
- * Az Azure többplatformos parancssori felület (CLI), amely tartalmazza a sablonok a JavaScript Object Notation (JSON) lehetőséget.
+Ez az útmutató feltételezi, hogy már ismeri az alábbi infrastruktúra-(IaaS-) alapismereteket:
+ * Virtuális gépek (VM-EK) vagy virtuális hálózatok üzembe helyezése a Azure Portal vagy a PowerShell használatával.
+ * Az Azure platformfüggetlen parancssori felülete (CLI), amely a JavaScript Object Notation-(JSON-) Sablonok használatát is magában foglalja.
 
-Ebben az útmutatóban feltételezzük is, hogy ismeri a:
-* SAP HANA és az SAP NetWeaver és hogyan telepítheti őket a helyszínen.
-* Hogyan kell telepíteni, és az SAP HANA és a SAP alkalmazás példányok az Azure-ban.
+Az útmutató emellett azt is feltételezi, hogy már ismeri a következőket:
+* SAP HANA és SAP NetWeaver, valamint a helyszíni telepítésének módja.
+* SAP HANA-és SAP-alkalmazási példányok telepítése és üzemeltetése az Azure-ban.
 * A következő fogalmak és eljárások:
-   * Az Azure-ban, amely tartalmazza az Azure virtuális hálózat megtervezése és az Azure Storage használata az SAP-telepítések tervezését. Lásd: [SAP NetWeaver az Azure Virtual Machinesben – tervezési és megvalósítási útmutató](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide).
-   * Üzembe helyezés alapelvek és az Azure-beli virtuális gépek üzembe helyezésének módjai. Lásd: [Azure virtuális gépek üzembe helyezése, az SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/deployment-guide).
-   * Magas rendelkezésre állás az SAP NetWeaver ABAP SAP Central Services (ASCS), a SAP Central Services (SCS) és a sorba replikációs kiszolgáló (SSZON) az Azure-ban. Lásd: [magas rendelkezésre állás az SAP NetWeaver az Azure virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide).
-   * Részletes információk a több biztonsági AZONOSÍTÓVAL telepítése során az Azure-ban futó ASCS/SCS hatékonyság növelése érdekében. Lásd: [hozzon létre egy SAP NetWeaver több biztonsági AZONOSÍTÓVAL konfigurációt](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-multi-sid). 
-   * Alapelvek futó SAP NetWeaver Linux-alapú virtuális gépek az Azure-ban alapján. Lásd: [SAP NetWeaver futtatása Microsoft Azure SUSE Linux rendszerű virtuális gépeken](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/suse-quickstart). Az útmutató az Azure-beli virtuális gépeken Linux vonatkozó beállításokat tartalmaz. Információk az Azure storage-lemez megfelelően csatlakoztatása Linux rendszerű virtuális gépek is biztosít.
+   * Az Azure-beli SAP üzembe helyezésének megtervezése, amely magában foglalja az Azure Virtual Network tervezését és az Azure Storage használatát. Lásd: [SAP NetWeaver az Azure Virtual Machines – tervezési és megvalósítási útmutató](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide).
+   * Üzembe helyezési alapelvek és a virtuális gépek üzembe helyezésének módjai az Azure-ban. Lásd: [Azure Virtual Machines-telepítés az SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/deployment-guide)-hoz.
+   * Magas rendelkezésre állás az SAP NetWeaver ABAP SAP Central Services (ASCS), az SAP Central Services (SCS) és a sorba helyezni Replication Server (ERS) számára az Azure-ban. Tekintse [meg az Azure-beli virtuális gépeken elérhető SAP NetWeaver magas rendelkezésre állását](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide).
+   * Részletes információk a ASCS/SCS Azure-beli többszörös SID-telepítésének hatékonyságáról. Lásd: [SAP NetWeaver multi-SID konfiguráció létrehozása](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-multi-sid). 
+   * Az SAP NetWeaver futtatásának alapelvei a Linux-alapú virtuális gépeken az Azure-ban. Lásd: [az SAP NetWeaver futtatása Microsoft Azure SUSE Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/suse-quickstart)rendszerű virtuális gépeken. Ez az útmutató a Linux Azure-beli virtuális gépeken való telepítésének speciális beállításait tartalmazza. Emellett tájékoztatást nyújt arról is, hogyan csatolhatja megfelelően az Azure Storage-lemezeket a Linux rendszerű virtuális gépekhez.
 
-A termelési forgatókönyvekhez használható Azure-beli Virtuálisgép-típusok szerepelnek a [IAAS SAP dokumentációjában](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html). Éles forgatókönyvekhez natív Azure-beli Virtuálisgép-típusok választéka áll rendelkezésre.
-Virtuálisgép-konfiguráció és a műveletekre vonatkozó további információkért lásd: [SAP HANA-infrastruktúra konfigurációi és a műveletek az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations).
-Tekintse meg az SAP HANA magas rendelkezésre állás érdekében [SAP HANA magas rendelkezésre állás az Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview).
+Az éles környezetekben használható Azure-beli virtuálisgép-típusok listáját a [IAAS SAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html)-dokumentációja tartalmazza. A nem termék jellegű forgatókönyvek esetében a natív Azure-beli virtuálisgép-típusok szélesebb választéka érhető el.
+További információ a virtuális gépek konfigurálásáról és működéséről: [SAP HANA infrastruktúra-konfigurációk és-műveletek az Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)-ban.
+A magas rendelkezésre állás SAP HANA tekintse meg az [Azure Virtual Machines SAP HANA magas rendelkezésre állását](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview)ismertető témakört.
 
-Ha azt szeretné, az SAP HANA-példány vagy S/4HANA vagy BW/4HANA rendszert üzembe helyezett gyors, érdemes [SAP Cloud Appliance Library](https://cal.sap.com). Annak telepítéséről az S/4HANA rendszer SAP Cloud Appliance Library Azure-on keresztül, például a dokumentáció [Ez az útmutató](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h). Szüksége egy Azure-előfizetés és a egy SAP-felhasználó, aki az SAP Cloud Appliance Library regisztrálni lehet.
+Ha SAP HANA példányt vagy az S/4HANA vagy a BW/4HANA rendszer gyors telepítését kívánja telepíteni, érdemes lehet az [SAP Cloud Appliance Library](https://cal.sap.com)-t használni. Az S/4HANA rendszer az Azure-beli SAP Cloud Appliance library-n keresztül történő üzembe helyezésével kapcsolatos dokumentációt találhat, [](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h)például ebben az útmutatóban. Minden, amire szüksége van egy Azure-előfizetés és egy SAP-felhasználó, aki regisztrálható az SAP Cloud Appliance Library használatával.
 
 ## <a name="additional-resources"></a>További források
 ### <a name="sap-hana-backup"></a>SAP HANA biztonsági mentés
-Adatbázisok biztonsági mentése az SAP HANA az Azure virtuális gépekhez való további információkért lásd:
-* [Azure virtuális gépeken futó SAP Hana biztonsági mentési útmutató](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide).
-* [Az SAP HANA az Azure Backup a fájlok szintjére](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-file-level).
-* [SAP HANA biztonsági mentés tárolási pillanatképeken alapuló](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-storage-snapshots).
+Az Azure-beli virtuális gépeken SAP HANA adatbázisok biztonsági mentésével kapcsolatos információkért lásd:
+* [Biztonsági mentési útmutató az Azure Virtual Machines SAP HANAához](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide).
+* [SAP HANA Azure Backup a fájl szintjén](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-file-level).
+* [SAP HANA biztonsági mentés tárolási Pillanatképek alapján](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-storage-snapshots).
 
 ### <a name="sap-cloud-appliance-library"></a>SAP Cloud Appliance Library
-Üzembe helyezése az S/4HANA, BW/4HANA vagy SAP Cloud Appliance Library használatával kapcsolatos információkért lásd: [üzembe helyezése az SAP S/4HANA vagy BW/4hana-t a Microsoft Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h).
+Az SAP Cloud Appliance Library az S/4HANA vagy a BW/4HANA üzembe helyezésével kapcsolatos információkért lásd: [az SAP S/4HANA vagy a BW/4HANA üzembe helyezése Microsoft Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h).
 
-### <a name="sap-hana-supported-operating-systems"></a>Az SAP HANA által támogatott operációs rendszerek
-SAP HANA által támogatott operációs rendszerekkel kapcsolatos információkért lásd: [SAP Megjegyzés 2235581 – SAP HANA: Támogatott operációs rendszerek](https://launchpad.support.sap.com/#/notes/2235581/E). Azure virtuális gépek ezen operációs rendszerek csak egy részhalmazát támogatjuk. Azure-beli SAP HANA üzembe helyezéséhez a következő operációs rendszerek támogatottak: 
+### <a name="sap-hana-supported-operating-systems"></a>SAP HANA – támogatott operációs rendszerek
+SAP HANA által támogatott operációs rendszerekkel kapcsolatos információkért lásd [: SAP-Megjegyzés 2235581 – SAP HANA: Támogatott operációs rendszerek](https://launchpad.support.sap.com/#/notes/2235581/E). Az Azure-beli virtuális gépek csak ezen operációs rendszerek egy részhalmazát támogatják. A következő operációs rendszerek támogatottak a SAP HANA Azure-beli üzembe helyezéséhez: 
 
-* SUSE Linux Enterprise Server 12.x
-* Red Hat Enterprise Linux 7.2
+* SUSE Linux Enterprise Server 12. x
+* Red Hat Enterprise Linux 7,2
 
-További SAP dokumentációjában az SAP HANA és a különböző Linux operációs rendszert lásd:
+A SAP HANA és a különböző Linux operációs rendszerekkel kapcsolatos további SAP-dokumentációért lásd:
 
-* [SAP-Jegyzetnek 171356: SAP-szoftverek Linux rendszeren: Általános információk](https://launchpad.support.sap.com/#/notes/1984787).
-* [SAP-Jegyzetnek 1944799: SLES operációs rendszer telepítése a SAP HANA-irányelvek](https://go.sap.com/documents/2016/05/e8705aae-717c-0010-82c7-eda71af511fa.html).
-* [SAP Note 2205917: SAP HANA-adatbázis ajánlott az operációs rendszer beállításait a SLES 12 rendszert SAP-alkalmazások](https://launchpad.support.sap.com/#/notes/2205917/E).
-* [SAP Note 1391070: Linux-UUID megoldások](https://launchpad.support.sap.com/#/notes/1391070).
-* [SAP Note 2009879: SAP HANA-irányelvek Red Hat Enterprise Linux (RHEL) operációs rendszerhez](https://launchpad.support.sap.com/#/notes/2009879).
-* [SAP Note 2292690: SAP HANA DB: Ajánlott az operációs rendszer beállításai RHEL 7](https://launchpad.support.sap.com/#/notes/2292690/E).
+* [171356-es SAP-Megjegyzés: SAP szoftver Linux rendszeren: Általános információk](https://launchpad.support.sap.com/#/notes/1984787).
+* [1944799-es SAP-Megjegyzés: SAP HANA irányelvek a SLES operációs rendszer telepítéséhez](https://go.sap.com/documents/2016/05/e8705aae-717c-0010-82c7-eda71af511fa.html).
+* [2205917-es SAP-Megjegyzés: SAP HANA DB ajánlott operációsrendszer-beállítások az SLES 12 for SAP](https://launchpad.support.sap.com/#/notes/2205917/E)-alkalmazásokhoz.
+* [1391070-es SAP-Megjegyzés: Linux UUID-](https://launchpad.support.sap.com/#/notes/1391070)megoldások.
+* [2009879-es SAP-Megjegyzés: SAP HANA irányelvek a Red Hat Enterprise Linux (RHEL) operációs rendszerhez](https://launchpad.support.sap.com/#/notes/2009879).
+* [2292690-es SAP-Megjegyzés: SAP HANA DB: A RHEL 7](https://launchpad.support.sap.com/#/notes/2292690/E)ajánlott operációsrendszer-beállításai.
 
-### <a name="sap-monitoring-in-azure"></a>Az SAP az Azure-ban figyelése
-Az SAP az Azure-ban figyelésével kapcsolatos információk:
+### <a name="sap-monitoring-in-azure"></a>SAP-monitorozás az Azure-ban
+További információ az Azure-beli SAP-figyelésről:
 
-* [Megjegyzés: 2191498 SAP](https://launchpad.support.sap.com/#/notes/2191498/E) továbbfejlesztett SAP használata Linux rendszerű virtuális gépek az Azure-ban ismerteti. 
-* [Megjegyzés: 1102124 SAP](https://launchpad.support.sap.com/#/notes/1102124/E) linuxon SAPOSCOL kapcsolatos tudnivalókat ismerteti. 
-* [Megjegyzés: 2178632 SAP](https://launchpad.support.sap.com/#/notes/2178632/E) ismerteti az alapvető figyelési metrikákat az SAP a Microsoft Azure-ban.
+* A 2191498-es [SAP-Megjegyzés](https://launchpad.support.sap.com/#/notes/2191498/E) a Linux rendszerű Azure-beli virtuális gépekkel bővített SAP-figyelést ismerteti. 
+* A 1102124-es [SAP-Megjegyzés](https://launchpad.support.sap.com/#/notes/1102124/E) a Linux SAPOSCOL kapcsolatos információkat tárgyalja. 
+* A 2178632-es [SAP-Megjegyzés](https://launchpad.support.sap.com/#/notes/2178632/E) az SAP-hez Microsoft Azure legfontosabb monitorozási mérőszámait ismerteti.
 
-### <a name="azure-vm-types"></a>Az Azure virtuális gépek típusai
-Az Azure Virtuálisgép-típusok és az SAP HANA használt SAP által támogatott munkaterhelés-forgatókönyvek szerepelnek [SAP-tanúsítvánnyal rendelkező IaaS-platformon](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html). 
+### <a name="azure-vm-types"></a>Azure-beli virtuális gépek típusai
+Az SAP HANA által használt Azure-beli virtuálisgép-típusok és SAP által támogatott számítási feladatok dokumentálva vannak az [SAP Certified IaaS platformokban](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html). 
 
-Az SAP az SAP NetWeaver és az S/4HANA alkalmazásrétegre hitelesített Azure Virtuálisgép-típusok vannak dokumentálva [SAP Megjegyzés 1928533: SAP-alkalmazások az Azure-ban: Támogatott termékek és Azure-beli Virtuálisgép-típusok](https://launchpad.support.sap.com/#/notes/1928533/E).
+Az SAP NetWeaver vagy az S/4HANA által hitelesített Azure-beli virtuálisgép-típusok dokumentálva vannak a 1928533 [-es SAP-megjegyzésben: SAP-alkalmazások az Azure-ban: Támogatott termékek és Azure-beli](https://launchpad.support.sap.com/#/notes/1928533/E)virtuális gépek típusai.
 
 > [!NOTE]
-> Integráció az SAP-Linux-Azure-hoz csak Azure Resource Manager és a klasszikus üzemi modellben nem támogatott. 
+> SAP-Linux – az Azure-integráció csak Azure Resource Manageron és nem a klasszikus üzemi modellen támogatott. 
 
 ## <a name="manual-installation-of-sap-hana"></a>SAP HANA manuális telepítése
 
 > [!IMPORTANT]
-> Győződjön meg róla, hogy az operációs rendszer választja SAP-minősítéssel rendelkező SAP Hana, az adott virtuális gépek típusai, használja a. Az SAP HANA listája tanúsított Virtuálisgép-típusok és az operációs rendszer kiadja az adott virtuális gépek típusai pozíciójuk [SAP HANA-tanúsítvánnyal rendelkező IaaS-platformon](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure). Ellenőrizze, hogy a virtuális gép típusú lekérni az SAP HANA által támogatott operációsrendszer-kiadások teljes listáját az adott VM-típus szerepel a Részletek gombra. A példában a jelen dokumentum nem támogatott az SAP az SAP HANA az M-sorozat virtuális gépei SUSE Linux Enterprise Server (SLES) operációs rendszer kiadási használtuk.
+> Győződjön meg arról, hogy a kiválasztott operációs rendszer SAP-tanúsítvánnyal rendelkezik SAP HANA a megadott virtuálisgép-típusoknál. A virtuálisgép-típusok SAP HANA minősített virtuálisgép-típusainak és operációsrendszer-kiadásainak listája [SAP HANA tanúsított IaaS platformokon](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)kereshető. Ügyeljen rá, hogy a felsorolt virtuálisgép-típus részleteire kattintva beolvassa a SAP HANA által támogatott operációsrendszer-kiadásokat az adott virtuálisgép-típushoz. A jelen dokumentumban szereplő példában egy SUSE Linux Enterprise Server (SLES) operációsrendszer-kiadást használtunk, amelyet az SAP nem támogat az M-sorozatú virtuális gépeken SAP HANA.
 >
 
-Ez az útmutató ismerteti, hogyan manuális telepítéséhez az SAP HANA az Azure virtuális gépek két különböző módon:
+Ez az útmutató a SAP HANA Azure-beli virtuális gépeken történő manuális telepítésének módját ismerteti két különböző módon:
 
-* SAP Software kiépítés Manager (SWPM) használja a "telepítés adatbázispéldány" lépésben egy elosztott NetWeaver telepítésének részeként.
-* Az SAP HANA database lifecycle manager eszközzel (HDBLCM), és telepítse a NetWeaver.
+* Használja az SAP Software kiépítési kezelőjét (SWPM) az elosztott NetWeaver telepítésének részeként az "adatbázis-példány telepítése" lépésben.
+* Használja a SAP HANA adatbázis-életciklus-kezelő (HDBLCM) eszközt, majd telepítse a NetWeaver alkalmazást.
 
-Használhatja a SWPM összetevők, például SAP HANA, SAP-alkalmazáskiszolgáló és az ASCS példány egy egyetlen virtuális gép telepítése. A lépések leírását a jelen [SAP HANA bejelentést a blogon](https://blogs.saphana.com/2013/12/31/announcement-sap-hana-and-sap-netweaver-as-abap-deployed-on-one-server-is-generally-available/). Ezt a beállítást a nem a jelen rövid útmutatóban ismertetett, de figyelembe kell venni a problémákat azonosak.
+A SWPM segítségével az összes összetevőt, például az SAP HANA, az SAP Application Servert és a ASCS-példányt is telepítheti egyetlen virtuális gépen. A lépéseket ebben a [SAP HANA blogbejegyzésben](https://blogs.saphana.com/2013/12/31/announcement-sap-hana-and-sap-netweaver-as-abap-deployed-on-one-server-is-generally-available/)ismertetjük. Ez a beállítás nincs ismertetve ebben a rövid útmutatóban, de a figyelembe venni kívánt problémák megegyeznek.
 
-Egy telepítés előtt javasoljuk, hogy olvassa el a "előkészítése az Azure virtuális gépek manuális telepítéséhez az SAP HANA" Ez az útmutató későbbi szakaszában talál. Ezzel megakadályozhatja néhány alapvető hibák csak egy alapértelmezett Azure-beli Virtuálisgép-konfiguráció használatakor előforduló.
+A telepítés megkezdése előtt javasoljuk, hogy olvassa el a jelen útmutató későbbi, "Azure-beli virtuális gépek előkészítése SAP HANA manuális telepítésére" című szakaszát. Ez segít megakadályozni, hogy a rendszer csak az alapértelmezett Azure-beli virtuális gép konfigurációját használja.
 
-## <a name="key-steps-for-sap-hana-installation-when-you-use-sap-swpm"></a>Telepítés az SAP HANA, SAP SWPM használatakor a legfontosabb lépések
-Ez a szakasz felsorolja a fontos lépések az SAP HANA, Egypéldányos manuális telepítési, SAP SWPM SAP NetWeaver 7.5 elosztott telepítés használatakor. Az egyes lépéseket mutatjuk be a képernyőfelvételeken az útmutató későbbi részében részletesebben.
+## <a name="key-steps-for-sap-hana-installation-when-you-use-sap-swpm"></a>A SAP HANA telepítésének főbb lépései az SAP-SWPM használatakor
+Ez a szakasz a manuális, egypéldányos SAP HANA telepítésének főbb lépéseit sorolja fel, ha az SAP SWPM használatával hajtja végre az elosztott SAP NetWeaver 7,5 telepítését. Az egyes lépéseket részletesebben ismertetjük a képernyőképen az útmutató későbbi részében.
 
-1. Hozzon létre egy Azure virtuális hálózat, amely két teszt virtuális gépeket tartalmazza.
-2. Telepítse a két Azure virtuális gépek operációs rendszerekkel, az Azure Resource Manager-modell alapján. Ebben a példában a SUSE Linux Enterprise Server és a SLES SAP alkalmazások 12 SP1 használ. 
-3. Két Azure standard vagy prémium szintű tárolólemezeket, például 75 GB-os vagy 500 GB-os lemezt, az alkalmazás-kiszolgáló virtuális Géphez csatolása.
-4. Prémium szintű storage-lemez csatlakoztatható a HANA-adatbázis-kiszolgáló virtuális Géphez. További információkért lásd a "Lemez beállítása" szakaszban az útmutató későbbi részében.
-5. Mérete vagy feldolgozási sebessége követelményeitől függően több lemez csatlakoztatható. Ezután hozzon létre csíkozott köteteken tárolni. Logikaikötet-kezelő (LVM) és a egy több-eszközök (mdadm) felügyeleti eszköz használata a virtuális gép operációs rendszer szintjén.
-6. Hozzon létre a csatlakoztatott lemezek vagy kötetek logikai XFS fájlrendszerek.
-7. Csatlakoztassa az új XFS fájlrendszer az operációs rendszer szintjén. Az SAP-szoftvereket egy fájlrendszert használja. Például a /sapmnt directory és a biztonsági másolatok, használja a fájlrendszer. Az SAP HANA-adatbázis-kiszolgálón csatlakoztassa a prémium szintű tárolólemezeket /hana és /usr/sap XFS fájlrendszerek. Ez a folyamat szükség, hogy a legfelső szintű fájlrendszer betelik. A legfelső szintű fájlrendszer nem nagyméretű Linuxos Azure virtuális gépeken. 
-8. Adja meg a teszt virtuális gépek helyi IP-címét a Hosts fájlt.
-9. Adja meg a **nofail** az/etc/fstab fájl paramétert.
-10. Állítsa be a Linux kernel paraméterek használata a Linux operációsrendszer-kiadás alapján. További információ az SAP-megjegyzések megfigyelését, HANA, és a jelen útmutató "Kernel paraméterek" című szakaszában talál.
-11. A lapozóterület bővítése.
-12. Szükség esetén telepítse a teszt virtuális gépek egy grafikus asztali. Ellenkező esetben használjon távoli SAPinst telepítés.
-13. Töltse le az SAP-szoftvereket az SAP Service Marketplace-ről.
-14. Az SAP ASCS-példány telepíthető az alkalmazás-kiszolgáló virtuális Géphez.
-15. Ossza meg a teszt virtuális gépek között a /sapmnt könyvtár NFS használatával. A virtuális gép kiszolgáló az NFS-kiszolgáló.
-16. Telepítse az adatbázispéldányt, amely tartalmazza a HANA, az adatbázis-kiszolgáló virtuális gép SWPM használatával.
-17. Az elsődleges (szolgáltatói CÍMEI) kiszolgáló telepíthető az alkalmazás-kiszolgáló virtuális Géphez.
-18. Indítsa el az SAP felügyeleti konzolt (SAP minősítéssel, MC). Jelentkezzen be az SAP grafikus felhasználói felületének vagy a HANA Studio, például.
+1. Hozzon létre egy Azure-beli virtuális hálózatot, amely két teszt virtuális gépet tartalmaz.
+2. A Azure Resource Manager modellnek megfelelően telepítse a két Azure-beli virtuális gépet operációs rendszerekkel. Ez a példa SUSE Linux Enterprise Server és SLES használ a 12 SP1 rendszerű SAP-alkalmazásokhoz. 
+3. Két Azure standard vagy Premium Storage-lemezt csatlakoztathat, például 75 GB-os vagy 500 GB-os lemezeket az Application Server virtuális géphez.
+4. Csatlakoztassa a Premium Storage-lemezeket a HANA DB-kiszolgáló virtuális géphez. További információt az útmutató későbbi, "a lemez telepítése" című szakaszában talál.
+5. A mérettől vagy az átviteli sebességtől függően több lemez csatolása szükséges. Ezután hozzon létre csíkozott köteteket. Használja a logikai kötetek felügyeletét (LVM) vagy egy többeszközes felügyeleti (mdadm) eszközt a virtuális gépen belüli operációs rendszer szintjén.
+6. Hozzon létre XFS-fájlrendszereket a csatlakoztatott lemezeken vagy logikai köteteken.
+7. Csatlakoztassa az új XFS fájlrendszert az operációs rendszer szintjén. Használjon egy fájlrendszert az összes SAP-szoftverhez. Használja a másik fájlrendszert a/sapmnt könyvtárához és a biztonsági mentésekhez, például:. A SAP HANA adatbázis-kiszolgálón csatlakoztassa a XFS fájlrendszert a Premium Storage-lemezeken a/Hana és a/usr/SAP. Ez a folyamat azért szükséges, hogy megakadályozza a gyökér fájlrendszer kitöltését. A gyökérszintű fájlrendszer nem nagyméretű a Linux Azure-beli virtuális gépeken. 
+8. Adja meg a/etc/hosts-fájlban a teszt virtuális gépek helyi IP-címeit.
+9. Adja meg a **nem hibás** paramétert az/etc/fstab fájlban.
+10. A Linux kernel paramétereinek beállítása a használt Linux operációs rendszer kiadásának megfelelően. További információ: a HANA és a "kernel parameters" című szakaszban szereplő SAP-megjegyzések című rész a jelen útmutatóban.
+11. Adja meg a swap-területet.
+12. Szükség esetén a tesztelési virtuális gépeken is telepíthet grafikus asztali gépeket. Ellenkező esetben használjon távoli SAPinst-telepítést.
+13. Töltse le az SAP-szoftvert az SAP szolgáltatás Piactérről.
+14. Telepítse az SAP ASCS-példányt az App Server virtuális gépre.
+15. Ossza meg a/sapmnt könyvtárat a teszt virtuális gépek között az NFS használatával. Az alkalmazáskiszolgáló virtuális gép az NFS-kiszolgáló.
+16. Telepítse az adatbázis-példányt, amely tartalmazza a HANA-t, az DB-kiszolgáló virtuális gép SWPM használatával.
+17. Telepítse az elsődleges alkalmazáskiszolgáló (PAS) szolgáltatást az alkalmazáskiszolgáló virtuális gépre.
+18. Indítsa el az SAP felügyeleti konzolt (SAP MC). Kapcsolódjon az SAP GUI vagy a HANA Studio használatával, például:.
 
-## <a name="key-steps-for-sap-hana-installation-when-you-use-hdblcm"></a>Fontos lépések az SAP HANA telepítése HDBLCM használatakor
-Ez a szakasz felsorolja a fontos lépések az SAP HANA, Egypéldányos manuális telepítési, SAP HDBLCM SAP NetWeaver 7.5 elosztott telepítés használatakor. Az egyes lépéseket mutatjuk be részletesen ebben az útmutatóban a képernyőfelvételeken.
+## <a name="key-steps-for-sap-hana-installation-when-you-use-hdblcm"></a>A SAP HANA telepítésének főbb lépései a HDBLCM használatakor
+Ez a szakasz a manuális, egypéldányos SAP HANA telepítésének főbb lépéseit sorolja fel, ha az SAP HDBLCM használatával hajtja végre az elosztott SAP NetWeaver 7,5 telepítését. Az egyes lépéseket részletesen ismertetjük a képernyőképen az útmutató során.
 
-1. Hozzon létre egy Azure virtuális hálózat, amely két teszt virtuális gépeket tartalmazza.
-2. Telepítse a két Azure virtuális gépek operációs rendszerekkel, az Azure Resource Manager-modell alapján. Ebben a példában SLES és SLES for SAP alkalmazások 12 SP1.
-3. Két Azure standard vagy prémium szintű tárolólemezeket, például 75 GB-os vagy 500 GB-os lemezt, az alkalmazás-kiszolgáló virtuális Géphez csatolása.
-4. Prémium szintű storage-lemez csatlakoztatható a HANA-adatbázis-kiszolgáló virtuális Géphez. További információkért lásd a "Lemez beállítása" szakaszban az útmutató későbbi részében.
-5. Mérete vagy feldolgozási sebessége követelményeitől függően több lemez csatlakoztatható. Hozzon létre csíkozott kötetek vagy logikai adatmennyiség-kezelés, vagy egy mdadm eszköz a virtuális gép operációs rendszer szintjén.
-6. Hozzon létre a csatlakoztatott lemezek vagy kötetek logikai XFS fájlrendszerek.
-7. Csatlakoztassa az új XFS fájlrendszer az operációs rendszer szintjén. Az SAP-szoftvereket egy fájlrendszert használja. Például a /sapmnt directory és a biztonsági másolatok, használja a fájlrendszer. Az SAP HANA-adatbázis-kiszolgálón csatlakoztassa a prémium szintű tárolólemezeket /hana és /usr/sap XFS fájlrendszerek. Ez a folyamat szükség segítenek megakadályozni, hogy a legfelső szintű fájlrendszer betelőben. A legfelső szintű fájlrendszer nem nagyméretű Linuxos Azure virtuális gépeken.
-8. Adja meg a teszt virtuális gépek helyi IP-címét a Hosts fájlt.
-9. Adja meg a **nofail** az/etc/fstab fájl paramétert.
-10. Állítsa be a kernel-paraméterek használata a Linux operációsrendszer-kiadás alapján. További információ az SAP-megjegyzések megfigyelését, HANA, és a jelen útmutató "Kernel paraméterek" című szakaszában talál.
-11. A lapozóterület bővítése.
-12. Szükség esetén telepítse a teszt virtuális gépek egy grafikus asztali. Ellenkező esetben használjon távoli SAPinst telepítés.
-13. Töltse le az SAP-szoftvereket az SAP Service Marketplace-ről.
-14. Hozzon létre egy, sapsys, a HANA-adatbázis-kiszolgáló virtuális gép azonosítója 1001, csoporttal.
-15. SAP HANA HANA database lifecycle manager használatával telepítse az adatbázis-kiszolgáló virtuális Géphez.
-16. Az SAP ASCS-példány telepíthető az alkalmazás-kiszolgáló virtuális Géphez.
-17. Ossza meg a teszt virtuális gépek között a /sapmnt könyvtár NFS használatával. A virtuális gép kiszolgáló az NFS-kiszolgáló.
-18. Telepítse az adatbázispéldányt, HANA, beleértve a HANA-adatbázis-kiszolgáló virtuális gép SWPM használatával.
-19. Az elsődleges kiszolgáló telepíthető az alkalmazás-kiszolgáló virtuális Géphez.
-20. Start SAP MC. SAP grafikus felhasználói felületének vagy a HANA Studio csatlakozhat.
+1. Hozzon létre egy Azure-beli virtuális hálózatot, amely két teszt virtuális gépet tartalmaz.
+2. A Azure Resource Manager modellnek megfelelően telepítsen két Azure-beli virtuális gépet operációs rendszerrel. Ebben a példában a SLES és a SLES for SAP Applications for 12 SP1 verziót használja.
+3. Két Azure standard vagy Premium Storage-lemezt csatlakoztathat, például 75-GB vagy 500-GB lemezeket az App Server virtuális géphez.
+4. Csatlakoztassa a Premium Storage-lemezeket a HANA DB-kiszolgáló virtuális géphez. További információt az útmutató későbbi, "a lemez telepítése" című szakaszában talál.
+5. A mérettől vagy az átviteli sebességtől függően több lemez csatolása szükséges. Csíkozott köteteket hozhat létre a logikai kötetek kezelése vagy a mdadm eszköz használatával az operációs rendszer szintjén a virtuális gépen belül.
+6. Hozzon létre XFS-fájlrendszereket a csatlakoztatott lemezeken vagy logikai köteteken.
+7. Csatlakoztassa az új XFS fájlrendszert az operációs rendszer szintjén. Használjon egy fájlrendszert az összes SAP-szoftverhez. Használja a másik fájlrendszert a/sapmnt könyvtárához és a biztonsági mentésekhez, például:. A SAP HANA adatbázis-kiszolgálón csatlakoztassa a XFS fájlrendszert a Premium Storage-lemezeken a/Hana és a/usr/SAP. Ez a folyamat azért szükséges, hogy megakadályozza a gyökér fájlrendszer kitöltését. A gyökérszintű fájlrendszer nem nagyméretű a Linux Azure-beli virtuális gépeken.
+8. Adja meg a/etc/hosts-fájlban a teszt virtuális gépek helyi IP-címeit.
+9. Adja meg a **nem hibás** paramétert az/etc/fstab fájlban.
+10. Állítsa be a rendszermag paramétereit a használt Linux operációs rendszer kiadásának megfelelően. További információ: a HANA és a "kernel parameters" című szakaszban szereplő SAP-megjegyzések című rész a jelen útmutatóban.
+11. Adja meg a swap-területet.
+12. Szükség esetén a tesztelési virtuális gépeken is telepíthet grafikus asztali gépeket. Ellenkező esetben használjon távoli SAPinst-telepítést.
+13. Töltse le az SAP-szoftvert az SAP szolgáltatás Piactérről.
+14. Hozzon létre egy sapsys a 1001 AZONOSÍTÓJÚ csoporttal a HANA DB kiszolgálói virtuális gépen.
+15. Telepítse a SAP HANAt az adatbázis-kiszolgáló virtuális gépen a HANA Database Lifecycle Manager használatával.
+16. Telepítse az SAP ASCS-példányt az App Server virtuális gépre.
+17. Ossza meg a/sapmnt könyvtárat a teszt virtuális gépek között az NFS használatával. Az alkalmazáskiszolgáló virtuális gép az NFS-kiszolgáló.
+18. Telepítse a HANA-t tartalmazó adatbázis-példányt a HANA DB Server virtuális gépen a SWPM használatával.
+19. Telepítse az elsődleges alkalmazáskiszolgáló alkalmazást az alkalmazáskiszolgáló virtuális gépre.
+20. Start SAP MC. Az SAP grafikus felhasználói felületén vagy a HANA studión keresztül kapcsolódhat.
 
-## <a name="prepare-azure-vms-for-a-manual-installation-of-sap-hana"></a>Manuális telepítés az SAP Hana Azure virtuális gépek előkészítése
-Ez a szakasz témakörei a következők:
+## <a name="prepare-azure-vms-for-a-manual-installation-of-sap-hana"></a>Azure-beli virtuális gépek előkészítése SAP HANA manuális telepítésére
+Ez a szakasz a következő témaköröket tartalmazza:
 
-* Operációs rendszer frissítése
+* Operációs rendszer frissítései
 * Lemez beállítása
 * Kernel-paraméterek
-* Fájlrendszer
+* Fájlrendszerek
 * A/etc/hosts fájl
-* A/etc/fstab fájl
+* Az/etc/fstab fájl
 
-### <a name="os-updates"></a>Operációs rendszer frissítése
-Ellenőrizze a Linux operációs rendszer frissítéseket és javításokat, további szoftverek telepítése előtt. Telepítse a javítást, elkerülheti a támogatási ügyfélszolgálati hívást.
+### <a name="os-updates"></a>Operációs rendszer frissítései
+További szoftverek telepítése előtt keresse meg a Linux operációs rendszer frissítéseit és javításait. Egy javítás telepítésével elkerülheti a támogatási szolgálat hívását.
 
-Győződjön meg arról, hogy használja:
-* SUSE Linux Enterprise Server, SAP-alkalmazások számára.
-* Red Hat Enterprise Linux for SAP-alkalmazások vagy a Red Hat Enterprise Linux for SAP HANA. 
+Győződjön meg arról, hogy a következőket használja:
+* SUSE Linux Enterprise Server SAP-alkalmazásokhoz.
+* Red Hat Enterprise Linux az SAP-alkalmazásokhoz vagy a SAP HANA Red Hat Enterprise Linuxhoz. 
 
-Ha még nem tette meg, a Linux-gyártó a Linux előfizetését regisztrálja az operációs rendszer telepítéséhez. SUSE rendelkezik az SAP-alkalmazások, amelyek már szolgáltatásokat tartalmaznak, és automatikusan regisztrált operációsrendszer-lemezképeket.
+Ha még nem tette meg, regisztrálja az operációs rendszer központi telepítését a linuxos gyártótól származó Linux-előfizetéssel. A SUSE operációs rendszer lemezképei olyan SAP-alkalmazásokhoz, amelyek már tartalmazzák a szolgáltatásokat, és amelyek automatikusan regisztrálva vannak.
 
-Íme egy példa bemutatja, hogyan keressen elérhető javítások SUSE Linux segítségével a **zypper** parancsot:
+Az alábbi példa bemutatja, hogyan ellenőrizhetők a SUSE Linux rendelkezésre álló javításai a **Zypper** parancs használatával:
 
  `sudo zypper list-patches`
 
-A probléma típusától függően a javítások kategória és súlyosság szerint besorolt. A kategória gyakran használt értékek a következők: 
+A probléma típusától függően a javítások kategória és súlyosság szerint vannak osztályozva. A kategória leggyakrabban használt értékei a következők: 
 - Biztonság
 - Ajánlott
-- Optional
-- Szolgáltatás
+- Választható
+- Funkció
 - Dokumentum
-- yast
+- YaST
 
-Esetében gyakran használt értékek a következők:
+A súlyosság leggyakrabban használt értékei a következők:
 
 - Kritikus
 - Fontos
@@ -191,289 +190,289 @@ Esetében gyakran használt értékek a következők:
 - Alacsony
 - Nincs megadva
 
-A **zypper** parancs csak megkeresi a telepített csomagokat kell a frissítéseket. Például használhatja ezt a parancsot:
+A **Zypper** parancs csak azokat a frissítéseket keresi, amelyekre a telepített csomagok szükségesek. Ezt a parancsot használhatja például:
 
 `sudo zypper patch  --category=security,recommended --severity=critical,important`
 
-A paraméter is hozzáadhat `--dry-run` tesztelése a frissítés a rendszer ténylegesen frissítése nélkül.
+A paramétert `--dry-run` hozzáadhatja a frissítés teszteléséhez anélkül, hogy ténylegesen frissítené a rendszeren.
 
 
 ### <a name="disk-setup"></a>Lemez beállítása
-A legfelső szintű fájlrendszer, a Linux rendszerű virtuális gép az Azure-ban rendelkezik egy korlátozás. Tehát szüksége további lemezterületre csatlakoztatása egy Azure virtuális gép futtatása az SAP. Az SAP-alkalmazáskiszolgáló Azure virtuális gépek a standard szintű Azure storage használatát elég lehet. Az SAP HANA DBMS Azure virtuális gépek az Azure prémium szintű tárolólemezeket a termelési és tesztelési megvalósításokhoz használata kötelező.
+Az Azure-beli Linux rendszerű virtuális gépen a gyökér fájlrendszer mérete korlátozott. Ezért további lemezterületet kell csatlakoztatnia egy Azure-beli virtuális géphez az SAP futtatásához. Az SAP Application Server Azure-beli virtuális gépek esetében elég lehet az Azure standard Storage-lemezek használata. SAP HANA adatbázis-kezelői Azure-beli virtuális gépek esetében kötelező az Azure Premium Storage-lemezek használata a termelési és a nem termékbeli megvalósításokhoz.
 
-Alapján a [SAP HANA TDI tárhellyel kapcsolatos követelmények](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html), a javaslat a következő prémium szintű Azure storage-konfiguráció: 
+A [SAP HANA TDI tárolási követelményei](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)alapján a következő Azure Premium Storage-konfiguráció javasolt: 
 
-| A VM-TERMÉKVÁLTOZATOK | RAM |  / hana/adat- és naplófájlok/hana / <br /> az LVM vagy mdadm csíkozott | / hana/megosztott | / root kötet | /usr/sap |
+| VM SKU | RAM |  /Hana/Data és/Hana/log <br /> az LVM vagy a mdadm szalagos | /hana/shared | /root-kötet | /usr/sap |
 | --- | --- | --- | --- | --- | --- |
 | GS5 | 448 GB | 2 x P30 | 1 x P20 | 1 x P10 | 1 x P10 | 
 
-A javasolt lemez konfigurációját a HANA adatmennyiség és a naplózási kötet ugyanahhoz az adatkészlethez, a prémium szintű Azure storage-lemez LVM vagy mdadm csíkozott helyezni. Nem szükséges meghatározni bármilyen RAID tárhelyredundancia-szint, mert az Azure premium storage tartja a redundancia biztosítása érdekében a lemezek három kép. 
+A javasolt lemez-konfigurációban a HANA-adatmennyiség és a naplózási kötet ugyanarra az Azure Premium Storage-lemezre kerül, amely az LVM vagy a mdadm szalagos. Nincs szükség a RAID-redundancia megadására, mert az Azure Premium Storage a lemezek három rendszerképét tárolja a redundancia érdekében. 
 
-Győződjön meg arról, hogy konfigurálja-e elegendő tárhely, lásd: [SAP HANA TDI tárhellyel kapcsolatos követelmények](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) és [SAP HANA kiszolgáló telepítési és frissítési útmutató](https://help.sap.com/saphelp_hanaplatform/helpdata/en/4c/24d332a37b4a3caad3e634f9900a45/frameset.htm). Is vegye figyelembe a különböző Azure prémium szintű tárolólemezek különböző virtuális merevlemez (VHD) átviteli mennyiségű leírtak szerint [nagy teljesítményű premium storage és a felügyelt lemezek virtuális gépekhez](../../windows/disks-types.md). 
+A megfelelő tárterület konfigurálásához lásd: [SAP HANA a TDI tárolási követelményei](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) és a [SAP HANA Server telepítési és frissítési útmutatója](https://help.sap.com/saphelp_hanaplatform/helpdata/en/4c/24d332a37b4a3caad3e634f9900a45/frameset.htm). Vegye figyelembe a különböző Azure Premium Storage-lemezek különböző virtuális merevlemez-átviteli sebességét is, ahogy azt a [nagy teljesítményű Premium Storage-ban és a virtuális gépek felügyelt](../../windows/disks-types.md)lemezein dokumentálja. 
 
-Hozzáadhat további prémium szintű tárolólemezeket a HANA DBMS virtuális gépekhez, adatbázisban vagy tranzakciónaplóban naplóalapú biztonsági mentések tárolásához.
+A HANA adatbázis-kezelő virtuális gépekhez további Premium Storage-lemezeket adhat hozzá az adatbázisok vagy tranzakciónaplók biztonsági másolatainak tárolásához.
 
-A csíkozást konfigurálásához használt két fő eszközökkel kapcsolatos további információkért lásd:
+A csíkozás konfigurálásához használt két fő eszközről a következő témakörben talál további információt:
 
-* [Szoftveres RAID linuxon konfigurálása](../../linux/configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-* [LVM konfigurálása az Azure-beli Linuxos virtuális gépre](../../linux/configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* [A szoftveres RAID konfigurálása Linux rendszeren](../../linux/configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* [Az LVM konfigurálása Linux rendszerű virtuális gépen az Azure-ban](../../linux/configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Bemutatja, hogyan csatlakoztathat lemezeket egy vendég operációs rendszer Linux futtató Azure virtuális gépekre vonatkozó további információkért lásd: [lemez hozzáadása Linux rendszerű virtuális gép](../../linux/add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+További információ arról, hogyan lehet lemezeket csatlakoztatni a Linux rendszerű Azure-beli virtuális gépekhez vendég operációs rendszerként: [lemez hozzáadása Linux rendszerű virtuális géphez](../../linux/add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Az Azure prémium szintű SSD-k lemez-gyorsítótárazást módok adhatja meg. A csíkozott a készlet, amely tartalmazza a /hana/data és /hana/log tiltsa le a lemezek gyorsítótárazása. A kötetek, azt jelenti, lemezek, a gyorsítótárazási mód beállítása legyen **ReadOnly**.
+Az Azure Premium SSD-k segítségével megadhatja a lemezes gyorsítótárazási módokat. A/Hana/Data és/Hana/log tároló csíkozott készlet esetében tiltsa le a lemezes gyorsítótárazást. A többi kötet esetében, azaz a lemezeken a gyorsítótárazási mód **írásvédett**értékre van állítva.
 
-Példa JSON-sablonok használata virtuális gépek létrehozásához lásd: a [Azure gyorsindítási sablonok](https://github.com/Azure/azure-quickstart-templates).
-A virtuálisgép-egyszerű – sles alapszintű sablon áll. Egy tároló rész alatt, egy további 100 GB-os adatlemezt tartalmaz. Ez a sablon használja alapként. A sablon az adott konfigurációhoz tesztkörnyezetéhez igazíthatja.
+A virtuális gépek létrehozásához használt JSON-sablonok megkereséséhez tekintse meg az [Azure Gyorsindítás sablonjait](https://github.com/Azure/azure-quickstart-templates).
+A VM-Simple-SLES sablon egy alapszintű sablon. Tartalmaz egy tárolási szakaszt, amely egy további 100 GB-os adatlemezzel rendelkezik. Ezt a sablont használja alapként. A sablont átalakíthatja a megadott konfigurációra.
 
 > [!NOTE]
-> Fontos, hogy az Azure storage-lemez csatolása UUID segítségével dokumentált módon [SAP NetWeaver futtatása Microsoft Azure SUSE Linux rendszerű virtuális gépeken](suse-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+> Fontos, hogy az Azure Storage-lemezt az [Microsoft Azure SUSE Linux rendszerű virtuális gépeken az SAP NetWeaver futtatása](suse-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)című dokumentumban leírtak szerint egy UUID-vel csatlakoztassa.
 
-A tesztelési környezetben két Azure standard szintű storage-lemez is csatlakozik a virtuális gép, SAP-alkalmazáskiszolgáló az alábbi képernyőképen látható módon. Egy SAP szoftverek, például a NetWeaver 7,5-öt, a SAP grafikus felhasználói felület és az SAP HANA telepítés tárolják. A második lemez biztosítja, hogy elég szabad terület érhető el a további követelményekről. Például biztonsági mentés és a vizsgálati adatokat és a /sapmnt könyvtárban, azaz SAP profilok, kell az azonos SAP-rendszeren tartozó összes virtuális gép közötti megosztását.
+A tesztkörnyezetben két Azure standard Storage-lemez van csatlakoztatva az SAP app Server virtuális géphez, ahogy az alábbi képernyőképen is látható. Az egyik lemez tárolja az összes SAP-szoftvert, például a NetWeaver 7,5, az SAP GUI és a SAP HANAt a telepítéshez. A második lemez gondoskodik arról, hogy a további követelményekhez elegendő szabad terület álljon rendelkezésre. Például a biztonsági mentési és tesztelési, valamint a/sapmnt könyvtárat, azaz az SAP-profilokat az azonos SAP-környezethez tartozó összes virtuális gép között meg kell osztani.
 
-![SAP HANA app server lemezek ablak megjelenítése a két adatlemezt, és azok méretek](./media/hana-get-started/image003.jpg)
+![SAP HANA az App Server-lemezek ablak két adatlemezt és azok méreteit jeleníti meg](./media/hana-get-started/image003.jpg)
 
 
 ### <a name="kernel-parameters"></a>Kernel-paraméterek
-Az SAP HANA megköveteli az adott Linux-kernel beállításait. A rendszermag-beállítások a standard szintű Azure-katalógus rendszerképek részét képezik, és manuálisan kell beállítani. Ha használja SUSE vagy a Red Hat a paraméterek eltérő lehet. Az SAP-megjegyzések felsorolt korábban ezeket a paramétereket kapcsolatos információkat biztosítanak. A képernyőfelvételen látható a SUSE Linux 12 SP1 lett megadva. 
+SAP HANA speciális Linux kernel-beállításokat igényel. Ezek a kernel-beállítások nem a szabványos Azure Gallery-lemezképek részét képezik, és manuálisan kell beállítani őket. Attól függően, hogy a SUSE vagy a Red Hat szolgáltatást használja-e, a paraméterek eltérőek lehetnek. A korábban felsorolt SAP-megjegyzések információt nyújtanak ezekről a paraméterekről. A képernyőképen a SUSE Linux 12 SP1 volt használatban. 
 
-Az SLES for SAP alkalmazások 12 általános rendelkezésre állás és a SLES for SAP alkalmazások 12 SP1 rendelkezik egy új eszköz **lehetőségeire adm**, amely felváltja a régi **sapconf** eszközt. Egy speciális SAP HANA-profil érhető el az **lehetőségeire adm**. A rendszer finomhangolása az SAP Hana-hoz, adja meg az ehhez a profilhoz root felhasználóként:
+SLES for SAP Applications 12 az SAP-alkalmazások 12 SP1 verziójának általános rendelkezésre állása és SLES: a régi **sapconf** eszközt felváltó új eszköz, **tuned-adm**. A **hangolt-adm-** hez speciális SAP HANA profil érhető el. A SAP HANA rendszerének hangolásához adja meg a következő profilt root felhasználóként:
 
    `tuned-adm profile sap-hana`
 
-További információ **lehetőségeire adm**, tekintse meg a [lehetőségeire adm SUSE dokumentációjában](https://www.suse.com/documentation/sles-for-sap-12/pdfdoc/sles-for-sap-12-sp1.zip).
+A **tuned-adm-** vel kapcsolatos további információkért tekintse meg a [hangolt-adm-vel kapcsolatos SUSE dokumentációt](https://www.suse.com/documentation/sles-for-sap-12/pdfdoc/sles-for-sap-12-sp1.zip).
 
-Az alábbi képernyőképen látható hogyan **lehetőségeire adm** megváltozott a `transparent_hugepage` és `numa_balancing` értékeket, a szükséges SAP HANA-beállításoknak megfelelően:
+Az alábbi képernyőképen megtekintheti, hogyan változtatta meg a tuned `transparent_hugepage` **-adm** a és `numa_balancing` az értékeket a szükséges SAP HANA beállításoknak megfelelően:
 
-![A beállított adm eszköz módosítja a szükséges SAP HANA-beállításoknak megfelelően értékek](./media/hana-get-started/image005.jpg)
+![A hangolt-adm eszköz a szükséges SAP HANA beállításoknak megfelelően módosítja az értékeket](./media/hana-get-started/image005.jpg)
 
-Az SAP HANA-kernel beállítások véglegesítéséhez használja **grub2** a SLES 12 rendszert. További információ **grub2**, tekintse meg a [konfigurációs fájlstruktúra](https://www.suse.com/documentation/sles-for-sap-12/pdfdoc/sles-for-sap-12-sp1.zip) a SUSE-dokumentáció része.
+A SAP HANA kernel beállításainak végleges elvégzéséhez használja a **GRUB2** -t a SLES 12-én. A **GRUB2**kapcsolatos további információkért tekintse meg a SUSE dokumentációjának [konfigurációs fájl szerkezete](https://www.suse.com/documentation/sles-for-sap-12/pdfdoc/sles-for-sap-12-sp1.zip) című szakaszát.
 
-Az alábbi képernyőfelvételen a kernel beállításokat módosítani a konfigurációs fájlban és majd lefordítják azt használatával hogyan **grub2-mkconfig**:
+A következő képernyőképen látható, hogyan módosultak a rendszermag beállításai a konfigurációs fájlban, majd az **GRUB2-mkconfig**használatával lettek lefordítva:
 
-![Kernel beállításokat módosítani a konfigurációs fájlban, és grub2-mkconfig használatával összeállított](./media/hana-get-started/image006.jpg)
+![A rendszermag beállításai megváltoztak a konfigurációs fájlban, és a GRUB2-mkconfig használatával lefordították](./media/hana-get-started/image006.jpg)
 
-Egy másik lehetőség a beállítások módosítása YaST használatával, és a **rendszertöltő** > **Kernel paraméterek** beállítások:
+Egy másik lehetőség a beállítások módosítása a YaST és a rendszerindítási **betöltő** > **kernel paramétereinek** beállításaival:
 
-![A Kernel paraméterek beállítások lapján YaST rendszertöltő](./media/hana-get-started/image007.jpg)
+![A YaST rendszerindítási betöltő kernel-paraméterek beállításai lapja](./media/hana-get-started/image007.jpg)
 
-### <a name="file-systems"></a>Fájlrendszer
-Az alábbi képernyőfelvételen két fájlrendszereket, a SAP alkalmazás kiszolgáló virtuális gép felett a két csatlakoztatott Azure standard szintű storage-lemez lettek létrehozva. Mindkét fájlrendszerek XFS típusú és /sapdata és /sapsoftware csatlakoztatva vannak.
+### <a name="file-systems"></a>Fájlrendszerek
+Az alábbi képernyőfelvételen két olyan fájlrendszer látható, amely az SAP app Server virtuális gépen lett létrehozva a két csatolt Azure standard Storage-lemez felett. Mindkét fájlrendszer XFS típusú, és/sapdata és/sapsoftware. van csatlakoztatva
 
-Nem kötelező, hogy megtervezhessük a fájlrendszerek ezzel a módszerrel. A lemezterület strukturálhatók más lehetősége van. A legfontosabb szempont, hogy a legfelső szintű fájlrendszer tiltsa le a futását szabad lemezterületét.
+Így nem kötelező a fájlrendszereket felstrukturálni. Más lehetőségek is rendelkezésre állnak a lemezterület strukturálása érdekében. A legfontosabb szempont, hogy megakadályozza, hogy a gyökér fájlrendszer kifogyjon a szabad területről.
 
-![Az SAP-alkalmazáskiszolgáló virtuális Géphez létrehozott két fájlrendszerek](./media/hana-get-started/image008.jpg)
+![Két, az SAP app Server-alapú virtuális gépen létrehozott fájlrendszerek](./media/hana-get-started/image008.jpg)
 
-SAP HANA DB a virtuális gép, egy SAPinst rendelkező SWPM használatakor adatbázis a telepítés során, és a **tipikus** telepítésen, minden /hana és /usr/sap van telepítve. Az alapértelmezett hely a SAP HANA-naplók biztonsági mentése /usr/sap alatt áll. Újra fontos, hogy a legfelső szintű fájlrendszer kevés a tárolási hely. Győződjön meg arról, hogy elég szabad terület alatt /hana és /usr/sap SWPM az SAP HANA telepítése előtt.
+A SAP HANA DB virtuális gép esetében az adatbázis telepítése során, amikor a SAPinst és a **szokásos** telepítési lehetőséggel használja a SWPM-t, a/Hana és a/usr/SAP. alatt minden telepítve van A SAP HANA napló biztonsági mentésének alapértelmezett helye a/usr/SAP. alatt található. Újra meg kell akadályozni, hogy a gyökér fájlrendszer kifogyjon a tárterületen. Győződjön meg arról, hogy elegendő szabad terület van a/Hana és a/usr/SAP területen, mielőtt telepítené a SWPM-t a SAP HANA telepítése előtt.
 
-Az SAP HANA standard fájlrendszer elrendezését, olvassa el a [SAP HANA kiszolgáló telepítési és frissítési útmutató](https://help.sap.com/saphelp_hanaplatform/helpdata/en/4c/24d332a37b4a3caad3e634f9900a45/frameset.htm).
+A SAP HANA szabványos fájlrendszer-elrendezésének leírását a [SAP HANA Server telepítési és frissítési útmutatójában](https://help.sap.com/saphelp_hanaplatform/helpdata/en/4c/24d332a37b4a3caad3e634f9900a45/frameset.htm)találja.
 
-![Az SAP-alkalmazáskiszolgáló virtuális Géphez létrehozott további fájlrendszerek](./media/hana-get-started/image009.jpg)
+![Az SAP app Server virtuális gépen létrehozott további fájlrendszerek](./media/hana-get-started/image009.jpg)
 
-Ha egy standard SLES/SLES for SAP alkalmazások 12 Azure image z galerie SAP NetWeaver telepíti, egy üzenet jelenik meg arról, hogy a hiba nem lapozóterület, az alábbi képernyőképen látható módon. Ez az üzenet elvetéséhez, manuálisan is hozzáadhat egy lapozófájl használatával **nn**, **mkswap**, és **swapon**. Megtudhatja, hogyan, keresse meg "Egy lapozófájl kézi hozzáadása" az a [használatával a YaST partitioner](https://www.suse.com/documentation/sles-for-sap-12/pdfdoc/sles-for-sap-12-sp1.zip) a SUSE-dokumentáció része.
+Ha az SAP NetWeaver standard SLES/SLES telepíti az SAP-alkalmazások 12 Azure Gallery-rendszerképét, egy üzenet jelenik meg, amely szerint nincs lapozófájl, ahogy az alábbi képernyőfelvételen is látható. Az üzenet elvetéséhez manuálisan is hozzáadhat egy swap-fájlt a **dd**, a **mkswap**és a **swapon**használatával. Ebből a cikkből megtudhatja, hogyan keresheti meg a "swap-fájl hozzáadása manuálisan" kifejezést a SUSE dokumentációjának [YaST particionáló](https://www.suse.com/documentation/sles-for-sap-12/pdfdoc/sles-for-sap-12-sp1.zip) szakaszának használatával.
 
-Egy másik lehetőség, hogy a lapozófájl-kapacitás konfigurálása a Linux rendszerű Virtuálisgép-ügynök használatával. További információk: [Azure Linux-ügynök – felhasználói útmutató](../../extensions/agent-linux.md).
+Egy másik lehetőség a swap-terület konfigurálása a linuxos virtuálisgép-ügynök használatával. További információk: [Azure Linux-ügynök – felhasználói útmutató](../../extensions/agent-linux.md).
 
-![Felbukkanó üzenet tájékoztatja, hogy nincs-e elegendő lapozófájl-kapacitás](./media/hana-get-started/image010.jpg)
+![Előugró üzenet, amely azt tanácsolja, hogy nincs elegendő lapozófájl](./media/hana-get-started/image010.jpg)
 
 
 ### <a name="the-etchosts-file"></a>A/etc/hosts fájl
-Mielőtt elkezdené telepíteni az SAP, győződjön meg arról, szerepeltetni kívánt állomás nevét és az SAP virtuális gépek IP-címek a Hosts fájlt. Minden az SAP virtuális gép üzembe helyezése egy Azure virtuális hálózaton belül. Ezután használja a belső IP-címek, itt látható módon:
+Mielőtt telepítené az SAP-t, győződjön meg arról, hogy a/etc/hosts fájlban szerepelnek az SAP virtuális gépek állomásneve és IP-címei. Az összes SAP virtuális gép üzembe helyezése egy Azure-beli virtuális hálózaton belül. Ezután használja a belső IP-címeket, ahogy az itt látható:
 
-![Gazdagép nevét és a Hosts fájlban felsorolt SAP virtuális IP-címek](./media/hana-get-started/image011.jpg)
+![A/etc/hosts fájlban felsorolt SAP virtuális gépek állomásneve és IP-címei](./media/hana-get-started/image011.jpg)
 
-### <a name="the-etcfstab-file"></a>A/etc/fstab fájl
+### <a name="the-etcfstab-file"></a>Az/etc/fstab fájl
 
-Hasznos lehet hozzáadni a **nofail** paramétert az fstab fájlt. Így ha probléma merül fel a lemezeket, a virtuális gép nem válaszol a rendszerindítási folyamat során. De ne feledje, hogy további lemezterület nem feltétlenül érhető el, és a folyamatok előfordulhat, hogy töltse fel a legfelső szintű fájlrendszer. Ha /hana hiányzik, a SAP HANA nem indul el.
+Hasznos lehet a **hiba** paraméter hozzáadása az fstab-fájlhoz. Így ha valami nem stimmel a lemezekkel, a virtuális gép nem válaszol a rendszerindítási folyamatban. Ne feledje azonban, hogy előfordulhat, hogy a további lemezterület nem érhető el, és a folyamatok kitölthetik a gyökérszintű fájlrendszert. Ha a/Hana hiányzik, SAP HANA nem indul el.
 
-![Adja hozzá a nofail paramétert az fstab fájlt](./media/hana-get-started/image000c.jpg)
+![A hiba paraméter hozzáadása az fstab-fájlhoz](./media/hana-get-started/image000c.jpg)
 
-## <a name="graphical-gnome-desktop-on-sles-12sles-for-sap-applications-12"></a>A SLES 12/SLES for SAP alkalmazások 12 grafikus GNOME asztali
-Ez a szakasz azt ismerteti, hogyan lehet:
+## <a name="graphical-gnome-desktop-on-sles-12sles-for-sap-applications-12"></a>Grafikus GNOME Desktop on SLES 12/SLES SAP-alkalmazásokhoz 12
+Ez a szakasz a következőket ismerteti:
 
-* Telepíti a GNOME asztali és xrdp SLES 12/SLES for SAP alkalmazások 12.
-* Futtassa SAP-MC Java-alapú Firefox segítségével SLES 12/SLES for SAP alkalmazások 12.
+* Telepítse a GNOME Desktopot és a xrdp-t a SLES 12/SLES for SAP Applications for 12.
+* Futtassa a Java-alapú SAP MC-t a Firefox használatával a SLES 12/SLES a következő SAP-alkalmazásokhoz: 12.
 
-Lehetőségeket, például Xterminal vagy VNC, amely nem a jelen útmutatóban ismertetett is használhatja.
+Használhatja a jelen útmutatóban nem ismertetett alternatívákat is, például a Xterminal vagy a VNC-t.
 
-### <a name="install-the-gnome-desktop-and-xrdp-on-sles-12sles-for-sap-applications-12"></a>Telepíti a GNOME asztali és xrdp SLES 12/SLES for SAP alkalmazások 12
-Ha Windows háttér, Firefox, SAPinst, SAP grafikus felhasználói Felülettel, az SAP minősítéssel, MC vagy HANA Studio futtatásához egyszerűen használhatja a grafikus asztali közvetlenül az SAP Linux rendszerű virtuális gépeken belül. Ezután csatlakozhat a virtuális géphez a távoli asztal protokoll (RDP) keresztül egy Windows-számítógépen. Attól függően, a GUI éles üzemi pontjának és költségmegtakarítási Linux-alapú rendszerekhez történő hozzáadásával kapcsolatos vállalati szabályzatok érdemes GNOME telepítése a kiszolgálón. Kövesse az alábbi lépéseket a GNOME asztali telepítése egy Azure SLES 12/SLES SAP alkalmazások 12 virtuális gép számára.
+### <a name="install-the-gnome-desktop-and-xrdp-on-sles-12sles-for-sap-applications-12"></a>A GNOME asztali és xrdp telepítése a SLES 12/SLES for SAP-alkalmazásokhoz 12
+Ha rendelkezik Windows-háttérrel, egyszerűen használhatja az SAP Linux virtuális gépeken található grafikus asztalt a Firefox, a SAPinst, az SAP GUI, az SAP MC vagy a HANA Studio futtatásához. Ezután csatlakozhat a virtuális géphez a RDP protokoll (RDP) használatával egy Windows rendszerű számítógépről. Attól függően, hogy a vállalati szabályzatok hogyan adhatók hozzá az éles környezethez és a nem termékhez tartozó Linux-alapú rendszerekhez, érdemes lehet a GNOME-ot telepíteni a kiszolgálóra. A következő lépésekkel telepítheti a GNOME Desktopot egy Azure SLES 12/SLES for SAP Applications 12 virtuális gépre.
 
-1. Telepítse a GNOME desktop a következő parancs megadásával, például PuTTY ablakban:
+1. Telepítse a GNOME Desktopot úgy, hogy beírja a következő parancsot, például egy Putty ablakban:
 
    `zypper in -t pattern gnome-basic`
 
-2. Telepítse a xrdp, hogy a virtuális gép RDP-Kapcsolaton keresztül csatlakozni:
+2. Telepítse a xrdp-t a virtuális gép RDP-kapcsolaton keresztüli elérésének engedélyezéséhez:
 
    `zypper in xrdp`
 
-3. /Etc/sysconfig/windowmanager szerkesztheti, majd állítsa be az alapértelmezett kezelő GNOME:
+3. /Etc/sysconfig/windowmanager szerkesztése és az alapértelmezett ablakkezelő beállítása a GNOME-ra:
 
    `DEFAULT_WM="gnome"`
 
-4. Futtatás **chkconfig** , győződjön meg arról, hogy xrdp automatikusan elindul, a rendszer újraindítása után:
+4. Futtassa a **Chkconfig** , és győződjön meg arról, hogy a xrdp automatikusan elindul újraindítás után:
 
    `chkconfig -level 3 xrdp on`
 
-5. Ha az RDP-kapcsolat problémáját, próbálja meg újraindítani, például a PuTTY ablakából:
+5. Ha problémája van az RDP-kapcsolattal, próbálja meg újraindítani például egy Putty-ablakban:
 
    `/etc/xrdp/xrdp.sh restart`
 
-6. Ha xrdp újra kell indítani az előző lépésben említett nem működik, ellenőrizze .pid fájlba:
+6. Ha az előző lépésben megemlített xrdp-újraindítás nem működik, ellenőrizze a. PID fájlt:
 
    `check /var/run` 
 
-   Keressen `xrdp.pid`. Ha megtalálta, távolítsa el, és indítsa újra.
+   Keresse meg `xrdp.pid`a következőt:. Ha megtalálta, távolítsa el, majd próbálja meg újra az újraindítást.
 
-### <a name="start-sap-mc"></a>Start SAP MC
-Miután telepítette a GNOME asztali, indítsa el a grafikus Java-alapú SAP minősítéssel, MC Firefox. Fut az Azure SLES 12/SLES SAP alkalmazások 12 virtuális géphez, ha azt hiba jelenhet meg. A hiba miatt a beépülő modul hiányzó Java böngészőben jelenik meg.
+### <a name="start-sap-mc"></a>SAP MC elindítása
+A GNOME Desktop telepítése után indítsa el a grafikus Java-alapú SAP MC-t a Firefoxban. Ha egy Azure SLES 12/SLES fut az SAP-alkalmazásokhoz 12 virtuális gépen, akkor hiba jelenhet meg. A hiba a Java böngésző hiányzó beépülő modulja miatt fordul elő.
 
-Az URL-cím, az SAP minősítéssel, MC elindításához `<server>:5<instance_number>13`.
+Az SAP MC `<server>:5<instance_number>13`elindításához szükséges URL-cím.
 
-További információkért lásd: [a web-alapú SAP-felügyeleti konzol elindítása](https://help.sap.com/saphelp_nwce10/helpdata/en/48/6b7c6178dc4f93e10000000a42189d/frameset.htm).
+További információ: [a webalapú SAP Management konzol elindítása](https://help.sap.com/saphelp_nwce10/helpdata/en/48/6b7c6178dc4f93e10000000a42189d/frameset.htm).
 
-Az alábbi képernyőképen látható a hibaüzenet fog megjelenni, amikor a Java-böngészőbeli beépülő modul nem található:
+Az alábbi képernyőfelvételen a Java-böngésző beépülő moduljának hiányában megjelenő hibaüzenet látható:
 
-![Hiányzó Java-böngészőbővítményt jelző hibaüzenet](./media/hana-get-started/image013.jpg)
+![Hibaüzenet, amely hiányzó java-böngésző beépülő modult jelez](./media/hana-get-started/image013.jpg)
 
-A probléma megoldásához egyik módja, hogy telepítése a hiányzó beépülő modul használatával YaST, az alábbi képernyőképen látható módon:
+A probléma megoldásának egyik módja, ha a hiányzó beépülő modult a YaST használatával telepíti, ahogy az a következő képernyőképen látható:
 
-![Hiányzik a beépülő modul telepítéséhez YaST használatával](./media/hana-get-started/image014.jpg)
+![A YaST használata a hiányzó beépülő modul telepítéséhez](./media/hana-get-started/image014.jpg)
 
-Ha az SAP felügyeleti konzol URL-cím újbóli kéri, hogy a beépülő modul aktiválása:
+Ha újra megadja az SAP Management Console URL-címét, a rendszer felszólítja a beépülő modul aktiválásához:
 
-![Beépülő modul aktiválási kérő párbeszédpanel](./media/hana-get-started/image015.jpg)
+![Beépülő modul aktiválását kérő párbeszédpanel](./media/hana-get-started/image015.jpg)
 
-Akkor is megjelenik, megjelenik egy hibaüzenet, hiányzó fájl javafx.properties. Oracle Java 1.8-as SAP grafikus felhasználói Felülettel 7.4 vonatkozó követelmény vonatkozik. További információkért lásd: [SAP Megjegyzés 2059429](https://launchpad.support.sap.com/#/notes/2059424).
-Az IBM-Java-verzió és a-t használó az SLES/SLES for SAP alkalmazások 12 openjdk csomagját csomag nem tartalmazza a szükséges javafx.properties fájlt. A megoldás, hogy töltse le és telepítse a Java SE 8 Oracle.
+Előfordulhat, hogy a hiányzó fájlról (JavaFX. properties) hibaüzenetet is kap. Az SAP GUI 7,4-hez készült Oracle Java 1,8 követelményéhez kapcsolódik. További információ: [SAP Note 2059429](https://launchpad.support.sap.com/#/notes/2059424).
+Az IBM Java verziója és a SLES/SLES for SAP Applications OpenJDK-csomagja nem tartalmazza a szükséges JavaFX. properties fájlt. A megoldás a Java SE 8 letöltése és telepítése az Oracle-ből.
 
-Az opensuse-alapú openjdk csomagját hasonló hibával kapcsolatos információkért tekintse meg a hozzászóláslánc [SAPGui 7.4 Java, az openSUSE 42.1 Leap](https://scn.sap.com/thread/3908306).
+Az openSUSE OpenJDK hasonló problémával kapcsolatos információkért tekintse meg a vitafórum szál [SAPGui 7,4 Java for opensuse 42,1 LEAP](https://scn.sap.com/thread/3908306)című témakört.
 
 ## <a name="manual-installation-of-sap-hana-swpm"></a>SAP HANA manuális telepítése: SWPM
-Az ebben a szakaszban szereplő képernyőképek sorozatát telepítése a SAP NetWeaver 7,5-öt és az SAP HANA SP12 SWPM rendelkező SAPinst használatakor fő lépéseit mutatja be. A NetWeaver 7.5 telepítésének részeként SWPM is telepítheti a HANA-adatbázis egy példányban.
+Az ebben a szakaszban található képernyőképek sorozata az SAP NetWeaver 7,5 és a SAP HANA SP12 telepítésének legfontosabb lépéseit mutatja be, amikor a SWPM-t használja a SAPinst használatával. A NetWeaver 7,5 telepítésének részeként a SWPM egyetlen példányként is telepítheti a HANA-adatbázist.
 
-Egy minta tesztkörnyezetben egy speciális üzleti alkalmazás programozási (ABAP) alkalmazás-kiszolgálót telepítette. Ahogy az az alábbi képernyőfelvételen is látható, használtuk a **elosztott rendszer** egy Azure-beli virtuális gépen az ascs rendszerbe fut be, és az elsődleges alkalmazáskiszolgáló-példányok telepítését. SAP HANA database rendszer egy másik Azure-beli virtuális gépen használtuk.
+A tesztkörnyezetben egy speciális Business Application Programming (ABAP) App Servert telepítettünk. Ahogy az a következő képernyőképen is látható, a ASCS és az elsődleges Application Server-példányok egy Azure-beli virtuális gépen való telepítéséhez az **elosztott rendszer** lehetőséget használtuk. Egy másik Azure-beli virtuális gép adatbázis-rendszerének SAP HANA használjuk.
 
-![Ascs rendszerbe fut be, és az elosztott rendszer lehetőség használatával telepíti elsődleges alkalmazáskiszolgáló-példányok](./media/hana-get-started/image012.jpg)
+![Az elosztott rendszer lehetőséggel telepített ASCS és elsődleges Application Server-példányok](./media/hana-get-started/image012.jpg)
 
-Az ASCS-példány telepítve van az app-kiszolgáló virtuális Géphez, miután az SAP-kezelőkonzolon zöld ikonnal által azonosítható. A /sapmnt könyvtár, amely magában foglalja az SAP-profil directory, az SAP HANA-adatbázis-kiszolgáló virtuális Géphez való megosztása. Az adatbázis-telepítési lépés ezt az információt hozzá kell férnie. Hozzáférés biztosítása a legjobb módja, hogy használja az NFS, amely YaST használatával konfigurálható.
+Miután telepítette az ASCS-példányt az App Server-alapú virtuális gépre, az SAP kezelési konzolján egy zöld ikon azonosítja. A/sapmnt könyvtárat, amely tartalmazza az SAP-profil könyvtárat, meg kell osztani a SAP HANA adatbázis-kiszolgáló virtuális géppel. Az adatbázis-telepítési lépésnek hozzá kell férnie ehhez az információhoz. A hozzáférés biztosításának legjobb módja az NFS használata, amelyet a YaST használatával lehet konfigurálni.
 
-![A virtuális gép, egy zöld ikonnal alkalmazás kiszolgálóra telepített ASCS példány megjelenítő SAP kezelőkonzol](./media/hana-get-started/image016.jpg)
+![SAP felügyeleti konzol, amely az App Server virtuális gépen telepített ASCS-példányt zöld ikon használatával mutatja be](./media/hana-get-started/image016.jpg)
 
-Az alkalmazás kiszolgálón virtuális gép a /sapmnt könyvtárban megosztott NFS-n keresztül használatával a **rw** és **no_root_squash** beállítások. Az alapértelmezett érték **ro** és **root_squash**, amely vezethet problémákat, ha az adatbázis-példány telepítését.
+Az App Server-alapú virtuális gépen a/sapmnt könyvtárat az **RW** és a **no_root_squash** beállítások használatával kell megosztani az NFS-en keresztül. Az alapértelmezett érték a **ro** és a **root_squash**, ami problémákat okozhat az adatbázis-példány telepítésekor.
 
-![Az NFS-n keresztül /sapmnt könyvtár megosztása rw és no_root_squash lehetőségeinek használatával](./media/hana-get-started/image017b.jpg)
+![A/sapmnt könyvtár megosztása az NFS-en keresztül az RW és a no_root_squash beállítások használatával](./media/hana-get-started/image017b.jpg)
 
-Ahogy a következő képernyőfelvételen látható, az alkalmazás-kiszolgáló virtuális Gépről a /sapmnt megosztást kell konfigurálni az SAP HANA-adatbázis-kiszolgáló virtuális gép használatával **NFS-ügyfél** és YaST:
+A következő képernyőképen látható, hogy az/sapmnt-megosztást az App Server virtuális gépről az **NFS-ügyfél** és a YaST használatával kell konfigurálni a SAP HANA adatbázis-kiszolgáló virtuális gépen:
 
-![Az NFS-ügyfél segítségével konfigurált /sapmnt megosztás](./media/hana-get-started/image018b.jpg)
+![Az NFS-ügyfél használatával konfigurált/sapmnt-megosztás](./media/hana-get-started/image018b.jpg)
 
-Elosztott NetWeaver 7.5 telepítés végrehajtásához, azaz egy **adatbázispéldány**, jelentkezzen be az SAP HANA-adatbázis-kiszolgáló virtuális Géphez, és indítsa el a SWPM:
+Ha elosztott NetWeaver 7,5-telepítést kíván végrehajtani, azaz egy **adatbázis-példányt**, jelentkezzen be az SAP HANA db-kiszolgáló virtuális gépre, és indítsa el a SWPM:
 
-![Egy adatbázis-példányt telepítése bejelentkezik, az SAP HANA-adatbázis-kiszolgáló virtuális Géphez, és SWPM indítása](./media/hana-get-started/image019.jpg)
+![Adatbázis-példány telepítése a SAP HANA adatbázis-kiszolgáló virtuális gépre való bejelentkezéssel és a SWPM elindításával](./media/hana-get-started/image019.jpg)
 
-Miután kiválasztotta **tipikus** telepítési és a telepítési adathordozó elérési útját adja meg a DB SID-AZONOSÍTÓVAL, a gazdagép nevét, a példányok számát és a DB rendszergazda jelszava:
+Miután kiválasztotta a **tipikus** telepítést és a telepítési adathordozó elérési útját, adja meg az adatbázis biztonsági azonosítóját, a gazdagép nevét, a példány számát és az adatbázis rendszergazda jelszavát:
 
-![Az SAP HANA database rendszer rendszergazdai bejelentkezési oldal](./media/hana-get-started/image035b.jpg)
+![A SAP HANA adatbázis-rendszergazda bejelentkezési lapja](./media/hana-get-started/image035b.jpg)
 
-Adja meg a jelszót a DBACOCKPIT séma:
+Adja meg a DBACOCKPIT séma jelszavát:
 
-![A DBACOCKPIT séma be a jelszó-entry](./media/hana-get-started/image036b.jpg)
+![A DBACOCKPIT séma jelszavas belépési mezője](./media/hana-get-started/image036b.jpg)
 
-Adjon meg egy kérdést a SAPABAP1 séma jelszó:
+Adja meg a SAPABAP1 séma jelszavának kérdését:
 
-![Adjon meg egy kérdést a SAPABAP1 séma jelszó](./media/hana-get-started/image037b.jpg)
+![Adja meg a SAPABAP1-séma jelszavának kérdését](./media/hana-get-started/image037b.jpg)
 
-Után minden feladat befejeződött, a DB telepítési folyamat egyes fázisaiban mellett egy zöld pipa jelenik meg. Az üzenet "végrehajtási... Az adatbázis példány befejeződött"jelenik meg.
+Az egyes feladatok befejezését követően zöld pipa jelenik meg az adatbázis-telepítési folyamat minden fázisa mellett. Az üzenet végrehajtása... Az adatbázis-példány befejeződött "üzenet jelenik meg.
 
-![A feladat befejeződött-ablakot megerősítő üzenet](./media/hana-get-started/image023.jpg)
+![Feladat – befejezett ablak, megerősítő üzenet](./media/hana-get-started/image023.jpg)
 
-A sikeres telepítés után az SAP-kezelőkonzolon zöld ikonnal adatbázispéldánnyal is látható. It displays the full list of SAP HANA processes, such as hdbindexserver and hdbcompileserver.
+A sikeres telepítés után az SAP felügyeleti konzolja az adatbázis-példányt is megjeleníti zöld ikonnal. Megjeleníti a SAP HANA folyamatok teljes listáját, például a hdbindexserver és a hdbcompileserver.
 
-![SAP felügyeleti konzol ablakának az SAP HANA-folyamatok listája](./media/hana-get-started/image024.jpg)
+![SAP Management Console ablak SAP HANA folyamatok listájával](./media/hana-get-started/image024.jpg)
 
-Az alábbi képernyőfelvételen a fájlstruktúra a HANA-telepítés során létrehozott SWPM /hana/shared könyvtárban részeit. Mivel nincs lehetőség egy másik elérési utat adja meg, fontos SWPM használatával további lemezterületet a SAP HANA-telepítés előtt /hana könyvtár alá csatlakoztatásához. Ebben a lépésben megakadályozza, hogy a legfelső szintű fájlrendszer szabad lemezterületét futását.
+Az alábbi képernyőfelvételen a/Hana/Shared könyvtár azon részei láthatók, amelyeket a SWPM a HANA telepítésekor hozott létre. Mivel nincs lehetőség más elérési út megadására, fontos, hogy a SAP HANA telepítése előtt csatlakoztassa a további lemezterületet a/Hana könyvtárához a SWPM használatával. Ez a lépés megakadályozza, hogy a gyökérszintű fájlrendszer ne fusson el szabad területtel.
 
-![HANA telepítése során létrehozott /hana/shared directory fájlstruktúra](./media/hana-get-started/image025.jpg)
+![A HANA-telepítés során létrehozott/Hana/Shared-fájl szerkezete](./media/hana-get-started/image025.jpg)
 
-Ezen a képernyőfelvételen látható a fájlstruktúra a /usr/sap könyvtár:
+Ez a képernyőkép a/usr/SAP könyvtárának a fájljának szerkezetét mutatja:
 
-![A/usr/sap directory fájlstruktúra](./media/hana-get-started/image026.jpg)
+![A/usr/SAP-könyvtár szerkezete](./media/hana-get-started/image026.jpg)
 
-Az utolsó lépés az elosztott ABAP-telepítés a rendszer telepíti az elsődleges alkalmazás server-példány:
+Az elosztott ABAP telepítésének utolsó lépése az elsődleges Application Server-példány telepítése:
 
-![ABAP telepítési ábrázoló elsődleges application server-példány, az utolsó lépés](./media/hana-get-started/image027b.jpg)
+![ABAP-telepítés, amely az elsődleges Application Server-példányt mutatja Utolsó lépésként](./media/hana-get-started/image027b.jpg)
 
-Miután az elsődleges alkalmazás server-példány és az SAP grafikus felhasználói Felülettel van telepítve, a **DBA vezérlőpultja** tranzakció, győződjön meg arról, hogy a az SAP HANA-telepítés megfelelően fejeződött be:
+Miután telepítette az elsődleges Application Server-példányt és az SAP GUI-t, a **DBA pilótafülke** -tranzakció segítségével ellenőrizze, hogy a SAP HANA telepítés helyesen fejeződött-e be:
 
-![A sikeres telepítés megerősítésével DBA vezérlőpultja ablakban](./media/hana-get-started/image028b.jpg)
+![A DBA pilótafülke ablakának sikeres telepítésének megerősítése](./media/hana-get-started/image028b.jpg)
 
-Utolsó lépésként érdemes, előbb telepítenie HANA Studio, a SAP app Server virtuális gép. Az SAP HANA-példány, amelyen fut az adatbázis-kiszolgáló virtuális Géphez, majd csatlakozni.
+Utolsó lépésként érdemes először telepíteni a HANA studiót az SAP app Server VM-ben. Ezután kapcsolódjon az adatbázis-kiszolgáló virtuális gépen futó SAP HANA-példányhoz.
 
-![Az SAP HANA Studio telepítése a SAP app Server virtuális gép](./media/hana-get-started/image038b.jpg)
+![SAP HANA Studio telepítése az SAP app Server VM-ben](./media/hana-get-started/image038b.jpg)
 
 ## <a name="manual-installation-of-sap-hana-hdblcm"></a>SAP HANA manuális telepítése: HDBLCM
-SAP HANA telepítése elosztott telepítés részeként SWPM használatával, valamint telepítheti a HANA különálló először HDBLCM használatával. SAP NetWeaver 7.5, például Ezután telepítheti. Ebben a szakaszban a képernyőfelvételek bemutatják, hogyan működik ez a folyamat.
+A SAP HANA a SWPM használatával történő elosztott telepítés részeként történő telepítése mellett a HDBLCM használatával is telepítheti a HANA önálló verzióját. Ezután telepítheti például az SAP NetWeaver 7,5-et. Az ebben a szakaszban található képernyőképek bemutatják, hogyan működik ez a folyamat.
 
 A HANA HDBLCM eszközzel kapcsolatos további információkért lásd:
 
-* [Válassza ki a megfelelő SAP HANA HDBLCM a feladat](https://help.sap.com/saphelp_hanaplatform/helpdata/en/68/5cff570bb745d48c0ab6d50123ca60/content.htm).
-* [SAP HANA-életciklus kezelőeszközök](https://www.tutorialspoint.com/sap_hana_administration/sap_hana_administration_lifecycle_management.htm).
-* [SAP HANA kiszolgáló telepítési és frissítési útmutató](https://help.sap.com/hana/SAP_HANA_Server_Installation_Guide_en.pdf).
+* [Válassza ki a feladat helyes SAP HANA HDBLCM](https://help.sap.com/saphelp_hanaplatform/helpdata/en/68/5cff570bb745d48c0ab6d50123ca60/content.htm).
+* [SAP HANA életciklus-felügyeleti eszközök](https://www.tutorialspoint.com/sap_hana_administration/sap_hana_administration_lifecycle_management.htm).
+* [SAP HANA kiszolgáló telepítési és frissítési útmutatója](https://help.sap.com/hana/SAP_HANA_Server_Installation_Guide_en.pdf).
 
-El szeretné kerülni a csoport azonosítója beállítási problémáit a `\<HANA SID\>adm user`, amely a HDBLCM eszközzel hozza létre. Mielőtt telepíti az SAP HANA-n keresztül HDBLCM, definiálása nevű új csoport `sapsys` Csoportazonosító használatával `1001`:
+El szeretné kerülni a HDBLCM eszköz által létrehozott alapértelmezett csoportazonosító `\<HANA SID\>adm user`-beállítással kapcsolatos problémákat. Mielőtt telepítené a SAP HANAt a HDBLCM-on keresztül, Definiáljon egy nevű `sapsys` új csoportot a Group ID `1001`használatával:
 
-![Új csoport "sapsys" használatával meghatározott csoport 1001-es azonosító](./media/hana-get-started/image030.jpg)
+![Új "sapsys" csoport, amelyet a 1001-es AZONOSÍTÓJÚ csoport határoz meg](./media/hana-get-started/image030.jpg)
 
-HDBLCM először indítja el, ha egy egyszerű start menü jeleníti meg. 1 elem kiválasztása **új rendszer telepítése**:
+Amikor első alkalommal indítja el a HDBLCM, egy egyszerű Start menü jelenik meg. Válassza az 1. elemet, és **telepítse az új**rendszerszolgáltatást:
 
-!["Az új rendszer telepítése" beállítást a HDBLCM indítási ablak](./media/hana-get-started/image031.jpg)
+!["Az új System telepítése" lehetőség a HDBLCM Start ablakban](./media/hana-get-started/image031.jpg)
 
-Az alábbi képernyőképen a kulcsok beállításainak korábban kiválasztott jeleníti meg.
+Az alábbi képernyőfelvételen a korábban kiválasztott összes beállítás látható.
 
 > [!IMPORTANT]
-> A HANA napló- és adatkötetek, és a telepítési útvonalat, amely ebben a mintában, és /usr/sap /hana/shared nevű könyvtárak nem lehet a legfelső szintű fájlrendszer egy részét. Ezeket a könyvtárakat az Azure-adatlemezek, amely a virtuális Géphez csatolt is tartozik. További információkért lásd a "Lemez beállítása" című szakaszt. 
+> A HANA-napló és az adatkötetek elnevezésű könyvtárai, valamint a telepítési útvonal, amely ebben a mintában/Hana/Shared, és a/usr/SAP nem lehet a gyökérszintű fájlrendszer része. Ezek a könyvtárak a virtuális géphez csatolt Azure-adatlemezekhez tartoznak. További információt a "lemez beállítása" című szakaszban talál. 
 
-Ez a megközelítés segít a legfelső szintű fájlrendszer tiltsa le a futását lemezterületét. Figyelje meg, hogy a HANA-rendszergazda rendelkezik-e a felhasználói azonosító `1005` részét képezi a `sapsys` csoport azonosítója és `1001`, a telepítés előtt definiálva lett.
+Ez a módszer segít megakadályozni, hogy a gyökér fájlrendszer kifogyjon a szabad területről. Figyelje meg, hogy a HANA rendszergazda rendelkezik felhasználói `1005` azonosítóval, és a `sapsys` telepítés előtt definiált `1001`, azonosítóval ellátott csoport tagja.
 
-![Korábban kiválasztott összes fő SAP HANA összetevők listáját](./media/hana-get-started/image032.jpg)
+![A korábban kiválasztott összes kulcsfontosságú SAP HANA-összetevő listája](./media/hana-get-started/image032.jpg)
 
-Ellenőrizze a `\<HANA SID\>adm user` részletei a/etc/passwd könyvtárban. Keressen `azdadm`, ahogy az alábbi képernyőfelvételen látható:
+`\<HANA SID\>adm user` A részleteket a/etc/passwd könyvtárban találja. `azdadm`Keresse meg a következő képernyőképet:
 
-![HANA \<HANA SID\>az/etc/passwd directory felsorolt adm – felhasználó adatai](./media/hana-get-started/image033.jpg)
+![Hana \<Hana SID\>adm felhasználói adatok a/etc/passwd könyvtárban](./media/hana-get-started/image033.jpg)
 
-Miután telepítette az SAP HANA HDBLCM használatával, láthatja a fájlstruktúra a SAP HANA Studio, az alábbi képernyőképen látható módon. SAPABAP1 séma, amely tartalmazza az SAP NetWeaver-táblázatok, még nem érhető el.
+Miután telepítette SAP HANA a HDBLCM használatával, a SAP HANA Studióban láthatja a fájl struktúráját, ahogy az alábbi képernyőfelvételen is látható. A SAPABAP1 séma, amely tartalmazza az összes SAP NetWeaver-táblázatot, még nem érhető el.
 
-![Az SAP HANA Studio SAP HANA-fájlstruktúra](./media/hana-get-started/image034.jpg)
+![SAP HANA a fájl szerkezete a SAP HANA Studióban](./media/hana-get-started/image034.jpg)
 
-Miután telepítette az SAP HANA, SAP NetWeaver megkönnyítése is telepítheti. Amint az alábbi képernyőképen látható, a telepítés egy elosztott telepítésben, hajtotta végre SWPM használatával. Ez a folyamat az előző szakaszban leírt. Ha az adatbázispéldányt SWPM használatával telepít, az HDBLCM használatával adja meg ugyanazokat az adatokat. Például adja meg a gazdagépnév, a HANA SID és a példányok számát. SWPM ezután használja a már meglévő HANA-telepítés, és hozzáadja a sémák.
+A SAP HANA telepítését követően telepítheti az SAP NetWeaver-t is. Ahogy az a következő képernyőképen is látható, a telepítést elosztott telepítésként hajtották végre a SWPM használatával. Ezt a folyamatot az előző szakaszban ismertetjük. Amikor az SWPM használatával telepíti az adatbázis-példányt, ugyanazokat az adatfájlokat adja meg a HDBLCM használatával. Megadhatja például a gazdagép nevét, a HANA SID-t és a példány számát. A SWPM ezután a meglévő HANA-telepítést használja, és további sémákat bővít.
 
-![Egy elosztott telepítés SWPM használatával](./media/hana-get-started/image035b.jpg)
+![SWPM használatával végrehajtott elosztott telepítés](./media/hana-get-started/image035b.jpg)
 
-A következő képernyőképen látható a SWPM telepítési lépés, ahol a DBACOCKPIT sémára vonatkozó adatokat adja meg:
+Az alábbi képernyőfelvételen a SWPM telepítési lépése látható, ahol megadhatja az DBACOCKPIT séma adatait:
 
-![A SWPM telepítési lépés, ahol DBACOCKPIT séma adatok](./media/hana-get-started/image036b.jpg)
+![A SWPM telepítési lépése, ahol a DBACOCKPIT-séma adatbevitele történik](./media/hana-get-started/image036b.jpg)
 
-Adja meg a SAPABAP1 sémára vonatkozó adatokat:
+Adja meg a SAPABAP1 séma adatait:
 
-![Írja be a SAPABAP1 sémára vonatkozó adatokat](./media/hana-get-started/image037b.jpg)
+![A SAPABAP1 séma adatainak megadása](./media/hana-get-started/image037b.jpg)
 
-Az adatbázis-példány SWPM telepítés befejezése után tekintheti meg az SAP HANA Studio SAPABAP1 séma:
+A SWPM-adatbázis példányának telepítése után a SAP HANA Studióban láthatja a SAPABAP1 sémát:
 
-![Az SAP HANA Studio SAPABAP1 séma](./media/hana-get-started/image038b.jpg)
+![A SAPABAP1 sémája SAP HANA Studióban](./media/hana-get-started/image038b.jpg)
 
-Végül, ha az SAP-alkalmazáskiszolgáló és SAP grafikus felhasználói felületének telepítése befejeződött, ellenőrizze a a HANA-adatbázis-példány a **DBA vezérlőpultja** tranzakció:
+Végül, miután az SAP app Server és az SAP GUI telepítése elkészült, ellenőrizze a HANA DB-példányt a **DBA pilótafülke** -tranzakció használatával:
 
-![A HANA-adatbázis-példány a DBA vezérlőpultja tranzakcióval ellenőrzése](./media/hana-get-started/image039b.jpg)
+![A HANA-adatbázis példánya ellenőrizve a DBA pilótafülke tranzakcióval](./media/hana-get-started/image039b.jpg)
 
 
-## <a name="sap-software-downloads"></a>Az ügyfélszoftver-letöltési SAP
-Az SAP Service Marketplace-ről szoftvert letöltheti, ahogyan az az alábbi képernyőfelvételnek megfelelően.
+## <a name="sap-software-downloads"></a>SAP-szoftverek letöltése
+A szoftvereket az SAP szolgáltatás piactérről töltheti le, ahogy az az alábbi képernyőképeken is látható.
 
-Töltse le a NetWeaver 7.5 Linux/Hana:
+Az NetWeaver 7,5 for Linux/HANA letöltése:
 
- ![SAP szolgáltatás telepítési és frissítési NetWeaver 7.5 letöltéséhez ablak](./media/hana-get-started/image001.jpg)
+ ![Az SAP szolgáltatás telepítési és frissítési ablaka a NetWeaver 7,5 letöltéséhez](./media/hana-get-started/image001.jpg)
 
-Töltse le a HANA SP12 Platform Edition:
+A HANA SP12 platform kiadásának letöltése:
 
- ![SAP szolgáltatás telepítése és frissítése a HANA SP12 Platform kiadásának letöltésével ablak](./media/hana-get-started/image002.jpg)
+ ![Az SAP szolgáltatás telepítési és frissítési ablaka a HANA SP12 platform kiadásának letöltéséhez](./media/hana-get-started/image002.jpg)
 

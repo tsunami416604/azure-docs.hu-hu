@@ -1,29 +1,26 @@
 ---
-title: Az Azure Disk Storage Windows virtuális gépek felügyelt lemez – áttekintés |} A Microsoft Docs
-description: Áttekintés az Azure managed disks használatát, amely kezeli a storage-fiókok, az Azure Windows virtuális gépek használatakor
-services: virtual-machines-windows,storage
+title: A Windows rendszerű virtuális gépek felügyelt lemezének áttekintése Azure Disk Storage | Microsoft Docs
+description: Az Azure Managed Disks áttekintése, amely az Azure Windows rendszerű virtuális gépek használatakor kezeli a Storage-fiókokat
 author: roygara
 ms.service: virtual-machines-windows
-ms.workload: storage
-ms.tgt_pltfrm: vm-windows
-ms.topic: article
-ms.date: 02/11/2019
+ms.topic: overview
+ms.date: 08/15/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 85b2dcb73024ce786b78436b7070ad2e9a96e1d4
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: c71d51580c064b5b2b0bbbbf7bf95d50aa40f72f
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328470"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515562"
 ---
-# <a name="introduction-to-azure-managed-disks"></a>Bevezetés az Azure-ba, felügyelt lemezek
+# <a name="introduction-to-azure-managed-disks"></a>Bevezetés az Azure Managed Disks használatába
 
-Egy Azure által felügyelt lemez egy virtuális merevlemezt (VHD). Felfoghatók úgy, mint egy helyszíni kiszolgálón, de, virtualizált fizikai lemezt. Azure managed disksbe tárolódnak, a lapblobokhoz, amelyek a rendszer egy véletlenszerű i/o-tárolóobjektum az Azure-ban. Felügyelt lemez "felügyelt" absztrakciós, mert a lapblobok, blobtárolók és az Azure storage-fiókok nevezzük. Felügyelt lemezekkel rendelkező mindössze meg kell rendelkezni a lemez, és az Azure gondoskodik a többiről.
+Az Azure Managed Disk egy virtuális merevlemez (VHD). Úgy gondolhatja, mint egy fizikai lemez egy helyszíni kiszolgálón, de virtualizált. Az Azure Managed Disks szolgáltatás blobként tárolódik, amely az Azure-ban egy véletlenszerű IO Storage-objektum. A felügyelt lemezeket nevezzük felügyelt, mivel ez egy absztrakt lap Blobok, blob-tárolók és Azure Storage-fiókok esetében. A felügyelt lemezekkel mindössze annyit kell tennie, hogy kiépíti a lemezt, az Azure pedig gondoskodik a többiről.
 
-Amikor kiválaszt Azure által felügyelt lemezek a számítási feladatokat, az Azure létrehozza és felügyeli a lemezt Ön helyett. A lemezek a rendelkezésre álló típusok a következők: Ultranagy tartós állapot-meghajtók (SSD) (előzetes verzió), a prémium szintű SSD, a Standard SSD és a szabványos merevlemez-meghajtókon (HDD). Minden egyes lemeztípus kapcsolatos további információkért lásd: [válassza ki a lemez típusát az IaaS virtuális gépek](disks-types.md).
+Ha kijelöli az Azure Managed Disks használatát a számítási feladatokkal, az Azure létrehozza és felügyeli a lemezt. A rendelkezésre álló lemezek a következők: ultra Disk, Premium SSD-meghajtó (SSD), standard SSD és standard merevlemez-meghajtó (HDD). Az egyes lemezek típusával kapcsolatos további információkért lásd: [IaaS virtuális gépekhez tartozó lemez típusának kiválasztása](disks-types.md).
 
 [!INCLUDE [virtual-machines-managed-disks-overview.md](../../../includes/virtual-machines-managed-disks-overview.md)]
 
 > [!div class="nextstepaction"]
-> [Válassza ki a lemez típusát IaaS virtuális gépekhez](disks-types.md)
+> [Válassza ki a IaaS virtuális gépekhez tartozó lemez típusát](disks-types.md)

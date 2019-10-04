@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 563668780c42ca23a1904757f886581f3ad0c5e8
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: 5e405dc4ea323a6869207de53b7577ee960924eb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617303"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67089236"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tableau-online"></a>Oktatóanyag: A Tableau Online az Azure Active Directory-integráció
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a Tableau Online konfigurálásához hozzá kell Table
 
 **Adja hozzá a Tableau Online a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -188,7 +188,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
     Ha például BrittaSimon\@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
@@ -229,7 +229,7 @@ Ebben a szakaszban egy a Tableau Online Britta Simon nevű felhasználó hoz lé
   
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/tableauonline-tutorial/tutorial_tableauonline_15.png)
 
-2. Válassza ki **hozzá felhasználókat (SAML) hitelesítés**. Az a **adjon meg e-mail címeket** szövegmező hozzáadása britta.simon@contoso.com
+2. Válassza ki **hozzá felhasználókat (SAML) hitelesítés**. Az a **adjon meg e-mail címeket** szövegmező hozzáadása britta.simon\@contoso.com
   
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/tableauonline-tutorial/tutorial_tableauonline_11.png)
 

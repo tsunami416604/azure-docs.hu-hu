@@ -1,42 +1,53 @@
 ---
-title: az Azure Search (előzetes verzió) – Azure Search moreLikeThis
-description: A moreLikeThis (előzetes verzió) szolgáltatáshoz, az Azure Search REST API-ban előzetes dokumentációjában talál.
+title: moreLikeThis Azure Searchban (előzetes verzió) – Azure Search
+description: A moreLikeThis (előzetes verzió) szolgáltatás előzetes dokumentációja, amely a Azure Search REST API elérhető.
 author: brjohnstmsft
-manager: jlembicz
+manager: nitinme
 services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.date: 10/27/2016
+ms.date: 05/02/2019
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: d55a6d883e0dcd5ad4b1c1584b76bae06e6c742a
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: d7c816c545c6647907aa9d700a4eb6ed91277465
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57569042"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70182294"
 ---
-# <a name="morelikethis-in-azure-search-preview"></a>moreLikeThis az Azure Search (előzetes verzió)
+# <a name="morelikethis-in-azure-search"></a>moreLikeThis Azure Search
 
-`moreLikeThis=[key]` a lekérdezési paraméter a [Search API](https://docs.microsoft.com/rest/api/searchservice/search-documents). Adja meg a `moreLikeThis` paramétert a keresési lekérdezésben, dokumentumok, a dokumentum a dokumentumkulcsot által megadott hasonló találja. Ha egy keresési kérelmet a `moreLikeThis`, egy lekérdezés jön létre keresési feltételeket az adott dokumentum kinyert legjobban leíró dokumentum. A létrehozott lekérdezést a keresés kérés majd szolgál. Alapértelmezésben az összes `searchable` mezők számítanak, kivéve, ha a `searchFields` paraméter használható mezők korlátozása. A `moreLikeThis` paraméter nem használható a keresési paraméterrel, `search=[string]`.
+> [!Note]
+> a moreLikeThis előzetes verzióban érhető el, és nem éles használatra készült. A [REST API 2019-05-06-es verziójának előzetes verziója](search-api-preview.md) biztosítja ezt a funkciót. Jelenleg nincs .NET SDK-támogatás.
+
+`moreLikeThis=[key]`a a [keresési dokumentumok API](https://docs.microsoft.com/rest/api/searchservice/search-documents) lekérdezési paramétere, amely a dokumentum kulcsában megadott dokumentumhoz hasonló dokumentumokat keres. Ha keresési kérelem `moreLikeThis`történik, a rendszer egy lekérdezést hoz létre az adott dokumentumból kinyert keresési kifejezésekkel, amelyek az adott dokumentumot a legmegfelelőbb módon írják le. A rendszer ezután a generált lekérdezést használja a keresési kérelem elvégzéséhez. Alapértelmezés szerint az összes kereshető mező tartalma megtekinthető, mínusz a `searchFields` paraméterrel megadott korlátozott mezők. A `moreLikeThis` paraméter nem használható a keresési `search=[string]`paraméterrel.
+
+Alapértelmezés szerint a rendszer a legfelső szintű kereshető mezők tartalmát veszi figyelembe. Ha inkább konkrét mezőket szeretne megadni, használhatja a `searchFields` paramétert. 
+
+[Összetett típusban](search-howto-complex-data-types.md)nem használhatók kereshető almezők a moreLikeThis.
 
 ## <a name="examples"></a>Példák 
 
-Az alábbi, például egy moreLikeThis lekérdezés. A lekérdezés talál, amelynek leírás mezők leginkább hasonlítanak, a mező a forrás-dokumentum által megadott a dokumentumok a `moreLikeThis` paraméter.
+Az alábbi példa egy moreLikeThis-lekérdezést mutat be. A lekérdezés megkeresi azokat a dokumentumokat, amelyek leírás mezőjének legtöbbje hasonló a forrásdokumentum mezőjéhez `moreLikeThis` a paraméterben megadott módon.
 
 ```
-Get /indexes/hotels/docs?moreLikeThis=1002&searchFields=description&api-version=2016-09-01-Preview
+Get /indexes/hotels/docs?moreLikeThis=1002&searchFields=description&api-version=2019-05-06-Preview
 ```
 
 ```
-POST /indexes/hotels/docs/search?api-version=2016-09-01-Preview
+POST /indexes/hotels/docs/search?api-version=2019-05-06-Preview
     {
       "moreLikeThis": "1002",
       "searchFields": "description"
     }
 ```
 
-## <a name="feature-availability"></a>Szolgáltatások rendelkezésre állása
 
-A moreLikeThis funkció jelenleg előzetes verzióban és csak az előzetes api-verziók, a támogatott `2015-02-28-Preview` és `2016-09-01-Preview`. Mivel az API-verzió van megadva a kérelem, kombinálhatja általánosan elérhető (GA), és előzetes verziójú API-k ugyanabban az alkalmazásban lehetőség. Azonban API-k nem az SLA-t és a szolgáltatások előzetes változhatnak, ezért nem javasoljuk az éles alkalmazásokban használja őket.
+## <a name="next-steps"></a>További lépések
+
+A szolgáltatással való kísérletezéshez bármilyen webes tesztelési eszközt használhat.  Javasoljuk, hogy ehhez a gyakorlathoz a Poster-t használja.
+
+> [!div class="nextstepaction"]
+> [Ismerkedjen meg Azure Search REST API-kkal a Poster használatával](search-get-started-postman.md)

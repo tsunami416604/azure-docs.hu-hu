@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 78a290d8136f8804e853d36a9bc95571625ed89c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 215b839c21c2590c08ac2f4250086eaf97914ce1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58876768"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66243710"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Végfelhasználói hitelesítés az Azure Data Lake Storage Gen1 a .NET SDK használatával
 > [!div class="op_single_selector"]
@@ -30,26 +30,18 @@ ms.locfileid: "58876768"
 Ebben a cikkben megismerkedhet a .NET SDK használata ehhez a végfelhasználói hitelesítés az Azure Data Lake Storage Gen1. Szolgáltatások közötti hitelesítés a Data Lake Storage Gen1 .NET SDK használatával, lásd: [szolgáltatások közötti hitelesítés a Data Lake Storage Gen1 .NET SDK használatával](data-lake-store-service-to-service-authenticate-net-sdk.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
-* **Visual Studio 2013, 2015 vagy 2017** Az alábbi utasítások a Visual Studio 2017-et használják.
+* **A Visual Studio 2013 vagy újabb**. Az alábbi utasítások a Visual Studio 2019 használják.
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 
 * **Hozzon létre a "Natív" Azure Active Directory-alkalmazás**. El kell végeznie a lépések [végfelhasználói hitelesítés a Data Lake Storage Gen1 az Azure Active Directoryval](data-lake-store-end-user-authenticate-using-active-directory.md).
 
 ## <a name="create-a-net-application"></a>.NET-alkalmazás létrehozása
-1. Nyissa meg a Visual Studiót, és hozzon létre egy konzolalkalmazást.
-2. Kattintson a **File** (Fájl) menüben a **New** (Új), majd a **Project** (Projekt) elemre.
-3. Az **Új projekt** területen írja be vagy válassza ki az alábbi értékeket:
+1. A Visual Studióban válassza ki a **fájl** menüben **új**, majd **projekt**.
+2. Válasszon **Console App (.NET Framework)** , majd válassza ki **tovább**.
+3. A **projektnév**, adja meg `CreateADLApplication`, majd válassza ki **létrehozás**.
 
-   | Tulajdonság | Érték |
-   | --- | --- |
-   | Kategória |Sablonok/Visual C#/Windows |
-   | Sablon |Konzolalkalmazás |
-   | Name (Név) |CreateADLApplication |
-
-4. A projekt létrehozásához kattintson az **OK** gombra.
-
-5. Adja hozzá a NuGet-csomagokat a projekthez.
+4. Adja hozzá a NuGet-csomagokat a projekthez.
 
    1. Kattintson a jobb gombbal a projekt nevére a Megoldáskezelőben, majd kattintson a **Manage NuGet Packages** (NuGet-csomagok kezelése) elemre.
    2. Győződjön meg arról, hogy a **NuGet Package Manager** (NuGet-csomagkezelő) lapon a **Package source** (Csomag forrása) értéke **nuget.org**, és az **Include prerelease** (Előzetes verzió belefoglalása) jelölőnégyzet be van jelölve.
@@ -61,8 +53,8 @@ Ebben a cikkben megismerkedhet a .NET SDK használata ehhez a végfelhasználói
         ![NuGet-forrás hozzáadása](./media/data-lake-store-get-started-net-sdk/data-lake-store-install-nuget-package.png "Új Azure Data Lake-fiók létrehozása")
    4. Zárja be a **NuGet-csomagkezelőt**.
 
-6. Nyissa meg **Program.cs**
-7. Cserélje le a használatával utasítások a következő sorokat:
+5. Nyissa meg **Program.cs**
+6. Cserélje le a használatával utasítások a következő sorokat:
 
     ```csharp
     using System;
@@ -82,7 +74,7 @@ Ebben a cikkben megismerkedhet a .NET SDK használata ehhez a végfelhasználói
 ## <a name="end-user-authentication"></a>Végfelhasználói hitelesítés
 Ez a kódrészlet adja hozzá a .NET-ügyfélalkalmazás. A helyőrző értékeket cserélje le az értékeket beolvasni az Azure AD natív alkalmazással (előfeltétel szerepel). Ez a kódrészlet lehetővé teszi az alkalmazás hitelesítéséhez **interaktív módon** a Data Lake Storage Gen1, ami azt jelenti, hogy adja meg Azure hitelesítő adatait kéri.
 
-Egyszerűen használható az alábbi kódrészletben alapértelmezett értékeket használja az ügyfél-Azonosítóját és átirányítási URI-t, amely bármely Azure-előfizetés esetén érvényes. Az alábbi kódrészletben meg kell adnia az értéket a bérlő azonosítóját. A bérlő Azonosítóját adja meg az utasításokat követve kérheti [a Bérlőazonosító beszerzése](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id).
+Egyszerűen használható az alábbi kódrészletben alapértelmezett értékeket használja az ügyfél-Azonosítóját és átirányítási URI-t, amely bármely Azure-előfizetés esetén érvényes. Az alábbi kódrészletben meg kell adnia az értéket a bérlő azonosítóját. A bérlő Azonosítóját adja meg az utasításokat követve kérheti [a Bérlőazonosító beszerzése](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
     
 - Cserélje le a Main() függvény a következő kódot:
 

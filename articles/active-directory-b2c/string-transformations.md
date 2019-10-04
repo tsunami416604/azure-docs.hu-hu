@@ -1,43 +1,43 @@
 ---
-title: Karakterlánc-jogcímek átalakítása példák az identitás élmény keretrendszer sémát az Azure Active Directory B2C |} A Microsoft Docs
-description: Karakterlánc jogcímek átalakítása példák az identitás élmény keretrendszer sémát az Azure Active Directory B2C a.
+title: String jogcím-átalakítási példák a Azure Active Directory B2C Identity Experience Framework sémája esetében | Microsoft Docs
+description: Karakterlánc-jogcím-átalakítási példák a Azure Active Directory B2C Identity Experience Framework sémájára.
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 32acee78b1aadbe5a461de6ea4475cf28503c325
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 77f0b196777ae0f2ff0b870eac0a01b11854190b
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58113027"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936811"
 ---
-# <a name="string-claims-transformations"></a>Karakterlánc jogcím-átalakítás
+# <a name="string-claims-transformations"></a>Karakterlánc-jogcímek átalakítása
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Ez a cikk példákat ad az Azure Active Directory (Azure AD) B2C-ben a karakterlánc a jogcímek átalakítása az identitás-kezelőfelületi keretrendszer séma használatával. További információkért lásd: [ClaimsTransformations](claimstransformations.md).
+Ez a cikk példákat tartalmaz a Azure Active Directory B2C (Azure AD B2C) Identity Experience Framework-sémájának karakterlánc-jogcímek átalakítására. További információ: [ClaimsTransformations](claimstransformations.md).
 
-## <a name="assertstringclaimsareequal"></a>AssertStringClaimsAreEqual 
+## <a name="assertstringclaimsareequal"></a>AssertStringClaimsAreEqual
 
-Hasonlítsa össze a két jogcímeket, és ha azok nem egyenlő a megadott összehasonlító inputClaim1, inputClaim2 és stringComparison alapján kivételt.
+Hasonlítsa össze a két jogcímet, és kivételt képez, ha a megadott összehasonlító inputClaim1, a inputClaim2 és a Stringcomparison argumentummal szerint nem egyeznek.
 
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| Bemeneti jogcím | inputClaim1 | sztring | Első jogcím típusa, amelyet össze kell hasonlítani. |
-| Bemeneti jogcím | inputClaim2 | sztring | Második jogcím típusa, ami kell összehasonlítani. |
-| InputParameter | stringComparison | sztring | adatkarakterlánc-összehasonlítás, az értékek egyikét: Sorszámát, OrdinalIgnoreCase. |
+| InputClaim | inputClaim1 | Karakterlánc | Az első jogcím típusa, amelyet össze kell hasonlítani. |
+| InputClaim | inputClaim2 | Karakterlánc | A második jogcím típusa, amelyet össze kell hasonlítani. |
+| InputParameter | Stringcomparison argumentummal | Karakterlánc | karakterlánc-összehasonlítás, az értékek egyike: Sorszám, OrdinalIgnoreCase. |
 
-A **AssertStringClaimsAreEqual** jogcímek átalakítását a rendszer mindig futtatja a egy [ellenőrzési technikai profil](validation-technical-profile.md) , hívja meg a [önálló kiszolgáló által megerősített technikai profil](self-asserted-technical-profile.md). A **UserMessageIfClaimsTransformationStringsAreNotEqual** önellenőrzött technikai profil metaadataiban szabályozza a hibaüzenet a felhasználó számára látható.
+Az **AssertStringClaimsAreEqual** jogcímek átalakítását mindig egy [önérvényesített technikai profil](self-asserted-technical-profile.md)által hívott [érvényesítési műszaki profilból](validation-technical-profile.md) hajtja végre a rendszer. A **UserMessageIfClaimsTransformationStringsAreNotEqual** önérvényesített technikai profil metaadatai a felhasználónak megjelenített hibaüzenetet vezérlik.
 
-![AssertStringClaimsAreEqual execution](./media/string-transformations/assert-execution.png)
+![AssertStringClaimsAreEqual-végrehajtás](./media/string-transformations/assert-execution.png)
 
-Használhatja a jogcím-átalakítás győződjön meg arról, hogy, két ClaimTypes ugyanazzal az értékkel rendelkezik. Ha nem, akkor egy hibaüzenet fordul elő. Az alábbi példa ellenőrzi, hogy a **strongAuthenticationEmailAddress** takar egyenlő **e-mail** takar. Ellenkező esetben hibaüzenet fordul elő. 
+A jogcímek átalakításával gondoskodhat arról, hogy két ClaimTypes ugyanazzal az értékkel rendelkezzen. Ha nem, a rendszer hibaüzenetet küld. A következő példa ellenőrzi, hogy a **strongAuthenticationEmailAddress** claimType egyenlő **-e az e-mail-** claimType. Ellenkező esetben a rendszer hibaüzenetet küld.
 
 ```XML
 <ClaimsTransformation Id="AssertEmailAndStrongAuthenticationEmailAddressAreEqual" TransformationMethod="AssertStringClaimsAreEqual">
@@ -52,7 +52,7 @@ Használhatja a jogcím-átalakítás győződjön meg arról, hogy, két ClaimT
 ```
 
 
-A **bejelentkezési nem interaktív** érvényesítési technikai profil hívások a **AssertEmailAndStrongAuthenticationEmailAddressAreEqual** jogcím-átalakítás.
+A **bejelentkezés – nem interaktív** érvényesítő technikai profil meghívja a **AssertEmailAndStrongAuthenticationEmailAddressAreEqual** jogcím-átalakítást.
 ```XML
 <TechnicalProfile Id="login-NonInteractive">
   ...
@@ -62,7 +62,7 @@ A **bejelentkezési nem interaktív** érvényesítési technikai profil hívás
 </TechnicalProfile>
 ```
 
-Az önellenőrzött technikai profilban meghívja az érvényesítés **bejelentkezési nem interaktív** technikai profil.
+Az önérvényesített technikai profil meghívja az érvényesítési **bejelentkezést nem interaktív** technikai profilt.
 
 ```XML
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
@@ -77,24 +77,24 @@ Az önellenőrzött technikai profilban meghívja az érvényesítés **bejelent
 
 ### <a name="example"></a>Példa
 
-- A bemeneti jogcímek:
-  - **inputClaim1**: someone@contoso.com
-  - **inputClaim2**: someone@outlook.com
+- Bemeneti jogcímek:
+  - **inputClaim1**:someone@contoso.com
+  - **inputClaim2**:someone@outlook.com
     - Bemeneti paraméterek:
-  - **stringComparison**: ordinalIgnoreCase
-- Eredmény: Hiba lépett fel
+  - **stringcomparison argumentummal**: ordinalIgnoreCase
+- Találat Hiba történt
 
-## <a name="changecase"></a>ChangeCase 
+## <a name="changecase"></a>ChangeCase
 
-Módosítja az eset a megadott jogcím csökkentheti, vagy a nagybetűs függően az operátor.
+A megadott jogcím esetét az operátortól függően az alacsonyabb vagy a nagybetűs értékre módosítja.
 
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| Bemeneti jogcím | inputClaim1 | sztring | A takar, amelyek kell módosítani. |
-| InputParameter | toCase | sztring | A következő értékek egyikét: `LOWER` vagy `UPPER`. |
-| OutputClaim | outputClaim | sztring | Az a jogcím-átalakítás után előállított takar meghívása. |
+| InputClaim | inputClaim1 | Karakterlánc | A módosítandó ClaimType. |
+| InputParameter | toCase | Karakterlánc | A következő értékek egyike: `LOWER` vagy `UPPER`. |
+| outputClaim | outputClaim | Karakterlánc | A jogcím-átalakítás után létrehozott ClaimType meghívása megtörtént. |
 
-Bármilyen karakterlánc takar csökkentheti, vagy a nagybetűs módosításához használja a jogcím-átalakítást.  
+Használja ezt a jogcím-átalakítást, ha bármilyen karakterláncot ClaimType, amely kisebb vagy nagybetűs lehet.
 
 ```XML
 <ClaimsTransformation Id="ChangeToLower" TransformationMethod="ChangeCase">
@@ -112,23 +112,23 @@ Bármilyen karakterlánc takar csökkentheti, vagy a nagybetűs módosításáho
 
 ### <a name="example"></a>Példa
 
-- A bemeneti jogcímek:
-  - **e-mailek**: SomeOne@contoso.com
+- Bemeneti jogcímek:
+  - **e-mail cím**:SomeOne@contoso.com
 - Bemeneti paraméterek:
     - **toCase**: LOWER
 - Kimeneti jogcímek:
-  - **e-mailek**: someone@contoso.com
+  - **e-mail cím**:someone@contoso.com
 
-## <a name="createstringclaim"></a>CreateStringClaim 
+## <a name="createstringclaim"></a>CreateStringClaim
 
-A házirendben megadott bemeneti paraméterből egy karakterlánc jogcímet hoz létre.
+Karakterlánc-jogcímet hoz létre a megadott bemeneti paraméterből a házirendben.
 
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 |----- | ----------------------- | --------- | ----- |
-| InputParameter | érték | sztring | A karakterláncot kell beállítani |
-| OutputClaim | createdClaim | sztring | Az a jogcím-átalakítás után előállított takar meghívása a bemeneti paraméterben megadott értékkel. |
+| InputParameter | value | Karakterlánc | A beállítani kívánt karakterlánc |
+| outputClaim | createdClaim | Karakterlánc | A jogcím-átalakítást követően létrehozott ClaimType a bemeneti paraméterben megadott értékkel lett meghívva. |
 
-A jogcím-átalakítás való használatát egy karakterlánc takar érték beállítása.
+A jogcím-átalakítás használatával ClaimType értéket állíthat be.
 
 ```XML
 <ClaimsTransformation Id="CreateTermsOfService" TransformationMethod="CreateStringClaim">
@@ -143,24 +143,24 @@ A jogcím-átalakítás való használatát egy karakterlánc takar érték beá
 
 ### <a name="example"></a>Példa
 
-- A bemeneti paraméter:
-    - **Érték**: Contoso használati feltételei...
+- Bemeneti paraméter:
+    - **érték**: Contoso szolgáltatási feltételek...
 - Kimeneti jogcímek:
-    - **createdClaim**: A távközlési takar a "Contoso használati szolgáltatás..." értéket tartalmaz.
+    - **createdClaim**: A TOS ClaimType tartalmazza a "contoso szolgáltatási feltételeket..." érték.
 
 ## <a name="compareclaims"></a>CompareClaims
 
-Megállapításához, hogy egy karakterlánc jogcím egy másik egyenlő. Az eredmény egy új logikai takar értékkel `true` vagy `false`.
+Annak megállapítása, hogy egy karakterlánc-jogcím egyenlő-e egy másikkal. Az eredmény egy új logikai claimType, amelynek értéke `true` vagy. `false`
 
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| Bemeneti jogcím | inputClaim1 | sztring | Először jogcím típusa, amelyet össze kell hasonlítani. |
-| Bemeneti jogcím | inputClaim2 | sztring | A második jogcím típusa, amelyet össze kell hasonlítani. |
-| InputParameter | Operátor | sztring | A lehetséges értékek: `EQUAL` vagy `NOT EQUAL`. |
-| InputParameter | ignoreCase | logikai | Itt adhatja meg, hogy ez az összehasonlítás figyelmen kívül hagyja a kis-és a két összehasonlított karakterlánc. |
-| OutputClaim | outputClaim | logikai | Az a jogcím-átalakítás után előállított takar meghívása. |
+| InputClaim | inputClaim1 | Karakterlánc | Az első jogcím típusa, amelyet össze kell hasonlítani. |
+| InputClaim | inputClaim2 | Karakterlánc | Második jogcím típusa, amelyet össze kell hasonlítani. |
+| InputParameter | operator | Karakterlánc | Lehetséges értékek: `EQUAL` vagy `NOT EQUAL`. |
+| InputParameter | ignoreCase | boolean | Meghatározza, hogy az összehasonlítás figyelmen kívül hagyja-e az összehasonlított karakterláncok esetét. |
+| outputClaim | outputClaim | boolean | A jogcím-átalakítás után létrehozott ClaimType meghívása megtörtént. |
 
-A jogcím-átalakítás annak ellenőrzéséhez, hogy a jogcím megegyezik egy másik jogcímek használatát. Például a következő jogcím-e átalakítási ellenőrzések Ha értékét a **e-mail** jogcím megegyezik a **Verified.Email** jogcím.
+Ezzel a jogcím-átalakítással ellenőrizhető, hogy egy jogcím egy másik jogcímnek felel-e meg. Például a következő jogcím-átalakítás ellenőrzi, hogy az **e-mail-** jogcím értéke megegyezik-e az **ellenőrzött. e-mail** -jogcím értékével.
 
 ```XML
 <ClaimsTransformation Id="CheckEmail" TransformationMethod="CompareClaims">
@@ -180,28 +180,28 @@ A jogcím-átalakítás annak ellenőrzéséhez, hogy a jogcím megegyezik egy m
 
 ### <a name="example"></a>Példa
 
-- A bemeneti jogcímek:
-  - **inputClaim1**: someone@contoso.com
-  - **inputClaim2**: someone@outlook.com
+- Bemeneti jogcímek:
+  - **inputClaim1**:someone@contoso.com
+  - **inputClaim2**:someone@outlook.com
 - Bemeneti paraméterek:
-    - **Operátor**:  NOT EQUAL
-    - **ignoreCase**: igaz
+    - **operátor**:  NEM EGYENLŐ
+    - **ignoreCase**: true
 - Kimeneti jogcímek:
-    - **kimeneti jogcím**: igaz
+    - **outputClaim**: true
 
 ## <a name="compareclaimtovalue"></a>CompareClaimToValue
 
-Meghatározza, hogy a jogcím értéke megegyezik a bemeneti paraméter értéke.
+Meghatározza, hogy a jogcím értéke megegyezik-e a bemeneti paraméter értékével.
 
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| Bemeneti jogcím | inputClaim1 | sztring | A jogcím típusa, amelyet össze kell hasonlítani. |
-| InputParameter | Operátor | sztring | A lehetséges értékek: `EQUAL` vagy `NOT EQUAL`. |
-| InputParameter | compareto metódus végrehajtása | sztring | adatkarakterlánc-összehasonlítás, az értékek egyikét: Sorszámát, OrdinalIgnoreCase. |
-| InputParameter | ignoreCase | logikai | Itt adhatja meg, hogy ez az összehasonlítás figyelmen kívül hagyja a kis-és a két összehasonlított karakterlánc. |
-| OutputClaim | outputClaim | logikai | Az a jogcím-átalakítás után előállított takar meghívása. |
+| InputClaim | inputClaim1 | Karakterlánc | A jogcím típusa, amelyet össze kell hasonlítani. |
+| InputParameter | operator | Karakterlánc | Lehetséges értékek: `EQUAL` vagy `NOT EQUAL`. |
+| InputParameter | Compareto metódus végrehajtása | Karakterlánc | karakterlánc-összehasonlítás, az értékek egyike: Sorszám, OrdinalIgnoreCase. |
+| InputParameter | ignoreCase | boolean | Meghatározza, hogy az összehasonlítás figyelmen kívül hagyja-e az összehasonlított karakterláncok esetét. |
+| outputClaim | outputClaim | boolean | A jogcím-átalakítás után létrehozott ClaimType meghívása megtörtént. |
 
-Használhatja a jogcím-átalakítás, ellenőrizze, hogy egy jogcímet a megadott érték egyenlő. Például a következő jogcím-e átalakítási ellenőrzések Ha értékét a **termsOfUseConsentVersion** jogcím egyenlő `v1`.
+A jogcímek átalakításával ellenőrizhető, hogy egy jogcím egyenlő-e a megadott értékkel. Például a következő jogcím-átalakítás ellenőrzi, hogy a **termsOfUseConsentVersion** jogcím értéke egyenlő-e `v1`.
 
 ```XML
 <ClaimsTransformation Id="IsTermsOfUseConsentRequiredForVersion" TransformationMethod="CompareClaimToValue">
@@ -220,29 +220,29 @@ Használhatja a jogcím-átalakítás, ellenőrizze, hogy egy jogcímet a megado
 ```
 
 ### <a name="example"></a>Példa
-- A bemeneti jogcímek:
+- Bemeneti jogcímek:
     - **inputClaim1**: v1
 - Bemeneti paraméterek:
-    - **Compareto metódus végrehajtása**: 1. verzió
-    - **Operátor**: EQUAL 
-    - **ignoreCase**: igaz
+    - **compareto metódus végrehajtása**: 1-es verzió
+    - **operátor**: EQUAL
+    - **ignoreCase**: true
 - Kimeneti jogcímek:
-    - **kimeneti jogcím**: igaz
+    - **outputClaim**: true
 
 ## <a name="createrandomstring"></a>CreateRandomString
 
-Létrehoz egy véletlenszerű karakterlánc a véletlenszám-generátor használatával. Ha a véletlenszám-generátor típusú `integer`, igény szerint elhagyható rekordparaméterrel kezdőérték paraméter és a egy maximális számát. Egy nem kötelező karakterlánc-formátum paraméter lehetővé teszi, hogy a kimeneti formázott használja azt, és a egy nem kötelező base64 paraméter határozza meg, hogy a kimenet base64-kódolású randomGeneratorType [guid, egész] kimeneti jogcím (karakterlánc).
+Egy véletlenszerű karakterláncot hoz létre a véletlenszám-generátor használatával. Ha a véletlenszám-generátor típusa `integer`, opcionálisan egy vetőmag-paraméter, és a maximális szám adható meg. Egy opcionális karakterlánc-formátum paraméterrel a kimenet formázható, és egy opcionális Base64-paraméter azt határozza meg, hogy a kimenet Base64 kódolású randomGeneratorType [GUID, integer] outputClaim (karakterlánc).
 
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| InputParameter | randomGeneratorType | sztring | Adja meg a generált, véletlenszerű értéket `GUID` (globálisan egyedi azonosító) vagy `INTEGER` (szám). |
-| InputParameter | stringFormat | sztring | [Opcionális] A véletlenszerű értéket formátumban. |
-| InputParameter | Base64 | logikai | [Opcionális] A véletlenszerű értéket átalakítása base64. Ha karakterláncként van érvényben, az érték karakterlánc-formátum után kódolása base64. |
-| InputParameter | maximumNumber | int | [Opcionális] A `INTEGER` randomGeneratorType csak. Adja meg a maximális számát. |
-| InputParameter | Kezdőérték  | int | [Opcionális] A `INTEGER` randomGeneratorType csak. Adja meg a kezdőérték véletlenszerű értéket. Megjegyzés: az azonos kezdőérték poskytne véletlenszerű számból álló ugyanabban a sorrendben. |
-| OutputClaim | outputClaim | sztring | Az a jogcím-átalakítás után előállított ClaimTypes meghívása. A véletlenszerű értéket. |
+| InputParameter | randomGeneratorType | Karakterlánc | Meghatározza a létrehozandó véletlenszerű értéket `GUID` (globális egyedi azonosító) vagy `INTEGER` (a szám). |
+| InputParameter | stringFormat | Karakterlánc | Választható A véletlenszerű érték formázása. |
+| InputParameter | Base64 | boolean | Választható Alakítsa át a véletlenszerű értéket Base64-re. Ha a karakterlánc formátuma van alkalmazva, akkor az érték a karakterlánc formátuma után Base64-re van kódolva. |
+| InputParameter | maximumNumber | int | Választható Csak `INTEGER` randomGeneratorType esetén. A maximális szám megadására. |
+| InputParameter | kezdőérték  | int | Választható Csak `INTEGER` randomGeneratorType esetén. A véletlenszerű értékhez tartozó magot határozza meg. Megjegyzés: ugyanaz a mag a véletlenszerűen kiválasztott számok azonos sorrendjét eredményezi. |
+| outputClaim | outputClaim | Karakterlánc | A jogcím-átalakítás meghívása után előállított ClaimTypes. A véletlenszerű érték. |
 
-A következő példa létrehoz egy globális egyedi. A jogcím-átalakítást a véletlenszerű UPN (egyszerű felhasználónév) létrehozására használatos.
+A következő példa globális egyedi azonosítót hoz létre. A jogcím-átalakítás a véletlenszerű UPN (felhasználói elv neve) létrehozásához használatos.
 
 ```XML
 <ClaimsTransformation Id="CreateRandomUPNUserName" TransformationMethod="CreateRandomString">
@@ -258,10 +258,10 @@ A következő példa létrehoz egy globális egyedi. A jogcím-átalakítást a 
 
 - Bemeneti paraméterek:
     - **randomGeneratorType**: GUID
-- Kimeneti jogcímek: 
-    - **kimeneti jogcím**: bc8bedd2-aaa3-411e-bdee-2f1810b73dfc
+- Kimeneti jogcímek:
+    - **outputClaim**: bc8bedd2-AAA3-411e-bdee-2f1810b73dfc
 
-Alábbi példa egy egész számot 0 és 1000 közötti véletlenszerű értéket állít elő. Az érték az olvashatóság érdekében OTP_ {véletlenszerű értéket}.
+Az alábbi példa egy 0 és 1000 közötti egész számú véletlenszerű értéket hoz létre. Az érték {Random Value} OTP_ van formázva.
 
 ```XML
 <ClaimsTransformation Id="SetRandomNumber" TransformationMethod="CreateRandomString">
@@ -283,22 +283,22 @@ Alábbi példa egy egész számot 0 és 1000 közötti véletlenszerű értéket
     - **randomGeneratorType**: INTEGER
     - **maximumNumber**: 1000
     - **stringFormat**: OTP_{0}
-    - **Base64**: False (hamis)
-- Kimeneti jogcímek: 
-    - **kimeneti jogcím**: OTP_853
+    - **Base64**: hamis
+- Kimeneti jogcímek:
+    - **outputClaim**: OTP_853
 
 
 ## <a name="formatstringclaim"></a>FormatStringClaim
 
-Jogcím alapján megadott karakterlánc-formátum. Az átalakítás használja a C# `String.Format` metódust.
+Jogcím formázása a megadott formátumú karakterláncnak megfelelően. Ez a transzformáció a C# `String.Format` metódust használja.
 
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| Bemeneti jogcím | Bemeneti jogcím |sztring |A ClaimType, amely a karakterlánc-formátum {0} paraméter. |
-| InputParameter | stringFormat | sztring | A karakterlánc-formátum, beleértve a {0} paraméter. |
-| OutputClaim | outputClaim | sztring | Az a jogcím-átalakítás után előállított takar meghívása. |
+| InputClaim | InputClaim |Karakterlánc |Az a claimType, amely sztring formátumú {0} paraméterként működik. |
+| InputParameter | stringFormat | Karakterlánc | A karakterlánc formátuma, beleértve {0} a paramétert is. |
+| outputClaim | outputClaim | Karakterlánc | A jogcím-átalakítás után létrehozott ClaimType meghívása megtörtént. |
 
-Használja a jogcím-átalakítás bármelyik egy paraméterrel karakterlánc formátumba {0}. A következő példában létrehozunk egy **userPrincipalName**. Összes közösségi szolgáltató technikai profil, például `Facebook-OAUTH` hívások a **CreateUserPrincipalName** létrehozni egy **userPrincipalName**.   
+Ezzel a jogcím-átalakítással bármilyen sztringet formázhat {0}egyetlen paraméterrel. A következő példa egy **userPrincipalName**hoz létre. Az összes közösségi identitás-szolgáltató technikai profilja `Facebook-OAUTH` , például a **CreateUserPrincipalName** meghívása egy **userPrincipalName**létrehozásához.
 
 ```XML
 <ClaimsTransformation Id="CreateUserPrincipalName" TransformationMethod="FormatStringClaim">
@@ -316,25 +316,25 @@ Használja a jogcím-átalakítás bármelyik egy paraméterrel karakterlánc fo
 
 ### <a name="example"></a>Példa
 
-- A bemeneti jogcímek:
-    - **bemeneti jogcím**: 5164db16-3eee-4629-bfda-dcc3326790e9
+- Bemeneti jogcímek:
+    - **inputClaim**: 5164db16-3eee-4629-bfda-dcc3326790e9
 - Bemeneti paraméterek:
-    - **stringFormat**:  cpim_{0}@{RelyingPartyTenantId}
+    - **stringFormat**: cpim_ @ no__t-1 @ {RelyingPartyTenantId}
 - Kimeneti jogcímek:
-  - **kimeneti jogcím**: cpim_5164db16-3eee-4629-bfda-dcc3326790e9@b2cdemo.onmicrosoft.com
+  - **outputClaim**:cpim_5164db16-3eee-4629-bfda-dcc3326790e9@b2cdemo.onmicrosoft.com
 
 ## <a name="formatstringmultipleclaims"></a>FormatStringMultipleClaims
 
-A megadott formázó karakterlánc megfelelően két jogcímek formátumban. Az átalakítás használja a C# **String.Format** metódust.
+Két jogcím formázása a megadott formátumú karakterláncnak megfelelően. Ez a transzformáció a C# **String. Format** metódust használja.
 
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| Bemeneti jogcím | Bemeneti jogcím |sztring | A ClaimType, amely a karakterlánc-formátum {0} paraméter. |
-| Bemeneti jogcím | Bemeneti jogcím | sztring | A ClaimType, amely a karakterlánc-formátum {1} paraméter. |
-| InputParameter | stringFormat | sztring | A karakterlánc-formátum, beleértve a {0} és {1} paramétereket. |
-| OutputClaim | outputClaim | sztring | Az a jogcím-átalakítás után előállított takar meghívása. |
+| InputClaim | InputClaim |Karakterlánc | Az a claimType, amely sztring formátumú {0} paraméterként működik. |
+| InputClaim | InputClaim | Karakterlánc | Az a claimType, amely sztring formátumú {1} paraméterként működik. |
+| InputParameter | stringFormat | Karakterlánc | A karakterlánc formátuma, beleértve {0} a {1} és a paramétereket is. |
+| outputClaim | outputClaim | Karakterlánc | A jogcím-átalakítás után létrehozott ClaimType meghívása megtörtént. |
 
-Használja a jogcím-átalakítás két paramétert bármelyik karakterlánc formátumba {0} és {1}. A következő példában létrehozunk egy **displayName** a megadott formátummal:
+A jogcímek átalakításával bármilyen sztringet formázhat két {0} paraméterrel és {1}. A következő példa egy **DisplayName** paramétert hoz létre a megadott formátumban:
 
 ```XML
 <ClaimsTransformation Id="CreateDisplayNameFromFirstNameAndLastName" TransformationMethod="FormatStringMultipleClaims">
@@ -353,24 +353,24 @@ Használja a jogcím-átalakítás két paramétert bármelyik karakterlánc for
 
 ### <a name="example"></a>Példa
 
-- A bemeneti jogcímek:
-    - **inputClaim1**: János
+- Bemeneti jogcímek:
+    - **inputClaim1**: Joe
     - **inputClaim2**: Fernando
 - Bemeneti paraméterek:
-    - **stringFormat**: {0} {1}
+    - **stringFormat**: {0}{1}
 - Kimeneti jogcímek:
-    - **kimeneti jogcím**: János Fernando
+    - **outputClaim**: Joe Fernando
 
 ## <a name="getmappedvaluefromlocalizedcollection"></a>GetMappedValueFromLocalizedCollection
 
-Egy elem keresésekor a jogcím **korlátozás** gyűjtemény.
+Elem keresése jogcím- **korlátozási** gyűjteményből.
 
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| Bemeneti jogcím | mapFromClaim | sztring | A jogcímet, amely keresett szöveget tartalmazza a **restrictionValueClaim** a jogcímeket a **korlátozás** gyűjtemény.  |
-| OutputClaim | restrictionValueClaim | sztring | A jogcímet, amely tartalmazza a **korlátozás** gyűjtemény. A jogcímek átalakításáról meghívása után a jogcím értékét tartalmazza a kijelölt elem értékét. |
+| InputClaim | mapFromClaim | Karakterlánc | Az a jogcím, amely tartalmazza a **restrictionValueClaim** jogcímek által a **korlátozási** gyűjteményben felkeresni kívánt szöveget.  |
+| outputClaim | restrictionValueClaim | Karakterlánc | A korlátozási gyűjteményt tartalmazó jogcím. A jogcímek átalakításának meghívása után a jogcím értéke a kijelölt elem értékét tartalmazza. |
 
-Az alábbi példa a hibaüzenet leírása a hiba a kulcs alapján keres. A **responseMsg** jogcím elérhető, hogy a felhasználó vagy a függő entitás küldendő hibaüzenetek gyűjteményét tartalmazza.
+A következő példa a hibaüzenet alapján megkeresi a hibaüzenet leírását. Az **responseMsg** jogcím olyan hibaüzenetek gyűjteményét tartalmazza, amelyek a végfelhasználónak vagy a függő entitásnak küldendőek.
 
 ```XML
 <ClaimType Id="responseMsg">
@@ -384,7 +384,7 @@ Az alábbi példa a hibaüzenet leírása a hiba a kulcs alapján keres. A **res
   </Restriction>
 </ClaimType>
 ```
-A jogcímek átalakításáról kikeresi az elem szövegét, és annak értékét adja vissza. Ha a korlátozás van lokalizálva használatával `<LocalizedCollection>`, a jogcímek átalakításáról honosított értékét adja vissza.
+A jogcím-átalakítás megkeresi az elemek szövegét, és visszaadja az értékét. Ha a korlátozás honosítva van a `<LocalizedCollection>`használatával, a jogcím-átalakítás a honosított értéket adja vissza.
 
 ```XML
 <ClaimsTransformation Id="GetResponseMsgMappedToResponseCode" TransformationMethod="GetMappedValueFromLocalizedCollection">
@@ -392,30 +392,30 @@ A jogcímek átalakításáról kikeresi az elem szövegét, és annak értéké
     <InputClaim ClaimTypeReferenceId="responseCode" TransformationClaimType="mapFromClaim" />
   </InputClaims>
   <OutputClaims>
-    <OutputClaim ClaimTypeReferenceId="responseMsg" TransformationClaimType="restrictionValueClaim" />         
+    <OutputClaim ClaimTypeReferenceId="responseMsg" TransformationClaimType="restrictionValueClaim" />        
   </OutputClaims>
 </ClaimsTransformation>
 ```
 
 ### <a name="example"></a>Példa
 
-- A bemeneti jogcímek:
+- Bemeneti jogcímek:
     - **mapFromClaim**: B2C_V1_90001
 - Kimeneti jogcímek:
-    - **restrictionValueClaim**: Akkor tud bejelentkezni, mert Ön egy kisebb.
+    - **restrictionValueClaim**: Nem tud bejelentkezni, mert Ön kisebb.
 
 ## <a name="lookupvalue"></a>LookupValue
 
-A jogcím értéke keresnie egy másik jogcím értéke alapján értékek listáját.
+Keressen egy jogcím értékét egy másik jogcím értéke alapján.
 
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| Bemeneti jogcím | inputParameterId | sztring | A keresési értéket tartalmazó jogcímet |
-| InputParameter | |sztring | InputParameters gyűjteménye. |
-| InputParameter | errorOnFailedLookup | logikai | Annak szabályozása, hogy hibát ad vissza, ha nincs egyező keresési. |
-| OutputClaim | inputParameterId | sztring | Az a jogcím-átalakítás után előállított ClaimTypes meghívása. Az egyező azonosító értékét |
+| InputClaim | inputParameterId | Karakterlánc | A keresési értéket tartalmazó jogcím |
+| InputParameter | |Karakterlánc | A inputParameters gyűjteménye. |
+| InputParameter | errorOnFailedLookup | boolean | Annak ellenőrzése, hogy a rendszer hibát ad-e vissza, ha nincs megfelelő keresés. |
+| outputClaim | inputParameterId | Karakterlánc | A jogcím-átalakítás meghívása után előállított ClaimTypes. A megfelelő azonosító értéke. |
 
-Az alábbi példában szereplő egyik inputParameters gyűjtemény keres. A jogcímek átalakítását a tartomány nevét az azonosító és az értékét (az alkalmazás azonosítója) visszaadása.
+A következő példa az egyik inputParameters-gyűjteményben keresi a tartománynevet. A jogcím-átalakítás megkeresi a tartománynevet az azonosítóban, és visszaadja az értékét (alkalmazás-azonosító).
 
 ```XML
  <ClaimsTransformation Id="DomainToClientId" TransformationMethod="LookupValue">
@@ -431,30 +431,30 @@ Az alábbi példában szereplő egyik inputParameters gyűjtemény keres. A jogc
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="domainAppId" TransformationClaimType="outputClaim" />
   </OutputClaims>
-</ClaimsTransformation> 
+</ClaimsTransformation>
 ```
 
 ### <a name="example"></a>Példa
 
-- A bemeneti jogcímek:
+- Bemeneti jogcímek:
     - **inputParameterId**: test.com
 - Bemeneti paraméterek:
     - **contoso.com**: 13c15f79-8fb1-4e29-a6c9-be0d36ff19f1
     - **microsoft.com**: 0213308f-17cb-4398-b97e-01da7bd4804e
     - **test.com**: c7026f88-4299-4cdb-965d-3f166464b8a9
-    - **errorOnFailedLookup**: False (hamis)
+    - **errorOnFailedLookup**: hamis
 - Kimeneti jogcímek:
-    - **kimeneti jogcím**: c7026f88-4299-4cdb-965d-3f166464b8a9
+    - **outputClaim**: c7026f88-4299-4cdb-965d-3f166464b8a9
 
 ## <a name="nullclaim"></a>NullClaim
 
-Tisztítsa meg egy adott jogcím értékét.
+Egy adott jogcím értékének megtisztítása.
 
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| OutputClaim | claim_to_null | sztring | A jogcím értéke null. |
+| outputClaim | claim_to_null | Karakterlánc | A jogcím értéke NULL. |
 
-A jogcím-átalakítást használatával távolítsa el a jogcímek tulajdonságcsomagjait szükségtelen adatokat. A munkamenet-cookie-t, így kisebb lesz. A következő példa eltávolítja az értékét a `TermsOfService` jogcím típusa.
+Használja ezt a jogcím-átalakítást a szükségtelen adatok eltávolításához a jogcím tulajdonságának táskájában. Így a munkamenet-cookie kisebb lesz. A következő példa eltávolítja a `TermsOfService` jogcím típusának értékét.
 
 ```XML
 <ClaimsTransformation Id="SetTOSToNull" TransformationMethod="NullClaim">
@@ -464,21 +464,21 @@ A jogcím-átalakítást használatával távolítsa el a jogcímek tulajdonság
 </ClaimsTransformation>
 ```
 
-- A bemeneti jogcímek:
-    - **kimeneti jogcím**: Üdvözli a Contoso-alkalmazást. Ha továbbra is megkeresheti, és használja ezt a webhelyet, elfogadja megfelelnek, és a következő feltételek kötelezőek...
+- Bemeneti jogcímek:
+    - **outputClaim**: Üdvözli a contoso alkalmazás. Ha továbbra is megkeresi és használja ezt a webhelyet, Ön vállalja, hogy betartja a következő feltételeket és kikötéseket...
 - Kimeneti jogcímek:
-    - **kimeneti jogcím**: NULL
+    - **outputClaim**: NULL
 
 ## <a name="parsedomain"></a>ParseDomain
 
-Lekérdezi egy e-mail-cím tartományt jelölő része.
+Egy e-mail-cím tartomány részét kapja meg.
 
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| Bemeneti jogcím | emailAddress | sztring | A ClaimType, amely tartalmazza az e-mail-cím. |
-| OutputClaim | tartomány | sztring | Az a jogcím-átalakítás után előállított takar meghívása – a tartományhoz. |
+| InputClaim | EmailAddress | Karakterlánc | Az e-mail-címet tartalmazó ClaimType. |
+| outputClaim | tartomány | Karakterlánc | A jogcímek átalakítását követően létrehozott ClaimType – a tartomány. |
 
-Használja a jogcím-átalakítás elemzése után a tartomány nevét a @ karaktert a felhasználó. Ez a személyes azonosításra alkalmas adatokat (PII) eltávolítása a naplózási adatok hasznos lehet. A következő jogcímek átalakítását bemutatja, hogyan elemezhető a tartomány nevét egy **e-mail** jogcím.
+Ezzel a jogcím-átalakítással elemezheti a tartománynevet a felhasználó @ szimbóluma után. Ez hasznos lehet a személyazonosításra alkalmas adatoknak a naplózási adatokból való eltávolításához. A következő jogcím-átalakítás azt mutatja be, hogyan elemezheti a tartománynevet egy **e-mail-** jogcím alapján.
 
 ```XML
 <ClaimsTransformation Id="SetDomainName" TransformationMethod="ParseDomain">
@@ -493,27 +493,27 @@ Használja a jogcím-átalakítás elemzése után a tartomány nevét a @ karak
 
 ### <a name="example"></a>Példa
 
-- A bemeneti jogcímek:
-  - **e-mail cím**: joe@outlook.com
+- Bemeneti jogcímek:
+  - **emailAddress**:joe@outlook.com
 - Kimeneti jogcímek:
-    - **tartomány**: Outlook.com-os
+    - **tartomány**: Outlook.com
 
 ## <a name="setclaimsifstringsareequal"></a>SetClaimsIfStringsAreEqual
 
-Ellenőrzi, hogy egy karakterlánc jogcím és `matchTo` bemeneti paraméter egyenlő, és beállítja a kimeneti jogcímek található értékkel `stringMatchMsg` és `stringMatchMsgCode` bemeneti paraméterek, együtt kell beállítani: hasonlítsa össze eredmény kimeneti jogcímek `true` vagy `false` összehasonlítás eredménye alapján.
+Ellenőrzi, hogy egy karakterlánc- `matchTo` jogcím és egy bemeneti paraméter egyenlő-e, és beállítja-e a kimeneti `stringMatchMsg` jogcímeket a (z) és `stringMatchMsgCode` a bemeneti paraméterek értékével együtt, az eredmény `true` kimeneti jogcímek összehasonlításával, amelyet a következőként kell megadni: vagy `false` összehasonlítás eredménye alapján.
 
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| Bemeneti jogcím | Bemeneti jogcím | sztring | A jogcím típusa, amelyet össze kell hasonlítani. |
-| InputParameter | matchTo | sztring | Az összehasonlítandó karakterlánc `inputClaim`. |
-| InputParameter | stringComparison | sztring | A lehetséges értékek: `Ordinal` vagy `OrdinalIgnoreCase`. |
-| InputParameter | stringMatchMsg | sztring | Első érték kell beállítani, ha karakterláncok egyenlő. |
-| InputParameter | stringMatchMsgCode | sztring | Második értéket kell beállítani, ha karakterláncok egyenlő. |
-| OutputClaim | outputClaim1 | sztring | Ha karakterláncokat egyenlő, a kimeneti jogcím értékét tartalmazza `stringMatchMsg` bemeneti paraméter. |
-| OutputClaim | outputClaim2 | sztring | Ha karakterláncokat egyenlő, a kimeneti jogcím értékét tartalmazza `stringMatchMsgCode` bemeneti paraméter. |
-| OutputClaim | stringCompareResultClaim | logikai | Az összehasonlítás eredménye kimeneti jogcím típusa, kell beállítani amely `true` vagy `false` összehasonlítás eredménye alapján. |
+| InputClaim | InputClaim | Karakterlánc | A jogcím típusa, amelyet össze kell hasonlítani. |
+| InputParameter | matchTo | Karakterlánc | Az összehasonlításhoz `inputClaim`használandó karakterlánc. |
+| InputParameter | Stringcomparison argumentummal | Karakterlánc | Lehetséges értékek: `Ordinal` vagy `OrdinalIgnoreCase`. |
+| InputParameter | stringMatchMsg | Karakterlánc | Az első érték, amely akkor lesz beállítva, ha a karakterláncok egyenlőek. |
+| InputParameter | stringMatchMsgCode | Karakterlánc | Az a második érték, amelyet a karakterláncok egyenlőként kell megadni. |
+| outputClaim | outputClaim1 | Karakterlánc | Ha a karakterláncok egyenlőek, ez a kimeneti jogcím a `stringMatchMsg` bemeneti paraméter értékét tartalmazza. |
+| outputClaim | outputClaim2 | Karakterlánc | Ha a karakterláncok egyenlőek, ez a kimeneti jogcím a `stringMatchMsgCode` bemeneti paraméter értékét tartalmazza. |
+| outputClaim | stringCompareResultClaim | boolean | Az eredményül kapott kimeneti jogcím típusának összehasonlítása, amelyet az összehasonlítás `true` eredményének megfelelően kell beállítani `false` . |
 
-Használhatja a jogcím-átalakítás, ellenőrizze, hogy egy jogcímet a megadott érték egyenlő. Például a következő jogcím-e átalakítási ellenőrzések Ha értékét a **termsOfUseConsentVersion** jogcím egyenlő `v1`. Ha igen, módosítsa az értéket `v2`. 
+A jogcímek átalakításával ellenőrizhető, hogy a jogcímek értéke megegyezik-e a megadott értékkel. Például a következő jogcím-átalakítás ellenőrzi, hogy a **termsOfUseConsentVersion** jogcím értéke egyenlő-e `v1`. Ha igen, módosítsa az értéket `v2`a következőre:.
 
 ```XML
 <ClaimsTransformation Id="CheckTheTOS" TransformationMethod="SetClaimsIfStringsAreEqual">
@@ -535,32 +535,32 @@ Használhatja a jogcím-átalakítás, ellenőrizze, hogy egy jogcímet a megado
 ```
 ### <a name="example"></a>Példa
 
-- A bemeneti jogcímek:
-    - **bemeneti jogcím**: v1
+- Bemeneti jogcímek:
+    - **inputClaim**: v1
 - Bemeneti paraméterek:
-    - **matchTo**: 1. verzió
-    - **stringComparison**: ordinalIgnoreCase 
+    - **matchTo**: 1-es verzió
+    - **stringcomparison argumentummal**: ordinalIgnoreCase
     - **stringMatchMsg**:  B2C_V1_90005
-    - **stringMatchMsgCode**:  A távközlési v2 frissítése
+    - **stringMatchMsgCode**:  A TOS frissítése a v2-re
 - Kimeneti jogcímek:
     - **outputClaim1**: B2C_V1_90005
-    - **outputClaim2**: A távközlési v2 frissítése
+    - **outputClaim2**: A TOS frissítése a v2-re
     - **stringCompareResultClaim**: true
 
 ## <a name="setclaimsifstringsmatch"></a>SetClaimsIfStringsMatch
 
-Ellenőrzi, hogy egy karakterlánc jogcím és `matchTo` bemeneti paraméter egyenlő, és beállítja a kimeneti jogcímek található értékkel `outputClaimIfMatched` bemeneti paramétert, együtt kell beállítani: hasonlítsa össze eredmény kimeneti jogcímek `true` vagy `false` alapján a összehasonlítás eredménye.
+Ellenőrzi, hogy egy karakterlánc- `matchTo` jogcím és egy bemeneti paraméter egyenlő-e, és beállítja a kimeneti jogcímeket a `outputClaimIfMatched` bemeneti paraméterben szereplő értékkel együtt, valamint az eredmény kimeneti jogcímet `false` hasonlítja össze, amelyet a (z `true` ) vagy az alapján kell beállítani összehasonlítás eredménye.
 
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| Bemeneti jogcím | claimToMatch | sztring | A jogcím típusa, amelyet össze kell hasonlítani. |
-| InputParameter | matchTo | sztring | A bemeneti jogcím értékével összehasonlítandó karakterlánc. |
-| InputParameter | stringComparison | sztring | A lehetséges értékek: `Ordinal` vagy `OrdinalIgnoreCase`. |
-| InputParameter | outputClaimIfMatched | sztring | Az értéket kell beállítani, ha karakterláncok egyenlő. |
-| OutputClaim | outputClaim | sztring | Ha karakterláncokat egyenlő, a kimeneti jogcím értékét tartalmazza `outputClaimIfMatched` bemeneti paraméter. Vagy null, ha a karakterlánc nem egyezik. |
-| OutputClaim | stringCompareResultClaim | logikai | Az összehasonlítás eredménye kimeneti jogcím típusa, kell beállítani amely `true` vagy `false` összehasonlítás eredménye alapján. |
+| InputClaim | claimToMatch | Karakterlánc | A jogcím típusa, amelyet össze kell hasonlítani. |
+| InputParameter | matchTo | Karakterlánc | A inputClaim összehasonlítandó karakterlánc. |
+| InputParameter | Stringcomparison argumentummal | Karakterlánc | Lehetséges értékek: `Ordinal` vagy `OrdinalIgnoreCase`. |
+| InputParameter | outputClaimIfMatched | Karakterlánc | Az a érték, amelyet a karakterláncok egyenlőként kell megadni. |
+| outputClaim | outputClaim | Karakterlánc | Ha a karakterláncok egyenlőek, ez a kimeneti jogcím a `outputClaimIfMatched` bemeneti paraméter értékét tartalmazza. Vagy Null, ha a karakterláncok nem egyeznek. |
+| outputClaim | stringCompareResultClaim | boolean | Az eredményül kapott kimeneti jogcím típusának összehasonlítása, amelyet az összehasonlítás `true` eredményének megfelelően kell beállítani `false` . |
 
-Például a következő jogcím-e átalakítási ellenőrzések Ha értékét **korcsoport** jogcím egyenlő `Minor`. Ha igen, lépjen vissza az értéket `B2C_V1_90001`. 
+Például a következő jogcím-átalakítás ellenőrzi, hogy a **beszerzésimennyiség** jogcím értéke egyenlő-e `Minor`. Ha igen, a értéket az értékre kell `B2C_V1_90001`visszaadnia.
 
 ```XML
 <ClaimsTransformation Id="SetIsMinor" TransformationMethod="SetClaimsIfStringsMatch">
@@ -581,13 +581,13 @@ Például a következő jogcím-e átalakítási ellenőrzések Ha értékét **
 
 ### <a name="example"></a>Példa
 
-- A bemeneti jogcímek:
-    - **claimToMatch**: Kiskorú
+- Bemeneti jogcímek:
+    - **claimToMatch**: Alverzió
 - Bemeneti paraméterek:
-    - **matchTo**: Kiskorú
-    - **stringComparison**: ordinalIgnoreCase 
+    - **matchTo**: Alverzió
+    - **stringcomparison argumentummal**: ordinalIgnoreCase
     - **outputClaimIfMatched**:  B2C_V1_90001
 - Kimeneti jogcímek:
     - **isMinorResponseCode**: B2C_V1_90001
-    - **isMinor**: igaz
+    - **isMinor**: true
 

@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Csatlakozási problémák elhárítása |} A Microsoft Docs'
+title: 'Azure AD Connect: Az Azure AD hibaelhárítása kapcsolati hibák |} A Microsoft Docs'
 description: Az Azure AD Connect kapcsolati problémáinak hibaelhárítását mutatja be.
 services: active-directory
 documentationcenter: ''
@@ -12,18 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/18/2017
+ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0afc31bf08a5037d91885bc6a85c6aeaf858825
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 7519f47037d2d7ff37564ab27c1cc58b65ff6c14
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57436655"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64572782"
 ---
-# <a name="troubleshoot-connectivity-issues-with-azure-ad-connect"></a>Az Azure AD Connect kapcsolati problémáinak hibaelhárítása
+# <a name="troubleshoot-azure-ad-connectivity"></a>Az Azure AD-kapcsolatának hibaelhárítása
 Ez a cikk azt ismerteti, hogyan működik az Azure AD Connect és az Azure AD közötti kapcsolat és a kapcsolódási problémák elhárítása. Ezek olyan problémák, nagy valószínűséggel olyan környezetben, egy proxykiszolgáló láthatók legyenek.
 
 ## <a name="troubleshoot-connectivity-issues-in-the-installation-wizard"></a>A telepítővarázsló a kapcsolati hibák elhárításához

@@ -1,6 +1,6 @@
 ---
-title: Partnerek integrálása az Azure Monitor
-description: További tudnivalók az Azure Monitor partnerek és a velük való integrálásának dokumentáció elérése.
+title: A Azure Monitorrel integrált partnerek
+description: Ismerkedjen meg Azure Monitor partnereivel, és hogyan férhet hozzá az integrációhoz szükséges dokumentációhoz.
 author: rboucher
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,22 +8,22 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: robb
 ms.subservice: ''
-ms.openlocfilehash: cf06645ddcb825ca866d88a1f7724fd3b3e7987b
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: c642fe4a4453d72303470b5149d6d94436cdfa46
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402405"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262300"
 ---
-# <a name="azure-monitor-partner-integrations"></a>Az Azure Monitor partnerintegrációk
+# <a name="azure-monitor-partner-integrations"></a>Azure Monitor partner-integrációk
 
-Betűrend szerinti sorrendben vannak felsorolva. 
+Betűrendben látható. 
 
-## <a name="alertlogic-log-manager"></a>AlertLogic Log Manager
+## <a name="alertlogic-log-manager"></a>AlertLogic log Manager
 
 ![AlertLogic embléma](./media/partners/alertlogic.png)
 
-Az alert Logic Log Manager a virtuális Gépet, az alkalmazás és az Azure platform naplók biztonsági elemzés és megőrzési gyűjti. Az Azure-tevékenységnapló az Azure Monitor API-n keresztül is összegyűjti. Ez az információ malfeasance és megfelelőségi követelmények teljesítése érdekében szolgál.
+A riasztási Logic log Manager a virtuális gépek, az alkalmazások és az Azure platform naplóit gyűjti a biztonsági elemzéshez és az adatmegőrzéshez. Emellett a Azure Monitor API-n keresztül gyűjti az Azure-tevékenység naplóját. Ezek az információk a gonosztett észlelésére és a megfelelőségi követelmények teljesítésére szolgálnak.
 
 [Nyissa meg a dokumentációt.][alertlogic-doc]
 
@@ -31,35 +31,35 @@ Az alert Logic Log Manager a virtuális Gépet, az alkalmazás és az Azure plat
 
 ## <a name="appdynamics"></a>AppDynamics
 
-![AppDynamics-embléma](./media/partners/appdynamics.png)
+![AppDynamics embléma](./media/partners/appdynamics.png)
 
-AppDynamics alkalmazásteljesítmény-felügyeleti (APM) lehetővé teszi, hogy az alkalmazástulajdonosok számára a gyors teljesítmény szűk hibaelhárítása és az Azure-környezetben futó alkalmazások teljesítményének optimalizálásához. Azt figyelheti az Azure Cloud Services (PaaS), webes és feldolgozói szerepkörök, virtuális gépek (IaaS), távoli szolgáltatás észlelése (Microsoft Azure Service Bus), a Microsoft Azure Queue, a Microsoft Azure Services (Azure Blob), az Azure Queue (a Microsoft a Service Bus), adatok Tárolás és a Microsoft Azure Blob Storage. AppDynamics APM az Azure piactéren érhető el.
+A AppDynamics Application Performance Management (APM) lehetővé teszi, hogy az alkalmazások tulajdonosai gyorsan hárítsa el a teljesítménnyel kapcsolatos szűk keresztmetszeteket, és optimalizálják az Azure-környezetben futó alkalmazásaikat. Képes figyelni az Azure Cloud Services (Pásti), a webes & feldolgozói szerepköröket, a Virtual Machines (IaaS), a távoli szolgáltatások észlelését (Microsoft Azure Service Bus), Microsoft Azure üzenetsor, Microsoft Azure távoli szolgáltatások (Azure Blob), Azure üzenetsor (Microsoft Service Bus), adat Storage és Microsoft Azure Blob Storage. Az AppDynamics APM az Azure piactéren érhető el.
 
 [Nyissa meg a dokumentációt.][appdynamics-doc]
 
-## <a name="microfocus-arcsight"></a>Microfocus ArcSight
+## <a name="microfocus-arcsight"></a>Fókusz ArcSight
 
-ArcSight rendelkezik egy intelligens Azure Monitor az event hubs-összekötő.
+A ArcSight rendelkezik egy intelligens összekötővel Azure Monitor Event hubok számára.
 
-[tudj meg többet.][arcsight-doc]
+[Részletek][arcsight-doc]
 
 ## <a name="atlassian-jira"></a>Atlassian JIRA
 
-![Atlassian-embléma](./media/partners/atlassian.png)
+![Atlassian embléma](./media/partners/atlassian.png)
 
-JIRA-jegyeket az Azure Monitor-riasztásokat is létrehozhat.
+Azure Monitor-riasztásokhoz JIRA-jegyeket is létrehozhat.
 
 [Nyissa meg a dokumentációt.][atlassian-doc]
 
 ## <a name="botmetric"></a>Botmetric
 
-[tudj meg többet.][botmetric-doc]
+[Részletek][botmetric-doc]
 
 ## <a name="circonus"></a>Circonus
 
 ![Circonus embléma](./media/partners/circonus.png)
 
-Circonus egy mikroszolgáltatás-alapú figyelési és elemzési platform helyszíni vagy SaaS-telepítés számára készült. Célszerű a teljes körűen eligazítót API-központú platform jobban skálázható és megbízható rendszereknél figyeli. Fejlett DevOps követelményei, Circonus kínál PERCENTILIS alapuló riasztások, diagramok, irányítópultok és gépi intelligencia, amelyek lehetővé teszik a vállalati optimalizáláshoz. Circonus figyeli a Microsoft Azure felhőbeli erőforrások és a valós idejű alkalmazásaikat. Használhatja a Circonus gyűjteni és követni a metrikák a változók szeretné mérni az erőforrásokhoz és alkalmazásokhoz. Circonus az Azure erőforrás-használatot, alkalmazásteljesítmény és működési állapotát rendszerszintű betekintést kaphat.
+A Circonus egy helyszíni vagy SaaS-alapú üzembe helyezéshez készült, a Service-alapú figyelési és elemzési platform. Ez a teljes mértékben automatizálható API-központú platform jobban méretezhető és megbízhatóbb, mint a rendszer által felügyelt rendszerek. A DevOps által támasztott követelmények alapján a Circonus percentilis-alapú riasztásokat, gráfokat, irányítópultokat és gépi tanulási intelligenciát biztosít, amely lehetővé teszi az üzleti optimalizálást. A Circonus valós időben figyeli a Microsoft Azure felhőalapú erőforrásait és alkalmazásait. A Circonus használatával összegyűjtheti és nyomon követheti az erőforrások és az alkalmazások számára mérni kívánt változók metrikáit. A Circonus az Azure erőforrás-kihasználtságával, az alkalmazások teljesítményével és az üzemeltetési állapottal kapcsolatos teljes rendszerszintű láthatóságot biztosít.
 
 [Nyissa meg a dokumentációt.][circonus-doc]
 
@@ -68,31 +68,31 @@ Circonus egy mikroszolgáltatás-alapú figyelési és elemzési platform helysz
 ![CloudHealth embléma](./media/partners/cloudhealth.png)
 
 
-Egyesítése és automatizálhatja a felhőbeli egy platformmal, hogy időt és pénzt takaríthat meg. CloudHealth felhőfelügyeleti biztosítja a láthatóságot, intuitív optimalizálása és Sziklaszilárd eljárásaink. A Cloudhealth platform segítségével a vállalatok és a felhő, befektetés megtérülésének MSP-k. Benne döntések meghozatalában a költség, használati, teljesítmény és biztonság.
+A felhőt egyesítheti és automatizálhatja egy olyan platformmal, amely időt és pénzt takarít meg. A CloudHealth láthatóságot, intuitív optimalizálást és sziklaszilárd irányítási eljárásokat biztosít a felhőalapú felügyelethez. A CloudHealth platform lehetővé teszi a vállalatok és a MSP számára, hogy maximalizálják a Felhőbeli beruházások megtérülését. A költségeket, a használatot, a teljesítményt és a biztonságot érintő döntéseket hozhat.
 
 [tudj meg többet.][cloudhealth-doc]
 
 ## <a name="cloudmonix"></a>CloudMonix
 
-![CloudMonix Logo](./media/partners/cloudmonix.png)
+![CloudMonix embléma](./media/partners/cloudmonix.png)
 
-CloudMonix felügyelet, automatizálás, és önjavító tárolószervezéssel platform a Microsoft Azure-szolgáltatások érhetők el.
+A CloudMonix monitorozást, automatizálást és önjavító szolgáltatásokat kínál Microsoft Azure platformhoz.
 
 [Nyissa meg a dokumentációt.][cloudmonix-doc]
 
-## <a name="datadog"></a>Datadog
+## <a name="datadog"></a>Datadoggal
 
 ![Datadoggal embléma](./media/partners/datadog.png)
 
-Datadoggal szolgáltatás felhőméretű alkalmazások figyelése a világ vezető. Ez magában foglal adatok a kiszolgálók, adatbázisok, eszközök és szolgáltatások egységes a teljes verem képviselniük. Ezek a képességek egy adatok SaaS-alapú elemzési platform az állnak rendelkezésre. Ez a szolgáltatás lehetővé teszi, hogy a fejlesztési és operátor csapatok az együttműködés elősegítése érdekében a segítségével elkerülhető az állásidő, oldja meg a teljesítménybeli problémákat, és győződjön meg arról, hogy a fejlesztés és üzembe helyezési ciklust Befejezés időben. Datadoggal és az Azure integrálásával begyűjtheti és mérőszámainak megtekintése az infrastruktúrában. Virtuális gép metrikái összevetését az alkalmazás-szintű metrikákat. Részletekbe menően vizsgálhatja a metrikákat, tetszőleges kombinációjával, tulajdonságok és az egyéni címkéket.
+A datadoggal a világ legjelentősebb monitorozási szolgáltatása a felhőalapú alkalmazások számára. Összegyűjti a kiszolgálók, adatbázisok, eszközök és szolgáltatások adatait a teljes verem egységes nézetének bemutatásához. Ezek a képességek SaaS-alapú adatelemzési platformon érhetők el. Ez a szolgáltatás lehetővé teszi, hogy a fejlesztői és az Ops-csapatok működjenek együtt az állásidő elkerülésével, a teljesítményproblémák megoldásával, valamint a fejlesztési és üzembe helyezési ciklusok időben történő befejezésének biztosításával. A Datadoggal és az Azure integrálásával az infrastruktúra különböző mérőszámait gyűjtheti és tekintheti meg. A virtuális gépek metrikáinak korrelációja az alkalmazás szintű metrikákkal. A mérőszámokat a tulajdonságok és az egyéni címkék bármely kombinációjának használatával darabolhatja és kockára teheti.
 
 [Nyissa meg a dokumentációt.][datadog-doc]
 
-## <a name="dynatrace"></a>Dynatrace-szel
+## <a name="dynatrace"></a>Dynatrace
 
-![Embléma a dynatrace-szel](./media/partners/dynatrace.png)
+![DynaTrace embléma](./media/partners/dynatrace.png)
 
-A dynatrace-szel OneAgent integrálható az Azure virtuális gépek és alkalmazásszolgáltatások Azure bővítmény mechanizmus révén. Ezzel a módszerrel Dynatrace OneAgent gazdagépek, hálózati és szolgáltatásokkal kapcsolatos teljesítmény-mérőszámokat gyűjthet. Mellett csak megjelenítése metrikák, a dynatrace-szel megjeleníti a környezet teljes körű. Az adatbázis réteg az ügyféloldalról tranzakciók jeleníti meg. Dynatrace mesterséges intelligencián alapuló korrelációs problémák biztosít, és teljesen integrálva-okának biztosíthat metódus szintű elemzéseket kaphat alkalmazáskód és adatbázis. Az ilyen elemzések sokkal egyszerűbbé teszi a hibaelhárítás és a teljesítmény optimalizálása.
+A Dynatrace OneAgent az Azure-beli virtuális gépekkel és App Servicesekkel integrálódik az Azure-bővítményi mechanizmus segítségével. Így a Dynatrace OneAgent a gazdagépek, a hálózat és a szolgáltatások teljesítmény-mérőszámait is összegyűjthetik. A metrikák megjelenítése mellett a Dynatrace teljes körűen megjeleníti a környezeteket. Az ügyfél oldaláról az adatbázis rétegéhez tartozó tranzakciókat jeleníti meg. A Dynatrace AI-alapú korrelációt biztosít a problémákhoz, és teljes körűen integrált kiváltó okokat is tartalmaz, így a metódusok szintjén betekintést nyerhet a programkódba és az adatbázisba. Ez a betekintés sokkal egyszerűbbé teszi a hibaelhárítást és a teljesítmény optimalizálását.
 
 [Nyissa meg a dokumentációt.][dynatrace-doc]
 
@@ -100,7 +100,7 @@ A dynatrace-szel OneAgent integrálható az Azure virtuális gépek és alkalmaz
 
 ![Rugalmas embléma](./media/partners/elastic.png)
 
-Rugalmas keresés vállalat esetében. Az Elastic Stack (Elasticsearch, Kibana, Beats és Logstash) létrehozói, mint a rugalmas buildek önállóan felügyelt, és adatok használhatóvá tétele valós idejű és nagy méretekben a keresés, naplózás, biztonsági és elemzési SaaS-ajánlatok használati eseteket.
+A rugalmas egy keresési cég. A rugalmas verem (Elasticsearch, Kibana, Beats és Logstash) alkotói rugalmasan építik ki az önállóan felügyelt és SaaS-ajánlatokat, amelyek valós időben és nagy méretekben, a keresési, a naplózási, a biztonsági és az elemzési használati esetekben is használhatók.
 
 [Nyissa meg a dokumentációt.][elastic-doc]
 
@@ -108,7 +108,7 @@ Rugalmas keresés vállalat esetében. Az Elastic Stack (Elasticsearch, Kibana, 
 
 ![Grafana embléma](./media/partners/grafana.png)
 
-Grafana egy nyílt forráskódú alkalmazás, amely lehetővé teszi, hogy a metrika idősorozat-adatok megjelenítése.
+A Grafana egy nyílt forráskódú alkalmazás, amely lehetővé teszi az idősorozat-metrikai adatok megjelenítését.
 
 [Nyissa meg a dokumentációt.][grafana-doc]
 
@@ -116,16 +116,16 @@ Grafana egy nyílt forráskódú alkalmazás, amely lehetővé teszi, hogy a met
 
 ![InfluxData embléma](./media/partners/Influxdata.png)
 
-InfluxData, InfluxDB, létrehozója ennek a kezdetektől fogva a metrikák és események (idősorozat-adatok) a DevOps és az IoT-alkalmazások elemzése alapján összeállított modern nyílt forráskódú Platform. Az adatokat láthatják, érzékelő vagy gépek származik, hogy InfluxData felhatalmazza build generációs figyelést, elemzési és IoT-alkalmazások gyorsabb, a fejlesztők, egyszerűbb, és hogy a valódi hozzáadott üzleti érték gyors kidolgozását. A San franciscóban, InfluxData a alapján több mint 420 között a Cisco, eBay, IBM és a Siemens.
+A InfluxData, a InfluxDB létrehozója egy modern, nyílt forráskódú platformot biztosít, amely az alapoktól kezdve a DevOps-és IoT-alkalmazások metrikáinak és eseményeinek (idősoros adatok) elemzésére épül. Akár emberekből, érzékelőkből vagy gépekből származó adatokról van szó, a InfluxData lehetővé teszi a fejlesztők számára, hogy a következő generációs monitorozási, elemzési és IoT alkalmazásokat gyorsabban, könnyebben és a valós üzleti értékek gyors méretezésével méretezheti. A San Franciscóban alapuló InfluxData több mint 420 ügyfél, például a Cisco, az eBay, az IBM és a Siemens.
 
 [Nyissa meg a dokumentációt.][influxdata-doc]
 
 
-## <a name="logic-monitor"></a>Logikai figyelője
+## <a name="logic-monitor"></a>Logikai figyelő
 
-![Logikai figyelő embléma](./media/partners/logicmonitor.png)
+![Logic monitor embléma](./media/partners/logicmonitor.png)
 
-LogicMonitor® a vezető SaaS-alapú, teljesítményfigyelés platform bonyolult informatikai infrastruktúrát. Több ezer olyan technológiák lefedettségét LogicMonitor infrastruktúra és az alkalmazások teljesítményének részletes betekintést biztosít. Az LM felhő átfogó Azure monitoring lehetővé teszi a felhasználók korrelációját, ha az Azure-felhőbeli, helyszíni és hibrid felhőalapú erőforrások – mindezt egyetlen platformról teljesítményét. Automatizált erőforrás-felderítés, figyelés sablonokat, a beépített, előre konfigurált a riasztástípusok küszöbértékét, és testre szabható irányítópultokkal össze informatikai sikeres végrehajtásához szükséges a gyorsabb, rugalmasságot és látható-e.
+A LogicMonitor® a vezető SaaS-alapú, teljesítmény-figyelési platform az összetett informatikai infrastruktúrához. A LogicMonitor több ezer technológiával rendelkezik, és részletes láthatóságot biztosít az infrastruktúra és az alkalmazások teljesítményében. Az LM-felhő átfogó Azure-figyelése lehetővé teszi a felhasználók számára az Azure-felhő, a helyszíni és a hibrid Felhőbeli erőforrások teljesítményének összekapcsolását – mindezt egyetlen platformról. Az automatizált erőforrás-felderítés, beépített figyelési sablonok, előre konfigurált riasztási küszöbértékek és testreszabható irányítópultok kombinálva lehetővé teszik a sikerhez szükséges sebességet, rugalmasságot és láthatóságot.
 
 [Nyissa meg a dokumentációt.][logicmonitor-doc]
 
@@ -133,16 +133,16 @@ LogicMonitor® a vezető SaaS-alapú, teljesítményfigyelés platform bonyolult
 
 ![Moogsoft](./media/partners/moogsoft.png)
 
-Moogsoft AIOps gyorsítja az Agilis üzleti átalakítást.
+A Moogsoft AIOps felgyorsítja az agilis üzleti átalakítást.
 
-A Microsoft Azure Automation and Control-eszközökkel egy valós idejű állapotáról az alkalmazások és az Azure-ban üzembe helyezett mikroszolgáltatások nyújtanak. Ezek segítenek a diagnosztikai és a forgatókönyvek gyorsabb szervizelési. Egyéb harmadik felektől származó eszközök egy a helyszíni alkalmazások és infrastruktúra-állapot nyújtanak.
+Microsoft Azure Automation and Control-eszközök valós idejű ablakokat biztosítanak az Azure-ban üzembe helyezett alkalmazások és szolgáltatások állapotára vonatkozóan. A gyorsabb szervizelés érdekében segítenek a diagnosztika és a runbookok összehangolása során. A harmadik féltől származó eszközök a helyszíni alkalmazásokhoz és az infrastruktúra állapotához biztosítanak egy ablakot.
 
-Moogsoft AIOps automatizálja a szervizelési munkafolyamatok esemény meglévő folyamatok és a szervezeti felépítés módosítása nélkül. 
+A Moogsoft AIOps a meglévő folyamatok és szervezeti struktúra módosítása nélkül automatizálja az eseményt a Szervizelési munkafolyamatra. 
 
-Az Azure-ingatlan-integráció figyelése és automatizálási eszközök között a hibrid fabric futtatható Moogsoft. Moogsoft 
- - aktívan észleli korábban alkalmazást érintő incidensek 
- - dinamikusan hangolja össze a megfelelő erőforrásokon, így helyzetét figyelembe 
- - csökkenti a fordított időt, javíthatja és kedvezőtlen hatással lehet a felhasználói élményt nyújt. 
+A Moogsoft az Azure Real-Estate szolgáltatásban fut, és integrálva van a monitorozási és automatizálási eszközökhöz a hibrid hálón keresztül. Moogsoft 
+ - aktívan észleli a korábban érintett alkalmazások érintett incidenseit 
+ - dinamikusan összehangolja a megfelelő erőforrásokat, hogy a helyzet tudatában legyenek 
+ - csökkenti az átlagos időt a szervizelésre, és kedvezőtlen hatással van a felhasználói élményre. 
 
 [Nyissa meg a dokumentációt.][moogsoft-doc]
 
@@ -150,21 +150,21 @@ Az Azure-ingatlan-integráció figyelése és automatizálási eszközök közö
 
 ![NewRelic embléma](./media/partners/newrelic.png)
 
-[tudj meg többet.][newrelic-doc]
+[Részletek][newrelic-doc]
 
 ## <a name="opsgenie"></a>OpsGenie
 
-![OpsGenie Logo](./media/partners/opsgenie.png)
+![OpsGenie embléma](./media/partners/opsgenie.png)
 
-Opsgenie segítségével egy Azure által létrehozott riasztásokról dispatcher funkcionál. Opsgenie segítségével határozza meg a megfelelő értesítendő személyeket és a készenléti ütemezések és azok következményeinek alapján. Értesítheti azokat használja e-mailben, szöveges üzenetben (SMS), telefonhívás vagy leküldéses értesítések küldése. Azure észlelt problémákkal kapcsolatos riasztásokat állít elő. Opsgenie segítségével biztosítja, hogy a megfelelő emberek számára is dolgozunk a probléma.
+A OpsGenie az Azure által generált riasztások kiosztóként működik. A OpsGenie határozza meg a megfelelő személyeket az értesítéseket a hívási ütemtervek és az Eszkalációk alapján. E-mailben, SMS-ben, telefonhívásokban vagy leküldéses értesítésekben is értesítheti a dokumentumokat. Az Azure riasztásokat hoz létre az észlelt problémákhoz. A OpsGenie biztosítja, hogy a megfelelő személyek használják a problémát.
 
 [Nyissa meg a dokumentációt.][opsgenie-doc]
 
 ## <a name="pagerduty"></a>PagerDuty
 
-![PagerDuty Logo](./media/partners/pagerduty.png)
+![PagerDuty embléma](./media/partners/pagerduty.png)
 
-PagerDuty, a vezető incidenskezelés megoldás biztosított kiváló támogatást nyújt az Azure-riasztások a metrikák. PagerDuty értesítéseket támogatja az Azure Monitor riasztások, automatikus méretezési értesítésekhez, tevékenységnapló-események és az Azure-szolgáltatásokhoz a platform-szintű metrikákat. E fejlesztések adjon növeli az Azure Platform alapvető betekintést. Teljes mértékben kihasználhatja a PagerDuty incidens felügyeleti képességeket a valós idejű válasz is igénybe vehet. A kibontott Azure-beli integrációs webhookok keresztül történik. Webhookok és a megoldás testreszabása, gyorsan és egyszerűen teszi lehetővé.
+A PagerDuty, a vezető incidensek kezelési megoldásának első osztályú támogatást biztosított az Azure-riasztásokhoz a metrikák esetében. A PagerDuty az Azure-szolgáltatásokra vonatkozó értesítéseket Azure Monitor riasztások, az autoscale Notifications, a műveletnapló eseményei és a platform szintű mérőszámok esetében támogatja. Ezek a fejlesztések nagyobb láthatóságot biztosítanak az alapszintű Azure platformon. A valós idejű válaszhoz teljes mértékben kihasználhatja a PagerDuty incidens-kezelési képességeit. A kibővített Azure-integráció webhookokon keresztül valósítható meg. A webhookok segítségével gyorsan és egyszerűen állíthatja be és szabhatja testre a megoldást.
 
 [Nyissa meg a dokumentációt.][pagerduty-doc]
 
@@ -172,101 +172,101 @@ PagerDuty, a vezető incidenskezelés megoldás biztosított kiváló támogatá
 
 ![QRadar embléma](./media/partners/qradar.png)
 
-A Microsoft Azure DSM-et és a Microsoft Azure Event Hub protokoll is letölthető [az IBM-támogatási webhely](https://www.ibm.com/support). Is [további információ az integráció itt az Azure-ral][qradar-doc].
+A Microsoft Azure DSM és Microsoft Azure Event hub protokoll letölthető [az IBM támogatási webhelyéről](https://www.ibm.com/support). További információkat [az Azure-ral való integrációról itt talál][qradar-doc].
 
 ## <a name="sciencelogic"></a>ScienceLogic
 
 ![ScienceLogic embléma](./media/partners/sciencelogic.png)
 
-ScienceLogic tesz lehetővé a következő generációs informatikai szolgáltatás frissítési garanciát biztosító platform, minden olyan technológia, bárhol kezeléséhez. ScienceLogic kézbesíti, a méretezés, a biztonsági, az automatizálást és a rugalmasság szükséges, a feladatok informatikai erőforrások, szolgáltatások és alkalmazások kezelésének leegyszerűsítése érdekében. A ScienceLogic platform Azure API-k a Microsoft Azure-felületet használja. ScienceLogic az Azure-szolgáltatások és erőforrások valós idejű betekintést nyújt. Így biztos, hogy amikor valami nem működik, és gyorsabban megoldhatja. Az Azure a más felhőkben és data center rendszerek és szolgáltatásokkal együtt is kezelheti.
+A ScienceLogic a következő generációs informatikai szolgáltatás-megbízhatósági platformot biztosítja bármely technológia, bárhol a kezeléséhez. A ScienceLogic biztosítja a méretezést, a biztonságot, az automatizálást és a rugalmasságot az informatikai erőforrások, szolgáltatások és alkalmazások kezeléséhez szükséges feladatok egyszerűsítése érdekében. A ScienceLogic platform Azure API-kat használ a Microsoft Azurehoz való kapcsolódáshoz. A ScienceLogic valós idejű láthatóságot biztosít az Azure-szolgáltatásokhoz és-erőforrásokhoz. Így biztos lehet abban, hogy ha valami nem működik, és gyorsabb megoldást kínál. Az Azure-t az egyéb Felhőkkel és adatközpont-rendszerekkel és-szolgáltatásokkal együtt is kezelheti.
 
-[tudj meg többet.][sciencelogic-doc]
+[Részletek][sciencelogic-doc]
 
 ## <a name="serverless360"></a>Serverless360
 
 ![Serverless360 embléma](./media/partners/serverless360.png)
 
-Serverless360 működnek, kezelhet és monitorozhat Azure kiszolgáló nélküli összetevők platformfüggetlen eszköz. Kezelhetőségi az egyik kulcsfontosságú kihívása, nevezetesen a kiszolgáló nélküli hitelesítés megvalósításához. Kisebb, különálló kiszolgáló nélküli szolgáltatások több száz különböző helyeken apró – felügyeletével és üzemeltetésével az ilyen megoldások összetett. Serverless360 megoldja az ezekkel a kihívásokkal rendelkező kifinomult eszközök gazdag választékát. Figyelheti, hogy a kiszolgáló nélküli szolgáltatások, például az Azure Functions, a Logic Apps, esemény rácsok, Service Bus-üzenetsorok, témakörök, továbbítók, az Event Hubs, tárolási üzenetsorok, fájlok, blob és táblákat. Az Azure Marketplace-en Serverless360 érhető el. Ezek a képességek érhetők el a SaaS- és privát üzemeltető (a saját környezetében található).  
+A Serverless360 egy platformos eszköz az Azure kiszolgáló nélküli összetevők üzemeltetéséhez, kezeléséhez és figyeléséhez. A kezelhetőség az egyik legfontosabb kihívás a kiszolgáló nélküli megvalósításokban. Több száz kisméretű, különálló kiszolgáló nélküli szolgáltatás különböző helyeken van szétszórva – ilyen megoldások kezelése és működtetése összetett. A Serverless360 számos kifinomult eszközzel oldja meg ezeket a kihívásokat. Felügyelheti a kiszolgáló nélküli szolgáltatásokat, például a Azure Functions, a Logic Apps, az Event grideket, a Service Bus várólistákat, a témákat, a továbbításokat, a Event Hubseket, a tárolási várólistákat, a fájlokat, a blobokat és a A Serverless360 az Azure piactéren érhető el. Ezek a képességek a SaaS-és a privát üzemeltetésben is elérhetők (a saját környezetében található).  
 
-[tudj meg többet.][serverless360-doc]
+[Részletek][serverless360-doc]
 
 ## <a name="signalfx"></a>SignalFx
 
 ![SignalFX embléma](./media/partners/signalfx.png)
 
-SignalFx kuppingercole piackutató cégnek a fejlesztési és üzemeltetési adatokon alapuló valós idejű operatív információvá. A szolgáltatás észleli, és metrikákat gyűjt a felhőben minden egyes összetevő között. Hagyományos pont eszközök helyébe lép, és a dinamikus környezetekben a mai valós idejű betekintést biztosít. A nagy mértékben skálázható SignalFx platform kihasználva, a SaaS-platformként optimalizált tároló és a mikroszolgáltatás-alapú architektúrák, és hatékony vizualizációs, előrejelzéses riasztás és együttműködési osztályozási lehetőségeket biztosít a szervezet összes méretet. SignalFx integrálható közvetlenül az Azure Monitor szolgáltatással, valamint nyílt forráskódú összekötőkön keresztül például *Telegraf*, *statsD*, és *összegyűjtött* biztosít a legjobb osztályban irányítópultok, elemzési és riasztásokat az Azure-hoz.
+A SignalFx az adatvezérelt DevOps valós idejű operatív intelligenciának vezetője. A szolgáltatás felfedi és begyűjti a mérőszámokat a felhő minden összetevőjére. Lecseréli a hagyományos pontszerű eszközöket, és valós idejű láthatóságot biztosít a mai dinamikus környezetekben. A nagymértékben méretezhető SignalFx platform kihasználása a SaaS platform a tárolók és a Service-alapú architektúrák számára van optimalizálva, és hatékony vizualizációt, proaktív riasztást és együttműködési osztályozási képességeket biztosít a különböző szervezeteknél minden méret. A SignalFx közvetlenül integrálható a Azure Monitor és a nyílt forráskódú összekötők, például a *Graf*, a *statd*és a *Collected* , hogy az Azure-ban az irányítópultok, az elemzések és a riasztások számára legmegfelelőbbek legyenek.
 
 [Nyissa meg a dokumentációt.][signalfx-doc]
 
-## <a name="signl4"></a>SIGNL4
-![SIGNL4-embléma](./media/partners/signl4.png)
+## <a name="signl4"></a>SIGNL4 HASZNÁLATÁVAL
+![SIGNL4 használatával embléma](./media/partners/signl4.png)
 
-Meghívja a SIGNL4 - üzemeltetési csapatokra - riasztási mobilalkalmazás is a kritikus riasztások átirányításához leggyorsabb módja az Azure Monitor a megfelelő emberek számára a megfelelő időben – bárhol leküldéses, szöveg és hang alapján. SIGNL4 a készenléti feladatokat és a csapat, nyomon követi és a riasztások tulajdonjogának műszakok kezeli, és szükség esetén kivizsgálásához. Teljes átláthatóságot munkatársaival van megadva. A adathozzáférésnek köszönhetően egyszerű REST-webhook az SIGNL4 használatával bármely Azure-szolgáltatáshoz nincs erőfeszítéssel csatlakoztathatók. A SIGNL4 látni fogja az akár 10 x gyorsabb válasz e-mail-értesítések és manuális riasztások.
+SIGNL4 használatával – az operatív csapatoknak szóló mobil riasztási alkalmazás – az a leggyorsabb módszer, amellyel a kritikus riasztásokat Azure Monitorról a megfelelő személyekre irányíthatja a megfelelő időben – bárhol leküldés, szöveg és hanghívások útján. A SIGNL4 használatával kezeli a feladatokkal kapcsolatos feladatokat és a csapatok változásait, nyomon követheti a riasztások kézbesítését és tulajdonjogát, és szükség esetén kiterjesztheti azokat. Teljes körű átláthatóság a csapaton belül. A SIGNL4 használatával Super-Easy REST web-Hook használatával bármely Azure-szolgáltatáshoz csatlakozhat. A SIGNL4 használatával-mel az e-mailes értesítések és a manuális riasztások között akár 10x-es gyorsabb reagálást is láthat.
 
 [Nyissa meg a dokumentációt.][signl4-doc]
 
 ## <a name="solarwinds"></a>SolarWinds
 
-[tudj meg többet.][solarwinds-doc]
+[Részletek][solarwinds-doc]
 
 ## <a name="splunk"></a>Splunk
 
-![Splunk-embléma](./media/partners/splunk.png)
+![Splunk embléma](./media/partners/splunk.png)
 
-Az Azure Monitor a bővítmény a Splunk [Itt a Splunkbase elérhető](https://splunkbase.splunk.com/app/3534/).
+A splunk Azure Monitor-bővítménye [itt érhető el a Splunkbase](https://splunkbase.splunk.com/app/3534/).
 
 [Nyissa meg a dokumentációt.][splunk-doc]
 
-## <a name="sumo-logic"></a>Sumo logika
+## <a name="sumo-logic"></a>Szumó logikája
 
-![Sumo Logic-embléma](./media/partners/SumoLogic.png)
+![Szumó logikai embléma](./media/partners/SumoLogic.png)
 
-Sumo logikai egy biztonságos, natív felhőalapú, gépi elemzési szolgáltatás, valós idejű, folyamatos intelligencia továbbítása a strukturált, félig strukturált és strukturálatlan adatok között a teljes alkalmazás-életciklushoz és a stack. Világszerte több mint 1000 ügyfelek Sumo logikát az elemzésekhez és hozhatók létre, futtassa, és azok az alkalmazások biztonságának biztosítása és felhőbeli infrastruktúrákon támaszkodnak. Ügyfelek Sumo logika, a több-bérlős, szolgáltatás-modell előnye az, hogy segítse megnövelni versenyelőnyt, az üzleti értéket és a növekedés kaphat.
+A Sumo Logic egy biztonságos, Felhőbeli natív, gépi adatelemzési szolgáltatás, amely valós idejű, folyamatos intelligenciát biztosít a strukturált, részben strukturált és strukturálatlan adatok között a teljes alkalmazás-életciklus és a verem számára. A világszerte több mint 1 000 ügyfél támaszkodik a szumó logikára az elemzéshez és az elemzésekhez az alkalmazások és a felhőalapú infrastruktúrák kiépítéséhez, futtatásához és védelméhez. A szumó logikával az ügyfelek több-bérlős, szolgáltatási modellt nyerhetnek, így növelhetik a versenyelőny, az üzleti értékek és a növekedés előnyeit.
 
-[tudj meg többet.][sumologic-doc]
+[Részletek][sumologic-doc]
 
-## <a name="turbonomic"></a>A Turbonomic
+## <a name="turbonomic"></a>Turbonomic
 
-![A Turbonomic embléma](./media/partners/Turbonomic.png)
+![Turbonomic embléma](./media/partners/Turbonomic.png)
 
-A Turbonomic hibrid felhőkhöz biztosítja a számítási feladatok automatizálását a teljesítmény, a költségek és a megfelelőség valós időben való párhuzamos optimalizálásával. A Turbonomic segít a szervezeteknek a kell rugalmas a saját Azure hagyatéki folyamatosan alkalmazásbeolvasási az erőforrások igényelnek, hogy az SLA-t és semmi további számítási, tárolási és hálózati az IaaS és PaaS biztosításához a hagyatéki folyamatosan optimalizálásával réteg. Szervezetek is áttelepítések szimulálása megfelelően-alapú számítási feladatait és kivonják az adatközpontbeli erőforrásokat osztott áttelepítése Azure időben, költségvetési, teljesítmény és a megfelelőségi biztosítva. A Turbonomic API-vezérelt, és ügynök nélküli virtuális gépként fut az Azure-ban vagy a helyszínen.
+A Turbonomic hibrid felhőkhöz biztosítja a számítási feladatok automatizálását a teljesítmény, a költségek és a megfelelőség valós időben való párhuzamos optimalizálásával. A Turbonomic segít a szervezeteknek az Azure Estate-ben való rugalmas működésében azáltal, hogy folyamatosan optimalizálja a hagyatékot, így biztosítva, hogy az alkalmazások folyamatosan megkapják a szolgáltatói szerződésük teljesítéséhez szükséges erőforrásokat, valamint a IaaS és a Péter számára nem több számítási, tárolási és hálózati teljesítményt réteg. A szervezetek szimulálják az áttelepítést, megfelelően méretezhetik a munkaterheléseket, és kivonják az adatközponti erőforrásokat, hogy az Azure-on időben, a teljesítmény és a megfelelőség biztosításával is biztosítva legyenek. A Turbonomic API-vezérelt, és ügynök nélküli virtuális gépként fut az Azure-ban vagy a helyszínen.
 
-[tudj meg többet.][turbonomic-doc]
+[Részletek][turbonomic-doc]
 
 ## <a name="next-steps"></a>További lépések
-- [További információ az Azure Monitor](../../azure-monitor/overview.md)
-- [Hozzáférés metrikák REST API használatával](rest-api-walkthrough.md)
-- [Egy nem Microsoft-szolgáltatás a tevékenységnapló Stream](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)
-- [Stream-diagnosztikai naplók egy nem Microsoft-szolgáltatáshoz](../../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)
+- [További információ a Azure Monitor](../../azure-monitor/overview.md)
+- [Metrikák elérése a REST API használatával](rest-api-walkthrough.md)
+- [A tevékenység naplójának továbbítása nem Microsoft-szolgáltatásba](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)
+- [Diagnosztikai naplók továbbítása nem Microsoft-szolgáltatásoknak](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
 
 
 
 <!--Partner Documentation-->
-[alertlogic-doc]: https://docs.alertlogic.com/userGuides/log-manager-collection-sources.htm "AlertLogic dokumentációját."
-[appdynamics-doc]: https://www.appdynamics.com/net/azure/ "AppDynamics-dokumentációt."
-[arcsight-doc]: https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852 "ArcSight dokumentációját."
+[alertlogic-doc]: https://legacy.docs.alertlogic.com/userGuides/log-manager-collection-sources.htm "A AlertLogic dokumentációja."
+[appdynamics-doc]: https://www.appdynamics.com/net/azure/ "A AppDynamics dokumentációja."
+[arcsight-doc]: https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852 "A ArcSight dokumentációja."
 [atlassian-doc]: https://azure.microsoft.com/blog/automated-notifications-from-azure-monitor-for-atlassian-jira/
-[botmetric-doc]: https://www.botmetric.com/blog/announcing-botmetric-cost-governance-beta-microsoft-azure/ "Botmetric bemutatása."
+[botmetric-doc]: https://www.botmetric.com/blog/announcing-botmetric-cost-governance-beta-microsoft-azure/ "Botmetric-bevezetés."
 [circonus-doc]: https://support.circonus.com/support/solutions/articles/24000013515-azure-integration 
 [cloudhealth-doc]: https://www.cloudhealthtech.com/azure
-[cloudmonix-doc]: https://cloudmonix.com/features/azure-management/ "CloudMonix bemutatása."
-[datadog-doc]: https://docs.datadoghq.com/integrations/azure/ "Datadoggal dokumentációját."
-[dynatrace-doc]: https://help.dynatrace.com/infrastructure-monitoring/paas/how-do-i-monitor-microsoft-azure-web-apps/ "Dokumentáció a dynatrace-szel."
-[elastic-doc]: https://www.elastic.co/guide/en/logstash/master/azure-module.html "Elastic dokumentációjában."
-[grafana-doc]: ./grafana-plugin.md "Az Azure Monitor Grafana integráció."
-[influxdata-doc]: ./../../azure-monitor/platform/collect-custom-metrics-linux-telegraf.md "Az Azure Monitor álljon data Telegraf integrációja."
-[logicmonitor-doc]: https://www.logicmonitor.com/lmcloud-azure/ "Logikai dokumentációja."
-[moogsoft-doc]: https://www.moogsoft.com/partners/microsoft-azure "Moogsoft dokumentációját."
-[newrelic-doc]: https://newrelic.com/azure "NewRelic dokumentációját."
-[opsgenie-doc]: https://www.opsgenie.com/docs/integrations/azure-integration "Opsgenie segítségével dokumentációját."
-[pagerduty-doc]: https://www.pagerduty.com/docs/guides/azure-integration-guide/ "PagerDuty-dokumentációt."
-[qradar-doc]: https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0 "QRadar dokumentációját."
-[sciencelogic-doc]: https://www.sciencelogic.com/product/technologies/microsoft/azure "ScienceLogic dokumentációját."
-[serverless360-doc]: https://docs.serverless360.com/docs/ "Serverless360 dokumentációját."
-[signalfx-doc]: https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-azure "SignalFx dokumentációját."
-[signl4-doc]: https://www.signl4.com/blog/mobile-alert-notifications-azure-monitor/ "SIGNL4 dokumentációját."
-[solarwinds-doc]: https://www.solarwinds.com/topics/azure-monitoring "SolarWinds dokumentációját."
-[splunk-doc]: https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk "Splunk-dokumentációt."
-[sumologic-doc]: https://www.sumologic.com/azure "SumoLogic dokumentációját."
-[turbonomic-doc]: https://turbonomic.com/solutions/technologies/azure-cloud/ "A Turbonomic bemutatása."
+[cloudmonix-doc]: https://cloudmonix.com/features/azure-management/ "CloudMonix-bevezetés."
+[datadog-doc]: https://docs.datadoghq.com/integrations/azure/ "A datadoggal dokumentációja."
+[dynatrace-doc]: https://help.dynatrace.com/infrastructure-monitoring/paas/how-do-i-monitor-microsoft-azure-web-apps/ "A Dynatrace dokumentációja."
+[elastic-doc]: https://www.elastic.co/guide/en/logstash/master/azure-module.html "Rugalmas dokumentáció."
+[grafana-doc]: ./grafana-plugin.md "Azure Monitor Grafana-integráció."
+[influxdata-doc]: ./../../azure-monitor/platform/collect-custom-metrics-linux-telegraf.md "Azure Monitor Influx-adatközpont-integráció."
+[logicmonitor-doc]: https://www.logicmonitor.com/lmcloud-azure/ "A Logic monitor dokumentációja."
+[moogsoft-doc]: https://www.moogsoft.com/partners/microsoft-azure "A Moogsoft dokumentációja."
+[newrelic-doc]: https://newrelic.com/azure "A NewRelic dokumentációja."
+[opsgenie-doc]: https://www.opsgenie.com/docs/integrations/azure-integration "A OpsGenie dokumentációja."
+[pagerduty-doc]: https://www.pagerduty.com/docs/guides/azure-integration-guide/ "A PagerDuty dokumentációja."
+[qradar-doc]: https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0 "A QRadar dokumentációja."
+[sciencelogic-doc]: https://www.sciencelogic.com/product/technologies/microsoft/azure "A ScienceLogic dokumentációja."
+[serverless360-doc]: https://docs.serverless360.com/docs/ "A Serverless360 dokumentációja."
+[signalfx-doc]: https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-azure "A SignalFx dokumentációja."
+[signl4-doc]: https://www.signl4.com/blog/mobile-alert-notifications-azure-monitor/ "A SIGNL4 használatával dokumentációja."
+[solarwinds-doc]: https://www.solarwinds.com/topics/azure-monitoring "A SolarWinds dokumentációja."
+[splunk-doc]: https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk "A splunk dokumentációja."
+[sumologic-doc]: https://www.sumologic.com/azure "A SumoLogic dokumentációja."
+[turbonomic-doc]: https://turbonomic.com/solutions/technologies/azure-cloud/ "Turbonomic-bevezetés."
 

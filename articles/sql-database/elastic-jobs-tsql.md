@@ -1,6 +1,6 @@
 ---
-title: Feladatok létrehozása és kezelése az Azure SQL rugalmas adatbázis Transact-SQL (T-SQL) használatával |} A Microsoft Docs
-description: Több adatbázis közötti parancsfájlok futtatása az adatbázis feladatügynök Transact-SQL (T-SQL) használatával.
+title: Azure SQL Elastic Database-feladatok létrehozása és kezelése a Transact-SQL (T-SQL) használatával | Microsoft Docs
+description: A Transact-SQL (T-SQL) használatával számos adatbázison futtathat parancsfájlokat Elastic Database-feladatokkal.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -10,27 +10,26 @@ ms.topic: conceptual
 ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 59e0e4cf82af9851dacf3ec030575ed392571331
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: d1123affa79f401b5142af604adbd757bdfb7d73
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523766"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68641040"
 ---
-# <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Rugalmas adatbázis-feladatok létrehozása és kezelése Transact-SQL (T-SQL) használatával
+# <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Elastic Database feladatok létrehozása és kezelése a Transact-SQL (T-SQL) használatával
 
-A cikk ismerteti az Elastic Jobs használatának megkezdéséhez számos példaforgatókönyvek T-SQL használatával.
+Ez a cikk számos példát mutat be a rugalmas feladatok T-SQL használatával történő használatának megkezdésére.
 
-A példákban a [tárolt eljárások](#job-stored-procedures) és [nézetek](#job-views) érhető el a [ *feladat adatbázis*](sql-database-job-automation-overview.md#job-database).
+A példák a [*feladatok adatbázisban*](sql-database-job-automation-overview.md#job-database)elérhető [tárolt eljárásokat](#job-stored-procedures) és [nézeteket](#job-views) használják.
 
-A Transact-SQL (T-SQL) létrehozása, konfigurálása, hajtsa végre és feladatok kezelésére szolgál. A feladatügynök létrehozása nem támogatott a T-SQL, ezért először létre kell hoznia egy *feladatügynök* a portálról, vagy [PowerShell](elastic-jobs-powershell.md#create-the-elastic-job-agent).
+A Transact-SQL (T-SQL) feladatok létrehozására, konfigurálására, végrehajtására és kezelésére szolgál. A rugalmas feladatok ügynökének létrehozása nem támogatott a T-SQL-ben, ezért először létre kell hoznia egy *rugalmas feladatot* a portál vagy a [PowerShell](elastic-jobs-powershell.md#create-the-elastic-job-agent)használatával.
 
 
-## <a name="create-a-credential-for-job-execution"></a>Feladat-végrehajtással kapcsolatos hitelesítő adatok létrehozása
+## <a name="create-a-credential-for-job-execution"></a>Hitelesítő adat létrehozása a feladatok végrehajtásához
 
-A hitelesítő adatokat a parancsprogramok futtatásához a cél adatbázisaihoz való kapcsolódásra szolgál. A hitelesítő adatokat kell megfelelő engedélyeket, az adatbázisokat a célcsoport által megadott sikerült végrehajtani a parancsprogramot. A kiszolgálón és/vagy a célként megadott csoportot készlettag használatakor, magas ajánlott fő hitelesítő adatok való frissítése előtt bővítése a kiszolgálón és/vagy a készlet feladat-végrehajtás időpontjában a hitelesítő adat létrehozása. Az adatbázishoz kötődő hitelesítő adatok a feladat ügynök adatbázisban jön létre. Ugyanazokat a hitelesítő adatokat kell lennie a használt *hozzon létre egy bejelentkezést* és *hozzon létre egy felhasználót a bejelentkezési adatbázis-engedélyek megadására bejelentkezési identitás* a cél adatbázisokon.
+A hitelesítő adatok használatával csatlakozhat a megcélzott adatbázisokhoz a parancsfájlok futtatásához. A hitelesítő adatoknak megfelelő engedélyekkel kell rendelkezniük a célcsoport által megadott adatbázisokon a parancsfájl sikeres végrehajtásához. A kiszolgáló és/vagy a készlet célcsoportjának használatakor a rendszer erősen javasolja, hogy hozzon létre egy fő hitelesítő adatot, amely a kiszolgáló és/vagy a készlet kibővítése előtt a hitelesítő adatok frissítéséhez használható. Az adatbázis-hatókörrel rendelkező hitelesítő adatok létrejönnek a feladatra szolgáló ügynök adatbázisában. Ugyanezt a hitelesítő adatot kell használni a bejelentkezés létrehozásához és a *felhasználó bejelentkezési adatainak létrehozásához, hogy a bejelentkezési adatbázis engedélyei* elérhetők legyenek a cél adatbázisokra vonatkozóan.
 
 
 ```sql
@@ -50,10 +49,10 @@ CREATE DATABASE SCOPED CREDENTIAL mymastercred WITH IDENTITY = 'mastercred',
 GO
 ```
 
-## <a name="create-a-target-group-servers"></a>Hozzon létre egy célcsoportot (kiszolgálók)
+## <a name="create-a-target-group-servers"></a>Célcsoport létrehozása (kiszolgálók)
 
-Az alábbi példa bemutatja, hogyan szemben az összes adatbázist feladat végrehajtása a kiszolgálón.  
-Csatlakozás a [ *feladat adatbázis* ](sql-database-job-automation-overview.md#job-database) , és futtassa a következő parancsot:
+Az alábbi példa bemutatja, hogyan hajtható végre a feladatok a kiszolgálók összes adatbázisán.  
+Kapcsolódjon a [*feladatok adatbázisához*](sql-database-job-automation-overview.md#job-database) , és futtassa a következő parancsot:
 
 
 ```sql
@@ -75,10 +74,10 @@ SELECT * FROM jobs.target_group_members WHERE target_group_name='ServerGroup1';
 ```
 
 
-## <a name="exclude-an-individual-database"></a>Az egyes adatbázisok kizárása
+## <a name="exclude-an-individual-database"></a>Önálló adatbázis kizárása
 
-A következő példa bemutatja, hogyan hajtható végre egy feladatot, szemben az összes adatbázis az SQL Database-kiszolgálóhoz, kivéve az adatbázis nevesített *MappingDB*.  
-Csatlakozás a [ *feladat adatbázis* ](sql-database-job-automation-overview.md#job-database) , és futtassa a következő parancsot:
+Az alábbi példa bemutatja, hogyan hajtható végre a feladatok egy SQL Database-kiszolgáló összes adatbázisán, kivéve a *MappingDB*nevű adatbázist.  
+Kapcsolódjon a [*feladatok adatbázisához*](sql-database-job-automation-overview.md#job-database) , és futtassa a következő parancsot:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -118,10 +117,10 @@ SELECT * FROM [jobs].target_group_members WHERE target_group_name = N'ServerGrou
 ```
 
 
-## <a name="create-a-target-group-pools"></a>Hozzon létre egy célcsoportot (készletek)
+## <a name="create-a-target-group-pools"></a>Célcsoport (készletek) létrehozása
 
-Az alábbi példa bemutatja, hogyan, amelyekre legalább egy rugalmas készletekben található összes adatbázishoz.  
-Csatlakozás a [ *feladat adatbázis* ](sql-database-job-automation-overview.md#job-database) , és futtassa a következő parancsot:
+Az alábbi példa bemutatja, hogyan célozhat meg egy vagy több rugalmas készletben lévő összes adatbázist.  
+Kapcsolódjon a [*feladatok adatbázisához*](sql-database-job-automation-overview.md#job-database) , és futtassa a következő parancsot:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -143,10 +142,10 @@ SELECT * FROM jobs.target_group_members WHERE target_group_name = N'PoolGroup';
 ```
 
 
-## <a name="deploy-new-schema-to-many-databases"></a>Új sémára nagyszámú adatbázis üzembe helyezése
+## <a name="deploy-new-schema-to-many-databases"></a>Új séma üzembe helyezése számos adatbázison
 
-Az alábbi példa bemutatja, hogyan új sémákat telepíteni az összes adatbázishoz.  
-Csatlakozás a [ *feladat adatbázis* ](sql-database-job-automation-overview.md#job-database) , és futtassa a következő parancsot:
+Az alábbi példa bemutatja, hogyan helyezhet üzembe új sémát az összes adatbázison.  
+Kapcsolódjon a [*feladatok adatbázisához*](sql-database-job-automation-overview.md#job-database) , és futtassa a következő parancsot:
 
 
 ```sql
@@ -167,18 +166,18 @@ CREATE TABLE [dbo].[Test]([TestId] [int] NOT NULL);',
 
 ## <a name="data-collection-using-built-in-parameters"></a>Adatgyűjtés beépített paraméterek használatával
 
-Sok adat gyűjtemény esetekben hasznos lehet bizonyos ezeket a parancsfájl-kezelési változókat a feldolgozás eredményét az utófeldolgozási segítségével.
+Számos adatgyűjtési forgatókönyv esetében hasznos lehet néhány ilyen programozási változót felvenni a feladatok eredményeinek feldolgozásához.
 
-- $(job_name)
-- $(job_id)
-- $(job_version)
-- $(step_id)
-- $(step_name)
+- $ (job_name)
+- $ (job_id)
+- $ (job_version)
+- $ (step_id)
+- $ (step_name)
 - $(job_execution_id)
 - $(job_execution_create_time)
-- $(target_group_name)
+- $ (target_group_name)
 
-Ha például minden eredmény együtt ugyanazon feladat végrehajtása a csoporthoz, használja a *$(job_execution_id)* , ahogyan az alábbi parancsot:
+Ha például az összes eredményt ugyanabból a feladatokból szeretné csoportosítani, használja a *$ (job_execution_id)* parancsot az alábbi parancsban látható módon:
 
 
 ```sql
@@ -188,14 +187,14 @@ Ha például minden eredmény együtt ugyanazon feladat végrehajtása a csoport
 
 ## <a name="monitor-database-performance"></a>Adatbázis teljesítményének monitorozása
 
-A következő példában létrehozunk egy új feladatot, amely több adatbázisból származó teljesítményadatokat gyűjtenek.
+Az alábbi példa egy új feladatot hoz létre, amely több adatbázisból gyűjt teljesítményadatokat.
 
-Alapértelmezés szerint a feladat ügynök fognak kinézni, a visszaadott eredményeket tárolja a tábla létrehozásához. Ennek eredményeképpen a bejelentkezés, a kimeneti hitelesítő adat számára használt hitelesítő adatokat társított kell végezni a megfelelő engedélyekkel. Ha szeretné manuálisan létrehozni a tábla kelljen majd annak rendelkeznie kell a következő tulajdonságokkal:
-1. A megfelelő nevű és típusú adatokkal az eredményhalmaz oszlopok.
-2. További internal_execution_id UniqueIdentifier adattípusú oszlop.
-3. Egy nem fürtözött index nevű `IX_<TableName>_Internal_Execution_ID` internal_execution_id oszlopában.
+Alapértelmezés szerint a Feladatkezelő megkeresi a tábla létrehozását, amely a visszaadott eredményeket tárolja. Ennek eredményeképpen a kimeneti hitelesítő adatokhoz használt hitelesítő adatokhoz tartozó bejelentkezési azonosítónak megfelelő engedélyekkel kell rendelkeznie a végrehajtásához. Ha az idő előtt manuálisan szeretné létrehozni a táblázatot, akkor a következő tulajdonságokkal kell rendelkeznie:
+1. Az eredményhalmaz helyes nevét és adattípusait tartalmazó oszlopok.
+2. A uniqueidentifier adattípusával rendelkező internal_execution_id további oszlopa.
+3. A internal_execution_id oszlop nevű `IX_<TableName>_Internal_Execution_ID` nem fürtözött index.
 
-Csatlakozás a [ *feladat adatbázis* ](sql-database-job-automation-overview.md#job-database) , és futtassa a következő parancsokat:
+Kapcsolódjon a [*feladatok adatbázisához*](sql-database-job-automation-overview.md#job-database) , és futtassa a következő parancsokat:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -265,8 +264,8 @@ SELECT elastic_pool_name , end_time, elastic_pool_dtu_limit, avg_cpu_percent, av
 
 ## <a name="view-job-definitions"></a>Feladatdefiníciók megtekintése
 
-Az alábbi példa bemutatja, hogyan aktuális feladatdefiníciók megtekintéséhez.  
-Csatlakozás a [ *feladat adatbázis* ](sql-database-job-automation-overview.md#job-database) , és futtassa a következő parancsot:
+Az alábbi példa bemutatja, hogyan tekintheti meg az aktuális feladatdefiníciók.  
+Kapcsolódjon a [*feladatok adatbázisához*](sql-database-job-automation-overview.md#job-database) , és futtassa a következő parancsot:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -284,10 +283,10 @@ select * from jobs.jobsteps
 ```
 
 
-## <a name="begin-ad-hoc-execution-of-a-job"></a>A feladat alkalmi végrehajtásának megkezdése
+## <a name="begin-ad-hoc-execution-of-a-job"></a>A feladatok ad hoc végrehajtásának megkezdése
 
-Az alábbi példa bemutatja, hogyan azonnal elindul egy feladat.  
-Csatlakozás a [ *feladat adatbázis* ](sql-database-job-automation-overview.md#job-database) , és futtassa a következő parancsot:
+Az alábbi példa bemutatja, hogyan indíthat el azonnal egy feladatot.  
+Kapcsolódjon a [*feladatok adatbázisához*](sql-database-job-automation-overview.md#job-database) , és futtassa a következő parancsot:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -307,10 +306,10 @@ exec jobs.sp_start_job 'CreateTableTest', 1
 ```
 
 
-## <a name="schedule-execution-of-a-job"></a>Egy feladat végrehajtásának ütemezése
+## <a name="schedule-execution-of-a-job"></a>Feladatok végrehajtásának ütemezve
 
-Az alábbi példa bemutatja, hogyan egy jövőbeli végrehajtási feladat ütemezése.  
-Csatlakozás a [ *feladat adatbázis* ](sql-database-job-automation-overview.md#job-database) , és futtassa a következő parancsot:
+Az alábbi példa bemutatja, hogyan ütemezhet egy feladatot a jövőbeli végrehajtáshoz.  
+Kapcsolódjon a [*feladatok adatbázisához*](sql-database-job-automation-overview.md#job-database) , és futtassa a következő parancsot:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -322,10 +321,10 @@ EXEC jobs.sp_update_job
 @schedule_interval_count=15
 ```
 
-## <a name="monitor-job-execution-status"></a>Feladat-végrehajtási állapotának figyelése
+## <a name="monitor-job-execution-status"></a>A feladatok végrehajtási állapotának figyelése
 
-Az alábbi példa bemutatja az összes feladat-végrehajtási állapot részleteit megtekintheti.  
-Csatlakozás a [ *feladat adatbázis* ](sql-database-job-automation-overview.md#job-database) , és futtassa a következő parancsot:
+Az alábbi példa bemutatja, hogyan tekintheti meg az összes feladat végrehajtási állapotának részleteit.  
+Kapcsolódjon a [*feladatok adatbázisához*](sql-database-job-automation-overview.md#job-database) , és futtassa a következő parancsot:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -351,10 +350,10 @@ ORDER BY start_time DESC
 ```
 
 
-## <a name="cancel-a-job"></a>Feladatok megszakítása
+## <a name="cancel-a-job"></a>Feladat megszakítása
 
-Az alábbi példa bemutatja, hogyan megszakítani a feladatot.  
-Csatlakozás a [ *feladat adatbázis* ](sql-database-job-automation-overview.md#job-database) , és futtassa a következő parancsot:
+A következő példa egy feladat megszakítását mutatja be.  
+Kapcsolódjon a [*feladatok adatbázisához*](sql-database-job-automation-overview.md#job-database) , és futtassa a következő parancsot:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -370,10 +369,10 @@ EXEC jobs.sp_stop_job '01234567-89ab-cdef-0123-456789abcdef'
 ```
 
 
-## <a name="delete-old-job-history"></a>Régi feladatelőzmények törlése
+## <a name="delete-old-job-history"></a>Régi feladatok előzményeinek törlése
 
-Az alábbi példa bemutatja, hogyan adott dátum előtt feladatelőzmények törlése.  
-Csatlakozás a [ *feladat adatbázis* ](sql-database-job-automation-overview.md#job-database) , és futtassa a következő parancsot:
+Az alábbi példa bemutatja, hogyan törölheti a feladatok előzményeit egy adott dátum előtt.  
+Kapcsolódjon a [*feladatok adatbázisához*](sql-database-job-automation-overview.md#job-database) , és futtassa a következő parancsot:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -384,10 +383,10 @@ EXEC jobs.sp_purge_jobhistory @job_name='ResultPoolsJob', @oldest_date='2016-07-
 --Note: job history is automatically deleted if it is >45 days old
 ```
 
-## <a name="delete-a-job-and-all-its-job-history"></a>Egy feladat és a feladatelőzmények törlése
+## <a name="delete-a-job-and-all-its-job-history"></a>A feladatok és a hozzá tartozó feladatok előzményeinek törlése
 
-Az alábbi példa bemutatja, hogyan törölhet egy feladatot, és az összes kapcsolódó feladatelőzményeket.  
-Csatlakozás a [ *feladat adatbázis* ](sql-database-job-automation-overview.md#job-database) , és futtassa a következő parancsot:
+Az alábbi példa bemutatja, hogyan törölhet egy feladatot és az összes kapcsolódó feladatot.  
+Kapcsolódjon a [*feladatok adatbázisához*](sql-database-job-automation-overview.md#job-database) , és futtassa a következő parancsot:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -400,35 +399,35 @@ EXEC jobs.sp_delete_job @job_name='ResultsPoolsJob'
 
 
 
-## <a name="job-stored-procedures"></a>Feladat tárolt eljárások
+## <a name="job-stored-procedures"></a>Feladatok tárolt eljárásai
 
-A következő tárolt eljárások a [feladatok adatbázis](sql-database-job-automation-overview.md#job-database).
+A következő tárolt eljárások a [feladatok adatbázisban](sql-database-job-automation-overview.md#job-database)találhatók.
 
 
 
 |Tárolt eljárás  |Leírás  |
 |---------|---------|
-|[sp_add_job](#sp_add_job)     |     Hozzáad egy új feladatot.    |
-|[sp_update_job](#sp_update_job)    |      Frissíti egy meglévő feladat.   |
-|[sp_delete_job](#sp_delete_job)     |      Egy meglévő feladat törlése.   |
-|[sp_add_jobstep](#sp_add_jobstep)    |    Egy lépést ad egy feladathoz.     |
-|[sp_update_jobstep](#sp_update_jobstep)     |     Egy feladat lépésének frissíti.    |
-|[sp_delete_jobstep](#sp_delete_jobstep)     |     Egy feladat lépésének törlése.    |
-|[sp_start_job](#sp_start_job)    |  Elindul egy feladat végrehajtása.       |
-|[sp_stop_job](#sp_stop_job)     |     Egy feladat végrehajtása leáll.   |
-|[sp_add_target_group](#sp_add_target_group)    |     Cél csoport hozzáadása.    |
-|[sp_delete_target_group](#sp_delete_target_group)     |    A célként megadott csoport törlése.     |
-|[sp_add_target_group_member](#sp_add_target_group_member)     |    Egy adatbázis vagy adatbázisokat ad hozzá egy célcsoportot.     |
-|[sp_delete_target_group_member](#sp_delete_target_group_member)     |     A cél a csoporttag eltávolítása egy célcsoportot.    |
-|[sp_purge_jobhistory](#sp_purge_jobhistory)    |    Eltávolít egy feladat replikálásielőzmény-rekord.     |
+|[sp_add_job](#sp_add_job)     |     Új feladatok hozzáadására szolgál.    |
+|[sp_update_job](#sp_update_job)    |      Egy meglévő feladatot frissít.   |
+|[sp_delete_job](#sp_delete_job)     |      Töröl egy meglévő feladatot.   |
+|[sp_add_jobstep](#sp_add_jobstep)    |    Feltesz egy lépést egy feladatokba.     |
+|[sp_update_jobstep](#sp_update_jobstep)     |     Frissíti a feladatok lépéseit.    |
+|[sp_delete_jobstep](#sp_delete_jobstep)     |     Törli a feladatot.    |
+|[sp_start_job](#sp_start_job)    |  A feladatok végrehajtásának megkezdése.       |
+|[sp_stop_job](#sp_stop_job)     |     Leállítja a feladatok végrehajtását.   |
+|[sp_add_target_group](#sp_add_target_group)    |     Célcsoport hozzáadására szolgál.    |
+|[sp_delete_target_group](#sp_delete_target_group)     |    Egy célcsoport törlése.     |
+|[sp_add_target_group_member](#sp_add_target_group_member)     |    Adatbázis vagy adatbázis-csoport hozzáadását egy célcsoporthoz.     |
+|[sp_delete_target_group_member](#sp_delete_target_group_member)     |     A célcsoport tagjainak eltávolítása egy célcsoportból.    |
+|[sp_purge_jobhistory](#sp_purge_jobhistory)    |    Eltávolítja egy adott feladatokhoz tartozó előzményi rekordokat.     |
 
 
 
 
 
-### <a name="spaddjob"></a>sp_add_job
+### <a name="sp_add_job"></a>sp_add_job
 
-Hozzáad egy új feladatot. 
+Új feladatok hozzáadására szolgál. 
   
 #### <a name="syntax"></a>Szintaxis  
   
@@ -447,54 +446,54 @@ Hozzáad egy új feladatot.
   
 #### <a name="arguments"></a>Argumentumok  
 
-[  **\@job_name =** ] "job_name"  
-A feladat neve. A névnek egyedinek kell lennie és nem a százalékos aránya (%) karakter. job_name nvarchar(128), nem alapértelmezett.
+**[\@job_name =** ] "job_name"  
+A feladattípus neve. A névnek egyedinek kell lennie, és nem tartalmazhatja a százalékot (%) karakter. a job_name nvarchar (128), alapértelmezés szerint nincs megadva.
 
-[  **\@leírás =** ] "leírás"  
-A feladat leírása. Leírás megadása nem nvarchar(512), az alapértelmezett érték NULL. Ha a leírás, a rendszer üres karakterláncot használja.
+[Description =] "Description"  **\@**  
+A feladattípus leírása. a leírás a nvarchar (512), amelynek alapértelmezett értéke NULL. Ha a Leírás nincs megadva, a rendszer üres karakterláncot használ.
 
-[  **\@engedélyezve =** ] engedélyezve  
-A feladat ütemezés engedélyezve van-e. Engedélyezett bit, az alapértelmezett érték a 0 (letiltva). Ha 0, a feladat nem engedélyezett, és nem fut az ütemezésnek; azonban hogy manuálisan futtatható. Ha 1, a feladat az ütemezése szerint fog futni, és manuálisan is futtathatók.
+**[\@engedélyezve =** ] engedélyezve  
+Azt jelzi, hogy engedélyezve van-e a feladatok ütemterve. Engedélyezve: bit, alapértelmezett értéke: 0 (letiltva). Ha a 0 érték van beállítva, a rendszer nem engedélyezi a feladatot, és nem a megfelelő ütemterv szerint fut. azonban manuálisan is futtatható. Ha 1, a rendszer az ütemterv szerint futtatja a feladatot, és manuálisan is futtatható.
 
-[  **\@schedule_interval_type =**] schedule_interval_type  
-Érték azt jelzi, ha a feladat kell végrehajtani. schedule_interval_type nvarchar(50), az egyszer, alapértelmezett érték, és a következő értékek egyike lehet:
-- Az "egyszeri"
-- "Minutes",
-- "Hours",
-- "Days",
-- "Hét"
-- "Hónapok"
+**[\@schedule_interval_type =** ] schedule_interval_type  
+Az érték azt jelzi, hogy mikor kell végrehajtani a feladatot. a schedule_interval_type nvarchar (50), alapértelmezés szerint egyszer, és az alábbi értékek egyike lehet:
+- Egyszer,
+- Perc,
+- Óra,
+- Nap,
+- "Weeks",
+- Hónap
 
-[  **\@schedule_interval_count =** ] schedule_interval_count  
-Minden egyes végrehajtása a feladat a közti schedule_interval_count időszakok száma. schedule_interval_count int, az alapértelmezett 1 érték. Az érték nagyobb, mint 1 vagy azzal egyenlőnek kell lennie.
+**[\@schedule_interval_count =** ] schedule_interval_count  
+A schedule_interval_count időszakok száma a feladatok végrehajtásához. a schedule_interval_count int, alapértelmezett értéke pedig 1. Az értéknek 1-nél nagyobbnak vagy azzal egyenlőnek kell lennie.
 
-[  **\@schedule_start_time =** ] schedule_start_time  
-A dátum mely feladat végrehajtásának kezdete is. schedule_start_time DATETIME2, a rendszer az alapértelmezett 0001-01-01 00:00:00.0000000.
+**[\@schedule_start_time =** ] schedule_start_time  
+A feladatok végrehajtásának megkezdésének dátuma. a schedule_start_time DATETIME2, az alapértelmezett 0001-01-01 00:00:00.0000000.
 
-[  **\@schedule_end_time =** ] schedule_end_time  
-A dátum mely a feladat a végrehajtás leállíthatja. schedule_end_time DATETIME2, akkor az alapértelmezett 9999-12-31 11:59:59.0000000. 
+**[\@schedule_end_time =** ] schedule_end_time  
+A feladatütemezés leállításának dátuma. a schedule_end_time a DATETIME2, amely az alapértelmezett 9999-12-31 11:59:59.0000000. 
 
-[  **\@job_id =** ] job_id KIMENET  
-Ha sikeresen létrehozva a feladathoz hozzárendelt feladathoz azonosítószáma. job_id egy UniqueIdentifier típusú kimeneti változó.
+**[\@job_id =** ] job_id kimenet  
+Sikeres létrehozás esetén a feladathoz rendelt feladathoz tartozó azonosító szám. a job_id egy uniqueidentifier típusú kimeneti változó.
 
-#### <a name="return-code-values"></a>Visszatérési kód értéket
+#### <a name="return-code-values"></a>Visszatérési kód értékei
 
 0 (sikeres) vagy 1 (hiba)
 
 #### <a name="remarks"></a>Megjegyzések
-a feladat ügynök adatbázisból a feladatügynök létrehozásakor megadott sp_add_job kell futtatni.
-Miután sp_add_job végre lett hajtva a feladat hozzáadása, sp_add_jobstep vegyen fel olyan lépéseket a feladat tevékenységeit végző használható. A feladat kezdeti verziószáma 0, amely az első lépés hozzáadásakor 1-re növekszik.
+a sp_add_job a feladatok ügynökének létrehozásakor megadott feladatkártya-adatbázisból kell futtatni.
+Miután a sp_add_job végrehajtotta a feladatok hozzáadását, a sp_add_jobstep felhasználhatja azokat a lépéseket, amelyek a feladattal kapcsolatos tevékenységeket végzik. A művelet kezdeti verziószáma 0, amely az első lépés hozzáadásakor eggyel nő.
 
 #### <a name="permissions"></a>Engedélyek
-Alapértelmezés szerint a a sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagjai hajthatják végre ezt a tárolt eljárást. Akkor korlátozzák a felhasználót, hogy csak a feladatok nyomon kell, a felhasználó a következő adatbázis-szerepkör a feladat ügynök adatbázisban a feladatügynök létrehozásakor megadott részeként biztosítani:
+Alapértelmezés szerint a sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagjai futtathatják ezt a tárolt eljárást. Korlátozzák a felhasználókat, hogy csak a feladatok figyelésére legyenek képesek, a feladat ügynökének létrehozásakor megadott feladat-ügynök adatbázisában megadhatja a következő adatbázis-szerepkört:
 
 - jobs_reader
 
-Ezek a szerepkörök engedélyeivel kapcsolatos részletekért lásd: a engedély szakasz ebben a dokumentumban. Csak a sysadmin (rendszergazda) tagjai a tárolt eljárás segítségével más felhasználók tulajdonában lévő feladatok az attribútumok szerkesztését.
+A szerepkörök engedélyeivel kapcsolatos részletekért tekintse meg a jelen dokumentum engedélyek szakaszát. Csak a sysadmin (rendszergazda) tagok használhatják ezt a tárolt eljárást a más felhasználók tulajdonában lévő feladatok attribútumainak szerkesztéséhez.
 
-### <a name="spupdatejob"></a>sp_update_job
+### <a name="sp_update_job"></a>sp_update_job
 
-Frissíti egy meglévő feladat.
+Egy meglévő feladatot frissít.
 
 #### <a name="syntax"></a>Szintaxis
 
@@ -510,54 +509,54 @@ Frissíti egy meglévő feladat.
 ```
 
 #### <a name="arguments"></a>Argumentumok
-[  **\@job_name =** ] "job_name"  
-Frissíteni kell a feladat neve. job_name nvarchar(128).
+**[\@job_name =** ] "job_name"  
+A frissítendő feladatok neve. a job_name nvarchar (128).
 
-[  **\@új_név =** ] "új_név"  
-A feladat új neve. új_név nvarchar(128).
+**[\@new_name =** ] "new_name"  
+A feladatokhoz tartozó új név. a new_name nvarchar (128).
 
-[  **\@leírás =** ] "leírás"  
-A feladat leírása. Leírás megadása nem nvarchar(512).
+[Description =] "Description"  **\@**  
+A feladattípus leírása. a Leírás nvarchar (512).
 
-[  **\@engedélyezve =** ] engedélyezve  
-Megadja, hogy a feladatütemezés engedélyezve (1) vagy nem engedélyezett (0). Engedélyezve van-e bit.
+**[\@engedélyezve =** ] engedélyezve  
+Megadja, hogy engedélyezve van-e a feladatok ütemezett értéke (1), vagy nincs engedélyezve (0). Engedélyezve: bit.
 
-[  **\@schedule_interval_type =** ] schedule_interval_type  
-Érték azt jelzi, ha a feladat kell végrehajtani. schedule_interval_type nvarchar(50), és a következő értékek egyike lehet:
+**[\@schedule_interval_type =** ] schedule_interval_type  
+Az érték azt jelzi, hogy mikor kell végrehajtani a feladatot. a schedule_interval_type nvarchar (50), és a következő értékek egyike lehet:
 
-- Az "egyszeri"
-- "Minutes",
-- "Hours",
-- "Days",
-- "Hét"
-- "Hónapok"
+- Egyszer,
+- Perc,
+- Óra,
+- Nap,
+- "Weeks",
+- Hónap
 
-[  **\@schedule_interval_count =** ] schedule_interval_count  
-Minden egyes végrehajtása a feladat a közti schedule_interval_count időszakok száma. schedule_interval_count int, az alapértelmezett 1 érték. Az érték nagyobb, mint 1 vagy azzal egyenlőnek kell lennie.
+**[\@schedule_interval_count =** ] schedule_interval_count  
+A schedule_interval_count időszakok száma a feladatok végrehajtásához. a schedule_interval_count int, alapértelmezett értéke pedig 1. Az értéknek 1-nél nagyobbnak vagy azzal egyenlőnek kell lennie.
 
-[  **\@schedule_start_time =** ] schedule_start_time  
-A dátum mely feladat végrehajtásának kezdete is. schedule_start_time DATETIME2, a rendszer az alapértelmezett 0001-01-01 00:00:00.0000000.
+**[\@schedule_start_time =** ] schedule_start_time  
+A feladatok végrehajtásának megkezdésének dátuma. a schedule_start_time DATETIME2, az alapértelmezett 0001-01-01 00:00:00.0000000.
 
-[  **\@schedule_end_time =** ] schedule_end_time  
-A dátum mely a feladat a végrehajtás leállíthatja. schedule_end_time DATETIME2, akkor az alapértelmezett 9999-12-31 11:59:59.0000000. 
+**[\@schedule_end_time =** ] schedule_end_time  
+A feladatütemezés leállításának dátuma. a schedule_end_time a DATETIME2, amely az alapértelmezett 9999-12-31 11:59:59.0000000. 
 
-#### <a name="return-code-values"></a>Visszatérési kód értéket
+#### <a name="return-code-values"></a>Visszatérési kód értékei
 0 (sikeres) vagy 1 (hiba)
 
 #### <a name="remarks"></a>Megjegyzések
-Miután sp_add_job végre lett hajtva a feladat hozzáadása, sp_add_jobstep vegyen fel olyan lépéseket a feladat tevékenységeit végző használható. A feladat kezdeti verziószáma 0, amely az első lépés hozzáadásakor 1-re növekszik.
+Miután a sp_add_job végrehajtotta a feladatok hozzáadását, a sp_add_jobstep felhasználhatja azokat a lépéseket, amelyek a feladattal kapcsolatos tevékenységeket végzik. A művelet kezdeti verziószáma 0, amely az első lépés hozzáadásakor eggyel nő.
 
 #### <a name="permissions"></a>Engedélyek
-Alapértelmezés szerint a a sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagjai hajthatják végre ezt a tárolt eljárást. Akkor korlátozzák a felhasználót, hogy csak a feladatok nyomon kell, a felhasználó a következő adatbázis-szerepkör a feladat ügynök adatbázisban a feladatügynök létrehozásakor megadott részeként biztosítani:
+Alapértelmezés szerint a sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagjai futtathatják ezt a tárolt eljárást. Korlátozzák a felhasználókat, hogy csak a feladatok figyelésére legyenek képesek, a feladat ügynökének létrehozásakor megadott feladat-ügynök adatbázisában megadhatja a következő adatbázis-szerepkört:
 - jobs_reader
 
-Ezek a szerepkörök engedélyeivel kapcsolatos részletekért lásd: a engedély szakasz ebben a dokumentumban. Csak a sysadmin (rendszergazda) tagjai a tárolt eljárás segítségével más felhasználók tulajdonában lévő feladatok az attribútumok szerkesztését.
+A szerepkörök engedélyeivel kapcsolatos részletekért tekintse meg a jelen dokumentum engedélyek szakaszát. Csak a sysadmin (rendszergazda) tagok használhatják ezt a tárolt eljárást a más felhasználók tulajdonában lévő feladatok attribútumainak szerkesztéséhez.
 
 
 
-### <a name="spdeletejob"></a>sp_delete_job
+### <a name="sp_delete_job"></a>sp_delete_job
 
-Egy meglévő feladat törlése.
+Töröl egy meglévő feladatot.
 
 #### <a name="syntax"></a>Szintaxis
 
@@ -567,29 +566,29 @@ Egy meglévő feladat törlése.
 ```
 
 #### <a name="arguments"></a>Argumentumok
-[  **\@job_name =** ] "job_name"  
-A törlendő feladat neve. job_name nvarchar(128).
+**[\@job_name =** ] "job_name"  
+A törlendő feladattípus neve. a job_name nvarchar (128).
 
-[  **\@force =** ] kényszerítése  
-Megadja, hogy törölnie kell-e a feladat minden végrehajtás folyamatban van, és megszakítja az összes folyamatban lévő végrehajtások (1) vagy sikertelen, ha bármely feladatvégrehajtások folyamatban (0). kényszerített bit.
+**[\@Force =** ] kényszerítés  
+Megadja, hogy a rendszer törli-e a feladatot, ha a feladat végrehajtása folyamatban van, és megszakítja az összes folyamatban lévő végrehajtást (1), vagy ha a feladatok végrehajtása folyamatban van (0). a kényszerítés bit.
 
-#### <a name="return-code-values"></a>Visszatérési kód értéket
+#### <a name="return-code-values"></a>Visszatérési kód értékei
 0 (sikeres) vagy 1 (hiba)
 
 #### <a name="remarks"></a>Megjegyzések
-Feladatelőzmények automatikusan törlődik a feladat törlése.
+A feladatok előzményeit a rendszer automatikusan törli a feladatok törlésekor.
 
 #### <a name="permissions"></a>Engedélyek
-Alapértelmezés szerint a a sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagjai hajthatják végre ezt a tárolt eljárást. Akkor korlátozzák a felhasználót, hogy csak a feladatok nyomon kell, a felhasználó a következő adatbázis-szerepkör a feladat ügynök adatbázisban a feladatügynök létrehozásakor megadott részeként biztosítani:
+Alapértelmezés szerint a sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagjai futtathatják ezt a tárolt eljárást. Korlátozzák a felhasználókat, hogy csak a feladatok figyelésére legyenek képesek, a feladat ügynökének létrehozásakor megadott feladat-ügynök adatbázisában megadhatja a következő adatbázis-szerepkört:
 - jobs_reader
 
-Ezek a szerepkörök engedélyeivel kapcsolatos részletekért lásd: a engedély szakasz ebben a dokumentumban. Csak a sysadmin (rendszergazda) tagjai a tárolt eljárás segítségével más felhasználók tulajdonában lévő feladatok az attribútumok szerkesztését.
+A szerepkörök engedélyeivel kapcsolatos részletekért tekintse meg a jelen dokumentum engedélyek szakaszát. Csak a sysadmin (rendszergazda) tagok használhatják ezt a tárolt eljárást a más felhasználók tulajdonában lévő feladatok attribútumainak szerkesztéséhez.
 
 
 
-### <a name="spaddjobstep"></a>sp_add_jobstep
+### <a name="sp_add_jobstep"></a>sp_add_jobstep
 
-Egy lépést ad egy feladathoz.
+Feltesz egy lépést egy feladatokba.
 
 #### <a name="syntax"></a>Szintaxis
 
@@ -622,100 +621,100 @@ Egy lépést ad egy feladathoz.
 
 #### <a name="arguments"></a>Argumentumok
 
-[  **\@job_name =** ] "job_name"  
-A feladat, amelyhez a lépés hozzáadása neve. job_name nvarchar(128).
+**[\@job_name =** ] "job_name"  
+Annak a feladattípusnak a neve, amelyhez hozzá szeretné adni a lépést. a job_name nvarchar (128).
 
-[  **\@step_id =** ] step_id  
-A feladat lépésének feladatütemezési azonosítószáma. Lépés azonosítószámokat számozása 1, és növelje hézagok nélkül. Ha egy meglévő lépés már ezt az azonosítót, majd lépés és lépéseket azonosítójának fog kell a növekszik, úgy, hogy ez a lépés szúrhatók be, a feladatütemezés. Ha nincs megadva, a step_id lesz automatikusan hozzárendelve az utolsó a lépések sorrendjét. step_id egy: egész szám.
+**[\@step_id =** ] step_id  
+A feladatütemezés sorszáma. A Step Identification Numbers értéke 1, és hézagok nélkül növekszik. Ha egy meglévő lépés már rendelkezik ezzel az azonosítóval, akkor a lépés és az összes következő lépés megnövekszik, hogy az új lépés beilleszthető legyen a sorba. Ha nincs megadva, a step_id automatikusan a lépések sorrendjében lesz hozzárendelve. a step_id egy int.
 
-[  **\@step_name =** ] step_name  
-A lépés neve. Meg kell adni, kivéve az első lépés egy feladatot, amely (az egyszerűség) alapértelmezett neve "JobStep". step_name nvarchar(128).
+**[\@step_name =** ] step_name  
+A lépés neve. Meg kell adni, kivéve a feladatok első lépését, amely (a kényelem kedvéért) alapértelmezett neve "JobStep". a step_name nvarchar (128).
 
-[  **\@command_type =** ] "command_type"  
-Ez jobstep által végrehajtott parancs típusa. command_type nvarchar(50) a TSQL használatával, ami azt jelenti, hogy értékét, az alapértelmezett érték a @command_type paramétere T-SQL parancsfájl.
+**[\@command_type =** ] "command_type"  
+A jobstep által végrehajtott parancs típusa. a command_type nvarchar (50) a TSql alapértelmezett értéke, ami azt jelenti, hogy a @command_type paraméter értéke egy T-SQL-szkript.
 
-Ha meg van adva, az érték a TSQL használatával kell lennie.
+Ha meg van adva, az értéknek TSql kell lennie.
 
-[  **\@command_source =** ] "command_source"  
-A parancs tárolásának helyét típusa. command_source nvarchar(50) soron belüli, ami azt jelenti, hogy értékét az alapértelmezett értékkel a @command_source paraméter a parancs szövegkonstans.
+**[\@command_source =** ] "command_source"  
+A parancs tárolási helyének típusa. a command_source nvarchar (50), alapértelmezett értéke a beágyazott, ami azt jelenti, hogy a @command_source paraméter értéke a parancs literális szövege.
 
-Ha meg van adva, az értéknek a beágyazott kell lennie.
+Ha meg van adva, az értéknek inline értékűnek kell lennie.
 
-[  **\@parancs =** ] 'parancs'  
-A parancsot érvényes T-SQL parancsfájl kell lennie, és majd a feladat lépésének által végrehajtott. a parancs az nvarchar(max), az alapértelmezett érték NULL esetén.
+**[\@Command =** ] "parancs"  
+A parancsnak érvényes T-SQL-parancsfájlnak kell lennie, és ezt a feladatot a művelet hajtja végre. a parancs nvarchar (max), alapértelmezett értéke NULL.
 
-[  **\@credential_name =** ] "credential_name"  
-Az adatbázis neve kötődő hitelesítőadat-adatbázisban tárolt e feladat vezérlőelem, amellyel csatlakozzon az egyes a céladatbázisok belül a célcsoportot, ez a lépés végrehajtásakor. credential_name nvarchar(128).
+**[\@credential_name =** ] "credential_name"  
+A feladathoz tartozó vezérlő adatbázisban tárolt adatbázis-hatókörű hitelesítő adat neve, amelyet a rendszer a jelen lépés végrehajtásakor a célcsoporthoz tartozó egyes adatbázisokhoz való kapcsolódáshoz használ. a credential_name nvarchar (128).
 
-[  **\@target_group_name =** ] "cél-csoportnév"  
-A cél, hogy a feladat lépésének végrehajtásához adatbázisokat tartalmazó célcsoport neve. target_group_name nvarchar(128).
+**[\@target_group_name =** ] ' cél-group_name '  
+Annak a célcsoportnak a neve, amely azokat a célként megadott adatbázisokat tartalmazza, amelyeken a feladatütemezés végre lesz hajtva. a target_group_name nvarchar (128).
 
-[  **\@initial_retry_interval_seconds =** ] initial_retry_interval_seconds  
-A késleltetés, mielőtt az első újrapróbálkozás kísérli meg, ha a feladat lépés sikertelen lesz, a kezdeti végrehajtási próbálkozásra. initial_retry_interval_seconds int, alapértelmezett értéke 1.
+**[\@initial_retry_interval_seconds =** ] initial_retry_interval_seconds  
+Az első újrapróbálkozási kísérlet előtti késleltetés, ha a feladat lépése sikertelen a kezdeti végrehajtási kísérlet során. a initial_retry_interval_seconds int, alapértelmezett értéke pedig 1.
 
-[  **\@maximum_retry_interval_seconds =** ] maximum_retry_interval_seconds  
-Az újrapróbálkozási kísérletek közötti maximális késleltetés. Ha az újrapróbálkozások közötti késleltetés nagyobb, mint ez az érték akkor növekszik, azt a maximumon erre az értékre helyette. maximum_retry_interval_seconds int, az alapértelmezett érték 120.
+**[\@maximum_retry_interval_seconds =** ] maximum_retry_interval_seconds  
+Az újrapróbálkozási kísérletek közötti maximális késleltetés. Ha az újrapróbálkozások közötti késleltetés nagyobb mértékben növekedni fog, mint ez az érték, akkor ez az érték nem éri el a határértéket. a maximum_retry_interval_seconds int, alapértelmezett értéke 120.
 
-[  **\@retry_interval_backoff_multiplier =** ] retry_interval_backoff_multiplier  
-A alkalmazni újrapróbálkozási késleltetéshez, ha több feladat végrehajtási lépés szorzó kísérletek sikertelenek. Például ha az első újrapróbálkozás kellett 5 másodperces késleltetést, és a leállítási szorzó 2.0, majd a második újra lesz 10 másodperc késéssel és a harmadik újrapróbálkozási rendelkeznek majd 20 másodperc késéssel. retry_interval_backoff_multiplier valódi, 2.0 alapértelmezett értékkel.
+**[\@retry_interval_backoff_multiplier =** ] retry_interval_backoff_multiplier  
+Az újrapróbálkozási késleltetésre alkalmazandó szorzó, ha több feladat-végrehajtási kísérlet meghiúsul. Ha például az első újrapróbálkozás késleltetése 5 másodperc, a leállítási-szorzó pedig 2,0, akkor a második újrapróbálkozás 10 másodperces késleltetéssel fog rendelkezni, a harmadik újrapróbálkozás pedig 20 másodperces késleltetéssel fog rendelkezni. a retry_interval_backoff_multiplier valós, alapértelmezett értéke 2,0.
 
-[  **\@retry_attempts =** ] retry_attempts  
-Újrapróbálja a futtatást, ha a kezdeti kísérlet sikertelen bejelentkezések száma. Például ha retry_attempts értéke 10., akkor nem lesznek 1 kezdeti kísérlet és 10 újrapróbálkozások száma, így 11 kísérletek összesen. Ha az utolsó újrapróbálkozási kísérlet sikertelen, majd a feladat végrehajtása le fog állni egy életciklusával sikertelen. retry_attempts int, az alapértelmezett 10 értéket.
+**[\@retry_attempts =** ] retry_attempts  
+A végrehajtás újrapróbálkozásának száma, ha a kezdeti kísérlet meghiúsul. Ha például a retry_attempts értéke 10, akkor a rendszer 1 kezdeti kísérletet és 10 újrapróbálkozási kísérletet tesz lehetővé, ami összesen 11 próbálkozást eredményez. Ha a végső újrapróbálkozási kísérlet meghiúsul, akkor a feladat végrehajtása nem sikerült. a retry_attempts int, alapértelmezett értéke pedig 10.
 
-[  **\@step_timeout_seconds =** ] step_timeout_seconds  
-A lépés végrehajtásához engedélyezett maximális mennyisége. Ez idő túllépése, majd a feladat végrehajtása időtúllépés miatt megszakadt egy életciklusával akkor megszűnik. step_timeout_seconds int, az alapértelmezett érték pedig 43 200 másodperc (12 óra).
+**[\@step_timeout_seconds =** ] step_timeout_seconds  
+A lépés végrehajtásához engedélyezett maximális időtartam. Ha túllépi az időkorlátot, a feladatok végrehajtása a időtúllépés életciklusával leáll. a step_timeout_seconds int, alapértelmezett értéke 43 200 másodperc (12 óra).
 
-[  **\@output_type =** ] "output_type"  
-Ha nem null értékű, a cél, amely a parancs első eredményt típusát íródik. output_type nvarchar(50), az alapértelmezett érték NULL.
+**[\@output_type =** ] "output_type"  
+Ha nem null értékre van állítva, a parancs első eredményhalmaz-készletének típusa. a output_type nvarchar (50), alapértelmezett értéke NULL.
 
-Ha meg van adva, az értéknek az SQL Database kell lennie.
+Ha meg van adva, az értéknek SqlDatabase kell lennie.
 
-[  **\@output_credential_name =** ] "output_credential_name"  
-Nem null értékű, ha az adatbázis neve hatóköre a kimeneti cél adatbázishoz való kapcsolódáshoz használt hitelesítő adatok. Kötelező megadni, ha output_type megegyezik-e az SQL Database. output_credential_name nvarchar(128), NULL alapértelmezett értéket.
+**[\@output_credential_name =** ] "output_credential_name"  
+Ha nem null értékű, a kimeneti céladatbázis kapcsolódásához használt adatbázis-hatókörű hitelesítő adat neve. Meg kell adni, ha a output_type értéke SqlDatabase. a output_credential_name nvarchar (128), alapértelmezett értéke NULL.
 
-[  **\@output_subscription_id =** ] "output_subscription_id"  
+**[\@output_subscription_id =** ] "output_subscription_id"  
 Leírás szükséges.
 
-[  **\@output_resource_group_name =** ] "output_resource_group_name"  
+**[\@output_resource_group_name =** ] "output_resource_group_name"  
 Leírás szükséges.
 
-[  **\@output_server_name =** ] "output_server_name"  
-Ha nem null, a kimeneti adatbázist tartalmazó kiszolgáló teljesen minősített DNS-nevét. Kötelező megadni, ha output_type megegyezik-e az SQL Database. output_server_name nvarchar(256), az alapértelmezett érték NULL.
+**[\@output_server_name =** ] "output_server_name"  
+Ha nem null értékű, a kimeneti céladatbázis-adatbázist tartalmazó kiszolgáló teljesen minősített DNS-neve. Meg kell adni, ha a output_type értéke SqlDatabase. a output_server_name nvarchar (256), amelynek alapértelmezett értéke NULL.
 
-[  **\@output_database_name =** ] "output_database_name"  
-Ha nem null értékű, az adatbázis nevét, amely tartalmazza a kimeneti céltáblázatban. Kötelező megadni, ha output_type megegyezik-e az SQL Database. output_database_name nvarchar(128), az alapértelmezett érték NULL.
+**[\@output_database_name =** ] "output_database_name"  
+Ha nem null értékű, a kimeneti célhelyet tartalmazó adatbázis neve. Meg kell adni, ha a output_type értéke SqlDatabase. a output_database_name a nvarchar (128), amelynek alapértelmezett értéke NULL.
 
-[  **\@output_schema_name =** ] "output_schema_name"  
-Ha nem null értékű, az SQL-séma neve, amely tartalmazza a kimeneti céltáblázatban. Ha output_type megegyezik az SQL Database, az alapértelmezett érték a dbo. output_schema_name nvarchar(128).
+**[\@output_schema_name =** ] "output_schema_name"  
+Ha nem null értékű, a kimeneti célhelyet tartalmazó SQL-séma neve. Ha a output_type értéke SqlDatabase, az alapértelmezett érték a dbo. a output_schema_name nvarchar (128).
 
-[  **\@output_table_name =** ] "output_table_name"  
-Ha nem null értékű, a tábla, amely a parancs első eredményt neve lesz írva. Ha a tábla már nem létezik, jön az adatszolgáltató eredményhalmaz a séma alapján. Kötelező megadni, ha output_type megegyezik-e az SQL Database. output_table_name nvarchar(128), NULL alapértelmezett értéket.
+**[\@output_table_name =** ] "output_table_name"  
+Ha nem null értékre van állítva, annak a táblának a neve, amelyet a parancs első eredményhalmaz-készlete fog írni. Ha a tábla még nem létezik, a rendszer a visszaadott eredményhalmaz sémája alapján hozza létre. Meg kell adni, ha a output_type értéke SqlDatabase. a output_table_name nvarchar (128), alapértelmezett értéke NULL.
 
-[  **\@job_version =** ] job_version KIMENET  
-A kimeneti paraméter, amely az új feladat verziószámmal hozzá lesz rendelve. job_version: egész szám.
+**[\@job_version =** ] job_version kimenet  
+A kimeneti paraméter, amely az új feladathoz tartozó verziószámot fogja rendelni. a job_version int.
 
-[  **\@max_parallelism =** ] max_parallelism KIMENET  
-A rugalmas készletenként párhuzamosság maximális szintjét. Ha be van állítva, a feladat lépésének csak futtatni, amely legfeljebb annyi adatbázist egy rugalmas készlet korlátozott lesz. Ez minden rugalmas készletet, amely közvetlenül vagy tartalmazza a célcsoportban, vagy olyan kiszolgálóra, amely tartalmazza a célcsoportban lévő vonatkozik. max_parallelism: egész szám.
+**[\@max_parallelism =** ] max_parallelism kimenet  
+A rugalmas készlet maximális párhuzamossági szintje. Ha be van állítva, akkor a feladattípus csak legfeljebb ennyi adatbázison futhat, rugalmas készleten. Ez minden olyan rugalmas készletre vonatkozik, amely közvetlenül szerepel a célcsoportban, vagy a célcsoport részét képező kiszolgálón belül van. a max_parallelism int.
 
 
-#### <a name="return-code-values"></a>Visszatérési kód értéket
+#### <a name="return-code-values"></a>Visszatérési kód értékei
 0 (sikeres) vagy 1 (hiba)
 
 #### <a name="remarks"></a>Megjegyzések
-Ha a sp_add_jobstep sikeres, a feladat jelenlegi verziószám értéke akkor növekszik. A következő alkalommal, amikor a feladat végrehajtása, az új verziót fogja használni. Ha a feladat végrehajtása folyamatban van, a végrehajtás nem tartalmazza majd az új lépés.
+Ha a sp_add_jobstep sikeres, a rendszer megnöveli a feladatokhoz tartozó aktuális verziószámot. A művelet következő futtatásakor a rendszer az új verziót fogja használni. Ha a feladatot jelenleg hajtja végre, a végrehajtás nem fogja tartalmazni az új lépést.
 
 #### <a name="permissions"></a>Engedélyek
-Alapértelmezés szerint a a sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagjai hajthatják végre ezt a tárolt eljárást. Akkor korlátozzák a felhasználót, hogy csak a feladatok nyomon kell, a felhasználó a következő adatbázis-szerepkör a feladat ügynök adatbázisban a feladatügynök létrehozásakor megadott részeként biztosítani:  
+Alapértelmezés szerint a sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagjai futtathatják ezt a tárolt eljárást. Korlátozzák a felhasználókat, hogy csak a feladatok figyelésére legyenek képesek, a feladat ügynökének létrehozásakor megadott feladat-ügynök adatbázisában megadhatja a következő adatbázis-szerepkört:  
 
 - jobs_reader
 
-Ezek a szerepkörök engedélyeivel kapcsolatos részletekért lásd: a engedély szakasz ebben a dokumentumban. Csak a sysadmin (rendszergazda) tagjai a tárolt eljárás segítségével más felhasználók tulajdonában lévő feladatok az attribútumok szerkesztését.
+A szerepkörök engedélyeivel kapcsolatos részletekért tekintse meg a jelen dokumentum engedélyek szakaszát. Csak a sysadmin (rendszergazda) tagok használhatják ezt a tárolt eljárást a más felhasználók tulajdonában lévő feladatok attribútumainak szerkesztéséhez.
 
 
 
-### <a name="spupdatejobstep"></a>sp_update_jobstep
+### <a name="sp_update_jobstep"></a>sp_update_jobstep
 
-Egy feladat lépésének frissíti.
+Frissíti a feladatok lépéseit.
 
 #### <a name="syntax"></a>Szintaxis
 
@@ -746,101 +745,101 @@ Egy feladat lépésének frissíti.
 ```
 
 #### <a name="arguments"></a>Argumentumok
-[  **\@job_name =** ] "job_name"  
-A feladat, amelyhez tartozik. a lépés neve. job_name nvarchar(128).
+**[\@job_name =** ] "job_name"  
+Annak a feladattípusnak a neve, amelyhez a lépés tartozik. a job_name nvarchar (128).
 
-[  **\@step_id =** ] step_id  
-A feladat lépésének módosítani azonosítószáma. Step_id vagy step_name meg kell adni. step_id egy: egész szám.
+**[\@step_id =** ] step_id  
+A módosítandó feladatokhoz tartozó azonosító száma. Meg kell adni a step_id vagy a step_name értéket. a step_id egy int.
 
-[  **\@step_name =** ] "step_name"  
-Módosítani kell a lépés neve. Step_id vagy step_name meg kell adni. step_name nvarchar(128).
+**[\@step_name =** ] "step_name"  
+A módosítandó lépés neve. Meg kell adni a step_id vagy a step_name értéket. a step_name nvarchar (128).
 
-[  **\@new_id =** ] new_id  
-A feladat lépésének új feladatütemezési azonosítószáma. Lépés azonosítószámokat számozása 1, és növelje hézagok nélkül. Ha egy lépés átrendezésekor van, majd további lépések fog lehet automatikusan újraszámozásakor.
+**[\@new_id =** ] new_id  
+A feladatütemezés új sorszáma. A Step Identification Numbers értéke 1, és hézagok nélkül növekszik. Ha egy lépés átrendezése megtörténik, a rendszer a többi lépést is automatikusan újraszámozza.
 
-[  **\@új_név =** ] "új_név"  
-A lépés új neve. új_név nvarchar(128).
+**[\@new_name =** ] "new_name"  
+A lépés új neve. a new_name nvarchar (128).
 
-[  **\@command_type =** ] "command_type"  
-Ez jobstep által végrehajtott parancs típusa. command_type nvarchar(50) a TSQL használatával, ami azt jelenti, hogy értékét, az alapértelmezett érték a @command_type paramétere T-SQL parancsfájl.
+**[\@command_type =** ] "command_type"  
+A jobstep által végrehajtott parancs típusa. a command_type nvarchar (50) a TSql alapértelmezett értéke, ami azt jelenti, hogy a @command_type paraméter értéke egy T-SQL-szkript.
 
-Ha meg van adva, az érték a TSQL használatával kell lennie.
+Ha meg van adva, az értéknek TSql kell lennie.
 
-[  **\@command_source =** ] "command_source"  
-A parancs tárolásának helyét típusa. command_source nvarchar(50) soron belüli, ami azt jelenti, hogy értékét az alapértelmezett értékkel a @command_source paraméter a parancs szövegkonstans.
+**[\@command_source =** ] "command_source"  
+A parancs tárolási helyének típusa. a command_source nvarchar (50), alapértelmezett értéke a beágyazott, ami azt jelenti, hogy a @command_source paraméter értéke a parancs literális szövege.
 
-Ha meg van adva, az értéknek a beágyazott kell lennie.
+Ha meg van adva, az értéknek inline értékűnek kell lennie.
 
-[  **\@parancs =** ] 'parancs'  
-A parancsok a következők érvényes T-SQL parancsfájl kell lennie, és majd a feladat lépésének által végrehajtott. a parancs az nvarchar(max), az alapértelmezett érték NULL esetén.
+**[\@Command =** ] "parancs"  
+A parancs (ok) nak érvényes T-SQL-parancsfájlnak kell lennie, és ezt a feladatot a művelet hajtja végre. a parancs nvarchar (max), alapértelmezett értéke NULL.
 
-[  **\@credential_name =** ] "credential_name"  
-Az adatbázis neve kötődő hitelesítőadat-adatbázisban tárolt e feladat vezérlőelem, amellyel csatlakozzon az egyes a céladatbázisok belül a célcsoportot, ez a lépés végrehajtásakor. credential_name nvarchar(128).
+**[\@credential_name =** ] "credential_name"  
+A feladathoz tartozó vezérlő adatbázisban tárolt adatbázis-hatókörű hitelesítő adat neve, amelyet a rendszer a jelen lépés végrehajtásakor a célcsoporthoz tartozó egyes adatbázisokhoz való kapcsolódáshoz használ. a credential_name nvarchar (128).
 
-[  **\@target_group_name =** ] "cél-csoportnév"  
-A cél, hogy a feladat lépésének végrehajtásához adatbázisokat tartalmazó célcsoport neve. target_group_name nvarchar(128).
+**[\@target_group_name =** ] ' cél-group_name '  
+Annak a célcsoportnak a neve, amely azokat a célként megadott adatbázisokat tartalmazza, amelyeken a feladatütemezés végre lesz hajtva. a target_group_name nvarchar (128).
 
-[  **\@initial_retry_interval_seconds =** ] initial_retry_interval_seconds  
-A késleltetés, mielőtt az első újrapróbálkozás kísérli meg, ha a feladat lépés sikertelen lesz, a kezdeti végrehajtási próbálkozásra. initial_retry_interval_seconds int, alapértelmezett értéke 1.
+**[\@initial_retry_interval_seconds =** ] initial_retry_interval_seconds  
+Az első újrapróbálkozási kísérlet előtti késleltetés, ha a feladat lépése sikertelen a kezdeti végrehajtási kísérlet során. a initial_retry_interval_seconds int, alapértelmezett értéke pedig 1.
 
-[  **\@maximum_retry_interval_seconds =** ] maximum_retry_interval_seconds  
-Az újrapróbálkozási kísérletek közötti maximális késleltetés. Ha az újrapróbálkozások közötti késleltetés nagyobb, mint ez az érték akkor növekszik, azt a maximumon erre az értékre helyette. maximum_retry_interval_seconds int, az alapértelmezett érték 120.
+**[\@maximum_retry_interval_seconds =** ] maximum_retry_interval_seconds  
+Az újrapróbálkozási kísérletek közötti maximális késleltetés. Ha az újrapróbálkozások közötti késleltetés nagyobb mértékben növekedni fog, mint ez az érték, akkor ez az érték nem éri el a határértéket. a maximum_retry_interval_seconds int, alapértelmezett értéke 120.
 
-[  **\@retry_interval_backoff_multiplier =** ] retry_interval_backoff_multiplier  
-A alkalmazni újrapróbálkozási késleltetéshez, ha több feladat végrehajtási lépés szorzó kísérletek sikertelenek. Például ha az első újrapróbálkozás kellett 5 másodperces késleltetést, és a leállítási szorzó 2.0, majd a második újra lesz 10 másodperc késéssel és a harmadik újrapróbálkozási rendelkeznek majd 20 másodperc késéssel. retry_interval_backoff_multiplier valódi, 2.0 alapértelmezett értékkel.
+**[\@retry_interval_backoff_multiplier =** ] retry_interval_backoff_multiplier  
+Az újrapróbálkozási késleltetésre alkalmazandó szorzó, ha több feladat-végrehajtási kísérlet meghiúsul. Ha például az első újrapróbálkozás késleltetése 5 másodperc, a leállítási-szorzó pedig 2,0, akkor a második újrapróbálkozás 10 másodperces késleltetéssel fog rendelkezni, a harmadik újrapróbálkozás pedig 20 másodperces késleltetéssel fog rendelkezni. a retry_interval_backoff_multiplier valós, alapértelmezett értéke 2,0.
 
-[  **\@retry_attempts =** ] retry_attempts  
-Újrapróbálja a futtatást, ha a kezdeti kísérlet sikertelen bejelentkezések száma. Például ha retry_attempts értéke 10., akkor nem lesznek 1 kezdeti kísérlet és 10 újrapróbálkozások száma, így 11 kísérletek összesen. Ha az utolsó újrapróbálkozási kísérlet sikertelen, majd a feladat végrehajtása le fog állni egy életciklusával sikertelen. retry_attempts int, az alapértelmezett 10 értéket.
+**[\@retry_attempts =** ] retry_attempts  
+A végrehajtás újrapróbálkozásának száma, ha a kezdeti kísérlet meghiúsul. Ha például a retry_attempts értéke 10, akkor a rendszer 1 kezdeti kísérletet és 10 újrapróbálkozási kísérletet tesz lehetővé, ami összesen 11 próbálkozást eredményez. Ha a végső újrapróbálkozási kísérlet meghiúsul, akkor a feladat végrehajtása nem sikerült. a retry_attempts int, alapértelmezett értéke pedig 10.
 
-[  **\@step_timeout_seconds =** ] step_timeout_seconds  
-A lépés végrehajtásához engedélyezett maximális mennyisége. Ez idő túllépése, majd a feladat végrehajtása időtúllépés miatt megszakadt egy életciklusával akkor megszűnik. step_timeout_seconds int, az alapértelmezett érték pedig 43 200 másodperc (12 óra).
+**[\@step_timeout_seconds =** ] step_timeout_seconds  
+A lépés végrehajtásához engedélyezett maximális időtartam. Ha túllépi az időkorlátot, a feladatok végrehajtása a időtúllépés életciklusával leáll. a step_timeout_seconds int, alapértelmezett értéke 43 200 másodperc (12 óra).
 
-[  **\@output_type =** ] "output_type"  
-Ha nem null értékű, a cél, amely a parancs első eredményt típusát íródik. Visszaállítani output_type értéke NULL, ez a paraméter értékét állítsa "(üres karakterlánc). output_type nvarchar(50), az alapértelmezett érték NULL.
+**[\@output_type =** ] "output_type"  
+Ha nem null értékre van állítva, a parancs első eredményhalmaz-készletének típusa. Ha vissza szeretné állítani a output_type értékét NULL értékre, állítsa a paraméter értékét "" értékre (üres karakterlánc). a output_type nvarchar (50), alapértelmezett értéke NULL.
 
-Ha meg van adva, az értéknek az SQL Database kell lennie.
+Ha meg van adva, az értéknek SqlDatabase kell lennie.
 
-[  **\@output_credential_name =** ] "output_credential_name"  
-Nem null értékű, ha az adatbázis neve hatóköre a kimeneti cél adatbázishoz való kapcsolódáshoz használt hitelesítő adatok. Kötelező megadni, ha output_type megegyezik-e az SQL Database. Visszaállítani output_credential_name értéke NULL, ez a paraméter értékét állítsa "(üres karakterlánc). output_credential_name nvarchar(128), NULL alapértelmezett értéket.
+**[\@output_credential_name =** ] "output_credential_name"  
+Ha nem null értékű, a kimeneti céladatbázis kapcsolódásához használt adatbázis-hatókörű hitelesítő adat neve. Meg kell adni, ha a output_type értéke SqlDatabase. Ha vissza szeretné állítani a output_credential_name értékét NULL értékre, állítsa a paraméter értékét "" értékre (üres karakterlánc). a output_credential_name nvarchar (128), alapértelmezett értéke NULL.
 
-[  **\@output_server_name =** ] "output_server_name"  
-Ha nem null, a kimeneti adatbázist tartalmazó kiszolgáló teljesen minősített DNS-nevét. Kötelező megadni, ha output_type megegyezik-e az SQL Database. Visszaállítani output_server_name értéke NULL, ez a paraméter értékét állítsa "(üres karakterlánc). output_server_name nvarchar(256), az alapértelmezett érték NULL.
+**[\@output_server_name =** ] "output_server_name"  
+Ha nem null értékű, a kimeneti céladatbázis-adatbázist tartalmazó kiszolgáló teljesen minősített DNS-neve. Meg kell adni, ha a output_type értéke SqlDatabase. Ha vissza szeretné állítani a output_server_name értékét NULL értékre, állítsa a paraméter értékét "" értékre (üres karakterlánc). a output_server_name nvarchar (256), amelynek alapértelmezett értéke NULL.
 
-[  **\@output_database_name =** ] "output_database_name"  
-Ha nem null értékű, az adatbázis nevét, amely tartalmazza a kimeneti céltáblázatban. Kötelező megadni, ha output_type megegyezik-e az SQL Database. Visszaállítani output_database_name értéke NULL, ez a paraméter értékét állítsa "(üres karakterlánc). output_database_name nvarchar(128), az alapértelmezett érték NULL.
+**[\@output_database_name =** ] "output_database_name"  
+Ha nem null értékű, a kimeneti célhelyet tartalmazó adatbázis neve. Meg kell adni, ha a output_type értéke SqlDatabase. Ha vissza szeretné állítani a output_database_name értékét NULL értékre, állítsa a paraméter értékét "" értékre (üres karakterlánc). a output_database_name a nvarchar (128), amelynek alapértelmezett értéke NULL.
 
-[  **\@output_schema_name =** ] "output_schema_name"  
-Ha nem null értékű, az SQL-séma neve, amely tartalmazza a kimeneti céltáblázatban. Ha output_type megegyezik az SQL Database, az alapértelmezett érték a dbo. Visszaállítani output_schema_name értéke NULL, ez a paraméter értékét állítsa "(üres karakterlánc). output_schema_name nvarchar(128).
+**[\@output_schema_name =** ] "output_schema_name"  
+Ha nem null értékű, a kimeneti célhelyet tartalmazó SQL-séma neve. Ha a output_type értéke SqlDatabase, az alapértelmezett érték a dbo. Ha vissza szeretné állítani a output_schema_name értékét NULL értékre, állítsa a paraméter értékét "" értékre (üres karakterlánc). a output_schema_name nvarchar (128).
 
-[  **\@output_table_name =** ] "output_table_name"  
-Ha nem null értékű, a tábla, amely a parancs első eredményt neve lesz írva. Ha a tábla már nem létezik, jön az adatszolgáltató eredményhalmaz a séma alapján. Kötelező megadni, ha output_type megegyezik-e az SQL Database. Visszaállítani output_server_name értéke NULL, ez a paraméter értékét állítsa "(üres karakterlánc). output_table_name nvarchar(128), NULL alapértelmezett értéket.
+**[\@output_table_name =** ] "output_table_name"  
+Ha nem null értékre van állítva, annak a táblának a neve, amelyet a parancs első eredményhalmaz-készlete fog írni. Ha a tábla még nem létezik, a rendszer a visszaadott eredményhalmaz sémája alapján hozza létre. Meg kell adni, ha a output_type értéke SqlDatabase. Ha vissza szeretné állítani a output_server_name értékét NULL értékre, állítsa a paraméter értékét "" értékre (üres karakterlánc). a output_table_name nvarchar (128), alapértelmezett értéke NULL.
 
-[  **\@job_version =** ] job_version KIMENET  
-A kimeneti paraméter, amely az új feladat verziószámmal hozzá lesz rendelve. job_version: egész szám.
+**[\@job_version =** ] job_version kimenet  
+A kimeneti paraméter, amely az új feladathoz tartozó verziószámot fogja rendelni. a job_version int.
 
-[  **\@max_parallelism =** ] max_parallelism KIMENET  
-A rugalmas készletenként párhuzamosság maximális szintjét. Ha be van állítva, a feladat lépésének csak futtatni, amely legfeljebb annyi adatbázist egy rugalmas készlet korlátozott lesz. Ez minden rugalmas készletet, amely közvetlenül vagy tartalmazza a célcsoportban, vagy olyan kiszolgálóra, amely tartalmazza a célcsoportban lévő vonatkozik. Visszaállítani max_parallelism értéke null, állítsa be a paraméter értéke 1. max_parallelism: egész szám.
+**[\@max_parallelism =** ] max_parallelism kimenet  
+A rugalmas készlet maximális párhuzamossági szintje. Ha be van állítva, akkor a feladattípus csak legfeljebb ennyi adatbázison futhat, rugalmas készleten. Ez minden olyan rugalmas készletre vonatkozik, amely közvetlenül szerepel a célcsoportban, vagy a célcsoport részét képező kiszolgálón belül van. Ha vissza szeretné állítani a max_parallelism értékét NULL értékre, állítsa a paraméter értékét-1 értékre. a max_parallelism int.
 
 
-#### <a name="return-code-values"></a>Visszatérési kód értéket
+#### <a name="return-code-values"></a>Visszatérési kód értékei
 0 (sikeres) vagy 1 (hiba)
 
 #### <a name="remarks"></a>Megjegyzések
-Minden folyamatban lévő végrehajtások a feladat nem érinti. Ha a sp_update_jobstep sikeres, a feladat verziószáma értéke akkor növekszik. A következő alkalommal, amikor a feladat végrehajtása, az új verziót fogja használni.
+A rendszer nem érinti a feladatok folyamatban lévő végrehajtását. Ha a sp_update_jobstep sikeres, a rendszer megnöveli a feladatokhoz tartozó verziószámot. A művelet következő futtatásakor a rendszer az új verziót fogja használni.
 
 #### <a name="permissions"></a>Engedélyek
-Alapértelmezés szerint a a sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagjai hajthatják végre ezt a tárolt eljárást. Akkor korlátozzák a felhasználót, hogy csak a feladatok nyomon kell, a felhasználó a következő adatbázis-szerepkör a feladat ügynök adatbázisban a feladatügynök létrehozásakor megadott részeként biztosítani:
+Alapértelmezés szerint a sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagjai futtathatják ezt a tárolt eljárást. Korlátozzák a felhasználókat, hogy csak a feladatok figyelésére legyenek képesek, a feladat ügynökének létrehozásakor megadott feladat-ügynök adatbázisában megadhatja a következő adatbázis-szerepkört:
 
 - jobs_reader
 
-Ezek a szerepkörök engedélyeivel kapcsolatos részletekért lásd: a engedély szakasz ebben a dokumentumban. Csak a sysadmin (rendszergazda) tagjai a tárolt eljárás segítségével más felhasználók tulajdonában lévő feladatok az attribútumok szerkesztése
+A szerepkörök engedélyeivel kapcsolatos részletekért tekintse meg a jelen dokumentum engedélyek szakaszát. Csak a sysadmin (rendszergazda) tagok használhatják ezt a tárolt eljárást a más felhasználók tulajdonában lévő feladatok attribútumainak szerkesztéséhez
 
 
 
 
-### <a name="spdeletejobstep"></a>sp_delete_jobstep
+### <a name="sp_delete_jobstep"></a>sp_delete_jobstep
 
-Egy feladat lépésének távolít el egy feladatot.
+Eltávolít egy feladatot a feladatokból.
 
 #### <a name="syntax"></a>Szintaxis
 
@@ -853,40 +852,40 @@ Egy feladat lépésének távolít el egy feladatot.
 ```
 
 #### <a name="arguments"></a>Argumentumok
-[  **\@job_name =** ] "job_name"  
-A feladat, amelyről a lépés eltávolítja a neve. job_name nvarchar(128), nem alapértelmezett.
+**[\@job_name =** ] "job_name"  
+Annak a feladattípusnak a neve, amelyből a lépés el lesz távolítva. a job_name nvarchar (128), alapértelmezés szerint nincs megadva.
 
-[  **\@step_id =** ] step_id  
-Azonosítószáma. a feladat lépésének törölni. Step_id vagy step_name meg kell adni. step_id egy: egész szám.
+**[\@step_id =** ] step_id  
+A törlendő feladatokhoz tartozó azonosító száma. Meg kell adni a step_id vagy a step_name értéket. a step_id egy int.
 
-[  **\@step_name =** ] "step_name"  
-A törlendő lépés neve. Step_id vagy step_name meg kell adni. step_name nvarchar(128).
+**[\@step_name =** ] "step_name"  
+A törlendő lépés neve. Meg kell adni a step_id vagy a step_name értéket. a step_name nvarchar (128).
 
-[  **\@job_version =** ] job_version KIMENET  
-A kimeneti paraméter, amely az új feladat verziószámmal hozzá lesz rendelve. job_version: egész szám.
+**[\@job_version =** ] job_version kimenet  
+A kimeneti paraméter, amely az új feladathoz tartozó verziószámot fogja rendelni. a job_version int.
 
-#### <a name="return-code-values"></a>Visszatérési kód értéket
+#### <a name="return-code-values"></a>Visszatérési kód értékei
 0 (sikeres) vagy 1 (hiba)
 
 #### <a name="remarks"></a>Megjegyzések
-Minden folyamatban lévő végrehajtások a feladat nem érinti. Ha a sp_update_jobstep sikeres, a feladat verziószáma értéke akkor növekszik. A következő alkalommal, amikor a feladat végrehajtása, az új verziót fogja használni.
+A rendszer nem érinti a feladatok folyamatban lévő végrehajtását. Ha a sp_update_jobstep sikeres, a rendszer megnöveli a feladatokhoz tartozó verziószámot. A művelet következő futtatásakor a rendszer az új verziót fogja használni.
 
-A többi feladat lépés automatikusan újraszámozásakor fogja a törölt feladatról lépés az űrt tölti ki.
+A rendszer automatikusan újraszámozza a többi feladatot, hogy kitöltse a törölt feladatok lépésének bal oldali térközét.
  
 #### <a name="permissions"></a>Engedélyek
-Alapértelmezés szerint a a sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagjai hajthatják végre ezt a tárolt eljárást. Akkor korlátozzák a felhasználót, hogy csak a feladatok nyomon kell, a felhasználó a következő adatbázis-szerepkör a feladat ügynök adatbázisban a feladatügynök létrehozásakor megadott részeként biztosítani:
+Alapértelmezés szerint a sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagjai futtathatják ezt a tárolt eljárást. Korlátozzák a felhasználókat, hogy csak a feladatok figyelésére legyenek képesek, a feladat ügynökének létrehozásakor megadott feladat-ügynök adatbázisában megadhatja a következő adatbázis-szerepkört:
 - jobs_reader
 
-Ezek a szerepkörök engedélyeivel kapcsolatos részletekért lásd: a engedély szakasz ebben a dokumentumban. Csak a sysadmin (rendszergazda) tagjai a tárolt eljárás segítségével más felhasználók tulajdonában lévő feladatok az attribútumok szerkesztését.
+A szerepkörök engedélyeivel kapcsolatos részletekért tekintse meg a jelen dokumentum engedélyek szakaszát. Csak a sysadmin (rendszergazda) tagok használhatják ezt a tárolt eljárást a más felhasználók tulajdonában lévő feladatok attribútumainak szerkesztéséhez.
 
 
 
 
 
 
-### <a name="spstartjob"></a>sp_start_job
+### <a name="sp_start_job"></a>sp_start_job
 
-Elindul egy feladat végrehajtása.
+A feladatok végrehajtásának megkezdése.
 
 #### <a name="syntax"></a>Szintaxis
 
@@ -897,27 +896,27 @@ Elindul egy feladat végrehajtása.
 ```
 
 #### <a name="arguments"></a>Argumentumok
-[  **\@job_name =** ] "job_name"  
-A feladat, amelyről a lépés eltávolítja a neve. job_name nvarchar(128), nem alapértelmezett.
+**[\@job_name =** ] "job_name"  
+Annak a feladattípusnak a neve, amelyből a lépés el lesz távolítva. a job_name nvarchar (128), alapértelmezés szerint nincs megadva.
 
-[  **\@job_execution_id =** ] job_execution_id KIMENET  
-A kimeneti paraméter, amely a feladat-végrehajtási azonosítóhoz hozzá lesz rendelve. job_version uniqueidentifier.
+**[\@job_execution_id =** ] job_execution_id kimenet  
+Kimeneti paraméter, amely a feladatok végrehajtásának azonosítóját fogja rendelni. a job_version uniqueidentifier.
 
-#### <a name="return-code-values"></a>Visszatérési kód értéket
+#### <a name="return-code-values"></a>Visszatérési kód értékei
 0 (sikeres) vagy 1 (hiba)
 
 #### <a name="remarks"></a>Megjegyzések
 Nincs.
  
 #### <a name="permissions"></a>Engedélyek
-Alapértelmezés szerint a a sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagjai hajthatják végre ezt a tárolt eljárást. Akkor korlátozzák a felhasználót, hogy csak a feladatok nyomon kell, a felhasználó a következő adatbázis-szerepkör a feladat ügynök adatbázisban a feladatügynök létrehozásakor megadott részeként biztosítani:
+Alapértelmezés szerint a sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagjai futtathatják ezt a tárolt eljárást. Korlátozzák a felhasználókat, hogy csak a feladatok figyelésére legyenek képesek, a feladat ügynökének létrehozásakor megadott feladat-ügynök adatbázisában megadhatja a következő adatbázis-szerepkört:
 - jobs_reader
 
-Ezek a szerepkörök engedélyeivel kapcsolatos részletekért lásd: a engedély szakasz ebben a dokumentumban. Csak a sysadmin (rendszergazda) tagjai a tárolt eljárás segítségével más felhasználók tulajdonában lévő feladatok az attribútumok szerkesztését.
+A szerepkörök engedélyeivel kapcsolatos részletekért tekintse meg a jelen dokumentum engedélyek szakaszát. Csak a sysadmin (rendszergazda) tagok használhatják ezt a tárolt eljárást a más felhasználók tulajdonában lévő feladatok attribútumainak szerkesztéséhez.
 
-### <a name="spstopjob"></a>sp_stop_job
+### <a name="sp_stop_job"></a>sp_stop_job
 
-Egy feladat végrehajtása leáll.
+Leállítja a feladatok végrehajtását.
 
 #### <a name="syntax"></a>Szintaxis
 
@@ -928,25 +927,25 @@ Egy feladat végrehajtása leáll.
 
 
 #### <a name="arguments"></a>Argumentumok
-[  **\@job_execution_id =** ] job_execution_id  
-A feladat végrehajtásának leállítása azonosítószáma. job_execution_id uniqueidentifier alapértelmezett null értékű.
+**[\@job_execution_id =** ] job_execution_id  
+A leállítani kívánt feladatok azonosítójának száma. a job_execution_id értéke uniqueidentifier, alapértelmezés szerint NULL.
 
-#### <a name="return-code-values"></a>Visszatérési kód értéket
+#### <a name="return-code-values"></a>Visszatérési kód értékei
 0 (sikeres) vagy 1 (hiba)
 
 #### <a name="remarks"></a>Megjegyzések
 Nincs.
  
 #### <a name="permissions"></a>Engedélyek
-Alapértelmezés szerint a a sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagjai hajthatják végre ezt a tárolt eljárást. Akkor korlátozzák a felhasználót, hogy csak a feladatok nyomon kell, a felhasználó a következő adatbázis-szerepkör a feladat ügynök adatbázisban a feladatügynök létrehozásakor megadott részeként biztosítani:
+Alapértelmezés szerint a sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagjai futtathatják ezt a tárolt eljárást. Korlátozzák a felhasználókat, hogy csak a feladatok figyelésére legyenek képesek, a feladat ügynökének létrehozásakor megadott feladat-ügynök adatbázisában megadhatja a következő adatbázis-szerepkört:
 - jobs_reader
 
-Ezek a szerepkörök engedélyeivel kapcsolatos részletekért lásd: a engedély szakasz ebben a dokumentumban. Csak a sysadmin (rendszergazda) tagjai a tárolt eljárás segítségével más felhasználók tulajdonában lévő feladatok az attribútumok szerkesztését.
+A szerepkörök engedélyeivel kapcsolatos részletekért tekintse meg a jelen dokumentum engedélyek szakaszát. Csak a sysadmin (rendszergazda) tagok használhatják ezt a tárolt eljárást a más felhasználók tulajdonában lévő feladatok attribútumainak szerkesztéséhez.
 
 
-### <a name="spaddtargetgroup"></a>sp_add_target_group
+### <a name="sp_add_target_group"></a>sp_add_target_group
 
-Cél csoport hozzáadása.
+Célcsoport hozzáadására szolgál.
 
 #### <a name="syntax"></a>Szintaxis
 
@@ -958,26 +957,26 @@ Cél csoport hozzáadása.
 
 
 #### <a name="arguments"></a>Argumentumok
-[  **\@target_group_name =** ] "target_group_name"  
-Hozhat létre a célcsoport neve. target_group_name nvarchar(128), nem alapértelmezett.
+**[\@target_group_name =** ] "target_group_name"  
+A létrehozandó célcsoport neve. a target_group_name nvarchar (128), alapértelmezés szerint nincs megadva.
 
-[  **\@target_group_id =** ] target_group_id kimeneti a célként megadott csoport azonosító száma pedig a feladathoz hozzárendelt, ha sikeresen létrehozva. target_group_id egy kimeneti változó UniqueIdentifier típusú, az alapértelmezett érték NULL.
+**[\@target_group_id =** ] a target_group_id a feladathoz hozzárendelt célcsoport-azonosító számát adja meg, ha a létrehozása sikeres volt. a target_group_id egy uniqueidentifier típusú kimeneti változó, amelynek alapértelmezett értéke NULL.
 
-#### <a name="return-code-values"></a>Visszatérési kód értéket
+#### <a name="return-code-values"></a>Visszatérési kód értékei
 0 (sikeres) vagy 1 (hiba)
 
 #### <a name="remarks"></a>Megjegyzések
-Célcsoportok, amelyekre egy feladatot egy adatbázis-gyűjtemény, egyszerű módot biztosítanak.
+A célcsoportok egyszerű módszert biztosítanak a feladatok adatbázis-gyűjteményen való megcélzására.
 
 #### <a name="permissions"></a>Engedélyek
-Alapértelmezés szerint a a sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagjai hajthatják végre ezt a tárolt eljárást. Akkor korlátozzák a felhasználót, hogy csak a feladatok nyomon kell, a felhasználó a következő adatbázis-szerepkör a feladat ügynök adatbázisban a feladatügynök létrehozásakor megadott részeként biztosítani:
+Alapértelmezés szerint a sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagjai futtathatják ezt a tárolt eljárást. Korlátozzák a felhasználókat, hogy csak a feladatok figyelésére legyenek képesek, a feladat ügynökének létrehozásakor megadott feladat-ügynök adatbázisában megadhatja a következő adatbázis-szerepkört:
 - jobs_reader
 
-Ezek a szerepkörök engedélyeivel kapcsolatos részletekért lásd: a engedély szakasz ebben a dokumentumban. Csak a sysadmin (rendszergazda) tagjai a tárolt eljárás segítségével más felhasználók tulajdonában lévő feladatok az attribútumok szerkesztését.
+A szerepkörök engedélyeivel kapcsolatos részletekért tekintse meg a jelen dokumentum engedélyek szakaszát. Csak a sysadmin (rendszergazda) tagok használhatják ezt a tárolt eljárást a más felhasználók tulajdonában lévő feladatok attribútumainak szerkesztéséhez.
 
-### <a name="spdeletetargetgroup"></a>sp_delete_target_group
+### <a name="sp_delete_target_group"></a>sp_delete_target_group
 
-A célként megadott csoport törlése.
+Egy célcsoport törlése.
 
 #### <a name="syntax"></a>Szintaxis
 
@@ -988,24 +987,24 @@ A célként megadott csoport törlése.
 
 
 #### <a name="arguments"></a>Argumentumok
-[  **\@target_group_name =** ] "target_group_name"  
-Törli a célcsoport neve. target_group_name nvarchar(128), nem alapértelmezett.
+**[\@target_group_name =** ] "target_group_name"  
+A törlendő cél csoport neve. a target_group_name nvarchar (128), alapértelmezés szerint nincs megadva.
 
-#### <a name="return-code-values"></a>Visszatérési kód értéket
+#### <a name="return-code-values"></a>Visszatérési kód értékei
 0 (sikeres) vagy 1 (hiba)
 
 #### <a name="remarks"></a>Megjegyzések
 Nincs.
 
 #### <a name="permissions"></a>Engedélyek
-Alapértelmezés szerint a a sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagjai hajthatják végre ezt a tárolt eljárást. Akkor korlátozzák a felhasználót, hogy csak a feladatok nyomon kell, a felhasználó a következő adatbázis-szerepkör a feladat ügynök adatbázisban a feladatügynök létrehozásakor megadott részeként biztosítani:
+Alapértelmezés szerint a sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagjai futtathatják ezt a tárolt eljárást. Korlátozzák a felhasználókat, hogy csak a feladatok figyelésére legyenek képesek, a feladat ügynökének létrehozásakor megadott feladat-ügynök adatbázisában megadhatja a következő adatbázis-szerepkört:
 - jobs_reader
 
-Ezek a szerepkörök engedélyeivel kapcsolatos részletekért lásd: a engedély szakasz ebben a dokumentumban. Csak a sysadmin (rendszergazda) tagjai a tárolt eljárás segítségével más felhasználók tulajdonában lévő feladatok az attribútumok szerkesztését.
+A szerepkörök engedélyeivel kapcsolatos részletekért tekintse meg a jelen dokumentum engedélyek szakaszát. Csak a sysadmin (rendszergazda) tagok használhatják ezt a tárolt eljárást a más felhasználók tulajdonában lévő feladatok attribútumainak szerkesztéséhez.
 
-### <a name="spaddtargetgroupmember"></a>sp_add_target_group_member
+### <a name="sp_add_target_group_member"></a>sp_add_target_group_member
 
-Egy adatbázis vagy adatbázisokat ad hozzá egy célcsoportot.
+Adatbázis vagy adatbázis-csoport hozzáadását egy célcsoporthoz.
 
 #### <a name="syntax"></a>Szintaxis
 
@@ -1022,45 +1021,45 @@ Egy adatbázis vagy adatbázisokat ad hozzá egy célcsoportot.
 ```
 
 #### <a name="arguments"></a>Argumentumok
-[  **\@target_group_name =** ] "target_group_name"  
-A célcsoportot, amely hozzáadja a tag neve. target_group_name nvarchar(128), nem alapértelmezett.
+**[\@target_group_name =** ] "target_group_name"  
+Annak a célcsoportnak a neve, amelyhez a tag hozzá lesz adva. a target_group_name nvarchar (128), alapértelmezés szerint nincs megadva.
 
-[  **\@membership_type =** ] "membership_type"  
-Ha a célként megadott csoport tagja foglalt vagy kizárt adja meg. target_group_name nvarchar(128) "Include" alapértelmezés szerint a rendszer. Target_group_name érvényes értékei a következők: "Include" vagy "Kizárása".
+**[\@membership_type =** ] "membership_type"  
+Megadja, hogy a célcsoport tagja belefoglalt vagy kizárva lesz-e. a target_group_name a nvarchar (128), amelynek alapértelmezett értéke a "include". A target_group_name érvényes értékei a következők: "include" vagy "kizár".
 
-[  **\@target_type =** ] "target_type"  
-A céladatbázis vagy -beleértve az összes adatbázis-kiszolgálók, rugalmas készletben található összes adatbázis, horizontálispartíció-térkép található összes adatbázis vagy az egyes adatbázisok adatbázis-gyűjtemény típusa. target_type nvarchar(128), nem alapértelmezett. Target_type érvényes értékei a következők: "SqlServer", "SqlElasticPool", "SqlDatabase" vagy "SqlShardMap". 
+**[\@target_type =** ] "target_type"  
+A céladatbázis vagy adatbázisok gyűjteményének típusa, beleértve a kiszolgálókon lévő összes adatbázist, a rugalmas készletben lévő összes adatbázist, a szegmensben található összes adatbázist vagy egy adott adatbázist. a target_type nvarchar (128), alapértelmezés szerint nincs megadva. A target_type érvényes értékei a következők: "SqlServer", "SqlElasticPool", "SqlDatabase" vagy "SqlShardMap". 
 
-[  **\@refresh_credential_name =** ] "refresh_credential_name"  
-Az SQL Database-kiszolgáló neve. refresh_credential_name nvarchar(128), nem alapértelmezett.
+**[\@refresh_credential_name =** ] "refresh_credential_name"  
+A SQL Database-kiszolgáló neve. a refresh_credential_name nvarchar (128), alapértelmezés szerint nincs megadva.
 
-[  **\@kiszolgáló_neve =** ] ": kiszolgálónév"  
-A megadott célcsoportot, az új SQL Database-kiszolgáló neve. kiszolgáló_neve target_type "SqlServer" esetén adható meg. kiszolgáló_neve nvarchar(128), nem alapértelmezett.
+**[\@kiszolgálónév =** ] "kiszolgálónév"  
+Annak a SQL Database-kiszolgálónak a neve, amelyet hozzá kell adni a megadott célcsoporthoz. a kiszolgáló_neve értéket meg kell adni, ha a target_type "SqlServer". a kiszolgálónév nvarchar (128), alapértelmezés szerint nincs megadva.
 
-[  **\@database_name =** ] "database_name"  
-A megadott célcsoportot, az új adatbázis neve. Ha target_type "SqlDatabase" database_name adható meg. adatbázisnév nvarchar(128), nem alapértelmezett.
+**[\@adatbázisnév =** ] "adatbázisnév"  
+Annak az adatbázisnak a neve, amelyet fel kell venni a megadott célcsoportba. a adatbázisnév meg kell adni, ha a target_type értéke "SqlDatabase". a adatbázisnév nvarchar (128), alapértelmezés szerint nincs megadva.
 
-[  **\@elastic_pool_name =** ] "elastic_pool_name"  
-A rugalmas készlet a megadott célcsoportot, az új neve. Ha target_type "SqlElasticPool" elastic_pool_name adható meg. elastic_pool_name nvarchar(128), nem alapértelmezett.
+**[\@elastic_pool_name =** ] "elastic_pool_name"  
+Annak a rugalmas készletnek a neve, amelyet hozzá kell adni a megadott célcsoporthoz. a elastic_pool_name meg kell adni, ha a target_type értéke "SqlElasticPool". a elastic_pool_name nvarchar (128), alapértelmezés szerint nincs megadva.
 
-[  **\@shard_map_name =** ] "shard_map_name"  
-A szegmens térkép készlet a megadott célcsoportot, az új neve. Ha target_type "SqlSqlShardMap" elastic_pool_name adható meg. shard_map_name nvarchar(128), nem alapértelmezett.
+**[\@shard_map_name =** ] "shard_map_name"  
+A megadott célcsoporthoz hozzáadandó szegmenses leképezési készlet neve. a elastic_pool_name meg kell adni, ha a target_type értéke "SqlSqlShardMap". a shard_map_name nvarchar (128), alapértelmezés szerint nincs megadva.
 
-[  **\@target_id =** ] target_group_id KIMENET  
-A célcsoport hozzá rendelt a célként megadott csoport tagja, ha létrehozott cél azonosítószáma. target_id egy kimeneti változó UniqueIdentifier típusú, az alapértelmezett érték NULL.
-Visszatérési kód értékek 0 (sikeres) vagy 1 (hiba)
+**[\@target_id =** ] target_group_id kimenet  
+A célcsoport tagja számára hozzárendelt cél azonosító szám, ha a csoport hozzá lett adva. a target_id egy uniqueidentifier típusú kimeneti változó, amelynek alapértelmezett értéke NULL.
+Visszatérési kód értéke 0 (sikeres) vagy 1 (hiba)
 
 #### <a name="remarks"></a>Megjegyzések
-Egy feladat végrehajtása a minden önálló adatbázis egy SQL Database-kiszolgálóhoz vagy a rugalmas készlet jelenleg végrehajtás, amikor egy SQL Database-kiszolgáló vagy a rugalmas készlet része a célcsoportban.
+A feladatok egy SQL Database-kiszolgálón vagy egy rugalmas készleten belül, a végrehajtás időpontjában, egy SQL Database-kiszolgáló vagy egy rugalmas készlet részeként futnak a célcsoportban.
 
 #### <a name="permissions"></a>Engedélyek
-Alapértelmezés szerint a a sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagjai hajthatják végre ezt a tárolt eljárást. Akkor korlátozzák a felhasználót, hogy csak a feladatok nyomon kell, a felhasználó a következő adatbázis-szerepkör a feladat ügynök adatbázisban a feladatügynök létrehozásakor megadott részeként biztosítani:
+Alapértelmezés szerint a sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagjai futtathatják ezt a tárolt eljárást. Korlátozzák a felhasználókat, hogy csak a feladatok figyelésére legyenek képesek, a feladat ügynökének létrehozásakor megadott feladat-ügynök adatbázisában megadhatja a következő adatbázis-szerepkört:
 - jobs_reader
 
-Ezek a szerepkörök engedélyeivel kapcsolatos részletekért lásd: a engedély szakasz ebben a dokumentumban. Csak a sysadmin (rendszergazda) tagjai a tárolt eljárás segítségével más felhasználók tulajdonában lévő feladatok az attribútumok szerkesztését.
+A szerepkörök engedélyeivel kapcsolatos részletekért tekintse meg a jelen dokumentum engedélyek szakaszát. Csak a sysadmin (rendszergazda) tagok használhatják ezt a tárolt eljárást a más felhasználók tulajdonában lévő feladatok attribútumainak szerkesztéséhez.
 
 #### <a name="examples"></a>Példák
-Az alábbi példa adatbázisaihoz hozzáadja a csoporthoz kiszolgálók karbantartása ügyfél-információkat a londoni és NewYork kiszolgálókon. A feladatok adatbázis létrehozásakor megadott a feladatügynök a jelen esetben ElasticJobs kell kapcsolódnia.
+A következő példa hozzáadja az összes adatbázist a londoni és a NewYork-kiszolgálóról a csoport kiszolgálóira az ügyféladatok fenntartása érdekében. A feladat-ügynök létrehozásakor megadott feladatok adatbázishoz kell csatlakoznia, ebben az esetben a ElasticJobs.
 
 ```sql
 --Connect to the jobs database specified when creating the job agent
@@ -1092,9 +1091,9 @@ SELECT * FROM [jobs].target_group_members WHERE target_group_name= N'Servers Mai
 GO
 ```
 
-### <a name="spdeletetargetgroupmember"></a>sp_delete_target_group_member
+### <a name="sp_delete_target_group_member"></a>sp_delete_target_group_member
 
-A cél a csoporttag eltávolítása egy célcsoportot.
+A célcsoport tagjainak eltávolítása egy célcsoportból.
 
 #### <a name="syntax"></a>Szintaxis
 
@@ -1106,26 +1105,26 @@ A cél a csoporttag eltávolítása egy célcsoportot.
 
 
 
-Argumentumok [ @target_group_name =] "target_group_name"  
-Távolítsa el a célként megadott csoport tagja, amelyből a célcsoport neve. target_group_name nvarchar(128), nem alapértelmezett.
+Argumentumok @target_group_name [=] ' target_group_name '  
+Annak a célcsoportnak a neve, amelyből el szeretné távolítani a célcsoport tagját. a target_group_name nvarchar (128), alapértelmezés szerint nincs megadva.
 
 [ @target_id =] target_id  
- A cél tartozó azonosítószámot a célként megadott csoport tagja, el kell távolítani. target_id egy uniqueidentifier, az alapértelmezett érték NULL.
+ Az eltávolítandó célcsoport-tag számára hozzárendelt cél azonosító szám. a target_id egy uniqueidentifier, amelynek alapértelmezett értéke NULL.
 
-#### <a name="return-code-values"></a>Visszatérési kód értéket
+#### <a name="return-code-values"></a>Visszatérési kód értékei
 0 (sikeres) vagy 1 (hiba)
 
 #### <a name="remarks"></a>Megjegyzések
-Célcsoportok, amelyekre egy feladatot egy adatbázis-gyűjtemény, egyszerű módot biztosítanak.
+A célcsoportok egyszerű módszert biztosítanak a feladatok adatbázis-gyűjteményen való megcélzására.
 
 #### <a name="permissions"></a>Engedélyek
-Alapértelmezés szerint a a sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagjai hajthatják végre ezt a tárolt eljárást. Akkor korlátozzák a felhasználót, hogy csak a feladatok nyomon kell, a felhasználó a következő adatbázis-szerepkör a feladat ügynök adatbázisban a feladatügynök létrehozásakor megadott részeként biztosítani:
+Alapértelmezés szerint a sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagjai futtathatják ezt a tárolt eljárást. Korlátozzák a felhasználókat, hogy csak a feladatok figyelésére legyenek képesek, a feladat ügynökének létrehozásakor megadott feladat-ügynök adatbázisában megadhatja a következő adatbázis-szerepkört:
 - jobs_reader
 
-Ezek a szerepkörök engedélyeivel kapcsolatos részletekért lásd: a engedély szakasz ebben a dokumentumban. Csak a sysadmin (rendszergazda) tagjai a tárolt eljárás segítségével más felhasználók tulajdonában lévő feladatok az attribútumok szerkesztését.
+A szerepkörök engedélyeivel kapcsolatos részletekért tekintse meg a jelen dokumentum engedélyek szakaszát. Csak a sysadmin (rendszergazda) tagok használhatják ezt a tárolt eljárást a más felhasználók tulajdonában lévő feladatok attribútumainak szerkesztéséhez.
 
 #### <a name="examples"></a>Példák
-A következő példában eltávolítjuk a londoni server kiszolgálók karbantartása ügyfél-információkat a csoportból. A feladatok adatbázis létrehozásakor megadott a feladatügynök a jelen esetben ElasticJobs kell kapcsolódnia.
+A következő példa eltávolítja a London-kiszolgálót a csoport kiszolgálóiról az ügyféladatok fenntartásával. A feladat-ügynök létrehozásakor megadott feladatok adatbázishoz kell csatlakoznia, ebben az esetben a ElasticJobs.
 
 ```sql
 --Connect to the jobs database specified when creating the job agent
@@ -1143,9 +1142,9 @@ EXEC jobs.sp_delete_target_group_member
 GO
 ```
 
-### <a name="sppurgejobhistory"></a>sp_purge_jobhistory
+### <a name="sp_purge_jobhistory"></a>sp_purge_jobhistory
 
-Eltávolít egy feladat replikálásielőzmény-rekord.
+Eltávolítja egy adott feladatokhoz tartozó előzményi rekordokat.
 
 #### <a name="syntax"></a>Szintaxis
 
@@ -1157,26 +1156,26 @@ Eltávolít egy feladat replikálásielőzmény-rekord.
 ```
 
 #### <a name="arguments"></a>Argumentumok
-[  **\@job_name =** ] "job_name"  
-A feladat, amelynek a replikálásielőzmény-rekord törlése neve. job_name nvarchar(128), az alapértelmezett érték NULL. Meg kell adni job_id vagy a job_name, de mindkettő nem adható meg.
+**[\@job_name =** ] "job_name"  
+Annak a feladattípusnak a neve, amelyre vonatkozóan törölni szeretné az előzmények rekordjait. a job_name a nvarchar (128), amelynek alapértelmezett értéke NULL. Meg kell adni a job_id vagy a job_name, de mindkettőt nem lehet megadni.
 
-[  **\@job_id =** ] job_id  
- A feladat a feladat a törlendő rekordok azonosítószáma. job_id uniqueidentifier, az alapértelmezett érték NULL. Meg kell adni job_id vagy a job_name, de mindkettő nem adható meg.
+**[\@job_id =** ] job_id  
+ A törölni kívánt rekordok feladatainak feladata. a job_id a uniqueidentifier, amelynek alapértelmezett értéke NULL. Meg kell adni a job_id vagy a job_name, de mindkettőt nem lehet megadni.
 
-[  **\@oldest_date =** ] oldest_date  
- A legrégebbi az előzményekben megőrizni kívánt rekord. oldest_date DATETIME2, akkor az alapértelmezett érték NULL. Ha oldest_date meg van adva, sp_purge_jobhistory csak eltávolítja azokat a rekordokat, amelyek régebbi, mint a megadott érték.
+**[\@oldest_date =** ] oldest_date  
+ Az előzményekben megőrizni kívánt legrégebbi rekord. a oldest_date a DATETIME2, amelynek alapértelmezett értéke NULL. Ha a oldest_date meg van adva, a sp_purge_jobhistory csak a megadott értéknél régebbi rekordokat távolítja el.
 
-#### <a name="return-code-values"></a>Visszatérési kód értéket
-0 (sikeres) vagy 1 (hiba) megjegyzések célcsoportokat, amelyekre egy feladatot egy adatbázis-gyűjtemény, egyszerű módot biztosítanak.
+#### <a name="return-code-values"></a>Visszatérési kód értékei
+a 0 (sikeres) vagy 1 (sikertelen) megjegyzések a célcsoportok egyszerű módszert biztosítanak a feladatok adatbázis-gyűjteményben való megcélzására.
 
 #### <a name="permissions"></a>Engedélyek
-Alapértelmezés szerint a a sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagjai hajthatják végre ezt a tárolt eljárást. Akkor korlátozzák a felhasználót, hogy csak a feladatok nyomon kell, a felhasználó a következő adatbázis-szerepkör a feladat ügynök adatbázisban a feladatügynök létrehozásakor megadott részeként biztosítani:
+Alapértelmezés szerint a sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagjai futtathatják ezt a tárolt eljárást. Korlátozzák a felhasználókat, hogy csak a feladatok figyelésére legyenek képesek, a feladat ügynökének létrehozásakor megadott feladat-ügynök adatbázisában megadhatja a következő adatbázis-szerepkört:
 - jobs_reader
 
-Ezek a szerepkörök engedélyeivel kapcsolatos részletekért lásd: a engedély szakasz ebben a dokumentumban. Csak a sysadmin (rendszergazda) tagjai a tárolt eljárás segítségével más felhasználók tulajdonában lévő feladatok az attribútumok szerkesztését.
+A szerepkörök engedélyeivel kapcsolatos részletekért tekintse meg a jelen dokumentum engedélyek szakaszát. Csak a sysadmin (rendszergazda) tagok használhatják ezt a tárolt eljárást a más felhasználók tulajdonában lévő feladatok attribútumainak szerkesztéséhez.
 
 #### <a name="examples"></a>Példák
-Az alábbi példa adatbázisaihoz hozzáadja a csoporthoz kiszolgálók karbantartása ügyfél-információkat a londoni és NewYork kiszolgálókon. A feladatok adatbázis létrehozásakor megadott a feladatügynök a jelen esetben ElasticJobs kell kapcsolódnia.
+A következő példa hozzáadja az összes adatbázist a londoni és a NewYork-kiszolgálóról a csoport kiszolgálóira az ügyféladatok fenntartása érdekében. A feladat-ügynök létrehozásakor megadott feladatok adatbázishoz kell csatlakoznia, ebben az esetben a ElasticJobs.
 
 ```sql
 --Connect to the jobs database specified when creating the job agent
@@ -1188,162 +1187,162 @@ GO
 ```
 
 
-## <a name="job-views"></a>Feladat nézetek
+## <a name="job-views"></a>Feladatok nézetei
 
-A következő nézetek érhetők el a [feladatok adatbázis](sql-database-job-automation-overview.md#job-database).
+A [feladatok adatbázisban](sql-database-job-automation-overview.md#job-database)a következő nézetek érhetők el.
 
 
 |Nézet  |Leírás  |
 |---------|---------|
-|[jobs_executions](#jobs_executions-view)     |  Látható feladat-végrehajtási előzményei.      |
-|[jobs](#jobs-view)     |   Az összes feladat látható.      |
-|[job_versions](#job_versions-view)     |   Az összes feladat verzió látható.      |
-|[feladatlépésnél](#jobsteps-view)     |     Minden egyes feladat jelenlegi verziója minden lépéseit mutatja be.    |
-|[jobstep_versions](#jobstep_versions-view)     |     Minden egyes feladat összes verzióját az összes lépéseit mutatja be.    |
-|[target_groups](#target_groups-view)     |      Az összes célcsoportok mutatja.   |
-|[target_group_members](#target_groups_members-view)     |   Minden célként megadott csoport minden tagját mutatja.      |
+|[job_executions](#job_executions-view)     |  A feladatok végrehajtási előzményeit jeleníti meg.      |
+|[feladatok](#jobs-view)     |   Megjeleníti az összes feladatot.      |
+|[job_versions](#job_versions-view)     |   Megjeleníti az összes feladattípust.      |
+|[feladatlépésnél](#jobsteps-view)     |     Megjeleníti az egyes feladatok aktuális verziójának összes lépését.    |
+|[jobstep_versions](#jobstep_versions-view)     |     Megjeleníti az egyes feladatok összes verziójának összes lépését.    |
+|[target_groups](#target_groups-view)     |      Megjeleníti az összes célcsoportot.   |
+|[target_group_members](#target_groups_members-view)     |   Megjeleníti az összes célcsoport összes tagját.      |
 
 
-### <a name="jobsexecutions-view"></a>jobs_executions megtekintése
+### <a name="job_executions-view"></a>job_executions nézet
 
-[jobs].[jobs_executions]
+[feladatok]. [job_executions]
 
-Látható feladat-végrehajtási előzményei.
+A feladatok végrehajtási előzményeit jeleníti meg.
 
 
 |Oszlop neve|   Adattípus   |Leírás|
 |---------|---------|---------|
-|**job_execution_id**   |UniqueIdentifier|  A feladat-végrehajtás egy példányát egyedi azonosítója.
-|**job_name**   |nvarchar(128)  |A feladat nevét.
-|**job_id** |UniqueIdentifier|  A feladat egyedi azonosítója.
-|**job_version**    |int    |A feladat (automatikusan frissül minden alkalommal, amikor módosul, a feladat) verziója.
-|**step_id**    |int|   (A feladathoz) egyedi azonosítója a lépéssel. NULL azt jelzi, hogy ez az a szülő feladat végrehajtása.
-|**is_active**| bit |Azt jelzi, hogy adatokat az aktív vagy inaktív. 1 aktív feladatok azt jelzi, és a 0 azt jelzi, hogy inaktív.
-|**életciklus**| nvarchar(50)|A feladat állapotát jelző érték: "Létrehozva", "Folyamatban", "Sikertelen", "Sikeres", "Kihagyva", "SucceededWithSkipped"|
-|**create_time**|   datetime2(7)|   Dátum és idő a feladat létrehozása.
-|**start_time** |datetime2(7)|  Dátum és idő a feladat végrehajtási elindult. NULL értékű, ha a feladat még nem lett végrehajtva.
-|**end_time**|  datetime2(7)    |Dátum és idő a feladat végrehajtása befejeződött. NULL értékű, ha még nem lett végrehajtva a feladat, vagy nem rendelkezik még végrehajtása befejeződött.
-|**current_attempts**   |int    |Kísérelte meg a lépés hányszor. Szülő feladat lesz 0, gyermek feladatvégrehajtások 1 lesz, vagy a végrehajtási házirend nagyobb alapján.
-|**current_attempt_start_time** |datetime2(7)|  Dátum és idő a feladat végrehajtási elindult. NULL azt jelzi, hogy ez az a szülő feladat végrehajtása.
-|**last_message**   |nvarchar(max)| Feladat és lépés előzmények üzenet. 
-|**target_type**|   nvarchar(128)   |Céladatbázis vagy az adatbázis összes adatbázissal egy kiszolgálót, egy rugalmas készletben található összes adatbázis vagy egy adatbázis-gyűjtemény típusa. Target_type érvényes értékei a következők: "SqlServer", "SqlElasticPool" vagy "SqlDatabase". NULL azt jelzi, hogy ez az a szülő feladat végrehajtása.
-|**target_id**  |UniqueIdentifier|  A célként megadott csoport tagja egyedi azonosítója.  NULL azt jelzi, hogy ez az a szülő feladat végrehajtása.
-|**target_group_name**  |nvarchar(128)  |A célcsoport neve. NULL azt jelzi, hogy ez az a szülő feladat végrehajtása.
-|**target_server_name**|    nvarchar(256)|  A célként megadott csoportban lévő SQL Database-kiszolgáló neve. A megadott csak target_type "SqlServer"-e. NULL azt jelzi, hogy ez az a szülő feladat végrehajtása.
-|**target_database_name**   |nvarchar(128)| A célként megadott csoportban szereplő adatbázis nevét. Megadott csak amikor target_type "SqlDatabase". NULL azt jelzi, hogy ez az a szülő feladat végrehajtása.
+|**job_execution_id**   |uniqueidentifier|  A feladatok végrehajtásának egy példányának egyedi azonosítója.
+|**job_name**   |nvarchar (128)  |A feladattípus neve.
+|**job_id** |uniqueidentifier|  A feladatokhoz tartozó egyedi azonosító.
+|**job_version**    |int    |A feladatokhoz tartozó verzió (a feladatok minden módosításakor automatikusan frissülnek).
+|**step_id**    |int|   A lépéshez tartozó egyedi (ehhez a feladathoz) azonosító. NULL érték azt jelzi, hogy ez a fölérendelt feladatok végrehajtása.
+|**is_active**| bit |Azt jelzi, hogy az adatok aktívak vagy inaktívak-e. 1 az aktív feladatokat jelöli, a 0 pedig inaktív értéket jelez.
+|**életciklus**| nvarchar (50)|A (z) "létrehozva", "folyamatban", "sikertelen", "sikeres", "kihagyott", "SucceededWithSkipped" művelet állapotát jelző érték.|
+|**create_time**|   datetime2 (7)|   A feladatok létrehozásának dátuma és időpontja.
+|**start_time** |datetime2 (7)|  A feladatok végrehajtásának dátuma és időpontja. NULL, ha a feladatot még nem hajtották végre.
+|**end_time**|  datetime2 (7)    |A feladatok végrehajtásának dátuma és időpontja. NULL, ha a feladatot még nem hajtották végre, vagy még nem végezte el a végrehajtást.
+|**current_attempts**   |int    |A lépés újrapróbálkozásának száma. A fölérendelt feladatoknak 0, a alárendelt feladatok végrehajtása a végrehajtási házirend alapján 1 vagy nagyobb lesz.
+|**current_attempt_start_time** |datetime2 (7)|  A feladatok végrehajtásának dátuma és időpontja. NULL érték azt jelzi, hogy ez a fölérendelt feladatok végrehajtása.
+|**last_message**   |típus: nvarchar(max)| A feladatok vagy lépések előzményeinek üzenete. 
+|**target_type**|   nvarchar (128)   |A céladatbázis vagy adatbázisok gyűjteményének típusa, beleértve a kiszolgáló összes adatbázisát, egy rugalmas készletben vagy adatbázisban lévő összes adatbázist. A target_type érvényes értékei a következők: "SqlServer", "SqlElasticPool" vagy "SqlDatabase". NULL érték azt jelzi, hogy ez a fölérendelt feladatok végrehajtása.
+|**target_id**  |uniqueidentifier|  A célcsoport-tag egyedi azonosítója.  NULL érték azt jelzi, hogy ez a fölérendelt feladatok végrehajtása.
+|**target_group_name**  |nvarchar (128)  |A célcsoport neve. NULL érték azt jelzi, hogy ez a fölérendelt feladatok végrehajtása.
+|**target_server_name**|    nvarchar (256)|  A célcsoportban található SQL Database-kiszolgáló neve. Csak akkor van megadva, ha a target_type "SqlServer". NULL érték azt jelzi, hogy ez a fölérendelt feladatok végrehajtása.
+|**target_database_name**   |nvarchar (128)| A célcsoportban található adatbázis neve. Csak akkor van megadva, ha a target_type "SqlDatabase". NULL érték azt jelzi, hogy ez a fölérendelt feladatok végrehajtása.
 
 
-### <a name="jobs-view"></a>feladatok megtekintése
+### <a name="jobs-view"></a>feladatok nézet
 
-[jobs].[jobs]
+[feladatok]. feladatok
 
-Az összes feladat látható.
+Megjeleníti az összes feladatot.
 
 |Oszlop neve|   Adattípus|  Leírás|
 |------|------|-------|
-|**job_name**|  nvarchar(128)   |A feladat nevét.|
-|**job_id**|    UniqueIdentifier    |A feladat egyedi azonosítója.|
-|**job_version**    |int    |A feladat (automatikusan frissül minden alkalommal, amikor módosul, a feladat) verziója.|
-|**description**    |nvarchar(512)| A feladat leírását. engedélyezett bit azt jelzi, hogy a feladat engedélyezve van-e vagy le van tiltva. 1 azt jelzi, hogy engedélyezett feladatok, és a 0 azt jelzi, hogy letiltott feladatok.|
-|**schedule_interval_type** |nvarchar(50)   |Érték, amely jelzi, ha a feladat végrehajtását van: az "egyszeri", "Percek", "Hours", "Nap", "hét", "Hónap"
-|**schedule_interval_count**|   int|    Minden egyes végrehajtása a feladat a közti schedule_interval_type időszakok száma.|
-|**schedule_start_time**    |datetime2(7)|  Dátum és a feladat volt elindítva utolsó végrehajtási időpont.|
-|**schedule_end_time**| datetime2(7)|   Dátum és idő a feladat volt a legutóbbi művelet befejeződött.|
+|**job_name**|  nvarchar (128)   |A feladattípus neve.|
+|**job_id**|    uniqueidentifier    |A feladatokhoz tartozó egyedi azonosító.|
+|**job_version**    |int    |A feladatokhoz tartozó verzió (a feladatok minden módosításakor automatikusan frissülnek).|
+|**description**    |nvarchar (512)| A feladatokhoz tartozó Leírás az enabled bit azt jelzi, hogy a feladattípus engedélyezve van vagy le van tiltva. 1 az engedélyezett feladatokat jelzi, a 0 pedig letiltott feladatokat jelez.|
+|**schedule_interval_type** |nvarchar (50)   |Az érték, amely azt jelzi, hogy mikor kell végrehajtani a feladatot: "ONCE", "Minutes", "Hours", "Days", "Weeks", "months"
+|**schedule_interval_count**|   int|    A schedule_interval_type időszakok száma a feladatok végrehajtásához.|
+|**schedule_start_time**    |datetime2 (7)|  A művelet utolsó indításának dátuma és időpontja.|
+|**schedule_end_time**| datetime2 (7)|   A művelet utolsó befejezett végrehajtásának dátuma és időpontja.|
 
 
-### <a name="jobversions-view"></a>job_versions megtekintése
+### <a name="job_versions-view"></a>job_versions nézet
 
 [feladatok]. [job_versions]
 
-Az összes feladat verzió látható.
+Megjeleníti az összes feladattípust.
 
 |Oszlop neve|   Adattípus|  Leírás|
 |------|------|-------|
-|**job_name**|  nvarchar(128)   |A feladat nevét.|
-|**job_id**|    UniqueIdentifier    |A feladat egyedi azonosítója.|
-|**job_version**    |int    |A feladat (automatikusan frissül minden alkalommal, amikor módosul, a feladat) verziója.|
+|**job_name**|  nvarchar (128)   |A feladattípus neve.|
+|**job_id**|    uniqueidentifier    |A feladatokhoz tartozó egyedi azonosító.|
+|**job_version**    |int    |A feladatokhoz tartozó verzió (a feladatok minden módosításakor automatikusan frissülnek).|
 
 
-### <a name="jobsteps-view"></a>feladatlépésnél megtekintése
+### <a name="jobsteps-view"></a>feladatlépésnél nézet
 
-[feladatok]. [feladatlépésnél]
+[feladatok]. feladatlépésnél
 
-Minden egyes feladat jelenlegi verziója minden lépéseit mutatja be.
+Megjeleníti az egyes feladatok aktuális verziójának összes lépését.
 
 |Oszlop neve    |Adattípus| Leírás|
 |------|------|-------|
-|**job_name**   |nvarchar(128)| A feladat nevét.|
-|**job_id** |UniqueIdentifier   |A feladat egyedi azonosítója.|
-|**job_version**|   int|    A feladat (automatikusan frissül minden alkalommal, amikor módosul, a feladat) verziója.|
-|**step_id**    |int    |(A feladathoz) egyedi azonosítója a lépéssel.|
-|**step_name**  |nvarchar(128)  |(A feladathoz) egyedi neve a lépéshez.|
-|**command_type**   |nvarchar(50)   |A feladat lépésben végrehajtandó parancs típusa. V1, az értéknek meg kell egyeznie a és "TSql" az alapértelmezett érték.|
-|**command_source** |nvarchar(50)|  A parancs helye. A 1-es "Beágyazott" az alapértelmezett beállítás, és csak elfogadható érték.|
-|**command**|   nvarchar(max)|  Rugalmas feladatok command_type keresztül hajtja végre a parancsokat.|
-|**credential_name**|   nvarchar(128)   |Végrehajtási a feladat segítségével az adatbázishoz kötődő hitelesítő adat nevét.|
-|**target_group_name**| nvarchar(128)   |A célcsoport neve.|
-|**target_group_id**|   UniqueIdentifier|   A célként megadott csoport egyedi azonosítója.|
-|**initial_retry_interval_seconds**|    int |A késleltetés az első újrapróbálkozási kísérlet előtt. Alapértelmezett érték az 1.|
-|**maximum_retry_interval_seconds** |int|   Az újrapróbálkozási kísérletek közötti maximális késleltetés. Ha az újrapróbálkozások közötti késleltetés nagyobb, mint ez az érték akkor növekszik, azt a maximumon erre az értékre helyette. Alapértelmezett értéke 120.|
-|**retry_interval_backoff_multiplier**  |valódi|  A alkalmazni újrapróbálkozási késleltetéshez, ha több feladat végrehajtási lépés szorzó kísérletek sikertelenek. Alapértelmezett érték a 2.0-s.|
-|**retry_attempts** |int|   Az újrapróbálkozási kísérletek száma használhat, ha ez a lépés sikertelen lesz. Alapértelmezett érték 10, amely azt jelzi, hogy nem az újrapróbálkozási kísérletek.|
-|**step_timeout_seconds**   |int|   Az újrapróbálkozási kísérletek közötti percek időtartama. Az alapértelmezett érték 0, amely azt jelzi, hogy egy 0 perces időszakban.|
-|**output_type**    |nvarchar(11)|  A parancs helye. Az aktuális előzetes verzióban érhető el "Beágyazott" az alapértelmezett beállítás, és csak elfogadható érték.|
-|**output_credential_name**|    nvarchar(128)   |Neve a tárolja az eredményeket a célkiszolgálóra való kapcsolódáshoz használt hitelesítő adatok megadása|
-|**output_subscription_id**|    UniqueIdentifier|   Az előfizetés, az eredményeket adja meg a lekérdezés végrehajtása a cél server\database egyedi azonosítója.|
-|**output_resource_group_name** |nvarchar(128)| A célkiszolgáló tartalmazó erőforráscsoport neve.|
-|**output_server_name**|    nvarchar(256)   |Az eredménykészletet a célkiszolgáló nevét.|
-|**output_database_name**   |nvarchar(128)| Az eredménykészletet a céladatbázis neve.|
-|**output_schema_name** |nvarchar(max)| A cél séma neve. Alapértelmezés szerint a dbo, ha nincs megadva.|
-|**output_table_name**| nvarchar(max)|  Az eredmények, adja meg a lekérdezés eredményeinek tárolására a tábla neve. Táblázat az eredmények, ha még nem létezik a séma alapján automatikusan létrejön. Séma meg kell egyeznie az eredménykészletet sémája.|
-|**max_parallelism**|   int|    Adatbázisok száma, amelyek a feladat lépésének fut egyszerre rugalmas készlet maximális számát. Az alapértelmezett érték NULL, tehát nincs korlátozva. |
+|**job_name**   |nvarchar (128)| A feladattípus neve.|
+|**job_id** |uniqueidentifier   |A feladatokhoz tartozó egyedi azonosító.|
+|**job_version**|   int|    A feladatokhoz tartozó verzió (a feladatok minden módosításakor automatikusan frissülnek).|
+|**step_id**    |int    |A lépéshez tartozó egyedi (ehhez a feladathoz) azonosító.|
+|**step_name**  |nvarchar (128)  |Egyedi (ehhez a feladatokhoz) a lépéshez tartozó név.|
+|**command_type**   |nvarchar (50)   |A feladattípusban végrehajtandó parancs típusa. A v1 esetében az értéknek és az alapértelmezett értéknek a "TSql" értéket kell megadnia.|
+|**command_source** |nvarchar (50)|  A parancs helye. A v1 esetében a "inline" az alapértelmezett és az egyetlen elfogadott érték.|
+|**parancs**|   típus: nvarchar(max)|  A rugalmas feladatok által a command_type-n keresztül végrehajtandó parancsok.|
+|**credential_name**|   nvarchar (128)   |A feladatok végrehajtásához használt adatbázis-hatókörű hitelesítő adat neve.|
+|**target_group_name**| nvarchar (128)   |A célcsoport neve.|
+|**target_group_id**|   uniqueidentifier|   A célcsoport egyedi azonosítója.|
+|**initial_retry_interval_seconds**|    int |Az első újrapróbálkozási kísérlet előtti késleltetés. Az alapértelmezett érték 1.|
+|**maximum_retry_interval_seconds** |int|   Az újrapróbálkozási kísérletek közötti maximális késleltetés. Ha az újrapróbálkozások közötti késleltetés nagyobb mértékben növekedni fog, mint ez az érték, akkor ez az érték nem éri el a határértéket. Az alapértelmezett érték a 120.|
+|**retry_interval_backoff_multiplier**  |real|  Az újrapróbálkozási késleltetésre alkalmazandó szorzó, ha több feladat-végrehajtási kísérlet meghiúsul. Az alapértelmezett érték a 2,0.|
+|**retry_attempts** |int|   Az újrapróbálkozási kísérletek száma, ha ez a lépés meghiúsul. Az alapértelmezett érték 10, amely nem kísérli meg az újrapróbálkozási kísérleteket.|
+|**step_timeout_seconds**   |int|   Az újrapróbálkozási kísérletek közötti idő (percben). Az alapértelmezett érték 0, amely 0 perces intervallumot jelez.|
+|**output_type**    |nvarchar (11)|  A parancs helye. Az aktuális előzetes verzióban a "inline" az alapértelmezett és az egyetlen elfogadott érték.|
+|**output_credential_name**|    nvarchar (128)   |A célkiszolgálóra való kapcsolódáshoz használandó hitelesítő adatok neve az eredményhalmaz tárolásához.|
+|**output_subscription_id**|    uniqueidentifier|   A lekérdezés végrehajtásának eredményeihez megadott cél server\database előfizetés egyedi azonosítója.|
+|**output_resource_group_name** |nvarchar (128)| Az erőforráscsoport neve, ahol a célkiszolgáló található.|
+|**output_server_name**|    nvarchar (256)   |A célkiszolgáló neve az eredmény-készlethez.|
+|**output_database_name**   |nvarchar (128)| Az eredményhalmaz céladatbázis neve.|
+|**output_schema_name** |típus: nvarchar(max)| A célként megadott séma neve. Ha nincs megadva, az alapértelmezett érték a dbo.|
+|**output_table_name**| típus: nvarchar(max)|  Annak a táblának a neve, amely az eredményeket a lekérdezés eredményei alapján tárolja. A tábla automatikusan létrejön, az eredmények készletének sémája alapján, ha még nem létezik. A sémának meg kell egyeznie az eredmények készletének sémájával.|
+|**max_parallelism**|   int|    Egy rugalmas készletben lévő adatbázisok maximális száma, amelyet a feladattípus egyszerre fog futni. Az alapértelmezett érték NULL, ami nincs korlátozva. |
 
 
-### <a name="jobstepversions-view"></a>jobstep_versions megtekintése
+### <a name="jobstep_versions-view"></a>jobstep_versions nézet
 
 [feladatok]. [jobstep_versions]
 
-Minden egyes feladat összes verzióját az összes lépéseit mutatja be. A séma megegyezik az [feladatlépésnél](#jobsteps-view).
+Megjeleníti az egyes feladatok összes verziójának összes lépését. A séma megegyezik a [feladatlépésnél](#jobsteps-view).
 
-### <a name="targetgroups-view"></a>target_groups megtekintése
+### <a name="target_groups-view"></a>target_groups nézet
 
 [feladatok]. [target_groups]
 
-Az összes cél csoportok listája.
+Felsorolja az összes célcsoportot.
 
 |Oszlop neve|Adattípus| Leírás|
 |-----|-----|-----|
-|**target_group_name**| nvarchar(128)   |A célcsoportot, egy adatbázis-gyűjtemény neve. 
-|**target_group_id**    |UniqueIdentifier   |A célként megadott csoport egyedi azonosítója.
+|**target_group_name**| nvarchar (128)   |A célcsoport neve, adatbázisok gyűjteménye. 
+|**target_group_id**    |uniqueidentifier   |A célcsoport egyedi azonosítója.
 
-### <a name="targetgroupsmembers-view"></a>target_groups_members view
+### <a name="target_groups_members-view"></a>target_groups_members nézet
 
-[jobs].[target_groups_members]
+[feladatok]. [target_groups_members]
 
-Minden célként megadott csoport minden tagját mutatja.
+Megjeleníti az összes célcsoport összes tagját.
 
 |Oszlop neve|Adattípus| Leírás|
 |-----|-----|-----|
-|**target_group_name**  |nvarchar (128|A célcsoportot, egy adatbázis-gyűjtemény neve. |
-|**target_group_id**    |UniqueIdentifier   |A célként megadott csoport egyedi azonosítója.|
-|**membership_type**    |int|   Itt adhatja meg, ha a célként megadott csoport tagja tartalmaz, vagy a célcsoportban kizárt. Target_group_name érvényes értékei a következők: "Include" vagy "Kizárása".|
-|**target_type**    |nvarchar(128)| Céladatbázis vagy az adatbázis összes adatbázissal egy kiszolgálót, egy rugalmas készletben található összes adatbázis vagy egy adatbázis-gyűjtemény típusa. Target_type érvényes értékei a következők: "SqlServer", "SqlElasticPool", "SqlDatabase" vagy "SqlShardMap".|
-|**target_id**  |UniqueIdentifier|  A célként megadott csoport tagja egyedi azonosítója.|
-|**refresh_credential_name**    |nvarchar(128)  |Az adatbázis nevét a célként megadott csoport tagja való kapcsolódáshoz használt hitelesítő adatok hatókörét.|
-|**subscription_id**    |UniqueIdentifier|  Az előfizetés egyedi azonosítója.|
-|**resource_group_name**    |nvarchar(128)| Neve az erőforráscsoport, amelyben megtalálható a célként megadott csoport tagja.|
-|**server_name**    |nvarchar(128)  |A célként megadott csoportban lévő SQL Database-kiszolgáló neve. A megadott csak target_type "SqlServer"-e. |
-|**database_name**  |nvarchar(128)  |A célként megadott csoportban szereplő adatbázis nevét. Megadott csak amikor target_type "SqlDatabase".|
-|**elastic_pool_name**  |nvarchar(128)| A célként megadott csoportban lévő a rugalmas készlet neve. Megadott csak amikor target_type "SqlElasticPool".|
-|**shard_map_name** |nvarchar(128)| A célként megadott csoportban lévő horizontális skálázási térképet neve. Megadott csak amikor target_type "SqlShardMap".|
+|**target_group_name**  |nvarchar (128|A célcsoport neve, adatbázisok gyűjteménye. |
+|**target_group_id**    |uniqueidentifier   |A célcsoport egyedi azonosítója.|
+|**membership_type**    |int|   Megadja, hogy a célcsoport tagja szerepel-e a célcsoportban, vagy ki van-e zárva. A target_group_name érvényes értékei a következők: "include" vagy "kizár".|
+|**target_type**    |nvarchar (128)| A céladatbázis vagy adatbázisok gyűjteményének típusa, beleértve a kiszolgáló összes adatbázisát, egy rugalmas készletben vagy adatbázisban lévő összes adatbázist. A target_type érvényes értékei a következők: "SqlServer", "SqlElasticPool", "SqlDatabase" vagy "SqlShardMap".|
+|**target_id**  |uniqueidentifier|  A célcsoport-tag egyedi azonosítója.|
+|**refresh_credential_name**    |nvarchar (128)  |A célcsoport tagjához való kapcsolódáshoz használt adatbázis-hatókörű hitelesítő adat neve.|
+|**subscription_id**    |uniqueidentifier|  Az előfizetés egyedi azonosítója.|
+|**resource_group_name**    |nvarchar (128)| Azon erőforráscsoport neve, amelyben a célcsoport tagja található.|
+|**server_name**    |nvarchar (128)  |A célcsoportban található SQL Database-kiszolgáló neve. Csak akkor van megadva, ha a target_type "SqlServer". |
+|**database_name**  |nvarchar (128)  |A célcsoportban található adatbázis neve. Csak akkor van megadva, ha a target_type "SqlDatabase".|
+|**elastic_pool_name**  |nvarchar (128)| A célcsoportban található rugalmas készlet neve. Csak akkor van megadva, ha a target_type "SqlElasticPool".|
+|**shard_map_name** |nvarchar (128)| A célcsoportban található szegmens-hozzárendelés neve. Csak akkor van megadva, ha a target_type "SqlShardMap".|
 
 
 ## <a name="resources"></a>További források
 
- - ![Témakör-hivatkozás ikon](https://docs.microsoft.com/sql/database-engine/configure-windows/media/topic-link.gif "témakör kapcsolat ikon") [Transact-SQL-szintaxis konvenciók](https://docs.microsoft.com/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)  
+ - ![Témakör hivatkozásának ikonja](https://docs.microsoft.com/sql/database-engine/configure-windows/media/topic-link.gif "Témakör hivatkozásának ikonja") [Transact-SQL-szintaxis konvenciói](https://docs.microsoft.com/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)  
 
 
 ## <a name="next-steps"></a>További lépések
 
 - [Rugalmas feladatok létrehozása és kezelése a PowerShell használatával](elastic-jobs-powershell.md)
-- [Engedélyezési és az engedélyek az SQL Server](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/authorization-and-permissions-in-sql-server)
+- [Engedélyezés és engedélyek SQL Server](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/authorization-and-permissions-in-sql-server)

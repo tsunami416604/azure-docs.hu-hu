@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/09/2019
+ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: ba8d9fd54b8b29a3e58f170402a64f5899fec002
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b8d4ff3e833dcbe92802845796e3b826735b68ce
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57880687"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61465643"
 ---
 # <a name="develop-video-player-applications"></a>Videolejátszó alkalmazások készítése
 ## <a name="overview"></a>Áttekintés
@@ -52,7 +52,7 @@ A következő SDK-k bármelyikét is használhatja:
 * [Licencelési Microsoft® Smooth Streaming Ügyfélportolási készlet](https://aka.ms/sspk) 
 * [Videó XBOX fejlesztése](https://xbox.create.msdn.com/) 
 
-## <a name="advertising"></a>Hirdetés
+## <a name="advertising"></a>Hirdetések
 Az Azure Media Services reklámjelölőket keresztül a Windows Media Platform támogatja: Player keretrendszerekkel. Ad-támogatás a Player keretrendszerek érhetők el a Windows 8, a Silverlight, a Windows Phone 8 és az iOS-eszközökhöz. Minden egyes player keretrendszer, amely bemutatja, hogyan valósíthat meg egy médialejátszó alkalmazásba mintakód tartalmazza. Nincsenek szúrhat be a multimédiás ads három különböző típusú:
 
 Lineáris – a teljes keret hirdetések fő videó megállítása

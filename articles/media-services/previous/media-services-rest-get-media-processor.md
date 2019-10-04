@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: d342cff6d322195ee88a74215f814be7d702aa5e
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294127"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60761976"
 ---
 # <a name="how-to-get-a-media-processor-instance"></a>Egy Media processzorpéldány beszerzése
 > [!div class="op_single_selector"]

@@ -13,11 +13,11 @@ ms.workload: NA
 ms.date: 04/15/2017
 ms.author: harahma
 ms.openlocfilehash: d2d958a89bff40483e1cd473538f7d1a6971d266
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663281"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60483630"
 ---
 # <a name="azure-service-fabric-hosting-model"></a>Azure Service Fabric hosting model
 Ez a cikk az Azure Service Fabric által biztosított modellek üzemeltető alkalmazás nyújt áttekintést, és közötti különbségeket ismerteti a **megosztott folyamatot** és **kizárólagos folyamat** modellek. Leírja, hogyan néz ki a központilag telepített alkalmazás egy Service Fabric-csomópont és a szolgáltatás és a szolgáltatás gazdafolyamat replikák (vagy példányok) közötti kapcsolat.

@@ -15,11 +15,11 @@ ms.author: lizross
 ms.custom: end-user
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d16b54df5b8392a294036978e0b917ecdb3ce1ca
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56184244"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60862270"
 ---
 # <a name="reset-your-work-or-school-password"></a>A munkahelyi vagy iskolai jelszó visszaállítása
 

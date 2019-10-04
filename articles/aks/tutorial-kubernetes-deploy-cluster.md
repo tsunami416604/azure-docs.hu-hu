@@ -2,22 +2,22 @@
 title: Azure-on futó Kubernetes oktatóanyag – Fürtök üzembe helyezése
 description: Az Azure Kubernetes Service (AKS) ezen oktatóanyagában egy AKS-fürtöt fog létrehozni, és kapcsolódni fog a Kubernetes-főcsomóponthoz a kubectl használatával.
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
-ms.author: iainfou
+ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 54872a1c5a40cdb3f51c17362daed93c3892001e
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: bd3f31f4247a9d80615634a64fee0c6eb3297fe5
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754557"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147246"
 ---
-# <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>Oktatóanyag: Az Azure Kubernetes Service (AKS)-fürt üzembe helyezése
+# <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>Oktatóanyag: Azure Kubernetes Service (ak) fürt üzembe helyezése
 
-A Kubernetes tárolóalapú alkalmazásokhoz kínál elosztott platformot. Az aks-sel gyorsan létrehozhat egy üzemkész Kubernetes-fürt. Ebben az oktatóanyagban, amely egy hétrészes sorozat harmadik része, egy Kubernetes-fürtöt helyezünk üzembe az AKS-ben. Az alábbiak végrehajtásának módját ismerheti meg:
+A Kubernetes tárolóalapú alkalmazásokhoz kínál elosztott platformot. Az AK használatával gyorsan létrehozhat egy éles használatra kész Kubernetes-fürtöt. Ebben az oktatóanyagban, amely egy hétrészes sorozat harmadik része, egy Kubernetes-fürtöt helyezünk üzembe az AKS-ben. Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
 > * Szolgáltatásnév létrehozása az erőforrás-interakciókhoz
@@ -25,19 +25,19 @@ A Kubernetes tárolóalapú alkalmazásokhoz kínál elosztott platformot. Az ak
 > * A Kubernetes parancssori felület (kubectl) telepítése
 > * A kubectl konfigurálása az AKS-fürthöz való csatlakozásra
 
-További oktatóanyagok az Azure Vote alkalmazást a fürtön üzembe helyezett, van ellátva, és frissíteni.
+A további oktatóanyagokban az Azure vote-alkalmazás üzembe helyezése a fürtön történik, méretezhető és frissítve.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Az előző oktatóanyagokban létrehoztunk egy tárolórendszerképet, és feltöltöttük egy Azure Container Registry-példányra. Ha még nem végezte el ezeket a lépéseket, és szeretné követni, kezdőpont [1. oktatóanyag – tárolórendszerképek létrehozása][aks-tutorial-prepare-app].
+Az előző oktatóanyagokban létrehoztunk egy tárolórendszerképet, és feltöltöttük egy Azure Container Registry-példányra. Ha még nem tette meg ezeket a lépéseket, és szeretné követni, kezdje az [1. oktatóanyag – tároló lemezképek létrehozása][aks-tutorial-prepare-app]című témakörben.
 
-Ehhez az oktatóanyaghoz, hogy futtat-e az Azure CLI 2.0.53 verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
+Ehhez az oktatóanyaghoz az Azure CLI 2.0.53 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
 
 ## <a name="create-a-service-principal"></a>Egyszerű szolgáltatás létrehozása
 
 Ahhoz, hogy egy AKS-fürt kommunikálhasson más Azure-erőforrásokkal, Azure Active Directory-szolgáltatásnevet kell használnia. A szolgáltatásnév automatikusan létrehozható az Azure CLI-vel vagy a portállal, vagy létrehozhat egyet előre, és hozzárendelhet további engedélyeket. Ebben az oktatóanyagban létrehoz egy szolgáltatásnevet, hozzáférést biztosít az előző oktatóanyagban létrehozott Azure Container Registry (ACR)-példányhoz, majd létrehoz egy AKS-fürtöt.
 
-Hozzon létre egy szolgáltatásnevet az [az ad sp create-for-rbac][] paranccsal. A `--skip-assignment` paraméter korlátozza a további engedélyek hozzárendelését. Alapértelmezés szerint a szolgáltatásnévnek a érvényes egy év.
+Hozzon létre egy szolgáltatásnevet az [az ad sp create-for-rbac][] paranccsal. A `--skip-assignment` paraméter korlátozza a további engedélyek hozzárendelését. Alapértelmezés szerint ez az egyszerű szolgáltatás egy évig érvényes.
 
 ```azurecli
 az ad sp create-for-rbac --skip-assignment
@@ -67,7 +67,7 @@ Először kérje le az ACR-erőforrás azonosítóját az [az acr show][] paranc
 az acr show --resource-group myResourceGroup --name <acrName> --query "id" --output tsv
 ```
 
-Az AKS-fürt lekéréses rendszerképeket az ACR tárolt megfelelő hozzáférést, rendelje hozzá a `AcrPull` szerepkör a [az szerepkör-hozzárendelés létrehozása][] parancsot. Cserélje le az `<appId`> és `<acrId>` helyőrzőket az előző két lépésben beszerzett értékekre.
+Ahhoz, hogy a megfelelő hozzáférést biztosítsa az AK-fürt számára az ACR-ben tárolt rendszerképek lekéréséhez, rendelje hozzá a `AcrPull` szerepkört az az szerepkör- [hozzárendelés létrehozási][] parancs használatával. Cserélje le az `<appId`> és `<acrId>` helyőrzőket az előző két lépésben beszerzett értékekre.
 
 ```azurecli
 az role assignment create --assignee <appId> --scope <acrId> --role acrpull
@@ -75,25 +75,28 @@ az role assignment create --assignee <appId> --scope <acrId> --role acrpull
 
 ## <a name="create-a-kubernetes-cluster"></a>Kubernetes-fürt létrehozása
 
-Az AKS-fürtök képesek a Kubernetes szerepköralapú hozzáférés-vezérlők (RBAC) használatára. Ezekkel a vezérlőkkel a felhasználókhoz rendelt szerepkörök alapján definiálható az erőforrásokhoz való hozzáférés. Engedélyek mostantól Ha egy felhasználóhoz több szerepkört, és az engedélyek hatóköre beállítható egyetlen névtér vagy az egész fürt között. Alapértelmezés szerint az Azure CLI automatikusan engedélyezi az RBAC-t az AKS-fürtök létrehozásakor.
+Az AKS-fürtök képesek a Kubernetes szerepköralapú hozzáférés-vezérlők (RBAC) használatára. Ezekkel a vezérlőkkel a felhasználókhoz rendelt szerepkörök alapján definiálható az erőforrásokhoz való hozzáférés. Az engedélyek kombinálva vannak, ha egy felhasználó több szerepkörhöz van rendelve, és az engedélyek hatóköre egyetlen névtérre vagy a teljes fürtre is kiterjed. Alapértelmezés szerint az Azure CLI automatikusan engedélyezi az RBAC-t az AKS-fürtök létrehozásakor.
 
-AKS-fürtöket az [az aks create][] paranccsal hozhat létre. A következő példában létrehozunk egy *myAKSCluster* nevű fürtöt a *myResourceGroup* nevű erőforráscsoportban. Ezt az erőforráscsoportot [az előző oktatóanyagban][aks-tutorial-prepare-acr] hoztuk létre. Adja meg a saját `<appId>` és `<password>` értékét az előző lépésből, ahol a szolgáltatásnevet létrehozta.
+AKS-fürtöket az [az aks create][] paranccsal hozhat létre. A következő példában létrehozunk egy *myAKSCluster* nevű fürtöt a *myResourceGroup* nevű erőforráscsoportban. Ez az erőforráscsoport az [előző oktatóanyagban][aks-tutorial-prepare-acr]lett létrehozva. Adja meg a saját `<appId>` és `<password>` értékét az előző lépésből, ahol a szolgáltatásnevet létrehozta.
 
 ```azurecli
 az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \
-    --node-count 1 \
+    --node-count 2 \
     --service-principal <appId> \
     --client-secret <password> \
     --generate-ssh-keys
 ```
 
-Néhány perc múlva a telepítés befejeződik, és az AKS üzembe helyezéssel kapcsolatos adatokat JSON formátumban adja vissza.
+Néhány perc elteltével az üzembe helyezés befejeződik, és visszaadja a JSON-formátumú adatokat az AK-beli telepítésről.
+
+> [!NOTE]
+> Annak biztosítása érdekében, hogy a fürt megbízhatóan működjön, legalább 2 (két) csomópontot kell futtatnia.
 
 ## <a name="install-the-kubernetes-cli"></a>A Kubernetes parancssori felület telepítése
 
-Ahhoz, hogy csatlakozni tudjon a Kubernetes-fürthöz a helyi számítógépről, használja a Kubernetes [kubectl][kubectl] nevű parancssori ügyfelét.
+Ha a helyi számítógépről kíván csatlakozni a Kubernetes-fürthöz, a [kubectl][kubectl], a Kubernetes parancssori ügyfelet kell használnia.
 
 Ha az Azure Cloud Shellt használja, a `kubectl` már telepítve van. Helyben is telepítheti az [az aks install-cli][] paranccsal:
 
@@ -103,19 +106,19 @@ az aks install-cli
 
 ## <a name="connect-to-cluster-using-kubectl"></a>Csatlakozás fürthöz a kubectl használatával
 
-Konfigurálása `kubectl` a Kubernetes-fürt csatlakozni, használja a [az aks get-credentials][] parancsot. Az alábbi példa lekéri az AKS-fürtöt nevű hitelesítő adatok *myAKSCluster* a a *myResourceGroup*:
+A Kubernetes `kubectl` -fürthöz való kapcsolódás konfigurálásához használja az az az [AK Get-hitelesítőadats][] parancsot. A következő példa a *myAKSCluster* nevű AK-fürt hitelesítő adatait kéri le a *myResourceGroup*:
 
 ```azurecli
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-A fürthöz való csatlakozás ellenőrzéséhez futtassa a [kubectl get nodes][kubectl-get] parancsot:
+A fürthöz való kapcsolódás ellenőrzéséhez futtassa a [kubectl Get Nodes][kubectl-get] parancsot:
 
 ```
 $ kubectl get nodes
 
-NAME                       STATUS   ROLES   AGE     VERSION
-aks-nodepool1-28993262-0   Ready    agent   3m18s   v1.9.11
+NAME                       STATUS   ROLES   AGE   VERSION
+aks-nodepool1-12345678-0   Ready    agent   32m   v1.13.10
 ```
 
 ## <a name="next-steps"></a>További lépések
@@ -143,8 +146,8 @@ A következő oktatóanyag azt mutatja be, hogyan helyezhet üzembe egy alkalmaz
 [aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md
 [az ad sp create-for-rbac]: /cli/azure/ad/sp#az-ad-sp-create-for-rbac
 [az acr show]: /cli/azure/acr#az-acr-show
-[az szerepkör-hozzárendelés létrehozása]: /cli/azure/role/assignment#az-role-assignment-create
+[hozzárendelés létrehozási]: /cli/azure/role/assignment#az-role-assignment-create
 [az aks create]: /cli/azure/aks#az-aks-create
 [az aks install-cli]: /cli/azure/aks#az-aks-install-cli
-[az aks get-credentials]: /cli/azure/aks#az-aks-get-credentials
+[AK Get-hitelesítőadats]: /cli/azure/aks#az-aks-get-credentials
 [azure-cli-install]: /cli/azure/install-azure-cli

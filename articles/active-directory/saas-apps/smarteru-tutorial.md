@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: d1b2d80a1960abb37262ef7429ee5b99665986b4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 07c7a15ea713bb6f73e1174a681dcccb5e79e289
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59265134"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67090521"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smarteru"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező SmarterU
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a SmarterU konfigurálásához hozzá kell SmarterU a 
 
 **SmarterU hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

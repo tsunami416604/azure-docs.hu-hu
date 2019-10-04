@@ -3,25 +3,25 @@ title: Egy kísérleti beállított tartalom-kompatibilis Encoding – Azure |} 
 description: Ez a cikk ismerteti a tartalom-kompatibilis kódolás az Azure Media Servicesben
 services: media-services
 documentationcenter: ''
-author: sethmanheim
+author: Juliako
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.date: 04/05/2019
-ms.author: sethm
+ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: 3c50502a8b873503ee937914fac5f2d92cb23a2b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ddb7bfd2437af806c8db75068c50545e69867ea0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59288381"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65151009"
 ---
 # <a name="experimental-preset-for-content-aware-encoding"></a>Tartalom-kompatibilis kódolási előbeállítást kísérleti
 
-Annak érdekében, hogy a tartalom előkészítése a kézbesítési [adaptív sávszélességű streamelés](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming), videó kell kódolni, adaptív átviteli sebességű (alacsony, magas). Minőségű, biztonságos teljesítménycsökkenése biztosítása érdekében, az átviteli sebesség van-e csökkenteni a videó felbontása van így. Ennek eredményeként egy úgynevezett kódolási létra – egy táblát felbontásra és bitsebességre való átkódolása, láthatja az egyes rögzített a kódolási szolgáltatás, például [H264MultipleBitrate1080p](../previous/media-services-mes-preset-h264-multiple-bitrate-1080p.md).
+Annak érdekében, hogy a tartalom előkészítése a kézbesítési [adaptív sávszélességű streamelés](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming), videó kell kódolni, adaptív átviteli sebességű (alacsony, magas). Minőségű, biztonságos teljesítménycsökkenése biztosítása érdekében, az átviteli sebesség van-e csökkenteni a videó felbontása van így. Ennek eredményeként egy úgynevezett kódolási létra – felbontásra és bitsebességre való átkódolása; táblája Lásd: a Media Services [beépített kódolási beállításokat](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset).
 
 ## <a name="overview"></a>Áttekintés
 

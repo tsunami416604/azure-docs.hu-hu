@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 09/04/2018
 ms.author: atsenthi
 ms.openlocfilehash: b066296ca52d3067f8985245161eb4fa7b484a07
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669112"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60720127"
 ---
 # <a name="create-unit-tests-for-stateful-services"></a>A Stateful Services egységtesztek létrehozása
 A Service Fabric állapotalapú szolgáltatások egységtesztelés tárja, akkor nem feltétlenül kell érint a hagyományos alkalmazás vagy a tartomány-specifikus egységtesztelés gyakori hibákat. Az állapotalapú szolgáltatások esetében egységteszteket fejlesztésekor nincsenek néhány szempontot, amelyeket figyelembe kell tárolni.

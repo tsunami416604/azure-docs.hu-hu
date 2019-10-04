@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: e46dae199f4d45c325e41fa5432e98cba9a2f4ae
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 90357c13003820a25ee52aab5cda83029c9d85ff
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57449597"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65601560"
 ---
 # <a name="use-azure-application-insights-to-understand-how-customers-are-using-your-application"></a>Az alkalmazás ügyfelek általi használatának megismerése az Azure Application Insights használatával
 
@@ -35,7 +35,7 @@ Az Azure Application Insights használati adatokat gyűjt, amely alapján megism
 
 Az oktatóanyag elvégzéséhez:
 
-- Telepítse a [Visual Studio 2017](https://www.visualstudio.com/downloads/) szoftvert a következő számítási feladatokkal:
+- Telepítés [Visual Studio 2019](https://www.visualstudio.com/downloads/) a következő számítási feladatokkal:
     - ASP.NET és webfejlesztés
     - Azure-fejlesztés
 - Töltse le és telepítse a [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger) alkalmazást.
@@ -59,11 +59,11 @@ A **Felhasználók** panelen különböző módokon fontos részleteket tudhat m
 
     ![Időtartomány módosítása](media/tutorial-users/TimeRange.png)
 
-4. A **Felosztási szempont** legördülő menüben kiválaszthat egy felhasználói tulajdonságot, amely alapján a grafikon le lesz bontva.  Válassza az **Ország vagy régió** lehetőséget.  A grafikon most is ugyanazokat az adatokat tartalmazza, de a felhasználók számát országonkénti bontásban jeleníti meg.
+4. A **Felosztási szempont** legördülő menüben kiválaszthat egy felhasználói tulajdonságot, amely alapján a grafikon le lesz bontva.  Válassza az **Ország vagy régió** lehetőséget.  A gráf ugyanazokat az adatokat tartalmaz, de lehetővé teszi, hogy információkat minden ország/régió a felhasználóknak a számát, a megtekintéséhez.
 
     ![Ország vagy régió grafikon](media/tutorial-users/CountryorRegion.png)
 
-5. A kurzort a grafikon különböző sávjai fölé mozgatva láthatja, hogy az egyes országokhoz tartozó darabszámok csak a sáv által jelzett időtartományokat tükrözik.
+5. Vigye a kurzort a diagram különböző sávok fölé, és figyelje meg, hogy minden ország/régió számát tükrözi csak az időtartomány, amely képviseli.
 6. Tekintse meg a jobb oldalon az **Elemzések** oszlopot, amely az adatokon végrehajtott elemzéseket tartalmazza.  Ez az időtartomány során bejelentkezett egyedi munkamenetek számát tartalmazza, valamint a gyakori tulajdonságokkal rendelkező rekordokat, amelyek a felhasználói adatok jelentős hányadában szerepelnek. 
 
     ![Elemzések oszlop](media/tutorial-users/insights.png)

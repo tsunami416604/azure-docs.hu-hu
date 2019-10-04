@@ -1,6 +1,6 @@
 ---
-title: Futtassa a csoportosan felügyelt szolgáltatásfiók alatt egy Azure Service Fabric-szolgáltatás |} A Microsoft Docs
-description: Ismerje meg, hogyan szolgáltatás futtatása csoportosan felügyelt szolgáltatásfiók egy Service Fabric Windows önálló fürtön.
+title: Azure Service Fabric-szolgáltatás futtatása gMSA-fiókkal | Microsoft Docs
+description: Megtudhatja, hogyan futtathat szolgáltatást gMSA egy Service Fabric Windows önálló fürtön.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -14,29 +14,29 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/29/2018
 ms.author: dekapur
-ms.openlocfilehash: 5c3781c2111fff7483a7fb65bd7b2e69c2011d18
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: d00eceffebb222196191a389058c0feb496e169a
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58666426"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307648"
 ---
 # <a name="run-a-service-as-a-group-managed-service-account"></a>Szolgáltatás futtatása csoportosan felügyelt szolgáltatásfiókként
-Egy Windows Server önálló fürtön egy szolgáltatás csoportosan felügyelt szolgáltatásfiókok (gMSA) futtató házirend segítségével is futtathatja.  Alapértelmezés szerint Service Fabric-alkalmazásokat, amely a Fabric.exe folyamatban fut, a fiók alatt fut. Futó alkalmazások a különböző fiókok, még akkor is, a közös üzemeltetési környezetben teszi őket egy biztonságosabb. Vegye figyelembe, hogy az Active Directory a helyszíni tartomány és a nem az Azure Active Directory (Azure AD) használja. Csoportosan felügyelt szolgáltatásfiókot használ, nincs jelszót vagy az alkalmazásjegyzékben tárolt titkosított jelszót.  Szolgáltatásként is futtathatja egy [Active Directory-felhasználó vagy csoport](service-fabric-run-service-as-ad-user-or-group.md).
+Egy Windows Server önálló fürtön futtathatja a szolgáltatást egy csoportosan felügyelt szolgáltatásfiók (gMSA) használatával futtató házirenddel.  Alapértelmezés szerint Service Fabric alkalmazások a Fabric. exe folyamat alatt futó fiók alatt futnak. Az alkalmazások különböző fiókokban való futtatása, még egy megosztott környezetben is, biztonságosabbá teszi őket egymástól. Vegye figyelembe, hogy ez Active Directory a helyi tartományon belül, és nem Azure Active Directory (Azure AD). GMSA használatával nincs jelszó vagy titkosított jelszó az alkalmazás jegyzékfájljában.  A szolgáltatásokat [Active Directory felhasználóként vagy csoportként](service-fabric-run-service-as-ad-user-or-group.md)is futtathatja.
 
-Az alábbi példa bemutatja, hogyan hozhat létre csoportosan felügyelt szolgáltatásfiókok nevű *svc-tesztelési$*; a fürtcsomópontok; központi telepítése a felügyelt szolgáltatásfiókok, és hogyan konfigurálhatja az egyszerű felhasználónév.
+Az alábbi példa bemutatja, hogyan hozhat létre egy *SVC-test $* nevű gMSA-fiókot. a felügyelt szolgáltatásfiók üzembe helyezése a fürt csomópontjain; és az egyszerű felhasználónév konfigurálása.
 
 Előfeltételek:
-- A tartományhoz kell KDS-gyökérkulcs.
-- A tartományban kell lennie a Windows Server 2012 vagy újabb működési szintje.
+- A tartománynak szüksége van egy KDS-gyökér kulcsra.
+- A tartományban legalább egy Windows Server 2012 (vagy R2) tartományvezérlőnek kell lennie.
 
-1. Egy Active Directory tartományi rendszergazda, hozzon létre egy csoportosan felügyelt szolgáltatás fiókja rendelkezik a `New-ADServiceAccount` parancsmagot, és ellenőrizze, hogy a `PrincipalsAllowedToRetrieveManagedPassword` tartalmazza az összes uzly clusteru service fabric. `AccountName`, `DnsHostName`, és `ServicePrincipalName` egyedinek kell lennie.
+1. Rendelkezzen egy Active Directory tartományi rendszergazdával, és hozzon létre egy csoportosan felügyelt szolgáltatásfiókot `New-ADServiceAccount` a `PrincipalsAllowedToRetrieveManagedPassword` parancsmagot, és győződjön meg arról, hogy az tartalmazza az összes Service Fabric-fürtcsomópont csomópontot. `AccountName`, `DnsHostName` és`ServicePrincipalName` egyedinek kell lennie.
 
     ```powershell
     New-ADServiceAccount -name svc-Test$ -DnsHostName svc-test.contoso.com  -ServicePrincipalNames http/svc-test.contoso.com -PrincipalsAllowedToRetrieveManagedPassword SfNode0$,SfNode1$,SfNode2$,SfNode3$,SfNode4$
     ```
 
-2. A Service Fabric mindegyik fürtcsomópont (például `SfNode0$,SfNode1$,SfNode2$,SfNode3$,SfNode4$`), telepítése és tesztelése a csoportosan felügyelt szolgáltatásfiókot.
+2. A Service Fabric fürtcsomópontokon (például `SfNode0$,SfNode1$,SfNode2$,SfNode3$,SfNode4$`) telepítse és tesztelje a gMSA.
     
     ```powershell
     Add-WindowsFeature RSAT-AD-PowerShell
@@ -44,7 +44,7 @@ Előfeltételek:
     Test-AdServiceAccount svc-Test$
     ```
 
-3. Az egyszerű felhasználónév, valamint a RunAsPolicy való hivatkozáshoz a felhasználó konfigurálni.
+3. Konfigurálja az egyszerű felhasználónevet, és konfigurálja a RunAsPolicy a felhasználóra való hivatkozáshoz.
     
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -65,13 +65,13 @@ Előfeltételek:
     ```
 
 > [!NOTE] 
-> Ha egy futtató házirend vonatkozik egy szolgáltatás, és a szolgáltatásjegyzék deklarálja a HTTP protokollt végpont erőforrások, meg kell adnia egy **SecurityAccessPolicy**.  További információkért lásd: [HTTP vagy HTTPS-végpontokat a biztonsági hozzáférési szabályzat hozzárendelése](service-fabric-assign-policy-to-endpoint.md). 
+> Ha futtató házirendet alkalmaz egy szolgáltatásra, és a szolgáltatás jegyzékfájlja deklarálja a végponti erőforrásokat a HTTP protokollal, meg kell adnia egy **SecurityAccessPolicy**.  További információ: [biztonsági hozzáférési házirend társítása http-és HTTPS-végpontokhoz](service-fabric-assign-policy-to-endpoint.md). 
 >
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-A következő lépésben olvassa el a következő cikkeket:
-* [Az alkalmazásmodell megismerése](service-fabric-application-model.md)
-* [Erőforrások meghatározása szolgáltatásjegyzékben](service-fabric-service-manifest-resources.md)
+Következő lépésként olvassa el a következő cikkeket:
+* [Az alkalmazás modelljének megismerése](service-fabric-application-model.md)
+* [Erőforrások meghatározása a szolgáltatás jegyzékfájljában](service-fabric-service-manifest-resources.md)
 * [Alkalmazás üzembe helyezése](service-fabric-deploy-remove-applications.md)
 
 [image1]: ./media/service-fabric-application-runas-security/copy-to-output.png

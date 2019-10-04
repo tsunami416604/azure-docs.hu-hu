@@ -1,9 +1,9 @@
 ---
-title: Tekintse át a hozzáférési csoportokat, vagy a hozzáférési felülvizsgálatok – Azure Active Directory-alkalmazások |} A Microsoft Docs
-description: Ismerje meg, hogyan tekintse át a csoport tagjai elérésére vagy alkalmazás-hozzáférés az Azure Active Directory hozzáférési felülvizsgálatok.
+title: A hozzáférési felülvizsgálatok csoportjaihoz vagy alkalmazásaihoz való hozzáférés áttekintése – Azure Active Directory | Microsoft Docs
+description: Megtudhatja, hogyan tekintheti át a csoporttagok vagy az alkalmazások hozzáférését Azure Active Directory hozzáférési felülvizsgálatokban.
 services: active-directory
-author: rolyon
-manager: mtillman
+author: msaburnley
+manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
@@ -11,99 +11,105 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/01/2019
-ms.author: rolyon
+ms.date: 05/21/2019
+ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d42fe972b79ecd9bcee65d0664c5d13da02d2238
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 3be5d6eb443d90d3413510576a9609fe43df7caa
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59496027"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68499632"
 ---
-# <a name="review-access-to-groups-or-applications-in-azure-ad-access-reviews"></a>Tekintse át a hozzáférési csoportokhoz vagy alkalmazásokhoz az Azure AD hozzáférési felülvizsgálatokkal
+# <a name="review-access-to-groups-or-applications-in-azure-ad-access-reviews"></a>Csoportok vagy alkalmazások hozzáférésének áttekintése az Azure AD hozzáférési felülvizsgálatokban
 
-Az Azure Active Directory (Azure AD) egyszerűbbé teszi a vállalatok csoportokhoz és alkalmazásokhoz való hozzáférés kezelése az Azure AD és más Microsoft Online Services szolgáltatás az Azure AD hozzáférési felülvizsgálatok.
+A Azure Active Directory (Azure AD) leegyszerűsíti, hogy a vállalatok hogyan kezelhetik az Azure AD-ben és más Microsoft Online Servicesben lévő csoportokhoz és alkalmazásokhoz való hozzáférést az Azure AD hozzáférési felülvizsgálatok szolgáltatásával.
 
-Ez a cikk bemutatja, hogyan kijelölt felülvizsgálót elvégzi a hozzáférési felülvizsgálat egy csoporthoz vagy alkalmazáshoz való hozzáféréssel rendelkező felhasználók tagjai.
+Ez a cikk azt ismerteti, hogy a kijelölt véleményező hogyan hajt végre hozzáférési felülvizsgálatot egy csoport tagjai vagy egy alkalmazáshoz hozzáféréssel rendelkező felhasználók számára.
 
-## <a name="open-the-access-review"></a>Nyissa meg a hozzáférési felülvizsgálatba
+## <a name="prerequisites"></a>Előfeltételek
 
-Hozzáférési felülvizsgálat végrehajtása első lépése, hogy keresse meg és nyissa meg a hozzáférési felülvizsgálatot.
+- Azure AD Premium P2
 
-1. Keresse meg a Microsoft, amely rákérdez, hogy tekintse át a hozzáférést egy e-mailt. Íme egy példa e-mailt, tekintse át a hozzáférés egy csoportra.
+További információ: [mely felhasználóknak kell licenceket tartalmazniuk?](access-reviews-overview.md#which-users-must-have-licenses)
 
-    ![E-mailek hozzáférési felülvizsgálat](./media/perform-access-review/access-review-email.png)
+## <a name="open-the-access-review"></a>A hozzáférési felülvizsgálat megnyitása
 
-1. Kattintson a **felülvizsgálat indítása** nyissa meg a hozzáférési felülvizsgálat mutató hivatkozást.
+A hozzáférési felülvizsgálat végrehajtásának első lépése a hozzáférési felülvizsgálat megkeresése és megnyitása.
 
-Ha nem rendelkezik az e-mailt, Észreveheti, hogy a függőben lévő hozzáférési felülvizsgálatok az alábbi lépéseket.
+1. Keresse meg a Microsoft e-mail-címét, amely arra kéri, hogy tekintse át a hozzáférést. Íme egy példa e-mailben a csoport hozzáférésének áttekintéséhez.
 
-1. Jelentkezzen be a MyApps portálról, [ https://myapps.microsoft.com ](https://myapps.microsoft.com).
+    ![Példa a Microsoft e-mail-címére a csoportokhoz való hozzáférés áttekintéséhez](./media/perform-access-review/access-review-email.png)
 
-    ![MyApps portálról](./media/perform-access-review/myapps-access-panel.png)
+1. A hozzáférési felülvizsgálat megnyitásához kattintson a **Start Review (áttekintés** ) hivatkozásra.
+
+Ha nem rendelkezik az e-mail-címmel, a következő lépésekkel megkeresheti a függőben lévő hozzáférési felülvizsgálatokat.
+
+1. Jelentkezzen be a MyApps portálra [https://myapps.microsoft.com](https://myapps.microsoft.com)a címen.
+
+    ![A MyApps-portál felsorolja azokat az alkalmazásokat, amelyekre jogosult](./media/perform-access-review/myapps-access-panel.png)
 
 1. Az oldal jobb felső sarkában kattintson a felhasználó szimbólumára. Ekkor megjelenik a neve és az alapértelmezett szervezete. Ha egynél több szervezet szerepel a listán, válassza ki azt a szervezetet, amely a hozzáférési felülvizsgálatot kérte.
 
-1. Kattintson a **hozzáférési felülvizsgálatokkal** csempére kattintva megjelenítheti a függőben lévő hozzáférési felülvizsgálatok listáját.
+1. Kattintson a **hozzáférési felülvizsgálatok** csempére a függőben lévő hozzáférési felülvizsgálatok listájának megtekintéséhez.
 
     A csempe nem látható, ha nincsenek végrehajtandó hozzáférési felülvizsgálatok az adott szervezetre vonatkozóan, és ilyenkor semmilyen műveletre nincs szükség.
 
-    ![A hozzáférési felülvizsgálatok listája](./media/perform-access-review/access-reviews-list.png)
+    ![Alkalmazások és csoportok függőben lévő hozzáférési felülvizsgálatok listája](./media/perform-access-review/access-reviews-list.png)
 
-1. Kattintson a **felülvizsgálat megkezdése** hivatkozásra a hozzáférési felülvizsgálatot végrehajtására vonatkozó szándékát.
+1. Kattintson a **megkezdés felülvizsgálati** hivatkozásra a végrehajtani kívánt hozzáférési felülvizsgálathoz.
 
 ## <a name="perform-the-access-review"></a>A hozzáférési felülvizsgálat végrehajtása
 
-Miután megnyitotta a hozzáférési felülvizsgálatot, az adatgyűjtés kiterjed a felhasználók, akik át kell tekinteni.
+Miután megnyitotta a hozzáférési felülvizsgálatot, megtekintheti azoknak a felhasználóknak a nevét, akiket felül kell vizsgálni.
 
-Ha a kérés a saját hozzáférés felülvizsgálata, az oldal fog kinézni. További információkért lásd: [hozzáférés felülvizsgálata maga a csoportokat vagy alkalmazásokat](review-your-access.md).
+Ha a kérést a saját hozzáférésének felülvizsgálatára kéri, a lap eltérő lesz. További információkért lásd: [hozzáférés áttekintése csoportokhoz vagy alkalmazásokhoz](review-your-access.md).
 
-![Hozzáférési felülvizsgálat végrehajtása](./media/perform-access-review/perform-access-review.png)
+![Az áttekinteni kívánt felhasználókat felsoroló hozzáférési felülvizsgálat megnyitása](./media/perform-access-review/perform-access-review.png)
 
-Két módon, hogy jóváhagyja vagy megtagadja a hozzáférést:
+Két módon engedélyezheti vagy tilthatja le a hozzáférést:
 
-- Jóváhagyhatja vagy minden kérést külön-külön, megtagadása vagy
-- Elfogadhatja a rendszer javaslatok, amelyek a legkönnyebb és leggyorsabb módja.
+- Egy vagy több felhasználó számára engedélyezheti vagy megtagadhatja a hozzáférést, vagy
+- Elfogadhatja a rendszerre vonatkozó javaslatokat, amely a legegyszerűbb és leggyorsabb módszer.
 
-### <a name="approve-or-deny-access-for-each-request"></a>Jóváhagyja vagy megtagadja a hozzáférést az egyes kérések
+### <a name="approve-or-deny-access-for-one-or-more-users"></a>Egy vagy több felhasználó hozzáférésének jóváhagyása vagy megtagadása
 
-1. Tekintse át a felhasználók számára a jóvá vagy utasítsa el a folyamatos hozzáférési kell-e.
+1. Tekintse át a felhasználók listáját, és döntse el, hogy jóváhagyja vagy megtagadja a folyamatos hozzáférést.
 
-1. Jóváhagyása, vagy minden egyes kérés elutasítása, kattintson a sor megnyílik egy ablak, adja meg az elvégzendő műveletet.
+1. Egyetlen felhasználó hozzáférésének jóváhagyásához vagy megtagadásához kattintson a sorra egy ablak megnyitásához a végrehajtandó művelet megadásához. Több felhasználó hozzáférésének jóváhagyásához vagy megtagadásához vegyen fel ellenőrző jeleket a felhasználók mellett, majd kattintson az **X felhasználó ellenőrzése** gombra egy ablak megnyitásához a végrehajtandó művelet megadásához.
 
-1. Kattintson a **jóváhagyása** vagy **megtagadása**. Ha bizonytalan, rákattinthat **nem tudjuk**. Ez a felhasználó azt a hozzáférés fenntartása azt eredményezi, de a kijelölt fog szerepelni a vizsgálati naplók.
+1. Kattintson a **jóváhagyás** vagy a **Megtagadás**gombra. Ha nem biztos benne, akkor kattintson a **nem tudom**gombra. Ez azt eredményezi, hogy a felhasználó megtartja a hozzáférést, de a kijelölt elemek megjelennek a naplókban.
 
-    ![Hozzáférési felülvizsgálat végrehajtása](./media/perform-access-review/approve-deny.png)
+    ![A jóváhagyást, megtagadást és nem ismerő beállításokat tartalmazó művelet ablaka](./media/perform-access-review/approve-deny.png)
 
-1. Ha szükséges, adja meg az okot a **OK** mezőbe.
+1. Ha szükséges, adjon meg egy okot az **OK** mezőben.
 
-    A rendszergazda a hozzáférési felülvizsgálat szükség lehet, hogy Önnek kell letöltenie a folyamatos hozzáférés vagy csoporttagság jóváhagyása okát.
+    Előfordulhat, hogy a hozzáférési felülvizsgálat rendszergazdájának meg kell adnia a folyamatos hozzáférés vagy a csoporttagság jóváhagyásának okát.
 
-1. Miután megadta az elvégzendő műveletet, kattintson a **mentése**.
+1. Miután megadta a végrehajtandó műveletet, kattintson a **Mentés**gombra.
 
-    Ha szeretné módosítani a választ, válassza ki a sort, és adott válasz frissítése. Például a korábban letiltott felhasználó jóváhagyása vagy egy korábban már jóváhagyott felhasználó hozzáférésének megtagadása. A válasz mindaddig, amíg a hozzáférési felülvizsgálat befejeződött bármikor módosíthatja.
+    Ha módosítani szeretné a választ, válassza ki a sort, és frissítse a választ. Jóváhagyhat például egy korábban megtagadott felhasználót, vagy megtagadhatja a korábban jóváhagyott felhasználókat. Bármikor módosíthatja a választ, amíg a hozzáférési felülvizsgálat véget nem ér.
 
-    Ha több felülvizsgálók, a legutóbbi beküldött választ van rögzítve. Fontolja meg egy példa, ha a rendszergazda az két felülvizsgálók – Alice, Bob és jelöl ki. Alice először nyitja meg a hozzáférési felülvizsgálatot, és hagyja jóvá a hozzáférést. A felülvizsgálat befejezése előtt Bálint megnyitja a hozzáférési felülvizsgálatot, és megtagadja a hozzáférést. Az utolsó megtagadása a válasz az, hogy mi van rögzítve.
+    Ha több felülvizsgáló is van, a rendszer rögzíti a legutóbbi elküldött választ. Vegyünk például egy olyan példát, amelyben a rendszergazda két véleményezőt jelöl ki: Alice és Bob. Alice először megnyitja a hozzáférési felülvizsgálatot, és jóváhagyja a hozzáférést. A felülvizsgálat vége előtt Bob megnyitja a hozzáférési felülvizsgálatot, és megtagadja a hozzáférést. A rendszer a legutóbbi megtagadási választ rögzíti.
 
     > [!NOTE]
-    > Ha egy felhasználótól megtagadja a hozzáférést, azonnal ezek nem törlődnek. Ha a felülvizsgálat befejeződött, vagy ha egy rendszergazda leállítja a felülvizsgálatot eltávolítja.
+    > Ha a felhasználó hozzáférése megtagadva, a rendszer nem távolítja el azonnal. Ezeket a rendszer eltávolítja, ha a felülvizsgálat véget ért, vagy ha a rendszergazda leállítja a felülvizsgálatot.
 
-### <a name="approve-or-deny-access-based-on-recommendations"></a>Hagyja jóvá vagy nem engedélyezi a hozzáférést a javaslatok alapján
+### <a name="approve-or-deny-access-based-on-recommendations"></a>Hozzáférés jóváhagyása vagy elutasítása javaslatok alapján
 
-Ahhoz, hogy a hozzáférési felülvizsgálatok egyszerűbben és gyorsabban az Ön számára, is biztosítunk javaslatok, amelyek elfogadhatja egyetlen kattintással. A javaslatok jönnek létre a felhasználói bejelentkezési tevékenységek alapján.
+Ahhoz, hogy a hozzáférési felülvizsgálatok könnyebben és gyorsabban elérhetők legyenek, javaslatokat is biztosítunk, amelyek egyetlen kattintással elfogadhatók. A javaslatok a felhasználó bejelentkezési tevékenysége alapján jönnek létre.
 
-1. Kattintson a lap alján, a kék sáv **ajánlatok elfogadása**.
+1. A lap alján található kék sávban kattintson a **javaslatok elfogadása**elemre.
 
-    ![Ajánlatok elfogadása](./media/perform-access-review/accept-recommendations.png)
+    ![Hozzáférés-felülvizsgálati lista megnyitása a javaslatok elfogadása gomb megjelenítéséhez](./media/perform-access-review/accept-recommendations.png)
 
-    Láthatja, hogy a javasolt művelet összegzését.
+    Ekkor megjelenik a javasolt műveletek összegzése.
 
-    ![Összefoglaló ajánlatok elfogadása](./media/perform-access-review/accept-recommendations-summary.png)
+    ![A javasolt műveletek összegzését megjelenítő ablak](./media/perform-access-review/accept-recommendations-summary.png)
 
-1. Kattintson a **Ok** , fogadja el a javaslatokat.
+1. A javaslatok elfogadásához kattintson **az OK** gombra.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Csoportokat vagy alkalmazásokat a hozzáférési felülvizsgálat befejezése](complete-access-review.md)
+- [Csoportok vagy alkalmazások hozzáférési felülvizsgálatának befejezése](complete-access-review.md)

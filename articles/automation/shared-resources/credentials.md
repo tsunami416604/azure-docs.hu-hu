@@ -4,17 +4,17 @@ description: Hitelesítő eszközök az Azure Automationben a runbook vagy DSC-k
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 04/12/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6465fd069e73a571e0671d528f5d0b4da4602dc7
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 44bc49d10c492822c1b5d30ad5794ac2522cb918
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59551187"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67478148"
 ---
 # <a name="credential-assets-in-azure-automation"></a>Hitelesítő eszközök az Azure Automationben
 
@@ -112,7 +112,7 @@ $password = $myCredential.GetNetworkCredential().Password
 Használhatja a hitelesítő adatot hitelesítésre az Azure-bA [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount). A legtöbb esetben használjon egy [Futtatás mint fiók](../manage-runas-account.md) és lekérése a [Get-AutomationConnection](../automation-connections.md).
 
 ```azurepowershell
-$myCred = Get-AutomationPSCredential -Name 'MyCredential`
+$myCred = Get-AutomationPSCredential -Name 'MyCredential'
 $userName = $myCred.UserName
 $securePassword = $myCred.Password
 $password = $myCred.GetNetworkCredential().Password

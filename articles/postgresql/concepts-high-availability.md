@@ -1,19 +1,19 @@
 ---
-title: Az Azure Database for PostgreSQL magas rendelkezésre állású fogalmak
-description: A cikk ismerteti az információk a magas rendelkezésre állás, ha az Azure Database for PostgreSQL használatával.
+title: Az Azure Database for PostgreSQL - kiszolgáló egyetlen magas rendelkezésre állású fogalmak
+description: Ez a cikk nyújt információkat a magas rendelkezésre állás, Azure Database for PostgreSQL - kiszolgáló egyetlen használata.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/01/2019
-ms.openlocfilehash: d43647b57469efa4581dc1c74a842a51e9d54ad7
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.date: 5/6/2019
+ms.openlocfilehash: f54c83099957b4d8795c4049be52d70e8a0e2a61
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699816"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65073436"
 ---
-# <a name="high-availability-concepts-in-azure-database-for-postgresql"></a>Az Azure Database for PostgreSQL magas rendelkezésre állású fogalmak
+# <a name="high-availability-concepts-in-azure-database-for-postgresql---single-server"></a>Az Azure Database for PostgreSQL - kiszolgáló egyetlen magas rendelkezésre állású fogalmak
 Az Azure Database for PostgreSQL szolgáltatás garantált magas szintű rendelkezésre állást biztosít. A pénzügyi felelősséggel vállalt garantált szolgáltatási szinttel (SLA) 99,99 %-os általános elérhetővé tételtől. Gyakorlatilag alkalmazások egyike sem állásidő a szolgáltatás használata esetén.
 
 ## <a name="high-availability"></a>Magas rendelkezésre állás

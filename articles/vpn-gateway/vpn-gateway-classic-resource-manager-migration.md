@@ -1,6 +1,6 @@
 ---
-title: VPN Gateway klasszikus – erőforrás-kezelő áttelepítésének |} Microsoft Docs
-description: Ezen a lapon a VPN Gateway hagyományos erőforrás-kezelő áttelepítése áttekintést nyújt.
+title: VPN Gateway Klasszikusról Resource Manager-áttelepítés |} A Microsoft Docs
+description: Ez az oldal nyújt a VPN Gateway klasszikus Resource Manager az áttelepítés áttekintését.
 documentationcenter: na
 services: vpn-gateway
 author: amsriva
@@ -14,57 +14,57 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/02/2017
 ms.author: amsriva
-ms.openlocfilehash: 1164fc24355657af22b6befaad74685ebbc2b5cb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b65b47389611bcc0e5acb3c7ebff672f72a87581
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23885216"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60761584"
 ---
-# <a name="vpn-gateway-classic-to-resource-manager-migration"></a>VPN-átjáró klasszikus – erőforrás-kezelő áttelepítése
-VPN-átjáróként is áttelepíthetők a klasszikus a Resource Manager üzembe helyezési modellben. További tudnivalók Azure Resource Manager [szolgáltatásait és előnyeit](../azure-resource-manager/resource-group-overview.md). Ez a cikk azt hogyan kell áttelepíteni a klasszikus üzembe helyezés újabb alapú Resource Manager modellt adatok találhatók. 
+# <a name="vpn-gateway-classic-to-resource-manager-migration"></a>VPN-átjáró klasszikusról Resource Manager-áttelepítés
+VPN-átjárókkal is áttelepíthetők a klasszikusból Resource Manager-alapú üzemi modellbe. További információ az Azure Resource Manager [funkciók és előnyök](../azure-resource-manager/resource-group-overview.md). Ebben a cikkben azt bemutatják, hogyan kell áttelepíteni a klasszikus üzemi modellben az újabb, Resource Manager-alapú modell. 
 
-VPN-átjárók a rendszer a virtuális hálózat a klasszikus Resource Manager rendszerbe történő áttelepítés részeként telepíti át. Ez az áttelepítés egyszerre csak egy virtuális hálózat végezhető el. Nincs olyan további eszközök vagy áttelepítési Előfeltételek követelmény. Áttelepítési lépések dokumentálásukat pedig azonosak legyenek a meglévő virtuális hálózat áttelepítése [IaaS erőforrások áttelepítési lap](../virtual-machines/windows/migration-classic-resource-manager-ps.md). Nincs állásidő nélkül adatok elérési útja az áttelepítés során, és így meglévő alkalmazások továbbra is az áttelepítés során a helyi kapcsolat megszakadása nélkül működik. A nyilvános IP-cím, a VPN-átjáró társított nem változtatja meg az áttelepítési folyamat során. Ez azt jelenti, hogy nem kell konfigurálnia a helyszíni útválasztót, az áttelepítés befejeződése után.  
+VPN-átjárók a virtuális hálózatok közötti áttelepítés klasszikusról Resource Manager részeként települnek át. Az áttelepítés egyszerre csak egy virtuális hálózat végezhető el. Esetében nem követelmény, amelyek további eszközök vagy a migrálás előfeltételei tekintetében. Áttelepítés lépései megegyeznek a meglévő VNet-migrálás, és vannak dokumentálva [IaaS-erőforrások áttelepítése lap](../virtual-machines/windows/migration-classic-resource-manager-ps.md). Áttelepítés során nem adatok elérési utat jár, és így a számítási feladatokat szeretne továbbra is működnek a helyszíni kapcsolat megszakadása nélkül áttelepítés során. A VPN-átjáró társított nyilvános IP-cím nem változtatja meg az áttelepítési folyamat során. Ez azt jelenti, hogy nem kell konfigurálnia a helyszíni útválasztót, az áttelepítés befejeződése után.  
 
-A modell a erőforrás-kezelő nem azonos a klasszikus modellt, és virtuális hálózati átjárók, a helyi hálózati átjáró és a kapcsolat erőforrások tevődik össze. Ezek képviselik a VPN-átjáró, a helyszíni címtér és a kettő közötti kapcsolatot képviselő helyi-hely. Áttelepítés befejeződése után az átjáró nem klasszikus modellben érhető el, és a Resource Manager modellt használja a virtuális hálózati átjárók, a helyi hálózati átjáró és a kapcsolat objektumok összes felügyeleti műveletet kell végrehajtani.
+A modell a Resource Managerben eltér a klasszikus modellt és a virtuális hálózati átjárók, a helyi hálózati átjárók és a kapcsolati erőforrás tevődik össze. Ezek képviselik a VPN-átjáró, a helyszíni címtér és a kettő közötti kapcsolatot képviselő helyi hely. Áttelepítés befejeződése után az átjárók nem lesznek elérhetőek a klasszikus modellben, és a Resource Manager modellel összes műveletek a virtuális hálózati átjárók, a helyi hálózati átjárók és a kapcsolat objektumot kell elvégezni.
 
 ## <a name="supported-scenarios"></a>Támogatott esetek
-VPN-kapcsolat leggyakoribb forgatókönyve az erőforrás-kezelő áttelepítésének klasszikus tartoznak. A támogatott helyzetek a következők-
+Leggyakrabban használt VPN-kapcsolat forgatókönyvek klasszikusról Resource Manager-áttelepítés esnek. Közé tartozik a támogatott forgatókönyveket –
 
 * Pont-hely kapcsolat
-* Hely-hely kapcsolat a VPN-átjáró csatlakozik a helyi helye
-* VNet közötti VPN-átjárók használatával két Vnetek VNet-kapcsolatot
-* Több Vnetek csatlakozik megegyezik a helyi helye
+* Hely-hely kapcsolat VPN-átjáróval csatlakozik a helyszíni helyen
+* Virtuális hálózatok közötti VPN-átjárók használatával két virtuális hálózat közötti kapcsolat
+* Több virtuális hálózat csatlakozik ugyanaz a helyszíni helyen
 * Többhelyes kapcsolat
-* A kényszerített bújtatás Vnetek engedélyezve
+* Kényszerített bújtatás engedélyezve van a virtuális hálózatok
 
-Nem támogatott forgatókönyvek például a-  
+Nem támogatott forgatókönyvek között megtalálható az-  
 
-* Az ExpressRoute-átjáró és a VPN-átjáró virtuális hálózat jelenleg nem támogatott.
-* Átvitel közben forgatókönyvek, amelyekben Virtuálisgép-bővítmények a helyszíni kiszolgálók csatlakoznak. VPN-kapcsolat korlátozások átvitel közben részleteket lejjebb olvashatja.
+* Virtuális hálózat az ExpressRoute-átjáró és a VPN Gateway jelenleg nem támogatott.
+* Átvitel forgatókönyvek, ahol a Virtuálisgép-bővítmények csatlakoznak a helyszíni kiszolgálók. VPN-csatlakozási korlátozásokat átvitel lásd lent.
 
 > [!NOTE]
-> A Resource Manager modellt CIDR érvényesítésre több szigorú, mint a klasszikus modellt. Áttelepítése előtt győződjön meg arról, hogy klasszikus címtartományok megadott megfelelnek-e érvényes CIDR-formátumban a áttelepítésének megkezdése előtt. CIDR érvényesíteni lehessen bármely közös CIDR érvényesség-ellenőrzők használatával. A virtuális hálózat vagy érvénytelen CIDR tartományok áttelepítésekor a helyi telephely eredményezne hibaállapotban van.
+> A Resource Manager-modell CIDR érvényesítésre több szigorú, mint a klasszikus modellt. Való migrálás előtt győződjön meg arról, hogy adott címtartományok klasszikus megfelelnek-e érvényes CIDR-formátumban a migrálás megkezdése előtt. CIDR használatával minden olyan közös CIDR-érvényesítők érvényesíthető. VNet- vagy helyek érvénytelen CIDR-tartományok áttelepítésekor a sikertelen állapotú eredményezne.
 > 
 > 
 
-## <a name="vnet-to-vnet-connectivity-migration"></a>Virtuális hálózat virtuális hálózat kapcsolat áttelepítése
-A VNet-kapcsolatot a klasszikus virtuális hálózatot a helyi webhelyhez megjelenítése a csatlakoztatott virtuális hálózat létrehozásával értük el. Az ügyfelek kell hoznia két helyi telephelyre, amely a két Vnetek szükséges kapcsolódik egymáshoz. Ezek volt majd a megfelelő Vnetekhez csatlakoztatni IPsec-alagút segítségével a két Vnetek közötti kapcsolat létrehozásához. Ebben a modellben rendelkezik kezelhetőségi kihívás, mivel egy virtuális hálózat tartomány cím módosításai biztosítani kell a megfelelő hely ábrázolás. A Resource Manager modellt ezt a megoldást már nem szükséges. A két Vnetek közötti kapcsolat közvetlenül elérhető a kapcsolati erőforrást "Vnet2Vnet" kapcsolattípus használja. 
+## <a name="vnet-to-vnet-connectivity-migration"></a>Virtuális hálózat virtuális hálózatok közötti kapcsolat áttelepítése
+Hozzon létre egy helyi hely ábrázolása a csatlakoztatott virtuális hálózatok közötti virtuális hálózatok közötti kapcsolatot klasszikus VNet értük el. Ügyfelek kell hoznia két helyi telephelyre, amely a két virtuális hálózat szükséges kapcsolódik egymáshoz. Ezután ezek is csatlakozik a megfelelő virtuális hálózatokat IPsec-alagutat létesíteni a két virtuális hálózat közötti kapcsolatot. Ez a modell rendelkezik kezelhetőségi kihívásokat, mivel egy virtuális hálózaton címtartomány cím módosításokat is fenn kell tartani a megfelelő helyi hely reprezentációban szereplő. Ez a megoldás a Resource Manager-modellben már nincs szükség. A két virtuális hálózat közötti kapcsolat érhető el, közvetlenül a kapcsolati erőforrás kapcsolat típusa: Vnet2Vnet"használatával. 
 
-![Képernyőkép a virtuális hálózat virtuális hálózat áttelepítése.](./media/vpn-gateway-migration/migration1.png)
+![Képernyőkép a virtuális hálózat virtuális hálózatok közötti áttelepítése.](./media/vpn-gateway-migration/migration1.png)
 
-Virtuális hálózat áttelepítése során azt észleli, hogy az aktuális virtuális hálózat VPN Gateway csatlakoztatott entitás egy másik virtuális hálózatot, és győződjön meg arról, hogy mindkét Vnetek áttelepítésének befejezése után már nem mutatunk be a virtuális hálózatot képviselő két helyi telephelyre. A klasszikus modellt két VPN-átjárók, a két helyi telephelyre és a közöttük két kapcsolatok alakította két VPN-átjárók és két kapcsolatok Vnet2Vnet típusú erőforrás-kezelő modellhez.
+Virtuális hálózatok közötti áttelepítés során azt észleli, hogy az aktuális virtuális hálózat VPN-átjáróhoz csatlakoztatott entitás egy másik virtuális hálózathoz, és győződjön meg arról, hogy mindkét virtuális hálózat migrálásának befejezése után már nem jelennének meg a másik virtuális hálózat jelölő két helyi telephelyre. Resource Manager modellre két VPN-átjárót és két kapcsolat típusa: Vnet2Vnet alakította két VPN-átjárók, a két helyi telephelyre és a közöttük a két kapcsolattal a klasszikus modellt.
 
 ## <a name="transit-vpn-connectivity"></a>Átvitel VPN-kapcsolat
-VPN-átjárók konfigurálhatja a topológia úgy, hogy a helyi kapcsolat egy vnet érhető el, egy másik virtuális hálózatot, amely közvetlenül csatlakozik a helyi csatlakozva. Ez az átvitel VPN-kapcsolat amelyekben első VNet-példány a helyszíni erőforrások átvitel során, hogy a VPN-átjáró, amely közvetlenül csatlakozik a helyi csatlakoztatott virtuális keresztül csatlakoznak. Ezt a konfigurációt a klasszikus üzembe helyezési modellel eléréséhez kell létrehozni a helyi webhely, amely mindkét a csatlakoztatott virtuális hálózatot képviselő előtagok van összesítve, és a helyszíni címtér. A representational helyi webhely majd csatlakozik-e a virtuális hálózat eléréséhez, az átvitel közben kapcsolat. A klasszikus modellt hasonló kezelhetőségi kihívást is rendelkezik, mivel a helyszíni címtartomány változást is fenn kell tartani a virtuális hálózat és a helyszíni összesítés képviselő helyi helykiszolgálón. A támogatott erőforrás-kezelő átjáró BGP-támogatás bevezetése egyszerűbbé teszi kezelhetőségi, mivel csatlakoztatott átjáró megtanulhassa útvonalakat a helyszíni előtagok manuális módosítás nélkül.
+VPN-átjárók konfigurálhatja a topológia úgy, hogy egy másik virtuális hálózathoz, amely közvetlenül csatlakozik a helyszíni összekötő úgy érhető el, egy virtuális hálózat címtere használó helyszíni kapcsolatok. Ez a VPN-kapcsolatok átvitel példányok az első virtuális hálózat hol csatlakoznak a helyszíni erőforrások elérése a csatlakoztatott virtuális hálózat, amely közvetlenül csatlakozik a helyszíni VPN-átjáróhoz való átvitel során. Ez a konfiguráció a klasszikus üzemi modellben eléréséhez kell a helyi webhely, amely rendelkezik összesített előtagok jelölő mindkét a csatlakoztatott virtuális hálózat létrehozása, és a helyszíni címtér. A representational helyi webhelyhez kapcsolódik, a virtuális hálózatok közötti kapcsolatok átvitel érdekében. A klasszikus modellt is tartalmaz hasonló kezelhetőségi kihívásokat, mivel bármely módosítása a helyi címtartományának is fenn kell tartani a virtuális hálózat és helyszíni összesítés képviselő helyi webhelyen. BGP támogatása a támogatott erőforrás-kezelő átjárók bevezetése egyszerűbbé teszi kezelhetőségi, mivel csatlakoztatott átjáró további útvonalakat a helyszíni címelőtagokat manuális módosítása nélkül.
 
-![Képernyőkép a tranzit útválasztás forgatókönyve.](./media/vpn-gateway-migration/migration2.png)
+![Képernyőfelvétel a tranzit útválasztási forgatókönyv.](./media/vpn-gateway-migration/migration2.png)
 
-Jelenleg átalakítás VNet VNet-kapcsolatot anélkül, hogy a helyi telephely, mert az az átvitel közben forgatókönyv közvetve csatlakozik a helyi vnet helyszíni kapcsolata megszakad. A kapcsolat megszakadása mérsékelhető a következő két módon áttelepítés befejeződött- 
+VNet azt átalakítása Vnetek közötti kapcsolatot anélkül, hogy a helyek, mivel a átviteli forgatókönyv megszakad a kapcsolat a helyszíni, amely a helyszíni közvetve csatlakozik a virtuális hálózathoz. Megszakadt a kapcsolat a következő két módon mérsékelhető a migrálás után – 
 
-* A BGP engedélyezéséhez a csatlakoztatott együtt, és a helyszíni VPN-átjárók. Kapcsolat nélkül a konfigurációs változásokat BGP engedélyezése állítja vissza, mert útvonalak megtanulta, és meghirdetett VNet-átjárók között. Vegye figyelembe, hogy BGP beállítás csak akkor érhető el, a Standard és magasabb SKU.
-* A helyszíni hely képviselő helyi hálózati átjáró érintett vnet explicit kapcsolatot létrehozni. Ez is igényelnének, létrehozása és konfigurálása az IPsec-alagutat a helyszíni útválasztó-konfiguráció megváltoztatását.
+* A BGP engedélyezéséhez kapcsolódnak egymáshoz, és a helyszíni VPN-átjárókon. BGP engedélyezése visszaállítja a kapcsolatot minden egyéb konfigurációs módosítása nélkül, mivel útvonalak megtanult és meghirdetett virtuális hálózati átjáró között. Vegye figyelembe, hogy a BGP-beállítás csak a Standard és a magasabb szintű termékváltozatok rendelkezésre.
+* A helyi hálózati átjáróhoz a helyszíni helyet az érintett virtuális hálózat egy explicit kapcsolatot létesíteni. Ez is cseréjével konfiguráció létrehozása és konfigurálása az IPsec-alagutat a helyszíni útválasztón.
 
-## <a name="next-steps"></a>Következő lépések
-VPN-átjáró áttelepítési támogatás megismerését követően navigáljon [IaaS-erőforrásokra a klasszikus az erőforrás-kezelő áttelepítésének platform által támogatott](../virtual-machines/windows/migration-classic-resource-manager-ps.md) a kezdéshez.
+## <a name="next-steps"></a>További lépések
+Miután megismerkedett a VPN gateway áttelepítés támogatása, látogasson el [platform által támogatott áttelepítés IaaS-erőforrások klasszikusból Resource Manager](../virtual-machines/windows/migration-classic-resource-manager-ps.md) a kezdéshez.
 

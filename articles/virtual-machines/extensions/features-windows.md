@@ -1,83 +1,82 @@
 ---
-title: Az Azure Virtuálisgép-bővítmények és szolgáltatások a Windows |} A Microsoft Docs
-description: Ismerje meg, hogy mely bővítmények érhetők el az Azure virtual machines, mit, adja meg vagy javíthatja a szerint csoportosítva.
+title: Azure virtuálisgép-bővítmények és-szolgáltatások a Windows rendszerhez | Microsoft Docs
+description: Ismerje meg, hogy mely bővítmények érhetők el az Azure Virtual Machines szolgáltatásban, az általuk biztosított vagy a fejlesztésük szerint csoportosítva.
 services: virtual-machines-windows
 documentationcenter: ''
-author: roiyz-msft
-manager: jeconnoc
+author: axayjo
+manager: gwallace
 editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 999d63ee-890e-432e-9391-25b3fc6cde28
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
-ms.author: roiyz
+ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ce13f053c2adee6a9a347a4162b60cc6d6b40eda
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a19b6bd8da82498aae45657d30883db14efd9343
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58849765"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71174075"
 ---
-# <a name="virtual-machine-extensions-and-features-for-windows"></a>Virtuálisgép-bővítmények és szolgáltatások Windows
+# <a name="virtual-machine-extensions-and-features-for-windows"></a>Virtuálisgép-bővítmények és-szolgáltatások a Windows rendszerhez
 
-Az Azure virtuális gép (VM) a bővítmények olyan kisebb alkalmazásoknál, amelyek az üzembe helyezés utáni konfigurációs és automatizálási feladatokat biztosít az Azure virtuális gépeken. Ha például egy virtuális géphez szükséges szoftver telepítése, víruskereső védelmet, vagy belül, a parancsfájl futtatásához a VM-bővítmény segítségével. Az Azure Virtuálisgép-bővítmények az Azure CLI, PowerShell, az Azure Resource Manager-sablonokkal és az Azure Portalon is futtatható. Bővítmények egy új virtuális gép üzembe helyezésének mellékelhető, vagy minden meglévő rendszeren futtatható.
+Az Azure virtuálisgép-bővítmények olyan kisméretű alkalmazások, amelyek üzembe helyezés utáni konfigurációs és automatizálási feladatokat biztosítanak az Azure-beli virtuális gépeken. Ha például egy virtuális gépnek szoftver telepítésére, vírusirtó elleni védelemre vagy egy parancsfájl futtatására van szüksége, a rendszer egy virtuálisgép-bővítményt is használhat. Az Azure-beli virtuálisgép-bővítmények az Azure CLI-vel, a PowerShell-lel, a Azure Resource Manager-sablonokkal és a Azure Portal is futtathatók. A bővítmények egy új virtuálisgép-telepítéssel is elhelyezhetők, vagy bármely meglévő rendszeren futtathatók.
 
-Ez a cikk a Virtuálisgép-bővítmények, az Azure Virtuálisgép-bővítmények, használatára vonatkozó Előfeltételek áttekintést nyújt, és ismeri fel, hogyan kezelheti, és távolítsa el a Virtuálisgép-bővítmények. Ez a cikk általános információkat nyújt, számos Virtuálisgép-bővítmények érhetők el, mert egyes potenciálisan egyedi konfigurációval. Bővítmény-specifikus részletei megtalálhatók az egyes dokumentumok az egyéni bővítmény egyedi.
+Ez a cikk áttekintést nyújt a virtuálisgép-bővítményekről, az Azure virtuálisgép-bővítmények használatára vonatkozó előfeltételekről, valamint útmutatást nyújt a virtuálisgép-bővítmények észleléséhez, kezeléséhez és eltávolításához. Ez a cikk általánosított információkat nyújt, mivel számos virtuálisgép-bővítmény elérhető, amelyek mindegyike potenciálisan egyedi konfigurációval rendelkezik. A bővítményekre vonatkozó részletek az egyes bővítményekre jellemző minden dokumentumban találhatók.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="use-cases-and-samples"></a>Használatieset-forgatókönyveit és a minták
+## <a name="use-cases-and-samples"></a>Használati esetek és minták
 
-Számos különböző Azure-beli Virtuálisgép-bővítmények érhetők el, amelyek mindegyike egy adott használati eset. Néhány példa:
+Számos különböző Azure-beli virtuálisgép-bővítmény érhető el, amelyek mindegyike egy adott használati esettel rendelkezik. Néhány példa:
 
-- A DSC-bővítmény virtuális gépek a Windows PowerShell célállapot-konfiguráció vonatkozik. További információkért lásd: [Azure Desired State configuration bővítmény](dsc-overview.md).
-- A Microsoft Monitoring Agent Virtuálisgép-bővítmény rendelkező virtuális gépek figyelés konfigurálása. További információkért lásd: [Azure virtuális gépek csatlakoztatása az Azure Monitor naplóira](../../log-analytics/log-analytics-azure-vm-extension.md).
-- Chef segítségével konfigurálhatja egy Azure virtuális Gépen. További információkért lásd: [automatizálása Azure virtuális gép üzembe helyezése a Cheffel](../windows/chef-automation.md).
-- Figyelés a Datadoggal kiterjesztése az Azure infrastruktúra konfigurálása. További információkért lásd: a [Datadoggal blog](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/).
+- PowerShell kívánt állapot-konfiguráció alkalmazása egy virtuális gépre a Windows DSC bővítménnyel. További információ: az [Azure desired State Configuration bővítménye](dsc-overview.md).
+- Egy virtuális gép figyelésének konfigurálása a Microsoft monitoring Agent virtuálisgép-bővítménnyel. További információ: [Azure-beli virtuális gépek Összekapcsolásának Azure monitor naplók](../../log-analytics/log-analytics-azure-vm-extension.md).
+- Azure-beli virtuális gép konfigurálása a Chef használatával. További információ: az Azure-beli [virtuális gépek üzembe helyezésének automatizálása a Chef segítségével](../windows/chef-automation.md).
+- Konfigurálja az Azure-infrastruktúra figyelését az Datadoggal bővítménnyel. További információ: [datadoggal blog](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/).
 
 
-Folyamat-specifikus kiterjesztéseket mellett egy egyéni szkriptek bővítménye Windows és a Linux rendszerű virtuális gépek számára érhető el. Az egyéni szkriptek bővítménye Windows esetében lehetővé teszi, hogy bármely virtuális gépen futtatandó PowerShell-parancsfájl. Egyéni parancsfájlok tervezése az Azure-telepítések konfigurációs túli milyen natív Azure-eszközkészlet biztosíthat igénylő hasznosak. További információkért lásd: [Windows virtuális gép egyéni szkriptek futtatására szolgáló bővítmény](custom-script-windows.md).
+A folyamat-specifikus bővítmények mellett egyéni szkriptek is elérhetők a Windows-és Linux-alapú virtuális gépekhez. A Windowshoz készült egyéni szkriptek lehetővé teszik a PowerShell-parancsfájlok futtatását egy virtuális gépen. Az egyéni parancsfájlok olyan Azure-beli központi telepítések tervezésekor hasznosak, amelyek a natív Azure-eszközök által biztosított konfigurációt igénylik. További információ: a [Windows virtuális gép egyéni parancsfájl-bővítménye](custom-script-windows.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A bővítményt a virtuális gép kezelése érdekében az Azure Windows-ügynök telepítve van szükség. Néhány egyéni bővítményt kell Előfeltételek, például az erőforrások és a függőségek eléréséhez.
+A bővítménynek a virtuális gépen való kezeléséhez telepítenie kell az Azure Windows-ügynököt. Egyes bővítmények előfeltételei, például az erőforrásokhoz vagy függőségekhez való hozzáférés.
 
 ### <a name="azure-vm-agent"></a>Azure virtuálisgép-ügynök
 
-Az Azure-beli Virtuálisgép-ügynök kezeli az Azure virtuális gép és az Azure fabric controller közötti interakciókat. A Virtuálisgép-ügynök üzembe helyezése és kezelése az Azure virtuális gépekhez, beleértve a futó Virtuálisgép-bővítmények számos funkcionális szempontból felelős. Az Azure-beli Virtuálisgép-ügynök az Azure Marketplace-rendszerképek előre telepítve van, és a egy támogatott operációs rendszeren manuálisan telepíthető. Az Azure VM Agent a Windows a Windows vendégügynöke néven ismert.
+Az Azure-beli virtuálisgép-ügynök az Azure-beli virtuális gép és az Azure Fabric Controller közötti interakciókat kezeli. A virtuálisgép-ügynök feladata az Azure-beli virtuális gépek üzembe helyezésének és felügyeletének számos funkcionális aspektusa, beleértve a virtuálisgép-bővítmények futtatását is. Az Azure-beli virtuálisgép-ügynök előre telepítve van az Azure Marketplace-lemezképeken, és manuálisan is telepíthető a támogatott operációs rendszereken. A Windows rendszerhez készült Azure-beli virtuálisgép-ügynök a Windows vendég ügynöknek is ismert.
 
-A támogatott operációs rendszerek és telepítésével kapcsolatos tudnivalókat lásd: [Azure-beli virtuálisgép-ügynök](agent-windows.md).
+További információ a támogatott operációs rendszerekről és a telepítési utasításokról: [Azure Virtual Machine Agent](agent-windows.md).
 
-#### <a name="supported-agent-versions"></a>Az ügynök támogatott verziója
+#### <a name="supported-agent-versions"></a>Támogatott ügynök-verziók
 
-Annak érdekében, hogy a lehető legjobb élményt, vannak az ügynök minimális verziója. További információkért tekintse meg [ezt a cikket](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support).
+A lehető legjobb élmény biztosítása érdekében az ügynöknek minimális verziója van. További információkért tekintse meg [ezt a cikket](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support).
 
-#### <a name="supported-oses"></a>Beállított támogatott operációs rendszerek
+#### <a name="supported-oses"></a>Támogatott operációs rendszer
 
-A Windows vendégügynöke futtat több OSE-kre, azonban a bővítmények keretrendszer van korlátozva a OSE-kre vonatkozó adott bővítmények. További információkért tekintse meg [ezt a cikket](https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems
+A Windows vendég ügynök több operációs rendszeren fut, de a kiterjesztések keretrendszere korláttal rendelkezik a bővítmények számára. További információkért tekintse meg [ezt a cikket](https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems
 ).
 
-Néhány bővítmény nem támogatja az összes OSE-kre között, és bocsáthat *hiba kódja 51, a "Nem támogatott operációs rendszer"*. Támogatási lehetőségek az egyes bővítmény dokumentációjában.
+Egyes bővítmények nem támogatottak az összes operációs rendszeren, és a *51-es hibakódot (nem támogatott operációs rendszert*) bocsátják ki. Az egyes bővítmények dokumentációjában tájékozódhat a támogatásról.
 
 #### <a name="network-access"></a>Hálózati hozzáférés
 
-Bővítménycsomagok letöltődnek az Azure Storage-bővítmény adattárból, és az Azure Storage-bővítmény állapota feltöltések videóközpontba. Ha [támogatott](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) az ügynökök verzióját, akkor nem kell engedélyezi a hozzáférést az Azure Storage a virtuális gép régióban, mivel az ügynök használhatják a kommunikáció átirányítása az Azure fabric controller, az ügynök-kommunikációhoz. Ha az ügynök nem támogatott verziója van, engedélyezi a kimenő hozzáférést az adott régióban az Azure Storage a virtuális gépről szeretne.
+A bővítmények letöltése az Azure Storage bővítmény-tárházból történik, és a bővítmény állapotának feltöltése az Azure Storage-ba kerül. Ha az ügynökök [támogatott](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) verzióját használja, nem kell engedélyeznie az Azure Storage-hoz való hozzáférést a virtuálisgép-régióban, mert az ügynök használatával átirányíthatja a kommunikációt az Azure Fabric-vezérlővel az ügynök kommunikációja érdekében. Ha az ügynök nem támogatott verzióját használ, engedélyeznie kell a kimenő hozzáférést az adott régióban lévő Azure Storage-hoz a virtuális gépről.
 
 > [!IMPORTANT]
-> Ha a hozzáférést a letiltott *168.63.129.16* a Vendég tűzfalat használ, akkor bővítmények sikertelen a fenti függetlenül.
+> Ha letiltotta a *168.63.129.16* való hozzáférést a vendég tűzfal használatával, akkor a bővítmények a fentiektől függetlenül meghiúsulnak.
 
-Ügynökök csak bővítménycsomagok és állapotjelentést letöltéséhez használható. Például, ha a bővítmény telepítését le kell töltenie egy szkriptet a Githubról (egyéni szkript), vagy kell elérni az Azure Storage (Azure Backup), majd további tűzfal és a hálózati biztonsági csoport portokat kell megnyitni. A különböző bővítmények eltérő követelmények vonatkoznak, lehet, mert a saját jobb alkalmazások. Az Azure Storage-hozzáférést igénylő bővítmények, Azure NSG szolgáltatás címkék használatával hozzáférést biztosíthat [tárolási](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
+Az ügynököket csak a bővítmény-csomagok és a jelentéskészítési állapotok letöltésére lehet használni. Ha például egy bővítmény telepítéséhez le kell töltenie egy parancsfájlt a GitHubról (egyéni parancsfájlból), vagy hozzá kell férnie az Azure Storage-hoz (Azure Backup), akkor további tűzfal/hálózati biztonsági csoport portjait kell megnyitnia. A különböző kiterjesztések eltérő követelményekkel rendelkeznek, mivel ezek az alkalmazások a saját jogukban vannak. Az Azure Storage-hoz hozzáférést igénylő bővítmények esetében engedélyezheti a hozzáférést az Azure NSG Service-címkék használatával a [tároláshoz](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
 
-A Windows Vendégügynöke nem rendelkezik a proxykiszolgálón keresztül ügynökkérelmek forgalom átirányítását támogatása.
+A Windows Guest Agent ügynök nem rendelkezik a proxykiszolgáló támogatásával az ügynök forgalmi kéréseinek átirányításához.
 
-## <a name="discover-vm-extensions"></a>Fedezze fel a Virtuálisgép-bővítmények
+## <a name="discover-vm-extensions"></a>Virtuálisgép-bővítmények felderítése
 
-Az Azure-beli virtuális gépekhez számos különböző virtuális gépi bővítmény érhető el. Teljes listájának megtekintéséhez használja [Get-AzVMExtensionImage](https://docs.microsoft.com/powershell/module/az.compute/get-azvmextensionimage). Az alábbi példa felsorolja az összes rendelkezésre álló bővítményeket a *WestUS* helye:
+Az Azure-beli virtuális gépekhez számos különböző virtuális gépi bővítmény érhető el. A teljes lista megtekintéséhez használja a [Get-AzVMExtensionImage](https://docs.microsoft.com/powershell/module/az.compute/get-azvmextensionimage). Az alábbi példa felsorolja az összes elérhető bővítményt a *WestUS* helyen:
 
 ```powershell
 Get-AzVmImagePublisher -Location "WestUS" | `
@@ -85,21 +84,21 @@ Get-AzVMExtensionImageType | `
 Get-AzVMExtensionImage | Select Type, Version
 ```
 
-## <a name="run-vm-extensions"></a>Futtassa a Virtuálisgép-bővítmények
+## <a name="run-vm-extensions"></a>Virtuálisgép-bővítmények futtatása
 
-Azure Virtuálisgép-bővítmények futtassa a meglévő virtuális gépeken, amelyek akkor hasznos, ha a konfigurációs módosításokat, vagy helyreállítani a kapcsolatot egy már üzembe helyezett virtuális gépen kell. Virtuálisgép-bővítmények emellett az Azure Resource Manager-sablon-üzembehelyezések is telepíthet. Bővítmények használatával a Resource Manager-sablonok, Azure virtuális gépeken telepíthető és üzembe helyezés utáni beavatkozás nélkül konfigurálva.
+Az Azure-beli virtuálisgép-bővítmények már meglévő virtuális gépeken futnak, ami akkor hasznos, ha a konfigurációt módosítani kell, vagy egy már telepített virtuális gépen kell helyreállítani a kapcsolatot. A virtuálisgép-bővítmények Azure Resource Manager sablonok üzembe helyezésével is elhelyezhetők. A bővítmények Resource Manager-sablonokkal való használatával az Azure-beli virtuális gépek üzembe helyezése és konfigurálása a telepítés utáni beavatkozás nélkül végezhető el.
 
-Az alábbi módszerek bővítmény egy meglévő virtuális gép futtatásához használható.
+A következő módszerek használhatók a bővítmények egy meglévő virtuális gépen való futtatásához.
 
 ### <a name="powershell"></a>PowerShell
 
-Számos PowerShell-parancsok futtatása az egyes bővítmények léteznek. Listájának megtekintéséhez használja a [Get-Command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/get-command) és szűrheti a *bővítmény*:
+Több PowerShell-parancs létezik az egyes bővítmények futtatásához. A lista megtekintéséhez használja a [Get-Command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/get-command) és a Filter on *bővítményt*:
 
 ```powershell
 Get-Command Set-Az*Extension* -Module Az.Compute
 ```
 
-Ez biztosítja, hogy a kimenet az alábbihoz hasonló:
+Ez a következőhöz hasonló kimenetet nyújt:
 
 ```powershell
 CommandType     Name                                          Version    Source
@@ -119,7 +118,7 @@ Cmdlet          Set-AzVMSqlServerExtension                    4.5.0      Az.Comp
 Cmdlet          Set-AzVmssDiskEncryptionExtension             4.5.0      Az.Compute
 ```
 
-Az alábbi példa egy szkript letöltése a GitHub-adattárból a cél virtuális gépre, és futtassa a szkriptet az egyéni szkriptek futtatására szolgáló bővítmény használatával. Az egyéni szkriptek bővítménye további információkért lásd: [egyéni szkriptek bővítményének áttekintése](custom-script-windows.md).
+Az alábbi példa az egyéni szkriptek bővítmény használatával letölt egy-parancsfájlt egy GitHub-adattárból a cél virtuális gépre, majd futtatja a parancsfájlt. Az egyéni szkriptek bővítményével kapcsolatos további információkért lásd: [Egyéni szkriptek bővítményének áttekintése](custom-script-windows.md).
 
 ```powershell
 Set-AzVMCustomScriptExtension -ResourceGroupName "myResourceGroup" `
@@ -128,7 +127,7 @@ Set-AzVMCustomScriptExtension -ResourceGroupName "myResourceGroup" `
     -Run "Create-File.ps1" -Location "West US"
 ```
 
-A következő példában a Virtuálisgép-hozzáférési bővítmény segítségével egy Windows virtuális gép a rendszergazdai jelszó visszaállítása egy ideiglenes jelszót. A Virtuálisgép-hozzáférési bővítmény további információkért lásd: [egy Windows virtuális gép alaphelyzetbe állítása a távoli asztal szolgáltatás](../windows/reset-rdp.md). Futtatása után ez, vissza kell állítania a jelszót az első bejelentkezéskor:
+A következő példában a virtuálisgép-hozzáférési bővítmény egy Windows rendszerű virtuális gép rendszergazdai jelszavának alaphelyzetbe állítására szolgál ideiglenes jelszóként. További információ a virtuális gépek hozzáférési bővítménnyel kapcsolatban: [Távoli asztal szolgáltatás alaphelyzetbe állítása Windows rendszerű virtuális gépen](../windows/reset-rdp.md). Ha már futtatta a parancsot, állítsa alaphelyzetbe a jelszót az első bejelentkezéskor:
 
 ```powershell
 $cred=Get-Credential
@@ -138,22 +137,22 @@ Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Nam
     -Password $cred.GetNetworkCredential().Password -typeHandlerVersion "2.0"
 ```
 
-A `Set-AzVMExtension` parancs is használható, bármely Virtuálisgép-bővítmény indítása. További információkért lásd: a [Set-AzVMExtension referencia](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension).
+A `Set-AzVMExtension` parancs használatával bármely virtuálisgép-bővítmény elindítható. További információkért lásd a [set-AzVMExtension referenciát](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension).
 
 
 ### <a name="azure-portal"></a>Azure Portal
 
-A Virtuálisgép-bővítmények is alkalmazható egy meglévő virtuális Gépet az Azure Portalon keresztül. Válassza ki a virtuális Gépet a portálon, válassza a **bővítmények**, majd **Hozzáadás**. Válassza ki a bővítményt, az elérhető bővítmények listájából szeretne, majd kövesse a varázsló utasításait.
+A virtuálisgép-bővítmények a Azure Portal használatával alkalmazhatók egy meglévő virtuális gépre. Válassza ki a virtuális gépet a portálon, válassza a **bővítmények**, majd a **Hozzáadás**lehetőséget. Válassza ki a kívánt bővítményt az elérhető bővítmények listájából, és kövesse a varázsló utasításait.
 
-Az alábbi példa bemutatja a Microsoft Antimalware az Azure portal-bővítmény telepítése:
+Az alábbi példa a Microsoft antimalware bővítmény telepítését mutatja be a Azure Portalról:
 
-![A kártevőirtó bővítmény telepítése](./media/features-windows/installantimalwareextension.png)
+![Antimalware-bővítmény telepítése](./media/features-windows/installantimalwareextension.png)
 
 ### <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sablonok
 
-Virtuálisgép-bővítmények hozzáadható az Azure Resource Manager-sablon és a központi telepítési sablon végrehajtani. Amikor telepít egy bővítmény-sablonnal, teljes konfigurációjú Azure-környezetek is létrehozhat. Például a következő JSON használatban van egy Resource Manager sablon elosztott terhelésű virtuális gépek és a egy Azure SQL database telepíti, majd telepíti a .NET Core-alkalmazást az egyes virtuális Gépeken. A Virtuálisgép-bővítmény gondoskodik a szoftver telepítését.
+A virtuálisgép-bővítmények hozzáadhatók egy Azure Resource Manager sablonhoz, és a sablon üzembe helyezésével hajthatók végre. Ha sablonnal telepít egy bővítményt, létrehozhat teljesen konfigurált Azure-telepítéseket. Például a következő JSON-t egy Resource Manager-sablon telepíti, amely elosztott terhelésű virtuális gépeket és egy Azure SQL Database-adatbázist telepít, majd telepíti a .NET Core-alkalmazást minden egyes virtuális gépre. A virtuálisgép-bővítmény gondoskodik a szoftver telepítéséről.
 
-További információkért lásd: a [teljes Resource Manager-sablon](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows).
+További információ: [teljes Resource Manager-sablon](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows).
 
 ```json
 {
@@ -185,13 +184,13 @@ További információkért lásd: a [teljes Resource Manager-sablon](https://git
 }
 ```
 
-Resource Manager-sablonok létrehozásával kapcsolatos további információkért lásd: [Authoring Azure Resource Manager-sablonok Windows Virtuálisgép-bővítményekkel](../windows/template-description.md#extensions).
+A Resource Manager-sablonok létrehozásával kapcsolatos további információkért lásd: [Azure Resource Manager sablonok készítése Windowsos VM-bővítményekkel](../windows/template-description.md#extensions).
 
-## <a name="secure-vm-extension-data"></a>VM-bővítmény adatok védelme
+## <a name="secure-vm-extension-data"></a>Virtuálisgép-bővítmények védelme
 
-Amikor futtat egy Virtuálisgép-bővítmény, lehet szükséges a például hitelesítő adatokat, a tárfiókok nevének és a tárfiók hozzáférési kulcsainak bizalmas adatokat. Számos Virtuálisgép-bővítmények közé tartozik egy védett konfigurációt, amely titkosítja az adatokat, és csak visszafejti a cél virtuális Gépen belül. Minden kiterjesztéssel rendelkezik egy adott védett konfigurációs sémáját, és az egyes részleteit a bővítmény-specifikus dokumentációját.
+Virtuálisgép-bővítmény futtatásakor szükség lehet bizalmas adatok, például a hitelesítő adatok, a Storage-fiókok és a Storage-fiók hozzáférési kulcsainak megadására. Számos virtuálisgép-bővítmény tartalmaz egy védett konfigurációt, amely titkosítást végez, és csak a célként megadott virtuális gépen fejti vissza. Mindegyik bővítmény egy adott védett konfigurációs sémával rendelkezik, és mindegyik a bővítményekre vonatkozó dokumentációban van részletezve.
 
-Az alábbi példa bemutatja egy példányát az egyéni szkriptek bővítménye Windows számára. A parancs végrehajtásához hitelesítő adatok készletét tartalmazza. Ebben a példában a parancs végrehajtásához nincs titkosítva:
+Az alábbi példa a Windowshoz készült egyéni parancsfájl-bővítmény egy példányát mutatja be. A végrehajtandó parancs a hitelesítő adatok egy készletét tartalmazza. Ebben a példában a végrehajtandó parancs nem titkosított:
 
 ```json
 {
@@ -221,7 +220,7 @@ Az alábbi példa bemutatja egy példányát az egyéni szkriptek bővítménye 
 }
 ```
 
-Áthelyezés a **végrehajtandó parancs** tulajdonságot a **védett** konfigurációs védi a végrehajtási karakterlánc az alábbi példában látható módon:
+Ha a **parancs áthelyezésével végrehajtja** a tulajdonságot a **védett** konfigurációra, a a következő példában látható módon védi a végrehajtási karakterláncot:
 
 ```json
 {
@@ -253,22 +252,22 @@ Az alábbi példa bemutatja egy példányát az egyéni szkriptek bővítménye 
 }
 ```
 
-### <a name="how-do-agents-and-extensions-get-updated"></a>Hogyan hajtsa végre az ügynökök és a bővítmény frissített?
+### <a name="how-do-agents-and-extensions-get-updated"></a>Hogyan frissülnek az ügynökök és a bővítmények?
 
-Az ügynökök és a bővítmények ossza meg az azonos frissítési mechanizmust. Néhány frissítést nem szükséges további tűzfalszabályokat.
+Az ügynökök és a bővítmények ugyanazt a frissítési mechanizmust használják. Egyes frissítések esetében nincs szükség további tűzfalszabályok megírására.
 
-Ha egy frissítés érhető el, csak telepíti a rendszer a virtuális gépen, és megváltoznak a bővítmények és más virtuális gép adatmodell változásainak, mint például:
+Ha egy frissítés elérhető, akkor csak a virtuális gépre van telepítve, ha a bővítmények módosulnak, és más virtuálisgép-modell is változik, például:
 
 - Adatlemezek
 - Bővítmények
-- Rendszerindítási diagnosztika tároló
-- Vendég-operációsrendszer titkok
+- Rendszerindítási diagnosztika tárolója
+- Vendég operációs rendszer titkai
 - Virtuális gép mérete
 - Hálózati profil
 
-A kiadók elérhetővé frissítések régiók eltérő időpontokban, így a különböző verziói különböző régiókban található virtuális gépek is használhat.
+A kiadók különböző időpontokban teszik elérhetővé a frissítéseket a régiók számára, így lehetséges, hogy különböző régiókban lévő virtuális gépeket különböző verziókban lehet.
 
-#### <a name="listing-extensions-deployed-to-a-vm"></a>Egy virtuális gépre telepített bővítmények listázása
+#### <a name="listing-extensions-deployed-to-a-vm"></a>Virtuális géphez üzembe helyezett bővítmények listázása
 
 ```powershell
 $vm = Get-AzVM -ResourceGroupName "myResourceGroup" -VMName "myVM"
@@ -281,17 +280,17 @@ Publisher             VirtualMachineExtensionType          TypeHandlerVersion
 Microsoft.Compute     CustomScriptExtension                1.9
 ```
 
-#### <a name="agent-updates"></a>Ügynökfrissítések
+#### <a name="agent-updates"></a>Ügynök frissítései
 
-Csak azokat a Windows Vendégügynöke *kiterjesztés kezelő kód*, a *Windows kiépítés kód* elkülönül. A Windows-Vendégügynök eltávolítása. Az automatikus frissítés a az ablak Vendégügynök nem tiltható le.
+A Windows vendég ügynök csak a *bővítmények kezelési kódját*tartalmazza, a *Windows-kiépítési kód* külön. Eltávolíthatja a Windows vendég ügynököt. Az ablakos vendég ügynök automatikus frissítése nem tiltható le.
 
-A *kiterjesztés kezelő kód* felelős az Azure-hálót kommunikáló, illetve a VM-bővítmények műveletek kezelésére például telepíti, állapotát, az egyes bővítmények frissítése és eltávolítása őket. Frissítések tartalmazzák a biztonsági javítások, a hibajavítások és a webhelyszolgáltatásokkal kapcsolatos fejlesztéseket tartalmaz az *kiterjesztés kezelő kód*.
+A *bővítmények kezelésére szolgáló kód* felelős az Azure-hálóval való kommunikációért, valamint a virtuálisgép-bővítmények műveleteinek, például a telepítés, a jelentéskészítési állapot, az egyes bővítmények frissítésének és eltávolításának kezeléséért. A frissítések biztonsági javításokat, hibajavításokat és továbbfejlesztett funkciókat tartalmaznak a *bővítmények kezelési kódjához*.
 
-Ellenőrizze, melyik verzióját használja, lásd: [e telepítve a Windows Vendégügynöke](agent-windows.md#detect-the-vm-agent).
+A futtatott verziót a [telepített Windows-ügynök észlelése](agent-windows.md#detect-the-vm-agent)című témakörben tekintheti meg.
 
-#### <a name="extension-updates"></a>Bővítmény-frissítések
+#### <a name="extension-updates"></a>Bővítmények frissítései
 
-Bővítmény frissítés érhető el, ha a Windows Vendégügynöke tölti le, és frissíti a bővítményt. Frissítések automatikus bővítmény kiadásokhoz *kisebb* vagy *gyorsjavítás*. Engedélyezve van a hibajelentések, vagy tilthatják le az bővítmények *kisebb* frissíti, amikor üzembe helyezi a bővítményt. A következő példa bemutatja, hogyan automatikus frissítése a Resource Manager-sablonnal rendelkező alverziót *autoUpgradeMinorVersion ": true,"*:
+Ha elérhető egy bővítmény frissítése, a Windows vendég ügynök letölti és frissíti a bővítményt. Az automatikus bővítmény frissítései lehetnek *kisebbek* vagy *gyorsjavítások*. A bővítmények kiépítésekor engedélyezheti vagy letilthatja a bővítmények *másodlagos* frissítéseit. Az alábbi példa bemutatja, hogyan lehet automatikusan frissíteni a alverziókat egy Resource Manager-sablonban a *autoUpgradeMinorVersion ": true"* :
 
 ```json
     "properties": {
@@ -306,20 +305,20 @@ Bővítmény frissítés érhető el, ha a Windows Vendégügynöke tölti le, �
     },
 ```
 
-A legújabb kiadás kisebb hibajavítások lekéréséhez azt javasoljuk, hogy mindig választja az automatikus frissítés a bővítmény központi telepítések. Gyorsjavítás-frissítések, biztonsági vagy kulcs hibajavításokat tartalmaz, amelyek nem kilépteti a programból.
+Ha a legújabb kiadási hibákat szeretné lekérni, javasoljuk, hogy mindig válassza az automatikus frissítés lehetőséget a bővítmények üzembe helyezésében. A biztonsági vagy a kulcs hibajavításait nem lehet kijelölni.
 
-### <a name="how-to-identify-extension-updates"></a>Bővítmény frissítések azonosítása
+### <a name="how-to-identify-extension-updates"></a>Bővítmények frissítéseinek azonosítása
 
-#### <a name="identifying-if-the-extension-is-set-with-autoupgrademinorversion-on-a-vm"></a>Ha a bővítmény az autoUpgradeMinorVersion van beállítva a virtuális gép azonosítása
+#### <a name="identifying-if-the-extension-is-set-with-autoupgrademinorversion-on-a-vm"></a>Annak azonosítása, hogy a bővítmény a autoUpgradeMinorVersion-mel van-e beállítva egy virtuális gépen
 
-Ha a bővítmény lett üzembe helyezve, az "autoUpgradeMinorVersion" láthatja a virtuális gép modellből. Ellenőrzéséhez használja [Get-azvm parancsmag](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) , és adja meg az erőforráscsoportot és a virtuális gép neve a következő:
+A virtuálisgép-modellből megtekintheti, hogy a bővítmény a "autoUpgradeMinorVersion" használatával lett kiépítve. Az kereséshez használja a [Get-AzVm](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) , és adja meg az erőforráscsoportot és a virtuális gép nevét a következőképpen:
 
 ```powerShell
  $vm = Get-AzVm -ResourceGroupName "myResourceGroup" -VMName "myVM"
  $vm.Extensions
 ```
 
-Az alábbi példa kimenetében látható, amely *autoUpgradeMinorVersion* értékre van állítva *igaz*:
+A következő példa kimenete azt mutatja, hogy a *autoUpgradeMinorVersion* értéke *true (igaz*):
 
 ```powershell
 ForceUpdateTag              :
@@ -329,52 +328,52 @@ TypeHandlerVersion          : 1.9
 AutoUpgradeMinorVersion     : True
 ```
 
-#### <a name="identifying-when-an-autoupgrademinorversion-occurred"></a>Amikor egy autoUpgradeMinorVersion történt azonosítása
+#### <a name="identifying-when-an-autoupgrademinorversion-occurred"></a>Azonosítás a autoUpgradeMinorVersion előfordulásakor
 
-Tekintse meg, mikor történt, a bővítmény frissítését, tekintse át az ügynököt a virtuális gép egyidejű bejelentkezik *C:\WindowsAzure\Logs\WaAppAgent.log*
+Ha meg szeretné tekinteni, hogy mikor történt frissítés a bővítményre, tekintse át az ügynök naplóit a virtuális gépen a következő címen: *C:\WindowsAzure\Logs\WaAppAgent.log*
 
-A következő példában a virtuális Gépet kellett *Microsoft.Compute.CustomScriptExtension 1.8-as* telepítve. A gyorsjavítás volt elérhető verzióra *1.9*:
+A következő példában a virtuális gépnek *Microsoft. számítási. CustomScriptExtension 1,8* telepítve van. A *1,9*-es verzióhoz elérhető gyorsjavítás:
 
 ```powershell
 [INFO]  Getting plugin locations for plugin 'Microsoft.Compute.CustomScriptExtension'. Current Version: '1.8', Requested Version: '1.9'
 [INFO]  Auto-Upgrade mode. Highest public version for plugin 'Microsoft.Compute.CustomScriptExtension' with requested version: '1.9', is: '1.9'
 ```
 
-## <a name="agent-permissions"></a>Az ügynök engedélyek
+## <a name="agent-permissions"></a>Ügynök engedélyei
 
-A feladatok végrehajtásához az ügynököt futtató minden *helyi rendszer*.
+A feladatok végrehajtásához az ügynöknek *helyi rendszerként*kell futnia.
 
-## <a name="troubleshoot-vm-extensions"></a>A Virtuálisgép-bővítmények hibaelhárítása
+## <a name="troubleshoot-vm-extensions"></a>Virtuálisgép-bővítmények hibáinak megoldása
 
-Minden egyes Virtuálisgép-bővítmény lehet hibaelhárítási lépések adott, a bővítményt. Például az egyéni szkriptek futtatására szolgáló bővítmény használatakor szkriptvégrehajtás részletei találhatók helyileg a virtuális gép, ahol a bővítmény futtatták. Bővítmény-specifikus hibaelhárítási lépéseket részletesen ismertetett bővítmény-specifikus dokumentációját.
+Az egyes virtuálisgép-bővítmények a bővítményre vonatkozó hibaelhárítási lépésekkel rendelkezhetnek. Ha például az egyéni szkriptek bővítményét használja, a parancsfájl-végrehajtás részletei helyileg találhatók azon a virtuális gépen, ahol a bővítményt futtatták. A bővítményekre vonatkozó hibaelhárítási lépések részletesen szerepelnek a bővítményekre vonatkozó dokumentációban.
 
-Az alábbi hibaelhárítási lépéseket az összes Virtuálisgép-bővítmények vonatkozik.
+Az alábbi hibaelhárítási lépések minden virtuálisgép-bővítményre érvényesek.
 
-1. A Windows vendég Ügynöknaplóban ellenőrzéséhez tekintse meg a tevékenység során lett üzembe helyezve a bővítményt a *C:\WindowsAzure\Logs\WaAppAgent.txt*
+1. A Windows vendég ügynök naplójának vizsgálatához tekintse meg a tevékenységet, amikor a bővítményt kiépítte a *C:\WindowsAzure\Logs\WaAppAgent.txt* -ben
 
-2. Tekintse meg a tényleges bővítmény naplókat a további részletekért *C:\WindowsAzure\Logs\Plugins\<bővítménynév >*
+2. További részletek a *\<C:\WindowsAzure\Logs\Plugins extensionName >*
 
-3. Ellenőrizze a bővítmény megfelelő dokumentációban hibaelhárítási szakaszokat hibakódok ismert problémák stb.
+3. Tekintse meg a bővítmények specifikus dokumentációjának hibaelhárítási szakaszt a hibakódok, ismert problémák stb. esetében.
 
-4. Tekintse meg a rendszernaplót. Ellenőrizze, hogy előfordulhat, hogy rendelkezik zavarja a kiterjesztéssel, például egy másik alkalmazás kizárólagos package manager hozzáférés szükséges egy hosszú ideig futó telepített egyéb műveleteket.
+4. Tekintse meg a rendszernaplókat. Keresse meg azokat a műveleteket, amelyek esetleg zavart okozhattak a bővítménnyel, például egy olyan alkalmazás hosszú futású telepítését, amely kizárólagos csomagkezelő-hozzáférést igényelt.
 
-### <a name="common-reasons-for-extension-failures"></a>Bővítmény hibák leggyakoribb okai
+### <a name="common-reasons-for-extension-failures"></a>A bővítmények meghibásodásának gyakori okai
 
-1. Bővítmények rendelkezik futtatásához 20 perc (kivétel a CustomScript bővítmény, a Chef és a DSC, amelyek 90 perc). Ha az üzemelő példány ez idő meghaladja, van megjelölve, időtúllépés. Ennek oka valószínűleg kevés az erőforrás-beli virtuális gépek más virtuális gép konfigurációk/indítási feladatok nagy mennyiségű erőforrást használ, miközben a bővítmény kiépítése próbál.
+1. A bővítmények 20 percen keresztül futnak (kivételek a CustomScript Extensions, Chef és DSC, amelyek 90 perc). Ha az üzemelő példány túllépi az időkorlátot, időtúllépésként van megjelölve. Ennek oka az lehet, hogy az alacsony erőforrás-alapú virtuális gépek, más virtuálisgép-konfigurációk/indítási feladatok nagy mennyiségű erőforrást igényelnek, miközben a bővítmény megpróbál kiépíteni.
 
-2. Minimális előfeltételek nem teljesülnek. Néhány bővítmény függőségekkel rendelkező VM termékváltozatokban, például a HPC-képeket. Bővítmények szükség lehet bizonyos hálózati hozzáférési követelmények, például az Azure Storage-vagy nyilvános szolgáltatásokhoz való kommunikációhoz. További példák lehet csomag adattárak, kevés a szabad lemezterület, vagy a biztonsági korlátozások a hozzáférést.
+2. A minimális előfeltételek nem teljesülnek. Egyes bővítmények függőségekkel rendelkeznek a virtuális gépekhez, például a HPC-lemezképekhez. A bővítmények bizonyos hálózati hozzáférési követelményeket igényelhetnek, például az Azure Storage-hoz vagy a nyilvános szolgáltatásokhoz való kommunikációhoz. További példák lehetnek a csomagok tárházához való hozzáférés, a lemezterületek kifogyása vagy a biztonsági korlátozások.
 
-3. Kizárólagos package manager-hozzáféréssel. Bizonyos esetekben felmerülhet egy hosszú ideig futó Virtuálisgép-konfiguráció és a bővítmény telepítése ütköző, ahol mindkettő kell a package manager kizárólagos hozzáférést.
+3. Exkluzív csomagkezelő-hozzáférés. Bizonyos esetekben előfordulhat, hogy hosszú ideig futó virtuálisgép-konfigurációt és bővítmények telepítésének ütközését tapasztalja, ahol mindkettőnek kizárólagos hozzáféréssel kell rendelkeznie a csomagkezelő eszközhöz.
 
 ### <a name="view-extension-status"></a>Bővítmény állapotának megtekintése
 
-VM-bővítmény virtuális gépek elleni futott, miután a [Get-azvm parancsmag](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) a bővítmény állapotát adja vissza. *[0] részállapotok* azt mutatja, hogy a bővítmény kiépítési sikeres volt, ami azt jelenti, hogy a virtuális gép központi telepítése sikeres azt, de a bővítményt a virtuális gép végrehajtása sikertelen volt, *részállapotok [1]*.
+A virtuálisgép-bővítmény virtuális gépen való futtatása után a [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) használatával adja vissza a bővítmény állapotát. Az *alállapotok [0]* érték azt jelzi, hogy a bővítmény kiépítése sikeres volt, ami azt jelenti, hogy a virtuális gép üzembe helyezése sikeresen megtörtént, de a virtuális gépen belüli bővítmény végrehajtása nem sikerült, *alállapotok [1]* .
 
 ```powershell
 Get-AzVM -ResourceGroupName "myResourceGroup" -VMName "myVM" -Status
 ```
 
-A kimenet hasonlít az alábbi példa kimenetében:
+A kimenet a következő példában látható kimenethez hasonló:
 
 ```powershell
 Extensions[0]           :
@@ -400,31 +399,31 @@ Extensions[0]           :
     Message             : Finished executing command
 ```
 
-Bővítmény végrehajtási állapotát az Azure Portalon is található. Egy bővítmény állapotának megtekintéséhez válassza ki a virtuális Gépet, válassza a **bővítmények**, majd válassza ki a kívánt bővítményt.
+A bővítmény végrehajtási állapota a Azure Portalban is megtalálható. Egy bővítmény állapotának megtekintéséhez válassza ki a virtuális gépet, válassza a **bővítmények**lehetőséget, majd válassza ki a kívánt kiterjesztést.
 
-### <a name="rerun-vm-extensions"></a>Futtassa újra a Virtuálisgép-bővítmények
+### <a name="rerun-vm-extensions"></a>VM-bővítmények újrafuttatása
 
-Előfordulhat, hogy esetek, amelyben a VM-bővítmény kell újra kell futtatni. Egy bővítmény akkor távolítsa el, majd újbóli a bővítmény-végrehajtási módszerrel tetszőleges futtathatja. Egy bővítmény eltávolításához használja [Remove-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/Remove-AzVMExtension) módon:
+Előfordulhatnak olyan esetek, amikor egy virtuálisgép-bővítményt újra kell futtatni. A bővítmény újrafuttatásához távolítsa el, majd futtassa újra a bővítményt egy tetszőleges végrehajtási módszer használatával. A bővítmények eltávolításához használja a [Remove-AzVMExtension parancsot](https://docs.microsoft.com/powershell/module/az.compute/Remove-AzVMExtension) a következő módon:
 
 ```powershell
 Remove-AzVMExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Name "myExtensionName"
 ```
 
-Valamint eltávolíthatja kiterjesztése az Azure Portalon a következő:
+A bővítményeket a következőképpen is eltávolíthatja a Azure Portalban:
 
-1. Válasszon egy virtuális Gépet.
-2. Válasszon **bővítmények**.
-3. Válassza ki a kívánt bővítményt.
-4. Válasszon **eltávolítása**.
+1. Válasszon ki egy virtuális gépet.
+2. Válassza a **bővítmények**lehetőséget.
+3. Válassza ki a kívánt kiterjesztést.
+4. Válassza az **Eltávolítás**lehetőséget.
 
-## <a name="common-vm-extensions-reference"></a>Általános virtuális gép bővítmények referencia
+## <a name="common-vm-extensions-reference"></a>Gyakori virtuálisgép-bővítmények ismertetése
 | Bővítmény neve | Leírás | További információ |
 | --- | --- | --- |
-| A Windows egyéni szkriptek futtatására szolgáló bővítmény |Szkriptek futtatása az Azure virtuális gépek ellen |[A Windows egyéni szkriptek futtatására szolgáló bővítmény](custom-script-windows.md) |
-| Windows DSC-bővítmény |PowerShell DSC (Desired State Configuration) bővítmény |[Windows DSC-bővítmény](dsc-overview.md) |
-| Azure Diagnostics bővítmény |Az Azure Diagnostics kezelése |[Azure Diagnostics bővítmény](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
-| Az Azure Virtuálisgép-hozzáférési bővítmény |Felhasználók és a hitelesítő adatok kezelése |[Linuxos Virtuálisgép-hozzáférési bővítmény](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |
+| Egyéni parancsfájl-bővítmény a Windowshoz |Parancsfájlok futtatása Azure-beli virtuális gépeken |[Egyéni parancsfájl-bővítmény a Windowshoz](custom-script-windows.md) |
+| DSC-bővítmény a Windowshoz |PowerShell DSC (kívánt állapot konfiguráció) bővítmény |[DSC-bővítmény a Windowshoz](dsc-overview.md) |
+| Azure Diagnostics bővítmény |Azure Diagnostics kezelése |[Azure Diagnostics bővítmény](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
+| Azure VM-hozzáférési bővítmény |Felhasználók és hitelesítő adatok kezelése |[VM-hozzáférési bővítmény Linux rendszerhez](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |
 
 ## <a name="next-steps"></a>További lépések
 
-Virtuálisgép-bővítményekkel kapcsolatos további információkért lásd: [Azure-beli virtuálisgép-bővítmények és szolgáltatások áttekintése](overview.md).
+További információ a virtuálisgép-bővítményekről: [Azure-beli virtuális gépek bővítményei és funkcióinak áttekintése](overview.md).

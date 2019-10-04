@@ -1,11 +1,10 @@
 ---
-title: Az Azure Security Center végpontvédelem kezeléséhez |} A Microsoft Docs
-description: Ismerje meg, hogyan kezelheti a végpontvédelem az Azure Security Centerben.
+title: Endpoint Protection-problémák kezelése a Azure Security Centerkal | Microsoft Docs
+description: Ismerje meg, hogyan kezelheti Azure Security Center az Endpoint Protection szolgáltatással kapcsolatos problémákat.
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 1599ad5f-d810-421d-aafc-892e831b403f
 ms.service: security-center
 ms.devlang: na
@@ -13,104 +12,104 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/28/2019
-ms.author: rkarlin
-ms.openlocfilehash: 882d4e0592b74e8af30ff5bf110a41e403c3bf7d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: memildin
+ms.openlocfilehash: b1bcce1e94a64253986ad9b1fd77874ba0a39839
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59789651"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202066"
 ---
-# <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>Az Azure Security Center végpontvédelmi problémák kezelése
-Az Azure Security Center figyeli a kártevőkkel szembeni védelem állapotát, és ezt jelzi az Endpoint protection problémák panel alatt. A Security Center problémákról, például az észlelt fenyegetések és a nem megfelelő védelemmel, amely sérülékennyé teheti a virtuális gépek (VM) és a számítógépek kártevőirtó fenyegetések emeli ki. Az információk használatával **végpontvédelem**, azonosíthatja a terv azonosított problémák elhárítása.
+# <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>Az Endpoint Protection szolgáltatással kapcsolatos problémák kezelése Azure Security Center
+Azure Security Center figyeli a kártevők elleni védelem állapotát, és jelentést készít az Endpoint Protection-problémák paneljén. Security Center kiemeli a problémákat, például az észlelt fenyegetéseket és a nem megfelelő védelmet, amely lehetővé teszi, hogy a virtuális gépek (VM) és a számítógépek sebezhetőek legyenek a kártevők elleni fenyegetésekkel szemben. Az **Endpoint Protection-problémák**alatt lévő információk használatával meghatározhatja az azonosított problémák megoldására szolgáló tervet.
 
-A Security Center a következő végpontvédelmi problémákkal jelentések:
+Security Center a következő Endpoint Protection-problémákat jelenti:
 
-- Az Endpoint protection nincs telepítve az Azure VM-eken – egy támogatott kártevőirtó megoldás ezeket Azure virtuális gépeken nincs telepítve.
-- Az Endpoint protection nincs telepítve a nem Azure-beli számítógépek – egy támogatott kártevőirtó ezeken a nem Azure-beli számítógépeken nincs telepítve.
-- Endpoint protection állapota:
+- Az Endpoint Protection nincs telepítve az Azure-beli virtuális gépeken – ezen az Azure-beli virtuális gépeken nincs telepítve támogatott antimalware-megoldás.
+- Az Endpoint Protection nincs telepítve a nem Azure-beli számítógépeken – A rendszer nem telepíti a támogatott antimalware-t ezeken a nem Azure-beli számítógépeken.
+- Endpoint Protection állapota:
 
-  - Lejárt aláírás – egy kártevőirtó megoldást a virtuális gépeken és számítógépeken települ, de a megoldás nem rendelkezik a legújabb kártevőirtó-aláírásokat.
-  - Nincs valós idejű védelem – egy kártevőirtó megoldást a virtuális gépeken és számítógépeken telepítve van, de a valós idejű védelem nincs konfigurálva.   Letilthatja a szolgáltatást, vagy lehet, hogy a Security Center nem olvasható be az állapot, mert a megoldás nem támogatott. Lásd: [partnerintegráció](security-center-os-coverage.md#supported-endpoint-protection-solutions) támogatott megoldások listáját.
-  - Jelentést nem küldő – egy kártevőirtó megoldás telepítve van, de nem küld adatokat.
-  - Ismeretlen – egy kártevőirtó megoldás telepítve van, de annak állapota ismeretlen, vagy egy ismeretlen hibát jelez.
+  - Az aláírás elavult – antimalware-megoldás van telepítve ezekre a virtuális gépekre és számítógépekre, de a megoldás nem rendelkezik a legújabb antimalware-aláírásokkal.
+  - Nincs valós idejű védelem – antimalware-megoldás van telepítve ezekre a virtuális gépekre és számítógépekre, de nincs beállítva a valós idejű védelemre.   Lehet, hogy a szolgáltatás le van tiltva, vagy előfordulhat, hogy a Security Center nem tudja megszerezni az állapotot, mert a megoldás nem támogatott. A támogatott megoldások listáját lásd: [partner-integráció](security-center-services.md#endpoint-supported) .
+  - Nem jelentéskészítés – a rendszer egy antimalware-megoldást telepít, de nem küld jelentést.
+  - Ismeretlen – az antimalware megoldás telepítve van, de az állapota ismeretlen, vagy ismeretlen hibát jelentett.
 
     > [!NOTE]
-    > Lásd: [biztonsági megoldások integrálása](security-center-os-coverage.md#supported-endpoint-protection-solutions) integrálhatók a Security Centerrel végpontvédelmi biztonsági megoldások listáját.
+    > Lásd: a [biztonsági megoldások integrálása](security-center-services.md#endpoint-supported) a Security Center integrált Endpoint Protection biztonsági megoldások listájára.
     >
     >
 
-## <a name="implement-the-recommendation"></a>A javaslatok megvalósítása
-Végpontvédelmi problémákkal jeleníti meg a Security Center egy javaslatot.  A környezet kitéve a kártevőirtó fenyegetésekkel szemben, ha a javaslat területen látható **javaslatok** és **számítási**. Megtekintheti a **az Endpoint protection problémák irányítópult**, el kell végezni a számítási munkafolyamat.
+## <a name="implement-the-recommendation"></a>A javaslat implementálása
+Az Endpoint Protection szolgáltatással kapcsolatos problémák Security Centerban való javaslatként jelennek meg.  Ha a környezete sebezhető a kártevők elleni fenyegetésekkel szemben, ez a javaslat a **javaslatok** és a **számítás**területen jelenik meg. Az **Endpoint Protection-problémák irányítópultjának**megtekintéséhez követnie kell a számítási munkafolyamatot.
 
-Ebben a példában használjuk **számítási**.  Áttekintjük, hogyan telepítheti a kártevőirtó Azure virtuális gépeken, és nem Azure-beli számítógépeken.
+Ebben a példában a **számítást**fogjuk használni.  Bemutatjuk, hogyan telepíthet antimalware-t az Azure-beli virtuális gépeken és a nem Azure-beli számítógépeken.
 
-## <a name="install-antimalware-on-azure-vms"></a>Kártevőirtó telepítése Azure virtuális gépeken
+## <a name="install-antimalware-on-azure-vms"></a>Antimalware telepítése Azure-beli virtuális gépeken
 
-1. Válassza ki **számítás és alkalmazások** a Security Center főmenüjében vagy **áttekintése**.
+1. Válassza a Security Center főmenü vagy az **Áttekintés**területen a **számítási & alkalmazások** lehetőséget.
 
-   ![Válassza ki a számítási][1]
+   ![Számítás kiválasztása][1]
 
-2. A **számítási**válassza **végpontvédelem**. A **végpontvédelem** irányítópult nyílik meg.
+2. A **számítás**területen válassza az **Endpoint Protection-problémák**elemet. Megnyílik az **Endpoint Protection-problémák** irányítópult.
 
-   ![Válassza ki a Végpontvédelmi problémák][2]
+   ![Endpoint Protection-problémák kiválasztása][2]
 
-   Az irányítópult tetején biztosítja:
+   Az irányítópult tetején a következőket nyújtja:
 
-   - Telepített végpontvédelmi szolgáltatók – a Security Center által azonosított különböző szolgáltatók listája.
-   - Telepített végpontvédelem állapota – a virtuális gépeket és számítógépeket, amelyek rendelkeznek telepített végpontvédelmi megoldás állapotát jeleníti meg. A diagram bemutatja a virtuális gépek és számítógépek, amelyek a megfelelő és nem megfelelő védelemmel a számát.
-   - Kártevő észlelve – virtuális gépek számát jeleníti meg, és hol van a Security Center jelentést készítő számítógépek kártevő észlelhető.
-   - Megtámadott számítógépek – virtuális gépek és számítógépek, ahol a Security Center jelent támadások kártevő számát jeleníti meg.
+   - Telepített Endpoint Protection-szolgáltatók – felsorolja a Security Center által azonosított különböző szolgáltatókat.
+   - Telepített Endpoint Protection-állapot – megjeleníti azon virtuális gépek és számítógépek állapotát, amelyeken telepítve van az Endpoint Protection megoldás. A diagram a virtuális gépek és a kifogástalan állapotú számítógépek számát jeleníti meg, valamint a nem megfelelő védelemmel ellátott számot.
+   - Kártevő észlelve – megjeleníti azoknak a virtuális gépeknek és számítógépeknek a számát, ahol a Security Center kártevőt észlelt.
+   - Megtámadott számítógépek – azoknak a virtuális gépeknek és számítógépeknek a számát jeleníti meg, amelyeken a Security Center kártevők általi támadásokat jelentett.
 
-   Az irányítópult alján nincs végpont listáját védelmével kapcsolatos problémák, amely tartalmazza a következő információkat:  
+   Az irányítópult alján található az Endpoint Protection azon problémáinak listája, amelyek a következő információkat tartalmazzák:  
 
-   - **TELJES** – a probléma által érintett virtuális gépek és számítógépek számát.
-   - A sáv összevonása a virtuális gépek és a probléma által érintett számítógépek számát. A színeket a sáv a prioritás határozza meg:
+   - **Összesen** – a probléma által érintett virtuális gépek és számítógépek száma.
+   - A probléma által érintett virtuális gépek és számítógépek számát összesítő sáv. A sáv színei azonosítják a prioritást:
 
-      - Piros - magas prioritás, azonnal foglalkozzon
-      - Narancssárga – közepes szintű prioritás, és a lehető leghamarabb foglalkozzon
+      - Piros-magas prioritás, és azonnal foglalkozni kell
+      - Narancssárga – közepes prioritás, és a lehető leghamarabb meg kell oldani
 
-3. Válassza ki **Endpoint protection nincs telepítve az Azure virtuális gépekhez**.
+3. Válassza ki **Az Azure-beli virtuális gépeken nincs telepítve az Endpoint Protection**szolgáltatást.
 
-   ![Válassza ki az Endpoint protection nincs telepítve az Azure virtuális gépekhez][3]
+   ![Az Azure-beli virtuális gépeken nem telepített Endpoint Protection kiválasztása][3]
 
-4. A **Endpoint protection nincs telepítve az Azure virtuális gépekhez** az Azure virtuális gépek, amelyeken nincs telepítve kártevőirtó listája.  A listában lévő összes virtuális gép kártevőirtó telepítse, vagy válassza ki az egyes virtuális gépekhez kártevőirtó telepíthető az adott virtuális Gépre kattintva lehet váltani.
-5. A **válassza ki az Endpoint protection**, válassza ki a használni kívánt végpontvédelmi megoldás. Ebben a példában válassza **Microsoft Antimalware**.
-6. További információ az endpoint protection megoldás jelenik meg. Kattintson a **Létrehozás** gombra.
+4. Az **Azure-beli virtuális gépeken nincs telepítve az Endpoint Protection** azon Azure-beli virtuális gépek listája, amelyeken nincs telepítve az antimalware.  Dönthet úgy, hogy a listában szereplő összes virtuális gépen telepíti az antimalware szoftvert, vagy az egyes virtuális gépeket az adott virtuális gépre kattintva telepítheti az antimalware-t.
+5. Az **Endpoint Protection kiválasztása**területen válassza ki a használni kívánt Endpoint Protection-megoldást. Ebben a példában válassza a **Microsoft antimalware**elemet.
+6. Az Endpoint Protection-megoldással kapcsolatos további információk jelennek meg. Kattintson a **Létrehozás** gombra.
 
-## <a name="install-antimalware-on-non-azure-computers"></a>Az Azure-beli számítógépek kártevőirtó telepítése
+## <a name="install-antimalware-on-non-azure-computers"></a>Antimalware telepítése nem Azure-beli számítógépeken
 
-1. Lépjen vissza a **végpontvédelem** válassza **nem Azure-beli számítógépeken nincs telepítve az Endpoint protection**.
+1. Térjen vissza az **Endpoint Protection-problémákhoz** , és válassza ki **a nem Azure-beli számítógépeken nincs telepítve az Endpoint Protection**szolgáltatást.
 
-   ![Válassza ki a nem Azure-beli számítógépeken nincs telepítve az Endpoint protection][4]
+   ![A nem Azure-beli számítógépeken nem telepített Endpoint Protection kiválasztása][4]
 
-2. A **nem Azure-beli számítógépeken nincs telepítve az Endpoint protection**, válasszon ki egy munkaterületet. Az Azure Monitor naplók keresési lekérdezés szűri, hogy a munkaterület megnyílik, és megjeleníti a számítógépek kártevőirtó hiányzik. További információ a listából válasszon ki egy számítógépet.
+2. A **nem Azure-beli számítógépeken nincs telepítve az Endpoint Protection**területen válasszon ki egy munkaterületet. Megnyílik egy Azure Monitor naplók keresési lekérdezése, amely a munkaterületre szűrve jelenik meg, és felsorolja a hiányzó antimalware-számítógépeket. További információért válasszon egy számítógépet a listából.
 
-   ![Az Azure Monitor-naplók keresése][5]
+   ![Azure Monitor naplók keresése][5]
 
-Csak az adott számítógépen a szűrt adatokat egy másik keresési eredmény nyílik meg.
+Megnyílik egy másik keresési eredmény, amely csak az adott számítógéphez szűrt adatokat.
 
-  ![Az Azure Monitor-naplók keresése][6]
+  ![Azure Monitor naplók keresése][6]
 
 > [!NOTE]
-> Azt javasoljuk, hogy az endpoint protection ki kell építeni az összes virtuális gép és számítógép azonosításához, és távolítsa el a vírusok, kémprogramok és más, kártevő szoftverek.
+> Javasoljuk, hogy az Endpoint Protectiont az összes virtuális gép és számítógép számára kiépítve azonosítsa és távolítsa el a vírusokat, kémprogramokat és egyéb kártevő szoftvereket.
 >
 >
 
 ## <a name="next-steps"></a>További lépések
-Ez a cikk bemutatta, hogyan valósíthat meg a Security Center javaslatait "Az Endpoint Protection telepítése." A Microsoft Antimalware az Azure-ban engedélyezésével kapcsolatos további tudnivalókért tekintse meg a következő dokumentumot:
+Ez a cikk bemutatja, hogyan implementálhatja a "install Endpoint Protection" Security Center javaslatot. Ha többet szeretne megtudni a Microsoft antimalware használatának engedélyezéséről az Azure-ban, tekintse meg a következő dokumentumot:
 
-* [A Microsoft Antimalware Cloud Services és Virtual Machines](../security/azure-security-antimalware.md) – ismerje meg, hogyan helyezhet üzembe a Microsoft Antimalware-t.
+* [Microsoft antimalware Cloud Services és Virtual Machineshoz](../security/fundamentals/antimalware.md) – megtudhatja, hogyan helyezheti üzembe a Microsoft antimalware-t.
 
-A Security Centerrel kapcsolatos további tudnivalókért tekintse meg a következő dokumentumokat:
+Ha többet szeretne megtudni a Security Centerről, tekintse meg a következő dokumentumokat:
 
-* [Biztonsági szabályzatok beállítása az Azure Security Center](tutorial-security-policy.md) – ismerje meg, hogyan konfigurálhat biztonsági házirendeket.
-* [Biztonsági javaslatok kezelése az Azure Security Center](security-center-recommendations.md) – megtudhatja, hogyan javaslatok az Azure-erőforrások védelme.
-* [Biztonsági állapotfigyelés az Azure Security Center](security-center-monitoring.md) – útmutató az Azure-erőforrások állapotának monitorozásához.
+* [Biztonsági szabályzatok beállítása Azure Security Centerban](tutorial-security-policy.md) – útmutató a biztonsági házirendek konfigurálásához.
+* [Biztonsági javaslatok kezelése Azure Security Centerban](security-center-recommendations.md) – megtudhatja, hogyan segítheti az ajánlásokat az Azure-erőforrások védelmében.
+* [Biztonsági állapot figyelése Azure Security Centerban](security-center-monitoring.md) – megtudhatja, hogyan figyelheti az Azure-erőforrások állapotát.
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) – A biztonsági riasztások kezelése és az azokra való reagálás.
 * [Partnermegoldások figyelése az Azure Security Centerrel](security-center-partner-solutions.md) – Megtudhatja, hogyan figyelheti a partnermegoldások biztonsági állapotát.
 * [Azure Security Center – gyakran ismételt kérdések](security-center-faq.md) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
-* [Az Azure Security blog](https://blogs.msdn.com/b/azuresecurity/) – blogbejegyzések az Azure biztonsági és megfelelőségi.
+* [Azure Security Blog](https://blogs.msdn.com/b/azuresecurity/) – blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
 
 <!--Image references-->
 [1]:./media/security-center-install-endpoint-protection/compute.png

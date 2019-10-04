@@ -9,11 +9,11 @@ ms.date: 01/04/2019
 ms.author: kgremban
 ms.custom: include file
 ms.openlocfilehash: c20a14ef2bc74d73b93ab39ee52fe1be8a5f984f
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54192160"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179237"
 ---
 Az Azure IoT Edge főbb képességei egyik folyamatban van, helyezhet üzembe a kódot az IoT Edge-eszközökön a felhőből. **IoT Edge-modulok** tárolókként megvalósított végrehajtható-csomagokat. Ebben a szakaszban egy előre elkészített modulnak a központi telepítése a [IoT Edge-modulok szakaszában az Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules). 
 

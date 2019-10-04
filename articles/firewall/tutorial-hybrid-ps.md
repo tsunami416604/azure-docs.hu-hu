@@ -1,80 +1,81 @@
 ---
-title: 'Oktatóanyag: Az Azure Firewall üzembe helyezése és konfigurálása hibrid hálózatban az Azure PowerShell használatával'
-description: Ebben az oktatóanyagban megismerheti, hogyan telepítheti és konfigurálhatja az Azure PowerShell-lel az Azure-tűzfalon.
+title: Az Azure Firewall üzembe helyezése és konfigurálása hibrid hálózatban az Azure PowerShell használatával
+description: Ebből a cikkből megtudhatja, hogyan telepítheti és konfigurálhatja a Azure Firewallt a Azure PowerShell használatával.
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.topic: tutorial
-ms.date: 3/18/2019
+ms.topic: article
+ms.date: 5/3/2019
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 7beb3d986b016688c4ee0a512b9406dbf3dfbb40
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a9987808feb895276f3f9e62fe66c1b353b52e72
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59051699"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073077"
 ---
-# <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Oktatóanyag: Az Azure Firewall üzembe helyezése és konfigurálása hibrid hálózatban az Azure PowerShell használatával
+# <a name="deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Az Azure Firewall üzembe helyezése és konfigurálása hibrid hálózatban az Azure PowerShell használatával
 
-A helyszíni hálózathoz való csatlakozáskor hibrid hálózat létrehozása az Azure virtuális hálózat, az Azure-hálózat erőforrásaihoz való hozzáférés szabályozásához el egy teljes biztonsági csomag fontos része.
+Ha a helyszíni hálózatot egy Azure-beli virtuális hálózathoz kapcsolja egy hibrid hálózat létrehozásához, az Azure hálózati erőforrásaihoz való hozzáférés szabályozása egy átfogó biztonsági csomag fontos részét képezi.
 
-Azure-tűzfal segítségével szabályozhatja a hálózati hozzáférést a szabályokat, amelyek meghatározzák az engedélyezett és letiltott hálózati forgalom használó hibrid hálózatot.
+A Azure Firewall használatával vezérelheti a hálózati hozzáférést egy hibrid hálózatban az engedélyezett és a letiltott hálózati forgalmat meghatározó szabályok használatával.
 
-Ebben az oktatóanyagban három virtuális hálózatot hoz létre:
+Ebben a cikkben három virtuális hálózatot fog létrehozni:
 
-- **VNet-Hub** – Ez a virtuális hálózat van a tűzfal.
-- **VNet-küllő** -küllő virtuális hálózat a számítási feladatok Azure-ban található jelöli.
-- **VNet-rendszert** – a helyi virtuális hálózat egy helyszíni hálózat jelöli. -Tényleges telepítés megjeleníthet egy VPN vagy ExpressRoute-kapcsolat. Az egyszerűség kedvéért ez az oktatóanyag a VPN gateway-kapcsolatot használ, és az Azure-található virtuális hálózat egy helyszíni hálózat megjelenítésére szolgál.
+- **VNet-hub** – a tűzfal ebben a virtuális hálózatban található.
+- **VNet – küllő** – a küllős virtuális hálózat az Azure-ban található számítási feladatokat jelöli.
+- **VNet-helyszíni** – a helyszíni virtuális hálózat egy helyszíni hálózatot jelöl. Tényleges telepítés esetén VPN-vagy ExpressRoute-kapcsolat is csatlakoztatható. Az egyszerűség kedvéért ez a cikk egy VPN Gateway-kapcsolat használatát, valamint egy Azure-beli virtuális hálózatot használ a helyszíni hálózat ábrázolására.
 
 ![Tűzfal a hibrid hálózatban](media/tutorial-hybrid-ps/hybrid-network-firewall.png)
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
 > * Változók deklarálása
-> * A tűzfal-központ virtuális hálózat létrehozása
-> * A küllő virtuális hálózat létrehozása
-> * A helyszíni virtuális hálózat létrehozása
+> * A tűzfal hub virtuális hálózatának létrehozása
+> * A küllős virtuális hálózat létrehozása
+> * Helyszíni virtuális hálózat létrehozása
 > * A tűzfal konfigurálása és üzembe helyezése
 > * A VPN-átjárók létrehozása és csatlakoztatása
-> * Az eseményközpont és a küllő virtuális hálózatok
+> * A hub és a küllős virtuális hálózatok egyenrangúak
 > * Az útvonalak létrehozása
 > * A virtuális gépek létrehozása
 > * A tűzfal tesztelése
 
+Ha az oktatóanyag elvégzése helyett a Azure Portalt szeretné használni, [tekintse meg az oktatóanyagot: Azure Firewall üzembe helyezése és konfigurálása hibrid hálózaton a Azure Portal](tutorial-hybrid-portal.md)használatával.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ebben az oktatóanyagban a PowerShell helyi futtatása szükséges. Az Azure PowerShell-modul telepítve kell rendelkeznie. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](https://docs.microsoft.com/powershell/azure/install-Az-ps) ismertető cikket. A PowerShell-verzió ellenőrzése után futtassa az `Login-AzAccount` parancsot az Azure-hoz való kapcsolódáshoz.
+Ehhez a cikkhez helyileg kell futtatni a PowerShellt. Telepítenie kell a Azure PowerShell-modult. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](https://docs.microsoft.com/powershell/azure/install-Az-ps) ismertető cikket. A PowerShell-verzió ellenőrzése után futtassa az `Login-AzAccount` parancsot az Azure-hoz való kapcsolódáshoz.
 
 Három alapvető követelménynek kell teljesülnie, hogy ez a forgatókönyv megfelelően működjön:
 
-- Egy felhasználó által megadott útvonal (UDR), amely az alapértelmezett átjáró Azure tűzfal IP-címre mutat küllő az alhálózaton. A BGP-útvonalpropagálásnak **letiltott** állapotúnak kell lennie ebben az útválasztási táblázatban.
-- Egy a hub átjáró alhálózatán található UDR küllő-hálózatokhoz a következő ugrás a tűzfal IP-címre kell mutatnia.
+- Egy felhasználó által megadott útvonal (UDR) a küllő alhálózaton, amely a Azure Firewall IP-címére mutat alapértelmezett átjáróként. A BGP-útvonalpropagálásnak **letiltott** állapotúnak kell lennie ebben az útválasztási táblázatban.
+- A központi átjáró alhálózatán található UDR a tűzfal IP-címére kell mutatnia a küllő hálózatok következő ugrásakor.
 
-   Nincs UDR módon, megtanulja az útvonalakat a BGP az Azure-tűzfal alhálózat szükséges.
+   Nem szükséges UDR a Azure Firewall alhálózaton, mivel a BGP-ből tanulja meg az útvonalakat.
 - A VNet-Hub-tól a VNet-Spoke felé irányuló társviszony létesítésekor az **AllowGatewayTransit** beállítást, a VNet-Spoke-tól a VNet-Hub felé irányuló társviszony létesítésekor pedig a **UseRemoteGateways** beállítást adja meg.
 
-Az útvonalak létrehozásával kapcsolatos információkért lásd az oktatóanyag [Útvonalak létrehozása](#create-the-routes) című szakaszát.
+Tekintse meg a jelen cikk [útvonalak létrehozása](#create-the-routes) című szakaszát, amelyből megtudhatja, hogyan jönnek létre ezek az útvonalak.
 
 >[!NOTE]
->Az Azure tűzfal közvetlen internetkapcsolattal kell rendelkeznie. Alapértelmezés szerint AzureFirewallSubnet engedélyeznie kell a csak egy UDR 0.0.0.0/0, és a **NextHopType** értéket állítja be **Internet**.
+>Azure Firewall közvetlen internetkapcsolattal kell rendelkeznie. Ha a AzureFirewallSubnet a BGP-n keresztül tanulja meg a helyszíni hálózat alapértelmezett útvonalát, akkor a közvetlen internetkapcsolat fenntartása érdekében ezt a 0.0.0.0/0 UDR kell felülbírálnia a **NextHopType** értékkel. Alapértelmezés szerint a Azure Firewall nem támogatja a kényszerített bújtatást egy helyszíni hálózatra.
 >
->Ha engedélyezi a kényszerített bújtatás a helyi ExpressRoute- vagy Alkalmazásátjáró-n keresztül, szükség lehet explicit módon konfigurálhatja a NextHopType értékre van állítva egy UDR 0.0.0.0/0 **Internet** , és társíthatja azt a AzureFirewallSubnet. Ha a szervezet megköveteli, hogy az Azure-tűzfal forgalom kényszerített bújtatás, forduljon a támogatási, hogy azt is engedélyezett az előfizetés, és biztosítják a szükséges internetkapcsolattal.
+>Ha azonban a konfiguráció kényszerített bújtatást igényel egy helyszíni hálózathoz, a Microsoft eseti alapon fogja támogatni azt. Forduljon az ügyfélszolgálathoz, és tekintse át az esetet. Ha elfogadják, az előfizetését és a szükséges tűzfal internetkapcsolatát is meg kell őrizni.
 
 >[!NOTE]
->Közvetlenül társviszonyban lévő virtuális hálózatok közötti adatforgalmat közvetlenül akkor is, ha egy udr-t az alapértelmezett átjáróként Azure tűzfal mutat. Ebben a forgatókönyvben a tűzfalon az alhálózat alhálózati forgalom küldésére, egy UDR a cél alhálózat hálózati előtagot mindkét alhálózat a explicit módon kell tartalmaznia.
+>A közvetlenül összekapcsolt virtuális hálózatok közötti forgalom közvetlenül akkor is átirányítva van, ha egy UDR az alapértelmezett átjáróként való Azure Firewallre mutat. Ha ebben a forgatókönyvben az alhálózatot alhálózati forgalomra szeretné küldeni a tűzfalra, a UDR mindkét alhálózaton explicit módon tartalmaznia kell a célként megadott alhálózat hálózati előtagot.
 
-Tekintse át a kapcsolódó Azure PowerShell-referenciáinak dokumentációja, lásd: [Azure PowerShell-referencia](https://docs.microsoft.com/powershell/module/az.network/new-azfirewall).
+A kapcsolódó Azure PowerShell dokumentációjának áttekintéséhez tekintse meg a [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-azfirewall)-referenciát.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="declare-the-variables"></a>Változók deklarálása
 
-Az alábbi példa az oktatóanyaghoz használt értékekkel deklarálja a változókat. Bizonyos esetekben szükség lehet néhány értéket lecseréli a saját működéséhez az előfizetésében. Ha szükséges, módosítsa a változókat, majd másolja és illessze be őket a PowerShell-konzolra.
+A következő példában deklaráljuk a változókat a jelen cikk értékei alapján. Bizonyos esetekben előfordulhat, hogy egyes értékeket le kell cserélnie a saját előfizetésében való működésre. Ha szükséges, módosítsa a változókat, majd másolja és illessze be őket a PowerShell-konzolra.
 
 ```azurepowershell
 $RG1 = "FW-Hybrid-Test"
@@ -116,68 +117,68 @@ $SNnameGW = "GatewaySubnet"
 ```
 
 
-## <a name="create-the-firewall-hub-virtual-network"></a>A tűzfal-központ virtuális hálózat létrehozása
+## <a name="create-the-firewall-hub-virtual-network"></a>A tűzfal hub virtuális hálózatának létrehozása
 
-Először hozzon létre ehhez az oktatóanyaghoz az erőforrásokat tartalmazó az erőforráscsoport:
+Először hozza létre azt az erőforráscsoportot, amely tartalmazza a cikk erőforrásait:
 
 ```azurepowershell
   New-AzResourceGroup -Name $RG1 -Location $Location1
   ```
 
-Adja meg az alhálózatok a virtuális hálózatban kell megfelelniük:
+Adja meg a virtuális hálózatban szerepeltetni kívánt alhálózatokat:
 
 ```azurepowershell
 $FWsub = New-AzVirtualNetworkSubnetConfig -Name $SNnameHub -AddressPrefix $SNHubPrefix
 $GWsub = New-AzVirtualNetworkSubnetConfig -Name $SNnameGW -AddressPrefix $SNGWHubPrefix
 ```
 
-A tűzfal központi virtuális hálózaton hozza létre:
+Most hozza létre a tűzfal hub virtuális hálózatot:
 
 ```azurepowershell
 $VNetHub = New-AzVirtualNetwork -Name $VNetnameHub -ResourceGroupName $RG1 `
 -Location $Location1 -AddressPrefix $VNetHubPrefix -Subnet $FWsub,$GWsub
 ```
 
-Kérjen egy nyilvános IP-cím kiosztását a virtuális hálózat számára létrehozni kívánt VPN-átjáróhoz. Látható, hogy az *AllocationMethod* értéke **Dynamic**. A használni kívánt IP-címet nem adhatja meg. Ennek kiosztása a VPN-átjáró számára dinamikusan történik. 
+Igényeljen egy nyilvános IP-címet a virtuális hálózatához létrehozandó VPN-átjáró számára. Látható, hogy az *AllocationMethod* értéke **Dynamic**. A használni kívánt IP-címet nem adhatja meg. Ennek kiosztása a VPN-átjáró számára dinamikusan történik.
 
   ```azurepowershell
   $gwpip1 = New-AzPublicIpAddress -Name $GWHubpipName -ResourceGroupName $RG1 `
   -Location $Location1 -AllocationMethod Dynamic
 ```
 
-## <a name="create-the-spoke-virtual-network"></a>A küllő virtuális hálózat létrehozása
+## <a name="create-the-spoke-virtual-network"></a>A küllős virtuális hálózat létrehozása
 
-Adja meg az alhálózatot kell foglalni a küllő virtuális hálózat:
+Adja meg a küllős virtuális hálózatban szerepeltetni kívánt alhálózatokat:
 
 ```azurepowershell
 $Spokesub = New-AzVirtualNetworkSubnetConfig -Name $SNnameSpoke -AddressPrefix $SNSpokePrefix
 $GWsubSpoke = New-AzVirtualNetworkSubnetConfig -Name $SNnameGW -AddressPrefix $SNSpokeGWPrefix
 ```
 
-A küllő virtuális hálózat létrehozása:
+A küllős virtuális hálózat létrehozása:
 
 ```azurepowershell
 $VNetSpoke = New-AzVirtualNetwork -Name $VnetNameSpoke -ResourceGroupName $RG1 `
 -Location $Location1 -AddressPrefix $VNetSpokePrefix -Subnet $Spokesub,$GWsubSpoke
 ```
 
-## <a name="create-the-on-premises-virtual-network"></a>A helyszíni virtuális hálózat létrehozása
+## <a name="create-the-on-premises-virtual-network"></a>Helyszíni virtuális hálózat létrehozása
 
-Adja meg az alhálózatok a virtuális hálózatban kell megfelelniük:
+Adja meg a virtuális hálózatban szerepeltetni kívánt alhálózatokat:
 
 ```azurepowershell
 $Onpremsub = New-AzVirtualNetworkSubnetConfig -Name $SNNameOnprem -AddressPrefix $SNOnpremPrefix
 $GWOnpremsub = New-AzVirtualNetworkSubnetConfig -Name $SNnameGW -AddressPrefix $SNGWOnpremPrefix
 ```
 
-Hozza létre a helyszíni virtuális hálózat:
+Most hozza létre a helyszíni virtuális hálózatot:
 
 ```azurepowershell
 $VNetOnprem = New-AzVirtualNetwork -Name $VNetnameOnprem -ResourceGroupName $RG1 `
 -Location $Location1 -AddressPrefix $VNetOnpremPrefix -Subnet $Onpremsub,$GWOnpremsub
 ```
 
-Kérjen egy nyilvános IP-cím kiosztását a virtuális hálózat számára létrehozni kívánt átjáróhoz. Látható, hogy az *AllocationMethod* értéke **Dynamic**. A használni kívánt IP-címet nem adhatja meg. Ennek kiosztása az átjáró számára dinamikusan történik. 
+Igényeljen egy nyilvános IP-címet a virtuális hálózat számára létrehozandó átjáró számára. Látható, hogy az *AllocationMethod* értéke **Dynamic**. A használni kívánt IP-címet nem adhatja meg. Ennek kiosztása az átjáró számára dinamikusan történik.
 
   ```azurepowershell
   $gwOnprempip = New-AzPublicIpAddress -Name $GWOnprempipName -ResourceGroupName $RG1 `
@@ -186,7 +187,7 @@ Kérjen egy nyilvános IP-cím kiosztását a virtuális hálózat számára lé
 
 ## <a name="configure-and-deploy-the-firewall"></a>A tűzfal konfigurálása és üzembe helyezése
 
-Most már a központi virtuális hálózaton üzembe helyezése a a tűzfalon.
+Most telepítse a tűzfalat a hub virtuális hálózatba.
 
 ```azurepowershell
 # Get a Public IP for the firewall
@@ -222,9 +223,9 @@ Set-AzFirewall -AzureFirewall $Azfw
 
 ## <a name="create-and-connect-the-vpn-gateways"></a>A VPN-átjárók létrehozása és csatlakoztatása
 
-A hub és a helyszíni virtuális hálózatok VPN-átjárókon keresztül vannak csatlakoztatva.
+A hub és a helyszíni virtuális hálózatok VPN-átjárón keresztül kapcsolódnak egymáshoz.
 
-### <a name="create-a-vpn-gateway-for-the-hub-virtual-network"></a>A központi virtuális hálózaton a VPN-átjáró létrehozása
+### <a name="create-a-vpn-gateway-for-the-hub-virtual-network"></a>VPN-átjáró létrehozása a hub virtuális hálózathoz
 
 Hozza létre a VPN-átjáró konfigurációját. A VPN-átjáró konfigurációja határozza meg az alhálózatot és a használandó nyilvános IP-címet.
 
@@ -235,7 +236,7 @@ Hozza létre a VPN-átjáró konfigurációját. A VPN-átjáró konfigurációj
   -Subnet $subnet1 -PublicIpAddress $gwpip1
   ```
 
-Most hozzon létre a VPN-átjáró számára a központi virtuális hálózaton. Hálózatok közötti konfigurációk paraméternek RouteBased értékűnek kell. A VPN-átjáró létrehozása akár 45 percet is igénybe vehet, az átjáró kiválasztott termékváltozatától függően.
+Most hozzon létre egy VPN-átjárót a hub virtuális hálózathoz. A hálózatról hálózati konfigurációkhoz Útvonalalapú VpnType szükséges. A VPN-átjáró létrehozása akár 45 percet is igénybe vehet, az átjáró kiválasztott termékváltozatától függően.
 
 ```azurepowershell
 New-AzVirtualNetworkGateway -Name $GWHubName -ResourceGroupName $RG1 `
@@ -243,7 +244,7 @@ New-AzVirtualNetworkGateway -Name $GWHubName -ResourceGroupName $RG1 `
 -VpnType RouteBased -GatewaySku basic
 ```
 
-### <a name="create-a-vpn-gateway-for-the-on-premises-virtual-network"></a>A helyszíni virtuális hálózat VPN-átjáró létrehozása
+### <a name="create-a-vpn-gateway-for-the-on-premises-virtual-network"></a>VPN-átjáró létrehozása a helyszíni virtuális hálózathoz
 
 Hozza létre a VPN-átjáró konfigurációját. A VPN-átjáró konfigurációja határozza meg az alhálózatot és a használandó nyilvános IP-címet.
 
@@ -254,7 +255,7 @@ $gwipconf2 = New-AzVirtualNetworkGatewayIpConfig -Name $GWIPconfNameOnprem `
   -Subnet $subnet2 -PublicIpAddress $gwOnprempip
   ```
 
-Most hozzon létre a VPN-átjáró a helyszíni virtuális hálózathoz. Hálózatok közötti konfigurációk paraméternek RouteBased értékűnek kell. A VPN-átjáró létrehozása akár 45 percet is igénybe vehet, az átjáró kiválasztott termékváltozatától függően.
+Most hozza létre a VPN-átjárót a helyszíni virtuális hálózathoz. A hálózatról hálózati konfigurációkhoz Útvonalalapú VpnType szükséges. A VPN-átjáró létrehozása akár 45 percet is igénybe vehet, az átjáró kiválasztott termékváltozatától függően.
 
 ```azurepowershell
 New-AzVirtualNetworkGateway -Name $GWOnpremName -ResourceGroupName $RG1 `
@@ -264,7 +265,7 @@ New-AzVirtualNetworkGateway -Name $GWOnpremName -ResourceGroupName $RG1 `
 
 ### <a name="create-the-vpn-connections"></a>A VPN-kapcsolatok létrehozása
 
-Most már létrehozhatja a hub és a helyszíni átjárók közötti VPN-kapcsolatok
+Most már létrehozhatja a VPN-kapcsolatokat a hub és a helyszíni átjárók között.
 
 #### <a name="get-the-vpn-gateways"></a>A VPN-átjárók lekérése
 
@@ -275,14 +276,14 @@ $vnetOnpremgw = Get-AzVirtualNetworkGateway -Name $GWOnpremName -ResourceGroupNa
 
 #### <a name="create-the-connections"></a>A kapcsolatok létrehozása
 
-Ebben a lépésben, a kapcsolat létrehozása a hub virtuális hálózatból a helyszíni virtuális hálózathoz. A példák egy megosztott kulcsra is hivatkoznak. A megosztott kulcshoz használhatja a saját értékeit. Fontos, hogy a megosztott kulcs azonos legyen mindkét kapcsolathoz. A kapcsolat létrehozása egy kis időt vehet igénybe.
+Ebben a lépésben létrehozza a kapcsolódást a hub virtuális hálózatról a helyszíni virtuális hálózatra. A példák egy megosztott kulcsra is hivatkoznak. A megosztott kulcshoz használhatja a saját értékeit. Fontos, hogy a megosztott kulcs azonos legyen mindkét kapcsolathoz. A kapcsolat létrehozása egy kis időt vehet igénybe.
 
 ```azurepowershell
 New-AzVirtualNetworkGatewayConnection -Name $ConnectionNameHub -ResourceGroupName $RG1 `
 -VirtualNetworkGateway1 $vnetHubgw -VirtualNetworkGateway2 $vnetOnpremgw -Location $Location1 `
 -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3'
 ```
-Hozza létre a helyszíni hub virtuális hálózati kapcsolat. Ebben a lépésben hasonlít az előzőre, kivéve a VNet-rendszert VNet-hub létrehozta a kapcsolatot. Ügyeljen arra, hogy a megosztott kulcsok megegyezzenek. A kapcsolat néhány perc alatt létrejön.
+Hozza létre a helyszíni és a hub közötti virtuális hálózati kapcsolatokat. Ez a lépés hasonló az előzőhöz, kivéve, ha a VNet-helyszíni és a VNet-hub közötti kapcsolatokat hozza létre. Ügyeljen arra, hogy a megosztott kulcsok megegyezzenek. A kapcsolat néhány perc alatt létrejön.
 
   ```azurepowershell
   New-AzVirtualNetworkGatewayConnection -Name $ConnectionNameOnprem -ResourceGroupName $RG1 `
@@ -292,7 +293,7 @@ Hozza létre a helyszíni hub virtuális hálózati kapcsolat. Ebben a lépésbe
 
 #### <a name="verify-the-connection"></a>A kapcsolat ellenőrzése
 
-A sikeres kapcsolat használatával ellenőrizheti a *Get-AzVirtualNetworkGatewayConnection* parancsmagot, vagy anélkül *-Debug*. A következő parancsmag-példával az értékeket a sajátjaival megegyezően konfigurálhatja. Ha a rendszer arra kéri, válassza az **A** lehetőséget az összes (**All**) futtatásához. A példában a *-Name* a tesztelni kívánt kapcsolat nevére utal.
+A sikeres kapcsolatok ellenőrzéséhez használja a *Get-AzVirtualNetworkGatewayConnection* parancsmagot a hibakereséshez vagy anélkül. A következő parancsmag-példával az értékeket a sajátjaival megegyezően konfigurálhatja. Ha a rendszer arra kéri, válassza az **A** lehetőséget az összes (**All**) futtatásához. A példában a *-Name* a tesztelni kívánt kapcsolat nevére utal.
 
 ```azurepowershell
 Get-AzVirtualNetworkGatewayConnection -Name $ConnectionNameHub -ResourceGroupName $RG1
@@ -306,9 +307,9 @@ A parancsmag futtatása után tekintse meg az értékeket. Az alábbi példában
 "egressBytesTransferred": 4142431
 ```
 
-## <a name="peer-the-hub-and-spoke-virtual-networks"></a>Az eseményközpont és a küllő virtuális hálózatok
+## <a name="peer-the-hub-and-spoke-virtual-networks"></a>A hub és a küllős virtuális hálózatok egyenrangúak
 
-Most már a hubot és a küllő virtuális hálózatok.
+A hub és a küllős virtuális hálózatok most már egyenrangúak.
 
 ```azurepowershell
 # Peer hub to spoke
@@ -384,11 +385,11 @@ Set-AzVirtualNetwork
 
 ## <a name="create-virtual-machines"></a>Virtuális gépek létrehozása
 
-Most már a küllő számítási feladatok és a helyszíni virtuális gépek létrehozásához, és helyezze el őket a megfelelő alhálózatokat.
+Most hozza létre a küllős számítási feladatokat és a helyszíni virtuális gépeket, és helyezze őket a megfelelő alhálózatokra.
 
 ### <a name="create-the-workload-virtual-machine"></a>A számítási feladatot futtató virtuális gép létrehozása
 
-A küllő virtuális hálózat nincs nyilvános IP-címmel, IIS-t futtató virtuális gép létrehozása, és lehetővé teszi, hogy a pingelésre.
+Hozzon létre egy virtuális gépet a küllős virtuális hálózaton, és futtassa a nyilvános IP-cím nélküli IIS-t, és engedélyezze a pingelést a alkalmazásban.
 Amikor a rendszer kéri, adjon meg egy felhasználónevet és jelszót a virtuális gép számára.
 
 ```azurepowershell
@@ -438,7 +439,7 @@ Set-AzVMExtension `
 
 ### <a name="create-the-on-premises-virtual-machine"></a>A helyszíni virtuális gép létrehozása
 
-Ez az egy egyszerű virtuális gépet, amely kapcsolódik a távoli asztal használatával a nyilvános IP-címet. Itt majd csatlakozik a helyi kiszolgálóhoz a tűzfalon keresztül. Amikor a rendszer kéri, adjon meg egy felhasználónevet és jelszót a virtuális gép számára.
+Ez egy egyszerű virtuális gép, amelyet a Távoli asztal a nyilvános IP-címhez való kapcsolódáshoz használ. Innentől kezdve a tűzfalon keresztül csatlakozhat a helyszíni kiszolgálóhoz. Amikor a rendszer kéri, adjon meg egy felhasználónevet és jelszót a virtuális gép számára.
 
 ```azurepowershell
 New-AzVm `
@@ -453,7 +454,7 @@ New-AzVm `
 
 ## <a name="test-the-firewall"></a>A tűzfal tesztelése
 
-Először lekérése, és jegyezze fel a magánhálózati IP-cím **VM-küllő-01** virtuális gépet.
+Először kérje le, majd jegyezze fel a **VM-küllős-01** virtuális gép magánhálózati IP-címét.
 
 ```azurepowershell
 $NIC.IpConfigurations.privateipaddress
@@ -463,7 +464,7 @@ Az Azure Portalról csatlakozzon a **VM-Onprem** virtuális géphez.
 <!---2. Open a Windows PowerShell command prompt on **VM-Onprem**, and ping the private IP for **VM-spoke-01**.
 
    You should get a reply.--->
-Nyisson meg egy webböngészőt a **VM-rendszert**, és keresse fel a http://\<VM-küllő-01 privát IP\>.
+Nyisson meg egy webböngészőt a **VM-helyszíni**, és keresse\<meg a http://VM-küllő-\>01 magánhálózati IP-címét.
 
 Az Internet Information Services alapértelmezett oldalának kell megjelennie.
 
@@ -471,11 +472,11 @@ A **VM-Onprem** virtuális gépről nyisson meg egy távoli asztalt a **VM-spoke
 
 A kapcsolatnak sikeresen létre kell jönnie, és be kell tudnia jelentkezni a választott falhasználónévvel és jelszóval.
 
-Ezzel ellenőrizte, hogy a tűzfalszabályok működnek-e:
+Most ellenőrizte, hogy a tűzfalszabályok működnek-e:
 
 <!---- You can ping the server on the spoke VNet.--->
-- Megkeresheti a küllő virtuális hálózat a webkiszolgálón.
-- A kiszolgáló a küllő virtuális hálózat RDP használatával csatlakozhat.
+- Böngészhet a webkiszolgálón a küllős virtuális hálózaton.
+- Az RDP használatával kapcsolódhat a kiszolgálóhoz a küllős virtuális hálózaton.
 
 Ezután módosítsa a tűzfal hálózati szabálygyűjteményének műveletét **Deny** (Megtagadás) értékre annak ellenőrzéséhez, hogy a tűzfalszabályok a vártnak megfelelően működnek-e. A következő szkript futtatásával módosíthatja a szabálygyűjtemény műveletét **Deny** (Megtagadás) értékre.
 
@@ -496,5 +497,4 @@ A tűzfalhoz kapcsolódó erőforrásokat a következő oktatóanyagban is haszn
 
 A következő lépésben monitorozhatja az Azure Firewall naplóit.
 
-> [!div class="nextstepaction"]
-> [Oktatóanyag: A figyelő Azure tűzfal-naplókon](./tutorial-diagnostics.md)
+[Oktatóanyag: Azure Firewall naplók figyelése](./tutorial-diagnostics.md)

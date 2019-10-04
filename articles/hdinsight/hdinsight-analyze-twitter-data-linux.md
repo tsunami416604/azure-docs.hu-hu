@@ -1,7 +1,6 @@
 ---
 title: Az Apache Hive – Azure HDInsight Twitter-adatok elemzése
 description: Megtudhatja, hogyan használható az Apache Hive- és Apache Hadoop HDInsight, nyers TWitter-adatok átalakítása a kereshető Hive-táblába.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 600b18997ced80a63b7e86f66bc447ddd7932687
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 8c7f6695880cfdb0a350edc37d61e771d03b92df
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58310744"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67543720"
 ---
 # <a name="analyze-twitter-data-using-apache-hive-and-apache-hadoop-on-hdinsight"></a>A HDInsight az Apache Hive- és Apache Hadoop használatával Twitter-adatok elemzése
 
@@ -22,8 +21,6 @@ Ismerje meg, hogyan használható [Apache Hive](https://hive.apache.org/) folyam
 
 > [!IMPORTANT]  
 > A jelen dokumentumban leírt lépések tesztelt, a HDInsight 3.6-ot.
->
-> A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="get-the-data"></a>Az adatok lekérése
 
@@ -325,7 +322,7 @@ Ezeket a parancsokat a fürt összes csomópontja által elérhető helyen táro
 Megtanulhatta, hogyan alakíthatja az strukturálatlan JSON-adatkészlet egy strukturált [Apache Hive](https://hive.apache.org/) tábla. A HDInsight Hive kapcsolatos további információkért tekintse meg a következő dokumentumokat:
 
 * [HDInsight – első lépések](hadoop/apache-hadoop-linux-tutorial-get-started.md)
-* [HDInsight használatával repülőjáratok késési adatainak elemzése](hdinsight-analyze-flight-delay-data-linux.md)
+* [HDInsight használatával repülőjáratok késési adatainak elemzése](/azure/hdinsight/interactive-query/interactive-query-tutorial-analyze-flight-data)
 
 [curl]: https://curl.haxx.se
 [curl-download]: https://curl.haxx.se/download.html

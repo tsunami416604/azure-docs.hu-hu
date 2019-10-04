@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: mbullwin
-ms.openlocfilehash: 0166622539a439a99aef7e476519881518baa0b0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: eecd2a50607fa42562a9ae6a7fb950a253655a45
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58106338"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65872711"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Forgatókönyv: SQL-exportálás a Stream Analytics használatával az Application Insights
 Ez a cikk bemutatja, hogyan helyezheti át a küldött telemetriai adatok [Azure Application Insights] [ start] be egy Azure SQL database használatával [folyamatos exportálás] [ export] és [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/). 
@@ -179,10 +179,10 @@ A név és a Rendszerállapotkulcsot az Application Insights-erőforrás beszerz
 
 > [!TIP]
 > A mintául szolgáló funkció segítségével ellenőrizze, hogy helyesen van beállítva a bemeneti útvonalat. Ha a sikertelen: Ellenőrizze, hogy nincs-e adatokat a kiválasztott minta időtartományban a storage-ban. A bemeneti definíciójának szerkesztése, és állítsa be a storage-fiók, az elérési út előtagja, és a dátum helyesen formátumban.
-> 
-> 
-> ## <a name="set-query"></a>Set-lekérdezés
-> Nyissa meg a lekérdezés szakaszban:
+
+ 
+## <a name="set-query"></a>Set-lekérdezés
+Nyissa meg a lekérdezés szakaszban:
 
 Cserélje le az alapértelmezett lekérdezés:
 

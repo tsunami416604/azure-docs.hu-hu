@@ -1,111 +1,117 @@
 ---
 title: Az Azure Cosmos-tárolók és adatbázisok kiépítése átviteli
-description: Ismerje meg, hogyan állíthatja be a kiosztott átviteli sebesség az Azure Cosmos-tárolók és adatbázisok.
+description: Megtudhatja, hogyan állíthatja be az Azure Cosmos-tárolók és-adatbázisok kiépített átviteli sebességét.
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/31/2019
+ms.date: 08/12/2019
 ms.author: rimman
-ms.openlocfilehash: ed3a171e60c078975de7003cdf599f0bac62c402
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 146cc9e89959035ca211a036be4730b59cae8c0b
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60004754"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68987396"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>Átviteli sebesség kiosztása tárolókra és adatbázisokra
 
 Egy Azure Cosmos database tárolók több felügyeleti egység. Egy adatbázis sémafüggetlen tárolók készlete áll. Az Azure Cosmos-tárolókat méretezhetőséget biztosít az átviteli sebesség és a tárolási egység. Egy tároló között egy Azure-régión belüli gépek vízszintesen particionált, és az Azure Cosmos-fiókhoz társított összes Azure-régió között oszlanak meg.
 
-Az Azure Cosmos DB átviteli sebességet két granularitással is kioszthatja:
+A Azure Cosmos DB segítségével két részletességgel kiépítheti az átviteli sebességet:
  
 - Azure Cosmos-tárolók
 - Az Azure Cosmos Database.
 
-## <a name="set-throughput-on-a-container"></a>Teljesítmény beállítása egy tárolón  
+## <a name="set-throughput-on-a-container"></a>Átviteli sebesség beállítása egy tárolón  
 
-A az Azure Cosmos-tárolókat a létesített átviteli sebesség kizárólag a tároló van fenntartva. A tároló kap a kiosztott átviteli sebesség folyamatosan. Egy tároló kiosztott átviteli felelősséggel szavatolják. Egy tároló átviteli konfigurálása kapcsolatban lásd: [üzembe helyezése egy Azure Cosmos-tároló átviteli sebességet](how-to-provision-container-throughput.md).
+Az Azure Cosmos-tárolón kiépített átviteli sebesség kizárólag az adott tároló számára van fenntartva. A tároló kap a kiosztott átviteli sebesség folyamatosan. Egy tároló kiosztott átviteli felelősséggel szavatolják. Az átviteli sebesség tárolón való konfigurálásával kapcsolatos további információkért lásd: [átviteli sebesség kiépítése egy Azure Cosmos](how-to-provision-container-throughput.md)-tárolón.
 
-A beállítás egy tároló kiosztott átviteli sebesség, a leggyakrabban használt lehetőség. Rugalmasan méretezheti egy tároló átviteli sebesség az átviteli bármekkora mennyiségű kiépítésével [kérelemegység (RU)](request-units.md). 
+A kiépített átviteli sebesség egy tárolón való beállítása a leggyakrabban használt lehetőség. A tárolók kapacitása rugalmasan méretezhető, ha a [kérelmek egységei (RUs)](request-units.md)használatával bármilyen mennyiségű átviteli sebességet kiépít. 
 
-Egy Azure Cosmos-tároló kiosztott átviteli sebesség egyenletesen legyen elosztva a tároló összes logikai partíciót. Az átviteli logikai partíciók esetén nem külön-külön adható meg. Egy vagy több tároló logikai partíciót egy fizikai partíciók által üzemeltetett, mert a fizikai partíciók kizárólag a tároló tartozik, és a tárolóban kiosztott átviteli támogatja. 
+Az Azure Cosmos-tárolón kiépített átviteli sebesség egységesen oszlik meg a tároló logikai partíciói között. A logikai partíciók átviteli sebességét nem lehet szelektív módon megadni. Mivel a tárolók egy vagy több logikai partíciója egy fizikai partíción fut, a fizikai partíciók kizárólag a tárolóhoz tartoznak, és támogatják a tárolón kiosztott átviteli sebességet. 
 
-Az egyes logikai partíciók futó számítási feladat több, mint az átviteli sebesség az adott logikai partíció lett lefoglalva használ fel, ha a műveletek beolvasása sebessége korlátozott. A sebességhatárolt történik, ha a teljes tárolóhoz a kiosztott átviteli sebesség növelése, vagy ismételje meg az operations. A particionálás további információkért lásd: [logikai partíció](partition-data.md).
+Ha a logikai partíción futó munkaterhelés több, mint az adott logikai partícióhoz lefoglalt átviteli sebesség, a műveletek lekérési díja korlátozott. Az arány korlátozása esetén növelheti a kiosztott átviteli sebességet a teljes tárolón, vagy megismételheti a műveleteket. A particionálás további információkért lásd: [logikai partíció](partition-data.md).
 
-Azt javasoljuk, hogy konfigurálása átviteli tároló részletességgel Ha azt szeretné, hogy a tároló garantált teljesítményt.
+Azt javasoljuk, hogy az átviteli sebességet a tároló részletessége szerint konfigurálja, ha a tárolóhoz garantált teljesítményt szeretne használni.
 
-A következő kép bemutatja, hogyan a fizikai partíciók futtat egy vagy több tároló logikai partíció:
+Az alábbi képen látható, hogy egy fizikai partíció egy vagy több tároló logikai partícióját tárolja:
 
-![Fizikai partíciónként](./media/set-throughput/resource-partition.png)
+![Fizikai partíció](./media/set-throughput/resource-partition.png)
 
-## <a name="set-throughput-on-a-database"></a>Egy adatbázis teljesítmény beállítása
+## <a name="set-throughput-on-a-database"></a>Átviteli sebesség beállítása egy adatbázison
 
-Amikor üzembe helyez egy Azure Cosmos database átviteli sebességet, átviteli közösen használja az összes tárolót az adatbázisban. Egy kivétel az, ha az adatbázis konkrét tárolók a kiosztott átviteli sebesség megadott. Az adatbázisszintű kiosztott átviteli sebesség a tárolók közötti megosztása hasonlatos számítógépfürtökön adatbázis üzemeltetéséhez. Adatbázison belüli összes tárolók a gépen elérhető erőforrásokon osztozik, mivel természetesen nem kap kiszámítható teljesítményt bármely adott tárolón. Ismerje meg, hogyan konfigurálhatja a kiosztott átviteli sebesség, adatbázis, lásd: [konfigurálása az Azure Cosmos-adatbázis a kiosztott átviteli sebesség](how-to-provision-database-throughput.md).
+Amikor egy Azure Cosmos-adatbázison kiépíti az átviteli sebességet, az átviteli sebesség az adatbázisban található összes tárolóban (megosztott adatbázis-tárolókban) van megosztva. Kivételt képez, ha meghatározott adatátviteli sebességet adott meg az adatbázis egy adott tárolóján. Az adatbázis-szinten kiosztott átviteli sebesség megosztása a tárolók között hasonló ahhoz, hogy egy adatbázist a gépek egy fürtjén lehessen üzemeltetni. Mivel az adatbázisban lévő összes tároló megosztja a gépen elérhető erőforrásokat, természetesen nem kap kiszámítható teljesítményt egyetlen adott tárolón sem. A kiépített átviteli sebesség adatbázison való konfigurálásával kapcsolatos további információkért lásd: kiépített [átviteli sebesség konfigurálása egy Azure Cosmos-adatbázisban](how-to-provision-database-throughput.md).
 
-Beállítás átviteli sebességet egy Azure Cosmos database garantálja, hogy megkapja a kiosztott átviteli sebesség az adatbázishoz tartozó folyamatosan. Mivel az adatbázison belül az összes tárolót a kiosztott átviteli sebesség, Azure Cosmos DB nem biztosít bármely kiszámítható teljesítményt garantálja az adatbázis egy adott tárolóhoz. Az átviteli sebességet egy adott tároló fogadhatják része az adott nyelvtől függ:
+Az átviteli sebesség Azure Cosmos-adatbázison való beállítása garantálja, hogy az adott adatbázishoz tartozó kiosztott átviteli sebességet minden alkalommal megkapja. Mivel az adatbázisban lévő összes tároló osztozik a kiépített átviteli sebességen, Azure Cosmos DB nem biztosít kiszámítható átviteli garanciát az adatbázis egy adott tárolójához. Az átviteli sebességet egy adott tároló fogadhatják része az adott nyelvtől függ:
 
 * A tárolók száma.
-* A kiválasztott partíciókulcsok különböző tárolókhoz.
+* A különböző tárolók partíciós kulcsai közül választhat.
 * A tárolók különböző logikai partíciók között a számítási feladatok eloszlása. 
 
-Azt javasoljuk, hogy konfigurálása átviteli sebesség, adatbázis, ha meg szeretné osztani az átviteli sebességet a több tárolón, de nem szeretné az átviteli sebesség dedikált bármely adott tárolóhoz. 
+Azt javasoljuk, hogy az átviteli sebességet egy adatbázison konfigurálja, ha az átviteli sebességet több tárolón szeretné megosztani, de nem kívánja az átviteli sebességet egyetlen adott tárolóhoz hozzárendelni. 
 
-A következő példák azt mutatják be, ahol azt rendelkezik előnyben részesített oszthatnak ki átviteli kapacitásokat az adatbázis szintjén:
+Az alábbi példák azt mutatják be, hogy hol érdemes az átviteli sebességet az adatbázis szintjén kiépíteni:
 
-* Az adatbázis kiosztott átviteli sebesség megosztása tárolók több hasznos egy több-bérlős alkalmazásban. Minden felhasználó egy különálló Azure Cosmos-tárolót is képviseli.
+* Több-bérlős alkalmazás esetében hasznos a kiosztott átviteli sebesség megosztása egy tárolón keresztül. Minden felhasználó egy különálló Azure Cosmos-tárolót is képviseli.
 
-* Az adatbázis kiosztott átviteli sebesség megosztása több tárolók akkor hasznos, ha telepít át, egy NoSQL-adatbázis, például MongoDB vagy Cassandra, a virtuális gépek vagy a helyszíni fizikai kiszolgálóknak az Azure Cosmos DB-fürt által futtatott. Úgy gondolja, hogy a kiosztott átviteli sebesség a konfigurált az Azure Cosmos Database logikai egyenértékűként, de több költséghatékony és rugalmas, a számítási kapacitás, a mongodb-hez vagy a Cassandra-fürt a.  
+* Egy adatbázis kiosztott átviteli sebessége több tárolóban való megosztása akkor hasznos, ha olyan NoSQL-adatbázist telepít át, mint például a MongoDB vagy a Cassandra, amely virtuális gépek vagy helyszíni fizikai kiszolgálók fürtön található, és Azure Cosmos DB. Gondoljon arra, hogy az Azure Cosmos-adatbázison konfigurált kiépített átviteli sebességet logikai egyenértékűként, de költséghatékonyan és rugalmasan, a MongoDB vagy a Cassandra-fürt számítási kapacitása szerint konfigurálja.  
 
-Az összes tárolót hozott létre egy adatbázist, a kiosztott átviteli sebesség belül kell létrehozni egy [partíciókulcs](partition-data.md). Megadott idő bármikor az adatbázison belüli egy tároló kiosztott átviteli legyen elosztva a tároló összes logikai partíciót. Tárolók, amelyek megosztása a kiosztott átviteli sebesség, az adatbázis konfigurálva van, ha külön-külön nem alkalmazhat az átviteli sebességet egy adott tároló és a egy logikai partíciót. 
+A kiosztott átviteli sebességgel rendelkező adatbázisban létrehozott összes tárolót [partíciós kulccsal](partition-data.md)kell létrehozni. Megadott idő bármikor az adatbázison belüli egy tároló kiosztott átviteli legyen elosztva a tároló összes logikai partíciót. Ha olyan tárolókkal rendelkezik, amelyek osztoznak egy adatbázison konfigurált kiépített átviteli sebességen, nem alkalmazhat szelektíven egy adott tárolóra vagy logikai partícióra az átviteli sebességet. 
 
-A logikai partíció terhelése nagyobb átviteli sebesség az adott logikai partíció számára lefoglalt használ fel, ha a műveletekre sebessége korlátozott. A sebességhatárolt akkor fordul elő, amikor növeléséhez a teljes adatbázis, vagy ismételje meg a műveleteket. A particionálás további információkért lásd: [logikai partíció](partition-data.md).
+Ha egy logikai partíció munkaterhelése több, mint az adott logikai partícióhoz lefoglalt átviteli sebesség, a műveletek díja korlátozott. A ráta korlátozása esetén növelheti a teljes adatbázis átviteli sebességét, vagy próbálja megismételni a műveletet. A particionálás további információkért lásd: [logikai partíció](partition-data.md).
 
-Több logikai partíció, amely különböző tárolók, amelyek megosztása a adatbázishoz létesített átviteli sebesség tartozik egy fizikai partíció lehet üzemeltetni. Amíg a tároló egy logikai partíció mindig hatókörét a fizikai partíciókon belül *"L"* logikai partíció között *"C"* , amelyek a kiosztott átviteli sebesség az adatbázis-tárolók hozzárendelve, és lévő üzemeltetett *"R"* fizikai partíciókra. 
+Az adatbázison keresztül kiépített átviteli sebesség megosztható az adott adatbázisban lévő tárolók között. Legfeljebb 25 tároló osztható meg az adatbázison kiosztott átviteli sebességgel. A 25 tárolón kívül minden új, az adatbázisban létrehozott tároló megoszthatja az adatbázis átviteli sebességének egy részét, és az adatbázisban már elérhető gyűjtemények is megoszthatók. A megosztható átviteli sebesség az adatbázisban kiépített tárolók számától függ. 
 
-A következő kép bemutatja, hogyan fizikai partíciók egy vagy több logikai partíciót, egy adatbázison belül különböző tárolók tartozó üzemeltetésére is képes:
+Ha a számítási feladatok egy adatbázisban lévő összes gyűjtemény törlését és újbóli létrehozását vonják maguk után, akkor azt javasoljuk, hogy a gyűjtemény létrehozása előtt dobja el az üres adatbázist, és hozzon létre egy új adatbázist.
 
-![Fizikai partíciónként](./media/set-throughput/resource-partition2.png)
+Az alábbi képen látható, hogyan tárolhat egy fizikai partíció egy vagy több olyan logikai partíciót, amely különböző tárolókban található egy adatbázison belül:
 
-## <a name="set-throughput-on-a-database-and-a-container"></a>Az adatbázis és a egy tárolót a teljesítmény beállítása
+![Fizikai partíció](./media/set-throughput/resource-partition2.png)
 
-A két modell kombinálhatók. Az adatbázis és a tároló üzembe helyezési átviteli használata engedélyezett. Az alábbi példa bemutatja, hogyan helyezhet üzembe egy Azure Cosmos database és a egy tárolót az átviteli sebesség:
+## <a name="set-throughput-on-a-database-and-a-container"></a>Átviteli sebesség beállítása egy adatbázison és egy tárolón
 
-* Létrehozhat egy Azure Cosmos database nevű *Z* az átviteli sebesség *"K"* RUs. 
-* Ezután hozzon létre öt tárolók nevű *A*, *B*, *C*, *D*, és *E* az adatbázison belül.
-* Explicit módon konfigurálható *"P"* nevű tárolót a kiosztott átviteli sebesség a RUs *B*.
-* A *"K"* fenntartott átviteli sebesség közösen használja a négy tárolók *A*, *C*, *D*, és *E*. Az elérhető átviteli sebesség pontos mennyisége *A*, *C*, *D*, vagy *E* változik. Nincsenek nem SLA-k minden egyes tároló átviteli sebességet.
-* A tároló nevű *B* első garantáltan a *"P"* fenntartott átviteli sebesség folyamatosan. SLA-k alapját.
+A két modellt kombinálhatja. Az adatátviteli sebesség az adatbázison és a tárolón is engedélyezett. Az alábbi példa bemutatja, hogyan helyezhet üzembe egy Azure Cosmos database és a egy tárolót az átviteli sebesség:
 
-## <a name="update-throughput-on-a-database-or-a-container"></a>Átviteli sebességet egy adatbázist vagy egy tároló frissítése
+* Létrehozhat egy *Z* nevű Azure Cosmos-adatbázist a *"K"* -mel kiépített átviteli sebességgel. 
+* Ezután hozzon létre öt tárolót a-adatbázison belül a, *B*, *C*, *D*és *E* névvel. A B tároló létrehozásakor ügyeljen arra, hogy engedélyezze a **tároló beállítás dedikált átviteli sebességét** , és explicit módon konfigurálja a *"P"* kiépített átviteli sebességét ezen a tárolón. Vegye figyelembe, hogy a megosztott és a dedikált átviteli sebességet csak az adatbázis és a tároló létrehozásakor lehet konfigurálni. 
 
-Miután létrehozott egy Azure Cosmos-tároló vagy egy adatbázist, akkor is frissítheti a kiosztott átviteli sebesség. Nincs korlátozva az a maximális kiosztott átviteli sebesség, amely az adatbázis vagy a tároló lehet konfigurálni. A minimális kiosztott átviteli sebesség a következő tényezőktől függ: 
+   ![Az átviteli sebesség beállítása a tároló szintjén](./media/set-throughput/coll-level-throughput.png)
 
-* Minden eddiginél a tárolóban tárolt adatok maximális mérete
-* A maximális átviteli sebesség, a tároló minden eddiginél megadó
-* Az Azure Cosmos-tárolók, így minden eddiginél létrehozott megosztott adattovábbítási kapacitással rendelkező adatbázis maximális számát. 
+* A *"K"* RUs-átviteli sebesség az *a*, *C*, *D*és *E*négy tárolóban van megosztva. Az *a*, a *C*, a *D*vagy az *E* által elérhető átviteli sebesség pontos mennyisége változó. Az egyes tárolók átviteli sebességéhez nem tartoznak SLA-k.
+* A *B* nevű tároló garantált, hogy minden alkalommal megkapja a *"P"* RUs átviteli sebességét. Ez a SLA-k által támogatott.
 
-Az SDK-k használatával programozott módon lekérni a tárolók és a egy adatbázist a minimális átviteli sebesség, vagy megtekintheti az értékét az Azure Portalon. Ha a .NET SDK használatával a [DocumentClient.ReplaceOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.replaceofferasync?view=azure-dotnet) módszer lehetővé teszi a kiosztott átviteli sebesség értékét skálázását. A Java SDK használata esetén a [RequestOptions.setOfferThroughput](sql-api-java-samples.md#offer-examples) módszer lehetővé teszi a kiosztott átviteli sebesség értékét skálázását. 
+> [!NOTE]
+> A kiosztott átviteli sebességgel rendelkező tárolók nem alakíthatók át megosztott adatbázis-tárolóba. A megosztott adatbázis-tárolók nem alakíthatók át dedikált átviteli sebességgel.
 
-Ha a .NET SDK használatával a [DocumentClient.ReadOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.readofferasync?view=azure-dotnet) módszer lehetővé teszi, hogy a minimális átviteli sebesség, tárolók és a egy adatbázis beolvasása. 
+## <a name="update-throughput-on-a-database-or-a-container"></a>Adatbázis vagy tároló adatforgalmának frissítése
 
-A kiosztott átviteli sebesség, tárolók és a egy adatbázis bármikor skálázhatja. 
+Miután létrehozta az Azure Cosmos-tárolót vagy egy adatbázist, frissítheti a kiosztott átviteli sebességet. Az adatbázison vagy a tárolón konfigurálható maximális kiépített átviteli sebességnek nincs korlátja. A minimálisan kiosztott átviteli sebesség a következő tényezőktől függ: 
+
+* A tárolóban korábban tárolt adatmennyiség maximális mérete
+* A tárolón korábban kiépített maximális átviteli sebesség
+* A megosztott átviteli sebességgel rendelkező adatbázisban korábban létrehozott Azure Cosmos-tárolók maximális száma. 
+
+Egy tároló vagy egy adatbázis minimális átviteli sebességét programozott módon lekérheti az SDK-k használatával, vagy megtekintheti a Azure Portal értékét. A .NET SDK használatakor a [DocumentClient. ReplaceOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.replaceofferasync?view=azure-dotnet) metódus lehetővé teszi a kiépített átviteli sebesség méretezését. A Java SDK használatakor a [RequestOptions. setOfferThroughput](sql-api-java-samples.md#offer-examples) metódus lehetővé teszi a kiépített átviteli sebesség méretezését. 
+
+A .NET SDK használatakor a [DocumentClient. ReadOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.readofferasync?view=azure-dotnet) metódus lehetővé teszi egy tároló vagy adatbázis minimális átviteli sebességének lekérését. 
+
+A tárolók vagy adatbázisok kiépített átviteli sebességét bármikor méretezheti. Ha méretezési műveletet hajt végre az átviteli sebesség növelése érdekében, az hosszabb időt vehet igénybe, mivel a rendszerfeladatok kiépítik a szükséges erőforrásokat. A skálázási művelet állapotát Azure Portal vagy programozott módon is megtekintheti az SDK-k használatával. A .net SDK használatakor a skálázási művelet állapotát a `DocumentClient.ReadOfferAsync` metódus segítségével érheti el.
 
 ## <a name="comparison-of-models"></a>Modellek összehasonlítása
 
 |**A paraméter**  |**Átviteli sebesség kiosztott részéért, adatbázis**  |**Egy tároló kiosztott átviteli sebesség**|
 |---------|---------|---------|
-|Minimális kérelemegység |400-as (után az első négy tárolók, a tárolók további használatához az minimum 100 kérelemegység / másodperc.) |400|
+|Minimális kérelemegység |400 (az első négy tároló után minden további tárolóhoz legalább 100 RUs/másodperc szükséges.) |400|
 |Minimális RUs tárolónként|100|400|
-|1 GB-os tárhelyet felhasználásához szükséges minimális kérelemegység|40|40|
 |Maximális kérelemegység|Korlátlan, az adatbázison.|Korlátlan, a tárolón.|
-|Kérelemegység hozzárendelt vagy elérhető egy adott tárolóba|Nincs garancia. Egy adott tárolóhoz rendelt RUs tulajdonságainak függenek. Tulajdonságok lehet a kiválasztott partíciókulcsok a tárolók, amelyek az átviteli sebességet, a számítási feladatok és tárolók száma eloszlása. |A tároló konfigurált fenntartott egységek kizárólag a tároló számára vannak fenntartva.|
-|Egy tároló maximális tárterülete|Korlátlan számú.|Korlátlan számú.|
+|Egy adott tárolóhoz rendelt vagy elérhető RUs|Nincs garancia. Az adott tárolóhoz rendelt RUs a tulajdonságoktól függ. A tulajdonságok választhatják a tárolók partíciós kulcsait, amelyek osztoznak az átviteli sebességen, a munkaterhelés eloszlásán és a tárolók számánál. |A tároló konfigurált fenntartott egységek kizárólag a tároló számára vannak fenntartva.|
+|Egy tároló maximális tárterülete|Korlátlan.|Korlátlan.|
 |Egy adott tároló logikai partíció egységenkénti maximális adatátviteli sebesség|10 ezer kérelemegység|10 ezer kérelemegység|
 |Maximális tárterület (adatok + index) egy adott tároló logikai partíciónként|10 GB|10 GB|
 
 ## <a name="next-steps"></a>További lépések
 
-* Tudjon meg többet [logikai partíció](partition-data.md).
-* Ismerje meg, hogyan [üzembe helyezése egy Azure Cosmos-tároló átviteli sebességet](how-to-provision-container-throughput.md).
-* Ismerje meg, hogyan [üzembe helyezése egy Azure Cosmos database átviteli sebességet](how-to-provision-database-throughput.md).
+* További információ a [logikai partíciókhoz](partition-data.md).
+* Útmutató az [átviteli sebesség Azure Cosmos](how-to-provision-container-throughput.md)-tárolón való kiépítéséhez.
+* Útmutató az [átviteli sebesség Azure Cosmos](how-to-provision-database-throughput.md)-adatbázison való kiépítéséhez.
 

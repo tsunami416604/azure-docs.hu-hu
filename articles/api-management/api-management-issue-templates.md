@@ -1,6 +1,6 @@
 ---
-title: Adja ki a sablonokat az Azure API Management |} A Microsoft Docs
-description: Ismerje meg, hogyan szabhatja testre a probléma az Azure API Management a fejlesztői portál oldalainak tartalmát.
+title: Sablonok kiadása az Azure API Managementban | Microsoft Docs
+description: Megtudhatja, hogyan szabhatja testre a probléma oldalain lévő tartalmat a fejlesztői portálon az Azure API Managementban.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -10,33 +10,32 @@ ms.assetid: 47da4bb2-426e-4e53-8fa7-214ee2e3ab37
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: c70e88a572bc261ad9d25f9a742b1987d0c19b44
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 93681062b325756f720f6fe8280ee6b874fea284
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540839"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072268"
 ---
-# <a name="issue-templates-in-azure-api-management"></a>A probléma sablonok az Azure API Management szolgáltatásban
-Az Azure API Management lehetővé teszi a fejlesztői portál oldalainak konfigurálása a tartalom-sablonok használatával tartalmának testreszabása. Használatával [DotLiquid](http://dotliquidmarkup.org/) szintaxist és a szerkesztő szerkesztőprogramban, például [DotLiquid tervezők számára](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), és a egy megadott készlete honosított [karakterlánc-erőforrások](api-management-template-resources.md#strings), [szimbóluma erőforrások](api-management-template-resources.md#glyphs), és [vezérlők lapon](api-management-page-controls.md), konfigurálhatja a lapok tartalmát, igény szerint ezek a sablonok használatával nagy rugalmasságot biztosít.  
+# <a name="issue-templates-in-azure-api-management"></a>Sablonok kiadása az Azure API Management
+Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmának testreszabását a tartalmukat konfiguráló sablonok használatával. A [DotLiquid](http://dotliquidmarkup.org/) szintaxis és az Ön által választott szerkesztő használatával, például a [tervezők DotLiquid](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), valamint a honosított [karakterlánc-erőforrások](api-management-template-resources.md#strings), a karakterjel- [erőforrások](api-management-template-resources.md#glyphs)és a [lapok vezérlőelemek](api-management-page-controls.md)széles választékával nagy rugalmasságot biztosíthat a konfiguráláshoz a lapok tartalmának megjelenítése, ahogy az a sablonok használatával illik.  
   
- Ebben a szakaszban a sablonok lehetővé teszik a probléma a fejlesztői portál oldalainak tartalmát testreszabása.  
+ Az ebben a szakaszban található sablonok segítségével testre szabhatja a fejlesztői portálon a probléma oldalain található tartalmakat.  
   
--   [A probléma listája](#IssueList)  
+-   [Problémák listája](#IssueList)  
   
 > [!NOTE]
->  Alapértelmezett mintasablonokat a következő dokumentációban szerepelnek, de módosulhatnak, folyamatos fejlesztései miatt. A fejlesztői portálon az élő alapértelmezett sablont a kívánt egyéni sablonokat lépve tekintheti meg. Sablonok használatának ismertetését lásd: [testreszabása sablonok használatával, az API Management fejlesztői portálon](api-management-developer-portal-templates.md).  
+>  A minta alapértelmezett sablonjai a következő dokumentációban szerepelnek, de a folyamatos fejlődés miatt változhatnak. Az élő alapértelmezett sablonokat a fejlesztői portálon tekintheti meg, ha a kívánt egyéni sablonokat navigálja. További információ a sablonok használatáról: [API Management fejlesztői portál testreszabása sablonok használatával](api-management-developer-portal-templates.md).  
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="IssueList"></a> A probléma listája  
- A **problémák listája** a sablon lehetővé teszi, hogy a szervezet a probléma lista lap a fejlesztői portál testreszabása.  
+##  <a name="IssueList"></a>Problémák listája  
+ A **probléma lista** sablon lehetővé teszi a fejlesztői portálon a probléma-lista oldal törzsének testreszabását.  
   
- ![Adja ki a fejlesztői portál lista](./media/api-management-issue-templates/APIM-Issue-List-Developer-Portal.png "APIM probléma lista fejlesztői portálon")  
+ A ![fejlesztői portálon a probléma listázása](./media/api-management-issue-templates/APIM-Issue-List-Developer-Portal.png "APIM-probléma listázása fejlesztői portál")  
   
 ### <a name="default-template"></a>Alapértelmezett sablon  
   
@@ -90,8 +89,8 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalainak konfig
 </div>
 ```
   
-### <a name="controls"></a>Vezérlők  
- A `Issue list` sablon előfordulhat, hogy használja a következő [vezérlők lapon](api-management-page-controls.md).  
+### <a name="controls"></a>Szabályzók  
+ A `Issue list` sablon a következő [lap vezérlőit](api-management-page-controls.md)használhatja.  
   
 -   [paging-control](api-management-page-controls.md#paging-control)  
   
@@ -99,13 +98,13 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalainak konfig
   
 |Tulajdonság|Típus|Leírás|  
 |--------------|----------|-----------------|  
-|`Issues`|A gyűjtemény [probléma](api-management-template-data-model-reference.md#Issue) entitásokat.|A probléma, az aktuális felhasználó számára látható.|  
-|`Paging`|[Lapozás](api-management-template-data-model-reference.md#Paging) entitás.|A lapozófájl információ az alkalmazások a gyűjteményhez.|  
-|`IsAuthenticated`|logikai|Hogy az aktuális felhasználó van bejelentkezve a fejlesztői portálra.|  
-|`CanReportIssues`|logikai|Az aktuális felhasználó rendelkezik-e be a problémát az engedélyeket.|  
-|`Search`|sztring|Ez a tulajdonság elavult, és nem használható.|  
+|`Issues`|[Kiállító](api-management-template-data-model-reference.md#Issue) entitások gyűjteménye.|Az aktuális felhasználó számára látható problémák.|  
+|`Paging`|[Lapozófájl](api-management-template-data-model-reference.md#Paging) entitása.|Az alkalmazások gyűjteményének lapozási adatai.|  
+|`IsAuthenticated`|boolean|Azt jelzi, hogy az aktuális felhasználó bejelentkezett-e a fejlesztői portálra.|  
+|`CanReportIssues`|boolean|Azt határozza meg, hogy az aktuális felhasználónak van-e engedélye a probléma fájljának megadására.|  
+|`Search`|Karakterlánc|Ez a tulajdonság elavult, és nem használható.|  
   
-### <a name="sample-template-data"></a>Mintaadatok sablon  
+### <a name="sample-template-data"></a>Minta sablonjának adatterülete  
   
 ```json
 {
@@ -137,4 +136,4 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalainak konfig
 ```
 
 ## <a name="next-steps"></a>További lépések
-Sablonok használatának ismertetését lásd: [testreszabása sablonok használatával, az API Management fejlesztői portálon](api-management-developer-portal-templates.md).
+További információ a sablonok használatáról: [API Management fejlesztői portál testreszabása sablonok használatával](api-management-developer-portal-templates.md).

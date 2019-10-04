@@ -3,8 +3,8 @@ title: Beavatkozás nélküli telepítés az Azure AD-alkalmazásproxy-összekö
 description: A cikk ismerteti, hogyan hajtsa végre az Azure AD alkalmazásproxy-összekötő a helyszíni alkalmazások biztonságos távoli hozzáférést biztosítanak a felügyelet nélküli telepítéséhez.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.author: celested
+ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb193119186c2cf9e758f8c74f99f18c5fb389b8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 0eb3e52dfd02bd7948f1b5ffd908ac1255118008
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58792518"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65782925"
 ---
 # <a name="create-an-unattended-installation-script-for-the-azure-ad-application-proxy-connector"></a>Hozzon létre egy felügyelet nélküli telepítési parancsfájlt, az Azure AD-alkalmazásproxy-összekötő
 
@@ -53,7 +53,7 @@ Az összekötő regisztrálására használható két módszer van:
 * A létrehozott kapcsolat nélküli tokennel összekötő regisztrálása
 
 ### <a name="register-the-connector-using-a-windows-powershell-credential-object"></a>A Windows PowerShell hitelesítő objektumot használ az összekötő regisztrálása
-1. Hozzon létre egy Windows PowerShell hitelesítő objektumot `$cred` , amely tartalmazza a megfelelő rendszergazdai felhasználónév és jelszó a címtár számára. Futtassa a következő parancsot, és cserélje le *\<felhasználónév\>* és  *\<jelszó\>*:
+1. Hozzon létre egy Windows PowerShell hitelesítő objektumot `$cred` , amely tartalmazza a megfelelő rendszergazdai felhasználónév és jelszó a címtár számára. Futtassa a következő parancsot, és cserélje le *\<felhasználónév\>* és  *\<jelszó\>* :
    
         $User = "<username>"
         $PlainPassword = '<password>'

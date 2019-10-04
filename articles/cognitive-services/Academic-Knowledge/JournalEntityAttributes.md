@@ -1,7 +1,7 @@
 ---
-title: Napló tevékenységentitás-attribútumok – Academic Knowledge API
+title: Napló entitás attribútumai – Academic Knowledge API
 titlesuffix: Azure Cognitive Services
-description: Ismerje meg, hogy a napló entitás az Academic Knowledge API, a Cognitive Services használata az attribútumokat.
+description: Megtudhatja, hogy mely attribútumok használhatók a Journal entitással a Cognitive Services Academic Knowledge APIban.
 services: cognitive-services
 author: alch-msft
 manager: nitinme
@@ -10,21 +10,22 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: ffb159dc684b4b6663dcb966706d4745ab88a403
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ROBOTS: NOINDEX
+ms.openlocfilehash: 93868bb014809693e7614e74bde7db864de95c04
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55872577"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704963"
 ---
-# <a name="journal-entity"></a>Napló entitás
+# <a name="journal-entity"></a>Napló entitása
 
-<sub> * A következő attribútumok napló entitás jellemzőek. (Folyó évi = "2") </sub>
+<sub>* A következő attribútumok a Journal entitásra vonatkoznak. (Ty = "2")</sub>
 
-Name (Név)    |Leírás                            |Typo       | Műveletek
+Name (Név)    |Leírás                            |Type       | Műveletek
 ------- | ------------------------------------- | --------- | ----------------------------
-Azonosító      |Entitásazonosító                              |Int64      |Egyenlő
-DJN     |Napló normalizált neve                |String     |nincs
-JN      |Napló megjelenített neve                   |String     |Egyenlő
-Másolat      |Napló idézetet teljes száma           |Int32      |nincs  
-ECC     |Napló becsült idézetet teljes száma |Int32      |nincs
+Id      |Entitásazonosító                              |Int64      |Egyenlő
+DJN     |Napló normalizált neve                |Karakterlánc     |nincs
+JN      |Napló megjelenítendő neve                   |Sztring     |Egyenlő
+Másolat      |Naplók teljes idézetek száma           |Int32      |nincs  
+ECC     |Napló teljes becsült idézetek száma |Int32      |nincs

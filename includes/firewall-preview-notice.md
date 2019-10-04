@@ -9,11 +9,11 @@ ms.date: 7/11/2018
 ms.author: victorh
 ms.custom: include file
 ms.openlocfilehash: ea1d331eefe07980547ffae18fbbca920475ec06
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500848"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179651"
 ---
 > [!IMPORTANT]
 > Az Azure Firewall jelenleg felügyelt nyilvános előzetes verzióként érhető el. Explicit módon engedélyeznie kell a `Register-AzProviderFeature` PowerShell-paranccsal.

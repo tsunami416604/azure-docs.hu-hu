@@ -5,25 +5,27 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 03/21/2019
+ms.date: 07/25/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 026717dff2b6883eb643497dec91226e4afe8133
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
-ms.translationtype: HT
+ms.openlocfilehash: c2b409f0eefe5efa389432cbb007cc08e0c6ae1e
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60150217"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71078253"
 ---
-Az Azure beépített RBAC-szerepkörök biztosít az Azure AD-vel blob és üzenetsor-adatokhoz való hozzáférés engedélyezése és az OAuth révén:
+Az Azure a következő beépített RBAC-szerepköröket biztosítja a blob-és üzenetsor-információhoz való hozzáférés engedélyezéséhez az Azure AD és a OAuth használatával:
 
-- [Tárolási Blob adatok tulajdonosa](../articles/role-based-access-control/built-in-roles.md#storage-blob-data-owner): Állítsa be a tulajdonosi és a POSIX hozzáférés-vezérlés kezelése az Azure Data Lake Storage Gen2 (előzetes verzió). További információkért lásd: [hozzáférés-vezérlés az Azure Data Lake Storage Gen2](../articles/storage/blobs/data-lake-storage-access-control.md).
-- [Storage-Blobadatok Közreműködője](../articles/role-based-access-control/built-in-roles.md#storage-blob-data-contributor): A Blob storage-erőforrások olvasási, írási és törlési engedélyek használatával.
-- [Storage-Blobadatok olvasója](../articles/role-based-access-control/built-in-roles.md#storage-blob-data-reader): Használja a Blob storage-erőforrások csak olvasható engedélyek.
-- [Storage-Üzenetsorbeli adatok Közreműködője](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-contributor): Olvasási, írási és törlési engedélyt az Azure-üzenetsorok használatával.
-- [Storage-Üzenetsorbeli adatok olvasója](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-reader): Csak olvasási engedélyeket az Azure-üzenetsorok használatával.
-- [Tárolási üzenetsor adatok üzenetet feldolgozó](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-message-processor): Használja a grant peek, lekérése és törlési jogosultsággal az Azure Storage-üzenetsorok üzenetek.
-- [Tárolási üzenetsor adatok üzenetet küldő](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-message-sender): Engedélyeket adhat hozzá engedélyeket az Azure Storage-üzenetsorok üzenetek.
+- [Storage blob-adattulajdonos](../articles/role-based-access-control/built-in-roles.md#storage-blob-data-owner): A használatával megadhatja a tulajdonosi és a POSIX hozzáférés-vezérlést a Azure Data Lake Storage Gen2 számára. További információ: [hozzáférés-vezérlés Azure Data Lake Storage Gen2ban](../articles/storage/blobs/data-lake-storage-access-control.md).
+- [Storage-blob adatközreműködői](../articles/role-based-access-control/built-in-roles.md#storage-blob-data-contributor): A használatával olvasási/írási/törlési engedélyeket adhat a blob Storage-erőforrásokhoz.
+- [Storage blob-Adatolvasó](../articles/role-based-access-control/built-in-roles.md#storage-blob-data-reader): A használatával írásvédett engedélyeket adhat a blob Storage-erőforrásokhoz.
+- [Tárolási várólista adatközreműködői](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-contributor): Az használatával olvasási/írási/törlési engedélyeket adhat az Azure-várólistáknak.
+- [Tárolási várólista Adatolvasója](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-reader): A használatával írásvédett engedélyeket adhat az Azure-várólistáknak.
+- [Tárolási üzenetsor adatüzenet-processzora](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-message-processor): A használatával megadhatja a betekintési, lekérési és törlési engedélyeket az Azure Storage-várólisták üzeneteihez.
+- [Tárolási várólista Adatüzenetének küldője](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-message-sender): A használatával adhat hozzá engedélyeket az üzenetekhez az Azure Storage-várólistákban.
 
 > [!NOTE]
-> Ne feledje, hogy az RBAC szerepkör-hozzárendelések propagálása akár öt percet is igénybe vehet.
+> A RBAC szerepkör-hozzárendelések akár öt percet is igénybe vehetnek.
+>
+> Csak az adathozzáféréshez explicit módon definiált szerepköröknek kell megadniuk a rendszerbiztonsági tag számára a blob-vagy üzenetsor-adat elérését. A **tulajdonos**, **közreműködő**és a **Storage-fiók közreműködő** szerepkörei lehetővé teszik a rendszerbiztonsági tag számára a Storage-fiókok kezelését, de nem biztosítanak hozzáférést az adott fiókon belüli blob-vagy üzenetsor-információhoz.

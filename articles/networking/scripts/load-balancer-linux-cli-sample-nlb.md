@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: kumud
 ms.openlocfilehash: 916e9e1f7287757f19e93ecf7b8cc38f556e2dc8
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700893"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60564646"
 ---
 # <a name="load-balance-traffic-to-vms-for-high-availability"></a>Bejövő forgalmának terheléselosztása virtuális gépek magas rendelkezésre állás érdekében
 

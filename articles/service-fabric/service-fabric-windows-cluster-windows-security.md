@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/24/2017
 ms.author: dekapur
-ms.openlocfilehash: 394ba3b3b8189bbe96137e920745f7b8cdd1cd95
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: ccc726f54821d316c745f6af9c63d7ed13986d79
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58666674"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65761928"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-windows-security"></a>Különálló fürt védelme a Windows a Windows rendszerbiztonság használatával
 Service Fabric-fürtön való illetéktelen hozzáférés megakadályozása, biztosítania kell a fürtöt. Biztonsági különösen fontos, amikor a fürt futtatása termelési számítási feladatokhoz. Ez a cikk ismerteti a csomópontok közötti és ügyfél-csomópont biztonság konfigurálása a Windows rendszerbiztonság használatával a *ClusterConfig.JSON* fájlt.  A folyamat megfelelő konfigurálás biztonsági lépésére [a Windows rendszert futtató önálló fürt létrehozása](service-fabric-cluster-creation-for-windows-server.md). Hogyan használja a Service Fabric a Windows biztonsági kapcsolatos további információkért lásd: [fürtök – biztonsági helyzetek](service-fabric-cluster-security.md).
@@ -61,7 +61,7 @@ A minta *ClusterConfig.gMSA.Windows.MultiMachine.JSON* együtt letöltött konfi
 | IsAdmin |Adja meg, hogy a tartományi felhasználó rendszergazda ügyfél-hozzáférési és hamis értéket, az ügyfél hozzáférésének felhasználó rendelkezik-e (igaz) értékre. |
 
 > [!NOTE]
-> ClustergMSAIdentity érték nem szerepelhet a tartomány nevét, és csak a csoport felügyelt szolgáltatásfiók neve. I.E. "mysfgmsa" helyességét, és mindkét "tartomany / / mysfgmsa" vagy "mysfgmsa@mydomain" érvénytelenek; a tartomány a gazdagép által implicit módon.
+> Formátumú ClustergMSAIdentity érték lehet "mysfgmsa@mydomain".
 
 [A csomópont security csomópont](service-fabric-cluster-security.md#node-to-node-security) úgy van konfigurálva **ClustergMSAIdentity** amikor szüksége van a service fabric csoportosan felügyelt szolgáltatásfiók alatt szeretné futtatni. Annak érdekében, hogy a csomópontok közötti bizalmi kapcsolatokat hozhat létre, is el kell tisztában egymással. Ez két különböző módon valósítható meg: Adja meg a csoportosan felügyelt szolgáltatásfiók, amely tartalmazza az összes csomóponton a fürtben, vagy adja meg a tartományi számítógép csoportot, amely tartalmazza az összes csomóponton a fürtben. Kifejezetten javasoljuk a [csoportosan felügyelt szolgáltatásfiók (gMSA)](https://technet.microsoft.com/library/hh831782.aspx) megközelítés, különösen a nagyobb fürtök (10-nél több csomópont) vagy a fürtök, amelyek valószínűleg növekedhet és csökkenhet.  
 Ez a módszer nem igényel, amelynek fürt rendszergazdák kapott hozzáférési jogosultsága ahhoz, hozzáadhat és eltávolíthat tagokat tartományi csoport létrehozását. Ezek a fiókok automatikus jelszókezelés is hasznosak. További információkért lásd: [csoportosan felügyelt szolgáltatásfiókok – első lépések](https://technet.microsoft.com/library/jj128431.aspx).  

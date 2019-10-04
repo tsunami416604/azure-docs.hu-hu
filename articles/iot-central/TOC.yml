@@ -35,8 +35,6 @@
   items:
     - name: Eszközök csatlakoztatása
       items:
-        - name: Eszköz kapcsolati sztringjének előállítása
-          href: howto-generate-connection-string.md
         - name: Node.js (általános) alkalmazás előkészítése és csatlakoztatása
           href: howto-connect-nodejs.md
         - name: MXChip IoT DevKit előkészítése és csatlakoztatása
@@ -47,6 +45,8 @@
           href: howto-connect-raspberry-pi-csharp.md
         - name: Windows IoT Core eszköz előkészítése és csatlakoztatása
           href: howto-connect-windowsiotcore.md
+        - name: SensorTile.box eszköz előkészítése és csatlakoztatása
+          href: howto-connect-sensortile.md
         - name: Eszközkapcsolatok monitorozása parancssor használatával
           href: howto-use-iotc-explorer.md
     - name: Eszközök kezelése
@@ -60,7 +60,7 @@
         - name: Használatos eszközök készletei
           href: howto-use-device-sets.md
         - name: Verzióeszköz-sablon
-          href: howto-version-devicetemplate.md
+          href: howto-version-device-template.md
     - name: Figyelés és elemzés
       items:
         - name: Telemetriaszabály létrehozása
@@ -87,16 +87,32 @@
               href: howto-export-data-event-hubs-service-bus.md
             - name: Exportálás a Blob Storage-ba
               href: howto-export-data-blob-storage.md
+        - name: Egyéni szabályok létrehozása
+          href: howto-create-custom-rules.md
+        - name: Egyéni elemzések létrehozása
+          href: howto-create-custom-analytics.md
         - name: Adatok vizualizációja a Power BI-ban
           href: howto-connect-powerbi.md
         - name: Más IoT-felhők csatlakoztatása
           href: howto-build-iotc-device-bridge.md
     - name: Adminisztráció
       items:
-        - name: Alkalmazás felügyelése
+        - name: Az alkalmazás felügyelete
           href: howto-administer.md
+        - name: Felhasználók és szerepkörök kezelése
+          href: howto-manage-users-roles.md
+        - name: Számla megtekintése
+          href: howto-view-bill.md
+        - name: Az alkalmazás felhasználói felületének testreszabása
+          href: howto-customize-ui.md
         - name: Kép előkészítése és feltöltése
           href: howto-prepare-images.md
+        - name: Az alkalmazás irányítópultjának konfigurálása
+          href: howto-configure-homepage.md
+        - name: Irányítópult-csempék használata
+          href: howto-use-tiles.md
+        - name: Alkalmazássablonok használata
+          href: howto-use-app-templates.md
         - name: Kezelés az Azure Portalról
           href: howto-manage-iot-central-from-portal.md
         - name: Kezelés az Azure CLI-ből
@@ -104,38 +120,40 @@
         - name: Kezelés az Azure PowerShellből
           href: howto-manage-iot-central-from-powershell.md
         - name: Alkalmazás létrehozása és kezelése CSP-ként
-          href: howto-create-and-manage-applications-as-CSP.md
-        - name: Az alkalmazás irányítópultjának konfigurálása
-          href: howto-configure-homepage.md
+          href: howto-create-and-manage-applications-csp.md
     - name: Személyre szabás
       items:
         - name: Saját irányítópultok létrehozása
           href: howto-personalize-dashboard.md
         - name: Beállítások kezelése
           href: howto-manage-preferences.md
+        - name: Élő csevegés ki-/bekapcsolása
+          href: howto-show-hide-chat.md
 - name: Kapcsolódó témakörök
   items:
     - name: Megoldások
       items:
-        - name: IoT-megoldásgyorsítók
-          href: /azure/iot-suite
         - name: IoT-központ
-          href: /microsoft-iot-central
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+        - name: IoT-megoldásgyorsítók
+          href: /azure/iot-accelerators
     - name: Platformszolgáltatások
       items:
         - name: IoT Hub
           href: /azure/iot-hub
+        - name: IoT Plug and Play
+          href: /azure/iot-pnp
         - name: IoT Hub Device Provisioning Service
           href: /azure/iot-dps
-        - name: Location Based Services
-          href: /azure/location-based-services
-        - name: Szolgáltatási SDK-k
+        - name: IoT szolgáltatásoldali SDK-k
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: Maps
+          href: /azure/azure-maps
         - name: Time Series Insights
           href: /azure/time-series-insights
-    - name: Edge
+    - name: IoT Edge
       items:
-        - name: IoT Edge
+        - name: Azure IoT Edge
           href: /azure/iot-edge
         - name: IoT eszközoldali SDK-k
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'

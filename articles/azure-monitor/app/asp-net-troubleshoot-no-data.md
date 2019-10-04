@@ -1,6 +1,6 @@
 ---
 title: Adathiány hibaelhárítása – Application Insights .NET-hez
-description: Nem jelennek meg adatok az Azure Application insights szolgáltatásban? Próbálja meg itt.
+description: Nem látja az Azure Application Insightsban tárolt adatmegjelenítést? Próbálja ki itt.
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -12,182 +12,191 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 11d63889555d6899df07e83168813994907476af
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b4bfd984f1e169cb1044002118f9534c4efc9bd8
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57860329"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169587"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Adathiány hibaelhárítása – Application Insights .NET-hez
-## <a name="some-of-my-telemetry-is-missing"></a>Láthatók a telemetriai adatok némelyike hiányzik
-*Az Application Insights csak látható az alkalmazás által generált események töredékéért.*
+## <a name="some-of-my-telemetry-is-missing"></a>Néhány telemetria hiányzik
+*A Application Insightsban csak az alkalmazás által generált események töredékét látom.*
 
-* Az azonos töredék következetesen jelennek meg, esetén valószínűleg miatt adaptív [mintavételi](../../azure-monitor/app/sampling.md). Ennek ellenőrzéséhez nyissa meg a keresési (az Áttekintés panelről), és tekintse meg a kérelem vagy más esemény egy példányát. A Tulajdonságok szakaszának alján kattintson a "...", teljes tulajdonság részletes. Ha a Count > 1 kérelem, majd a mintavétel van folyamatban.
-* Ellenkező esetben lehetséges, hogy állt egy [sávszélesség-korlátjának](../../azure-monitor/app/pricing.md#limits-summary) a díjcsomagra. Ezek a korlátok percenkénti érvényesek.
+* Ha folyamatosan ugyanazt a frakciót látja, valószínűleg alkalmazkodó [mintavételezés](../../azure-monitor/app/sampling.md)miatt. Ennek megerősítéséhez nyissa meg a keresést (az Áttekintés panelen), és tekintse meg a kérelem vagy más esemény egy példányát. A tulajdonságok szakasz alján kattintson a "..." elemre. a tulajdonságok teljes részletességének beolvasása. Ha a kérések száma > 1, akkor a mintavételezés művelet folyamatban van.
+* Ellenkező esetben előfordulhat, hogy a díjszabási csomagra vonatkozó [adatforgalmi korlátot](../../azure-monitor/app/pricing.md#limits-summary) futtat. Ezeket a korlátokat percenként alkalmazza a rendszer.
 
-## <a name="no-data-from-my-server"></a>Nincsenek a kiszolgálón lévő adatok
-*Az alkalmazás telepítése a webkiszolgálón, és be van kapcsolva, nem látható semmilyen telemetriai adatot belőle. A fejlesztői gépen, dolgoztam OK.*
+*Véletlenszerűen tapasztalok adatvesztést.*
 
-* Valószínűleg tűzfal probléma. [Az Application Insights adatforgalma számára tűzfalkivételek beállítása](../../azure-monitor/app/ip-addresses.md).
-* Az IIS-kiszolgálón hiányoznak egyes Előfeltételek: .NET-bővíthetőség 4.5 és az ASP.NET 4.5-ös verzióját.
+* Ellenőrizze, hogy tapasztal-e adatvesztést a [telemetria Channel](telemetry-channels.md#does-the-application-insights-channel-guarantee-telemetry-delivery-if-not-what-are-the-scenarios-in-which-telemetry-can-be-lost) szolgáltatásban
 
-*E [telepített állapotfigyelő](../../azure-monitor/app/monitor-performance-live-website-now.md) a meglévő alkalmazások figyelése a webkiszolgálón. Nem látható az eredményt.*
+* A telemetria Channel [GitHub](https://github.com/Microsoft/ApplicationInsights-dotnet/issues) -tárházban előforduló ismert problémák keresése
 
-* Lásd: [Állapotfigyelőt hibaelhárítási](../../azure-monitor/app/monitor-performance-live-website-now.md#troubleshoot).
+*Adatvesztést tapasztalok a konzol alkalmazásban vagy a webalkalmazásban, ha az alkalmazás hamarosan leáll.*
 
-## <a name="q01"></a>Nincs "Application Insights hozzáadása" lehetőség a Visual studióban
-*Ha a jobb gombbal egy meglévő projektben a Megoldáskezelőre, az Application Insights-beállításokat nem látható.*
+* Az SDK-csatorna tárolja a telemetria a pufferben, és azokat kötegekben küldi el. Ha az alkalmazás leáll, előfordulhat, hogy explicit módon meg kell hívnia a [Flush ()](api-custom-events-metrics.md#flushing-data)-t. A viselkedés `Flush()` az aktuálisan használt [csatornától](telemetry-channels.md#built-in-telemetry-channels) függ.
 
-* Az eszközök által támogatott .NET-projekt nem minden típusú. Webes és WCF-projektek támogatottak. Minden olyan projekt esetében, mint például az asztali vagy service-alkalmazások, akkor is [manuálisan az Application Insights SDK hozzáadása a projekthez](../../azure-monitor/app/windows-desktop.md).
-* Ellenőrizze, hogy [Visual Studio 2013 Update 3 vagy újabb](https://docs.microsoft.com/visualstudio/releasenotes/vs2013-update3-rtm-vs). Developer Analytics eszközök, amelyeket az Application Insights SDK-t adja meg az előre telepített származik.
-* Válassza ki **eszközök**, **bővítmények és frissítések** , és ellenőrizze, hogy **Developer Analytics Tools** telepítve és engedélyezve van. Ha igen, kattintson a **frissítések** , hogy van egy frissítés.
-* Az új projekt párbeszédpanel megnyitásához, és válassza ki az ASP.NET-webalkalmazás. Ha látja az Application Insights lehetőség van, az eszközök vannak telepítve. Ha nem, kísérelje meg eltávolítani, majd telepítse újra az Application Insights Tools.
+## <a name="no-data-from-my-server"></a>Nincsenek adatok a saját kiszolgálóról
+*Telepítettem az alkalmazást a webkiszolgálón, és most nem látok semmilyen telemetria. A fejlesztői gépen rendben működött.*
 
-## <a name="q02"></a>Nem sikerült hozzáadni az Application Insights
-*Amikor az Application Insights hozzáadása egy meglévő projektjébe, egy hibaüzenet látható.*
+* Valószínűleg tűzfallal kapcsolatos probléma. [Adja meg az adatküldés Application Insights a tűzfal kivételeit](../../azure-monitor/app/ip-addresses.md).
+* Előfordulhat, hogy az IIS-kiszolgáló néhány előfeltételt tartalmaz: a .NET-bővíthetőség 4,5 és a ASP.NET 4,5.
 
-Valószínű okai a következők:
+*[Telepítettem Állapotmonitor](../../azure-monitor/app/monitor-performance-live-website-now.md) a webkiszolgálón a meglévő alkalmazások figyeléséhez. Semmilyen eredményt nem látok.*
 
-* Nem sikerült az Application Insights portálon kommunikációt; vagy
-* Probléma lép fel az Azure-fiókkal;
-* Csak [olvasási hozzáférést az előfizetés vagy a csoport, ahol próbált létrehozni az új erőforrás](../../azure-monitor/app/resources-roles-access-control.md).
+* Lásd: [hibaelhárítás Állapotmonitor](../../azure-monitor/app/monitor-performance-live-website-now.md#troubleshoot).
 
-Javítás:
+## <a name="q01"></a>Nincs "Application Insights hozzáadása" lehetőség a Visual Studióban
+*Ha a jobb gombbal egy meglévő projektre kattintok Megoldáskezelő, nem látok semmilyen Application Insights lehetőséget.*
 
-* Ellenőrizze, hogy a megfelelő Azure-fiókot a megadott bejelentkezési hitelesítő adataival.
-* A böngészőben, ellenőrizze, hogy van-e a hozzáférést a [az Azure portal](https://portal.azure.com). Nyissa meg a beállításokat, majd e korlátozás.
-* [Application Insights hozzáadása a meglévő projekt](../../azure-monitor/app/asp-net.md): A Megoldáskezelőben kattintson a jobb gombbal a projekt, és válassza az "Add Application Insights."
-* Ha ez még mindig nem működik, kövesse a [manuális eljárást](../../azure-monitor/app/windows-services.md) , adjon hozzá egy erőforrást a portálon, majd adja hozzá az SDK-t a projekthez.
+* Az eszközök nem támogatják az összes típusú .NET-projektet. A web-és WCF-projektek támogatottak. Más projekttípus, például asztali vagy szolgáltatási alkalmazások esetén [manuálisan is hozzáadhat egy Application INSIGHTS SDK-t a projekthez](../../azure-monitor/app/windows-desktop.md).
+* Győződjön meg arról, hogy a [Visual Studio 2013 Update 3 vagy újabb verzió](https://docs.microsoft.com/visualstudio/releasenotes/vs2013-update3-rtm-vs)van. A fejlesztői elemzési eszközökkel előre telepítve van, amelyek biztosítják a Application Insights SDK-t.
+* Válassza az **eszközök**, **bővítmények és frissítések** lehetőséget, és győződjön meg arról, hogy a **fejlesztői elemzési eszközök** telepítve és engedélyezve vannak. Ha igen, kattintson a **frissítések** lehetőségre, és ellenőrizze, hogy van-e elérhető frissítés.
+* Nyissa meg az új projekt párbeszédpanelt, és válassza a ASP.NET webalkalmazás lehetőséget. Ha megjelenik a Application Insights lehetőség, akkor a rendszer telepíti az eszközöket. Ha nem, próbálja meg eltávolítani, majd telepítse újra a fejlesztői elemzési eszközöket.
 
-## <a name="emptykey"></a>"Kialakítási kulcsot nem lehet üres" hibaüzenetet kapok
-Úgy tűnik, probléma merült fel, míg az Application Insights vagy talán egy naplózási adapter telepíti.
+## <a name="q02"></a>Nem sikerült hozzáadni a Application Insights
+*Amikor megpróbálok Application Insights hozzáadni egy meglévő projekthez, hibaüzenet jelenik meg.*
 
-A Megoldáskezelőben kattintson jobb gombbal a projektre, és válassza a **Application Insights > Application Insights konfigurálása**. Kap egy párbeszédpanel, amely felkéri, hogy jelentkezzen be az Azure-ba, és hozzon létre egy Application Insights-erőforrást, vagy használja újra egy már meglévőt.
+Valószínű okok:
 
-## <a name="NuGetBuild"></a> "NuGet-csomagok hiányoznak a" saját buildelési kiszolgáló
-*Minden tekintetben OK I vagyok hibakeresése a saját fejlesztői gépen, de a NuGet-hiba jelenik meg a build-kiszolgálón.*
+* Nem sikerült kommunikálni az Application Insights-portálon; vagy
+* Probléma merült fel az Azure-fiókkal kapcsolatban;
+* Csak [olvasási jogosultsággal rendelkezik ahhoz az előfizetéshez vagy csoporthoz, amelyhez az új erőforrást próbálta létrehozni](../../azure-monitor/app/resources-roles-access-control.md).
 
-Lásd: [NuGet-csomagok visszaállításának](https://docs.nuget.org/Consume/Package-Restore) és [automatikus csomagok visszaállításának](https://docs.nuget.org/Consume/package-restore/migrating-to-automatic-package-restore).
+Javítsa ki
 
-## <a name="missing-menu-command-to-open-application-insights-from-visual-studio"></a>Hiányzó menüparancs a Visual Studio Application Insights megnyitása
-*Ha jobb gombbal a projekt Megoldáskezelőben, az Application Insights parancsok nem látható, vagy egy nyissa meg az Application Insights-parancs nem látható.*
+* Győződjön meg arról, hogy a megfelelő Azure-fiókhoz megadott bejelentkezési hitelesítő adatokat adott meg.
+* Győződjön meg arról, hogy a böngészőben van hozzáférése a [Azure Portalhoz](https://portal.azure.com). Nyissa meg a beállításokat, és ellenőrizze, hogy van-e korlátozás.
+* [Application Insights hozzáadása a meglévő projekthez](../../azure-monitor/app/asp-net.md): Megoldáskezelő kattintson a jobb gombbal a projektre, és válassza a "Application Insights hozzáadása" lehetőséget.
 
-Valószínű okai a következők:
+## <a name="emptykey"></a>Hibaüzenet jelenik meg: "a rendszerállapot-kulcs nem lehet üres"
+Úgy tűnik, hiba történt a Application Insights telepítése közben, vagy talán egy naplózási adaptert.
 
-* Ha manuálisan hozott létre az Application Insights-erőforrást, vagy ha a projekt, amely az Application Insights eszközök által nem támogatott típusú.
-* A Developer Analytics tools le vannak tiltva, a Visual studióban.
-* A Visual Studio 2013 Update 3-nál régebbi.
+Megoldáskezelő kattintson a jobb gombbal a projektre, és válassza a **Application Insights > a Application Insights konfigurálása**lehetőséget. Megjelenik egy párbeszédpanel, amely meghívja Önt, hogy bejelentkezzen az Azure-ba, vagy hozzon létre egy Application Insights-erőforrást, vagy használja újra a meglévőt.
 
-Javítás:
+## <a name="NuGetBuild"></a>"Hiányzó NuGet-csomag (ok)" a saját Build-kiszolgálón
+*Minden rendben van, ha hibakeresést végezek a fejlesztői gépen, de NuGet hibaüzenetet kapok a Build-kiszolgálón.*
 
-* Győződjön meg arról, hogy az Ön Visual Studio 2013 update 3 vagy újabb.
-* Válassza ki **eszközök**, **bővítmények és frissítések** , és ellenőrizze, hogy **Developer Analytics tools** telepítve és engedélyezve van. Ha igen, kattintson a **frissítések** , hogy van egy frissítés.
-* Kattintson a jobb gombbal a projektre a Megoldáskezelőben. Ha a parancs látható **Application Insights > Application Insights konfigurálása**,-projekt csatlakoztatása az erőforrás az Application Insights szolgáltatás segítségével.
+Tekintse meg a [NuGet-csomag visszaállítása](https://docs.nuget.org/Consume/Package-Restore) és az [automatikus csomag visszaállítása](https://docs.nuget.org/Consume/package-restore/migrating-to-automatic-package-restore)című témakört.
 
-Ellenkező esetben a projekt típusa nem támogatja közvetlenül az Application Insights-eszközökről. A telemetriai adatok megtekintéséhez jelentkezzen be a [az Azure portal](https://portal.azure.com)Application Insights válassza a bal oldali navigációs sávon, majd válassza ki az alkalmazását.
+## <a name="missing-menu-command-to-open-application-insights-from-visual-studio"></a>Hiányzó menüparancs a Application Insights megnyitásához a Visual studióból
+*Ha a jobb gombbal a projekt Megoldáskezelőra kattintok, nem látok Application Insights parancsokat, vagy nem látok nyitott Application Insights parancsot.*
 
-## <a name="access-denied-on-opening-application-insights-from-visual-studio"></a>"Hozzáférés megtagadva" a Visual Studio Application Insights megnyitása
-*A "Megnyitás az Application Insights" parancs tart velem az Azure Portalra, de "hozzáférés megtagadva" hibaüzenetet kapok.*
+Valószínű okok:
 
-A Microsoft bejelentkezési a legutóbb használt az alapértelmezett böngésző nem fér hozzá a [jött létre, amikor az alkalmazás hozzá lett adva az Application Insights erőforrás](../../azure-monitor/app/asp-net.md). Két valószínű oka van:
+* Ha a Application Insights erőforrást manuálisan hozta létre, vagy ha a projekt olyan típusú, amelyet a Application Insights eszközök nem támogatnak.
+* A fejlesztői elemzési eszközök le vannak tiltva a Visual Studióban.
+* A Visual Studio régebbi, mint a 2013-es frissítés.
 
-* Egynél több Microsoft-fiók – talán egy munkahelyi és személyes Microsoft-fiókkal van? A legutóbb használt az alapértelmezett böngészőben a bejelentkezési volt-e egy másik fiókot, amely hozzáféréssel rendelkezik [az Application Insights hozzáadása a projekthez](../../azure-monitor/app/asp-net.md).
-  * Javítás: Kattintson a nevére, a böngésző ablakának jobb oldalán, és jelentkezzen ki. Majd jelentkezzen be azzal a fiókkal, amely hozzáféréssel rendelkezik. Ezután a bal oldali navigációs sávon kattintson az Application Insights, és válassza ki az alkalmazást.
-* Valaki más Application Insights hozzáadja a projekthez, és azokat, hogy elfelejtette [hozzáférés az erőforráscsoporthoz](../../azure-monitor/app/resources-roles-access-control.md) található, amely lett létrehozva.
-  * Javítás: Ha szervezeti fiókkal használják, azokat is hozzáadhatja a csapat; akkor is, az egyes való hozzáférés engedélyezése vagy az erőforráscsoportot.
+Javítsa ki
 
-## <a name="asset-not-found-on-opening-application-insights-from-visual-studio"></a>"Objektum nem található" a Visual Studio Application Insights megnyitása
-*A "Megnyitás az Application Insights" parancs tart velem az Azure Portalra, de "objektum nem található" hibaüzenet.*
+* Győződjön meg arról, hogy a Visual Studio verziója 2013 3. vagy újabb verziójú.
+* Válassza az **eszközök**, **bővítmények és frissítések** lehetőséget, és győződjön meg arról, hogy a **fejlesztői elemzési eszközök** telepítve és engedélyezve vannak. Ha igen, kattintson a **frissítések** lehetőségre, és ellenőrizze, hogy van-e elérhető frissítés.
+* Kattintson a jobb gombbal a projektre Megoldáskezelő. Ha a parancsot **Application Insights > konfigurálja Application Insights**, akkor a projektnek a Application Insights szolgáltatásban lévő erőforráshoz való összekapcsolásához használja.
 
-Valószínű okai a következők:
+Ellenkező esetben a projekt típusát nem támogatja közvetlenül a fejlesztői elemzési eszközök. A telemetria megtekintéséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com), válassza ki a Application Insights a bal oldali navigációs sávon, és válassza ki az alkalmazást.
 
-* Az Application Insights-erőforrást az alkalmazás törölve lett; vagy
-* A kialakítási kulcsot lett beállítva, vagy módosíthatja az applicationinsights.config fájlban, a Szerkesztés, közvetlenül a projekt fájl frissítése nélkül.
+## <a name="access-denied-on-opening-application-insights-from-visual-studio"></a>"Hozzáférés megtagadva" a Visual Studióban Application Insights megnyitásakor
+*A "nyílt Application Insights" menüparancs a Azure Portalra mutat, de "hozzáférés megtagadva" hibaüzenet jelenik meg.*
 
-A kialakítási kulcs az ApplicationInsights.config vezérlők, ahol a telemetriai adatok küldése. Egy sort a következő projektfájlban szabályozza, hogy melyik erőforrás megnyitása a Visual Studióban a parancs használatakor.
+Az alapértelmezett böngészőben utoljára használt Microsoft-bejelentkezés nem fér hozzá [az alkalmazáshoz Application Insights hozzáadásakor létrehozott erőforráshoz](../../azure-monitor/app/asp-net.md). Két valószínű oka van:
 
-Javítás:
+* Egynél több Microsoft-fiók van – talán egy munkahelyi és egy személyes Microsoft-fiók? Az alapértelmezett böngészőben utoljára használt bejelentkezés egy másik fiókhoz tartozik, mint az, amely hozzáféréssel rendelkezik a [projekthez Application Insights hozzáadásához](../../azure-monitor/app/asp-net.md).
+  * Javítsa ki Kattintson a böngészőablak jobb felső sarkában található nevére, és jelentkezzen ki. Ezután jelentkezzen be a hozzáféréssel rendelkező fiókkal. Ezután a bal oldali navigációs sávon kattintson a Application Insights elemre, és válassza ki az alkalmazást.
+* Valaki másnak adta hozzá Application Insights a projekthez, és elfelejtette, hogy hozzáférést biztosítson [ahhoz az erőforráscsoporthoz](../../azure-monitor/app/resources-roles-access-control.md) , amelyben létrehozták.
+  * Javítsa ki Ha szervezeti fiókot használ, akkor felveheti a csapatba; vagy egyéni hozzáférést biztosíthat az erőforráscsoporthoz.
 
-* A Megoldáskezelőben kattintson a jobb gombbal a projektre, és válassza az Application Insights, az Application Insights konfigurálása. A párbeszédpanelen vagy kiválaszthatja telemetria küldése egy meglévő erőforrásnak, vagy hozzon létre egy újat. Vagy:
-* Nyissa meg közvetlenül az erőforrást. Jelentkezzen be a [az Azure Portalon](https://portal.azure.com), és a bal oldali navigációs sávon kattintson az Application Insights, majd válassza ki az alkalmazást.
+## <a name="asset-not-found-on-opening-application-insights-from-visual-studio"></a>"Az eszköz nem található" Application Insights megnyitása a Visual studióból
+*A "nyitott Application Insights" menüparancs a Azure Portalra mutat, de "az eszköz nem található" hibaüzenet jelenik meg.*
 
-## <a name="where-do-i-find-my-telemetry"></a>Hol találom meg a telemetriát?
-*A bejelentkezésem a [Microsoft Azure-portálon](https://portal.azure.com), és az Azure otthoni irányítópultjánál keresek. Ezért hol találhatók az Application Insights-adataim?*
+Valószínű okok:
 
-* A bal oldali navigációs sávon kattintson az Application Insights, akkor az alkalmazás nevére. Ha ott nem rendelkezik projektekkel, akkor [hozzáadása vagy az Application Insights beállítása a webes projekt](../../azure-monitor/app/asp-net.md).  
-  Ott találja majd néhány összegző diagramok. Kattinthat, ezeket a további részletek megtekintéséhez.
-* A Visual Studióban amíg az alkalmazás hibakeresése, kattintson az Application Insights gomb.
+* Az alkalmazás Application Insights erőforrása törölve lett; vagy
+* A kialakítási kulcs a ApplicationInsights. config fájlban lett beállítva vagy megváltozott, a projektfájl frissítése nélkül.
 
-## <a name="q03"></a> Kiszolgálói adatok nem (vagy egyáltalán nincs adat)
-*E alkalmazásom futott, és majd megnyitni az Application Insights szolgáltatás a Microsoft Azure-ban, de a diagramok megjelenítése "Megtudhatja, hogyan gyűjtheti az..." vagy "Nincs konfigurálva."* Másik lehetőségként *csak oldal nézet és a felhasználói adatok, de nem a server-adatok.*
+A ApplicationInsights. config fájlban található kialakítási kulcs vezérli, hogy a telemetria mikor legyen elküldve. A Project fájl egyik sora határozza meg, hogy melyik erőforrást kell megnyitni, amikor a parancsot a Visual Studióban használja.
 
-* Futtassa az alkalmazást hibakeresési módban, a Visual Studióban (F5). Használja az alkalmazást úgy, hogy létrejöjjön valamennyi telemetria. Ellenőrizze, hogy látja-e az események naplózása a Visual Studio kimeneti ablakában.  
+Javítsa ki
+
+* A Megoldáskezelő kattintson a jobb gombbal a projektre, és válassza a Application Insights lehetőséget, majd konfigurálja a Application Insights. A párbeszédpanelen dönthet úgy, hogy telemetria küld egy meglévő erőforrásnak, vagy újat hoz létre. Vagy
+* Nyissa meg közvetlenül az erőforrást. Jelentkezzen be [a Azure Portalba](https://portal.azure.com), kattintson a bal oldali navigációs sávon a Application Insights elemre, majd válassza ki az alkalmazást.
+
+## <a name="where-do-i-find-my-telemetry"></a>Hol találom meg a telemetria?
+*Bejelentkezett a [Microsoft Azure Portalba](https://portal.azure.com), és megtekintem az Azure Home irányítópultot. Hol találom a Application Insightsi adataim?*
+
+* A bal oldali navigációs sávon kattintson a Application Insights, majd az alkalmazás neve elemre. Ha nem rendelkezik projekttel, a [webes projektben Application Insights kell hozzáadnia vagy konfigurálnia](../../azure-monitor/app/asp-net.md).  
+  Itt láthat néhány összefoglaló diagramot. Ide kattintva további részleteket tekinthet meg.
+* A Visual Studióban az alkalmazás hibakeresése közben kattintson a Application Insights gombra.
+
+## <a name="q03"></a>Nincsenek kiszolgálói adatértékek (vagy nincsenek az összes adathalmaz)
+*Futtattam az alkalmazást, majd megnyitottam a Application Insights szolgáltatást a Microsoft Azureban, de az összes diagramon a "Ismerje meg, hogyan kell gyűjteni..." vagy nincs konfigurálva.* Vagy *csak az oldal nézet és a felhasználói adatértékek, de nem szolgálnak.*
+
+* Futtassa az alkalmazást hibakeresési módban a Visual Studióban (F5). Használja az alkalmazást úgy, hogy létrehozzon néhány telemetria. Ellenőrizze, hogy láthatók-e a Visual Studio kimeneti ablakában naplózott események.  
   ![](./media/asp-net-troubleshoot-no-data/output-window.png)
-* Nyissa meg az Application Insights portálon [diagnosztikai keresés](../../azure-monitor/app/diagnostic-search.md). Adatok általában itt jelenik meg először.
-* A frissítés gombra. A panel rendszeres időközönként frissíti magát, de manuálisan is megteheti. A frissítési időköz hosszabb ideig nagyobb időintervallumok.
-* Ellenőrizze, hogy a rendszerállapot-kulcsok megegyezzenek. A az alkalmazáshoz az Application Insights portálon, a fő panelen a a **Essentials** legördülő, tekintse meg **kialakítási kulcs**. Ezután a projekt a Visual Studióban, nyissa meg az applicationinsights.config fájlt, és keresse meg a `<instrumentationkey>`. Ellenőrizze, hogy a két kulcs egyenlő. Ha nem:  
-  * A portálon kattintson az Application Insights és a megfelelő kulccsal; keresse meg az alkalmazás-erőforrást vagy
-  * A Visual Studio Solution Explorerben kattintson jobb gombbal a projektre, és válassza az Application Insights konfigurálása. Állítsa vissza az alkalmazást, hogy küldjön telemetriát a megfelelő erőforrás.
-  * Ha nem találja a megfelelő kulcsokkal, ellenőrizze, hogy használ azonos bejelentkezési hitelesítő adatok, a Visual studióban a portálra.
-* Az a [Microsoft Azure irányítópult](https://portal.azure.com), tekintse meg a Service Health-leképezés. Ha egyes riasztási jelzések, várjon, amíg azok OK vissza majd zárja be és nyissa meg ismét az Application Insights-alkalmazás paneljén.
-* Ellenőrizze azt is [állapot blogunkat](https://blogs.msdn.microsoft.com/servicemap-status/).
-* Felelt meg a kód írása a [kiszolgálóoldali SDK](../../azure-monitor/app/api-custom-events-metrics.md) , előfordulhat, hogy módosítsa a kialakítási kulcsot az `TelemetryClient` példányok vagy a `TelemetryContext`? Adta meg írni vagy egy [szűrő vagy mintavételi konfiguráció](../../azure-monitor/app/api-filtering-sampling.md) előfordulhat, hogy szűrése, amely túl sok ki?
-* Ha szerkesztette az applicationinsights.config fájlt, gondosan ellenőrizze konfigurációját [TelemetryInitializers és TelemetryProcessors](../../azure-monitor/app/api-filtering-sampling.md). Egy nem megfelelően nevű típus vagy paraméter okozhat adatot nem küld az SDK-t.
+* A Application Insights portálon nyissa meg a [diagnosztikai keresést](../../azure-monitor/app/diagnostic-search.md). Az adatgyűjtés általában itt jelenik meg.
+* Kattintson a frissítés gombra. A panel rendszeresen frissíti magát, de manuálisan is elvégezheti. A frissítési időköz hosszabb a nagyobb időtartományok esetében.
+* Győződjön meg arról, hogy a rendszerállapot-kulcsok egyeznek. Az alkalmazás fő paneljén, a Application Insights-portálon, az **alapvető** erőforrások legördülő menüben tekintse meg a rendszerállapot- **kulcsot**. Ezután a Visual Studióban a projektben nyissa meg a ApplicationInsights. config fájlt `<instrumentationkey>`, és keresse meg a. Győződjön meg arról, hogy a két kulcs egyenlő. Ha nem:  
+  * A portálon kattintson a Application Insights elemre, és keresse meg az alkalmazás-erőforrást a megfelelő kulccsal; vagy
+  * A Visual Studio Megoldáskezelő kattintson a jobb gombbal a projektre, és válassza a Application Insights, majd a Konfigurálás lehetőséget. Állítsa vissza az alkalmazást, hogy telemetria küldjön a megfelelő erőforrásnak.
+  * Ha nem találja a megfelelő kulcsokat, ellenőrizze, hogy a Visual Studióban ugyanazokat a bejelentkezési hitelesítő adatokat használja-e, mint a portálon.
+* A [Microsoft Azure Kezdőlap irányítópulton](https://portal.azure.com)tekintse meg a Service Health térképet. Ha vannak riasztási jelzések, várjon, amíg vissza nem tért az OK gombra, majd zárjunk be és nyissa meg újra a Application Insights alkalmazás paneljét.
+* Tekintse meg [az állapot blogját](https://blogs.msdn.microsoft.com/servicemap-status/)is.
+* Írt olyan kódot a [kiszolgálóoldali SDK-](../../azure-monitor/app/api-custom-events-metrics.md) hoz, amely megváltoztathatja a kialakítási kulcsot `TelemetryClient` a példányokban vagy a-ben? `TelemetryContext` Vagy olyan [szűrőt vagy mintavételezési konfigurációt](../../azure-monitor/app/api-filtering-sampling.md) írt, amely túl sok szűrést eredményezhet?
+* Ha szerkesztette a ApplicationInsights. config fájlt, gondosan ellenőrizze a [TelemetryInitializers és a TelemetryProcessors](../../azure-monitor/app/api-filtering-sampling.md)konfigurációját. Egy helytelenül elnevezett típus vagy paraméter hatására az SDK nem tud adatküldést küldeni.
 
-## <a name="q04"></a>Nincs adat a böngészőkben, Oldalmegtekintések, használat
-*Oldal nézet Lapbetöltési idő, illetve a böngészőben vagy a használati paneleket kiszolgálói válaszidő-és kiszolgálói kérelmek adatainak, de az adatok nem látható.*
+## <a name="q04"></a>Nincsenek adatok a lap nézeteiben, böngészőkben, használatban
+*Meglátok adatokat a kiszolgáló válaszideje és a kiszolgálói kérelmek diagramjaiban, de a lap nem töltődik be, vagy a böngésző vagy a használati panel nem tartalmazza az adatokat.*
 
-Az adatok a weboldalakon parancsfájlok származik. 
+Az adatok a weblapok parancsfájljaiból származnak. 
 
-* Ha hozzáadta az Application Insights egy meglévő webes projektet [kell manuálisan adja hozzá a parancsfájlok](../../azure-monitor/app/javascript.md).
-* Ellenőrizze, hogy az Internet Explorer nem jelennek meg a hely kompatibilitási módban.
-* A böngésző hibakereső szolgáltatás (F12 az egyes böngészőkben, majd válassza a hálózati) használatával győződjön meg arról, hogy adatokat küld a `dc.services.visualstudio.com`.
+* Ha egy meglévő webes projekthez Application Insights adott hozzá, [akkor kézzel kell felvennie a szkripteket](../../azure-monitor/app/javascript.md).
+* Győződjön meg arról, hogy az Internet Explorer nem jeleníti meg a webhelyet kompatibilitási módban.
+* A böngésző hibakeresési funkciója (F12 bizonyos böngészőknél, majd a hálózat kiválasztása) segítségével ellenőrizheti, hogy az adatküldés `dc.services.visualstudio.com`folyamatban van-e.
 
-## <a name="no-dependency-or-exception-data"></a>Nincs függőség vagy kivétel adat
-Lásd: [– függőségi telemetria](../../azure-monitor/app/asp-net-dependencies.md) és [kivételtelemetria](asp-net-exceptions.md).
+## <a name="no-dependency-or-exception-data"></a>Nincs függőségi vagy kivételi érték
+Lásd: [függőségi telemetria](../../azure-monitor/app/asp-net-dependencies.md) és [kivételek telemetria](asp-net-exceptions.md).
 
-## <a name="no-performance-data"></a>Teljesítményadatok
-Teljesítményadatok (CPU, i/o-forgalom, és így tovább) érhető el [Java webes szolgáltatások](../../azure-monitor/app/java-collectd.md), [Windows asztali alkalmazások](../../azure-monitor/app/windows-desktop.md), [IIS webalkalmazások és szolgáltatások Ha telepítse az állapotfigyelőt](../../azure-monitor/app/monitor-performance-live-website-now.md), és [Az azure Cloud Services](../../azure-monitor/app/app-insights-overview.md). a beállítások kiszolgálók találhat.
+## <a name="no-performance-data"></a>Nincsenek teljesítményadatok
+A Teljesítményadatok (CPU, IO-sebesség stb.) a [Java-webszolgáltatásokhoz](../../azure-monitor/app/java-collectd.md), a [Windows asztali alkalmazásokhoz](../../azure-monitor/app/windows-desktop.md), [az IIS-webalkalmazásokhoz és-szolgáltatásokhoz](../../azure-monitor/app/monitor-performance-live-website-now.md)érhetők el, ha telepíti az állapotfigyelő szolgáltatást és az [Azure Cloud Services](../../azure-monitor/app/app-insights-overview.md). a beállítások, kiszolgálók menüpontban találhatja meg.
 
-## <a name="no-server-data-since-i-published-the-app-to-my-server"></a>Nincs (kiszolgáló) adat, mivel az alkalmazás közzétett kiszolgálóhoz
-* Ellenőrizze, hogy ténylegesen kimásolt minden Microsoft. A kiszolgálóval együtt Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll ApplicationInsights dll-EK
-* A tűzfalat, előfordulhat, hogy kell [nyissa meg az egyes TCP-portok](../../azure-monitor/app/ip-addresses.md).
-* Ha szeretne küldeni a vállalati hálózaton kívül, állítsa be a proxy használatát [defaultProxy](https://msdn.microsoft.com/library/aa903360.aspx) a Web.config fájlban
+## <a name="no-server-data-since-i-published-the-app-to-my-server"></a>Nem (kiszolgáló) adatai, mert közzétettem az alkalmazást a kiszolgálón
+* Győződjön meg arról, hogy ténylegesen másolta az összes Microsoftot. ApplicationInsights a DLL-eket a kiszolgálóra, a Microsoft. Diagnostics. Instrumentation. Extensions. lehallgatás. dll fájlokkal együtt
+* Előfordulhat, hogy [meg kell nyitnia néhány TCP-portot](../../azure-monitor/app/ip-addresses.md)a tűzfalon.
+* Ha proxyt kell használnia a vállalati hálózatról történő küldéshez, a [defaultProxy](https://msdn.microsoft.com/library/aa903360.aspx) beállítása a web. config fájlban
 * Windows Server 2008: Győződjön meg arról, hogy telepítette a következő frissítéseket: [KB2468871](https://support.microsoft.com/kb/2468871), [KB2533523](https://support.microsoft.com/kb/2533523), [KB2600217](https://support.microsoft.com/kb/2600217).
 
-## <a name="i-used-to-see-data-but-it-has-stopped"></a>Használt adatokat, de leállt
-* Ellenőrizze a [állapot blog](https://blogs.msdn.com/b/applicationinsights-status/).
-* Elérte a havi kvóta adatpontok? Nyissa meg a beállítások/kvóta és díjszabás megtudhatja. Ha igen, váltson magasabb szintű csomagra, vagy további kapacitást kell fizetnie. Tekintse meg a [díjszabási séma](https://azure.microsoft.com/pricing/details/application-insights/).
+## <a name="i-used-to-see-data-but-it-has-stopped"></a>Felhasználtam az adatmegjelenítést, de leállt
+* Keresse meg az [állapot blogját](https://blogs.msdn.com/b/applicationinsights-status/).
+* Megtalálta az adatpontok havi kvótáját? A kereséshez nyissa meg a beállítások/kvóta és a díjszabást. Ha igen, lehetősége van a csomag frissítésére, vagy a további kapacitás megfizetésére. Tekintse meg a [díjszabási sémát](https://azure.microsoft.com/pricing/details/application-insights/).
 
-## <a name="i-dont-see-all-the-data-im-expecting"></a>Felfedezhetem minden adat nem látható
-Ha az alkalmazás nagy mennyiségű adatot küld el, és használja az Application Insights SDK-t az ASP.NET 2.0.0-beta3 vagy újabb, illetve a [adaptív mintavételezés](../../azure-monitor/app/sampling.md) funkció is működnek, és csak a telemetria százalékában küldjön.
+## <a name="i-dont-see-all-the-data-im-expecting"></a>Nem látom az összes várt adatértéket
+Ha az alkalmazás sok adatmennyiséget küld, és a ASP.NET 2.0.0-beta3 vagy újabb verziójához készült Application Insights SDK-t használja, akkor az [adaptív mintavételi](../../azure-monitor/app/sampling.md) funkció működhet, és csak a telemetria egy adott százalékát küldheti el.
 
-Bármikor letilthatja azt, de ez nem ajánlott. Mintavételi célja, hogy a kapcsolódó telemetriai adatokat megfelelően továbbítani, diagnosztikai célokra.
+A szolgáltatás letiltható, de ez nem ajánlott. A mintavétel úgy lett kialakítva, hogy a kapcsolódó telemetria megfelelően legyen továbbítva diagnosztikai célokra.
 
-## <a name="client-ip-address-is-0000"></a>Ügyfél IP-cím 0.0.0.0
+## <a name="client-ip-address-is-0000"></a>Az ügyfél IP-címe 0.0.0.0
 
-5 2018 február bejelentettük, hogy az ügyfél IP-cím naplózása eltávolítottuk. Ez nincs hatással a földrajzi helyet.
+Február 5 2018-án bejelentettük, hogy az ügyfél IP-címének naplózása el lett távolítva. Ez nem befolyásolja a földrajzi helyet.
 
 > [!NOTE]
-> Ha az első 3 bájt IP-cím van szüksége, használhat egy [telemetriainicializálót](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#add-properties-itelemetryinitializer) vlastní atribut hozzáadásához.
+> Ha az IP-cím első 3 oktettje szükséges, a [telemetria inicializáló](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#add-properties-itelemetryinitializer) használatával egyéni attribútumokat adhat hozzá.
 > Ez nincs hatással a 2018. február 5. előtt összegyűjtött adatokra.
 
-## <a name="wrong-geographical-data-in-user-telemetry"></a>Nem megfelelő földrajzi adatokat a felhasználó telemetria
-Az városa, régió és ország dimenziók IP-címek vannak származtatva, és nem minden esetben pontosak. Ezen IP-címek hely elsőként feldolgozva, és a 0.0.0.0 kell tárolni, majd módosítani.
+## <a name="wrong-geographical-data-in-user-telemetry"></a>Helytelen földrajzi érték a felhasználói telemetria
+A város, a régió és az ország dimenziói az IP-címekből származnak, és nem mindig pontosak. Ezeket az IP-címeket a rendszer az első helyen dolgozza fel, majd a 0.0.0.0 értékre módosítja.
 
 ## <a name="exception-method-not-found-on-running-in-azure-cloud-services"></a>„A metódus nem található” kivétel az Azure Cloud Servicesben futó rendszeren
 A .NET 4.6-os verziójára készítette el az alkalmazást? Az Azure Cloud Services szerepkörei nem támogatják automatikusan a 4.6-os verziót. [Telepítse a 4.6-os verziót mindegyik szerepkörön](../../cloud-services/cloud-services-dotnet-install-dotnet.md), mielőtt futtatná az alkalmazást.
 
 ## <a name="troubleshooting-logs"></a>Hibaelhárítási naplók
 
-Kövesse az alábbi utasításokat a keretrendszer hibaelhárítási naplók rögzítésére.
+Az alábbi útmutatást követve rögzítheti a keretrendszer hibaelhárítási naplóit.
 
 ### <a name="net-framework"></a>.NET-keretrendszer
 
-1. Telepítse a [Microsoft.AspNet.ApplicationInsights.HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) NuGet-csomagot. A verzióhoz meg kell egyeznie a jelenlegi verziója `Microsoft.ApplicationInsighs`
+1. Telepítse a [Microsoft. AspNet. ApplicationInsights. HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) csomagot a NuGet webhelyről. A telepített verziónak meg kell egyeznie a jelenlegi telepített verziójával`Microsoft.ApplicationInsighs`
 
-2. Módosítsa az applicationinsights.config fájlt a következők:
+2. Módosítsa a applicationinsights. config fájlt, hogy az tartalmazza a következőket:
 
     ```xml
     <TelemetryModules>
@@ -198,17 +207,19 @@ Kövesse az alábbi utasításokat a keretrendszer hibaelhárítási naplók rö
       </Add>
     </TelemetryModules>
     ```
-    Az alkalmazás írási jogosultsággal kell rendelkeznie a konfigurált helyre
+    Az alkalmazásnak írási engedéllyel kell rendelkeznie a konfigurált helyhez
 
-3. Indítsa újra a folyamatot úgy, hogy ezek az új beállítások mértékének növelése SDK
+3. Újraindítási folyamat, hogy az SDK az új beállításokat is felveszi
 
-4. Amikor végzett, visszaállítás ezeket a módosításokat.
+4. Ha elkészült, állítsa át ezeket a módosításokat.
 
 ### <a name="net-core"></a>.NET Core
 
-1. Telepítse a [Microsoft.AspNetCore.ApplicationInsights.HostingStartup](https://www.nuget.org/packages/Microsoft.AspNetCore.ApplicationInsights.HostingStartup) NuGet-csomagot. A verzióhoz meg kell egyeznie a jelenlegi verziója `Microsoft.ApplicationInsights`
+1. Telepítse a [Microsoft. AspNet. ApplicationInsights. HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) csomagot a NuGet webhelyről. A telepített verziónak meg kell egyeznie a jelenlegi telepített verziójával`Microsoft.ApplicationInsights`
 
-2. Módosítsa `ConfigureServices` metódus az a `Startup.cs` osztály.:
+A Microsoft. ApplicationInsights. AspNetCore legújabb verziója a 2.7.1-es verzió, amely a Microsoft. ApplicationInsights 2,10-es verziójára hivatkozik. Ezért a Microsoft. AspNet. ApplicationInsights. HostingStartup telepítendő verziójának 2.10.0 kell lennie
+
+2. Módosítsa `ConfigureServices` a`Startup.cs` metódust az osztályban.:
 
     ```csharp
     services.AddSingleton<ITelemetryModule, FileDiagnosticsTelemetryModule>();
@@ -218,11 +229,32 @@ Kövesse az alábbi utasításokat a keretrendszer hibaelhárítási naplók rö
         module.Severity = "Verbose";
     } );
     ```
-    Az alkalmazás írási jogosultsággal kell rendelkeznie a konfigurált helyre
+    Az alkalmazásnak írási engedéllyel kell rendelkeznie a konfigurált helyhez
 
-3. Indítsa újra a folyamatot úgy, hogy ezek az új beállítások mértékének növelése SDK
+3. Újraindítási folyamat, hogy az SDK az új beállításokat is felveszi
 
-4. Amikor végzett, visszaállítás ezeket a módosításokat.
+4. Ha elkészült, állítsa át ezeket a módosításokat.
+
+
+## <a name="PerfView"></a>Naplók gyűjtése a Perfview eszköz
+A [perfview eszköz](https://github.com/Microsoft/perfview) egy ingyenes diagnosztikai és teljesítmény-elemzési eszköz, amely a különböző forrásokból származó diagnosztikai információk összegyűjtésével és megjelenítésével segíti a CPU, a memória és az egyéb problémák elkülönítését.
+
+Az Application Insights SDK-napló EventSource önkiszolgáló hibaelhárítási naplókat, amelyeket a Perfview eszköz képes rögzíteni.
+
+Naplók gyűjtéséhez töltse le a Perfview eszköz, és futtassa a következő parancsot:
+```cmd
+PerfView.exe collect -MaxCollectSec:300 -NoGui /onlyProviders=*Microsoft-ApplicationInsights-Core,*Microsoft-ApplicationInsights-Data,*Microsoft-ApplicationInsights-WindowsServer-TelemetryChannel,*Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Dependency,*Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Web,*Microsoft-ApplicationInsights-Extensibility-DependencyCollector,*Microsoft-ApplicationInsights-Extensibility-HostingStartup,*Microsoft-ApplicationInsights-Extensibility-PerformanceCollector,*Microsoft-ApplicationInsights-Extensibility-EventCounterCollector,*Microsoft-ApplicationInsights-Extensibility-PerformanceCollector-QuickPulse,*Microsoft-ApplicationInsights-Extensibility-Web,*Microsoft-ApplicationInsights-Extensibility-WindowsServer,*Microsoft-ApplicationInsights-WindowsServer-Core,*Microsoft-ApplicationInsights-Extensibility-EventSourceListener,*Microsoft-ApplicationInsights-AspNetCore
+```
+
+Ezeket a paramétereket igény szerint módosíthatja:
+- **MaxCollectSec**. A paraméter beállításával megakadályozhatja, hogy a Perfview eszköz határozatlan ideig fusson, és hatással legyen a kiszolgáló teljesítményére.
+- **OnlyProviders**. Ezt a paramétert úgy állítsa be, hogy csak a naplókat gyűjtsön az SDK-ból. A listát az adott vizsgálatok alapján testreszabhatja. 
+- **NoGui**. Állítsa be ezt a paramétert a naplók a grafikus felhasználói felület nélküli összegyűjtéséhez.
+
+
+További információ:
+- [Teljesítmény-nyomkövetés rögzítése a perfview eszköz](https://github.com/dotnet/roslyn/wiki/Recording-performance-traces-with-PerfView).
+- [Application Insights eseményforrás](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/ETW)
 
 ## <a name="still-not-working"></a>Még mindig nem működik...
-* [Application Insights-fórum](https://social.msdn.microsoft.com/Forums/vstudio/en-US/home?forum=ApplicationInsights)
+* [Application Insights fórum](https://social.msdn.microsoft.com/Forums/vstudio/en-US/home?forum=ApplicationInsights)

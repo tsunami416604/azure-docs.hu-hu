@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 12/19/2016
 ms.author: stewu
 ms.openlocfilehash: 8066a759cf80be6e9ca232bcd3693a5fa4d2f2f9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58084810"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61436477"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Teljesítmény-finomhangolási útmutató a Storm on HDInsight és az Azure Data Lake Storage Gen1
 
@@ -132,7 +132,7 @@ Ha eléri a Data Lake Storage Gen1 által nyújtott sávszélesség korlátai, m
 
 Annak ellenőrzéséhez, hogy a, szabályozott első, a hibakeresési ügyféloldali naplózás engedélyezése:
 
-1. A **Ambari** > **Storm** > **Config** > **storm-feldolgozó – log4j speciális**, módosítása **&lt;gyökér szintű = "info"&gt;** való  **&lt;gyökér szintű = "debug"&gt;**. Indítsa újra az összes a csomópontok/szolgáltatást a konfigurációjának érvénybe léptetéséhez.
+1. A **Ambari** > **Storm** > **Config** > **storm-feldolgozó – log4j speciális**, módosítása **&lt;gyökér szintű = "info"&gt;** való  **&lt;gyökér szintű = "debug"&gt;** . Indítsa újra az összes a csomópontok/szolgáltatást a konfigurációjának érvénybe léptetéséhez.
 2. A figyelő a Storm-topológia bejelentkezik a munkavégző csomópontok (/var/log/storm/worker-artifacts alatt /&lt;TopologyName&gt;/&lt;port&gt;/worker.log) a Data Lake Storage Gen1 szabályozási kivételeket.
 
 ## <a name="next-steps"></a>További lépések

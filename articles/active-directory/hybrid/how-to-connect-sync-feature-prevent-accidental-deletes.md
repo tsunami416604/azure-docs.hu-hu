@@ -1,6 +1,6 @@
 ---
-title: 'Az Azure AD Connect szinkronizálása: Véletlen törlések megakadályozása |} A Microsoft Docs'
-description: Ez a témakör ismerteti a megakadályozása véletlen törlések (véletlen törlések megakadályozása) szolgáltatást az Azure AD Connectben.
+title: 'Azure AD Connect szinkronizálás: Véletlen törlések megakadályozása | Microsoft Docs'
+description: Ez a témakör ismerteti a véletlen törlések (a véletlen törlések megakadályozása) funkció használatát a Azure AD Connectban.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,58 +16,61 @@ ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1244dd460196e5882caab0d4b526850da48d084
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 48f3109b4c87e25444629ca25411894eab8a9d56
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188546"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827131"
 ---
-# <a name="azure-ad-connect-sync-prevent-accidental-deletes"></a>Az Azure AD Connect szinkronizálása: Véletlen törlések megakadályozása
-Ez a témakör ismerteti a megakadályozása véletlen törlések (véletlen törlések megakadályozása) szolgáltatást az Azure AD Connectben.
+# <a name="azure-ad-connect-sync-prevent-accidental-deletes"></a>Azure AD Connect szinkronizálás: Véletlen törlések megakadályozása
+Ez a témakör ismerteti a véletlen törlések (a véletlen törlések megakadályozása) funkció használatát a Azure AD Connectban.
 
-Amikor az Azure AD Connect telepítésének megakadályozása véletlen törlések alapértelmezés szerint engedélyezve van és nem engedélyezte a az export-több mint 500 törlést. A funkció célja, hogy meggátolja a konfiguráció és a helyszíni címtár olyan véletlen módosításait, amelyek nagy számú felhasználót és egyéb objektumot érintenek.
+Azure AD Connect telepítésekor a véletlen törlés megakadályozása alapértelmezés szerint engedélyezve van, és úgy van konfigurálva, hogy ne engedélyezze a 500-nál több törléssel rendelkező exportálást. A funkció célja, hogy meggátolja a konfiguráció és a helyszíni címtár olyan véletlen módosításait, amelyek nagy számú felhasználót és egyéb objektumot érintenek.
 
-## <a name="what-is-prevent-accidental-deletes"></a>Mi az véletlen törlések megakadályozása
-Gyakori forgatókönyvek, amikor megjelenik számos törlések tartalmazza:
+## <a name="what-is-prevent-accidental-deletes"></a>A véletlen törlések megakadályozása
+Gyakori helyzetek, amikor megjelenik számos törlés:
 
-* Vált [szűrés](how-to-connect-sync-configure-filtering.md) , ha egy teljes [OU](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering) vagy [tartomány](how-to-connect-sync-configure-filtering.md#domain-based-filtering) nincs bejelölve.
+* A [szűrés](how-to-connect-sync-configure-filtering.md) azon módosításai, amelyekben egy teljes [szervezeti egység](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering) vagy [tartomány](how-to-connect-sync-configure-filtering.md#domain-based-filtering) sincs kiválasztva.
 * Egy adott szervezeti egységben lévő minden objektum törlése.
 * Egy szervezeti egység átnevezése, amelynek következtében a rendszer a benne lévő összes objektumot hatókörön kívülinek tekinti a szinkronizálás vonatkozásában.
 
-A PowerShell használatával módosíthatja az alapértelmezett érték 500-objektumok használatával `Enable-ADSyncExportDeletionThreshold`, amely az AD-Szinkronizáló modul telepítve van az Azure Active Directory Connect része. Ezt az értéket a szervezet méretének megfelelően átméretezi kell konfigurálnia. Szinkronizálásütemező 30 percenként fut, mivel az érték 30 percen belül látható törlések száma.
+Az 500-objektumok alapértelmezett értéke a PowerShell-lel módosítható `Enable-ADSyncExportDeletionThreshold` értékkel, amely a Azure Active Directory Connect telepített AD-szinkronizáló modul részét képezi. Ezt az értéket úgy kell konfigurálni, hogy az illeszkedjen a szervezet méretéhez. Mivel a szinkronizálási ütemező 30 percenként fut, az érték a 30 percen belül látható törlések száma.
 
-Ha túl sok törlések előkészített nelze exportovat do Azure ad-ben, majd az Exportálás leállítja, és a egy e-mailt kap:
+Ha túl sok törlés lett kiválasztva az Azure AD-ba, akkor az Exportálás leáll, és a következőhöz hasonló e-mailt kap:
 
-![E-mailek véletlen törlések megakadályozása](./media/how-to-connect-sync-feature-prevent-accidental-deletes/email.png)
+![E-mailek véletlen törlésének megakadályozása](./media/how-to-connect-sync-feature-prevent-accidental-deletes/email.png)
 
-> *Hello (technikai kapcsolattartó). (Idő), az identitás-szinkronizálási szolgáltatás azt észlelte, hogy a törlések száma túllépte a beállított törlési küszöbértéke (szervezet neve). Teljes (szám) objektumok a identitásszinkronizálási, futtassa a törlésre lett elküldve. Ez elérte vagy túllépte a beállított törlési küszöbértéket (szám) objektumok. Meg kell adnia erősítse meg, hogy a törlés fel kell dolgozni fog a folytatás előtt. Tekintse át a hiba az e-mail üzenetben szereplő további információt a megakadályozó véletlen törlések.*
+> @no__t – 0Hello (technikai kapcsolattartó). Ekkor a identitásszinkronizálás szolgáltatás azt észlelte, hogy a törlések száma túllépte a (szervezet neve) beállított törlési küszöbértékét. A rendszer a törléshez összesen (szám) objektumot küld el ebben az identitásszinkronizálás futtatásban. Ez megfelelt vagy túllépte a beállított törlési küszöbértéket (szám). A folytatáshoz meg kell erősítenie, hogy ezeket a törléseket fel kell dolgozni. Az e-mail-üzenetben felsorolt hibával kapcsolatos további információkért tekintse meg a véletlen törlés megakadályozása című témakört. *
 >
 > 
 
-Emellett megtekintheti az állapotát `stopped-deletion-threshold-exceeded` meg, így a **Synchronization Service Managert** a Export-profilhoz tartozó felhasználói felületen.
-![Szinkronizálás a Service Manager felhasználói felületén véletlen törlések megakadályozása](./media/how-to-connect-sync-feature-prevent-accidental-deletes/syncservicemanager.png)
+@No__t – 0 állapotot is megtekintheti, ha az exportálási profil **synchronization Service Manager** felhasználói felületét keresi.
+@no__t – 0Prevent véletlen törlése szinkronizálás Service Manager UI @ no__t-1
 
-Ha ez nem várt, vizsgálja meg, és javítási műveleteket. Ha szeretné látni, mely objektumokat is törölve lesz, tegye a következőket:
+Ha ez nem várt, akkor vizsgálja meg, és végezze el a megfelelő műveleteket. Ha szeretné megtekinteni, hogy mely objektumokat szeretné törölni, tegye a következőket:
 
-1. Indítsa el **szinkronizálási szolgáltatás** a Start menüből.
-2. Lépjen a **összekötők**.
-3. Válassza ki az összekötő típusú **Azure Active Directory**.
-4. A **műveletek** a jobb oldalon válassza ki a **keresési Összekötőterét**.
-5. Az előugró alatt **hatókör**válassza **leválasztott óta** , és válassza ki egyszerre a múltban. Kattintson a **Keresés** gombra. Ezen a lapon megtekintheti az összes objektum törölve lesz. Minden elem kattintva kaphat további információt az objektum. Is **oszlop beállítás** lehet a rácsban látható további attribútumok hozzáadása.
+1. Indítsa el a **szinkronizálási szolgáltatást** a Start menüből.
+2. Válassza az **Összekötők**lehetőséget.
+3. Válassza ki a **Azure Active Directory**típusú összekötőt.
+4. A jobb oldali **műveletek** területen válassza a **Keresés összekötő terület**lehetőséget.
+5. A **hatókör**alatt lévő előugró ablakban válassza a **leválasztva** lehetőséget, és válasszon egy korábbi időpontot. Kattintson a **Keresés** gombra. Ezen a lapon látható a törölni kívánt összes objektum áttekintése. Az egyes elemekre kattintva további információkat érhet el az objektumról. Az **oszlop beállítása** lehetőségre kattintva további attribútumokat is hozzáadhat a rácshoz.
 
-![Keresési Összekötőterét](./media/how-to-connect-sync-feature-prevent-accidental-deletes/searchcs.png)
+![Keresési összekötő területe](./media/how-to-connect-sync-feature-prevent-accidental-deletes/searchcs.png)
 
-Összes törlése megfelelő vannak, majd tegye a következőket:
+[!NOTE] Ha nem biztos benne, hogy minden törlésre szükség van, és szeretne lejárni egy biztonságosabb útvonalon. A (z) `Enable-ADSyncExportDeletionThreshold` PowerShell-parancsmag használatával új küszöbértéket állíthat be, nem pedig a nem kívánt törléseket engedélyező küszöbértéket. 
 
-1. Az aktuális törlés küszöbértékének lekéréséhez futtassa a PowerShell-parancsmagot `Get-ADSyncExportDeletionThreshold`. Adja meg az Azure AD globális rendszergazdai fiókot és jelszót. Az alapértelmezett érték: 500.
-2. Ideiglenes tiltsa le a védelmet, és ezeket a törlések halad át, és futtassa a PowerShell-parancsmag segítségével: `Disable-ADSyncExportDeletionThreshold`. Adja meg az Azure AD globális rendszergazdai fiókot és jelszót.
+## <a name="if-all-deletes-are-desired"></a>Ha minden törlés szükséges
+Ha az összes törlés szükséges, tegye a következőket:
+
+1. Az aktuális törlési küszöbérték lekéréséhez futtassa a következő PowerShell-parancsmagot: `Get-ADSyncExportDeletionThreshold`. Adja meg az Azure AD globális rendszergazdai fiókját és jelszavát. Az alapértelmezett érték a 500.
+2. Ha átmenetileg le szeretné tiltani ezt a védelmet, és engedélyezi a törlést, futtassa a következő PowerShell-parancsmagot: `Disable-ADSyncExportDeletionThreshold`. Adja meg az Azure AD globális rendszergazdai fiókját és jelszavát.
    ![Hitelesítő adatok](./media/how-to-connect-sync-feature-prevent-accidental-deletes/credentials.png)
-3. Az Azure Active Directory-összekötő ki van jelölve, válassza a művelet **futtatása** válassza **exportálása**.
-4. Kívánja újból engedélyezni a védelmet, futtassa a PowerShell-parancsmagot: `Enable-ADSyncExportDeletionThreshold -DeletionThreshold 500`. Azt észleltük, hogy az aktuális törlés küszöbértékének lekérésekor értékét cserélje le a 500. Adja meg az Azure AD globális rendszergazdai fiókot és jelszót.
+3. Ha a Azure Active Directory-összekötő továbbra is ki van választva, válassza ki **a műveletet,** és válassza az **Exportálás**lehetőséget.
+4. A védelem újbóli engedélyezéséhez futtassa a következő PowerShell-parancsmagot: `Enable-ADSyncExportDeletionThreshold -DeletionThreshold 500`. Cserélje le a 500 értéket az aktuális törlési küszöb beolvasásakor észlelt értékre. Adja meg az Azure AD globális rendszergazdai fiókját és jelszavát.
 
 ## <a name="next-steps"></a>További lépések
-**Áttekintő témakör**
+**Áttekintő témakörök**
 
-* [Az Azure AD Connect szinkronizálása: Megismerheti, és testre szabhatja a szinkronizálás](how-to-connect-sync-whatis.md)
+* [Az Azure AD Connect szinkronizálása: A szinkronizálás megismerése és testreszabása](how-to-connect-sync-whatis.md)
 * [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md)

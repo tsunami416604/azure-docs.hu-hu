@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
-ms.openlocfilehash: a4e0432260cfb9ee11ed318305fb967d160de835
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 901544886e0a0c90c29e83fc71f7a7a25ffc6862
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652552"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66244887"
 ---
-# <a name="use-azure-blob-storage-for-iis-and-azure-table-storage-for-events-with-azure-monitor"></a>Az Azure blob storage használata az IIS és az Azure table storage-események az Azure Monitor szolgáltatással
+# <a name="collect-azure-diagnostic-logs-from-azure-storage"></a>Az Azure diagnosztikai naplók gyűjtése az Azure Storage-ból
 
 Az Azure Monitor a naplók a következő szolgáltatásokat, hogy az írási diagnosztika a table storage vagy az IIS-napló írása blobtárolókba olvashatja:
 

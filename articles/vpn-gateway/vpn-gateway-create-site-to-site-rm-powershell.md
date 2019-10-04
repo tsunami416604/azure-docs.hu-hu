@@ -1,18 +1,18 @@
 ---
-title: 'A helyszíni hálózat csatlakoztatása az Azure-beli virtuális hálózathoz: Helyek közötti VPN: PowerShell |} A Microsoft Docs'
+title: 'A helyszíni hálózat összekapcsolása egy Azure-beli virtuális hálózattal: Helyek közötti VPN: PowerShell | Microsoft Docs'
 description: A helyszíni hálózatot az Azure-beli virtuális hálózattal a nyilvános interneten keresztül összekötő IPsec-kapcsolat létrehozásának lépései. Ezen lépéseket követve létrehozhat egy helyek közötti VPN-átjáró kapcsolatot a PowerShell segítségével.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/14/2019
+ms.date: 07/31/2019
 ms.author: cherylmc
-ms.openlocfilehash: 366cce89e2ee5c446443c4dfc5ed12244bb4938d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 69cdf248e299ce4fdf08540836d44958438a2665
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58123742"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699905"
 ---
 # <a name="create-a-vnet-with-a-site-to-site-vpn-connection-using-powershell"></a>Helyek közötti VPN-kapcsolattal rendelkező virtuális hálózat létrehozása a PowerShell használatával
 
@@ -40,14 +40,14 @@ A konfigurálás megkezdése előtt győződjön meg a következő feltételek t
 * Győződjön meg arról, hogy rendelkezik egy kifelé irányuló, nyilvános IPv4-címmel a VPN-eszköz számára.
 * Ha nem ismeri a helyszíni hálózati konfigurációjában található IP-címtereket, egyeztessen valakivel, aki ezeket az adatokat megadhatja Önnek. Amikor létrehozza ezt a konfigurációt, meg kell határoznia az IP-címtartományok előtagjait, amelyeket az Azure majd a helyszínre irányít. A helyszíni hálózat egyik alhálózata sem lehet átfedésben azokkal a virtuális alhálózatokkal, amelyekhez csatlakozni kíván.
 
-[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ### <a name="running-powershell-locally"></a>A PowerShell helyi futtatása
 
 Ha helyben kívánja telepíteni és használni a PowerShellt, telepítse az Azure Resource Manager PowerShell-parancsmagok legújabb verzióját. A PowerShell-parancsmagok gyakran frissülnek, és általában frissítenie kell a PowerShell-parancsmagokat a legújabb szolgáltatásfunkciók eléréséhez. Ha nem frissíti a PowerShell-parancsmagokat, a megadott értékek sikertelenek lehetnek. 
 
-A jelenleg használt verzió azonosításához futtassa a "Get-Module - ListAvailable Az". Ha frissítésre van szükség, olvassa el az [Azure PowerShell-modul telepítését ismertető](/powershell/azure/install-az-ps) szakaszt. További információt [az Azure PowerShell telepítésével és konfigurálásával](/powershell/azure/overview) foglalkozó témakörben talál.
-Ha Ön helyileg futtatja a Powershellt, is kell futtassa a "Connect-AzAccount" kapcsolat létrehozása az Azure-ral.
+A használt verzió megkereséséhez futtassa a Get-Module-ListAvailable az parancsot. Ha frissítésre van szükség, olvassa el az [Azure PowerShell-modul telepítését ismertető](/powershell/azure/install-az-ps) szakaszt. További információt [az Azure PowerShell telepítésével és konfigurálásával](/powershell/azure/overview) foglalkozó témakörben talál.
+Ha helyileg futtatja a PowerShellt, akkor a "AzAccount" parancsot is futtatnia kell a kapcsolat létrehozásához az Azure-ban.
 
 
 ### <a name="example"></a>Példaértékek
@@ -91,7 +91,7 @@ Ha még nem rendelkezik virtuális hálózattal, akkor hozzon létre egyet. Virt
 
 [!INCLUDE [No NSG warning](../../includes/vpn-gateway-no-nsg-include.md)]
 
-### <a name="vnet"></a>Hozzon létre egy virtuális hálózat és átjáró-alhálózat
+### <a name="vnet"></a>Virtuális hálózat és átjáró-alhálózat létrehozása
 
 Ebben a példában egy virtuális hálózatot és egy átjáróalhálózatot hozunk létre. Ha már rendelkezik virtuális hálózattal, amelyhez hozzá szeretne adni egy átjáróalhálózatot, lásd: [Átjáróalhálózat hozzáadása már létrehozott virtuális hálózathoz](#gatewaysubnet).
 
@@ -123,7 +123,7 @@ Ennek a szakasznak a lépéseit akkor kövesse, ha már rendelkezik virtuális h
 1. Állítsa be a változókat.
 
    ```azurepowershell-interactive
-   $vnet = Get-AzVirtualNetwork -ResourceGroupName TestRG1 -Name TestVet1
+   $vnet = Get-AzVirtualNetwork -ResourceGroupName TestRG1 -Name VNet1
    ```
 2. Hozza létre az átjáró-alhálózatot.
 
@@ -138,7 +138,7 @@ Ennek a szakasznak a lépéseit akkor kövesse, ha már rendelkezik virtuális h
 
 ## 2. <a name="localnet"></a>A helyi hálózati átjáró létrehozása
 
-A helyi hálózati átjáró (LNG) általában a helyszíni helyet jelenti. Nincs ugyanaz, mint egy virtuális hálózati átjárót. Olyan nevet adjon a helynek, amellyel az Azure hivatkozhat rá, majd határozza meg annak a helyszíni VPN-eszköznek az IP-címét, amellyel létre kívánja hozni a kapcsolatot. Emellett megadhatja azokat az IP-címelőtagokat, amelyek a VPN-átjárón keresztül a VPN-eszközre lesznek irányítva. Az Ön által meghatározott címelőtagok a helyszíni hálózatán található előtagok. A helyszíni hálózat módosításakor az előtagok egyszerűen frissíthetők.
+A helyi hálózati átjáró (LNG) általában a helyszíni helyre vonatkozik. Nem ugyanaz, mint a virtuális hálózati átjáró. Olyan nevet adjon a helynek, amellyel az Azure hivatkozhat rá, majd határozza meg annak a helyszíni VPN-eszköznek az IP-címét, amellyel létre kívánja hozni a kapcsolatot. Emellett megadhatja azokat az IP-címelőtagokat, amelyek a VPN-átjárón keresztül a VPN-eszközre lesznek irányítva. Az Ön által meghatározott címelőtagok a helyszíni hálózatán található előtagok. A helyszíni hálózat módosításakor az előtagok egyszerűen frissíthetők.
 
 Használja a következő értékeket:
 
@@ -167,7 +167,7 @@ A helyi hálózati átjáró előtagjai bizonyos esetekben változnak. Az IP-cí
 
 Egy VPN Gateway-nek rendelkeznie kell nyilvános IP-címmel. Először az IP-cím típusú erőforrást kell kérnie, majd hivatkoznia kell arra, amikor létrehozza a virtuális hálózati átjárót. Az IP-címet a rendszer dinamikusan rendeli hozzá az erőforráshoz a VPN Gateway létrehozásakor. 
 
-A VPN Gateway jelenleg csak a *Dinamikus* nyilvános IP-cím lefoglalását támogatja. Nem kérheti statikus IP-cím hozzárendelését. Ez azonban nem jelenti azt, hogy az IP-cím módosul a VPN gatewayhez való hozzárendelése után. A nyilvános IP-cím kizárólag abban az esetben változik, ha az átjárót törli, majd újra létrehozza. Nem módosul átméretezés, alaphelyzetbe állítás, illetve a VPN Gateway belső karbantartása/frissítése során.
+A VPN Gateway jelenleg csak a *Dinamikus* nyilvános IP-cím lefoglalását támogatja. Nem kérheti statikus IP-cím hozzárendelését. Ez azonban nem jelenti azt, hogy az IP-cím megváltozik, miután hozzá lett rendelve a VPN-átjáróhoz. A nyilvános IP-cím kizárólag abban az esetben változik, ha az átjárót törli, majd újra létrehozza. Nem módosul átméretezés, alaphelyzetbe állítás, illetve a VPN Gateway belső karbantartása/frissítése során.
 
 Kérjen egy nyilvános IP-címet, amelyet a virtuális hálózatban a VPN Gateway-hez társít.
 
@@ -177,7 +177,7 @@ $gwpip= New-AzPublicIpAddress -Name VNet1GWPIP -ResourceGroupName TestRG1 -Locat
 
 ## <a name="GatewayIPConfig"></a>4. Az átjáró IP-címkonfigurációjának létrehozása
 
-Az átjáró konfigurációja meghatározza az alhálózat (a "GatewaySubnet") és a nyilvános IP-cím használatára. A következő példa használatával hozza létre az átjáró konfigurációját.
+Az átjáró konfigurációja meghatározza az alhálózatot (a "GatewaySubnet") és a használni kívánt nyilvános IP-címet. A következő példa használatával hozza létre az átjáró konfigurációját.
 
 ```azurepowershell-interactive
 $vnet = Get-AzVirtualNetwork -Name VNet1 -ResourceGroupName TestRG1
@@ -208,7 +208,7 @@ A parancs futtatása után az átjáró létrehozása akár 45 percet is igényb
 A helyszíni hálózaton a helyek közötti kapcsolatok létesítéséhez VPN-eszközre van szükség. Ebben a lépésben a VPN-eszköz konfigurálása következik. A VPN-eszköz konfigurálásakor szüksége van a következő elemek:
 
 - Megosztott kulcs. Ez ugyanaz a megosztott kulcs, amelyet a helyek közötti VPN-kapcsolat létrehozásakor ad meg. A példákban alapvető megosztott kulcsot használunk. Javasoljuk egy ennél összetettebb kulcs létrehozását.
-- A virtuális hálózati átjáró nyilvános IP-címe. A nyilvános IP-címet az Azure Portalon, valamint a PowerShell vagy a CLI használatával is megtekintheti. A PowerShell-lel virtuális hálózati átjáró nyilvános IP-cím megkereséséhez használja a következő példát. Ebben a példában VNet1GWPIP pedig a korábbi lépésben létrehozott nyilvános IP-cím erőforrás neve.
+- A virtuális hálózati átjáró nyilvános IP-címe. A nyilvános IP-címet az Azure Portalon, valamint a PowerShell vagy a CLI használatával is megtekintheti. A virtuális hálózati átjáró nyilvános IP-címének a PowerShell használatával történő megkereséséhez használja a következő példát. Ebben a példában a VNet1GWPIP annak a nyilvános IP-cím-erőforrásnak a neve, amelyet egy korábbi lépésben hozott létre.
 
   ```azurepowershell-interactive
   Get-AzPublicIpAddress -Name VNet1GWPIP -ResourceGroupName TestRG1
@@ -249,7 +249,7 @@ A VPN-kapcsolat ellenőrzése többféleképpen is történhet.
 
 ## <a name="modify"></a>Helyi hálózati átjáró IP-címelőtagjainak módosítása
 
-Ha a helyszínre átirányítani kívánt IP-címelőtagok módosulnak, módosíthatja a helyi hálózati átjárót. Két utasításcsoportot adtunk meg. Ezek közül aszerint választhat, hogy az átjárókapcsolat létre lett-e már hozva. Ezek a Példák használatakor módosítsa a értékeit, hogy megfeleljenek a környezet.
+Ha a helyszínre átirányítani kívánt IP-címelőtagok módosulnak, módosíthatja a helyi hálózati átjárót. Két utasításcsoportot adtunk meg. Ezek közül aszerint választhat, hogy az átjárókapcsolat létre lett-e már hozva. Ha ezeket a példákat használja, módosítsa az értékeket úgy, hogy megfeleljenek a környezetének.
 
 [!INCLUDE [Modify prefixes](../../includes/vpn-gateway-modify-ip-prefix-rm-include.md)]
 

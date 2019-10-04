@@ -1,32 +1,31 @@
 ---
-title: Váltás az Azure Service Fabric-fürt tanúsítványt |} A Microsoft Docs
-description: Ismerje meg, hogyan váltani egy Service Fabric-fürt tanúsítvány által azonosított a tanúsítvány köznapi nevét.
+title: Azure Service Fabric-fürt tanúsítványának átadása | Microsoft Docs
+description: Ismerje meg, hogyan lehet áttekinteni a tanúsítvány köznapi nevével azonosított Service Fabric-fürt tanúsítványát.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
-editor: aljo
 ms.assetid: 5441e7e0-d842-4398-b060-8c9d34b07c48
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/24/2018
-ms.author: aljo
-ms.openlocfilehash: dd4b6026772a20c522532e1ba65c6846addfa161
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 09/06/2019
+ms.author: atsenthi
+ms.openlocfilehash: d6ead6aaa5d4c0e864126bf63d4cc0e9339464f2
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59046359"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773354"
 ---
-# <a name="manually-roll-over-a-service-fabric-cluster-certificate"></a>Manuálisan vihetők át a Service Fabric-fürt tanúsítvány
-Ha egy Service Fabric-fürt tanúsítvány hamarosan lejár, akkor frissítenie kell a tanúsítványt.  Tanúsítványváltás az egyszerű, ha a fürt [beállított tanúsítvány köznapi név alapján](service-fabric-cluster-change-cert-thumbprint-to-cn.md) (helyett ujjlenyomat).  Egy új tanúsítvány beszerzése egy hitelesítésszolgáltatótól, új lejárati dátummal.  Önaláírt tanúsítványok nem termelési Service Fabric-fürtök az Azure portal fürt létrehozásának munkafolyamata során létrehozott tanúsítványokat támogatása el. Az új tanúsítvány köznapi neve megegyezik a régebbi tanúsítványt kell rendelkeznie. 
+# <a name="manually-roll-over-a-service-fabric-cluster-certificate"></a>Service Fabric-fürt tanúsítványának manuális átadása
+Ha egy Service Fabric-fürt tanúsítványa le van zárva, frissítenie kell a tanúsítványt.  A tanúsítvány-átváltási egyszerű, ha a fürtöt [úgy állították be, hogy a tanúsítványokat köznapi név](service-fabric-cluster-change-cert-thumbprint-to-cn.md) (ujjlenyomat helyett) alapján használja.  Új tanúsítvány beszerzése egy új lejárati dátummal rendelkező hitelesítésszolgáltatótól.  Az önaláírt tanúsítványok nem támogatják az éles Service Fabric fürtöket, így Azure Portal fürt létrehozásakor létrehozott tanúsítványokat is tartalmazhatnak. Az új tanúsítványnak ugyanazzal a köznapi névvel kell rendelkeznie, mint a régebbi tanúsítványnak. 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Service Fabric-fürt automatikusan a deklarált tanúsítványt használja, és a egy további, a jövőbeli lejárati dátumot; Ha egynél több ellenőrzése a tanúsítvány telepítve van a gazdagépen. Ajánlott eljárás, hogy az Azure-erőforrások kiépítése egy Resource Manager-sablon. Nem éles környezetben a következő parancsfájl töltse fel egy új tanúsítványt a key vault segítségével, és ezután telepíti a tanúsítványt a virtuálisgép-méretezési csoportot: 
+Service Fabric fürt automatikusan a deklarált tanúsítványt fogja használni a jövőbeli lejárati dátummal együtt. Ha egynél több érvényesítő tanúsítvány van telepítve a gazdagépen. Az ajánlott eljárás egy Resource Manager-sablon használata az Azure-erőforrások kiépítéséhez. Nem éles környezet esetén a következő parancsfájl használatával tölthet fel egy új tanúsítványt egy kulcstartóba, majd telepítheti a tanúsítványt a virtuálisgép-méretezési csoportba: 
 
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser -Force
@@ -54,7 +53,7 @@ $resourceId = $keyVault.ResourceId
 
 # Add the certificate to the key vault.
 $PasswordSec = ConvertTo-SecureString -String $Password -AsPlainText -Force
-$KVSecret = Import-AzureKeyVaultCertificate -VaultName $vaultName -Name $certName  -FilePath $certFilename -Password $PasswordSec
+$KVSecret = Import-AzKeyVaultCertificate -VaultName $vaultName -Name $certName  -FilePath $certFilename -Password $PasswordSec
 
 $CertificateThumbprint = $KVSecret.Thumbprint
 $CertificateURL = $KVSecret.SecretId
@@ -82,9 +81,9 @@ Update-AzVmss -ResourceGroupName $VmssResourceGroupName -Name $VmssName -Virtual
 ```
 
 >[!NOTE]
-> Kiszámítja a virtuális gép méretezési beállítása titkos kulcsok nem támogatják az erőforrás-azonosító a két külön titkos adatait, mivel minden titkos kulcsot egy verzióval ellátott egyedi erőforrást. 
+> A számítási műveletek virtuálisgép-méretezési csoportjának titkai nem támogatják ugyanazt az erőforrás-azonosítót két külön titok esetében, mivel minden egyes titok egy verzióval ellátott egyedi erőforrás. 
 
-További tudnivalókért olvassa el a következőket:
-* Ismerje meg [biztonsági fürt](service-fabric-cluster-security.md).
-* [Frissítse és fürttanúsítványok kezelése](service-fabric-cluster-security-update-certs-azure.md)
+## <a name="next-steps"></a>További lépések
 
+* További információ a [fürt biztonságáról](service-fabric-cluster-security.md).
+* [Fürt tanúsítványainak frissítése és kezelése](service-fabric-cluster-security-update-certs-azure.md)

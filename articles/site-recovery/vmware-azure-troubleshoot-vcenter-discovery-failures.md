@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: v-doglov
 ms.openlocfilehash: c598c5e238458c010500579c5371622b85e71de0
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540805"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60565191"
 ---
 # <a name="troubleshoot-vcenter-discovery-failures"></a>A vCenter-felderítési hibák elhárítása
 
@@ -47,7 +47,7 @@ vCenter felderítése a rendszer alapértelmezett proxybeállításait, a rendsz
 A következő helyzetekben fordulhat elő, ha a probléma akkor fordul elő:
 
 - A vCenter-kiszolgáló \<vCenter > nem érhető el a hiba miatt: A távoli kiszolgáló hibát adott vissza: (503) kiszolgáló nem érhető el
-- A vCenter-kiszolgáló \<vCenter > nem érhető el a hiba miatt: A távoli kiszolgáló hibát adott vissza: Nem sikerült csatlakozni a távoli kiszolgálóhoz.
+- A vCenter-kiszolgáló \<vCenter > nem érhető el a hiba miatt: A távoli kiszolgáló hibát adott vissza: Nem lehet kapcsolódni a távoli kiszolgálón.
 - Nem lehet csatlakozni a vCenter/ESXi-kiszolgálóhoz.
 
 A probléma megoldásához:

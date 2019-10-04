@@ -1,20 +1,21 @@
 ---
-title: Ajánlott eljárások az Anomáliadetektálási detector használatával API használatához
+title: Az Anomaly Detector API használatával kapcsolatos ajánlott eljárások
+titleSuffix: Azure Cognitive Services
 description: Bevált gyakorlatok megismeréséhez, amikor az érzékelő Anomáliadetektálás API-val rendellenességek észlelése.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: 467ac4e475a1c23e25b62c76cfbc959e7ed49465
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 9407f2fc9375765efb6eb9688b3ebfeef24ba90a
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58484034"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721621"
 ---
 # <a name="best-practices-for-using-the-anomaly-detector-api"></a>Az Anomáliadetektálási detector használatával API használatának ajánlott eljárásai
 
@@ -26,9 +27,32 @@ Az Anomáliadetektálási detector használatával API egy olyan állapot nélk�
 
 Ez a cikk segítségével az API-t a legjobb eredmények elérése érdekében az adatok beolvasása a bevált gyakorlatok megismeréséhez. 
 
+## <a name="when-to-use-batch-entire-or-latest-last-point-anomaly-detection"></a>Mikor érdemes használni a batch (teljes) vagy a legújabb (utolsó) pont a rendellenességek észlelése
+
+Az Anomáliadetektálási detector használatával API batch-észlelési végpontja észlelje a rendellenességeket a teljes időpontokban idősorozat-adatok révén teszi lehetővé. Ebben az észlelési üzemmódban egyetlen statisztikai modellt létrejött, és alkalmazza az adatkészlet minden pontján. Az idősorozat-e az alábbi jellemzőkkel, javasoljuk a batch-észlelési található egy API-hívás az adatok előnézetének megtekintéséhez.
+
+* Egy szezonális idősorozat, az alkalmi rendellenességeket.
+* Egy egybesimított trend idősorozat, az alkalmi adatforgalmi csúcsokhoz/DIP. 
+
+Batch anomáliadetektálás valós idejű adatok figyelése, vagy használja, amely nem rendelkezik a fenti jellemzők idősorozat-adatok használata nem ajánlott. 
+
+* Batch-észlelési hoz létre, és csak egy modell vonatkozik, az észlelés az egyes pontok teljes sorozatot keretében történik. Ha az idő sorozat adattrendek felfelé és lefelé szezonalitás, néhány pontokat anélkül módosíthatja (DIP és az adatok kiugrások) a modell által kimaradhatnak. Hasonlóképpen néhány pont módosítása, amelyek kevésbé jelentős kiépítettektől későbbi szakaszában adatokat, mint előfordulhat, hogy nem számítanak bele a elég jelentős ahhoz, be kell építeni a modell.
+
+* Batch-észlelés a lassabb, mint a legutóbbi időpontra anomáliadetektálási állapotának észlelése esetén figyelési valós idejű adatok elemzése folyamatban pontok száma miatt.
+
+A valós idejű adatok figyelése, javasoljuk, hogy csak a legújabb adatpont anomáliadetektálási állapotának észlelése. Utolsó pont észlelés folyamatosan alkalmazásával streamelési adatok figyelése elvégezhető hatékonyabban, pontosan.
+
+Az alábbi példa e észlelési mód is van a teljesítményre gyakorolt hatását ismerteti. Az első képen látható folyamatosan észlelése az anomáliadetektálási állapot utolsó pont mentén 28 korábban látott adatpontok eredménye látható. A piros pontok rendellenességeket.
+
+![Rendellenességek észlelése, a legújabb pont használatát bemutató kép](../media/last.png)
+
+Alább az azonos adatkészlet batch anomáliadetektálás használatával. A művelet a modellnek több rendellenességek téglalapok által jelölt figyelmen kívül hagyta.
+
+![Rendellenességek észlelése, a batch metódussal egy kép](../media/entire.png)
+
 ## <a name="data-preparation"></a>Adatok előkészítése
 
-Az Anomáliadetektálási detector használatával API elfogadja a time series adatok JSON-kérelem objektum formázva. Időbeli adatsorok lehet egymást követő sorrendben idővel bármely numerikus adatokkal. Elküldheti az idősoros adatokat, a windows az Anomáliadetektálási detector használatával API-végpont az API-k teljesítményének javítása érdekében. Elküldheti az adatpontok minimális száma 12, a maximális pedig 8640 pontokat. 
+Az Anomáliadetektálási detector használatával API elfogadja a time series adatok JSON-kérelem objektum formázva. Időbeli adatsorok lehet egymást követő sorrendben idővel bármely numerikus adatokkal. Elküldheti az idősoros adatokat, a windows az Anomáliadetektálási detector használatával API-végpont az API-k teljesítményének javítása érdekében. Elküldheti az adatpontok minimális száma 12, a maximális pedig 8640 pontokat. [Granularitási](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.granularity?view=azure-dotnet-preview) milyen sebességgel: az adatok mintavételezése típusúként van definiálva. 
 
 Az Anomáliadetektálási detector használatával API-nak elküldött adatpontok rendelkeznie kell az egyezményes világidő (UTC) érvényes időbélyeget, és numerikus érték. 
 
@@ -45,6 +69,15 @@ Az Anomáliadetektálási detector használatával API-nak elküldött adatponto
         "value": 29615278
       },
     ]
+}
+```
+
+Ha az adatok mintavételezése nem szabványos időközönként, megadhatja azt hozzáadásával a `customInterval` attribútum a kérelemben. Például ha az sorozat mintavételezés 5 percenként, adhat hozzá a következő a JSON-kérelem:
+
+```json
+{
+    "granularity" : "minutely", 
+    "customInterval" : 5
 }
 ```
 

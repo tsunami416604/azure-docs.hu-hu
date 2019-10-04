@@ -4,16 +4,16 @@ description: Magyarázatra van szüksége, hogy hogyan hozhat létre, és keress
 author: ramonarguelles
 manager: vicenterivera
 services: azure-spatial-anchors
-ms.author: ramonarguelles
+ms.author: rgarcia
 ms.date: 02/24/2019
-ms.topic: how-to
+ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 3dd4fbedd51e11e84303f997cef0bb28bf79b241
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d9638c96c06c06bd92690e568364551bdc299c80
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58918178"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672041"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-objective-c"></a>Hogyan hozhat létre, és keresse meg a horgonyok Azure térbeli horgonyok Objective-C használatával
 
@@ -154,7 +154,7 @@ Tudjon meg többet a [ASACloudSpatialAnchor](https://docs.microsoft.com/objectiv
     // Create a local anchor, perhaps by hit-testing and creating an ARAnchor
     NSArray<ARHitTestResult *> *hits = [_sceneView.session.currentFrame hitTest:CGPointMake(0.5, 0.5) types:ARHitTestResultTypeEstimatedHorizontalPlane];
     if ([hits count] == 0) return;
-    // The hitTest method sorts the resulting list by distance from the camera, increasing
+    // The hitTest method sorts the resulting list by increasing distance from the camera
     // The first hit result will usually be the most relevant when responding to user input
     ARAnchor *localAnchor = [[ARAnchor alloc] initWithTransform:hits[0].worldTransform];
     [_sceneView.session addAnchor:localAnchor];

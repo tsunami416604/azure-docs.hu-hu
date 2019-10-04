@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: b8ee1bdfece35d774cdc79595a495b0b3719a836
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 56360238db8632e74a95c057a7fe643b5cea3151
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59996645"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206834"
 ---
 # <a name="quickstart-create-an-ios-app-with-azure-spatial-anchors-in-either-swift-or-objective-c"></a>Gyors útmutató: IOS-alkalmazás létrehozása az Azure térbeli horgonyok, Objective-C vagy Swift
 
@@ -62,7 +62,7 @@ Nyissa meg a `iOS/Objective-C/` címet.
 cd ./iOS/Objective-C/
 ```
 
-***
+---
 
 Futtatás `pod install --repo-update` a projekthez a CocoaPods telepítéséhez.
 
@@ -80,7 +80,7 @@ open ./SampleSwift.xcworkspace
 open ./SampleObjC.xcworkspace
 ```
 
-***
+---
 
 ## <a name="configure-account-identifier-and-key"></a>Fiókazonosító és kulcsának konfigurálása
 
@@ -102,7 +102,7 @@ Keresse meg a `SpatialAnchorsAccountKey` mezőt, és cserélje le `Set me` és a
 
 Keresse meg a `SpatialAnchorsAccountId` mezőt, és cserélje le `Set me` fiók azonosítóval.
 
-***
+---
 
 ## <a name="deploy-the-app-to-your-ios-device"></a>Az iOS-eszközön az alkalmazás üzembe helyezése
 

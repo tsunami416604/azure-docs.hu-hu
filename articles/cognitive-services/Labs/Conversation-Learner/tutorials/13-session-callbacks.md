@@ -3,19 +3,19 @@ title: Munkamenet-visszahívások használata Beszélgetéstanuló modell – a 
 titleSuffix: Azure
 description: Ismerje meg, hogyan használja a munkamenet-visszahívások Beszélgetéstanuló modell.
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: 246b87e46029c2bf4d7361540939181b3b209acc
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.author: nitinme
+ms.openlocfilehash: eeed0718a1feb170dbbaa783ec0a840c7829c02e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55219117"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66390015"
 ---
 # <a name="how-to-use-session-callbacks-with-a-conversation-learner-model"></a>Munkamenet-visszahívások Beszélgetéstanuló modell használatával
 

@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 10/12/2017
 ms.author: tomfitz
 ms.openlocfilehash: 80fd593eecf189d516a8c9d7ef2a94ec9f23fc39
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063794"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60587920"
 ---
 # <a name="createuidefinition-functions"></a>CreateUiDefinition funkciók
 Ez a szakasz tartalmazza az aláírások, a CreateUiDefinition támogatott függvények.
@@ -131,24 +131,24 @@ A következő példa eredménye `"FOOBAR"`:
 ## <a name="collection-functions"></a>Gyűjtemény-funkciók
 Ezek a függvények gyűjtemények, például a JSON-sztringek, tömbök, és objektumokat is használható.
 
-### <a name="contains"></a>tartalmazza a következőt:
+### <a name="contains"></a>tartalmaz
 Értéket ad vissza `true` Ha egy karakterlánc tartalmaz a megadott karakterláncrészlet, egy tömböt tartalmaz a megadott érték, vagy az objektum tartalmazza a megadott kulcs.
 
-#### <a name="example-1-string"></a>1. példa: karakterlánc
+#### <a name="example-1-string"></a>1\. példa: karakterlánc
 A következő példa eredménye `true`:
 
 ```json
 "[contains('foobar', 'foo')]"
 ```
 
-#### <a name="example-2-array"></a>2. példa: tömb
+#### <a name="example-2-array"></a>2\. példa: tömb
 Tegyük fel, `element1` adja vissza `[1, 2, 3]`. A következő példa eredménye `false`:
 
 ```json
 "[contains(steps('foo').element1, 4)]"
 ```
 
-#### <a name="example-3-object"></a>3. példa: objektum
+#### <a name="example-3-object"></a>3\. példa: objektum
 Tegyük fel, `element1` adja vissza:
 
 ```json
@@ -164,24 +164,24 @@ A következő példa eredménye `true`:
 "[contains(steps('foo').element1, 'key1')]"
 ```
 
-### <a name="length"></a>Hossza
+### <a name="length"></a>length
 Egy karakterlánc, a tömbben értékek száma vagy egy objektumot a kulcsok száma a karakterek számát adja vissza.
 
-#### <a name="example-1-string"></a>1. példa: karakterlánc
+#### <a name="example-1-string"></a>1\. példa: karakterlánc
 A következő példa eredménye `6`:
 
 ```json
 "[length('foobar')]"
 ```
 
-#### <a name="example-2-array"></a>2. példa: tömb
+#### <a name="example-2-array"></a>2\. példa: tömb
 Tegyük fel, `element1` adja vissza `[1, 2, 3]`. A következő példa eredménye `3`:
 
 ```json
 "[length(steps('foo').element1)]"
 ```
 
-#### <a name="example-3-object"></a>3. példa: objektum
+#### <a name="example-3-object"></a>3\. példa: objektum
 Tegyük fel, `element1` adja vissza:
 
 ```json
@@ -200,21 +200,21 @@ A következő példa eredménye `2`:
 ### <a name="empty"></a>üres
 Értéket ad vissza `true` , ha a karakterlánc, tömb vagy objektum null értékű vagy üres.
 
-#### <a name="example-1-string"></a>1. példa: karakterlánc
+#### <a name="example-1-string"></a>1\. példa: karakterlánc
 A következő példa eredménye `true`:
 
 ```json
 "[empty('')]"
 ```
 
-#### <a name="example-2-array"></a>2. példa: tömb
+#### <a name="example-2-array"></a>2\. példa: tömb
 Tegyük fel, `element1` adja vissza `[1, 2, 3]`. A következő példa eredménye `false`:
 
 ```json
 "[empty(steps('foo').element1)]"
 ```
 
-#### <a name="example-3-object"></a>3. példa: objektum
+#### <a name="example-3-object"></a>3\. példa: objektum
 Tegyük fel, `element1` adja vissza:
 
 ```json
@@ -230,7 +230,7 @@ A következő példa eredménye `false`:
 "[empty(steps('foo').element1)]"
 ```
 
-#### <a name="example-4-null-and-undefined"></a>4. példa: null, és nincs definiálva
+#### <a name="example-4-null-and-undefined"></a>4\. példa: null, és nincs definiálva
 Tegyük fel, `element1` van `null` vagy nincs definiálva. A következő példa eredménye `true`:
 
 ```json
@@ -240,21 +240,21 @@ Tegyük fel, `element1` van `null` vagy nincs definiálva. A következő példa 
 ### <a name="first"></a>első
 A megadott karakterlánc; az első karaktert adja vissza a megadott tömb; az első érték vagy az első kulcs-érték a megadott objektum.
 
-#### <a name="example-1-string"></a>1. példa: karakterlánc
+#### <a name="example-1-string"></a>1\. példa: karakterlánc
 A következő példa eredménye `"f"`:
 
 ```json
 "[first('foobar')]"
 ```
 
-#### <a name="example-2-array"></a>2. példa: tömb
+#### <a name="example-2-array"></a>2\. példa: tömb
 Tegyük fel, `element1` adja vissza `[1, 2, 3]`. A következő példa eredménye `1`:
 
 ```json
 "[first(steps('foo').element1)]"
 ```
 
-#### <a name="example-3-object"></a>3. példa: objektum
+#### <a name="example-3-object"></a>3\. példa: objektum
 Tegyük fel, `element1` adja vissza:
 
 ```json
@@ -272,21 +272,21 @@ A következő példa eredménye `{"key1": "foobar"}`:
 ### <a name="last"></a>utolsó
 Az utolsó karakter a megadott karakterlánc, az utolsó a megadott tömbben, vagy a legutóbbi kulcs értékét és a megadott objektum értékét adja vissza.
 
-#### <a name="example-1-string"></a>1. példa: karakterlánc
+#### <a name="example-1-string"></a>1\. példa: karakterlánc
 A következő példa eredménye `"r"`:
 
 ```json
 "[last('foobar')]"
 ```
 
-#### <a name="example-2-array"></a>2. példa: tömb
+#### <a name="example-2-array"></a>2\. példa: tömb
 Tegyük fel, `element1` adja vissza `[1, 2, 3]`. A következő példa eredménye `2`:
 
 ```json
 "[last(steps('foo').element1)]"
 ```
 
-#### <a name="example-3-object"></a>3. példa: objektum
+#### <a name="example-3-object"></a>3\. példa: objektum
 Tegyük fel, `element1` adja vissza:
 
 ```json
@@ -305,21 +305,21 @@ A következő példa eredménye `{"key2": "raboof"}`:
 ### <a name="take"></a>hajtsa végre a megfelelő
 A megadott számú karakterlánc összefüggő karakterből, a kezdetektől a tömb folytonos értékek megadott számú vagy összefüggő kulcsok és értékek kezdete és az objektum megadott számú adja vissza.
 
-#### <a name="example-1-string"></a>1. példa: karakterlánc
+#### <a name="example-1-string"></a>1\. példa: karakterlánc
 A következő példa eredménye `"foo"`:
 
 ```json
 "[take('foobar', 3)]"
 ```
 
-#### <a name="example-2-array"></a>2. példa: tömb
+#### <a name="example-2-array"></a>2\. példa: tömb
 Tegyük fel, `element1` adja vissza `[1, 2, 3]`. A következő példa eredménye `[1, 2]`:
 
 ```json
 "[take(steps('foo').element1, 2)]"
 ```
 
-#### <a name="example-3-object"></a>3. példa: objektum
+#### <a name="example-3-object"></a>3\. példa: objektum
 Tegyük fel, `element1` adja vissza:
 
 ```json
@@ -335,24 +335,24 @@ A következő példa eredménye `{"key1": "foobar"}`:
 "[take(steps('foo').element1, 1)]"
 ```
 
-### <a name="skip"></a>kihagyás
+### <a name="skip"></a>Kihagyás
 A megadott számú elem a gyűjteményben lévő megkerüli, és ezután a többi elemeit adja vissza.
 
-#### <a name="example-1-string"></a>1. példa: karakterlánc
+#### <a name="example-1-string"></a>1\. példa: karakterlánc
 A következő példa eredménye `"bar"`:
 
 ```json
 "[skip('foobar', 3)]"
 ```
 
-#### <a name="example-2-array"></a>2. példa: tömb
+#### <a name="example-2-array"></a>2\. példa: tömb
 Tegyük fel, `element1` adja vissza `[1, 2, 3]`. A következő példa eredménye `[3]`:
 
 ```json
 "[skip(steps('foo').element1, 2)]"
 ```
 
-#### <a name="example-3-object"></a>3. példa: objektum
+#### <a name="example-3-object"></a>3\. példa: objektum
 Tegyük fel, `element1` adja vissza:
 
 ```json
@@ -511,7 +511,7 @@ A következő példa eredménye `2`:
 "[int(2.9)]"
 ```
 
-### <a name="float"></a>lebegőpontos
+### <a name="float"></a>float
 A paraméter egy lebegőpontos alakítja át. Ez a függvény és karakterlánc típusú paramétereket támogatja.
 
 A következő példa eredménye `1.0`:
@@ -526,7 +526,7 @@ A következő példa eredménye `2.9`:
 "[float(2.9)]"
 ```
 
-### <a name="string"></a>sztring
+### <a name="string"></a>string
 Egy karakterlánc alakítja át a paramétert. Ez a függvény minden JSON-adattípusú paramétereket támogatja.
 
 A következő példa eredménye `"1"`:
@@ -553,7 +553,7 @@ A következő példa eredménye `"{"foo":"bar"}"`:
 "[string({\"foo\":\"bar\"})]"
 ```
 
-### <a name="bool"></a>Logikai
+### <a name="bool"></a>bool
 A paraméter alakítja át egy logikai érték. Ez a függvény típusa szám, karakterlánc és logikai paramétereket támogatja. Hasonló a logikai értékek a JavaScript, bármelyik értéke kivételével `0` vagy `'false'` adja vissza `true`.
 
 A következő példa eredménye `true`:
@@ -653,7 +653,7 @@ A következő példa eredménye `3`:
 "[add(1, 2)]"
 ```
 
-### <a name="sub"></a>Sub
+### <a name="sub"></a>sub
 A második szám az első szám az levonja, és az eredményt adja vissza.
 
 A következő példa eredménye `1`:
@@ -704,7 +704,7 @@ A következő példa eredménye `1`:
 "[min(1, 2)]"
 ```
 
-### <a name="max"></a>max.
+### <a name="max"></a>max
 A két szám nagyobb értéket ad vissza.
 
 A következő példa eredménye `2`:
@@ -759,7 +759,7 @@ Az alábbi példa vissza `"1990-12-31T23:59:59.000Z"`:
 "[utcNow()]"
 ```
 
-### <a name="addseconds"></a>masodpercekHozzaadasa
+### <a name="addseconds"></a>addSeconds
 A megadott időbélyeg ad hozzá egy szerves másodpercek száma.
 
 A következő példa eredménye `"1991-01-01T00:00:00.000Z"`:

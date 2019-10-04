@@ -1,6 +1,6 @@
 ---
-title: XTP memóriabeli tárolás monitorozása |} A Microsoft Docs
-description: Becslés és figyelő XTP memóriabeli tárolás használata esetén kapacitás; kapacitás hiba 41823 megoldása
+title: Memóriában tárolt XTP figyelése | Microsoft Docs
+description: Megbecsülheti és figyelheti a XTP memóriabeli tárolási használatát, a kapacitást; kapacitás feloldása 41823
 services: sql-database
 ms.service: sql-database
 ms.subservice: monitor
@@ -10,55 +10,54 @@ ms.topic: conceptual
 author: juliemsft
 ms.author: jrasnick
 ms.reviewer: genemi
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 7542e9fa04eb838baca37dbe13f7cdacdfaf041b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 1c5a57f634c01cc42934a98decd8f392334dede6
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470263"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567981"
 ---
-# <a name="monitor-in-memory-oltp-storage"></a>A figyelő In-Memory OLTP-tár
+# <a name="monitor-in-memory-oltp-storage"></a>Memóriában tárolt OLTP-tárolók figyelése
 
-Használata esetén [In-Memory OLTP](sql-database-in-memory.md), a memóriaoptimalizált táblák és Táblaváltozók adatok találhatók az In-Memory OLTP storage-ban. Minden prémium és üzletileg kritikus szolgáltatási szint In-Memory OLTP storage mérete tartalmaz. Lásd: [DTU-alapú erőforráskorlátok – önálló adatbázis](sql-database-dtu-resource-limits-single-databases.md), [DTU-alapú erőforráskorlátok – rugalmas készletek](sql-database-dtu-resource-limits-elastic-pools.md),[Virtuálismag-alapú erőforráskorlátok – önálló adatbázisok](sql-database-vcore-resource-limits-single-databases.md) és [Virtuálismag-alapú erőforráskorlátok – rugalmas készletek](sql-database-vcore-resource-limits-elastic-pools.md).
+Memóriában tárolt [OLTP](sql-database-in-memory.md)használata esetén a memóriában optimalizált táblák és a táblázat változói a memóriában tárolt OLTP-tárolóban találhatók. Az egyes prémium és üzletileg kritikus szolgáltatási szinteken a memóriában tárolt OLTP maximális mérete található. Lásd: [DTU-alapú erőforrás-korlátok – önálló adatbázis](sql-database-dtu-resource-limits-single-databases.md), [DTU-alapú erőforrás-korlátok – rugalmas készletek](sql-database-dtu-resource-limits-elastic-pools.md),[virtuális mag-alapú erőforrás-korlátok – önálló adatbázisok](sql-database-vcore-resource-limits-single-databases.md) és [virtuális mag-alapú erőforrás-korlátok – rugalmas készletek](sql-database-vcore-resource-limits-elastic-pools.md).
 
-Ha meghaladja a korlátot, beszúrási és frissítési műveletek kezdheti el hiba 41823 az önálló adatbázisok és rugalmas készletekhez 41840 hiba miatt sikertelenül működő. Ekkor vagy törölni szeretne felszabadítani a memória, vagy frissítse a szolgáltatási rétegben, vagy az adatbázis méretét a számítási adatokat.
+Ha túllépte a korlátot, az INSERT és a Update művelet a 41823-as hiba miatt meghiúsulhat az önálló adatbázisok esetében, és a 41840-es hiba a rugalmas készletek esetében. Ezen a ponton törölnie kell az adatok mennyiségét a memória visszaigényléséhez, vagy frissítenie kell az adatbázis szolgáltatási szintjét vagy számítási méretét.
 
-## <a name="determine-whether-data-fits-within-the-in-memory-oltp-storage-cap"></a>Határozza meg, hogy adat megfelel-e a memórián belüli online Tranzakciófeldolgozási Tárhelykorlát
+## <a name="determine-whether-data-fits-within-the-in-memory-oltp-storage-cap"></a>Annak megállapítása, hogy a memóriában lévő OLTP-tárolóban található adatmennyiség megfelel-e
 
-A tárolási korlátokat a különböző szolgáltatásszintek határozza meg. Lásd: [DTU-alapú erőforráskorlátok – önálló adatbázis](sql-database-dtu-resource-limits-single-databases.md), [DTU-alapú erőforráskorlátok – rugalmas készletek](sql-database-dtu-resource-limits-elastic-pools.md),[Virtuálismag-alapú erőforráskorlátok – önálló adatbázisok](sql-database-vcore-resource-limits-single-databases.md) és [Virtuálismag-alapú erőforráskorlátok – rugalmas készletek](sql-database-vcore-resource-limits-elastic-pools.md).
+Határozza meg a különböző szolgáltatási rétegek tárolási sapkáit. Lásd: [DTU-alapú erőforrás-korlátok – önálló adatbázis](sql-database-dtu-resource-limits-single-databases.md), [DTU-alapú erőforrás-korlátok – rugalmas készletek](sql-database-dtu-resource-limits-elastic-pools.md),[virtuális mag-alapú erőforrás-korlátok – önálló adatbázisok](sql-database-vcore-resource-limits-single-databases.md) és [virtuális mag-alapú erőforrás-korlátok – rugalmas készletek](sql-database-vcore-resource-limits-elastic-pools.md).
 
-Memóriakövetelményei egy memóriaoptimalizált tábla működik, mert az SQL Server ugyanúgy Azure SQL Database nem szükséges. Várjon néhány percet, ellenőrizze, hogy a cikk a [MSDN](https://msdn.microsoft.com/library/dn282389.aspx).
+A memóriára optimalizált tábla memóriára vonatkozó követelményeinek becslése ugyanúgy működik a SQL Server, mint Azure SQL Database. Szánjon néhány percet a cikk áttekintésére az [MSDN webhelyen](https://msdn.microsoft.com/library/dn282389.aspx).
 
-Tábla és táblasorokat változó, valamint az indexek, a felhasználó maximális adatméret beleszámítanak. Emellett az ALTER TABLE szüksége van elég hely az új verzió a teljes tábla-és az indexek létrehozása.
+A tábla és a tábla változó sorai, valamint az indexek a maximális felhasználói adatméret irányába mutatnak. Emellett az ALTER TABLE elég helyet igényel a teljes tábla és az indexek új verziójának létrehozásához.
 
 ## <a name="monitoring-and-alerting"></a>Figyelés és riasztás
-A számítási méret a memórián belüli tárhely kihasználtsága a Tárhelykorlát százalékában figyelheti a [az Azure portal](https://portal.azure.com/): 
+A memóriában tárolt tárolók használatát a [Azure Portal](https://portal.azure.com/)számítási méretének százalékos értékeként is megfigyelheti: 
 
-1. Az adatbázis panelen keresse meg az Erőforrás kihasználtsága mezőbe, majd kattintson a Szerkesztés.
-2. Válassza ki a metrikát `In-Memory OLTP Storage percentage`.
-3. Adjon hozzá egy riasztást, az erőforrás-használatot, ha azt szeretné, hogy a metrika panel megnyitásához kattintson, majd kattintson a riasztás hozzáadása.
+1. Az adatbázis panelen keresse meg az Erőforrás kihasználtsága mezőt, és kattintson a Szerkesztés gombra.
+2. Válassza ki a `In-Memory OLTP Storage percentage`metrikát.
+3. Riasztás hozzáadásához kattintson az Erőforrás kihasználtsága mezőre a metrika panel megnyitásához, majd kattintson a riasztás hozzáadása lehetőségre.
 
-Vagy használja a következő lekérdezést a memórián belüli tárterület kihasználtsága megjelenítéséhez:
+Vagy használja a következő lekérdezést a memóriában tárolt tárterület használatának megjelenítéséhez:
 
 ```sql
     SELECT xtp_storage_percent FROM sys.dm_db_resource_stats
 ```
 
-## <a name="correct-out-of-in-memory-oltp-storage-situations---errors-41823-and-41840"></a>Megfelelő out-az-In-Memory OLTP storage helyzetekben - hibák 41823 és 41840
+## <a name="correct-out-of-in-memory-oltp-storage-situations---errors-41823-and-41840"></a>A memóriában tárolt OLTP-tárolási helyzetek javítása – 41823-es és 41840-es hibák
 
-Szerezze meg a memórián belüli online Tranzakciófeldolgozási Tárhelykorlát a Beszúrás adatbázis eredményezi, frissítés, az ALTER és -LÉTREHOZÁSI műveletek hibaüzenet 41823 (az önálló adatbázisok), vagy (a rugalmas készletek) 41840 hiba miatt sikertelenül működő. Mindkét hibák miatt megszakítja az aktív tranzakció.
+Az adatbázis memóriában lévő OLTP-tárolási korlátjának beírásával a rendszer beilleszti, FRISSÍTI, módosítja és létrehozza a műveleteket, a 41823-as hibaüzenettel (az önálló adatbázisok esetében) vagy a 41840-es hibával (rugalmas készletek esetén). Mindkét hiba miatt az aktív tranzakció megszakad.
 
-Hibaüzenetek 41823 és 41840 azt jelzik, hogy a memóriaoptimalizált táblák és az adatbázis vagy készlet Táblaváltozók elérte a maximális In-Memory OLTP-tároló mérete.
+A 41823-es és a 41840-es hibaüzenetek azt jelzik, hogy az adatbázisban vagy a készletben lévő memória-optimalizált táblák és Table változók elérte a maximális memóriabeli OLTP-tárolási méretet.
 
-Ez a hiba vagy megoldása:
+A hiba elhárításához a következők egyikét kell tennie:
 
-* A memóriaoptimalizált táblákban, potenciálisan a hagyományos, a lemezalapú táblák; az adatok kiszervezése adatok törlése vagy,
-* Frissítse a szolgáltatási rétegben egyik az elegendő memórián belüli storage az adatok megőrzése a memóriaoptimalizált táblák.
+* Adatok törlése a memóriára optimalizált táblákból, potenciálisan az adatok kiszervezése a hagyományos, lemezes táblákba; vagy
+* Frissítse a szolgáltatási szintet úgy, hogy az a memóriára optimalizált táblákban tárolt adatokhoz elég memóriabeli tárterületet biztosítson.
 
 > [!NOTE] 
-> Bizonyos ritkán előforduló esetekben 41823 és 41840 hiba lehet átmeneti, ami azt jelenti, nincs elég rendelkezésre álló In-Memory OLTP-tár és sikeres megismételni a műveletet. Javasoljuk, hogy mind a teljes rendelkezésre álló In-Memory OLTP storage figyelése, és próbálkozzon újra, amikor először 41823 vagy 41840 hiba. Újrapróbálkozási logika kapcsolatos további információkért lásd: [ütközésészlelés és az újrapróbálkozási logika az In-Memory OLTP](https://docs.microsoft.com/sql/relational-databases/In-memory-oltp/transactions-with-memory-optimized-tables#conflict-detection-and-retry-logic).
+> Ritka esetekben a 41823-es és a 41840-es hibák átmenetiek lehetnek, ami azt jelenti, hogy elegendő memóriabeli OLTP-tárterület áll rendelkezésre, és a művelet sikeres újrapróbálkozik. Ezért javasoljuk, hogy figyelje a memóriában elérhető teljes OLTP-tárolót, és próbálkozzon újra a 41823-es vagy 41840-os hiba esetén. Az újrapróbálkozási logikával kapcsolatos további információkért lásd: [ütközések észlelése és újrapróbálkozási logika a memóriában tárolt OLTP](https://docs.microsoft.com/sql/relational-databases/In-memory-oltp/transactions-with-memory-optimized-tables#conflict-detection-and-retry-logic).
 
 ## <a name="next-steps"></a>További lépések
-Figyelés útmutatást lásd: [Azure SQL Database monitorozása a dinamikus felügyeleti nézetek használatával](sql-database-monitoring-with-dmvs.md).
+A figyeléssel kapcsolatos útmutatásért lásd: [Azure SQL Database figyelése dinamikus felügyeleti nézetek használatával](sql-database-monitoring-with-dmvs.md).

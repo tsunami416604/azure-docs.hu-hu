@@ -1,6 +1,6 @@
 ---
-title: Előre összeállított modellek
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Előre elkészített modellek – LUIS
+titleSuffix: Azure Cognitive Services
 description: Előre összeállított modellek adja meg a tartományok, szándék fog vonatkozni, utterances és entitásokat. Indítsa el az alkalmazást egy előre elkészített tartomány vagy a megfelelő tartomány hozzáadása az alkalmazáshoz később.
 services: cognitive-services
 author: diberry
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/24/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 5d2ea9d971eff22ddeed4122c9697ca3096697b0
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: b072e265204bba3caa1388576008d5e41adcc33d
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55882845"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619718"
 ---
 # <a name="prebuilt-domain-intent-and-entity-models"></a>Előre összeállított tartomány, szándék és entitás modellek
 

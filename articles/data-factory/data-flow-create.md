@@ -1,18 +1,17 @@
 ---
 title: Az adatfolyam leképezése az Azure Data Factory létrehozása
-description: Az adatfolyam leképezése az Azure Data Factory létrehozása
+description: Hogyan hozhat létre egy Azure Data Factory leképezés adatfolyam
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: bb6ae9f97d681625218118b8adca116de1c0fb21
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 366ed60534544ebbf889e2f72fe703f9b821f871
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728233"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65235658"
 ---
 # <a name="create-azure-data-factory-data-flow"></a>Az Azure Data Factory adatok folyamat létrehozása
 
@@ -22,7 +21,7 @@ Leképezés adatáramlás az ADF-ben meg oly módon, nagy mennyiségű adat áta
 
 Első lépésként először létrehozunk egy új V2 Data Factory az Azure Portalról. Miután létrehozta az új gyári, kattintson a "Létrehozás és Monitorozás" csempére a Data Factory felhasználói felületének indítása.
 
-![A folyamat lehetőséget](media/data-flow/v2dataflowportal.png "adatfolyam létrehozása")
+![A folyamat lehetőséget](media/data-flow/v2portal.png "adatfolyam létrehozása")
 
 Miután a Data Factory felhasználói felületén, a minta adatfolyamok is használhatja. A minták a ADF sablongyűjteményből érhetők el. Az ADF hozzon létre a "Folyamat létrehozása sablonból", és válassza ki a adatfolyam kategóriát a sablonok fotótárból.
 
@@ -36,7 +35,7 @@ A rendszer felkéri az Azure Blob Storage-fiók adatait adja meg.
 
 ## <a name="create-new-data-flow"></a>Hozzon létre új adatfolyamot
 
-Hozzon létre erőforrás "plusz" gomb ADF felhasználói felület létrehozása az adatok elkezdenek beérkezni használata
+Használja a létrehozása erőforrás "plusz" ADF felhasználói felület adatok folyamatok létrehozása gombra.
 
 ![A folyamat lehetőséget](media/data-flow/newresource.png "új erőforrás")
 

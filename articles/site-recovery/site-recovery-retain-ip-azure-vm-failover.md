@@ -6,12 +6,12 @@ ms.date: 4/9/2019
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 618d60417aa6b582eaef94bf75dcf16c74750f83
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7b7772bad5bb1c5b43a4bcc8d727a22c82547043
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59788871"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66479963"
 ---
 # <a name="retain-ip-addresses-during-failover"></a>IP-cím megőrzése feladatátvétel során
 
@@ -43,7 +43,7 @@ Ez az architektúra a feladatátvétel előtt.
         - Kelet-Ázsia rendelkezik egy virtuális hálózathoz (**forrása VNet**) a cím terület 10.1.0.0/16.
         - Kelet-Ázsia számítási feladatok elosztja a három alhálózatot a virtuális hálózat rendelkezik:
             - **1. alhálózata**: 10.1.1.0/24
-            - **2. alhálózata**: 10.1.2.0/24,
+            - **2. alhálózata**: 10.1.2.0/24
             - **Alhálózat 3**: 10.1.3.0/24
     - Másodlagos (cél) régióban Azure Délkelet-Ázsia
         - Délkelet-Ázsia rendelkezik egy helyreállítási virtuális hálózat (**helyreállítási virtuális hálózat**) azonos **forrása VNet**.
@@ -131,11 +131,11 @@ Itt látható, hogy a hálózati architektúra néz ki a feladatátvétel előtt
 - Kelet-Ázsia rendelkezik egy virtuális hálózathoz (**forrása VNet**) a cím terület 10.1.0.0/16.
   - Kelet-Ázsia rendelkezik elosztja a három alhálózatot, a számítási feladatok **forrása VNet**:
     - **1. alhálózata**: 10.1.1.0/24
-    - **2. alhálózata**: 10.1.2.0/24,
-    - **Alhálózat 3**: az Azure virtuális hálózat, a cím terület 10.1.0.0/16 10.1.3.0/24utilizing. Ez a virtuális hálózat neve **forrás virtuális hálózat**
+    - **2. alhálózata**: 10.1.2.0/24
+    - **Alhálózat 3**: 10.1.3.0/24, a cím terület 10.1.0.0/16 egy Azure virtuális hálózat használatával. Ez a virtuális hálózat neve **forrás virtuális hálózat**
       - A másodlagos (cél) régióban Azure Délkelet-Ázsia:
   - Délkelet-Ázsia rendelkezik egy helyreállítási virtuális hálózat (**helyreállítási virtuális hálózat**) azonos **forrása VNet**.
-- Kelet-Ázsiában lévő virtuális gép csatlakozik egy helyszíni adatközpont az Azure expressroute-on vagy a hely-hely – VPN.
+- Kelet-Ázsiában lévő virtuális gép csatlakozik egy helyszíni adatközpont az Azure ExpressRoute- vagy site-to-site VPN.
 - RTO csökkentése érdekében a B kiosztja az átjárókat, a helyreállítási virtuális hálózat az Azure Délkelet-Ázsia a feladatátvétel előtt.
 - Vállalati B rendel/ellenőrzi a cél IP-címek replikált virtuális gépek számára. A cél IP-cím megegyezik a forrás IP-címet minden virtuális géphez.
 

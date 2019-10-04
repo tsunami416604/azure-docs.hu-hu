@@ -1,6 +1,6 @@
 ---
-title: Adategység kódolása a Media Encoder Standard .NET használatával |} A Microsoft Docs
-description: Ez a cikk bemutatja, hogyan adategység kódolása a Media Encoder Standard használatával a .NET használatával.
+title: Adategység kódolása a Media Encoder Standard .NET használatával | Microsoft Docs
+description: Ez a cikk bemutatja, hogyan lehet a .NET használatával kódolni az eszközöket Media Encoder Standard használatával.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,59 +13,60 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: juliako;anilmur
-ms.openlocfilehash: d3eb2affe76374eb35ac724dff0204f43b567e09
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: juliako
+ms.reviewer: anilmur
+ms.openlocfilehash: 259e32d55f25c4a146b7ff358eb503763dd5fab2
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58183475"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "69016583"
 ---
-# <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>Adategység kódolása a Media Encoder Standard .NET használatával  
+# <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>Adategység kódolása Media Encoder Standard a .NET használatával  
 
-A kódolási feladat a Media Services egyik leggyakrabban használt művelete. A kódolási feladat a médiafájlokat alakítja át egy meghatározott kódolásból egy másikra. Kódolás, ha a Media Services beépített Media Encoder is használhatja. Egy Media Services; partner által biztosított kódoló is használhatja külső kódolókkal az Azure Marketplace-en keresztül érhetők el. 
+A kódolási feladat a Media Services egyik leggyakrabban használt művelete. A kódolási feladat a médiafájlokat alakítja át egy meghatározott kódolásból egy másikra. A kódolás során a Media Services beépített adathordozó-kódolót használhatja. Használhat egy Media Services Partner által biztosított kódolót is; a külső gyártótól származó kódolók az Azure Piactéren keresztül érhetők el. 
 
-Ez a cikk bemutatja, hogyan a kódolásához, a Media Encoder Standard (MES) állnak a .NET használatával. Media Encoder Standard használatával lett konfigurálva a kódolók készletek egyikét leírt [Itt](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409).
+Ez a cikk bemutatja, hogyan kódolhatja az eszközöket a .NET-tel Media Encoder Standard (MES) használatával. Media Encoder Standard az [itt](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)ismertetett kódolók egyikének használatával van konfigurálva.
 
-Javasoljuk, hogy a forrásfájlok mindig kódolandó egy adaptív sávszélességű MP4-készletet, és alakítsa át a készlet a kívánt formátumban történő a [dinamikus csomagolási](media-services-dynamic-packaging-overview.md). 
+Javasoljuk, hogy mindig kódolja a forrásfájlokat egy adaptív sávszélességű MP4-készletbe, majd alakítsa át a készletet a kívánt formátumra a [dinamikus csomagolás](media-services-dynamic-packaging-overview.md)használatával. 
 
-Ha a kimeneti objektum tárolása titkosítva, konfigurálnia kell a állít be objektumtovábbítási szabályzatot. További információkért lásd: [objektumtovábbítási szabályzat konfigurálása](media-services-dotnet-configure-asset-delivery-policy.md).
+Ha a kimeneti eszköz titkosított tároló, konfigurálnia kell az eszköz kézbesítési házirendjét. További információ: az [eszközök kézbesítési házirendjének konfigurálása](media-services-dotnet-configure-asset-delivery-policy.md).
 
 > [!NOTE]
-> MES használatával hoz létre egy kimeneti fájl, amelynek neve tartalmazza az első 32 karakter a bemeneti fájl neve. A név alapján az előre beállított fájlban megadott. Ha például a "fájlnevet": "{Basename} _ {Index} {Extension}". {Basename} helyébe a először 32 karakter hosszú lehet a bemeneti fájl neve.
+> A MES létrehoz egy olyan nevű kimeneti fájlt, amely a bemeneti fájl nevének első 32 karakterét tartalmazza. A név az előre definiált fájlban megadott értéken alapul. Például: "fájlnév": "{basename} _ {index} {Extension}". A (z) {basename} karakterláncot a bemeneti fájl nevének első 32 karaktere váltja fel.
 > 
 > 
 
 ### <a name="mes-formats"></a>MES-formátumok
-[Formátumai és kodekei](media-services-media-encoder-standard-formats.md)
+[Formátumok és kodekek](media-services-media-encoder-standard-formats.md)
 
 ### <a name="mes-presets"></a>MES-beállításkészletek
-Media Encoder Standard használatával lett konfigurálva a kódolók készletek egyikét leírt [Itt](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409).
+Media Encoder Standard az [itt](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)ismertetett kódolók egyikének használatával van konfigurálva.
 
 ### <a name="input-and-output-metadata"></a>Bemeneti és kimeneti metaadatok
-Amikor, kódolás MES használatával egy bemeneti eszköz (vagy eszközök), a kimeneti adategység kap, a sikeres befejezését, amely kódolási feladat. A kimeneti objektum tartalmazza a videó, hang, a miniatűrök, jegyzékfájl, stb. alapján a kódolási előbeállítás használja.
+Ha a MES használatával kódol egy bemeneti adategységet (vagy eszközöket), a rendszer az adott kódolási feladat sikeres befejezésekor egy kimeneti eszközt kap. A kimeneti eszköz a használt kódolási beállításkészlet alapján video-, hang-, miniatűr-, jegyzékfájl-és egyéb adatokat tartalmaz.
 
-A kimeneti objektum bemeneti objektuma metaadatait tartalmazó fájl is tartalmazza. A metaadatok XML-fájl neve formátuma a következő: < asset_id > _metadata.xml (például 41114ad3 eb5e – 4c - 57-8d 92-5354e2b7d4a4_metadata.xml), ahol a < asset_id > bemeneti objektuma AssetId értéke. A bemeneti XML metaadatok sémája leírt [Itt](media-services-input-metadata-schema.md).
+A kimeneti eszköz egy olyan fájlt is tartalmaz, amely tartalmazza a bemeneti adategység metaadatait. A metaadatok XML-fájljának neve a következő formátumú: < asset_id > _metadata. XML (például 41114ad3-eb5e-4c57-8d92-5354e2b7d4a4_metadata. xml), ahol a < asset_id > a bemeneti eszköz AssetId értéke. A bemeneti metaadatok XML-fájljának sémája [itt](media-services-input-metadata-schema.md)van leírva.
 
-A kimeneti objektum a kimeneti adategység metaadatait tartalmazó fájl is tartalmazza. A metaadatok XML-fájl neve formátuma a következő: < source_file_name > _manifest.xml (például BigBuckBunny_manifest.xml). A séma XML leírt kimeneti metaadatok [Itt](media-services-output-metadata-schema.md).
+A kimeneti eszköz egy olyan fájlt is tartalmaz, amely tartalmazza a kimeneti eszköz metaadatait. A metaadatok XML-fájljának neve a következő formátumú: < source_file_name > _manifest. XML (például BigBuckBunny_manifest. xml). A kimeneti metaadatok XML-fájljának sémája [itt](media-services-output-metadata-schema.md)van leírva.
 
-Ha szeretne vizsgálni, vagy a két metaadat-fájlt, hozzon létre egy SAS-kereső, és töltse le a helyi számítógépen. Hozzon létre egy SAS-kereső, és töltse le a fájlt a Media Services .NET SDK-bővítményeket találhat egy példát.
+Ha meg szeretné vizsgálni a két metaadat-fájl egyikét, létrehozhat egy SAS-keresőt, és letöltheti a fájlt a helyi számítógépre. Talál egy példát arra, hogyan hozhat létre SAS-lokátort, és hogyan tölthet le egy fájlt a Media Services .NET SDK-bővítmények használatával.
 
 ## <a name="download-sample"></a>Minta letöltése
-Get, és futtassa a minta azt mutatja be kódolás a MES használatával [Itt](https://azure.microsoft.com/documentation/samples/media-services-dotnet-on-demand-encoding-with-media-encoder-standard/).
+Beolvashat és futtathat egy mintát, amely bemutatja, hogyan kódolhatja a MES [](https://azure.microsoft.com/documentation/samples/media-services-dotnet-on-demand-encoding-with-media-encoder-standard/)-t innen.
 
-## <a name="net-sample-code"></a>.NET mintakód
+## <a name="net-sample-code"></a>.NET-mintakód
 
-Az alábbi példakód a Media Services .NET SDK-t használja a következő feladatokat:
+A következő kódrészlet a Media Services .NET SDK-t használja a következő feladatok elvégzéséhez:
 
 * Hozzon létre egy kódolási feladatot.
-* A Media Encoder Standard kódolóval mutató hivatkozás beolvasása.
-* Adja meg, hogy használja a [adaptív Streamelés](media-services-autogen-bitrate-ladder-with-mes.md) beállításkészletet. 
+* A Media Encoder Standard kódolóra mutató hivatkozás beszerzése.
+* Itt adhatja meg az [adaptív adatfolyam](media-services-autogen-bitrate-ladder-with-mes.md) -készlet használatát. 
 * Egyetlen kódolási feladat hozzáadása a feladathoz. 
-* Adja meg a kódolni kívánt bemeneti objektuma.
-* A kódolt objektumhoz tartalmazó kimeneti adategység létrehozása.
-* Adjon hozzá egy eseménykezelőt a feladat állapotának ellenőrzése.
-* A feladat elküldéséhez.
+* Adja meg a kódolni kívánt bemeneti objektumot.
+* Hozzon létre egy kimeneti eszközt, amely tartalmazza a kódolt objektumot.
+* Adjon hozzá egy eseménykezelőt a feladatok előrehaladásának ellenőrzéséhez.
+* Küldje el a feladatot.
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Egy Visual Studio-projekt létrehozása és konfigurálása
 
@@ -195,12 +196,12 @@ namespace MediaEncoderStandardSample
 }
 ```
 
-## <a name="advanced-encoding-features-to-explore"></a>Speciális kódolási funkciókat megismerése
-* [Miniatűrök létrehozása](media-services-dotnet-generate-thumbnail-with-mes.md)
+## <a name="advanced-encoding-features-to-explore"></a>Speciális kódolási funkciók a felderítéshez
+* [Miniatűrök készítése](media-services-dotnet-generate-thumbnail-with-mes.md)
 * [Miniatűrök létrehozása a kódolás során](media-services-dotnet-generate-thumbnail-with-mes.md#example-of-generating-a-thumbnail-while-encoding)
 * [Videók körülvágása a kódolás során](media-services-crop-video.md)
 * [Kódolási beállításkészletek testreszabása](media-services-custom-mes-presets-with-dotnet.md)
-* [Átfedő vagy a kép a videó küszöbérték](media-services-advanced-encoding-with-mes.md#overlay)
+* [Videó befedése vagy vízjele képpel](media-services-advanced-encoding-with-mes.md#overlay)
 
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -209,6 +210,6 @@ namespace MediaEncoderStandardSample
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-steps"></a>További lépések
-[Hogyan hozhat létre a .NET-es Media Encoder Standard használatával miniatűr](media-services-dotnet-generate-thumbnail-with-mes.md)
-[Media Services Encoding áttekintése](media-services-encode-asset.md)
+[Miniatűr készítése Media Encoder standard használatával a .net](media-services-dotnet-generate-thumbnail-with-mes.md)
+-[Media Services kódolásának áttekintése](media-services-encode-asset.md)
 

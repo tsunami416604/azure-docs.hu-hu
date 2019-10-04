@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: snmuvva
 ms.openlocfilehash: 4a225dbc8e84d65a6ea25f63627599e5bb7d2ced
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59785324"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66129750"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Létrehozása, megtekintése és kezelése a klasszikus metrikariasztásokat az Azure Monitor használatával
 
@@ -21,13 +21,13 @@ Az Azure monitorban klasszikus metrikariasztásokat hardvermódosításainak ér
 
 1. Az a [portál](https://portal.azure.com/), keresse meg a figyelni kívánt a erőforrást, és válassza ki azt.
 
-2. Az a **figyelés** szakaszban jelölje be **riasztások (klasszikus)**. A szöveg és ikon kis mértékben eltérő lehet a különböző erőforrásokat. Ha nem találja a **riasztások (klasszikus)** Itt láthatja a **riasztások** vagy **riasztási szabályok**.
+2. Az a **figyelés** szakaszban jelölje be **riasztások (klasszikus)** . A szöveg és ikon kis mértékben eltérő lehet a különböző erőforrásokat. Ha nem találja a **riasztások (klasszikus)** Itt láthatja a **riasztások** vagy **riasztási szabályok**.
 
     ![Figyelés](media/alerts-classic-portal/AlertRulesButton.png)
 
 3. Válassza ki a **metrikariasztás hozzáadása (klasszikus)** parancsot, és töltse ki a mezőket.
 
-    ![Riasztás beállítása](media/alerts-classic-portal/AddAlertOnlyParamsPage.png)
+    ![Riasztás hozzáadása](media/alerts-classic-portal/AddAlertOnlyParamsPage.png)
 
 4. **Név** a riasztási szabályt. Majd válassza ki a **leírás**, amely értesítő e-mailek is megjelenik.
 

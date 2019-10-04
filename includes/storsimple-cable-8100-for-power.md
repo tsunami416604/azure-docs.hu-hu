@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: db2104020e9478b1fedf68e1c9467f75e16044e2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55889361"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179156"
 ---
 #### <a name="to-cable-for-power"></a>A bekapcsolási kábelezése
 1. Ellenőrizze, hogy az egyes az energiagazdálkodási vált a power, és hűtéssel modulok (PCMs) OFF állásban van.
@@ -28,8 +28,8 @@ ms.locfileid: "55889361"
    | Címke | Leírás |
    |:--- |:--- |
    | 1 |PCM 0 |
-   | 2 |1. vezérlő |
-   | 3 |0. vezérlő |
+   | 2 |Vezérlő 1 |
+   | 3 |Vezérlő 0 |
    | 4 |PCM 1 |
    | 5 |PDU-k |
 4. Kapcsolja be a rendszer, a kiemelt kapcsolók tükrözése mindkét PCMs ON helyére.

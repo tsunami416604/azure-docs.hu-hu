@@ -9,11 +9,11 @@ ms.date: 09/17/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: ca4bd3d3b40934323bab8036f3ce72e9281f1de4
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56751481"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179555"
 ---
 > [!div class="op_single_selector"]
 > * [C Windowson](../articles/iot-accelerators/iot-accelerators-connecting-devices.md)
@@ -26,7 +26,7 @@ ms.locfileid: "56751481"
 Ez az oktatóanyag végrehajtása egy **hűtő** eszköz, amely a következő telemetriát küldi a távoli figyelési [megoldásgyorsító](../articles/iot-accelerators/about-iot-accelerators.md):
 
 * Hőmérséklet
-* Pressure
+* Kiürítése
 * Páratartalom
 
 Az egyszerűség kedvéért a kódot állít elő, a minta telemetriaértékeket az **hűtő**. Az eszköz valódi érzékelők csatlakozik, és valós telemetria küldése sikerült terjessze ki a mintát.

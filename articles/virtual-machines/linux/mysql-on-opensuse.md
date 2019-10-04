@@ -1,30 +1,29 @@
 ---
-title: A MySQL telepítése OpenSUSE rendszerű virtuális gépen az Azure-ban |} A Microsoft Docs
-description: Ismerje meg a MySQL telepítése OpenSUSE Linux rendszerű virtuális gépen az Azure-ban.
+title: A MySQL telepítése OpenSUSE rendszerű virtuális gépen az Azure-ban | Microsoft Docs
+description: Ismerje meg, hogyan telepítheti a MySQL-t egy OpenSUSE Linux rendszerű virtuális gépre az Azure-ban.
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 1594e10e-c314-455a-9efb-a89441de364b
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2018
-ms.author: za-rhoads
-ms.openlocfilehash: 19f53449e21b39eb212f94b100eaf5d26ca4cf13
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: cynthn
+ms.openlocfilehash: 891eade6aaaf8db9813566d10cdceed113560dc7
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58006662"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70091876"
 ---
 # <a name="install-mysql-on-a-virtual-machine-running-opensuse-linux-in-azure"></a>A MySQL telepítése Azure-ban működő, OpenSUSE Linux rendszerű virtuális gépen
 
-[MySQL](https://www.mysql.com) népszerű, nyílt forráskódú SQL-adatbázis. Ez az oktatóanyag bemutatja, hogyan lehet OpenSUSE Linux rendszerű virtuális gép létrehozása, majd a MySQL telepítése.
+A [MySQL](https://www.mysql.com) egy népszerű, nyílt forráskódú SQL-adatbázis. Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy OpenSUSE Linux rendszerű virtuális gépet, majd telepítse a MySQL-t.
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
@@ -33,13 +32,13 @@ Ha a parancssori felület helyi telepítését és használatát választja, az 
 
 ## <a name="create-a-virtual-machine-running-opensuse-linux"></a>OpenSUSE Linux rendszerű virtuális gép létrehozása
 
-Először hozzon létre egy erőforráscsoportot. Ebben a példában az erőforráscsoport neve *mySQSUSEResourceGroup* létrehozták, és a *USA keleti Régiójában* régióban.
+Először hozzon létre egy erőforráscsoportot. Ebben a példában az erőforráscsoport neve *mySQSUSEResourceGroup* , és az *USA keleti* régiójában jön létre.
 
 ```azurecli-interactive
 az group create --name mySQLSUSEResourceGroup --location eastus
 ```
 
-A virtuális gép létrehozásához. Ebben a példában a virtuális gép neve *myVM* és a virtuális gép mérete *Standard_D2s_v3*, de kell kiválasztani a [Virtuálisgép-méret](sizes.md) úgy gondolja, hogy a számítási feladathoz leginkább megfelelő.
+Hozza létre a virtuális gépet. Ebben a példában a virtuális gép neve *myVM* , a virtuális gép mérete pedig *Standard_D2s_v3*, de érdemes kiválasztani a számítási feladathoz legmegfelelőbb virtuálisgép- [méretet](sizes.md) .
 
 ```azurecli-interactive
 az vm create --resource-group mySQLSUSEResourceGroup \
@@ -49,7 +48,7 @@ az vm create --resource-group mySQLSUSEResourceGroup \
    --generate-ssh-keys
 ```
 
-Is hozzá kell egy szabályt a hálózati biztonsági csoporthoz adatforgalom engedélyezéséhez 3306-os porton keresztül a MySQL-hez.
+Emellett hozzá kell adnia egy szabályt a hálózati biztonsági csoporthoz, hogy engedélyezze a forgalmat a MySQL-hez 3306-es porton keresztül.
 
 ```azurecli-interactive
 az vm open-port --port 3306 --resource-group mySQLSUSEResourceGroup --name myVM
@@ -57,7 +56,7 @@ az vm open-port --port 3306 --resource-group mySQLSUSEResourceGroup --name myVM
 
 ## <a name="connect-to-the-vm"></a>Kapcsolódás a virtuális géphez
 
-Csatlakozzon a virtuális Géphez SSH fogja használni. Ebben a példában a virtuális gép nyilvános IP-cím áll *10.111.112.113*. Az IP-címet, a kimenetben láthatja a virtuális gép létrehozásakor.
+Az SSH használatával csatlakozhat a virtuális géphez. Ebben a példában a virtuális gép nyilvános IP-címe *10.111.112.113*. A virtuális gép létrehozásakor a kimenetben láthatja az IP-címet.
 
 ```azurecli-interactive  
 ssh 10.111.112.113
@@ -66,35 +65,35 @@ ssh 10.111.112.113
  
 ## <a name="update-the-vm"></a>A virtuális gép frissítése
  
-Miután csatlakozott a virtuális Gépet, telepítse a rendszer frissítéseit és javításait. 
+A virtuális géphez való csatlakozás után telepítse a rendszerfrissítéseket és a javításokat. 
    
 ```bash
 sudo zypper update
 ```
 
-Kövesse az utasításokat a virtuális gép frissítése.
+Az utasításokat követve frissítse a virtuális gépet.
 
 ## <a name="install-mysql"></a>A MySQL telepítése 
 
 
-A MySQL telepítése a virtuális gép ssh-n keresztül. Válaszoljon a megfelelő utasításokat.
+Telepítse a MySQL-t a virtuális gépen SSH-kapcsolaton keresztül. Válaszoljon a megfelelő kérésre.
 
 ```bash
 sudo zypper install mysql
 ```
  
-Állítsa be a MySQL, akkor kezdődik, amikor a rendszer. 
+Állítsa be a MySQL-t a rendszerindításkor. 
 
 ```bash
 sudo systemctl enable mysql
 ```
-Győződjön meg arról, hogy engedélyezve van-e a MySQL.
+Ellenőrizze, hogy a MySQL engedélyezve van-e.
 
 ```bash
 systemctl is-enabled mysql
 ```
 
-A kapott: engedélyezve van.
+Ezt vissza kell adni: engedélyezve.
 
 Indítsa újra a kiszolgálót.
 
@@ -103,11 +102,11 @@ sudo reboot
 ```
 
 
-## <a name="mysql-password"></a>MySQL-jelszavát
+## <a name="mysql-password"></a>MySQL-jelszó
 
-A telepítés után a MySQL rendszergazdai jelszó alapértelmezés szerint üres. Futtassa a **mysql\_biztonságos\_telepítési** parancsfájl MySQL biztonságossá tételéhez. A parancsfájl kérni fogja, hogy a MySQL rendszergazdai jelszó módosítása, távolítsa el a névtelen felhasználói fiókot, tiltsa le a távoli legfelső szintű bejelentkezési, távolítsa el az adatbázisok vizsgálati és töltse be újra a jogosultságok tábla. 
+A telepítés után a MySQL-gyökér jelszava alapértelmezés szerint üres. Futtassa a **MySQL\_biztonságos\_telepítési** szkriptjét a MySQL védelméhez. A parancsfájl felszólítja a MySQL-gyökér jelszavának módosítására, a névtelen felhasználói fiókok eltávolítására, a távoli rendszergazdai bejelentkezés letiltására, a tesztelési adatbázisok eltávolítására és a jogosultságok tábla újratöltésére. 
 
-Ha a kiszolgáló újraindul, ssh a virtuális gép újra.
+A kiszolgáló újraindítása után ismét SSH-t a virtuális gépre.
 
 ```azurecli-interactive  
 ssh 10.111.112.113
@@ -119,14 +118,14 @@ ssh 10.111.112.113
 mysql_secure_installation
 ```
 
-## <a name="sign-in-to-mysql"></a>Jelentkezzen be a MySQL-hez
+## <a name="sign-in-to-mysql"></a>Bejelentkezés a MySQL-be
 
-Most jelentkezzen be, és adja meg a MySQL-parancssorban.
+Most már bejelentkezhet, és megadhatja a MySQL-kérést.
 
 ```bash  
 mysql -u root -p
 ```
-Ez akkor vált, amennyiben a MySQL-parancssorban ahol adhat ki az adatbázis SQL-utasításokkal.
+Ezzel átvált a MySQL-parancssorba, ahol SQL-utasításokat adhat ki az adatbázissal való kommunikációhoz.
 
 Most hozzon létre egy új MySQL-felhasználót.
 
@@ -134,28 +133,28 @@ Most hozzon létre egy új MySQL-felhasználót.
 CREATE USER 'mysqluser'@'localhost' IDENTIFIED BY 'password';
 ```
    
-Pontosvesszővel (;) a sor végén található elengedhetetlen a befejezési a parancsot.
+A Semi-Colon (;) a sor végén elengedhetetlen a parancs befejezése.
 
 
 ## <a name="create-a-database"></a>Adatbázis létrehozása
 
 
-Hozzon létre egy adatbázist, és adja meg a `mysqluser` felhasználói engedélyeket.
+Hozzon létre egy adatbázist, `mysqluser` és adja meg a felhasználói engedélyeket.
 
 ```sql
 CREATE DATABASE testdatabase;
 GRANT ALL ON testdatabase.* TO 'mysqluser'@'localhost' IDENTIFIED BY 'password';
 ```
    
-Adatbázis felhasználónevek és jelszavak csak az adatbázishoz csatlakozással parancsfájlok segítségével.  Adatbázis-felhasználói fiókok nevei feltétlenül nem felelnek meg a tényleges felhasználói fiókokat a rendszer.
+Az adatbázis-felhasználóneveket és a jelszavakat csak az adatbázishoz csatlakozó parancsfájlok használják.  Az adatbázis felhasználói fiókjainak nevei nem feltétlenül tükrözik a rendszeren ténylegesen használt felhasználói fiókokat.
 
-Jelentkezzen be egy másik számítógépről engedélyezése. Ebben a példában az IP-cím annak a számítógépnek, hogy a bejelentkezési van *10.112.113.114*.
+Bejelentkezés engedélyezése egy másik számítógépről. Ebben a példában annak a számítógépnek az IP-címe, amely engedélyezi a bejelentkezést, a *10.112.113.114*.
 
 ```sql
 GRANT ALL ON testdatabase.* TO 'mysqluser'@'10.112.113.114' IDENTIFIED BY 'password';
 ```
    
-Lépjen ki a MySQL-adatbázis felügyeleti segédprogram, írja be:
+A MySQL-adatbázis felügyeleti segédprogramból való kilépéshez írja be a következőt:
 
 ```    
 quit
@@ -163,7 +162,7 @@ quit
 
 
 ## <a name="next-steps"></a>További lépések
-MySQL kapcsolatos részletekért lásd: a [MySQL dokumentációja](https://dev.mysql.com/doc).
+A MySQL-vel kapcsolatos részletekért tekintse meg a [MySQL dokumentációját](https://dev.mysql.com/doc).
 
 
 

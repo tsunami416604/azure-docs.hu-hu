@@ -1,6 +1,6 @@
 ---
-title: Hogyan hajthat végre élő Stream továbbítása helyszíni kódolókkal .NET használatával |} A Microsoft Docs
-description: Ez a témakör bemutatja, hogyan lehet .NET segítségével valós idejű kódolás helyszíni kódolókkal történő továbbítását.
+title: Élő stream továbbítása helyszíni kódolókkal a .NET használatával | Microsoft Docs
+description: Ez a témakör bemutatja, hogyan használható a .NET az élő kódolás helyszíni kódolókkal történő elvégzéséhez.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: cenkdin;juliako
-ms.openlocfilehash: 6bec12893591fb36298e9c2f1664646a4d598073
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: juliako
+ms.openlocfilehash: bc7c8a059e1e17b7b280a7061206b10ed6c530aa
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57839780"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "69015842"
 ---
-# <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-net"></a>Élő Stream továbbítása helyszíni kódolókkal .NET használatával
+# <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-net"></a>Élő stream továbbítása helyszíni kódolókkal a .NET használatával
 > [!div class="op_single_selector"]
 > * [Portál](media-services-portal-live-passthrough-get-started.md)
 > * [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
@@ -28,17 +28,21 @@ ms.locfileid: "57839780"
 > 
 > 
 
-Ez az oktatóanyag végigvezeti azokon a az Azure Media Services .NET SDK használatával hozhat létre egy **csatorna** , amely átmenő közvetítésre van konfigurálva. 
+> [!NOTE]
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
+
+Ez az oktatóanyag végigvezeti a Azure Media Services .NET SDK használatának lépésein, és olyan **csatornát** hoz létre, amely áteresztő kézbesítésre van konfigurálva. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az ismertetett eljárás végrehajtásához a következők szükségesek:
 
 * Egy Azure-fiók.
-* Egy Media Services-fiók.    A Media Services-fiók létrehozásáról a [Media Services-fiók létrehozása](media-services-portal-create-account.md) című cikk nyújt tájékoztatást.
-* A fejlesztési környezet beállítása. További információkért lásd: [állítsa be a környezetet](media-services-set-up-computer.md).
+* Egy Media Services-fiók. A Media Services-fiók létrehozásáról a [Media Services-fiók létrehozása](media-services-portal-create-account.md) című cikk nyújt tájékoztatást.
+* Győződjön meg arról, hogy a tartalomstreameléshez használt streamvégpont **Fut** állapotban legyen. 
+* A fejlesztői környezet beállítása. További információt a [környezet beállítása](media-services-set-up-computer.md)című témakörben talál.
 * Egy webkamera. Például a [Telestream Wirecast kódoló](https://www.telestream.net/wirecast/overview.htm).
 
-Javasoljuk, hogy olvassa el a következő cikkeket:
+A következő cikkek áttekintése ajánlott:
 
 * [Azure Media Services RTMP Support and Live Encoders](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/) (Az Azure Media Services RTMP-támogatása és az élő kódolók)
 * [Live streaming with on-premises encoders that create multi-bitrate streams](media-services-live-streaming-with-onprem-encoders.md) (Élő stream továbbítása többszörös átviteli sebességű streamet létrehozó helyszíni kódolókkal)
@@ -48,26 +52,24 @@ Javasoljuk, hogy olvassa el a következő cikkeket:
 Állítsa be a fejlesztési környezetet, és töltse fel az app.config fájlt a kapcsolatadatokkal a [.NET-keretrendszerrel történő Media Services-fejlesztést](media-services-dotnet-how-to-use.md) ismertető dokumentumban leírtak szerint. 
 
 ## <a name="example"></a>Példa
-Az alábbi példakód bemutatja, hogyan érhet el a következő feladatokat:
+
+A következő mintakód bemutatja, hogyan érheti el a következő feladatokat:
 
 * Kapcsolódás a Media Services szolgáltatáshoz
 * Csatorna létrehozása
 * A csatorna frissítése
-* A csatorna bemeneti végpontjára lekéréséhez. A helyszíni élő kódoló a bemeneti végponton kell megadni. A csatorna bemeneti küldött Streamek a kamera jeleit alakíthatók át egymásba élőadás-kódoló jelek (betöltését) végponthoz.
-* A csatorna előnézeti végpont lekérése
-* Hozzon létre, és a program indítása
-* Hozzon létre egy keresőt a program eléréséhez szükséges
-* Hozzon létre és a egy Streamvégpontok elindítása
-* A streamvégpont frissítéséhez
-* Állítsa le az erőforrásokat
-
->[!IMPORTANT]
->Győződjön meg arról, hogy a tartalomstreameléshez használt streamvégpont **Fut** állapotban legyen. 
+* A csatorna bemeneti végpontjának beolvasása. A bemeneti végpontot meg kell adni a helyszíni élő kódolónak. Az élő kódoló a kamerából származó jeleket átalakítja a csatorna bemeneti (betöltési) végpontján továbbított adatfolyamokra.
+* A csatorna előnézeti végpontjának beolvasása
+* Program létrehozása és elindítása
+* A program eléréséhez szükséges lokátor létrehozása
+* Streamvégpontok létrehozása és elindítása
+* A folyamatos átviteli végpont frissítése
+* Erőforrások leállítása
     
 >[!NOTE]
 >A különböző AMS-szabályzatok (például a Locator vagy a ContentKeyAuthorizationPolicy) esetében a korlát 1 000 000 szabályzat. Ha mindig ugyanazokat a napokat/hozzáférési engedélyeket használja (például olyan keresők szabályzatait, amelyek hosszú ideig érvényben maradnak, vagyis nem feltöltött szabályzatokat), a szabályzatazonosítónak is ugyanannak kell lennie. További információkért tekintse meg [ezt](media-services-dotnet-manage-entities.md#limit-access-policies) a cikket.
 
-Az élő kódolók olyan konfigurálásának további információkért lásd: [Azure Media Services RMTP-támogatása és valós idejű kódolók](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/).
+Az élő kódoló konfigurálásával kapcsolatos információkért lásd: [Azure Media Services RTMP-támogatás és élő kódolók](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/).
 
 ```csharp
 using System;
@@ -398,7 +400,7 @@ namespace AMSLiveTest
 ```
 
 ## <a name="next-step"></a>Következő lépés
-Tekintse át a Media Services képzési tervek
+Media Services képzési útvonalak áttekintése
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 

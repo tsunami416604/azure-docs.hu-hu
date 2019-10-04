@@ -1,80 +1,79 @@
 ---
-title: Használja a hibaelhárító virtuális Géphez az Azure PowerShell használatával Windows |} A Microsoft Docs
-description: Ismerje meg, az Azure-beli Windows virtuális gép hibáinak elhárítása a az operációsrendszer-lemez egy helyreállítási virtuális Géphez az Azure PowerShell-lel való összekapcsolásával
+title: Windows hibaelhárítást biztosító virtuális gép használata Azure PowerShell használatával | Microsoft Docs
+description: Útmutató a Windowsos virtuális gépek Azure-beli problémáinak elhárításához az operációsrendszer-lemez egy helyreállítási virtuális géphez való összekapcsolásával Azure PowerShell
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: jeconnoc
+manager: dcscontentpm
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/09/2018
 ms.author: genli
-ms.openlocfilehash: 45e595e932c4e7070836372a4fd48791f68c5e08
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: d99bf2a41bc82722fd31c1835f34f913163ce55b
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57761565"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71088206"
 ---
-# <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-azure-powershell"></a>Hibaelhárítás Windows virtuális gépek az operációsrendszer-lemez egy helyreállítási virtuális Géphez az Azure PowerShell használatával történő csatlakoztatásával
-Ha a Windows virtuális gép (VM) az Azure-ban egy indítási vagy hibát észlel, szükség lehet a hibaelhárítási lépésekkel magán a lemezen. Ilyenek például egy sikertelen alkalmazásfrissítés megakadályozza, hogy a virtuális gép képes arra, hogy sikeresen lenne. Ez a cikk részletesen bemutatja az Azure PowerShell használatával csatlakoztassa a lemezt egy másik Windows virtuális géphez, javítsa ki a hibákat, majd javítsa ki az eredeti virtuális Gépet. 
+# <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-azure-powershell"></a>Windows rendszerű virtuális gép hibáinak elhárítása az operációsrendszer-lemez egy helyreállítási virtuális géphez való csatolásával Azure PowerShell használatával
+Ha az Azure-beli Windows rendszerű virtuális gép rendszerindítási vagy lemezhiba-hibát észlel, előfordulhat, hogy a lemezen hibaelhárítási lépéseket kell végrehajtania. Gyakori példa egy sikertelen alkalmazás frissítése, amely megakadályozza, hogy a virtuális gép sikeresen elinduljon. Ez a cikk részletesen ismerteti, hogyan csatlakoztathatók a lemezek egy másik Windows rendszerű virtuális géphez a hibák javításához, majd az eredeti virtuális gép kijavításához Azure PowerShell használatával. 
 
 > [!Important]
-> Ebben a cikkben a parancsfájlok csak használó virtuális gépeknél [Managed Disk](../windows/managed-disks-overview.md). 
+> A cikkben szereplő parancsfájlok csak a [felügyelt lemezt](../windows/managed-disks-overview.md)használó virtuális gépekre vonatkoznak. 
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="recovery-process-overview"></a>Helyreállítási folyamat áttekintése
-Azure PowerShell használatával most már az operációsrendszer-lemez módosítása egy virtuális géphez. Már nincs szükségünk, törölje és hozza létre újra a virtuális Gépet.
+Most már használhatja a Azure PowerShellt a virtuális gép operációsrendszer-lemezének megváltoztatásához. Már nem kell törölnie és újra létrehozni a virtuális gépet.
 
 A hibaelhárítási folyamat a következő:
 
-1. Állítsa az érintett virtuális Gépeket.
-2. Pillanatkép létrehozása a virtuális gép operációsrendszer-lemez alapján.
-3. Lemez létrehozása az operációs rendszer lemez pillanatképéből.
-4. Csatlakoztassa a lemezt adatlemezként egy helyreállítási virtuális Géphez.
-5. Csatlakozzon a helyreállítási virtuális Gépet. Szerkesztheti a fájlokat, vagy futtassa az eszközöket az hibák javítása a másolt rendszerlemezt.
-6. Válassza le a lemezképet, és leválasztani a lemezt a helyreállítási virtuális Gépet.
-7. Az érintett virtuális gépek az operációsrendszer-lemez módosítása
+1. Állítsa le az érintett virtuális gépet.
+2. Hozzon létre egy pillanatképet a virtuális gép operációsrendszer-lemezéről.
+3. Hozzon létre egy lemezt az operációsrendszer-lemez pillanatképből.
+4. Csatlakoztassa a lemezt adatlemezként egy helyreállítási virtuális géphez.
+5. Kapcsolódjon a helyreállítási virtuális géphez. Szerkessze a fájlokat, vagy futtasson eszközöket a másolt operációsrendszer-lemez problémáinak kijavításához.
+6. Lemez leválasztása és leválasztása a helyreállítási virtuális gépről.
+7. Módosítsa az érintett virtuális gép operációsrendszer-lemezét.
 
-A virtuális gép helyreállítási parancsfájlok segítségével automatizálhatja a lépéseket, 1, 2, 3, 4, 6 és 7. További dokumentáció és útmutatás: [szkripteket a Resource Manager-alapú virtuális gép](https://github.com/Azure/azure-support-scripts/tree/master/VMRecovery/ResourceManager).
+A VM-helyreállítási parancsfájlok segítségével automatizálhatja az 1, 2, 3, 4, 6 és 7 lépéseket. További dokumentáció és útmutatás: virtuálisgép- [helyreállítási parancsfájlok a Resource Manager-alapú virtuális géphez](https://github.com/Azure/azure-support-scripts/tree/master/VMRecovery/ResourceManager).
 
-Győződjön meg arról, hogy rendelkezik-e [az Azure PowerShell legújabb verzióját](/powershell/azure/overview) telepítve, és naplózza előfizetéséhez:
+Győződjön meg arról, hogy telepítve van-e [a legújabb Azure PowerShell](/powershell/azure/overview) , és jelentkezzen be az előfizetésbe:
 
 ```powershell
 Connect-AzAccount
 ```
 
-A következő példákban cserélje le a saját értékeit a paraméterek nevei. 
+Az alábbi példákban cserélje le a paraméterek nevét a saját értékeire. 
 
 ## <a name="determine-boot-issues"></a>Rendszerindítási problémák meghatározása
-Megtekintheti a virtuális gép Képernyőkép az Azure-beli rendszerindítási problémáinak hibaelhárításához. Ezen a képernyőfelvételen látható segítségével azonosítható, hogy miért a virtuális gép rendszerindító sikertelen lesz. Az alábbi példa lekéri a képernyőképen nevű Windows virtuális gépről `myVM` az erőforráscsoport neve `myResourceGroup`:
+A rendszerindítási problémák elhárításához az Azure-beli virtuális gép képernyőképét tekintheti meg. Ez a képernyőkép segítséget nyújt annak meghatározásában, hogy a virtuális gép miért nem indul el. A következő példa beolvassa a képernyőképet a nevű `myVM` `myResourceGroup`Windows virtuális gépről:
 
 ```powershell
 Get-AzVMBootDiagnosticsData -ResourceGroupName myResourceGroup `
     -Name myVM -Windows -LocalPath C:\Users\ops\
 ```
 
-Tekintse át a képernyőképen meghatározni, miért a virtuális gép rendszerindító sikertelen. Megjegyzés: minden olyan konkrét hibaüzeneteket vagy megadott hibakódok.
+Tekintse át a képernyőképet annak meghatározásához, hogy miért sikertelen a virtuális gép indítása. Jegyezze fel a megadott hibaüzeneteket vagy hibakódokat.
 
 ## <a name="stop-the-vm"></a>A virtuális gép leállítása
 
-A következő példa leállítja a virtuális gép nevű `myVM` az erőforráscsoportból nevű `myResourceGroup`:
+A következő példa leállítja a nevű `myVM` virtuális gépet a nevű `myResourceGroup`erőforráscsoporthoz:
 
 ```powershell
 Stop-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"
 ```
 
-Várjon, amíg a virtuális gép törlése előtt dolgozza fel a következő lépéssel véget ért.
+Várjon, amíg a virtuális gép el nem végezte a törlést a következő lépéshez való feldolgozás előtt.
 
 
-## <a name="create-a-snapshot-from-the-os-disk-of-the-vm"></a>Pillanatkép készítése a virtuális gép operációsrendszer-lemez
+## <a name="create-a-snapshot-from-the-os-disk-of-the-vm"></a>Pillanatkép létrehozása a virtuális gép operációsrendszer-lemezéről
 
-Az alábbi példa létrehoz egy pillanatképet nevű `mySnapshot` az operációs rendszer a lemezt a virtuális gép "myVM" nevű. 
+Az alábbi példa egy, a "myVM `mySnapshot` " nevű virtuális gép operációsrendszer-lemezéről származó nevű pillanatképet hoz létre. 
 
 ```powershell
 $resourceGroupName = 'myResourceGroup' 
@@ -100,11 +99,11 @@ New-AzSnapshot `
    -ResourceGroupName $resourceGroupName 
 ```
 
-Pillanatkép egy virtuális merevlemez teljes, a csak olvasható példányát. Egy virtuális géphez nem lehet csatolni. A következő lépésben hozunk létre egy lemezt a pillanatképből.
+A pillanatkép egy virtuális merevlemez teljes, írásvédett másolata. Nem csatlakoztatható virtuális géphez. A következő lépésben létrehozunk egy lemezt ebből a pillanatképből.
 
-## <a name="create-a-disk-from-the-snapshot"></a>Lemez létrehozása pillanatképből a
+## <a name="create-a-disk-from-the-snapshot"></a>Lemez létrehozása a pillanatképből
 
-Ez a szkript egy felügyelt lemezt hoz létre nevet `newOSDisk` a nevű pillanatkép `mysnapshot`.  
+Ez a szkript létrehoz egy nevű felügyelt `newOSDisk` lemezt a nevű `mysnapshot`pillanatképből.  
 
 ```powershell
 #Set the context to the subscription Id where Managed Disk will be created
@@ -126,8 +125,8 @@ $diskName = 'newOSDisk'
 #Provide the size of the disks in GB. It should be greater than the VHD file size.
 $diskSize = '128'
 
-#Provide the storage type for Managed Disk. PremiumLRS or StandardLRS.
-$storageType = 'StandardLRS'
+#Provide the storage type for Managed Disk. Premium_LRS or Standard_LRS.
+$storageType = 'Standard_LRS'
 
 #Provide the Azure region (e.g. westus) where Managed Disks will be located.
 #This location should be same as the snapshot location
@@ -141,14 +140,14 @@ $diskConfig = New-AzDiskConfig -AccountType $storageType -Location $location -Cr
  
 New-AzDisk -Disk $diskConfig -ResourceGroupName $resourceGroupName -DiskName $diskName
 ```
-Most már az eredeti operációsrendszer-lemez egy példányát. Akkor is csatlakoztathatja ezt a lemezt egy másik Windows virtuális géphez hibaelhárítás céljából.
+Most már rendelkezik az eredeti operációsrendszer-lemez másolatával. A lemez egy másik Windows rendszerű virtuális gépre is csatlakoztatható hibaelhárítási célból.
 
-## <a name="attach-the-disk-to-another-windows-vm-for-troubleshooting"></a>Csatlakoztassa a lemezt egy másik Windows virtuális géphez hibaelhárítás
+## <a name="attach-the-disk-to-another-windows-vm-for-troubleshooting"></a>A lemez csatolása egy másik Windows rendszerű virtuális géphez hibaelhárításhoz
 
-Most már tudjuk a példányának csatolása az eredeti operációsrendszer-lemez virtuális géphez adatlemezként. Ez a folyamat lehetővé teszi konfigurációs hibákat, vagy tekintse át a további alkalmazás vagy a lemez a rendszernapló fájljaiban. Az alábbi példa nevű lemezt csatlakoztat `newOSDisk` nevű VM `RecoveryVM`.
+Most csatoljuk az eredeti operációsrendszer-lemez másolatát egy virtuális géphez adatlemezként. Ez a folyamat lehetővé teszi a konfigurációs hibák kijavítását, illetve a lemezen található további alkalmazás-vagy rendszernaplók áttekintését. A következő példa a nevű `newOSDisk` `RecoveryVM`virtuális géphez tartozó lemezt csatolja.
 
 > [!NOTE]
-> Csatlakoztassa a lemezt, az eredeti operációsrendszer-lemez és a helyreállítási virtuális Gépet a másolata ugyanazon a helyen kell lennie.
+> A lemez csatlakoztatásához az eredeti operációsrendszer-lemez és a helyreállítási virtuális gép másolatának ugyanazon a helyen kell lennie.
 
 ```powershell
 $rgName = "myResourceGroup"
@@ -164,22 +163,22 @@ $vm = Add-AzVMDataDisk -CreateOption Attach -Lun 0 -VM $vm -ManagedDiskId $disk.
 Update-AzVM -VM $vm -ResourceGroupName $rgName
 ```
 
-## <a name="connect-to-the-recovery-vm-and-fix-issues-on-the-attached-disk"></a>A helyreállítási virtuális Géphez csatlakozik, és a csatlakoztatott lemez hibáinak javítása
+## <a name="connect-to-the-recovery-vm-and-fix-issues-on-the-attached-disk"></a>Kapcsolódjon a helyreállítási virtuális géphez, és javítsa ki a csatlakoztatott lemezen lévő problémákat
 
-1. RDP-vel a helyreállítási virtuális Gépet a megfelelő hitelesítő adatokat. Az alábbi példa a nevű virtuális gép RDP-kapcsolat fájljának letöltése `RecoveryVM` az erőforráscsoport neve `myResourceGroup`, és letölti azt `C:\Users\ops\Documents`"
+1. Az RDP-t a helyreállítási virtuális géphez a megfelelő hitelesítő adatok használatával. Az alábbi példa letölti a nevű nevű `RecoveryVM` `myResourceGroup`virtuális gép RDP-kapcsolati fájlját `C:\Users\ops\Documents`, és letölti a következőre:
 
     ```powershell
     Get-AzRemoteDesktopFile -ResourceGroupName "myResourceGroup" -Name "RecoveryVM" `
         -LocalPath "C:\Users\ops\Documents\myVMRecovery.rdp"
     ```
 
-2. Az adatlemez kell lehet automatikusan észlelt, és csatolva. A meghajtó betűjeléhez meghatározni a következő csatolt kötetek listájának megtekintése:
+2. Az adatlemezt automatikusan észlelni és csatolni kell. Tekintse meg a csatlakoztatott kötetek listáját a meghajtóbetűjel megállapításához a következő módon:
 
     ```powershell
     Get-Disk
     ```
 
-    Az alábbi példa kimenetében látható, hogy a lemez csatlakoztatott lemez **2**. (Is `Get-Volume` meghajtóbetűjelet megtekintése):
+    A következő példa kimenetében a **2**. lemezhez csatlakoztatott lemez látható. (A meghajtó betűjelének `Get-Volume` megtekintéséhez használhatja a következőt is:
 
     ```powershell
     Number   Friendly Name   Serial Number   HealthStatus   OperationalStatus   Total Size   Partition
@@ -190,18 +189,18 @@ Update-AzVM -VM $vm -ResourceGroupName $rgName
     2        newOSDisk                                  Healthy             Online       127 GB MBR
     ```
 
-Után az eredeti operációsrendszer-lemez másolatát csatlakoztatva van, karbantartási és hibaelhárítási lépések, igény szerint is végezhet. Miután végzett a hibák javításával, folytassa az alábbi lépésekkel.
+Az eredeti operációsrendszer-lemez másolatának csatlakoztatása után szükség esetén bármilyen karbantartási és hibaelhárítási lépést elvégezhet. Miután végzett a hibák javításával, folytassa az alábbi lépésekkel.
 
-## <a name="unmount-and-detach-original-os-disk"></a>Válassza le, és az eredeti operációsrendszer-lemez leválasztása
-Miután a hibák megoldódnak, válassza le, és válassza le a meglévő lemezt a helyreállítási virtuális Gépet a. A lemezek nem használhatóak a többi virtuális Géphez, mindaddig, amíg a bérlet, a lemez csatolása a helyreállítási virtuális Gépet jelent meg.
+## <a name="unmount-and-detach-original-os-disk"></a>Az eredeti operációsrendszer-lemez leválasztása és leválasztása
+A hibák megoldása után leválaszthatja a meglévő lemezt a helyreállítási virtuális gépről, és leválaszthatja azt. A lemezt nem használhatja más virtuális géppel, amíg a lemezt a helyreállítási virtuális géphez csatlakoztató bérlet fel nem szabadítja.
 
-1. A belül az RDP-munkamenet leválasztása az adatlemezt a helyreállítási virtuális gép. A lemez számát az előző kell `Get-Disk` parancsmagot. Ezután használja `Set-Disk` a lemez offline állapotúként beállításához:
+1. Az RDP-munkameneten belül válassza le az adatlemezt a helyreállítási virtuális gépen. Az előző `Get-Disk` parancsmag lemezének számát kell használnia. Ezután használja `Set-Disk` a következőt a lemez offline állapotba állításához:
 
     ```powershell
     Set-Disk -Number 2 -IsOffline $True
     ```
 
-    Ellenőrizze a lemez most már van beállítva a kapcsolat nélküli használatával `Get-Disk` újra. Az alábbi példa kimenetében látható, a lemez most már offline állapotúként van beállítva:
+    Ellenőrizze, hogy a lemez most már offline állapotban `Get-Disk` van-e beállítva. A következő példa kimenete azt mutatja, hogy a lemez most már offline állapotban van beállítva:
 
     ```powershell
     Number   Friendly Name   Serial Number   HealthStatus   OperationalStatus   Total Size   Partition
@@ -212,7 +211,7 @@ Miután a hibák megoldódnak, válassza le, és válassza le a meglévő lemezt
     2        Msft Virtu...                                  Healthy             Offline      127 GB MBR
     ```
 
-2. Lépjen ki az RDP-munkamenetet. Az Azure PowerShell-munkamenetben távolítsa el a lemezt, nevű `newOSDisk` "RecoveryVM" nevű virtuális gépről.
+2. Lépjen ki az RDP-munkamenetből. A Azure PowerShell-munkamenetből távolítsa el a `newOSDisk` nevű lemezt a "RecoveryVM" nevű virtuális gépről.
 
     ```powershell
     $myVM = Get-AzVM -ResourceGroupName "myResourceGroup" -Name "RecoveryVM"
@@ -220,11 +219,11 @@ Miután a hibák megoldódnak, válassza le, és válassza le a meglévő lemezt
     Update-AzVM -ResourceGroup "myResourceGroup" -VM $myVM
     ```
 
-## <a name="change-the-os-disk-for-the-affected-vm"></a>Az érintett virtuális gépek az operációsrendszer-lemez módosítása
+## <a name="change-the-os-disk-for-the-affected-vm"></a>Az érintett virtuális gép operációsrendszer-lemezének módosítása
 
-Azure PowerShell használatával az operációsrendszer-lemez felcserélése. Nem kell törölnie kell, és hozza létre újra a virtuális Gépet.
+Az operációs rendszer lemezeit a Azure PowerShell használatával cserélheti le. Nem kell törölnie és újból létrehoznia a virtuális gépet.
 
-Ebben a példában leállítja a virtuális gép nevű `myVM` és hozzárendeli a nevű lemez `newOSDisk` az új operációsrendszer-lemezként. 
+Ez a példa leállítja a `myVM` nevű virtuális gépet, és hozzárendeli a nevű `newOSDisk` lemezt az új operációsrendszer-lemezként. 
 
 ```powershell
 # Get the VM 
@@ -246,9 +245,9 @@ Update-AzVM -ResourceGroupName myResourceGroup -VM $vm -StorageAccountType <Type
 Start-AzVM -Name $vm.Name -ResourceGroupName myResourceGroup
 ```
 
-## <a name="verify-and-enable-boot-diagnostics"></a>Győződjön meg arról, és a rendszerindítási diagnosztika engedélyezése
+## <a name="verify-and-enable-boot-diagnostics"></a>Rendszerindítási diagnosztika ellenőrzése és engedélyezése
 
-A következő példában engedélyezzük a diagnosztikai bővítmény nevű virtuális gépre `myVMDeployed` az erőforráscsoport neve `myResourceGroup`:
+A következő példa engedélyezi a diagnosztikai bővítményt a nevű `myVMDeployed` `myResourceGroup`erőforráscsoport-beli virtuális gépen:
 
 ```powershell
 $myVM = Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVMDeployed"
@@ -257,6 +256,6 @@ Update-AzVM -ResourceGroup "myResourceGroup" -VM $myVM
 ```
 
 ## <a name="next-steps"></a>További lépések
-Ha a virtuális Géphez való csatlakozással kapcsolatos problémákat tapasztal, tekintse meg [hibaelhárítása RDP-kapcsolatai egy Azure virtuális gép](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). A virtuális Gépen futó alkalmazások elérésével kapcsolatos problémák, lásd: [a Windows virtuális gép alkalmazások csatlakozási hibáinak elhárítása](troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Ha problémába ütközik a virtuális géphez való csatlakozással kapcsolatban, tekintse meg [az RDP-kapcsolatok hibaelhárítása Azure-beli virtuális géppel](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)című témakört. A virtuális gépen futó alkalmazások elérésével kapcsolatos problémákért lásd: az [alkalmazások kapcsolódási problémáinak elhárítása Windows rendszerű virtuális gépen](troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-Erőforrás-kezelő használatával kapcsolatos további információkért lásd: [Azure Resource Manager áttekintése](../../azure-resource-manager/resource-group-overview.md).
+További információ a Resource Manager használatáról: [Azure Resource Manager Overview (áttekintés](../../azure-resource-manager/resource-group-overview.md)).

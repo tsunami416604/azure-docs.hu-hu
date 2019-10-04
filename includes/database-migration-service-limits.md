@@ -5,14 +5,14 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: douglasl
 ms.openlocfilehash: f76ad3f91c2d05508d700e6ef40c9d342b87b5e3
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553666"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "67179516"
 ---
-Azure Database Migration Service egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi az Azure-beli adat-platformokra minimális állásidővel adatbázis több forrásból származó zökkenőmentes áttelepítések.
+A Azure Database Migration Service egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi, hogy a zökkenőmentes áttelepítések több adatbázisból az Azure-beli adatplatformokra minimális állásidővel.
 
 | **Erőforrás** | **Alapértelmezett korlát** | **Megjegyzések** |
 | --- | --- | --- |
-| Maximális száma előfizetésenként és régiónként szolgáltatások |2 | Ha szeretné növelni a korlátot, forduljon az ügyfélszolgálathoz. |
+| Szolgáltatások/előfizetések maximális száma régiónként |2 | A korlát növelésének igényléséhez forduljon az ügyfélszolgálathoz. |

@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: Megismerheti, hogyan hozható létre nyilvános terheléselosztó a Resource Managerben sablon használatával
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -12,13 +12,13 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
-ms.author: kumud
-ms.openlocfilehash: af72eb0214f46c1e001f9e93934d38cb934503e4
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.author: allensu
+ms.openlocfilehash: a94c7d1b5d1ecd11dd213eccf2354e943a96cabd
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56592485"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68275294"
 ---
 # <a name="creating-a-public-load-balancer-using-a-template"></a>Nyilvános terheléselosztó létrehozása sablon használatával
 
@@ -43,7 +43,7 @@ A nyilvános tárházban elérhető mintasablon a fent leírt forgatókönyv lé
 A letöltött sablon PowerShell használatával történő üzembe helyezéséhez kövesse az alábbi lépéseket.
 
 1. Ha még nem használta az Azure PowerShellt, tekintse meg [How to Install and Configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása) című részt, majd kövesse az utasításokat egészen az utolsó lépésig az Azure-ba való bejelentkezéshez és az előfizetése kiválasztásához.
-2. Futtassa a **New-AzResourceGroupDeployment** parancsmag segítségével hozzon létre egy erőforráscsoportot a sablon használatával.
+2. A **New-AzResourceGroupDeployment** parancsmag futtatásával hozzon létre egy erőforráscsoportot a sablon használatával.
 
     ```powershell
     New-AzResourceGroupDeployment -Name TestRG -Location uswest `
@@ -81,4 +81,4 @@ Az alábbi lépéseket követve hozhatja létre a sablont az Azure parancssori f
 
 [A terheléselosztó üresjárati TCP-időtúllépési beállításainak konfigurálása](load-balancer-tcp-idle-timeout.md)
 
-A JSON-szintaxist és a egy terheléselosztó-sablon tulajdonságainak [Microsoft.Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers).
+A sablonban lévő terheléselosztó JSON-szintaxisához és tulajdonságaihoz lásd: [Microsoft. Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers).

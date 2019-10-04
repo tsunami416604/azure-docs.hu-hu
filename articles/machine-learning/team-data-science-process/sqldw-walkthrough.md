@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e27c4462e7137145917d1284bfb6f8838e8a090b
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: f9da031fd4b35c2fa9126f545eecacf6143b18a1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523596"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66478859"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>A csoportos adatelemzési folyamat működés közben: az SQL Data Warehouse használatával
 Ez az oktatóanyag azt mutatja be létrehozásának és üzembe helyezésének egy gépi tanulási modellt az SQL Data Warehouse (az SQL DW) egy nyilvánosan elérhető adatkészlethez – a [NYC Taxi lelassítja](https://www.andresmh.com/nyctaxitrips/) adatkészlet. A bináris osztályozási modell összeállított előrejelzi e tipp fizetős útnak és többosztályos osztályozási és regressziós modellek is taglalja, hogy a terjesztési előre fizetett összegek tipp.
@@ -584,11 +584,11 @@ Ha már beállított egy AzureML-munkaterületet, közvetlenül a minta IPython 
 
 A minta futtatásához IPython Notebook vagy a Python-szkriptfájlt, a következő Python-csomagok szükségesek. Az AzureML IPython Notebook szolgáltatás használja, ha ezek a csomagok előre telepítve lett.
 
-    - pandas
-    - numpy
-    - matplotlib
-    - a pyodbc
-    - PyTables
+- pandas
+- numpy
+- matplotlib
+- a pyodbc
+- PyTables
 
 A javasolt feladatütemezés létrehozását, speciális analitikai megoldások az AzureML nagy mennyiségű adat-, a következő:
 

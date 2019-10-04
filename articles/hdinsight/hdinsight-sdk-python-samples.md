@@ -1,17 +1,18 @@
 ---
 title: 'Azure HDInsight: Python-példák'
-description: Python-példák a Githubon található gyakori feladatok a Python a HDInsight SDK használatával.
+description: Python-példák a GitHubon gyakori feladatokhoz a Pythonhoz készült HDInsight SDK használatával.
 author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: sample
 ms.date: 04/15/2019
-ms.author: hrasheed
-ms.openlocfilehash: 8c7c17811a64e05fc0d3246385eb3c64f848ea1b
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 9afb65b320b440920a1fca1dec7146073ba05821
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59580298"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71074900"
 ---
 # <a name="azure-hdinsight-python-samples"></a>Azure HDInsight: Python-példák
 
@@ -24,8 +25,8 @@ ms.locfileid: "59580298"
 
 Ez a cikk a következő információkat tartalmazza:
 
-* Szereplő hivatkozások a fürt létrehozási feladatok.
-* Segédanyagok a többi felügyeleti feladat mutató hivatkozásokat tartalmaz.
+* A fürtök létrehozására szolgáló feladatokhoz kapcsolódó mintákra mutató hivatkozások.
+* Hivatkozások a más felügyeleti feladatokra vonatkozó hivatkozási tartalomra.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -33,15 +34,15 @@ Ez a cikk a következő információkat tartalmazza:
 
 - [Pythonhoz készült Azure HDInsight SDK](https://docs.microsoft.com/python/api/overview/azure/hdinsight#sdk-installation)
 
-## <a name="cluster-management---creation"></a>Fürtkezelés - létrehozás
+## <a name="cluster-management---creation"></a>Fürt kezelése – létrehozás
 
 * [Kafka-fürt létrehozása](https://github.com/Azure-Samples/hdinsight-python-sdk-samples/blob/master/samples/create_kafka_cluster_sample.py)
 * [Spark-fürt létrehozása](https://github.com/Azure-Samples/hdinsight-python-sdk-samples/blob/master/samples/create_spark_cluster_sample.py)
-* [Spark-fürt létrehozása az Azure Data Lake Storage Gen2](https://github.com/Azure-Samples/hdinsight-python-sdk-samples/blob/master/samples/create_hadoop_cluster_with_adls_gen2_sample.py)
-* [Spark-fürt létrehozása a vállalati biztonsági csomag (ESP)](https://github.com/Azure-Samples/hdinsight-python-sdk-samples/blob/master/samples/create_esp_cluster_sample.py)
+* [Spark-fürt létrehozása Azure Data Lake Storage Gen2](https://github.com/Azure-Samples/hdinsight-python-sdk-samples/blob/master/samples/create_hadoop_cluster_with_adls_gen2_sample.py)
+* [Spark-fürt létrehozása Enterprise Security Package (ESP)](https://github.com/Azure-Samples/hdinsight-python-sdk-samples/blob/master/samples/create_esp_cluster_sample.py)
 
-Klónozásával Pythonhoz készült ezeket a mintákat is kap a [hdinsight – python-sdk-minták](https://github.com/Azure-Samples/hdinsight-python-sdk-samples) GitHub-adattárban.
+Ezeket a mintákat a Pythonhoz a [hdinsight-Python-SDK-Samples](https://github.com/Azure-Samples/hdinsight-python-sdk-samples) GitHub-tárház klónozásával érheti el.
 
 [!INCLUDE [hdinsight-sdk-additional-functionality](../../includes/hdinsight-sdk-additional-functionality.md)]
 
-Kódrészletek a tekintheti meg a további SDK-funkciók esetében a [HDInsight SDK Pythonhoz készült referenciadokumentációt](https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python).
+A további SDK-funkciók kódrészletei a [HDINSIGHT SDK for Python](https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python)dokumentációjában találhatók.

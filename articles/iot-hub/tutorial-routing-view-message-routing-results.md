@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 1417ecdaf6a85f491e1accfb9564e27d15e13445
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: f34799bbf2142ba07c29915deae5b5dbe590c9fc
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59045833"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67330532"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>Oktatóanyag: 2. rész – az irányított üzenet megtekintése
 
@@ -26,7 +26,7 @@ ms.locfileid: "59045833"
 
 Ezek a szabályok az Útválasztás üzenet; ezek is állítsa be az 1. rész a jelen oktatóanyag, és megjelenik a második rész működjenek.
 
-|érték |Eredmény|
+|value |Eredmény|
 |------|------|
 |level="storage" |Írás az Azure Storage-ba.|
 |level="critical" |Írás a Service Bus-üzenetsorba. Egy logikai alkalmazás lekéri az üzenetet a sorból, és az Office 365 használatával e-mailben küldi el az üzenetet.|
@@ -94,7 +94,7 @@ A Power BI-vizualizáció adatainak megtekintéséhez először állítson be eg
 
 ### <a name="create-the-stream-analytics-job"></a>A Stream Analytics-feladat létrehozása
 
-1. Az a [az Azure portal](https://portal.azure.com)válassza **erőforrás létrehozása** > **IOT-** > **Stream Analytics-feladat**.
+1. Az a [az Azure portal](https://portal.azure.com)válassza **erőforrás létrehozása** > **IOT-**  > **Stream Analytics-feladat**.
 
 2. Adja meg a feladat alábbi adatait.
 
@@ -126,7 +126,7 @@ A Power BI-vizualizáció adatainak megtekintéséhez először állítson be eg
 
    **Végpont**: Válassza ki **üzenetkezelési**. (Ha a Műveletek monitorozása lehetőséget választja, akkor az IoT Hub telemetriaadatait kapja meg, nem pedig az átküldött adatokat.) 
 
-   **Megosztott elérési házirend neve**: Válassza ki **iothubowner**. A Portal automatikusan kitölti a megosztott elérési házirend kulcsát.
+   **Megosztott elérési házirend neve**: Válassza ki **szolgáltatás**. A Portal automatikusan kitölti a megosztott elérési házirend kulcsát.
 
    **Fogyasztói csoport**: Válassza ki a fogyasztói csoportot, ez az oktatóanyag 1. lépésében beállítása. Ez az oktatóanyag a **contosoconsumers** csoportot használja.
    
@@ -290,7 +290,7 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 ## <a name="next-steps"></a>További lépések
 
-2. rész – ebben az oktatóanyagban megtudhatta, hogyan üzenet-útválasztása használatával irányíthatja az IoT Hub-üzenetek más célhelyekre való a következő feladatok végrehajtásával.  
+2\. rész – ebben az oktatóanyagban megtudhatta, hogyan üzenet-útválasztása használatával irányíthatja az IoT Hub-üzenetek más célhelyekre való a következő feladatok végrehajtásával.  
 
 **I. rész Erőforrások létrehozása, és beállíthatja az üzenet-útválasztása**
 > [!div class="checklist"]

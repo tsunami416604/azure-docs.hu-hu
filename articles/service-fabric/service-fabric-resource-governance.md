@@ -1,9 +1,9 @@
 ---
-title: Az Azure Service Fabric erőforrás-szabályozása tárolók és szolgáltatások |} A Microsoft Docs
-description: Az Azure Service Fabric lehetővé teszi, hogy a belső vagy külső tárolók futó szolgáltatásokhoz erőforráskorlátok adja meg.
+title: Azure Service Fabric erőforrás-szabályozás a tárolók és szolgáltatások számára | Microsoft Docs
+description: Az Azure Service Fabric lehetővé teszi erőforrás-korlátok megadását a tárolón belüli vagy kívüli szolgáltatásokhoz.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
@@ -13,60 +13,60 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
-ms.author: aljo, subramar
-ms.openlocfilehash: e011554e61411fddca034f024c30c2270593e07b
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.author: subramar
+ms.openlocfilehash: ed9ea8f9c340331fd9b8fcc014ab1af88e7b3bae
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669248"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599238"
 ---
 # <a name="resource-governance"></a>Erőforrások szabályozása
 
-Ha több szolgáltatást ugyanarra a csomópont vagy fürtön futtatja, lehetséges, hogy egy szolgáltatás előfordulhat, hogy több erőforrást, a folyamat során más szolgáltatások starving. Ez a probléma a "zajos szomszédok" okozta nevezzük. Az Azure Service Fabric lehetővé teszi, hogy a fejlesztő adja meg a foglalások és a szolgáltatási erőforrások biztosítása és erőforrás-használat korlátozása vonatkozó korlátok.
+Ha több szolgáltatást futtat ugyanazon a csomóponton vagy fürtön, lehetséges, hogy az egyik szolgáltatás több erőforrást is felhasználhat, és a folyamat más szolgáltatásait is megéhezik. Ezt a problémát a "zajos szomszéd" problémának nevezzük. Az Azure Service Fabric lehetővé teszi a fejlesztőknek, hogy a szolgáltatásokban foglalásokat és korlátozásokat határozzanak meg az erőforrások biztosítása és az erőforrások használatának korlátozása érdekében.
 
-> Ez a cikk a folytatás előtt javasoljuk, hogy Ön ismerkedhet meg vele a [Service Fabric-alkalmazásmodell](service-fabric-application-model.md) és a [Service Fabric üzemeltetési modell](service-fabric-hosting-model.md).
+> A cikk folytatása előtt javasoljuk, hogy ismerkedjen meg a [Service Fabric alkalmazás modelljével](service-fabric-application-model.md) és a [Service Fabric üzemeltetési modellel](service-fabric-hosting-model.md).
 >
 
-## <a name="resource-governance-metrics"></a>Erőforrás-szabályozási mérőszámok
+## <a name="resource-governance-metrics"></a>Erőforrás-irányítási mérőszámok
 
-A Service Fabric-szolgáltatást a támogatott erőforrás-szabályozása a [szolgáltatáscsomag](service-fabric-application-model.md). A csomag hozzárendelt erőforrások közötti kódcsomagok tovább oszthatók. A megadott erőforráskorlátok is jelentheti a foglalást az erőforrások. A Service Fabric támogatja a Processzor- és szolgáltatás csomagonként megadása két beépített [metrikák](service-fabric-cluster-resource-manager-metrics.md):
+Az erőforrás-szabályozás Service Fabric a szervizcsomaggal összhangban támogatott [](service-fabric-application-model.md). A szervizcsomaghoz rendelt erőforrások tovább oszthatók a csomagok között. A megadott erőforrás-korlátok az erőforrások lefoglalását is jelentik. Service Fabric támogatja a CPU és a memória megadását a szervizcsomagok esetében, két [](service-fabric-cluster-resource-manager-metrics.md)beépített metrikával:
 
-* *CPU* (metrika neve `servicefabric:/_CpuCores`): A gazdagépen rendelkezésre álló logikai alapszintű. Az összes mag csomópontokon vannak súlyozott azonos.
+* *CPU* (metrika neve `servicefabric:/_CpuCores`): A gazdagépen elérhető logikai mag. Az összes csomóponton lévő összes mag súlyozása azonos.
 
-* *Memória* (metrika neve `servicefabric:/_MemoryInMB`): Memória (MB) fejezzük ki, és a gépen rendelkezésre álló fizikai memória vannak leképezve.
+* *Memória* (metrika neve `servicefabric:/_MemoryInMB`): A memória megabájtban van kifejezve, és a számítógépen elérhető fizikai memóriára van leképezve.
 
-A következő két metrikákhoz [fürterőforrás-kezelő](service-fabric-cluster-resource-manager-cluster-description.md) nyomon követi a fürt teljes kapacitása, a fürt egyes csomópontjaihoz, és a fürtben lévő további erőforrásokat érő terhelést. E két mérőszám semmilyen más felhasználó- vagy egyéni metrika egyenértékűek. Az összes meglévő funkciók velük használhatók:
+Ezen két metrika esetében a [fürterőforrás-kezelő](service-fabric-cluster-resource-manager-cluster-description.md) nyomon követi a fürt teljes kapacitását, a fürt egyes csomópontjainak terhelését, valamint a fürt többi erőforrását. Ez a két metrika egyenértékű a többi felhasználóval vagy egyéni metrikával. Az összes meglévő funkció használható együtt:
 
-* A fürt lehet [elosztott terhelésű](service-fabric-cluster-resource-manager-balancing.md) megfelelően két metrikák (alapértelmezés).
-* A fürt lehet [töredezettségmentesíteni](service-fabric-cluster-resource-manager-defragmentation-metrics.md) két metrikák alapján.
-* Amikor [fürt leírása](service-fabric-cluster-resource-manager-cluster-description.md), pufferelt kapacitás állítható be az alábbi két mérőszám.
+* A fürt a két metrika (alapértelmezett viselkedés) alapján [kiegyensúlyozott](service-fabric-cluster-resource-manager-balancing.md) lehet.
+* A fürt a két [](service-fabric-cluster-resource-manager-defragmentation-metrics.md) metrika alapján is feldarabolható.
+* [Fürt leírásakor](service-fabric-cluster-resource-manager-cluster-description.md)a rendszer pufferelt kapacitást állíthat be ehhez a két metrikához.
 
-[Dinamikus terhelésjelentés-készítés](service-fabric-cluster-resource-manager-metrics.md) nem támogatott a következő metrikákhoz, és betölti a metrikák létrehozáskor vannak definiálva.
+A [dinamikus betöltési jelentéskészítés](service-fabric-cluster-resource-manager-metrics.md) ezen metrikák esetében nem támogatott, és a metrikák terhelése a létrehozáskor van meghatározva.
 
-## <a name="resource-governance-mechanism"></a>Erőforrás-szabályozási mechanizmus
+## <a name="resource-governance-mechanism"></a>Erőforrás-irányítási mechanizmus
 
-A Service Fabric-futtatókörnyezet jelenleg nem biztosít erőforrásokat foglalás. Ha egy folyamat vagy egy tároló meg van nyitva, a futtatókörnyezet a erőforráskorlátok a terheléseket, amelyek a rendszer a létrehozáskor kell meghatározni állítja be. Továbbá a futásidejű elutasítja nyithatja meg az új szolgáltatáscsomagok a rendelkezésre álló erőforrások túllépése esetén. Segít jobban megérteni, hogyan működik, a folyamat, vegyünk egy példát a két processzormag-csomópont (memória cégirányítási mechanizmus az ezzel egyenértékű):
+A Service Fabric futtatókörnyezet jelenleg nem biztosít foglalást az erőforrásokhoz. Egy folyamat vagy tároló megnyitásakor a futtatókörnyezet beállítja az erőforrás-korlátokat a létrehozáskor definiált terhelésekre. Emellett a futtatókörnyezet elutasítja az erőforrások túllépése esetén elérhető új szervizcsomagok megnyitását. A folyamat működésének jobb megismeréséhez vessünk egy példát a két CPU-magot tartalmazó csomópontra (a memória szabályozásának mechanizmusa egyenértékű):
 
-1. Először egy tárolót a csomóponton, egy processzormagot kérő kerül. A futtatókörnyezet megnyitja a tároló és a CPU-korlát beállítása egy magot. A tároló nem tudják használni, több processzormag.
+1. Először a rendszer egy tárolót helyez el a csomóponton, amely egy CPU-mag igénylését kéri. A futtatókörnyezet megnyitja a tárolót, és a CPU-korlátot egy mag értékre állítja. A tároló nem tud egynél több magját használni.
 
-2. Ezután egy replikát, a szolgáltatás el van helyezve a csomópontot, és a megfelelő csomag megadja egy processzormagot a korlát. A futtatókörnyezet a kódcsomag megnyílik, és a egy magot állítja be a CPU-korlátot.
+2. Ezután egy szolgáltatás replikája kerül a csomópontra, és a hozzá tartozó szolgáltatáscsomag egy CPU-mag korlátját határozza meg. A futtatókörnyezet megnyitja a kód csomagot, és beállítja a CPU-korlátot egy mag értékre.
 
-A korlátok összege ezen a ponton megegyezik a csomópont kapacitását. A folyamat és a egy tároló és a egy magot fut és nem ütközik egymással. A CPU-korlát megadásakor a Service Fabric több tárolók vagy replikák nem helyez.
+Ezen a ponton a határértékek összege egyenlő a csomópont kapacitásával. Egy folyamat és egy tároló egyetlen alapszintű, és nem zavarja egymást. Service Fabric nem tartalmaz több tárolót vagy replikát a CPU-korlát megadásakor.
 
-Azonban két olyan helyzet van, amelyben más folyamatok CPU előfordulhat, hogy ugyanazért. Ebben az esetben egy folyamat és a egy tárolót a jelen példában tapasztalhat a zajos szomszédok problémát:
+Van azonban két olyan eset, amikor más folyamatok is megtarthatják a CPU-t. Ilyen helyzetekben előfordulhat, hogy egy folyamat és egy tároló a példánkban a zajos szomszéd problémát tapasztalja:
 
-* *Szabályozott, és nem szabályozott szolgáltatások és a tárolók*: Ha egy felhasználó létrehoz egy szolgáltatást bármely megadott erőforrás-szabályozása nélkül, a futtatókörnyezet, nincsenek erőforrások felhasználó látja azokat, és helyezheti ebben a példában a csomóponton. Ebben az esetben ez az új folyamat hatékonyan néhány CPU, a szolgáltatások, a csomóponton már futó rovására használ. Nincsenek erre a problémára két megoldás. Nem használhatók vegyesen szabályozott, és nem szabályozott szolgáltatások ugyanazon a fürtön, vagy használja [elhelyezési korlátozások](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md) úgy, hogy a két típusú szolgáltatások végül nem a csomópontok ugyanazon az adatkészleten.
+* A *szabályozott és nem szabályozott szolgáltatások és tárolók keverése*: Ha a felhasználó a megadott erőforrás-szabályozás nélkül hoz létre szolgáltatást, a futásidejű nem rendelkezik erőforrásként, és a példában szereplő csomóponton helyezheti el azt. Ebben az esetben ez az új folyamat hatékonyan felhasznál bizonyos CPU-t a csomóponton már futó szolgáltatások rovására. Ennek a problémának két megoldása van. Vagy ne keverje a szabályozott és nem szabályozott szolgáltatásokat ugyanazon a fürtön, vagy használjon [elhelyezési korlátozásokat](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md) úgy, hogy ez a két típusú szolgáltatás ne legyen ugyanazon a csomópontokon.
 
-* *Ha egy másik folyamat elindul a csomóponton kívülre (például az operációs rendszer szolgáltatás). a Service Fabric*: Ebben a helyzetben a folyamat a Service Fabric kívül is állítja processzor meglévő szolgáltatásokkal. A megoldás erre a problémára, hogy fürt(ök) megfelelően a fiókot az operációs rendszer terhelés a beállítása, a következő szakaszban látható módon.
+* *Ha egy másik folyamat indul el a csomóponton, Service Fabricon kívül (például egy operációsrendszer-szolgáltatáson)* : Ebben az esetben az Service Fabricon kívüli folyamat a meglévő szolgáltatásokkal való CPU-t is eredményezi. Ennek a problémának a megoldása a csomópont-kapacitások megfelelő beállítása az operációs rendszer terhelésének megfelelően, a következő szakaszban látható módon.
 
-## <a name="cluster-setup-for-enabling-resource-governance"></a>Fürt beállítása az erőforrás-szabályozás engedélyezése
+## <a name="cluster-setup-for-enabling-resource-governance"></a>Fürt beállítása az erőforrás-szabályozás engedélyezéséhez
 
-Ha egy csomópont elindul, és csatlakozik a fürthöz, Service Fabric észleli a rendelkezésre álló memória mennyiségét és a rendelkezésre álló magok számát, és ezután beállítja az ezen két erőforrás következő fürt(ök).
+Amikor egy csomópont elindul és csatlakozik a fürthöz, Service Fabric észleli a rendelkezésre álló memória mennyiségét és a magok rendelkezésre álló számát, majd beállítja a csomópontok kapacitását a két erőforrás számára.
 
-Az operációs rendszerhez és más folyamatokkal pufferterületének, hogy előfordulhat, hogy fut a csomóponton, a Service Fabric csak 80 %-a rendelkezésre álló erőforrások használ a csomóponton. Ezt a százalékos arányt konfigurálható, és a fürtjegyzékben is módosítható.
+Ha meg szeretné hagyni az operációs rendszer pufferét, és más folyamatok is futnak a csomóponton, akkor Service Fabric a csomóponton rendelkezésre álló erőforrások 80%-át használja. Ez a százalék konfigurálható, és módosítható a fürt jegyzékfájljában.
 
-A következő példa bemutatja, hogyan arra utasítani a Service Fabric 50 %-a rendelkezésre álló Processzor- és 70 %-a rendelkezésre álló memória használatára:
+Íme egy példa arra, hogyan utasíthatja a Service Fabric a rendelkezésre álló CPU 50%-ában és a rendelkezésre álló memória 70%-ában:
 
 ```xml
 <Section Name="PlacementAndLoadBalancing">
@@ -76,7 +76,7 @@ A következő példa bemutatja, hogyan arra utasítani a Service Fabric 50 %-a r
 </Section>
 ```
 
-A csomópont kapacitások teljes manuális telepítésre van szüksége, ha a rendszeres mechanizmus a fürt csomópontjainak leíró is használhat. A következő példa bemutatja, hogyan állíthatja be a négy magot csomópont és a 2 GB memória:
+Ha a csomópont-kapacitások teljes manuális beállítására van szüksége, a fürt csomópontjainak leírásához használhatja a szokásos módszert. Íme egy példa arra, hogyan állíthatja be a csomópontot négy maggal és 2 GB memóriát:
 
 ```xml
     <NodeType Name="MyNodeType">
@@ -87,13 +87,13 @@ A csomópont kapacitások teljes manuális telepítésre van szüksége, ha a re
     </NodeType>
 ```
 
-Amikor engedélyezve van a rendelkezésre álló erőforrások automatikus észlelését, és fürt(ök) manuálisan a fürtjegyzékben definiált, a Service Fabric ellenőrzi, hogy a csomópont rendelkezik-e elegendő erőforrás a kapacitást, amelyhez a felhasználó által megadott támogatásához:
+Ha a rendelkezésre álló erőforrások automatikus észlelése engedélyezve van, és a csomóponti kapacitások manuálisan vannak definiálva a fürt jegyzékfájljában, Service Fabric ellenőrzi, hogy a csomópont rendelkezik-e elegendő erőforrással a felhasználó által definiált kapacitás támogatásához:
 
-* Ha a jegyzékfájlban definiált fürt(ök) kisebb vagy egyenlő a rendelkezésre álló erőforrások a csomóponton, Service Fabric a kapacitásokat a jegyzékfájlban megadott használ.
+* Ha a jegyzékfájlban definiált csomópont-kapacitások kisebbek vagy egyenlőek a csomópont rendelkezésre álló erőforrásaival, akkor Service Fabric a jegyzékfájlban megadott kapacitásokat használja.
 
-* Ha a jegyzékfájlban definiált csomópont-kapacitás nagyobb, mint a rendelkezésre álló erőforrások, a Service Fabric használja a rendelkezésre álló erőforrások fürt(ök).
+* Ha a jegyzékfájlban definiált csomópont-kapacitások nagyobbak, mint a rendelkezésre álló erőforrások, Service Fabric a rendelkezésre álló erőforrásokat használja csomópont-kapacitásként.
 
-Automatikus észlelés rendelkezésre álló erőforrások is kapcsolható ki, ha nem szükséges. Kapcsolja ki, módosítsa a következő beállítást:
+A rendelkezésre álló erőforrások automatikus észlelése kikapcsolható, ha nincs rá szükség. A kikapcsolásához módosítsa a következő beállítást:
 
 ```xml
 <Section Name="PlacementAndLoadBalancing">
@@ -101,7 +101,7 @@ Automatikus észlelés rendelkezésre álló erőforrások is kapcsolható ki, h
 </Section>
 ```
 
-Az optimális teljesítmény érdekében az alábbi beállítást is be kell kapcsolni a fürtjegyzékben:
+Az optimális teljesítmény érdekében a következő beállítást is be kell kapcsolni a fürt jegyzékfájljában:
 
 ```xml
 <Section Name="PlacementAndLoadBalancing">
@@ -110,9 +110,9 @@ Az optimális teljesítmény érdekében az alábbi beállítást is be kell kap
 </Section>
 ```
 
-## <a name="specify-resource-governance"></a>Adja meg az erőforrás-szabályozása
+## <a name="specify-resource-governance"></a>Erőforrás-szabályozás meghatározása
 
-Erőforrás-szabályozási korlátait az alkalmazásjegyzékben (ServiceManifestImport szakasz) vannak megadva, az alábbi példában látható módon:
+Az erőforrás-irányítási korlátok az Application manifest (ServiceManifestImport) szakaszban vannak megadva, az alábbi példában látható módon:
 
 ```xml
 <?xml version='1.0' encoding='UTF-8'?>
@@ -133,15 +133,15 @@ Erőforrás-szabályozási korlátait az alkalmazásjegyzékben (ServiceManifest
   </ServiceManifestImport>
 ```
 
-Ebben a példában a csomag nevű **ServicePackageA** egy magot kap a csomópontokon, amelyekre el van helyezve. A service-csomagban található két kódcsomagok (**CodeA1** és **CodeA2**), és mindkettő adja meg a `CpuShares` paraméter. Az időarány, amíg CpuShares 512:256 alapvető fontosságú a két kód csomagok között osztja fel.
+Ebben a példában a **ServicePackageA** nevű szervizcsomag egy mag-t kap a csomópontokon, ahol elhelyezték. Ez a szolgáltatáscsomag két kódot tartalmaz (**CodeA1** és **CodeA2**), és `CpuShares` mindkét paramétert megadja. A CpuShares 512:256 aránya a két kód csomagjai között osztja el a magját.
 
-Így ebben a példában CodeA1 lekérdezi a core kétharmada, és CodeA2 lekér egy core (és a egy garanciás foglalás) egyharmada. Ha CpuShares kód csomagok nincsenek megadva, a Service Fabric egyaránt ezek közül a Processzormagok száma osztja fel.
+Így ebben a példában a CodeA1 egy mag kétharmadát kapja meg, és a CodeA2 egy-harmada bekerül a mag (és az azonos) Ha a CpuShares nincsenek megadva a kódokhoz, Service Fabric egyenlően osztja el a magokat egymás között.
 
-Memóriakorlátok abszolútak, ezért a mindkét kódcsomagok legfeljebb 1024 MB memória (és a egy garanciás foglalás). A kódcsomagok (tárolók vagy folyamatok) nem foglalható le több memóriát ezt a korlátot, és próbálja meg memóriahiány kivételt eredményez. Az erőforráskorlát érvényesítéséhez a szolgáltatáscsomagokban lévő minden kódcsomaghoz memóriakorlátokat kell meghatároznia.
+A memória korlátai abszolútak, ezért a csomagok 1024 MB memóriára korlátozódnak (és az azonos szintű, nem garantált foglalás). A kódok (tárolók vagy folyamatok) nem foglalhatnak le több memóriát ennél a korlátnál, és a kísérlet során a memóriában lévő kivételek is megtalálhatók. Az erőforráskorlát érvényesítéséhez a szolgáltatáscsomagokban lévő minden kódcsomaghoz memóriakorlátokat kell meghatároznia.
 
-### <a name="using-application-parameters"></a>Alkalmazás-paraméterek használata
+### <a name="using-application-parameters"></a>Alkalmazás paramétereinek használata
 
-Adja meg az erőforrás-szabályozás esetén használható [alkalmazásparamétereket](service-fabric-manage-multiple-environment-app-configuration.md) több alkalmazás konfiguráció kezeléséhez. Az alábbi példa bemutatja a alkalmazás paraméterek használatát:
+Az erőforrás-szabályozás megadásakor az [alkalmazás paramétereinek](service-fabric-manage-multiple-environment-app-configuration.md) használatával több alkalmazás-konfiguráció is kezelhető. Az alábbi példa az alkalmazás paramétereinek használatát mutatja be:
 
 ```xml
 <?xml version='1.0' encoding='UTF-8'?>
@@ -165,7 +165,7 @@ Adja meg az erőforrás-szabályozás esetén használható [alkalmazásparamét
   </ServiceManifestImport>
 ```
 
-Ebben a példában az alapértelmezett paraméterértékeket vannak beállítva a éles környezetben, ahol minden szolgáltatás csomag kap 4 maggal és 2 GB memória. Alapértelmezett értékek módosítani alkalmazásparaméter-fájlok használatával lehetőség. Ebben a példában egy paraméterfájlt használható az alkalmazás helyi tesztelése amennyiben azt kap kevesebb erőforrást éles környezetben:
+Ebben a példában az alapértelmezett paraméterérték az éles környezethez van beállítva, ahol az egyes szervizcsomagok 4 magot és 2 GB memóriát kapnak. Az alapértelmezett értékek módosíthatók az Application paraméter fájljaival. Ebben a példában egy paraméteres fájl használható az alkalmazás helyi tesztelésére, ha kevesebb erőforrást fog kapni, mint az éles környezetben:
 
 ```xml
 <!-- ApplicationParameters\Local.xml -->
@@ -182,22 +182,22 @@ Ebben a példában az alapértelmezett paraméterértékeket vannak beállítva 
 ```
 
 > [!IMPORTANT]
-> Alkalmazás paraméterekkel megadásával erőforrás-szabályozás érhető el a Service Fabric 6.1-es verzió indítása.<br>
+> Az erőforrás-szabályozás és az alkalmazás paramétereinek megadása Service Fabric 6,1-es verziótól kezdődően érhető el.<br>
 >
-> Ha alkalmazás paraméterek használatával adja meg az erőforrás-szabályozása el, a Service Fabric 6.1-es verziónál régebbi verzióra nem lehet visszaminősíteni.
+> Ha az alkalmazás paramétereinek használatával határozza meg az erőforrás-szabályozást, Service Fabric nem lehet visszaminősíteni az 6,1-es verzió előtti verzióra.
 
-## <a name="other-resources-for-containers"></a>Egyéb erőforrások a tárolók
+## <a name="other-resources-for-containers"></a>A tárolók egyéb erőforrásai
 
-CPU és memória mellett a tárolók egyéb erőforráskorlátok adja meg. Ezeket a korlátokat a kódcsomag szintjén vannak megadva, és a rendszer alkalmazza a tároló elindult. Ellentétben a CPU és memória, a fürterőforrás-kezelő nem ezeket az erőforrásokat, és nem bármelyik kapacitásának ellenőrzéséhez tegye vagy terheléselosztás, a számukra.
+A processzor és a memória mellett más erőforrás-korlátok is megadhatók a tárolók számára. Ezek a korlátok a kód csomag szintjén vannak megadva, és a rendszer a tároló indításakor alkalmazza őket. A CPU-val és a memóriával ellentétben a fürterőforrás-kezelő nem ismeri ezeket az erőforrásokat, és nem hajtja végre a kapacitás-ellenőrzéseket és a terheléselosztást.
 
-* *MemorySwapInMB*: Egy tárolót használó lapozómemória mennyisége.
-* *MemoryReservationInMB*: A memória cégirányítási csak akkor, ha a csomópontot a memória a versengés észlelt a rendszer érvényes enyhe korlát.
-* *CpuPercent*: A Processzor, a tárolót használó százalékos értéke. Ha a CPU-korlátok a szolgáltatási csomag számára meg van adva, ezt a paramétert hatékonyan figyelmen kívül.
-* *MaximumIOps*: A maximális iops-érték tároló használható (olvasási és írási).
-* *MaximumIOBytesps*: A maximális i/o (bájt / másodperc), amellyel egy tároló (olvasási és írási).
-* *BlockIOWeight*: A blokk más tárolók képest relatív súlya IO.
+* *MemorySwapInMB*: A tároló által használható swap memória mennyisége.
+* *MemoryReservationInMB*: A memória szabályozásának korlátozását, amely csak akkor kényszeríthető, ha a csomóponton a rendszer a memória tartalmát észleli.
+* *CpuPercent*: A tároló által használható CPU százalékaránya. Ha a szolgáltatási csomaghoz CPU-korlátok vannak megadva, a paramétert a rendszer hatékonyan figyelmen kívül hagyja.
+* *MaximumIOps*: A tároló által használható maximális IOPS (olvasás és írás).
+* *MaximumIOBytesps*: A tároló által használható maximális i/o-érték (bájt/s) (olvasási és írási).
+* *BlockIOWeight*: Az i/o súlyozásának letiltása más tárolóhoz viszonyítva.
 
-Ezeket az erőforrásokat a CPU és memória kombinálható is. Íme egy példa, hogyan adhat meg további források a tárolók:
+Ezek az erőforrások kombinálhatók a PROCESSZORral és a memóriával. Az alábbi példa bemutatja, hogyan határozhat meg további erőforrásokat a tárolók számára:
 
 ```xml
     <ServiceManifestImport>
@@ -211,5 +211,5 @@ Ezeket az erőforrásokat a CPU és memória kombinálható is. Íme egy példa,
 
 ## <a name="next-steps"></a>További lépések
 
-* A fürt Resource Managerrel kapcsolatos további tudnivalókért olvassa el [a Service Fabric fürterőforrás-kezelő bemutatása](service-fabric-cluster-resource-manager-introduction.md).
-* További információ az alkalmazásmodell szolgáltatáscsomagok és kódcsomagok –, és hogyan replikák leképezése őket – beolvashatja [minta Service Fabric-alkalmazásokhoz](service-fabric-application-model.md).
+* A fürterőforrás-kezelővel kapcsolatos további információkért olvassa el [a Service Fabric fürterőforrás-kezelő bemutatása](service-fabric-cluster-resource-manager-introduction.md)című témakört.
+* Ha többet szeretne megtudni az alkalmazás modelljéről, a szervizcsomagokról és a kódokról, valamint arról, hogy miként képezhetők le a replikák – olvassa el a [modell alkalmazást Service Fabricban](service-fabric-application-model.md).

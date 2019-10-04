@@ -1,79 +1,78 @@
 ---
-title: Integráció az Apache Spark és Apache Hive, a Hive Warehouse-összekötő
-description: Ismerje meg, hogyan integrálható az Apache Spark és Apache Hive-az Azure HDInsight Hive-adatraktár összekötő.
-services: hdinsight
+title: Apache Spark és Apache Hive integrálása a méhkas Warehouse-összekötővel
+description: Megtudhatja, hogyan integrálhatja Apache Spark és Apache Hive a kaptár Warehouse-összekötővel az Azure HDInsight.
+author: nakhanha
+ms.author: nakhanha
+ms.reviewer: hrasheed
 ms.service: hdinsight
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.topic: conceptual
-ms.date: 04/18/2019
-ms.openlocfilehash: f5c4b07326bfd469720ab07b522aefb9ed074cbb
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.date: 04/29/2019
+ms.openlocfilehash: 8a946a75a2dbd487494d70d0fd195a5becf5bd5a
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60014213"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122202"
 ---
-# <a name="integrate-apache-spark-and-apache-hive-with-the-hive-warehouse-connector"></a>Integráció az Apache Spark és Apache Hive, a Hive Warehouse-összekötő
+# <a name="integrate-apache-spark-and-apache-hive-with-the-hive-warehouse-connector"></a>Apache Spark és Apache Hive integrálása a méhkas Warehouse-összekötővel
 
-Az Apache Hive-adatraktár Connector (WEBMAG) egy könyvtár, amely lehetővé teszi, hogy könnyebben Apache Spark és Apache Hive-feladatokhoz, mint az adatok áthelyezését a Spark adatkerettípusokat jelölhet, és Hive-táblák között, és emellett a Spark streamelési adatok Hive táblákba irányítja támogatásával. Hive-Warehouse-összekötő működik, mint az hidat Spark- és Hive között. Scala, Java és Python fejlesztési támogatja.
+A Apache Hive Warehouse Connector (ÜZEMELTETHETŐ WEBMAG) egy olyan függvénytár, amely lehetővé teszi, hogy könnyebben működjön együtt Apache Spark és Apache Hive olyan feladatok támogatásával, mint például az adatok áthelyezése a Spark-DataFrames és a kaptár-táblák között, valamint a Spark streaming-adatok struktúrába rendezése. A méhkas Warehouse-összekötő a Spark és a kaptár közötti híddal működik. Támogatja a Scala, a Java és a Python fejlesztését.
 
-A Hive-Warehouse-összekötő lehetővé teszi, hogy a Hive és a Spark hatékony big-data alkalmazások fejlesztése az egyedi funkciókat. Az Apache Hive kínál, amelyek atomi, Consistent, Isolated és tartós (sav) adatbázis-tranzakciók támogatása. További információ az ACID és Hive-tranzakciók: [Hive-tranzakciók](https://cwiki.apache.org/confluence/display/Hive/Hive+Transactions). Hive is biztosít az Apache Ranger és alacsony késést analitikai feldolgozása nem érhető el, az Apache Spark révén részletes biztonsági vezérlők.
+A méhkas Warehouse-összekötő lehetővé teszi, hogy kihasználhassa a kaptár és a Spark egyedi funkcióit, és hatékony, nagy adatmennyiségű alkalmazásokat építsen ki. Apache Hive támogatja az atomi, konzisztens, elkülönített és tartós (savas) adatbázis-tranzakciókat. A struktúrával kapcsolatos további információkért lásd: [kaptár-tranzakciók](https://cwiki.apache.org/confluence/display/Hive/Hive+Transactions). A kaptár az Apache Rangern és az alacsony késésű analitikai feldolgozáson keresztül is biztosít részletes biztonsági ellenőrzéseket Apache Sparkban nem érhető el.
 
-Apache Spark Streaming egy strukturált API, amely lehetővé teszi a közvetítés funkció nem érhető el az Apache Hive rendelkezik. A Hortonworks Data Platform (HDP) 3.0-es verziótól kezdve az Apache Spark és Apache Hive rendelkezik külön metaadattárakat, amely is megnehezítik együttműködés. A Hive-Warehouse-összekötő megkönnyíti a Spark- és Hive együtt használja. Az üzemeltethető WEBMAG library tölt be adatokat LLAP démonok Spark végrehajtóval párhuzamosan, így hatékonyabb és skálázható, mint a Spark, Hive standard JDBC kapcsolat segítségével.
+A Apache Spark olyan strukturált streaming API-val rendelkezik, amely a Apache Hiveban nem elérhető folyamatos átviteli képességeket biztosít. A HDInsight 4,0-es verziójától kezdődően Apache Spark 2.3.1 és Apache Hive 3.1.0 külön metaadattárak rendelkezik, amely megnehezítheti az együttműködési képességet. A méhkas Warehouse-összekötő megkönnyíti a Spark és a struktúra együttes használatát. A ÜZEMELTETHETŐ WEBMAG-könyvtár LLAP-démonokból tölti be az adatait a Spark-végrehajtóknak párhuzamosan, így hatékonyabbá és méretezhetővé válik, mint a Spark és a kaptár közötti szabványos JDBC-kapcsolatok használata.
 
-![Architektúra](./media/apache-hive-warehouse-connector/hive-warehouse-connector-architecture.png)
+![a méhkas Warehouse-összekötő architektúrája](./media/apache-hive-warehouse-connector/hive-warehouse-connector-architecture.png)
 
-Az adatraktár Hive-összekötő által támogatott műveleteket a következők:
+A kaptár-tárház összekötője által támogatott néhány művelet:
 
-* A táblázat leírása
-* Az adatok ORC-formátumú, tábla létrehozása
-* Hive-adatok kiválasztása és a egy adathalmaz lekérése
-* Hive DataFrame írása a Batch szolgáltatásban
-* Egy Hive-update utasítás végrehajtása
-* Hive táblák adatainak olvasásakor, átalakítja őket a Spark és a egy új Hive-táblába történő írása
-* A Hive használatával HiveStreaming DataFrame vagy a Spark stream írása
+* Táblázat leírása
+* Táblázat létrehozása az ork-formázott adathoz
+* A kaptárak adatainak kiválasztása és a DataFrame beolvasása
+* DataFrame írása a struktúrába a Batch szolgáltatásban
+* Struktúra-frissítési utasítás végrehajtása
+* Táblázat adatainak olvasása a kaptárból, átalakítás a Sparkban, és az új struktúra-táblázatba való írása
+* DataFrame vagy Spark stream készítése a kaptárba a HiveStreaming használatával
 
-## <a name="hive-warehouse-connector-setup"></a>Hive-adatraktár-összekötő telepítése
+## <a name="hive-warehouse-connector-setup"></a>A méhkas Warehouse-összekötő beállítása
 
-A Hive-Warehouse-összekötő az Azure HDInsight Spark- és interaktív lekérdezési fürt között állíthatja be az alábbi lépéseket követve:
+Az alábbi lépéseket követve beállíthatja a kaptár Warehouse-összekötőt egy Spark és egy interaktív lekérdezési fürt között az Azure HDInsight:
 
-1. Hozzon létre egy HDInsight Spark 4.0 fürtöt egy tárfiókot és a egy egyéni Azure virtuális hálózat az Azure portal használatával. Információk a fürt létrehozása az Azure-beli virtuális hálózathoz: [HDInsight hozzáadása egy meglévő virtuális hálózathoz](../../hdinsight/hdinsight-extend-hadoop-virtual-network.md#existingvnet).
-1. HDInsight interaktív lekérdezések (LLAP) 4.0-s fürt ugyanazt a tárfiókot és az Azure virtuális hálózat az Azure portal használatával, a Spark-fürt létrehozása.
-1. Másolja ki a tartalmát a `/etc/hosts` headnode0 az interaktív lekérdezési fürt-fájlt a `/etc/hosts` fájlt a Spark-fürt a headnode0. Ez a lépés lehetővé teszi a Spark-fürt csomópontjainak interaktív lekérdezési fürt IP-címek feloldása. A frissített fájlt a tartalma `cat /etc/hosts`. A kimenet hasonlóan kell kinéznie az alábbi képernyőképen is látható.
+1. Hozzon létre egy HDInsight Spark 4,0-fürtöt egy Storage-fiókkal és egy egyéni Azure-beli virtuális hálózattal rendelkező Azure Portal használatával. A fürtök Azure-beli virtuális hálózatban való létrehozásával kapcsolatos információkért lásd: [HDInsight hozzáadása meglévő virtuális hálózathoz](../../hdinsight/hdinsight-plan-virtual-network-deployment.md#existingvnet).
+1. Hozzon létre egy HDInsight interaktív lekérdezési (LLAP) 4,0-Azure Portal fürtöt ugyanazzal a Storage-fiókkal és Azure virtuális hálózattal, mint a Spark-fürttel.
+1. Másolja a `/etc/hosts` fájl tartalmát az interaktív lekérdezési fürt headnode0 a Spark `/etc/hosts` -fürt headnode0 található fájlba. Ez a lépés lehetővé teszi, hogy a Spark-fürt feloldja a csomópontok IP-címeit az interaktív lekérdezési fürtben. Tekintse meg a frissített fájl tartalmát a `cat /etc/hosts`alkalmazásban. A kimenetnek az alábbi képernyőképen láthatóhoz hasonlóan kell kinéznie.
 
-    ![a hosts fájl megtekintése](./media/apache-hive-warehouse-connector/hive-warehouse-connector-hosts-file.png)
+    ![a méhkas Warehouse-összekötő fájlját tárolja](./media/apache-hive-warehouse-connector/hive-warehouse-connector-hosts-file.png)
 
-1. A Spark-fürt beállítások konfigurálása a következő lépések végrehajtásával: 
-    1. Azure portal megnyitása, HDInsight-fürtök közül választhat, és kattintson a fürt nevére.
-    1. A jobb oldalon alatt **fürt irányítópultjai**válassza **otthoni Ambari**.
-    1. Az Ambari webes felhasználói felületén kattintson **SPARK2** > **CONFIGS** > **egyéni spark2-alapértelmezett**.
+1. Konfigurálja a Spark-fürt beállításait a következő lépések végrehajtásával: 
+    1. Nyissa meg a Azure Portal, válassza ki a HDInsight-fürtök elemet, majd kattintson a fürt nevére.
+    1. A jobb oldalon, a **fürt irányítópultok**területén válassza a **Ambari Kezdőlap**lehetőséget.
+    1. A Ambari webes felhasználói felületén kattintson a **SPARK2** > -**konfigurációk** > **Egyéni SPARK2 – alapértelmezett beállítások**elemre.
 
-        ![Az Ambari Spark2 konfiguráció](./media/apache-hive-warehouse-connector/hive-warehouse-connector-spark2-ambari.png)
+        ![Apache Ambari Spark2-konfiguráció](./media/apache-hive-warehouse-connector/hive-warehouse-connector-spark2-ambari.png)
 
-    1. Állítsa be `spark.hadoop.hive.llap.daemon.service.hosts` ugyanazt az értéket a tulajdonság **nevének LLAP** alatt **speciális a hive interaktív env**. Például: `@llap0`
+    1. Ugyanarra `spark.hadoop.hive.llap.daemon.service.hosts` az értékre van állítva, mint a tulajdonság **kaptár. llap. Daemon. Service. hosts** * * Advanced kaptár-Interactive-site * *. Például: `@llap0`
 
-    1. Állítsa be `spark.sql.hive.hiveserver2.jdbc.url` JDBC kapcsolati karakterláncot, amely csatlakozik hiveserver2-n keresztül az interaktív lekérdezési fürt a. A kapcsolati karakterláncot a fürt URI-t az alábbi fog kinézni. `CLUSTERNAME` a Spark-fürt neve és a `user` és `password` paraméterek a fürt számára a helyes értékre van állítva.
+    1. Állítsa `spark.sql.hive.hiveserver2.jdbc.url` be a JDBC kapcsolati sztringet, amely az interaktív lekérdezési fürt Hiveserver2 kapcsolódik. A fürthöz tartozó kapcsolatok karakterlánca az alábbi URI-hoz hasonlóan fog kinézni. `CLUSTERNAME`a a Spark-fürt neve, a és `user` `password` a paraméter pedig a fürt megfelelő értékeire van beállítva.
 
         ```
         jdbc:hive2://LLAPCLUSTERNAME.azurehdinsight.net:443/;user=admin;password=PWD;ssl=true;transportMode=http;httpPath=/hive2
         ```
 
-        >[!Note] 
-        > A JDBC URL-CÍMÉT tartalmaznia kell a hiveserver2-n keresztül való kapcsolódáshoz hitelesítő adatok többek között a felhasználónevet és jelszót.
+        > [!Note]
+        > A JDBC URL-címnek tartalmaznia kell a Hiveserver2 való csatlakozáshoz szükséges hitelesítő adatokat, beleértve a felhasználónevet és a jelszót.
 
-    1. Állítsa be `spark.datasource.hive.warehouse.load.staging.dir` megfelelő HDFS-kompatibilis átmeneti könyvtárba. Ha két külön fürtben, az átmeneti könyvtárban kell lennie az átmeneti könyvtárban, az LLAP fürt storage-fiók egy mappájába, hogy a hiveserver2-n keresztül férhet hozzá. Ha például `wasb://STORAGE_CONTAINER_NAME@STORAGE_ACCOUNT_NAME.blob.core.windows.net/tmp` ahol `STORAGE_ACCOUNT_NAME` neve, a fürt által használt tárfiókok és `STORAGE_CONTAINER_NAME` a tároló neve.
+    1. A `spark.datasource.hive.warehouse.load.staging.dir` megfelelő HDFS-kompatibilis előkészítési könyvtárra van beállítva. Ha két különböző fürttel rendelkezik, az átmeneti könyvtárnak a LLAP-fürt Storage-fiókjának átmeneti könyvtárában kell lennie, hogy a HiveServer2 hozzáférjen hozzá. Például `wasb://STORAGE_CONTAINER_NAME@STORAGE_ACCOUNT_NAME.blob.core.windows.net/tmp` `STORAGE_CONTAINER_NAME` ahol `STORAGE_ACCOUNT_NAME` a a fürt által használt Storage-fiók neve, a pedig a Storage-tároló neve.
 
-    1. Állítsa be `spark.datasource.hive.warehouse.metastoreUri` a metaadattár URI-ját az interaktív lekérdezési fürt értékét. Keresse meg a metastoreUri LLAP-fürthöz tartozó, keresse meg a **hive.metastore.uris** tulajdonság, az LLAP Ambari felhasználói felületén a fürt alatt **Hive** > **speciális**  >  **Általános**. Az érték a következő URI Azonosítót hasonlót fog kinézni:
+    1. Állítsa `spark.datasource.hive.warehouse.metastoreUri` be az interaktív lekérdezési fürt metaadattár URI azonosítóját. A LLAP-fürt metastoreUri megkereséséhez keresse meg a **kaptár. metaadattár. URI** tulajdonságot a LLAP-fürt Ambari felhasználói felületén a **kaptár** > **speciális** > **általános**részében. Az érték a következő URI-hoz hasonlóan fog kinézni:
 
         ```
         thrift://hn0-hwclla.0iv2nyrmse1uvp2caa4e34jkmf.cx.internal.cloudapp.net:9083,
         thrift://hn1-hwclla.0iv2nyrmse1uvp2caa4e34jkmf.cx.internal.cloudapp.net:9083
         ```
 
-    1. Állítsa be `spark.security.credentials.hiveserver2.enabled` való `false` YARN-ügyfél üzembe helyezése mód.
-    1. Állítsa be `spark.hadoop.hive.zookeeper.quorum` , az LLAP-fürt kvórum Zookeeper. A Zookeeper kvórum LLAP-fürthöz tartozó megkereséséhez keressen a **hive.zookeeper.quorum** tulajdonság, az LLAP Ambari felhasználói felületén a fürt alatt **Hive** > **speciális**  >  **Hive-hely speciális**. Az érték a következő karakterlánc hasonlót fog kinézni:
+    1. A `spark.security.credentials.hiveserver2.enabled` következőre van beállítva: szál- `false` ügyfél üzembe helyezési módja.
+    1. Állítsa `spark.hadoop.hive.zookeeper.quorum` a LLAP-fürt Zookeeper kvórumára. A LLAP-fürt Zookeeper-Kvórumának megkereséséhez keresse meg a **kaptár. Zookeeper. kvórum** tulajdonságot a LLAP-fürt Ambari felhasználói felületén a **kaptár** > **speciális** > **struktúrája – hely**területen. Az érték a következő sztringhez hasonlóan fog kinézni:
 
         ```
         zk1-nkhvne.0iv2nyrmse1uvp2caa4e34jkmf.cx.internal.cloudapp.net:2181,
@@ -81,27 +80,27 @@ A Hive-Warehouse-összekötő az Azure HDInsight Spark- és interaktív lekérde
         zk6-nkhvne.0iv2nyrmse1uvp2caa4e34jkmf.cx.internal.cloudapp.net:2181
         ```
 
-A Hive-Warehouse-összekötő konfigurációja teszteléséhez hajtsa végre a a szakaszban ismertetett lépések [csatlakozó és futó lekérdezések](#connecting-and-running-queries).
+A méhkas Warehouse-összekötő konfigurációjának teszteléséhez hajtsa végre a [lekérdezések csatlakoztatása és futtatása](#connecting-and-running-queries)című szakasz lépéseit.
 
-## <a name="using-the-hive-warehouse-connector"></a>A Hive Warehouse-összekötő használatával
+## <a name="using-the-hive-warehouse-connector"></a>A méhkas Warehouse-összekötő használata
 
-### <a name="connecting-and-running-queries"></a>Csatlakozás és a lekérdezések futtatása
+### <a name="connecting-and-running-queries"></a>Lekérdezések csatlakoztatása és futtatása
 
-Az interaktív lekérdezési fürt csatlakozhat, és hajtsa végre a lekérdezéseket a Hive-Warehouse-összekötő használatával néhány különböző módszerek közül választhat. Támogatott módszerek az alábbiak az alábbi eszközöket:
+Néhány különböző módszer közül választhat az interaktív lekérdezési fürthöz való csatlakozáshoz és lekérdezések végrehajtásához a méhkas Warehouse-összekötő használatával. A támogatott módszerek a következő eszközöket tartalmazzák:
 
 * [spark-shell](../spark/apache-spark-shell.md)
 * PySpark
-* Spark-submit szkripttel
+* Spark – elküldés
 * [Zeppelin](../spark/apache-spark-zeppelin-notebook.md)
 * [Livy](../spark/apache-spark-livy-rest-interface.md)
 
-Ebben a cikkben megadott összes példák keresztül a spark-shell hajtják végre.
+A cikkben szereplő összes példát a Spark-Shell használatával hajtja végre a rendszer.
 
-A spark-shell munkamenet indításához, tegye a következőket:
+A Spark-Shell-munkamenet elindításához hajtsa végre a következő lépéseket:
 
-1. SSH-t az átjárócsomóponthoz, a fürt számára. Csatlakozás a fürthöz az ssh-val kapcsolatos további információkért lásd: [HDInsight (az Apache Hadoop) SSH-val csatlakozhat](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
-1. Írja be a megfelelő könyvtárba módosítása `cd /usr/hdp/current/hive_warehouse_connector` , vagy adja meg a paraméterek a spark-shell-parancsban használt összes jar-fájlok teljes elérési útja.
-1. Adja meg a spark-shell elindításához a következő parancsot:
+1. SSH-t a fürt átjárócsomóponthoz. További információ a fürthöz SSH-val való csatlakozásról: [Csatlakozás HDInsight (Apache Hadoop) SSH használatával](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
+1. Váltson át a megfelelő könyvtárba úgy, `cd /usr/hdp/current/hive_warehouse_connector` hogy beírja vagy megadja a Spark-Shell parancsban paraméterként használt JAR-fájlok teljes elérési útját.
+1. A Spark Shell elindításához írja be a következő parancsot:
 
     ```bash
     spark-shell --master yarn \
@@ -109,22 +108,22 @@ A spark-shell munkamenet indításához, tegye a következőket:
     --conf spark.security.credentials.hiveserver2.enabled=false
     ```
 
-1. Látni fogja az üdvözlő üzenetet és a egy `scala>` kérdés, ahol megadhatja a parancsok.
+1. Egy üdvözlő üzenet jelenik meg, amely `scala>` a parancsok megadására használható.
 
-1. A spark-shell indítás után egy Hive-adatraktár-Connector-példány indíthatók el a következő parancsokkal:
+1. A Spark-Shell elindítása után a rendszer elindíthatja a méhkas Warehouse Connector-példányt az alábbi parancsokkal:
 
     ```scala
     import com.hortonworks.hwc.HiveWarehouseSession
     val hive = HiveWarehouseSession.session(spark).build()
     ```
 
-### <a name="connecting-and-running-queries-on-enterprise-security-package-esp-clusters"></a>Csatlakozás és a vállalati biztonsági csomag (ESP) fürtökben-lekérdezések futtatása
+### <a name="connecting-and-running-queries-on-enterprise-security-package-esp-clusters"></a>Enterprise Security Package-(ESP-) fürtökhöz kapcsolódó lekérdezések csatlakoztatása és futtatása
 
-A vállalati biztonsági csomag (ESP) például az Active Directory-alapú hitelesítés, a több felhasználó támogatása és a szerepköralapú hozzáférés-vezérlés Apache Hadoop-fürtök Azure HDInsight a vállalati szintű képességet biztosít. ESP további információkért lásd: [Bevezetés az Apache Hadoop-biztonság, a vállalati biztonsági csomag](../domain-joined/apache-domain-joined-introduction.md).
+A Enterprise Security Package (ESP) olyan nagyvállalati szintű képességeket biztosít, mint a Active Directory-alapú hitelesítés, a többfelhasználós támogatás és az Azure HDInsight-beli Apache Hadoop-fürtök szerepköralapú hozzáférés-vezérlése. Az ESP-vel kapcsolatos további információkért lásd: [Enterprise Security Package használata a HDInsight-ben](../domain-joined/apache-domain-joined-architecture.md).
 
-1. Kezdeti lépések az 1. és 2 alatt [csatlakozó és futó lekérdezések](#connecting-and-running-queries).
-1. Típus `kinit` és jelentkezzen be egy tartományi felhasználóra.
-1. Kezdő a spark-shell a teljes listáját, ahogy az alábbi konfigurációs paramétereket. Összes értéket a csúcsos zárójelek között csupa nagybetűvel kell megadni, a fürt alapján. Ismerje meg az értékeket adjon meg az alábbi paraméterekkel kell, ha lásd [Hive-adatraktár-összekötő telepítése](#hive-warehouse-connector-setup).:
+1. A [lekérdezések csatlakoztatása és futtatása](#connecting-and-running-queries)szakaszban kövesse az 1. és a 2. lépést.
+1. Írja `kinit` be és jelentkezzen be egy tartományi felhasználóval.
+1. Indítsa el a Spark-shellt a konfigurációs paraméterek teljes listájával az alább látható módon. A szögletes zárójelek közötti összes értéket meg kell adni a fürt alapján. Ha meg kell találnia az alábbi paraméterek bármelyikének bemeneti értékeit, tekintse meg a következő szakaszt: [kaptár Warehouse Connector beállítása](#hive-warehouse-connector-setup).
 
     ```bash
     spark-shell --master yarn \
@@ -137,9 +136,9 @@ A vállalati biztonsági csomag (ESP) például az Active Directory-alapú hitel
     --conf spark.hadoop.hive.zookeeper.quorum='<ZOOKEEPER_QUORUM>'
    ```
 
-### <a name="creating-spark-dataframes-from-hive-queries"></a>A Hive-lekérdezések Spark DataFrames létrehozása
+### <a name="creating-spark-dataframes-from-hive-queries"></a>Spark-DataFrames létrehozása a kaptár-lekérdezésekből
 
-Az üzemeltethető WEBMAG szalagtárat használó összes lekérdezések eredményeit a rendszer adathalmazaként adja vissza. Az alábbi példák bemutatják, hogyan hozzon létre egy egyszerű lekérdezést.
+A ÜZEMELTETHETŐ WEBMAG könyvtárat használó összes lekérdezés eredményét DataFrame adja vissza. Az alábbi példák bemutatják, hogyan hozhat létre alapszintű lekérdezést.
 
 ```scala
 hive.setDatabase("default")
@@ -147,70 +146,72 @@ val df = hive.executeQuery("select * from hivesampletable")
 df.filter("state = 'Colorado'").show()
 ```
 
-A lekérdezés eredményeit, olyan DataFrames Spark, Spark-kódtárakat például MLIB és a sparksql-hez használható.
+A lekérdezés eredménye Spark DataFrames, amely a Spark-függvénytárak, például a MLIB és a SparkSQL használatával használható.
 
-### <a name="writing-out-spark-dataframes-to-hive-tables"></a>Hive-tábláihoz Spark adatkerettípusokat jelölhet ki írása
+### <a name="writing-out-spark-dataframes-to-hive-tables"></a>Spark-DataFrames kiírása a struktúra tábláiba
 
-A Spark natív módon nem támogatja a Hive a felügyelt ACID táblák való írás. Használja az üzemeltethető WEBMAG, azonban írhat ki bármely DataFrame, egy Hive-táblába. Ez a funkció a munkahelyi hálózatban, az alábbi példában látható:
+A Spark nem támogatja natív módon az írást a kaptár felügyelt savas tábláiba. A ÜZEMELTETHETŐ WEBMAG használatával azonban bármilyen DataFrame kiírhat egy kaptár-táblába. Ezt a funkciót a következő példában tekintheti meg a munkahelyen:
 
-1. Hozzon létre egy táblát nevű `sampletable_colorado` , és adja meg az oszlopok a következő paranccsal:
+1. Hozzon létre egy `sampletable_colorado` nevű táblát, és határozza meg az oszlopokat a következő parancs használatával:
 
     ```scala
     hive.createTable("sampletable_colorado").column("clientid","string").column("querytime","string").column("market","string").column("deviceplatform","string").column("devicemake","string").column("devicemodel","string").column("state","string").column("country","string").column("querydwelltime","double").column("sessionid","bigint").column("sessionpagevieworder","bigint").create()
     ```
 
-2. Szűrje a táblázatot `hivesampletable` ahol az oszlop `state` egyenlő `Colorado`. Ez a lekérdezés a Hive-táblába, mint a Spark DataFrame adja vissza. Az adathalmaz a Hive-táblába menti a rendszer akkor `sampletable_colorado` használatával a `write` függvény.
-    
+2. Szűrje azt a `hivesampletable` táblázatot, ahol `state` az oszlop `Colorado`egyenlő. A struktúra táblázatának ezt a lekérdezését a rendszer Spark DataFrame adja vissza. Ezután a DataFrame a `sampletable_colorado` `write` függvény használatával menti a struktúra táblába.
+
     ```scala
     hive.table("hivesampletable").filter("state = 'Colorado'").write.format(HiveWarehouseSession.HIVE_WAREHOUSE_CONNECTOR).option("table","sampletable_colorado").save()
     ```
 
-Az eredményül kapott tábla az alábbi képernyőképen látható.
+Az eredményül kapott táblázatot az alábbi képernyőképen tekintheti meg.
 
-![eredményül kapott tábla megjelenítése](./media/apache-hive-warehouse-connector/hive-warehouse-connector-show-hive-table.png)
+![méhkas-raktár összekötő a struktúra-táblázat megjelenítése](./media/apache-hive-warehouse-connector/hive-warehouse-connector-show-hive-table.png)
 
-### <a name="structured-streaming-writes"></a>Strukturált streamelés írási műveletek
+### <a name="structured-streaming-writes"></a>Strukturált adatfolyam-írások
 
-Hive-Warehouse-összekötő használatával, használhatja a Spark streaming, írja az adatokat, a Hive-táblákat.
+A méhkas Warehouse-összekötő használatával a Spark streaming használatával írhat adatbevitelt a kaptár tábláiba.
 
-Hozhat létre, amelyek a localhost porton 9999 egy Hive-táblába egy Spark stream adatokat fogadnak egy Hive-Warehouse-összekötő például az alábbi lépésekkel.
+Az alábbi lépéseket követve hozzon létre egy méhkas Warehouse-összekötőt, amely az 9999-as localhost porton lévő Spark streamből származó adatok egy kaptár-táblába való betöltését mutatja be.
 
 1. Nyisson meg egy terminált a Spark-fürtön.
-1. Kezdje a spark stream a következő paranccsal:
+1. Indítsa el a Spark streamet a következő paranccsal:
 
     ```scala
     val lines = spark.readStream.format("socket").option("host", "localhost").option("port",9988).load()
     ```
 
-1. Hozzon létre adatokat a Spark Stream létrehozott, a következő lépések végrehajtásával:
-    1. Nyisson meg egy másik terminál ugyanazon a Spark-fürtön.
-    1. A parancssorba írja be a `nc -lk 9999`. Ezt a parancsot a parancssorból adatokat küldeni a megadott port a netcat eszközt használja.
-    1. Írja be a szavakat, adja meg, hogy, a Spark stream kocsivissza követ.
-        ![a spark stream bemeneti adatok](./media/apache-hive-warehouse-connector/hive-warehouse-connector-spark-stream-data-input.png)
-1. Hozzon létre egy új Hive-táblába a streamelési adatok tárolásához. A spark-felületen írja be a következő parancsokat:
+1. Hozzon létre adatforrást a létrehozott Spark streamhez a következő lépések végrehajtásával:
+    1. Nyisson meg egy másik terminált ugyanazon a Spark-fürtön.
+    1. A parancssorba írja be a `nc -lk 9999`következőt:. Ez a parancs a netcat segédprogramot használja az adatok parancssorból a megadott portra történő küldéséhez.
+    1. Írja be azt a szót, amelyet a Spark-adatfolyam betöltéséhez szeretne, majd adja meg a kocsivissza értéket.
+
+        ![bemeneti adatok az Apache Spark streambe](./media/apache-hive-warehouse-connector/hive-warehouse-connector-spark-stream-data-input.png)
+
+1. Hozzon létre egy új struktúra-táblázatot a folyamatos átviteli adattároláshoz. A Spark-shellben írja be a következő parancsokat:
 
     ```scala
     hive.createTable("stream_table").column("value","string").create()
     ```
 
-1. A streamelési adatokat írni az újonnan létrehozott tábla a következő paranccsal:
+1. A következő parancs használatával írja a folyamatos átviteli adatátvitelt az újonnan létrehozott táblába:
 
     ```scala
     lines.filter("value = 'HiveSpark'").writeStream.format(HiveWarehouseSession.STREAM_TO_STREAM).option("database", "default").option("table","stream_table").option("metastoreUri",spark.conf.get("spark.datasource.hive.warehouse.metastoreUri")).option("checkpointLocation","/tmp/checkpoint1").start()
     ```
 
     >[!Important]
-    > A `metastoreUri` és `database` beállítások jelenleg manuálisan kell beállítani az Apache Spark ismert problémái következtében. A problémával kapcsolatos további információkért lásd: [SPARK-25460](https://issues.apache.org/jira/browse/SPARK-25460).
+    > A `metastoreUri` és`database` a beállításokat a Apache Spark ismert hibája miatt manuálisan kell beállítani. További információ erről a hibáról: [Spark-25460](https://issues.apache.org/jira/browse/SPARK-25460).
 
-1. Az alábbi parancsot a táblába beszúrt adatokat tekintheti meg:
+1. Az alábbi paranccsal megtekintheti a táblázatba beszúrt adattartalmat:
 
     ```scala
     hive.table("stream_table").show()
     ```
 
-### <a name="securing-data-on-spark-esp-clusters"></a>Spark ESP-fürtökön az adatok védelme
+### <a name="securing-data-on-spark-esp-clusters"></a>Az adatbiztonság biztosítása a Spark ESP-fürtökön
 
-1. Hozzon létre egy táblát `demo` néhány mintaadatokkal, írja be a következő parancsokat:
+1. Hozzon létre `demo` egy táblázatot néhány mintaadatok használatával a következő parancsok beírásával:
 
     ```scala
     create table demo (name string);
@@ -219,26 +220,29 @@ Hozhat létre, amelyek a localhost porton 9999 egy Hive-táblába egy Spark stre
     INSERT INTO demo VALUES ('InteractiveQuery');
     ```
 
-1. A táblázat tartalma a következő paranccsal tekintheti meg. A szabályzat alkalmazása előtt a `demo` táblázat mutatja a teljes oszlop.
+1. Tekintse meg a tábla tartalmát a következő paranccsal. A szabályzat alkalmazása előtt a `demo` tábla megjeleníti a teljes oszlopot.
 
     ```scala
     hive.executeQuery("SELECT * FROM demo").show()
     ```
 
-    ![ranger-házirendet alkalmazása előtt bemutató táblázat](./media/apache-hive-warehouse-connector/hive-warehouse-connector-table-before-ranger-policy.png)
+    ![bemutató táblázat a Ranger-szabályzat alkalmazása előtt](./media/apache-hive-warehouse-connector/hive-warehouse-connector-table-before-ranger-policy.png)
 
-1. A alkalmazni egy olyan szabályzatot, amely csak megjeleníti az utolsó négy karaktert oszlop maszkolási oszlop.  
-    1. Nyissa meg a Ranger felügyeleti felhasználói Felületéhez, `https://CLUSTERNAME.azurehdinsight.net/ranger/`.
-    1. Kattintson a Hive szolgáltatást a fürtöt a **Hive**.
-        ![ranger-házirendet alkalmazása előtt bemutató táblázat](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-service-manager.png)
-    1. Kattintson a a **maszkolás** fülre, majd **új házirend hozzáadása** ![szabályzatok listája](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png)
-    1. Adja meg a kívánt szabályzat nevét. Adatbázis kiválasztása: **Alapértelmezett**, Hive-táblába: **bemutató**, Hive-oszlop: **neve**, felhasználó: **rsadmin2**, hozzáférési típusok: **kiválasztása**, és **Részleges maszk: utolsó 4 megjelenítése** származó a **maszkolás beállítás kijelölése** menü. Kattintson a **Hozzáadás** parancsra.
-                ![szabályzatok listája](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-create-policy.png)
-1. A tábla tartalmának megtekintése újra. Alkalmazása a ranger-házirendet, után látható az oszlop csak az utolsó négy karakter.
+1. Alkalmazzon egy oszlop maszkolási szabályzatot, amely csak az oszlop utolsó négy karakterét jeleníti meg.  
+    1. Nyissa meg a Ranger felügyeleti felhasználói `https://CLUSTERNAME.azurehdinsight.net/ranger/`felületét a következő címen:.
+    1. Kattintson a kaptár szolgáltatásra a fürthöz a **struktúra**területen.
+        ![Ranger Service Manager](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-service-manager.png)
+    1. Kattintson a **maszkolás** lapra, és **adja hozzá az új házirendet**
 
-    ![ranger házirend alkalmazása után bemutató táblázat](./media/apache-hive-warehouse-connector/hive-warehouse-connector-table-after-ranger-policy.png)
+        ![kaptár-raktár összekötő Ranger-struktúra szabályzatának listája](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png)
+
+    a. Adja meg a kívánt szabályzat nevét. Adatbázis kiválasztása: **Alapértelmezett**, struktúra tábla: **bemutató**, kaptár oszlop: **név**, felhasználó: **rsadmin2**, hozzáférési típusok: **Select**, és **részleges maszk: az elmúlt 4 megjelenítése** a **maszkolási beállítások kiválasztása** menüből. Kattintson a **Hozzáadás**lehetőségre.
+                ![házirend létrehozása](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-create-policy.png)
+1. Megtekintheti a tábla tartalmát. A Ranger-szabályzat alkalmazása után csak az oszlop utolsó négy karakterét láthatjuk.
+
+    ![bemutató táblázat a Ranger-szabályzat alkalmazása után](./media/apache-hive-warehouse-connector/hive-warehouse-connector-table-after-ranger-policy.png)
 
 ## <a name="next-steps"></a>További lépések
 
-* [HDInsight interaktív lekérdezés használata](https://docs.microsoft.com/azure/hdinsight/interactive-query/apache-interactive-query-get-started)
-* [Példák a használata a Hive-Warehouse-összekötő használatával a Zeppelin Livy, spark-submit szkripttel, és a pyspark](https://community.hortonworks.com/articles/223626/integrating-apache-hive-with-apache-spark-hive-war.html)
+* [Az interaktív lekérdezés használata HDInsighttal](https://docs.microsoft.com/azure/hdinsight/interactive-query/apache-interactive-query-get-started)
+* [Példák a méhkas Warehouse-összekötővel való interakcióra a Zeppelin, a Livy, a Spark-Submit és a pyspark használatával](https://community.hortonworks.com/articles/223626/integrating-apache-hive-with-apache-spark-hive-war.html)

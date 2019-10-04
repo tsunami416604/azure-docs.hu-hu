@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Project Answer Search, Java'
+title: 'Gyors útmutató: Project answer-keresés, Java'
 titlesuffix: Azure Cognitive Services
 description: A Válaszkeresés projekt Javában történő használatának első lépései.
 services: cognitive-services
@@ -10,21 +10,22 @@ ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: fc0f8519644c5b9f722ab67f2e9d600a0be7960b
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ROBOTS: NOINDEX
+ms.openlocfilehash: e28b86981eafdf353f4a0e1937e5731aa4e7d68e
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55883525"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707136"
 ---
-# <a name="quickstart-project-answer-search-query-in-java"></a>Gyors útmutató: Projekt válasz keresési lekérdezés Java nyelven
+# <a name="quickstart-project-answer-search-query-in-java"></a>Gyors útmutató: Project answer keresési lekérdezés Java-ban
 Ez a cikk Javát használ annak bemutatására, hogyan használható a Microsoft Cognitive Services részét képező Bing Answer Search API az Azure-on. Az API egy REST-webszolgáltatás, így kompatibilis minden olyan programozási nyelvvel, amely képes HTTP-kérések küldésére és JSON-elemzésre.
  
 A példakód olyan Javát használ, amely csak minimális mértékű külső függőségekkel rendelkezik.  A Mono használatával Linux vagy Mac OS X rendszeren is futtatható.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Hozzáférési kulcs lekérése a [Cognitive Services Labs](https://aka.ms/answersearchsubscription) ingyenes próbaverziójához
+Hozzáférési kulcs lekérése a [Cognitive Services Labs](https://labs.cognitive.microsoft.com/en-us/project-answer-search) ingyenes próbaverziójához
 
 ## <a name="request"></a>Kérés 
 

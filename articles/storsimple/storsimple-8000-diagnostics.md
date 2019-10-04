@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 5cce4337e3ef95c6407d46d9b8b6401fe4f6600b
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497740"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60576186"
 ---
 # <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>A StorSimple diagnosztikai eszközt használhatja a 8000-es sorozatú eszköz hibáinak elhárítása
 
@@ -210,7 +210,7 @@ Ez a teszt jelenti a rendszer-információkat, a frissítések érhetők el, a f
 
 * A rendszer-információkat tartalmazza a modellt, sorozatszámát, időzóna, tartományvezérlő állapotát és a részletes szoftververzió a rendszeren futó. A kimeneteként jelentett különböző rendszer paraméterek megértéséhez, lépjen a [értelmezése során a rendszer-információkat](#appendix-interpreting-system-information).
 
-* A frissítés rendelkezésre állási jelentések elérhetők-e a normál és a karbantartás mód és a csomaghoz kapcsolódó nevét. Ha `RegularUpdates` és `MaintenanceModeUpdates` vannak `false`, akkor ez azt jelenti, hogy a frissítések nem érhetők el. Az eszköz naprakész.
+* A frissítés rendelkezésre állási jelentések elérhetők-e a normál és a karbantartás mód és a csomaghoz kapcsolódó nevét. Ha `RegularUpdates` és `MaintenanceModeUpdates` vannak `false`, akkor ez azt jelenti, hogy a frissítések nem érhetők el. Az eszköz nem naprakész.
 * Fürtinformációkat ismerteti a különböző logikai összetevőit a HCS fürtcsoportot és azok megfelelő állapotát. Ha egy kapcsolat nélküli fürtcsoport ebben a szakaszban a jelentés [forduljon a Microsoft Support](storsimple-8000-contact-microsoft-support.md).
 * A szolgáltatás információk közé tartozik a nevét és az eszközön futó összes HCS és a CIS szükségességét szolgáltatás állapota. Ez az információ hasznos lehet a a Microsoft Support az eszköz a probléma elhárításához.
 
@@ -423,7 +423,7 @@ Controller0>
 | Időzóna                | Az eszköz időzónáját eszköz üzembe helyezése során konfigurált az Azure Portalon.|
 | CurrentController       | A vezérlő, amely a Windows PowerShell felületét a StorSimple eszköz keresztül csatlakozik.|
 | ActiveController        | A tartományvezérlővel, amely aktív az eszközön, és vezérli a hálózati és lemezkonfigurációját műveleteket. Ez lehet 0. vezérlő vagy a vezérlő 1.  |
-| Controller0Status       | 0. vezérlő az eszköz állapotát. A vezérlő állapota lehet normál, helyreállítási módban, vagy nem érhető el.|
+| Controller0Status       | 0\. vezérlő az eszköz állapotát. A vezérlő állapota lehet normál, helyreállítási módban, vagy nem érhető el.|
 | Controller1Status       | Vezérlő 1 állapota az eszközön.  A vezérlő állapota lehet normál, helyreállítási módban, vagy nem érhető el.|
 | SystemMode              | A StorSimple-eszközök általános állapotát. Az eszköz állapota lehet normál, karbantartási, vagy a leszerelt (felel meg az Azure Portalon inaktiválva).|
 | FriendlySoftwareVersion | A rövid karakterlánc, amely megfelel az eszköz szoftververzióján. A rendszer a 4-es frissítést futtatja a rövid szoftververzió lenne a StorSimple 8000 Series Update 4.0-s.|

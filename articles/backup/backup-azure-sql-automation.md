@@ -1,131 +1,129 @@
 ---
-title: 'Azure Backup: Biztonsági mentése és visszaállítása az SQL-adatbázisok Azure-beli virtuális gépeken az Azure Backup és a PowerShell használatával'
-description: Biztonsági mentése és visszaállítása az SQL-adatbázisok Azure-beli virtuális gépeken az Azure Backup és a PowerShell használatával.
-services: backup
-author: pvrk
-manager: vijayts
-keywords: Az Azure Backup; SQL;
+title: SQL-adatbázisok biztonsági mentése és visszaállítása Azure-beli virtuális gépeken PowerShell-Azure Backup
+description: Az SQL-adatbázisok biztonsági mentése és visszaállítása Azure-beli virtuális gépeken Azure Backup és PowerShell használatával.
+ms.reviewer: pullabhk
+author: dcurwin
+manager: carmonm
+keywords: Azure Backup; SQL
 ms.service: backup
 ms.topic: conceptual
 ms.date: 03/15/2019
-ms.author: pullabhk
+ms.author: dacurwin
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 6469e3b35357867b6b38b00c8b11637ba30b2960
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: d5f3b98048cb04eab15479c3a9f5d27f16df1f3a
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287555"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309757"
 ---
-# <a name="back-up-and-restore-sql-databases-in-azure--vms-with-powershell"></a>Biztonsági mentése és visszaállítása az SQL-adatbázisok Azure-beli virtuális gépeken a PowerShell-lel
+# <a name="back-up-and-restore-sql-databases-in-azure--vms-with-powershell"></a>SQL-adatbázisok biztonsági mentése és visszaállítása az Azure-beli virtuális gépeken a PowerShell-lel
 
-Ez a cikk ismerteti az Azure PowerShell használatával biztonsági mentése és helyreállítása egy SQL DB használatával egy Azure virtuális Gépen belül [Azure Backup](backup-overview.md) Recovery Services-tároló.
+Ez a cikk azt ismerteti, hogyan használható a Azure PowerShell egy Azure-beli virtuális gépen található SQL-adatbázis biztonsági mentésére és helyreállítására [Azure Backup](backup-overview.md) Recovery Services-tároló használatával.
 
 Ez az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
-> * Állítsa be a PowerShell és az Azure Recovery Services-szolgáltató regisztrálásához.
+> * A PowerShell beállítása és az Azure Recovery Services-szolgáltató regisztrálása.
 > * Recovery Services-tároló létrehozása.
-> * Biztonsági mentés konfigurálása az SQL DB-hez egy Azure virtuális Gépen belül.
-> * A biztonsági mentési feladat futtatása.
-> * Visszaállítás a biztonsági másolat az SQL DB.
-> * Figyelheti a biztonsági mentési és visszaállítási feladatok.
+> * Az SQL-adatbázis biztonsági mentésének konfigurálása egy Azure-beli virtuális gépen.
+> * Futtasson egy biztonsági mentési feladatot.
+> * Biztonsági másolat készítése az SQL-ADATBÁZISról.
+> * A biztonsági mentési és visszaállítási feladatok figyelése.
 
 ## <a name="before-you-start"></a>Előkészületek
 
-* [További](backup-azure-recovery-services-vault-overview.md) Recovery Services-tárolók kapcsolatban.
-* Olvassa el az a funkciók [belül Azure virtuális gépeken futó SQL-adatbázisok biztonsági mentésével](backup-azure-sql-database.md#before-you-start).
-* Tekintse át a Recovery Services PowerShell objektum hierarchiában.
+* [További](backup-azure-recovery-services-vault-overview.md) információ a Recovery Services-tárolókkal kapcsolatban.
+* További információ az [SQL-adatbázisok Azure-beli virtuális gépeken belüli biztonsági mentésének](backup-azure-sql-database.md#before-you-start)funkciói funkcióiról.
+* Tekintse át Recovery Services PowerShell-objektumának hierarchiáját.
 
-### <a name="recovery-services-object-hierarchy"></a>Recovery Services objektum hierarchia
+### <a name="recovery-services-object-hierarchy"></a>Recovery Services objektum-hierarchia
 
-Az alábbi ábrán az objektumhierarchia foglalja össze.
+Az objektum-hierarchiát a következő ábra összegzi.
 
-![Recovery Services objektum hierarchia](./media/backup-azure-vms-arm-automation/recovery-services-object-hierarchy.png)
+![Recovery Services objektum-hierarchia](./media/backup-azure-vms-arm-automation/recovery-services-object-hierarchy.png)
 
-Tekintse át a **Az.RecoveryServices** [parancsmag-referencia](/powershell/module/az.recoveryservices) referencia az Azure-könyvtárban.
+Tekintse át az az **. recoveryservices szolgáltatónál** [parancsmag](/powershell/module/az.recoveryservices) -referenciát az Azure Library-ben.
 
-### <a name="set-up-and-install"></a>Beállítása és telepítése
+### <a name="set-up-and-install"></a>Beállítás és telepítés
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+A PowerShell beállítása a következőképpen történik:
 
-Állítsa be a PowerShell a következőképpen:
+1. [Töltse le az az PowerShell legújabb verzióját](/powershell/azure/install-az-ps). A minimálisan szükséges verzió a 1.5.0.
 
-1. [Töltse le a legújabb verzióját Az PowerShell](/powershell/azure/install-az-ps). A minimálisan szükséges verzió 1.5.0.
-
-2. Keresse meg az Azure Backup PowerShell-parancsmagok a következő paranccsal:
+2. Keresse meg a Azure Backup PowerShell-parancsmagokat a következő paranccsal:
 
     ```powershell
     Get-Command *azrecoveryservices*
     ```
 
-3. Tekintse át az aliasokat és a parancsmagok az Azure Backup és a Recovery Services-tároló. Íme egy példa mi látható. Akkor sem parancsmagok teljes listája.
+3. Tekintse át a Azure Backup és a Recovery Services-tároló aliasneveit és parancsmagait. Íme egy példa arra, hogy mit láthat. Ez nem a parancsmagok teljes listája.
 
-    ![A Recovery Services-parancsmagok listája](./media/backup-azure-afs-automation/list-of-recoveryservices-ps-az.png)
+    ![Recovery Services-parancsmagok listája](./media/backup-azure-afs-automation/list-of-recoveryservices-ps-az.png)
 
-4. Jelentkezzen be az Azure-fiókjába **Connect-AzAccount**.
-5. A megjelenő webhelyen kéri, hogy adjon meg a fiók hitelesítő adatait.
+4. Jelentkezzen be az Azure-fiókjába a **AzAccount**használatával.
+5. A megjelenő weblapon meg kell adnia a fiók hitelesítő adatait.
 
-    * Azt is megteheti, megadhatja a fiók hitelesítő adatait a paramétert a **Connect-AzAccount** parancsmagot **-hitelesítő adat**.
-    * Ha Ön CSP-partner egy bérlő esetében működik, adja meg az ügyfél egy bérlő, a Bérlőazonosítója vagy bérlői elsődleges tartománynév használatával. Például **Connect-AzAccount-bérlő** fabrikam.com.
+    * Másik lehetőségként megadhatja a fiók hitelesítő adatait a kapcsolat- **AzAccount** parancsmag és a **-hitelesítő adatok**paraméterei között.
+    * Ha Ön egy bérlőhöz tartozó CSP-partner, adja meg az ügyfelet bérlőként a tenantID vagy a bérlő elsődleges tartománynevének használatával. Ilyen például a **AzAccount-bérlő** fabrikam.com.
 
-6. Társítsa az előfizetés használni kívánt fiókkal, mert egy fiók több előfizetéssel is rendelkezik.
+6. Társítsa a fiókhoz használni kívánt előfizetést, mert egy fiók több előfizetéssel is rendelkezhet.
 
     ```powershell
     Select-AzSubscription -SubscriptionName $SubscriptionName
     ```
 
-7. Ha első alkalommal használja az Azure Backup, használja a **Register-AzResourceProvider** parancsmagot, hogy az Azure Recovery Services-szolgáltató regisztrálása az előfizetéshez.
+7. Ha első alkalommal használja a Azure Backup, a **Register-AzResourceProvider** parancsmag használatával regisztrálja az Azure Recovery Services-szolgáltatót az előfizetésében.
 
     ```powershell
     Register-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
 
-8. Győződjön meg arról, hogy a szolgáltatók regisztrálása sikeresen befejeződött:
+8. Ellenőrizze, hogy a szolgáltatók regisztrálása sikeres volt-e:
 
     ```powershell
     Get-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
 
-9. A parancs kimeneténél ellenőrizze, hogy **RegistrationState** vált **regisztrált**. Ha ez nem, futtassa a **Register-AzResourceProvider** újra a parancsmagot.
+9. A parancs kimenetében ellenőrizze, hogy a **RegistrationState** módosításai **regisztrálva**vannak-e. Ha nem, futtassa újra a **Register-AzResourceProvider** parancsmagot.
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 
-Kövesse az alábbi lépéseket egy Recovery Services-tároló létrehozása.
+Recovery Services-tároló létrehozásához kövesse az alábbi lépéseket.
 
-A Recovery Services-tároló, a Resource Manager-erőforrással, így a erőforráscsoporton belül kell elhelyeznie. Használhat egy meglévő erőforráscsoportot, vagy létrehozhat egy erőforráscsoportot a **New-AzResourceGroup** parancsmagot. Amikor létrehoz egy erőforráscsoportot, adja meg a nevét és az erőforráscsoport helyét.
+A Recovery Services-tároló Resource Manager-erőforrás, ezért egy erőforráscsoporthoz kell helyeznie. Használhat meglévő erőforráscsoportot is, vagy létrehozhat egy erőforráscsoportot a **New-AzResourceGroup** parancsmaggal. Ha létrehoz egy erőforráscsoportot, adja meg az erőforráscsoport nevét és helyét.
 
-1. Egy erőforráscsoport egy tároló kerül. Ha nem rendelkezik egy meglévő erőforrást, csoport, hozzon létre egy újat a [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-1.4.0). Ebben a példában létrehozunk egy új erőforráscsoportot az USA nyugati régiójában.
+1. Egy tároló egy erőforráscsoporthoz kerül. Ha nem rendelkezik meglévő erőforráscsoporthoz, hozzon létre egy újat a [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-1.4.0). Ebben a példában egy új erőforráscsoportot hozunk létre az USA nyugati régiójában.
 
     ```powershell
     New-AzResourceGroup -Name "test-rg" -Location "West US"
     ```
 
-2. Használja a [New-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/New-AzRecoveryServicesVault?view=azps-1.4.0) parancsmag segítségével hozza létre a tárolót. Adja meg a tároló ugyanarra a helyre, amint lett megadva az erőforráscsoport.
+2. A [New-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/New-AzRecoveryServicesVault?view=azps-1.4.0) parancsmag használatával hozza létre a tárolót. Azonos helyet kell megadnia a tárolóhoz az erőforráscsoport esetében.
 
     ```powershell
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName "test-rg" -Location "West US"
     ```
 
-3. Adja meg a tároló tárolására a redundancia típusát.
+3. Adja meg a tároló tárolásához használni kívánt redundancia típusát.
 
-    * Használhat [helyileg redundáns tárolás](../storage/common/storage-redundancy-lrs.md) vagy [georedundáns tárolás](../storage/common/storage-redundancy-grs.md).
-    * A következő példa készletek a **- BackupStorageRedundancy** első számú megoldás a[Set-AzRecoveryServicesBackupProperties](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperties?view=azps-1.4.0) a cmd **testvault** beállítása  **GeoRedundant**.
+    * [Helyileg redundáns tárolást](../storage/common/storage-redundancy-lrs.md) vagy [földrajzilag redundáns tárolást](../storage/common/storage-redundancy-grs.md)használhat.
+    * A következő példa beállítja a **-BackupStorageRedundancy** beállítást a[set-AzRecoveryServicesBackupProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) cmd számára a **testvault** beállításnál a **GeoRedundant**értékre.
 
     ```powershell
     $vault1 = Get-AzRecoveryServicesVault -Name "testvault"
     Set-AzRecoveryServicesBackupProperties  -Vault $vault1 -BackupStorageRedundancy GeoRedundant
     ```
 
-### <a name="view-the-vaults-in-a-subscription"></a>A tárolók megtekintheti az előfizetéshez
+### <a name="view-the-vaults-in-a-subscription"></a>Az előfizetésben található tárolók megtekintése
 
-Az előfizetés összes tárolók megtekintéséhez használja [Get-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesvault?view=azps-1.4.0).
+Az előfizetés összes tárolójának megtekintéséhez használja a [Get-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesvault?view=azps-1.4.0).
 
 ```powershell
 Get-AzRecoveryServicesVault
 ```
 
-A kimenet az alábbihoz hasonlít. A társított erőforráscsoportot és helyet állnak rendelkezésre.
+A kimenet az alábbihoz hasonló. A társított erőforráscsoport és hely van megadva.
 
 ```powershell
 Name              : Contoso-vault
@@ -137,22 +135,22 @@ SubscriptionId    : 1234-567f-8910-abc
 Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 ```
 
-### <a name="set-the-vault-context"></a>A tárolási környezet beállítása
+### <a name="set-the-vault-context"></a>A tár környezetének beállítása
 
-Store a tár objektumot egy változóban, és állítsa be a tárolási környezet.
+Tárolja a tároló objektumot egy változóban, és állítsa be a tár környezetét.
 
-* Számos Azure Backup-parancsmaghoz szükséges bemenetként, a helyreállítási tár objektumot, hogy legyen egy változóban tárolni a a tár objektumot.
-* A tárolási környezet a tár által védett adatok típusa. Állítsa be a [Set-AzRecoveryServicesVaultContext](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultcontext?view=azps-1.4.0). A környezet beállítását követően minden további parancsmagra vonatkozik.
+* Számos Azure Backup parancsmagnak bemenetként kell megkövetelni a Recovery Services-tároló objektumát, így kényelmes a tároló objektum tárolása egy változóban.
+* A tárolási környezet a tár által védett adatok típusa. Állítsa be a [set-AzRecoveryServicesVaultContext](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultcontext?view=azps-1.4.0). A környezet beállítása után az az összes további parancsmagra vonatkozik.
 
-A következő példa állítja a tárolási környezetet a **testvault**.
+Az alábbi példa a **testvault**tároló környezetét állítja be.
 
 ```powershell
 Get-AzRecoveryServicesVault -Name "testvault" | Set-AzRecoveryServicesVaultContext
 ```
 
-### <a name="fetch-the-vault-id"></a>Beolvassa a tároló azonosítója
+### <a name="fetch-the-vault-id"></a>A tár AZONOSÍTÓjának beolvasása
 
-A tárolási környezet beállítását az Azure PowerShell irányelveinek megfelelően kivezetése tervezzük. Ehelyett tárolására vagy beolvasni a tár Azonosítóját, és adja át azt vonatkozó parancsokat, és a következő:
+A tár környezeti beállítását a Azure PowerShell irányelvek alapján tervezzük. Ehelyett a tár AZONOSÍTÓját tárolhatja vagy beolvashatja, és átadhatja a megfelelő parancsoknak, a következőképpen:
 
 ```powershell
 $vaultID = Get-AzRecoveryServicesVault -ResourceGroupName "Contoso-docs-rg" -Name "testvault" | select -ExpandProperty ID
@@ -160,14 +158,26 @@ $vaultID = Get-AzRecoveryServicesVault -ResourceGroupName "Contoso-docs-rg" -Nam
 
 ## <a name="configure-a-backup-policy"></a>Biztonsági mentési szabályzat konfigurálása
 
-A biztonsági mentési szabályzat meghatározza a biztonsági mentések ütemezését, és mennyi ideig a biztonsági mentési helyreállítási pontot kell tárolni:
+A biztonsági mentési szabályzat meghatározza a biztonsági mentések ütemezését, valamint azt, hogy mennyi ideig kell megőrizni a biztonsági mentési helyreállítási pontokat:
 
-* Biztonsági mentési szabályzat legalább egy adatmegőrzési házirend társítva. A megőrzési házirend határozza meg, mennyi ideig egy helyreállítási pontot a megtartani, mielőtt törölné a rendszer.
-* Az alapértelmezett biztonsági mentési szabályzat megőrzési használatával nézet [Get-AzRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupretentionpolicyobject?view=azps-1.4.0).
-* Az alapértelmezett biztonsági mentési szabályzat ütemezése használatával nézet [Get-AzRecoveryServicesBackupSchedulePolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupschedulepolicyobject?view=azps-1.4.0).
-* Használja a [New-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy?view=azps-1.4.0) parancsmaggal hozzon létre egy új biztonsági mentési szabályzatot. A ütemezése és megőrzése csoportházirend-objektumok adjon meg.
+* A biztonsági mentési szabályzat legalább egy adatmegőrzési szabályzattal van társítva. Egy adatmegőrzési házirend határozza meg, hogy mennyi ideig tart a helyreállítási pont a törlése előtt.
+* Tekintse meg az alapértelmezett biztonsági mentési szabályzatot a [Get-AzRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupretentionpolicyobject?view=azps-1.4.0)használatával.
+* Tekintse meg az alapértelmezett biztonsági mentési szabályzatot a [Get-AzRecoveryServicesBackupSchedulePolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupschedulepolicyobject?view=azps-1.4.0)használatával.
+* Új biztonsági mentési szabályzat létrehozásához használja a [New-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy?view=azps-1.4.0) parancsmagot. Megadhatja az ütemterv és adatmegőrzési szabályzat objektumait.
 
-A következő példában változókat az ütemezési házirend és a megőrzési házirend tárolja. Ezután használja ezeket a változókat paraméterek egy új szabályzat (**NewSQLPolicy**). **NewSQLPolicy** napi "teljes" biztonsági mentési vesz igénybe, 180 napig őrzi meg, és a napló biztonsági mentését minden 2 óráig tart
+Alapértelmezés szerint a rendszer a kezdési időt határozza meg az ütemezett házirend objektumban. A következő példa használatával módosíthatja a kezdési időt a kívánt kezdési időpontra. A kívánt kezdési időpontnak UTC-ként is kell lennie. Az alábbi példa feltételezi, hogy a várt kezdési idő a napi biztonsági másolatok 01:00-as UTC-értéke.
+
+```powershell
+$schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "MSSQL"
+$UtcTime = Get-Date -Date "2019-03-20 01:30:00Z"
+$UtcTime = $UtcTime.ToUniversalTime()
+$schpol.ScheduleRunTimes[0] = $UtcTime
+```
+
+> [!IMPORTANT]
+> A kezdési időt csak 30 percenként kell megadnia. A fenti példában csak "01:00:00" vagy "02:30:00" lehet. A kezdési időpont nem lehet "01:15:00"
+
+A következő példa az ütemezett házirendet és a változókban tárolt adatmegőrzési szabályzatot tárolja. Ezután ezeket a változókat paraméterekként használja egy új szabályzathoz (**NewSQLPolicy**). A **NewSQLPolicy** naponta teljes biztonsági mentést készít, és 180 napig tart, és 2 óránként biztonsági másolatot készít a naplóról
 
 ```powershell
 $schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "MSSQL"
@@ -175,54 +185,54 @@ $retPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType "MSSQL
 $NewSQLPolicy = New-AzRecoveryServicesBackupProtectionPolicy -Name "NewSQLPolicy" -WorkloadType "MSSQL" -RetentionPolicy $retPol -SchedulePolicy $schPol
 ```
 
-A kimenet az alábbihoz hasonlít.
+A kimenet az alábbihoz hasonló.
 
 ```powershell
 Name                 WorkloadType       BackupManagementType BackupTime                Frequency                                IsDifferentialBackup IsLogBackupEnabled
                                                                                                                                 Enabled
 ----                 ------------       -------------------- ----------                ---------                                -------------------- ------------------
-NewSQLPolicy         MSSQL              AzureWorkload        3/15/2019 9:00:00 PM      Daily                                    False                True
+NewSQLPolicy         MSSQL              AzureWorkload        3/15/2019 01:30:00 AM      Daily                                    False                True
 ```
 
 ## <a name="enable-backup"></a>Biztonsági mentés engedélyezése
 
-### <a name="registering-the-sql-vm"></a>Az SQL virtuális gép regisztrálása
+### <a name="registering-the-sql-vm"></a>Az SQL-alapú virtuális gép regisztrálása
 
-Azure virtuális gép biztonsági mentéseinek és az Azure-fájlmegosztások esetén biztonsági mentési szolgáltatás ezen Azure Resource Manager-erőforrások csatlakozik, és beolvassa a releváns adatokat. Mivel SQL egy alkalmazást az Azure virtuális Gépeken, a Backup szolgáltatás kér engedélyt az alkalmazás eléréséhez, és beolvassa a szükséges adatokat. Ehhez létre kell *"regisztráció"* az Azure virtuális Gépen, amely tartalmazza az SQL-alkalmazást a Recovery services-tárolóval. Miután regisztrált egy SQL virtuális Gépet egy tárolóval, védheti meg az SQL-adatbázisok csak a tárolóba. Használat [Register-AzRecoveryServicesBackupContainer](https://docs.microsoft.com/powershell/module/az.recoveryservices/Register-AzRecoveryServicesBackupContainer?view=azps-1.5.0) PS-parancsmaggal regisztrálhatja a virtuális Gépet.
+Az Azure-beli virtuális gépek biztonsági mentései és Azure-fájlmegosztás esetén a Backup szolgáltatás képes csatlakozni ezekhez a Azure Resource Manager erőforrásokhoz, és beolvasni a vonatkozó adatokat. Mivel az SQL egy Azure-beli virtuális gépen belüli alkalmazás, a Backup szolgáltatásnak engedéllyel kell rendelkeznie az alkalmazás eléréséhez és a szükséges adatok beolvasásához. Ehhez *regisztrálnia* kell az Azure-beli virtuális gépet, amely a Recovery Services-tárolóval rendelkező SQL-alkalmazást tartalmazza. Miután regisztrált egy SQL virtuális gépet egy tárolóval, csak az adott tárolóhoz biztosíthatja az SQL-adatbázisok védettségét. A virtuális gép regisztrálásához használja a [Register-AzRecoveryServicesBackupContainer](https://docs.microsoft.com/powershell/module/az.recoveryservices/Register-AzRecoveryServicesBackupContainer?view=azps-1.5.0) PS parancsmagot.
 
 ````powershell
  $myVM = Get-AzVM -ResourceGroupName <VMRG Name> -Name <VMName>
 Register-AzRecoveryServicesBackupContainer -ResourceId $myVM.ID -BackupManagementType AzureWorkload -WorkloadType MSSQL -VaultId $targetVault.ID -Force
 ````
 
-A parancs visszaadja a "biztonsági mentési tároló" ezt az erőforrást, és az állapot "regisztrálva lesz"
+A parancs visszaküldi az erőforrás biztonsági mentési tárolóját, és az állapot regisztrálva lesz
 
 > [!NOTE]
-> Ha nem adja meg a force paramétert, felhasználónak meg kell adnia egy szöveget tartalmazó "szeretné tiltsa le a védelmet a tároló" megerősítéséhez. Hagyja figyelmen kívül ezt a szöveget, és mondja ki a "Y", győződjön meg róla. Ez egy ismert probléma, és a szöveg és a követelmény a force paraméter eltávolítása folyamatban van
+> Ha a Force paraméter nincs megadva, a rendszer megkéri a felhasználót, hogy erősítse meg a következő szöveggel: "szeretné letiltani a tároló védelmét". Hagyja figyelmen kívül ezt a szöveget, és mondja el, hogy erősítse meg az "Y" kifejezést. Ez egy ismert probléma, és dolgozunk a Force paraméter szövegének és követelményének eltávolításán.
 
 ### <a name="fetching-sql-dbs"></a>SQL-adatbázisok beolvasása
 
-Miután megtörtént a regisztrációt, biztonsági mentési szolgáltatás fogja tudni listában az összes elérhető SQL összetevőt a virtuális gépen. Megtekintheti az SQL-összetevőket, de a tároló használatára kell készíteni [Get-AzRecoveryServicesBackupProtectableItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupProtectableItem?view=azps-1.5.0) PS parancsmag
+A regisztrációt követően a Backup szolgáltatás képes lesz a virtuális gépen található összes elérhető SQL-összetevő listázására. Az összes olyan SQL-összetevő megtekintése, amelyről biztonsági másolatot szeretne készíteni erre a tárolóra a [Get-AzRecoveryServicesBackupProtectableItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupProtectableItem?view=azps-1.5.0) PS parancsmag használatával
 
 ````powershell
 Get-AzRecoveryServicesBackupProtectableItem -WorkloadType MSSQL -VaultId $targetVault.ID
 ````
 
-A kimenet megjeleníti az összes védett SQL-összetevők regisztrálva ennél a tárolónál, az elem típusa és kiszolgálónév SQL virtuális gépek között. Tovább szűrheti egy adott SQL virtuális géphez átadásával a "-Container" paramétert, vagy használjon "Name" és "ServerName" együtt ItemType kombinációja jelző, amely egy egyedi SQL elem érkeznek.
+A kimenetben az összes nem védett SQL-összetevő megjelenik az összes olyan SQL-virtuális gépen, amely az adott tárolóhoz van regisztrálva, az elemtípus és a ServerName használatával. Az egyes SQL-alapú virtuális gépeket tovább szűrheti úgy, hogy átadja a "-Container" paramétert, vagy a "Name" és a "ServerName" kombinációját használja a ItemType jelzővel, hogy egy egyedi SQL-elemmel érkezzen.
 
 ````powershell
 $SQLDB = Get-AzRecoveryServicesBackupProtectableItem -workloadType MSSQL -ItemType SQLDataBase -VaultId $targetVault.ID -Name "<Item Name>" -ServerName "<Server Name>"
 ````
 
-### <a name="configuring-backup"></a>A biztonsági mentés konfigurálása
+### <a name="configuring-backup"></a>Biztonsági mentés konfigurálása
 
-Most, hogy a szükséges SQL-adatbázis és a házirendet, amelyben meg kell készíteni, használhatjuk a [engedélyezése – AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) parancsmagot, hogy az SQL DB-hez készült biztonsági mentés konfigurálása.
+Most, hogy rendelkezünk a szükséges SQL-ADATBÁZISsal és a szabályzattal, amelyről biztonsági mentést kell készíteni, az [enable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) parancsmaggal konfigurálhatja az SQL-adatbázis biztonsági mentését.
 
 ````powershell
 Enable-AzRecoveryServicesBackupProtection -ProtectableItem $SQLDB -Policy $NewSQLPolicy
 ````
 
-A parancs megvárja, amíg a konfigurálás biztonsági mentés befejeződött, és a következő kimenetet ad vissza.
+A parancs megvárja, amíg a biztonsági mentés be nem fejeződik, és a következő kimenetet adja vissza.
 
 ```powershell
 WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
@@ -232,7 +242,7 @@ master           ConfigureBackup      Completed            3/18/2019 6:00:21 PM 
 
 ### <a name="fetching-new-sql-dbs"></a>Új SQL-adatbázisok beolvasása
 
-A számítógép regisztrálása után Backup szolgáltatás beolvassa a részleteit, majd elérhető adatbázisok. Ha a felhasználó hozzáadja az SQL-adatbázisok vagy SQL Server-példányok a regisztrált gép később, egy megjelölése szükséges manuálisan elindítani a biztonsági mentési szolgáltatás "vizsgálatot" (az újonnan hozzáadott azokat is beleértve) nem védett adatbázisok első friss végrehajtásához újra. Használja a [Initialize-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/Initialize-AzRecoveryServicesBackupProtectableItem?view=azps-1.5.0) PS parancsmagot az SQL virtuális gép egy friss lekérdezés végrehajtásához. A parancs megvárja, amíg a művelet befejeződik. A későbbiekben használhassa a [Get-AzRecoveryServicesBackupProtectableItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupProtectableItem?view=azps-1.5.0) PS parancsmagot, hogy a legújabb nem védett SQL-összetevők listájának beolvasása
+A gép regisztrálása után a Backup szolgáltatás beolvassa az elérhető adatbázisok részleteit. Ha a felhasználó később hozzáadja az SQL-adatbázisok/SQL-példányokat a regisztrált géphez, az egyiknek manuálisan kell elindítania a Backup szolgáltatást egy friss "lekérdezés" megadásához, hogy az összes nem védett (beleértve az újonnan hozzáadott) adatbázisok újbóli lekérését. Egy friss lekérdezés végrehajtásához használja az SQL virtuális gép [inicializálás-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/Initialize-AzRecoveryServicesBackupProtectableItem?view=azps-1.5.0) PS parancsmagját. A parancs addig vár, amíg a művelet be nem fejeződik. Később használja a [Get-AzRecoveryServicesBackupProtectableItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupProtectableItem?view=azps-1.5.0) PS parancsmagot a legújabb nem védett SQL-összetevők listájának lekéréséhez
 
 ````powershell
 $SQLContainer = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppContainer -FriendlyName <VM name> -VaultId $targetvault.ID
@@ -240,52 +250,52 @@ Initialize-AzRecoveryServicesBackupProtectableItem -Container $SQLContainer -Wor
 Get-AzRecoveryServicesBackupProtectableItem -workloadType MSSQL -ItemType SQLDataBase -VaultId $targetVault.ID
 ````
 
-Után a megfelelő védhető elemek megszámolása, lehetővé teszi a biztonsági másolatok a útmutatása a [fenti szakasz](#configuring-backup).
-Ha egy nem szeretné, hogy manuálisan észleli az új adatbázisok, azok választhatják a autoprotection leírtak [alább](#enable-autoprotection).
+A megfelelő védhető elemek beolvasása után engedélyezze a biztonsági mentéseket a [fenti szakaszban](#configuring-backup)leírtak szerint.
+Ha nem szeretné, hogy az új adatbázisok manuálisan is észlelhetők legyenek, az [alábbiakban](#enable-autoprotection)ismertetett módon dönthetnek az automatikus védelemről.
 
-## <a name="enable-autoprotection"></a>AutoProtection engedélyezése
+## <a name="enable-autoprotection"></a>Autoprotection engedélyezése
 
-A felhasználó konfigurálhatja a biztonsági mentés, úgy, hogy a későbbiekben minden adatbázisok automatikus védelemmel vannak ellátva bizonyos szabályzattal. Engedélyezze a autoprotection az [engedélyezése – AzRecoveryServicesBackupAutoProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupAutoProtection?view=azps-1.5.0) PS-parancsmagot.
+A felhasználók úgy is konfigurálhatják a biztonsági mentést, hogy a jövőben hozzáadott összes adatbázis automatikusan védve legyen egy adott házirenddel. Az autoprotection engedélyezéséhez használja az [enable-AzRecoveryServicesBackupAutoProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupAutoProtection?view=azps-1.5.0) PS parancsmagot.
 
-Mivel utasításait követve teheti meg az összes jövőbeli adatbázisok, a művelet egy SQLInstance biztonsági szint.
+Mivel az utasítás az összes jövőbeli adatbázisok biztonsági mentését végzi, a művelet SQLInstance szinten történik.
 
 ```powershell
 $SQLInstance = Get-AzRecoveryServicesBackupProtectableItem -workloadType MSSQL -ItemType SQLInstance -VaultId $targetVault.ID -Name "<Protectable Item name>" -ServerName "<Server Name>"
 Enable-AzRecoveryServicesBackupAutoProtection -InputItem $SQLInstance -BackupManagementType AzureWorkload -WorkloadType MSSQL -Policy $targetPolicy -VaultId $targetvault.ID
 ```
 
-Miután autoprotection célja van megadva, a lekérdezés a gép beolvassa az újonnan hozzáadott, adatbázisok kerül sor az ütemezett háttérfeladatként 8 óránként.
+Miután megadta az autoprotection-szándékot, az újonnan hozzáadott adatbázisok beolvasására irányuló lekérdezés 8 óránként, ütemezett háttérbeli feladatként zajlik.
 
 ## <a name="restore-sql-dbs"></a>SQL-adatbázisok visszaállítása
 
-Az Azure Backup visszaállíthatja a rendszert futtató Azure virtuális gépeken a következő SQL Server-adatbázisok:
+A Azure Backup az Azure-beli virtuális gépeken futó SQL Server-adatbázisokat a következőképpen állíthatja helyre:
 
-1. Állítsa vissza az adott dátum és idő (a második) tranzakciónaplók biztonsági mentését. Az Azure Backup automatikusan meghatározza, hogy a megfelelő teljes, különbségi biztonsági mentés és a kijelölt idő alapján a lánc napló biztonsági másolatok visszaállításához szükséges.
-2. Egy adott teljes vagy különbözeti biztonsági másolat visszaállítása állíthatja vissza egy adott helyreállítási pontot.
+1. Állítsa vissza egy adott dátumra vagy időpontra (a másodikra) a tranzakciónaplók biztonsági másolatainak használatával. Azure Backup automatikusan meghatározza a megfelelő teljes különbözeti biztonsági mentést, valamint a visszaállításhoz szükséges naplók láncát, amely a kijelölt idő alapján állítható vissza.
+2. Egy adott helyreállítási pontra való visszaállításhoz állítson vissza egy adott teljes vagy különbözeti biztonsági másolatot.
 
-Ellenőrizze az előfeltételeket az említett [Itt](restore-sql-database-azure-vm.md#prerequisites) SQL-adatbázisok visszaállítása előtt.
+Az SQL-adatbázisok visszaállítása előtt tekintse meg az [itt](restore-sql-database-azure-vm.md#prerequisites) említett előfeltételeket.
 
-Először beolvassa a megfelelő biztonsági mentés az SQL DB használatával az [Get-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem?view=azps-1.5.0) PS-parancsmagot.
+Először a [Get-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem?view=azps-1.5.0) PS parancsmag használatával olvassa be a megfelelő biztonsági mentést az SQL-adatbázishoz.
 
 ````powershell
 $bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadType MSSQL -Name "<backup item name>" -VaultId $targetVault.ID
 ````
 
-### <a name="fetch-the-relevant-restore-time"></a>Beolvassa a releváns visszaállítás ideje
+### <a name="fetch-the-relevant-restore-time"></a>A megfelelő visszaállítási idő beolvasása
 
-Ajánlásait, a felhasználó visszaállíthatja-e a a biztonsági másolat az SQL DB egy teljes, illetve különbségi Másolás **vagy** , a napló-időponthoz.
+A fentiekben leírtak szerint a felhasználó visszaállíthatja a biztonsági másolatban szereplő SQL-adatbázist egy teljes/különbözeti másolásra **vagy** egy napló időpontra.
 
 #### <a name="fetch-distinct-recovery-points"></a>Különböző helyreállítási pontok beolvasása
 
-Használat [Get-AzRecoveryServicesBackupRecoveryPoint](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupRecoveryPoint?view=azps-1.5.0) különböző (teljes, illetve különbségi) helyreállítási pontok beolvasása egy biztonsági másolat az SQL DB-hez készült.
+A [Get-AzRecoveryServicesBackupRecoveryPoint](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupRecoveryPoint?view=azps-1.5.0) használatával különböző (teljes/különbözeti) helyreállítási pontokat hívhat le egy biztonsági másolatba mentett SQL-adatbázishoz.
 
 ````powershell
 $startDate = (Get-Date).AddDays(-7).ToUniversalTime()
-$endDate = Get-Date.ToUniversalTime()
+$endDate = (Get-Date).ToUniversalTime()
 Get-AzRecoveryServicesBackupRecoveryPoint -Item $bkpItem -VaultId $targetVault.ID -StartDate $startdate -EndDate $endDate
 ````
 
-A kimenet hasonlít az alábbi példa
+A kimenet a következő példához hasonló.
 
 ````powershell
 RecoveryPointId    RecoveryPointType  RecoveryPointTime      ItemName                             BackupManagemen
@@ -294,15 +304,15 @@ RecoveryPointId    RecoveryPointType  RecoveryPointTime      ItemName           
 6660368097802      Full               3/18/2019 8:09:35 PM   MSSQLSERVER;model             AzureWorkload
 ````
 
-A "RecoveryPointId" szűrő vagy egy tömb szűrő használatával beolvassa a megfelelő helyreállítási pontot.
+A megfelelő helyreállítási pont beolvasásához használja az "RecoveryPointId" szűrőt vagy egy tömböt.
 
 ````powershell
 $FullRP = Get-AzRecoveryServicesBackupRecoveryPoint -Item $bkpItem -VaultId $targetVault.ID -RecoveryPointId "6660368097802"
 ````
 
-#### <a name="fetch-point-in-time-recovery-point"></a>Beolvassa a időpontban a helyreállítási pont
+#### <a name="fetch-point-in-time-recovery-point"></a>Időponthoz tartozó helyreállítási pont lekérése
 
-Ha a felhasználó szeretné visszaállítani az adatbázis egy bizonyos-időponthoz, [Get-AzRecoveryServicesBackupRecoveryLogChain](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupRecoveryLogChain?view=azps-1.5.0) PS-parancsmagot. A parancsmag a dátumokat, amelyek tartalmazzák az SQL biztonsági mentési elem a megszakítás nélküli, folyamatos naplólánca kezdési és befejezési idejének listáját adja vissza. A kívánt-időponthoz ebben a tartományban kell lennie.
+Ha a felhasználó egy adott időpontban szeretné visszaállítani az adatbázist, használja a [Get-AzRecoveryServicesBackupRecoveryLogChain](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupRecoveryLogChain?view=azps-1.5.0) PS parancsmagot. A parancsmag olyan dátumok listáját adja vissza, amelyek az SQL biztonsági mentési elemhez tartozó nem törött, folyamatos naplózási lánc kezdő és befejező időpontját jelölik. A kívánt időpontnak ezen a tartományon belül kell lennie.
 
 ```powershell
 Get-AzRecoveryServicesBackupRecoveryLogChain -Item $bkpItem -Item -VaultId $targetVault.ID
@@ -316,63 +326,63 @@ ItemName                       StartTime                      EndTime
 SQLDataBase;MSSQLSERVER;azu... 3/18/2019 8:09:35 PM           3/19/2019 12:08:32 PM
 ````
 
-A fenti kimeneti azt jelenti, hogy a felhasználó visszaállíthatja bármely-időponthoz a megjelenített kezdési és befejezési időpontja között. (UTC) időpontok vannak. Hozhat létre bármely-időponthoz a PS, amely a fenti tartományon belül van.
+A fenti kimenet azt jelenti, hogy a felhasználó bármikor visszaállíthatja a megjelenített kezdési és befejezési időpontot. Az időpontok UTC-ben vannak. Minden olyan időpontot a PS-ben, amely a fent látható tartományon belül van.
 
 > [!NOTE]
-> Ha egy napló-időponthoz jelölt ki helyreállításra, felhasználói kell nem adja meg a kiindulási pontjaként azaz teljes biztonsági mentés, amelyből az adatbázis visszaállítása. Az Azure Backup szolgáltatás gondoskodik a a teljes helyreállítási terv azaz, amely teljes biztonsági mentést válassza ki, milyen biztonsági másolataihoz a alkalmazni stb.
+> Ha a visszaállításhoz kiválasztott naplózási időpontot választja, a felhasználónak nem kell megadnia a kiindulási pontot, azaz a teljes biztonsági mentést, amelyről az adatbázis vissza lesz állítva. Azure Backup szolgáltatás gondoskodik a teljes helyreállítási tervről, azaz arról, hogy melyik teljes biztonsági mentést kell választania, milyen naplókat kell alkalmazni a biztonsági mentésekhez stb.
 
 ### <a name="determine-recovery-configuration"></a>Helyreállítási konfiguráció meghatározása
 
-Az SQL DB restore, esetén a következő visszaállítási forgatókönyvek támogatottak.
+SQL DB-visszaállítás esetén a következő visszaállítási forgatókönyvek támogatottak.
 
-1. A biztonsági másolat SQL DB az adatokat egy másik helyreállítási pontból - OriginalWorkloadRestore felülbírálása
-2. Az SQL-adatbázis visszaállítása, az azonos SQL-példány - AlternateWorkloadRestore az új adatbázis
-3. Az SQL-adatbázis visszaállítása, a másik SQL-példányt egy másik SQL VM - AlternateWorkloadRestore új adatbázis
+1. Az SQL-adatbázis biztonsági mentésének felülbírálása egy másik helyreállítási pontról – OriginalWorkloadRestore
+2. Az SQL-adatbázis visszaállítása új ADATBÁZISként ugyanabban az SQL-példányban – AlternateWorkloadRestore
+3. Az SQL-adatbázis visszaállítása új ADATBÁZISként másik SQL-példányban egy másik SQL-beli virtuális gépen – AlternateWorkloadRestore
 
-A megfelelő helyreállítási pontot beolvasása után (különálló vagy -időponthoz jelentkezzen), használja [Get-AzRecoveryServicesBackupWorkloadRecoveryConfig](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupWorkloadRecoveryConfig?view=azps-1.5.0) PS-parancsmag használatával beolvassa a helyreállítási konfigurációs objektumot a kívánt helyreállítási tervnek megfelelően.
+Miután beolvasta a megfelelő helyreállítási pontot (külön vagy a naplózási időpontot), a [Get-AzRecoveryServicesBackupWorkloadRecoveryConfig](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupWorkloadRecoveryConfig?view=azps-1.5.0) PS parancsmaggal beolvashatja a helyreállítási konfigurációs objektumot a kívánt helyreállítási tervnek megfelelően.
 
 #### <a name="original-workload-restore"></a>Eredeti munkaterhelés visszaállítása
 
-Bírálja felül a biztonsági másolatból az Adatbázist a helyreállítási pont adatait, csak adja meg a megfelelő jelzőt és a megfelelő helyreállítási pontot, ahogyan az alábbi látható példa.
+A biztonsági mentéssel ellátott ADATBÁZISnak a helyreállítási pontról származó adatokkal való felülbírálásához csak a megfelelő jelzőt és a megfelelő helyreállítási pontot kell megadnia, ahogy az az alábbi példában is látható.
 
-##### <a name="original-restore-with-distinct-recovery-point"></a>Eredeti visszaállítási különböző helyreállítási ponttal
+##### <a name="original-restore-with-distinct-recovery-point"></a>Eredeti visszaállítás különálló helyreállítási ponttal
 
 ````powershell
 $OverwriteWithFullConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -RecoveryPoint $FullRP -OriginalWorkloadRestore -VaultId $targetVault.ID
 ````
 
-##### <a name="original-restore-with-log-point-in-time"></a>A napló-időponthoz eredeti visszaállítása
+##### <a name="original-restore-with-log-point-in-time"></a>Eredeti visszaállítás naplózási ponttal – időben
 
 ```powershell
 $OverwriteWithLogConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -PointInTime $PointInTime -Item $bkpItem  -OriginalWorkloadRestore -VaultId $targetVault.ID
 ```
 
-#### <a name="alternate-workload-restore"></a>Más számítási feladatok visszaállítása
+#### <a name="alternate-workload-restore"></a>Alternatív munkaterhelés visszaállítása
 
 > [!IMPORTANT]
-> A biztonsági másolat az SQL DB vissza tudja állítani egy másik SQLInstance csak, egy új adatbázis, egy Azure-beli virtuális gépen "regisztrálva" Ebben a tárolóban.
+> Egy biztonsági másolattal rendelkező SQL-adatbázis visszaállítható új ADATBÁZISként egy másik SQLInstance, amely egy Azure-beli virtuális gépen van regisztrálva erre a tárba.
 
-Ajánlásait, ha a cél SQLInstance ablakon belül egy másik Azure virtuális Gépen, győződjön meg arról, hogy [ebben a tárolóban regisztrált](#registering-the-sql-vm) és a megfelelő SQLInstance védhető elemként jelenik meg.
+A fentiekben leírtak szerint, ha a cél SQLInstance egy másik Azure-beli virtuális gépen belül található, győződjön meg róla, hogy [regisztrálva](#registering-the-sql-vm) van a tárolóban, és a kapcsolódó SQLInstance védhető elemként jelenik meg.
 
 ````powershell
 $TargetInstance = Get-AzRecoveryServicesBackupProtectableItem -WorkloadType MSSQL -ItemType SQLInstance -Name "<SQLInstance Name>" -ServerName "<SQL VM name>" -VaultId $targetVault.ID
 ````
 
-Ezután adja át a megfelelő helyreállítási pontot, a cél SQL-példány a megfelelő jelző alább látható módon.
+Ezután csak adja át a megfelelő helyreállítási pontot, és az SQL-példányt a jobb oldali jelölővel, az alább látható módon.
 
-##### <a name="alternate-restore-with-distinct-recovery-point"></a>Alternatív helyreállítási különböző helyreállítási ponttal
+##### <a name="alternate-restore-with-distinct-recovery-point"></a>Alternatív visszaállítás különálló helyreállítási ponttal
 
 ````powershell
 $AnotherInstanceWithFullConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -RecoveryPoint $FullRP -TargetItem $TargetInstance -AlternateWorkloadRestore -VaultId $targetVault.ID
 ````
 
-##### <a name="alternate-restore-with-log-point-in-time"></a>A napló-időponthoz alternatív visszaállítása
+##### <a name="alternate-restore-with-log-point-in-time"></a>Alternatív visszaállítás a naplózási ponttal
 
 ```powershell
 $AnotherInstanceWithLogConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -PointInTime $PointInTime -Item $bkpItem -AlternateWorkloadRestore -VaultId $targetVault.ID
 ```
 
-Az utolsó helyreállítási pont konfigurációs objektumot kapott [Get-AzRecoveryServicesBackupWorkloadRecoveryConfig](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupWorkloadRecoveryConfig?view=azps-1.5.0) PS parancsmag a lényeges információk a visszaállításhoz, és az alább látható módon.
+A [Get-AzRecoveryServicesBackupWorkloadRecoveryConfig](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupWorkloadRecoveryConfig?view=azps-1.5.0) PS parancsmagból kapott végső helyreállítási pont konfigurációs objektum rendelkezik a visszaállításhoz szükséges összes információval, és az alább látható.
 
 ````powershell
 TargetServer         : <SQL server name>
@@ -388,7 +398,7 @@ RecoveryPoint        : Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.
 PointInTime          : 1/1/0001 12:00:00 AM
 ````
 
-Szerkesztheti a visszaállított adatbázis nevének, OverwriteWLIfpresent, NoRecoveryMode és targetPhysicalPath mezőket. További részletek beolvasása a céloldali Fájlelérési utak alább látható módon.
+Szerkesztheti a visszaállított adatbázis nevét, a OverwriteWLIfpresent, a NoRecoveryMode és a targetPhysicalPath mezőket. További részleteket a célfájl elérési útjairól az alább látható módon talál.
 
 ````powershell
 $AnotherInstanceWithFullConfig.targetPhysicalPath
@@ -399,7 +409,7 @@ Data        azurebackup1      F:\Data\azurebackup1.mdf    F:\Data\azurebackup1_1
 Log         azurebackup1_log  F:\Log\azurebackup1_log.ldf F:\Log\azurebackup1_log_1553001753.ldf
 ````
 
-Állítsa be a megfelelő PS tulajdonságokat, ahogy az alábbi karakterlánc-értékeket.
+Állítsa be a megfelelő PS-tulajdonságokat karakterlánc-értékként az alább látható módon.
 
 ````powershell
 $AnotherInstanceWithFullConfig.OverwriteWLIfpresent = "Yes"
@@ -419,17 +429,17 @@ PointInTime          : 1/1/0001 12:00:00 AM
 ````
 
 > [!IMPORTANT]
-> Győződjön meg arról, hogy az utolsó helyreállítási konfigurációs objektum rendelkezik-e az szükséges, és a megfelelő értékeket, mivel a visszaállítási művelet a konfigurációs objektumot fog alapulni.
+> Győződjön meg arról, hogy a végső helyreállítási konfigurációs objektum rendelkezik az összes szükséges és megfelelő értékkel, mivel a visszaállítási művelet a konfigurációs objektumon alapul.
 
-### <a name="restore-with-relevant-configuration"></a>Megfelelő konfiguráció visszaállítása
+### <a name="restore-with-relevant-configuration"></a>Visszaállítás a megfelelő konfigurációval
 
-Ha a megfelelő helyreállítási konfigurációs objektumot kapott és ellenőrizve van, az a [Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/Restore-AzRecoveryServicesBackupItem?view=azps-1.5.0) PS parancsmagot, hogy a visszaállítási folyamat indításához.
+Ha a megfelelő helyreállítási konfigurációs objektum beszerzése és ellenőrzése megtörtént, a visszaállítási folyamat elindításához használja a [Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/Restore-AzRecoveryServicesBackupItem?view=azps-1.5.0) PS parancsmagot.
 
 ````powershell
 Restore-AzRecoveryServicesBackupItem -WLRecoveryConfig $AnotherInstanceWithLogConfig -VaultId $targetVault.ID
 ````
 
-A visszaállítási műveletet egy feladatot, amely nyomon követi adja vissza.
+A visszaállítási művelet a nyomon követett feladatot adja vissza.
 
 ````powershell
 WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
@@ -437,11 +447,11 @@ WorkloadName     Operation            Status               StartTime            
 MSSQLSERVER/m... Restore              InProgress           3/17/2019 10:02:45 AM                                3274xg2b-e4fg-5952-89b4-8cb566gc1748
 ````
 
-## <a name="manage-sql-backups"></a>Az SQL biztonsági másolatainak kezelése
+## <a name="manage-sql-backups"></a>SQL-biztonsági mentések kezelése
 
 ### <a name="on-demand-backup"></a>Igény szerinti biztonsági mentés
 
-Biztonsági mentés engedélyezve van az egy db-hez, ha felhasználói is indíthat egy igény szerinti biztonsági mentést használó DB [Backup-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/Backup-AzRecoveryServicesBackupItem?view=azps-1.5.0) PS-parancsmagot. A következő példa elindítja egy teljes biztonsági mentés az SQL dB-ben a tömörítéssel kompatibilis, és fenn kell tartani a teljes biztonsági mentés 60 napig.
+Miután engedélyezte a biztonsági mentést egy ADATBÁZIShoz, a felhasználó a [Backup-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/Backup-AzRecoveryServicesBackupItem?view=azps-1.5.0) PS parancsmag használatával is aktiválhat egy igény szerinti biztonsági mentést az adatbázishoz. Az alábbi példa egy teljes biztonsági mentést indít egy SQL-ADATBÁZISon, amelyen engedélyezve van a tömörítés, és a teljes biztonsági mentést 60 napig kell megőrizni.
 
 ````powershell
 $bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadType MSSQL -Name "<backup item name>" -VaultId $targetVault.ID
@@ -449,7 +459,7 @@ $endDate = (Get-Date).AddDays(60).ToUniversalTime()
 Backup-AzRecoveryServicesBackupItem -Item $bkpItem -BackupType Full -EnableCompression -VaultId $targetVault.ID -ExpiryDateTimeUTC $endDate
 ````
 
-Az ad hoc ad hoc biztonsági mentési parancsot adja vissza egy feladatot, amely nyomon követi.
+Az ad hoc Backup parancs a nyomon követett feladatot adja vissza.
 
 ````powershell
 WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
@@ -457,11 +467,11 @@ WorkloadName     Operation            Status               StartTime            
 MSSQLSERVER/m... Backup               InProgress           3/18/2019 8:41:27 PM                                2516bb1a-d3ef-4841-97a3-9ba455fb0637
 ````
 
-Ha a kimeneti elvész, vagy ha ismerkedhet meg a megfelelő Feladatazonosító [feladatok listájának](#track-azure-backup-jobs) az Azure Backup szolgáltatást, és ezután nyomon követése, és a részletek.
+Ha a kimenet elvész, vagy ha a megfelelő AZONOSÍTÓJÚ feladatot szeretné beszerezni, kérje le a Azure Backup szolgáltatásból származó [feladatok listáját](#track-azure-backup-jobs) , és kövesse nyomon a részleteket és annak részleteit.
 
-### <a name="change-policy-for-backup-items"></a>Biztonsági másolati elemek szabályzatának módosítása
+### <a name="change-policy-for-backup-items"></a>Biztonsági mentési elemek szabályzatának módosítása
 
-Felhasználó meglévő házirend módosítására, vagy módosítja a szabályzatot a biztonsági másolatban szereplő elem Házirend1 Policy2. Házirendek készül elem átváltásához egyszerűen beolvasni a megfelelő házirend elem biztonsági mentése és, amelyekkel a [engedélyezése – AzRecoveryServices](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) paraméterként biztonsági másolati elem parancsot.
+A felhasználó módosíthatja a meglévő szabályzatot, vagy megváltoztathatja a biztonsági másolatban szereplő elem házirendjét a Házirend1 és a Policy2 között. Ha egy biztonsági másolati elemhez szeretne házirendeket váltani, egyszerűen olvassa le a megfelelő házirendet, és készítsen biztonsági másolatot az elemről, és használja az [enable-AzRecoveryServices](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) parancsot a Backup elem paraméterként.
 
 ````powershell
 $TargetPol1 = Get-AzRecoveryServicesBackupProtectionPolicy -Name <PolicyName>
@@ -469,7 +479,7 @@ $anotherBkpItem = Get-AzRecoveryServicesBackupItem -WorkloadType MSSQL -BackupMa
 Enable-AzRecoveryServicesBackupProtection -Item $anotherBkpItem -Policy $TargetPol1
 ````
 
-A parancs megvárja, amíg a konfigurálás biztonsági mentés befejeződött, és a következő kimenetet ad vissza.
+A parancs megvárja, amíg a biztonsági mentés be nem fejeződik, és a következő kimenetet adja vissza.
 
 ```powershell
 WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
@@ -477,74 +487,86 @@ WorkloadName     Operation            Status               StartTime            
 master           ConfigureBackup      Completed            3/18/2019 8:00:21 PM      3/18/2019 8:02:16 PM      654e8aa2-4096-402b-b5a9-e5e71a496c4e
 ```
 
+### <a name="re-register-sql-vms"></a>SQL virtuális gépek újbóli regisztrálása
+
+> [!WARNING]
+> Olvassa el ezt a [dokumentumot](backup-sql-server-azure-troubleshoot.md#re-registration-failures) , hogy megértse a hiba tüneteit és okait az ismételt regisztráció megkísérlése előtt
+
+Az SQL virtuális gép újbóli regisztrálásának megkezdéséhez olvassa le a megfelelő biztonságimásolat-tárolót, és adja át a Register parancsmagnak.
+
+````powershell
+$SQLContainer = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppContainer -FriendlyName <VM name> -VaultId $targetvault.ID
+Register-AzRecoveryServicesBackupContainer -Container $SQLContainer -BackupManagementType AzureWorkload -WorkloadType MSSQL -VaultId $targetVault.ID
+````
+
 ### <a name="stop-protection"></a>Védelem leállítása
 
 #### <a name="retain-data"></a>Adatok megőrzése
 
-Ha a felhasználó által blokkolni kívánt állítsa le a védelmet, használhatják a [Disable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/Disable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) PS-parancsmagot. Ez az ütemezett biztonsági mentések le fog állni, de felfelé mindaddig, amíg az adatok biztonsági most őrzi meg a rendszer végtelen.
+Ha a felhasználó le szeretné állítani a védelmet, használhatja a [disable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/Disable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) PS parancsmagot. Ezzel leállítja az ütemezett biztonsági mentéseket, de a biztonsági mentés egészen addig, amíg a rendszer örökre megőrzi az adatokat.
 
 ````powershell
 $bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadType MSSQL -Name "<backup item name>" -VaultId $targetVault.ID
 Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.ID
 ````
 
-#### <a name="delete-backup-data"></a>biztonsági mentési adatok törlése
+#### <a name="delete-backup-data"></a>Biztonsági másolat adatainak törlése
 
-Annak érdekében, hogy teljesen eltávolítja a tárolt biztonsági mentési adatok a tárolóban, adja hozzá a "-jelző RemoveRecoveryPoints' kapcsolót, a ["letiltása"alkalmazásvédelmi parancs](#retain-data).
+Ahhoz, hogy teljesen el lehessen távolítani a tárolt biztonsági mentési fájlokat a tárolóban, egyszerűen adja hozzá a "-RemoveRecoveryPoints" jelzőt, vagy váltson a ["letiltás" védelmi parancsra](#retain-data).
 
 ````powershell
 Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.ID -RemoveRecoveryPoints
 ````
 
-#### <a name="disable-auto-protection"></a>Az automatikus védelem letiltása
+#### <a name="disable-auto-protection"></a>Automatikus védelem letiltása
 
-Ha egy SQLInstance autoprotection lett konfigurálva, a felhasználói letilthatja a a [Disable-AzRecoveryServicesBackupAutoProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/Disable-AzRecoveryServicesBackupAutoProtection?view=azps-1.5.0) PS-parancsmagot.
+Ha az autoprotection konfigurálva van egy SQLInstance, a felhasználó letilthatja azt a [disable-AzRecoveryServicesBackupAutoProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/Disable-AzRecoveryServicesBackupAutoProtection?view=azps-1.5.0) PS parancsmag használatával.
 
 ````powershell
 $SQLInstance = Get-AzRecoveryServicesBackupProtectableItem -workloadType MSSQL -ItemType SQLInstance -VaultId $targetVault.ID -Name "<Protectable Item name>" -ServerName "<Server Name>"
 Disable-AzRecoveryServicesBackupAutoProtection -InputItem $SQLInstance -BackupManagementType AzureWorkload -WorkloadType MSSQL -VaultId $targetvault.ID
 ````
 
-#### <a name="unregister-sql-vm"></a>SQL virtuális gép regisztrációjának törlése
+#### <a name="unregister-sql-vm"></a>SQL-alapú virtuális gép regisztrációjának törlése
 
-Ha egy SQL Server összes adatbázisok [azok már nem védett, és nem a biztonsági mentési adatok állnak rendelkezésre](#delete-backup-data), felhasználói regisztrációját a tárolóból az SQL virtuális gép regisztrációját is. Felhasználó csak ezután adatbázisok egy másik tárban védhető. Használat [Unregister-AzRecoveryServicesBackupContainer](https://docs.microsoft.com/powershell/module/az.recoveryservices/Unregister-AzRecoveryServicesBackupContainer?view=azps-1.5.0) PS parancsmagot, hogy az SQL virtuális gép regisztrációjának törlése.
+Ha az SQL Server összes [adatbázisa már nem védett, és nem áll rendelkezésre biztonsági másolat](#delete-backup-data), a felhasználó megszüntetheti az SQL virtuális gép regisztrációját ebből a tárból. Csak ezután a felhasználó védetté teheti az adatbázisok egy másik tárba való ellátását. Az SQL virtuális gép regisztrációjának megszüntetéséhez használja a [Regisztráció törlése – AzRecoveryServicesBackupContainer](https://docs.microsoft.com/powershell/module/az.recoveryservices/Unregister-AzRecoveryServicesBackupContainer?view=azps-1.5.0) PS parancsmagot.
 
 ````powershell
 $SQLContainer = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppContainer -FriendlyName <VM name> -VaultId $targetvault.ID
  Unregister-AzRecoveryServicesBackupContainer -Container $SQLContainer -VaultId $targetvault.ID
 ````
 
-### <a name="track-azure-backup-jobs"></a>Az Azure biztonsági mentési feladatok nyomon követése
+### <a name="track-azure-backup-jobs"></a>Azure Backup feladatok nyomon követése
 
-Fontos megjegyezni, hogy az Azure Backup csak nyomon követi a felhasználó által aktivált SQL biztonsági mentési feladatok. Ütemezett biztonsági mentések (beleértve a naplóalapú biztonsági mentések) nem láthatók a portal/PowerShell használatával. Azonban, ha minden ütemezett feladat sikertelen, egy [biztonsági mentési riasztás](backup-azure-monitoring-built-in-monitor.md#backup-alerts-in-recovery-services-vault) jön létre, és látható a portálon. [Az Azure Monitor használata](backup-azure-monitoring-use-azuremonitor.md) nyomon követéséhez az ütemezett feladatok és az egyéb kapcsolódó információkat.
+Fontos megjegyezni, hogy Azure Backup csak a felhasználó által aktivált feladatokat követi nyomon az SQL Backup szolgáltatásban. Az ütemezett biztonsági mentések (beleértve a naplók biztonsági mentését) nem láthatók a portálon/PowerShellben. Ha azonban bármelyik ütemezett feladat meghiúsul, [biztonsági mentési riasztás](backup-azure-monitoring-built-in-monitor.md#backup-alerts-in-recovery-services-vault) jön létre, és megjelenik a portálon. A [Azure monitor használatával](backup-azure-monitoring-use-azuremonitor.md) nyomon követheti az összes ütemezett feladatot és egyéb releváns információt.
 
-Felhasználók nyomon követheti a JobID, a visszaadott ad hoc ad hoc és a felhasználók által aktivált műveletek a [kimeneti](#on-demand-backup) aszinkron feladatok, mint a biztonsági mentés. Használat [Get-AzRecoveryServicesBackupJobDetails](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupJobDetails?view=azps-1.5.0) PS-parancsmag segítségével nyomon követheti a feladat és a részletek.
+A felhasználók nyomon követhetik az alkalmi/felhasználó által aktivált műveleteket az aszinkron feladatok (például biztonsági mentés) [kimenetében](#on-demand-backup) visszaadott JobID. A [Get-AzRecoveryServicesBackupJobDetail](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupJobDetail) PS parancsmag használatával nyomon követheti a feladatot és annak részleteit.
 
 ````powershell
  Get-AzRecoveryServicesBackupJobDetails -JobId 2516bb1a-d3ef-4841-97a3-9ba455fb0637 -VaultId $targetVault.ID
 ````
 
-Az Azure Backup szolgáltatás adhoc feladatok és azok állapotát listájának lekéréséhez használja [Get-AzRecoveryServicesBackupJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupJob?view=azps-1.5.0) PS-parancsmagot. Az alábbi példa a folyamatban lévő SQL feladatok adja vissza.
+A [Get-AzRecoveryServicesBackupJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupJob?view=azps-1.5.0) PS parancsmaggal lekérdezheti az ad hoc feladatok listáját és azok állapotát a Azure Backup szolgáltatásból. A következő példa az összes folyamatban lévő SQL-feladatot adja vissza.
 
 ```powershell
 Get-AzRecoveryServicesBackupJob -Status InProgress -BackupManagementType AzureWorkload
 ```
 
-Egy folyamatban lévő feladat megszakítása, használja a [Stop-AzRecoveryServicesBackupJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/Stop-AzRecoveryServicesBackupJob?view=azps-1.5.0) PS-parancsmagot.
+A folyamatban lévő feladatok megszakításához használja a [stop-AzRecoveryServicesBackupJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/Stop-AzRecoveryServicesBackupJob?view=azps-1.5.0) PS parancsmagot.
 
-## <a name="managing-sql-always-on-availability-groups"></a>SQL Always a rendelkezésre állási csoportok kezelése
+## <a name="managing-sql-always-on-availability-groups"></a>SQL always on rendelkezésre állási csoportok kezelése
 
-SQL Always On rendelkezésre állási csoportok, győződjön meg arról, hogy [regisztrálja a csomópontokon](#registering-the-sql-vm) a rendelkezésre állási csoport (rendelkezésre állási csoport). Ha az összes csomópont végzett regisztráció, egy SQL rendelkezésre állási csoport objektum logikailag létrejön védhető elemek alapján. Az adatbázisokat az SQL rendelkezésre állási csoport "SQLDatabase" fog szerepelni. A csomópontok különálló jelenik meg, és ezek az alapértelmezett SQL-adatbázisok, valamint az SQL-adatbázisok fog szerepelni.
+Az SQL always on rendelkezésre állási csoportok esetében ügyeljen arra, hogy regisztrálja a rendelkezésre állási csoport (AG) [összes csomópontját](#registering-the-sql-vm) . Ha az összes csomóponton regisztrálva van, az SQL rendelkezésre állási csoport objektum logikailag jön létre a védhető elemek alatt. Az SQL AG alatti adatbázisok "SQLDatabase"-ként lesznek felsorolva. A csomópontok önálló példányként jelennek meg, és az ezek alá tartozó alapértelmezett SQL-adatbázisok is SQL-adatbázisként jelennek meg.
 
-Például tegyük fel, egy SQL rendelkezésre állási csoport két csomópont van: "sql-kiszolgáló – 0" és "sql-kiszolgáló-1", 1 SQL rendelkezésre állási csoport DB. Miután mindkét ezeknek a csomópontoknak van regisztrálva, ha a felhasználó [védhető elemek listája](#fetching-sql-dbs), a következő összetevőket tartalmazza
+Tegyük fel például, hogy egy SQL AG két csomóponttal rendelkezik: "SQL-Server-0" és "SQL-Server-1" és 1 SQL AG DB. Ha mindkét csomópont regisztrálva van, ha [a felhasználó felsorolja a védhető elemeket](#fetching-sql-dbs), a következő összetevőket sorolja fel
 
-1. Az SQL rendelkezésre állási csoport objektum - védhető konfigurációelem-típust, SQLAvailabilityGroup
-2. Egy SQL rendelkezésre állási csoport DB - védhető elem típusa, SQL Database
-3. SQL-kiszolgáló-0 - SQLInstance típusa védendő elem.
-4. SQL-kiszolgáló-1 - SQLInstance típusa védendő elem.
-5. Bármely alapértelmezett SQL-adatbázisok (master, model, msdb) alatt az sql-kiszolgáló-0 – SQL Database típusa védhető
-6. Bármely alapértelmezett SQL-adatbázisok (master, model, msdb) alatt az sql-kiszolgáló-1 – SQL Database típusa védhető
+1. Egy SQL AG objektum-Protected Item Type as SQLAvailabilityGroup
+2. Az SQL AG adatbázis-védelemmel ellátott elemtípus-típusa SQLDatabase
+3. SQL-Server-0 – Protected Item Type as SQLInstance
+4. SQL-Server-1 – Protected Item Type as SQLInstance
+5. Bármely alapértelmezett SQL-adatbázisok (Master, Model, msdb) az SQL-Server-0-Protected Item Type as SQLDatabase
+6. Bármely alapértelmezett SQL-adatbázisok (Master, Model, msdb) az SQL-Server-1 – Protected Item Type as SQLDatabase
 
-SQL-kiszolgáló – 0, az sql-kiszolgáló-1 is megjelenik "AzureVMAppContainer", amikor [biztonsági mentési tárolók felsorolt](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupContainer?view=azps-1.5.0).
+az SQL-Server-0, SQL-Server-1 az "AzureVMAppContainer" néven jelenik meg a [biztonsági mentési tárolók listáján](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupContainer?view=azps-1.5.0).
 
-Csak beolvasni a megfelelő SQL-adatbázis a [biztonsági mentés engedélyezése](#configuring-backup) és a [ad hoc biztonsági mentés](#on-demand-backup) és [PS parancsmagok visszaállítása](#restore-sql-dbs) azonosak.
+Csak a megfelelő SQL-adatbázist olvassa be a [biztonsági mentés engedélyezéséhez](#configuring-backup) , és az ad [hoc biztonsági mentési](#on-demand-backup) és [visszaállítási PS-parancsmagok](#restore-sql-dbs) megegyeznek.

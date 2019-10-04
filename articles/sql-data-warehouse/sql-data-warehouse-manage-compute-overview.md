@@ -1,6 +1,6 @@
 ---
-title: Az Azure SQL Data Warehouse a számítási erőforrások kezelése |} A Microsoft Docs
-description: Ismerje meg a teljesítmény horizontális felskálázás az Azure SQL Data Warehouse képességeket. Horizontális felskálázás az adattárház szüneteltetésével a dwu-k vagy alacsonyabb költségek módosításával.
+title: Számítási erőforrások kezelése Azure SQL Data Warehouseban | Microsoft Docs
+description: Ismerje meg a Azure SQL Data Warehouse teljesítményének kibővíthető képességeit. Az adattárház felfüggesztésével felskálázást végez a DWU és az alacsonyabb költségek módosításával.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,29 +10,29 @@ ms.subservice: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 47be738a4e5dcec144d482c28e39cbe950bba3e7
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f0935ccc4c4274bfab0c589ef158d4ea0bef455c
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55460386"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575327"
 ---
-# <a name="manage-compute-in-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse számítások kezelése
-Ismerje meg az Azure SQL Data Warehouse a számítási erőforrások kezelése. Az adattárház szüneteltetésével a költségek csökkentése, vagy méretezheti a data warehouse-adattárházat teljesítményigények kielégítése. 
+# <a name="manage-compute-in-azure-sql-data-warehouse"></a>Számítások kezelése Azure SQL Data Warehouseban
+További információ a számítási erőforrások Azure SQL Data Warehouseban történő kezeléséről. Csökkentse az adattárház felfüggesztését, vagy méretezze át az adattárházat a teljesítményre vonatkozó igények kielégítése érdekében. 
 
-## <a name="what-is-compute-management"></a>Mi az számítási felügyeleti?
-Az SQL Data Warehouse architektúrája elkülöníti a tárolást és számítást, így egymástól független méretezését. Ennek eredményeképpen a teljesítményigények kielégítése független adattárolás számítási skálázhatja. Is szüneteltetése és folytatása a számítási erőforrásokat. Ez az architektúra természetes következménye, hogy [számlázási](https://azure.microsoft.com/pricing/details/sql-data-warehouse/) számítási és tárolási elkülönül. Ha nem szeretné használni az adattárház egy ideig, számítási költségeket takaríthat felfüggesztés számítási. 
+## <a name="what-is-compute-management"></a>Mi a számítási felügyelet?
+A SQL Data Warehouse architektúrája elkülöníti a tárolást és a számítást, így egymástól függetlenül méretezhetők. Ennek eredményeképpen a számítási kapacitást úgy méretezheti, hogy az adattárolástól függetlenül megfeleljen a teljesítményi igényeknek. A számítási erőforrások szüneteltetését és folytatását is elvégezheti. Ennek az architektúrának a természetes következménye [](https://azure.microsoft.com/pricing/details/sql-data-warehouse/) , hogy a számítás és a tárolás számlázása külön történik. Ha egy ideig nem kell használnia az adattárházat, a számítási költségeket a számítási költségek felfüggesztésével mentheti. 
 
-## <a name="scaling-compute"></a>Számítás méretezése
-Horizontális felskálázás, vagy vissza számítási méretezése módosításával a [adattárházegységek](what-is-a-data-warehouse-unit-dwu-cdwu.md) beállítása a data warehouse-hoz. Betöltés és lekérdezés teljesítmény költségráfordításokkal egyenes arányban növelhető további adattárházegységek hozzáadása során. 
+## <a name="scaling-compute"></a>Méretezési számítás
+Az adatraktár adattárház- [egység](what-is-a-data-warehouse-unit-dwu-cdwu.md) beállításának módosításával kibővítheti vagy méretezheti a számítási kapacitást. A betöltés és a lekérdezés teljesítménye lineárisan növekedhet, ha további adattárház-egységeket ad hozzá. 
 
-Horizontális felskálázás lépéseiért lásd: a [az Azure portal](quickstart-scale-compute-portal.md), [PowerShell](quickstart-scale-compute-powershell.md), vagy [T-SQL](quickstart-scale-compute-tsql.md) rövid útmutatók. Horizontális felskálázási műveletek is elvégezheti egy [REST API-val](sql-data-warehouse-manage-compute-rest-api.md#scale-compute).
+A kibővített lépésekért tekintse meg a [Azure Portal](quickstart-scale-compute-portal.md), a [PowerShell](quickstart-scale-compute-powershell.md)vagy a [T-SQL](quickstart-scale-compute-tsql.md) rövid útmutatót. Kibővíthető műveleteket is végrehajthat [REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute)használatával.
 
-SQL Data Warehouse egy skálázási művelet végrehajtásához először megszakítja az összes bejövő lekérdezés, és visszavon annak biztosítása érdekében a konzisztens állapotú tranzakciókat. Méretezés csak akkor fordul elő a tranzakció visszaállítása után. Skálázási művelet esetén a rendszer leválasztja a tárolási réteget a számítási csomópontokról, számítási csomópontokat ad hozzá, és ezután újracsatlakoztatja a tárolási réteg számítási rétegben. Minden adatraktár 60 elosztás, amely egyenletesen lesznek elosztva a számítási csomópontoknak van tárolva. További számítási csomópontokat ad hozzá hozzáadja a nagyobb számítási teljesítmény. Ahogy a számítási csomópontok száma növekszik, csökkenti a disztribúciók számítási csomópontok számát, a lekérdezések nagyobb számítási teljesítmény biztosítása. Hasonlóképpen csökkenő adattárházegységek csökkenti a számítási csomópontok számát, ami csökkenti a számítási erőforrások lekérdezésekhez.
+A méretezési művelet végrehajtásához SQL Data Warehouse először az összes bejövő lekérdezést, majd Visszagörgeti a tranzakciókat, hogy konzisztens állapotot biztosítson. A skálázás csak a tranzakció-visszaállítás befejeződése után történik meg. A méretezési műveletekhez a rendszer leválasztja a tárolási réteget a számítási csomópontokból, kiszámítja a számítási csomópontokat, majd újra csatolja a tárolási réteget a számítási réteghez. Az egyes adattárházak 60 Eloszlásként vannak tárolva, amelyek egyenletesen oszlanak el a számítási csomópontokon. További számítási csomópontok hozzáadásával további számítási kapacitást adhat hozzá. A számítási csomópontok számának növekedésével a számítási csomópontok száma csökken, és nagyobb számítási teljesítményt biztosít a lekérdezésekhez. Hasonlóképpen, a csökkenő adattárház-egységek csökkentik a számítási csomópontok számát, ami csökkenti a lekérdezések számítási erőforrásait.
 
-Az alábbi táblázat bemutatja, hogyan disztribúciók egy számítási csomópont megváltozik, az adattárházegységek számának módosításához.  DWU6000 60 számítási csomópontok biztosít, és sokkal magasabb lekérdezési teljesítményt, mint a DWU100 éri el. 
+A következő táblázat azt mutatja be, hogy a számítási csomópontok hány eloszlása változik az adatraktár-egységek változásakor.  A DWU6000 60 számítási csomópontot biztosít, és sokkal nagyobb lekérdezési teljesítményt érhet el, mint a DWU100. 
 
-| Adattárházegységek  | \# Számítási csomópontok | \# csomópontonként disztribúciók |
+| Adattárházegységek  | \#a számítási csomópontok | \#/csomópontok eloszlása |
 | ---- | ------------------ | ---------------------------- |
 | 100  | 1                  | 60                           |
 | 200  | 2                  | 30                           |
@@ -48,71 +48,71 @@ Az alábbi táblázat bemutatja, hogyan disztribúciók egy számítási csomóp
 | 6000 | 60                 | 1                            |
 
 
-## <a name="finding-the-right-size-of-data-warehouse-units"></a>Adattárházegységek megfelelő méretű keresése
+## <a name="finding-the-right-size-of-data-warehouse-units"></a>Az adatraktár-egységek megfelelő méretének megállapítása
 
-A horizontális felskálázás esetén különösen nagyobb adattárházegységek, a teljesítmény előnyeinek használni kívánt legalább 1 TB-os adatkészlet. Adattárházegységek ajánlott száma az adattárház talál, próbálkozzon a felfelé és lefelé skálázást. Az adatok betöltése után futtatott néhány lekérdezést az adattárházegységek különböző számú. Mivel a skálázás nem időigényes, megpróbálhatja különböző teljesítményszintek, vagy kevesebb mint egy órán belül. 
+Ha szeretné megtekinteni a horizontális felskálázás teljesítményének előnyeit, különösen a nagyobb adattárház-egységek esetében, legalább 1 TB-os adatkészletet szeretne használni. Az adatraktárhoz tartozó adatraktár-egységek legjobb számának megkereséséhez próbálja meg a felfelé és lefelé skálázást. Az adatok betöltése után futtasson néhány lekérdezést különböző számú adattárház-egységgel. Mivel a skálázás gyors, különböző teljesítményszint kipróbálására van lehetőség egy órán belül. 
 
-Javaslatok keresése a legjobb számát adattárházegységek:
+Javaslatok a legjobb számú adatraktár-egység megtalálásához:
 
-- Egy fejlesztési célú adattárházban, az adattárházegységek kevesebb kiválasztásával kezdődik.  Jó kiindulási pont DW400 vagy DW200.
-- Figyelje meg az alkalmazás teljesítményéhez, figyelje a teljesítmény megfigyelte képest kiválasztott adattárházegységek számát.
-- Tegyük fel, lineáris, és állapítsa meg, mennyit növelése vagy csökkentése érdekében az adattárházegységek szükséges. 
-- Folytassa, amíg el nem éri az optimális teljesítmény érdekében szintet az üzleti igények szerint a szükséges módosításokat.
+- A fejlesztés alatt álló adattárházak esetében kisebb számú adattárház-egységet válasszon ki.  Jó kiindulási pont a DW400 vagy a DW200.
+- Figyelheti az alkalmazás teljesítményét, és megfigyelheti a kiválasztott adatraktár-egységek számát a megfigyelt teljesítményhez képest.
+- Tegyük fel a lineáris skálázást, és határozza meg, hogy mennyit kell fokoznia vagy csökkentenie az adatraktár-egységeket. 
+- Folytassa a módosításokat, amíg el nem éri az üzleti igényeknek megfelelő optimális teljesítményt.
 
-## <a name="when-to-scale-out"></a>Mikor érdemes horizontális felskálázás
-Horizontális felskálázás adattárházegységek hatással van a teljesítmény következő aspektusait:
+## <a name="when-to-scale-out"></a>Mikor kell kibővíteni
+Az adatraktár-egységek horizontális felskálázása a következő teljesítménybeli szempontokat befolyásolja:
 
-- Lineárisan növeli a vizsgálatokat, összesítések és a CTAS utasítások a rendszer teljesítményét.
-- Olvasói és írók számát növeli az adatok betöltéséhez.
-- Egyidejű lekérdezések és egyidejű hely maximális számát.
+- A rendszer lineárisan javítja a rendszerek teljesítményét a vizsgálatok, összesítések és CTAS utasításokhoz.
+- Növeli az olvasók és az írók számát az betöltéshez.
+- Az egyidejű lekérdezések és a párhuzamossági bővítőhelyek maximális száma.
 
-Adatok horizontális vonatkozó ajánlások adattárházegységek:
+Javaslatok az adatraktár-egységek kiskálázásának idejére:
 
-- Mielőtt nagy mennyiségű adat betöltenie vagy átalakítási műveletet hajt végre horizontális felskálázása az adatok gyorsabban elérhetővé.
-- Csúcsidőszak munkaidőben horizontális felskálázás nagyobb számú lekérdezést befogadásához. 
+- A nagy mennyiségű adat-betöltési vagy átalakítási művelet végrehajtása előtt bővítse az adatok gyorsabb elérhetővé tételét.
+- A munkaidőn kívüli időszakban az egyidejű lekérdezések nagyobb számának megfelelően méretezhető. 
 
-## <a name="what-if-scaling-out-does-not-improve-performance"></a>Mi történik, ha horizontális felskálázás nem növelhető teljesítménye?
+## <a name="what-if-scaling-out-does-not-improve-performance"></a>Mi a teendő, ha a horizontális felskálázás nem javítja a teljesítményt?
 
-Növelje a párhuzamosság adattárházegységek hozzáadása. Ha van a munkahelyi egyenletesen ossza fel a számítási csomópontok között, a további párhuzamosság javítja a lekérdezések teljesítményét. A horizontális skálázás nem változnak a teljesítményt, ha nincsenek néhány oka, hogy miért Ez akkor fordulhat elő. Az adatok esetleg torzítja, a disztribúciók közötti, illetve előfordulhat, hogy a lekérdezések nagy mennyiségű adatok áthelyezése bemutatása. Lekérdezési teljesítmény kapcsolatos problémák kivizsgálása, lásd: [teljesítményproblémáinak elhárítása](sql-data-warehouse-troubleshoot.md#performance). 
+Adattárház-egységek hozzáadása a párhuzamosság növeléséhez. Ha a munka egyenletesen oszlik meg a számítási csomópontok között, a további párhuzamosság javítja a lekérdezési teljesítményt. Ha a horizontális felskálázás nem változtatja meg a teljesítményt, bizonyos okok miatt előfordulhat, hogy ez megtörténik. Előfordulhat, hogy az adatai elferdítik a disztribúciókat, vagy a lekérdezések nagy mennyiségű adatáthelyezést mutatnak be. A lekérdezések teljesítményével kapcsolatos problémák kivizsgálásához tekintse meg a [teljesítménnyel kapcsolatos hibaelhárítás](sql-data-warehouse-troubleshoot.md#performance)témakört. 
 
-## <a name="pausing-and-resuming-compute"></a>Számítás szüneteltetése és folytatása
-Felfüggesztése számítási hatására a tárolási réteg leválasztása a számítási csomópontokon. A számítási erőforrások a fiókjából jelennek meg. Nem terheli a számítási szünetelteti a számítást, miközben. Számítási folytatása újracsatlakoztatja a tároló a számítási csomópontok, és folytatja a számítási díjakat. Ha az egérmutatót egy data warehouse-bA:
+## <a name="pausing-and-resuming-compute"></a>A számítási feladat felfüggesztése és folytatása
+A számítási műveletek felfüggesztése miatt a tárolási réteg leválasztható a számítási csomópontokból. A számítási erőforrások kiadása a fiókból történik. Nem számítunk fel díjat, amíg a számítás szünetel. A számítás folytatása a számítási csomópontok számára újracsatlakoztatja a tárolót, és folytatja a számítási költségeket. Az adatraktár szüneteltetése esetén:
 
-* Számítási és memória-erőforrások a rendszer visszairányítja az adatközpontban lévő elérhető erőforrások készletét
-* Data warehouse egység díjakat a szünet időtartama nulla.
-* Nincs hatással az adattárolás, és az adatok érintetlen marad. 
-* Az SQL Data Warehouse elveti az összes futó vagy aszinkron művelet.
+* A számítási és memória-erőforrásokat a rendszer visszaadja az adatközpontban elérhető erőforrások készletének.
+* Az adatraktár egységének költségei a Szüneteltetés időtartamára nulla értékűek.
+* Az adattárolás nem érinti az adattárolást, és az adatai érintetlenek maradnak. 
+* SQL Data Warehouse megszakítja az összes futó vagy várólistán lévő műveletet.
 
-Ha folytatja a data warehouse-bA:
+Amikor folytatja az adattárházat:
 
-* Az SQL Data Warehouse számítási és memória-erőforrásokat az adattárházegységek beállítása a szerez be.
-* COMPUTE díja a data warehouse egységek folytatása.
-* Az adatok elérhetővé válnak.
-* Után az adatraktár online állapotban, akkor kell indítania a számítási feladatok lekérdezéseit.
+* A SQL Data Warehouse számítási és memória-erőforrásokat vásárol az adattárház-egységek beállításához.
+* Az adatraktár-egységek számítási díjai folytatódnak.
+* Az adatai elérhetővé válnak.
+* Miután az adattárház online állapotú, újra kell indítania a munkaterhelés-lekérdezéseket.
 
-Ha azt szeretné, az adattárház elérhető, fontolja meg a legkisebb méretre méretezés, a felfüggesztés helyett. 
+Ha mindig elérhetővé szeretné tenni az adattárházat, érdemes lehet a legkisebb méretre méretezni a Szüneteltetés helyett. 
 
-A felfüggeszteni és folytatni a lépéseket, lásd: a [az Azure portal](pause-and-resume-compute-portal.md), vagy [PowerShell](pause-and-resume-compute-powershell.md) rövid útmutatók. Is használhatja a [REST API-val szüneteltetése](sql-data-warehouse-manage-compute-rest-api.md#pause-compute) vagy a [folytatódik a REST API-val](sql-data-warehouse-manage-compute-rest-api.md#resume-compute).
+A szüneteltetési és folytatási lépésekért tekintse meg a [Azure Portal](pause-and-resume-compute-portal.md)vagy a [PowerShell](pause-and-resume-compute-powershell.md) rövid útmutatóit. Használhatja a [pause REST API](sql-data-warehouse-manage-compute-rest-api.md#pause-compute) vagy a [resume REST API](sql-data-warehouse-manage-compute-rest-api.md#resume-compute)is.
 
 ## <a name="drain-transactions-before-pausing-or-scaling"></a>Tranzakciók ürítése felfüggesztés vagy méretezés előtt
-Javasoljuk, hogy a meglévő tranzakciók befejeződik a felfüggesztés vagy méretezés művelet elindítása előtt.
+Azt javasoljuk, hogy a szüneteltető vagy a skálázási művelet megkezdése előtt engedélyezze a meglévő tranzakciók befejezését.
 
 Ha felfüggeszti vagy méretezi az SQL Data Warehouse-t, a felfüggesztési vagy méretezési kérelem elindításakor a színfalak mögött a lekérdezések megszakadnak.  Egy egyszerű választó lekérdezés megszakítása gyors művelet, amelynek szinte semmilyen hatása nincs az üzemelő példány felfüggesztéséhez vagy méretezéséhez szükséges időtartamra.  Azonban a tranzakciós lekérdezések, amelyek adatokat vagy az adatok szerkezetét is módosítják, nem biztos, hogy ilyen hamar le tudnak állni.  **A tranzakciós lekérdezéseknek definíciójuk szerint vagy teljesen be kell fejeződniük, vagy vissza kell állítaniuk az általuk végrehajtott módosításokat.**  A tranzakciós lekérdezések által elvégzett módosítások visszaállítása ugyanannyi, vagy akár hosszabb ideig is tarthat, mint a lekérdezés által elvégzett eredeti módosítás végrehajtása.  Például ha megszakít egy olyan lekérdezést, amely sorokat törölt és már egy órája futott, a rendszernek egy újabb órájába telhet, hogy a törölt sorokat visszaállítsa.  Ha a felfüggesztést vagy a méretezést olyankor futtatja, amikor épp tranzakciók vannak folyamatban, a felfüggesztés vagy a méretezés látszólag hosszú időt vehet igénybe, mivel e műveleteknek meg kell várniuk, amíg a visszaállítás lezajlik.
 
-Lásd még: [tranzakciók megismerése](sql-data-warehouse-develop-transactions.md), és [tranzakciók optimalizálása](sql-data-warehouse-develop-best-practices-transactions.md).
+Lásd még: [tranzakciók ismertetése](sql-data-warehouse-develop-transactions.md)és [tranzakciók optimalizálása](sql-data-warehouse-develop-best-practices-transactions.md).
 
-## <a name="automating-compute-management"></a>Számítási felügyeleti automatizálása
-A számítási műveletek automatizálása, tekintse meg a [kezelés compute az Azure functions](manage-compute-with-azure-functions.md).
+## <a name="automating-compute-management"></a>Számítási felügyelet automatizálása
+A számítási felügyeleti műveletek automatizálását lásd: [a számítások kezelése az Azure functions](manage-compute-with-azure-functions.md)használatával.
 
-A horizontális felskálázás, szüneteltetése és folytatása műveletek mindegyike több percet is igénybe vehet. Ha meg vannak méretezés, a felfüggesztés, vagy automatikusan folytatása, javasoljuk, hogy annak érdekében, hogy logikai végrehajtási bizonyos művelet befejeződött, egy másik művelet végrehajtása előtt. Az adatraktár állapota különböző végpontok ellenőrzése lehetővé teszi megfelelően automation az ilyen műveletek végrehajtásához. 
+A kibővített, szüneteltetési és folytatási műveletek végrehajtása több percet is igénybe vehet. Ha a méretezés, a felfüggesztés vagy a folytatás automatikusan történik, javasoljuk, hogy végezze el a logikát, és győződjön meg arról, hogy bizonyos műveletek befejeződtek, mielőtt továbblép egy másik művelettel. Az adatraktár állapotának különböző végpontokon keresztüli ellenőrzése lehetővé teszi az ilyen műveletek automatizálásának megfelelő megvalósítását. 
 
-Az adattárház állapotának ellenőrzése, tekintse meg a [PowerShell](quickstart-scale-compute-powershell.md#check-data-warehouse-state) vagy [T-SQL](quickstart-scale-compute-tsql.md#check-data-warehouse-state) rövid. Az adatraktár állapota is ellenőrizheti a [REST API-val](sql-data-warehouse-manage-compute-rest-api.md#check-database-state).
+Az adatraktár állapotának vizsgálatához tekintse meg a [PowerShell](quickstart-scale-compute-powershell.md#check-data-warehouse-state) vagy a [T-SQL](quickstart-scale-compute-tsql.md#check-data-warehouse-state) rövid útmutatóját. Az adatraktár állapotát [REST API](sql-data-warehouse-manage-compute-rest-api.md#check-database-state)is megtekintheti.
 
 
 ## <a name="permissions"></a>Engedélyek
 
-Az adatraktár szükséges a leírt engedélyek [ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse).  Szünet és folytatás megkövetelése a [SQL-Adatbázisok Közreműködője](../role-based-access-control/built-in-roles.md#sql-db-contributor) engedéllyel, kifejezetten Microsoft.Sql/servers/databases/action.
+Az adatraktár skálázásához az [Alter Database](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse)utasításban ismertetett engedélyek szükségesek.  A Szüneteltetés és folytatás megköveteli az [SQL-adatbázis közreműködői](../role-based-access-control/built-in-roles.md#sql-db-contributor) engedélyét, különösen a Microsoft. SQL/kiszolgálók/adatbázisok/művelet esetében.
 
 
 ## <a name="next-steps"></a>További lépések
-Számítási erőforrások kezelési szerepet játszó másik tényező különböző számítási erőforrásokat lefoglalni az egyes lekérdezések esetében. További információkért lásd: [erőforrásosztályok számítási feladatok kezeléséhez](resource-classes-for-workload-management.md).
+A számítási erőforrások kezelésével kapcsolatos [](manage-compute-with-azure-functions.md) további tudnivalókat lásd a különböző számítási erőforrások lefoglalása az egyes lekérdezésekhez című témakör útmutatását. További információ: erőforrás- [osztályok a számítási feladatok kezeléséhez](resource-classes-for-workload-management.md).

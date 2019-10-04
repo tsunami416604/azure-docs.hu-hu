@@ -1,98 +1,80 @@
 ---
-title: Saját arculat észlelése – Computer Vision
+title: Márka észlelése – Computer Vision
 titleSuffix: Azure Cognitive Services
-description: A Computer Vision API használatával márka/emblémájának észlelési kapcsolatos fogalmakat.
+description: A Computer Vision API használatával a márka/embléma észlelésével kapcsolatos fogalmak.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 04/17/2019
+ms.date: 08/08/2019
 ms.author: pafarley
-ms.openlocfilehash: d32beaa51471ccab19804122bfbcb33a6b1a5e3d
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: c3a80cbdd166f77681665ee3675c1a71ce3a9bd6
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60003105"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967093"
 ---
-# <a name="detect-popular-brands-in-images"></a>Népszerű márkái észleli a képeken
+# <a name="detect-popular-brands-in-images"></a>Népszerű márkák felismerése képeken
 
-Márka észlelés a speciális mód [észlelési objektum](concept-object-detection.md) , amely a globális emblémák százezer adatbázis vagy képeken szereplő kereskedelmi márkái azonosítására használ. Használhatja a szolgáltatás, például felderítheti, mely márkái: a közösségi oldalakon legnépszerűbb vagy a media termékelhelyezésről legelterjedtebb.
+A márka észlelése az [objektumok észlelésének](concept-object-detection.md) speciális módja, amely több ezer globális emblémát tartalmazó adatbázist használ a képekben vagy videókban található kereskedelmi márkák azonosítására. Ezt a funkciót használhatja például arra, hogy felderítse, mely márkák a legnépszerűbbek a közösségi médiában, vagy a média termékeinek legelterjedtebb eleme.
 
-A Computer Vision szolgáltatás észleli, hogy vannak-e márka emblémát a megadott lemezkép; Ha igen, a márkanév, egy megbízhatósági pontszám és az embléma körüli határolókeret koordinátái ad vissza.
+A Computer Vision szolgáltatás észleli, hogy van-e olyan márka emblémája egy adott képben; Ha igen, a rendszer visszaadja a márka nevét, a megbízhatósági pontszámot és az embléma körüli határoló mező koordinátáit.
 
-A beépített embléma adatbázis consumer electronics, ruházat és más népszerű márkát ismerteti. Ha azt tapasztalja, hogy a keresett márkájú nem észleli a Computer Vision service, akkor előfordulhat, hogy jobb szolgáltatáshoz jutnak a létrehozása és betanítása saját embléma detector használatával használatával a [Custom Vision](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/) szolgáltatás.
+A beépített embléma-adatbázis a népszerű márkákat tartalmazza a fogyasztói elektronika, a ruházati szolgáltatások és egyebek terén. Ha azt tapasztalja, hogy a keresett márkát nem észleli a Computer Vision szolgáltatás, akkor lehet, hogy jobban kiszolgálhatja a saját emblémás detektor létrehozását és betanítását a [Custom Vision](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/) szolgáltatás használatával.
 
-## <a name="brand-detection-example"></a>Példa a márka észlelése
+## <a name="brand-detection-example"></a>Példa a márka észlelésére
 
-A következő JSON-válaszok bemutatják, milyen számítógépes Látástechnológiai ad vissza, ha a példában képek márkái észlelése.
+A következő JSON-válaszok azt szemléltetik, hogy milyen Computer Vision ad vissza, amikor a képeken a márkákat észleli.
 
-![A szürke sweatshirt Microsoft címke, valamint egy rajta embléma](./Images/gray-shirt-logo.jpg)
-
-```json
-{
-   "brands":[
-      {
-         "name":"Microsoft",
-         "confidence":0.706,
-         "rectangle":{
-            "x":470,
-            "y":862,
-            "w":338,
-            "h":327
-         }
-      }
-   ],
-   "requestId":"5fda6b40-3f60-4584-bf23-911a0042aa13",
-   "metadata":{
-      "width":2286,
-      "height":1715,
-      "format":"Jpeg"
-   }
-}
-```
-Bizonyos esetekben a márka detector használatával kiesik a emblémakép, mind a stilizált márkanév, két külön emblémát.
-
-![A red shirt Microsoft címke, valamint egy rajta embléma](./Images/red-shirt-logo.jpg)
+![Egy piros póló egy Microsoft-címkével és-emblémával](./Images/red-shirt-logo.jpg)
 
 ```json
-{
-   "brands":[
-      {
-         "name":"Microsoft",
-         "confidence":0.657,
-         "rectangle":{
-            "x":436,
-            "y":473,
-            "w":568,
-            "h":267
-         }
-      },
-      {
-         "name":"Microsoft",
-         "confidence":0.85,
-         "rectangle":{
-            "x":101,
-            "y":561,
-            "w":273,
-            "h":263
-         }
+"brands":[  
+   {  
+      "name":"Microsoft",
+      "rectangle":{  
+         "x":20,
+         "y":97,
+         "w":62,
+         "h":52
       }
-   ],
-   "requestId":"10dcd2d6-0cf6-4a5e-9733-dc2e4b08ac8d",
-   "metadata":{
-      "width":1286,
-      "height":1715,
-      "format":"Jpeg"
    }
-}
+]
 ```
 
-## <a name="use-the-api"></a>Az API-val
+Bizonyos esetekben a Brand detektor az embléma képét és a stilizált márkanevet is két külön emblémaként fogja felvenni.
 
-A márka észlelési szolgáltatás részét képezi a [kép elemzése](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API-t. Ez az API REST-hívások vagy a natív SDK keresztül hívása. Például `Brands` a a **visualFeatures** lekérdezési paraméter. Ezt követően a teljes JSON-választ kap, ha egyszerűen elemezni a karakterlánc a tartalmát a `"brands"` szakaszban.
+![Egy szürke pulóver egy Microsoft-címkével és-emblémával](./Images/gray-shirt-logo.jpg)
 
-* [Rövid útmutató: Kép (.NET SDK-t) elemzése](./quickstarts-sdk/csharp-analyze-sdk.md)
-* [Rövid útmutató: Kép (REST API) elemzése](./quickstarts/csharp-analyze.md)
+```json
+"brands":[  
+   {  
+      "name":"Microsoft",
+      "rectangle":{  
+         "x":58,
+         "y":106,
+         "w":55,
+         "h":46
+      }
+   },
+   {  
+      "name":"Microsoft",
+      "rectangle":{  
+         "x":58,
+         "y":86,
+         "w":202,
+         "h":63
+      }
+   }
+]
+```
+
+## <a name="use-the-api"></a>Az API használata
+
+A márka észlelése funkció a [rendszerkép elemzése](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API részét képezi. Ezt az API-t natív SDK-n vagy REST-hívásokon keresztül hívhatja. Belefoglalás `Brands` a **visualFeatures** lekérdezési paraméterbe. Ezután, amikor megkapja a teljes JSON-választ, egyszerűen elemezze a `"brands"` szakasz tartalmának karakterláncát.
+
+* [Rövid útmutató: Computer Vision .NET SDK](./quickstarts-sdk/csharp-sdk.md)
+* [Rövid útmutató: Rendszerkép elemzése (REST API)](./quickstarts/csharp-analyze.md)

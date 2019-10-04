@@ -1,25 +1,18 @@
 ---
-title: Appsource-ban kínálnak a AppsSource megjelennie, amely tartalmazza az Office 365-höz, a Dynamics 365, a Power bi-ban és a Power Apps és az Azure felhőbeli piactér közzétételi útmutató
+title: AppSource az ajánlat közzétételi útmutató az AppsSource kirakat |} Az Azure Marketplace-en
 description: Részletes útmutató és az alkalmazások közzététele az appsource-ban kirakat az Office 365, Dynamics 365, Power BI és Power Apps közzétételi Ellenőrzőlisták
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security, SaaS
-documentationcenter: ''
 author: ellacroi
-manager: nunoc
-editor: ellacroi
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: ellacroi
-ms.openlocfilehash: 943f3a4739e5dffb2a7d218bf3a82a4e882538a6
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 38175bd2365ee9ab7246f0d967c364912efda37d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54075668"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64935689"
 ---
 # <a name="office-365-dynamics-365-power-apps-and-power-bi-offer-publishing-guide"></a>Az Office 365, Dynamics 365, a Power Apps és a Power BI-ajánlat közzétételi útmutató
 

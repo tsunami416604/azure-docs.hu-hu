@@ -6,14 +6,14 @@ ms.author: rimman
 ms.service: cosmos-db
 ms.custom: tutorial-develop, mvc
 ms.topic: tutorial
-ms.date: 05/10/2017
+ms.date: 05/21/2019
 ms.reviewer: sngun
-ms.openlocfilehash: bc9835876e8b87213ddbae65e43222467e751ea3
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 7e57abcc3df17dadd2e607895a8de011761ed68c
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56241632"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932803"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>Oktatóanyag: Azure Cosmos DB lekérdezése az SQL API használatával
 
@@ -61,13 +61,13 @@ A cikkben szereplő SQL-lekérdezések a következő mintadokumentumot használj
 Az Azure Portalon az Adatkezelővel futtathat lekérdezéseket a [REST API-n és az SDK-n](sql-api-sdk-dotnet.md) keresztül. Emellett használhatja még a [Tesztlekérdezéseket](https://www.documentdb.com/sql/demo) is, amelyek a mintaadatok meglévő készletén futtatnak lekérdezéseket.
 
 További tudnivalók az SQL-lekérdezésekről:
-* [SQL-lekérdezések és SQL-szintaxis](how-to-sql-query.md)
+* [SQL-lekérdezések és SQL-szintaxis](sql-query-getting-started.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ez az oktatóanyag feltételezi, hogy rendelkezik egy Azure Cosmos DB-fiókkal és -gyűjteménnyel. Nem rendelkezik ezekkel? Kövesse az [5 perces gyorsútmutató lépéseit](create-mongodb-nodejs.md).
 
-## <a name="example-query-1"></a>1. példalekérdezés
+## <a name="example-query-1"></a>1\. példalekérdezés
 
 A fenti mintacsalád dokumentumban a következő SQL-lekérdezés olyan dokumentumokat ad vissza, amelyek azonosítót tartalmazó mezői megegyeznek a következővel: `WakefieldFamily`. Mivel ez egy `SELECT *` utasítás, a lekérdezés kimenete a teljes JSON-dokumentum:
 
@@ -108,7 +108,7 @@ A fenti mintacsalád dokumentumban a következő SQL-lekérdezés olyan dokument
 }
 ```
 
-## <a name="example-query-2"></a>2. példalekérdezés
+## <a name="example-query-2"></a>2\. példalekérdezés
 
 A következő lekérdezés a család összes olyan gyermekének utónevét adja vissza, amelyek azonosítója egyezik a `WakefieldFamily` kifejezéssel, az évfolyamuk szerint rendezve.
 

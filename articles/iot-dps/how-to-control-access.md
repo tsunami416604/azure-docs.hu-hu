@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: wesmc
 ms.openlocfilehash: 7ff622ceac9c49eda7ba6bca1a8bb3aaabccb816
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59495430"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60626644"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>Hozzáférés vezérlése az Azure IoT Hub Device Provisioning Service
 
@@ -39,7 +39,7 @@ Biztosítani [engedélyek](#device-provisioning-service-permissions) a következ
 > [!NOTE]
 > Lásd: [engedélyek](#device-provisioning-service-permissions) részletes információkat.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Hitelesítés
 
 Az Azure IoT Hub Device Provisioning Service-végpontokra irányuló hozzáférést biztosít a megosztott elérési házirendekkel jogkivonat ellenőrzésével. Biztonsági hitelesítő adatok, például a szimmetrikus kulcsokat, a rendszer soha nem elküldve a hálózaton keresztül.
 

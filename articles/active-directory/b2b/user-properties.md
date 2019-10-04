@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mimart
 author: msmimart
-manager: daveba
-ms.reviewer: sasubram
+manager: celestedg
+ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d4466e4ac7a4e818da6332254e3094eccbaf2b4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b1416dacd65024457e713547223f5c35290b3d15
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59257603"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65768167"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Egy Azure Active Directory B2B együttműködés felhasználó tulajdonságai
 
@@ -25,13 +25,13 @@ Ez a cikk ismerteti a tulajdonságok és az Azure Active Directory (Azure AD) a 
 
 A meghívó szervezetet szükségleteinek egy Azure AD B2B együttműködés felhasználói lehet, a következő fiók állapota:
 
-- 1. állapot: Az Azure AD külső példányának a következő helyen, és a meghívó szervezetet vendégfelhasználó-kiszolgálókként. Ebben az esetben a B2B-felhasználó bejelentkezik egy az Azure AD-fiókkal, amely a meghívott bérlőhöz tartozik. Ha a fiókpartner-szervezet nem használ az Azure ad-ben, a vendégfelhasználó az Azure ad-ben továbbra is jön létre. A követelmények a következők:, hogy azok beváltani a meghívót, és az Azure AD ellenőrzi az e-mail-címükkel. Ezzel az elrendezéssel fokozott egy – igény (szerinti JIT) bérlős és a egy "vírusos" bérlős is nevezik.
+- 1\. állapot: Az Azure AD külső példányának a következő helyen, és a meghívó szervezetet vendégfelhasználó-kiszolgálókként. Ebben az esetben a B2B-felhasználó bejelentkezik egy az Azure AD-fiókkal, amely a meghívott bérlőhöz tartozik. Ha a fiókpartner-szervezet nem használ az Azure ad-ben, a vendégfelhasználó az Azure ad-ben továbbra is jön létre. A követelmények a következők:, hogy azok beváltani a meghívót, és az Azure AD ellenőrzi az e-mail-címükkel. Ezzel az elrendezéssel fokozott egy – igény (szerinti JIT) bérlős és a egy "vírusos" bérlős is nevezik.
 
-- 2. állapot: A Microsoft vagy más fiók tárolt és a gazdagép szervezet vendégfelhasználó-kiszolgálókként. Ebben az esetben a Vendég felhasználó bejelentkezik egy Microsoft-fiókjával vagy a közösségi fiók (google.com vagy hasonló). A meghívott felhasználó identitása alatt ajánlat érvényesítési egy Microsoft-fiók a meghívó szervezetet címtárban jön létre.
+- 2\. állapot: A Microsoft vagy más fiók tárolt és a gazdagép szervezet vendégfelhasználó-kiszolgálókként. Ebben az esetben a Vendég felhasználó bejelentkezik egy Microsoft-fiókjával vagy a közösségi fiók (google.com vagy hasonló). A meghívott felhasználó identitása alatt ajánlat érvényesítési egy Microsoft-fiók a meghívó szervezetet címtárban jön létre.
 
-- 3. állapot: A gazdagép a szervezet a helyszíni Active Directoryban tárolt, és szinkronizálja a gazdagép a szervezet Azure AD. Az Azure AD Connect használatával a partner-fiókok szinkronizálása a felhőbe, az Azure AD B2B-felhasználók a UserType = Vendég. Lásd: [helyileg kezelt partner fiókok hozzáférést biztosít a felhőbeli erőforrások](hybrid-on-premises-to-cloud.md).
+- 3\. állapot: A gazdagép a szervezet a helyszíni Active Directoryban tárolt, és szinkronizálja a gazdagép a szervezet Azure AD. Az Azure AD Connect használatával a partner-fiókok szinkronizálása a felhőbe, az Azure AD B2B-felhasználók a UserType = Vendég. Lásd: [helyileg kezelt partner fiókok hozzáférést biztosít a felhőbeli erőforrások](hybrid-on-premises-to-cloud.md).
 
-- 4. állapot: A gazdagép a szervezet Azure-ban tárolt AD a UserType = Vendég és hitelesítő adatokat, amelyeket a gazdagép szervezet felügyeli.
+- 4\. állapot: A gazdagép a szervezet Azure-ban tárolt AD a UserType = Vendég és hitelesítő adatokat, amelyeket a gazdagép szervezet felügyeli.
 
   ![A négy felhasználói állapotok ábrázoló diagram](media/user-properties/redemption-diagram.png)
 
@@ -68,7 +68,7 @@ Ez a tulajdonság azt jelzi, hogy a felhasználót, hogy a gazdagép bérlős ka
   > [!NOTE]
   > A UserType nem rendelkezik kapcsolattal, hogy a felhasználó bejelentkezik, a címtár szerepkörrel, a felhasználó, és így tovább. Ez a tulajdonság csak azt jelzi, hogy a felhasználó kapcsolat a gazdagép-szervezethez, és lehetővé teszi, hogy a szervezet, amely ezt a tulajdonságot függ házirendeknek az érvényesítését.
 
-### <a name="source"></a>Forrás
+### <a name="source"></a>source
 Ez a tulajdonság azt jelzi, hogy a felhasználó bejelentkezik.
 
 - A meghívott felhasználó: Ez a felhasználó kapott meghívót, de még nem még sikerült beváltani a meghívót.

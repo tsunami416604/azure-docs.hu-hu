@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Felhasználók automatikus átadása az Azure Active Directory a Salesforce beállítása |} A Microsoft Docs'
-description: Ismerje meg, hogyan egyszeri bejelentkezés konfigurálása Azure Active Directory és a Salesforce között.
+title: 'Oktatóanyag: A Salesforce konfigurálása az automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Salesforce között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,112 +12,115 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/08/2018
+ms.date: 08/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 712cc5ce62225987f8cc3ea13b5e4fd10a7d5eaf
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 64de004a1d9b3aa011c447fdded51658582586b0
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56172716"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68825778"
 ---
-# <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása a Salesforce beállítása
+# <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Oktatóanyag: Salesforce konfigurálása automatikus felhasználó-kiépítési szolgáltatáshoz
 
-Ez az oktatóanyag célja, a Salesforce és az Azure AD automatikus kiépítésére végrehajtásához szükséges lépéseket és megszüntetni hozzárendeléseket felhasználói fiókok Azure AD-ből a Salesforce-hoz.
+Ennek az oktatóanyagnak a célja, hogy megmutassa a Salesforce és az Azure AD végrehajtásához szükséges lépéseket, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat az Azure AD-ből a Salesforce.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az ebben az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy Ön már rendelkezik a következőkkel:
+Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő elemekkel:
 
-* Az Azure Active directory-bérlő
-* A Salesforce.com-bérlőben
+* Azure Active Directory-bérlő
+* Salesforce.com-bérlő
 
 > [!IMPORTANT]
-> Ha a Salesforce.com-próbafiókot használ, majd fogjuk automatizált felhasználókiépítés konfigurálása nem sikerült. Próbaverziós fiók nem rendelkezik a szükséges API-hozzáférés engedélyezve van, amíg azok vásárolhatók. Kérheti a korlátozás az ingyenes [fejlesztői fiók](https://developer.salesforce.com/signup) az oktatóanyag elvégzéséhez.
+> Ha Salesforce.com próbaverziós fiókot használ, akkor nem fogja tudni beállítani az automatikus felhasználó-kiépítés beállítását. A próbaverziós fiókokhoz nincs engedélyezve a szükséges API-hozzáférés, amíg meg nem vásárolják őket. Ezt a korlátozást egy ingyenes [fejlesztői fiók](https://developer.salesforce.com/signup) használatával érheti el az oktatóanyag elvégzéséhez.
 
-Ha egy Salesforce próbakörnyezetben használ, tekintse meg a [Salesforce védőfal integrációs oktatóanyagát](https://go.microsoft.com/fwLink/?LinkID=521879).
+Ha Salesforce sandbox-környezetet használ, tekintse meg a [Salesforce homokozó integrációs oktatóanyagát](https://go.microsoft.com/fwLink/?LinkID=521879).
 
-## <a name="assigning-users-to-salesforce"></a>Felhasználók hozzárendelése a Salesforce-hoz
+## <a name="assigning-users-to-salesforce"></a>Felhasználók kiosztása a Salesforce
 
-Az Azure Active Directory "-hozzárendelések" nevű fogalma használatával határozza meg, hogy mely felhasználók kell kapnia a kiválasztott alkalmazásokhoz való hozzáférés. Automatikus felhasználói fiók kiépítése kontextusában csak a felhasználók és csoportok rendelt "", az alkalmazások az Azure AD szinkronizálása.
+Azure Active Directory a "hozzárendelések" nevű fogalom használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. A felhasználói fiókok automatikus kiosztásának kontextusában a rendszer csak azokat a felhasználókat és csoportokat szinkronizálja, amelyeket az Azure AD-alkalmazáshoz rendeltek.
 
-A kiépítési szolgáltatás engedélyezése és konfigurálása, mielőtt szüksége dönthet arról, hogy mely felhasználók vagy csoportok Azure AD-ben a Salesforce alkalmazást hozzáférésre van szükségük. Miután végrehajtotta ezt a döntést, hozzárendelheti ezeket a felhasználókat a Salesforce alkalmazást a következő témakör utasításait követve [egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+A kiépítési szolgáltatás konfigurálása és engedélyezése előtt el kell döntenie, hogy mely felhasználókra vagy csoportokra van szükség az Azure AD-ben a Salesforce alkalmazás eléréséhez. A döntés elvégzése után ezeket a felhasználókat hozzárendelheti a Salesforce-alkalmazáshoz a [felhasználó vagy csoport társítása vállalati alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) című részben leírtak szerint.
 
-### <a name="important-tips-for-assigning-users-to-salesforce"></a>A Salesforce-hoz való hozzárendelése a felhasználók fontos tippek
+### <a name="important-tips-for-assigning-users-to-salesforce"></a>Fontos Tippek a felhasználók Salesforce való hozzárendeléséhez
 
-* Javasoljuk, hogy egyetlen Azure AD-felhasználó van rendelve a Salesforce-hoz az üzembe helyezési konfiguráció tesztelése. További felhasználók és csoportok később is rendelhető.
+* Azt javasoljuk, hogy egyetlen Azure AD-felhasználó legyen hozzárendelve a Salesforce a létesítési konfiguráció teszteléséhez. Később további felhasználókat és/vagy csoportokat is hozzá lehet rendelni.
 
-* Amikor egy felhasználó hozzárendelése a Salesforce-hoz, ki kell választania egy érvényes felhasználói szerepkörnek. Az "Alapértelmezett hozzáférés" szerepkör nem működik az üzembe helyezés
+* Ha a felhasználó Salesforce rendel hozzá, ki kell választania egy érvényes felhasználói szerepkört. Az "alapértelmezett hozzáférés" szerepkör nem működik a kiépítés során
 
     > [!NOTE]
-    > Ez az alkalmazás profilok importálja, a Salesforce-ból, amelyeket érdemes lehet az ügyfél akkor válassza, ha a felhasználók hozzárendelése az Azure ad-ben a kiépítési folyamat részeként. Vegye figyelembe, hogy a profilokat, amelyek a Salesforce-ból lesz importálva jelennek meg szerepkörök az Azure ad-ben.
+    > Ez az alkalmazás a Salesforce származó profilokat importálja a létesítési folyamat részeként, amelyet az ügyfél kiválaszthat a felhasználók Azure AD-ben való hozzárendeléséhez. Vegye figyelembe, hogy a Salesforce importált profilok szerepkörökként jelennek meg az Azure AD-ben.
 
-## <a name="enable-automated-user-provisioning"></a>Az automatikus felhasználó-kiépítés engedélyezése
+## <a name="enable-automated-user-provisioning"></a>Automatikus felhasználó-kiépítés engedélyezése
 
-Ez a szakasz végigvezeti az Azure AD-csatlakozás a Salesforce a felhasználói fiók üzembe helyezési API és az eszközkiépítési szolgáltatás létrehozása, konfigurálása frissíteni, és tiltsa le a hozzárendelt felhasználói fiókok, a Salesforce-ban az Azure ad-ben a felhasználó és csoport-hozzárendelések alapján.
+Ez a szakasz végigvezeti az Azure AD-nek a Salesforce felhasználói fiók létesítési API-hoz való csatlakoztatásán, valamint a kiépítési szolgáltatás konfigurálásának beállításán az Azure AD-ben a felhasználó-és Salesforce alapján a felhasználói fiókok létrehozásához, frissítéséhez és letiltásához.
 
 > [!Tip]
-> Előfordulhat, hogy meg az SAML-alapú egyszeri bejelentkezés engedélyezve van, a Salesforce-hoz, a biztonsági utasítások megadott [az Azure portal](https://portal.azure.com). Egyszeri bejelentkezés konfigurálható függetlenül az automatikus kiépítést, abban az esetben, ha e két szolgáltatás segítőosztályok egymással.
+> Dönthet úgy is, hogy engedélyezte az SAML-alapú egyszeri bejelentkezést a Salesforce, a Azure Portalban megadott [](https://portal.azure.com)utasításokat követve. Az egyszeri bejelentkezés az automatikus kiépítés függetlenül is konfigurálható, bár ez a két funkció egymáshoz tartozik.
 
-### <a name="configure-automatic-user-account-provisioning"></a>Automatikus felhasználói fiók üzembe helyezésének konfigurálása
+### <a name="configure-automatic-user-account-provisioning"></a>a felhasználói fiókok automatikus üzembe helyezésének konfigurálása
 
-Ez a szakasz célja kidolgozására engedélyezése a felhasználó kiépítése az Active Directory felhasználói fiókokat a Salesforce-hoz.
+Ennek a szakasznak a célja annak ismertetése, hogyan engedélyezhető Active Directory felhasználói fiókok Salesforce való kiépítés.
 
-1. Az a [az Azure portal](https://portal.azure.com), keresse meg a **Azure Active Directory > Vállalati alkalmazások > minden alkalmazás** szakaszban.
+1. A [Azure Portal](https://portal.azure.com)keresse meg a **Azure Active Directory > vállalati alkalmazások > minden alkalmazás** szakaszt.
 
-2. Ha már konfigurálta a Salesforce az egyszeri bejelentkezés, keresse meg a Salesforce, a keresőmező használatával példányát. Ellenkező esetben válassza **Hozzáadás** és keressen rá a **Salesforce** az alkalmazás-katalógusában. A keresési eredmények közül válassza ki a Salesforce-ban, és adja hozzá az alkalmazások listáját.
+2. Ha már konfigurálta a Salesforce az egyszeri bejelentkezéshez, keresse meg a Salesforce-példányát a keresőmező használatával. Ellenkező esetben válassza a **Hozzáadás** lehetőséget, és keresse meg a **Salesforce** az alkalmazás-gyűjteményben. Válassza a Salesforce lehetőséget a keresési eredmények közül, és adja hozzá az alkalmazások listájához.
 
-3. Válassza ki a Salesforce-példányát, majd válassza ki a **kiépítési** fülre.
+3. Válassza ki a Salesforce példányát, majd válassza a kiépítés lapot.
 
-4. Állítsa be a **Kiépítési mód** való **automatikus**.
+4. Állítsa a **kiépítési módot** **automatikus**értékre.
 
     ![kiépítés folyamatban](./media/salesforce-provisioning-tutorial/provisioning.png)
 
-5. Alatt a **rendszergazdai hitelesítő adataival** területén adja meg a következő beállításokat:
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a következő konfigurációs beállításokat:
 
-    a. Az a **rendszergazdai felhasználónév** szövegmezőbe írja be a Salesforce-fiók, amelynek neve a **rendszergazda** a Salesforce.com-on hozzárendelt profil.
+    a. A **rendszergazda felhasználóneve** szövegmezőbe írja be a Salesforce-fiók nevét, amely a Salesforce.com hozzárendelt **rendszergazda** profillal rendelkezik.
 
-    b. Az a **rendszergazdai jelszó** szövegmezőbe írja be a fiókhoz tartozó jelszót.
+    b. A **rendszergazdai jelszó** szövegmezőbe írja be a fiókhoz tartozó jelszót.
 
-6. A Salesforce-ban biztonsági jogkivonatának beszerzéséhez, nyisson meg egy új lapon, és jelentkezzen be ugyanazt a Salesforce-ban rendszergazdai fiókot. Az a lap jobb felső sarkában kattintson a nevére, és kattintson **beállítások**.
+6. A Salesforce biztonsági jogkivonat beszerzéséhez nyisson meg egy új lapot, és jelentkezzen be ugyanahhoz a Salesforce-rendszergazdai fiókba. A lap jobb felső sarkában kattintson a nevére, majd a **Beállítások**elemre.
 
-    ![Felhasználók automatikus kiépítés engedélyezése](./media/salesforce-provisioning-tutorial/sf-my-settings.png "engedélyezése a felhasználók automatikus átadása")
+    ![Automatikus felhasználó] -kiépítés engedélyezése (./media/salesforce-provisioning-tutorial/sf-my-settings.png "Automatikus felhasználó") -kiépítés engedélyezése
 
-7. A bal oldali navigációs panelén kattintson **saját személyes adatok** bontsa ki a kapcsolódó csomópontot, majd **alaphelyzetbe a saját biztonsági jogkivonat**.
+7. A bal oldali navigációs panelen kattintson a **személyes adatok** elemre a kapcsolódó szakasz kibontásához, majd kattintson a **biztonsági jogkivonat**alaphelyzetbe állítása elemre.
   
-    ![Felhasználók automatikus kiépítés engedélyezése](./media/salesforce-provisioning-tutorial/sf-personal-reset.png "engedélyezése a felhasználók automatikus átadása")
+    ![Automatikus felhasználó] -kiépítés engedélyezése (./media/salesforce-provisioning-tutorial/sf-personal-reset.png "Automatikus felhasználó") -kiépítés engedélyezése
 
-8. A a **alaphelyzetbe állítása a biztonsági jogkivonat** kattintson **alaphelyzetbe állítása a biztonsági jogkivonat** gombra.
+8. A **biztonsági jogkivonat** alaphelyzetbe állítása lapon kattintson a **biztonsági jogkivonat** alaphelyzetbe állítása gombra.
 
-    ![Felhasználók automatikus kiépítés engedélyezése](./media/salesforce-provisioning-tutorial/sf-reset-token.png "engedélyezése a felhasználók automatikus átadása")
+    ![Automatikus felhasználó] -kiépítés engedélyezése (./media/salesforce-provisioning-tutorial/sf-reset-token.png "Automatikus felhasználó") -kiépítés engedélyezése
 
-9. Ellenőrizze az e-mailben kapják a rendszergazdai fiókhoz rendelni. Keresse meg a Salesforce.com, az új biztonsági jogkivonatot tartalmazó e-mailt.
+9. Keresse meg a rendszergazdai fiókhoz társított e-mailek mappáját. Keressen egy e-mailt az új biztonsági jogkivonatot tartalmazó Salesforce.com.
 
-10. Jogkivonat másolása nyissa meg az Azure AD-ablakot, és illessze be azt a **titkos jogkivonat** mező.
+10. Másolja ki a tokent, nyissa meg az Azure AD-ablakot, és illessze be a **titkos jogkivonat** mezőbe.
 
-11. A **bérlői URL-cím** kell megadni, ha a Salesforce-példány a Salesforce kormányzati felhő. Ellenkező esetben ez nem kötelező. A bérlői URL-cím a következő formátumban adja meg "https://\<a példány\>. my.salesforce.com," cseréje \<a példány\> a Salesforce-példány nevét.
+11. A **bérlői URL-címet** meg kell adni, ha a Salesforce példánya a Salesforce Government felhőben van. Ellenkező esetben nem kötelező. Adja meg a bérlői URL-címet a "\<https://a-\>instance. my.Salesforce.com" formátumban \<, és cserélje\> le a példányt a Salesforce-példány nevére.
 
-12. Az Azure Portalon kattintson a **kapcsolat tesztelése** annak biztosítása érdekében az Azure AD csatlakozhat a Salesforce alkalmazást.
+12. A Azure Portal kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad csatlakozhasson a Salesforce-alkalmazáshoz.
 
-13. Az a **értesítő e-mailt** mezőbe írjon be egy személyt vagy csoportot, akik kell üzembe helyezési hiba értesítéseket kapni, és jelölje be a jelölőnégyzetet az alábbi e-mail-címét.
+13. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be az alábbi jelölőnégyzetet.
 
-14. Kattintson a **mentéséhez.**  
+14. Kattintson a **Mentés gombra.**  
 
-15. A leképezések szakasz alatt válassza ki a **szinkronizálása az Azure Active Directory-felhasználók a Salesforce-hoz.**
+15. A leképezések szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Salesforce lehetőséget.**
 
-16. Az a **attribútumleképezések** területen tekintse át a Salesforce-bA az Azure ad-ből szinkronizált felhasználói attribútumok. Vegye figyelembe, hogy a kiválasztott attribútumok **megfelelést kiváltó** tulajdonságok segítségével felel meg a felhasználói fiókokat, a Salesforce-ban a frissítési műveleteket. Válassza ki a Mentés gombra a módosítások véglegesítéséhez.
+16. Az **attribútum** -hozzárendelések szakaszban tekintse át az Azure ad-ből az Salesforce-be szinkronizált felhasználói attribútumokat. Vegye figyelembe, hogy az **egyező** tulajdonságokként kiválasztott attribútumok a Salesforce felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. Válassza ki a Mentés gombra a módosítások véglegesítéséhez.
 
-17. Az Azure AD létesítési szolgáltatás a Salesforce-hoz engedélyezéséhez módosítsa a **üzembe helyezési állapotra** való **a** beállítások szakaszában
+17. Az Azure AD-kiépítési szolgáltatás Salesforce való engedélyezéséhez módosítsa a kiépítési **állapotot** a következőre a beállítások szakaszban:
 
-18. Kattintson a **mentéséhez.**
+18. Kattintson a **Mentés gombra.**
 
-Ezzel elindítja a kezdeti szinkronizálás, a felhasználók és/vagy a Salesforce-hoz, a felhasználók és csoportok szakaszban hozzárendelt csoportok. Vegye figyelembe, hogy a kezdeti szinkronizálás hosszabb időt vesz igénybe ezt követő szinkronizálások, amely körülbelül 40 percenként történik, amíg a szolgáltatás fut, mint végrehajtásához. Használhatja a **szinkronizálás részleteivel** szakasz előrehaladásának figyeléséhez, és kövesse a hivatkozásokat kiépítés tevékenységeket tartalmazó naplók, amelyek leírják a Salesforce alkalmazásban a kiépítési szolgáltatás által végrehajtott összes műveletet.
+> [!NOTE]
+> A felhasználók a Salesforce alkalmazásban való kiépítés után a rendszergazdának konfigurálnia kell a nyelvspecifikus beállításait. A nyelvi konfigurációval kapcsolatos további információkért tekintse meg [ezt](https://help.salesforce.com/articleView?id=setting_your_language.htm&type=5) a cikket.
+
+Ezzel elindítja a felhasználók és csoportok szakaszban Salesforce rendelt felhasználók és/vagy csoportok kezdeti szinkronizálását. Vegye figyelembe, hogy a kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg a szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenység naplóira mutató hivatkozásokat, amelyek leírják a kiépítési szolgáltatás által a Salesforce alkalmazásban végrehajtott összes műveletet.
 
 Az Azure AD létesítési naplók olvasása további információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>További források
 
-* [Felhasználói fiók kiépítése a vállalati alkalmazások kezelése](tutorial-list.md)
+* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 * [Egyszeri bejelentkezés konfigurálása](https://docs.microsoft.com/azure/active-directory/active-directory-saas-salesforce-tutorial)

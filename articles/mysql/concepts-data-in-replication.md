@@ -1,44 +1,51 @@
 ---
-title: Replikálják az adatokat MySQL-hez készült Azure Database-be.
-description: Ez a cikk ismerteti az adatok a replikáció az Azure Database MySQL-hez.
+title: Az adatreplikálás Azure Database for MySQLba.
+description: Ez a cikk az Azure Database for MySQL adatreplikálását ismerteti.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/01/2019
-ms.openlocfilehash: f91a6da9a305c6620e4e01ab7aa3c554374cb5d7
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.date: 09/13/2019
+ms.openlocfilehash: 5ef11e86b85a537a809352325d56ac3ff983c2c1
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55691522"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993051"
 ---
-# <a name="replicate-data-into-azure-database-for-mysql"></a>Replikálják az adatokat MySQL-hez készült Azure Database-be
+# <a name="replicate-data-into-azure-database-for-mysql"></a>Az adatreplikálás Azure Database for MySQLba
 
-Adatok a replikáció lehetővé teszi egy külső MySQL-kiszolgáló adatai szinkronizálva, az Azure Database for MySQL-szolgáltatás. A külső kiszolgáló lehet a helyszínen, a virtuális gépek vagy egyéb felhőszolgáltatók által üzemeltetett egy adatbázis-szolgáltatás. Adatok a replikáció a bináris napló (binlog) pozíció-alapú fájlreplikációs natív, a MySQL-hez alapul. Binlog replikációval kapcsolatos további tudnivalókért tekintse meg a [MySQL binlog replikálációs szolgáltatása-áttekintés](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html). 
+Felhőbe irányuló replikálás lehetővé teszi, hogy szinkronizálja az adatokat egy külső MySQL-kiszolgálóról a Azure Database for MySQL szolgáltatásba. A külső kiszolgáló lehet helyszíni, virtuális gépek vagy más felhőalapú szolgáltatók által üzemeltetett adatbázis-szolgáltatás. A beérkező adatokra épülő replikáció a MySQL natív bináris naplójának (binlog) fájlpozíció-alapú replikációján alapul. A BinLog-replikációval kapcsolatos további tudnivalókért tekintse meg a [MySQL BinLog-replikáció áttekintése](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html)című témakört. 
 
-## <a name="when-to-use-data-in-replication"></a>Mikor érdemes használni az adatok a replikáció
-A fő forgatókönyvet kell figyelembe venni, a replikációs adatokat a rendszer:
+## <a name="when-to-use-data-in-replication"></a>Mikor kell használni a felhőbe irányuló replikálás
+A felhőbe irányuló replikálás használatának főbb forgatókönyvei:
 
-- **Hibrid adatok szinkronizálása:** Az adatok a replikáció beállíthatja, hogy adatokat szinkronizálja között a helyszíni kiszolgálók és az Azure Database for MySQL-hez. Hibrid alkalmazások létrehozása a szinkronizálás hasznos. Ezt a módszert akkor viszont, ha rendelkezik meglévő helyi adatbázis-kiszolgáló, de szeretne áthelyezni az adatokat egy régió közelebb a végfelhasználók számára.
-- **Több felhőalapú szinkronizálás:** Összetett felhőalapú megoldásokat, az adatok a replikáció használatával adatszinkronizálás, Azure Database for MySQL és a különböző felhőszolgáltatók, beleértve a virtuális gépeket és ezeket a felhőben lévő üzemeltetett adatbázis-szolgáltatások.
+- **Hibrid adatszinkronizálás:** A felhőbe irányuló replikálás segítségével megtarthatja a helyszíni kiszolgálók és a Azure Database for MySQL között szinkronizált adatokat. Ez a szinkronizálás a hibrid alkalmazások létrehozásához hasznos. Ez a módszer akkor fordul elő, ha egy meglévő helyi adatbázis-kiszolgálóval rendelkezik, de az adott régióban szeretné áthelyezni az információkat a végfelhasználók számára.
+- **Több felhős szinkronizálás:** Összetett felhőalapú megoldások esetén a felhőbe irányuló replikálás segítségével szinkronizálhat adatokat Azure Database for MySQL és különböző felhőalapú szolgáltatók között, beleértve a felhőben üzemeltetett virtuális gépeket és adatbázis-szolgáltatásokat.
+ 
+Áttelepítési forgatókönyvek esetén használja a [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/)(DMS).
 
-## <a name="limitations-and-considerations"></a>Korlátozások és szempontok
+## <a name="limitations-and-considerations"></a>Korlátozások és megfontolások
 
-### <a name="data-not-replicated"></a>Nem replikált adatok
-A [ *mysql rendszeradatbázis* ](https://dev.mysql.com/doc/refman/5.7/en/system-database.html) a fő kiszolgálón nem replikálódnak. Fiókok és engedélyek a master kiszolgálón módosításait a rendszer nem replikálja. Ha a fölérendelt kiszolgálón hozzon létre egy fiókot, és ezt a fiókot hozzá kell férniük a replikakiszolgáló, manuálisan létrehozhat ugyanazzal a fiókkal a replika kiszolgálói oldalon. Milyen táblák tárolják a rendszeradatbázis megismeréséhez tekintse meg a [MySQL manuális](https://dev.mysql.com/doc/refman/5.7/en/system-database.html).
+### <a name="data-not-replicated"></a>Nem replikált adatértékek
+A főkiszolgálón található [*MySQL rendszeradatbázis*](https://dev.mysql.com/doc/refman/5.7/en/system-database.html) nem replikálódik. Nem replikálódnak a fiókok és engedélyek módosításai a főkiszolgálón. Ha létrehoz egy fiókot a főkiszolgálón, és ennek a fióknak el kell érnie a másodpéldány-kiszolgálót, akkor manuálisan hozza létre ugyanazt a fiókot a replika-kiszolgáló oldalán. A rendszeradatbázisban található táblák megismeréséhez tekintse meg a [MySQL-kézikönyvet](https://dev.mysql.com/doc/refman/5.7/en/system-database.html).
 
 ### <a name="requirements"></a>Követelmények
-- A fő verziója kell, hogy a MySQL 5.6-os verziója. 
-- A master és a replika server-verziók azonosnak kell lennie. Például a MySQL 5.6-os verziója is kell lennie, vagy a MySQL 5.7-es verzióra kell lennie.
+- A főkiszolgáló verziójának legalább a MySQL 5,6-es verziójának kell lennie. 
+- A fő-és a replika-kiszolgáló verziószámának azonosnak kell lennie. Például mindkettőnek a MySQL 5,6-es vagy újabb verziójúnak kell lennie a MySQL 5,7-es verziójának.
 - Minden táblának elsődleges kulccsal kell rendelkeznie.
-- Fő kiszolgálóhoz a MySQL InnoDB motor kell használnia.
-- Felhasználó bináris naplózás konfigurálása és az új felhasználók létrehozására a fölérendelt kiszolgáló a szükséges engedélyekkel kell rendelkeznie.
+- A főkiszolgálónak a MySQL InnoDB motort kell használnia.
+- A felhasználónak rendelkeznie kell engedéllyel a bináris naplózás konfigurálásához és új felhasználók létrehozásához a főkiszolgálón.
+- Ha a főkiszolgálón engedélyezve van az SSL, ellenőrizze, hogy a tartományhoz megadott SSL hitelesítésszolgáltatói tanúsítvány szerepel- `mysql.az_replication_change_master` e a tárolt eljárásban. Tekintse át az alábbi [példákat](https://docs.microsoft.com/azure/mysql/howto-data-in-replication#link-master-and-replica-servers-to-start-data-in-replication) és a `master_ssl_ca` paramétert.
+- Győződjön meg arról, hogy a fő kiszolgáló IP-címe hozzá lett adva az Azure Database for MySQL replikakiszolgálójának tűzfalszabályaihoz. A tűzfalszabályokat az [Azure Portal](https://docs.microsoft.com/azure/mysql/howto-manage-firewall-using-portal) vagy az [Azure CLI](https://docs.microsoft.com/azure/mysql/howto-manage-firewall-using-cli) használatával frissítheti.
+- Győződjön meg arról, hogy a főkiszolgálót üzemeltető gép engedélyezi a bejövő és kimenő forgalmat is a 3306-os porton.
+- Győződjön meg arról, hogy a főkiszolgáló **nyilvános IP-címmel**rendelkezik, a DNS nyilvánosan elérhető, vagy rendelkezik teljes tartománynévvel (FQDN).
 
 ### <a name="other"></a>Egyéb
-- Adatok a replikáció csak támogatott az általános célú és memóriahasználatra optimalizált tarifacsomagok van.
-- Globális tranzakciók azonosítók (GTID) használata nem támogatott.
+- Az adatreplikálás csak általános célú és a memória optimalizált díjszabási szintjein támogatott.
+- A globális tranzakciós azonosítók (GTID-EK) nem támogatottak.
 
 ## <a name="next-steps"></a>További lépések
-- Ismerje meg, hogyan [adatok a replikáció beállítása](howto-data-in-replication.md)
-- Ismerje meg [replikák replikálása az Azure-ban olvasása](concepts-read-replicas.md)
+- Ismerje meg, hogyan [állíthatja be az adatreplikációt](howto-data-in-replication.md)
+- Tudnivalók [Az Azure-beli replikálásról olvasási replikákkal](concepts-read-replicas.md)
+- Az [adatáttelepítés minimális állásidővel való áttelepítésének ismertetése a DMS használatával](howto-migrate-online.md)

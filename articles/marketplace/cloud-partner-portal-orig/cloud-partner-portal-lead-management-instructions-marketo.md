@@ -1,25 +1,18 @@
 ---
-title: Marketo | Microsoft Docs
-description: A Marketo érdeklődő felügyeletének konfigurálásához.
+title: A marketo rendszerében lead felügyelet konfigurálása |} Az Azure Marketplace-en
+description: Az Azure marketplace ügyfeleknek érdeklődő Marketo felügyeletének konfigurálásához.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 482d7a9662a79503bb2b197d5a6c63c9fa3c1c96
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: pabutler
+ms.openlocfilehash: d749a92a1837bad053dc586477bfc27fc65299fa
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58113112"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64935215"
 ---
 # <a name="configure-lead-management-in-marketo"></a>A marketo rendszerében lead felügyelet konfigurálása
 

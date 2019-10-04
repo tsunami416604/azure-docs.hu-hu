@@ -4,23 +4,39 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: c1784111cd2fc2c93b67510f310b9e513cf2b86e
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: f771b6b0416c5777c1ebde7e2cf2c4ffc6f375ff
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52978819"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155300"
 ---
-Az Azure Functions [eseményindítók és kötések](../articles/azure-functions/functions-triggers-bindings.md) különböző Azure-szolgáltatásokkal kommunikálni. Amikor ezen szolgáltatások integrálása, előfordulhat, hibák következik be, amely az alapul szolgáló Azure-szolgáltatások az API-k származik. Hibák akkor is előfordulhat, amikor REST vagy a klienskódtáron használatával kommunikálnak a függvénykódban más szolgáltatásaiban próbál. Az adatvesztés elkerülése érdekében, és ellenőrizze, helyes működését a függvények, fontos vagy forrásból hibáinak kezelése.
+Egy Azure Functionsban felmerülő hibák a következő eredetek bármelyike esetén származhatnak:
 
-A következő eseményindítók rendelkezik beépített újrapróbálkozási támogatással:
+- Beépített Azure Functions [Eseményindítók és kötések](..\articles\azure-functions\functions-triggers-bindings.md) használata
+- Az alapul szolgáló Azure-szolgáltatások API-jának meghívása
+- REST-végpontokra irányuló hívások
+- Ügyféloldali kódtárak, csomagok vagy külső API-k hívása
+
+Az adatvesztés és a kihagyott üzenetek elvesztése miatt fontos a folyamatos hibajavítási eljárások követése. Ajánlott hibakezelés a következő műveletekkel:
+
+- [Application Insights engedélyezése](../articles/azure-functions/functions-monitoring.md)
+- [Strukturált hibakezelés használata](#use-structured-error-handling)
+- [Idempotencia tervezése](../articles/azure-functions/functions-idempotent.md)
+- Újrapróbálkozási szabályzatok implementálása (ha szükséges)
+
+### <a name="use-structured-error-handling"></a>Strukturált hibakezelés használata
+
+A rögzítési és közzétételi hibák kritikus fontosságúak az alkalmazás állapotának monitorozásához. A függvények kódjának legfelső szintjén szerepelnie kell egy try/catch blokknak. A Catch blokkban hibákat rögzíthet és tehet közzé.
+
+### <a name="retry-support"></a>Újrapróbálkozás támogatással
+
+A következő eseményindítók beépített újrapróbálkozási támogatással rendelkeznek:
 
 * [Azure Blob Storage](../articles/azure-functions/functions-bindings-storage-blob.md)
-* [Az Azure Queue storage](../articles/azure-functions/functions-bindings-storage-queue.md)
-* [Az Azure Service Bus (üzenetsor vagy témakör)](../articles/azure-functions/functions-bindings-service-bus.md)
+* [Azure üzenetsor-tároló](../articles/azure-functions/functions-bindings-storage-queue.md)
+* [Azure Service Bus (Üzenetsor/témakör)](../articles/azure-functions/functions-bindings-service-bus.md)
 
-Alapértelmezés szerint ezek az eseményindítók megismétlődnek legfeljebb öt alkalommal. Az ötödik újrapróbálkozás után ezek az eseményindítók írjon egy üzenetet egy speciális [ártalmas várólista](../articles/azure-functions/functions-bindings-storage-queue.md#trigger---poison-messages).
+Alapértelmezés szerint ezek az eseményindítók legfeljebb ötször kérik újra a kérelmeket. Az ötödik újrapróbálkozás után mindkét eseményindító üzenetet ír egy [Megmérgező várólistába](..\articles\azure-functions\functions-bindings-storage-queue.md#trigger---poison-messages).
 
-Az egyéb funkciók eseményindítók nincs nincs beépített újrapróbálkozási függvény végrehajtása során hibák esetén. Kell hiba fordulhat elő, a függvény az eseményindítóra vonatkozó információt az adatvesztés elkerülése érdekében, javasoljuk, hogy használja try-catch blokkok a függvénykódban olvasásra a hibaüzeneteket. Ha hiba történik, az adatait, a függvénynek átadott az eseményindító által speciális "ártalmas" üzenetsorokhoz írni. Ez a megközelítés akkor ugyanarra a számítógépre, amelyet a [Blob storage-eseményindító](../articles/azure-functions/functions-bindings-storage-blob.md#trigger---poison-blobs).
-
-Ezzel a módszerrel, amely képes hibák miatt megszakadt, és ismételje meg őket később egy másik függvény használatával üzenetek feldolgozásával tárolt információk segítségével ártalmas üzenetsorból kiváltó események rögzítheti.  
+Az újrapróbálkozási szabályzatokat minden más eseményindítóhoz vagy kötési típushoz manuálisan kell végrehajtania. A manuális megvalósítások tartalmazhatják a hibákra vonatkozó információkat a [Megmérgező üzenetek várólistáján](..\articles\azure-functions\functions-bindings-storage-blob.md#trigger---poison-blobs). Egy Megmérgező várólistába való írással lehetősége van arra, hogy egy későbbi időpontban újrapróbálkozjon a műveletekkel. Ez a módszer ugyanaz, mint amelyet a blob Storage-trigger használ.

@@ -1,45 +1,44 @@
 ---
-title: Regisztráció és bejelentkezés a Google-fiók – Azure Active Directory B2C-beállítása |} A Microsoft Docs
-description: Adja meg a regisztráció és bejelentkezés az alkalmazásokban az Azure Active Directory B2C használatával a Google-fiókkal rendelkező ügyfelek számára.
+title: Regisztráció és bejelentkezés beállítása Google-fiókkal – Azure Active Directory B2C
+description: Az alkalmazásokban a Google-fiókokkal való regisztrációt és bejelentkezést a Azure Active Directory B2C használatával biztosíthatja az ügyfeleknek.
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/25/2019
-ms.author: davidmu
+ms.date: 08/08/2019
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1d4f7460d53e721ca1cba7aba6c6ef9c45111ee5
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 158bb3b1329d2ad2cbd55ecf44f980966e2546e2
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58435440"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065185"
 ---
-# <a name="set-up-sign-up-and-sign-in-with-a-google-account-using-azure-active-directory-b2c"></a>Regisztráció és bejelentkezés a Google-fiókkal az Azure Active Directory B2C beállítása
+# <a name="set-up-sign-up-and-sign-in-with-a-google-account-using-azure-active-directory-b2c"></a>Regisztráció és bejelentkezés beállítása Google-fiókkal Azure Active Directory B2C használatával
 
-## <a name="create-a-google-application"></a>Egy Google-alkalmazás létrehozása
+## <a name="create-a-google-application"></a>Google-alkalmazás létrehozása
 
-Használatához a Google-fiók, mint egy [identitásszolgáltató](active-directory-b2c-reference-oauth-code.md) Azure Active Directory (Azure AD) B2C-vel, az alkalmazás létrehozása a bérlőben, hogy az azt jelölő szüksége. Ha még nem rendelkezik egy Google-fiók beszerezheti a [ https://accounts.google.com/SignUp ](https://accounts.google.com/SignUp).
+Ha a Google-fiókot identitás- [szolgáltatóként](active-directory-b2c-reference-oauth-code.md) szeretné használni Azure Active Directory B2C (Azure ad B2C), létre kell hoznia egy alkalmazást a bérlőben, amely azt képviseli. Ha még nem rendelkezik Google-fiókkal, regisztrálhat a következő címen [https://accounts.google.com/SignUp](https://accounts.google.com/SignUp):.
 
-1. Jelentkezzen be a [Google fejlesztői konzolon](https://console.developers.google.com/) Google-fiókja hitelesítő adataival.
-2. A lap bal felső sarokban, válassza ki a projekt listát, és válassza **új projekt**.
-3. Adjon meg egy **projektnév**, kattintson a **létrehozás**, majd győződjön meg arról, hogy az új projekt használ, és.
-4. Válassza ki **hitelesítő adatok** a bal oldali menüben, és válassza ki a **hitelesítő adatok létrehozása** > **Oauth-Ügyfélazonosító**.
-5. A **alkalmazástípus**válassza **webes alkalmazás**.
-6. Adjon meg egy **neve** adja meg az alkalmazás `https://your-tenant-name.b2clogin.com` a **JavaScript engedélyezett eredetek**, és `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` a **jogosult átirányítási URI-k**. Cserélje le `your-tenant-name` a bérlő nevével. Kisbetűk használhatók, ha akkor is, ha a bérlő Azure AD B2C-ben nagybetűk van definiálva, írja be a bérlő nevét kell.
-7. Kattintson a **Create** (Létrehozás) gombra.
-8. Másolja le az értékeket a **ügyfél-azonosító** és **titkos Ügyfélkód**. Szüksége lesz mindkettő Google konfigurálása identitás-szolgáltatóként a bérlőben. **Titkos Ügyfélkód** egy fontos biztonsági hitelesítő adat.
+1. Jelentkezzen be a [Google fejlesztői konzolra](https://console.developers.google.com/) a Google-fiókja hitelesítő adataival.
+1. A lap bal felső sarkában válassza ki a Project (projekt) listát, majd válassza az **új projekt**lehetőséget.
+1. Adja meg a **projekt nevét**, kattintson a **Létrehozás**elemre, majd győződjön meg arról, hogy az új projektet használja.
+1. Válassza a bal oldali menüben a **hitelesítő adatok** lehetőséget, majd válassza a >  **hitelesítő adatok létrehozása** **OAuth-ügyfél-azonosító**lehetőséget.
+1. Az **alkalmazás típusa**területen válasszaa webalkalmazás lehetőséget.
+1. Adja meg az alkalmazás **nevét** , adja meg `https://your-tenant-name.b2clogin.com` a megfelelő **JavaScript-eredetet**, és `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` a **jóváhagyott átirányítási URI**-k között. Cserélje `your-tenant-name` le a helyére a bérlő nevét. A bérlő nevének megadásakor az összes kisbetűt kell használnia, még akkor is, ha a bérlőt nagybetűvel definiálták Azure AD B2C.
+1. Kattintson a **Create** (Létrehozás) gombra.
+1. Másolja ki az **ügyfél-azonosító** és az **ügyfél titkos kulcsának**értékeit. Mindkettőre szüksége lesz a Google identitás-szolgáltatóként való konfigurálásához a bérlőben. Az **ügyfél titkos kulcsa** fontos biztonsági hitelesítő adat.
 
 ## <a name="configure-a-google-account-as-an-identity-provider"></a>Google-fiók konfigurálása identitás-szolgáltatóként
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) az Azure AD B2C-bérlő globális rendszergazdájaként.
-2. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő kattintva tartalmazó könyvtárba a **címtár és előfizetés-szűrő** a felső menüben, és a könyvtár, amely tartalmazza a bérlő kiválasztása.
-3. Válassza az Azure Portal bal felső sarkában található **Minden szolgáltatás** lehetőséget, majd keresse meg és válassza ki az **Azure AD B2C**-t.
-4. Válassza ki **Identitásszolgáltatók**, majd válassza ki **Hozzáadás**.
-5. Adjon meg egy **neve**. Adja meg például *Google*.
-6. Válassza ki **identitásszolgáltató típusa**válassza **Google**, és kattintson a **OK**.
-7. Válassza ki **az identitásszolgáltató beállítása** , és adja meg az ügyfél-Azonosítót, mint korábban rögzített a **ügyfél-azonosító** , és adja meg a titkos Ügyfélkulcsot, feljegyzett a **titkos Ügyfélkód**a Google-alkalmazás, amelyet korábban hozott létre.
-8. Kattintson a **OK** majd **létrehozás** a Google-konfiguráció mentéséhez.
-
+1. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki a bérlőt tartalmazó könyvtárat.
+1. Válassza az Azure Portal bal felső sarkában található **Minden szolgáltatás** lehetőséget, majd keresse meg és válassza ki az **Azure AD B2C**-t.
+1. Válassza az **identitás-szolgáltatók**, majd a **Google**lehetőséget.
+1. Adjon meg egy **nevet**. Például a *Google*.
+1. Az **ügyfél-azonosító**mezőben adja meg a korábban létrehozott Google-alkalmazás ügyfél-azonosítóját.
+1. Az **ügyfél titka**mezőben adja meg a rögzített ügyfél-titkot.
+1. Kattintson a **Mentés** gombra.

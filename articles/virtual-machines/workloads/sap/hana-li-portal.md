@@ -1,154 +1,162 @@
 ---
-title: Azure HANA nagyméretű példányok szabályozhatja az Azure portal használatával |} A Microsoft Docs
-description: Útmutatás a úgy azonosíthatja, és kommunikálhat a HANA nagyméretű példányok az Azure-portálon keresztül
+title: Azure HANA nagyméretű példányok vezérlése Azure Portal | Microsoft Docs
+description: Leírja, hogyan azonosítható és hogyan kezelhető az Azure HANA nagyméretű példányai a portálon keresztül
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: msjuergent
-manager: patfilot
+manager: bburns
 editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/02/2019
+ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8240308b3e0955b1d4d3ef2e82cad215daf95b00
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 3c14ff9c4f6d2bc2b1a62d1874d01950d09491c0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59009368"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099820"
 ---
 # <a name="azure-hana-large-instances-control-through-azure-portal"></a>Az Azure HANA nagyméretű példányok vezérlése az Azure Portalon keresztül
-Ez a dokumentum ismerteti a módja hogyan [HANA nagyméretű példányok](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) láthatók [az Azure portal](https://portal.azure.com) és milyen tevékenységeket is végezni a nagyméretű HANA-példány egységekkel az Ön számára üzembe helyezett Azure-portálon keresztül. Nagyméretű HANA-példányokhoz látható-e az Azure Portalon egy Azure-erőforrás-szolgáltatón keresztül biztosítunk HANA nagyméretű példányok, amely jelenleg nyilvános előzetes verzióban érhető el
+Ez a dokumentum azt ismerteti, hogyan jelennek meg a [Hana nagyméretű példányai](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) [Azure Portalban](https://portal.azure.com) , és milyen tevékenységek hajthatók végre az Ön számára üzembe helyezett Hana nagyméretű példány-egységekkel Azure Portal használatával. A HANA nagyméretű példányainak láthatósága Azure Portal egy Azure-erőforrás-szolgáltatón keresztül érhető el a HANA nagyméretű példányain, amelyek jelenleg nyilvános előzetes verzióban érhetők el
 
-## <a name="register-hana-large-instance-resource-provider"></a>HANA nagyméretű példányok erőforrás-szolgáltató regisztrálása
-Általában az Azure-előfizetés a nagyméretű HANA-példány telepítéshez használja a HANA nagyméretű példány erőforrás-szolgáltató van regisztrálva. Azonban ha nem látja a nagyméretű HANA-példány egységek telepített, kell regisztrálni az erőforrás-szolgáltató az Azure-előfizetésében. Két módszer van a HANA nagyméretű példány erőforrás-szolgáltató regisztrálása
+## <a name="register-hana-large-instance-resource-provider"></a>HANA nagyméretű példány erőforrás-szolgáltató regisztrálása
+Általában a Hana nagyméretű példányok üzembe helyezéséhez használt Azure-előfizetése regisztrálva van a HANA nagyméretű példány erőforrás-szolgáltatónál. Ha azonban nem jelenik meg a nagyméretű HANA-példányok üzembe helyezése, akkor regisztrálnia kell az erőforrás-szolgáltatót az Azure-előfizetésében. A HANA nagyméretű példány erőforrás-szolgáltatójának regisztrálása kétféleképpen lehetséges
 
-### <a name="register-through-cli-interface"></a>Regisztrálja a parancssori felületen keresztül
-Az Azure-előfizetéssel, az Azure CLI felületen keresztül a nagyméretű HANA-példány központi telepítéshez használt bejelentkezve kell lennie kell. (Helyreállítási) regisztrálása a HANA nagyméretű példány szolgáltató ezzel a paranccsal a következőket teheti:
+### <a name="register-through-cli-interface"></a>Regisztrálás CLI felületen
+Be kell jelentkeznie az Azure-előfizetésbe, amelyet a HANA nagyméretű példány üzembe helyezéséhez használ az Azure CLI felületén keresztül. A HANA nagyméretű példány-szolgáltatót (újra) a következő paranccsal regisztrálhatja:
     
     az provider register --namespace Microsoft.HanaOnAzure
 
-További információkért tekintse meg a cikket [Azure-erőforrás-szolgáltatók és típusaik](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services#azure-cli)
+További információ: [Azure-erőforrás-szolgáltatók és-típusok](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services#azure-cli) .
 
 
-### <a name="register-through-azure-portal"></a>Regisztráljon az Azure Portalon keresztül
-(Helyreállítási) regisztrálása a HANA nagyméretű példány erőforrás-szolgáltató Azure-portálon keresztül is. Az előfizetés az Azure Portalon listában, és kattintson duplán az előfizetésre, a nagyméretű HANA-példány egység üzembe helyezéséhez használt kell. Egyik biztosan megfeleljen az előfizetésében, áttekintés oldalán válassza ki az "Erőforrás-szolgáltatók", ahogy az alábbi, és a keresési ablakba írja be a "HANA". 
+### <a name="register-through-azure-portal"></a>Regisztrálás Azure Portal
+A HANA nagyméretű példány erőforrás-szolgáltatóját (újra) Azure Portalon keresztül regisztrálhatja. Az előfizetést fel kell sorolnia Azure Portalban, majd duplán az előfizetésre kell kattintania, amely a HANA nagyméretű példány-egység (ek) üzembe helyezésére szolgál. Ha Ön az előfizetés Áttekintés oldalán található, válassza az "erőforrás-szolgáltatók" lehetőséget az alább látható módon, és írja be a "HANA" kifejezést a keresési ablakba. 
 
-![HLI RP regisztrálása az Azure Portalon keresztül](./media/hana-li-portal/portal-register-hli-rp.png)
+![HLI RP regisztrálása Azure Portal](./media/hana-li-portal/portal-register-hli-rp.png)
 
-A képernyőképen látható az erőforrás-szolgáltató már regisztrálva van. Abban az esetben, ha az erőforrás-szolgáltató még nem regisztrált, nyomja meg az "újraregisztrálni" vagy "regisztrálása".
+A képernyőképen látható, hogy az erőforrás-szolgáltató már regisztrálva van. Ha az erőforrás-szolgáltató még nincs regisztrálva, nyomja meg az "ismételt regisztráció" vagy a "regisztráció" gombot.
 
-További információkért tekintse meg a cikket [Azure-erőforrás-szolgáltatók és típusaik](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services#azure-powershell)
-
-
-## <a name="display-of-hana-large-instance-units-in-the-azure-portal"></a>Az Azure Portalon nagyméretű HANA-példány egység megjelenítése
-Egy nagyméretű HANA-példány üzembe helyezési kérelem küldése, amikor a rendszer felkéri az Azure-előfizetést, amely kapcsolódik a HANA nagyméretű példányokhoz is. Javasoljuk, ugyanabban az előfizetésben, használja az SAP alkalmazásrétegre nagyméretű HANA-példány egységek együttműködő üzembe helyezéséhez használandó.
-Az első, HANA nagyméretű példányok első telepített, új [Azure-erőforráscsoport](https://docs.microsoft.com/azure/azure-resource-manager/manage-resources-portal) jön létre az Azure-előfizetés a nagyméretű HANA-példány üzembe helyezési kérés elküldött.  Az új erőforráscsoport felsorolja az összes telepítette, az adott előfizetés a nagyméretű HANA-példány egységeket.
-
-Annak érdekében, hogy keresse meg az új Azure-erőforráscsoportot, listázza az erőforráscsoport az előfizetésben az Azure Portal bal oldali navigációs sávon a
-
-![Navigációs ablaktábla az Azure Portalon](./media/hana-li-portal/portal-resource-group.png)
-
-Az erőforráscsoportok listája, első felsorolt, szüksége lehet az előfizetést, amellyel rendelkezik nagyméretű HANA-példányok üzembe helyezett szűrés
-
-![Szűrés erőforráscsoportok az Azure Portalon](./media/hana-li-portal/portal-filtering-subscription.png)
-
-Szűrés a megfelelő előfizetésre, után előfordulhat, hogy még egy hosszú azon erőforráscsoportok listája. Keresse meg a utáni javítás az egyikben **- Txxx** ahol "xxx" három tizedesjegyet, például **-T050**. 
-
-Az erőforráscsoport található, listázza a részleteit. A kapott listán nézhet:
-
-![Az Azure Portalon HLI listája](./media/hana-li-portal/portal-hli-units-list.png)
-
-Felsorolt összes egységének jelölő van az előfizetésben telepített egyetlen nagyméretű HANA-példány egységet. Ebben az esetben célszerű figyelni nyolc különböző nagyméretű HANA-példány egység, amely lettek telepítve az előfizetésében.
-
-Ha telepítette a számos nagyméretű HANA-példány bérlők alatt az Azure-előfizetéshez, akkor megtalálja a több Azure-erőforráscsoportok 
+További információ: [Azure-erőforrás-szolgáltatók és-típusok](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services#azure-powershell) .
 
 
-## <a name="look-at-attributes-of-single-hli-unit"></a>Tekintse meg egyetlen HLI egység attribútumai
-A nagyméretű HANA-példány egységek listájában kattintson az egyetlen, és a részletek a egyetlen nagyméretű HANA-példány egység beolvasása. 
+## <a name="display-of-hana-large-instance-units-in-the-azure-portal"></a>HANA nagyméretű példány-egységek megjelenítése a Azure Portal
+A HANA nagyméretű példányok üzembe helyezési kérelmének elküldésekor meg kell adnia azt az Azure-előfizetést, amelyet a HANA nagyméretű példányaihoz is csatlakoztat. Azt javasoljuk, hogy használja ugyanazt az előfizetést, amelyet a HANA nagyméretű példány-egységeken működő SAP-alkalmazás rétegének telepítéséhez használ.
+Az első HANA nagyméretű példányok üzembe helyezése után a rendszer létrehoz egy új [Azure-erőforráscsoportot](https://docs.microsoft.com/azure/azure-resource-manager/manage-resources-portal) az Azure-előfizetésben, amelyet a Hana nagyméretű példány (ok) üzembe helyezési kérelmében küldött be.  Az új erőforráscsoport felsorolja az adott előfizetésben üzembe helyezett HANA nagyméretű példányok egységeit.
 
-Az Áttekintés képernyő, az azért kapta, ha az egység, amely a következőhöz hasonló:
+Az új Azure-erőforráscsoport megkereséséhez az előfizetésben lévő erőforráscsoportot a Azure Portal bal oldali navigációs paneljén navigálva listázhatja.
 
-![Egy HLI egység áttekintése](./media/hana-li-portal/portal-show-overview.png)
+![Navigációs ablaktábla Azure Portal](./media/hana-li-portal/portal-resource-group.png)
 
-A különböző attribútumokat látható megnézzük, ezek az attribútumok máshogy néznek ki alig, mint az Azure-beli Virtuálisgép-attribútumok. A bal oldali fejléc, látható az erőforráscsoport, az Azure-régióban, előfizetés neve és azonosítója, valamint néhány hozzáadott címkék. Alapértelmezés szerint a a nagyméretű HANA-példány egységek nem hozzárendelt címkével rendelkezik. A fejléc jobb oldalán az egység a neve jelenik meg az üzembe helyezés végeztével hozzárendelt. Az operációs rendszer és az IP-cím jelenik meg. Mint a virtuális gép a HANA nagyméretű példány egység írja be a CPU-szám a szálak és a memória látható is. További részleteket a különböző nagyméretű HANA-példány egység, itt látható:
+A listában szereplő erőforráscsoportok listájában előfordulhat, hogy szűrnie kell azt az előfizetést, amelyet a HANA Large-példányok üzembe helyezéséhez használt.
+
+![Erőforráscsoportok szűrése Azure Portal](./media/hana-li-portal/portal-filtering-subscription.png)
+
+A megfelelő előfizetésre való szűrés után továbbra is lehetnek az erőforráscsoportok hosszú listája. Keressen egy olyan **TXXX** , amelyben az "xxx" három számjegyből áll, például: **T050**. 
+
+Amikor megtalálta az erőforráscsoportot, sorolja fel a részleteit. A kapott lista így néz ki:
+
+![HLI listája Azure Portal](./media/hana-li-portal/portal-hli-units-list.png)
+
+Az összes felsorolt egység egyetlen HANA nagyméretű példány-egységet jelöl, amelyet az előfizetésében telepítettek. Ebben az esetben az előfizetésében üzembe helyezett nyolc különböző HANA nagyméretű példány-egységet tekintjük át.
+
+Ha több HANA nagyméretű példány bérlőt telepített ugyanahhoz az Azure-előfizetéshez, több Azure-erőforráscsoportot is talál 
+
+
+## <a name="look-at-attributes-of-single-hli-unit"></a>Tekintse meg az egyes HLI egységek attribútumait
+A HANA nagyméretű példány-egységek listájában kattintson egyetlen egységre, és Ismerje meg az egyetlen HANA nagyméretű példány-egység részleteit. 
+
+Az áttekintő képernyőn a "továbbiak" gombra kattintva bemutatjuk az egység megjelenítését, amely a következőképpen néz ki:
+
+![HLI-egység áttekintésének megjelenítése](./media/hana-li-portal/portal-show-overview.png)
+
+A különböző attribútumok láthatók, ezek az attribútumok alig különböznek az Azure-beli virtuális gépek attribútumaitól. A bal oldali fejlécben az erőforráscsoport, az Azure-régió, az előfizetés neve és az azonosító, valamint néhány hozzáadott címke látható. Alapértelmezés szerint a HANA nagyméretű példány-egységekhez nincs hozzárendelve címke. A fejléc jobb oldalán megjelenik az egység neve, amelyet a rendszer az üzembe helyezéskor rendel hozzá. Az operációs rendszer és az IP-cím is megjelenik. A virtuális gépekhez hasonlóan a HANA nagyméretű példányának típusa a CPU-szálak és a memória számára is megjelenik. A különböző HANA nagyméretű példány-egységekre vonatkozó további részletek itt láthatók:
 
 - [HLI-hez elérhető termékváltozatok](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-available-skus)
-- [SAP HANA (nagyméretű példányok) tároló-architektúra](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-storage-architecture) 
+- [SAP HANA (nagyméretű példányok) tárolási architektúrája](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-storage-architecture) 
 
-A fejléc jobb oldali oszlopban egy további mező tájékoztatja a HANA nagyméretű példány egységek power állapotát.
+A jobb alsó oldalon található további információk a HANA nagyméretű példány-bélyegző változatát jelentik. Lehetséges értékek a következők:
+
+- 3\. változat
+- 4\. változat
+
+A 4. változat a nagy méretű HANA-példányok legújabb architektúrája, amely az Azure-beli virtuális gépek és a 4. változatban vagy sorokban üzembe helyezett HANA nagyméretű példányok közötti hálózati késés jelentős javításával rendelkezik.
+Egy másik nagyon fontos információ található az Áttekintés jobb alsó sarkában, az Azure közelségi elhelyezési csoportjának nevével, amelyet a rendszer automatikusan hoz létre az egyes üzembe helyezett HANA nagyméretű példányok egységéhez. Az SAP-alkalmazás rétegét futtató Azure-beli virtuális gépek üzembe helyezése során a földrajzi elhelyezési csoportra kell hivatkozni. A HANA nagyméretű példány-egységhez társított [Azure Proximity elhelyezési csoport](https://docs.microsoft.com/azure/virtual-machines/linux/co-location) használatával győződjön meg arról, hogy az Azure-beli virtuális gépek üzembe helyezése a Hana nagyméretű példány-egység közelében történik. A közelségi elhelyezési csoportok segítségével megtalálhatja az SAP-alkalmazás rétegét ugyanabban az Azure-adatközpontban, mint a 4. változatban üzemeltetett HANA nagyméretű példány-egységeket az [Azure Proximity-elhelyezési csoportjai az SAP-alkalmazások optimális hálózati késéséhez ](sap-proximity-placement-scenarios.md).
+
+A fejléc jobb oldali oszlopában egy további mező tájékoztatja a HANA nagyméretű példány egységének energiagazdálkodási állapotáról.
 
 > [!NOTE]
-> Az áramellátási állapot ismerteti-e a hardver egység be vagy ki van-e kapcsolva. Nem biztosít mentése folyamatban van, és futó operációs rendszer adatait. Újraindítja a nagyméretű HANA-példány egység, mert egy kis idő, ahol a egység állapota megváltozik, a tapasztalható **kezdő** állapotát átkerülni **elindítva**. Folyamatban van a szerinti **elindítva** azt jelenti, hogy az operációs rendszer indítása folyamatban van, illetve, hogy az operációs rendszer elindult teljesen. Ennek eredményeképpen az egység egy újraindítás után nem várt azonnal jelentkezzen be az egységet, amint a állapotot vált, amennyiben az **elindítva**.
+> A tápellátási állapot azt ismerteti, hogy a hardvereszköz be van-e kapcsolva vagy ki van-e kapcsolva. Nem ad információt az operációs rendszer működéséről. Egy HANA nagyméretű példány-egység újraindításakor kis idő alatt fog megjelenni, amikor az egység állapota úgy változik, hogy a **kezdési** állapotbalépjen. Az **Indítás** állapota azt jelenti, hogy az operációs rendszer elindul, vagy az operációs rendszer teljesen elindult. Ennek eredményeképpen az egység újraindítása után azonnal be kell jelentkeznie az egységbe, amint az állapot megkezdésre vált.
 > 
 
+Ha a "továbbiak" gombra kattint, további információk jelennek meg. Az egyik további információ a HANA nagyméretű példányok Stamp változatának felülvizsgálatát jeleníti meg, amely az egységet telepítette. Tekintse meg a HANA nagy példányszámú bélyegzők különböző változatait ismertető cikket az [Azure-ban (nagyméretű példányok) SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
 
-## <a name="check-activities-of-a-single-hana-large-instance-unit"></a>Ellenőrizze a tevékenység egyetlen nagyméretű HANA-példány egység 
-Azon túl, hogy a nagyméretű HANA-példány egységek áttekintését, ellenőrizheti az adott egység tevékenységeket. Egy tevékenységnapló nézhet:
+## <a name="check-activities-of-a-single-hana-large-instance-unit"></a>Egyetlen HANA nagyméretű példány-egység tevékenységének keresése 
+A HANA nagyméretű példány-egységek áttekintésének megadását követően megtekintheti az adott egység tevékenységeit. A tevékenység naplója a következőképpen nézhet ki:
 
-![Navigációs ablaktábla az Azure Portalon](./media/hana-li-portal/portal-activity-list.png)
+![Navigációs ablaktábla Azure Portal](./media/hana-li-portal/portal-activity-list.png)
 
-A fő tevékenységeket rögzíteni egyik olyan egység újraindul. Megjelenik a tevékenység, a tevékenység lett elindítva, időbélyegző az előfizetés-azonosító / állapotának szerepel, amelyhez a tevékenység lett elindítva, és az Azure-felhasználó a tevékenység indító. 
+A rögzített fő tevékenységek egyike egy egység újraindítása. A felsorolt adatmennyiség tartalmazza a tevékenység állapotát, a tevékenység elindításának időbélyegét, az előfizetés AZONOSÍTÓját, amelyből a tevékenység aktiválva lett, valamint a tevékenységet indító Azure-felhasználó. 
 
-Egy másik tevékenység első rögzített módosítások az egység az Azure meta adatok. Amellett, hogy az újraindítást kezdeményezett, láthatja tevékenységének **írási HANAInstances**. Ilyen típusú tevékenység nem végez módosítást hajt végre a nagyméretű HANA-példány egység magát, de dokumentálja a módosítások az egység az Azure-ban a metaadatok. Abban az esetben, hogy hozzá, és egy címke törlése (lásd a következő szakaszban).
+Egy másik tevékenység, amely bekerül, a rendszer az Azure meta-adataiban lévő egységre módosítja. Az újraindítás után megtekintheti az **írási HANAInstances**tevékenységeit. Ez a típusú tevékenység nem végez módosításokat a HANA nagyméretű Példányi egységen, de az Azure-ban lévő egység meta-adatokra vonatkozó módosításokat dokumentálja. A felsorolt esetekben hozzáadunk egy címkét, és töröltünk egy címkét (lásd a következő szakaszt).
 
-## <a name="add-and-delete-an-azure-tag-to-a-hana-large-instance-unit"></a>Adja hozzá, és a egy nagyméretű HANA-példány egységhez egy Azure-címke törlése
-Van egy másik lehetőség az, hogy adjon hozzá egy [címke](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) egy nagyméretű HANA-példány egységhez. Első hozzárendelt címkék módja nem különbözik a címkék hozzárendelése a virtuális gépek. A címkék létezik, az Azure metaadatai és HANA nagyméretű példányokhoz, virtuális gépekkel van ugyanazok a korlátozások vonatkoznak, a címkéket a virtuális gépek.
+## <a name="add-and-delete-an-azure-tag-to-a-hana-large-instance-unit"></a>Azure-címke hozzáadása és törlése egy HANA nagyméretű példány-egységhez
+Egy másik lehetőség, hogy hozzáad egy [címkét](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) egy HANA nagyméretű példány-egységhez. A címkék hozzárendelésének módja nem különbözik a címkék virtuális gépekhez való hozzárendelésének módjától. Csakúgy, mint a virtuális gépek esetében, a címkék az Azure-metaadatokban találhatók, és a HANA nagyméretű példányainál ugyanazok a korlátozások érvényesek, mint a virtuális gépek címkéi.
 
-Címkék törlése ugyanúgy működik, mint a virtuális gépeket. Mindkét műveletre használná, alkalmazása és a egy címke törlése megjelenik a különösen nagyméretű HANA-példány egységek a tevékenységnaplóban.
+A címkék törlése ugyanúgy működik, mint a virtuális gépeken. Mindkét tevékenység, a címke alkalmazása és törlése az adott HANA nagyméretű példány-egység tevékenységi naplójában jelenik meg.
 
-## <a name="check-properties-of-a-hana-large-instance-unit"></a>Ellenőrizze a nagyméretű HANA-példány egységek tulajdonságai
-A szakasz **tulajdonságok** , ha a példányok vannak adják át Önnek fontos információkat tartalmaz. Egy szakaszt, ahol Ön minden adatának lekérése, a támogatást igénylő sikerült esetek, vagy amelyre pillanatkép tárolókonfigurációt beállítása során kell. Ez a szakasz ilyen gyűjteménye, a példány, a kapcsolat az Azure és a tárolási háttéralkalmazások példány adatait. A szakasz tetején hasonlóan néz ki:
+## <a name="check-properties-of-a-hana-large-instance-unit"></a>HANA nagyméretű példány-egység tulajdonságainak megtekintése
+A szakasz **tulajdonságai** olyan fontos információkat tartalmaznak, amelyeket a példányok átadásakor kap. Ez egy szakasz, amelyben minden olyan információt megkap, amelyet a támogatási esetekben igényelhet, vagy amelyre szüksége lehet a tárolási pillanatkép-konfiguráció beállításakor. Ez a szakasz a példányok körébe tartozó adatgyűjtemény, a példány és az Azure közötti kapcsolat, valamint a tárolási háttérrendszer. A szakasz teteje a következőképpen néz ki:
 
 
-![az Azure Portalon HLI tulajdonságok felső része](./media/hana-li-portal/portal-properties-top.png)
+![a HLI tulajdonságainak legfelső része Azure Portal](./media/hana-li-portal/portal-properties-top.png)
 
-Az első néhány adatelemek bemutatta az Áttekintés képernyő már. De adatok fontos része a ExpressRoute Circuit ID, amely szerint az első telepített egységeket is gyorsítási értéknek, átadná kapott. Támogatási bizonyos esetekben előfordulhat, hogy első kéri az adatokat. Fontos adatok bejegyzés alján, a képernyőképen látható. A megjelenített adatok az az IP-cím, amely elkülöníti a tárolás NFS tárolási vezetője a **bérlői** a nagyméretű HANA-példány veremben. Az IP-címet is van szükség, ha szerkeszti a [storage konfigurációs fájljának biztonsági mentések pillanatkép](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-backup-restore#set-up-storage-snapshots). 
+Az első néhány adatelem már az Áttekintés képernyőn látható. Az adat fontos része azonban a ExpressRoute Circuit azonosítója, amelyet az első üzembe helyezett egységek átadásával kapott. Bizonyos támogatási esetekben előfordulhat, hogy a rendszer megkérdezi ezeket az adatkéréseket. Fontos adatbejegyzés jelenik meg a képernyőkép alján. A megjelenő adatmennyiség az NFS-tároló feje azon IP-címe, amely elkülöníti a tárolót a **bérlőhöz** a HANA nagyméretű példány-veremben. Erre az IP-címére akkor is szükség van, ha szerkeszti a [konfigurációs fájlt a tárolási Pillanatképek biztonsági másolatai számára](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-backup-restore#set-up-storage-snapshots). 
 
-Görgessen le a tulajdonság panelen, ahogy további adatok, például a nagyméretű HANA-példány egység egy egyedi erőforrás-azonosító, vagy az előfizetés-azonosító, amely hozzá lett rendelve a központi telepítés kap.
+Ahogy lefelé görget a Tulajdonságok ablaktáblán, további, például a HANA nagyméretű példány-egységhez tartozó egyedi erőforrás-AZONOSÍTÓhoz, vagy az üzembe helyezéshez rendelt előfizetés-AZONOSÍTÓhoz juthat.
 
-## <a name="restart-a-hana-large-instance-unit-through-azure-portal"></a>Indítsa újra az Azure Portalon nagyméretű HANA-példány egység
-A Linux operációs rendszer újraindítás kezdeményezése, különböző helyzetekben, ahol az operációs rendszer nem tudta befejezni egy újraindítás sikerült voltak. Annak érdekében, hogy a számítógép újraindítását kényszeríti, nyisson egy szolgáltatáskérést, hogy a nagyméretű HANA-példány egységek power újrainduljon-a Microsoft operations szükséges. A nagyméretű HANA-példány egységek power újraindítás funkcióit mostantól integrálva van az Azure Portalon. Akkor a nagyméretű HANA-példány egység áttekintése részében, láthatja a gomb felett az adatszakasz-újraindítás számára
+## <a name="restart-a-hana-large-instance-unit-through-azure-portal"></a>HANA nagyméretű példány-egység újraindítása Azure Portal
+A Linux operációs rendszer újraindításának kezdeményezése különböző helyzetekben történt, amikor az operációs rendszer nem tudta befejezni az újraindítást. Az újraindítás kényszerítéséhez meg kell nyitnia egy szolgáltatási kérelmet, hogy a Microsoft-műveletek a HANA nagyméretű példányok egységének újraindítását hajtsák végre. A HANA nagyméretű példány-egységek újraindításának funkciói már integrálva vannak a Azure Portalba. Ahogy a HANA nagyméretű példány egységének áttekintés részében szerepel, a gomb az újraindításhoz az adatszakasz tetején jelenik meg.
 
-![Indítsa újra a #1. lépés az Azure Portalon](./media/hana-li-portal/portal-restart-first-step.png)
+![Újraindítási lépés #1 a Azure Portal](./media/hana-li-portal/portal-restart-first-step.png)
 
-Az Újraindítás gombot is lenyomásával, mivel megkérdezi, hogy valóban szeretné indítsa újra a egység. "Yes" gombjának megnyomásával erősítse meg, ahogy a egység újra fog indulni.
+Az Újraindítás gomb megnyomásakor a rendszer megkérdezi, hogy valóban szeretné-e újraindítani az egységet. Az "igen" gomb megnyomásával erősítse meg, hogy az egység újra fog indulni.
 
 > [!NOTE]
-> Az újraindítás folyamatban egy kis idő, ahol a egység állapota megváltozik, a tapasztalható **indítása** állapotát átkerülni **elindítva**. Folyamatban van a szerinti **elindítva** azt jelenti, hogy az operációs rendszer indítása folyamatban van, illetve, hogy az operációs rendszer elindult teljesen. Ennek eredményeképpen az egység egy újraindítás után nem várt azonnal jelentkezzen be az egységet, amint a állapotot vált, amennyiben az **elindítva**.
+> Az újraindítási folyamat során egy kis idő fog megjelenni, ahol az egység állapota úgy változik, hogy megkezdi az indítást az elindított állapotba. Az **Indítás** állapota azt jelenti, hogy az operációs rendszer elindul, vagy az operációs rendszer teljesen elindult. Ennek eredményeképpen az egység újraindítása után azonnal be kell jelentkeznie az egységbe, amint az állapot megkezdésre vált.
 
 > [!IMPORTANT]
-> A nagyméretű HANA-példány egységben memória függ egy újraindítás és a hardver és az operációs rendszer újraindítása is igénybe vehet akár egy óráig
+> A HANA nagyméretű példány egységében lévő memóriától függ, a hardver újraindítása és újraindítása, valamint az operációs rendszer akár egy órát is igénybe vehet.
 
 
-## <a name="open-a-support-request-for-hana-large-instances"></a>Nyisson egy támogatási kérelmet a nagyméretű HANA-példányok
-Ki a nagyméretű HANA-példány egység az Azure portál megjelenítését kifejezetten a HANA nagyméretű példány egység is hozhat létre támogatási kérelmeket. A hivatkozás végrehajtásával lehetősége van **új támogatási kérelem** 
+## <a name="open-a-support-request-for-hana-large-instances"></a>Támogatási kérelem megnyitása a HANA nagyméretű példányaihoz
+A HANA Large instances-egységek Azure Portal megjelenítésének kihagyása esetén a támogatási kérelmeket kifejezetten HANA nagyméretű példány-egységhez is létrehozhatja. Az **új támogatási kérelem** hivatkozásának követése 
 
-![kezdeményezheti a szolgáltatási kérelem 1. lépés # az Azure Portalon](./media/hana-li-portal/portal-initiate-support-request.png)
+![a szolgáltatási kérelem lépésének kezdeményezése #1 Azure Portal](./media/hana-li-portal/portal-initiate-support-request.png)
 
-Az SAP HANA nagyméretű példányok a következő képernyőn szereplő szolgáltatás eléréséhez, előfordulhat, hogy ki kell választania "az összes szolgáltatás" alább látható módon
+A következő képernyőn megjelenő SAP HANA Large Instances szolgáltatás beszerzéséhez előfordulhat, hogy a "minden szolgáltatás" lehetőséget kell választania az alább látható módon.
 
-![Válassza ki az összes szolgáltatás az Azure Portalon](./media/hana-li-portal/portal-create-service-request.png)
+![Válassza ki a Azure Portal összes szolgáltatását](./media/hana-li-portal/portal-create-service-request.png)
 
-A szolgáltatások listájában keresse meg a szolgáltatás **SAP HANA nagyméretű példányok**. Amikor a szolgáltatást, meghatározott probléma típusú látható módon választhatja ki:
+A szolgáltatások listájában megtalálhatja a szolgáltatás **SAP HANA nagyméretű példányát**. A szolgáltatás kiválasztásakor kiválaszthatja az egyes problémák típusait az alábbiak szerint:
 
 
-![Válassza ki a problémát az osztály az Azure Portalon](./media/hana-li-portal/portal-select-problem-class.png)
+![A probléma osztály kiválasztása Azure Portal](./media/hana-li-portal/portal-select-problem-class.png)
 
-Minden, a másik probléma típusú a probléma altípus ki kell választania a probléma további jellemezhető egy kijelölt áron érhető el. Miután kiválasztotta a altípusa, most nevet adhat a tulajdonos. Miután végzett a tanúsítványkiválasztási folyamat, továbbléphet a létrehozásakor a következő lépéssel. Az a **megoldások** szakaszban Ön hegyes dokumentáció HANA nagyméretű példányok körül, amely előfordulhat, hogy adjon mutató a probléma megoldáshoz. Ha a dokumentáció, javasolt a probléma nem talál megoldást, Ugrás a következő lépéssel. A következő lépésben fogja kérni a probléma van-e a virtuális gépek vagy a nagyméretű HANA-példány egységekkel. Ez az információ segít a támogatási kérelmet a megfelelő szakemberei irányítani. 
+A különböző problémák típusai közül választhatja ki a probléma altípusait, hogy kiválassza a probléma további jellemzését. Miután kiválasztotta az altípust, megadhatja a tárgy nevet. Ha elkészült a kiválasztási folyamattal, átléphet a létrehozás következő lépésére. A **megoldások** szakaszban a HANA nagyméretű példányain található dokumentációra mutat, amely a probléma megoldására mutató mutatót jelez. Ha nem talál megoldást a problémára a javasolt dokumentációban, folytassa a következő lépéssel. A következő lépésben a rendszer megkérdezi, hogy a probléma a virtuális gépekkel vagy a HANA Large instances-egységekkel működik-e. Ez az információ segít a támogatási kérelemnek a megfelelő szakértőknek történő irányításában. 
 
-![Az Azure Portalon támogatási eset részletei](./media/hana-li-portal/portal-support-request-details.png)
+![A Azure Portal támogatási esetének részletei](./media/hana-li-portal/portal-support-request-details.png)
 
-Kérdéseire, és további részleteket a megadott, nyissa meg a következő lépés annak érdekében, hogy tekintse át a támogatási kérés és a Küldés azt.
+A kérdések megválaszolásával és további részletek megadásával a következő lépéssel ellenőrizheti a támogatási kérést és a küldést.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Azure-beli SAP HANA (nagyméretű példányok) figyelése](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/troubleshooting-monitoring)
+- [SAP HANA (nagyméretű példányok) figyelése az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/troubleshooting-monitoring)
 - [HANA-oldali monitorozás és hibaelhárítás](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-monitor-troubleshoot)
 

@@ -1,25 +1,18 @@
 ---
-title: Első lépések |} A Microsoft Docs
+title: Első lépések |} Az Azure Marketplace-en
 description: Ismerkedés a Cloud Partner portálra.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 00558b9effed39e160aef93c22431863daf6aa0d
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.author: pabutler
+ms.openlocfilehash: 9d2c64479f65995c0eca756b86bd0a96a752867d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809710"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64935734"
 ---
 # <a name="getting-started-with-the-cloud-partner-portal"></a>A Cloud Partner portálra – első lépések
 
@@ -51,7 +44,7 @@ Egy új ajánlatot, vagy térjen vissza az ajánlat szerkesztése után a Folyta
 ![Az ajánlat lap](./media/cloud-partner-portal-getting-started-with-the-cloud-partner-portal/offer-page.png)
 
 Az ajánlat lapján a következőket teheti:
-- Tartalom hozzáadása vagy az ajánlat állapotának ellenőrzése a két legfelső szintű módok között átállításával: **szerkesztő** és **állapot**.
+- Tartalom hozzáadása, vagy az ajánlat állapotának átállításával két legfelső szintű módok között: **Editor** és **állapot**.
 - Használja a **Műveletsáv** explicit módon kezelheti az ajánlat módosítások mentése és a bemeneti elvetése.
 - Keresse meg a szükséges közötti **űrlapok** ajánlatok, az ajánlat beállításainak módosítása.
 

@@ -1,0 +1,85 @@
+- name: Az IoT Plug and Play dokumentációja
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Mi az IoT Plug and Play?
+      href: overview-iot-plug-and-play.md
+- name: Gyors útmutatók
+  expanded: true
+  items:
+    - name: Eszközképesség-modell használata eszköz létrehozásához
+      href: quickstart-create-pnp-device.md
+    - name: Eszköz csatlakoztatása az IoT Hubhoz
+      href: quickstart-connect-pnp-device.md
+    - name: Eszköz csatlakoztatása az IoT Centralhoz
+      href: ../iot-central/quick-create-pnp-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - name: Csatlakozás a megoldásban található eszközhöz
+      href: quickstart-connect-pnp-device-solution.md
+- name: Oktatóanyagok
+  items:
+    - name: Eszköz létrehozása a VS Code használatával
+      href: tutorial-pnp-visual-studio-code.md
+    - name: Minősítésre kész eszköz létrehozása
+      href: tutorial-build-device-certification.md
+    - name: Eszköz minősítése
+      href: tutorial-certification-test.md
+- name: Alapelvek
+  items:
+    - name: Szószedet
+      href: iot-plug-and-play-glossary.md
+    - name: Fejlesztői útmutató
+      href: concepts-developer-guide.md
+    - name: Gyakori felületek
+      href: concepts-common-interfaces.md
+    - name: Modellfelderítés
+      href: concepts-model-discovery.md
+    - name: Korlátok és kvóták
+      href: concepts-limits-quotas.md
+- name: Útmutatók
+  items:
+    - name: Fejlesztés a Visual Studio és a Visual Studio Code használatával
+      href: howto-develop-with-vs-vscode.md
+    - name: Az IoT-kezelő telepítése
+      href: howto-install-iot-explorer.md
+    - name: Az Azure CLI-bővítmény telepítése
+      href: howto-install-pnp-cli.md
+    - name: Regisztráció az IoT-portálon
+      href: howto-onboard-portal.md
+    - name: Modellek kezelése
+      href: howto-manage-models.md
+    - name: 'Csatlakozás eszközhöz, illetve kommunikáció az eszközzel'
+      href: howto-develop-solution.md
+- name: Referencia
+  items:
+    - name: REST
+      href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodel/createorupdatemodel'
+    - name: REST biztonsági jogkivonat létrehozása
+      href: howto-generate-sas-token.md
+- name: Kapcsolódó témakörök
+  items:
+    - name: Megoldások
+      items:
+        - name: IoT-központ
+          href: /azure/iot-central
+        - name: IoT-megoldásgyorsítók
+          href: /azure/iot-accelerators
+    - name: Platformszolgáltatások
+      items:
+        - name: IoT Hub
+          href: /azure/iot-hub
+        - name: IoT Plug and Play
+          href: /azure/iot-pnp
+        - name: IoT Hub Device Provisioning Service
+          href: /azure/iot-dps
+        - name: IoT szolgáltatásoldali SDK-k
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: Maps
+          href: /azure/azure-maps
+        - name: Time Series Insights
+          href: /azure/time-series-insights
+    - name: IoT Edge
+      items:
+        - name: Azure IoT Edge
+          href: /azure/iot-edge
+        - name: IoT eszközoldali SDK-k
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'

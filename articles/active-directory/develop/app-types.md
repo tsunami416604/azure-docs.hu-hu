@@ -3,8 +3,8 @@ title: Az 1.0-s verziójú alkalmazástípusok |} Az Azure
 description: Ismerteti az alkalmazások és az Azure Active Directory v2.0-végpont által támogatott forgatókönyveket.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef180fb444e32e8b055837fd418e21162ff58339
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: efed9e35aed729c9efa39b0772b681d8c53ba7b8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191469"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65540662"
 ---
 # <a name="application-types-in-v10"></a>Alkalmazástípusok az 1.0-s verzió
 
@@ -34,11 +34,11 @@ A következő ábra szemlélteti a forgatókönyvek és az alkalmazástípusok, 
 
 Az Azure AD által támogatott öt elsődleges alkalmazás-forgatókönyvek a következők:
 
-- **[Egyoldalas alkalmazás (SPA)](single-page-application.md)**: A felhasználónak kell jelentkezzen be egy egyoldalas alkalmazás Azure AD által védett.
-- **[Webes alkalmazás webböngészőben](web-app.md)**: A felhasználónak kell egy Azure AD által védett webes alkalmazásba való bejelentkezés.
-- **[Webes API a natív alkalmazás](native-app.md)**: Egy natív alkalmazás egy telefonon, táblagépen vagy számítógépen futó kell hitelesíteni a felhasználót, hogy a webes API-k az Azure AD által védett erőforrások beolvasása.
-- **[Webes API-webalkalmazás](web-api.md)**: Egy webalkalmazás kell kapnia az erőforrások az Azure AD által biztonságossá tett webes API.
-- **[Webes API-hoz démon vagy a server application](service-to-service.md)**: A démon alkalmazások vagy kiszolgálói alkalmazás webes felhasználói felület nélkül kell erőforrások lekérése az Azure AD által védett webes API-hoz.
+- **[Egyoldalas alkalmazás (SPA)](single-page-application.md)** : A felhasználónak kell jelentkezzen be egy egyoldalas alkalmazás Azure AD által védett.
+- **[Webes alkalmazás webböngészőben](web-app.md)** : A felhasználónak kell egy Azure AD által védett webes alkalmazásba való bejelentkezés.
+- **[Webes API a natív alkalmazás](native-app.md)** : Egy natív alkalmazás egy telefonon, táblagépen vagy számítógépen futó kell hitelesíteni a felhasználót, hogy a webes API-k az Azure AD által védett erőforrások beolvasása.
+- **[Webes API-webalkalmazás](web-api.md)** : Egy webalkalmazás kell kapnia az erőforrások az Azure AD által biztonságossá tett webes API.
+- **[Webes API-hoz démon vagy a server application](service-to-service.md)** : A démon alkalmazások vagy kiszolgálói alkalmazás webes felhasználói felület nélkül kell erőforrások lekérése az Azure AD által védett webes API-hoz.
 
 Kövesse a hivatkozásokat tudjon meg többet a különböző típusú alkalmazás, és ismerje meg a magas szintű forgatókönyveket, a kód használatának megkezdése előtt. Emellett tudhat meg kell tudni az egy adott alkalmazást, amely az 1.0-s verziójú végpont vagy a v2.0-végpont írásakor különbségekről.
 
@@ -49,7 +49,7 @@ Az alkalmazások és a leírt forgatókönyvek ide használatával a különböz
 
 Emellett, ha az alkalmazásnak egy adott adatrészletet, vagy a szegmens egy végpontok közötti forgatókönyv a legtöbb esetben a funkció is hozzáadhatók egymástól függetlenül. Például ha egy natív alkalmazást, amely meghívja a webes API-k, egyszerűen hozzáadhat egy webalkalmazást, a webes API meghívásához.
 
-## <a name="app-registration"></a>Appok regisztrálása
+## <a name="app-registration"></a>Alkalmazásregisztráció
 
 ### <a name="registering-an-app-that-uses-the-azure-ad-v10-endpoint"></a>Az Azure AD-1.0-s verziójú végpont használó alkalmazás regisztrálása
 
@@ -63,7 +63,7 @@ Minden olyan alkalmazás, amely az Azure AD-hitelesítés outsources regisztrál
   * **Kulcs** -együtt küldött egy Alkalmazásazonosítót hitelesítéséhez az Azure AD a webes API-hívás a kulcsot.
 * Az Azure AD meg kell győződnie arról az alkalmazás rendelkezik a szükséges engedélyekkel hozzáférhet a címtár adataihoz, más alkalmazásokat a szervezeten belül, és így tovább.
 
-Részletekért megtudhatja, hogyan [alkalmazás regisztrálása az Azure AD-1.0-s verziójú végpont](quickstart-v1-add-azure-ad-app.md).
+Részletekért megtudhatja, hogyan [alkalmazás regisztrálása](quickstart-register-app.md).
 
 ## <a name="single-tenant-and-multi-tenant-apps"></a>Egybérlős és több-bérlős alkalmazások
 

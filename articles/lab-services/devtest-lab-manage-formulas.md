@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: d8f2ae64e2f8e694de5a7cf5aa9049e63998dca0
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57452657"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60562531"
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>Az Azure DevTest Labs-képletek kezelése
 
@@ -44,7 +44,7 @@ A következő lépések végigvezetik az egyéni rendszerkép, Piactéri rendsze
 
 3. Tesztkörnyezetek listájában jelölje ki a kívánt tesztkörnyezetben.  
 
-4. A labor oldalán válassza **képletek (újrafelhasználható bázisok)**.
+4. A labor oldalán válassza **képletek (újrafelhasználható bázisok)** .
    
     ![Képlet menü](./media/devtest-lab-create-formulas/lab-settings-formulas.png)
 
@@ -102,7 +102,7 @@ A képlet módosításához kövesse az alábbi lépéseket:
 1. Jelentkezzen be az [Azure Portalra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 2. Válassza ki **minden szolgáltatás**, majd válassza ki **DevTest Labs** a listából.
 3. Tesztkörnyezetek listájában jelölje ki a kívánt tesztkörnyezetben.  
-4. A labor oldalán válassza **képletek (újrafelhasználható bázisok)**.
+4. A labor oldalán válassza **képletek (újrafelhasználható bázisok)** .
    
     ![Képlet menü](./media/devtest-lab-manage-formulas/lab-settings-formulas.png)
 5. Az a **labor képletek** lapon, válassza ki a módosítani kívánt képlet.

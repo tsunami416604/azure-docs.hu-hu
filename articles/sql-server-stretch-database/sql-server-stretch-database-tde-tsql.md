@@ -3,21 +3,22 @@ title: A Stretch Database TSQL - Azure transzparens adattitkosítás engedélyez
 description: Az SQL Server Stretch Database az Azure TSQL transzparens adattitkosításának (TDE) engedélyezése
 services: sql-server-stretch-database
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.assetid: 27753d91-9ca2-4d47-b34d-b5e2c2f029bb
 ms.service: sql-server-stretch-database
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/23/2017
-ms.author: douglasl
-ms.openlocfilehash: 634e1b097f2ca16a8c52da02445b3f5f2af7ff3d
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+author: blazem-msft
+ms.author: blazem
+ms.reviewer: jroth
+manager: jroth
+ms.openlocfilehash: 9718db18ea675fa744262f0736aff3c07732e1d1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744785"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66002871"
 ---
 # <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure-transact-sql"></a>Transzparens adattitkosítás (TDE) engedélyezze a Stretch Database az Azure-ban (Transact-SQL)
 > [!div class="op_single_selector"]

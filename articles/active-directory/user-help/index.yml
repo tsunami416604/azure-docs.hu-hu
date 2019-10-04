@@ -1,0 +1,99 @@
+### YamlMime:Landing
+title: Felhasználói súgódokumentáció
+summary: Alkalmazottként, informatikai dolgozóként vagy végfelhasználóként állítsa be a munkahelyi vagy iskolai fiók hitelesítését, állítsa vissza a jelszavát, állítsa be és párosítsa az eszközöket, telepítse a Microsoft Authenticator alkalmazást, majd használja a különböző portálokat.
+metadata:
+  title: Felhasználói súgó a hitelesítéshez, az alkalmazásokhoz és az eszközökhöz
+  description: Ismerje meg, hogy alkalmazottként vagy végfelhasználóként hogyan állíthatja be és használhatja a hitelesítést, a Microsoft Authenticator alkalmazást és a Saját alkalmazások portált.
+  services: active-directory
+  ms.service: active-directory
+  ms.subservice: user-help
+  ms.topic: landing-page
+  ms.collection: M365-identity-device-management
+  author: eross-msft
+  ms.author: lizross
+  ms.date: 08/26/2019
+  ms.openlocfilehash: 168c8ad8acd1734aa06be111f42f4c0b2da92d3e
+  ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 08/28/2019
+  ms.locfileid: "70072660"
+landingContent:
+- title: A Microsoft Authenticator alkalmazás beállítása és használata
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi a Microsoft Authenticator alkalmazás?
+      url: user-help-auth-app-overview.md
+  - linkListType: download
+    links:
+    - text: Az alkalmazás letöltése és telepítése
+      url: user-help-auth-app-download-install.md
+  - linkListType: how-to-guide
+    links:
+    - text: A fiók adatainak biztonsági mentése és helyreállítása
+      url: user-help-auth-app-backup-recovery.md
+    - text: Bejelentkezés az alkalmazással
+      url: user-help-auth-app-sign-in.md
+- title: Kétlépéses ellenőrzés módjának kiválasztása
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi a kétfaktoros hitelesítés?
+      url: user-help-two-step-verification-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: A hitelesítési módok beállítása
+      url: multi-factor-authentication-end-user-first-time.md
+    - text: Beállítások kezelése
+      url: multi-factor-authentication-end-user-manage-settings.md
+    - text: Segítségkérés
+      url: multi-factor-authentication-end-user-troubleshoot.md
+- title: Információjának frissítése a Saját alkalmazások portálon
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az a Saját alkalmazások portál?
+      url: my-apps-portal-end-user-access.md
+  - linkListType: how-to-guide
+    links:
+    - text: Az adatok frissítése
+      url: my-apps-portal-end-user-update-profile.md
+    - text: Segítségkérés
+      url: my-apps-portal-end-user-troubleshoot.md
+- title: A biztonsági adatok beállítása és kezelése (előzetes verzió)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mire szolgál a biztonsági adatok (előzetes verzió)?
+      url: user-help-security-info-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: A biztonsági adatok módszereinek beállítása
+      url: security-info-add-update-methods-overview.md
+    - text: Adatok hozzáadása bejelentkezéskor
+      url: security-info-setup-signin.md
+- title: Az adatok kezelése a Saját profil portálon (előzetes verzió)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mire szolgál a Saját profil (előzetes verzió) portál?
+      url: myprofile-portal-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Saját szervezetek kezelése
+      url: myprofile-portal-organizations-page.md
+    - text: Csatlakoztatott eszközök kezelése
+      url: myprofile-portal-devices-page.md
+- title: Saját jelszó visszaállítása
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mire szolgál az új jelszó kérése?
+      url: user-help-password-reset-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Regisztrálás új jelszó kérésére
+      url: active-directory-passwords-reset-register.md
+    - text: Új jelszó kérése
+      url: user-help-reset-password.md

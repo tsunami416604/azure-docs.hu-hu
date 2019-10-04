@@ -1,10 +1,10 @@
 ---
-title: Az SQL virtuális gépeken (Resource Manager) felügyeleti feladatok automatizálása |} A Microsoft Docs
-description: Ez a cikk ismerteti, hogyan kezelheti az adott SQL Server felügyeleti feladatokat automatizálja az SQL Server agent bővítmény. Ezek közé tartozik az automatikus biztonsági mentés, automatikus javítás és az Azure Key Vault-integráció.
+title: Felügyeleti feladatok automatizálása Azure-beli virtuális gépeken a SQL Server IaaS-ügynök bővítmény használatával | Microsoft Docs
+description: Ez a cikk ismerteti, hogyan kezelheti a SQL Server IaaS-ügynök bővítményt, amely automatizálja az adott SQL Server felügyeleti feladatokat. Ezek közé tartozik az automatikus biztonsági mentés, az automatikus javítás és a Azure Key Vault integráció.
 services: virtual-machines-windows
 documentationcenter: ''
 author: MashaMSFT
-manager: craigg
+manager: jroth
 editor: ''
 tags: azure-resource-manager
 ms.assetid: effe4e2f-35b5-490a-b5ef-b06746083da4
@@ -13,115 +13,125 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 07/12/2018
+ms.date: 08/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 71878d5d033f0005d2c8c36d9f59799e125a19dd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 3240bb689447c16de8c62e9e8118b0b0df2b1ea3
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58762701"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259428"
 ---
-# <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-agent-extension-resource-manager"></a>Azure virtuális gépeken az SQL Server Agent bővítmény (Resource Manager) a felügyeleti feladatok automatizálása
+# <a name="automate-management-tasks-on-azure-virtual-machines-by-using-the-sql-server-iaas-agent-extension"></a>Felügyeleti feladatok automatizálása Azure-beli virtuális gépeken a SQL Server IaaS-ügynök bővítmény használatával
 > [!div class="op_single_selector"]
 > * [Resource Manager](virtual-machines-windows-sql-server-agent-extension.md)
 > * [Klasszikus](../sqlclassic/virtual-machines-windows-classic-sql-server-agent-extension.md)
 
-Az SQL Server IaaS-ügynök bővítmény (SqlIaasExtension) Azure-beli virtuális gépeken fut, és az adminisztrációs feladatok automatizálását végzi. Ez a cikk a bővítményt, valamint a vonatkozó telepítési, állapot és eltávolítási által támogatott szolgáltatások áttekintést nyújt.
+Az SQL Server IaaS-ügynök bővítmény (SqlIaasExtension) Azure-beli virtuális gépeken fut, és az adminisztrációs feladatok automatizálását végzi. Ez a cikk áttekintést nyújt a bővítmény által támogatott szolgáltatásokról. Ez a cikk a bővítmény telepítésére, állapotára és eltávolítására vonatkozó utasításokat is tartalmaz.
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
-Ez a cikk a klasszikus verzió megtekintéséhez lásd: [SQL Server Agent bővítmény SQL Server virtuális gépek klasszikus](../sqlclassic/virtual-machines-windows-classic-sql-server-agent-extension.md).
+A cikk klasszikus verziójának megtekintéséhez lásd: [SQL Server IaaS-ügynök bővítmény SQL Server virtuális gépekhez (klasszikus)](../sqlclassic/virtual-machines-windows-classic-sql-server-agent-extension.md).
+
 
 ## <a name="supported-services"></a>Támogatott szolgáltatások
-Az SQL Server IaaS-ügynök bővítményt a következő felügyeleti feladatokat támogatja:
+A SQL Server IaaS-ügynök bővítmény a következő felügyeleti feladatokat támogatja:
 
-| Felügyeleti szolgáltatás | Leírás |
+| Felügyeleti funkció | Leírás |
 | --- | --- |
-| **SQL automatikus biztonsági mentés** |Automatizálja az ütemezés a biztonsági mentések az összes adatbázis vagy az alapértelmezett példány vagy egy [megfelelően telepített](virtual-machines-windows-sql-server-iaas-faq.md#administration) megnevezett példány az SQL Server virtuális gépen. További információkért lásd: [automatikus biztonsági mentés az SQL Server Azure Virtual Machines szolgáltatásban (Resource Manager)](virtual-machines-windows-sql-automated-backup.md). |
-| **SQL automatikus javítás** |Konfigurálja a karbantartási időszak során, ami fontos Windows-frissítések a virtuális gép akkor kerül sor, a számítási feladatok csúcsidőben frissítések elkerülése érdekében. További információkért lásd: [automatikus javítása az SQL Server Azure Virtual Machines szolgáltatásban (Resource Manager)](virtual-machines-windows-sql-automated-patching.md). |
-| **Azure Key Vault-integráció** |Automatikus telepítés és az SQL Server virtuális gép konfigurálása az Azure Key Vault lehetővé teszi. További információkért lásd: [konfigurálása az Azure Key Vault-integráció az SQL Server Azure virtuális gépeken (Resource Manager)](virtual-machines-windows-ps-sql-keyvault.md). |
+| **Automatikus biztonsági mentés SQL Server** |Automatizálja a biztonsági mentések ütemezését az összes adatbázishoz az alapértelmezett példányhoz, vagy a virtuális gépen a SQL Server [megfelelően telepített](virtual-machines-windows-sql-server-iaas-faq.md#administration) példányát. További információ: [SQL Server automatikus biztonsági mentése az Azure Virtual Machines szolgáltatásban (Resource Manager)](virtual-machines-windows-sql-automated-backup.md). |
+| **Automatikus javítás SQL Server** |Beállítja a karbantartási időszakot, amely alatt a virtuális gép fontos Windows-frissítései elhelyezhetők, így elkerülhetők a frissítések a számítási feladatok maximális ideje alatt. További információ: [SQL Server automatikus javítása az Azure Virtual Machines szolgáltatásban (Resource Manager)](virtual-machines-windows-sql-automated-patching.md). |
+| **Azure Key Vault integráció** |Lehetővé teszi Azure Key Vault automatikus telepítését és konfigurálását a SQL Server VM. További információ: [Azure Key Vault integrációjának konfigurálása az Azure-beli SQL Serverhoz Virtual Machines (Resource Manager)](virtual-machines-windows-ps-sql-keyvault.md). |
 
-Ha telepítve van és fut, az SQL Server IaaS-ügynök bővítmény elérhetővé teszi ezeket a felügyeleti funkciókat a virtuális gép az Azure Portalon és az SQL Server-Piactérről származó rendszerképek az Azure Powershellen keresztül, és Azure-on keresztül az SQL Server panel A bővítmény manuális telepítése a PowerShell. 
+A SQL Server IaaS-ügynök bővítmény telepítése és futtatása után elérhetővé válik az adminisztrációs funkciók:
+
+* A Azure Portal virtuális gép SQL Server paneljén, valamint az Azure Marketplace-en SQL Server rendszerképeken Azure PowerShellon keresztül.
+* Azure PowerShell a bővítmény manuális telepítéséhez. 
 
 ## <a name="prerequisites"></a>Előfeltételek
-Az SQL Server IaaS-ügynök bővítmény használata a virtuális gépre vonatkozó követelmények:
+Az alábbi követelmények vonatkoznak a SQL Server IaaS-ügynök bővítmény használatára a virtuális gépen:
 
 **Operációs rendszer**:
 
+* Windows Server 2008 R2
 * Windows Server 2012
 * Windows Server 2012 R2
 * Windows Server 2016
+* A Windows Server 2019 
 
-**SQL Server-verziók**:
+**SQL Server verziója**:
 
+* SQL Server 2008 
+* SQL Server 2008 R2
 * SQL Server 2012
 * SQL Server 2014
 * SQL Server 2016
+* SQL Server 2017
 
 **Azure PowerShell**:
 
-* [Töltse le és konfigurálja a legújabb Azure PowerShell-parancsok](/powershell/azure/overview)
+* [A legújabb Azure PowerShell parancsok letöltése és konfigurálása](/powershell/azure/overview)
 
 [!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 
-> [!IMPORTANT]
-> Jelenleg a [SQL Server IaaS-ügynök bővítmény](virtual-machines-windows-sql-server-agent-extension.md) nem támogatott az SQL Server FCI az Azure-ban. Azt javasoljuk, hogy a virtuális gépeket, amelyek egy FCI részt távolítsa el a bővítményt. A bővítmény által támogatott szolgáltatások nem érhetők el az SQL virtuális gépeken az ügynök eltávolítása után.
 
-## <a name="installation"></a>Telepítés
-Az SQL Server IaaS-ügynök bővítmény automatikusan települ, amikor üzembe helyezi az SQL Server virtuálisgép-katalógus rendszerképek egyikét. Az SQL IaaS-bővítményt az SQL Server virtuális gépen egyetlen példányra kezelhetőségi kínál. Ha egy alapértelmezett példány, majd a bővítményt az alapértelmezett példányt fog dolgozni, és azt nem fogja támogatni a többi példány kezelésével. Ha nem alapértelmezett példány, de csak egy megnevezett példányt, akkor az elnevezett példány fogja kezelni. Ha nem alapértelmezett példány, és több megnevezett példány van, a bővítmény meghiúsul telepítése. 
+##  <a name="installation"></a>Telepítés
+A SQL Server IaaS bővítmény akkor települ, amikor regisztrálja az SQL Server VM az [SQL VM erőforrás-szolgáltatóval](virtual-machines-windows-sql-register-with-resource-provider.md). Ha szükséges, a SQL Server IaaS-ügynököt manuálisan is telepítheti az alábbi PowerShell-parancs használatával: 
 
-
-
-Ha szeretne egy ilyen SQL Server virtuális gépet manuálisan telepítse újra a bővítményt, használja a következő PowerShell-parancsot:
-
-```powershell
-Set-AzVMSqlServerExtension -ResourceGroupName "resourcegroupname" -VMName "vmname" -Name "SqlIaasExtension" -Version "2.0" -Location "East US 2"
-```
-
-> [!WARNING]
-> Ha a bővítmény nem telepítette, a bővítmény telepítése újraindítja az SQL Server szolgáltatást. Azonban az SQL IaaS-bővítmény frissítése nem indítja újra az SQL Server szolgáltatást. 
+  ```powershell-interactive
+    Set-AzVMExtension -ResourceGroupName "<ResourceGroupName>" `
+    -Location "<VMLocation>" -VMName "<VMName>" `
+    -Name "SqlIaasExtension" -Publisher "Microsoft.SqlServer.Management" `
+    -ExtensionType "SqlIaaSAgent" -TypeHandlerVersion "2.0";  
+  ```
 
 > [!NOTE]
-> Bár az SQL Server IaaS-ügynök bővítmény telepítése egyéni SQL Server-rendszerképeket, funkciója jelenleg csak [a licenctípus módosítása](virtual-machines-windows-sql-ahb.md). Az SQL IaaS-bővítmény egyéb funkcióit csak fog működni [SQL Server rendszerű virtuális gép katalógus rendszerképek](virtual-machines-windows-sql-server-iaas-overview.md#get-started-with-sql-vms) (használatalapú fizetés vagy bring-your-saját licenc).
+> A bővítmény telepítése újraindítja a SQL Server szolgáltatást. 
 
-### <a name="use-a-single-named-instance"></a>Egyetlen megnevezett példány
-Az SQL IaaS-bővítményt működik egy megnevezett példányt egy SQL Server-lemezképet, ha az alapértelmezett példányt eltávolítják megfelelően, és telepíti az IaaS-bővítményt.
 
-Az SQL Server megnevezett példányt használ, tegye a következőket:
-   1. SQL Server virtuális gép üzembe helyezése a piactérről. 
-   1. Távolítsa el az IaaS-bővítményt belül a [az Azure portal](https://portal.azure.com).
-   1. Távolítsa el az SQL Server teljesen belül az SQL Server rendszerű virtuális gép.
-   1. Az SQL Server nevesített példánnyal belül az SQL Server rendszerű virtuális gép telepítése. 
-   1. Az Azure Portalon az IaaS-bővítményének telepítése.  
+### <a name="install-on-a-vm-with-a-single-named-sql-server-instance"></a>Telepítés egyetlen elnevezett SQL Server-példánnyal rendelkező virtuális gépen
+A SQL Server IaaS bővítmény a SQL Server megnevezett példányával fog működni, ha az alapértelmezett példány el lett távolítva, és a IaaS-bővítmény újratelepítése megtörténik.
 
-## <a name="status"></a>status
-Egy győződjön meg arról, hogy telepítve van-e a bővítmény módja az ügynök állapotának megtekintése az Azure Portalon. Válassza ki **minden beállítás** a virtuális gép ablakban, majd kattintson a **bővítmények**. Megtekintheti a **SqlIaasExtension** felsorolt bővítmény.
+SQL Server megnevezett példányának használatához hajtsa végre az alábbi lépéseket:
+   1. SQL Server VM üzembe helyezése az Azure piactéren. 
+   1. Távolítsa el a IaaS bővítményt a [Azure Portalból](https://portal.azure.com).
+   1. Távolítsa el SQL Server teljesen a SQL Server VMon belül.
+   1. Telepítse a SQL Servert egy megnevezett példánnyal a SQL Server VMon belül. 
+   1. Telepítse a IaaS bővítményt a Azure Portal.  
 
-![Az Azure Portalon az SQL Server IaaS-ügynök bővítmény](./media/virtual-machines-windows-sql-server-agent-extension/azure-rm-sql-server-iaas-agent-portal.png)
 
-Is használhatja a **Get-AzVMSqlServerExtension** Azure PowerShell-parancsmagot.
+## <a name="get-the-status-of-the-sql-server-iaas-extension"></a>A SQL Server IaaS-bővítmény állapotának beolvasása
+A bővítmény telepítésének egyik módja az, hogy megtekintse az ügynök állapotát a Azure Portalban. Válassza a **minden beállítás** lehetőséget a virtuális gép ablakban, majd válassza a **bővítmények**lehetőséget. Ekkor meg kell jelennie a felsorolt **SqlIaasExtension** -bővítménynek.
 
-    Get-AzVMSqlServerExtension -VMName "vmname" -ResourceGroupName "resourcegroupname"
+![A SQL Server IaaS-ügynök bővítmény állapota a Azure Portal](./media/virtual-machines-windows-sql-server-agent-extension/azure-rm-sql-server-iaas-agent-portal.png)
 
-Az előző parancs megerősíti, hogy az ügynök telepítve van, és az általános állapotadatokat szolgáltat. Konkrét információk automatikus biztonsági mentés és a javítás az alábbi parancsokkal is beszerezheti.
+A **Get-AzVMSqlServerExtension** Azure PowerShell parancsmagot is használhatja:
 
+   ```powershell-interactive
+   Get-AzVMSqlServerExtension -VMName "vmname" -ResourceGroupName "resourcegroupname"
+   ```
+
+Az előző parancs megerősíti, hogy az ügynök telepítve van, és általános állapotinformációkat biztosít. Az automatikus biztonsági mentéssel és javítással kapcsolatos információkat az alábbi parancsokkal érheti el:
+
+   ```powershell-interactive
     $sqlext = Get-AzVMSqlServerExtension -VMName "vmname" -ResourceGroupName "resourcegroupname"
     $sqlext.AutoPatchingSettings
     $sqlext.AutoBackupSettings
+   ```
 
 ## <a name="removal"></a>Eltávolítás
-Az Azure Portalon, akkor is távolítsa el a bővítményt a három pontra kattintva a **bővítmények** a virtuális gép tulajdonságainak ablakában. Ezután kattintson a **Törlés** gombra.
+A Azure Portal távolítsa el a bővítményt a virtuális gép tulajdonságainak **bővítmények** ablakában található három pontot kiválasztva. Ezután válassza a **Törlés** elemet.
 
-![Távolítsa el az SQL Server IaaS-ügynök bővítményt az Azure Portalon](./media/virtual-machines-windows-sql-server-agent-extension/azure-rm-sql-server-iaas-agent-uninstall.png)
+![A SQL Server IaaS-ügynök bővítményének eltávolítása Azure Portal](./media/virtual-machines-windows-sql-server-agent-extension/azure-rm-sql-server-iaas-agent-uninstall.png)
 
-Is használhatja a **Remove-AzVMSqlServerExtension** PowerShell-parancsmagot.
+A **Remove-AzVMSqlServerExtension PowerShell-** parancsmagot is használhatja:
 
+   ```powershell-interactive
     Remove-AzVMSqlServerExtension -ResourceGroupName "resourcegroupname" -VMName "vmname" -Name "SqlIaasExtension"
+   ```
 
 ## <a name="next-steps"></a>További lépések
-A bővítmény által támogatott szolgáltatások használatának megkezdéséhez. További részletekért lásd: a cikk a [támogatott szolgáltatások](#supported-services) című szakaszát.
+Kezdje el használni a bővítmény által támogatott szolgáltatások egyikét. További információkért tekintse meg a jelen cikk [támogatott szolgáltatások](#supported-services) című részében hivatkozott cikkeket.
 
-Azure virtuális gépeken futó SQL Server rendszerrel kapcsolatos további információkért lásd: [SQL Server on Azure Virtual Machines – áttekintés](virtual-machines-windows-sql-server-iaas-overview.md).
-
+További információ az Azure Virtual Machines SQL Server futtatásáról: [mi SQL Server az azure Virtual Machines?](virtual-machines-windows-sql-server-iaas-overview.md)

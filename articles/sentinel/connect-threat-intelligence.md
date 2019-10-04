@@ -1,59 +1,86 @@
 ---
-title: Csatlakozás Azure-on Előzetesben Sentinel-fenyegetésfelderítési adatok |} A Microsoft Docs
-description: Ismerje meg a fenyegetésfelderítési adatok kapcsolódás Azure Sentinel.
+title: A fenyegetési intelligencia-adatok összekapcsolásának az Azure Sentinel szolgáltatással | Microsoft Docs
+description: Ismerje meg, hogyan kapcsolódhat a veszélyforrások felderítéséhez az Azure Sentinel szolgáltatáshoz.
 documentationcenter: na
 author: rkarlin
-manager: barbkess
+manager: rkarlin
 editor: ''
-ms.assetid: 56412543-5664-44c1-b026-2dbaf78a9a50
 ms.service: security-center
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
+ms.date: 09/24/2019
 ms.author: rkarlin
-ms.openlocfilehash: a33b00e4e553824f1f719be2c8518487241f0a11
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c1c374977460de04d2339ba8c93019cf9152dbe3
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59786184"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262720"
 ---
-# <a name="connect-data-from-threat-intelligence-providers"></a>Csatlakozás a data-fenyegetésfelderítési szolgáltatóktól vásárolja 
+# <a name="connect-data-from-threat-intelligence-providers"></a>Adatok összekötése a veszélyforrások felderítését biztosító szolgáltatóktól
 
 > [!IMPORTANT]
-> Az Azure Sentinel jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> A Threat Intelligence Platforms adatösszekötő az Azure Sentinel szolgáltatásban jelenleg nyilvános előzetes verzióban érhető el.
+> Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Után az adatok eseménysorozatot Azure Sentinel, gazdagabbá teheti azt a fenyegetésfelderítés hírcsatorna a a szervezetben használt. 
+Az Azure Sentinel lehetővé teszi a szervezet által használt veszélyforrás-mutatók importálását, ami növelheti a biztonsági elemzők számára az ismert fenyegetések észlelésének és rangsorolásának képességét. Az Azure Sentinel számos funkciója elérhetővé válik vagy bővül:
 
-Ahhoz, hogy közötti ellenőrizze a riasztások és a szabályok a valós fenyegetések felderítése, például ha egy adott IP-cím, riasztást kap a threat intelligence szolgáltató integrációs fogja tudni, hogy tudja, az IP-cím nemrégiben megtalálható-e a rosszindulatú is lehet , Az azure Sentinel segítségével az integráció [fenyegetésfelderítési szolgáltatóktól vásárolja fenyegetés](https://aka.ms/graphsecuritytips). 
+- Az **elemzések** olyan ütemezett sablonok készletét foglalják magukban, amelyek lehetővé teszik, hogy riasztásokat és incidenseket hozzon létre, amelyek a fenyegetési mutatók naplófájljainak egyezésén alapulnak.
 
-Fenyegetésfelderítési szolgáltatóktól vásárolja származó naplók is streamelése az Azure-Sentinel egyetlen kattintással. Ez a kapcsolat lehetővé teszi a különböző típusú observables például IP-cím, tartomány, URL-CÍMÉT tartalmazó mutatók építhet és fájlkivonat és létrehozását az egyéni szabályok az Azure-Sentinel riasztást küld.  
-> [!NOTE]
-> Akkor is bemeneteként testre szabott threat mutatók Azure Sentinel-riasztási szabályok, irányítópultok és vadászat forgatókönyvekhez használható integrálásával a [Microsoft Graph biztonsági tiIndicator](https://aka.ms/graphsecuritytiindicators) entitás vagy egy [Microsoft Graph biztonsági Threat Intelligence Platform integrált](https://aka.ms/graphsecuritytips).
+- A **munkafüzetek** összesített információkat biztosítanak az Azure sentinelbe importált veszélyforrási mutatókról, valamint az elemzési szabályok alapján létrehozott összes riasztásról, amelyek megfelelnek a fenyegetési mutatóknak.
+
+- A **vadászati** lekérdezések lehetővé teszik a biztonsági nyomozók számára, hogy a gyakori vadászati forgatókönyvek kontextusában használják a veszélyforrások mutatóit.
+
+- A **jegyzetfüzetek** a veszélyforrások kivizsgálásakor és a rosszindulatú viselkedések kivizsgálása során is használhatják a fenyegetéseket.
+
+A veszélyforrások indikátorait továbbíthatja az Azure Sentinelnek a következő szakaszban felsorolt integrált veszélyforrások elleni hírszerzési platform (TIP) termékeinek egyikével, illetve a [Microsoft Graph Security TIINDICATORS API](https://aka.ms/graphsecuritytiindicators)-val való közvetlen integráció használatával.
+
+## <a name="integrated-threat-intelligence-platform-products"></a>Integrált veszélyforrások elleni hírszerzési platform termékei
+
+- [MICSKÓ nyílt forráskódú veszélyforrások elleni intelligencia platform](https://www.misp-project.org/)
+    
+    A MICSKÓ-példányokkal rendelkező ügyfelek számára a veszélyforrások Microsoft Graph biztonsági API-ra történő áttelepítéséhez a következő témakörben talál további információt: [micskó Microsoft Graph biztonsági parancsfájl](https://github.com/microsoftgraph/security-api-solutions/tree/master/Samples/MISP).
+
+- [Palo Alto hálózatok MineMeld](https://www.paloaltonetworks.com/products/secure-the-network/subscriptions/minemeld)
+    
+    Útmutatásért lásd: [IOCs küldése a Microsoft Graph Security API-nak a MineMeld használatával](https://live.paloaltonetworks.com/t5/MineMeld-Articles/Sending-IOCs-to-the-Microsoft-Graph-Security-API-using-MineMeld/ta-p/258540).
+
+- [ThreatConnect platform](https://threatconnect.com/solution/)
+
 
 ## <a name="prerequisites"></a>Előfeltételek  
 
-- Globális rendszergazdai vagy biztonsági rendszergazdai jogosultsággal rendelkező felhasználó 
+- A globális rendszergazda vagy a biztonsági rendszergazda Azure AD szerepköre, hogy engedélyeket adjon a tipp termékének vagy egyéni alkalmazásának, amely közvetlen integrációt használ a Microsoft Graph Security tiIndicators API-val.
 
-- Threat intelligence alkalmazás integrálva van a Microsoft Intelligent Security Graph 
+- Olvasási és írási engedélyek az Azure Sentinel-munkaterülethez a veszélyforrások mutatóinak tárolásához.
 
-## <a name="connect-to-threat-intelligence"></a>Csatlakozhat a fenyegetések felderítése 
+## <a name="connect-azure-sentinel-to-your-threat-intelligence-provider"></a>Az Azure Sentinel összekötése a veszélyforrások elleni hírszerző szolgáltatóval
 
-1. Ha már használja egy threat intelligence szolgáltató, mindenképpen keresse meg a TIP-alkalmazást, és engedélyezi a mutatók küldeni a Microsoftnak, és adja meg a szolgáltatás az Azure-Sentinel.  
+1. Azure Active Directory [alkalmazás regisztrálása](/graph/auth-v2-service#1-register-your-app) az alkalmazás-azonosító, az alkalmazás titkos kódjának és a Azure Active Directory bérlői azonosító beszerzéséhez. Ezekre az értékekre akkor van szükség, amikor az integrált tipp termékét vagy alkalmazását a Microsoft Graph Security tiIndicators API-val való közvetlen integrációt használó alkalmazáshoz konfigurálja.
 
-2. Az Azure-Sentinel, válassza **adatösszekötők** és kattintson a **Fenyegetésészlelési intelligencia** csempére.
+2. [API-engedélyek konfigurálása](/graph/auth-v2-service#2-configure-permissions-for-microsoft-graph) a regisztrált alkalmazáshoz: Adja hozzá a Microsoft Graph alkalmazás engedély **ThreatIndicators. ReadWrite. OwnedBy** a regisztrált alkalmazáshoz.
 
-3. Kattintson a **Connect** (Csatlakozás) gombra. 
+3. Kérje meg a Azure Active Directory bérlői rendszergazdát, hogy rendszergazdai jóváhagyást adjon a szervezete regisztrált alkalmazásának. A Azure Portal: **Azure Active Directory** > **Alkalmazásregisztrációk** **az alkalmazásnevének>megtekintéséreszolgáló API-engedélyek rendszergazdai jóváhagyást biztosítanak a következőhöz:\<**  >  >  >  ***bérlő neve*.> \<**
 
-4. A megfelelő sémát használ a Log Analytics fenyegetésészlelési intelligenciával foglalkozó hírcsatornákra, keresse meg **ThreatIntelligenceIndicator**. 
+4. Konfigurálja a tipp termékét vagy alkalmazását, amely közvetlen integrációt használ Microsoft Graph Security tiIndicators API-val a mutatók Azure Sentinelbe való küldéséhez az alábbiak megadásával:
+    
+    a. A regisztrált alkalmazás AZONOSÍTÓjának, titkos kódjának és bérlői AZONOSÍTÓjának értékei.
+    
+    b. A megcélzott termék esetében az Azure Sentinelt kell megadnia.
+    
+    c. A művelethez válassza a riasztást.
 
- 
+5. A Azure Portal navigáljon az **Azure Sentinel** > -**adatösszekötők** elemre, majd válassza ki a **Threat Intelligence Platforms (előzetes verzió)** összekötőt.
+
+6. Válassza az **összekötő megnyitása lapot**, majd a **Csatlakozás**lehetőséget.
+
+7. Az Azure sentinelbe importált veszélyforrások mutatóinak megtekintéséhez navigáljon az **Azure Sentinel-logs** > **SecurityInsights**, majd bontsa ki a **ThreatIntelligenceIndicator**csomópontot.
+
 ## <a name="next-steps"></a>További lépések
 
-Ebben a dokumentumban megismerkedett a Fenyegetésfelderítés szolgáltató csatlakozni az Azure-Sentinel. Azure-Sentinel kapcsolatos további információkért tekintse meg a következő cikkeket.
+Ebből a dokumentumból megtudhatta, hogyan csatlakoztatható a veszélyforrások elleni intelligencia szolgáltatója az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket.
 
-- Ismerkedés az Azure Sentinel-, Microsoft Azure-előfizetéssel kell. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes próbaverzióra](https://azure.microsoft.com/free/).
-- Ismerje meg, hogyan [előkészíteni az adatok Azure Sentinel-](quickstart-onboard.md), és [betekintést nyerhet az adatok és a potenciális fenyegetések](quickstart-get-visibility.md).
+- Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
+- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats.md).

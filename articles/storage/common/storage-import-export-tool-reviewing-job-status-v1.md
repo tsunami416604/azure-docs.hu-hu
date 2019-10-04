@@ -9,11 +9,11 @@ ms.date: 01/26/2017
 ms.author: muralikk
 ms.subservice: common
 ms.openlocfilehash: 306e3ccf19ba8db2de01e4b20a52707215a4a040
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470365"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60320706"
 ---
 # <a name="reviewing-azure-importexport-job-status-with-copy-log-files"></a>Az Azure Import/Export-feladatok állapotának áttekintése a másolási naplófájlok segítségével
 A Microsoft Azure Import/Export szolgáltatás egy importálás vagy exportálás feladathoz hozzárendelt meghajtókra dolgozza fel, amikor ír másolási naplófájlokat a storage-fiók segítségével, vagy, amelyről importálása vagy exportálása blobok. A naplófájl minden egyes importált vagy exportált fájllal kapcsolatos részletes állapotát tartalmazza. Egyes másolási naplófájlok URL-CÍMÉT adja vissza; egy befejezett feladat állapotának lekérdezése során Lásd: [Get Job](https://docs.microsoft.com/rest/api/storageimportexport/Jobs/Get) további információt.  

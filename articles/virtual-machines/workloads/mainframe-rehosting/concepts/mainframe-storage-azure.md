@@ -6,12 +6,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 4fea787e7fe20d60de91761811e1b69bebf3a010
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: dc78f87d9b47745119da91b8ed1f8f6c8572968c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58896349"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65190441"
 ---
 # <a name="move-mainframe-storage-to-azure"></a>A nagyszámítógépes tár áthelyezése az Azure-bA
 
@@ -51,7 +51,7 @@ Az Azure storage szolgáltatás érhető el, [Azure Disks](/azure/virtual-machin
 
 <table>
 <thead>
-    <tr><th>Typo</th><th>Leírás</th><th>A következő esetekben használja:</th></tr>
+    <tr><th>Típus</th><th>Leírás</th><th>A következő esetekben használja:</th></tr>
 </thead>
 <tbody>
 <tr><td>Azure Files
@@ -94,7 +94,7 @@ A tárolás egy adott rendszerhez típusát attól függ, hogy a rendszer, bele�
 
 SSD-k biztosítanak a legmagasabb szintű tárolási teljesítmény az Azure-ban. A következő lehetőségek állnak rendelkezésre (írásakor a jelen dokumentum):
 
-| Typo         | Méret           | IO                  |
+| Típus         | Méret           | IO                  |
 |--------------|----------------|-----------------------|
 | Ultra SSD    | 4 GB-os 64 TB-ig  | 1200 való 160,000 IOPS |
 | Prémium SSD  | 32 GB-os 32 TB-ig | 12-15 000 iops-érték     |
@@ -113,10 +113,10 @@ A BLOB storage tárolási legnagyobb mennyisége biztosít az Azure-ban. Azure s
 ### <a name="ibm-resources"></a>IBM-erőforrások
 
 - [Az IBM Z párhuzamos Sysplex](https://www.ibm.com/it-infrastructure/z/technologies/parallel-sysplex-resources)
-- [IBM CICS és a kapcsoló konstrukció: Alapvető túl](http://www.redbooks.ibm.com/redbooks/pdfs/sg248420.pdf)
+- [IBM CICS és a kapcsoló konstrukció: Alapvető túl](https://www.redbooks.ibm.com/redbooks/pdfs/sg248420.pdf)
 - [Egy Db2-pureScale szolgáltatás telepítése a szükséges felhasználók létrehozása](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0055374.html?pos=2)
 - [Db2icrt - példány parancs létrehozása](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.admin.cmd.doc/doc/r0002057.html)
-- [Db2-pureScale fürtözött adatbázis-megoldás](http://www.ibmbigdatahub.com/blog/db2-purescale-clustered-database-solution-part-1)
+- [Db2-pureScale fürtözött adatbázis-megoldás](https://www.ibmbigdatahub.com/blog/db2-purescale-clustered-database-solution-part-1)
 - [IBM Data Studio](https://www.ibm.com/developerworks/downloads/im/data/index.html/)
 
 ### <a name="azure-government"></a>Azure Government

@@ -10,12 +10,12 @@ ms.subservice: bing-web-search
 ms.topic: quickstart
 ms.date: 03/12/2019
 ms.author: aahi
-ms.openlocfilehash: 273922c8cf48c24ff3b1b55fa44b36b69e061057
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d6758fc5434406e42acf65ff3b712227b5cec0f8
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57863899"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991624"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-python"></a>Gyors útmutató: A Bing Web Search SDK Pythonhoz készült használata
 
@@ -93,8 +93,8 @@ Ha a válasz tartalmaz weblapokat, képeket, cikkeket vagy videókat, a rendszer
     # Replace with your subscription key.
     subscription_key = "YOUR_SUBSCRIPTION_KEY"
 
-    # Instantiate the client.
-    client = WebSearchAPI(CognitiveServicesCredentials(subscription_key))
+    # Instantiate the client and replace with your endpoint.
+    client = WebSearchAPI(CognitiveServicesCredentials(subscription_key), base_url = "YOUR_ENDPOINT")
 
     # Make a request. Replace Yosemite if you'd like.
     web_data = client.web.search(query="Yosemite")
@@ -164,7 +164,9 @@ Ha a válasz tartalmaz weblapokat, képeket, cikkeket vagy videókat, a rendszer
         print("Didn't find any videos...")
     ```
 
-1. Cserélje le a `subscription_key` értékét egy érvényes előfizetői azonosítóra.
+1. Cserélje le a `SUBSCRIPTION_KEY` értékét egy érvényes előfizetői azonosítóra.
+
+1. Cserélje le `YOUR_ENDPOINT` a portálon a végpont URL-címét.
 
 1. Futtassa a programot. Például: `python your_program.py`.
 

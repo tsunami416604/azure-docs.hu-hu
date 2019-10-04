@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 03/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 674ca630aa41d930ad7d7cfebccbe9b44351b68c
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58431298"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179564"
 ---
 Itt az ügyfelek vagy az eszközhöz csatlakoztatott gazdagépek támogatott operációs rendszerek listája. Az operációs rendszerek a belső fejlesztésű tesztelt.
 

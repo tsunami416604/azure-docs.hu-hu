@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: bwren
-ms.openlocfilehash: a0233774deaffe25a8e59f79511a0031b1535ba4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b756b9484273c098dbeb6685430f70626b3af787
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58010999"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65789237"
 ---
 # <a name="sql-to-azure-monitor-log-query-cheat-sheet"></a>SQL-t az Azure Monitor log-lekérdezés – Adatlap 
 
-Az alábbi táblázat segít a felhasználóknak, akik ismerik az SQL-napló lekérdezéseket írni az Azure monitorban Kusto lekérdezési nyelv tudnivalók. Rendelkezik egy pillantást a T-SQL parancsot egy olyan gyakori helyzetet és az Azure Monitor log-lekérdezést az azzal egyenértékű megoldására.
+Az alábbi táblázat segít a felhasználóknak, akik ismerik az SQL-napló lekérdezéseket írni az Azure monitorban Kusto lekérdezési nyelv tudnivalók. Rendelkezik egy pillantást a T-SQL parancs olyan gyakori helyzetet és az Azure Monitor log-lekérdezést az azzal egyenértékű megoldására.
 
 ## <a name="sql-to-azure-monitor"></a>SQL-t az Azure Monitor
 
@@ -50,4 +50,4 @@ Csatlakozás                                    |`SELECT * FROM dependencies JOI
 
 ## <a name="next-steps"></a>További lépések
 
-- A lecke meg a [log lekérdezések írásának módját az Azure monitorban](get-started-queries.md).
+- Leckék áthaladnia [log lekérdezések írásának módját az Azure monitorban](get-started-queries.md).

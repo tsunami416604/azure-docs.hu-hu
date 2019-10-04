@@ -5,53 +5,63 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: include
-ms.date: 02/25/2019
+ms.date: 07/09/2019
 ms.author: jaredro
 ms.custom: include file
-ms.openlocfilehash: 41f62d095c1a0cbdd0a888326b263a3294066637
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 43d1942b1413569d77c6c17fee9fff14dc83c924
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60118601"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68362533"
 ---
-### <a name="what-is-expressroute-direct"></a>Mi az az ExpressRoute közvetlen?
+### <a name="what-is-expressroute-direct"></a>Mi a ExpressRoute Direct?
 
-Az ExpressRoute Direct közvetlen csatlakozást tesz lehetővé az ügyfelek számára a Microsoft globális hálózatához a világszerte stratégiai pontokon elhelyezett társviszony-létesítési helyszíneken át. Az ExpressRoute közvetlen biztosít kettős 100 GB/s sebességű kapcsolatot, amely támogatja az aktív/aktív kapcsolat ipari méretekben. 
+Az ExpressRoute Direct közvetlen csatlakozást tesz lehetővé az ügyfelek számára a Microsoft globális hálózatához a világszerte stratégiai pontokon elhelyezett társviszony-létesítési helyszíneken át. A ExpressRoute Direct kettős 100 vagy 10 GB/s kapcsolatot biztosít, amely támogatja az aktív/aktív kapcsolatot a skálán. 
 
-### <a name="how-do-customers-connect-to-expressroute-direct"></a>Hogyan kapcsolatot az ExpressRoute közvetlen ügyfelek? 
+### <a name="how-do-customers-connect-to-expressroute-direct"></a>Hogyan csatlakozhatnak az ügyfelek a ExpressRoute Directhez? 
 
-Ügyfelek kell működnie, valamint helyi szolgáltatóknál és szolgáltatók beolvasni a kapcsolat ExpressRoute-útválasztóhoz az ExpressRoute közvetlen előnyeinek kihasználása érdekében.
+Az ügyfeleknek a helyi szolgáltatók és a közös telephelyek használatával kell dolgozniuk a ExpressRoute-útválasztókkal való kapcsolattal, hogy kihasználhassa a ExpressRoute Direct szolgáltatás előnyeit.
 
-### <a name="what-locations-currently-support-expressroute-direct"></a>Hol jelenleg támogatja az ExpressRoute közvetlen? 
+### <a name="what-locations-currently-support-expressroute-direct"></a>Milyen helyszínek támogatják a ExpressRoute Direct szolgáltatást? 
 
-A rendelkezésre álló portok dinamikus lesz, és a kapacitás megtekintéséhez PowerShell elérhető lesz. Helyek tartalmazzák és *rendelkezésre állása alapján változhatnak*:
+A rendelkezésre álló portok dinamikusak lesznek, és a PowerShell elérhetővé válik a kapacitás megtekintéséhez. A helyek közé tartoznak a következők, és a *rendelkezésre állás alapján változhatnak*:
 
 * Amszterdam
-* Canberra
+* Amszterdam2
+* Auckland 
 * Chicago
-* Washington, D.C.
-* Dallas 
+* Dallas
+* Dublin
 * Hongkong (KKT)
-* Los Angeles
+* London
+* Melbourne
 * New York City
-* Párizs
-* A San Antonio
+* Perth
+* San Antonio
+* Seattle
+* Szöul
 * Szilícium-völgy
-* Szingapúr 
+* Szingapúr2 
+* Sydney
+* Taipei
+* Tokió
+* Toronto
+* Washington DC
+* Washington DC2
 
-### <a name="what-is-the-sla-for-expressroute-direct"></a>Mi az a szolgáltatói szerződés tartalmazza az ExpressRoute közvetlen?
+### <a name="what-is-the-sla-for-expressroute-direct"></a>Mi a ExpressRoute Direct SLA-ja?
 
-Az ExpressRoute közvetlen felhasznál azonos [ExpressRoute nagyvállalati szintű](https://azure.microsoft.com/support/legal/sla/expressroute/v1_3/). 
+A közvetlen ExpressRoute ugyanazt a nagyvállalati [szintű ExpressRoute](https://azure.microsoft.com/support/legal/sla/expressroute/v1_3/)fogja használni. 
 
-### <a name="what-scenarios-should-customers-consider-with-expressroute-direct"></a>Milyen esetekben érdemes vevők az ExpressRoute közvetlen?  
+### <a name="what-scenarios-should-customers-consider-with-expressroute-direct"></a>Milyen forgatókönyveket érdemes figyelembe venni az ügyfelek a ExpressRoute Directtel?  
 
-Az ExpressRoute közvetlen nyújt a felhasználók számára a közvetlen 100 GB/s portból álló párok be a Microsoft globális gerinchálózatán keresztül. A forgatókönyvek, amelyek a legnagyobb előnye nyújt az ügyfeleknek a következők: Nagyméretű adatfeldolgozás, szabályozott piacok fizikai elkülönítését, valamint a hirtelen forgatókönyvhöz dedikált kapacitáshoz, például renderelési. 
+A ExpressRoute Direct 100-es vagy 10 GB/s-os portszámú ügyfeleket biztosít a Microsoft globális gerincének. Az ügyfelek számára a legjobb előnyökkel járó forgatókönyvek a következők: Nagy mennyiségű adat betöltése, fizikai elkülönítés a szabályozott piacokon, valamint dedikált kapacitás a burst forgatókönyvhöz, például a rendereléshez. 
 
-### <a name="what-is-the-billing-model-for-expressroute-direct"></a>Mi az az ExpressRoute közvetlen számlázási modellje? 
+### <a name="what-is-the-billing-model-for-expressroute-direct"></a>Mi a ExpressRoute Direct számlázási modellje? 
 
-Az ExpressRoute közvetlen a port pár rögzített méretű, számlázunk. Standard Kapcsolatcsoportok tartalmazzák, nincs további órát, és prémium szintű enyhe kiegészítő díj fog rendelkezni. Kimenő forgalom a társviszony-létesítési helyszínen időzónája alapján / kapcsolatcsoport alapon számlázzuk.
+A ExpressRoute Direct szolgáltatás a port párja után rögzített összegű díjat számít fel. A standard szintű áramköröket további órák nélkül, a prémium pedig kisebb kiegészítő díjat számítunk fel. A kimenő forgalom számlázása a társítási hely zónája alapján, áramkör alapján történik.
 
-### <a name="when-does-billing-start-for-the-expressroute-direct-port-pairs"></a>Ha elvégzi az ExpressRoute közvetlen portból álló párok számlázási kezdő?
+### <a name="when-does-billing-start-for-the-expressroute-direct-port-pairs"></a>Mikor kezdődik a ExpressRoute Direct port-párok számlázása?
 
-Az ExpressRoute közvetlen portból álló párok 45 nap számolunk fel, az ExpressRoute közvetlen erőforrást, vagy ha 1 vagy mindkettőt, a kapcsolatok engedélyezve vannak, amelyiket hamarabb. A 45 napos türelmi időszak lehetővé teszi ügyfeleink számára a keresztkapcsolat befejezéséhez a közös elhelyezés szolgáltatójával kapnak.
+A 45 közvetlen ExpressRoute a ExpressRoute közvetlen erőforrásának létrehozásakor, vagy ha 1 vagy mindkét hivatkozás engedélyezve van, akkor az előbbi értéknek kell lennie. A 45 napos türelmi időszak lehetővé teszi, hogy az ügyfelek a közös elhelyezésű szolgáltatóval is elvégezzék a kapcsolatok közötti folyamatot.

@@ -1,6 +1,6 @@
 ---
-title: Windows Azure Network Watcher-ügynök virtuális gépi bővítmény |} A Microsoft Docs
-description: Windows virtuális gép, virtuálisgép-bővítmények használatával a Network Watcher-ügynök telepítése.
+title: Azure Network Watcher Agent virtuálisgép-bővítmény a Windowshoz | Microsoft Docs
+description: Telepítse a Network Watcher Agent ügynököt a Windows rendszerű virtuális gépen a virtuálisgép-bővítmény használatával.
 services: virtual-machines-windows
 documentationcenter: ''
 author: gurudennis
@@ -9,41 +9,40 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: 27e46af7-2150-45e8-b084-ba33de8c5e3f
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: 6e02f5a5b42da9c99a08782903cdc05ee32ec9d4
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 77685fd6549906cfb050e12d53ec151c964fda42
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55976919"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084409"
 ---
-# <a name="network-watcher-agent-virtual-machine-extension-for-windows"></a>Network Watcher-ügynök virtuálisgép-bővítmény a Windows
+# <a name="network-watcher-agent-virtual-machine-extension-for-windows"></a>Network Watcher Agent virtuálisgép-bővítmény a Windowshoz
 
 ## <a name="overview"></a>Áttekintés
 
-[Az Azure Network Watcher](../../network-watcher/network-watcher-monitoring-overview.md) egy hálózati teljesítmény figyelési, diagnosztikai és elemzési szolgáltatás, amely lehetővé teszi Azure-hálózatok figyelését. A Network Watcher-ügynök virtuálisgép-bővítmény akkor igény szerinti hálózati forgalmat, és más speciális funkciókat az Azure-beli virtuális gépeken rögzítéséhez szükséges.
+Az [azure Network Watcher](../../network-watcher/network-watcher-monitoring-overview.md) egy hálózati teljesítmény-figyelési, diagnosztikai és elemzési szolgáltatás, amely lehetővé teszi az Azure-hálózatok figyelését. A Network Watcher ügynök virtuálisgép-bővítményének követelménye a hálózati forgalom igény szerinti rögzítése, valamint az Azure-beli virtuális gépeken futó egyéb speciális funkciók.
 
 
-Ez a dokumentum részletesen, a támogatott platformokról és az üzembe helyezési lehetőségeit a Network Watcher-ügynök virtuálisgép-bővítmény Windows. Az ügynök telepítésének nem zavarja, vagy a virtuális gép újraindítása szükséges. A bővítmény üzembe helyezhető üzembe helyezett virtuális gépek. Ha a virtuális gép telepítve van az Azure-szolgáltatások által, dokumentációjában a szolgáltatás határozza meg, függetlenül attól, lehetővé teszi a bővítmények telepítése a virtuális gép számára.
+Ez a dokumentum részletesen ismerteti a Windows rendszerhez készült Network Watcher ügynök virtuálisgép-bővítményének támogatott platformokat és telepítési lehetőségeit. Az ügynök telepítése nem zavarja vagy nem igényli a virtuális gép újraindítását. A bővítményt a telepített virtuális gépekre is telepítheti. Ha a virtuális gépet egy Azure-szolgáltatás telepíti, a szolgáltatás dokumentációjában ellenőrizze, hogy engedélyezi-e a bővítmények telepítését a virtuális gépen.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 ### <a name="operating-system"></a>Operációs rendszer
 
-A Network Watcher-ügynök bővítmény esetében a Windows is futtatható a Windows Server 2008 R2, 2012, 2012 R2 és 2016-kiadások. A nano Server jelenleg nem támogatott.
+A Windows rendszerhez készült Network Watcher-ügynök bővítmény futtatható Windows Server 2008 R2, 2012, 2012 R2 és 2016 kiadásokkal. A nano Server jelenleg nem támogatott.
 
 ### <a name="internet-connectivity"></a>Internetkapcsolat
 
-A Network Watcher-ügynök funkciók némelyike megköveteli, hogy a céloldali virtuális gép csatlakozni az internethez. Kimenő kapcsolatok létesítéséhez nélkül a Network Watcher-ügynök nem tud csomagrögzítés feltölteni a tárfiókba. További részletekért tekintse meg a [Network Watcher dokumentációja](../../network-watcher/network-watcher-monitoring-overview.md).
+A Network Watcher ügynök egyes funkciói megkövetelik, hogy a célként megadott virtuális gép csatlakozni lehessen az internethez. A kimenő kapcsolatok létrehozásának lehetősége nélkül a Network Watcher ügynök nem fogja tudni feltölteni a csomagokat a Storage-fiókjába. További részletekért tekintse meg a [Network Watcher dokumentációját](../../network-watcher/network-watcher-monitoring-overview.md).
 
 ## <a name="extension-schema"></a>Bővítményséma
 
-A következő JSON a Network Watcher-ügynök bővítmény sémáját jeleníti meg. A bővítmény sem igényel, és nem támogatja, minden olyan felhasználó által megadott beállításokat, és az alapértelmezett konfigurációban támaszkodik.
+A következő JSON a Network Watcher ügynök bővítmény sémáját jeleníti meg. A bővítmény nem igényli, és nem támogatja a felhasználó által megadott beállításokat, és az alapértelmezett konfigurációra támaszkodik.
 
 ```json
 {
@@ -75,11 +74,11 @@ A következő JSON a Network Watcher-ügynök bővítmény sémáját jeleníti 
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
 
-Azure-beli Virtuálisgép-bővítmények az Azure Resource Manager-sablonok is telepítheti. Az előző szakaszban az Azure Resource Manager-sablon részletes JSON-séma használatával futtassa a Network Watcher-ügynök bővítményt egy Azure Resource Manager-sablon telepítése során.
+Az Azure virtuálisgép-bővítmények Azure Resource Manager-sablonokkal helyezhetők üzembe. A Azure Resource Manager sablon előző szakaszában részletes JSON-sémát használva futtathatja az Network Watcher Agent bővítményt egy Azure Resource Manager sablon központi telepítése során.
 
-## <a name="powershell-deployment"></a>PowerShell környezetben végzett telepítés
+## <a name="powershell-deployment"></a>PowerShell-telepítés
 
-Használja a `Set-AzVMExtension` parancsot a Network Watcher-ügynök virtuálisgép-bővítmény egy meglévő virtuális gépek üzembe helyezéséhez:
+`Set-AzVMExtension` A parancs használatával telepítse a Network Watcher Agent virtuálisgép-bővítményt egy meglévő virtuális gépre:
 
 ```powershell
 Set-AzVMExtension `
@@ -96,13 +95,13 @@ Set-AzVMExtension `
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
 
-Az Azure portal, PowerShell bővítmény központi telepítések állapotával kapcsolatos adatokat lehet lekérdezni. Adott Virtuálisgép-bővítmények központi telepítési állapotának megtekintéséhez futtassa a következő parancsot az Azure PowerShell modullal:
+A bővítmények telepítésének állapotáról a Azure Portal és a PowerShellből kérhet le információkat. Egy adott virtuális gép bővítményeinek telepítési állapotának megtekintéséhez futtassa az alábbi parancsot a Azure PowerShell modul használatával:
 
 ```powershell
 Get-AzVMExtension -ResourceGroupName myResourceGroup1 -VMName myVM1 -Name networkWatcherAgent
 ```
 
-Bővítmény végrehajtás kimenetének a rendszer naplózza a következő könyvtárban található fájlok:
+A bővítmény-végrehajtás kimenete a következő könyvtárban található fájlokra van naplózva:
 
 ```cmd
 C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows\
@@ -110,4 +109,4 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentW
 
 ### <a name="support"></a>Támogatás
 
-Ha ebben a cikkben bármikor további segítségre van szüksége, tekintse meg a Network Watcher felhasználói útmutató dokumentációját, vagy lépjen kapcsolatba az Azure-szakértőket a a [MSDN Azure-ban és a Stack Overflow-fórumok](https://azure.microsoft.com/support/forums/). Másik lehetőségként a egy Azure-támogatási esemény is fájl. Nyissa meg a [Azure támogatási webhelyén](https://azure.microsoft.com/support/options/) , és válassza ki a Get-támogatást. Azure-támogatási használatával kapcsolatos információkért olvassa el a [Microsoft Azure-támogatás – gyakori kérdések](https://azure.microsoft.com/support/faq/).
+Ha a cikk bármely pontján további segítségre van szüksége, tekintse meg a Network Watcher felhasználói útmutató dokumentációját, vagy lépjen kapcsolatba az Azure-szakértőkkel az [MSDN Azure-ban és stack overflow fórumokon](https://azure.microsoft.com/support/forums/). Másik lehetőségként a egy Azure-támogatási esemény is fájl. Nyissa meg a [Azure támogatási webhelyén](https://azure.microsoft.com/support/options/) , és válassza ki a Get-támogatást. Azure-támogatási használatával kapcsolatos információkért olvassa el a [Microsoft Azure-támogatás – gyakori kérdések](https://azure.microsoft.com/support/faq/).

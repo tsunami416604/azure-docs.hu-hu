@@ -1,68 +1,60 @@
 ---
-title: Az Azure-beli Linuxos virtuális gép átalakítása nem felügyeltről felügyelt managed disksbe – az Azure Managed Disks |} A Microsoft Docs
-description: Hogyan Linux virtuális gép átalakítása nem felügyeltről felügyelt a managed Disks szolgáltatásba Azure parancssori felület használatával a Resource Manager-alapú üzemi modellben
-services: virtual-machines-linux
-documentationcenter: ''
+title: Linuxos virtuális gép konvertálása az Azure-ban a nem felügyelt lemezekről a felügyelt lemezekre – Azure Managed Disks | Microsoft Docs
+description: Linux rendszerű virtuális gép konvertálása nem felügyelt lemezekről a felügyelt lemezekre az Azure CLI használatával a Resource Manager-alapú üzemi modellben
 author: roygara
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 39a42891a73bd64731dd19aa22214a62d913d975
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: a0157e75d0c8d2c2493792bcd8d30a856f8072b6
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700825"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68696073"
 ---
-# <a name="convert-a-linux-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Linux rendszerű virtuális gép átalakítása nem felügyeltről felügyelt a managed Disks szolgáltatásba
+# <a name="convert-a-linux-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Linuxos virtuális gép konvertálása nem felügyelt lemezekről felügyelt lemezekre
 
-Ha rendelkezik meglévő Linux rendszerű virtuális gépek (VM), amely a nem felügyelt lemezeket használ, a virtuális gépek használata alakíthatja [Azure Managed Disks](../linux/managed-disks-overview.md). Ez a folyamat az operációsrendszer-lemez és a bármely más csatolt lemez alakítja.
+Ha már létezik olyan linuxos virtuális gép (VM), amely nem felügyelt lemezeket használ, a virtuális gépeket átalakíthatja az [Azure Managed Disks](../linux/managed-disks-overview.md)használatára. Ez a folyamat az operációsrendszer-lemezt és a csatlakoztatott adatlemezeket is átalakítja.
 
-Ez a cikk bemutatja, hogyan átalakítása a virtuális gépek az Azure parancssori felület használatával. Ha szeretné telepíteni, vagy frissít a csomagon belül, lásd: [Azure CLI telepítése](/cli/azure/install-azure-cli). 
+Ez a cikk bemutatja, hogyan alakíthatja át a virtuális gépeket az Azure CLI használatával. Ha telepíteni vagy frissíteni szeretné, tekintse meg az [Azure CLI telepítését](/cli/azure/install-azure-cli)ismertető témakört. 
 
 ## <a name="before-you-begin"></a>Előkészületek
-* Felülvizsgálat [a migrálás a Managed Disks – gyakori kérdések](faq-for-disks.md#migrate-to-managed-disks).
+* Tekintse át [a Managed Disksre való áttelepítéssel kapcsolatos gyakori kérdéseket](faq-for-disks.md#migrate-to-managed-disks).
 
 [!INCLUDE [virtual-machines-common-convert-disks-considerations](../../../includes/virtual-machines-common-convert-disks-considerations.md)]
 
+* A virtuális gép által az átalakítás előtt használt eredeti virtuális merevlemezeket és a tárfiókot nem törli a rendszer. A futtatásuk továbbra is költségekkel jár. Annak érdekében, hogy ezekért az összetevőkért a továbbiakban ne fizessen, törölje az eredeti virtuálismerevlemez-blobokat, miután meggyőződött arról, hogy az átalakítás befejeződött. Ha meg kell találnia ezeket a nem csatolt lemezeket a törléséhez, tekintse meg a nem [csatolt Azure felügyelt és nem felügyelt lemezek keresését és törlését](find-unattached-disks.md)ismertető cikket.
 
 ## <a name="convert-single-instance-vms"></a>Egypéldányos virtuális gépek konvertálása
-Ez a szakasz bemutatja, hogyan átalakítása nem felügyeltről felügyelt egypéldányos Azure virtuális gépek felügyelt lemezeket. (Ha a virtuális gépek rendelkezésre állási csoportban, lásd a következő szakaszban.) Ez a folyamat segítségével a virtuális gépek konvertálása a standard szintű felügyelt lemezek nem felügyelt prémium (SSD) nem felügyelt lemezek prémium szintű felügyelt lemezek, illetve a standard szintű (HDD) lemezek.
+Ez a szakasz bemutatja, hogyan alakíthatja át a nem felügyelt lemezekről származó egypéldányos Azure-beli virtuális gépeket a felügyelt lemezekre. (Ha a virtuális gépek rendelkezésre állási csoportban találhatók, tekintse meg a következő szakaszt.) Ezzel a folyamattal a prémium szintű (SSD) nem felügyelt lemezekről a prémium szintű felügyelt lemezekre, vagy a standard szintű (HDD) nem felügyelt lemezekről szabványos felügyelt lemezekre alakíthatja át a virtuális gépeket.
 
-1. Szabadítsa fel a virtuális gép használatával [az vm deallocate](/cli/azure/vm). Az alábbi példa felszabadítja a virtuális gép nevű `myVM` az erőforráscsoport neve `myResourceGroup`:
+1. Szabadítsa fel a virtuális gépet az [az VM felszabadítása](/cli/azure/vm)paranccsal. A következő példa felszabadítja a nevű virtuális gépet `myVM` a nevű `myResourceGroup`erőforráscsoporthoz:
 
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
     ```
 
-2. A virtuális gép konvertálása a felügyelt lemezek használatával [az virtuális gép konvertálása](/cli/azure/vm). A következő folyamat alakítja át a virtuális gép nevű `myVM`, többek között az operációsrendszer-lemez és bármely adatlemez:
+2. Alakítsa át a virtuális gépet felügyelt lemezekre az [az VM Convert](/cli/azure/vm)paranccsal. A következő folyamat átalakítja a nevű `myVM`virtuális gépet, beleértve az operációsrendszer-lemezt és az adatlemezeket:
 
     ```azurecli
     az vm convert --resource-group myResourceGroup --name myVM
     ```
 
-3. A virtuális gép elindítása után a felügyelt lemezekre való konvertálást használatával [az vm start](/cli/azure/vm). A következő példa elindítja a virtuális gép nevű `myVM` az erőforráscsoport neve `myResourceGroup`.
+3. Indítsa el a virtuális gépet a felügyelt lemezekre történő átalakítás után az [az VM Start](/cli/azure/vm)paranccsal. A következő példa elindítja a nevű virtuális `myVM` gépet a nevű `myResourceGroup`erőforráscsoport alatt.
 
     ```azurecli
     az vm start --resource-group myResourceGroup --name myVM
     ```
 
-## <a name="convert-vms-in-an-availability-set"></a>Konvertálja a virtuális gépeket egy rendelkezésre állási csoportban
+## <a name="convert-vms-in-an-availability-set"></a>Virtuális gépek konvertálása rendelkezésre állási csoportba
 
-Ha az átalakítani kívánt virtuális gépek felügyelt lemezeket egy rendelkezésre állási csoportban, először konvertálnia kell a rendelkezésre állási felügyelt rendelkezésre állási csoportban.
+Ha a felügyelt lemezekre átalakítani kívánt virtuális gépek rendelkezésre állási csoportba kerülnek, először át kell alakítania a rendelkezésre állási készletet egy felügyelt rendelkezésre állási csoportba.
 
-A rendelkezésre állási csoportban lévő összes virtuális gép konvertálása a rendelkezésre állási csoport előtt fel kell szabadítani. Tervezze meg az összes virtuális gép konvertálása a felügyelt lemezek után a rendelkezésre állási csoportot magát egy felügyelt rendelkezésre állási csoport lett konvertálva. Ezután indítsa el a virtuális gépeket, és továbbra is a szokott módon működik.
+Meg kell adni a rendelkezésre állási csoportba tartozó összes virtuális gépet a rendelkezésre állási csoport konvertálása előtt. Tervezze meg az összes virtuális gép felügyelt lemezre konvertálását, miután a rendelkezésre állási csoport egy felügyelt rendelkezésre állási csoportba lett konvertálva. Ezután indítsa el az összes virtuális gépet, és folytassa a szokásos módon való működéssel.
 
-1. Minden virtuális gép egy rendelkezésre állási csoport használatával listájában [az a virtuális gépek rendelkezésre állási csoport listáját](/cli/azure/vm/availability-set). Az alábbi példa felsorolja az összes virtuális gépeket a rendelkezésre állási csoportban elnevezett `myAvailabilitySet` az erőforráscsoport neve `myResourceGroup`:
+1. Egy rendelkezésre állási csoportba tartozó összes virtuális gép listázása az [az VM rendelkezésre állása-set List](/cli/azure/vm/availability-set)paranccsal. Az alábbi példa felsorolja a rendelkezésre állási `myAvailabilitySet` csoportban lévő összes virtuális gépet a nevű `myResourceGroup`erőforráscsoport:
 
     ```azurecli
     az vm availability-set show \
@@ -72,13 +64,13 @@ A rendelkezésre állási csoportban lévő összes virtuális gép konvertálá
         --output table
     ```
 
-2. Az összes virtuális gép felszabadítása [az vm deallocate](/cli/azure/vm). Az alábbi példa felszabadítja a virtuális gép nevű `myVM` az erőforráscsoport neve `myResourceGroup`:
+2. Szabadítson fel minden virtuális [gépet az az VM felszabadítása](/cli/azure/vm)paranccsal. A következő példa felszabadítja a nevű virtuális gépet `myVM` a nevű `myResourceGroup`erőforráscsoporthoz:
 
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
     ```
 
-3. A rendelkezésre állási csoportot az átalakítás [az virtuális gép rendelkezésre állási csoport konvertálása](/cli/azure/vm/availability-set). Az alábbi példa alakítja át a rendelkezésre állási csoportot elnevezett `myAvailabilitySet` az erőforráscsoport neve `myResourceGroup`:
+3. Alakítsa át a rendelkezésre állási készletet az [az VM rendelkezésre állása-set Convert](/cli/azure/vm/availability-set)paranccsal. Az alábbi példa átalakítja a nevű rendelkezésre állási `myAvailabilitySet` csoportot a nevű `myResourceGroup`erőforráscsoport:
 
     ```azurecli
     az vm availability-set convert \
@@ -86,17 +78,30 @@ A rendelkezésre állási csoportban lévő összes virtuális gép konvertálá
         --name myAvailabilitySet
     ```
 
-4. A virtuális gépek konvertálása a felügyelt lemezek használatával [az virtuális gép konvertálása](/cli/azure/vm). A következő folyamat alakítja át a virtuális gép nevű `myVM`, többek között az operációsrendszer-lemez és bármely adatlemez:
+4. Alakítsa át az összes virtuális gépet a felügyelt lemezekre az [az VM Convert](/cli/azure/vm)paranccsal. A következő folyamat átalakítja a nevű `myVM`virtuális gépet, beleértve az operációsrendszer-lemezt és az adatlemezeket:
 
     ```azurecli
     az vm convert --resource-group myResourceGroup --name myVM
     ```
 
-5. A virtuális gépek elindítása után a felügyelt lemezekre való konvertálást használatával [az vm start](/cli/azure/vm). A következő példa elindítja a virtuális gép nevű `myVM` az erőforráscsoport neve `myResourceGroup`:
+5. Indítsa el az összes virtuális gépet a felügyelt lemezekre való átalakítás után az [az VM Start](/cli/azure/vm)paranccsal. A következő példa elindítja a nevű virtuális `myVM` gépet a nevű `myResourceGroup`erőforráscsoporthoz:
 
     ```azurecli
     az vm start --resource-group myResourceGroup --name myVM
     ```
 
+## <a name="convert-using-the-azure-portal"></a>Konvertálás a Azure Portal használatával
+
+A nem felügyelt lemezeket a Azure Portal használatával is konvertálhatja a felügyelt lemezekre.
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+2. Válassza ki a virtuális gépet a portálon lévő virtuális gépek listájából.
+3. A virtuális gép paneljén válassza a menü **lemezek** elemét.
+4. A **lemezek** panel tetején válassza az **áttelepítés felügyelt lemezekre**lehetőséget.
+5. Ha a virtuális gép rendelkezésre állási csoportba esik, a rendszer figyelmeztetést küld a **felügyelt lemezek** átállítása panelre, hogy először a rendelkezésre állási készletet kell konvertálnia. A figyelmeztetésnek tartalmaznia kell egy hivatkozást, amelyre kattintva átalakíthatja a rendelkezésre állási készletet. Ha a rendelkezésre állási csoport át lett konvertálva, vagy ha a virtuális gép nincs rendelkezésre állási csoportba, kattintson az **áttelepítés** elemre a lemezek felügyelt lemezekre való áttelepítési folyamatának elindításához.
+
+A rendszer a Migrálás befejezése után leállítja és újraindítja a virtuális gépet.
+
 ## <a name="next-steps"></a>További lépések
-Tárolási lehetőségekkel kapcsolatos további információkért lásd: [Azure Managed Disks – áttekintés](../windows/managed-disks-overview.md).
+
+További információ a tárolási lehetőségekről: az [Azure Managed Disks áttekintése](../windows/managed-disks-overview.md).

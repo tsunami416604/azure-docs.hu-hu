@@ -6,12 +6,13 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 2/22/2019
 ms.author: victorh
-ms.openlocfilehash: b18c9666e58925746a3b61740db6fb5118c2010b
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.topic: conceptual
+ms.openlocfilehash: f4af52907ab2e950636dea0874b49500f3a6b587
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56733716"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67613442"
 ---
 # <a name="customize-web-application-firewall-rules-through-the-azure-portal"></a>Webalkalmazási tűzfalszabályok az Azure Portalon keresztül testreszabása
 
@@ -33,11 +34,14 @@ Az Azure Application Gateway webalkalmazási tűzfala (WAF) védelmet kínál a 
 
 ## <a name="search-for-rules-to-disable"></a>Letiltja a szabályok keresése
 
-A **webalkalmazás tűzfalbeállításai** panel lehetővé teszi, hogy egy szöveges keresés révén a szabályok szűrése. Az eredmény csak a csoportok és a szabályokat, amelyek tartalmazzák a keresett szöveget jeleníti meg.
+A **webalkalmazás tűzfalbeállításai** lap lehetővé teszi, hogy egy szöveges keresés révén a szabályok szűrése. Az eredmény csak a csoportok és a szabályokat, amelyek tartalmazzák a keresett szöveget jeleníti meg.
 
 ![Szabályok keresése][2]
 
 ## <a name="disable-rule-groups-and-rules"></a>Disable-szabálycsoportjainak és szabályok
+
+> [!IMPORTANT]
+> Körültekintően járjon el, ha letiltja a szabályt a csoportokat vagy szabályokat. Ez lehet elérhetővé tenni, az fokozott biztonsági kockázatokat.
 
 Ha éppen letiltja a szabályok, egy teljes csoport vagy az adott szabályok alapján egy vagy több szabály csoport is letilthatja. 
 
@@ -47,11 +51,13 @@ Ha éppen letiltja a szabályok, egy teljes csoport vagy az adott szabályok ala
    2. Törölje a szabályokat, amelyek le kívánja tiltani a jelölőnégyzeteit. 
    2. Kattintson a **Mentés** gombra. 
 
-![Változtatások mentése][3]
+![Módosítások mentése][3]
 
 ## <a name="mandatory-rules"></a>A kötelező szabályok
 
-Az alábbi lista tartalmazza a WAF blokkolása a megelőzés üzemmód (a kivételeket bejelentkeztek észlelési mód) a kérelmet eredményező feltételeket. Ezek nem lehet beállítva vagy le van tiltva:
+Az alábbi lista tartalmazza a WAF megelőzés üzemmódban a kérelem blokkolása eredményező feltételeket. Az észlelési mód akkor jelentkezett, kivételeket.
+
+Ezek nem lehet beállítva vagy le van tiltva:
 
 * Nem sikerült elemezni a kérelem törzsében eredményez blokkolja, a kérelem, kivéve, ha a szervezet ellenőrzési ki van kapcsolva (XML, JSON, az űrlap adatait)
 * Kérelem törzse (rendelkező fájlokat) a következő adattípus adathossza mérete nagyobb, mint a beállított korlát

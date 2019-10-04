@@ -1,5 +1,5 @@
 ---
-title: Adatfolyamatok létrehozása az Azure az Azure Monitor adatgyűjtő API |} A Microsoft Docs
+title: Adatfolyamatok létrehozása az Azure Monitor adatgyűjtő API |} A Microsoft Docs
 description: Az Azure Monitor HTTP-adatgyűjtő API segítségével POST JSON-adatok hozzáadása a Log Analytics-munkaterület minden ügyfélről, amely az REST API-t. Ez a cikk ismerteti, hogyan tölthetők fel fájlok automatikus módon átalakítson tárolt adatokat.
 services: log-analytics
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/09/2018
 ms.author: magoedte
-ms.openlocfilehash: d2736e397827373949da1634a99056420dc13b8a
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 53457a044f5c69af7bf68561f24732e8f02219d8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56003856"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65603238"
 ---
 # <a name="create-a-data-pipeline-with-the-data-collector-api"></a>Adatfolyamatok létrehozása a Data Collector API-val
 
@@ -27,7 +27,7 @@ A [Azure Monitor adatgyűjtő API](data-collector-api.md) lehetővé teszi, hogy
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="example-problem"></a>A példában a probléma
-Ez a cikk további részében hogy megvizsgálja a lapmegtekintések adatainak az Application insights szolgáltatásban. A képzeletbeli esetünkben korrelációját, ha a cél az azonosítása, ahol azt kell lennie költségkeret-beállítási a legtöbbet a világ minden ország népesség tartalmazó egyéni adatok alapértelmezés szerint az Application Insights SDK által gyűjtött földrajzi adatok szeretnénk marketing dollár. 
+Ez a cikk további részében hogy megvizsgálja a lapmegtekintések adatainak az Application insights szolgáltatásban. Elméleti esetünkben a földrajzi adatok a cél az azonosítása, ahol kiadások kell lennie a Microsoft a világ minden ország/régió népessége tartalmazó egyéni adatokat alapértelmezés szerint az Application Insights SDK összegyűjtött összekapcsolását szeretnénk a legtöbb marketing dollár. 
 
 Nyilvános adatforrás például használjuk a [UN világ Population vevőket](https://esa.un.org/unpd/wpp/) erre a célra. Az adatok az alábbi egyszerű sémát fog rendelkezni:
 

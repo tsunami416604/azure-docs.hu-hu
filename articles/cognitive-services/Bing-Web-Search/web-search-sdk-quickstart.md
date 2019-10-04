@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: A Bing webes keresés készült SDK használataC#'
+title: 'Gyors útmutató: Az Bing Web Search SDK használata a következőhöz:C#'
 titleSuffix: Azure Cognitive Services
 description: A Bing Web Search SDK megkönnyíti a Bing Web Search integrálását a C#-alkalmazásába. Ebben a rövid útmutatóban elsajátíthatja az ügyfél-példányosítás, a kérésküldés és a válaszmegjelenítés módját.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: bing-web-search
 ms.topic: quickstart
 ms.date: 04/15/2019
 ms.author: aahi
-ms.openlocfilehash: b1660034f1937d2d8ff9e70139407619626886a8
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: 5e893fda5a0e71703eb867c045de19d391c012ed
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59606803"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018214"
 ---
-# <a name="quickstart-use-the-bing-web-search-sdk-for-c"></a>Gyors útmutató: A Bing webes keresés készült SDK használataC#
+# <a name="quickstart-use-the-bing-web-search-sdk-for-c"></a>Gyors útmutató: Az Bing Web Search SDK használata a következőhöz:C#
 
 A Bing Web Search SDK megkönnyíti a Bing Web Search integrálását a C#-alkalmazásába. Ebben a rövid útmutatóban elsajátíthatja az ügyfél-példányosítás, a kérésküldés és a válaszmegjelenítés módját.
 
@@ -39,7 +39,7 @@ Az alábbi dolgokra szüksége lesz a rövid útmutató futtatásához:
 > [!TIP]
 > Szerezze be a legújabb kódot Visual Studio-megoldásként a [GitHubról](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/).
 
-Az első lépés egy új konzolprojekt létrehozása. Ha a konzolt projekt beállításához segítségre van szüksége, tekintse meg [Hello World – az első programja (C# programozási útmutató)](https://docs.microsoft.com/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program). Ha a Bing Web Search SDK-t használná az alkalmazásában, a NuGet-csomagkezelővel telepítse a következőt: `Microsoft.Azure.CognitiveServices.Search.WebSearch`.
+Az első lépés egy új konzolprojekt létrehozása. Ha segítségre van szüksége egy konzol-projekt beállításához, tekintse [meg a "Helló világ!" alkalmazás – azC# első programja (programozási útmutató)](https://docs.microsoft.com/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program)című témakört. Ha a Bing Web Search SDK-t használná az alkalmazásában, a NuGet-csomagkezelővel telepítse a következőt: `Microsoft.Azure.CognitiveServices.Search.WebSearch`.
 
 A [Web Search SDK-csomag](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.WebSearch/1.2.0) a követezőket is telepíti:
 
@@ -61,7 +61,7 @@ using System.Linq;
 
 ## <a name="create-project-scaffolding"></a>Projektszerkezet létrehozása
 
-Amikor létrehozta az új konzolprojektet, létre kellett jönnie egy névtérnek és egy osztálynak az alkalmazásához. A program a példához hasonlóan kell kinéznie:
+Amikor létrehozta az új konzolprojektet, létre kellett jönnie egy névtérnek és egy osztálynak az alkalmazásához. A programnak a következő példához hasonlóan kell kinéznie:
 
 ```csharp
 namespace WebSearchSDK
@@ -243,7 +243,7 @@ Ebben a példában a `count` és az `offset` paramétert használjuk a „Best r
     {
         try
         {
-            var webData = await client.Web.SearchAsync(query: "Best restaurants in Seattle", offset: 10, count: 20).Result;
+            var webData = await client.Web.SearchAsync(query: "Best restaurants in Seattle", offset: 10, count: 20);
             Console.WriteLine("\r\nSearching for \" Best restaurants in Seattle \"");
 
             if (webData?.WebPages?.Value?.Count > 0)
@@ -303,7 +303,7 @@ Ez a minta a `response_filter` paraméter segítségével szűri a keresési ere
         try
         {
             IList<string> responseFilterstrings = new List<string>() { "news" };
-            var webData = await client.Web.SearchAsync(query: "Microsoft", responseFilter: responseFilterstrings).Result;
+            var webData = await client.Web.SearchAsync(query: "Microsoft", responseFilter: responseFilterstrings);
             Console.WriteLine("\r\nSearching for \" Microsoft \" with response filter \"news\"");
 
             if (webData?.News?.Value?.Count > 0)
@@ -366,7 +366,7 @@ Ez a példa az `answer_count`, a `promote` és a `safe_search` paraméter segít
         try
         {
             IList<string> promoteAnswertypeStrings = new List<string>() { "videos" };
-            var webData = await client.Web.SearchAsync(query: "Music Videos", answerCount: 2, promote: promoteAnswertypeStrings, safeSearch: SafeSearch.Strict).Result;
+            var webData = await client.Web.SearchAsync(query: "Music Videos", answerCount: 2, promote: promoteAnswertypeStrings, safeSearch: SafeSearch.Strict);
             Console.WriteLine("\r\nSearching for \"Music Videos\"");
 
             if (webData?.Videos?.Value?.Count > 0)

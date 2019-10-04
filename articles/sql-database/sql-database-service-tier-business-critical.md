@@ -1,6 +1,6 @@
 ---
-title: Üzleti kritikus szintet – Azure SQL Database szolgáltatás |} A Microsoft Docs
-description: További tudnivalók az Azure SQL Database üzletileg kritikus
+title: üzletileg kritikus szintű Azure SQL Database szolgáltatás | Microsoft Docs
+description: Tudnivalók a Azure SQL Database üzletileg kritikus szintjéről
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -10,45 +10,56 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
-manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: e9f40e749642f2025c5298df74f9d8ff87aec14b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 9e398fd7d370d30fac87035b27a218834b4fab22
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59784056"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899725"
 ---
-# <a name="business-critical-tier---azure-sql-database"></a>Üzleti kritikus szintet – Azure SQL Database
+# <a name="business-critical-tier---azure-sql-database"></a>Üzletileg kritikus réteg – Azure SQL Database
 
 > [!NOTE]
-> Kritikus fontosságú üzleti szint DTU-vásárlási modell a prémium szintű neve. A Virtuálismag-alapú vásárlási modell a DTU-alapú vásárlási modell összehasonlításáért lásd: [vásárlási modellek és az erőforrások az Azure SQL Database](sql-database-purchase-models.md).
+> A üzletileg kritikus szint a DTU beszerzési modelljében prémium szintű. A virtuális mag-alapú vásárlási modellnek a DTU-alapú vásárlási modellel való összehasonlítását lásd: [Azure SQL Database vásárlási modellek és erőforrások](sql-database-purchase-models.md).
 
-Az Azure SQL Database az SQL Server adatbázismotor architektúra, amely 99,99 %-os rendelkezésre állását, még akkor is, az infrastruktúra-hibák esetekben biztosítása érdekében a felhőalapú környezet módosul alapul. Nincsenek az Azure SQL Database által használt három architekturális modellek:
-- Általános célú/Standard 
-- Üzleti kritikus/prémium
+A Azure SQL Database a felhőalapú környezethez igazított SQL Server adatbázismotor-architektúrán alapul, hogy az infrastruktúra meghibásodása esetén is biztosítson 99,99%-os rendelkezésre állást. A Azure SQL Database három építészeti modellt használ:
+- Általános célú/standard 
+- Üzletileg kritikus/prémium
 - Rugalmas skálázás
 
-Prémium és üzletileg kritikus szolgáltatási réteg modell egy olyan fürtjét, adatbázis-motor folyamatainak alapul. Ez a modell architekturális a tény, hogy nem mindig elérhető database engine csomópont és minimális hatása van a számítási feladatokra karbantartásának idejére is támaszkodik.
+A prémium/üzletileg kritikus szolgáltatási szint modellje az adatbázismotor folyamatainak egyik fürtjén alapul. Ez az építészeti modell arra támaszkodik, hogy mindig a rendelkezésre álló adatbázismotor-csomópontok kvóruma van, és a karbantartási tevékenységek során a számítási feladatok minimális teljesítményére is hatással van.
 
-Az Azure frissíti, és javítások alapjául szolgáló operációs rendszert, illesztőprogramokat és az SQL Server adatbázismotor transzparens módon az a minimális-ideje a végfelhasználók számára. 
+Az Azure-ban az operációs rendszer, az illesztőprogramok és a SQL Server adatbázis-motorja transzparens módon, a végfelhasználók minimális lejárati ideje alatt is átlátható. 
 
-Az Azure SQL Database prémium és üzletileg kritikus szolgáltatási szinten a prémium szintű rendelkezésre állás engedélyezve van, és arra tervezték, intenzív számítási feladatokhoz, amelyek működését zavarják a teljesítmény romlása a folyamatban lévő karbantartási tevékenységek miatt.
+A prémium szintű rendelkezésre állás a prémium és üzletileg kritikus Azure SQL Database szolgáltatási szintjein van engedélyezve, és olyan nagy teljesítményű számítási feladatokhoz lett tervezve, amelyek a folyamatban lévő karbantartási műveletek miatt nem tolerálják a teljesítményt.
 
-A prémium szintű modellben az Azure SQL database egyesíti a számítási és a egy csomóponton. Négy csomópontból álló fürtben, az SQL Serverhez hasonló technológia segítségével telepítve (SQL Server adatbázismotor folyamat) számítási és tárolási (helyileg csatlakoztatott SSD) replikációs úgy érhető el magas rendelkezésre állású architektúra ebben a modellben [mindig bekapcsolva Rendelkezésre állási csoportok](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server).
+A prémium modellben az Azure SQL Database egyetlen csomóponton integrálja a számítási és a tárolási kapacitást. A magas rendelkezésre állást ebben az építészeti modellben a számítási (SQL Server adatbázismotor-folyamat) és a (helyileg csatlakoztatott SSD-k) a négy csomópontos fürtön üzembe helyezett (a következőhöz hasonló technológiával rendelkező, SQL Server [Always On rendelkezésre állási csoportokhoz hasonló technológia használatával) ](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server).
 
-![Database engine fürtben](media/sql-database-managed-instance/business-critical-service-tier.png)
+![Az adatbázismotor csomópontjainak fürtje](media/sql-database-managed-instance/business-critical-service-tier.png)
 
-Mind az SQL database, a motor folyamata és az alapul szolgáló mdf/ldf-fájlok kerülnek, ugyanazon a csomóponton a helyileg csatlakoztatott SSD-tárolás biztosítja a számítási feladathoz alacsony késést biztosít. Magas rendelkezésre állású SQL Server hasonló technológia használatával lett megvalósítva [Always On rendelkezésre állási csoportok](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server). Minden adatbázis, a fürt egy elsődleges adatbázis, amely elérhető ügyfél számítási feladata, és a egy három másodlagos folyamat adatok másolatát tartalmazó adatbázis-csomópont. Az elsődleges csomópont folyamatosan leküldi a módosítások a másodlagos csomópontot annak érdekében, hogy az adatok elérhető legyen a másodlagos replikákon. Ha bármilyen okból leáll az elsődleges csomópont. Feladatátvétel az SQL Server adatbázismotor kezeli – egy másodlagos másodpéldány az elsődleges csomópont válik, és annak biztosítására, elég a fürtben található csomópontok jön létre egy új másodlagos replikára. A számítási feladatok a rendszer automatikusan átirányítja az új elsődleges csomópontra.
+Az SQL-adatbázismotor és a mögöttes MDF-/ldf-fájlok is ugyanarra a csomópontra kerülnek, mint a helyileg csatlakoztatott SSD-tároló, amely kis késleltetést biztosít a munkaterhelés számára. A magas rendelkezésre állás a SQL Server [Always On rendelkezésre állási csoportokhoz](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)hasonló technológia használatával valósul meg. Minden adatbázis olyan adatbázis-csomópontok fürtje, amelyek egy elsődleges adatbázissal elérhetők az ügyfelek munkaterhelése számára, valamint egy három másodlagos folyamat, amely az adatok másolatait tartalmazza. Az elsődleges csomópont folyamatosan leküldi a másodlagos csomópontok módosításait annak érdekében, hogy az adat elérhető legyen a másodlagos replikákban, ha az elsődleges csomópont valamilyen okból összeomlik. A feladatátvételt az SQL Server adatbázismotor kezeli – az egyik másodlagos replika lesz az elsődleges csomópont, és létrejön egy új másodlagos replika, hogy a fürtben elegendő csomópont legyen. A rendszer automatikusan átirányítja a munkaterhelést az új elsődleges csomópontra.
 
-Emellett a kritikus fontosságú üzleti fürt olyan beépített [olvasási kibővített](sql-database-read-scale-out.md) képesség, amely ingyenes, biztosít beépített csak olvasható csomópont csak olvasási lekérdezések futtatása (például a jelentések) teljesítményét nem befolyásolja használható díja az elsődleges munkaterhelés.
+Emellett üzletileg kritikus-fürt beépített [olvasási Felskálázási](sql-database-read-scale-out.md) képességgel rendelkezik, amely ingyenes, beépített írásvédett csomópontot biztosít, amely csak olvasható lekérdezések (például jelentések) futtatására használható, amelyek nem érinthetik elsődlegesen a teljesítményt. munkaterhelés.
 
-## <a name="when-to-choose-this-service-tier"></a>Ha a service-csomag kiválasztását?
+## <a name="when-to-choose-this-service-tier"></a>Mikor válassza ezt a szolgáltatási szintet?
 
-Üzleti kritikus szolgáltatási szinten a közel valós idejű igénylő alkalmazásokhoz készült válaszokat az alapul szolgáló SSD-tárolás (átlagosan 1 – 2 ms), gyors helyreállítás, ha az alapul szolgáló infrastruktúra meghibásodik vagy kell arra a célra jelentések, elemzések, és csak olvasható az ingyenes díj olvasható másodlagos replika az elsődleges adatbázis a lekérdezéseket.
+Üzletileg kritikus szolgáltatási szintet azon alkalmazások számára tervezték, amelyek alacsony késleltetésű válaszokat igényelnek a mögöttes SSD-tárolóból (átlagosan 1-2 MS), a gyors helyreállítást, ha az alapul szolgáló infrastruktúra meghibásodik, vagy ki kell töltenie a jelentéseket, az elemzéseket és a csak olvasható adatokat az elsődleges adatbázis díjmentesen olvasható másodlagos replikájának lekérdezése.
+
+A legfontosabb ok, amiért érdemes kiválasztania üzletileg kritikus szolgáltatási szintet általános célú szintje helyett:
+-   Alacsony IO-késési követelmények – a tárolási réteg gyors válaszát igénylő munkaterhelés (átlagosan 1-2 ezredmásodperc) üzletileg kritikus szintet kell használnia. 
+-   Gyakori kommunikáció az alkalmazás és az adatbázis között. Olyan alkalmazás, amely nem tudja kihasználni az alkalmazás-rétegbeli gyorsítótárazást, vagy [igénylést](sql-database-use-batching-to-improve-performance.md) végez, és sok olyan SQL-lekérdezést kell elküldenie, amelyet gyorsan fel kell dolgozni, üzletileg kritikus szinten jó jelöltek.
+-   Nagy számú frissítés – az INSERT, a Update és a DELETE művelet módosítja a memóriában (piszkos oldal) található adatlapokat, amelyeket a művelettel rendelkező `CHECKPOINT` adatfájlba kell menteni. A lehetséges adatbázismotor-folyamatok összeomlása vagy az adatbázis nagy mennyiségű piszkos oldallal rendelkező feladatátvétele általános célú szinten növelheti a helyreállítási időt. Üzletileg kritikus réteg használata, ha olyan számítási feladattal rendelkezik, amely sok memóriában végzett módosítást okoz. 
+-   Az adatmódosítást követően hosszú ideig futó tranzakciók. A hosszú ideig megnyitott tranzakciók megakadályozzák a naplófájlok méretének és a [virtuális naplófájlok (VLF)](https://docs.microsoft.com/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide#physical_arch)számának növelését. A feladatátvétel után a VLF nagy száma lelassíthatja az adatbázis helyreállítását.
+-   Munkaterhelések jelentési és elemzési lekérdezésekkel, amelyek átirányíthatók a díjmentes másodlagos írásvédett replikára.
+- Nagyobb rugalmasság és gyorsabb helyreállítás a hibáktól. Rendszerhiba esetén az elsődleges példányon lévő adatbázis le lesz tiltva, és az egyik másodlagos replika azonnal új írható-olvasható elsődleges adatbázis lesz, amely készen áll a lekérdezések feldolgozására. Az adatbázismotor nem kell elemezni és megismételni a tranzakciókat a naplófájlból, és be kell töltenie a memória pufferében lévő összes adatmennyiséget.
+- Advanced adatsérülés elleni védelem – üzletileg kritikusi szintű adatbázis-replikákat használ az üzletmenet folytonossága érdekében, és így a szolgáltatás automatikusan kihasználja az oldal javítását, ami ugyanaz, mint a SQL Server-adatbázis esetében is. [tükrözési és rendelkezésre állási csoportok](https://docs.microsoft.com/sql/sql-server/failover-clusters/automatic-page-repair-availability-groups-database-mirroring). Abban az esetben, ha egy replika nem tud beolvasni egy oldalt egy adatintegritási probléma miatt, a lap egy másik replikából lesz beolvasva, és az adatvesztés vagy az ügyfél leállása nélkül nem olvasható oldal jelenik meg. Ez a funkció általános célú szinten alkalmazható, ha az adatbázis rendelkezik geo-másodlagos replikával.
+- Magasabb rendelkezésre állás – a többszintű konfigurációban üzletileg kritikus szint az 99,995%-os rendelkezésre állást garantálja, az általános célú szint 99,99%-ában.
+- A Geo-replikációval konfigurált gyors geo-helyreállítási üzletileg kritikusi réteg 5 sec-os garantált helyreállítási időcélkitűzéssel (RPO) rendelkezik, és 30 mp-es helyreállítási időszakot (RTO) biztosít a telepített órák 100%-ában.
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg [általános célú](sql-database-service-tier-general-purpose.md) és [nagy kapacitású](sql-database-service-tier-hyperscale.md) szinten.
-- Ismerje meg [Service Fabric](../service-fabric/service-fabric-overview.md).
-- A magas rendelkezésre állású és vész-helyreállítási További beállításokért lásd: [üzletmenet-folytonossági](sql-database-business-continuity.md).
+- Az erőforrás jellemzői (magok, IO, memória) üzletileg kritikus réteg [felügyelt példányban](sql-database-managed-instance-resource-limits.md#service-tier-characteristics), önálló adatbázis [virtuális mag](sql-database-vcore-resource-limits-single-databases.md#business-critical-service-tier-for-provisioned-compute) -modellben vagy [DTU-modellben](sql-database-dtu-resource-limits-single-databases.md#premium-service-tier), vagy rugalmas készlet a [virtuális mag-modellben](sql-database-vcore-resource-limits-elastic-pools.md#business-critical-service-tier-storage-sizes-and-compute-sizes) és a [DTU-modellben](sql-database-dtu-resource-limits-elastic-pools.md#premium-elastic-pool-limits).
+- Ismerkedjen meg [általános célú](sql-database-service-tier-general-purpose.md) -és [nagy kapacitású](sql-database-service-tier-hyperscale.md) -szintekkel.
+- A [Service Fabric](../service-fabric/service-fabric-overview.md)megismerése.
+- A magas rendelkezésre állással és a vész-helyreállítással kapcsolatos további lehetőségekért lásd az [üzletmenet folytonosságát](sql-database-business-continuity.md)ismertető témakört.

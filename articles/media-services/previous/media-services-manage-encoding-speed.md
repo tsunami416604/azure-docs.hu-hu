@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 6bcaadc8dd61899aff860ad246e30170c99ec0f6
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58188628"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61463752"
 ---
-#  <a name="manage-speed-and-concurrency-of-your-encoding"></a>Sebességének és egyidejűségének a kódolás kezelése  
+#  <a name="manage-speed-and-concurrency-of-your-encoding"></a>A kódolás sebességének és egyidejűségének kezelése  
 
 Ez a cikk röviden bemutatja, hogyan kezelheti sebességének és egyidejűségének a kódolási feladatok feladatokat biztosít.
 

@@ -4,14 +4,14 @@ ms.service: container-service
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
-ms.openlocfilehash: f903828285b0d4fdc8fbd932fa7c85056e937481
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 3e1e1266122ebcccc0149ca8e0421577becd6708
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56213059"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036717"
 ---
-# <a name="deprecated-container-service-frequently-asked-questions"></a>(ELAVULT) Container Service – gyakori kérdések
+# <a name="deprecated-container-service-frequently-asked-questions"></a>ELAVULT Tároló szolgáltatás – gyakori kérdések
 
 [!INCLUDE [ACS deprecation](container-service-deprecation.md)]
 
@@ -37,7 +37,7 @@ A forgatókönyvtől függően más Azure-szolgáltatásokkal is létrehozhat é
 ### <a name="what-is-the-difference-between-azure-container-service-and-acs-engine"></a>Mi a különbség az Azure Container Service és ASC Engine között? 
 Az Azure Container Service egy SLA-alapú Azure-szolgáltatás, amely az Azure Portalon elérhető funkciókkal, Azure parancssori eszközökkel és Azure API-kkal rendelkezik. A szolgáltatás lehetővé teszi, hogy viszonylag kevés konfigurációs beállítás megadásával, gyorsan valósíthasson meg és kezelhessen általános, tárolóvezénylési eszközöket futtató fürtöket. 
 
-Az [ACS Engine](http://github.com/Azure/acs-engine) egy nyílt forráskódú projekt, amely lehetővé teszi a kiemelt felhasználók számára a fürtkonfiguráció egyéni beállítását minden szinten. Az infrastruktúra és a szoftverek konfigurációjának módosíthatósága azzal jár, hogy nem kínálunk SLA-t az ACS Engine esetén. A támogatás kezelése a GitHubon található nyílt forráskódú projekt segítségével történik a hivatalos Microsoft-csatornák helyett. 
+Az [ACS Engine](https://github.com/Azure/acs-engine) egy nyílt forráskódú projekt, amely lehetővé teszi a kiemelt felhasználók számára a fürtkonfiguráció egyéni beállítását minden szinten. Az infrastruktúra és a szoftverek konfigurációjának módosíthatósága azzal jár, hogy nem kínálunk SLA-t az ACS Engine esetén. A támogatás kezelése a GitHubon található nyílt forráskódú projekt segítségével történik a hivatalos Microsoft-csatornák helyett. 
 
 További részleteket a [tárolókra vonatkozó támogatási szabályzatban](https://support.microsoft.com/en-us/help/4035670/support-policy-for-containers) talál.
 
@@ -80,7 +80,7 @@ Kereshet gyakran használt URL-címeket a fürt számára az Azure Portalon, az 
 ### <a name="how-do-i-tell-which-orchestrator-version-is-running-in-my-cluster"></a>Hogyan állapíthatom meg, hogy melyik vezénylőverzió fut a fürtben?
 
 * DC/OS: Tekintse meg a [Mesosphere dokumentációját](https://docs.mesosphere.com/1.7/usage/cli/command-reference/)
-* A docker Swarm: Futtassa a `docker version` parancsot.
+* Docker Swarm: Futtassa a `docker version` parancsot.
 * Kubernetes: Futtassa a `kubectl version` parancsot.
 
 ### <a name="how-do-i-upgrade-the-orchestrator-after-deployment"></a>Hogyan frissíthetem a vezénylőt az üzembe helyezést követően?

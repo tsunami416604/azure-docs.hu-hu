@@ -1,21 +1,21 @@
 ---
-title: Erőforrásosztályok számítási feladatok kezelése – Azure SQL Data Warehouse |} A Microsoft Docs
+title: Erőforrásosztályok számítási feladatok kezeléséhez az Azure SQL Data Warehouse |} A Microsoft Docs
 description: Útmutató a erőforrásosztályok használata az egyidejűség kezelése és a számítási erőforrásokat az Azure SQL Data Warehouse lekérdezések.
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: workload management
-ms.date: 03/15/2019
+ms.subservice: workload-management
+ms.date: 06/20/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5ad8dad35013a28696e7c9cb5cc68464f3c4bf64
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 548271e888344eeb0d111c074153ef7492af5b33
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520054"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595539"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>Az Azure SQL Data warehouse erőforrásosztályok számítási feladatok kezelése
 
@@ -79,11 +79,12 @@ A dinamikus erőforrásosztályok vannak megvalósítva, ezek előre meghatároz
 
 Ha dinamikus erőforrásosztályt Gen1 a részletek digging, van néhány adatra, hogy azok viselkedésének megértése a további összetettséget hozzáadása:
 
-- A smallrc erőforrásosztály, például egy statikus erőforrásosztály rögzített méretű memória modell működik.  Smallrc lekérdezések nem dinamikusan beolvasni a több memória, ahogy nő, a szolgáltatási szint.
+**A Gen1**
+- A smallrc erőforrásosztály, például egy statikus erőforrásosztály rögzített méretű memória modell működik.  Smallrc lekérdezések nem dinamikusan beolvasni a több memória, ahogy nő, a szolgáltatási szint. 
 - Módosíthatja a szolgáltatási szintek, a rendelkezésre álló lekérdezés egyidejűségi felfelé vagy lefelé meg.
-- Szolgáltatások szintek méretezés nem biztosít arányos változást az erőforrás osztályai kiosztott memória.
+- Méretezés a szolgáltatási szint nem biztosít az erőforrás osztályai kiosztott memória arányos módosítása.
 
-A **Gen2 csak**, dinamikus erőforrásosztályokkal dinamikusak valóban címzés a fent említett pontokat.  Az új szabály 3-10-22-70 százalékos memórialefoglalások kis-Közepes-nagy-xlarge erőforrás osztályok, a rendszer **függetlenül a szolgáltatási szint**.  Az alábbi táblázat részletesen az összevont memória felosztási százalékok és futása, függetlenül a szolgáltatási szint egyidejű lekérdezések minimális száma.
+**Gen2**, dinamikus erőforrásosztályokkal dinamikusak valóban címzés a fent említett pontokat.  Az új szabály 3-10-22-70 százalékos memórialefoglalások kis-Közepes-nagy-xlarge erőforrás osztályok, a rendszer **függetlenül a szolgáltatási szint**.  Az alábbi táblázat részletesen az összevont memória felosztási százalékok és futása, függetlenül a szolgáltatási szint egyidejű lekérdezések minimális száma.
 
 | Erőforrásosztály | Memória százalékos aránya | Minimális egyidejű lekérdezések |
 |:--------------:|:-----------------:|:----------------------:|
@@ -115,7 +116,7 @@ Ezek a műveletek erőforrásosztályok vonatkoznak rájuk:
 - Válassza ki (Ha a felhasználó a táblákat kérdezi le)
 - Az ALTER INDEX - ÚJRAÉPÍTÉSI vagy REORGANIZE
 - ALTER TABLE REBUILD
-- INDEX LÉTREHOZÁSA
+- CREATE INDEX
 - FÜRTÖZÖTT OSZLOPCENTRIKUS INDEX LÉTREHOZÁSA
 - TABLE AS SELECT (CTAS) LÉTREHOZÁSA
 - Az adatok betöltése
@@ -133,7 +134,7 @@ A következő utasításokat mentesülnek az erőforrásosztályok, és a smallr
 - LÉTREHOZÁS vagy a DROP TABLE
 - AZ ALTER TABLE... KAPCSOLÓ, felosztása és EGYESÍTÉSE partíció
 - AZ ALTER INDEX LETILTÁSA
-- A DROP INDEX
+- DROP INDEX
 - LÉTREHOZÁS, frissítés és a DROP STATISTICS
 - TÁBLA CSONKOLÁSA
 - AZ ALTER ENGEDÉLYEZÉSI
@@ -274,7 +275,7 @@ A következő utasítás Table1 használt a fenti példákban hoz létre.
 -------------------------------------------------------------------------------
 -- Dropping prc_workload_management_by_DWU procedure if it exists.
 -------------------------------------------------------------------------------
-IF EXISTS (SELECT -FROM sys.objects WHERE type = 'P' AND name = 'prc_workload_management_by_DWU')
+IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'prc_workload_management_by_DWU')
 DROP PROCEDURE dbo.prc_workload_management_by_DWU
 GO
 

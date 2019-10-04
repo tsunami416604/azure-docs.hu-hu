@@ -1,77 +1,95 @@
 ---
-title: 'Gyors útmutató: Az Azure Time Series Insights explorer |} A Microsoft Docs'
-description: Ez a rövid útmutató ismerteti az Azure Time Series Insights Explorer webböngészőben való használatának első lépéseit, hogy nagy mennyiségű IoT-adatot tudjon megjeleníteni. A legfontosabb jellemzőkkel a bemutató környezetben ismerkedhet meg.
+title: 'Gyors útmutató: Azure Time Series Insights Explorer | Microsoft Docs'
+description: Ebből a rövid útmutatóból megtudhatja, hogyan kezdheti meg a webböngészőben a Azure Time Series Insights Explorert, hogy nagy mennyiségű IoT-adatait jelenítse meg. A legfontosabb jellemzőkkel a bemutató környezetben ismerkedhet meg.
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
-ms.reviewer: v-mamcge, jasonh, kfile, anshan
+ms.reviewer: v-mamcge, jasonh, kfile
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 11/15/2017
-ms.openlocfilehash: 32ed0ec178f7a0064fae88357011197e71604885
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.date: 09/23/2019
+ms.openlocfilehash: b5fb0c4de82d5ff5f5290127ec529787cabad64a
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53555540"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71258359"
 ---
 # <a name="quickstart-explore-azure-time-series-insights"></a>Gyors útmutató: Ismerkedés az Azure Time Series Insightsszal
-Ez a rövid útmutató egy ingyenes bemutató környezetben ismerteti az Azure Time Series Insights Explorer használatának első lépéseit. Megtudhatja, hogyan jeleníthet meg nagy mennyiségű IoT-adatot a webböngészőjében, és megismerkedhet a Time Series Insights Explorer főbb jellemzőivel. 
 
-Az Azure Time Series Insights egy teljes körűen felügyelt elemző, tároló és megjelenítő szolgáltatás, amely megkönnyíti IoT-események milliárdjainak párhuzamos felderítését és elemzését. Globális áttekintést nyújt az adatokról, így gyorsan ellenőrizheti IoT-megoldásait, és elkerülheti az üzletmenet szempontjából kritikus fontosságú eszközök költséges leállását, mivel a rendszer segít felderíteni a rejtett tendenciákat és rendellenességeket, majd elemezni a problémák kiváltó okait majdnem valós időben.  Ha olyan alkalmazást épít ki, amelynek idősorozat-adatokat kell tárolnia vagy lekérdeznie, a fejlesztéshez használhatja a Time Series Insights REST API-jait.
+Ez a Azure Time Series Insights Explorer rövid útmutató segítséget nyújt a Time Series Insights ingyenes bemutató környezetben való megkezdéséhez. Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a webböngészőt nagy mennyiségű IoT-információ és az általánosan elérhető főbb funkciók megjelenítésére.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) a virtuális gép létrehozásának megkezdése előtt.
+A Azure Time Series Insights egy teljes körűen felügyelt elemzési, tárolási és vizualizációs szolgáltatás, amely leegyszerűsíti a IoT-események milliárdjainak egyidejű feltárását és elemzését. Globális áttekintést nyújt az adatairól, így gyorsan ellenőrizheti IoT-megoldását, és elkerülheti az üzleti szempontból kritikus fontosságú eszközök költséges leállását. Azure Time Series Insights segít felderíteni a rejtett trendeket, a helyszíni rendellenességeket és a kiváltó okok elemzését közel valós időben.
 
-## <a name="explore-time-series-insights-explorer-in-a-demo-environment"></a>Ismerkedés a Time Series Insights Explorerrel egy bemutató környezetben
+A további rugalmasság érdekében a hatékony [REST API](./time-series-insights-update-tsq.md) -kon és az [ügyfél-SDK](./tutorial-create-tsi-sample-spa.md)-n keresztül Azure Time Series Insights adhat hozzá egy meglévő alkalmazáshoz. Az API-k segítségével az idősorozat-adatai tárolhatók, lefoglalhatók és felhasználhatók az Ön által választott ügyfélalkalmazások számára. Az ügyfél-SDK használatával felhasználói felületi összetevőket is hozzáadhat a meglévő alkalmazáshoz.
 
-1. A böngészőjében lépjen a [https://insights.timeseries.azure.com/demo](https://insights.timeseries.azure.com/demo) helyre. 
+Ez a Time Series Insights Explorer rövid útmutató az általánosan elérhető funkciókkal kapcsolatos interaktív bemutatót kínál.
 
-2. Ha a rendszer kéri, jelentkezzen be a Time Series Insights Explorerbe az Azure-fiókja hitelesítő adataival. 
- 
-3. Megjelenik a Time Series Insights gyors bemutató oldala. A gyors bemutató indításához kattintson a **Next** (Tovább) gombra.
+> [!IMPORTANT]
+> Hozzon létre egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) , ha még nem hozott létre egyet.
 
-   ![Kattintson a Next (Tovább) gombra.](media/quickstart/quickstart1.png)
+## <a name="prepare-the-demo-environment"></a>A bemutató környezet előkészítése
 
-4. Megjelenik a **Time selection panel** (Időkiválasztás panel). Ezen a panelen választhatja ki a megjeleníteni kívánt időkeretet.
+1. A böngészőben nyissa meg az [általános elérhetőségi bemutatót](https://insights.timeseries.azure.com/demo).
 
-   ![Időkiválasztás panel](media/quickstart/quickstart2.png)
+1. Ha a rendszer kéri, jelentkezzen be a Time Series Insights Explorerbe az Azure-fiókja hitelesítő adataival.
 
-5. Kattintson és húzzon a területen, majd kattintson a **Keresés** gombra.
- 
-   ![Időkeret kiválasztása](media/quickstart/quickstart3.png) 
+1. Megjelenik a Time Series Insights gyors bemutató oldal. A gyors bemutató elindításához kattintson a **tovább** gombra.
 
-   A Time Series Insights megjelenít egy diagramot a megadott időkerethez. A vonaldiagramokon belül számos műveletre van lehetősége, például szűrhet, rögzíthet, rendezhet és rétegezhet. 
+   [![Válassza a tovább lehetőséget](media/quickstart/quickstart1.png)](media/quickstart/quickstart1.png#lightbox)
 
-   Az **Időkiválasztás panelre** való visszatéréshez kattintson a lefelé nyílra, ahogy az ábrán is látható:
+## <a name="explore-the-demo-environment"></a>Ismerkedés a bemutató környezettel
 
-   ![Diagram](media/quickstart/quickstart4.png)
+1. Ekkor megjelenik az **időkijelölés panel** . Ezen a panelen választhatja ki a megjeleníteni kívánt időkeretet.
 
-6. Új keresési kifejezés felvételéhez kattintson a **Terms panel** (Kifejezések panel) **Add** (Hozzáadás) elemére.
+   [![Idő kiválasztása panel](media/quickstart/quickstart2.png)](media/quickstart/quickstart2.png#lightbox)
 
-   ![Elem hozzáadása](media/quickstart/quickstart5.png)
+1. Válasszon ki egy időkeretet, és húzza a régióba. Ezután válassza a **Keresés**lehetőséget.
 
-7. A diagramon válasszon ki egy régiót, kattintson rá a jobb gombbal, majd válassza az **Explore Events** (Események áttekintése) elemet.
- 
-   ![Események áttekintése](media/quickstart/quickstart6.png)
+   [![Időkeret kiválasztása](media/quickstart/quickstart3.png)](media/quickstart/quickstart3.png#lightbox)
 
-   Megjelenik egy nyers adatokat tartalmazó, a vizsgált régióra vonatkozó rács:
+   A Time Series Insights megjelenít egy diagramot a megadott időkerethez. A vonalas diagramon különböző műveleteket végezhet el. Például szűrheti, rögzítheti, rendezheti és halmozhatja fel.
 
-   ![Rácsnézet](media/quickstart/quickstart7.png)
+   Az **időkijelölési panelre**való visszatéréshez kattintson a lefelé mutató nyílra az ábrán látható módon:
 
-8. A kifejezéseket szerkesztve módosíthatja a diagram értékeit, és fel is vehet egy újabb kifejezést a különböző típusú értékek összevetéséhez:
+   [![Diagram](media/quickstart/quickstart4.png)](media/quickstart/quickstart4.png#lightbox)
 
-   ![Kifejezés hozzáadása](media/quickstart/quickstart8.png)
+1. Új keresési kifejezés hozzáadásához a **feltételek panelen** válassza a **Hozzáadás** lehetőséget.
 
-9. Adjon meg egy szűrőkifejezést a **Filter series...** (Sorozatok szűrése...) mezőben az alkalmi sorozatszűréshez. A rövid útmutatóhoz adja meg a **Station5** értéket az állomásra jellemző hőmérséklet és nyomás összevetéséhez.
- 
-   ![Sorozatok szűrése](media/quickstart/quickstart9.png)
+   [![Elem hozzáadása](media/quickstart/quickstart5.png)](media/quickstart/quickstart5.png#lightbox)
 
-A rövid útmutató befejezése után a mintaadatokkal kísérletezve különböző vizualizációkat hozhat létre. 
+1. A diagramon válasszon ki egy régiót, kattintson rá a jobb gombbal, majd válassza az **Explore Events** (Események áttekintése) elemet.
 
-### <a name="next-steps"></a>További lépések
-Készen áll a saját Time Series Insights-környezete létrehozására.
+   [![Események megismerése](media/quickstart/quickstart6.png)](media/quickstart/quickstart6.png#lightbox)
+
+   A nyers adatok egy rácsa jelenik meg a feltárt régióból.
+
+   [![Rács nézet](media/quickstart/quickstart7.png)](media/quickstart/quickstart7.png#lightbox)
+
+## <a name="select-and-filter-data"></a>Az adatszűrő kiválasztása és szűrése
+
+1. Szerkessze a használati feltételeket a diagram értékeinek módosításához. Adjon hozzá egy másik kifejezést a különböző típusú értékek kereszthivatkozásához.
+
+   [![Kifejezés hozzáadása](media/quickstart/quickstart8.png)](media/quickstart/quickstart8.png#lightbox)
+
+1. Adjon meg egy szűrési kifejezést a **szűrő** adatsorozat mezőjében az improvizált adatsorozat-szűréshez. A rövid útmutatóhoz adja meg a **Station5** értéket az állomásra jellemző hőmérséklet és nyomás összevetéséhez.
+
+   [![Adatsorozat szűrése](media/quickstart/quickstart9.png)](media/quickstart/quickstart9.png#lightbox)
+
+A rövid útmutató befejezése után a mintaadatokkal kísérletezve különböző vizualizációkat hozhat létre.
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Most, hogy elvégezte az oktatóanyagot, törölje a létrehozott erőforrásokat:
+
+1. A [Azure Portal](https://portal.azure.com)bal oldali menüjében válassza a **minden erőforrás**lehetőséget, keresse meg a Azure Time Series Insights erőforráscsoportot.
+1. Törölje a teljes erőforráscsoportot (és az abban található összes erőforrást) úgy, hogy kiválasztja az egyes erőforrások **törlését** vagy eltávolítását.
+
+## <a name="next-steps"></a>További lépések
+
+Készen áll a saját Time Series Insights környezet létrehozására:
 > [!div class="nextstepaction"]
 > [Time Series Insights-környezet tervezése](time-series-insights-environment-planning.md)

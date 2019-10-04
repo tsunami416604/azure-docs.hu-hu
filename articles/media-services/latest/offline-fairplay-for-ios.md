@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
-ms.openlocfilehash: 25bc7798853d350139a7802eaad68d52a1d7d99f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f2514fff2a3bb292a86c9f4c0e92c37ed2709097
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57834812"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341047"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>Offline FairPlay Streaming iOS-hez 
 
@@ -29,17 +29,20 @@ ms.locfileid: "57834812"
 - A Microsoft PlayReady
 - A Google Widevine
 - Az Apple FairPlay
-- AES-128 titkosítást
+- AES-128-titkosítás
 
 Digitális jogkezelési (technológia DRM) / tartalom Advanced Encryption Standard (AES) titkosítást dinamikusan történik a különböző adatfolyam-továbbítási protokollok kérésre. DRM-licenckiszolgáló/AES visszafejtési kulcskézbesítési szolgáltatások is által biztosított Media Services.
 
 Amellett, hogy online folyamatos átvitelre különböző adatfolyam-továbbítási protokollok tartalmának védelme, kapcsolat nélküli módban, a védett tartalomhoz az is gyakran által kért szolgáltatása. Offline mód támogatása a következő esetekben van szükség:
 
 * Lejátszás, amikor az internetes kapcsolat nem érhető el, mint például utazás közben.
-* Néhány tartalomszolgáltatók előfordulhat, hogy ne engedélyezze a DRM-licenckézbesítés túl egy ország szegély. Ha felhasználókat szeretne tekintse meg a tartalom országán kívül utazás közben, az offline letöltési van szükség.
-* Egyes országokban internet rendelkezésre állási és/vagy a sávszélesség korlátozva. Előfordulhat, hogy a felhasználók megadhatják tudni tekintse meg a megoldást, amely elég nagy a megfelelő élményt a tartalom letöltéséhez először. Ebben az esetben a probléma általában nem hálózati rendelkezésre állását, de korlátozott a sávszélesség. Over-the-top (OTT) / online videoplatformok (OVP) szolgáltatók kapcsolat nélküli módban támogatást kérhet.
+* Néhány tartalomszolgáltatók előfordulhat, hogy ne engedélyezze a DRM-licenckézbesítés túl egy adott ország/régió szegély. Ha felhasználókat szeretne tekintse meg a tartalmat az ország/régió kívül utazás közben, az offline letöltési van szükség.
+* Egyes országokban/régiókban internet rendelkezésre állási és/vagy a sávszélesség korlátozva. Előfordulhat, hogy a felhasználók megadhatják tudni tekintse meg a megoldást, amely elég nagy a megfelelő élményt a tartalom letöltéséhez először. Ebben az esetben a probléma általában nem hálózati rendelkezésre állását, de korlátozott a sávszélesség. Over-the-top (OTT) / online videoplatformok (OVP) szolgáltatók kapcsolat nélküli módban támogatást kérhet.
 
 Ez a cikk ismerteti az iOS 10 vagy újabb rendszerű eszközök célzó FairPlay Streaming (FPS) kapcsolat nélküli módban támogatása. Ez a szolgáltatás egyéb Apple-platformoknál, például a watchOS, tvOS vagy Safari macOS rendszeren nem támogatott.
+
+> [!NOTE]
+> Kapcsolat nélküli DRM csak történik, hogy egyetlen kér licencet a tartalom letöltésekor. A szükségtelen díjak az esetleges hibákat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -47,7 +50,7 @@ Az iOS 10-es és újabb eszközön a fairplay rendszerhez megvalósítása offli
 
 * Tekintse át az online tartalom védelmét a fairplay rendszerhez: 
 
-    - [Apple FairPlay-licenc követelményeit és konfigurációját](fairplay-license-overview.md)
+    - [Apple FairPlay-licencek követelményei és konfigurálása](fairplay-license-overview.md)
     - [DRM a dinamikus titkosítás és a licenc kézbesítési szolgáltatás használata](protect-with-drm.md)
     - Egy .NET-minta, amely tartalmazza az online FPS streamelési konfiguráció: [ConfigureFairPlayPolicyOptions](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L505)
 * Szerezze be a FPS SDK-t az Apple Developer Network. A FPS SDK két összetevőkből áll:

@@ -5,50 +5,99 @@ services: app-service\mobile
 author: conceptdev
 ms.service: app-service-mobile
 ms.topic: include
-ms.date: 05/25/2018
+ms.date: 05/06/2019
 ms.author: crdun
 ms.custom: include file
-ms.openlocfilehash: 1d3bfb7bc8a5432392dba3b0c5019902b3e59773
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
-ms.translationtype: HT
+ms.openlocfilehash: a7e543dcad9ad1b016d1244451cd87cda5ad7492
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39513817"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67440220"
 ---
-1. Kattintson az **App Services** gombra, válassza a Mobile Apps-háttéralkalmazást, majd a **Gyorsindítás** lehetőséget, végül pedig válassza ki az ügyfélplatformot (iOS, Android, Xamarin, Cordova).
+1. Töltse le az ügyfél SDK rövid útmutatók, a következő platformokhoz:
+    
+    [iOS (Objective-C)](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/iOS)  
+    [iOS (Swift)](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/iOS-Swift)  
+    [Android (Java)](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/android)  
+    [Xamarin.iOS](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/xamarin.iOS)  
+    [Xamarin.Android](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/xamarin.android)  
+    [Xamarin.Forms](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/xamarin.forms)  
+    [Cordova](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/cordova)  
+    [Windows (C#)](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/windows-uwp-cs)  
 
-    ![Azure Portal a kiemelt Mobile Apps Quickstarttal][quickstart]
+    > [!NOTE]
+    > Ha az iOS-projekt le kell töltenie "azuresdk – iOS -\*.zip" a [legújabb GitHub-kiadás](https://github.com/Azure/azure-mobile-apps-ios-client/releases/latest). Csomagolja ki, és adja hozzá a `MicrosoftAzureMobile.framework` fájlt a projekt gyökérkönyvtárában.
+    >
 
-1. Ha nincs konfigurált adatbázis-kapcsolat, hozzon létre egyet a következő módon:
+2. Adatbázis-kapcsolat hozzáadása vagy meglévő kapcsolattal csatlakozni kell. Először határozza meg, hogy lesz egy adattár létrehozása vagy használjon egy meglévőt.
 
-    ![Azure Portal Mobile Appsszel – csatlakozás adatbázishoz][connect]
+    - **Új adattár létrehozása**: Ha egy adattár létrehozása, használja a következő rövid útmutatót:
 
-    a. Hozzon létre egy új SQL-adatbázist és -kiszolgálót. Ahhoz, hogy az alábbi 3. lépést elvégezhesse, előfordulhat, hogy változatlanul kell hagynia a kapcsolati sztring nevét tartalmazó mező alapértelmezett értékét (MS_TableConnectionString).
+        [Rövid útmutató: Ismerkedés az Azure SQL Database önálló adatbázisok](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-quickstart-guide)
 
-    ![Azure Portal Mobile Appsszel – új adatbázis és kiszolgáló létrehozása][server]
+    - **Meglévő adatforrás**: Kövesse az alábbi utasításokat, ha azt szeretné használni a meglévő adatbázis-kapcsolat
 
-    b. Várjon az adatkapcsolat sikeres létrehozásáig.
+        1. Az SQL adatbázis-kapcsolati karakterlánc-formátum – `Data Source=tcp:{your_SQLServer},{port};Initial Catalog={your_catalogue};User ID={your_username};Password={your_password}`
 
-    ![Az Azure Portal értesítése az adatkapcsolat sikeres létrejöttéről][notification]
+           **{your_SQLServer}**  Nevét, a kiszolgáló ez tekintheti meg az adatbázis áttekintő oldala, és általában "server_name.database.windows.net" formájában.
+            **{port}**  általában 1433.
+            **{your_catalogue}**  Az adatbázis nevét.
+            **{your_username}**  Felhasználónevet az adatbázis eléréséhez.
+            **{your_password}**  Az adatbázis elérésére szolgáló jelszó.
 
-    c. Az adatkapcsolatnak sikeresnek kell lennie.
+            [További információ az SQL-kapcsolati karakterlánc-formátum](https://docs.microsoft.com/dotnet/framework/data/adonet/connection-string-syntax#sqlclient-connection-strings)
 
-    ![Az Azure Portal értesítése: „Már van adatkapcsolata”][already-connection]
+        2. Adja hozzá a kapcsolati karakterláncot a **mobilalkalmazás** az App Service-ben, kapcsolati karakterláncok az alkalmazás használatával kezelheti a **konfigurációs** lehetőséget a menüben.
 
-1. A **2. Tábla API létrehozása** elemnél a **Háttérrendszer nyelveként** válassza a Node.js-t.
+            Kapcsolati karakterlánc hozzáadása:
 
-1. Fogadja el a nyugtázást, majd válassza a **TodoItem tábla létrehozása** elemet.
-    Ez a művelet létrehoz egy új teendőtáblát az adatbázisban.
+            1. Kattintson a **Alkalmazásbeállítások** fülre.
 
-    >[!IMPORTANT]
-    > A létező háttérrendszerek Node.js nyelvűre történő átállítása minden tartalmat felülír. Ehelyett egy .NET-háttérrendszer létrehozásához lásd: [A Mobile Appshez készült .NET háttérkiszolgálói SDK használata][instructions].
+            2. Kattintson a **[+] új kapcsolati karakterlánc**.
 
-<!-- Images. -->
-[quickstart]: ./media/app-service-mobile-configure-new-backend/quickstart.png
-[connect]: ./media/app-service-mobile-configure-new-backend/connect-to-bd.png
-[notification]: ./media/app-service-mobile-configure-new-backend/notification-data-connection-create.png
-[server]: ./media/app-service-mobile-configure-new-backend/create-new-server.png
-[already-connection]: ./media/app-service-mobile-configure-new-backend/already-connection.png
+            3. Meg kell adnia **neve**, **érték** és **típus** a kapcsolati karakterlánc.
 
-<!-- URLs -->
-[instructions]: ../articles/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#create-app
+            4. Típus **neve** , `MS_TableConnectionString`
+
+            5. Értéknek kell lennie, mielőtt lépésben kialakított a karakterláncban.
+
+            6. Válasszon egy kapcsolati karakterláncot egy SQL Azure adatbázishoz hozzáadásakor **Rendszerkarbantartás** alatt **típus**.
+
+3. Az Azure Mobile Apps SDK-k a Node.js és a .NET-háttérrendszerek rendelkezik.
+
+   - **Node.js háttérrendszer**
+    
+     Ha Node.js rövid útmutatójában található alkalmazás használatához, kövesse az alábbi utasításokat.
+
+     1. Az Azure Portalon lépjen a **könnyen kezelhető táblák**, ezt a képernyőt.
+      
+        ![Könnyen kezelhető táblák csomópont](./media/app-service-mobile-configure-new-backend/node-easy-tables.png)
+
+     2. Ellenőrizze, hogy az SQL-kapcsolati sztring már meg van adva az az **konfigurációs** fülre. Ezután jelölje be **tudomásul veszem, hogy ezzel felülírja az összes hely tartalmának** , és kattintson a **TodoItem tábla létrehozása** gombra.
+     
+        ![Könnyen kezelhető táblák csomópont-konfiguráció](./media/app-service-mobile-configure-new-backend/node-easy-tables-configuration.png)
+
+     3. A **könnyen kezelhető táblák**, kattintson a **+ Hozzáadás** gombra.
+    
+        ![Könnyen kezelhető táblák csomópont hozzáadása gomb](./media/app-service-mobile-configure-new-backend/node-easy-tables-add.png)
+
+     4. Hozzon létre egy `TodoItem` névtelen hozzáférés tartalmazó tábla.
+      
+        ![Könnyen kezelhető táblák csomópont tábla hozzáadása](./media/app-service-mobile-configure-new-backend/node-easy-tables-table-add.png)
+
+   - **.NET-háttérrendszer**
+    
+        Ha .NET gyorsindítási alkalmazást használni, kövesse az alábbi utasításokat.
+
+        1. Töltse le az Azure Mobile Apps .NET kiszolgálói projektet, a a [azure-mobile-alkalmazások – gyors útmutatók tárház](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/backend/dotnet/Quickstart).
+
+        2. Hozza létre a .NET server projektet helyileg a Visual Studióban.
+
+        3. A Visual Studióban nyissa meg a Megoldáskezelőben kattintson a jobb gombbal a `ZUMOAPPNAMEService` projektre, kattintson a **közzététel**, látni fogja a `Publish to App Service` ablak. Ha Mac rendszeren dolgozik, tekintse meg az egyéb módokon üzembe helyezni az alkalmazást [Itt](https://docs.microsoft.com/azure/app-service/deploy-local-git).
+        
+           ![A Visual studio közzététel](./media/app-service-mobile-configure-new-backend/visual-studio-publish.png)
+
+        4. Válassza ki **App Service-ben** megfelelően cél közzététele, majd kattintson **meglévő**, majd kattintson a **közzététel** gombra az ablak alján.
+
+        5. Jelentkezzen be a Visual Studio az Azure-előfizetésében először kell. Válassza ki a `Subscription`, `Resource Group`, majd válassza ki az alkalmazás nevére. Amikor elkészült, kattintson a **OK**, ez lesz helyi üzembe helyezés a .NET kiszolgálói projektet, hogy az éppen illeszkedik az App Service-ben. Az üzembe helyezést, a rendszer átirányítja `http://{zumoappname}.azurewebsites.net/` a böngészőben.                   

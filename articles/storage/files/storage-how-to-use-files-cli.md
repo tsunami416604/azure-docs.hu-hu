@@ -1,21 +1,20 @@
 ---
 title: Rövid útmutató az Azure-fájlmegosztások felügyeletéhez az Azure CLI-vel
 description: Ebből a rövid útmutatóból megtudhatja, hogyan felügyelheti az Azure Files szolgáltatást az Azure CLI használatával.
-services: storage
-author: wmgries
+author: roygara
 ms.service: storage
 ms.topic: quickstart
 ms.date: 10/26/2018
-ms.author: wgries
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f18b2cbf31b50b27c1ae8a6d4fa4a6510781cb12
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 93baf275e93c28283836a92c71eb9b24151392fc
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57886488"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699593"
 ---
-# <a name="quickstart-create-and-manage-azure-file-shares-using-azure-cli"></a>Gyors útmutató: Létrehozása és kezelése az Azure-fájlmegosztások Azure CLI-vel
+# <a name="quickstart-create-and-manage-azure-file-shares-using-azure-cli"></a>Gyors útmutató: Azure-fájlmegosztás létrehozása és kezelése az Azure CLI-vel
 Ez az útmutató az [Azure-fájlmegosztások](storage-files-introduction.md) Azure CLI-vel történő használatának alapvető lépéseit mutatja be. Az Azure-fájlmegosztások nem különböznek más fájlmegosztásoktól, a tárolásuk azonban a felhőben történik, és az Azure platform nyújt számukra támogatást. Az Azure-fájlmegosztások támogatják az iparági szabvány SMB protokollt, és lehetővé teszik a több gép, alkalmazás és példány közötti fájlmegosztást. 
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
@@ -45,7 +44,7 @@ az group create --name myResourceGroup --location eastus
 ## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 A tárfiókok az Azure-fájlmegosztások vagy más tárolási erőforrások, például blobok vagy üzenetsorok üzembe helyezéséhez használható tárolók közös készletei. Egy tárfiók korlátlan számú fájlmegosztást tartalmazhat. Egy megosztás korlátlan számú fájl tárolására használható, egészen a tárfiók kapacitásának korlátjáig.
 
-A következő példa létrehoz egy *mystorageaccount\<random number\>* nevű tárfiókot az [az storage account create](/cli/azure/storage/account) paranccsal, majd a tárfiók nevét a `$STORAGEACCT` változóba helyezi. Tárfiókok nevének egyedinek kell lenniük, ezért ügyeljen arra, hogy egyedi nevére cserélje le a "mystorageacct".
+A következő példa létrehoz egy *mystorageaccount\<random number\>* nevű tárfiókot az [az storage account create](/cli/azure/storage/account) paranccsal, majd a tárfiók nevét a `$STORAGEACCT` változóba helyezi. A Storage-fiók nevének egyedinek kell lennie, ezért mindenképpen cserélje le az "mystorageacct kifejezést" kifejezést egyedi névre.
 
 ```azurecli-interactive 
 STORAGEACCT=$(az storage account create \
@@ -87,15 +86,15 @@ A fájlmegosztás SMB-vel való csatlakoztatásához tekintse meg a használt op
 - [Windows](storage-how-to-use-files-windows.md)
 
 ### <a name="using-an-azure-file-share-with-the-file-rest-protocol"></a>Azure-fájlmegosztások használata a Fájl REST protokollal 
-Lehetséges dolgozhat közvetlenül a fájl REST-protokollon közvetlenül (REST HTTP-hívások saját kezűleg handcrafting), de a fájl REST protokoll használatára leggyakoribb módja az, hogy az Azure CLI-vel, a [Azure PowerShell-modul](storage-how-to-use-files-powershell.md), vagy egy Azure Storage SDK-val , amelyek mindegyike adja meg a fájl REST-protokollon, a kiválasztott parancsfájlok és programozás nyelven nice burkolója.  
+Közvetlenül is dolgozhat a fájl REST protokollal közvetlenül (TÖBBek között a REST HTTP-hívások esetében), de a fájl REST protokoll használatának leggyakoribb módja az Azure CLI, a [Azure PowerShell modul](storage-how-to-use-files-powershell.md)vagy egy Azure Storage SDK használata, amelynek mindegyike rendelkezik szép burkoló a file REST protokoll körül a választott Scripting/programozási nyelven.  
 
 Arra számítunk, hogy a legtöbb Azure Files-felhasználó az SMB protokollon keresztül kíván majd dolgozni az Azure-fájlmegosztásával, mivel ez lehetővé teszi számukra a mások által is vélhetően használt meglévő alkalmazások és eszközök használatát. A Fájl REST API használata azonban számos előnnyel jár az SMB-vel szemben, például a következő esetekben:
 
 - A fájlmegosztást az Azure Bash Cloud Shellben böngészi (amely nem tud fájlmegosztásokat csatlakoztatni az SMB-n keresztül).
-- Akkor hajtsa végre egy szkriptet vagy az alkalmazás ügyfél, amely nem tud csatlakoztatni az SMB-megosztáson, például olyan helyszíni ügyfelek, amelyek nem rendelkeznek a 445-ös port.
+- Olyan ügyfélen kell végrehajtania egy parancsfájlt vagy alkalmazást, amely nem tud SMB-megosztást csatlakoztatni, például olyan helyszíni ügyfeleket, amelyek nem rendelkeznek a 445-as porttal.
 - Ki szeretné használni a kiszolgáló nélküli erőforrások, például az [Azure Functions](../../azure-functions/functions-overview.md) előnyeit. 
 
-Az alábbi példák bemutatják, hogyan módosíthatja az Azure-fájlmegosztást a fájl REST protokoll az Azure CLI használatával. 
+Az alábbi példák bemutatják, hogyan kezelheti az Azure-fájlmegosztás használatát az Azure CLI-vel a file REST protokollal. 
 
 ### <a name="create-a-directory"></a>Könyvtár létrehozása
 Ha egy új, *myDirectory* nevű könyvtárat szeretne létrehozni az Azure-fájlmegosztás gyökérmappájában, használja az [`az storage directory create`](/cli/azure/storage/directory) parancsot:

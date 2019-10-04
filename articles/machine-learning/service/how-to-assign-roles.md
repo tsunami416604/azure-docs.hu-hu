@@ -1,7 +1,7 @@
 ---
-title: Szerepkörök az Azure Machine Learning-munkaterület kezelése
-titleSuffix: Azure Machine Learning service
-description: Ismerje meg, hogyan érhető el az Azure Machine Learning szolgáltatás munkaterületén szerepköralapú hozzáférés-vezérlés (RBAC) használatával.
+title: Szerepkörök kezelése Azure Machine Learning munkaterületen
+titleSuffix: Azure Machine Learning
+description: Megtudhatja, hogyan férhet hozzá egy Azure Machine Learning munkaterülethez szerepköralapú hozzáférés-vezérlés (RBAC) használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,65 +9,65 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: larryfr
 author: Blackmist
-ms.date: 2/20/2019
+ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 56813d9a075e1c327fb5612c50ea72f067ec505d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 22ce9ea44dde6da4d1194463fe266ed00c5a3f96
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58805601"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067708"
 ---
-# <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Az Azure Machine Learning-munkaterület-hozzáférés kezelése
+# <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning munkaterület elérésének kezelése
 
-Ebből a cikkből megismerheti, hogyan kezelheti az Azure Machine Learning-munkaterület elérését. [Szerepköralapú hozzáférés-vezérlés (RBAC)](/azure/role-based-access-control/overview) Azure-erőforrásokhoz való hozzáférés kezelésére szolgál. Az Azure Active Directory felhasználók vannak hozzárendelve adott szerepkörök, amelyek az erőforrásokhoz való hozzáférést. Az Azure biztosít a beépített szerepkörök és az egyéni szerepkörök létrehozása.
+Ebből a cikkből megtudhatja, hogyan kezelheti az Azure Machine Learning-munkaterülethez való hozzáférést. A [szerepköralapú hozzáférés-vezérlés (RBAC)](/azure/role-based-access-control/overview) az Azure-erőforrásokhoz való hozzáférés kezelésére szolgál. A Azure Active Directory lévő felhasználók meghatározott szerepköröket kapnak, amelyek hozzáférést biztosítanak az erőforrásokhoz. Az Azure beépített szerepköröket és egyéni szerepkörök létrehozását is lehetővé teszi.
 
 ## <a name="default-roles"></a>Alapértelmezett szerepkörök
 
-Az Azure Machine Learning-munkaterület egy Azure-erőforrás. Egyéb Azure-erőforrások, például egy új Azure Machine Learning-munkaterület létrehozásakor azt együttműködik a három alapértelmezett szerepkör. Felhasználók hozzáadása a munkaterületet, és hozzárendelheti azokat a beépített szerepkörök egyike.
+Az Azure Machine Learning munkaterület egy Azure-erőforrás. Más Azure-erőforrásokhoz hasonlóan, amikor létrejön egy új Azure Machine Learning munkaterület, három alapértelmezett szerepkör jön létre. Felhasználókat adhat hozzá a munkaterülethez, és hozzárendelheti őket a beépített szerepkörök valamelyikéhez.
 
-| Szerepkör | Hozzáférési szint |
+| Role | Hozzáférési szint |
 | --- | --- |
-| **Olvasó** | A munkaterület csak olvasási műveleteket. Olvasói is listázása és megtekintése eszközök a munkaterületen, de nem létrehozása vagy frissítése ezeknek az eszközöknek. |
-| **Közreműködő** | Megtekintése, létrehozása, szerkesztése vagy törlése (ha vannak ilyenek) eszközök a munkaterületen. Például közreműködők is kísérlet létrehozása, létrehozása vagy csatolása egy számítási fürt, küldje el a futtató és egy webszolgáltatás üzembe helyezése. |
-| **Tulajdonos** | Teljes hozzáférés a munkaterület, beleértve a megtekintése, létrehozása, szerkesztése vagy törlése (ha vannak ilyenek) lehetővé teszi az eszközök a munkaterületen. Emellett módosíthatja a szerepkör-hozzárendeléseket. |
+| **Olvasó** | Csak olvasási műveletek a munkaterületen. Az olvasók megtekinthetik és megtekinthetik a munkaterületen lévő objektumokat, de nem hozhatnak létre és nem frissíthetik ezeket az eszközöket. |
+| **Közreműködő** | Munkaterületen lévő eszközök megtekintése, létrehozása, szerkesztése vagy törlése (ha van ilyen). A közreműködők például létrehozhatnak egy kísérletet, létrehozhatnak vagy csatolhatnak egy számítási fürtöt, futtathatnak és telepíthetnek egy webszolgáltatást. |
+| **Tulajdonos** | Teljes hozzáférés a munkaterülethez, beleértve a munkaterületen lévő eszközök megtekintését, létrehozását, szerkesztését vagy törlését. Emellett módosíthatja a szerepkör-hozzárendeléseket is. |
 
 > [!IMPORTANT]
-> Hozzáférés a szerepkör hatóköre beállítható több szintre az Azure-ban. Egy munkaterület tulajdonosi hozzáféréssel rendelkező felhasználó például nem lehet az azt tartalmazó erőforráscsoport tulajdonosi hozzáféréssel. További információkért lásd: [hogyan RBAC működik](/azure/role-based-access-control/overview#how-rbac-works).
+> A szerepkör-hozzáférés az Azure több szintjére is kiterjed. Előfordulhat például, hogy valaki tulajdonosi hozzáféréssel rendelkezik a munkaterülethez, és nem rendelkezik tulajdonosi hozzáféréssel a munkaterületet tartalmazó erőforráscsoporthoz. További információ: [how RBAC Works](/azure/role-based-access-control/overview#how-rbac-works).
 
-Adott beépített szerepkörökkel kapcsolatos további információkért lásd: [Azure a beépített szerepkörök](/azure/role-based-access-control/built-in-roles).
+Az adott beépített szerepkörökkel kapcsolatos további információkért lásd: [beépített szerepkörök az Azure-](/azure/role-based-access-control/built-in-roles)hoz.
 
 ## <a name="manage-workspace-access"></a>Munkaterület-hozzáférés kezelése
 
-Ha Ön a tulajdonosa, egy munkaterületet, akkor hozzáadhat és eltávolíthat a munkaterülethez tartozó szerepkörök. Szerepkörök hozzárendelheti a felhasználók számára is. Az alábbi hivatkozások segítségével arról, hogy miképpen való hozzáférést kezelheti:
-- [Az Azure portal felhasználói felületén](/azure/role-based-access-control/role-assignments-portal)
+Ha Ön a munkaterület tulajdonosa, szerepköröket adhat hozzá és távolíthat el a munkaterülethez. Szerepköröket is hozzárendelhet a felhasználókhoz. A következő hivatkozások segítségével megismerheti a hozzáférés kezelését:
+- [Azure Portal felhasználói felület](/azure/role-based-access-control/role-assignments-portal)
 - [PowerShell](/azure/role-based-access-control/role-assignments-powershell)
 - [Azure CLI](/azure/role-based-access-control/role-assignments-cli)
 - [REST API](/azure/role-based-access-control/role-assignments-rest)
-- [Az Azure Resource Manager-sablonok](/azure/role-based-access-control/role-assignments-template)
+- [Azure Resource Manager sablonok](/azure/role-based-access-control/role-assignments-template)
 
-Ha már telepítette a [Azure Machine Learning parancssori](reference-azure-machine-learning-cli.md), szerepkörök hozzárendelése a felhasználókhoz a CLI-parancsot is használhatja.
+Ha telepítette a [Azure Machine learning CLI](reference-azure-machine-learning-cli.md)-t, a parancssori felület parancs használatával is hozzárendelhet szerepköröket a felhasználókhoz.
 
 ```azurecli-interactive 
-az ml workspace share -n <workspace_name> -g <resource_group_name> --role <role_name> --user <user_corp_email_address>
+az ml workspace share -w <workspace_name> -g <resource_group_name> --role <role_name> --user <user_corp_email_address>
 ```
 
-A `user` mező, ahol a munkaterület szülő előfizetés él Azure Active Directory-példány egy meglévő felhasználó e-mail-címét. A következő példa bemutatja, hogyan használja a következő parancsot:
+A `user` mező egy meglévő felhasználó e-mail-címe a Azure Active Directory példányában, ahol a munkaterület szülő-előfizetése él. Az alábbi példa bemutatja, hogyan használhatja ezt a parancsot:
 
 ```azurecli-interactive 
-az ml workspace share -n my_workspace -g my_resource_group --role Contributor --user jdoe@contoson.com
+az ml workspace share -w my_workspace -g my_resource_group --role Contributor --user jdoe@contoson.com
 ```
 
 ## <a name="create-custom-role"></a>Egyéni szerepkör létrehozása
 
-Ha a beépített szerepkörök nem elegendő, létrehozhat egyéni szerepköröket is. Egyéni szerepkörök előfordulhat, hogy rendelkezik olvasási, írási, törlése és számítási erőforrásokra vonatkozó engedélyek, munkaterület. Elérhetővé teheti a szerepkör egy adott munkaterület szintjén, egy adott erőforráscsoport szintjén vagy egy adott előfizetés szintjén.
+Ha a beépített szerepkörök nem elégségesek, létrehozhat egyéni szerepköröket. Előfordulhat, hogy az egyéni szerepkörök olvasási, írási, törlési és számítási erőforrás-jogosultságokkal rendelkeznek az adott munkaterületen. A szerepkört egy adott munkaterület-szinten, egy adott erőforráscsoport-szinten vagy egy adott előfizetési szinten is elérhetővé teheti.
 
 > [!NOTE]
-> Ennek az erőforrásnak belül egyéni szerepkörök létrehozása ezen a szinten az erőforrás tulajdonosának kell lennie.
+> Ezen a szinten az erőforrás tulajdonosának kell lennie ahhoz, hogy egyéni szerepköröket hozzon létre az adott erőforráson belül.
 
-Egyéni szerepkör létrehozása hozhatnak létre egy szerepkör definíciójának JSON-fájlt, amelyben megadja az engedélyt, a szerepkör hatóköre. Az alábbi példa meghatározza az egy adott munkaterület szintjén kötődő "adatelemzési szakértő" nevű egyéni szerepkört:
+Egyéni szerepkör létrehozásához először létre kell hoznia egy szerepkör-definíciós JSON-fájlt, amely meghatározza a szerepkör engedélyeit és hatókörét. Az alábbi példa egy "adattudós" nevű egyéni szerepkört definiál egy adott munkaterület-szinten:
 
-`data_scientist_role.json` :
+`data_scientist_role.json`:
 ```json
 {
     "Name": "Data Scientist",
@@ -86,32 +86,34 @@ Egyéni szerepkör létrehozása hozhatnak létre egy szerepkör definícióján
 }
 ```
 
-Módosíthatja a `AssignableScopes` mezőt állítsa be az egyéni szerepkör hatóköre az előfizetés szintjén, az erőforráscsoport szintjén vagy egy adott munkaterület szintjén.
+A `AssignableScopes` mező módosításával beállíthatja az egyéni szerepkör hatókörét az előfizetés szintjén, az erőforráscsoport szintjén vagy egy adott munkaterület szintjén.
 
-Az egyéni szerepkör mindent a munkaterületen, kivéve a következő műveleteket hajthatja végre:
+Ez az egyéni szerepkör a munkaterületen mindent megtehet a következő műveletek kivételével:
 
-- Nem hozható létre vagy számítási erőforrás frissítése.
-- Azt nem lehet törölni olyan számítási erőforrás.
-- Azt nem hozzáadásához, törléséhez vagy alter szerepkör-hozzárendelések.
-- Nem tudja törölni a munkaterületen.
+- Nem hozható létre vagy nem frissíthető számítási erőforrás.
+- Nem törölhet számítási erőforrást.
+- Szerepkör-hozzárendeléseket nem lehet hozzáadni, törölni vagy módosítani.
+- A munkaterület nem törölhető.
 
-Az egyéni szerepkör üzembe helyezéséhez használja az Azure CLI-parancsot:
+Az egyéni szerepkör üzembe helyezéséhez használja az alábbi Azure CLI-parancsot:
 
 ```azurecli-interactive 
 az role definition create --role-definition data_scientist_role.json
 ```
 
-Üzembe helyezés után ez a szerepkör elérhetővé válik az adott munkaterületen. Most adja hozzá, és rendelje hozzá ezt a szerepkört az Azure Portalon. Vagy a felhasználó ezt a szerepkört a segítségével rendelhet a `az ml workspace share` parancssori felületi parancsot:
+Az üzembe helyezés után ez a szerepkör elérhetővé válik a megadott munkaterületen. Most hozzáadhatja és hozzárendelheti ezt a szerepkört a Azure Portal. A szerepkört hozzárendelheti egy felhasználóhoz a `az ml workspace share` CLI parancs használatával:
 
 ```azurecli-interactive
-az ml workspace share -n my_workspace -g my_resource_group --role "Data Scientist" --user jdoe@contoson.com
+az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientist" --user jdoe@contoson.com
 ```
 
+Az egyéni szerepkörökkel kapcsolatos további információkért lásd: [Egyéni szerepkörök az Azure-erőforrásokhoz](/azure/role-based-access-control/custom-roles).
 
-További információkért lásd: [egyéni szerepkörök az Azure-erőforrások](/azure/role-based-access-control/custom-roles).
+További információ az egyéni szerepkörökkel használható műveletekről (műveletekről): [erőforrás-szolgáltatói műveletek](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices).
 
 ## <a name="next-steps"></a>További lépések
 
-- [Vállalati biztonsági áttekintése](concept-enterprise-security.md)
-- [Biztonságos futtatására kísérletek vagy következtetési egy virtuális hálózaton belül](how-to-enable-virtual-network.md)
-- [Oktatóanyag: Modellek](tutorial-train-models-with-aml.md)
+- [A nagyvállalati biztonság áttekintése](concept-enterprise-security.md)
+- [A kísérletek és következtetések/pontszámok biztonságos futtatása virtuális hálózaton belül](how-to-enable-virtual-network.md)
+- [Oktatóanyag: Modellek betanítása](tutorial-train-models-with-aml.md)
+- [Erőforrás-szolgáltatói műveletek](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)

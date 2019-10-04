@@ -5,18 +5,18 @@ author: rayne-wiselman
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 12/31/2018
+ms.date: 09/03/2019
 ms.author: raynew
-ms.openlocfilehash: 3ad3438f02ead9063a683a39d4ac5823274d55f7
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: f3ff6e5e05cab9aab5257d810c6785e7691bae45
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54155169"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232184"
 ---
 # <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>Milyen számítási feladatokat tud védeni az Azure Site Recovery?
 
-Ez a cikk ismerteti a munkaterheléseket és alkalmazásokat a vész-helyreállítási védheti a [Azure Site Recovery](site-recovery-overview.md) szolgáltatás.
+Ez a cikk azokat a munkaterheléseket és alkalmazásokat ismerteti, amelyeket a [Azure site Recovery](site-recovery-overview.md) szolgáltatással szembeni vész-helyreállításhoz használhat.
 
 
 
@@ -35,13 +35,13 @@ A Site Recovery az alábbi módokon járul hozzá az alkalmazásszintű védelem
 * Alkalmazásfüggetlen, így egy támogatott gépen futó bármilyen számítási feladatok replikációját biztosítja.
 * Közel szinkron replikációt biztosít, amelynek esetében a helyreállítási időkorlát mindössze 30 másodperc is lehet, így megfelel a legtöbb kritikus fontosságú üzleti alkalmazás igényeinek.
 * Alkalmazáskonzisztens pillanatképeket rögzít egy- vagy többszintű alkalmazásokról.
-* Együttműködik az SQL Server AlwaysOn szolgáltatással, és számos más alkalmazásszintű replikációs technológiát is képes felhasználni (például AD-replikáció, SQL AlwaysOn, Exchange adatbázis-elérhetőségi csoportok (DAG) és Oracle Data Guard).
+* Integráció SQL Server AlwaysOn, és együttműködés más alkalmazás-szintű replikációs technológiákkal, beleértve az AD-replikációt, az SQL-AlwaysOn, az Exchange Database rendelkezésre állási csoportjait (Dag).
 * Külső szkripteket és manuális műveleteket is tartalmazó, rugalmas helyreállítási tervekkel rendelkezik, amelyekkel egész alkalmazáscsoportokat állíthat helyre egyetlen kattintással.
 * A Site Recovery és az Azure fejlett hálózatkezelési funkciói leegyszerűsítik az alkalmazáshálózati követelményeket, ideértve az IP-címek lefoglalását, a terheléselosztók konfigurálását, valamint az Azure Traffic Manager integrációját, ami alacsony helyreállítási időre vonatkozó célkitűzéssel rendelkező hálózatváltást garantál.
 * A szolgáltatás gazdag, éles használatra kész és alkalmazásspecifikus parancsprogramokat tartalmazó automatizációs kódtárat tartalmaz, amely letölthető, és beépíthető a helyreállítási tervekbe.
 
 ## <a name="workload-summary"></a>A számítási feladatok összefoglalása
-A Site Recovery a támogatott gépeken futó bármilyen alkalmazást képes replikálni. Ezenfelül a termékekért felelős csoportokkal együttműködésben további, alkalmazásspecifikus teszteket is végrehajtottunk.
+A Site Recovery a támogatott gépeken futó bármilyen alkalmazást képes replikálni. Ezen kívül a termék csapatával együttműködve további tesztelést végzünk a táblázatban megadott alkalmazásokhoz.
 
 | **Számítási feladat** |**Virtuális gépek replikálása az Azure-ba** |**Hyper-V virtuális gépek replikálása másodlagos helyre** | **Hyper-V virtuális gépek replikálása az Azure-ba** | **VMware virtuális gépek replikálása másodlagos helyre** | **VMware virtuális gépek replikálása az Azure-ba** |
 | --- | --- | --- | --- | --- |---|
@@ -146,7 +146,7 @@ Az Azure Site Recovery úgy gondoskodik a vészhelyreállításról, hogy a kör
 ## <a name="protect-citrix-xenapp-and-xendesktop"></a>A Citrix XenApp és a XenDesktop védelme
 A Site Recovery szolgáltatással az alábbi módokon biztosíthatja az üzemelő Citrix XenApp- és XenDesktop-példány védelmét:
 
-* Az üzemelő Citrix XenApp- és XenDesktop-példányok védelmének engedélyezése a különféle környezeti szintek (például AD DNS-kiszolgáló, SQL Database-kiszolgáló, Citrix kézbesítési vezérlő, StoreFront-kiszolgáló, XenApp Master (VDA), Citrix XenApp licenckiszolgáló) az Azure-ba való replikálásával történik.
+* Az üzemelő Citrix XenApp- és XenDesktop-példányok védelmének engedélyezése a különféle környezeti szintek (például AD DNS-kiszolgáló, SQL-adatbáziskiszolgáló, Citrix kézbesítési vezérlő, StoreFront-kiszolgáló, XenApp Master (VDA), Citrix XenApp licenckiszolgáló) az Azure-ba való replikálásával történik.
 * Megkönnyíti a felhőre való áttelepítést, mivel az üzemelő Citrix XenApp- és XenDesktop-példányok a Site Recovery segítségével is áttelepíthetők az Azure-ba.
 * Leegyszerűsíti a Citrix XenApp-/XenDesktop-fejlesztést és -tesztelést, mivel segítségével az éleshez hasonló, igény szerinti másolat hozható létre az alkalmazások teszteléséhez és a hibakereséséhez.
 * Ez a megoldás kizárólag a Windows Server operációs rendszer virtuális asztali környezeteire alkalmazható, az ügyfelek virtuális asztali környezetei esetében nem, mivel azok licencelése az Azure-ban még nem támogatott.

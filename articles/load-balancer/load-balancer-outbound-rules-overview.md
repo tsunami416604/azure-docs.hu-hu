@@ -1,24 +1,24 @@
 ---
-title: Az Azure Load Balancerben kimenő szabályok
+title: A Azure Load Balancer kimenő szabályai
 titlesuffix: Azure Load Balancer
 description: Kimenő szabályok használatával határozza meg a kimenő hálózati cím fordítása
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/19/2018
-ms.author: kumud
-ms.openlocfilehash: 7a0b679ef7a1a468c8a849b0a3fb9f744a392dd3
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.date: 7/17/2019
+ms.author: allensu
+ms.openlocfilehash: 39a23fa277d7bb389098674556b65b1b13676ead
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243603"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305586"
 ---
 # <a name="load-balancer-outbound-rules"></a>A terheléselosztó kimenő szabályok
 
@@ -34,7 +34,7 @@ Kimenő szabályok lehetővé teszik a vezérlőhöz:
 - virtuális gépek, amelyek nyilvános IP-címek kell fordítani. 
 - hogyan [kimenő SNAT-portok](load-balancer-outbound-connections.md#snat) kell kiosztani.
 - mely protokollok, adja meg a kimenő fordítását.
-- milyen kimenő kapcsolat üresjárati időkorlát (4 – 120 perc) használandó időtartama.
+- a kimenő kapcsolat üresjárati időkorlátja (4-120 perc) milyen időtartamra van használatban.
 - e elküldeni a egy új TCP üresjárati időkorlát (nyilvános előzetes verzió). 
 
 Bontsa ki a kimenő szabályok [2. forgatókönyv](load-balancer-outbound-connections.md#lb) a leírt a [kimenő kapcsolatok](load-balancer-outbound-connections.md) marad a cikk és a forgatókönyv elsőbbséget-van.
@@ -84,13 +84,13 @@ Használja a következő paramétert 10 000 SNAT lefoglalni a portokat a virtuá
 
           "allocatedOutboundPorts": 10000
 
-Minden egyes nyilvános IP-címét az kimenő szabályt, minden előtérrendszer, SNAT portok járul hozzá akár 51,200 elmúló port használatra.  Load Balancer SNAT portot többszörösei 8 foglal le. Ha egy érték nem osztható 8, a konfigurációs műveletet elutasítva.  Ha megpróbálja lefoglalni a portokat további SNAT mint amennyi rendelkezésre áll a nyilvános IP-címek száma alapján, a rendszer elutasítja a konfigurációs műveletet.  Például ha 10 000 portok száma a virtuális gép és a 7 virtuális gép foglal le a háttérrendszernek a készlet egyetlen nyilvános IP-cím megosztásához, a konfiguráció visszautasított (7 x 10,0000 SNAT portok > 51,200 SNAT portok).  Több nyilvános IP-címeket adhat hozzá az előtér a kimenő szabály engedélyezése a forgatókönyvet.
+Minden egyes nyilvános IP-címét az kimenő szabályt, minden előtérrendszer, SNAT portok járul hozzá akár 51,200 elmúló port használatra.  Load Balancer SNAT portot többszörösei 8 foglal le. Ha egy érték nem osztható 8, a konfigurációs műveletet elutasítva.  Ha megpróbálja lefoglalni a portokat további SNAT mint amennyi rendelkezésre áll a nyilvános IP-címek száma alapján, a rendszer elutasítja a konfigurációs műveletet.  Ha például egy virtuális gépenként 10 000 portot foglal le, és a háttérbeli készlet 7 virtuális gépe egyetlen nyilvános IP-címet oszt meg, akkor a rendszer elutasítja a konfigurációt (7 x 10 000 SNAT-port > 51 200 SNAT-portok).  Több nyilvános IP-címeket adhat hozzá az előtér a kimenő szabály engedélyezése a forgatókönyvet.
 
 Térhet vissza a [háttérkiszolgáló-készlet mérete alapján automatikus SNAT portkiosztással](load-balancer-outbound-connections.md#preallocatedports) 0-portok számának megadásával.
 
 ### <a name="idletimeout"></a> Ellenőrző kimenő folyam üresjárat időkorlátja
 
-Kimenő szabályok adjon meg egy konfigurációs paraméter szabályozza a kimenő folyam üresjárati időkorlát és egyezteti az alkalmazás igényeinek.  4 perces üresjárati időtúllépés kimenő alapértelmezés szerint.  A paraméter egy adott Ez a szabály megfelelő folyamatok az üresjárati időkorlát percben 120 és 4 közötti értéket fogad el.
+Kimenő szabályok adjon meg egy konfigurációs paraméter szabályozza a kimenő folyam üresjárati időkorlát és egyezteti az alkalmazás igényeinek.  4 perces üresjárati időtúllépés kimenő alapértelmezés szerint.  A paraméter 4 és 120 közötti értéket fogad el az adott szabálynak megfelelő folyamatok üresjárati időkorlátja számára.
 
 A következő paraméter segítségével állítsa be a kimenő üresjárati időkorlát 1 óra:
 
@@ -193,22 +193,22 @@ Egy belső Standard Load Balancer használatakor a kimenő NAT nem áll rendelke
    1. Tiltsa le a terheléselosztási szabály a kimenő SNAT.
    2. Konfigurálja az kimenő szabályt az azonos terheléselosztóhoz.
    3. Újból felhasználhatja a háttérkészlet, a virtuális gépek által már használt.
-   4. Adja meg a "protocol": "All" a kimenő szabály részeként.
+   4. "Protokoll" meghatározása: "All" a Kimenő szabály részeként.
 
 - Csak bejövő NAT-szabályok használata esetén nincs kimenő NAT van megadva.
 
    1. A háttérkészlet virtuális gépeket helyezni.
    2. Egy vagy több előtérbeli IP-konfiguráció a nyilvános IP-cím vagy nyilvános IP-előtag megadása.
    3. Konfigurálja az kimenő szabályt az azonos terheléselosztóhoz.
-   4. Adja meg a "protocol": A kimenő szabály részeként "All"
+   4. "Protokoll" meghatározása: "All" a Kimenő szabály részeként
 
 ## <a name="limitations"></a>Korlátozások
 
 - Az előtérbeli IP-címenként használható elmúló port maximális száma: 51,200.
-- A konfigurálható kimenő üresjárati időkorlát tartománya 4 és 120 perc (240 a 7200 másodperc).
+- A konfigurálható kimenő Üresjárati időkorlát (4 – 120 perc) tartománya (240 – 7200 másodperc).
 - Terheléselosztó nem támogatja a ICMP kimenő helyezkedik el.
 - Portál konfigurálása, illetve megtekintheti a kimenő szabályok nem használható.  Ehelyett használja a sablonok, REST API-t, Az CLI 2.0-val vagy PowerShell.
-- Kimenő szabályok csak az elsődleges hálózati adapter és az elsődleges IP-konfiguráció alkalmazható.
+- A kimenő szabályok csak a hálózati adapter elsődleges IP-konfigurációjához alkalmazhatók.  Több hálózati adapter is támogatott.
 
 ## <a name="next-steps"></a>További lépések
 

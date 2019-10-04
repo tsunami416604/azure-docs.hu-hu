@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: d69271f65c326237a380624d994d8f5339537114
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 341d8dd712b858572ec5df76b176258ca87c8857
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59271118"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67094425"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pingboard"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Pingboard
 
@@ -55,7 +55,7 @@ Az Azure AD integrálása a Pingboard konfigurálásához hozzá kell Pingboard 
 
 **Pingboard hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -224,13 +224,13 @@ Ez a szakasz célja Pingboard Britta Simon nevű felhasználó létrehozásához
 
     a. Az a **teljes fájlvisszaállítási név** szövegmezőbe írja be a teljes nevet felhasználó, például **Britta Simon**.
 
-    b. Az a **E-mail** szövegmezőbe írja be az e-mail-cím, felhasználó, például **brittasimon@contoso.com**.
+    b. Az a **E-mail** szövegmezőbe írja be az e-mail-cím, felhasználó, például **brittasimon@contoso.com** .
 
     c. Az a **beosztás** szövegmezőbe írja be a Britta Simon feladat címe.
 
     d. Az a **hely** legördülő menüben válassza ki a helyet a Britta Simon.
 
-    e. Kattintson a **Hozzáadás** parancsra.
+    e. Kattintson a **Hozzáadás**lehetőségre.
 
 4. A megerősítő képernyőn felhasználó hozzáadásának megerősítéséhez.
 

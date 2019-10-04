@@ -1,11 +1,19 @@
 - name: Felhasználói súgódokumentáció
-  href: index.md
+  href: index.yml
 - name: Kétlépéses ellenőrzés súgója
   items:
     - name: Áttekintés
       href: user-help-two-step-verification-overview.md
-    - name: Saját fiók beállítása
-      href: multi-factor-authentication-end-user-first-time.md
+    - name: Kétfaktoros hitelesítési módok beállítása
+      items:
+        - name: Áttekintés
+          href: multi-factor-authentication-end-user-first-time.md
+        - name: Hitelesítő alkalmazás beállítása
+          href: multi-factor-authentication-setup-auth-app.md
+        - name: Mobileszköz beállítása
+          href: multi-factor-authentication-setup-phone-number.md
+        - name: Irodai telefon beállítása
+          href: multi-factor-authentication-setup-office-phone.md
     - name: Beállítások kezelése
       href: multi-factor-authentication-end-user-manage-settings.md
     - name: Segítségkérés
@@ -28,9 +36,10 @@
       href: user-help-auth-app-overview.md
     - name: Az alkalmazás letöltése és telepítése
       href: user-help-auth-app-download-install.md
-    - name: Fiókok hozzáadásának áttekintése
-      href: user-help-auth-app-add-account-overview.md
+    - name: Fiókok hozzáadása
       items:
+        - name: Áttekintés
+          href: user-help-auth-app-add-account-overview.md
         - name: Munkahelyi vagy iskolai fiók hozzáadása
           href: user-help-auth-app-add-work-school-account.md
         - name: Személyes Microsoft-fiók hozzáadása
@@ -63,15 +72,18 @@
       href: user-help-security-info-overview.md
     - name: Biztonsági adatok hozzáadása bejelentkezéskor
       href: security-info-setup-signin.md
-    - name: Biztonsági adatok hozzáadási vagy frissítési metódusainak áttekintése
-      href: security-info-add-update-methods-overview.md
+    - name: Biztonsági adatok hozzáadási vagy frissítési metódusai
       items:
+        - name: Áttekintés
+          href: security-info-add-update-methods-overview.md
         - name: Hitelesítő alkalmazás beállítása
           href: security-info-setup-auth-app.md
         - name: Szöveges üzenetküldés beállítása
           href: security-info-setup-text-msg.md
         - name: Telefonhívások beállítása
           href: security-info-setup-phone-number.md
+        - name: Biztonsági kulcs beállítása
+          href: security-info-setup-security-key.md
         - name: E-mailek beállítása
           href: security-info-setup-email.md
         - name: Biztonsági kérdések beállítása

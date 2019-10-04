@@ -1,47 +1,47 @@
 ---
-title: Hub virtuális hálózat létrehozása terraform az Azure-ban
-description: Az oktatóanyag egy agyi virtuális hálózat létrehozása az Azure-ban, amely a más hálózatok közötti közös kapcsolódási pontot ábrázoló
+title: Hub virtuális hálózat létrehozása az Azure-beli Terraform
+description: Az oktatóanyag bemutatja, hogyan hozhat létre olyan központi VNet az Azure-ban, amely közös kapcsolódási pontként működik más hálózatok között
 services: terraform
 ms.service: azure
-keywords: terraform, hub and spoke, networks, hybrid networks, devops, virtual machine, azure, VNet peering, hub-spoke, hub.
+keywords: Terraform, hub és küllő, hálózatok, hibrid hálózatok, devops, virtuális gépek, Azure, VNet peering, hub küllős, hub.
 author: VaijanathB
 manager: jeconnoc
 ms.author: vaangadi
 ms.topic: tutorial
-ms.date: 03/01/2019
-ms.openlocfilehash: 5f8d9119ea9caeb598946a384f321fa6f7e14def
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 09/20/2019
+ms.openlocfilehash: 12538c0348efc1621d3f8f6ee0cb93d73c712898
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58000220"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173427"
 ---
-# <a name="tutorial-create-a-hub-virtual-network-with-terraform-in-azure"></a>Oktatóanyag: Hub virtuális hálózat létrehozása terraform az Azure-ban
+# <a name="tutorial-create-a-hub-virtual-network-with-terraform-in-azure"></a>Oktatóanyag: Hub virtuális hálózat létrehozása az Azure-beli Terraform
 
-A központi virtuális hálózaton (VNet) az a helyszíni hálózathoz való csatlakozási lehetőségek központi helye funkcionál. A virtuális hálózatok közötti gazdagépek megosztott a küllő virtuális hálózatok lévő üzemeltetett számítási feladatok által felhasznált szolgáltatásoktól függ. A bemutatóhoz én nincs megosztott szolgáltatások ebben az oktatóanyagban van megvalósítva.
+A hub virtuális hálózat (VNet) a helyszíni hálózathoz való kapcsolódás központi pontja. A VNet a küllős virtuális hálózatok üzemeltetett munkaterhelések által használt megosztott szolgáltatásokat üzemelteti. Bemutató célból egyetlen megosztott szolgáltatás sincs implementálva ebben az oktatóanyagban.
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
 > [!div class="checklist"]
-> * Küllős topológia implementálása az agyi virtuális hálózat HCL (HashiCorp Language) használata
-> * Hub Jump be virtuális gép létrehozása Terraform használatával
-> * A Terraform használata Hub virtuális magánhálózati átjáró létrehozása
-> * Eseményközpont és a helyi átjáró-kapcsolatok létrehozása Terraform használatával
+> * A HCL (HashiCorp Language) használata a hub-VNet megvalósításához küllős topológiában
+> * A Terraform használata a hub Jump Box virtuális gép létrehozásához
+> * A Terraform használata hub virtuális magánhálózati átjáró létrehozásához
+> * A Terraform használata a hub és a helyszíni átjáró kapcsolatainak létrehozásához
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-1. [Eseményközpont létrehozásához, küllős a hibrid hálózati topológiák az Azure-beli terraform](./terraform-hub-spoke-introduction.md).
-1. [A helyszíni virtuális hálózat létrehozása az Azure-beli terraform](./terraform-hub-spoke-on-prem.md).
+1. [Hozzon létre egy sugaras hibrid hálózati topológiát az Azure-beli Terraform](./terraform-hub-spoke-introduction.md).
+1. Helyszíni [virtuális hálózat létrehozása az Azure-beli Terraform](./terraform-hub-spoke-on-prem.md).
 
 ## <a name="create-the-directory-structure"></a>A könyvtárstruktúra létrehozása
 
-A központi hálózathoz a következő összetevőkből áll:
+A hub-hálózat a következő összetevőkből áll:
 
-- Központi virtuális hálózaton
+- Hub virtuális hálózata
 - Hub virtuális hálózati átjáró
-- Eseményközpont-gateway-kapcsolatok 
+- Hub Gateway-kapcsolatok 
 
-A következő Terraform konfigurációs fájl határozza meg az erőforrásokat:
+A következő Terraform-konfigurációs fájl határozza meg az erőforrásokat:
 
 1. Keresse fel az [Azure Portalt](https://portal.azure.com).
 
@@ -61,9 +61,9 @@ A következő Terraform konfigurációs fájl határozza meg az erőforrásokat:
     cd hub-spoke
     ```
 
-## <a name="declare-the-hub-vnet"></a>Deklarálja az agyi virtuális hálózat
+## <a name="declare-the-hub-vnet"></a>A hub VNet deklarálása
 
-A központi virtuális hálózaton deklaráló Terraform-konfigurációs fájl létrehozása.
+Hozza létre a hub virtuális hálózatot deklaráló Terraform konfigurációs fájlt.
 
 1. Hozzon létre egy `hub-vnet.tf` nevű fájlt a Cloud Shellben.
 
@@ -73,7 +73,7 @@ A központi virtuális hálózaton deklaráló Terraform-konfigurációs fájl l
 
 1. Másolja az alábbi kódot a szerkesztőbe:
 
-    ```JSON
+    ```hcl
     locals {
       prefix-hub         = "hub"
       hub-location       = "CentralUS"
@@ -234,4 +234,4 @@ A központi virtuális hálózaton deklaráló Terraform-konfigurációs fájl l
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"] 
-> [A hub virtuális hálózati berendezés létrehozása terraform az Azure-ban](./terraform-hub-spoke-hub-nva.md))
+> [Hub virtuális hálózati berendezés létrehozása Terraform az Azure-ban](./terraform-hub-spoke-hub-nva.md)

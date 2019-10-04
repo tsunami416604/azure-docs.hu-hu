@@ -1,32 +1,32 @@
 ---
-title: Szószedet
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Szószedet – LUIS
+titleSuffix: Azure Cognitive Services
 description: A szószedet kifejezések magyarázatát tartalmazza, amelyek akkor fordulhatnak végzett munka során az intelligens HANGFELISMERÉSI API-szolgáltatást.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 01/23/2019
+ms.topic: reference
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: ced83b83c2d64ba5c4816f378c66dae9f4210391
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 0bf7fe649a5a604c610307b9be0717dce01cb238
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874481"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638289"
 ---
-# <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Language understanding szószedet gyakori szóhasználatának és fogalmak
+# <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Nyelvi ismeretek a gyakori szószedetekről és fogalmakról
 A Language Understanding (LUIS) szószedet ismerteti feltételeit, amelyek találkozhat végzett munka során az intelligens HANGFELISMERÉSI API-szolgáltatást.
 
 ## <a name="active-version"></a>Aktív verziója
 
-Az aktív LUIS-verzió verziója, amely megkapja a modell változásait. Az a [LUIS](luis-reference-regions.md) webhely, ha azt szeretné, hogy a módosítások egy olyanra, amely verziója nem aktív, be kell először azt a verziót aktívként.
+Az aktív LUIS-verzió verziója, amely megkapja a modell változásait. Ha a [Luis](luis-reference-regions.md) -portálon olyan verziót szeretne módosítani, amely nem az aktív verzió, először be kell állítania az adott verziót aktívként.
 
 ## <a name="authoring"></a>Szerzői műveletek
 
-Szerzői rendszer azon képessége, létrehozása, kezelése és üzembe helyezéséhez egy [LUIS-alkalmazásokon](#luis-app), vagy használja a [LUIS](luis-reference-regions.md) webhely vagy a [API-k készítése](https://aka.ms/luis-authoring-api).
+A szerző a Luis [-portál vagy](luis-reference-regions.md) a [szerzői API](https://go.microsoft.com/fwlink/?linkid=2092087)-k használatával hozhat létre, kezelhet és helyezhet üzembe egy [Luis-alkalmazást](#luis-app).
 
 ## <a name="authoring-key"></a>Kulcs létrehozási
 
@@ -34,30 +34,12 @@ Korábbi nevén "Programmatic" kulcsot. Ahhoz, hogy az alkalmazás használja. N
 
 ## <a name="batch-test-json-file"></a>A Batch szöveg JSON-fájl
 
-A batch-fájl nem JSON-tömböt. A tömb egyes elemei három olyan tulajdonság tartozik: `text`, `intent`, és `entities`. A `entities` tulajdonság értéke egy tömb. A tömb üres is lehet. Ha a `entities` tömb nem üres, pontosan meghatározhatja az entitásokat kell.
+A Batch-tesztelés lehetővé teszi, hogy a jelenlegi LUIS-alkalmazás modelljét érvényesítse a felhasználói hosszúságú kimondott szöveg konzisztens és ismert tesztelési készletével. A Batch-teszt egy JSON- [formátumú fájlban](luis-concept-batch-test.md#batch-file-format)van definiálva.
 
-```JSON
-[
-    {
-        "text": "drive me home",
-        "intent": "None",
-        "entities": []
-    },
-    {
-        "text": "book a flight to orlando on the 25th",
-        "intent": "BookFlight",
-        "entities": [
-            {
-                "entity": "orlando",
-                "type": "Location",
-                "startIndex": 18,
-                "endIndex": 25
-            }
-        ]
-    }
-]
-
-```
+Lásd még: 
+* [Alapelvek](luis-concept-batch-test.md)
+* [Útmutató](luis-how-to-batch-test.md)
+* [Oktatóanyag] Luis-tutorial-batch-testing.md)
 
 
 ## <a name="collaborator"></a>Közreműködő
@@ -74,7 +56,7 @@ A LUIS a környezetben egy **tartomány** olyan terület, az ismeretek. A tartom
 
 ## <a name="endpoint"></a>Végpont
 
-A [LUIS végpont](https://aka.ms/luis-endpoint-apis) URL-címe, ahol elküldése után a LUIS-lekérdezéseket a [LUIS-alkalmazásokon](#luis-app) létrehozott és közzétett. A végpont URL-címe tartalmazza a régió, a közzétett alkalmazás, valamint az alkalmazás azonosítóját. A végpont található a **[kulcsokat és a végpontok](luis-how-to-azure-subscription.md)** lapja az alkalmazás, vagy beszerezheti a végpont URL-CÍMÉT a [alkalmazásadatok lekérése](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c37) API.
+A [LUIS végpont](https://go.microsoft.com/fwlink/?linkid=2092356) URL-címe, ahol elküldése után a LUIS-lekérdezéseket a [LUIS-alkalmazásokon](#luis-app) létrehozott és közzétett. A végpont URL-címe tartalmazza a régió, a közzétett alkalmazás, valamint az alkalmazás azonosítóját. A végpont található a **[kulcsokat és a végpontok](luis-how-to-azure-subscription.md)** lapja az alkalmazás, vagy beszerezheti a végpont URL-CÍMÉT a [alkalmazásadatok lekérése](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c37) API.
 
 A példában a végpont hasonlóan néz ki:
 
@@ -96,11 +78,11 @@ A példában a végpont hasonlóan néz ki:
 
 A [batch tesztelés](luis-interactive-test.md#batch-testing), a vizsgálat pontosságának mértékegysége.
 
-## <a name="false-negative"></a>Téves negatív (TN)
+## <a name="false-negative"></a>Hamis negatív (FN)
 
 A [batch tesztelés](luis-interactive-test.md#batch-testing), az adatpontok képviselik, amelyben az alkalmazás nem megfelelően előrejelzett érhető el a leképezés/célentitás a kimondott szöveg.
 
-## <a name="false-positive"></a>False positive (TP)
+## <a name="false-positive"></a>Hamis pozitív (FP)
 
 A [batch tesztelés](luis-interactive-test.md#batch-testing), az adatok pontok olyan időpontokat jelölnek, kimondott szöveg, amelyben az alkalmazás nem megfelelően előre jelzett a célként megadott leképezés/entitás létezik-e.
 
@@ -114,7 +96,7 @@ Egy [szándékot](luis-concept-intent.md) feladatot vagy műveletet a felhaszná
 
 ## <a name="labeling"></a>Címkézés
 
-Címkézés szó vagy kifejezés egy leképezés a társítása [utterance (kifejezés)](#utterance) együtt egy [entitás](#entity) (datatype).
+A címkézés vagy a jelölés az a folyamat, amellyel egy szó vagy kifejezés társítható egy, az adott [entitáshoz](#entity) (adattípus) való kiíráshoz. [](#utterance)
 
 ## <a name="luis-app"></a>A LUIS-alkalmazás
 

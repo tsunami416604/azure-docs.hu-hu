@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Képkeresés – Bing kép Search SDK a Pythonhoz'
+title: 'Gyors útmutató: Képek keresése – Bing Image Search SDK a Pythonhoz'
 titleSuffix: Azure Cognitive Services
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hajthatja végre első képkeresését a Bing Image Search SDK használatával, amely az API burkolójaként szolgál, és ugyanazokkal a funkciókkal rendelkezik. Ez az egyszerű Python-alkalmazás elküld egy képkeresési lekérdezést, elemzi a JSON-választ, és megjeleníti az első visszaadott kép URL-címét.
 services: cognitive-services
@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 03/04/2019
+ms.date: 08/26/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: cabf29423123d988b08e002077b4782529e96aa0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b5a4cd36f204dfe708e5acd8818d9925b5accc30
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58095636"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034697"
 ---
-# <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-python"></a>Gyors útmutató: Keresse meg a lemezképek lemezkép Bing Search SDK-val a Pythonhoz
+# <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-python"></a>Gyors útmutató: Képek keresése a Pythonhoz készült Bing Image Search SDK-val
 
 Ebből a rövid útmutatóból megtudhatja, hogyan hajthatja végre első képkeresését a Bing Image Search SDK használatával, amely az API burkolójaként szolgál, és ugyanazokkal a funkciókkal rendelkezik. Ez az egyszerű Python-alkalmazás elküld egy képkeresési lekérdezést, elemzi a JSON-választ, és megjeleníti az első visszaadott kép URL-címét.
 
@@ -72,7 +72,8 @@ Ha a válasz tartalmaz keresési eredményeket, tárolja az első találatot, é
 if image_results.value:
     first_image_result = image_results.value[0]
     print("Total number of images returned: {}".format(len(image_results.value)))
-    print("First image thumbnail url: {}".format(first_image_result.thumbnail_url))
+    print("First image thumbnail url: {}".format(
+        first_image_result.thumbnail_url))
     print("First image content url: {}".format(first_image_result.content_url))
 else:
     print("No image results returned!")
@@ -90,4 +91,4 @@ else:
 * [Ingyenes Cognitive Services hozzáférési kulcs beszerzése](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)
 * [Python-minták az Azure Cognitive Services SDK-hoz](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)  
 * [Az Azure Cognitive Services dokumentációja](https://docs.microsoft.com/azure/cognitive-services)
-* [Bing Image Search API – referencia](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)
+* [Bing Image Search API – referencia](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

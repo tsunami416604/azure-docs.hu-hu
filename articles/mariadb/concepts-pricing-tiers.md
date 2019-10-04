@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 5eb2ba509983918a55370ae0deafd019e03f53d8
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: 7a52d05c77d0aeb8ebeba196df60e59f0647fea9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617784"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66233917"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database for MariaDB tarifacsomagok
 
@@ -51,19 +51,25 @@ A tároló üzembe helyezi az érték a tárolási kapacitás érhető el az Azu
 | Növekmény tárméret | 1 GB | 1 GB | 1 GB |
 | IO | Változó |3 IOPS/GB<br/>Minimum 100 IOPS<br/>Max 6000 IOPS | 3 IOPS/GB<br/>Minimum 100 IOPS<br/>Max 6000 IOPS |
 
-Hozzáadhat további tárolókapacitás alatt és a kiszolgáló létrehozása után. Az alapszintű csomag nem biztosítanak az iops-t. Az általános célú és memóriahasználatra optimalizált tarifacsomagok az iops-t a kiépített tárhely méretére vonatkozik egy 3:1 arányt a skálázás.
+Alatt és a kiszolgáló létrehozása után adja hozzá a további tárolókapacitás, és lehetővé teszi a rendszer storage tárolófelhasználásának a számítási feladat alapján automatikusan nő. Az alapszintű csomag nem biztosítanak az iops-t. Az általános célú és memóriahasználatra optimalizált tarifacsomagok az iops-t a kiépített tárhely méretére vonatkozik egy 3:1 arányt a skálázás.
 
 Az i/o-használat az Azure Portalon vagy Azure CLI-parancsok használatával követheti nyomon. A releváns metrikákat kíván monitorozni vannak [tárhelykorlátozás, tárolási százalékos aránya, felhasznált tárterület és i/o-százalék](concepts-monitoring.md).
 
 ### <a name="reaching-the-storage-limit"></a>Skálázhatósági méretkorlátot
 
-A kiszolgáló csak olvashatóként lesz megjelölve, amikor a szabad tárterület 5 GB alá vagy a kiépített tárterület 5%-a alá csökken (amelyik kisebb). Ha például 100 GB tárhelyet kiépítése, és a tényleges használat halad 95 GB, a kiszolgáló van megjelölve, csak olvasható. Ha 5 GB tárterületet osztott ki, a kiszolgáló akkor lesz megjelölve csak olvashatóként, amikor a szabad tárterület 250 MB alá csökken.  
+Kevesebb mint 100 GB-os kiépített tároló kiszolgálók csak olvasható, ha a szabad tárhely kisebb, mint 512 MB-ot vagy a felhasznált tárterület mérete 5 %-át lesznek megjelölve. Több mint 100 GB-os kiépített tároló kiszolgálók lesznek megjelölve olvasási, csak akkor, ha a szabad tárterületre 5 GB-nál kisebb.
+
+Például, ha ellátta 110 GB tárhelyet igényel, és a tényleges használat keresztül haladnak 105 GB, a kiszolgáló van megjelölve, csak olvasható. Azt is megteheti, ha 5 GB adattárolás kiépítése, a kiszolgáló van megjelölve csak olvasható 512 MB-nál kevesebb a szabad tárhely elérésekor.
 
 Mialatt a szolgáltatás csak olvashatóvá próbálja tenni a kiszolgálót, minden új írási tranzakció kérését blokkolja a rendszer, és a meglévő aktív tranzakciók végrehajtása folytatódik. A kiszolgáló csak olvashatóként való beállításakor minden későbbi írási művelet és tranzakció meghiúsul. Az olvasási lekérdezések továbbra is zavartalanul működnek. A kiépített tárterület növelése után a kiszolgáló ismét készen fog állni az írási tranzakciók elfogadására.
 
-Azt javasoljuk, hogy beállította egy riasztás arra az esetre, ha a kiszolgáló tárhelyét hamarosan eléri a küszöbértéket a csak olvasható állapotba első elkerülése érdekében. 
+Azt javasoljuk, hogy kapcsolja be a storage automatikus növekedést vagy riasztás beállításához arra az esetre, ha a kiszolgáló tárhelyét hamarosan eléri a küszöbértéket így elkerülheti a csak olvasható állapotának beolvasása. További információkért lásd a dokumentációt [riasztást beállítása](howto-alert-metric.md).
 
-További információkért lásd a dokumentációt [riasztást beállítása](howto-alert-metric.md).
+### <a name="storage-auto-grow"></a>Tárolási auto-növekedés
+
+Ha a tárolási automatikus növekedés engedélyezve van, a storage automatikusan nő a terhelés befolyásolása nélkül. Kevesebb mint 100 GB-os kiépített tároló kiszolgálók esetében a felhasznált tárterület mérete eléri 5 GB-tal, amint a szabad tárhely nem éri el a nagyobb, mint 1 GB vagy 10 %-a felhasznált tárterület. Több mint 100 GB-os kiépített tároló kiszolgálók esetében a felhasznált tárterület mérete növekszik 5 % 5 %-a kiépített tárhely méretére alatt rendelkezésre álló szabad tárhely esetén. A fenti maximális tárolási korlátokhoz a alkalmazni.
+
+Például ha 1000 GB tárhely kiépítése, és a tényleges használat keresztül haladnak 950 GB, a kiszolgáló tárméret 1050 GB-ra emelkedett. Azt is megteheti Ha 10 GB tárhelyet kiépítése, a tároló mérete esetén 15 GB-os növelését kevesebb mint 1 GB tárhelyet díjmentes.
 
 ## <a name="backup"></a>Backup
 

@@ -1,25 +1,18 @@
 ---
-title: Ajánlat állapotának lekéréséhez |} A Microsoft Docs
+title: Ajánlat állapotának lekéréséhez |} Az Azure Marketplace-en
 description: API-t az ajánlat aktuális állapotát kérdezi le.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 9233a5919ad86adcbb7947cd095945654ed015a7
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.author: pabutler
+ms.openlocfilehash: 26ee8b5b1879c505f8200671558fe065ace068a3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810773"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64935453"
 ---
 <a name="retrieve-offer-status"></a>Ajánlat állapotának lekérése 
 =====================
@@ -33,9 +26,9 @@ Az ajánlat aktuális állapotát kérdezi le.
 
 |  **Name (Név)**       |   **Leírás**                            |  **Adattípus** |
 |  -------------  |  ------------------------------------------  |  ------------  |
-|  publisherId    | Például a közzétevő azonosítója `Contoso`  |     Sztring     |
-|  OfferId        | GUID, amely egyedileg azonosítja az ajánlatot      |     Sztring     |
-|  API-verzió    | API legújabb verziója                        |     Dátum       |
+|  publisherId    | Például a közzétevő azonosítója `Contoso`  |     String     |
+|  offerId        | GUID, amely egyedileg azonosítja az ajánlatot      |     String     |
+|  api-version    | API legújabb verziója                        |     Dátum       |
 |  |  |
 
 
@@ -137,7 +130,7 @@ Az ajánlat aktuális állapotát kérdezi le.
 |  estimatedTimeFrame   | Mennyi időt vesz igénybe, rövid formátumban lépés végrehajtásához becslése                       |
 |  id                   | A lépés azonosítója                                                                         |
 |  stepName             | A lépés neve                                                                               |
-|  leírás          | A lépés leírása                                                                        |
+|  description          | A lépés leírása                                                                        |
 |  status               | A lépés állapotát. A lehetséges értékek listáját lásd: [. lépés: állapot](#step-status) alatt.    |
 |  üzenet             | A lépés kapcsolatos üzenetek tömbje                                                          |
 |  processPercentage    | A lépés befejezése után készítsen százalékos aránya                                                              |
@@ -162,7 +155,7 @@ Az ajánlat aktuális állapotát kérdezi le.
 |  **Name (Név)**                    |    **Leírás**                                       |
 |  --------------------------  |  ------------------------------------------------------  |
 |  NeverPublished              | Az ajánlat soha nem lett közzétéve.                          |
-|  Nincs elindítva                  | Ajánlatot csak az új, és nem indult el.                            |
+|  NotStarted                  | Ajánlatot csak az új, és nem indult el.                            |
 |  WaitingForPublisherReview   | Ajánlat közzétevője jóváhagyásra vár.                 |
 |  Fut                     | Az ajánlat küldésének feldolgozása folyamatban van.                     |
 |  Sikeres                   | Az ajánlat küldésének feldolgozása befejeződött.               |
@@ -175,12 +168,12 @@ Az ajánlat aktuális állapotát kérdezi le.
 
 |  **Name (Név)**                    |    **Leírás**                           |
 |  -------------------------   |  ------------------------------------------  |
-|  Nincs elindítva                  | Lépés nem indult el.                        |
-|  Folyamatban                  | Lépés futtatja.                             |
+|  NotStarted                  | Lépés nem indult el.                        |
+|  InProgress                  | Lépés futtatja.                             |
 |  WaitingForPublisherReview   | Lépést közzétevő jóváhagyásra vár.      |
 |  WaitingForApproval          | Lépés folyamat jóváhagyásra vár.        |
-|  Letiltva                     | Lépés le van tiltva.                             |
-|  Elutasítva                    | A lépésben a rendszer elutasítja.                            |
+|  Blokkolt                     | Lépés le van tiltva.                             |
+|  Elutasított                    | A lépésben a rendszer elutasítja.                            |
 |  Befejezve                    | Lépés befejeződött.                            |
 |  Megszakítva                    | Lépés meg lett szakítva.                           |
 |  |  |

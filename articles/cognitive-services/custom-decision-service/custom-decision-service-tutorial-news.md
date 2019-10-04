@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: A cikk személyre szabása – Custom Decision Service'
+title: 'Oktatóanyag: Cikk személyre szabása – Custom Decision Service'
 titlesuffix: Azure Cognitive Services
 description: Oktatóanyag a cikk személyre szabásról környezetalapú döntéshozatalhoz.
 services: cognitive-services
@@ -10,14 +10,15 @@ ms.subservice: custom-decision-service
 ms.topic: tutorial
 ms.date: 05/08/2018
 ms.author: slivkins
-ms.openlocfilehash: d8ddafe20ff93e7ae4d51e2180bbd40447729234
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ROBOTS: NOINDEX
+ms.openlocfilehash: f7eafed9db25fba904d98ddea652671dc45aa01d
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55983032"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707224"
 ---
-# <a name="tutorial-article-personalization-for-contextual-decision-making"></a>Oktatóanyag: A cikk személyre szabása, a környezeti döntéshozatalhoz
+# <a name="tutorial-article-personalization-for-contextual-decision-making"></a>Oktatóanyag: Cikk személyre szabása a kontextus döntéshozatalához
 
 Ez az oktatóanyag a webhely kezdőlapján megjelenő cikkek személyre szabásával foglalkozik. A Custom Decision Service például *több* cikk listát is befolyásol a kezdőlapon. Lehet szó például híroldalról, ami csak politikával és sporttal foglalkozik. A megjelenített cikkek rangsorolt listája ebben az esetben lehet: politika, sport és legújabb.
 
@@ -44,7 +45,7 @@ Mindegyik hírcsatorna cikkek listáját adja. Az RSS esetén mindegyiket egy `<
 </channel></rss>
 ```
 
-A cikkek sorrendje számít. Megadja az alapértelmezett rangsort, ami a legjobb tipp arra, hogyan kellene a cikkeket rendezni. Alapértelmezés szerint a rangsorolás szolgál majd teljesítmény összehasonlítása az irányítópulton.
+A cikkek sorrendje számít. Megadja az alapértelmezett rangsort, ami a legjobb tipp arra, hogyan kellene a cikkeket rendezni. Ezután a rendszer az irányítópulton a teljesítmény összehasonlításához használja az alapértelmezett rangsort.
 
 A hírcsatorna formátummal kapcsolatban bővebben lásd: [API-referencia](custom-decision-service-api-reference.md#action-set-api-customer-provided).
 
@@ -56,7 +57,7 @@ A hírcsatorna formátummal kapcsolatban bővebben lásd: [API-referencia](custo
 
     ![Custom Decision Service-portál](./media/custom-decision-service-tutorial/portal.png)
 
-3. Adjon egyedi nevet az alkalmazásnak az **Alkalmazásazonosító** szövegmezőben. Ha ezt a nevet már használja egy másik ügyfél, a rendszer kérni fogja, hogy válasszon másik alkalmazásazonosítót. Válassza ki a **Speciális** jelölőnégyzetet, majd adja meg a [kapcsolati karakterláncot](../../storage/common/storage-configure-connection-string.md) az Azure tárfiókhoz. Normál esetben ugyanazt a tárfiókot használja az összes alkalmazáshoz.
+3. Adjon egyedi nevet az alkalmazásnak az **Alkalmazásazonosító** szövegmezőben. Ha ezt a nevet már használja egy másik ügyfél, a rendszer kérni fogja, hogy válasszon másik alkalmazásazonosítót. Válassza ki a **Speciális** jelölőnégyzetet, majd adja meg a [kapcsolati sztringet](../../storage/common/storage-configure-connection-string.md) az Azure tárfiókhoz. Normál esetben ugyanazt a tárfiókot használja az összes alkalmazáshoz.
 
     ![Új alkalmazás párbeszédpanel](./media/custom-decision-service-tutorial/new-app-dialog.png)
 
@@ -91,7 +92,7 @@ A Custom Decision Service a cikkeket a Ranking API-n keresztül rangsorolja. Enn
 <!-- NB: action feeds for 'app-recent' are listed one after another. -->
 ```
 
-A Ranking-API által adott HTTP-válasz JSONP-formátumú karakterlánc. Az app-politika esetén a karakterlánc például így néz ki:
+A Ranking-API által adott HTTP-válasz JSONP-formátumú sztring. Az app-politika esetén a sztring például így néz ki:
 
 ```json
 callback({
@@ -101,7 +102,7 @@ callback({
    "actionSets":[{"id":"feed-politics","lastRefresh":"date"}] });
 ```
 
-A böngésző utána a `callback()` függvény meghívásaként értelmezve végrehajtja ezt a karakterláncot. Az `data` argumentumok tartalmazzák a `callback()` függvényben az alkalmazásazonosítót és a megjelenítendő URL-ek rangsorát. A három alkalmazás megkülönböztetéséhez különösen szükséges `callback()` által a `data.appId` használata. A `eventId` belső használatára szolgál, a Custom Decision Service vele párosítja a megadott rangsort a megfelelő kattintáshoz, ha van.
+A böngésző utána a `callback()` függvény meghívásaként értelmezve végrehajtja ezt a sztringet. Az `data` argumentumok tartalmazzák a `callback()` függvényben az alkalmazásazonosítót és a megjelenítendő URL-ek rangsorát. A három alkalmazás megkülönböztetéséhez különösen szükséges `callback()` által a `data.appId` használata. A `eventId` belső használatára szolgál, a Custom Decision Service vele párosítja a megadott rangsort a megfelelő kattintáshoz, ha van.
 
 > [!TIP]
 > `callback()` ellenőrizheti a műveleti hírcsatornák frissességét a `lastRefresh` mező használatával. Ha egy adott hírcsatorna nem elég friss, előfordulhat, hogy `callback()` figyelmen kívül hagyja a megadott rangsort, közvetlenül meghívja a hírcsatornát, és a hírcsatorna által megadott alapértelmezett rangsort használja.

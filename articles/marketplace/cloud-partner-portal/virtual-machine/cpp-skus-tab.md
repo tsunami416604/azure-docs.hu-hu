@@ -1,92 +1,93 @@
 ---
-title: Virtuális gép SKU-k lapot a Cloud Partner portálra, az Azure Marketplace-en |} A Microsoft Docs
-description: Az SKU-k lapon, az Azure piactéren virtuálisgép-ajánlat létrehozásakor használt ismerteti.
+title: Az Azure Marketplace Cloud Partner Portal virtuálisgép-SKU-i lapja
+description: Az Azure Marketplace-en a virtuálisgép-ajánlat létrehozásához használt SKU-ket ismerteti.
 services: Azure, Marketplace, Cloud Partner Portal, virtual machine
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
-ms.date: 10/19/2018
-ms.author: pbutlerm
-ms.openlocfilehash: e05813297707165d59d1b1ed969b54fb0f433277
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/25/2019
+ms.author: pabutler
+ms.openlocfilehash: dceb82af73061b91676ffb7061c7495995e76667
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57848090"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868705"
 ---
-# <a name="virtual-machine-skus-tab"></a>Virtuális gép termékváltozatok lap
+# <a name="virtual-machine-skus-tab"></a>Virtuális gépek SKU-i lapja
 
-A **termékváltozatok** lapján a **új ajánlat** lap lehetővé teszi, hogy hozzon létre egy vagy több termékváltozatok és rendelheti őket hozzá az új ajánlat.  Különböző Termékváltozatai tudja különböztetni szolgáltatáskészleteket, Virtuálisgép-lemezképek típusai, átviteli sebesség vagy a méretezhetőség, számlázási modellek vagy valamilyen más jellemzők szerint megoldást.
+Az **új ajánlat** oldal **SKU** -i lapján létrehozhat egy vagy több SKU-t, és hozzárendelheti őket az új ajánlathoz.  A különböző SKU-ket a funkciók, a virtuálisgép-képtípusok, az átviteli sebesség vagy a méretezhetőség, a számlázási modellek vagy más jellemzők alapján lehet megkülönböztetni.
 
-## <a name="create-a-sku"></a>A Termékváltozat létrehozása
 
-Kezdetben egy új ajánlat nem fog minden társított SKU-k, így létrehozhat egy kattintva **új Termékváltozat**.
+## <a name="create-a-sku"></a>SKU létrehozása
 
-![A virtuális gépek új ajánlat lapon új Termékváltozat gomb](./media/publishvm_005.png)
+Kezdetben az új ajánlathoz nem tartoznak kapcsolódó SKU-ket, ezért az **új SKU**elemre kattintva létre kell hoznia egyet.
+
+![Új SKU gomb a virtuális gépek új ajánlat lapján](./media/publishvm_005.png)
 
 <br/>
 
-A **új Termékváltozat** párbeszédpanel jelenik meg.  Adja meg az azonosító az új termékváltozat, majd kattintson a **OK**. (Lásd alább azonosító elnevezési konvenciókat.)  A **termékváltozatok** lap megjeleníti a mezők érhető el szerkesztésre.    A hozzáfűzött csillag (*) az a mező nevét jelzi, hogy szükséges.
+Megjelenik az **új SKU** párbeszédpanel.  Adja meg az új SKU azonosítóját, majd kattintson az **OK**gombra. (Lásd alább az azonosító elnevezési konvenciókat.)  A **SKU** -i lapon ekkor megjelennek a szerkesztésre elérhető mezők.    A mező neve mezőben a hozzáfűzött csillag (*) érték azt jelzi, hogy szükség van rá.
 
 <!-- TD: This tab has been updated, now has "Old Pricing" and "Simplified Currency Pricing" sections"! -->
 
-![A virtuális gépek az új ajánlat űrlap Termékváltozat lapján](./media/publishvm_006.png)
+![A virtuális gépek új ajánlat űrlapjának SKU lapja](./media/publishvm_006.png)
 
-A következő táblázat ismerteti a célja, a tartalmát, és ezek a mezők formázását.
+A következő táblázat a mezők célját, tartalmát és formázását ismerteti.  A kötelező mezőket csillag (*) alapján vádoljuk.
 
 <!-- TD: I took a new screenshot, and the fields differ somewhat from description in the VM Pub Guide.  Needs review. -->
 
 |  **Mező**       |     **Leírás**                                                          |
 |  ---------       |     ---------------                                                          |
-|  *Termékváltozat-beállítások*   |  |
-| **SKU-AZONOSÍTÓJA**       | Ez a Termékváltozat azonosítója.  Ez a név legfeljebb 50 karakter hosszú lehet, amely rendelkezik kisbetűs alfanumerikus karaktereket és kötőjeleket (-), de nem végződhet kötőjellel.  Az ajánlat közzététele után nem módosítható.  |
-|  *Termékváltozat részletei*   |  |
-| **Cím**        | Megjelenítés a piactéren az ajánlat rövid neve. Legfeljebb 50 karakter hosszúságú. |
-| **összegzés**      | Az ajánlatot a piactéren való megjelenítéshez tömör leírása. A hosszabb 100 karakternél. |
-| **Leírás**  | Leíró szöveg, amely biztosít az ajánlat részletes leírását.  <!-- TD: max len/guidance? 3k characters -->  |
-| **Ez a Termékváltozat elrejtése** | Azt jelzi, hogy a Termékváltozatot kell látható a piactéren az ügyfelek számára.  Előfordulhat, hogy el szeretné rejteni a Termékváltozat, ha azt szeretné csak akkor érhető el, csak a megoldás sablonok használatával, és nem a vásárlás külön-külön.  Azt is hasznos lehet a kezdeti tesztelés vagy ideiglenes vagy szezonális ajánlatok. |
-| **Felhőalapú rendelkezésre állása** | Meghatározza, hogy melyik felhő az SKU elérhetőnek kell lennie.  Az alapértelmezett érték az Azure a nyilvános verzióval.  A Microsoft Azure Government egy kormányzati-közösségi felhő az USA szövetségi, állami, helyi vagy törzsi kormányzati és a hivatalos partnerek által szabályozott hozzáféréssel rendelkező.  További információ a kormányzati felhő: [Üdvözli az Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome). |
-| **Az egy privát Termékváltozat?** | Azt jelzi, hogy a Termékváltozat nyilvános vagy privát. Az alapértelmezett érték **nem** (nyilvános).  További információkért lásd: [nyilvános és privát termékváltozatok](../../cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md). |
-| **Elérhetőség ország/régió** | Meghatározza, hogy mely országok vagy régiók, a Termékváltozat lesz megvásárolható. Válassza ki legalább egy ország/régió. <!-- TD: Is this parameter an AMP visibility control or a contractual one, or both? --> |  
+|  *SKU-beállítások*   |    |
+| **SKU-AZONOSÍTÓ\***       | Az SKU azonosítója.  Ez a név legfeljebb 50 karakterből állhat, amely kisbetűs alfanumerikus karaktereket vagy kötőjelet (-) tartalmaz, de nem végződhet kötőjeltel.  Az ajánlat közzététele után nem módosítható.  |
+|  *SKU részletei*   |  |
+| **Cím\***        | A piactéren megjelenítendő ajánlat rövid neve. Legfeljebb 50 karakter hosszú lehet. |
+| **Összegzése\***      | A piactéren megjelenítendő ajánlat tömör leírása. Legfeljebb 100 karakter hosszú lehet. |
+| **Leírás\***  | Leírás szövege, amely részletesebb magyarázatot nyújt az ajánlatról.  <!-- TD: max len/guidance? 3k characters -->  |
+| **SKU elrejtése\*** | Azt jelzi, hogy az SKU látható legyen-e a piactéren az ügyfeleknek.  Előfordulhat, hogy el szeretné rejteni az SKU-t, ha csak megoldási sablonokkal szeretné elérni, és nem külön vásárolja meg.  Hasznos lehet a kezdeti teszteléshez, illetve ideiglenes vagy szezonális ajánlatokhoz is. |
+| **Felhőbeli rendelkezésre állás\*** | Meghatározza, hogy az SKU milyen felhők számára legyen elérhető.  Az alapértelmezett érték az Azure nyilvános verziója.  A Microsoft Azure Government az Egyesült Államok szövetségi, állami, helyi vagy törzsi kormányzati szerveinek, valamint azok tanúsított partnereinek szabályozott hozzáféréssel rendelkező kormányzati közösségi felhő.  A kormányzati felhővel kapcsolatos további információkért lásd: [Üdvözöljük a Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome). |
+| **Ez egy privát SKU?\*** | Azt jelzi, hogy az SKU magán-vagy nyilvános. Az alapértelmezett érték **nem** (nyilvános).  További információ: [nyilvános és privát SKU](../../cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md)-i. |
+| **Ország/régió elérhetősége\*** | Meghatározza, hogy az SKU mely országokban és régiókban lesz megvásárolható. Válasszon ki legalább egy régiót/országot. <!-- TD: Is this parameter an AMP visibility control or a contractual one, or both? --> |  
 |  *Díjszabás*   |  |
-| **License Model**| Szabványos számlázási modellt használja.  Ha **havi használat alapú Termékváltozat számlázása**, egy accordion szakasz nyílik meg, hogy adja meg a részleteket magonként árképzési és a próbaidőszak alatt ingyenes ajánlat szeretné-e.  Ez a szakasz segítségével exportálja és importálja a díjszabási ütemezés Excel is. További információkért lásd: [számlázási lehetőségek az Azure Marketplace-en](../../billing-options-azure-marketplace.md). | 
-|  *Virtuálisgép-rendszerképek*   |  |
-| **Operációsrendszer-család** | Azt jelzi, hogy a megoldás virtuális gép Windows - vagy Linux-alapú. |
-| **Válassza ki az operációs rendszer típusa** | Adott gyártó vagy a megadott operációs rendszer kiadása. |
-| **Operációs rendszer rövid neve** | Operációs rendszer neve megjelenik az ügyfelek számára.  |
-| **Javasolt Virtuálisgép-méretek** | Lehetővé teszi, hogy legfeljebb hat javasolt Virtuálisgép-méretek egy szabványosított listából választott.  Bár ezek a javaslatok ezzel a beállítással hangsúlyosan jelennek meg a lehetséges ügyfelek, azok bármely Virtuálisgép-méret, amely kompatibilis a megoldás kép megadhat. | 
-| **Nyitott portok**| A portok megnyitásához, és támogatja a termékváltozat-protokollt.  Ezek a konfigurációk meg kell egyeznie a virtuális hálózatot, konfigurálta a hálózat VM-megoldás. Ezek a beállítások során a virtuális gép üzembe helyezésének lép érvénybe. Portbeállítások azonban módosítható egy Termékváltozat a közzététel után. További információkért lásd: [hogyan nyithat meg portokat a virtuális gép az Azure Portallal](https://docs.microsoft.com/azure/virtual-machines/windows/nsg-quickstart-portal). <br/>A következő alapértelmezett hálózatleképezések kerülnek az összes virtuális gépre. &emsp; Windows: 3389-es 3389-es TCP ->, az 5986-os 5986-os TCP -> &emsp; Linux: 22 -&GT; 22-ES, A TCP-(SSH). |
-| **Lemez verziója**  | Kapcsolódó megoldás virtuális Gépen lemez verziószám és lemez URL-cím által megadott. A lemez kell lennie a [sémantická verze](https://semver.org/) formátum: `<major>.<minor>.<patch>`.  Az URL-je a közös hozzáférésű jogosultságkód URI-t az operációs rendszer virtuális Merevlemeze számára létrehozott.  Bár a Termékváltozat száma nyolc lemez verziók adhat hozzá, csak a legmagasabb szintű lemez verziószám-termékváltozat jelennek meg az Azure Marketplace-en. Az egyéb verziói csak akkor látható, API-kon keresztül.  <!--TD: Add more specific link to API --> <br/> A **új adatlemez** accordion szakasz lehetővé teszi, hogy akár 15 adatlemezeket csatlakoztathat a virtuális gép.  Miután egy adott virtuális gép verzióját, és a társított adatlemezek Termékváltozat tesz közzé, amelyet ez a konfiguráció nem módosítható.  Ha további VM-verziók hozzáadja a termékváltozatra, azok azonos számú adatlemezeket is támogatnia kell. <br/> Ha nem hozott létre az Azure-alapú Virtuálisgép-rendszerképeket, hozzáadhat, később frissíteni ezt a mezőt.  A társított virtuális gép erőforrás létrehozásával kapcsolatos információkért lásd: a szakasz [hozzon létre virtuális gép technikai eszközök](./cpp-create-technical-assets.md).  
+| **Licencelési modell\***| A használni kívánt szabványosított számlázási modell.  Ha kijelöli a **használati alapú havi számlázású SKU**-t, a tangóharmonika szakaszban megadhatja, hogy a rendszer milyen részletes díjszabást adjon meg, és hogy szeretne-e ingyenes próbaidőszakot biztosítani.  Ez a szakasz azt is lehetővé teszi, hogy a díjszabási ütemtervet az Excel programba exportálja és importálja. További információ: [Számlázási lehetőségek az Azure Marketplace-](../../billing-options-azure-marketplace.md)en. | 
+|  *VM-lemezképek*   |  |
+| **Operációs rendszer családja\*** | Azt jelzi, hogy a megoldás virtuális gépe Windows-vagy Linux-alapú-e. |
+| **Operációs rendszer típusának kiválasztása** | A megadott operációs rendszer adott gyártója vagy kiadása. |
+| **Operációs rendszer rövid neve\*** | Az ügyfél számára megjelenítendő operációs rendszer neve.  |
+| **Ajánlott virtuálisgép-méretek\*** | Egy szabványosított listából legfeljebb hat ajánlott virtuálisgép-méret kiválasztását teszi lehetővé.  A lista a Azure Portal és a Microsoft piactéren is elérhető.  A lista első virtuálisgép-mérete (az ügyfél-előfizetéshez, a régióhoz, a zónához stb.) alapértelmezett értékként van beállítva a potenciális ügyfél számára.  A felhasználó módosíthatja ezt a méretet a megoldás rendszerképével kompatibilisek között. | 
+| **Portok megnyitása**| Az SKU támogatásához szükséges portok a megnyitáshoz és a protokollhoz.  Ezeknek a konfigurációknak meg kell egyezniük a megoldás virtuális gépe hálózatához konfigurált virtuális hálózattal. Ezek a beállítások a virtuális gépek üzembe helyezése során lépnek életbe. A portbeállítások azonban a SKU közzététele után módosíthatók. További információkért lásd: [portok megnyitása virtuális géphez a Azure Portal használatával](https://docs.microsoft.com/azure/virtual-machines/windows/nsg-quickstart-portal). <br/>A következő alapértelmezett hálózati hozzárendelések lesznek hozzáadva az összes virtuális géphez. &emsp;Windows 3389 – > 3389 TCP, 5986-> 5986 TCP; &emsp; Linux: 22 – > 22, TCP (SSH). |
+| **Lemez verziója**  | Társított megoldás virtuális gép, amely a lemez verziószáma és a lemez URL-címe alapján van megadva. A lemez verziószámának szemantikai [](https://semver.org/) formátumúnak kell lennie: `<major>.<minor>.<patch>`.  Az URL-cím az operációs rendszer virtuális merevlemezéhez létrehozott közös hozzáférési aláírás URI-ja.  Bár az SKU-ban legfeljebb nyolc lemez adható hozzá, az Azure Marketplace-en csak az SKU legmagasabb lemezének verziószáma jelenik meg. A többi verzió csak API-kon keresztül jelenik meg.  <!--TD: Add more specific link to API --> <br/> Az **új adatlemez** -tangóharmonika szakasz lehetővé teszi, hogy legfeljebb 15 adatlemezt csatoljon a virtuális géphez.  Miután közzétett egy SKU-t egy adott VM-verzióval és a kapcsolódó adatlemezekkel, ez a konfiguráció nem módosítható.  Ha további virtuálisgép-verziók válnak elérhetővé az SKU-hoz, akkor ugyanazon számú adatlemezt is támogatnia kell. <br/> Ha nem hozta létre az Azure-alapú virtuálisgép-rendszerképeket, később is hozzáadhatja ezt a mezőt.  A társított virtuálisgép-erőforrás létrehozásával kapcsolatos információkért lásd a [virtuális gépek technikai eszközeinek létrehozása](./cpp-create-technical-assets.md)című szakaszt.  
 |  |  |
 
 <!-- TD: The CPP UX warning msg indicates that underscores are also supported in these SKU IDs. I suspect this might be true for other identifiers. --> 
 
-<br/> Kattintson a **mentése** a folyamat mentéséhez. A következő lapon kell adnia az ajánlat támogatja [Test Drive](./cpp-test-drive-tab.md).
+<br/> A folyamat mentéséhez kattintson a **Save (Mentés** ) gombra. A következő lapon megadhatja, hogy az ajánlat támogatja-e a [Test Drive](./cpp-test-drive-tab.md)-t.
 
 
-## <a name="additional-pricing-considerations"></a>További szempontok díjszabása
+## <a name="additional-pricing-considerations"></a>További díjszabási szempontok
 
-A fenti díjszabási modell egy egyszerű leírást.  Alatt áll a módosítások és a helyi és regionális adó szabályzat és a Microsoft díjszabás szabályzatok is hatással lehetnek. 
+A fent ismertetett díjszabási modell egy alapszintű leírás.  A változások a helyi vagy regionális adószabályok és a Microsoft díjszabási szabályzatai által érintettek. 
 
-### <a name="simplified-currency-pricing"></a>Egyszerűsített pénznem díjszabása
+### <a name="new-core-sizes-added-on-722019"></a>Új alapvető méretek hozzáadva a 7/2/2019
 
-2018 szeptember 1-től kezdődően új szakasz nevű **pénznem díjszabás egyszerűsített** megjelenik a portálon. A Microsoft Azure Marketplace-en üzleti van egyszerűsítésével világszerte több kiszámítható díjszabás és a gyűjtemény ügyfelei engedélyezésével. Ez egyszerűsítheti tartalmazza az ügyfelek feléjük azt pénznemek számának csökkentése.  További információkért lásd: [egy meglévő virtuális Gépet kínál az Azure Marketplace-en frissítés](./cpp-update-existing-offer.md).
+Az új Azure-beli virtuálisgép-méretek (a magok száma alapján) új díjszabást kapott a VM-közzétevők 2019. július 2-án.  Az új árak a következő alapméretekre vonatkoznak: 10, 44, 48, 60, 120, 208 és 416.  A meglévő virtuális gépek esetében a magok méretének új díjait a jelenlegi árak alapján automatikusan kiszámítjuk.  A kiadók 2019 augusztus 1-ig megtekintik a további árakat, és elvégzik a kívánt módosításokat.  Ezt a dátumot követően, ha a közzétevő még nem tette közzé újra, az új alapvető méretek automatikusan kiszámított árai érvénybe lépnek.
 
 
-### <a name="additional-information-on-taxes-and-prices"></a>További tájékoztatást az adók és díjszabás
+### <a name="simplified-currency-pricing"></a>Egyszerűsített pénznemek díjszabása
 
-* A Microsoft osztályozza, egyes országok *országok elengedik adó*.  Az ilyen országokban Microsoft adók gyűjt az ügyfelektől származó, majd a kormányzati (kap) adók fizet.  Más országokban partnerek felelős általában adók gyűjtését az ügyfeleknek, és az adók és a kormány. Válassza ki, hogy az utóbbi országokban, ha kiszámítja és helyi adók kell fizetnie kell rendelkeznie.  <!-- TD: Find a good reference on taxing policies. The best I found was in the UWP section: https://docs.microsoft.com/windows/uwp/publish/tax-details-for-paid-apps -->
-* Miután egy ajánlatot élesíti, amelyek árak nem módosítható. Azonban, előfordulhat, hogy továbbra is hozzáadhat vagy eltávolíthat támogatott régiók. 
-* A Microsoft a díjat az ügyfél standard szintű Azure virtuális gép használati díjak az ütemezett Termékváltozat díjak mellett.
-* Az árak vannak beállítva a minden régióban elérhető pénznem díjait a helyi pénznemben számított árak beállítás időpontjában.  <!-- TD: Meaning? - Offer created, published, other? -->
-* Külön-külön beállítása az egyes régiókban ár, kérjük exportálása a díjszabási táblázatot, alkalmazza az egyéni díjszabás, majd importálja. 
+Szeptember 1 2018-ától kezdődően a portálon megjelenik egy **egyszerűsített valuta díjszabását** tartalmazó új szakasz. A Microsoft egyszerűsíti az Azure Marketplace üzletágat azáltal, hogy lehetővé teszi, hogy több kiszámítható díjszabást és gyűjteményt biztosítson ügyfeleinek szerte a világon. Ez a egyszerűsítés magában foglalja a pénznemek számának csökkentését, amelyekben ügyfeleinket számlázjuk.  További információ: meglévő virtuálisgép- [ajánlat frissítése az Azure Marketplace](./cpp-update-existing-offer.md)-en.
 
-<!-- TD: The detailed information in the table and supplemental notes should be centralized in another topic, maybe "Billing Options" in AMP tree. Need to include a common section on export/import pricing-->
 
+### <a name="additional-information-on-taxes-and-prices"></a>További információk az adókról és az árakról
+
+* A Microsoft egyes országokat és régiókat osztályozni kell az *elhalasztott országokban*.  Ezekben az országokban/régiókban a Microsoft adót gyűjt az ügyfelektől, majd a kormányzatnak fizeti az adókat.  Más országokban/régiókban a partnerek általában a felelősek az ügyfelek adójának beszedéséhez, és adót fizetnek a kormánynak. Ha úgy dönt, hogy az utóbbi országokban/régiókban értékesít, a helyi adókat kell kiszámítani és fizetnie.  <!-- TD: Find a good reference on taxing policies. The best I found was in the UWP section: https://docs.microsoft.com/windows/uwp/publish/tax-details-for-paid-apps -->
+* Az árak nem változnak, ha egy ajánlat élőben üzemel. Azonban továbbra is hozzáadhat vagy eltávolíthat támogatott régiókat. 
+* A Microsoft az ütemezett SKU-díjak mellett a standard szintű Azure-beli virtuális gépek használati díját is kiszámlázza.
+* Az árakat a helyi pénznemben lévő összes régióra vonatkozóan a díjszabás beállításakor kell megadni.  <!-- TD: Meaning? - Offer created, published, other? -->
+* Ha minden egyes régió árát egyenként szeretné megadni, exportálja a díjszabási táblázatot, alkalmazza az egyéni díjszabást, majd importálja a következőt:. 
+
+
+## <a name="next-steps"></a>További lépések
+
+Ha támogatja ezt a funkciót, megadhatja a [tesztelési meghajtó](./cpp-test-drive-tab.md) adatait is. Ellenkező esetben a [piactér](./cpp-marketplace-tab.md) adatait adja meg az ajánlatához.

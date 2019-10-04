@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 8b0f5cdcf5a24513b89a2523be71dd74a1a2859b
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 49c836f5e9189104ba77e8f3d865f4db199c4060
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58484831"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66002978"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>Hirdetések ügyféloldali beillesztése
 Ez a cikk különböző típusú hirdetések ügyféloldali beillesztése információt tartalmaz.
@@ -160,7 +160,7 @@ Lineáris ads megadott egy `<Creative>` elemet is. A következő példa bemutatj
     </Creative>
 ```
 
-A <**NonLinearAds**> elem tartalmazhat egy vagy több <**NonLinear**> elemek, amelyek mindegyike egy lineáris ad is ismertetik. A <**NonLinear**> elem azt határozza meg az erőforrás a nemlineáris ad-hez. Az erőforrás lehet egy <**StaticResource**>, <**IFrameResource**>, vagy egy <**HTMLResource**>. <**StaticResource**>-HTML erőforrás ismerteti, és határozza meg, amely meghatározza, hogyan jelenjen meg az erőforrás egy creativeType attribútum:
+A <**NonLinearAds**> elem tartalmazhat egy vagy több <**NonLinear**> elemek, amelyek mindegyike egy lineáris ad is ismertetik. A <**NonLinear**> elem azt határozza meg az erőforrás a nemlineáris ad-hez. Az erőforrás lehet egy <**StaticResource**>, <**IFrameResource**>, vagy egy <**HTMLResource**>. \<**StaticResource**>-HTML erőforrás ismerteti, és határozza meg, amely meghatározza, hogyan jelenjen meg az erőforrás egy creativeType attribútum:
 
 Kép/gif, a kép/jpeg, a lemezkép/png – az erőforrás megjelenik egy HTML <**img**> címke.
 
@@ -170,7 +170,7 @@ Flash-lejátszó Application/x-shockwave-flash – az erőforrás megjelenik.
 
 **IFrameResource** ismerteti egy HTML-erőforrást egy IFRAME elembe jelenhet meg. **HTMLResource** HTML-kódot, amely szúrhatók be egy weblap, egy darab ismerteti. **TrackingEvents** adja meg a követési események és az esemény bekövetkeztekor kérés URI Azonosítóját. Ebben a példában a acceptInvitation és összecsukása események nyomon követi. További információ a **NonLinearAds** elemet és annak gyermekeihez IAB.NET/VAST talál. Vegye figyelembe, hogy a **TrackingEvents** elem található a **NonLinearAds** elem helyett a **NonLinear** elemet.
 
-Kiegészítő ads belül definiált egy `<CompanionAds>` elemet. A `<CompanionAds>` elemet tartalmazhat egy vagy több `<Companion>` elemeket. Minden egyes `<Companion>` elem egy kiegészítő ad ismerteti, és tartalmazhat egy `<StaticResource>`, `<IFrameResource>`, vagy `<HTMLResource>` amely lineáris ad alkalmazott módon vannak megadva. Egy HATALMAS fájlt tartalmazhat több kiegészítő hirdetések és a lejátszóalkalmazás kiválaszthatja a legmegfelelőbb ad megjelenítéséhez. VAST kapcsolatos további információkért lásd: [HATALMAS 3.0](http://www.iab.net/media/file/VASTv3.0.pdf).
+Kiegészítő ads belül definiált egy `<CompanionAds>` elemet. A `<CompanionAds>` elemet tartalmazhat egy vagy több `<Companion>` elemeket. Minden egyes `<Companion>` elem egy kiegészítő ad ismerteti, és tartalmazhat egy `<StaticResource>`, `<IFrameResource>`, vagy `<HTMLResource>` amely lineáris ad alkalmazott módon vannak megadva. Egy HATALMAS fájlt tartalmazhat több kiegészítő hirdetések és a lejátszóalkalmazás kiválaszthatja a legmegfelelőbb ad megjelenítéséhez. VAST kapcsolatos további információkért lásd: [HATALMAS 3.0](https://www.iab.net/media/file/VASTv3.0.pdf).
 
 ### <a name="using-a-digital-video-multiple-ad-playlist-vmap-file"></a>Egy digitális videót több Ad lista (VMAP) fájl használatával
 VMAP fájl lehetővé teszi, hogy adja meg, ha ad oldaltörések történik, minden egyes break mennyi ideig tart, hány ads szünet is meg és hirdetések típusú lehet megszakítás alatt jelenik meg. A következő egy példa, amely meghatározza egy egyetlen ad break VMAP fájlban:
@@ -243,7 +243,7 @@ A <**AdSource**> elem biztosít a Windows Media player beágyazott ad választ, 
 * `<AdTagURI>` egy URI-t ad választ hivatkozik egy másik rendszerből
 * `<CustomAdData>` – tetszés szerinti karakterlánc, amely nem HATALMAS választ jelöli
 
-Ebben a példában egy egysoros ad választ meg van adva egy `<VASTAdData>` elem, amely tartalmazza a HATALMAS ad választ. Az egyéb elemek kapcsolatos további információkért lásd: [VMAP](http://www.iab.net/guidelines/508676/digitalvideo/vsuite/vmap).
+Ebben a példában egy egysoros ad választ meg van adva egy `<VASTAdData>` elem, amely tartalmazza a HATALMAS ad választ. Az egyéb elemek kapcsolatos további információkért lásd: [VMAP](https://www.iab.net/guidelines/508676/digitalvideo/vsuite/vmap).
 
 A <**AdBreak**> elem is tartalmazhat egy <**TrackingEvents**> elemet. A <**TrackingEvents**> elem lehetővé teszi, hogy nyomon követheti az elején vagy végén egy ad break, vagy hogy hiba történt az ad/csere során. A <**TrackingEvents**> elem tartalmaz egy vagy több <**követési**> elemek, amelyek mindegyike egy követési eseményének és a egy nyomkövetési URI-t adja meg. A lehetséges követési események a következők:
 
@@ -363,7 +363,7 @@ Egy végrehajtható ad jön létre a kódot, amely például Adobe Flash™ vagy
     </MediaFiles>
 ```
 
-Egy végrehajtható ad használatával lehet inicializálni a `<AdParameters>` elemen belül a `<Linear>` vagy `<NonLinear>` elemek HATALMAS választ. További információ a `<AdParameters>` elem, lásd: [HATALMAS 3.0](http://www.iab.net/media/file/VASTv3.0.pdf). A VPAID API-val kapcsolatos további információkért lásd: [VPAID 2.0](http://www.iab.net/media/file/VPAID_2.0_Final_04-10-2012.pdf).
+Egy végrehajtható ad használatával lehet inicializálni a `<AdParameters>` elemen belül a `<Linear>` vagy `<NonLinear>` elemek HATALMAS választ. További információ a `<AdParameters>` elem, lásd: [HATALMAS 3.0](https://www.iab.net/media/file/VASTv3.0.pdf). A VPAID API-val kapcsolatos további információkért lásd: [VPAID 2.0](https://www.iab.net/media/file/VPAID_2.0_Final_04-10-2012.pdf).
 
 ## <a name="implementing-a-windows-or-windows-phone-8-player-with-ad-support"></a>A Windows- vagy Ad-támogatás a Windows Phone 8-lejátszó megvalósítása
 A Microsoft Media Platform: Player keretrendszer a Windows 8 és Windows Phone 8-alkalmazásokra, amelyek bemutatják, hogyan valósíthat meg egy videólejátszó alkalmazások a keretrendszer használatával gyűjteményét tartalmazza. Letöltheti a Player keretrendszer és a minták a [Player keretrendszer a Windows 8 és Windows Phone 8](https://playerframework.codeplex.com).

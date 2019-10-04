@@ -1,6 +1,6 @@
 ---
-title: Egy külső gyorsítótár az Azure API Management használata |} A Microsoft Docs
-description: Megtudhatja, hogyan konfigurálhatja és használhatja az Azure API Management egy külső gyorsítótár.
+title: Külső gyorsítótár használata az Azure API Managementban | Microsoft Docs
+description: Megtudhatja, hogyan konfigurálhat és használhat külső gyorsítótárat az Azure API Managementban.
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -10,91 +10,86 @@ ms.assetid: 740f6a27-8323-474d-ade2-828ae0c75e7a
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 05/15/2019
 ms.author: apimpm
-ms.openlocfilehash: 8e3f34210627fbb455a1eca0b415cdd6de9b3681
-ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
+ms.openlocfilehash: 2e8863eed774884a99de8643c9e497378368d166
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407623"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072503"
 ---
-# <a name="use-an-external-azure-cache-for-redis-in-azure-api-management"></a>A Redis az Azure API Management egy külső Azure Cache használatához
+# <a name="use-an-external-azure-cache-for-redis-in-azure-api-management"></a>Külső Azure cache használata az Azure-beli Redis-API Management
 
-Mellett a beépített gyorsítótárat használó, Azure API Management lehetővé teszi a válaszok egy külső Azure Cache-ben a Redis-gyorsítótárazás.
+A beépített gyorsítótár kihasználása mellett az Azure API Management is lehetővé teszi, hogy a Redis egy külső Azure-gyorsítótárban válaszokat engedélyezzen.
 
-Külső gyorsítótár használata lehetővé teszi, hogy a beépített gyorsítótár vonatkozik néhány korlátozás. Ez akkor különösen hasznos, ha szeretné:
+A külső gyorsítótár használata lehetővé teszi a beépített gyorsítótár néhány korlátozásának megszüntetését. Ez különösen hasznos, ha a következőket szeretné:
 
-* Ne kelljen a gyorsítótárban, az API Management-frissítések során rendszeresen törölve
-* További szabályozhatják a gyorsítótár konfigurálása
-* Az API Management szint lehetővé teszi, hogy több adatot gyorsítótárazása
-* Használjon gyorsítótárazást a Használatalapú csomag az API Management
+* Kerülje a gyorsítótár rendszeres törlését API Management frissítések során
+* Nagyobb mértékben szabályozhatja a gyorsítótár konfigurációját
+* A API Management-csomaggal több adattal is gyorsítótárazhat, így
+* A gyorsítótárazás használata a API Management fogyasztási szintjével
 
 A gyorsítótárazással kapcsolatos részletes információk: [Az API Management gyorsítótárazási házirendjei](api-management-caching-policies.md) és [Egyedi gyorsítótárazás az Azure API Management szolgáltatásban](api-management-sample-cache-by-key.md).
 
-![A saját gyorsítótár életre APIM](media/api-management-howto-cache-external/overview.png)
+![Saját gyorsítótár használata a APIM](media/api-management-howto-cache-external/overview.png)
 
 Ismertetett témák:
 
 > [!div class="checklist"]
-> * Adjon hozzá egy külső gyorsítótár az API Management szolgáltatásban
-
-## <a name="availability"></a>Rendelkezésre állás
-
-> [!NOTE]
-> Ez a funkció jelenleg csak érhető el a **fogyasztás** az Azure API Management szintjéhez.
+> * Külső gyorsítótár hozzáadása API Management
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 + [Azure API Management-példány létrehozása](get-started-create-service-instance.md)
-+ Megismerheti [gyorsítótárazás az Azure API Management](api-management-howto-cache.md)
++ [Az Azure-API Management gyorsítótárazásának](api-management-howto-cache.md) megismerése
 
-## <a name="create-cache"> </a> A Redis az Azure Cache létrehozása
+## <a name="create-cache"></a> Azure cache létrehozása a Redis
 
-Ez a szakasz ismerteti, hogyan hozhat létre egy Azure Cache redis az Azure-ban. Ha már rendelkezik egy Azure Cache redis, belül vagy az Azure-on kívül is <a href="#add-external-cache">kihagyása</a> a következő szakaszra.
+Ez a szakasz azt ismerteti, hogyan hozható létre Azure cache a Redis az Azure-ban. Ha már rendelkezik Azure-gyorsítótárral az Azure-on belüli vagy kívüli Redis, <a href="#add-external-cache">ugorjon</a> a következő szakaszra.
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
 
-## <a name="add-external-cache"> </a>Adjon hozzá egy külső gyorsítótár
+## <a name="add-external-cache"> </a>Külső gyorsítótár hozzáadása
 
-Adjon hozzá egy külső Azure Cache redis az Azure API Management az alábbi lépésekkel.
+Kövesse az alábbi lépéseket egy külső Azure-gyorsítótár hozzáadásához az Azure API Management Redis.
 
-![A saját gyorsítótár életre APIM](media/api-management-howto-cache-external/add-external-cache.png)
+![Saját gyorsítótár használata a APIM](media/api-management-howto-cache-external/add-external-cache.png)
 
 > [!NOTE]
-> A **használata** beállítással melyik regionális telepítési kommunikálni fog az API Management a gyorsítótár konfigurált több regionális az API Management-konfiguráció esetén. A megadott gyorsítótárak **alapértelmezett** felülbírálják gyorsítótárak regionális értékkel.
+> A **használat forrása** beállítással megadható, hogy API Management regionális központi telepítés hogyan kommunikáljon a konfigurált gyorsítótárral, ha a API Management több régiós konfigurációja is van. Az **alapértelmezettként** megadott gyorsítótárak felülbírálása a regionális értékkel rendelkező gyorsítótárak esetében történik.
 >
-> Például ha az API Management az USA keleti RÉGIÓJA, Délkelet-Ázsiában és Nyugat-európai régióban üzemel, és nincsenek két gyorsítótárak konfigurálni, egyet-egyet **alapértelmezett** és a egy **Délkelet-Ázsia**, azAPIManagement **Délkelet-Ázsia** fogja használni a saját gyorsítótár, míg a másik két régió fogja használni a **alapértelmezett** gyorsítótár-bejegyzés.
+> Ha például API Management az USA keleti régiójában, a Délkelet-Ázsiában és a Nyugat-európai régióban található, és két gyorsítótár van konfigurálva, amelyek közül az egyik az **alapértelmezett** , a másik pedig a **Délkelet-ázsiai**, API Management a **Délkelet-Ázsiában** a saját gyorsítótárát fogja használni, míg a másik két régió az **alapértelmezett** gyorsítótár-bejegyzést fogja használni.
 
-### <a name="add-an-azure-cache-for-redis-from-the-same-subscription"></a>Adja hozzá az Azure Cache redis ugyanabba az előfizetésbe tartozó
+### <a name="add-an-azure-cache-for-redis-from-the-same-subscription"></a>Azure cache hozzáadása ugyanahhoz az előfizetéshez tartozó Redis
 
-1. Keresse meg az API Management-példány az Azure Portalon.
-2. Válassza ki a **külső gyorsítótár** fülre a bal oldali menüben.
+1. Tallózással keresse meg API Management-példányát a Azure Portal.
+2. Válassza a **külső gyorsítótár** fület a bal oldali menüből.
 3. Kattintson a **+ Hozzáadás** gombra.
-4. Válassza ki a saját gyorsítótárához az a **gyorsítótárpéldány** legördülő mező.
-5. Válassza ki **alapértelmezett** , vagy adja meg a kívánt régiót, a a **használata** legördülő mező.
+4. Válassza ki a gyorsítótárat a **gyorsítótár-példány** legördülő mezőjében.
+5. Válassza az **alapértelmezett** lehetőséget, vagy adja meg a kívánt régiót a **használat** a legördülő listából mezőben.
 6. Kattintson a **Save** (Mentés) gombra.
 
-### <a name="add-an-azure-cache-for-redis-hosted-outside-of-the-current-azure-subscription-or-azure-in-general"></a>Adja hozzá az Azure Cache általában az aktuális Azure-előfizetés vagy az Azure-on kívül üzemeltetett redis
+### <a name="add-an-azure-cache-for-redis-hosted-outside-of-the-current-azure-subscription-or-azure-in-general"></a>Azure-gyorsítótár hozzáadása az aktuális Azure-előfizetésen vagy az Azure-on kívül üzemeltetett Redis
 
-1. Keresse meg az API Management-példány az Azure Portalon.
-2. Válassza ki a **külső gyorsítótár** fülre a bal oldali menüben.
+1. Tallózással keresse meg API Management-példányát a Azure Portal.
+2. Válassza a **külső gyorsítótár** fület a bal oldali menüből.
 3. Kattintson a **+ Hozzáadás** gombra.
-4. Válassza ki **egyéni** a a **gyorsítótárpéldány** legördülő mező.
-5. Válassza ki **alapértelmezett** , vagy adja meg a kívánt régiót, a a **használata** legördülő mező.
-6. Adja meg az Azure Cache Redis kapcsolati karakterlánc az **kapcsolati karakterlánc** mező.
+4. Válassza az **Egyéni** lehetőséget a **gyorsítótár-példány** legördülő mezőjében.
+5. Válassza az **alapértelmezett** lehetőséget, vagy adja meg a kívánt régiót a **használat** a legördülő listából mezőben.
+6. Adja meg az Azure cache-t a Redis-kapcsolatok karakterláncához a **kapcsolatok karakterlánca** mezőben.
 7. Kattintson a **Save** (Mentés) gombra.
 
-## <a name="use-the-external-cache"></a>A külső gyorsítótár használata
+## <a name="use-the-external-cache"></a>Külső gyorsítótár használata
 
-Ha a külső gyorsítótár már konfigurálva van az Azure API Management szolgáltatásban, használat gyorsítótárazási házirendek keresztül. Lásd: [hozzáadása az Azure API Management teljesítményének javításához gyorsítótárazás](api-management-howto-cache.md) a részletes lépéseket.
+Ha a külső gyorsítótár konfigurálva van az Azure API Managementban, a gyorsítótárazási házirendek használatával is használható. A részletes lépésekért lásd: [gyorsítótár hozzáadása az Azure-API Management teljesítményének növeléséhez](api-management-howto-cache.md) .
 
 ## <a name="next-steps"></a>Következő lépések
-* További információt a gyorsítótárazási házirendekről az [API Management házirend-referencia][API Management policy reference] oktatóanyag [Gyorsítótárazási házirendek][Caching policies] szakaszában talál.
+
+* További információt a gyorsítótárazási házirendekről az [API Management házirend-referencia][API Management policy reference] [Gyorsítótárazási házirendek][Caching policies] szakaszában talál.
 * További információ az elemeknek a házirend-kifejezések kulcsával történő gyorsítótárazásáról: [Egyéni gyorsítótárazás az Azure API Management szolgáltatásban](api-management-sample-cache-by-key.md).
 
 [API Management policy reference]: https://msdn.microsoft.com/library/azure/dn894081.aspx

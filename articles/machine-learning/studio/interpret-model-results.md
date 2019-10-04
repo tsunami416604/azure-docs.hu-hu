@@ -11,11 +11,11 @@ ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
 ms.openlocfilehash: c46f22fb5c906aaffa48f39a0c643ca2a48573f9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57877275"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60867310"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio"></a>Az Azure Machine Learning Studióban modell eredményeinek értelmezése
 Ez a témakör bemutatja, hogyan jelenítheti meg, és az Azure Machine Learning Studióban az előrejelzés eredményét értelmezik. Miután a betanított modell, és végzett előrejelzések felett ("pontozását a modell"), és az előrejelzési eredmények értelmezése szüksége.
@@ -25,7 +25,7 @@ Ez a témakör bemutatja, hogyan jelenítheti meg, és az Azure Machine Learning
 Machine learning-modellek az Azure Machine Learning Studióban négy fő típusú léteznek:
 
 * Besorolás
-* Fürtözés
+* Fürtszolgáltatás
 * Regresszió
 * Ajánló rendszerek
 
@@ -56,7 +56,7 @@ Egy példa egy két osztályú osztályozási probléma a virágok iris besorol�
 
 ![Képernyőkép az iris kísérlet](./media/interpret-model-results/1.png)
 
-1. ábra IRIS két osztályú osztályozási probléma kísérlet
+1\. ábra IRIS két osztályú osztályozási probléma kísérlet
 
 Kísérlet történt a probléma megoldásához az 1. ábrán látható módon. Kétosztályos gyorsított döntési fa modell tanítva, és a pontozott. Most származó előrejelzési eredményeket jelenítheti meg a [Score Model] [ score-model] modul kimeneti portjával kattintva a [Score Model] [ score-model] a modul, majd kattintás a **Visualize**.
 
@@ -66,7 +66,7 @@ Ekkor megjelenik a pontozási eredményeinek a 2. ábrán látható módon.
 
 ![Iris két osztályú osztályozási kísérlet eredményeit](./media/interpret-model-results/2.png)
 
-2. ábra A két osztályú osztályozási pontszám modell eredményt megjelenítése
+2\. ábra A két osztályú osztályozási pontszám modell eredményt megjelenítése
 
 **Eredmények értelmezése**
 
@@ -78,13 +78,13 @@ Miután előrejelzési eredményeket megértését, és hang pályamű, a kísé
 
 ![Képernyőkép a pontozási kísérlet](./media/interpret-model-results/3.png)
 
-3. ábra A pontozás az iris két osztályú osztályozási probléma kísérlet
+3\. ábra A pontozás az iris két osztályú osztályozási probléma kísérlet
 
 Most már szükség a bemeneti és kimeneti a webszolgáltatáshoz. A bemeneti adatok jobb oldali bemeneti portjával [Score Model][score-model], azaz az Iris flower bemeneti funkciói. A kimenet a kiválasztott attól függ, hogy érdekli az előrejelzett osztály (pontozott címkéje), a pontozott valószínűség vagy mindkettőt. Ebben a példában feltételezzük, hogy Önt érdeklő is. Válassza ki a kívánt kimeneti oszlopokat, használja a [Select Columns in adatkészlet] [ select-columns] modul. Kattintson a [Select Columns in adatkészlet][select-columns], kattintson a **Oszlopválasztás indítása**, és válassza ki **pontozott címkék** és **Scored Valószínűségek**. A kimeneti portra, beállítása után [Select Columns in adatkészlet] [ select-columns] és újra futtatni, készen áll a pontozási kísérlet közzététele webszolgáltatásként kattintva **WEBSZOLGÁLTATÁS közzététele** . Az elkészült kísérletnek a következőképpen néz ki a 4. ábra.
 
 ![Az iris két osztályú osztályozási kísérlet](./media/interpret-model-results/4.png)
 
-4. ábra Elkészült pontozási kísérlet egy iris két osztályú osztályozási probléma
+4\. ábra Elkészült pontozási kísérlet egy iris két osztályú osztályozási probléma
 
 Miután a webszolgáltatások futtatásához, és adja meg a teszt-példány néhány funkció értéket, az eredmény két számot adja vissza. Az első szám az pontozott címke, a második pedig a pontozott valószínűség. Ez flower 0.9655 valószínűséggel várhatóan 1. osztályúnak minősülnek.
 
@@ -92,7 +92,7 @@ Miután a webszolgáltatások futtatásához, és adja meg a teszt-példány né
 
 ![Pontozó terhelésiteszt-eredményei](./media/interpret-model-results/5.png)
 
-5. ábra Iris két osztályú osztályozási webes szolgáltatás eredménye
+5\. ábra Iris két osztályú osztályozási webes szolgáltatás eredménye
 
 ### <a name="multi-class-classification"></a>Többcsoportos besorolás
 **Példakísérlet**
@@ -101,17 +101,17 @@ Az ehhez a kísérlethez végrehajtott feladatokat levél-felismerés többoszt�
 
 ![Levél felismerés példa](./media/interpret-model-results/5_1.png)
 
-A betanítási adatok nincsenek levél kézírásos rendszerképek kinyert 16 funkciókat. A 26 betűket 26 osztályból alkotnak. 6. ábra egy kísérletet, amely betűvel elismerési többosztályos osztályozási modell betanítása és előrejelezheti a tesztelési adathalmazon ugyanazokat a funkciókat jeleníti meg.
+A betanítási adatok nincsenek levél kézírásos rendszerképek kinyert 16 funkciókat. A 26 betűket 26 osztályból alkotnak. 6\. ábra egy kísérletet, amely betűvel elismerési többosztályos osztályozási modell betanítása és előrejelezheti a tesztelési adathalmazon ugyanazokat a funkciókat jeleníti meg.
 
 ![Levél felismerés többosztályos osztályozási kísérlet](./media/interpret-model-results/6.png)
 
-6. ábra Levél felismerés többosztályos osztályozási probléma kísérlet
+6\. ábra Levél felismerés többosztályos osztályozási probléma kísérlet
 
 Eredményeinek megjelenítése a [Score Model] [ score-model] modul kimeneti portjával kattintva [Score Model] [ score-model] modult, majd kattintás a **Visualize**, megjelenik a tartalmat a 7. ábrán látható módon.
 
 ![Pontszám modell eredményeinek](./media/interpret-model-results/7.png)
 
-7. ábra Egy többcsoportos besorolásban pontszám modell eredményeinek képi megjelenítése
+7\. ábra Egy többcsoportos besorolásban pontszám modell eredményeinek képi megjelenítése
 
 **Eredmények értelmezése**
 
@@ -123,19 +123,19 @@ A pontozott címke minden egyes belépési és a pontozott címke valószínűs�
 
 ![R-kód példa](./media/interpret-model-results/8.png)
 
-8. ábra Pontozott címkék és a kapcsolódó valószínűségek, a címkék az R-kód
+8\. ábra Pontozott címkék és a kapcsolódó valószínűségek, a címkék az R-kód
 
 ![Kísérlet eredménye](./media/interpret-model-results/9.png)
 
-9. ábra A levél-felismerés többosztályos osztályozási probléma elkészült pontozási kísérlet
+9\. ábra A levél-felismerés többosztályos osztályozási probléma elkészült pontozási kísérlet
 
 Miután közzététele és a webszolgáltatások futtatásához, és adja meg az egyes bemeneti funkció értékeket, a visszaadott eredmény úgy tűnik, a 10. ábrán. A kézzel írt levél kinyert 16 funkcióihoz várhatóan meghalad egy "T" 0.9715 valószínűséggel kell.
 
 ![Teszt értelmezése pontszám modul](./media/interpret-model-results/9_1.png)
 
-![Teszteredmény](./media/interpret-model-results/10.png)
+![Teszt eredménye](./media/interpret-model-results/10.png)
 
-10. ábra Többosztályos osztályozási webes szolgáltatás eredménye
+10\. ábra Többosztályos osztályozási webes szolgáltatás eredménye
 
 ## <a name="regression"></a>Regresszió
 Osztályozási problémák regressziós problémák eltérnek. Osztályozási probléma, a kívánt előrejelzése diszkrét osztályok, például, hogy melyik osztály egy iris flower tartozik. De amint láthatja, a következő példában egy regressziós probléma, próbál egy folyamatos változó, például egy autó árának előrejelzése.
@@ -146,13 +146,13 @@ A példában a regressziós autó árának előrejelzése használjuk. Az egy au
 
 ![Autó árát regressziós kísérlet](./media/interpret-model-results/11.png)
 
-11. ábra Autó árát regressziós probléma kísérlet
+11\. ábra Autó árát regressziós probléma kísérlet
 
 Megjeleníteni a [Score Model] [ score-model] modul, az eredmény láthatóhoz hasonló 12. ábra.
 
 ![Az autókra price prediction probléma pontozási eredményeinek](./media/interpret-model-results/12.png)
 
-12. ábra. Az autókat tartalmazó ár előrejelzési probléma pontozási eredménye
+12\. ábra. Az autókat tartalmazó ár előrejelzési probléma pontozási eredménye
 
 **Eredmények értelmezése**
 
@@ -164,7 +164,7 @@ A regressziós kísérlettel webszolgáltatások közzététele, és hívja az a
 
 ![Kísérlet pontozási autó árát regressziós probléma](./media/interpret-model-results/13.png)
 
-13. ábra. Kísérlet egy autó árát regressziós probléma pontozási
+13\. ábra. Kísérlet egy autó árát regressziós probléma pontozási
 
 A webszolgáltatást futtató, a visszaadott eredmény tűnik 14. ábra. Az előre jelzett díjszabása az autó $15,085.52.
 
@@ -172,16 +172,16 @@ A webszolgáltatást futtató, a visszaadott eredmény tűnik 14. ábra. Az elő
 
 ![A modul pontozási eredményeinek](./media/interpret-model-results/14.png)
 
-14. ábra. Webes szolgáltatás eredménye egy autó árát regressziós probléma
+14\. ábra. Webes szolgáltatás eredménye egy autó árát regressziós probléma
 
-## <a name="clustering"></a>Fürtözés
+## <a name="clustering"></a>Fürtszolgáltatás
 **Példakísérlet**
 
 Használjuk az Írisz adatkészletet újra fürtözési kísérletet. Itt szűrhet az adatkészlet osztály feliratok ki, hogy csak funkciókkal rendelkezik, és a fürtszolgáltatás is használható. Az iris a használati eset, adja meg a képzés során, ami azt jelenti, hogy a virágok a két osztályba lenne fürt két fürtöket. A kísérlet 15. ábra jelenik meg.
 
 ![IRIS fürtözési probléma kísérletezéshez](./media/interpret-model-results/15.png)
 
-15. ábra. IRIS fürtözési probléma kísérletezéshez
+15\. ábra. IRIS fürtözési probléma kísérletezéshez
 
 Fürtszolgáltatás abban különbözik a besorolást, hogy a tanítási adathalmazt önmagában nem rendelkezik földön-hiteles címkék. A betanítási adatok példányaihoz, különböző fürtök fürtözési csoportok. A betanítási folyamat során a modell által a hozzájuk tartozó funkciók eltérései tanulási bejegyzéseket feliratok. Ezt követően a betanított modell további a jövőbeli bejegyzések besorolására használható. Az eredmény, mi érdekli fürtözési probléma belül két részből áll. Az első rész a tanítási adathalmazt a címkézés és a második az Írisz a betanított modell egy új adatkészlet.
 
@@ -189,13 +189,13 @@ Az eredmény első része az alábbi ábra a bal oldali kimeneti portjára katti
 
 ![Fürtszolgáltatás eredménye](./media/interpret-model-results/16.png)
 
-16. ábra. Megjelenítheti a fürtszolgáltatás a tanítási adathalmazt eredménye
+16\. ábra. Megjelenítheti a fürtszolgáltatás a tanítási adathalmazt eredménye
 
 A második rész, új bejegyzéseket a betanított fürtözési modell a fürtszolgáltatás eredményét 17. ábra jelenik meg.
 
 ![Fürtszolgáltatás eredmény megjelenítése](./media/interpret-model-results/17.png)
 
-17. ábra. Fürtszolgáltatást eredménye egy új adatkészlet megjelenítése
+17\. ábra. Fürtszolgáltatást eredménye egy új adatkészlet megjelenítése
 
 **Eredmények értelmezése**
 
@@ -207,7 +207,7 @@ A fürtözési kísérlettel webszolgáltatások közzététele, és a fürtszol
 
 ![Kísérlet pontozási iris fürtözési probléma](./media/interpret-model-results/18.png)
 
-18. ábra. Kísérlet egy iris fürtözési probléma pontozási
+18\. ábra. Kísérlet egy iris fürtözési probléma pontozási
 
 A webszolgáltatás futtatása után a visszaadott eredmény 19. ábra tűnik. Ez flower összegyűjtése várható kell lennie a fürt 0.
 
@@ -215,7 +215,7 @@ A webszolgáltatás futtatása után a visszaadott eredmény 19. ábra tűnik. E
 
 ![Pontozó modul eredménye](./media/interpret-model-results/19.png)
 
-19. ábra. Iris két osztályú osztályozási webes szolgáltatás eredménye
+19\. ábra. Iris két osztályú osztályozási webes szolgáltatás eredménye
 
 ## <a name="recommender-system"></a>Ajánló rendszer
 **Példakísérlet**
@@ -241,7 +241,7 @@ Egy tipikus Azure Machine Learning Studio kísérletet ajánló rendszer esetén
 
 ![Ajánló rendszer kísérlet](./media/interpret-model-results/20.png)
 
-20. ábra. Ajánló rendszer kísérlet
+20\. ábra. Ajánló rendszer kísérlet
 
 **Eredmények értelmezése**
 
@@ -251,7 +251,7 @@ Kiválasztásával **minősítés előrejelzési** alatt **ajánló előrejelzé
 
 ![A ajánló rendszer--minősítés előrejelzés eredményét pontszám](./media/interpret-model-results/21.png)
 
-21. ábra. A ajánló rendszer--előrejelzési minősítés pontszám eredményének megjelenítése
+21\. ábra. A ajánló rendszer--előrejelzési minősítés pontszám eredményének megjelenítése
 
 Az első két oszlop a bemeneti adatok által biztosított felhasználói-elem párt. A harmadik oszlop az előre jelzett minősítése egy felhasználó egy bizonyos elem. Például az első sorban ügyfél U1048 várhatóan meghalad arány éttermi 135026 2.
 
@@ -261,7 +261,7 @@ Kiválasztásával **elem javaslat** alatt **ajánló előrejelzési kind**, mé
 
 ![Ajánló rendszer--elem javaslat pontszám eredménye](./media/interpret-model-results/22.png)
 
-22. ábra. Ajánló rendszer--elem javaslat pontszám eredmény megjelenítése
+22\. ábra. Ajánló rendszer--elem javaslat pontszám eredmény megjelenítése
 
 Az első hat oszlop az adott felhasználói azonosítókat, tételeket jelöli, a bemeneti adatok által biztosított módon. A többi öt oszlop felel meg az elemeket, javasoljuk, hogy a felhasználó a relevancia alapján csökkenő sorrendben. Például az első sorban a leginkább ajánlott éttermi ügyfél U1048 134986, 135018, 134975, 135021 és 132862 követ.
 
@@ -271,7 +271,7 @@ Kiválasztásával **kapcsolódó felhasználók** alatt **ajánló előrejelzé
 
 ![Ajánló rendszer--kapcsolódó felhasználók pontszám eredménye](./media/interpret-model-results/23.png)
 
-23. ábra. Pontszám modell eredményeinek ajánló rendszer--kapcsolódó felhasználók megjelenítése
+23\. ábra. Pontszám modell eredményeinek ajánló rendszer--kapcsolódó felhasználók megjelenítése
 
 Az első hat oszlop mutatja az adott felhasználói azonosítók kapcsolódó felhasználók kereséséhez szükséges, mivel a bemeneti adatok által biztosított. A többi öt oszlop tárolja a felhasználó az előre jelzett kapcsolódó felhasználói szerinti relevancia alapján csökkenő sorrendben. Például az első sorban a leginkább releváns vevő ügyfél U1048 U1051, U1066, U1044, U1017 és U1072 követ.
 
@@ -281,7 +281,7 @@ Kiválasztásával **kapcsolódó elemek** alatt **ajánló előrejelzési kind*
 
 ![Ajánló rendszer--kapcsolódó elemek pontszám eredménye](./media/interpret-model-results/24.png)
 
-24. ábra. Pontszám modell eredményeinek ajánló rendszer--kapcsolódó elemek megjelenítése
+24\. ábra. Pontszám modell eredményeinek ajánló rendszer--kapcsolódó elemek megjelenítése
 
 Az első hat oszlopot a megadott elem szükséges kapcsolódó elemek kereséséhez, mivel a bemeneti adatok által biztosított azonosítók jelöli. A többi öt oszlop relevancia alapján csökkenő elem az előre jelzett kapcsolódó elemek tárolásához. Például az első sorban a leginkább releváns elem 135026 elem 135074, 135035, 132875, 135055 és 134992 követ.
 
@@ -293,7 +293,7 @@ A betanított ajánló rendszermódosítások mentése másként betanított mod
 
 ![Kísérlet a éttermi javaslat probléma pontozási](./media/interpret-model-results/25.png)
 
-25. ábra. Kísérlet a éttermi javaslat probléma pontozási
+25\. ábra. Kísérlet a éttermi javaslat probléma pontozási
 
 A webszolgáltatást futtató, a visszaadott eredmény tűnik 26. ábra. Felhasználó U1048 öt ajánlott éttermekben 134986, 135018, 134975, 135021 és 132862.
 
@@ -301,7 +301,7 @@ A webszolgáltatást futtató, a visszaadott eredmény tűnik 26. ábra. Felhasz
 
 ![Minta kísérlet eredménye](./media/interpret-model-results/26.png)
 
-26. ábra. Webes szolgáltatás eredménye éttermi javaslat probléma
+26\. ábra. Webes szolgáltatás eredménye éttermi javaslat probléma
 
 <!-- Module References -->
 [assign-to-clusters]: https://msdn.microsoft.com/library/azure/eed3ee76-e8aa-46e6-907c-9ca767f5c114/

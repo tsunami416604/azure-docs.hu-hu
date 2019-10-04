@@ -8,17 +8,17 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/12/2018
-ms.openlocfilehash: 5f85f0a6b1869571a8db29586e5fe113e0f47433
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.date: 06/21/2019
+ms.openlocfilehash: 54296f0b4aed22457a5218154111a42ad01ec262
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54304839"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329343"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Ismertetése és módosítása a folyamatos átviteli egységek
 
-A számítási feladatok végrehajtásához lefoglalt erőforrások folyamatos átviteli egységek (su) jelöli. Minél magasabb az SU-k száma, annál több processzor- és memória-erőforrás van lefoglalva a feladathoz. Ez a kapacitás lehetővé teszi, hogy a lekérdezés logikára koncentrálhat, és felügyelnie a hardvert, hogy futtassa a Stream Analytics-feladat időben kivonatot.
+A Stream Analytics-feladat végrehajtásához kiosztott számítási erőforrások folyamatos átviteli egységek (su) jelöli. Minél magasabb az SU-k száma, annál több processzor- és memória-erőforrás van lefoglalva a feladathoz. Ez a kapacitás lehetővé teszi, hogy a lekérdezés logikára koncentrálhat, és felügyelnie a hardvert, hogy futtassa a Stream Analytics-feladat időben kivonatot.
 
 A kis késésű streamfeldolgozás érdekében az Azure Stream Analytics-feladatok minden feldolgozást a memóriában hajtanak végre. Kevés a memória, a folyamatos átviteli feladat sikertelen lesz. Ennek eredményeképpen egy éles feladat, fontos egy folyamatos átviteli feladat erőforrás-használat figyelése, és ellenőrizze, hogy nincs elegendő erőforrás le legyen foglalva, hogy a feladatok 24/7 rendszert.
 
@@ -51,7 +51,7 @@ Az ajánlott eljárás szerint általában a lekérdezések, amelyek nem haszná
 SUS-t a megfelelő számú kiválasztásával kapcsolatban további információkért tekintse meg ezen a lapon: [Átviteli sebesség növelése érdekében az Azure Stream Analytics-feladatok méretezése](stream-analytics-scale-jobs.md)
 
 > [!Note]
-> Partíciókonfigurációjától szükség, az egy adott feladat a bemeneti partíció konfigurációját és a feladathoz meghatározott lekérdezéstől függ. Kiválaszthatja, SUS-t a kvóta egy feladat legfeljebb. Alapértelmezés szerint minden Azure-előfizetés az analytics-feladatok akár 200 SUs kvótával rendelkezik egy adott régióban. SUS-t az előfizetések mellett ez a kvóta növeléséhez forduljon [Support](https://support.microsoft.com). Feladatonként SUs érvényes értékei a következők 1, 3, 6, és legfeljebb 6-os léptékben.
+> Partíciókonfigurációjától szükség, az egy adott feladat a bemeneti partíció konfigurációját és a feladathoz meghatározott lekérdezéstől függ. Kiválaszthatja, SUS-t a kvóta egy feladat legfeljebb. Alapértelmezés szerint minden Azure-előfizetés az analytics-feladatok legfeljebb 500 SUs kvótával rendelkezik egy adott régióban. SUS-t az előfizetések mellett ez a kvóta növeléséhez forduljon [Support](https://support.microsoft.com). Feladatonként SUs érvényes értékei a következők 1, 3, 6, és legfeljebb 6-os léptékben.
 
 ## <a name="factors-that-increase-su-utilization"></a>Tényezőket, amelyek növelik a SU százalékos kihasználtsága 
 
@@ -59,7 +59,7 @@ A historikus (time-orientált) lekérdezés elemei a Stream Analytics által biz
 
 Vegye figyelembe, hogy az összetett lekérdezések logikával feladat sikerült magas SU százalékos kihasználtsága akkor is, ha nem kap, folyamatosan bemeneti események. Ez akkor fordulhat elő, a bemeneti és kimeneti események egy hirtelen megugrás után. A feladat lehet, hogy továbbra is a memória-állapot karbantartásához, ha a lekérdezés túl összetett.
 
-SU százalékos kihasználtsága hirtelen dobhatja 0 előtt vissza hamarosan várható szinteket rövid ideig. Ez akkor fordul elő átmeneti hibák, illetve a rendszer által kezdeményezett frissítése miatt.
+SU százalékos kihasználtsága hirtelen dobhatja 0 előtt vissza hamarosan várható szinteket rövid ideig. Ez akkor fordul elő átmeneti hibák, illetve a rendszer által kezdeményezett frissítése miatt. Növelje a folyamatos átviteli egységek számát, egy feladatot nem lehet, hogy csökkentse SU százalékos kihasználtság, ha a lekérdezés nem [teljes párhuzamos](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization).
 
 ## <a name="stateful-query-logicin-temporal-elements"></a>Állapot-nyilvántartó lekérdezés logikája historikus elemek
 Az Azure Stream Analytics-feladat az egyedi képességét egyik állapot-nyilvántartó feldolgozó, például az ablakos összesítéseket, az időalapú illesztéseket és a historikus elemzési funkciók végrehajtásához. Ezen operátorok mindegyike megőrzi az állapotadatokat. Ezen lekérdezési elemek maximális ablak mérete hét nap. 
@@ -85,7 +85,7 @@ Például a következő lekérdezést, a szám társított `clusterid` számoss�
    GROUP BY  clusterid, tumblingwindow (minutes, 5)
    ```
 
-Annak érdekében, hogy az előző lekérdezést a magas Számosság által okozott problémák enyhítése, elküldheti események Event Hubs segítségével `clusterid`, és a horizontális felskálázás a lekérdezés azáltal, hogy a rendszer feldolgozza az egyes bemeneti partíció külön **partíció ÁLTAL** az alábbi példában látható módon:
+Annak érdekében, hogy minden az előző lekérdezést a magas Számosság által okozott problémák megoldásához, elküldheti események Event Hubs segítségével `clusterid`, és a horizontális felskálázás a lekérdezés azáltal, hogy a rendszer feldolgozza az egyes bemeneti partíció külön **partíció ÁLTAL** az alábbi példában látható módon:
 
    ```sql
    SELECT count(*) 

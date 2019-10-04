@@ -2,9 +2,9 @@
 title: Az Európai ügyfelei számára – Azure Active Directory Identity adattárolás |} A Microsoft Docs
 description: Ismerje meg, az Azure Active Directory tárolja az Európai ügyfeleinek identitással kapcsolatos adatokat.
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
-ms.author: lizross
+ms.author: ajburnle
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
@@ -12,56 +12,55 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b21f82dc0a1eb8edf571da13e0d34fecae5f401b
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 178f81cf42e5c57be4a0b69ada6560d46951a3a3
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337685"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68942841"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Az Európai ügyfelek az Azure Active Directory Identity adattárolás
-Az Azure Active Directory (Azure AD) segítségével, amely a szervezet erőforrásaihoz biztonságossá intelligens megoldásokkal vezérelt hozzáférési szabályzatokat hozhat létre, így kezelheti a felhasználói identitásokat. Az identitásadatok tárolásának helye a szervezete által a szolgáltatásra történő előfizetéskor megadott cím alapján lesz meghatározva. Azaz amikor például az Office 365-re vagy az Azure-ra előfizetett. Ha pontosan szeretné meghatározni az identitásadatok helyét, tekintse meg a Microsoft biztonsági és adatkezelési központ [az adatok tárolási helyével](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) foglalkozó szakaszát.
+Az identitás adatait az Azure AD tárolja földrajzi helyen a szervezete által megadott, a Microsoft online szolgáltatásokra, például az Office 365-re és az Azure-ra való feliratkozáskor. További információ a személyazonossági adatok tárolásáról: a Microsoft adatvédelmi központjának hol található az [adatai?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) szakasza.
 
-Bár a legtöbb Azure AD-kapcsolódó Európai identitásadatok marad, az Európai adatközpontokban, vannak bizonyos működési, szolgáltatás-specifikus adatok normál szükséges az Azure AD-művelet, amely az Egyesült Államokban tárolják, és nem foglal bele semmilyen személyes adatot.
+Az Európai adatközpontokon belül az Azure AD a személyazonossági adatok többségét megtartja az olyan ügyfelek számára, akik európai lakcímet biztosítanak. Ez a dokumentum az Azure AD-szolgáltatások által az Európán kívül tárolt adatokról nyújt információkat.
 
-## <a name="data-stored-outside-of-european-datacenters-for-european-customers"></a>Európai ügyfelekhez kapcsolódó, de nem európai adatközpontban tárolt adatok
-
-Az európai székhellyel rendelkező szervezetekhez tartozó legtöbb, Azure AD-vel kapcsolatos európai identitásadat európai adatközpontokban marad. Az Azure AD az adatokat, amelyeket az Európai adatközpontokban tárolja, Egyesült államokbeli adatközpontok, emellett replikálva tartalmazza:
-
-- **A Microsoft Azure Multi-Factor Authentication Service (MFA) és az Azure AD-beli önkiszolgáló jelszómódosítás (SSPR)**
+## <a name="microsoft-azure-multi-factor-authentication-mfa"></a>Többtényezős hitelesítés (MFA) Microsoft Azure
     
-    Az MFA európai adatközpontokban tárolja az összes helyi felhasználói adatot. Bizonyos MFA-szolgáltatásspecifikus adatokat azonban a rendszer az USA-ban tárol, például a következőket:
+- Az összes telefonhívást vagy SMS-t használó kétfaktoros hitelesítés az Egyesült államokbeli adatközpontokból származik, és a globális szolgáltatók is átirányítják őket.
+- Az Microsoft Authenticator alkalmazást használó leküldéses értesítések az Egyesült államokbeli adatközpontokból származnak. Emellett az eszköz gyártója által biztosított szolgáltatások is játszhatnak, és ezek a szolgáltatások valószínűleg Európán kívül vannak.
+- Az OATH-kódok érvényesítése mindig az USA-ban történik. 
+
+További információ arról, hogy az Azure multi-Factor Authentication-kiszolgáló (MFA-kiszolgáló) és a felhőalapú Azure MFA milyen felhasználói adatokat gyűjt, lásd: [Azure multi-Factor Authentication felhasználói adatok gyűjtése](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-reporting-datacollection).
+
+## <a name="microsoft-azure-active-directory-b2c-azure-ad-b2c"></a>B2C Microsoft Azure Active Directory (Azure AD B2C)
+
+Az Azure AD B2C házirend-konfigurációs és a kulcstároló-tárolók az Egyesült államokbeli adatközpontokban vannak tárolva. Ezek nem tartalmaznak felhasználói személyes adatszolgáltatásokat. A házirend-konfigurációkkal kapcsolatos további információkért tekintse meg a [Azure Active Directory B2C: Beépített szabályzatok](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies) cikke.
+
+## <a name="microsoft-azure-active-directory-b2b-azure-ad-b2b"></a>B2B Microsoft Azure Active Directory (Azure AD B2B) 
     
-    - Ha MFA-t vagy SSPR-t használ, előfordulhat, hogy a kétfaktoros hitelesítést és a hozzá kapcsolódó személyes adatokat a rendszer az USA-ban tárolja.
+Az Azure AD B2B a beváltási hivatkozást és az átirányítási URL-címet az Egyesült államokbeli adatközpontokban tárolja. Ezen kívül az Egyesült államokbeli adatközpontokban is tároljuk azon felhasználók e-mail-címét, akik a VÁLLALATKÖZI meghívások fogadását lemondják.
 
-        - Minden telefonhívással vagy SMS-sel történő kétfaktoros hitelesítésnél előfordulhat, hogy USA-beli szolgáltató jár el.
+## <a name="microsoft-azure-active-directory-domain-services-azure-ad-ds"></a>Microsoft Azure Active Directory tartományi szolgáltatások (Azure AD DS)
+
+Az Azure AD DS ugyanott tárolja a felhasználói adatokat, ahol a felhasználó által kiválasztott Azure-beli virtuális hálózat. Tehát ha a hálózat Európán kívül van, a rendszer replikálja az adatokat, és Európán kívül tárolja.
+
+## <a name="federation-in-microsoft-exchange-server-2013"></a>Összevonás a Microsoft Exchange Server 2013
     
-        - A Microsoft Authenticator alkalmazást használó leküldéses értesítésekhez a gyártó értesítési szolgáltatásából (Apple vagy Google) származó értesítésekre van szükség, és előfordulhat, hogy az Európán kívüli.
-    
-        - Az OATH-kódok érvényesítése mindig az USA-ban történik. 
-    
-    - Bizonyos MFA- és SSPR-naplókat a rendszer a hitelesítés típusától függetlenül 30 napig az USA-ban tárol.
+- Application Identifier (AppID) – az Azure Active Directory hitelesítési rendszer által generált egyedi szám az Exchange-szervezetek azonosítására.
+- Jóváhagyott összevont tartományok listája az alkalmazáshoz
+- Alkalmazás jogkivonat-aláírása nyilvános kulcsa 
 
-- **Microsoft Azure Active Directory B2C (Azure AD B2C)**
+További információ a Microsoft Exchange Server [-összevonással kapcsolatban: összevonás: Exchange 2013 –](https://docs.microsoft.com/exchange/federation-exchange-2013-help) Súgó.
 
-    Az Azure AD B2C európai adatközpontokban tárolja az összes helyi felhasználói adatot. A működési naplók azonban (személyes adatok nélkül) azon a helyen maradnak, ahonnan a személy hozzáfér a szolgáltatásokhoz. Ha például egy B2C-felhasználó az USA-ból fér hozzá a szolgáltatáshoz, a működési naplók az USA-ban maradnak. Az USA-ban történik továbbá az összes személyes adatot nem tartalmazó szabályzatkonfigurációs adat tárolása is. A házirend-beállításokkal kapcsolatos további információkért tekintse meg a [Azure Active Directory B2C: Beépített szabályzatok](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies) cikk.
 
-- **Microsoft Azure Active Directory B2B (Azure AD B2B)** 
-    
-    Az Azure AD B2B európai adatközpontokban tárolja az összes helyi felhasználói adatot. A nem személyes metaadatokat azonban a B2B USA-beli adatközpontokban tárolja, táblázatokban. Ez a táblázat olyan mezőket tartalmaz például, mint a redeemUrl, az invitationTicket, a resource tenant Id, az InviteRedirectUrl és az InviterAppId.
+## <a name="other-considerations"></a>Egyéb szempontok
 
-- **Microsoft Azure Active Directory tartományi szolgáltatások (Azure AD DS)**
+Az Azure AD-vel integrált szolgáltatások és alkalmazások hozzáférhetnek az azonosító adatokhoz. Értékelje ki az egyes szolgáltatásait és alkalmazásait annak meghatározásához, hogy az adott szolgáltatás és alkalmazás hogyan dolgozza fel az azonosító adatait, és hogy megfelelnek-e a vállalat adattárolási követelményeinek.
 
-    Az Azure AD DS ugyanott tárolja a felhasználói adatokat, ahol a felhasználó által kiválasztott Azure-beli virtuális hálózat. Tehát ha a hálózat Európán kívül van, a rendszer replikálja az adatokat, és Európán kívül tárolja.
-
-- **Az Azure AD-vel integrált szolgáltatások és alkalmazások**
-
-    Az Azure AD-vel integrált szolgáltatások és alkalmazások hozzáférnek az identitásadatokhoz. Annak meghatározásához, hogy miként dolgozza fel egy adott szolgáltatás és alkalmazás az identitásadatokat, és hogy megfelelnek-e a vállalat adattárolási előírásainak, egyesével kell kiértékelni az egyes szolgáltatásokat és alkalmazásokat.
-
-    A Microsoft-szolgáltatások adattárolási helyével kapcsolatban a Microsoft biztonsági és adatkezelési központ [az adatok tárolási helyével](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) foglalkozó szakaszában találhat további információt.
+A Microsoft-szolgáltatások adattárolási helyével kapcsolatban a Microsoft biztonsági és adatkezelési központ [az adatok tárolási helyével](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) foglalkozó szakaszában találhat további információt.
 
 ## <a name="next-steps"></a>További lépések
-Szolgáltatások és funkciók a fent leírt kapcsolatban további információkért tanulmányozza a következő cikkeket:
+A fent ismertetett szolgáltatásokkal és funkciókkal kapcsolatos további információkért tekintse meg a következő cikkeket:
 - [Mi az a többtényezős hitelesítés?](https://docs.microsoft.com/azure/active-directory/authentication/multi-factor-authentication)
 
 - [Azure AD önkiszolgáló jelszómódosítás](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-passwords-overview)

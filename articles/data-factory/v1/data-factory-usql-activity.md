@@ -14,14 +14,14 @@ ms.author: abnarain
 manager: craigg
 robots: noindex
 ms.openlocfilehash: 5835c37363c7e9d2dd3253c08ab97f17852725f5
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57777294"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61248147"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Adatok átalakítása az Azure Data Lake Analytics U-SQL-parancsfájlok futtatásával 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
 > * [1-es verzió](data-factory-usql-activity.md)
 > * [2-es verzió (aktuális verzió)](../transform-data-using-data-lake-analytics.md)
 
@@ -46,7 +46,7 @@ Létrehoz egy **Azure Data Lake Analytics** társított szolgáltatást, az Azur
 
 Az alábbi táblázat ismerteti a JSON-definíciójában használt általános tulajdonságokat. További választhat egyszerű szolgáltatás és a felhasználói hitelesítő adatok hitelesítése.
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
 | **type** |A type tulajdonságot kell beállítani: **AzureDataLakeAnalytics**. |Igen |
 | **accountName** |Azure Data Lake Analytics Account Name. |Igen |
@@ -62,7 +62,7 @@ Egyszerű szolgáltatásnév hitelesítése alkalmazás entitás regisztrálása
 
 Egyszerű szolgáltatásnév hitelesítése használja a következő tulajdonságok megadásával:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | **servicePrincipalId** | Adja meg az alkalmazás ügyfél-azonosítót. | Igen |
 | **servicePrincipalKey** | Adja meg az alkalmazáskulcsot. | Igen |
@@ -90,7 +90,7 @@ Egyszerű szolgáltatásnév hitelesítése használja a következő tulajdonsá
 ### <a name="user-credential-authentication"></a>Felhasználói hitelesítő adatok hitelesítése
 Másik lehetőségként használhatja felhasználói hitelesítő adatok hitelesítési Data Lake Analytics a következő tulajdonságok megadásával:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | **Engedélyezési** | Kattintson a **engedélyezés** gombra a Data Factory szerkesztőjében, és adja meg a hitelesítő adat, amelyet az automatikusan létrehozott engedélyezési URL-címet rendel hozzá ezt a tulajdonságot. | Igen |
 | **sessionId** | OAuth munkamenet-azonosító az OAuth hitelesítési munkamenetből. Minden munkamenet-azonosító egyedi, és csak egyszer használhatók fel. Ez a beállítás automatikusan jön létre a Data Factory Editor használata esetén. | Igen |

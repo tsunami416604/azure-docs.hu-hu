@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d11c6472265d7efca98a7e822ca8b8945a13c2ba
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 916b87bd4165e83594fafed6aa04b58fcf720ff5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59272172"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67106122"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-borrowbox"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező BorrowBox
 
@@ -54,7 +54,7 @@ Az Azure AD integrálása a BorrowBox konfigurálásához hozzá kell BorrowBox 
 
 **BorrowBox hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

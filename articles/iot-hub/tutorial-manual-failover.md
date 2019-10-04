@@ -6,17 +6,17 @@ manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
-ms.date: 07/11/2018
+ms.date: 07/24/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 40a7bba99068ebc2368e413199cf966bd2e4f25c
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 308e452f33ded9be3b88ff370ed34326de54895c
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60002901"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877022"
 ---
-# <a name="tutorial-perform-manual-failover-for-an-iot-hub-public-preview"></a>Oktatóanyag: Manuális feladatátvétel végrehajtása egy IoT hub (nyilvános előzetes verzió)
+# <a name="tutorial-perform-manual-failover-for-an-iot-hub"></a>Oktatóanyag: Manuális feladatátvétel végrehajtása egy IoT hub esetében
 
 A manuális feladatátvétel az IoT Hub szolgáltatás egyik funkciója, amelynek segítségével elvégezhető egy hub műveleteinek [feladatátvétele](https://en.wikipedia.org/wiki/Failover) az elsődleges régióból a megfelelő, földrajzilag párosított másodlagos Azure-régióba. A manuális feladatátvétel regionális szintű katasztrófák vagy hosszabb időtartamú szolgáltatáskimaradás alkalmával hajtható végre. Emellett végrehajthat tervezett feladatátvételt is a vészhelyreállítási képességek tesztelésére, bár ehhez inkább egy tesztelési célú, és nem egy éles környezetben futó IoT hub használatát javasoljuk. A manuális feladatátvételi funkció további költségek nélkül érhető el ügyfeleink számára.
 
@@ -47,7 +47,7 @@ Az oktatóanyagban az alábbi feladatokat fogja végrehajtani:
 
     **Erőforráscsoport**: Kattintson az **Új létrehozása** gombra, majd adja a **ManlFailRG** nevet az erőforráscsoportnak.
 
-    **Régió**: Válasszon ki egy közeli régiót, amely része az előzetes verziónak. Ebben az oktatóanyagban a következőt használjuk: `westus2`. A feladatátvétel csak földrajzilag párosított Azure-régiók között hajtható végre. A westus2 régióval földrajzilag párosított régió a WestCentralUS régió.
+    **Régió**: válasszon ki egy régiót a közelben. Ebben az oktatóanyagban a következőt használjuk: `West US 2`. A feladatátvétel csak földrajzilag párosított Azure-régiók között hajtható végre. Az USA 2. nyugati régiója, a WestCentralUS.
     
    **IoT hub neve**: Adja meg az IoT hub nevét. A hub nevének globálisan egyedinek kell lennie. 
 
@@ -65,33 +65,38 @@ Vegye figyelembe, hogy naponta legfeljebb két feladatátvétel és két feladat
 
 1. Kattintson az **Erőforráscsoportok** elemre, majd válassza ki a **ManlFailRG** erőforráscsoportot. Kattintson a hubra az erőforrások listájában. 
 
-2. Az IoT Hub panel **Rugalmasság** területén kattintson a **Manuális feladatátvétel (előzetes verzió)** lehetőségre. Vegye figyelembe, hogy ha a hub nem egy érvényes régióban lett telepítve, a manuális feladatátvétel lehetőség le lesz tiltva.
+1. A IoT Hub panel **Beállítások** területén kattintson a **feladatátvétel**elemre.
 
    ![IoT Hub-tulajdonságok panel képernyőképe](./media/tutorial-manual-failover/trigger-failover-01.png)
 
-3. A Manuális feladatátvétel panelen láthatja az **IoT hub elsődleges helye** és az **IoT hub másodlagos helye** elemeket. Az elsődleges hely kezdetben az IoT hub létrehozásakor megadott hellyel egyezik, és mindig azt a helyet jelzi, ahol a hub épp aktív. A másodlagos hely az elsődleges hellyel párosított standard [földrajzilag párosított Azure-régió](../best-practices-availability-paired-regions.md). A helyek értékei nem módosíthatók. Ebben az oktatóanyagban az elsődleges régió a `westus2`, a másodlagos régió pedig a `WestCentralUS`.
+1. A manuális feladatátvétel panelen az **aktuális helyet** és a **feladatátvételi helyet**látja. Az aktuális hely mindig azt a helyet adja meg, amelyben a központ éppen aktív. A feladatátvétel helye a szabványos [Azure-beli geo-párosítási régió](../best-practices-availability-paired-regions.md) , amely az aktuális helyre párosítva van. A helyek értékei nem módosíthatók. Ebben az oktatóanyagban az aktuális hely `West US 2` , a feladatátvételi `West Central US`hely pedig.
 
    ![A Manuális feladatátvétel panel képernyőképe](./media/tutorial-manual-failover/trigger-failover-02.png)
 
-3. A Manuális feladatátvétel panel tetején kattintson a **Feladatátvétel inicializálása** lehetőségre. Megjelenik a **Manuális feladatátvétel megerősítése** panel. Írja be az IoT hub nevét, megerősítve, hogy ezen szeretne feladatátvételt végrehajtani. Ezután a feladatátvétel indításához kattintson az **OK** gombra.
+1. A manuális feladatátvétel panel felső részén kattintson a **feladatátvétel indítása**elemre. 
+
+1. A megerősítő ablaktáblán adja meg az IoT hub nevét annak megerősítéséhez, hogy a feladatátvételt kívánja használni. Ezután a feladatátvétel elindításához kattintson a **feladatátvétel**elemre.
 
    A manuális feladatátvétel végrehajtásához szükséges idő a hubhoz regisztrált eszközök számával arányos. Például 100 000 eszköz esetén a feladatátvétel 15 percig tarthat, ötmillió eszköz esetén azonban egy órát vagy többet is igénybe vehet.
 
-4. A **Manuális feladatátvétel megerősítése** panelen írja be az IoT hub nevét, megerősítve, hogy ezen szeretne feladatátvételt végrehajtani. Ezután a feladatátvétel indításához kattintson az OK gombra. 
-
    ![A Manuális feladatátvétel panel képernyőképe](./media/tutorial-manual-failover/trigger-failover-03-confirm.png)
 
-   Amíg a manuális feladatátvételi folyamat fut, egy szalagcím jelenik meg a Manuális feladatátvétel panelen, amely tájékoztatja, hogy manuális feladatátvétel van folyamatban. 
+   Amíg a manuális feladatátvételi folyamat fut, megjelenik egy szalagcím, amely jelzi, hogy egy manuális feladatátvétel folyamatban van. 
 
    ![Folyamatban lévő manuális feladatátvétel képernyőképe](./media/tutorial-manual-failover/trigger-failover-04-in-progress.png)
 
-   Ha bezárja, majd az Erőforráscsoport panelen rákattintva újból megnyitja az IoT Hub panelt, egy szalagcím jelenik meg, amely tájékoztatja, hogy a hub nem aktív. 
+   Ha bezárta a IoT Hub ablaktáblát, és ismét megnyitja az erőforráscsoport ablaktáblán, akkor megjelenik egy szalagcím, amely azt jelzi, hogy a központ egy manuális feladatátvétel közepén található. 
 
-   ![Inaktív IoT hub képernyőképe](./media/tutorial-manual-failover/trigger-failover-05-hub-inactive.png)
+   ![A folyamatban lévő IoT Hub feladatátvételt ábrázoló képernyőfelvétel](./media/tutorial-manual-failover/trigger-failover-05-hub-inactive.png)
 
-   Miután a folyamat befejeződött, az elsődleges és másodlagos régiók felcserélődnek a Manuális feladatátvétel oldalon, és a hub újra aktív lesz. Ebben a példában az elsődleges régió most a `WestCentralUS`, a másodlagos régió pedig a `westus2`. 
+   A művelet befejezése után a manuális feladatátvételi oldalon található aktuális és feladatátvételi régiók tükrözöttek, és a központ ismét aktív lesz. Ebben a példában az aktuális hely most `WestCentralUS` , a feladatátvételi hely pedig most. `West US 2` 
 
    ![Befejeződött feladatátvétel képernyőképe](./media/tutorial-manual-failover/trigger-failover-06-finished.png)
+
+   Az Áttekintés oldalon egy szalagcím is látható, amely azt jelzi, hogy a feladatátvétel befejeződött, és `West Central US`a IoT hub fut.
+
+   ![A feladatátvételt bemutató képernyőkép az Áttekintés oldalon](./media/tutorial-manual-failover/trigger-failover-06-finished-overview.png)
+
 
 ## <a name="perform-a-failback"></a>Feladat-visszavétel végrehajtása 
 
@@ -101,15 +106,15 @@ A feladat-visszavétel a manuális feladatátvételhez hasonlóan történik. A 
 
 1. Feladat-visszavétel végrehajtásához lépjen vissza az IoT hubhoz tartozó IoT Hub panelre.
 
-2. Az IoT Hub panel **Rugalmasság** területén kattintson a **Manuális feladatátvétel (előzetes verzió)** lehetőségre. 
+2. A IoT Hub panel **Beállítások** területén kattintson a **feladatátvétel**elemre. 
 
-3. A Manuális feladatátvétel panel tetején kattintson a **Feladatátvétel inicializálása** lehetőségre. Megjelenik a **Manuális feladatátvétel megerősítése** panel. 
+3. A manuális feladatátvétel panel felső részén kattintson a **feladatátvétel indítása**elemre. 
 
-4. A **Manuális feladatátvétel megerősítése** panelen írja be az IoT hub nevét, megerősítve, hogy ezen szeretne feladat-visszavételt végrehajtani. Ezután a feladat-visszavétel indításához kattintson az OK gombra. 
+4. A megerősítő panelen adja meg az IoT hub nevét annak megerősítéséhez, hogy a feladat-visszavételt szeretné. Ezután a feladat-visszavétel indításához kattintson az OK gombra. 
 
-   ![Manuális feladat-visszavételi kérelem képernyőképe](./media/tutorial-manual-failover/trigger-failback-01-regions.png)
+   ![Manuális feladat-visszavételi kérelem képernyőképe](./media/tutorial-manual-failover/trigger-failover-03-confirm.png)
 
-   A szalagok jelennek meg a végezze el egy feladatátvételt a szakaszban leírtak szerint. A feladat-visszavétel befejeztével ismét a `westus2` jelenik meg elsődleges, a `WestCentralUS` pedig másodlagos helyként az eredeti beállításnak megfelelően.
+   A szalagcímek a feladatátvétel végrehajtása szakaszban leírtak szerint jelennek meg. A feladat-visszavétel befejezése után a rendszer ismét `West US 2` az aktuális helyként és `West Central US` a feladatátvételi helyként jeleníti meg az eredetileg beállított helyet.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása 
 

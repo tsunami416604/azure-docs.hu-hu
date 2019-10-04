@@ -10,23 +10,20 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
+ms.date: 05/13/2019
 ms.author: anavin
-ms.openlocfilehash: ece6a6efa2f4424fb1c9d7f5a7e12a4e707faf45
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 26d8ee34c735cab8f1033a9aad897ec0b1bed524
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649305"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65952681"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>Létrehozása, módosítása vagy törlése egy nyilvános IP-cím előtagja
 
 További tudnivalók a nyilvános IP-címelőtag és létrehozása, módosítása és törlése egy. Egy nyilvános IP-címelőtag címek megadott nyilvános IP-címek száma szerint egybefüggő tartományát. Az előfizetés a címek vannak hozzárendelve. Amikor létrehoz egy nyilvános IP-cím erőforrás, egy statikus nyilvános IP-cím hozzárendelését az előtag, és társítsa a címet a virtuális gépek, a terheléselosztók vagy a más erőforrások, az internet-kapcsolat. Ha még nem ismeri a nyilvános IP-címelőtagokat, [nyilvános IP-cím cím előtag – áttekintés](public-ip-address-prefix.md)
 
 ## <a name="before-you-begin"></a>Előkészületek
-
-> [!IMPORTANT]
-> Nyilvános IP-előtag van, korlátozott számú régióban egy nyilvános előzetes verzióban érhető el. Is [ismerje meg, hogy mit jelent az előzetes verzióban](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Nyilvános IP-előtag jelenleg érhető el: USA nyugati középső RÉGIÓJA, USA nyugati RÉGIÓJA, USA nyugati RÉGIÓJA 2, USA középső RÉGIÓJA, Észak-Európa, Nyugat-Európa és Délkelet-Ázsia. Régiók frissített listáját, tekintse meg [Azure-frissítések](https://azure.microsoft.com/updates/?product=virtual-network).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -53,7 +50,7 @@ Nyilvános IP-címelőtagokat díj rendelkezik. További információkért lásd
    |Előfizetés|Igen|Léteznie kell az azonos [előfizetés](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) és az erőforrásnak a nyilvános IP-címet társítani szeretné.|
    |Erőforráscsoport|Igen|Az azonos vagy eltérő létrejöhet [erőforráscsoport](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) és az erőforrásnak a nyilvános IP-címet társítani szeretné.|
    |Name (Név)|Igen|A nevét, válassza ki az erőforráscsoporton belül egyedinek kell lennie.|
-   |Régió|Igen|Léteznie kell az azonos [régió](https://azure.microsoft.com/regions)nyilvános IP-címeket, a tartomány címek fogja tudni hozzárendelni. Előtag jelenleg az USA nyugati középső Régiója, USA nyugati RÉGIÓJA, USA nyugati RÉGIÓJA 2, USA középső RÉGIÓJA, Észak-Európa, Nyugat-Európa és Délkelet-Ázsia előzetes van.|
+   |Régió|Igen|Léteznie kell az azonos [régió](https://azure.microsoft.com/regions)nyilvános IP-címeket, a tartomány címek fogja tudni hozzárendelni.|
    |Előtag hossza|Igen| Van szüksége az előtag méretét. Egy/28 vagy 16 IP-címet az alapértelmezett érték.
 
 **Parancsok**
@@ -68,14 +65,21 @@ Miután létrehozta az előtag, az előtag a statikus IP-címeket kell létrehoz
 
 1. A szöveget tartalmazó mezőbe *erőforrások keresése* írja be az Azure portal tetején *nyilvános ip-címelőtag*. Amikor **nyilvános IP-címelőtagokat** jelennek meg a keresési eredmények közül válassza ki azt.
 2. Válassza ki a nyilvános IP-címek a létrehozni kívánt előtagot.
-3. Amikor megjelenik a keresési eredmények között, válassza ki, és kattintson a **+ IP-cím hozzáadása** az Áttekintés szakaszban. Abban az esetben ez nem látható, ellenőrizze, hogy előzetes használja a megfelelő hivatkozásra: https://aka.ms/publicipprefixportal
+3. Amikor megjelenik a keresési eredmények között, válassza ki, és kattintson a **+ IP-cím hozzáadása** az Áttekintés szakaszban.
 4. Adja meg vagy válassza ki a következő beállítások alatt értékeket **nyilvános IP-cím létrehozása**. Mivel egy előtagot a Standard Termékváltozat, IPv4, és a statikus, csak adja meg a következő információkat kell:
 
    |Beállítás|Kötelező?|Részletek|
    |---|---|---|
    |Name (Név)|Igen|A nyilvános IP-cím nevére, válassza ki az erőforráscsoporton belül egyedinek kell lennie.|
    |Üresjárat időkorlátja (perc)|Nem|Hány perc a TCP- vagy HTTP-kapcsolat nyitva tartása anélkül, hogy az ügyfelek életben tartási üzenetek küldéséhez. |
-   |DNS-névcímke|Nem|(Között az összes előfizetés és az összes ügyfél) a nevét a hoz létre az Azure-régión belül egyedinek kell lennie. Az Azure automatikusan regisztrálja a nevét és IP-cím a DNS-ben úgy csatlakozhat a nevű erőforrás. Azure hozzáfűz egy alapértelmezett alhálózat például *location.cloudapp.azure.com* (ahol a helye az választja) nevet ad meg, hozhat létre teljesen minősített DNS-neve. További információkért lásd: [használata az Azure DNS az Azure nyilvános IP-címet](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address).|
+   |DNS name label|Nem|(Között az összes előfizetés és az összes ügyfél) a nevét a hoz létre az Azure-régión belül egyedinek kell lennie. Az Azure automatikusan regisztrálja a nevét és IP-cím a DNS-ben úgy csatlakozhat a nevű erőforrás. Azure hozzáfűz egy alapértelmezett alhálózat például *location.cloudapp.azure.com* (ahol a helye az választja) nevet ad meg, hozhat létre teljesen minősített DNS-neve. További információkért lásd: [használata az Azure DNS az Azure nyilvános IP-címet](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address).|
+
+Másik lehetőségként használhatja a parancssori felület és a--public-ip-előtag (CLI) az alábbi parancsok PS és - PublicIpPrefix (PS) paramétereket, hozzon létre egy nyilvános IP-cím erőforrás. 
+
+|Eszköz|Parancs|
+|---|---|
+|parancssori felület|[az network public-ip create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create)|
+|PowerShell|[New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress?view=azps-2.0.0)|
 
 ## <a name="view-or-delete-a-prefix"></a>Megtekintése és törlése előtag
 

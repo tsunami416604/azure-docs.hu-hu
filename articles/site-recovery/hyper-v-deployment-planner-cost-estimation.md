@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: e98ec71f0c21fe640666b9d34e170678ec23c1ff
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: bced6a9e6c59dc32657dbabef986e29e0447b28b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59359032"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60947226"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Az Azure Site Recovery Deployment Planner költségbecslési jelentése 
 
@@ -125,7 +125,7 @@ Virtuális gépek manuális hozzáadása:
 
     i. **Azure Hybrid Use Benefit**
 
-1. Alkalmazhatja ugyanazokat az értékeket minden virtuális gépre a táblázatban az **Alkalmazás az összesre** lehetőséget kiválasztva a következőknél: **DR működéseinek száma évente**, **DR egyes működéseinek időtartama (nap)**, **Adatredundancia** és az **Azure Hybrid Use Benefit**.
+1. Alkalmazhatja ugyanazokat az értékeket minden virtuális gépre a táblázatban az **Alkalmazás az összesre** lehetőséget kiválasztva a következőknél: **DR működéseinek száma évente**, **DR egyes működéseinek időtartama (nap)** , **Adatredundancia** és az **Azure Hybrid Use Benefit**.
 
 1. A költségek frissítéséhez kattintson a **Költségek újraszámítása** lehetőségre.
 
@@ -133,17 +133,17 @@ Virtuális gépek manuális hozzáadása:
 
 **Virtuális gépek száma**: A konfigurációnak megfelelő virtuális gépek száma. Frissítheti a meglévő virtuális gépek számát, ha a hasonló konfigurációjú virtuális gépekről nem készül profil, de védve lesznek.
 
-**IaaS-méret (javaslat)**: A kompatibilis virtuális gép az eszköz által javasolt virtuális gépi szerepkörének mérete. 
+**IaaS-méret (javaslat)** : A kompatibilis virtuális gép az eszköz által javasolt virtuális gépi szerepkörének mérete. 
 
-**IaaS-méret (felhasználó választása)**: Alapértelmezés szerint a mérete megegyezik a javasolt virtuális gépi szerepkör mérete. Igény szerint módosíthatja a szerepkört. A számítási költség a kiválasztott virtuális gépi szerepkör méretén alapul.
+**IaaS-méret (felhasználó választása)** : Alapértelmezés szerint a mérete megegyezik a javasolt virtuális gépi szerepkör mérete. Igény szerint módosíthatja a szerepkört. A számítási költség a kiválasztott virtuális gépi szerepkör méretén alapul.
 
 **Tárolási típus**: A virtuális gép által használt tároló típusa. Lehet standard vagy prémium szintű tároló.
 
-**Virtuális gép tárterületének teljes mérete (GB)**: A virtuális gép teljes tárterülete.
+**Virtuális gép tárterületének teljes mérete (GB)** : A virtuális gép teljes tárterülete.
 
 **DR működéseinek száma évente**: Hányszor évente végezhet a DR működése során. Alapértelmezés szerint az értéke évente négy. Módosíthatja adott virtuális gépek időszakait, vagy alkalmazhatja az új értéket az összes virtuális gépre. A felső sorba írja be az új értéket, és kattintson az **Alkalmazás az összesre** gombra. A DR működéseinek száma évente és a DR egyes működéseinek időtartama alapján a rendszer kiszámítja a DR működésének teljes költségét. 
 
-**Minden egyes DR működések időtartama (nap)**: Egyes működéseinek időtartama. Alapértelmezés szerint ez 90 naponként 7 nap a [Vészhelyreállítási frissítési garancia előnynek](https://azure.microsoft.com/pricing/details/site-recovery) megfelelően. Módosíthatja adott virtuális gépek időszakait, vagy alkalmazhat egy új értéket az összes virtuális gépre. A felső sorba írja be az új értéket, és kattintson az **Alkalmazás az összesre** gombra. A DR teljes működési költségének kiszámítása a DR évi működéseinek számán és a DR egyes működéseinek időtartamán alapul.
+**Minden egyes DR működések időtartama (nap)** : Egyes működéseinek időtartama. Alapértelmezés szerint ez 90 naponként 7 nap a [Vészhelyreállítási frissítési garancia előnynek](https://azure.microsoft.com/pricing/details/site-recovery) megfelelően. Módosíthatja adott virtuális gépek időszakait, vagy alkalmazhat egy új értéket az összes virtuális gépre. A felső sorba írja be az új értéket, és kattintson az **Alkalmazás az összesre** gombra. A DR teljes működési költségének kiszámítása a DR évi működéseinek számán és a DR egyes működéseinek időtartamán alapul.
  
 **Operációs rendszer típusa**: A virtuális gép operációs rendszerének típusa. Lehet Windows vagy Linux. Ha az operációs rendszer típusa Windows, az Azure Hybrid Use Benefit alkalmazható a virtuális gépre. 
 
@@ -155,7 +155,7 @@ Virtuális gépek manuális hozzáadása:
 
 **Stabil állapotú replikáció költsége**: A replikáció tárolási költsége.
 
-**Teljes működéseinek költsége (átlag)**: A DR működése során a számítási és tárolási költségeit.
+**Teljes működéseinek költsége (átlag)** : A DR működése során a számítási és tárolási költségeit.
 
 **Az Azure Site Recovery-licencköltségeit**: A Site Recovery-licenc költsége.
 

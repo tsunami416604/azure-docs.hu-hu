@@ -1,6 +1,6 @@
 ---
-title: Az Azure API Management tartományközi szabályzatai |} A Microsoft Docs
-description: További információ a használható az Azure API Management tartományközi házirendek.
+title: Azure API Management tartományok közötti házirendek | Microsoft Docs
+description: Ismerkedjen meg az Azure API Managementban használható tartományok házirendjeivel.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -10,30 +10,29 @@ ms.assetid: 7689d277-8abe-472a-a78c-e6d4bd43455d
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: ecbc1af97ce5ed158138f2bcf47f5729842c0fe9
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: db64a2f64c592a62f621355047a7bc9844d66457
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56098534"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073724"
 ---
 # <a name="api-management-cross-domain-policies"></a>Az API Management tartományközi házirendjei
-Ez a témakör egy hivatkozást kínál a következő az API Management házirendek. Hozzáadása és házirendek konfigurálásával kapcsolatos tudnivalókat lásd: [az API Management házirendek](https://go.microsoft.com/fwlink/?LinkID=398186).
+Ez a témakör az alábbi API Management szabályzatokra mutató hivatkozást tartalmaz. A házirendek hozzáadásával és konfigurálásával kapcsolatos információkért lásd: [szabályzatok API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
 
-## <a name="CrossDomainPolicies"></a> Tartományközi házirendek
+## <a name="CrossDomainPolicies"></a>Tartományok közötti házirendek
 
-- [Lehetővé teszi a tartományok közötti hívások](api-management-cross-domain-policies.md#AllowCrossDomainCalls) – az API-hoz elérhető lesz az Adobe Flash és a Microsoft Silverlight webböngésző-alapú ügyfelekről.
-- [A CORS](api-management-cross-domain-policies.md#CORS) -hozzáadja az eltérő eredetű erőforrások megosztása (CORS) támogatásával egy műveletet vagy API-t lehetővé teszi a tartományok közötti hívások webböngésző-alapú ügyfelekről.
-- [JSNOP](api-management-cross-domain-policies.md#JSONP) -JSON ad hozzá egy műveletet vagy API-t lehetővé teszi a tartományok közötti hívások JavaScript-ügyfelekből böngészőalapú padding (JSNOP) támogatásával.
+- Tartományok [közötti hívások engedélyezése](api-management-cross-domain-policies.md#AllowCrossDomainCalls) – elérhetővé teszi az API-t az Adobe Flash és a Microsoft Silverlight böngésző alapú ügyfeleitől.
+- [CORS](api-management-cross-domain-policies.md#CORS) – a több eredetű erőforrás-megosztási (CORS) támogatás egy művelethez vagy API-hoz, amely lehetővé teszi a tartományok közötti hívásokat a böngészőalapú ügyfelektől.
+- [Jsnop támogatással](api-management-cross-domain-policies.md#JSONP) – egy művelet vagy API számára lehetővé teszi a JSON-t a kitöltési (jsnop támogatással) támogatással, hogy engedélyezze a tartományok közötti hívásokat a JavaScript böngésző alapú ügyfelektől.
 
-## <a name="AllowCrossDomainCalls"></a> Lehetővé teszi a tartományok közötti hívások
-Használja a `cross-domain` szabályzatba, hogy elérhető-e az API-t az Adobe Flash és a Microsoft Silverlight webböngésző-alapú ügyfelekről.
+## <a name="AllowCrossDomainCalls"></a>Tartományok közötti hívások engedélyezése
+`cross-domain` A szabályzat segítségével elérhetővé teheti az API-t az Adobe Flash és a Microsoft Silverlight böngésző alapú ügyfeleitől.
 
-### <a name="policy-statement"></a>Házirendutasítás
+### <a name="policy-statement"></a>Szabályzati utasítás
 
 ```xml
 <cross-domain>
@@ -46,30 +45,30 @@ Használja a `cross-domain` szabályzatba, hogy elérhető-e az API-t az Adobe F
 
 ```xml
 <cross-domain>
-    <cross-domain-policy>
+    <cross-domain>
         <allow-http-request-headers-from domain='*' headers='*' />
-    </cross-domain-policy>
+    </cross-domain>
 </cross-domain>
 ```
 
 ### <a name="elements"></a>Elemek
 
-|Name (Név)|Leírás|Szükséges|
+|Name (Név)|Leírás|Kötelező|
 |----------|-----------------|--------------|
-|cross-domain|A gyökérelem. Gyermekelemek meg kell felelnie a [Adobe tartományok közötti házirend fájl meghatározásának](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html).|Igen|
+|tartományok közötti|Gyökérelem. A gyermek elemeknek meg kell felelniük az [Adobe tartományok közötti házirend fájljának specifikációjának](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html).|Igen|
 
 ### <a name="usage"></a>Használat
-Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+Ez a szabályzat a következő házirend-részekben [](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörökben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.
 
-- **A házirend-szakaszok:** bejövő
-- **A házirend-hatókörök:** globális
+- **Házirend fejezetei:** bejövő
+- **Házirend-hatókörök:** az összes hatókör
 
-## <a name="CORS"></a> CORS
-A `cors` házirend hozzáadja az eltérő eredetű erőforrások megosztása (CORS) támogatásával egy műveletet vagy API-t lehetővé teszi a tartományok közötti hívások webböngésző-alapú ügyfelekről.
+## <a name="CORS"></a>CORS
+A `cors` házirend egy művelethez vagy API-hoz ad hozzá több eredetű erőforrás-megosztási (CORS) támogatást, amely lehetővé teszi a tartományok közötti hívásokat a böngészőalapú ügyfelektől.
 
-A CORS lehetővé teszi, hogy a böngésző és a egy kiszolgálót, és annak meghatározására, hogy az adott eltérő eredetű kérelmek (azaz XMLHttpRequests hívások JavaScript-alapú webes más tartományok) engedélyezése. Ez lehetővé teszi, hogy csak az azonos eredethez kérésének engedélyezése-nál nagyobb rugalmasságot, de biztonságosabb, mint az összes eltérő eredetű kérések engedélyezése.
+A CORS lehetővé teszi, hogy a böngésző és a kiszolgáló interakcióba lépjen, és meghatározza, hogy engedélyezi-e a különböző eltérő eredetű kérelmeket (például az XMLHttpRequest-hívásokat weblapokon a JavaScriptből más tartományokra). Ez nagyobb rugalmasságot tesz lehetővé, mint az azonos eredetű kérések engedélyezése, de biztonságosabb, mint az összes eltérő eredetű kérelem.
 
-### <a name="policy-statement"></a>Házirendutasítás
+### <a name="policy-statement"></a>Szabályzati utasítás
 
 ```xml
 <cors allow-credentials="false|true">
@@ -89,7 +88,7 @@ A CORS lehetővé teszi, hogy a böngésző és a egy kiszolgálót, és annak m
 ```
 
 ### <a name="example"></a>Példa
-Ez a példa bemutatja, hogyan repülés kérések, például az egyéni fejlécek, vagy nem GET vagy POST metódusok támogatásához. Egyéni fejlécek és további HTTP-műveletek támogatása érdekében használja a `allowed-methods` és `allowed-headers` szakaszokban a következő példában látható módon.
+Ez a példa azt mutatja be, hogyan lehet támogatni a repülés előtti kérelmeket, például az egyéni fejlécekkel vagy a GET és a POST metódustól eltérő módszerekkel. Az egyéni fejlécek és a további http-műveletek támogatásához `allowed-methods` használja `allowed-headers` a és a szakaszt az alábbi példában látható módon.
 
 ```xml
 <cors allow-credentials="true">
@@ -123,34 +122,34 @@ Ez a példa bemutatja, hogyan repülés kérések, például az egyéni fejléce
 
 ### <a name="elements"></a>Elemek
 
-|Name (Név)|Leírás|Szükséges|Alapértelmezett|
+|Name (Név)|Leírás|Kötelező|Alapértelmezett|
 |----------|-----------------|--------------|-------------|
-|a cors|A gyökérelem.|Igen|–|
-|engedélyezett eredetek|Tartalmaz `origin` elemek, amelyek ismertetik a engedélyezett eredetek a tartományok közötti kéréseket. `allowed-origins` is tartalmazhat egyetlen `origin` megadó eleme `*` , hogy minden forrás, vagy egy vagy több `origin` egy URI-t tartalmazó elemeket.|Igen|–|
-|forrás|Az érték lehet `*` , hogy az összes forrás, vagy adja meg egy egyetlen forrás URI-t. Az URI-t tartalmaznia kell a sémát, a gazdagépet és a portot.|Igen|Ha a port nincs megadva az URI-t, 80-as portot használja HTTP és HTTPS esetén 443-as port használatos.|
-|Engedélyezett metódusok|Ez az elem akkor szükséges, ha a módszerek nem GET vagy POST engedélyezettek. Tartalmaz `method` elemeket, adja meg a támogatott HTTP-műveleteket.|Nem|Ha ez a szakasz nem található, a GET és POST használata támogatott.|
-|method|Adja meg a HTTP-műveletet.|Legalább egy `method` elem azért szükséges, ha a `allowed-methods` szakaszban szerepel.|–|
-|allowed-headers|Tento element obsahuje `header` elemeket a fejlécek, a kérelemben szereplő nevének megadása.|Nem|–|
-|expose-headers|Tento element obsahuje `header` elemek megadása, amely az ügyfél által elérhető lesz a fejlécek nevét.|Nem|–|
-|header|A fejléc nevét adja meg.|Legalább egy `header` elemhez kötelező megadni `allowed-headers` vagy `expose-headers` Ha a szakaszban található.|–|
+|CORS|Gyökérelem.|Igen|–|
+|engedélyezett – eredetek|Olyan `origin` elemeket tartalmaz, amelyek leírják a tartományok közötti kérelmek engedélyezett eredetét. `allowed-origins`tartalmazhat egy `origin` olyan elemet, `*` amely engedélyezi bármely forrás használatát, vagy egy vagy több `origin` URI-t tartalmazó elemet.|Igen|–|
+|forrás|Az érték `*` lehet az összes eredet engedélyezése, vagy egy URI, amely egyetlen forrást határoz meg. Az URI-nak tartalmaznia kell egy sémát, egy gazdagépet és egy portot.|Igen|Ha a portot kihagyja egy URI-ban, a 80-es portot használja a rendszer a HTTP protokollhoz, és a 443-es portot használja a HTTPS protokollhoz.|
+|engedélyezett – metódusok|Ez az elem akkor szükséges, ha a GET vagy a POST metódustól eltérő módszerek engedélyezettek. A `method` támogatott http-műveleteket megadó elemeket tartalmazza.|Nem|Ha ez a szakasz nem létezik, a GET és a POST is támogatott.|
+|metódus|HTTP-műveletet ad meg.|Ha a `method` `allowed-methods` szakasz jelen van, legalább egy elem megadása kötelező.|–|
+|engedélyezett – fejlécek|Ez az elem `header` olyan elemeket tartalmaz, amelyek megadják a kérésben szerepeltethető fejlécek nevét.|Nem|–|
+|fejlécek közzététele|Ez az elem `header` olyan elemeket tartalmaz, amelyek az ügyfél által elérhető fejlécek nevét határozzák meg.|Nem|–|
+|header|Megadja a fejléc nevét.|Legalább egy `header` elemet meg kell adni, `allowed-headers` vagy `expose-headers` ha a szakasz jelen van.|–|
 
 ### <a name="attributes"></a>Attribútumok
 
-|Name (Név)|Leírás|Szükséges|Alapértelmezett|
+|Name (Név)|Leírás|Kötelező|Alapértelmezett|
 |----------|-----------------|--------------|-------------|
-|allow-credentials|A `Access-Control-Allow-Credentials` a elővizsgálati válaszok fejlécének Ez az attribútum értékét állítja be, és hatással az ügyfél hitelesítő adatai a tartományok közötti kérelmek elküldéséhez.|Nem|false|
-|ellenőrzés-eredmény-max-age|A `Access-Control-Max-Age` a elővizsgálati válaszok fejlécének Ez az attribútum értékét állítja be, és a felhasználói ügynök képességét, gyorsítótár repülés válasz.|Nem|0|
+|hitelesítő adatok engedélyezése|Az elővizsgálati válasz fejléce az attribútum értékére lesz állítva, és hatással van arra, hogy az ügyfél képes legyen hitelesítő adatokat küldeni a tartományok közötti kérelmekben. `Access-Control-Allow-Credentials`|Nem|false|
+|Elővizsgálat – eredmény-Max-Age|Az elővizsgálati válasz fejléce az attribútum értékére lesz állítva, és hatással van a felhasználói ügynöknek a repülés előtti válasz gyorsítótárazására. `Access-Control-Max-Age`|Nem|0|
 
 ### <a name="usage"></a>Használat
-Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+Ez a szabályzat a következő házirend-részekben [](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörökben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.
 
-- **A házirend-szakaszok:** bejövő
-- **A házirend-hatókörök:** globális, API-művelet
+- **Házirend fejezetei:** bejövő
+- **Házirend-hatókörök:** az összes hatókör
 
-## <a name="JSONP"></a> JSNOP
-A `jsonp` egy műveletet, vagy lehetővé teszi a tartományok közötti hívások JavaScript-ügyfelekből webböngésző-alapú API-házirend hozzáadja az padding (JSNOP) támogatásával JSON. JSNOP a JavaScript-programok használt adatokat kérjen egy kiszolgálóról egy másik tartományban módszer. JSNOP megkerüli a korlátozás kényszeríti ki a legtöbb webböngésző, ahol a weblapok elérése ugyanabban a tartományban kell lennie.
+## <a name="JSONP"></a>JSNOP TÁMOGATÁSSAL
+A `jsonp` szabályzat egy művelet vagy egy API számára lehetővé teszi a JSON-t a kitöltő (jsnop támogatással) támogatással, hogy engedélyezze a tartományok közötti hívásokat a JavaScript böngésző alapú ügyfelektől. A JSNOP támogatással egy JavaScript-programokban használt metódus, amely egy másik tartományban lévő kiszolgálótól kér le adatait. A JSNOP támogatással megkerüli a legtöbb webböngésző által kényszerített korlátozásokat, ahol a weblapokhoz való hozzáférésnek ugyanabban a tartományban kell lennie.
 
-### <a name="policy-statement"></a>Házirendutasítás
+### <a name="policy-statement"></a>Szabályzati utasítás
 
 ```xml
 <jsonp callback-parameter-name="callback function name" />
@@ -162,33 +161,33 @@ A `jsonp` egy műveletet, vagy lehetővé teszi a tartományok közötti hívás
 <jsonp callback-parameter-name="cb" />
 ```
 
-Ha a visszahívási paraméter nélkül a metódust hívja? cb = XXX egyszerű JSON (nélkül egy függvény hívása burkolót) adja vissza.
+Ha a metódust a visszahívási paraméter nélkül hívja meg? CB = XXX – egyszerű JSON-t ad vissza (függvényhívás burkolója nélkül).
 
-Ha a visszahívási paraméter `?cb=XXX` JSNOP eredményt ad vissza, a visszahívási függvény adatokat, mint az eredeti JSON alkalmazásburkoló `XYZ('<json result goes here>');`
+Ha hozzáadja a visszahívási `?cb=XXX` paramétert, a visszaadja a jsnop támogatással eredményét, és becsomagolja az eredeti JSON-eredményeket a visszahívási függvény köré, például:`XYZ('<json result goes here>');`
 
 ### <a name="elements"></a>Elemek
 
-|Name (Név)|Leírás|Szükséges|
+|Name (Név)|Leírás|Kötelező|
 |----------|-----------------|--------------|
-|jsonp|A gyökérelem.|Igen|
+|jsnop támogatással|Gyökérelem.|Igen|
 
 ### <a name="attributes"></a>Attribútumok
 
-|Name (Név)|Leírás|Szükséges|Alapértelmezett|
+|Name (Név)|Leírás|Kötelező|Alapértelmezett|
 |----------|-----------------|--------------|-------------|
-|callback-parameter-name|A tartományok közötti JavaScript függvény hívásához előtaggal van ellátva a teljesen minősített tartománynevét, amelyen a függvény található.|Igen|–|
+|visszahívás – paraméter – név|A tartományok közötti JavaScript-függvény hívása a teljes tartománynévvel, ahol a függvény található.|Igen|–|
 
 ### <a name="usage"></a>Használat
-Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+Ez a szabályzat a következő házirend-részekben [](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörökben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.
 
-- **A házirend-szakaszok:** kimenő
-- **A házirend-hatókörök:** globális, termék, API-művelet
+- **Házirend fejezetei:** kimenő
+- **Házirend-hatókörök:** az összes hatókör
 
 ## <a name="next-steps"></a>További lépések
 
-Házirendek használata további információkért lásd:
+További információ a házirendek használatáról:
 
-+ [Az API Management házirendek](api-management-howto-policies.md)
++ [Szabályzatok API Management](api-management-howto-policies.md)
 + [API-k átalakítása](transform-api.md)
-+ [Házirend-referencia](api-management-policy-reference.md) házirend-utasítások és a beállítások teljes listáját
-+ [A házirend-minták](policy-samples.md)   
++ Házirend- [hivatkozás](api-management-policy-reference.md) a szabályzat-utasítások és azok beállításainak teljes listájához
++ [Házirend-minták](policy-samples.md)

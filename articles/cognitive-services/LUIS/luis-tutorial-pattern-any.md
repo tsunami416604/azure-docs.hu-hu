@@ -1,5 +1,5 @@
 ---
-title: Pattern.any entitás
+title: 'Oktatóanyag: Minta. bármely entitás – LUIS'
 titleSuffix: Azure Cognitive Services
 description: A pattern.any entitás használata az adatok kimondott szövegekből való kinyeréséhez olyankor, amikor a kimondott szövegek helyesen formázottak, és az adatok vége könnyen összekeverhető a kimondott szöveg fennmaradó szavaival.
 services: cognitive-services
@@ -9,23 +9,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 8ab24d478efa0d0006cff618d7760d4396d0e45e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 57a7deee3112737dc457646d040d5d3e02e63d46
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859929"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390285"
 ---
-# <a name="tutorial-extract-free-form-data-with-patternany-entity"></a>Oktatóanyag: Az entitás Pattern.any szabad formátumú adatokat nyerhet ki
+# <a name="tutorial-extract-free-form-data-with-patternany-entity"></a>Oktatóanyag: Szabad formátumú adatok kinyerése mintázattal. bármely entitás
 
 Ebben az oktatóanyagban a pattern.any entitást használja az adatok kimondott szövegekből való kinyeréséhez olyankor, amikor a kimondott szövegek helyesen formázottak, és az adatok vége könnyen összekeverhető a kimondott szöveg fennmaradó szavaival. 
 
 **Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
 > [!div class="checklist"]
-> * Példa-alkalmazás importálása
+> * Alkalmazás importálása – példa
 > * Példa kimondott szöveg hozzáadása meglévő entitáshoz
 > * Pattern.any entitás létrehozása
 > * Minta létrehozása
@@ -34,7 +34,7 @@ Ebben az oktatóanyagban a pattern.any entitást használja az adatok kimondott 
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="using-patternany-entity"></a>Pattern.any entitást használó
+## <a name="using-patternany-entity"></a>Minta. bármely entitás használata
 
 A pattern.any entitás lehetővé teszi szabad formátumú adatok keresését olyankor, amikor az entitás szövegezése nehézzé teszi az entitás végének a kimondott szöveg fennmaradó részétől való elkülönítését. 
 
@@ -64,25 +64,21 @@ A változó hosszúságú szöveg olyan szavakat tartalmaz, amelyek megnehezíti
 |Ki a szerzője ennek: {FormName}[?]|
 |A {FormName} űrlap francia nyelven lett közzétéve[?]|
 
-## <a name="import-example-app"></a>Példa-alkalmazás importálása
-Folytassa az előző oktatóanyagban létrehozott **EmberiErőforrások** nevű alkalmazással. 
+## <a name="import-example-app"></a>Alkalmazás importálása – példa
 
-Ehhez a következő lépések szükségesek:
+1. Töltse le és mentse az [alkalmazás JSON-fájlját](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-pattern-roles-HumanResources.json).
 
-1.  Töltse le és mentse az [alkalmazás JSON-fájlját](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-pattern-roles-HumanResources.json).
+1. A [Luis portál](https://www.luis.ai) **saját alkalmazások** LAPJÁN importálja a JSON-t egy új alkalmazásba.
 
-2. Importálja a JSON-t egy új alkalmazásba.
-
-3. A **Manage** (Kezelés) szakasz **Versions** (Verziók) lapján klónozza a verziót, és adja neki a `patt-any` nevet. A klónozás nagyszerű mód, hogy kísérletezhessen a különböző LUIS-funkciókkal anélkül, hogy az az eredeti verzióra hatással lenne. Mivel a verzió neve az URL-útvonal részét képezi, a név nem tartalmazhat olyan karaktert, amely URL-címben nem érvényes.
+1. A **Manage** (Kezelés) szakasz **Versions** (Verziók) lapján klónozza a verziót, és adja neki a `patt-any` nevet. A klónozás nagyszerű mód, hogy kísérletezhessen a különböző LUIS-funkciókkal anélkül, hogy az az eredeti verzióra hatással lenne. Mivel a verzió neve az URL-útvonal részét képezi, a név nem tartalmazhat olyan karaktert, amely URL-címben nem érvényes.
 
 ## <a name="add-example-utterances"></a>Példa kimondott szövegek hozzáadása 
-Ha nehéz létrehozni és címkézni a FormName entitást, távolítsa el az előre összeállított keyPhrase entitást. 
 
 1. Válassza a **Build** (Összeállítás) lehetőséget a felső navigációs sávon, majd az **Intents** (Leképezések) elemet a bal oldali navigációs sávon.
 
-2. A leképezések listájáról válassza a **FindForm** (Űrlap keresése) lehetőséget.
+1. A leképezések listájáról válassza a **FindForm** (Űrlap keresése) lehetőséget.
 
-3. Adjon hozzá néhány példa kimondott szöveget:
+1. Adjon hozzá néhány példa kimondott szöveget:
 
     |Példa kimondott szöveg|
     |--|
@@ -94,13 +90,13 @@ Ha nehéz létrehozni és címkézni a FormName entitást, távolítsa el az el�
     Mivel az űrlapnevek nagyon változatosak, a Pattern.any entitás hiánya megnehezíti a LUIS szolgáltatás számára az űrlapcím végének meghatározását.
 
 ## <a name="create-a-patternany-entity"></a>Pattern.any entitás létrehozása
-A Pattern.any entitás változó hosszúságú entitások kinyerését végzi. Csak mintában működik, mivel a minta jelöli az entitás elejét és végét. Ha azt tapasztalja, hogy a Pattern.any entitást tartalmazó minta nem megfelelően vonja ki az entitásokat, egy [explicit lista](luis-concept-patterns.md#explicit-lists) megoldhatja a problémát. 
+A Pattern.any entitás változó hosszúságú entitások kinyerését végzi. Csak mintában működik, mivel a minta jelöli az entitás elejét és végét.  
 
 1. Válassza az **Entities** (Entitások) elemet a bal oldali navigációs sávon.
 
-2. Válassza a **Create new entity** (Új entitás létrehozása) elemet, adja meg a `FormName` nevet, és típusként válassza ki a **Pattern.any** lehetőséget. Válassza a **Done** (Kész) lehetőséget. 
+1. Válassza a **Create new entity** (Új entitás létrehozása) elemet, adja meg a `FormName` nevet, és típusként válassza ki a **Pattern.any** lehetőséget. Válassza a **Done** (Kész) lehetőséget. 
 
-    A leképezésben nem tudja címkézni az entitást, mivel a Pattern.any csak mintában érvényes. 
+    Az entitás nem címkézhető példa hosszúságú kimondott szöveg, mert egy minta. any csak egy mintában érvényes. 
 
     Ha a kivont adatokat olyan más entitásokba szeretné belefoglalni, mint a szám vagy a datetimeV2, létre kell hoznia egy összetett entitást, amely a Pattern.any entitást, valamint a számot és a datetimeV2-t is tartalmazza.
 
@@ -108,9 +104,9 @@ A Pattern.any entitás változó hosszúságú entitások kinyerését végzi. C
 
 1. Válassza a **Patterns** (Minták) elemet a bal oldali navigációs sávban.
 
-2. Válassza ki a **FindForm** (Űrlap keresése) leképezést.
+1. Válassza ki a **FindForm** (Űrlap keresése) leképezést.
 
-3. Adja meg a következő, az új entitást használó kimondottszöveg-sablont:
+1. Adja meg a következő, az új entitást használó kimondottszöveg-sablont:
 
     |Kimondottszöveg-sablon|
     |--|
@@ -121,8 +117,6 @@ A Pattern.any entitás változó hosszúságú entitások kinyerését végzi. C
 
     Ha azt szeretné, hogy a rendszer figyelembe vegye a különböző űrlapváltozatokat, például ha szimpla idézőjelet (aposztrófot) adnak meg a dupla idézőjel helyett, vagy pontot a kérdőjel helyett, hozzon létre új mintát minden egyes változathoz.
 
-4. Ha eltávolította a keyPhrase entitást, adja hozzá újból az alkalmazáshoz. 
-
 ## <a name="train-the-luis-app"></a>A LUIS-alkalmazás betanítása
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
@@ -130,15 +124,20 @@ A Pattern.any entitás változó hosszúságú entitások kinyerését végzi. C
 ## <a name="test-the-new-pattern-for-free-form-data-extraction"></a>Tesztelje az új mintát a szabad formátumú adatok kinyerésére
 1. A tesztelési panel megnyitásához válassza a felső sávon a **Test** lehetőséget. 
 
-2. Adja meg a következő kimondott szöveget: 
+1. Adja meg a következő kimondott szöveget: 
 
     `Where is the form Understand your responsibilities as a member of the community and who needs to sign it after I read it?`
 
-3. Az entitáshoz és a leképezéshez tartozó teszteredmények megtekintéséhez válassza az eredmény alatti **Inspect** (Vizsgálat) lehetőséget.
+1. Az entitáshoz és a leképezéshez tartozó teszteredmények megtekintéséhez válassza az eredmény alatti **Inspect** (Vizsgálat) lehetőséget.
 
     A leképezést az először megtalált `FormName` entitás, majd a megtalált minta határozza meg. Ha a tesztelés során a rendszer nem észlelte az entitásokat, és ezért nem találta a mintát, további példa kimondott szövegeket kell megadnia a leképezésben (nem a mintában).
 
-4. A felső navigációs sáv **Test** gombjával zárja be a tesztelési panelt.
+1. A felső navigációs sáv **Test** gombjával zárja be a tesztelési panelt.
+
+## <a name="using-an-explicit-list"></a>Explicit lista használata
+
+Ha azt tapasztalja, hogy a Pattern.any entitást tartalmazó minta nem megfelelően vonja ki az entitásokat, egy [explicit lista](luis-concept-patterns.md#explicit-lists) megoldhatja a problémát.
+
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

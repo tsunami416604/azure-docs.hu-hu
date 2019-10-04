@@ -1,6 +1,6 @@
 ---
-title: Állítsa be átmeneti környezeteket az Azure App Service web Apps-alkalmazások |} A Microsoft Docs
-description: Ismerje meg, hogyan használhatja a szakaszos közzétételt a web apps az Azure App Service-ben.
+title: Átmeneti környezetek beállítása webalkalmazásokhoz Azure App Serviceban | Microsoft Docs
+description: Megtudhatja, hogyan használhatja a szakaszos közzétételt a webalkalmazásokhoz Azure App Serviceban.
 services: app-service
 documentationcenter: ''
 author: cephalin
@@ -11,202 +11,198 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/03/2019
+ms.date: 09/19/2019
 ms.author: cephalin
-ms.openlocfilehash: 544ef8947f3a593071cabea018c722db96ab1475
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 436ab0a561349185de58c3783f334ea1dce9001d
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59266205"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720115"
 ---
-# <a name="set-up-staging-environments-in-azure-app-service"></a>Állítsa be átmeneti környezeteket az Azure App Service-ben
+# <a name="set-up-staging-environments-in-azure-app-service"></a>Átmeneti környezetek beállítása a Azure App Serviceban
 <a name="Overview"></a>
 
-> [!NOTE]
-> Ez az útmutató bemutatja, hogyan kezelheti a bővítőhelyek új előzetes kezelése lap használatával. A meglévő felügyeleti lap segítségével ügyfeleink továbbra is a meglévő tárhely kezelése lap, mielőtt használja. 
->
+Amikor üzembe helyezi a webalkalmazást, a webalkalmazást a Linuxon, a mobil háttérben vagy az API-alkalmazáson [Azure app Service](https://go.microsoft.com/fwlink/?LinkId=529714), az alapértelmezett üzemi tárolóhely helyett külön üzembe helyezési pontot használhat a **standard**, **prémium**vagy elkülönített verzióban történő futtatáskor.App Service csomag szintje. Az üzembe helyezési pontok a saját állomásneveket tartalmazó élő alkalmazások. Az alkalmazás tartalmának és konfigurációjának elemei két üzembe helyezési pont között, beleértve az üzemi tárolóhelyet is. 
 
-A web app, webalkalmazás, Linux, a mobil háttérrendszer és az API-alkalmazás telepítésekor [App Service-ben](https://go.microsoft.com/fwlink/?LinkId=529714), helyezhet üzembe egy külön üzembe helyezési pont helyett az alapértelmezett éles tárolóhelyre való futtatáskor a **Standard**, **Prémium**, vagy **elkülönített** App Service-csomag szint. Üzembe helyezési pontok valójában élő alkalmazások saját állomásnevekkel. Alkalmazás tartalmát és a konfigurációs elemek felcserélhetők két üzembe helyezési tárhely, többek között az üzemelési között. Egy nem éles tárhely, az alkalmazás üzembe helyezése a következő előnyökkel jár:
+Az alkalmazás nem éles tárolóhelyre való üzembe helyezése a következő előnyökkel jár:
 
-* Egy átmeneti üzembe helyezési pont az alkalmazások változásairól sikeressége az üzemelési előtt ellenőrizheti.
-* Alkalmazások üzembe helyezése egy tárhely először és sikeressége az éles környezetbe biztosítja, hogy, hogy a összes példányát a tárolóhely, mielőtt éles környezetben a felcserélés folyamatban vannak bemelegíteni. Ez nem jár állásidővel, az alkalmazás központi telepítésekor. A forgalom átirányítása zökkenőmentesen, és nincsenek kérelmek eldobásakor felcserélési művelet miatt. A teljes munkafolyamat konfigurálásával automatizálható [automatikus felcserélés](#Auto-Swap) amikor előtti felcserélés érvényesítési nincs szükség.
-* A korábban előkészített alkalmazással tárolóhely egy éles környezetbe való áttérés után most már rendelkezik a korábbi éles alkalmazások. Ha a módosításokat az üzemelési a felcserélés nem a várt módon, az ugyanazon a felcserélési funkció azonnal az "utolsó ismert jó webhely" első végezheti vissza.
+* Egy átmeneti telepítési tárolóhelyen ellenőrizheti az alkalmazások változásait, mielőtt az éles tárolóhelyre cseréli.
+* Ha először helyez üzembe egy alkalmazást egy tárolóhelyen, és az éles környezetbe kerül, akkor győződjön meg arról, hogy a tárolóhely összes példánya bemelegszik az éles környezetbe való váltás előtt. Ezzel kiküszöbölheti az állásidőt az alkalmazás telepítésekor. A forgalom átirányítása zökkenőmentes, és a swap-műveletek miatt a rendszer nem távolít el kérelmeket. Ez a teljes munkafolyamat automatizálható úgy, hogy az [automatikus swap](#Auto-Swap) konfigurálásával nem szükséges az előzetes swap érvényesítése.
+* A swap után a korábban előkészített alkalmazáshoz tartozó tárolóhely már az előző éles alkalmazásban van. Ha az éles tárolóhelyre való váltás nem a várt módon történik, akkor azonnal végrehajthatja ugyanezt a cserét, hogy az "utolsó ismert jó hely" vissza legyen hajtva.
 
-Minden App Service-csomag szint támogatja az üzembe helyezési pontok eltérő számú. Ismerje meg, hány tárhelyek a az alkalmazás réteg által támogatott, lásd: [App Service korlátai](https://docs.microsoft.com/azure/azure-subscription-service-limits#app-service-limits). A célként megadott szint skálázhatja a másik tarifacsomagra, támogatnia kell az alkalmazás már használja tárolóhelyeinek száma. Például, ha az alkalmazás több mint öt tárolóhelyei, nem skálázhatja azt le a **Standard** tier, mert **Standard** szint csak az öt üzembe helyezési pontok támogatja.
+Minden App Service díjcsomag különböző számú üzembe helyezési tárolóhelyet támogat. Az üzembe helyezési pontok használata nem jár további költségekkel. Az alkalmazás szintjei által támogatott résidők számának megállapításához tekintse meg a [app Service korlátok](https://docs.microsoft.com/azure/azure-subscription-service-limits#app-service-limits)című témakört. 
+
+Ha az alkalmazást egy másik szinten szeretné méretezni, győződjön meg arról, hogy a cél szintje támogatja az alkalmazás által már használt bővítőhelyek számát. Ha például az alkalmazás ötnél több tárolóhelye van, nem méretezheti le a **standard** szintű csomagra, mert a **standard** szint csak öt üzembe helyezési helyet támogat. 
 
 <a name="Add"></a>
 
-## <a name="add-slot"></a>Tárhely felvétele
-Az alkalmazásnak futnia kell a **Standard**, **prémium szintű**, vagy **elkülönített** szint ahhoz, hogy több üzembe helyezési pontok engedélyezése.
+## <a name="add-a-slot"></a>Tárolóhely hozzáadása
+Az alkalmazásnak a **standard**, **prémium**vagy **elkülönített** szinten kell futnia, hogy több üzembe helyezési tárolóhelyet engedélyezzen.
 
-1. Az a [az Azure portal](https://portal.azure.com/), nyissa meg az alkalmazás [erőforráslapján](../azure-resource-manager/manage-resources-portal.md#manage-resources).
+1. A [Azure Portal](https://portal.azure.com/)nyissa meg az alkalmazás [erőforrás-lapját](../azure-resource-manager/manage-resources-portal.md#manage-resources).
 
-2. A bal oldali navigációs sávján válassza ki a **üzembe helyezési pontok (előzetes verzió)** lehetőséget, majd kattintson a **tárhely felvétele**.
+2. A bal oldali panelen válassza az **üzembe helyezési bővítőhelyek** > **hozzáadása tárolóhely**elemet.
    
-    ![Adjon hozzá egy új üzembe helyezési pont](./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png)
+    ![Új üzembe helyezési pont hozzáadása](./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png)
    
    > [!NOTE]
-   > Ha az alkalmazás már nem az a **Standard**, **prémium szintű**, vagy **elkülönített** szint, megjelenik a támogatott szintek engedélyezésének a szakaszos közzétételt jelző üzenet. Ezen a ponton rendelkezik-e a kívánt **frissítése** , és keresse meg a **méretezési** lapon az alkalmazás a folytatás előtt.
+   > Ha az alkalmazás még nem szerepel a **standard**, **prémium**vagy **elkülönített** szinten, egy üzenet jelenik meg, amely a szakaszos közzététel engedélyezésének támogatott szintjeire utal. Ezen a ponton lehetősége van a **frissítés** lehetőség kiválasztására, és a folytatás előtt lépjen az alkalmazás **skálázás** lapjára.
    > 
 
-3. Az a **tárhely felvétele** párbeszédpanel, nevezze el a tárolóhely, és válassza ki, hogy egy másik meglévő üzembe helyezési pont az alkalmazáskonfigurációt klónozásához. Kattintson a **Hozzáadás** folytatásához.
+3. A **tárolóhely hozzáadása** párbeszédpanelen adja meg a tárolóhely nevét, és válassza ki, hogy az alkalmazás konfigurációját egy másik üzembe helyezési pontról szeretné-e klónozott. A folytatáshoz válassza a **Hozzáadás** lehetőséget.
    
-    ![Beállítások forrása](./media/web-sites-staged-publishing/ConfigurationSource1.png)
+    ![Konfiguráció forrása](./media/web-sites-staged-publishing/ConfigurationSource1.png)
    
-    Minden olyan meglévő tárolóhelyről származó konfiguráció klónozhat. Beállítások, amely képes lehet klónozni Alkalmazásbeállítások, kapcsolati karakterláncok, nyelvi keretrendszer-verziókat, web sockets, HTTP-verzió és platform bitszámértékének tartalmazza.
+    A konfigurációt bármely meglévő tárolóhelyről klónozással végezheti el. A klónozott beállítások közé tartozik az Alkalmazásbeállítások, a kapcsolati karakterláncok, a nyelvi keretrendszer verziói, a webes szoftvercsatornák, a HTTP-verzió és a platform bitszáma.
 
-4. A tárolóhely hozzáadása után kattintson a **bezárásához** a párbeszédpanel bezárásához. Most már megjelenik az új tárhely a **üzembe helyezési pontok (előzetes verzió)** lapot. Alapértelmezés szerint a **forgalom %** az üzemelési minden ügyfél forgalom az új üzembe helyezési pont 0 értékre van állítva.
+4. A tárolóhely hozzáadása után kattintson a **Bezárás** gombra a párbeszédpanel bezárásához. Az új tárolóhely mostantól megjelenik az **üzembe helyezési** pontok oldalon. Alapértelmezés szerint a **(z)%** értéke 0-ra van állítva az új tárolóhely esetében, és az összes ügyfél-forgalom az éles tárolóhelyre van irányítva.
 
-5. Kattintson az új üzembe helyezési pont, hogy a tárolóhely-erőforrások oldalának megnyitásához.
+5. Válassza ki az új üzembe helyezési tárolóhelyet a tárolóhely erőforrás-oldalának megnyitásához.
    
     ![Üzembe helyezési pont címe](./media/web-sites-staged-publishing/StagingTitle.png)
 
-    Az előkészítési pont is rendelkezik felügyeleti csakúgy, mint bármely más App Service-alkalmazás. A helyezési pont konfigurációját módosíthatja. A tárolóhely neve látható az oldal tetején lévő emlékezteti, hogy az üzembe helyezési pont látja.
+    Az előkészítési pont olyan felügyeleti oldallal rendelkezik, mint bármely más App Service alkalmazás. A tárolóhely konfigurációját módosíthatja. A tárolóhely neve megjelenik a lap tetején, és emlékezteti arra, hogy megtekinti az üzembe helyezési pontot.
 
-6. Kattintson az alkalmazás a tárhely-erőforrások oldalának URL-címet. Az üzembe helyezési pont rendelkezik a saját állomásnév és is élő alkalmazások. Az üzembe helyezési pont való nyilvános hozzáférés korlátozása, lásd: [Azure App Service IP-korlátozások](app-service-ip-restrictions.md).
+6. Válassza ki az alkalmazás URL-címét a tárolóhely erőforrás lapján. Az üzembe helyezési pont saját állomásnévvel rendelkezik, és egy élő alkalmazás is. Az üzembe helyezési pont nyilvános hozzáférésének korlátozásához tekintse meg [Azure app Service IP-korlátozásokat](app-service-ip-restrictions.md).
 
-Az új üzembe helyezési pont nem tartalmaz, akkor is, ha a beállításokat egy másik tárolóhelyről klónozását. Például végezheti [közzététele a gittel tárolóhely](app-service-deploy-local-git.md). A tárolóhely egy másik adattárban ágat vagy egy másik adattárban telepítheti. 
+Az új üzembe helyezési pontnak nincs tartalma, még akkor sem, ha a beállításokat egy másik tárolóhelyről klónozott. Például [közzéteheti ezt a tárolóhelyet a git](app-service-deploy-local-git.md)használatával. Egy másik adattárból vagy egy másik adattárból is telepítheti a tárolóhelyre. 
 
 <a name="AboutConfiguration"></a>
 
-## <a name="which-settings-are-swapped"></a>Mely beállításai vannak a felcserélés?
-Az egy másik üzembe helyezési pont konfigurációs klónozásakor a klónozott konfigurációs szerkeszthető. Továbbá bizonyos konfigurációs elemek kövesse a tartalom a lapozófájl-kapacitás (nem tárolóhely adott) között, míg más konfigurációs elemek ugyanaz a tárolóhely maradni a lapozófájl-kapacitás (tárolóhely adott) után. A következő listákban megjelenítése a beállításokat, ha a pontok cseréje.
+## <a name="what-happens-during-a-swap"></a>Mi történik a swap során
 
-**Beállításokat, amelyeket a rendszer elküldje**:
+### <a name="swap-operation-steps"></a>Műveletek cseréje lépések
 
-* Általános beállítások - keretrendszer verziója, 32 vagy 64 bites, például a Web sockets
-* Alkalmazásbeállítások (beállítható úgy, hogy a tárhely-en)
-* Kapcsolati karakterláncok (beállítható úgy, hogy a tárhely-en)
-* Leírók leképezése
-* Monitorozási és diagnosztikai beállítások
-* A nyilvános tanúsítványok
-* WebJobs-tartalom
-* Hibrid kapcsolatok *
-* VNet-integráció *
-* Service Endpoints *
-* Azure CDN *
+Ha két tárolóhelyet cserél le (általában egy átmeneti tárolóhelyről az üzemi tárolóhelyre), App Service a következőket biztosítja annak biztosításához, hogy a cél tárolóhelye ne legyen leállás:
 
-Szolgáltatások jelölve egy * kell tenni a bővítőhelyre kiemelt bevezetését tervezzük. 
+1. Alkalmazza a következő beállításokat a cél tárolóhelyről (például az üzemi tárolóhelyről) a forrás-tárolóhely összes példányára: 
+    - A [tárolóhely-specifikus](#which-settings-are-swapped) Alkalmazásbeállítások és a kapcsolatok karakterláncai, ha vannak ilyenek.
+    - [Folyamatos üzembe helyezési](deploy-continuous-deployment.md) beállítások, ha engedélyezve vannak.
+    - [App Service hitelesítési](overview-authentication-authorization.md) beállítások, ha engedélyezve vannak.
+    
+    Ezen esetek bármelyike elindítja a forrás-tárolóhely összes példányának újraindítását. Az [előzetes verzióra való csere](#Multi-Phase)során ez az első fázis végét jelöli. A swap művelet szüneteltetve van, és ellenőrizheti, hogy a forrás bővítőhely megfelelően működik-e a cél tárolóhely beállításaival.
 
-**Beállítások, amely nem cserélhető**:
+1. Várjon, amíg a forrás-tárolóhely minden példánya el nem végzi az újraindítást. Ha valamelyik példány nem indul újra, a swap művelet visszaállítja a forrás tárolóhelyének összes módosítását, és leállítja a műveletet.
 
-* Közzétételi végpontjai
-* Egyéni tartománynevek
-* Privát tanúsítványok és az SSL-kötések
-* Lépték beállításai
-* Webjobs-feladatok ütemezők
-* Az IP-korlátozások
-* Folyamatos üzem
-* Beállítások protokollt (HTTP**S**, TLS-verziót, ügyfél-tanúsítványok)
-* Diagnosztikai beállítások
-* CORS
+1. Ha a [helyi gyorsítótár](overview-local-cache.md) engedélyezve van, aktiválja a helyi gyorsítótár inicializálását úgy, hogy egy HTTP-kérést küld az alkalmazás gyökerének ("/") a forrás tárolóhely minden példányán. Várjon, amíg az egyes példányok HTTP-válaszokat nem adnak vissza. A helyi gyorsítótár inicializálása egy másik újraindítást okoz az egyes példányokon.
 
-<!-- VNET and hybrid connections not yet sticky to slot -->
+1. Ha az [automatikus swap](#Auto-Swap) engedélyezve van az [Egyéni bemelegítővel](#Warm-up), aktiválja az [alkalmazás indítását](https://docs.microsoft.com/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization) úgy, hogy egy HTTP-kérést küld az alkalmazás gyökerének ("/") a forrás tárolóhely minden példányán.
 
-Adja meg egy alkalmazás beállítás vagy kapcsolati karakterlánc (nem a felcserélés) egy adott tárhely anyagot, lépjen a **nastavení Aplikace** , üzembe helyezési pont lapon, majd válassza ki a **Tárhelybeállítás** jelölőnégyzetet a érdemes elgondolkodni a bővítőhelyre konfigurációs elemeket. Megjelölése a konfigurációs elem tárolóhely adott utasítja az App Service, hogy azt ne legyen cserélhető. 
+    Ha `applicationInitialization` nincs megadva, indítson el egy HTTP-kérelmet az egyes példányok forrásoldali tárolóhelyének alkalmazás gyökerébe. 
+    
+    Ha egy példány bármilyen HTTP-választ ad vissza, a rendszer felmelegszik.
 
-![Tárhelybeállítás](./media/web-sites-staged-publishing/SlotSetting.png)
+1. Ha a forrás tárolóhelyén lévő összes példány sikeresen befejeződik, cserélje le a két tárolóhelyet a két tárolóhely útválasztási szabályainak átváltásával. Ezt a lépést követően a cél tárolóhely (például az éles tárolóhely) azt az alkalmazást alkalmazza, amely korábban a forrás tárolóhelyen van bemelegítve.
+
+1. Most, hogy a forrás-tárolóhely korábban a cél tárolóhelyen lévő előzetes swap alkalmazást használja, végezze el ugyanezt a műveletet az összes beállítás alkalmazásával és a példányok újraindításával.
+
+A swap művelet bármely pontján a felcserélt alkalmazások inicializálásának minden munkája a forrás tárolóhelyen történik. A cél tárolóhely online marad, amíg a forrás tárolóhelye fel van készítve, és bemelegszik, függetlenül attól, hogy a swap sikeres vagy sikertelen volt-e. Ha egy átmeneti tárolóhelyet szeretne cserélni az üzemi tárolóhelyre, győződjön meg arról, hogy az éles tárolóhely mindig a cél tárolóhely. Így a swap művelet nem befolyásolja az üzemi alkalmazást.
+
+### <a name="which-settings-are-swapped"></a>Mely beállítások lesznek felcserélve?
+
+[!INCLUDE [app-service-deployment-slots-settings](../../includes/app-service-deployment-slots-settings.md)]
+
+Ha egy adott tárolóhelyre vagy kapcsolódási sztringre kíván beállítani egy adott tárolóhelyet (nem cseréli le), lépjen az adott tárolóhely **konfiguráció** lapjára. Adjon hozzá vagy szerkesszen egy beállítást, majd válassza a **telepítési tárolóhely beállítása**lehetőséget. Ha bejelöli ezt a jelölőnégyzetet, App Service, hogy a beállítás nem cserélhető. 
+
+![Tárolóhely beállítása](./media/web-sites-staged-publishing/SlotSetting.png)
 
 <a name="Swap"></a>
 
-## <a name="swap-two-slots"></a>Két pontok cseréje 
-Az alkalmazás kicserélheti az üzembe helyezési pontok **üzembe helyezési pontok (előzetes verzió)** lapot. 
-
-Válthat is a tárolóhelyek a **áttekintése** és **üzembe helyezési pontok** lapokat, de jelenleg biztosít a régi felületet. Ez az útmutató megmutatja az új felhasználói felületének használata a **üzembe helyezési pontok (előzetes verzió)** lapot.
+## <a name="swap-two-slots"></a>Két tárolóhely cseréje 
+Az üzembe helyezési pontokat az alkalmazás **üzembe helyezési** pontjainak oldalán és az **Áttekintés** oldalon lehet cserélni. A tárolóhelyek swap szolgáltatásával kapcsolatos technikai részletekért lásd: [Mi történik a swap során](#AboutConfiguration).
 
 > [!IMPORTANT]
-> Előtt, egy alkalmazást, egy üzembe helyezési pont váltás éles üzemre, ellenőrizze, hogy minden beállítás, hogy a lapozófájl-kapacitás célzott kívánt vannak-e konfigurálva.
+> Mielőtt egy alkalmazást becserél egy üzembe helyezési pontról az éles környezetbe, győződjön meg arról, hogy az éles környezet a cél tárolóhelye, és hogy a forrás tárolóhelyén lévő összes beállítás pontosan úgy van konfigurálva, ahogy éles környezetben szeretné.
 > 
 > 
 
-Üzembehelyezési pontok cseréje, kövesse az alábbi lépéseket:
+Az üzembe helyezési pontok cseréje:
 
-1. Keresse meg az alkalmazás **üzembe helyezési pontok (előzetes verzió)** lapot, és kattintson **felcserélése**.
+1. Nyissa meg az alkalmazás **üzembe helyezési** pontjai lapot, és válassza a **Csere**lehetőséget.
    
-    ![Lapozófájl-kapacitás gomb](./media/web-sites-staged-publishing/SwapButtonBar.png)
+    ![Csere gomb](./media/web-sites-staged-publishing/SwapButtonBar.png)
 
-    A **felcserélése** párbeszédpanelen a kijelölt forrás- és a céltárolóhelyen módosítani a beállításokat ismerteti.
+    A **Csere** párbeszédpanel a kiválasztott forrás és cél tárolóhelyek beállításait jeleníti meg, amelyeket a rendszer megváltoztat.
 
-2. Válassza ki a kívánt **forrás** és **cél** tárolóhelyek. A cél általában az éles webalkalmazásra. Is, kattintson a **az adatforrás-módosításokkal** és **cél módosítások** követését, és győződjön meg arról, hogy a konfigurációs módosítások várható. Amikor végzett, kicserélheti tárolóhelyben azonnal kattintva **lapozófájl-kapacitás**.
+2. Válassza ki a kívánt **forrás** -és **cél** tárolóhelyeket. A cél általában az üzemi tárolóhely. Emellett válassza ki a **forrás módosításait** és a **cél módosítása** lapokat, és ellenőrizze, hogy a konfigurációs változások várhatóak-e. Ha elkészült, azonnal lecserélheti a tárolóhelyeket a **swap**lehetőség kiválasztásával.
 
-    ![Felcserélés befejezése](./media/web-sites-staged-publishing/SwapImmediately.png)
+    ![Csere befejezése](./media/web-sites-staged-publishing/SwapImmediately.png)
 
-    A céltárolóhelyen megadott lenne futtatásának módját az új beállításokkal előtt a felcserélés ténylegesen történik, hogy ne kattintson **lapozófájl-kapacitás**, de kövesse a [felcserélés előnézettel](#Multi-Phase).
+    Ha szeretné megtekinteni, hogy a cél tárolóhelye Mikor fusson az új beállításokkal, mielőtt a swap ténylegesen megtörténne, ne válassza a **swap**lehetőséget, de kövesse a [swap with Preview (előzetes](#Multi-Phase)verzió) című témakör
 
-3. Amikor végzett, zárja be a párbeszédpanelt kattintva **bezárásához**.
+3. Ha elkészült, a **Bezárás**gombra kattintva zárjuk be a párbeszédpanelt.
+
+Ha bármilyen problémája van, olvassa el a [swap-hibák elhárítása](#troubleshoot-swaps)című témakört.
 
 <a name="Multi-Phase"></a>
 
-### <a name="swap-with-preview-multi-phase-swap"></a>Felcserélés előnézettel (többfázisú lapozó)
+### <a name="swap-with-preview-multi-phase-swap"></a>Felcserélés előzetes verzióval (többfázisú swap)
 
-> [!NOTE]
-> Felcserélés előnézettel a Linuxos web apps nem támogatott.
+Az éles környezetbe való váltás előtt ellenőrizze, hogy az alkalmazás a megcserélt beállításokkal fut-e. A forrásként szolgáló tárolóhely a swap befejeződése előtt is felmelegszik, ami a kritikus fontosságú alkalmazások számára is kívánatos.
 
-Előtt érvényesítheti a céltárolóhelyen megadott helyezheti, ellenőrizze az alkalmazás fut, a átváltva beállításokkal előtt történik, a lapozófájl-kapacitás. Az adatforrás-tárolóhelyen is bemelegíteni, amely üzleti szempontból alapvető fontosságú alkalmazások esetében is kívánatos felcserélés befejezése előtt.
+Ha az előzetes verzióra cserél, App Service végrehajtja ugyanazt a [swap-műveletet](#AboutConfiguration) , de az első lépés után szünetel. Ezután ellenőrizheti az eredményét az átmeneti tárolóhelyen a csere befejezése előtt. 
 
-A felcserélés előnézettel hajt végre, amikor az App Service a következőket teszi a a felcserélés indítása:
+Ha megszakítja a cserét, App Service a konfigurációs elemeket újra alkalmazza a forrás tárolóhelyre.
 
-- Változatlan marad, így nem vonatkozik a meglévő számítási feladatot, hogy a tárolóhely (például az éles környezet) a céltárolóhelyen megadott megőrzi.
-- A forrás tárolóhely, beleértve a tárolóhely-specifikus kapcsolati karakterláncok és a beállítások a céltárolóhelyen megadott konfigurációs elemeinek vonatkozik.
-- Az ilyen konfigurációs elemek segítségével forrás tárolóhelyen munkavégző folyamatok újraindul. Keresse meg a forrás tárolóhely, és futtassa a konfigurációs módosítások az alkalmazás megtekintéséhez.
+Az előzetes verzióra való váltáshoz:
 
-Ha végrehajtani a felcserélés egy külön lépésben, az App Service helyezi át a felmelegedett forrás bővítőhely a céltárolóhelyen megadott be, és a céltárolóhelyen megadott a forrás-tárolóhely. Ha megszakítja a felcserélés, App Service-ben átirányítja a forrás újra alkalmazza a forrás bővítőhely a konfigurációs elemeket.
+1. Kövesse az [üzembe helyezési pontok cseréje](#Swap) szakasz lépéseit, de válassza a **csere elvégzése előzetes**verzióval lehetőséget.
 
-Felcserélés előnézettel, kövesse az alábbi lépéseket.
+    ![Felcserélés előzetes verzióval](./media/web-sites-staged-publishing/SwapWithPreview.png)
 
-1. Kövesse a [üzembehelyezési pontok cseréje](#Swap) de válassza **végrehajtása felcserélés előnézettel**.
+    A párbeszédpanelen megtekintheti, hogy a forrás tárolóhelye hogyan változik az 1. fázisban, és hogyan változik a forrás és a cél tárolóhelye a 2. fázisban.
 
-    ![Felcserélés előnézettel](./media/web-sites-staged-publishing/SwapWithPreview.png)
+2. Ha készen áll a swap elindítására, válassza a **Csere indítása**lehetőséget.
 
-    A párbeszédpanel bemutatja, hogyan 1. fázis a forrás-tárolóhely a konfiguráció módosításait, és hogyan a forrás- és tárolóhely módosítsa a 2. fázis.
+    Ha az 1. fázis befejeződik, a rendszer értesítést küld a párbeszédpanelen. Nyissa meg a felcserélés a forrás tárolóhelyen a következő helyre: `https://<app_name>-<source-slot-name>.azurewebsites.net`. 
 
-2. Ha készen áll a felcserélés indítása, kattintson a **felcserélés indítása**.
+3. Ha készen áll a függőben lévő csere befejezésére, válassza a swap-csere **befejezése** **műveletet** , és válassza a **Csere befejezése**lehetőséget.
 
-    1. fázis befejezése után értesítést kap arról a párbeszédpanelen. Előzetes verzió a lapozófájl-kapacitás, a forrás adatszalagot az `https://<app_name>-<source-slot-name>.azurewebsites.net`. 
+    A függőben lévő csere megszakításához válassza a **Csere megszakítása** helyet.
 
-3. Amikor készen áll a függőben lévő felcserélés befejezése, válassza ki a **felcserélés befejezése** a **felcserélési művelet** kattintson **felcserélés befejezése**.
+4. Ha elkészült, a **Bezárás**gombra kattintva zárjuk be a párbeszédpanelt.
 
-    Egy függőben lévő felcserélés érvénytelenítése, jelölje be **Mégse lapozófájl-kapacitás** Ehelyett kattintson **Mégse lapozófájl-kapacitás**.
+Ha bármilyen problémája van, olvassa el a [swap-hibák elhárítása](#troubleshoot-swaps)című témakört.
 
-4. Amikor végzett, zárja be a párbeszédpanelt kattintva **bezárásához**.
-
-A többfázisú felcserélés automatizálása, tekintse meg automatizálása a PowerShell-lel.
+A többfázisú swap automatizálásához lásd: [automatizálás a PowerShell használatával](#automate-with-powershell).
 
 <a name="Rollback"></a>
 
-## <a name="roll-back-swap"></a>Állítsa vissza a lapozófájl-kapacitás
-Bármilyen hiba után egy tárolóhelycsere céltárolóhelyen megadott (például az üzemelési) történik, ha vissza a tárolóhelyek felcserélés előtti állapotába pontjai az azonos két azonnal.
+## <a name="roll-back-a-swap"></a>Swap visszaállítása
+Ha a cél tárolóhelyen (például az üzemi tárolóhelyen) a tárolóhelyek cseréje után valamilyen hiba fordul elő, állítsa vissza a tárolóhelyeket az előcserélés előtti állapotba úgy, hogy az azonos két tárolóhelyet azonnal felcseréli.
 
 <a name="Auto-Swap"></a>
 
 ## <a name="configure-auto-swap"></a>Automatikus felcserélés konfigurálása
 
 > [!NOTE]
-> Automatikus felcserélés nem támogatja a web apps on Linuxhoz.
+> Az automatikus swap szolgáltatás nem támogatott a Linuxon futó webalkalmazásokban.
 
-Automatikus felcserélés leegyszerűsíti a DevOps-forgatókönyvekre, ahol szeretné a végfelhasználókat az alkalmazás folyamatosan, a nulla hidegindítási, üzemkimaradás alkalmazás üzembe helyezése. Ha éles környezetben, minden egyes leküldésekor a kód egy tárolóhely autoswaps változnak, hogy a tárolóhely, az App Service automatikusan felcserélése az alkalmazás éles környezetbe után folyékonnyá a forrás-tárolóhely.
+Az automatikus swap szolgáltatás egyszerűsíti az Azure DevOps-forgatókönyveket, amelyekben az alkalmazás folyamatos üzembe helyezését, valamint az alkalmazás ügyfeleinek nulla állásidőt kell alkalmaznia. Ha az automatikus swap engedélyezve van egy tárolóhelyről az éles környezetbe, minden alkalommal, amikor leküldi a kód módosításait az adott tárolóhelyre, App Service automatikusan [kicseréli az alkalmazást éles üzembe](#swap-operation-steps) , miután bemelegedett a forrás tárolóhelyen.
 
    > [!NOTE]
-   > Mielőtt konfigurálná a automatikus felcserélés az éles üzembe helyezési pont, fontolja meg tesztelési automatikus felcserélés célja nem éles tárhely a először.
+   > Mielőtt konfigurálja az automatikus swap-t az üzemi tárolóhelyre, érdemes lehet tesztelni az automatikus swap szolgáltatást egy nem éles tárolóhelyen.
    > 
 
-Automatikus felcserélés konfigurálásához kövesse az alábbi lépéseket:
+Az automatikus swap beállítása:
 
-1. Keresse meg az alkalmazás erőforrás-lapon. Válassza ki **üzembe helyezési pontok (előzetes verzió)** > *\<kívánt forrás >* > **Alkalmazásbeállítások**.
+1. Nyissa meg az alkalmazás erőforrás-lapját. Válassza ki az **üzembe helyezési** >  *\<pontok kívánt forrásának tárolóhelye >*  > a**konfigurációs** > **általános beállítások**elemet.
    
-2. A **automatikus felcserélés**, jelölje be **a**, válassza ki a kívánt cél bővítőhely a **automatikus felcserélés tárolóhely**, és kattintson a **mentése** a parancssávon. 
+2. Ha **engedélyezve van az automatikus csere**, válassza **a be**lehetőséget. Ezután válassza ki a kívánt cél tárolóhelyet az **automatikus swap üzembe helyezési**ponthoz, és válassza a **Mentés** parancsot a parancssáv számára. 
    
-    ![](./media/web-sites-staged-publishing/AutoSwap02.png)
+    ![Automatikus felcserélés konfigurálásának kiválasztása](./media/web-sites-staged-publishing/AutoSwap02.png)
 
-3. Hajtsa végre egy kódot leküldéses átirányítja a forrás. Automatikus felcserélés rövid idő múlva történik, és a frissítés is megjelenik a cél a tárhely URL-címen.
+3. Hajtson végre egy kódot a forrás tárolóhelyre való leküldéssel. Az automatikus felcserélés rövid idő elteltével történik, és a frissítés a cél tárolóhelyének URL-címén jelenik meg.
+
+Ha bármilyen problémája van, olvassa el a [swap-hibák elhárítása](#troubleshoot-swaps)című témakört.
 
 <a name="Warm-up"></a>
 
-## <a name="custom-warm-up"></a>Egyéni bemelegítési
-Használata esetén [Auto-Swap](#Auto-Swap), bizonyos alkalmazásokhoz szükség lehet egyéni bemelegítési műveletek a felcserélés előtt. A `applicationInitialization` konfigurációs elem a Web.config fájlban lehetővé teszi, hogy adhat meg egyéni inicializálási műveletek kell elvégezni. A felcserélési művelet befejeződését, mielőtt a célként megadott tárhellyel való felcserélése ezen egyéni bemelegítési várakozik. Íme egy minta web.config kódrészletet.
+## <a name="specify-custom-warm-up"></a>Egyéni bemelegítő beállítása
+
+Egyes alkalmazások esetében előfordulhat, hogy a swap előtt egyéni Warm-up műveletekre van szükség. A `applicationInitialization` web. config konfigurációs eleme lehetővé teszi egyéni inicializálási műveletek megadását. A [swap művelet](#AboutConfiguration) megvárja, amíg ez az egyéni bemelegítő befejeződik a cél tárolóhelyre való váltás előtt. Íme egy minta web. config töredék.
 
     <system.webServer>
         <applicationInitialization>
@@ -215,64 +211,71 @@ Használata esetén [Auto-Swap](#Auto-Swap), bizonyos alkalmazásokhoz szükség
         </applicationInitialization>
     </system.webServer>
 
-Testreszabásáról további információkat a `applicationInitialization` elem, lásd: [leggyakoribb slot swap sikertelen, és hogyan javíthatók](https://ruslany.net/2017/11/most-common-deployment-slot-swap-failures-and-how-to-fix-them/).
+Az elem testreszabásával kapcsolatos további `applicationInitialization` információkért lásd: az [üzembe helyezési pontok leggyakoribb felcserélésekor fellépő hibák és azok kijavítása](https://ruslany.net/2017/11/most-common-deployment-slot-swap-failures-and-how-to-fix-them/).
 
-Testre szabhatja a bemelegítési viselkedését egy vagy több, a következő [Alkalmazásbeállítások](web-sites-configure.md):
+A bemelegítő viselkedést a következő [Alkalmazásbeállítások](configure-common.md)egyikével vagy mindkettővel is testreszabhatja:
 
-- `WEBSITE_SWAP_WARMUP_PING_PATH`: A ping paranccsal melegítési a hely elérési útja. Adja hozzá ennek az alkalmazásbeállításnak értékeként perjellel adnak meg egyéni elérési úttal, amely a kezdődik. Például: `/statuscheck`. Az alapértelmezett érték `/`. 
-- `WEBSITE_SWAP_WARMUP_PING_STATUSES`: Érvényes HTTP-válaszkódot a bemelegítési művelethez. Adja hozzá ennek az alkalmazásbeállításnak a HTTP-kódok vesszővel tagolt listája. Például: `200,202` . A visszaadott állapotkód nem szerepel a listában, ha a melegítési és a Váltás műveletek le vannak állítva. Alapértelmezés szerint minden válaszkódot érvényesek.
+- `WEBSITE_SWAP_WARMUP_PING_PATH`: A hely bemelegítésének elérési útja. Adja hozzá ezt az alkalmazás-beállítást egy olyan egyéni elérési út megadásával, amely egy perjelként kezdődik az értékként. Például: `/statuscheck`. Az alapértelmezett érték `/`. 
+- `WEBSITE_SWAP_WARMUP_PING_STATUSES`: Érvényes HTTP-válasz kódok a bemelegítő művelethez. Adja hozzá ezt az alkalmazás-beállítást a HTTP-kódok vesszővel tagolt listájához. Példa `200,202` :. Ha a visszaadott állapotkód nem szerepel a listában, a bemelegedési és a swap művelet leáll. Alapértelmezés szerint az összes válasz kódja érvényes.
 
-## <a name="monitor-swap"></a>A figyelő swap
+> [!NOTE]
+> `<applicationInitialization>`az egyes alkalmazások indításának része, ahol ez a két Alkalmazásbeállítások csak a tárolóhely-swapokra érvényes.
 
-Ha a címeket cserélő művelet egy hosszú ideig tart, a a felcserélési művelet információkat szerezhet a [tevékenységnapló](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
+Ha bármilyen problémája van, olvassa el a [swap-hibák elhárítása](#troubleshoot-swaps)című témakört.
 
-Az erőforrás-oldalon az alkalmazás a portálon a bal oldali navigációs sávján válassza **tevékenységnapló**.
+## <a name="monitor-a-swap"></a>Swap figyelése
 
-Csereművelet jelenik meg a napló-lekérdezéshez, mivel `Swap Web App Slots`. Bontsa ki azt, és válassza ki az egyik suboperations vagy hibákat a részletek megtekintéséhez.
+Ha a [swap művelet](#AboutConfiguration) végrehajtása hosszú időt vesz igénybe, akkor a [tevékenység naplójának](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)swap műveletével kapcsolatos információkat kaphat.
 
-## <a name="route-traffic"></a>Forgalom irányítása
+Az alkalmazás erőforrás oldalán a portálon, a bal oldali ablaktáblán válassza a **műveletnapló**elemet.
 
-Alapértelmezésben a kéréseket az alkalmazás éles URL-címe (`http://<app_name>.azurewebsites.net`) legyenek átirányítva az éles webalkalmazásra. A forgalom egy része azt egy másik tárolóhelyre irányíthatja. Ez a funkció akkor hasznos, ha a felhasználói visszajelzések szüksége lesz egy új frissítést, de Ön nem készen áll az éles környezetbe feloldásához.
+A napló lekérdezésében `Swap Web App Slots`egy swap művelet jelenik meg. Kibonthatja, és kiválaszthatja az egyik alműveletet vagy hibát a részletek megjelenítéséhez.
 
-### <a name="route-production-traffic-automatically"></a>Automatikusan éles forgalom irányítása
+## <a name="route-traffic"></a>Útvonal forgalma
 
-Éles forgalom irányítására automatikusan, kövesse az alábbi lépéseket:
+Alapértelmezés szerint az alkalmazás éles URL-címére (`http://<app_name>.azurewebsites.net`) irányuló összes ügyfél-kérelem át lesz irányítva az üzemi tárolóhelyre. A forgalom egy részét átirányíthatja egy másik tárolóhelyre. Ez a funkció akkor hasznos, ha új frissítéshez felhasználói visszajelzésre van szüksége, de nem áll készen az éles környezetbe való kiadásra.
 
-1. Az alkalmazás erőforrás-oldalon keresse meg és válassza **üzembe helyezési pontok (előzetes verzió)**.
+### <a name="route-production-traffic-automatically"></a>Éles forgalom automatikus irányítása
 
-2. Az a **forgalom %** oszlopa a tárolóhely kívánt átirányítása, adja meg (0 és 100) közötti százalékos képviselő szeretné átirányítani teljes forgalom mennyisége. Kattintson a **Save** (Mentés) gombra.
+A termelési forgalom automatikus irányítása:
 
-    ![](./media/web-sites-staged-publishing/RouteTraffic.png)
+1. Nyissa meg az alkalmazás erőforrás-lapját, és válassza az **üzembe helyezési**pontok lehetőséget.
 
-A beállítás a mentés után a megadott százalék, az ügyfelek véletlenszerűen irányítja a rendszer a nem éles tárhely. 
+2. Az átirányítani kívánt tárolóhely **%** oszlopában meg kell adni a százalékos értéket (0 és 100 között), hogy az összes átirányítani kívánt forgalom mennyiségét képviseljék. Kattintson a **Mentés** gombra.
 
-Miután az ügyfél automatikusan annak biztosítására, hogy egy adott tárhely annak "rögzített", hogy a tárolóhely esetében az élettartam adott ügyfél-munkamenet. Az ügyfélböngészőnek, mely a munkamenet rögzítve van naplófájlbejegyzéseket átnézve tárolóhely láthatja a `x-ms-routing-name` cookie-t a HTTP-fejléceket. Egy kérelmet, amely a "átmeneti" tárolóhely irányítja a rendszer rendelkezik a cookie-k `x-ms-routing-name=staging`. Egy kérelmet, amely az éles tárolóhelyre lesz irányítva a cookie-k rendelkezik `x-ms-routing-name=self`.
+    ![Forgalmi arány beállítása](./media/web-sites-staged-publishing/RouteTraffic.png)
 
-### <a name="route-production-traffic-manually"></a>Manuálisan éles forgalom irányítása
+A beállítás mentése után a rendszer véletlenszerűen továbbítja az ügyfelek megadott százalékos arányát a nem éles tárolóhelyre. 
 
-Mellett automatikus forgalom-útválasztást, App Service-ben is irányíthatja a kérelmeket egy adott tárhely. Ez akkor hasznos, ha azt szeretné, hogy a felhasználók tudni opt be vagy lemondja a bétaverzió alkalmazását. Éles forgalom irányítására manuálisan, használja a `x-ms-routing-name` lekérdezési paraméter.
+Miután egy ügyfél automatikusan átirányítja egy adott tárolóhelyre, az adott ügyfél-munkamenet élettartamára "rögzítve" lesz az adott tárolóhelyre. Az ügyfél böngészőjében megtekintheti, hogy a munkamenet melyik tárolóhelyre van rögzítve a http `x-ms-routing-name` -fejlécekben található cookie megkeresésével. Az "átmeneti" tárolóhelyre átirányított kérelem a cookie `x-ms-routing-name=staging`-val rendelkezik. Az éles tárolóhelyre átirányított kérelem a cookie `x-ms-routing-name=self`-val rendelkezik.
 
-Ahhoz, hogy a felhasználók tilthatják le a béta-alkalmazás, például helyezheti erre a hivatkozásra a webalkalmazás lapjának:
+### <a name="route-production-traffic-manually"></a>Éles forgalom manuális irányítása
+
+Az automatikus forgalmi útválasztás mellett App Service a kérelmeket egy adott tárolóhelyre irányíthatja. Ez akkor hasznos, ha azt szeretné, hogy a felhasználók bejelentkezhetnek a bétaverzióba, vagy letiltsák azokat. A termelési forgalom manuális átirányításához használja a `x-ms-routing-name` lekérdezési paramétert.
+
+Ha szeretné, hogy a felhasználók elhagyják a bétaverzióját, például a következő hivatkozásra kattintva adhatja meg a weblapon:
 
 ```HTML
 <a href="<webappname>.azurewebsites.net/?x-ms-routing-name=self">Go back to production app</a>
 ```
 
-A karakterlánc `x-ms-routing-name=self` adja meg az éles webalkalmazásra. Miután az ügyfél böngészője fér hozzá a hivatkozás, nem csak azt átirányítódik az éles tárolóhelyre, de minden későbbi kérés a `x-ms-routing-name=self` cookie-t, amely rögzíti a munkamenet az éles webalkalmazásra.
+A karakterlánc `x-ms-routing-name=self` meghatározza az üzemi tárolóhelyet. Miután az ügyfél böngészője hozzáfér a hivatkozáshoz, a rendszer átirányítja az éles tárolóhelyre. Minden további kérelem rendelkezik a `x-ms-routing-name=self` cookie-val, amely a munkamenetet az üzemi tárolóhelyre PIN-kódra kéri.
 
-Ahhoz, hogy a felhasználók engedélyezve a béta-alkalmazását, állítsa be ugyanazon lekérdezési paraméter a nem éles tárolóhely neve:
+Ha engedélyezni szeretné, hogy a felhasználók belépjenek a bétaverzióba, állítsa ugyanazt a lekérdezési paramétert a nem üzemi tárolóhely nevére. Például:
 
 ```
 <webappname>.azurewebsites.net/?x-ms-routing-name=staging
 ```
 
+Alapértelmezés szerint az új bővítőhelyek útválasztási szabályt `0%`kapnak, amely szürke színnel jelenik meg. Ha explicit módon beállítja ezt az értéket `0%` (fekete szövegben látható), a felhasználók a `x-ms-routing-name` lekérdezési paraméter használatával manuálisan érhetik el az átmeneti tárolóhelyet. De a rendszer nem irányítja át automatikusan a tárolóhelyre, mert az útválasztási százalék értéke 0. Ez egy speciális forgatókönyv, ahol "elrejtheti" az átmeneti tárolóhelyet a nyilvános környezetből, miközben lehetővé teszi a belső csapatok számára a tárolóhelyek változásainak tesztelését.
+
 <a name="Delete"></a>
 
-## <a name="delete-slot"></a>Pont törlése
+## <a name="delete-a-slot"></a>Tárolóhely törlése
 
-Keresse meg az alkalmazás erőforrás-lapon. Válassza ki **üzembe helyezési pontok (előzetes verzió)** > *\<törlése tárolóhely >* > **áttekintése**. Kattintson a **törlése** a parancssávon.  
+Nyissa meg az alkalmazás erőforrás-lapját.  > > *\<* Áttekintéséhez válassza a **telepítési bővítőhelyek tárolóhelyét** > . Válassza a **delete (Törlés** ) lehetőséget a parancssáv sávon.  
 
-![Üzembehelyezési pont törlése](./media/web-sites-staged-publishing/DeleteStagingSiteButton.png)
+![Üzembe helyezési pont törlése](./media/web-sites-staged-publishing/DeleteStagingSiteButton.png)
 
 <!-- ======== AZURE POWERSHELL CMDLETS =========== -->
 
@@ -282,61 +285,146 @@ Keresse meg az alkalmazás erőforrás-lapon. Válassza ki **üzembe helyezési 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Az Azure PowerShell modul, amely Azure-t a Windows PowerShell-lel, beleértve az Azure App Service-ben üzembe helyezési pontok felügyeletének támogatását, így kezelheti-parancsmagokat kínál.
+Azure PowerShell egy modul, amely parancsmagokat biztosít az Azure-nak a Windows PowerShellen keresztüli felügyeletéhez, beleértve az üzembe helyezési pontok Azure App Service-ben való felügyeletének támogatását.
 
-Információk az telepítése és konfigurálása az Azure PowerShell-lel és az Azure PowerShell-lel hitelesítése az Azure-előfizetésében: [telepítése és konfigurálása a Microsoft Azure PowerShell](/powershell/azure/overview).  
+További információ a Azure PowerShell telepítéséről és konfigurálásáról, valamint az Azure-előfizetéssel végzett Azure PowerShell hitelesítéséről: [Microsoft Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview).  
 
-- - -
-### <a name="create-web-app"></a>Webalkalmazás létrehozása
+---
+### <a name="create-a-web-app"></a>Webalkalmazás létrehozása
 ```powershell
 New-AzWebApp -ResourceGroupName [resource group name] -Name [app name] -Location [location] -AppServicePlan [app service plan name]
 ```
 
-- - -
-### <a name="create-slot"></a>Tárhely létrehozása
+---
+### <a name="create-a-slot"></a>Tárolóhely létrehozása
 ```powershell
 New-AzWebAppSlot -ResourceGroupName [resource group name] -Name [app name] -Slot [deployment slot name] -AppServicePlan [app service plan name]
 ```
 
-- - -
-### <a name="initiate-swap-with-preview-multi-phase-swap-and-apply-destination-slot-configuration-to-source-slot"></a>Felcserélés előnézettel (többfázisú lapozó) kezdeményezi, és a forrás célhelyre tárolóhely konfigurációjának alkalmazása
+---
+### <a name="initiate-a-swap-with-a-preview-multi-phase-swap-and-apply-destination-slot-configuration-to-the-source-slot"></a>Váltás kezdeményezése az előzetes verzióval (többfázisú swap) és a tárolóhely konfigurációjának alkalmazása a forrás tárolóhelyre
 ```powershell
 $ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
 Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action applySlotConfig -Parameters $ParametersObject -ApiVersion 2015-07-01
 ```
 
-- - -
-### <a name="cancel-pending-swap-swap-with-review-and-restore-source-slot-configuration"></a>Folyamatban lévő felcserélés, (tekintse át a lapozó) és a forrás tárolóhely konfiguráció visszaállítása
+---
+### <a name="cancel-a-pending-swap-swap-with-review-and-restore-the-source-slot-configuration"></a>Függőben lévő felcserélés megszakítása (áttekintéssel való csere) és a forrás tárolóhely konfigurációjának visszaállítása
 ```powershell
 Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action resetSlotConfig -ApiVersion 2015-07-01
 ```
 
-- - -
-### <a name="swap-deployment-slots"></a>Üzembehelyezési pontok cseréje
+---
+### <a name="swap-deployment-slots"></a>Üzembe helyezési pontok felcserélése
 ```powershell
 $ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
 Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action slotsswap -Parameters $ParametersObject -ApiVersion 2015-07-01
 ```
 
-### <a name="monitor-swap-events-in-the-activity-log"></a>A tevékenység Log lapozófájl-kapacitás-események figyelése
+### <a name="monitor-swap-events-in-the-activity-log"></a>A tevékenység naplójában lévő swap-események figyelése
 ```powershell
 Get-AzLog -ResourceGroup [resource group name] -StartTime 2018-03-07 -Caller SlotSwapJobProcessor  
 ```
 
-- - -
-### <a name="delete-slot"></a>Pont törlése
+---
+### <a name="delete-a-slot"></a>Tárolóhely törlése
 ```powershell
 Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots –Name [app name]/[slot name] -ApiVersion 2015-07-01
 ```
 
-- - -
+## <a name="automate-with-arm-templates"></a>Automatizálás ARM-sablonokkal
+
+Az [ARM-sablonok](https://docs.microsoft.com/en-us/azure/azure-resource-manager/template-deployment-overview) deklaratív JSON-fájlok, amelyek az Azure-erőforrások üzembe helyezésének és konfigurálásának automatizálására szolgálnak. A tárolóhelyek ARM-sablonokkal való kicseréléséhez két tulajdonságot fog beállítani a *Microsoft. Web/Sites/Slots* és a *Microsoft. Web/Sites* erőforrásokon:
+
+- `buildVersion`: ez egy karakterlánc-tulajdonság, amely a tárolóhelyen üzembe helyezett alkalmazás aktuális verzióját jelöli. Például: "v1", "1.0.0.1" vagy "2019-09-20T11:53:25.2887393-07:00".
+- `targetBuildVersion`: ez egy karakterlánc-tulajdonság, amely megadja, hogy a tárolóhelynek milyen `buildVersion` értékűnek kell lennie. Ha a targetBuildVersion nem egyezik a jelenlegi `buildVersion` értékkel, akkor ez a swap műveletet a megadott `buildVersion` hely megkeresésével aktiválja.
+
+### <a name="example-arm-template"></a>Példa ARM-sablonra
+
+A következő ARM-sablon frissíti az átmeneti tárolóhely @no__t – 0 értéket, és beállítja a `targetBuildVersion` értéket az üzemi tárolóhelyen. Ez a két tárolóhelyet fogja cserélni. A sablon feltételezi, hogy már van egy "előkészítés" nevű tárolóhelytel létrehozott WebApp.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "my_site_name": {
+            "defaultValue": "SwapAPIDemo",
+            "type": "String"
+        },
+        "sites_buildVersion": {
+            "defaultValue": "v1",
+            "type": "String"
+        }
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Web/sites/slots",
+            "apiVersion": "2018-02-01",
+            "name": "[concat(parameters('my_site_name'), '/staging')]",
+            "location": "East US",
+            "kind": "app",
+            "properties": {
+                "buildVersion": "[parameters('sites_buildVersion')]"
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites",
+            "apiVersion": "2018-02-01",
+            "name": "[parameters('my_site_name')]",
+            "location": "East US",
+            "kind": "app",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites/slots', parameters('my_site_name'), 'staging')]"
+            ],
+            "properties": {
+                "targetBuildVersion": "[parameters('sites_buildVersion')]"
+            }
+        }        
+    ]
+}
+```
+
+Ez az ARM-sablon idempotens, ami azt jelenti, hogy többször is végrehajtható, és a tárolóhelyek azonos állapotba hozhatók. Az első végrehajtás után a `targetBuildVersion` megegyezik a jelenlegi `buildVersion` értékkel, így a swap nem lesz aktiválva.
+
 <!-- ======== Azure CLI =========== -->
 
 <a name="CLI"></a>
 
-## <a name="automate-with-cli"></a>Automatizálás a parancssori felület
+## <a name="automate-with-the-cli"></a>Automatizálás a parancssori felülettel
 
-A [Azure CLI-vel](https://github.com/Azure/azure-cli) parancsok a üzembe helyezési pontok, lásd: [az webapp deployment slot](/cli/azure/webapp/deployment/slot).
+Az üzembe helyezési pontok [Azure CLI](https://github.com/Azure/azure-cli) -parancsaival kapcsolatban lásd: [az WebApp Deployment slot](/cli/azure/webapp/deployment/slot).
+
+## <a name="troubleshoot-swaps"></a>Swap-hibák megoldása
+
+Ha bármilyen hiba történik egy [tárolóhely cseréjekor](#AboutConfiguration), a rendszer bejelentkezett a *D:\home\LogFiles\eventlog.XML*. Az alkalmazásspecifikus hibanapló is be van jelentkezve.
+
+Íme néhány gyakori swap-hiba:
+
+- Az alkalmazás gyökerére irányuló HTTP-kérelem időkorlátja. A swap művelet minden HTTP-kérelem esetében 90 másodpercig vár, és legfeljebb 5 alkalommal próbálkozik újra. Ha az összes újrapróbálkozás időkorlátja lejárt, a swap művelet leáll.
+
+- A helyi gyorsítótár inicializálása sikertelen lehet, ha az alkalmazás tartalma meghaladja a helyi gyorsítótárhoz megadott helyi lemezkvóta-kvótát. További információ: [helyi gyorsítótár – áttekintés](overview-local-cache.md).
+
+- Az [Egyéni felmelegedés](#Warm-up)során a HTTP-kérések belsőleg történnek (a külső URL-cím nélkül). A *web. config fájlban*megadott URL-re vonatkozó Újraírási szabályokkal sikertelenek lehetnek. Például a tartománynevek átirányítására vagy a HTTPS érvényesítésére vonatkozó szabályok megakadályozhatják a bemelegítő kérések elérését az alkalmazás kódjának elérésekor. A probléma megkerüléséhez módosítsa az Újraírási szabályokat úgy, hogy hozzáadja a következő két feltételt:
+
+    ```xml
+    <conditions>
+      <add input="{WARMUP_REQUEST}" pattern="1" negate="true" />
+      <add input="{REMOTE_ADDR}" pattern="^100?\." negate="true" />
+      ...
+    </conditions>
+    ```
+- Egyéni bemelegítő nélkül az URL-írási szabályok továbbra is letilthatják a HTTP-kérelmeket. A probléma megkerüléséhez módosítsa az Újraírási szabályokat a következő feltétel hozzáadásával:
+
+    ```xml
+    <conditions>
+      <add input="{REMOTE_ADDR}" pattern="^100?\." negate="true" />
+      ...
+    </conditions>
+    ```
+- Egyes [IP-korlátozási szabályok](app-service-ip-restrictions.md) megakadályozhatják, hogy a swap művelet http-kérelmeket küldjön az alkalmazásnak. Azok az IPv4-címtartományok, `10.` amelyek `100.` a-val kezdődnek, és belsőek az üzemelő példányon. Engedélyezze az alkalmazáshoz való kapcsolódást.
+
+- A tárolóhelyek cseréje után az alkalmazás váratlan újraindítást tapasztalhat. Ennek az az oka, hogy a cserét követően az állomásnév-kötési konfiguráció elkerül a szinkronizálásból, ami önmagában nem okozza az újraindítást. Előfordulhat azonban, hogy bizonyos mögöttes tárolási események (például a tárolási kötetek feladatátvétele) észlelik ezeket az eltéréseket, és kényszerítik az összes munkavégző folyamat újraindítását. Az ilyen típusú újraindítások minimalizálásához állítsa az [ `WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1` alkalmazás beállításait](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig) az *összes tárolóhelyre*. Ez az Alkalmazásbeállítás azonban *nem* működik Windows COMMUNICATION Foundation (WCF) alkalmazásokkal.
 
 ## <a name="next-steps"></a>További lépések
-[Nem éles pontok való hozzáférés letiltása](app-service-ip-restrictions.md)
+[Nem éles tárolóhelyekhez való hozzáférés letiltása](app-service-ip-restrictions.md)

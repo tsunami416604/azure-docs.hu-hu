@@ -1,25 +1,17 @@
 ---
 title: Központi telepítési sorrendet, az Azure-erőforrások |} A Microsoft Docs
 description: Ismerteti, hogyan állíthatja be egy erőforrást egy másik erőforrástól függ-e, győződjön meg arról, hogy üzembe helyezett erőforrások a megfelelő sorrendben történő üzembe helyezés során.
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: ''
-ms.assetid: 34ebaf1e-480c-4b4d-9bf6-251bd3f8f2cf
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 03/20/2019
 ms.author: tomfitz
-ms.openlocfilehash: 91325b7884eae4c6f4c85c142b1e81cf2121c039
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 32b2b41e47fe089da70d82e6049d0139795df88a
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295334"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204220"
 ---
 # <a name="define-the-order-for-deploying-resources-in-azure-resource-manager-templates"></a>A rendelés üzembe erőforrásokat az Azure Resource Manager-sablonok meghatározása
 Egy adott erőforráshoz lehet más erőforrások, amelyek már léteznie kell az erőforrás üzembe van helyezve. Például egy SQL server léteznie kell az SQL-adatbázis üzembe helyezése előtt. Ezt a kapcsolatot definiálhat egy erőforrást, mint a többi erőforrástól függ-e megjelölésével. A függőséget határoz meg a **dependsOn** elem, vagy a **referencia** függvény. 

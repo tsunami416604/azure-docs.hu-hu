@@ -2,7 +2,7 @@
 title: Hozzáadása, eltávolítása és rendezése az Azure portal Kedvencek |} A Microsoft Docs
 description: Ismerje meg, hogyan adhat hozzá vagy elem eltávolítása a Kedvencek listájából, és rendezheti az elemek sorrendjét
 services: azure-portal
-keywords: kedvencek
+keywords: Kedvencek
 author: kfollis
 ms.author: kfollis
 ms.date: 04/03/2019
@@ -11,11 +11,11 @@ ms.service: azure-portal
 ms.custom: ''
 manager: mtillman
 ms.openlocfilehash: ff3549ce77a2b691dcaaa94b6a59e9c011ff6e21
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59796103"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60690710"
 ---
 # <a name="add-remove-and-sort-favorites"></a>Kedvencek hozzáadása, eltávolítása és rendezése
 

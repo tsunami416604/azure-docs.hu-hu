@@ -11,11 +11,11 @@ ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 554bb99121190198982f64deb6ee0674aa8831ed
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162390"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60381195"
 ---
 # <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Azure AD Connect:  ADSyncConfig PowerShell-referencia
 A következő dokumentáció arról nyújt a ADSyncConfig.psm1 PowerShell-modult, amely tartalmazza az Azure AD Connecttel kapcsolatos referenciainformációk.
@@ -23,7 +23,7 @@ A következő dokumentáció arról nyújt a ADSyncConfig.psm1 PowerShell-modult
 
 ## <a name="get-adsyncadconnectoraccount"></a>Get-ADSyncADConnectorAccount
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 Lekéri a fiók neve és a tartományhoz, amely minden AD-összekötő konfigurálva van
 
 ### <a name="syntax"></a>SZINTAXIS
@@ -37,14 +37,14 @@ Ez a funkció a 'Get-ADSyncConnector' parancsmagot, amely szerepel az AAD Connec
 
 ### <a name="examples"></a>PÉLDÁK
 
-#### <a name="example-1"></a>1. PÉLDA
+#### <a name="example-1"></a>1\. PÉLDA
 ```
 Get-ADSyncADConnectorAccount
 ```
 
 ## <a name="get-adsyncobjectswithinheritancedisabled"></a>Get-ADSyncObjectsWithInheritanceDisabled
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 Az engedélyek öröklődésének le van tiltva az AD-objektumok beolvasása
 
 ### <a name="syntax"></a>SZINTAXIS
@@ -58,7 +58,7 @@ Az ad-ben a SearchBase paraméter kezdve átvizsgálja, és adja vissza, ObjectC
 
 ### <a name="examples"></a>PÉLDÁK
 
-#### <a name="example-1"></a>1. PÉLDA
+#### <a name="example-1"></a>1\. PÉLDA
 ```
 Find objects with disabled inheritance in 'Contoso' domain (by default returns 'organizationalUnit' objects only)
 ```
@@ -72,7 +72,7 @@ Find 'user' objects with disabled inheritance in 'Contoso' domain
 
 Get-ADSyncObjectsWithInheritanceDisabled - SearchBase "Contoso" - ObjectClass "felhasználó"
 
-#### <a name="example-3"></a>3. PÉLDA
+#### <a name="example-3"></a>3\. PÉLDA
 ```
 Find all types of objects with disabled inheritance in a OU
 ```
@@ -117,7 +117,7 @@ További információk: about_CommonParameters (https://go.microsoft.com/fwlink/
 
 ## <a name="set-adsyncbasicreadpermissions"></a>Set-ADSyncBasicReadPermissions
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 Az Active Directory erdőben és tartományban, alapvető olvasási engedélyek inicializálása.
 
 ### <a name="syntax"></a>SZINTAXIS
@@ -156,7 +156,7 @@ Opcionálisan megadhat egy DistinguishedName ADobjectDN paraméterben ezek az en
 
 ### <a name="examples"></a>PÉLDÁK
 
-#### <a name="example-1"></a>1. PÉLDA
+#### <a name="example-1"></a>1\. PÉLDA
 ```
 Set-ADSyncBasicReadPermissions -ADConnectorAccountName 'ADConnector' -ADConnectorAccountDomain 'Contoso.com'
 ```
@@ -166,12 +166,12 @@ Set-ADSyncBasicReadPermissions -ADConnectorAccountName 'ADConnector' -ADConnecto
 Set-ADSyncBasicReadPermissions -ADConnectorAccountDN 'CN=ADConnector,OU=AzureAD,DC=Contoso,DC=com'
 ```
 
-#### <a name="example-3"></a>3. PÉLDA
+#### <a name="example-3"></a>3\. PÉLDA
 ```
 Set-ADSyncBasicReadPermissions -ADConnectorAccountDN 'CN=ADConnector,OU=AzureAD,DC=Contoso,DC=com' -SkipAdminSdHolders
 ```
 
-#### <a name="example-4"></a>4. PÉLDA
+#### <a name="example-4"></a>4\. PÉLDA
 ```
 Set-ADSyncBasicReadPermissions -ADConnectorAccountName 'ADConnector' -ADConnectorAccountDomain 'Contoso.com' -ADobjectDN 'OU=AzureAD,DC=Contoso,DC=com'
 ```
@@ -290,7 +290,7 @@ További információk: about_CommonParameters (https://go.microsoft.com/fwlink/
 
 ## <a name="set-adsyncexchangehybridpermissions"></a>Set-ADSyncExchangeHybridPermissions
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 Az Active Directory-erdő és a hibrid Exchange szolgáltatáshoz tartozó tartományi inicializálása.
 
 ### <a name="syntax"></a>SZINTAXIS
@@ -323,7 +323,7 @@ Opcionálisan megadhat egy DistinguishedName ADobjectDN paraméterben ezek az en
 
 ### <a name="examples"></a>PÉLDÁK
 
-#### <a name="example-1"></a>1. PÉLDA
+#### <a name="example-1"></a>1\. PÉLDA
 ```
 Set-ADSyncExchangeHybridPermissions -ADConnectorAccountName 'ADConnector' -ADConnectorAccountDomain 'Contoso.com'
 ```
@@ -333,12 +333,12 @@ Set-ADSyncExchangeHybridPermissions -ADConnectorAccountName 'ADConnector' -ADCon
 Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN 'CN=ADConnector,OU=AzureAD,DC=Contoso,DC=com'
 ```
 
-#### <a name="example-3"></a>3. PÉLDA
+#### <a name="example-3"></a>3\. PÉLDA
 ```
 Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN 'CN=ADConnector,OU=AzureAD,DC=Contoso,DC=com' -SkipAdminSdHolders
 ```
 
-#### <a name="example-4"></a>4. PÉLDA
+#### <a name="example-4"></a>4\. PÉLDA
 ```
 Set-ADSyncExchangeHybridPermissions -ADConnectorAccountName 'ADConnector' -ADConnectorAccountDomain 'Contoso.com' -ADobjectDN 'OU=AzureAD,DC=Contoso,DC=com'
 ```
@@ -457,7 +457,7 @@ További információk: about_CommonParameters (https://go.microsoft.com/fwlink/
 
 ## <a name="set-adsyncexchangemailpublicfolderpermissions"></a>Set-ADSyncExchangeMailPublicFolderPermissions
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 Az Active Directory-erdő és tartomány Exchange-levelezés nyilvános mappa funkció inicializálása.
 
 ### <a name="syntax"></a>SZINTAXIS
@@ -485,7 +485,7 @@ Opcionálisan megadhat egy DistinguishedName ADobjectDN paraméterben ezek az en
 
 ### <a name="examples"></a>PÉLDÁK
 
-#### <a name="example-1"></a>1. PÉLDA
+#### <a name="example-1"></a>1\. PÉLDA
 ```
 Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountName 'ADConnector' -ADConnectorAccountDomain 'Contoso.com'
 ```
@@ -495,12 +495,12 @@ Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountName 'ADConnect
 Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountDN 'CN=ADConnector,OU=AzureAD,DC=Contoso,DC=com'
 ```
 
-#### <a name="example-3"></a>3. PÉLDA
+#### <a name="example-3"></a>3\. PÉLDA
 ```
 Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountDN 'CN=ADConnector,OU=AzureAD,DC=Contoso,DC=com' -SkipAdminSdHolders
 ```
 
-#### <a name="example-4"></a>4. PÉLDA
+#### <a name="example-4"></a>4\. PÉLDA
 ```
 Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountName 'ADConnector' -ADConnectorAccountDomain 'Contoso.com' -ADobjectDN 'OU=AzureAD,DC=Contoso,DC=com'
 ```
@@ -619,7 +619,7 @@ További információk: about_CommonParameters (https://go.microsoft.com/fwlink/
 
 ## <a name="set-adsyncmsdsconsistencyguidpermissions"></a>Set-ADSyncMsDsConsistencyGuidPermissions
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 Az Active Directory erdőben és tartományban, mS-DS-ConsistencyGuid funkció inicializálása.
 
 ### <a name="syntax"></a>SZINTAXIS
@@ -646,7 +646,7 @@ Opcionálisan megadhat egy DistinguishedName ADobjectDN paraméterben ezek az en
 
 ### <a name="examples"></a>PÉLDÁK
 
-#### <a name="example-1"></a>1. PÉLDA
+#### <a name="example-1"></a>1\. PÉLDA
 ```
 Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountName 'ADConnector' -ADConnectorAccountDomain 'Contoso.com'
 ```
@@ -656,12 +656,12 @@ Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountName 'ADConnector' -
 Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountDN 'CN=ADConnector,OU=AzureAD,DC=Contoso,DC=com'
 ```
 
-#### <a name="example-3"></a>3. PÉLDA
+#### <a name="example-3"></a>3\. PÉLDA
 ```
 Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountDN 'CN=ADConnector,OU=AzureAD,DC=Contoso,DC=com' -SkipAdminSdHolders
 ```
 
-#### <a name="example-4"></a>4. PÉLDA
+#### <a name="example-4"></a>4\. PÉLDA
 ```
 Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountName 'ADConnector' -ADConnectorAccountDomain 'Contoso.com' -ADobjectDN 'OU=AzureAD,DC=Contoso,DC=com'
 ```
@@ -780,7 +780,7 @@ További információk: about_CommonParameters (https://go.microsoft.com/fwlink/
 
 ## <a name="set-adsyncpasswordhashsyncpermissions"></a>Set-ADSyncPasswordHashSyncPermissions
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 Az Active Directory-erdőben és tartományban a Jelszókivonat-szinkronizálás inicializálása.
 
 ### <a name="syntax"></a>SZINTAXIS
@@ -807,7 +807,7 @@ Ezeket az engedélyeket az erdőben lévő összes tartományban vannak megadva.
 
 ### <a name="examples"></a>PÉLDÁK
 
-#### <a name="example-1"></a>1. PÉLDA
+#### <a name="example-1"></a>1\. PÉLDA
 ```
 Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountName 'ADConnector' -ADConnectorAccountDomain 'Contoso.com'
 ```
@@ -901,7 +901,7 @@ További információk: about_CommonParameters (https://go.microsoft.com/fwlink/
 
 ## <a name="set-adsyncpasswordwritebackpermissions"></a>Set-ADSyncPasswordWritebackPermissions
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 Az Active Directory erdőben és tartományban, a jelszóvisszaírást az Azure ad-ből inicializálása.
 
 ### <a name="syntax"></a>SZINTAXIS
@@ -932,7 +932,7 @@ Opcionálisan megadhat egy DistinguishedName ADobjectDN paraméterben ezek az en
 
 ### <a name="examples"></a>PÉLDÁK
 
-#### <a name="example-1"></a>1. PÉLDA
+#### <a name="example-1"></a>1\. PÉLDA
 ```
 Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountName 'ADConnector' -ADConnectorAccountDomain 'Contoso.com'
 ```
@@ -942,12 +942,12 @@ Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountName 'ADConnector' -AD
 Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountDN 'CN=ADConnector,OU=AzureAD,DC=Contoso,DC=com'
 ```
 
-#### <a name="example-3"></a>3. PÉLDA
+#### <a name="example-3"></a>3\. PÉLDA
 ```
 Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountDN 'CN=ADConnector,OU=AzureAD,DC=Contoso,DC=com' -SkipAdminSdHolders
 ```
 
-#### <a name="example-4"></a>4. PÉLDA
+#### <a name="example-4"></a>4\. PÉLDA
 ```
 Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountName 'ADConnector' -ADConnectorAccountDomain 'Contoso.com' -ADobjectDN 'OU=AzureAD,DC=Contoso,DC=com'
 ```
@@ -1066,7 +1066,7 @@ További információk: about_CommonParameters (https://go.microsoft.com/fwlink/
 
 ## <a name="set-adsyncrestrictedpermissions"></a>Set-ADSyncRestrictedPermissions
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 Ellenkező esetben nem szereplő bármely AD védett biztonsági csoporthoz AD objektumra vonatkozó engedélyek elősegíti megerősítését.
 Egy tipikus példája az AD Connect-fiók (MSOL) automatikusan létrehozza az AAD Connect.
 Ez a fiók replikálása engedélyekkel rendelkezik az összes tartományt, azonban is támadásoknak kitett szerint nem védett.
@@ -1106,7 +1106,7 @@ Ezek az engedélyek hozzárendelése:
 
 ### <a name="examples"></a>PÉLDÁK
 
-#### <a name="example-1"></a>1. PÉLDA
+#### <a name="example-1"></a>1\. PÉLDA
 ```
 Set-ADSyncRestrictedPermissions -ADConnectorAccountDN "CN=TestAccount1,CN=Users,DC=Contoso,DC=com" -Credential $(Get-Credential)
 ```
@@ -1197,7 +1197,7 @@ További információk: about_CommonParameters (https://go.microsoft.com/fwlink/
 
 ## <a name="set-adsyncunifiedgroupwritebackpermissions"></a>Set-ADSyncUnifiedGroupWritebackPermissions
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 Az Active Directory-erdő és a csoportok visszaírásához az Azure AD tartományi inicializálása.
 
 ### <a name="syntax"></a>SZINTAXIS
@@ -1225,7 +1225,7 @@ Ebben az esetben ADobjectDN lesz, amely megfelel a GroupWriteback szolgáltatás
 
 ### <a name="examples"></a>PÉLDÁK
 
-#### <a name="example-1"></a>1. PÉLDA
+#### <a name="example-1"></a>1\. PÉLDA
 ```
 Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountName 'ADConnector' -ADConnectorAccountDomain 'Contoso.com'
 ```
@@ -1235,12 +1235,12 @@ Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountName 'ADConnector'
 Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN 'CN=ADConnector,OU=AzureAD,DC=Contoso,DC=com'
 ```
 
-#### <a name="example-3"></a>3. PÉLDA
+#### <a name="example-3"></a>3\. PÉLDA
 ```
 Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN 'CN=ADConnector,OU=AzureAD,DC=Contoso,DC=com' -SkipAdminSdHolders
 ```
 
-#### <a name="example-4"></a>4. PÉLDA
+#### <a name="example-4"></a>4\. PÉLDA
 ```
 Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountName 'ADConnector' -ADConnectorAccountDomain 'Contoso.com' -ADobjectDN 'OU=AzureAD,DC=Contoso,DC=com'
 ```
@@ -1359,7 +1359,7 @@ További információk: about_CommonParameters (https://go.microsoft.com/fwlink/
 
 ## <a name="show-adsyncadobjectpermissions"></a>Show-ADSyncADObjectPermissions
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 Megjeleníti egy megadott AD-objektum engedélyekkel.
 
 ### <a name="syntax"></a>SZINTAXIS
@@ -1374,7 +1374,7 @@ A ADobjectDN DistinguishedName formátumban kell megadni.
 
 ### <a name="examples"></a>PÉLDÁK
 
-#### <a name="example-1"></a>1. PÉLDA
+#### <a name="example-1"></a>1\. PÉLDA
 ```
 Show-ADSyncADObjectPermissions -ADobjectDN 'OU=AzureAD,DC=Contoso,DC=com'
 ```

@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell-Példaszkript – alkalmazás létrehozása a Githubról folyamatos üzembe helyezéssel |} A Microsoft Docs
+title: Azure PowerShell parancsfájl-minta – alkalmazás létrehozása GitHub folyamatos üzembe helyezéssel | Microsoft Docs
 description: Azure PowerShell-példaszkript – Webalkalmazás létrehozása a GitHubról történő folyamatos üzembe helyezéssel
 services: app-service\web
 documentationcenter: ''
@@ -10,27 +10,25 @@ tags: azure-service-management
 ms.assetid: 42f901f8-02f7-4869-b22d-d99ef59f874c
 ms.service: app-service-web
 ms.workload: web
-ms.devlang: na
 ms.topic: sample
 ms.date: 03/20/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 7cd0366ff350995a1edf13476b4ad671d3bd3d3d
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: bc8be33ede80070b8e9928e01d07b6066f1c887c
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114331"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70113579"
 ---
 # <a name="create-a-web-app-with-continuous-deployment-from-github"></a>Webalkalmazás létrehozása a GitHubról történő folyamatos üzembe helyezéssel
 
-Ez a példaszkript egy webalkalmazást hoz létre az App Service-ben a kapcsolódó erőforrásokkal együtt, majd beállítja a folyamatos üzembe helyezést a GitHub-adattárból. A folyamatos üzembe helyezés nélküli GitHubos üzembe helyezésről lásd: [Webalkalmazás létrehozása és kód üzembe helyezése a GitHubról](powershell-deploy-github.md).
+Ez a minta parancsfájl egy webalkalmazást hoz létre App Service a kapcsolódó erőforrásokkal együtt, majd beállítja a [folyamatos üzembe helyezést](../deploy-continuous-deployment.md) egy GitHub-tárházból. A folyamatos üzembe helyezés nélküli GitHubos üzembe helyezésről lásd: [Webalkalmazás létrehozása és kód üzembe helyezése a GitHubról](powershell-deploy-github.md).
 
 Szükség esetén telepítse az Azure PowerShellt az [Azure PowerShell útmutatójának](/powershell/azure/overview) utasításait követve, majd a `Connect-AzAccount` futtatásával hozza létre a kapcsolatot az Azure-ral. Emellett győződjön meg a következőkről is:
 
-- Ki lett építve kapcsolat az Azure-ral az `az login` parancs használatával.
-- Az alkalmazás kódja egy, az Ön tulajdonában álló nyilvános vagy privát GitHub-adattárban található.
-- [Létrehozott egy hozzáférési jogkivonatot a GitHub-fiókjában](https://help.github.com/articles/creating-an-access-token-for-command-line-use/).
+- Az alkalmazás kódja egy, az Ön tulajdonában álló nyilvános vagy privát GitHub-adattárban található. Az automatikus buildek beszerzéséhez strukturálja a tárházat az [adattár előkészítése](../deploy-continuous-deployment.md#prepare-your-repository) táblázat alapján.
+- [Létrehozott egy személyes hozzáférési jogkivonatot a GitHub-fiókjában](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line).
 
 ## <a name="sample-script"></a>Példaszkript
 

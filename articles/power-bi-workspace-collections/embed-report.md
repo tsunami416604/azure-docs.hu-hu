@@ -2,18 +2,18 @@
 title: Az Azure Power BI-Munkaterületcsoportok-jelentés beágyazása |} A Microsoft Docs
 description: Ismerje meg, hogyan ágyazhat be egy jelentést, amely a Power BI munkaterületi gyűjtemények az alkalmazásba.
 services: power-bi-workspace-collections
-ms.service: power-bi-workspace-collections
-author: markingmyname
-ms.author: maghan
+ms.service: power-bi-embedded
+author: rkarlin
+ms.author: rkarlin
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.openlocfilehash: bdfaaf3ecd5beb7cea56f017006921a86ecfb3f6
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 4e125e57c290688d5a65f6d70143100cbd3462cb
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58519258"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67669043"
 ---
 # <a name="embed-a-report-in-power-bi-workspace-collections"></a>Jelentés beágyazása Power BI munkaterületi gyűjteményekkel
 

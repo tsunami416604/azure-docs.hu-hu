@@ -1,41 +1,44 @@
 ---
-title: Licencelési útmutató – Azure Active Directory B2B-együttműködés |} A Microsoft Docs
-description: A fizetős Azure AD-licenceket az Azure Active Directory B2B együttműködés nem igényel, de Ön is is első díjkötelessé B2B vendégfelhasználó
+title: B2B együttműködés licencelési útmutatója – Azure Active Directory | Microsoft Docs
+description: Azure Active Directory B2B-együttműködéshez nincs szükség fizetős Azure AD-licencekre, de fizetős szolgáltatásokat is kaphat a B2B vendég felhasználói számára
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 10/04/2018
+ms.date: 08/29/2019
 ms.author: mimart
 author: msmimart
-manager: daveba
+manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7fa01a6bf522061e54e9622cb9201f81c699a8ec
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 5968536d0bd0fbe2496fd9bf5fca86c7a1c4053d
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56668452"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70162266"
 ---
 # <a name="azure-active-directory-b2b-collaboration-licensing-guidance"></a>Útmutató az Azure Active Directory vállalatközi együttműködés licenceléséhez
 
-Az Azure Active Directory (Azure AD) vállalatközi (B2B) együttműködés, meghívhatja a külső felhasználókat (vagy a "vendég felhasználók") használja a fizetős Azure AD-szolgáltatások. Az egyes fizetős Azure AD-licencre, amely rendel egy felhasználóhoz, meghívhatja a legfeljebb 5 vendégfelhasználót a külső felhasználó támogatás alapján.
+A Azure Active Directory (Azure AD) vállalatok közötti (B2B) együttműködéssel külső felhasználókat (vagy "vendég felhasználókat") hívhat meg a fizetős Azure AD-szolgáltatások használatára. Egyes funkciók ingyenesek, de a fizetős Azure AD-funkciók esetében akár öt vendég felhasználó is meghívható minden olyan Azure AD-licenccel, amelyet egy alkalmazott vagy egy nem vendég felhasználó a bérlőn belül használ.
 
-B2B-vendégként felhasználói licencelés automatikusan kiszámítása és jelentett 1:5 arány alapján. Jelenleg nem lehet megadni a B2B vendégfelhasználókat közvetlenül a Vendég felhasználói licenceket.
+> [!NOTE]
+> Az Azure AD díjszabásával és a B2B csoportmunka-szolgáltatásokkal kapcsolatos részletekért tekintse meg [Azure Active Directory díjszabását](https://azure.microsoft.com/pricing/details/active-directory/) .
 
-Emellett a felhasználók használhatják a Vendég ingyenes további licencelési követelmény az Azure AD-funkciók. Vendég felhasználók férhetnek hozzá az Azure AD-funkciók ingyenes, még akkor is, ha nincsenek a fizetős Azure AD-licenceket. 
+A VÁLLALATKÖZI vendég felhasználói licencelését a rendszer a 1:5 arány alapján automatikusan kiszámítja és jelenteni kívánja. Jelenleg nem lehetséges VÁLLALATKÖZI vendég felhasználói licenceket közvetlenül a vendég felhasználóihoz rendelni.
 
-## <a name="examples-calculating-guest-user-licenses"></a>Példák: Kiszámítása a Vendég felhasználói licencek
-Miután határozhatja meg, hány vendég felhasználók szeretne hozzáférni a fizetős Azure AD szolgáltatásokba, ellenőrizze, hogy elég fizetett Azure AD-licenc szükséges 1:5 arányú vendégfelhasználóknak. Néhány példa:
+Emellett a vendég felhasználók ingyenes Azure AD-funkciókat is használhatnak további licencelési követelmények nélkül. A vendég felhasználók akkor is hozzáférhetnek az ingyenes Azure AD-funkciókhoz, ha nem rendelkezik fizetős Azure AD-licenccel. 
 
-- Az Azure AD-alkalmazások vagy szolgáltatások 100 vendégfelhasználók meghívása szeretne, és a hozzáférés-kezelés és üzembe helyezés minden vendégfelhasználó hozzárendelni kívánt. Emellett szeretné 50 vendég felhasználók többtényezős hitelesítés és a feltételes hozzáférés szükséges. Ez a kombináció fedezésére 10 alapszintű Azure AD-licenceket, és 10 Azure AD Premium P1-licenc lesz szüksége. Ha a vendég felhasználók az Identity Protection funkcióinak használatát tervezi, szüksége lesz egy-egy 1:5 vendégfelhasználóknak az Azure AD Premium P2 licenccel.
-- Azt szeretné, 60 vendégfelhasználók, akik többtényezős hitelesítés, ezért rendelkeznie kell legalább 12 Azure AD Premium P1-licenceket. Az Azure AD Premium P1-licenc, amely lehetővé teszi a licencelési arány 1:5 alatt legfeljebb 50 vendégfelhasználók 10 alkalmazottal rendelkezik. 10 további vendégfelhasználóknak két további prémium P1 szintű licencek vásárlása kell.
+## <a name="examples-calculating-guest-user-licenses"></a>Példák: Vendég felhasználói licencek kiszámítása
+Miután meghatározta, hogy hány vendégnek kell hozzáférnie a fizetős Azure AD-szolgáltatásokhoz, győződjön meg arról, hogy elegendő Azure AD-licenccel rendelkezik a szükséges 1:5 arányban a vendég felhasználói számára. Néhány példa:
+
+- Az Azure AD-alkalmazásokhoz és-szolgáltatásokhoz 100 vendéget szeretne meghívni, és hozzáférést biztosít a hozzáférés-kezeléshez és a kiépítési feladataihoz. A vendég felhasználók 50 esetében az MFA és a feltételes hozzáférés megkövetelésére is szükség van, így ezeknek a szolgáltatásoknak 10 prémium szintű Azure AD P1 licencre van szükségük. Ha az Identity Protection funkcióit szeretné használni a vendég felhasználói számára, akkor a vendég felhasználói számára prémium szintű Azure AD P2-licenceket kell megadnia ugyanazon a 1:5-arányban.
+- Olyan 60 vendég felhasználókat szeretne meghívni, akik mindegyike MFA-t igényel, ezért legalább 12 prémium szintű Azure AD P1-licenccel kell rendelkeznie. 10 prémium szintű Azure AD P1 licenccel rendelkező alkalmazottja van, ami akár 50 vendég felhasználó számára is lehetővé tenné az 1:5 licencelési arányt. Két további prémium P1-licencet kell vásárolnia, hogy 10 további vendég felhasználót fedjen fel.
 
 ## <a name="next-steps"></a>További lépések
 
-Az alábbi forrásanyagokban talál az Azure AD B2B együttműködés:
+Tekintse meg az Azure AD B2B együttműködés alábbi forrásait:
 
-* [Az Azure Active Directory díjszabása](https://azure.microsoft.com/pricing/details/active-directory/)
+* [Díjszabás Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/)
 * [Mi az az Azure AD B2B együttműködés?](what-is-b2b.md)
 * [Azure Active Directory vállalatközi együttműködés – gyakori kérdések](faq.md)

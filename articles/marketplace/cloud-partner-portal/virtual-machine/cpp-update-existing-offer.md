@@ -1,25 +1,18 @@
 ---
-title: Egy meglévő virtuális Gépet kínál az Azure piactéren elérhető frissítés |} A Microsoft Docs
+title: Az Azure Marketplace egy meglévő Virtuálisgép-ajánlat frissítése
 description: Azt ismerteti, hogyan frissíthető egy meglévő Virtuálisgép-ajánlat az Azure Marketplace-en.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 08/27/2018
-ms.author: Ankit.Sud
-ms.openlocfilehash: 254215389d129874f7ac3fc855b26819d41a095c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: ansud
+ms.openlocfilehash: e6099caf949d93abf8c665f61cd9b91d545dd0f4
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57852474"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612542"
 ---
 # <a name="update-an-existing-vm-offer-on-azure-marketplace"></a>Az Azure Marketplace-en egy meglévő Virtuálisgép-ajánlat frissítése
 

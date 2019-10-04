@@ -9,11 +9,11 @@ ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
 ms.openlocfilehash: 67e4281b24a7489cf202d82bdddbe99992aac095
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59271679"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60256782"
 ---
 # <a name="advanced-features-of-azure-metrics-explorer"></a>Fejlett funkcióira Metrikaböngészőt Azure
 

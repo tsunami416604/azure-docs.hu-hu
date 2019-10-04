@@ -1,27 +1,20 @@
 ---
-title: Műveleti API beolvasása |} A Microsoft Docs
+title: Műveleti API beolvasása |} Az Azure Marketplace-en
 description: 'Olvassa be az ajánlat vagy lekérni egy adott művelet a megadott műveletazonosító: az összes műveletet.'
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: reference
 ms.date: 09/14/2018
-ms.author: pbutlerm
-ms.openlocfilehash: a7666ada6c4535010297415eac8b0bd9e5226d9e
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.author: pabutler
+ms.openlocfilehash: 1fbcc1d50dbc4488c4123be64e85de612233ccc3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51974467"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64935779"
 ---
-<a name="retrieve-operations"></a>Műveletek beolvasása
+<a name="retrieve-operations"></a>Műveletek lekérése
 ===================
 
 Olvassa be az ajánlat vagy lekérni egy adott művelet a megadott műveletazonosító: az összes műveletet. Az ügyfél lekérdezési paraméterek segítségével szűrheti a futó műveletek.
@@ -40,11 +33,11 @@ Olvassa be az ajánlat vagy lekérni egy adott művelet a megadott műveletazono
 
 |  **Name (Név)**          |      **Leírás**                                                                                           | **Adattípus** |
 |  ----------------  |     --------------------------------------------------------------------------------------------------------   |  -----------  |
-|  publisherId       |  Például a közzétevő azonosítója `Contoso`                                                                   |  Karakterlánc       |
-|  OfferId           |  Ajánlat azonosítója                                                                                              |  Karakterlánc       |
-|  operationId       |  GUID azonosítója, amely egyedileg azonosítja az ajánlatot a műveletet. Az operationId lehet beolvasni az API-val, és is adja vissza minden olyan hosszú ideig futó művelet esetén a válasz HTTP-fejléchez például a [közzététel ajánlat](./cloud-partner-portal-api-publish-offer.md) API-t.  |   GUID   |
-|  filteredStatus    | Szűrés állapot szerint használt opcionális lekérdezési paraméter (például `running`) az API által visszaadott a gyűjteményen.  |   Karakterlánc |
-|  API-verzió       | API legújabb verziója                                                                                           |    Dátum      |
+|  publisherId       |  Például a közzétevő azonosítója `Contoso`                                                                   |  String       |
+|  offerId           |  Ajánlat azonosítója                                                                                              |  String       |
+|  operationId       |  GUID azonosítója, amely egyedileg azonosítja az ajánlatot a műveletet. Az operationId lehet beolvasni az API-val, és is adja vissza minden olyan hosszú ideig futó művelet esetén a válasz HTTP-fejléchez például a [közzététel ajánlat](./cloud-partner-portal-api-publish-offer.md) API-t.  |   Guid   |
+|  filteredStatus    | Szűrés állapot szerint használt opcionális lekérdezési paraméter (például `running`) az API által visszaadott a gyűjteményen.  |   String |
+|  api-version       | API legújabb verziója                                                                                           |    Dátum      |
 |  |  |  |
 
 

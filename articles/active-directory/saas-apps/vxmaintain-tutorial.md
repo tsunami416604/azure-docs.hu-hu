@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: c034e12c372e0514fa6cbb1f35af48cbdb4bf865
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 642af77d62b88d2e22748c55b901a31bbc0db9b9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59278445"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67087328"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vxmaintain"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező vxMaintain
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a vxMaintain konfigurálásához hozzá kell vxMaintai
 
 **VxMaintain hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

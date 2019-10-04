@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
 ms.openlocfilehash: 48412b3006a462fcc9c77219f42fb41d08f2df61
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59490739"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60622548"
 ---
 # <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Egy egyéni rendszerkép-előállító létrehozása az Azure DevTest Labs szolgáltatásban
 Ez a cikk ismerteti az adatmegőrzési beállítás, az előállító karbantartása és régi lemezképek kivonása az összes a többi DevTest Labs szolgáltatásban a szervezet. 
@@ -66,7 +66,7 @@ Most, hogy végrehajtotta a builddefiníció, várólista, győződjön meg arr�
 
 
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 Most már egy futó lemezkép-előállítót, amely hoz létre, és a tesztkörnyezetek igény szerinti egyéni lemezképek terjesztése. Ez a pont, annak megfelelően beállítva, a képek első annyit és a cél labs azonosítása. Az előző cikkben említettek szerint a **Labs.json** fájlt a **konfigurációs** mappát adja meg, melyik lemezképeket elérhetővé kell tenni az egyes, a cél labs. További DevTest Labs termelhessen szervezete számára, ahogy egyszerűen adjon hozzá egy bejegyzést a Labs.json a új labor a kell.
 
 Új lemezkép hozzáadása a gyári egyben egyszerű. Ha szeretne felvenni egy új rendszerképet, nyissa meg az előállító a [az Azure portal](https://portal.azure.com), keresse meg a DevTest Labs gyári, válassza ki a virtuális gép hozzáadása gombra, és válassza ki a kívánt Piactéri lemezképet és az összetevők. Kiválasztása helyett a **létrehozás** gombra, jelölje be az új virtuális gép **megtekintése az Azure Resource Manager-sablon**", és mentheti a sablont egy .JSON kiterjesztésű fájlt valahol a **GoldenImages** mappát a tárházban. A kép factory a következő futtatásakor hoz létre az egyéni rendszerkép.

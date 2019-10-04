@@ -5,21 +5,26 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 12/17/2018
+ms.date: 06/25/2019
 ms.author: mimart
 author: msmimart
-manager: daveba
+manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d61f233b2eb901bcf1e6b5b4ff147893f918e8f
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 735c3db14963c1f3cfe700a97dee9fedb70e29f5
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58293311"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441111"
 ---
-# <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Adja hozzá a Google B2B vendégfelhasználó Identitásszolgáltatóként
+# <a name="add-google-as-an-identity-provider-for-b2b-guest-users-preview"></a>Adja hozzá a Google Identitásszolgáltatóként B2B vendégfelhasználó (előzetes verzió)
+
+|     |
+| --- |
+| Google összevonási az Azure Active Directory nyilvános előzetes verziójú funkció. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
+|     |
 
 A Google összevonási beállításával engedélyezheti a meghívott felhasználók jelentkezhetnek be a megosztott alkalmazások és erőforrások a saját Google-fiókok esetében a Microsoft Accounts (msa-k) vagy az Azure AD-fiókok létrehozása nélkül.  
 > [!NOTE]
@@ -34,7 +39,7 @@ Ha a Vendég felhasználó egy "túl hosszú fejléc" hibát látja, próbálkoz
 
 ![Képernyőfelvétel: a Google bejelentkezési oldalán](media/google-federation/google-sign-in.png)
 
-## <a name="step-1-configure-a-google-developer-project"></a>1. lépés: Egy Google developer-projekt konfigurálása
+## <a name="step-1-configure-a-google-developer-project"></a>1\. lépés: Egy Google developer-projekt konfigurálása
 Először hozzon létre egy új projektet a Google fejlesztői konzolon a ügyfél azonosítója és a egy ügyfélkulcsot, amely a későbbiekben is hozzáadhat az Azure AD. 
 1. Nyissa meg a Google API-k, https://console.developers.google.com, és jelentkezzen be a Google-fiókját. Azt javasoljuk, hogy használja-e egy megosztott csapat Google-fiók.
 2. Új projekt létrehozása: Az irányítópulton, válassza ki a **projekt létrehozása**, majd válassza ki **létrehozás**. Az új projekt lapon adjon meg egy **projektnév**, majd válassza ki **létrehozása**.
@@ -72,7 +77,7 @@ Először hozzon létre egy új projektet a Google fejlesztői konzolon a ügyf�
 
    ![Képernyőfelvétel: az OAuth-ügyfél-Azonosítót és a titkos kulcs](media/google-federation/google-auth-client-id-secret.png)
 
-## <a name="step-2-configure-google-federation-in-azure-ad"></a>2. lépés: Google-összevonás konfigurálása az Azure ad-ben 
+## <a name="step-2-configure-google-federation-in-azure-ad"></a>2\. lépés: Google-összevonás konfigurálása az Azure ad-ben 
 Most, értékre állítjuk a Google-ügyfél-Azonosítót és a titkos kulcsot, az Azure AD portálon megadásával vagy a PowerShell használatával. Győződjön meg arról, Gmail-címet használó és a kísérlet beváltani a meghívót a meghívott Google-fiókkal való meghívása saját maga által a Google-összevonási konfiguráció tesztelése. 
 
 #### <a name="to-configure-google-federation-in-the-azure-ad-portal"></a>A Google-összevonás konfigurálása az Azure AD portálon 
@@ -87,7 +92,7 @@ Most, értékre állítjuk a Google-ügyfél-Azonosítót és a titkos kulcsot, 
 1. Telepítse a legújabb verziót az Azure AD PowerShell modul a Graph ([AzureADPreview](https://www.powershellgallery.com/packages/AzureADPreview)).
 2. Futtassa a következő parancsot: `Connect-AzureAD`.
 3. A bejelentkezési parancssorba jelentkezzen be a felügyelt globális rendszergazdai fiókkal.  
-4. Futtassa az alábbi parancsot: 
+4. Futtassa a következő parancsot: 
    
    `New-AzureADMSIdentityProvider -Type Google -Name Google -ClientId [Client ID] -ClientSecret [Client secret]`
  
@@ -101,7 +106,7 @@ A Google-összevonási telepítés törölheti. Ha így tesz, Google vendég fel
 1. Nyissa meg az [Azure Portal](https://portal.azure.com). A bal oldali panelen válassza az **Azure Active Directory** lehetőséget. 
 2. Válassza ki **szervezeti kapcsolatok**.
 3. Válassza ki **Identitásszolgáltatók**.
-4. Az a **Google** . sor, válassza ki a helyi menüt (**...** ), majd **törlése**. 
+4. Az a **Google** . sor, válassza ki a helyi menüt ( **...** ), majd **törlése**. 
    
    ![Képernyőkép a törlési lehetőséget a közösségi identitásszolgáltató](media/google-federation/google-social-identity-providers.png)
 

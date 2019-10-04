@@ -5,22 +5,22 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 12/19/2018
+ms.date: 04/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f13dd1282a6384a0acca4c6936fe7900a051795f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 190394481f17310784f87c9e2f642eeea0b2597f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58896023"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67062233"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Csatlakozás helyszíni adatforrásokhoz a helyszíni adatátjáróval
 A helyszíni adatátjáró a helyszíni adatforrások és a felhőben az Azure Analysis Services-kiszolgálók közötti biztonságos adatátvitelt biztosít. Mellett használata több Azure Analysis Services-kiszolgáló ugyanabban a régióban, az átjáró legújabb verzióját is használható az Azure Logic Apps, a Power bi-ban, a Power Apps és a Microsoft Flow. Egyetlen átjáró ugyanabban az előfizetésben és azonos régióban több szolgáltatást is társíthat. 
 
 A telepítő az átjáró első először az egy négyrészes folyamat:
 
-- **Töltse le és futtassa a telepítőt** – Ez a lépés telepíti egy átjárószolgáltatás a szervezet egyik számítógépén. Is jelentkezik be egy olyan fiókkal, az Azure-bA a [bérlő](/previous-versions/azure/azure-services/jj573650(v=azure.100)#BKMK_WhatIsAnAzureADTenant) Azure ad-ben. Az Azure B2B (vendég) fiókok nem támogatottak.
+- **Töltse le és futtassa a telepítőt** – Ez a lépés telepíti egy átjárószolgáltatás a szervezet egyik számítógépén. Is jelentkezik be egy olyan fiókkal, az Azure-bA a [bérlő](/previous-versions/azure/azure-services/jj573650(v=azure.100)#what-is-an-azure-ad-tenant) Azure ad-ben. Az Azure B2B (vendég) fiókok nem támogatottak.
 
 - **Az átjáró regisztrálásához** – ebben a lépésben megad egy nevet és a helyreállítási kulcsra az átjáró, és válassza ki a régiót, regisztrálja az átjárót az átjáró Felhőszolgáltatása. Az átjáró-erőforrás regisztrálni lehet bármelyik régióban, de javasoljuk, hogy azt az Analysis Services-kiszolgáló ugyanabban a régióban kell. 
 
@@ -176,30 +176,9 @@ Naplófájlok fontos tényezőként hibaelhárítása során.
 
 `C:\Users\<username>\AppData\Local\Microsoft\On-premises data gateway\GatewayConfigurator.log`
 
-
 #### <a name="event-logs"></a>Eseménynaplók
 
 Az adatkezelési átjáró, a PowerBIGateway naplókat alatt található **alkalmazás- és szolgáltatásnaplók**.
-
-
-## <a name="telemetry"></a>Telemetria
-Telemetria használható figyeléséhez és hibaelhárításához. Alapértelmezés szerint
-
-**Telemetria bekapcsolása**
-
-1.  Ellenőrizze a On-premises data gateway ügyfélkönyvtár azon a számítógépen. Jellemzően a **%systemdrive%\Program Files\On-premises data gateway**. Vagy nyissa meg a szolgáltatások konzolt, és ellenőrizze a végrehajtható fájl elérési útja: A helyszíni adatátjáró szolgáltatás tulajdonsága.
-2.  Az ügyfél címtárból Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config fájl. Módosítsa a SendTelemetry beállítást igaz értékre.
-        
-    ```
-        <setting name="SendTelemetry" serializeAs="String">
-                    <value>true</value>
-        </setting>
-    ```
-
-3.  A módosítások mentéséhez és a Windows-szolgáltatást: A helyszíni adatátjáró szolgáltatás.
-
-
-
 
 ## <a name="next-steps"></a>További lépések
 * [Telepítse és konfigurálja a helyszíni adatátjáró](analysis-services-gateway-install.md).   

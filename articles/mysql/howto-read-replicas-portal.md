@@ -1,21 +1,21 @@
 ---
 title: Létrehozása és kezelése olvasható replikák az Azure Database for MySQL-hez
-description: Ez a cikk ismerteti, hogyan beállítása és kezelése olvasható replikák az Azure Database for MySQL-hez a portálon.
+description: Ez a cikk bemutatja, hogyan állíthatja be és kezelheti az olvasási replikákat a Azure Database for MySQL a portál használatával.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/26/2019
-ms.openlocfilehash: 52f192a179c02e63c394401cce82b51fbe96e92d
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.date: 09/04/2019
+ms.openlocfilehash: 275c7bc8127855712c191141ef681526da7c377b
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887267"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309498"
 ---
-# <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-portal"></a>Létrehozása és kezelése olvasható replikák az Azure Database MySQL-hez az Azure portal használatával
+# <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-portal"></a>Olvasási replikák létrehozása és kezelése a Azure Database for MySQL a Azure Portal használatával
 
-Ebben a cikkben, megtudhatja, hogyan hozhat létre és kezelhet olvasható replikák az Azure Database for MySQL-szolgáltatás az Azure portal használatával a fő Azure ugyanazon a régión belül. A szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
+Ebből a cikkből megtudhatja, hogyan hozhat létre és kezelhet olvasási replikákat a Azure Database for MySQL szolgáltatásban a Azure Portal használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -26,106 +26,115 @@ Ebben a cikkben, megtudhatja, hogyan hozhat létre és kezelhet olvasható repli
 
 ## <a name="create-a-read-replica"></a>Hozzon létre egy olvasható replika
 
-Olvasási kiszolgálót az alábbi lépésekkel hozhatók létre:
+Az olvasási replika kiszolgáló a következő lépések segítségével hozható létre:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-2. Válassza ki a meglévő Azure Database for MySQL-kiszolgálót, egy fő használni kívánt. Ez a művelet megnyitja a **áttekintése** lapot.
+2. Válassza ki a meglévő Azure Database for MySQL kiszolgálót, amelyet főkiszolgálóként kíván használni. Ez a művelet megnyitja a **áttekintése** lapot.
 
-3. Válassza ki **replikációs** a menüben a **beállítások**.
+3. Válassza a **replikálás** lehetőséget a menü **Beállítások**területén.
 
-4. Válassza ki **replika hozzáadása**.
+4. Válassza a **replika hozzáadása**lehetőséget.
 
-   ![Azure Database for MySQL - replikáció](./media/howto-read-replica-portal/add-replica.png)
+   ![Azure Database for MySQL – replikálás](./media/howto-read-replica-portal/add-replica.png)
 
-5. Adja meg az adatbázisreplika-kiszolgáló nevét, és kattintson a **OK** , a replika létrehozásának megerősítése.
+5. Adja meg a replika kiszolgáló nevét.
 
-   ![Azure Database for MySQL – a replika létrehozásához](./media/howto-read-replica-portal/create-replica.png)
+    ![Azure Database for MySQL – replika neve](./media/howto-read-replica-portal/replica-name.png)
+
+6. Válassza ki a replika-kiszolgáló helyét. Az alapértelmezett hely megegyezik a főkiszolgálóval.
+
+    ![Azure Database for MySQL – replika helye](./media/howto-read-replica-portal/replica-location.png)
+
+   > [!NOTE]
+   > Ha többet szeretne megtudni arról, hogy mely régiókban hozhat létre replikát, látogasson el a [replika áttekintése című cikkben](concepts-read-replicas.md). 
+
+7. A replika létrehozásának jóváhagyásához kattintson **az OK gombra** .
 
 > [!NOTE]
 > A kiszolgáló konfigurációval megegyező a fő olvasható replikák jönnek létre. A másodpéldány konfigurációjának a létrehozása után módosítható. Javasoljuk, hogy az adatbázisreplika-kiszolgáló konfigurációs kell tárolni annak érdekében, hogy a replika nem tudják tartani a főkiszolgálóval a főkiszolgáló-nál nagyobb vagy egyenlő értéken.
 
-Az adatbázisreplika-kiszolgáló létrehozása után azt tekintheti meg a **replikációs** panelen.
+A replika-kiszolgáló létrehozása után a **replikáció** panelről is megtekinthető.
 
-   ![Azure Database for MySQL - lista replikák](./media/howto-read-replica-portal/list-replica.png)
+   ![Azure Database for MySQL – replikák listázása](./media/howto-read-replica-portal/list-replica.png)
 
 ## <a name="stop-replication-to-a-replica-server"></a>Az adatbázisreplika-kiszolgáló replikáció leállítása
 
 > [!IMPORTANT]
 > A kiszolgáló replikációjának leállítása nem vonható vissza. Ha a replikáció leállt, a master és a replika között, nem lehet visszavonni. Az adatbázisreplika-kiszolgáló ezután lesz egy önálló kiszolgáló, és már támogatja az olvasási és írási műveletek. Ez a kiszolgáló nem hajtható végre egy replika be újra.
 
-A fő- és az Azure Portalról replikakiszolgáló közötti replikáció megszüntetéséhez használja az alábbi lépéseket:
+Ha le szeretné állítani a replikációt egy fő és egy replika kiszolgáló között a Azure Portalból, kövesse az alábbi lépéseket:
 
-1. Az Azure Portalon válassza ki a fő, Azure Database for MySQL-kiszolgálóhoz. 
+1. A Azure Portal válassza ki a fő Azure Database for MySQL kiszolgálót. 
 
-2. Válassza ki **replikációs** a menüben a **beállítások**.
+2. Válassza a **replikálás** lehetőséget a menü **Beállítások**területén.
 
-3. Jelölje be szeretné állítani a replikáció az adatbázisreplika-kiszolgálón.
+3. Válassza ki azt a másodpéldány-kiszolgálót, amelyen le szeretné állítani a replikálást.
 
-   ![Azure Database for MySQL - kiszolgáló leállítása replikációs kiválasztása](./media/howto-read-replica-portal/stop-replication-select.png)
+   ![Azure Database for MySQL – replikálás leállítása kiszolgáló kiválasztása](./media/howto-read-replica-portal/stop-replication-select.png)
 
-4. Válassza ki **replikáció leállítása**.
+4. Válassza a **replikálás leállítása**lehetőséget.
 
-   ![Azure Database for MySQL - replikáció leállítása](./media/howto-read-replica-portal/stop-replication.png)
+   ![Azure Database for MySQL – replikálás leállítása](./media/howto-read-replica-portal/stop-replication.png)
 
-5. Ellenőrizze, hogy meg szeretné szüntetni a replikációs kattintva **OK**.
+5. Az **OK**gombra kattintva erősítse meg, hogy le kívánja állítani a replikálást.
 
-   ![Azure Database for MySQL - replikáció leállítása megerősítése](./media/howto-read-replica-portal/stop-replication-confirm.png)
+   ![Azure Database for MySQL – replikálás leállítása – megerősítés](./media/howto-read-replica-portal/stop-replication-confirm.png)
 
 ## <a name="delete-a-replica-server"></a>Adatbázisreplika-kiszolgáló törlése
 
-Az Azure Portalról egy olvasási adatbázisreplika-kiszolgáló törléséhez használja a következő lépéseket:
+Ha törölni szeretne egy olvasási replika kiszolgálót a Azure Portalről, kövesse az alábbi lépéseket:
 
-1. Az Azure Portalon válassza ki a fő, Azure Database for MySQL-kiszolgálóhoz.
+1. A Azure Portal válassza ki a fő Azure Database for MySQL kiszolgálót.
 
-2. Válassza ki **replikációs** a menüben a **beállítások**.
+2. Válassza a **replikálás** lehetőséget a menü **Beállítások**területén.
 
-3. Válassza ki, hogy törölni kívánja az adatbázisreplika-kiszolgálón.
+3. Válassza ki a törölni kívánt replika-kiszolgálót.
 
-   ![Azure Database for MySQL - replika válassza kiszolgáló törlése](./media/howto-read-replica-portal/delete-replica-select.png)
+   ![Azure Database for MySQL – replika törlése kiszolgáló kiválasztása](./media/howto-read-replica-portal/delete-replica-select.png)
 
-4. Válassza ki **tárolt replika törlése**
+4. **Replika törlésének** kiválasztása
 
-   ![Azure Database for MySQL - tárolt replika törlése](./media/howto-read-replica-portal/delete-replica.png)
+   ![Azure Database for MySQL – replika törlése](./media/howto-read-replica-portal/delete-replica.png)
 
-5. Adja meg a replikát, majd kattintson a **törlése** a replika törlésének megerősítéséhez.  
+5. Írja be a replika nevét, és kattintson a **Törlés** gombra a replika törlésének megerősítéséhez.  
 
-   ![Azure Database for MySQL - tárolt replika törlése megerősítése](./media/howto-read-replica-portal/delete-replica-confirm.png)
+   ![Azure Database for MySQL – replika törlése – megerősítés](./media/howto-read-replica-portal/delete-replica-confirm.png)
 
 ## <a name="delete-a-master-server"></a>Egy fölérendelt kiszolgáló törlése
 
 > [!IMPORTANT]
 > Egy fölérendelt kiszolgáló törlése az összes replika kiszolgálók replikálását, és törli magát a főkiszolgáló. Replikakiszolgáló önálló kiszolgálók által mostantól támogatják az olvasási és írási műveletek válnak.
 
-Az Azure Portalról egy fölérendelt kiszolgáló törléséhez használja a következő lépéseket:
+A főkiszolgáló a Azure Portalból való törléséhez kövesse az alábbi lépéseket:
 
-1. Az Azure Portalon válassza ki a fő, Azure Database for MySQL-kiszolgálóhoz.
+1. A Azure Portal válassza ki a fő Azure Database for MySQL kiszolgálót.
 
-2. Az a **áttekintése**válassza **törlése**.
+2. Az **Áttekintés**területen válassza a **Törlés**lehetőséget.
 
-   ![Azure Database for MySQL - főkiszolgáló Delete](./media/howto-read-replica-portal/delete-master-overview.png)
+   ![Azure Database for MySQL – főkiszolgáló törlése](./media/howto-read-replica-portal/delete-master-overview.png)
 
-3. Írja be a fölérendelt kiszolgáló nevét, és kattintson a **törlése** a fölérendelt kiszolgáló törlésének megerősítéséhez.  
+3. Írja be a főkiszolgáló nevét, és kattintson a **Törlés** gombra a főkiszolgáló törlésének megerősítéséhez.  
 
-   ![Azure Database for MySQL - főkiszolgáló Delete](./media/howto-read-replica-portal/delete-master-confirm.png)
+   ![Azure Database for MySQL – főkiszolgáló törlése](./media/howto-read-replica-portal/delete-master-confirm.png)
 
-## <a name="monitor-replication"></a>A figyelő replikáció
+## <a name="monitor-replication"></a>Replikáció figyelése
 
-1. Az a [az Azure portal](https://portal.azure.com/), válassza ki a replika Azure Database for MySQL-kiszolgáló figyelni kívánt.
+1. A [Azure Portal](https://portal.azure.com/)válassza ki a figyelni kívánt replikát Azure Database for MySQL-kiszolgálót.
 
-2. Alatt a **figyelés** oldalsávon válassza szakaszában **metrikák**:
+2. Az oldalsáv **figyelés** szakaszában válassza a **metrikák**elemet:
 
-3. Válassza ki **replikációs késés másodpercben** az elérhető mérőszámok a legördülő listából. 
+3. A rendelkezésre álló metrikák legördülő listájában válassza a **replikálás késése másodpercben** lehetőséget.
 
-   ![Válassza ki a replikációs késés](./media/howto-read-replica-portal/monitor-select-replication-lag.png)
+   ![Replikációs késés kiválasztása](./media/howto-read-replica-portal/monitor-select-replication-lag.png)
 
-4. Válassza ki a megtekinteni kívánt időtartományt. Az alábbi képen egy 30 perces időtartomány kijelölése.
+4. Válassza ki a megtekinteni kívánt időtartományt. Az alábbi képen egy 30 perces időtartomány van kiválasztva.
 
-   ![Időintervallum kiválasztása](./media/howto-read-replica-portal/monitor-replication-lag-time-range.png)
+   ![Időtartomány kiválasztása](./media/howto-read-replica-portal/monitor-replication-lag-time-range.png)
 
-5. Tekintse meg a replikációs késés a kijelölt időtartományban. Az alábbi képen megjeleníti az elmúlt 30 percben.
+5. A kijelölt időtartomány replikációs késésének megtekintése. Az alábbi képen az elmúlt 30 perc látható.
 
-   ![Időintervallum kiválasztása](./media/howto-read-replica-portal/monitor-replication-lag-time-range-thirty-mins.png)
+   ![Időtartomány kiválasztása](./media/howto-read-replica-portal/monitor-replication-lag-time-range-thirty-mins.png)
 
 ## <a name="next-steps"></a>További lépések
 

@@ -7,18 +7,21 @@
 - name: Gyors útmutatók
   expanded: true
   items:
-    - name: .NET
-      href: create-sql-api-dotnet.md
-    - name: .NET előzetes verzió
-      href: create-sql-api-dotnet-preview.md
-    - name: Java
-      href: create-sql-api-java.md
-    - name: Node.js
-      href: create-sql-api-nodejs.md
-    - name: Python
-      href: create-sql-api-python.md
-    - name: Xamarin
-      href: create-sql-api-xamarin-dotnet.md
+    - name: Cosmos DB-erőforrások létrehozása
+      expanded: true
+      items:
+        - name: Azure Portal
+          href: create-cosmosdb-resources-portal.md
+        - name: .NET-alkalmazás
+          href: create-sql-api-dotnet.md
+        - name: Java-alkalmazás
+          href: create-sql-api-java.md
+        - name: Node.js-alkalmazás
+          href: create-sql-api-nodejs.md
+        - name: Python-alkalmazás
+          href: create-sql-api-python.md
+        - name: Xamarin-alkalmazás
+          href: create-sql-api-xamarin-dotnet.md
 - name: Oktatóanyagok
   items:
     - name: 1 – Adatok létrehozása és kezelése
@@ -27,12 +30,6 @@
           items:
             - name: .NET
               href: sql-api-get-started.md
-            - name: .NET előzetes verzió
-              href: sql-api-dotnet-get-started-preview.md
-            - name: .NET Core
-              href: sql-api-dotnetcore-get-started.md
-            - name: .NET Core előzetes verzió
-              href: sql-api-dotnet-core-get-started-preview.md
             - name: Java
               href: sql-api-java-get-started.md
             - name: Async Java
@@ -43,8 +40,6 @@
           items:
             - name: .NET
               href: sql-api-dotnet-application.md
-            - name: .NET előzetes verzió
-              href: sql-api-dotnet-application-preview.md
             - name: Java
               href: sql-api-java-application.md
             - name: Node.js
@@ -56,7 +51,9 @@
       href: import-data.md
     - name: 3 – Adatok lekérdezése
       href: tutorial-query-sql-api.md
-    - name: 4 – Adatok globális elosztása
+    - name: 4 – Notebook létrehozása
+      href: create-notebook-visualize-data.md
+    - name: 5 – Adatok globális elosztása
       href: tutorial-global-distribution-sql-api.md
 - name: Példák
   items:
@@ -71,9 +68,11 @@
     - name: Python-példák
       href: sql-api-python-samples.md
     - name: PowerShell
-      href: powershell-samples.md
+      href: powershell-samples-sql.md
     - name: Azure CLI
       href: cli-samples.md
+    - name: Azure Resource Manager
+      href: resource-manager-samples.md
 - name: Alapelvek
   items:
     - name: Globális terjesztés
@@ -103,6 +102,8 @@
           href: global-dist-under-the-hood.md
         - name: Régiónkénti jelenlét
           href: regional-presence.md
+        - name: Tranzakcióalapú és elemzésalapú tárolás
+          href: globally-distributed-transactional-analytical-storage.md
     - name: Particionálás
       items:
         - name: Áttekintés
@@ -119,6 +120,299 @@
         - name: Átviteli sebesség kiosztása tárolókra és adatbázisokra
           displayName: 'request units, RUs, RU, limits, database throughput, shared throughput, container throughput'
           href: set-throughput.md
+    - name: SQL-lekérdezési referencia
+      items:
+        - name: Első lépések
+          displayName: 'sql query, query basics'
+          href: sql-query-getting-started.md
+        - name: Záradékok
+          items:
+            - name: SELECT
+              displayName: 'select, select clause'
+              href: sql-query-select.md
+            - name: FROM
+              displayName: 'from, from clause'
+              href: sql-query-from.md
+            - name: WHERE
+              displayName: 'where, where clause'
+              href: sql-query-where.md
+            - name: ORDER BY
+              displayName: 'order by, order by clause'
+              href: sql-query-order-by.md
+            - name: OFFSET LIMIT
+              displayName: offset limit
+              href: sql-query-offset-limit.md
+        - name: Segédlekérdezés
+          displayName: 'subquery, exists'
+          href: sql-query-subquery.md
+        - name: Illesztések
+          displayName: join
+          href: sql-query-join.md
+        - name: Aliasok használata
+          displayName: 'alias, aliasing'
+          href: sql-query-aliasing.md
+        - name: Tömbök és objektumok
+          displayName: 'object and array creation, object and array'
+          href: sql-query-object-array.md
+        - name: Kulcsszavak
+          displayName: 'keywords, distinct, between, in, top'
+          href: sql-query-keywords.md
+        - name: Operátorok
+          displayName: 'operators, operator, logical operators, equality, comparison'
+          href: sql-query-operators.md
+        - name: Skaláris kifejezések
+          displayName: 'scalar expressions, scalar'
+          href: sql-query-scalar-expressions.md
+        - name: Functions
+          items:
+            - name: Felhasználó által meghatározott függvények
+              displayName: 'functions, udf'
+              href: sql-query-udfs.md
+            - name: Összesítések
+              displayName: 'functions, aggregate, count, sum, min, minimum, max, maximum, avg, average'
+              href: sql-query-aggregates.md
+            - name: Rendszerfüggvények
+              items:
+                - name: Rendszerfüggvények
+                  displayName: 'functions, system functions, built-in functions'
+                  href: sql-query-system-functions.md
+                - name: Tömb függvények
+                  items:
+                    - name: Tömb függvények
+                      displayName: 'array functions, array, system functions, built-in functions'
+                      href: sql-query-array-functions.md
+                    - name: ARRAY_CONCAT
+                      displayName: 'ARRAY_CONCAT, array concat, array functions'
+                      href: sql-query-array-concat.md
+                    - name: ARRAY_CONTAINS
+                      displayName: 'ARRAY_CONTAINS, array contains, array functions'
+                      href: sql-query-array-contains.md
+                    - name: ARRAY_LENGTH
+                      displayName: 'ARRAY_LENGTH, array length, array functions'
+                      href: sql-query-array-length.md
+                    - name: ARRAY_SLICE
+                      displayName: 'ARRAY_SLICE, array slice, array functions'
+                      href: sql-query-array-slice.md
+                - name: Dátum és időpont függvényei
+                  items:
+                    - name: Dátum és időpont függvényei
+                      displayName: 'date and time functions, date and time, datetime, system functions, built-in functions'
+                      href: sql-query-date-time-functions.md
+                    - name: GetCurrentDateTime
+                      displayName: 'GetCurrentDateTime, get current date time, date and time functions, datetime'
+                      href: sql-query-getcurrentdatetime.md
+                    - name: GetCurrentTimestamp
+                      displayName: 'GetCurrentTimestamp, get current timestamp, timestamp, date and time functions, datetime'
+                      href: sql-query-getcurrenttimestamp.md
+                - name: Matematikai függvények
+                  items:
+                    - name: Matematikai függvények
+                      displayName: 'mathematical, mathematical functions, system functions, built-in functions'
+                      href: sql-query-mathematical-functions.md
+                    - name: ABS
+                      displayName: 'ABS, absolute value, built-in functions'
+                      href: sql-query-abs.md
+                    - name: ACOS
+                      displayName: 'ACOS, arccosine, built-in functions'
+                      href: sql-query-acos.md
+                    - name: ASIN
+                      displayName: 'ASIN, asine, built-in functions'
+                      href: sql-query-asin.md
+                    - name: ATAN
+                      displayName: 'ATAN, arctangent, built-in functions'
+                      href: sql-query-atan.md
+                    - name: ATN2
+                      displayName: 'ATN2, built-in functions'
+                      href: sql-query-atn2.md
+                    - name: CEILING
+                      displayName: 'CEILING, built-in functions'
+                      href: sql-query-ceiling.md
+                    - name: COS
+                      displayName: 'COS, cosine, built-in functions'
+                      href: sql-query-cos.md
+                    - name: COT
+                      displayName: 'COT, cotangent, built-in functions'
+                      href: sql-query-cot.md
+                    - name: DEGREES
+                      displayName: 'DEGREES, built-in functions'
+                      href: sql-query-degrees.md
+                    - name: EXP
+                      displayName: 'EXP, exponential value, built-in functions'
+                      href: sql-query-exp.md
+                    - name: FLOOR
+                      displayName: 'FLOOR, built-in functions'
+                      href: sql-query-floor.md
+                    - name: LOG
+                      displayName: 'LOG, logarithm, built-in functions'
+                      href: sql-query-log.md
+                    - name: LOG10
+                      displayName: 'LOG10, log base 10, built-in functions'
+                      href: sql-query-log10.md
+                    - name: PI
+                      displayName: 'PI, built-in functions'
+                      href: sql-query-pi.md
+                    - name: POWER
+                      displayName: 'POWER, exponent, built-in functions'
+                      href: sql-query-power.md
+                    - name: RADIANS
+                      displayName: 'RADIANS, built-in functions'
+                      href: sql-query-radians.md
+                    - name: RAND
+                      displayName: 'RAND, random, built-in functions'
+                      href: sql-query-rand.md
+                    - name: ROUND
+                      displayName: 'ROUND, built-in functions'
+                      href: sql-query-round.md
+                    - name: SIGN
+                      displayName: 'SIGN, built-in functions'
+                      href: sql-query-sign.md
+                    - name: SIN
+                      displayName: 'SIN, sine, built-in functions'
+                      href: sql-query-sin.md
+                    - name: SQRT
+                      displayName: 'SQRT, square root, built-in functions'
+                      href: sql-query-sqrt.md
+                    - name: SQUARE
+                      displayName: 'SQUARE, built-in functions'
+                      href: sql-query-square.md
+                    - name: TAN
+                      displayName: 'TAN, built-in functions'
+                      href: sql-query-tan.md
+                    - name: TRUNC
+                      displayName: 'TRUNC, truncate, built-in functions'
+                      href: sql-query-trunc.md
+                - name: Térbeli függvények
+                  items:
+                    - name: Térbeli függvények
+                      displayName: 'spatial functions, spatial, system functions, built-in functions'
+                      href: sql-query-spatial-functions.md
+                    - name: ST_DISTANCE
+                      displayName: 'ST_DISTANCE, st distance, distance, built-in functions'
+                      href: sql-query-st-distance.md
+                    - name: ST_WITHIN
+                      displayName: 'ST_WITHIN, st within, within, built-in functions'
+                      href: sql-query-st-within.md
+                    - name: ST_INTERSECTS
+                      displayName: 'ST_INTERSECTS, st intersects, intersects, built-in functions'
+                      href: sql-query-st-intersects.md
+                    - name: ST_ISVALID
+                      displayName: 'ST_ISVALID, st isvalid, is valid, built-in functions'
+                      href: sql-query-st-isvalid.md
+                    - name: ST_ISVALIDDETAILED
+                      displayName: 'ST_ISVALIDDETAILED, st isvaliddetailed, is valid detailed, built-in functions'
+                      href: sql-query-st-isvaliddetailed.md
+                - name: Sztringfüggvények
+                  items:
+                    - name: Sztringfüggvények
+                      displayName: 'string functions, string, system functions, built-in functions'
+                      href: sql-query-string-functions.md
+                    - name: CONCAT
+                      displayName: 'CONCAT, concatenate, built-in functions'
+                      href: sql-query-concat.md
+                    - name: CONTAINS
+                      displayName: 'CONTAINS, built-in functions'
+                      href: sql-query-contains.md
+                    - name: ENDSWITH
+                      displayName: 'ENDSWITH, built-in functions'
+                      href: sql-query-endswith.md
+                    - name: INDEX_OF
+                      displayName: 'INDEX_OF, index of, built-in functions'
+                      href: sql-query-index-of.md
+                    - name: LEFT
+                      displayName: 'LEFT, built-in functions'
+                      href: sql-query-left.md
+                    - name: LENGTH
+                      displayName: 'LENGTH, built-in functions'
+                      href: sql-query-length.md
+                    - name: LOWER
+                      displayName: 'LOWER, built-in functions'
+                      href: sql-query-lower.md
+                    - name: LTRIM
+                      displayName: 'LTRIM, left trim, built-in functions'
+                      href: sql-query-ltrim.md
+                    - name: REPLACE
+                      displayName: 'REPLACE, built-in functions'
+                      href: sql-query-replace.md
+                    - name: REPLIKÁLÁS
+                      displayName: 'REPLICATE, built-in functions'
+                      href: sql-query-replicate.md
+                    - name: REVERSE
+                      displayName: 'REVERSE, built-in functions'
+                      href: sql-query-reverse.md
+                    - name: RIGHT
+                      displayName: 'RIGHT, built-in functions'
+                      href: sql-query-right.md
+                    - name: RTRIM
+                      displayName: 'RTRIM, right trim, built-in functions'
+                      href: sql-query-rtrim.md
+                    - name: STARTSWITH
+                      displayName: 'STARTSWITH, starts with, built-in functions'
+                      href: sql-query-startswith.md
+                    - name: StringToArray
+                      displayName: 'StringToArray, string to array, built-in functions'
+                      href: sql-query-stringtoarray.md
+                    - name: StringToBoolean
+                      displayName: 'StringToBoolean, string to boolean, built-in functions'
+                      href: sql-query-stringtoboolean.md
+                    - name: StringToNull
+                      displayName: 'StringToNull, string to null, built-in functions'
+                      href: sql-query-stringtonull.md
+                    - name: StringToNumber
+                      displayName: 'StringToNumber, string to number, built-in functions'
+                      href: sql-query-stringtonumber.md
+                    - name: StringToObject
+                      displayName: 'StringToObject, string to object, built-in functions'
+                      href: sql-query-stringtoobject.md
+                    - name: SUBSTRING
+                      displayName: 'SUBSTRING, built-in functions'
+                      href: sql-query-substring.md
+                    - name: ToString
+                      displayName: 'ToString, to sting, built-in functions'
+                      href: sql-query-tostring.md
+                    - name: TRIM
+                      displayName: 'TRIM, built-in functions'
+                      href: sql-query-trim.md
+                    - name: UPPER
+                      displayName: 'UPPER, built-in functions'
+                      href: sql-query-upper.md
+                - name: Típusellenőrzési függvények
+                  items:
+                    - name: Típusellenőrzési függvények
+                      displayName: 'type checking functions, type checking, type, system functions, built-in functions'
+                      href: sql-query-type-checking-functions.md
+                    - name: IS_ARRAY
+                      displayName: 'IS_ARRAY, is array, built-in functions'
+                      href: sql-query-is-array.md
+                    - name: IS_BOOL
+                      displayName: 'IS_BOOL, IsBool, is bool, built-in functions'
+                      href: sql-query-is-bool.md
+                    - name: IS_DEFINED
+                      displayName: 'IS_DEFINED, IsDefined, is defined, built-in functions'
+                      href: sql-query-is-defined.md
+                    - name: IS_NULL
+                      displayName: 'IS_NULL, IsNull, is null, built-in functions'
+                      href: sql-query-is-null.md
+                    - name: IS_NUMBER
+                      displayName: 'IS_NUMBER, IsNumber, is number, built-in functions'
+                      href: sql-query-is-number.md
+                    - name: IS_OBJECT
+                      displayName: 'IS_OBJECT, IsObject, is object, built-in functions'
+                      href: sql-query-is-object.md
+                    - name: IS_PRIMITIVE
+                      displayName: 'IS_PRIMITIVE, IsPrimitive, is primitive, built-in functions'
+                      href: sql-query-is-primitive.md
+                    - name: IS_STRING
+                      displayName: 'IS_STRING, IsString, is string, built-in functions'
+                      href: sql-query-is-string.md
+        - name: Paraméteres lekérdezés
+          displayName: 'parameterized query, parameterized, parameter, parameters'
+          href: sql-query-parameterized-queries.md
+        - name: LINQ to SQL
+          displayName: 'linq, .NET'
+          href: sql-query-linq-to-sql.md
+        - name: SQL-lekérdezés végrehajtása
+          displayName: 'query performance, query execution'
+          href: sql-query-execution.md
     - name: Azure Cosmos-fiók használata
       href: account-overview.md
     - name: Tárolók és elemek
@@ -126,38 +420,23 @@
         - name: 'Adatbázisok, tárolók és elemek használata'
           displayName: 'collection, document'
           href: databases-containers-items.md
-        - name: SQL-nyelvi referencia
-          displayName: 'collection, document'
-          href: sql-api-query-reference.md
-        - name: Példák SQL-lekérdezésekre
-          displayName: 'collection, document, order by, where, top, value, aggregate, between, scalar, join, count, contains'
-          href: how-to-sql-query.md
         - name: Dokumentumadatok modellezése
           displayName: document
           href: modeling-data.md
         - name: Indexelés
           items:
             - name: Áttekintés
+              displayName: 'range, spatial'
               href: index-overview.md
-            - name: Indexszabályzat
+            - name: Indexelési szabályzatok
               displayName: 'consistent, none'
               href: index-policy.md
-            - name: Indextípusok
-              displayName: 'hash, range, spatial'
-              href: index-types.md
-            - name: Indexek elérési útjai
-              href: index-paths.md
-        - name: Csatorna módosítása
+        - name: Adattípusok
           items:
-            - name: Áttekintés
-              href: change-feed.md
-            - name: Változáscsatorna olvasása
-              href: read-change-feed.md
-            - name: Változáscsatorna feldolgozója
-              href: change-feed-processor.md
-            - name: Az Azure Functions aktiválása
-              displayName: change feed
-              href: change-feed-functions.md
+            - name: DateTime
+              href: working-with-dates.md
+            - name: Térinformatikai
+              href: geospatial.md
         - name: Élettartam
           displayName: 'delete, delete data, ttl'
           href: time-to-live.md
@@ -165,6 +444,32 @@
           href: unique-keys.md
         - name: Tranzakciók és optimista egyidejűség vezérlése
           href: database-transactions-optimistic-concurrency.md
+    - name: Csatorna módosítása
+      items:
+        - name: Áttekintés
+          href: change-feed.md
+        - name: Változáscsatorna olvasása
+          href: read-change-feed.md
+        - name: Változáscsatorna feldolgozója
+          href: change-feed-processor.md
+        - name: Az Azure Functions aktiválása
+          displayName: change feed
+          href: change-feed-functions.md
+    - name: Globálisan elosztott elemzés és mesterséges intelligencia
+      items:
+        - name: Bevezetés
+          displayName: 'Apache Spark, spark'
+          href: spark-api-introduction.md
+        - name: Elemzési használati esetek
+          href: analytics-usecases.md
+        - name: Elemzések – megoldásarchitektúrák
+          href: analytics-solution-architectures.md
+        - name: Lambda architektúra
+          href: lambda-architecture.md
+    - name: Beépített Jupyter-notebookok
+      items:
+        - name: A Jupyter-notebookok áttekintése
+          href: cosmosdb-jupyter-notebooks.md
     - name: Kiszolgálóoldali programozás
       items:
         - name: 'Tárolt eljárások, eseményindítók és felhasználói függvények'
@@ -207,123 +512,24 @@
           href: firewall-support.md
         - name: Hozzáférés virtuális hálózatokról
           href: vnet-service-endpoint.md
+        - name: Szerepköralapú hozzáférés-vezérlés
+          displayName: rbac
+          href: role-based-access-control.md
+        - href: cosmos-db-advanced-threat-protection.md
+          name: Speciális fenyegetésvédelem
+        - name: Beépített biztonsági vezérlők
+          href: cosmos-db-security-controls.md
     - name: Alkalmasság vállalati használatra
       items:
         - name: Online biztonsági mentés és igény szerinti helyreállítás
           href: online-backup-and-restore.md
         - name: Megfelelőség
           href: compliance.md
+    - name: Szolgáltatáskvóták
+      href: concepts-limits.md
 - name: 'Cassandra, MongoDB és egyéb API-k'
   expanded: true
   items:
-    - name: MongoDB-hez készült Azure Cosmos DB API
-      items:
-        - name: Bevezetés
-          href: mongodb-introduction.md
-        - name: Vonalprotokoll-támogatás
-          href: mongodb-feature-support.md
-        - name: Gyors útmutatók
-          items:
-            - name: .NET
-              href: create-mongodb-dotnet.md
-            - name: Java
-              href: create-mongodb-java.md
-            - name: Node.js
-              href: create-mongodb-nodejs.md
-            - name: Python
-              href: create-mongodb-flask.md
-            - name: Xamarin
-              href: create-mongodb-xamarin.md
-            - name: Golang
-              href: create-mongodb-golang.md
-        - name: Oktatóanyagok
-          items:
-            - name: 1 – Adatok létrehozása és kezelése
-              items:
-                - name: Node.js-konzolalkalmazás
-                  href: mongodb-samples.md
-                - name: A Node.js és az Angular alkalmazás
-                  items:
-                    - name: 1. rész – Bevezetés
-                      href: tutorial-develop-mongodb-nodejs.md
-                    - name: 2. rész – Csomópont-alkalmazás létrehozása
-                      href: tutorial-develop-mongodb-nodejs-part2.md
-                    - name: 3. rész – Felhasználói felület hozzáadása az Angularral
-                      href: tutorial-develop-mongodb-nodejs-part3.md
-                    - name: 4. rész – Fiók létrehozása
-                      href: tutorial-develop-mongodb-nodejs-part4.md
-                    - name: 5. rész – Csatlakozás Cosmos DB-hez
-                      href: tutorial-develop-mongodb-nodejs-part5.md
-                    - name: 6. rész – CRUD-műveletek végrehajtása
-                      href: tutorial-develop-mongodb-nodejs-part6.md
-                - name: A Node.js és a React alkalmazás
-                  href: tutorial-develop-mongodb-react.md
-            - name: 2 – Adatok migrálása
-              displayName: import
-              href: 'https://docs.microsoft.com/azure/dms/tutorial-mongodb-cosmos-db?toc=/azure/cosmos-db/toc.json'
-            - name: 3 – Adatok lekérdezése
-              href: tutorial-query-mongodb.md
-            - name: 4 – Adatok globális elosztása
-              href: tutorial-global-distribution-mongodb.md
-        - name: Útmutatók
-          items:
-            - name: A kapcsolati sztring lekérése
-              href: connect-mongodb-account.md
-            - name: Csatlakozás a Studio 3T használatával
-              href: mongodb-mongochef.md
-            - name: Csatlakozás a Robomongo használatával
-              href: mongodb-robomongo.md
-            - name: Csatlakozás a Mongoose használatával
-              href: mongodb-mongoose.md
-            - name: Az olvasások globális elosztása
-              displayName: read preference
-              href: mongodb-readpreference.md
-            - name: Élettartam – MongoDB
-              href: mongodb-time-to-live.md
-            - name: Adatindexelés felügyelete
-              href: mongodb-indexing.md
-            - name: A Spring Data tárolása és kezelése
-              href: /java/azure/spring-framework/configure-spring-data-mongodb-with-cosmos-db
-              maintainContext: true
-            - name: A MongoDB bővítmény parancsai
-              href: mongodb-custom-commands.md
-              displayName: custom commands
-    - name: Gremlin API
-      displayName: 'graph, graph database'
-      items:
-        - name: Bevezetés
-          href: graph-introduction.md
-        - name: Vonalprotokoll-támogatás
-          href: gremlin-support.md
-        - name: Gyors útmutatók
-          items:
-            - name: Gremlin-konzol
-              href: create-graph-gremlin-console.md
-            - name: .NET
-              href: create-graph-dotnet.md
-            - name: Java
-              href: create-graph-java.md
-            - name: Node.js
-              href: create-graph-nodejs.md
-            - name: Python
-              href: create-graph-python.md
-            - name: PHP
-              href: create-graph-php.md
-        - name: Oktatóanyagok
-          items:
-            - name: 1 – Adatok lekérdezése
-              href: tutorial-query-graph.md
-        - name: Útmutatók
-          items:
-            - name: Gráfadatok importálása
-              href: bulk-executor-graph-dotnet.md
-            - name: Gráfadatok particionálása
-              href: graph-partitioning.md
-            - name: Gremlin-lekérdezések optimalizálása
-              href: graph-execution-profile.md
-            - name: A Spring Data tárolása és kezelése
-              href: /java/azure/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db
-              maintainContext: true
     - name: Cassandra API
       items:
         - name: Bevezetés
@@ -378,6 +584,159 @@
                   href: cassandra-spark-aggregation-ops.md
                 - name: Táblaadatok másolása
                   href: cassandra-spark-table-copy-ops.md
+            - name: Kezelés Resource Manager-sablonokkal
+              href: manage-cassandra-with-resource-manager.md
+            - name: Kezelés a PowerShell-lel
+              href: powershell-samples-cassandra.md
+            - name: Kezelés az Azure CLI használatával
+              href: cli-samples-cassandra.md
+    - name: MongoDB API
+      items:
+        - name: Bevezetés
+          href: mongodb-introduction.md
+        - name: Vonalprotokoll-támogatás
+          href: mongodb-feature-support.md
+        - name: Gyors útmutatók
+          items:
+            - name: .NET
+              href: create-mongodb-dotnet.md
+            - name: Java
+              href: create-mongodb-java.md
+            - name: Node.js
+              href: create-mongodb-nodejs.md
+            - name: Python
+              href: create-mongodb-flask.md
+            - name: Xamarin
+              href: create-mongodb-xamarin.md
+            - name: Golang
+              href: create-mongodb-golang.md
+        - name: Oktatóanyagok
+          items:
+            - name: 1 – Adatok létrehozása és kezelése
+              items:
+                - name: Node.js-konzolalkalmazás
+                  href: mongodb-samples.md
+                - name: A Node.js és az Angular alkalmazás
+                  items:
+                    - name: 1. rész – Bevezetés
+                      href: tutorial-develop-mongodb-nodejs.md
+                    - name: 2. rész – Csomópont-alkalmazás létrehozása
+                      href: tutorial-develop-mongodb-nodejs-part2.md
+                    - name: 3. rész – Felhasználói felület hozzáadása az Angularral
+                      href: tutorial-develop-mongodb-nodejs-part3.md
+                    - name: 4. rész – Fiók létrehozása
+                      href: tutorial-develop-mongodb-nodejs-part4.md
+                    - name: 5. rész – Csatlakozás Cosmos DB-hez
+                      href: tutorial-develop-mongodb-nodejs-part5.md
+                    - name: 6. rész – CRUD-műveletek végrehajtása
+                      href: tutorial-develop-mongodb-nodejs-part6.md
+                - name: A Node.js és a React alkalmazás
+                  href: tutorial-develop-mongodb-react.md
+            - name: 2 – Adatok migrálása
+              displayName: import
+              href: /azure/dms/tutorial-mongodb-cosmos-db
+              maintainContext: true
+            - name: 3 – Adatok lekérdezése
+              href: tutorial-query-mongodb.md
+            - name: 4 – Adatok globális elosztása
+              href: tutorial-global-distribution-mongodb.md
+        - name: Útmutatók
+          items:
+            - name: Útmutató a migrálást megelőző folyamatokhoz
+              href: mongodb-pre-migration.md
+            - name: Útmutató a migrálást követő folyamatokhoz
+              href: mongodb-post-migration.md
+            - name: A kapcsolati sztring lekérése
+              href: connect-mongodb-account.md
+            - name: Csatlakozás a Studio 3T használatával
+              href: mongodb-mongochef.md
+            - name: Csatlakozás az Iránytű használatával
+              href: mongodb-compass.md
+            - name: Csatlakozás a Robo 3T használatával
+              href: mongodb-robomongo.md
+            - name: Csatlakozás a Mongoose használatával
+              href: mongodb-mongoose.md
+            - name: Az olvasások globális elosztása
+              displayName: read preference
+              href: mongodb-readpreference.md
+            - name: Élettartam – MongoDB
+              href: mongodb-time-to-live.md
+            - name: Adatindexelés felügyelete
+              href: mongodb-indexing.md
+            - name: A Spring Data tárolása és kezelése
+              href: /java/azure/spring-framework/configure-spring-data-mongodb-with-cosmos-db
+              maintainContext: true
+            - name: A MongoDB bővítmény parancsai
+              href: mongodb-custom-commands.md
+              displayName: custom commands
+            - name: Kezelés Resource Manager-sablonokkal
+              href: manage-mongodb-with-resource-manager.md
+            - name: Kezelés a PowerShell-lel
+              href: powershell-samples-mongodb.md
+            - name: Kezelés az Azure CLI használatával
+              href: cli-samples-mongodb.md
+            - name: Gyakori problémák megoldása
+              href: mongodb-troubleshoot.md
+    - name: Gremlin API
+      displayName: 'graph, graph database'
+      items:
+        - name: Bevezetés
+          href: graph-introduction.md
+        - name: Vonalprotokoll-támogatás
+          href: gremlin-support.md
+        - name: Gyors útmutatók
+          items:
+            - name: Gremlin-konzol
+              href: create-graph-gremlin-console.md
+            - name: .NET
+              href: create-graph-dotnet.md
+            - name: Java
+              href: create-graph-java.md
+            - name: Node.js
+              href: create-graph-nodejs.md
+            - name: Python
+              href: create-graph-python.md
+            - name: PHP
+              href: create-graph-php.md
+        - name: Oktatóanyagok
+          items:
+            - name: 1 – Adatok lekérdezése
+              href: tutorial-query-graph.md
+        - name: Referencia
+          items:
+            - name: Válaszfejlécek
+              href: gremlin-headers.md
+            - name: Korlátok
+              href: gremlin-limits.md
+            - name: Kompatibilitás
+              href: gremlin-compatibility.md
+        - name: Útmutatók
+          items:
+            - name: Gráfadatok modellezése
+              href: graph-modeling.md
+            - name: Gráfadatok particionálása
+              href: graph-partitioning.md
+            - name: Gráfadatok importálása
+              href: bulk-executor-graph-dotnet.md
+            - name: Gremlin-lekérdezések optimalizálása
+              href: graph-execution-profile.md
+            - name: Erőforrás-jogkivonatok használata
+              href: how-to-use-resource-tokens-gremlin.md
+            - name: Régiónkénti végpontok használata
+              href: how-to-use-regional-gremlin.md
+            - name: Hozzáférés a rendszerdokumentum tulajdonságaihoz
+              href: how-to-access-system-properties-gremlin.md
+            - name: Gráfadatok vizualizációja
+              href: graph-visualization.md
+            - name: A Spring Data tárolása és kezelése
+              href: /java/azure/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db
+              maintainContext: true
+            - name: Kezelés Resource Manager-sablonokkal
+              href: manage-gremlin-with-resource-manager.md
+            - name: Kezelés a PowerShell-lel
+              href: powershell-samples-gremlin.md
+            - name: Kezelés az Azure CLI használatával
+              href: cli-samples-gremlin.md
     - name: Tábla API
       items:
         - name: Bevezetés
@@ -420,13 +779,20 @@
             - name: Ruby
               href: table-storage-how-to-use-ruby.md
             - name: 'F#'
-              href: 'https://docs.microsoft.com/dotnet/articles/fsharp/using-fsharp-on-azure/table-storage'
+              href: /dotnet/articles/fsharp/using-fsharp-on-azure/table-storage
+              maintainContext: true
         - name: Útmutatók
           items:
             - name: Alkalmazások létrehozása Table API használatával
               href: table-support.md
             - name: Tervezési útmutató a Table Storage-hoz
               href: table-storage-design-guide.md
+            - name: Kezelés Resource Manager-sablonokkal
+              href: manage-table-with-resource-manager.md
+            - name: Kezelés a PowerShell-lel
+              href: powershell-samples-table.md
+            - name: Kezelés az Azure CLI használatával
+              href: cli-samples-table.md
         - name: Referencia
           items:
             - name: .NET
@@ -440,11 +806,25 @@
             - name: Python
               href: table-sdk-python.md
             - name: Table Storage REST API-k
-              href: /rest/api/storageservices/Table-Service-Concepts
+              href: /rest/api/storageservices/table-service-rest-api
+    - name: Etcd API
+      items:
+        - name: Bevezetés
+          href: etcd-api-introduction.md
+        - name: Azure Kubernetes az Azure Cosmos DB-vel
+          href: bootstrap-kubernetes-cluster.md
 - name: Útmutatók
   items:
-    - name: Azure Cosmos-fiók kezelése
+    - name: Azure Cosmos-fiók használata
       href: how-to-manage-database-account.md
+    - name: Azure Cosmos DB-erőforrások használata
+      items:
+        - name: A PowerShell használata
+          href: manage-with-powershell.md
+        - name: Az Azure parancssori felület használata
+          href: manage-with-cli.md
+        - name: Resource Manager-sablonok használata
+          href: manage-sql-with-resource-manager.md
     - name: Globális terjesztés
       items:
         - name: Több főkiszolgálós telepítés konfigurálása
@@ -464,35 +844,94 @@
         - name: Átviteli sebesség kiosztása adatbázisok számára
           displayName: 'request units, RUs, RU, shared throughput, database level'
           href: how-to-provision-database-throughput.md
+        - name: RU/s megbecslése a Cosmos Capacity Plannerrel
+          displayName: 'request units, RUs, RU, capacity'
+          href: estimate-ru-with-capacity-planner.md
         - name: Kérelemegység-díjszabás keresése
           displayName: 'request units, RUs, RU, charge, consumption'
           href: find-request-unit-charge.md
     - name: A tárolók és elemek használata
       items:
+        - name: Cosmos DB-adatok használata
+          items:
+            - name: Adatok kezelése az Azure Storage Explorerrel
+              href: storage-explorer.md
+            - name: Adatok kezelése az Azure Cosmos Explorerrel
+              href: data-explorer.md
         - name: Tároló létrehozása
           href: how-to-create-container.md
+        - name: Tároló létrehozása nagy partíciókulccsal
+          href: large-partition-keys.md
         - name: Tároló lekérdezése
           href: how-to-query-container.md
         - name: Adatmodellezés és -particionálás – valós életből vett példa
           displayName: 'model, partition, example'
           href: how-to-model-partition-example.md
+        - name: Migrálás particionált tárolókra
+          href: migrate-containers-partitioned-to-nonpartitioned.md
         - name: Élettartam konfigurálása
           displayName: 'delete, delete data, ttl'
           href: how-to-time-to-live.md
-        - name: Adatok kezelése az Azure Storage Explorerrel
-          href: storage-explorer.md
-        - name: Adatok kezelése az Azure Cosmos Explorerrel
-          href: data-explorer.md
-        - name: Indexelés
+        - name: Indexelési szabályzatok kezelése
+          href: how-to-manage-indexing-policy.md
+        - name: Egyedi kulcsok meghatározása
+          href: how-to-define-unique-keys.md
+    - name: Ajánlott eljárások
+      items:
+        - name: Teljesítménnyel kapcsolatos tippek
           items:
-            - name: Indexelés kezelése
-              href: how-to-manage-indexing-policy.md
+            - name: Lekérdezés-végrehajtási mérőszámok lekérése
+              displayName: 'query profile, profile'
+              href: profile-sql-api-query.md
+            - name: Lekérdezési teljesítmény hangolása
+              href: sql-api-query-metrics.md
+            - name: Teljesítménnyel kapcsolatos tippek .NET SDK-hoz
+              href: performance-tips.md
+            - name: Teljesítménnyel kapcsolatos tippek Java SDK-hoz
+              href: performance-tips-java.md
+            - name: Teljesítménnyel kapcsolatos tippek Async Java SDK-hoz
+              href: performance-tips-async-java.md
+            - name: Teljesítményteszt – mintaalkalmazás
+              href: performance-testing.md
+        - name: Költséghatékony írások és olvasások
+          href: key-value-store-cost.md
+    - name: Hibaelhárítás
+      items:
+        - name: Lekérdezési teljesítmény hibaelhárítása
+          href: troubleshoot-query-performance.md
+        - name: Java Async SDK-hibák elhárítása
+          href: troubleshoot-java-async-sdk.md
+        - name: .NET SDK-hibák elhárítása
+          href: troubleshoot-dot-net-sdk.md
     - name: Változáscsatorna
       items:
+        - name: Az Azure Cosmos DB eseményindító-naplói
+          href: how-to-configure-cosmos-db-trigger-logs.md
+        - name: Azure Cosmos DB-trigger kapcsolódási szabályzata
+          href: how-to-configure-cosmos-db-trigger-connection-policy.md
         - name: Több Azure Cosmos DB-eseményindító
           href: how-to-create-multiple-cosmos-db-triggers.md
         - name: Azure Cosmos DB-eseményindítók hibaelhárítása
           href: troubleshoot-changefeed-functions.md
+        - name: Változáscsatorna-feldolgozó indításának időpontja
+          href: how-to-configure-change-feed-start-time.md
+        - name: A változáscsatorna-becslő használata
+          href: how-to-use-change-feed-estimator.md
+        - name: Migrálás a változáscsatorna feldolgozó kódtárából
+          href: how-to-migrate-from-change-feed-library.md
+    - name: Beépített elemzések az Apache Sparkkal
+      items:
+        - name: Azure Databricks Spark-összekötő
+          href: spark-connector.md
+        - name: Streamelés az Apache Kafkával és a Cosmos DB-vel
+          href: /azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb
+          maintainContext: true
+    - name: Beépített Jupyter-notebookok
+      items:
+        - name: Notebookok engedélyezése
+          href: enable-notebooks.md
+        - name: Beépített notebook-parancsok használata
+          href: use-notebook-features-and-commands.md
     - name: Kiszolgálóoldali programozás
       items:
         - name: 'Tárolt eljárások, triggerek és felhasználói függvények írása'
@@ -511,26 +950,25 @@
           href: how-to-configure-cross-origin-resource-sharing.md
         - name: Azure Cosmos-kulcsok védelme a Key Vaulttal
           href: access-secrets-from-keyvault.md
+        - name: Tanúsítványalapú hitelesítés az Azure AD-val
+          href: certificate-based-authentication.md
     - name: Alkalmasság vállalati használatra
       items:
         - name: Adatok visszaállítása biztonsági mentésből
           href: how-to-backup-and-restore.md
-    - name: Azure Cosmos DB-erőforrások kezelése
-      items:
-        - name: Kezelés a PowerShell-lel
-          href: manage-account-with-powershell.md
-        - name: Kezelés az Azure CLI használatával
-          href: manage-with-cli.md
     - name: Naplózás
       items:
         - name: Diagnosztikai naplózás
           href: logging.md
         - name: Alkalmazásnaplózás a Logic Apps használatával
-          href: 'https://docs.microsoft.com/azure/logic-apps/logic-apps-scenario-error-and-exception-handling?toc=/azure/cosmos-db/toc.json'
-    - name: Figyelés
+          href: /azure/logic-apps/logic-apps-scenario-error-and-exception-handling
+          maintainContext: true
+    - name: Monitorozás mérőszámokkal
       items:
-        - name: Monitorozás mérőszámokkal
+        - name: Mérőszámok megtekintése Azure Cosmos DB-fiókból
           href: use-metrics.md
+        - name: Azure Monitor-metrikák megtekintése
+          href: cosmos-db-azure-monitor-metrics.md
         - name: SLA-k figyelése
           href: monitor-accounts.md
     - name: Helyi fejlesztés
@@ -543,32 +981,12 @@
           href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
     - name: Az Azure DevOps CI-/CD-folyamat beállítása
       href: tutorial-setup-ci-cd.md
-    - name: Adattípusok
-      items:
-        - name: DateTime
-          href: working-with-dates.md
-        - name: Térinformatikai
-          href: geospatial.md
-    - name: Ajánlott eljárások
-      items:
-        - name: Teljesítménnyel kapcsolatos tippek
-          items:
-            - name: Lekérdezési teljesítmény hangolása
-              href: sql-api-query-metrics.md
-            - name: Teljesítménnyel kapcsolatos tippek .NET SDK-hoz
-              href: performance-tips.md
-            - name: Teljesítménnyel kapcsolatos tippek Java SDK-hoz
-              href: performance-tips-java.md
-            - name: Teljesítménnyel kapcsolatos tippek Async Java SDK-hoz
-              href: performance-tips-async-java.md
-            - name: Teljesítményteszt – mintaalkalmazás
-              href: performance-testing.md
-        - name: Költséghatékony írások és olvasások
-          href: key-value-store-cost.md
     - name: Cosmos DB-adatok vizualizációja
       items:
         - name: A Power BI használata
           href: powerbi-visualize.md
+        - name: Élő időjárási irányítópult létrehozása
+          href: create-real-time-weather-dashboard-powerbi.md
         - name: Qlik Sense használata
           href: visualize-qlik-sense.md
     - name: Integráció más Azure-szolgáltatásokkal
@@ -578,17 +996,21 @@
         - name: Azure App Service
           href: create-website.md
         - name: Azure Search-indexelő
-          href: 'https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb?toc=/azure/cosmos-db/toc.json'
+          href: /azure/search/search-howto-index-cosmosdb
+          maintainContext: true
         - name: Azure Functions
           items:
             - name: Kiszolgáló nélküli számítás
               href: serverless-computing-database.md
             - name: Azure Functions-kötések
-              href: 'https://docs.microsoft.com/azure/azure-functions/functions-bindings-cosmosdb?toc=/azure/cosmos-db/toc.json'
+              href: /azure/azure-functions/functions-bindings-cosmosdb
+              maintainContext: true
         - name: Azure Data Factory
-          href: 'https://docs.microsoft.com/azure/data-factory/connector-azure-cosmos-db?toc=/azure/cosmos-db/toc.json'
+          href: /azure/data-factory/connector-azure-cosmos-db
+          maintainContext: true
         - name: Azure Stream Analytics
-          href: '../stream-analytics/stream-analytics-define-outputs.md#azure-cosmos-db'
+          href: '/azure/stream-analytics/stream-analytics-define-outputs#azure-cosmos-db'
+          maintainContext: true
         - name: A Logic Apps és a Service Bus
           href: change-feed-hl7-fhir-logic-apps.md
         - name: Az Azure Event Hubs és az Azure Storage
@@ -596,14 +1018,20 @@
         - name: A Spring Boot Starter használata
           href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db
           maintainContext: true
-        - name: Lambda architektúra
-          href: lambda-architecture.md
-        - name: Azure Databricks(Spark-összekötő)
-          href: spark-connector.md
-        - name: Spark és Kafka
-          href: 'https://docs.microsoft.com/azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb?toc=/azure/cosmos-db/toc.json'
         - name: ODBC-illesztő
           href: odbc-driver.md
+    - name: Adatok migrálása a Cosmos DB-re
+      items:
+        - name: Migrálás az SQL API-ba a Striim használatával
+          href: cosmosdb-sql-api-migrate-data-striim.md
+        - name: Adatok migrálása a Cassandra API-ba a Striim használatával
+          href: cosmosdb-cassandra-api-migrate-data-striim.md
+        - name: Migrálás – Az Oracle DB-ről a Cassandra API-ba a Blitzz használatával
+          href: oracle-migrate-cosmos-db-blitzz.md
+        - name: Migrálás – Az Apache Cassandrából a Cassandra API-ba a Blitzz használatával
+          href: cassandra-migrate-cosmos-db-blitzz.md
+        - name: Több száz terabájtnyi adat migrálása az Azure Cosmos DB-be
+          href: migrate-cosmosdb-data.md
     - name: Tömeges végrehajtói könyvtár
       items:
         - name: A tömeges végrehajtói kódtár ismertetése
@@ -612,18 +1040,14 @@
           href: bulk-executor-dot-net.md
         - name: Tömeges végrehajtó – Java-kódtár
           href: bulk-executor-java.md
-    - name: Hibaelhárítás
-      items:
-        - name: Java Async SDK-hibák elhárítása
-          href: troubleshoot-java-async-sdk.md
-        - name: .NET SDK-hibák elhárítása
-          href: troubleshoot-dot-net-sdk.md
 - name: Referencia
   items:
     - name: .NET
       href: sql-api-sdk-dotnet.md
     - name: .NET Core
       href: sql-api-sdk-dotnet-core.md
+    - name: .NET Standard
+      href: sql-api-sdk-dotnet-standard.md
     - name: .NET változáscsatorna-kódtár
       href: sql-api-sdk-dotnet-changefeed.md
     - name: .NET tömeges végrehajtói kódtár
@@ -643,7 +1067,9 @@
     - name: REST erőforrás-szolgáltató
       href: /rest/api/cosmos-db-resource-provider/
     - name: Resource Manager-sablon
-      href: /azure/templates/microsoft.documentdb/databaseaccounts
+      href: /azure/templates/microsoft.documentdb/allversions
+    - name: Az emulátor kibocsátási megjegyzései
+      href: local-emulator-release-notes.md
 - name: További források
   items:
     - name: Fejlessze a készségeit a Microsoft Learnnel
@@ -666,6 +1092,8 @@
       href: 'https://azure.microsoft.com/try/cosmosdb/'
     - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/cosmos-db/'
+    - name: A több főkiszolgálós telepítés előnyei
+      href: multi-master-benefits.md
     - name: Használati esetek
       items:
         - name: Gyakori használati helyzetek

@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: yushwang
-ms.openlocfilehash: f0367a360de97d3935c7fa8de9f3dafa6555811e
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 51402196c8429797b644357822a1e3c08982b384
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471356"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65209509"
 ---
 # <a name="how-to-configure-bgp-on-an-azure-vpn-gateway-by-using-cli"></a>BGP konfigurálása Azure VPN Gateway-átjárók a parancssori felület használatával
 
@@ -50,7 +50,7 @@ Ebben a szakaszban szükség, mielőtt hajt végre a lépéseket bármely más k
 
 Telepítse a CLI-parancsok (2.0-s vagy újabb) legújabb verzióját. Információk a CLI-parancsok telepítéséről: [Az Azure CLI telepítése](/cli/azure/install-azure-cli) és [Bevezetés az Azure CLI használatába](/cli/azure/get-started-with-azure-cli).
 
-### <a name="step-1-create-and-configure-testvnet1"></a>1. lépés: TestVNet1 létrehozása és konfigurálása
+### <a name="step-1-create-and-configure-testvnet1"></a>1\. lépés: A TestVNet1 létrehozása és konfigurálása
 
 #### <a name="Login"></a>1. Csatlakozás az előfizetéshez
 
@@ -71,23 +71,23 @@ Az alábbi példa létrehoz egy TestVNet1 és három alhálózatot nevű virtuá
 Az első parancs az előtér-címterek és az előtér-alhálózatot hoz létre. A második parancs létrehoz egy új címteret a háttérrendszer alhálózatának. A negyedik és a harmadik parancs a BackEnd alhálózathoz és az átjáró-alhálózat létrehozása.
 
 ```azurecli
-az network vnet create -n TestVNet1 -g TestBGPRG1 --address-prefix 10.11.0.0/16 -l eastus --subnet-name FrontEnd --subnet-prefix 10.11.0.0/24 
- 
-az network vnet update -n TestVNet1 --address-prefixes 10.11.0.0/16 10.12.0.0/16 -g TestBGPRG1 
- 
-az network vnet subnet create --vnet-name TestVNet1 -n BackEnd -g TestBGPRG1 --address-prefix 10.12.0.0/24 
- 
-az network vnet subnet create --vnet-name TestVNet1 -n GatewaySubnet -g TestBGPRG1 --address-prefix 10.12.255.0/27 
+az network vnet create -n TestVNet1 -g TestBGPRG1 --address-prefix 10.11.0.0/16 -l eastus --subnet-name FrontEnd --subnet-prefix 10.11.0.0/24 
+ 
+az network vnet update -n TestVNet1 --address-prefixes 10.11.0.0/16 10.12.0.0/16 -g TestBGPRG1 
+ 
+az network vnet subnet create --vnet-name TestVNet1 -n BackEnd -g TestBGPRG1 --address-prefix 10.12.0.0/24 
+ 
+az network vnet subnet create --vnet-name TestVNet1 -n GatewaySubnet -g TestBGPRG1 --address-prefix 10.12.255.0/27 
 ```
 
-### <a name="step-2-create-the-vpn-gateway-for-testvnet1-with-bgp-parameters"></a>2. lépés: A VPN-átjáró létrehozása a testvnet1-hez a BGP-paraméterekkel
+### <a name="step-2-create-the-vpn-gateway-for-testvnet1-with-bgp-parameters"></a>2\. lépés: A VPN-átjáró létrehozása a testvnet1-hez a BGP-paraméterekkel
 
 #### <a name="1-create-the-public-ip-address"></a>1. A nyilvános IP-cím létrehozása
 
 Kérjen egy nyilvános IP-címet. A nyilvános IP-címet oszt ki, amely hoz létre a virtuális hálózat VPN-átjáróhoz.
 
 ```azurecli
-az network public-ip create -n GWPubIP -g TestBGPRG1 --allocation-method Dynamic 
+az network public-ip create -n GWPubIP -g TestBGPRG1 --allocation-method Dynamic 
 ```
 
 #### <a name="2-create-the-vpn-gateway-with-the-as-number"></a>2. Az AS-számot a VPN-átjáró létrehozása
@@ -107,14 +107,14 @@ Az átjáró létrehozása után kell beszerezni a BGP-társ IP-cím az Azure VP
 Futtassa a következő parancsot, és ellenőrizze a `bgpSettings` felső részén a kimeneti szakaszban:
 
 ```azurecli
-az network vnet-gateway list -g TestBGPRG1 
- 
-  
-"bgpSettings": { 
-      "asn": 65010, 
-      "bgpPeeringAddress": "10.12.255.30", 
-      "peerWeight": 0 
-    }
+az network vnet-gateway list -g TestBGPRG1 
+ 
+  
+"bgpSettings": { 
+      "asn": 65010, 
+      "bgpPeeringAddress": "10.12.255.30", 
+      "peerWeight": 0 
+    }
 ```
 
 Az átjáró létrehozása után a létesítmények közötti kapcsolat vagy egy BGP-vel VNet – VNet kapcsolat létrehozására használhatja ezt az átjárót.
@@ -126,23 +126,23 @@ Létesítmények közötti kapcsolatot létesíteni, szüksége a helyszíni VPN
 ![BGP-t létesítmények közötti esetében](./media/vpn-gateway-bgp-resource-manager-ps/bgp-crossprem.png)
 
 
-### <a name="step-1-create-and-configure-the-local-network-gateway"></a>1. lépés: Hozzon létre, és a helyi hálózati átjáró konfigurálása
+### <a name="step-1-create-and-configure-the-local-network-gateway"></a>1\. lépés: Hozzon létre, és a helyi hálózati átjáró konfigurálása
 
 Ebben a gyakorlatban továbbra is össze az ábrán látható. Ne felejtse el az értékeket olyanokra cserélni, amelyeket a saját konfigurációjához kíván használni. Ha helyi hálózati átjárók dolgozik, vegye figyelembe az alábbiakat:
 
 * A helyi hálózati átjáró lehet az ugyanazon a helyen és az erőforráscsoporthoz tartozik, mint a VPN-átjárót, vagy azok egy másik helyen és erőforráscsoportban. Ez a példa bemutatja az átjárók eltérő erőforráscsoportokban különböző helyeken.
-* Deklarálja a helyi hálózati átjáró szükséges minimális előtagként a BGP társ IP-cím a VPN-eszköz gazdagépcímét. Ebben az esetben egy tulajdonságot/32 előtag 10.52.255.254/32.
+* Deklarálja a helyi hálózati átjáró szükséges minimális előtagként a BGP társ IP-cím a VPN-eszköz gazdagépcímét. Ebben az esetben egy tulajdonságot/32 előtag 10.51.255.254/32.
 * Ne feledje a helyszíni hálózatok és az Azure virtuális hálózat között eltérő BGP ASN-eket kell használnia. Ha azonos, módosítsa a virtuális hálózat ASN-t, ha a helyszíni VPN-eszközök már használja az ASN-t más BGP-szomszédok társviszonyt szeretne.
 
 Mielőtt folytatná, győződjön meg arról, hogy végrehajtotta a [BGP engedélyezése a VPN-átjáró](#enablebgp) szakasz ebben a gyakorlatban és, hogy továbbra is csatlakozott az 1. előfizetéshez. Figyelje meg, hogy ebben a példában, akkor hozzon létre egy új erőforráscsoportot. Azt is Észreveheti a helyi hálózati átjáró két további paraméterek: `Asn` és `BgpPeerAddress`.
 
 ```azurecli
-az group create -n TestBGPRG5 -l eastus2 
- 
+az group create -n TestBGPRG5 -l eastus2 
+ 
 az network local-gateway create --gateway-ip-address 23.99.221.164 -n Site5 -g TestBGPRG5 --local-address-prefixes 10.51.255.254/32 --asn 65050 --bgp-peering-address 10.51.255.254
 ```
 
-### <a name="step-2-connect-the-vnet-gateway-and-local-network-gateway"></a>2. lépés: A virtuális hálózati átjáró és a helyi hálózati átjáró csatlakoztatása
+### <a name="step-2-connect-the-vnet-gateway-and-local-network-gateway"></a>2\. lépés: A virtuális hálózati átjáró és a helyi hálózati átjáró csatlakoztatása
 
 Ebben a lépésben, a TestVNet1 felől a létre Site5. Meg kell adnia a `--enable-bgp` paraméter BGP engedélyezése ehhez a kapcsolathoz. 
 
@@ -161,18 +161,18 @@ A kimenetben keresse meg a `"id":` sor. A következő szakaszban a kapcsolat lé
 Példa a kimenetre:
 
 ```
-{ 
-  "activeActive": false, 
-  "bgpSettings": { 
-    "asn": 65010, 
-    "bgpPeeringAddress": "10.12.255.30", 
-    "peerWeight": 0 
-  }, 
-  "enableBgp": true, 
-  "etag": "W/\"<your etag number>\"", 
-  "gatewayDefaultSite": null, 
-  "gatewayType": "Vpn", 
-  "id": "/subscriptions/<subscription ID>/resourceGroups/TestBGPRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW",
+{ 
+  "activeActive": false, 
+  "bgpSettings": { 
+    "asn": 65010, 
+    "bgpPeeringAddress": "10.12.255.30", 
+    "peerWeight": 0 
+  }, 
+  "enableBgp": true, 
+  "etag": "W/\"<your etag number>\"", 
+  "gatewayDefaultSite": null, 
+  "gatewayType": "Vpn", 
+  "id": "/subscriptions/<subscription ID>/resourceGroups/TestBGPRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW",
 ```
 
 Után az értékek másolásához `"id":` egy szövegszerkesztőbe, például a Jegyzettömbbe, így könnyen beillesztheti őket a kapcsolat létrehozásakor. 
@@ -219,7 +219,7 @@ Ez a szakasz ad hozzá egy VNet – VNet kapcsolat BGP-vel, az alábbi ábrán l
 
 Az alábbi utasítások alapján az előző szakaszok lépéseit folytatják. Hozzon létre, és konfigurálja a TestVNet1 és a VPN-átjáró BGP-vel, meg kell adnia a [BGP engedélyezése a VPN-átjáró](#enablebgp) szakaszban.
 
-### <a name="step-1-create-testvnet2-and-the-vpn-gateway"></a>1. lépés: A TestVNet2 és a VPN-átjáró létrehozása
+### <a name="step-1-create-testvnet2-and-the-vpn-gateway"></a>1\. lépés: TestVNet2 és a VPN-átjáró létrehozása
 
 Fontos győződjön meg arról, hogy az IP-címtér az új TestVNet2, virtuális hálózat nem átfedésben a VNet-címtartományok.
 
@@ -236,12 +236,12 @@ az group create -n TestBGPRG2 -l westus
 Az első parancs az előtér-címterek és az előtér-alhálózatot hoz létre. A második parancs létrehoz egy új címteret a háttérrendszer alhálózatának. A negyedik és a harmadik parancs a BackEnd alhálózathoz és az átjáró-alhálózat létrehozása.
 
 ```azurecli
-az network vnet create -n TestVNet2 -g TestBGPRG2 --address-prefix 10.21.0.0/16 -l westus --subnet-name FrontEnd --subnet-prefix 10.21.0.0/24 
- 
-az network vnet update -n TestVNet2 --address-prefixes 10.21.0.0/16 10.22.0.0/16 -g TestBGPRG2 
- 
-az network vnet subnet create --vnet-name TestVNet2 -n BackEnd -g TestBGPRG2 --address-prefix 10.22.0.0/24 
- 
+az network vnet create -n TestVNet2 -g TestBGPRG2 --address-prefix 10.21.0.0/16 -l westus --subnet-name FrontEnd --subnet-prefix 10.21.0.0/24 
+ 
+az network vnet update -n TestVNet2 --address-prefixes 10.21.0.0/16 10.22.0.0/16 -g TestBGPRG2 
+ 
+az network vnet subnet create --vnet-name TestVNet2 -n BackEnd -g TestBGPRG2 --address-prefix 10.22.0.0/24 
+ 
 az network vnet subnet create --vnet-name TestVNet2 -n GatewaySubnet -g TestBGPRG2 --address-prefix 10.22.255.0/27
 ```
 
@@ -256,16 +256,16 @@ az network public-ip create -n GWPubIP2 -g TestBGPRG2 --allocation-method Dynami
 #### <a name="4-create-the-vpn-gateway-with-the-as-number"></a>4. Az AS-számot a VPN-átjáró létrehozása
 
 Hozzon létre a virtuális hálózati átjáró TestVNet2. Az Azure VPN Gateway átjárókról felül kell bírálnia az alapértelmezett ASN-t. Az ASN-eket a csatlakoztatott virtuális hálózatok ahhoz, hogy a BGP és a tranzit útválasztást különbözőnek kell lennie.
- 
+ 
 ```azurecli
 az network vnet-gateway create -n VNet2GW -l westus --public-ip-address GWPubIP2 -g TestBGPRG2 --vnet TestVNet2 --gateway-type Vpn --sku Standard --vpn-type RouteBased --asn 65020 --no-wait
 ```
 
-### <a name="step-2-connect-the-testvnet1-and-testvnet2-gateways"></a>2. lépés: Kapcsolódás a TestVNet1 és TestVNet2 átjárók
+### <a name="step-2-connect-the-testvnet1-and-testvnet2-gateways"></a>2\. lépés: A TestVNet1 és TestVNet2 átjárók csatlakoztatása
 
 Ebben a lépésben, a TestVNet1 felől a létre Site5. Ehhez a kapcsolathoz a BGP engedélyezéséhez meg kell adnia a `--enable-bgp` paraméter.
 
-A következő példában a virtuális hálózati átjáró és a helyi hálózati átjáró a következők eltérő erőforráscsoportokban. Amikor az átjárók eltérő erőforráscsoportokban találhatók, meg kell adnia a két átjáró a virtuális hálózatok közötti kapcsolat beállítása a teljes erőforrás-Azonosítóját. 
+A következő példában a virtuális hálózati átjáró és a helyi hálózati átjáró a következők eltérő erőforráscsoportokban. Amikor az átjárók eltérő erőforráscsoportokban találhatók, meg kell adnia a két átjáró a virtuális hálózatok közötti kapcsolat beállítása a teljes erőforrás-Azonosítóját. 
 
 #### <a name="1-get-the-resource-id-of-vnet1gw"></a>1. Az azonosító a VNet1GW erőforrás lekérése 
 

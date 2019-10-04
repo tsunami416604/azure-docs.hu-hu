@@ -3,117 +3,113 @@ title: Az Azure Digital Twins áttekintése | Microsoft Docs
 description: További információ a térbeli intelligenciát megvalósító Azure IoT-megoldásról, az Azure Digital Twinsről.
 author: julieseto
 ms.author: jseto
-ms.date: 12/14/2018
+ms.date: 09/17/2019
 ms.topic: overview
 ms.service: digital-twins
 services: digital-twins
 manager: bertvanhoof
 ms.custom: mvc
-ms.openlocfilehash: 2848f9ce97c2bdad59d86031c5894219875b6059
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 2b80d0b364330a0effa7b89c620bd935157de290
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437112"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178290"
 ---
 # <a name="overview-of-azure-digital-twins"></a>Az Azure Digital Twins áttekintése
 
-Az Azure Digital Twins egy Azure IoT-szolgáltatás, amellyel a fizikai környezet átfogó modelljei hozhatók létre. Térbeli üzletiintelligencia-grafikonokkal modell, kapcsolatokat és a személyek, szóközöket és eszközök közötti interakciókat tud létrehozni.
+Az Azure Digital Twins Preview egy Azure IoT szolgáltatás, amely átfogó modelleket hoz létre a fizikai környezetből. Térbeli intelligenciát ábrázoló diagramokat hozhat létre a személyek, a szóközök és az eszközök közötti kapcsolatok és interakciók modellezéséhez.
 
-Az Azure digitális Twins lekérdezheti, ha egy fizikai helyet próbálják számos különböző érzékelőktől származó adatok. A szolgáltatás segít a streamelési adatok digitális és a fizikai világszerte hivatkozó újrafelhasználható, rugalmasan méretezhető, kijelölése figyelembe felhasználói környezetek készíthetők. Az alkalmazások egyedi vonatkozó környezetfüggő funkciókhoz tovább növeli. Az Azure digitális Twins is használható a következő példa feladatokat:
+Az Azure Digital Twins használatával számos különböző érzékelő helyett fizikai területről is lekérdezheti az adatait. Ez a szolgáltatás segít felépíteni újrafelhasználható, rugalmasan méretezhető, térbeli módon felhasználható élményeit, amelyek a digitális és a fizikai világ különböző pontjain közvetítik az adatátvitelt. Ezek az alkalmazások az egyedi releváns kontextus-funkciókkal bővülnek. 
 
-- Előrejelezheti a karbantartási igényeket Factory.
-- Valós idejű energia követelményei az elektromos rács elemzése.
-- Optimalizálja az Office használatát, rendelkezésre álló területet.
+Az Azure Digital Twins minden típusú környezetre vonatkozik, például a raktárakra, az irodákra, az iskolákra, a kórházakra és a bankokra. Akár a stadionok, a gyárak, a parkolók, a parkok, az intelligens hálózatok és a városok számára is használható. Az alábbi forgatókönyvek az Azure digitális Twins hasznosak lehetnek:
 
-Az Azure digitális Twins környezetek minden típusú vonatkozik. Csak néhány példa adattárházakhoz, iroda, iskolák, a kórházak és bankok. Akkor is használható stadionokban, gyárak, ideiglenes sok, parkot, az intelligens hálózatok és városokat. Az alábbi példák az Azure digitális Twins használható:
+- A gyári karbantartási igények előrejelzése.
+- Az elektromos hálózatokra vonatkozó valós idejű energiaellátási követelmények elemzése.
+- Optimalizálja a rendelkezésre álló terület használatát egy irodában.
+- A napi hőmérséklet nyomon követése több állapot között.
+- Elfoglalt drone-útvonalak figyelése.
+- Autonóm járművek azonosítása.
+- Egy összeállítás kihasználtsági szintjeinek elemzése.
+- Keresse meg az áruházban a legforgalmasabb pénztárgép-regisztrációt.
 
-- Napi hőmérséklet több állapotok nyomon követésére.
-- Foglalt drónos elérési utak figyelésére.
-- Autonóm járművek azonosításához.
-- Épület foglaltsága szintjeinek elemzése.
-- A legforgalmasabb pénztárgép található a tárolóban.
+A valós üzleti helyzettől függetlenül valószínű, hogy egy megfelelő digitális példány is kiépíthető az Azure digitális Twins használatával.
 
-Akármi legyen is a valós üzleti forgatókönyv, az Azure Digital Twins segítségével készíthető hozzá megfelelő digitális példány.
-
-Az alábbi videó az Azure digitális Twins közelebbről vesz igénybe.
+Az alábbi videó alaposabban megtekinti az Azure digitális ikreket.
 
 > [!VIDEO https://www.youtube.com/embed/TvN_NxpgyzQ]
 
 ## <a name="key-capabilities"></a>Főbb képességek
 
-Az Azure digitális Twins rendelkezik az alábbi főbb képességeket.
+Az Azure Digital Twins a következő főbb képességekkel rendelkezik.
 
 ### <a name="spatial-intelligence-graph"></a>Térbeliintelligencia-diagramok
 
-A [ *térbeli intelligencia graph*](./concepts-objectmodel-spatialgraph.md), vagy *térbeli graph*, a fizikai környezet virtuális ábrázolásai. Használhatja a személyek, helyek és eszközök közötti kapcsolatok modellezésére.
+A [*térbeli intelligencia gráf*](./concepts-objectmodel-spatialgraph.md#spatial-intelligence-graph)vagy a *térbeli gráf*a fizikai környezet virtuális ábrázolása. A segítségével modellezheti a személyek, a helyek és az eszközök közötti kapcsolatokat.
 
-Fontolja meg egy intelligens segédprogram alkalmazást, amely magában foglalja a több használati fogyasztásmérők csatlakoztatva a helyek között. Az intelligens segédprogram vállalati pontosan kell figyelni és előre jelezni az elektromos áram használati és számlázási. Egyes eszközök és érzékelők a hely és az ügyfél, amely, számlázunk kontextusú modellezni kell. A térbeli intelligencia graph segítségével az ilyen típusú összetett kapcsolatok modellezésére.
+Vegyünk egy olyan intelligens segédprogram-alkalmazást, amely több, a környékén összekapcsolt villamosenergia-használati mérőszámot is magában foglal. Az intelligens segédprogram vállalatának pontosan figyelnie kell és meg kell jósolnia a villamosenergia-használatot és a számlázást. Minden eszközt és érzékelőt a hely és a számlázásra kerülő ügyfél kontextusával kell modellezni. A térbeli intelligencia gráf használatával modellezheti az ilyen típusú összetett kapcsolatokat.
 
 ### <a name="digital-twin-object-models"></a>Digitális ikerobjektum-modellek
 
-[Digitális két objektummodellt](./concepts-objectmodel-spatialgraph.md) előre definiált eszköz-protokollok és a sémát. A megoldás tartomány-specifikus igényeihez, leegyszerűsítheti a fejlesztést, és rendezve.
+A [digitális kettős objektumok modelljei](./concepts-objectmodel-spatialgraph.md#digital-twins-object-models) előre definiált eszköz-protokollok és adatsémák. Összehangolják a megoldás tartomány-specifikus igényeit a fejlesztés felgyorsításához és egyszerűsítéséhez.
 
-Ilyen például, egy hely foglaltsága alkalmazás használhat előre definiált típusok, például a telephelyi, épület, emelet és hely.
+Előfordulhat például, hogy egy szoba használati alkalmazása előre definiált tárolóhelyeket használ, például az egyetemet, az épületet, a padlót és a termet.
 
 ### <a name="multiple-and-nested-tenants"></a>Többszörös és beágyazott bérlők
 
-Több bérlő számára hozhat létre megoldásokat, amelyek a méretezhető, biztonságos és használható fel újra. Elkülönített és biztonságos módon használt és elérhető több subtenants is létrehozhat.
+Olyan megoldásokat hozhat létre, amelyek biztonságosan méretezhetők, és több bérlő számára is felhasználhatók. Több albérlőt is létrehozhat, amelyek elérhetők és elkülönített és biztonságos módon használhatók.
 
-Ilyen például, egy hely kihasználtsági alkalmazást, amely konfigurálva van egy egyetlen épületen belül más bérlők adatait egy bérlő adatait elszigetelni egy. Vagy az alkalmazás adatokat kombinálja egy adott bérlő számos épületek szolgál.
+Ilyen például egy olyan lemezterület-kihasználtsági alkalmazás, amely úgy van konfigurálva, hogy elkülönítse a bérlők adatait egy épületen belül. Vagy az alkalmazás használatával egyetlen bérlőhöz tartozó, számos épületben található adategyesítést lehet használni.
 
 ### <a name="advanced-compute-capabilities"></a>Fejlett számítási képességek
 
-A [felhasználó által definiált függvények](./concepts-user-defined-functions.md), határozza meg, és felhasználói függvények futtatása ellen bejövő [eszközadatok](./concepts-device-ingress.md) az előre definiált végpontjainak küldhet. A speciális funkció javítja a testreszabási és eszköz feladatok automatizálása.
+A [felhasználó által definiált függvények](./concepts-user-defined-functions.md)használatával egyéni függvényeket adhat meg és futtathat a bejövő [eszközök adatain](./concepts-device-ingress.md) , hogy jeleket küldjön előre definiált végpontoknak. Ez a speciális funkció javítja az eszközök feladatainak testreszabását és automatizálását.
 
-Ilyen például, egy felhasználó által definiált függvény felmérni talajjal nedvesség érzékelőinek adatai és az időjárás-előrejelzést tartalmazó intelligens mezőgazdaság alkalmazás. Az alkalmazás ezután elküldi a jelek kapcsolatos öntözés igényeinek.
+Ilyen például egy olyan intelligens mezőgazdasági alkalmazás, amely egy felhasználó által definiált függvényt tartalmaz a talaj nedvességtartalmának érzékelő-és az időjárás-előrejelzés értékeléséhez. Az alkalmazás ezután jeleket küld az öntözési igényekről.
 
 ### <a name="built-in-access-control"></a>Beépített hozzáférés-vezérlés
 
-Hozzáférés és identitáskezelési funkciókat használatával [szerepköralapú hozzáférés-vezérlés](./security-role-based-access-control.md) és [Azure Active Directory](./security-authenticating-apis.md), biztonságosan szabályozhatja a hozzáférést a felhasználók és eszközök.
+A hozzáférés-és Identitáskezelés-kezelési funkciók, például a [szerepköralapú hozzáférés-vezérlés](./security-role-based-access-control.md) és a [Azure Active Directory](./security-authenticating-apis.md)használatával biztonságosan szabályozhatja az egyéni felhasználók és az eszközök hozzáférését.
 
-Például egy létesítmények felügyeleti alkalmazás, amely engedélyezi a lakók egy helyet, állítsa be a hőmérséklet egy megadott tartományon belül. Létesítményekben kezelők beállítása a hőmérséklet bármely hely bármilyen érték az engedélyezett.
+Ilyen például egy olyan létesítmény-felügyeleti alkalmazás, amely lehetővé teszi, hogy egy helyiség utasai egy adott tartományon belül beállítsák a hőmérsékletet. A létesítmények kezelői a hőmérsékletet bármely tetszőleges értékre beállíthatják.
 
 ### <a name="ecosystem"></a>Ökoszisztéma
 
-Az Azure digitális Twins példány csatlakozhat számos hatékony Azure-szolgáltatások. Ezen szolgáltatások közé tartoznak az Azure Stream Analytics, Azure mesterséges Intelligencia és az Azure Storage. Is, az Azure Maps, a Microsoft vegyes valóságot, a Dynamics 365 vagy az Office 365.
+Az Azure Digital Twins-példányok számos hatékony Azure-szolgáltatáshoz csatlakoztathatók. Ezek a szolgáltatások többek között az Azure Stream Analytics, az Azure AI és az Azure Storage. Emellett a következők: Azure Maps, Microsoft Mixed Reality, Dynamics 365 vagy Office 365.
 
-Ilyen például, egy intelligens office, a teams és sok emeleteken található eszközök az Azure digitális Twins használó alkalmazás létrehozását. Eszközök élő adatok streamelése az a kiosztott digitális Ikereszköz-példányt, mert a Stream Analytics főbb gyakorlatban hasznosítható elemzéseket biztosít adatokat dolgozza fel. Az adatok Azure Storage-ban tárolt és megosztható fájlformátumba konvertálni. A fájl az Office 365 használatával legyen elosztva a teljes szervezet.
+Egy példa egy olyan intelligens irodaház-alkalmazásra, amely az Azure Digital ikreket használja a sok emeleten található csapatok és eszközök képviseletére. Mivel az eszközök élő adatátvitelt küldenek a kiépített digitális kettős példányba, Stream Analytics feldolgozza azokat az adatfeldolgozást, amelyekkel a kulcsfontosságú információkhoz juthat. Az adattárolás az Azure Storage-ban történik, és a rendszer megosztható fájlformátumba konvertálja azokat. A fájl a teljes szervezeten belül az Office 365 használatával oszlik meg.
 
 ## <a name="solutions-that-benefit-from-azure-digital-twins"></a>Az Azure Digital Twins előnyeit kihasználó megoldások
 
-Az Azure digitális Twins hasznos a fizikai világ és a sok kapcsolatait. Egyszerűbbé téve a IoT modellezés, adatfeldolgozási, eseménykezelés eszköz- és nyomon követése. Vegye figyelembe a következő forgatókönyvek közül számos iparágak. Részesülnek történő használatát:
+Az Azure digitális Twins hasznos a fizikai világ és a sok kapcsolat ábrázolásához. Leegyszerűsíti a IoT modellezését, az adatfeldolgozást, az események kezelését és az eszközök nyomon követését. Tekintse át a következő forgatókönyveket több iparágban. A használatuk a következő előnyökkel jár:
 
-* A vállalat megjelenítése az szóközzel foglaltsága szintek a legjobb módszer annak irodaépület konferenciatermére konfigurálása információival glean az idő függvényében.
-* Az eseményindító work order jegyek egy mobilalkalmazás. Ezzel a biztonsági őrök és ütemezés Házfelügyelői és más szolgáltatások egy kiskereskedelmi szóközt vagy sportesemények helyszín tart elküldeni.
-* Egy épület bent megjelenítése, mely termek tartózkodnak az épület valós időben. Ezt követően segítenek munkahelyi szóközöket, a saját igényeinek megfelelően foglaljon le a személyre.
-* Nyomon követheti, ahol eszközök találhatók belül adhatja.
-* Díjszabási által a felhasználói beállítások és energia-rács megkötések modellezési electric jármű optimalizálása.
+* Egy ingatlan-felügyeleti vállalat megjelenítése a terület kihasználtsági szintjeinek időbeli kigyűjtése az irodaház legjobb konfigurálási módjairól.
+* A munkahelyi rendelési jegyek elindítása a Mobile apps számára. Felhasználhatja a biztonsági őrök elküldésére, valamint a Házfelügyelői és egyéb szolgáltatások beosztására a kiskereskedelmi térben vagy a sport helyszínén.
+* Megmutatjuk, hogy egy épületben hol találhatók a szobák valós időben egy épületben. Ezután segítsen az utasnak az igényeinek megfelelő munkaterületek fenntartásában.
+* Nyomon követheti, hogy az eszközök Hol helyezkednek el egy adott helyen belül.
+* Optimalizálja az elektromos járművek díjszabását a felhasználói preferenciák és az energiaellátási korlátok modellezésével.
 
-## <a name="azure-digital-twins-in-the-context-of-other-iot-services"></a>Az Azure digitális Twins egyéb IoT-szolgáltatások keretében
+## <a name="azure-digital-twins-in-the-context-of-other-iot-services"></a>Azure digitális Twins más IoT-szolgáltatások kontextusában
 
-Az Azure Digital Twins az Azure IoT Hub segítségével csatlakozik az IoT-eszközökhöz és -érzékelőkhöz, amelyek naprakész adatokat szolgáltatnak a fizikai világról. Az alábbi ábrán látható, hogyan kapcsolódik az Azure digitális Twins más Azure-IoT-szolgáltatások.
+Az Azure Digital Twins az Azure IoT Hub segítségével csatlakozik az IoT-eszközökhöz és -érzékelőkhöz, amelyek naprakész adatokat szolgáltatnak a fizikai világról. Az alábbi ábra bemutatja, hogyan kapcsolódik az Azure digitális Twins más Azure IoT-szolgáltatásokhoz.
 
-![Az Azure Digital Twins egy, az Azure IoT Hubra épülő szolgáltatás][1]
+[![Az Azure Digital Twins egy Azure IoT Hub-ra épülő szolgáltatás](media/overview/azure-digital-twins-in-iot-ecosystem.png)](media/overview/azure-digital-twins-in-iot-ecosystem.png#lightbox)
 
-IoT kapcsolatos további információkért lásd: [Azure IoT-technológiák és -megoldások](https://docs.microsoft.com/azure/iot-fundamentals/iot-services-and-technologies).
+További információ a IoT: [Azure IoT-technológiák és-megoldások](../iot-fundamentals/iot-services-and-technologies.md).
 
 ## <a name="next-steps"></a>További lépések
 
-Nyissa meg egy rövid bemutatót az Azure digitális Twins kapcsolatos:
+Ugrás az Azure Digital Twins szolgáltatással kapcsolatos rövid bemutatóra:
 
 >[!div class="nextstepaction"]
->[Gyors útmutató: Elérhető az Azure digitális Twins teremkeresés](./quickstart-view-occupancy-dotnet.md)
+>[Rövid útmutató: Elérhető szobák keresése az Azure Digital Twins használatával](./quickstart-view-occupancy-dotnet.md)
 
-Példakódot egy létesítmények projektmenedzsment-alkalmazás az Azure digitális Twins használatával:
+Az Azure Digital Twins használatával alaposan megtekintheti a létesítmények felügyeleti alkalmazásait:
 
 >[!div class="nextstepaction"]
->[Oktatóanyag: Az Azure digitális Twins telepítheti és konfigurálhatja a térbeli grafikon](./tutorial-facilities-setup.md)
+>[Oktatóanyag: Azure digitális Twins üzembe helyezése és térbeli gráf konfigurálása](./tutorial-facilities-setup.md)
 
 Az Azure Digital Twins alapvető fogalmainak ismertetése:
 
 >[!div class="nextstepaction"]
->[A digitális Twins hálózatiobjektum-modellt és a térbeli intelligencia graph ismertetése](./concepts-objectmodel-spatialgraph.md)
-
-<!-- Images -->
-[1]: media/overview/azure-digital-twins-in-iot-ecosystem.png
+>[A digitális Twins objektummodell és a térbeli intelligencia gráf megismerése](./concepts-objectmodel-spatialgraph.md)

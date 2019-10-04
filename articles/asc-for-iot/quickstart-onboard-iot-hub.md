@@ -1,63 +1,64 @@
 ---
-title: IoT-szolgáltatás IoT Hub előzetes verzióban érhető el az Azure Security Center |} A Microsoft Docs
-description: Ismerje meg, hogyan engedélyezhető az Azure Security Center az IoT hub IoT-szolgáltatás.
+title: A IoT szolgáltatás Azure Security Centerának engedélyezése a IoT Hubban | Microsoft Docs
+description: Megtudhatja, hogyan engedélyezheti Azure Security Center a IoT szolgáltatáshoz a IoT Hubban.
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
-manager: barbkess
+manager: rkarlin
 editor: ''
 ms.assetid: 670e6d2b-e168-4b14-a9bf-51a33c2a9aad
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/18/2019
+ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: cac2f740c1b2ae109f29ce44cd035fc6a83dd148
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 3d9c5352a90d5bcacbaf27b7b62be61fc404e87a
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60010560"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299489"
 ---
-# <a name="quickstart-enable-service-in-iot-hub"></a>Gyors útmutató: Az IoT Hub szolgáltatás engedélyezése
+# <a name="quickstart-onboard-azure-security-center-for-iot-service-in-iot-hub"></a>Gyors útmutató: Azure Security Center a IoT Service-ben IoT Hub
 
-> [!IMPORTANT]
-> Az Azure Security Center az IoT jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Ez a cikk az Azure Security Center (ASC) az IoT hub IoT-előzetes szolgáltatás engedélyezése a magyarázattal szolgál.  
+Ez a cikk azt ismerteti, hogyan engedélyezhető a IoT szolgáltatás Azure Security Center a meglévő IoT Hub. Ha jelenleg nem rendelkezik IoT Hubval, a kezdéshez tekintse meg [a IoT hub létrehozása a Azure Portal használatával](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal) című témakört. 
 
 > [!NOTE]
-> Az Azure Security Center az IoT jelenleg csak a standard szintű és a magasabb szintű IoT-központok támogatja.
-> Az Azure Security Center az IoT hub egyetlen megoldás is. Ha több van szüksége, több megoldás szükség. 
+> A IoT Azure Security Center jelenleg csak a standard szintű IoT hubokat támogatja.
+> A IoT Azure Security Center egyetlen központi megoldás. Ha több hubhoz van szüksége, a IoT-megoldásokhoz több Azure Security Center is szükség van. 
 
-## <a name="prerequisites-for-enabling-the-service"></a>A szolgáltatás engedélyezéséhez szükséges előfeltételek
+## <a name="prerequisites-for-enabling-the-service"></a>A szolgáltatás engedélyezésének előfeltételei
 
 - Log Analytics-munkaterület
-  - Két típusú adatok tárolódnak a Log Analytics-munkaterület az ASC alapértelmezés szerint az IoT; **biztonsági riasztások** és **javaslatok**. 
-  - Dönthet úgy, hogy adjon hozzá további információk típusa, a storage **nyers események**. Vegye figyelembe, hogy tárolására **nyers események** a Log Analytics sorozatéhoz további tárolási költségeket. 
-- Az IoT Hub (standard szintű vagy újabb)
+  - A Log Analytics munkaterület alapértelmezés szerint két típusú információt tárol a IoT számára Azure Security Center alapján. **biztonsági riasztások** és **javaslatok**. 
+  - Dönthet úgy is, hogy hozzáad egy további adattípust, **nyers eseményeket**. Vegye figyelembe, hogy a Log Analytics **nyers események** tárolása további tárolási költségekkel jár. 
+- IoT Hub (standard szint)
+- Az összes [szolgáltatás előfeltételeinek](service-prerequisites.md) teljesítése 
 
-## <a name="enable-asc-for-iot-on-your-iot-hub"></a>Az IoT hub IoT ASC engedélyezése 
+## <a name="enable-azure-security-center-for-iot-on-your-iot-hub"></a>Azure Security Center engedélyezése a IoT a IoT Hub 
 
-Ahhoz, hogy az IoT hub biztonsági, tegye a következőket: 
+A IoT Hub biztonságának engedélyezéséhez tegye a következőket: 
 
-1. Nyissa meg a **az IoT Hub** az Azure Portalon. 
-2. Alatt a **biztonsági** menüben kattintson a **áttekintése**, majd kattintson a **Start preview**. 
-3. Válasszon **IoT-biztonság engedélyezése**. 
-4. Adja meg a Log Analytics-munkaterület adatait. 
-   - Tárolhatja **nyers események** mellett az alapértelmezett típusokat. Ha tárolási a **nyers események** váltógomb **a**. 
-   - Dönthet úgy, hogy engedélyezze, hogy **ikereszköz gyűjtemény** távozó a **ikereszköz gyűjtemény** váltógomb **a**. 
-5. Kattintson az **OK** gombra. 
-6. Kattintson a **Save** (Mentés) gombra. 
+1. Nyissa meg a **IoT Hubt** Azure Portal. 
+1. A **Biztonság** menüben kattintson a **IoT-megoldás biztonságossá tétele** lehetőségre.
+1. Hagyja bejelölve az **Engedélyezés** beállítást alapértelmezettként. 
+1. Válassza ki a log Analytics-munkaterületet.
+1. Adja meg a Log Analytics-munkaterület részleteit. 
+   - Úgy dönt, hogy engedélyezi a **Twin Collectiont** a **Twin Collection** **bekapcsolásának**bekapcsolása mellett.
+   - Úgy dönt, hogy a **nyers eseményeket** a tároló alapértelmezett adattípusain kívül tárolja, ha kiválasztja a **nyers eszköz biztonsági eseményeinek tárolása** log Analyticsban. Hagyja bekapcsolni a **nyers esemény** **bekapcsolását**. 
+    
+1. Kattintson a **Save** (Mentés) gombra. 
 
-Gratulálunk! Ön teljesítette az IoT hub IoT ASC engedélyezéséhez. 
+Gratulálunk! Befejezte a IoT Azure Security Centerének engedélyezését a IoT Hub. 
 
 ## <a name="next-steps"></a>További lépések
 
-Folytassa a következő cikkben talál a megoldás konfigurálása...
+Folytassa a következő cikkel a megoldás konfigurálásához...
 
 > [!div class="nextstepaction"]
 > [A megoldás konfigurálása](quickstart-configure-your-solution.md)
+
+

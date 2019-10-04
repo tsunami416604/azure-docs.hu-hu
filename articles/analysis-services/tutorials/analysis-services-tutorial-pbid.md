@@ -2,20 +2,20 @@
 title: Oktatóanyag – Csatlakozás az Azure Analysis Serviceshez a Power BI Desktoppal | Microsoft Docs
 author: minewiskan
 manager: kfile
-description: Ismerje meg, hogyan csatlakozhat az Azure Analysis Services a Power BI Desktopban.
+description: Megtudhatja, hogyan csatlakozhat a Azure Analysis Serviceshoz a Power BI Desktop használatával.
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 01/09/2019
+ms.date: 04/25/2019
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: 5d021aa7a6d55bb071340ebcd8e7090a4b0c2e2f
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: daebc3e720eec8d958697288922c788a44156778
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188810"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932384"
 ---
-# <a name="tutorial-connect-with-power-bi-desktop"></a>Oktatóanyag: Csatlakozás a Power BI Desktopban
+# <a name="tutorial-connect-with-power-bi-desktop"></a>Oktatóanyag: Kapcsolat Power BI Desktop
 
 Ebben az oktatóanyagban a Power BI Desktopot fogja használni arra, hogy csatlakozzon az adventureworks minta-modelladatbázishoz a kiszolgálóján. A végrehajtandó feladat azt szimulálja, ahogyan egy felhasználó jellemzően csatlakozik a modellhez és létrehoz egy egyszerű jelentést a modelladatok alapján.
 
@@ -31,7 +31,7 @@ Ebben az oktatóanyagban a Power BI Desktopot fogja használni arra, hogy csatla
 - [Telepítette a legújabb Power BI Desktopot](https://powerbi.microsoft.com/desktop).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
-Ebben az oktatóanyagban, bejelentkezési a portálra, kérje le csak a kiszolgáló nevét. A felhasználóknak általában a kiszolgáló rendszergazdája adja meg a kiszolgáló nevét.
+Ebben az oktatóanyagban bemutatjuk a portálon, hogy csak a kiszolgálónevet kapja meg. A felhasználóknak általában a kiszolgáló rendszergazdája adja meg a kiszolgáló nevét.
 
 Jelentkezzen be a [portálra](https://portal.azure.com/).
 
@@ -71,4 +71,4 @@ Másolja a kiszolgáló nevét az **Azure Portal** > kiszolgáló > **Áttekint�
 Ha többé nincs szüksége rá, akkor ne mentse a jelentést, vagy törölje a fájlt, ha már kimentette.
 
 ## <a name="next-steps"></a>További lépések
-Ebben az oktatóanyagban a Power BI Desktop használatát sajátította el egy kiszolgálón lévő adatmodellhez való csatlakozásra és egy egyszerű jelentés létrehozására. Ha nem járatos az adatmodellek létrehozásában, akkor olvassa el az [Oktatóanyag az Adventure Works Internet Sales adatmodellhez](aas-adventure-works-tutorial.md) című cikket.
+Ebben az oktatóanyagban a Power BI Desktop használatát sajátította el egy kiszolgálón lévő adatmodellhez való csatlakozásra és egy egyszerű jelentés létrehozására. Ha nem ismeri az adatmodell létrehozását, tekintse meg az [Adventure Works Internet Sales táblázatos](https://docs.microsoft.com/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial) adatmodellezési oktatóanyagot a SQL Server Analysis Services dokumentációjában.

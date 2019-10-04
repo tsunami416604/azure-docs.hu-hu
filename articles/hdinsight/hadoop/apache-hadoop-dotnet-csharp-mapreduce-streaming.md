@@ -1,7 +1,6 @@
 ---
-title: C# használata a HDInsight - Azure hadoop MapReduce
-description: Ismerje meg, hogyan használható C# Azure HDInsight az Apache Hadoop MapReduce-megoldásokat hozhat létre.
-services: hdinsight
+title: A C# MapReduce használata a Hadoop-ben a HDInsight-Azure-ban
+description: Megtudhatja, C# hogyan hozhat létre MapReduce-megoldásokat az Azure HDInsight Apache Hadoop használatával.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
@@ -9,53 +8,53 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 0c3525b73560d3edee5bffa7a391fcedeaaa1e48
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 5784fb4f4ab0f46d2db7e5e8cfe9deeafabb4e90
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545094"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066946"
 ---
-# <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>Használat C# streamelési HDInsight az Apache hadoop MapReduce-
+# <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>Használat C# a MapReduce streaming Apache Hadoop a HDInsight-ben
 
-Ismerje meg, hogyan használhatja a C# MapReduce megoldás létrehozása a HDInsight.
+Megtudhatja, C# hogyan hozhat létre MapReduce-megoldást a HDInsight-ben.
 
 > [!IMPORTANT]
-> A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További információkért lásd: [HDInsight összetevők verziószámozása](../hdinsight-component-versioning.md).
+> A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További információ: HDInsight- [összetevő verziószámozása](../hdinsight-component-versioning.md).
 
-Az Apache Hadoop streamelési egy segédprogram, amely lehetővé teszi, hogy egy parancsfájl vagy végrehajtható fájl használatával MapReduce-feladatok futtatásához. Ebben a példában a .NET szolgál a teljesítményleképező és nyomáscsökkentő word-count megoldások megvalósításához.
+A Apache Hadoop streaming egy olyan segédprogram, amely lehetővé teszi, hogy MapReduce-feladatokat futtasson egy parancsfájl vagy egy végrehajtható fájl használatával. Ebben a példában a .NET használatával lehet megvalósítani a leképező és a szűkítőt a Word Count megoldásban.
 
 ## <a name="net-on-hdinsight"></a>.NET on HDInsight
 
-__Linux-alapú HDInsight__ -fürtök használata [Mono (https://mono-project.com) ](https://mono-project.com) .NET-alkalmazások futtatására. Monó verzió 4.2.1 megtalálható a HDInsight 3.6-os verzióját. További információ a Mono HDInsight mellékelt verzióját, lásd: [HDInsight összetevő verziók](../hdinsight-component-versioning.md). 
+A __Linux-alapú HDInsight-__ fürtök a MONO-t használják [(https://mono-project.com) ](https://mono-project.com) .NET-alkalmazások futtatására. A HDInsight 3,6-es verziója tartalmazza a Mono 4.2.1-es verzióját. További információ a HDInsight által tartalmazott mono-verzióról: HDInsight- [összetevő verziója](../hdinsight-component-versioning.md). 
 
-A .NET-keretrendszer-verziókat monó kompatibilitást további információkért lásd: [monó kompatibilitási](https://www.mono-project.com/docs/about-mono/compatibility/).
+További információ a .NET-keretrendszer verzióival való monó kompatibilitásról: [monó kompatibilitás](https://www.mono-project.com/docs/about-mono/compatibility/).
 
-## <a name="how-hadoop-streaming-works"></a>Hadoop streamelési működése
+## <a name="how-hadoop-streaming-works"></a>Az Hadoop streaming működése
 
-Az ebben a dokumentumban streamelési használt alapvető folyamat a következőképpen történik:
+A dokumentumban a folyamatos átvitelhez használt alapszintű folyamat a következő:
 
-1. Hadoop (ebben a példában mapper.exe) leképezőjét STDIN az adatokat továbbítja.
-2. A teljesítményleképező feldolgozza az adatokat, és a STDOUT tabulátorral elválasztott kulcs/érték párok bocsát ki.
-3. A kimenet hadoop olvassa el, és STDIN a nyomáscsökkentő (reducer.exe ebben a példában), majd továbbítja.
-4. A nyomáscsökkentő a tabulátorral tagolt kulcs/érték párok beolvassa, feldolgozza az adatokat, és majd bocsát ki az eredmény tabulátorral elválasztott kulcs/érték párokként STDOUT-on.
-5. A kimenet Hadoop által olvasott és írt a kimeneti könyvtárba.
+1. A Hadoop az adatleképezést (ebben a példában a mapper. exe fájlt) az STDIN-re továbbítja.
+2. A Mapper dolgozza fel az adatfeldolgozást, és tabulátorral tagolt kulcs/érték párokat bocsát ki az STDOUT-ra.
+3. A kimenetet a Hadoop olvassa be, majd átadja a (z) szűkítőnek (ez a példa a redukáló. exe fájlnak) a STDIN-ben.
+4. A redukáló beolvassa a tabulátorral tagolt kulcs/érték párokat, feldolgozza az adatokat, majd tabulátorral tagolt kulcs/érték párokat bocsát ki az STDOUT-on.
+5. A kimenetet a Hadoop olvassa be, és a kimeneti könyvtárba írja.
 
-A streamelési további információkért lásd: [Hadoop Streamelési](https://hadoop.apache.org/docs/r2.7.1/hadoop-streaming/HadoopStreaming.html).
+További információ a folyamatos átvitelről: [Hadoop streaming](https://hadoop.apache.org/docs/r2.7.1/hadoop-streaming/HadoopStreaming.html).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Írás és létrehozása a C#-kódot, amely a .NET-keretrendszer 4.5 célozza ismeretét. A jelen dokumentumban leírt lépések a Visual Studio 2017-et használja.
+* A .NET-keretrendszer 4,5-es C# példányát tároló kód írásával és összeállításával kapcsolatos ismeretek. A jelen dokumentumban ismertetett lépések a Visual Studio 2017-et használják.
 
-* Oly módon, .exe fájlok feltöltése a fürtöt. A jelen dokumentumban leírt lépések a Data Lake Tools for Visual Studio használatával a fájlok feltöltése a fürt elsődleges tároló.
+* Az. exe fájlok a fürtbe való feltöltésének módja. A jelen dokumentumban szereplő lépések a Visual studióhoz készült Data Lake Tools használatával töltik fel a fájlokat a fürt elsődleges tárolójába.
 
-* Az Azure PowerShell vagy SSH-ügyfelet.
+* Azure PowerShell vagy SSH-ügyfél.
 
-* A Hadoop HDInsight-fürtön. Fürt létrehozásával kapcsolatos további információkért lásd: [hozzon létre egy HDInsight-fürt](../hdinsight-hadoop-provision-linux-clusters.md).
+* Egy Hadoop a HDInsight-fürtön. A fürtök létrehozásáról további információt a HDInsight- [fürt létrehozása](../hdinsight-hadoop-provision-linux-clusters.md)című témakörben talál.
 
-## <a name="create-the-mapper"></a>Hozzon létre a leképezője
+## <a name="create-the-mapper"></a>A Mapper létrehozása
 
-A Visual Studióban hozzon létre egy új __Konzolalkalmazás__ nevű __eseményleképező__. Az alkalmazás a következő kód használatával:
+A Visual Studióban hozzon létre egy új, __Mapper__nevű __Console-alkalmazást__ . Használja az alábbi kódot az alkalmazáshoz:
 
 ```csharp
 using System;
@@ -88,11 +87,11 @@ namespace mapper
 }
 ```
 
-Miután létrehozta az alkalmazást, építhet ki, hogy a `/bin/Debug/mapper.exe` fájlt a projekt könyvtárában.
+Az alkalmazás létrehozása után hozza létre, hogy létrehozza a `/bin/Debug/mapper.exe` fájlt a projekt könyvtárában.
 
-## <a name="create-the-reducer"></a>A nyomáscsökkentő létrehozása
+## <a name="create-the-reducer"></a>A szűkítő létrehozása
 
-A Visual Studióban hozzon létre egy új __Konzolalkalmazás__ nevű __nyomáscsökkentő__. Az alkalmazás a következő kód használatával:
+A Visual Studióban hozzon létre egy új, __szűkítő__nevű __Console-alkalmazást__ . Használja az alábbi kódot az alkalmazáshoz:
 
 ```csharp
 using System;
@@ -141,74 +140,74 @@ namespace reducer
 }
 ```
 
-Miután létrehozta az alkalmazást, építhet ki, hogy a `/bin/Debug/reducer.exe` fájlt a projekt könyvtárában.
+Az alkalmazás létrehozása után hozza létre, hogy létrehozza a `/bin/Debug/reducer.exe` fájlt a projekt könyvtárában.
 
 ## <a name="upload-to-storage"></a>Feltöltés tárolóba
 
-1. A Visual Studióban nyissa meg a **Server Explorer**.
+1. A Visual Studióban nyissa meg a **Server Explorert**.
 
 2. Bontsa ki az **Azure** elemet, majd bontsa ki a **HDInsight** elemet.
 
-3. Ha a rendszer kéri, adja meg az Azure-előfizetés hitelesítő adatait, és kattintson **bejelentkezés**.
+3. Ha a rendszer kéri, adja meg az Azure-előfizetés hitelesítő adatait, majd kattintson **a bejelentkezés**elemre.
 
-4. Bontsa ki a HDInsight-fürt, akinél szeretné az alkalmazást. Egy bejegyzés az a szöveg __(alapértelmezett Tárfiók)__ szerepel a listán.
+4. Bontsa ki azt a HDInsight-fürtöt, amelyre telepíteni kívánja az alkalmazást. Megjelenik egy bejegyzés a szöveggel __(alapértelmezett Storage-fiók)__ .
 
-    ![A storage-fiók a fürt megjelenítése a Server Explorerben](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/storage.png)
+    ![A fürthöz tartozó Storage-fiókot megjelenítő Server Explorer](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-storage-account.png)
 
-    * Ez a bejegyzés bővíthetők ki, ha az egy __Azure Storage-fiók__ a fürt alapértelmezett tárolóként. Az alapértelmezett tároló a fürt számára a fájlok megtekintését, bontsa ki a bejegyzést, és kattintson duplán a __(alapértelmezett tároló)__.
+    * Ha ezt a bejegyzést ki lehet bővíteni, az __Azure Storage-fiókot__ használja alapértelmezett tárolóként a fürt számára. Ha meg szeretné tekinteni a fürt alapértelmezett tárolójában lévő fájlokat, bontsa ki a bejegyzést, majd kattintson duplán a __(alapértelmezett tároló)__ elemre.
 
-    * Ha ez a bejegyzés nem bonthatók ki, használja a __Azure Data Lake Storage__ az alapértelmezett tárolóként, a fürt számára. A fájlok a fürt számára az alapértelmezett tároló megjelenítéséhez kattintson duplán a __(alapértelmezett Tárfiók)__ bejegyzés.
+    * Ha ezt a bejegyzést nem lehet kibontani, a __Azure Data Lake Storage__ használja a fürt alapértelmezett tárolójának. A fürt alapértelmezett tárolójában lévő fájlok megtekintéséhez kattintson duplán az __(alapértelmezett Storage-fiók)__ bejegyzésre.
 
-5. Az .exe fájlok feltöltéséhez használja a következő módszerek egyikét:
+5. Az. exe fájlok feltöltéséhez használja az alábbi módszerek egyikét:
 
-   * Használata egy __Azure Storage-fiók__, kattintson a Feltöltés ikonra, és keresse meg a **bin\debug** mappáját a **eseményleképező** projekt. Végül válassza ki a **mapper.exe** fájlt, és kattintson a **Ok**.
+   * Ha __Azure Storage-fiókot__használ, kattintson a feltöltés ikonra, majd keresse meg a **bin\debug** mappát a **Mapper** projekthez. Végül válassza ki a **mapper. exe** fájlt, majd kattintson **az OK**gombra.
 
-       ![ikon feltöltése](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/upload.png)
+        ![HDInsight feltöltése ikon a Mapper számára](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-upload-icon.png)
     
-   * Ha használ __Azure Data Lake Storage__, kattintson a jobb gombbal egy üres területre a fájl listáján, és válassza __feltöltése__. Végül válassza ki a **mapper.exe** fájlt, és kattintson a **nyílt**.
+   * Ha __Azure Data Lake Storage__használ, kattintson a jobb gombbal egy üresre a fájl listázása területen, majd válassza a __feltöltés__lehetőséget. Végül válassza ki a **mapper. exe** fájlt, és kattintson a **Megnyitás**gombra.
 
-     Miután a __mapper.exe__ feltöltés befejeződött, a feltöltési folyamat esetében ismételje meg a __reducer.exe__ fájl.
+     A __mapper. exe__ feltöltésének befejezése után ismételje meg a feltöltési folyamatot a __csökkentő. exe__ fájlhoz.
 
-## <a name="run-a-job-using-an-ssh-session"></a>A feladat futtatása: Egy SSH-munkamenet használata
+## <a name="run-a-job-using-an-ssh-session"></a>Feladatok futtatása: SSH-munkamenet használata
 
-1. Az SSH használata a HDInsight-fürthöz való csatlakozáshoz. További információ: [Az SSH használata HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
+1. Az SSH használatával csatlakozzon a HDInsight-fürthöz. További információ: [Az SSH használata HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-2. A MapReduce feladat indításához használja a következő parancsok egyikét:
+2. A MapReduce-feladatok elindításához használja a következő parancsok egyikét:
 
-   * Ha használ __Data Lake Storage Gen2__ az alapértelmezett tároló:
+   * __Data Lake Storage Gen2__ használata alapértelmezett tárolóként:
 
        ```bash
        yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files abfs:///mapper.exe,abfs:///reducer.exe -mapper mapper.exe -reducer reducer.exe -input /example/data/gutenberg/davinci.txt -output /example/wordcountout
        ```
 
-   * Ha használ __Data Lake Storage Gen1__ az alapértelmezett tároló:
+   * __Data Lake Storage Gen1__ használata alapértelmezett tárolóként:
 
        ```bash
        yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files adl:///mapper.exe,adl:///reducer.exe -mapper mapper.exe -reducer reducer.exe -input /example/data/gutenberg/davinci.txt -output /example/wordcountout
        ```
     
-   * Ha használ __Azure Storage__ az alapértelmezett tároló:
+   * Ha az __Azure Storage__ -t használja alapértelmezett tárolóként:
 
        ```bash
        yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files wasb:///mapper.exe,wasb:///reducer.exe -mapper mapper.exe -reducer reducer.exe -input /example/data/gutenberg/davinci.txt -output /example/wordcountout
        ```
 
-     Az alábbi lista ismerteti, hogy minden paraméter leírása:
+     A következő lista ismerteti, hogy mit tesz az egyes paraméterek:
 
-   * `hadoop-streaming.jar`: A jar-fájlt, amely tartalmazza a folyamatos átviteli MapReduce-szolgáltatásokat.
-   * `-files`: Hozzáadja a `mapper.exe` és `reducer.exe` fájlokat a feladatot. A `abfs:///`,`adl:///` vagy `wasb:///` előtt minden egyes fájl elérési útját a fürt alapértelmezett tárolója gyökerében.
-   * `-mapper`: Itt adhatja meg, melyik fájl leképezőjét valósítja meg.
-   * `-reducer`: Itt adhatja meg, melyik fájlt a nyomáscsökkentő valósítja meg.
+   * `hadoop-streaming.jar`: A streaming MapReduce funkciót tartalmazó jar-fájl.
+   * `-files`: Hozzáadja a `mapper.exe` és `reducer.exe` a fájlokat a feladatokhoz. A `abfs:///`,`adl:///` vagy`wasb:///` minden fájl előtt az alapértelmezett tároló gyökerének elérési útja a fürthöz.
+   * `-mapper`: Meghatározza, hogy melyik fájl implementálja a leképezést.
+   * `-reducer`: Meghatározza, hogy melyik fájl implementálja a szűkítőt.
    * `-input`: A bemeneti adatok.
-   * `-output`: A kimeneti könyvtárba.
+   * `-output`: A kimeneti könyvtár.
 
-3. A MapReduce feladat befejezése után az eredmények megtekintéséhez használja a következő:
+3. A MapReduce-feladatok befejezése után a következő paranccsal tekintheti meg az eredményeket:
 
     ```bash
     hdfs dfs -text /example/wordcountout/part-00000
     ```
 
-    A következő szöveg Ez a parancs által visszaadott adatok egy példát:
+    A következő szöveg egy példa a parancs által visszaadott adatmennyiségre:
 
         you     1128
         young   38
@@ -220,13 +219,13 @@ Miután létrehozta az alkalmazást, építhet ki, hogy a `/bin/Debug/reducer.ex
         yourselves      3
         youth   17
 
-## <a name="run-a-job-using-powershell"></a>A feladat futtatása: A PowerShell használata
+## <a name="run-a-job-using-powershell"></a>Feladatok futtatása: A PowerShell használata
 
-Használja a következő PowerShell-parancsfájl futtatása egy MapReduce-feladatot, és töltse le az eredményeket.
+A következő PowerShell-szkripttel futtasson egy MapReduce-feladatot, és töltse le az eredményeket.
 
 [!code-powershell[main](../../../powershell_scripts/hdinsight/use-csharp-mapreduce/use-csharp-mapreduce.ps1?range=5-87)]
 
-Ez a szkript kéri a fürt bejelentkezési fiók nevét és jelszavát, és a HDInsight-fürt neve. A feladat befejezése után a kimenet nevű fájl töltődik le `output.txt`. A következő szöveget a példázza az adatok a `output.txt` fájlt:
+Ez a parancsfájl kéri a fürt bejelentkezési fiókjának nevét és jelszavát, valamint a HDInsight-fürt nevét. A feladatok befejezése után a rendszer letölti a kimenetet egy nevű `output.txt`fájlba. A következő szöveg egy példa `output.txt` a fájlban található fájlokra:
 
     you     1128
     young   38
@@ -240,8 +239,8 @@ Ez a szkript kéri a fürt bejelentkezési fiók nevét és jelszavát, és a HD
 
 ## <a name="next-steps"></a>További lépések
 
-A MapReduce használata a HDInsight további információkért lásd: [MapReduce használata a HDInsight-](hdinsight-use-mapreduce.md).
+A MapReduce és a HDInsight használatával kapcsolatos további információkért lásd: a [MapReduce használata a HDInsight](hdinsight-use-mapreduce.md).
 
-Használatával kapcsolatos információk C# tekintse meg a Hive és a Piggel [használatát egy C# felhasználó által definiált függvény az Apache Hive- és Apache Pig](apache-hadoop-hive-pig-udf-dotnet-csharp.md).
+További információ a kaptár C# és a Pig használatáról: [ C# felhasználó által definiált függvény használata Apache Hive és Apache Pig](apache-hadoop-hive-pig-udf-dotnet-csharp.md)használatával.
 
-Tájékoztatást C# a HDInsight alatt futó Stormmal, lásd: [Develop C# a HDInsight Apache Storm-topológiák](../storm/apache-storm-develop-csharp-visual-studio-topology.md).
+A Storm on HDInsight C# használatával kapcsolatos információkért lásd: a [HDInsight C# -Apache Storm hez készült topológiák fejlesztése](../storm/apache-storm-develop-csharp-visual-studio-topology.md).

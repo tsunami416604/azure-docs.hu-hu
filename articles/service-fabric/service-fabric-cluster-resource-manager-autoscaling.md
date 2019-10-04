@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 04/17/2018
 ms.author: miradic
 ms.openlocfilehash: 8e57c071c9fd93a8581d574aeec2b23b38b3ab95
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281659"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60844023"
 ---
 # <a name="introduction-to-auto-scaling"></a>Automatikus skálázás bemutatása
 Automatikus skálázás egy további lehetőség a Service Fabric dinamikusan méretezheti az services szolgáltatásokat jelent, vagy az erőforrások használat alapján a terhelés alapján. Automatikus skálázás nagy rugalmasságot biztosít, és lehetővé teszi, hogy további példányok vagy a partíciók az igény szerinti szolgáltatás kiépítése. A teljes automatikus skálázást folyamat automatizált és átlátható, és a szabályzatok a szolgáltatás beállítása után esetén nem kell a szolgáltatási szintű manuális méretezési műveletekhez. Automatikus skálázás is be kell kapcsolni vagy szolgáltatás-létrehozás időpontjában, vagy bármikor a szolgáltatás frissítésével.

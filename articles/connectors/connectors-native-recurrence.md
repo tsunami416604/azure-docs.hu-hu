@@ -1,114 +1,96 @@
 ---
-title: Az Azure Logic Apps automatizált feladatok és a munkafolyamatok futtatásához és ütemezéséhez |} A Microsoft Docs
-description: Az Azure Logic Appsben az ismétlődési összekötővel ütemezett és ismétlődő feladatok automatizálása
+title: Ismétlődő feladatok ütemezése ismétlődési eseményindítóval – Azure Logic Apps
+description: Ismétlődő automatizált feladatok és munkafolyamatok ütemezése és futtatása az ismétlődési eseményindítóval Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.assetid: 51dd4f22-7dc5-41af-a0a9-e7148378cd50
-tags: connectors
-ms.topic: article
-ms.date: 01/08/2019
-ms.openlocfilehash: eb22539d1f433e396935f82e4cb3786d5699d21a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.reviewer: deli, klam, LADocs
+ms.topic: conceptual
+ms.date: 05/25/2019
+ms.openlocfilehash: 0bd7262daf23f205552e46bc3ca2802cf35f85db
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58083954"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914456"
 ---
-# <a name="create-and-run-recurring-tasks-and-workflows-with-azure-logic-apps"></a>Hozzon létre és ismétlődő feladatok és a munkafolyamatok futtatásához az Azure Logic Apps
+# <a name="create-schedule-and-run-recurring-tasks-and-workflows-with-the-recurrence-trigger-in-azure-logic-apps"></a>Ismétlődő feladatok és munkafolyamatok létrehozása, ütemezése és futtatása az ismétlődési eseményindítóval Azure Logic Apps
 
-Műveletek, a számítási feladatok vagy a rendszeresen futó folyamatok ütemezése, hozzon létre egy logikai alkalmazás munkafolyamatának kezdődik a **ütemezés – ismétlődés** [eseményindító](../logic-apps/logic-apps-overview.md#logic-app-concepts). Dátum és idő indítása a munkafolyamat és a egy ismétlődési ütemezést, mint az ezekben a példákban a feladatok végrehajtásához állíthatja be:
+Ha a feladatokat, folyamatokat vagy feladatokat egy adott ütemterven szeretné rendszeresen futtatni, elindíthatja a logikai alkalmazás munkafolyamatát a beépített **Ismétlődés-ütemezése** eseményindítóval. Megadhat egy dátumot és időpontot, valamint egy időzónát a munkafolyamat elindításához és a munkafolyamat ismétlődésének megismétléséhez. Ha bármilyen okból kimaradnak az ismétlődések, ez az eseményindító a következő ütemezett időszakban ismétlődően folytatódik. A beépített ütemezett eseményindítókkal és műveletekkel kapcsolatos további információkért lásd: [ismétlődő automatizált, feladatok és munkafolyamatok ütemezett és futtatott Azure Logic apps](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md).
 
-* Belső adatok lekérése: [SQL tárolt eljárás futtatása](../connectors/connectors-create-api-sqlazure.md) minden nap.
-* Külső adatok beolvasása: Lekérés időjárás-előrejelzéseket kaphat a NOAA 15 percenként.
-* Jelentés adatai: Az elmúlt héten az e-mail-nagyobb, mint egy adott mennyiség megrendeléseket összegzését.
-* Dolgozza fel az adatokat: A mai feltöltött képek minden csúcsidőn weekday tömörítése.
-* Adatok törlése: Törölje a három hónapnál régebbi összes tweeteket.
-* Archivált adatok: Küldje le számlák egy biztonsági mentési szolgáltatás minden hónapban.
+Íme néhány olyan minta, amelyet ez az eseményindító támogat, valamint fejlettebb ismétlődéseket és összetett ütemezéseket:
 
-Az eseményindító támogatja az sok mintát, például:
+* Futtassa azonnal, és ismételje meg az *n* másodpercenkénti számát, a perceket, az órákat, a napokat, a heteket és a hónapokat.
 
-* Azonnal futtatni, és ismételje meg minden *n* másodperc, perc, óra, nap, hét vagy hónapok száma.
-* Egy adott időpontban el, majd futtassa, és ismételje meg minden *n* másodperc, perc, óra, nap, hét vagy hónapok száma.
-* Futtassa, és ismételje meg egy vagy több alkalommal minden nap, például: 8:00-kor és 17:00-kor.
-* Futtassa, és ismételje meg minden héten, de csak az adott napon, például a hétvégén.
-* Futtassa, és ismételje meg minden héten, de csak az adott napokon és időpontokban, például a munkanapokon 8:00-kor és 17:00-kor.
+* Kezdjen egy adott dátummal és időponttal, majd futtasson és ismételje meg az *n* másodpercenkénti számát, perc, óra, nap, hét vagy hónap.
 
-Minden alkalommal, amikor az ismétlődési eseményindító indulásakor a Logic Apps hoz létre, és a egy új példányát a logikai alkalmazás munkafolyamatának futtatása. 
+* Futtasson és ismételje meg az egyes napokon, például 8:00-kor és 5:00 PM-ben.
 
-A logikai alkalmazás elindításához és a jövőben csak egyetlen alkalommal fussanak: [Futtatás feladat csak egyszer](#run-once) jelen témakör későbbi részében.
+* Minden héten futtasson és ismételje meg a műveletet, de csak adott napokon, például szombaton és vasárnap.
+
+* Minden héten futtasson és ismételje meg a műveletet, de csak adott napokra és időpontokra, például hétfő – péntek, 8:00 és 5:00 órakor.
+
+A trigger és a csúszó ablak trigger közötti különbségek, illetve az ismétlődő munkafolyamatok ütemezésével kapcsolatos további információkért lásd: [ismétlődő automatizált feladatok, folyamatok és munkafolyamatok ütemezése és futtatása a Azure Logic apps](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md).
+
+> [!TIP]
+> Ha szeretné elindítani a logikai alkalmazást, és csak egyszer kell futtatnia a jövőben, tekintse meg a [feladatok futtatása csak](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#run-once)egyszer című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik előfizetéssel, [kezdhet egy ingyenes Azure-fiókkal](https://azure.microsoft.com/free/). Egyéb esetben [regisztrálhat használatalapú fizetéses előfizetésre](https://azure.microsoft.com/pricing/purchase-options/).
+* Azure-előfizetés. Ha nem rendelkezik előfizetéssel, [regisztrálhat egy ingyenes Azure-fiókot](https://azure.microsoft.com/free/).
 
-* Alapvető ismeretek szerezhetők [logikai alkalmazások létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md) 
+* A [Logic apps](../logic-apps/logic-apps-overview.md)alapszintű ismerete. Ha most ismerkedik a Logic apps szolgáltatással, Ismerje meg, [hogyan hozhatja létre az első logikai alkalmazását](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-## <a name="add-a-recurrence-trigger-to-your-logic-app"></a>Adjon hozzá egy ismétlődési eseményindítót a logikai alkalmazáshoz
+## <a name="add-recurrence-trigger"></a>Ismétlődési eseményindító hozzáadása
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Hozzon létre egy üres logikai alkalmazás, vagy további [üres logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Üres logikai alkalmazás létrehozása.
 
-2. Miután a Logic Apps Designerben jelenik meg, a keresőmező alatt válassza ki **összes**. A keresőmezőbe írja be a "recurrence" szűrőként. Az eseményindítók listában jelölje ki az eseményindító: **Ismétlődés - ütemezés** 
+1. A Logic app Designer megjelenése után a keresőmezőbe írja be a "Ismétlődés" kifejezést a szűrőként. Az eseményindítók listából válassza ki ezt az eseményindítót a logikai alkalmazás munkafolyamatának első lépéseként: **Ismétlődés**
 
-   !["Ismétlődési – ütemezés" trigger kiválasztása](./media/connectors-native-recurrence/add-recurrence-trigger.png)
+   ![Az "Ismétlődés" eseményindító kiválasztása](./media/connectors-native-recurrence/add-recurrence-trigger.png)
 
-   Ez az eseményindító már az első lépés a logikai alkalmazásban.
+1. Adja meg az ismétlés időközét és gyakoriságát. Ebben a példában ezeket a tulajdonságokat úgy állítsa be, hogy hetente futtassák a munkafolyamatot.
 
-3. Adja meg az ismétlés időközét és gyakoriságát. Ebben a példában állítsa be ezeket a tulajdonságokat a munkafolyamatot hetente futtatni. 
+   ![Az intervallum és a gyakoriság beállítása](./media/connectors-native-recurrence/recurrence-trigger-details.png)
 
-   ![Set időközét és gyakoriságát](./media/connectors-native-recurrence/recurrence-trigger-details.png)
+   | Tulajdonság | Kötelező | JSON-név | Type | Leírás |
+   |----------|----------|-----------|------|-------------|
+   | **Intervallum** | Igen | tartam | Integer | Pozitív egész szám, amely leírja, hogy a munkafolyamat milyen gyakran fut a gyakoriság alapján. Itt láthatók a minimális és a maximális intervallumok: <p>Hónap 1-16 hónap </br>Nap 1-500 nap </br>Óra 1 – 12000 óra </br>Percenként 1 – 72000 perc </br>Második 1 – 9999999 másodperc<p>Ha például az intervallum 6, és a gyakoriság értéke "Month", akkor az ismétlődés 6 havonta történik. |
+   | **Gyakoriság** | Igen | frequency | Sztring | Az ismétlődés időegysége: **Másodperc**, **perc**, **óra**, **nap**, **hét**vagy **hónap** |
+   ||||||
 
-4. További ütemezési beállításokat, válassza a **speciális beállítások megjelenítése**. 
+   További ütemezési lehetőségekért nyissa meg az **új paraméterek hozzáadása** listát. 
+   A kiválasztott lehetőségek megjelennek az triggeren a kijelölés után.
 
-   ![További beállítások](./media/connectors-native-recurrence/recurrence-trigger-more-options.png)
-
-5. Mostantól ezek a beállítások adhatók meg: 
-
-   * Állítsa be a kezdő dátum és idő aktiválja az eseményindítót. 
-   Ha megad egy kezdési dátumot és időpontot, időzónát is alkalmazhatók. 
-
-   * Ha a gyakoriság "Week" vagy a "Day" lehetőséget választja, kiválaszthatja az ismétlődés megadott időpontok. 
-
-   * Ha a "Week" lehetőséget választja, a hét meghatározott napjain túl is kiválaszthatja.
-   
    ![Speciális ütemezési beállítások](./media/connectors-native-recurrence/recurrence-trigger-more-options-details.png)
 
-   Tegyük fel például, hogy a mai dátum 2017. szeptember 4., hétfő. 
-   A következő ismétlődési eseményindító nem indul el *minden korábban* , mint a kezdő dátum és idő, amely 2017. szeptember 18., hétfő jelenleg 8:00 Csendes-ÓCEÁNI. 
-   Azonban van beállítva az ismétlődési ütemezés 10:30-kor, 12:30 = 1997031213, és 2:30-kor hétfőjén csak. Ezért az első alkalom, hogy az eseményindító aktiválódik, és létrehoz egy logikaialkalmazás-példányt a munkafolyamat jelenleg 10:30-kor. 
-   Hogyan indítása túllépi az munkahelyi kapcsolatos további információkért lásd: ezek [idő példák a start](#start-time).
-   12:30 = 1997031213 és 2:30-kor későbbi futtatások ugyanarra a napra fordulhat elő. 
-   Minden egyes ismétlődési saját munkafolyamat-példányhoz hoz létre. Ezt követően a teljes ütemezés ismétlődik minden újra következő hétfőn keresztül. 
-   [*Mik azok néhány további példa előfordulásait?*](#example-recurrences)
+   | Tulajdonság | Kötelező | JSON-név | Type | Leírás |
+   |----------|----------|-----------|------|-------------|
+   | **Időzóna** | Nem | timeZone | Sztring | Csak akkor érvényes, ha megad egy kezdési időpontot, mert ez az trigger nem fogad el [UTC](https://en.wikipedia.org/wiki/UTC_offset)-eltolást. Válassza ki az alkalmazni kívánt időzónát. |
+   | **Kezdési idő** | Nem | startTime | Sztring | Adja meg a kezdő dátumot és időpontot a következő formátumban: <p>ÉÉÉÉ-hh-NNTóó: PP: mm, ha időzónát választ <p>– vagy – <p>ÉÉÉÉ-hh-NNTóó: PP: ssZ, ha nem jelöl ki időzónát <p>Így például, ha a szeptember 18., 2017 at 2:00 PM-t szeretné használni, adja meg a "2017-09-18T14:00:00" parancsot, és válasszon ki egy időzónát, például a csendes-óceáni téli időpontot. Vagy a "2017-09-18T14:00:00Z" érték megadásával időzóna nélkül. <p>**Megjegyzés:** Ez a kezdési időpont legfeljebb 49 évvel későbbi, és az [ISO 8601 dátum-idő specifikációt](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) kell követnie [UTC dátum és idő formátumban](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), de [UTC-eltolás](https://en.wikipedia.org/wiki/UTC_offset)nélkül. Ha nem ad meg időzónát, a végén fel kell vennie a "Z" betűt szóközök nélkül. Ez a "Z" a megfelelő [tengeri](https://en.wikipedia.org/wiki/Nautical_time)időpontra hivatkozik. <p>Az egyszerű ütemtervek esetében a kezdési időpont az első előfordulás, míg a komplex ütemtervek esetében az trigger nem a kezdési időpontnál hamarabb következik be. [*Milyen módon használhatom a kezdő dátumot és időt?* ](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
+   | **Ezeken a napokon** | Nem | weekDays | Karakterlánc-vagy karakterlánc-tömb | Ha a "hét" lehetőséget választja, kiválaszthat egy vagy több napot, amikor futtatni szeretné a munkafolyamatot: **Hétfő**, **kedd**, **szerda**, **csütörtök**, **péntek**, **szombat**és **vasárnap** |
+   | **Ezekben az órákban** | Nem | óra | Egész vagy egész tömb | Ha a "nap" vagy a "hét" lehetőséget választja, akkor 0 és 23 közötti egész számot is kiválaszthat a nap azon órájára, amikor futtatni kívánja a munkafolyamatot. <p><p>Ha például a "10", a "12" és a "14" lehetőséget választja, akkor a nap órájában 10 ÓRAKOR, 12 ÓRAKOR és 2 óráig lesz kiszámítva, de a nap perce az ismétlődés megkezdése alapján történik. A nap percének megadásához adja meg a következő perc tulajdonság értékét **:** . |
+   | **Ezekben a percekben** | Nem | minutes | Egész vagy egész tömb | Ha a "nap" vagy a "hét" lehetőséget választja, akkor 0 és 59 közötti egész számot is kiválaszthat, ha a munkafolyamatot futtatni szeretné az óra percében. <p>Megadhatja például a "30" percet a perces jelölésként, és az előző példában a nap órájában a következőt kapja: 10:30, 12:30 PM és 2:30 PM. |
+   |||||
+
+   Tegyük fel például, hogy ma hétfő, szeptember 4., 2017. A következő ismétlődési eseményindító nem indul el a kezdési dátumnál és az időpontnál, ami a 2017-as hétfő, szeptember 18., 8:00 am PST. Az ismétlődési ütemterv azonban 10:30, 12:30 PM és 2:30 ÓRAKOR van beállítva hétfőnként. Így az eseményindító első indításakor a logikai alkalmazás munkafolyamat-példánya a 10:30-es időpontban jön létre. A kezdési idő működésével kapcsolatos további tudnivalókért tekintse meg a következő [példákat](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time).
+
+   A jövőbeli futtatások megtörténnek a 12:30 ÓRAKOR és a 2:30 PM-től ugyanazon a napon. Minden ismétlődés létrehozza a saját munkafolyamat-példányát. Ezután a teljes ütemterv ismét ismétlődik a következő hétfőn. [*Milyen más példák is előfordulnak?* ](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#example-recurrences)
 
    ![Speciális ütemezési példa](./media/connectors-native-recurrence/recurrence-trigger-more-options-advanced-schedule.png)
 
    > [!NOTE]
-   > Az eseményindító a megadott ismétlődés előnézetét jeleníti meg, csak ha "Day" vagy "Week" jelöli meg a gyakoriságot.
-   
-6. Most már létrehozhatja a fennmaradó munkafolyamatot műveletekhez, vagy vezérlő utasítások folyamatot. Hozzáadhat további műveleteket, lásd: [összekötők](../connectors/apis-list.md). 
+   > Az eseményindító csak akkor jeleníti meg a megadott ismétlődés előnézetét, ha a gyakoriság beállításnál a "nap" vagy a "hét" lehetőséget választja.
 
-## <a name="trigger-details"></a>A trigger részletei
+1. Most hozza létre a hátralévő munkafolyamatot más műveletekkel. További felvehető műveletekért lásd: [összekötők Azure Logic Appshoz](../connectors/apis-list.md).
 
-Ezeket a tulajdonságokat az ismétlődési eseményindító konfigurálhatja.
+## <a name="workflow-definition---recurrence"></a>Munkafolyamat-definíció – ismétlődés
 
-| Name (Név) | Szükséges | Tulajdonság neve | Typo | Leírás | 
-|----- | -------- | ------------- | ---- | ----------- | 
-| **Gyakoriság** | Igen | frequency | String | Az időegység, az Ismétlődés: **Második**, **perc**, **óra**, **nap**, **hét**, vagy **hónap** | 
-| **Intervallum** | Igen | interval | Egész szám | Pozitív egész szám, amely leírja, hogy milyen gyakran a munkafolyamat futtatása gyakorisága alapján. <p>Az alapértelmezett időköz: 1. Az alábbiakban a minimális és maximális időközönként: <p>– Hónap: 1 – 16 hónap </br>– Nap: 1-500 nap </br>– Óra: 1 – 12 000 óra </br>– Perc: 1 – 72,000 perc </br>-Másodperc: 1 – 9,999,999 másodperc<p>Például ha a időköz 6, és a gyakoriság "Month", akkor az ismétlődés nem minden hatodik hónapban. | 
-| **Időzóna** | Nem | timeZone | String | Csak amikor Ön megadja a kezdési időt, mert ez az eseményindító nem fogadja el érvényes [posun UTC místního](https://en.wikipedia.org/wiki/UTC_offset). Válassza ki az időzónát, amely a alkalmazni szeretné. | 
-| **Kezdési idő** | Nem | startTime | String | Adja meg a kezdési időt a következő formátumban: <p>ÉÉÉÉ-hh-nnTóó: pp: Ha egy időzóna <p>– vagy – <p>ÉÉÉÉ-hh-DDThh:mm:ssZ, ha nem adja meg a időzóna <p>Így például, ha azt szeretné, 2017. szeptember 18., 2:00-kor, majd adja meg "2017-09-18T14:00:00", és válassza ki az időzónát, például a csendes-óceáni idő. Másik lehetőségként adja meg "2017-09-18T14:00:00Z" időzóna nélkül. <p>**Megjegyzés:** Hajtsa végre a kezdő időpont a [ISO 8601 dátum-idő specifikáció](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) a [UTC idő dátumformátum](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), de egy [posun UTC místního](https://en.wikipedia.org/wiki/UTC_offset). Ne válassza ki az időzónát, ha hozzá kell adnia a levél "Z", a végén szóközök nélkül. A "Z" hivatkozik az azzal egyenértékű [hajózási idő](https://en.wikipedia.org/wiki/Nautical_time). <p>Egyszerű ütemezések esetében a kezdési időpont az első előfordulás a összetett ütemezéseknél az eseményindító nem indul el minden korábban, a kezdési időpontnál. [*Mik azok a módon, hogy a kezdő dátum és idő használható?*](#start-time) | 
-| **Ezeken a napokon** | Nem | weekDays | Karakterláncot vagy karakterlánc-tömbben | Ha "Week", ha a munkafolyamatot futtatni kívánt egy vagy több napot választhat: **Hétfő**, **kedd**, **szerda**, **csütörtök**, **péntek**, **szombat**, és **Vasárnap** | 
-| **Ezekben az órákban** | Nem | hours | Egész szám vagy az egész számok tömbje | Ha "Day" vagy "Week", választhat egy vagy több egész számok 0 és 23 legyen az óra, a nap, amikor a munkafolyamatot futtatni szeretné. <p>Például ha megadja a "10", "12" és "14", kap, az óra együtt 2 óra, 10 Órakor, 12 PM. | 
-| **Ezekben a percekben** | Nem | minutes | Egész szám vagy az egész számok tömbje | Ha "Day" vagy "Week", választhat egy vagy több egész számok 0 és 59 közötti legyen a perc, az óra, ha a munkafolyamatot futtatni szeretné. <p>Például "30" megadhatja a percenkénti be van jelölve, és megjelenik az előző példa a nap, óra, 10:30-kor, 12:30 = 1997031213, és 2:30-kor. | 
-||||| 
+A logikai alkalmazás mögöttes munkafolyamat-definíciójában, amely JSON-t használ, megtekintheti az [ismétlődési eseményindító definícióját](../logic-apps/logic-apps-workflow-actions-triggers.md#recurrence-trigger) a kiválasztott beállításokkal. A definíció megtekintéséhez a tervező eszköztárán válassza a **kód nézet**lehetőséget. A tervezőhöz való visszatéréshez válassza a tervező eszköztárán a **tervező elemet.**
 
-## <a name="json-example"></a>Példa JSON
-
-Íme egy példa [ismétlődési eseményindító meghatározása](../logic-apps/logic-apps-workflow-actions-triggers.md#recurrence-trigger):
+Ez a példa azt szemlélteti, hogyan lehet megtekinteni egy ismétlődési eseményindító definícióját egy mögöttes munkafolyamat-definícióban:
 
 ``` json
 "triggers": {
@@ -130,83 +112,14 @@ Ezeket a tulajdonságokat az ismétlődési eseményindító konfigurálhatja.
                "Monday"
             ]
          },
-         "startTime": "2017-09-07T14:00:00",
+         "startTime": "2017-09-07T14:00:00Z",
          "timeZone": "Pacific Standard Time"
       }
    }
 }
 ```
 
-## <a name="faq"></a>GYIK
-
-<a name="run-once"></a>
-
-**K:** Mi történik, ha szeretnék futtatni egy logikai alkalmazást a későbbiekben csak egyszer? </br>
-**V:** A logikai alkalmazás elindításához, és futtassa egyszer ismétlődés nélkül, használhatja a **Scheduler: Egyszeri futtatás feladatok** sablont. Új logikai alkalmazás létrehozása után, de a Logic Apps Designerben a megnyitása előtt a **sablonok** szakaszban, az a **kategória** listáról válassza ki **ütemezés**, majd válassza ki a sablon:
-
-![Válassza "a Scheduler: Feladatok futtatása után"sablon](./media/connectors-native-recurrence/choose-run-once-template.png)
-
-Vagy egy üres logikaialkalmazás-sablon használata, indítsa el a logikai alkalmazás a **amikor egy HTTP-kérés érkezik - kérelem** eseményindító. Paraméterként adja át a trigger kezdő időpontja. Adja hozzá a következő lépés a **késleltetés eddig – ütemezése** műveletet, és adja meg az idő, amikor elindul a következő művelet.
-
-<a name="example-recurrences"></a>
-
-**K:** Mik a többi példában ismétlődésütemezésekre? </br>
-**V:** Az alábbiakban további példák:
-
-| Ismétlődés | Intervallum | Gyakoriság | Kezdő időpont | E napokon | Órák | Percek | Megjegyzés |
-| ---------- | -------- | --------- | ---------- | ------------- | -------------- | ---------------- | ---- |
-| 15 percenként fut le (nincs kezdő dátum és idő) | 15 | Perc | {nincs} | {nem} érhető el | {nincs} | {nincs} | Ez az ütemezés azonnal elindítja, majd a jövőbeli ismétlődések a legutóbbi futtatás ideje alapján számítja ki. | 
-| 15 percenként fut le (a kezdő dátum és idő) | 15 | Perc | *startDate*T*startTime*Z | {nem} érhető el | {nincs} | {nincs} | Ez az ütemezés nem indul el *minden korábban* , mint a megadott kezdő dátum és idő, jövőbeli ismétlődések a legutóbbi futtatás ideje alapján számítja ki. | 
-| Futtassa a minden óra kezdetén (a kezdő dátum és idő) | 1 | Óra | *startDate*Thh:00:00Z | {nem} érhető el | {nincs} | {nincs} | Ez az ütemezés nem indul el *minden korábban* a megadott kezdési dátuma és időpontja. Jövőbeli ismétlődések minden órában futtatva a "00" minute be van jelölve. <p>Ha a gyakoriság "Week" vagy "Month", az ütemezés rendre fut csak egy naponta, hetente vagy havonta egy nap. | 
-| Óránként fut le, minden nap (nincs kezdő dátum és idő) | 1 | Óra | {nincs} | {nem} érhető el | {nincs} | {nincs} | Ez az ütemezés azonnal elindul, és a jövőbeli ismétlődések a legutóbbi futtatás ideje alapján számítja ki. <p>Ha a gyakoriság "Week" vagy "Month", az ütemezés rendre fut csak egy naponta, hetente vagy havonta egy nap. | 
-| Óránként fut le, minden nap (kezdő dátum és idő) | 1 | Óra | *startDate*T*startTime*Z | {nem} érhető el | {nincs} | {nincs} | Ez az ütemezés nem indul el *minden korábban* , mint a megadott kezdő dátum és idő, jövőbeli ismétlődések a legutóbbi futtatás ideje alapján számítja ki. <p>Ha a gyakoriság "Week" vagy "Month", az ütemezés rendre fut csak egy naponta, hetente vagy havonta egy nap. | 
-| Futtassa az elmúlt óra 15 percenként, óránként (a kezdő dátum és idő) | 1 | Óra | *startDate*T00:15:00Z | {nem} érhető el | {nincs} | {nincs} | Ez az ütemezés nem indul el *minden korábban* , mint a megadott kezdő dátum és idő, futtató: 00:15-kor, 1:15-kor, 2:15-kor, és így tovább. | 
-| 15 percenként fut le egy óra, minden órában (nincs kezdő dátum és idő) | 1 | Nap | {nincs} | {nem} érhető el | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | 15 | Ez az ütemezés lefuttat 00:15-kor, 1:15-kor, 2:15-kor, és így tovább. Ez az ütemezés is egyenértékűnek gyakoriságot, "Hour" és a egy kezdési időpontot "15" perc. | 
-| 15 percenként fut le, a 15 perces mark (nincs kezdő dátum és idő) | 1 | Nap | {nincs} | {nem} érhető el | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | 0, 15, 30, 45 | Ez az ütemezés nem indul el, mindaddig, amíg a következő megadott 15 perces be van jelölve. | 
-| Futtatás 8:00 órakor (kezdő dátum és idő nem) naponta | 1 | Nap | {nincs} | {nem} érhető el | 8 | {nincs} | Ez az ütemezés 8:00 órakor minden nap, fut, a megadott ütemezés alapján. | 
-| Futtatás 8:00 órakor minden nap (kezdő dátum és idő) | 1 | Nap | *startDate*T08:00:00Z | {nem} érhető el | {nincs} | {nincs} | Ez az ütemezés 8:00-kor minden nap, fut, a megadott kezdési időpont alapján. | 
-| Futtatás reggel 8:30-kor minden nap (nincs kezdő dátum és idő) | 1 | Nap | {nincs} | {nem} érhető el | 8 | 30 | Ez az ütemezés futtatja, reggel 8:30-kor minden nap, a megadott ütemezés alapján. | 
-| Futtatás reggel 8:30-kor minden nap (kezdő dátum és idő) | 1 | Nap | *startDate*T08:30:00Z | {nem} érhető el | {nincs} | {nincs} | Ez az ütemezés a megadott kezdési időpontban reggel 8:30-kor kezdődik. | 
-| 8:30-kor és du. 4:30 naponta futtatása | 1 | Nap | {nincs} | {nem} érhető el | 8, 16 | 30 | | 
-| Futtatás reggel 8:30-kor, 8:45-kor, 4:30 = 1997031213 és 4:45-kor minden nap | 1 | Nap | {nincs} | {nem} érhető el | 8, 16 | 30, 45 | | 
-| Futtat minden szombat hajnali 17: 00 (nincs kezdő dátum és idő) | 1 | Hét | {nincs} | "Szombat" | 17 | 00 | Az ütemezés futtat minden szombat délután 5:00-kor. | 
-| Futtat minden szombat hajnali 17: 00 (a kezdő dátum és idő) | 1 | Hét | *startDate*T17:00:00Z | "Szombat" | {nincs} | {nincs} | Ez az ütemezés nem indul el *minden korábban* a megadott kezdési dátum és idő, ebben az esetben 2017. szeptember 9., 17:00-kor. Jövőbeli ismétlődések futtat minden szombat hajnali 17:00-kor. | 
-| Minden kedden, csütörtök, 17: 00 | 1 | Hét | {nincs} | "Kedd", "Thursday" | 17 | {nincs} | Ez az ütemezés futtatása minden kedden és csütörtökön délután 5:00-kor. | 
-| Óránként fut le munkaidőben | 1 | Hét | {nincs} | Válassza ki a hétvégén kivételével minden nap. | Adja meg a kívánt nap. | Válassza ki bármelyik kívánt órák perc. | Például ha a munkaórák 8:00-kor, 5:00 Órakor, majd válassza ki "8, 9, 10, 11, 12, 13, 14, 15, 16, 17" szerint az órák, a nap. <p>Ha a munkaórák, 5:30 = 1997031213 8:30-kor, válassza ki az előző órában a napot plusz "30" óra perc. | 
-| Naponta egyszer futtatni hétvégén | 1 | Hét | {nincs} | "Szombat", "Sunday értékkel" | Adja meg a kívánt nap. | Válassza ki bármelyik óra perc szükség szerint. | Ez az ütemezés a megadott ütemezés szerint minden szombat és vasárnap futtatja. | 
-| 15 percenként fut le Kétheti hétfőn csak | 2 | Hét | {nincs} | "Hétfő" | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | 0, 15, 30, 45 | Ez az ütemezés lefuttat minden más hétfő minden 15 perces be van jelölve. | 
-| Óránként fut le egy nap / hó | 1 | Hónap | {Lásd a megjegyzést} | {nem} érhető el | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | {Lásd a megjegyzést} | Ha nem adja meg a kezdő dátum és idő, az ütemezés használja a létrehozásának dátuma és időpontja. A perc az ismétlődési ütemezés beállításához adja meg az órák, a kezdési időt percben, vagy azt az időpontot használja. Például ha a kezdési és a létrehozás ideje 8:25-kor, ez az ütemezés fut reggel 8:25-kor, 9:25-kor, 10:25-kor, és így tovább. | 
-||||||||| 
-
-<a name="start-time"></a>
-
-**K:** Mik azok a módon, hogy a kezdő dátum és idő használható? </br>
-**V:** Íme néhány a minták azt mutatják be, hogy miként szabályozható a kezdő dátum és idő ismétlődési, és hogyan a Logic Apps-motor hajtja végre ezek ismétlődések:
-
-| Kezdő időpont | Ismétlődés ütemezés nélkül | Ismétlődés ütemezéssel | 
-| ---------- | --------------------------- | ------------------------ | 
-| {nincs} | Az első számítási feladat azonnal futtatja. <p>A legutóbbi futtatás ideje alapján jövőbeli számítási feladatot futtat. | Az első számítási feladat azonnal futtatja. <p>Jövőbeli számítási feladatok a megadott ütemezés alapján fut. | 
-| Múltbeli kezdési időpontja | Futtatási időt a megadott kezdési időpontban és elvetések elmúlt futtassa többször alapján számítja ki. Az első számítási feladat fut, a következő jövő futási idő. <p>A legutóbbi futtatás ideje kiszámítása alapján jövőbeli számítási feladatot futtat. <p>További magyarázat tekintse meg a táblázat példa. | Az első számítási feladatot futtat *nem hamarabb* a kezdési időpontnál, a kezdési időpontból kiszámított ütemezésen alapul. <p>Jövőbeli számítási feladatok a megadott ütemezés alapján fut. <p>**Megjegyzés:** Ha adjon meg egy ismétlődési ütemezés, de nem adja meg az óra vagy perc alatt az ütemezés, majd jövőbeli futtatási idő kiszámítása az óra vagy perc, az első futtatásának időpontját, használatával. | 
-| Jelenlegi vagy jövőbeni kezdő időpontja | Az első számítási feladatok a megadott kezdési időpontban fut. <p>A legutóbbi futtatás ideje kiszámítása alapján jövőbeli számítási feladatot futtat. | Az első számítási feladatot futtat *nem hamarabb* a kezdési időpontnál, a kezdési időpontból kiszámított ütemezésen alapul. <p>Jövőbeli számítási feladatok a megadott ütemezés alapján fut. <p>**Megjegyzés:** Ha adjon meg egy ismétlődési ütemezés, de nem adja meg az óra vagy perc alatt az ütemezés, majd jövőbeli futtatási idő kiszámítása az óra vagy perc, az első futtatásának időpontját, használatával. | 
-||||
-
-**Példa egy múltbeli kezdési időpont, ismétlődéssel, de ütemezés nélkül** 
-
-| Kezdő időpont | Aktuális idő | Ismétlődés | Ütemezés |
-| ---------- | ------------ | ---------- | -------- | 
-| 2017-09-**07**T14:00:00Z | 2017-09-**08**T13:00:00Z | Minden 2 nap | {nincs} | 
-||||| 
-
-Ebben a forgatókönyvben a futtatási idejének alapján a kezdési időpont alapján kiszámítja a Logic Apps korábbi futtatási ideje, és használja a következő jövő kezdési idő az első futtatáskor elveti. Követően, hogy az első használatkor későbbi futtatások a kezdési időpontból kiszámított ütemezésen alapul. Itt látható, hogyan néz ki az Ismétlődés:
-
-| Kezdő időpont | Első futtatás ideje | A jövőben futtatási idejének | 
-| ---------- | ------------ | ---------- | 
-| 2017-09 -**07** , 2:00-kor | 2017-09 -**09** , 2:00-kor | 2017-09 -**11** , 2:00-kor </br>2017-09 -**13** , 2:00-kor </br>2017-09 -**15** , 2:00-kor </br>és így tovább...
-||||
-
-Tehát ebben a forgatókönyvben függetlenül attól, hogy milyen a múltban, adja meg a kezdési idő, például 2017-09 -**05** 2:00-kor, vagy 2017-09 -**01** 2:00 Órakor, az első futtassa a következő alkalommal ugyanaz.
-
 ## <a name="next-steps"></a>További lépések
 
-* [Munkafolyamat-műveletek és eseményindítók](../logic-apps/logic-apps-workflow-actions-triggers.md#recurrence-trigger)
-* [Összekötők](../connectors/apis-list.md)
+* [Munkafolyamatok szüneteltetése késleltetési műveletekkel](../connectors/connectors-native-delay.md)
+* [Logic Apps-összekötők](../connectors/apis-list.md)

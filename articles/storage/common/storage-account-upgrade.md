@@ -1,46 +1,46 @@
 ---
-title: Frissítés az általános célú v2 tárfiók – Azure Storage |} A Microsoft Docs
-description: Általános célú v2-tárfiókok frissítse.
+title: Frissítés általános célú v2 Storage-fiókra – Azure Storage | Microsoft Docs
+description: Frissítsen az általános célú v2 Storage-fiókokra.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: tamram
-ms.openlocfilehash: 2d6a5c96bf99439520e26fc905668835944cee29
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: d1c7edc2973231607cade89df56906190c2abbcf
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578919"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71671147"
 ---
-# <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Egy általános célú v2-tárfiók frissítése
+# <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Frissítés általános célú v2 Storage-fiókra
 
-Általános célú v2-tárfiókok a legújabb Azure Storage-szolgáltatások támogatásához, és építse be az összes funkcióját, általános célú v1 és Blob storage-fiókok. Általános célú v2 fiókok használata akkor javasolt, a storage legtöbb forgatókönyvhöz. Általános célú v2 fiókok kapacitás árak nyújthat a legalacsonyabb gigabájtonkénti az Azure Storage, valamint iparági versenyképes tranzakciós.
+Az általános célú v2 Storage-fiókok támogatják az Azure Storage legújabb funkcióit, és az általános célú v1-és blob Storage-fiókok összes funkcióját beépítik. Az általános célú v2-fiókok használata a legtöbb tárolási helyzetben ajánlott. Az általános célú v2-fiókok az Azure Storage-ban a legalacsonyabb/GB-os kapacitást biztosítják, valamint az iparágban versenyképes tranzakciós árakat.
 
-Frissítés az általános célú v1, általános célú v2 tárfiók vagy a Blob storage-fiókok használata egyszerű. Az Azure portal, PowerShell vagy az Azure CLI használatával is frissítheti.
+Egy általános célú v2-es Storage-fiókra való frissítés az általános célú v1-vagy blob Storage-fiókokból egyszerű. A frissítést a Azure Portal, a PowerShell vagy az Azure CLI használatával végezheti el.
 
 > [!IMPORTANT]
-> Egy általános célú v1- vagy Blob storage-fiók frissítése az általános célú v2 végleges, és nem vonható vissza.
+> Az általános célú v1-vagy blob Storage-fiókok általános célú v2-re való frissítése végleges, és nem vonható vissza.
 
-## <a name="upgrade-using-the-azure-portal"></a>Frissítse az Azure portal használatával
+## <a name="upgrade-using-the-azure-portal"></a>Frissítés a Azure Portal használatával
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Nyissa meg a tárfiókot.
-3. Az a **beállítások** területén kattintson **konfigurációs**.
+3. A **Beállítások** szakaszban kattintson a **konfiguráció**elemre.
 4. A **Fiók típusa** területen kattintson a **Frissítés** elemre.
 5. A **Frissítés megerősítése** területen írja be a fiók nevét.
-6. Kattintson a **frissítése** a panel alján.
+6. Kattintson a panel alján található **frissítés** gombra.
 
-    ![Frissítse a fiók típusa](../blobs/media/storage-blob-account-upgrade/upgrade-to-gpv2-account.png)
+    ![Fiók frissítése](../blobs/media/storage-blob-account-upgrade/upgrade-to-gpv2-account.png)
 
 ## <a name="upgrade-with-powershell"></a>Frissítés a PowerShell-lel
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Egy általános célú v2 fiókját a PowerShell segítségével egy általános célú v1 fiók frissítéséhez először frissítse PowerShell legújabb verzióját használja a **Az.Storage** modul. A PowerShell telepítésével kapcsolatos információkért lásd [az Azure PowerShell telepítését és konfigurálását](https://docs.microsoft.com/powershell/azure/install-Az-ps) ismertető cikket.
+Ha egy általános célú v1-fiókot szeretne egy általános célú v2-fiókra frissíteni a PowerShell használatával, először frissítse a PowerShellt, hogy az az **. Storage** modul legújabb verzióját használja. A PowerShell telepítésével kapcsolatos információkért lásd [az Azure PowerShell telepítését és konfigurálását](https://docs.microsoft.com/powershell/azure/install-Az-ps) ismertető cikket.
 
-Ezután hívja meg a fiókot, és cserélje le az erőforráscsoport nevét és a storage-fiók frissítése a következő parancsot:
+Ezután hívja meg a következő parancsot a fiók frissítéséhez, amely az erőforráscsoport és a Storage-fiók nevét helyettesíti:
 
 ```powershell
 Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -UpgradeToStorageV2
@@ -48,60 +48,60 @@ Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-a
 
 ## <a name="upgrade-with-azure-cli"></a>Frissítés az Azure CLI-vel
 
-Egy általános célú v2 fiók az Azure CLI-vel egy általános célú v1 fiók frissíteni, először telepítse az Azure CLI legújabb verzióját. A CLI telepítésével kapcsolatban lásd [az Azure CLI 2.0-s verziójának telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) ismertető szakaszt.
+Ha egy általános célú v1-fiókot az Azure CLI használatával szeretne általános célú v2-fiókra frissíteni, először telepítse az Azure CLI legújabb verzióját. A CLI telepítésével kapcsolatban lásd [az Azure CLI 2.0-s verziójának telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) ismertető szakaszt.
 
-Ezután hívja meg a fiókot, és cserélje le az erőforráscsoport nevét és a storage-fiók frissítése a következő parancsot:
+Ezután hívja meg a következő parancsot a fiók frissítéséhez, amely az erőforráscsoport és a Storage-fiók nevét helyettesíti:
 
 ```cli
 az storage account update -g <resource-group> -n <storage-account> --set kind=StorageV2
 ```
 
-## <a name="specify-an-access-tier-for-blob-data"></a>Blobadatok a hozzáférési szint megadását
+## <a name="specify-an-access-tier-for-blob-data"></a>Hozzáférési szintek megadása a blob-adatértékekhez
 
-Általános célú v2 támogatja az összes Azure storage-szolgáltatások és adatok objektum, de az elérési szint csak a Blob storage-ban a blokkblobokhoz érhető el. Amikor frissít egy általános célú v2-tárfiók, megadhatja a hozzáférési szint a blob adatait.
+Az általános célú v2-fiókok támogatják az összes Azure Storage-szolgáltatást és-adatobjektumot, de a hozzáférési szintek csak a blob Storage-ban található blokk Blobok esetén érhetők el. Általános célú v2 Storage-fiókra való frissítéskor megadhat egy hozzáférési szintet a blob adataihoz.
 
-Hozzáférés csomagjai lehetővé teszik, hogy válassza ki a leginkább költséghatékony tárolási megoldás a várható használati mintái alapján. A blokkblobok használatát támogatják a gyors Elérésűre, ritka elérésű vagy archív szinten tárolhatók. A hozzáférési rétegek további információkért lásd: [Azure Blob storage: A gyakran és ritkán használt adatok, és az archív tárolási szintek](../blobs/storage-blob-storage-tiers.md).
+A hozzáférési rétegek lehetővé teszik a leginkább költséghatékony tárterület kiválasztását a várt használati minták alapján. A blokkos Blobok a gyakori, ritka vagy archív szinteken tárolhatók. A hozzáférési rétegekkel kapcsolatos további információkért lásd: @no__t – 0Azure blob Storage: Gyakori, ritka elérésű és archív tárolási szintek](../blobs/storage-blob-storage-tiers.md).
 
-Alapértelmezés szerint egy új storage-fiók jön létre a gyakran használt adatok tároláselérési rétegében és a egy általános célú v1 storage-fiók frissítése a gyakori elérésű hozzáférési szintre. Ha, a vizsgált milyen hozzáférési szint használata az adatok frissítése, fontolja meg a forgatókönyvnek. Egy általános célú v2 fiók való áttelepítés során két jellemző felhasználói forgatókönyv közül választhat:
+Alapértelmezés szerint a rendszer egy új Storage-fiókot hoz létre a gyors elérési szinten, és egy általános célú v1-es Storage-fiókot frissít a gyors elérési szintre. Ha azt vizsgálja, hogy a frissítés után melyik hozzáférési réteghez kell használni az adatait, gondolja át a forgatókönyvet. Az általános célú v2-fiókokba való áttelepítéshez két tipikus felhasználói forgatókönyv van:
 
-* Rendelkezik egy meglévő általános célú v1-tárfiókot, és a egy általános célú v2-tárfiók, és a megfelelő tárolási hozzáférési réteg a Blobadatok történő frissítéshez ki kell számítani.
-* Egy általános célú v2-tárfiók használata vagy már rendelkezik ilyennel, és szeretné meghatározni, hogy blobadatokat kell használnia a gyakori vagy ritka elérésű hozzáférési rétege választotta.
+* Rendelkezik egy meglévő általános célú v1 Storage-fiókkal, és szeretné kiértékelni az általános célú v2 Storage-fiókra való frissítést, a blob-adatelérési réteg megfelelő tárolási hozzáférési szintjével.
+* Úgy döntött, hogy egy általános célú v2-es Storage-fiókot használ, vagy már rendelkezik ilyennel, és szeretné kiértékelni, hogy érdemes-e a gyakori vagy ritka elérésű tárolási hozzáférési szintet használni a blob-adatokhoz.
 
-Mindkét esetben az első érték tárolása, elérése és a egy általános célú v2-tárfiók-ban tárolt adatokkal kapcsolatos működtetése költségének és összehasonlítása az aktuális költségekkel.
+Mindkét esetben az első prioritás az általános célú v2 Storage-fiókban tárolt adatok tárolási, elérési és üzemeltetési költségeinek becslése, valamint az aktuális költségekkel való összehasonlítás.
 
 ## <a name="pricing-and-billing"></a>Árak és számlázás
 
-A v1-storage-fiók frissítése egy általános célú v2 fiók használata ingyenes. Azonban a tároló hozzáférési szint módosítása vonhat maga után a módosítások a számla. 
+Egy v1-es Storage-fiók egy általános célú v2-fiókra való frissítése ingyenes. A tárolási hozzáférési réteg módosítása azonban változásokat eredményezhet a számlán. 
 
 Az összes tárfiók az egyes blobok szintjén alapuló árképzési modellt alkalmaz a blobtároláshoz. Tárfiókok használatakor az alábbi számlázási szempontok érvényesülnek:
 
-* **Tárolási költségek**: Tárolt adatok mennyisége mellett a az adattárolás díja a tárolás hozzáférési szintjétől függően változik. A gigabájtonkénti költség csökken, ha a szint ritkábban használt adatokat tárol.
+* **Tárolási költségek**: A tárolt adatok mennyisége mellett az adattárolási díj a tárolási hozzáférési szintjétől függ. A gigabájtonkénti költség csökken, ha a szint ritkábban használt adatokat tárol.
 
-* **Adathozzáférési költségek**: Az adathozzáférési költségek emelkednek, ha a szint ritkábban. A lassú elérésű és archív hozzáférési rétege adatok egy gigabájtonkénti adathozzáférési díjat az olvasásokhoz díjkötelesek.
+* **Adatelérési költségek**: Az adathozzáférési díjak növekednek, mivel a csomag hűvösebb lesz. A lassú elérésű és az archív tároló hozzáférési rétegében lévő adatok esetében a GB-nál több adatelérési díjat számítunk fel a beolvasáshoz.
 
-* **Tranzakciós költségek**: A tranzakciónkénti díjat kell fizetni minden szint esetében, amely növeli, ha a szint ritkábban van.
+* **Tranzakciós költségek**: A szinthez tartozó tranzakciós díj minden olyan rétegre kiterjed, amely növekszik, mivel a réteg hidegebb lesz.
 
-* **Georeplikációs adatátviteli költségek**: Ezt a díjat csak a georeplikációval konfigurált, beleértve a GRS és RA-GRS fiókok vonatkozik. A georeplikációs adatátvitel gigabájtonkénti díj ellenében érhető el.
+* **Földrajzi replikálási adatátviteli költségek**: Ez a díj csak a Geo-replikációval konfigurált fiókokra vonatkozik, beleértve a GRS és az RA-GRS. A georeplikációs adatátvitel gigabájtonkénti díj ellenében érhető el.
 
-* **Kimenő adatátviteli költségek**: Kimenő adatforgalom (azaz az Azure-régióba adatok) sávszélesség-használat gigabájtonkénti történik, az általános célú tárfiókok esetében a számlázás számítunk fel.
+* **Kimenő**adatforgalom költségei: A kimenő adatforgalom (az Azure-régióból átvitt adatok) esetében a sávszélesség-használatért az általános célú Storage-fiókokkal összhangban kell fizetni.
 
-* **A tároló hozzáférési szint módosítása**: A fiók hozzáférési rétege ritkán használt adatok rétegére való díj költségével egyezik megegyezik a tárfiókban lévő összes adat. Azonban a fiók hozzáférési szintjének a ritka elérésűre való költségével díj írása az összes adat ritka elérésű szintre (csak GPv2 fiókok esetében).
+* **A tárolási hozzáférési réteg módosítása**: A fiók tárolási hozzáférési rétegének a lassúról a gyorsra való módosítása a Storage-fiókban meglévő összes információ olvasásával egyenlő. Azonban a fiókhoz való hozzáférési szint gyors és lassú elérésű értékre való módosítása az összes adatoknak a ritka rétegbe való írásával egyenlő (csak GPv2-fiókok esetében).
 
 > [!NOTE]
 > A tárfiókok árképzési modelljével kapcsolatos további információért lásd [az Azure Storage díjszabását](https://azure.microsoft.com/pricing/details/storage/) ismertető lapot. A kimenő adatátviteli díjakkal kapcsolatos további információért lásd az [adatátviteli díjszabást](https://azure.microsoft.com/pricing/details/data-transfers/) ismertető lapot.
 
-### <a name="estimate-costs-for-your-current-usage-patterns"></a>Az aktuális felhasználási mintáin költségeinek
+### <a name="estimate-costs-for-your-current-usage-patterns"></a>A jelenlegi használati minták költségeinek becslése
 
-Tárolási költségek becsléséhez és a egy általános célú v2-tárfiók az egy adott szinten lévő Blobadatok eléréséhez értékelnie a jelenlegi használati módot vagy a várható használati módot hozzávetőleges. Általában a következőket érdemes figyelembe venni:
+Egy adott réteg általános célú v2-es Storage-fiókjában lévő blob-adatok tárolási és elérési költségeinek megbecsléséhez értékelje ki a meglévő használati mintát, vagy közelítse meg a várt használati mintát. Általában a következőket érdemes figyelembe venni:
 
-* A Blob storage fogyasztásánál, gigabájtban, többek között:
+* A blob Storage-felhasználás (GB), beleértve a következőket:
     - Mennyi adatot tárol a tárfiókjában?
     - Havi lebontásban hogyan változik az adatmennyiség? Az új adatok folyamatosan átveszik a korábbi adatok helyét?
-* Az elsődleges elérési mintája a Blob storage-adatokból, többek között:
-    - Folyamatban van, hogy mennyi adatot olvas és ír a storage-fiókhoz?
-    - Hány olvasási műveletek és írási műveleteket a rendszer az adatok a storage-fiókban?
+* A blob Storage-adatai elsődleges hozzáférési mintája, beleértve a következőket:
+    - Mennyibe kerül az adatok olvasása és írása a Storage-fiókba?
+    - Hány olvasási művelet és írási művelet történik a Storage-fiókban lévő adatokon?
 
-Az igényeinek megfelelően a legjobb hozzáférési szint használata mellett dönt, hogy hasznos lehet meghatározni az blob kapacitás, és hogyan adatokat használják. Ezt leginkább teheti megnézzük a figyelési metrikákat a fiókjához.
+Annak érdekében, hogy az igényeinek megfelelő hozzáférési szintet döntse el, hasznos lehet a blob-adatkapacitás meghatározása, valamint az adathasználatuk módja. Ez a fiók figyelési metrikáinak megtekintésével végezhető el legjobban.
 
 ### <a name="monitoring-existing-storage-accounts"></a>A meglévő tárfiókok figyelése
 
@@ -118,18 +118,18 @@ Ha ez a mérőszám engedélyezve van, a rendszer naponta rögzíti a tárfiók 
 A Blob Storage adathozzáférési mintáinak figyeléséhez engedélyeznie kell az óránkénti tranzakciók mérőszámát az API szintjén. Ha az óránkénti tranzakciók mérőszáma engedélyezve van, a rendszer óránként összesíti az API-tranzakciókat, és táblabejegyzést hoz létre az adott tárfiók *$MetricsHourPrimaryTransactionsBlob* táblájában. A *$MetricsHourSecondaryTransactionsBlob* tábla a másodlagos végpontra rögzíti a tranzakciókat RA-GRS-tárfiókok használata esetében.
 
 > [!NOTE]
-> Ha rendelkezik egy általános célú tárfiókkal, amelyben lapblobokat és virtuálisgép-lemezek vagy üzenetsorokat, fájlokat vagy táblákat, letiltása mellett tárol, és hozzáfűző blobok adatai, akkor ez a becslési folyamat nem alkalmazható. A kapacitási adatok nem tesznek különbséget a blokkblobok és más adattípusok között, és nem adnak meg kapacitási adatokat ez utóbbiakhoz. Ilyen adattípusok használatakor a legutóbb számlázott mennyiségi tételek feltárásához alternatív módszert kell alkalmazni.
+> Ha olyan általános célú Storage-fiókkal rendelkezik, amelyben lapozófájlokat és virtuálisgép-lemezeket, illetve várólistákat, fájlokat vagy táblákat tárol, a blob-adat blokkolása és hozzáfűzése mellett ez a becslési folyamat nem alkalmazható. A kapacitási adatok nem tesznek különbséget a blokkblobok és más adattípusok között, és nem adnak meg kapacitási adatokat ez utóbbiakhoz. Ilyen adattípusok használatakor a legutóbb számlázott mennyiségi tételek feltárásához alternatív módszert kell alkalmazni.
 
 Azt javasoljuk, hogy az adatfelhasználás és -hozzáférés megfelelő mintájának előállításához olyan megőrzési időszakot válasszon a mérőszámhoz, amely megfelel az Ön használati szokásainak, és extrapolálja az adatokat. Az egyik lehetőség az, hogy hét napig őrzi meg a mérőszámadatokat, és minden héten összegyűjti az adatokat a hónap végén elvégzendő elemzéshez. A másik lehetőség az, hogy az utolsó 30 nap mérőszámadatait őrzi meg, és a 30 napos időszak végén hajtja végre az adatok összegyűjtését és elemzését.
 
-További engedélyezésével, gyűjtésével és megtekintésével: [Storage analytics mérőszámainak](../common/storage-analytics-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+A metrikák adatainak engedélyezésével, gyűjtésével és megtekintésével kapcsolatos részletekért lásd a [Storage Analytics mérőszámait](../common/storage-analytics-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 > [!NOTE]
 > Az elemzési adatok tárolása, elérése és letöltése ugyanúgy díjhoz kötött, mint a normál felhasználói adatok használata.
 
 ### <a name="utilizing-usage-metrics-to-estimate-costs"></a>Költségbecslés a használati mérőszámok alapján
 
-#### <a name="capacity-costs"></a>A kapacitás költségek
+#### <a name="capacity-costs"></a>Kapacitási költségek
 
 A kapacitási mérőszám *$MetricsCapacityBlob* táblájának *„data”* sorkulcsú utolsó bejegyzése mutatja a felhasználói adatok által igénybe vett tárolókapacitást. A kapacitási mérőszám *$MetricsCapacityBlob* táblájának *„analytics”* sorkulcsú utolsó bejegyzése mutatja az elemzési naplók által igénybe vett tárolókapacitást.
 
@@ -141,8 +141,8 @@ A tranzakciók mérőszámának táblájában az adott API-hoz tartozó bejegyz�
 
 A Blob Storage-tárfiókok tranzakciós költségeinek kiszámításához a tranzakciókat három csoportra kell felosztania, mivel ezekhez különböző árak tartoznak.
 
-* Írási tranzakciók, például *„PutBlob”*, *„PutBlock”*, *„PutBlockList”*, *„AppendBlock”*, *„ListBlobs”*, *„ListContainers”*, *„CreateContainer”*, *„SnapshotBlob”* és *„CopyBlob”*.
-* Törlési tranzakciók, például *„DeleteBlob”* és *„DeleteContainer”*.
+* Írási tranzakciók, például *„PutBlob”* , *„PutBlock”* , *„PutBlockList”* , *„AppendBlock”* , *„ListBlobs”* , *„ListContainers”* , *„CreateContainer”* , *„SnapshotBlob”* és *„CopyBlob”* .
+* Törlési tranzakciók, például *„DeleteBlob”* és *„DeleteContainer”* .
 * Minden egyéb tranzakció.
 
 A GPv1-tárfiókok tranzakciós költségeinek becsléséhez összesítenie kell az összes tranzakciót, függetlenül a művelettől és az API-tól.
@@ -155,14 +155,14 @@ A Blob Storage-tárfiókok adathozzáférési költségeinek kiszámításához 
 
 * A tárfiókból lekért adatok mennyisége a *„TotalEgress”* összegéből becsülhető meg, elsődlegesen a *„GetBlob”* és a *„CopyBlob”* művelet alapján.
 
-* A tárfiókba írt lekért adatok mennyisége a *„TotalIngress”* összegéből becsülhető meg, elsődlegesen a *„PutBlob”*, a *„PutBlock”*, a *„CopyBlob”* és az *„AppendBlock”* művelet alapján.
+* A tárfiókba írt lekért adatok mennyisége a *„TotalIngress”* összegéből becsülhető meg, elsődlegesen a *„PutBlob”* , a *„PutBlock”* , a *„CopyBlob”* és az *„AppendBlock”* művelet alapján.
 
 A Blob Storage-tárfiókok georeplikációs adatátviteli költségei szintén az írt adatok mennyiségének becslése alapján számítható ki GRS- vagy RA-GRS-tárfiókok használata esetében.
 
 > [!NOTE]
-> Részletes példa a gyors és lassú elérésű hozzáférési szint használatához kapcsolódó költségek kiszámítására, tekintse meg a gyakori kérdések című *"Mik azok a lassú és gyors elérési szint, és miként állapítható melyiket érdemes használni?"* az [Azure Storage díjszabását tartalmazó oldalon](https://azure.microsoft.com/pricing/details/storage/).
+> A gyakori és ritka elérésű tárolási hozzáférési szint használatának költségeinek kiszámításához tekintse meg a *"mi a gyors és a lassú elérési szint, és Hogyan határozható meg, hogy melyiket érdemes használni?"* című részt. az [Azure Storage díjszabását tartalmazó oldalon](https://azure.microsoft.com/pricing/details/storage/).
 
 ## <a name="next-steps"></a>További lépések
 
 - [Tárfiók létrehozása](storage-quickstart-create-account.md)
-- [Az Azure storage-fiókok kezelése](storage-account-manage.md)
+- [Azure Storage-fiókok kezelése](storage-account-manage.md)

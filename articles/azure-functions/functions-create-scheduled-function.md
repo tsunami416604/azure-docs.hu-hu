@@ -7,17 +7,16 @@ author: ggailey777
 manager: jeconnoc
 ms.assetid: ba50ee47-58e0-4972-b67b-828f2dc48701
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: a6b1e4e1571e6ce3cee1658907efd35e9c73ca1a
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 13aa1f8cd643d579734cc603bbc81519a690fe59
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54903395"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70085859"
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>Időzítő által aktivált függvény létrehozása az Azure-ban
 
@@ -51,14 +50,14 @@ Ezután létrehozhat egy függvényt az új függvényalkalmazásban.
 
     ![Függvények rövid útmutatója - további sablonok kiválasztása](./media/functions-create-scheduled-function/add-first-function.png)
 
-3. A keresőmezőbe írja be a `timer` és az új eseményindítót konfigurálja az ábra alatti táblázatban megadott beállításokkal.
+3. A keresés mezőben írja be `timer` és konfigurálja az új triggert a rendszerkép alatti táblázatban megadott beállításokkal.
 
     ![Hozzon létre egy időzítő által aktivált függvényt az Azure Portalon.](./media/functions-create-scheduled-function/functions-create-timer-trigger-2.png)
 
     | Beállítás | Ajánlott érték | Leírás |
     |---|---|---|
-    | **Name (Név)** | Alapértelmezett | Az időzítő által aktivált függvény nevét adja meg. |
-    | **Ütemezés** | 0 \*/1 \* \* \* \* | Hat mezőből álló [CRON-kifejezés](functions-bindings-timer.md#cron-expressions), amely úgy ütemezi a függvényt, hogy minden percben fusson. |
+    | **Name** | Alapértelmezett | Az időzítő által aktivált függvény nevét adja meg. |
+    | **Ütemezés** | 0 \*/1 \* \* \* \* | Hat mezőből álló [CRON-kifejezés](functions-bindings-timer.md#ncrontab-expressions), amely úgy ütemezi a függvényt, hogy minden percben fusson. |
 
 4. Kattintson a **Create** (Létrehozás) gombra. Létrejön egy függvény a választott nyelven, amely minden percben futni fog.
 
@@ -84,6 +83,6 @@ A függvény ezután óránként egyszer fog futni.
 
 ## <a name="next-steps"></a>További lépések
 
-Létrehozott egy ütemezés alapján futó függvényt. Az időzítési eseményindítóktól kapcsolatos további információkért lásd: [kódvégrehajtás ütemezése az Azure Functions](functions-bindings-timer.md).
+Létrehozott egy ütemezés alapján futó függvényt. Az időzítő eseményindítókkal kapcsolatos további információkért lásd: [kód végrehajtásának](functions-bindings-timer.md)elvégzése Azure Functionssal.
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]

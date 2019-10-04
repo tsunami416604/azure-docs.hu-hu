@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 06/11/2018
+ms.date: 07/05/2019
 ms.author: panosper
-ms.openlocfilehash: d93de4ff3f6dd00ac049ea9d83aebb7aad07137e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: a5ca7d8a6b09dc277664fdc7db2433466e665d56
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55883287"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606678"
 ---
 # <a name="text-to-speech-frequently-asked-questions"></a>Szövegfelolvasás – gyakori kérdések
 
 Ha nem találja a kérdésekre adott válaszok a gyakori kérdések, tekintse meg az [más támogatási lehetőségeket](support.md).
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 **K: Mi a különbség, standard beszédfelismerési modellek és a egy egyéni beszédfelismerési modell között?**
 
@@ -33,7 +33,7 @@ Ha nem találja a kérdésekre adott válaszok a gyakori kérdések, tekintse me
 
 **K: Ha szeretne egy testre szabott Hangüzenetek modellt használja, akkor az API-t ugyanaz, mint a standard szintű beszédhangot használt?**
 
-**A**: Egyéni beszédfelismerési modellek létrehozása és üzembe helyezett, kap egy egyedi végpont a modellt. A beszédfelismerési mérnökeinkkel, az alkalmazások használatához adjon meg a végpont a HTTP-kérelmekre. Ugyanazokat a funkciókat az a szöveg-beszéd átalakítás szolgáltatás REST API-ban elérhető egyéni végpontra érhető el. Ismerje meg, hogyan [hozhat létre és használhat egyéni végpontra](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-customize-voice-font#create-and-use-a-custom-endpoint).
+**A**: Egyéni beszédfelismerési modellek létrehozása és üzembe helyezett, kap egy egyedi végpont a modellt. A beszédfelismerési mérnökeinkkel, az alkalmazások használatához adjon meg a végpont a HTTP-kérelmekre. Ugyanazokat a funkciókat az a szöveg-beszéd átalakítás szolgáltatás REST API-ban elérhető egyéni végpontra érhető el. Ismerje meg, hogyan [hozhat létre és használhat egyéni végpontra](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-customize-voice-font#create-and-use-a-custom-voice-endpoint).
 
 **K: Kell előkészíteni a betanítási adatok, a saját egyéni beszédfelismerési modelleket hozhat létre?**
 
@@ -41,7 +41,7 @@ Ha nem találja a kérdésekre adott válaszok a gyakori kérdések, tekintse me
 
 Beszéd adatok gyűjteménye, egy testre szabott Hangüzenetek modell létrehozásához szükséges. Ez a gyűjtemény hangfájlok speech felvételek, és a egy szövegfájlt, mindegyik hangfájlt vonatkozó áll. A digitális hangját eredményét az erősen támaszkodik a betanítási adatok minőségét. Egy jó szövegfelolvasás előállításához, fontos, hogy a felvételt a magas színvonalú, állandó mikrofon csendes szoba történik. Egy egységes kötet sebességét, és beszéljen és térközt, és még akkor is, konzisztencia, a beszéd kifejező mannerisms beszéd is, amellyel a nagyszerű digitális hangot alapvető. Erősen ajánlott az adott beszédhangot rögzítése egy felvételt studióban.
 
-Nem jelenleg a Microsoft online felvétel támogatást, vagy felvétel studio javaslatokkal szolgálni. Lásd: a formátum követelmény [és előkészítése](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-customize-voice-font#prepare-recordings-and-transcripts).
+Nem jelenleg a Microsoft online felvétel támogatást, vagy felvétel studio javaslatokkal szolgálni. Lásd: a formátum követelmény [és előkészítése](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice-create-voice).
 
 **K: Milyen parancsfájlok használjam jegyezze fel az egyéni beszédfelismerési képzéshez Beszédadatok?**
 
@@ -59,7 +59,7 @@ További szolgáltatások segítő szkripteket a rögzítés lehetőséget bizto
 
 **K: Saját kérések szabályozott?**
 
-**A**: A REST API-25, 5 másodpercenként kérelmek korlátozza. Részletek tekintheti meg az oldalak [szöveg-beszéd átalakítás](text-to-speech.md). 
+**A**: A REST API-25, 5 másodpercenként kérelmek korlátozza. Részletek tekintheti meg az oldalak [szöveg-beszéd átalakítás](text-to-speech.md).
 
 ## <a name="next-steps"></a>További lépések
 

@@ -9,11 +9,11 @@ ms.date: 08/01/2016
 ms.author: jeconnoc
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: 23379e9d9bb29efb7fb026260e8245e8eb8a2d71
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54468522"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60395067"
 ---
 # <a name="store-and-view-diagnostic-data-in-azure-storage"></a>Diagnosztikai adatok tárolása és megtekintése az Azure Storage-ban
 Diagnosztikai adatok nem tartósan tárolja, ha azt át a Microsoft Azure storage emulator vagy az Azure storage. Egyszer a storage szolgáltatással, azt is megtekinthetők a számos elérhető eszközök egyikét.

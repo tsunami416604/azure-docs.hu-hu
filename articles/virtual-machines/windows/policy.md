@@ -1,34 +1,33 @@
 ---
-title: A házirendek az Azure-beli Windows virtuális gépeken biztonság kényszerítése |} A Microsoft Docs
-description: Szabályzat alkalmazása az Azure Resource Manager Windows virtuális gépként
+title: Biztonság kikényszerítása az Azure-beli Windows rendszerű virtuális gépek házirendjeivel | Microsoft Docs
+description: Szabályzat alkalmazása Azure Resource Manager Windows rendszerű virtuális gépre
 services: virtual-machines-windows
 documentationcenter: ''
 author: singhkays
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 0b71ba54-01db-43ad-9bca-8ab358ae141b
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: kasing
-ms.openlocfilehash: 654c23474ebc96a6873f82f51f969da5c7d2d20c
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 172906c3b03b7c001763e8c374487a3ff33c8f07
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343255"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70088947"
 ---
-# <a name="apply-policies-to-windows-vms-with-azure-resource-manager"></a>Windows virtuális gépek az Azure Resource Manager-szabályzatok alkalmazása
-Házirendek segítségével egy szervezet különböző konvenciók és szabályokat a vállalaton kényszeríthető. A kívánt viselkedés kényszerítésének segíthet hozzájárul a sikeres, a szervezet kockázatok. Ebben a cikkben ismertetünk, hogyan használhatja az Azure Resource Manager-házirendek a szervezet virtuális gépek számára a kívánt viselkedés meghatározására.
+# <a name="apply-policies-to-windows-vms-with-azure-resource-manager"></a>Házirendek alkalmazása a Windows rendszerű virtuális gépekre Azure Resource Manager
+A házirendek használatával a szervezetek különböző egyezményeket és szabályokat alkalmazhatnak a vállalaton belül. A kívánt viselkedés kényszerítésével csökkentheti a kockázatokat, miközben hozzájárul a szervezet sikeréhez. Ebben a cikkben bemutatjuk, hogyan használhatók Azure Resource Manager házirendek a szervezet Virtual Machines kívánt viselkedésének meghatározásához.
 
-Házirendek bemutatása, lásd: [Mi az Azure Policy?](../../governance/policy/overview.md).
+A szabályzatok bevezetését a [Mi az Azure Policy?](../../governance/policy/overview.md)című témakörben tekintheti meg.
 
-## <a name="permitted-virtual-machines"></a>Engedélyezett a virtuális gépek
-Annak érdekében, hogy egy alkalmazás kompatibilis virtuális gépek a szervezet számára, korlátozhatja az engedélyezett operációs rendszerek. A következő példában a házirend engedélyezése csak a Windows Server 2012 R2 Datacenter virtuális gépek hozhatók létre:
+## <a name="permitted-virtual-machines"></a>Engedélyezett Virtual Machines
+Annak biztosítása érdekében, hogy a szervezete virtuális gépei kompatibilisek legyenek az alkalmazásokkal, korlátozhatja a megengedett operációs rendszereket. A következő házirend-példában csak a Windows Server 2012 R2 Datacenter Virtual Machines létrehozását engedélyezi:
 
 ```json
 {
@@ -80,7 +79,7 @@ Annak érdekében, hogy egy alkalmazás kompatibilis virtuális gépek a szervez
 }
 ```
 
-Egy helyettesítő karakter segítségével bármilyen Windows Server Datacenter rendszerképet engedélyezéséhez az előző házirend módosítása:
+Használjon helyettesítő kártyát a korábbi szabályzat módosításához a Windows Server Datacenter-rendszerképek engedélyezéséhez:
 
 ```json
 {
@@ -89,7 +88,7 @@ Egy helyettesítő karakter segítségével bármilyen Windows Server Datacenter
 }
 ```
 
-AnyOf segítségével bármilyen Windows Server 2012 R2 Datacenter vagy magasabb kép engedélyezi az előző házirend módosítása:
+A anyOf használatával módosítsa a korábbi szabályzatot a Windows Server 2012 R2 Datacenter vagy újabb rendszerképek engedélyezéséhez:
 
 ```json
 {
@@ -106,11 +105,11 @@ AnyOf segítségével bármilyen Windows Server 2012 R2 Datacenter vagy magasabb
 }
 ```
 
-A házirend mezőkkel kapcsolatos információkért lásd: [házirend aliasok](../../governance/policy/concepts/definition-structure.md#aliases).
+További információ a szabályzat mezőiről: [házirend](../../governance/policy/concepts/definition-structure.md#aliases)-aliasok.
 
 ## <a name="managed-disks"></a>Felügyelt lemezek
 
-A felügyelt lemezek használata szükséges, használja a következő szabályzatot:
+A felügyelt lemezek használatának megköveteléséhez használja a következő szabályzatot:
 
 ```json
 {
@@ -156,11 +155,11 @@ A felügyelt lemezek használata szükséges, használja a következő szabályz
 }
 ```
 
-## <a name="images-for-virtual-machines"></a>Virtuális gépek lemezképei
+## <a name="images-for-virtual-machines"></a>Virtual Machines rendszerképek
 
-Biztonsági okokból megkövetelheti, hogy csak a jóváhagyott egyéni rendszerképek telepítve vannak-e a környezetben. Vagy az erőforráscsoport, amely tartalmazza a jóváhagyott lemezképeket is megadhat, vagy az adott jóváhagyott lemezképeket.
+Biztonsági okokból megkövetelheti, hogy csak a jóváhagyott egyéni lemezképek legyenek telepítve a környezetében. Megadhatja vagy a jóváhagyott képeket tartalmazó erőforráscsoportot, vagy a megadott jóváhagyott képeket.
 
-Az alábbi példa egy jóváhagyott erőforráscsoportból lemezképek van szükség:
+Az alábbi példában egy jóváhagyott erőforráscsoporthoz tartozó képek szükségesek:
 
 ```json
 {
@@ -187,7 +186,7 @@ Az alábbi példa egy jóváhagyott erőforráscsoportból lemezképek van szük
 } 
 ```
 
-Az alábbi példa meghatározza az engedélyezett lemezkép-azonosítók:
+A következő példa a jóváhagyott rendszerkép-azonosítókat adja meg:
 
 ```json
 {
@@ -198,7 +197,7 @@ Az alábbi példa meghatározza az engedélyezett lemezkép-azonosítók:
 
 ## <a name="virtual-machine-extensions"></a>Virtuálisgép-bővítmények
 
-Előfordulhat, hogy szeretné megtiltsa bizonyos típusú bővítmények használatát. Például egy bővítmény előfordulhat, hogy nem kompatibilisek az egyes egyéni virtuálisgép-lemezképeket. Az alábbi példa bemutatja, hogyan blokkolja egy adott kiterjesztéssel. Közzétevő és a típus használatával határozza meg, melyik bővítmény letiltása.
+Előfordulhat, hogy meg szeretné tiltani bizonyos típusú bővítmények használatát. Előfordulhat például, hogy egy bővítmény nem kompatibilis bizonyos egyéni virtuálisgép-rendszerképekkel. Az alábbi példa azt szemlélteti, hogyan lehet letiltani egy adott bővítményt. A közzétevőt és a típust használja a blokkolni kívánt bővítmény meghatározásához.
 
 ```json
 {
@@ -228,7 +227,7 @@ Előfordulhat, hogy szeretné megtiltsa bizonyos típusú bővítmények haszná
 
 ## <a name="azure-hybrid-use-benefit"></a>Azure Hybrid Use Benefit
 
-Ha egy helyszíni licenccel rendelkezik, az licencdíját mentheti a virtuális gépeken. Ha nem rendelkezik a licenc, meg kell megtiltsa lehetőséget. A következő házirend tiltja a használat az Azure hibrid használati juttatás (AHUB):
+Ha helyszíni licenccel rendelkezik, mentheti a licenc díját a virtuális gépeken. Ha nem rendelkezik a licenccel, meg kell tiltania a beállítást. A következő szabályzat tiltja a Azure Hybrid Use Benefit használatát (AHUB):
 
 ```json
 {
@@ -251,6 +250,6 @@ Ha egy helyszíni licenccel rendelkezik, az licencdíját mentheti a virtuális 
 ```
 
 ## <a name="next-steps"></a>További lépések
-* (Ahogyan az az előző példákból látható) házirend szabály meghatározása, után kell létrehozni a szabályzatdefiníciót, és rendelje hozzá egy hatókörhöz. A hatókör egy előfizetés, erőforráscsoport vagy erőforrás lehet. Házirendek rendeléséhez lásd: [erőforrás-házirendek hozzárendelése és kezelése az Azure Portalon](../../governance/policy/assign-policy-portal.md), [PowerShell-lel történő szabályzatokat rendelhet hozzájuk](../../governance/policy/assign-policy-powershell.md), vagy [használható Azure CLI-vel házirendek rendelhetők](../../governance/policy/assign-policy-azurecli.md).
-* Erőforrás-házirendek bemutatása, lásd: [Mi az Azure Policy?](../../governance/policy/overview.md).
+* A házirend-szabály meghatározása után (ahogy az előző példákban is látható) létre kell hoznia a házirend-definíciót, és hozzá kell rendelnie egy hatókörhöz. A hatókör lehet előfizetés, erőforráscsoport vagy erőforrás. A szabályzatok hozzárendeléséhez tekintse meg az erőforrás-házirendek hozzárendelésére [és kezelésére szolgáló Azure Portal használata](../../governance/policy/assign-policy-portal.md), a [PowerShell használatával házirendek hozzárendelését](../../governance/policy/assign-policy-powershell.md), vagy az [Azure CLI használatával házirendek hozzárendelését](../../governance/policy/assign-policy-azurecli.md).
+* Az erőforrás-házirendek bemutatása: [Mi az Azure Policy?](../../governance/policy/overview.md)
 * Nagyvállalatoknak az [Azure enterprise scaffold - prescriptive subscription governance](/azure/architecture/cloud-adoption-guide/subscription-governance) (Azure nagyvállalati struktúra - előíró előfizetés-irányítás) című cikk nyújt útmutatást az előfizetéseknek a Resource Managerrel való hatékony kezeléséről.

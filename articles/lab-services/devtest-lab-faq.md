@@ -1,6 +1,6 @@
 ---
-title: Az Azure DevTest Labs – gyakori kérdések |} A Microsoft Docs
-description: Válaszok az Azure DevTest Labs kapcsolatos gyakori kérdésekre.
+title: Azure DevTest Labs GYIK | Microsoft Docs
+description: Válaszokat talál a Azure DevTest Labsekkel kapcsolatos gyakori kérdésekre.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,104 +12,104 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/19/2019
+ms.date: 07/18/2019
 ms.author: spelluru
-ms.openlocfilehash: c26418d36271b4d2d39a43eda7e8b23585d69f4a
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
-ms.translationtype: HT
+ms.openlocfilehash: fb66fa2d4a6a03841fa057c4d1982b7bf4c6976d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149427"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565324"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs GYIK
-Az Azure DevTest Labs kapcsolatos leggyakoribb kérdésekre adott válaszok.
+Választ kaphat a Azure DevTest Labsával kapcsolatos leggyakoribb kérdésekre.
 
 ## <a name="blog-post"></a>Blogbejegyzés
-A DevTest Labs-csapat blogja kezdődően 2019. március 20. így visszavontuk. 
+A DevTest Labs csapatának blogja a 2019. március 20-án lett kivonva. 
 
-### <a name="where-can-i-track-feature-updates-from-now-on"></a>Ahol követhető nyomon a funkciófrissítések mostantól?
-Mostantól azt fogjuk kell üzenetküldés funkció- és informatív blogbejegyzések az Azure-blogban, és az Azure frissíti. Ezek a blogbejegyzések is összekapcsolja a dokumentáció tartalmaz, bárhol is szükséges.
+### <a name="where-can-i-track-feature-updates-from-now-on"></a>Hol követhetem nyomon a szolgáltatás frissítéseit mostantól?
+Mostantól a szolgáltatás frissítéseit és az informatív blogbejegyzéseket közzétesszük az Azure blogon és az Azure frissítésein. Ezek a blogbejegyzések szükség esetén a dokumentációra is hivatkoznak.
 
-Fizessen elő a [DevTest Labs Azure blogon](https://azure.microsoft.com/blog/tag/azure-devtest-labs/) és [frissíti az Azure DevTest Labs](https://azure.microsoft.com/updates/?product=devtest-lab) licenchasználati DevTest Labs szolgáltatásban létrehozott új funkciókról.
+Fizessen elő a [DevTest Labs Azure blogra](https://azure.microsoft.com/blog/tag/azure-devtest-labs/) és az [DevTest Labs Azure](https://azure.microsoft.com/updates/?product=devtest-lab) -frissítéseire, és tájékozódjon a DevTest Labs új funkcióiról.
 
-### <a name="what-happens-to-the-existing-blog-posts"></a>Mi történik, a meglévő blogbejegyzések?
-Jelenleg dolgozunk (kivéve a szolgáltatáskimaradás frissítések) áttelepítése meglévő blogbejegyzések a [DevTest Labs-dokumentáció](devtest-lab-overview.md). Ha az MSDN-blog elavult, azt a rendszer átirányítja a dokumentáció – áttekintés a DevTest Labs szolgáltatásban. Miután átirányítva, kereshet a cikk a "Szűrő által" cím keres. Hogy még nincs áttelepítve minden bejegyzés, de a hónap végén kell elvégezni. 
+### <a name="what-happens-to-the-existing-blog-posts"></a>Mi történik a meglévő blogbejegyzésekkel?
+Jelenleg dolgozunk a meglévő blogbejegyzések áttelepítésén (kivéve a leállás-frissítéseket) a [DevTest Labs dokumentációjában](devtest-lab-overview.md). Ha az MSDN-blog elavult, a rendszer átirányítja a DevTest Labs dokumentációjának áttekintésére. Az átirányítást követően megkeresheti a "szűrés a következővel" című cikket. Még nem történt meg az összes bejegyzés áttelepítve, de ennek a hónapnak a végéig kell történnie. 
 
 
-### <a name="where-do-i-see-outage-updates"></a>Hol láthatók szolgáltatáskimaradás frissítések?
-Fogja azt könyvelési szolgáltatáskimaradás frissítéseket, a Twitter-leírót múlva frissítésétől kezdve a. Kövessen minket a Twitteren a legújabb frissítéseket a leállásokat és az ismert hibák.
+### <a name="where-do-i-see-outage-updates"></a>Hol találhatók a leállás frissítései?
+A kiesési frissítéseket a Twitter-leírónk használatával tesszük elérhetővé a mostantól kezdődően. Kövessen minket a Twitteren az kimaradások és az ismert hibák legújabb frissítéseinek beszerzéséhez.
 
 ### <a name="twitter"></a>Twitter
-A Twitter-leírót: [@azlabservices](https://twitter.com/azlabservices)
+A Twitter-leírónk:[@azlabservices](https://twitter.com/azlabservices)
 
-## <a name="general"></a>Általános kérdések
-### <a name="what-if-my-question-isnt-answered-here"></a>Mi történik, ha kérdésem itt nem választ?
-Ha a kérdés nem szerepel a listán, tudassa velünk, így segítségére választ találjanak.
+## <a name="general"></a>Általános
+### <a name="what-if-my-question-isnt-answered-here"></a>Mi a teendő, ha nem válaszolt a kérdésre?
+Ha a kérdés nem szerepel a listán, tudassa velünk, hogy segítsen megtalálni a választ.
 
-- Ez a GYIK végén kérdését. Az Azure Cache csapata és a Közösség többi tagjával, ez a cikk kapcsolatos érhet el.
-- Szélesebb elérni, új kérdést tenne fel a a [Azure DevTest Labs MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureDevTestLabs). Az Azure DevTest Labs-csapat és a Közösség más tagjai érhet el.
-- Szolgáltatással kapcsolatos kéréseit, küldje el a kérelmek és ötlet segíthet megtenni [Azure DevTest Labs User Voice](https://feedback.azure.com/forums/320373-azure-devtest-labs).
+- Tegye fel kérdéseit a GYIK végén. 
+- Ha szélesebb közönséget szeretne elérni, tegye fel kérdéseit a [Azure DEVTEST Labs MSDN-fórumon](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureDevTestLabs). Folytassa a Azure DevTest Labs csapatával és a Közösség többi tagjával.
+- A szolgáltatások kéréseinek elküldéséhez küldje el kérelmeit és ötleteit [Azure DevTest Labs felhasználói hangra](https://feedback.azure.com/forums/320373-azure-devtest-labs).
 
 ### <a name="what-is-a-microsoft-account"></a>Mi a Microsoft-fiók?
-Microsoft-fiókot egy olyan fiók, szinte mindenben a Microsoft eszközeit és szolgáltatásait használja. Egy e-mail címet és a Skype, Outlook.com, onedrive vállalati verzió, Windows phone, Azure és az Xbox Live-ba való bejelentkezéshez használt jelszó. Egy olyan fiók, az azt jelenti, hogy a fájlokat, fényképeket, névjegyek és beállítások követheti, bármilyen eszközön.
+A Microsoft-fiók a Microsoft-eszközökkel és-szolgáltatásokkal kapcsolatos szinte mindenhez használt fiók. Ez egy e-mail-cím és jelszó, amelyet a Skype, a Outlook.com, a OneDrive, a Windows Phone, az Azure és az Xbox Live szolgáltatásba való bejelentkezéshez használ. Egyetlen fiók azt jelenti, hogy a fájlok, a fényképek, a névjegyek és a beállítások bármely eszközön nyomon követhetik.
  
 > [!NOTE]
-> Microsoft-fiók használatával hívható meg egy Windows Live ID azonosítójával.
+> Egy Microsoft-fiók Windows Live ID-ként lett meghívva.
 
-### <a name="why-should-i-use-azure-devtest-labs"></a>Miért érdemes használni az Azure DevTest Labs?
-Az Azure DevTest Labs a csapat időt és pénzt takaríthat meg. A fejlesztők több különböző adatbázisok használatával hozhat létre saját környezeteket. Is használhatják összetevők a gyors üzembe helyezése, és konfigurálhatja az alkalmazásokat. Egyéni rendszerképek és képletek használatával sablonként menteni a virtuális gépek (VM), és könnyedén között a csapat reprodukálnia. DevTest Labs is kínál számos konfigurálható szabályzatok a labor rendszergazdák segítségével csökkentheti a veszteséget és a egy csapat-környezetek felügyeletét. Ezek a házirendek automatikus leállítási, költség küszöbértéket, felhasználónként, és maximális Virtuálisgép-méret maximális virtuális gépek közé tartozik. Részletesebb magyarázatra van szüksége a DevTest Labs szolgáltatásban, lásd: a [áttekintése](devtest-lab-overview.md) vagy a [bevezető videót](https://channel9.msdn.com/Blogs/Azure/what-is-azure-devtest-labs).
+### <a name="why-should-i-use-azure-devtest-labs"></a>Miért érdemes használni a Azure DevTest Labs?
+Azure DevTest Labs mentheti a csapat idejét és pénzét. A fejlesztők számos különböző bázis használatával hozhatnak létre saját környezeteket. Emellett az alkalmazások gyors üzembe helyezésére és konfigurálására is használhatók. Egyéni rendszerképek és képletek használatával a virtuális gépek (VM-EK) sablonként menthetők, és egyszerűen reprodukálható a csapaton belül. A DevTest Labs számos konfigurálható szabályzatot is kínál, amelyek segítségével a labor-rendszergazdák csökkenthetik a hulladékot, és kezelhetik a csapat környezetét. Ezek a szabályzatok az automatikus leállítást, a költséghatékonyságot, a felhasználónként maximálisan engedélyezett virtuális gépeket és a virtuálisgép-méretet tartalmazzák. A DevTest Labs részletesebb ismertetését az áttekintésben vagy a bevezető [](devtest-lab-overview.md) videóban találja [](https://channel9.msdn.com/Blogs/Azure/what-is-azure-devtest-labs).
 
-### <a name="what-does-worry-free-self-service-mean"></a>Mit jelent "megbízható önkiszolgáló"?
-Önkiszolgáló megbízható, az azt jelenti, hogy a fejlesztők és tesztelők hozzon létre saját környezeteket igény szerint. Biztonsága érdekében, hogy a DevTest Labs segítségével állítsa be a megfelelő hozzáférés, a maximális hatékonyság és a költségek csökkentését, hogy a rendszergazdák rendelkeznek. A rendszergazdák is adja meg, melyik Virtuálisgép-méretek engedélyezett, a virtuális gépek maximális számát, és ha virtuális gép elindult, és állítsa le. DevTest Labs is megkönnyíti a költségek figyelése, és segítenek, hogy vegye figyelembe, hogy a labor-erőforrásokat vannak használatban, a riasztásokat állíthat be.
+### <a name="what-does-worry-free-self-service-mean"></a>Mit jelent a "problémamentes önkiszolgáló szolgáltatás"?
+Az ingyenes önkiszolgáló szolgáltatás azt jelenti, hogy a fejlesztők és a tesztelők igény szerint saját környezeteket hozhatnak létre. A rendszergazdák biztonságban tudhatják, hogy a DevTest Labs segíthet a megfelelő hozzáférés megadásában, a költségek csökkentésében és a szabályozás költségein. A rendszergazdák meghatározhatják, hogy mely virtuálisgép-méretek engedélyezettek, a virtuális gépek maximális száma, valamint a virtuális gépek indítása és leállítása. A DevTest Labs emellett megkönnyíti a költségek figyelését és a riasztások beállítását, így könnyebben tájékozódhat a labor-erőforrások használatáról.
 
-### <a name="how-can-i-use-devtest-labs"></a>Hogyan használható a DevTest Labs?
-DevTest Labs akkor hasznos, bármikor szükséges fejlesztési vagy tesztelési környezetek, és azokat gyorsan reprodukálhatja vagy költségtakarékos házirendek segítségével kezelheti azokat.
-Az alábbiakban néhány olyan forgatókönyvet használó ügyfeleink számára a DevTest Labs szolgáltatásban:
+### <a name="how-can-i-use-devtest-labs"></a>Hogyan használhatom a DevTest Labs szolgáltatást?
+A DevTest Labs hasznos lehet, ha fejlesztési vagy tesztelési környezetekre van szüksége, és gyorsan szeretné reprodukálni őket, vagy a költségmegtakarítási szabályzatok használatával felügyelheti őket.
+Íme néhány forgatókönyv, amelyekkel ügyfeleink a következő célokra használják a DevTest Labs szolgáltatást:
 
-- Kezelheti a fejlesztési és tesztelési környezetek egy helyen. Házirendek használata csökkentheti a költségeket, és hozzon létre egyéni rendszerképek megosztani a csapat közötti épít fel.
-- Egy alkalmazás fejlesztése egyéni rendszerképek használatával való mentése során a fejlesztési szakaszban a lemez állapotát.
-- Nyomon követheti a folyamat viszonyítva költség.
-- Minőségi assurance tesztelési tömeges tesztelési környezeteket hozhat létre.
-- Összetevők és a képletek használatával egyszerűen konfigurálhatja, és Reprodukálja egy alkalmazás különböző környezetekben.
-- Virtuális gépek elosztása a ötletbörzékhez (együttműködési fejlesztési és tesztelési munka), és ezután könnyedén megszüntetése őket, amikor véget ért az esemény.
+- Egy helyen kezelheti a fejlesztési és tesztelési környezeteket. A házirendek segítségével csökkentheti a költségeket, és egyéni lemezképeket hozhat létre a csapaton belüli buildek megosztásához.
+- Az alkalmazások fejlesztéséhez egyéni rendszerképeket használva mentse a lemez állapotát a fejlesztési fázisok során.
+- Nyomon követheti az előrehaladással kapcsolatos költségeket.
+- Tömeges tesztelési környezetek létrehozása a minőségbiztosítási teszteléshez.
+- Az összetevők és a képletek használatával egyszerűen konfigurálhatja és reprodukálhatja az alkalmazásokat különböző környezetekben.
+- Terjesztheti a virtuális gépeket a ötletbörzékhez (együttműködési fejlesztési vagy tesztelési munkák), majd az esemény befejeződését követően egyszerűen kiépítheti őket.
 
-### <a name="how-am-i-billed-for-devtest-labs"></a>Hogyan történik a számlázás a DevTest Labs?
-DevTest Labs szolgáltatás ingyenes. Tesztkörnyezetek létrehozása és konfigurálása a házirendek, sablonok és összetevők a DevTest Labs szolgáltatásban díjmentes. Csak az Azure-erőforrások használják a Labs-környezetben, például a virtuális gépek, tárfiókok és virtuális hálózatok fizet. A labor-erőforrásokat kapcsolatos további információkért lásd: [Azure DevTest Labs díjszabás](https://azure.microsoft.com/pricing/details/devtest-lab/).
+### <a name="how-am-i-billed-for-devtest-labs"></a>Mennyit kell fizetnem a DevTest Labs szolgáltatásért?
+A DevTest Labs egy ingyenes szolgáltatás. A laborok létrehozása és a házirendek, sablonok és összetevők konfigurálása a DevTest Labs szolgáltatásban ingyenes. Csak a laborokban használt Azure-erőforrások, például a virtuális gépek, a Storage-fiókok és a virtuális hálózatok után kell fizetnie. További információ a labor erőforrásainak költségéről: [Azure DevTest Labs díjszabása](https://azure.microsoft.com/pricing/details/devtest-lab/).
 
 ## <a name="security"></a>Biztonság
 
-### <a name="what-are-the-different-security-levels-in-devtest-labs"></a>Mik azok a különböző biztonsági szintek a DevTest Labs?
-Szerepköralapú hozzáférés-vezérlés (RBAC) hozzáférés biztonsági határozza meg. Ha szeretné megtudni, hogyan működik a hozzáférés, segít a engedélyt, a szerepkör és egy hatókör közötti különbségekről további RBAC szerint.
+### <a name="what-are-the-different-security-levels-in-devtest-labs"></a>Melyek a DevTest Labs különböző biztonsági szintjei?
+A biztonsági hozzáférést szerepköralapú Access Control (RBAC) alapján határozzák meg. A hozzáférés működésének megismeréséhez segítséget nyújt a RBAC által meghatározott engedély, szerepkör és hatókör közötti különbségek megismerésében.
 
-- **Engedély**: Engedély egy meghatározott hozzáférést egy adott művelet. Például egy engedély az olvasási hozzáférést minden virtuális gép lehet.
-- **Szerepkör**: A szerepkör az vannak csoportosítva, és a felhasználóhoz rendelt engedélyek egy készletét. Ha például egy előfizetés-tulajdonosi szerepkörrel rendelkező felhasználó hozzáfér egy előfizetésen belüli összes erőforrás.
-- **Hatókör**: A hatókör egy Azure-erőforrás a hierarchiában egy szint. A hatókör lehet például egy erőforráscsoport, egy egyetlen labor vagy a teljes előfizetés.
+- **Engedély**: Az engedély egy meghatározott művelethez megadott hozzáférés. Az engedélyek például olvasási jogosultsággal rendelkezhetnek az összes virtuális géphez.
+- **Szerepkör**: A szerepkör olyan engedélyek halmaza, amelyek csoportosíthatók és hozzárendelhetők egy felhasználóhoz. Egy előfizetéshez tartozó tulajdonosi szerepkörrel rendelkező felhasználó például hozzáférhet az előfizetésen belüli összes erőforráshoz.
+- **Hatókör**: A hatókör az Azure-erőforrások hierarchiáján belüli szint. Egy hatókör lehet például egy erőforráscsoport, egy tesztkörnyezet vagy a teljes előfizetés.
 
-DevTest Labs hatókörén belül van, amelyek meghatározzák a felhasználói engedélyek szerepkörök két típusa:
+A DevTest Labs hatókörén belül két típusú szerepkört határozhat meg, amelyek a felhasználói engedélyeket definiálják:
 
-- **Labor tulajdonosa**: A lab tulajdonosa erőforrásokhoz való teljes hozzáférés a tesztkörnyezetben. Egy tesztlabor tulajdonosa is szabályzatok módosításához, olvasni és írni az olyan virtuális gépek, módosítsa a virtuális hálózat, és így tovább.
-- **Lab-felhasználó**: A lab felhasználói megtekinthetik minden labor-erőforrásokat, például a virtuális gépek, a házirendek és a virtuális hálózatok. A lab-felhasználó, szabályzatok, vagy bármely más felhasználók által létrehozott virtuális gépek nem módosítható.
+- **Labor tulajdonosa**: A tesztkörnyezet tulajdonosai hozzáférhetnek a labor összes erőforrásához. A labor tulajdonosa módosíthatja a házirendeket, olvasást és írást bármely virtuális gépre, megváltoztathatja a virtuális hálózatot, és így tovább.
+- **Tesztkörnyezet felhasználója**: A tesztkörnyezet felhasználói megtekinthetik az összes tesztkörnyezet-erőforrást, például virtuális gépeket, házirendeket és virtuális hálózatokat. A tesztkörnyezet felhasználói azonban nem módosíthatják a házirendeket vagy a más felhasználók által létrehozott virtuális gépeket.
 
-Egyéni szerepkörök a DevTest Labs szolgáltatásban hozhat létre. Egyéni szerepkörök létrehozása a DevTest Labs szolgáltatásban létrehozott kapcsolatban lásd: [felhasználó engedélyeket adott laborszabályzatok](devtest-lab-grant-user-permissions-to-specific-lab-policies.md).
+Létrehozhat egyéni szerepköröket is a DevTest Labs szolgáltatásban. Ha szeretné megtudni, hogyan hozhat létre egyéni szerepköröket a DevTest Labs szolgáltatásban, tekintse meg a [felhasználói engedélyek megadása adott tesztkörnyezet](devtest-lab-grant-user-permissions-to-specific-lab-policies.md)-házirendekhez című részt.
 
-Mivel hatókörök hierarchikus, amikor a felhasználók számára egy bizonyos hatókörben, a felhasználó számára automatikusan biztosított ezeket az engedélyeket, minden egyes alacsonyabb szintű hatókörhöz. a hatókör. Például ha egy felhasználó az előfizetés tulajdonosa a szerepkör van hozzárendelve, a felhasználónak hozzáférése van az összes erőforrást az előfizetéshez. Ilyen erőforrások többek között a virtuális gépek, virtuális hálózatok és tesztkörnyezetek. Előfizetés tulajdonosaként automatikusan örökli a labor tulajdonosi szerepkörhöz. Azonban nem igaz ennek az ellenkezője. A lab tulajdonosa hozzáférés a laborokhoz, amely kisebb, mint az előfizetés szintjén hatókör. Tehát egy tesztlabor tulajdonosa nem látható, virtuális gépek, virtuális hálózatok vagy bármely más erőforrások, amelyek túlmutatnak a labor létrehozása.
+Mivel a hatókörök hierarchikusak, amikor egy felhasználó egy bizonyos hatókörön belül rendelkezik engedélyekkel, a felhasználó automatikusan megkapja ezeket az engedélyeket a hatókör minden alacsonyabb szintű hatókörében. Ha például egy felhasználó az előfizetés tulajdonosa szerepkörhöz van rendelve, a felhasználó hozzáférhet az előfizetéshez tartozó összes erőforráshoz. Ilyen erőforrások például a virtuális gépek, a virtuális hálózatok és a laborok. Az előfizetés tulajdonosa automatikusan örökli a tesztkörnyezet tulajdonosának szerepkörét. Az ellenkezője azonban nem igaz. A labor tulajdonosa egy laborhoz fér hozzá, amely az előfizetési szintnél alacsonyabb hatókörű. Így a tesztkörnyezet tulajdonosai nem láthatják a laboron kívüli virtuális gépeket, virtuális hálózatokat és egyéb erőforrásokat.
 
-### <a name="how-do-i-define-role-based-access-control-for-my-devtest-labs-environments-to-ensure-that-it-can-govern-while-developerstest-can-do-their-work"></a>Hogyan szerepköralapú hozzáférés-vezérlő megadásához a DevTest Labs környezetben, győződjön meg arról, hogy az informatikai részleg szabályozhatja fejlesztői és tesztelési is munkájuk során?
-Széles körű mintát, van azonban a részletek a szervezet függ.
+### <a name="how-do-i-define-role-based-access-control-for-my-devtest-labs-environments-to-ensure-that-it-can-govern-while-developerstest-can-do-their-work"></a>Hogyan a saját DevTest Labs-környezetek szerepköralapú hozzáférés-vezérlésének megadásával biztosítható, hogy a fejlesztők és a tesztek a munkájukat is szabályozzák?
+Széles minta van, azonban a részletek a szervezettől függenek.
 
-Központi informatikai kell saját, csak hogy mire szükség, és engedélyezni szeretné, hogy a szükséges mértékű a projektet és az alkalmazás csapatok. Általában azt jelenti, hogy a központi informatikai az előfizetés tulajdonosa, és kezeli a központi informatikai funkciók, például a hálózati konfiguráció. Készletét **tulajdonosok** előfizetés kis kell lennie. Ezeket a tulajdonosokat további tulajdonosok jelöl ki, amikor szükség van, vagy előfizetési szintű szabályzatok, például "nincs nyilvános IP-címnél.
+A központi informatikai részlegnek csak a szükséges mértékeket kell használnia, és lehetővé kell tennie a projekt és az alkalmazás csapatának, hogy rendelkezzen a szükséges szintű szabályozással. Ez általában azt jelenti, hogy a központi informatikai részleg az előfizetés tulajdonosa, és az informatikai funkciók, például a hálózati konfigurációk kezelése. Az előfizetéshez tartozó **tulajdonosok** készletének kicsinek kell lennie. Ezek a tulajdonosok további tulajdonosokat is megadhatnak, amikor szükség van rá, vagy előfizetési szintű szabályzatokat alkalmaznak, például "nincs nyilvános IP".
 
-Előfizetésen, például az 1. szint vagy a 2. rétegbeli támogatási hozzáférést igénylő felhasználók alcsoportjaihoz lehet. Ebben az esetben javasoljuk, hogy ezek a felhasználók számára a **közreműködői** elérni, hogy azok is felügyelheti az erőforrásokat, de nem adja meg a felhasználói hozzáférés vagy házirendek beállítása.
+Előfordulhat, hogy a felhasználók olyan részhalmaza van, amelynek hozzáférésre van szüksége egy előfizetéshez, például a Tier1 vagy a 2. szint támogatásához. Ebben az esetben javasoljuk, hogy ezeknek a felhasználóknak a közreműködők számára biztosítson hozzáférést, hogy tudják kezelni az erőforrásokat, de nem biztosítanak felhasználói hozzáférést vagy szabályzatok módosítását.
 
-A DevTest Labs-erőforrás a tulajdonosok, akik megközelíti a projekt vagy alkalmazás csapat helyvezérlőhöz kell tartoznia. Fontos, mivel megértik a gépek és a szükséges szoftverek szükséges követelményeknek. A szervezetek többségében a DevTest Labs erőforrás tulajdonosa gyakran a projekt/fejlesztési vezető. Erre a tulajdonosra kezelheti a felhasználók és a tesztkörnyezet-szabályzatait, és kezelheti a DevTest Labs-környezetben lévő összes virtuális gép.
+A DevTest Labs-erőforrásnak olyan tulajdonosnak kell lennie, aki a projekt/alkalmazás csapathoz közeledik. Ennek oka, hogy megértik a gépekre és a szükséges szoftverekre vonatkozó követelményeket. A legtöbb szervezetben a DevTest Labs-erőforrás tulajdonosa általában a projekt/fejlesztési vezető. Ez a tulajdonos felügyelheti a felhasználókat és a házirendeket a tesztkörnyezet környezetében, és kezelheti az összes virtuális gépet a DevTest Labs-környezetben.
 
-A projekt vagy alkalmazás csapat tagjainak hozzá kell adni a **DevTest Labs-felhasználó** szerepkör. Ezek a felhasználók is létrehozhatnak virtuális gépeket (beágyazott a labor és előfizetés-szintű szabályzatok). Is kezelhetik saját virtuális gépeiket. Más felhasználókhoz tartozó virtuális gépek, nem tudja kezelni.
+A Project/Application csapat tagjait fel kell venni a **DevTest Labs felhasználói** szerepkörbe. Ezek a felhasználók virtuális gépeket hozhatnak létre (a labor és az előfizetési szintű szabályzatok segítségével). Saját virtuális gépeket is kezelhetnek. Nem kezelhetik más felhasználókhoz tartozó virtuális gépeket.
 
-További információkért lásd: [Azure enterprise scaffold-előíró előfizetés-irányítás dokumentáció](/azure/architecture/cloud-adoption/appendix/azure-scaffold).
+További információkért lásd: [Azure Enterprise állvány – előfizetési útmutató irányítási dokumentációja](/azure/architecture/cloud-adoption/appendix/azure-scaffold).
 
 
-### <a name="how-do-i-create-a-role-to-allow-users-to-do-a-specific-task"></a>Hogyan hozhatok létre egy szerepkört, hogy a felhasználók egy adott feladat?
-Egyéni szerepkörök létrehozása és az engedélyek hozzárendelése szerepkörhöz kapcsolatos átfogó című cikket, lásd: [felhasználó engedélyeket adott laborszabályzatok](devtest-lab-grant-user-permissions-to-specific-lab-policies.md). Íme egy példa a parancsfájl, amely létrehozza a szerepkör **DevTest Labs-speciális felhasználó**, amely jogosult arra, hogy a labor virtuális gépeinek kezdődik és:
+### <a name="how-do-i-create-a-role-to-allow-users-to-do-a-specific-task"></a>Hogyan hozzon létre egy szerepkört, amely lehetővé teszi a felhasználók számára egy adott feladat elvégzését?
+Az egyéni szerepkörök létrehozásával és az engedélyek szerepkörhöz való hozzárendelésével kapcsolatos átfogó cikkért lásd: [felhasználói engedélyek megadása adott tesztkörnyezet](devtest-lab-grant-user-permissions-to-specific-lab-policies.md)-házirendekhez. Íme egy példa egy olyan parancsfájlra, amely létrehozza a **DevTest Labs speciális felhasználót**, amely jogosult a laborban lévő összes virtuális gép elindítására és leállítására:
 
 
 ```powershell
@@ -125,102 +125,102 @@ $policyRoleDef.Actions.Add("Microsoft.DevTestLab/labs/virtualMachines/Stop/actio
 $policyRoleDef = New-AzRoleDefinition -Role $policyRoleDef  
 ```
 
-### <a name="how-can-an-organization-ensure-corporate-security-policies-are-in-place"></a>Hogyan biztosíthatja a szervezet vállalati biztonsági házirendek legyenek érvényben?
-Egy szervezet előfordulhat, hogy érhet el, a következő műveletek végrehajtásával:
+### <a name="how-can-an-organization-ensure-corporate-security-policies-are-in-place"></a>Hogyan gondoskodhat a szervezet a vállalati biztonsági házirendekről?
+A szervezetek a következő műveletek végrehajtásával érhetik el:
 
-- Fejlesztés és egy átfogó biztonsági házirend közzététele. A szabályzat szabályainak használati feltételek a használatával társított articulates szoftver, a felhőbeli eszközöket. Azt is meghatározza, milyen jól sérti a szabályzatot.
-- Egyéni rendszerkép, az egyéni összetevők és a egy folyamatot, amely lehetővé teszi, hogy az active Directoryval meghatározott biztonsági tartományon belüli vezénylési fejleszthet. Ez a megközelítés kikényszeríti a céges határhálózaton, és beállítja a környezeti vezérlőknek az alábbiakat közös csoportját. Ezek a vezérlők a környezetre leselkedő fejlesztő során figyelembe veheti a fejlesztés és a egy biztonságos fejlesztési életciklus során kövesse az általános folyamat részeként. A cél is, amely nem túl szigorú környezetet biztosít a május akadályozzák a fejlesztési, de ésszerű csoportját. A csoportházirendek a szervezeti egység (OU), amely tartalmazza a virtuális gépeiről, éles környezetben található összes csoportházirendek egy része lehet. Másik lehetőségként el megfelelően az összes azonosított kockázatok csökkentése, egy további csoportot.
+- Átfogó biztonsági szabályzat fejlesztése és közzététele. A szabályzat a szoftverekkel, a Felhőbeli objektumokkal kapcsolatos elfogadható használati szabályokat fogalmazza meg. Azt is meghatározza, hogy milyen egyértelműen sértse meg a szabályzatot.
+- Egyéni rendszerkép, egyéni összetevők és központi telepítési folyamat fejlesztése, amely az Active Directoryval definiált biztonsági tartományon belüli előkészítést teszi lehetővé. Ez a megközelítés kikényszeríti a vállalati határt, és beállítja a környezeti vezérlőelemek közös készletét. Ezeket a környezeteket a fejlesztők úgy tekinthetik meg, mint a fejlesztésük és a biztonságos fejlesztési életciklusuk során, a teljes folyamat részeként. A cél az, hogy olyan környezetet biztosítson, amely nem túlságosan korlátozó, ami hátráltathatja a fejlesztést, de a vezérlőelemek egy ésszerű halmaza is. A labor virtuális gépeket tartalmazó szervezeti egység (OU) csoportházirendje az éles környezetben található összes csoportházirend részhalmaza lehet. Azt is megteheti, hogy egy további készletet is tartalmaz, hogy megfelelően enyhítse az azonosított kockázatokat.
 
-### <a name="how-can-an-organization-ensure-data-integrity-to-ensure-that-remoting-developers-cant-remove-code-or-introduce-malware-or-unapproved-software"></a>Hogyan biztosíthatja a szervezet adatok integritásának megőrzése, győződjön meg arról, hogy a távoli eljáráshívás a fejlesztők nem tudja eltávolítani a kód vagy vezeti be a kártevők vagy nem jóváhagyott szoftverek?
-Nincsenek külső tanácsadók, alvállalkozók és az alkalmazottak, amelyeket a távoli eljáráshívás DevTest Labs-környezetben együttműködéshez a fenyegetés ellenőrzési több réteget.
+### <a name="how-can-an-organization-ensure-data-integrity-to-ensure-that-remoting-developers-cant-remove-code-or-introduce-malware-or-unapproved-software"></a>Hogyan biztosítja a szervezet az adatok integritását annak biztosítására, hogy a távelérési szolgáltatás nem tudja eltávolítani a programkódot vagy kártevő vagy nem jóváhagyott szoftvereket bevezetni?
+A DevTest Labs szolgáltatásban való együttműködéshez számos különböző vezérlési réteg áll rendelkezésre a külső tanácsadók, alvállalkozók vagy olyan alkalmazottak fenyegetésének enyhítésére.
 
-Ahogy korábban is hangsúlyoztuk, az első lépés egy használati feltételei elkészíteni, és definiálva, amely egyértelműen ismerteti a következmények, ha valaki megsértik a házirendet kell rendelkeznie.
+Ahogy azt korábban említettük, az első lépésnek rendelkeznie kell egy, a szabályzatnak megfelelő, meghatározott használati szabályzattal, amely világosan ismerteti a következményeket, amikor valaki sérti a házirendet.
 
-Az első réteg azoknak a vezérlőelemeknek a távoli hozzáféréshez, amely közvetlenül a labor nem kapcsolódik VPN-kapcsolaton keresztül egy távoli hozzáférési házirend alkalmazása.
+A távelérési vezérlők első rétege egy távelérési házirend alkalmazása egy olyan VPN-kapcsolaton keresztül, amely nem kapcsolódik közvetlenül a laborhoz.
 
-A második réteg vezérlők, hogy a alkalmazni a csoportházirend-objektumok, amelyek megakadályozzák a másolás, és illessze be a távoli asztalon keresztül egy készletét. A hálózati házirend nem engedélyezi a kimenő a környezetben, például az FTP és RDP szolgáltatásokat a környezetén valósíthatja meg. Felhasználó által meghatározott útválasztás kényszerítheti az összes Azure hálózati forgalom vissza a helyszíni, de előfordulhat, hogy engedélyezi az adatok feltöltését, kivéve, ha megvizsgálja a tartalom és a munkamenetek proxyn keresztüli ellenőrzött URL-címek az Útválasztás nem sikerült tárfiókot. Nyilvános IP-címek támogatása a DevTest Labs szolgáltatásban, hogy ne engedélyezze az adatközponthíd-képzés egy külső hálózati erőforrás a virtuális hálózaton belül korlátozott lehet.
+A vezérlőelemek második rétege olyan csoportházirend-objektumok készletét alkalmazza, amelyek megakadályozzák a másolást és beillesztést a távoli asztalon. Egy hálózati házirendet úgy lehetne megvalósítani, hogy ne engedélyezze a kimenő szolgáltatásokat a környezetből, például az FTP-és az RDP-szolgáltatásokat. A felhasználó által megadott útválasztás az összes Azure-beli hálózati forgalmat visszakényszerítheti a helyszíni környezetbe, de az Útválasztás nem tudott minden olyan URL-cím esetében, amely lehetővé teszi az adatok feltöltését, kivéve, ha a tartalom és a munkamenetek ellenőrzéséhez proxyn keresztül vezérli A nyilvános IP-címeket a DevTest Labs szolgáltatást támogató virtuális hálózaton korlátozni lehet, hogy ne engedélyezzék egy külső hálózati erőforrás áthidalóját.
 
-Végső soron korlátozások ugyanazt a típusú szükség van, a szervezet, amely volna az összes lehetséges módszer a cserélhető adathordozó vagy a külső URL-címek, amely fogadni tudta egy bejegyzést a tartalom. Tekintse meg a biztonsági szakembereknek, tekintse át és a egy biztonsági házirend bevezetése. További javaslatokért lásd: [Microsoft Kibertámadások biztonsági](https://www.microsoft.com/security/default.aspx?&WT.srch=1&wt.mc_id=AID623240_SEM_sNYnsZDs).
+Végső soron ugyanazokat a korlátozásokat kell alkalmazni a szervezeten belül, amely a cserélhető adathordozók és a külső URL-címek összes lehetséges módszerét figyelembe veszi, amelyek elfogadják a tartalom közzétételét. A biztonsági szabályzat áttekintéséhez és megvalósításához forduljon a biztonsági szakemberekhez. További javaslatok: [Microsoft Cyber Security](https://www.microsoft.com/security/default.aspx?&WT.srch=1&wt.mc_id=AID623240_SEM_sNYnsZDs).
 
-## <a name="lab-configuration"></a>Tesztlabor-konfiguráció
+## <a name="lab-configuration"></a>Tesztkörnyezet konfigurációja
 
-### <a name="how-do-i-create-a-lab-from-a-resource-manager-template"></a>Hogyan hozhatok létre labor a Resource Manager-sablonnal?
-Biztosítunk egy [lab Azure Resource Manager-sablonok GitHub-adattára](https://azure.microsoft.com/resources/templates/101-dtl-create-lab) üzembe helyezhető-, vagy módosítsa a laborral kapcsolatos egyéni sablonokat létrehozni. Mindegyik sablon található hivatkozás segítségével üzembe a labort, mivel a saját Azure-előfizetésében. Vagy testre szabhatja a sablont, és [üzembe helyezése PowerShell vagy az Azure CLI használatával](../azure-resource-manager/resource-group-template-deploy.md).
-
-
-### <a name="can-i-have-all-virtual-machines-to-be-created-in-a-common-resource-group-instead-having-each-machine-in-its-own-resource-group"></a>Ehelyett kellene a saját erőforráscsoport egyes gépek közös erőforráscsoportban kell létrehozni az összes virtuális gép is van? 
-Igen, labortulajdonosként, vagy engedélyezheti a labor létrehozása erőforrás-csoport kiosztását az Ön számára, vagy az összes virtuális gép létrehozása egy közös erőforráscsoportban adjon meg. 
-
-Csoport külön erőforrást. példa:
--   DevTest Labs létrehoz egy új erőforráscsoportot, minden nyilvános/titkos IP virtuális gép, üzembe helyezése
--   DevTest Labs hoz létre egy erőforráscsoportot az azonos méretű tartozó megosztott IP-gépek.
-
-Gyakori erőforrás-csoport forgatókönyv:
--   Összes virtuális gépet hoz létre a közös erőforráscsoportban, adjon meg. További [a labor csoport kiosztott erőforrás](https://aka.ms/RGControl). 
-
-### <a name="how-do-i-maintain-a-naming-convention-across-my-devtest-labs-environment"></a>Hogyan karbantartása egy elnevezési konvenciója a DevTest Labs-környezetben?
-Előfordulhat, hogy szeretné kiterjeszteni a jelenlegi vállalati elnevezési konvenciók Azure műveletekhez, és azokat konzisztens a DevTest Labs-környezetben. DevTest Labs, javasoljuk, hogy adott kezdési házirendek. Ezek a szabályzatok központi parancsfájlt és a JSON-sablonok, ha egységes telepít. Házirendek elnevezési implementálható az előfizetői szintre vonatkoznak az Azure szabályzatokkal. JSON-minták az Azure Policy, lásd: [Azure Policy minták](../governance/policy/samples/index.md).
-
-### <a name="how-many-labs-can-i-create-under-the-same-subscription"></a>Hány labs hozhat létre egy előfizetésen belül?
-A megadott határértéket előfizetésenként létrehozható labs száma nem áll rendelkezésre. Azonban előfizetésenként használt erőforrások mennyisége korlátozva. Itt olvashat a [korlátok és kvóták az Azure-előfizetések](../azure-subscription-service-limits.md) és [ezek a korlátok növelése](https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests).
+### <a name="how-do-i-create-a-lab-from-a-resource-manager-template"></a>Hogyan labort létrehozni egy Resource Manager-sablonból?
+Olyan GitHub-tárházat is kínálunk a [labor Azure Resource Manager sablonokhoz](https://azure.microsoft.com/resources/templates/101-dtl-create-lab) , amelyet telepítheti a-ként, vagy módosíthatja egyéni sablonok létrehozására a laborokhoz. Minden sablon tartalmaz egy hivatkozást a labor üzembe helyezéséhez, amely a saját Azure-előfizetésében van. Vagy testreszabhatja a sablont, és telepítheti a [PowerShell vagy az Azure CLI használatával](../azure-resource-manager/resource-group-template-deploy.md)is.
 
 
-### <a name="how-many-vms-can-i-create-per-lab"></a>Hány virtuális gépet hozhat létre egy tesztlabor?
-Nincs konkrét tesztlabor hozható létre virtuális gépek száma korlátlan. Azonban az erőforrásokat (virtuális gép magjainak, nyilvános IP-címeket, és így tovább) használt előfizetésenként korlátozott is. Itt olvashat a [korlátok és kvóták az Azure-előfizetések](../azure-subscription-service-limits.md) és [ezek a korlátok növelése](https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests).
+### <a name="can-i-have-all-virtual-machines-to-be-created-in-a-common-resource-group-instead-having-each-machine-in-its-own-resource-group"></a>Lehet-e minden virtuális gépet létrehozni egy közös erőforráscsoporthoz ahelyett, hogy a saját erőforráscsoporthoz tartozó mindegyik gép? 
+Igen, a labor tulajdonosaként engedélyezheti a labornak az erőforráscsoport lefoglalását vagy az Ön által megadott közös erőforráscsoporthoz létrehozott összes virtuális gépet. 
 
-### <a name="how-do-i-determine-the-ratio-of-users-per-lab-and-the-overall-number-of-labs-that-are-needed-across-an-organization"></a>Hogyan állapítható meg a felhasználók labor és a laborokban, amelyek szükségesek a vállalaton belül teljes számának aránya?
-Azt javasoljuk, hogy üzleti egységek és az azonos alkalmazásfejlesztési projekt társított a fejlesztői csoportok társítva a azonos labor. Lehetővé teszi a szabályzatok, a képek és a Leállítás házirendek azonos típusú csoportban is alkalmazható.
+Különálló erőforráscsoport-forgatókönyv:
+-   A DevTest Labs új erőforráscsoportot hoz létre minden nyilvános/magánhálózati IP virtuális géphez, amelyet felvesz
+-   A DevTest Labs létrehoz egy erőforráscsoportot a megosztott IP-gépekhez, amelyek ugyanahhoz a mérethez tartoznak.
 
-Szükség lehet figyelembe venni a földrajzi határokon. Például a fejlesztők az északi kelet Egyesült Államok (US) felhasználhatja az USA 2. keleti régiója kiépített labor. És a fejlesztők számára, Dallas, Texas, és Denver, Colorado irányított használjon egy erőforrást, az USA déli középső régiója. Ha egy külső külső gyártótól származó egy együttműködésen alapuló tevékenységi, azok sikerült hozzárendelni a belső fejlesztők által nem használt laborokhoz.
+Általános erőforráscsoport-forgatókönyv:
+-   Az összes virtuális gép megpördült a megadott általános erőforráscsoport szerint. További információ [az erőforráscsoport kiosztásáról a laborban](https://aka.ms/RGControl). 
 
-Az Azure DevOps Projects belül egy adott projekt labor is használhatja. Ezután alkalmazza megadott Azure Active Directory csoporthoz, amely lehetővé teszi, hogy mindkét erőforráskészlettel való hozzáférés biztonságát. A virtuális hálózat a labor rendelt egyesíthetők a felhasználók egy másik határ lehet.
+### <a name="how-do-i-maintain-a-naming-convention-across-my-devtest-labs-environment"></a>Hogyan fenntartani az DevTest Labs-környezet elnevezési konvencióját?
+Érdemes lehet kiterjeszteni az aktuális vállalati elnevezési konvenciókat az Azure-műveletekre, és az DevTest Labs-környezetben is konzisztensen kell lennie. A DevTest Labs telepítésekor javasoljuk, hogy konkrét kezdő házirendekkel rendelkezzen. Ezeket a házirendeket központi parancsfájlokkal és JSON-sablonokkal helyezheti üzembe a konzisztencia kikényszerítása érdekében. Az elnevezési házirendek az előfizetési szinten alkalmazott Azure-szabályzatok segítségével valósíthatók meg. A Azure Policy JSON-minták esetében lásd: [Azure Policy minták](../governance/policy/samples/index.md).
 
-### <a name="how-can-we-prevent-the-deletion-of-resources-within-a-lab"></a>Hogyan tudjuk megakadályozni labor belüli erőforrások törlését?
-Javasoljuk, hogy, megfelelő engedélyekkel a labor szintjén, hogy csak a jogosult felhasználók erőforrásokat törölheti vagy módosíthatja a laborszabályzatok. A fejlesztők belül kell elhelyezni a **DevTest Labs-felhasználó** csoport. A vezető fejlesztői vagy az infrastruktúra érdeklődő kell lennie a **DevTest Labs tulajdonosa**. Azt javasoljuk, hogy csak két labortulajdonosok. Ez a szabályzat kiterjesztése felé a kódtárat a sérülés elkerülése érdekében. Labor felhasználók erőforrások használatára jogosult, de nem tudja frissíteni a laborszabályzatok. Tekintse meg a következő cikkben, amely felsorolja a szerepkörök és a jogosultságokat, amelyeket a labor belül minden beépített csoport rendelkezik: [Tulajdonosok és felhasználók hozzáadása az Azure DevTest Labs szolgáltatásban](devtest-lab-add-devtest-user.md).
+### <a name="how-many-labs-can-i-create-under-the-same-subscription"></a>Hány labort hozhatok létre ugyanahhoz az előfizetéshez?
+Az előfizetések alapján létrehozható laborok száma nem rendelkezik konkrét korlátozással. Az előfizetések által felhasznált erőforrások mennyisége azonban korlátozott. Az Azure-előfizetések [korlátaival és kvótákkal](../azure-subscription-service-limits.md) , valamint a [korlátok növelésével](https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests)kapcsolatos tudnivalókat itt olvashatja.
 
-### <a name="how-do-i-share-a-direct-link-to-my-lab"></a>Hogyan oszthatom meg egy közvetlen hivatkozást a laborhoz?
 
-1. Az a [az Azure portal](https://portal.azure.com), nyissa meg a labor létrehozása.
-2. Másolás a **labor URL-cím** a böngészőből, és megoszthatja a labor felhasználók.
+### <a name="how-many-vms-can-i-create-per-lab"></a>Hány virtuális gépet hozhatok létre laborban?
+A laborok által létrehozható virtuális gépek száma nem rendelkezik konkrét korlátozással. A felhasznált erőforrások (virtuálisgép-magok, nyilvános IP-címek stb.) azonban előfizetésre korlátozódnak. Az Azure-előfizetések [korlátaival és kvótákkal](../azure-subscription-service-limits.md) , valamint a [korlátok növelésével](https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests)kapcsolatos tudnivalókat itt olvashatja.
+
+### <a name="how-do-i-determine-the-ratio-of-users-per-lab-and-the-overall-number-of-labs-that-are-needed-across-an-organization"></a>Hogyan meghatározni a felhasználók és a laboratóriumok arányát, valamint a szervezeten belül szükséges laborok teljes számát?
+Azt javasoljuk, hogy ugyanahhoz a fejlesztési projekthez tartozó üzleti egységek és fejlesztési csoportok ugyanahhoz a laborhoz legyenek társítva. Lehetővé teszi, hogy ugyanazokat a szabályzatokat, lemezképeket és leállítási házirendeket alkalmazza mindkét csoportra.
+
+Előfordulhat, hogy a földrajzi határokat is figyelembe kell vennie. Az észak-keleti Egyesült Államok (Egyesült Államok) fejlesztői például egy Kelet-RÉGIÓJA kiépített labort használhatnak. A Dallasban, Texasban és Denverben lévő fejlesztők pedig az USA déli középső régiójában lévő erőforrások használatára irányíthatók. Ha egy külső harmadik féllel együttműködésen kívüli erőfeszítések vannak, akkor azokat olyan laborhoz lehet rendelni, amelyet a belső fejlesztők nem használnak.
+
+Azure DevOps Projectson belül egy adott projekthez is használhat labort. Ezután egy megadott Azure Active Directory csoporton keresztül alkalmazza a biztonságot, amely lehetővé teszi az erőforrások mindkét készletének elérését. A laborhoz rendelt virtuális hálózat lehet egy másik határ, amellyel összevonhatja a felhasználókat.
+
+### <a name="how-can-we-prevent-the-deletion-of-resources-within-a-lab"></a>Hogyan lehet megakadályozni az erőforrások törlését a laboron belül?
+Javasoljuk, hogy a megfelelő engedélyeket a labor szintjén állítsa be úgy, hogy csak a jogosult felhasználók törölhetnek erőforrásokat, vagy módosíthatják a labor-házirendeket. A fejlesztőket a **DevTest Labs-felhasználók** csoportba kell helyezni. A vezető fejlesztőnek vagy az infrastruktúra-érdeklődőnek a **DevTest Labs**-tulajdonosnak kell lennie. Javasoljuk, hogy csak két labor tulajdonosa legyen. Ez a szabályzat a sérülés elkerülése érdekében kiterjed a kód tárházára. A labor felhasználói jogosultak erőforrásokat használni, de nem frissíthetik a labor-házirendeket. Tekintse meg a következő cikket, amely felsorolja az egyes beépített csoportok által a laboron belüli szerepköröket és jogosultságokat: [Adja hozzá a Azure DevTest Labs tulajdonosait és felhasználóit](devtest-lab-add-devtest-user.md).
+
+### <a name="how-do-i-share-a-direct-link-to-my-lab"></a>Hogyan megosztanak egy közvetlen hivatkozást a laborba?
+
+1. A [Azure Portal](https://portal.azure.com)lépjen a laborba.
+2. Másolja a **labor URL-címét** a böngészőjéből, majd ossza meg a labor felhasználóival.
 
 > [!NOTE]
-> Lab-felhasználó külső felhasználónak kinek van egy Microsoft-fiókkal, de aki nem tagja a szervezet Active Directory-példánynak számít, ha a felhasználó megjelenhet egy hibaüzenet, ha megpróbálnak hozzáférni a megosztott hivatkozás. Ha egy külső felhasználót a hibaüzenetet látja, kérje meg a felhasználót, hogy először válassza az Azure portal jobb felső sarkában a nevét. Ezután a menüben Directory szakaszában a felhasználó kiválaszthatja a könyvtárban, ahol a labor létezik.
+> Ha a tesztkörnyezet felhasználója olyan külső felhasználó, aki Microsoft-fiók rendelkezik, de nem tagja a szervezet Active Directory példányának, a felhasználó hibaüzenetet kap, amikor megpróbálnak hozzáférni a megosztott hivatkozáshoz. Ha egy külső felhasználó hibaüzenetet jelenít meg, kérje meg a felhasználót, hogy válassza ki a nevét a Azure Portal jobb felső sarkában. Ezután a menü címtár szakaszában a felhasználó kiválaszthatja azt a könyvtárat, ahol a labor létezik.
 
 ## <a name="virtual-machines"></a>Virtual machines (Virtuális gépek)
 
-### <a name="why-cant-i-see-vms-on-the-virtual-machines-page-that-i-see-in-devtest-labs"></a>Miért nem látom virtuális gépeket a Virtual Machines lapon láthatók a DevTest Labs?
-A DevTest Labs szolgáltatásban létrehozott virtuális gép, amikor felhőszolgáltatására, hozzáféréssel a virtuális Gépeket. Megtekintheti a virtuális gép, mind a labs lapon, majd a a **virtuális gépek** lapot. Hozzárendelt felhasználók a **DevTest Labs tulajdonosa** szerepkör tekintheti meg a labor létrehozása a lab-ben létrehozott összes virtuális gép **összes virtuális gép** lap. Azonban felhasználók, akik rendelkeznek a **DevTest Labs-felhasználó** szerepkör automatikusan nem teljesíthetők, hogy más felhasználók létrehozott Virtuálisgép-erőforrások olvasási hozzáférést. Ezért ezeken a virtuális gépeken nem jelennek meg a **virtuális gépek** lapot.
+### <a name="why-cant-i-see-vms-on-the-virtual-machines-page-that-i-see-in-devtest-labs"></a>Miért nem látom a virtuális gépeket a DevTest Labs szolgáltatásban megjelenő Virtual Machines oldalon?
+Amikor létrehoz egy virtuális gépet a DevTest Labs szolgáltatásban, engedélyt kap a virtuális géphez való hozzáférésre. A virtuális gépet a Labs lapon és a **Virtual Machines** oldalon is megtekintheti. A **DevTest Labs tulajdonosi** szerepkörhöz hozzárendelt felhasználók a labor **összes Virtual Machines** oldalán a laborban létrehozott összes virtuális gépet megtekinthetik. Az **DevTest Labs felhasználói** szerepkörrel rendelkező felhasználók azonban nem kapnak automatikusan olvasási hozzáférést a többi felhasználó által létrehozott virtuálisgép-erőforrásokhoz. Így ezek a virtuális gépek nem jelennek meg a **Virtual Machines** oldalon.
 
 
-### <a name="how-do-i-create-multiple-vms-from-the-same-template-at-once"></a>Hogyan hozhatok létre több virtuális gép ugyanazt a sablont a egyszerre?
-Egyszerre több virtuális gép ugyanazt a sablont hoz létre a két lehetősége van:
+### <a name="how-do-i-create-multiple-vms-from-the-same-template-at-once"></a>Hogyan egyszerre több virtuális gépet létrehozni ugyanabból a sablonból?
+Két lehetőség közül választhat egyszerre több virtuális gép létrehozásához ugyanabból a sablonból:
 
-- Használhatja a [Azure fejlesztési és üzemeltetési feladatokat bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks).
-- Is [Resource Manager-sablon létrehozása](devtest-lab-add-vm.md#save-azure-resource-manager-template) hoz létre egy virtuális Gépet, miközben és [üzembe helyezése a Resource Manager-sablon a Windows Powershellből](../azure-resource-manager/resource-group-template-deploy.md).
-- Adja meg a létrehozandó virtuális gép létrehozása közben egy gép egynél több példányát is. Több példány a virtuális gépek létrehozásával kapcsolatos további tudnivalókért lásd a dokumentum [laborbeli virtuális gép létrehozása](devtest-lab-add-vm.md).
+- Használhatja az [Azure DevOps Tasks bővítményt](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks).
+- Létrehozhat [egy Resource Manager-sablont](devtest-lab-add-vm.md#save-azure-resource-manager-template) , amikor létrehoz egy virtuális gépet, és [üzembe helyezi a Resource Manager-sablont a Windows powershellből](../azure-resource-manager/resource-group-template-deploy.md).
+- Azt is megadhatja, hogy a virtuális gép létrehozása során a gép legfeljebb egy példánya legyen létrehozva. Ha többet szeretne megtudni a virtuális gépek több példányának létrehozásáról, tekintse meg a [labor virtuális gép létrehozásáról](devtest-lab-add-vm.md)szóló dokumentációt.
 
-### <a name="how-do-i-move-my-existing-azure-vms-into-my-devtest-labs-lab"></a>Hogyan helyezhetek át meglévő Azure virtuális gépek a DevTest Labs labor be?
-A meglévő virtuális gépek DevTest Labs másolása:
+### <a name="how-do-i-move-my-existing-azure-vms-into-my-devtest-labs-lab"></a>Hogyan a meglévő Azure-beli virtuális gépeket a DevTest Labs laborba?
+Meglévő virtuális gépek másolása a DevTest Labs szolgáltatásba:
 
-1.  A meglévő virtuális gép VHD-fájl másolása használatával egy [Windows PowerShell-parancsprogram](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/Scripts/CopyVirtualMachines/CopyAzVHDFromVMToLab.ps1).
-2.  Hozzon létre a [egyéni rendszerkép](devtest-lab-create-template.md) a DevTest Labs labor belül.
-3.  Hozzon létre egy virtuális Gépet a labor létrehozása az egyéni rendszerképpel.
+1.  Másolja a meglévő virtuális gép VHD-fájlját egy [Windows PowerShell-parancsfájl](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/Scripts/CopyVirtualMachines/CopyAzVHDFromVMToLab.ps1)használatával.
+2.  Hozza létre az [Egyéni rendszerképet](devtest-lab-create-template.md) a DevTest Labs laborban.
+3.  Hozzon létre egy virtuális gépet a laborban az egyéni rendszerképből.
 
-### <a name="can-i-attach-multiple-disks-to-my-vms"></a>Tudok több lemez is csatlakoztatható a virtuális gépek?
+### <a name="can-i-attach-multiple-disks-to-my-vms"></a>Több lemezt is Csatolhatok a virtuális gépekhez?
 
-Igen, több lemez is csatlakoztatható a virtuális gépekhez.
+Igen, több lemezt is csatolhat a virtuális gépekhez.
 
-### <a name="if-i-want-to-use-a-windows-os-image-for-my-testing-do-i-have-to-purchase-an-msdn-subscription"></a>Ha szeretne egy Windows operációs rendszer lemezképe használjam tesztelésre, kell vásárolni az MSDN-előfizetéssel?
-Windows ügyfél operációsrendszer-lemezképek (Windows 7 vagy újabb verzió) használata a fejlesztési vagy tesztelési Azure-ban, hajtsa végre az alábbi lépések egyikét:
+### <a name="if-i-want-to-use-a-windows-os-image-for-my-testing-do-i-have-to-purchase-an-msdn-subscription"></a>Ha Windows operációsrendszer-rendszerképet kívánok használni a teszteléshez, meg kell vásárolni egy MSDN-előfizetést?
+Ha a Windows ügyfél operációsrendszer-lemezképeit (Windows 7 vagy újabb verziót) szeretné használni a fejlesztéshez vagy a teszteléshez az Azure-ban, hajtsa végre a következő lépések egyikét:
 
-- [Az MSDN-előfizetés vásárlása](https://www.visualstudio.com/products/how-to-buy-vs).
-- Ha nagyvállalati szerződéssel rendelkezik, hozzon létre egy Azure-előfizetést, a [Enterprise Dev/Test ajánlat](https://azure.microsoft.com/offers/ms-azr-0148p).
+- [Vásároljon MSDN](https://www.visualstudio.com/products/how-to-buy-vs)-előfizetést.
+- Ha Nagyvállalati Szerződés rendelkezik, hozzon létre egy Azure-előfizetést a nagyvállalati [fejlesztési/tesztelési ajánlattal](https://azure.microsoft.com/offers/ms-azr-0148p).
 
-Az Azure-kreditek minden MSDN-ajánlat a kapcsolatos további információkért lásd: [havi Azure-kredit a Visual Studio-előfizetők](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/).
+Az egyes MSDN-ajánlatokhoz tartozó Azure-kreditekről további információt a havi Azure-kreditek [a Visual Studio-előfizetők](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)számára című témakörben talál.
 
 
-### <a name="how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab"></a>Hogyan automatizálható a laborkörnyezetben található összes virtuális gép törlésének?
-Labortulajdonosként virtuális gépek törölheti az Azure Portalon tesztkörnyezetben. Is törölheti a virtuális gépek a tesztkörnyezetben egy PowerShell-parancsprogram használatával. A következő példa alapján a **értékek módosítása** megjegyzés, módosítsa a paraméterek értékeit. A lab panelről az Azure Portalon kérheti le a subscriptionId, labResourceGroup és labName értékeket.
+### <a name="how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab"></a>Hogyan automatizálni a laborban lévő összes virtuális gép törlésének folyamatát?
+A labor tulajdonosaként a Azure Portalon törölheti a virtuális gépeket a laborból. A laborban lévő összes virtuális gépet egy PowerShell-szkript használatával is törölheti. A következő példában a Megjegyzés **módosítása** elemnél módosítsa a paraméterek értékeit. A subscriptionId, a labResourceGroup és a labName értékeket a Azure Portal labor paneljéről kérheti le.
 
 ```powershell
 # Delete all the VMs in a lab.
@@ -254,142 +254,155 @@ foreach($labVM in $labVMs)
 
 ## <a name="environments"></a>Környezetek 
 
-### <a name="how-can-i-use-resource-manager-templates-in-my-devtest-labs-environment"></a>Hogyan használhatok Resource Manager-sablonok a DevTest Labs Környezetemet?
-A Resource Manager-sablonokat a DevTest Labs-környezetben szereplő lépések segítségével telepítheti a [környezetek funkció DevTest Labs szolgáltatásban létrehozott](devtest-lab-test-env.md) cikk. Alapvetően a Resource Manager-sablonok tekintsen meg egy Git-tárház (az Azure-Adattárakkal vagy GitHub), és adjon hozzá egy [a sablonok privát tárház](devtest-lab-test-env.md) a tesztkörnyezethez. Ebben a forgatókönyvben nem lehet hasznos, ha a DevTest Labs használatával fejlesztési gazdagépeken, de előfordulhat, hogy lehet hasznos, ha egy átmeneti környezet, amely jellemző az üzemi fejleszt.
+### <a name="how-can-i-use-resource-manager-templates-in-my-devtest-labs-environment"></a>Hogyan használhatom a Resource Manager-sablonokat a DevTest Labs-környezetben?
+A Resource Manager-sablonokat egy DevTest Labs-környezetbe helyezheti üzembe a [DevTest Labs környezetek funkciójában](devtest-lab-test-env.md) ismertetett lépések segítségével. Alapvetően a Resource Manager-sablonokat egy git-tárházba (Azure Repos vagy GitHub) tekintheti meg, és hozzáadhat egy [privát tárházat](devtest-lab-test-env.md) a sablonokhoz a laborban. Ez a forgatókönyv nem lehet hasznos, ha DevTest Labs-t használ a fejlesztői gépek üzemeltetésére, de hasznos lehet, ha olyan átmeneti környezetet épít, amely az éles környezetre jellemző.
 
-Emellett akkor is érdemes megjegyezni, hogy a labor időszakonkénti felhasználói beállítás, vagy a virtuális gépek száma csak korlátozza a laborkörnyezet, és nem bármely (Resource Manager-sablonok) környezetekben a natív módon készített gépek száma.
+Azt is érdemes megjegyezni, hogy a virtuális gépek száma a laborban vagy felhasználónként beállítás csak a laborban natív módon létrehozott gépek számát korlátozza, nem pedig semmilyen környezet (Resource Manager-sablonok) számára.
 
 ## <a name="custom-images"></a>Egyéni rendszerképek
 
-### <a name="how-can-i-set-up-an-easily-repeatable-process-to-bring-my-custom-organizational-images-into-a-devtest-labs-environment"></a>Hogyan állítható be egy egyszerű, megismételhető folyamattal ahhoz, hogy saját egyéni szervezeti lemezképek DevTest Labs-környezetben?
-Ez [videó, kép gyári mintát](https://sec.ch9.ms/ch9/8e8a/9ea0b8d4-b803-4f23-bca4-4808d9368e8a/dtlimagefactory_mid.mp4). Ebben a forgatókönyvben a speciális helyzetben, és a megadott szkriptek mintaszkriptek csak. Ha módosítások szükségesek, kezelésére és karbantartására a környezetében használt parancsfájlokra szüksége.
+### <a name="how-can-i-set-up-an-easily-repeatable-process-to-bring-my-custom-organizational-images-into-a-devtest-labs-environment"></a>Hogyan állíthatok be egy könnyen ismételhető folyamatot az egyéni szervezeti lemezképek DevTest Labs-környezetben való üzembe helyezéséhez?
+Tekintse [meg ezt a videót a rendszerkép-előállító mintán](https://sec.ch9.ms/ch9/8e8a/9ea0b8d4-b803-4f23-bca4-4808d9368e8a/dtlimagefactory_mid.mp4). Ez a forgatókönyv egy speciális forgatókönyv, és a megadott parancsfájlok csak példaként használható parancsfájlok. Ha bármilyen módosításra van szükség, felügyelni és karbantartani kell a környezetben használt parancsfájlokat.
 
-Egy rendszerkép-előállító létrehozása a részletes információkért lásd: [egy egyéni rendszerkép-előállító létrehozása az Azure DevTest Labs szolgáltatásban](image-factory-create.md). 
+A rendszerkép-előállító létrehozásával kapcsolatos részletes információkért lásd: [Egyéni rendszerkép-előállító létrehozása Azure DevTest Labsban](image-factory-create.md). 
 
-### <a name="what-is-the-difference-between-a-custom-image-and-a-formula"></a>Mi a különbség egy egyéni rendszerkép és a egy képlet?
-Egyéni rendszerkép egy felügyelt rendszerképet. A képlet egy képet további beállításokat is konfigurálhatja, majd mentse és Reprodukálja. Egyéni rendszerkép Ha több környezetek gyors létrehozását az ugyanazon alapvető, nem módosítható a lemezkép használatával szeretné használata előnyösebb lehet. Előfordulhat, hogy egy képlettel jobb, ha azt szeretné, a legújabb elemeket és a virtuális gép konfigurációjának állítja elő a virtuális hálózat vagy alhálózat részeként, vagy egy meghatározott méretű virtuális gépként. Részletesebb magyarázatra van szüksége, lásd: [egyéni rendszerképek és képletek DevTest Labs szolgáltatásban létrehozott](devtest-lab-comparing-vm-base-image-types.md).
+### <a name="what-is-the-difference-between-a-custom-image-and-a-formula"></a>Mi a különbség az Egyéni rendszerképek és a képletek között?
+Az egyéni rendszerkép felügyelt rendszerkép. A képlet olyan rendszerkép, amelyet további beállításokkal is konfigurálhat, majd mentheti és reprodukálhatja. Érdemes lehet egyéni rendszerképet használni, ha gyorsan szeretne létrehozni több környezetet ugyanazzal az alapszintű, megváltoztathatatlan képpel. A képletek jobbak lehetnek, ha a virtuális gép konfigurációját a legújabb BITS szolgáltatással szeretné reprodukálni egy virtuális hálózat vagy alhálózat részeként, vagy egy adott méretű virtuális gép esetén. Részletesebb magyarázatért tekintse meg az [Egyéni rendszerképek és képletek összehasonlítása a DevTest Labs-ben](devtest-lab-comparing-vm-base-image-types.md)című témakört.
 
-### <a name="when-should-i-use-a-formula-vs-custom-image"></a>Mikor érdemes használni az egyéni rendszerkép vagy képlet?
-Ebben a forgatókönyvben a döntő tényező általában ez költséghatékony, és újra felhasználhatja. Ha rendelkezik egy olyan forgatókönyvet, ahol sok felhasználó/labs megkövetelése a szoftver az alaprendszerképhez nagy kép, akkor csökkentheti a költségeket hozzon létre egy egyéni rendszerképet. Ez azt jelenti, hogy a lemezkép létrehozása után. Ez csökkenti a telepítési idő a virtuális gép és miatt a telepítő előfordulásakor futó virtuális gép költsége.
+### <a name="when-should-i-use-a-formula-vs-custom-image"></a>Mikor érdemes képletet vagy egyéni rendszerképet használni?
+Az ebben a forgatókönyvben szereplő döntési tényező általában a költségek és az újrafelhasználás. Ha van olyan forgatókönyv, amelyben sok felhasználó/labor igényel egy olyan rendszerképet, amely sok szoftvert tartalmaz az alaprendszerképhez, akkor az egyéni rendszerkép létrehozásával csökkentheti a költségeket. Ez azt jelenti, hogy a rendszerkép egyszer jön létre. Ez csökkenti a virtuális gép telepítési idejét és a telepítéskor futó virtuális gép miatt felmerülő költségeket.
 
-Egy további figyelembe vegye figyelembe azonban, a gyakori változásai a szoftvercsomag. Ha napi állít össze, és szükséges, hogy a felhasználók virtuális gépeket, a szoftver fontolja meg a képlet helyett egyéni rendszerkép.
+A szoftvercsomag változásainak gyakorisága azonban egy további Megjegyzés. Ha napi buildeket futtat, és megköveteli, hogy a szoftver a felhasználók virtuális gépei legyenek, használjon egy képletet egyéni rendszerkép helyett.
 
-Részletesebb magyarázatra van szüksége, lásd: [egyéni rendszerképek és képletek összehasonlítása](devtest-lab-comparing-vm-base-image-types.md) DevTest Labs-környezetben.
+Részletesebb magyarázatért tekintse meg az [Egyéni rendszerképek és képletek összehasonlítása](devtest-lab-comparing-vm-base-image-types.md) a DevTest Labs-ben című témakört.
 
-### <a name="how-do-i-automate-the-process-of-uploading-vhd-files-to-create-custom-images"></a>Hogyan automatizálható az egyéni lemezképek létrehozása VHD-fájlok feltöltése a folyamat?
+### <a name="how-do-i-automate-the-process-of-uploading-vhd-files-to-create-custom-images"></a>Hogyan automatizálni a VHD-fájlok feltöltésének folyamatát egyéni lemezképek létrehozásához?
 
-Automatizálás létrehozása egyéni rendszerképek VHD fájlokat tölthet fel, két lehetősége van:
+A VHD-fájlok egyéni lemezképek létrehozására való feltöltésének automatizálásához két lehetőség közül választhat:
 
-- Használat [AzCopy](../storage/common/storage-use-azcopy.md#upload-blobs-to-blob-storage) másolása vagy VHD-fájlok feltöltése a storage-fiók a tesztkörnyezetben társított.
-- Használat [az Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md). Storage Explorer egy önálló alkalmazás, amely Windows, OS X és Linux rendszereken.
+- A [AzCopy](../storage/common/storage-use-azcopy-v10.md) használatával másolhatja vagy feltöltheti a virtuális merevlemez-fájlokat a laborhoz társított Storage-fiókba.
+- [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md)használata. A Storage Explorer egy önálló alkalmazás, amely Windows, OS X és Linux rendszeren fut.
 
-A cél tárfiók a labor társított megkeresése:
+A laborhoz társított cél Storage-fiók megkeresése:
 
 1.  Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2.  A bal oldali menüben válassza ki a **erőforráscsoportok**.
-3.  Keresse meg és válassza ki az erőforráscsoportot, amely a labor van társítva.
-4.  A **áttekintése**, válasszon ki egy tárfiókot.
+2.  A bal oldali menüben válassza az **erőforráscsoportok**lehetőséget.
+3.  Keresse meg és válassza ki a laborhoz társított erőforráscsoportot.
+4.  Az **Áttekintés**területen válassza ki a Storage-fiókok egyikét.
 5.  Válassza ki a **Blobok** lehetőséget.
-6.  Keresse meg a listában lévő feltöltések. Ha még nem létezik, térjen vissza a 4. lépés, és próbálja meg egy másik tárfiókba.
-7.  Használja a **URL-cím** az AzCopy-parancsban céljaként.
+6.  Keresse meg a listában a feltöltéseket. Ha nincs ilyen, térjen vissza a 4. lépéshez, és próbálkozzon egy másik Storage-fiókkal.
+7.  Az **URL-címet** használja célként a AzCopy parancsban.
 
-Mikor célszerű használni és a saját egyéni szervezeti rendszerkép Azure Marketplace-rendszerképpel?
+Mikor érdemes a saját egyéni szervezeti rendszerképét használni az Azure Marketplace-en?
 
-### <a name="when-should-i-use-an-azure-marketplace-image-vs-my-own-custom-organizational-image"></a>Mikor célszerű használni és a saját egyéni szervezeti rendszerkép Azure Marketplace-rendszerképpel?
-Az Azure Marketplace-en alapértelmezés szerint használandó, kivéve, ha bizonyos szempontból problematikus jelenségeket vagy a szervezeti követelményeknek. Néhány gyakori példa:;
+### <a name="when-should-i-use-an-azure-marketplace-image-vs-my-own-custom-organizational-image"></a>Mikor érdemes a saját egyéni szervezeti rendszerképét használni az Azure Marketplace-en?
+Alapértelmezés szerint az Azure Marketplace-t kell használni, hacsak nem rendelkezik konkrét problémával vagy szervezeti követelményekkel. Néhány gyakori példa a következőkre:
 
-- Összetett szoftver telepítése, amely az alaprendszerképet része egy alkalmazás szükséges.
-- Telepítés és a egy alkalmazás telepítése, amely nem használja az Azure Marketplace-rendszerképpel hozzáadandó tartó hatékonyan számos óráig is eltarthat.
-- Fejlesztőknek és tesztelőknek hozzáférést igényelnek a virtuális gépek gyors, és a egy új virtuális gép telepítési idő minimalizálása érdekében szeretné.
-- Megfelelőségi vagy szabályozási feltételek (például biztonsági szabályzat), amely minden gép helyen kell lennie.
-- Egyéni rendszerképek használatával nem tekinthető kódjával. További összetettséget módon kell kezelni VHD-fájlok alaplemezképek mögöttes vezetnek. Is kell rendszeresen javítani ezeket alaplemezképek a szoftverfrissítésekhez. Ezek a frissítések közé tartozik az új operációs rendszer (OS) frissítéseket, és a frissítések vagy a szoftvercsomag maga a szükséges konfigurációs módosításokat.
+- Összetett Szoftvertelepítés, amely megköveteli, hogy az alkalmazás szerepeljen az alaprendszerkép részeként.
+- Az alkalmazások telepítése és beállítása több órát is igénybe vehet, ami nem hatékony a számítási idő Azure Marketplace-rendszerképbe való felvételéhez.
+- A fejlesztőknek és a tesztelőknek gyorsan hozzá kell férniük egy virtuális géphez, és az új virtuális gép telepítési idejét szeretnék csökkenteni.
+- Megfelelőségi vagy szabályozási feltételek (például biztonsági szabályzatok), amelyeknek az összes gépen meg kell felelnie.
+- Az egyéni lemezképek használata nem tekinthető könnyelműnek. További bonyolultságot jelentenek, mivel most a VHD-fájlokat a mögöttes alaplemezképekhez kell kezelnie. Ezeket az alapképeket is rendszeresen kell frissítenie a szoftverfrissítések használatával. Ezek a frissítések tartalmazzák az új operációs rendszer (OS) frissítéseit, valamint a szoftvercsomag szükséges frissítéseit és konfigurációs módosításait.
 
 ## <a name="artifacts"></a>Összetevők
 
-### <a name="what-are-artifacts"></a>Mik az összetevők?
-Összetevők olyan testreszabható elemek, amelyek segítségével telepítheti a legújabb elemeket vagy a fejlesztői eszközöket egy virtuális géphez. Összetevők csatlakoztassa a virtuális Géphez a virtuális gép létrehozásakor. Után a virtuális gép ki van építve, az összetevők üzembe helyezése, és konfigurálja a virtuális Gépet. Különböző már meglévő összetevőkkel érhető el a [nyilvános GitHub-adattárból](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts). Emellett [hozhat létre saját összetevők](devtest-lab-artifact-author.md).
+### <a name="what-are-artifacts"></a>Mik azok az összetevők?
+Az összetevők olyan testreszabható elemek, amelyek segítségével telepítheti a legújabb biteket, vagy üzembe helyezheti a fejlesztői eszközöket egy virtuális gépen. A virtuális gép létrehozásakor az összetevők csatlakoztatása a virtuális géphez. A virtuális gép kiépítése után az összetevők üzembe helyezik és konfigurálja a virtuális gépet. A [nyilvános GitHub](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts)-tárházban számos már meglévő összetevő elérhető. [Saját](devtest-lab-artifact-author.md)összetevőket is létrehozhat.
 
-### <a name="my-artifact-failed-during-vm-creation-how-do-i-troubleshoot-it"></a>Az összetevő nem sikerült a virtuális gépek létrehozása során. Hogyan háríthatom azt?
-Megtudhatja, hogyan szerezhet be naplófájlokat a sikertelen összetevő, lásd: [DevTest Labs-környezetben az összetevők hibáinak diagnosztizálása](devtest-lab-troubleshoot-artifact-failure.md).
+### <a name="my-artifact-failed-during-vm-creation-how-do-i-troubleshoot-it"></a>A virtuális gép létrehozása nem sikerült. Hogyan a hibakeresést?
+Ha szeretné megtudni, hogyan szerezhet be naplókat a sikertelen összetevőkhöz, tekintse meg a [DevTest Labs](devtest-lab-troubleshoot-artifact-failure.md)összetevő hibáinak diagnosztizálása című témakört.
 
-### <a name="when-should-an-organization-use-a-public-artifact-repository-vs-private-artifact-repository-in-devtest-labs"></a>Mikor célszerű használni egy szervezet olyan nyilvános összetevőtárral és a DevTest Labs szolgáltatásban létrehozott privát összetevőtárban?
-A [nyilvános összetevőtárral](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts) biztosít egy kezdeti szoftvercsomagok leggyakrabban használt. Segít a gyors üzembe helyezési nélkül teljesítheti a kitűzött időpontja reprodukálnia általános fejlesztői eszközöket és beépülő modulok. Kiválaszthatja, hogy a saját privát tárház üzembe helyezéséhez. Nyilvános és a egy privát tárház párhuzamosan is használhatja. Dönthet úgy is, a nyilvános tárházban letiltása. A feltételek, és üzembe helyezése a privát tárházat kell meghatározni a következő kérdések és szempontok szerint:
+### <a name="when-should-an-organization-use-a-public-artifact-repository-vs-private-artifact-repository-in-devtest-labs"></a>Mikor érdemes egy szervezet nyilvános összetevő-tárházat vagy privát összetevőt használni a DevTest Labs szolgáltatásban?
+A [nyilvános](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts) összetevők tárháza a leggyakrabban használt szoftvercsomagok kezdeti készletét biztosítja. Segít a gyors üzembe helyezésben anélkül, hogy időt kellene fordítania a közös fejlesztői eszközök és bővítmények ismételt létrehozására. Dönthet úgy is, hogy saját privát tárházat helyez üzembe. A nyilvános és a privát tárházat párhuzamosan is használhatja. Dönthet úgy is, hogy letiltja a nyilvános tárházat. A privát tárház üzembe helyezésének feltételeit a következő kérdések és szempontok alapján kell ellátni:
 
-- Rendelkezik a szervezete olyan követelménnyel rendelkezik vállalati licencelt szoftvereket a DevTest Labs-ajánlatába részeként? Ha a válasz Igen, a privát tárházat kell létrehozni.
-- Nem a szervezet egyéni szoftver, amely tartalmaz egy adott művelethez, amely részeként szükség van az általános üzembe helyezési folyamat fejlesztése? Ha a válasz Igen, a privát tárházat kell telepíteni.
-- Ha a szervezet cégirányítási házirend szükséges elkülönítés, és a külső tárolóhelyekkel a szervezet által közvetlen kezelés alatt nem, privát összetevőtárban kell telepíteni. Ez a folyamat részeként egy kezdeti másolatot készít a nyilvános tárházban másolható és a privát tárházban integrálva. A nyilvános tárházban lehet letiltani, majd, hogy nem a szervezeten belül férhetnek azt többé. Ez a megközelítés arra kényszeríti a szervezeten belüli összes felhasználó csak egy adattárba, amely jogosult a szervezet rendelkezik, és minimalizálja a konfigurációs csúszásokat.
+- A szervezetnek van-e követelménye a vállalati licenccel rendelkező szoftvereknek a DevTest Labs-ajánlat részeként? Ha a válasz igen, akkor létre kell hozni egy privát tárházat.
+- A szervezet olyan egyéni szoftvert fejleszt, amely egy adott műveletet biztosít, amely a teljes kiépítési folyamat részeként szükséges? Ha a válasz igen, akkor a rendszer egy privát tárházat helyez üzembe.
+- Ha a szervezet irányítási szabályzata elszigetelést igényel, és a külső adattárak nem a szervezet közvetlen konfigurációjának felügyelete alatt állnak, akkor központilag kell telepíteni a privát összetevő-tárházat. A folyamat részeként a nyilvános tárház kezdeti másolata átmásolható és integrálható a privát tárházba. Ezután a nyilvános tárházat le lehet tiltani, hogy a szervezeten belül senki ne férhessen hozzá. Ez a megközelítés arra kényszeríti a szervezeten belüli felhasználókat, hogy csak egyetlen, a szervezet által jóváhagyott adattárral rendelkezzenek, és a konfigurációt csökkentsék.
 
 
-### <a name="should-an-organization-plan-for-a-single-repository-or-allow-multiple-repositories"></a>Egy szervezet tervezése egy adattárba vagy több tárházak engedélyezése?
-A szervezet teljes irányítás és a konfiguráció-kezelési stratégia részeként azt javasoljuk, hogy egy központi tárházban használja. Több adattárak használata esetén a silók a nem felügyelt szoftver az idő függvényében előfordulhat, hogy válnak. Egy központi tárházban, a több csapat felhasználhatja az adattárból projektjeikhez tartozó összetevőket. Szabványügyi szervezet, a biztonság, a könnyű kezelés kikényszeríti, és kiküszöböli a párhuzamos erőfeszítések. A forrásadattárakból részeként a következő műveletek használata ajánlott eljárások a hosszú távú felügyeleti és népszerűsítését:
+### <a name="should-an-organization-plan-for-a-single-repository-or-allow-multiple-repositories"></a>Érdemes egy szervezetet megtervezni egy adott tárházhoz, vagy több tárházat is engedélyezni?
+A szervezet általános irányítási és konfigurációs felügyeleti stratégiájának részeként javasolt központosított tárházat használni. Több tárház használata esetén előfordulhat, hogy az idő múlásával a nem felügyelt szoftverek silói lesznek. A központi tárházban több csapat is használhat a tárházból származó összetevőket a projektekhez. Kikényszeríti a szabványosítást, a biztonságot, a könnyű kezelhetőséget, és kiküszöböli az erőfeszítések ismétlődését. A központosított környezet részeként a következő műveletek ajánlottak a hosszú távú felügyelethez és a fenntarthatósághoz:
 
-- Az Azure-Adattárakkal társítása az azonos Azure Active Directory-bérlő az Azure-előfizetés által használt a hitelesítéshez és engedélyezéshez.
-- Hozzon létre egy csoportot nevű `All DevTest Labs Developers` az Azure Active Directoryban, amely központilag felügyelt. Minden fejlesztő, aki összetevő fejlesztési hozzájárul az ebbe a csoportba kell elhelyezni.
-- Az azonos Azure Active Directory-csoport hozzáférést biztosít az Azure-Adattárakkal adattárba, és a labor létrehozása a használható.
-- Az Azure-Adattárakkal Elágaztatás és elágaztatási használandó külön egy a-development tárházhoz az elsődleges éles adattárból. Tartalom csak hozzáadódik a főágba irányuló lekéréses kérelmet a megfelelő kód áttekintése után. A kód a felülvizsgáló jóváhagyja a módosítást, miután érdeklődő fejlesztő, aki felelős karbantartása a master ággal, egyesíti a frissített kóddal.
+- Társítsa az Azure Repos-t ugyanazzal a Azure Active Directory Bérlővel, amelyet az Azure-előfizetés használ a hitelesítéshez és engedélyezéshez.
+- Hozzon létre egy `All DevTest Labs Developers` központilag felügyelt Azure Active Directory nevű csoportot. Az összetevő-fejlesztéshez hozzájáruló fejlesztőknek ebbe a csoportba kell tartoznia.
+- Ugyanaz a Azure Active Directory csoport használható az Azure Repos adattárhoz és a laborhoz való hozzáférés biztosításához.
+- Az Azure-alapú adattárakban az elágazások és az elágazások különálló, az elsődleges üzemi tárházból származó fejlesztésen alapuló tárházban használhatók. A tartalmat a rendszer csak a megfelelő kód felülvizsgálatát követően egy lekéréses kérelemmel adja hozzá a Master ág számára. Ha a kód felülvizsgáló jóváhagyja a változást, a vezető fejlesztő, aki felelős a főág fenntartásáért, egyesíti a frissített kódot.
 
 ## <a name="cicd-integration"></a>CI/CD-integráció
 
-### <a name="does-devtest-labs-integrate-with-my-cicd-toolchain"></a>DevTest Labs a CI/CD eszközlánc integrálása?
-Ha használja az Azure DevOps, használhatja a [DevTest Labs-feladatok bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks) a DevTest Labs szolgáltatásban létrehozott kibocsátási folyamatok automatizálásához. Ez a bővítmény elvégezhető feladatok a következők:
+### <a name="does-devtest-labs-integrate-with-my-cicd-toolchain"></a>Integrálható a DevTest Labs a CI/CD-toolchain?
+Ha Azure-DevOps használ, a [DevTest Labs-feladatok bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks) használatával automatizálhatja a kiadási folyamatot a DevTest Labs szolgáltatásban. A bővítménnyel elvégezhető feladatok némelyike a következőket teszi:
 
-- Hozzon létre, és automatikusan üzembe helyezése egy virtuális Gépet. Is konfigurálhatja a virtuális Gépet a legújabb buildben az Azure File Copy vagy a PowerShell az Azure DevOps-szolgáltatásokkal feladatok használatával.
-- Tesztelés reprodukálnia a hibát ugyanarról a virtuális gépről további vizsgálat után automatikusan rögzítheti a virtuális gép állapotát.
-- Ha már nincs rá szükség, törölje a kibocsátási folyamat végén a virtuális gép.
+- Virtuális gép automatikus létrehozása és üzembe helyezése. A virtuális gépet a legújabb buildtel is beállíthatja az Azure file Copy vagy a PowerShell Azure DevOps Services-feladatok használatával.
+- A tesztelést követően automatikusan rögzítheti a virtuális gép állapotát, ha további vizsgálatot szeretne végezni ugyanazon a virtuális gépen.
+- Törölje a virtuális gépet a kiadási folyamat végén, ha már nincs rá szükség.
 
-Az alábbi blogbejegyzések ajánlat útmutató és az Azure DevOps-szolgáltatásokkal bővítmény használatával kapcsolatos információk:
+A következő blogbejegyzések útmutatást és információkat nyújtanak az Azure DevOps Services bővítmény használatáról:
 
-- [DevTest Labs és az Azure DevOps-bővítmény](integrate-environments-devops-pipeline.md)
-- [Az Azure DevOps-szolgáltatások egy meglévő DevTest Labs labor egy új virtuális gép üzembe helyezése](https://www.visualstudiogeeks.com/blog/DevOps/Deploy-New-VM-To-Existing-AzureDevTestLab-From-VSTS)
-- [Az Azure DevOps Services kiadáskezelés használatával DevTest Labs folyamatos központi telepítésére](https://www.visualstudiogeeks.com/blog/DevOps/Use-VSTS-ReleaseManagement-to-Deploy-and-Test-in-AzureDevTestLabs)
+- [DevTest Labs és az Azure DevOps bővítmény](integrate-environments-devops-pipeline.md)
+- [Új virtuális gép üzembe helyezése meglévő DevTest Labs-laborban az Azure DevOps Servicesből](https://www.visualstudiogeeks.com/blog/DevOps/Deploy-New-VM-To-Existing-AzureDevTestLab-From-VSTS)
+- [Az Azure DevOps Services kiadási felügyeletének használata a DevTest Labs folyamatos üzembe helyezéséhez](https://www.visualstudiogeeks.com/blog/DevOps/Use-VSTS-ReleaseManagement-to-Deploy-and-Test-in-AzureDevTestLabs)
 
-Egyéb folyamatos integrációs (CI) / folyamatos készregyártás (CD) fordíthatók, akkor érhető el, ugyanezeket a forgatókönyveket a telepítése [Azure Resource Manager-sablonok](https://azure.microsoft.com/resources/templates/) használatával [Azure PowerShell-parancsmagok](../azure-resource-manager/resource-group-template-deploy.md) és [.NET SDK-k](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/). Használhatja még [REST API-k a DevTest Labs](https://aka.ms/dtlrestapis) az eszközlánc integrálását.
+Más folyamatos integrációs (CI)/Continuous kézbesítési (CD) eszközlánccal esetében ugyanezeket a forgatókönyveket [Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md) -parancsmagok és [.net SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/)-k használatával, [Azure Resource Manager](https://azure.microsoft.com/resources/templates/) -sablonokkal is elérheti. A [DevTest Labs REST API](https://aka.ms/dtlrestapis) -jait is használhatja a toolchain való integráláshoz.
 
 ## <a name="networking"></a>Hálózat
 
-### <a name="when-should-i-create-a-new-virtual-network-for-my-devtest-labs-environment-vs-using-an-existing-virtual-network"></a>Mikor kell új virtuális hálózat létrehozása a DevTest Labs környezet és a egy meglévő virtuális hálózattal?
-Ha a virtuális gépek kell együttműködik a meglévő infrastruktúra, akkor érdemes egy meglévő virtuális hálózaton belül a DevTest Labs-környezetben. ExpressRoute használatakor érdemes a lehető legkevesebb virtuális hálózatok vagy alhálózatok, hogy Ön nem darabolható az IP-címterületének, lekéri az előfizetések alatt használatra rendelt. 
+### <a name="when-should-i-create-a-new-virtual-network-for-my-devtest-labs-environment-vs-using-an-existing-virtual-network"></a>Mikor hozzon létre egy új virtuális hálózatot a DevTest Labs-környezethez és egy meglévő virtuális hálózat használatával?
+Ha a virtuális gépeknek kapcsolatba kell lépniük a meglévő infrastruktúrával, akkor érdemes lehet egy meglévő virtuális hálózatot használni a DevTest Labs-környezetben. Ha a ExpressRoute-t használja, érdemes lehet minimálisra csökkenteni a virtuális hálózatok/alhálózatok mennyiségét, hogy az előfizetésekben való használatra kiosztott IP-címtartomány ne legyen feldarabolva. 
 
-Fontolja meg a virtuális hálózatok közötti társviszony-létesítési minta használatát itt ([Küllős modell](/architecture/reference-architectures/hybrid-networking/hub-spoke)) túl. Ez a megközelítés lehetővé teszi a virtuális hálózat/alhálózat kommunikációt előfizetések között. Ellenkező esetben minden egyes DevTest Labs-környezet lehet a saját virtuális hálózaton. 
+Vegye fontolóra a VNet-társítási minta használatát ([sugaras modell](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)) is. Ez a megközelítés lehetővé teszi az vnet/alhálózati kommunikációt az előfizetések között. Ellenkező esetben minden DevTest Labs-környezet rendelkezhet saját virtuális hálózattal. 
 
-Nincsenek [korlátok](../azure-subscription-service-limits.md) virtuális hálózatok száma előfizetésenként száma. Az alapértelmezett értéke 50, bár ez a korlát 100-ra lehet megemelni.
+Az előfizetéshez tartozó virtuális hálózatok száma [korlátozott](../azure-subscription-service-limits.md) . Az alapértelmezett érték 50, de ez a korlát 100-re is kiemelhető.
 
-### <a name="when-should-i-use-a-shared-ip-vs-public-ip-vs-private-ip"></a>Mikor célszerű használni a magánhálózati IP-és nyilvános IP-cím és megosztott IP-cím?
+### <a name="when-should-i-use-a-shared-ip-vs-public-ip-vs-private-ip"></a>Mikor érdemes megosztott IP-címet vagy nyilvános IP-címet vagy magánhálózati IP-címet használni?
  
-Ha egy helyek közötti VPN vagy Express Route használja, fontolja meg magánhálózati IP-címek, a gépek a belső hálózaton elérhetők, és nem érhető el legyenek a nyilvános interneten keresztül.
+Ha helyek közötti VPN-t vagy expressz útvonalat használ, érdemes lehet privát IP-címeket használni, hogy a gépek a belső hálózaton keresztül is elérhetők legyenek, és a nyilvános interneten keresztül elérhetetlenek legyenek.
 
 > [!NOTE]
-> Labortulajdonosok módosíthatja a alhálózat házirend, győződjön meg arról, hogy senki véletlenül létrehozza a nyilvános IP-címek a virtuális gépek számára. Az előfizetés tulajdonosa hozzon létre egy előfizetési szabályzat meggátolja, hogy a nyilvános IP-címek létrehozása folyamatban.
+> A labor tulajdonosai megváltoztathatják ezt az alhálózati házirendet annak biztosítása érdekében, hogy a virtuális gépekhez egyetlen véletlenül se hozzon létre nyilvános IP-címet. Az előfizetés tulajdonosának létre kell hoznia egy előfizetési szabályzatot, amely megakadályozza a nyilvános IP-címek létrehozását.
 
-Megosztott nyilvános IP-címek használata esetén a virtuális gépek tesztkörnyezetben megosztása a nyilvános IP-cím. Ez a megközelítés akkor lehet hasznos, amikor szüksége van egy adott előfizetéshez tartozó nyilvános IP-címek korlátait megszegéséhez elkerülése érdekében.
+Megosztott nyilvános IP-címek használata esetén a laborban lévő virtuális gépek nyilvános IP-címet használnak. Ez a megközelítés akkor lehet hasznos, ha el szeretné kerülni az adott előfizetés nyilvános IP-címeire vonatkozó korlátok megszegését.
 
-### <a name="how-do-i-ensure-that-development-and-test-virtual-machines-are-unable-to-reach-the-public-internet-are-there-any-recommended-patterns-to-set-up-network-configuration"></a>Hogyan győződjön meg arról, hogy a fejlesztési és tesztelése a virtuális gépek azok nem a nyilvános interneten érhető el? Vannak-e bármely hálózati konfiguráció beállítása javasolt minták?
+### <a name="how-do-i-ensure-that-development-and-test-virtual-machines-are-unable-to-reach-the-public-internet-are-there-any-recommended-patterns-to-set-up-network-configuration"></a>Hogyan gondoskodjon arról, hogy a fejlesztési és tesztelési virtuális gépek nem tudják elérni a nyilvános internetet? Vannak ajánlott minták a hálózati konfiguráció beállításához?
 
-Igen. Két szempontot kell figyelembe venni – bejövő és kimenő forgalmat.
+Igen. Két szempontot kell figyelembe venni – a bejövő és a kimenő forgalmat.
 
-- **Bejövő forgalom** – Ha a virtuális gép nem rendelkezik egy nyilvános IP-címet, akkor azt nem érik el az interneten. Általánosan használt megközelítése annak érdekében, hogy egy előfizetés-szintű szabályzat van beállítva, úgy, hogy a felhasználó nem hozhat létre egy nyilvános IP-címet.
-- **Kimenő forgalom** – Ha azt szeretné, hogy megakadályozza a virtuális gépek elérése közvetlenül a nyilvános interneten és a vállalati tűzfalon keresztüli forgalmat majd irányíthatja a forgalmat a helyszíni express route-n keresztül, vagy VPN-, a kényszerített útválasztást.
+- **Bejövő forgalom** – ha a virtuális gépnek nincs nyilvános IP-címe, akkor nem érhető el az Internet. A közös megközelítéssel biztosítható, hogy egy előfizetési szintű házirend legyen beállítva, például hogy egyetlen felhasználó sem hozhat létre nyilvános IP-címet.
+- **Kimenő forgalom** – ha meg szeretné akadályozni, hogy a virtuális gépek közvetlenül hozzáférjenek a nyilvános internethez, és kényszerítse a forgalmat a vállalati tűzfalon keresztül, akkor a helyszíni forgalmat expressz útvonalon vagy VPN-en keresztül irányíthatja kényszerített útválasztás használatával.
 
 > [!NOTE]
-> Ha rendelkezik egy proxykiszolgáló, amely blokkolja a forgalmat proxybeállítások nélkül, ne felejtse el kivételeket hozzáadni a lab artifact storage-fiókot.
+> Ha olyan proxykiszolgálót tartalmaz, amely a proxybeállítások nélkül blokkolja a forgalmat, ne felejtsen el kivételeket hozzáadni a labor összetevő-tárolási fiókjához.
 
-Hálózati biztonsági csoportok a virtuális gépek és alhálózatok is használhat. Ezt a lépést hozzáadja egy további rétegét védelem engedélyezése / letiltása a forgalmat.
+Hálózati biztonsági csoportokat is használhat virtuális gépekhez vagy alhálózatokhoz. Ez a lépés egy további védelmi réteget ad hozzá a forgalom engedélyezéséhez/letiltásához.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-### <a name="why-isnt-my-existing-virtual-network-saving-properly"></a>Miért nem a meglévő virtuális hálózat mentése megfelelően?
-Több lehetősége, hogy a virtuális hálózat neve pontokat tartalmaz. Ha igen, próbálkozzon az időszakok eltávolítja vagy lecseréli őket a kötőjelet tartalmazhat. Ezt követően próbálja meg újra a virtuális hálózat mentéséhez.
+### <a name="why-isnt-my-existing-virtual-network-saving-properly"></a>Miért nem megfelelő a meglévő virtuális hálózat mentése?
+Az egyik lehetőség, hogy a virtuális hálózat neve időszakokat tartalmaz. Ha igen, próbálja meg eltávolítani az időszakokat, vagy cserélje le őket kötőjelekkel. Ezután próbálja meg újra a virtuális hálózat mentését.
 
-### <a name="why-do-i-get-a-parent-resource-not-found-error-when-i-provision-a-vm-from-powershell"></a>Miért kapok egy "Szülőerőforrás nem található" hiba történt, amikor egy virtuális Gépet a PowerShell üzembe helyezhető?
-Ha egy erőforrás egy másik erőforrás szülő, a szülő erőforrás léteznie kell a gyermek-erőforrás létrehozása előtt. Ha a szülő erőforrás nem létezik, megjelenik egy **ParentResourceNotFound** üzenet. Ha nem ad meg egy függőség az erőforráson, a gyermek-erőforrás előfordulhat, hogy a szülő előtt telepíteni.
+### <a name="why-do-i-get-a-parent-resource-not-found-error-when-i-provision-a-vm-from-powershell"></a>Miért jelenik meg "a szülő-erőforrás nem található" hibaüzenet, amikor a virtuális gépet kiépítem a PowerShellből?
+Ha az egyik erőforrás szülő egy másik erőforráshoz tartozik, a szülő erőforrásnak léteznie kell a gyermek erőforrás létrehozása előtt. Ha a szülő erőforrás nem létezik, egy **ParentResourceNotFound** üzenet jelenik meg. Ha nem ad meg függőséget a fölérendelt erőforráshoz, előfordulhat, hogy a gyermek erőforrást a szülő előtt kell telepíteni.
 
-Virtuális gépek gyermek erőforrásokat egy erőforráscsoportba tartozó labor csoportban. Virtuális gépek üzembe helyezése a PowerShell használatával a Resource Manager-sablonok használatával, ha az a PowerShell-parancsfájl a megadott erőforráscsoport-név a labor létrehozása az erőforráscsoport nevének kell lennie. További információkért lásd: [gyakori Azure üzembehelyezési hibák elhárítása](../azure-resource-manager/resource-manager-common-deployment-errors.md).
+A virtuális gépek alárendelt erőforrások egy erőforráscsoport laborjában. Ha Resource Manager-sablonok használatával helyez üzembe virtuális gépeket a PowerShell használatával, a PowerShell-parancsfájlban megadott erőforráscsoport neve legyen a labor erőforráscsoport-neve. További információ: [gyakori Azure-telepítési hibák elhárítása](../azure-resource-manager/resource-manager-common-deployment-errors.md).
 
-### <a name="where-can-i-find-more-error-information-if-a-vm-deployment-fails"></a>Hol találhatok további hibainformációk, ha egy virtuális gép telepítése sikertelen?
-Virtuális gép üzembe helyezési hibák tevékenységeket tartalmazó naplók rögzíti a rendszer. Lab VM tevékenységeket tartalmazó naplók alapján is megtalálhatja **Auditnaplók** vagy **virtuális gép diagnosztikai** a a labor virtuális gép lapon erőforrás menüben (a lap jelenik meg, miután kiválasztotta a virtuális gépről a saját virtuális gépek listája).
+### <a name="where-can-i-find-more-error-information-if-a-vm-deployment-fails"></a>Hol találhatok további hibaüzeneteket, ha a virtuális gép telepítése meghiúsul?
+A virtuális gépek üzembe helyezésével kapcsolatos hibák rögzítése a tevékenység naplófájljaiban történik. A labor virtuális gépek tevékenységének naplói a **naplók** vagy a **virtuálisgép-diagnosztika** területen találhatók a labor virtuális gép lapjának erőforrás menüjében (a lap akkor jelenik meg, ha kiválasztja a virtuális gépet a saját virtuális gépek listájából).
 
-Egyes esetekben a központi telepítési hiba lép fel, virtuális gép üzembe helyezésének megkezdése előtt. Például akkor, ha a virtuális Géppel együtt létrehozott erőforrás az előfizetésre vonatkozó korlát túllépése. Ebben az esetben a hiba részletes adatait rögzíti a rendszer a labor-szintű Tevékenységnaplók. A Tevékenységnaplók alsó részén találhatók az **Konfigurace a zásady** beállításait. Az Azure-ban naplókat tevékenység használatával kapcsolatos további információk: [megtekintése az erőforrásokon végzett műveletek naplózásához tevékenységi naplóit](../azure-resource-manager/resource-group-audit.md).
+Előfordulhat, hogy az üzembe helyezési hiba a virtuális gép telepítésének megkezdése előtt történik. Ilyen például, ha a virtuális géppel létrehozott erőforrás előfizetési korlátja túllépve. Ebben az esetben a rendszer rögzíti a hiba részleteit a labor szintű tevékenységek naplóiban. A tevékenységek naplói a **konfiguráció és a házirendek** beállítások alján találhatók. További információ a Tevékenységnaplók Azure-beli használatáról: a [tevékenység-naplók megtekintése az erőforrásokon végzett műveletek naplózása érdekében](../azure-resource-manager/resource-group-audit.md).
 
+### <a name="why-do-i-get-location-is-not-available-for-resource-type-error-when-trying-to-create-a-lab"></a>Miért kapok "a hely nem érhető el az erőforrástípus" hibaüzenetet, amikor egy labort próbálok létrehozni?
+A labor létrehozásakor a következőhöz hasonló hibaüzenet jelenhet meg: 
 
+```
+The provided location 'australiacentral' is not available for resource type 'Microsoft.KeyVault/vaults'. List of available regions for the resource type is 'northcentralus,eastus,northeurope,westeurope,eastasia,southeastasia,eastus2,centralus,southcentralus,westus,japaneast,japanwest,australiaeast,australiasoutheast,brazilsouth,centralindia,southindia,westindia,canadacentral,canadaeast,uksouth,ukwest,westcentralus,westus2,koreacentral,koreasouth,francecentral,southafricanorth
+```
+
+A hiba elhárításához hajtsa végre az alábbi lépések egyikét:
+
+#### <a name="option-1"></a>1\. lehetőség
+Győződjön meg arról, hogy az Azure-régiókban rendelkezésre áll-e az erőforrástípus az [elérhető termékek régiónként](https://azure.microsoft.com/global-infrastructure/services/) lapon. Ha az erőforrástípus nem érhető el egy adott régióban, a DevTest Labs nem támogatja a laborok létrehozását az adott régióban. A tesztkörnyezet létrehozásakor válasszon másik régiót. 
+
+#### <a name="option-2"></a>2\. lehetőség
+Ha az erőforrás típusa elérhető a régióban, ellenőrizze, hogy regisztrálva van-e az előfizetésében. Az előfizetés tulajdonosi szintjén végezhető el, ahogy az [ebben a cikkben](../azure-resource-manager/resource-manager-supported-services.md)is látható. 
 
 

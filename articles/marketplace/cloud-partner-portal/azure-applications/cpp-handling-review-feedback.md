@@ -1,38 +1,31 @@
 ---
-title: Az Azure áttekintése visszajelzés az alkalmazásról – Azure Marketplace-en kezelése |} A Microsoft Docs
+title: Az Azure application felülvizsgálati visszajelzés kezelése |} Az Azure Marketplace-en
 description: Azt ismerteti, hogyan használható az Azure DevOps Azure-alkalmazásokat, amelyek felülvizsgálati visszajelzés kezelése az Azure Marketplace-en.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 02/05/2019
-ms.author: pbutlerm
-ms.openlocfilehash: e5fe076cfe733b4fa0151570603c090af98de0e8
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.author: pabutler
+ms.openlocfilehash: 1a45af2cb5eed8daa4b50bb6f0b504f9653c827a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882688"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67068943"
 ---
-# <a name="handling-review-feedback"></a>Felülvizsgálat visszajelzés kezelése
+# <a name="handling-review-feedback"></a>Értékelési visszajelzések kezelése
 
 Ez a cikk bemutatja, hogyan érhető el az Azure DevOps-környezetben használja a Microsoft Azure Marketplace-en csapatától.  Ha az Azure-alkalmazás ajánlatban alatt található kritikus fontosságú problémáit a **Microsoft felülvizsgálati** lépésben is jelentkezik be a rendszer az ezekkel kapcsolatos részletes információkért, (tekintse át a visszajelzés).  Után ezek a problémák elhárításához, újból el kell küldenie az ajánlat az Azure piactéren közzéteheti a folytatáshoz.  A következő ábra szemlélteti, hogyan viszonyul a visszajelzés folyamat a közzétételi folyamat.
 
-![VSTS-visszajelzés a közzétételi lépéseket](./media/pub-flow-vsts-access.png)
+![Közzétételi lépéseket az Azure DevOps-visszajelzés](./media/pub-flow-vsts-access.png)
 
 Felülvizsgálat problémák általában, a lekéréses kérelmet (PR) hivatkozott.  Minden egyes lekéréses kérelem kapcsolódik egy online [Azure DevOps](https://azure.microsoft.com/services/devops/) (korábbi nevén Visual Studio Team Services (VSTS)) elemet, amely tartalmazza a probléma részleteit.  Az alábbi képen látható a Pull-kérelem felülvizsgálati hivatkozást egy példát.  Összetett helyzetekben a felülvizsgálat és támogatási csapatok előfordulhat, hogy is e-mailben. 
 
 ![Tekintse át visszajelzés megjelenítésének állapota lap](./media/status-tab-ms-review.png)
 
 
-## <a name="vsts-access"></a>VSTS-hozzáférés
+## <a name="azure-devops-access"></a>Az Azure DevOps-hozzáférés
 
 Felülvizsgálat visszajelzés hivatkozott PR elemek megtekintéséhez, közzétevők először biztosítani kell megfelelő jogosultságokkal.  Ellenkező esetben az új közzétevők kap egy `401 - Not Authorized` válasz lapon megtekintheti a lekéréses kérelmek tett kísérlet során.  Kérjen hozzáférést az Azure DevOps-tárházba, hajtsa végre az alábbi lépéseket:
 
@@ -47,7 +40,7 @@ Felülvizsgálat visszajelzés hivatkozott PR elemek megtekintéséhez, közzét
     ![Támogatási jegy kategória](./media/support-incident1.png)
 
 4. A **1 / 2. lépés** lapon adja meg a kapcsolattartási adatokat, és válassza **Folytatás**.
-5. A **2. lépés 2** csoportjában adja meg az incidens címe (például `Request VSTS access`), és adja meg az első (feljebb) lépésben az összegyűjtött információkat.  Olvassa el és fogadja el a szerződést, majd válassza ki **küldés**.
+5. A **2. lépés 2** csoportjában adja meg az incidens címe (például `Request Azure DevOps access`), és adja meg az első (feljebb) lépésben az összegyűjtött információkat.  Olvassa el és fogadja el a szerződést, majd válassza ki **küldés**.
 
 Ha az incidens létrehozása sikeres volt, egy megerősítő oldal jelenik meg.  Mentse a megerősítő információkat referenciaként ezen az oldalon.  A Microsoft támogatási csapata néhány munkanapon belül kell válaszolnia a hozzáférési kérelem.
 

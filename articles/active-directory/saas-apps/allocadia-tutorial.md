@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab731bf7526521f6c091d2cd7d7d296636f76f67
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7835094ea1b08e9abd56cfd17b478347dda5aa88
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57855988"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67107131"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-allocadia"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Allocadia
 
@@ -54,7 +54,7 @@ Az Azure AD integrálása a Allocadia konfigurálásához hozzá kell Allocadia 
 
 **Allocadia hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -131,7 +131,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Allocadia, hajtsa v�
     | ------------------- | -------------------- |
     | Keresztnév | user.givenname |
     | Vezetéknév | user.surname |
-    | e-mail | user.mail |
+    | email | user.mail |
     | | |
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.

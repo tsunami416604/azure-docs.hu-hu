@@ -3,7 +3,7 @@ title: Nevesített helyek konfigurálása Azure Active Directory használatával
 description: Ismerje meg, hogyan történik a nevesített helyek konfigurálása.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 ms.assetid: f56e042a-78d5-4ea3-be33-94004f2a0fc3
 ms.service: active-directory
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 11/13/2018
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71b21c4727e7679c25dc2574a6506f8d3932aec2
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 1513dba19221e64d40551ffb13a5e9f33fd9858f
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58434789"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127239"
 ---
-# <a name="quickstart-configure-named-locations-in-azure-active-directory"></a>Gyors útmutató: Nevesített helyek konfigurálása az Azure Active Directoryban
+# <a name="quickstart-configure-named-locations-in-azure-active-directory"></a>Gyors útmutató: Elnevezett helyszínek konfigurálása Azure Active Directory
 
 A nevesített helyek segítségével megcímkézhetők a szervezeten belül a megbízható IP-címtartományok. Az Azure AD a nevesített helyeket a következő célokra használja:
-- Észlelheti a vakriasztású [kockázati eseményeket](concept-risk-events.md). A megbízható helyről történő bejelentkezésnél kisebb a felhasználó bejelentkezési kockázata.   
-- [Helyalapú feltételes hozzáférés](../conditional-access/location-condition.md) konfigurálása.
+- Azonosíthatja a [kockázati észlelések](concept-risk-events.md)téves pozitív értékeit. A megbízható helyről történő bejelentkezésnél kisebb a felhasználó bejelentkezési kockázata.   
+- Konfigurálja a [hely-alapú feltételes hozzáférést](../conditional-access/location-condition.md).
 
 Ebben a rövid útmutatóban megismerheti, hogyan lehet nevesített helyeket konfigurálni a saját környezetében.
 
@@ -43,9 +43,9 @@ A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. A bal oldali panelen válassza ki az **Azure Active Directory**-t, majd a **Feltételes hozzáférést** a **Biztonság** szakaszban.
+2. A bal oldali ablaktáblán válassza a **Azure Active Directory**lehetőséget, majd a **biztonsági** szakaszban válassza a **feltételes hozzáférés** lehetőséget.
 
-    ![Feltételes hozzáférés fül](./media/quickstart-configure-named-locations/entrypoint.png)
+    ![Feltételes hozzáférés lap](./media/quickstart-configure-named-locations/entrypoint.png)
 
 3. A **Feltételes hozzáférési** lapon jelölje be **Nevesített helyeket** és válassza az **Új hely** lehetőséget.
 
@@ -63,6 +63,6 @@ A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
 
 További információkért lásd:
 
-- [Az Azure ad-beli feltételes hozzáférés](../active-directory-conditional-access-azure-portal.md).
-- [Helyre vonatkozó feltételek az Azure AD feltételes hozzáférésnél](../conditional-access/location-condition.md)
+- [Azure ad feltételes hozzáférés](../active-directory-conditional-access-azure-portal.md).
+- [Tartózkodási feltételek az Azure AD feltételes hozzáférésben](../conditional-access/location-condition.md)
 - [Kockázatos bejelentkezések jelentés](concept-risky-sign-ins.md).  

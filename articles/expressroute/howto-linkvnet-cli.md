@@ -5,15 +5,16 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/07/2018
-ms.author: anzaman,cherylmc
+ms.date: 05/21/2019
+ms.author: cherylmc
+ms.reviewer: anzaman
 ms.custom: seodec18
-ms.openlocfilehash: 5ddcfe14873d13384b043f7a977dc4f069dbe8dd
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: d858c83fb6669e5348b4256931e080656be0ebad
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57408258"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621060"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>Virtuális hálózat összekapcsolása egy ExpressRoute-kapcsolatcsoporthoz parancssori felület használatával
 
@@ -139,6 +140,32 @@ az network vpn-connection create --name ERConnection --resource-group ExpressRou
 **A kapcsolati engedély felszabadítása**
 
 Egy engedélyezési fel lehet szabadítani, a kapcsolat törlésével a hivatkozásokat az ExpressRoute-kapcsolatcsoport a virtuális hálózathoz.
+
+## <a name="modify-a-virtual-network-connection"></a>Módosítsa a virtuális hálózati kapcsolat
+A virtuális hálózati kapcsolat bizonyos tulajdonságait is frissítheti. 
+
+**Kapcsolat súlyát frissítése**
+
+Több ExpressRoute-kapcsolatcsoporttal a virtuális hálózathoz csatlakoztatható legyen. Egynél több ExpressRoute-kapcsolatcsoport a ugyanazon előtaggal jelenhet meg. Melyik kapcsolat előtaghoz irányuló forgalom küldésére módosíthatja *routingweight értékének* kapcsolat. A kapcsolat a legmagasabb küld forgalmat *routingweight értékének*.
+
+```azurecli
+az network vpn-connection update --name ERConnection --resource-group ExpressRouteResourceGroup --routing-weight 100
+```
+
+A számos *routingweight értékének* 0 a 32000 van. Az alapértelmezett érték a 0.
+
+## <a name="configure-expressroute-fastpath"></a>Configure ExpressRoute FastPath 
+Engedélyezheti a [ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md) Ha az ExpressRoute-kapcsolatcsoport [ExpressRoute közvetlen](expressroute-erdirect-about.md) és a virtuális newtork átjáró Ultranagy teljesítményű vagy ErGw3AZ. FastPath javítja az adatok elérési útja preformance például a csomagok másodpercenkénti számát és a kapcsolatok száma másodpercenként a helyszíni hálózat és a virtuális hálózat között. 
+
+> [!NOTE] 
+> Ha már rendelkezik a virtuális hálózati kapcsolat, de még nem engedélyezte a FastPath kell törölni a virtuális hálózati kapcsolatot, és hozzon létre egy újat. 
+> 
+>  
+
+```azurecli
+az network vpn-connection create --name ERConnection --resource-group ExpressRouteResourceGroup --express-route-gateway-bypass true --vnet-gateway1 VNet1GW --express-route-circuit2 MyCircuit
+```
+
 
 ## <a name="next-steps"></a>További lépések
 

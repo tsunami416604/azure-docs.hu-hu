@@ -1,21 +1,18 @@
 ---
 title: Nagy mennyiségű véletlenszerű adat letöltése az Azure Storage-ból | Microsoft Docs
 description: Megismerkedhet nagy mennyiségű véletlenszerű adat letöltésével egy Azure Storage-fiókból az Azure SDK használatával
-services: storage
 author: roygara
 ms.service: storage
-ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
-ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: b2c5e2d54c0323e984a48f2540a7df9a3b64b49b
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 8d270485cef9fb6859de056bc364a36c054c0121
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55511173"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699015"
 ---
 # <a name="download-large-amounts-of-random-data-from-azure-storage"></a>Nagy mennyiségű véletlenszerű adat letöltése az Azure Storage-ból
 
@@ -30,7 +27,7 @@ A sorozat harmadik részében az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag teljesítéséhez el kell végeznie az előző tárolási oktatóanyagot: [Töltse fel nagy mennyiségű véletlenszerű adat párhuzamos az Azure storage-][previous-tutorial].
+Az oktatóanyag elvégzéséhez el kell végeznie az előző tárolási oktatóanyagot: [Nagy mennyiségű véletlenszerű adatok feltöltése párhuzamosan az Azure Storage-ban][previous-tutorial].
 
 ## <a name="remote-into-your-virtual-machine"></a>A virtuális gép távoli vezérlése
 
@@ -98,13 +95,13 @@ Az alkalmazás futtatásához írja be a következőt: `dotnet run`.
 dotnet run
 ```
 
-Az alkalmazás a **storageconnectionstring** karakterlánccal megadott tárfiókban lévő tárolókat olvassa. Az alkalmazás egyszerre 10 blobon halad végig a [ListBlobsSegmented](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.listblobssegmented?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudBlobContainer_ListBlobsSegmented_System_String_System_Boolean_Microsoft_WindowsAzure_Storage_Blob_BlobListingDetails_System_Nullable_System_Int32__Microsoft_WindowsAzure_Storage_Blob_BlobContinuationToken_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) metódussal a tárolókban, majd letölti azokat a helyi gépre a [DownloadToFileAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob.downloadtofileasync?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudBlob_DownloadToFileAsync_System_String_System_IO_FileMode_Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) metódussal.
-Az alábbi táblázatban az egyes letöltött blobokhoz megadott [BlobRequestOptions](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions?view=azure-dotnet) paraméter látható.
+Az alkalmazás a **storageconnectionstring** karakterlánccal megadott tárfiókban lévő tárolókat olvassa. Az alkalmazás egyszerre 10 blobon halad végig a [ListBlobsSegmented](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer) metódussal a tárolókban, majd letölti azokat a helyi gépre a [DownloadToFileAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadtofileasync) metódussal.
+Az alábbi táblázatban az egyes letöltött blobokhoz megadott [BlobRequestOptions](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions) paraméter látható.
 
 |Tulajdonság|Érték|Leírás|
 |---|---|---|
-|[DisableContentMD5Validation](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.disablecontentmd5validation?view=azure-dotnet)| true| Ez a tulajdonság letiltja a feltöltött tartalom MD5-kivonat ellenőrzését. A gyorsabb átvitel érdekében tiltsa le az MD5-ellenőrzést. Így azonban nem biztosított a folyamatban lévő átvitelben érintett fájlok érvényessége vagy integritása. |
-|[StoreBlobContentMD5](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.storeblobcontentmd5?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_StoreBlobContentMD5)| false| Ez a tulajdonság határozza meg, hogy az MD5 kivonatoló kiszámítása és tárolása megtörtént-e.   |
+|[DisableContentMD5Validation](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.disablecontentmd5validation)| true| Ez a tulajdonság letiltja a feltöltött tartalom MD5-kivonat ellenőrzését. A gyorsabb átvitel érdekében tiltsa le az MD5-ellenőrzést. Így azonban nem biztosított a folyamatban lévő átvitelben érintett fájlok érvényessége vagy integritása. |
+|[StoreBlobContentMD5](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.storeblobcontentmd5)| false| Ez a tulajdonság határozza meg, hogy az MD5 kivonatoló kiszámítása és tárolása megtörtént-e.   |
 
 A következő példában az `DownloadFilesAsync` feladat látható:
 

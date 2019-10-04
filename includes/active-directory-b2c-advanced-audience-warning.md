@@ -1,15 +1,15 @@
 ---
-author: davidmu1
+author: mmacy
 ms.service: active-directory-b2c
 ms.topic: include
 ms.date: 03/19/2019
-ms.author: davidmu
-ms.openlocfilehash: 9c0f94af62e8d4688a676415b32a6a7ebf82d453
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.author: marsma
+ms.openlocfilehash: 46b0e499b7928bc88114b16d75dd2d8a99dca6a8
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407789"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71310582"
 ---
 > [!NOTE]
-> Az Azure Active Directory B2C [egyéni szabályzatok](../articles/active-directory-b2c/active-directory-b2c-get-started-custom.md) elsősorban az összetett forgatókönyvek készültek. A legtöbb esetben azt javasoljuk, hogy használja-e beépített [felhasználókövetési adatai](../articles/active-directory-b2c/active-directory-b2c-reference-policies.md).
+> Azure Active Directory B2C az [egyéni házirendeket](../articles/active-directory-b2c/active-directory-b2c-get-started-custom.md) elsősorban összetett forgatókönyvek kezelésére tervezték. A legtöbb esetben javasoljuk, hogy a beépített [felhasználói folyamatokat](../articles/active-directory-b2c/active-directory-b2c-reference-policies.md)használja.

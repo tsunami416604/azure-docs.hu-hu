@@ -1,39 +1,38 @@
 ---
-title: SAP Hana az Azure-ban (nagyméretű példányok) méretezése |} A Microsoft Docs
-description: Méretezés az SAP Hana az Azure-ban (nagyméretű példányok).
+title: SAP HANA méretezése az Azure-ban (nagyméretű példányok) | Microsoft Docs
+description: SAP HANA méretezése az Azure-ban (nagyméretű példányok).
 services: virtual-machines-linux
 documentationcenter: ''
 author: RicksterCDN
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/04/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d0d72a9ef592579b21d082111ab8ad00f8995de2
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: f2540a0f9ea702ff620ccd4b68208cbb2e70aafd
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44028431"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101145"
 ---
 # <a name="sizing"></a>Méretezés
 
-Nagyméretű HANA-példányt a méretezési semmiben nem különbözik Hana általános méretezése. A meglévő és üzembe helyezte a rendszereket, amelyeket meg szeretne áthelyezése más relációsadatbázis-kezelő rendszer HANA, SAP Itt számos olyan jelentést, amelyek a meglévő SAP-rendszerek futnak. Ha az adatbázis Hana-hoz, ezek a jelentések ellenőrizze az adatokat, és a HANA-példány memóriakövetelményei kiszámítása. Ezek a jelentések futtatása, és szerezze be a legújabb javítások vagy verziók további információkért olvassa el az alábbi SAP-megjegyzések:
+A HANA nagyméretű példány méretezése nem különbözik a HANA általános méretével. A meglévő és központilag telepített rendszerek esetében, amelyeket más RDBMS kíván áthelyezni a HANA-be, az SAP számos jelentést biztosít, amelyek a meglévő SAP-rendszereken futnak. Ha az adatbázis a HANA-ba kerül, ezek a jelentések a HANA-példányra vonatkozó adatmennyiséget és a memória követelményeit számítják ki. A jelentések futtatásával és a legújabb javítások vagy verziók beszerzésével kapcsolatos további információkért olvassa el a következő SAP-megjegyzéseket:
 
-- [SAP-Jegyzetnek #1793345 – SAP Suite on HANA méretezése](https://launchpad.support.sap.com/#/notes/1793345)
-- [Megjegyzés: #1872170 - Suite on HANA, és S/4 HANA méretezési jelentés SAP](https://launchpad.support.sap.com/#/notes/1872170)
-- [SAP-Jegyzetnek #2121330 – gyakori kérdések: SAP BW on HANA jelentés méretezése](https://launchpad.support.sap.com/#/notes/2121330)
-- [SAP BW on HANA méretezési jelentés #1736976 - Megjegyzés](https://launchpad.support.sap.com/#/notes/1736976)
-- [Megjegyzés: #2296290 – új méretezési a jelentés az SAP BW on HANA SAP](https://launchpad.support.sap.com/#/notes/2296290)
+- [SAP-Megjegyzés #1793345 – az SAP Suite méretezése a HANA-on](https://launchpad.support.sap.com/#/notes/1793345)
+- [SAP-Megjegyzés #1872170-Suite on HANA és S/4 HANA méretezési jelentés](https://launchpad.support.sap.com/#/notes/1872170)
+- [SAP-Megjegyzés #2121330 – gyakori kérdések: SAP BW a HANA-méretezési jelentésben](https://launchpad.support.sap.com/#/notes/2121330)
+- [SAP-Megjegyzés #1736976 – jelentés méretezése a BW on HANA-ben](https://launchpad.support.sap.com/#/notes/1736976)
+- [SAP-Megjegyzés #2296290 – a BW-hez készült új méretezési jelentés a HANA-on](https://launchpad.support.sap.com/#/notes/2296290)
 
-Zöldmezős megvalósításokhoz, a gyors Szimbólumméretező SAP HANA épülő SAP-szoftverek végrehajtásának memóriaigényének kiszámításához érhető el.
+A zöld mezők megvalósításához az SAP Quick Sizeer elérhetővé válik a HANA-on futó SAP-szoftverek megvalósításához szükséges memória-követelmények kiszámításához.
 
-HANA memóriakövetelményei növelje az adatmennyiség növekedésével. Vegye figyelembe az aktuális memóriafogyasztás segít előre jelezni, mi legyen a jövőben. A memória-követelmények alapján, majd leképezheti az igény szerinti a HANA nagyméretű példány termékváltozatok egyikébe.
+HANA memóriakövetelményei növelje az adatmennyiség növekedésével. Vegye figyelembe, hogy a jelenlegi memóriahasználat alapján várhatóan megjósolhatja, mi lesz a jövőben. A memóriára vonatkozó követelmények alapján leképezheti az igényét az egyik HANA nagyméretű példány SKU-ra.
 
 **Következő lépések**
-- Tekintse meg [bevezetési követelmények](hana-onboarding-requirements.md)
+- A bevezetési [követelmények](hana-onboarding-requirements.md) átirányítása

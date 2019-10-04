@@ -1,6 +1,6 @@
 ---
-title: Szűrése és előfeldolgozása a az Azure Application Insights SDK |} A Microsoft Docs
-description: Az írási Telemetriai processzorok és az SDK Telemetriát inicializálók szűrését és tulajdonságokat adhat az adatokat, a telemetria az Application Insights portálon történő elküldése előtt.
+title: Szűrés és előfeldolgozás az Azure Application Insights SDK-ban | Microsoft Docs
+description: Telemetria-processzorok és telemetria-inicializálók írása az SDK-hoz a telemetria a Application Insights portálra való elküldése előtt.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -12,71 +12,65 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/23/2016
 ms.author: mbullwin
-ms.openlocfilehash: 1b55a2b053b86d3260fdca201357445d2556c444
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 095d539404412d34c66201646f6134ff740f86b7
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58082466"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299271"
 ---
-# <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Az Application Insights SDK-t a telemetria szűrése és előfeldolgozása
+# <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Telemetria szűrése és előfeldolgozása az Application Insights SDK-ban
 
+A Application Insights SDK beépülő moduljait úgy is megírhatja és konfigurálhatja, hogy a Application Insights szolgáltatásba való elküldése előtt testreszabja és feldolgozza a telemetria.
 
-Írhat, és hogyan telemetriai adatokat rögzített, és az Application Insights szolgáltatás való továbbítás előtt feldolgozott testre szabhatja az Application Insights SDK beépülő modulok beállítása.
-
-* [Mintavételi](../../azure-monitor/app/sampling.md) telemetriai adatok mennyisége csökkenti a statisztikákat befolyásolása nélkül. Tartja a egymáshoz kapcsolódó adatpontok, hogy a probléma diagnosztizálásakor közöttük navigálhat. A portálon az érintett teljes kompenzálják a mintavételi és szorzata.
-* Szűrés Telemetriai processzorral [ASP.NET](#filtering) vagy [Java](../../azure-monitor/app/java-filter-telemetry.md) kiválaszthat vagy az SDK-ban a telemetria módosítása előtt a kiszolgáló felé. Például akkor csökkentheti a telemetriai adatok mennyisége kérelmek kizárása a robotok által. De szűrése egy több alapszintű megközelítést, mint a mintavételi forgalom csökkentésére. Lehetővé teszi a mi továbbított jobban szabályozhatja, de érdemes figyelembe vennie, hogy befolyásolja a statisztikák – például, ha kiszűr minden sikeres kérések rendelkezik.
-* [Telemetria inicializálók tulajdonságok hozzáadása](#add-properties) , bármely az alkalmazásból, többek között a globális modulok telemetriát küldött telemetriát. Például hozzáadhat kiszámított értékek; vagy a portálon az adatok szűréséhez verziószáma.
-* [Az SDK API-t](../../azure-monitor/app/api-custom-events-metrics.md) egyéni eseményeket és mérőszámokat küldésére használják.
+* A [mintavétel](sampling.md) csökkenti a telemetria mennyiségét anélkül, hogy befolyásolná a statisztikát. Összekapcsolja a kapcsolódó adatpontokat, így a probléma diagnosztizálásakor navigáljon egymás között. A portálon a teljes számlálás megszorozza a mintavételezéssel.
+* A telemetria processzorokkal történő szűréssel kiszűrheti a telemetria az SDK-ban, mielőtt elküldi a kiszolgálónak. Csökkentheti például a telemetria mennyiségét a robotoktól érkező kérések kizárásával. A szűrés a mintavételnél nagyobb alapszintű megközelítés a forgalom csökkentése érdekében. Így hatékonyabban szabályozhatja a továbbított adatokat, de tisztában kell lennie azzal, hogy befolyásolja a statisztikáit – például ha kiszűri az összes sikeres kérelmet.
+* A telemetria inicializálók az alkalmazásból eljuttatott bármely telemetria [hozzáadhatnak vagy módosíthatnak tulajdonságokat](#add-properties) , beleértve a standard modulok telemetria is. Például hozzáadhat számított értékeket; vagy verziószámok, amelyek alapján szűrheti a portálon található adatok mennyiségét.
+* [Az SDK API](../../azure-monitor/app/api-custom-events-metrics.md) egyéni események és metrikák küldésére szolgál.
 
 Előkészületek:
 
-* Telepítse az Application Insights [SDK for ASP.NET](../../azure-monitor/app/asp-net.md) vagy [SDK Java](../../azure-monitor/app/java-get-started.md) az alkalmazásban.
+* Telepítse a megfelelő SDK-t az alkalmazáshoz. [ASP.net](asp-net.md) vagy [ASP.net Core](asp-net-core.md) vagy [nem http/Worker for .net/.net Core](worker-service.md) vagy [Java](../../azure-monitor/app/java-get-started.md) az alkalmazásban.
 
 <a name="filtering"></a>
 
 ## <a name="filtering-itelemetryprocessor"></a>Szűrés: ITelemetryProcessor
-Ez a technológia biztosítja több közvetlen ellenőrzése alatt mi tartalmaz, vagy a telemetria-adatfolyam zárva. Ezzel együtt mintavételezése esetén, vagy külön-külön.
 
-A telemetriai adatok szűréséhez, írása a telemetriai adatokat feldolgozó, és regisztrálja az SDK-val. Minden telemetriai adat halad át a processzor, és Ön kiválaszthatja, dobja el, a streamből, vagy adja hozzá tulajdonságokat. Ez magában foglalja a globális modulok, például a HTTP-kérelem gyűjtő és a függőségi gyűjtő származó telemetriai adatok, valamint a saját maga hozott telemetriai adatokat. Például szűrhet, telemetriai adatokat gyűjthessen robotok, vagy sikeres függőségi hívások érkező kérelmeket.
+Ezzel a technikával közvetlenül szabályozhatja, hogy mit tartalmaz a telemetria stream, vagy ki van zárva. A szűréssel elvégezheti a telemetria-elemek küldését Application Insightsba. Ezt használhatja mintavételezéssel vagy külön is.
+
+A telemetria szűréséhez írja be a telemetria-processzort, és regisztrálja azt a `TelemetryConfiguration`következővel:. Az összes telemetria áthalad a processzoron, és eldöntheti, hogy eldobja-e a streamből, vagy megadja a lánc következő processzorának. Ebbe beletartozik a standard modulok telemetria, például a HTTP-kérelem gyűjtője és a függőségi gyűjtő, valamint a nyomon követett telemetria. Kiszűrheti például a robotoktól érkező kéréseket vagy a sikeres függőségi hívásokat telemetria is.
 
 > [!WARNING]
-> Szűrés az SDK által küldött telemetriát processzorokat használó is tevékenységdiagramon statisztikák jelenik meg a portálon, és megnehezíti az hajtsa végre a kapcsolódó elemek.
+> Az SDK-ból a processzorokkal küldött telemetria szűrésével eldöntheti a portálon megjelenő statisztikákat, és megnehezíti a kapcsolódó elemek követését.
 >
-> Ehelyett érdemes [mintavételi](../../azure-monitor/app/sampling.md).
+> Ehelyett érdemes [mintavételezést](../../azure-monitor/app/sampling.md)használni.
 >
 >
 
-### <a name="create-a-telemetry-processor-c"></a>Hozzon létre egy telemetriai processzor (C#)
-1. Győződjön meg arról, hogy a projekt Application Insights SDK 2.0.0-s verzió vagy újabb. Kattintson a jobb gombbal a projektre a Visual Studio Megoldáskezelőben, és válassza a NuGet-csomagok kezelése. A NuGet-Csomagkezelőt ellenőrizze a Microsoft.ApplicationInsights.Web lehetőséget.
-2. Szűrő létrehozása ITelemetryProcessor megvalósításához. Ez az egy másik indításkiterjesztési pont például telemetriai modul, a telemetriainicializálót és a telemetria csatorna.
+### <a name="create-a-telemetry-processor-c"></a>Telemetria processzor létrehozása (C#)
 
-    Figyelje meg, hogy a Telemetriai processzorok feldolgozási láncolatától hozhatnak létre. Amikor példányosítania telemetriai processzorra, átadhatja egy hivatkozást a láncban következő processzor. Ha a telemetriai adatok pont számára a folyamat módszer van, annak működik, és ekkor meghívja a következő telemetriai adatokat feldolgozó a lánc.
+1. Szűrő létrehozásához implementálja `ITelemetryProcessor`a következőt:.
+
+    Figyelje meg, hogy a telemetria processzorok létrehozzák a feldolgozási láncot. Telemetria-processzor létrehozásakor a láncban a következő processzorra mutató hivatkozást kap. Ha egy telemetria adatpontot továbbítanak a folyamat metódusának, az a munkája után meghívja (vagy nem hívja meg) a lánc következő telemetria-processzorát.
 
     ```csharp
-
     using Microsoft.ApplicationInsights.Channel;
     using Microsoft.ApplicationInsights.Extensibility;
 
     public class SuccessfulDependencyFilter : ITelemetryProcessor
-      {
-
+    {
         private ITelemetryProcessor Next { get; set; }
 
-        // You can pass values from .config
-        public string MyParamFromConfigFile { get; set; }
-
-        // Link processors to each other in a chain.
+        // next will point to the next TelemetryProcessor in the chain.
         public SuccessfulDependencyFilter(ITelemetryProcessor next)
         {
             this.Next = next;
         }
+
         public void Process(ITelemetry item)
         {
-            // To filter out an item, just return
+            // To filter out an item, return without calling the next processor.
             if (!OKtoSend(item)) { return; }
-            // Modify the item if required
-            ModifyItem(item);
 
             this.Next.Process(item);
         }
@@ -89,74 +83,82 @@ A telemetriai adatok szűréséhez, írása a telemetriai adatokat feldolgozó, 
 
             return dependency.Success != true;
         }
-
-        // Example: replace with your own modifiers.
-        private void ModifyItem (ITelemetry item)
-        {
-            item.Context.Properties.Add("app-version", "1." + MyParamFromConfigFile);
-        }
     }
-
     ```
-3. Illessze be az applicationinsights.config fájlban:
+
+2. Adja hozzá a processzort.
+
+**ASP.NET-alkalmazások** Szúrja be ezt a kódrészletet a ApplicationInsights. config fájlba:
 
 ```xml
-
-    <TelemetryProcessors>
-      <Add Type="WebApplication9.SuccessfulDependencyFilter, WebApplication9">
-         <!-- Set public property -->
-         <MyParamFromConfigFile>2-beta</MyParamFromConfigFile>
-      </Add>
-    </TelemetryProcessors>
-
+<TelemetryProcessors>
+  <Add Type="WebApplication9.SuccessfulDependencyFilter, WebApplication9">
+     <!-- Set public property -->
+     <MyParamFromConfigFile>2-beta</MyParamFromConfigFile>
+  </Add>
+</TelemetryProcessors>
 ```
 
-(Ez a mintavételi szűrő táblafiókhoz ahol ugyanabban a szegmensben.)
-
-A .config fájlt a karakterlánc-értékeket az osztályban található nyilvános elnevezett tulajdonságok megadásával adhat át.
+Karakterlánc-értékeket adhat át a. config fájlból úgy, hogy nyilvános nevesített tulajdonságokat biztosít az osztályban.
 
 > [!WARNING]
-> Körültekintően, megfelelő a neve, és bármely tulajdonságnevek az osztály és a tulajdonság neve a kódban a .config fájlban. Ha a .config fájl hivatkozik egy nem létező típusa vagy tulajdonság, az SDK előfordulhat, hogy csendes nem semmilyen telemetriai adatot küld.
->
+> Ügyeljen arra, hogy a. config fájlban lévő típus neve és a hozzá tartozó tulajdonságok nevei megfeleljenek a kódban szereplő osztálynak és tulajdonságoknak. Ha a. config fájl nem létező típusra vagy tulajdonságra hivatkozik, előfordulhat, hogy az SDK beavatkozás nélkül nem tud telemetria küldeni.
 >
 
-**Másik lehetőségként** lehet inicializálni a kód a szűrőt. A láncban a processzor beszúrása – például a Global.asax.cs AppStart - megfelelő inicializálási osztályban:
+Azt is megteheti **,** hogy a szűrőt a kódban inicializálja. Megfelelő inicializálási osztályban – például a `Global.asax.cs` AppStart beillesztése a láncba:
 
 ```csharp
+var builder = TelemetryConfiguration.Active.DefaultTelemetrySink.TelemetryProcessorChainBuilder;
+builder.Use((next) => new SuccessfulDependencyFilter(next));
 
-    var builder = TelemetryConfiguration.Active.TelemetryProcessorChainBuilder;
-    builder.Use((next) => new SuccessfulDependencyFilter(next));
+// If you have more processors:
+builder.Use((next) => new AnotherProcessor(next));
 
-    // If you have more processors:
-    builder.Use((next) => new AnotherProcessor(next));
-
-    builder.Build();
-
+builder.Build();
 ```
 
-Ezt követően létrehozott TelemetryClients fogja használni a processzorok.
+Az ezen pont után létrehozott TelemetryClients a processzorokat fogja használni.
+
+**ASP.NET Core/Worker Service-alkalmazások**
+
+> [!NOTE]
+> A vagy a használatával `TelemetryConfiguration.Active` történő Hozzáadás nem érvényes ASP.net Core alkalmazásokhoz, vagy ha a Microsoft. ApplicationInsights. WorkerService SDK-t használja. `ApplicationInsights.config`
+
+A [ASP.net Core](asp-net-core.md#adding-telemetry-processors) -vagy [WorkerService](worker-service.md#adding-telemetry-processors)használatával írt alkalmazások esetén a bővítmény `TelemetryProcessor` `IServiceCollection`-metódus használatával `AddApplicationInsightsTelemetryProcessor` az alábbi módon adhat hozzá egy újat. Ezt a metódust az `ConfigureServices` `Startup.cs` osztály metódusa hívja meg.
+
+```csharp
+    public void ConfigureServices(IServiceCollection services)
+    {
+        // ...
+        services.AddApplicationInsightsTelemetry();
+        services.AddApplicationInsightsTelemetryProcessor<SuccessfulDependencyFilter>();
+
+        // If you have more processors:
+        services.AddApplicationInsightsTelemetryProcessor<AnotherProcessor>();
+    }
+```
 
 ### <a name="example-filters"></a>Példa szűrők
-#### <a name="synthetic-requests"></a>Szintetikus kéréseket
-Szűrje ki a robotok és a webes tesztek. Bár a Metrikaböngésző lehetővé teszi meghatározott szintetikus források szűréséhez, ezt a beállítást az SDK szűrésével csökkentheti az adatforgalmat.
+
+#### <a name="synthetic-requests"></a>Szintetikus kérelmek
+
+Kiszűri a botokat és a webes teszteket. Bár a Metrikaböngésző lehetővé teszi a szintetikus források kiszűrését, ez a beállítás csökkenti a forgalom és a betöltés méretét azáltal, hogy az SDK-ban szűri őket.
 
 ```csharp
+public void Process(ITelemetry item)
+{
+  if (!string.IsNullOrEmpty(item.Context.Operation.SyntheticSource)) {return;}
 
-    public void Process(ITelemetry item)
-    {
-      if (!string.IsNullOrEmpty(item.Context.Operation.SyntheticSource)) {return;}
-
-      // Send everything else:
-      this.Next.Process(item);
-    }
-
+  // Send everything else:
+  this.Next.Process(item);
+}
 ```
 
-#### <a name="failed-authentication"></a>A sikertelen hitelesítés
-Szűrje a kérések a "401-es" választ ki.
+#### <a name="failed-authentication"></a>Sikertelen hitelesítés
+
+Kiszűri a kérelmeket "401" válasszal.
 
 ```csharp
-
 public void Process(ITelemetry item)
 {
     var request = item as RequestTelemetry;
@@ -164,25 +166,25 @@ public void Process(ITelemetry item)
     if (request != null &&
     request.ResponseCode.Equals("401", StringComparison.OrdinalIgnoreCase))
     {
-        // To filter out an item, just terminate the chain:
+        // To filter out an item, return without calling the next processor.
         return;
     }
-    // Send everything else:
+
+    // Send everything else
     this.Next.Process(item);
 }
-
 ```
 
-#### <a name="filter-out-fast-remote-dependency-calls"></a>Szűrje ki a gyors távoli függőségi hívások
-Ha csak szeretné, amelyek lassú hívások diagnosztizálása, kiszűrhetők a gyorsan azokat.
+#### <a name="filter-out-fast-remote-dependency-calls"></a>A gyors távoli függőségi hívások kiszűrése
+
+Ha csak a lassú hívásokat szeretné diagnosztizálni, a gyors szűrést is kiszűrheti.
 
 > [!NOTE]
-> Ez lesz döntés a statisztikákat, akkor jelenik meg a portálon. A függőségi diagram fog megjelenni, ha a függőségi hívások összes hibák.
+> Ez rontja a portálon megjelenő statisztikát.
 >
 >
 
 ```csharp
-
 public void Process(ITelemetry item)
 {
     var request = item as DependencyTelemetry;
@@ -193,96 +195,108 @@ public void Process(ITelemetry item)
     }
     this.Next.Process(item);
 }
-
 ```
 
 #### <a name="diagnose-dependency-issues"></a>Függőségi problémák diagnosztikája
-[Ebben a blogbejegyzésben](https://azure.microsoft.com/blog/implement-an-application-insights-telemetry-processor/) egy projektet a függőségi problémák diagnosztikája elküldésével automatikusan rendszeres pingelésre függőségek ismerteti.
 
+[Ez a blog](https://azure.microsoft.com/blog/implement-an-application-insights-telemetry-processor/) leírja a függőségi problémák diagnosztizálására szolgáló projektet, ha automatikusan küldi el a rendszeres pingeléseket a függőségek számára.
 
 <a name="add-properties"></a>
 
-## <a name="add-properties-itelemetryinitializer"></a>Adja hozzá a tulajdonságai: ITelemetryInitializer
-Telemetria inicializálók használatával küldött összes telemetriai adat; a globális tulajdonságok meghatározása és a normál telemetriai modulok kiválasztott viselkedés felülbírálásához.
+## <a name="add-properties-itelemetryinitializer"></a>Tulajdonságok hozzáadása: ITelemetryInitializer
 
-Az Application Insights Web csomag például HTTP-kérésekkel kapcsolatos telemetriai adatokat gyűjt. Alapértelmezés szerint azt megőrzendő tartalomként jelöli meg bármely kérelem válaszkód sikertelenként > = 400. Azonban ha azt szeretné kezelni a 400-as a siker, megadhat egy telemetriainicializáló, amely beállítja a sikeres tulajdonságot.
+A telemetria inicializálók használatával gazdagíthatja a telemetria, és/vagy felülbírálhatja a szabványos telemetria-modulok által beállított telemetria-tulajdonságokat.
 
-Ha megad egy telemetriainicializáló, azt nevezzük, amikor a Track*() módszerekkel nevezzük. Ez magában foglalja a normál telemetriai modulok által meghívott módszerek. Szabályok szerint ezeket a modulokat bármilyen tulajdonság, amely már be van állítva a inicializátor nem állít be.
+A webes csomag Application Insights például a HTTP-kérelmekkel kapcsolatos telemetria gyűjt. Alapértelmezés szerint a > = 400 értékkel rendelkező kérelem sikertelenként van megjelölve. Ha azonban sikerrel szeretné kezelni a 400-et, megadhat egy telemetria inicializáló, amely beállítja a siker tulajdonságot.
 
-**Az inicializáló definiálása**
+Ha telemetria inicializáló ad meg, akkor a rendszer akkor hívja meg, ha a Track * () metódusok bármelyikét meghívja. Ide tartoznak `Track()` a standard telemetria-modulok által meghívott metódusok. Az egyezmény szerint ezek a modulok nem állítanak be olyan tulajdonságot, amelyet már beállított egy inicializáló. A telemetria inicializálók a telemetria processzorok hívása előtt hívhatók. Így az inicializálók által végzett dúsítások láthatók a processzorok számára.
+
+**Az inicializálás megadása**
 
 *C#*
 
 ```csharp
+using System;
+using Microsoft.ApplicationInsights.Channel;
+using Microsoft.ApplicationInsights.DataContracts;
+using Microsoft.ApplicationInsights.Extensibility;
 
-    using System;
-    using Microsoft.ApplicationInsights.Channel;
-    using Microsoft.ApplicationInsights.DataContracts;
-    using Microsoft.ApplicationInsights.Extensibility;
-
-    namespace MvcWebRole.Telemetry
+namespace MvcWebRole.Telemetry
+{
+  /*
+   * Custom TelemetryInitializer that overrides the default SDK
+   * behavior of treating response codes >= 400 as failed requests
+   *
+   */
+  public class MyTelemetryInitializer : ITelemetryInitializer
+  {
+    public void Initialize(ITelemetry telemetry)
     {
-      /*
-       * Custom TelemetryInitializer that overrides the default SDK
-       * behavior of treating response codes >= 400 as failed requests
-       *
-       */
-      public class MyTelemetryInitializer : ITelemetryInitializer
-      {
-        public void Initialize(ITelemetry telemetry)
+        var requestTelemetry = telemetry as RequestTelemetry;
+        // Is this a TrackRequest() ?
+        if (requestTelemetry == null) return;
+        int code;
+        bool parsed = Int32.TryParse(requestTelemetry.ResponseCode, out code);
+        if (!parsed) return;
+        if (code >= 400 && code < 500)
         {
-            var requestTelemetry = telemetry as RequestTelemetry;
-            // Is this a TrackRequest() ?
-            if (requestTelemetry == null) return;
-            int code;
-            bool parsed = Int32.TryParse(requestTelemetry.ResponseCode, out code);
-            if (!parsed) return;
-            if (code >= 400 && code < 500)
-            {
-                // If we set the Success property, the SDK won't change it:
-                requestTelemetry.Success = true;
-                // Allow us to filter these requests in the portal:
-                requestTelemetry.Context.Properties["Overridden400s"] = "true";
-            }
-            // else leave the SDK to set the Success property      
+            // If we set the Success property, the SDK won't change it:
+            requestTelemetry.Success = true;
+
+            // Allow us to filter these requests in the portal:
+            requestTelemetry.Properties["Overridden400s"] = "true";
         }
-      }
+        // else leave the SDK to set the Success property
     }
+  }
+}
 ```
 
-**Az inicializáló betöltése**
+**ASP.NET alkalmazások: Az inicializáló betöltése**
 
-Az applicationinsights.config fájlban:
+A ApplicationInsights. config fájlban:
 
 ```xml
-    <ApplicationInsights>
-      <TelemetryInitializers>
-        <!-- Fully qualified type name, assembly name: -->
-        <Add Type="MvcWebRole.Telemetry.MyTelemetryInitializer, MvcWebRole"/>
-        ...
-      </TelemetryInitializers>
-    </ApplicationInsights>
+<ApplicationInsights>
+  <TelemetryInitializers>
+    <!-- Fully qualified type name, assembly name: -->
+    <Add Type="MvcWebRole.Telemetry.MyTelemetryInitializer, MvcWebRole"/>
+    ...
+  </TelemetryInitializers>
+</ApplicationInsights>
 ```
 
-*Másik lehetőségként* példányosítható az inicializáló a kódban, például a Global.aspx.cs osztályból:
+Azt is megteheti *,* hogy az inicializálást a kódban, például a Global.aspx.cs-ben hozza létre:
 
 ```csharp
-    protected void Application_Start()
-    {
-        // ...
-        TelemetryConfiguration.Active.TelemetryInitializers
-        .Add(new MyTelemetryInitializer());
-    }
+protected void Application_Start()
+{
+    // ...
+    TelemetryConfiguration.Active.TelemetryInitializers.Add(new MyTelemetryInitializer());
+}
 ```
 
+[Tekintse meg ezt a mintát.](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/MvcWebRole)
 
-[Továbbiak ehhez a mintához.](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/MvcWebRole)
+**ASP.NET Core/munkavégző szolgáltatás alkalmazásai: Az inicializáló betöltése**
 
-<a name="js-initializer"></a>
+> [!NOTE]
+> Az inicializálás `ApplicationInsights.config` a vagy a használatával `TelemetryConfiguration.Active` való hozzáadása nem érvényes ASP.net Core alkalmazásokhoz, vagy ha a Microsoft. ApplicationInsights. WorkerService SDK-t használja.
 
-### <a name="java-telemetry-initializers"></a>Java-telemetria inicializálók
+A [ASP.net Core](asp-net-core.md#adding-telemetryinitializers) -vagy [WorkerService](worker-service.md#adding-telemetryinitializers)-t használó alkalmazások esetében az `TelemetryInitializer` új hozzáadása a függőségi injektálási tárolóhoz való hozzáadásával történik, az alábbi ábrán látható módon. Ez a `Startup.ConfigureServices` metódusban történik.
 
-[A Java SDK-dokumentáció](https://docs.microsoft.com/java/api/com.microsoft.applicationinsights.extensibility.telemetryinitializer?view=azure-java-stable)
+```csharp
+ using Microsoft.ApplicationInsights.Extensibility;
+ using CustomInitializer.Telemetry;
+ public void ConfigureServices(IServiceCollection services)
+{
+    services.AddSingleton<ITelemetryInitializer, MyTelemetryInitializer>();
+}
+```
+
+### <a name="java-telemetry-initializers"></a>Java telemetria inicializálók
+
+[Java SDK-dokumentáció](https://docs.microsoft.com/java/api/com.microsoft.applicationinsights.extensibility.telemetryinitializer?view=azure-java-stable)
 
 ```Java
 public interface TelemetryInitializer
@@ -291,85 +305,121 @@ public interface TelemetryInitializer
 void initialize(Telemetry telemetry); }
 ```
 
-Ezután regisztrálja az egyéni inicializáló az applicationinsights.xml fájlt.
+Ezután regisztrálja az egyéni inicializálást a applicationinsights. xml fájlban.
 
 ```xml
 <Add type="mypackage.MyConfigurableContextInitializer">
-<Param name="some_config_property" value="some_value" />
+    <Param name="some_config_property" value="some_value" />
 </Add>
 ```
 
-### <a name="javascript-telemetry-initializers"></a>JavaScript-telemetria inicializálók
+### <a name="javascript-telemetry-initializers"></a>JavaScript telemetria inicializálók
 *JavaScript*
 
-Szúrjon be egy telemetriainicializáló közvetlenül a portáltól kapott inicializálási kód után:
+Közvetlenül a portálról kapott inicializálási kód után szúrjon be egy telemetria-inicializálást:
 
 ```JS
+<script type="text/javascript">
+    // ... initialization code
+    ...({
+        instrumentationKey: "your instrumentation key"
+    });
+    window.appInsights = appInsights;
 
-    <script type="text/javascript">
-        // ... initialization code
-        ...({
-            instrumentationKey: "your instrumentation key"
+
+    // Adding telemetry initializer.
+    // This is called whenever a new telemetry item
+    // is created.
+
+    appInsights.queue.push(function () {
+        appInsights.context.addTelemetryInitializer(function (envelope) {
+            var telemetryItem = envelope.data.baseData;
+
+            // To check the telemetry items type - for example PageView:
+            if (envelope.name == Microsoft.ApplicationInsights.Telemetry.PageView.envelopeType) {
+                // this statement removes url from all page view documents
+                telemetryItem.url = "URL CENSORED";
+            }
+
+            // To set custom properties:
+            telemetryItem.properties = telemetryItem.properties || {};
+            telemetryItem.properties["globalProperty"] = "boo";
+
+            // To set custom metrics:
+            telemetryItem.measurements = telemetryItem.measurements || {};
+            telemetryItem.measurements["globalMetric"] = 100;
         });
-        window.appInsights = appInsights;
+    });
 
+    // End of inserted code.
 
-        // Adding telemetry initializer.
-        // This is called whenever a new telemetry item
-        // is created.
-
-        appInsights.queue.push(function () {
-            appInsights.context.addTelemetryInitializer(function (envelope) {
-                var telemetryItem = envelope.data.baseData;
-
-                // To check the telemetry item�s type - for example PageView:
-                if (envelope.name == Microsoft.ApplicationInsights.Telemetry.PageView.envelopeType) {
-                    // this statement removes url from all page view documents
-                    telemetryItem.url = "URL CENSORED";
-                }
-
-                // To set custom properties:
-                telemetryItem.properties = telemetryItem.properties || {};
-                telemetryItem.properties["globalProperty"] = "boo";
-
-                // To set custom metrics:
-                telemetryItem.measurements = telemetryItem.measurements || {};
-                telemetryItem.measurements["globalMetric"] = 100;
-            });
-        });
-
-        // End of inserted code.
-
-        appInsights.trackPageView();
-    </script>
+    appInsights.trackPageView();
+</script>
 ```
 
-Elérhető a telemetryItem nem egyéni tulajdonságok összegzése, lásd: [Application Insights exportálása adatmodell](../../azure-monitor/app/export-data-model.md).
+A telemetryItem elérhető nem egyéni tulajdonságok összegzését lásd: [Application Insights export adatmodell](../../azure-monitor/app/export-data-model.md).
 
-Tetszés szerinti számú inicializálók adhat hozzá.
+Annyi inicializáló adhat hozzá, amennyit csak szeretne, és ezeket a rendszer a hozzáadásuk sorrendjében hívja meg.
+
+### <a name="example-telemetryinitializers"></a>Példa TelemetryInitializers
+
+#### <a name="add-custom-property"></a>Egyéni tulajdonság hozzáadása
+
+A következő minta-inicializálás egy egyéni tulajdonságot hoz létre minden követett telemetria.
+
+```csharp
+public void Initialize(ITelemetry item)
+{
+  var itemProperties = item as ISupportProperties;
+  if(itemProperties != null && !itemProperties.ContainsKey("customProp"))
+    {
+        itemProperties.Properties["customProp"] = "customValue";
+    }
+}
+```
+
+#### <a name="add-cloud-role-name"></a>Felhőalapú szerepkör nevének hozzáadása
+
+A következő minta-inicializálás a Felhőbeli szerepkör nevét állítja be minden követett telemetria.
+
+```csharp
+public void Initialize(ITelemetry telemetry)
+{
+    if(string.IsNullOrEmpty(telemetry.Context.Cloud.RoleName))
+    {
+        telemetry.Context.Cloud.RoleName = "MyCloudRoleName";
+    }
+}
+```
 
 ## <a name="itelemetryprocessor-and-itelemetryinitializer"></a>ITelemetryProcessor és ITelemetryInitializer
-Mi a különbség, telemetriai processzorok és a telemetria inicializálók között?
 
-* Vannak bizonyos átfedésben van az, hogy mit tehet velük: Tulajdonságok hozzáadása a telemetriai adatokat egyaránt használható.
-* TelemetryInitializers TelemetryProcessors előtt mindig fusson.
-* TelemetryProcessors lehetővé teszik a teljes mértékben lecserélheti vagy egy telemetriai elem elveti.
-* TelemetryProcessors nem dolgozza fel a teljesítmény számláló telemetriát.
+Mi a különbség a telemetria processzorok és a telemetria inicializálók között?
 
-## <a name="troubleshooting-applicationinsightsconfig"></a>Hibaelhárítás az applicationinsights.config fájlban
-* Győződjön meg arról, hogy a típus teljes neve és a szerelvény neve helyesen-e.
-* Győződjön meg arról, hogy az applicationinsights.config fájlban található a kimeneti könyvtárba, és minden olyan friss módosításokat tartalmaz.
+* Vannak átfedések a következő műveletek elvégzéséhez: mindkettő felhasználható a telemetria tulajdonságainak hozzáadására vagy módosítására, bár ezt a célt az inicializálók használata javasolt.
+* A TelemetryInitializers mindig a TelemetryProcessors előtt futnak.
+* A TelemetryInitializers többször is meghívható. Az egyezmény szerint nem állítanak be olyan tulajdonságot, amely már be van állítva.
+* A TelemetryProcessors lehetővé teszi a telemetria-elemek teljes cseréjét vagy elvetését.
+* Minden regisztrált TelemetryInitializers minden telemetria-tételhez meg kell hívni. A telemetria processzorok esetében az SDK garantálja az első telemetria-processzor hívását. Azt határozza meg, hogy a rendszer a többi processzort hívja-e meg, vagy sem, az előző telemetria processzorok határozzák meg.
+* A TelemetryInitializers használatával gazdagíthatja a telemetria a további tulajdonságokkal, vagy felülbírálhatja a meglévőket. A TelemetryProcessor használatával szűrheti ki a telemetria.
+
+## <a name="troubleshooting-applicationinsightsconfig"></a>A ApplicationInsights. config hibaelhárítása
+
+* Győződjön meg arról, hogy a teljes típus neve és a szerelvény neve helyes.
+* Győződjön meg arról, hogy a applicationinsights. config fájl a kimeneti könyvtárban található, és tartalmazza a legutóbbi módosításokat.
 
 ## <a name="reference-docs"></a>Segédanyagok
-* [API – Áttekintés](../../azure-monitor/app/api-custom-events-metrics.md)
-* [ASP.NET-referencia](https://msdn.microsoft.com/library/dn817570.aspx)
 
-## <a name="sdk-code"></a>SDK Code
+* [API – Áttekintés](../../azure-monitor/app/api-custom-events-metrics.md)
+* [ASP.NET-hivatkozás](https://msdn.microsoft.com/library/dn817570.aspx)
+
+## <a name="sdk-code"></a>SDK-kód
+
 * [ASP.NET Core SDK](https://github.com/Microsoft/ApplicationInsights-aspnetcore)
 * [ASP.NET SDK](https://github.com/Microsoft/ApplicationInsights-dotnet)
 * [JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS)
 
 ## <a name="next"></a>Következő lépések
-* [Keresési események és naplók](../../azure-monitor/app/diagnostic-search.md)
+* [Események és naplók keresése](../../azure-monitor/app/diagnostic-search.md)
 * [Mintavételezés](../../azure-monitor/app/sampling.md)
-* [hibaelhárítással](../../azure-monitor/app/troubleshoot-faq.md)
+* [Hibaelhárítás](../../azure-monitor/app/troubleshoot-faq.md)

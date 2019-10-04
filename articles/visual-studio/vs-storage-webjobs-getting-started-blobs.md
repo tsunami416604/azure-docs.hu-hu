@@ -1,9 +1,9 @@
 ---
-title: Ismerkedés a blob storage és a Visual Studio csatlakoztatott szolgáltatásainak (a Webjobs projekteket) |} A Microsoft Docs
-description: Első lépések a Blob storage használatával a WebJob-projektben a Visual Studio használatával egy Azure Storage csatlakoztatása után a szolgáltatások csatlakoztatva.
+title: Ismerkedés a blob Storage és a Visual Studio csatlakoztatott szolgáltatásaival (Webjobs-projektek) | Microsoft Docs
+description: A blob Storage használatának első lépései egy Webjobs-projektben, miután kapcsolódott egy Azure Storage-hoz a Visual Studio Connected Services használatával.
 services: storage
 author: ghogen
-manager: douge
+manager: jillfra
 ms.assetid: 324c9376-0225-4092-9825-5d1bd5550058
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
@@ -12,26 +12,26 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 5a7c16e6ac565d1660fee02cb7df178344b195e7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1e951fde7e47ccfcce5f64db4ef27ac767d63480
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51254400"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69510656"
 ---
-# <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-webjob-projects"></a>Ismerkedés az Azure Blob storage és a Visual Studio csatlakoztatott szolgáltatásainak (webjobs-feladat projektek)
+# <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-webjob-projects"></a>Ismerkedés az Azure Blob Storage és a Visual Studio csatlakoztatott szolgáltatásaival (Webjobs-projektek)
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
 ## <a name="overview"></a>Áttekintés
-Ez a cikk a C#-mintakódot biztosít, amelyek bemutatják, hogyan indítható el egy folyamatot, ha egy Azure-blobból létrehozásakor vagy frissítésekor. A Kódminták használja a [WebJobs SDK-val](https://github.com/Azure/azure-webjobs-sdk/wiki) verzió 1.x. Hozzáadásakor egy tárfiókot, a webjobs-feladat projekt a Visual Studio használatával **csatlakoztatott szolgáltatás hozzáadása** párbeszédpanelen a megfelelő Azure Storage NuGet-csomag telepítve van, a megfelelő .NET hivatkozások hozzáadódnak a projektet, és a storage-fiókhoz tartozó kapcsolati karakterláncok frissülnek az App.config fájlban.
+Ez a cikk C# olyan programkód-mintákat tartalmaz, amelyek bemutatják, hogyan indíthat el egy folyamatot egy Azure-Blob létrehozásakor vagy frissítésekor. A kód minták a [Webjobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) 1. x verzióját használják. Amikor egy Webjobs-projekthez hozzáadja a Storage-fiókot a Visual Studio **csatlakoztatott szolgáltatások hozzáadása** párbeszédpanel használatával, a megfelelő Azure Storage NuGet-csomag telepítve lesz, a megfelelő .net-hivatkozások hozzáadódnak a projekthez, és a kapcsolati karakterláncok a következőhöz: a Storage-fiók az app. config fájlban frissül.
 
-## <a name="how-to-trigger-a-function-when-a-blob-is-created-or-updated"></a>Hogyan indítható el egy függvényt, ha egy blob létrehozásakor vagy frissítésekor
-Ez a szakasz bemutatja, hogyan használhatja a **BlobTrigger** attribútum.
+## <a name="how-to-trigger-a-function-when-a-blob-is-created-or-updated"></a>Függvény elindítása blob létrehozásakor vagy frissítésekor
+Ez a szakasz bemutatja, hogyan használhatja a **BlobTrigger** attribútumot.
 
- **Megjegyzés:** a WebJobs SDK megvizsgálja a fájlokat az új vagy módosított blobok megtekintése. Ez a folyamat rendszer természetüknél fogva lassabbak; függvény előfordulhat, hogy nem első indul el, amíg több percet vagy hosszabb a blob létrehozása után.  Az alkalmazása azonnal blobok feldolgozásához szükséges, ha az ajánlott módszer az üzenetsori üzenet létrehozására, amikor a blob létrehozásához, és használja a **QueueTrigger** attribútum helyett a **BlobTrigger** a függvény, amely feldolgozza a blob attribútum.
+ **Megjegyzés:** A webjobs SDK megvizsgálja a naplófájlokat az új vagy módosított Blobok figyeléséhez. Ez a folyamat természeténél fogva lassú; Előfordulhat, hogy a rendszer nem indít el egy függvényt, amíg a blob létrehozása után több percig vagy tovább nem ér.  Ha az alkalmazásnak azonnal fel kell dolgoznia a blobokat, az ajánlott módszer egy üzenetsor létrehozása a blob létrehozásakor, valamint a **QueueTrigger** attribútum használata a blobot feldolgozó függvény **BlobTrigger** attribútuma helyett. .
 
-### <a name="single-placeholder-for-blob-name-with-extension"></a>Egyetlen helyőrző kiterjesztésű blob neve
-Az alábbi kódmintában megjelenő szöveg blobok másolja át a *bemeneti* tárolót, hogy a *kimeneti* tároló:
+### <a name="single-placeholder-for-blob-name-with-extension"></a>A blob nevének egyetlen helyőrzője a kiterjesztéssel
+A következő mintakód a *bemeneti* tárolóban megjelenő szöveges blobokat másolja a *kimeneti* tárolóba:
 
         public static void CopyBlob([BlobTrigger("input/{name}")] TextReader input,
             [Blob("output/{name}")] out string output)
@@ -39,9 +39,9 @@ Az alábbi kódmintában megjelenő szöveg blobok másolja át a *bemeneti* tá
             output = input.ReadToEnd();
         }
 
-Az attribútum konstruktorának paramétereként egy karakterlánc-paramétert, amely meghatározza a tároló nevének és a blob nevét. Ebben a példában a blob neve *Blob1.txt* jön létre a *bemeneti* tárolót, a függvény létrehoz egy blobot, nevű *Blob1.txt* a a *kimeneti* tároló.
+Az attribútum konstruktora egy olyan karakterlánc-paramétert hoz létre, amely megadja a tároló nevét és a blob nevének helyőrzőjét. Ebben a példában, ha egy *Blob1. txt* nevű blob jön létre a *bemeneti* tárolóban, a függvény létrehoz egy *Blob1. txt* nevű blobot a *kimeneti* tárolóban.
 
-A blob neve helyőrzővel egy mintát adhat meg az alábbi kódmintában látható módon:
+Megadhat egy nevet a blob neve helyőrzővel, ahogyan az a következő mintakód-mintában látható:
 
         public static void CopyBlob([BlobTrigger("input/original-{name}")] TextReader input,
             [Blob("output/copy-{name}")] out string output)
@@ -49,20 +49,20 @@ A blob neve helyőrzővel egy mintát adhat meg az alábbi kódmintában láthat
             output = input.ReadToEnd();
         }
 
-Ez a kód csak blobok kezdve "eredeti-" nevű másolja. Például *eredeti-Blob1.txt* a a *bemeneti* tároló másolódik *másolási-Blob1.txt* a a *kimeneti* tároló.
+Ez a kód csak a "Original-" kezdetű nevű blobokat másolja. A *bemeneti* tárolóban található *Original-Blob1. txt* például a *kimeneti* tárolóban lévő *copy-Blob1. txt fájlba* másolódik.
 
-Adja meg egy olyan blobneveket, amelyek a kapcsos zárójelek között van a nevében a mintát kell, ha duplán kapcsos zárójeleket kell használni. Például, ha meg szeretne keresni a blobok a *lemezképek* tároló, amely hasonló névvel rendelkeznek:
+Ha olyan blob-nevekhez kell megadnia a nevet, amelyek kapcsos zárójelekkel rendelkeznek a névben, akkor a kapcsos zárójelek közé kell állítani. Ha például a *képek* tárolóban lévő blobokat szeretne megtalálni, amelyek a következőhöz hasonló névvel rendelkeznek:
 
         {20140101}-soundfile.mp3
 
-Ez a minta használata:
+használja ezt a mintát:
 
         images/{{20140101}}-{name}
 
-A példában a *neve* helyőrző érték *soundfile.mp3*.
+A példában a *név* helyőrző értéke *hangállomány. mp3*lesz.
 
-### <a name="separate-blob-name-and-extension-placeholders"></a>Külön blob-névnek és kiterjesztésnek helyőrzői
-Az alábbi kódmintában módosul a fájl kiterjesztése a blobok megjelenő másolja a *bemeneti* tárolót, hogy a *kimeneti* tároló. A kód kiterjesztését naplózza a *bemeneti* blob-, és beállítja a kiterjesztését a *kimeneti* blobból *.txt*.
+### <a name="separate-blob-name-and-extension-placeholders"></a>A blob neve és a kiterjesztés helyőrzői
+A következő mintakód megváltoztatja a fájlkiterjesztést, mert a *bemeneti* tárolóban megjelenő blobokat másolja a *kimeneti* tárolóba. A kód naplózza a *bemeneti* blob bővítményét, és beállítja a *kimeneti* blob kiterjesztését a *. txt fájlba*.
 
         public static void CopyBlobToTxtFile([BlobTrigger("input/{name}.{ext}")] TextReader input,
             [Blob("output/{name}.txt")] out string output,
@@ -75,8 +75,8 @@ Az alábbi kódmintában módosul a fájl kiterjesztése a blobok megjelenő má
             output = input.ReadToEnd();
         }
 
-## <a name="types-that-you-can-bind-to-blobs"></a>Típusokat, amelyeket a blobokhoz hozhasson létre
-Használhatja a **BlobTrigger** attribútuma a következők:
+## <a name="types-that-you-can-bind-to-blobs"></a>Blobokhoz köthető típusok
+A **BlobTrigger** attribútum a következő típusokban használható:
 
 * **string**
 * **TextReader**
@@ -84,12 +84,12 @@ Használhatja a **BlobTrigger** attribútuma a következők:
 * **ICloudBlob**
 * **CloudBlockBlob**
 * **CloudPageBlob**
-* Más típusú által [ICloudBlobStreamBinder](#getting-serialized-blob-content-by-using-icloudblobstreambinder)
+* A [ICloudBlobStreamBinder](#getting-serialized-blob-content-by-using-icloudblobstreambinder) által deszerializált egyéb típusok
 
-Ha az ügyfelek közvetlenül az Azure storage-fiókot szeretne, hozzáadhatja egy **CloudStorageAccount** paramétert a metódus aláírásához.
+Ha közvetlenül az Azure Storage-fiókkal szeretne dolgozni, **CloudStorageAccount** paramétert is hozzáadhat a metódus aláírásához.
 
-## <a name="getting-text-blob-content-by-binding-to-string"></a>Bevezetés a blob-tartalmak szöveges karakterláncra kötés által
-Ha várhatóan szöveg blobok, **BlobTrigger** is alkalmazható egy **karakterlánc** paraméter. Az alábbi kódmintában köti a szöveges blob egy **karakterlánc** nevű paraméter **logMessage**. A funkció arra a paraméterre a blob tartalmának írása a WebJobs SDK-irányítópultra.
+## <a name="getting-text-blob-content-by-binding-to-string"></a>Szöveges blob tartalmának beolvasása karakterlánchoz kötéssel
+Ha a rendszer szöveges blobokat vár, a **BlobTrigger** alkalmazható egy **karakterlánc** -paraméterre. A következő mintakód egy **logMessage**nevű **karakterlánc** -paraméterhez köti a szöveges blobot. A függvény ezt a paramétert használja a blob tartalmának írásához a webjobs SDK-irányítópulton.
 
         public static void WriteLog([BlobTrigger("input/{name}")] string logMessage,
             string name,
@@ -100,8 +100,8 @@ Ha várhatóan szöveg blobok, **BlobTrigger** is alkalmazható egy **karakterl�
              logger.WriteLine(logMessage);
         }
 
-## <a name="getting-serialized-blob-content-by-using-icloudblobstreambinder"></a>Blobtartalom beolvasása szerializált ICloudBlobStreamBinder használatával
-A következő kódminta implementáló osztályt használ **ICloudBlobStreamBinder** engedélyezéséhez a **BlobTrigger** attribútum kötést létrehozni egy blobot a **WebImage** típusa.
+## <a name="getting-serialized-blob-content-by-using-icloudblobstreambinder"></a>Szerializált blob-tartalom beolvasása a ICloudBlobStreamBinder használatával
+A következő mintakód egy olyan osztályt használ, amely **ICloudBlobStreamBinder** valósít meg, hogy a **BlobTrigger** attribútum a blobot a **webképek** típusához köti.
 
         public static void WaterMark(
             [BlobTrigger("images3/{name}")] WebImage input,
@@ -120,7 +120,7 @@ A következő kódminta implementáló osztályt használ **ICloudBlobStreamBind
             output = input.Resize(width, height);
         }
 
-A **WebImage** kötés kód megtalálható egy **WebImageBinder** származó osztálynak **ICloudBlobStreamBinder**.
+A **webrendszerkép** -kötési kód egy olyan **WebImageBinder** osztályba tartozik, amely a **ICloudBlobStreamBinder**származik.
 
         public class WebImageBinder : ICloudBlobStreamBinder<WebImage>
         {
@@ -137,20 +137,20 @@ A **WebImage** kötés kód megtalálható egy **WebImageBinder** származó osz
             }
         }
 
-## <a name="how-to-handle-poison-blobs"></a>Ártalmas blobok kezelése
-Ha egy **BlobTrigger** függvény sikertelen, az SDK meghívja az újra, abban az esetben, ha a hiba átmeneti hiba okozta. Ha a hiba okozza a blob tartalmát, a függvény sikertelen lesz, minden alkalommal, amikor megpróbálja feldolgozni a blob. Alapértelmezés szerint az SDK meghívja egy függvény legfeljebb 5 alkalommal egy adott BLOB. Az ötödik próbálja meghiúsul, ha az SDK-t ad hozzá egy üzenet nevű üzenetsor *webjobs-blobtrigger-poison*.
+## <a name="how-to-handle-poison-blobs"></a>A méreg Blobok kezelése
+Ha egy **BlobTrigger** függvény meghibásodik, az SDK újra meghívja azt az esetet, ha a hibát egy átmeneti hiba okozta. Ha a hibát a blob tartalma okozta, a függvény minden alkalommal meghiúsul, amikor megkísérli feldolgozni a blobot. Az SDK alapértelmezés szerint legfeljebb 5 alkalommal hívja meg a függvényt egy adott blob esetében. Ha az ötödik próbálkozás sikertelen, az SDK felvesz egy üzenetet egy webjobs *-blobtrigger-méreg*nevű várólistába.
 
-Az újrapróbálkozások maximális száma nem konfigurálható. Azonos **MaxDequeueCount** ártalmas blob kezelésére és ártalmas várólista üzenetkezelés beállítást kell használni.
+Az újrapróbálkozások maximális száma konfigurálható. Ugyanez a **MaxDequeueCount** -beállítás a blob-kezelő és a méreg üzenetsor-üzenetek kezelésére szolgál.
 
-Az üzenetsorban található üzenet ártalmas blobok esetében a következő JSON-objektum, amely a következő tulajdonságokat tartalmazza:
+A méreg-Blobok üzenetsor-üzenete egy JSON-objektum, amely a következő tulajdonságokat tartalmazza:
 
-* FunctionId (a következő formátumban *{webjobs-feladat neve}*. A műveletek. *{Függvény neve}*, például: WebJob1.Functions.CopyBlob)
+* FunctionId ( *{webjobs Name}* formátumban. Funkciók. *{Function Name}* , például: WebJob1.Functions.CopyBlob)
 * BlobType ("BlockBlob" vagy "PageBlob")
-* ContainerName
+* Tárolónév
 * BlobName
-* Az ETag (például egy blob verzió azonosítója: "0x8D1DC6E70A277EF")
+* ETag (blob-verzió azonosítója, például: "0x8D1DC6E70A277EF")
 
-Az alábbi kódmintában a **CopyBlob** függvénynek kódot, amely miatt a sikertelen lesz, minden alkalommal, amikor azt nevezzük. Amikor az SDK meghívja az újrapróbálkozások maximális számát, az ártalmas blob üzenetsor létrehozása egy üzenet és üzenetet dolgoz fel a **LogPoisonBlob** függvény.
+A következő kódrészletben a **CopyBlob** függvénynek van olyan kódja, amelynek hatására a rendszer minden alkalommal meghívja a hibát. Miután az SDK meghívja az újrapróbálkozások maximális számát, létrejön egy üzenet a megmérgezett blob-várólistán, és ezt az üzenetet a **LogPoisonBlob** függvény dolgozza fel.
 
         public static void CopyBlob([BlobTrigger("input/{name}")] TextReader input,
             [Blob("textblobs/output-{name}")] out string output)
@@ -170,7 +170,7 @@ Az alábbi kódmintában a **CopyBlob** függvénynek kódot, amely miatt a sike
             logger.WriteLine("ETag: {0}", message.ETag);
         }
 
-Az SDK automatikusan deserializes a JSON-üzenetet. Íme a **PoisonBlobMessage** osztály:
+Az SDK automatikusan deszerializálja a JSON-üzenetet. Itt látható a **PoisonBlobMessage** osztály:
 
         public class PoisonBlobMessage
         {
@@ -181,41 +181,41 @@ Az SDK automatikusan deserializes a JSON-üzenetet. Íme a **PoisonBlobMessage**
             public string ETag { get; set; }
         }
 
-### <a name="blob-polling-algorithm"></a>BLOB lekérdezési algoritmus
-A WebJobs SDK megvizsgálja az összes tároló által megadott **BlobTrigger** attribútumok alkalmazás indításakor. Nagy storage-fiókban található ez a vizsgálat hosszabb ideig is eltarthat, így érdemes lehet egy ideig, mielőtt új blobok találhatók és **BlobTrigger** függvények végrehajtása történik.
+### <a name="blob-polling-algorithm"></a>BLOB lekérdezési algoritmusa
+A webjobs SDK a **BlobTrigger** attribútumai által megadott összes tárolót megvizsgálja az alkalmazás indításakor. Nagyméretű Storage-fiókban ez a vizsgálat hosszabb időt is igénybe vehet, így előfordulhat, hogy az új Blobok megtalálása és a **BlobTrigger** függvények végrehajtása előtt.
 
-Alkalmazás indítása után az új vagy módosított blobok észleléséhez az SDK rendszeres időközönként beolvassa a blob storage-naplók. A blobnaplók pufferelve van, és csak fizikai bejegyzése 10 percenként vagy tehát itt is van jelentős késleltetés után blob létrehozása vagy frissítése előtt a megfelelő **BlobTrigger** függvény végrehajt.
+Ha az alkalmazás elindítása után új vagy módosított blobokat szeretne felderíteni, az SDK rendszeres időközönként beolvassa a blob Storage-naplókat. A blob-naplók puffereltek, és csak 10 percenként jelentkeznek be fizikailag, így előfordulhat, hogy a blob létrehozása vagy frissítése után jelentős késés lehet a megfelelő **BlobTrigger** -függvény végrehajtása előtt.
 
-A blobokat, amelyekre használatával hoz létre a kivétel a **Blob** attribútum. Amikor a WebJobs SDK-val létrehoz egy új blob, átadja az új blob azonnal bármilyen megfelelő **BlobTrigger** funkciók. Ezért ha egy blob bemeneti és kimeneti láncában, az SDK azokat fel tudná dolgozni hatékony. Ha azt szeretné, hogy a blob futó feldolgozási funkciók létrehozott vagy más módon frissítve blobok alacsony késleltetésű, javasoljuk, de **QueueTrigger** helyett **BlobTrigger**.
+Kivételt képeznek a **blob** attribútum használatával létrehozott Blobok. Ha a webjobs SDK új blobot hoz létre, azonnal átadja az új blobot a megfelelő **BlobTrigger** -függvényeknek. Ezért ha a blob bemenetek és kimenetek láncával rendelkezik, az SDK hatékonyan feldolgozhatja őket. Ha azonban kis késleltetést szeretne végezni a blob-feldolgozási függvények más módon létrehozott vagy frissített Blobok általi futtatásához, javasoljuk, hogy a **QueueTrigger** -et **BlobTrigger**helyett használja.
 
-### <a name="blob-receipts"></a>BLOB visszaigazolások
-A WebJobs SDK gondoskodik róla, hogy nincs **BlobTrigger** függvény egynél többször meghívása megtörténik a azonos új vagy frissített BLOB. Ezt nem megőrzése *visszaigazolások blob* annak érdekében, hogy határozza meg, ha egy adott blob verzió feldolgozása megtörtént.
+### <a name="blob-receipts"></a>BLOB-visszaigazolások
+A webjobs SDK gondoskodik arról, hogy egyetlen **BlobTrigger** függvény se legyen többször ugyanarra az új vagy frissített blobra. Ezt a *blob* -visszaigazolások karbantartásával végezheti el annak megállapításához, hogy egy adott blob-verzió feldolgozása megtörtént-e.
 
-BLOB visszaigazolások nevű tárolóban tárolt *azure-webjobs-gazdagépek* AzureWebJobsStorage kapcsolati sztring által meghatározott Azure storage-fiókban. Egy blob beérkezési rendelkezik a következő információkat:
+A blob-visszaigazolásokat egy *Azure-webjobs* nevű tároló tárolja, amely az Azure Storage-fiókban található, a AzureWebJobsStorage-kapcsolatok karakterlánca által meghatározott. A blob-visszaigazolás a következő információkat tartalmazhatja:
 
-* A függvényt, amely a BLOB byla volána ("*{webjobs-feladat neve}*. A műveletek. *{Függvény neve}*", például:"WebJob1.Functions.CopyBlob")
+* A blobhoz hívott függvény ( *{webjobs Name}* ). Funkciók. *{Function Name}* ", például: "WebJob1.Functions.CopyBlob")
 * A tároló neve
 * A blob típusa ("BlockBlob" vagy "PageBlob")
 * A blob neve
-* Az ETag címke (például egy blob verzió azonosítója: "0x8D1DC6E70A277EF")
+* A ETag (a blob verziószáma, például: "0x8D1DC6E70A277EF")
 
-Ha azt szeretné, a blob újrafeldolgozása kényszerítheti, hogy a BLOB blob fogadását manuálisan törölheti a *azure-webjobs-gazdagépek* tároló.
+Ha kényszeríteni szeretné a Blobok újrafeldolgozását, manuálisan törölheti az adott blobhoz tartozó blob-elismervényt az *Azure-webjobs-hosts* tárolóból.
 
-## <a name="related-topics-covered-by-the-queues-article"></a>Az üzenetsorok cikkben foglalt Kapcsolódó témakörök
-Egy üzenetsor által aktivált blob feldolgozási kezelése kapcsolatos információkat, vagy a WebJobs SDK-val forgatókönyveket nem blob-feldolgozás, lásd [Azure queue storage használata a WebJobs SDK-val](https://github.com/Azure/azure-webjobs-sdk/wiki).
+## <a name="related-topics-covered-by-the-queues-article"></a>A várólistákról szóló cikkben szereplő kapcsolódó témakörök
+További információ a várólista-üzenet által aktivált blob-feldolgozás kezeléséről, illetve a blob-feldolgozásra nem jellemző webjobs SDK-forgatókönyvekről: [Az Azure üzenetsor-tároló használata a Webjobs SDK-val](https://github.com/Azure/azure-webjobs-sdk/wiki).
 
-Ebben a cikkben szereplő kapcsolódó témakörök a következők:
+Az ebben a cikkben szereplő kapcsolódó témakörök a következők:
 
-* Az aszinkron funkciók
+* Aszinkron függvények
 * Több példány
-* Biztonságos leállításának
-* A WebJobs SDK attribútumok függvény törzsében.
-* Az SDK-kapcsolati karakterláncok beállítása a kódban.
-* Értékek a WebJobs SDK-val konstruktor paraméterek beállítása a code-ban
-* Konfigurálása **MaxDequeueCount** ártalmas blob kezelésére.
-* Egy függvény manuális aktiválása
-* Naplók írása
+* Biztonságos leállítás
+* Webjobs SDK-attribútumok használata függvények törzsében
+* Állítsa be az SDK-kapcsolatok karakterláncait a kódban.
+* A webjobs SDK-konstruktor paramétereinek értékeinek beállítása a kódban
+* A **MaxDequeueCount** konfigurálása a méreg Blobok kezelésére.
+* Függvény manuális elindítása
+* Írási naplók
 
 ## <a name="next-steps"></a>További lépések
-Ez a cikk kódmintákkal, amelyek bemutatják, hogyan kezelje a gyakori forgatókönyvek az Azure-beli blobokhoz munkához biztosított. Azure WebJobs és WebJobs SDK használatával kapcsolatos további információkért lásd: [Azure WebJobs-dokumentáció erőforrások](https://go.microsoft.com/fwlink/?linkid=390226).
+Ez a cikk az Azure-Blobok használatának gyakori forgatókönyveit bemutató kódrészleteket tartalmaz. További információ a Azure WebJobs és a webjobs SDK használatáról: [Azure WebJobs dokumentációs erőforrások](https://go.microsoft.com/fwlink/?linkid=390226).
 

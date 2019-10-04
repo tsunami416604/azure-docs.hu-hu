@@ -11,11 +11,11 @@ ms.topic: article
 ms.assetid: 56c5846c-5d8c-4ad4-9652-60b07aa8fc3b
 ms.date: 02/06/2019
 ms.openlocfilehash: 3cca995b353b88cc481cbda68df4211a724f7f09
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57727314"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60846377"
 ---
 # <a name="validate-xml-with-schemas-in-azure-logic-apps-with-enterprise-integration-pack"></a>XML érvényességének ellenőrzése az Azure Logic Apps Enterprise Integration Pack-sémákkal
 
@@ -118,7 +118,7 @@ Nagyobb sémák hozzáadásához a séma feltölthet egy Azure blob-tárolóba a
 
 1. Térjen vissza az Azure Portalon, a **séma hozzáadása** panel meg nyitva. 
    Adja meg a szerelvény nevét. 
-   Válasszon **nagy fájlok (2 MB-nál nagyobb)**. 
+   Válasszon **nagy fájlok (2 MB-nál nagyobb)** . 
 
    A **tartalom URI-JÁT** be most már megjelenik, helyett a **séma** mezőbe.
 

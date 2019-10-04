@@ -1,10 +1,10 @@
 ---
-title: Nem találhatók előfizetések hiba – az Azure portal bejelentkezési |} A Microsoft Docs
-description: Minden megoldást kínál, amelyben nem találhatók előfizetések hiba lép fel probléma esetén jelentkezzen be az Azure portal vagy az Azure account Center webhelyen.
+title: „Nem található előfizetés” hiba – Bejelentkezés az Azure Portalra | Microsoft Docs
+description: Ez a cikk megoldást kínál arra a problémára, amikor „Nem található előfizetés” hiba jelenik meg az Azure Portalra vagy az Azure Fiókközpontba történő bejelentkezéskor.
 services: ''
 documentationcenter: ''
 author: genlin
-manager: adpick
+manager: dcscontentpm
 editor: ''
 tags: billing
 ms.assetid: d1545298-99db-4941-8e97-f24a06bb7cb6
@@ -16,44 +16,44 @@ ms.topic: troubleshooting
 ms.date: 05/11/2018
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 094d79026a55e651a1f67a5047dff20c769c359a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 19a30a99b9df23358aafd88c55bde08c73a3be72
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57881112"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71121545"
 ---
-# <a name="no-subscriptions-found-sign-in-error-for-azure-portal-or-azure-account-center"></a>Nem találhatók előfizetések bejelentkezési hiba történt az Azure Portalon vagy az Azure account Center webhelyen
+# <a name="no-subscriptions-found-sign-in-error-for-azure-portal-or-azure-account-center"></a>„Nem található előfizetés” bejelentkezési hiba az Azure Portalon vagy az Azure Fiókközpontban
 
-Egy "Nem találhatók előfizetések" hibaüzenetet kaphat, ha megpróbál bejelentkezni a [az Azure portal](https://portal.azure.com/) vagy a [Azure Account Center](https://account.windowsazure.com/Subscriptions). Ez a cikk egy megoldást nyújt a probléma.
+Előfordulhat, hogy „Nem található előfizetés” hibaüzenetet kap, amikor megpróbál bejelentkezni az [Azure Portalra](https://portal.azure.com/) vagy az [Azure Fiókközpontba](https://account.windowsazure.com/Subscriptions). Ez a cikk megoldást kínál erre a problémára.
 
-## <a name="symptom"></a>Jelenség
+## <a name="symptom"></a>Hibajelenség
 
-Amikor próbál bejelentkezni a [az Azure portal](https://portal.azure.com/) vagy a [Azure account Center webhelyen](https://account.windowsazure.com/Subscriptions), a következő hibaüzenetet kapja: "Nem találhatók előfizetések".
+Amikor megpróbál bejelentkezni az [Azure Portalra](https://portal.azure.com/) vagy az [Azure Fiókközpontba](https://account.windowsazure.com/Subscriptions), a következő hibaüzenet jelenik meg: „Nem található előfizetés”.
 
 ## <a name="cause"></a>Ok
 
-Ez a probléma akkor fordul elő, ha az nem megfelelő könyvtárba, vagy ha a fiókja nem rendelkezik megfelelő engedélyekkel. 
+Ez a probléma akkor fordul elő, ha nem a megfelelő címtárat választotta ki, vagy ha a fiókja nem rendelkezik megfelelő engedélyekkel. 
 
 ## <a name="solution"></a>Megoldás
 
-### <a name="scenario-1-error-message-is-received-in-the-azure-portalhttpsportalazurecom"></a>1. forgatókönyv: Hibaüzenet érkezik a [Azure Portalon](https://portal.azure.com)
+### <a name="scenario-1-error-message-is-received-in-the-azure-portalhttpsportalazurecom"></a>1\. forgatókönyv: A hibaüzenet az [Azure Portalon](https://portal.azure.com) jelenik meg
 
-A probléma megoldásához:
+A probléma megoldása:
 
-* Győződjön meg arról, hogy a megfelelő Azure-címtár kattintson a jobb felső sarokban fiókja van-e kiválasztva.
+* A jobb felső sarokban kattintson a fiókjára, és ellenőrizze, hogy a megfelelő Azure-címtárat választotta-e ki.
 
-  ![Válassza ki a címtár tetején, az Azure portal jobb](./media/billing-no-subscriptions-found/directory-switch.png)
-* Ha a megfelelő Azure-könyvtár van kijelölve, de továbbra is megjelenik a hibaüzenet [a tulajdonosi szerepkör hozzárendelése a fiókhoz](../role-based-access-control/role-assignments-portal.md).
+  ![Az Azure Portal jobb felső sarkában válassza ki a címtárat](./media/billing-no-subscriptions-found/directory-switch.png)
+* Ha a megfelelő Azure-címtár van kiválasztva, de továbbra is megjelenik a hibaüzenet, [rendelje a fiókjához a Tulajdonos szerepkört](../role-based-access-control/role-assignments-portal.md).
 
-### <a name="scenario-2-error-message-is-received-in-the-azure-account-centerhttpsaccountwindowsazurecomsubscriptions"></a>2. forgatókönyv: Hibaüzenet érkezik a [Azure Account Center](https://account.windowsazure.com/Subscriptions)
+### <a name="scenario-2-error-message-is-received-in-the-azure-account-centerhttpsaccountwindowsazurecomsubscriptions"></a>2\. forgatókönyv: A hibaüzenet az [Azure Fiókközpontban](https://account.windowsazure.com/Subscriptions) jelenik meg
 
-Ellenőrizze, hogy a fiókot, amelynek Ön a fiók rendszergazdája. Annak ellenőrzéséhez, aki a fiók rendszergazdája, kövesse az alábbi lépéseket:
+Ellenőrizze, hogy az Ön által használt fiók a Fiókadminisztrátor. Annak ellenőrzéséhez, hogy ki a Fiókadminisztrátor, kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be a [előfizetések megtekintése az Azure Portalon](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
-1. Válassza ki az előfizetést, gombra, majd keresse meg a kívánt **beállítások**.
-1. Válassza ki **tulajdonságok**. Az előfizetés fiókadminisztrátori fiókjával jelenik meg a **Fiókadminisztrátor** mezőbe.  
+1. Jelentkezzen be az [Azure Portal Előfizetések nézetébe](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
+1. Válassza ki az ellenőrizni kívánt előfizetést, majd lépjen a **Beállítások** területre.
+1. Válassza ki a **Tulajdonságok** elemet. Az előfizetés fiókadminisztrátora a **Fiókadminisztrátor** mezőben látható.  
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).

@@ -3,9 +3,8 @@ title: Az Azure Security Center által nyújtott adatbiztonság | Microsoft Docs
 description: Ez a dokumentum bemutatja, hogyan kezeli az Azure Security Center az adatokat, és hogyan gondoskodik a védelmükről.
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 33f2c9f4-21aa-4f0c-9e5e-4cd1223e39d7
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
-ms.author: rkarlin
-ms.openlocfilehash: 7a327c963f32d6bf5b0cf7751557c61327fd26e9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: memildin
+ms.openlocfilehash: 30f4358bea2670cfa8d825bf1ef75feeba7ea851
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57902790"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202339"
 ---
 # <a name="azure-security-center-data-security"></a>Az Azure Security Center által nyújtott adatbiztonság
 Az Azure Security Center biztonsággal kapcsolatos adatokat gyűjt és dolgoz fel (például konfigurációs információkat, metaadatokat, eseménynaplókat, összeomlási memóriaképeket és még sok mást), hogy segítsen az ügyfeleknek a fenyegetések megelőzésében, észlelésében és elhárításában. A Microsoft szigorú megfelelőségi és biztonsági szabályokat követ, a kódolástól kezdve egészen a szolgáltatások üzemeltetéséig.
@@ -29,36 +28,42 @@ Ez a cikk bemutatja, hogyan kezeli az Azure Security Center az adatokat, és hog
 ## <a name="data-sources"></a>Adatforrások
 Az Azure Security Center az alábbi forrásokból kapott adatok elemzésével biztosítja a biztonsági állapot áttekinthetőségét, azonosítja a biztonsági réseket, javításokat javasolj, valamint észleli az aktív fenyegetéseket:
 
-- Azure-szolgáltatások: Használ, adott erőforrás-szolgáltatóval kommunikálva üzembe helyezett Azure-szolgáltatások konfigurációjával kapcsolatos információkat.
-- Hálózati forgalom: Használja a hálózati forgalom metaadataiból a Microsoft, például a forrás és cél IP-portot, a csomagméretet és a hálózati protokoll mintát venni.
-- Partneri megoldások: Integrált partneri megoldások, például tűzfalaktól és kártevőirtó megoldásoktól érkező biztonsági riasztásokat használja.
-- A virtuális gépek és kiszolgálók: Konfigurációs és biztonsági eseményekkel, például a Windows esemény- és vizsgálati naplókat, IIS-naplók, syslog-üzeneteket és a virtuális gépekről származó összeomlási memóriaképeket kapcsolatos információkat használ. Ezenkívül a riasztások létrejöttekor az Azure Security Center pillanatfelvételt készíthet az érintett virtuálisgép-lemezről, és kinyerheti belőle a riasztással kapcsolatos gépösszetevőket (például a beállításjegyzék-fájlt vizsgálati célokra).
+- Azure-szolgáltatások: A szolgáltatás erőforrás-szolgáltatóval való kommunikációval a telepített Azure-szolgáltatások konfigurációjával kapcsolatos információkat használja.
+- Hálózati forgalom: A a Microsoft infrastruktúrájának mintául szolgáló hálózati forgalmi metaadatait használja, például a forrás/cél IP-cím/port, a csomag mérete és a hálózati protokoll.
+- Partneri megoldások: Az integrált partneri megoldások, például a tűzfalak és a kártevők elleni megoldások biztonsági riasztásait használja.
+- Az Virtual Machines és a kiszolgálók: Konfigurációs információkat és információkat használ a biztonsági eseményekről, például a Windows-események és a naplók, az IIS-naplók, a syslog-üzenetek és az összeomlási memóriaképek a virtuális gépekről. Ezenkívül a riasztások létrejöttekor az Azure Security Center pillanatfelvételt készíthet az érintett virtuálisgép-lemezről, és kinyerheti belőle a riasztással kapcsolatos gépösszetevőket (például a beállításjegyzék-fájlt vizsgálati célokra).
 
 
 ## <a name="data-protection"></a>Adatvédelem
-**Az adatok elkülönítése**: Adatok van logikailag elkülönítve vannak tárolva a szolgáltatás egyes összetevőiben. Az összes adat szervezet szerint van megcímkézve. Ez a címkézés megmarad az adatok teljes életciklusa alatt, és a szolgáltatás minden rétegében érvényes.
+**Az adatelkülönítés**: Az adat a szolgáltatás minden összetevőjénél logikailag elkülönítve marad. Az összes adat szervezet szerint van megcímkézve. Ez a címkézés megmarad az adatok teljes életciklusa alatt, és a szolgáltatás minden rétegében érvényes.
 
-**Adatelérési**: Biztonsági javaslatok és a lehetséges biztonsági fenyegetések kivizsgálása érdekében a Microsoft munkatársai hozzáférhetnek az Azure szolgáltatások, beleértve a összeomlási memóriaképek fájljait, folyamat-létrehozási események, Virtuálisgép-lemez pillanatképeihez és összetevőihez, által összegyűjtött vagy elemzett adatokat amelyek véletlenül tartalmazhatnak, ügyfél és a virtuális gépekről származó személyes adatokat. Betartjuk a [Microsoft Online Services és az adatvédelmi nyilatkozat](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) feltételeit, amelyek szerint a Microsoft nem használja fel az ügyféladatokat, és nem veszi igénybe azokat hirdetési vagy hasonló kereskedelmi célokra. Az ügyféladatokat szükség esetén csak arra használjuk, hogy biztosítsuk Önnek az Azure-szolgáltatásokat, beleértve a szolgáltatások nyújtásának megfelelő célokat is. Minden, az ügyféladatokhoz fűződő jog az Ön tulajdonában marad.
+**Adathozzáférés**: A biztonsági javaslatok és a lehetséges biztonsági fenyegetések kivizsgálása érdekében a Microsoft munkatársai hozzáférhetnek az Azure-szolgáltatások által összegyűjtött vagy elemzett információkhoz, beleértve az összeomlási memóriaképeket, a folyamat létrehozásának eseményeit, a virtuális gépek lemezének pillanatképeit és az összetevőket, amelyek véletlenül a virtuális gépekről származó ügyféladatokat vagy személyes adatait is felhasználhatják. Betartjuk a [Microsoft Online Services és az adatvédelmi nyilatkozat](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) feltételeit, amelyek szerint a Microsoft nem használja fel az ügyféladatokat, és nem veszi igénybe azokat hirdetési vagy hasonló kereskedelmi célokra. Az ügyféladatokat szükség esetén csak arra használjuk, hogy biztosítsuk Önnek az Azure-szolgáltatásokat, beleértve a szolgáltatások nyújtásának megfelelő célokat is. Minden, az ügyféladatokhoz fűződő jog az Ön tulajdonában marad.
 
-**Adatok használatával**: A Microsoft minták és több bérlő különböző bérlőknél észlelt fenyegetésekkel kapcsolatos Tudásbázis alkalmaz a használatával javíthatja a megelőzési és észlelési funkcióihoz; ismertetett adatvédelmi kötelezettségeinek megfelelően tesszük a [adatvédelmi nyilatkozat](https://www.microsoft.com/privacystatement/en-us/OnlineServices/Default.aspx).
+**Adathasználat**: A Microsoft a különböző bérlők által látott minták és fenyegetések felderítésével fokozza a megelőzési és észlelési képességeiket; ezt a jelen [adatvédelmi nyilatkozatban](https://www.microsoft.com/privacystatement/en-us/OnlineServices/Default.aspx)ismertetett adatvédelmi kötelezettségvállalásoknak megfelelően tesszük.
 
 ## <a name="data-location"></a>Az adatok helye
 
-**Saját munkaterület(ek)**: A munkaterület az alábbi Geók esetében van megadva, és az Azure virtuális gépek, beleértve az összeomlási memóriaképeket és bizonyos típusú riasztási adatokat gyűjtött adatokat a legközelebbi munkaterület vannak tárolva.
+**A munkaterület (ok)** : A következő térségek egy munkaterület van megadva, az Azure-beli virtuális gépekről gyűjtött adatokat, beleértve az összeomlási memóriaképeket és bizonyos típusú riasztási adatokat, a legközelebbi munkaterületen vannak tárolva.
 
-| Virtuális gép geo                        | Munkaterület geo |
-|-------------------------------|---------------|
-| Egyesült Államok, Brazília, Kanada | Egyesült Államok |
-| Európa, Egyesült Királyság        | Európa        |
-| Ázsia és a Csendes-óceáni térség, Japán, India    | Ázsia és a Csendes-óceáni térség  |
-| Ausztrália                     | Ausztrália     |
+| Virtuális gép geo                              | Munkaterület geo |
+|-------------------------------------|---------------|
+| Egyesült Államok, Brazília, Dél-Afrika | Egyesült Államok |
+| Kanada                              | Kanada        |
+| Európa (kivéve az Egyesült Királyságot)   | Európa        |
+| Egyesült Királyság                      | Egyesült Királyság |
+| Ázsia (kivéve India, Japán, Korea, Kína)   | Ázsia és a Csendes-óceáni térség  |
+| Korea                              | Ázsia és a Csendes-óceáni térség  |
+| India                               | India         |
+| Japán                               | Japán         |
+| Kína                               | Kína         |
+| Ausztrália                           | Ausztrália     |
 
 
 A virtuálisgép-lemez pillanatképeit ugyanaz a tárfiók tárolja, mint a virtuálisgép-lemezt.
 
 A más környezetben futó (pl. helyszíni) virtuális gépek és kiszolgálók esetében megadhatja a munkaterületet és régiót, ahol tárolni kívánja az összegyűjtött adatokat.
 
-**Azure Security Center Storage**: Információ a biztonsági riasztásokat, beleértve a partnerriasztásokat, tárolt regionálisan függően a kapcsolódó Azure-erőforrás, mivel a biztonsági állapottal és javaslatokkal kapcsolatos információk tárolása központilag az Egyesült Államokban vagy Európa, az ügyfél helye szerint.
+**Azure Security Center tárterület**: A biztonsági riasztásokkal, például a partneri riasztásokkal kapcsolatos információkat a rendszer a kapcsolódó Azure-erőforrás helye szerint regionálisan tárolja, míg a biztonsági állapottal és javaslattal kapcsolatos információkat a rendszer központilag tárolja a Egyesült Államok vagy Európa az ügyfél tartózkodási helye szerint.
 Az Azure Security Center ideiglenes másolatokat gyűjt az összeomlási memóriaképek fájljairól, és elemzi ezeket a biztonsági réseket kihasználó támadások és a sikeres feltörések nyomai után kutatva. Az Azure Security Center az elemzéseket ugyanazon a földrajzi helyen végzi el, ahol a munkaterület található, és az elemzés után törli az ideiglenes másolatokat.
 
 A gépösszetevők tárolása központilag történik, ugyanabban a régióban, ahol a virtuális gép is található.
@@ -76,7 +81,7 @@ Ha az Azure Security Center ingyenes verzióját használja, le is tilthatja a v
 Az ügyfelek különböző adatstreamekből származó Security Center-adatokat használhatnak, az alábbiak szerint:
 
 * **Azure-tevékenység**: az összes biztonsági riasztás, jóváhagyott [igény szerinti](https://docs.microsoft.com/azure/security-center/security-center-just-in-time) Security Center-kérelmek és az [adaptív alkalmazásvezérlők](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application) által létrehozott összes riasztás.
-* **Az Azure Monitor naplóira**: összes biztonsági riasztás.
+* **Azure monitor naplók**: minden biztonsági riasztás.
 
 
 > [!NOTE]

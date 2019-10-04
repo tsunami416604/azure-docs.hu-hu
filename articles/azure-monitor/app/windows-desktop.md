@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 05/15/2018
+ms.date: 08/09/2019
 ms.author: mbullwin
-ms.openlocfilehash: 95ff8d1a70325357fee4bc24fd96c1a1c7a73845
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: ed6df8b4724dbb297a0c64fd869d3377545a7595
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077606"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932337"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>Klasszikus windowsos asztali alkalmazások használatának és teljesítményének figyelése
 
@@ -37,10 +37,11 @@ A helyszínen, az Azure-ban és más felhőben üzemeltetett alkalmazások is ki
    
     Az ApplicationInsights.config használatakor győződjön meg arról, hogy annak tulajdonságait a következőre állította a Megoldáskezelőben: **Build Action = Content, Copy to Output Directory = Copy**.
 5. [Az API-val](../../azure-monitor/app/api-custom-events-metrics.md) telemetriai adatokat küldhet.
-6. Az alkalmazás futtatása után az Azure Portalon tekintheti meg a létrehozott erőforrás telemetriai adatait.
+6. Futtassa az alkalmazást, és tekintse meg a telemetria a Azure Portalban létrehozott erőforrásban.
 
 ## <a name="telemetry"></a>Mintakód
 ```csharp
+using Microsoft.ApplicationInsights;
 
     public partial class Form1 : Form
     {
@@ -52,7 +53,6 @@ A helyszínen, az Azure-ban és más felhőben üzemeltetett alkalmazások is ki
             tc.InstrumentationKey = "key copied from portal";
 
             // Set session data:
-            tc.Context.User.Id = Environment.UserName;
             tc.Context.Session.Id = Guid.NewGuid().ToString();
             tc.Context.Device.OperatingSystem = Environment.OSVersion.ToString();
 
@@ -61,9 +61,10 @@ A helyszínen, az Azure-ban és más felhőben üzemeltetett alkalmazások is ki
             ...
         }
 
-        protected override void OnClosing(CancelEventArgs e)
+        protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
-            stop = true;
+            e.Cancel = true;
+
             if (tc != null)
             {
                 tc.Flush(); // only for desktop apps
@@ -77,7 +78,7 @@ A helyszínen, az Azure-ban és más felhőben üzemeltetett alkalmazások is ki
 ```
 
 ## <a name="next-steps"></a>További lépések
-* [Irányítópult létrehozása](../../azure-monitor/app/app-insights-dashboards.md)
+* [Irányítópult létrehozása](../../azure-monitor/app/overview-dashboard.md)
 * [Diagnosztikai keresés](../../azure-monitor/app/diagnostic-search.md)
 * [Metrikák böngészése](../../azure-monitor/app/metrics-explorer.md)
 * [Analytics-lekérdezések](../../azure-monitor/app/analytics.md)

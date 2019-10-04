@@ -1,4 +1,4 @@
-- name: Az Azure Sentinel előzetes verziójának dokumentációja
+- name: Az Azure Sentinel dokumentációja
   href: index.yml
 - name: Áttekintés
   href: overview.md
@@ -11,12 +11,22 @@
       href: quickstart-get-visibility.md
 - name: Oktatóanyagok
   items:
-    - name: Gyanús fenyegetések észlelése
-      href: tutorial-detect-threats.md
-    - name: Esetek kivizsgálása
+    - name: Fenyegetésészlelés a beépített elemzésekkel
+      href: tutorial-detect-threats-built-in.md
+    - name: Egyéni szabályok létrehozása fenyegetések észleléséhez
+      href: tutorial-detect-threats-custom.md
+    - name: Adatok monitorozása
+      href: tutorial-monitor-your-data.md
+    - name: Incidensek vizsgálata
       href: tutorial-investigate-cases.md
     - name: Reagálás a fenyegetésekre
       href: tutorial-respond-threats-playbook.md
+- name: Alapelvek
+  items:
+    - name: Engedélyek hozzárendelése szerepkörökkel
+      href: roles.md
+    - name: Fejlett többfázisú támadásészlelés
+      href: fusion.md
 - name: Útmutatók
   items:
     - name: Adatforrások csatlakoztatása
@@ -40,6 +50,8 @@
               href: connect-azure-atp.md
             - name: Az Azure Security Center csatlakoztatása
               href: connect-azure-security-center.md
+            - name: Tartományi névkiszolgáló csatlakoztatása
+              href: connect-dns.md
             - name: A Microsoft webalkalmazási tűzfal csatlakoztatása
               href: connect-microsoft-waf.md
             - name: A Windows tűzfal csatlakoztatása
@@ -50,6 +62,8 @@
           items:
             - name: Általános CEF csatlakoztatása
               href: connect-common-event-format.md
+            - name: Az AWS csatlakoztatása
+              href: connect-aws.md
             - name: A Barracuda csatlakoztatása
               href: connect-barracuda.md
             - name: A Check Point csatlakoztatása
@@ -68,6 +82,12 @@
               href: connect-cisco.md
         - name: Fenyegetésfelderítés csatlakoztatása
           href: connect-threat-intelligence.md
+        - name: Azure Stack rendszerű virtuális gépek csatlakoztatása
+          href: connect-azure-stack.md
+    - name: Több bérlő (MSSP)
+      href: multiple-tenants-service-providers.md
+    - name: Incidens létrehozása riasztásból
+      href: create-incidents-from-alerts.md
     - name: Veszélyforrás-keresés
       href: hunting.md
       items:
@@ -75,8 +95,8 @@
           href: notebooks.md
         - name: Veszélyforrás-keresés könyvjelzőkkel
           href: bookmarks.md
-    - name: Egyesítés engedélyezése
-      href: connect-fusion.md
+    - name: Az Azure Sentinel eltávolítása
+      href: offboard.md
 - name: További források
   items:
     - name: Hasznos források

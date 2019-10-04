@@ -3,8 +3,8 @@ title: Nem működő összekötőcsoport található Application Proxy-alkalmaz�
 description: Nem működik az olyan Összekötőcsoportot, az alkalmazás az Azure AD-alkalmazásproxy-összekötő esetén esetleg felmerülő problémák megoldása
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/21/2018
-ms.author: celested
+ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 96608853d2eec3cf90f1425992d755cbe6c2e8dd
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 4f829b8e8a4bc08b43d3c30a6333771ccd4e26e8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437904"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65783608"
 ---
 # <a name="no-working-connector-group-found-for-an-application-proxy-application"></a>Nem található egy alkalmazásproxy-alkalmazáshoz működő összekötőcsoport
 

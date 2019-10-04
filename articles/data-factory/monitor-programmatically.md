@@ -1,6 +1,6 @@
 ---
-title: Programozott módon figyelheti az Azure data factory |} A Microsoft Docs
-description: Megismerkedhet az adat-előállító folyamat monitorozása a különböző szoftverfejlesztői készletek (SDK-k) használatával.
+title: Azure-beli adatgyár programozott figyelése | Microsoft Docs
+description: Megtudhatja, hogyan figyelheti a folyamatokat egy adatgyárban különböző szoftverfejlesztői készletek (SDK-k) használatával.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -8,31 +8,31 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/16/2018
-author: gauravmalhot
-ms.author: gamal
+author: djpmsft
+ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: 035e12da67d28e8e3fb46ac295717dd6b579922c
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 5c1f64282f1e0b1f225bcad0935c4c9b9a0f96b4
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486613"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141039"
 ---
-# <a name="programmatically-monitor-an-azure-data-factory"></a>Programozott módon az Azure data factory monitorozása
-Ez a cikk ismerteti az adat-előállító folyamat monitorozása a különböző szoftverfejlesztői készletek (SDK-k) használatával. 
+# <a name="programmatically-monitor-an-azure-data-factory"></a>Azure-beli adatgyár programozott figyelése
+Ez a cikk bemutatja, hogyan figyelheti a folyamatokat egy adatgyárban különböző szoftverfejlesztői készletek (SDK-k) használatával. 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="data-range"></a>Tartomány
+## <a name="data-range"></a>Adattartomány
 
-A Data Factory csak 45 nap folyamatfuttatás adatokat tárolja. Amikor lekérdezheti, ha programozott módon a Data Factory a folyamatfuttatások - adatait például a PowerShell-paranccsal `Get-AzDataFactoryV2PipelineRun` – nincsenek a választható maximális dátumok `LastUpdatedAfter` és `LastUpdatedBefore` paramétereket. De ha lekérdezési adatok az elmúlt év, például a lekérdezés nem ad vissza hibát, de csak akkor adja folyamat futtatási adatait az elmúlt 45 nap.
+Data Factory csak a 45 napig tárolja a folyamat futási értékeit. Amikor programozott módon kérdezi le az Data Factory folyamat futtatásával kapcsolatos adatokra vonatkozó információkat – például a PowerShell `Get-AzDataFactoryV2PipelineRun` -paranccsal –, a nem kötelező `LastUpdatedAfter` és `LastUpdatedBefore` a paraméterek esetében nincsenek maximális dátumok. Ha azonban az elmúlt év adatait kérdezi le, például a lekérdezés nem ad vissza hibát, de csak az utolsó 45 nap adatfeldolgozási folyamatát adja vissza.
 
-Ha szeretne folyamatfuttatás adatok legalább 45 napig maradnak, állítsa be a saját a diagnosztikai naplózás [Azure Monitor](monitor-using-azure-monitor.md).
+Ha 45 napnál hosszabb ideig kívánja megőrizni a folyamat adatait, állítsa be a saját diagnosztikai naplózását [Azure monitor](monitor-using-azure-monitor.md).
 
 ## <a name="net"></a>.NET
-Létrehozás és figyelés .NET SDK használatával egy folyamat részletes útmutatást lásd: [és folyamat adat-előállító létrehozása .NET használatával](quickstart-create-data-factory-dot-net.md).
+A folyamatok .NET SDK-val történő létrehozásával és figyelésével kapcsolatban lásd: az [adatfeldolgozó és a folyamat létrehozása a .NET használatával](quickstart-create-data-factory-dot-net.md).
 
-1. Adja hozzá a következő kódot a folyamat az adatok másolásának befejezéséig tartó futási állapotának folyamatos ellenőrzéséhez.
+1. Adja hozzá a következő kódot a folyamat futási állapotának folyamatos vizsgálatához, amíg az adatok másolása be nem fejeződik.
 
     ```csharp
     // Monitor the pipeline run
@@ -49,7 +49,7 @@ Létrehozás és figyelés .NET SDK használatával egy folyamat részletes útm
     }
     ```
 
-2. Adja hozzá a következő kódot, hogy beolvassa másolási tevékenység futtatási részleteit, például az írt vagy olvasott adatok méretét.
+2. Adja hozzá a következő kódot, amely lekéri a másolási tevékenység futtatási részleteit, például az olvasott/írt adatok méretét.
 
     ```csharp
     // Check the copy activity run details
@@ -65,26 +65,28 @@ Létrehozás és figyelés .NET SDK használatával egy folyamat részletes útm
     Console.ReadKey();
     ```
 
-A .NET SDK teljes dokumentációját lásd: [Data Factory .NET SDK-referenciában](/dotnet/api/microsoft.azure.management.datafactory?view=azure-dotnet).
+A .NET SDK-val kapcsolatos teljes dokumentációért tekintse meg [Data Factory .net SDK](/dotnet/api/microsoft.azure.management.datafactory?view=azure-dotnet)-referenciát.
 
 ## <a name="python"></a>Python
-Létrehozásával és a egy folyamatot a Python SDK használatával figyelési leírását lásd: [hozzon létre egy adat-előállító és folyamat használatával Python](quickstart-create-data-factory-python.md).
+A folyamat Python SDK-val történő létrehozásával és figyelésével kapcsolatban lásd: [adatelőállító és-folyamat létrehozása a Python használatával](quickstart-create-data-factory-python.md).
 
-A folyamatfuttatás monitorozásához adja hozzá a következő kódot:
+A folyamat futtatásának figyeléséhez adja hozzá a következő kódot:
 
 ```python
-#Monitor the pipeline run
+# Monitor the pipeline run
 time.sleep(30)
-pipeline_run = adf_client.pipeline_runs.get(rg_name, df_name, run_response.run_id)
+pipeline_run = adf_client.pipeline_runs.get(
+    rg_name, df_name, run_response.run_id)
 print("\n\tPipeline run status: {}".format(pipeline_run.status))
-activity_runs_paged = list(adf_client.activity_runs.list_by_pipeline_run(rg_name, df_name, pipeline_run.run_id, datetime.now() - timedelta(1),  datetime.now() + timedelta(1)))
+activity_runs_paged = list(adf_client.activity_runs.list_by_pipeline_run(
+    rg_name, df_name, pipeline_run.run_id, datetime.now() - timedelta(1),  datetime.now() + timedelta(1)))
 print_activity_run_details(activity_runs_paged[0])
 ```
 
-A Python SDK teljes dokumentációját lásd: [Data Factory Python SDK-leírás](/python/api/overview/azure/datafactory?view=azure-python).
+A Python SDK-val kapcsolatos teljes dokumentációért lásd [Data Factory PYTHON SDK](/python/api/overview/azure/datafactory?view=azure-python)-referenciát.
 
 ## <a name="rest-api"></a>REST API
-Létrehozásával és a egy folyamatot a REST API használatával figyelési leírását lásd: [és folyamat létrehozása a data factory REST API használatával](quickstart-create-data-factory-rest-api.md).
+A folyamatok REST API használatával történő létrehozásáról és figyeléséről a következő témakörben talál részletes útmutatót: [adatfeldolgozó és-folyamat létrehozása REST API használatával](quickstart-create-data-factory-rest-api.md).
  
 1. A folyamat futási állapotának folyamatos, az adatok másolásának befejezéséig tartó ellenőrzéséhez futtassa az alábbi szkriptet.
 
@@ -111,10 +113,10 @@ Létrehozásával és a egy folyamatot a REST API használatával figyelési le�
     $response | ConvertTo-Json
     ```
 
-A REST API-t teljes dokumentációjáért lásd: [Data Factory REST API-referencia](/rest/api/datafactory/).
+A REST API teljes dokumentációját lásd: [Data Factory REST API](/rest/api/datafactory/)-referenciák.
 
 ## <a name="powershell"></a>PowerShell
-Létrehozásának és a egy PowerShell-lel folyamat figyelését részletes útmutatást lásd: [és folyamat adat-előállító létrehozása PowerShell használatával](quickstart-create-data-factory-powershell.md).
+A folyamat PowerShell használatával történő létrehozásával és figyelésével kapcsolatos teljes útmutatóért lásd: [adatelőállító és-folyamat létrehozása a PowerShell használatával](quickstart-create-data-factory-powershell.md).
 
 1. A folyamat futási állapotának folyamatos, az adatok másolásának befejezéséig tartó ellenőrzéséhez futtassa az alábbi szkriptet.
 
@@ -148,8 +150,8 @@ Létrehozásának és a egy PowerShell-lel folyamat figyelését részletes útm
     $result.Error -join "`r`n"
     ```
 
-A PowerShell-parancsmagok teljes dokumentációjáért lásd: [Data Factory PowerShell-parancsmagok leírása](/powershell/module/az.datafactory).
+A PowerShell-parancsmagokkal kapcsolatos teljes dokumentációért lásd: [Data Factory PowerShell-parancsmagok leírása](/powershell/module/az.datafactory).
 
 ## <a name="next-steps"></a>További lépések
-Lásd: [-folyamatok figyelése az Azure Monitor használatával](monitor-using-azure-monitor.md) a cikkben megismerheti az Azure Monitor használatával a Data Factory-folyamatok figyelése. 
+Lásd: [folyamatok figyelése Azure monitor cikk használatával](monitor-using-azure-monitor.md) , amelyből megtudhatja, hogyan használhatja a Azure Monitor a Data Factory folyamatok figyelésére. 
 

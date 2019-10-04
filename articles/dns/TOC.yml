@@ -1,158 +1,181 @@
-items:
 - name: DNS – dokumentáció
   href: index.yml
 - name: Áttekintés
   items:
-  - name: Mi az Azure DNS?
-    href: dns-overview.md
+    - name: Mi az Azure DNS?
+      href: dns-overview.md
+    - name: Mi az Azure Private DNS?
+      href: private-dns-overview.md
 - name: Gyors útmutatók
-  items:
-  - name: Névfeloldás – portál
-    href: dns-getstarted-portal.md
-  - name: Névfeloldás – PowerShell
-    href: dns-getstarted-powershell.md
-  - name: Névfeloldás – parancssori felület
-    href: dns-getstarted-cli.md
   expanded: true
+  items:
+    - name: Nyilvános DNS
+      items:
+        - name: Nyilvános zóna létrehozása – portál
+          href: dns-getstarted-portal.md
+        - name: Nyilvános zóna létrehozása – PowerShell
+          href: dns-getstarted-powershell.md
+        - name: Nyilvános zóna létrehozása – parancssori felület
+          href: dns-getstarted-cli.md
+    - name: Private DNS
+      items:
+        - name: Magánzóna létrehozása – portál
+          href: private-dns-getstarted-portal.md
+        - name: Magánzóna létrehozása – parancssori felület
+          href: private-dns-getstarted-cli.md
+        - name: Magánzóna létrehozása – PowerShell
+          href: private-dns-getstarted-powershell.md
 - name: Oktatóanyagok
   items:
-  - name: Üzemeltessen saját tartományt az Azure DNS-ben
-    href: dns-delegate-domain-azure-dns.md
-  - name: Webalkalmazások egyéni DNS-rekordjainak létrehozása
-    href: dns-web-sites-custom-domain.md
-  - name: Privát DNS-zónák és -rekordok létrehozása
-    href: private-dns-getstarted-powershell.md
-  - name: A Traffic Manager aliasrekordjai
-    href: tutorial-alias-tm.md
-  - name: Nyilvános IP-címek aliasrekordjai
-    href: tutorial-alias-pip.md
-  - name: Zónarekordok aliasrekordjai
-    href: tutorial-alias-rr.md
+    - name: Nyilvános DNS
+      items:
+        - name: Üzemeltessen saját tartományt az Azure DNS-ben
+          href: dns-delegate-domain-azure-dns.md
+        - name: Webalkalmazások egyéni DNS-rekordjainak létrehozása
+          href: dns-web-sites-custom-domain.md
+        - name: A Traffic Manager aliasrekordjai
+          href: tutorial-alias-tm.md
+        - name: Nyilvános IP-címek aliasrekordjai
+          href: tutorial-alias-pip.md
+        - name: Zónarekordok aliasrekordjai
+          href: tutorial-alias-rr.md
 - name: Példák
   items:
-  - name: Azure CLI
-    href: cli-samples.md
+    - name: Azure CLI
+      href: cli-samples.md
 - name: Alapelvek
   items:
-  - name: Zónák és rekordok
-    href: dns-zones-records.md
-  - name: Aliasrekordok
-    href: dns-alias.md
-  - name: Delegálás az Azure DNS használatával
-    href: dns-domain-delegation.md
-  - name: GYIK
-    href: dns-faq.md
-  - name: Privát DNS-zónák használata
-    href: private-dns-overview.md
-  - name: Privát DNS-forgatókönyvek
-    href: private-dns-scenarios.md
-  - name: DNS-mérőszámok és riasztások
-    href: dns-alerts-metrics.md
-  - name: Fordított DNS
-    href: dns-reverse-dns-overview.md
-  - name: Vészhelyreállítás az Azure DNS-sel és a Traffic Managerrel
-    href: ../networking/disaster-recovery-dns-traffic-manager.md
+    - name: Nyilvános DNS
+      items:
+        - name: Zónák és rekordok
+          href: dns-zones-records.md
+        - name: Aliasrekordok
+          href: dns-alias.md
+        - name: Delegálás az Azure DNS használatával
+          href: dns-domain-delegation.md
+        - name: GYIK
+          href: dns-faq.md
+        - name: DNS-mérőszámok és riasztások
+          href: dns-alerts-metrics.md
+        - name: Fordított DNS
+          href: dns-reverse-dns-overview.md
+        - name: Vészhelyreállítás az Azure DNS-sel és a Traffic Managerrel
+          href: ../networking/disaster-recovery-dns-traffic-manager.md
+    - name: Private DNS
+      items:
+        - name: Gyakori kérdések – Private DNS
+          href: dns-faq-private.md
+        - name: Privát DNS-forgatókönyvek
+          href: private-dns-scenarios.md
 - name: Útmutató
   items:
-  - name: Privát DNS-zóna és -rekord létrehozása – Azure CLI
-    href: private-dns-getstarted-cli.md
-  - name: Elosztott terhelésű webalkalmazások aliasrekordjai
-    href: dns-alias-appservice.md
-  - name: DNS-zónák kezelése
-    items:
-    - name: Azure Portal
-      href: dns-operations-dnszones-portal.md
-    - name: Azure PowerShell
-      href: dns-operations-dnszones.md
-    - name: Azure CLI
-      href: dns-operations-dnszones-cli.md
-  - name: DNS-rekordok kezelése
-    items:
-    - name: Azure Portal
-      href: dns-operations-recordsets-portal.md
-    - name: Azure PowerShell
-      href: dns-operations-recordsets.md
-    - name: Azure CLI
-      href: dns-operations-recordsets-cli.md
-  - name: Fordított DNS kezelése
-    items:
-    - name: Névkeresési zónák üzemeltetése az Azure DNS-ben
-      href: dns-reverse-dns-hosting.md
-    - name: Fordított DNS-rekordok kezelése az Azure-szolgáltatásokhoz
-      href: dns-reverse-dns-for-azure-services.md
-  - name: DNS-zónafájl importálása és exportálása
-    href: dns-import-export.md
-  - name: Altartomány delegálása
-    href: delegate-subdomain.md
-  - name: Altartomány delegálása PowerShell használatával
-    href: delegate-subdomain-ps.md
-  - name: Integráció más Azure-szolgáltatásokkal
-    href: dns-for-azure-services.md
-  - name: DNS-zónák és -rekordok védelme
-    href: dns-protect-zones-recordsets.md
-  - name: DNS-műveletek automatizálása a .NET SDK használatával
-    href: dns-sdk.md
-  - name: Egyéni tartományok az Azure-erőforrásokhoz
-    href: dns-custom-domain.md
-  - name: Hibaelhárítás
-    items:
-    - name: Hibaelhárítási útmutató
-      href: dns-troubleshoot.md
+    - name: Nyilvános DNS
+      items:
+        - name: Elosztott terhelésű webalkalmazások aliasrekordjai
+          href: dns-alias-appservice.md
+        - name: DNS-zónák kezelése
+          items:
+            - name: Azure Portal
+              href: dns-operations-dnszones-portal.md
+            - name: Azure PowerShell
+              href: dns-operations-dnszones.md
+            - name: Azure CLI
+              href: dns-operations-dnszones-cli.md
+        - name: DNS-rekordok kezelése
+          items:
+            - name: Azure Portal
+              href: dns-operations-recordsets-portal.md
+            - name: Azure PowerShell
+              href: dns-operations-recordsets.md
+            - name: Azure CLI
+              href: dns-operations-recordsets-cli.md
+        - name: Fordított DNS kezelése
+          items:
+            - name: Névkeresési zónák üzemeltetése az Azure DNS-ben
+              href: dns-reverse-dns-hosting.md
+            - name: Fordított DNS-rekordok kezelése az Azure-szolgáltatásokhoz
+              href: dns-reverse-dns-for-azure-services.md
+        - name: DNS-zónafájl importálása és exportálása
+          href: dns-import-export.md
+        - name: Altartomány delegálása
+          href: delegate-subdomain.md
+        - name: Altartomány delegálása PowerShell használatával
+          href: delegate-subdomain-ps.md
+        - name: Integráció más Azure-szolgáltatásokkal
+          href: dns-for-azure-services.md
+        - name: DNS-zónák és -rekordok védelme
+          href: dns-protect-zones-recordsets.md
+        - name: DNS-műveletek automatizálása a .NET SDK használatával
+          href: dns-sdk.md
+        - name: Egyéni tartományok az Azure-erőforrásokhoz
+          href: dns-custom-domain.md
+    - name: Hibaelhárítás
+      items:
+        - name: Hibaelhárítási útmutató
+          href: dns-troubleshoot.md
 - name: Referencia
   items:
-  - name: Kódminták
-    href: https://azure.microsoft.com/resources/samples/?service=dns
-  - name: Azure PowerShell
-    href: /powershell/module/az.dns
-  - name: Azure CLI
-    href: /cli/azure/network/dns
-  - name: .NET
-    href: /dotnet/api/microsoft.azure.management.dns.models
-  - name: Java
-    href: /java/api/com.microsoft.azure.management.dns
-  - name: Node.js
-    href: https://azure.github.io/azure-sdk-for-node/azure-arm-dns/latest/
-  - name: Ruby
-    href: https://www.rubydoc.info/gems/azure_mgmt_dns/0.8.0
-  - name: Python
-    href: http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-dns.html
-  - name: REST
-    href: /rest/api/dns/
-  - name: Resource Manager-sablon
-    href: /azure/templates/microsoft.network/dns-allversions
+    - name: Nyilvános DNS
+      items:
+        - name: Kódminták
+          href: 'https://azure.microsoft.com/resources/samples/?service=dns'
+        - name: Azure PowerShell
+          href: /powershell/module/az.dns
+        - name: Azure CLI
+          href: /cli/azure/network/dns
+        - name: .NET
+          href: /dotnet/api/microsoft.azure.management.dns.models
+        - name: Java
+          href: /java/api/com.microsoft.azure.management.dns
+        - name: Node.js
+          href: 'https://azure.github.io/azure-sdk-for-node/azure-arm-dns/latest/'
+        - name: Ruby
+          href: 'https://www.rubydoc.info/gems/azure_mgmt_dns/0.8.0'
+        - name: Python
+          href: 'http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-dns.html'
+        - name: REST
+          href: /rest/api/dns/
+        - name: Resource Manager-sablon
+          href: /azure/templates/microsoft.network/dns-allversions
+    - name: Private DNS
+      items:
+        - name: Azure CLI
+          href: /cli/azure/network/private-dns
+        - name: Azure PowerShell
+          href: /powershell/module/az.PrivateDns
+        - name: .NET
+          href: /dotnet/api/overview/azure/privatedns/management
+        - name: REST
+          href: /rest/api/dns/privatedns/privatezones
 - name: Kapcsolódó témakörök
   items:
-  - name: Application Gateway
-    href: /azure/application-gateway/
-  - name: Virtual Network
-    href: /azure/virtual-network/
-  - name: Virtuális gép
-    href: /azure/virtual-machines/
-  - name: Load Balancer
-    href: /azure/load-balancer/
-  - name: Traffic Manager
-    href: /azure/traffic-manager/
-  - name: Webalkalmazások
-    href: /azure/app-service/
+    - name: Application Gateway
+      href: /azure/application-gateway/
+    - name: Virtual Network
+      href: /azure/virtual-network/
+    - name: Virtuális gép
+      href: /azure/virtual-machines/
+    - name: Load Balancer
+      href: /azure/load-balancer/
+    - name: Traffic Manager
+      href: /azure/traffic-manager/
+    - name: Webalkalmazások
+      href: /azure/app-service/
 - name: További források
   items:
-  - name: Azure-ütemterv
-    href: https://azure.microsoft.com/roadmap/?category=networking
-  - name: Funkciókérések
-    href: https://feedback.azure.com/forums/217313-networking/category/77466-domain-name-service-dns-traffic-manager
-  - name: MSDN-fórum
-    href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork
-  - name: Hálózatkezelési blog
-    href: https://azure.microsoft.com/blog/topics/networking
-  - name: Díjszabás
-    href: https://azure.microsoft.com/pricing/details/dns/
-  - name: Díjkalkulátor
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: Szolgáltatási hírek
-    href: https://azure.microsoft.com/updates/?product=dns
-ms.openlocfilehash: 57c57ba6d03f45eb585e98e8d5706a94d72d8886
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59794404"
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/?category=networking'
+    - name: Funkciókérések
+      href: 'https://feedback.azure.com/forums/217313-networking/category/77466-domain-name-service-dns-traffic-manager'
+    - name: MSDN-fórum
+      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork'
+    - name: Hálózatkezelési blog
+      href: 'https://azure.microsoft.com/blog/topics/networking'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/dns/'
+    - name: Díjkalkulátor
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Szolgáltatási hírek
+      href: 'https://azure.microsoft.com/updates/?product=dns'
+    - name: Privát DNS-zónák migrálási útmutatója
+      href: private-dns-migration-guide.md

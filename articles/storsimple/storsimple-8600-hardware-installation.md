@@ -1,6 +1,6 @@
 ---
-title: Telepítse a Microsoft Azure StorSimple 8600 sorozatú eszköz |} A Microsoft Docs
-description: Ismerteti, hogyan lehet kicsomagolása, állványra és a StorSimple 8600 sorozatú eszköz kábelezése üzembe helyezése és a szoftver konfigurálása előtt.
+title: Microsoft Azure StorSimple 8600-eszköz telepítése | Microsoft Docs
+description: Útmutató a StorSimple 8600-eszköz kicsomagolásához, rack csatlakoztatásához és kábelhez a szoftver telepítése és konfigurálása előtt.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,258 +14,261 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 5a8b460441323cb668a3d9939cce434636afc44d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 571c8b729408d7b9e805b875baccfd9ac8d6b9be
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38719005"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68965270"
 ---
-# <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>Kicsomagolása, állványra csatlakoztatást és a StorSimple 8600 sorozatú eszköz kábelezése
+# <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>A StorSimple 8600-eszköz kicsomagolása, rack-csatlakoztatása és kábele
+
+[!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
+
 ## <a name="overview"></a>Áttekintés
-A Microsoft Azure StorSimple 8600-as kettős ház eszköz, és a egy elsődleges és a egy EBOD ház áll. Ez az oktatóanyag azt ismerteti, hogyan kicsomagolása, állványra-szerelheti és kábellel StorSimple 8600-as eszköz hardveres előtt konfigurálása a StorSimple szoftver.
+A Microsoft Azure StorSimple 8600 egy kettős bekerítésű eszköz, amely egy elsődleges és egy EBOD házből áll. Ez az oktatóanyag azt ismerteti, hogyan lehet kicsomagolni, állványra csatlakoztatni és csatlakoztatni a StorSimple 8600 eszköz hardverét a StorSimple szoftver konfigurálása előtt.
 
-## <a name="unpack-your-storsimple-8600-device"></a>A StorSimple 8600 sorozatú eszköz kicsomagolása
-Az alábbi lépéseket a StorSimple 8600-as tárolóeszköz kicsomagolása a világos, részletes utasításokat biztosítanak. Ez az eszköz két mezőbe, egyet az elsődleges ház és a egy másikat a EBOD ház tartalmazza a szükséges. E két mezőt egyetlen mező majd kerülnek.
+## <a name="unpack-your-storsimple-8600-device"></a>A StorSimple 8600-eszköz kicsomagolása
+Az alábbi lépések részletesen ismertetik a StorSimple 8600 Storage-eszköz kicsomagolásának módját. Ez az eszköz két mezőbe kerül, egyet az elsődleges ház számára, egy másikat pedig a EBOD ház számára. Ezt a két mezőt ezután egyetlen dobozba helyezi a rendszer.
 
-### <a name="prepare-to-unpack-your-device"></a>Csomagolja ki az eszköz előkészítése
-Mielőtt, az eszköz kicsomagolása, tekintse át a következő információkat.
+### <a name="prepare-to-unpack-your-device"></a>Felkészülés az eszköz kicsomagolására
+Az eszköz kicsomagolása előtt tekintse át a következő információkat.
 
-![Figyelmeztetés ikon](./media/storsimple-safety/IC740879.png)![nagy súly ikon](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **figyelmeztetés!**
+![Figyelmeztetés ikon](./media/storsimple-safety/IC740879.png)![nagy súly ikon](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **Figyelmeztetés!**
 
-1. Győződjön meg arról, hogy a két személynek a súlyt az eszköz kezelése, ha manuálisan is kezelése érhető el. Egy teljes körűen konfigurált ház legfeljebb 32 kg (70 lbs.) is mérjük.
-2. Helyezze el a box egy egybesimított, szolgáltatásiszint-felületen.
+1. Győződjön meg arról, hogy két személy áll rendelkezésre az eszköz súlyozásának kezeléséhez, ha manuálisan végzi a kezelést. Egy teljesen konfigurált ház súlya 32 kg (70 lbs) lehet.
+2. Helyezze a csomagot egy sima, vízszintes felületre.
 
-Ezután kövesse az alábbi lépéseket az eszköz kicsomagolása.
+Ezután végezze el az alábbi lépéseket az eszköz kicsomagolásához.
 
 #### <a name="to-unpack-your-device"></a>Az eszköz kicsomagolása
-1. Vizsgálja meg a box és a csomagolási habgumiból készült crushes, darabok, víz sérülés vagy bármely más nyilvánvaló sérülések. Ha a lista vagy a csomagolási súlyosan sérült, nem a megnyitása. Adjon [forduljon a Microsoft Support](storsimple-8000-contact-microsoft-support.md) segítséget ellenőrzéséhez, hogy az eszköz működőképes állapotban van.
-2. Nyissa meg a külső mezőbe, és ezután vegye ki a megfelelő elsődleges és a EBOD házakat két mező. Az elsődleges és a EBOD ház most kicsomagolása. A következő ábrán látható, a házak egyik kicsomagolt nézetét.
+1. Vizsgálja meg a dobozt és a térkitöltő anyagot, hogy nincsenek-e rajta ütődés, vágás, nedvesség vagy más egyértelmű sérülés nyomai. Ha a csomagon jelentős sérülések láthatók, ne nyissa ki. Vegye [fel a kapcsolatot a Microsoft ügyfélszolgálata](storsimple-8000-contact-microsoft-support.md) segítségével, és mérje fel, hogy az eszköz megfelelően működik-e.
+2. Nyissa meg a külső mezőt, majd vegye fel az elsődleges és a EBOD-házaknak megfelelő két mezőt. Most már kicsomagolhatja az elsődleges és a EBOD-házakat. Az alábbi ábrán az egyik ház kicsomagolt nézete látható.
    
-    ![Csomagolja ki a tárolóeszköz](./media/storsimple-8600-hardware-installation/HCSUnpackyour4Udevice.png)
+    ![A tárolóeszköz kicsomagolása](./media/storsimple-8600-hardware-installation/HCSUnpackyour4Udevice.png)
    
     **A tárolóeszköz kicsomagolt nézete**
    
    | Címke | Leírás |
    | --- | --- |
-   |   1 |Balí se mezőbe |
-   |   2 |SAS-kábel (a Kellékek és kábelek tálca) |
-   |   3 |Alsó habgumiból készült |
+   |   1 |Csomagolási mező |
+   |   2 |SAS-kábelek (a tartozékok és kábelek tálcájában) |
+   |   3 |Alsó hab |
    |   4 |Eszköz |
-   |   5 |Felső habgumiból készült |
-   |   6 |Kiegészítő mezőben |
-3. Kicsomagolása után a két mező, győződjön meg arról, hogy:
+   |   5 |Felső hab |
+   |   6 |Kiegészítő mező |
+3. A két mező kicsomagolása után ellenőrizze, hogy rendelkezik-e az alábbiakkal:
    
-   * (az elsődleges ház és EBOD ház is két külön mezőkben) 1 elsődleges ház
-   * EBOD 1 ház
-   * 4 tápkábelek, minden mezőben 2
-   * 2 SAS-kábel (csatlakozni az elsődleges ház EBOD ház)
-   * 1 fordított Ethernet-kábelek
-   * 2 soros kábelt
-   * a soros hozzáféréshez 1 sorozat – USB-átalakító
-   * 4 QSFP-az-SFP + adapter 10 GbE hálózati adapterek való használatra
-   * 2 állványra csatlakoztatási kits (4 ügyféloldali rails rendelkező csatlakoztatásával hardver, 2 minden egyes elsődleges ház és EBOD ház), minden mezőben 1
-   * Első lépések dokumentációja
+   * 1 elsődleges bekerítés (az elsődleges ház és a EBOD két külön dobozban található)
+   * 1 EBOD ház
+   * 4 tápkábel, 2 az egyes dobozokban
+   * 2 SAS-kábelek (az elsődleges ház csatlakoztatása a EBOD-ház számára)
+   * 1 crossover Ethernet-kábel
+   * 2 soros konzolos kábelek
+   * 1 soros USB-átalakító a soros hozzáféréshez
+   * 4 QSFP-to-SFP + adapterek 10 GbE hálózati adapterrel való használatra
+   * 2 rack csatlakoztatási készlet (4 oldalsó sín, csatlakoztatási hardverrel, 2 mindegyik az elsődleges ház és a EBOD ház számára), 1 az egyes mezőkben
+   * Bevezetés – dokumentáció
      
-     Ha Ön nem kapott az elemek a fent felsorolt [forduljon a Microsoft Support](storsimple-8000-contact-microsoft-support.md).  
+     Ha nem kapta meg a fent felsorolt elemek egyikét sem, [forduljon](storsimple-8000-contact-microsoft-support.md)a Microsoft ügyfélszolgálatahoz.  
 
-A következő lépés, hogy az eszköz állvány-csatlakoztatási.
+A következő lépés az eszköz állványra szerelése.
 
-## <a name="rack-mount-your-storsimple-8600-device"></a>A StorSimple 8600 sorozatú eszköz állvány-csatlakoztatás
-A következő lépésekkel telepítse a StorSimple 8600-as tárolóeszköz, az első és hátsó bejegyzések standard 19 hüvelyk állvány. Ez az eszköz két ház tartalmaz: egy elsődleges ház és a egy EBOD ház. Mindkét kell lennie állványra szerelt.
+## <a name="rack-mount-your-storsimple-8600-device"></a>StorSimple 8600-eszköz csatlakoztatása
+A következő lépésekkel telepítheti a StorSimple 8600 tárolóeszközt standard 19 hüvelykes, elölről és hátulról származó bejegyzésekből álló állványra. Az eszközhöz két ház tartozik: egy elsődleges bekerítés és egy EBOD ház. Mindkettőnek állványra csatlakoztatva kell lennie.
 
-A telepítés több lépést tárgyalt, amelyek a következő eljárások áll.
+A telepítés több lépésből áll, amelyek mindegyikét a következő eljárásokban tárgyaljuk.
 
 > [!IMPORTANT]
-> A StorSimple-eszközök kell lennie az állványra szerelt megfelelő működéséhez.
+> A StorSimple-eszközöknek rack-csatlakoztatással kell rendelkezniük a megfelelő működéshez.
 > 
 > 
 
 ### <a name="site-preparation"></a>Hely előkészítése
-A ház egy standard szintű 19 hüvelyk állványra, amely rendelkezik az első és hátsó bejegyzések is telepíteni kell. A következő eljárással rack telepítés előkészítéséhez.
+A házakat standard 19 hüvelykes állványra kell telepíteni, amely az első és a hátsó bejegyzésekből áll. A következő eljárással készítheti elő az állvány telepítését.
 
-#### <a name="to-prepare-the-site-for-rack-installation"></a>A hely állvány telepítés előkészítéséhez
-1. Győződjön meg arról, hogy az elsődleges és a EBOD ház pihenő biztonságosan egy egybesimított, stabil és szintű munkahelyi felületén (vagy hasonlót).
-2. Ellenőrizze, hogy a hely, ahol szeretne beállítani rendelkezik-e a szabványos hálózati áramellátás Visszaállt a egy független forrás vagy a szünetmentes tápegység (UPS) állványba szerelt Power terjesztési Unit (PDU).
-3. Győződjön meg arról, hogy egy 4U (2 X 2U) a tárolóhely érhető el az állványra szerelt, amelyben a ház csatlakoztatni kíván.
+#### <a name="to-prepare-the-site-for-rack-installation"></a>A hely előkészítése a rack telepítéséhez
+1. Győződjön meg arról, hogy az elsődleges és a EBOD-ház biztonságosan működik a sima, stabil és magas szintű munkafelületen (vagy hasonló módon).
+2. Győződjön meg arról, hogy a hely, ahol be kívánja állítani a standard szintű AC-áramellátást egy független forrásból vagy egy, a szünetmentes áramforrást (UPS-t) biztosító Power Distribution Unit (PDU) szolgáltatásból.
+3. Győződjön meg arról, hogy az állványon egy 4U (2 X 2U) tárolóhely áll rendelkezésre, amelyben csatlakoztatni kívánja a házakat.
 
-![Figyelmeztetés ikon](./media/storsimple-safety/IC740879.png)![nagy súly ikon](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **figyelmeztetés!**
+![Figyelmeztetés ikon](./media/storsimple-safety/IC740879.png)![nagy súly ikon](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **Figyelmeztetés!**
 
- Győződjön meg arról, hogy a két személynek a súly kezelése, ha azt manuálisan kezelik az eszköz beállítása rendelkezésre. Egy teljes körűen konfigurált ház legfeljebb 32 kg (70 lbs.) is mérjük.
+ Ügyeljen arra, hogy a súlyozás kezeléséhez két személy legyen elérhető, ha az eszköz telepítését manuálisan végzi. Egy teljesen konfigurált ház súlya 32 kg (70 lbs) lehet.
 
-### <a name="rack-prerequisites"></a>Állványra előfeltételei
-A ház tervezett egy standard szintű 19 hüvelyk állványra a kabinet telepítését:
+### <a name="rack-prerequisites"></a>A rack előfeltételei
+A házak standard 19 hüvelykes rack szekrényben való telepítésre lettek tervezve a következőkkel:
 
-* A bejegyzés a post rack 27.84 hüvelyk minimális mélysége
-* Az eszköz 32 kg legnagyobb súlyú
-* Maximális vissza nyomással 5 Pascal (0,5 mm víz mérőműszer)
+* A rack utáni 27,84 cm-es minimális mélység a post értékre
+* Az eszköz maximális 32 kg-os súlya
+* Maximális ellennyomás 5 Pascal (0,5 mm vízmérőműszer)
 
-### <a name="rack-mounting-rail-kit"></a>Állvány csatlakoztatást sín csomag
-Csatlakoztatási rails készletét biztosítjuk a 19 hüvelyk rack kabinet való használatra. A rails teszteltük maximális ház súlyát kezelni. Ezek a rails lehetővé teszi az állványra szerelt lemezterülete megszakadása nélkül több ház telepítését. Először telepítse a EBOD ház.
+### <a name="rack-mounting-rail-kit"></a>Állványra szerelhető vasúti készlet
+A rendszer a 19 hüvelykes rack kabinet használva biztosítja a csatlakoztatási sínek készletét. A sínek tesztelték a maximális bekerítési súlyt. Ezek a sínek több ház telepítését is lehetővé teszik az állványon belüli lemezterület elvesztése nélkül. Először telepítse a EBOD burkolatot.
 
-#### <a name="to-install-the-ebod-enclosure-on-the-rails"></a>Az EBOD ház telepíthető a rails
-1. Hajtsa végre ezt a lépést, csak akkor, ha a belső rails nincsenek telepítve az eszközön. A belső rails általában gyári vannak telepítve. Rails nem települnek, ha ezután telepítse a bal oldali-sín és jobb-sín diák a ház váz oldalát. Ezek csatolás a hat metrika csavart használatával minden oldalán. Annak érdekében, a tájolás, a sín diák vannak megjelölve **LH – első** és **RH – első**, és érdekében, hogy a ház hátulról dobozának kúpos rendelkezik.
+#### <a name="to-install-the-ebod-enclosure-on-the-rails"></a>A EBOD bekerítésének telepítése a Rails-re
+1. Ezt a lépést csak akkor hajtsa végre, ha a belső sínek nincsenek telepítve az eszközön. A belső sínek jellemzően a gyárban települnek. Ha a Rails nincs telepítve, akkor telepítse a bal oldali és a jobb oldali vasúti diát a ház vázájának oldalaira. Mindkét oldalon hat metrikus csavart használnak. A tájolással kapcsolatos segítség érdekében a vasúti diaképek az **LH – eleje** és az **RH – elöl**vannak megjelölve, a ház hátulján elhelyezett végpont pedig kúpos végű.
    
-    ![Sín diák ház váz csatolása](./media/storsimple-8600-hardware-installation/HCSAttachingRailSlidestoEnclosureChassis.png)
+    ![Vasúti adatkockák csatlakoztatása a ház vázához](./media/storsimple-8600-hardware-installation/HCSAttachingRailSlidestoEnclosureChassis.png)
    
-    **A partnerek a ház sín diák csatolása**
+    **Vasúti diaképek csatlakoztatása a ház oldalaihoz**
    
    | Címke | Leírás |
    | --- | --- |
-   |  1 |3 x 4 millió csavart gomb-fő |
-   |  2 |Váz diák |
-2. A bal oldali sín és a megfelelő sín szerelvények csatolása az állvány kabinet függőleges tagok. A szögletes zárójelek lesznek megjelölve **LH**, **RH**, és **ezt oldal fel** végigvezeti a felhasználót a megfelelő tájolását.
-3. Keresse meg az sín PIN-kód, az első és hátsó sín sestavení. A sín illeszkedjen az állvány-bejegyzések között, és a PIN-kód beillesztése az első és hátsó-rack post függőleges tag lyuk kiterjesztése. Győződjön meg arról, hogy a sín szerelvény szintjét.
-4. Gondoskodhat az állványra sín szerelvény függőleges tagok két a metrika csavart megadott. Az előtér és a egy hátsó egy csavart használja.
-5. Ismételje meg ezeket a lépéseket más sín sestavení.
+   |  1 |M 3x4 gomb – Head csavarok |
+   |  2 |Alváz-diák |
+2. Csatolja a bal oldali sín és a jobb oldali sín szerelvényeket a rack kabinet függőleges tagjaihoz. A szögletes zárójelek az **LH**, **RH**, és **Ez az oldal felfelé** mutatnak a helyes tájolási útmutatóban.
+3. Keresse meg a sín csapjait a sínszerelvény elülső és hátsó végénél. Kiterjesztheti a vasútot úgy, hogy illeszkedjen a rack-bejegyzések között, és beszúrja a PIN-kódokat az első és a hátsó állvány utáni függőleges tag lyukba. Győződjön meg arról, hogy a vasúti szerelvény szintje.
+4. A vasúti szerelvényt a megadott metrikai csavarok használatával biztosíthatja az állvány függőleges tagjainak. Használjon egy csavart az elülső és egy hátsó oldalon.
+5. Ismételje meg ezeket a lépéseket a másik vasúti szerelvény esetében.
    
-     ![Sín diák kabinet rack csatolása](./media/storsimple-8600-hardware-installation/HCSAttachingRailSlidestoRackCabinet.png)
+     ![Vasúti diaképek összekapcsolása rack szekrénysel](./media/storsimple-8600-hardware-installation/HCSAttachingRailSlidestoRackCabinet.png)
    
-    **Az állványra szerelt sín szerelvények csatolása**
-   
-   | Címke | Leírás |
-   | --- | --- |
-   |   1 |Csavart korlátozását. |
-   |   2 |Szögletes lyuk első rack post csavart |
-   |   3 |Az előtérbeli sín hely PIN-kódok balra |
-   |   4 |Csavart korlátozását. |
-   |   5 |Bal oldali hátsó sín hely PIN-kódok |
-
-### <a name="mounting-the-ebod-enclosure-in-the-rack"></a>Az EBOD-lemezház, az állvány egyik kiszolgálója csatlakoztatása
-Az imént telepített rack rails használja, hajtsa végre az alábbi lépések végrehajtásával csatlakoztassa a EBOD ház, az állvány egyik kiszolgálója.
-
-#### <a name="to-mount-the-ebod-enclosure"></a>Az EBOD ház csatlakoztatása
-1. Az asszisztens a ház lift- and, az állvány rails igazodva.
-2. A ház gondosan beszúrása a rails, és ezután leküldése, teljesen az állványra szerelt kabinetfájl.
-   
-    ![Eszköz Beszúrás, az állvány egyik kiszolgálója](./media/storsimple-8600-hardware-installation/HCSInsertingDeviceintheRack.png)
-   
-    **A ház, az állvány egyik kiszolgálója csatlakoztatása**
-3. Távolítsa el a bal és jobb első nyomkarima caps ingyenes caps kiindulásként. A nyomkarima caps egyszerűen alakzatot fekszenek beépülő modul.
-4. A ház biztonságos, az állvány egyik kiszolgálója egy megadott Phillips – fő csavart keresztül minden egyes nyomkarima bal és jobb telepítésével.
-5. Telepítse a nyomkarima caps lenyomásával őket egy helyen, és illeszkedik őket a helyen.
-   
-     ![Nyomkarima caps telepítése](./media/storsimple-8600-hardware-installation/HCSInstallingFlangeCaps.png)
-   
-    **A nyomkarima caps telepítése**
+    **Vasúti szerelvények csatlakoztatása a rackhez**
    
    | Címke | Leírás |
    | --- | --- |
-   |   1 |A lemezház rögzítési csavart |
+   |   1 |Befogó csavar |
+   |   2 |Szögletes furatos elülső állvány utáni csavar |
+   |   3 |Bal oldali vasúti hely PIN-kódjai |
+   |   4 |Befogó csavar |
+   |   5 |Bal oldali hátsó vasúti tárolóhely PIN-kód |
 
-### <a name="mounting-the-primary-enclosure-in-the-rack"></a>Az elsődleges ház, az állvány egyik kiszolgálója csatlakoztatása
-Miután befejezte a EBOD ház csatlakoztatni, szüksége lesz az elsődleges ház ugyanazokat a lépéseket követve csatlakoztassa.
+### <a name="mounting-the-ebod-enclosure-in-the-rack"></a>A EBOD bekerítésének csatlakoztatása a rackben
+Az imént telepített rack Rails használatával hajtsa végre a következő lépéseket a EBOD bekerítés csatlakoztatásához a rackben.
+
+#### <a name="to-mount-the-ebod-enclosure"></a>A EBOD-ház csatlakoztatása
+1. Egy asszisztenssel emelje fel a bekerítést, és igazítsa a rack railshoz.
+2. Óvatosan illessze be a burkolatot a railsba, majd a rack szekrénybe küldje el teljesen.
+   
+    ![Eszköz beszúrása a rackbe](./media/storsimple-8600-hardware-installation/HCSInsertingDeviceintheRack.png)
+   
+    **A ház csatlakoztatása a rackben**
+3. Távolítsa el a bal és a jobb oldali véglapos sapkát a Caps ingyenes kihúzásával. A véglapos sapkák egyszerűen a karimák felületére illeszkednek.
+4. A ház biztonságossá tételéhez telepítsen egy megadott Phillips-fej csavart az egyes karimák, balra és jobbra.
+5. A karima-sapkákat úgy telepítheti, hogy megnyomja őket a helyükre, és a helyükre pattintja őket.
+   
+     ![A karima-sapkák telepítése](./media/storsimple-8600-hardware-installation/HCSInstallingFlangeCaps.png)
+   
+    **A karima-sapkák telepítése**
+   
+   | Címke | Leírás |
+   | --- | --- |
+   |   1 |Rögzítési csavar |
+
+### <a name="mounting-the-primary-enclosure-in-the-rack"></a>Az elsődleges ház csatlakoztatása a rackben
+Miután befejezte a EBOD-ház csatlakoztatását, az elsődleges ház csatlakoztatását ugyanezen lépéseket követve kell elvégeznie.
 
 > [!NOTE]
-> * Lehetséges, hogy néhány üres tárolóhelyei, az állvány egyik kiszolgálója az elsődleges ház és a EBOD ház között.
-> * A megadott 2m SAS-kábel használatával az elsődleges ház kapcsolódhat a EBOD ház.
-> * Nincsenek a fő egység EBOD egységhez relatív kevésbé korlátozások nélkül. Ezért az elsődleges ház helyezhető a felső tárolóhely, és a lenti EBOD ház – és fordítva.
+> * Lehetséges, hogy van néhány üres tárolóhely az állványban az elsődleges ház és a EBOD ház között.
+> * A megadott 2m SAS-kábel használatával csatlakoztassa az elsődleges bekerítést a EBOD-ház számára.
+> * A fej egységének relatív elhelyezésére a EBOD egységnek nincsenek korlátai. Ezért az elsődleges ház a felső tárolóhelyen és az alábbi EBOD helyezhető el – vagy fordítva.
 > 
 > 
 
-A következő lépés, hogy bekábelezése, hálózati és a soros hozzáféréshez.
+A következő lépés az eszköz csatlakoztatása az áramellátáshoz, a hálózathoz és a soros eléréshez.
 
-## <a name="cable-your-storsimple-8600-device"></a>A StorSimple 8600 sorozatú eszköz kábelezése
-A következő eljárások azt ismertetik, hogyan, hálózati és a soros kapcsolat a StorSimple 8600 sorozatú eszköz kábelezése.
+## <a name="cable-your-storsimple-8600-device"></a>A StorSimple 8600-eszköz csatlakoztatása
+Az alábbi eljárások azt ismertetik, hogyan lehet a StorSimple 8600-eszközt a Power, a Network és a soros kapcsolatok számára összekapcsolni.
 
 ### <a name="prerequisites"></a>Előfeltételek
-Mielőtt megkezdené az eszköz bekábelezése, lesz szüksége:
+Mielőtt elkezdené az eszköz csatlakoztatását, a következőkre lesz szüksége:
 
-* Az elsődleges ház és a EBOD ház teljesen kicsomagolása
-* 4 tápkábelek (2. minden egyes az elsődleges és a EBOD ház), amely az eszköz használati utasításának
-* Az EBOD ház és az elsődleges ház csatlakozni az eszközhöz megadott 2 SAS-kábel
-* 2 Áramelosztó egységekből (PDU-k) (ajánlott) való hozzáférés
-* Hálózati kábeleket
-* A megadott soros kábelt
-* Soros-USB converter a megfelelő illesztőprogram telepítve a számítógépen (ha szükséges)
-* A megadott 4 QSFP-az-SFP + adapter 10 GbE hálózati adapterek való használatra
-* [A StorSimple eszköz 10 GbE hálózati adapterek támogatott hardver](storsimple-supported-hardware-for-10-gbe-network-interfaces.md)
+* Az elsődleges bekerítés és a EBOD-ház teljes kicsomagolása
+* 4 tápkábel (2 mindegyik az elsődleges és a EBOD ház számára), amely az eszközhöz érkezett
+* 2 SAS-kábel, amely az eszközzel csatlakozik az EBOD-ház elsődleges házba való csatlakoztatásához
+* Hozzáférés 2 hálózati elosztási egységhez (PDU) (ajánlott)
+* Hálózati kábelek
+* Megadott soros kábelek
+* Soros USB-átalakító a számítógépen telepített megfelelő illesztőprogrammal (ha szükséges)
+* 4 QSFP-to-SFP + adapterek biztosítva 10 GbE hálózati adapterrel való használatra
+* [A StorSimple-eszköz 10 GbE hálózati adapterének támogatott hardverei](storsimple-supported-hardware-for-10-gbe-network-interfaces.md)
 
-### <a name="sas-and-power-cabling"></a>SAS és Power kábelezése
-Az eszköz rendelkezik az elsődleges ház és a egy EBOD ház. Ehhez a soros csatlakozású SCSI (SAS) kapcsolódási és power együtt bekábelezte egységeket.
+### <a name="sas-and-power-cabling"></a>SAS és Power kábelezés
+Az eszköznek van egy elsődleges bekerítése és egy EBOD ház is. Ehhez csatlakoztatni kell az egységeket a soros csatlakozású SCSI (SAS) kapcsolathoz és a teljesítményhez.
 
-Az eszköz beállítása az első alkalommal, amikor a SAS kábelezést először hajtsa végre a lépéseket, és végezze el a kábelezést power.
+Ha első alkalommal állítja be az eszközt, hajtsa végre az SAS-kábelezés lépéseit először, majd hajtsa végre a Power kábelezés lépéseit.
 
 [!INCLUDE [storsimple-cable-8600-for-SAS](../../includes/storsimple-sas-cable-8600.md)]
 
 [!INCLUDE [storsimple-cable-8600-for-power](../../includes/storsimple-cable-8600-for-power.md)]
 
-### <a name="network-cabling"></a>Hálózati kábelezése
-Az eszköz egy aktív-készenléti konfigurációban áll: egy adott időpontban egy vezérlő modul aktív és feldolgozása közben a tartományvezérlő modul összes lemez és hálózat műveletek készenléti módban futhat. Vezérlő hiba esetén a készenléti állapotban lévő vezérlőnek azonnal aktiválja, és továbbra is a lemez és a hálózati műveletek.
+### <a name="network-cabling"></a>Hálózati kábelezés
+Az eszköz aktív-készenléti konfigurációban van: bármikor, az egyik vezérlő modul aktív, és az összes lemezt és hálózati műveletet feldolgozza, miközben a másik vezérlő modul készenléti állapotban van. Ha a vezérlő meghibásodása történik, a készenléti vezérlő azonnal aktiválja és folytatja az összes lemezt és hálózati műveletet.
 
-Támogatja a zónaredundáns vezérlő feladatátvétele, az eszköz hálózati kábelezése, ahogyan az az alábbi lépéseket kell.
+A redundáns vezérlő feladatátvételének támogatásához a következő lépésekben látható módon csatlakoztassa az eszköz hálózatát.
 
-#### <a name="to-cable-for-network-connection"></a>A hálózati kapcsolat kábelezése
-1. Az eszköz minden tartományvezérlőn hat hálózati adapterrel rendelkezik: négy 1 GB/s és a két 10 GB/s sebességű Ethernet portok. Tekintse meg a következő ábrán az adatok portjait a csatlakozópanel meghibásodása, az eszköz azonosítására.
+#### <a name="to-cable-for-network-connection"></a>Hálózati kapcsolatok kábele
+1. Az eszköz hat hálózati csatolóval rendelkezik minden vezérlőn: négy 1 GB/s 2 10 GB/s Ethernet port. Az eszköz hátlapján található adatportok azonosításához tekintse meg az alábbi ábrát.
    
-     ![8600-as eszköz csatlakozópanel meghibásodása](./media/storsimple-8600-hardware-installation/HCSBackplaneof2UDevicewithPortsLabeled.jpg)
+     ![8600-eszköz hátlapja](./media/storsimple-8600-hardware-installation/HCSBackplaneof2UDevicewithPortsLabeled.jpg)
    
-    **Vissza az eszközt, az adatok portok megjelenítése**
+    **Az eszköz hátoldala, amely az adatportokat mutatja**
    
    | Címke | Leírás |
    | --- | --- |
    |   0,1,4,5 |1 GbE hálózati adapterek |
-   |   2,3 |10 GbE hálózati adapterek |
+   |   2,3 |10 GbE hálózati adapter |
    |   6 |Soros portok |
-2. Az alábbi ábrában hálózati kábeleket. (A minimálisan hálózatkonfigurálás folytonos kék vonal jelenik meg. Magas rendelkezésre állás és teljesítmény szükséges további konfigurációs látható pontozott vonal.)
+2. Tekintse meg a hálózati kábelezés következő ábráját. (A minimális hálózati konfigurációt a folytonos kék vonalak mutatják. A magas rendelkezésre állás és a teljesítmény érdekében a további szükséges beállításokat a pontozott vonalak mutatják.)
 
-![Hálózat 4U eszköz kábelezése](./media/storsimple-8600-hardware-installation/HCSCableYour4UDeviceforNetwork.png)
+![A 4U-eszköz hálózati csatlakoztatása](./media/storsimple-8600-hardware-installation/HCSCableYour4UDeviceforNetwork.png)
 
-**Hálózat, az eszköz kábelezése**
+**Az eszköz hálózati kábelezései**
 
 | Címke | Leírás |
 | --- | --- |
-| A |Helyi Internet-hozzáféréssel rendelkező hálózat |
-| B |0. vezérlő |
-| C |PCM 0-BAN |
-| D |1. vezérlő |
-| E |A PCM 1 |
-| F |Az EBOD-vezérlő 0 |
-| G |Az EBOD-vezérlő 1 |
-| H I |Gazdagépek (például a fájlkiszolgálók) |
-| 0-5 |Hálózati illesztők |
+| J |Helyi Internet-hozzáféréssel rendelkező LAN |
+| B |Vezérlő 0 |
+| C |PCM 0 |
+| D |Vezérlő 1 |
+| E |PCM 1 |
+| P |EBOD vezérlő 0 |
+| C |1\. EBOD-vezérlő |
+| H,I |Gazdagépek (például fájlkiszolgálók) |
+| 0-5 |Hálózati adapterek |
 | 6 |Elsődleges ház |
 | 7 |EBOD ház |
 
-Ha az eszköz kábelezése, a minimális konfigurációs van szükség:
+Az eszköz kábelezése esetén a minimális konfigurációhoz az alábbiak szükségesek:
 
-* Legalább két hálózati adaptert minden vezérlő egy cloud-Access és egy iSCSI-hálózathoz csatlakoznak. Az adat 0 port automatikusan engedélyezve és konfigurálva az eszköz soros konzolon keresztül. Adatok egy másik portra DATA 0, szereplőkkel is kell a klasszikus Azure portálon keresztül konfigurálható. Ebben az esetben a DATA 0 csatlakozás portot pedig az elsődleges hálózati Ébresztés (Internet-hozzáféréssel rendelkező hálózat). Az adatok más portok a hálózat, attól függően, a kívánt szerepkört az iSCSI SAN/LAN (VLAN) szegmens csatlakoztathatók.
-* Minden vezérlő azonos adaptereinek ugyanazon a hálózaton rendelkezésre állásának biztosításához a vezérlő feladatátvétele esetén csatlakozik. Például ha az adatok 0 és DATA 3 az egyik vezérlő választja, meg kíván csatlakoztatni a megfelelő DATA 0 és DATA 3 a másik vezérlőre.
+* Legalább két hálózati adapter csatlakozik minden vezérlőhöz, egy a felhőhöz való hozzáféréshez, egyet pedig az iSCSI-hez. A 0. számú port automatikusan engedélyezve és konfigurálva van az eszköz soros konzolján keresztül. A 0. ADATOKon kívül egy másik adatportot is konfigurálni kell a klasszikus Azure portálon. Ebben az esetben az adat0 portot az elsődleges helyi hálózathoz (internet-hozzáféréssel rendelkező hálózat) kapcsolja. A többi adatport a kívánt szerepkörtől függően a hálózat SAN/iSCSI LAN-(VLAN-) szegmenséhez is csatlakoztatható.
+* Azonos illesztőfelületek az ugyanahhoz a hálózathoz csatlakoztatott vezérlőknél, hogy a rendelkezésre állást a vezérlő feladatátvétele esetén biztosítsa. Ha például a 0. és a 3. adattábla összekapcsolását választja, akkor a másik vezérlőn a megfelelő adatmennyiség 0 és a 3. adatkapcsolattal kell csatlakoznia.
 
-A magas rendelkezésre állást és teljesítményt szem előtt tartani:
+Tartsa szem előtt a magas rendelkezésre állást és a teljesítményt:
 
-* Ha lehetséges, minden vezérlő konfigurálása két hálózati adapter (1 GbE) felhőalapú hozzáférés és a egy másik pár iSCSI (10 GbE ajánlott).
-* Ha lehetséges, csatlakoztassa hálózati adapterek minden vezérlő két különböző kapcsolókhoz egy kapcsoló meghibásodása elleni rendelkezésre állás biztosítása érdekében. Az ábrán látható a két 10 GbE hálózati adapterek, DATA 2 és DATA 3, minden tartományvezérlőről, két különböző kapcsolókhoz csatlakozik. További információkért tekintse meg a **hálózati adapterek** alatt a [magas rendelkezésre állással, a StorSimple eszköz](storsimple-8000-system-requirements.md#high-availability-requirements-for-storsimple).
+* Ha lehetséges, konfiguráljon egy pár hálózati interfészt a felhőalapú hozzáféréshez (1 GbE) és egy másikat az iSCSI-hez (10 GbE ajánlott) minden vezérlőn.
+* Ha lehetséges, kapcsolja össze az egyes vezérlők hálózati adaptereit két különböző kapcsolóval, hogy biztosítsa a rendelkezésre állást egy kapcsoló meghibásodása esetén. Az ábrán a 2 10 GbE hálózati adapterek, a 2. adat és a 3. adatok láthatók a két különböző kapcsolóhoz csatlakozó vezérlőkből. További információkért tekintse meg a **hálózati adaptereket** a [StorSimple-eszköz magas rendelkezésre állási követelményeinek](storsimple-8000-system-requirements.md#high-availability-requirements-for-storsimple)megfelelően.
 
 > [!NOTE]
-> Ha a 10 GbE hálózati adapterek SFP + adó használ, használja a megadott QSFP-SFP + adapter. További információért ugorjon [hardver támogatja a 10 GbE hálózati adapterek a StorSimple eszköz](storsimple-supported-hardware-for-10-gbe-network-interfaces.md).
+> Ha SFP + adóvevőt használ a 10 GbE hálózati adapterrel, használja a megadott QSFP-SFP + adaptereket. További információkért keresse fel a [StorSimple-eszköz 10 GbE hálózati adapterének támogatott hardvereit](storsimple-supported-hardware-for-10-gbe-network-interfaces.md).
 > 
 > 
 
-### <a name="serial-port-cabling"></a>Soros portos kábelezése
-A következő lépésekkel kábelezése a soros port.
+### <a name="serial-port-cabling"></a>Soros port kábelezése
+A soros port csatlakoztatásához hajtsa végre az alábbi lépéseket.
 
-#### <a name="to-cable-for-serial-connection"></a>A soros kapcsolat kábelezése
-1. Az eszköz minden vezérlő, amely egy csavarkulcs ikon azonosítja a soros port van. A soros portok megkereséséhez tekintse meg az ábrát, az adatok portok az eszköz található.
-2. Az eszköz csatlakozópanel meghibásodása a az aktív vezérlő megkeresése. Egy villogó kék LED azt jelzi, hogy a vezérlő aktív.
-3. A megadott soros kábelt (ha szükséges, a laptopján USB – soros átalakítója) használja, és csatlakozzon a konzolon vagy a számítógép (a terminálemulációs az eszközhöz), az aktív vezérlőt a soros port.
-4. A sorozat – USB-illesztőprogramok (az eszköz rendszerrel szállított) telepítése a számítógépre.
-5. Állítsa be a soros kapcsolat a következőképpen:
+#### <a name="to-cable-for-serial-connection"></a>Csatlakoztatás soros kapcsolathoz
+1. Az eszköz soros porttal rendelkezik minden olyan vezérlőn, amelyet egy Csavarkulcs ikon azonosít. A soros portok megkereséséhez tekintse meg az eszköz hátoldalán található adatportokat bemutató ábrát.
+2. Azonosítsa az aktív vezérlőt az eszköz hátlapján. A villogó kék LED azt jelzi, hogy a vezérlő aktív.
+3. Használja a megadott soros kábelt (ha szükséges, az USB-soros átalakítót a laptophoz), és csatlakoztassa a konzolt vagy a számítógépet (a terminál emulációja az eszközhöz) az aktív vezérlő soros portjához.
+4. Telepítse a számítógépen a soros USB-illesztőprogramokat (az eszközön szállított).
+5. A soros kapcsolat beállítása a következőképpen történik:
    
-   * 115 200 átviteli
+   * 115 200 Baud
    * 8 adatbitek
-   * 1 stop-bit
+   * 1 leállítási bit
    * Nincs paritás
-   * Folyamatvezérlés beállítása **None**
-6. Győződjön meg arról, hogy a kapcsolat működik-e a konzol az Enter billentyű lenyomásával. A soros konzol menüjének kell megjelennie.
+   * A flow vezérlőelem beállítása **none**
+6. A konzolon az ENTER billentyű lenyomásával ellenőrizze, hogy működik-e a kapcsolat. Meg kell jelennie A soros konzol menüjének.
 
 > [!NOTE]
-> **Lights-Out felügyeleti:** telepítésekor az eszköz egy távoli adatközpontban vagy a korlátozott hozzáférésű számítógép szoba, győződjön meg arról, a soros kapcsolatokat mindkét vezérlő, mindig csatlakoztatva egy soros konzol kapcsoló vagy egy hasonló berendezések. Ez lehetővé teszi a sávon kívüli a távvezérlés és a támogatási műveletek hálózati megszakítása vagy váratlan meghibásodások esetén.
+> **Fények – felügyelet:** Ha az eszköz egy távoli adatközpontban vagy egy korlátozott hozzáférésű számítógép-helyiségben van telepítve, ügyeljen arra, hogy a soros kapcsolatok mindkét vezérlőhöz mindig a soros konzol kapcsolóhoz vagy hasonló eszközökhöz kapcsolódjanak. Ez lehetővé teszi a sávon kívüli távvezérlési és-támogatási műveleteket hálózati fennakadás vagy váratlan hibák esetén.
 > 
 > 
 
-Elvégezte az eszközt, a hálózati hozzáférés és a soros kapcsolat a kábelezést. A következő lépés, hogy az eszköz szoftverének konfigurálásához.
+Befejezte a kábelezést az eszközön a Power, a hálózati hozzáférés és a soros kapcsolat számára. A következő lépés a szoftver konfigurálása az eszközön.
 
 ## <a name="next-steps"></a>További lépések
-Most már készen áll [telepítse és konfigurálja a helyszíni StorSimple eszköz](storsimple-8000-deployment-walkthrough-u2.md).
+Most már készen áll a helyszíni [StorSimple-eszköz üzembe helyezésére és konfigurálására](storsimple-8000-deployment-walkthrough-u2.md).
 

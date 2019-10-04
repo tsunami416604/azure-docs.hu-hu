@@ -1,41 +1,41 @@
 ---
-title: 'Azure Backup: A REST API használatával az Azure virtuális gépek visszaállítása'
-description: az Azure VM Backup – REST API-val visszaállítási műveletek kezelése
-services: backup
-author: pvrk
-manager: shivamg
-keywords: REST API-JA; Az Azure virtuális gép biztonsági mentése; Az Azure virtuális gép visszaállítási;
+title: 'Azure Backup: Azure-beli virtuális gépek visszaállítása REST API használatával'
+description: Az Azure virtuális gépek biztonsági mentésének visszaállítási műveleteinek kezelése REST API használatával
+ms.reviewer: pullabhk
+author: dcurwin
+manager: carmonm
+keywords: REST API; Azure-beli virtuális gép biztonsági mentése; Azure-beli virtuális gép visszaállítása;
 ms.service: backup
 ms.topic: conceptual
 ms.date: 09/12/2018
-ms.author: pullabhk
+ms.author: dacurwin
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: 4a65e8a855b9be797c1ceeacf4b74fea74697d00
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: bdbceec2f1d0a900ffdb392d8a0505ce11419036
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55100199"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954895"
 ---
-# <a name="restore-azure-virtual-machines-using-rest-api"></a>A REST API használatával Azure-beli virtuális gépek visszaállítása
+# <a name="restore-azure-virtual-machines-using-rest-api"></a>Azure-beli virtuális gépek visszaállítása REST API használatával
 
-Egy Azure-beli virtuális gép Azure Backup használatával a biztonsági mentés befejezése után egy a teljes Azure-beli virtuális gépek vagy a lemezek vagy a fájlokat az azonos biztonsági másolatból helyreállíthatja. Ez a cikk ismerteti, hogyan lehet visszaállítani egy Azure virtuális gép vagy lemez REST API használatával.
+Ha egy Azure-beli virtuális gép biztonsági mentését Azure Backup használatával végezte el, a teljes Azure-beli virtuális gépeket vagy lemezeket vagy fájlokat az azonos biztonsági másolatból állíthatja vissza. Ez a cikk az Azure-beli virtuális gépek vagy lemezek REST API használatával történő visszaállítását ismerteti.
 
-A visszaállítási művelet, adatáthelyezések először azonosítsa a megfelelő helyreállítási pontot.
+Az egyik visszaállítási művelethez először a megfelelő helyreállítási pontot kell azonosítani.
 
-## <a name="select-recovery-point"></a>Válassza ki a helyreállítási pont
+## <a name="select-recovery-point"></a>Helyreállítási pont kiválasztása
 
-A rendelkezésre álló helyreállítási pontok egy biztonsági mentési elem használatával is megadható a [helyreállítási pont REST API listában](https://docs.microsoft.com/rest/api/backup/recoverypoints/list). Egy egyszerű *első* műveletet a megfelelő értékeket.
+A biztonsági másolati elemek rendelkezésre álló helyreállítási pontjai a [helyreállítási pont REST API listájának](https://docs.microsoft.com/rest/api/backup/recoverypoints/list)használatával is felvehetők. Ez egy egyszerű *Get* művelet az összes releváns értékkel.
 
 ```http
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints?api-version=2016-12-01
 ```
 
-A `{containerName}` és `{protectedItemName}` áll össze [Itt](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1). `{fabricName}` az "Azure".
+A `{containerName}` és `{protectedItemName}` a kiépítve [itt](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1). `{fabricName}`az "Azure".
 
-A *első* URI rendelkezik a szükséges paramétereket. Nem kell egy további kérés törzsének
+A *Get* URI az összes szükséges paraméterrel rendelkezik. Nincs szükség további kérelem törzsére
 
-### <a name="responses"></a>Válaszok
+### <a name="responses"></a>Responses
 
 |Name (Név)  |Típus  |Leírás  |
 |---------|---------|---------|
@@ -43,7 +43,7 @@ A *első* URI rendelkezik a szükséges paramétereket. Nem kell egy további k�
 
 #### <a name="example-response"></a>Példaválasz
 
-Miután a *első* URI azonosító elküldve, 200 (OK) választ ad vissza.
+Miután elküldte a *Get* URI-t, a rendszer egy 200 (ok) választ ad vissza.
 
 ```http
 HTTP/1.1 200 OK
@@ -119,33 +119,33 @@ X-Powered-By: ASP.NET
 ......
 ```
 
-A helyreállítási pontot, amelynél az a `{name}` a fenti válasz mező.
+A helyreállítási pont a fenti válaszban `{name}` található mezővel azonosítható.
 
 ## <a name="restore-disks"></a>Lemezek visszaállítása
 
-Szabhatja testre a biztonsági mentési adatokat a virtuális gép létrehozása szükség van, ha egy csak lemezek visszaállítása a választott storage-fiókra és egy virtuális gép létrehozása ezeket a lemezeket a követelményeknek. A tárfiók és a recovery services-tárolónak ugyanabban a régióban kell lennie, és nem lehet zónaredundánsak. A lemezek, valamint a biztonsági másolat ("vmconfig.json") virtuális gép konfigurációját az adott tárfiók lesz tárolva.
+Ha testre kell szabnia egy virtuális gép létrehozását a biztonsági mentési adatokból, a lemezeket egyszerűen visszaállíthatja egy kiválasztott Storage-fiókba, és létrehozhat egy virtuális gépet a saját igényei szerint. A Storage-fióknak ugyanabban a régióban kell lennie, mint a Recovery Services-tárolónak, és nem szabad zónába esnie. A lemezeket és a biztonsági másolattal ellátni kívánt virtuális gép konfigurációját ("VMConfig. JSON") a rendszer a megadott Storage-fiókban tárolja.
 
-A lemezek visszaállításának elindítása egy *POST* kérelmet. Többet is megtudni a Lemezvisszaállítási műveletet, olvassa az ["a visszaállítás elindítása" a REST API-val](https://docs.microsoft.com/rest/api/backup/restores/trigger).
+A visszaállítási lemezek elindítása *post* kérelem. Ha többet szeretne tudni a lemezek visszaállítása műveletről, tekintse meg a ["trigger Restore" REST API](https://docs.microsoft.com/rest/api/backup/restores/trigger).
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2016-12-01
 ```
 
-A `{containerName}` és `{protectedItemName}` áll össze [Itt](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1). `{fabricName}` az "Azure" és a `{recoveryPointId}` van a `{name}` mezőjét a helyreállítási pont már említettük, [fent](#example-response).
+A `{containerName}` és `{protectedItemName}` a kiépítve [itt](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1). `{fabricName}`az "Azure", a `{recoveryPointId}` `{name}` pedig a [fent](#example-response)említett helyreállítási pont mezője.
 
-### <a name="create-request-body"></a>Kérés törzsének létrehozása
+### <a name="create-request-body"></a>Kérelem törzsének létrehozása
 
-Lemez visszaállítása egy Azure virtuális gép biztonsági mentése aktiválhat, az alábbiakban a kérelem törzsében összetevői.
+Egy lemez Azure-beli virtuális gép biztonsági mentésből való visszaállításának elindításához kövesse a kérelem törzsének összetevőit.
 
 |Name (Név)  |Típus  |Leírás  |
 |---------|---------|---------|
 |properties     | [IaaSVMRestoreRequest](https://docs.microsoft.com/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
 
-A kérelem törzsében és egyéb részletek definíciója teljes listájáért tekintse meg [visszaállítása – REST API-dokumentumban aktiválása](https://docs.microsoft.com/rest/api/backup/restores/trigger#request-body).
+A kérelem törzsének és egyéb részleteinek teljes listájáért lásd: [trigger Restore REST API Document](https://docs.microsoft.com/rest/api/backup/restores/trigger#request-body).
 
 #### <a name="example-request"></a>Példakérelem
 
-A következő kérés törzse egy lemezt a visszaállítás elindítása szükséges tulajdonságokat határozza meg.
+A következő kérelem törzse a lemez-visszaállítás indításához szükséges tulajdonságokat határozza meg.
 
 ```json
 {
@@ -167,17 +167,17 @@ A következő kérés törzse egy lemezt a visszaállítás elindítása szüks�
 
 ### <a name="response"></a>Válasz
 
-Van egy visszaállítási lemez aktiválása egy [aszinkron művelet](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Ez azt jelenti, hogy a művelet létrehoz egy másik művelet, külön-külön nyomon kell követni.
+A visszaállítási lemez indítása [aszinkron művelet](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Ez azt jelenti, hogy ez a művelet egy másik műveletet hoz létre, amelyet külön kell nyomon követni.
 
-Két választ adja vissza: 202 (elfogadva), ha egy másik művelet jön létre, majd 200 (OK), hogy a művelet befejeződésekor.
+Két választ ad vissza: 202 (elfogadva) egy másik művelet létrehozásakor, majd 200 (OK), amikor a művelet befejeződik.
 
 |Name (Név)  |Típus  |Leírás  |
 |---------|---------|---------|
-|202-es elfogadva     |         |     Elfogadva    |
+|202 elfogadva     |         |     Elfogadva    |
 
-#### <a name="example-responses"></a>Példa válaszok
+#### <a name="example-responses"></a>Válaszok – példa
 
-Miután a *POST* URI indítására, a lemezek visszaállítása, az első válaszig 202 (elfogadva) és a egy helyen vagy az Azure-aszinkron-fejléc.
+Miután elküldte a *post* URI-t a visszaállítási lemezek indításához, a kezdeti válasz 202 (elfogadva), egy Location fejlécet vagy egy Azure-aszinkron-fejlécet tartalmaz.
 
 ```http
 HTTP/1.1 202 Accepted
@@ -197,13 +197,13 @@ Location: https://management.azure.com/subscriptions//subscriptions/00000000-000
 X-Powered-By: ASP.NET
 ```
 
-Az eredményül kapott művelet a location fejlécet, vagy az Azure-AsyncOperation fejlécet használja egy egyszerű, majd nyomon követheti *első* parancsot.
+Ezután nyomon követheti az eredményül kapott műveletet a Location fejléc vagy az Azure-AsyncOperation fejléc használatával egy egyszerű *Get* paranccsal.
 
 ```http
 GET https://management.azure.com/subscriptions//subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationResults/781a0f18-e250-4d73-b059-5e9ffed4069e?api-version=2016-12-01
 ```
 
-A művelet befejezése után az eredményül kapott visszaállítási feladat a válasz törzsében azonosítójú ad vissza 200 (OK).
+A művelet befejezése után a 200 (OK) értéket adja vissza a válasz törzsében létrejövő visszaállítási feladatokhoz tartozó AZONOSÍTÓval.
 
 ```http
 HTTP/1.1 200 OK
@@ -233,15 +233,15 @@ X-Powered-By: ASP.NET
 }
 ```
 
-Mivel a biztonsági mentési feladat egy hosszú ideig futó művelet, hogy követni kell leírtak a [REST API-dokumentumban használatával a feladatok monitorozásához](backup-azure-arm-userestapi-managejobs.md#tracking-the-job).
+Mivel a biztonsági mentési feladat hosszú ideig futó művelet, azt a [feladatok figyelése REST API dokumentum használatával](backup-azure-arm-userestapi-managejobs.md#tracking-the-job)című részben leírtak szerint kell követni.
 
-A hosszú ideig futó feladat befejeződése után a lemezek és a konfiguráció a biztonsági másolat virtuális gép ("VMConfig.json") lesz az adott tárfiók található.
+A hosszú ideig tartó feladatok befejezése után a rendszer a biztonsági másolatban szereplő virtuális gép ("VMConfig. JSON") lemezeit és konfigurációját a megadott Storage-fiókban fogja megjelenni.
 
-## <a name="restore-as-another-virtual-machine"></a>Állítsa vissza egy másik virtuális gépként
+## <a name="restore-as-another-virtual-machine"></a>Visszaállítás másik virtuális gépként
 
-[Válassza ki a helyreállítási pont](#select-recovery-point) és a kérelem törzsében megadott az alábbi egy másik Azure-beli virtuális gép létrehozása az adatok a helyreállítási pontot létrehozni.
+[Válassza ki a helyreállítási pontot](#select-recovery-point) , és hozza létre a kérelem törzsét az alább megadott módon egy másik Azure-beli virtuális gép létrehozásához a helyreállítási pontból származó adatokkal.
 
-A következő kérés törzse egy virtuális gépet a visszaállítás elindítása szükséges tulajdonságokat határozza meg.
+A következő kérelem törzse határozza meg a virtuális gépek visszaállításának elindításához szükséges tulajdonságokat.
 
 ```json
 {
@@ -277,11 +277,11 @@ A következő kérés törzse egy virtuális gépet a visszaállítás elindít�
 }
 ```
 
-A válasz azonos módon kell kezelni [a lemezek visszaállítását a fent ismertetett](#response).
+A választ ugyanúgy kell kezelni, mint a [lemezek visszaállítására szolgáló fentiekben ismertetett](#response)módon.
 
 ## <a name="next-steps"></a>További lépések
 
-További információ az Azure Backup – REST API-k a következő dokumentumokban talál:
+A Azure Backup REST API-kkal kapcsolatos további információkért tekintse meg a következő dokumentumokat:
 
-- [Az Azure Recovery Services-szolgáltató REST API-val](/rest/api/recoveryservices/)
-- [Azure REST API használatának első lépései](/rest/api/azure/)
+- [Azure Recovery Services-szolgáltató REST API](/rest/api/recoveryservices/)
+- [Ismerkedés az Azure REST API](/rest/api/azure/)

@@ -1,37 +1,31 @@
 ---
-title: Store biztonságosan férhetnek hozzá a hitelesítő adatokat a Data Science virtuális gépen – Azure |} A Microsoft Docs
-description: Ismerje meg, hogyan tárolja biztonságosan eléréséhez szükséges hitelesítő adatokat a Data Science virtuális gépen. Megtudhatja, hogyan használható felügyelt szolgáltatásidentitások és az Azure Key Vault eléréséhez szükséges hitelesítő adatokat tárolni.
+title: Hozzáférési hitelesítő adatok biztonságos tárolása
+titleSuffix: Azure Data Science Virtual Machine
+description: Ismerje meg, hogyan tárolja biztonságosan eléréséhez szükséges hitelesítő adatokat a Data Science virtuális gépen. Megtudhatja, hogyan használhatók a felügyelt szolgáltatásbeli identitások és a Azure Key Vault a hozzáférési hitelesítő adatok tárolásához.
 keywords: deep learning, AI, beépített adatelemzési eszközzel, az adatelemzési virtuális gépet, a térinformatikai elemzés, a csoportos adatelemzési folyamat
 services: machine-learning
-documentationcenter: ''
-author: gopitk
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+author: vijetajo
+ms.author: vijetaj
+ms.topic: conceptual
 ms.date: 05/08/2018
-ms.author: gokuma
-ms.openlocfilehash: 79dba586a5f7102d0012c381593551a951f1b38e
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 17e611007d2b5400497597946159826df7aa4848
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55451292"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195612"
 ---
-# <a name="store-access-credentials-on-the-data-science-virtual-machine-securely"></a>Hozzáférés Store biztonságos hitelesítő adatok a Data Science virtuális gépen
+# <a name="store-access-credentials-securely-on-an-azure-data-science-virtual-machine"></a>Hozzáférési hitelesítő adatok biztonságos tárolása Azure-Data Science Virtual Machine
 
-Közös kihívást felhőalkalmazások létrehozásához, hogyan kell lennie a kódban, a cloud serviceshez hitelesítéséhez hitelesítő adatok kezelésére. A hitelesítő adatok biztonságának megőrzése fontos feladat. Ideális esetben azok soha nem az fejlesztői munkaállomások jelennek meg, vagy a forráskezelőhöz beadva beolvasása. 
+Gyakori, hogy a Felhőbeli alkalmazásokban található kód hitelesítő adatokat tartalmaz a Cloud Services-hitelesítéshez. A hitelesítő adatok kezelése és védelme jól ismert kihívás a felhőalapú alkalmazások létrehozásához. Ideális esetben a hitelesítő adatok soha nem jelennek meg a fejlesztői munkaállomásokon, vagy bejelentkezhetnek a verziókövetésba.
 
-[Felügyelt identitások az Azure-erőforrások](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) révén az Azure, így egyszerűbb a probléma megoldására services, Azure Active Directoryban (Azure AD) automatikusan felügyelt identitást. Használhatja ezt az identitást, amely támogatja az Azure AD-hitelesítés nélkül a hitelesítő adatokat a kódban bármely szolgáltatással való hitelesítésre. 
+Az [Azure-erőforrások felügyelt identitásai](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) lehetővé teszik a probléma egyszerűbb megoldását azáltal, hogy az Azure-szolgáltatások automatikusan felügyelt identitást biztosítanak a Azure Active Directory (Azure ad) szolgáltatásban. Ezzel az identitással bármely, Azure AD-hitelesítést támogató szolgáltatáshoz végezhet hitelesítést anélkül, hogy a hitelesítő adatokat a kódban kellene tárolnia.
 
-Hitelesítő adatok védelme az egyik lehetőség az, hogy az MSI használata az [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/), egy felügyelt Azure szolgáltatás titkosítási kulcsok és titkok biztonságos tárolására. A kulcstartó elérését a felügyelt identitások használatával, és az arra jogosult titkok és titkosítási kulcsok lekérése a key vaultban. 
+A hitelesítő adatok biztonságossá tételének egyik módja a Windows Installer (MSI) használata a [Azure Key Vaultkal](https://docs.microsoft.com/azure/key-vault/)és egy felügyelt Azure-szolgáltatással együtt, amely biztonságosan tárolja a titkokat és a titkosítási kulcsokat. A Key vaultot a felügyelt identitás használatával érheti el, majd beolvashatja az erre jogosult titkos kulcsokat és titkosítási kulcsokat a Key vaultból.
 
-Az Azure-erőforrások és a Key Vault-dokumentáció a felügyelt identitásokból egy átfogó erőforrás, ezek a szolgáltatások részletes tájékoztatást. Ez a cikk további részének MSI és a Key Vault alapszintű használatát ismerteti a az adatelemzési virtuális gép (DSVM) Azure-erőforrások eléréséhez. 
+Az Azure-erőforrások és a Key Vault felügyelt identitásával kapcsolatos dokumentáció átfogó erőforrást tartalmaz a szolgáltatásokkal kapcsolatos részletes információkhoz. Ez a cikk további részének MSI és a Key Vault alapszintű használatát ismerteti a az adatelemzési virtuális gép (DSVM) Azure-erőforrások eléréséhez. 
 
 ## <a name="create-a-managed-identity-on-the-dsvm"></a>A dsvm-hez a felügyelt identitás létrehozása 
 
@@ -46,11 +40,11 @@ az resource list -n <Name of the VM> --query [*].identity.principalId --out tsv
 ```
 
 
-## <a name="assign-key-vault-access-permission-to-a-vm-principal"></a>A Key Vault hozzáférési engedélyeket rendeljenek hozzá egy virtuális gép egyszerű
+## <a name="assign-key-vault-access-permissions-to-a-vm-principal"></a>Key Vault hozzáférési engedélyek kiosztása egy virtuálisgép-rendszerbiztonsági tag számára
 ```
-# Prerequisite: You have already created an empty Key Vault resource on Azure by using the Azure portal or Azure CLI. 
+# Prerequisite: You have already created an empty Key Vault resource on Azure by using the Azure portal or Azure CLI.
 
-# Assign only get and set permission but not the capability to list the keys.
+# Assign only get and set permissions but not the capability to list the keys.
 az keyvault set-policy --object-id <Principal ID of the DSVM from previous step> --name <Key Vault Name> -g <Resource Group of Key Vault>  --secret-permissions get set
 ```
 
@@ -61,14 +55,14 @@ az keyvault set-policy --object-id <Principal ID of the DSVM from previous step>
 x=`curl http://localhost:50342/oauth2/token --data "resource=https://vault.azure.net" -H Metadata:true`
 token=`echo $x | python -c "import sys, json; print(json.load(sys.stdin)['access_token'])"`
 
-# Access the key vault by using the access token. 
+# Access the key vault by using the access token.
 curl https://<Vault Name>.vault.azure.net/secrets/SQLPasswd?api-version=2016-10-01 -H "Authorization: Bearer $token"
 ```
 
 ## <a name="access-storage-keys-from-the-dsvm"></a>A dsvm-hez való hozzáférés tárkulcsok
 
 ```
-# Prerequisite: You have granted your VM's MSI access to use storage account access keys based on instructions from the article at https://docs.microsoft.com/azure/active-directory/managed-service-identity/tutorial-linux-vm-access-storage. This article describes the process in more detail.
+# Prerequisite: You have granted your VMs MSI access to use storage account access keys based on instructions at https://docs.microsoft.com/azure/active-directory/managed-service-identity/tutorial-linux-vm-access-storage. This article describes the process in more detail.
 
 y=`curl http://localhost:50342/oauth2/token --data "resource=https://management.azure.com/" -H Metadata:true`
 ytoken=`echo $y | python -c "import sys, json; print(json.load(sys.stdin)['access_token'])"`
@@ -91,15 +85,16 @@ credentials = MSIAuthentication(
 
 # Create a Key Vault client.
 key_vault_client = KeyVaultClient(
-credentials
+    credentials
 )
 
 key_vault_uri = "https://<key Vault Name>.vault.azure.net/"
 
 secret = key_vault_client.get_secret(
-key_vault_uri,  # Your key vault URL.
-"SQLPasswd",       # The name of your secret that already exists in the key vault.
-""              # The version of the secret; empty string for latest.
+    key_vault_uri,  # Your key vault URL.
+    # The name of your secret that already exists in the key vault.
+    "SQLPasswd",
+    ""              # The version of the secret; empty string for latest.
 )
 print("My secret value is {}".format(secret.value))
 ```
@@ -107,8 +102,8 @@ print("My secret value is {}".format(secret.value))
 ## <a name="access-the-key-vault-from-azure-cli"></a>A kulcstartó elérését az Azure CLI-vel
 
 ```
-# With managed identities for Azure resources set up on the DSVM, users on the DSVM can use Azure CLI to perform the authorized functions. Here are commands to access the key vault from Azure CLI without having to log in to an Azure account. 
-# Prerequisites: MSI is already set up on the DSVM as indicated earlier. Specific permission, like accessing storage account keys, reading specific secrets, and writing new secrets, is provided to the MSI. 
+# With managed identities for Azure resources set up on the DSVM, users on the DSVM can use Azure CLI to perform the authorized functions. The following commands enable access to the key vault from Azure CLI without requiring login to an Azure account.
+# Prerequisites: MSI is already set up on the DSVM as indicated earlier. Specific permissions, like accessing storage account keys, reading specific secrets, and writing new secrets, are provided to the MSI.
 
 # Authenticate to Azure CLI without requiring an Azure account. 
 az login --msi

@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 02/07/2017
 ms.author: alkohli
 ms.openlocfilehash: b67fcb82bdcc94d7faeceedb7420a869e6578cad
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58007321"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61436391"
 ---
 # <a name="install-update-04-on-your-storsimple-virtual-array"></a>A 0.4 telepítse a StorSimple Virtual Array
 
@@ -32,7 +32,7 @@ Ne feledje, hogy egy frissítés vagy gyorsjavítás telepítése az eszköz új
 Mielőtt alkalmazná a frissítést, javasoljuk, hogy tegye meg a kötetek vagy megosztások kapcsolat nélküli módban a gazdagépen első és az eszköz majd. Ezzel a lehető legkisebbre csökkenti az adatsérülés esélyét.
 
 > [!IMPORTANT]
-> 0.1-es frissítés vagy a GA szoftververziók futtatja, ha a gyorsjavítás metódus a helyi webes felhasználói felületen a 0.3 telepítéséhez kell használnia. Ha 0.2-es frissítést futtatja, vagy később, akkor javasoljuk, hogy telepítse a frissítéseket az Azure Portalon keresztül.
+> 0\.1-es frissítés vagy a GA szoftververziók futtatja, ha a gyorsjavítás metódus a helyi webes felhasználói felületen a 0.3 telepítéséhez kell használnia. Ha 0.2-es frissítést futtatja, vagy később, akkor javasoljuk, hogy telepítse a frissítéseket az Azure Portalon keresztül.
  
 
 ## <a name="use-the-local-web-ui"></a>A helyi webes felhasználói felület használata
@@ -58,7 +58,7 @@ Hajtsa végre a következő lépéseket a szoftverfrissítés a Microsoft Update
    
     ![Keresés a katalógusban](./media/storsimple-virtual-array-install-update-04/download1.png)
 
-4. Kattintson a **Hozzáadás** parancsra. Ezzel a frissítést hozzáadja a kosárhoz.
+4. Kattintson a **Hozzáadás**lehetőségre. Ezzel a frissítést hozzáadja a kosárhoz.
 
 5. Kattintson a **Kosár megtekintése** gombra.
 

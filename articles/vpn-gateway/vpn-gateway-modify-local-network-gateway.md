@@ -1,6 +1,6 @@
 ---
-title: Módosítsa a helyi hálózati átjáró IP-cím előtagokat és a VPN-átjáró IP-címe |} Azure |} PowerShell |} Microsoft Docs
-description: Ez a cikk végigvezeti a PowerShell használatával helyi hálózati átjáró IP-cím előtagokat módosítása
+title: A helyi hálózati átjáró IP-címelőtagokat, és a VPN-átjáró IP-cím módosítása |} Azure |} PowerShell |} A Microsoft Docs
+description: Ez a cikk végigvezeti a PowerShell-lel helyi hálózati átjáró IP-címelőtagjainak módosítása
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: cherylmc
-ms.openlocfilehash: 2a095b96a8c352abeca72640d37c0d629b447763
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 923c478909e0393f36da06802023b3f40ee63a3d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
-ms.locfileid: "23885104"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64723895"
 ---
 # <a name="modify-local-network-gateway-settings-using-powershell"></a>Helyi hálózati átjáró beállításainak módosítása a PowerShell-lel
 
-Egyes esetekben a helyi hálózati átjáró címelőtagja vagy GatewayIPAddress beállítások módosítása. Ez a cikk bemutatja, hogyan módosíthatja a helyi hálózati átjáró beállításokat. Emellett módosíthatja ezeket a beállításokat egy másik módszer a egy másik lehetőség kiválasztásával az alábbi listából:
+Néha AddressPrefix vagy GatewayIPAddress helyi hálózati átjáró beállításainak módosítása Ez a cikk bemutatja, hogyan lehet a helyi hálózati átjáró beállításainak módosítása. Ezeket a beállításokat egy másik lehetőség kiválasztásával az alábbi listából egy másik módszer a is módosíthatja:
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](vpn-gateway-modify-local-network-gateway-portal.md)
@@ -37,14 +37,14 @@ Egyes esetekben a helyi hálózati átjáró címelőtagja vagy GatewayIPAddress
 
 Telepítse az Azure Resource Manager PowerShell-parancsmagjainak legújabb verzióját. A PowerShell-parancsmagok telepítésével kapcsolatban további információ: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azureps-cmdlets-docs).
 
-## <a name="ipaddprefix"></a>IP-cím előtagokat módosítása
+## <a name="ipaddprefix"></a>IP-címelőtagjainak módosítása
 
 [!INCLUDE [vpn-gateway-modify-ip-prefix-rm](../../includes/vpn-gateway-modify-ip-prefix-rm-include.md)]
 
-## <a name="gwip"></a>Az átjáró IP-cím módosítása
+## <a name="gwip"></a>Átjáró IP-címének módosítása
 
 [!INCLUDE [vpn-gateway-modify-lng-gateway-ip-rm](../../includes/vpn-gateway-modify-lng-gateway-ip-rm-include.md)]
 
 ## <a name="next-steps"></a>További lépések
 
-Ellenőrizheti a gateway-kapcsolatot. Lásd: [egy átjáró kapcsolat ellenőrzéséhez](vpn-gateway-verify-connection-resource-manager.md).
+Ellenőrizheti, hogy az átjárókapcsolat. Lásd: [átjárókapcsolat ellenőrzése](vpn-gateway-verify-connection-resource-manager.md).

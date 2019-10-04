@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 240291c7ec1d989e52a2896dc696f69afbee0093
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 32625ad1dc9648c5e91265ae71790b419497871a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59279363"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67096537"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mypolicies"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező myPolicies
 
@@ -52,7 +52,7 @@ Az Azure AD integrálása a myPolicies konfigurálásához hozzá kell myPolicie
 
 **MyPolicies hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

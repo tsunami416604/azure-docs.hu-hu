@@ -9,18 +9,18 @@ ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
 ms.openlocfilehash: b80ba1cbe168270ec591bdd38859408eae387bbf
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311713"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60320584"
 ---
 # <a name="sample-workflow-to-prepare-hard-drives-for-an-import-job"></a>Munkafolyamat-minta a merevlemezek importálási feladatokhoz való előkészítésére
 Ez a témakör végigvezeti a meghajtók előkészítése importálási feladatokhoz teljes folyamatán.  
   
 Ebben a példában a következő adatokat importál nevű ablak Azure storage-fiók `mystorageaccount`:  
   
-|Hely|Leírás|  
+|Location egység|Leírás|  
 |--------------|-----------------|  
 |H:\Video|Gyűjteménye, videók, a teljes 5 TB.|  
 |H:\Photo|Egy gyűjtemény fényképek, összesen 30 GB.|  
@@ -29,7 +29,7 @@ Ebben a példában a következő adatokat importál nevű ablak Azure storage-fi
   
 Az importálási feladat ezeket az adatokat importál a storage-fiókban a következő helyre:  
   
-|Forrás|Cél virtuális könyvtárat vagy a blob|  
+|source|Cél virtuális könyvtárat vagy a blob|  
 |------------|-------------------------------------------|  
 |H:\Video|https:\//mystorageaccount.blob.core.windows.net/video|  
 |H:\Photo|https:\//mystorageaccount.blob.core.windows.net/photo|  
@@ -44,7 +44,7 @@ Ezután annak megállapításához, hogy hány merevlemezek szükségesek, szám
   
 Ebben a példában két 3 TB-os merevlemezeket elegendőnek kell lennie. Mivel azonban a forráskönyvtár `H:\Video` 5 TB-nyi adatot, és a egy merevlemez-területtel csak 3 TB, érvényteleníteni szükséges `H:\Video` be két kisebb méretű könyvtárak: `H:\Video1` és `H:\Video2`, mielőtt futtatná a Microsoft Azure Import/Export eszköz. Ebben a lépésben a következő forrás-könyvtárak eredményez:  
   
-|Hely|Méret|Cél virtuális könyvtárat vagy a blob|  
+|Location egység|Méret|Cél virtuális könyvtárat vagy a blob|  
 |--------------|----------|-------------------------------------------|  
 |H:\Video1|2,5 TB|https:\//mystorageaccount.blob.core.windows.net/video|  
 |H:\Video2|2,5 TB|https:\//mystorageaccount.blob.core.windows.net/video|  

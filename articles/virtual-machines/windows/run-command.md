@@ -3,23 +3,23 @@ title: PowerShell-parancsfájlok futtatásához egy Windows-beli virtuális gép
 description: Ez a témakör ismerteti a PowerShell-parancsfájlok futtatása paranccsal, egy Windows Azure virtuális gépen belüli futtatásáról
 services: automation
 ms.service: automation
-author: georgewallace
-ms.author: gwallace
-ms.date: 10/25/2018
+author: bobbytreed
+ms.author: robreed
+ms.date: 04/26/2019
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: ecf19da59e91edd08953296d96ca68ca62f008e1
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: de45f2fe6230e48c3cffc999e2c84d6ee0a60edc
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195353"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476773"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-with-run-command"></a>PowerShell-szkriptek futtatása a Windows virtuális gép futtatása paranccsal
 
 Futtassa a parancsot használja a Virtuálisgép-ügynök Windows Azure virtuális Gépen belül a PowerShell-parancsfájlok futtatását. Ezek a parancsfájlok vagy általános számítógép-felügyelet is használható, és segítségével gyorsan diagnosztizálhatja és a virtuális gép hozzáférés és a hálózati problémák elhárítására és a egy jó állapotba a virtuális gép lekérése.
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="benefits"></a>Előnyök
 
@@ -62,7 +62,7 @@ Ha ki van választva a parancsot, kattintson **futtatása** a parancsfájl futta
 
 Ez a táblázat Windows virtuális gépek esetében elérhető parancsok listáját jeleníti meg. A **RunPowerShellScript** parancs bármilyen kívánt egyéni szkript futtatásához használható.
 
-|**Name (Név)**|**Leírás**|
+|**Name**|**Leírás**|
 |---|---|
 |**RunPowerShellScript**|Egy PowerShell-parancsprogram végrehajtása|
 |**EnableRemotePS**|Konfigurálja a számítógépet, hogy engedélyezze a távoli PowerShell.|
@@ -83,9 +83,9 @@ Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' 
 
 ## <a name="limiting-access-to-run-command"></a>Futtatása paranccsal való hozzáférés korlátozása
 
-A futtatási parancsok listázása és a egy parancs részleteit megjelenítő szükséges a `Microsoft.Compute/locations/runCommands/read` engedéllyel, amely a beépített [olvasó](../../role-based-access-control/built-in-roles.md#reader) szerepkört, és magasabb.
+A futtatási parancsok listázása és a egy parancs részleteit megjelenítő szükséges a `Microsoft.Compute/locations/runCommands/read` engedélyt az előfizetés szintjén, amely a beépített [olvasó](../../role-based-access-control/built-in-roles.md#reader) szerepkör, és magasabb.
 
-A parancs futtatásához szükség van a `Microsoft.Compute/virtualMachines/runCommand/action` engedéllyel, amely a [virtuális gépek Közreműködője](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) szerepkör, és magasabb.
+Parancs futtatásához szükség van a `Microsoft.Compute/virtualMachines/runCommand/action` engedélyt az előfizetés szintjén, amely a [virtuális gépek Közreműködője](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) szerepkör és újabb.
 
 Használhatja az egyik a [beépített](../../role-based-access-control/built-in-roles.md) szerepkörök, vagy hozzon létre egy [egyéni](../../role-based-access-control/custom-roles.md) szerepkör-parancs futtatása.
 

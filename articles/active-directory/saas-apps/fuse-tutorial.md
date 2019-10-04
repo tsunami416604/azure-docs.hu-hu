@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/18/2019
 ms.author: jeedes
-ms.openlocfilehash: d04f31ef20135271e4adb1551246d351bfab7b1f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: fda9594d97500075e6b018e1e8c9ff5816fe3590
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57883984"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164958"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fuse"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Fuse
 
@@ -52,7 +52,7 @@ Az Azure AD integrálása a Fuse konfigurálásához hozzá kell Fuse a katalóg
 
 **Fuse hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -104,7 +104,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Fuse, hajtsa végre 
 
     ![Fuse tartomány és URL-címeket egyetlen bejelentkezési adatait](common/sp-signonurl.png)
 
-    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím:  `https://<tenant name>.fusionuniversal.com/`
+    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím:  `https://{tenantname}.fuseuniversal.com/`
 
     > [!NOTE]
     > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-CÍMÉT. Kapcsolattartó [biztosítéka ügyfél-támogatási csapatának](mailto:support@fusion-universal.com) a gépkulcsengedélyek értékének. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.

@@ -1,19 +1,19 @@
 ---
-title: Adatok másolása az NFS-n keresztül a Microsoft Azure Data Box |} A Microsoft Docs
+title: 'Oktatóanyag: adatok másolása az Azure Data Box segítségével az NFS |} A Microsoft Docs'
 description: Ismerje meg, hogyan másolhat adatokat az Azure Data Box NFS-n keresztül
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 01/28/2019
+ms.date: 06/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 423db264c8035f9b089524eb4b19a13baccdf2e0
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: c74ed93383ea880900a5428a6f24b5b44a3ff135
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404705"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443149"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>Oktatóanyag: Adatok másolása az Azure Data Box NFS-n keresztül
 
@@ -88,6 +88,12 @@ A Data Box-megosztáshoz való kapcsolódás után a következő lépés az adat
 - Ha a Data Box által éppen feltöltés alatt álló adatokat egyidejűleg egy másik alkalmazás is feltölti a Data Boxon kívül, ez a feltöltési feladatok meghiúsulásához és az adatok meghibásodásához vezethet.
 - Azt javasoljuk, hogy ne használjon egyidejűleg SMB-t és NFS-t az Azure-ban, illetve ne másolja ugyanazokat az adatokat ugyanarra a célhelyre. Ilyen esetekben a végeredmény nem garantálható.
 - **Mindig hozzon létre egy mappát azokhoz a fájlokhoz, amelyeket másolni szeretne a megosztás alatt, majd másolja a fájlokat a létrehozott mappába**. Blokkblob típusú a mappában létrehozott, és a blob megosztások lap egy tárolóban, amelyhez data nahrávají blobként jelöli. Nem lehet másolni a fájlokat közvetlenül a *legfelső szintű* mappát a storage-fiókban.
+- Ha a kis-és nagybetűket könyvtár- és keresztneveket az NFS-megosztások az NFS a Data Box fürtjét: 
+    - Az esetben a rendszer megőrzi a nevében.
+    - A fájlok és nagybetűk nincsenek megkülönböztetve.
+    
+    Például, ha a Másolás `SampleFile.txt` és `Samplefile.Txt`, a neve, ha a Data Box másolt megőrzi az eset, de a második fájl felülírja az elsőt, mivel ezek számítanak ugyanazt a fájlt.
+
 
 Linux rendszerű gazdagép esetében használjon egy, a Robocopyhoz hasonló másolási segédprogramot. Ilyen például az [rsync](https://rsync.samba.org/), a [FreeFileSync](https://www.freefilesync.org/), a [Unison](https://www.cis.upenn.edu/~bcpierce/unison/) vagy az [Ultracopier](https://ultracopier.first-world.info/).  
 
@@ -130,7 +136,9 @@ Amennyiben az rsyncet használja többszálas másoláshoz, a következő irány
 > [!IMPORTANT]
 > A következő Linux fájltípusok nem támogatottak: szimbolikus hivatkozásokat, karakter fájlok, blokk-fájlok, sockets és csövek. Az ilyen során fellépő hibák eredményez a **szállításra való** . lépés.
 
-- Az adatok integritásának biztosítása érdekében az ellenőrzőösszeg kiszámítására beágyazva, az adatok másolása közben kerül sor. A másolás befejezése után ellenőrizze, hogy mekkora a felhasznált és a szabad tárhely az eszközén.
+Nyissa meg a célmappát a másolt fájlok megtekintéséhez és ellenőrzéséhez. Ha hibába ütközik a másolási folyamat során, töltse le a hibafájlokat a hibaelhárításhoz. További információkért lásd: [adatmásolás a Data Box során hiba történt a naplók megtekintéséhez](data-box-logs.md#view-error-log-during-data-copy). Adatok másolása során hibák részletes listájáért lásd: [problémák hibaelhárítása a Data Box](data-box-troubleshoot.md).
+
+Az adatok integritásának biztosítása érdekében az ellenőrzőösszeg kiszámítására beágyazva, az adatok másolása közben kerül sor. A másolás befejezése után ellenőrizze, hogy mekkora a felhasznált és a szabad tárhely az eszközén.
     
    ![A szabad és a felhasznált tárhely ellenőrzése az irányítópulton](media/data-box-deploy-copy-data/verify-used-space-dashboard.png)
 

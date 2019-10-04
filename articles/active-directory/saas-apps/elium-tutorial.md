@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac14168f9f56a727517232e201e581f913d67c90
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b714983f1401ba60357a8642e0a56422d01be74e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57862760"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67103420"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-elium"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Elium
 
@@ -55,7 +55,7 @@ Az Azure AD integrálása a Elium konfigurálásához hozzá kell Elium a katal�
 
 **Elium hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -128,7 +128,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Elium, hajtsa végre
 
     | Name (Név) | Adatforrás-attribútum|
     | ---------------| ----------------|
-    | e-mail   |user.mail |
+    | email   |user.mail |
     | first_name| user.givenname |
     | last_name| user.surname|
     | job_title| user.jobtitle|

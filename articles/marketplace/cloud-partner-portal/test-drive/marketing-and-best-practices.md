@@ -1,25 +1,19 @@
 ---
-title: Próbálja ki a Marketing gyakorlati tanácsok |} A Microsoft Docs
-description: Próbálja ki a legjobb pratices marketing-közzétevők
+title: Próbálja ki a Marketing gyakorlati tanácsok |} Az Azure Marketplace-en
+description: Próbálja ki a közzétevők marketing-ajánlott eljárások
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: pbutlerm
 manager: Ricardo.Villalobos
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 81fc5e9ca93178f7c2d7f56563b4cf9253c8f326
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.author: pabutler
+ms.openlocfilehash: 02b2715c813f7814cf8bf5d23414bc14d5ff5a30
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57457041"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64939982"
 ---
 <a name="test-drive-marketing-and-best-practices"></a>Test Drive Marketing és ajánlott eljárások
 =======================================

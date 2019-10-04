@@ -4,27 +4,27 @@ description: Az Azure portal használatával egy új IoT Edge-eszköz regisztrá
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 01/03/2019
+ms.date: 06/03/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 6414f694296ce1f5a8b65ccab30cceaf2172dee7
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 7f3d0037bcf0fd33ae23c298679e3157046247cb
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974896"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983528"
 ---
 # <a name="register-a-new-azure-iot-edge-device-from-the-azure-portal"></a>Az Azure Portalról egy új Azure IoT Edge-eszköz regisztrálása
 
-Az IoT-eszközök Azure IoT Edge használata előtt kell regisztrálni őket az IoT hubbal. Miután regisztrált egy eszközt, kap egy kapcsolati karakterláncot, amely segítségével konfigurálja az eszközt, a peremhálózati számítási feladatokhoz.
+Az IoT-eszközök Azure IoT Edge használata előtt kell regisztrálni őket az IoT hubbal. Az eszköz regisztrálása után egy kapcsolódási sztringet kap, amellyel beállíthatja az eszközt IoT Edge számítási feladatokhoz.
 
 Ez a cikk bemutatja, hogyan regisztrálhat egy új IoT Edge-eszköz az Azure portal használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Egy [az IoT hub](../iot-hub/iot-hub-create-through-portal.md) az Azure-előfizetésében.
+Az Azure-előfizetésében ingyenes vagy standard szintű [IoT hub](../iot-hub/iot-hub-create-through-portal.md) .
 
 ## <a name="create-a-device"></a>Eszköz létrehozása
 
@@ -32,8 +32,8 @@ Az Azure Portalon IoT Edge-eszközök létrehozása és csatlakoztatása az IoT 
 
 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) , és keresse meg az IoT hubot.
 2. Válassza ki **IoT Edge** a menüből.
-3. Válassza ki **adja hozzá az IoT Edge-eszköz**.
-4. Adjon meg egy leíró eszközazonosító. Az alapértelmezett beállításokat használja az automatikus előállítása érdekében hitelesítési kulcsokat, és az új eszköz csatlakozik a hubhoz.
+3. Válassza **a IoT Edge eszköz hozzáadása**lehetőséget.
+4. Adjon meg egy leíró eszközazonosító. Használja az alapértelmezett beállításokat a hitelesítési kulcsok automatikus létrehozásához és az új eszköz csatlakoztatásához a központhoz.
 5. Kattintson a **Mentés** gombra.
 
 ## <a name="view-all-devices"></a>Minden eszköz megjelenítése
@@ -44,9 +44,9 @@ A felsorolt összes az edge-kompatibilis eszközök csatlakoztatása az IoT hubh
 
 Amikor készen áll az eszköz beállításához, a kapcsolati karakterláncot, amely összekapcsolja a fizikai eszköz az IoT hub az identitással kell.
 
-1. Az a **IoT Edge** oldalra a portálon, kattintson az Edge-eszközök a listából az eszköz azonosítója.
-2. Másolja az értéket **kapcsolati karakterlánc (elsődleges kulcs)** vagy **kapcsolati karakterlánc (másodlagos kulcs)**.
+1. A portál **IoT Edge** lapján kattintson az eszköz azonosítójára a IoT Edge eszközök listájáról.
+2. Másolja az értéket **kapcsolati karakterlánc (elsődleges kulcs)** vagy **kapcsolati karakterlánc (másodlagos kulcs)** .
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg, hogyan [modulok telepítése egy eszközön, az Azure portal használatával](how-to-deploy-modules-portal.md)
+Megtudhatja, hogyan [helyezhet üzembe modulokat egy eszközön a Azure Portal](how-to-deploy-modules-portal.md)használatával.

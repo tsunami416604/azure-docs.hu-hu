@@ -1,103 +1,100 @@
 ---
-title: Nyomon követheti az Azure kreditegyenlegét Microsoft Ügyfélszerződéséhez |} A Microsoft Docs
-description: Ismerkedjen meg az Azure-kredit egyenleg keresése a Microsoft ügyfél-szerződés.
-services: ''
-documentationcenter: ''
-author: amberbhargava
+title: A Microsoft-ügyfélszerződéshez tartozó Azure-kreditek egyenlegének nyomon követése
+description: Megtudhatja, hogyan ellenőrizheti a Microsoft-ügyfélszerződéshez tartozó Azure-kreditek egyenlegét.
+author: bandersmsft
 manager: amberb
-editor: banders
 tags: billing
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/28/2019
-ms.author: amberb
-ms.openlocfilehash: 1e8c3e6863b9cd8f2f5ced18a57918c32c865e75
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
-ms.translationtype: MT
+ms.date: 10/01/2019
+ms.author: banders
+ms.openlocfilehash: b8faf3801a2217e6ef7040a7c2b67c7e6fad8e60
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544596"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709601"
 ---
-# <a name="track-azure-credit-balance-for-microsoft-customer-agreement"></a>Nyomon követheti az Azure kreditegyenlegét Microsoft Ügyfélszerződéséhez
+# <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>A Microsoft-ügyfélszerződéshez tartozó Azure-kreditek egyenlegének nyomon követése
 
-Az Azure Portalon ellenőrizheti az Azure-kredit egyenleg a Microsoft ügyfél-szerződés. Kreditek használatával, amelyek a kreditek hatálya termékek kell fizetnie.
+A Microsoft-ügyfélszerződéshez tartozó Azure-kreditek egyenlegét az Azure Portalon ellenőrizheti. A krediteket az általuk fedezett díjak kifizetésére használhatja.
 
-Ha olyan termékhez, nem terjed ki a kreditek használhatja, vagy a felhasználás mértéke elérné a kreditegyenlegét számítunk fel. További információkért lásd: [termékhez, az Azure-kreditek nem terjed ki.](#products-that-arent-covered-by-azure-credits)
+Díjat számítunk fel, ha olyan terméket használ, amelyet nem fedeznek a kreditek, vagy ha a használata meghaladja a kreditegyenlegét. További információért lásd [az Azure-kreditek által nem fedezett termékek körét.(#products-that-arent-covered-by-azure-credits).
 
-Ez a cikk a Microsoft vevői szerződés számlázási fiók vonatkozik. [Ellenőrizze, hogy egy Microsoft Ügyfélszerződéséhez hozzáférést](#check-access-to-a-microsoft-customer-agreement).
+Ez a cikk a Microsoft-ügyfélszerződéshez tartozó számlázási fiókokra vonatkozik. [Ellenőrizze, hogy rendelkezik-e hozzáféréssel a Microsoft-ügyfélszerződéshez](#check-access-to-a-microsoft-customer-agreement).
 
-## <a name="check-credit-balance-in-the-azure-portal"></a>Az Azure Portalon kreditegyenlegét ellenőrzése
+## <a name="check-your-credit-balance"></a>A kreditegyenleg ellenőrzése
 
 1. Jelentkezzen be az [Azure Portalra]( https://portal.azure.com).
 
-2. A Keresés **Cost Management és számlázás**.
+2. Keressen rá a **Költségkezelés + számlázás** kifejezésre.
 
-   ![Képernyőkép a Keresés a portál a Költségkezelés + számlázás](./media/billing-mca-check-azure-credits-balance/billing-search-cost-management-billing.png)
+    ![Képernyőkép a „költségkezelés + számlázás” kifejezés portálon történő kereséséről](./media/billing-mca-check-azure-credits-balance/billing-search-cost-management-billing.png)
 
-3. Nyissa meg a számlázási profilja. A hozzáférést, attól függően szükség lehet egy számlázási fiók kiválasztása. Válassza ki a számlázási fiók **profilok számlázási** és a egy számlázási profilja majd.
+3.  A bal oldalon válassza az **Azure-kredit** lehetőséget. A hozzáférésétől függően előfordulhat, hogy csak egy számlázási fiók vagy számlázási profil kiválasztása után tudja kiválasztani az **Azure-kredit** lehetőséget.
 
-4. Válassza ki **az Azure-kreditek**.
+4. Az Azure-kredit lap az alábbi információkat jeleníti meg:
 
-5. Az Azure-kreditek lap az alábbi információkat jeleníti meg:
-
-   ![Képernyőkép a kreditegyenlegét és a egy számlázási profil tranzakciók](./media/billing-mca-check-azure-credits-balance/billing-mca-credits-overview.png)
+   ![Képernyőkép a számlázási profil kreditegyenlegéről és tranzakcióiról](./media/billing-mca-check-azure-credits-balance/billing-mca-credits-overview.png)
 
    | Időtartam               | Meghatározás                           |
    |--------------------|--------------------------------------------------------|
-   | Becsült egyenleg  | Becsült összeg után a számlázás a mérlegeli az összes kreditjét, és a függőben lévő tranzakciók |
-   | Aktuális egyenleg    | A legutóbbi számla kezdődően kreditek mennyiségét. Függőben lévő tranzakciók nem tartalmazza |
-   | Tranzakciók       | Az Azure-kredit egyenleg érintett összes számlázási tranzakció |
+   | Becsült egyenleg  | A meglévő kreditek becsült mennyisége az összes számlázott és függőben lévő tranzakció figyelembevételével |
+   | Aktuális egyenleg    | A kreditek mennyisége a legutóbbi számla óta. Ez nem tartalmazza a függő tranzakciókat |
+   | Tranzakciók       | Az Azure-kredit egyenlegét befolyásoló számlázási tranzakciók |
 
-   A becsült egyenlege 0-ra csökken, amikor díjkötelesek minden a használatot, beleértve a termékek kreditek alá esnek.
+   Ha a becsült egyenleg 0-ra csökken, a teljes használatért fizetnie kell, beleértve a kreditek által fedezett termékeket is.
 
-6. Válassza ki **kreditek lista** , a számlázási profil kreditek listájának megtekintése. A kreditek listája a következő információkat biztosítja:
+6. A számlázási profilhoz tartozó kreditek listájának megtekintéséhez válassza a **Kreditek listája** lehetőséget. A kreditek listája az alábbi információkat jeleníti meg:
 
-   ![Képernyőkép a kreditek sorolja fel a számlázási profil](./media/billing-mca-check-azure-credits-balance/billing-mca-credits-list.png)
+   ![Képernyőkép a számlázási profilhoz tartozó kreditek listájáról](./media/billing-mca-check-azure-credits-balance/billing-mca-credits-list.png)
 
-   | Időtartam                 | Meghatározás                           |
-   |----------------------|--------------------------------------------------------|
-   | Forrás               | A kreditek megszerzése forrása |
-   | Kezdő dátum           | A dátum, amikor Ön szerezte be, a kredit |
-   | Lejárati dátum      | A dátum, amikor a kreditek érvényessége lejár |
-   | Egyenleg              | Az egyenleg a legutóbbi számla kezdődően |
-   | Az eredeti összeg      | Kredit az eredeti összeg |
-   | status               | Kredit aktuális állapotát. Állapot lehet aktív, használt, lejárt vagy hamarosan lejár |
+   | Időtartam | Meghatározás |
+   |---|---|
+   | Becsült egyenleg | Azon Azure-kreditek mennyisége, amellyel a nem számlázott, kreditre jogosult díjak az aktuális egyenlegből történő kivonása után rendelkezik|
+   | Aktuális egyenleg | Az Azure-kreditek azon mennyisége, amellyel a nem számlázott, kreditre jogosult díjak figyelembevétele előtt rendelkezik. Ez a mennyiséget a rendszer a legutóbbi számla időpontjában a kreditegyenlegére kapott új Azure-kreditek hozzáadásával számítja ki.|
+   | Forrás | A kredit beszerzésének forrása |
+   | Kezdő dátum | A kredit beszerzésének dátuma |
+   | Lejárati dátum | A kredit lejáratának dátuma |
+   | Egyenleg | A legutóbbi számla egyenlege |
+   | Eredeti mennyiség | A kredit eredeti mennyisége |
+   | status | A kredit aktuális állapota. Az Állapot lehet aktív, felhasznált, lejárt vagy lejáró |
 
-## <a name="how-credits-are-used-in-microsoft-customer-agreement"></a>A Microsoft vevői szerződés kreditek használata
+## <a name="how-credits-are-used"></a>A kreditek felhasználása
 
-A Microsoft vevői szerződés számlázási fiók számlázási profilok használhatja a számlákat és a fizetési módok kezeléséhez. A havi számla jön létre minden egyes számlázási profilja, és a fizetési módok használatával a számla.
+A Microsoft-ügyfélszerződésekhez tartozó számlázási fiókokban a számlázási profilokkal kezelheti a számlákat és a fizetési módokat. A rendszer havonta létrehoz egy számlát minden számlázási profil számára, a fizetési módok használatával pedig kifizetheti a számlát.
 
-Az Azure-kreditek a fizetési módok tartoznak. Kredit a Microsoft, például a kedvezményes és szolgáltatási szint követel kap. A kreditek számlázási profilja vannak hozzárendelve. A számlázási profilja számla alapján jön létre, amikor kreditek a rendszer automatikusan alkalmazza a teljes számlázott összeg számításához, akkor meg kell fizetni. Fizetnie, a fennmaradó például ellenőrzése egy másik fizetési móddal, vagy átviteli kábelezést.
+Az egyik fizetési mód az Azure-kredit általi fizetés. A Microsofttól krediteket kaphat, például promóciós kreditet és szolgáltatási szintű kreditet. A rendszer ezeket a krediteket egy számlázási profilhoz rendeli. A számla számlázási profil számára történő létrehozásakor a rendszer automatikusan alkalmazza a krediteket a teljes számlázott összegre a fizetendő összeg kiszámításához. A fennmaradó összeget egy másik fizetési mód segítségével, például csekkel vagy átutalással fizetheti ki.
 
-## <a name="products-that-arent-covered-by-azure-credits"></a>Az Azure-kreditek nem vonatkozik termékek
+## <a name="products-that-arent-covered-by-azure-credits"></a>Az Azure-kreditek által nem fedezett termékek
 
- A következő termékeket az Azure-kreditek nem terjed ki. Használja ezeket a termékeket a kreditegyenlegét függetlenül díjkötelesek:
+ Az alábbi termékeket nem fedezi az Azure-kredit. E termékek használatáért a kreditegyenlegétől függetlenül fizetnie kell:
 
 - Canonical
 - Citrix XenApp Essentials
-- A Citrix xendesktop-példányok 
-- Regisztrált felhasználó
+- Citrix XenDesktop
+- Registered User
 - Openlogic
-- Távoli hozzáférési jogok a XenApp Essentials regisztrált felhasználó
+- Remote Access Rights XenApp Essentials Registered User
 - Ubuntu Advantage
-- A Visual Studio Enterprise (havi)
-- Visual Studio Enterprise (Annual)
-- A Visual Studio Professional (havonta)
-- Visual Studio Professional (Annual)
-- Azure Marketplace-termékekkel
+- Visual Studio Enterprise (havi)
+- Visual Studio Enterprise (éves)
+- Visual Studio Professional (havi)
+- Visual Studio Professional (éves)
+- Azure Marketplace-termékek
 - Azure-támogatás ügyfeleknek
 
-## <a name="check-access-to-a-microsoft-customer-agreement"></a>A Microsoft Ügyfélszerződéséhez való hozzáférés ellenőrzése
+## <a name="check-access-to-a-microsoft-customer-agreement"></a>Microsoft-ügyfélszerződéshez való hozzáférés ellenőrzése
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-support"></a>Segítség Kapcsolatfelvétel a támogatási szolgáltatással
+## <a name="need-help-contact-support"></a>Segítségre van szüksége? Vegye fel a kapcsolatot az ügyfélszolgálattal.
 
-Ha segítségre van szüksége, kell [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.
+Ha segítségre van szüksége, [vegye fel a kapcsolatot az ügyfélszolgálattal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Számlázási fiók megismerheti a Microsoft ügyfél-szerződés](billing-mca-overview.md)
-- [A Microsoft Ügyfélszerződéséhez számla feltételeinek értelmezése](billing-mca-understand-your-invoice.md)
+- [A Microsoft-ügyfélszerződéshez tartozó számlázási fiók ismertetése](billing-mca-overview.md)
+- [A Microsoft-ügyfélszerződéshez tartozó számlán szereplő kifejezések értelmezése](billing-mca-understand-your-invoice.md)

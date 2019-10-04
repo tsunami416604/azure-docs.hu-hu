@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 851b28d10bdf0b2df67e1c0782a683e790b711bc
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 29addcd62afd193af83196b2d942e9778ff3f031
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59266494"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67099410"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jitbit-helpdesk"></a>Oktatóanyag: Jitbit ügyfélszolgálat az Azure Active Directory-integráció
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a segélyszolgálat Jitbit konfigurálásához hozzá 
 
 **Jitbit segélyszolgálat hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -232,7 +232,7 @@ Ahhoz, hogy az Azure AD-felhasználók jelentkezzen be a segélyszolgálat Jitbi
 
    a. Az a **felhasználónév** szövegmezőbe írja be a felhasználónevet a felhasználó például **BrittaSimon**.
 
-   b. Az a **E-mail** szövegmezőbe írja be e-mail a felhasználó például **BrittaSimon@contoso.com**.
+   b. Az a **E-mail** szövegmezőbe írja be e-mail a felhasználó például **BrittaSimon@contoso.com** .
 
    c. Az a **Utónév** szövegmező, mint például a felhasználó utóneve típus **Britta**.
 

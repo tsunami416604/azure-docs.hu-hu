@@ -1,30 +1,23 @@
 ---
-title: GDPR-megfelelőség |} A Microsoft Docs
+title: GDPR-megfelelőség |} Az Azure Marketplace-en
 description: Cloud Partner portálra, és a GDPR.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 4e6f5095081f0549bc127b9b6949908a64214aee
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: pabutler
+ms.openlocfilehash: 91db369f9a2a0439bdbaf8600d1b329f0da00aa0
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57857810"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786473"
 ---
 <a name="cloud-partner-portal-gdpr-compliance"></a>Cloud Partner Portal GDPR-megfelelőség
 ====================================
 
-[Általános adatvédelmi rendelet (GDPR)](https://ec.europa.eu/justice/data-protection/reform/index_en.htm)egy Európai Unión (EU) adatok védelme és az adatvédelmi törvény. Az általános adatvédelmi rendelet a vállalatokat szabályokat ír elő, a kormányzati szerveknek, non-profit és más szervezetek, termékek és szolgáltatások által személyeknek az EU, illetve, hogy adatokat gyűjthet és elemezhet EU-polgárokkal kapcsolatos vannak kötve.
+[Általános adatvédelmi rendelet (GDPR)](https://ec.europa.eu/info/law/law-topic/data-protection/reform_en/) egy Európai Unión (EU) adatok védelme és az adatvédelmi törvény. Az általános adatvédelmi rendelet a vállalatokat szabályokat ír elő, a kormányzati szerveknek, non-profit és más szervezetek, termékek és szolgáltatások által személyeknek az EU, illetve, hogy adatokat gyűjthet és elemezhet EU-polgárokkal kapcsolatos vannak kötve.
 
 Cloud Partner portálra az ügyfél a feldolgozást kapcsolatos részletes információkat tartalmaz, adatok és az adatok védelmére szolgáló védelmi intézkedéseket. Ez az információ a terméken belüli környezeteket keresztül érhető el.
 
@@ -38,7 +31,7 @@ Cloud Partner portálra hozzáférést ad a felhasználóknak a lapon minden ada
 
 A személyes adatokat a delete billentyű kezelheti a felhasználók lap felhasználói fiókra. Szerepkörök adott biztonsági rendelkezünk egy **tulajdonosa** és a egy **közreműködői** , amely meghatározott felhasználókhoz rendelhetők, és a hozzárendelt/másolt/frissített/törölt is lehet.
 
-<a name="consent"></a>Hozzájárulás
+<a name="consent"></a>Hozzájárulás megadása
 -------
 
 Jóváhagyás Cloud Partner portálra az kezeléséhez, mindig először jelenik meg a kiadó szerződés szerződést, amely kell ahhoz, hogy a Microsoft a közzétevő, fogadja el. Ha Ön nem járul hozzá a kiadói szerződés szerződést, majd azt korlátozza a közzétevő nem fogja tudni értékesítés a Microsoft számára.

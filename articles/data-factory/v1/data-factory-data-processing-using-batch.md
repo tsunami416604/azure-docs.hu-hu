@@ -1,163 +1,161 @@
 ---
-title: Nagyméretű adatkészletek feldolgozása a Data Factory és a Batch használatával |} A Microsoft Docs
-description: Ismerteti az Azure Data Factory-folyamatot hatalmas adatmennyiségek feldolgozása a párhuzamos feldolgozási képesség az Azure Batch használatával.
+title: Nagyméretű adatkészletek feldolgozása a Data Factory és a Batch használatával | Microsoft Docs
+description: Ismerteti, hogyan lehet a Azure Batch párhuzamos feldolgozási képességével nagy mennyiségű adatmennyiséget feldolgozni egy Azure Data Factory-folyamatban.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.assetid: 688b964b-51d0-4faa-91a7-26c7e3150868
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: f78275af5faaf19a4993a5ae4414b0163f9a4d9d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: fe015e2ffa371c0c31f7f5f43c433d44f3ca3c42
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58124150"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140044"
 ---
-# <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Nagyméretű adatkészletek folyamatot a Data Factory és a Batch használatával
+# <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Nagyméretű adatkészletek feldolgozása Data Factory és batch használatával
 > [!NOTE]
-> Ez a cikk az Azure Data Factory általánosan elérhető 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás régebbi verzióját használja, lásd: [egyéni tevékenységek a Data Factory](../transform-data-using-dotnet-custom-activity.md).
+> Ez a cikk az Azure Data Factory általánosan elérhető 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, tekintse meg a [Data Factory egyéni tevékenységek](../transform-data-using-dotnet-custom-activity.md)című témakört.
 
-Ez a cikk ismerteti az architektúra a minta megoldás, amely helyezi át, és feldolgozza a nagyméretű adatkészletek automatikus és ütemezett módon. A megoldás megvalósítása a Data Factory és az Azure Batch használatával egy végpontok közötti forgatókönyv is tartalmazza.
+Ez a cikk a nagyméretű adatkészletek automatikus és ütemezett módon történő mozgatására és feldolgozására szolgáló minta megoldás architektúráját ismerteti. Emellett egy teljes körű útmutatót is biztosít a megoldás megvalósításához Data Factory és Azure Batch használatával.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Ez a cikk hosszabb, mint egy tipikus cikket, mert tartalmaz egy teljes mintamegoldást bemutató. Ha most ismerkedik a Batch és Data Factory áttekintése, ezek a szolgáltatások talál további információt, és hogyan működnek együtt. Ha ismeri a szolgáltatásokkal kapcsolatos hiba, és vannak tervezése/mikroszolgáltatásokra egy megoldást, összpontosíthat a cikk architektúra szakasza. Ha fejleszt egy prototípusként vagy egy megoldást, érdemes próbálja ki az útmutató részletes utasításokat. Felkérjük ezt a tartalmat, és miként használják a megjegyzéseit.
+Ez a cikk hosszabb, mint egy tipikus cikk, mivel egy teljes minta megoldásról szóló bemutatót tartalmaz. Ha még nem ismeri a Batch és a Data Factoryt, megismerheti ezeket a szolgáltatásokat, és hogyan működnek együtt. Ha ismeri a szolgáltatásokat, és megtervezi/fejleszti a megoldást, akkor a cikk architektúra szakaszára koncentrálhat. Ha prototípust vagy megoldást fejleszt, érdemes kipróbálnia az útmutatóban ismertetett lépésenkénti útmutatót. A tartalommal kapcsolatos megjegyzéseit és felhasználásának módját meghívjuk.
 
-Először nézzük, hogyan Data Factory és a Batch szolgáltatás segíthet folyamat nagy méretű adatkészleteket a felhőben.     
+Először nézzük meg, hogyan Data Factory és a Batch-szolgáltatások segíthetnek a nagyméretű adathalmazok feldolgozásában a felhőben.     
 
 
-## <a name="why-azure-batch"></a>Miért érdemes az Azure Batch?
- A Batch használatával hatékonyan futtathat nagy méretű párhuzamos és nagy teljesítményű feldolgozási (HPC) alkalmazásokat a felhőben. Olyan platformszolgáltatás, amely úgy ütemezi a nagy számítási igényű munkák futtatását (VM) virtuális gépek felügyelt gyűjteményében. Automatikusan képes méretezni a számítási erőforrásokat a feladatok igényeinek kielégítése érdekében.
+## <a name="why-azure-batch"></a>Miért Azure Batch?
+ A Batch használatával hatékonyan futtathat nagy méretű párhuzamos és nagy teljesítményű számítástechnikai (HPC) alkalmazásokat a felhőben. Ez egy platform-szolgáltatás, amely a nagy teljesítményű virtuális gépek (VM-EK) felügyelt gyűjteményén futtatott számítási igényű munkát ütemezhet. Automatikusan méretezheti a számítási erőforrásokat a feladatok igényeinek kielégítése érdekében.
 
-A Batch szolgáltatással Azure számítási erőforrásokat határoz meg az alkalmazások párhuzamos és méretezhető futtatásához. Futtathat igény szerinti vagy ütemezett feladatokat. Nem kell manuálisan létrehozása, konfigurálása és kezelése a HPC-fürt, az egyes virtuális gépek, virtuális hálózatok, vagy egy összetett feladat és -Tevékenységütemezési infrastruktúrát.
+A Batch szolgáltatással Azure számítási erőforrásokat határoz meg az alkalmazások párhuzamos és méretezhető futtatásához. Igény szerinti vagy ütemezett feladatokat is futtathat. Nem kell manuálisan létrehoznia, konfigurálnia és felügyelni a HPC-fürtöt, az egyes virtuális gépeket, a virtuális hálózatokat, illetve az összetett feladatokat és a feladatütemezés-infrastruktúrát.
 
- Ha nem ismeri a Batch, a következő cikkek segítséget nyújt megismerheti a megoldás az ebben a cikkben leírt architektúra/végrehajtása:   
+ Ha nem ismeri a Batch szolgáltatást, a következő cikkek segítenek megérteni a cikkben ismertetett megoldás architektúráját/megvalósítását:   
 
 * [A Batch alapjai](../../batch/batch-technical-overview.md)
 * [A Batch funkcióinak áttekintése](../../batch/batch-api-basics.md)
 
-Szükség esetén a Batch kapcsolatos további információkért lásd: [a Batch dokumentációja](https://docs.microsoft.com/azure/batch/).
+Ha többet szeretne megtudni a Batch szolgáltatásról, tekintse meg [a Batch dokumentációját](https://docs.microsoft.com/azure/batch/).
 
 ## <a name="why-azure-data-factory"></a>Miért érdemes az Azure Data Factoryt választani?
-A Data Factory egy felhőalapú adatintegrációs szolgáltatás, amellyel előkészíthető és automatizálható az adatok továbbítása és átalakítása. A Data Factory segítségével felügyelt adatfolyamatokat állíthat össze, amelyek az adatok áthelyezése a helyszíni és felhőbeli adattárolókból egy központi adattárban való létrehozásához. Ilyen például, az Azure Blob storage. A Data Factory használatával feldolgozhatók és átalakíthatók adatok például az Azure HDInsight és az Azure Machine Learning services használatával. Adatfolyamatok ütemezett módon (például óránként, naponta, és hetente) futtatását is ütemezheti. Akkor is folyamatok figyelése és felügyelete a ránézésre azonosíthatja a problémákat, és hajtsa végre műveletet.
+A Data Factory egy felhőalapú adatintegrációs szolgáltatás, amellyel előkészíthető és automatizálható az adatok továbbítása és átalakítása. A Data Factory használatával olyan felügyelt adatfolyamatokat hozhat létre, amelyek a helyszíni és a Felhőbeli adattárakból egy központi adattárba helyezik át az adatátvitelt. Példa az Azure Blob Storage-ra. A Data Factory használatával az Azure HDInsight és a Azure Machine Learning szolgáltatásokkal dolgozhat fel és alakíthat át adatátalakítást. Az adatfolyamatokat ütemezett módon is ütemezheti (például óránként, naponta és hetente). Egy pillantással figyelheti és kezelheti a folyamatokat a problémák azonosításához és a műveletek elvégzéséhez.
 
-  Ha nem ismeri a Data Factory, a következő cikkeket megismerheti a megoldás az ebben a cikkben leírt architektúra/végrehajtása:  
+  Ha nem ismeri a Data Factoryt, az alábbi cikkek segítenek megérteni a cikkben ismertetett megoldás architektúráját/megvalósítását:  
 
-* [Data Factory bemutatása](data-factory-introduction.md)
-* [Az első adatfolyamat kiépítése](data-factory-build-your-first-pipeline.md)   
+* [Bevezetés a Data Factoryba](data-factory-introduction.md)
+* [Az első adatfolyamat létrehozása](data-factory-build-your-first-pipeline.md)   
 
-Szükség esetén a Data Factory kapcsolatos további információkért lásd: [a Data Factory-dokumentáció](https://docs.microsoft.com/rest/api/datafactory/v1/data-factory-data-factory).
+Ha további információra van szükség a Data Factoryről, tekintse meg [a Data Factory dokumentációját](https://docs.microsoft.com/rest/api/datafactory/v1/data-factory-data-factory).
 
-## <a name="data-factory-and-batch-together"></a>A Data Factory és a Batch együtt
-A Data Factory beépített tevékenységeket magában foglalja. Ha például a másolási tevékenység van elvégezni adatok másolása vagy áthelyezése egy forrásadattárból egy céladattárba. A Hive-tevékenység segítségével az Azure-on Hadoop-fürtök (HDInsight) használatával adatokat feldolgozni. Támogatott Adatátalakítási tevékenységek listáját lásd: [adat-átalakítási tevékenységeket](data-factory-data-transformation-activities.md).
+## <a name="data-factory-and-batch-together"></a>Data Factory és batch együtt
+A Data Factory beépített tevékenységeket tartalmaz. A másolási tevékenység például az adatok egy forrás adattárból a célhely adattárba való másolására/áthelyezésére szolgál. A kaptár tevékenység az Azure-beli Hadoop-fürtök (HDInsight-EK) használatával dolgozza fel az adatfeldolgozást. A támogatott átalakítási tevékenységek listáját az Adatátalakítási [tevékenységek](data-factory-data-transformation-activities.md)című részben tekintheti meg.
 
-Egyéni .NET-tevékenységek áthelyezése vagy saját logika az adatok feldolgozására is létrehozhat. Ezek a tevékenységek futtathatja egy HDInsight-fürtön, vagy a Batch-készlet, virtuális gépek. Ha Batch használata esetén konfigurálhatja a készletet az automatikus méretezés (hozzáadása vagy eltávolítása a virtuális gépek a számítási feladatok alapján), adjon meg egy képlet alapján.     
+Egyéni .NET-tevékenységeket is létrehozhat az adatáthelyezéshez és az adatfeldolgozáshoz saját logikával. Ezeket a tevékenységeket HDInsight-fürtökön vagy virtuális gépek batch-készletén is futtathatja. A Batch használatakor beállíthatja a készletet úgy, hogy az Ön által megadott képlet alapján automatikusan méretezést (virtuális gépeket adjon hozzá vagy távolítson el a munkaterhelés alapján).     
 
-## <a name="architecture-of-a-sample-solution"></a>Egy mintául szolgáló megoldás architektúrája
-  Ebben a cikkben leírt architektúra olyan egy egyszerű megoldást. Emellett fontos összetett forgatókönyvek, például a pénzügyi szolgáltatások, képfeldolgozás és megjelenítési és részfeladatának elemzési kockázatelemzés.
+## <a name="architecture-of-a-sample-solution"></a>Egy példa megoldás architektúrája
+  A cikkben ismertetett architektúra egy egyszerű megoldás. Az összetett forgatókönyvek, például a pénzügyi szolgáltatások, a képfeldolgozás és-megjelenítés, valamint a genomikai elemzések esetében is relevánsak.
 
-A diagram azt ábrázolja, hogyan adat-előállító adatáthelyezésre és adatfeldolgozásra vezényli. Azt is bemutatja, hogyan Batch dolgozza fel az adatok párhuzamos módon. Töltse le, és nyomtassa ki a diagram a könnyű hivatkozás (11 x 17 hüvelyk vagy A3 méret). Lásd a diagramot úgy, hogy kinyomtathassa eléréséhez [HPC és adatkoordinálás Batch és Data Factory használatával](https://go.microsoft.com/fwlink/?LinkId=717686).
+Az ábra azt szemlélteti, hogy Data Factory hogyan hangolja össze az adatáthelyezést és a feldolgozást. Azt is bemutatja, hogyan dolgozza fel párhuzamosan a Batch az adatfeldolgozást. Töltse le és nyomtassa ki a diagramot az egyszerű hivatkozáshoz (11 x 17 hüvelyk vagy a3 méret). Ha a diagramot szeretné elérni, hogy ki tudja nyomtatni, tekintse meg a [HPC és az adatelőkészítés a Batch és a Data Factory használatával](https://go.microsoft.com/fwlink/?LinkId=717686)című témakört.
 
-[![Nagyméretű adatfeldolgozás diagramja](./media/data-factory-data-processing-using-batch/image1.png)](https://go.microsoft.com/fwlink/?LinkId=717686)
+[![Nagy léptékű adatfeldolgozási diagram](./media/data-factory-data-processing-using-batch/image1.png)](https://go.microsoft.com/fwlink/?LinkId=717686)
 
-A következő lista ismerteti a folyamat alapvető lépéseit. A megoldás magában foglalja a kód és magyarázataik a teljes körű megoldás létrehozásához.
+Az alábbi lista a folyamat alapvető lépéseit ismerteti. A megoldás a teljes körű megoldás létrehozásához szükséges kódot és magyarázatokat tartalmaz.
 
-* **Konfigurálhatja a Batch számítási csomópontokból (virtuális gépek) készletét.** Megadhatja, hogy a csomópontok számát és az egyes csomópontok méretét.
+* **Konfigurálja a Batch-t a számítási csomópontok (VM-EK) készletével.** Megadhatja a csomópontok számát és az egyes csomópontok méretét.
 
-* **Hozzon létre egy Data Factory-példányt** megfelelően van konfigurálva, az entitások, amelyek a blob storage-ba, a Batch számítási szolgáltatás, bemeneti és kimeneti adatok és munkafolyamat vagy folyamat olyan tevékenységet, amely az adatok áthelyezéséhez és átalakításához.
+* **Hozzon létre egy olyan Data Factory-példányt** , amely blob Storage-t, a Batch számítási szolgáltatást, a bemeneti/kimeneti adatokat, valamint egy olyan munkafolyamatot/folyamatot, amely az adatokat áthelyező és átalakító tevékenységekkel van konfigurálva.
 
-* **Hozzon létre egy egyéni .NET-tevékenységet a Data Factory-folyamatot.** A tevékenységet, a felhasználói kód, amely a Batch-készlet futtat.
+* **Hozzon létre egy egyéni .NET-tevékenységet a Data Factoryi folyamatban.** A tevékenység a Batch-készleten futó felhasználói kód.
 
-* **A bemeneti adatok nagy mennyiségű Store, az Azure Storage-blobokat.** Adatok (általában ideje szerint) logikai szelet van osztva.
+* **Nagy mennyiségű bemeneti adat tárolása blobként az Azure Storage-ban.** Az adatértékek logikai szeletekre vannak osztva (általában idő szerint).
 
-* **A Data Factory másolja át a feldolgozott adatok párhuzamosan** a másodlagos helyre.
+* **Data Factory másolja a párhuzamosan feldolgozott** , a másodlagos helyre feldolgozható adatlemezeket.
 
-* **A Data Factory az egyéni tevékenység a készlet lefoglalta a Batch használatával futtatja.** A Data Factory egyidejűleg futtatható tevékenységek. Minden tevékenység dolgozza fel az adatok egy szeletet. Az eredményeket a storage szolgáltatásban tárolódnak.
+* **Data Factory futtatja az egyéni tevékenységet a Batch által lefoglalt készlet használatával.** A Data Factory egyszerre is futtathat tevékenységeket. Minden tevékenység egy adatszeletet dolgoz fel. Az eredményeket a rendszer a tárolóban tárolja.
 
-* **A Data Factory egy harmadik helyre helyezi át a végső eredmények** vagy terjesztés keresztül egy alkalmazást, vagy más eszközökkel további feldolgozás céljából.
+* **Data Factory a végső eredményeket harmadik helyre helyezi át,** vagy egy alkalmazáson keresztül történő terjesztésre, vagy más eszközök általi további feldolgozásra.
 
-## <a name="implementation-of-the-sample-solution"></a>A minta megoldás megvalósítása
-A mintául szolgáló megoldás, szándékosan egyszerű. Feladata, hogy bemutatják, hogyan használható a Data Factory és Batch folyamat adatkészletekhez együtt. A megoldás megszámlálja előfordulását a bemeneti fájlokat, amelyek időbeli adatsorok vannak rendszerezve a "Microsoft" keresőkifejezést. Majd megjeleníti a kimeneti fájlok száma.
+## <a name="implementation-of-the-sample-solution"></a>A minta megoldás implementálása
+A minta megoldás szándékosan egyszerű. A szolgáltatás célja, hogy bemutassa a Data Factory és a Batch együttes használatát az adatkészletek feldolgozásához. A megoldás megszámolja a "Microsoft" keresési kifejezés előfordulásainak számát az idősorozatokban rendezett bemeneti fájlokban. Ezután kiírja a darabszámot a kimeneti fájlok számára.
 
-**Idő:** Ha ismeri az Azure Data Factory és a Batch alapjait, és befejeződött a következő előfeltételek vonatkoznak, ez a megoldás egy-két órát vesz igénybe.
+**Idő** Ha már ismeri az Azure, a Data Factory és a Batch alapjait, és elvégezte a következő előfeltételeket, ez a megoldás egy-két órát vesz igénybe.
 
 ### <a name="prerequisites"></a>Előfeltételek
 #### <a name="azure-subscription"></a>Azure-előfizetés
-Ha nem rendelkezik Azure-előfizetéssel, gyorsan létrehozhat egy ingyenes próbafiókot. További információkért lásd: [az ingyenes próbaidőszak](https://azure.microsoft.com/pricing/free-trial/).
+Ha nem rendelkezik Azure-előfizetéssel, gyorsan létrehozhat egy ingyenes próbaverziós fiókot. További információ: [ingyenes próbaverzió](https://azure.microsoft.com/pricing/free-trial/).
 
 #### <a name="azure-storage-account"></a>Azure Storage-fiók
-Storage-fiók segítségével adatokat tárolni ebben az oktatóanyagban. Ha egy storage-fiók nem rendelkezik, tekintse meg [hozzon létre egy tárfiókot](../../storage/common/storage-quickstart-create-account.md). A mintául szolgáló megoldás használja a blob storage-bA.
+Az ebben az oktatóanyagban tárolt adattárolási fiók használatával tárolhatja az adattárakat. Ha nem rendelkezik Storage-fiókkal, tekintse meg [a Storage-fiók létrehozása](../../storage/common/storage-quickstart-create-account.md)című témakört. A minta megoldás blob Storage-t használ.
 
-#### <a name="azure-batch-account"></a>Az Azure Batch-fiók
-A Batch-fiók létrehozása a [az Azure portal](https://portal.azure.com/). További információkért lásd: [létrehozása és kezelése a Batch-fiók](../../batch/batch-account-create-portal.md). Vegye figyelembe a Batch-fiók tárfióknév és fiókkulcs. Használhatja még a [New-AzBatchAccount](https://docs.microsoft.com/powershell/module/az.batch/new-azbatchaccount) parancsmaggal hozzon létre egy Batch-fiókot. Ez a parancsmag használatával, lásd: [Batch PowerShell-parancsmagok használatának első lépései](../../batch/batch-powershell-cmdlets-get-started.md).
+#### <a name="azure-batch-account"></a>Azure Batch fiók
+Hozzon létre egy batch-fiókot a [Azure Portal](https://portal.azure.com/)használatával. További információ: [Batch-fiók létrehozása és kezelése](../../batch/batch-account-create-portal.md). Jegyezze fel a Batch-fiók nevét és a fiók kulcsát. A [New-AzBatchAccount](https://docs.microsoft.com/powershell/module/az.batch/new-azbatchaccount) parancsmaggal létrehozhat egy batch-fiókot is. A parancsmag használatáról a következő témakörben talál útmutatást: a [Batch PowerShell](../../batch/batch-powershell-cmdlets-get-started.md)-parancsmagok használatának első lépései.
 
-A minta megoldás dolgozza fel az adatokat egy készlet számítási csomópontok (virtuális gépek felügyelt gyűjteményében) párhuzamos módon Batch (közvetetten egy data factory-folyamatot) keresztül használja.
+A minta megoldás a Batch (egy adatfeldolgozó folyamaton keresztüli) használatával párhuzamosan dolgozza fel az adatok mennyiségét a számítási csomópontok (felügyelt virtuális gépek) készletén.
 
-#### <a name="azure-batch-pool-of-virtual-machines"></a>A virtuális gépek az Azure Batch-készlet
-Hozzon létre legalább két számítási csomópontok Batch-készlet.
+#### <a name="azure-batch-pool-of-virtual-machines"></a>Azure Batch virtuális gépek készlete
+Hozzon létre egy batch-készletet legalább két számítási csomóponttal.
 
-1. Az a [az Azure portal](https://portal.azure.com)válassza **Tallózás** a bal oldali menüben, és válassza a **Batch-fiókok**.
+1. A [Azure Portal](https://portal.azure.com)válassza a bal oldali menü **Tallózás** elemét, majd válassza a **Batch-fiókok**lehetőséget.
 
-1. Válassza ki a Batch-fiók megnyitása a **Batch-fiók** panelen.
+1. Válassza ki a Batch-fiókot a **Batch-fiók** panel megnyitásához.
 
-1. Válassza ki a **készletek** csempére.
+1. Válassza ki a **készletek** csempét.
 
-1. Az a **készletek** panelen válassza ki a **Hozzáadás** gombra az eszköztáron a készlet hozzáadása.
+1. A **készletek** panelen válassza a **Hozzáadás** gombot az eszköztáron a készlet hozzáadásához.
 
-   a. Adja meg a készlet Azonosítóját (**készlet azonosítója**). Megjegyzés: a készlet azonosítója. Meg kell a data factory-megoldás létrehozásakor.
+   a. Adja meg a készlet azonosítóját (**készlet azonosítója**). Jegyezze fel a készlet AZONOSÍTÓját. Szüksége lesz rá, amikor létrehozza a adatfeldolgozó megoldást.
 
-   b. Adja meg **Windows Server 2012 R2** számára a **operációs rendszer Termékcsaládját** beállítás.
+   b. A **Windows Server 2012 R2** értéket kell megadnia az **operációs rendszer családjának** beállításához.
 
-   c. Válassza ki a **csomóponti tarifacsomagot**.
+   c. Válassza ki a **csomópontok díjszabási szintjét**.
 
-   d. Adja meg **2** értékeként a **cél dedikált** beállítás.
+   d. A **cél dedikált** beállítás értékeként adja meg a **2** értéket.
 
-   e. Adja meg **2** értékeként a **csomópontonkénti tevékenységek maximális** beállítás.
+   e. Adja meg a **2** értéket a maximális feladatokhoz a **csomópontok száma** beállításnál.
 
-   f. Válassza ki **OK** hoz létre a készletet.
+   f. A készlet létrehozásához kattintson **az OK gombra** .
 
 #### <a name="azure-storage-explorer"></a>Azure Storage Explorer
-Használhat [Azure Storage Explorer 6](https://azurestorageexplorer.codeplex.com/) vagy [CloudXplorer](http://clumsyleaf.com/products/cloudxplorer) (ClumsyLeaf szoftverből) vizsgálatára, és az adatok a Storage-projektek az alter. Is vizsgálja meg és módosíthatja az adatokat a felhőben üzemeltetett alkalmazások a naplókban.
+[Azure Storage Explorer 6](https://azurestorageexplorer.codeplex.com/) vagy [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer) (a ClumsyLeaf szoftverből) használatával megvizsgálhatja és megváltoztathatja a tárolási projektjeiben lévő adatok vizsgálatát és módosítását. A felhőben üzemeltetett alkalmazások naplófájljaiban is ellenőrizheti és módosíthatja az adatait.
 
-1. Hozzon létre egy tárolót **mycontainer** privát hozzáférést (nincs névtelen hozzáférés).
+1. Hozzon létre egy **mycontainer** nevű tárolót privát hozzáféréssel (névtelen hozzáférés nélkül).
 
-1. Ha CloudXplorer használ, hozzon létre mappákban és almappáiban az alábbi struktúra használatával:
+1. Ha CloudXplorer használ, hozzon létre mappákat és almappákat a következő szerkezettel:
 
-   ![Mappa és az almappák struktúra](./media/data-factory-data-processing-using-batch/image3.png)
+   ![Mappa és almappa szerkezete](./media/data-factory-data-processing-using-batch/image3.png)
 
-   `Inputfolder` és `outputfolder` a legfelső szintű mappák `mycontainer`. A `inputfolder` mappa almappákat dátum-idő stampek (éééé-HH-NN-HH) rendelkezik.
+   `Inputfolder`és `outputfolder` a legfelső szintű mappák a `mycontainer`ben. A `inputfolder` mappa almappákkal rendelkezik, és dátum-idő bélyegzőket tartalmaz (éééé-hh-nn-hh).
 
-   Ha a Storage Explorer, a következő lépésben, a következő nevekkel fájlok feltöltése: `inputfolder/2015-11-16-00/file.txt`, `inputfolder/2015-11-16-01/file.txt`, és így tovább. Ez a lépés automatikusan létrehozza a mappákat.
+   Ha Storage Explorer használ, a következő lépésben feltölti a fájlokat a következő nevekkel: `inputfolder/2015-11-16-00/file.txt`, `inputfolder/2015-11-16-01/file.txt`és így tovább. Ez a lépés automatikusan létrehozza a mappákat.
 
-1. Hozzon létre egy szövegfájlt **file.txt** tartalommal, amely rendelkezik a kulcsszót a gépen **Microsoft**. Ilyen például, "egyéni tevékenység Microsoft teszt egyéni tevékenység Microsoft teszt."
+1. Hozzon létre egy szövegfájlt **. txt fájlt** a gépen a **Microsoft**kulcsszóval rendelkező tartalommal. Ilyen például az "egyéni tevékenység tesztelése Microsoft test Custom Activity Microsoft".
 
-1. A fájl feltöltése a blob storage-ban a következő bemeneti mappák:
+1. Töltse fel a fájlt a következő bemeneti mappákba a blob Storage-ban:
 
-   ![Bemeneti mappa](./media/data-factory-data-processing-using-batch/image4.png)
+   ![Bemeneti mappák](./media/data-factory-data-processing-using-batch/image4.png)
 
-   Ha a Storage Explorer, töltse fel a **file.txt** fájlt **mycontainer**. Válassza ki **másolási** BLOB másolatot készítsen az eszköztáron. Az a **a Blob másolásához** párbeszédpanelen módosítsa a **cél blobnév** való `inputfolder/2015-11-16-00/file.txt`. Ismételje meg ezt a lépést létrehozása `inputfolder/2015-11-16-01/file.txt`, `inputfolder/2015-11-16-02/file.txt`, `inputfolder/2015-11-16-03/file.txt`, `inputfolder/2015-11-16-04/file.txt`, és így tovább. Ez a művelet automatikusan létrehoz a mappákat.
+   Ha Storage Explorer használ, töltse fel a **file. txt** fájlt a **mycontainer**. A blob másolatának létrehozásához válassza az eszköztár **Másolás** elemét. A **blob másolása** párbeszédpanelen módosítsa a `inputfolder/2015-11-16-00/file.txt` **cél blob nevét** a következőre:. Ismételje meg ezt a `inputfolder/2015-11-16-01/file.txt`lépést a ( `inputfolder/2015-11-16-04/file.txt`z),,, stb. létrehozásához `inputfolder/2015-11-16-02/file.txt` `inputfolder/2015-11-16-03/file.txt`. Ez a művelet automatikusan létrehozza a mappákat.
 
-1. Hozzon létre egy másik tárolót `customactivitycontainer`. Töltse fel az egyéni tevékenység zip-fájlt a tárolóba.
+1. Hozzon létre egy `customactivitycontainer`nevű másik tárolót. Töltse fel az egyéni tevékenység zip-fájlját a tárolóba.
 
 #### <a name="visual-studio"></a>Visual Studio
-Telepítse a Visual Studio 2012 vagy újabb a egyéni kötegelt tevékenység használható a data factory-megoldás létrehozásához.
+Telepítse a Visual Studio 2012-es vagy újabb verzióját, és hozzon létre egy egyéni batch-tevékenységet, amelyet az adatfeldolgozó megoldásban kíván használni.
 
-### <a name="high-level-steps-to-create-the-solution"></a>A megoldás létrehozása a magas szintű lépései
-1. Hozzon létre egy egyéni tevékenységet, amely az adatok feldolgozási logikáját tartalmazza.
+### <a name="high-level-steps-to-create-the-solution"></a>A megoldás létrehozásának magas szintű lépései
+1. Hozzon létre egy egyéni tevékenységet, amely tartalmazza az adatfeldolgozási logikát.
 
-1. Hozzon létre egy adat-előállítót, amely az egyéni tevékenység használja.
+1. Hozzon létre egy olyan adatelőállítót, amely az egyéni tevékenységet használja.
 
-### <a name="create-the-custom-activity"></a>Az egyéni tevékenység létrehozása
-A data factory egyéni tevékenység a minta megoldás legfontosabb céljait segítik. A Mintamegoldás Batch használja az egyéni tevékenység futtatásához. Fejleszthetők egyéni tevékenységek, és használja őket az adat-előállító folyamatok kapcsolatos információkért lásd: [egyéni tevékenységek használata egy data factory-folyamatot](data-factory-use-custom-activities.md).
+### <a name="create-the-custom-activity"></a>Egyéni tevékenység létrehozása
+Az egyéni adatfeldolgozó tevékenység a mintaoldat szíve. A minta megoldás a Batch használatával futtatja az egyéni tevékenységet. További információ az egyéni tevékenységek fejlesztéséről és a adat-előállító folyamatokban való használatáról: [egyéni tevékenységek használata a adat-előállító folyamatokban](data-factory-use-custom-activities.md).
 
-.NET egyéni tevékenység használható egy data factory-folyamatot létrehozni, hozzon létre egy .NET-osztálytár projektet egy olyan osztállyal, amely megvalósítja az IDotNetActivity felület végrehajtási. Ez az interfész már csak egy ezek közül: Hajtsa végre. Íme a podpis metody:
+Egy olyan .NET-alapú egyéni tevékenység létrehozásához, amelyet egy adatfeldolgozó-folyamatban használhat, létrehoz egy .NET-osztály-függvénytár-projektet egy olyan osztállyal, amely megvalósítja a IDotNetActivity felületet. Az illesztőfelületnek csak egy metódusa van: Végrehajtása. Itt látható a metódus aláírása:
 
 ```csharp
 public IDictionary<string, string> Execute(
@@ -167,46 +165,46 @@ public IDictionary<string, string> Execute(
             IActivityLogger logger)
 ```
 
-A módszer van néhány kulcsfontosságú összetevők, ismernie kell:
+A metódusnak néhány kulcsfontosságú összetevője van, amelyeket meg kell értenie:
 
-* A metódus négy paramétereket fogadja:
+* A metódus négy paramétert vesz igénybe:
 
-  * **linkedServices**. Ez a paraméter egy társított szolgáltatást, amely a bemeneti és kimeneti adatokat forrásokból (például blob storage) összekapcsolása a data factory enumerálható listáját. Ebben a példában csak egy társított szolgáltatást a bemeneti és kimeneti is használt Azure Storage típusú van.
-  * **az adatkészletek**. A paraméter-adatkészletek enumerálható listáját. Ez a paraméter használatával a helyek és a bemeneti és kimeneti adatkészleteket által definiált sémák.
-  * **tevékenység**. Ez a paraméter az aktuális számítási entitás jelöli. Ebben az esetben egy Batch-szolgáltatás.
-  * **logger**. A naplózó használhatja, hogy a surface hibakeresési megjegyzéseket írhat, a folyamat a "User" napló.
-* A metódus adja vissza egy szótár, amely összekapcsolja az egyéni tevékenységek együtt a jövőben is használható. Ez a funkció még nincs megvalósítva, csak egy üres szótár visszaadásához a metódus.
+  * **linkedServices**. Ez a paraméter a társított szolgáltatások olyan enumerable listája, amely a bemeneti/kimeneti adatforrásokat (például blob Storage) a adat-előállítóhoz kapcsolja. Ebben a példában egyetlen, az Azure Storage típusú, bemenethez és kimenethez használt társított szolgáltatás szerepel.
+  * adatkészletek. Ez a paraméter az adatkészletek enumerable listája. Ezzel a paraméterrel beolvashatja a bemeneti és kimeneti adatkészletek által meghatározott helyet és sémákat.
+  * **tevékenység**. Ez a paraméter az aktuális számítási entitást jelöli. Ebben az esetben ez egy batch szolgáltatás.
+  * **naplózó**. A naplózó használatával olyan hibakeresési megjegyzéseket írhat, amelyek a folyamat "felhasználó" naplójába kerülnek.
+* A metódus egy olyan szótárt ad vissza, amely az egyéni tevékenységek a jövőben történő láncolására használható. Ez a szolgáltatás még nincs megvalósítva, ezért csak üres szótárt ad vissza a metódusból.
 
-#### <a name="procedure-create-the-custom-activity"></a>Az eljárás: Az egyéni tevékenység létrehozása
-1. Hozzon létre egy .NET-osztálytár projektet a Visual Studióban.
+#### <a name="procedure-create-the-custom-activity"></a>Eljárás Egyéni tevékenység létrehozása
+1. .NET-osztálybeli függvénytár-projekt létrehozása a Visual Studióban.
 
-   a. Indítsa el a Visual Studio 2012/2013/2015.
+   a. Indítsa el a Visual Studio 2012/2013/2015 alkalmazást.
 
    b. Válassza a **File** (Fájl) > **New** (Új) > **Project** (Projekt) lehetőséget.
 
-   c. Bontsa ki a **sablonok**, és válassza ki **Visual C\#**. Ebben az útmutatóban a C használata\#, de használhat bármilyen .NET nyelven fejleszthet az egyéni tevékenység.
+   c. Bontsa ki a **sablonok**csomópontot, majd válassza a **Visual C\#** elemet. Ebben az útmutatóban C\#-t használ, de bármilyen .NET-nyelvet használhat az egyéni tevékenység fejlesztéséhez.
 
-   d. Válassza ki **osztálytár** projekttípusok jobb listájából.
+   d. A jobb oldalon válassza ki az **osztály könyvtára** elemet a projekttípus listából.
 
-   e. Adja meg **MyDotNetActivity** számára a **neve**.
+   e. Adja meg a MyDotNetActivity **nevet**.
 
-   f. Válassza ki **C:\\ADF** számára a **hely**. Hozza létre a mappát **ADF** Ha még nem létezik.
+   f. Válassza a **C\\: ADF** lehetőséget a **helyhez**. Ha nem létezik, hozza létre az **ADF** mappát.
 
    g. A projekt létrehozásához válassza az **OK** lehetőséget.
 
-1. Válassza ki **eszközök** > **NuGet-Csomagkezelő** > **Package Manager Console**.
+1. Válassza az **eszközök** > **NuGet Package** > Manager**csomagkezelő konzolt**.
 
-1. Hajtsa végre a Package Manager Console Microsoft.Azure.Management.DataFactories importálása a következő parancsot:
+1. A Package Manager konzolon hajtsa végre a következő parancsot a Microsoft. Azure. Management. DataFactories importálásához:
 
     ```powershell
     Install-Package Microsoft.Azure.Management.DataFactories
     ```
-1. Importálás a **Azure Storage** NuGet-csomagot a projektbe. Mivel ebben a példában a Blob Storage API-t használja ezt a csomagot kell:
+1. Importálja az **Azure Storage** NuGet-csomagot a projektbe. Erre a csomagra azért van szükség, mert ebben a példában a Blob Storage API-t használja:
 
     ```powershell
     Install-Package Az.Storage
     ```
-1. Adja hozzá az alábbi irányelvek használatával a projektben a forrásfájl:
+1. Adja hozzá a következő using direktívák használatával a forrásfájlban a projektben:
 
     ```csharp
     using System.IO;
@@ -220,17 +218,17 @@ A módszer van néhány kulcsfontosságú összetevők, ismernie kell:
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Blob;
     ```
-1. Módosítsa a névtér nevét **MyDotNetActivityNS**.
+1. Módosítsa a névtér nevét a **MyDotNetActivityNS**értékre.
 
     ```csharp
     namespace MyDotNetActivityNS
     ```
-1. Módosítsa a kívánt osztály nevét **MyDotNetActivity**, és a Származtatás a **IDotNetActivity** csatoló látható módon:
+1. Módosítsa az osztály nevét a **MyDotNetActivity**értékre, és származtatja a **IDotNetActivity** felületről az alábbiak szerint:
 
     ```csharp
     public class MyDotNetActivity : IDotNetActivity
     ```
-1. (Hozzáadás) megvalósítása a **Execute** módszere a **IDotNetActivity** a csatoló a **MyDotNetActivity** osztály. Másolja az alábbi mintakód a metódus. Ennél a módszernél a logika ismertetése, tekintse meg a [metódus végrehajtása](#execute-method) szakaszban.
+1. Implementálja (adja hozzá) a **IDotNetActivity** felület **Execute** metódusát a **MyDotNetActivity** osztályhoz. Másolja az alábbi mintakód a metódusba. Az ebben a metódusban használt logika magyarázatát lásd: [metódus végrehajtása](#execute-method) szakasz.
 
     ```csharp
     /// <summary>
@@ -312,7 +310,7 @@ A módszer van néhány kulcsfontosságú összetevők, ismernie kell:
        return new Dictionary<string, string>();
     }
     ```
-1. Adja hozzá a következő segédmetódusokat az osztályhoz. Ezek a metódusok által kerül meghívásra a **Execute** metódust. Legfontosabb, a **Calculate** metódus a kódot, amely végighalad a minden egyes blob különíti el.
+1. Adja hozzá a következő segítő metódusokat a osztályhoz. Ezeket a metódusokat a **végrehajtás** módszere hívja meg. A legfontosabb, hogy a **számítás** módszer elkülöníti az egyes blobokon keresztül ismétlődő kódot.
 
     ```csharp
     /// <summary>
@@ -381,7 +379,7 @@ A módszer van néhány kulcsfontosságú összetevők, ismernie kell:
        return output;
     }
     ```
-    A GetFolderPath metódus az az elérési utat a mappához, amely az adatkészlet ad vissza, és a GetFileName metódust a blob/fájl, amely az adatkészlet nevét adja vissza.
+    A GetFolderPath metódus Visszaadja annak a mappának az elérési útját, amelyre az adatkészlet mutat, és a GetFileName metódus Visszaadja annak a blobnak/fájlnak a nevét, amelyre az adatkészlet mutat.
 
     ```csharp
 
@@ -394,22 +392,22 @@ A módszer van néhány kulcsfontosságú összetevők, ismernie kell:
             "folderPath": "mycontainer/inputfolder/{Year}-{Month}-{Day}-{Hour}",
     ```
 
-    A Calculate metódus a bemeneti fájlt (a mappában lévő blobok) a "Microsoft" kulcsszó példányainak számát számítja ki. A keresési kifejezés "Microsoft" nem változtatható a kódban.
+    A számítás módszer kiszámítja a "Microsoft" kulcsszó példányainak számát a bemeneti fájlokban (Blobok a mappában). A "Microsoft" keresési kifejezés a kódban nem rögzített.
 
-1. A projekt fordításához használandó. Válassza ki **összeállítása** a menüben, és válassza ki a **megoldás fordítása**.
+1. A projekt fordítása. Válassza a **Létrehozás** lehetőséget a menüben, majd válassza a **megoldás létrehozása**lehetőséget.
 
-1. Indítsa el a Windows Intézőt, és nyissa meg a **bin\\debug** vagy **bin\\kiadási** mappát. A mappa build típusától függ.
+1. Indítsa el a Windows Intézőt, és nyissa meg a **bin\\debug** vagy a **bin\\Release** mappát. A mappa választása a Build típusától függ.
 
-1. Hozzon létre egy zip-fájlt **MyDotNetActivity.zip** , amely tartalmazza az összes bináris fájl a  **\\bin\\Debug** mappát. Érdemes a MyDotNetActivity tartalmazza. **pdb** fájlt annak érdekében, hogy további részleteket, például a sor száma, hogy a problémát az okozza, ha hiba lép fel a forráskódban.
+1. Hozzon létre egy **MyDotNetActivity. zip** nevű zip-fájlt, amely a  **\\bin\\debug** mappában található összes bináris fájlt tartalmazza. Előfordulhat, hogy fel szeretné venni a MyDotNetActivity. a **PDB** -fájlt, hogy további részleteket kapjon, például a forráskódban lévő sorszámot, amely a hiba bekövetkezésekor okozta a hibát.
 
    ![A bin\Debug mappák listája](./media/data-factory-data-processing-using-batch/image5.png)
 
-1. Töltse fel **MyDotNetActivity.zip** blobként a blob-tároló `customactivitycontainer` az, hogy a StorageLinkedService társított szolgáltatás ADFTutorialDataFactory használja a blob Storage. A blob-tároló létrehozása `customactivitycontainer` Ha még nem létezik.
+1. Töltse fel a **MyDotNetActivity. zip fájlt** blobként `customactivitycontainer` a blob Storage-tárolóba, amelyet a ADFTutorialDataFactory StorageLinkedService társított szolgáltatása használ. Ha még nem létezik `customactivitycontainer` , hozza létre a BLOB-tárolót.
 
-#### <a name="execute-method"></a>Metódus végrehajtása
-Ez a szakasz további információt nyújt az Execute metódus a kódot.
+#### <a name="execute-method"></a>Végrehajtási metódus
+Ez a szakasz további részleteket tartalmaz a kód végrehajtásához a végrehajtási metódusban.
 
-1. A tagok iterálás a bemeneti gyűjteményben található a [Microsoft.WindowsAzure.Storage.Blob](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.blob.aspx) névtér. Az iterációt a blob-gyűjtemény, módosítania kell használni a **BlobContinuationToken** osztály. Lényegében kell használnia a do-a jogkivonattal a hurokból mechanizmusként ciklus során. További információkért lásd: [használja a Blob storage a .NET használatával](../../storage/blobs/storage-dotnet-how-to-use-blobs.md). Itt láthatók egy alapszintű hurok:
+1. A bemeneti gyűjteményen keresztül megismételni kívánt tagok a [Microsoft. WindowsAzure. Storage. blob](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob) névtérben találhatók. A blob-gyűjteményen keresztüli iterációhoz a **BlobContinuationToken** osztályt kell használnia. Lényegében egy do-while hurkot kell használnia a tokenhez, mint a hurok kilépésének mechanizmusát. További információ: [blob Storage használata a .net-ről](../../storage/blobs/storage-dotnet-how-to-use-blobs.md). Itt látható egy alapszintű hurok:
 
     ```csharp
     // Initialize the continuation token.
@@ -432,47 +430,47 @@ Ez a szakasz további információt nyújt az Execute metódus a kódot.
     } while (continuationToken != null);
 
     ```
-   További információkért lásd a dokumentációban a [ListBlobsSegmented](https://msdn.microsoft.com/library/jj717596.aspx) metódust.
+   További információkért tekintse meg a [ListBlobsSegmented](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_blob_container.listblobssegmented) metódus dokumentációját.
 
-1. A kód használatához blobok rekordkészletből logikailag kerül belül a do-ciklus során. Az a **Execute** metódus, a do-közben hurok nevű metódus adja át a blobok listáját **Calculate**. A metódus egy karakterlánc-változóhoz nevű ad vissza **kimeneti** , amely a szegmensben lévő összes BLOB keresztül kellene iterálni eredménye.
+1. A Blobok készletén végzett munkavégzéshez szükséges kód logikailag a do-while cikluson belülre esik. A **végrehajtás** metódusban a do-while hurok a Blobok listáját egy kiszámított metódusbatovábbítja. A metódus egy **kimenet** nevű karakterlánc-változót ad vissza, amely azt eredményezi, hogy a rendszer megismétli a szegmens összes blobját.
 
-   A keresési kifejezést a blob "Microsoft" átadott előfordulását számát adja meg azt a **Calculate** metódust.
+   Visszaadja a "Microsoft" keresési kifejezés előfordulásainak számát a **számítás** metódusnak átadott blobban.
 
     ```csharp
     output += string.Format("{0} occurrences of the search term \"{1}\" were found in the file {2}.\r\n", wordCount, searchTerm, inputBlob.Name);
     ```
-1. Miután a **Calculate** metódus befejeződött, azt kell megírni, hogy egy új blob. Minden csoport a blobok feldolgozása egy új blob dají zapsat az eredményeket. Egy új blob írni, keresse meg a kimeneti adatkészlet.
+1. A kiszámítási módszer befejezése után egy új blobba kell írni. Minden feldolgozott blob esetében egy új blob írható az eredményekkel. Egy új blobba való íráshoz először keresse meg a kimeneti adatkészletet.
 
     ```csharp
     // Get the output dataset by using the name of the dataset matched to a name in the Activity output collection.
     Dataset outputDataset = datasets.Single(dataset => dataset.Name == activity.Outputs.Single().Name);
     ```
-1. A kód is meghívja a segédmetódus **GetFolderPath** beolvasni a mappa elérési útját (a tároló nevét).
+1. A kód a **GetFolderPath** segítő metódust is meghívja a mappa elérési útjának (a tároló neve) lekéréséhez.
 
     ```csharp
     folderPath = GetFolderPath(outputDataset);
     ```
-   A GetFolderPath metódus kerül az adatkészlet-objektum, melyet az AzureBlobDataSet, amely FolderPath nevű tulajdonsággal rendelkezik.
+   A GetFolderPath metódus az adatkészlet objektumot egy AzureBlobDataSet, amely egy FolderPath nevű tulajdonsággal rendelkezik.
 
     ```csharp
     AzureBlobDataset blobDataset = dataArtifact.Properties.TypeProperties as AzureBlobDataset;
     
     return blobDataset.FolderPath;
     ```
-1. A kód meghívja a **GetFileName** metódusának segítéségével lekérheti a fájl nevét (a blob neve). A kód hasonlít az előző kód használt mappa elérési útját.
+1. A kód meghívja a **GetFileName** metódust a fájl nevének lekéréséhez (blob neve). A kód hasonlít a mappa elérési útjának beolvasására használt korábbi kódhoz.
 
     ```csharp
     AzureBlobDataset blobDataset = dataArtifact.Properties.TypeProperties as AzureBlobDataset;
     
     return blobDataset.FileName;
     ```
-1. Egy URI-objektum létrehozása a fájl nevét írja. Az URI-konstruktor használja a **BlobEndpoint** tulajdonságát a tároló nevének visszaadása. A mappa elérési útját és nevét a kimeneti blob URI-t hozhat létre kerülnek.  
+1. A fájl nevét egy URI-objektum létrehozásával kell megírni. Az URI-konstruktor a **BlobEndpoint** tulajdonság használatával adja vissza a tároló nevét. A rendszer hozzáadja a mappa elérési útját és fájlnevét a kimeneti blob URI létrehozásához.  
 
     ```csharp
     // Write the name of the file.
     Uri outputBlobUri = new Uri(outputStorageAccount.BlobEndpoint, folderPath + "/" + GetFileName(outputDataset));
     ```
-1. Után íródik a fájl nevét, a kimeneti karakterláncot, írhat a **Calculate** új blob metódust:
+1. A fájl nevének megírása után a kimeneti karakterláncot a **számítás** metódusból egy új blobba írhatja:
 
     ```csharp
     // Create a blob and upload the output text.
@@ -481,12 +479,12 @@ Ez a szakasz további információt nyújt az Execute metódus a kódot.
     outputBlob.UploadText(output);
     ```
 
-### <a name="create-the-data-factory"></a>Az adat-előállító létrehozása
-Az a [az egyéni tevékenység létrehozása](#create-the-custom-activity) szakaszban létrehozott egyéni tevékenységek és a bináris fájlokat a zip-fájlt, és a PDB-fájl feltöltése a blob-tárolóba. Ebben a szakaszban egy adat-előállítót egy olyan folyamattal, amely használja az egyéni tevékenység létrehozása.
+### <a name="create-the-data-factory"></a>Az adatelőállító létrehozása
+Az [egyéni tevékenység létrehozása](#create-the-custom-activity) szakaszban létrehozott egy egyéni tevékenységet, és feltöltötte a bináris fájlokat és a PDB-fájlt egy blob-tárolóba. Ebben a szakaszban egy adatelőállítót hoz létre egy olyan folyamattal, amely az egyéni tevékenységet használja.
 
-Az egyéni tevékenység a bemeneti adatkészlet jelöli a blobokat (fájlok) a bemeneti mappában (`mycontainer\\inputfolder`) a blob storage-ban. A kimeneti adatkészlet a tevékenység kimeneti mappában a kimeneti blobok jelöli (`mycontainer\\outputfolder`) a blob storage-ban.
+Az egyéni tevékenység bemeneti adatkészlete a blob Storage-ban lévő bemeneti mappában (`mycontainer\\inputfolder`) lévő blobokat (fájlokat) jelöli. A tevékenység kimeneti adatkészlete a blob Storage kimeneti mappájában (`mycontainer\\outputfolder`) lévő kimeneti blobokat jelöli.
 
-A bemeneti mappákba, dobja el egy vagy több fájlt:
+Egy vagy több fájl eldobása a bemeneti mappákba:
 
 ```
 mycontainer -\> inputfolder
@@ -497,21 +495,21 @@ mycontainer -\> inputfolder
     2015-11-16-04
 ```
 
-Például betett egy fájlt (file.txt) a következő tartalommal egyes mappák:
+Például dobjon egy fájlt (file. txt) az alábbi tartalommal az egyes mappákba:
 
 ```
 test custom activity Microsoft test custom activity Microsoft
 ```
 
-Minden egyes bemeneti mappa felel meg az adat-előállító szeletet akkor is, ha a mappa két vagy több fájlt. A folyamat minden egyes szeletet dolgoz fel, ha az egyéni tevékenység végighalad a szelet a bemeneti mappában lévő összes BLOB.
+Az egyes bemeneti mappák a adat-előállítóban lévő szeleteknek felelnek meg, még akkor is, ha a mappában kettő vagy több fájl található. Ha az egyes szeleteket a folyamat dolgozza fel, az egyéni tevékenység megismétli az adott szelet bemeneti mappájában található összes blobot.
 
-Láthatja, hogy az azonos tartalmú öt kimeneti fájlokat. Például a kimeneti fájlt a 2015-11-16-00 mappában található fájl feldolgozását, a következő tartalommal:
+Öt kimeneti fájl jelenik meg ugyanazzal a tartalommal. Például az 2015-11-16-00 mappában található fájl feldolgozásának kimeneti fájlja a következő tartalommal rendelkezik:
 
 ```
 2 occurrences(s) of the search term "Microsoft" were found in the file inputfolder/2015-11-16-00/file.txt.
 ```
 
-Ha a bemeneti mappa több fájlt (file.txt, fájl2.ref fájllal, file3.txt) az azonos tartalmú betett, láthatja a kimeneti fájl az alábbi tartalommal. Minden mappa (2015-11-16-00 stb.) ebben a példában egy szelet felel meg, annak ellenére, hogy a mappa több bemeneti fájllal rendelkezik.
+Ha több fájlt (file. txt, fájl2. txt, fájl3. txt) húz el ugyanazzal a tartalommal a bemeneti mappába, a kimeneti fájlban a következő tartalom jelenik meg. Az egyes mappák (2015-11-16-00 stb.) egy szeletnek felelnek meg ebben a mintában annak ellenére, hogy a mappában több bemeneti fájl található.
 
 ```csharp
 2 occurrences(s) of the search term "Microsoft" were found in the file inputfolder/2015-11-16-00/file.txt.
@@ -519,91 +517,91 @@ Ha a bemeneti mappa több fájlt (file.txt, fájl2.ref fájllal, file3.txt) az a
 2 occurrences(s) of the search term "Microsoft" were found in the file inputfolder/2015-11-16-00/file3.txt.
 ```
 
-A kimeneti fájl három sort, egy az egyes bemeneti fájlra (blobra) abban a mappában, a szelet (2015-11-16-00) társított rendelkezik.
+A kimeneti fájl három sorral rendelkezik, egyet a szelethez társított mappában lévő minden bemeneti fájlhoz (blob) (2015-11-16-00).
 
-Egy feladat jön létre minden egyes tevékenység futtatásához. Ebben a példában csak egyetlen tevékenység van folyamatban. A folyamat egy szeletet dolgoz fel, ha az egyéni tevékenység kötegelt dolgozza fel a szeletet futtat. Nincsenek öt szeletek (minden szelet rendelkezhet több blobok vagy fájlt), mert öt feladatok jönnek létre a Batch szolgáltatásban. Batch-feladat fut, esetén az egyéni tevékenység, hogy fut-e.
+Létrejön egy feladat minden egyes tevékenység futtatásához. Ebben a példában csak egy tevékenység található a folyamatban. Ha a folyamat egy szeletet dolgoz fel, az egyéni tevékenység a kötegben fut a szelet feldolgozásához. Mivel öt szelet van (minden szelet több blobtal vagy fájllal is rendelkezhet), öt feladat jön létre a Batchben. Ha egy feladat a Batch szolgáltatásban fut, akkor az az egyéni tevékenység, amely fut.
 
-A következő forgatókönyv további részleteket biztosít.
+A következő útmutató további részleteket tartalmaz.
 
-#### <a name="step-1-create-the-data-factory"></a>1. lépés: Az adat-előállító létrehozása
-1. A bejelentkezés után a [az Azure portal](https://portal.azure.com/), az alábbi lépéseket:
+#### <a name="step-1-create-the-data-factory"></a>1\. lépés: Az adatelőállító létrehozása
+1. Miután bejelentkezett a Azure Portalba [](https://portal.azure.com/), hajtsa végre a következő lépéseket:
 
-   a. Válassza ki **új** a bal oldali menüben.
+   a. Válassza az **új** lehetőséget a bal oldali menüben.
 
-   b. Válassza ki **adatok + analitika** a a **új** panelen.
+   b. Az **új** panelen válassza a **adatok és Analitika** lehetőséget.
 
-   c. Válassza ki **adat-előállító** a a **Data analytics** panelen.
+   c. Válassza a **Data Factory** lehetőséget az adatelemzés panelen.
 
-1. Az a **új adat-előállító** panelen adja meg **CustomActivityFactory** neve. Az adat-előállító nevének globálisan egyedinek kell lennie. Ha a "Data factory CustomActivityFactory név nem érhető el" hibaüzenetet kapja módosítsa az adat-előállító nevét. Például yournameCustomActivityFactory használja, és hozza létre újra az adat-előállítóban.
+1. Az **új adatgyár** panelen írja be a **CustomActivityFactory** nevet. Az adat-előállító nevének globálisan egyedinek kell lennie. Ha "a CustomActivityFactory neve nem érhető el" hibaüzenet jelenik meg, módosítsa az adatelőállító nevét. Használja például a yournameCustomActivityFactory, és hozza létre újra az adatelőállítót.
 
-1. Válassza ki **ERŐFORRÁSCSOPORT-név**, és válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy erőforráscsoportot.
+1. Válassza ki az **ERŐFORRÁSCSOPORT nevét**, és válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy erőforráscsoportot.
 
-1. Győződjön meg arról, hogy az előfizetésben és régióban, ahol szeretné létrehozni az adat-előállító helyesek.
+1. Ellenőrizze, hogy helyesek-e az előfizetés és a régió, ahová az adatelőállítót létre szeretné hozni.
 
-1. Válassza ki **létrehozás** a a **új adat-előállító** panelen.
+1. Válassza a **Létrehozás** lehetőséget az **új adatgyár** panelen.
 
-1. Az adat-előállító létrehozása a portál irányítópultján.
+1. A rendszer létrehoz egy adatelőállítót a portál irányítópultján.
 
-1. A data factory sikeres létrehozása után láthatja a **adat-előállító** oldal, amely megjeleníti az adat-előállító tartalmát.
+1. Miután a rendszer sikeresen létrehozta az adatelőállítót, megjelenik az adatelőállító oldal, amely megjeleníti az adatelőállító tartalmát.
 
-   ![Adat-előállító lap](./media/data-factory-data-processing-using-batch/image6.png)
+   ![Az adatfeldolgozó lap](./media/data-factory-data-processing-using-batch/image6.png)
 
-#### <a name="step-2-create-linked-services"></a>2. lépés: Társított szolgáltatások létrehozása
-Társított szolgáltatások adattárakat vagy számítási szolgáltatások adat-előállító. Ebben a lépésben társítani fogja a storage-fiók és a Batch-fiókot az adat-előállítóhoz.
+#### <a name="step-2-create-linked-services"></a>2\. lépés: Társított szolgáltatások létrehozása
+A társított szolgáltatások adattárakat vagy számítási szolgáltatásokat kapcsolnak össze egy adatgyárban. Ebben a lépésben a Storage-fiókot és a Batch-fiókot a saját adatgyárához kapcsolja.
 
 #### <a name="create-an-azure-storage-linked-service"></a>Azure Storage-beli társított szolgáltatás létrehozása
-1. Válassza ki a **Szerző és üzembe helyezése** csempét a **adat-előállító** paneljén **CustomActivityFactory**. A Data Factory Editor jelenik meg.
+1. Válassza ki a **Szerző és üzembe helyezés** csempét a **CustomActivityFactory**-hez készült adatfeldolgozó panelen. Megjelenik a Data Factory szerkesztő.
 
-1. Válassza ki **új adattároló** a parancssávon válassza **az Azure storage.** A JSON-parancsfájl használatával hozzon létre egy Storage társított szolgáltatás a szerkesztőben megjelenik.
+1. Válassza a parancssáv **új adattár** elemét, és válassza az **Azure Storage lehetőséget.** Megjelenik a Storage társított szolgáltatás létrehozásához használt JSON-szkript a szerkesztőben.
 
    ![Új adattároló](./media/data-factory-data-processing-using-batch/image7.png)
 
-1. Cserélje le az **account name** kifejezést a tárfiókja nevére. Az **account key** kifejezést cserélje le a tárfiók hozzáférési kulcsára. A tárelérési kulcs lekérésével kezelésével kapcsolatos információkért lásd: [megtekintése, másolása és újragenerálása storage hozzáférési kulcsok](../../storage/common/storage-account-manage.md#access-keys).
+1. Cserélje le az **account name** kifejezést a tárfiókja nevére. Az **account key** kifejezést cserélje le a tárfiók hozzáférési kulcsára. A Storage-hozzáférési kulcs beszerzéséről a Storage- [hozzáférési kulcsok megtekintése, másolása és](../../storage/common/storage-account-manage.md#access-keys)újragenerálása című témakörben olvashat bővebben.
 
 1. A társított szolgáltatás üzembe helyezéséhez kattintson a parancssáv **Üzembe helyezés** elemére.
 
    ![Üzembe helyezés](./media/data-factory-data-processing-using-batch/image8.png)
 
-#### <a name="create-an-azure-batch-linked-service"></a>Azure Batch-beli társított szolgáltatás létrehozása
-Ebben a lépésben a Batch-fiók, amely a data factory egyéni tevékenység futtatásához használt társított szolgáltatás létrehozása.
+#### <a name="create-an-azure-batch-linked-service"></a>Azure Batch társított szolgáltatás létrehozása
+Ebben a lépésben létrehoz egy társított szolgáltatást a Batch-fiókjához, amelyet a rendszer az adatfeldolgozó egyéni tevékenységének futtatására használ.
 
-1. Válassza ki **új számítási** a parancssávon válassza **Azure Batch.** A JSON-parancsfájl használatával hozzon létre egy Batch-társított szolgáltatást a szerkesztőben megjelenik.
+1. Válassza a parancssáv **új számítás** elemét, és válassza a **Azure batch lehetőséget.** Megjelenik egy batch társított szolgáltatás létrehozásához használt JSON-szkript a szerkesztőben.
 
-1. A JSON-parancsfájl:
+1. A JSON-parancsfájlban:
 
-   a. Cserélje le **fióknév** a Batch-fiók nevére.
+   a. Cserélje le a **fióknevet** a Batch-fiók nevére.
 
-   b. Cserélje le **hívóbetű** a Batch-fiók hozzáférési kulcsára.
+   b. Cserélje le a **hozzáférési kulcsot** a Batch-fiók hozzáférési kulcsára.
 
-   c. Adja meg a készlet az Azonosítót a **poolName** tulajdonság. Ehhez a tulajdonsághoz megadhatja a készlet nevét, vagy a készlet azonosítójával.
+   c. Adja meg a készlet AZONOSÍTÓját a **poolName** tulajdonsághoz. Ebben a tulajdonságban megadhatja a készlet nevét vagy a készlet AZONOSÍTÓját.
 
-   d. Adja meg a batch URI az az **batchUri** JSON-tulajdonságot.
+   d. Adja meg a Batch URI-JÁT a **batchUri** JSON tulajdonságához.
 
       > [!IMPORTANT]
-      > Az URL-címet a **Batch-fiók** panelen a következő formátumban van: \<accountname\>.\< régió\>. batch.azure.com. Az a **batchUri** tulajdonság a JSON-parancsfájl, el kell távolítania a88 "accountname." ** az URL-CÍMÉT. Például: `"batchUri": "https://eastus.batch.azure.com"`.
+      > A **Batch-fiók** panel URL-címe a következő formátumban van: \<accountname\>.\< region\>. Batch.Azure.com. A JSON-parancsfájl **batchUri** tulajdonságához el kell távolítania a "accountname" a88. * * az URL-címről. Például: `"batchUri": "https://eastus.batch.azure.com"`.
       >
       >
 
       ![Batch-fiók panel](./media/data-factory-data-processing-using-batch/image9.png)
 
-      Az a **poolName** tulajdonság, a készlet neve helyett a készlet Azonosítóját is megadható.
+      A **poolName** tulajdonsághoz a készlet neve helyett a készlet azonosítóját is megadhatja.
 
       > [!NOTE]
-      > A Data Factory szolgáltatás nem támogatja az igény szerinti beállítás a Batch, mint az HDInsight. Adat-előállító is használhatja a saját Batch-készlet.
+      > A Data Factory szolgáltatás nem támogatja az igény szerinti beállítást a Batch esetében, mivel az a HDInsight esetében működik. Csak a saját batch-készletét használhatja egy adatelőállítóban.
       >
       >
    
-   e. Adja meg **StorageLinkedService** számára a **linkedServiceName** tulajdonság. Az előző lépésben hozott létre ezt a társított szolgáltatást. Ez a tároló egy átmeneti területre, fájlok és a naplók szolgál.
+   e. **StorageLinkedService** megadása a **linkedServiceName** tulajdonsághoz. Ezt a társított szolgáltatást az előző lépésben hozta létre. Ez a tároló a fájlok és naplók előkészítési részeként használatos.
 
 1. A társított szolgáltatás üzembe helyezéséhez kattintson a parancssáv **Üzembe helyezés** elemére.
 
-#### <a name="step-3-create-datasets"></a>3. lépés: Adatkészletek létrehozása
-Ebben a lépésben adatkészleteket hoz létre, bemeneti és kimeneti adatokat képviselik.
+#### <a name="step-3-create-datasets"></a>3\. lépés: Adatkészletek létrehozása
+Ebben a lépésben adatkészleteket hoz létre a bemeneti és kimeneti adatok ábrázolásához.
 
 #### <a name="create-the-input-dataset"></a>A bemeneti adatkészlet létrehozása
-1. A Data Factory Editorban válassza ki a **új adatkészlet** gombra az eszköztáron. Válassza ki **Azure Blob storage** a legördülő listából.
+1. A Data Factory szerkesztőben kattintson az **új adatkészlet** gombra az eszköztáron. Válassza ki az **Azure Blob Storage** -t a legördülő listából.
 
-1. Cserélje le a JSON-parancsfájl, a jobb oldali panelen a következő JSON-kódrészletre:
+1. Cserélje le a JSON-szkriptet a jobb oldali ablaktáblán a következő JSON-kódrészletre:
 
     ```json
     {
@@ -661,11 +659,11 @@ Ebben a lépésben adatkészleteket hoz létre, bemeneti és kimeneti adatokat k
     }
     ```
 
-    Létrehoz egy folyamatot a kezdési időpont 2015 az útmutató későbbi részeiben-11-16T00:00:00Z és a befejezési ideje a 2015-11-16T05:00:00Z. Van ütemezve adatok előállításához óránként, ezért a öt bemeneti/kimeneti szeletek (közötti **00**: 00:00 -\> **05**: 00:00).
+    Az útmutató későbbi részében létrehoz egy folyamatot a 2015-11 – 16T00:00:00Z és a befejezési idő 2015-11-16T05:00:00Z. Az adatok óránkénti előállítására van ütemezve, így öt bemeneti/kimeneti szelet van ( **00**: 00:00 –\> **05**: 00:00 között).
 
-    A **gyakorisága** és **időköz** a bemeneti adatkészlethez vannak beállítva **óra** és **1**, ami azt jelenti, hogy a bemeneti szelet érhető el Óránként.
+    A bemeneti adatkészlet gyakorisága és **intervalluma** **óra** és **1**értékre van állítva, ami azt jelenti, hogy a bemeneti szelet óránként elérhető.
 
-    Minden szelet kezdési ideje képviseli a **SliceStart** rendszerváltozó az előző JSON-kódrészletben. Az alábbiakban az egyes szeletekhez a kezdési idejének.
+    Az egyes szeletek kezdő időpontját a **SliceStart** rendszerváltozó jelöli az előző JSON-kódrészletben. Itt láthatók az egyes szeletek kezdő időpontjai.
 
     | **Slice** | **Kezdési idő**          |
     |-----------|-------------------------|
@@ -675,7 +673,7 @@ Ebben a lépésben adatkészleteket hoz létre, bemeneti és kimeneti adatokat k
     | 4         | 2015-11-16T**03**:00:00 |
     | 5         | 2015-11-16T**04**:00:00 |
 
-    A **folderPath** által az év, hónap, nap és óra részét a szelet kezdő időpontja (**SliceStart**). Itt látható, hogyan van leképezve egy bemeneti mappa egy szeletet.
+    A **folderPath** a szelet kezdési időpontja (**SliceStart**) év, hónap, nap és óra része alapján számítjuk ki. Itt láthatja, hogy egy bemeneti mappa hogyan van leképezve egy szeletre.
 
     | **Slice** | **Kezdési idő**          | **Bemeneti mappa**  |
     |-----------|-------------------------|-------------------|
@@ -685,14 +683,14 @@ Ebben a lépésben adatkészleteket hoz létre, bemeneti és kimeneti adatokat k
     | 4         | 2015-11-16T**03**:00:00 | 2015-11-16-**03** |
     | 5         | 2015-11-16T**04**:00:00 | 2015-11-16-**04** |
 
-1. Válassza ki **telepítés** létrehozása és üzembe helyezése az eszköztáron a **InputDataset** tábla.
+1. Az eszköztáron válassza a **telepítés** lehetőséget a **InputDataset** tábla létrehozásához és üzembe helyezéséhez.
 
 #### <a name="create-the-output-dataset"></a>A kimeneti adatkészlet létrehozása
-Ebben a lépésben hozzon létre egy másik adatkészlet típusa AzureBlob, amely a kimeneti adatokat jelöli.
+Ebben a lépésben egy másik AzureBlob típusú adatkészletet hoz létre, amely a kimeneti adatokat jelöli.
 
-1. A Data Factory Editorban válassza ki a **új adatkészlet** gombra az eszköztáron. Válassza ki **Azure Blob storage** a legördülő listából.
+1. A Data Factory szerkesztőben kattintson az **új adatkészlet** gombra az eszköztáron. Válassza ki az **Azure Blob Storage** -t a legördülő listából.
 
-1. Cserélje le a JSON-parancsfájl, a jobb oldali panelen a következő JSON-kódrészletre:
+1. Cserélje le a JSON-szkriptet a jobb oldali ablaktáblán a következő JSON-kódrészletre:
 
     ```json
     {
@@ -722,7 +720,7 @@ Ebben a lépésben hozzon létre egy másik adatkészlet típusa AzureBlob, amel
     }
     ```
 
-    Kimeneti blob/fájl jön létre az egyes bemeneti szeletek. Itt látható, hogy az egyes szeletekhez egy kimeneti fájl neve. A kimeneti fájlok jönnek létre egy kimeneti mappában, `mycontainer\\outputfolder`.
+    Minden bemeneti szelethez kimeneti blob/fájl jön létre. Az egyes szeletekhez tartozó kimeneti fájl nevét itt találja. Az összes kimeneti fájl egy kimeneti mappában `mycontainer\\outputfolder`jön létre.
 
     | **Slice** | **Kezdési idő**          | **Kimeneti fájl**       |
     |-----------|-------------------------|-----------------------|
@@ -732,21 +730,21 @@ Ebben a lépésben hozzon létre egy másik adatkészlet típusa AzureBlob, amel
     | 4         | 2015-11-16T**03**:00:00 | 2015-11-16-**03.txt** |
     | 5         | 2015-11-16T**04**:00:00 | 2015-11-16-**04.txt** |
 
-    Ne feledje, hogy a mappában található összes fájl egy bemeneti (például a 2015-11-16-00) a kezdési időponttal 2015-11-16-00 szelet részei. A szeletek feldolgozásakor a rendszer az egyéni tevékenység keresztül minden fájlt megvizsgálja-e, és létrehozza a kimeneti fájl az előfordulási a keresési kifejezés "Microsoft". egy vonal A 2015-11-16-00 mappa három fájl is tartalmaz, ha nincsenek három sort a kimeneti fájl 2015-11-16-00.txt.
+    Ne feledje, hogy a bemeneti mappában lévő összes fájl (például 2015-11-16-00) egy szelet részét képezi a 2015-11-16-00 kezdési idővel. A szelet feldolgozásakor az egyéni tevékenység átvizsgálja az egyes fájlokat, és létrehoz egy sort a kimeneti fájlban a "Microsoft" keresési kifejezés előfordulásainak számával. Ha a 2015-11-16-00 mappában három fájl található, a kimeneti fájl 2015-11-16 -00. txt fájljában három sor található.
 
-1. Válassza ki **telepítés** létrehozása és üzembe helyezése az eszköztáron a **OutputDataset**.
+1. A **OutputDataset**létrehozásához és üzembe helyezéséhez válassza az eszköztár **üzembe helyezés** elemét.
 
-#### <a name="step-4-create-and-run-the-pipeline-with-a-custom-activity"></a>4. lépés: Hozzon létre, és futtatjuk a folyamatot az egyéni tevékenységek
-Ebben a lépésben létrehoz egy folyamatot egy tevékenységgel, a korábban létrehozott egyéni tevékenységet.
+#### <a name="step-4-create-and-run-the-pipeline-with-a-custom-activity"></a>4\. lépés: Folyamat létrehozása és futtatása egyéni tevékenységgel
+Ebben a lépésben létrehoz egy folyamatot egy tevékenységgel, a korábban létrehozott egyéni tevékenységgel.
 
 > [!IMPORTANT]
-> Ha még nem töltött **file.txt** bemeneti blob-tárolóban található, ehhez a folyamat létrehozása előtt. A **isPaused** tulajdonság értéke HAMIS, a folyamat JSON-t, így a folyamat azonnali fut, mert a **start** dátuma a múltban van.
+> Ha még nem töltötte fel a **fájl. txt fájlt** a blob-tárolóban lévő mappákba, ezt a folyamat létrehozása előtt tegye meg. A **ispaused fogalmak** tulajdonság a folyamat JSON-fájljában hamis értékre van állítva, így a folyamat azonnal fut, mert a **kezdő** dátum a múltban van.
 >
 >
 
-1. A Data Factory Editorban válassza **új adatcsatorna** a parancssávon. Ha nem látja a parancs, válassza ki a három pontra szimbólum, a megjelenítéséhez.
+1. A Data Factory szerkesztőben válassza a parancssáv **új folyamat** elemét. Ha nem látja a parancsot, válassza a három pont szimbólumot a megjelenítéshez.
 
-1. Cserélje le a JSON-parancsfájl, a jobb oldali panelen a következő JSON-kódrészletre:
+1. Cserélje le a JSON-szkriptet a jobb oldali ablaktáblán a következő JSON-kódrészletre:
 
     ```json
     {
@@ -793,65 +791,65 @@ Ebben a lépésben létrehoz egy folyamatot egy tevékenységgel, a korábban l�
     ```
    Vegye figyelembe a következő szempontokat:
 
-   * A folyamat csak egyetlen tevékenység van, és a típusú **DotNetActivity**.
-   * **AssemblyName** értéke az a dll-fájl neve **MyDotNetActivity.dll**.
-   * **EntryPoint** értékre van állítva **MyDotNetActivityNS.MyDotNetActivity**. Gyakorlatilag \<névtér\>.\< osztálynév\> a kódban.
-   * **PackageLinkedService** értékre van állítva **StorageLinkedService**, amely a blob Storage, az egyéni tevékenység zip-fájlt tartalmazó mutat. Ha a bemeneti és kimeneti fájlok és az egyéni tevékenység zip-fájlt használjon különböző tárfiókokat, akkor egy másik Storage társított szolgáltatás létrehozása. Ez a cikk feltételezi, hogy ugyanazt a tárfiókot használja.
-   * **PackageFile** értékre van állítva **customactivitycontainer/MyDotNetActivity.zip**. A következő formátumban van \<containerforthezip\>/\<nameofthezip.zip\>.
-   * Az egyéni tevékenységek **InputDataset** bemenetként, és **OutputDataset** kimenetként.
-   * A **linkedServiceName** tulajdonság az egyéni tevékenység **AzureBatchLinkedService**, amely tájékoztatja, hogy a Data Factory, az egyéni tevékenység Batch futtatásához szükséges.
-   * A **egyidejűségi** beállítás fontos. Ha használja az alapértelmezett érték, amely 1, még akkor is, ha kettő vagy több készlet számítási csomópontjain a Batch, a szeletek feldolgozása után. Ezért azt nem kihasználhatja a párhuzamos feldolgozási képesség a Batch. Ha **egyidejűségi** értéke, például: 2, az azt jelenti, hogy a két szeleteket (felel meg a két feladatot a Batch szolgáltatásban) egy időben feldolgozható. Ebben az esetben is a virtuális gépek a Batch-készlet használ. Állítsa be megfelelően az egyidejűségi tulajdonság.
-   * Csak egy feladat (szelet) végrehajtása a virtuális gép bármikor alapértelmezés szerint. Alapértelmezés szerint **virtuális gépenkénti feladatok maximális** a Batch-készlet 1 értékre van állítva. Az Előfeltételek részeként létrehozott készlet Ez a tulajdonság értéke 2. Ezért két data factory szeletek is futtathatja a virtuális gép egyszerre.
-     - A **isPaused** tulajdonsága hamis értékre van beállítva, alapértelmezés szerint. A folyamat azonnal fut ebben a példában, mivel a szeletek indítsa el a múltban. És ez a tulajdonság megadható **igaz** szüneteltetni a folyamat és a készlet, biztonsági **hamis** újraindításához.
-     -   A **start** és **záró** értendő öt órára egymástól. A szeletek előállítása óránként, így öt szelet előállítása a folyamat.
+   * Csak egy tevékenység van a folyamatban, és a típusa **DotNetActivity**.
+   * A **AssemblyName** a dll **MyDotNetActivity. dll**fájljának nevére van beállítva.
+   * A **BelépésiPont** értéke **MyDotNetActivityNS. MyDotNetActivity**. Ez alapvetően \<a névtér\>.\< osztálynév\> a kódban.
+   * A **PackageLinkedService** értéke **StorageLinkedService**, amely az egyéni tevékenység zip-fájlját tartalmazó blob Storage-ra mutat. Ha különböző tárolási fiókokat használ a bemeneti/kimeneti fájlokhoz és az egyéni tevékenység zip-fájljához, létre kell hoznia egy másik Storage-beli társított szolgáltatást. Ez a cikk azt feltételezi, hogy ugyanazt a Storage-fiókot használja.
+   * A **PackageFile** értéke **customactivitycontainer/MyDotNetActivity. zip**. A formátuma \<containerforthezip\>/nameofthezip.zip\>.\<
+   * Az egyéni tevékenység kimenetként a bemeneti és a **OutputDataset** **InputDataset** veszi át.
+   * Az egyéni tevékenység **linkedServiceName** tulajdonsága a **AzureBatchLinkedService**-ra mutat, ami azt jelzi, Data Factory, hogy az egyéni tevékenységnek futnia kell a Batch szolgáltatásban.
+   * A **Egyidejűség** beállítása fontos. Ha az alapértelmezett értéket használja (1), akkor is, ha a Batch-készletben kettő vagy több számítási csomópont van, akkor a szeletek feldolgozása egy másik után történik. Ezért nem használja ki a Batch párhuzamos feldolgozási funkciójának előnyeit. Ha nagyobb értékre állítja a **párhuzamosságot** , mondjuk 2, azt jelenti, hogy két szelet (amely a Batch két feladatának felel meg) egyszerre is feldolgozható. Ebben az esetben a rendszer a Batch-készletben lévő virtuális gépeket is használja. Állítsa be a párhuzamossági tulajdonságot megfelelően.
+   * Alapértelmezés szerint a virtuális gépen csak egy feladat (szelet) kerül végrehajtásra. Alapértelmezés szerint a **virtuális gépek maximális száma** 1 értékre van állítva egy batch-készletnél. Az előfeltételek részeként létrehozott egy készletet, amelynek a tulajdonsága 2 értékre van beállítva. Ezért a virtuális gépen két adatfeldolgozó szelet futhat egyszerre.
+     - A **ispaused fogalmak** tulajdonság alapértelmezés szerint hamis értékre van állítva. Ebben a példában a folyamat azonnal fut, mert a szeletek a múltban kezdődnek. Ezt a tulajdonságot **igaz** értékre állíthatja, ha szüneteltetni szeretné a folyamatot, és visszaállítja a **false (hamis) értéket** az újraindításhoz.
+     -   A **kezdő** és a **záró** időpont öt óra egymástól. A szeletek óránként jönnek létre, így a folyamat öt szeletet állít elő.
 
 1. A folyamat üzembe helyezéséhez kattintson a parancssor **Üzembe helyezés** elemére.
 
-#### <a name="step-5-test-the-pipeline"></a>5. lépés: A folyamat tesztelése
-Ebben a lépésben a folyamat által fájlokat húzhat a bemeneti mappákban teszteléséhez. Indítsa el az egyes bemeneti mappa egy fájlt a folyamat tesztelése.
+#### <a name="step-5-test-the-pipeline"></a>5\. lépés: A folyamat tesztelése
+Ebben a lépésben teszteli a folyamatot a fájlok bemeneti mappákba való eldobásával. Első lépésként tesztelje a folyamatot az egyes bemeneti mappák egy fájljával.
 
-1. Az a **adat-előállító** az Azure Portalon, válassza a panel **Diagram**.
+1. A Azure Portal **adatgyár** paneljén válassza a **diagram**elemet.
 
-   ![Ábra](./media/data-factory-data-processing-using-batch/image10.png)
+   ![Diagram](./media/data-factory-data-processing-using-batch/image10.png)
 
-1. Az a **Diagram** kattintson duplán a bemeneti adatkészlet **InputDataset**.
+1. A **diagram** nézetben kattintson duplán a bemeneti adatkészlet **InputDataset**.
 
    ![InputDataset](./media/data-factory-data-processing-using-batch/image11.png)
 
-1. A **InputDataset** panel jelenik meg az összes öt szelet készen áll. Figyelje meg a **SZELET KEZDŐ időpont** és **SZELET BEFEJEZÉSI időpontja** az egyes szeletekhez.
+1. A **InputDataset** panel minden öt szeletre készen jelenik meg. Figyelje meg, hogy a **szelet kezdő időpontja** és a **szelet befejezési időpontja** minden szeletnél.
 
    ![A bemeneti szelet kezdési és befejezési időpontja](./media/data-factory-data-processing-using-batch/image12.png)
 
-1. Az a **Diagram** nézetben válassza **OutputDataset**.
+1. A **diagram** nézetben válassza a **OutputDataset**lehetőséget.
 
-1. Az öt kimeneti szeletek jelennek meg a **készen** állapotba, ha azok keletkezett.
+1. Az öt kimeneti szelet **kész** állapotban jelenik meg, ha létrejöttek.
 
-   ![A kimeneti szelet kezdési és befejezési időpontja](./media/data-factory-data-processing-using-batch/image13.png)
+   ![Kimeneti szelet kezdő és befejező időpontja](./media/data-factory-data-processing-using-batch/image13.png)
 
-1. A szeletek tartozó feladatok megtekintéséhez a portál használatával, és megtekintheti, milyen virtuális gép minden szelet futtatunk. További információkért lásd: a [Data Factory és a Batch-integráció](#data-factory-and-batch-integration) szakaszban.
+1. A portálon megtekintheti a szeletekhez társított feladatokat, és megtekintheti, hogy az egyes szeletek milyen virtuális gépen futottak. További információ: [Data Factory és batch Integration](#data-factory-and-batch-integration) szakasz.
 
-1. A kimeneti fájlok meg fog jelenni `mycontainer` a `outputfolder` a blob storage-ban.
+1. A kimeneti fájlok megjelennek `mycontainer` a blob Storage- `outputfolder` ban.
 
-   ![A kimeneti fájlok tárolására](./media/data-factory-data-processing-using-batch/image15.png)
+   ![Kimeneti fájlok a Storage-ban](./media/data-factory-data-processing-using-batch/image15.png)
 
-   Öt kimeneti fájlok találhatók, egyet az egyes bemeneti szelet. A kimeneti fájlok mindegyike rendelkezik a tartalom a következő kimenet hasonlít:
+   Öt kimeneti fájl szerepel a felsorolásban, egyet az egyes bemeneti szeletekhez. A kimeneti fájlok mindegyike a következő kimenethez hasonló tartalommal rendelkezik:
 
     ```
     2 occurrences(s) of the search term "Microsoft" were found in the file inputfolder/2015-11-16-00/file.txt.
     ```
-   A következő ábra szemlélteti, hogyan képezze le a data factory szeletek feladatok Batch szolgáltatásban. Ebben a példában egy szelet van, csak egy példányban fusson.
+   Az alábbi ábra azt szemlélteti, hogyan képezhetők le a adat-előállító a Batch-feladatok feladataihoz. Ebben a példában egy szeletnek csak egy futtatása van.
 
-   ![Szelet leképezés diagramja](./media/data-factory-data-processing-using-batch/image16.png)
+   ![Szelet-hozzárendelési diagram](./media/data-factory-data-processing-using-batch/image16.png)
 
-1. Próbálja meg most már több fájl egy mappában. Hozza létre a fájlokat **fájl2.ref fájllal**, **file3.txt**, **file4.txt**, és **file5.txt** az ugyanazon a tartalmon, ahogy az a mappa file.txt**2015-11-06-01**.
+1. Most próbálkozzon több fájllal egy mappában. Hozza létre a **fájl2. txt**, a **fájl3. txt**, a **file4. txt**és a **file5. txt** fájlt ugyanazzal a tartalommal, mint a file. txt fájlban a **2015-11-06-01**-es mappában.
 
-1. A kimeneti mappa, törölje a kimeneti fájl **2015-11-16-01.txt**.
+1. A kimeneti mappában törölje a **2015-11-16 -01. txt**kimeneti fájlt.
 
-1. Az a **OutputDataset** panelen kattintson a jobb gombbal a szeletre **SZELET KEZDŐ időpont** beállítása **11/16/2015 01:00:00-kor**. Válassza ki **futtatása** az ismétlés/megismételheti a szeletet. A szelet öt fájl most már rendelkezik egy fájl helyett.
+1. A **OutputDataset** panelen kattintson a jobb gombbal arra a szeletre, amelyben a **szelet kezdési időpontja** **11/16/2015 01:00:00**-re van állítva. Válassza a **Futtatás** lehetőséget a szelet újrafuttatásához/újrafeldolgozásához. A szelet most már öt fájlból áll egy fájl helyett.
 
     ![Futtassa a következőt:](./media/data-factory-data-processing-using-batch/image17.png)
 
-1. Ha a szelet fut, és annak állapotát **készen**, ellenőrizze a tartalmat a kimeneti fájl a szelet (**2015-11-16-01.txt**). A kimeneti fájl megjelenik a `mycontainer` a `outputfolder` a blob storage-ban. Egy sor minden fájlhoz a szelet kell lennie.
+1. A szelet futtatása után az állapota **elkészült**, ellenőrizze a szelet kimeneti fájljában lévő tartalmat (**2015-11-16 -01. txt**). A kimeneti fájl megjelenik `mycontainer` a blob Storage- `outputfolder` ban. A szelet minden fájljához meg kell adni egy sort.
 
     ```
     2 occurrences(s) of the search term "Microsoft" were found in the file inputfolder/2015-11-16-01/file.txt.
@@ -862,43 +860,43 @@ Ebben a lépésben a folyamat által fájlokat húzhat a bemeneti mappákban tes
     ```
 
 > [!NOTE]
-> Ha a kimeneti fájl 2015-11-16-01.txt öt bemeneti fájlokkal tett kísérlet előtt nem törli, láthatja az előző szelet futtatásból származó egy vonal- és az aktuális szelet futtatható öt sorban. Alapértelmezés szerint a tartalmat a rendszer hozzáfűzi a kimeneti fájl Ha már létezik.
+> Ha nem törölte a 2015-11-16 -01. txt kimeneti fájlt, mielőtt öt bemeneti fájlt próbált meg használni, egy sor jelenik meg az előző slice-futtatásból és az aktuális szelet futtatásának öt sorából. Alapértelmezés szerint a rendszer hozzáfűzi a tartalmat a kimeneti fájlhoz, ha az már létezik.
 >
 >
 
-#### <a name="data-factory-and-batch-integration"></a>Data Factory és a Batch-integráció
-A Data Factory szolgáltatás nevű hoz létre egy feladatot a Batch szolgáltatásban `adf-poolname:job-xxx`.
+#### <a name="data-factory-and-batch-integration"></a>Data Factory és batch-integráció
+A Data Factory szolgáltatás létrehoz egy feladatot a Batchben a névvel `adf-poolname:job-xxx`.
 
 ![Batch-feladatok](media/data-factory-data-processing-using-batch/data-factory-batch-jobs.png)
 
-A feladat feladat jön létre minden egyes tevékenység futtatásához egy szeletet. 10 szelet készen áll a dolgozhatók, ha a feladat 10 feladatok jönnek létre. A párhuzamosan futó, ha több számítási csomópont a készletben egynél több szelet rendelkezhet. Ha a számítási csomópontok tevékenységek maximális számát értéke nagyobb, mint egy, az azonos számítási egynél több szelet is futtathatja.
+A feladatban a szeletek minden egyes tevékenységéhez létrejön egy feladat. Ha 10 szelet készen áll a feldolgozásra, 10 feladat jön létre a feladatban. Ha több számítási csomóponttal rendelkezik a készletben, több párhuzamosan futó szelettel is rendelkezhet. Ha a számítási csomópontok maximális száma nagyobb, mint egy, akkor több szelet is futhat ugyanazon a számítási feladaton.
 
-Ebben a példában nincsenek öt szeletek, így öt feladatokat a Batch szolgáltatásban. A **egyidejűségi** beállítása **5** a folyamat JSON-t az adat-előállító és **virtuális gépenkénti feladatok maximális** beállítása **2** aBatch-készletben**2** virtuális gépeket, a tevékenységek futtatásakor gyors. (Ellenőrizze a feladatok kezdési és befejezési idejének.)
+Ebben a példában öt szelet van, így öt feladat van a Batchben. Ha a **Egyidejűség** értéke **5** , a folyamat JSON-je a adat-előállítóban, és a **virtuális gépek maximális száma** **2** értékre van állítva a Batch-készletben **2** virtuális géppel, a feladatok gyorsan futnak. (A feladatok kezdési és befejezési idejének megadásához.)
 
-A Batch-feladat és a szeletek társított feladatainak megtekintése a portál használatával, és megtekintheti, milyen minden szelet futtatott virtuális gép.
+A portálon megtekintheti a Batch-feladatot és annak a szeletekhez társított feladatait, és megtekintheti, hogy az egyes szeletek milyen virtuális gépen futottak.
 
-![Batch-feladatok](media/data-factory-data-processing-using-batch/data-factory-batch-job-tasks.png)
+![Kötegelt feladat feladatai](media/data-factory-data-processing-using-batch/data-factory-batch-job-tasks.png)
 
 ### <a name="debug-the-pipeline"></a>Hibakeresés a folyamaton
-Hibakeresés néhány alapvető technikából áll.
+A hibakeresés néhány alapvető módszerből áll.
 
-1. Ha a bemeneti szelet nem **készen**, győződjön meg arról, hogy a bemeneti mappa struktúrája megfelelő-e, és file.txt, hogy létezik-e a bemeneti mappákban.
+1. Ha a bemeneti szelet nem **üzemkész**állapotra van állítva, ellenőrizze, hogy a bemeneti mappa szerkezete helyes-e, és hogy a file. txt fájl létezik-e a bemeneti mappákban.
 
-   ![Bemeneti mappa struktúrája](./media/data-factory-data-processing-using-batch/image3.png)
+   ![Bemeneti mappa szerkezete](./media/data-factory-data-processing-using-batch/image3.png)
 
-1. Az a **Execute** metódus az egyéni tevékenység, használja a **IActivityLogger** objektum naplózza az adatokat, amelyek segítenek elhárítani a problémákat. A felhasználónak megjelennek a naplózott üzeneteket\_0. naplófájlt.
+1. Az egyéni tevékenység **végrehajtás** metódusában a **IActivityLogger** objektum használatával naplózhatja azokat az információkat, amelyek segítenek a hibák elhárításában. A naplózott üzenetek megjelennek a User\_0. log fájlban.
 
-   A a **OutputDataset** panelen válassza ki a szelet megtekintéséhez a **adatszelet** adott szeletre vonatkozó panelen. A **tevékenységfuttatások**, a szelet egy tevékenységfuttatás látható. Ha **futtatása** a parancssorban futtassa a azonos szelet egy másik tevékenység megkezdése.
+   A **OutputDataset** panelen válassza ki a szeletet az adott szelethez tartozó adatszelet panel megjelenítéséhez. A **tevékenység futtatása**területen megjelenik egy tevékenység futtatása a szelethez. Ha a parancssáv **Futtatás** parancsát választja, egy másik tevékenység futtatását is elindíthatja ugyanahhoz a szelethez.
 
-   Ha a tevékenység-végrehajtásonként választja, megjelenik a **az Activity run details** naplófájlok listáját tartalmazó panelen. Láthatja, hogy a felhasználó a naplózott üzeneteket\_0. naplófájlt. Ha hiba történik, akkor három tevékenységfuttatások megtekintéséhez, mert az újrapróbálkozások számának értéke 3, a folyamat/tevékenység a JSON. Amikor kiválasztja a tevékenységet futtató, tekintse meg a naplófájlokat a hiba elhárítása tekinthető meg.
+   Amikor kiválasztja a tevékenység futtatását, a **tevékenység futtatása részletek panel** jelenik meg a naplófájlok listájával. A naplózott üzenetek a\_0. log fájlban láthatók. Hiba esetén három tevékenység fut, mert az újrapróbálkozások száma a folyamat/tevékenység JSON-ben 3 értékre van állítva. Amikor kiválasztja a tevékenység futtatását, megjelenik a naplófájlok, amelyeket a hiba megoldása érdekében áttekinthet.
 
-   ![Outputdataset néven –, és a Data slice paneljein](./media/data-factory-data-processing-using-batch/image18.png)
+   ![OutputDataset és adatszeletek pengéi](./media/data-factory-data-processing-using-batch/image18.png)
 
-   A naplófájlok a listában, válassza ki a **user-0.log**. A jobb oldali panelen, az eredményeket a a **IActivityLogger.Write** metódus jelennek meg.
+   A naplófájlok listájában válassza a **User-0. log**fájlt. A jobb oldali panelen megjelennek a **IActivityLogger. Write** metódus használatának eredményei.
 
-   ![Tevékenységfuttatás részletei panel](./media/data-factory-data-processing-using-batch/image19.png)
+   ![Tevékenység futtatási részletei panel](./media/data-factory-data-processing-using-batch/image19.png)
 
-   Ellenőrizze a rendszer-0.log bármilyen rendszer hibaüzenetek és a kivételek.
+   Az System-0. log naplófájlban keresse meg a rendszerhibákat és a kivételeket.
 
     ```
     Trace\_T\_D\_12/6/2015 1:43:35 AM\_T\_D\_\_T\_D\_Verbose\_T\_D\_0\_T\_D\_Loading assembly file MyDotNetActivity...
@@ -909,40 +907,40 @@ Hibakeresés néhány alapvető technikából áll.
     
     Trace\_T\_D\_12/6/2015 1:43:38 AM\_T\_D\_\_T\_D\_Information\_T\_D\_0\_T\_D\_Activity e3817da0-d843-4c5c-85c6-40ba7424dce2 finished successfully
     ```
-1. Tartalmazza a **PDB** fájlt a zip-fájlt, hogy a hiba részletes adatait adatokat, például a hívási verem hiba esetén.
+1. Adja meg a **PDB** -fájlt a zip-fájlban, hogy a hiba részletei olyan információkkal rendelkezzenek, mint a hívási verem, ha hiba történik.
 
-1. Az egyéni tevékenység zip-fájljában lévő összes fájlt a legfelső szinten kell lennie az almappák nélkül.
+1. Az egyéni tevékenységhez tartozó zip-fájlban lévő összes fájlnak a legfelső szinten kell lennie, almappák nélkül.
 
-   ![Egyéni tevékenység zip-fájlok listája](./media/data-factory-data-processing-using-batch/image20.png)
+   ![Egyéni tevékenység zip-fájljának listája](./media/data-factory-data-processing-using-batch/image20.png)
 
-1. Ügyeljen arra, hogy **assemblyName** (MyDotNetActivity.dll), **entryPoint** (MyDotNetActivityNS.MyDotNetActivity), **packageFile** (customactivitycontainer / MyDotNetActivity.zip), és **packageLinkedService** (a blob Storage, amely tartalmazza a zip-fájlt kell mutatnia) megfelelő értékekre vannak beállítva.
+1. Győződjön meg arról, hogy a **assemblyName** (MyDotNetActivity. dll), a **BelépésiPont** (MyDotNetActivityNS. MyDotNetActivity), a **packageFile** (customactivitycontainer/MyDotNetActivity. zip) és a **packageLinkedService** (a következőre kell mutatnia: a zip-fájlt tartalmazó blob Storage a megfelelő értékekre van beállítva.
 
-1. Ha kijavított egy hibát, és a szelet újra fel szeretné, kattintson a jobb gombbal a szeletre az **OutputDataset** panelhez, és válassza **futtatása**.
+1. Ha kijavított egy hibát, és újra fel szeretné dolgozni a szeletet, kattintson a jobb gombbal a szeletre a **OutputDataset** panelen, és válassza a **Futtatás**lehetőséget.
 
-   ![Futtassa a beállítás OutputDataset panel](./media/data-factory-data-processing-using-batch/image21.png)
+   ![OutputDataset panel futtatási beállítása](./media/data-factory-data-processing-using-batch/image21.png)
 
    > [!NOTE]
-   > A blob Storage-nevű tároló lehet `adfjobs`. Ez a tároló nem törlődnek automatikusan, de biztonságosan törölheti a megoldás tesztelés befejezése után. Hasonlóképpen, a data factory-megoldás hoz létre egy Batch-feladat nevű `adf-\<pool ID/name\>:job-0000000001`. A megoldás igény szerint tesztelését követően törölheti a feladat.
+   > A tároló a blob Storage nevű `adfjobs`tárolóban található. Ez a tároló nem törlődik automatikusan, de a megoldás tesztelésének befejezése után biztonságosan törölheti. Hasonlóképpen, a Refactory megoldás létrehoz egy nevű `adf-\<pool ID/name\>:job-0000000001`batch-feladatot. Ezt a feladatot a megoldás tesztelése után is törölheti, ha szeretné.
    >
    >
-1. Az egyéni tevékenység nem használja a **app.config** fájlt a csomagból. Ezért ha a kód kapcsolati karakterláncokat olvas a konfigurációs fájlban, nem működik futásidőben. Batch használata esetén az ajánlott eljárás, hogy az Azure Key Vaultban titkos kulcsok tárolásához. Egyszerű tanúsítvány-alapú szolgáltatás segítségével a key vault védelmet, és terjessze a tanúsítványt a Batch-készlet. A .NET egyéni tevékenység elérheti a titkos kulcsokat a kulcstartóból futásidőben. Ez általános megoldás méretezheti bármilyen típusú titkos kulcsot, nem csak egy kapcsolati karakterláncot.
+1. Az egyéni tevékenység nem használja az **app. config** fájlt a csomagból. Ezért ha a kód a konfigurációs fájlból olvassa be a kapcsolatok karakterláncait, nem működik futásidőben. A Batch használata esetén az ajánlott eljárás a Azure Key Vault titkos kulcsainak megtartása. Ezután használjon egy tanúsítványalapú szolgáltatásnevet a kulcstartó védeleméhez, és ossza el a tanúsítványt a Batch-készletbe. A .NET-alapú egyéni tevékenység futtatáskor a Key vaultban elérheti a titkos kulcsokat. Ez az általános megoldás bármilyen típusú titokra méretezhető, nem csak a kapcsolódási karakterláncra.
 
-    Egy egyszerűbb megkerülő megoldás, de nem ajánlott. Létrehozhat egy SQL database-beli társított szolgáltatás kapcsolattal kapcsolatikarakterlánc-beállításokat. Ezután hozzon létre egy adatkészletet, amely a társított szolgáltatást használja, és az adatkészlet hozzákapcsolva a .NET egyéni tevékenység helyőrző bemeneti adatkészletként. A társított szolgáltatás kapcsolati karakterlánc az egyéni tevékenység kódban érheti el. Akkor működnek jól futásidőben.  
+    Egyszerűbb megkerülő megoldás, de nem ajánlott eljárás. Létrehozhat egy SQL Database-alapú társított szolgáltatást a kapcsolati karakterlánc beállításaival. Ezután létrehozhat egy olyan adatkészletet, amely a társított szolgáltatást használja, és az adatkészletet az egyéni .NET-tevékenységhez tartozó dummy bemeneti adatkészletként láncba helyezi. Ezután elérheti a társított szolgáltatás kapcsolati karakterláncát az egyéni tevékenység kódjában. Ez a megoldás a futás közben is működik.  
 
-#### <a name="extend-the-sample"></a>Terjessze ki a mintát
-Bővítheti ezt a mintát, ha többet szeretne megtudni a Data Factory és a Batch-funkciók. Ha például egy másik időtartományban szeletei feldolgozásához, a következő lépéseket:
+#### <a name="extend-the-sample"></a>A minta kiterjesztése
+Ezt a mintát kiterjesztheti Data Factory és a Batch funkcióinak megismeréséhez. Ha például egy másik időtartományban szeretné feldolgozni a szeleteket, hajtsa végre a következő lépéseket:
 
-1. Adja hozzá a következő almappákhoz a `inputfolder`: 2015-11-16-05, 2015-11-16-06 201-11-16-07, 2011-11-16-08 és 2015. 11-16-09-. A bemeneti fájlokat helyezze mappákat. Módosítsa a folyamat a befejezési `2015-11-16T05:00:00Z` való `2015-11-16T10:00:00Z`. Az a **Diagram** kattintson duplán **InputDataset** , és győződjön meg arról, hogy készen áll-e a bemeneti szeletek. Kattintson duplán a **OutputDataset** a kimeneti szeleteket állapotának megtekintéséhez. Ha a **készen** állapotban van, ellenőrizze a kimeneti mappát a kimeneti fájlokat.
+1. Adja hozzá a következő almappákat `inputfolder`a ben: 2015-11-16-05, 2015-11-16-06, 201-11-16-07, 2011-11-16-08 és 2015-11-16-09. Helyezzen be bemeneti fájlokat ezekben a mappákba. Módosítsa a folyamat `2015-11-16T05:00:00Z` `2015-11-16T10:00:00Z`befejezési idejét a verzióról a verzióra. A **diagram** nézetben kattintson duplán a **InputDataset** elemre, és ellenőrizze, hogy a bemeneti szeletek készen állnak-e. Kattintson duplán a **OutputDataset** elemre a kimeneti szeletek állapotának megtekintéséhez. Ha **kész** állapotban van, ellenőrizze a kimeneti fájlok kimeneti mappáját.
 
-1. Növelheti vagy csökkentheti a **egyidejűségi** beállítás megérteni, hogyan érinti a megoldását, különösen a kötegelt végzett feldolgozás teljesítményét. További információ a **egyidejűségi** beállítását, lásd: "4. lépés: Hozzon létre, és az egyéni tevékenységet a folyamat futtatása."
+1. Növelje vagy csökkentse a **Egyidejűség** beállítását, hogy megtudja, hogyan befolyásolja a megoldás teljesítményét, különösen a Batch szolgáltatásban előforduló feldolgozást. Az **Egyidejűség** beállításával kapcsolatos további információkért lásd: 4. lépés: Hozzon létre és futtasson egy egyéni tevékenységgel rendelkező folyamatot.
 
-1. Készlet létrehozása magasabb/alacsonyabb **virtuális gépenkénti feladatok maximális**. Használni létrehozott új készletet, frissítse a Batch társított szolgáltatást a data factory-megoldás. További információ a **virtuális gépenkénti feladatok maximális** beállítását, lásd: "4. lépés: Hozzon létre, és az egyéni tevékenységet a folyamat futtatása."
+1. Hozzon létre egy készletet **virtuális gépenként**magasabb/alacsonyabb maximális feladatokkal. A létrehozott új készlet használatához frissítse a Batch társított szolgáltatást a Refactory megoldásban. A virtuálisgép-beállítások **maximális** feladataival kapcsolatos további információkért lásd: 4. lépés: Hozzon létre és futtasson egy egyéni tevékenységgel rendelkező folyamatot.
 
-1. A Batch-készlet létrehozása a **automatikus skálázási** funkció. Egy Batch-készletben lévő számítási csomópontok automatikus méretezése a feldolgozási teljesítményt az alkalmazása által használt dinamikus igazítását. 
+1. Hozzon létre egy batch- készletet az autoscale funkcióval. A számítási csomópontok automatikus méretezése egy batch-készletben az alkalmazás által használt feldolgozási teljesítmény dinamikus beállítása. 
 
-    A mintául szolgáló képlet itt éri el a következő viselkedés. Először hozza létre a készletet, ha egy virtuális gép kezdődik. A $PendingTasks metrika futó feladatok száma határozza meg, és állapotok aktív (sorban áll). A képlet átlagos száma függőben lévő feladatokat megkeresi az elmúlt 180 másodperc alatt, és ennek megfelelően beállítja a TargetDedicated. Biztosítja, hogy TargetDedicated soha nem túllép 25 virtuális gépeket. Új feladatok elküldése, ahogy a készlet automatikusan nő. A feladat befejeződött, mint virtuális gépek ingyenes egyenként legyen, és az automatikus skálázás zsugorítja ezeken a virtuális gépeken. Igény szerinti startingNumberOfVMs és maxNumberofVMs módosíthatja.
+    A minta képlet itt a következő viselkedést éri el. A készlet első létrehozásakor egy virtuális géppel kezdődik. A $PendingTasks metrika meghatározza a futó és az aktív (várólistán lévő) állapotú feladatok számát. A képlet megkeresi a függőben lévő feladatok átlagos számát az utolsó 180 másodpercben, és ennek megfelelően beállítja a TargetDedicated. Biztosítja, hogy a TargetDedicated soha ne haladja meg a 25 virtuális gépet. Az új feladatok elküldésekor a készlet automatikusan növekszik. A feladatok elvégzése után a virtuális gépek csak egyszer válnak szabaddá, és az automatikus skálázás csökkenti ezeket a virtuális gépeket. Igény szerint módosíthatja a startingNumberOfVMs és a maxNumberofVMs.
  
-    Automatikus skálázási képletet:
+    Autoskálázási képlet:
 
     ``` 
     startingNumberOfVMs = 1;
@@ -952,32 +950,32 @@ Bővítheti ezt a mintát, ha többet szeretne megtudni a Data Factory és a Bat
     $TargetDedicated=min(maxNumberofVMs,pendingTaskSamples);
     ```
 
-   További információkért lásd: [automatikusan méretezni a számítási csomópontok Batch-készlet](../../batch/batch-automatic-scaling.md).
+   További információ: [számítási csomópontok automatikus skálázása egy batch-készletben](../../batch/batch-automatic-scaling.md).
 
-   Ha a készletet használja az alapértelmezett [autoScaleEvaluationInterval](https://msdn.microsoft.com/library/azure/dn820173.aspx), a Batch szolgáltatás a virtuális gép előkészítése az egyéni tevékenység futtatása előtt 15 – 30 percet is igénybe vehet. Ha a készlet egy másik autoScaleEvaluationInterval használ, a Batch szolgáltatás autoScaleEvaluationInterval és 10 percet is igénybe vehet.
+   Ha a készlet az alapértelmezett [autoScaleEvaluationInterval](https://msdn.microsoft.com/library/azure/dn820173.aspx)használja, a Batch szolgáltatás 15 – 30 percet is igénybe vehet a virtuális gép előkészítéséhez az egyéni tevékenység futtatása előtt. Ha a készlet eltérő autoScaleEvaluationInterval használ, a Batch szolgáltatás autoScaleEvaluationInterval és 10 percet is igénybe vehet.
 
-1. A minta megoldásban a **Execute** metódus meghívja a **Calculate** metódushoz, amely egy bemeneti adatszelet előállít egy kimeneti adatszeletet dolgozza fel. Írhat saját módszer dolgozza fel a bemeneti adatokat, és cserélje le a **Calculate** metódust hívja meg a **Execute** metódust a metódus hívásával.
+1. A minta megoldásban a **végrehajtás** metódus meghívja a **számítás** metódust, amely egy bemeneti adatszeletet dolgoz fel egy kimeneti adatszelet létrehozásához. Megírhatja a saját metódusát a bemeneti adatok feldolgozásához, és lecserélheti a metódus kiszámítása hívást a **végrehajtás** metódusban a metódus hívásával.
 
-### <a name="next-steps-consume-the-data"></a>Következő lépések: Az adatok felhasználása
-Miután az adatok feldolgozására, online eszközökkel, mint a Power BI használhatja fel. Az alábbiakban a hivatkozások segítenek megérteni a Power bi-ban, és hogyan használható az Azure-ban:
+### <a name="next-steps-consume-the-data"></a>Következő lépések: Az adatgyűjtés
+Az adatfeldolgozást követően online eszközökkel, például Power BI használhatja azokat. Az alábbi hivatkozások segítséget nyújtanak a Power BI és az Azure-ban való használat megismerésében:
 
-* [Ismerje meg egy adatkészletet a Power bi-ban](https://powerbi.microsoft.com/documentation/powerbi-service-get-data/)
-* [Ismerkedés a Power BI Desktopban](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/)
-* [Adatfrissítés a Power bi-ban](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/)
-* [Az Azure és a Power bi-ban: Alapszintű áttekintése](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)
+* [Adathalmaz megismerése Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-data/)
+* [Ismerkedés a Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/)
+* [Power BIban lévő Adatfrissítés](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/)
+* [Azure és Power BI: Alapszintű áttekintés](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)
 
 ## <a name="references"></a>Referencia
 * [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/)
 
   * [A Data Factory szolgáltatás bemutatása](data-factory-introduction.md)
-  * [A Data Factory – első lépések](data-factory-build-your-first-pipeline.md)
-  * [Egyéni tevékenységek használata Data Factory-folyamatok](data-factory-use-custom-activities.md)
+  * [Ismerkedés a Data Factory](data-factory-build-your-first-pipeline.md)
+  * [Egyéni tevékenységek használata egy Data Factory-folyamatban](data-factory-use-custom-activities.md)
 * [Azure Batch](https://azure.microsoft.com/documentation/services/batch/)
 
   * [A Batch alapjai](../../batch/batch-technical-overview.md)
   * [A Batch funkcióinak áttekintése](../../batch/batch-api-basics.md)
-  * [Hozzon létre és felügyelhet Batch-fiókot az Azure Portalon](../../batch/batch-account-create-portal.md)
-  * [Ismerkedés a Batch ügyfél .NET-hez készült](../../batch/quick-run-dotnet.md)
+  * [Batch-fiók létrehozása és kezelése a Azure Portalban](../../batch/batch-account-create-portal.md)
+  * [Ismerkedés a .NET-hez készült batch ügyféloldali kódtáraval](../../batch/quick-run-dotnet.md)
 
 [batch-explorer]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer
 [batch-explorer-walkthrough]: https://blogs.technet.com/b/windowshpc/archive/2015/01/20/azure-batch-explorer-sample-walkthrough.aspx

@@ -1,38 +1,34 @@
 ---
 title: Gyakori paraméterek és fejlécek
-description: A paraméterek és minden művelet, amely akkor lehet hasznos, a Key Vault-erőforrásra való közös fejlécet.
+description: A Key Vault erőforrásokkal kapcsolatos összes művelethez közös paraméterek és fejlécek.
 services: key-vault
-documentationcenter: ''
 author: msmbaldwin
-manager: barbkess
+manager: rkarlin
 tags: azure-resource-manager
-ms.assetid: a715d13ca9-d6e8-4e54-ac5e-0ed9400fb15b15d13ca9-d6e8-4e54-ac5e-0ed9400fb15b
 ms.service: key-vault
-ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: cc6c937e37ebb7919ca271e765ad6460c104e43b
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 7ec8e1df71e6513b13e9c37174a3363471be01d9
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57405045"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70879279"
 ---
 # <a name="common-parameters-and-headers"></a>Gyakori paraméterek és fejlécek
 
-Minden művelet, amely akkor lehet hasznos, a Key Vault-erőforrásra szokás a következő információkat:
+Az alábbi információk a Key Vault erőforrásokhoz kapcsolódó összes művelet esetében közösek:
 
-- Cserélje le `{api-version}` az URI-t az api-verzióval rendelkező.
-- Cserélje le `{subscription-id}` az az előfizetés-azonosító, az URI-ban
-- Cserélje le `{resource-group-name}` az erőforráscsoport. További információkért lásd: erőforráscsoportok használata az Azure-erőforrások kezeléséhez.
-- Cserélje le `{vault-name}` a kulcstartó nevére, az URI-ban.
-- Set the Content-Type header to application/json.
-- Az engedélyezési fejléc beállítása a JSON Web Token, hogy az Azure Active Directory (AAD). További információkért lásd: [hitelesítése az Azure Resource Manager](authentication-requests-and-responses.md) kérelmeket.
+- Cserélje `{api-version}` le az elemet az API-verzióra az URI-ban.
+- Cserélje `{subscription-id}` le az elemet az előfizetés azonosítójával az URI-ban
+- Cserélje `{resource-group-name}` le az csoportot az erőforráscsoporthoz. További információ: erőforráscsoportok használata az Azure-erőforrások kezeléséhez.
+- Cserélje `{vault-name}` le a elemet a Key Vault nevére az URI-ban.
+- Állítsa be a Content-type fejlécet az Application/JSON értékre.
+- Állítsa be az engedélyezési fejlécet olyan JSON Web Tokenre, amelyet a Azure Active Directorytól (HRE) szerez be. További információ: Azure Resource Manager kérelmek [hitelesítése](authentication-requests-and-responses.md) .
 
-## <a name="common-error-response"></a>Gyakori hiba válasz
-A szolgáltatás által használt HTTP-állapotkódok sikerességét vagy sikertelenségét jelzi. Emellett a hibák választ a következő formátumban tartalmazza:
+## <a name="common-error-response"></a>Gyakori hiba a válaszban
+A szolgáltatás HTTP-állapotkódot használ a sikeres vagy sikertelen művelet jelzésére. Továbbá a hibák a következő formátumban választ tartalmaznak:
 
 ```
    {  
@@ -43,12 +39,12 @@ A szolgáltatás által használt HTTP-állapotkódok sikerességét vagy sikert
    }  
 ```
 
-|Elem neve | Typo | Leírás |
+|Elem neve | Type | Leírás |
 |---|---|---|
-| Kód | sztring | Hiba történt a típusa.|
-| message | sztring | Mi okozta a hibát leírása. |
+| code | Karakterlánc | A bekövetkezett hiba típusa.|
+| message | Karakterlánc | Annak leírása, hogy mi okozta a hibát. |
 
 
 
 ## <a name="see-also"></a>Lásd még:
- [Az Azure Key Vault REST API-referencia](/rest/api/keyvault/)
+ [Azure Key Vault REST API-hivatkozás](/rest/api/keyvault/)

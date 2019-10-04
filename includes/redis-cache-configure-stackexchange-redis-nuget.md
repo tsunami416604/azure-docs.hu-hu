@@ -1,20 +1,20 @@
 ---
-author: wesmc7777
+author: yegu-ms
 ms.service: redis-cache
 ms.topic: include
 ms.date: 11/09/2018
-ms.author: wesmc
-ms.openlocfilehash: 8ebf5ddfa118e0aeadeab0c00a981871a4b5708e
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.author: yegu
+ms.openlocfilehash: 61e93e3700b9a396d2ac4fdcbb51fc5c874cf9cb
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53429979"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68286271"
 ---
 A .NET-alkalmazások képesek használni a **StackExchange.Redis** gyorsítótárügyfelet, amely a Visual Studióban konfigurálható a gyorsítótár-ügyfélalkalmazások konfigurálását leegyszerűsítő NuGet-csomagokkal. 
 
 > [!NOTE]
-> További információkért lásd: a [StackExchange.Redis](http://github.com/StackExchange/StackExchange.Redis) GitHub-oldalát, és a [StackExchange.Azure Cache Redis ügyfél dokumentációját](http://github.com/StackExchange/StackExchange.Redis#documentation).
+> További információkért tekintse meg a [StackExchange. Redis](https://github.com/StackExchange/StackExchange.Redis) GitHub-oldalt és a [StackExchange. Azure cache](https://github.com/StackExchange/StackExchange.Redis#documentation)-t a Redis-ügyfél dokumentációjában.
 >
 >
 

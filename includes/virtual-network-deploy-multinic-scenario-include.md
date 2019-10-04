@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 04/13/2018
 ms.author: genli
 ms.custom: include file
-ms.openlocfilehash: cab04a7eafbc21e0d26cd5a287f3dbee8d3d22b7
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: d20ef44fd5c117e4e3a568542bb022c451ac23fc
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "31805104"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179045"
 ---
 ## <a name="scenario"></a>Forgatókönyv
-Ez a dokumentum végigvezeti a központi telepítésre használja több hálózati adaptert a virtuális gépek egy adott forgatókönyvhöz. Ebben a forgatókönyvben a kétféle IaaS munkaterhelések Azure-ban üzemeltetett rendelkezik. Minden egyes réteg a virtuális hálózatot (VNet) a saját alhálózat lett telepítve. Az előtér-réteg több webkiszolgálók csoportosítva beállítása a magas rendelkezésre állású terheléselosztó tevődik össze. A háttér-réteg több adatbázis-kiszolgálók tevődik össze. Az adatbázis-kiszolgáló két hálózati adapterrel rendelkező minden, egy adatbázis-hozzáférési, a másik felügyeleti lett telepítve. Az az eset tartalmazza a központi telepítésben lévő hálózati biztonsági csoportokkal (NSG-k) szabályozásához, hogy milyen forgalom engedélyezve van minden egyes alhálózathoz, és a hálózati adapter is. Az alábbi ábra az ebben a forgatókönyvben alapvető architektúráját mutatja be:
+Ez a dokumentum végigvezeti azon használó központi telepítések több hálózati adapter a virtuális gépek egy adott helyzetben. Ebben a forgatókönyvben egy kétrétegű iaas típusú számítási feladatainak Azure-ban üzemeltetett rendelkezik. Az egyes csomagok egy virtuális hálózatot (VNet) a saját alhálózatában van üzembe helyezve. Az előtérréteg több webkiszolgálók, állítsa be a magas rendelkezésre állás érdekében egy terheléselosztó csoportosítva tevődik össze. A háttér-szinten több adatbázis-kiszolgáló tevődik össze. Az adatbázis-kiszolgálók két hálózati adapterrel, egy az adatbázis-hozzáférés, a másik felügyeleti vannak telepítve. A forgatókönyv tartalmazza a központi telepítésben lévő hálózati biztonsági csoportok (NSG) szabályozhatja, hogy milyen forgalom engedélyezve van a minden egyes alhálózathoz és hálózati adapter is. Ebben a forgatókönyvben alapvető architektúráját mutatja be, a következő képen látható:
 
 ![MultiNIC forgatókönyv](./media/virtual-network-deploy-multinic-scenario-include/Figure1.png)
 

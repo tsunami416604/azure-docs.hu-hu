@@ -1,25 +1,18 @@
 ---
-title: Az AppSource-csomag az Azure storage-Store és a egy URL-cím létrehozhat egy SAS-kulcsának |} A Microsoft Docs
+title: Az AppSource-csomag az Azure storage-Store és a egy URL-cím létrehozhat egy SAS-kulcs
 description: Töltse fel, és tegye biztonságossá az AppSource-csomag szükséges lépéseket részletezi.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/18/2018
-ms.author: pbutlerm
-ms.openlocfilehash: ad0e6eaae5c0fad74ea484827e0f8d535cfbf579
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: pabutler
+ms.openlocfilehash: ac77767aee2dcde33f4266e1d2d09c49dcf5f8a3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57884659"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64943285"
 ---
 <a name="store-your-appsource-package-to-azure-storage-and-generate-a-url-with-sas-key"></a>Az AppSource-csomag az Azure storage-Store és a egy URL-cím létrehozhat egy SAS-kulcs
 =============================================================================

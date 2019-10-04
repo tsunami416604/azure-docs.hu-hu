@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/19/2019
 ms.author: juliako
-ms.openlocfilehash: efdc3f657712794325f8af6f1b0178915e7a8e6b
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 7f0a071012685ee192d4f866396a5953d0a4508c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60000298"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64937258"
 ---
 # <a name="azure-media-services-overview"></a>Az Azure Media Services áttekintése 
 
-> [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki a Media Services által használt verzióját:"]
 > * [3-as verzió](../latest/media-services-overview.md)
 > * [2-es verzió](media-services-overview.md)
 
@@ -50,7 +50,10 @@ A Media Services-megoldások létrehozásához a következőket használhatja:
 
 * [Media Services REST API](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)
 * Az elérhető ügyféloldali SDK-k valamelyike:
-    * [.NET-keretrendszerhez készült Azure Media Services SDK](https://github.com/Azure/azure-sdk-for-media-services),
+    * Az Azure Media Services SDK for .NET
+    
+        * [NuGet-csomag](https://www.nuget.org/packages/windowsazure.mediaservices/)
+        * [Github-forráskód](https://github.com/Azure/azure-sdk-for-media-services)
     * [Javához készült Azure SDK](https://github.com/Azure/azure-sdk-for-java),
     * [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php),
     * [Node.js-hez készült Azure Media Services](https://github.com/michelle-becker/node-ams-sdk/blob/master/lib/request.js) (Ez a Node.js SDK nem Microsoft által készített verziója. Ennek a karbantartását egy közösség végzi, és jelenleg nem fedi le 100%-osan az AMS API-k tartalmát.)

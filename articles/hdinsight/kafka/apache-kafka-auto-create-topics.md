@@ -1,66 +1,66 @@
 ---
-title: Az Apache kafka platformmal – Azure HDInsight automatikus témakör-létrehozás engedélyezése
-description: Ismerje meg, hogyan konfigurálhatja az Apache Kafka HDInsight automatikusan létrehozza a témakörök. A Kafka konfigurálhatja úgy, hogy igaz ambarival, vagy a PowerShell vagy a Resource Manager-sablonokkal a fürt létrehozásakor auto.create.topics.enable.
-services: hdinsight
+title: A témakör automatikus létrehozásának engedélyezése Apache Kafkaban – Azure HDInsight
+description: Megtudhatja, hogyan konfigurálhat Apache Kafka a HDInsight-ben a témakörök automatikus létrehozásához. A Kafka konfigurálásához állítsa be az Auto. Create. témákat. engedélyezze a Ambari-n keresztül, vagy a fürt létrehozásakor a PowerShell vagy a Resource Manager-sablonok használatával.
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/18/2018
-ms.openlocfilehash: b9f17ad0ccfd5e58d5b93bde91e6f9c537a15fa6
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 393087f4d5c5e7a52fd2dd10d20362a045a0075b
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606894"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122664"
 ---
-# <a name="how-to-configure-apache-kafka-on-hdinsight-to-automatically-create-topics"></a>Az Apache Kafka HDInsight automatikusan létrehozza a témakörök konfigurálása
+# <a name="how-to-configure-apache-kafka-on-hdinsight-to-automatically-create-topics"></a>A HDInsight Apache Kafka konfigurálása a témakörök automatikus létrehozásához
 
-Alapértelmezés szerint [Apache Kafka](https://kafka.apache.org/) a HDInsight nem engedélyezi az automatikus témakör-létrehozás. Engedélyezheti az automatikus témakör-létrehozás már meglévő fürtök [Apache Ambari](https://ambari.apache.org/). Automatikus témakör-létrehozás egy új Azure Resource Manager-sablon használatával Kafka-fürt létrehozásakor is engedélyezheti.
+Alapértelmezés szerint a [Apache Kafka](https://kafka.apache.org/) on HDInsight nem engedélyezi az automatikus témakör létrehozását. Az [Apache Ambari](https://ambari.apache.org/)használatával engedélyezheti az automatikus témakör létrehozását a meglévő fürtökhöz. Az új Kafka-fürt Azure Resource Manager sablon használatával történő létrehozásakor is engedélyezheti az automatikus témakör létrehozásának lehetőségeit.
 
-## <a name="apache-ambari-web-ui"></a>Az Apache Ambari webes Felülettel
+## <a name="apache-ambari-web-ui"></a>Apache Ambari Web UI
 
-Az Ambari webes felhasználói felületen keresztül meglévő fürt automatikus témakör-létrehozás engedélyezése, használja az alábbi lépéseket:
+Ha engedélyezni szeretné az automatikus témakör létrehozását egy meglévő fürtön a Ambari webes felhasználói felületén keresztül, kövesse az alábbi lépéseket:
 
-1. Az a [az Azure portal](https://portal.azure.com), válassza ki a Kafka-fürt.
+1. A [Azure Portal](https://portal.azure.com)válassza ki a Kafka-fürtöt.
 
-2. Az a __fürt áttekintés__válassza __fürt irányítópultja__. 
+2. A __fürt áttekintése__lapon válassza a __fürt irányítópultja__lehetőséget.
 
-    ![A portálon a kijelölt fürt-irányítópult képe](./media/apache-kafka-auto-create-topics/kafka-cluster-overview.png)
+    ![A portál képe, amelyen a fürt irányítópultja ki van választva](./media/apache-kafka-auto-create-topics/kafka-cluster-overview.png)
 
-3. Válassza ki __HDInsight-fürt irányítópultja__. Amikor a rendszer kéri, hitelesíteni a fürt bejelentkezési (rendszergazdai) hitelesítő adataival.
+3. Ezután válassza a __HDInsight-fürt irányítópultja__lehetőséget. Ha a rendszer kéri, végezzen hitelesítést a fürt bejelentkezési (rendszergazdai) hitelesítő adataival.
 
-    ![A HDInsight-fürt irányítópult bejegyzést ábrázoló kép](./media/apache-kafka-auto-create-topics/hdinsight-cluster-dashboard.png)
+    ![A HDInsight-fürt irányítópult-bejegyzésének képe](./media/apache-kafka-auto-create-topics/hdinsight-cluster-dashboard.png)
 
-3. Válassza ki a Kafka szolgáltatás az oldal bal oldalán lévő listából.
+3. Válassza ki a Kafka szolgáltatást a lap bal oldalán található listából.
 
-    ![Lista](./media/apache-kafka-auto-create-topics/service-list.png)
+    ![Apache Ambari-szolgáltatás listája lap](./media/apache-kafka-auto-create-topics/hdinsight-service-list.png)
 
-4. Válassza ki a konfigurációkat az oldal közepén.
+4. Válassza a konfigurációk lehetőséget az oldal közepén.
 
-    ![Szolgáltatás konfigurálása lap](./media/apache-kafka-auto-create-topics/service-config.png)
+    ![Apache Ambari szolgáltatás – konfigurációk lap](./media/apache-kafka-auto-create-topics/hdinsight-service-config.png)
 
-5. A Szűrő mezőbe írja be a egy értéke `auto.create`. 
+5. A szűrő mezőbe írja be a értékét `auto.create`.
 
-    ![A Szűrő mezőbe képe](./media/apache-kafka-auto-create-topics/filter.png)
+    ![Apache Ambari keresési szűrő mező](./media/apache-kafka-auto-create-topics/hdinsight-filter-field.png)
 
-    Ez a tulajdonságokat, és megjeleníti listájának szűrése a `auto.create.topics.enable` beállítás.
+    Ezzel kiszűri a tulajdonságok listáját, és `auto.create.topics.enable` megjeleníti a beállítást.
 
-6. Módosítsa az értéket a `auto.create.topics.enable` való `true`, majd válassza a Mentés gombra. Megjegyzés hozzáadása, majd mentse újból.
+6. Módosítsa a értéket a `auto.create.topics.enable` értékre `true`, majd válassza a mentés lehetőséget. Vegyen fel egy megjegyzést, majd válassza a Mentés újra lehetőséget.
 
-    ![A auto.create.topics.enable bejegyzést ábrázoló kép](./media/apache-kafka-auto-create-topics/auto-create-topics-enable.png)
+    ![Az Auto. Create. témák. Enable bejegyzés képe](./media/apache-kafka-auto-create-topics/auto-create-topics-enable.png)
 
-7. Válassza ki a Kafka szolgáltatás kiválasztása __indítsa újra a__, majd válassza ki __indítsa újra az összes érintett__. Amikor a rendszer kéri, válassza ki a __megerősítése indítsa újra az összes__.
+7. Válassza ki a Kafka szolgáltatást, válassza az __Újraindítás__lehetőséget, majd kattintson az __összes érintett újraindítása__elemre. Ha a rendszer kéri, válassza __az összes újraindításának megerősítése__lehetőséget.
 
-    ![Újraindítás kijelölés képe](./media/apache-kafka-auto-create-topics/restart-all-affected.png)
+    ![Az Apache Ambari újraindítása minden érintett](./media/apache-kafka-auto-create-topics/restart-all-affected.png)
 
 > [!NOTE]  
-> Ambari-értékek az Ambari REST API-n keresztül is beállíthatja. Ez a lehetőség általában sokkal nehezebb, hogy több REST-hívást a jelenlegi konfiguráció lekérése, módosítsa azt, és így tovább. További információkért lásd: a [kezelése a HDInsight-fürtök az Apache Ambari REST API használatával](../hdinsight-hadoop-manage-ambari-rest-api.md) dokumentumot.
+> A Ambari értékeket a Ambari REST API is megadhatja. Ez általában nehezebb, mivel több REST-hívást kell megszereznie a jelenlegi konfiguráció beolvasásához, a módosítást stb. További információ: [HDInsight-fürtök kezelése az Apache Ambari REST API dokumentum használatával](../hdinsight-hadoop-manage-ambari-rest-api.md) .
 
 ## <a name="resource-manager-templates"></a>Resource Manager-sablonok
 
-Egy Azure Resource Manager-sablon használatával a Kafka-fürt létrehozásakor is közvetlenül megadhatja a `auto.create.topics.enable` hozzáadásával a egy `kafka-broker`. Az alábbi JSON-kódrészlet bemutatja, hogyan lehet ez az érték `true`:
+Amikor egy Azure Resource Manager sablonnal hoz létre egy Kafka-fürtöt, közvetlenül is `auto.create.topics.enable` beállíthatja azt `kafka-broker`a alkalmazásban. A következő JSON-kódrészlet bemutatja, hogyan állíthatja be ezt az `true`értéket:
 
 ```json
 "clusterDefinition": {
@@ -79,7 +79,7 @@ Egy Azure Resource Manager-sablon használatával a Kafka-fürt létrehozásakor
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a dokumentumban megtudhatta, hogyan automatikus témakör létrehozását a HDInsight-beli Apache kafka lehetővé. A Kafka használata kapcsolatos további információkért tekintse meg az alábbi hivatkozásokat:
+Ebből a dokumentumból megtudhatta, hogyan engedélyezheti az automatikus témakör létrehozását a HDInsight-Apache Kafka. Ha többet szeretne megtudni a Kafka használatáról, tekintse meg az alábbi hivatkozásokat:
 
-* [Az Apache Kafka-naplók elemzése](apache-kafka-log-analytics-operations-management.md)
-* [Adatok replikálása Apache Kafka-fürtök között](apache-kafka-mirroring.md)
+* [Apache Kafka naplók elemzése](apache-kafka-log-analytics-operations-management.md)
+* [Az Apache Kafka-fürtök közötti adatreplikálás](apache-kafka-mirroring.md)

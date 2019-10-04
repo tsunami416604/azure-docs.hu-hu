@@ -1,28 +1,28 @@
 ---
-author: tamram
+author: roygara
 ms.service: storage
 ms.topic: include
-ms.date: 10/26/2018
-ms.author: tamram
-ms.openlocfilehash: 99314538f90404d7c2b72da0dd2da2d8ac60a08a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 05/06/2019
+ms.author: rogarana
+ms.openlocfilehash: 9f259c3e403e933c847ac56000b1db2cd594caf5
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59804150"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "67449936"
 ---
-| Erőforrás | Standard fájlmegosztások | Prémium szintű fájlmegosztások (előzetes verzió) |
+| Resource | Szabványos fájlmegosztás | Prémium fájlmegosztás |
 |----------|---------------|------------------------------------------|
-| Egy fájlmegosztás minimális mérete | Nincs minimum; használatalapú fizetés | 100 GB; kiosztott |
-| Egy fájlmegosztás maximális mérete | 5 TiB | 5 Tib-ra (nyilvános előzetes verzió), 100 Tib-ra (korlátozott nyilvános előzetes verzió) |
-| Egy fájlmegosztásban lévő fájlok maximális mérete | 1 TiB | 1 TiB |
-| Fájlmegosztásban lévő fájlok maximális száma | Korlátlan | Korlátlan |
-| Fájlmegosztás maximális IOPS | 1000 IOPS | 5,120 alap IOPS és a 15,360 burst korlátja (nyilvános előzetes verzió), 100 000 IOPS (korlátozott nyilvános előzetes verzió)|
-| Fájlonkénti tárolt hozzáférési szabályzatok maximális számát megosztása | 5 | 5 |
-| Cél átviteli sebességet egy adott fájlmegosztáshoz | Akár 60 MiB/mp | Prémium szintű fájl megosztási bejövő és kimenő értékek|
-| Egy fájlmegosztás maximális kimenő forgalom | Tekintse meg a standard szintű fájl megosztási cél átviteli sebesség | Akár 368 MiB/s (nyilvános előzetes verzió), akár 6,204 MiB/s (korlátozott nyilvános előzetes verzió) |
-| Egy fájlmegosztás maximális bejövő forgalom | Tekintse meg a standard szintű fájl megosztási cél átviteli sebesség | Akár 245 MiB/s (nyilvános előzetes verzió), akár 4,136 MiB/s (korlátozott nyilvános előzetes verzió) |
-| Maximális megnyitott leírók számát | 2000 megnyitott leíróinak | 2000 megnyitott leíróinak |
-| Megosztási pillanatképek maximális száma | 200 megosztási pillanatképek | 200 megosztási pillanatképek |
-| Maximális objektum (fájlok és könyvtárak) nevének hossza | 2048 karakternél | 2048 karakternél |
-| Összetevő maximális pathname (az elérési út \A\B\C\D, minden egyes betűvel egy összetevő) | 255 karakter lehet | 255 karakter lehet |
+| Fájlmegosztás minimális mérete | Nincs minimum; Utólagos fizetés | 100 GiB; kiépítve |
+| Fájlmegosztás maximális mérete | 5 TiB (GA), 100 TiB (előzetes verzió) | 100 TiB |
+| Fájlmegosztás maximális mérete | 1 TiB | 1 TiB |
+| Fájlmegosztás fájljainak maximális száma | Korlátlan | Korlátlan |
+| IOPS maximális száma | 1 000 IOPS (GA), 10 000 IOPS (előzetes verzió) | 100 000 IOPS |
+| Tárolt hozzáférési szabályzatok maximális száma fájlmegosztás esetén | 5 | 5 |
+| Cél átviteli sebesség egyetlen fájlmegosztás esetén | Akár 60 MiB/mp (GA), akár 300 MiB/mp (előzetes verzió) | Tekintse meg a prémium szintű fájlmegosztás bejövő és kimenő értékeit|
+| Maximális kimenő forgalom egyetlen fájlmegosztás esetén | Tekintse meg a szabványos fájlmegosztás céljának átviteli sebességét | Akár 6 204 MiB/s |
+| Egyetlen fájlmegosztás maximális bejövő száma | Tekintse meg a szabványos fájlmegosztás céljának átviteli sebességét | Akár 4 136 MiB/s |
+| Megnyitott leírók maximális száma fájlonként | 2 000 nyitott fogantyúk | 2 000 nyitott fogantyúk |
+| Megosztási Pillanatképek maximális száma | 200 megosztási Pillanatképek | 200 megosztási Pillanatképek |
+| A maximális objektum (könyvtárak és fájlok) nevének hossza | 2 048 karakter | 2 048 karakter |
+| A maximális elérésiút-összetevő (az elérési út \A\B\C\D, minden betű egy összetevő) | 255 karakter | 255 karakter |

@@ -2,6 +2,8 @@
   items:
     - name: Mi az az SQL Server-virtuálisgép?
       href: virtual-machines-windows-sql-server-iaas-overview.md
+    - name: Melyik SQL-beállítást válasszam?
+      href: ../../../sql-database/sql-database-paas-vs-sql-server-iaas.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsql%2ftoc.json&bc=%2fazure%2fvirtual-machines%2fwindows%2fsql%2fbreadcrumb%2ftoc.json
     - name: Kibocsátási megjegyzések
       href: virtual-machines-windows-sql-server-iaas-release-notes.md
 - name: Gyors útmutatók
@@ -34,6 +36,12 @@
           href: virtual-machines-windows-sql-automated-backup-v2.md
     - name: Kezelés
       items:
+        - name: Dedikált gazdagép
+          href: virtual-machines-windows-sql-dedicated-host.md
+        - name: Az Azure Portallal
+          href: virtual-machines-windows-sql-manage-portal.md
+        - name: Az SQL 2008 és R2 támogatásának kibővítése
+          href: virtual-machines-windows-sql-server-2008-eos-extend-support.md
         - name: Kapcsolódás virtuális géphez
           href: virtual-machines-windows-sql-connect.md
         - name: A tárolás konfigurálása
@@ -54,12 +62,18 @@
           href: virtual-machines-windows-portal-sql-server-provision.md
         - name: Azure PowerShell használatával
           href: virtual-machines-windows-ps-sql-create.md
+    - name: Regisztráció az erőforrás-szolgáltatónál
+      href: virtual-machines-windows-sql-register-with-resource-provider.md
     - name: SQL-alapú virtuális gépek licencelési modelljének módosítása
       href: virtual-machines-windows-sql-ahb.md
+    - name: Váltás másik SQL Server-kiadásra
+      href: virtual-machines-windows-sql-change-edition.md
     - name: Migrate (Áttelepítés)
       items:
         - name: Microsoft SQL Server-adatbázis áttelepítése
           href: virtual-machines-windows-migrate-sql.md
+        - name: Virtuális gép új régióba
+          href: virtual-machines-windows-sql-move-different-region.md
     - name: Magas rendelkezésre állás konfigurálása
       items:
         - name: Az Azure Storage használata biztonsági mentéshez és helyreállításhoz
@@ -106,8 +120,6 @@
       href: virtual-machines-windows-sql-server-iaas-faq.md
     - name: Díjszabás
       href: virtual-machines-windows-sql-server-pricing-guidance.md
-    - name: PaaS vagy IaaS?
-      href: ../../../sql-database/sql-database-paas-vs-sql-server-iaas.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsql%2ftoc.json
     - name: SQL Server Data Tools (SSDT)
       href: 'https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt'
     - name: SQL Server Management Studio (SSMS)

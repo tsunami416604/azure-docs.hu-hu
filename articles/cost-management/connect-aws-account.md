@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/14/2018
+ms.date: 05/21/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 411a3d606ac8ec2f262ec9a1aabac7b74ccd110a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b39296e18b38180e1081866d6e8197973dc782b1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58010929"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66002165"
 ---
 # <a name="connect-an-amazon-web-services-account"></a>Csatlakozás Amazon Web Services-fiók
 
@@ -36,7 +36,7 @@ Az első lépés, hogy az egyedi kapcsolat hozzáférési kód lekérése a Clou
 
 1. Nyissa meg a Cloudyn portált az Azure Portalról, vagy navigáljon arra [ https://azure.cloudyn.com ](https://azure.cloudyn.com) , és jelentkezzen be.
 2. Kattintson a fogaskerék szimbólumra, majd **Felhőfiókok**.
-3. A fiókok kezelése, válassza ki a **az AWS-fiókok** fülre, majd **új hozzáadása +**.
+3. A fiókok kezelése, válassza ki a **az AWS-fiókok** fülre, majd **új hozzáadása +** .
 4. Az a **AWS-fiók hozzáadása** párbeszédpanelen másolása a **külső azonosító** és mentse az értéket az AWS-szerepkör létrehozásának lépéseit a következő szakaszban. A külső azonosító egyediségét a fiókjához. Az alábbi ábrán a külső azonosító példája _Contoso_ egy szám követ. Az azonosító különbözik.  
     ![Az AWS-fiók hozzáadása a boxban látható külső azonosító](./media/connect-aws-account/external-id.png)
 
@@ -57,7 +57,7 @@ Az első lépés, hogy az egyedi kapcsolat hozzáférési kód lekérése a Clou
 
 1. Nyissa meg a Cloudyn portált az Azure Portalról, vagy navigáljon arra https://azure.cloudyn.com/ , és jelentkezzen be.
 2. Kattintson a fogaskerék szimbólumra, majd **Felhőfiókok**.
-3. A fiókok kezelése, válassza ki a **az AWS-fiókok** fülre, majd **új hozzáadása +**.
+3. A fiókok kezelése, válassza ki a **az AWS-fiókok** fülre, majd **új hozzáadása +** .
 4. A **fióknév**, írja be a fiók nevét.
 5. A **hozzáférés típusa**válassza **IAM szerepkör**.
 6. Az a **szerepkör információ** mezőben illessze be a korábban kimásolt értéket, és kattintson a **mentése**.  
@@ -94,7 +94,7 @@ A következő szakaszok végigvezetik egy csak olvasható hozzáférést biztos�
 
 1. Nyissa meg a Cloudyn portált az Azure Portalról, vagy lépjen a https://azure.cloudyn.com/ webhelyre, és jelentkezzen be.
 2. Kattintson a fogaskerék szimbólumra, majd **Felhőfiókok**.
-3. A fiókok kezelése, válassza ki a **az AWS-fiókok** fülre, majd **új hozzáadása +**.
+3. A fiókok kezelése, válassza ki a **az AWS-fiókok** fülre, majd **új hozzáadása +** .
 4. A **fióknév**, írja be egy fiók nevét.
 5. A **hozzáférés típusa**válassza **IAM felhasználói**.
 6. A **hívóbetű**, illessze be a **hozzáférési kulcs azonosítója** érték a credentials.csv fájlból.

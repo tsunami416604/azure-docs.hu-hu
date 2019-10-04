@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d36b81530989517167e3c9ae5baa125f2d09bbf
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3405de31de48073e45e0c907ee918c2afd1e5b96
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57870078"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67103750"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dynamic-signal"></a>Oktatóanyag: Az Azure Active Directory-integráció, a dinamikus jel
 
@@ -55,7 +55,7 @@ Konfigurálhatja az Azure AD integrálása a dinamikus jel, hozzá kell dinamiku
 
 **A dinamikus jel hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

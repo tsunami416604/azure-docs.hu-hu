@@ -5,6 +5,8 @@
     - name: Tudnivalók az Azure AD B2C-ről
       expanded: true
       href: active-directory-b2c-overview.md
+    - name: Műszaki jellemzők és funkciók áttekintése
+      href: technical-overview.md
 - name: Gyors útmutatók
   expanded: true
   items:
@@ -26,7 +28,7 @@
       href: tutorial-add-identity-providers.md
     - name: A felhasználói felület testreszabása
       href: tutorial-customize-ui.md
-    - name: Fiókok hitelesítése
+    - name: Felhasználók hitelesítése
       items:
         - name: ASP.NET
           href: active-directory-b2c-tutorials-web-app.md
@@ -49,72 +51,164 @@
     - name: Alkalmazástípusok
       href: active-directory-b2c-apps.md
     - name: Hitelesítési protokollok
-      href: active-directory-b2c-reference-protocols.md
-    - name: Identity Experience Framework
       items:
+        - name: OAuth2 protokoll
+          href: active-directory-b2c-reference-protocols.md
+        - name: OpenID Connect-protokoll
+          href: active-directory-b2c-reference-oidc.md
+        - name: Hitelesítési kódengedélyezési folyamat
+          href: active-directory-b2c-reference-oauth-code.md
+        - name: Implicit folyamat
+          href: active-directory-b2c-reference-spa.md
+        - name: Tokenek
+          href: active-directory-b2c-reference-tokens.md
+        - name: Hozzáférési jogkivonat kérése
+          href: active-directory-b2c-access-tokens.md
+    - name: Felhasználói folyamat és szabályzat
+      items:
+        - name: Felhasználói folyamatok
+          href: active-directory-b2c-reference-policies.md
         - name: Egyéni szabályzatok
           href: active-directory-b2c-overview-custom.md
-        - name: Felhasználói hozzáférés
-          href: manage-user-access.md
-    - name: OAuth 2.0
-      href: active-directory-b2c-reference-oauth-code.md
-    - name: OpenId Connect
-      href: active-directory-b2c-reference-oidc.md
-    - name: Egylapos bejelentkezés
-      href: active-directory-b2c-reference-spa.md
-    - name: Tokenek
-      href: active-directory-b2c-reference-tokens.md
     - name: Felhasználói fiókok
       href: user-overview.md
-    - name: Felhasználói adatok
-      href: manage-user-data.md
-    - name: Felhasználói folyamatok
-      href: active-directory-b2c-reference-policies.md
-    - name: Felhasználói folyamatok JavaScripttel
-      href: user-flow-javascript-overview.md
-    - name: Felhasználói felület testreszabása
-      href: customize-ui-overview.md
 - name: Útmutatók
   items:
-    - name: Hozzáférés az auditnaplókhoz
-      href: active-directory-b2c-reference-audit-logs.md
-    - name: Webes API-alkalmazás hozzáadása
-      href: add-web-application.md
-    - name: Natív ügyfélalkalmazás hozzáadása
-      href: add-native-application.md
-    - name: Korhatáralapú hozzáférés-korlátozás konfigurálása
-      href: basic-age-gating.md
-    - name: Munkamenet viselkedésének konfigurálása
-      href: session-behavior.md
-    - name: Nyelv testreszabása
-      href: active-directory-b2c-reference-language-customization.md
-    - name: Jelszó testreszabása
-      href: active-directory-b2c-reference-password-complexity.md
-    - name: Egyéni attribútumok meghatározása
-      href: active-directory-b2c-reference-custom-attr.md
-    - name: E-mailes ellenőrzés letiltása
-      href: active-directory-b2c-reference-disable-ev.md
-    - name: MFA engedélyezése
-      href: active-directory-b2c-reference-mfa.md
-    - name: Identity Experience Framework
+    - name: Alkalmazásintegráció
       items:
-        - name: Naplók gyűjtése az Application Insights használatával
-          href: active-directory-b2c-troubleshoot-custom.md
-        - name: ROPC konfigurálása
-          href: ropc-custom.md
-        - name: Felhasználó által megadott adatok konfigurálása
-          href: active-directory-b2c-configure-signup-self-asserted-custom.md
-        - name: Egyéni szabályzat létrehozása
-          href: active-directory-b2c-get-started-custom.md
-        - name: A felhasználói felület testreszabása
-          href: active-directory-b2c-ui-customization-custom.md
-        - name: A felhasználói felület dinamikus testreszabása
-          href: active-directory-b2c-ui-customization-custom-dynamic.md
+        - name: Egy alkalmazás regisztrálása
+          href: tutorial-register-applications.md
+        - name: Webes API-alkalmazás hozzáadása
+          href: add-web-application.md
+        - name: Natív ügyfélalkalmazás hozzáadása
+          href: add-native-application.md
+        - name: iOS ObjC az AppAuth használatával
+          href: active-directory-b2c-devquickstarts-ios.md
+        - name: Android az AppAuth használatával
+          href: active-directory-b2c-devquickstarts-android.md
+    - name: Felhasználói folyamat
+      items:
+        - name: Folyamat létrehozása
+          items:
+            - name: Regisztráció vagy bejelentkezés
+              href: tutorial-create-user-flows.md
+            - name: Erőforrás tulajdonosának jelszava
+              href: configure-ropc.md
+            - name: Új jelszó önkiszolgáló kérésének beállítása
+              href: active-directory-b2c-reference-sspr.md
+        - name: Felhasználói felület testreszabása
+          items:
+            - name: Felhasználói felület testreszabása
+              href: customize-ui-overview.md
+            - name: JavaScript és oldalelrendezések
+              href: user-flow-javascript-overview.md
+            - name: Nyelv testreszabása
+              href: active-directory-b2c-reference-language-customization.md
+            - name: Jelszó bonyolultsága
+              href: active-directory-b2c-reference-password-complexity.md
+            - name: E-mailes ellenőrzés letiltása
+              href: active-directory-b2c-reference-disable-ev.md
+            - name: MFA engedélyezése
+              href: active-directory-b2c-reference-mfa.md
+        - name: Külső identitásszolgáltatók
+          items:
+            - name: Amazon
+              href: active-directory-b2c-setup-amzn-app.md
+            - name: Azure AD (egybérlős)
+              href: active-directory-b2c-setup-oidc-azure-active-directory.md
+            - name: Microsoft-fiók
+              href: active-directory-b2c-setup-msa-app.md
+            - name: Facebook
+              href: active-directory-b2c-setup-fb-app.md
+            - name: GitHub
+              href: active-directory-b2c-setup-github-app.md
+            - name: Google
+              href: active-directory-b2c-setup-goog-app.md
+            - name: LinkedIn
+              href: active-directory-b2c-setup-li-app.md
+            - name: QQ
+              href: active-directory-b2c-setup-qq-app.md
+            - name: Twitter
+              href: active-directory-b2c-setup-twitter-app.md
+            - name: WeChat
+              href: active-directory-b2c-setup-wechat-app.md
+            - name: Weibo
+              href: active-directory-b2c-setup-weibo-app.md
+            - name: Általános identitásszolgáltató
+              href: active-directory-b2c-setup-oidc-idp.md
+        - name: Jogkivonatok és munkamenet-kezelés
+          items:
+            - name: Jogkivonatok konfigurálása
+              href: configure-tokens.md
+            - name: Munkamenet viselkedésének konfigurálása
+              href: session-behavior.md
+        - name: Korhatáralapú hozzáférés-korlátozás konfigurálása
+          href: basic-age-gating.md
         - name: Egyéni attribútumok meghatározása
-          href: active-directory-b2c-create-custom-attributes-profile-edit-custom.md
-        - name: A bejelentkezve maradás engedélyezése
-          href: active-directory-b2c-reference-kmsi-custom.md
-        - name: RESTful API-k integrálása
+          href: active-directory-b2c-reference-custom-attr.md
+        - name: Külső identitásszolgáltatói jogkivonat átadása
+          href: idp-pass-through-user-flow.md
+    - name: Egyéni szabályzat
+      items:
+        - name: Szabályzat létrehozása
+          items:
+            - name: Egyéni szabályzatok – első lépések
+              href: active-directory-b2c-get-started-custom.md
+            - name: Erőforrás tulajdonosának jelszava
+              href: ropc-custom.md
+            - name: A bejelentkezve maradás engedélyezése
+              href: active-directory-b2c-reference-kmsi-custom.md
+            - name: Jelszó módosítása
+              href: active-directory-b2c-reference-password-change-custom.md
+        - name: Felhasználói felület testreszabása
+          items:
+            - name: Felhasználó által megadott adatok konfigurálása
+              href: active-directory-b2c-configure-signup-self-asserted-custom.md
+            - name: A felhasználói felület testreszabása
+              href: active-directory-b2c-ui-customization-custom.md
+            - name: A felhasználói felület dinamikus testreszabása
+              href: active-directory-b2c-ui-customization-custom-dynamic.md
+            - name: Oldalelrendezés
+              href: page-layout.md
+            - name: JavaScript engedélyezése
+              href: javascript-samples.md
+            - name: Jelszó bonyolultsága
+              href: active-directory-b2c-reference-password-complexity-custom.md
+        - name: Külső identitásszolgáltatók
+          items:
+            - name: OIDC/OAuth-szolgáltatók
+              items:
+                - name: Amazon
+                  href: setup-amazon-custom.md
+                - name: Azure AD (egybérlős)
+                  href: active-directory-b2c-setup-aad-custom.md
+                - name: Azure AD (több-bérlős)
+                  href: active-directory-b2c-setup-commonaad-custom.md
+                - name: Google
+                  href: active-directory-b2c-custom-setup-goog-idp.md
+                - name: LinkedIn
+                  href: active-directory-b2c-custom-setup-li-idp.md
+                - name: Microsoft-fiók
+                  href: active-directory-b2c-custom-setup-msa-idp.md
+                - name: Twitter
+                  href: active-directory-b2c-custom-setup-twitter-idp.md
+            - name: SAML-szolgáltatók
+              items:
+                - name: ADFS
+                  href: active-directory-b2c-custom-setup-adfs2016-idp.md
+                - name: Salesforce
+                  href: active-directory-b2c-setup-sf-app-custom.md
+        - name: Jogkivonatok és munkamenet-kezelés
+          items:
+            - name: Jogkivonatok testreszabása
+              href: active-directory-b2c-reference-manage-sso-and-token-configuration.md
+        - name: Külső identitásszolgáltatói jogkivonat átadása
+          href: idp-pass-through-custom.md
+        - name: Adaptív élmény
+          items:
+            - name: Közvetlen bejelentkezés beállítása
+              href: direct-signin.md
+        - name: Saját üzleti logika hozzáadása
           items:
             - name: Felhasználó által megadott adatok érvényesítése
               href: active-directory-b2c-rest-api-validation-custom.md
@@ -126,189 +220,141 @@
               href: active-directory-b2c-custom-rest-api-netfw-secure-basic.md
             - name: Biztonságos RESTful API-k tanúsítványhitelesítéssel
               href: active-directory-b2c-custom-rest-api-netfw-secure-cert.md
-        - name: OIDC/OAUTH-szolgáltatók
+        - name: Egyéni attribútumok meghatározása
+          href: active-directory-b2c-create-custom-attributes-profile-edit-custom.md
+        - name: Hibaelhárítás
           items:
-            - name: Amazon
-              href: setup-amazon-custom.md
-            - name: Azure AD (egybérlős)
-              href: active-directory-b2c-setup-aad-custom.md
-            - name: Azure AD (több-bérlős)
-              href: active-directory-b2c-setup-commonaad-custom.md
-            - name: Google
-              href: active-directory-b2c-custom-setup-goog-idp.md
-            - name: LinkedIn
-              href: active-directory-b2c-custom-setup-li-idp.md
-            - name: Microsoft-fiók
-              href: active-directory-b2c-custom-setup-msa-idp.md
-            - name: Twitter
-              href: active-directory-b2c-custom-setup-twitter-idp.md
-        - name: Oldalszerződés
-          href: page-contract.md
-        - name: Jelszó bonyolultsága
-          href: active-directory-b2c-reference-password-complexity-custom.md
-        - name: Jelszó módosítása
-          href: active-directory-b2c-reference-password-change-custom.md
-        - name: SAML-szolgáltatók
-          items:
-            - name: ADFS
-              href: active-directory-b2c-custom-setup-adfs2016-idp.md
-            - name: Salesforce
-              href: active-directory-b2c-setup-sf-app-custom.md
-        - name: Tokenek
-          items:
-            - name: Jogkivonatok testreszabása
-              href: active-directory-b2c-reference-manage-sso-and-token-configuration.md
-            - name: Hozzáférési jogkivonat átadása
-              href: idp-pass-through-custom.md
-        - name: A felhasználók viselkedésének nyomon követése
+            - name: Naplók gyűjtése az Application Insights használatával
+              href: active-directory-b2c-troubleshoot-custom.md
+            - name: Szabályzat érvényesítése
+              href: active-directory-b2c-guide-troubleshooting-custom.md
+        - name: Használatelemzés
           href: active-directory-b2c-custom-guide-eventlogger-appins.md
         - name: Referencia
           items:
-            - name: Igénylésfeloldók
-              href: claim-resolver-overview.md
-            - name: Identity Experience Framework-séma
-              items:
-                - name: TrustFrameworkPolicy
-                  href: trustframeworkpolicy.md
-                - name: BuildingBlocks
-                  href: buildingblocks.md
-                  items:
-                    - name: ClaimsSchema
-                      href: claimsschema.md
-                    - name: ClaimsTransformations
-                      href: claimstransformations.md
-                      items:
-                        - name: Logikai
-                          href: boolean-transformations.md
-                        - name: Dátum
-                          href: date-transformations.md
-                        - name: Általános kérdések
-                          href: general-transformations.md
-                        - name: Egész szám
-                          href: integer-transformations.md
-                        - name: JSON
-                          href: json-transformations.md
-                        - name: Közösségi fiókok
-                          href: social-transformations.md
-                        - name: StringCollection
-                          href: stringcollection-transformations.md
-                        - name: Sztring
-                          href: string-transformations.md
-                    - name: Predikátumok
-                      href: predicates.md
-                    - name: ContentDefinitions
-                      href: contentdefinitions.md
-                    - name: Honosítás
-                      href: localization.md
-                      items:
-                        - name: Honosítási sztringazonosítók
-                          href: localization-string-ids.md
-                - name: ClaimsProviders
-                  href: claimsproviders.md
-                  items:
-                    - name: TechnicalProfiles
-                      href: technicalprofiles.md
-                      items:
-                        - name: A technikai profilok ismertetése
-                          href: technical-profiles-overview.md
-                        - name: Azure Active Directory
-                          href: active-directory-technical-profile.md
-                        - name: Jogcím-átalakítás
-                          href: claims-transformation-technical-profile.md
-                        - name: JWT-jogkivonatkiállító
-                          href: jwt-issuer-technical-profile.md
-                        - name: OAuth1
-                          href: oauth1-technical-profile.md
-                        - name: OAuth2
-                          href: oauth2-technical-profile.md
-                        - name: OpenId Connect
-                          href: openid-connect-technical-profile.md
-                        - name: REST
-                          href: restful-technical-profile.md
-                        - name: SAML
-                          href: saml-technical-profile.md
-                        - name: Önellenőrzött
-                          href: self-asserted-technical-profile.md
-                        - name: SSO-munkamenet
-                          href: active-directory-b2c-reference-sso-custom.md
-                        - name: Ellenőrzés
-                          href: validation-technical-profile.md
-                - name: UserJourneys
-                  href: userjourneys.md
-                - name: RelyingParty
-                  href: relyingparty.md
-            - name: JavaScript-minták
-              href: javascript-samples.md
-            - name: Megjegyzések fejlesztők számára
-              href: active-directory-b2c-developer-notes-custom.md
             - name: A bizalmi keretrendszer meghatározása
               href: active-directory-b2c-reference-trustframeworks-defined-ief-custom.md
-    - name: Identitásszolgáltatók
-      items:
-        - name: Amazon
-          href: active-directory-b2c-setup-amzn-app.md
-        - name: Azure AD (egybérlős)
-          href: active-directory-b2c-setup-oidc-azure-active-directory.md
-        - name: Microsoft-fiók
-          href: active-directory-b2c-setup-msa-app.md
-        - name: Facebook
-          href: active-directory-b2c-setup-fb-app.md
-        - name: GitHub
-          href: active-directory-b2c-setup-github-app.md
-        - name: Google
-          href: active-directory-b2c-setup-goog-app.md
-        - name: LinkedIn
-          href: active-directory-b2c-setup-li-app.md
-        - name: OpenID Connect
-          href: active-directory-b2c-setup-oidc-idp.md
-        - name: Twitter
-          href: active-directory-b2c-setup-twitter-app.md
-    - name: Felhasználók migrálása
-      href: active-directory-b2c-user-migration.md
-    - name: Felhasználók migrálása közösségi identitásokkal
-      href: active-directory-b2c-social-migration.md
-    - name: Mobil- és asztali appok
-      items:
-        - name: iOS ObjC az AppAuth használatával
-          href: active-directory-b2c-devquickstarts-ios.md
-        - name: Android az AppAuth használatával
-          href: active-directory-b2c-devquickstarts-android.md
-    - name: Használat jelentése
-      href: active-directory-b2c-reference-usage-reporting-api.md
-    - name: Erőforrás tulajdonosának jelszava
-      href: configure-ropc.md
-    - name: Közvetlen bejelentkezés beállítása
-      href: direct-signin.md
-    - name: Önkiszolgáló jelszó-visszaállítás beállítása
-      href: active-directory-b2c-reference-sspr.md
-    - name: Tokenek
-      items:
-        - name: Jogkivonatok konfigurálása
-          href: configure-tokens.md
-        - name: Hozzáférési jogkivonat átadása
-          href: idp-pass-through-user-flow.md
-        - name: Hozzáférési jogkivonat kérése
-          href: active-directory-b2c-access-tokens.md
+            - name: TrustFrameworkPolicy
+              href: trustframeworkpolicy.md
+            - name: BuildingBlocks
+              href: buildingblocks.md
+              items:
+                - name: ClaimsSchema
+                  href: claimsschema.md
+                - name: ClaimsTransformations
+                  href: claimstransformations.md
+                  items:
+                    - name: Logikai
+                      href: boolean-transformations.md
+                    - name: Dátum
+                      href: date-transformations.md
+                    - name: Általános kérdések
+                      href: general-transformations.md
+                    - name: Egész szám
+                      href: integer-transformations.md
+                    - name: JSON
+                      href: json-transformations.md
+                    - name: Külső fiókok
+                      href: social-transformations.md
+                    - name: StringCollection
+                      href: stringcollection-transformations.md
+                    - name: Sztring
+                      href: string-transformations.md
+                - name: Predikátumok
+                  href: predicates.md
+                - name: ContentDefinitions
+                  href: contentdefinitions.md
+                - name: Honosítás
+                  href: localization.md
+                  items:
+                    - name: Honosítási sztringazonosítók
+                      href: localization-string-ids.md
+            - name: ClaimsProviders
+              href: claimsproviders.md
+              items:
+                - name: TechnicalProfiles
+                  href: technicalprofiles.md
+                  items:
+                    - name: A technikai profilok ismertetése
+                      href: technical-profiles-overview.md
+                    - name: Igénylésfeloldók
+                      href: claim-resolver-overview.md
+                    - name: Azure Active Directory
+                      href: active-directory-technical-profile.md
+                    - name: Jogcím-átalakítás
+                      href: claims-transformation-technical-profile.md
+                    - name: JWT-jogkivonatkiállító
+                      href: jwt-issuer-technical-profile.md
+                    - name: OAuth1
+                      href: oauth1-technical-profile.md
+                    - name: OAuth2
+                      href: oauth2-technical-profile.md
+                    - name: OpenID Connect
+                      href: openid-connect-technical-profile.md
+                    - name: REST
+                      href: restful-technical-profile.md
+                    - name: SAML
+                      href: saml-technical-profile.md
+                    - name: Önellenőrzött
+                      href: self-asserted-technical-profile.md
+                    - name: SSO-munkamenet
+                      href: active-directory-b2c-reference-sso-custom.md
+                    - name: Ellenőrzés
+                      href: validation-technical-profile.md
+            - name: UserJourneys
+              href: userjourneys.md
+            - name: RelyingParty
+              href: relyingparty.md
     - name: A b2clogin.com használata
-      href: b2clogin.md
-    - name: Az Azure AD Graph API használata
-      href: active-directory-b2c-devquickstarts-graph-dotnet.md
-    - name: Referencia
       items:
-        - name: Kódminták
-          href: 'https://azure.microsoft.com/resources/samples/?service=active-directory-b2c'
-        - name: Cookie-definíciók
-          href: cookie-definitions.md
-        - name: Régiónkénti elérhetőség és az adatok tárolási helye
-          href: active-directory-b2c-reference-tenant-type.md
-        - name: Számlázás engedélyezése
-          href: active-directory-b2c-how-to-enable-billing.md
-        - name: Fenyegetések kezelése
-          href: active-directory-b2c-reference-threat-management.md
-        - name: Bővítményalkalmazás
-          href: active-directory-b2c-reference-extensions-app.md
-        - name: Felhasználói folyamatok verziói
-          href: user-flow-versions.md
+        - name: b2clogin.com – áttekintés
+          href: b2clogin.md
+        - name: Webes API migrálása a b2clogin.com-ra
+          href: multiple-token-endpoints.md
+          displayName: 'migrate, b2clogin, owin'
+    - name: Automation
+      items:
+        - name: Használati jelentés exportálása
+          href: active-directory-b2c-reference-usage-reporting-api.md
+        - name: Fiókkezelés
+          href: active-directory-b2c-devquickstarts-graph-dotnet.md
+    - name: Naplók
+      href: active-directory-b2c-reference-audit-logs.md
+    - name: Biztonságos API Management API
+      href: secure-api-management.md
+      displayName: 'apim, api management, migrate, b2clogin.com'
+    - name: Megfelelőség
+      items:
+        - name: Felhasználói hozzáférés
+          href: manage-user-access.md
+          displayName: GDPR
+        - name: Felhasználói adatok
+          href: manage-user-data.md
+          displayName: GDPR
+    - name: Migrálás
+      items:
+        - name: Felhasználók migrálása
+          href: active-directory-b2c-user-migration.md
+        - name: Felhasználók migrálása külső identitásokkal
+          href: active-directory-b2c-social-migration.md
+- name: Referencia
+  items:
+    - name: Az Identity Experience Framework kibocsátási megjegyzései
+      href: active-directory-b2c-developer-notes-custom.md
+    - name: Kódminták
+      href: 'https://azure.microsoft.com/resources/samples/?service=active-directory-b2c'
+    - name: Cookie-definíciók
+      href: cookie-definitions.md
+    - name: Régiónkénti elérhetőség és az adatok tárolási helye
+      href: active-directory-b2c-reference-tenant-type.md
+    - name: Számlázás engedélyezése
+      href: active-directory-b2c-how-to-enable-billing.md
+    - name: Fenyegetések kezelése
+      href: active-directory-b2c-reference-threat-management.md
+    - name: Bővítményalkalmazás
+      href: active-directory-b2c-reference-extensions-app.md
+    - name: Felhasználói folyamatok verziói
+      href: user-flow-versions.md
 - name: További források
   items:
     - name: Azure-ütemterv

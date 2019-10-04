@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/19/2018
 ms.author: robb
 ms.openlocfilehash: ce54b63aa7831ed40a8592d536c43fc83fdc5567
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53433090"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60709983"
 ---
 # <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>Az Azure Monitor használatból való kivonást egyaránt klasszikus üzemi modell API-k a metrikák és az automatikus méretezés
 
@@ -91,4 +91,4 @@ Ha bármilyen kérdése van, írjon nekünk az MonitorClassicAPIhelp@microsoft.c
 ## <a name="references"></a>Referencia
 
 - [Az Azure Monitor az újabb REST API-k](https://docs.microsoft.com/rest/api/monitor/) 
-- [Újabb Azure Monitor SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)
+- [Newer Azure Monitor SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)

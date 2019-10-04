@@ -1,19 +1,19 @@
 ---
-title: Létrehozása és kezelése a tűzfalszabályok az Azure Database for postgresql-hez
-description: Hozzon létre és kezelhető az Azure Database for PostgreSQL tűzfalszabályok az Azure portal használatával
+title: Létrehozása és kezelése a tűzfalszabályok az Azure Database for PostgreSQL – egyetlen kiszolgáló
+description: Hozzon létre és tűzfalszabályok kezelése az Azure Database for PostgreSQL – egyetlen kiszolgáló az Azure portal használatával
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 04/09/2019
-ms.openlocfilehash: cb142e01009efbeaabd5d4e56dbedfe6384c5fc6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.date: 5/6/2019
+ms.openlocfilehash: 7eed2e81c6781ca660cffa909f27962a7c5112cb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59798349"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65069008"
 ---
-# <a name="create-and-manage-azure-database-for-postgresql-firewall-rules-using-the-azure-portal"></a>Hozzon létre és kezelhető az Azure Database for PostgreSQL tűzfalszabályok az Azure portal használatával
+# <a name="create-and-manage-firewall-rules-for-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Hozzon létre és tűzfalszabályok kezelése az Azure Database for PostgreSQL – egyetlen kiszolgáló az Azure portal használatával
 Kiszolgálószintű tűzfalszabályok segítségével hozzáférésének kezelése az Azure Database for PostgreSQL-kiszolgáló megadott IP-cím vagy IP-címtartományt.
 
 Virtuális hálózat (VNet) szabályok is használható a kiszolgálóhoz való hozzáférés biztonsága érdekében. Tudjon meg többet [létrehozása és kezelése a virtuális hálózati szolgáltatás végpontjai és az Azure portal használatával szabályok](howto-manage-vnet-using-portal.md).

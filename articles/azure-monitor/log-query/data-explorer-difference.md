@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor log lekérdezési nyelv különbségek |} A Microsoft Docs
-description: Referenciainformációk az Azure Monitor által használt Kusto-lekérdezési nyelv. Az Azure Monitor további elemeket és elemeket nem támogatott az Azure Monitor log-lekérdezéseket tartalmaz.
+title: Azure Monitor log lekérdezés nyelvi eltérései | Microsoft Docs
+description: Az Azure Monitor által használt Kusto-lekérdezési nyelvre vonatkozó információk. A Azure Monitor és a Azure Monitor napló lekérdezésekben nem támogatott elemek további elemeit tartalmazza.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -11,30 +11,30 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 10/31/2018
+ms.date: 08/13/2019
 ms.author: bwren
-ms.openlocfilehash: 1185f3f96fd39f168d138d7dbf66e7780884b1fa
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 9892b8884d901033a80fae4168f25da97edb5a68
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56266730"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990184"
 ---
-# <a name="azure-monitor-log-query-language-differences"></a>Azure Monitor log lekérdezési nyelv különbségek
+# <a name="azure-monitor-log-query-language-differences"></a>Azure Monitor a naplózási lekérdezés nyelvi különbségeit
 
-Amíg [naplók az Azure Monitor](log-query-overview.md) épül [Azure adatkezelő](/azure/data-explorer) látható, ugyanazokkal [Kusto-lekérdezés nyelvi](/azure/kusto/query), a nyelvi verzióját van néhány különbség. Ez a cikk elemek, amelyek különböznek az adatkezelőt, és az Azure Monitor log-lekérdezésekben használt verzió használt nyelv verzióját azonosítja.
+A [Azure monitorban lévő naplók](log-query-overview.md) az [Azure Adatkezelőra](/azure/data-explorer) épülnek, és ugyanazt a [Kusto-lekérdezési nyelvet](/azure/kusto/query)használják, a nyelv verziója némileg eltér. Ez a cikk azokat az elemeket azonosítja, amelyek különböznek a Adatkezelő használt nyelv verziója és a Azure Monitor naplózási lekérdezésekhez használt verzió között.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="kql-elements-not-supported-in-azure-monitor"></a>Nem támogatott az Azure Monitor KQL elemek
-A következő szakaszok ismertetik a Kusto-lekérdezés nyelvi elemei, amelyek az Azure Monitor által nem támogatott.
+## <a name="kql-elements-not-supported-in-azure-monitor"></a>A Azure Monitorban nem támogatott KQL elemek
+A következő szakaszok ismertetik a Kusto lekérdezési nyelvének azon elemeit, amelyeket a Azure Monitor nem támogat.
 
-### <a name="statements-not-supported-in-azure-monitor"></a>Nem támogatott az Azure Monitor utasítások
+### <a name="statements-not-supported-in-azure-monitor"></a>Azure Monitor nem támogatott utasítások
 
 * [Alias](/azure/kusto/query/aliasstatement)
 * [Lekérdezési paraméterek](/azure/kusto/query/queryparametersstatement)
 
-### <a name="functions-not-supported-in-azure-monitor"></a>Az Azure monitorban nem támogatott funkciók
+### <a name="functions-not-supported-in-azure-monitor"></a>A függvények nem támogatottak Azure Monitor
 
 * [cluster()](/azure/kusto/query/clusterfunction)
 * [cursor_after()](/azure/kusto/query/cursorafterfunction)
@@ -45,23 +45,24 @@ A következő szakaszok ismertetik a Kusto-lekérdezés nyelvi elemei, amelyek a
 * [extent_id()](/azure/kusto/query/extentidfunction)
 * [extent_tags()](/azure/kusto/query/extenttagsfunction)
 
-### <a name="operators-not-supported-in-azure-monitor"></a>Az Azure monitorban nejsou podporovány operátory
+### <a name="operators-not-supported-in-azure-monitor"></a>Azure Monitor nem támogatott operátorok
 
-* [Kereszt-fürthöz való csatlakozás](/azure/kusto/query/joincrosscluster)
+* [Fürtök közötti csatlakozás](/azure/kusto/query/joincrosscluster)
 * [externaldata operátor](/azure/kusto/query/externaldata-operator)
 
-### <a name="plugins-not-supported-in-azure-monitor"></a>Beépülő modulok nem támogatott az Azure monitorban
+### <a name="plugins-not-supported-in-azure-monitor"></a>A beépülő modulok Azure Monitor nem támogatottak
 
+* [Python beépülő modul](/azure/kusto/query/pythonplugin)
 * [sql_request beépülő modul](/azure/kusto/query/sqlrequestplugin)
 
 
-## <a name="additional-operators-in-azure-monitor"></a>Az Azure monitorban kiegészítő operátorok
-Az alábbi műveleteket támogatják a Azure Monitor, és nem érhetők el az Azure Monitor-en kívül.
+## <a name="additional-operators-in-azure-monitor"></a>További operátorok a Azure Monitor
+A következő operátorok bizonyos Azure Monitor szolgáltatásokat támogatnak, és nem érhetők el Azure Monitoron kívül.
 
 * [app()](app-expression.md)
 * [workspace()](workspace-expression.md)
 
 ## <a name="next-steps"></a>További lépések
 
-- Referenciák beszerzése különböző [erőforrásokat az Azure Monitor írásához jelentkezzen lekérdezések](query-language.md).
-- A teljes hozzáférési [Kusto-lekérdezés nyelvi referenciadokumentációjára](/azure/kusto/query/).
+- A különböző erőforrásokra mutató hivatkozások beszerzése [Azure monitor napló lekérdezésének írásához](query-language.md).
+- A [Kusto lekérdezési nyelvének](/azure/kusto/query/)teljes dokumentációjának elérése.

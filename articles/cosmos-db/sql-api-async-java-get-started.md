@@ -1,28 +1,25 @@
 ---
-title: 'Oktatóanyag: Az Azure Cosmos DB SQL API-fiók kezeléséhez, az aszinkron Java SDK-val Java-alkalmazás készítése'
+title: 'Oktatóanyag: Hozzon létre egy Java-alkalmazást az aszinkron Java SDK-val egy SQL API-fiók kezeléséhez Azure Cosmos DB'
 description: Az oktatóanyag bemutatja, hogyan kell tárolni és érheti el adatait egy SQL API-fiókon belül az Azure Cosmos DB aszinkron Java-alkalmazás használatával.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: tutorial
-ms.date: 06/29/2018
+ms.date: 12/15/2018
 ms.author: sngun
 Customer intent: As a developer, I want to build a Java application with the Async Java SDK to access and manage Azure Cosmos DB resources so that customers can utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
-ms.openlocfilehash: 80146c7ec7b496b33bede8172d9945c78b26511e
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 2a6f12bfe7aa3de028039d00c259a606d028a0e5
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039027"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614598"
 ---
-# <a name="tutorial-build-a-java-app-with-the-async-java-sdk-to-manage-data-stored-in-a-sql-api-account"></a>Oktatóanyag: Egy SQL API-fiókban tárolt adatok kezelésére, az aszinkron Java SDK-val Java-alkalmazás készítése
+# <a name="tutorial-build-a-java-app-with-the-async-java-sdk-to-manage-data-stored-in-a-sql-api-account"></a>Oktatóanyag: Java-alkalmazás létrehozása az aszinkron Java SDK-val egy SQL API-fiókban tárolt adatkezeléshez
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
-> * [.NET (előzetes verzió)](sql-api-dotnet-get-started-preview.md)
-> * [.NET Core](sql-api-dotnetcore-get-started.md)
-> * [A .NET core (előzetes verzió)](sql-api-dotnet-core-get-started-preview.md)
 > * [Java](sql-api-java-get-started.md)
 > * [Aszinkron Java](sql-api-async-java-get-started.md)
 > * [Node.js](sql-api-nodejs-get-started.md)
@@ -117,7 +114,7 @@ client = new AsyncDocumentClient.Builder()
 
 ## <a id="CreateDatabase"></a>Adatbázis létrehozása
 
-Az Azure Cosmos DB-adatbázis létrehozása a használatával a `createDatabaseIfNotExists()` DocumentClient osztály metódusát. Az adatbázis a JSON-dokumentumtároló gyűjtemények között particionált logikai tárolója.
+Hozza létre az Azure Cosmos-adatbázist a `createDatabaseIfNotExists()` DocumentClient osztály metódusának használatával. Az adatbázis a JSON-dokumentumtároló gyűjtemények között particionált logikai tárolója.
 
 ```java
 private void createDatabaseIfNotExists() throws Exception 

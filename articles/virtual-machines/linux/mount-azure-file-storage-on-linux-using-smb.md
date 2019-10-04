@@ -1,40 +1,39 @@
 ---
-title: Azure File storage csatlakoztatása az SMB-vel Linux rendszerű virtuális gépekhez |} A Microsoft Docs
-description: Hogyan csatlakoztathatja az Azure File storage SMB-vel az Azure CLI-vel Linux rendszerű virtuális gépeken
+title: Azure file Storage csatlakoztatása Linux rendszerű virtuális gépekhez SMB használatával | Microsoft Docs
+description: Az Azure file Storage csatlakoztatása Linux rendszerű virtuális gépekhez SMB használatával az Azure CLI-vel
 services: virtual-machines-linux
 documentationcenter: virtual-machines-linux
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
-ms.openlocfilehash: 4b3bba1da5238655ca749f6464c539e53ca48f27
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: effe1169fb531abd3fe8a206f2baf83380fcd28f
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540057"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828392"
 ---
-# <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>Azure File storage csatlakoztatása az SMB-, Linux rendszerű virtuális gépeken
+# <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>Azure file Storage csatlakoztatása Linux rendszerű virtuális gépekhez SMB használatával
 
-Ez a cikk bemutatja, hogyan használható az Azure File storage szolgáltatást egy Linux rendszerű virtuális gépen egy SMB-csatlakoztatási használatával az Azure CLI használatával. Az Azure File storage kínál a felhőben, a szabványos SMB protokollt használó fájlmegosztások. 
+Ez a cikk bemutatja, hogyan használhatja az Azure file Storage szolgáltatást egy Linux rendszerű virtuális gépen az Azure CLI-vel való SMB-csatlakoztatás használatával. Az Azure file Storage a szabványos SMB protokoll használatával kínál fájlmegosztást a felhőben. 
 
-A File storage biztosít a fájlmegosztások a felhőben, amelyek a szabványos SMB-protokollt használják. Az összes operációs rendszer, amely támogatja az SMB 3.0-s fájlmegosztás lehet csatlakoztatni. Egy SMB-csatlakoztatás Linux rendszeren való használatakor egyszerű biztonsági mentések kap egy robusztus, állandó archiválási tárolóhelyre szolgáltatásiszint-szerződés által támogatott.
+A file Storage olyan fájlmegosztást biztosít a felhőben, amely a szabványos SMB protokollt használja. Bármely, az SMB 3,0-et támogató operációs rendszerből is csatlakoztathat fájlmegosztást. Ha a Linux rendszeren SMB-csatlakoztatást használ, az egyszerű biztonsági mentést egy SLA-t támogató robusztus, állandó archiválási tárolóhelyre teszi elérhetővé.
 
-Fájlokat helyez át egy virtuális Gépet egy SMB-csatlakoztatási üzemeltetett, File Storage kiválóan alkalmas lehet hibákat keresni a naplókban. Az SMB-megosztáson helyileg is csatlakoztathatók a Mac, Linux vagy Windows-munkaállomás. Az SMB nem a legjobb megoldás Linux streameléshez vagy alkalmazásnaplók valós időben, mert az SMB protokoll nem épített ilyen gyakori naplózási feladatok kezelésére. Egy dedikált, egyesített naplózási réteg eszköz Fluentd például SMB-nál jobb választás lenne Linux és a naplózás a kimeneti alkalmazás összegyűjtése.
+Ha a fájlokat egy virtuális gépről a file Storage-ban üzemeltetett SMB-csatlakoztatásra helyezi át, a naplók hibakeresése nagyszerű módszer. Az SMB-megosztást helyileg is csatlakoztathatja Mac, Linux vagy Windows rendszerű munkaállomásán. Az SMB nem a legjobb megoldás a Linux vagy az alkalmazás naplófájljainak valós idejű továbbítására, mert az SMB protokoll nem az ilyen súlyos naplózási feladatok kezelésére készült. Egy dedikált, egységesített naplózási rétegbeli eszköz (például a Fluent) jobb választás lenne, mint az SMB a Linux-és az alkalmazások naplózási kimenetének gyűjtéséhez.
 
-Ez az útmutató megköveteli, hogy futtat-e az Azure CLI 2.0.4-es vagy újabb. A verzió megkereséséhez futtassa a következő parancsot: **az --version**. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. 
+Ehhez az útmutatóhoz az Azure CLI 2.0.4 vagy újabb verzióját kell futtatnia. A verzió megkereséséhez futtassa a következő parancsot: **az --version**. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. 
 
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Hozzon létre egy erőforráscsoportot *myResourceGroup* a a *USA keleti Régiójában* helyét.
+Hozzon létre egy *myResourceGroup* nevű ERŐFORRÁSCSOPORTOT az *USA keleti* régiójában.
 
 ```bash
 az group create --name myResourceGroup --location eastus
@@ -42,7 +41,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
-Hozzon létre egy új storage-fiókot az erőforráscsoportban létrehozott, [az tárfiók létrehozása](/cli/azure/storage/account). Ez a példa létrehoz egy tárfiókot, nevű *mySTORAGEACCT\<véletlenszerű szám >* és a tárfiók nevét a változóban **STORAGEACCT**. Tárfiókok nevének egyedinek kell lennie, használatával `$RANDOM` egy számot fűz a végfelhasználók egyedi legyen.
+Hozzon létre egy új Storage-fiókot a létrehozott erőforráscsoport keretében az [az Storage Account Create](/cli/azure/storage/account)paranccsal. Ez a példa létrehoz egy *mystorageacct kifejezést @ no__t-1random number >* nevű Storage-fiókot, és a **storageacct tárfiókban**változóban helyezi el a Storage-fiók nevét. A Storage-fiók nevének egyedinek kell lennie, a `$RANDOM` értékkel hozzáfűz egy számot a végéhez, hogy az egyedi legyen.
 
 ```bash
 STORAGEACCT=$(az storage account create \
@@ -53,11 +52,11 @@ STORAGEACCT=$(az storage account create \
     --query "name" | tr -d '"')
 ```
 
-## <a name="get-the-storage-key"></a>A storage-kulcs lekérése
+## <a name="get-the-storage-key"></a>A tároló kulcsának beolvasása
 
-Amikor létrehoz egy tárfiókot, a fiókkulcsok címpárral jönnek létre, hogy a szolgáltatás megszakítás nélkül forgatható el. Amikor a párok a második kulcsot, hozzon létre egy új kulcspárt. Új tárfiókkulcsok mindig létrehozása párok, így mindig kell legalább egy nem használt tárfiókkulcs készen áll a váltás.
+Amikor létrehoz egy Storage-fiókot, a rendszer párokban hozza létre a fiók kulcsait, hogy a szolgáltatás megszakítása nélkül is elforgatható legyen. Ha a pár második kulcsára vált, létrehoz egy új kulcspárt. Az új Storage-fiókok kulcsai mindig párokban jönnek létre, így mindig legalább egy fel nem használt Storage-fiók kulcsa készen áll a váltásra.
 
-A tárfiók kulcsaihoz használatával megtekintheti [az tárolási fióklista kulcsok](/cli/azure/storage/account/keys). Ebben a példában a kulcs 1 értékét tárolja a **StorageKey TULAJDONSÁGÁT** változó.
+Tekintse meg a Storage-fiók kulcsait az [az Storage Account Keys List](/cli/azure/storage/account/keys)paranccsal. Ez a példa az 1. kulcs értékét tárolja a **STORAGEKEY** változóban.
 
 ```bash
 STORAGEKEY=$(az storage account keys list \
@@ -68,11 +67,11 @@ STORAGEKEY=$(az storage account keys list \
 
 ## <a name="create-a-file-share"></a>Fájlmegosztás létrehozása
 
-Hozzon létre a File storage használatával [az tárolási fájlmegosztás létrehozása](/cli/azure/storage/share). 
+Hozza létre a file Storage-megosztást az [az Storage Share Create](/cli/azure/storage/share)paranccsal. 
 
-Megosztás nevének kell lennie az összes kisbetűket, számokat és kötőjeleket, de nem kezdődhet kötőjellel. A fájlmegosztások és fájlok elnevezésére vonatkozó információkért lásd: [Naming and Referencing Shares, Directories, Files, and Metadata](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata) (Megosztások, könyvtárak, fájlok és metaadatok elnevezése és hivatkozása).
+A megosztási név csak kisbetűket, számokat és szimpla kötőjeleket tartalmazhat, de nem kezdődhet kötőjellel. A fájlmegosztások és fájlok elnevezésére vonatkozó információkért lásd: [Naming and Referencing Shares, Directories, Files, and Metadata](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata) (Megosztások, könyvtárak, fájlok és metaadatok elnevezése és hivatkozása).
 
-Ez a példa létrehoz egy megosztásban *myshare* egy 10 GiB-kvótával. 
+Ez a példa egy *MyShare* nevű megosztást hoz létre egy 10-GIB kvótával. 
 
 ```bash
 az storage share create --name myshare \
@@ -81,40 +80,40 @@ az storage share create --name myshare \
     --account-key $STORAGEKEY
 ```
 
-## <a name="create-a-mount-point"></a>Hozzon létre egy csatlakoztatási pont
+## <a name="create-a-mount-point"></a>Csatlakoztatási pont létrehozása
 
-Az Azure-fájlmegosztás csatlakoztatása a Linux rendszerű számítógépen, ellenőrizze, hogy kell a **cifs-utils** csomag telepítve van. A telepítési utasításokért lásd: [telepítse a cifs-utils csomagot a Linux-disztribúció](../../storage/files/storage-how-to-use-files-linux.md#install-cifs-utils).
+Ahhoz, hogy csatlakoztatni lehessen az Azure-fájlmegosztást a Linux rendszerű számítógépén, meg kell győződnie arról, hogy telepítve van a **CIFS-utils** csomag. A telepítési utasításokért lásd: [a CIFS-utils csomag telepítése a Linux-disztribúcióhoz](../../storage/files/storage-how-to-use-files-linux.md#install-cifs-utils).
 
-Az Azure Files SMB protokollt használ, amely a TCP 445-ös porton keresztül kommunikál.  Ha problémába ütközik az Azure-fájlmegosztás csatlakoztatása, győződjön meg arról, hogy a tűzfal nem blokkolja a 445-ös port.
+Azure Files SMB protokollt használ, amely a 445-as TCP-porton keresztül kommunikál.  Ha nem sikerül csatlakoztatni az Azure-fájlmegosztást, győződjön meg arról, hogy a tűzfal nem blokkolja a 445-es TCP-portot.
 
 
 ```bash
 mkdir -p /mnt/MyAzureFileShare
 ```
 
-## <a name="mount-the-share"></a>A megosztás csatlakoztatásához
+## <a name="mount-the-share"></a>A megosztás csatlakoztatása
 
-Csatlakoztassa az Azure-fájlmegosztás a helyi könyvtárba. 
+Csatlakoztassa az Azure-fájlmegosztást a helyi könyvtárba. 
 
 ```bash
 sudo mount -t cifs //$STORAGEACCT.file.core.windows.net/myshare /mnt/MyAzureFileShare -o vers=3.0,username=$STORAGEACCT,password=$STORAGEKEY,dir_mode=0777,file_mode=0777,serverino
 ```
 
-A fenti parancs használja a [csatlakoztatási](https://linux.die.net/man/8/mount) parancs segítségével csatlakoztassa az Azure-fájlmegosztást és a jellemző beállításokat [cifs](https://linux.die.net/man/8/mount.cifs). Pontosabban, a file_mode és dir_mode beállítások set-fájlok és könyvtárak engedélyt `0777`. A `0777` engedélyt biztosít olvasási, írási és végrehajtási engedélyek minden felhasználó számára. Ezek az engedélyek módosításához az értékeket cserélje le a más [chmod engedélyek](https://en.wikipedia.org/wiki/Chmod). Is használhatja más [cifs](https://linux.die.net/man/8/mount.cifs) beállítások, például a csoportazonosító vagy egyedi azonosítója. 
+A fenti parancs a [Mount](https://linux.die.net/man/8/mount) parancs használatával csatlakoztatja az Azure-fájlmegosztást és a [CIFS](https://linux.die.net/man/8/mount.cifs)-ra vonatkozó beállításokat. Pontosabban, a file_mode és a dir_mode beállítások a fájlok és könyvtárak beállítását `0777` engedélyre állítja be. A `0777` engedély olvasási, írási és végrehajtási engedélyeket biztosít az összes felhasználó számára. Ezeket az engedélyeket megváltoztathatja az értékek más chmod- [engedélyekkel](https://en.wikipedia.org/wiki/Chmod)való lecserélésével. Más [CIFS](https://linux.die.net/man/8/mount.cifs) -beállításokat is használhat, mint például a GID vagy az UID. 
 
 
-## <a name="persist-the-mount"></a>A csatlakoztatási megőrzése
+## <a name="persist-the-mount"></a>A csatlakoztatás fenntartása
 
-A Linux rendszerű virtuális gép újraindításakor a csatlakoztatott SMB-megosztáson fürtköteteiről leállítása közben. Újból csatlakoztatni az SMB-megosztás a rendszerindítás, a Linux /etc/fstab, adjon hozzá egy sort. Linux az fstab fájlt használja, a rendszerindítási folyamat során csatlakoztatni kell a fájlrendszerek listában. Az SMB-megosztás hozzáadása biztosítja, hogy a File storage-megosztást véglegesen csatlakoztatott fájlrendszer a Linux rendszerű virtuális gép számára. A File storage SMB-megosztás hozzáadása egy új virtuális Gépet, akkor lehetséges, ha a cloud-init használata.
+A Linux rendszerű virtuális gép újraindításakor a csatlakoztatott SMB-megosztás le van választva a leállítás során. Ha újra szeretné csatlakoztatni az SMB-megosztást a rendszerindításkor, adjon hozzá egy sort a Linux/etc/fstab. A Linux az fstab fájl használatával listázza a rendszerindítási folyamat során csatlakoztatni kívánt fájlrendszereket. Az SMB-megosztás hozzáadásával biztosítható, hogy a file Storage-megosztás egy tartósan csatlakoztatott fájlrendszer legyen a Linux rendszerű virtuális gép számára. A file Storage SMB-megosztás új virtuális géphez való hozzáadása a Cloud-init használata esetén lehetséges.
 
 ```bash
 //myaccountname.file.core.windows.net/mystorageshare /mnt/mymountpoint cifs vers=3.0,username=mystorageaccount,password=myStorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
 ```
-Az éles környezetben fokozott biztonság érdekében tárolja a hitelesítő adatok fstab-en kívül.
+Az éles környezetek fokozott biztonsága érdekében a hitelesítő adatokat az fstab-n kívül kell tárolnia.
 
 ## <a name="next-steps"></a>További lépések
 
-- [A cloud-init használatával testre szabhatja a Linux rendszerű virtuális gép létrehozása során](using-cloud-init.md)
+- [Linux rendszerű virtuális gép testreszabása a Cloud-init használatával a létrehozás során](using-cloud-init.md)
 - [Add a disk to a Linux VM (Lemez hozzáadása Linux rendszerű virtuális géphez)](add-disk.md)
-- [Az Azure CLI használatával egy Linux rendszerű virtuális Gépen található lemezek titkosítása](encrypt-disks.md)
+- [Azure Disk Encryption Linux rendszerű virtuális gépekhez](disk-encryption-overview.md)
 

@@ -1,6 +1,6 @@
 ---
-title: Alkalmazás betanítása
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Alkalmazás betanítása – LUIS
+titleSuffix: Azure Cognitive Services
 description: Képzési az a folyamat, a Language Understanding (LUIS) Alkalmazásverzió javítása a beszédfelismerés oktatási. A LUIS-alkalmazás betanításához például hozzáadása, szerkesztése, címkézés vagy entitásokat, a leképezések és a kimondott szöveg törlése a modellhez való frissítés után.
 services: cognitive-services
 author: diberry
@@ -8,17 +8,17 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 04/07/2019
+ms.topic: conceptual
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: ba0db22437961a33b0b415ec7cb60ad3df12821c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b3841c9d60cf275e423024fc66c15582f95c0a10
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59267055"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932755"
 ---
-# <a name="train-your-active-version-of-the-luis-app"></a>A LUIS-alkalmazás az aktív Ön betanítása 
+# <a name="train-your-active-version-of-the-luis-app"></a>A LUIS-alkalmazás aktív verziójának betanítása 
 
 Képzési az a folyamat, a Language Understanding (LUIS) alkalmazásával a beszédfelismerés oktatási. A LUIS-alkalmazás betanításához például hozzáadása, szerkesztése, címkézés vagy entitásokat, a leképezések és a kimondott szöveg törlése a modellhez való frissítés után. 
 
@@ -44,9 +44,9 @@ A iteratív folyamat a [LUIS portál](https://www.luis.ai), először létre kel
 >[!NOTE]
 >Ha egy vagy több leképezések az alkalmazás, amely nem tartalmaz példa utterances, az alkalmazás nem betanításához. Az összes a leképezések beszédmódok hozzáadása. További információkért lásd: [példa beszédmódok hozzáadása](luis-how-to-add-example-utterances.md).
 
-## <a name="training-date-and-time"></a>Képzési dátuma és időpontja
+## <a name="training-date-and-time"></a>Képzés dátuma és időpontja
 
-Képzési dátum és idő GMT + 2. 
+A betanítás dátuma és időpontja GMT + 2. 
 
 ## <a name="train-with-all-data"></a>Az összes adat betanítása
 

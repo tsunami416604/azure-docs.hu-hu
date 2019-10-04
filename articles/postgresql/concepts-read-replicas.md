@@ -1,85 +1,108 @@
 ---
-title: Olvasási replikák az Azure Database for PostgreSQL-ben
-description: Ez a cikk ismerteti a olvasható replika szolgáltatást az Azure Database for postgresql-hez.
+title: Replikák olvasása Azure Database for PostgreSQL – egyetlen kiszolgáló
+description: Ez a cikk a Azure Database for PostgreSQL-Single Server olvasási replika funkcióját ismerteti.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 04/01/2019
-ms.openlocfilehash: f340f1e42b6993a1f834ab05570c669d4241222b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 09/06/2019
+ms.openlocfilehash: e276340041e69101190645caad9dbf6de57abd95
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59789974"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996500"
 ---
-# <a name="read-replicas-in-azure-database-for-postgresql"></a>Olvasási replikák az Azure Database for PostgreSQL-ben
+# <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Replikák olvasása Azure Database for PostgreSQL – egyetlen kiszolgáló
 
-Az olvasási replika szolgáltatás replikálja az adatokat egy Azure Database for PostgreSQL-kiszolgálót egy írásvédett kiszolgáló teszi lehetővé. Ugyanazon Azure-régióban legfeljebb öt replikához replikálhatja a fölérendelt kiszolgálótól. Replika aszinkron módon frissülnek a PostgreSQL-adatbázismotor natív replikációs technológiával.
+Az olvasási replika funkció lehetővé teszi az adatok replikálását egy Azure Database for PostgreSQL-kiszolgálóról egy írásvédett kiszolgálóra. A főkiszolgálóról legfeljebb öt replikára másolhatja az adatokat. A replikák aszinkron módon frissülnek a PostgreSQL motor natív replikációs technológiájának használatával.
 
-Replika, hogy a normál hasonló, Azure Database for PostgreSQL-kiszolgálók kezelése új kiszolgálók. Az egyes olvassa el a replika, a számlázás a virtuális magok kiépített számítási és tárolási GB / hó.
+A replikák olyan új kiszolgálók, amelyeket a rendszeres Azure Database for PostgreSQL-kiszolgálókhoz hasonló módon kezel. Az egyes olvasási replikák esetében a virtuális mag és a Storage szolgáltatásban a kiépített számítási kapacitást a GB/hó értékben számítjuk fel.
 
-Ismerje meg, hogyan [létrehozása és kezelése a replikák](howto-read-replicas-portal.md).
+Megtudhatja, hogyan [hozhat létre és kezelhet replikákat](howto-read-replicas-portal.md).
 
-## <a name="when-to-use-a-read-replica"></a>Ha egy olvasási-replika használatára
-A olvasható replika szolgáltatás segítségével a teljesítményét és skálázhatóságát olvasásigényű munkaterhelésekhez javítása érdekében. Olvasási számítási feladatok is lehet a replikákra, elkülönített, miközben írási számítási feladatok a fő lehet irányítani.
+## <a name="when-to-use-a-read-replica"></a>Mikor használjon olvasási replikát
+Az olvasási replika funkcióval javítható a nagy olvasási igényű számítási feladatok teljesítménye és méretezése. Az olvasási munkaterhelések elkülöníthetők a replikákkal, míg az írási munkaterhelések a főkiszolgálóhoz irányíthatók.
 
-Gyakran előfordul, hogy rendelkezzen a BI-ban, és elemzési számítási feladatok az olvasási-replika használatára adatforrásként a jelentéskészítéshez.
+Gyakori forgatókönyv, hogy a BI-és analitikai munkaterhelések az olvasási replikát használják adatforrásként a jelentéskészítéshez.
 
-Replikák írásvédettek, mivel azok nem csökkenti a fő írási kapacitású terheinek közvetlenül. Ez a funkció nem célzó írási-igényes számítási feladatokhoz.
+Mivel a replikák csak olvashatók, nem csökkentik közvetlenül az írási kapacitás terheit a főkiszolgálón. Ez a funkció nem a nagy írási igényű munkaterhelésekre irányul.
 
-Az olvasási replika szolgáltatás PostgreSQL aszinkron replikációt használ. A szolgáltatás nem arra készült, a szinkron replikációs forgatókönyvek esetén. A master és a replika mérhető késleltetés lesz. A replikában tárolt idővel a fő lévő adatok konzisztens lesz. A funkció használatához a számítási feladatokhoz, amely képes kezelni ezt a késést.
+Az olvasási replika funkció PostgreSQL aszinkron replikálást használ. A funkció nem a szinkron replikációs forgatókönyvek esetében jelent meg. A főkiszolgáló és a replika között mérhető késés lesz. A replikán lévő adatok végül konzisztensek maradnak a főkiszolgálón lévő adatokkal. Használja ezt a szolgáltatást olyan számítási feladatokhoz, amelyek alkalmasak erre a késésre.
+
+## <a name="cross-region-replication"></a>Régiók közötti replikáció
+Az olvasási replikát a főkiszolgálótól eltérő régióban is létrehozhatja. A régiók közötti replikáció hasznos lehet olyan forgatókönyvek esetén, mint például a vész-helyreállítási tervezés vagy az adatok közelebb hozása a felhasználókhoz.
+
+A főkiszolgáló bármely [Azure Database for PostgreSQL régióban](https://azure.microsoft.com/global-infrastructure/services/?products=postgresql)elérhető. A főkiszolgáló rendelkezhet replikával a párosított régiójában vagy az univerzális replika régiókban. Az alábbi képen látható, hogy mely replika régiók érhetők el a fő régiótól függően.
+
+[![Replika-régiók olvasása](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
+
+### <a name="universal-replica-regions"></a>Univerzális replika-régiók
+A következő régiókban bármikor létrehozhat egy olvasási replikát, függetlenül attól, hogy hol található a főkiszolgáló. Ezek az univerzális replika-régiók:
+
+Kelet-Ausztrália, Délkelet-Ausztrália, USA középső régiója, Kelet-Ázsia, USA keleti régiója, USA 2. keleti régiója, Kelet-Japán, Nyugat-Japán, Dél-Korea, Dél-Korea, Észak-Európa, az USA déli középső régiója, Délkelet-Ázsia, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Nyugat-Európa, USA nyugati régiója 2.
+
+
+### <a name="paired-regions"></a>Párosított régiók
+Az univerzális replika régión kívül egy olvasási replikát is létrehozhat a főkiszolgáló Azure párosított régiójában. Ha nem ismeri a régió pár elemét, többet is megtudhat az [Azure párosított régiókról szóló cikkből](../best-practices-availability-paired-regions.md).
+
+Ha régiók közötti replikákat használ a vész-helyreállítási tervezéshez, javasoljuk, hogy a többi régió helyett a párosított régióban hozza létre a replikát. A párosított régiók elkerülik az egyidejű frissítéseket, és rangsorolják a fizikai elkülönítést és az adattárolást.  
+
+A következő szempontokat kell figyelembe venni: 
+
+* Regionális elérhetőség: Azure Database for PostgreSQL az USA 2. nyugati régiójában, Közép-Franciaországban, Észak-Egyesült Arab Emírségekben és Közép-Németországban érhető el. A párosított régiói azonban nem érhetők el.
+    
+* UNI-irányú párok: Egyes Azure-régiók csak egy irányban vannak párosítva. Ezek a régiók közé tartoznak a Nyugat-India, Dél-Brazília. 
+   Ez azt jelenti, hogy a Nyugat-Indiai főkiszolgáló létrehozhat egy replikát Dél-Indiában. A dél-indiai főkiszolgálók azonban nem hozhatnak létre replikát Nyugat-Indiában. Ennek az az oka, hogy Nyugat-India másodlagos régiója Dél-India, de Dél-India másodlagos régiója nem Nyugat-India.
+
 
 ## <a name="create-a-replica"></a>Replika létrehozása
-Rendelkeznie kell a fölérendelt kiszolgáló a `azure.replication_support` paraméter beállítása **REPLIKA**. Amikor ez a paraméter módosul, a kiszolgáló újraindítására szükség a módosítás érvénybe léptetéséhez. (A `azure.replication_support` paraméter csak az általános célú és memóriahasználatra optimalizált csomagok vonatkozik).
+A főkiszolgálónak a ( `azure.replication_support` z) paraméterrel kell megadnia a **replikát**. Ha módosítja ezt a paramétert, a módosítás érvénybe léptetéséhez újra kell indítani a kiszolgálót. (A `azure.replication_support` paraméter csak a általános célú és a memória optimalizált szintjeire vonatkozik.)
 
-Amikor a létrehozás replika munkafolyamat, egy üres, Azure Database for PostgreSQL-kiszolgáló jön létre. Az új kiszolgáló ki van töltve az adatokkal, amelyek a fő kiszolgálón volt. A létrehozás ideje függ a master és a múlt heti teljes biztonsági mentés óta eltelt idő adatok mennyisége. Az idő pár percet vagy akár több óráig terjedhet.
+A replika létrehozása munkafolyamat indításakor létrejön egy üres Azure Database for PostgreSQL-kiszolgáló. Az új kiszolgáló a főkiszolgálón található adatokkal van feltöltve. A létrehozási idő a főkiszolgálón tárolt adatok mennyiségétől és az utolsó heti teljes biztonsági mentés óta eltelt idővel függ. Az idő néhány perctől akár több órára is terjedhet.
 
-Az olvasási replika szolgáltatás PostgreSQL fizikai replikációt, nem logikai replikációt használ. Az alapértelmezett működési mód replikációs adatfolyam-replikáció tárhelyek használatával. Ha szükséges, a naplóküldés olvasásra szolgál.
+Minden replika engedélyezve van a tárterület [automatikus növelésére](concepts-pricing-tiers.md#storage-auto-grow). Az automatikus növekedés funkció lehetővé teszi, hogy a replika megőrizze az általa replikált adatmennyiséget, és megakadályozza, hogy a replikálás megszakítása a tárolási hibák miatt meghiúsult.
 
-> [!NOTE]
-> A tárolási riasztási csoport nem rendelkezik a kiszolgálókon, azt javasoljuk, hogy lehetősége. A riasztás figyelmeztet, ha a kiszolgáló már majdnem elérte a tárolási kapacitását, amely hatással van a replikáció.
+Az olvasási replika funkció PostgreSQL fizikai replikálást, nem logikai replikálást használ. A replikációs tárolóhelyek szolgáltatással történő folyamatos átvitel az alapértelmezett működési mód. Ha szükséges, a rendszer naplózza a szállítást a felzárkózás érdekében.
 
-Ismerje meg, hogyan [olvasható replika létrehozásához az Azure Portalon](howto-read-replicas-portal.md).
+Megtudhatja, hogyan [hozhat létre olvasási replikát a Azure Portalban](howto-read-replicas-portal.md).
 
-## <a name="connect-to-a-replica"></a>Csatlakozás egy replika
-Amikor létrehoz egy replikát, a tűzfal- és VNet-szolgáltatásvégpont főkiszolgálójának nem örökli. Ezek a szabályok egymástól függetlenül a replika kell állítani.
+## <a name="connect-to-a-replica"></a>Kapcsolódás replikához
+Replika létrehozásakor nem örökli a főkiszolgáló tűzfalszabályok vagy VNet szolgáltatási végpontját. Ezeket a szabályokat a replika egymástól függetlenül kell beállítani.
 
-A replika örökli a fölérendelt kiszolgáló a rendszergazdai fiókkal. A fölérendelt kiszolgáló az összes felhasználói fiók replikálva vannak a olvasható replikákat. Csak csatlakozhat egy olvasási replikát a fölérendelt kiszolgáló elérhető a felhasználói fiókok használatával.
+A replika örökli a rendszergazdai fiókot a főkiszolgálóról. A főkiszolgáló összes felhasználói fiókja replikálódik az olvasási replikára. Csak olvasási replikához csatlakozhat a főkiszolgálón elérhető felhasználói fiókok használatával.
 
-Csatlakozhat a replika használatával, az állomásnév és a egy érvényes felhasználói fiókot, mint egy normál, Azure Database for PostgreSQL-kiszolgálóhoz. A kiszolgáló neve **myreplica** a rendszergazda felhasználóneve a **myadmin**, a replika psql használatával csatlakozhat:
+A replikához a hostname és egy érvényes felhasználói fiók használatával kapcsolódhat, ahogy azt egy normál Azure Database for PostgreSQL-kiszolgálón tenné. A **replika** és a rendszergazdai Felhasználónév **myadmin**nevű kiszolgáló esetén a psql használatával kapcsolódhat a replikához:
 
 ```
 psql -h myreplica.postgres.database.azure.com -U myadmin@myreplica -d postgres
 ```
 
-Amikor a rendszer kéri adja meg a felhasználói fiók jelszavát.
+A parancssorba írja be a felhasználói fiókhoz tartozó jelszót.
 
-## <a name="monitor-replication"></a>A figyelő replikáció
-Azure Database for PostgreSQL kínál a **Lag között replikák maximális száma** metrika az Azure monitorban. Ez a metrika csak a fő kiszolgálón érhető el. A metrika a késés a master és a legtöbb elmaradt replika közötti jeleníti meg. 
+## <a name="monitor-replication"></a>Replikáció figyelése
+Azure Database for PostgreSQL két mérőszámot biztosít a replikáció figyeléséhez. A két metrika a replikák és a **replika késések** **közötti maximális késés** . A metrikák megtekintésével kapcsolatos további információkért tekintse meg a replika **figyelése** című szakaszt a [replika olvasása című cikkben](howto-read-replicas-portal.md).
 
-Azure Database for postgresql-hez is biztosít a **replika Lag** metrika az Azure monitorban. Ez a metrika csak a replikák számára érhető el. 
+A **replikák közötti maximális késés** a fő és a legkésleltetett replika közötti késést mutatja bájtban. Ez a metrika csak a főkiszolgálón érhető el.
 
-A mérték kiszámítása a `pg_stat_wal_receiver` megtekintése:
+A **replika késésének** mérőszáma az utolsó visszajátszott tranzakció óta eltelt időt mutatja. Ha nincs tranzakció a főkiszolgálón, a metrika ezt az időbeli késést tükrözi. Ez a metrika csak replika kiszolgálók esetében érhető el. A replika késését a `pg_stat_wal_receiver` nézetből számítjuk ki:
 
 ```SQL
-EXTRACT (EPOCH FROM now() - pg_last_xact_replay_timestamp())
+EXTRACT (EPOCH FROM now() - pg_last_xact_replay_timestamp());
 ```
 
-A replika Lag mérőszám látható az utolsó megismételt tranzakció óta eltelt idő. Nem léteznek tranzakciók a fő kiszolgálón jelentkezik, ha a metrika az idő elteltével jeleníti meg.
+Állítson be egy riasztást, amely tájékoztatja arról, ha a replika késése olyan értéket ér el, amely nem fogadható el a számítási feladathoz. 
 
-Állítsa be egy riasztás értesíti, amikor a replika lag eléri-e egy érték, amely nem fogadható el, a számítási feladatok számára. 
+További információk: lekérdezés a főkiszolgálóról közvetlenül a replikálás késésének lekéréséhez az összes replikán.
 
-További elemzés, a lekérdezés a fölérendelt kiszolgáló közvetlenül lekérdezni a replikációs késés (bájt) minden replikán.
-
-A PostgreSQL 10-es verzió:
+A PostgreSQL 10-es verziójában:
 
 ```SQL
 select pg_wal_lsn_diff(pg_current_wal_lsn(), stat.replay_lsn) 
 AS total_log_delay_in_bytes from pg_stat_replication;
 ```
 
-A PostgreSQL 9.6 és korábbi verzióiban:
+A PostgreSQL 9,6-es és korábbi verzióiban:
 
 ```SQL
 select pg_xlog_location_diff(pg_current_xlog_location(), stat.replay_location) 
@@ -87,43 +110,67 @@ AS total_log_delay_in_bytes from pg_stat_replication;
 ```
 
 > [!NOTE]
-> Ha egy fölérendelt kiszolgáló vagy olvasható replika újraindult, indítsa újra, és nézze át a szükséges időt a replika Lag metrika tükrözi.
+> Ha a főkiszolgáló vagy az olvasási replika újraindul, az újraindításhoz és a betöltéshez szükséges idő a replika késési metrikájában jelenik meg.
 
 ## <a name="stop-replication"></a>Replikáció leállítása
-A master és a egy replika közötti replikációt is leállíthatja. A leállítási művelet hatására a replikát, indítsa újra, és távolítsa el a replikációs beállításokat. Miután replikáció le van állítva, egy fölérendelt kiszolgáló és a egy olvasási replika között, a replika válik egy önálló kiszolgáló. Az önálló kiszolgáló adatai az adatokat, amelyek a stop replikációs parancs indításakor álltak rendelkezésre a replikán. Az önálló kiszolgáló kommunikálnak, nem történik meg.
+Leállíthatja a replikációt egy főkiszolgáló és egy replika között. A Leállítás művelet a replika újraindítását és a replikációs beállítások eltávolítását eredményezi. Miután leállította a replikálást egy főkiszolgáló és egy olvasási replika között, a replika önálló kiszolgáló lesz. Az önálló kiszolgálóban található, a replikálás leállítása parancs elindításának időpontjában a replikán elérhető adatértékek. Az önálló kiszolgáló nem fog felzárkózni a főkiszolgálóval.
 
 > [!IMPORTANT]
-> Az önálló kiszolgáló nem hajtható végre egy replika be újra.
-> Mielőtt replikációleállítás olvasási replikán, győződjön meg arról, a replika rendelkezik a szükséges adatok.
+> Az önálló kiszolgáló nem hozható létre újra replikába.
+> Mielőtt leállítja a replikálást egy olvasási replikán, győződjön meg arról, hogy a replika rendelkezik a szükséges összes adattal.
 
-Ismerje meg, hogyan [állítania a replikálást a replika](howto-read-replicas-portal.md).
+Ha leállítja a replikálást, a replika elveszíti az előző főkiszolgálóra és más replikára mutató összes hivatkozást.
+
+Megtudhatja, hogyan [állíthatja le a replikálást egy replikára](howto-read-replicas-portal.md).
+
+## <a name="failover"></a>Feladatátvétel
+A fő-és a replika-kiszolgálók között nincs automatikus feladatátvétel. 
+
+Mivel a replikáció aszinkron, a főkiszolgáló és a replika között késés van. A késés mértékét számos tényező befolyásolja, például a főkiszolgálón futó munkaterhelés, valamint az adatközpontok közötti késleltetés. A legtöbb esetben a replika-késés néhány másodperc és néhány perc között mozog. A tényleges replikációs késést a metrikai *replika késésének*használatával követheti nyomon, amely az egyes replikák esetében elérhető. Ez a metrika az utolsó újrajátszott tranzakció óta eltelt időt mutatja. Azt javasoljuk, hogy azonosítsa az átlagos késést úgy, hogy a replika késését egy adott időszakra figyelje. Beállíthat egy riasztást a replika késésével kapcsolatban, hogy ha az a várt tartományon kívül esik, megteheti a műveletet.
+
+> [!Tip]
+> Ha feladatátvételt hajt végre a replikára, akkor a replika a főkiszolgálóról való leválasztásakor a késés azt jelzi, hogy mekkora adatvesztés történik.
+
+Ha úgy döntött, hogy feladatátvételt kíván replikálni egy replikára, 
+
+1. A replika replikálásának leállítása<br/>
+   Ez a lépés szükséges ahhoz, hogy a replika-kiszolgáló el tudja fogadni az írásokat. Ennek a folyamatnak a részeként a replika-kiszolgáló újraindul, és leválasztása a főkiszolgálóról történik. Miután elindította a replikálást, a háttérrendszer-folyamat általában 2 percet vesz igénybe. A művelet következményeinek megismeréséhez tekintse meg a jelen cikk [replikálás leállítása](#stop-replication) című szakaszát.
+    
+2. Az alkalmazás átirányítása a (korábbi) replikára<br/>
+   Minden kiszolgálón egyedi a kapcsolatok karakterlánca. Frissítse az alkalmazást, hogy a főkiszolgáló helyett a (korábbi) replikára mutasson.
+    
+Miután az alkalmazás sikeresen feldolgozta az olvasásokat és az írásokat, befejezte a feladatátvételt. Az alkalmazás által tapasztalható állásidő mennyisége a probléma észlelése és a fenti 1. és 2. lépés elvégzése után függ.
 
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 
-Ebben a szakaszban olvasható replika szolgáltatásával kapcsolatos szempontokat foglalja össze.
+Ez a szakasz az olvasási replika szolgáltatással kapcsolatos szempontokat foglalja össze.
 
 ### <a name="prerequisites"></a>Előfeltételek
-Egy olvasási replika létrehozása előtt a `azure.replication_support` paramétert állítsa **REPLIKA** a fölérendelt kiszolgálón. Amikor ez a paraméter módosul, a kiszolgáló újraindítására szükség a módosítás érvénybe léptetéséhez. A `azure.replication_support` paraméter csak az általános célú és memóriahasználatra optimalizált csomagok vonatkozik.
+Olvasási replika létrehozása előtt a `azure.replication_support` paramétert a főkiszolgálón lévő **replika** értékre kell beállítani. Ha módosítja ezt a paramétert, a módosítás érvénybe léptetéséhez újra kell indítani a kiszolgálót. A `azure.replication_support` paraméter csak a általános célú és a memória optimalizált szintjeire vonatkozik.
 
 ### <a name="new-replicas"></a>Új replikák
-Olvasási replika jön létre egy új, Azure Database for PostgreSQL-kiszolgálóhoz. Meglévő kiszolgáló, a replika nem hajtható végre. Olvasási replika csak ugyanabban a régióban az Azure fő hozható létre. Nem hozható létre egy másik olvasási replikára replikáját.
+Az olvasási replika új Azure Database for PostgreSQL-kiszolgálóként jön létre. Egy meglévő kiszolgálót nem lehet replikába készíteni. Egy másik olvasási replika replikája nem hozható létre.
 
-### <a name="replica-configuration"></a>Replikát konfigurációt
-A kiszolgáló ugyanazt a konfigurációt a master létrehoztak egy replikát. Replika létrehozása után több beállítások egymástól függetlenül lehet módosítani a fő kiszolgálóról: a számítási generáció, virtuális magok, tárolási és biztonsági másolat megőrzési idejének. A tarifacsomag egymástól függetlenül is módosítható, vagy az alapszintű csomag kivételével.
+### <a name="replica-configuration"></a>Replika konfigurációja
+A replika ugyanazokkal a számítási és tárolási beállításokkal jön létre, mint a főkiszolgáló. A replika létrehozása után több beállítás is módosítható a főkiszolgálótól függetlenül: számítási generáció, virtuális mag, tárterület és biztonsági mentés megőrzési ideje. Az árképzési szint külön is módosítható, kivéve az alapszintű csomagból vagy abból.
 
 > [!IMPORTANT]
-> Egy fölérendelt kiszolgáló konfigurációs frissül az új értékekre, mielőtt frissíteni a replikát konfigurációt egyenlő vagy nagyobb értékre. Ez a művelet biztosítja, hogy a replika továbbra is a fő végzett módosítások.
+> A főbeállítás új értékre frissítése előtt frissítse a replika konfigurációját egy egyenlő vagy nagyobb értékre. Ez a művelet biztosítja, hogy a replika összhangban lehessen a főkiszolgálón végrehajtott módosításokkal.
 
-PostgreSQL szükséges értéke a `max_connections` paramétert nagyobb vagy egyenlő a fő értékkel; egyéb kell olvasási replikán, a replika nem indul el. Az Azure Database for postgresql-hez a `max_connections` SKU paraméter értéke alapján. További információkért lásd: [korlátozások az Azure Database for postgresql-hez](concepts-limits.md). 
+A PostgreSQL megköveteli, hogy az `max_connections` olvasási replika paraméterének értéke nagyobb legyen, mint a főérték, ellenkező esetben a replika nem indul el. A Azure Database for PostgreSQL `max_connections` a paraméter értéke az SKU-on alapul. További információ: [Limits in Azure Database for PostgreSQL](concepts-limits.md). 
 
-Próbálja meg frissíteni a kiszolgáló értékeket, de nem igazodik a határértékekhez, ha hibaüzenetet kap.
+Ha megpróbálja frissíteni a kiszolgáló értékeit, de nem tartja be a korlátozásokat, hibaüzenetet kap.
+
+### <a name="max_prepared_transactions"></a>max_prepared_transactions
+A [PostgreSQL megköveteli](https://www.postgresql.org/docs/current/runtime-config-resource.html#GUC-MAX-PREPARED-TRANSACTIONS) , hogy az `max_prepared_transactions` olvasási replika paraméterének értéke nagyobb legyen, mint a főérték, ellenkező esetben a replika nem indul el. Ha módosítani `max_prepared_transactions` szeretné a főkiszolgálót, először módosítsa a replikákat.
 
 ### <a name="stopped-replicas"></a>Leállított replikák
-Ha megszakítja egy fölérendelt kiszolgáló és a egy olvasási replika közötti replikációt, a replika újraindítja a módosítás alkalmazására. A leállított replika egy önálló kiszolgáló, amely fogadja az olvasásokat és az írásokat válik. Az önálló kiszolgáló nem hajtható végre egy replika be újra.
+Ha leállítja a replikálást egy főkiszolgáló és egy olvasási replika között, a replika újraindul a módosítás alkalmazásához. A leállított replika önálló kiszolgáló lesz, amely fogadja az olvasásokat és az írásokat is. Az önálló kiszolgáló nem hozható létre újra replikába.
 
-### <a name="deleted-master-and-standalone-servers"></a>Törölt fő- és a különálló kiszolgálók
-A törölt egy fölérendelt kiszolgáló az olvasási replikák mindegyike önálló kiszolgálók válnak. A replikák újra lesz indítva, ez a változás tükrözése érdekében.
+### <a name="deleted-master-and-standalone-servers"></a>Törölt fő-és önálló kiszolgálók
+Főkiszolgáló törlésekor az összes olvasási replikája önálló kiszolgáló lesz. A rendszer újraindítja a replikákat, hogy tükrözze ezt a változást.
 
 ## <a name="next-steps"></a>További lépések
-Ismerje meg, hogyan [létrehozása és kezelése az Azure Portalon olvasható replikák](howto-read-replicas-portal.md).
+* Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat a Azure Portalban](howto-read-replicas-portal.md).
+* Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat az Azure CLI-ben és a REST APIban](howto-read-replicas-cli.md).

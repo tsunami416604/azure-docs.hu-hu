@@ -1,35 +1,59 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Az Azure AD Device Management dokumentációja
+### YamlMime:Landing
+title: Az Azure AD Device Identity dokumentációja
+summary: Ismerje meg, hogyan konfigurálhatja és adminisztrálhatja az eszközidentitásokat az Azure AD-ben.
 metadata:
-  document_id: null
-  title: 'Az Azure Active Directory Device Management dokumentációja – Oktatóanyagok, alapfogalmak és referenciák | Microsoft Docs'
-  description: 'Ez a cikk azt ismerteti, hogyan konfigurálhatja és tesztelheti az Azure Active eszközfelügyeleti megoldást.'
+  title: Az Azure AD Device Identity dokumentációja
+  description: Ismerje meg, hogyan konfigurálhatja és adminisztrálhatja az eszközidentitásokat az Azure AD-ben.
   services: active-directory
-  ms.subservice: devices
-  author: MicrosoftGuyJFlo
-  manager: daveba
   ms.service: active-directory
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: devices
   ms.topic: landing-page
-  ms.date: 08/14/2018
+  author: MicrosoftGuyJFlo
   ms.author: joflore
-abstract:
-  description: 'A felhasználók eszközökön keresztül férhetnek hozzá a vállalati tartalmakhoz. A tartalmak védelme érdekében rendszergazdaként mindenképpen érdemes a felügyelete alatt tartania ezeket az eszközöket. Így gondoskodhat róla, hogy a felhasználók csak olyan eszközökről férjenek hozzá a vállalat erőforrásaihoz, amelyek megfelelnek a biztonsági és megfelelőségi szabványoknak.<br>Az eszközfelügyelet egyben az eszközalapú feltételes hozzáférés alapja. Az eszközalapú feltételes hozzáféréssel gondoskodhat róla, hogy a környezet erőforrásai csak felügyelt eszközökkel legyenek elérhetők.'
-sections:
-  - title: Részletes útmutatók
-    items:
-      - type: paragraph
-        text: 'Megtudhatja, hogyan integrálhatja az AD-hez csatlakoztatott helyszíni eszközöket az Azure AD-vel.'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: ./media/index/i_security-management.png
-            text: Felügyelt tartományok
-            href: hybrid-azuread-join-managed-domains.md
-          - image:
-              src: ./media/index/i_security-management.png
-            text: Összevont tartományok
-            href: hybrid-azuread-join-federated-domains.md
+  ms.date: 08/20/2019
+  ms.collection: M365-identity-device-management
+  ms.openlocfilehash: e26be2206ba63fa4721ced7ed1a2f35ddc63a5fd
+  ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 08/20/2019
+  ms.locfileid: "69648926"
+landingContent:
+- title: Tudnivalók az eszközidentitásról
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az eszközidentitás?
+      url: overview.md
+    - text: Mi az az Enterprise State Roaming?
+      url: enterprise-state-roaming-overview.md
+  - linkListType: concept
+    links:
+    - text: Azure AD-ben regisztrált eszközök
+      url: concept-azure-ad-register.md
+    - text: Azure AD-hez csatlakoztatott eszközök
+      url: concept-azure-ad-join.md
+    - text: Hibrid Azure AD-csatlakoztatott eszközök
+      url: concept-azure-ad-join-hybrid.md
+    - text: Egyszeri bejelentkezés a helyszíni erőforrásokba
+      url: azuread-join-sso.md
+    - text: Elsődleges frissítési jogkivonatok
+      url: concept-primary-refresh-token.md
+- title: Az Azure AD-hez csatlakoztatott eszközök konfigurálása és kezelése
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Az Azure AD-csatlakozás implementálásának megtervezése
+      url: azureadjoin-plan.md
+    - text: A helyi rendszergazdai csoport felügyelete az Azure AD-hez csatlakoztatott eszközökön
+      url: assign-local-admin.md
+    - text: Elavult eszközök keresése és kezelése az Azure AD-ben
+      url: manage-stale-devices.md
+- title: Az Azure AD-hez hibrid módon csatlakoztatott eszközök konfigurálása és kezelése
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: A hibrid Azure AD-csatlakozás implementálásának megtervezése
+      url: hybrid-azuread-join-plan.md
+    - text: Azure AD-hez hibrid módon csatlakoztatott eszközök hibaelhárítása
+      url: troubleshoot-hybrid-join-windows-current.md

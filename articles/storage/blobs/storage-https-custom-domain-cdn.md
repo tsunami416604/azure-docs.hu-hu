@@ -1,70 +1,70 @@
 ---
-title: Az Azure CDN használatával HTTPS-kapcsolaton keresztül egyéni tartománnyal rendelkező blobok elérése
-description: Ismerje meg, hogyan integrálható az Azure CDN egyéni tartománnyal rendelkező blobok elérése a HTTPS-kapcsolaton keresztül a blobtároló használatával
-services: storage
-author: michaelhauss
+title: Az egyéni tartományokkal rendelkező Blobok elérése a Azure CDN használatával HTTPS-kapcsolaton keresztül
+description: Ismerje meg, hogyan integrálhatja a Azure CDNt a blob Storage szolgáltatással a Blobok egyéni tartományokkal való eléréséhez HTTPS használatával
+author: normesta
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/26/2018
-ms.author: mihauss
+ms.author: normesta
+ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 90ddb58f3499180e17df559a98ac8a46b53fb824
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: f3386d04cd3316b38a094524d0d5d4f3c5ab36bb
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579012"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68986841"
 ---
-# <a name="use-azure-cdn-to-access-blobs-with-custom-domains-over-https"></a>Az Azure CDN használatával HTTPS-kapcsolaton keresztül egyéni tartománnyal rendelkező blobok elérése
+# <a name="use-azure-cdn-to-access-blobs-with-custom-domains-over-https"></a>Az egyéni tartományokkal rendelkező Blobok elérése a Azure CDN használatával HTTPS-kapcsolaton keresztül
 
-Az Azure Content Delivery Network (az Azure CDN) HTTPS mostantól támogatja az egyéni tartománynevek. Az Azure CDN az egyéni tartománynév használatával HTTPS-kapcsolaton keresztül hozzáférhet a blobokat. Ehhez az Azure CDN engedélyezése a blob vagy webes végponton, és képezze le az Azure CDN egyéni tartománynevét. Miután elkészült, az Azure egyszerűbbé teszi a HTTPS engedélyezése az egykattintásos hozzáférést és teljes körű tanúsítványkezelés egyéni tartományhoz. Nincs a normál Azure CDN-tarifacsomag nem növekszik.
+Az Azure Content Delivery Network (Azure CDN) mostantól támogatja a HTTPS-t az egyéni tartománynevek esetében. A Azure CDN használatával a blobokat az egyéni tartománynévvel érheti el HTTPS-kapcsolaton keresztül. Ehhez engedélyezze Azure CDN a blob vagy a webes végponton, majd a Azure CDNt egy egyéni tartománynévre kell leképezni. Ha elkészült, az Azure leegyszerűsíti a HTTPS használatának engedélyezését az egyéni tartományhoz egy kattintással elérhető hozzáférés és a Tanúsítványkezelő teljes körű felügyeletével. A normál Azure CDN díjszabása nem növekszik.
 
-Az Azure CDN segítségével, védelmét és a webalkalmazás adatainak adatok integritását, bár az átvitel során. Az SSL protokoll használatával szolgálja ki a forgalom HTTPS-kapcsolaton keresztül, az Azure CDN biztosítja, hogy titkosítja, amikor az interneten keresztül elküldi az adatokat. HTTPS-en keresztül az Azure CDN segít megvédeni a webes alkalmazások támadásoktól.
+A Azure CDN a webalkalmazási adatok adatvédelmének és adatintegritásának védelmét nyújtja az átvitel során. Ha az SSL protokollt használja a forgalom HTTPS protokollon keresztül történő kiszolgálására, Azure CDN titkosítja az adatokat, amikor az interneten keresztül küldi el. A HTTPS és a Azure CDN segítségével megvédheti webalkalmazásait a támadástól.
 
 > [!NOTE]  
-> SSL-támogatás az egyéni tartománynevek amellett az Azure CDN segítségével skálázhatja alkalmazását a világ különböző pontjain található tartalmak nagy sávszélességű kézbesítéséhez. További tudnivalókért lásd: [áttekintése az Azure CDN](../../cdn/cdn-overview.md).
+> Amellett, hogy az egyéni tartománynevek SSL-támogatását is biztosítja, a Azure CDN segítségével méretezhetővé teheti az alkalmazást, hogy nagy sávszélességű tartalmat nyújtson a világ minden tájáról. További információ: [Azure CDN áttekintése](../../cdn/cdn-overview.md).
 
-## <a name="quickstart"></a>Első lépések
+## <a name="quickstart"></a>Gyors üzembe helyezés
 
-HTTPS engedélyezése egyéni Blob storage-végponthoz, tegye a következőket:
+Ha engedélyezni szeretné a HTTPS-t az egyéni blob Storage-végponthoz, tegye a következőket:
 
-1.  [Az Azure storage-fiók integrálása az Azure CDN](../../cdn/cdn-create-a-storage-account-with-cdn.md).  
-    Ez a cikk végigvezeti egy storage-fiók létrehozása az Azure Portalon, ha ezt még nem tette meg.
+1.  [Azure Storage-fiók integrálása Azure CDNokkal](../../cdn/cdn-create-a-storage-account-with-cdn.md).  
+    Ez a cikk végigvezeti a Storage-fiók létrehozásán a Azure Portalban, ha még nem tette meg.
 
     > [!NOTE]  
-    > Az Azure Storage statikus webhelyek támogatását az előzetes verzióban a storage webes végpont hozzáadásához válassza **egyéni forrás** a a **forrása típusa** legördülő listából. Az Azure Portalon kell ehhez az az Azure CDN-profil helyett közvetlenül a storage-fiókban.
+    > Ha a statikus webhelyek Azure Storage-támogatásának előzetes verziójában szeretné felvenni a Storage web-végpontot, válassza az **Egyéni forrás** lehetőséget a **forrás típusa** legördülő listában. A Azure Portal az Azure CDN-profilból kell ezt megtennie, nem közvetlenül a Storage-fiókjában.
 
-2.  [Az Azure CDN-tartalom leképezése egyéni tartományra](../../cdn/cdn-map-content-to-custom-domain.md).
+2.  [Azure CDN tartalom leképezése egyéni tartományra](../../cdn/cdn-map-content-to-custom-domain.md).
 
-3.  [Az Azure CDN egyéni tartományon HTTPS engedélyezése](../../cdn/cdn-custom-ssl.md).
+3.  [Engedélyezze a HTTPS-t egy Azure CDN egyéni tartományon](../../cdn/cdn-custom-ssl.md).
 
-## <a name="shared-access-signatures"></a>Közös hozzáférésű jogosultságkódok
+## <a name="shared-access-signatures"></a>Közös hozzáférésű aláírások
 
-Alapértelmezés szerint a Blob storage-végpont letiltása a névtelen olvasási hozzáférés. Ha a Blob storage-végpont letiltása a névtelen olvasási hozzáférés van konfigurálva, adjon meg egy [közös hozzáférésű jogosultságkód](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) token az egyes kérések az egyéni tartományban. További információkért lás a [tárolók és blobok névtelen olvasási hozzáférésének kezelésével](storage-manage-access-to-resources.md) foglalkozó témakört.
+Alapértelmezés szerint a blob Storage-végpontok nem engedélyezik a névtelen olvasási hozzáférést. Ha a blob Storage-végpont úgy van konfigurálva, hogy a névtelen olvasási hozzáférés ne legyen engedélyezve, adjon meg egy [közös hozzáférési aláírási](../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) jogkivonatot az egyéni tartományhoz tartozó minden kérelemben. További információkért lás a [tárolók és blobok névtelen olvasási hozzáférésének kezelésével](storage-manage-access-to-resources.md) foglalkozó témakört.
 
-Az Azure CDN meghaladja a paraméterméretre, a közös hozzáférésű jogosultságkód hozzáadott korlátozások. Ha például minden közös hozzáférésű jogosultságkódok jogkivonataival lejár. Egy lejárt közös hozzáférésű jogosultságkód tartalmat mindaddig, amíg a tartalom van törlődnek, az Azure CDN-határcsomópontra továbbra is elérheti. A gyorsítótár válaszfejlécének beállításával szabályozható, hogy a rendszer meddig tárolja az adatokat az Azure CDN-ben. További információ [Azure Storage-blobok az Azure CDN lejáratának kezelése](../../cdn/cdn-manage-expiration-of-blob-content.md).
+A Azure CDN nem veszi figyelembe a közös hozzáférésű aláírási jogkivonathoz hozzáadott korlátozásokat. Például az összes megosztott hozzáférés aláírási jogkivonata lejár. Továbbra is elérheti a tartalmakat egy lejárt közös hozzáférési aláírással, amíg a tartalmat el nem távolítja az Azure CDN peremhálózati csomópontokból. A gyorsítótár válaszfejlécének beállításával szabályozható, hogy a rendszer meddig tárolja az adatokat az Azure CDN-ben. További információ: az [Azure Storage-Blobok lejáratának kezelése Azure CDNban](../../cdn/cdn-manage-expiration-of-blob-content.md).
 
-Ha ugyanazt a blob-végpont URL-címei aláírás hoz létre két vagy több, közös hozzáférésű, javasoljuk, ne tudják bekapcsolni a lekérdezési karakterláncok gyorsítótárazása az Azure CDN esetében. Ez a művelet biztosítja, hogy kezeli-e az Azure minden egyes URL-címe egyedi egységként. További információkért lásd: [Az Azure CDN gyorsítótárazási viselkedésének vezérlése lekérdezési sztringekkel](../../cdn/cdn-query-string.md).
+Ha ugyanahhoz a blob-végponthoz két vagy több közös hozzáférésű aláírási URL-címet hoz létre, javasoljuk, hogy kapcsolja be a lekérdezési karakterlánc gyorsítótárazását a Azure CDN. Ez a művelet biztosítja, hogy az Azure az egyes URL-címeket egyedi entitásként kezelje. További információkért lásd: [Az Azure CDN gyorsítótárazási viselkedésének vezérlése lekérdezési sztringekkel](../../cdn/cdn-query-string.md).
 
-## <a name="http-to-https-redirection"></a>HTTP – HTTPS átirányításról
+## <a name="http-to-https-redirection"></a>HTTP – HTTPS-átirányítás
 
-HTTP-forgalom átirányíthatja a HTTPS-re. Ehhez szükséges, a ajánlat verizon Azure CDN premium használatát. [Az Azure CDN szabályok motor HTTP a működés felülbírálása](../../cdn/cdn-rules-engine.md) úgy, hogy alkalmazza a következő szabálynak:
+A HTTP-forgalom átirányítható HTTPS-re. Ehhez szükség van a Verizon Azure CDN Premium ajánlatának használatára. A következő szabály alkalmazásával [bírálja felül a http-viselkedést a Azure CDN-szabályok motorjának](../../cdn/cdn-rules-engine.md) használatával:
 
-![HTTP – HTTPS átirányítás szabály](./media/storage-https-custom-domain-cdn/redirect-to-https.png)
+![HTTP – HTTPS átirányítási szabály](./media/storage-https-custom-domain-cdn/redirect-to-https.png)
 
-*CDN végpontnév*, amely választja a legördülő listában, az Azure CDN-végponthoz beállított nevére hivatkozik. *Forrás elérési-útja* hivatkozik a tárfiókban forrás, a statikus tartalmat tároló elérési útja. Ha az egyetlen tároló összes statikus tartalom üzemeltetési cserélje le a *forrás elérési-útja* , hogy a tároló nevére.
+*CDN – végpont –* a legördülő listában kiválasztott név a Azure CDN végponthoz konfigurált nevet jelöli. *Forrás – az elérési út* a forrásként szolgáló Storage-fiókban található elérési útra hivatkozik, ahol a statikus tartalmat tárolja a rendszer. Ha egyetlen tárolóban található összes statikus tartalmat üzemelteti, cserélje le az *Origin-Path* nevet a tároló nevére.
 
-Szabályok részletesebben megismerni, lásd: a [Azure CDN szabálymotor funkciói](../../cdn/cdn-rules-engine-reference-features.md).
+A szabályok mélyebb betekintéséhez tekintse meg a [Azure CDN szabályok motorjának funkcióit](../../cdn/cdn-rules-engine-reference-features.md).
 
 ## <a name="pricing-and-billing"></a>Árak és számlázás
 
-Az Azure CDN keresztül érhetők el a blobokat, ha fizet [Blob storage-díjak](https://azure.microsoft.com/pricing/details/storage/blobs/) a peremhálózati csomópont és a forrás (a Blob storage) közötti forgalom. Fizetés [Azure CDN díjai](https://azure.microsoft.com/pricing/details/cdn/) adatok esetén, amelyek a élcsomópontokból érhető el.
+Ha Azure CDNon keresztül fér hozzá a blobokhoz, a peremhálózati csomópontok és a forrás (blob Storage) közötti adatforgalomért a [blob Storage árát](https://azure.microsoft.com/pricing/details/storage/blobs/) kell fizetnie. A peremhálózati csomópontokból elért adatokért [Azure CDN árat](https://azure.microsoft.com/pricing/details/cdn/) kell fizetnie.
 
-Például tegyük fel, hogy egy storage-fiókot, amely Azure CDN-nel éri el az USA nyugati régiójában. Ha az Egyesült Királyságban valaki megpróbál hozzáférni az Azure CDN-nel a storage-fiókban található blob, az Azure először ellenőrzi az élcsomóponthoz, az Egyesült Királyság legközelebb van az a BLOB. Ha az Azure blob talál, fér hozzá egy másolatot, és használja az Azure CDN-tarifacsomag, mert az Azure CDN fér hozzá. Ha az Azure nem találja a blob, a blob másolja az élcsomópont felé. Ez a művelet a Blob storage szolgáltatás díjszabása a kimenő forgalom és a tranzakciós díjakat eredményez. Az Azure majd fér hozzá a fájl az élcsomóponton, ami az Azure CDN számlázásának eredményez.
+Tegyük fel például, hogy van egy olyan Storage-fiókja az USA nyugati régiójában, amely Azure CDNon keresztül éri el. Ha az Egyesült Királyságban valaki a Azure CDNon keresztül próbál hozzáférni egy blobhoz, az Azure először az Egyesült Királysághoz legközelebb eső peremhálózati csomópontban ellenőrzi a blobot. Ha az Azure megkeresi a blobot, hozzáfér egy másolathoz, és Azure CDN díjszabást használ, mert Azure CDN hozzáfér. Ha az Azure nem találja a blobot, a blobot a peremhálózati csomópontba másolja. Ez a művelet kimenő és tranzakciós díjakat eredményez, a blob Storage díjszabásának megfelelően. Az Azure ezután hozzáfér a fájlhoz a peremhálózati csomóponton, amely Azure CDN számlázást eredményez.
 
-Az a [Azure CDN-díjszabást ismertető oldalon](https://azure.microsoft.com/pricing/details/cdn/), az egyéni tartománynevek HTTPS-támogatás érhető el az Azure CDN csak a Verizon Standard és prémium szintű termékek.
+A [Azure CDN díjszabása lapon](https://azure.microsoft.com/pricing/details/cdn/)az egyéni tartománynevek HTTPS-támogatása csak a Verizon standard és a Premium termékek Azure CDN érhető el.
 
 ## <a name="next-steps"></a>További lépések
 
-* [A Blob storage-végpont egyéni tartománynév konfigurálása](storage-custom-domain-name.md)
+* [Egyéni tartománynév beállítása a blob Storage-végponthoz](storage-custom-domain-name.md)
 * [Statikus webhely üzemeltetése az Azure Storage-ban](storage-blob-static-website.md)

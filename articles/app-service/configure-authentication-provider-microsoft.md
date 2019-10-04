@@ -1,6 +1,6 @@
 ---
-title: Hitelesítés Microsoft-Account – az Azure App Service konfigurálása
-description: Ismerje meg az App Services-alkalmazás Microsoft Account hitelesítésének konfigurálása.
+title: Microsoft-fiók hitelesítésének konfigurálása – Azure App Service
+description: Ismerje meg, hogyan konfigurálhatja a Microsoft-fiók hitelesítését App Service alkalmazásához.
 author: mattchenderson
 services: app-service
 documentationcenter: ''
@@ -10,64 +10,68 @@ ms.assetid: ffbc6064-edf6-474d-971c-695598fd08bf
 ms.service: app-service
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: multiple
 ms.topic: article
-ms.date: 04/19/2018
+ms.date: 08/08/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: e3da856efd7d44f15f9de27c9e38375d40dc211d
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 0832c1e5f10cdb8e1d7a2edbb88162230ab13401
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410990"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70233077"
 ---
-# <a name="how-to-configure-your-app-service-application-to-use-microsoft-account-login"></a>A Microsoft Account login használata App Service-alkalmazás konfigurálása
+# <a name="how-to-configure-your-app-service-application-to-use-microsoft-account-login"></a>A App Service alkalmazás konfigurálása a Microsoft-fiók bejelentkezési használatára
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-Ez a témakör bemutatja, hogyan konfigurálhatja az Azure App Service-ben a Microsoft Account használja, mint egy hitelesítési szolgáltatót. 
+Ebből a témakörből megtudhatja, hogyan konfigurálhatja a Azure App Servicet a Microsoft-fiók hitelesítési szolgáltatóként való használatára. 
 
-## <a name="register-microsoft-account"> </a>Az alkalmazás regisztrálásához és Microsoft-fiók
-1. Jelentkezzen be a [Azure Portal], és keresse meg az alkalmazást. Másolás a **URL-cím**, amelyet később használhat az alkalmazás konfigurálása a Microsoft Account.
-2. Keresse meg a [saját alkalmazások] a Microsoft Account Developer Center lapját, és jelentkezzen be Microsoft-fiókjával, ha szükséges.
-3. Kattintson a **alkalmazás hozzáadása**, majd írja be az alkalmazás nevét, és kattintson a **létrehozás**.
-4. Jegyezze fel a **Alkalmazásazonosító**, mivel később lesz szüksége. 
-5. Kattintson a "Platformok," **hozzáadása Platform** , és válassza ki a "Webes".
-6. "Átirányítási URI-k" területen adja meg a végpont az alkalmazáshoz, majd kattintson a **mentése**. 
-   
+## <a name="register-microsoft-account"> </a>Alkalmazás regisztrálása a Microsoft-fiókkal
+1. Jelentkezzen be a [Azure Portal], és navigáljon az alkalmazáshoz. 
+
+<!-- Copy your **URL**, which you will use later to configure your app with Microsoft Account. -->
+1. Ha szükséges, navigáljon [**Alkalmazásregisztrációk**](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade), és jelentkezzen be a Microsoft-fiók.
+
+1. Kattintson az **új regisztráció**elemre, majd írja be az alkalmazás nevét.
+
+1. Az **átirányítási URI**-k területen válassza a web `https://<app-domain-name>/.auth/login/microsoftaccount/callback supply the endpoint for your application`lehetőséget, majd írja be a következőt:. Cserélje le  *\<az App-domain-name > nevet* az alkalmazás tartománynevére.  Például: `https://contoso.azurewebsites.net/.auth/login/microsoftaccount/callback`. 
+
    > [!NOTE]
-   > Az átirányítási URI-ja URL-címét az elérési utat, kiegészítve az alkalmazás */.auth/login/microsoftaccount/callback*. Például: `https://contoso.azurewebsites.net/.auth/login/microsoftaccount/callback`.   
-   > Győződjön meg arról, hogy használja a HTTPS-sémát.
+   > Használja a HTTPS-sémát az URL-címben.
+
+1. Válassza a **regisztráció**lehetőséget. 
+
+1. Másolja az **alkalmazás (ügyfél) azonosítóját**. Később szüksége lesz rá. 
    
-7. Kattintson a "A titkos Alkalmazáskulcsok," **új jelszó készítése**. Jegyezze fel az értéket, amely akkor jelenik meg. Ha elhagyja a lapot, akkor nem fog megjelenni újra.
+7. Az új alkalmazás regisztrációjának bal oldali navigációs sávján válassza a **tanúsítványok & titkos kulcsok** > **új ügyfél titka**lehetőséget. Adja meg a leírást, válassza ki az érvényesség időtartamát, és válassza a **Hozzáadás**lehetőséget.
+
+1. Másolja a **tanúsítványok & titkok** lapon megjelenő értéket. Ha elhagyja a lapot, nem jelenik meg újra.
 
     > [!IMPORTANT]
-    > A jelszó, egy fontos biztonsági hitelesítő adat. Ne bárkivel megoszthatja a jelszót, és az ügyfélalkalmazások belül terjeszthet.
-    
-8. Kattintson a **Mentés** gombra.
+    > A jelszó egy fontos biztonsági hitelesítő adat. Ne ossza meg senkivel a jelszót, vagy küldje el azt egy ügyfélalkalmazáson belül.
 
-## <a name="secrets"> </a>App Service-alkalmazás hozzáadása a Microsoft Account adatait
-1. Térjen vissza a [Azure Portal]lépjen az alkalmazás, kattintson a **beállítások** > **hitelesítési / engedélyezési**.
-2. Ha a hitelesítés / engedélyezés funkció nincs engedélyezve, módba **a**.
-3. Kattintson a **Microsoft-fiók**. Illessze be az alkalmazás Azonosítóját és jelszavát értékeket, amelyek korábban beszerzett, és szükség esetén engedélyezze a bármely az alkalmazás által kért hatókörök. Ezután kattintson az **OK** gombra.
-   
-    ![][1]
-   
-    Alapértelmezés szerint az App Service-ben hitelesítést biztosít, de a webhely tartalmát és API-k nem korlátozza a hitelesített hozzáférést. Felhasználók engedélyeznie kell az alkalmazás kódjában.
-4. (Nem kötelező) A hozzáférés korlátozása csak a Microsoft-fiók által hitelesített felhasználók a helyet, állítsa be **elvégzendő művelet, ha a kérés nincs hitelesítve** való **Microsoft Account**. Ehhez az szükséges, hogy minden kérelmet hitelesíteni, és az összes nem hitelesített kérelmek a rendszer átirányítja a hitelesítéshez a Microsoft-fiókjával.
+## <a name="secrets"> </a>Microsoft-fiókadatok hozzáadása a app Service-alkalmazáshoz
+1. A [Azure Portal]navigáljon az alkalmazáshoz. A bal oldali navigációs sávon kattintson a **hitelesítés/engedélyezés**elemre.
+
+2. Ha a hitelesítés/engedélyezés funkció nincs engedélyezve, válassza **a be**lehetőséget.
+
+3. A **hitelesítésszolgáltatók**területen válassza a **Microsoft-fiók**lehetőséget. Illessze be az alkalmazás (ügyfél) AZONOSÍTÓját és az ügyfél titkos kulcsát, amelyet korábban kapott, és opcionálisan engedélyezheti az alkalmazás által igényelt hatóköröket. Ezután kattintson az **OK** gombra.
+
+    Alapértelmezés szerint a App Service hitelesítést biztosít, de nem korlátozza a webhely tartalmához és API-khoz való jogosult hozzáférést. Engedélyezni kell a felhasználókat az alkalmazás kódjában.
+
+4. Választható Ha korlátozni szeretné Microsoft-fiók felhasználók hozzáférését, állítsa be **a végrehajtandó műveletet, ha a kérés nincs hitelesítve** a Microsoft-fiókkal való **bejelentkezéshez**. Ehhez minden kérést hitelesíteni kell, és az összes nem hitelesített kérelem át lesz irányítva a hitelesítéshez Microsoft-fiók.
+
+> [!NOTE]
+> A hozzáférés ezen a módon való korlátozása az alkalmazás összes hívására vonatkozik, ami nem kívánatos, ha az alkalmazások nyilvánosan elérhető kezdőlapot szeretnének, például sok egyoldalas alkalmazásban. Ilyen alkalmazások esetén **engedélyezze a névtelen kérelmeket (nincs művelet)** előnyben részesített, ha az alkalmazás manuálisan indítja el a bejelentkezést, az [itt](overview-authentication-authorization.md#authentication-flow)leírtak szerint.
+
 5. Kattintson a **Save** (Mentés) gombra.
 
-Most már készen áll a Microsoft Account használja a hitelesítéshez saját alkalmazásokban.
+Most már készen áll a Microsoft-fiók használatára a hitelesítéshez az alkalmazásban.
 
 ## <a name="related-content"> </a>Kapcsolódó tartalom
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
 
-<!-- Images. -->
-
-[0]: ./media/app-service-mobile-how-to-configure-microsoft-authentication/app-service-microsoftaccount-redirect.png
-[1]: ./media/app-service-mobile-how-to-configure-microsoft-authentication/mobile-app-microsoftaccount-settings.png
-
 <!-- URLs. -->
 
-[Saját alkalmazások]: https://go.microsoft.com/fwlink/p/?LinkId=262039
+[My Applications]: https://go.microsoft.com/fwlink/p/?LinkId=262039
 [Azure Portal]: https://portal.azure.com/

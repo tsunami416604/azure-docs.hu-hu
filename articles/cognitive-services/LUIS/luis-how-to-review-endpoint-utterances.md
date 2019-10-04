@@ -1,35 +1,35 @@
 ---
-title: Tekintse át a felhasználói kimondott szöveg
-titleSuffix: Language Understanding - Azure Cognitive Services
-description: Aktív tanulás végpont lekérdezések rögzíti, és kiválasztja, hogy nem tudja, hogy a felhasználó endpoint kimondott szöveg. Tekintse át ezeket utterances válassza ki a leképezést, és jelölje be az entitások esetében ezek olvasási vett kimondott szöveg. Fogadja el a példa utterances be ezeket a módosításokat, majd betanítás, közzététel. A LUIS majd azonosítja a kimondott szöveg pontosabb geokódolást.
+title: Felhasználói hosszúságú kimondott szöveg áttekintése – LUIS
+titleSuffix: Azure Cognitive Services
+description: Az aktív tanulás rögzíti a végponti lekérdezéseket, és kiválasztja a felhasználó végpontjának hosszúságú kimondott szöveg, hogy az nem biztos benne. Ezeket a hosszúságú kimondott szöveg áttekintve kiválaszthatja a szándékot, és megjelölheti az entitásokat ezen olvasási-globális hosszúságú kimondott szöveg. Fogadja el ezeket a módosításokat a hosszúságú kimondott szöveg, majd végezze el a betanítást és a közzétételt. A LUIS ezután pontosabban azonosítja a hosszúságú kimondott szöveg.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 03/25/2019
+ms.topic: conceptual
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 8fac360682ef11c438cdec333fac21d6f8cfc117
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c617e4aa62ce2ff468545bef0b2ebe2c4d0e4f03
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59791051"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382356"
 ---
-# <a name="how-to-review-endpoint-utterances-in-luis-portal-for-active-learning"></a>A LUIS-portál aktív tanulás végpont utterances felülvizsgálata
+# <a name="how-to-review-endpoint-utterances-in-luis-portal-for-active-learning"></a>Az Endpoint hosszúságú kimondott szöveg áttekintése a LUIS portálon az aktív tanuláshoz
 
-[Aktív tanulás](luis-concept-review-endpoint-utterances.md) végpont lekérdezések rögzíti, és kiválasztja, hogy nem tudja, hogy a felhasználó endpoint kimondott szöveg. Tekintse át ezeket utterances válassza ki a leképezést, és jelölje be az entitások esetében ezek olvasási vett kimondott szöveg. Fogadja el a példa utterances be ezeket a módosításokat, majd betanítás, közzététel. A LUIS majd azonosítja a kimondott szöveg pontosabb geokódolást.
+Az [aktív tanulás](luis-concept-review-endpoint-utterances.md) rögzíti a végponti lekérdezéseket, és kiválasztja a felhasználó végpontjának hosszúságú kimondott szöveg, hogy az nem biztos benne. Ezeket a hosszúságú kimondott szöveg áttekintve kiválaszthatja a szándékot, és megjelölheti az entitásokat ezen olvasási-globális hosszúságú kimondott szöveg. Fogadja el ezeket a módosításokat a hosszúságú kimondott szöveg, majd végezze el a betanítást és a közzétételt. A LUIS ezután pontosabban azonosítja a hosszúságú kimondott szöveg.
 
 
 ## <a name="enable-active-learning"></a>Aktív tanulás engedélyezése
 
-Ahhoz, hogy az aktív tanulás, a felhasználói lekérdezések naplózását. Mindez azzal a [végpont lekérdezés](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance) az a `log=true` lekérdezési karakterlánc paraméter és érték.
+Az aktív tanulás engedélyezéséhez jelentkezzen be a felhasználói lekérdezésekre. Ezt úgy érheti el, ha a [végpont-lekérdezést](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint) a `log=true` querystring paraméterrel és értékkel állítja be.
 
 ## <a name="disable-active-learning"></a>Aktív tanulás letiltása
 
-Aktív tanulás letiltásához ne naplózza a felhasználói lekérdezések. Mindez azzal a [végpont lekérdezés](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance) az a `log=false` lekérdezési karakterlánc paraméter és érték.
+Az aktív tanulás letiltásához ne naplózza a felhasználói lekérdezéseket. Ezt úgy érheti el, ha a [végpont-lekérdezést](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint) a `log=false` querystring paraméterrel és értékkel állítja be.
 
 ## <a name="filter-utterances"></a>Szűrő kimondott szöveg
 

@@ -1,6 +1,6 @@
 ---
-title: Az Azure Monitor log-lekérdezések használatának első lépései |} A Microsoft Docs
-description: Ez a cikk ismerteti az első lépések oktatóanyag az Azure Monitor log-lekérdezések írásának módját.
+title: Ismerkedés a Azure Monitor-naplózási lekérdezésekkel | Microsoft Docs
+description: Ez a cikk egy oktatóanyagot tartalmaz a naplók Azure Monitorban való írásának első lépéseihez.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -11,118 +11,122 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/06/2018
+ms.date: 05/09/2019
 ms.author: bwren
-ms.openlocfilehash: 8c3ef3f115d37400eb72fdaca5df4f326382df5c
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 6eb066e04cfa561a4fa443b8c8f9582e286a4d7b
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56871638"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076761"
 ---
-# <a name="get-started-with-azure-monitor-log-queries"></a>Az Azure Monitor log-lekérdezések használatának első lépései
+# <a name="get-started-with-log-queries-in-azure-monitor"></a>Ismerkedés a Azure Monitor-naplózási lekérdezésekkel
 
 
 > [!NOTE]
-> Hajtsa végre [Ismerkedés az Azure Monitor Log-Analytics](get-started-portal.md) Ez az oktatóanyag elvégzése előtt.
+> Az oktatóanyag elvégzése előtt fejezze be [a Azure Monitor log Analytics első lépéseit](get-started-portal.md) .
 
-[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
+> [!NOTE]
+> Ezt a gyakorlatot a saját környezetében hajthatja végre, ha legalább egy virtuális gépről gyűjti az adatgyűjtést. Ha nem, akkor használja a [bemutató környezetét](https://portal.loganalytics.io/demo), amely rengeteg mintavételi adatmennyiséget tartalmaz.
 
-Ebben az oktatóanyagban elsajátíthatja az Azure Monitor log-lekérdezések írása. Mely arról szól, hogyan való:
 
-- A lekérdezések struktúra ismertetése
+Ez az oktatóanyag bemutatja, hogyan írhat napló lekérdezéseket Azure Monitor. A következőket fogja megtanítani:
+
+- A lekérdezési struktúra ismertetése
 - Lekérdezési eredmények rendezése
-- Szűrő lekérdezés eredményei
-- Adjon meg egy időtartományt
-- Válassza ki a mezőket a keresési eredmények között szerepeljen
-- Definiálja és egyéni mezők
-- Összesítő és csoportosítási eredmények
+- Lekérdezés eredményeinek szűrése
+- Időtartomány megadásának időpontja
+- Adja meg, hogy mely mezők szerepeljenek az eredmények között
+- Egyéni mezők definiálása és használata
+- Összesítés és csoportosítás eredményei
 
+A Azure Portal Log Analytics használatáról szóló oktatóanyagért lásd: az [Azure Monitor log Analytics használatának első lépései](get-started-portal.md).<br>
+További információ a Azure Monitor naplózott lekérdezésekről: [Azure monitor-lekérdezések áttekintése](log-query-overview.md).
 
 ## <a name="writing-a-new-query"></a>Új lekérdezés írása
-Lekérdezések megkezdheti a következők egyikével táblanév vagy a *keresési* parancsot. A tábla nevét, mert a lekérdezés törlése hatókör határozza meg, és javítja a lekérdezési teljesítmény és az eredmények relevancia alapján végzett kell kezdődnie.
+A lekérdezések a táblanév vagy a *keresési* paranccsal kezdődhetnek. A táblázat nevével kell kezdődnie, mert egyértelmű hatókört határoz meg a lekérdezéshez, és javítja a lekérdezés teljesítményét és az eredmények relevanciáját.
 
 > [!NOTE]
-> A Kusto-lekérdezési nyelve, használja az Azure Monitor, kis-és nagybetűket. Vezérlőnyelvi kulcsszavak általában nyelven írták kisbetűs. Táblák vagy oszlopok nevei a lekérdezésben használatakor ügyeljen arra, hogy a megfelelő kis-és nagybetűhasználattal a séma ablaktáblán látható módon.
+> Az Azure Monitor által használt Kusto-lekérdezési nyelv megkülönbözteti a kis-és nagybetűket. A nyelvi kulcsszavakat általában kisbetűvel kell írni. Ha a lekérdezésben táblák vagy oszlopok nevét használja, ügyeljen arra, hogy a megfelelő esetet használja a séma ablaktáblán látható módon.
 
-### <a name="table-based-queries"></a>Tábla-alapú lekérdezések futtatása
-Az Azure Monitor rendszerezi a naplóadatok táblákban, minden egyes tevődik össze több oszlopot. A séma panelen az Analytics-portálon a Log Analytics összes táblák és oszlopok jelennek meg. Határozza meg, hogy érdeklő, és ezután tekintse meg az adatok egy kis, tábla:
+### <a name="table-based-queries"></a>Tábla alapú lekérdezések
+A Azure Monitor táblákba rendezi a naplókat, amelyek mindegyike több oszlopból áll. Az elemzési portálon az összes tábla és oszlop megjelenik a Log Analytics sémája ablaktáblán. Azonosítson egy olyan táblát, amely érdekli, és tekintse meg a következőt:
 
 ```Kusto
 SecurityEvent
 | take 10
 ```
 
-A fenti lekérdezés 10 eredményét adja vissza a *SecurityEvent* táblához nincs konkrét sorrendje. Ez nagyon gyakori módja egy tábla egy termékkereslet és megérteni a felépítéséről és tartalmáról. Most vizsgálja meg, hogyan épül:
+A fenti lekérdezés a *SecurityEvent* tábla 10 találatát adja vissza, a megadott sorrendben. Ez egy egyszerű módja annak, hogy áttekintést készítsen egy táblázatról, és megértse a szerkezetét és tartalmát. Vizsgáljuk meg, hogyan épül fel:
 
-* A lekérdezés a táblanév előtaggal kezdődik *SecurityEvent* – Ez a rész határozza meg a lekérdezés hatókörét.
-* A függőleges vonal (|) karakterrel elválasztó parancsok, így az elsőt a bemenetben a következő parancs kimenetét. Tetszőleges számú védőeszközön elemeket adhat hozzá.
-* A következő függőleges vonal van a **igénybe** parancsot, amely egy tetszőleges rekordok adott számát adja vissza a táblából.
+* A lekérdezés a tábla neve *SecurityEvent* kezdődik – ez a rész a lekérdezés hatókörét határozza meg.
+* A pipe (|) karakter elválasztja a parancsokat, így a kimenete az első a következő parancs bemenetében. Tetszőleges számú vezetékes elemet adhat hozzá.
+* A cső után a **Take** parancs, amely egy adott számú tetszőleges rekordot ad vissza a táblából.
 
-Hogy ténylegesen futhat a lekérdezés hozzáadása nélkül is `| take 10` –, amelyek továbbra is lenne érvényes, de sikerült legfeljebb 10 000 eredményeket.
+Gyakorlatilag még a Hozzáadás `| take 10` nélkül is futtathatjuk a lekérdezést, amely továbbra is érvényes lesz, de akár 10 000 eredményt is visszatérhet.
 
 ### <a name="search-queries"></a>Keresési lekérdezések
-Keresési lekérdezések a következők: kisebb strukturált, és általában több olyan bármely, az oszlopok egy adott értéket tartalmazó rekordok keresése:
+A keresési lekérdezések kevésbé strukturáltak, és általában alkalmasabbak arra, hogy olyan rekordokat keressenek, amelyek egy adott értéket tartalmaznak a saját oszlopaikban:
 
 ```Kusto
 search in (SecurityEvent) "Cryptographic"
 | take 10
 ```
 
-Ez a lekérdezés átvizsgálja a *SecurityEvent* rekordok a "Titkosítási" kifejezést tartalmazó tábla. Ezeknek a rekordoknak 10 rekordot fog visszaadott és jelenik meg. Ha kihagyja azt a `in (SecurityEvent)` futtatásának részeként, és csak `search "Cryptographic"`, a keresés halad *összes* táblát is, amelyeket szeretne hosszabb időt vesz igénybe, és kevésbé hatékony.
+Ez a lekérdezés a "kriptográfia" kifejezést tartalmazó rekordokra keres rá a *SecurityEvent* táblában. Ezekből a rekordokból 10 rekordot ad vissza és jelenít meg. Ha kihagyja a `in (SecurityEvent)` részt, és csak `search "Cryptographic"`futtatja a parancsot, a Keresés az *összes* tábla fölé kerül, ami hosszabb ideig tart, és kevésbé hatékony.
 
-> [!NOTE]
-> Alapértelmezésben a időtartománya _elmúlt 24 órában_ van beállítva. Egy másik tartományt használja az időválasztó (melletti a *lépjen* gomb), vagy adja hozzá egy kifejezett idő dátumtartomány-szűrőt ad a lekérdezéshez.
+> [!WARNING]
+> A keresési lekérdezések általában lassabbak, mint a tábla alapú lekérdezések, mert több adatfeldolgozást kell feldolgozniuk. 
 
-## <a name="sort-and-top"></a>Rendezés és a leggyakoribb
-Miközben **igénybe** van hasznos néhány rögzíti, az eredmények kiválasztva, és nem adott sorrendben jelennek meg. Egy rendezett nézet lekéréséhez sikerült **rendezési** az előnyben részesített oszlop szerint:
+## <a name="sort-and-top"></a>Rendezés és felül
+Habár hasznos lehet néhány rekord beszerzése, az eredmények ki lesznek választva, és nem jelennek meg külön sorrendben. Rendezett nézet beszerzéséhez az előnyben részesített oszlop szerint **rendezhet** :
 
 ```Kusto
 SecurityEvent   
 | sort by TimeGenerated desc
 ```
 
-Amely túl sok eredményt, ha vissza, és időbe is telhet. A fenti lekérdezés rendezi *a teljes* SecurityEvent tábla a TimeGenerated oszlop szerint. Az Analytics-portál majd korlátozza csak 10 000 rekordot megjelenítése. Ez a megközelítés természetesen nem áll optimális.
+Ez azonban túl sok eredményt adhat vissza, és előfordulhat, hogy hosszabb időt is igénybe vehet. A fenti lekérdezés a TimeGenerated oszlop alapján rendezi *a teljes* SecurityEvent táblát. Az elemzési portál ezt követően korlátozza a megjelenítést, hogy csak a 10 000-es rekordokat jelenítse meg. Ez a megközelítés természetesen nem optimális.
 
-Csak a legújabb 10 rekord lekérése a legjobb módszer az, hogy használja **felső**, amely a kiszolgálói oldalon az egész tábla rendezi, és a felső rekordjait adja majd vissza:
+A legjobb megoldás, ha csak a legújabb 10 rekordot szeretné lekérni, a **Top**értéket használja, amely a kiszolgáló oldalán rendezi a teljes táblázatot, majd visszaadja a legfontosabb rekordokat:
 
 ```Kusto
 SecurityEvent
 | top 10 by TimeGenerated
 ```
 
-Csökkenő sorrendbe az alapértelmezett rendezési sorrend, így általában kihagyja a **desc** argumentum. A kimenet a következőképpen jelenik meg:
+A csökkenő érték az alapértelmezett rendezési sorrend, ezért általában kihagyjuk a **desc** argumentumot. A kimenet így fog kinézni:
 
 ![Első 10](media/get-started-queries/top10.png)
 
 
-## <a name="where-filtering-on-a-condition"></a>Ahol: szűrési feltétel
-Szűrők, a nevük, aszinkronitást szűrje az adatokat egy adott feltétel. Ez a leggyakoribb módja vonatkozó információkat a lekérdezési eredmények korlátozására.
+## <a name="where-filtering-on-a-condition"></a>Where: szűrés egy feltétellel
+A szűrők a nevük alapján szűrik az adott feltételt. Ez a leggyakoribb módszer a lekérdezési eredmények megfelelő információkra való korlátozására.
 
-Szűrő hozzáadása egy lekérdezés, használja a **ahol** operátor egy vagy több feltételt követ. Például a következő lekérdezés visszaadja az csak *SecurityEvent* rekordokat, ahol _szint_ egyenlő _8_:
+Szűrő lekérdezéshez való hozzáadásához használja a **Where** operátort, majd egy vagy több feltételt. Például a következő lekérdezés csak olyan *SecurityEvent* -rekordokat ad vissza, amelyekben a _szint_ értéke _8_:
 
 ```Kusto
 SecurityEvent
 | where Level == 8
 ```
 
-Szűrési feltételek írásakor, használhatja az alábbi kifejezések:
+A szűrési feltételek írásakor a következő kifejezéseket használhatja:
 
 | Kifejezés | Leírás | Példa |
 |:---|:---|:---|
-| == | Egyenlőség ellenőrzése<br>(case-sensitive) | `Level == 8` |
-| =~ | Egyenlőség ellenőrzése<br>(case-insensitive) | `EventSourceName =~ "microsoft-windows-security-auditing"` |
-| !=, <> | Egyenlótlenség ellenőrzése<br>(a mindkét kifejezés azonosak) | `Level != 4` |
-| *és*, *vagy* | Szükséges feltételek között| `Level == 16 or CommandLine != ""` |
+| == | Az egyenlőség ellenõrzése<br>(kis-és nagybetűk megkülönböztetése) | `Level == 8` |
+| =~ | Az egyenlőség ellenõrzése<br>(kis-és nagybetűk megkülönböztetése) | `EventSourceName =~ "microsoft-windows-security-auditing"` |
+| !=, <> | Egyenlőtlenségek keresése<br>(mindkét kifejezés azonos) | `Level != 4` |
+| *és*, *vagy* | Feltételek között szükséges| `Level == 16 or CommandLine != ""` |
 
-Szűrés több feltétel alapján, hogy használhatja **és**:
+Ha több feltételt szeretne szűrni, használhatja akövetkezőt:
 
 ```Kusto
 SecurityEvent
 | where Level == 8 and EventID == 4672
 ```
 
-vagy több kanálu **ahol** elemek egy egymás után:
+vagy a cső több elemét, **ahol** egymás után:
 
 ```Kusto
 SecurityEvent
@@ -131,18 +135,18 @@ SecurityEvent
 ```
     
 > [!NOTE]
-> Értékek lehetnek a különböző típusú, hogy a leadott őket a megfelelő típusú összehasonlítás végrehajtásához szükség lehet. Például SecurityEvent *szint* sloupec je typu karakterlánc, így kell alakítania azt egy numerikus típus, például *int* vagy *hosszú*, a numerikus operátorok használata előtt: `SecurityEvent | where toint(Level) >= 10`
+> Az értékek különböző típusokkal rendelkezhetnek, ezért előfordulhat, hogy a megfelelő típus összehasonlításához el kell végeznie őket. A SecurityEvent *szint* oszlop például karakterlánc típusú, ezért a numerikus operátorok használata előtt át kell őket adni egy numerikus típusba (például *int* vagy *Long*).`SecurityEvent | where toint(Level) >= 10`
 
-## <a name="specify-a-time-range"></a>Adjon meg egy időtartományt
+## <a name="specify-a-time-range"></a>Időtartomány megadásának időpontja
 
-### <a name="time-picker"></a>Időpontválasztó
-A időválasztó mellett a Futtatás gombra, és azt jelzi, hogy csak az elmúlt 24 órában a rekordok lekérdezésekor. Ez az összes lekérdezés alkalmazott alapértelmezett időintervallumát. Az elmúlt egy órában csak a rekordok lekéréséhez válassza _utolsó óra_ , és futtassa újra a lekérdezést.
+### <a name="time-picker"></a>Időválasztó
+Az időválasztó a Futtatás gomb mellett látható, és azt jelzi, hogy az elmúlt 24 órában csak rekordok vannak lekérdezve. Ez az összes lekérdezésre alkalmazott alapértelmezett időtartomány. Ha csak az elmúlt óra rekordjait szeretné lekérni, válassza az _elmúlt óra_ lehetőséget, majd futtassa újra a lekérdezést.
 
-![Időválasztó](media/get-started-queries/timepicker.png)
+![Időpontválasztó](media/get-started-queries/timepicker.png)
 
 
-### <a name="time-filter-in-query"></a>A lekérdezés Időszűrő
-A saját időtartomány megadhatók a lekérdezést ad hozzá egy Időszűrő is. Célszerű elhelyezni az Időszűrő közvetlenül után a táblázat neve: 
+### <a name="time-filter-in-query"></a>Időszűrő a lekérdezésben
+A lekérdezéshez Időszűrő hozzáadásával is megadhatja a saját időtartományát. Az időszűrőt közvetlenül a tábla neve után helyezheti el: 
 
 ```Kusto
 SecurityEvent
@@ -150,11 +154,11 @@ SecurityEvent
 | where toint(Level) >= 10
 ```
 
-Az a fenti Időszűrő `ago(30m)` "30 perccel ezelőtt" azt jelenti, hogy ez a lekérdezés csak vissza rekordok az elmúlt 30 percben. Egyéb időegységben tartalmaznia nap (2d), perc (25m) és a másodperc (10 egység).
+A fenti időpontnál `ago(30m)` a "30 perce" kifejezés azt jelenti, hogy ez a lekérdezés csak az elmúlt 30 perc rekordokat adja vissza. Más időegységek közé tartoznak a napok (2D), a Minutes (25m) és a másodperc (10-es).
 
 
-## <a name="project-and-extend-select-and-compute-columns"></a>Projekt és bővítés: válassza ki, és a számítási oszlopok
-Használat **projekt** a keresési eredmények között szerepeljen az egyes oszlopok kiválasztásához:
+## <a name="project-and-extend-select-and-compute-columns"></a>Projekt és bővítés: Select és számítási oszlopok
+A **Project** használatával kiválaszthatja az eredményekbe felvenni kívánt oszlopokat:
 
 ```Kusto
 SecurityEvent 
@@ -162,15 +166,15 @@ SecurityEvent
 | project TimeGenerated, Computer, Activity
 ```
 
-Az előző példában állít elő, ez a kimenet:
+Az előző példa ezt a kimenetet hozza létre:
 
-![Lekérdezés projekt eredményei](media/get-started-queries/project.png)
+![Projekt eredményeinek lekérdezése](media/get-started-queries/project.png)
 
-Is **projekt** oszlopok átnevezése, illetve újakat megadása. A következő példában projekt tegye a következőket:
+A **Project** használatával is átnevezheti az oszlopokat, és újakat is meghatározhat. A következő példában a Project használatával végezheti el a következőket:
 
-* Csak válassza ki a *számítógép* és *TimeGenerated* eredeti oszlopot.
-* Nevezze át a *tevékenység* oszlop *EventDetails*.
-* Hozzon létre egy olyan új oszlop neve *EventCode*. A **substring()** függvény csak az első négy karaktert beszerezni a tevékenység mező szolgál.
+* Csak a *számítógép* -és *TimeGenerated* eredeti oszlopainak kiválasztása.
+* Nevezze át a *tevékenység* oszlopot a *EventDetails*értékre.
+* Hozzon létre egy új, *EventCode*nevű oszlopot. Az **alkarakterlánc ()** függvény csak az első négy karakter beolvasására szolgál a tevékenység mezőből.
 
 
 ```Kusto
@@ -179,25 +183,25 @@ SecurityEvent
 | project Computer, TimeGenerated, EventDetails=Activity, EventCode=substring(Activity, 0, 4)
 ```
 
-**kiterjesztheti** összes eredeti oszlopot tartja az eredményhalmaz és újak határozza meg. Az alábbi lekérdezés használ **kiterjesztése** hozzáadása egy *konvertálásának* oszlopot, amely honosított TimeGenerated értéket tartalmaz.
+a Kibővítés megtartja az eredményhalmaz összes eredeti oszlopát, és meghatározza a további beállításokat is. A következő lekérdezés a **kibővítést** használja a *EventCode* oszlop hozzáadásához. Vegye figyelembe, hogy ez az oszlop nem jeleníthető meg a tábla végén, amely esetben a rekordok részleteit ki kell bontani a megtekintéshez.
 
 ```Kusto
 SecurityEvent
 | top 10 by TimeGenerated
-| extend localtime = TimeGenerated-8h
+| extend EventCode=substring(Activity, 0, 4)
 ```
 
-## <a name="summarize-aggregate-groups-of-rows"></a>Összefoglalásképpen: összesített sorcsoportra
-Használat **összefoglalója** azonosíthatja a csoportok a rekordok, egy vagy több oszlop szerint, és összesítések vonatkoznak rájuk. A leggyakoribb használatát **összefoglalója** van *száma*, amely eredmények számát adja vissza az egyes csoportokban.
+## <a name="summarize-aggregate-groups-of-rows"></a>Összefoglalás: sorok összesített csoportjai
+Az **Összefoglalás** használatával azonosíthatja a rekordok csoportjait egy vagy több oszlop szerint, és összesítéseket alkalmazhat rájuk. Az összegzések leggyakoribb használata a *Count*, amely az egyes csoportok eredményeinek számát adja vissza.
 
-A következő lekérdezés az összes felülvizsgálati *Teljesítményoptimalizált* az elmúlt órában származó rekordokat csoportok szerint *ObjectName*, és az egyes csoportokban a rekordok száma: 
+A következő lekérdezés az elmúlt óra összes *teljesítményszámláló* -rekordját áttekinti, csoportosítja őket *ObjectName*szerint, és megszámolja az egyes csoportok rekordjait: 
 ```Kusto
 Perf
 | where TimeGenerated > ago(1h)
 | summarize count() by ObjectName
 ```
 
-Néha logikus csoportjait több szempontok alapján határozzák meg. Ezeket az értékeket minden egyéni kombinációja külön csoportot határozza meg:
+Időnként érdemes lehet csoportokat definiálni több dimenzió alapján. Az értékek minden egyedi kombinációja egy külön csoportot határoz meg:
 
 ```Kusto
 Perf
@@ -205,7 +209,7 @@ Perf
 | summarize count() by ObjectName, CounterName
 ```
 
-Egy másik általában az egyes csoportok matematikai és statisztikai számításokhoz. Például az a következő kiszámítja az átlagos *AVG* az egyes számítógépekhez:
+Egy másik gyakori használat, hogy matematikai vagy statisztikai számításokat hajtson végre az egyes csoportokon. Például a következő kiszámítja az egyes számítógépek átlagos *kártyabirtokos számlájának megterhelését* :
 
 ```Kusto
 Perf
@@ -213,7 +217,7 @@ Perf
 | summarize avg(CounterValue) by Computer
 ```
 
-Sajnos ez a lekérdezés eredményeit, mivel azt összekeverni különböző teljesítményszámlálók, összegnek nincs valós jelentése. Ahhoz, hogy ez jobban leírja, külön-külön az egyes kombinációja átlagos számítható ki *CounterName* és *számítógép*:
+Sajnos a lekérdezés eredményei értelmetlenek, mivel összekevertük a különböző teljesítményszámlálókat. A *CounterName* és a *számítógép*minden kombinációja esetében az átlagot külön kell kiszámítani:
 
 ```Kusto
 Perf
@@ -221,10 +225,10 @@ Perf
 | summarize avg(CounterValue) by Computer, CounterName
 ```
 
-### <a name="summarize-by-a-time-column"></a>Összegzés szempontja-idő típusú oszlop
-Eredmények csoportosítása is alapulhat-idő típusú oszlop, vagy egy másik folyamatos értéket. Egyszerűen összefoglalójához `by TimeGenerated` azonban lenne csoportok létrehozása a minden egyetlen ezredmásodperces az időtartományban, hiszen ezek egyedi értékeket. 
+### <a name="summarize-by-a-time-column"></a>Összesítés egy időoszlop alapján
+A csoportosítási eredmények egy időoszlopon vagy egy másik folytonos értéken is alapulhatnak. Egyszerűen Összefoglalva `by TimeGenerated` , bár az adott időtartományon belül minden egyes ezredmásodperchez létrehozhatnak csoportokat, mivel ezek egyedi értékek. 
 
-Folyamatos értékek alapján csoportok létrehozásához, célszerű a tartomány megszüntetése használatával kezelhető egységekbe **bin**. A következő lekérdezés elemzi *Teljesítményoptimalizált* rekordokat, amelyek a szabad memória (*rendelkezésre álló memória*) egy adott számítógépen. Mindig kiszámítja az átlagos érték minden egyes időtartam Ha 1 óra, az elmúlt 7 napban:
+Ha folytonos értékek alapján szeretne csoportokat létrehozni, érdemes lehet a tartományt a **bin**használatával felügyelt egységekre bontani. A következő lekérdezés az adott számítógépen a szabad memóriát (*rendelkezésre álló MB*-ot) mérni kívánó teljesítmény-rekordokat elemzi. Kiszámítja az 1 órás időszak átlagos értékét az elmúlt 7 napban:
 
 ```Kusto
 Perf 
@@ -234,12 +238,12 @@ Perf
 | summarize avg(CounterValue) by bin(TimeGenerated, 1h)
 ```
 
-Ahhoz, hogy világosabb kimeneti, választja egy idő-diagramon megjeleníthető a rendelkezésre álló memória megjelenítő idővel:
+A kimeneti világosabb kiválasztásához jelölje ki, ha idődiagramként szeretné megjeleníteni a rendelkezésre álló memóriát:
 
-![Lekérdezés memória időbeli alakulása](media/get-started-queries/chart.png)
+![Memória lekérdezése az idő függvényében](media/get-started-queries/chart.png)
 
 
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg [keresési lekérdezések írása](search-queries.md)
+- Tudnivalók a [keresési lekérdezések írásához](search-queries.md)

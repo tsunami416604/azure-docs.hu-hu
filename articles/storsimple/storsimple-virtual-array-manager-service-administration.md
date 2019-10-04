@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 12/1/2016
 ms.author: alkohli
 ms.openlocfilehash: bb6bb491ca71e5ced5aecc8137e9e1cbd950e80b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58091868"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62123805"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-virtual-array"></a>A StorSimple Virtual Array felügyelete a StorSimple-Eszközkezelő szolgáltatás használatával
 ![a telepítő folyamat](./media/storsimple-virtual-array-manager-service-administration/manage4.png)

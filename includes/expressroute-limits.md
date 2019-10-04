@@ -5,33 +5,31 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: include
-ms.date: 06/12/2018
+ms.date: 07/25/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: ee987448f9f6d95e6f97317bec2f696e734cba20
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 45d34297bf37a6e46bc57e95ff49def49051e32e
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58632977"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "67622102"
 ---
-#### <a name="expressroute-limits"></a>Az ExpressRoute-korlátok
-Az alábbi korlátok vonatkoznak az Azure ExpressRoute-erőforrásokra előfizetésenként.
-
-| Erőforrás | Alapértelmezett/maximális korlát |
+| Resource | Alapértelmezett/maximális korlát |
 | --- | --- |
-| Előfizetésenként az ExpressRoute-Kapcsolatcsoportok |10 |
-| Az ExpressRoute-Kapcsolatcsoportok régiónként és előfizetésenként, az Azure Resource Managerrel |10 |
-| Az Azure privát társviszony-létesítés ExpressRoute standard útvonalak maximális száma |4,000 |
-| Az Azure privát társviszony-létesítéshez az ExpressRoute prémium bővítmény útvonalak maximális száma |10,000 |
-| Az Azure privát társviszony-létesítés egy ExpressRoute-kapcsolat a virtuális hálózat címtere útvonalak maximális száma |200 | 
-| A Microsoft Azure standard ExpressRoute-társviszony-létesítéshez útvonalak maximális száma |200 |
-| Az ExpressRoute prémium bővítmény a Microsoft Azure-társviszony-létesítéshez útvonalak maximális száma |200 |
-| Az azonos virtuális hálózatban lévő másik társviszony-létesítési helyszínek társított ExpressRoute-Kapcsolatcsoportok maximális száma |4 |
-| Virtuális hálózati kapcsolat ExpressRoute-kapcsolatcsoportonként megengedett száma |A következő táblázatban találja. |
+| ExpressRoute áramkörök/előfizetés |10 |
+| ExpressRoute áramkörök régiónként/előfizetéssel, Azure Resource Manager |10 |
+| Az Azure Private-partnereknek a ExpressRoute standard használatával hirdetett útvonalak maximális száma |4,000 |
+| Az Azure Private peering szolgáltatásban hirdetett útvonalak maximális száma az ExpressRoute Premium bővítménnyel |10,000 |
+| Az Azure-beli privát társak által a VNet ExpressRoute-kapcsolatok esetében hirdetett útvonalak maximális száma |200 |
+| A Microsoft-partnerek számára a ExpressRoute standard használatával hirdetett útvonalak maximális száma |200 |
+| A Microsoft-partnerek számára a ExpressRoute Premium bővítménysel hirdetett útvonalak maximális száma |200 |
+| Ugyanahhoz a virtuális hálózathoz ugyanahhoz a társi helyhez kapcsolódó ExpressRoute-áramkörök maximális száma |4 |
+| Ugyanahhoz a virtuális hálózathoz kapcsolódó ExpressRoute-áramkörök maximális száma különböző egymásra vonatkozó helyen |4 |
+| A ExpressRoute áramkörben engedélyezett virtuális hálózati kapcsolatok száma |Tekintse meg a [virtuális hálózatok száma ExpressRoute áramköri](#vnetpercircuit) táblában.  |
 
-#### <a name="number-of-virtual-networks-per-expressroute-circuit"></a>ExpressRoute-kapcsolatcsoportonként virtuális hálózatok száma
-| **Kapcsolatcsoport méretétől** | **A Standard virtuális hálózati kapcsolatok száma** | **A Premium bővítmény virtuális hálózati kapcsolatok száma** |
+#### <a name="vnetpercircuit"></a>Virtuális hálózatok száma ExpressRoute áramkörben
+| **Áramkör mérete** | **A standard szintű virtuális hálózati kapcsolatok száma** | **A prémium szintű bővítménysel rendelkező virtuális hálózati kapcsolatok száma** |
 | --- | --- | --- |
 | 50 Mbps |10 |20 |
 | 100 Mbps |10 |25 |
@@ -41,4 +39,7 @@ Az alábbi korlátok vonatkoznak az Azure ExpressRoute-erőforrásokra előfizet
 | 2 Gbps |10 |60 |
 | 5 Gbps |10 |75 |
 | 10 Gbps |10 |100 |
+| 40 GB/s * |10 |100 |
+| 100 GB/s * |10 |100 |
 
+**100 GB/s ExpressRoute – csak közvetlen*

@@ -1,10 +1,10 @@
 ---
-title: Jelszó egyszeri bejelentkezés az Azure AD katalógusából származó alkalmazás konfigurálása |} A Microsoft Docs
-description: Biztonságos jelszavas egyszeri bejelentkezés az alkalmazás konfigurálása, ha már szerepel az Azure AD Alkalmazáskatalógusában
+title: Az Azure AD Gallery-alkalmazás jelszavas egyszeri bejelentkezésének konfigurálása | Microsoft Docs
+description: Alkalmazás konfigurálása a biztonságos jelszó-alapú egyszeri bejelentkezéshez, ha az már szerepel az Azure AD Application Galleryben
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,173 +13,174 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
-ms.author: celested
+ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64fc7104427fd14bcb6989298a2896ec82c34f17
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ROBOTS: NOINDEX
+ms.openlocfilehash: 9fb33c4110a590539c85364885da9a27853f6bd0
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58082245"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70146885"
 ---
-# <a name="how-to-configure-password-single-sign-on-for-an-azure-ad-gallery-application"></a>Jelszó egyszeri bejelentkezés az Azure AD katalógusából származó alkalmazás konfigurálása
+# <a name="configure-password-single-sign-on-for-an-azure-ad-gallery-application"></a>Jelszavas egyszeri bejelentkezés konfigurálása Azure AD Gallery-alkalmazáshoz
 
-Az alkalmazás a hozzáadásakor a [az Azure AD Alkalmazáskatalógusában](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis), választhat, hogy, hogyan szeretné a felhasználók számára, amelyek bejelentkezni. Konfigurálhatja ezt a beállítást bármikor kiválasztásával a **egyszeri bejelentkezés** navigációs elem a vállalati alkalmazások a [az Azure portal](https://portal.azure.com/).
+Ha hozzáad egy alkalmazást az [Azure Active Directory (Azure ad) alkalmazás](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)-katalógusból, kiválaszthatja, hogyan szeretné bejelentkezni a felhasználók számára az alkalmazásba. Ezt a lehetőséget bármikor megadhatja, ha a [Azure Portal](https://portal.azure.com/)egy vállalati alkalmazásának **egyszeri bejelentkezés elemét** választja.
 
-Az egyszeri bejelentkezési módszerek elérhető egyik a [jelszóalapú egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) lehetőséget. Alkalmazások integrálása az Azure AD-be gyorsan Ismerkedés nagyszerű mód, és lehetővé teszi, hogy:
+Az egyszeri bejelentkezés (SSO) egyik lehetséges beállítása a [jelszó alapú egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis). Ez nagyszerű lehetőséget ad az alkalmazások Azure AD-be való integrálásának gyors megkezdésére. Ez a következőket teszi lehetővé:
 
--   Engedélyezése **egyszeri bejelentkezést a felhasználók** való biztonságos tárolása és felhasználónevek és jelszavak az alkalmazás visszajátszásával integrált már az Azure ad-vel
+-   Biztonságosan tárolja és visszajátssza az Azure AD-vel integrált alkalmazáshoz tartozó felhasználóneveket és jelszavakat
 
--   **Több bejelentkezési mezők igénylő alkalmazások támogatásához** több, mint felhasználónév és jelszó megadására való bejelentkezéshez igénylő alkalmazásokhoz
+-   A csak a Felhasználónév és jelszó mezőkön túli több bejelentkezési mezőt igénylő alkalmazások támogatása
 
--   **A feliratok testreszabása** a felhasználók felhasználónév és jelszó bemeneti mező a [alkalmazás-hozzáférési Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) amikor belép a hitelesítő adatok
+-   Lehetővé teszi a felhasználók által az [alkalmazás-hozzáférési panelen](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) megjelenő felhasználónevek és jelszó mezők címkéjének testreszabását a hitelesítő adatok megadásakor
 
--   Lehetővé teszi a **felhasználók** biztosít a saját felhasználónevek és jelszavak között, vannak írja be manuálisan a meglévő alkalmazás fiókok számára a [alkalmazás-hozzáférési Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+-   Lehetővé teszi a felhasználóknak saját felhasználónevek és jelszavak megadását minden olyan meglévő alkalmazás-fiókhoz, amelyet manuálisan adnak meg az [alkalmazás-hozzáférési panelen](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
--   Lehetővé teszi egy **az üzleti csoport tagjai** a felhasználónevek és jelszavak használatával a felhasználóhoz való megadásához a [önkiszolgáló alkalmazás-hozzáférés](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) funkció
+-   Lehetővé teszi, hogy az üzleti csoport tagjai az [önkiszolgáló alkalmazás-hozzáférési](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) szolgáltatás használatával megadják a felhasználóhoz rendelt felhasználóneveket és jelszavakat
 
--   Lehetővé teszi egy **rendszergazda** adja meg, hogy a felhasználónevek és jelszavak a frissítés hitelesítő adatok használatával a felhasználóhoz rendelt funkciót [felhasználó hozzárendelése egy alkalmazáshoz](#assign-a-user-to-an-application-directly)
+-   Lehetővé teszi a rendszergazda számára a felhasználóhoz rendelt felhasználónevek és jelszavak megadását a hitelesítő adatok frissítése funkció használatával [, amikor felhasználót rendel](#assign-a-user-to-an-application-directly) hozzá egy alkalmazáshoz
 
--   Lehetővé teszi egy **rendszergazda** adja meg a megosztott felhasználónév vagy jelszó a frissítési hitelesítő adatok használatával egy csoport tagjainak által használt funkciót [csoport hozzárendelése egy alkalmazáshoz](#assign-an-application-to-a-group-directly)
+-   Lehetővé teszi, hogy a rendszergazda a hitelesítő adatok frissítése funkcióval megadhatja egy adott csoport megosztott felhasználónevét vagy jelszavát, amikor [csoportot rendel hozzá](#assign-an-application-to-a-group-directly) egy alkalmazáshoz.
 
-Az alábbi szakasz ismerteti, hogyan engedélyezheti [jelszóalapú egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) egy alkalmazás, amely már része a [az Azure AD Alkalmazáskatalógusában](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+A következő szakasz azt ismerteti, hogyan engedélyezheti a [jelszó-alapú egyszeri bejelentkezést](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) egy olyan alkalmazásra, amely már szerepel az [Azure ad Application Galleryben](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="overview-of-steps-required"></a>Szükséges lépések áttekintése
-Az Azure AD katalógusából származó kell az alkalmazás konfigurálása:
+## <a name="overview-of-required-steps"></a>A szükséges lépések áttekintése
+Egy alkalmazás Azure AD-katalógusból történő konfigurálásához a következőket kell tennie:
 
--   [Az Azure AD katalógusából származó alkalmazás hozzáadása](#add-an-application-from-the-azure-ad-gallery)
+-   [Alkalmazás hozzáadása az Azure AD-katalógusból](#add-an-application-from-the-azure-ad-gallery)
 
--   [Az alkalmazás a jelszavas egyszeri bejelentkezés konfigurálása](#configure-the-application-for-password-single-sign-on)
+-   [Az alkalmazás konfigurálása a jelszó egyszeri bejelentkezéséhez](#configure-the-application-for-password-single-sign-on)
 
--   Az alkalmazás egy felhasználó vagy csoport hozzárendelése
+-   Az alkalmazás társítása felhasználóhoz vagy csoporthoz:
 
-    -   [Közvetlenül a felhasználó hozzárendelése egy alkalmazáshoz](#assign-a-user-to-an-application-directly)
+    -   [Felhasználó közvetlen kiosztása egy alkalmazáshoz](#assign-a-user-to-an-application-directly)
 
-    -   [Közvetlenül egy csoportba alkalmazás hozzárendelése](#assign-an-application-to-a-group-directly)
+    -   [Alkalmazás közvetlen társítása egy csoporthoz](#assign-an-application-to-a-group-directly)
 
-## <a name="add-an-application-from-the-azure-ad-gallery"></a>Az Azure AD katalógusából származó alkalmazás hozzáadása
+## <a name="add-an-application-from-the-azure-ad-gallery"></a>Alkalmazás hozzáadása az Azure AD-katalógusból
 
-Az Azure AD katalógusából származó alkalmazás hozzáadásához kövesse az alábbi lépéseket:
+Ha alkalmazást szeretne hozzáadni az Azure AD-katalógusból, kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [az Azure portal](https://portal.azure.com) , és jelentkezzen be egy **globális rendszergazdai** vagy **társadminisztrátor**
+1.  Nyissa [](https://portal.azure.com)meg a Azure Portalt, és jelentkezzen be **globális rendszergazdaként** vagy **társ-** rendszergazdaként.
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
+2.  Nyissa meg a **Azure Active Directory bővítményt** a bal oldali menü tetején található **összes szolgáltatás** kiválasztásával.
 
-3.  Írja be a **"Azure Active Directory**" szöveget a szűrő keresőmezőbe, és válassza a **Azure Active Directory** elemet.
+3.  Adja meg az **Azure Active Directoryt** a keresőmezőbe, majd válassza ki a **Azure Active Directory** elemet.
 
-4.  Kattintson a **vállalati alkalmazások** az Azure Active Directory bal oldali navigációs menüjében.
+4.  A bal oldali Azure AD menüben válassza a **vállalati alkalmazások** lehetőséget.
 
-5.  Kattintson a **Hozzáadás** gombra a jobb felső sarokban lévő a **vállalati alkalmazások** ablaktáblán.
+5.  Válassza a **Hozzáadás** gombot a **vállalati alkalmazások** ablaktábla jobb felső sarkában.
 
-6.  Az a **adjon meg egy nevet** a szövegmezőbe a **Hozzáadás a katalógusból** területén adja meg az alkalmazás nevét.
+6.  A **Hozzáadás a** katalógusból szakasz **név megadása** mezőjébe írja be az alkalmazás nevét.
 
-7.  Válassza ki az egyszeri bejelentkezést a konfigurálni kívánt alkalmazást.
+7.  Válassza ki az egyszeri bejelentkezéshez konfigurálni kívánt alkalmazást.
 
-8.  Ad hozzá az alkalmazást, mielőtt a nevét módosíthatja a **neve** szövegmezőbe.
+8.  Az alkalmazás hozzáadása előtt módosíthatja a nevét a **név** mezőben.
 
-9.  Kattintson a **Hozzáadás** gombjára, és vegye fel az alkalmazást.
+9.  Az alkalmazás hozzáadásához válassza a **Hozzáadás** lehetőséget.
 
-Az alkalmazás konfigurációs panelen megjelenik egy rövid időszak után.
+Rövid idő elteltével megtekintheti az alkalmazás konfigurációs paneljét.
 
-## <a name="configure-the-application-for-password-single-sign-on"></a>Az alkalmazás a jelszavas egyszeri bejelentkezés konfigurálása
+## <a name="configure-the-application-for-password-single-sign-on"></a>Az alkalmazás konfigurálása a jelszó egyszeri bejelentkezéséhez
 
-Egyszeri bejelentkezés az alkalmazás konfigurálásához kövesse az alábbi lépéseket:
+Az egyszeri bejelentkezés az alkalmazáshoz való konfigurálásához kövesse az alábbi lépéseket:
 
-1. Nyissa meg a [ **az Azure portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdai** vagy **Társadminisztrátorként.**
+1. Nyissa meg a [Azure Portal](https://portal.azure.com/) , és jelentkezzen be **globális rendszergazdaként** vagy **társ-** rendszergazdaként.
 
-2. Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
+2. Nyissa meg a **Azure Active Directory bővítményt** a bal oldali menü tetején található **összes szolgáltatás** kiválasztásával.
 
-3. Írja be a **"Azure Active Directory**" szöveget a szűrő keresőmezőbe, és válassza a **Azure Active Directory** elemet.
+3. Adja meg az **Azure Active Directoryt** a keresőmezőbe, majd válassza ki a **Azure Active Directory** elemet.
 
-4. Kattintson a **vállalati alkalmazások** az Azure Active Directory bal oldali navigációs menüjében.
+4. Válassza ki a **vállalati alkalmazásokat** a bal oldali Azure Active Directory menüből.
 
-5. Kattintson a **minden alkalmazás** az alkalmazások listájának megtekintéséhez.
+5. A **minden alkalmazás** elemre kattintva megtekintheti az összes alkalmazás listáját.
 
-   * Ha azt szeretné, hogy itt jelennek meg az alkalmazás nem látja, használja a **szűrő** vezérlőelem felső részén a **minden alkalmazás lista** és állítsa be a **megjelenítése** beállítást **összes Az alkalmazások.**
+   Ha nem látja a használni kívánt alkalmazást, használja a **szűrő** vezérlőelemet a **minden alkalmazás lista**tetején, és állítsa be a **show (megjelenítés** ) lehetőséget az **összes alkalmazásra**.
 
-6. Válassza ki az alkalmazást szeretné az egyszeri bejelentkezés konfigurálása
+6. Válassza ki az egyszeri bejelentkezéshez konfigurálni kívánt alkalmazást.
 
-7. Ha az alkalmazás betöltött, kattintson a **egyszeri bejelentkezési** az alkalmazás bal oldali navigációs menüjében.
+7. Az alkalmazás betöltése után válassza az **egyszeri bejelentkezés** lehetőséget a bal oldali alkalmazás menüjében.
 
-8. Válassza ki a módot **jelszóalapú bejelentkezés.**
+8. Válassza a **jelszó alapú bejelentkezési** mód lehetőséget.
 
-9. [Felhasználók hozzárendelése az alkalmazás](#assign-a-user-to-an-application-directly).
+9. [Felhasználók kiosztása az alkalmazáshoz](#assign-a-user-to-an-application-directly).
 
-10. Ezenkívül is megadhatja a felhasználó nevében legyenek hitelesítő adatok a sorok, a felhasználók kiválasztva, majd kattintson a **a hitelesítő adatok frissítése** és a felhasználónév és jelszó megadásával a felhasználók nevében. Ellenkező esetben megkérdezi a felhasználókat a hitelesítő adatokat magukat az indítás után.
+10. A felhasználók nevében hitelesítő adatokat is megadhat, ha kiválasztja a felhasználó sorát, kiválasztja a **hitelesítő adatok frissítése**lehetőséget, majd beírja a felhasználónevet és a jelszót. Ellenkező esetben a felhasználóknak meg kell adniuk a hitelesítő adataikat, amikor elindítják az alkalmazást.
 
-## <a name="assign-a-user-to-an-application-directly"></a>Közvetlenül a felhasználó hozzárendelése egy alkalmazáshoz
+## <a name="assign-a-user-to-an-application-directly"></a>Felhasználó közvetlen kiosztása egy alkalmazáshoz
 
-Közvetlenül rendelni egy vagy több felhasználó egy alkalmazást, kövesse az alábbi lépéseket:
+Ha egy vagy több felhasználót közvetlenül szeretne hozzárendelni egy alkalmazáshoz, kövesse az alábbi lépéseket:
 
-1. Nyissa meg a [ **az Azure portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
+1. Nyissa [](https://portal.azure.com/) meg a Azure Portalt, és jelentkezzen be **globális rendszergazdaként**.
 
-2. Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
+2. Nyissa meg a **Azure Active Directory bővítményt** a bal oldali menü tetején található **összes szolgáltatás** kiválasztásával.
 
-3. Írja be a **"Azure Active Directory**" szöveget a szűrő keresőmezőbe, és válassza a **Azure Active Directory** elemet.
+3. Adja meg az **Azure Active Directoryt** a keresőmezőbe, majd válassza ki a **Azure Active Directory** elemet.
 
-4. Kattintson a **vállalati alkalmazások** az Azure Active Directory bal oldali navigációs menüjében.
+4. Válassza ki a **vállalati alkalmazásokat** a bal oldali Azure Active Directory menüből.
 
-5. Kattintson a **minden alkalmazás** az alkalmazások listájának megtekintéséhez.
+5. A **minden alkalmazás** elemre kattintva megtekintheti az összes alkalmazás listáját.
 
-   * Ha azt szeretné, hogy itt jelennek meg az alkalmazás nem látja, használja a **szűrő** vezérlőelem felső részén a **minden alkalmazás lista** és állítsa be a **megjelenítése** beállítást **összes Az alkalmazások.**
+   Ha nem látja a használni kívánt alkalmazást, használja a **szűrő** vezérlőelemet a **minden alkalmazás lista**tetején, és állítsa be a **show (megjelenítés** ) lehetőséget az **összes alkalmazásra**.
 
-6. Válassza ki a kívánt rendelje hozzá egy felhasználót a listáról az alkalmazást.
+6. Válassza ki azt az alkalmazást, amelyhez felhasználót szeretne hozzárendelni.
 
-7. Ha az alkalmazás betöltött, kattintson a **felhasználók és csoportok** az alkalmazás bal oldali navigációs menüjében.
+7. Az alkalmazás betöltése után a bal oldalon válassza a **felhasználók és csoportok** lehetőséget az alkalmazás menüjében.
 
-8. Kattintson a **Hozzáadás** a gombot a **felhasználók és csoportok** listán, megnyílik a **hozzárendelés hozzáadása** ablaktáblán.
+8. Kattintson a **Hozzáadás** gombra a **felhasználók és csoportok** lista tetején a **hozzárendelés hozzáadása** ablaktábla megnyitásához.
 
-9. Kattintson a **felhasználók és csoportok** a választó a **hozzárendelés hozzáadása** ablaktáblán.
+9. Válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** panelen.
 
-10. Írja be a **teljes név** vagy **e-mail-cím** Önt érdeklő való hozzárendelése a felhasználó a **Keresés név vagy e-mail cím alapján** keresőmezőbe.
+10. Adja meg a felhasználó teljes nevét vagy e-mail-címét a **Keresés név vagy e-mail-cím keresőmező alapján** .
 
-11. A kurzort a **felhasználói** megjelenítéséhez a listában egy **jelölőnégyzet**. Jelölje be a jelölőnégyzetet, a felhasználó profilfényképének vagy adja hozzá a felhasználót az embléma mellett a **kijelölt** listája.
+11. Vigye a kurzort a listán szereplő felhasználó fölé, majd jelölje be a felhasználó profiljának fényképe vagy emblémája melletti jelölőnégyzetet a **kiválasztott** listához való hozzáadáshoz.
 
-12. **Nem kötelező:** Ha szeretné **egynél több felhasználó hozzáadása**, írjon be egy másik **teljes név** vagy **e-mail-cím** be a **Keresés név vagy e-mail cím alapján** keresőmezőbe, majd kattintson a jelölőnégyzet bejelölésével adja hozzá a felhasználót a **kijelölt** listája.
+12. Nem kötelező: Ha egynél több felhasználót szeretne felvenni, adjon meg egy másik teljes nevet vagy e-mail-címet a **Keresés név vagy e-mail-cím** mezőbe, és jelölje be az adott felhasználóhoz tartozó jelölőnégyzetet a **kiválasztott** listához való hozzáadáshoz.
 
-13. Amikor elkészült, válassza a felhasználók, kattintson a **kiválasztása** gombra kattintva vegye fel a listára a felhasználók és csoportok hozzá kell rendelni az alkalmazást.
+13. Ha végzett a felhasználók kiválasztásával, a **kiválasztás** gombbal adhatja hozzá őket az alkalmazáshoz hozzárendelni kívánt felhasználók és csoportok listájához.
 
-14. **Választható lehetőség:** kattintson a **Szerepkörválasztás** -választójában jelenítse a **hozzárendelés hozzáadása** hozzárendelése a kiválasztott felhasználói szerepkör kiválasztása panel.
+14. Nem kötelező: A **hozzárendelés hozzáadása** panelen a **szerepkör kiválasztása** paranccsal kiválaszthatja a kiválasztott felhasználókhoz hozzárendelni kívánt szerepkört.
 
-15. Kattintson a **hozzárendelése** gombra kattintva rendelje hozzá az alkalmazás a kijelölt felhasználók számára.
+15. Válassza a **hozzárendelés** lehetőséget az alkalmazás a kiválasztott felhasználókhoz való hozzárendeléséhez.
 
-## <a name="assign-an-application-to-a-group-directly"></a>Közvetlenül egy csoportba alkalmazás hozzárendelése
+## <a name="assign-an-application-to-a-group-directly"></a>Alkalmazás közvetlen társítása egy csoporthoz
 
-Közvetlenül egy alkalmazás hozzárendelése egy vagy több csoportot, kövesse az alábbi lépéseket:
+Ha egy vagy több csoportot szeretne közvetlenül egy alkalmazáshoz rendelni, kövesse az alábbi lépéseket:
 
-1. Nyissa meg a [ **az Azure portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
+1. Nyissa [](https://portal.azure.com/) meg a Azure Portalt, és jelentkezzen be **globális rendszergazdaként**.
 
-2. Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
+2. Nyissa meg a **Azure Active Directory bővítményt** a bal oldali menü tetején található **összes szolgáltatás** kiválasztásával.
 
-3. Írja be a **"Azure Active Directory**" szöveget a szűrő keresőmezőbe, és válassza a **Azure Active Directory** elemet.
+3. Adja meg az **Azure Active Directoryt** a keresőmezőbe, majd válassza ki a **Azure Active Directory** elemet.
 
-4. Kattintson a **vállalati alkalmazások** az Azure Active Directory bal oldali navigációs menüjében.
+4. Válassza a bal oldali Azure AD menü **vállalati alkalmazások** elemét.
 
-5. Kattintson a **minden alkalmazás** az alkalmazások listájának megtekintéséhez.
+5. A **minden alkalmazás** elemre kattintva megtekintheti az összes alkalmazás listáját.
 
-   * Ha azt szeretné, hogy itt jelennek meg az alkalmazás nem látja, használja a **szűrő** vezérlőelem felső részén a **minden alkalmazás lista** és állítsa be a **megjelenítése** beállítást **összes Az alkalmazások.**
+   Ha nem látja a használni kívánt alkalmazást, használja a **szűrő** vezérlőelemet a **minden alkalmazás lista** tetején, és állítsa a **show (megjelenítés** ) lehetőséget az **összes alkalmazásra**.
 
-6. Válassza ki a kívánt rendelje hozzá egy felhasználót a listáról az alkalmazást.
+6. Válassza ki azt az alkalmazást, amelyhez felhasználót szeretne hozzárendelni.
 
-7. Ha az alkalmazás betöltött, kattintson a **felhasználók és csoportok** az alkalmazás bal oldali navigációs menüjében.
+7. Az alkalmazás betöltése után a bal oldalon válassza a **felhasználók és csoportok** lehetőséget az alkalmazás menüjében.
 
-8. Kattintson a **Hozzáadás** a gombot a **felhasználók és csoportok** listán, megnyílik a **hozzárendelés hozzáadása** ablaktáblán.
+8. A **hozzárendelés hozzáadása** ablaktábla megnyitásához kattintson a **felhasználók és csoportok** lista tetején található **Hozzáadás** gombra.
 
-9. Kattintson a **felhasználók és csoportok** a választó a **hozzárendelés hozzáadása** ablaktáblán.
+9. Válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** panelen.
 
-10. Írja be a **teljes csoportnév** a csoport Önt érdeklő való hozzárendelése a **Keresés név vagy e-mail cím alapján** keresőmezőbe.
+10. Adja meg annak a csoportnak a teljes nevét, amelyet a **Keresés név vagy e-mail-cím keresőmező használatával** szeretne hozzárendelni.
 
-11. A kurzort a **csoport** megjelenítéséhez a listában egy **jelölőnégyzet**. Jelölje be a jelölőnégyzetet, a csoport profilfénykép, vagy adja hozzá a felhasználót az embléma mellett a **kijelölt** listája.
+11. Vigye a kurzort a listában a **csoport** fölé, majd jelölje be a csoport profiljának fényképe vagy emblémája melletti jelölőnégyzetet a csoport a **kiválasztott** listához való hozzáadásához.
 
-12. **Nem kötelező:** Ha szeretné **egynél több csoport hozzáadása**, írjon be egy másik **teljes csoportnév** be a **Keresés név vagy e-mail cím alapján** keresőmezőbe, és kattintson a jelölőnégyzetbe, ez a csoport hozzáadása az a **kijelölt** listája.
+12. Nem kötelező: Ha egynél több csoportot szeretne felvenni, adjon meg egy másik teljes nevet a **Keresés név vagy e-mail-cím** keresése mezőben, majd jelölje be a megfelelő jelölőnégyzetet a csoport a **kiválasztott** listához való hozzáadásához.
 
-13. Ha befejezte a csoportok kiválasztásával, kattintson a **kiválasztása** gombra kattintva vegye fel a listára a felhasználók és csoportok hozzá kell rendelni az alkalmazást.
+13. Ha végzett a csoportok kiválasztásával, a **kiválasztás** gombbal adhatja hozzá őket az alkalmazáshoz hozzárendelni kívánt felhasználók és csoportok listájához.
 
-14. **Választható lehetőség:** kattintson a **Szerepkörválasztás** -választójában jelenítse a **hozzárendelés hozzáadása** ablaktáblán válassza ki a szerepkör hozzárendelése a kiválasztott csoportokhoz.
+14. Nem kötelező: A **hozzárendelés hozzáadása** panelen a **szerepkör kiválasztása** paranccsal kiválaszthatja a kiválasztott csoportokhoz hozzárendelni kívánt szerepkört.
 
-15. Kattintson a **hozzárendelése** gombra az alkalmazás a kijelölt csoportokhoz hozzárendelni.
+15. Válassza a **hozzárendelés** lehetőséget az alkalmazás kijelölt csoportokhoz való hozzárendeléséhez.
 
-Rövid ideig a kijelölt felhasználók tudják elindítani ezeket az alkalmazásokat a hozzáférési panelen.
+Rövid idő elteltével a kiválasztott felhasználóknak el kell tudniuk indítani ezeket az alkalmazásokat a hozzáférési panelen.
 
 ## <a name="next-steps"></a>További lépések
-[Az alkalmazásproxy egyszeri bejelentkezést az alkalmazásokba biztosít](application-proxy-configure-single-sign-on-with-kcd.md)
+Az [Application proxyn keresztül egyszeri bejelentkezést biztosíthat az alkalmazásokba](application-proxy-configure-single-sign-on-with-kcd.md).

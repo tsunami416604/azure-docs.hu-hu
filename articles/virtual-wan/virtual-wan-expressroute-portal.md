@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 04/02/2019
+ms.date: 06/10/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: 7b7adcc85b9274af45ddab653e875377e959e40c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: edf5e04b7cf9b5c79666c54fbeca49858cf21079
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58876326"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077515"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan-preview"></a>Oktatóanyag: Azure virtuális WAN (előzetes verzió) használatával egy ExpressRoute-társítás létrehozása
 
@@ -47,7 +47,8 @@ A Virtual WAN konfigurálása előtt regisztrálnia kell az előfizetését az e
 
 **Előzetes verzióval kapcsolatos szempontok:**
 
-Az ExpressRoute-kapcsolatcsoport engedélyezni kell, amely támogatja az adott országban [ExpressRoute globális elérhetőségű](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#where-is-expressroute-global-reach-supported).
+  * Az ExpressRoute-kapcsolatcsoport engedélyezve kell lennie, amely támogatja az országot/régiót [ExpressRoute globális elérhetőségű](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#where-is-expressroute-global-reach-supported).
+  * Az ExpressRoute-kapcsolatcsoport kell lennie a prémium szintű expressroute-kapcsolatcsoporthoz szeretne csatlakozni a virtuális WAN hub. 
 
 ## <a name="vnet"></a>1. Virtuális hálózat létrehozása
 

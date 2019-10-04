@@ -1,88 +1,88 @@
 ---
-title: Ismerkedés a Bing Speech Recognition API REST használatával |} A Microsoft Docs
+title: Ismerkedés a Bing Speech felismerési API-val REST használatával | Microsoft Docs
 titlesuffix: Azure Cognitive Services
-description: A REST használata a Microsoft Cognitive Services a beszélt hangot képes szöveggé alakítani a Speech Recognition API eléréséhez.
+description: A REST használatával férhet hozzá a Speech Recognition API-hoz Microsoft Cognitive Services a beszélt hang szöveggé alakításához.
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: ead4026ecec4878c69bc21a9ebc989eaf3d69a13
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: e962a12c6c27737f95e78e80036e51bac41147d5
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259941"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965786"
 ---
-# <a name="quickstart-use-the-bing-speech-recognition-rest-api"></a>Gyors útmutató: A Bing beszédfelismerés REST API használata
+# <a name="quickstart-use-the-bing-speech-recognition-rest-api"></a>Gyors útmutató: A Bing Speech felismerés használata REST API
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
-A Bing Speech felhő alapú szolgáltatás a beszélt hangot képes szöveggé alakítani a REST API használatával is fejleszthet alkalmazásokat.
+A felhőalapú Bing Speech szolgáltatással olyan alkalmazásokat fejleszthet, amelyekkel a REST API segítségével konvertálhatja a beszélt hangot szövegre.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-### <a name="subscribe-to-the-speech-api-and-get-a-free-trial-subscription-key"></a>Fizessen elő a beszédfelismerő API és a egy ingyenes próba-előfizetését kulcs lekérése
+### <a name="subscribe-to-the-speech-api-and-get-a-free-trial-subscription-key"></a>Feliratkozás a Speech API-ra, és ingyenes próbaverziós előfizetési kulcs beszerzése
 
-A beszédfelismerő API a Cognitive Services-(korábban Project Oxford) részét képezi. Ingyenes próba-előfizetését helyenk beszerezheti a [Cognitive Services-előfizetés](https://azure.microsoft.com/try/cognitive-services/) lapot. Miután kiválasztotta a beszédfelismerő API, válassza ki a **API-kulcs lekérése** a kulcs beszerzése. Egy elsődleges és másodlagos kulcsát adja vissza. Mindkét kulcsot kvóta, így használhatja az egyiket sem vannak társítva.
+A Speech API Cognitive Services (korábban Project Oxford) része. A [Cognitive Services előfizetés](https://azure.microsoft.com/try/cognitive-services/) oldaláról ingyenes próbaverziós előfizetési kulcsokat szerezhet be. Miután kiválasztotta a Speech API-t, válassza az **API-kulcs beolvasása** elemet a kulcs lekéréséhez. Egy elsődleges és egy másodlagos kulcsot ad vissza. Mindkét kulcs ugyanahhoz a kvótához van kötve, így bármelyik kulcsot használhatja.
 
 > [!IMPORTANT]
->* Előfizetési kulcs lekérése. A REST API eléréséhez, rendelkeznie kell egy [előfizetési kulcs](https://azure.microsoft.com/try/cognitive-services/).
+>* Előfizetési kulcs beszerzése. A REST API elérése előtt rendelkeznie kell egy [előfizetési kulccsal](https://azure.microsoft.com/try/cognitive-services/).
 >
->* Az előfizetési kulcs használja. Az alábbi REST minta cserélje le a saját előfizetői YOUR_SUBSCRIPTION_KEY.
+>* Használja az előfizetési kulcsot. A következő REST-mintákban cserélje le a YOUR_SUBSCRIPTION_KEY-et a saját előfizetési kulcsára.
 >
->* Tekintse meg a [hitelesítési](../how-to/how-to-authentication.md) egy előfizetési kulcsot beszerzése oldalon.
+>* Az előfizetési kulcs beszerzéséhez tekintse meg a [hitelesítés](../how-to/how-to-authentication.md) lapot.
 
-### <a name="prerecorded-audio-file"></a>Korábban rögzített hangfájl
+### <a name="prerecorded-audio-file"></a>Előre rögzített hangfájl
 
-Ebben a példában a rögzített hangfájl megmutatják, hogyan használható a REST API-t használjuk. Jegyezze fel a saját magának egy rövid kifejezés közli, hogy a hangfájl. Tegyük fel például, "Mi az például a mai időjárás?" vagy "Talált vicces filmek megtekintéshez." A beszédfelismerő API támogatja a külső mikrofon bemeneti is.
+Ebben a példában egy rögzített hangfájlt használunk a REST API használatának szemléltetésére. Rögzítsen egy hangfájlt egy rövid kifejezéssel. Tegyük fel például, hogy "mi a mai Időjárás?" vagy "keresse meg a vicces filmeket a megtekintéshez". A Speech Recognition API a külső mikrofon bemenetét is támogatja.
 
 > [!NOTE]
-> A példában szükséges a WAV fájlba rögzíti a hang **PCM egyetlen csatornát (mono), 16 KHz**.
+> A példához az szükséges, hogy a hanganyag WAV-fájlként legyen rögzítve **PCM Single Channel (mono), 16 kHz**.
 
-## <a name="build-a-recognition-request-and-send-it-to-the-speech-recognition-service"></a>Elismerési kérelem létrehozása, és küldje el a speech recognition szolgáltatáshoz
+## <a name="build-a-recognition-request-and-send-it-to-the-speech-recognition-service"></a>Hozzon létre egy felismerési kérést, és küldje el a beszédfelismerési szolgáltatásnak
 
-A következő lépéssel, beszédfelismerés, hogy egy POST kérést küld a megfelelő kérelem fejléce és a törzs Speech HTTP-végpontokat.
+A beszédfelismerés következő lépése egy POST-kérelem küldése a beszédfelismerési HTTP-végpontoknak a megfelelő kérelem fejlécével és Törzsével.
 
 ### <a name="service-uri"></a>Szolgáltatás URI-ja
 
-A speech recognition service URI van definiálva alapján [felismerés módok](../concepts.md#recognition-modes) és [nyelveket](../concepts.md#recognition-languages):
+A beszédfelismerési szolgáltatás URI-ja a [felismerési módok](../concepts.md#recognition-modes) és a [felismerési nyelvek](../concepts.md#recognition-languages)alapján van definiálva:
 
 ```HTTP
 https://speech.platform.bing.com/speech/recognition/<RECOGNITION_MODE>/cognitiveservices/v1?language=<LANGUAGE_TAG>&format=<OUTPUT_FORMAT>
 ```
 
-`<RECOGNITION_MODE>` a beszédfelismerést mód és musí mít jednu z následujících hodnot: `interactive`, `conversation`, vagy `dictation`. Egy szükséges erőforrás elérési útja az URI-ban. További információkért lásd: [felismerés módok](../concepts.md#recognition-modes).
+`<RECOGNITION_MODE>`meghatározza a felismerési módot, és az alábbi értékek egyikének kell `interactive`lennie: `dictation`, `conversation`, vagy. Ez egy szükséges erőforrás-útvonal az URI-ban. További információ: [felismerési módok](../concepts.md#recognition-modes).
 
-`<LANGUAGE_TAG>` az egyik kötelező paraméter a lekérdezési karakterláncban. Azt határozza meg a Célnyelv számára audiotartalmak átalakítás: például `en-US` az angol (Egyesült Államok). További információkért lásd: [nyelveket](../concepts.md#recognition-languages).
+`<LANGUAGE_TAG>`egy kötelező paraméter a lekérdezési karakterláncban. Meghatározza a hangátalakítás céljának nyelvét: `en-US` például angol (Egyesült Államok). További információ: [felismerési nyelvek](../concepts.md#recognition-languages).
 
-`<OUTPUT_FORMAT>` egy nem kötelező paraméter a lekérdezési karakterláncban. Az engedélyezett értékek a következők `simple` és `detailed`. Alapértelmezés szerint a szolgáltatás az eredményeket ad vissza `simple` formátumban. További információkért lásd: [kimeneti formátum](../concepts.md#output-format).
+`<OUTPUT_FORMAT>`egy opcionális paraméter a lekérdezési karakterláncban. Az engedélyezett értékek `simple` : és `detailed`. Alapértelmezés szerint a szolgáltatás `simple` formátumban adja vissza az eredményeket. További információ: [kimeneti formátum](../concepts.md#output-format).
 
-Néhány példa a szolgáltatás URI-k az alábbi táblázatban láthatók.
+A következő táblázatban néhány példa a szolgáltatási URI-ra.
 
 | Felismerési mód  | Nyelv | Kimeneti formátum | Szolgáltatás URI-ja |
 |---|---|---|---|
-| `interactive` | pt-BR | Alapértelmezett | https:\//speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=pt-BR |
-| `conversation` | en-US | Részletes | https:\//speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US & formátum = részletes |
-| `dictation` | FR-FR | Egyszerű | https:\//speech.platform.bing.com/speech/recognition/dictation/cognitiveservices/v1?language=fr-FR & formátum egyszerű = |
+| `interactive` | pt-BR | Alapértelmezett | https:\//Speech.platform.Bing.com/Speech/Recognition/Interactive/cognitiveservices/v1?Language=pt-br |
+| `conversation` | en-US | Részletes | https:\//Speech.platform.Bing.com/Speech/Recognition/Conversation/cognitiveservices/v1?Language=en-us&Format=Detailed |
+| `dictation` | FR-FR | Egyszerű | https:\//Speech.platform.Bing.com/Speech/Recognition/dictation/cognitiveservices/v1?language=fr-fr&Format=Simple |
 
 > [!NOTE]
-> A szolgáltatás-URI csak akkor, ha az alkalmazás a REST API-k használatával meghívja a speech recognition service van szükség. Ha valamelyik használja a [klienskódtárak](GetStartedClientLibraries.md), általában nem kell tudni, hogy melyik URI-t használja. A klienskódtárak előfordulhat, hogy használhatja másik szolgáltatás URI-k, amelyek csak egy adott ügyféloldali kódtár alkalmazható. További információkért tekintse meg az ügyféloldali kódtár a választott.
+> A szolgáltatás URI-ja csak akkor szükséges, ha az alkalmazás REST API-kat használ a beszédfelismerési szolgáltatás meghívásához. Ha az egyik [ügyféloldali kódtárat](GetStartedClientLibraries.md)használja, általában nem kell tudnia, hogy melyik URI-t használja. Az ügyféloldali kódtárak más szolgáltatás-URI-ket is használhatnak, amelyek csak egy adott ügyfél-függvénytárra érvényesek. További információkért tekintse meg az Ön által választott ügyféloldali könyvtárat.
 
 ### <a name="request-headers"></a>Kérelemfejlécek
 
-A következő mezőket a a kérelem fejlécében kell megadni:
+A kérelem fejlécében a következő mezőket kell megadni:
 
-- `Ocp-Apim-Subscription-Key`: Minden alkalommal, amikor a szolgáltatást hívják meg át kell az előfizetési kulcs található a `Ocp-Apim-Subscription-Key` fejléc. Beszédszolgáltatás is támogatja az engedélyezési jogkivonatok előfizetési kulcsok helyett. További információért lásd: [Hitelesítés](../How-to/how-to-authentication.md).
-- `Content-type`: A `Content-type` mező formátumát és a hang Stream kodek ismerteti. Jelenleg csak WAV fájlt, és a PCM Mono 16000 kódolást támogatja. A Content-type érték ehhez a formátumhoz `audio/wav; codec=audio/pcm; samplerate=16000`.
+- `Ocp-Apim-Subscription-Key`: Minden alkalommal, amikor meghívja a szolgáltatást, át kell adnia az előfizetési kulcsot `Ocp-Apim-Subscription-Key` a fejlécben. A beszédfelismerési szolgáltatás az előfizetési kulcsok helyett az engedélyezési jogkivonatok átadását is támogatja. További információért lásd: [Hitelesítés](../How-to/how-to-authentication.md).
+- `Content-type`: A `Content-type` mező a hangadatfolyam formátumát és kodekét írja le. Jelenleg csak a WAV-fájl és a PCM monó 16000-kódolás támogatott. A formátum `audio/wav; codec=audio/pcm; samplerate=16000`tartalomtípus értéke:.
 
-A `Transfer-Encoding` mező kitöltése nem kötelező. Ha ez a mező `chunked`, akkor is a hanganyag részeket felosztása kisebb tömbökre. További információkért lásd: [darabolásos átvitel](../How-to/how-to-chunked-transfer.md).
+A `Transfer-Encoding` mező kitöltése nem kötelező. Ha ezt a mezőt a `chunked`értékre állítja, a hanganyagot kis adattömbökbe is felvágja. További információ: [darabolásos átvitel](../How-to/how-to-chunked-transfer.md).
 
-Az alábbiakban látható egy minta-kérelem fejléce:
+A következő egy példa a kérelem fejlécére:
 
 ```HTTP
 POST https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=en-US&format=detailed HTTP/1.1
@@ -94,12 +94,12 @@ Transfer-Encoding: chunked
 Expect: 100-continue
 ```
 
-### <a name="send-a-request-to-the-service"></a>A szolgáltatás-kérés küldése
+### <a name="send-a-request-to-the-service"></a>Kérelem küldése a szolgáltatásnak
 
-Az alábbi példa bemutatja, hogyan speech recognition kérést küldhet a Speech REST-végpontokat. Használja a `interactive` mód.
+Az alábbi példa bemutatja, hogyan küldhet beszédfelismerési kérést a beszédfelismerési REST-végpontoknak. A `interactive` felismerési módot használja.
 
 > [!NOTE]
-> Cserélje le `YOUR_AUDIO_FILE` a korábban rögzített hangfájl az elérési útját. Cserélje le `YOUR_SUBSCRIPTION_KEY` a saját előfizetés-kulccsal.
+> Cserélje le `YOUR_AUDIO_FILE` a korábban rögzített hangfájl az elérési útját. Cserélje `YOUR_SUBSCRIPTION_KEY` le a t a saját előfizetési kulcsára.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -125,12 +125,12 @@ $RecoResponse
 
 ```
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# <a name="curltabcurl"></a>[Curl](#tab/curl)
 
-A példában a curl Linux bash-környezet. Ha nem érhető el a platformon, szüksége lehet a curl telepítéséhez. A példában is működik a Cygwin a Windows, a Git Bash, a zsh és más ismertetése.
+A példa a curlot használja a Linuxon a bash használatával. Ha nem érhető el a platformon, lehet, hogy telepítenie kell a curlot. A példa a Cygwin on Windows, a git bash, a zsh és más rendszerhéjok esetében is működik.
 
 > [!NOTE]
-> Tartsa a `@` cseréjekor hang fájl neve előtt `YOUR_AUDIO_FILE` az elérési útját a korábban rögzített hangfájl, ahogy azt jelzi, hogy értékét `--data-binary` adatok helyett egy fájl neve.
+> Az előre `@` rögzített hangfájl elérési útját `YOUR_AUDIO_FILE` lecserélve tartsa meg a hangfájl neve előtt, mivel azt `--data-binary` jelzi, hogy az érték az adatok helyett fájlnév.
 
 ```
 curl -v -X POST "https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=en-us&format=detailed" -H "Transfer-Encoding: chunked" -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY" -H "Content-type: audio/wav; codec=audio/pcm; samplerate=16000" --data-binary @YOUR_AUDIO_FILE
@@ -176,14 +176,14 @@ using (FileStream fs = new FileStream(YOUR_AUDIO_FILE, FileMode.Open, FileAccess
 
 ---
 
-## <a name="process-the-speech-recognition-response"></a>A speech recognition válasz feldolgozása
+## <a name="process-the-speech-recognition-response"></a>A beszédfelismerési válasz feldolgozása
 
-A kérés feldolgozása után beszédszolgáltatás adja vissza a válasz JSON-formátumban.
+A kérelem feldolgozása után a beszédfelismerési szolgáltatás JSON formátumú válaszként adja vissza az eredményeket.
 
 > [!NOTE]
-> Ha az előző kód hibát jelez, tekintse meg a [hibaelhárítás](../troubleshooting.md) keresse meg a lehetséges oka.
+> Ha az előző kód hibát ad vissza, tekintse meg a lehetséges okokat a [Hibaelhárítás](../troubleshooting.md) című témakörben.
 
-A következő kódrészlet azt szemlélteti, hogyan olvashatja a válasz az adatfolyamból.
+Az alábbi kódrészlet egy példát mutat be arra, hogyan olvashatja el a válaszát az adatfolyamból.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -192,9 +192,9 @@ A következő kódrészlet azt szemlélteti, hogyan olvashatja a válasz az adat
 ConvertTo-Json $RecoResponse
 ```
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# <a name="curltabcurl"></a>[Curl](#tab/curl)
 
-Ebben a példában a curl közvetlenül a karakterlánc a válaszüzenetben adja vissza. Ha azt szeretné, annak megjelenítéséhez JSON formátumban, használhatja a további eszközök, például a jq.
+Ebben a példában a curl közvetlenül visszaadja a válaszüzenetet egy karakterláncban. Ha JSON formátumban szeretné megjeleníteni, további eszközöket is használhat, például jQ.
 
 ```
 curl -X POST "https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=en-us&format=detailed" -H "Transfer-Encoding: chunked" -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY" -H "Content-type: audio/wav; codec=audio/pcm; samplerate=16000" --data-binary @YOUR_AUDIO_FILE | jq
@@ -223,7 +223,7 @@ using (WebResponse response = request.GetResponse())
 
 ---
 
-A következő mintát a következő JSON-választ:
+A következő minta egy JSON-Válasz:
 
 ```json
 OK
@@ -243,19 +243,19 @@ OK
 
 ## <a name="limitations"></a>Korlátozások
 
-A REST API vannak bizonyos korlátai:
+A REST API korlátozásai:
 
-- Hang stream támogatja csak legfeljebb 15 másodperc.
-- Elismerés során nem támogatja a köztes eredményeket. A felhasználók csak a végső felismerés eredményét kapnak.
+- Csak 15 másodpercig támogatja a hangadatfolyamot.
+- Az elismerés során nem támogatja a köztes eredményeket. A felhasználók csak a végső felismerés eredményét kapják meg.
 
-Ezek a korlátozások eltávolításához használja a Speech [klienskódtárak](GetStartedClientLibraries.md). Vagy használhatja a közvetlenül a [Speech WebSocket protokoll](../API-Reference-REST/websocketprotocol.md).
+A korlátozások eltávolításához használja a beszédfelismerési [ügyféloldali kódtárakat](GetStartedClientLibraries.md). Vagy közvetlenül is dolgozhat a [Speech WebSocket protokollal](../API-Reference-REST/websocketprotocol.md).
 
-## <a name="whats-next"></a>A következő lépések
+## <a name="whats-next"></a>További teendők
 
-- A C#, Java, stb. a REST API használatával, olvassa el ezeket [mintaalkalmazások](../samples.md).
-- Keresse meg és javítsa a hibákat: [hibaelhárítás](../troubleshooting.md).
-- Összetettebb funkciók használatához tekintse meg az első lépések a beszédfelismerő [klienskódtárak](GetStartedClientLibraries.md).
+- Ha szeretné megtudni, hogyan használhatja a REST API C#-t, javát stb., tekintse meg ezeket a [példákat](../samples.md).
+- A hibák megkereséséhez és javításához lásd: [Hibaelhárítás](../troubleshooting.md).
+- További speciális funkciók használatához tekintse meg a beszédfelismerési [ügyféloldali kódtárak](GetStartedClientLibraries.md)használatának első lépéseit ismertető témakört.
 
 ### <a name="license"></a>Licenc
 
-Az összes Cognitive Services SDK-k és minták az MIT-licenccel rendelkező rendelkezik licenccel. További információkért lásd: [licenc](https://github.com/Microsoft/Cognitive-Speech-STT-JavaScript/blob/master/LICENSE.md).
+Az SDK-k és a minták minden Cognitive Services licence az MIT licenccel rendelkezik. További információ: [License](https://github.com/Microsoft/Cognitive-Speech-STT-JavaScript/blob/master/LICENSE.md).

@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: Az oktatóanyag bemutatja, hogyan hozhat létre kapcsolatokat a virtuális gépek Azure-beli virtuális hálózathoz Azure Load Balancer használatával operacionalizálásra konfigurálása.
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 manager: twooley
 Customer intent: As an IT administrator, I want to configure port forwarding in Azure Load Balancer to remotely connect to VMs in an Azure virtual network.
 ms.service: load-balancer
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
-ms.author: kumud
+ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: db94f1d241223a9c54a6e3d516840dd17fd0c576
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: ee4ed818364d04f03caedc8b876ea29c41cb59b7
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60007508"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68273451"
 ---
 # <a name="tutorial-configure-port-forwarding-in-azure-load-balancer-using-the-portal"></a>Oktatóanyag: Porttovábbítást konfigurálása az Azure Load Balancer a portál használatával
 
@@ -49,15 +49,15 @@ Először hozzon létre egy nyilvános Standard load balancer, amely meg tudja o
 
     | Beállítás                 | Value                                              |
     | ---                     | ---                                                |
-    | Előfizetés               | Válassza ki előfizetését.    |    
-    | Erőforráscsoport         | Válassza ki **új létrehozása** , és írja be *MyResourceGroupLB* a szövegmezőben.|
+    | Subscription               | Válassza ki előfizetését.    |    
+    | Resource group         | Válassza ki **új létrehozása** , és írja be *MyResourceGroupLB* a szövegmezőben.|
     | Name (Név)                   | *myLoadBalancer*                                   |
     | Régió         | Válassza a **Nyugat-Európa** régiót.                                        |
-    | Typo          | Válassza ki **nyilvános**.                                        |
+    | Type          | Válassza ki **nyilvános**.                                        |
     | SKU           | Válassza ki **Standard**.                          |
     | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. |
     | Nyilvános IP-cím neve              | Típus *myPublicIP* a szövegmezőben.   |
-    |Rendelkezésre állási zóna| Válassza ki **Zónaredundáns**.    |
+    |Rendelkezésre állási zónában| Válassza ki **Zónaredundáns**.    |
      
     >[!NOTE]
      >Győződjön meg arról, hogy a terheléselosztó és az összes erőforrás létrehozásához, egy helyen, amely támogatja a rendelkezésre állási zónák. További információkért lásd: [rendelkezésre állási zónákat támogató régiók](../availability-zones/az-overview.md#services-support-by-region). 

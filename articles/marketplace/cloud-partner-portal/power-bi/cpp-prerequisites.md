@@ -1,25 +1,18 @@
 ---
-title: A Power BI alkalmazás ajánlat Előfeltételek – Azure Marketplace-en |} A Microsoft Docs
+title: Power BI alkalmazás ajánlat Előfeltételek |} Az Azure Marketplace-en
 description: Itt a Power BI-alkalmazás közzététele az appsource-ban előfeltételeit.
 services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.author: pbutlerm
-ms.openlocfilehash: 5014a9cdf9a8811aa6081476f9ec6c41be0ff906
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: pabutler
+ms.openlocfilehash: c436522bd5f1a9d52b71d85b7b47ac9a089c0b25
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58012940"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66258170"
 ---
 # <a name="power-bi-app-offer-prerequisites"></a>Power BI alkalmazás ajánlat Előfeltételek
 
@@ -36,7 +29,7 @@ Miután service-alkalmazás létrehozása és tesztelése a Power bi-ban, mentse
 
 Az üzleti követelmények eljárási szerződéses és jogi kötelezettségek tartalmazza.  Tegye a következőket:
 
-- A regisztrált felhőre marketplace kiadókra lehet. Ha nincs regisztrálva, kövesse a [válnak a Felhőbeli piactér kiadói](../../become-publisher.md).
+- A regisztrált felhőre marketplace kiadókra lehet. Ha nincs regisztrálva, kövesse a [válnak a Felhőbeli piactér kiadói](https://docs.microsoft.com/azure/marketplace/become-publisher).
 
     > [!NOTE] 
     > Ugyanaz a Microsoft Developer Center regisztrációs fiók használatával jelentkezzen be a [Cloud Partner Portalon](https://cloudpartner.azure.com). Az AppSource-i ajánlatainak közzétételéhez egyetlen Microsoft-fiókkal kell rendelkeznie. Fiókok egyes szolgáltatásokat vagy az ajánlatok nem lehet.

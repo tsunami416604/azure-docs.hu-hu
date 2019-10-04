@@ -1,37 +1,37 @@
 ---
-title: 'Gyors útmutató: Egy keresési kérelmet küld a Bing Entity Search REST API Python használatával'
-titlesuffix: Azure Cognitive Services
-description: Ez a rövid útmutató segítségével egy kérelmet küld a Bing Entity Search REST API-be a Python, és a egy JSON-választ kap.
+title: 'Gyors útmutató: Keresési kérelem küldése a Bing Entity Search REST API a Python használatával'
+titleSuffix: Azure Cognitive Services
+description: Ezzel a rövid útmutatóval kérést küldhet a Bing Entity Search REST API a Python használatával, és JSON-választ kap.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 02/01/2019
+ms.date: 07/24/2019
 ms.author: aahi
-ms.openlocfilehash: b35fa32776fa449bf4f46479345a94e63fe28e68
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fa306ecd7690085d96f561fcf7e043064013344d
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58109576"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68478947"
 ---
-# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-python"></a>Gyors útmutató: Egy keresési kérelmet küld a Bing Entity Search REST API Python használatával
+# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-python"></a>Gyors útmutató: Keresési kérelem küldése a Bing Entity Search REST API a Python használatával
 
-Ez a rövid útmutató segítségével a Bing Entity Search API az első hívását, és tekintse meg a JSON-választ. Az egyszerű Python-alkalmazás news search lekérdezést küld az API-t, és a válasz megjeleníti. A minta forráskódja a [GitHubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingEntitySearchv7.py) érhető el.
+Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Entity Search API, és megtekintheti a JSON-választ. Ez az egyszerű Python-alkalmazás egy Hírek keresési lekérdezést küld az API-nak, és megjeleníti a választ. A minta forráskódja a [GitHubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingEntitySearchv7.py) érhető el.
 
 Bár ez az alkalmazás Python nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Python](https://www.python.org/downloads/) 2.x vagy 3.x
+* [Python](https://www.python.org/downloads/) 2. x vagy 3. x
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-the-application"></a>Az alkalmazás létrehozása és inicializálása
 
-1. Hozzon létre egy új Python-fájlt a kedvenc integrált Fejlesztőkörnyezetével vagy szerkesztőjével, és adja hozzá az alábbi importálásokat. Az előfizetési kulcs, a végpontot, a piaci és a egy keresési lekérdezést változók létrehozása. A végpont találhatja meg az Azure irányítópultján.
+1. Hozzon létre egy új Python-fájlt a kedvenc IDE vagy szerkesztőben, és adja hozzá a következő importálásokat. Hozzon létre változókat az előfizetési kulcshoz, a végponthoz, a piachoz és a keresési lekérdezésekhez. A végpontot az Azure-irányítópulton találja.
 
     ```python
     import http.client, urllib.parse
@@ -44,18 +44,18 @@ Bár ez az alkalmazás Python nyelven lett íródott, az API egy RESTful-webszol
     query = 'italian restaurants near me'
     ```
 
-2. Hozzon létre egy kérelem URL-címe a változó piaci hozzáfűzésével a `?mkt=` paraméter. URL-kódolása a lekérdezést, és hozzáfűzi azt a `&q=` paraméter. 
+2. Hozzon létre egy kérelem URL-címét úgy, hogy hozzáfűzi a piaci változót a `?mkt=` paraméterhez. URL – kódolja a lekérdezést, és fűzze hozzá a `&q=` paraméterhez. 
     
     ```python
     params = '?mkt=' + mkt + '&q=' + urllib.parse.quote (query)
     ```
 
-## <a name="send-a-request-and-get-a-response"></a>Kérés küldése és válaszol
+## <a name="send-a-request-and-get-a-response"></a>Kérelem küldése és Válasz kérése
 
-1. Hozzon létre egy függvényt, nevű `get_suggestions()`. Hajtsa végre az alábbi lépéseket.
-   1. Az előfizetési kulcs hozzáadása egy szótár `Ocp-Apim-Subscription-Key` kulcsként.
-   2. Használat `http.client.HTTPSConnection()` HTTPS ügyfél-objektumok létrehozására. Küldjön egy `GET` kérelem használatával `request()` elérési útja és a paraméterek, és a fejléc adataival.
-   3. A válaszban Store `getresponse()`, és vissza `response.read()`.
+1. Hozzon létre egy `get_suggestions()`nevű függvényt. Ezután hajtsa végre a következő lépéseket.
+   1. Adja hozzá az előfizetési kulcsot egy szótárhoz `Ocp-Apim-Subscription-Key` kulcsként.
+   2. HTTPS `http.client.HTTPSConnection()` -ügyfél objektum létrehozásához használja a következőt:. Küldjön el `GET` egy kérést az elérési úttal és paraméterekkel, valamint a fejléc információinak használatával. `request()`
+   3. Tárolja a választ `getresponse()`, és térjen vissza `response.read()`.
 
       ```python
       def get_suggestions ():
@@ -66,14 +66,14 @@ Bár ez az alkalmazás Python nyelven lett íródott, az API egy RESTful-webszol
        return response.read()
       ```
 
-2. Hívás `get_suggestions()`, és nyomtassa ki a json-választ.
+2. Hívja `get_suggestions()`meg és nyomtassa ki a JSON-választ.
 
     ```python
     result = get_suggestions ()
     print (json.dumps(json.loads(result), indent=4))
     ```
 
-## <a name="example-json-response"></a>Példa JSON-válasz
+## <a name="example-json-response"></a>Példa JSON-válaszra
 
 A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon: 
 
@@ -141,7 +141,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Egyoldalas webes alkalmazás készítése](../tutorial-bing-entities-search-single-page-app.md)
+> [Egyoldalas Webalkalmazás létrehozása](../tutorial-bing-entities-search-single-page-app.md)
 
-* [Mi az a Bing Entity Search API](../search-the-web.md)
-* [A Bing Entity Search API-referencia](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)
+* [Mi a Bing Entity Search API](../search-the-web.md)
+* [Bing Entity Search API referenciája](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)

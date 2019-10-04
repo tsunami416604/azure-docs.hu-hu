@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 36879ad070848f1779804d4eb3958058b9b86689
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 7feea92d48a826000fd8aa878b95658b79d6d908
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59996577"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64869999"
 ---
 # <a name="azure-maps-render-coverage"></a>Az Azure Maps megjelenítési lefedettség
 
@@ -45,7 +45,6 @@ A Maps azonban nem rendelkezik azonos szintű információkat és a pontosság m
 | Közép-afrikai Köztársaság         | ✓ | Ø |
 | Csád                             | ✓ | Ø |
 | Comore-szigetek                          | ✓ | Ø |
-| Kongó                            | ✓ | ✓ |
 | Kongói Demokratikus Köztársaság | ✓ | ✓ |
 | Côte d’Ivoire                    | ✓ | Ø |
 | Dzsibuti                         | ✓ | Ø |
@@ -81,7 +80,7 @@ A Maps azonban nem rendelkezik azonos szintű információkat és a pontosság m
 | Sierra Leone                     | ✓ | ✓ |
 | Szomália                          | ✓ | ✓ |
 | Dél-Afrika                     | ✓ | ✓ |
-| Dél-Szudán                      | ✓ | ✓ |
+| Dél-szudán                      | ✓ | ✓ |
 | Szudán                            | ✓ | ✓ |
 | Szváziföld                        | ✓ | ✓ |
 | Tanzániai Egyesült Köztársaság      | ✓ | ✓ |
@@ -109,12 +108,11 @@ A Maps azonban nem rendelkezik azonos szintű információkat és a pontosság m
 | Kanada                    | ✓ | ✓ |
 | Kajmán-szigetek            | ✓ | ✓ |
 | Chile                     | ✓ | ✓ |
-| Clipperton-sziget         | ✓ | ✓ |
 | Kolumbia                  | ✓ | ✓ |
 | Costa Rica                | ✓ | ✓ |
 | Kuba                      | ✓ | ✓ |
 | Curaçao                   | ✓ | ✓ |
-| Dominika                  | ✓ | ✓ |
+| Dominikai Közösség                  | ✓ | ✓ |
 | Dominikai Köztársaság        | ✓ | ✓ |
 | Ecuador                   | ✓ | ✓ |
 | Falkland-szigetek (Malvinas) | ✓ | ✓ |
@@ -137,11 +135,11 @@ A Maps azonban nem rendelkezik azonos szintű információkat és a pontosság m
 | Peru                      | ✓ | ✓ |
 | Puerto Rico               | ✓ | ✓ |
 | Quebec (Canada)           | ✓ | ✓ |
-| Saint-Barthélemy          | ✓ | ✓ |
+| Saint Barthélemy          | ✓ | ✓ |
 | Saint Kitts és Nevis     | ✓ | ✓ |
 | Saint Lucia               | ✓ | ✓ |
 | Saint Martin (francia)     | ✓ | ✓ |
-| Saint-Pierre és Miquelon | ✓ | ✓ |
+| Saint Pierre és Miquelon | ✓ | ✓ |
 | Saint Vincent és Grenadine-szigetek | ✓ | ✓ |
 | Saint Martin (holland)      | ✓ | ✓ |
 | Déli-Georgia és Déli-Sandwich-szigetek | ✓ | ✓ |
@@ -221,7 +219,7 @@ A Maps azonban nem rendelkezik azonos szintű információkat és a pontosság m
 | Guam                      | ✓ | ✓ |
 | Kiribati                  |   | Ø |
 | Marshall-szigetek          |   | Ø |
-| Mikronézia                |   | Ø |
+| Mikronéziai Szövetségi                |   | Ø |
 | Nauru                     |   | Ø |
 | Új-Kaledónia             |   | Ø |
 | Új-Zéland               | ✓ | ✓ |
@@ -236,7 +234,7 @@ A Maps azonban nem rendelkezik azonos szintű információkat és a pontosság m
 | Tonga                     |   | Ø |
 | Tuvalu                    |   | Ø |
 | Vanuatu                   |   | Ø |
-| Wallis és Futuna         |   | Ø |
+| Wallis és Futuna-szigetek         |   | Ø |
 
 
 ## <a name="europe"></a>Európa

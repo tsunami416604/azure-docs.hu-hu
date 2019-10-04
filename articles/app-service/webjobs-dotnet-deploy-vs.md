@@ -1,6 +1,6 @@
 ---
-title: Fejlesztés és üzembe helyezés a Visual Studio használatával – az Azure webjobs-feladatok
-description: Megtudhatja, hogyan fejleszthet és helyezhet üzembe az Azure webjobs-feladatok az Azure App Service-ben a Visual Studio használatával.
+title: Webjobs-feladatok fejlesztése és üzembe helyezése a Visual Studio használatával – Azure
+description: Ismerje meg, hogyan fejlesztheti és helyezheti üzembe a Azure WebJobs a Azure App Service a Visual Studióval.
 services: app-service
 documentationcenter: ''
 author: ggailey777
@@ -13,166 +13,164 @@ ms.tgt_pltfrm: na
 ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 02/18/2019
-ms.author: glenga;david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: ede7e2fe3a2ab4c0dfd4efaea5ec789924968194
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.author: glenga
+ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
+ms.openlocfilehash: 58d03d80c82fbf58803f7fefa8ef60c19f99bced
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750157"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876886"
 ---
-# <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Fejlesztés és üzembe helyezés a Visual Studio használatával – az Azure App Service webjobs-feladatok
+# <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Webjobs-feladatok fejlesztése és üzembe helyezése a Visual Studio használatával – Azure App Service
 
-Ez a cikk ismerteti a Visual Studióval egy Console Application-projektet egy webalkalmazást az üzembe [App Service-ben](overview.md) , egy [Azure webjobs-feladat](https://go.microsoft.com/fwlink/?LinkId=390226). A webjobs használatával kapcsolatos információkat a [az Azure portal](https://portal.azure.com), lásd: [háttérfeladatok futtatása WebJobs-feladatokkal](webjobs-create.md).
+Ez a cikk azt ismerteti, hogyan lehet a Visual Studióval üzembe helyezni egy Console Application-projektet egy webalkalmazásban [app Service](overview.md) [Azure-webjobs](https://go.microsoft.com/fwlink/?LinkId=390226). További információ a webjobs [Azure Portal](https://portal.azure.com)használatával történő üzembe helyezéséről: [háttérben futó feladatok futtatása webjobs](webjobs-create.md)-feladatokkal.
 
-Egyetlen webalkalmazásban; több WebJobs közzéteheti. Győződjön meg arról, hogy minden egyes webjobs-feladat egy web app alkalmazásban egy egyedi nevet.
+Több webfeladat is közzétehető egyetlen webalkalmazásban. Győződjön meg arról, hogy a webalkalmazás minden Webjobs egyedi névvel rendelkezik.
 
-Verzió 3.x, a [Azure WebJobs SDK](webjobs-sdk-how-to.md) lehetővé teszi a .NET Core alkalmazásokat, futtató webjobs-feladatok fejlesztése során 2.x verziója támogatja a .NET-keretrendszer verzióját. Az, hogy a webjobs-feladatok projekt telepítése módja különböző .NET Core-projektek és a .NET-keretrendszer azokat.
+Az [Azure WEBJOBS SDK](webjobs-sdk-how-to.md) 3. x verziója lehetővé teszi, hogy a .net Core-alkalmazásként vagy a .NET-keretrendszer alkalmazásaiként futó webjobs-feladatokat fejlesszen, míg a 2. x verzió csak a .NET-keretrendszert támogatja. A webjobs-projekt üzembe helyezésének módja különbözik a .NET Core-projektek és a .NET-keretrendszer esetében is.
 
-## <a name="webjobs-as-net-core-console-apps"></a>Webjobs-feladatok, mint a .NET Core-konzolalkalmazások
+## <a name="webjobs-as-net-core-console-apps"></a>Webjobs-feladatok .NET Core Console-alkalmazásként
 
-Ha verziónál 3.x, a webjobs-feladatok létrehozása és közzététele a webjobs-feladatok, mint a .NET Core-konzolalkalmazások. Létrehozása és közzététele a .NET Core-konzolalkalmazást az Azure Webjobs-feladatként részletes utasításokért lásd: [eseményvezérelt háttérbeli feldolgozásra az Azure WebJobs SDK használatának első lépései](webjobs-sdk-get-started.md).
+A webjobs 3. x verziójának használatakor a webjobs-t .NET Core Console-alkalmazásként hozhatja létre és teheti közzé. A .NET Core Console-alkalmazások Azure-beli Webjobs való létrehozásával és közzétételével kapcsolatos részletes utasításokért lásd: Ismerkedés [a Azure WEBJOBS SDK-val eseményvezérelt háttér-feldolgozáshoz](webjobs-sdk-get-started.md).
 
 > [!NOTE]
-> .NET core WebJobs webes projektek nem lehet csatolva. A webjobs-feladatot a webes alkalmazás üzembe van szüksége, ha [hozzon létre egy .NET-keretrendszer-konzolalkalmazást, webjobs-feladat](#webjobs-as-net-framework-console-apps).  
+> A .NET Core webjobs-feladatok nem csatolhatók webes projektekhez. Ha a Webjobs egy webalkalmazással kell központilag telepítenie, akkor [a webjobs-et .NET Framework Console](#webjobs-as-net-framework-console-apps)-alkalmazásként kell létrehoznia.  
 
-### <a name="deploy-to-azure-app-service"></a>Az Azure App Service üzembe helyezése
+### <a name="deploy-to-azure-app-service"></a>Üzembe helyezés az Azure App Service-ben
 
-App Service-ben a Visual Studióban egy .NET Core webjobs-feladat közzétételét használja az ugyanazon azokat az eszközöket az ASP.NET Core-alkalmazás közzététele.
+A .NET Core-Webjobs a Visual studióból való App Service való közzététele ugyanazokat az eszközöket használja, mint a ASP.NET Core alkalmazás közzététele.
 
 [!INCLUDE [webjobs-publish-net-core](../../includes/webjobs-publish-net-core.md)] 
 
-### <a name="webjob-types"></a>Webjobs-feladat típusa
+### <a name="webjob-types"></a>Webjobs-típusok
 
-Alapértelmezés szerint a webjobs-feladat egy .NET Core console projektfuttatások csak akkor, amikor elindul, vagy igény szerinti közzé. A projekt frissítheti is [futtatása ütemezés szerint](#scheduled-execution) vagy folyamatos Futtatás.
+Alapértelmezés szerint a .NET Core-konzolon közzétett Webjobs csak aktiváláskor vagy igény szerint fut. Azt is megteheti, hogy a projektet [ütemezett](#scheduled-execution) vagy folyamatos futtatásra frissíti.
 
 [!INCLUDE [webjobs-alwayson-note](../../includes/webjobs-always-on-note.md)]
 
 #### <a name="scheduled-execution"></a>Ütemezett végrehajtás
 
-Amikor közzétesz egy .NET Core-konzolalkalmazást az Azure-bA egy új *settings.job* fájlt adnak hozzá a projekthez. Ez a fájl használata a webjobs-feladat-végrehajtási ütemezés beállításához. További információkért lásd: [aktivált webjobs-feladat ütemezésének](#scheduling-a-triggered-webjob).
+Ha egy .NET Core Console-alkalmazást tesz közzé az Azure-ban, a rendszer új *beállításokat* ad hozzá a projekthez. Ezzel a fájllal állíthatja be a Webjobs végrehajtási ütemtervét. További információ: [aktivált Webjobs ütemezése](#scheduling-a-triggered-webjob).
 
 #### <a name="continuous-execution"></a>Folyamatos végrehajtás
 
-A Visual Studio segítségével módosíthatja a webjobs-feladat futtatását, folyamatosan, amikor az AlwaysOn engedélyezve van az Azure-ban.
+A Visual Studióval megváltoztathatja a Webjobs, hogy folyamatosan fusson, amikor a mindig be van kapcsolva az Azure-ban.
 
-1. Ha ezt még nem tette meg, [a projekt közzététele az Azure-bA](#deploy-to-azure-app-service).
+1. Ha még nem tette meg, [tegye közzé a projektet az Azure](#deploy-to-azure-app-service)-ban.
 
 1. A **Megoldáskezelőben** kattintson a jobb gombbal a projektre, és válassza a **Publish** (Közzététel) lehetőséget.
 
-1. Az a **közzététel** lapra, majd **beállítások**. 
+1. A **Közzététel** lapon válassza a **Beállítások**lehetőséget. 
 
-1. Az a **Profilbeállítások** párbeszédpanelen válassza a **folyamatos** a **webjobs-feladat típusa**, és válassza **mentése**.
+1. A **Profilbeállítások** párbeszédpanelen válassza a **folyamatos** lehetőséget a **webjobs típusnál**, majd kattintson a **Mentés**gombra.
 
-    ![A webjobs-feladat beállításai párbeszédpanel közzététele](./media/webjobs-dotnet-deploy-vs/publish-settings.png)
+    ![Webjobs közzétételi Beállítások párbeszédpanelje](./media/webjobs-dotnet-deploy-vs/publish-settings.png)
 
-1. Válassza ki **közzététel** közzé a webjobs-feladatot a frissített beállításokkal.
+1. Válassza a **Közzététel** lehetőséget a webjobs újbóli közzétételéhez a frissített beállításokkal.
 
-## <a name="webjobs-as-net-framework-console-apps"></a>.NET-keretrendszer konzol alkalmazásként webjobs-feladatok  
+## <a name="webjobs-as-net-framework-console-apps"></a>Webjobs-feladatok .NET-keretrendszerbeli konzol alkalmazásaiként  
 
-Ha a Visual Studio telepíti a WebJobs-kompatibilis .NET Framework Konzolalkalmazás-projektet, két feladatot hajtja végre:
+Ha a Visual Studio üzembe helyez egy webjobs-kompatibilis .NET-keretrendszerbeli alkalmazás-projektet, a futtatókörnyezet fájljait a webalkalmazás megfelelő mappájába másolja (*App_Data/Jobs/folyamatos* a folyamatos webjobs-feladatok és *App_Data/feladatok/aktiválás* esetén) ütemezett vagy igény szerinti webjobs-feladatok).
 
-* Futtatási fájlokat másolja a megfelelő mappát a webalkalmazásban (*App_Data/feladatok/folyamatos* a folyamatos webjobs-feladatok és *App_Data/feladatok/triggered* ütemezett vagy igény szerinti WebJobs esetében).
-* Beállítja a [Azure Scheduler](https://docs.microsoft.com/azure/scheduler/) feladatokat a webjobs-feladatokat, akik adott időpontban futnak. (Ez nem szükséges a folyamatos webjobs-feladatok.)
+Egy webjobs-kompatibilis projekthez a következő elemek vannak hozzáadva:
 
-A WebJobs-kompatibilis projekt hozzáadja a következőkkel rendelkezik:
+* A [Microsoft. Web. webjobs. publish](https://www.nuget.org/packages/Microsoft.Web.WebJobs.Publish/) NuGet-csomag.
+* A központi telepítési és Scheduler-beállításokat tartalmazó [webjobs-publish-Settings. JSON](#publishsettings) fájl. 
 
-* A [Microsoft.Web.WebJobs.Publish](https://www.nuget.org/packages/Microsoft.Web.WebJobs.Publish/) NuGet-csomagot.
-* A [webjobs-feladat közzététele settings.json](#publishsettings) üzembe helyezési és ütemezési beállításait tartalmazó fájl. 
+![Ábra, amely bemutatja, hogy mit adnak hozzá egy Webjobs az üzemelő példányok engedélyezéséhez](./media/webjobs-dotnet-deploy-vs/convert.png)
 
-![Mi kerül egy Konzolalkalmazást, Webjobs-feladatként központi telepítés engedélyezése a bemutató ábra.](./media/webjobs-dotnet-deploy-vs/convert.png)
+Ezeket az elemeket hozzáadhatja egy meglévő Console Application-projekthez, vagy használhat egy sablont egy új webjobs-kompatibilis Console Application-projekt létrehozásához. 
 
-Ezeket az elemeket ad hozzá egy meglévő Konzolalkalmazás-projektet, vagy egy sablon használatával létrehozhat egy új WebJobs-kompatibilis Konzolalkalmazás-projektet. 
+Saját maga is üzembe helyezhet egy projektet Webjobs, vagy összekapcsolhatja azt egy webes projekttel, hogy az automatikusan üzembe kerüljön a webes projekt telepítésekor. A projektek összekapcsolásához a Visual Studio magában foglalja a webjobs-kompatibilis projekt nevét egy [webjobs-list. JSON](#webjobslist) fájlban a webes projektben.
 
-Projekt telepítése Webjobs-feladatként önmagában, vagy hivatkozás egy web projektet, hogy automatikusan helyez üzembe, amikor a webes projekt telepítése. Projektek mutató hivatkozást, a Visual Studio tartalmazza a WebJobs-kompatibilis projekt nevét egy [webjobs-list.json](#webjobslist) fájlt a webalkalmazás-projektben.
-
-![Webjobs-feladat project web projektet összekapcsolja bemutató ábra.](./media/webjobs-dotnet-deploy-vs/link.png)
+![A webes projekthez kapcsolódó Webjobs bemutató diagram](./media/webjobs-dotnet-deploy-vs/link.png)
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-Ha a Visual Studio 2015-öt használ, telepítse a [Azure SDK for .NET (Visual Studio 2015)](https://azure.microsoft.com/downloads/).
+Ha a Visual Studio 2015-at használja, telepítse a [.net-hez készült Azure SDK-t (Visual studio 2015)](https://azure.microsoft.com/downloads/).
 
-Ha a Visual Studio 2017-et használ, telepítse a [Azure development workload munkafolyamatának](https://docs.microsoft.com/visualstudio/install/install-visual-studio#step-4---select-workloads).
+Ha a Visual Studio 2017-et használja, telepítse az [Azure-fejlesztési](https://docs.microsoft.com/visualstudio/install/install-visual-studio#step-4---choose-workloads)számítási feladatot.
 
-### <a id="convert"></a> WebJobs üzembe helyezése meglévő Konzolalkalmazás-projektet engedélyezése
+### <a id="convert"></a>Webjobs-telepítés engedélyezése meglévő konzolos alkalmazás projekthez
 
 Erre két lehetősége van:
 
-* [Engedélyezze az automatikus üzembe helyezés, a webes projektet](#convertlink).
+* [Automatikus központi telepítés engedélyezése webes projekttel](#convertlink).
 
-  Állítsa egy meglévő Konzolalkalmazás-projektet, hogy azt automatikusan telepíti a Webjobs-feladatként webes projektet központi telepítésekor. Használja ezt a beállítást, ha meg szeretné futtatni a webjobs-feladat ugyanazt a webalkalmazást, amelyben a kapcsolódó webalkalmazás futtatása.
+  Konfiguráljon egy meglévő Console Application-projektet úgy, hogy az automatikusan Webjobs, amikor egy webes projektet telepít központilag. Akkor használja ezt a beállítást, ha a Webjobs ugyanabban a webalkalmazásban szeretné futtatni, amelyben a kapcsolódó webalkalmazást futtatja.
 
-* [Központi telepítés anélkül, hogy webes projektet engedélyezése](#convertnolink).
+* [Az üzembe helyezést webes projekt nélkül](#convertnolink)is engedélyezheti.
 
-  Konfigurálja a Webjobs-feladatként telepítéséhez önmagában, és nincs hivatkozás a webes projektet egy meglévő Konzolalkalmazás-projektet. Használja ezt a beállítást, ha meg szeretné a webjobs-feladat futtatása webalkalmazásban önmagában, az nincs a webalkalmazás-ban futó webalkalmazás. Érdemes ehhez ahhoz, hogy a Webjobs-erőforrások, függetlenül a webalkalmazás-erőforrások skálázása.
+  Egy meglévő konzolos alkalmazás-projekt konfigurálása a Webjobs való üzembe helyezéshez, a webes projekthez való hivatkozás nélkül. Akkor használja ezt a beállítást, ha saját maga szeretné futtatni a Webjobs egy webalkalmazásban, és a webalkalmazásban nem fut a webes alkalmazás. Ezt úgy teheti meg, hogy a webalkalmazás-erőforrásaitól függetlenül szeretné a Webjobs-erőforrásokat méretezni.
 
-#### <a id="convertlink"></a> Webes projektet automatikus WebJobs üzembe helyezésének engedélyezése
+#### <a id="convertlink"></a>Automatikus webjobs-telepítés engedélyezése webes projekttel
 
-1. Kattintson a jobb gombbal a webes projektre a **Megoldáskezelőben**, és kattintson a **Hozzáadás** > **meglévő projektet Azure WebJob feladatként**.
+1. Kattintson a jobb gombbal a **megoldáskezelő**található webes projektre, majd kattintson a meglévő projekt **hozzáadása** > **Azure webjobs**elemre.
    
-    ![Meglévő projekt Azure WebJob feladatként](./media/webjobs-dotnet-deploy-vs/eawj.png)
+    ![Meglévő projekt Azure Webjobs](./media/webjobs-dotnet-deploy-vs/eawj.png)
    
-    A [adja hozzá a az Azure webjobs-feladat](#configure) párbeszédpanel jelenik meg.
-2. Az a **projektnév** legördülő listában válassza a Konzolalkalmazást projekthez legyen hozzáadva egy WebJob feladatként.
+    Megjelenik az [Azure-Webjobs hozzáadása](#configure) párbeszédpanel.
+2. A **projekt neve** legördülő listában válassza ki a webjobs hozzáadni kívánt konzol alkalmazás-projektet.
    
-    ![Válassza ki a projektet Azure WebJob hozzáadása párbeszédpanel](./media/webjobs-dotnet-deploy-vs/aaw1.png)
-3. Végezze el a [adja hozzá a az Azure webjobs-feladat](#configure) párbeszédpanel, és kattintson **OK**. 
+    ![A projekt kiválasztása az Azure Webjobs hozzáadása párbeszédpanelen](./media/webjobs-dotnet-deploy-vs/aaw1.png)
+3. Fejezze be az [Azure-Webjobs hozzáadása](#configure) párbeszédpanelt, majd kattintson **az OK**gombra. 
 
-#### <a id="convertnolink"></a> Anélkül, hogy webes projektet a WebJobs üzembe helyezés engedélyezése
-1. Kattintson a jobb gombbal a Konzolalkalmazás-projektben **Megoldáskezelőben**, és kattintson a **Publish as Azure WebJob...** . 
+#### <a id="convertnolink"></a>Webjobs-telepítés engedélyezése webes projekt nélkül
+1. Kattintson a jobb gombbal a Console Application-projektre **megoldáskezelő**, majd kattintson a **Közzététel Azure-webjobs...** lehetőségre. 
    
-    ![Közzététel Azure webjobsként](./media/webjobs-dotnet-deploy-vs/paw.png)
+    ![Közzététel Azure-Webjobs](./media/webjobs-dotnet-deploy-vs/paw.png)
    
-    A [adja hozzá a az Azure webjobs-feladat](#configure) párbeszédpanel jelenik meg, a kiválasztott projekthez a **projektnév** mezőbe.
-2. Végezze el a [adja hozzá a az Azure webjobs-feladat](#configure) párbeszédpanel, és kattintson **OK**.
+    Megjelenik az [Azure-Webjobs hozzáadása](#configure) párbeszédpanel, ahol a projekt **neve** mezőben ki van választva.
+2. Fejezze be az [Azure-Webjobs hozzáadása](#configure) párbeszédpanelt, majd kattintson **az OK**gombra.
    
-   A **Publish Web** varázsló jelenik meg.  Ha nem szeretné azonnal közzététele, zárja be a varázslót. A beállítások a megadott a lesznek mentve, ha szeretné, hogy [a projekt telepítése](#deploy).
+   Megjelenik a **webes közzététel** varázsló.  Ha nem szeretne azonnal közzétenni, a varázsló bezárásával. A megadott beállításokat a rendszer a [projekt központi telepítésekor](#deploy)menti.
 
-### <a id="create"></a>WebJobs-kompatibilis új projekt létrehozása
-WebJobs-kompatibilis az új projekt létrehozásához használja a Konzolalkalmazás-projekt sablont és WebJobs üzembe helyezés engedélyezése, a [az előző szakaszban](#convert). Alternatív megoldásként használhatja a webjobs-feladatok új webesprojekt-sablon:
+### <a id="create"></a>Új webjobs-kompatibilis projekt létrehozása
+Új webjobs-kompatibilis projekt létrehozásához használhatja a Console Application Project sablont, és engedélyezheti a webjobs-telepítést [az előző szakaszban](#convert)leírtak szerint. Másik lehetőségként használhatja a webjobs új-projekt sablont:
 
-* [A webjobs-feladatok – új projekt sablont használ egy független webjobs-feladat](#createnolink)
+* [A webjobs új-Project sablonjának használata egy független Webjobs](#createnolink)
   
-    Hozzon létre egy projektet, és konfigurálja úgy, hogy saját maga, és nincs hivatkozás webes projektet a Webjobs-feladatként üzembe helyezése. Használja ezt a beállítást, ha meg szeretné a webjobs-feladat futtatása webalkalmazásban önmagában, az nincs a webalkalmazás-ban futó webalkalmazás. Érdemes ehhez ahhoz, hogy a Webjobs-erőforrások, függetlenül a webalkalmazás-erőforrások skálázása.
-* [A webjobs-feladatok új webesprojekt-sablon használata a webjobs-feladat egy webes projekthez társított](#createlink)
+    Hozzon létre egy projektet, és konfigurálja úgy, hogy magát Webjobs-ként telepítse, és ne legyen webes projektre mutató hivatkozás. Akkor használja ezt a beállítást, ha saját maga szeretné futtatni a Webjobs egy webalkalmazásban, és a webalkalmazásban nem fut a webes alkalmazás. Ezt úgy teheti meg, hogy a webalkalmazás-erőforrásaitól függetlenül szeretné a Webjobs-erőforrásokat méretezni.
+* [A webjobs új-Project sablonjának használata webes projekthez kapcsolódó Webjobs](#createlink)
   
-    Hozzon létre egy projektet, amely konfigurálva van egy webes projektet a megoldásban üzembe helyezésekor Webjobs-feladatként automatikus központi telepítés. Használja ezt a beállítást, ha meg szeretné futtatni a webjobs-feladat ugyanazt a webalkalmazást, amelyben a kapcsolódó webalkalmazás futtatása.
+    Hozzon létre egy projektet, amely úgy van beállítva, hogy automatikusan Webjobs telepítsen, amikor egy webes projekt ugyanabban a megoldásban van telepítve. Akkor használja ezt a beállítást, ha a Webjobs ugyanabban a webalkalmazásban szeretné futtatni, amelyben a kapcsolódó webalkalmazást futtatja.
 
 > [!NOTE]
-> A webjobs-feladatok új webesprojekt-sablon automatikusan telepíti a NuGet-csomagok és a kód *Program.cs* számára a [WebJobs SDK-val](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/getting-started-with-windows-azure-webjobs). Ha nem szeretné a WebJobs SDK-val, távolítsa el vagy módosítsa a `host.RunAndBlock` utasítás *Program.cs*.
+> A webjobs új-Project sablonja automatikusan telepíti a NuGet-csomagokat, és tartalmazza a *program.cs* -ben a [webjobs SDK](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/getting-started-with-windows-azure-webjobs)-hoz tartozó kódot. Ha nem szeretné használni a webjobs SDK-t, távolítsa el vagy `host.RunAndBlock` módosítsa az utasítást a *program.cs*-ben.
 > 
 > 
 
-#### <a id="createnolink"></a> A webjobs-feladatok – új projekt sablont használ egy független webjobs-feladat
-1. Kattintson a **fájl** > **új projekt**, majd a **új projekt** párbeszédpanelen kattintson **felhőalapú**  >   **Az Azure WebJob (.NET-keretrendszer)**.
+#### <a id="createnolink"></a>A webjobs új-Project sablonjának használata egy független Webjobs
+1. Kattintson a **fájl** > **új projekt**elemre, majd **az új projekt** párbeszédpanelen kattintson a **Cloud** > **Azure webjobs (.NET-keretrendszer)** elemre.
    
-    ![Új projekt párbeszédpanel a webjobs-feladat sablon megjelenítése](./media/webjobs-dotnet-deploy-vs/np.png)
-2. Kövesse a fentebb látható [győződjön meg arról, a Konzolalkalmazás egy független a WebJobs-projektet a project](#convertnolink).
+    ![Új projekt párbeszédpanel, amely a Webjobs-sablont mutatja](./media/webjobs-dotnet-deploy-vs/np.png)
+2. Kövesse a korábban bemutatott utasításokat, hogy [a konzol alkalmazás-projekthez egy független webjobs-projektet lehessen készíteni](#convertnolink).
 
-#### <a id="createlink"></a> A webjobs-feladatok új webesprojekt-sablon használata a webjobs-feladat egy webes projekthez társított
-1. Kattintson a jobb gombbal a webes projektre a **Megoldáskezelőben**, és kattintson a **Hozzáadás** > **új Azure webjobs-feladat projekt**.
+#### <a id="createlink"></a>A webjobs új-Project sablonjának használata webes projekthez kapcsolódó Webjobs
+1. Kattintson a jobb gombbal a **megoldáskezelő**található webes projektre, majd kattintson az**új Azure webjobs-projekt** **hozzáadása** > lehetőségre.
    
-    ![Új Azure webjobs-feladat projekt menüpont](./media/webjobs-dotnet-deploy-vs/nawj.png)
+    ![Új Azure Webjobs projekt menü bejegyzés](./media/webjobs-dotnet-deploy-vs/nawj.png)
    
-    A [adja hozzá a az Azure webjobs-feladat](#configure) párbeszédpanel jelenik meg.
-2. Végezze el a [adja hozzá a az Azure webjobs-feladat](#configure) párbeszédpanel, és kattintson **OK**.
+    Megjelenik az [Azure-Webjobs hozzáadása](#configure) párbeszédpanel.
+2. Fejezze be az [Azure-Webjobs hozzáadása](#configure) párbeszédpanelt, majd kattintson **az OK**gombra.
 
-### <a id="configure"></a>Az Azure Webjobs hozzáadása párbeszédpanel
-A **adja hozzá a az Azure webjobs-feladat** párbeszédpanel segítségével adja meg a webjobs-feladat neve és mód beállítása a webjobs-feladat futtatása. 
+### <a id="configure"></a>Az Azure-Webjobs hozzáadása párbeszédpanel
+Az **Azure-Webjobs hozzáadása** párbeszédpanelen megadhatja a webjobs nevét és a futtatási mód beállítását a webjobs. 
 
-![Adja hozzá az Azure webjobs-feladat párbeszédpanel](./media/webjobs-dotnet-deploy-vs/aaw2.png)
+![Azure-Webjobs hozzáadása párbeszédpanel](./media/webjobs-dotnet-deploy-vs/aaw2.png)
 
-A mezők a mezők ezen a párbeszédpanelen felel meg a **a webjobs-feladat hozzáadása** az Azure Portal párbeszédpanel. További információkért lásd: [háttérfeladatok futtatása WebJobs-feladatokkal](webjobs-create.md).
+A párbeszédpanel mezői a Azure Portal **Webjobs hozzáadása** párbeszédpanel mezőinek felelnek meg. További információ: [háttérben futó feladatok futtatása webjobs](webjobs-create.md)-feladatokkal.
 
 > [!NOTE]
-> * Parancssori telepítéssel kapcsolatos információkért lásd: [parancssori engedélyezése vagy a folyamatos teljesítés az Azure webjobs-feladatok](https://azure.microsoft.com/blog/2014/08/18/enabling-command-line-or-continuous-delivery-of-azure-webjobs/).
-> * Ha a Webjobs üzembe helyezése, és ezután döntse el, a webjobs-feladat és ismételt üzembe helyezése típusát módosítani szeretné, törölni kell a *webjobs közzététele settings.json* fájlt. Ez teszi Visual Studióban jelenjen meg a közzétételi beállítások, így módosíthatja a webjobs-feladat típusát.
-> * A Webjobs üzembe helyezése, és később módosítani a futtatási mód folyamatos nem folytonos vagy fordítva, ha a Visual Studio létrehoz egy új webjobs-feladat Azure újbóli telepítése során. Ha további ütemezési beállítások módosítására, de hagyja futtatási mód azonos, vagy váltás ütemezett és igény szerinti, a Visual Studio a meglévő feladat frissítése helyett hozzon létre egy újat.
+> * További információ a parancssori telepítésről: a [Azure WebJobs parancssori vagy folyamatos kézbesítésének engedélyezése](https://azure.microsoft.com/blog/2014/08/18/enabling-command-line-or-continuous-delivery-of-azure-webjobs/).
+> * Ha központilag telepít egy Webjobs, és eldönti, hogy szeretné-e módosítani a Webjobs típusát és az ismételt üzembe helyezést, törölnie kell a *webjobs-publish-Settings. JSON* fájlt. Ekkor a Visual Studio ismét megjeleníti a közzétételi beállításokat, így módosíthatja a Webjobs típusát.
+> * Ha központilag telepít egy Webjobs, és később a Run (Futtatás) módot folyamatosan, nem folyamatosra módosítja, vagy fordítva, a Visual Studio új Webjobs hoz létre az Azure-ban az újbóli üzembe helyezéskor. Ha más ütemezési beállításokat módosít, de a futtatási mód nem egyezik meg az ütemezett és igény szerinti váltással, akkor a Visual Studio frissíti a meglévő feladatot, és nem hoz létre újat.
 > 
 > 
 
 ### <a id="publishsettings"></a>webjob-publish-settings.json
-Amikor konfigurál egy Konzolalkalmazást WebJobs üzembe helyezéshez, a Visual Studio telepíti a [Microsoft.Web.WebJobs.Publish](https://www.nuget.org/packages/Microsoft.Web.WebJobs.Publish/) NuGet csomag és az ütemezési információkat a tárolók egy *webjobs-feladat közzététele settings.json*  fájlt a projektben *tulajdonságok* mappájában, a WebJobs-projekt. Íme egy példa, hogy a fájl:
+Ha a webjobs-telepítéshez konfigurál egy konzolszoftver-alkalmazást, a Visual Studio telepíti a [Microsoft. Web. Webjobss. publish](https://www.nuget.org/packages/Microsoft.Web.WebJobs.Publish/) NuGet csomagot, és az ütemezési információkat a projekt *webjobs-publish-Settings. JSON fájljában tárolja.* A Webjobs-projekt tulajdonságok mappája. Íme egy példa erre a fájlra:
 
         {
           "$schema": "http://schemastore.org/schemas/json/webjob-publish-settings.json",
@@ -184,10 +182,10 @@ Amikor konfigurál egy Konzolalkalmazást WebJobs üzembe helyezéshez, a Visual
           "runMode": "Continuous"
         }
 
-Közvetlenül szerkesztheti ezt a fájlt, és a Visual Studio IntelliSense biztosít. A fájl séma tárolt [ https://schemastore.org ](https://schemastore.org/schemas/json/webjob-publish-settings.json) ott lehet megtekinteni.  
+Ezt a fájlt közvetlenül szerkesztheti, a Visual Studio pedig IntelliSense-t is biztosít. A fájl sémája a ( [https://schemastore.org](https://schemastore.org/schemas/json/webjob-publish-settings.json) z) helyen található, és itt tekinthető meg.  
 
 ### <a id="webjobslist"></a>webjobs-list.json
-A WebJobs-kompatibilis projekt kapcsol egy web projektet, ha a Visual Studio a webjobs-feladatok projekt nevét tárolja egy *webjobs-list.json* fájlt a webalkalmazás-projektben *tulajdonságok* mappát. A lista tartalmazhatja több WebJobs projekteket, a következő példában látható módon:
+Amikor webjobs-t használó projektet kapcsol össze egy webes projekthez, a Visual Studio a webes projekt *Tulajdonságok* mappájában tárolja a webjobs-projekt nevét egy *webjobs-list. JSON* fájlban. A lista több webjobs-projektet is tartalmazhat, ahogy az alábbi példában is látható:
 
         {
           "$schema": "http://schemastore.org/schemas/json/webjobs-list.json",
@@ -201,20 +199,20 @@ A WebJobs-kompatibilis projekt kapcsol egy web projektet, ha a Visual Studio a w
           ]
         }
 
-Közvetlenül szerkesztheti ezt a fájlt, és a Visual Studio IntelliSense biztosít. A fájl séma tárolt [ https://schemastore.org ](https://schemastore.org/schemas/json/webjobs-list.json) ott lehet megtekinteni.
+Ezt a fájlt közvetlenül szerkesztheti, a Visual Studio pedig IntelliSense-t is biztosít. A fájl sémája a ( [https://schemastore.org](https://schemastore.org/schemas/json/webjobs-list.json) z) helyen található, és itt tekinthető meg.
 
-### <a id="deploy"></a>A WebJobs-projekt üzembe helyezése
-Egy WebJobs-projektet, amelyet összekapcsolt, hogy webes projektet a webes projekt automatikusan üzembe helyezi. További információ a webes projekt telepítése: **útmutató végigvezeti a** > **üzembe helyezés alkalmazás** a bal oldali navigációs.
+### <a id="deploy"></a>Webjobs-projekt üzembe helyezése
+Egy webjobs-projekt, amely webes projekthez van csatolva, automatikusan települ a webes projekttel. További információ a webes projekt központi telepítéséről: **útmutató** > az**alkalmazás központi telepítése** a bal oldali navigációs sávon.
 
-A webjobs-feladatok projekt önmagában üzembe helyezéséhez kattintson a jobb gombbal a projektre a **Megoldáskezelőben** kattintson **Publish as Azure WebJob...** . 
+Webjobs-projekt saját maga általi üzembe helyezéséhez kattintson a jobb gombbal a projektre **megoldáskezelő** , majd kattintson a **Közzététel Azure-webjobs...** lehetőségre. 
 
-![Közzététel Azure webjobsként](./media/webjobs-dotnet-deploy-vs/paw.png)
+![Közzététel Azure-Webjobs](./media/webjobs-dotnet-deploy-vs/paw.png)
 
-Egy független a webjobs-feladat, ugyanaz a **Publish Web** használt a webes projektek jelenik meg, de kevesebb konfigurációs lehetőség módosítása varázsló.
+Egy független Webjobs esetében a webes projektekhez használt **közzétételi webes** varázsló jelenik meg, de a módosításhoz kevesebb beállítás áll rendelkezésre.
 
-## <a name="scheduling-a-triggered-webjob"></a>Aktivált webjobs-feladat ütemezése
+## <a name="scheduling-a-triggered-webjob"></a>Aktivált Webjobs ütemezése
 
-Webjobs-feladatok használ egy *settings.job* meghatározza, hogy a webjobs-feladat futtatásakor. Ez a fájl használata a webjobs-feladat-végrehajtási ütemezés beállításához. Az alábbi példa fut minden órában 9: 00 és 17: 00:
+A webjobs egy *Settings. job* fájlt használ a webjobs futtatásának megállapításához. Ezzel a fájllal állíthatja be a Webjobs végrehajtási ütemtervét. A következő példa óránként, 9 órától 5 óráig fut le:
 
 ```json
 {
@@ -222,28 +220,28 @@ Webjobs-feladatok használ egy *settings.job* meghatározza, hogy a webjobs-fela
 }
 ```
 
-Ezt a fájlt kell a webjobs-feladatok mappa gyökerében található mentén egymás mellett parancsprogram a webjobs-feladat, mint például `wwwroot\app_data\jobs\triggered\{job name}` vagy `wwwroot\app_data\jobs\continuous\{job name}`. Amikor telepít egy webjobs-feladatot a Visual Studióból, jelölje meg a `settings.job` tulajdonságokat a fájl **másolás, ha újabb**. 
+Ennek a fájlnak a webjobs-mappa gyökerében kell lennie, amely a webjobs parancsfájljában, például `wwwroot\app_data\jobs\triggered\{job name}` vagy. `wwwroot\app_data\jobs\continuous\{job name}` Ha a Visual studióból helyez üzembe egy webjobs, a `settings.job` fájl tulajdonságainak megjelölése másolással, **Ha újabb**. 
 
-Ha Ön [webjobs-feladat létrehozása az Azure Portalról](webjobs-create.md), a settings.job fájlt hoznak létre az Ön számára.
+Amikor [webjobs hoz létre a Azure Portal](webjobs-create.md), a Settings. job fájl jön létre az Ön számára.
 
 [!INCLUDE [webjobs-alwayson-note](../../includes/webjobs-always-on-note.md)]
 
 ### <a name="cron-expressions"></a>CRON-kifejezések
 
-Webjobs-feladatok az azonos CRON-kifejezéseket használ, az Azure Functions időzítő eseményindító ütemezési. CRON-támogatással kapcsolatos további tudnivalókért tekintse meg a [időzítő eseményindító áttekintésével foglalkozó cikkben](../azure-functions/functions-bindings-timer.md#cron-expressions).
+A webjobs ugyanazokat a CRON-kifejezéseket használja az ütemezéshez, mint az időzítő trigger Azure Functionsban. A CRON-támogatással kapcsolatos további tudnivalókért tekintse meg az [időzítő trigger](../azure-functions/functions-bindings-timer.md#ncrontab-expressions)-referenciát ismertető cikket.
 
-### <a name="settingjob-reference"></a>Setting.job referencia
+### <a name="settingjob-reference"></a>Setting. job hivatkozás
 
-Webjobs-feladatok az alábbi beállításokat támogatja:
+A webjobs a következő beállításokat támogatja:
 
 | **Beállítás** | **Típus**  | **Leírás** |
 | ----------- | --------- | --------------- |
-| `is_in_place` | Összes | Lehetővé teszi, hogy a feladat futtatása helyben anélkül, hogy először egy ideiglenes mappába másolni. További tudnivalókért lásd: [WebJobs munkakönyvtár](https://github.com/projectkudu/kudu/wiki/WebJobs#webjob-working-directory). |
-| `is_singleton` | Folyamatos | A webjobs-feladatok csak egy példányban, ha horizontálisan felskálázott futtatható. További tudnivalókért lásd: [állítsa be a folyamatos feladat egypéldányosnak](https://github.com/projectkudu/kudu/wiki/WebJobs-API#set-a-continuous-job-as-singleton). |
-| `schedule` | Triggerrel indított | A webjobs-feladat CRON-alapú ütemezett futtatását. További TUDNIVALÓKÉRT tekintse meg a [időzítő eseményindító áttekintésével foglalkozó cikkben](../azure-functions/functions-bindings-timer.md#cron-expressions). |
-| `stopping_wait_time`| Összes | A leállítási viselkedése irányítását teszi lehetővé. További tudnivalókért lásd: [szabályos leállítást](https://github.com/projectkudu/kudu/wiki/WebJobs#graceful-shutdown). |
+| `is_in_place` | Összes | Lehetővé teszi a feladatok futtatását anélkül, hogy először egy ideiglenes mappába kellene másolni. További információ: webjobs [Working Directory](https://github.com/projectkudu/kudu/wiki/WebJobs#webjob-working-directory). |
+| `is_singleton` | Folyamatos | A felskálázáskor csak egyetlen példányon futtassa a webjobs-feladatokat. További információ: [folyamatos munka beállítása](https://github.com/projectkudu/kudu/wiki/WebJobs-API#set-a-continuous-job-as-singleton)egypéldányos beállítással. |
+| `schedule` | Triggerrel indított | Futtassa a Webjobs egy CRON-alapú ütemterven. További információért lásd az [időzítő trigger](../azure-functions/functions-bindings-timer.md#ncrontab-expressions)-referenciát ismertető cikket. |
+| `stopping_wait_time`| Összes | Lehetővé teszi a leállítási viselkedés vezérlését. További információ: [kecses leállítás](https://github.com/projectkudu/kudu/wiki/WebJobs#graceful-shutdown). |
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [További információ a WebJobs SDK-val](webjobs-sdk-how-to.md)
+> [További információ a webjobs SDK-ról](webjobs-sdk-how-to.md)

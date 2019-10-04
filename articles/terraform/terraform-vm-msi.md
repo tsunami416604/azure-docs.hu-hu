@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 3/12/2018
-ms.openlocfilehash: a1a980e1f8b004c4a3dba53e4f83367022074c7c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 09/20/2019
+ms.openlocfilehash: 835170448db8709812ca62ac67f8659b3b6a2807
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58007959"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173056"
 ---
 # <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-identities-for-azure-resources"></a>Egy Azure Marketplace-rendszerképpel egy Terraformot használó linuxos virtuális gépet hozhat létre az Azure-erőforrások felügyelt identitásaival
 
@@ -50,14 +50,14 @@ Itt találja a Terraformot használó linuxos virtuális gép egy példányának
    * **Név**: A Terraform virtuális gép neve.
    * **Felhasználónév**: Az első fiók bejelentkezési azonosítója.
    * **Jelszó**: Az első fiók jelszava. (Jelszó helyett használhat nyilvános SSH-kulcsot is.)
-   * **Előfizetés**: Az előfizetés, amelyen a gép létrehozása és a számlázás is. Ehhez az előfizetéshez erőforrás-létrehozási jogosultságokkal kell rendelkeznie.
-   * **Erőforráscsoport**: Egy új vagy meglévő erőforráscsoportot.
-   * **Hely**: Az Adatközpont leginkább megfelelő. Általában ez a legtöbb adattal rendelkező vagy – a gyorsabb hálózati hozzáférés érdekében – a fizikai helyéhez legközelebbi adatközpont.
+   * **Előfizetés**: Az előfizetés, amelybe a gépet létre kell hozni és számlázni kell. Ehhez az előfizetéshez erőforrás-létrehozási jogosultságokkal kell rendelkeznie.
+   * **Erőforráscsoport**: Új vagy meglévő erőforráscsoport.
+   * **Hely**: A legmegfelelőbb adatközpont. Általában ez a legtöbb adattal rendelkező vagy – a gyorsabb hálózati hozzáférés érdekében – a fizikai helyéhez legközelebbi adatközpont.
 
 2. **További beállítások**
 
-   * **Méret**: A virtuális gép méretét. 
-   * **Virtuális merevlemez típusa**: SSD vagy HDD.
+   * **Méret**: A virtuális gép mérete. 
+   * **VM-lemez típusa**: SSD vagy HDD.
 
 3. **A Terraform összegzése**
 
@@ -85,7 +85,7 @@ A virtuális gépen a közreműködői engedély segít az MSI-nek, hogy a Terra
 
 `. ~/tfEnv.sh`
 
-Az előző szkript az [AZ CLI 2.0 interaktív bejelentkezési](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest) mechanizmust használja az Azure-ral való hitelesítéshez, és a virtuális gép felügyelt identitása közreműködői engedélyének a teljes előfizetésben történő hozzárendeléséhez. 
+Az előző szkript az [AZ CLI 2.0 interaktív bejelentkezési](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest#sign-in-interactively) mechanizmust használja az Azure-ral való hitelesítéshez, és a virtuális gép felügyelt identitása közreműködői engedélyének a teljes előfizetésben történő hozzárendeléséhez. 
 
  A virtuális gép távoli Terraform-állapotú háttérrel rendelkezik. Ha engedélyezni szeretné a Terraform-környezeten, másolja a remoteState.tf fájlt a tfTemplate könyvtárból a Terraform-szkriptek gyökérkönyvtárába.  
 

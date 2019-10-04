@@ -7,11 +7,11 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2018
 ms.openlocfilehash: 4cd2305ed3d7f88f6c3825d8f7cdb5d81f9a0f6b
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351252"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61460184"
 ---
 # <a name="create-users-in-azure-database-for-mysql-server"></a>Felhasználók létrehozása az Azure Database for MySQL-kiszolgáló 
 Ez a cikk bemutatja, hogyan hozhat létre felhasználókat az Azure Database for MySQL-kiszolgálót.
@@ -29,7 +29,7 @@ Az Azure Database for MySQL-kiszolgáló létrehozása után további felhaszná
 2. A rendszergazdai fiókot és jelszót használja az adatbázis-kiszolgálóhoz való kapcsolódáshoz. Használja az ügyfél előnyben részesített eszközt, például a MySQL Workbench, mysql.exe, HeidiSQL vagy mások. 
    Ha biztos benne, hogy hogyan kapcsolódhat, [való csatlakozás és adatlekérdezés a MySQL Workbench](./connect-workbench.md)
 
-3. Szerkessze és futtassa a következő SQL-kódot. Cserélje le a helyőrző értékét az új felhasználói nevet `new_master_user`. Ezt a szintaxist biztosít a listában szereplő összes adatbázissémák jogosultságokkal (*.*), a felhasználó nevét (ebben a példában new_master_user). 
+3. Szerkessze és futtassa a következő SQL-kódot. Cserélje le a helyőrző értékét az új felhasználói nevet `new_master_user`. Ezt a szintaxist biztosít a listában szereplő összes adatbázissémák jogosultságokkal ( *.* ), a felhasználó nevét (ebben a példában new_master_user). 
 
    ```sql
    CREATE USER 'new_master_user'@'%' IDENTIFIED BY 'StrongPassword!';

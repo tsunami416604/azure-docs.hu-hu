@@ -1,135 +1,139 @@
 ---
-title: Katasztrófa utáni helyreállítás és a tárolási fiók feladatátvétel (előzetes verzió) – Azure Storage
-description: Azure Storage (előzetes verzió) fiók feladatátvételi georedundáns storage-fiókok támogatja. Fiók feladatátvétellel is kezdeményezhető a feladatátvételi folyamat a tárfiók, ha az elsődleges végpont elérhetetlenné válik.
+title: Vész-helyreállítási és Storage-fiók feladatátvétele (előzetes verzió) – Azure Storage
+description: Az Azure Storage támogatja a fiók feladatátvételét (előzetes verzió) a Geo-redundáns tárolási fiókokhoz. A fiók feladatátvétele esetén kezdeményezheti a tárolási fiók feladatátvételi folyamatát, ha az elsődleges végpont elérhetetlenné válik.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: tamram
+ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 87499c1b71e243fe976e436b525e0150689d3aa1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 4a621f8976efe395014c073a6bd7c5d09d19d915
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59051189"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71671076"
 ---
-# <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Katasztrófa utáni helyreállítás és a tárolási fiók feladatátvételi (előzetes verzió) az Azure Storage-ban
+# <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Vész-helyreállítási és Storage-fiók feladatátvétele (előzetes verzió) az Azure Storage-ban
 
-A Microsoft nagy hangsúlyt fektet a győződjön meg arról, hogy Azure-szolgáltatások mindig elérhetők. Azonban nem tervezett szolgáltatáskimaradások fordulhat elő. Ha az alkalmazáshoz szükséges rugalmasságot, Microsoft javasolja a georedundáns tárolás használata úgy, hogy az egy második régióba replikálja az adatokat. Ügyfelek emellett rendelkeznie kell egy vész-helyreállítási terv regionális szolgáltatáskimaradás kezelésére. Fontos része annak a vész-helyreállítási terv előkészíti a feladatátvételt a másodlagos végpontra, abban az esetben, ha az elsődleges végpont elérhetetlenné válik. 
+A Microsoft igyekszik biztosítani, hogy az Azure-szolgáltatások mindig elérhetők legyenek. A nem tervezett szolgáltatások azonban előfordulhatnak. Ha az alkalmazása rugalmasságot igényel, a Microsoft a Geo-redundáns tárolás használatát javasolja, hogy az adatai egy második régióban legyenek replikálva. Emellett az ügyfeleknek vészhelyzeti helyreállítási tervvel kell rendelkezniük a regionális szolgáltatások kimaradásának kezelésére. A vész-helyreállítási terv fontos része arra készül, hogy átadja a feladatátvételt a másodlagos végpontnak abban az esetben, ha az elsődleges végpont elérhetetlenné válik. 
 
-Azure Storage (előzetes verzió) fiók feladatátvételi georedundáns storage-fiókok támogatja. Fiók feladatátvétellel is kezdeményezhető a feladatátvételi folyamat a tárfiók, ha az elsődleges végpont elérhetetlenné válik. A feladatátvétel a másodlagos végpontot, hogy a tárfiók elsődleges végpontjába válnak frissíti. A feladatátvétel befejezése után az ügyfelek az új elsődleges végpontra tartalomkészítés elkezdéséhez.
+Az Azure Storage támogatja a fiók feladatátvételét (előzetes verzió) a Geo-redundáns tárolási fiókokhoz. A fiók feladatátvétele esetén kezdeményezheti a tárolási fiók feladatátvételi folyamatát, ha az elsődleges végpont elérhetetlenné válik. A feladatátvétel frissíti a másodlagos végpontot, hogy az a Storage-fiók elsődleges végpontja legyen. A feladatátvétel befejeződése után az ügyfelek megkezdhetik az új elsődleges végpont írását.
 
-Ez a cikk ismerteti a fogalmakat és a folyamat vesz egy fiók feladatátvétellel, és ismerteti az ügyfél hatása a lehető legkevesebb helyreállítását készíti elő a tárfiók. Egy fiók feladatátvétel inicializálása az Azure Portalon vagy a PowerShell kezelésével kapcsolatos információkért lásd: [egy fiók feladatátvétel (előzetes verzió)](storage-initiate-account-failover.md).
+Ez a cikk a fiók feladatátvételével kapcsolatos fogalmakat és folyamatokat ismerteti, és bemutatja, hogyan készítheti elő a Storage-fiókját a lehető legkevesebb vásárlói hatású helyreállításra. Ha meg szeretné tudni, hogyan kezdeményezheti a fiók feladatátvételét a Azure Portal vagy a PowerShellben, tekintse meg a [fiók feladatátvételének kezdeményezése (előzetes verzió)](storage-initiate-account-failover.md)című témakört.
 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="choose-the-right-redundancy-option"></a>Válassza ki a megfelelő adatredundáns tárolási mód
+## <a name="choose-the-right-redundancy-option"></a>Válassza ki a megfelelő redundancia lehetőséget
 
-Mindegyik tárfiókban lesznek replikálva a redundancia biztosítása érdekében. A redundancia lehetőséget választja, a fiók az ideális rugalmasságot fokú függ. A regionális üzemkimaradások utáni helyreállításon elleni védelem válassza ki a georedundáns tárolással vagy anélkül olvasási hozzáférés a másodlagos régióból lehetőséget:  
+Minden Storage-fiók replikálódik a redundancia érdekében. A fiókhoz választott redundancia-beállítás a szükséges rugalmasság mértékétől függ. A regionális kimaradások elleni védelemhez válassza a Geo-redundáns tárolás lehetőséget a másodlagos régió olvasási hozzáférésének beállításával vagy anélkül:  
 
-**Georedundáns tárolás (GRS)** replikálja az adatokat aszinkron módon történik a két olyan földrajzi régióban, amely legalább több száz mérföld távolságra van. Ha az elsődleges régió romlik a szolgáltatáskimaradás, a másodlagos régió az az adatok redundáns forrást funkcionál. Alakítsa át a másodlagos végpontot az elsődleges végpont feladatátvételt kezdeményezhet.
+A **geo-redundáns tárolás (GRS)** aszinkron módon replikálja az adatait két földrajzi régióba, amelyek legalább száz mérföld távolságra vannak egymástól. Ha az elsődleges régió leállás miatt leáll, a másodlagos régió redundáns forrásként szolgál az adataihoz. A másodlagos végpont elsődleges végpontra történő átalakításához feladatátvételt indíthat.
 
-**Írásvédett georedundáns tárolás (RA-GRS)** georedundáns tárolást biztosít további előnye, hogy olvasási hozzáférés a másodlagos végpontra. Ha az elsődleges végpont leállás esetén az RA-GRS konfigurált, és magas rendelkezésre állású tervezett alkalmazások továbbra is a másodlagos végpontról való olvasáshoz. A Microsoft javasolja a RA-GRS maximális rugalmasságot alkalmazásai számára.
+Az **olvasási hozzáférésű geo-redundáns tárolás (ra-GRS)** lehetővé teszi a földrajzilag redundáns tárolást a másodlagos végpont olvasási hozzáférésének további előnyeivel. Ha áramkimaradás fordul elő az elsődleges végponton, az RA-GRS konfigurált és magas rendelkezésre állásra tervezett alkalmazások továbbra is olvashatók a másodlagos végpontról. A Microsoft javasolja az RA-GRS számára az alkalmazások maximális rugalmasságát.
 
-Más Azure Storage redundanciabeállításai közé tartozik a zónaredundáns tárolás (ZRS), amely replikálja az adatokat egy adott régióban rendelkezésre állási zónák között, és a helyileg redundáns tárolás (LRS), amely replikálja az adatokat egy régió egyetlen adatközpontban. Ha a tárfiók úgy van konfigurálva, a zrs-t vagy LRS, GRS vagy RA-GRS használja, ezt a fiókot alakíthatja. A fiók georedundáns tárolás konfigurálása a további költség tekintetében. További információkért lásd: [Azure Storage replikáció](storage-redundancy.md).
+Egyéb Azure Storage-redundancia-beállítások közé tartozik a zóna-redundáns tárolás (ZRS), amely egyetlen régióban replikálja az adatait a rendelkezésre állási zónák között, valamint helyileg redundáns tárolást (LRS), amely egyetlen adatközpontban replikálja az adatait egyetlen régióban. Ha a Storage-fiókja a ZRS vagy a LRS használatára van konfigurálva, akkor a fiókot GRS vagy RA-GRS használatára alakíthatja át. A fiók beállítása a földrajzilag redundáns tároláshoz további költségekkel jár. További információ: [Azure Storage-replikáció](storage-redundancy.md).
+
+> [!NOTE]
+> A Geo-Zone-redundáns tárolás (GZRS) és az olvasási hozzáférésű földrajzi zóna – redundáns tárolás (RA-GZRS) jelenleg előzetes verzióban érhető el, de még nem érhető el ugyanabban a régióban, mint az ügyfél által felügyelt fiók feladatátvétele. Ezért az ügyfelek jelenleg nem kezelhetik a fiók feladatátvételi eseményeit a GZRS és az RA-GZRS fiókokkal. Az előzetes verzió ideje alatt a Microsoft felügyeli az GZRS/RA-GZRS-fiókokat érintő feladatátvételi eseményeket.
 
 > [!WARNING]
-> Georedundáns tárolás hordozza az adatvesztés kockázatát. Adatok replikálódnak a másodlagos régióba aszinkron módon történik, ami azt jelenti a késleltetés között, ha az elsődleges régióba írt adatok íródik a másodlagos régióba. Leállás esetén az írási műveletek az elsődleges végpontot, amely még nem replikálódott a másodlagos végpontra el fog veszni. 
+> A Geo-redundáns tárolás az adatvesztés kockázatát hordozza. Az adatreplikációt aszinkron módon replikálja a rendszer a másodlagos régióba, ami azt jelenti, hogy az elsődleges régióba írt adatsorok a másodlagos régióba íródnak. Kimaradás esetén a rendszer elveszi az olyan írási műveleteket az elsődleges végpontra, amelyek még nem replikálódnak a másodlagos végpontra.
 
-## <a name="design-for-high-availability"></a>Magas rendelkezésre állás kialakítása
+## <a name="design-for-high-availability"></a>Tervezés magas rendelkezésre álláshoz
 
-Fontos a kezdetektől a magas rendelkezésre állás érdekében az alkalmazás megtervezése. Tekintse meg az alkalmazás kialakítása és a vészhelyreállítási útmutató következő Azure-erőforrások:
+Fontos, hogy az alkalmazást a kezdettől kezdve a magas rendelkezésre állás érdekében tervezze meg. Tekintse át ezeket az Azure-erőforrásokat az alkalmazások tervezéséhez és a vész-helyreállítás megtervezéséhez:
 
-* [Rugalmas alkalmazások tervezése az Azure](https://docs.microsoft.com/azure/architecture/resiliency/): Az Azure-ban magas rendelkezésre állású alkalmazások tervezése az a legfontosabb fogalmak áttekintése.
-* [Rendelkezésre állási ellenőrzőlista](https://docs.microsoft.com/azure/architecture/checklist/availability): Ellenőrzőlista a ellenőrzése, hogy az alkalmazás megvalósítja a Tervező ajánlott magas rendelkezésre állás érdekében.
-* [RA-GRS használatával magas rendelkezésre állású alkalmazások tervezése](storage-designing-ha-apps-with-ragrs.md): Tervezési útmutató a alkalmazásokat a RA-GRS előnyeinek kihasználása érdekében.
-* [Oktatóanyag: A Blob storage magas rendelkezésre állású alkalmazás létrehozása](../blobs/storage-create-geo-redundant-storage.md): Oktatóanyag, amely bemutatja, hogyan hozhat létre, amely automatikusan átvált a végpontok kódhibáiként és helyreállítási műveletek közötti magas rendelkezésre állású alkalmazások szimulált vannak. 
+* [Rugalmas alkalmazások tervezése az Azure](https://docs.microsoft.com/azure/architecture/resiliency/)-hoz: Az Azure-beli, magasan elérhető alkalmazások tervezésével kapcsolatos főbb fogalmak áttekintése.
+* [Rendelkezésre állási ellenőrzőlista](https://docs.microsoft.com/azure/architecture/checklist/availability): Ellenőrzőlista annak ellenőrzéséhez, hogy az alkalmazása megvalósítja-e a legjobb tervezési eljárásokat a magas rendelkezésre állás érdekében.
+* [Magasan elérhető alkalmazások tervezése ra-GRS használatával](storage-designing-ha-apps-with-ragrs.md): Tervezési útmutató alkalmazások létrehozásához az RA-GRS előnyeinek kihasználásához.
+* [Oktatóanyag: Hozzon létre egy magasan elérhető alkalmazást a blob Storage @ no__t-0: Egy oktatóanyag, amely bemutatja, hogyan hozhat létre egy olyan, magasan elérhető alkalmazást, amely automatikusan átvált a végpontok között a hibák és a helyreállítások között. 
 
-Ezenkívül vegye figyelembe az ajánlott eljárások a magas rendelkezésre állás az Azure Storage-adatok mellett:
+Emellett vegye figyelembe ezeket az ajánlott eljárásokat az Azure Storage-beli adattárolási adatai magas rendelkezésre állásának fenntartásához:
 
-* **Lemezek:** Használat [Azure Backup](https://azure.microsoft.com/services/backup/) biztonsági mentése az Azure-beli virtuális gépek által használt virtuális gép lemezei. Emellett érdemes [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) regionális katasztrófa esetén a virtuális gépek védelme érdekében.
-* **A blokkblobok használatát támogatják:** Kapcsolja be a [helyreállítható törlési](../blobs/storage-blob-soft-delete.md) objektumszintű törlések ellen, és felülírja, vagy másolja be egy másik régióban egy másik tárfiókba blokkblobok [AzCopy](storage-use-azcopy.md), [Azure PowerShell-lel ](storage-powershell-guide-full.md), vagy a [Azure Adatáthelyezés könyvtár](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/).
-* **Fájlok:** Használat [AzCopy](storage-use-azcopy.md) vagy [Azure PowerShell-lel](storage-powershell-guide-full.md) a fájlok másolása egy másik tárfiók más régióban.
-* **Táblák:** használata [AzCopy](storage-use-azcopy.md) táblák adatainak exportálása egy másik régióban egy másik tárfiókba.
+* **Lemezek** A [Azure Backup](https://azure.microsoft.com/services/backup/) használatával biztonsági mentést készíthet az Azure-beli virtuális gépek által használt VM-lemezekről. Vegye fontolóra a [Azure site Recovery](https://azure.microsoft.com/services/site-recovery/) használatát a virtuális gépek biztonságának biztosítása érdekében regionális katasztrófa esetén is.
+* **Blobok letiltása:** Ha a [AzCopy](storage-use-azcopy.md), a [Azure PowerShell](storage-powershell-guide-full.md)vagy az [Azure adatátviteli függvénytárat](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/)használja, a [Soft delete](../blobs/storage-blob-soft-delete.md) bekapcsolásával védelmet biztosíthat az objektum-szintű törlések és a felülírások ellen, vagy más régióba másolja a blokk blobokat egy másikba.
+* **Fájlokat** A [AzCopy](storage-use-azcopy.md) vagy a [Azure PowerShell](storage-powershell-guide-full.md) segítségével másolja át a fájlokat egy másik különböző régióban lévő Storage-fiókba.
+* **Táblák:** a [AzCopy](storage-use-azcopy.md) használatával exportálhatja a tábla-és más tárolási fiókokat egy másik régióban.
 
 ## <a name="track-outages"></a>Kimaradások nyomon követése
 
-Ügyfelek által előfizetett a [Azure szolgáltatásállapot-irányítópult](https://azure.microsoft.com/status/) állapotának és az Azure Storage és más Azure-szolgáltatások állapotának nyomon követéséhez.
+Az ügyfelek előfizethetnek a [Azure Service Health irányítópultra](https://azure.microsoft.com/status/) az Azure Storage és más Azure-szolgáltatások állapotának és állapotának nyomon követéséhez.
 
-A Microsoft azt javasolja, hogy az alkalmazás előkészítése az írási hibák lehetőségét, tervezzen. Az alkalmazás elérhetővé kell tennie az írási hibák úgy, hogy riasztást küld az elsődleges régióban leállás lehetőségét.
+A Microsoft azt is javasolja, hogy tervezze meg az alkalmazást, hogy előkészítse az írási hibák lehetőségét. Az alkalmazásnak olyan módon kell kitennie az írási hibákat, amely riasztást küld az elsődleges régión belüli kimaradás lehetőségéről.
 
-## <a name="understand-the-account-failover-process"></a>A fiók feladatátvételi folyamat ismertetése
+## <a name="understand-the-account-failover-process"></a>A fiók feladatátvételi folyamatának megismerése
 
-Ügyfél által felügyelt fiók feladatátvétel (előzetes verzió) lehetővé teszi a feladatátvételt a teljes tárfiókot a másodlagos régióba, ha az elsődleges bármilyen okból elérhetetlenné válik. Feladatátvétel a másodlagos régióba kényszeríti, az ügyfelek megkezdődhet írja az adatokat a másodlagos végpontra a feladatátvétel befejezése után. A feladatátvétel jellemzően egy órát vesz igénybe.
+Az ügyfél által felügyelt fiók feladatátvétele (előzetes verzió) lehetővé teszi, hogy a teljes Storage-fiókját a másodlagos régióra irányítsa, ha az elsődleges elérhetetlenné válik bármilyen okból. Ha a feladatátvételt a másodlagos régióra kényszeríti, az ügyfelek megkezdhetik az adatírást a másodlagos végpontnak a feladatátvétel befejeződése után. A feladatátvétel általában körülbelül egy órát vesz igénybe.
 
-### <a name="how-an-account-failover-works"></a>Egy fiók feladatátvételt működése
+### <a name="how-an-account-failover-works"></a>A fiók feladatátvételének működése
 
-Normál körülmények ügyfél adatokat ír ugyanebbe az Azure Storage-fiók az elsődleges régióban, és az adatok replikálása aszinkron módon történik a másodlagos régióba. Az alábbi képen látható a forgatókönyvet, ha az elsődleges régióban érhető el:
+Normális körülmények között az ügyfél az elsődleges régióban lévő Azure Storage-fiókba ír egy adatot, és a rendszer aszinkron módon replikálja az adatot a másodlagos régióba. Az alábbi képen látható az az eset, amikor az elsődleges régió elérhető:
 
-![Az ügyfelek adatokat írni az elsődleges régióban lévő tárfiókba](media/storage-disaster-recovery-guidance/primary-available.png)
+![Az ügyfelek az elsődleges régióban lévő Storage-fiókba írják az adatbevitelt](media/storage-disaster-recovery-guidance/primary-available.png)
 
-Ha az elsődleges végpont valamilyen okból elérhetetlenné válik, az ügyfél már nem írhatók, a storage-fiókot. Az alábbi képen látható a forgatókönyvet, ahol az elsődleges elérhetetlenné, de még nem történt:
+Ha az elsődleges végpont bármilyen okból elérhetetlenné válik, az ügyfél már nem tud írni a Storage-fiókba. Az alábbi képen látható az az eset, amikor az elsődleges elérhetetlenné vált, de még nem történt helyreállítás:
 
-![Az elsődleges nem érhető el, így az ügyfelek nem lehet adatokat írni.](media/storage-disaster-recovery-guidance/primary-unavailable-before-failover.png)
+![Az elsődleges érték nem érhető el, így az ügyfelek nem tudnak írni adatbevitelt](media/storage-disaster-recovery-guidance/primary-unavailable-before-failover.png)
 
-Az ügyfél kezdeményezi a fiók feladatátvételt a másodlagos végpontra. A feladatátvételi folyamat frissíti a DNS-bejegyzés Azure Storage által biztosított, hogy a másodlagos végpontra válik az új elsődleges végpont a storage-fiókok a következő képen látható módon:
+Az ügyfél kezdeményezi a fiók feladatátvételét a másodlagos végpontra. A feladatátvételi folyamat frissíti az Azure Storage által biztosított DNS-bejegyzést, hogy a másodlagos végpont a Storage-fiók új elsődleges végpontja legyen, ahogy az a következő képen látható:
 
-![Ügyfél kezdeményezi a fiók feladatátvételt a másodlagos végpontra](media/storage-disaster-recovery-guidance/failover-to-secondary.png)
+![Az ügyfél a fiók feladatátvételét másodlagos végpontra indítja](media/storage-disaster-recovery-guidance/failover-to-secondary.png)
 
-Írási hozzáférés GRS és RA-GRS fiókok helyreáll, a DNS-bejegyzés frissítve lett, és a kérelmek vannak az új elsődleges végpontra irányítja. Meglévő blobok, táblák, üzenetsorok és fájlokat a storage-Szolgáltatásvégpontok változatlan marad, a feladatátvétel után.
+A rendszer a DNS-bejegyzés frissítése után visszaállítja a GRS és az RA-GRS fiókok írási hozzáférését, és a kérelmeket az új elsődleges végpontra irányítja. A meglévő Storage Service-végpontok a Blobok, táblák, várólisták és fájlok esetében változatlanok maradnak a feladatátvétel után.
 
 > [!IMPORTANT]
-> A feladatátvétel befejezése után a tárfiók lett konfigurálva a helyileg redundáns új elsődleges végpontját. Folytatják a replikációt az új másodlagos, konfigurálja a fiókot használja a georedundáns tárolás újra (GRS vagy RA-GRS).
+> A feladatátvétel befejeződése után a Storage-fiók úgy van konfigurálva, hogy helyileg redundáns legyen az új elsődleges végponton. Ha folytatni szeretné a replikálást az új másodlagosra, konfigurálja úgy a fiókot, hogy a Geo-redundáns tárolót újra használhassa (vagy RA-GRS vagy GRS).
 >
-> Ne feledje, hogy az LRS-fiók konvertálása RA-GRS- vagy GRS egy költséget áll. Ez a költség az RA-GRS- vagy GRS egy feladatátvétel után használandó új elsődleges régióban a storage-fiók frissítése vonatkozik.  
+> Ne feledje, hogy egy LRS-fiók RA-GRS vagy GRS-re való konvertálása költségekkel jár. Ez a díj az új elsődleges régióban lévő Storage-fiók frissítésére vonatkozik az RA-GRS vagy a GRS feladatátvétel utáni használata esetén.  
 
-### <a name="anticipate-data-loss"></a>Előrejelezheti az adatvesztést
+### <a name="anticipate-data-loss"></a>Az adatvesztés várható
 
 > [!CAUTION]
-> Egy fiók feladatátvételt általában magában foglalja a kis mértékű adatvesztést. Fontos megszegéseinek egy fiók feladatátvétel kezdeményezése.  
+> A fiók feladatátvétele általában valamilyen adatvesztéssel jár. Fontos megérteni a fiók feladatátvételének megkezdésének következményeit.  
 
-Adatok írása aszinkron módon történik az elsődleges régióból a másodlagos régióba, mert nincs mindig késleltetés előtt az elsődleges régióba írási a másodlagos régióba replikálja. Ha az elsődleges régió elérhetetlenné válik, a legújabb írást előfordulhat, hogy replikálása még nem rendelkezik lett a másodlagos régióba.
+Mivel az adatok aszinkron módon íródnak az elsődleges régióból a másodlagos régióba, a rendszer mindig késlelteti az elsődleges régióba való írást, mielőtt replikálja azokat a másodlagos régióba. Ha az elsődleges régió elérhetetlenné válik, a legutóbbi írások még nem replikálhatók a másodlagos régióba.
 
-Kényszeríti a feladatátvételt, az elsődleges régióban lévő összes adat elvész a másodlagos régióba válik az új elsődleges régióban, és a storage-fiók van konfigurálva, a helyileg redundáns földrajzi beállítással rendelkeznek. A feladatátvétel történik, ha már replikálása a másodlagos minden adat változatlan marad. Azonban az elsődleges, amely még nem replikálódott a másodlagos bármilyen adat elvész véglegesen. 
+Ha kényszeríti a feladatátvételt, az elsődleges régióban lévő összes érték elvész, mivel a másodlagos régió lesz az új elsődleges régió, és a Storage-fiók úgy van beállítva, hogy helyileg redundáns legyen. A feladatátvétel során a rendszer a másodlagosra replikált összes adathalmazt megőrzi. Az elsődlegesnek írt, de a másodlagosra még nem replikált adatbevitelek azonban véglegesen elvesznek. 
 
-A **utolsó szinkronizálás időpontja** tulajdonság azt jelzi, hogy a legtöbb legutóbbi ideje, hogy az elsődleges régióból történő adatok garantáltan alkalmazáskonfigurációjának a másodlagos régióba. A legutóbbi szinkronizálás időpontja előtt írt összes adat a másodlagos után előfordulhat, hogy nem minden bizonnyal a másodlagos és a lehetséges, hogy elvesznek a legutóbbi szinkronizálás időpontja írt adatok érhető el. Leállás Ez a tulajdonság segítségével megbecsülheti egy fiók feladatátvétel kezdeményezése felszámítunk adatvesztés mennyiségét. 
+A **legutóbbi szinkronizálás időpontja** tulajdonság azt jelzi, hogy az elsődleges régióból érkező adatok mikor lettek kiírva a másodlagos régióba. A rendszer a legutóbbi szinkronizálási idő előtt írt összes adattartalmat elérhetővé vált a másodlagos kiszolgálón, míg a legutóbbi szinkronizálási idő után írt adatsorok nem lettek a másodlagosba írva, és elveszhetnek. Ezt a tulajdonságot akkor használja, ha leállás esetén a fiók feladatátvételének elindításával becsülheti meg a felmerülő adatvesztés mértékét. 
 
-Ajánlott eljárásként tervezze meg az alkalmazását, hogy a várt adatok elvesztése kiértékelheti, hogy a legutóbbi szinkronizálás időpontja használhatja. Például ha az összes írási műveletet, majd összehasonlíthatja az idő a múlt írási műveletek utolsó jelentkezik szinkronizálási időpontját, hogy meghatározza, mely írási műveletek nem szinkronizált a másodlagos.
+Ajánlott eljárásként tervezze meg az alkalmazást úgy, hogy az utolsó szinkronizálási időt használja a várt adatvesztés kiértékeléséhez. Ha például az összes írási műveletet naplózza, akkor a legutóbbi írási műveletek időpontját összehasonlíthatja a legutóbbi szinkronizálás időpontjával, és meghatározhatja, hogy mely írásokat nem szinkronizálta a rendszer a másodlagosra.
 
-### <a name="use-caution-when-failing-back-to-the-original-primary"></a>Legyen körültekintő, ha meghiúsul, térjen vissza az eredeti elsődleges
+### <a name="use-caution-when-failing-back-to-the-original-primary"></a>Körültekintően járjon el, ha az eredeti elsődlegesnek nem sikerül visszatérnie
 
-Átadja a feladatokat az elsődleges kiszolgálóról a másodlagos régióba, miután a tárfiók lett konfigurálva a helyileg redundáns az új elsődleges régióban. A geo-redundancia biztosítása érdekében a fiókot újra konfigurálhatja úgy, hogy használja a GRS vagy RA-GRS frissítésével. Ha a fiók újra a feladatátvételt követően a georedundáns tárolás van konfigurálva, az új elsődleges régió azonnal megkezdi az új, volt az eredeti feladatátvétel előtt az elsődleges másodlagos régióba replikálja az adatokat. Előtt az elsődleges-ben meglévő adatok a rendszer teljes mértékben replikálja az új másodlagos ideig is eltarthat.
+Az elsődlegesről a másodlagos régióba való feladatátvételt követően a Storage-fiók úgy van konfigurálva, hogy helyileg redundáns legyen az új elsődleges régióban. Az GRS vagy RA-GRS használatára való frissítésével konfigurálhatja a fiókot a Geo-redundancia érdekében. Ha a fiók a feladatátvételt követően ismét a Geo-redundancia beállításra van konfigurálva, az új elsődleges régió azonnal megkezdi az adatreplikálást az új másodlagos régióba, amely az eredeti feladatátvétel előtt volt az elsődleges. Azonban eltarthat egy ideig, amíg az elsődlegesben lévő meglévő adatmennyiség teljesen replikálódik az új másodlagosra.
 
-Után a tárfiók a georedundancia átkonfigurálása, akkor lehet, hogy az új másodlagos az új elsődleges biztonsági mentésekből egy másik feladatátvételt kezdeményezzen. Ebben az esetben az eredeti elsődleges régióban, a feladatátvétel előtt az elsődleges régió újra lesz, és úgy van konfigurálva, hogy helyileg redundáns. A feladatátvétel utáni elsődleges régióban (az eredeti másodlagos) minden adat elveszett majd. Ha a tárfiókban lévő adatok még nem replikálódott az új másodlagos visszavétel előtt, sikerült esetén csökkenhet a fő adatvesztés. 
+Miután a Storage-fiókot újrakonfigurálta a Geo-redundancia érdekében, lehetséges, hogy egy másik feladatátvételt kezdeményez az új elsődleges vissza az új másodlagosra. Ebben az esetben a feladatátvételt megelőzően az elsődleges régió lesz újra az elsődleges régió, és úgy van beállítva, hogy helyileg redundáns legyen. A feladatátvétel utáni elsődleges régióban (az eredeti másodlagos) lévő összes érték elvész. Ha a Storage-fiókban lévő legtöbb adat nem lett replikálva az új másodlagosra a feladat-visszavétel előtt, jelentős adatvesztést okozhat. 
 
-Súlyos adatvesztés elkerülése érdekében ellenőrizze a értékét a **utolsó szinkronizálás időpontja** tulajdonság visszavétel előtt. Hasonlítsa össze a legutóbb időpontokban az adatokat a legutóbbi szinkronizálás időpontja várt adatok elvesztése kiértékelheti, hogy az új elsődleges lett írva. 
+A jelentős adatvesztés elkerülése érdekében a feladat-visszavétel előtt tekintse meg a **Legutóbbi szinkronizálási idő** tulajdonság értékét. A várt adatvesztés kiértékeléséhez hasonlítsa össze a legutóbbi szinkronizálási időt, hogy a legutóbbi alkalommal megtörténjen az adatgyűjtés az új elsődlegesre. 
 
 ## <a name="initiate-an-account-failover"></a>Fiók feladatátvételének indítása
 
-Az Azure portal, PowerShell, Azure CLI-vel vagy az Azure Storage erőforrás-szolgáltató API-t egy fiók feladatátvételt kezdeményezhet. Feladatátvétel módjáról további információkért lásd: [egy fiók feladatátvétel (előzetes verzió)](storage-initiate-account-failover.md).
+A Azure Portal, a PowerShell, az Azure CLI vagy az Azure Storage erőforrás-szolgáltató API-ból kezdeményezheti a fiók feladatátvételét. A feladatátvétel elindításával kapcsolatos további információkért lásd: a [fiók feladatátvételének kezdeményezése (előzetes verzió)](storage-initiate-account-failover.md).
 
-## <a name="about-the-preview"></a>Tudnivalók az előzetes verzió
+## <a name="about-the-preview"></a>Az előzetes verzió ismertetése
 
-fiók feladatátvételi GRS vagy RA-GRS használatával az Azure Resource Manager üzembe helyezések minden ügyfelünk esetében előzetes verzióban érhető el. Általános célú v1, általános célú v2 és Blob storage fióktípus esetében támogatottak. fiók feladatátvételi jelenleg érhető el ezekben a régiókban:
+A fiók feladatátvétele az GRS-t vagy RA-GRS-t használó összes ügyfél számára előzetes verzióban érhető el Azure Resource Manager üzemelő példányokkal. Az általános célú v1, az általános célú v2 és a blob Storage-fiókok típusai támogatottak. a fiók feladatátvétele jelenleg a következő régiókban érhető el:
 
 - USA 2. nyugati régiója
 - USA nyugati középső régiója
 
-Az előzetes verzió csak a nem éles használatra szolgál. Éles szolgáltatásiszint-szerződések (SLA) nem érhetők el jelenleg.
+Az előzetes verzió csak nem éles használatra készült. Az üzemi szolgáltatási szintű szerződések (SLA-kat) jelenleg nem érhetők el.
 
-### <a name="register-for-the-preview"></a>Regisztráljon az előzetes verzió
+### <a name="register-for-the-preview"></a>Regisztráljon az előzetes verzióra
 
-Regisztráljon az előzetes verzióra, a következő parancsokat a PowerShellben. Ügyeljen arra, hogy lévő a helyőrzőt cserélje le a saját előfizetés-azonosító:
+Az előzetes verzióra való regisztráláshoz futtassa a következő parancsokat a PowerShellben. Ügyeljen rá, hogy a zárójelben lévő helyőrzőt cserélje le a saját előfizetés-azonosítójával:
 
 ```powershell
 Connect-AzAccount -SubscriptionId <subscription-id>
 Register-AzProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
 ```
 
-Az előzetes verzióra jóváhagyását 1-2 nap telhet. Győződjön meg arról, hogy a regisztrációban jóvá lett hagyva, futtassa a következő parancsot:
+Az előzetes verzió jóváhagyása 1-2 napig is eltarthat. A regisztráció jóváhagyásának ellenőrzéséhez futtassa a következő parancsot:
 
 ```powershell
 Get-AzProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
@@ -137,48 +141,47 @@ Get-AzProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace
 
 ### <a name="additional-considerations"></a>Néhány fontos megjegyzés 
 
-Az ebben a szakaszban megismerheti, hogyan az alkalmazások és szolgáltatások hatással lehet egy feladatátvétel kényszeríti az előzetes verzió ideje alatt leírt további szempontok áttekintése.
+Tekintse át az ebben a szakaszban ismertetett további szempontokat annak megismeréséhez, hogy az alkalmazások és szolgáltatások milyen hatással lehetnek a feladatátvétel kényszerítésére az előzetes verzió ideje alatt.
 
-#### <a name="azure-virtual-machines"></a>Azure virtuális gépek
+#### <a name="azure-virtual-machines"></a>Azure-beli virtuális gépek
 
-Azure-beli virtuális gépek (VM) nincs egy fiók feladatátvétel részeként feladatátvételt. Ha az elsődleges régió elérhetetlenné válik, és átadja a feladatokat a másodlagos régióba, majd újra létre kell hozni olyan virtuális gépek a feladatátvételt követően kell. 
+Az Azure Virtual Machines (VM) nem végez feladatátvételt a fiók feladatátvételének részeként. Ha az elsődleges régió elérhetetlenné válik, és feladatátvételt hajt végre a másodlagos régióban, akkor a feladatátvételt követően újra létre kell hoznia a virtuális gépeket. 
 
-#### <a name="azure-unmanaged-disks"></a>Azure-os nem felügyelt lemezekre
+#### <a name="azure-unmanaged-disks"></a>Nem felügyelt Azure-lemezek
 
-Ajánlott eljárásként a Microsoft azt javasolja, nem felügyelt lemezek konvertálása a managed Disks szolgáltatásba. Azonban ha átadja a feladatokat egy fiókot, amely tartalmazza az Azure virtuális gépekhez csatolt nem felügyelt lemezekre van szüksége, szüksége lesz a virtuális gép leállítása a feladatátvétel kezdeményezése előtt.
+Ajánlott eljárásként a Microsoft a nem felügyelt lemezek felügyelt lemezekre való átalakítását javasolja. Ha azonban olyan fiókot kell átadnia, amely nem felügyelt lemezeket tartalmaz az Azure-beli virtuális gépekhez, a feladatátvétel kezdeményezése előtt le kell állítania a virtuális gépet.
 
-Nem felügyelt lemezek és az Azure Storage szolgáltatásban tárolódnak. Ha egy virtuális Gépet az Azure-ban fut, a virtuális Géphez csatolt bármilyen nem felügyelt lemezek bérbe adott. Egy fiók feladatátvétel nem folytatható, ha egy blob bérletét. A feladatátvétel végrehajtásához kövesse az alábbi lépéseket:
+A nem felügyelt lemezek blobként tárolódnak az Azure Storage-ban. Ha egy virtuális gép az Azure-ban fut, a virtuális géphez csatolt nem felügyelt lemezek bérlete megtörténik. A fiók feladatátvétele nem folytatható, ha a blobon bérlet van. A feladatátvétel végrehajtásához kövesse az alábbi lépéseket:
 
-1. Mielőtt hozzálátna, vegye figyelembe a nevek bármilyen nem felügyelt lemezek, a logikaiegység-számokhoz (LUN) és a virtuális gép, amelyhez csatlakozik. Így könnyebben csatlakoztassa újra a lemezeket a feladatátvétel után. 
-2. A virtuális gép leállítására.
-3. Törölje a virtuális Gépet, de a VHD-fájlokat a nem felügyelt lemezek megőrzése. Vegye figyelembe az idő, amikor a virtuális gép törlése.
-4. Várja meg, amíg a **utolsó szinkronizálás időpontja** frissítve van, és a későbbi, mint az idő, amikor a virtuális gép törlése. Ebben a lépésben fontos, mert ha a másodlagos végpontra nem lett teljesen frissítve a VHD-fájlokat tartalmazó a feladatátvétel esetén, majd a virtuális gép nem működnek megfelelően az új elsődleges régióban.
-5. A fiók feladatátvételt kezdeményezzen.
-6. Várjon, amíg a fiók feladatátvétel befejeződött, és a másodlagos régióban az új elsődleges régió elérhetetlenné válik.
-7. Virtuális gép létrehozása az új elsődleges régióban, és csatlakoztassa újból a virtuális merevlemezeket.
-8. Indítsa el az új virtuális Gépet.
+1. Mielőtt elkezdené, jegyezze fel a nem felügyelt lemezek nevét, a logikai egységek számát (LUN), valamint azt a virtuális gépet, amelyhez csatolva van. Ezzel megkönnyíti a lemezek újracsatlakoztatását a feladatátvétel után. 
+2. Állítsa le a virtuális gépet.
+3. Törölje a virtuális gépet, de őrizze meg a nem felügyelt lemezek VHD-fájljait. Figyelje meg, hogy mikor törölte a virtuális gépet.
+4. Várjon, amíg a **Legutóbbi szinkronizálási idő** frissült, és a virtuális gép törlésének időpontjánál későbbi. Ez a lépés azért fontos, mert ha a másodlagos végpontot nem frissítették teljes mértékben a VHD-fájlokkal a feladatátvétel bekövetkeztekor, előfordulhat, hogy a virtuális gép nem működik megfelelően az új elsődleges régióban.
+5. A fiók feladatátvételének kezdeményezése.
+6. Várjon, amíg a fiók feladatátvétele befejeződik, és a másodlagos régió az új elsődleges régió lesz.
+7. Hozzon létre egy virtuális gépet az új elsődleges régióban, és csatlakoztassa újra a virtuális merevlemezeket.
+8. Indítsa el az új virtuális gépet.
 
-Ne feledje, hogy az ideiglenes lemezen tárolt adatokat, ha a virtuális gép leállt.
+Ne feledje, hogy az ideiglenes lemezen tárolt összes adatmennyiség elvész a virtuális gép leállításakor.
 
-### <a name="unsupported-features-or-services"></a>Nem támogatott szolgáltatások vagy szolgáltatások
-A következő szolgáltatások vagy szolgáltatások nem támogatottak a fiók feladatátvételi előzetes kiadásban:
+### <a name="unsupported-features-or-services"></a>Nem támogatott funkciók vagy szolgáltatások
+A következő szolgáltatások vagy szolgáltatások nem támogatottak az előzetes verzióhoz tartozó fiók feladatátvétele esetén:
 
-- Az Azure File Sync nem támogatja a fiók a tároló feladatátvételét. Az Azure File Sync felhő végpontként használt Azure-fájlmegosztásokat tartalmazó Storage-fiókok nem feladatátvételt kell végrehajtani. Ezzel OK sync leállításához működő és május is művelettel váratlan adatvesztés esetén újonnan rétegzett fájlok.  
-- Storage-fiókok használata az Azure Data Lake Storage Gen2 hierarchikus névtér nem lehet végrehajtani a feladatátvételt.
-- Archivált blobokat tartalmazó tárfiókot nem lehet végrehajtani a feladatátvételt. Archivált nem tervezi a feladatátvételt egy önálló tárfiókot a blobok karbantartása.
-- Prémium szintű blokkblobok tartalmazó tárfiókot nem lehet végrehajtani a feladatátvételt. Támogatja a blokkblobokat prémium szintű Storage-fiókok jelenleg nem támogatja georedundancia.
-- A feladatátvétel befejezése után a következő funkciók fognak tovább működni, ha eredetileg engedélyezve: [Esemény-előfizetések](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-overview), [életciklusokkal](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts), [Storage Analytics naplózási](https://docs.microsoft.com/rest/api/storageservices/about-storage-analytics-logging).
+- A Azure File Sync nem támogatja a Storage-fiók feladatátvételét. A Azure File Syncban Felhőbeli végpontként használt Azure-fájlmegosztást tartalmazó Storage-fiókok feladatátvétele nem lehetséges. Ennek hatására a szinkronizálás leáll, és az újonnan rétegű fájlok esetében váratlan adatvesztést okozhat.  
+- Az archivált blobokat tartalmazó Storage-fiókok feladatátvétele nem végezhető el. Az archivált blobokat egy különálló Storage-fiókban kezelheti, amelyet nem szeretne átadni.
+- A prémium szintű blokk blobokat tartalmazó Storage-fiókok feladatátvétele nem végezhető el. A prémium szintű blokk blobokat támogató Storage-fiókok jelenleg nem támogatják a Geo-redundanciát.
+- A feladatátvétel befejezése után a következő funkciók nem fognak működni, ha eredetileg engedélyezve van: [Esemény-előfizetések](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-overview), [életciklus-szabályzatok](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts), [Storage Analytics naplózás](https://docs.microsoft.com/rest/api/storageservices/about-storage-analytics-logging).
 
-## <a name="copying-data-as-an-alternative-to-failover"></a>Adatok másolása a feladatátvételi helyett
+## <a name="copying-data-as-an-alternative-to-failover"></a>Adatok másolása a feladatátvétel alternatívájaként
 
-Ha az RA-GRS konfigurálta a tárfiókot, majd rendelkezik olvasási hozzáférés az adatokhoz a másodlagos végpontot használja. Ha nem kívánja az átadja a feladatokat az elsődleges régióban leállás eszközöket használhat például [AzCopy](storage-use-azcopy.md), [Azure PowerShell-lel](storage-powershell-guide-full.md), vagy a [Azure Adatáthelyezés könyvtár](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/) , adatok másolása a másodlagos régióban a storage-fiókból egy nem érinti a régióban egy másik tárfiókba. Ezután mutasson a tárfiók az alkalmazások mindkét olvasási és írási.
+Ha a Storage-fiókja RA-GRS van konfigurálva, akkor a másodlagos végpont használatával olvasási hozzáféréssel rendelkezik az adataihoz. Ha nem szeretné átvenni a feladatátvételt az elsődleges régió meghibásodása esetén, olyan eszközöket használhat, mint például a [AzCopy](storage-use-azcopy.md), a [Azure PowerShell](storage-powershell-guide-full.md)vagy az [Azure adatátviteli függvénytár](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/) a másodlagos régióban lévő Storage-fiókból egy másikra másolhatja az adatait nem érintett régióban lévő Storage-fiók. Ezután a Storage-fiókra irányíthatja az alkalmazásokat az olvasási és az írási rendelkezésre álláshoz is.
 
-## <a name="microsoft-managed-failover"></a>A Microsoft által felügyelt feladatátvétel
+## <a name="microsoft-managed-failover"></a>Microsoft által felügyelt feladatátvétel
 
-Szélsőséges esetben, ha egy régió jelentős katasztrófa miatt megszakadt, a Microsoft regionális feladatátvételt kezdeményezhet. Ebben az esetben az Ön részéről semmit nem kell. Mindaddig, amíg a Microsoft által felügyelt feladatátvétel befejeződött, nem kell írási hozzáférést a tárfiókhoz. Az alkalmazás is olvashat a másodlagos régióból, ha a tárfiók úgy van konfigurálva, az RA-GRS. 
+Szélsőséges körülmények között, amikor egy régiót súlyos katasztrófa okoz, a Microsoft regionális feladatátvételt kezdeményezhet. Ebben az esetben nincs szükség beavatkozásra a részen. Amíg a Microsoft által felügyelt feladatátvétel nem fejeződött be, nem rendelkezik írási hozzáféréssel a Storage-fiókhoz. Az alkalmazások a másodlagos régióból is beolvashatók, ha a Storage-fiókja RA-GRS van konfigurálva. 
 
 ## <a name="see-also"></a>Lásd még
 
-* [Egy fiók feladatátvétel (előzetes verzió)](storage-initiate-account-failover.md)
+* [Fiók feladatátvételének kezdeményezése (előzetes verzió)](storage-initiate-account-failover.md)
 * [Magas rendelkezésre állású alkalmazások tervezése az RA-GRS használatával](storage-designing-ha-apps-with-ragrs.md)
-* [Oktatóanyag: A Blob storage magas rendelkezésre állású alkalmazás létrehozása](../blobs/storage-create-geo-redundant-storage.md) 
+* [Oktatóanyag: A blob Storage szolgáltatással rendelkező, magasan elérhető alkalmazások létrehozása](../blobs/storage-create-geo-redundant-storage.md) 

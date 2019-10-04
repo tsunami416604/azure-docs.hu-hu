@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 06/06/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: de1263d68e96a23bd6b5eca4297e74b56ba22e40
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 20dd86a46ac1b50f5ce20da6ecf9dff251a8c0b0
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021638"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839007"
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>Adatok áthelyezése a MySQL Azure Data Factory használatával
-> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory szolgáltatás verzióját:"]
+> [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
 > * [1-es verzió](data-factory-onprem-mysql-connector.md)
 > * [2-es verzió (aktuális verzió)](../connector-mysql.md)
 
@@ -51,7 +51,7 @@ Az adatkezelési átjárót a MySQL-adatbázishoz csatlakozni, telepítenie kell
 Egy folyamatot egy másolási tevékenységgel az adatok áthelyezéséhez a helyszíni Cassandra adattárolókból más eszközök/API-k használatával is létrehozhat. 
 
 - A folyamat létrehozásának legegyszerűbb módja az, hogy használja a **másolása varázsló**. Lásd: [oktatóanyag: Hozzon létre egy folyamatot a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md) gyors bemutató létrehozása egy folyamatot az adatok másolása varázsló használatával. 
-- A következő eszközök használatával hozzon létre egy folyamatot: **Az Azure portal**, **Visual Studio**, **Azure PowerShell-lel**, **Azure Resource Manager-sablon**, **.NET API**, és  **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját. 
+- A következő eszközök használatával hozzon létre egy folyamatot: **A Visual Studio**, **Azure PowerShell-lel**, **Azure Resource Manager-sablon**, **.NET API**, és **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját. 
 
 Az eszközök vagy az API-kat használja, hogy létrehoz egy folyamatot, amely a helyez át adatokat egy forrásadattárból egy fogadó adattárba a következő lépéseket fogja végrehajtani:
 
@@ -68,14 +68,14 @@ Az alábbi táblázatban a JSON-elemeket társított MySQL szolgáltatás leír�
 
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
-| type |A type tulajdonságot kell beállítani: **A OnPremisesMySql** |Igen |
-| kiszolgáló |A MySQL-kiszolgáló neve. |Igen |
-| adatbázis |A MySQL-adatbázis neve. |Igen |
-| séma |A séma az adatbázis neve. |Nem |
+| type |A type tulajdonságot kell beállítani: **OnPremisesMySql** |Igen |
+| server |A MySQL-kiszolgáló neve. |Igen |
+| database |A MySQL-adatbázis neve. |Igen |
+| schema |A séma az adatbázis neve. |Nem |
 | authenticationType |A MySQL-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. Lehetséges értékek a következők: `Basic`. |Igen |
-| felhasználónév |Adja meg a felhasználónevet, a MySQL-adatbázishoz való csatlakozáshoz. |Igen |
-| jelszó |Adja meg a megadott felhasználói fiókhoz tartozó jelszót. |Igen |
-| átjáró neve |Az átjáró által a Data Factory szolgáltatás a helyi MySQL-adatbázishoz való kapcsolódáshoz használandó neve. |Igen |
+| userName |Adja meg a felhasználónevet, a MySQL-adatbázishoz való csatlakozáshoz. |Igen |
+| password |Adja meg a megadott felhasználói fiókhoz tartozó jelszót. |Igen |
+| gatewayName |Az átjáró által a Data Factory szolgáltatás a helyi MySQL-adatbázishoz való kapcsolódáshoz használandó neve. |Igen |
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 Szakaszok & adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek létrehozása](data-factory-create-datasets.md) cikk. Például a szerkezetet, rendelkezésre állást és szabályzatát adatkészlet JSON szakaszok hasonlóak az összes adatkészlet esetében (az Azure SQL, az Azure blob-, az Azure table-, stb.).
@@ -95,11 +95,11 @@ Ha a másolási tevékenység forrása típusa **RelationalSource** (amely tarta
 
 | Tulajdonság | Leírás | Megengedett értékek | Szükséges |
 | --- | --- | --- | --- |
-| lekérdezés |Az egyéni lekérdezés segítségével olvassa el az adatokat. |SQL-lekérdezési karakterláncot. Például: válassza ki * from tábla. |Nem (Ha **tableName** , **adatkészlet** van megadva) |
+| query |Az egyéni lekérdezés segítségével olvassa el az adatokat. |SQL-lekérdezési karakterláncot. Például: válassza ki * from tábla. |Nem (Ha **tableName** , **adatkészlet** van megadva) |
 
 
 ## <a name="json-example-copy-data-from-mysql-to-azure-blob"></a>JSON-példa: Adatok másolása az MySQL az Azure Blob
-Ebben a példában biztosít, amellyel létrehoz egy folyamatot használatával példa JSON-definíciók [az Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md) vagy [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy [Azure PowerShell-lel](data-factory-copy-activity-tutorial-using-powershell.md). Azt mutatja, hogyan másolhat adatokat egy helyi MySQL-adatbázisból egy Azure Blob Storage. Azonban adatok átmásolhatók a conditions stated above fogadóként valamelyik [Itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) a másolási tevékenységgel az Azure Data Factoryban.
+Ebben a példában biztosít, amellyel létrehoz egy folyamatot használatával példa JSON-definíciók [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy [Azure PowerShell-lel](data-factory-copy-activity-tutorial-using-powershell.md). Azt mutatja, hogyan másolhat adatokat egy helyi MySQL-adatbázisból egy Azure Blob Storage. Azonban adatok átmásolhatók a conditions stated above fogadóként valamelyik [Itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) a másolási tevékenységgel az Azure Data Factoryban.
 
 > [!IMPORTANT]
 > Ez a példa JSON-kódrészletek biztosít. Nem tartalmaz részletes útmutató az adat-előállító létrehozásához. Lásd: [adatok áthelyezése a helyszíni és a felhő között](data-factory-move-data-between-onprem-and-cloud.md) részletesen ismertető cikket.
@@ -182,7 +182,7 @@ Beállítás az "external": "true" tájékoztatja a Data Factory szolgáltatásb
 
 **Azure blobkimeneti adatkészlet:**
 
-Adatokat írt egy új blob minden órában (frequency: óra, időköz: 1.). A mappa elérési útját a BLOB a feldolgozás alatt álló szelet kezdő időpontja alapján dinamikusan kiértékeli. A mappa elérési útját használja, év, hónap, nap és óra részei a kezdési időpontot.
+Adatokat írt egy új blob minden órában (frequency: óra, időköz: 1). A mappa elérési útját a BLOB a feldolgozás alatt álló szelet kezdő időpontja alapján dinamikusan kiértékeli. A mappa elérési útját használja, év, hónap, nap és óra részei a kezdési időpontot.
 
 ```JSON
     {
@@ -301,44 +301,44 @@ Ha helyez át adatokat a MySQL-hez, a következő hozzárendeléseket a rendszer
 
 | MySQL-adatbázis típusa | .NET-keretrendszer típusa |
 | --- | --- |
-| aláíratlan bigint |Tizedes tört |
+| aláíratlan bigint |Decimal |
 | bigint |Int64 |
-| bit |Tizedes tört |
-| blob |Byte] |
-| Logikai |Logikai |
-| CHAR |Karakterlánc |
-| dátum |Dátum és idő |
-| dátum/idő |Dátum és idő |
-| tizedes tört |Tizedes tört |
-| a kétszeres pontosság |Dupla |
-| double |Dupla |
+| bit |Decimal |
+| blob |Byte[] |
+| bool |Logikai |
+| char |Sztring |
+| date |Datetime |
+| datetime |Datetime |
+| tizedes tört |Decimal |
+| a kétszeres pontosság |Double |
+| double |Double |
 | Enum |Karakterlánc |
-| lebegőpontos |Önálló |
+| float |Single |
 | aláíratlan int |Int64 |
 | int |Int32 |
 | egész szám aláíratlan |Int64 |
-| egész szám |Int32 |
-| hosszú varbinary |Byte] |
-| hosszú varchar |Karakterlánc |
-| longblob |Byte] |
+| integer |Int32 |
+| hosszú varbinary |Byte[] |
+| hosszú varchar |Sztring |
+| longblob |Byte[] |
 | LONGTEXT |Karakterlánc |
-| mediumblob |Byte] |
+| mediumblob |Byte[] |
 | aláíratlan mediumint |Int64 |
 | mediumint |Int32 |
 | mediumtext |Karakterlánc |
-| numerikus |Tizedes tört |
-| valódi |Dupla |
-| halmaz |Karakterlánc |
+| numeric |Decimal |
+| real |Double |
+| halmaz |Sztring |
 | aláíratlan smallint |Int32 |
 | smallint |Int16 |
-| szöveg |Karakterlánc |
-| time |Időtartam |
-| időbélyeg |Dátum és idő |
-| tinyblob |Byte] |
-| aláíratlan tinyint |Int16 |
+| text |Sztring |
+| time |TimeSpan |
+| timestamp |Datetime |
+| tinyblob |Byte[] |
+| tinyint unsigned |Int16 |
 | tinyint |Int16 |
-| tinytext |Karakterlánc |
-| varchar |Karakterlánc |
+| tinytext |Sztring |
+| varchar |Sztring |
 | év |Int |
 
 ## <a name="map-source-to-sink-columns"></a>A fogadó-oszlopok térkép forrása

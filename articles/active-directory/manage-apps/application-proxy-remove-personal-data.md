@@ -2,8 +2,8 @@
 title: Távolítsa el a személyes adatok – Azure Active Directory-alkalmazásproxyval |} A Microsoft Docs
 description: Személyes adatok eltávolítása az Azure Active Directory Application Proxy eszközökön telepített összekötők.
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,23 +11,23 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/21/2018
-ms.author: celested
+ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5f3c1883f156562cfab59cb102fb0cf18b03803
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ebb2a38e520c988ee7ca9a234aadd6ae2de4f0cb
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56186590"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807752"
 ---
-# <a name="remove-personal-data-for-azure-active-directory-application-proxy"></a>Személyes adatok eltávolítása az Azure Active Directory Application Proxy  
+# <a name="remove-personal-data-for-azure-active-directory-application-proxy"></a>Személyes adatok eltávolítása az Azure Active Directory Application Proxy
 
-Az Azure Active Directory Application Proxy kell telepíteni az összekötők az eszközök, ami azt jelenti, hogy van a személyes adatok az eszközökön. A cikk ismerteti a lépéseket az adatvédelmi javítása érdekében a személyes adatok törlése. 
-
+Az Azure Active Directory Application Proxy kell telepíteni az összekötők az eszközök, ami azt jelenti, hogy van a személyes adatok az eszközökön. A cikk ismerteti a lépéseket az adatvédelmi javítása érdekében a személyes adatok törlése.
 
 ## <a name="where-is-the-personal-data"></a>Hol található a személyes adatok?
+
 Az Application Proxy személyes adatokat írni a következő naplófájl-típusok lehetőség:
 
 - Összekötő-eseménynaplók
@@ -52,36 +52,33 @@ Az alábbi szakaszok segítségével távolítsa el a személyes adatok összek�
 
 ### <a name="view-or-export-specific-data"></a>Megtekintéséhez, vagy adott adatok exportálása
 
-Megtekintéséhez, vagy adott adatok exportálása, keressen rá az egyes az összekötő eseménynaplók bejegyzéseket. A naplók a következő helyen találhatók `C:\ProgramData\Microsoft\Microsoft AAD Application Proxy Connector\Trace`. 
+Megtekintéséhez, vagy adott adatok exportálása, keressen rá az egyes az összekötő eseménynaplók bejegyzéseket. A naplók a következő helyen találhatók `C:\ProgramData\Microsoft\Microsoft AAD Application Proxy Connector\Trace`.
 
 Mivel a naplók szövegfájlok, használhat [findstr](https://docs.microsoft.com/windows-server/administration/windows-commands/findstr) kereséséhez kapcsolódó a felhasználó szöveget tartalmazó bejegyzéseket.  
 
-Személyes adatok megkereséséhez keressen UserID naplófájlokat. 
+Személyes adatok megkereséséhez keressen UserID naplófájlokat.
 
 Kerberos által korlátozott delegálást használó alkalmazások által naplózott személyes adatok megkereséséhez keressen felhasználónév típusú ezek az összetevők:
 
 - Helyszíni felhasználó egyszerű neve
 - Egyszerű felhasználónév felhasználónév része
-- Helyszíni felhasználó egyszerű nevének felhasználónév része
-- A helyszíni biztonsági fiókok fiókkezelő (SAM) fiókneve 
-
+- A helyszíni egyszerű felhasználónév felhasználónév része
+- A helyszíni biztonsági fiókok fiókkezelő (SAM) fiókneve
 
 ### <a name="delete-specific-data"></a>Megadott adatok törlése
 
 Adatok törlése:
 
 1. Indítsa újra a Microsoft Azure AD alkalmazásproxy-összekötő szolgáltatást hozzon létre egy új naplófájl. Az új naplófájl lehetővé teszi, hogy törölni vagy módosítani a régi naplófájlokat. 
-2. Kövesse a [adott adatok megtekintése vagy exportálási](#view-or-export-specific-data) folyamat korábban leírt adatokat, akit törölni szükséges. Keresési összekötők naplóját.
-3. Törölje a megfelelő naplófájlok helyét, vagy szelektív törlése a személyes adatokat tartalmazó mezőket. Is törölheti a régi naplófájlokat, ha többé már nincs szükség rájuk.
+1. Kövesse a [adott adatok megtekintése vagy exportálási](#view-or-export-specific-data) folyamat korábban leírt adatokat, akit törölni szükséges. Keresési összekötők naplóját.
+1. Törölje a megfelelő naplófájlok helyét, vagy szelektív törlése a személyes adatokat tartalmazó mezőket. Is törölheti a régi naplófájlokat, ha többé már nincs szükség rájuk.
 
 ### <a name="turn-off-connector-logs"></a>Kapcsolja ki az összekötő-naplók
 
-Annak érdekében, hogy az összekötő naplók nem tartalmaznak személyes adatokat egy lehetőség, hogy a napló létrehozása kikapcsolása. Leállítja az összekötő naplók létrehozása, távolítsa el a következő kijelölt sor `C:\Program Files\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config`. 
+Annak érdekében, hogy az összekötő naplók nem tartalmaznak személyes adatokat egy lehetőség, hogy a napló létrehozása kikapcsolása. Leállítja az összekötő naplók létrehozása, távolítsa el a következő kijelölt sor `C:\Program Files\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config`.
 
-![Konfiguráció](./media/application-proxy-remove-personal-data/01.png)
-
+![A kiemelt kódot, távolítsa el a kódrészlet mutatja](./media/application-proxy-remove-personal-data/01.png)
 
 ## <a name="next-steps"></a>További lépések
 
 Az Application Proxy áttekintéséhez lásd: [biztonságos távoli elérést biztosíthat a helyszíni alkalmazások](application-proxy.md).
-

@@ -9,11 +9,11 @@ ms.date: 04/07/2017
 ms.author: muralikk
 ms.subservice: common
 ms.openlocfilehash: 42da285fbb55df43959506996bcde9cf547c2a22
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57439261"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60320567"
 ---
 # <a name="sample-workflow-to-prepare-hard-drives-for-an-import-job"></a>Munkafolyamat-minta a merevlemezek importálási feladatokhoz való előkészítésére
 
@@ -23,7 +23,7 @@ Ez a cikk végigvezeti a meghajtók előkészítése importálási feladatokhoz 
 
 Ebben a példában a következő adatokat importál az Azure storage-fiók nevű `mystorageaccount`:
 
-|Hely|Leírás|Adatok mérete|
+|Location egység|Leírás|Adatok mérete|
 |--------------|-----------------|-----|
 |H:\Video\ |Videók gyűjteménye|12 TB|
 |H:\Photo\ |Fényképek gyűjteménye|30 GB|
@@ -34,7 +34,7 @@ Ebben a példában a következő adatokat importál az Azure storage-fiók nevű
 
 Az importálási feladatot az adatok importálása a storage-fiókban a következő helyre:
 
-|Forrás|Cél virtuális könyvtárat vagy a blob|
+|source|Cél virtuális könyvtárat vagy a blob|
 |------------|-------------------------------------------|
 |H:\Video\ |videó /|
 |H:\Photo\ |fénykép /|

@@ -1,25 +1,34 @@
 ---
-title: Az Azure Data Factory-folyamat feltételes Split adatátalakítás leképezése
-description: Az Azure Data Factory folyamat feltételes Split átalakítását
+title: Azure Data Factory leképezési adatfolyam feltételes felosztásának átalakítása
+description: Azure Data Factory adatfolyam feltételes felosztásának átalakítása
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: a4ea79e05165dfae4f79aa6473a07151ba7c00fc
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: dd51cc2d5f95598154b76b5da8e3fc9e4801100d
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56727808"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104954"
 ---
-# <a name="azure-data-factory-mapping-data-flow-conditional-split-transformation"></a>Az Azure Data Factory-folyamat feltételes Split adatátalakítás leképezése
+# <a name="mapping-data-flow-conditional-split-transformation"></a>Az adatforgalom feltételes felosztásának leképezése
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-A feltételes Split átalakítást is adatsor átirányítása a adatok tartalma függően különböző Streamek. A feltételes Split átalakítás megvalósítása nagyon hasonlít egy kis döntési struktúra programozási nyelven. Az átalakítás kiértékeli a kifejezések, és az eredmények alapján, arra utasítja a megadott streamet az adatok sor. Az átalakítás is biztosít egy alapértelmezett kimenet, úgy, hogy ha egy sor kifejezés nem egyezik az alapértelmezett kimenet irányítja.
+![feltételes felosztási eszközkészlet](media/data-flow/conditionalsplit2.png "feltételes felosztási eszközkészlet")
 
-![feltételes split](media/data-flow/cd1.png "feltételes felosztása")
+A feltételes felosztású átalakítás az adatsorokat különböző adatfolyamokra irányíthatja az adattartalomtól függően. A feltételes felosztású átalakítás implementálása hasonló egy programozási nyelvben lévő eset döntési struktúrához. Az átalakítás kiértékeli a kifejezéseket, és az eredmények alapján a megadott adatfolyamra irányítja az adatsort. Ez a transzformáció egy alapértelmezett kimenetet is biztosít, így ha egy sor nem felel meg a kifejezésnek, az alapértelmezett kimenetre lesz irányítva.
 
-További feltételek hozzáadása, konfigurációs alsó ablaktábláján válassza a "Stream hozzáadása", majd kattintson a Kifejezésszerkesztő szövegmezőben hozhat létre a kifejezés.
+![feltételes felosztás](media/data-flow/conditionalsplit1.png "feltételes felosztási beállítások")
+
+## <a name="multiple-paths"></a>Több elérési út
+
+További feltételek hozzáadásához válassza az "adatfolyam hozzáadása" lehetőséget az alsó konfigurációs ablaktáblán, majd a kifejezés létrehozásához kattintson a Kifejezésszerkesztő szövegmezőbe.
+
+![feltételes felosztású többszörös](media/data-flow/conditionalsplit3.png "feltételes felosztású többszörös")
+
+## <a name="next-steps"></a>További lépések
+
+Feltételes felosztással használt közös adatfolyam-átalakítások: [Összekapcsolási átalakítás](data-flow-join.md), [keresési átalakítás](data-flow-lookup.md), [átalakítás kiválasztása](data-flow-select.md)

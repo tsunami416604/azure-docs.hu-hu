@@ -1,135 +1,135 @@
 ---
-title: Azure Storage szolgáltatások REST API-műveleteket, köztük a hitelesítési hívás |} A Microsoft Docs
-description: Azure Storage szolgáltatások REST API-műveleteket, köztük a hitelesítési hívás
+title: Azure Storage-REST API műveletek meghívása megosztott kulcsos hitelesítéssel | Microsoft Docs
+description: Használja az Azure Storage REST APIt a blob Storage-hoz való kérelem megosztott kulcsos hitelesítéssel történő elvégzésére.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/21/2019
+ms.date: 10/01/2019
 ms.author: tamram
+ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 9f6698eebf184d1df80920b7779512e2fda83a0c
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 05f71d4952d5f500a93adbb740739a46e9036ac1
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369088"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803077"
 ---
 # <a name="using-the-azure-storage-rest-api"></a>Az Azure Storage REST API használata
 
-Ez a cikk bemutatja a Blob Storage szolgáltatás REST API-k és a szolgáltatás a hívás hitelesítéséhez. Írás a személy, aki semmit sem tud REST és nem tudja biztosítása a REST-hívást a szempontból, de a fejlesztő. Hogy tekintse meg a REST-hívást dokumentációja és útmutató a tényleges REST-hívást – mezőszöveg fordítása, mely mezők nyissa meg a helyét? Miután részletesebben beállítása a REST-hívást, használhatja ezt a tudást a többi tárolási szolgáltatás REST API-k használatához.
+Ez a cikk bemutatja, hogyan hívhatja meg az Azure Storage REST API-kat, beleértve az engedélyezési fejlécek megadásának módját. Egy olyan fejlesztő szemszögéből íródott, aki semmit sem tud a REST-ről, és nincs ötlete, hogyan lehet REST-hívást készíteni. Miután megismerte, hogyan hívhat meg egy REST-műveletet, kihasználhatja ezt az ismeretet más Azure Storage REST-műveletek használatához.
 
-## <a name="prerequisites"></a>Előfeltételek 
+## <a name="prerequisites"></a>Előfeltételek
 
-Az alkalmazás egy storage-fiók blob Storage-tárolók listája. Próbálja ki az ebben a cikkben kód, a következőkre van szükség: 
+A minta alkalmazás a Storage-fiók blob-tárolóit sorolja fel. A cikkben szereplő kód kipróbálásához a következő elemek szükségesek: 
 
-* Telepítés [Visual Studio 2017](https://www.visualstudio.com/visual-studio-homepage-vs.aspx) a következő számítási feladatokkal:
-    - Azure-fejlesztés
+- Telepítse a [Visual Studio 2019](https://www.visualstudio.com/visual-studio-homepage-vs.aspx) -et az **Azure-fejlesztési** számítási feladattal.
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-* Egy általános célú tárfiókot. Ha még nem rendelkezik egy tárfiókot, [hozzon létre egy tárfiókot](storage-quickstart-create-account.md).
+- Általános célú Storage-fiók. Ha még nem rendelkezik Storage-fiókkal, tekintse meg [a Storage-fiók létrehozása](storage-quickstart-create-account.md)című témakört.
 
-* Ebben a cikkben a példa bemutatja, hogyan listázhatja a tárolókat a storage-fiókban. Kimenet megtekintéséhez adja hozzá az egyes tárolókat a storage-fiókban lévő blobtárolóba, mielőtt elkezdené.
+- A cikkben szereplő példa bemutatja, hogyan listázhatja a tárolókat egy Storage-fiókban. Ha meg szeretné tekinteni a kimenetet, vegyen fel néhány tárolót a blob Storage-ba a megkezdése előtt.
 
 ## <a name="download-the-sample-application"></a>A mintaalkalmazás letöltése
 
-A mintaalkalmazás a C# nyelven írt konzolalkalmazással.
+A minta alkalmazás a-ben írt konzol- C#alkalmazás.
 
-A [git](https://git-scm.com/) használatával töltse le az alkalmazás egy másolatát a fejlesztői környezetbe. 
+A [git](https://git-scm.com/) használatával töltse le az alkalmazás egy másolatát a fejlesztői környezetbe.
 
 ```bash
 git clone https://github.com/Azure-Samples/storage-dotnet-rest-api-with-auth.git
 ```
 
-Ez a parancs a helyi git mappába klónozza az adattárat. A Visual Studio-megoldás megnyitásához keresse meg a storage-dotnet-rest-api-with-auth mappát, nyissa meg és kattintson duplán a StorageRestApiAuth.sln. 
+Ez a parancs a helyi git mappába klónozza az adattárat. A Visual Studio-megoldás megnyitásához keresse meg a Storage-DotNet-REST-API-with-Auth mappát, nyissa meg, és kattintson duplán a StorageRestApiAuth. SLN elemre. 
 
-## <a name="what-is-rest"></a>Mit jelent a többi?
+## <a name="about-rest"></a>Tudnivalók a REST-ról
 
-REST azt jelenti, hogy *representational állapotátvitel*. Egy adott definíciót, tekintse meg [Wikipedia](https://en.wikipedia.org/wiki/Representational_state_transfer).
+A REST a *reprezentációs állapot átvitelére*áll. Egy adott definíció esetében tekintse meg a [Wikipédiát](https://en.wikipedia.org/wiki/Representational_state_transfer).
 
-Alapvetően, a REST egy olyan architektúra, mikor használhat API-k hívása, vagy API-kat kell meghívni, így. Azt, hogy mi történik, sem független, és milyen egyéb szoftvert használja küldésekor vagy fogadásakor a REST-hívások. Egy olyan alkalmazást, amely egy Mac, Windows, Linux, az Android rendszerű telefon vagy táblagép, iPhone, iPod vagy webhely futtat, és az azonos REST API-t használja az összes platformokhoz. Adatok is át lehet adni a ki és/vagy a REST API meghívásakor. A REST API-t nem gondoskodik a milyen platformról nevezzük – a fontos, az adatokat a kérésben kapott, és a válaszban megadott adatok.
+A REST egy olyan architektúra, amely lehetővé teszi a szolgáltatással való interakciót egy internetes protokollon (például HTTP/HTTPS) keresztül. A REST a kiszolgálón vagy az ügyfélen futó szoftvertől független. A REST API bármely olyan platformon meghívható, amely támogatja a HTTP/HTTPS protokollt. Olyan alkalmazást írhat, amely Mac, Windows, Linux, Android rendszerű telefonon vagy táblaszámítógépen, iPhone-on, iPod-on vagy webhelyen fut, és ugyanazokat a REST API használhatja az összes platformon.
 
-Egy hasznos ismeretek, hogy hogyan használható a REST. Az Azure-termékcsoport csapatának rendszeresen kiadja az új funkciókat. Sok esetben az új funkciók érhetők el, a REST-felületen keresztül, de rendelkezik nem még lett végzetesnek **összes** a storage ügyfélkódtárai vagy a felhasználói felületen (például az Azure Portalon). Ha mindig szeretne a legújabb és legjobb technológiát használja, akkor REST tanulás szükséges. Ha szeretne írni a saját könyvtár használatával kommunikálhat az Azure Storage, vagy szeretné elérni az Azure Storage-programozási nyelv, amely nem rendelkezik az SDK-t vagy a storage ügyféloldali kódtár, használhatja a REST API-t.
+A REST API hívása egy, az ügyfél által készített kérelemből és egy, a szolgáltatás által visszaadott válaszból áll. A kérelemben elküld egy URL-címet, amely arról tájékoztat, hogy milyen műveletet szeretne hívni, az erőforrást, amely a lekérdezési paramétereket és fejléceket, valamint a hívott művelettől függően adatokat tartalmaz. A szolgáltatás válasza tartalmaz egy állapotkódot, egy válasz fejléceket tartalmazó készletet, valamint a hívott művelettől függően az adatok hasznos adatait.
 
-## <a name="about-the-sample-application"></a>Tudnivalók a mintaalkalmazás
+## <a name="about-the-sample-application"></a>Tudnivalók a minta alkalmazásról
 
-A mintaalkalmazás a tárfiókban lévő tárolók listája. Miután megismerte, hogyan utal. az adatokat a REST API-dokumentáció a kódot, a más REST-hívások, könnyebben felderíthesse. 
+A minta alkalmazás a Storage-fiókban található tárolókat sorolja fel. Ha megértette, hogy az REST API dokumentációjában szereplő információk hogyan korrelálnak a tényleges kóddal, a többi REST-hívás könnyebben kideríthető.
 
-Ha megtekinti a [Blob Service REST API](/rest/api/storageservices/Blob-Service-REST-API), tekintse meg a blob Storage-hajthat végre műveleteket. A storage ügyféloldali függvénytárak is burkolókat körül a REST API-k – megkönnyítik az Ön számára tároló elérése érdekében anélkül, hogy közvetlenül a REST API-k használatával. De a fentieknek megfelelően néha használni kívánt REST API a storage ügyféloldali kódtár helyett.
+Ha megtekinti a [blob Service REST API](/rest/api/storageservices/Blob-Service-REST-API), megjelenik a blob Storage-on végrehajtható összes művelet. A Storage ügyféloldali kódtárai a REST API-k körét képezik, így egyszerűen hozzáférhet a tárolóhoz anélkül, hogy közvetlenül a REST API-kat kellene használnia. De a fentiekben leírtak szerint időnként a Storage ügyféloldali kódtár helyett a REST API kívánja használni.
 
-## <a name="rest-api-reference-list-containers-api"></a>REST API-leírások: API-tárolót
+## <a name="rest-api-reference-list-containers-api"></a>REST API referenciája: Tárolók listázása API
 
-Nézzük meg a lapot a REST API-referencia a [ListContainers](/rest/api/storageservices/List-Containers2) így ismernie az egyes mezőit forrását a kérés- és a kód a következő szakaszban a művelet.
+Tekintse meg a [ListContainers](/rest/api/storageservices/List-Containers2) művelet REST API hivatkozásának oldalát. Ez az információ segít megérteni, hogy az egyes mezők honnan származnak a kérelemben és a válaszban.
 
-**Kérelem metódusa**: GET. Ez a művelet a HTTP-metódus, mindenképp adja meg a kérelem objektum olyan osztályát. Ehhez a művelethez tartozó többi értéket tartalmazza, HEAD, PUT és DELETE, attól függően, az API-t hívja meg.
+**Kérelem metódusa**: GET. Ez a művelet a kérési objektum tulajdonságként megadott HTTP-metódus. A művelethez tartozó egyéb értékek a meghívott API-tól függően a HEAD, a PUT és a DELETE függvényt is tartalmazzák.
 
-**Kérés URI-ja**: https://myaccount.blob.core.windows.net/?comp=list  Ez a blob storage-végpont jön `http://myaccount.blob.core.windows.net` és az erőforrás-karakterlánc `/?comp=list`.
+**Kérelem URI-ja**: `https://myaccount.blob.core.windows.net/?comp=list`.  A kérelem URI-ja a blob Storage-fiók végpontjának `http://myaccount.blob.core.windows.net` és az erőforrás-karakterlánc `/?comp=list`.
 
-[URI-paramétereinek](/rest/api/storageservices/List-Containers2#uri-parameters): Nincsenek további lekérdezési paraméterek ListContainers hívásakor használható. Ezeket a paramétereket néhány vannak *időtúllépési* a hívás (másodpercben), és *előtag*, szűréshez használt.
+[URI-paraméterek](/rest/api/storageservices/List-Containers2#uri-parameters): A ListContainers meghívásakor további lekérdezési paramétereket is használhat. Ezen paraméterek közül néhány *időtúllépést* okoz a híváshoz (másodpercben) és az *előtaghoz*, amely a szűréshez használatos.
 
-Egy másik hasznos paraméter *maxresults:* több tároló ennél az értéknél érhetők el, ha a válasz törzse fogja tartalmazni a *NextMarker* elem, amely azt jelzi, hogy a következő vissza a következő tároló a kérést. Ez a funkció használatához adja meg a *NextMarker* érték a *jelölő* paraméter a következő kérelmet győződjön meg arról, ha az URI-ban. Ha ezzel a funkcióval, az eredmények átlapozva hasonló. 
+Egy másik hasznos paraméter a *maxresults:* ha több tároló érhető el ennél az értéknél, a válasz törzse egy *NextMarker* elemet fog tartalmazni, amely a következő kérelemre való visszatérés következő tárolóját jelzi. A szolgáltatás használatához adja meg a *NextMarker* értéket az URI *jelölő* paramétereként, amikor a következő kérést hajtja végre. Ha ezt a funkciót használja, az az eredmények közötti lapozáshoz hasonlít.
 
-További paraméterek használatához fűzzön hozzá őket az érték, például ebben a példában az erőforrás-karakterlánc:
+Ha további paramétereket szeretne használni, fűzze hozzá azokat az erőforrás-karakterlánchoz az értékkel, az alábbi példához hasonlóan:
 
 ```
 /?comp=list&timeout=60&maxresults=100
 ```
 
-[Kérelem fejlécei](/rest/api/storageservices/List-Containers2#request-headers)**:** Ez a szakasz felsorolja a szükséges és választható kérelemfejlécek. A fejlécek három szükség: egy *engedélyezési* fejléc *x-ms-date* (tartalmazza a kérelem az Egyezményes világidő), és *x-ms-version* (határozza meg a többi verzióját API-t használja). Többek között *x-ms-client-request-id* a fejlécek nem kötelező – és bármit Ez a mező értéke megadható; írás a storage analytics naplók Ha naplózása engedélyezve van.
+[Kérelem fejlécei](/rest/api/storageservices/List-Containers2#request-headers) **:** Ez a szakasz felsorolja a szükséges és választható kérelmek fejléceit. Három fejléc szükséges: egy *engedélyezési* fejléc, *x-MS-Date* (tartalmazza a kérelem UTC szerinti időpontját) és az *x-MS-version* (a használni kívánt REST API verzióját adja meg). Az *x-MS-Client-Request-ID* megadása a fejlécekben nem kötelező – ehhez a mezőhöz bármilyen értéket megadhat. a rendszer a Storage Analytics naplófájljaiba írja a naplózás engedélyezésekor.
 
-[Kérelem törzse](/rest/api/storageservices/List-Containers2#request-body)**:** Nincs nem ListContainers kérelemtörzs. Kérelem törzse az összes PUT művelet szolgál, blobok, valamint SetContainerAccessPolicy, amely lehetővé teszi, hogy a alkalmazni a tárolt hozzáférési szabályzatok egy XML-lista küldése feltöltésekor. A cikkben említett tárolt hozzáférési szabályzatok [használata közös hozzáférésű Jogosultságkódok (SAS)](storage-dotnet-shared-access-signature-part-1.md).
+[Kérelem törzse](/rest/api/storageservices/List-Containers2#request-body) **:** Nincs ListContainers-kérelem törzse. A kérelem törzse az összes PUT művelethez használatos Blobok feltöltésekor, valamint a SetContainerAccessPolicy, amely lehetővé teszi, hogy a rendszer a tárolt hozzáférési szabályzatok XML-listájában küldje el az alkalmazáshoz. A tárolt hozzáférési szabályzatokat a cikk a [közös hozzáférésű aláírások (SAS) használatával](storage-sas-overview.md)tárgyalja.
 
-[Válasz állapotkódja](/rest/api/storageservices/List-Containers2#status-code)**:** Arra utasítja a bármely állapotkódok, ismernie kell. Ebben a példában egy HTTP-állapotkód: 200-as rendben. HTTP-állapotkódok teljes listáját, tekintse meg [állapotkód-definíciókat](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html). A Storage REST API-k az adott hibakódok, olvassa el [REST API-val gyakori hibakódok](/rest/api/storageservices/common-rest-api-error-codes)
+[Válasz állapotkód](/rest/api/storageservices/List-Containers2#status-code) **:** Minden szükséges állapotkódot megtudhat. Ebben a példában a 200-es HTTP-állapotkód rendben van. A HTTP-állapotkódok teljes listájáért tekintse meg az [állapotkód-definíciókat](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html). A tárolási REST API-kra vonatkozó hibakódok megtekintéséhez lásd: [általános REST API hibakódok](/rest/api/storageservices/common-rest-api-error-codes)
 
-[Válaszfejlécek](/rest/api/storageservices/List-Containers2#response-headers)**:** Ezek közé tartozik a *tartalomtípus*; *x-ms-request-id* (a kérés azonosítója, átadott, ha van ilyen); *x-ms-version* (azt jelzi, hogy a használt Blob szolgáltatás), és a *dátum* (UTC-t, arra utasítja a kérés érkezett eldöntve).
+[Válasz fejlécei](/rest/api/storageservices/List-Containers2#response-headers) **:** Ilyenek például a *tartalom típusa*; *x-MS-Request-ID*, amely az átadott kérelem azonosítója; *x-MS-Version*, amely a használt BLOB Service verzióját jelzi; és a *dátum*, amely UTC szerint van megadva, és megadja, hogy a kérelem mikor történt.
 
-[Választörzs](/rest/api/storageservices/List-Containers2#response-body): Ezt a mezőt egy XML-struktúra a kért adatok megadása kötelező. Ebben a példában a válasz az tárolók és a hozzájuk tartozó tulajdonságok listája.
+[Válasz törzse](/rest/api/storageservices/List-Containers2#response-body): Ez a mező egy XML-struktúra, amely a kért adatmennyiséget biztosítja. Ebben a példában a válasz a tárolók és a tulajdonságaik listája.
 
-## <a name="creating-the-rest-request"></a>A REST-kérés létrehozása
+## <a name="creating-the-rest-request"></a>A REST-kérelem létrehozása
 
-Pár megjegyzéseket előtt – biztonság, amikor az éles környezetben futó, mindig használjon HTTP helyett HTTPS. Ebben a gyakorlatban az alkalmazásában kell használnia a HTTP, a kérelmek és válaszok adatait is megtekintheti. A kérések és válaszok adatokat megtekinteni a tényleges REST-hívások, letöltheti [Fiddler](https://www.telerik.com/fiddler) vagy más hasonló alkalmazás. A Visual Studio-megoldásban a tárfiók nevét és a kulcs az osztályban kötöttek, és adja át a tárfiók nevének és a tárfiók kulcsát ListContainersAsyncREST módszer, amely a különböző összetevők a REST-kérelem létrehozásához használt módszerek . Egy valós alkalmazás esetében a tároló nevének és kulcsának lenne egy konfigurációs fájlban, a környezeti változók találhatók, vagy kérhető le az Azure Key Vaultban.
+Ha éles környezetben fut, akkor a HTTP helyett mindig a HTTPS protokollt használja. Ebben a gyakorlatban a HTTP-t kell használnia, így megtekintheti a kérelmeket és a válaszokat. Ha meg szeretné tekinteni a kérelmek és válaszok adatait a tényleges REST-hívások között, akkor letöltheti a [hegedűst](https://www.telerik.com/fiddler) vagy egy hasonló alkalmazást. A Visual Studio-megoldásban a Storage-fiók neve és kulcsa hardcoded a osztályban. A ListContainersAsyncREST metódus átadja a Storage-fiók nevét és a Storage-fiók kulcsát a REST-kérelem különböző összetevőinek létrehozásához használt metódusokhoz. Egy valós alkalmazásban a Storage-fiók neve és kulcsa egy konfigurációs fájlban, környezeti változóban vagy egy Azure Key Vaultból kérhető le.
 
-A mintaprojekt az engedélyezési fejléc létrehozásához a kód pedig egy különálló osztályt, a cél, hogy, sikerült a teljes osztály igénybe vehet, és adja hozzá a saját megoldás és azokat használja ", ami." Az engedélyezési fejléc kód a legtöbb, az Azure Storage REST API-hívásokkal működik.
+A mintául szolgáló projektben az engedélyezési fejléc létrehozására szolgáló kód külön osztályban található. Az elképzelés az, hogy a teljes osztályt felveheti a saját megoldásba, és használhatja azt "ahogy van". Az engedélyezési fejléc kódja az Azure Storage-hoz leginkább REST API hívásokhoz használható.
 
-Hozhat létre a kérést, amely a HttpRequestMessage objektum, nyissa meg a program.cs fájlban ListContainersAsyncREST. A kérelem létrehozásához a lépések a következők: 
+A kérelem kiépítéséhez, amely egy HttpRequestMessage objektum, nyissa meg a ListContainersAsyncREST a Program.cs-ben. A kérelem összeállításának lépései a következők: 
 
-* Hozzon létre az URI-t a szolgáltatás meghívása használható. 
-* A HttpRequestMessage objektum létrehozása, és állítsa be az adattartalomban. A hasznos adatainak értéke null a következőnél ListContainersAsyncREST, mert azt már nem továbbítja a semmit.
-* Adja hozzá a kérelem fejlécében x-ms-date és az x-ms-version.
-* Az engedélyezési fejléc lekérése, és adja hozzá.
+- Hozza létre a szolgáltatás meghívásához használandó URI-t. 
+- Hozza létre a HttpRequestMessage objektumot, és állítsa be a hasznos adatokat. A hasznos adatok a ListContainersAsyncREST esetében null értékűek, mert nem adunk semmit a következőben:.
+- Adja hozzá az x-MS-date és az x-MS-Version kérések fejléceit.
+- Kérje le az engedélyezési fejlécet, és adja hozzá.
 
-Néhány alapvető információ van szüksége: 
+Néhány alapvető információra van szüksége: 
 
-*  A ListContainers a **metódus** van `GET`. Ez az érték van beállítva, a kérelem hárítható el. 
-*  A **erőforrás** az URI-t, amely jelzi, hogy melyik API meghívva, hogy az érték a lekérdezés része `/?comp=list`. Korábban feljegyzett információit jeleníti meg a vonatkozó referencia dokumentációs lap van az erőforrás a [ListContainers API](/rest/api/storageservices/List-Containers2).
-*  Az URI-t hoz létre a tárfiók Blob service-végpont, és összefűzi az erőforrás jön létre. Az érték **kérés URI-ja** fejeződik be, hogy `http://contosorest.blob.core.windows.net/?comp=list`.
-*  A ListContainers **requestBody** null értékű, és nincsenek részeként **fejlécek**.
+- A ListContainers esetében a **metódus** `GET`. Ez az érték a kérelem példányának létrehozásakor van beállítva. 
+- Az **erőforrás** az URI lekérdezési része, amely jelzi, hogy melyik API-t hívják, így az érték `/?comp=list`. Ahogy korábban már említettük, az erőforrás a hivatkozási dokumentáció oldalán található, amely a [LISTCONTAINERS API](/rest/api/storageservices/List-Containers2)információit jeleníti meg.
+- Az URI-t úgy hozza létre, hogy létrehoz egy Blob service végpontot az adott Storage-fiókhoz, és összefűzi az erőforrást. A **kérelem URI-ja** a `http://contosorest.blob.core.windows.net/?comp=list` értékre végződik.
+- A ListContainers esetében a **requestBody** értéke null, és nincsenek további **fejlécek**.
 
-Előfordulhat, hogy különböző API-k más paramétereket, például át *ifMatch*. Ahol ifMatch használhatja például akkor, ha a PutBlob hívásakor. Ebben az esetben ifMatch eTag értékre, és ha az Ön Etagje megegyezik a BLOB jelenlegi Etagje csak frissíti a blobot. Ha valaki más frissült, hogy a blob az ETag címke beolvasása óta, a módosítás nem bírálható felül. 
+A különböző API-k más paraméterekkel is rendelkezhetnek, például *ifMatch*. A PutBlob meghívásakor például a ifMatch használatára lehet szükség. Ebben az esetben a ifMatch egy eTag állítja be, és csak akkor frissíti a blobot, ha az Ön által megadott eTag megegyezik a blob aktuális eTag. Ha valaki más frissíti a blobot a eTag beolvasása óta, a módosítások nem lesznek felülbírálva.
 
-Először állítsa be a `uri` és a `payload`. 
+Először állítsa be a `uri` és a `payload` értéket.
 
 ```csharp
-// Construct the URI. This will look like this:
+// Construct the URI. It will look like this:
 //   https://myaccount.blob.core.windows.net/resource
 String uri = string.Format("http://{0}.blob.core.windows.net?comp=list", storageAccountName);
 
-// Set this to whatever payload you desire. Ours is null because 
+// Provide the appropriate payload, in this case null.
 //   we're not passing anything in.
 Byte[] requestPayload = null;
 ```
 
-Következő lépésként hozza létre a kérést, a metódust állítjuk `GET` és biztosítják, hogy az URI-t.
+Ezután hozza létre a kérést, állítsa be a metódust `GET` értékre, és adja meg az URI-t.
 
-```csharp 
-//Instantiate the request message with a null payload.
+```csharp
+// Instantiate the request message with a null payload.
 using (var httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, uri)
 { Content = (requestPayload == null) ? null : new ByteArrayContent(requestPayload) })
 {
 ```
 
-Adja hozzá a kérelem fejlécében x-ms-date és az x-ms-version. Ez a hely a kódban is, Itt veheti fel a híváshoz szükséges minden olyan további kérelemfejléc. Ebben a példában nincsenek további fejlécek. Egy példa egy API, amely továbbítja a további fejlécek, SetContainerACL. A Blob Storage hozzáadja a hozzáférési szint "x-ms-blob-public-hozzáférés" és az érték nevű fejléc.
+Adja hozzá a kérelmek fejléceit `x-ms-date` és `x-ms-version` értékhez. Ezen a helyen a kódban további, a híváshoz szükséges további fejlécek is megadhatók. Ebben a példában nincsenek további fejlécek. Egy olyan API-példa, amely további fejléceket továbbít, a tároló ACL-műveletének beállítása. Ez az API-hívás egy "x-MS-blob-Public-Access" nevű fejlécet és a hozzáférési szint értékét adja hozzá.
 
 ```csharp
     // Add the request headers for x-ms-date and x-ms-version.
@@ -137,10 +137,10 @@ Adja hozzá a kérelem fejlécében x-ms-date és az x-ms-version. Ez a hely a k
     httpRequestMessage.Headers.Add("x-ms-date", now.ToString("R", CultureInfo.InvariantCulture));
     httpRequestMessage.Headers.Add("x-ms-version", "2017-07-29");
     // If you need any additional headers, add them here before creating
-    //   the authorization header. 
+    //   the authorization header.
 ```
 
-Hívja meg a metódust, amely az engedélyezési fejléc hoz létre, és adja hozzá a kérelem fejlécében. Látni fogja, hogyan hozhat létre az engedélyezési fejléc a cikk későbbi részében. A metódusnév GetAuthorizationHeader, amelyhez ez a kódrészlet látható:
+Hívja meg az engedélyezési fejlécet létrehozó metódust, és adja hozzá a kérések fejlécéhez. Megtudhatja, hogyan hozhatja létre az engedélyezési fejlécet a cikk későbbi részében. A metódus neve GetAuthorizationHeader, amelyet ebben a kódrészletben láthat:
 
 ```csharp
     // Get the authorization header and add it.
@@ -148,15 +148,15 @@ Hívja meg a metódust, amely az engedélyezési fejléc hoz létre, és adja ho
         storageAccountName, storageAccountKey, now, httpRequestMessage);
 ```
 
-Ezen a ponton `httpRequestMessage` tartalmazza a REST-kérés kész, de az engedélyezési fejléceket. 
+Ezen a ponton a `httpRequestMessage` tartalmazza a REST-kérést, amely az engedélyezési fejlécekkel fejeződött be.
 
-## <a name="call-the-rest-api-with-the-request"></a>A REST API-t a kérelemmel
+## <a name="call-the-rest-api-with-the-request"></a>Az REST API meghívása a kérelemmel
 
-Most, hogy a kérelem, meghívhatja a REST-kérelem elküldéséhez SendAsync. SendAsync meghívja az API-t, és megkapja a választ. Vizsgálja meg a válasz StatusCode (200-as rendben), majd a válasz elemzéséhez. Ebben az esetben egy XML-tárolók listájának kap. Nézzük meg a kódját a kérelem létrehozásához, hajtsa végre a kérést, és vizsgálja meg a választ a tárolók listájában a GetRESTRequest metódus hívása.
+Most, hogy megkapta a kérést, meghívhatja a SendAsync a REST-kérelem elküldéséhez. A SendAsync meghívja az API-t, és visszaküldi a választ. Vizsgálja meg a válasz StatusCode (200 OK), majd elemezze a választ. Ebben az esetben a tárolók XML-listáját kapja meg. Nézzük meg a GetRESTRequest metódus meghívásához szükséges kódot a kérelem létrehozásához, a kérelem végrehajtásához, majd a tárolók listájának megválaszolásához.
 
 ```csharp 
     // Send the request.
-    using (HttpResponseMessage httpResponseMessage = 
+    using (HttpResponseMessage httpResponseMessage =
       await new HttpClient().SendAsync(httpRequestMessage, cancellationToken))
     {
         // If successful (status code = 200), 
@@ -174,9 +174,9 @@ Most, hogy a kérelem, meghívhatja a REST-kérelem elküldéséhez SendAsync. S
 }
 ```
 
-Ha például a Hálózatfigyelő futtatása [Fiddler](https://www.telerik.com/fiddler) SendAsync hívása küldésekor a kérések és válaszok információkat láthatja. Tekintsük át. A tárfiók neve *contosorest*.
+Ha a SendAsync meghívásakor egy hálózati Szippantó (például [Hegedűs](https://www.telerik.com/fiddler) ) fut, akkor a kérelem és a válasz információi láthatók. Vessünk egy kinézetet. A Storage-fiók neve *contosorest*.
 
-**A kérelem:**
+**Kérelem**
 
 ```
 GET /?comp=list HTTP/1.1
@@ -192,7 +192,7 @@ Host: contosorest.blob.core.windows.net
 Connection: Keep-Alive
 ```
 
-**Állapot és a válaszidő visszakapott fejlécek végrehajtása után:**
+**A végrehajtás után visszaadott állapotkód és válasz fejlécek:**
 
 ```
 HTTP/1.1 200 OK
@@ -204,7 +204,7 @@ Date: Fri, 17 Nov 2017 00:23:42 GMT
 Content-Length: 1511
 ```
 
-**Válasz törzsében (XML):** A ListContainers a tárolók és a hozzájuk tartozó tulajdonságok listáját jeleníti meg.
+**Válasz törzse (XML):** A tárolók listázása műveletnél megjelenik a tárolók és tulajdonságaik listája.
 
 ```xml  
 <?xml version="1.0" encoding="utf-8"?>
@@ -261,25 +261,26 @@ Content-Length: 1511
 </EnumerationResults>
 ```
 
-Most, hogy megismerkedett a kérelem létrehozásához, meghívja a szolgáltatást, és elemezni az eredményeket, nézzük meg, hogyan hozhat létre az engedélyeztetési fejléc. A fejléc létrehozása bonyolult, de a jó hír az, ha működik a kódot, működik-e az összes, a Storage szolgáltatás REST API-kat.
+Most, hogy megértette, hogyan hozza létre a kérést, hívja meg a szolgáltatást, és elemezze az eredményeket, lássuk, hogyan hozhatja létre az engedélyezési fejlécet. A fejléc létrehozása bonyolult, de a jó hír az, hogy a kód működésének megkezdése után az összes tárolási szolgáltatás REST API-jának megfelelően működik.
 
-## <a name="creating-the-authorization-header"></a>Az engedélyezési fejléc létrehozásához
+## <a name="creating-the-authorization-header"></a>Az engedélyezési fejléc létrehozása
 
 > [!TIP]
-> Az Azure Storage mostantól támogatja az Azure Active Directory (Azure AD) integrálása a blobok és üzenetsorok. Azure ad-ben, amelyek engedélyezik a kérést az Azure Storage egy sokkal egyszerűbb megoldást kínál. Az Azure AD-vel történő hitelesítéséhez a REST-műveleteinek további információkért lásd: [hitelesítés az Azure Active Directoryval](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory). Az Azure AD-integráció az Azure Storage áttekintését lásd: [hitelesíti a hozzáférést az Azure Storage, Azure Active Directory használatával](storage-auth-aad.md).
+> Az Azure Storage mostantól támogatja a blobok és a várólisták Azure Active Directory (Azure AD) integrációját. Az Azure AD sokkal egyszerűbben használható az Azure Storage-ba irányuló kérések engedélyezéséhez. Az Azure AD a REST-műveletek engedélyezéséhez való használatával kapcsolatos további információkért lásd: [Engedélyezés a Azure Active Directory](/rest/api/storageservices/authorize-with-azure-active-directory). Az Azure AD-integráció Azure Storage-nal való áttekintését lásd: az [Azure Storage hozzáférésének hitelesítése Azure Active Directory használatával](storage-auth-aad.md).
 
-Van egy cikk, amely ismerteti a koncepciót tekintve (nem a kódban) végrehajtása [az Azure Storage szolgáltatásainak hitelesítése](/rest/api/storageservices/Authorization-for-the-Azure-Storage-Services).
-Nézzük nyerhet ki pontosan le a cikkben van szükség, és megjeleníteni a kódot.
+Van egy cikk, amely részletesen ismerteti az [Azure Storage-ba irányuló kérések engedélyezésének](/rest/api/storageservices/authorize-requests-to-azure-storage)módját (nincs kód).
 
-Először használja a megosztott kulcsos hitelesítés. Az engedélyezési fejléc formátuma a következőhöz hasonló:
+Nézzük meg, hogy a cikk pontosan szükség van-e, és mutassa be a kódot.
+
+Először használjon megosztott kulcsos hitelesítést. Az engedélyezési fejléc formátuma a következőképpen néz ki:
 
 ```  
 Authorization="SharedKey <storage account name>:<signature>"  
 ```
 
-Az aláírás mezőt a kivonat-alapú üzenethitelesítési kód (HMAC) a kérelem alapján létrehozott, és az SHA256 algoritmust használ, akkor a Base64 kódolás használatával kódolt számított. Nem működik, amely? (Az itt lévő lefagy, akkor még nem is hallgassa meg a word *kanonikussá* még.)
+Az aláírás mező a kérelemből létrehozott kivonat-alapú üzenethitelesítő kód (HMAC), amely a SHA256 algoritmus használatával lett kiszámítva, majd Base64 kódolással kódolva. Megkapta ezt? (Itt lefagyhat, még nem is hallotta a *kanonikus* szót.)
 
-Ez a kódrészlet azt mutatja be, a megosztott kulcsos aláírás karakterlánc formátuma:
+Ez a kódrészlet a megosztott kulcs aláírási karakterláncának formátumát mutatja:
 
 ```csharp  
 StringToSign = VERB + "\n" +  
@@ -298,66 +299,68 @@ StringToSign = VERB + "\n" +
                CanonicalizedResource;  
 ```
 
-Ezek a mezők a legtöbb ritkán használják. A Blob Storage adja meg művelet, az MD5-tel, a tartalom hossza, a Kanonikussá fejlécek és a Kanonikussá erőforrás. Üresen hagyhatja, a többi (de a put a `\n` így az tudni fogja üresek).
+A mezők többsége ritkán használatos. BLOB Storage esetén a művelet, az MD5, a tartalom hossza, a kanonikus fejlécek és a kanonikus erőforrások megadása szükséges. A többi mezőt üresen hagyhatja (de a `\n` értékkel is elvégezheti, hogy ne legyenek üresek).
 
-Mik azok CanonicalizedHeaders és CanonicalizedResource? Jó kérdést. Sőt mire kanonikussá mean? A Microsoft Word nem is ismeri fel a szó. Mi [Wikipedia szerint a kanonikussá tétele kapcsolatos](https://en.wikipedia.org/wiki/Canonicalization): *Számítógép-tudományi kanonikussá tétele (néha szabványügyi szervezet vagy normalizálási) egy folyamatot, amely rendelkezik egy "standard", "normál", illetve canonical űrlapra egynél több lehetséges reprezentáció adatok alakításával.* A normál beszél, ez azt jelenti, hogy számára (például fejlécek Kanonikussá fejlécek esetében) elemek listáját és a kötelező formátum szabványosíthatja őket. Alapvetően úgy döntött, formátumban a Microsoft, és azt egyeznie kell.
+Mi a CanonicalizedHeaders és a CanonicalizedResource? Jó kérdés. Valójában mit jelent a kanonikus? A Microsoft Word még nem ismeri fel szót. [A wikipedia a szabványosításról szól](https://en.wikipedia.org/wiki/Canonicalization): *A számítógép-tudományban a szabványosítás (esetenként a szabványosítás vagy a normalizálás) egy olyan folyamat, amely egynél több lehetséges ábrázolást tartalmaz a "standard", a "normál" vagy a Canonical Form értékekre.* Normális – beszéd esetén ez azt jelenti, hogy az elemek listáját (például a fejléceket a kanonikus fejlécek esetén) kell megtenni, és szabványosítani kell őket egy szükséges formátumba. A Microsoft alapvetően úgy döntött, hogy formátumot használ, és meg kell egyeznie.
 
-Kezdjük két szabványosított mezők, mert az engedélyezési fejléc létrehozásához szüksége van rájuk.
+Kezdjük a két kanonikus mezővel, mert az engedélyezési fejléc létrehozásához szükségesek.
 
-**Szabványosított fejlécek**
+### <a name="canonicalized-headers"></a>Kanonikus fejlécek
 
-Ezt az értéket, lekérni a fejlécek, kezdje az "x - ms-", és rendezze őket, majd be egy karakterláncot formázni őket `[key:value\n]` példányok, összefűzött be egy karakterláncot. Ebben a példában a szabványosított fejlécek néznek ki: 
+Az érték létrehozásához kérje le azokat a fejléceket, amelyek az "x-MS-" karakterlánccal kezdődnek, majd rendezze őket, majd formázza őket egy `[key:value\n]` példányba, amely egyetlen karakterlánccá van fűzve. Ebben a példában a kanonikus fejlécek így néznek ki: 
 
 ```
 x-ms-date:Fri, 17 Nov 2017 00:44:48 GMT\nx-ms-version:2017-07-29\n
 ```
 
-Itt látható, hogy a kimenet létrehozására használt kódot:
+Itt látható a kimenet létrehozásához használt kód:
 
 ```csharp 
 private static string GetCanonicalizedHeaders(HttpRequestMessage httpRequestMessage)
 {
     var headers = from kvp in httpRequestMessage.Headers
-                    where kvp.Key.StartsWith("x-ms-", StringComparison.OrdinalIgnoreCase)
-                    orderby kvp.Key
-                    select new { Key = kvp.Key.ToLowerInvariant(), kvp.Value };
+        where kvp.Key.StartsWith("x-ms-", StringComparison.OrdinalIgnoreCase)
+        orderby kvp.Key
+        select new { Key = kvp.Key.ToLowerInvariant(), kvp.Value };
 
-    StringBuilder sb = new StringBuilder();
+    StringBuilder headersBuilder = new StringBuilder();
 
     // Create the string in the right format; this is what makes the headers "canonicalized" --
     //   it means put in a standard format. https://en.wikipedia.org/wiki/Canonicalization
     foreach (var kvp in headers)
     {
-        StringBuilder headerBuilder = new StringBuilder(kvp.Key);
+        headersBuilder.Append(kvp.Key);
         char separator = ':';
 
         // Get the value for each header, strip out \r\n if found, then append it with the key.
-        foreach (string headerValues in kvp.Value)
+        foreach (string headerValue in kvp.Value)
         {
-            string trimmedValue = headerValues.TrimStart().Replace("\r\n", String.Empty);
-            headerBuilder.Append(separator).Append(trimmedValue);
+            string trimmedValue = headerValue.TrimStart().Replace("\r\n", string.Empty);
+            headersBuilder.Append(separator).Append(trimmedValue);
 
-            // Set this to a comma; this will only be used 
-            //   if there are multiple values for one of the headers.
+            // Set this to a comma; this will only be used
+            // if there are multiple values for one of the headers.
             separator = ',';
         }
-        sb.Append(headerBuilder.ToString()).Append("\n");
+
+        headersBuilder.Append("\n");
     }
-    return sb.ToString();
-}      
+
+    return headersBuilder.ToString();
+}
 ```
 
-**Szabványosított erőforrás**
+### <a name="canonicalized-resource"></a>Kanonikus erőforrás
 
-Ez a rész az aláírás karakterlánc a tárfiók a kérés által megcélzott jelöli. Ne feledje, hogy a kérelem URI-ja `<http://contosorest.blob.core.windows.net/?comp=list>`, a tényleges fióknévvel (`contosorest` ebben az esetben). Ebben a példában ezt adja vissza:
+Az aláírási karakterlánc ezen része a kérelem által megadott tárolási fiókot jelöli. Ne feledje, hogy a kérelem URI-ja `<http://contosorest.blob.core.windows.net/?comp=list>`, a tényleges fióknév (ebben az esetben `contosorest`). Ebben a példában a rendszer a következőt adja vissza:
 
 ```
 /contosorest/\ncomp:list
 ```
 
-Ha a lekérdezés paraméterei, ez magába foglalja azokat is. Itt van a kódra, amely további lekérdezési paraméterek és a lekérdezési paraméterek több értékkel rendelkező kezelésére is alkalmas. Ne feledje, hogy ez a kód, a REST API-k minden működik, így a felvenni kívánt összes lehetőség, akkor is, ha a ListContainers metódus nem szükséges mindegyiket fejleszt.
+Ha lekérdezési paraméterekkel rendelkezik, akkor a példa ezeket a paramétereket is tartalmazza. Itt látható a kód, amely további lekérdezési paramétereket és lekérdezési paramétereket is kezel több értékkel. Ne feledje, hogy ezt a kódot a REST API-k működéséhez kell felépíteni. Az összes lehetőséget fel szeretné venni, még akkor is, ha a ListContainers metódusnak nincs szüksége rájuk.
 
-```csharp 
+```csharp
 private static string GetCanonicalizedResource(Uri address, string storageAccountName)
 {
     // The absolute path will be "/" because for we're getting a list of containers.
@@ -370,14 +373,14 @@ private static string GetCanonicalizedResource(Uri address, string storageAccoun
 
     foreach (var item in values.AllKeys.OrderBy(k => k))
     {
-        sb.Append('\n').Append(item).Append(':').Append(values[item]);
+        sb.Append('\n').Append(item.ToLower()).Append(':').Append(values[item]);
     }
 
     return sb.ToString();
 }
 ```
 
-Most, hogy a szabványosított karakterláncok vannak beállítva, hogyan hozhat létre az engedélyezési fejléc önmagában nézzük meg. Indítsa el az ebben a cikkben korábban megjelenő StringToSign formátumban, az üzenetek aláírását karakterlánc létrehozásával. A fogalom, könnyebben elmagyarázni, megjegyzések használata a kódban, tehát itt, az utoljára létrehozandó metódust, amely visszaadja az engedélyezési fejléc:
+Most, hogy a kanonikus karakterláncok be vannak állítva, nézzük meg, hogyan hozhatja létre maga az engedélyezési fejlécet. Első lépésként hozzon létre egy karakterláncot az üzenet aláírásában a cikkben korábban megjelenő StringToSign formátumban. Ez a koncepció könnyebben elmagyarázható a kódban szereplő megjegyzések használatával, ezért itt az a végső módszer, amely visszaadja az engedélyezési fejlécet:
 
 ```csharp
 internal static AuthenticationHeaderValue GetAuthorizationHeader(
@@ -411,33 +414,33 @@ internal static AuthenticationHeaderValue GetAuthorizationHeader(
 }
 ```
 
-Ha ezt a kódot futtatja, az eredményül kapott MessageSignature néz ki:
+A kód futtatásakor az eredményül kapott MessageSignature a következő példához hasonlóan néz ki:
 
 ```
 GET\n\n\n\n\n\n\n\n\n\n\n\nx-ms-date:Fri, 17 Nov 2017 01:07:37 GMT\nx-ms-version:2017-07-29\n/contosorest/\ncomp:list
 ```
 
-A következő AuthorizationHeader végső értéke:
+A AuthorizationHeader végső értéke:
 
 ```
 SharedKey contosorest:Ms5sfwkA8nqTRw7Uury4MPHqM6Rj2nfgbYNvUKOa67w=
 ```
 
-A AuthorizationHeader a kérelem fejlécében helyezni, mielőtt elküldené a válasz az utolsó fejléc.
+A AuthorizationHeader a kérelem fejlécében elhelyezett utolsó fejléc a válasz elküldése előtt.
 
-Minden, amit tudnia a kóddal együtt történő helyreállíthatósága használhatja a Storage szolgáltatások REST API-k hívásához használandó kérelmet szeretne létrehozni egy osztály, amely ismerteti.
+Ez magában foglalja mindazt, amit tudnia kell, hogy összekapcsoljon egy olyan osztályt, amellyel a Storage szolgáltatások REST API-jának hívására vonatkozó kérést hozhat létre.
 
-## <a name="how-about-another-example"></a>Mi a helyzet egy másik példa? 
+## <a name="example-list-blobs"></a>Példa: Blobok listázása
 
-Nézzük meg a kódot a ListBlobs hívja meg a tároló módosítása *tároló-1*. Ez a majdnem teljesen megegyezik a kódot, tárolók, az URI-t és a válasz elemzéséhez hogyan csak különbségek listázásához. 
+Nézzük meg, hogyan módosítható a kód, hogy meghívja a Blobok listázása műveletet a Container *Container-1-* ben. Ez a kód majdnem azonos a tárolók listázásához szükséges kóddal, az egyetlen különbség, hogy az URI és hogyan elemezi a választ.
 
-Ha megtekinti a dokumentáció a [ListBlobs](/rest/api/storageservices/List-Blobs), úgy találja, hogy van-e a metódus *első* , és a RequestURI:
+Ha megtekinti a [ListBlobs](/rest/api/storageservices/List-Blobs)dokumentációját, a metódus a *Get* és a RequestURI:
 
 ```
 https://myaccount.blob.core.windows.net/container-1?restype=container&comp=list
 ```
 
-ListContainersAsyncREST módosítsa a kódot, amely beállítja az API-hoz az URI-t ListBlobs. A tároló neve **tároló-1**.
+A ListContainersAsyncREST-ben módosítsa az URI-t a ListBlobs API-ra beállító kódot. A tároló neve a **Container-1**.
 
 ```csharp
 String uri = 
@@ -446,7 +449,7 @@ String uri =
 
 ```
 
-Majd kezelni a választ, ahol módosíthatja a kódot a blobok, tárolók helyett kereséséhez.
+Ezután a válasz kezeléséhez módosítsa a kódot úgy, hogy a tárolók helyett blobokat keressen.
 
 ```csharp
 foreach (XElement container in x.Element("Blobs").Elements("Blob"))
@@ -455,36 +458,36 @@ foreach (XElement container in x.Element("Blobs").Elements("Blob"))
 }
 ```
 
-Ez a minta futtatásakor az alábbihoz hasonló eredményeket kap:
+A minta futtatásakor a következőhöz hasonló eredményt kap:
 
-**Szabványosított fejlécek:**
+**Kanonikus fejlécek:**
 
 ```
 x-ms-date:Fri, 17 Nov 2017 05:16:48 GMT\nx-ms-version:2017-07-29\n
 ```
 
-**Szabványosított erőforrás:**
+**Kanonikus erőforrás:**
 
 ```
 /contosorest/container-1\ncomp:list\nrestype:container
 ```
 
-**MessageSignature:**
+**Üzenet aláírása:**
 
 ```
 GET\n\n\n\n\n\n\n\n\n\n\n\nx-ms-date:Fri, 17 Nov 2017 05:16:48 GMT
   \nx-ms-version:2017-07-29\n/contosorest/container-1\ncomp:list\nrestype:container
 ```
 
-**AuthorizationHeader:**
+**Engedélyezési fejléc:**
 
 ```
 SharedKey contosorest:uzvWZN1WUIv2LYC6e3En10/7EIQJ5X9KtFQqrZkxi6s=
 ```
 
-A következő értékek közül az [Fiddler](https://www.telerik.com/fiddler):
+A következő értékek a [hegedűstől](https://www.telerik.com/fiddler)származnak:
 
-**A kérelem:**
+**Kérelem**
 
 ```
 GET http://contosorest.blob.core.windows.net/container-1?restype=container&comp=list HTTP/1.1
@@ -500,7 +503,7 @@ Host: contosorest.blob.core.windows.net
 Connection: Keep-Alive
 ```
 
-**Állapot és a válaszidő visszakapott fejlécek végrehajtása után:**
+**A végrehajtás után visszaadott állapotkód és válasz fejlécek:**
 
 ```
 HTTP/1.1 200 OK
@@ -512,11 +515,11 @@ Date: Fri, 17 Nov 2017 05:20:21 GMT
 Content-Length: 1135
 ```
 
-**Válasz törzsében (XML):** Az XML-válasz a blobok és a hozzájuk tartozó tulajdonságok listáját jeleníti meg. 
+**Válasz törzse (XML):** Ez az XML-válasz a blobok és azok tulajdonságainak listáját jeleníti meg. 
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<EnumerationResults 
+<EnumerationResults
     ServiceEndpoint="http://contosorest.blob.core.windows.net/" ContainerName="container-1">
     <Blobs>
         <Blob>
@@ -561,10 +564,11 @@ Content-Length: 1135
 
 ## <a name="summary"></a>Összegzés
 
-Ebben a cikkben megtanulta, hogyan használatával indítson egy a blob Storage REST API-tárolók listája vagy a tárolóban lévő blobok listájának lekéréséhez. Azt is megtanulta, hogyan hozhat létre a REST API-hívás az engedélyezési aláírás, hogyan használható a REST-kérés és vizsgálata a válasz.
+Ebből a cikkből megtudhatta, hogyan lehet kérelmet készíteni a blob Storage-REST API. A kérelem segítségével lekérheti a tárolók listáját vagy a Blobok listáját. Megtanulta, hogyan hozhatja létre az engedélyezési aláírást a REST API híváshoz, és hogyan használhatja azt a REST-kérelemben. Végezetül megtanulta, hogyan vizsgálhatja meg a választ.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Blob Service REST API](/rest/api/storageservices/blob-service-rest-api)
-* [A Fájlszolgáltatás REST API-val](/rest/api/storageservices/file-service-rest-api)
-* [Queue szolgáltatás REST API-val](/rest/api/storageservices/queue-service-rest-api)
+- [Blob Service REST API](/rest/api/storageservices/blob-service-rest-api)
+- [Fájlszolgáltatások REST API](/rest/api/storageservices/file-service-rest-api)
+- [Üzenetsor-szolgáltatás REST API](/rest/api/storageservices/queue-service-rest-api)
+- [Table Service REST API](/rest/api/storageservices/table-service-rest-api)

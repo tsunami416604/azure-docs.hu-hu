@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 543c1a6706f794b81c4f93fc6fff3a61ed3fb9e3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56171825"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60246321"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Az Azure AD Connect szinkronizálása: A deklaratív üzembe helyezés ismertetése
 Ez a témakör ismerteti az Azure AD Connect konfigurációs modell. A modell a deklaratív kiépítés neve, és lehetővé teszi, hogy olyan konfigurációs módosítást egyszerű. Sok-sok dolog ebben a témakörben leírt speciális és a legtöbb ügyfél forgatókönyvhöz nem szükséges.
@@ -42,13 +42,13 @@ A folyamat számos különböző modulokat tartalmaz. Mindegyik felelős felügy
 * [Elsőbbségi](#precedence), így feloldja az ütköző attribútum hozzájárulások
 * Cél, a célobjektum
 
-## <a name="scope"></a>Hatókör
+## <a name="scope"></a>Scope
 A hatókör-modul az a célja egy objektumot, és meghatározza, hogy a szabályokat, amelyek terjed ki, és szerepelnie kell a feldolgozása. Attribútumok értékek esetén az objektum különböző szinkronizálási szabály hatókörében kell értékeli ki. Például, hogy a letiltott felhasználó nem az Exchange-postaládával különböző szabályokat támaszt, mint az engedélyezett felhasználók egy postaládával rendelkezik.  
-![Hatókör](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope1.png)  
+![Scope](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope1.png)  
 
 A hatókör van meghatározva, csoportok és a kikötéseket. A feltételek a csoporton belül vannak. Logikai és a egy csoport összes záradékai közötti szolgál. Ha például (részleg = informatikai és ország = Dánia). Logikai vagy csoportok közötti szolgál.
 
-![Hatókör](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope2.png)  
+![Scope](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope2.png)  
 Olvassa el ezt a képet a hatókör (részleg = informatikai és ország Dánia =) vagy (ország Svédország =). Ha igaz értékre, majd a szabály kiértékelése történik a csoport 1 vagy 2. csoport hatóköre van.
 
 A hatókör-modul a következő műveleteket támogatja.

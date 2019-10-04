@@ -12,11 +12,11 @@ ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 688ef059387dc4c312873051c7c9d1eae259b1ae
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57844783"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61429883"
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>Adatok áthelyezése vagy onnan máshová SSIS-összekötők használatával az Azure Blob Storage
 A [SQL Server Integration Services funkciócsomag Azure](https://msdn.microsoft.com/library/mt146770.aspx) szeretne csatlakozni az Azure-összetevők közötti Azure-ban és a helyszíni adatforrások, és dolgozza fel az adatokat az Azure-ban tárolt adatok átvitele biztosít.
@@ -42,7 +42,7 @@ Ebben a cikkben ismertetett feladatok végrehajtásához Azure-előfizetéssel, 
 
 Használatához a **SSIS-összekötők**, le kell töltenie:
 
-* **Az SQL Server 2014 vagy 2016 Standard (vagy újabb)**: Install SQL Server Integration Services tartalmazza.
+* **Az SQL Server 2014 vagy 2016 Standard (vagy újabb)** : Install SQL Server Integration Services tartalmazza.
 * **A Microsoft SQL Server 2014 vagy 2016 Integration Services, Azure Feature Pack**: Ezek letölthető, az a [SQL Server 2014 Integration Services](https://www.microsoft.com/download/details.aspx?id=47366) és [SQL Server 2016 Integration Services](https://www.microsoft.com/download/details.aspx?id=49492) oldalakat.
 
 > [!NOTE]

@@ -1,95 +1,88 @@
 ---
-title: Útmutató az Azure-operátorok első lépésekhez |} A Microsoft Docs
-description: Első lépésekhez készült Azure informatikai dolgozói útmutató
-services: ''
-documentationcenter: ''
-author: themichaelbender-ms
-manager: timlt
-editor: tysonn
+title: Első lépések útmutató az Azure IT-kezelők számára | Microsoft Docs
+description: Első lépések útmutató az Azure IT-kezelők számára
+author: RicksterCDN
+ms.author: rclaus
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: azure
-ms.devlang: ''
 ms.topic: overview
-ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 08/24/2018
-ms.author: mibender
-ms.openlocfilehash: 1222395fd8efb7cf189ae6678f6c39f5a6c63157
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b225052daa61932f3b8b868789cfb3c204eca88f
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59051170"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543427"
 ---
-# <a name="get-started-for-azure-it-operators"></a>Ismerkedés az Azure-operátorok
+# <a name="get-started-for-azure-it-operators"></a>Első lépések az Azure IT-kezelők számára
 
-Ez az útmutató a telepítése és felügyelete a Microsoft Azure-infrastruktúra kapcsolatos alapfogalmakat mutatja be. Ha most ismerkedik a felhőalapú számítástechnika, vagy az Azure, az útmutató segítségével gyorsan elsajátíthatja a fogalmak, üzembe helyezési és kezelési információkról. Ez az útmutató számos szakaszok tárgyalják egy művelet, például a virtuális gép üzembe helyezése, és részletes technical részletességgel adja meg egy hivatkozást.
+Ez az útmutató bemutatja a Microsoft Azure infrastruktúra üzembe helyezésével és kezelésével kapcsolatos főbb fogalmakat. Ha még nem ismeri a felhő-számítástechnika vagy az Azure-t, ez az útmutató segítséget nyújt a fogalmakkal, üzembe helyezéssel és felügyelettel kapcsolatos részletek gyors megkezdésében. Az útmutató számos szakasza tárgyal egy olyan műveletet, mint például egy virtuális gép üzembe helyezése, és részletes technikai részletekre mutató hivatkozást biztosít.
 
-## <a name="cloud-computing-overview"></a>A felhő-számítástechnika – áttekintés
+## <a name="cloud-computing-overview"></a>A felhő-számítástechnika áttekintése
 
-A felhő-számítástechnika a hagyományos helyszíni adatközpontba modern alternatívát kínál. Nyilvános felhő adja meg, és az összes számítási infrastruktúrát és a mögöttes felügyeleti szoftver kezelése. Ezen szállítóktól számos felhőalapú szolgáltatások. Egy felhőalapú szolgáltatás ebben az esetben lehet egy virtuális gép, egy webkiszolgáló, vagy a felhőben futtatott adatbázis-kezelő. A felhőbeli szolgáltató ügyfélként bérletbe a felhőszolgáltatások révén igény szerint. Ennek során meg átalakítása hardverkarbantartás beruházna egy üzemeltetési költségek mellett. Egy cloud service emellett biztosítja ezeket az előnyöket:
+A felhő-számítástechnika modern alternatívát biztosít a hagyományos helyszíni adatközponthoz. A nyilvános Felhőbeli szállítók az összes számítástechnikai infrastruktúrát és a mögöttes felügyeleti szoftvert biztosítják és kezelik. Ezek a szállítók a Cloud Services széles választékát nyújtják. Ebben az esetben egy felhőalapú szolgáltatás lehet egy virtuális gép, egy webkiszolgáló vagy egy felhőben üzemeltetett adatbázismotor. A felhőalapú szolgáltatóként igény szerint kell kibérelni ezeket a felhőalapú szolgáltatásokat. Ennek során a hardveres karbantartás Capital-költségét egy működési költségre alakítja át. A felhőalapú szolgáltatás a következő előnyöket is biztosítja:
 
-- A nagy számítási környezetek gyors üzembe helyezési
+- Nagyméretű számítási környezetek gyors üzembe helyezése
 
-- Gyors felszabadítási rendszerek, amelyek már nem szükséges
+- A már nem szükséges rendszerek gyors felszabadítása
 
-- Egyszerű telepítés hagyományosan komplex rendszerek, például terheléselosztók
+- A hagyományosan összetett rendszerek, például a terheléselosztó egyszerű üzembe helyezése
 
-- Adja meg a rugalmas számítási kapacitását, vagy szükség esetén skálázhatja
+- Rugalmas számítási kapacitás vagy méretezés igény szerinti megadásának képessége
 
-- Több költséghatékony számítási környezetek
+- További költséghatékony számítástechnikai környezetek
 
-- A webes portálon vagy programozható automatizálási bárhonnan elérhető
+- Hozzáférés bárhonnan webalapú portálról vagy programozott automatizálásról
 
-- A legtöbb számítási és az alkalmazás igényeinek felhőalapú szolgáltatásokhoz
+- A legtöbb számítási és alkalmazási igényeknek megfelelő felhőalapú szolgáltatások
 
-A helyszíni infrastruktúrával rendelkezik teljes körű, a hardver- és központilag telepített szoftverek. Korábban ez egyes alkalmakkor teljesítetlen hardver beszerzési döntéseket, amelyek vertikális felskálázásával. Például egy csúcs teljesítményigények kielégítése érdekében több maggal rendelkező kiszolgáló van megvásárlásával. Sajnos ez az infrastruktúra előfordulhat, hogy eredményeztek igény szerint időszakon kívül. Az Azure-ban csak a szükséges infrastruktúra üzembe helyezését, és ez felfelé vagy lefelé bármikor módosíthatja. Ez vezet a fókusz a horizontális felskálázása a számítási csomópontot is üzembe helyezési keresztül egy teljesítmény igényeinek kielégítése. Költséghatékonyabb, mint a drága hardverek keresztül vertikális horizontális felskálázás a cloud services.
+A helyszíni infrastruktúrával teljes mértékben szabályozhatja az üzembe helyezett hardvereket és szoftvereket. Ez a cikk a felskálázásra koncentráló hardveres beszerzési döntéseket vezetett. Erre példa egy olyan kiszolgáló vásárlása, amely több magot is biztosít a maximális teljesítménybeli igények kielégítése érdekében. Ez az infrastruktúra sajnos az igény szerinti időszakon kívül is felhasználható. Az Azure-ban csak a szükséges infrastruktúra helyezhető üzembe, és a beállítás bármikor beállítható. Ez azt eredményezi, hogy a további számítási csomópontok üzembe helyezése a teljesítmény igényének kielégítése érdekében a középpontba kerül. A Cloud Services horizontális felskálázása sokkal költséghatékonyabb, mint a költséges hardverek használata.
 
-A Microsoft több tervezett számos Azure-adatközpontokban világszerte, telepítve van. Ezenkívül a Microsoft független felhőkben a régiókban, mint az Kínában és Németországban növekszik. Csak a legnagyobb globális vállalatok adatközpontok ily módon telepíthet, így az az Azure megkönnyíti az ügyfelek közelében a szolgáltatások üzembe helyezéséhez bármilyen méretű vállalatok számára.
+A Microsoft számos Azure-adatközpontot üzembe helyezett világszerte, és több megtervezéssel. A Microsoft emellett szuverén felhőket is egyre több régióban, például Kínában és Németországban is. Ebben az esetben csak a legnagyobb globális vállalatok telepíthetnek adatközpontokat, így az Azure-t használva bármilyen méretű vállalat számára könnyedén üzembe helyezhetik szolgáltatásaikat az ügyfelek számára.
 
-A kisméretű vállalkozások számára az Azure lehetővé teszi, hogy egy alacsony költségű belépési ponthoz együtt növekszik a számítási igény szerint gyorsan méretezhető. Ez megakadályozza, hogy egy nagy méretű kezdeti tőkebefektetés infrastruktúrában, és tervezhet és hozzáláttunk rendszerek, igény szerint rugalmasan biztosít. A felhő-számítástechnika a méretezési csoport-gyors és hibatűrő modell indítási növekedési a megfelelő használatát.
+A kisvállalkozások számára az Azure egy alacsony díjszabású belépési pontot tesz lehetővé, amellyel gyorsan méretezheti a számítási kapacitások igényét. Ez meggátolja a nagy mértékű kezdeti tőkebefektetést az infrastruktúrában, és szükség szerint rugalmasságot biztosít az építész és a rendszerek újratervezéséhez. A felhő-számítástechnika használata jól illeszkedik az indítási növekedésnek megfelelő, gyors és sikertelen működésű modellhez.
 
-Az elérhető Azure-régiók további információkért lásd: [Azure-régiók](https://azure.microsoft.com/regions/).
+Az elérhető Azure-régiókkal kapcsolatos további információkért lásd: [Azure-régiók](https://azure.microsoft.com/regions/).
 
-### <a name="cloud-computing-model"></a>Felhőalapú számítástechnika modell
+### <a name="cloud-computing-model"></a>Felhő-számítástechnikai modell
 
-Az Azure felhőalapú számítástechnikai az ügyfelek számára nyújtott szolgáltatás kategóriák alapján modellt használ. A szolgáltatás három kategória közé tartozik az infrastruktúra-szolgáltatás (IaaS), Platformszolgáltatás (PaaS) és szoftverszolgáltatás (SaaS). Szállítók ossza meg néhány vagy összes feladata a számítástechnikai halomként az egyes kategóriákban lévő összetevőnél. Vessünk egy pillantást az egyes kategóriák felhőalapú számítástechnika.
-![A felhő-számítástechnikai Stack összehasonlítása](./media/cloud-computing-comparison.png)
+Az Azure egy felhőalapú számítástechnikai modellt használ az ügyfelek számára biztosított szolgáltatási kategóriák alapján. A szolgáltatás három kategóriája magában foglalja az infrastruktúra-szolgáltatást (IaaS), a szolgáltatásként szolgáló platformot és a szolgáltatott szoftvereket (SaaS). A szállítók megosztanak egy vagy több felelősséget az egyes kategóriákban található számítástechnikai verem összetevőihez. Vessünk egy pillantást a felhőalapú számítástechnika egyes kategóriáira.
+![Felhő-számítástechnikai verem összehasonlítása](./media/cloud-computing-comparison.png)
 
-#### <a name="iaas-infrastructure-as-a-service"></a>IaaS: Infrastruktúra-szolgáltatás
+#### <a name="iaas-infrastructure-as-a-service"></a>IaaS Infrastruktúra-szolgáltatás
 
-Egy felhőalapú IaaS-szolgáltatón fut, és kezeli az összes fizikai számítási erőforrások és a szükséges szoftverek a számítógép-virtualizálás engedélyezése. Ez a szolgáltatás ügyfele ezek üzemeltetett adatközpontok virtuális gépeket helyez üzembe. Bár a virtuális gépek egy külső helyszíni adatközpontban találhatók, az IaaS-felhasználó rendelkezik a konfigurációs és az operációs rendszer az alapul szolgáló infrastruktúra és a felhő szállító felügyeleti felett.
+A IaaS felhőalapú szállítója az összes fizikai számítási erőforrást és a szükséges szoftvert a számítógép-virtualizálás engedélyezéséhez futtatja és felügyeli. A szolgáltatás ügyfele ezen üzemeltetett adatközpontokban helyez üzembe virtuális gépeket. Bár a virtuális gépek egy külső adatközpontban találhatók, a IaaS-fogyasztó felügyeli az operációs rendszer konfigurálását és felügyeletét, és a mögöttes infrastruktúrát a felhő gyártója számára elhagyhatja.
 
-Az Azure számos IaaS-megoldások, beleértve a virtual machines, a virtual machine scale sets és a kapcsolódó hálózati infrastruktúrát tartalmaz. Virtuális gépek egy népszerű, kezdetben áttelepítéshez választott services az Azure-ba, mivel lehetővé teszi, hogy a "lift and shift" migrálási modellben. Konfiguráljon egy virtuális Gépet, mint a saját adatközpontjában futó jelenleg a szolgáltatások infrastruktúrát, és majd telepítse át a szoftvert az új virtuális gépre. Szüksége lehet az URL-címek használatával más szolgáltatásokba vagy tárolókba, például a konfigurációs frissítések végrehajtására, de ezzel a módszerrel több alkalmazásokat telepíthet át.
+Az Azure számos IaaS-megoldást tartalmaz, többek között a virtuális gépeket, a virtuálisgép-méretezési csoportokat és a kapcsolódó hálózati infrastruktúrát. A Virtual Machines ideális választás a szolgáltatások Azure-ba való áttelepítésére, mivel ez lehetővé teszi a "lift and SHIFT" áttelepítési modellt. Beállíthat egy virtuális gépet, például a szolgáltatásokat jelenleg futtató infrastruktúrát az adatközpontban, majd áttelepítheti a szoftvert az új virtuális gépre. Előfordulhat, hogy olyan konfigurációs frissítéseket kell létrehoznia, mint az URL-címek más szolgáltatásokhoz vagy tárhelyekhez, de így számos alkalmazást telepíthet át.
 
-A Virtual machine scale sets beépített épülő Azure Virtual machines szolgáltatásban, és azonos virtuális gépek fürtjeinek üzembe helyezéséhez egyszerű módot biztosítanak. Virtuálisgép-méretezési csoportok automatikus skálázást is támogatják, úgy, hogy az új virtuális gépet is üzembe helyezhetők automatikusan szükség esetén. Így a virtual machine scale sets ideális platformot jelentenek a magasabb szintű mikroszolgáltatás számítási gazdagépfürtökre, például az Azure Service Fabric és Azure Container Service-ben.
+A virtuálisgép-méretezési csoportok az Azure Virtual Machinesra épülnek, és egyszerű módot biztosítanak azonos virtuális gépekből álló fürtök üzembe helyezésére. A virtuálisgép-méretezési csoportok támogatják az automatikus skálázást is, így az új virtuális gépek szükség esetén automatikusan üzembe helyezhetők. Így a virtuálisgép-méretezés ideális platformot biztosít a magasabb szintű (például Azure Service Fabric és Azure Container Service) számítási fürtök üzemeltetéséhez.
 
-#### <a name="paas-platform-as-a-service"></a>PaaS: Platformszolgáltatás
+#### <a name="paas-platform-as-a-service"></a>PaaS Platformszolgáltatás
 
-A paas az alkalmazást, amely a felhőalapú szolgáltatás szállítójával biztosít környezetbe helyezi üzembe. A szállító hajtja végre az összes infrastruktúra-felügyelettel, így Ön az alkalmazásfejlesztéshez és az adatkezelést.
+A Pásti segítségével üzembe helyezheti az alkalmazást a Cloud Service-gyártó által biztosított környezetbe. A szállító az összes infrastruktúra-kezelést kihasználva az alkalmazások fejlesztésére és az adatkezelésre koncentrálhat.
 
-Az Azure biztosít több PaaS számítási ajánlatokat, többek között az Azure Cloud Services (webes és feldolgozói szerepkörök) és az Azure App Service Web Apps funkcióját. Mindkét esetben a fejlesztők saját-alkalmazás üzembe helyezése anélkül, hogy semmit, amelyek azt támogatják és alapelemek több lehetőség is rendelkezik. A fejlesztők hozhat létre virtuális gépeket (VM), jelentkezzen be minden egyes egy Remote Desktop Protocol (RDP) használatával vagy az alkalmazás telepítéséhez nem kell. Ezek csak nyomja le a gomb (vagy zárja be azt), és a Microsoft által biztosított eszközök a virtuális gépek kiépítése üzembe helyezése és az alkalmazás telepíthető.
+Az Azure számos, a többek között elérhető, a Azure App Service és az Azure Cloud Services (webes és feldolgozói szerepkörök) Web Apps funkcióját kínálja. Mindkét esetben a fejlesztőknek több módja is van az alkalmazás üzembe helyezésére anélkül, hogy ismerniük kellene az azt támogató dió-és csavarokat. A fejlesztőknek nem kell virtuális gépeket létrehozniuk, RDP protokoll (RDP) használatával bejelentkezniük, vagy telepíteniük kell az alkalmazást. Csak egy gombot (vagy annak közelségét), a Microsoft által biztosított eszközöket pedig kiépítik a virtuális gépekre, majd üzembe helyezik és telepítik az alkalmazást.
 
-#### <a name="saas-software-as-a-service"></a>SaaS: Szoftverszolgáltatás
+#### <a name="saas-software-as-a-service"></a>Saas Szolgáltatott szoftver
 
-SaaS olyan szoftver, amely központilag üzemeltetett és kezelt. Általában egy több-bérlős architektúra alapján – az alkalmazás egy verzióját minden ügyfelünk esetében használatos. Ez kiterjeszthető az összes helyen a legjobb teljesítmény érdekében több példányra. SaaS általában szoftvert egy havi vagy éves előfizetés keretében. SaaS általában szoftvert egy havi vagy éves előfizetés keretében. SaaS-szoftverszállítók felelős a a szoftververem összes összetevőjét, így az összes Ön által kezelt nyújtott szolgáltatások.
+Az SaaS egy központilag üzemeltetett és felügyelt szoftver. Általában egy több-bérlős architektúrán alapulnak – az alkalmazás egyetlen verzióját használja a rendszer az összes ügyfél számára. Több példányra is méretezhető, így biztosítható a legjobb teljesítmény az összes helyen. Az SaaS-szoftverek általában havi vagy éves előfizetésen keresztüli licenccel rendelkeznek. A SaaS-szoftvergyártók felelősek a szoftver összes összetevőjéért, így minden Ön által kezelt szolgáltatás.
 
-A Microsoft Office 365 egy jó példa egy SaaS-ajánlatok. Előfizetők havi vagy éves előfizetési díjat kell fizetnie, és a Microsoft Exchange, a Microsoft OneDrive és a többi szolgáltatás a Microsoft Office programcsomag kapnak. -Előfizetők mindig a legújabb verzióra, és az Exchange-kiszolgálóhoz van kezelve. Telepítés és frissítés Office évente képest, ez a kevésbé költséges és kevesebb beavatkozást igényel.
+A Microsoft Office 365 egy SaaS-ajánlat jó példája. Az előfizetők havi vagy éves előfizetési díjat fizetnek, és a Microsoft Exchange, a Microsoft OneDrive, valamint a Microsoft Office csomag többi részét szolgáltatásként kapják meg. Az előfizetők mindig a legújabb verziót kapják meg, az Exchange-kiszolgálót pedig felügyeli. Az Office minden évben történő telepítéséhez és frissítéséhez képest ez olcsóbb, és kevesebb erőfeszítést igényel.
 
 ## <a name="azure-services"></a>Azure-szolgáltatások
 
-Az Azure a saját felhő-számítástechnikai platform számos szolgáltatás biztosít. Ezek a szolgáltatások a következők:
+Az Azure számos szolgáltatást kínál a felhőalapú számítástechnikai platformon. Ezek a szolgáltatások többek között a következők:
 
 ### <a name="compute-services"></a>Számítási szolgáltatások
 
-Alkalmazás számítási feladatait és a szolgáltatások:
+Az alkalmazások számítási feladatainak üzemeltetéséhez és futtatásához szükséges szolgáltatások:
 
-- Az Azure Virtual Machines – Linuxos és a Windows
+- Azure Virtual Machines – Linux és Windows rendszereken egyaránt
 
-- App Services (Web Apps, Mobile Apps, Logic Apps, az API Apps és Függvényalkalmazások)
+- App Services (Web Apps, Mobile Apps, Logic Apps, API Apps és functions alkalmazások)
 
-- Az Azure Batch (a nagy méretű párhuzamos és kötegelt számítási feladatok)
+- Azure Batch (nagyméretű párhuzamos és kötegelt számítási feladatokhoz)
 
 - Azure Service Fabric
 
@@ -97,9 +90,9 @@ Alkalmazás számítási feladatait és a szolgáltatások:
 
 ### <a name="data-services"></a>Adatszolgáltatások
 
-NFS-adatok tárolására és kezelésére:
+Az adattárolási és-kezelési szolgáltatások:
 
-- Az Azure Storage (az Azure Blob, üzenetsor, tábla és fájl szolgáltatásból áll)
+- Azure Storage (az Azure Blob, üzenetsor, Table és file Services szolgáltatásokból áll)
 
 - Azure SQL Database
 
@@ -111,367 +104,367 @@ NFS-adatok tárolására és kezelésére:
 
 ### <a name="application-services"></a>Alkalmazásszolgáltatások
 
-Működő alkalmazások és szolgáltatások:
+Szolgáltatások az alkalmazások létrehozásához és üzemeltetéséhez:
 
 - Azure Active Directory (Azure AD)
 
-- Kapcsolódás az Azure Service Bus elosztott rendszerek
+- Az elosztott rendszerek csatlakoztatásának Azure Service Bus
 
-- Az Azure HDInsight a big Data jellegű adatok feldolgozása
+- Azure-HDInsight big data feldolgozásához
 
-- Az Azure Scheduler
+- Azure Scheduler
 
 - Azure Media Services
 
-### <a name="network-services"></a>A hálózati szolgáltatások
+### <a name="network-services"></a>Hálózati szolgáltatások
 
-Azure-ban, és az Azure és a helyszíni adatközpontok között hálózati szolgáltatások:
+Szolgáltatások az Azure-ban és az Azure-beli és a helyszíni adatközpontok között:
 
 - Azure Virtual Network
 
 - Azure ExpressRoute
 
-- Azure-provided DNS
+- Azure által biztosított DNS
 
 - Azure Traffic Manager
 
 - Azure Content Delivery Network
 
-Az Azure-szolgáltatások részletes dokumentációjáért lásd: [Azure szolgáltatás dokumentációja](https://docs.microsoft.com/azure).
+Az Azure-szolgáltatásokkal kapcsolatos részletes dokumentációért lásd: az [Azure szolgáltatás dokumentációja](https://docs.microsoft.com/azure).
 
-## <a name="azure-key-concepts"></a>Az Azure fő fogalmak
+## <a name="azure-key-concepts"></a>Az Azure-alapfogalmak
 
 ### <a name="datacenters-and-regions"></a>Adatközpontok és régiók
 
-Az Azure világszerte számos régióban általánosan elérhető globális felhő platformon el. Egy szolgáltatás, alkalmazás vagy az Azure-beli virtuális gép üzembe helyezésekor, a rendszer felkéri a válasszon ki egy régiót. A kiválasztott régióban egy speciﬁc adatközpontba, ahol az alkalmazás fut jelöli. További információkért lásd: [Azure-régiók](https://azure.microsoft.com/regions/).
+Az Azure egy globális felhőalapú platform, amely világszerte számos régióban általánosan elérhető. Amikor kiépít egy szolgáltatást, alkalmazást vagy virtuális gépet az Azure-ban, a rendszer megkéri, hogy válasszon ki egy régiót. A kiválasztott régió egy adott adatközpontot jelöl, amelyben az alkalmazás fut. További információ: Azure- [régiók](https://azure.microsoft.com/regions/).
 
-Az Azure használatának beneﬁts egyike, hogy a világ különböző pontjain azokat az alkalmazásokat helyezhet üzembe. A választott régióban is aﬀect az alkalmazás teljesítményét. Válasszon régiót, amely leginkább az ügyfelek hálózati kéréseket a késés csökkentése érdekében közelebb van az optimális. Is választhat egy régió esetében az egyes országokban az alkalmazás terjesztése a jogi követelmények teljesítéséhez.
+Az Azure használatának egyik előnye, hogy az alkalmazásait különböző adatközpontokban helyezheti üzembe az egész világon. A választott régió hatással lehet az alkalmazás teljesítményére. A hálózati kérések késésének csökkentése érdekében optimális megoldás, ha olyan régiót szeretne kiválasztani, amely közelebb van az ügyfelekhez. Azt is megteheti, hogy kijelöl egy régiót, amely megfelel az alkalmazás bizonyos országokban/régiókban való terjesztésének jogi követelményeinek.
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Az Azure Portalon egy webalapú alkalmazás, amely segítségével létrehozása, kezelése és Azure-erőforrások és szolgáltatások eltávolítása. Az Azure Portalon a következő helyen található [portal.azure.com](https://portal.azure.com). Tartalmaz egy testreszabható irányítópulton és az Azure-erőforrások kezeléséhez. Számlázási és előfizetés-információkat is biztosít. További információkért lásd: [Microsoft Azure portal áttekintése](https://azure.microsoft.com/documentation/articles/azure-portal-overview/) és [Azure-erőforrások a portál](https://docs.microsoft.com/azure/azure-portal/resource-group-portal).
+A Azure Portal egy webalapú alkalmazás, amely Azure-erőforrások és-szolgáltatások létrehozásához, kezeléséhez és eltávolításához használható. A Azure Portal a következő helyen található: [Portal.Azure.com](https://portal.azure.com). Tartalmaz egy testreszabható irányítópultot és az Azure-erőforrások kezelésére szolgáló eszközöket. Emellett számlázási és előfizetési információkat is biztosít. További információ: [Microsoft Azure Portal áttekintése](https://azure.microsoft.com/documentation/articles/azure-portal-overview/) és az [Azure-erőforrások kezelése a portálon keresztül](https://docs.microsoft.com/azure/azure-portal/resource-group-portal).
 
 ### <a name="resources"></a>További források
 
-Azure-erőforrások az egyes számítási, hálózatkezelési, adatok vagy alkalmazásszolgáltatási szolgáltatásokat, amelyek az Azure-előfizetéssel van telepítve. Néhány általános erőforrás például a virtuális gépek, a storage-fiókok vagy az SQL-adatbázisok. Azure-szolgáltatások gyakran több kapcsolódó Azure-erőforrások állnak. Például egy Azure virtuális gépet tartalmazhat egy virtuális gép, a storage-fiók, a hálózati adapter és a nyilvános IP-címet. Ezeket az erőforrásokat is létrehozott, felügyelt és egyesével vagy csoportosan törölt. Ez az útmutató későbbi része részletesen ismertetett Azure-erőforrások.
+Az Azure-erőforrások az Azure-előfizetésbe telepített egyéni számítási, hálózati, adatkezelési és alkalmazás-üzemeltetési szolgáltatások. Néhány gyakori erőforrás a virtuális gépek, a Storage-fiókok vagy az SQL-adatbázisok. Az Azure-szolgáltatások gyakran több kapcsolódó Azure-erőforrásból állnak. Előfordulhat például, hogy egy Azure-beli virtuális gép tartalmaz egy virtuális gépet, egy Storage-fiókot, egy hálózati adaptert és egy nyilvános IP-címet. Ezek az erőforrások egyenként vagy csoportként hozhatók létre, kezelhetők és törölhetők. Az Azure-erőforrásokat az útmutató későbbi részében részletesebben tárgyaljuk.
 
 ### <a name="resource-groups"></a>Erőforráscsoportok
 
-Azure-erőforráscsoport egy tároló, amely az Azure-megoldásokhoz kapcsolódó erőforrásokat tárol. Az erőforráscsoport a megoldás összes erőforrását, vagy csak a csoportos felügyelni kívánt erőforrásokat is tartalmazhat. Ez az útmutató későbbi része részletesen ismertetett Azure-erőforráscsoportot.
+Az Azure-erőforráscsoport egy olyan tároló, amely egy Azure-megoldáshoz kapcsolódó erőforrásokat tárol. Az erőforráscsoport magában foglalhatja a megoldás összes erőforrását, vagy csak azokat az erőforrásokat, amelyeket csoportként szeretne kezelni. Az Azure-erőforráscsoportok részletesebben az útmutató későbbi részében találhatók.
 
 ### <a name="resource-manager-templates"></a>Resource Manager-sablonok
 
-Az Azure Resource Manager-sablon egy JavaScript Object Notation (JSON) fájlt, amely meghatározza egy erőforráscsoport központi telepítése egy vagy több erőforrás. A telepített erőforrások közti függőségeket is meghatározza. Resource Manager-sablonok az útmutató későbbi részében részletesebben terjed ki.
+Az Azure Resource Manager sablon egy JavaScript Object Notation (JSON) fájl, amely egy vagy több olyan erőforrást határoz meg, amelyet egy erőforráscsoporthoz kíván üzembe helyezni. Meghatározza továbbá az üzembe helyezett erőforrások közötti függőségeket is. A Resource Manager-sablonokat az útmutató későbbi részében részletesebben tárgyaljuk.
 
 ### <a name="automation"></a>Automation
 
-Mellett létrehozása, kezelése és törlése erőforrásokat az Azure portal használatával PowerShell vagy az Azure parancssori felület (CLI) használatával automatizálható a ezeket a tevékenységeket.
+A Azure Portal használatával az erőforrások létrehozása, kezelése és törlése mellett a PowerShell vagy az Azure parancssori felület (CLI) segítségével automatizálhatja ezeket a tevékenységeket.
 
 #### <a name="azure-powershell"></a>Azure PowerShell
 
-Az Azure PowerShell-modulok biztosító Azure kezelésére szolgáló parancsmagok olyan. A parancsmagok használatával létrehozása, kezelése és az Azure-szolgáltatások eltávolítása. A parancsmagok segítségével érheti el, egységes, megismételhető és hands-off központi telepítések. További információt [az Azure PowerShell telepítésével és konfigurálásával](/powershell/azure/install-Az-ps) foglalkozó témakörben talál.
+Azure PowerShell az Azure kezelésére szolgáló parancsmagokat biztosító modulok összessége. A parancsmagok használatával Azure-szolgáltatásokat hozhat létre, kezelhet és távolíthat el. A parancsmagok segítségével konzisztens, ismételhető és kihasználható központi telepítéseket érhet el. További információt [az Azure PowerShell telepítésével és konfigurálásával](/powershell/azure/install-Az-ps) foglalkozó témakörben talál.
 
 #### <a name="azure-command-line-interface"></a>Azure parancssori felületén
 
-Az Azure parancssori felület egy olyan eszköz, létrehozása, kezelése és Azure-erőforrások eltávolítása a parancssor segítségével. Az Azure CLI Windows, Linux és Mac OS X érhető el. További információkért és a technikai részletekért, lásd: [az Azure CLI telepítése](/cli/azure/install-azure-cli).
+Az Azure parancssori felület egy eszköz, amellyel Azure-erőforrásokat hozhat létre, kezelhet és eltávolíthat a parancssorból. Az Azure CLI Linux, Mac OS X és Windows rendszerekhez érhető el. További információ és technikai részletek: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
 #### <a name="rest-apis"></a>REST API-k
 
-Azure REST API-k, amelyek támogatják az Azure portal felhasználói felületén egy készletét épül. A legtöbb REST API-k lehetővé teszi, hogy programozott módon üzembe helyezése és kezelése az Azure-erőforrások és az alkalmazások internetes bármely eszközről is támogatottak. További információkért lásd: a [Azure REST SDK-leírás](https://docs.microsoft.com/rest/api/index).
+Az Azure a Azure Portal felhasználói felületét támogató REST API-k készletére épül. A REST API-k többsége támogatja az Azure-erőforrások és-alkalmazások programozott módon történő üzembe helyezését és kezelését bármely internetalapú eszközről. További információ: [Azure Rest SDK-dokumentáció](https://docs.microsoft.com/rest/api/index).
 
 ### <a name="azure-cloud-shell"></a>Azure Cloud Shell
 
-Rendszergazdák hozzáférhetnek az Azure PowerShell és az Azure CLI a böngésző-akadálymentes használatot biztosít az Azure Cloud Shell nevű keresztül. Az interaktív felület a választott, vagy a Bash vagy a PowerShell parancssori felület használata a Linux és Windows rendszergazdák rugalmas eszköz biztosít. Az Azure Cloud Shell a portálon keresztül érhetők el, egy különálló webes felület, [shell.azure.com](https://shell.azure.com), vagy egy másik hozzáférési pontok számát. További információkért lásd: [áttekintése az Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview).
+A rendszergazdák hozzáférhetnek a Azure PowerShell és az Azure CLI-hez egy Azure Cloud Shell nevű böngészővel elérhető felülettel. Ez az interaktív felület rugalmas eszközt biztosít a Linux-és Windows-rendszergazdák számára a választható parancssori felület használatához, vagy bash vagy PowerShell használatával. Azure Cloud Shell a portálon keresztül, önálló webes felületként, illetve számos más hozzáférési pontról is elérheti a [shell.Azure.com](https://shell.azure.com). További információ: [Azure Cloud Shell áttekintése](https://docs.microsoft.com/azure/cloud-shell/overview).
 
 ## <a name="azure-subscriptions"></a>Azure-előfizetések
 
-Egy előfizetés az Azure-szolgáltatások logikai csoportosítása, amely egy Azure-fiókra van csatolva. Egyetlen Azure-fiók több előfizetést is tartalmazhat. Azure-szolgáltatások használati díjának felszámolása előfizetésenként alapon történik. Azure-előfizetéssel rendelkezik, az előfizetés teljes hozzáféréssel rendelkező fiókot a rendszergazdák és az előfizetés az összes szolgáltatás felett rendelkező szolgáltatás-rendszergazdák. További információ a hagyományos előfizetés-rendszergazda: [hozzáadása vagy módosítása az Azure-előfizetés rendszergazdái](../../billing/billing-add-change-azure-subscription-administrator.md). A rendszergazdák, amellett az egyes fiókok is megadható az Azure-erőforrások kézben részletes [szerepköralapú hozzáférés-vezérlés (RBAC)](../../role-based-access-control/overview.md).
+Az előfizetés egy Azure-fiókhoz kapcsolódó Azure-szolgáltatások logikai csoportosítása. Egyetlen Azure-fiók több előfizetést is tartalmazhat. Az Azure-szolgáltatások számlázása előfizetési alapon történik. Az Azure-előfizetések rendelkeznek egy fiók rendszergazdájával, aki teljes körűen szabályozhatja az előfizetést, valamint egy szolgáltatás-rendszergazdát, aki az előfizetés összes szolgáltatását felügyeli. További információ a klasszikus előfizetési rendszergazdákról: Azure-előfizetések [rendszergazdáinak hozzáadása vagy módosítása](../../billing/billing-add-change-azure-subscription-administrator.md). A rendszergazdákon kívül az egyes fiókok a [szerepköralapú hozzáférés-vezérlés (RBAC)](../../role-based-access-control/overview.md)segítségével az Azure-erőforrások részletes ellenőrzését is megadhatják.
 
-### <a name="select-and-enable-an-azure-subscription"></a>Válassza ki, és a egy Azure-előfizetés engedélyezése
+### <a name="select-and-enable-an-azure-subscription"></a>Azure-előfizetés kiválasztása és engedélyezése
 
-Használhatja az Azure-szolgáltatásokkal, mielőtt egy előfizetés szükséges. Több előfizetés-típus érhető el.
+Az Azure-szolgáltatásokkal való együttműködéshez előfizetésre van szükség. Számos előfizetés-típus érhető el.
 
-**Az ingyenes fiókok**: A hivatkozásra kattintva regisztrálhat egy ingyenes fiók van a [Azure-webhelyen](https://azure.microsoft.com/). Ez lehetővé teszi a kredit szeretné kipróbálni az Azure-erőforrások tetszőleges kombinációját 30 nap folyamán. Ha túllépi a hitel összegét, a fiók fel van függesztve. A próbaidőszak végén a szolgáltatások leselejtezésekor, és nem fog működni. Használatalapú fizetéses előfizetésre, bármikor frissítheti.
+**Ingyenes fiókok**: Az ingyenes fiók regisztrálására szolgáló hivatkozás az [Azure webhelyén](https://azure.microsoft.com/)található. Ez az Azure-beli erőforrások bármely kombinációjának kipróbálására szolgáló 30 napos időszakra vonatkozó kreditet biztosít. Ha túllépi a kredit összegét, a rendszer felfüggeszti a fiókját. A próbaverzió végén a szolgáltatások leszerelése megszűnik, és a továbbiakban nem fog működni. Bármikor frissítheti az utólagos elszámolású előfizetést.
 
-**Az MSDN-előfizetéseket**: Ha rendelkezik MSDN-előfizetéssel, kap egy adott mennyiség az Azure-kredit minden hónapban. Például, ha a Microsoft Visual Studio Enterprise with MSDN előfizetéssel rendelkezik, kap \$Azure-kredit havi 150.
+**MSDN**-előfizetések: Ha rendelkezik MSDN-előfizetéssel, az Azure-kreditek havonta egy adott összeget kapnak. Ha például Microsoft Visual Studio Enterprise with MSDN-előfizetéssel rendelkezik, az Azure- \$kreditek havonta 150-et kapnak.
 
-Ha túllépi a kreditösszeg erejéig, a szolgáltatás le vannak tiltva, amíg el nem kezdi a következő hónapra. Kikapcsolja a költségkeretet, és adja hozzá a további költségek használandó hitelkártya. MSDN-fiókok néhány költségekhez képest. Például hogy kezdem meg Linux virtuális gépek Windows Server rendszert futtató, és semmilyen további díjat nem Microsoft-kiszolgálók, például a Microsoft SQL Server. Ez lehetővé teszi az MSDN-fiókok ideális fejlesztési és tesztelési forgatókönyvekhez.
+Ha túllépi a kredit összegét, a szolgáltatás le lesz tiltva a következő hónap megkezdése előtt. Kikapcsolhatja a költségkeretet, és hozzáadhat egy hitelkártyát, amelyet a további költségekhez kíván használni. A költségek némelyike az MSDN-fiókok esetében diszkontálva van. A Windows Servert futtató virtuális gépek esetében például a Linux árát kell fizetnie, és a Microsoft-kiszolgálókhoz (például Microsoft SQL Server) nem számítunk fel további díjat. Ez lehetővé teszi, hogy az MSDN-fiókok fejlesztési és tesztelési helyzetekben is ideálisak legyenek.
 
-**BizSpark-fiókok**: A Microsoft BizSpark programról üzenetcsere számos előnnyel jár, a startupok számára. Ezek az előnyök egyik hozzáférés minden Microsoft-szoftverek fejlesztési és tesztelési környezetek legfeljebb öt MSDN-fiókok. 150 USD első öt MSDN fiók minden egyes Azure-kredit, és kedvezményes fizet az Azure-szolgáltatások, például a virtuális gépek közül.
+**BizSpark fiókok**: A Microsoft BizSpark program számos előnyt kínál az indításokhoz. Ezen előnyök egyike az, hogy legfeljebb öt MSDN-fiókhoz fér hozzá a fejlesztési és tesztelési környezetekhez tartozó összes Microsoft-szoftverhez. Ezen öt MSDN-fiókhoz $150 Azure-kreditet kap, és az Azure-szolgáltatások (például Virtual Machines) csökkentett díjait kell fizetnie.
 
-**Használatalapú fizetés**: Az ezzel az előfizetéssel fizet csatlakoztatásával hitelkártya vagy bankkártya a fiókot használja. Ha egy szervezet, akkor is lehet jóváhagyni számlázása.
+Utólagos elszámolás: Ennek az előfizetésnek a használatáért bankkártyát vagy bankkártyát kell fizetnie a fiókhoz. Ha Ön szervezet, akkor is jóváhagyhatja a számlázást.
 
-**Nagyvállalati szerződések**: Nagyvállalati szerződéssel bizonyos számú services használata az Azure-ban a következő évben véglegesítése után, és időben összeg után kell fizetni. Az előzetes kötelezettségvállalást, hogy az az év folyamán felhasznált. Ha túllépi a kötelezettségvállalás összege, a kerettúllépést utólag fizethet. Az előzetes kötelezettségvállalást mennyiségétől függően a kedvezményes a szolgáltatások az Azure-ban kap.
+**Nagyvállalati szerződések**: Nagyvállalati szerződéssel Ön vállalja, hogy a következő évben bizonyos számú szolgáltatást használ az Azure-ban, és ezt az összeget előre kell fizetnie. Az Ön által létrehozott kötelezettségvállalás az év során lesz felhasználva. Ha túllépi a kötelezettségvállalás összegét, a hátralékos fizetést is kifizetheti. A kötelezettségvállalás mennyiségétől függően kedvezményt kap az Azure szolgáltatásaihoz.
 
-### <a name="grant-administrative-access-to-an-azure-subscription"></a>Rendszergazdai hozzáférés engedélyezése az Azure-előfizetés
+### <a name="grant-administrative-access-to-an-azure-subscription"></a>Rendszergazdai hozzáférés biztosítása egy Azure-előfizetéshez
 
-Az RBAC, amelyek segítségével engedélyek hozzárendelése több beépített szerepkörrel rendelkezik. Ahhoz, hogy a felhasználó az Azure-előfizetés rendszergazdájának, hozzárendelheti azokat a [tulajdonosa](../../role-based-access-control/built-in-roles.md#owner) szerepkör az előfizetések szintjén. A tulajdonosi szerepkör a felhasználó teljes hozzáférést biztosít, az összes erőforrást az előfizetésben, beleértve a jogot arra, hogy mások való hozzáférés delegálására.
+A RBAC számos beépített szerepkörrel rendelkezik, amelyeket az engedélyek hozzárendeléséhez használhat. Ahhoz, hogy egy felhasználó egy Azure-előfizetés rendszergazdája legyen, rendelje [](../../role-based-access-control/built-in-roles.md#owner) hozzá őket a tulajdonosi szerepkörhöz az előfizetés hatókörében. A tulajdonosi szerepkör teljes hozzáférést biztosít a felhasználó számára az előfizetés összes erőforrásához, beleértve a másokhoz való hozzáférés delegálásának jogát is.
 
-További információkért lásd: [rbac-RÓL és az Azure portal-hozzáférés kezelése](../../role-based-access-control/role-assignments-portal.md).
+További információ: [a hozzáférés kezelése a RBAC és a Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md).
 
-### <a name="view-billing-information-in-the-azure-portal"></a>Számlázási adatok megtekintése az Azure Portalon
+### <a name="view-billing-information-in-the-azure-portal"></a>Számlázási adatok megtekintése a Azure Portalban
 
-Fontos része az Azure-rendszer azon képessége, számlázási információk megtekintéséhez. Az Azure Portalon az Azure számlázási információihoz részletes betekintést nyújt.
+Az Azure-t használó fontos összetevő a számlázási információk megtekintésének lehetősége. A Azure Portal részletes betekintést nyújt az Azure számlázási adataiba.
 
-További információkért lásd: [az Azure számlázási és napi használati adatok letöltése](../../billing/billing-download-azure-invoice-daily-usage-date.md).
+További információ: az [Azure számlázási számla és a napi használati adatok letöltése](../../billing/billing-download-azure-invoice-daily-usage-date.md).
 
-### <a name="get-billing-information-from-billing-apis"></a>Számlázási API-jai számlázási információinak lekérése
+### <a name="get-billing-information-from-billing-apis"></a>Számlázási információk beolvasása a számlázási API-kkal
 
-A számlázás a portálon való megtekintése mellett egy parancsfájl vagy a program az Azure számlázási REST API-kon keresztül férhetnek hozzá a számlázási információkat:
+A számlázási adatokat a portálon is megtekintheti, ha az Azure számlázási REST API-kon keresztül parancsfájl vagy program használatával fér hozzá a számlázási adatokhoz:
 
-- Az Azure-használati API segítségével a használati adatok lekéréséhez. Kapcsolódó Azure-erőforrások megtekintett finomhangolhatja a számlázási használati adatokat. Például címke mindegyik erőforrás egy erőforráscsoportban, részleg vagy projekt nevét, és a költségek kifejezetten az adott egy címkét, majd nyomon követheti.
+- A használati adatok lekéréséhez az Azure használati API-ját használhatja. A számlázási használati információk finomhangolásához a kapcsolódó Azure-erőforrások címkézése is használható. Megcímkézheti például az erőforráscsoport összes erőforrását egy részleg nevével vagy a projekt nevével, majd nyomon követheti az adott címkére vonatkozó költségeket.
 
-- Az Azure sebessége kártya API segítségével a listában az összes rendelkezésre álló erőforrások, valamint a metaadatok és a díjszabás információkkal szolgál azokhoz az erőforrásokhoz.
+- Az Azure Rate Card API-val az összes rendelkezésre álló erőforrást listázhatja, valamint az egyes erőforrásokra vonatkozó metaadatokat és díjszabási információkat is.
 
-További információkért lásd: [betekintést nyerhet a Microsoft Azure erőforrás-használat](../../billing/billing-usage-rate-card-overview.md).
+További információ: betekintést [nyerhet a Microsoft Azure erőforrás](../../billing/billing-usage-rate-card-overview.md)-felhasználásba.
 
-### <a name="forecast-cost-with-the-pricing-calculator"></a>A díjkalkulátor az előre jelzett költség
+### <a name="forecast-cost-with-the-pricing-calculator"></a>Előrejelzési költség a díjszabási számológéptel
 
-Az Azure-ban minden egyes szolgáltatás díjszabása eltér. Sok Azure-szolgáltatás alapszintű, Standard és Premium szintet biztosítanak. Általában minden szint tartalmaz ára és teljesítménye szintekre. Használatával a [online díjkalkulátor](https://azure.microsoft.com/pricing/calculator), díjszabási becslések hozhat létre. A díjkalkulátorban feltüntetett tartalmaz egy erőforrás vagy erőforráscsoport költségek becsléséhez rugalmasságot.
+Az Azure-szolgáltatások díjszabása eltérő. Számos Azure-szolgáltatás alapszintű, standard és prémium szintű csomagokat biztosít. Az egyes szintek általában számos díjszabással és teljesítménnyel rendelkeznek. Az [online árképzési számológép](https://azure.microsoft.com/pricing/calculator)használatával árképzési becsléseket is létrehozhat. A számológép rugalmasságot biztosít egy adott erőforrás vagy egy erőforráscsoport költségeit megbecsülni.
 
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
 
-Az Azure Resource Manager az Azure-erőforrások egy központi telepítési, kezelési és szervezet mechanizmusa. Resource Manager használatával összeállíthatja az egyes erőforrások száma egy erőforráscsoportban.
+Azure Resource Manager az Azure-erőforrások üzembe helyezési, felügyeleti és szervezeti mechanizmusa. A Resource Manager használatával számos egyéni erőforrást helyezhet el egy erőforráscsoporthoz.
 
-Resource Manager üzembe helyezési funkciók lehetővé teszik a testre szabható telepítésre és a kapcsolódó erőforrások is tartalmaz. Például Resource Manager használatával telepítheti az alkalmazást, amely több virtuális gépet, a load balancer és a egy SQL database egyetlen egységként áll. Ezeket az üzemelő példányokat fejlesztése a Resource Manager-sablon használatával.
+A Resource Manager olyan üzembe helyezési képességeket is tartalmaz, amelyek lehetővé teszik a kapcsolódó erőforrások testreszabható üzembe helyezését és konfigurálását. A Resource Manager használatával például több virtuális gépről, egy terheléselosztóból és egy SQL-adatbázisból álló alkalmazást is telepíthet egyetlen egységként. Ezeket a központi telepítéseket Resource Manager-sablonok használatával fejlesztheti.
 
 A Resource Manager számos előnyt kínál:
 
 - A megoldás összes erőforrását egy csoportként telepítheti, felügyelheti és figyelheti meg az erőforrások különálló kezelése helyett.
 
-- Ismételt üzembe helyezheti megoldását, a fejlesztési életciklus során, és biztos lehet benne, hogy az erőforrások telepítése konzisztens lesz.
+- A megoldás többször is üzembe helyezhető a fejlesztési életciklus során, és biztos lehet abban, hogy az erőforrások konzisztens állapotban vannak üzembe helyezve.
 
 - Az infrastruktúrát szkriptek helyett deklaratív sablonok segítségével is kezelheti.
 
 - Meghatározhatja az erőforrások közti függőségeket, hogy azok a megfelelő sorrendben legyenek telepítve.
 
-- Alkalmazhat hozzáférés-vezérlés az összes szolgáltatás az erőforráscsoportban, mert az RBAC natív módon integrálva van a felügyeleti platformba.
+- Hozzáférés-vezérlést alkalmazhat az erőforráscsoport összes szolgáltatására, mivel a RBAC natív módon integrálva van a felügyeleti platformba.
 
-- Címkékkel láthatja az erőforrásokat, hogy logikusan rendszerezhesse az összes erőforrást az előfizetésében.
+- Az erőforrásokon címkéket alkalmazhat az előfizetésében lévő összes erőforrás logikus rendszerezéséhez.
 
-- Az azonos címkén osztozó erőforrások csoportjának költségeit megtekintve jól átláthatók a szervezet számlái.
+- A szervezet számlázását úgy is meghatározhatja, hogy megtekinti az azonos címkével rendelkező erőforrások egy csoportjának költségeit.
 
-### <a name="tips-for-creating-resource-groups"></a>Erőforráscsoportok létrehozásával kapcsolatos tippek
+### <a name="tips-for-creating-resource-groups"></a>Tippek az erőforráscsoportok létrehozásához
 
-Az erőforráscsoportokkal kapcsolatos döntések hajt végre, amikor vegye figyelembe a következő tippeket:
+Ha döntéseket hoz az erőforráscsoporthoz, vegye figyelembe a következő tippeket:
 
-- Egy erőforráscsoportba tartozó összes erőforrást az azonos életciklussal kell rendelkeznie.
+- Egy erőforráscsoport összes erőforrásának ugyanazzal az életciklussal kell rendelkeznie.
 
-- Csak egy csoport egy erőforráshoz rendelhet egyszerre.
+- Egy erőforrást egyszerre csak egy csoporthoz rendelhet hozzá.
 
-- Adja hozzá, vagy eltávolít egy erőforrást egy erőforráscsoportból, tetszőleges időpontban. Minden erőforrás egy erőforráscsoportba kell tartoznia. Így ha egy erőforrás eltávolítása egy csoportból, hozzá kell adnia azt a másikra.
+- Bármikor hozzáadhat vagy eltávolíthat egy erőforrást egy erőforráscsoport használatával. Minden erőforrásnak erőforráscsoport-csoporthoz kell tartoznia. Tehát ha eltávolít egy erőforrást egy csoportból, azt hozzá kell adnia egy másikhoz.
 
-- A legtöbb típusú erőforrások bármikor áthelyezheti egy másik erőforráscsoportban található.
+- A legtöbb típusú erőforrást bármikor áthelyezheti egy másik erőforráscsoport-csoportba.
 
-- Az erőforrásokat egy erőforráscsoportba tartozó különböző régiókban is lehetnek.
+- Az erőforráscsoportok erőforrásai különböző régiókban is lehetnek.
 
-- Használhatja egy erőforráscsoportot az erőforrások elérésének szabályozására.
+- Egy erőforráscsoport használatával szabályozhatja az erőforrásokhoz való hozzáférést.
 
-### <a name="building-resource-manager-templates"></a>Resource Manager-sablonok létrehozása
+### <a name="building-resource-manager-templates"></a>Resource Manager-sablonok kiépítése
 
-Resource Manager-sablonok deklaratív határozza meg, az erőforrások és a egy egységes erőforrás-csoportba telepített erőforrás-konfigurációk. Resource Manager-sablonok segítségével koordinálhatja az összetett központi telepítések felesleges parancsfájlok vagy manuális konfigurálása nélkül. Után, ha egy sablon fejlesztése, üzembe helyezheti többször – minden alkalommal, amikor az egy azonos serkenti az eredményt.
+A Resource Manager-sablonok deklaratívul határozzák meg azokat az erőforrásokat és erőforrás-konfigurációkat, amelyeket a rendszer egyetlen erőforráscsoporthoz fog telepíteni. A Resource Manager-sablonok használatával összetett központi telepítéseket állíthat össze anélkül, hogy felesleges parancsfájlokat vagy manuális konfigurálást kellene végeznie. A sablonok fejlesztése után több alkalommal is üzembe helyezheti azt, és minden alkalommal azonos eredménnyel.
 
-Resource Manager-sablonnal négy részből áll:
+A Resource Manager-sablonok négy szakaszból állnak:
 
-- **Paraméterek**: Ezek a bemeneti adatokat a központi telepítést. Paraméterértékek egy emberi vagy egy automatikus folyamat adható meg. Egy példa a paraméter egy rendszergazdai felhasználónevet és jelszót egy Windows virtuális gép lehet. A paraméterértékek az üzembe helyezés során használatosak, amikor azok van megadva.
+- **Paraméterek**: Ezek az üzemelő példány bemenetei. A paraméterek értékét emberi vagy automatizált folyamat is biztosíthatja. Egy példa paraméter a Windows rendszerű virtuális gépek rendszergazdai felhasználóneve és jelszava lehet. A paraméter értékeit a rendszer a telepítés során használja, amikor azok meg vannak adva.
 
-- **Változók**: Ezek használhatók a központi telepítés során használt értékek tárolásához. Ellentétben a paramétereket egy változó értéke nincs megadva üzembe helyezéskor. Ehelyett meglehetősen nehéz kódolt vagy dinamikusan hozzuk létre.
+- **Változók**: Ezek a telepítés során használt értékek tárolására szolgálnak. A paraméterekkel ellentétben a rendszer nem ad meg változó értéket a telepítési időpontnál. Ehelyett nehéz kódolni vagy dinamikusan generálni.
 
-- **Erőforrások**: Ez a szakasz a sablon határozza meg a szükséges erőforrásokat kell telepíteni, mint például a virtuális gépek, tárfiókok és a virtuális hálózatok.
+- **Erőforrások**: A sablon ezen szakasza határozza meg a telepítendő erőforrásokat, például a virtuális gépeket, a Storage-fiókokat és a virtuális hálózatokat.
 
-- **Kimeneti**: Miután a telepítés véget ért, a Resource Manager adhatnak vissza adatokat például dinamikusan létrehozott kapcsolati karakterláncokat.
+- **Kimenet**: Az üzembe helyezés befejezése után a Resource Manager olyan adatforrásokat adhat vissza, mint a dinamikusan generált kapcsolódási karakterláncok.
 
-Az üzembe helyezési automatizálást az alábbi módszerek érhetők el:
+Az üzembe helyezés automatizálásához a következő mechanizmusok érhetők el:
 
-- **Függvények**: A Resource Manager-sablonok számos funkciót is használhatja. Ezek közé tartozik az műveletek, például a sztring átalakítása, alakítása, egy meghatározott erőforrás több példányának telepítése, és dinamikusan a célként megadott erőforráscsoportja visszaadása. Erőforrás-kezelő funkciók segítségével hozhat létre dinamikus központi telepítések.
+- **Függvények**: A Resource Manager-sablonokban számos függvényt használhat. Ilyenek például a karakterláncok kisbetűsre konvertálása, egy meghatározott erőforrás több példányának üzembe helyezése és a célként megadott erőforráscsoport dinamikus visszaadása. A Resource Manager-függvények segítenek a dinamikus központi telepítések létrehozásában.
 
-- **Erőforrás-függőségek**: Több erőforrást telepítésekor, az egyes erőforrások lesz a mások függőség. Üzembe helyezés megkönnyítéséhez használhatja, hogy a függő erőforrások telepítése előtt a többi függőségi határozza meg.
+- **Erőforrás**-függőségek: Több erőforrás üzembe helyezésekor bizonyos erőforrások függősége lesz másoktól. Az üzembe helyezés megkönnyítése érdekében függőségi deklarációt használhat, hogy a rendszer a többi felhasználó előtt üzembe helyezte a függő erőforrásokat.
 
-- **Sablon linking**: Egy Resource Manager-sablon belül kapcsolat egy másik sablonba. Ez lehetővé teszi a központi telepítési felbontása a megcélzott, a cél-specifikus sablonok egy csoportba.
+- **Sablon csatolása**: Egy Resource Manager-sablonon belül egy másik sablonra is hivatkozhat. Ez lehetővé teszi, hogy a központi telepítés lebomlása célzott, célhoz tartozó sablonokba történjen.
 
-Resource Manager-sablonok bármilyen szövegszerkesztővel létrehozható. Azonban a Visual Studióhoz készült Azure SDK eszközöket tartalmaz. A Visual Studio használatával, is erőforrások hozzáadása a sablont a varázsló lépéseit, majd üzembe helyezése és hibakeresése a sablont, közvetlenül a Visual Studión belül. További információkért lásd: [Azure Resource Manager-sablonok készítése](../../resource-group-authoring-templates.md).
+Bármely szövegszerkesztőben Resource Manager-sablonokat hozhat létre. A Visual studióhoz készült Azure SDK azonban olyan eszközöket tartalmaz, amelyek segítenek Önnek. A Visual Studióval hozzáadhat erőforrásokat a sablonhoz egy varázsló segítségével, majd közvetlenül a Visual studióból telepítheti és hibakeresést végezhet a sablonon belül. További információ: Azure Resource Manager- [sablonok készítése](../../resource-group-authoring-templates.md).
 
-Végül meglévő erőforráscsoportok is átalakítása egy újrafelhasználható sablonok az Azure Portalról. Ez hasznos lehet, ha szeretne létrehozni egy meglévő erőforráscsoportot, egy üzembe helyezhető sablont, vagy csak szeretné megvizsgálja a mögöttes JSON. Szeretné exportálni egy erőforráscsoportot, válassza ki a **Automation-szkript** gomb az erőforráscsoport beállításai közül.
+Végezetül átalakíthatja a meglévő erőforráscsoportokat egy újrafelhasználható sablonba a Azure Portalból. Ez akkor lehet hasznos, ha egy meglévő erőforráscsoport telepíthető sablonját szeretné létrehozni, vagy csak azt szeretné megvizsgálni, hogy az alapul szolgáló JSON-t kívánja-e használni. Egy erőforráscsoport exportálásához válassza az Automation- **parancsfájl** gombot az erőforráscsoport beállításainál.
 
-## <a name="security-of-azure-resources-rbac"></a>Az Azure-erőforrások (RBAC)
+## <a name="security-of-azure-resources-rbac"></a>Azure-erőforrások biztonsága (RBAC)
 
-A megadott hatókörben felhasználói fiókokhoz működési hozzáférést biztosíthat: előfizetés, erőforráscsoport vagy egyéni erőforrás. Ez azt jelenti, hogy az erőforrások erőforrás-csoportba, például egy virtuális gép és minden kapcsolódó erőforrás üzembe helyezésének, és engedélyek egy adott felhasználó vagy csoport számára. Ez a módszer csak a célként megadott erőforráscsoportja tartozó erőforrásokhoz való hozzáférést korlátozza. A hozzáférést egy egyetlen erőforrást, például egy virtuális gépet vagy egy virtuális hálózatot.
+A felhasználói fiókokhoz operatív hozzáférést biztosíthat a megadott hatókörben: előfizetés, erőforráscsoport vagy egyedi erőforrás. Ez azt jelenti, hogy erőforrás-készletet telepíthet egy erőforráscsoport, például egy virtuális gép és minden kapcsolódó erőforrás számára, és engedélyeket adhat egy adott felhasználónak vagy csoportnak. Ez a módszer csak a célként megadott erőforráscsoporthoz tartozó erőforrásokhoz való hozzáférést korlátozza. Hozzáférést biztosíthat egyetlen erőforráshoz, például egy virtuális géphez vagy egy virtuális hálózathoz is.
 
-Hozzáférést biztosítani, hozzárendelhet egy szerepkört a felhasználó vagy felhasználói csoportot. Számos előre definiált szerepkörök tartoznak. Saját egyéni szerepköröket is meghatározhat.
+A hozzáférés biztosításához rendeljen hozzá egy szerepkört a felhasználóhoz vagy a felhasználói csoporthoz. Számos előre definiált szerepkör létezik. Saját egyéni szerepköröket is meghatározhat.
 
-Íme néhány példa [beépített szerepkörök az Azure-ban](../../role-based-access-control/built-in-roles.md):
+Íme néhány példa [Az Azure beépített szerepköreire](../../role-based-access-control/built-in-roles.md):
 
-- **Tulajdonos**: Ezzel a szerepkörrel rendelkező felhasználók mindent felügyelhetnek, beleértve a hozzáférést.
+- **Tulajdonos**: Az ezzel a szerepkörrel rendelkező felhasználók mindent kezelhetnek, beleértve a hozzáférést is.
 
-- **Olvasó**: Ezzel a szerepkörrel rendelkező felhasználók (kivéve a titkos kulcsok) minden típusú erőforrásokat tudja olvasni, de nem végezhet módosításokat.
+- **Olvasó**: Az ezzel a szerepkörrel rendelkező felhasználók beolvashatják az összes típusú erőforrást (kivéve a titkokat), de nem módosíthatók.
 
-- **Virtuális gépek Közreműködője**: Ezzel a szerepkörrel rendelkező felhasználók kezelhetik a virtuális gépek, de nem kezelheti a virtuális hálózatot, amelyhez csatlakoznak, vagy a tárfiókot, ahol a VHD-fájl található.
+- **Virtuális gép közreműködői**: Az ezzel a szerepkörrel rendelkező felhasználók kezelhetik a virtuális gépeket, de nem kezelhetik azt a virtuális hálózatot, amelyhez csatlakoztatva vannak, vagy a VHD-fájlt tartalmazó Storage-fiók.
 
-- **SQL-Adatbázisok Közreműködője**: Ezzel a szerepkörrel rendelkező felhasználók kezelhetik az SQL-adatbázisok, de nem a biztonsággal kapcsolatos házirendjeiket.
+- **SQL-adatbázis közreműködői**: Az ezzel a szerepkörrel rendelkező felhasználók kezelhetik az SQL-adatbázisokat, de nem a biztonsággal kapcsolatos házirendjeiket.
 
-- **SQL-biztonságkezelő**: Ezzel a szerepkörrel rendelkező felhasználók kezelhetik az SQL Server-kiszolgálók és adatbázisok biztonsági házirendeket.
+- **SQL Security Manager**: Az ezzel a szerepkörrel rendelkező felhasználók kezelhetik az SQL-kiszolgálók és-adatbázisok biztonsággal kapcsolatos házirendjeit.
 
-- **Tárfiók-közreműködő**: Ezzel a szerepkörrel rendelkező felhasználók is tárfiókok kezelését, de nem tudja kezelni a storage-fiókok hozzáférést.
+- **Storage-fiók közreműködői**: Az ezzel a szerepkörrel rendelkező felhasználók kezelhetik a Storage-fiókokat, de nem kezelhetik a Storage-fiókokhoz való hozzáférést.
 
-További információkért lásd: [rbac-RÓL és az Azure portal-hozzáférés kezelése](../../role-based-access-control/role-assignments-portal.md).
+További információ: [a hozzáférés kezelése a RBAC és a Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md).
 
-## <a name="azure-virtual-machines"></a>Azure-alapú virtuális gépek
+## <a name="azure-virtual-machines"></a>Azure Virtual Machines
 
-Azure-beli virtuális gépek egyike a központi IaaS-szolgáltatások az Azure-ban. Azure-beli virtuális gépek Windows vagy Linux rendszerű virtuális gépek telepítését támogatja a Microsoft Azure-adatközpontba. Az Azure Virtual Machines, a virtuális gép konfigurációja teljes felett rendelkezik, és felelősek az összes szoftver telepítése, konfigurálása és karbantartása.
+Az Azure Virtual Machines az egyik központi IaaS-szolgáltatás az Azure-ban. Az Azure Virtual Machines támogatja a Windows-vagy Linux-alapú virtuális gépek Microsoft Azure adatközpontban való telepítését. Az Azure Virtual Machines teljes körűen szabályozhatja a virtuális gép konfigurációját, és felelős a szoftverek telepítésével, konfigurálásával és karbantartásával.
 
-Amikor telepít egy Azure virtuális Gépen, kép kiválaszthatja az Azure Marketplace-ről, vagy általános saját rendszerképek is biztosítanak. A lemezképet a alkalmazni az operációs rendszer és a kezdeti konfigurációt használja. Az üzembe helyezés során a Resource Manager bizonyos beállításait, például a számítógép neve, a rendszergazdai hitelesítő adatokkal és a hálózati konfiguráció hozzárendelése fogja kezelni. Használhatja az Azure virtuálisgép-bővítmények további automatizálásához a konfigurációkat, például a szoftver telepítését, a víruskereső konfigurációs és figyelési megoldások.
+Amikor üzembe helyez egy Azure-beli virtuális gépet, kiválaszthat egy rendszerképet az Azure piactéren, vagy megadhatja a saját általánosított képét is. Ez a rendszerkép az operációs rendszer és a kezdeti konfiguráció alkalmazására szolgál. A telepítés során a Resource Manager bizonyos konfigurációs beállításokat fog kezelni, például a számítógép nevének, a rendszergazdai hitelesítő adatoknak és a hálózati konfigurációnak a hozzárendelését. Az Azure virtuálisgép-bővítmények segítségével további automatizálhatja a konfigurációkat, például a Szoftvertelepítés, a víruskereső-konfiguráció és a figyelési megoldások.
 
-Számos különböző méretű virtuális gépeket hozhat létre. A virtuális gép mérete szabja meg, például feldolgozási, memória és a tárolókapacitás erőforrás-kiosztást. Bizonyos esetekben például az RDMA-kompatibilis hálózati adapterek és SSD-lemezeket a funkciók érhetők el csak az egyes Virtuálisgép-méretek. Virtuálisgép-méretek és képességek teljes listáját lásd: "Az Azure-beli virtuális gépek méretei" a [Windows](../../virtual-machines/windows/sizes.md) és [Linux](../../virtual-machines/linux/sizes.md).
+Több méretben is létrehozhat virtuális gépeket. A virtuális gép mérete olyan erőforrás-kiosztást diktál, mint például a feldolgozás, a memória és a tárolókapacitás. Bizonyos esetekben, például a RDMA-kompatibilis hálózati adapterek és SSD-lemezek csak bizonyos virtuálisgép-méretekben érhetők el. A virtuálisgép-méretek és-képességek teljes listáját az Azure-beli virtuális gépek méretei [Windows](../../virtual-machines/windows/sizes.md) és [Linux](../../virtual-machines/linux/sizes.md)rendszerhez című témakörben tekintheti meg.
 
 ### <a name="use-cases"></a>Használati esetek
 
-Azure-beli virtuális gépek teljes körű, konfigurációs kínálnak, mivel ezek ideálisak, a server számítási feladatok, amely nem illik a PaaS-modell számos. Server számítási feladatainak adatbázis-kiszolgálók (SQL Server, Oracle vagy mongodb-hez), például a Windows Server Active Directory, Microsoft SharePoint, és számos további lehetségessé válik futtatásához a Microsoft Azure platformon. Ha szükséges, egy vagy több Azure-régióban, nagy mennyiségű újrakonfigurálás nélkül az ilyen számítási feladatok áthelyezheti a helyszíni adatközpontból.
+Mivel az Azure Virtual Machines szolgáltatás teljes körű felügyeletet biztosít a konfiguráció felett, a kiszolgálói munkaterhelések széles köre számára ideálisak, amelyek nem illeszkednek a Pásti modellbe. A kiszolgálói munkaterhelések, például az adatbázis-kiszolgálók (SQL Server, Oracle vagy MongoDB), a Windows Server Active Directory, a Microsoft SharePoint, és számos további lehetséges a Microsoft Azure platformon való futtatás. Ha kívánja, áthelyezheti az ilyen számítási feladatokat egy helyszíni adatközpontból egy vagy több Azure-régióba anélkül, hogy nagy mennyiségű újrakonfigurálást kellene használnia.
 
-### <a name="deployment-of-virtual-machines"></a>Virtuális gépek telepítésének
+### <a name="deployment-of-virtual-machines"></a>Virtuális gépek üzembe helyezése
 
-Telepítheti az Azure-beli virtuális gépek az Azure portal használatával, az Azure PowerShell modullal automation használatával vagy a platformfüggetlen parancssori felülettel automation használatával.
+Az Azure-beli virtuális gépeket a Azure Portal használatával telepítheti a Azure PowerShell modul automatizálásával, vagy a többplatformos CLI használatával történő automatizálással.
 
 #### <a name="portal"></a>Portál
 
-Virtuális gép üzembe helyezése az Azure portal használatával van szükség, csak egy aktív Azure-előfizetés és a egy webböngészőben való hozzáférést. Kiválaszthatja, hogy számos különböző operációsrendszer-lemezképek, a különböző konfigurációkat. Az üzembe helyezés során minden tárolási és hálózati követelményei vannak konfigurálva. További információkért lásd: "A virtuális gép létrehozása az Azure Portalon" a [Windows](../../virtual-machines/windows/quick-create-portal.md) és [Linux](../../virtual-machines/linux/quick-create-portal.md).
+A virtuális gépek Azure Portal használatával történő telepítése csak aktív Azure-előfizetést és webböngészőhöz való hozzáférést igényel. Számos különböző konfigurációval rendelkező operációsrendszer-lemezképet választhat. Az üzembe helyezés során minden tárolási és hálózati követelmény konfigurálva van. További információ: "virtuális gép létrehozása a Azure Portalban" a [Windows](../../virtual-machines/windows/quick-create-portal.md) és a [Linux](../../virtual-machines/linux/quick-create-portal.md)rendszerhez.
 
-Mellett az Azure Portalon a virtuális gép üzembe helyezése, telepíthet egy Azure Resource Manager-sablon a portálon. Ezzel üzembe helyezése és konfigurálása az összes erőforrás a sablonban meghatározott. További információkért lásd: [erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure portal](../../azure-resource-manager/resource-group-template-deploy-portal.md).
+A Azure Portal a virtuális gépek üzembe helyezése mellett a portálról is telepíthet egy Azure Resource Manager sablont. Ez a sablonban definiált összes erőforrás üzembe helyezését és konfigurálását végzi. További információ: [erőforrások üzembe helyezése Resource Manager-sablonokkal és-Azure Portalokkal](../../azure-resource-manager/resource-group-template-deploy-portal.md).
 
 #### <a name="powershell"></a>PowerShell
 
-Egy Azure virtuális gép üzembe helyezése a PowerShell használatával lehetővé teszi, hogy minden kapcsolódó virtuális gép erőforrás, beleértve a tárolási és hálózati teljes üzembe helyezés automatizálása. További információkért lásd: [Windows virtuális gép létrehozása Resource Manager és a PowerShell](../../virtual-machines/windows/quick-create-powershell.md).
+Az Azure-beli virtuális gépek PowerShell használatával történő üzembe helyezése lehetővé teszi az összes kapcsolódó virtuálisgép-erőforrás teljes üzembe helyezésének automatizálását, beleértve a tárolást és a hálózatkezelést is. További információkért lásd: [Windows rendszerű virtuális gép létrehozása a Resource Manager és a PowerShell használatával](../../virtual-machines/windows/quick-create-powershell.md).
 
-Azure számítási erőforrásokat külön-külön telepítése, mellett az Azure PowerShell-modul segítségével egy Azure Resource Manager-sablon üzembe helyezése. További információkért lásd: [erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel](../../azure-resource-manager/resource-group-template-deploy.md).
+Az Azure számítási erőforrások önálló üzembe helyezése mellett a Azure PowerShell modullal is üzembe helyezhet egy Azure Resource Manager-sablont. További információ: [erőforrások üzembe helyezése Resource Manager-sablonokkal és-Azure PowerShellokkal](../../azure-resource-manager/resource-group-template-deploy.md).
 
 #### <a name="command-line-interface-cli"></a>Parancssori felület (CLI)
 
-Csakúgy, mint a PowerShell-modult az Azure parancssori felületének biztosít az üzembe helyezési automatizálást, és a Windows, OS X vagy Linux rendszerek is használhatók. Ha az Azure CLI a **virtuális gép – gyorslétrehozási** paranccsal, az összes kapcsolódó virtuálisgép-erőforrások (beleértve a tárolási és hálózatkezelési) és a virtuális gép saját maga telepít. További információkért lásd: [Linux rendszerű virtuális gép létrehozása az Azure-ban a parancssori felület használatával](../../virtual-machines/linux/quick-create-cli.md).
+A PowerShell-modulhoz hasonlóan az Azure parancssori felülete is biztosítja az üzembe helyezés automatizálását, és Windows, OS X és Linux rendszereken is használható. Ha az Azure CLI **virtuális gép gyors létrehozás** parancsát használja, az összes kapcsolódó virtuálisgép-erőforrás (beleértve a tárolást és a hálózatkezelést is) és maga a virtuális gép is telepítve van. További információ: [Linux rendszerű virtuális gép létrehozása az Azure-ban a parancssori felület használatával](../../virtual-machines/linux/quick-create-cli.md).
 
-Hasonlóképpen az Azure CLI használatával egy Azure Resource Manager-sablon üzembe helyezése. További információkért lásd: [erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI-vel](../../azure-resource-manager/resource-group-template-deploy-cli.md).
+Hasonlóképpen használhatja az Azure CLI-t egy Azure Resource Manager-sablon üzembe helyezéséhez is. További információ: [erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI-vel](../../azure-resource-manager/resource-group-template-deploy-cli.md).
 
-### <a name="access-and-security-for-virtual-machines"></a>Hozzáférés és biztonság virtuális gépeken
+### <a name="access-and-security-for-virtual-machines"></a>Virtuális gépekhez való hozzáférés és biztonság
 
-Az internetről a virtuális gépek elérése szükséges a társított hálózati interfész vagy terheléselosztó, ha van ilyen, nyilvános IP-címmel kell konfigurálni. A nyilvános IP-címet fogja oldani a virtuális gép vagy terheléselosztó DNS-név tartalmaz. További információkért lásd: [IP-címek az Azure-ban](../../virtual-network/virtual-network-ip-addresses-overview-arm.md).
+Ha a virtuális gépet az internetről kívánja elérni, a társított hálózati adaptert, vagy ha szükséges, a Load balancert a nyilvános IP-címmel kell konfigurálni. A nyilvános IP-cím tartalmaz egy DNS-nevet, amely a virtuális gépre vagy a terheléselosztó-re lesz feloldva. További információt az [IP-címek az Azure-ban](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)című témakörben talál.
 
-A virtuális géphez való hozzáférés a nyilvános IP-címen keresztül, egy hálózati biztonsági csoport (NSG) erőforrás használatával kezelheti. Az NSG-KET gyakorlatilag tűzfalként funkcionál, és lehetővé teszi, hogy vagy a hálózati adapter vagy alhálózat konfigurálásában a meghatározott portokon keresztül a forgalom megtagadásához. Például egy távoli asztali munkamenetet létrehozni egy Azure virtuális Gépen, kell konfigurálni az NSG-t, hogy a bejövő forgalmat a 3389-es porton. További információkért lásd: [egy virtuális gép portjainak megnyitása az Azure-ban az Azure portal használatával](../../virtual-machines/windows/nsg-quickstart-portal.md).
+A virtuális géphez a hálózati biztonsági csoport (NSG) erőforrás segítségével kezelheti a hozzáférést a nyilvános IP-címen keresztül. Egy NSG úgy viselkedik, mint egy tűzfal, és lehetővé teszi vagy megtagadja a forgalmat a hálózati adapter vagy az alhálózat között a megadott portok készletén. Ha például egy Távoli asztal munkamenetet szeretne létrehozni egy Azure-beli virtuális géppel, úgy kell konfigurálnia a NSG, hogy engedélyezze a bejövő forgalmat az 3389-as porton. További információ: [portok megnyitása egy virtuális gépen az Azure-ban a Azure Portal használatával](../../virtual-machines/windows/nsg-quickstart-portal.md).
 
-Végül minden olyan számítógép rendszer felügyeletét, a kell adnia biztonsági egy Azure virtuális gépen, az operációs rendszer biztonsági hitelesítő adatok és a szoftver tűzfalak használatával.
+A számítógéprendszer felügyeletéhez hasonlóan a biztonsági hitelesítő adatok és a szoftveres tűzfalak használatával is biztosítania kell az Azure-beli virtuális gépek biztonságát az operációs rendszeren.
 
 ## <a name="azure-storage"></a>Azure Storage
 
-Az Azure Storage szolgáltatás egy Microsoft által felügyelt szolgáltatás, amely tartós, méretezhető és redundáns tárolást biztosít. Hozzáadhat egy Azure storage-fiók erőforrásként bármely erőforráscsoportban bármelyik erőforrás üzembe helyezési módszer használatával. Az Azure négyféle tárolási típust tartalmaz: A BLOB storage, File Storage, Table storage és Queue storage. Egy tárfiók üzembe helyezésekor, két fióktípus esetében elérhető, általános célú és blob storage-ban. Általános célú tárfiók hozzáférést biztosít az összes négyféle tárolási típust. BLOB storage-fiókok hasonlóak az általános célú fiókokhoz, de speciális blobok, amelyek tartalmazzák a gyakori és ritka elérésű hozzáférési szint tartalmaz. Blob Storage-további információ: [Azure Blob storage](../../storage/blobs/storage-blob-storage-tiers.md).
+Az Azure Storage egy Microsoft által felügyelt szolgáltatás, amely tartós, méretezhető és redundáns tárolást biztosít. Bármilyen erőforrás-telepítési módszer használatával hozzáadhat egy Azure Storage-fiókot erőforrásként bármely erőforráscsoport számára. Az Azure négyféle tárolási típust tartalmaz: BLOB Storage, File Storage, Table Storage és üzenetsor-tároló. A Storage-fiókok telepítésekor két fióktípus érhető el, az általános célú és a blob Storage. Az általános célú Storage-fiók mind a négy tárolási típushoz hozzáférést biztosít. A blob Storage-fiókok hasonlóak az általános célú fiókokhoz, de olyan speciális blobokat tartalmaznak, amelyek a gyakori és a ritkán használt hozzáférési rétegeket tartalmazzák. További információ a blob Storage-ról: [Azure Blob Storage](../../storage/blobs/storage-blob-storage-tiers.md).
 
-Az Azure storage-fiókok konfigurálhatók különböző szintű redundancia:
+Az Azure Storage-fiókok különböző szintű redundanciával konfigurálhatók:
 
-- **Helyileg redundáns tárolás** biztosításával, hogy az adatok három példányban végzett szinkron írási sikeres tekinteni, mielőtt a magas rendelkezésre állást biztosít. Ezek a másolatok egy régió egyetlen létesítményén vannak tárolva. A replikák külön tartalék tartományokban és frissítési tartományokban tárolja. Ez azt jelenti, hogy az adatok érhető el, még akkor is, ha egy tárolócsomópont, amely az adatokat sikertelen rendelkező vagy frissítendő offline állapotba helyeznek.
+- A **helyileg redundáns tárolás** magas rendelkezésre állást biztosít annak biztosításához, hogy az összes információ három példánya legyen szinkronban, mielőtt az írás sikeresnek minősül. Ezeket a másolatokat egyetlen régióban egyetlen létesítmény tárolja. A replikák külön tartalék tartományokban és frissítési tartományokban találhatók. Ez azt jelenti, hogy az adat akkor is elérhető, ha az adattárolási csomópont nem sikerül, vagy offline állapotban van.
 
-- **Georedundáns tárolás** lehetővé teszi az adatok három szinkron másolatát az elsődleges régióban a magas rendelkezésre állás érdekében, ezért úgy majd aszinkron módon három replikával vész-helyreállítási egy párosított régióban.
+- A **geo-redundáns tárolás** a magas rendelkezésre állás érdekében három szinkron másolatot készít az elsődleges régióban tárolt adatmennyiségről, majd aszinkron módon három replikát tesz elérhetővé egy párosított régióban a vész-helyreállítás érdekében.
 
-- **Írásvédett georedundáns tárolás** georedundáns tárolás plusz képes olvasni az adatokat a másodlagos régióban. Ez a képesség megkönnyíti a részleges vész-helyreállítási alkalmas. Ha az elsődleges régió problémájára, módosíthatja az alkalmazás csak olvasási hozzáféréssel rendelkeznek a párosított régióba.
+- A **READ-Access geo-redundáns tárolás** a Geo-redundáns tárolás, valamint a másodlagos régióban tárolt adatolvasási képesség. Ez a funkció lehetővé teszi a részleges katasztrófa utáni helyreállítást. Ha az elsődleges régióval kapcsolatos probléma merül fel, módosíthatja az alkalmazást úgy, hogy csak olvasási hozzáféréssel rendelkezzen a párosított régióhoz.
 
 ### <a name="use-cases"></a>Használati esetek
 
-Az egyes tárolási típusok különböző használati esetek rendelkezik.
+Mindegyik tárolási típus eltérő használati esettel rendelkezik.
 
 #### <a name="blob-storage"></a>Blob Storage
 
-A word *blob* rövidítése: *nagyméretű bináris objektumok*. Blobok mint amilyeneket a számítógépén tárolni, strukturálatlan fájlok legyenek. A Blob Storage képes tárolni bármilyen szöveget vagy bináris adatot, például dokumentumot, médiafájlt vagy egy alkalmazástelepítőt. A Blob Storage más néven objektumtárnak is hívható. Az Azure Blob storage az Azure Virtual Machines adatlemezek is tartalmazza.
+A Word *blob* a *bináris nagyméretű objektum*betűszója. A Blobok strukturálatlan fájlok, például a számítógépen tárolt fájlok. A Blob Storage képes tárolni bármilyen szöveget vagy bináris adatot, például dokumentumot, médiafájlt vagy egy alkalmazástelepítőt. A Blob Storage más néven objektumtárnak is hívható. Az Azure Blob Storage az Azure Virtual Machines adatlemezeket is tartalmazza.
 
-Az Azure Storage háromféle blobot támogatja:
+Az Azure Storage háromféle blobot támogat:
 
-- **Blokkblobok** blokkblobokban normál 195 GB-os fájlok mérete (4 MB x 50 000 blokk). Az elsődleges blokkblobok funkcióban az elejétől a végéig, például médiafájlok vagy webhelyek képfájlok olvasható fájlok tárolására. Mivel 64 MB-nál nagyobb méretű fájlokat fel kell tölteni, kis blokkok néven szerepelnek a blokkblobok használatát támogatják. Ezek a blokkok majd konszolidált (vagy véglegesített) a végső blobba.
+- A blokkos Blobok a szokásos, legfeljebb 195 GB méretű fájlok tárolására használhatók (4 MB × 50 000 blokk). A blokkos Blobok elsődleges használati esete az elejétől a végéig beolvasott fájlok tárolása, például médiafájlok vagy képfájlok a webhelyekhez. Ezek neve blokk Blobok, mert a 64 MB-nál nagyobb fájlokat kis blokkként kell feltölteni. Ezeket a blokkokat ezután összevonják (vagy véglegesítik) a végső blobba.
 
-- **Lapblobok** blokkblobokban véletlenszerű hozzáférést fájlok akár 1 TB-nál. Lapblobok elsősorban a biztonsági tárolóként szolgálnak a VHD lemezek tartós biztosítanak az Azure Virtual Machines, az IaaS számítási szolgáltatás az Azure-ban. Mivel 512 bájtos oldalak véletlenszerű olvasási/írási hozzáférést nyújtanak a lapblobok néven szerepelnek.
+- Az **oldal Blobok** a véletlenszerűen hozzáférő fájlok legfeljebb 1 TB méretű tárolására használhatók. Az oldal-Blobok elsődlegesen az Azure-Virtual Machines, az Azure-beli IaaS számítási szolgáltatás számára tartós lemezeket biztosító virtuális merevlemezek biztonsági másolatának tárolására szolgálnak. Ezek neve oldal Blobok, mert véletlenszerű olvasási/írási hozzáférést biztosítanak a 512 bájtos lapokhoz.
 
-- **Hozzáfűző blobok** áll, például blokkolja a blokkblobok használatát támogatják, de vannak optimalizálva műveletek hozzáfűzésére. Ezek gyakran használják a naplózási információk egy vagy több forrásból származó egyazon blobba. Például előfordulhat, hogy írt összes a nyomkövetési adatainak naplózása az ugyanazon a hozzáfűző blob egy több virtuális gépen futó alkalmazás. Egyetlen hozzáfűző blob akár 195 GB is lehet.
+- A hozzáfűzési Blobok olyan blokkokat tartalmaznak, mint a blokkos Blobok, de a hozzáfűzési műveletekre vannak optimalizálva. Ezeket gyakran használják egy vagy több forrásból származó adatok ugyanarra a blobba való naplózására. Előfordulhat például, hogy az összes nyomkövetési naplózást ugyanabba a hozzáfűző blobba írja, mint egy több virtuális gépen futó alkalmazáshoz. Egyetlen hozzáfűző blob akár 195 GB is lehet.
 
-További információkért lásd: [.NET használatával az Azure Blob storage használatának első lépései](../../storage/blobs/storage-dotnet-how-to-use-blobs.md).
+További információ: az [Azure Blob Storage használatának első lépései a .NET használatával](../../storage/blobs/storage-dotnet-how-to-use-blobs.md).
 
 #### <a name="file-storage"></a>File Storage
 
-Az Azure File storage egy szolgáltatása, amely a felhőbeli fájlmegosztásokat kínál a szabványos Server Message Block (SMB) protokoll használatával. A szolgáltatás támogatja az SMB 2.1 és az SMB 3.0-s. Az Azure File storage segítségével gyorsan és költséges újraírások nélkül, Azure-ra épülő alkalmazások áttelepíthetők. Azure-beli virtuális gépeken futó alkalmazások, a cloud services vagy a helyi ügyfelek csatlakoztathatja egy a felhőben. Ez hasonlít hogyan egy asztali alkalmazás csatlakoztatja-e a csatlakoztatott SMB-megosztáshoz. Ezután bármennyi alkalmazás-összetevő egyszerre csatlakoztathatja a File Storage-megosztást, és hozzá is férhet.
+Az Azure file Storage egy olyan szolgáltatás, amely fájlmegosztást biztosít a felhőben a Standard Server Message Block (SMB) protokoll használatával. A szolgáltatás az SMB 2,1 és az SMB 3,0 egyaránt támogatja. Az Azure file Storage használatával gyorsan és költséges újraírás nélkül áttelepítheti a fájlmegosztást használó alkalmazásokat az Azure-ba. Az Azure-beli virtuális gépeken, a Cloud Servicesben vagy a helyszíni ügyfeleken futó alkalmazások csatlakoztathat egy fájlmegosztást a felhőben. Ez hasonló ahhoz, ahogy egy asztali alkalmazás egy tipikus SMB-megosztást csatlakoztat. Ezután bármennyi alkalmazás-összetevő egyszerre csatlakoztathatja a File Storage-megosztást, és hozzá is férhet.
 
-Mivel a File storage-megosztás egy szabványos SMB-fájlmegosztás, az Azure-ban futó alkalmazások férhetnek hozzá a fájlrendszer adatátviteli API-jain keresztül a megosztás adataihoz. A fejlesztők ezért a saját meglévő kódjaik és képességeik felhasználásával áttelepíthetik az alkalmazásokat. Informatikai szakemberek a PowerShell-parancsmagok segítségével hozzon létre, csatlakoztathatja és kezelheti a File storage-megosztásokat az Azure-alkalmazások felügyeletének részeként.
+Mivel a file Storage-megosztás egy szabványos SMB-fájlmegosztás, az Azure-ban futtatott alkalmazások a fájlrendszerbeli I/O-API-kon keresztül férhetnek hozzá a megosztásban lévő információhoz. A fejlesztők ezért meglévő programkódjuk és ismereteik használatával telepíthetik át a meglévő alkalmazásokat. Az informatikai szakemberek PowerShell-parancsmagokkal hozhatják létre, csatlakoztatják és kezelhetik a file Storage-megosztásokat az Azure-alkalmazások felügyeletének részeként.
 
-További információkért lásd: [a Windows Azure File storage használatának első lépései](../../storage/files/storage-how-to-use-files-windows.md) vagy [Azure File storage használata linuxszal](../../storage/files/storage-how-to-use-files-linux.md).
+További információkért lásd: az [Azure file Storage használatának első lépései Windows](../../storage/files/storage-how-to-use-files-windows.md) rendszeren, illetve az [Azure file Storage használata Linux](../../storage/files/storage-how-to-use-files-linux.md)rendszeren.
 
-#### <a name="table-storage"></a>Table Storage
+#### <a name="table-storage"></a>Táblatároló
 
-Az Azure Table Storage egy olyan szolgáltatás, amely strukturált NoSQL-adatokat tárol a felhőben. A TABLE storage séma nélküli kialakítás egy kulcs-/ attribútumtár. Mivel a Table storage séma nélküli, könnyebbé vált az adatok alkalmazkodni az alkalmazás változásával igényeinek. Az adatok hozzáférése gyors és költséghatékony, bármilyen alkalmazásról legyen is szó. Hasonló adatmennyiséggel számolva a Table Storage általában határozottan kevesebb költséggel jár, mint egy hagyományos SQL.
+Az Azure Table Storage egy olyan szolgáltatás, amely strukturált NoSQL-adatokat tárol a felhőben. A Table Storage egy séma nélküli kialakítású kulcs/attribútum-tároló. Mivel a Table Storage séma nélküli, egyszerűen alkalmazkodhat az adataihoz az alkalmazás igényeinek megfelelően. Az adatok hozzáférése gyors és költséghatékony, bármilyen alkalmazásról legyen is szó. Hasonló adatmennyiséggel számolva a Table Storage általában határozottan kevesebb költséggel jár, mint egy hagyományos SQL.
 
-A Table Storage segítségével rugalmas adatkészleteket tárolhat, például webalkalmazások felhasználói adatait, címtárakat, eszközadatokat és bármilyen egyéb metaadatot, amelyre a szolgáltatásnak szüksége van. Korlátlan számú entitást tárolhat egy tábla. Egy tárfiók korlátlan számú táblát, a tárfiók kapacitásán belül is tartalmazhat.
+A Table Storage segítségével rugalmas adatkészleteket tárolhat, például webalkalmazások felhasználói adatait, címtárakat, eszközadatokat és bármilyen egyéb metaadatot, amelyre a szolgáltatásnak szüksége van. A tábla tetszőleges számú entitását tárolhatja. A Storage-fiókok tetszőleges számú táblát tartalmazhatnak, a Storage-fiók kapacitásának korlátozásával együtt.
 
-További információkért lásd: [Azure Table storage használatának első lépései](../../cosmos-db/table-storage-how-to-use-dotnet.md).
+További információ: Ismerkedés [Az Azure Table Storage](../../cosmos-db/table-storage-how-to-use-dotnet.md)szolgáltatással.
 
 #### <a name="queue-storage"></a>Queue Storage
 
-Az Azure Queue Storage felhőbeli üzenetkezelést biztosít az alkalmazások összetevői között. Méretezhető alkalmazások tervezésekor az alkalmazás-összetevőket sokszor szétválasztják, úgy, hogy ezek egymástól függetlenül lehessen méretezni. A Queue Storage aszinkron üzenetkezelést biztosít az alkalmazások összetevői közötti kommunikációhoz, függetlenül attól, hogy az összetevők a felhőben, asztali gépen, egy helyszíni kiszolgálón vagy egy mobileszközön futnak. A Queue Storage támogatja az aszinkron feladatok kezelését és a feldolgozási munkafolyamatok kialakítását is.
+Az Azure Queue Storage felhőbeli üzenetkezelést biztosít az alkalmazások összetevői között. A méretezhető alkalmazások tervezésekor az alkalmazás-összetevők gyakran le vannak választva, így egymástól függetlenül méretezhetők. A Queue Storage aszinkron üzenetkezelést biztosít az alkalmazások összetevői közötti kommunikációhoz, függetlenül attól, hogy az összetevők a felhőben, asztali gépen, egy helyszíni kiszolgálón vagy egy mobileszközön futnak. A Queue Storage támogatja az aszinkron feladatok kezelését és a feldolgozási munkafolyamatok kialakítását is.
 
-További információkért lásd: [Azure Queue storage használatának első lépései](../../storage/queues/storage-dotnet-how-to-use-queues.md).
+További információ: Ismerkedés [Az Azure üzenetsor](../../storage/queues/storage-dotnet-how-to-use-queues.md)-tárolóval.
 
 ### <a name="deploying-a-storage-account"></a>Storage-fiók üzembe helyezése
 
-Storage-fiók üzembe helyezésének számos lehetőség van.
+A Storage-fiókok telepítéséhez több lehetőség is rendelkezésre áll.
 
 #### <a name="portal"></a>Portál
 
-Storage-fiók az Azure Portallal való központi telepítéséhez szükséges csak egy aktív Azure-előfizetés és a egy webböngészőben való hozzáférést. Új tárfiók üzembe helyezhető egy új vagy meglévő erőforráscsoportot. Miután létrehozta a tárfiókot, létrehozhat egy blob tárolókhoz vagy fájlmegosztásokhoz a portál használatával. Tábla létrehozása, és a várólista-entitások programozott módon. További információ: [Tárfiók létrehozása](../../storage/common/storage-quickstart-create-account.md).
+A Storage-fiók Azure Portal használatával történő telepítése csak aktív Azure-előfizetést és webböngészőhöz való hozzáférést igényel. Új Storage-fiókot új vagy meglévő erőforráscsoporthoz is telepíthet. A Storage-fiók létrehozása után létrehozhat egy BLOB-tárolót vagy fájlmegosztást a portál használatával. Programozott módon hozhat létre tábla-és üzenetsor-tárolási entitásokat. További információ: [Tárfiók létrehozása](../../storage/common/storage-quickstart-create-account.md).
 
-Mellett egy storage-fiókot az Azure Portalról üzembe helyezése Azure Resource Manager-sablon a portálról is telepítheti. Ez telepítését és konfigurálását összes erőforrást, mert definiálva a sablonban, beleértve az összes tárfiókot. További információkért lásd: [erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure portal](../../azure-resource-manager/resource-group-template-deploy-portal.md).
+Egy Storage-fióknak a Azure Portalból való üzembe helyezésén kívül a portálon üzembe helyezhet egy Azure Resource Manager sablont is. Ezzel telepíti és konfigurálja a sablonban definiált összes erőforrást, beleértve a Storage-fiókokat is. További információ: [erőforrások üzembe helyezése Resource Manager-sablonokkal és-Azure Portalokkal](../../azure-resource-manager/resource-group-template-deploy-portal.md).
 
 #### <a name="powershell"></a>PowerShell
 
-Azure storage-fiók üzembe helyezése a PowerShell használatával lehetővé teszi a teljes üzembe helyezés automatizálása a storage-fiókot. További információkért lásd: [az Azure PowerShell az Azure Storage](../../storage/common/storage-powershell-guide-full.md).
+Egy Azure Storage-fiók PowerShell használatával történő üzembe helyezése lehetővé teszi a Storage-fiók teljes üzembe helyezésének automatizálását. További információ: [Azure PowerShell használata az Azure Storage](../../storage/common/storage-powershell-guide-full.md)-ban.
 
-Külön-külön telepítése az Azure-erőforrások, mellett az Azure PowerShell-modul segítségével egy Azure Resource Manager-sablon üzembe helyezése. További információkért lásd: [erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel](../../azure-resource-manager/resource-group-template-deploy.md).
+Az Azure-erőforrások önálló üzembe helyezése mellett a Azure PowerShell modullal is üzembe helyezhet egy Azure Resource Manager-sablont. További információ: [erőforrások üzembe helyezése Resource Manager-sablonokkal és-Azure PowerShellokkal](../../azure-resource-manager/resource-group-template-deploy.md).
 
 #### <a name="command-line-interface-cli"></a>Parancssori felület (CLI)
 
-Csakúgy, mint a PowerShell-modult az Azure parancssori felületének biztosít az üzembe helyezési automatizálást, és a Windows, OS X vagy Linux rendszerek is használhatók. Használhatja az Azure CLI **storage-fiók létrehozása** parancs használatával hozzon létre egy tárfiókot. További információkért lásd: [az Azure Storage az Azure CLI használatával.](../../storage/common/storage-azure-cli.md)
+A PowerShell-modulhoz hasonlóan az Azure parancssori felülete is biztosítja az üzembe helyezés automatizálását, és Windows, OS X és Linux rendszereken is használható. A Storage-fiók létrehozásához az Azure CLI **Storage-fiók létrehozása** parancsot használhatja. További információ: [Az Azure CLI használata az Azure Storage](../../storage/common/storage-azure-cli.md) -ban.
 
-Hasonlóképpen az Azure CLI használatával egy Azure Resource Manager-sablon üzembe helyezése. További információkért lásd: [erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI-vel](../../resource-group-template-deploy-cli.md).
+Hasonlóképpen használhatja az Azure CLI-t egy Azure Resource Manager-sablon üzembe helyezéséhez is. További információ: [erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI-vel](../../resource-group-template-deploy-cli.md).
 
-### <a name="access-and-security-for-azure-storage"></a>Hozzáférés és biztonság az Azure Storage
+### <a name="access-and-security-for-azure-storage"></a>Hozzáférés és biztonság az Azure Storage-ban
 
-Az Azure Storage számos lehetőséget kínál, ha az Azure Portalon, beleértve a virtuális gép létrehozása és a művelet során, és a tároló ügyfélkódtárai érhető el.
+Az Azure Storage különböző módokon érhető el, például a Azure Portal, a virtuális gépek létrehozásakor és működésekor, valamint a Storage ügyféloldali kódtárai között.
 
 #### <a name="virtual-machine-disks"></a>Virtuálisgép-lemezek
 
-Amikor telepít egy virtuális gépet, is hozzon létre egy tárfiókot, amely tárolja a virtuális gép operációsrendszer-lemezt és bármelyik adatlemeznek kell. Válasszon ki egy meglévő tárfiókot, vagy hozzon létre egy újat. A blob maximális mérete 1 024 GB, mert az egyetlen virtuális gép lemezének 1,023 GB maximális mérettel rendelkezik. Nagyobb adatlemez konfigurálásához nyújt a virtuális géphez több adatlemez, és a tárolókészlet őket össze egyetlen logikai lemez. További információkért lásd: "kezelése Azure-lemezek" számára [Windows](../../virtual-machines/windows/tutorial-manage-data-disk.md) és [Linux](../../virtual-machines/linux/tutorial-manage-disks.md).
+Virtuális gép telepítésekor létre kell hoznia egy Storage-fiókot is a virtuális gép operációsrendszer-lemezének és a további adatlemezek tárolásához. Választhat egy meglévő Storage-fiókot, vagy létrehozhat egy újat. Mivel a Blobok maximális mérete 1 024 GB, egyetlen virtuálisgép-lemez maximális mérete 1 023 GB. Nagyobb adatlemezek konfigurálásához több adatlemezt is beállíthat a virtuális gépre, és egyetlen logikai lemezként csoportosíthatja őket. További információ: "Azure-lemezek kezelése" [Windows](../../virtual-machines/windows/tutorial-manage-data-disk.md) és [Linux](../../virtual-machines/linux/tutorial-manage-disks.md)rendszerekhez.
 
-#### <a name="storage-tools"></a>Storage-eszközökkel
+#### <a name="storage-tools"></a>Storage-eszközök
 
-Az Azure storage-fiókok számos különböző storage-tallózók, például a Visual Studio Cloud Explorer keresztül érhetők el. Ezek az eszközök lehetővé teszik a storage-fiókok és az adatok között. További információ és elérhető tártallózók listáját lásd: [Azure Storage-ügyféleszközök](../../storage/common/storage-explorers.md).
+Az Azure Storage-fiókok számos különböző Storage-kezelőn keresztül érhetők el, például a Visual Studio Cloud Explorerben. Ezek az eszközök lehetővé teszik a Storage-fiókok és-adatkeresések tallózását. További információ és a rendelkezésre álló tár-tallózók listája: [Azure Storage-ügyféleszközök](../../storage/common/storage-explorers.md).
 
-#### <a name="storage-api"></a>Storage API
+#### <a name="storage-api"></a>Tárolási API
 
-Storage-erőforrások bármely, amelyekkel HTTP/HTTPS-kérelmek létrehozására alkalmas nyelven elérhető lesz. Ezenfelül az Azure Storage számos népszerű nyelvhez biztosít programozási kódtárakat. Ezek a kódtárak alfolyamatot például a szinkron és aszinkron hívás, műveletek, kivételek kezelése és automatikus újrapróbálkozásokat kötegelése egyszerűsítése érdekében az Azure Storage használatához. További információkért lásd: [Azure Storage szolgáltatás REST API-referencia](/rest/api/storageservices/Azure-Storage-Services-REST-API-Reference).
+A tárolási erőforrásokat bármely olyan nyelv elérheti, amely HTTP/HTTPS-kéréseket tehet elérhetővé. Ezenfelül az Azure Storage számos népszerű nyelvhez biztosít programozási kódtárakat. Ezek a kódtárak leegyszerűsítik az Azure Storage használatát az olyan részletek kezelésével, mint például a szinkron és aszinkron hívás, a műveletek kötegbe állítása, a kivételek kezelése és az automatikus újrapróbálkozások. További információ: az [Azure Storage szolgáltatás REST API referenciája](/rest/api/storageservices/Azure-Storage-Services-REST-API-Reference).
 
-#### <a name="storage-access-keys"></a>Tárelérési kulcsok
+#### <a name="storage-access-keys"></a>Tároló-hozzáférési kulcsok
 
-Mindegyik tárfiók két hitelesítési kulccsal, egy elsődleges és másodlagos rendelkezik. Vagy a storage access műveletekhez használható. Ezek a kulcsok tárolási segítségével egy tárfiókot, és a szükséges adatok programozott elérése. A biztonság növelése érdekében a kulcsok időnkénti átvitel engedélyezése két kulcs létezi. Rendkívül fontos biztonsága érdekében a kulcsok, mivel birtokában, a fiók nevével együtt korlátlan hozzáférést az adatokhoz a storage-fiókban.
+Mindegyik Storage-fiókhoz két hitelesítő kulcs tartozik, egy elsődleges és egy másodlagos. A tárolási hozzáférési műveletekhez is használható. Ezek a tárolási kulcsok segítenek a Storage-fiókok biztonságossá tételében, és az adatok programozott eléréséhez szükségesek. A kulcsok esetenkénti átváltásának engedélyezése a biztonság növelése érdekében két kulccsal történik. Fontos, hogy a kulcsok biztonságban maradjanak, mert a fiók nevével együtt korlátlan hozzáférést biztosítanak a Storage-fiókban lévő összes adattal.
 
-#### <a name="shared-access-signatures"></a>Közös hozzáférésű jogosultságkódok
+#### <a name="shared-access-signatures"></a>Közös hozzáférésű aláírások
 
-Ha szeretne engedélyezése a felhasználók számára, hogy rendelkezik a tárolási erőforrásokhoz való hozzáférését szabályozza, létrehozhat egy közös hozzáférésű jogosultságkód. Közös hozzáférésű jogosultságkód URL-címre, amely meghatalmazott hozzáférést biztosít a tároló egyik erőforrásához hozzáfűzhető jogkivonatot. Bárki, aki ismeri a token hozzáférhet az erőforrást, amelyekre az mutat az engedélyekkel, hogy meghatározza, az az időtartam, hogy a érvényes. További információkért lásd: [a közös hozzáférésű jogosultságkódot](../../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+Ha engedélyezni szeretné a felhasználók számára, hogy szabályozzák a tárolási erőforrásokhoz való hozzáférést, létrehozhat egy közös hozzáférési aláírást. A közös hozzáférésű aláírás egy olyan token, amelyet egy olyan URL-címhez lehet hozzáfűzni, amely lehetővé teszi egy tárolási erőforrás delegált hozzáférését. Bárki, aki rendelkezik a jogkivonattal, elérheti azt az erőforrást, amely az általa megadott engedélyekkel rendelkezik az érvényességi időszakra vonatkozóan. További információ: [közös hozzáférésű aláírások használata](../../storage/common/storage-dotnet-shared-access-signature-part-1.md).
 
 ## <a name="azure-virtual-network"></a>Azure Virtual Network
 
-Virtuális hálózatok olyan virtuális gépek közötti kommunikáció támogatásához szükséges. Határozza meg, alhálózatok, a egyéni IP-címet, a DNS-beállítások, a biztonsági szűrést, és a terheléselosztás. Az Azure támogatja különböző használati esetek: hálózatok csak felhőalapú vagy hibrid virtuális hálózatok.
+A virtuális hálózatok a virtuális gépek közötti kommunikáció támogatásához szükségesek. Meghatározhatja az alhálózatokat, az egyéni IP-címet, a DNS-beállításokat, a biztonsági szűrést és a terheléselosztást. Az Azure különböző felhasználási eseteket támogat: csak felhőalapú hálózatok vagy hibrid virtuális hálózatok.
 
-### <a name="cloud-only-virtual-networks"></a>Kizárólag felhőalapú virtuális hálózatok
+### <a name="cloud-only-virtual-networks"></a>Csak felhőalapú virtuális hálózatok
 
-Egy Azure virtuális hálózatra, alapértelmezés szerint csak az Azure-ban tárolt erőforrások érhető el. Az azonos virtuális hálózathoz csatlakozó erőforrás kommunikálhatnak egymással. Társítsa a virtuális géphez tartozó hálózati adapter és a egy nyilvános IP-címet a virtuális gép az interneten keresztül elérhető legyen a terheléselosztók. A nyilvánosan elérhető erőforrásokhoz való biztonságos hozzáférést segíthet a hálózati biztonsági csoport használatával.
+Alapértelmezés szerint az Azure-beli virtuális hálózatok csak az Azure-ban tárolt erőforrások számára érhetők el. Az ugyanahhoz a virtuális hálózathoz csatlakozó erőforrások kommunikálhatnak egymással. A virtuális gép hálózati adapterei és a terheléselosztó nyilvános IP-címmel társítható, hogy a virtuális gép elérhető legyen az interneten keresztül. Egy hálózati biztonsági csoport segítségével biztonságossá teheti a nyilvánosan elérhető erőforrásokhoz való hozzáférést.
 
-![Az Azure Virtual Network 2 szintű webalkalmazás számára](https://docs.microsoft.com/azure/load-balancer/media/load-balancer-internal-overview/ic744147.png)
+![Azure-Virtual Network 2 szintű webalkalmazáshoz](https://docs.microsoft.com/azure/load-balancer/media/load-balancer-internal-overview/ic744147.png)
 
 ### <a name="hybrid-virtual-networks"></a>Hibrid virtuális hálózatok
 
-Egy helyszíni hálózat csatlakozhat egy Azure virtuális hálózaton, ExpressRoute és a egy helyek közötti VPN-kapcsolat használatával. Ebben a konfigurációban az Azure virtuális hálózat lényegében egy felhőalapú bővítmény a helyszíni hálózat.
-![Hibrid virtuális hálózati VPN használatával](https://docs.microsoft.com/azure/architecture/reference-architectures/_images/blueprints/hybrid-network-vpn.png)
+A helyszíni hálózatot ExpressRoute vagy helyek közötti VPN-kapcsolat használatával csatlakoztathatja egy Azure-beli virtuális hálózathoz. Ebben a konfigurációban az Azure-beli virtuális hálózat lényegében a helyszíni hálózat felhőalapú kiterjesztése.
+![Hibrid Virtual Network VPN használatával](https://docs.microsoft.com/azure/architecture/reference-architectures/_images/blueprints/hybrid-network-vpn.png)
 
-Az Azure virtuális hálózat a helyszíni hálózathoz csatlakozik, mert a létesítmények közötti virtuális hálózatok kell használnia a címtér a szervezet által használt egyedi részéhez. Azonos módon, amely a különböző vállalati helyek vannak hozzárendelve egy adott IP-alhálózatot Azure, a hálózat kiterjesztésére válik egy másik helyre.
-Többféle módon is üzembe helyezése egy virtuális hálózatot.
+Mivel az Azure-beli virtuális hálózat a helyszíni hálózathoz csatlakozik, a létesítmények közötti virtuális hálózatoknak a szervezet által használt címterület egyedi részét kell használniuk. Ugyanúgy, ahogy a különböző vállalati helyek egy adott IP-alhálózathoz vannak rendelve, az Azure a hálózat kibővítésekor egy másik helyen lesz.
+A virtuális hálózatok telepítéséhez több lehetőség is rendelkezésre áll.
 
 - [Portál](../..//virtual-network/quick-create-portal.md)
 
@@ -479,17 +472,17 @@ Többféle módon is üzembe helyezése egy virtuális hálózatot.
 
 - [Parancssori felület (CLI)](../../virtual-network/quick-create-cli.md)
 
-- Az Azure Resource Manager-sablonok
+- Azure Resource Manager sablonok
 
-> **Mikor érdemes használni**: Bármikor dolgozik az Azure-beli virtuális gépek, virtuális hálózatok fog dolgozni. Ez lehetővé teszi a nyilvános és privát alhálózat hasonló a helyszíni adatközpontjaik között, a virtuális gépek szegmentálja.
+> **Mikor kell használni**: Ha az Azure-beli virtuális gépekkel dolgozik, a virtuális hálózatokkal fog működni. Ez lehetővé teszi, hogy a virtuális gépeket a helyi adatközpontokhoz hasonló, nyilvános és privát alhálózatokra lehessen szegmentálni.
 > 
-> **Első lépések**: Azure-beli virtuális hálózathoz az Azure Portallal való központi telepítéséhez szükséges csak egy aktív Azure-előfizetés és a egy webböngészőben való hozzáférés. Új virtuális hálózat üzembe helyezhető egy új vagy meglévő erőforráscsoportot. Új virtuális gép létrehozásakor a portálon válassza ki a meglévő virtuális hálózattal, vagy hozzon létre egy újat. Első lépések és [hozzon létre egy virtuális hálózatot az Azure portal használatával](../../virtual-network/quick-create-portal.md).
+> Első **lépések**: Egy Azure-beli virtuális hálózatnak a Azure Portal használatával történő üzembe helyezéséhez csak egy aktív Azure-előfizetés és egy webböngésző hozzáférése szükséges. Új virtuális hálózatot új vagy meglévő erőforráscsoporthoz is telepíthet. Amikor új virtuális gépet hoz létre a portálról, választhat egy meglévő virtuális hálózatot, vagy létrehozhat egy újat. Ismerkedjen meg [a Azure Portal használatával, és hozzon létre egy virtuális hálózatot](../../virtual-network/quick-create-portal.md).
 
-### <a name="access-and-security-for-virtual-networks"></a>Hozzáférés és biztonság a virtuális hálózatokban
+### <a name="access-and-security-for-virtual-networks"></a>Hozzáférés és biztonság virtuális hálózatokhoz
 
-Segíthet az Azure virtuális hálózatok biztonságos hálózati biztonsági csoport használatával. NSG tartalmaz egy hozzáférés-vezérlési lista (ACL) szabályok, amelyek engedélyezik vagy megtagadják a hálózati forgalmat a virtuális hálózatban futó Virtuálisgép-példányokat listája. NSG-ket társíthat-ket alhálózatokhoz vagy az alhálózaton belüli Virtuálisgép-példányokhoz. Ha alhálózattal társít egy NSG-t, az ACL-szabályok érvényesek lesznek az alhálózatban lévő Virtuálisgép-példányok. Emellett további korlátozhatja a forgalmat egy adott virtuális gépre úgy NGS közvetlenül a virtuális gép. További információkért lásd: [hálózati biztonsági csoportokkal a hálózati forgalom szűrése](../../virtual-network/security-overview.md).
+A hálózati biztonsági csoport segítségével biztonságossá teheti az Azure-beli virtuális hálózatokat. A NSG a hozzáférés-vezérlési listák (ACL) azon szabályainak listáját tartalmazza, amelyek engedélyezik vagy megtagadják a virtuális hálózatban lévő virtuálisgép-példányok hálózati forgalmát. A NSG társíthatja az alhálózatokhoz vagy az alhálózaton belüli egyedi virtuálisgép-példányokhoz is. Ha alhálózattal társít egy NSG, az ACL-szabályok az alhálózat összes virtuálisgép-példányára érvényesek lesznek. Emellett tovább korlátozhatja az egyes virtuális gépek forgalmát úgy, hogy közvetlenül az adott virtuális géppel társít egy NSG. További információ: [Hálózati forgalom szűrése hálózati biztonsági csoportokkal](../../virtual-network/security-overview.md).
 
 ## <a name="next-steps"></a>További lépések
 
-- [Egy Windows virtuális gép létrehozása](../../virtual-machines/windows/quick-create-portal.md)
+- [Windows rendszerű virtuális gép létrehozása](../../virtual-machines/windows/quick-create-portal.md)
 - [Linux rendszerű virtuális gép létrehozása](../../virtual-machines/linux/quick-create-portal.md)

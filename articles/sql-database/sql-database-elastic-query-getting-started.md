@@ -1,6 +1,6 @@
 ---
-title: (Horizontális partíciók) kiterjesztett felhőalapú adatbázisok közötti jelentés |} A Microsoft Docs
-description: Használja az adatbázis-lekérdezések adatbázisközi jelentéshez több adatbázis között.
+title: Kibővített Felhőbeli adatbázisok közötti jelentés (horizontális particionálás) | Microsoft Docs
+description: Több adatbázison keresztüli jelentések készítése a több adatbázisra kiterjedő adatbázis-lekérdezések használatával.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -10,58 +10,57 @@ ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
-manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: a73938c98ebaea310875f0db8b665d0f1aed55e8
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: cc59d7cb1ce09aad834130818e5af533719e04c1
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55561994"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568611"
 ---
-# <a name="report-across-scaled-out-cloud-databases-preview"></a>Jelentéskészítés több kiterjesztett felhőalapú adatbázisok (előzetes verzió)
+# <a name="report-across-scaled-out-cloud-databases-preview"></a>A kibővített felhőalapú adatbázisok (előzetes verzió) közötti jelentés
 
-Jelentéseket hozhat létre egy egyetlen kapcsolódási pont használatával több Azure SQL-adatbázis egy [rugalmas lekérdezés](sql-database-elastic-query-overview.md). Az adatbázisok horizontális kell particionálni a (más néven "horizontálisan skálázott").
+Egy [rugalmas lekérdezés](sql-database-elastic-query-overview.md)használatával több Azure SQL-adatbázisból is létrehozhat jelentéseket egyetlen kapcsolódási pontról. Az adatbázisoknak vízszintesen particionálva kell lenniük (más néven "szilánkokra").
 
-Ha rendelkezik egy meglévő adatbázist, lásd: [horizontálisan felskálázott adatbázisok áttelepítése meglévő adatbázisok](sql-database-elastic-convert-to-use-elastic-tools.md).
+Ha rendelkezik meglévő adatbázissal, tekintse meg [a meglévő adatbázisok áttelepítése a](sql-database-elastic-convert-to-use-elastic-tools.md)kibővített adatbázisokra című témakört.
 
-A lekérdezéséhez szükséges SQL objektumok ismertetése: [horizontálisan particionált adatbázisok közötti lekérdezési](sql-database-elastic-query-horizontal-partitioning.md).
+A lekérdezéshez szükséges SQL-objektumok megismeréséhez tekintse meg a [horizontálisan particionált adatbázisok lekérdezését](sql-database-elastic-query-horizontal-partitioning.md)ismertető témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Töltse le és futtassa a [Ismerkedés az Elastic Database-eszközök minta](sql-database-elastic-scale-get-started.md).
+Töltse le és futtassa az [első lépéseket a Elastic Database Tools példával](sql-database-elastic-scale-get-started.md).
 
-## <a name="create-a-shard-map-manager-using-the-sample-app"></a>Hozzon létre egy szegmens a mintaalkalmazással kezelő
-Itt létrehozhat horizontálispartíció-térkép manager több szegmensben, majd az adatok beszúrását a szegmensekre együtt. Ha már rendelkezik a horizontálisan skálázott adatok szegmensek telepítő őket, az alábbi lépéseket kihagyhatja, és helyezze át a következő szakaszra.
+## <a name="create-a-shard-map-manager-using-the-sample-app"></a>Szegmens Térkép-kezelő létrehozása a minta alkalmazás használatával
+Itt létre kell hoznia egy szegmenses Térkép-kezelőt, és több szegmenst is kell létrehoznia, majd az adathalmazba helyezi az adatbeszúrást. Ha már előfordul, hogy a szegmensek a szilánkokkal lettek beállítva, akkor kihagyhatja a következő lépéseket, és átléphet a következő szakaszra.
 
-1. Hozza létre és futtassa a **Ismerkedés az Elastic Database-eszközök** mintaalkalmazást. Kövesse a lépéseket, amíg a szakasz a 7. lépés [töltse le és futtassa a mintaalkalmazást](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app). 7. lépés végén jelenik meg a következő parancssort:
+1. Hozza létre és futtassa a **Elastic Database Tools** minta alkalmazás első lépéseit. Hajtsa végre a lépéseket a [minta alkalmazás letöltése és futtatása](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app)szakasz 7. lépésével. A 7. lépés végén a következő parancssor jelenik meg:
 
     ![parancssor][1]
-2. A parancssori ablakba írja be a "1", és nyomja le az **Enter**. Ez létrehozza a szegmens kezelő, és két szegmensek hozzáadása a kiszolgálóhoz. Ezután írja be a "3", és nyomja le az **Enter**; négyszer ismételje meg a műveletet. Ez a szegmensek minta adatsor szúr be.
-3. A [az Azure portal](https://portal.azure.com) jelenítsen meg három új adatbázist a kiszolgálón:
+2. A parancssorba írja be az "1" kifejezést, majd nyomja le az **ENTER**billentyűt. Ez létrehozza a szegmens Térkép-kezelőt, és két szegmenst hoz létre a kiszolgálóhoz. Ezután írja be a "3" kifejezést, és nyomja le az **ENTER**billentyűt. Ismételje meg a műveletet négyszer. Ez beszúrja a szegmensekben található mintavételi adatsorokat.
+3. A [Azure Portal](https://portal.azure.com) három új adatbázist kell megjelenítenie a kiszolgálón:
 
    ![A Visual Studio megerősítése][2]
 
-   Adatbázisközi lekérdezések ezen a ponton az Elastic Database-ügyfélkönyvtárak támogatja. Például a parancsablakban használja a 4. lehetőséget. Többszegmenses lekérdezés eredményeinek mindig van egy **UNION ALL** minden szegmensre eredményét.
+   Ezen a ponton a Elastic Database ügyféloldali kódtárak támogatják az adatbázisok közötti lekérdezéseket. Használja például a 4. lehetőséget a parancsablakban. A több szegmensből álló lekérdezés eredményei mindig a **Union összes** eredményét jelentik.
 
-   A következő szakaszban létrehozunk egy minta adatbázis végpontot, amely támogatja a gazdagabb lekérdezése az adatokat a szegmensek között.
+   A következő szakaszban egy minta adatbázis-végpontot hozunk létre, amely támogatja az adatszegmensekben található adatmennyiségek széles körű lekérdezését.
 
-## <a name="create-an-elastic-query-database"></a>Rugalmas lekérdezés-adatbázis létrehozása
-1. Nyissa meg a [az Azure portal](https://portal.azure.com) , és jelentkezzen be.
-2. Hozzon létre egy új Azure SQL-adatbázis ugyanazon a kiszolgálón, mint a szilánkleképezés-telepítés. Nevezze el az adatbázis "ElasticDBQuery."
+## <a name="create-an-elastic-query-database"></a>Rugalmas lekérdezési adatbázis létrehozása
+1. Nyissa [](https://portal.azure.com) meg a Azure Portalt, és jelentkezzen be.
+2. Hozzon létre egy új Azure SQL Database-adatbázist ugyanabban a kiszolgálón, mint a szegmens beállítása. Nevezze el a "ElasticDBQuery" adatbázist.
 
-    ![Az Azure portal és a tarifacsomag kiválasztása][3]
+    ![Azure Portal és árképzési szintek][3]
 
     > [!NOTE]
-    > használhat egy meglévő adatbázist. Ha így tesz, akkor nem egyikének kell lennie a szegmensek szeretné hajthat végre a lekérdezéseket. Ezt az adatbázist a rugalmas lekérdezés metaadat-objektumok létrehozásához használható.
+    > meglévő adatbázist is használhat. Ha ezt megteheti, nem lehet az egyik olyan szegmens, amelynek a lekérdezéseit végre szeretné hajtani. Ezt az adatbázist fogjuk használni egy rugalmas adatbázis-lekérdezés metaadat-objektumainak létrehozásához.
     >
 
 ## <a name="create-database-objects"></a>Adatbázis-objektumok létrehozása
-### <a name="database-scoped-master-key-and-credentials"></a>Adatbázis-hatáskörű főkulcs és a hitelesítő adatok
-Ezek használhatók a szilánkleképezés-kezelővel és a szegmensek csatlakozni:
+### <a name="database-scoped-master-key-and-credentials"></a>Adatbázis – hatókörrel rendelkező főkulcs és hitelesítő adatok
+Ezek a szegmenses Térkép kezelőjéhez és a szegmensekhez való kapcsolódáshoz használatosak:
 
-1. Nyissa meg az SQL Server Management Studio vagy SQL Server Data Tools a Visual Studióban.
-2. Csatlakozás ElasticDBQuery adatbázishoz, és hajtsa végre a következő T-SQL-parancsokat:
+1. Nyissa meg SQL Server Management Studio vagy SQL Server Data Tools a Visual Studióban.
+2. Kapcsolódjon a ElasticDBQuery adatbázishoz, és hajtsa végre a következő T-SQL-parancsokat:
 
         CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<password>';
 
@@ -69,10 +68,10 @@ Ezek használhatók a szilánkleképezés-kezelővel és a szegmensek csatlakozn
         WITH IDENTITY = '<username>',
         SECRET = '<password>';
 
-    "username" és "password" legyen ugyanaz, mint a 6. lépésben használt bejelentkezési adatok [töltse le és futtassa a mintaalkalmazást](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app) a [Ismerkedés az elastic database-eszközök](sql-database-elastic-scale-get-started.md).
+    a "username" és a "password" értéknek meg kell egyeznie a 6. lépésében használt bejelentkezési adatokkal, amelyek a [rugalmas adatbázis-eszközök használatának első lépéseiben](sql-database-elastic-scale-get-started.md)a [minta alkalmazás letöltését és futtatását](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app) ismertetik.
 
 ### <a name="external-data-sources"></a>Külső adatforrások
-Hozzon létre egy külső adatforrást, az ElasticDBQuery adatbázison hajtsa végre a következő parancsot:
+Külső adatforrás létrehozásához hajtsa végre a következő parancsot a ElasticDBQuery-adatbázisban:
 
     CREATE EXTERNAL DATA SOURCE MyElasticDBQueryDataSrc WITH
       (TYPE = SHARD_MAP_MANAGER,
@@ -82,10 +81,10 @@ Hozzon létre egy külső adatforrást, az ElasticDBQuery adatbázison hajtsa v�
        SHARD_MAP_NAME = 'CustomerIDShardMap'
     ) ;
 
- "CustomerIDShardMap" a szegmenstérkép neve esetén a szegmenstérkép és a szilánkleképezés-kezelővel a rugalmas adatbázis-eszközök minta használatával hozott létre. Azonban ha az egyéni telepítés ezt a mintát használja, majd kell a szegmensek leképezésnév az alkalmazás a választott.
+ A "CustomerIDShardMap" a szegmens Térkép neve, ha a szegmensek közötti térképet és a szegmens Térkép kezelőjét a rugalmas adatbázis-eszközök használatával hozta létre. Ha azonban az egyéni beállítást használta ehhez a mintához, akkor az alkalmazásban kiválasztott szegmenses leképezési nevet kell megadni.
 
 ### <a name="external-tables"></a>Külső táblák
-Hozzon létre egy külső táblát, amely megfelel a szegmensek a Customers tábla ElasticDBQuery adatbázisban a következő parancs végrehajtásával:
+Hozzon létre egy külső táblát, amely megegyezik a szegmensek ügyfelek táblájával a következő parancs ElasticDBQuery-adatbázison való végrehajtásával:
 
     CREATE EXTERNAL TABLE [dbo].[Customers]
     ( [CustomerId] [int] NOT NULL,
@@ -96,46 +95,46 @@ Hozzon létre egy külső táblát, amely megfelel a szegmensek a Customers táb
       DISTRIBUTION = SHARDED([CustomerId])
     ) ;
 
-## <a name="execute-a-sample-elastic-database-t-sql-query"></a>Egy mintául szolgáló elastic database-T-SQL-lekérdezés végrehajtása
-A külső adatforrásban és a külső táblák meghatározása után a külső táblákon végrehajtott mostantól használhatja a teljes T-SQL.
+## <a name="execute-a-sample-elastic-database-t-sql-query"></a>Minta rugalmas adatbázis-lekérdezés végrehajtása T-SQL-lekérdezés
+Miután meghatározta a külső adatforrást és a külső táblázatokat, mostantól teljes T-SQL-T használhat a külső táblákon.
 
-Hajtsa végre a lekérdezést az ElasticDBQuery adatbázison:
+A lekérdezés végrehajtása a ElasticDBQuery-adatbázisban:
 
     select count(CustomerId) from [dbo].[Customers]
 
-Láthatja, hogy a lekérdezés összesíti az eredményeket a szegmensből, és lehetővé teszi a következő kimenet:
+Figyelje meg, hogy a lekérdezés összesíti az összes szegmens eredményét, és a következő kimenetet adja:
 
 ![Kimenet részletei][4]
 
-## <a name="import-elastic-database-query-results-to-excel"></a>Rugalmas adatbázis-lekérdezés eredményei importálása Excelbe
- A lekérdezés eredményeit, egy Excel-fájlba importálhatja.
+## <a name="import-elastic-database-query-results-to-excel"></a>Rugalmas adatbázis lekérdezési eredményeinek importálása az Excelbe
+ Az eredményeket importálhatja egy lekérdezésből egy Excel-fájlba.
 
-1. Indítsa el az Excel 2013-hoz.
-2. Keresse meg a **adatok** menüszalagon.
-3. Kattintson a **egyéb forrásokból származó** kattintson **az SQL Server**.
+1. Indítsa el az Excel 2013 alkalmazást.
+2. Navigáljon az **adatszalagra** .
+3. Kattintson **a más forrásokból** lehetőségre, és kattintson **az SQL Server**lehetőségre.
 
-   ![Az Excel import más forrásokból][5]
-4. Az a **Adatkapcsolat varázsló** írja be a kiszolgáló nevét és bejelentkezési hitelesítő adatokat. Ezután kattintson a **Next** (Tovább) gombra.
-5. A párbeszédpanel **válassza ki a kívánt adatokat tartalmazó adatbázisban**, jelölje be a **ElasticDBQuery** adatbázis.
-6. Válassza ki a **ügyfelek** a listanézet táblát, és kattintson a **tovább**. Kattintson a **Befejezés**.
-7. Az a **adatok importálása** űrlap **válassza ki, hogyan szeretné az adatok megtekintéséhez a munkafüzetet a**válassza **tábla** kattintson **OK**.
+   ![Excel-importálás más forrásokból][5]
+4. Az **adatkapcsolatok varázslóban** adja meg a kiszolgáló nevét és a bejelentkezési hitelesítő adatokat. Ezután kattintson a **Next** (Tovább) gombra.
+5. A párbeszédpanelen **válassza ki a kívánt adatkészletet tartalmazó adatbázist**, és válassza ki a **ElasticDBQuery** -adatbázist.
+6. Válassza ki a **Customers (ügyfelek)** táblát a lista nézetben, és kattintson a **tovább**gombra. Ezután kattintson a **Befejezés**gombra.
+7. Az **adatimportálás** űrlapon a **válassza ki, hogyan szeretné**megtekinteni az adatait a munkafüzetben, válassza a **tábla** lehetőséget, majd kattintson **az OK**gombra.
 
-Az összes sort **ügyfelek** a különböző szegmensekben tárolt tábla, töltse fel az Excel-munkalapot.
+Az **ügyfelek** tábla összes sora, amely különböző szegmensekben van tárolva, feltölti az Excel-lapot.
 
-Mostantól használhatja az Excel hatékony vizualizációs funkciókat. Használhatja a kapcsolati karakterláncot a kiszolgáló nevét, az adatbázis nevét és a hitelesítő adatok az adatbázishoz való csatlakozáshoz a BI-ban és integrációs eszközök a rugalmas lekérdezés. Győződjön meg arról, hogy az SQL Server támogatott-e az eszköz adatforrásként. A rugalmas lekérdezés adatbázis és a külső táblák csakúgy, mint bármely más SQL Server-adatbázis és kíván csatlakozni, az eszköz az SQL Server-táblákra is hivatkozik.
+Mostantól használhatja az Excel hatékony adatvizualizációs funkcióit. A kapcsolati sztringet használhatja a kiszolgáló nevével, az adatbázis nevével és a hitelesítő adatokkal a BI-és adatintegrációs eszközök a rugalmas lekérdezési adatbázishoz való csatlakoztatásához. Győződjön meg arról, hogy a SQL Server támogatott adatforrásként az eszköz számára. A rugalmas lekérdezési adatbázist és a külső táblákat ugyanúgy tekintheti meg, mint bármely más SQL Server adatbázishoz, és SQL Server táblákhoz, amelyeket az eszközhöz szeretne csatlakozni.
 
-### <a name="cost"></a>Költségek
-Nem jár további költségekkel az Elastic Database-lekérdezés funkciójával.
+### <a name="cost"></a>Költség
+A Elastic Database lekérdezési funkció használata nem díjköteles.
 
-Díjszabási információkért tekintse meg a [SQL Database szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/sql-database/).
+A díjszabással kapcsolatos információkért tekintse meg a [SQL Database díjszabását](https://azure.microsoft.com/pricing/details/sql-database/).
 
 ## <a name="next-steps"></a>További lépések
 
-* Rugalmas lekérdezés áttekintését lásd: [rugalmas lekérdezés – áttekintés](sql-database-elastic-query-overview.md).
-* Függőleges particionálási oktatóanyagért lásd: [adatbázisközi lekérdezések (vertikális partíciók) – első lépések](sql-database-elastic-query-getting-started-vertical.md).
-* Függőlegesen particionált adatok szintaxis és a minta lekérdezéseket, lásd: [lekérdezése függőlegesen particionált adatok)](sql-database-elastic-query-vertical-partitioning.md)
-* A szintaxist és a minta lekérdezésekhez vízszintesen particionált adatok, lásd: [lekérdezése vízszintesen particionált adatok)](sql-database-elastic-query-horizontal-partitioning.md)
-* Lásd: [sp\_végrehajtása \_távoli](https://msdn.microsoft.com/library/mt703714) egy tárolt eljárás, amely végrehajtja a Transact-SQL-utasítás egy távoli Azure SQL Database vagy adatbázisok horizontális particionálási séma kidolgozásához szegmensek szolgáló készletét.
+* A rugalmas lekérdezés áttekintését lásd: [rugalmas lekérdezés áttekintése](sql-database-elastic-query-overview.md).
+* A vertikális particionálással kapcsolatos oktatóanyagért lásd: [Bevezetés az adatbázisok közötti lekérdezéssel (vertikális particionálás)](sql-database-elastic-query-getting-started-vertical.md).
+* A függőlegesen particionált információk szintaxisát és mintáit lásd [](sql-database-elastic-query-vertical-partitioning.md) : függőlegesen particionált adatlekérdezés
+* A horizontálisan particionált információk szintaxisát és mintáit lásd [](sql-database-elastic-query-horizontal-partitioning.md) : vízszintesen particionált adatlekérdezés
+* Lásd [:\_az \_SP távoli futtatása](https://msdn.microsoft.com/library/mt703714) olyan tárolt eljáráshoz, amely Transact-SQL-utasítást hajt végre egyetlen távoli Azure SQL Database vagy egy horizontális particionálási sémában szegmensként szolgáló adatbázis-készleten.
 
 
 <!--Image references-->

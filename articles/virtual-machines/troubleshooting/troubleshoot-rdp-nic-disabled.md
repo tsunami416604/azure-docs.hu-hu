@@ -4,21 +4,20 @@ description: Ismerje meg, hogyan háríthatók el a problémát, amely RDP meghi
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/12/2018
 ms.author: genli
-ms.openlocfilehash: 742026a8ff35f318f58674ebc2fb5c03e45161a8
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 666868d723b5e040b69762cdb39f472f2f8822c9
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53133332"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057919"
 ---
 #  <a name="cannot-remote-desktop-to-a-vm-because-the-network-interface-is-disabled"></a>A hálózati adapter le van tiltva, nem tudja egy virtuális géphez a távoli asztal
 
@@ -53,8 +52,7 @@ A virtuális gép a felület engedélyezéséhez használja a soros vezérlőele
 
     Például ha a interwork felület "Ethernet 2" nevű, futtassa a következő parancsot:
 
-        netsh interface set interface name=""Ethernet 2" admin=enabled
-
+        netsh interface set interface name="Ethernet 2" admin=enabled
 
 4.  Ellenőrizze a hálózati adapter újra, győződjön meg arról, hogy engedélyezve van-e a hálózati adapter állapotát.
 

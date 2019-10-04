@@ -1,71 +1,73 @@
 ---
-title: Meglévő problémát felügyeleti rendszerek egy webhook használatával állapotára vonatkozó értesítések konfigurálása |} A Microsoft Docs
-description: Személyre szabott értesítések kapcsolatos a probléma meglévő felügyeleti rendszer szolgáltatásállapot-események beolvasása.
+title: A meglévő probléma-felügyeleti rendszerek Azure Service Health értesítéseinek konfigurálása webhook használatával
+description: Személyre szabott értesítések küldése a szolgáltatás állapotával kapcsolatos eseményekről a meglévő probléma-felügyeleti rendszerre.
 author: stephbaron
 ms.author: stbaron
 ms.topic: conceptual
 ms.service: service-health
 ms.workload: Supportability
 ms.date: 3/27/2018
-ms.openlocfilehash: 69b142cd46c006e562218c949fb450864589a661
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 8f84b43519c197797b39397cfd15c4f90444177c
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57838069"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67854386"
 ---
-# <a name="configure-health-notifications-for-existing-problem-management-systems-using-a-webhook"></a>Meglévő problémát felügyeleti rendszerek egy webhook használatával állapotára vonatkozó értesítések konfigurálása
+# <a name="use-a-webhook-to-configure-health-notifications-for-problem-management-systems"></a>Rendszerállapot-értesítések konfigurálása a probléma-felügyeleti rendszerekhez webhook használatával
 
-Ez a cikk bemutatja, hogyan konfigurálhatja a szolgáltatás állapotriasztások, Webhookok segítségével adatokat küldeni az értesítést a rendszer.
+Ebből a cikkből megtudhatja, hogyan konfigurálhat Azure Service Health riasztásokat az adatküldés webhookokon keresztül a meglévő értesítési rendszeren való elküldéséhez.
 
-Service health-riasztások még ma, konfigurálhatja úgy, hogy az Azure-szolgáltatás incidens észleli, ha értesítés küldése SMS-üzenet vagy e-mailben.
-Azonban előfordulhat, hogy már rendelkezik meglévő külső értesítési rendszer, amely csak szeretné használni.
-Ez a dokumentum bemutatja a webhook hasznos adatai, és hogyan hozhat létre egyéni riasztásokat kaphat, amikor a szolgáltatással kapcsolatos problémák hatással vannak a legfontosabb részeit.
+Service Health riasztásokat úgy konfigurálhatja, hogy SMS vagy e-mailben értesítse Önt, ha egy Azure-szolgáltatás incidense érinti Önt.
 
-Ha szeretne egy előre konfigurált integrációt használja, lásd: hogyan:
-* [Riasztások beállítása a ServiceNow](service-health-alert-webhook-servicenow.md)
-* [Riasztások beállítása a pagerduty segítségével](service-health-alert-webhook-pagerduty.md)
-* [Riasztások konfigurálás az opsgenie segítségével](service-health-alert-webhook-opsgenie.md)
+Előfordulhat azonban, hogy már rendelkezik egy meglévő külső értesítési rendszerrel, amelyet használni szeretne. Ez a cikk a webhook hasznos adatainak legfontosabb részeit azonosítja. Továbbá leírja, hogyan hozhatók létre egyéni riasztások, amelyek értesítik a kapcsolódó szolgáltatási problémák előfordulásáról.
 
-## <a name="configuring-a-custom-notification-using-the-service-health-webhook-payload"></a>A service health webhook hasznos adatai segítségével egyéni értesítés konfigurálása
-Ha azt szeretné, a saját egyéni webhook-integráció beállítása során a szolgáltatás állapotával kapcsolatos értesítésekre küldött hasznos JSON elemzése szüksége.
+Ha előre konfigurált integrációt szeretne használni, tekintse meg a következőt:
+* [Riasztások konfigurálása a ServiceNow](service-health-alert-webhook-servicenow.md)
+* [Riasztások konfigurálása a PagerDuty](service-health-alert-webhook-pagerduty.md)
+* [Riasztások konfigurálása a OpsGenie](service-health-alert-webhook-opsgenie.md)
 
-Keresse meg [itt látható egy példa](../azure-monitor/platform/activity-log-alerts-webhook.md) , mi a `ServiceHealth` webhook hasznos adatai néz ki.
+**Bemutató videó megtekintése:**
 
-Ez egy szolgáltatásállapot-riasztás a naplófájlbejegyzéseket átnézve képes észlelni `context.eventSource == "ServiceHealth"`. Itt az, hogy leginkább releváns tulajdonságok a következők:
- * `data.context.activityLog.status`
- * `data.context.activityLog.level`
- * `data.context.activityLog.subscriptionId`
- * `data.context.activityLog.properties.title`
- * `data.context.activityLog.properties.impactStartTime`
- * `data.context.activityLog.properties.communication`
- * `data.context.activityLog.properties.impactedServices`
- * `data.context.activityLog.properties.trackingId`
+>[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUV]
 
-## <a name="creating-a-direct-link-to-the-service-health-dashboard-for-an-incident"></a>A Service Health irányítópultján incidens közvetlen hivatkozás létrehozása
-A Service Health irányítópultján, asztali vagy mobil mutató közvetlen hivatkozást hozhat létre egy speciális URL-cím létrehozásával. Használja a `trackingId`, az első és utolsó három számjegy, valamint a `subscriptionId`, kialakításához:
-```
-https://app.azure.com/h/<trackingId>/<first and last three digits of subscriptionId>
-```
+## <a name="configure-a-custom-notification-by-using-the-service-health-webhook-payload"></a>Egyéni értesítés konfigurálása a Service Health webhook hasznos adataival
+Saját egyéni webhook-integráció beállításához elemezni kell a Service Health értesítésen keresztül küldött JSON-adattartalmat.
 
-Például ha a `subscriptionId` van `bba14129-e895-429b-8809-278e836ecdb3` és a `trackingId` van `0DET-URB`, akkor a Service Health URL-címe:
+Tekintse meg [például](../azure-monitor/platform/activity-log-alerts-webhook.md) `ServiceHealth` a webhook hasznos adatait.
 
-```
-https://app.azure.com/h/0DET-URB/bbadb3
-```
+A szolgáltatás állapotára vonatkozó riasztást a következő helyen ellenőrizheti: `context.eventSource == "ServiceHealth"`. A legfontosabb tulajdonságok a következők:
+- **az adat. Context. activityLog. status**
+- **az adat. Context. activityLog. Level**
+- **az adat. Context. activityLog. subscriptionId**
+- **az adat. Context. activityLog. properties. title**
+- **az adat. Context. activityLog. properties. impactStartTime**
+- **az adat. Context. activityLog. properties. Communication**
+- **az adat. Context. activityLog. properties. impactedServices**
+- **az adat. Context. activityLog. properties. trackingId**
 
-## <a name="using-the-level-to-detect-the-severity-of-the-issue"></a>A szint használatával észleli a probléma súlyossága
-A legmagasabb súlyossági legalacsonyabb súlyosságot a `level` az adattartalomban szereplő tulajdonságot akkor lehet bármelyik `Informational`, `Warning`, `Error`, és `Critical`.
+## <a name="create-a-link-to-the-service-health-dashboard-for-an-incident"></a>Az incidenshez tartozó Service Health irányítópultra mutató hivatkozás létrehozása
+Egy speciális URL-cím létrehozásával létrehozhat egy asztali vagy mobileszközön található Service Health irányítópultra mutató közvetlen hivatkozást. Használja a *trackingId* és a *subscriptionId* első három és utolsó három számjegyét ebben a formátumban:
 
-## <a name="parsing-the-impacted-services-to-understand-the-full-scope-of-the-incident"></a>Az érintett szolgáltatások teljes körét az incidens megértéséhez-elemzés
-Service health-riasztások segítségével azonosítható, hogy problémák több régióban és szolgáltatásokat. A teljes információért értékét elemezni kell `impactedServices`.
-A tartalom belül egy [JSON-feloldójelekkel](https://json.org/) string, amikor unescaped, tartalmaz egy másik JSON-objektum, amely rendszeresen elemzi.
+https<i></i>://app.Azure.com/h/ *&lt;trackingId&gt;* /*első három és utolsó három számjegye subscriptionId&gt; &lt;*
+
+Ha például a *subscriptionId* bba14129-e895-429b-8809-278e836ecdb3, és a *trackingId* a 0DET-Urb, a Service Health URL-cím a következő:
+
+https<i></i>://app.Azure.com/h/0DET-Urb/bbadb3
+
+## <a name="use-the-level-to-detect-the-severity-of-the-issue"></a>A probléma súlyosságának észleléséhez használja a szintet
+A legalacsonyabbtól a legmagasabb súlyosságig a hasznos adatok **szintje** tulajdonsága *tájékoztató*, *Figyelmeztetés*, *hiba*vagy *kritikus*lehet.
+
+## <a name="parse-the-impacted-services-to-determine-the-incident-scope"></a>Az érintett szolgáltatások elemzése az incidens hatókörének meghatározásához
+Service Health riasztások több régióban és szolgáltatásban felmerülő problémákról is tájékoztatni tudnak. A teljes részletesség érdekében elemezni kell a értékét `impactedServices`.
+
+A benne lévő tartalom egy olyan Escape- [JSON](https://json.org/) -karakterlánc, amely a kihagyás után egy másik JSON-objektumot tartalmaz, amely rendszeresen elemezhető. Példa:
 
 ```json
 {"data.context.activityLog.properties.impactedServices": "[{\"ImpactedRegions\":[{\"RegionName\":\"Australia East\"},{\"RegionName\":\"Australia Southeast\"}],\"ServiceName\":\"Alerts & Metrics\"},{\"ImpactedRegions\":[{\"RegionName\":\"Australia Southeast\"}],\"ServiceName\":\"App Service\"}]"}
 ```
 
-Válik:
+válik
 
 ```json
 [
@@ -91,13 +93,17 @@ Válik:
 ]
 ```
 
-Ez jelzi, hogy nincsenek-e "Riasztásokat és metrikákat" Kelet-Ausztrália és Délkelet-problémák, valamint a problémák az "App Service" Délkelet-Ausztrália.
+Ez a példa a következő problémákat mutatja be:
+- "Riasztások & mérőszámok" Kelet-Ausztrália és Délkelet-Ausztráliában.
+- "App Service" a Délkelet-ausztráliai régióban.
 
+## <a name="test-your-webhook-integration-via-an-http-post-request"></a>Webhook-integráció tesztelése HTTP POST-kérelem használatával
 
-## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>Egy HTTP POST kérelem használatával a webhook-integráció tesztelése
-1. Hozza létre a service health hasznos adatokat szeretne küldeni. Egy példa service health webhook hasznos adatai címen található [Webhookok az Azure-tevékenységi naplóriasztások](../azure-monitor/platform/activity-log-alerts-webhook.md).
+Kövesse az alábbi lépéseket:
 
-2. HTTP POST-kérelmet a következőképpen hozhat létre:
+1. Hozza létre a küldeni kívánt szolgáltatás-állapot adattartalmát. Tekintse meg a Service Health webhook hasznos adatait az Azure-beli [tevékenység naplójának riasztásait](../azure-monitor/platform/activity-log-alerts-webhook.md)ismertető webhookokban.
+
+1. Hozzon létre egy HTTP POST-kérelmet a következőképpen:
 
     ```
     POST        https://your.webhook.endpoint
@@ -106,11 +112,11 @@ Ez jelzi, hogy nincsenek-e "Riasztásokat és metrikákat" Kelet-Ausztrália és
 
     BODY        <service health payload>
     ```
-3. Ekkor kap egy `2XX - Successful` választ.
+   "Sikeres 2XX" választ kell kapnia.
 
-4. Lépjen a [PagerDuty](https://www.pagerduty.com/) annak ellenőrzéséhez, hogy az integrációs sikeres volt-e beállítva.
+1. Nyissa meg a [PagerDuty](https://www.pagerduty.com/) , és ellenőrizze, hogy sikeresen beállította-e az integrációt.
 
 ## <a name="next-steps"></a>További lépések
-- Tekintse át a [tevékenység log riasztási webhookséma](../azure-monitor/platform/activity-log-alerts-webhook.md). 
-- Ismerje meg [szolgáltatás állapotára vonatkozó értesítések](../azure-monitor/platform/service-notifications.md).
-- Tudjon meg többet [Műveletcsoportok](../azure-monitor/platform/action-groups.md).
+- Tekintse át a [tevékenység naplójának riasztása webhook sémáját](../azure-monitor/platform/activity-log-alerts-webhook.md). 
+- Tudnivalók a [szolgáltatás állapotával](../azure-monitor/platform/service-notifications.md)kapcsolatos értesítésekről.
+- További információ a [műveleti csoportokról](../azure-monitor/platform/action-groups.md).

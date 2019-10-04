@@ -6,14 +6,14 @@ manager: bruz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 04/13/2018
+ms.date: 06/28/2019
 ms.author: chrisgre
-ms.openlocfilehash: 0302146634904ccf1d87220d3a24553149e10372
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d57dbbdd7614d09d52fef0f613c43d4ca1d08136
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59012965"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485868"
 ---
 # <a name="automatic-iot-device-management-at-scale-using-the-azure-cli"></a>Automatikus az Azure CLI használatával nagy mennyiségű IoT-Eszközfelügyelet
 
@@ -29,7 +29,9 @@ Automatikus felügyeleti funkcióit ikereszközök készletét frissítése a k�
 
 * A **tartalmat** hozzáadva vagy frissítve a célzott eszközök ikerállapotának a kívánt tulajdonságok meghatározása. A tartalom elérési útját a módosítani kívánt tulajdonságok szakasza tartalmaz.
 
-* A **metrikák** határozza meg, például konfigurációs állapotait összesítő számát **sikeres**, **folyamatban lévő**, és **hiba**. Egyéni metrikák megadott eszközön lekérdezések ikereszköz jelentett tulajdonságait.  Rendszermérőszámokat olyan alapértelmezett mérőszámokat, amelyek az ikereszköz állapotát, például az ikereszközök szánt számát és a twins, amelyek sikeresen frissítve lett-e számát mérjük. 
+* A **metrikák** határozza meg, például konfigurációs állapotait összesítő számát **sikeres**, **folyamatban lévő**, és **hiba**. Egyéni metrikák megadott eszközön lekérdezések ikereszköz jelentett tulajdonságait.  Rendszermérőszámokat olyan alapértelmezett mérőszámokat, amelyek az ikereszköz állapotát, például az ikereszközök szánt számát és a twins, amelyek sikeresen frissítve lett-e számát mérjük.
+
+Automatikus eszközkonfigurációkat futtassa először jön létre a konfigurációt követően rövid időn belül, majd öt perces időközönként. Metrikák lekérdezések futtatása minden egyes futásakor az automatikus eszköz konfigurálása.
 
 ## <a name="cli-prerequisites"></a>Parancssori felület Előfeltételek
 
@@ -56,7 +58,7 @@ Mielőtt létrehozna egy konfigurációt, mely eszközöket szeretné befolyáso
 
 ## <a name="define-the-target-content-and-metrics"></a>A célként megadott tartalom és a metrikák megadása
 
-A célként megadott tartalom és a metrika lekérdezések vannak megadva, az eszköz leíró JSON-dokumentumok ikereszköz kívánt tulajdonságokat az beállítása és a jelentett tulajdonságok alapján mérhető.  Hozzon létre egy Azure CLI-vel automatikus eszközkonfiguráció, mentse a célként megadott tartalom és a metrikák helyileg .txt-fájlként. A Fájlelérési utak használni egy későbbi szakaszban olvashat a alkalmazni a konfigurációt az eszköz parancs futtatásakor. 
+A célként megadott tartalom és a metrika lekérdezések vannak megadva, az eszköz leíró JSON-dokumentumok ikereszköz kívánt tulajdonságokat az beállítása és a jelentett tulajdonságok alapján mérhető.  Hozzon létre egy Azure CLI-vel automatikus eszközkonfiguráció, mentse a célként megadott tartalom és a metrikák helyileg .txt-fájlként. A Fájlelérési utak használni egy későbbi szakaszban olvashat a alkalmazni a konfigurációt az eszköz parancs futtatásakor.
 
 Íme egy alapszintű cél tartalom példa:
 

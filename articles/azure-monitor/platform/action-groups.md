@@ -1,96 +1,218 @@
 ---
-title: Az Azure Portalon a műveleti csoportok létrehozása és kezelése
-description: Ismerje meg, hogyan hozhat létre és kezelheti az Azure Portalon Műveletcsoportok.
+title: Műveleti csoportok létrehozása és kezelése a Azure Portal
+description: Megtudhatja, hogyan hozhat létre és kezelhet műveleti csoportokat a Azure Portalban.
 author: dkamstra
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 4/12/2019
+ms.date: 8/19/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 3d06024b7fa4356d4ad0e8b52c45c2ead62ef784
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: a0b0df9110f062b5f9c23840cb21308b634c9c81
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549661"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69898152"
 ---
-# <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Az Azure Portalon a műveleti csoportok létrehozása és kezelése
-## <a name="overview"></a>Áttekintés ##
-Műveletcsoport gyűjteménye, Azure-előfizetés tulajdonosa által megadott értesítési beállításokat. Azure Monitor és a Service Health-riasztások Műveletcsoportok használatával értesítheti a felhasználókat, hogy egy riasztás aktiválódott-e. Az azonos műveletcsoport vagy a felhasználó követelményeitől függően különböző Műveletcsoportok különböző riasztások használhatja. Az előfizetéshez legfeljebb 2000 Műveletcsoportok konfigurálásával.
+# <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Műveleti csoportok létrehozása és kezelése a Azure Portal
+A műveleti csoport az Azure-előfizetés tulajdonosa által meghatározott értesítési beállítások gyűjteménye. Azure Monitor és Service Health riasztások használata műveleti csoportok segítségével értesíti a felhasználókat arról, hogy riasztást váltott ki. A különböző riasztások ugyanazt a műveleti csoportot vagy különböző műveleti csoportokat használhatják a felhasználó igényeitől függően. Egy előfizetésben akár 2 000 műveleti csoportot is beállíthat.
 
-Egy olyan műveletet, kapnak egy megerősítő jelző műveleti csoporthoz hozzáadott egy személy e-mailben vagy SMS-értesítés megadása
+Egy olyan műveletet konfigurálhat, amely e-mailben vagy SMS-ben értesíti a személyeket, és megerősíti, hogy hozzá lettek adva a műveleti csoporthoz.
 
-Ez a cikk bemutatja, hogyan hozhat létre és kezelheti az Azure Portalon Műveletcsoportok.
+Ebből a cikkből megtudhatja, hogyan hozhat létre és kezelhet műveleti csoportokat a Azure Portalban.
 
-Minden művelet a következő tulajdonságok tevődik össze:
+Az egyes műveletek a következő tulajdonságokből állnak:
 
-* **Név**: A műveletcsoport belül egyedi azonosítója.  
-* **Művelet típusa**: A művelet végre. Ilyenek például a voice hívás, SMS, e-mailt küld; vagy automatizált műveletek különböző típusú elindítása. Tekintse meg a cikk későbbi részében típusokat. 
-* **Részletek**: A vonatkozó részletekkel, végezhet *művelettípus*. 
+* **Név**: A műveleti csoporton belüli egyedi azonosító.  
+* **Művelet típusa**: A művelet végrehajtása megtörtént. Ilyenek például a hanghívások, SMS-üzenetek, e-mailek küldése, vagy különböző típusú automatizált műveletek elindítása. Lásd a cikk későbbi részében található típusokat.
+* **Részletek**: A *művelet típusa*szerint változó megfelelő részletek.
 
-Műveletcsoportok konfigurálása Azure Resource Manager-sablonok használatáról további információért lásd: [műveleti csoport Resource Manager-sablonok](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
+További információ arról, hogyan használhatók Azure Resource Manager sablonok a műveleti csoportok konfigurálásához: [Action Group Resource Manager-sablonok](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
 
-## <a name="create-an-action-group-by-using-the-azure-portal"></a>Műveletcsoport létrehozása az Azure portal használatával ##
-1. Az a [portál](https://portal.azure.com)válassza **figyelő**. A **figyelő** ablaktábla összesíti az összes figyelési beállítást és adatokat egyetlen nézetben.
+## <a name="create-an-action-group-by-using-the-azure-portal"></a>Műveleti csoport létrehozása a Azure Portal használatával
 
-    ![A "Figyelés" szolgáltatás](./media/action-groups/home-monitor.png)
-1. Válassza ki **riasztások** majd **Műveletcsoportok kezelése**.
+1. A [Azure Portal](https://portal.azure.com)válassza a **figyelő**elemet. A **figyelő** ablaktábla egyetlen nézetben összesíti az összes figyelési beállítást és az adatait.
 
-    ![Műveletcsoportok gomb kezelése](./media/action-groups/manage-action-groups.png)
-1. Válassza ki **műveleti csoport hozzáadása**, és töltse ki a mezőket.
+    ![A "figyelő" szolgáltatás](./media/action-groups/home-monitor.png)
+    
+1. Válassza a riasztások lehetőséget, majd a **műveletek kezelése**lehetőséget.
 
-    ![A "Csoport hozzáadása művelet" parancs](./media/action-groups/add-action-group.png)
-1. Adjon meg egy nevet a a **műveletcsoport neve** mezőbe, majd adjon meg egy nevet a a **rövid, nevet** mezőbe. A rendszer a rövid nevet használja a műveletcsoport teljes neve helyett, amikor értesítéseket küld a csoport használatával.
+    ![Műveletek kezelése gomb](./media/action-groups/manage-action-groups.png)
+    
+1. Válassza a **műveleti csoport hozzáadása**lehetőséget, és töltse ki a mezőket.
 
-      ![A műveleti csoport hozzáadása"párbeszédpanel](./media/action-groups/action-group-define.png)
+    ![A "műveleti csoport hozzáadása" parancs](./media/action-groups/add-action-group.png)
+    
+1. Írjon be egy nevet a **műveleti csoport neve** mezőbe, és adjon meg egy nevet a **rövid név** mezőben. A rendszer a rövid nevet használja a műveletcsoport teljes neve helyett, amikor értesítéseket küld a csoport használatával.
 
-1. A **előfizetés** az aktuális előfizetéshez autofills mezőbe. Ebben az előfizetésben a műveletcsoport elmentett.
+      ![A műveleti csoport hozzáadása párbeszédpanel](./media/action-groups/action-group-define.png)
 
-1. Válassza ki a **erőforráscsoport** a a műveletcsoport mentve.
+1. Az **előfizetés** mezője az aktuális előfizetéssel együtt kitölti az előfizetést. Ez az előfizetés az a művelet, amelyben a műveleti csoport mentve lett.
 
-1. Műveletek listájának meghatározását. Adja meg a következő műveletek:
+1. Válassza ki azt az **erőforráscsoportot** , amelyben a műveleti csoportot menti.
 
-    a. **Név**: Adja meg egy egyedi azonosítót ehhez a művelethez.
+1. Adja meg a műveletek listáját. Minden művelethez adja meg a következőket:
 
-    b. **Művelet típusa**: Válassza ki az e-mailek és SMS és leküldéses/Hangvétel, a logikai alkalmazás, Webhookot, ITSM vagy Automation-Runbook.
+    1. **Név**: Adjon meg egy egyedi azonosítót ehhez a művelethez.
 
-    c. **Részletek**: A művelet típusa alapján, adjon meg egy telefonszám, e-mail címét, webhook URI-t, az Azure app, ITSM-kapcsolat vagy Automation-runbook. ITSM-művelet, továbbá adja meg **munkaelem** és a többi mező az ITSM-eszközhöz van szükség.
+    1. **Művelet típusa**: Válassza az E-mail/SMS/leküldés/hang, a Logic app, a webhook, a ITSM vagy az Automation Runbook lehetőséget.
 
-1. Válassza ki **OK** a műveletcsoport létrehozásához.
+    1. **Részletek**: A Művelettípus alapján adja meg a telefonszámot, az e-mail-címet, a webhook URI-JÁT, az Azure-alkalmazást, a ITSM-kapcsolat vagy az Automation-runbook. A ITSM művelethez emellett adja meg a munkaelemet és a ITSM eszköz által igényelt egyéb mezőket.
+    
+    1. **Gyakori riasztási séma**: Engedélyezheti a [közös riasztási sémát](https://aka.ms/commonAlertSchemaDocs), amely lehetővé teszi, hogy egyetlen bővíthető és egységesített riasztási adattartalmat biztosítson a Azure monitor összes riasztási szolgáltatásában.
 
-## <a name="manage-your-action-groups"></a>A műveleti csoportok kezelése ##
-Miután létrehozta a műveletcsoport, is látható, az a **Műveletcsoportok** szakaszában a **figyelő** ablaktáblán. Válassza ki a kezelni kívánt műveletcsoport:
+1. A műveleti csoport létrehozásához kattintson **az OK gombra** .
 
-* Adja hozzá, szerkeszthet és eltávolíthat műveleteket.
-* A műveletcsoport törlése.
+## <a name="manage-your-action-groups"></a>A műveleti csoportok kezelése
 
-## <a name="action-specific-information"></a>A művelet adott információk
+Miután létrehozta a műveleti csoportot, a **figyelő** ablaktábla **műveleti csoportok** szakaszában látható. Válassza ki a kezelni kívánt műveleti csoportot:
+
+* Műveletek hozzáadása, szerkesztése vagy eltávolítása.
+* A műveleti csoport törlése.
+
+## <a name="action-specific-information"></a>Műveletre vonatkozó információk
+
 > [!NOTE]
-> Lásd: [előfizetési szolgáltatási korlátok a figyelés](https://docs.microsoft.com/azure/azure-subscription-service-limits#monitor-limits) numerikus korlátait az alábbi elemek mindegyike számára.  
+> Az alábbi elemeken megtekintheti az [előfizetési szolgáltatás korlátozásait](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-monitor-limits) a numerikus korlátok figyeléséhez.  
 
-**Azure-alkalmazás leküldéses** – az Azure app-műveletek csak korlátozott számú műveletcsoport használhat. Jelenleg az Azure-alkalmazás a művelet csak ServiceHealth riasztások támogatja. Bármely más riasztástípus figyelmen kívül lesz hagyva. Lásd: [riasztások konfigurálása, ha a szolgáltatás állapotával kapcsolatos értesítés közzétételekor](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
+### <a name="automation-runbook"></a>Automation-forgatókönyv
+Tekintse meg az [Azure-előfizetési szolgáltatási](../../azure-subscription-service-limits.md) korlátokat a Runbook-adattartalomra vonatkozó korlátozásokkal kapcsolatban.
 
-**E-mailek** -e-mailt küld a következő e-mail-címekről. Győződjön meg arról, hogy az e-mailek szűrése megfelelően vannak konfigurálva
+A műveleti csoportban korlátozott számú Runbook művelet lehet. 
+
+### <a name="azure-app-push-notifications"></a>Azure-alkalmazás leküldéses értesítései
+Előfordulhat, hogy egy műveleti csoportban korlátozott számú Azure-alkalmazási művelet van.
+
+### <a name="email"></a>Email
+A rendszer e-maileket küld a következő e-mail-címekről. Győződjön meg arról, hogy az e-mail-szűrés megfelelően van konfigurálva
 - azure-noreply@microsoft.com
 - azureemail-noreply@microsoft.com
 - alerts-noreply@mail.windowsazure.com
 
-Előfordulhat, hogy e-mailes műveletek csak korlátozott számú tartalmaz műveletcsoport. Tekintse meg a [sebessége korlátozza az információk](./../../azure-monitor/platform/alerts-rate-limiting.md) cikk
+A műveleti csoportban korlátozott számú e-mail művelet lehet. Tekintse meg a [díjszabási információkat](./../../azure-monitor/platform/alerts-rate-limiting.md) ismertető cikket.
 
-**ITSM** -műveletcsoport ITSM-műveletek korlátozott számú korlátozott számú lehet. ITSM-művelethez egy ITSM-kapcsolat szükséges. Ismerje meg, hogyan hozhat létre egy [ITSM-kapcsolat](../../azure-monitor/platform/itsmc-overview.md).
+### <a name="email-azure-resource-manager-role"></a>Azure Resource Manager-szerepkör küldése e-mailben
+E-mail küldése az előfizetés szerepkörének tagjainak.
 
-**Logikai alkalmazás** -Logic App-műveletek csak korlátozott számú műveletcsoport lehet.
+A műveleti csoportban korlátozott számú e-mail művelet lehet. Tekintse meg a [díjszabási információkat](./../../azure-monitor/platform/alerts-rate-limiting.md) ismertető cikket.
 
-**Alkalmazás függvény** – a Functions API-val, amelyhez jelenleg a függvényalkalmazások v2 "AzureWebJobsSecretStorageType" beállítást az alkalmazás konfigurálásához szükséges műveletek olvasnak konfigurált alkalmazások esetében a "fájlok" kulcsok a függvény. További információkért lásd: [kulcskezelés a Functions V2 vált]( https://aka.ms/funcsecrets).
+### <a name="function"></a>Függvény
+A műveletként konfigurált functions-alkalmazások kulcsai a functions API-n keresztül olvashatók, amely jelenleg a v2 Function apps-alkalmazásokkal konfigurálja a "AzureWebJobsSecretStorageType" beállítást a "files" értékre. További információ: [változások a kulcskezelő szolgáltatásban a functions v2-ben]( https://aka.ms/funcsecrets).
 
-**Runbook** – előfordulhat, hogy a Runbook-műveletek csak korlátozott számú tartalmaz műveletcsoport. Tekintse meg a [az Azure-előfizetési szolgáltatási korlátok](../../azure-subscription-service-limits.md) a korlátok a Runbook is észleltünk adattartalmakat.
+A műveleti csoportban korlátozott számú Function művelet lehet.
 
-**SMS** – előfordulhat, hogy az SMS-műveletek csak korlátozott számú tartalmaz műveletcsoport. Is megtekintheti a [sebessége korlátozza az információk](./../../azure-monitor/platform/alerts-rate-limiting.md) és [SMS-riasztás viselkedése](../../azure-monitor/platform/alerts-sms-behavior.md) további fontos információkat. 
+### <a name="itsm"></a>ITSM
+A ITSM művelethez ITSM-kapcsolat szükséges. Megtudhatja, hogyan hozhat létre [ITSM-kapcsolatokat](../../azure-monitor/platform/itsmc-overview.md).
 
-**Beszédfelismerési** -Voice-műveletek csak korlátozott számú műveletcsoport lehet. Tekintse meg a [sebessége korlátozza az információk](./../../azure-monitor/platform/alerts-rate-limiting.md) cikk.
+A műveleti csoportban korlátozott számú ITSM művelet lehet. 
 
-**Webhook** -Webhook-műveletek csak korlátozott számú műveletcsoport lehet. Webhookok a rendszer újra próbálkozik a következő szabályok alkalmazásával. A webhook hívása rendszer legfeljebb 2 idők esetén a következő HTTP-állapotkódok adja vissza: 408, 429, 503, 504, illetve ha a HTTP-végpont nem válaszol. Az első újrapróbálkozás 10 másodperc után történik. A második újrapróbálkozási 100 másodperc múlva történik. Két hiba után nincs műveletcsoport meghívja a végpont 30 percig. 
+### <a name="logic-app"></a>Logic App
+A műveleti csoportban korlátozott számú Logic app-művelet lehet.
+
+### <a name="secure-webhook"></a>Secure Webhook
+**A biztonságos webhook funkció jelenleg előzetes verzióban érhető el.**
+
+A műveleti csoportok webhook művelettel kihasználhatja a Azure Active Directory előnyeit a műveleti csoport és a védett webes API (webhook-végpont) közötti kapcsolat biztonságossá tételéhez. A funkció kihasználásának általános munkafolyamata alább olvasható. Az Azure AD-alkalmazások és-szolgáltatások áttekintését lásd: [Microsoft Identity platform (v 2.0) – áttekintés](https://docs.microsoft.com/azure/active-directory/develop/v2-overview).
+
+1. Hozzon létre egy Azure AD-alkalmazást a védett webes API-hoz. Lásd https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview:.
+    - Beállíthatja, hogy a védett API-t egy Daemon-alkalmazás hívja meg.
+    
+1. Engedélyezze a műveleti csoportokat az Azure AD-alkalmazás használatához.
+
+    > [!NOTE]
+    > A szkript végrehajtásához az [Azure ad alkalmazás-rendszergazda szerepkör](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#available-roles) tagjának kell lennie.
+    
+    - Módosítsa a PowerShell-parancsfájl összekapcsolási AzureAD hívását az Azure AD-bérlői azonosító használatára.
+    - Módosítsa a PowerShell-parancsfájl változóját $myAzureADApplicationObjectId az Azure AD-alkalmazás objektumazonosítójának használatára
+    - Futtassa a módosított parancsfájlt.
+    
+1. Konfigurálja a műveleti csoport biztonságos webhook műveletét.
+    - Másolja a $myApp. ObjectId értéket a parancsfájlból, és adja meg a webhook műveleti definíciójának Application Object ID mezőjében.
+    
+    ![Biztonságos webhook művelet](./media/action-groups/action-groups-secure-webhook.png)
+
+#### <a name="secure-webhook-powershell-script"></a>Webhook PowerShell-parancsfájl biztonságossá tétele
+
+```PowerShell
+Connect-AzureAD -TenantId "<provide your Azure AD tenant ID here>"
+    
+# This is your Azure AD Application's ObjectId. 
+$myAzureADApplicationObjectId = "<the Object Id of your Azure AD Application>"
+    
+# This is the Action Groups Azure AD AppId
+$actionGroupsAppId = "461e8683-5575-4561-ac7f-899cc907d62a"
+    
+# This is the name of the new role we will add to your Azure AD Application
+$actionGroupRoleName = "ActionGroupsSecureWebhook"
+    
+# Create an application role of given name and description
+Function CreateAppRole([string] $Name, [string] $Description)
+{
+    $appRole = New-Object Microsoft.Open.AzureAD.Model.AppRole
+    $appRole.AllowedMemberTypes = New-Object System.Collections.Generic.List[string]
+    $appRole.AllowedMemberTypes.Add("Application");
+    $appRole.DisplayName = $Name
+    $appRole.Id = New-Guid
+    $appRole.IsEnabled = $true
+    $appRole.Description = $Description
+    $appRole.Value = $Name;
+    return $appRole
+}
+    
+# Get my Azure AD Application, it's roles and service principal
+$myApp = Get-AzureADApplication -ObjectId $myAzureADApplicationObjectId
+$myAppRoles = $myApp.AppRoles
+$actionGroupsSP = Get-AzureADServicePrincipal -Filter ("appId eq '" + $actionGroupsAppId + "'")
+
+Write-Host "App Roles before addition of new role.."
+Write-Host $myAppRoles
+    
+# Create the role if it doesn't exist
+if ($myAppRoles -match "ActionGroupsSecureWebhook")
+{
+    Write-Host "The Action Groups role is already defined.`n"
+}
+else
+{
+    $myServicePrincipal = Get-AzureADServicePrincipal -Filter ("appId eq '" + $myApp.AppId + "'")
+    
+    # Add our new role to the Azure AD Application
+    $newRole = CreateAppRole -Name $actionGroupRoleName -Description "This is a role for Action Groups to join"
+    $myAppRoles.Add($newRole)
+    Set-AzureADApplication -ObjectId $myApp.ObjectId -AppRoles $myAppRoles
+}
+    
+# Create the service principal if it doesn't exist
+if ($actionGroupsSP -match "AzNS AAD Webhook")
+{
+    Write-Host "The Service principal is already defined.`n"
+}
+else
+{
+    # Create a service principal for the Action Groups Azure AD Application and add it to the role
+    $actionGroupsSP = New-AzureADServicePrincipal -AppId $actionGroupsAppId
+}
+    
+New-AzureADServiceAppRoleAssignment -Id $myApp.AppRoles[0].Id -ResourceId $myServicePrincipal.ObjectId -ObjectId $actionGroupsSP.ObjectId -PrincipalId $actionGroupsSP.ObjectId
+    
+Write-Host "My Azure AD Application ($myApp.ObjectId): " + $myApp.ObjectId
+Write-Host "My Azure AD Application's Roles"
+Write-Host $myApp.AppRoles
+```
+
+### <a name="sms"></a>SMS
+További fontos információk: az információk és az [SMS](../../azure-monitor/platform/alerts-sms-behavior.md) -riasztások viselkedésének [korlátozása](./../../azure-monitor/platform/alerts-rate-limiting.md) .
+
+A műveleti csoportban korlátozott számú SMS-művelet lehet.  
+
+### <a name="voice"></a>Hang
+Tekintse meg a [díjszabási információkat](./../../azure-monitor/platform/alerts-rate-limiting.md) ismertető cikket.
+
+A műveleti csoportban korlátozott számú hangművelet lehet.
+
+### <a name="webhook"></a>Webhook
+A webhookok a következő szabályok alapján lesznek újrapróbálkozva. A webhook hívása a következő HTTP-állapotkódok visszaadásakor legfeljebb 2 alkalommal próbálkozik újra: 408, 429, 503, 504, illetve ha a HTTP-végpont nem válaszol. Az első újrapróbálkozás 10 másodperc után történik. A második újrapróbálkozás 100 másodperc után történik. Két hiba után a műveleti csoport 30 percig nem fogja hívni a végpontot. 
 
 Forrás IP-címtartományok
  - 13.72.19.232
@@ -100,20 +222,25 @@ Forrás IP-címtartományok
  - 13.106.38.142
  - 13.106.38.148
  - 13.106.57.196
+ - 13.106.57.197
  - 52.244.68.117
+ - 52.244.65.137
+ - 52.183.31.0
+ - 52.184.145.166
  - 51.4.138.199
  - 51.5.148.86
  - 51.5.149.19
 
-Fogadni ezen IP-címek, azt javasoljuk, hogy a változásokat frissítések konfigurálása [Service állapotriasztás, amely figyeli a Műveletcsoportok szolgáltatással kapcsolatos tájékoztató értesítések.
+Ha frissítéseket szeretne kapni ezen IP-címek változásairól, javasoljuk, hogy állítson be egy Service Health riasztást, amely figyeli a műveleti csoportok szolgáltatással kapcsolatos tájékoztató értesítéseket.
+
+Előfordulhat, hogy egy műveleti csoportban korlátozott számú webhook-művelet van.
 
 
-## <a name="next-steps"></a>További lépések ##
 
-* Tudjon meg többet [SMS-riasztás viselkedése](../../azure-monitor/platform/alerts-sms-behavior.md).  
-* Szerezzen egy [megértése a tevékenység log riasztási webhookséma](../../azure-monitor/platform/activity-log-alerts-webhook.md).  
-* Tudjon meg többet [ITSM-összekötő](../../azure-monitor/platform/itsmc-overview.md)
-* Tudjon meg többet [sebességkorlátozással](../../azure-monitor/platform/alerts-rate-limiting.md) a riasztásokat.
-* Get- [tevékenységnapló-riasztások áttekintése](../../azure-monitor/platform/alerts-overview.md), és a riasztások fogadása.  
-* Ismerje meg, hogyan [riasztások konfigurálása, ha a szolgáltatás állapotával kapcsolatos értesítés közzétételekor](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
-
+## <a name="next-steps"></a>További lépések
+* További információ az [SMS-riasztás viselkedéséről](../../azure-monitor/platform/alerts-sms-behavior.md).  
+* Ismerkedjen meg [a tevékenység naplójának riasztása webhook sémával](../../azure-monitor/platform/activity-log-alerts-webhook.md).  
+* További információ a [ITSM-csatoló](../../azure-monitor/platform/itsmc-overview.md)
+* További információ a [](../../azure-monitor/platform/alerts-rate-limiting.md) riasztások díjszabásának korlátozásáról.
+* Tekintse [át a tevékenységek naplójának riasztásait](../../azure-monitor/platform/alerts-overview.md), és Ismerje meg, hogyan fogadhat riasztásokat.  
+* Megtudhatja, hogyan [konfigurálhatja a riasztásokat, amikor egy szolgáltatás állapotáról értesítést küldenek](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).

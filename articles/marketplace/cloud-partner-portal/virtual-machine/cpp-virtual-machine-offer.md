@@ -1,25 +1,18 @@
 ---
-title: Az Azure piactéren virtuálisgép-ajánlat |} A Microsoft Docs
+title: Az Azure piactéren virtuálisgép-ajánlat
 description: Az Azure piactér-Virtuálisgép-ajánlat közzétételéhez folyamatának áttekintése.
 services: Azure, Marketplace, Cloud Partner Portal
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 12/04/2018
-ms.author: pbutlerm
-ms.openlocfilehash: bbe757ccd1d6a37cbcf04f3ecd6dd088ef1ff211
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.author: pabutler
+ms.openlocfilehash: fed0f47c963edf40883c432f5476bd7fe5720abb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353020"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64938063"
 ---
 # <a name="virtual-machine-offer"></a>Virtuálisgép-ajánlat
 

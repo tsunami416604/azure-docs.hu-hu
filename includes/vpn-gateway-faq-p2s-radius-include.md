@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 857d29f407c9939143fbb8263be40dadb040efdc
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: f9b787413dd6e2aaeafd4aa3bcee0eff746abece
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53439236"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71310543"
 ---
 [!INCLUDE [P2S FAQ All](vpn-gateway-faq-p2s-all-include.md)]
 
@@ -39,9 +39,9 @@ Nem. Csak helyek közötti kapcsolaton keresztül lehetséges.
  
 ### <a name="is-there-a-change-in-the-number-of-sstp-connections-supported-with-radius-authentication-what-is-the-maximum-number-of-sstp-and-ikev2-connections-supported"></a>Változik a RADIUS-hitelesítés használatakor a támogatott SSTP-kapcsolatok száma? Legfeljebb hány SSTP- vagy IKEv2-kapcsolat támogatott?
 
-RADIUS-hitelesítést használó átjárókon nem változik a támogatott SSTP-kapcsolatok maximális száma. 128 marad az SSTP-hez, de az átjáró-Termékváltozatot függ az IKEv2 protokollhoz. A támogatott kapcsolatok számára vonatkozó további információkért lásd: [átjáró-termékváltozatok](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku).
+RADIUS-hitelesítést használó átjárókon nem változik a támogatott SSTP-kapcsolatok maximális száma. Az SSTP esetében 128 marad, de a IKEv2 átjáró SKU-jának függvénye. A támogatott kapcsolatok számával kapcsolatos további információkért lásd: [átjáró SKU](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku)-i.
  
-### <a name="what-is-the-difference-between-doing-certificate-authentication-using-a-radius-server-vs-using-azure-native-certificate-authentication-by-uploading-a-trustedcertificate-to-azure"></a>Mi a különbség a RADIUS-kiszolgáló és az Azure natív tanúsítványalapú hitelesítésének használatával (az Azure-bA megbízható tanúsítvány feltöltésével) használatával végzett Tanúsítványalapú hitelesítés.
+### <a name="what-is-the-difference-between-doing-certificate-authentication-using-a-radius-server-vs-using-azure-native-certificate-authentication-by-uploading-a-trustedcertificate-to-azure"></a>Mi a különbség a tanúsítványalapú hitelesítés és a RADIUS-kiszolgáló használatával, illetve az Azure natív tanúsítványalapú hitelesítésének használatával (megbízható tanúsítvány az Azure-ba való feltöltésével).
 
 A RADIUS tanúsítványalapú hitelesítése esetén a hitelesítési kérelem egy RADIUS-kiszolgálóra lesz továbbítva, amely a tényleges tanúsítványhitelesítést végzi. Ez a lehetőség egy olyan tanúsítványhitelesítő infrastruktúrával való integrációkor hasznos, amellyel a RADIUS révén már rendelkezik.
   
@@ -50,3 +50,7 @@ Ha az Azure használatával hitelesíti a tanúsítványokat, akkor az Azure VPN
 ### <a name="does-radius-authentication-work-with-both-ikev2-and-sstp-vpn"></a>A RADIUS-hitelesítés az IKEv2 és az SSTP VPN esetében is működik?
 
 Igen, a RADIUS-hitelesítés az IKEv2-höz és az SSTP VPN-hez is támogatott. 
+
+### <a name="does-radius-authentication-work-with-the-openvpn-client"></a>Működik a RADIUS-hitelesítés az OpenVPN-ügyféllel?
+
+Az OpenVPN-ügyfél nem támogatja a RADIUS-hitelesítést.

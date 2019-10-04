@@ -1,79 +1,100 @@
 ---
-title: Jelentkezzen be a kétlépéses ellenőrzés vagy biztonsági adatait – Azure Active Directory |} A Microsoft Docs
-description: Ismerje meg, jelentkezzen be a biztonsági adatokat a különböző identitás-ellenőrzési módszerek használatáról.
+title: Bejelentkezés kétlépéses ellenőrzéssel vagy biztonsági információkkal – Azure Active Directory | Microsoft Docs
+description: Ismerje meg, hogyan jelentkezhet be a különböző Identity ellenőrzési módszerekkel a biztonsági adatokban.
 services: active-directory
 author: eross-msft
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: librown
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 07/30/2018
+ms.date: 07/18/2019
 ms.author: lizross
-ms.custom: user-help, seo-update-azuread-jan
+ms.custom: user-help
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60e4d9a4cb555dfbc9f05961487a8f794d19e1bf
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b20ea1131ceda0527ed35d1a1082d05f25da6bac
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59268354"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382299"
 ---
-# <a name="sign-in-using-two-step-verification-or-security-info"></a>Jelentkezzen be a kétlépéses ellenőrzés vagy a biztonsági adatok
-Miután beállította a kétlépéses ellenőrzés vagy a biztonsági adatok fogja jelentkezzen be a fiók a megadott hitelesítési módszerrel.
+# <a name="sign-in-using-two-step-verification-or-security-info"></a>Bejelentkezés kétlépéses ellenőrzés vagy biztonsági információ használatával
+
+A kétlépéses ellenőrzés vagy a biztonsági adatok beállítása után a megadott hitelesítési módszer használatával bejelentkezhet a fiókjába.
 
 > [!Note]
-> Ha továbbra is használja a kétlépéses ellenőrzés élményt, kell állítsa be a hitelesítési módszereket a utasításait a [a kétlépéses ellenőrzéshez a fiók beállítása](multi-factor-authentication-end-user-first-time.md) cikk.
-> 
-> Ha a rendszergazda a biztonsági adatok élmény van kapcsolva, meg kell beállítani a hitelesítési módszerek használatával a következő részletes cikkeket:<ul><li>[Hitelesítési alkalmazást használhat a biztonsági adatok beállítása](security-info-setup-auth-app.md)</li><li>[A biztonsági adatok szöveges üzenetben történő hitelesítésének beállítása](security-info-setup-text-msg.md)</li><li>[Telefonhívás használandó biztonsági adatainak beállítása](security-info-setup-phone-number.md)</li></ul>
+> Ha továbbra is a kétlépéses ellenőrzési funkciót használja, a hitelesítési módszereket úgy kell beállítania, hogy a [saját fiók beállítása](multi-factor-authentication-end-user-first-time.md) kétlépéses ellenőrzésre című cikk utasításait követve.
+>
+> Ha a rendszergazda bekapcsolta a biztonsági adatokkal kapcsolatos felhasználói élményt, a következő lépésekre bontott cikkekkel kell beállítania a hitelesítési módszereket:<ul><li>[Biztonsági adatok beállítása hitelesítési alkalmazás használatára](security-info-setup-auth-app.md)</li><li>[A biztonsági adatok szöveges üzenetben történő hitelesítésének beállítása](security-info-setup-text-msg.md)</li><li>[Biztonsági adatok beállítása telefonhívás használatára](security-info-setup-phone-number.md)</li><li>[Biztonsági adatok beállítása biztonsági kulcs használatára](security-info-setup-security-key.md)</li></ul>
 
-## <a name="sign-in-using-an-authenticator-app-notification-on-your-mobile-device"></a>Jelentkezzen be az authenticator alkalmazás értesítés a mobileszközén
+## <a name="sign-in-using-an-authenticator-app-notification-on-your-mobile-device"></a>Bejelentkezés a mobileszköz hitelesítő alkalmazásával kapcsolatos értesítés használatával
 
-1. Jelentkezzen be a fiókját a felhasználónevét és jelszavát.
+1. Jelentkezzen be a fiókjába a felhasználónevével és jelszavával.
 
-2. Válassza ki **jóváhagyás** a a jóváhagyási értesítést küldeni a mobileszközére.
+2. Válassza **a** jóváhagyás lehetőséget a mobileszköz számára küldött jóváhagyási értesítésből.
 
-## <a name="sign-in-using-an-authenticator-app-code-on-your-mobile-device"></a>Jelentkezzen be az authenticator alkalmazás kódot a mobileszközén
+## <a name="sign-in-using-an-authenticator-app-code-on-your-mobile-device"></a>Bejelentkezés a mobileszközön lévő hitelesítő alkalmazás kódjával
 
-1. Jelentkezzen be a fiókját a felhasználónevét és jelszavát.
+1. Jelentkezzen be a fiókjába a felhasználónevével és jelszavával.
 
-2. Nyissa meg a hitelesítő alkalmazás, és írja be a fiók véletlenszerűen generált kódot a **kódot** mezőbe.
+2. Nyissa meg a hitelesítő alkalmazást, és írja be a fiókja véletlenszerűen generált kódját a **kód megadása** mezőbe.
 
-## <a name="sign-in-using-your-phone-number"></a>Jelentkezzen be a telefonszám használata
+## <a name="sign-in-using-your-phone-number"></a>Bejelentkezés telefonszám használatával
 
-1. Jelentkezzen be a fiókját a felhasználónevét és jelszavát.
+1. Jelentkezzen be a fiókjába a felhasználónevével és jelszavával.
 
-2. A telefon választ, és kövesse az utasításokat.
+2. Válaszoljon a telefonjára, és kövesse az utasításokat.
 
-## <a name="sign-in-using-a-text-message"></a>Jelentkezzen be a szöveges üzenet használatával
+## <a name="sign-in-using-a-text-message"></a>Bejelentkezés szöveges üzenettel
 
-1. Jelentkezzen be a fiókját a felhasználónevét és jelszavát.
+1. Jelentkezzen be a fiókjába a felhasználónevével és jelszavával.
 
-2. Nyissa meg a szöveges üzenet, és írja be a kódot az azokat a szöveges üzenet a **kódot** mezőbe.
+2. Nyissa meg a szöveges üzenetet, és írja be a kódot a szöveges üzenetből a **kód megadása** mezőbe.
 
-## <a name="sign-in-using-another-verification-method"></a>Jelentkezzen be egy másik ellenőrzési módszerrel
-Ha valamilyen okból nem tudja használni az elsődleges bejelentkezési módszer, egy másik ellenőrzési módszert korábban már beállított használhatja.
+## <a name="sign-in-using-a-security-key-at-the-lock-screen"></a>Bejelentkezés biztonsági kulccsal a zárolási képernyőn
 
-1. Általában bejelentkezni a fiókjába, és válassza a **bejelentkezés másik módszerrel** hivatkozásra a **kétlépéses ellenőrzés** lapot.
+1. A biztonsági kulcs regisztrálását követően válassza ki a biztonsági kulcs rendszerképét a Windows 10 zárolási képernyőjén.
 
-    ![Ellenőrzési módszert bejelentkezés módosítása](media/security-info/two-factor-auth-signin-another-way.png)
+2. Szúrja be a biztonsági kulcsot az eszköz USB-portjába, és jelentkezzen be a Windowsba a biztonsági kulcs PIN-kódjának használatával.
+
+    ![Biztonsági kulcs bejelentkezés a Windows 10 zárolási képernyőjén](./media/security-info/security-info-windows-10-lock-screen-security-key.png)
+
+## <a name="sign-in-using-a-security-key-and-the-microsoft-edge-browser"></a>Bejelentkezés biztonsági kulccsal és a Microsoft Edge böngésző használatával
+
+1. A biztonsági kulcs regisztrálását követően nyissa meg a Microsoft Edge böngészőt.
+
+2. Amikor a rendszer felszólítja a bejelentkezésre, szúrja be a biztonsági kulcsot az eszköz USB-portjába, és jelentkezzen be a Windowsba a biztonsági kulcs PIN-kódjának használatával.
+
+    ![Biztonsági kulcs bejelentkezés a Microsoft Edge böngésző használatával](./media/security-info/security-info-edge-security-key.png)
+
+    >[!NOTE]
+    >További információ a Microsoft Authenticator alkalmazás használatával történő bejelentkezésről: a [Microsoft Authenticator alkalmazás használatával jelentkezzen](user-help-auth-app-sign-in.md)be a fiókjaiba.
+
+## <a name="sign-in-using-another-verification-method"></a>Bejelentkezés másik ellenőrzési módszer használatával
+
+Ha valamilyen okból nem tudja használni az elsődleges bejelentkezési módszerét, egy másik korábban beállított ellenőrzési módszert is használhat.
+
+1. Normál bejelentkezéssel jelentkezzen be a fiókjába, majd a kétlépéses **ellenőrzés** lapon válassza a **bejelentkezés másik módon** hivatkozását.
+
+    ![Bejelentkezés ellenőrzési módszerének módosítása](media/security-info/two-factor-auth-signin-another-way.png)
 
     >[!Note]
-    >Ha nem látja a **bejelentkezés másik módszerrel** hivatkozásra, az azt jelenti, hogy Ön még nem állította be bármely egyéb ellenőrzési módot választanak és, hogy bejelentkezik a fiókja segítségért forduljon a rendszergazdához kell. Miután a rendszergazda segítségével jelentkezzen be, győződjön meg arról, adjon hozzá további ellenőrzési módszert. Ellenőrzési módszerek sorát hozzáadásával kapcsolatos további információkért tekintse meg a [felügyelheti a kétlépéses ellenőrzés](multi-factor-authentication-end-user-manage-settings.md) cikk.
-    > 
-    >Ha látja a **bejelentkezés másik módszerrel** hivatkozás, de továbbra is látnak egyéb ellenőrzési módszerei, nem kell jelentkezik be a fiókjába, segítségért forduljon a rendszergazdához.
+    >Ha nem látja a **Bejelentkezés más módon** hivatkozást, az azt jelenti, hogy nem állított be semmilyen más ellenőrzési módszert, és hogy kapcsolatba kell lépnie a rendszergazdával a fiókjába való bejelentkezéshez. Miután a rendszergazda segítséget nyújt a bejelentkezéshez, győződjön meg róla, hogy további ellenőrzési módszereket ad hozzá. Az ellenőrzési módszerek hozzáadásával kapcsolatos további információkért tekintse [meg a beállítások kezelése](multi-factor-authentication-end-user-manage-settings.md) kétlépéses ellenőrzéshez című cikket.
+    >
+    >Ha a **Bejelentkezés egy másik módon** hivatkozás jelenik meg, de még mindig nem látja a többi ellenőrzési módszert, forduljon a rendszergazdához, és kérjen segítséget a fiókjához való bejelentkezéshez.
 
-2. Válassza ki a másik ellenőrzési módszert, és folytassa a kétlépéses ellenőrzési folyamatot.
+2. Válassza ki az alternatív ellenőrzési módszert, és folytassa a kétlépéses ellenőrzési folyamattal.
 
-3. Miután Ön vissza a fiókjában, frissítheti az ellenőrzési módszerek sorát, (ha szükséges). További információ készül hozzáadása vagy módosítása a módszereket, tekintse meg a [felügyelheti a kétlépéses ellenőrzés](multi-factor-authentication-end-user-manage-settings.md) cikk.
+3. Miután visszatért a fiókjába, frissítheti az ellenőrzési módszereket (ha szükséges). A módszerek hozzáadásával vagy módosításával kapcsolatos további információkért tekintse meg a [beállítások kezelése](multi-factor-authentication-end-user-manage-settings.md) kétlépéses ellenőrzéshez című cikket.
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg a biztonsági adatok a [Security info (előzetes verzió) – áttekintés](user-help-security-info-overview.md) cikk.
+- A biztonsági adatok [(előzetes verzió) – áttekintés című](user-help-security-info-overview.md) cikkben talál további információt.
 
-- További tudnivalók a kétlépéses ellenőrzést a [kétlépéses ellenőrzési áttekintése](user-help-two-step-verification-overview.md) cikk. 
+- A kétlépéses [ellenőrzés áttekintése című](user-help-two-step-verification-overview.md) cikkben megismerheti a kétlépéses ellenőrzést.
 
-- A jelszó alaphelyzetbe állítása, ha elfelejti, az elveszett vagy a [jelszó-visszaállítási portál](https://passwordreset.microsoftonline.com/)
+- Ha elvesztette vagy elfelejtette a jelszavát, állítsa alaphelyzetbe a jelszót a [jelszó](https://passwordreset.microsoftonline.com/) -visszaállítási portálról
 
-- Hibaelhárítási tippek és a bejelentkezési problémákkal kapcsolatos súgó a [nem jelentkezhet be Microsoft-fiókjába](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) cikk.
+- Hibaelhárítási tippek és Súgó a bejelentkezési problémákhoz a [nem tud bejelentkezni a Microsoft-fiók](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) cikkbe.

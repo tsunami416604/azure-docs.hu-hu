@@ -1,23 +1,22 @@
 ---
-title: 'Klasszikus virtuális hálózatok összekapcsolása az Azure Resource Manager-alapú virtuális hálózatokhoz: Portál |} A Microsoft Docs'
-description: Lépéseket a klasszikus virtuális hálózatok csatlakoztatása Resource Manager virtuális hálózatok VPN Gateway és a portál használatával
+title: 'Klasszikus virtuális hálózatok összekötése Azure Resource Manager virtuális hálózatok: Portál | Microsoft Docs'
+description: A klasszikus virtuális hálózatok Resource Manager-virtuális hálózatok való összekapcsolásának lépései a VPN Gateway és a portál használatával
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.workload: infrastructure-services
-ms.date: 10/17/2018
+ms.date: 09/24/2019
 ms.author: cherylmc
-ms.openlocfilehash: bf7d80bbbe63204cda47719a7d7c019013ad800b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 722907328fe17c4116f4f8d948e081f9582ca712
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58099171"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266563"
 ---
-# <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>A portál használatával különböző üzemi modellekből származó virtuális hálózatok összekapcsolása
+# <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>Virtuális hálózatok összekötése különböző üzemi modellekkel a portál használatával
 
-Ez a cikk bemutatja, hogyan klasszikus virtuális hálózatok csatlakoztatása Resource Manager-alapú virtuális hálózatokhoz kommunikálnak egymással a különböző üzembe helyezési modellekben található erőforrások. A jelen cikkben ismertetett lépések elsősorban az Azure-portálon, de ez a konfiguráció a listából a cikk a PowerShell használatával is létrehozhat.
+Ez a cikk bemutatja, hogyan csatlakoztathatók a klasszikus virtuális hálózatok a Resource Manager-virtuális hálózatok, hogy a különálló üzemi modellekben található erőforrások kommunikálni tudjanak egymással. A cikkben ismertetett lépések elsősorban a Azure Portal használják, de ezt a konfigurációt a PowerShell használatával is létrehozhatja, ehhez a listából válassza ki a cikket.
 
 > [!div class="op_single_selector"]
 > * [Portál](vpn-gateway-connect-different-deployment-models-portal.md)
@@ -25,207 +24,203 @@ Ez a cikk bemutatja, hogyan klasszikus virtuális hálózatok csatlakoztatása R
 > 
 > 
 
-Egy klasszikus virtuális hálózat csatlakoztatása virtuális hálózathoz a Resource Manager nagyon hasonlít egy virtuális hálózathoz csatlakozik egy helyszíni helyhez. Mindkét kapcsolattípus egy VPN-átjárót használ a biztonságos alagút IPsec/IKE használatával való kialakításához. Különböző előfizetésben található, és különböző régiókban található virtuális hálózatok közötti kapcsolatot hozhat létre. Már van kapcsolat a helyszíni hálózathoz, virtuális hálózatok mindaddig, amíg az átjárót, hogy fiókjuk konfigurálva lett a dinamikus vagy útválasztó-alapú is csatlakoztathat. A virtuális hálózatok közötti kapcsolatokról további információt a cikk végén, a [Virtuális hálózatok közötti kapcsolat – gyakori kérdések](#faq) című részben talál. 
+A klasszikus VNet Resource Manager-VNet való csatlakoztatása hasonló ahhoz, hogy egy VNet egy helyszíni helyhez kapcsolódjon. Mindkét kapcsolattípus egy VPN-átjárót használ a biztonságos alagút IPsec/IKE használatával való kialakításához. Létrehozhat egy kapcsolatot a különböző előfizetésekben és különböző régiókban található virtuális hálózatok között. Olyan virtuális hálózatok is csatlakoztathatók, amelyek már rendelkeznek kapcsolattal a helyszíni hálózatokkal, feltéve, hogy az átjárók dinamikus vagy Route-alapúak. A virtuális hálózatok közötti kapcsolatokról további információt a cikk végén, a [Virtuális hálózatok közötti kapcsolat – gyakori kérdések](#faq) című részben talál. 
 
-Ha még nem rendelkezik a virtuális hálózati átjáró, és nem szeretne létrehozni egyet, érdemes inkább fontolja meg a virtuális hálózatok összekapcsolása a virtuális hálózatok közötti társviszony-létesítés. A virtuális hálózatok közötti társviszony nem használ VPN-átjárót. További információ: [Társviszony létesítése virtuális hálózatok között](../virtual-network/virtual-network-peering-overview.md).
+Ha még nem rendelkezik virtuális hálózati átjáróval, és nem szeretne létrehozni egyet, érdemes lehet inkább a virtuális hálózatok csatlakoztatni a VNet-társ használatával. A virtuális hálózatok közötti társviszony nem használ VPN-átjárót. További információ: [Társviszony létesítése virtuális hálózatok között](../virtual-network/virtual-network-peering-overview.md).
 
 ### <a name="before"></a>Előkészületek
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* Ezek a lépések feltételezik, hogy mindkét virtuális hálózaton már korábban létrejött. Ha ez a cikk gyakorlatként használja, és nem rendelkezik a virtuális hálózatok, nincsenek kapcsolatok hozhat létre, azokat a lépéseket.
-* Győződjön meg arról, hogy a virtuális hálózat címtartományát nem lehetnek egymással átfedésben, vagy átfedésben más kapcsolatokat, az átjárók csatlakoznak előfordulhat, hogy azokat a tartományokat.
-* Telepítse a legújabb PowerShell-parancsmagok a Resource Manager és a szolgáltatásfelügyeleti (klasszikus). Ebben a cikkben használjuk az Azure portal és a PowerShell. A kapcsolat a Resource Manager virtuális hálózathoz a klasszikus virtuális hálózat létrehozása PowerShell szükséges. További információt [az Azure PowerShell telepítésével és konfigurálásával](/powershell/azure/overview) foglalkozó témakörben talál. 
+* Ezek a lépések azt feltételezik, hogy mindkét virtuális hálózatok már létre lett hozva. Ha gyakorlatként használja ezt a cikket, és nem rendelkezik virtuális hálózatok, a következő lépésekben talál hivatkozásokat a létrehozásához.
+* Ellenőrizze, hogy a virtuális hálózatok címtartományok nem fedik-e egymást egymással, vagy átfedésben van-e az átjárók által a csatlakozáshoz használt egyéb kapcsolatok tartományával.
+* Telepítse a legújabb PowerShell-parancsmagokat a Resource Manager és a Service Management (klasszikus) szolgáltatáshoz. Ebben a cikkben a Azure Portal és a PowerShellt is használjuk. A PowerShell szükséges a klasszikus VNet és a Resource Manager-VNet közötti kapcsolatok létrehozásához. További információt [az Azure PowerShell telepítésével és konfigurálásával](/powershell/azure/overview) foglalkozó témakörben talál. 
 
 ### <a name="values"></a>Példabeállítások
 
 Ezekkel az értékekkel létrehozhat egy tesztkörnyezetet, vagy a segítségükkel értelmezheti a cikkben szereplő példákat.
 
-**Klasszikus virtuális hálózat**
+**Klasszikus VNet**
 
-Virtuális hálózat neve = ClassicVNet <br>
-Címtér = 10.0.0.0/24 <br>
-Alhálózat neve Subnet-1 = <br>
-Alhálózati címtartomány = 10.0.0.0/27 <br>
+VNet neve = ClassicVNet <br>
+Címterület = 10.0.0.0/24 <br>
+Alhálózat neve = alhálózat-1 <br>
+Alhálózat-címtartomány = 10.0.0.0/27 <br>
 Előfizetés = a használni kívánt előfizetés <br>
 Erőforráscsoport = ClassicRG <br>
-Hely = USA nyugati RÉGIÓJA <br>
-Átjáró-alhálózat = 10.0.0.32/28 <br>
+Location = USA nyugati régiója <br>
+GatewaySubnet = 10.0.0.32/28 <br>
 Helyi hely = RMVNetLocal <br>
 
-**Resource Manager virtuális hálózathoz**
+**Resource Manager-VNet**
 
-Virtuális hálózat neve = RMVNet <br>
-Címtér = 192.168.0.0/16 <br>
+VNet neve = RMVNet <br>
+Címterület = 192.168.0.0/16 <br>
 Erőforráscsoport = RG1 <br>
-Hely = USA keleti RÉGIÓJA <br>
-Alhálózat neve Subnet-1 = <br>
+Hely = USA keleti régiója <br>
+Alhálózat neve = alhálózat-1 <br>
 Címtartomány = 192.168.1.0/24 <br>
-Átjáró-alhálózat = 192.168.0.0/26 <br>
+GatewaySubnet = 192.168.0.0/26 <br>
 Virtuális hálózati átjáró neve = RMGateway <br>
 Átjáró típusa = VPN <br>
-VPN-típus = útvonalalapú <br>
-Termékváltozat = VpnGw1 <br>
-Hely = USA keleti RÉGIÓJA <br>
-Virtuális hálózat = RMVNet <br> (társítása a VPN-átjárón a virtuális hálózat) Első IP-konfiguráció = rmgwpip <br> (átjáró nyilvános IP-címe) Helyi hálózati átjáró = ClassicVNetLocal <br>
-Kapcsolat neve = RMtoClassic
+VPN-típus = útvonal-alapú <br>
+SKU = VpnGw1 <br>
+Hely = USA keleti régiója <br>
+Virtuális hálózat = RMVNet <br> (a VPN-átjáró hozzárendelése ehhez a VNet) Első IP-konfiguráció = rmgwpip <br> (átjáró nyilvános IP-címe) Helyi hálózati átjáró = ClassicVNetLocal <br>
+Kapcsolatok neve = RMtoClassic
 
-### <a name="connectoverview"></a>Kapcsolat – áttekintés
+### <a name="connectoverview"></a>A kapcsolatok áttekintése
 
-Ebben a konfigurációban, hozzon létre VPN gateway-kapcsolat a virtuális hálózatok között egy IPsec/IKE VPN-alagúton keresztül. Győződjön meg arról, hogy a virtuális hálózatok közötti tartományok egyike átfedésben vannak egymással, vagy azokkal a helyi hálózatokat, amelyekhez csatlakoznak.
+Ehhez a konfigurációhoz létre kell hoznia egy VPN Gateway-kapcsolatot egy IPsec/IKE VPN-alagúton a virtuális hálózatok között. Győződjön meg róla, hogy egyik VNet sem fedi egymást egymással, sem pedig azokkal a helyi hálózatokkal, amelyekhez csatlakoznak.
 
-Az alábbi táblázatban látható egy példa a Példa virtuális hálózatok és helyek definiálásának módját:
+Az alábbi táblázat egy példát mutat be a példa virtuális hálózatok és helyi helyeinek meghatározására:
 
-| Virtual Network | Címtartomány | Régió | Csatlakozik a helyi hálózati telephely |
+| Virtuális hálózat | Címtartomány | Régió | Kapcsolódás helyi hálózati helyhez |
 |:--- |:--- |:--- |:--- |
 | ClassicVNet |(10.0.0.0/24) |USA nyugati régiója | RMVNetLocal (192.168.0.0/16) |
-| RMVNet | (192.168.0.0/16) |USA keleti régiója |ClassicVNetLocal (10.0.0.0/24) |
+| RMVNet | (192.168.0.0/16) |East US |ClassicVNetLocal (10.0.0.0/24) |
 
-## <a name="classicvnet"></a>1. szakasz – a klasszikus virtuális hálózat beállításainak konfigurálása
+## <a name="classicvnet"></a>1. szakasz – a klasszikus VNet beállításainak konfigurálása
 
-Ebben a szakaszban hoz létre a klasszikus virtuális hálózat, a helyi hálózati (helyi), és a virtuális hálózati átjárót. A képernyőképek csak példaként szolgálnak. Ügyeljen arra, hogy cserélje le az értékeket a saját, vagy használja a [példa](#values) értékeket.
+Ebben a szakaszban a klasszikus VNet, a helyi hálózatot (helyi helyet) és a virtuális hálózati átjárót hozza létre. A képernyőképek csak példaként szolgálnak. Ügyeljen arra, hogy a saját értékeit cserélje le, vagy használja a [példában](#values) szereplő értékeket.
 
-### 1. <a name="classicvnet"></a>Egy klasszikus virtuális hálózat létrehozása
+### 1. <a name="classicvnet"></a>Klasszikus VNet létrehozása
 
-Ha gyakorlatként futtatja ezeket a lépéseket és egy klasszikus virtuális hálózat nem rendelkezik, egy virtuális hálózat használatával létrehozhat [Ez a cikk](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) és a [példa](#values) beállítások értékei a fent.
+Ha nem rendelkezik klasszikus VNet, és gyakorlatként futtatja ezeket a lépéseket, létrehozhat egy VNet [ehhez a cikkhez](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) , és a fenti [példában](#values) szereplő beállítások értékeit.
 
-Ha már rendelkezik egy virtuális hálózathoz egy VPN-átjáróval, ellenőrizze, hogy az átjáró dinamikus. Ha statikus, először törölnie kell a VPN-átjárót, mielőtt továbbhaladna az [a helyi hely konfigurálása](#local).
+Ha már rendelkezik egy VPN-átjáróval rendelkező VNet, ellenőrizze, hogy az átjáró dinamikus-e. Ha statikus, először törölnie kell a VPN-átjárót, mielőtt folytatná [a helyi hely konfigurálását](#local).
 
 1. Nyissa meg az [Azure Portalt](https://ms.portal.azure.com), majd jelentkezzen be az Azure-fiókjával.
-2. Kattintson a **+ erőforrás létrehozása** nyissa meg a "New".
-3. A "Keresés a piactéren" mezőbe írja be a "Virtuális hálózat". Ha ehelyett hálózat -> virtuális hálózat, nem fog kapni egy klasszikus virtuális hálózat létrehozásának lehetősége.
-4. A visszaadott listában keresse meg a "Virtuális hálózat", és kattintson rá a virtuális hálózat lap megnyitásához. 
-5. A virtuális hálózat lapon válassza ki a "Klasszikus" klasszikus virtuális hálózat létrehozásához. Ha itt az alapértelmezett, meg fog lezárását Resource Manager virtuális hálózathoz helyette.
+2. Kattintson az **+ erőforrás létrehozása** elemre az új lap megnyitásához.
+3. A "keresés a piactéren" mezőbe írja be a következőt: "Virtual Network". Ha ehelyett a hálózatkezelés-> Virtual Network lehetőséget választja, nem fogja tudni klasszikus VNet létrehozni.
+4. Keresse meg a "Virtual Network" elemet a visszaadott listából, és kattintson rá a Virtual Network lap megnyitásához. 
+5. Klasszikus VNet létrehozásához a virtuális hálózat lapon válassza a klasszikus lehetőséget. Ha az alapértelmezett értéket használja, a rendszer felvesz egy Resource Manager-VNet.
 
 ### 2. <a name="local"></a>A helyi hely konfigurálása
 
-1. Navigáljon a **összes erőforrás** , és keresse meg a **ClassicVNet** a listában.
-2. Az a **áttekintése** lap a **VPN-kapcsolatok** területén kattintson **átjáró** átjáró létrehozásához.
+1. Keresse meg az **összes erőforrást** , és keresse meg a **ClassicVNet** a listában.
+2. Az **Áttekintés** lap **VPN-kapcsolatok** szakaszában kattintson az **átjáró** elemre az átjáró létrehozásához.
   ![VPN-átjáró konfigurálása](./media/vpn-gateway-connect-different-deployment-models-portal/gatewaygraphic.png "VPN-átjáró konfigurálása")
-3. Az a **új VPN-kapcsolat** lapon a **kapcsolattípus**, jelölje be **Site-to-site**.
-4. A **helyi hely**, kattintson a **kötelező beállítások konfigurálása**. Ekkor megnyílik a **helyi hely** lapot.
-5. Az a **helyi hely** lapon, hozzon létre egy nevet a Resource Manager virtuális hálózathoz. Például "RMVNetLocal."
-6. Ha a VPN-átjáró a Resource Manager virtuális hálózat már tartalmaz egy nyilvános IP-címet használja az értéket a **VPN-átjáró IP-cím** mező. Ha ezek a lépések végrehajtása gyakorlatként, vagy még nem rendelkezik a virtuális hálózati átjáró a Resource Manager virtuális hálózathoz, a helyőrző IP-címet is alkotják. Győződjön meg arról, hogy a helyőrző IP-címet egy érvényes formátumot használja. Később, cserélje le a helyőrző IP-címet a Resource Manager virtuális hálózati átjáró nyilvános IP-címét.
-7. A **Ügyfélcímtér**, használja a [értékek](#connectoverview) a virtuális hálózati IP-címtereket a Resource Manager virtuális hálózathoz. Ez a beállítás adja meg a Resource Manager virtuális hálózatot a címterek szolgál. A példában 192.168.0.0/16, a RMVNet címtartománya használjuk.
-8. Kattintson a **OK** mentse az értékeket, és térjen vissza a **új VPN-kapcsolat** lapot.
+3. Az **új VPN-kapcsolat** lapon, a **kapcsolat típusa**területen válassza a **helyek közötti**lehetőséget.
+4. **Helyi hely**esetén kattintson a **kötelező beállítások konfigurálása**elemre. Ekkor megnyílik a **helyi webhely** oldal.
+5. A **helyi hely** lapon hozzon létre egy nevet, amely a Resource Manager VNet hivatkozik. Például: "RMVNetLocal".
+6. Ha a Resource Manager-VNet VPN-átjárója már rendelkezik nyilvános IP-címmel, használja a **VPN Gateway IP-cím** mező értékét. Ha gyakorlatként hajtja végre ezeket a lépéseket, vagy még nem rendelkezik virtuális hálózati átjáróval a Resource Manager-VNet, létrehozhat egy helyőrző IP-címet. Győződjön meg arról, hogy a helyőrző IP-címe érvényes formátumot használ. Később lecseréli a helyőrző IP-címet a Resource Manager virtuális hálózati átjárójának nyilvános IP-címére.
+7. Az **ügyfél címtartomány mezőben**használja a Resource [](#connectoverview) Manager-VNet virtuális hálózati IP-címeinek értékeit. Ezzel a beállítással adhatja meg a Resource Manager-beli virtuális hálózathoz való átirányításhoz használandó címeket. A példában a 192.168.0.0/16, a RMVNet címtartományt használjuk.
+8. Az értékek mentéséhez és az **új VPN-kapcsolat** lapra való visszatéréshez kattintson **az OK** gombra.
 
 ### <a name="classicgw"></a>3. Virtuális hálózati átjáró létrehozása
 
-1. Az a **új VPN-kapcsolat** lapon válassza ki a **átjáró azonnali létrehozása** jelölőnégyzetet.
+1. Az **új VPN-kapcsolat** lapon jelölje be az **átjáró azonnali létrehozása** jelölőnégyzetet.
 2. Kattintson a **Választható átjárókonfiguráció** elemre a **Átjáró konfigurációja** lap megnyitásához.
 
-   ![Nyissa meg az átjáró konfigurációs lapján](./media/vpn-gateway-connect-different-deployment-models-portal/optionalgatewayconfiguration.png "nyissa meg az átjáró konfigurációs lapján")
-3. Kattintson a **alhálózat – kötelező beállítások konfigurálása** megnyitásához a **alhálózat hozzáadása** lapot. A **neve** már konfigurálva van a szükséges érték: **Átjáró-alhálózat**.
-4. A **címtartomány** az átjáró-alhálózat tartományának hivatkozik. Bár létrehozhat egy átjáró-alhálózat egy/29-címtartomány (3 címeket), azt javasoljuk, hogy a további IP-címet tartalmaz, amelyek átjáró-alhálózat létrehozását. Ez be tudja fogadni a jövőbeni konfigurációk, amely több elérhető IP-címeket lehet szükség. Ha lehetséges használjon, / 27-eset vagy/28. Ha gyakorlatként használja ezeket a lépéseket, olvassa el a [példaértékeket](#values). Ebben a példában "10.0.0.32/28" használ. Kattintson a **OK** az átjáró-alhálózat létrehozásához.
-5. Az a **átjárókonfiguráció** lapon **mérete** hivatkozik az átjáró-Termékváltozatot. Válassza ki az átjáró-Termékváltozatot a VPN-átjáró számára.
-6. Ellenőrizze a **útválasztási típusának** van **dinamikus**, majd kattintson **OK** térjen vissza a **új VPN-kapcsolat** lap.
-7. Az a **új VPN-kapcsolat** kattintson **OK** a VPN-átjáró létrehozásához. Egy VPN-átjáró létrehozása akár 45 percet is igénybe vehet.
+   ![Átjáró konfigurációjának megnyitása lap](./media/vpn-gateway-connect-different-deployment-models-portal/optionalgatewayconfiguration.png "Átjáró konfigurációjának megnyitása lap")
+3. Kattintson az **alhálózat – kötelező beállítások konfigurálása** elemre az **alhálózat hozzáadása** lap megnyitásához. A **név** már konfigurálva van a szükséges értékkel: **GatewaySubnet**.
+4. A **címtartomány** az átjáró-alhálózat tartományára vonatkozik. Bár az átjáró-alhálózatot egy/29 címtartomány (3 cím) használatával is létrehozhatja, javasoljuk, hogy hozzon létre több IP-címet tartalmazó átjáró-alhálózatot. Ez a beállítás olyan jövőbeli konfigurációkat fog kielégíteni, amelyek több elérhető IP-címet igényelhetnek. Ha lehetséges, használja a/27 vagy/28. Ha gyakorlatként használja ezeket a lépéseket, tekintse át a [példában szereplő értékeket](#values). Ebben a példában a következőt használjuk: "10.0.0.32/28". Az átjáró-alhálózat létrehozásához kattintson **az OK** gombra.
+5. Az **átjáró konfigurációja** lapon a **méret** az átjáró SKU-ra hivatkozik. Válassza ki a VPN-átjáróhoz tartozó átjáró SKU-t.
+6. Ellenőrizze, hogy az **útválasztási típus** **dinamikus**-e, majd kattintson az **OK** gombra az **új VPN-kapcsolat** lapra való visszatéréshez.
+7. Az **új VPN-kapcsolat** lapon kattintson **az OK** gombra a VPN-átjáró létrehozásának megkezdéséhez. Egy VPN-átjáró létrehozása akár 45 percet is igénybe vehet.
 
-### <a name="ip"></a>4. A virtuális hálózati átjáró nyilvános IP-cím másolása
+### <a name="ip"></a>4. A virtuális hálózati átjáró nyilvános IP-címének másolása
 
-A virtuális hálózati átjáró létrehozása után megtekintheti az átjáró IP-cím. 
+A virtuális hálózati átjáró létrehozása után megtekintheti az átjáró IP-címét. 
 
-1. Keresse meg a klasszikus virtuális hálózat, és kattintson a **áttekintése**.
-2. Kattintson a **VPN-kapcsolatok** a VPN-kapcsolatok lap megnyitásához. A VPN kapcsolatok lapon megtekintheti a nyilvános IP-címet. Ez a virtuális hálózati átjárójához rendelt nyilvános IP-címet. Jegyezze fel az IP-címet. Használhatja azt a későbbi lépések a Resource Manager helyi hálózati átjáró konfigurációs beállítások való munka során. 
-3. Megtekintheti a gateway-kapcsolatok állapotát. Figyelje meg, hogy a létrehozott helyi hálózati hely "Csatlakozás" szerepel. Az állapot változik, miután létrehozta a kapcsolatot. Ezen a lapon bezárhatja, amikor elkészült, az állapota megtekintése.
+1. Navigáljon a klasszikus VNet, és kattintson az **Áttekintés**elemre.
+2. Kattintson a **VPN-kapcsolatok** elemre a VPN-kapcsolatok lap megnyitásához. A VPN-kapcsolatok oldalon megtekintheti a nyilvános IP-címet. Ez a virtuális hálózati átjáróhoz hozzárendelt nyilvános IP-cím. Jegyezze fel az IP-címet. A későbbi lépésekben a Resource Manager helyi hálózati átjáró konfigurációs beállításainak használatával végezheti el. 
+3. Megtekintheti az átjáró kapcsolatainak állapotát. Figyelje meg, hogy a létrehozott helyi hálózati telephely "Csatlakozás" néven jelenik meg. Az állapot a kapcsolatok létrehozása után módosul. Ezt a lapot akkor is lezárhatja, ha befejezte az állapot megtekintését.
 
-## <a name="rmvnet"></a>2. szakasz – a Resource Manager virtuális hálózati beállítások konfigurálása
+## <a name="rmvnet"></a>2. szakasz – a Resource Manager VNet beállításainak konfigurálása
 
-Ebben a szakaszban hoz létre a virtuális hálózati átjáró és a helyi hálózati átjárót a Resource Manager virtuális hálózathoz. A képernyőképek csak példaként szolgálnak. Ügyeljen arra, hogy cserélje le az értékeket a saját, vagy használja a [példa](#values) értékeket.
+Ebben a szakaszban létrehozza a virtuális hálózati átjárót és a helyi hálózati átjárót a Resource Manager-VNet. A képernyőképek csak példaként szolgálnak. Ügyeljen arra, hogy a saját értékeit cserélje le, vagy használja a [példában](#values) szereplő értékeket.
 
 ### <a name="1-create-a-virtual-network"></a>1. Virtuális hálózat létrehozása
 
-**Példaértékek:**
+**Példa értékei:**
 
-* Virtuális hálózat neve = RMVNet <br>
-* Címtér = 192.168.0.0/16 <br>
+* VNet neve = RMVNet <br>
+* Címterület = 192.168.0.0/16 <br>
 * Erőforráscsoport = RG1 <br>
-* Hely = USA keleti RÉGIÓJA <br>
-* Alhálózat neve Subnet-1 = <br>
+* Hely = USA keleti régiója <br>
+* Alhálózat neve = alhálózat-1 <br>
 * Címtartomány = 192.168.1.0/24 <br>
 
+Ha nem rendelkezik Resource Manager-VNet, és gyakorlatként futtatja ezeket a lépéseket, hozzon létre egy virtuális hálózatot a [virtuális hálózat létrehozása](../virtual-network/quick-create-portal.md)című témakör lépéseit követve a example Values használatával.
 
-Ha nem rendelkezik a Resource Manager virtuális hálózathoz, és gyakorlatként futtatja ezeket a lépéseket, hozzon létre egy virtuális hálózat lépéseivel [hozzon létre egy virtuális hálózatot](../virtual-network/quick-create-portal.md), a példaértékek használatával.
+### <a name="creategw"></a>2. Virtuális hálózati átjáró létrehozása
 
-### <a name="2-create-a-gateway-subnet"></a>2. Átjáróalhálózat létrehozása
+Ebben a lépésben a virtuális hálózat virtuális hálózati átjáróját fogja létrehozni. Az átjáró létrehozása akár 45 percet is igénybe vehet, az átjáró kiválasztott termékváltozatától függően.
 
-**Példaérték:** Átjáró-alhálózat = 192.168.0.0/26
+[!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-portal-include.md)]
 
-Virtuális hálózati átjáró létrehozása előtt először az átjáró-alhálózat létrehozásához. Átjáróalhálózat létrehozása/28-as vagy nagyobb CIDR-számot (/ 27, / 26-os stb.). Létrehozásakor gyakorlatként részeként, használhatja a példában szereplő értékeket.
-
-[!INCLUDE [vpn-gateway-add-gwsubnet-rm-portal](../../includes/vpn-gateway-add-gwsubnet-rm-portal-include.md)]
-
-[!INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
-
-### <a name="creategw"></a>3. Virtuális hálózati átjáró létrehozása
-
-**Példaértékek:**
+**Példa értékei:**
 
 * Virtuális hálózati átjáró neve = RMGateway <br>
 * Átjáró típusa = VPN <br>
-* VPN-típus = útvonalalapú <br>
-* Termékváltozat = VpnGw1 <br>
-* Hely = USA keleti RÉGIÓJA <br>
+* VPN-típus = útvonal-alapú <br>
+* SKU = VpnGw1 <br>
+* Hely = USA keleti régiója <br>
 * Virtuális hálózat = RMVNet <br>
+* GatewaySubnet = 192.168.0.0/26 <br>
 * Első IP-konfiguráció = rmgwpip <br>
 
 [!INCLUDE [vpn-gateway-add-gw-rm-portal](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
 
-### <a name="createlng"></a>4. Helyi hálózati átjáró létrehozása
+[!INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
 
-**Példaértékek:** Helyi hálózati átjáró = ClassicVNetLocal
+### <a name="createlng"></a>3. Helyi hálózati átjáró létrehozása
 
-| Virtual Network | Címtartomány | Régió | Csatlakozik a helyi hálózati telephely |Átjáró nyilvános IP-címe|
+**Példa értékei:** Helyi hálózati átjáró = ClassicVNetLocal
+
+| Virtuális hálózat | Címtartomány | Régió | Kapcsolódás helyi hálózati helyhez |Átjáró nyilvános IP-címe|
 |:--- |:--- |:--- |:--- |:--- |
-| ClassicVNet |(10.0.0.0/24) |USA nyugati régiója | RMVNetLocal (192.168.0.0/16) |ClassicVNet átjáróhoz rendelt nyilvános IP-cím|
-| RMVNet | (192.168.0.0/16) |USA keleti régiója |ClassicVNetLocal (10.0.0.0/24) |RMVNet átjáróhoz rendelt nyilvános IP-címe.|
+| ClassicVNet |(10.0.0.0/24) |USA nyugati régiója | RMVNetLocal (192.168.0.0/16) |Az ClassicVNet-átjáróhoz hozzárendelt nyilvános IP-cím|
+| RMVNet | (192.168.0.0/16) |East US |ClassicVNetLocal (10.0.0.0/24) |A RMVNet-átjáróhoz hozzárendelt nyilvános IP-cím.|
 
-A helyi hálózati átjáró meghatározza a címtartományt és a klasszikus virtuális hálózat és a virtuális hálózati átjáró nyilvános IP-címet. Ha gyakorlatként végez ezeket a lépéseket, tekintse meg a példában szereplő értékeket.
+A helyi hálózati átjáró megadja a címtartomány és a klasszikus VNet és a virtuális hálózati átjáróhoz társított nyilvános IP-címet. Ha gyakorlatként hajtja végre ezeket a lépéseket, tekintse meg a példában szereplő értékeket.
 
 [!INCLUDE [vpn-gateway-add-lng-rm-portal](../../includes/vpn-gateway-add-lng-rm-portal-include.md)]
 
-## <a name="modifylng"></a>3. szakasz – a klasszikus virtuális hálózatok helyi hely beállításainak módosítása
+## <a name="modifylng"></a>3. szakasz – a klasszikus VNet helyi hely beállításainak módosítása
 
-Ez a szakasz cserélje le a helyőrző IP-címet, amelyet a helyi webhely beállításainak megadásakor a Resource Manager VPN-átjáró IP-cím a használt. Ez a szakasz a klasszikus (SM) PowerShell-parancsmagokat használja.
+Ebben a szakaszban lecseréli azt a helyőrző IP-címet, amelyet a helyi hely beállításainak megadásakor használt a Resource Manager VPN Gateway IP-címével. Ez a szakasz a klasszikus (SM) PowerShell-parancsmagokat használja.
 
-1. Az Azure Portalon lépjen a klasszikus virtuális hálózat.
-2. A virtuális hálózat lapján, kattintson a **áttekintése**.
-3. Az a **VPN-kapcsolatok** területén kattintson az ábra a helyi hely neve.
+1. A Azure Portal navigáljon a klasszikus virtuális hálózathoz.
+2. A virtuális hálózat lapján kattintson az **Áttekintés**elemre.
+3. A **VPN-kapcsolatok** szakaszban kattintson a helyi webhely nevére a grafikában.
 
-   ![VPN-kapcsolatok](./media/vpn-gateway-connect-different-deployment-models-portal/vpnconnections.png "VPN-kapcsolatok")
-4. Az a **Site-to-site VPN-kapcsolatok** lap, kattintson a webhely nevét.
+   ![VPN – kapcsolatok](./media/vpn-gateway-connect-different-deployment-models-portal/vpnconnections.png "VPN-kapcsolatok")
+4. A **helyek közötti VPN-kapcsolatok** lapon kattintson a hely nevére.
 
-   ![Site-name](./media/vpn-gateway-connect-different-deployment-models-portal/sitetosite3.png "helyi hely neve")
-5. Nyissa meg a helyi hely neve a helyi helynek a kapcsolat lapon kattintson a **helyi hely** lapot.
+   ![Hely neve](./media/vpn-gateway-connect-different-deployment-models-portal/sitetosite3.png "Helyi hely neve")
+5. A helyi webhely kapcsolat lapján kattintson a helyi hely nevére a **helyi hely** lap megnyitásához.
 
-   ![Open-local-hely](./media/vpn-gateway-connect-different-deployment-models-portal/openlocal.png "helyi webhely megnyitása")
-6. Az a **helyi hely** lapon, cserélje le a **VPN-átjáró IP-cím** a Resource Manager-átjáró IP-címmel.
+   ![Megnyitás – helyi hely](./media/vpn-gateway-connect-different-deployment-models-portal/openlocal.png "Helyi webhely megnyitása")
+6. A **helyi hely** lapon cserélje le a **VPN-átjáró IP-címét** a Resource Manager-átjáró IP-címére.
 
-   ![Átjáró – ip-cím](./media/vpn-gateway-connect-different-deployment-models-portal/gwipaddress.png "átjáró IP-címe")
-7. Kattintson a **OK** frissíteni az IP-címet.
+   ![Átjáró – IP-cím](./media/vpn-gateway-connect-different-deployment-models-portal/gwipaddress.png "Átjáró IP-címe")
+7. Az IP-cím frissítéséhez kattintson **az OK** gombra.
 
-## <a name="RMtoclassic"></a>4. szakasz – klasszikus kapcsolat létrehozása a Resource Managerben
+## <a name="RMtoclassic"></a>4. szakasz – erőforrás-kezelő létrehozása a klasszikus kapcsolódáshoz
 
-Ezeket a lépéseket konfigurálja a kapcsolat a Resource Manager virtuális hálózat és a klasszikus virtuális hálózatot az Azure portal használatával.
+Ezekben a lépésekben a Azure Portal segítségével konfigurálja a (z) Resource Manager-VNet származó kapcsolatokat a klasszikus VNet.
 
-1. A **összes erőforrás**, keresse meg a helyi hálózati átjárót. Ebben a példában a helyi hálózati átjáró a **ClassicVNetLocal**.
-2. Kattintson a **konfigurációs** , és győződjön meg arról, hogy az IP-címének értékét a VPN-átjáró számára a klasszikus virtuális hálózatot. Szükség esetén frissítse, majd kattintson a **mentése**. Zárja be a lapot.
-3. A **összes erőforrás**, kattintson a helyi hálózati átjárót.
-4. Kattintson a **kapcsolatok** a kapcsolatok lap megnyitásához.
-5. Az a **kapcsolatok** kattintson **+** kapcsolatot szeretne hozzáadni.
-6. Az a **kapcsolat hozzáadása** lapon, a kapcsolat nevét. Például "RMtoClassic."
-7. **Site-to-Site** már ki van jelölve ezen az oldalon.
-8. Válassza ki a virtuális hálózati átjáró, amely a hellyel való társítani szeretné.
-9. Hozzon létre egy **megosztott kulcs**. Ezt a kulcsot a Resource Manager virtuális hálózatot hoz létre a klasszikus virtuális hálózatok közötti kapcsolat is használatban van. A kulcs létrehozásához, vagy kitalálhat egyet. Ebben a példában az "abc123" kulcsot használjuk, de lehetséges (és javasolt) használhatja összetettebb.
-10. Kattintson a **OK** a kapcsolat létrehozásához.
+1. A **minden erőforrás**területen keresse meg a helyi hálózati átjárót. A példánkban a helyi hálózati átjáró **ClassicVNetLocal**.
+2. Kattintson a **konfiguráció** elemre, és ellenőrizze, hogy az IP-cím értéke a klasszikus VNET tartozó VPN-átjáró. Szükség esetén frissítse a frissítést, majd kattintson a **Mentés**gombra. Az oldal bezárásához.
+3. Az **összes erőforrás**területen kattintson a helyi hálózati átjáróra.
+4. Kattintson a **kapcsolatok** elemre a kapcsolatok lap megnyitásához.
+5. A **kapcsolatok** lapon kattintson **+** a kapcsolat hozzáadásához.
+6. A **kapcsolatok hozzáadása** lapon nevezze el a kapcsolatokat. Például: "RMtoClassic".
+7. Ezen a lapon már ki van választva a **helyek közötti** kapcsolat.
+8. Válassza ki azt a virtuális hálózati átjárót, amelyet hozzá szeretne rendelni a helyhez.
+9. Hozzon létre egy **megosztott kulcsot**. Ezt a kulcsot a klasszikus VNet a Resource Manager-VNet létrehozott kapcsolatban is használja a rendszer. Létrehozhatja a kulcsot, vagy létrehozhat egyet. A példánkban a "abc123"-t használjuk, de az is előfordulhat, hogy a (és a) valamivel összetettebb.
+10. A kapcsolódás létrehozásához kattintson **az OK** gombra.
 
-## <a name="classictoRM"></a>5. szakasz – klasszikusról Resource Manager-kapcsolat létrehozása
+## <a name="classictoRM"></a>5. szakasz – klasszikus – Resource Manager-alapú kapcsolatok létrehozása
 
-Ezeket a lépéseket a kapcsolat a klasszikus virtuális hálózat és a Resource Manager virtuális hálózatot fog konfigurálni. Ezeket a lépéseket a PowerShell szükséges. A portálon Ez a kapcsolat nem hozható létre. Győződjön meg arról, hogy letöltötte és telepítette a klasszikus (SM) és az erőforrás-kezelő (RM) PowerShell-parancsmagok is.
+Ezekben a lépésekben a klasszikus VNet a Resource Manager-VNet való kapcsolódást konfigurálja. Ehhez a lépésekhez PowerShell szükséges. Ezt a kapcsolatokat nem lehet létrehozni a portálon. Győződjön meg arról, hogy letöltötte és telepítette a klasszikus (SM) és a Resource Manager (RM) PowerShell-parancsmagokat.
 
 ### <a name="1-connect-to-your-azure-account"></a>1. Csatlakozás az Azure-fiókhoz
 
-Nyissa meg a PowerShell-konzol emelt szintű jogosultságokkal rendelkeznek, és jelentkezzen be az Azure-fiókjával. A bejelentkezés után, hogy elérhetők legyenek az Azure PowerShell-lel a rendszer letölti a fiók beállításait. A következő parancsmagot a bejelentkezési hitelesítő adatokat kér a Resource Manager üzemi modell az Azure-fiók:
+Nyissa meg emelt szintű jogosultságokkal a PowerShell-konzolt, és jelentkezzen be az Azure-fiókjába. A bejelentkezést követően a rendszer letölti a fiók beállításait, hogy elérhetők legyenek Azure PowerShell számára. A következő parancsmag a Resource Manager-alapú üzemi modellhez tartozó Azure-fiók bejelentkezési hitelesítő adatait kéri:
 
 ```powershell
 Connect-AzAccount
@@ -237,33 +232,33 @@ Olvassa be az Azure-előfizetések listáját.
 Get-AzSubscription
 ```
 
-Ha több előfizetéssel rendelkezik, válassza ki a használni kívánt előfizetést.
+Ha egynél több előfizetéssel rendelkezik, válassza ki a használni kívánt előfizetést.
 
 ```powershell
 Select-AzSubscription -SubscriptionName "Name of subscription"
 ```
 
-Ezután jelentkezzen be a klasszikus PowerShell-parancsmag (szolgáltatásfelügyelet) használatával. A következő parancs használatával adja hozzá a klasszikus üzemi modellben az Azure-fiókjával:
+Ezután jelentkezzen be a klasszikus PowerShell-parancsmagok (Service Management) használatára. Használja az alábbi parancsot az Azure-fiók hozzáadásához a klasszikus üzemi modellhez:
 
 ```powershell
 Add-AzureAccount
 ```
 
-Az előfizetések listájának beolvasása. Ez a lépés hozzáadása a Service Management-parancsmagok, attól függően, az Azure-modul telepítésekor lehet szükség.
+Az előfizetések listájának beolvasása. Erre a lépésre akkor lehet szükség, ha a Service Management-parancsmagokat az Azure-modul telepítésének függvényében adja hozzá.
 
 ```powershell
 Get-AzureSubscription
 ```
 
-Ha több előfizetéssel rendelkezik, válassza ki a használni kívánt előfizetést.
+Ha egynél több előfizetéssel rendelkezik, válassza ki a használni kívánt előfizetést.
 
 ```powershell
 Select-AzureSubscription -SubscriptionName "Name of subscription"
 ```
 
-### <a name="2-view-the-network-configuration-file-values"></a>2. A hálózati konfigurációs fájl értékeinek megtekintése
+### <a name="2-view-the-network-configuration-file-values"></a>2. A hálózati konfigurációs fájlok értékének megtekintése
 
-Virtuális hálózat létrehozásakor az Azure Portalon a teljes Azure használó név nem látható az Azure Portalon. Virtuális hálózat neve "ClassicVNet" az Azure Portalon megjelenő például rendelkezhet egy sokkal hosszabb nevet a hálózat konfigurációs fájljában. Neve a következőhöz hasonló: "Csoport ClassicRG ClassicVNet". Az alábbi lépéseket töltse le a hálózati konfigurációs fájlt, és tekintse meg az értékeket.
+Amikor VNet hoz létre a Azure Portalban, az Azure által használt teljes név nem látható a Azure Portalban. Előfordulhat például, hogy a Azure Portal "ClassicVNet" nevű VNet a hálózati konfigurációs fájlban sokkal több nevet tartalmaz. A név az alábbihoz hasonló lehet: "Csoport ClassicRG ClassicVNet". Ezekben a lépésekben letölti a hálózati konfigurációs fájlt, és megtekinti az értékeket.
 
 Hozzon létre egy könyvtárat a számítógépén, majd exportálja a hálózati konfigurációs fájlt a könyvtárba. Ebben a példában a hálózati konfigurációs fájlt a C:\AzureNet helyre exportálja.
 
@@ -271,18 +266,18 @@ Hozzon létre egy könyvtárat a számítógépén, majd exportálja a hálózat
 Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
 ```
 
-Nyissa meg a fájlt egy szövegszerkesztőben, és tekintse meg a nevet a klasszikus virtuális hálózat számára. A hálózati konfigurációs fájlt a neveket használja, ha futtatja a PowerShell-parancsmagokat.
+Nyissa meg a fájlt egy szövegszerkesztővel, és tekintse meg a klasszikus VNet nevét. A PowerShell-parancsmagok futtatásakor használja a hálózati konfigurációs fájl nevét.
 
-- Virtuális hálózat nevei jelennek meg **VirtualNetworkSite name =**
-- Helynevek létrehoztak **LocalNetworkSite name =**
+- A VNet nevei a **VirtualNetworkSite neve =**
+- A helyek nevei a **LocalNetworkSite neve =**
 
 ### <a name="3-create-the-connection"></a>3. A kapcsolat létrehozása
 
-Állítsa be a megosztott kulcsot, és hozza létre a kapcsolatot a klasszikus virtuális hálózatot a Resource Manager virtuális hálózathoz. A portál használatával a megosztott kulcs nem állítható be. Ellenőrizze, hogy ezeket a lépéseket a klasszikus verzióra, a PowerShell-parancsmagok használatával bejelentkeztek futtatja. Ehhez használja **Add-AzureAccount**. Ellenkező esetben nem állíthatnak be a "-AzureVNetGatewayKey".
+Állítsa be a megosztott kulcsot, és hozza létre a kapcsolódást a klasszikus VNet a Resource Manager-VNet. A megosztott kulcs nem állítható be a portál használatával. Győződjön meg arról, hogy ezeket a lépéseket a PowerShell-parancsmagok klasszikus verziójának használatával naplózza. Ehhez használja az **Add-AzureAccount**. Ellenkező esetben nem fogja tudni beállítani a "-AzureVNetGatewayKey" beállítást.
 
-- Ebben a példában **- VNetName** neve a klasszikus virtuális hálózat található, a hálózat konfigurációs fájljában. 
-- A **- LocalNetworkSiteName** határoz meg a helyi hely neve a hálózat konfigurációs fájljában található.
-- A **- SharedKey** érték, amely az Ön hozza létre, és adja meg. Ebben a példában használt *abc123*, azonban összetettebb is létrehozhat. A lényeg az, hogy az itt megadott értéknek kell lennie, amely a Resource Manager, klasszikus kapcsolat létrehozásakor megadott ugyanazt az értéket.
+- Ebben a példában a **-VNetName** a hálózat konfigurációs fájljában található klasszikus VNet neve. 
+- A **-LocalNetworkSiteName** a helyi helyhez megadott név, amelyet a hálózati konfigurációs fájlban talál.
+- A **-SharedKey** egy létrehozott és megadott érték. Ebben a példában a *abc123*-t használtuk, de összetettebbek is létrehozhatók. A lényeg az, hogy az itt megadott értéknek meg kell egyeznie az erőforrás-kezelő klasszikus kapcsolódáskor megadott értékével.
 
 ```powershell
 Set-AzureVNetGatewayKey -VNetName "Group ClassicRG ClassicVNet" `
@@ -291,13 +286,13 @@ Set-AzureVNetGatewayKey -VNetName "Group ClassicRG ClassicVNet" `
 
 ## <a name="verify"></a>6. szakasz – a kapcsolatok ellenőrzése
 
-Az Azure portal vagy a PowerShell használatával ellenőrizheti a kapcsolatokat. Ellenőrzésekor, szükség lehet egy percig várni, vagy két, a kapcsolat létrehozása folyamatban van. Ha a kapcsolat létrejött, a kapcsolat állapota "Csatlakozás" "Connected" értékűre.
+A kapcsolatokat a Azure Portal vagy a PowerShell használatával ellenőrizheti. Az ellenőrzés során előfordulhat, hogy várnia kell egy percet vagy kettőt a kapcsolódás létrehozásakor. Ha a kapcsolat sikeres, a kapcsolati állapot "Connecting" értékről "Connected" értékűre változik.
 
-### <a name="to-verify-the-connection-from-your-classic-vnet-to-your-resource-manager-vnet"></a>A kapcsolat a klasszikus virtuális hálózat és a Resource Manager virtuális hálózat ellenőrzése
+### <a name="to-verify-the-connection-from-your-classic-vnet-to-your-resource-manager-vnet"></a>A klasszikus VNet létesített kapcsolatok ellenőrzése a Resource Manager-VNet
 
 [!INCLUDE [vpn-gateway-verify-connection-azureportal-classic](../../includes/vpn-gateway-verify-connection-azureportal-classic-include.md)]
 
-### <a name="to-verify-the-connection-from-your-resource-manager-vnet-to-your-classic-vnet"></a>A kapcsolat a Resource Manager virtuális hálózat és a klasszikus virtuális hálózat ellenőrzése
+### <a name="to-verify-the-connection-from-your-resource-manager-vnet-to-your-classic-vnet"></a>A kapcsolódás ellenőrzése a Resource Manager-VNet a klasszikus VNet
 
 [!INCLUDE [vpn-gateway-verify-connection-portal-rm](../../includes/vpn-gateway-verify-connection-portal-rm-include.md)]
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 4b7a9409052d8255bbad00b38217bcff030e8620
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e9ba42f780c93486409077383750d0635637e99b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59277017"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67094835"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-perception-united-states-non-ultipro"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Érzete Egyesült Államok (nem-UltiPro)
 
@@ -53,7 +53,7 @@ Megfigyelés é Amerikai Egyesült államokbeli (nem-UltiPro) integráció konfi
 
 **Megfigyelés é Egyesült Államok (nem-UltiPro) hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -65,7 +65,7 @@ Megfigyelés é Amerikai Egyesült államokbeli (nem-UltiPro) integráció konfi
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **Érzete Egyesült Államok (nem-UltiPro)**, jelölje be **Érzete Egyesült Államok (nem-UltiPro)** eredmény panelen kattintson a **Hozzáadás** gombra kattintva adhat hozzá a az alkalmazás.
+4. A Keresés mezőbe írja be a **Érzete Egyesült Államok (nem-UltiPro)** , jelölje be **Érzete Egyesült Államok (nem-UltiPro)** eredmény panelen kattintson a **Hozzáadás** gombra kattintva adhat hozzá a az alkalmazás.
 
      ![Megfigyelés é Egyesült Államok (nem-UltiPro) a találatok listájában](common/search-new-app.png)
 
@@ -109,7 +109,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása az Érzete Egyesült Államo
 
     b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://perception.kanjoya.com/sso?idp=<entity_id>`
 
-    c. A **Érzete Egyesült Államok (nem-UltiPro)** alkalmazáshoz szükséges a **az Azure AD-azonosító** < entity_id >, mint értéket, amelyet a kap a **Érzete Egyesült Államok () beállítása Non-UltiPro)** uri-ként kódolni kell területen. Az uri-ként kódolandó értéket használja a következő hivatkozásra: **http://www.url-encode-decode.com/**.
+    c. A **Érzete Egyesült Államok (nem-UltiPro)** alkalmazáshoz szükséges a **az Azure AD-azonosító** < entity_id >, mint értéket, amelyet a kap a **Érzete Egyesült Államok () beállítása Non-UltiPro)** uri-ként kódolni kell területen. Az uri-ként kódolandó értéket használja a következő hivatkozásra: **http://www.url-encode-decode.com/** .
 
     d. Az uri lekérdezése után kódolt érték összevonásához a a **válasz URL-cím** említett alábbi -
 
@@ -195,11 +195,11 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
 Ebben a szakaszban engedélyezze Britta Simon ehhez biztosítson hozzáférést a megfigyelés é Egyesült Államok (nem-UltiPro) Azure egyszeri bejelentkezés használatára.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **Érzete Egyesült Államok (nem-UltiPro)**.
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **Érzete Egyesült Államok (nem-UltiPro)** .
 
     ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában jelölje ki a **Érzete Egyesült Államok (nem-UltiPro)**.
+2. Az alkalmazások listájában jelölje ki a **Érzete Egyesült Államok (nem-UltiPro)** .
 
     ![A megfigyelés é Egyesült Államok (nem-UltiPro) hivatkozásra az alkalmazások listáját](common/all-applications.png)
 

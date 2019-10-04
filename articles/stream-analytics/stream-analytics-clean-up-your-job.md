@@ -7,23 +7,25 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 06/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: e43e1034abe4bbe3d31a46ab3b98b0efe612b852
-ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
+ms.openlocfilehash: 093ada2b2751540b986154be3a2f333784c1259f
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2019
-ms.locfileid: "57588720"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173285"
 ---
-# <a name="clean-up-your-azure-stream-analytics-job"></a>Az Azure Stream Analytics-feladat törlése
+# <a name="stop-or-delete-your-azure-stream-analytics-job"></a>Azure Stream Analytics-feladatok leállítása vagy törlése
 
-Az Azure Stream Analytics-feladatok az Azure portal, Azure PowerShell vagy az Azure SDK for .net vagy REST API segítségével egyszerűen lehet törölni. Stream Analytics-feladat nem állítható helyre, ha törölve lett.
+Azure Stream Analytics feladatok egyszerűen leállíthatók vagy törölhetők a Azure Portal, a Azure PowerShell, az Azure SDK for .net vagy a REST API használatával. Egy Stream Analytics feladatot nem lehet helyreállítani, ha törölték.
 
 >[!NOTE] 
 >Amikor leállítja a Stream Analytics-feladatot, az adatok továbbra is fennáll csak a bemeneti és kimeneti tárolására, például az Event Hubs vagy Azure SQL Database. Adatok eltávolítása az Azure-ból szükségesek, ha mindenképpen hajtsa végre az eltávolítási folyamat bemeneti és kimeneti erőforrások a Stream Analytics-feladat.
 
 ## <a name="stop-a-job-in-azure-portal"></a>Állítsa le a feladatot az Azure Portalon
+
+Ha leállítja a feladatot, az erőforrások kiépítése megszűnik, és leállítja az események feldolgozását. A feladathoz kapcsolódó díjak is leállnak. Az összes konfiguráció azonban megmarad, és később újraindíthatja a feladatot 
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
 
@@ -35,6 +37,9 @@ Az Azure Stream Analytics-feladatok az Azure portal, Azure PowerShell vagy az Az
 
 
 ## <a name="delete-a-job-in-azure-portal"></a>Az Azure Portalon egy feladat törlése
+
+>[!WARNING] 
+>Egy Stream Analytics feladatot nem lehet helyreállítani, ha törölték.
 
 1. Jelentkezzen be az Azure portálra. 
 
@@ -49,7 +54,7 @@ Az Azure Stream Analytics-feladatok az Azure portal, Azure PowerShell vagy az Az
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Egy PowerShell-lel feladat leállításához használja a [Stop-AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/stop-azstreamanalyticsjob) parancsmagot. Egy PowerShell-lel feladat törléséhez használja a [Remove-AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/Remove-azStreamAnalyticsJob) parancsmagot.
+Ha a PowerShell használatával szeretné leállítani a feladatot, használja a [stop-AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/stop-azstreamanalyticsjob) parancsmagot. Ha egy feladatot a PowerShell használatával szeretne törölni, használja a [Remove-AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/Remove-azStreamAnalyticsJob) parancsmagot.
 
 ## <a name="stop-or-delete-a-job-using-azure-sdk-for-net"></a>Állítsa le vagy az Azure SDK for .NET feladat törlése
 

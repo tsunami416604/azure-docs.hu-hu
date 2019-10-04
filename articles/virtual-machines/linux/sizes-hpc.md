@@ -1,26 +1,25 @@
 ---
-title: Az Azure Linux rendszerű virtuális gép mérete – HPC |} A Microsoft Docs
-description: A nagy teljesítményű Linux rendszerű virtuális gépek az Azure-ban elérhető különböző méretű sorolja fel. Tartalmazza a vcpu-k, az adatlemezeket és a hálózati adapterek, valamint tárolási átviteli sebesség és a hálózati sávszélesség-sorozat méretei száma.
+title: Azure Linux VM-méretek – HPC | Microsoft Docs
+description: Felsorolja az Azure-ban a Linux nagy teljesítményű számítástechnikai virtuális gépekhez elérhető különböző méreteket. A vCPU, adatlemezek és hálózati adapterek számával, valamint az ebben a sorozatban lévő méretek sávszélességével kapcsolatos információkat sorolja fel.
 services: virtual-machines-linux
 documentationcenter: ''
 author: jonbeck7
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/12/2018
 ms.author: jonbeck
-ms.openlocfilehash: 70dca655d5300fcd34b4198093e136f6a971963b
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: ee99869c2b7a7b3ab38fdd9eae0687862ea53819
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344489"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100864"
 ---
 # <a name="high-performance-compute-virtual-machine-sizes"></a>Nagy teljesítményű számítási virtuálisgép-méretek
 
@@ -33,65 +32,89 @@ ms.locfileid: "49344489"
 
 ### <a name="mpi"></a>MPI 
 
-Csak az Intel MPI 5.x verziók támogatottak. Újabb verzió (2017-es, 2018.) az Intel MPI futásidejű kódtár nem kompatibilisek az Azure Linux RDMA-illesztőprogramokat.
+Az SR-IOV-kompatibilis VM-méretek az Azure-ban szinte bármilyen típusú MPI-t használhatnak.
+A nem SR-IOV-kompatibilis virtuális gépeken csak az Intel MPI 5. x verziói támogatottak. Az Intel MPI runtime library újabb verziói (2017, 2018) vagy esetleg nem kompatibilisek az Azure Linux RDMA-illesztőprogramjaival.
 
 
-### <a name="distributions"></a>Felosztások
+### <a name="supported-os-images"></a>Támogatott operációsrendszer-lemezképek
  
-Számításigényes virtuális gép üzembe helyezése az Azure Marketplace-en, amely támogatja az RDMA-kapcsolattal a lemezképek egyikéből:
+Az Azure Marketplace számos Linux-disztribúcióval rendelkezik, amelyek támogatják a RDMA-kapcsolatot:
   
-* **Ubuntu** – Ubuntu Server 16.04 LTS. RDMA-illesztőprogramok a virtuális gép konfigurálása és regisztrálása az Intel MPI letöltéséhez Intel:
+* **CentOS-alapú HPC** – nem SR-IOV-kompatibilis virtuális gépek, CentOS-alapú 6,5 HPC vagy újabb verzió, amely legfeljebb 7,5-ig használható. A H-sorozatú virtuális gépek esetében a 7,1 – 7,5 verzió ajánlott. A RDMA-illesztőprogramok és az Intel MPI 5,1 telepítve vannak a virtuális gépen.
+  Az SR-IOV virtuális gépek esetében a CentOS-HPC 7,6 optimalizált és előre be van töltve a RDMA-illesztőprogramokkal és a különböző MPI-csomagokkal.
+  Más RHEL/CentOS virtuálisgép-lemezképek esetén adja hozzá a InfiniBandLinux-bővítményt a InfiniBand engedélyezéséhez. Ez a linuxos virtuálisgép-bővítmény telepíti a Mellanox OFED-illesztőprogramokat (SR-IOV virtuális gépeken) a RDMA-kapcsolathoz. A következő PowerShell-parancsmag telepíti a InfiniBandDriverLinux-bővítmény legújabb verzióját (1,0-es verzió) egy meglévő RDMA-kompatibilis virtuális gépen. A RDMA-kompatibilis virtuális gép neve *myVM* , és az *USA nyugati* régiójában, a *myResourceGroup* nevű erőforráscsoporthoz van telepítve, a következőképpen:
 
-  [!INCLUDE [virtual-machines-common-ubuntu-rdma](../../../includes/virtual-machines-common-ubuntu-rdma.md)]
+  ```powershell
+  Set-AzVMExtension -ResourceGroupName "myResourceGroup" -Location "westus" -VMName "myVM" -ExtensionName "InfiniBandDriverLinux" -Publisher "Microsoft.HpcCompute" -Type "InfiniBandDriverLinux" -TypeHandlerVersion "1.0"
+  ```
+  Alternatív megoldásként a virtuálisgép-bővítmények Azure Resource Manager sablonokban is elérhetők, így egyszerűen üzembe helyezhetők a következő JSON-elemmel:
+  ```json
+  "properties":{
+  "publisher": "Microsoft.HpcCompute",
+  "type": "InfiniBandDriverLinux",
+  "typeHandlerVersion": "1.0",
+  } 
+  ```
+  
+  A következő parancs telepíti a legújabb 1,0 InfiniBandDriverLinux-bővítményt az összes RDMA-kompatibilis virtuális GÉPEN egy *myVMSS* nevű meglévő virtuálisgép-méretezési csoportba, amelyet a *myResourceGroup*nevű erőforráscsoport telepít:
+  ```powershell
+  $VMSS = Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS"
+  Add-AzVmssExtension -VirtualMachineScaleSet $VMSS -Name "InfiniBandDriverLinux" -Publisher "Microsoft.HpcCompute" -Type "InfiniBandDriverLinux" -TypeHandlerVersion "1.0"
+  Update-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "MyVMSS" -VirtualMachineScaleSet $VMSS
+  Update-AzVmssInstance -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS" -InstanceId "*"
+  ```
+  
+  > [!NOTE]
+  > A CentOS-alapú HPC-lemezképeken a kernel frissítései le vannak tiltva a **yum** konfigurációs fájlban. Ennek az az oka, hogy a Linux RDMA-illesztőprogramok RPM-csomagként vannak elosztva, és előfordulhat, hogy az illesztőprogram frissítései nem működnek, ha a kernel frissül.
+  >
+  
 
-* **SUSE Linux Enterprise Server** -SLES 12 HPC, SLES 12 SP3 HPC (Premium), SLES 12 SP3 SP1 HPC, SLES 12 SP1 HPC (prémium szintű). RDMA-illesztőprogramok lesznek telepítve, és az Intel MPI csomagok oszlanak meg a virtuális gépen. MPI telepítse a következő parancs futtatásával:
+* **SUSE Linux Enterprise Server** -SLES 12 SP3 HPC, SLES 12 SP3 for HPC (prémium), SLES 12 SP1 for HPC, SLES 12 SP1 for HPC (prémium), SLES 12 SP4 és SLES 15. A RDMA-illesztőprogramok telepítve vannak, és az Intel MPI-csomagok el vannak osztva a virtuális gépen. Telepítse az MPI-t a következő parancs futtatásával:
 
   ```bash
   sudo rpm -v -i --nodeps /opt/intelMPI/intel_mpi_packages/*.rpm
   ```
-    
-* **CentOS-alapú HPC** -6.5-ös HPC CentOS-alapú vagy újabb verzióját (a H-sorozatú, 7.1-es vagy újabb verzió ajánlott). RDMA-illesztőprogramok és az Intel MPI 5.1 telepítve a virtuális gépen.  
- 
-  > [!NOTE]
-  > A CentOS-alapú HPC-képekhez kernelfrissítés le vannak tiltva a **yum** konfigurációs fájlt. Ez azért, mert az RPM csomag oszlanak meg a Linux RDMA-illesztőprogramok és illesztőprogram-frissítések előfordulhat, hogy nem működik, ha a kernel frissül.
-  > 
- 
-### <a name="cluster-configuration-options"></a>Fürt konfigurációs lehetőségek
+  
+* **Ubuntu** -ubuntu Server 16,04 lts, 18,04 LTS. Konfigurálja a RDMA-illesztőprogramokat a virtuális gépen, és regisztrálja az Intel-t az Intel MPI letöltéséhez:
 
-Az Azure Linuxos HPC virtuális gépeken, amely az RDMA hálózati használatával kommunikálhatnak fürtöket számos lehetőséget kínál a többek között: 
+  [!INCLUDE [virtual-machines-common-ubuntu-rdma](../../../includes/virtual-machines-common-ubuntu-rdma.md)]  
 
-* **Virtuális gépek** – az RDMA-kompatibilis HPC virtuális gépek ugyanazon rendelkezésre állási csoportjának (Ha használja az Azure Resource Manager üzemi modell) üzembe helyezése. Ha a klasszikus üzemi modellt használja, az ugyanazon a felhőszolgáltatáson virtuális gépek üzembe helyezése. 
-
-* **A Virtual machine scale sets** – a Virtuálisgép-méretezési csoport állítsa be, győződjön meg arról, hogy korlátozza az üzembe helyezés az elhelyezési csoportból. Például egy Resource Manager-sablon beállítása az `singlePlacementGroup` tulajdonságot `true`. 
-
-* **Az Azure CycleCloud** – a HPC-fürt létrehozása [Azure CycleCloud](/azure/cyclecloud/) MPI-feladatok futtatása a Linux-csomópontokat.
-
-* **Az Azure Batch** – hozzon létre egy [Azure Batch](/azure/batch/) MPI számítási feladatok futtatása Linux-készlet számítási csomópontjain. További információkért lásd: [használata RDMA-kompatibilis vagy a GPU-kompatibilis példányok a Batch-készletek](../../batch/batch-pool-compute-intensive-sizes.md). További tájékoztatás a [Batch hajógyárnak](https://github.com/Azure/batch-shipyard) tárolóalapú számítási feladatok futtatásához a Batch-projektben.
-
-* **A Microsoft HPC Pack** - [HPC Pack](https://docs.microsoft.com/powershell/high-performance-computing/overview) számos Linux-disztribúció futtatását számítási csomópontokra RDMA-kompatibilis Azure-beli virtuális gépeken, támogatja a Windows Server fő csomópontot kezeli. Telepítését bemutató példát lásd: [HPC Pack Linux RDMA-fürt létrehozása az Azure-ban](https://docs.microsoft.com/powershell/high-performance-computing/hpcpack-linux-openfoam).
-
-Fürtkezelő válaszaitól függően szükség lehet további rendszerkonfiguráció MPI-feladatok futtatásához. Például a virtuális gépek fürtjeit, szükség lehet a fürt csomópontjai közötti bizalmi kapcsolat létrehozásához, az SSH-kulcsok létrehozásakor, vagy beállításának SSH megbízhatósági kapcsolat létrehozása.
-
-### <a name="network-topology-considerations"></a>Hálózati topológia szempontjai
-* Az RDMA-kompatibilis Linuxos virtuális gépek az Azure-ban az Eth1 RDMA hálózati forgalom számára van fenntartva. Ne módosítsa bármely Eth1 beállításai vagy a konfigurációs fájl hivatkozó ezen a hálózaton található bármely információ. Eth0 rendszeres Azure hálózati forgalom számára van fenntartva.
-
-* Az Azure-ban az RDMA hálózati fenntartja a cím terület 172.16.0.0/16. 
+  A InfiniBand engedélyezéséről, az MPI beállításáról további információt a [InfiniBand engedélyezése](../workloads/hpc/enable-infiniband.md)című témakörben talál.
 
 
+### <a name="cluster-configuration-options"></a>Fürt konfigurációs beállításai
+
+Az Azure számos lehetőséget kínál a RDMA-hálózattal kommunikáló linuxos HPC virtuális gépekből álló fürtök létrehozására, beleértve a következőket: 
+
+* **Virtual Machines** – helyezze üzembe a RDMA-kompatibilis HPC virtuális gépeket ugyanabban a rendelkezésre állási készletben (az Azure Resource Manager üzemi modell használatakor). Ha a klasszikus üzemi modellt használja, telepítse a virtuális gépeket ugyanabban a felhőalapú szolgáltatásban. 
+
+* **Virtuálisgép** -méretezési csoportok – egy virtuálisgép-méretezési csoportban győződjön meg arról, hogy egyetlen elhelyezési csoportra korlátozza a központi telepítést. Például egy Resource Manager-sablonban állítsa be a `singlePlacementGroup` `true`tulajdonságot a következőre:. 
+
+* **MPI a virtuális gépek között** – ha a virtuális gépek (VM-EK) közötti MPI-kommunikáció szükséges, győződjön meg arról, hogy a virtuális gépek ugyanabban a rendelkezésre állási csoportba vagy a virtuális gépre ugyanazok a méretezési csoportba tartoznak.
+
+* **Azure CycleCloud** – HPC-fürt létrehozása az [Azure CYCLECLOUD](/azure/cyclecloud/) -ben MPI-feladatok Linux-csomópontokon való futtatásához.
+
+* **Azure batch** – hozzon létre egy [Azure batch](/azure/batch/) -készletet MPI-számítási feladatok futtatásához Linux rendszerű számítási csomópontokon. További információ: [RDMA-kompatibilis vagy GPU-kompatibilis példányok használata batch-készletekben](../../batch/batch-pool-compute-intensive-sizes.md). Tekintse meg a [Batch-hajógyár](https://github.com/Azure/batch-shipyard) projektjét, amely a tároló-alapú számítási feladatok futtatására használható a Batch szolgáltatásban.
+
+* **A Microsoft HPC Pack** - [HPC Pack](https://docs.microsoft.com/powershell/high-performance-computing/overview) számos Linux-disztribúciót támogat a RDMA-kompatibilis Azure-beli virtuális gépeken üzembe helyezett számítási csomópontokon való futtatáshoz, amelyeket egy Windows Server Head csomópont kezel. A központi telepítésre példát a [HPC Pack Linux RDMA-fürt létrehozása az Azure-ban](https://docs.microsoft.com/powershell/high-performance-computing/hpcpack-linux-openfoam)című témakörben talál.
 
 
-## <a name="other-sizes"></a>További méretek
+### <a name="network-considerations"></a>Hálózati megfontolások
+* Az Azure-ban a RDMA-kompatibilis Linux rendszerű virtuális gépeken a eth1 a RDMA hálózati forgalom számára van fenntartva, nem SR-IOV. Ne módosítsa a eth1 vonatkozó beállításokat, illetve az erre a hálózatra hivatkozó konfigurációs fájlban lévő adatokat.
+* Az SR-IOV-kompatibilis virtuális gépeken (HB és HC-sorozat) a ib0 a RDMA hálózati forgalom számára van fenntartva.
+* Az Azure-beli RDMA-hálózat fenntartja a 172.16.0.0/16 címtartomány méretét. Ha az MPI-alkalmazásokat egy Azure-beli virtuális hálózaton üzembe helyezett példányokon szeretné futtatni, győződjön meg arról, hogy a virtuális hálózati címtartomány nem fedi át a RDMA-hálózatot.
+* A fürtözési eszköztől függően további rendszerkonfigurációra lehet szükség az MPI-feladatok futtatásához. Előfordulhat például, hogy egy virtuális gépen lévő fürtön létre kell hoznia egy megbízhatósági kapcsolatot a fürtcsomópontok között SSH-kulcsok létrehozásával vagy jelszó nélkül SSH-bejelentkezések létrehozásával.
+
+
+## <a name="other-sizes"></a>Egyéb méretek
 - [Általános célú](sizes-general.md)
 - [Számításra optimalizált](sizes-compute.md)
 - [Memóriaoptimalizált](sizes-memory.md)
 - [Tárolásra optimalizált](sizes-storage.md)
 - [GPU](../windows/sizes-gpu.md)
-- [Előző generációs szoftvereknél jobban](sizes-previous-gen.md)
+- [Előző generációk](sizes-previous-gen.md)
 
 ## <a name="next-steps"></a>További lépések
 
-- Tudjon meg többet [Azure számítási egységek (ACU)](acu.md) Azure-termékváltozatok hasonlítsa össze a számítási teljesítményt nyújt segítséget.
-
-
-
-
+- További információ a [HPC](../workloads/hpc/configure.md) -munkaterhelések beállításáról, optimalizálásáról és méretezéséről az Azure-ban.
+- További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

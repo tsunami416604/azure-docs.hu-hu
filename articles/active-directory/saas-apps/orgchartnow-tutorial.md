@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: cc2bbd0c1220a37de640bde6294eb096b25e5398
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b96606b5558e0fbb81733b2f548a89bfb38d5f99
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59258198"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67095434"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-orgchart-now"></a>Oktatóanyag: Szervezeti diagram most az Azure Active Directory-integráció
 
@@ -53,7 +53,7 @@ Az Azure AD-be a szervezeti diagram most az integráció konfigurálásához hoz
 
 **Szervezeti diagram most hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -223,7 +223,7 @@ Ahhoz, hogy jelentkezzen be szervezeti diagram most az Azure AD-felhasználók, 
 
     * A **E-mail cím** szöveget adja meg az e-mailt, például a felhasználó **brittasimon\@contoso.com**.
 
-    * Kattintson a **Hozzáadás** parancsra.
+    * Kattintson a **Hozzáadás**lehetőségre.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 

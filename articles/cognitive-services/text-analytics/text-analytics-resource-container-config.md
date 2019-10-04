@@ -1,24 +1,24 @@
 ---
-title: Tárolók konfigurálása
-titlesuffix: Text Analytics - Azure Cognitive Services
+title: Tárolók konfigurálása – Text Analytics
+titleSuffix: Azure Cognitive Services
 description: Szövegelemzés biztosít az egyes tárolók és a egy közös keretrendszer konfigurációs, egyszerűen konfigurálása és kezelése a storage, a naplózás és a telemetriai adatok és a biztonsági beállítások a tárolókhoz.
 services: cognitive-services
-author: diberry
+author: IEvangelist
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 04/16/2019
-ms.author: diberry
-ms.openlocfilehash: 1333aefc145e95223624f42a28ec0bb31ab70065
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.date: 08/21/2019
+ms.author: dapine
+ms.openlocfilehash: f1c42002343de1dd3b3ef6b9c9e35f458db925f4
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011758"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051137"
 ---
-# <a name="configure-text-analytics-docker-containers"></a>Szövegelemzés a docker-tárolók konfigurálása
+# <a name="configure-text-analytics-docker-containers"></a>Text Analytics Docker-tárolók konfigurálása
 
 Szövegelemzés biztosít az egyes tárolók és a egy közös keretrendszer konfigurációs, egyszerűen konfigurálása és kezelése a storage, a naplózás és a telemetriai adatok és a biztonsági beállítások a tárolókhoz.
 
@@ -31,11 +31,11 @@ Szövegelemzés biztosít az egyes tárolók és a egy közös keretrendszer kon
 
 ## <a name="apikey-configuration-setting"></a>Konfigurációs beállítás apikey tulajdonsággal végzett tesztelése
 
-A `ApiKey` beállítás határozza meg a számlázási adatokat tároló nyomon követésére használt Azure-erőforrás kulcs. Meg kell adnia egy értéket a apikey tulajdonsággal végzett tesztelése és az értéknek kell lennie egy érvényes kulcsot a _Cognitive Services_ megadott erőforrás a [ `Billing` ](#billing-configuration-setting) konfigurációs beállítás.
+A `ApiKey` beállítás határozza meg a számlázási adatokat tároló nyomon követésére használt Azure-erőforrás kulcs. Meg kell adnia egy értéket a ApiKey, és az értéknek érvényes kulcsnak kell lennie a [`Billing`](#billing-configuration-setting) konfigurációs beállításhoz megadott Text Analytics erőforráshoz.
 
-Ez a beállítás a következő helyen található:
+Ez a beállítás a következő helyen érhető el:
 
-* Az Azure Portalon: **A cognitive Services** erőforrás-kezelés alatt **kulcsok**
+* Azure Portal: Erőforrás-kezelés **text Analytics** a **kulcsok** területen
 
 ## <a name="applicationinsights-setting"></a>Applicationinsights – beállítás
 
@@ -43,17 +43,15 @@ Ez a beállítás a következő helyen található:
 
 ## <a name="billing-configuration-setting"></a>Számlázási konfigurációs beállítás
 
-A `Billing` beállítás határozza meg a végpont URI-t, a _Cognitive Services_ erőforrást az Azure-ban használt mérni a tároló számlázási adatokat. Meg kell adnia egy értéket a konfigurációs beállítás, és az értéknek kell lennie egy érvényes végpont URI-t egy __Cognitive Services_ erőforrást az Azure-ban. A tároló használati jelentések kapcsolatos 10 – 15 percenként.
+A `Billing` beállítás határozza meg az Azure-beli _text Analytics_ erőforrás végpontjának URI-ját, amely a tároló számlázási adatainak mérésére szolgál. Meg kell adnia egy értéket ehhez a konfigurációs beállításhoz, és az értéknek érvényes végponti URI-nak kell lennie egy __text Analytics_ erőforráshoz az Azure-ban. A tároló 10 – 15 percen belül jelentést készít a használatról.
 
-Ez a beállítás a következő helyen található:
+Ez a beállítás a következő helyen érhető el:
 
-* Az Azure Portalon: **A cognitive Services** áttekintése, címkével `Endpoint`
+* Azure Portal: **Text Analytics** A címkével ellátott áttekintés`Endpoint`
 
-Hozzá kell adnia a `text/analytics/v2.0` útválasztás az a végpont URI-t, a következő BILLING_ENDPOINT_URI példában látható módon.
-
-|Szükséges| Name (Név) | Adattípus | Leírás |
+|Kötelező| Name (Név) | Adattípus | Leírás |
 |--|------|-----------|-------------|
-|Igen| `Billing` | Karakterlánc | A számlázás végpont URI azonosítója<br><br>Példa:<br>`Billing=https://westus.api.cognitive.microsoft.com/text/analytics/v2.1` |
+|Igen| `Billing` | Sztring | A kötelező számlázási végpont URI-ja |
 
 ## <a name="eula-setting"></a>Licencfeltételek beállítása
 
@@ -63,7 +61,7 @@ Hozzá kell adnia a `text/analytics/v2.0` útválasztás az a végpont URI-t, a 
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-fluentd.md)]
 
-## <a name="http-proxy-credentials-settings"></a>HTTP-proxybeállításai hitelesítő adatok
+## <a name="http-proxy-credentials-settings"></a>Http-proxy hitelesítő adatainak beállításai
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
 
@@ -75,84 +73,48 @@ Hozzá kell adnia a `text/analytics/v2.0` útválasztás az a végpont URI-t, a 
 
 Kötés használatát csatlakoztatja az adatok olvasását és írását, és a tárolóból. Megadhat egy bemeneti csatlakoztatási vagy csatlakoztatási kimeneti megadásával a `--mount` beállítást a [futtatása docker](https://docs.docker.com/engine/reference/commandline/run/) parancsot.
 
-A Text Analytics tárolók ne használja a bemeneti vagy kimeneti csatlakoztatja képzési vagy szolgáltatás adatok tárolására. 
+A Text Analytics tárolók nem használnak bemeneti vagy kimeneti csatlakoztatásokat a képzési és a szolgáltatási adatok tárolásához. 
 
 A gazdagép csatlakoztatási helye a pontos szintaxisa a gazdagép operációs rendszere függően változik. Ezenkívül a [gazdaszámítógép](how-tos/text-analytics-how-to-install-containers.md#the-host-computer)a csatlakoztatási helye nem lehet elérni a docker szolgáltatás fiókja által használt engedélyek közötti ütközés miatt, és a gazdagép csatlakoztatásához hely engedélyeket. 
 
-|Optional| Name (Név) | Adattípus | Leírás |
+|Választható| Name (Név) | Adattípus | Leírás |
 |-------|------|-----------|-------------|
-|Nem engedélyezett| `Input` | String | Text Analytics tárolók ez nem használható.|
-|Optional| `Output` | String | A kimeneti csatlakoztatási célját. Az alapértelmezett érték `/output`. Ez az a hely a naplófájlok. Ez magában foglalja a tároló naplóit. <br><br>Példa:<br>`--mount type=bind,src=c:\output,target=/output`|
+|Nem engedélyezett| `Input` | Sztring | Text Analytics tárolók nem használják ezt.|
+|Választható| `Output` | Sztring | A kimeneti csatlakoztatási célját. Az alapértelmezett érték `/output`. Ez az a hely a naplófájlok. Ez magában foglalja a tároló naplóit. <br><br>Példa:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Példa docker-parancsok futtatása 
 
 Az alábbi példák bemutatják, hogyan írhat, és használja a konfigurációs beállítások segítségével `docker run` parancsokat.  Ha fut, a tároló továbbra is fut, amíg ki nem [leállítása](how-tos/text-analytics-how-to-install-containers.md#stop-the-container) azt.
 
-* **Vonal-folytatási karakter**: Az alábbi szakaszok a docker-parancsokat használhatja a fordított perjel `\`, egy sor folytatási karaktert. Cserélje le, vagy távolítsa el ezt a gazdagép operációs rendszerre vonatkozó követelmények alapján. 
-* **Argument sorrend**: Ne módosítsa az argumentumok sorrendje, kivéve, ha nagyon ismeri a docker-tárolókat.
-
-Hozzá kell adnia a `text/analytics/v2.0` útválasztás az a végpont URI-t, a következő BILLING_ENDPOINT_URI példában látható módon.
+* **Vonal-folytatási karakter**: A következő részben található Docker-parancsok a háttér perjelet `\`használják, mint a sor folytatási karaktere. Cserélje le, vagy távolítsa el ezt a gazdagép operációs rendszerre vonatkozó követelmények alapján. 
+* **Argumentumok sorrendje**: Ne módosítsa az argumentumok sorrendje, kivéve, ha nagyon ismeri a docker-tárolókat.
 
 Cserélje le a(z)_argument_name_} a saját értékeire:
 
 | Helyőrző | Érték | Formátum vagy példa |
 |-------------|-------|---|
-|{BILLING_KEY} | A végpont kulcs, a `Cognitive Services` elérhető az Azure-beli erőforrás `Cognitive Services` kulcsok oldalán. |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{BILLING_ENDPOINT_URI} | Az Azure-ban érhető el a számlázási végpontértéknek `Cognitive Services` – áttekintés oldalra.|`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|
+| **{API_KEY}** | Az `Text Analytics` erőforrás Endpoint kulcsa elérhető az Azure `Text Analytics` Keys lapon. |`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`|
+| **{ENDPOINT_URI}** | A számlázási végpont értéke elérhető az Azure `Text Analytics` Áttekintés oldalán.| Lásd az explicit példákhoz [szükséges paraméterek](how-tos/text-analytics-how-to-install-containers.md#gathering-required-parameters) összegyűjtését ismertető témakört. |
 
 > [!IMPORTANT]
 > A `Eula`, `Billing`, és `ApiKey` beállítások meg kell adni a tároló futtatásához; ellenkező esetben a tároló nem indul el.  További információkért lásd: [számlázási](how-tos/text-analytics-how-to-install-containers.md#billing).
-> Apikey tulajdonsággal végzett tesztelése értéke a **kulcs** az Azure `Cognitive Services` erőforráslapján kulcsok. 
+> A ApiKey értéke az Azure `Text Analytics` Resource Keys oldal kulcsa. 
 
-## <a name="key-phrase-extraction-container-docker-examples"></a>A kulcsfontosságú kifejezések kinyerése tároló docker példák
+#### <a name="key-phrase-extractiontabkeyphrase"></a>[Kulcskifejezések kinyerése](#tab/keyphrase)
 
-Az alábbi docker-példák a kulcsfontosságú kifejezések kinyerése tároló is. 
+[!INCLUDE [key-phrase-extraction-docker-examples](includes/key-phrase-extraction-docker-examples.md)]
 
-### <a name="basic-example"></a>Alapszintű példa 
+#### <a name="language-detectiontablanguage"></a>[Nyelvfelismerés](#tab/language)
 
-  ```
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/keyphrase Eula=accept Billing={BILLING_ENDPOINT_URI} ApiKey={BILLING_KEY} 
-  ```
+[!INCLUDE [language-detection-docker-examples](includes/language-detection-docker-examples.md)]
 
-### <a name="logging-example"></a>Naplózás példa 
+#### <a name="sentiment-analysistabsentiment"></a>[Hangulatelemzés](#tab/sentiment)
 
-  ```
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/keyphrase Eula=accept Billing={BILLING_ENDPOINT_URI} ApiKey={BILLING_KEY} Logging:Console:LogLevel:Default=Information
-  ```
+[!INCLUDE [sentiment-analysis-docker-examples](includes/sentiment-analysis-docker-examples.md)]
 
-## <a name="language-detection-container-docker-examples"></a>Nyelv észlelése tároló docker-példák
-
-Az alábbi docker-példák a nyelv észlelése tároló is. 
-
-### <a name="basic-example"></a>Alapszintű példa
-
-  ```
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/language Eula=accept Billing={BILLING_ENDPOINT_URI} ApiKey={BILLING_KEY} 
-  ```
-
-### <a name="logging-example"></a>Naplózás példa
-
-  ```
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/language Eula=accept Billing={BILLING_ENDPOINT_URI} ApiKey={BILLING_KEY} Logging:Console:LogLevel:Default=Information
-  ```
- 
-## <a name="sentiment-analysis-container-docker-examples"></a>Vélemények elemzése tároló docker példák
-
-Az alábbi docker-példák a vélemények elemzése tároló is. 
-
-### <a name="basic-example"></a>Alapszintű példa
-
-  ```
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/sentiment Eula=accept Billing={BILLING_ENDPOINT_URI} ApiKey={BILLING_KEY} 
-  ```
-
-### <a name="logging-example"></a>Naplózás példa
-
-  ```
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/sentiment Eula=accept Billing={BILLING_ENDPOINT_URI} ApiKey={BILLING_KEY} Logging:Console:LogLevel:Default=Information
-  ```
+***
 
 ## <a name="next-steps"></a>További lépések
 
 * Felülvizsgálat [telepítéséről és a tárolókat futtatják](how-tos/text-analytics-how-to-install-containers.md)
-* Több [Cognitive Services-tárolók](../cognitive-services-container-support.md)
+* További [Cognitive Services tárolók](../cognitive-services-container-support.md) használata

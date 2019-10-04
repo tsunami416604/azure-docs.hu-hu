@@ -1,6 +1,6 @@
 ---
-title: Alkalmazások integrálása az Azure Virtual Network – az Azure App Service-ben
-description: Bemutatja, hogyan csatlakozhat egy új vagy meglévő Azure virtuális hálózat az Azure App Service-alkalmazás
+title: Alkalmazás integrálása az Azure Virtual Network-Azure App Service
+description: Bemutatja, hogyan csatlakoztatható egy alkalmazás Azure App Service egy új vagy meglévő Azure-beli virtuális hálózathoz
 services: app-service
 documentationcenter: ''
 author: ccompy
@@ -9,294 +9,317 @@ ms.assetid: 90bc6ec6-133d-4d87-a867-fcf77da75f5a
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 11/12/2018
+ms.date: 08/21/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 768179f8569eac14166bcbb0a888e1cdbe41d497
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: d4b7733ce3ac6db4c39f632401661eefce11d20c
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369700"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827578"
 ---
-# <a name="integrate-your-app-with-an-azure-virtual-network"></a>Az alkalmazás integrálása az Azure-beli virtuális hálózathoz
-Ez a dokumentum ismerteti az Azure App Service virtuális hálózat integrációja, és bemutatja, hogyan állíthatja be az Apps [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). [Azure virtuális hálózatok] [ VNETOverview] (Vnetek) lehetővé teszi számos, az Azure-erőforrások nem internetes routeable hálózati helyezni. Ezek a hálózatok csatlakozhat a helyszíni hálózatot VPN-technológiák segítségével. 
+# <a name="integrate-your-app-with-an-azure-virtual-network"></a>Az alkalmazás integrálása Azure-Virtual Network
+Ez a dokumentum ismerteti a Azure App Service Virtual Network Integration funkciót, valamint azt, hogyan állíthatja be az alkalmazásokkal a [Azure app Serviceban](https://go.microsoft.com/fwlink/?LinkId=529714). Az [Azure Virtual Networks][VNETOverview] (virtuális hálózatok) lehetővé teszi, hogy számos Azure-erőforrást egy nem internetes útválasztású hálózaton helyezzen el.  
 
-Az Azure App Service rendelkezik két formában. 
+A Azure App Service két változattal rendelkezik. 
 
-1. A több-bérlős rendszerek, amelyek támogatják az elkülönített kivételével díjszabások széles
-2. Az App Service Environment (ASE), amely üzembe helyezi a virtuális hálózat be. 
+1. A több-bérlős rendszerek, amelyek támogatják az elkülönített árképzési csomagok teljes körét
+2. A VNet üzembe helyező és az elkülönített díjszabási csomagot támogató App Service Environment
 
-Ez a dokumentum halad végig a VNet-integráció szolgáltatást, amely a több-bérlős App Service-ben a használatra szántak.  Ha az alkalmazás [App Service Environment-környezet][ASEintro], akkor már egy virtuális hálózatban, és nem igényli a VNet-integráció funkció az azonos virtuális hálózatban található erőforrások eléréséhez.
+Ez a dokumentum a több-bérlős App Service való használatra szolgáló két VNet integrációs funkciót mutat be. Ha az alkalmazás [app Service Environmentban][ASEintro]van, akkor már egy VNet van, és nem igényli a VNet integrációs funkciójának használatát az erőforrások eléréséhez ugyanabban a VNet. Az összes App Service hálózati szolgáltatással kapcsolatos részletekért olvassa el a [app Service hálózatkezelési funkcióit](networking-features.md) .
 
-VNet-integráció a webes alkalmazás hozzáférést biztosít a virtuális hálózatban lévő erőforrásokra irányuló, de nem titkos való hozzáférést biztosít a webes alkalmazás a virtuális hálózatról. Privát hozzáférést utal, hogy az alkalmazás csak elérhetőnek magánhálózaton például az Azure virtuális hálózatban. Privát hozzáférést csak akkor használható a konfigurált egy belső Load Balancer (ILB) rendelkező ASE. Az ILB ASE használata részletesen indítsa el a cikk itt: [Létrehozásáról és használatáról az ILB ASE][ILBASE]. 
+A VNet-integrációs szolgáltatásnak két formája van
 
-VNet-integráció-adatbázisok az alkalmazások elérésének lehetővé tétele és a virtuális hálózatban futó webszolgáltatások gyakran használják. A VNet-integráció nem kell egy nyilvános végpontot elérhetővé az alkalmazások is, de a gép nem internetes irányítható Magáncímeket helyette használja. 
+1. Az egyik verzió lehetővé teszi, hogy a virtuális hálózatok-integráció ugyanabban a régióban legyen. A szolgáltatás ezen formája egy alhálózatot igényel az azonos régióban található VNet. Ez a szolgáltatás még előzetes verzióban érhető el, de a Windows-alkalmazások éles számítási feladataihoz az alábbiakban ismertetett kikötések használhatók.
+2. A másik verzió lehetővé teszi a virtuális hálózatok való integrációt más régiókban vagy klasszikus virtuális hálózatok. A szolgáltatás ezen verziója megköveteli a Virtual Network átjáró üzembe helyezését a VNet. Ez a pont – hely VPN-alapú szolgáltatás, és csak a Windows-alkalmazások esetében támogatott.
 
-A VNet-integráció funkciót:
+Egy alkalmazás egyszerre csak a VNet-integrációs szolgáltatás egyik formáját tudja használni. A kérdés az, hogy melyik szolgáltatást használja. Számos dolgot használhat. A egyértelmű differenciálók azonban a következők:
 
-* Standard, prémium szintű vagy PremiumV2 díjszabási csomag szükséges 
-* együttműködik a klasszikus vagy Resource Manager 
-* támogatja a TCP és UDP
-* együttműködik a webes, mobil-, API apps és a függvényalkalmazások
-* lehetővé teszi az alkalmazás egyszerre csak 1 virtuális hálózathoz való kapcsolódáshoz
-* lehetővé teszi, hogy az App Service-csomag integrációját a legfeljebb öt virtuális hálózatok 
-* lehetővé teszi, hogy az azonos virtuális hálózaton használható több alkalmazás az App Service-csomag
-* a pont – hely típusú VPN konfigurált virtuális hálózati átjáró szükséges.
-* 99,9 %-os szolgáltatói szerződés miatt az SLA-t támogatja az átjárón
+| Probléma  | Megoldás | 
+|----------|----------|
+| Egy adott régióban szeretné elérni az RFC 1918-es címeket (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16). | regionális VNet-integráció |
+| Szeretné elérni az erőforrásokat egy másik régióban található klasszikus VNet vagy VNet | átjáró szükséges VNet-integráció |
+| Az RFC 1918-végpontok elérését szeretné elérni a ExpressRoute között | regionális VNet-integráció |
+| Erőforrásokat szeretne elérni a szolgáltatási végpontok között | regionális VNet-integráció |
 
-Néhány dolog, amely VNet-integráció nem támogatja, beleértve:
+Egyik funkció sem teszi lehetővé a nem RFC 1918-címek elérését a ExpressRoute között. Ehhez a-t kell használnia.
 
-* a meghajtó csatlakoztatása
+A regionális VNet-integráció használata nem köti össze a VNet a helyszíni vagy a szolgáltatási végpontok konfigurálásával. Ez külön hálózati konfiguráció. A regionális VNet-integráció egyszerűen lehetővé teszi, hogy az alkalmazás hívásokat hajtson végre a kapcsolati típusok között.
+
+A használt verziótól függetlenül a VNet integrációja lehetővé teszi, hogy a webalkalmazás hozzáférhessen a virtuális hálózat erőforrásaihoz, de a virtuális hálózatról nem biztosít bejövő privát hozzáférést a webalkalmazáshoz. A privát helyhez való hozzáférés arra utal, hogy az alkalmazás csak a magánhálózaton keresztül érhető el, például egy Azure-beli virtuális hálózaton belülről. A VNet-integráció csak az alkalmazásból kimenő hívásokat tesz a VNet. 
+
+A VNet integrációs funkciója:
+
+* Standard, prémium vagy PremiumV2 díjszabási csomagot igényel 
+* a TCP és az UDP támogatása
+* együttműködik App Service alkalmazásokkal és a Function apps szolgáltatással
+
+Néhány dolog, amit a VNet-integráció nem támogat, beleértve a következőket:
+
+* meghajtó csatlakoztatása
 * AD-integráció 
 * NetBios
-* privát hozzáférést
-* az ExpressRoute más erőforrások elérése 
-* a Szolgáltatásvégpontok közötti erőforrások elérése 
+
+## <a name="regional-vnet-integration"></a>Regionális VNet-integráció 
+
+Ha a VNet-integráció a virtuális hálózatok-ben van használatban az alkalmazással megegyező régióban, akkor legalább 32-as címmel rendelkező delegált alhálózat használatát igényli. Az alhálózat nem használható semmi máshoz. Az alkalmazásból érkező kimenő hívásokat a rendszer a delegált alhálózat címei alapján hozza létre. Ha a VNet-integráció ezen verzióját használja, a hívások a VNet címeiből jönnek létre. A VNet lévő címek használata lehetővé teszi az alkalmazás számára a következőket:
+
+* A szolgáltatás végpont által védett szolgáltatásainak hívása
+* Erőforrások elérése ExpressRoute-kapcsolatok között
+* Hozzáférés az erőforrásokhoz a VNet, amelyhez csatlakozik
+* Erőforrások elérése egymással összetartozó kapcsolatok között, beleértve az ExpressRoute-kapcsolatokat is
+
+Ez a funkció előzetes verzióban érhető el, de a Windows-alkalmazások éles számítási feladatait a következő korlátozásokkal támogatja:
+
+* Csak olyan címeket érhet el, amelyek az RFC 1918 tartományban találhatók. Ezek a 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16 címterület címei.
+* A globális társ-összekapcsolási kapcsolatok erőforrásai nem érhetők el
+* Az alkalmazásból érkező forgalomhoz tartozó útvonalak nem állíthatók be a VNet
+* A szolgáltatás csak olyan újabb App Service skálázási egységekből érhető el, amelyek támogatják a PremiumV2 App Service csomagokat.
+* Az integrációs alhálózatot csak egy App Service-csomag használhatja
+* A szolgáltatás nem használható a App Service Environmentban található elkülönített csomag-alkalmazásokban
+* A szolgáltatáshoz egy nem használt alhálózat szükséges, amely egy/27 32-es címmel vagy nagyobb a Resource Manager-VNet
+* Az alkalmazásnak és a VNet ugyanabban a régióban kell lennie
+* Integrált alkalmazással nem törölhet VNet. Először el kell távolítania az integrációt 
+* App Service-csomag esetében csak egy regionális VNet-integráció lehet. Ugyanazon a App Service csomagon belül több alkalmazás is használhatja ugyanazt a VNet. 
+* Egy alkalmazás vagy egy App Service csomag előfizetése nem módosítható, amíg van olyan alkalmazás, amely regionális VNet-integrációt használ
+
+Az egyes App Service-példányok esetében egy-egy-egy-egy-egy-egy Ha 5 példányra méretezi az alkalmazást, akkor a rendszer 5 címet használ. Mivel az alhálózat mérete nem módosítható a hozzárendelés után, olyan alhálózatot kell használnia, amely elég nagy ahhoz, hogy megfeleljen az alkalmazásnak. Az ajánlott méret a/26, 64 címmel. A/27 32-es címmel a prémium szintű App Service 20 példányban, ha nem módosította a App Service terv méretét. Ha felfelé vagy lefelé méretezi a App Service tervet, a rövid ideig kétszer annyi címet kell használnia. 
+
+Ha azt szeretné, hogy alkalmazásai egy másik App Service tervben olyan VNet érjenek el, amely már egy másik App Service-csomagban található alkalmazáshoz csatlakozik, akkor a korábban létező VNet-integráció által használttól eltérő alhálózatot kell választania.  
+
+A szolgáltatás előzetes verzióban is elérhető Linux rendszeren. A VNet-integrációs szolgáltatás használata Resource Manager-VNet ugyanabban a régióban:
+
+1. Nyissa meg a hálózat KEZELŐFELÜLETét a portálon. Ha az alkalmazás képes az új funkció használatára, megjelenik egy VNet (előzetes verzió) hozzáadására szolgáló lehetőség.  
+
+   ![VNet-integráció kiválasztása][6]
+
+1. Válassza a **VNet hozzáadása (előzetes verzió)** lehetőséget.  
+
+1. Válassza ki azt a Resource Manager-VNet, amelyet integrálni szeretne, majd hozzon létre egy új alhálózatot, vagy válasszon üres, már meglévő alhálózatot. Az integráció egy percnél kevesebb időt vesz igénybe. Az integráció során az alkalmazás újraindul.  Az integráció befejezését követően megtekintheti a beépített VNet részleteit, és egy szalagcímet a tetején, amely a funkció előzetes verziójának megadását mutatja be.
+
+   ![Válassza ki a VNet és az alhálózatot][7]
+
+Miután az alkalmazása integrálva van a VNet, ugyanazt a DNS-kiszolgálót fogja használni, amelyhez a VNet konfigurálva van. 
+
+A regionális VNet-integrációhoz az integrációs alhálózat delegálása szükséges a Microsoft. Web számára.  A VNet-integráció felhasználói felülete automatikusan delegálja az alhálózatot a Microsoft. Web számára. Ha a fiókja nem rendelkezik megfelelő hálózati engedélyekkel a beállításához, szüksége lesz egy olyan személyre, aki az integrációs alhálózaton attribútumokat állíthat be az alhálózat delegálásához. Az integrációs alhálózat manuális delegálásához nyissa meg az Azure Virtual Network alhálózat felhasználói felületét, és állítsa be a Microsoft. Web delegálását.
+
+Ha le szeretné bontani az alkalmazást a VNet, válassza a **Leválasztás**lehetőséget. Ezzel újraindítja a webalkalmazást. 
+
+
+#### <a name="web-app-for-containers"></a>Web App for Containers
+
+Ha a beépített rendszerképeket használó Linuxon App Service használ, a regionális VNet-integrációs funkció további változtatások nélkül működik. Ha Web App for Containers használ, módosítania kell a Docker-rendszerképet, hogy használni lehessen a VNet-integrációt. A Docker-rendszerképben használja a PORT környezeti változót a fő webkiszolgáló figyelési portjának hardcoded helyett. A PORT környezeti változót automatikusan App Service platform állítja be a tároló indítási ideje szerint. Ha SSH-t használ, az SSH démont úgy kell konfigurálni, hogy a SSH_PORT környezeti változó által megadott portszámot figyelje a regionális VNet-integráció használatakor.
+
+### <a name="service-endpoints"></a>Service Endpoints – szolgáltatásvégpont
+
+Az új VNet-integrációs funkció lehetővé teszi a szolgáltatási végpontok használatát.  Ha szolgáltatási végpontokat szeretne használni az alkalmazással, az új VNet-integrációval csatlakozhat egy kiválasztott VNet, majd az integrációhoz használt alhálózaton konfigurálhatja a szolgáltatási végpontokat. 
+
+
+### <a name="how-vnet-integration-works"></a>A VNet-integráció működése
+
+A App Serviceban lévő alkalmazások a feldolgozói szerepkörökben vannak tárolva. Az alapszintű és a magasabb díjszabási csomagok olyan dedikált üzemeltetési csomagok, amelyeken nincs más, ugyanazon dolgozón futó ügyfél-munkaterhelés. A VNet integrációja a virtuális felületek a delegált alhálózaton lévő címekkel való csatlakoztatásával működik. Mivel a feladó címe a VNet található, a legtöbb dologhoz hozzáférhet a VNet, mint a VNet lévő virtuális gépekhez. A hálózatkezelés megvalósítása eltér a virtuális gép VNet való futtatástól, ezért a funkció használata során a hálózati szolgáltatások némelyike még nem érhető el.
+
+![VNet-integráció](media/web-sites-integrate-with-vnet/vnet-integration.png)
+
+Ha a VNet-integráció engedélyezve van, az alkalmazás továbbra is a normál módon megegyező csatornákon keresztül hajtja végre a kimenő hívásokat az interneten. Az alkalmazás tulajdonságai portálon felsorolt kimenő címek továbbra is az alkalmazás által használt címek. Az alkalmazás változásai, a Service Endpoint Secure Services vagy az RFC 1918-címek meghívása a VNet. 
+
+A szolgáltatás csak egy virtuális felületet támogat a munkavégzők esetében.  A munkavégzők egy virtuális felülete egy regionális VNet integrációt jelent App Service csomagon keresztül. Az azonos App Service tervben szereplő összes alkalmazás használhatja ugyanazt a VNet-integrációt, de ha egy alkalmazásnak egy további VNet való csatlakozásra van szüksége, létre kell hoznia egy másik App Service tervet. A használt virtuális felület nem erőforrás, amelyhez az ügyfeleknek közvetlen hozzáférésük van.
+
+A technológia működésének jellegéből adódóan a VNet-integrációhoz használt forgalom nem jelenik meg Network Watcher vagy NSG flow-naplókban.  
+
+## <a name="gateway-required-vnet-integration"></a>Átjáró szükséges VNet-integráció 
+
+Az átjáró szükséges VNet-integrációs funkciója:
+
+* Bármely régióban virtuális hálózatok csatlakozhat a Resource Manager vagy a klasszikus virtuális hálózatok használatával
+* Lehetővé teszi, hogy egy alkalmazás egyszerre csak 1 VNet kapcsolódjon
+* Lehetővé teszi akár öt virtuális hálózatok integrálását egy App Service csomaggal 
+* Lehetővé teszi, hogy ugyanazt a VNet egy App Service-csomagban több alkalmazás is felhasználja anélkül, hogy ez hatással lenne egy App Service-csomag által használható teljes számra.  Ha ugyanazokkal a VNet rendelkező 6 alkalmazásokkal rendelkezik ugyanazon a App Service csomagon, akkor 1 VNet számít. 
+* Olyan Virtual Network átjárót igényel, amely pont – hely típusú VPN-kapcsolattal van konfigurálva
+* A 99,9%-os SLA-t támogat az átjáró SLA-ja miatt
+
+Ez a funkció nem támogatja a következőket:
+* Használat Linux-alkalmazásokkal
+* Erőforrásokhoz való hozzáférés ExpressRoute-on keresztül 
+* Erőforrásokhoz való hozzáférés szolgáltatásvégpontokon keresztül 
 
 ### <a name="getting-started"></a>Első lépések
-Az alábbiakban néhány dolog láthat, tartsa szem előtt a webalkalmazás csatlakozik egy virtuális hálózatot:
 
-* Cél virtuális hálózat pont – hely VPN-útválasztó-alapú átjáróval engedélyezve van, mielőtt az alkalmazás csatlakoztatva kell rendelkeznie. 
-* A virtuális hálózat, az App Service Plan(ASP) ugyanabban az előfizetésben kell lennie.
-* Az alkalmazásokat, amelyek integrálhatók a virtuális hálózat használatához a virtuális hálózathoz tartozó DNS.
+Az alábbiakban néhány dolgot figyelembe kell vennie, mielőtt csatlakoztatja a webalkalmazást egy virtuális hálózathoz:
 
-## <a name="enabling-vnet-integration"></a>VNet-integráció engedélyezése
+* A célként megadott virtuális hálózatnak a pont-hely típusú VPN-nek engedélyezve kell lennie egy Route-alapú átjáróval ahhoz, hogy az alkalmazáshoz lehessen csatlakozni. 
+* A VNet ugyanabban az előfizetésben kell lennie, mint a App Service-csomagnak (ASP).
+* A VNet integrált alkalmazások az adott VNet megadott DNS-t használják.
 
-Van egy új verziója, a VNet-integráció szolgáltatás, amelyet az előzetes verzióban érhető el. Ez nem függ a pont – hely VPN és erőforrások elérésére is támogatja az expressroute-on vagy a végpontok közötti. További információ az új előzetes funkciót, ugorjon a dokumentum végén. 
+### <a name="set-up-a-gateway-in-your-vnet"></a>Átjáró beállítása a VNet ###
 
-### <a name="set-up-a-gateway-in-your-vnet"></a>A vnet-átjáró beállítása ###
+Ha már van olyan átjáró, amely pont – hely címekkel van konfigurálva, ugorjon a VNet-integráció konfigurálása az alkalmazáshoz lehetőségre.  
+Átjáró létrehozása:
 
-Ha már rendelkezik egy pont – hely címekkel konfigurált átjáróval, továbbléphet, a VNet-integráció konfigurálása az alkalmazását.  
-Az átjáró létrehozása:
+1. [Hozzon létre egy átjáró-alhálózatot][creategatewaysubnet] a VNet.  
 
-1. [Hozzon létre egy átjáró-alhálózatot] [ creategatewaysubnet] a virtuális hálózatban található.  
+1. [Hozza létre a VPN-átjárót][creategateway]. Válasszon egy Route-alapú VPN-típust.
 
-1. [A VPN-átjáró létrehozása][creategateway]. Válassza ki egy útvonalalapú VPN-típussal.
+1. [Állítsa a pontot a hely címeire][setp2saddresses]. Ha az átjáró nem az alapszintű SKU-ban található, akkor a IKEV2 le kell tiltani a pont – hely konfigurációban, és az SSTP-t ki kell választani. A címterület a 1918-es RFC-címen, 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16
 
-1. [A pont beállítása helycímek][setp2saddresses]. Ha az átjáró az alapszintű termékváltozatban nem, majd a pont – hely konfigurációban le kell tiltani az IKEV2 és SSTP ki kell választani. A címterület kell legalább a következő címblokkok:
+Ha most hozza létre az átjárót App Service VNet-integrációval való használatra, akkor nem kell tanúsítványt feltöltenie. Az átjáró létrehozása akár 30 percet is igénybe vehet. Az alkalmazás nem integrálható a VNet, amíg az átjáró nincs kiépítve. 
 
-* 10.0.0.0/8 – Ez azt jelenti, hogy egy IP-címtartományt, a 10.0.0.0 10.255.255.255
-* 172.16.0.0/12 – Ez azt jelenti, hogy egy IP-címtartományt, a 172.16.0.0 172.31.255.255 
-* 192.168.0.0/16 – Ez azt jelenti, hogy egy IP-címtartományt, a 192.168.0.0 192.168.255.255
+### <a name="configure-vnet-integration-with-your-app"></a>VNet-integráció konfigurálása az alkalmazással 
 
-Ha csak az átjáró létrehozása App Service VNet-integráció használni, akkor nincs szüksége egy tanúsítvány feltöltéséhez. Az átjáró létrehozása 30 percet is igénybe vehet. Nem lesz mindaddig, amíg az átjáró üzemképes integrálhatják az alkalmazás a virtuális hálózathoz. 
+Az VNet-integráció engedélyezése az alkalmazásban: 
 
-### <a name="configure-vnet-integration-with-your-app"></a>VNet-integráció konfigurálása az App-alkalmazással ###
+1. Nyissa meg az alkalmazást a Azure Portalon, és nyissa meg az alkalmazás beállításait, és válassza a hálózatkezelés > VNet-integráció lehetőséget. Az ASP-nek standard SKU-ban kell lennie, vagy jobb a VNet-integrációs funkció használatához. 
+ @no__t – 0VNet-integráció felhasználói felülete @ no__t-1
 
-VNet-integráció engedélyezése az alkalmazásban: 
+1. Válassza a **VNet hozzáadása**lehetőséget. 
+ ![Add VNet Integration @ no__t-1
 
-1. Az alkalmazás az Azure Portalon nyissa meg és nyissa meg az alkalmazásbeállítások, és válassza ki a hálózatkezelés > VNet-integráció. Az ASP a Standard Termékváltozat méretezheti, vagy még jobb a VNet-integráció konfigurálása előtt. 
- ![Felhasználói felület VNet-integráció][1]
-
-1. Válassza ki **adja hozzá a virtuális hálózat**. 
- ![Adja hozzá a VNet-integráció][2]
-
-1. Válassza ki a virtuális hálózathoz. 
-  ![Válassza ki a virtuális hálózat][8]
+1. Válassza ki a VNet. 
+  @no__t 0Select a VNet @ no__t-1
   
-Az alkalmazás az utolsó lépés után újraindítja.  
+Az alkalmazás az utolsó lépés után újraindul.  
 
-## <a name="how-the-system-works"></a>A rendszer működése
-A virtuális hálózat integrációja a pont – hely VPN-technológia épül. Az Azure App Service Apps egy több-bérlős rendszerben, amely kizárja az alkalmazás közvetlenül a virtuális hálózat kiépítési üzemelnek. A pont – hely technológia korlátozza a hálózati hozzáférés csak az alkalmazást futtató virtuális géphez. Alkalmazások korlátozva csak kiküldeni forgalom az internethez, vagy VNet-integráció hibrid kapcsolatok keresztül. 
+### <a name="how-the-gateway-required-vnet-integration-feature-works"></a>Az átjáró szükséges VNet-integrációs funkciójának működése
 
-![Hogyan működik a VNet-integráció][3]
+Az átjáró szükséges VNet-integrációs funkciója a pont – hely VPN-technológiára épül. A pont – hely technológia korlátozza a hálózati hozzáférést az alkalmazást üzemeltető virtuális géphez. Az alkalmazások csak az interneten keresztül, Hibrid kapcsolatok vagy VNet-integráción keresztül küldhetnek forgalmat. 
 
-## <a name="managing-the-vnet-integrations"></a>A virtuális hálózathoz való integrációt kezelése
-Az alkalmazás szintjén van arra, hogy csatlakoztatása és leválasztása a virtuális hálózathoz. A VNet-integráció egyszerre több alkalmazással érintő műveletekre az App Service csomag szintjén. Az alkalmazás egyedi azonosítója részletekért a virtuális hálózaton. Ugyanazokat az információkat az ASP szintjén is megjelennek. 
+![A VNet-integráció működése][3]
 
- ![Virtuális hálózat részletei][4]
+## <a name="managing-vnet-integration"></a>VNet-integráció kezelése
+A VNet való csatlakozás és az azokhoz való kapcsolódás lehetősége az alkalmazás szintjén történik. A több alkalmazás közötti VNet-integrációt befolyásoló műveletek a App Service csomag szintjén találhatók. Az App > Networking > VNet Integration Portalon megtekintheti a VNet adatait. Az ASP-szinten hasonló információk jelennek meg az ASP > hálózatkezelés > VNet integrációs portálon, beleértve az adott App Service-csomaghoz tartozó alkalmazásokat is, amelyek egy adott integrációt használnak.
 
-A hálózati funkció állapota lapon láthatja, ha az alkalmazás csatlakoztatva van-e a virtuális hálózathoz. Ha a virtuális hálózat átjárójának valamilyen okból nem működik, az állapotüzenet látható, a nem csatlakozó. 
+ ![VNet részletei][4]
 
-Most már elérhető az alkalmazás szintű virtuális hálózatok közötti integráció felhasználói felületén pedig ugyanaz, mint a részletes információkat kap az ASP információk. Azok az elemek a következők:
+A VNet-integráció felhasználói felületén elérhető információk megegyeznek az alkalmazás és az ASP-portálok között.
 
-* Virtuális hálózat neve – a virtuális hálózat felhasználói felület mutató hivatkozások
-* Hely - jeleníti meg a virtuális hálózat helyét. Egy másik helyen található virtuális hálózat integrációja okozhat a késési problémák az alkalmazáshoz. 
-* Tanúsítvány állapota – tükrözi, ha az App Service-csomag és a virtuális hálózat között a szinkronban-e a tanúsítványok.
-* Átjáró állapota – az átjárók kell le valamilyen okból majd az alkalmazás nem fér hozzá a virtuális hálózatban található erőforrások. 
-* Virtuális hálózati címtér - IP-címterét a virtuális hálózat mutatja be. 
-* Pont – hely címtér - hely IP-címtér a pont a virtuális hálózat mutatja be. Irányuló hívásokhoz lesz a virtuális hálózathoz, ha az alkalmazás-feladó címe lesz címek egyikének. 
-* Helyek közötti címtér - segítségével site-to-site VPN-ek a helyszíni erőforrásokhoz vagy más virtuális hálózatok közötti kapcsolatot a virtuális hálózat. Itt jelennek meg az IP-címtartományok VPN-kapcsolatra van definiálva.
-* DNS-kiszolgálók – mutat be a virtuális hálózat DNS-kiszolgálók konfigurálva.
-* Irányított IP-címek a virtuális hálózathoz – mutat be a címblokkok irányítva használt meghajtó adatforgalom a virtuális hálózat 
+* VNet neve – hivatkozások a virtuális hálózat felhasználói felületére
+* Hely – a VNet helyét tükrözi. Egy másik helyen lévő VNet való integráció késési problémákat okozhat az alkalmazásban. 
+* Tanúsítvány állapota – azt jelzi, hogy a tanúsítványok szinkronizálva vannak-e a App Service-csomag és a VNet között.
+* Átjáró állapota – ha az átjáró szükséges VNet-integrációt használja, láthatja az átjáró állapotát.
+* VNet – a VNet IP-címét jeleníti meg. 
+* Pont – hely címtartomány – megjeleníti a VNet hely IP-címének helyét. Ha az átjáró által igényelt funkció használata során hívásokat kezdeményez a VNet, az alkalmazás címe a következő címek egyike lesz. 
+* Helyek közötti címtartomány – a helyek közötti VPN-eket használhatja a VNet helyszíni erőforrásokhoz vagy más VNet való összekapcsolásához. Itt jelennek meg a VPN-kapcsolattal megadott IP-címtartományok.
+* DNS-kiszolgálók – a VNet konfigurált DNS-kiszolgálókat jeleníti meg.
+* A VNet átirányított IP-címek – megjeleníti a VNet felé irányuló forgalom irányításához használt címeket. 
 
-Az egyetlen művelet elvégezhető az alkalmazás a VNet-integráció nézetében, hogy az alkalmazás leválasztása a virtuális hálózat jelenleg csatlakoztatva van. Az alkalmazás leválasztása a virtuális hálózaton, válassza ki a **Disconnect**. Az alkalmazás újraindul, amikor leválasztja a virtuális hálózaton. Leválasztja a virtuális hálózat nem változik. A virtuális hálózat és annak konfigurációját, beleértve az átjárók változatlan marad. Ha meg kívánja törölni a virtuális hálózathoz, először törölje az erőforrásokat, beleértve az átjárók szeretné. 
+Az egyetlen művelet, amelyet a VNet-integráció alkalmazás nézetében elvégezhet, az alkalmazás leválasztása a VNet, amelyhez jelenleg csatlakozik. Az alkalmazás VNet való leválasztásához válassza a **Leválasztás**lehetőséget. Az alkalmazás újraindul, amikor leválaszt egy VNet. A kapcsolat bontása nem módosítja a VNet. Az alhálózat vagy átjáró nem törlődik. Ha ezt követően törölni szeretné a VNet, először le kell választania az alkalmazást a VNet, és törölnie kell az abban lévő erőforrásokat, például az átjárókat. 
 
-Szeretné elérni az ASP virtuális hálózatok közötti integráció felhasználói felületén, nyissa meg az ASP felhasználói felületén, és válassza **hálózatkezelés**.  Válassza a VNet-integráció **kattintson ide a konfiguráláshoz** a hálózati szolgáltatás állapota felhasználói felületének megnyitásához.
+Az ASP-VNet integrációs felhasználói felületének eléréséhez nyissa meg az ASP felhasználói felületét, és válassza a **hálózatkezelés**lehetőséget.  A VNet-integráció területen válassza a **Konfigurálás** lehetőséget a hálózati szolgáltatás állapotának felhasználói felületének megnyitásához.
 
-![Az ASP VNet-integráció információk][5]
+![Az ASP VNet integrációs adatai][5]
 
-Az ASP virtuális hálózatok közötti integráció felhasználói felület bemutatják, a virtuális hálózatok, az alkalmazások az ASP által használt összes. Az App Service-csomag alkalmazások által csatlakoztatott legfeljebb 5 virtuális hálózatok is rendelkezhet. Minden alkalmazás egyetlen integrace nakonfigurovaná is rendelkezhet. Az egyes virtuális hálózatok részleteinek megtekintéséhez kattintson az Önt érdeklő virtuális hálózaton. Nincsenek két műveletet itt is végezhet.
+Az ASP VNet-integráció felhasználói felülete megjeleníti az ASP-alkalmazások által használt összes virtuális hálózatok. Az egyes VNet részleteinek megtekintéséhez kattintson az Önt érdeklő VNet. Itt két műveletet hajthat végre.
 
-* **Hálózat szinkronizálása**. A szinkronizálási hálózati művelet gondoskodik arról, hogy a tanúsítványok és hálózati adatok szinkronizálva legyenek. Adja hozzá, vagy módosítsa a virtuális hálózat DNS-ben, ha kíván végezni egy **hálózat szinkronizálása** műveletet. Ez a művelet újraindul a virtuális hálózat használatával bármilyen alkalmazást.
-* **Útvonalak hozzáadása** útvonalak hozzáadása a hatékony felhasználhatóságot kimenő forgalom, a virtuális hálózathoz.
+* A **hálózat szinkronizálása**. A szinkronizálási hálózati művelet csak az átjárótól függő VNet-integrációs szolgáltatáshoz használható. A szinkronizálási hálózati művelet végrehajtása biztosítja, hogy a tanúsítványok és a hálózati adatok szinkronban legyenek. Ha a VNet DNS-t adja hozzá vagy módosítja, **szinkronizálási hálózati** műveletet kell végrehajtania. Ez a művelet újraindítja a VNet használó alkalmazásokat.
+* **Útvonalak hozzáadása** Útvonalak hozzáadásakor a kimenő forgalom a VNet fog vezetni.
 
-**Útválasztás** forgalom irányítása a virtuális hálózat az alkalmazásból, az útvonalakat a virtuális hálózathoz meghatározott szolgálnak. Ha szeretne további kimenő adatforgalmat küldjön a vnetben, ezután adhatja csak hozzá ezen címterületet.   
+**Útválasztás** A VNet meghatározott útvonalak az alkalmazásból a VNet irányuló forgalom irányítására szolgálnak. Ha további kimenő forgalmat kell elküldeni a VNet, akkor itt adhatja hozzá ezeket a címeket. Ez a funkció csak az átjáróval megkövetelt VNet-integrációval működik.
 
-**Tanúsítványok** amikor VNet-integráció engedélyezve van, és van a szükséges exchange-tanúsítványok biztosítása a kapcsolat biztonságát. A tanúsítványok együtt vannak a DNS-konfigurációt, útvonalak és más hasonló dolgot, amelyek ismertetik a hálózaton.
-Ha tanúsítványokat vagy hálózati adatok megváltozik, kattintson a "Hálózat szinkronizálása" szeretne. Ha "Hálózat szinkronizálása" gombra kattint, akkor miatt a rövid kimaradásokat a kapcsolat az alkalmazás és a virtuális hálózat között. Amíg az alkalmazás újraindítása után a nem a kapcsolat megszakadása okozhat a hely nem működhet megfelelően. 
+**Tanúsítványok** Ha az átjárón engedélyezve van az VNet-integráció, akkor a kapcsolatok biztonságának biztosítása érdekében szükség van a tanúsítványok cseréjére. A tanúsítványokkal együtt a DNS-konfiguráció, az útvonalak és más hasonló, a hálózatot leíró dolgok.
+Ha a tanúsítványok vagy a hálózati adatok módosulnak, akkor a "hálózat szinkronizálása" gombra kell kattintania. Ha a "hálózat szinkronizálása" gombra kattint, az alkalmazás és a VNet közötti kapcsolat rövid kimaradást okoz. Az alkalmazás nem indul újra, a kapcsolat elvesztése miatt előfordulhat, hogy a hely nem működik megfelelően. 
 
-## <a name="accessing-on-premises-resources"></a>Hozzáférés a helyszíni erőforrások
-Alkalmazások integrálása a virtuális hálózatok helyek közötti kapcsolattal rendelkezik a helyszíni erőforrásokat érhetik el. Helyszíni erőforrások eléréséhez frissítenie a helyszíni VPN-átjáró útvonalakat a pont – hely címe blokkokkal. Ha a site-to-site VPN először be van állítva, a parancsprogramok segítségével konfigurálja kell útvonalak megfelelően beállítva. A pont – hely címeket ad hozzá, a site-to-site VPN létrehozása után, ha az útvonalak manuálisan frissíteni szeretné. Megtudhatja, hogyan valósítható meg / átjáró eltérőek lehetnek, és nem ebben a témakörben találhatók. Site-to-site VPN-kapcsolattal konfigurált BGP is rendelkezhet.
+## <a name="accessing-on-premises-resources"></a>Helyszíni erőforrások elérése
+Az alkalmazások a helyek közötti kapcsolatokkal rendelkező virtuális hálózatok integrálásával érhetik el a helyszíni erőforrásokat. Ha az átjáróhoz szükséges VNet-integrációt használja, frissítenie kell a helyszíni VPN Gateway-útvonalakat a pont – hely címtartomány-blokkokkal. Amikor először állítja be a helyek közötti VPN-t, a konfigurálásához használt parancsfájloknak megfelelően kell beállítania az útvonalakat. Ha a pont – hely címeket a helyek közötti VPN létrehozása után adja hozzá, akkor manuálisan kell frissítenie az útvonalakat. Az egyes átjárók működésének részletes leírását itt találja. A BGP-t nem lehet helyek közötti VPN-kapcsolattal konfigurálni.
+
+Nincs szükség további konfigurációra ahhoz, hogy a regionális VNet integrációs szolgáltatás elérje a VNet és a helyszíni környezettel. Egyszerűen csatlakoznia kell a VNet a helyszíni környezethez a ExpressRoute vagy a helyek közötti VPN használatával. 
 
 > [!NOTE]
-> A VNet-integráció funkciót egy alkalmazás nem integrálható a virtuális hálózat, amely egy ExpressRoute-átjáróval rendelkezik. Akkor is, ha az ExpressRoute-átjárót konfigurált [együttes használata mód] [ VPNERCoex] a VNet-integráció nem működik. Van szükség a erőforrások eléréséhez ExpressRoute-kapcsolaton keresztül, akkor használhat egy [App Service Environment-környezet][ASE], amely fut a virtuális hálózatban található. 
+> Az átjáró szükséges VNet-integrációs funkciója nem integrálja az alkalmazást olyan VNet, amely ExpressRoute-átjáróval rendelkezik. Még akkor [is, ha az ExpressRoute-átjáró][VPNERCoex] párhuzamosan van konfigurálva, a VNet-integráció nem működik. Ha egy ExpressRoute-kapcsolaton keresztül kell hozzáférni az erőforrásokhoz, akkor használhatja a regionális VNet integrációs funkciót vagy egy [app Service Environment][ASE], amely a VNet fut. 
 > 
 > 
 
 ## <a name="peering"></a>Társviszony-létesítés
-VNet-integráció segítségével elérje az erőforrásokat a virtuális hálózatok társviszonyban állnak a virtuális hálózathoz csatlakozik. Konfigurálhatja a társviszony-létesítést úgy az alkalmazását:
+Ha a regionális VNet-integrációval való összevonást használ, nincs szükség további konfigurálásra. 
 
-1. Adja hozzá az alkalmazás virtuális Társhálózat-kapcsolatot csatlakozik. A társviszony-létesítési kapcsolat hozzáadásakor engedélyezése **virtuális hálózati hozzáférés engedélyezése** , és ellenőrizze **továbbított forgalom engedélyezése** és **átjárótranzit engedélyezése**.
-1. A virtuális hálózattal, hogy társviszonyban áll a társviszony-létesítési kapcsolat hozzáadása a virtuális hálózathoz csatlakozik. A cél virtuális hálózatok közötti társviszony-létesítési kapcsolat hozzáadásakor engedélyezése **virtuális hálózati hozzáférés engedélyezése** , és ellenőrizze **továbbított forgalom engedélyezése** és **lehetővé teszi a távoli átjárók**.
-1. Nyissa meg az App Service-csomag > Hálózat > virtuális hálózat integrációja felhasználói felület a portálon.  Válassza ki a virtuális hálózat, az alkalmazás csatlakozik. Az útválasztási szakasz alatt adja hozzá a címtartomány azon virtuális hálózat társviszonyban áll a virtuális hálózattal, az alkalmazás csatlakoztatva van.  
+Ha az átjárót a szükséges VNet-integrációval használja, néhány további elemet is be kell állítania. Az alkalmazással való együttműködés konfigurálása:
+
+1. Adjon hozzá egy egyenrangú kapcsolatot azon a VNet, amelyhez az alkalmazás csatlakozik. A társítási kapcsolat hozzáadásakor engedélyezze a **virtuális hálózati hozzáférés engedélyezése beállítást** , és jelölje be a **továbbított forgalom** engedélyezése és az **átjáró átvitelének engedélyezése**beállítást.
+1. Vegyen fel egy társas kapcsolatot a VNet, amely a csatlakoztatott VNet van csatlakoztatva. Ha hozzáadja a társítási kapcsolatot a cél VNet, engedélyezze a **virtuális hálózati hozzáférés engedélyezése** és a **továbbított forgalom** engedélyezése és a **távoli átjárók engedélyezése**beállítást.
+1. Nyissa meg a App Service tervet > hálózatkezelés > VNet integrációs felhasználói felületét a portálon.  Válassza ki azt a VNet, amelyhez az alkalmazás csatlakozik. Az Útválasztás szakaszban adja meg a VNet azon VNet, amelyhez az alkalmazás csatlakoztatva van.  
 
 
-## <a name="pricing-details"></a>Díjszabás részletei
-Nincsenek három kapcsolódó költségek a VNet-integráció funkció használatára:
+## <a name="pricing-details"></a>Díjszabás
+A regionális VNet-integrációs szolgáltatásnak nem kell további díjat fizetnie az ASP díjszabási szintjein túli használatért.
 
-* ASP-réteg követelményeinek díjszabása
-* Adatátviteli költségek
-* VPN-átjáró költségek.
+Az átjáró szükséges VNet-integrációs funkciója három kapcsolódó díjjal jár:
 
-Az alkalmazások kell lennie a Standard, prémium szintű vagy PremiumV2 App Service-csomag. További részleteket a költségekre Itt tekintheti meg: [App Service díjszabását][ASPricing]. 
+* Az ASP díjszabási szintjeinek díjai – az alkalmazásainak standard, prémium vagy PremiumV2 App Service-csomaggal kell rendelkezniük. Ezekről a költségekről itt talál további részleteket: [App Service díjszabása][ASPricing]. 
+* Adatátviteli költségek – a kimenő adatforgalomért akkor is díjat számítunk fel, ha a VNet ugyanabban az adatközpontban található. Ezeket a díjakat [adatátvitel díjszabása][DataPricing]ismerteti. 
+* VPN Gateway költségek – a pont – hely típusú VPN-hez szükséges VNet-átjáró költségeinek költsége. A részletek a [VPN Gateway díjszabási][VNETPricing] oldalán találhatók.
 
-Nincs kimenő adatforgalom díja akkor is, ha a virtuális hálózat ugyanabban az adatközpontban. Ezeket a díjakat olyan [Data Transfer Díjszabásának részletei][DataPricing]. 
-
-Nincs a VNet-átjáró szükséges, a pont – hely VPN-díjat fizetni. A részleteket a rendszer a [VPN Gateway díjszabás] [ VNETPricing] lapot.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
-Amíg a funkció segítségével egyszerűen állíthat, ez nem jelenti azt, hogy a felhasználói élmény lesz-e a probléma ingyenes. Kell észlel a kívánt végpontra elérésével kapcsolatos problémák bizonyos segédprogramokat használhatja az app-konzol közötti kapcsolat teszteléséhez. Nincsenek két konzol használható. Az egyik a Kudu konzol a másik pedig a konzol az Azure Portalon. A Kudu konzol az alkalmazás eléréséhez, válassza a eszközök -> Kudu. Ez megegyezik a helynév: [%] lépjen. scm.azurewebsites.net. Miután, amely megnyílik, nyissa meg a hibakeresési konzolt lapot. Eszközök válassza az Azure-portál központi konzolon, majd az alkalmazásából való beolvasásához konzol ->. 
+Habár a funkció egyszerűen beállítható, ez nem jelenti azt, hogy a probléma ingyenes lesz. Ha problémák merülnek fel a kívánt végpont elérésekor, néhány segédprogram használható az alkalmazás-konzolról való kapcsolat tesztelésére. Két konzolt használhat. Az egyik a kudu-konzol, a másik pedig a Azure Portal konzolja. A kudu-konzol alkalmazásból való eléréséhez nyissa meg az eszközök-> kudu. A Kudo-konzolt a következő helyen is elérheti: [sitename]. SCM. azurewebsites. net. A webhely betöltése után lépjen a Debug konzol lapra. Az Azure Portal üzemeltetett konzoljának eléréséhez nyissa meg az eszközök-> konzolt. 
 
 #### <a name="tools"></a>Eszközök
-Az eszközök **ping**, **nslookup** és **tracert** biztonsági okokból a konzolon keresztül nem fog működni. Töltse ki a void, két különálló hozzáadott eszközök. DNS-funkciók teszteléséhez hozzáadtunk egy nameresolver.exe nevű eszközt. A szintaxis a következő:
+Az eszközök **pingelése**, az **nslookup** és a **tracert** a biztonsági korlátozások miatt nem fog működni a konzolon. Az üresség kitöltéséhez két különálló eszköz lett hozzáadva. A DNS-funkciók teszteléséhez hozzáadott egy nameresolver. exe nevű eszközt. A szintaxis a következő:
 
     nameresolver.exe hostname [optional: DNS Server]
 
-Használhat **nameresolver** ellenőrizze a gazdagép neve, amely az alkalmazása függ. Ezzel a módszerrel tesztelheti Ha semmit a DNS rosszul konfigurálva van, vagy esetleg nem fér hozzá a DNS-kiszolgáló.
+A **nameresolver** segítségével megtekintheti az alkalmazástól függő gazdagépeket. Így ellenőrizheti, hogy van-e valamilyen helytelenül konfigurálva a DNS-sel, vagy lehet, hogy nem fér hozzá a DNS-kiszolgálóhoz. A DNS-kiszolgáló, amelyet az alkalmazás a-konzolon fog használni, a környezeti változók WEBSITE_DNS_SERVER és WEBSITE_DNS_ALT_SERVER tekintheti meg.
 
-A következő eszköz lehetővé teszi, hogy az állomás és port kombinációjához TCP-kapcsolat tesztelése. Ez az eszköz neve **tcpping** és szintaxisa:
+A következő eszköz lehetővé teszi a TCP-kapcsolat tesztelését egy gazdagép és port kombinációhoz. Az eszköz neve **tcpping** , és a szintaxis a következő:
 
     tcpping.exe hostname [optional: port]
 
-A **tcpping** segédprogram jelzi, hogy egy adott állomás és port elérheti. Csak megmutatja sikeres ha: egy alkalmazás figyeli, az állomás és port kombinációját, és a megadott állomás és port az alkalmazásból a hálózati hozzáférést.
+A **tcpping** segédprogrammal megtudhatja, hogy elérhető-e egy adott gazdagép és port. Ez csak akkor mutathat sikert, ha: van egy alkalmazás, amely a gazdagép és a port kombinációját figyeli, és az alkalmazásból hálózati hozzáférés van a megadott gazdagéphez és porthoz.
 
-#### <a name="debugging-access-to-vnet-hosted-resources"></a>Hibakeresés a virtuális hálózathoz való hozzáférés üzemeltetett erőforrásokhoz
-Létezik néhány dolog, amely megakadályozhatja, hogy az alkalmazás egy adott állomás és port elérését. A legtöbbször egyike három dolgot:
+#### <a name="debugging-access-to-vnet-hosted-resources"></a>A VNet által üzemeltetett erőforrásokhoz való hozzáférés hibakeresése
+Számos dolog megakadályozhatja, hogy az alkalmazás elérjen egy adott gazdagépet és portot. Az idő nagy része három dolog egyike:
 
-* **A tűzfal olyan módon.** Van egy tűzfal módja, ha eléri a a TCP időtúllépési. A TCP időtúllépési érték ebben az esetben 21 másodperc. Használja a **tcpping** eszköz kapcsolat teszteléséhez. TCP-időtúllépések miatt tűzfalak túl sok-sok dolog lehet, de kezdeni. 
-* **DNS nem érhető el.** A DNS-időtúllépési érték három másodperc / DNS-kiszolgáló. Ha két DNS-kiszolgálók, az időtúllépési érték 6 másodperc. Nameresolver segítségével megtekintheti, hogy működik-e a DNS. Ne felejtse el, nem használhatja az nslookup, amely nem használ a DNS-ben a virtuális hálózat van beállítva.
-* **A pont – hely címtartomány érvénytelen.** A pont – hely IP-címtartománynak kell lennie az RFC 1918 magánhálózati IP-címtartományokkal (10.0.0.0-10.255.255.255 / 172.16.0.0-172.31.255.255 / 192.168.0.0-192.168.255.255). Ha a tartományon kívül esik, amely IP-címek használ, dolgot nem fog működni. 
+* **A tűzfal éppen folyamatban van.** Ha tűzfallal rendelkezik, a TCP-időtúllépést fogja elérni. Ebben az esetben a TCP-időkorlát 21 másodperc. A kapcsolat teszteléséhez használja a **tcpping** eszközt. A TCP-időtúllépések a tűzfalakon túl sok dolog okozhatja, de ott is elindulhat. 
+* **A DNS nem érhető el.** A DNS-időtúllépési érték a DNS-kiszolgálón három másodperc. Ha két DNS-kiszolgálóval rendelkezik, az időtúllépés 6 másodperc. A nameresolver használatával ellenőrizze, hogy a DNS működik-e. Ne feledje, hogy nem használhatja az nslookupt úgy, hogy ne használja a DNS-t, amelyet a VNet konfigurált. Ha nem érhető el, lehet, hogy tűzfallal vagy NSG blokkolja a hozzáférést a DNS-hez, vagy leállt.
 
-Ha azok az elemek nem választ a problémára, keresse meg az egyszerű többek között az első: 
+Ha ezek az elemek nem válaszolnak a problémákra, először tekintse meg a következő dolgokat: 
 
-* Az átjárót a portálon fel állapottal jelenik meg?
-* Ehhez tanúsítványokat megjelenítése, hogy szinkronban?
-* Bárki változtatta meg a hálózati konfigurációt az érintett ASP "Sync hálózat" művelet végrehajtása nélkül? 
+**regionális VNet-integráció**
+* a cél az RFC 1918-címe
+* van olyan NSG, amely blokkolja az integrációs alhálózatról érkező kimenő forgalmat
+* Ha a ExpressRoute vagy egy VPN-en halad át, a helyszíni átjáró úgy van konfigurálva, hogy a forgalmat az Azure-ba irányítsa? Ha elérheti a végpontokat a VNet, de nem a helyszínen, akkor ez jó választás.
 
-Ha az átjáró nem működik, majd hálózatra, készítsen biztonsági mentést. Ha a tanúsítványok nincsenek szinkronban, az ASP nézetében, a VNet-integráció, és nyomja le a "Hálózat szinkronizálása". Ha azt gyanítja, hogy az a virtuális hálózat konfigurációja, amely nem volt szinkronizálva az ASP-változás történt, majd nyomja le a "Hálózat szinkronizálása".  A "Hálózat szinkronizálása" művelet alkalmazások indítsa újra az ASP, amelyek integrálhatók a virtuális hálózathoz. 
+**átjáró szükséges VNet-integráció**
+* a pont – hely címtartomány az RFC 1918-tartományokban (10.0.0.0-10.255.255.255/172.16.0.0-172.31.255.255/192.168.0.0-192.168.255.255)?
+* Megjelenik az átjáró a portálon? Ha az átjáró nem működik, hozza létre a biztonsági mentést.
+* A tanúsítványok szinkronban jelennek meg, vagy feltételezi, hogy a hálózati konfiguráció megváltozott?  Ha a tanúsítványok nincsenek szinkronban, vagy ha azt gyanítja, hogy módosult a VNet konfigurációja, amely nem lett szinkronizálva a ASP, akkor nyomja meg a "Sync Network" (hálózat szinkronizálása) lehetőséget.
+* Ha a ExpressRoute vagy egy VPN-en halad át, a helyszíni átjáró úgy van konfigurálva, hogy a forgalmat az Azure-ba irányítsa? Ha elérheti a végpontokat a VNet, de nem a helyszínen, akkor ez jó választás.
 
-Ha, hogy minden rendben, akkor szüksége megismerésére egy kicsit részletesebben:
+A hálózati problémák hibakeresése kihívást jelent, mivel nem látható, hogy mi blokkolja a hozzáférést egy adott gazdagéphez: Port kombináció. Az okok némelyike a következőkből áll:
 
-* Vannak-e bármilyen más alkalmazást, VNet-integráció segítségével az ugyanazon virtuális hálózatban található erőforrások eléréséhez? 
-* Látogasson el az alkalmazás-konzolon és bármilyen egyéb erőforrásokat a virtuális hálózat eléréséhez tcpping használni? 
+* a gazdagépen lévő tűzfallal megakadályozhatja, hogy hozzáférjen az alkalmazás portjához a pontról a hely IP-tartományába. Az alhálózatok átlépéséhez gyakran nyilvános hozzáférésre van szükség.
+* a célként megadott gazdagép nem működik
+* az alkalmazás nem érhető el
+* nem megfelelő IP-címet vagy állomásnevet adott meg
+* az alkalmazás a várttól eltérő portot figyel. A folyamat AZONOSÍTÓját megtekintheti a figyelő porton a "netstat-Aon" paranccsal a végponti gazdagépen. 
+* a hálózati biztonsági csoportok úgy vannak konfigurálva, hogy ne férhessenek hozzá az alkalmazás-gazdagéphez és-porthoz a pontról a hely IP-tartományába
 
-Ha a fentiek bármelyike igaz, majd a VNet-integráció nem okoz gondot, és a probléma valahol máshol. Ez az, ahol kap további kihívást lennie, mert nem egyszerű lehet, hogy miért nem tudja elérni a gazdagépet: port. Okai a következők:
+Ne feledje, hogy nem tudja, milyen címet fog használni az alkalmazás ténylegesen. Az integrációs alhálózat vagy a pont – hely címtartomány bármely címe lehet, ezért a teljes címtartományból engedélyeznie kell a hozzáférést. 
 
-* megakadályozza a hozzáférést az alkalmazásport a webhely IP-címtartomány a pont a gazdagép van a tűzfal. Nyilvános hozzáférés határainak átlépése alhálózatok gyakran van szükség.
-* a cél gazdagép nem működik
-* az alkalmazás nem működik
-* a megfelelő IP- vagy állomásnév kellett
-* az alkalmazás a várttól mint egy másik porton figyel. A folyamat azonosítója a figyelőport meg tudja a végponti gazdagépen a "netstat - aon" használatával. 
-* a hálózati biztonsági csoportok vannak konfigurálva, hogy azok való hozzáférés letiltása az alkalmazás-állomás és port a helyet iprange pont oly módon
+További hibakeresési lépések a következők:
 
-Ne feledje, hogy milyen IP nem ismeri a pont – hely IP-címtartományban, amely az alkalmazás fogja használni, így engedélyezze a hozzáférést a teljes tartomány szükséges. 
-
-További hibakeresési lépések az alábbiak:
-
-* csatlakozhat a virtuális hálózatban található virtuális Géphez, és próbálja meg elérni az erőforrást állomás: port onnan. A TCP hozzáférési tesztelni, használja a PowerShell-paranccsal **test-netconnection**. A szintaxis a következő:
+* kapcsolódjon egy virtuális géphez a VNet, és próbálja meg elérni az erőforrás-gazdagépet: innen a port. A TCP-hozzáférés teszteléséhez használja a következő PowerShell **-parancsot: test-NETCONNECTION**. A szintaxis a következő:
 
       test-netconnection hostname [optional: -Port]
 
-* viszi, megjelenik egy alkalmazást, egy virtuális gép és a teszt hozzáférést az adott állomáson és porton az alkalmazásból a konzolról
+* egy alkalmazás üzembe helyezése egy virtuális gépen, valamint a gazdagép és a port elérésének tesztelése a konzolról az **tcpping** használatával
 
-#### <a name="on-premises-resources"></a>A helyszíni erőforrásokhoz ####
+#### <a name="on-premises-resources"></a>Helyszíni erőforrások ####
 
-Ha az alkalmazás nem érhető el egy erőforrást a helyszíni, majd ellenőrizze, ha az erőforrás a elérheti a virtuális hálózat. Használja a **test-netconnection** TCP-hozzáférés ellenőrzése a PowerShell-parancsot. A virtuális gép nem tudja elérni a helyszíni erőforráshoz, majd győződjön meg arról, hogy a helyek közötti VPN-kapcsolat működik. Ha működik, majd ellenőrizze a ugyanazokat a műveleteket, valamint a helyszíni átjáró konfigurációjának és állapotának korábban feljegyzett. 
+Ha az alkalmazás nem tud helyszíni erőforrást elérni, akkor ellenőrizze, hogy elérhető-e az erőforrás a VNet. Használja a **test-NETCONNECTION** PowerShell-parancsot a TCP-hozzáférés ellenőrzéséhez. Ha a virtuális gép nem tudja elérni a helyszíni erőforrást, előfordulhat, hogy a VPN-vagy ExpressRoute-kapcsolat nem megfelelően van konfigurálva.
 
-Ha a virtuális hálózat VM elérheti a helyszíni rendszer, de az alkalmazás nem tudja, majd oka valószínűleg egy, az alábbi okok miatt:
+Ha a VNet által üzemeltetett virtuális gép elérheti a helyszíni rendszerét, de az alkalmazása nem lehetséges, akkor az oka valószínűleg az alábbi okok egyike:
 
-* az útvonalak nincsenek konfigurálva a ponttal hely IP-címtartományokhoz a helyszíni átjáróban
-* a hálózati biztonsági csoportok forgalomszűrők blokkolják a hozzáférést a pont – hely IP-címtartomány
-* a helyszíni tűzfal forgalomszűrők blokkolják a pont – hely IP-címtartomány érkező forgalom
+* az útvonalak nincsenek konfigurálva az alhálózattal, vagy a helyi átjárón lévő hely címeire mutatnak
+* a hálózati biztonsági csoportok blokkolja a pont – hely IP-címtartomány elérését.
+* a helyszíni tűzfalak blokkolja a pont – hely IP-címtartomány forgalmát
+* nem RFC 1918-es címről szeretne elérni a regionális VNet integrációs funkciójával
 
 
-## <a name="powershell-automation"></a>PowerShell automation
+## <a name="powershell-automation"></a>PowerShell-automatizálás
 
-Az App Service integrálható az Azure Virtual Network PowerShell-lel. Az alkalmazást kész parancsprogramok esetén lásd: [az Azure App Service alkalmazás csatlakoztatása az Azure Virtual Networkhöz](https://gallery.technet.microsoft.com/scriptcenter/Connect-an-app-in-Azure-ab7527e3).
+A PowerShell használatával integrálhatja App Serviceeit egy Azure-Virtual Network. A használatra kész parancsfájlhoz lásd: [alkalmazás Összekötése Azure app Service egy Azure-Virtual Network](https://gallery.technet.microsoft.com/scriptcenter/Connect-an-app-in-Azure-ab7527e3).
 
-## <a name="hybrid-connections-and-app-service-environments"></a>A hibrid kapcsolatok és az App Service Environment-környezetek
-Nincsenek három funkciók, amelyek lehetővé teszik a virtuális hálózatok közötti üzemeltetett erőforrásokhoz való hozzáférést. Ezek a következők:
-
-* VNet-integráció
-* Hibrid kapcsolatok
-* App Service-környezetek
-
-Hibrid kapcsolatokhoz szükség van a hálózaton a hibrid kapcsolat Manager(HCM) nevű továbbító ügynök telepítését. A HCM képesnek kell lennie az Azure-bA és az alkalmazás csatlakoztatása. Hibrid kapcsolatok nem igényel bejövő internetről elérhető végpont a távoli hálózat ez VPN-kapcsolat szükséges. A HCM csak akkor fut, a Windows, illetve azt, hogy legfeljebb öt olyan példányai, magas rendelkezésre állást biztosít. Hibrid kapcsolatok csak az, ha TCP támogatja, és minden hibrid kapcsolat végpontja meg kell egyeznie a megadott gazdagép: port kombinációjához. 
-
-Az App Service Environment funkció lehetővé teszi, hogy az Azure App Service létrehozása egyetlen bérlő példány futtatásához a virtuális hálózatban található. Ha az alkalmazások App Service Environment-környezetben, majd az alkalmazások eléréséhez további lépések nélkül a virtuális hálózatban található erőforrások. Az App Service-környezet az alkalmazások hatékony feldolgozók fut, és méretezhető legfeljebb 100 ASP-példányhoz. A hálózatkezelési szolgáltatásokat, beleértve az ExpressRoute- és végpontok összes App Service Environment-környezetek működnek.  
-
-Bár egyes használnak megkülönbözteti a kis között átfedés van, ezek közül egyik sem cserélje le a többi. Hogy mely szolgáltatásokat szeretné az igényeinek megfelelően vannak kötve. Példa:
-
-* Ha a fejlesztők és a egy helyen futtatja az Azure-ban az íróasztal mellett a munkaállomáson adatbázis eléréséhez használandó a legegyszerűbb dolog hibrid kapcsolatok. 
-* Ha Ön egy nagy szervezet, amely nagy mennyiségű fel szeretné webes tulajdonságok a nyilvános felhő, és kezelheti őket a saját hálózati, majd nyissa meg az App Service environmenttel szeretné. 
-* Ha több, a virtuális hálózatban található erőforrások elérését igénylő alkalmazások, VNet-integráció, a mód. 
-
-Ha a virtuális hálózat már csatlakoztatva van a helyszíni hálózathoz, majd a VNet-integráció használatával, vagy egy App Service Environment-környezet egy egyszerű módja annak felhasználását a helyszíni erőforrásokhoz. A virtuális hálózat nem kapcsolódik a helyszíni hálózathoz, majd, hogy a virtuális hálózat és a telepítés a HCM összehasonlítása a helyek közötti VPN beállításához a sokkal több terhelést jelenthet. 
-
-A működési különbségek túl van vannak is díjszabásbeli különbségeket. Az App Service Environment funkció a prémium szolgáltatásajánlat azonban kínálja a legtöbb hálózati konfigurációs lehetőségekkel más nagyszerű funkciók mellett. VNet-integráció a Standard vagy prémium szintű ASP használható, és tökéletes megoldás, a több-bérlős App Service-ben a virtuális hálózatban található erőforrások biztonságosan felhasználásához. Hibrid kapcsolatok jelenleg a fiók, amely ingyenes, és kérje le fokozatosan drágább szintek alapján van szüksége a BizTalk függ. Esetén, azonban több több hálózaton működik, nincs más szolgáltatás például a hibrid kapcsolataira, melyek lehetővé teszik a jól több mint 100, különálló hálózatokból erőforrások eléréséhez. 
-
-## <a name="new-vnet-integration"></a>Új VNet-integráció ##
-
-Van egy új verziója, a VNet-integráció funkció, amely nem függ a pont – hely VPN-technológia. A már meglévő szolgáltatást, ellentétben az új előzetes verziójú funkció az ExpressRoute- és végpontok fog működni. 
-
-Az új funkciót csak a újabb Azure App Service-skálázási egység érhető el. Ha PremiumV2 méretezheti, majd Ön egy App Service-ben újabb skálázási egység. A virtuális hálózatok közötti integráció felhasználói felület, a portál jelzi, ha az alkalmazás az új VNet-integráció szolgáltatással. 
-
-Az új verzió előzetes verzióban érhető el, és a következő jellemzőkkel rendelkezik.
-
-* Nincs átjárót kell használnia az új virtuális hálózat integrációja
-* Az ExpressRoute-kapcsolatok között hozzáférhetnek erőforrásokhoz, az ExpressRoute integrálása mellett további konfiguráció csatlakoztatott virtuális hálózat nélkül.
-* Az alkalmazás és a virtuális hálózat ugyanabban a régióban kell lennie
-* Az új szolgáltatáshoz a Resource Manager virtuális hálózatban található egy nem használt alhálózat.
-* Az App Service-csomag a Standard, prémium szintű vagy PremiumV2 terv kell lennie.
-* Éles számítási feladatok nem támogatottak az új funkciót, bár előzetes verzióban érhető el
-* Az alkalmazás egy Azure App Service-környezet, amely képes a prémium v2 vertikális felskálázása kell lennie.
-* Az új VNet-integráció szolgáltatás nem működik az alkalmazások App Service Environment-környezetben.
-* Integrált alkalmazás a virtuális hálózat nem törölhető.  
-* Útválasztási táblázatokat és globális társviszony-létesítés még nem érhető el az új VNet-integráció.  
-* Az App Service-csomag példányonként egy címet használja. Alhálózat méretét a hozzárendelés után nem módosítható, mivel a is több, mint a maximális skálázhatósága alhálózatot használjon. 32-címekkel rendelkező/27-es nem az ajánlott mérete, mert a 20-példányok méretezett App Service-csomagot, amely helyet biztosít.
-* Védett erőforrásokhoz az új VNet-integráció funkcióval szolgáltatásvégpont használhatja fel. Ehhez engedélyezze a szolgáltatásvégpontokat a virtuális hálózatok közötti integráció használt alhálózat.
-
-Az új funkció használatához:
-
-1. Nyissa meg a hálózat felhasználói felület a portálon. Ha az alkalmazás tudja használni az új szolgáltatást, majd látni fogja használni az új előzetes verziójú funkció teszi lehetővé.  
-
-   ![Válassza ki az új előzetes verziójú VNet-integráció][6]
-
-1. Válassza ki **hozzáadása virtuális hálózathoz (előzetes verzió)**.  
-
-1. Válassza ki a Resource Manager virtuális hálózattal, szeretné integrálni és majd hozzon létre egy új alhálózatot vagy válasszon ki egy meglévő üres alhálózatot. Az integráció végrehajtásához kevesebb mint egy percet vesz igénybe. Az integráció során az alkalmazás újraindul.  Integráció befejezése után látni fogja részletek integrálva van a virtuális hálózatok közötti és a egy módosíthatóvá tájékoztatja, hogy a funkció előzetes verzióban érhető el.
-
-   ![Válassza ki a virtuális hálózat és alhálózat][7]
-
-Ahhoz, hogy az alkalmazást, amelynek része a virtuális hálózat DNS-kiszolgáló használatához, hozzon létre egy alkalmazásbeállítást az alkalmazás, ahol a név WEBSITE_DNS_SERVER, értéke pedig a kiszolgáló IP-címét.  Ha rendelkezik egy másodlagos DNS-kiszolgálót, majd hozzon létre egy másik, ahol a név WEBSITE_DNS_ALT_SERVER Alkalmazásbeállítás értéke pedig a kiszolgáló IP-címét. 
-
-Az alkalmazás leválasztása a virtuális hálózaton, válassza ki a **Disconnect**. A művelet újraindítja a webalkalmazás. 
-
-Az új VNet-integráció szolgáltatás lehetővé teszi, hogy a Szolgáltatásvégpontok használatát.  Szolgáltatásvégpontok használatára az alkalmazását, segítségével az új VNet-integráció kapcsolódni egy kijelölt virtuális hálózathoz, majd válassza a Szolgáltatásvégpontok az alhálózaton, az integráció során használt. 
 
 <!--Image references-->
 [1]: ./media/web-sites-integrate-with-vnet/vnetint-app.png
@@ -320,6 +343,6 @@ Az új VNet-integráció szolgáltatás lehetővé teszi, hogy a Szolgáltatásv
 [V2VNETPortal]: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md
 [VPNERCoex]: ../expressroute/expressroute-howto-coexist-resource-manager.md
 [ASE]: environment/intro.md
-[creategatewaysubnet]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#gatewaysubnet
+[creategatewaysubnet]: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md#creategw
 [creategateway]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#creategw
 [setp2saddresses]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#addresspool

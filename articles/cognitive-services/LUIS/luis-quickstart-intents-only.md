@@ -1,7 +1,7 @@
 ---
-title: Céljaira előrejelzése
+title: 'Oktatóanyag: Előrejelzési szándékok – LUIS'
 titleSuffix: Azure Cognitive Services
-description: Ebben az oktatóanyagban, amely a felhasználó szándékának képes egyéni alkalmazás létrehozása. Ez az alkalmazás a legegyszerűbb típusú LUIS-alkalmazás, mert a kimondott szövegből nem nyer ki különféle adatelemeket, például e-mail-címeket vagy dátumokat.
+description: Ebben az oktatóanyagban hozzon létre egy egyéni alkalmazást, amely előrejelzést készít a felhasználó szándékáról. Ez az alkalmazás a legegyszerűbb típusú LUIS-alkalmazás, mert a kimondott szövegből nem nyer ki különféle adatelemeket, például e-mail-címeket vagy dátumokat.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 02/19/2019
+ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: 067829a1d9425ede1320242e364eca7c30bb7053
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 7139876f64841a877e688ec6faf03597c527d1f2
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593913"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375821"
 ---
-# <a name="tutorial-build-luis-app-to-determine-user-intentions"></a>Oktatóanyag: Felhasználói céljaira meghatározni a LUIS-alkalmazás létrehozása
+# <a name="tutorial-build-luis-app-to-determine-user-intentions"></a>Oktatóanyag: LUIS-alkalmazás létrehozása a felhasználói szándékok meghatározásához
 
 Ebben az oktatóanyagban létrehoz egy egyéni Emberi erőforrások (HR) alkalmazást, amely előrejelzi a felhasználók szándékát a kimondott szöveg alapján. 
 
@@ -35,9 +35,9 @@ Ebben az oktatóanyagban létrehoz egy egyéni Emberi erőforrások (HR) alkalma
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="user-intentions-as-intents"></a>Felhasználói céljaira, szándék
+## <a name="user-intentions-as-intents"></a>Felhasználói szándékok
 
-Az alkalmazás feladata annak megállapítása a szándéka beszélgetések, a természetes nyelvű szöveget: 
+Az alkalmazás célja a társalgási, természetes nyelvű szöveg szándékának meghatározása: 
 
 `Are there any new positions in the Seattle office?`
 
@@ -47,62 +47,62 @@ Az alkalmazás rendelkezik szándékokkal.
 
 |Szándék|Cél|
 |--|--|
-|ApplyForJob|Határozza meg, ha a felhasználó egy feladat alkalmazza.|
-|GetJobInformation|Határozza meg, ha a felhasználó az általános feladatok vagy egy adott feladat adatainak keres.|
-|None|Határozza meg, ha a felhasználó által kért valami alkalmazást nem lehet a választ. Ez szándék, ha az alkalmazások létrehozásának részeként, és nem lehet törölni. |
+|ApplyForJob|Annak megállapítása, hogy a felhasználó alkalmaz-e feladatot.|
+|GetJobInformation|Állapítsa meg, hogy a felhasználó az általános vagy egy adott feladatra vonatkozó információt keres-e.|
+|Nincsenek|Annak megállapítása, hogy a felhasználó kér-e valamilyen alkalmazást, nem kell válaszolnia. Ez a szándék az alkalmazások létrehozásának részeként van megadva, és nem törölhető. |
 
 ## <a name="create-a-new-app"></a>Új alkalmazás létrehozása
 
 [!INCLUDE [Follow these steps to create a new LUIS app](../../../includes/cognitive-services-luis-create-new-app-steps.md)]
 
-## <a name="create-intent-for-job-information"></a>A feladat adatainak leképezésének létrehozása
+## <a name="create-intent-for-job-information"></a>Feladatra vonatkozó szándék létrehozása
 
-1. Válassza a **Create new intent** (Új szándék létrehozása) lehetőséget. Adja meg az új szándék nevét: `GetJobInformation`. A leképezés van előre jelzett, amikor a felhasználó használni szeretne a cég nyílt feladatokkal kapcsolatos információkat. 
+1. Válassza a **Create new intent** (Új szándék létrehozása) lehetőséget. Adja meg az új szándék nevét: `GetJobInformation`. Ezt a szándékot akkor kell megjósolni, amikor egy felhasználó információt kér a vállalatban megnyitott feladatokról. 
 
     ![Új leképezési párbeszédpanel képernyőképe a Language Understanding (LUIS)](media/luis-quickstart-intents-only/create-intent.png "új szándék párbeszédpanel képernyőképe a Language Understanding (LUIS)")
 
 1. Válassza a **Done** (Kész) lehetőséget.
 
-2. Néhány példa beszédmódok hozzáadása a célja, hogy egy felhasználó tehet fel és várt:
+2. Vegyen fel több példát a hosszúságú kimondott szöveg erre a célra, ha a felhasználó a következőt kéri:
 
     | Példák kimondott szövegekre|
     |--|
     |Vannak ma megjelent új állásajánlatok?|
     |Vannak új állások meghirdetve a seattle-i irodában?|
-    |Vannak-e minden olyan távoli dolgozók, vagy távolsági adatcsere feladatok nyílt mérnökök számára?|
+    |Nyitottak-e a mérnökök a távoli munkavégzők vagy a távmunka-feladatok?|
     |Elérhető adatbázisokkal kapcsolatos állás?|
-    |Az általam keresett egy közös munkát a helyzet a Tampai office.|
-    |Van egy szakmai gyakorlat a san franciscóban office?|
-    |Van bármilyen részmunkaidős college dolgozó személyekhez?|
+    |Közös munkavégzést keresek a Tampa-irodában.|
+    |Van gyakornok a San Francisco-beli irodában?|
+    |Van-e részmunkaidős munka a kollégiumban dolgozó személyek számára?|
     |Új lehetőségek keresése a könyvelés területén|
-    |Keres egy feladatot a new york city kétnyelvű előadók számára.|
-    |Egy új helyzet lévő számviteli tartományvezérlőkért keres.|
+    |Munkát keres a New York-i régióban a kétnyelvű hangszórókhoz.|
+    |Új helyzetet keres a nyilvántartási feladatokkal kapcsolatban.|
     |Új állások?|
-    |Az elmúlt 2 napban hozzáadott mérnökök számára az összes feladat megjelenítése.|
-    |Az aktuális feladat hozzászólásai?|
-    |Milyen elszámolási pozíciók nyitva a londoni irodájában?|
+    |Az elmúlt 2 napban hozzáadott mérnökök összes feladatának megjelenítése.|
+    |A mai feladatok közzétételei?|
+    |Milyen nyilvántartási pozíciók vannak nyitva a londoni irodában?|
     |Milyen állások érhetők el vezető mérnökök számára?|
     |Hol található a meghirdetett állások listája?|
 
     [![Képernyőkép MyStore szándékot az új utterances megadásáról](media/luis-quickstart-intents-only/utterance-getstoreinfo.png "képernyőkép megadásáról MyStore szándékot az új kimondott szöveg")](media/luis-quickstart-intents-only/utterance-getstoreinfo.png#lightbox)
 
-    Azáltal, hogy _példa utterances_, LUIS képzési kapcsolatos kimondott szöveg milyen kell elvégezni, az a szándéka áll. 
+    Ha _például hosszúságú kimondott szöveg_-t használ, akkor a Luis betanítása arról nyújt segítséget, hogy milyen hosszúságú kimondott szöveg kell előre jelezni. 
 
     [!INCLUDE [Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]    
 
-## <a name="add-example-utterances-to-the-none-intent"></a>A none szándék példa beszédmódok hozzáadása 
+## <a name="add-example-utterances-to-the-none-intent"></a>Példa hosszúságú kimondott szöveg hozzáadása a none szándékhoz 
 
 [!INCLUDE [Follow these steps to add the None intent to the app](../../../includes/cognitive-services-luis-create-the-none-intent.md)]
 
-## <a name="train-the-app-before-testing-or-publishing"></a>Az alkalmazás betanításához tesztelési vagy közzététele előtt
+## <a name="train-the-app-before-testing-or-publishing"></a>Az alkalmazás betanítása tesztelés vagy közzététel előtt
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish-the-app-to-query-from-the-endpoint"></a>Az alkalmazás közzététele a végpontról lekérdezés
+## <a name="publish-the-app-to-query-from-the-endpoint"></a>Az alkalmazás közzététele a végpontról történő lekérdezéshez
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)] 
 
-## <a name="get-intent-prediction-from-the-endpoint"></a>A végpontról szándék előrejelzés beolvasása
+## <a name="get-intent-prediction-from-the-endpoint"></a>Következtetések előrejelzése a végpontról
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
@@ -129,17 +129,17 @@ Az alkalmazás rendelkezik szándékokkal.
     }
     ```
 
-    A `verbose=true` lekérdezési karakterlánc paraméter azt jelenti, például **összes leképezések** az alkalmazás lekérdezés eredményében. Az entitások tömbje üres, mert az alkalmazás jelenleg nem rendelkezik entitásokkal. 
+    A `verbose=true` querystring paraméter azt jelenti, hogy az alkalmazás lekérdezési eredményei tartalmazzák az **összes leképezést** . Az entitások tömbje üres, mert az alkalmazás jelenleg nem rendelkezik entitásokkal. 
 
     A JSON-eredmény a **`topScoringIntent`** tulajdonságként azonosítja a legmagasabb pontszámot elérő szándékot. Minden pontszám 1 és 0 közé esik, a jobb pontszám 1-hez közelebb található. 
 
-## <a name="create-intent-for-job-applications"></a>Feladat alkalmazások leképezésének létrehozása
+## <a name="create-intent-for-job-applications"></a>Szándék létrehozása a feladatok alkalmazásaihoz
 
-Térjen vissza a LUIS-portálra, és hozzon létre egy új célja annak megállapításához, hogy a felhasználó utterance (kifejezés) egy feladat alkalmazásával kapcsolatos.
+Térjen vissza a LUIS-portálra, és hozzon létre egy új szándékot annak megállapításához, hogy a felhasználó nyilatkozik-e a feladatokra vonatkozó kérelemről.
 
 1. Válassza a **Build** (Létrehozás) lehetőséget a jobb felső menüben az alkalmazáskészítéshez való visszatéréshez.
 
-1. Válassza ki **leképezések** leképezések listájának beolvasásához a bal oldali menüből.
+1. A bal oldali **menüben válassza a szándékok** lehetőséget, hogy megszerezze a szándékok listáját.
 
 1. Válassza a **Create new intent** (Új szándék létrehozása) lehetőséget, majd adja meg a következő nevet: `ApplyForJob`. 
 
@@ -151,19 +151,19 @@ Térjen vissza a LUIS-portálra, és hozzon létre egy új célja annak megálla
     |--|
     |Jelentkezés kitöltése az 123456. számú álláshoz|
     |Ez az önéletrajzom a 654234. számú álláshoz|
-    |Íme a részmunkaidős dolgozók recepciós bejegyzés a saját folytatása.|
-    |E kérelmezése vagyok a dokumentumokat a legkorszerűbb ügyfélszolgálati feladathoz.|
-    |Tudom a nyári college szakmai gyakorlat a kutatás és fejlesztés a San Diego vagyok kérelmezése|
-    |Kérek, elküldéséhez a saját folytatása a önkiszolgáló étterem ideiglenes helyére.|
-    |Az új Autocar csapat Amerika felfedezésének, OH saját folytatása küldöm|
+    |Itt van a folytatás a részmunkaidőben lévő recepciós bejegyzésben.|
+    |Erre a papírmunkára alkalmazom az Art Desk-feladatot.|
+    |Felhasználom a nyári főiskolai gyakorlatot a San Diego-beli kutatás és fejlesztés terén|
+    |Kérésem, hogy beküldem a folytatást a cafeteria ideiglenes helyére.|
+    |Elküldem a folytatást az új Autocar csapatnak a Columbus-ben, OH|
     |Szeretnék jelentkezni az új könyvelői állásra|
-    |Feladat 456789 nyilvántartási szakmai gyakorlat dokumentumokat érhető el|
+    |A 456789-es feladatok nyilvántartási gyakorlata|
     |567890. számú állás és a dokumentumaim|
-    |A tulsa nyilvántartási szakmai gyakorlat a saját tanulmányok vannak csatolva.|
-    |Saját dokumentumokat szünnap kézbesítési pozice|
-    |Budapesti küldje el saját az új számlázási feladat folytatása|
+    |A Tulsa-nyilvántartási gyakorlattal kapcsolatos dokumentumok csatolva vannak.|
+    |Saját papírmunka az ünnepi kézbesítési pozícióhoz|
+    |Kérjük, küldje el újra az új számviteli feladatot Seattle-ben|
     |Önéletrajz beadása a mérnöki pozícióra|
-    |Ez az önéletrajzom a bejegyzés a Tampai 234123.|
+    |Ez az önéletrajzom a post 234123-es verziójának a Tampa-ban.|
 
 <!--
 
@@ -181,7 +181,7 @@ Térjen vissza a LUIS-portálra, és hozzon létre egy új célja annak megálla
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)] 
 
-## <a name="get-intent-prediction-again"></a>Újra szándék előrejelzés beolvasása
+## <a name="get-intent-prediction-again"></a>Leképezési előrejelzés újbóli lekérése
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
@@ -214,9 +214,9 @@ Térjen vissza a LUIS-portálra, és hozzon létre egy új célja annak megálla
 
     Az eredmények között a meglévő szándékok mellett szerepel az új **ApplyForJob** szándék is. 
 
-## <a name="client-application-next-steps"></a>Ügyfélalkalmazás lépések
+## <a name="client-application-next-steps"></a>Ügyfél – alkalmazás következő lépései
 
-Miután a LUIS visszaadja a JSON-választ, a LUIS nem foglalkozik tovább a kéréssel. A LUIS nem ad választ a felhasználók kimondott szövegeire, csak azonosítja a természetes nyelven kért információ típusát. Az ügyfélalkalmazás, például az Azure Bot biztosít a természetes nyelvi nyomon követése. 
+Miután a LUIS visszaadja a JSON-választ, a LUIS nem foglalkozik tovább a kéréssel. A LUIS nem ad választ a felhasználók kimondott szövegeire, csak azonosítja a természetes nyelven kért információ típusát. A beszélgetés utáni nyomon követést az ügyfélalkalmazás, például egy Azure bot nyújtja. 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -224,18 +224,18 @@ Miután a LUIS visszaadja a JSON-választ, a LUIS nem foglalkozik tovább a kér
 
 ## <a name="related-information"></a>Kapcsolódó információk
 
-* [Entitástípus](luis-concept-entity-types.md)
-* [Hogyan betanítása](luis-how-to-train.md)
+* [Entitások típusai](luis-concept-entity-types.md)
+* [Betanítás](luis-how-to-train.md)
 * [Közzétételi útmutató](luis-how-to-publish-app.md)
-* [A LUIS-portál tesztelése](luis-interactive-test.md)
-* [Az Azure Bot](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
+* [Tesztelés a LUIS portálon](luis-interactive-test.md)
+* [Azure-robot](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
 
 
 ## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban létrehozta az Emberi erőforrások (HR) alkalmazást és két szándékot, kimondott példaszövegeket adott az egyes szándékokhoz és a None szándékhoz, valamint betanítást, közzétételt és tesztelést végzett a végponton. Ezek a LUIS-modellek létrehozásának alapvető lépései. 
 
-Ez az alkalmazás folytatásához [hozzáadása egy egyszerű entitás- és kifejezés listát](luis-quickstart-primary-and-secondary-data.md).
+Folytassa az alkalmazással, [és adjon hozzá egy egyszerű entitást és egy kifejezést tartalmazó listát](luis-quickstart-primary-and-secondary-data.md).
 
 > [!div class="nextstepaction"]
 > [Előre összeállított szándékok és entitások hozzáadása ehhez az alkalmazáshoz](luis-tutorial-prebuilt-intents-entities.md)

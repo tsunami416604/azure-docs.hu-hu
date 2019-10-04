@@ -3,15 +3,15 @@ title: Vészhelyreállítás az Azure-bA az Azure Site Recovery VMware virtuáli
 description: Ez a cikk ismerteti az Azure-bA vész-helyreállítási VMware virtuális gépek engedélyezése az Azure Site Recovery használatával.
 author: Rajeswari-Mamilla
 ms.service: site-recovery
-ms.date: 4/18/2019
+ms.date: 06/28/2019
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: ba55afbd62bbbc2290d1daaebf77becc249c1d8b
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 3f4e4afb4d94a7b2e2a6b246a371cf6234577463
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60004737"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491735"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Az Azure-bA VMware virtuális gépek replikálásának engedélyezése
 
@@ -37,22 +37,25 @@ Ha VMware virtuális gépeket replikál, tartsa szem előtt ezeket az informáci
 ## <a name="enable-replication"></a>A replikáció engedélyezése
 
 Mielőtt végrehajtaná a jelen szakaszban ismertetett lépéseket, vegye figyelembe a következő információkat:
-* Az Azure Site Recovery most már közvetlenül az összes új replikációk felügyelt lemezek replikálja. A folyamatkiszolgáló replikációs naplók ír a gyorsítótárfiók a célrégióban. Ezek a naplók segítségével hozza létre a replikált felügyelt lemezeken lévő helyreállítási pontokat.
+* Az Azure Site Recovery most már közvetlenül az összes új replikációk felügyelt lemezek replikálja. A folyamatkiszolgáló replikációs naplók ír a gyorsítótárfiók a célrégióban. Ezek a naplók található replikált felügyelt lemezeken elnevezési konvenciót, asrseeddisk rendelkező helyreállítási pontok létrehozásához használt.
+* A managed Disks szolgáltatásba replikálása PowerShell-támogatás érhető el [Az.RecoveryServices Modulverzió 2.0.0-s és újabb verziók](https://www.powershellgallery.com/packages/Az.RecoveryServices/2.0.0-preview) 
 * A feladatátvétel időpontjában a kiválasztott helyreállítási pont szolgál a célként szolgáló felügyelt lemez létrehozása.
 * Virtuális gépek replikálása céltárfiókokat korábban beállított szabályzat nem vonatkozik.
 * Egy új virtuális gép tárfiókokba történő replikálást csak akkor használható, a Representational State Transfer (REST) API-t és a Powershell használatával. Azure REST API-verzió 2016-08-10-es vagy a 2018-01-10 használja a storage-fiókokhoz való replikálásához.
 
+Kövesse az alábbi lépéseket a replikáció engedélyezése:
 1. Lépjen a **2. lépés: Alkalmazás replikálása** > **forrás**. Először a replikáció engedélyezése után válassza **+ replikálás** további virtuális gépek replikációjának engedélyezéséhez a tárolóban.
-1. Az a **forrás** lap > **forrás**, válassza ki a konfigurációs kiszolgálót.
-1. A **gép típusa**válassza **virtuális gépek** vagy **fizikai gépek**.
-1. A **vCenter/vSphere hipervizor** mezőben válassza ki a vSphere-gazdagépet felügyelő vCenter-kiszolgálót, vagy válassza ki magát a gazdagépet. Ez a beállítás nem megfelelő, ha fizikai számítógépeket replikál.
-1. Válassza ki a folyamatkiszolgálót, amely a konfigurációs kiszolgáló lesz, ha még nem hozott létre minden olyan további folyamatkiszolgálók. Ezután kattintson az **OK** gombra.
+2. Az a **forrás** lap > **forrás**, válassza ki a konfigurációs kiszolgálót.
+3. A **gép típusa**válassza **virtuális gépek** vagy **fizikai gépek**.
+4. A **vCenter/vSphere hipervizor** mezőben válassza ki a vSphere-gazdagépet felügyelő vCenter-kiszolgálót, vagy válassza ki magát a gazdagépet. Ez a beállítás nem megfelelő, ha fizikai számítógépeket replikál.
+5. Válassza ki a folyamatkiszolgálót. Nem találhatók kiegészítő folyamat kiszolgálók létrehozása, ha a beépített folyamatkiszolgáló a konfigurációs kiszolgáló lesz elérhető a legördülő listában. Minden folyamatkiszolgáló állapotát jelzi megfelelően ajánlott korlátok és más paramétereket. Válassza ki a megfelelő folyamatkiszolgáló. A [kritikus](vmware-physical-azure-monitor-process-server.md#process-server-alerts) folyamatkiszolgáló nem kell megválasztani. Választhatja [hibaelhárításához és megoldásához](vmware-physical-azure-troubleshoot-process-server.md) a hibák **vagy** beállítása egy [horizontális felskálázási folyamatkiszolgáló](vmware-azure-set-up-process-server-scale.md).
+    ![Engedélyezze a replikációs forrás ablak](media/vmware-azure-enable-replication/ps-selection.png)
 
-    ![Engedélyezze a replikációs forrás ablak](./media/vmware-azure-enable-replication/enable-replication2.png)
+> [!NOTE]
+> A [9.24 verziók](service-updates-how-to.md#links-to-currently-supported-update-rollups), további riasztások jelennek meg a folyamatkiszolgáló, állapotriasztások növelése érdekében. Site Recovery-összetevők 9.24 verzió vagy újabb frissítése az összes riasztás jöjjön létre.
 
-1. A **cél**, válassza ki az előfizetést és erőforráscsoportot csoportot, ahol szeretné a átvevő virtuális gépek létrehozása. Válassza ki a feladatátviteli virtuális gépeket az Azure-ban használni kívánt központi telepítési modelljét.
-
-1. Válassza ki az Azure-hálózatot és alhálózatot, amelyet az Azure virtuális gépek csatlakozni fognak a feladatátvétel után. A hálózat és a Site Recovery szolgáltatás-tárolónak ugyanabban a régióban kell lennie.
+6. A **cél**, válassza ki az előfizetést és erőforráscsoportot csoportot, ahol szeretné a átvevő virtuális gépek létrehozása. Válassza ki a feladatátviteli virtuális gépeket az Azure-ban használni kívánt központi telepítési modelljét.
+2. Válassza ki az Azure-hálózatot és alhálózatot, amelyet az Azure virtuális gépek csatlakozni fognak a feladatátvétel után. A hálózat és a Site Recovery szolgáltatás-tárolónak ugyanabban a régióban kell lennie.
 
    Válassza ki **beállítás most a kijelölt gépekhez** a hálózati beállítások alkalmazása az összes virtuális gép, amely ki védelemre. Válassza ki **beállítás később** jelölje be az Azure-hálózat virtuális gépenként. Ha nem rendelkezik a hálózathoz, létre kell hoznia egyet. Hálózat létrehozása az Azure Resource Managerrel, jelölje be a **új létrehozása**. Egy alhálózatot, ha van ilyen, majd válassza ki és **OK**.
    

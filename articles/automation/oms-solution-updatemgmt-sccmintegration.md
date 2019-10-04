@@ -4,17 +4,17 @@ description: Ebből a cikkből megtudhatja, hogyan konfigurálhatja a System Cen
 services: automation
 ms.service: automation
 ms.subservice: update-management
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 03/19/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ddc055be45eae923be31d7d11621c9427660bf74
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 92a93982cdd042a92b006cab7052ad4a6fee6fff
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818306"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67478205"
 ---
 # <a name="integrate-system-center-configuration-manager-with-update-management"></a>A System Center Configuration Manager integrálása az Update Management
 

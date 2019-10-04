@@ -1,6 +1,6 @@
 ---
-title: A StorSimple 8000 series eszköz használata összefoglaló |} Microsoft Docs
-description: Ismerteti a StorSimple szolgáltatás összefoglaló panelre, és ismerteti a StorSimple megoldásban állapotának figyelése céljából.
+title: Használja a StorSimple 8000 sorozatú eszköz összegzésének |} A Microsoft Docs
+description: Ismerteti a StorSimple szolgáltatás összefoglalás panelén, és ismerteti a StorSimple-megoldásokra állapotának figyelése céljából.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,78 +14,78 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2017
 ms.author: alkohli
-ms.openlocfilehash: d987a4ae170f21532a886552cbe1eb5a0d25fc3f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c174f6ce0fb3d40af953be205a7bfcca60fbfeec
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23874828"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60633137"
 ---
-# <a name="use-the-service-summary-blade-for-storsimple-8000-series-device"></a>A szolgáltatás összefoglaló panelre a StorSimple 8000 series eszköz használata
+# <a name="use-the-service-summary-blade-for-storsimple-8000-series-device"></a>A szolgáltatásösszegző panel használata a StorSimple 8000 sorozatú eszköz
 
 ## <a name="overview"></a>Áttekintés
 
-A StorSimple Device Manager szolgáltatás összefoglaló panel összegzését jeleníti meg az eszközök csatlakoznak a StorSimple Device Manager szolgáltatás, a rendszergazda figyelmet igénylő eszközök kiemelve. Ez az oktatóanyag vezet be a szolgáltatás összefoglaló panelre, ismerteti az irányítópult-tartalom és a függvény, és azokat a feladatokat hajthat végre ezen a lapon.
+A StorSimple-Eszközkezelő szolgáltatás összefoglalás panelén a StorSimple-Eszközkezelő szolgáltatásban, egy rendszergazda beavatkozást igénylő eszközök kiemelése csatlakoztatott eszközök összefoglaló nézetét jeleníti meg. Ebben az oktatóanyagban vezet be a szolgáltatás összefoglalás panelén, az irányítópult tartalmát és funkciót ismerteti és azokat a feladatokat hajthat végre ezen az oldalon.
 
 ![Szolgáltatás összegzése](./media/storsimple-8000-service-dashboard/service-summary1.png)
 
 
 ## <a name="management-commands"></a>Felügyeleti parancsok
 
-A StorSimple szolgáltatás összefoglaló panelen látható a StorSimple eszköz Manager szolgáltatás és a StorSimple 8000 sorozat eszközeire, a szolgáltatásra regisztrált kezelésére szolgáló beállítások. A parancsok látja a panelt és bal oldalán látható.
+A StorSimple szolgáltatás összefoglalás panelén láthatja a beállításokat a StorSimple-Eszközkezelő szolgáltatás és a StorSimple 8000 sorozatú eszközöket regisztrálni ezt a szolgáltatást. A parancsok és a bal oldalon a panel tetején megjelenik.
 
 ![Parancssáv](./media/storsimple-8000-service-dashboard/service-summary2.png)
 
-Adja hozzá ezeket a beállításokat, például a különböző műveletek végrehajtásához, megosztások vagy kötetek vagy a figyelő a StorSimple eszközön futó feladatok a különböző használja.
+Használja ezeket a beállításokat csatlakozva különféle műveleteket végezhet, például a részvények vagy a kötet hozzáadása, vagy a figyelő a különböző feladatok futtatása a StorSimple eszközön.
 
 
 ## <a name="essentials"></a>Alapvető erőforrások
 
-Az essentials területen rögzíti a fontos tulajdonságok, mint például az erőforráscsoportot, helyét és előfizetés, amelyben a StorSimple Device Manager készült.
+Az essentials területen rögzíti az egyes fontos tulajdonságai, például az erőforráscsoport, helyét és előfizetés, amelyben a StorSimple-Eszközkezelő létrehozása történt.
 
 ![Alapvető erőforrások](./media/storsimple-8000-service-dashboard/service-summary3.png)
 
-## <a name="storsimple-device-manager-service-summary"></a>StorSimple Device Manager szolgáltatás összegzése
+## <a name="storsimple-device-manager-service-summary"></a>StorSimple-Eszközkezelő szolgáltatás összegzése
 
-* A **riasztások** csempe biztosít az összes aktív riasztás pillanatképet minden eszközön, a riasztás súlyosságát szerint csoportosítva.
+* A **riasztások** csempe egy pillanatkép összes aktív riasztás biztosít minden eszközön, a riasztás súlyossága szerint csoportosítva.
 
     ![Riasztások csempe](./media/storsimple-8000-service-dashboard/service-summary4.png)
 
-    A csempére kattintva megnyithatja a **riasztások** panel, ahol egyéni riasztást, hogy a riasztással kapcsolatos további részletek megtekintéséhez kattintson többek között a javasolt műveletek. A riasztás is törölheti, ha a probléma megoldódott.
+    A csempékre kattintva a **riasztások** panel, ahol az egyes riasztást a riasztással kapcsolatos további részletek megtekintéséhez kattintson így azokat is ajánlott műveletek. A riasztás is törölheti, ha a probléma megoldódott.
 
     ![Kattintson a riasztások csempe](./media/storsimple-8000-service-dashboard/service-summary8.png)
 
-* A **kapacitás** csempe megjeleníti a kiépített és a fennmaradó relatív a teljes tárterület érhető el az összes eszközön van minden eszközön elsődleges tárterület megjelenítése. **Kiépített** hivatkozik, amely készített, és használatra, tárolókapacitást **fennmaradó** hivatkozik, amely az összes eszközön létesíthetők kapacitása.
+* A **kapacitás** csempe megjeleníti az elsődleges tároló kiosztott és a fennmaradó képest az összes szabad tárhely összes eszközön továbbított összes eszközön jeleníti meg. **Üzembe helyezett** hivatkozik, amely készített, és használatra, lefoglalt tárhely **fennmaradó** hivatkozik a fennmaradó kapacitás, amelyek kioszthatóak az összes eszközön.
 
     ![A kapacitás csempe](./media/storsimple-8000-service-dashboard/service-summary6.png)
 
-    A **fennmaradó rétegzett** kapacitása a rendelkezésre álló kapacitásból, amelyek többek között a felhő, létesíthetők közben a **fennmaradó helyi** a kapacitás, a StorSimple 8000 csatlakoztatott lemezek fennmaradó sorozat eszközeire.
+    A **fennmaradó rétegzett** kapacitás a rendelkezésre álló kapacitást, amelyek kioszthatóak többek között a felhőben, amíg a **fennmaradó helyi** a StorSimple 8000-es csatlakoztatott lemezek fennmaradó kapacitás sorozatú eszközöket.
 
 
-* Az a **használati** diagram, a kapcsolódó metrikák láthatja az eszközökhöz. Megtekintheti az összes eszközön használt elsődleges tárhely és az elmúlt 7 napban, az alapértelmezett időszak eszközök által használt felhőbeli tárhelyhez. 
+* Az a **használati** diagramra, megtekintheti a releváns metrikákat az eszközökön. Megtekintheti az összes eszközön használt elsődleges tároló és a felhőalapú tárolás az elmúlt 7 napban, az alapértelmezett időtartam-eszközök által felhasznált. 
 
-    ![Használata csempe](./media/storsimple-8000-service-dashboard/service-summary7.png) 
+    ![Használat csempe](./media/storsimple-8000-service-dashboard/service-summary7.png) 
 
-    Válasszon egy másik időskálára, használja a **szerkesztése** a diagram jobb felső sarokban lehetőséget.
+    Válasszon egy másik időpontot méretezési, használja a **szerkesztése** a diagram jobb felső sarokban lévő beállítást.
 
-     ![Kattintson a használata csempe](./media/storsimple-8000-service-dashboard/service-summary10.png)
+     ![Kattintson a használat csempe](./media/storsimple-8000-service-dashboard/service-summary10.png)
 
-     ![A diagram adatok exportálása](./media/storsimple-8000-service-dashboard/service-summary11.png)
+     ![Exportálási diagram adatai](./media/storsimple-8000-service-dashboard/service-summary11.png)
 
-* A **eszközök** csempe a StorSimple 8000 series eszközök a StorSimple eszköz állapot szerint csoportosítva száma összegzését tartalmazza. 
+* A **eszközök** csempe összesíti a StorSimple 8000 sorozatú eszközök az a StorSimple-Eszközkezelő eszköz állapota szerint csoportosítva számát. 
 
     ![Eszközök csempe](./media/storsimple-8000-service-dashboard/service-summary5.png)
 
-    Kattintson a csempére kattintva nyissa meg a **eszközök** panel listára, majd elemezze az eszközhöz tartozó eszközök összegzése az egyes eszköz. Egy adott eszköz összefoglaló paneljéről eszközspecifikus műveletek is elvégezheti. Az eszköz összefoglaló panel kapcsolatos további információkért látogasson el [eszköz összefoglaló panel](storsimple-8000-device-dashboard.md).
+    Ez a csempe megnyitásához kattintson a **eszközök** panel listából, majd kattintson az egy adott eszköz az eszközre adott eszközösszegzés adatfelhasználás. Eszközspecifikus műveleteket is elvégezheti egy adott eszköz összefoglalás panelje. Az összefoglalás panel kapcsolatos további információkért látogasson el [eszköz összefoglalás panel](storsimple-8000-device-dashboard.md).
 
     ![Kattintson az eszközök csempe](./media/storsimple-8000-service-dashboard/service-summary9.png)
 
-## <a name="view-the-activity-logs"></a>A tevékenység naplók megtekintése
+## <a name="view-the-activity-logs"></a>A Tevékenységnaplók megtekintése
 
-A különböző műveletek a StorSimple Device Manager belül elvégzett megtekintéséhez kattintson a **tevékenységi naplóit** hivatkozás a StorSimple szolgáltatás összefoglaló panel bal oldalán. Ehhez szükséges, hogy a **tevékenységi naplóit** panel, ahol láthatja a legutóbbi műveletek összegzését.
+A különböző műveletek belül a StorSimple-Eszközkezelő végzett megtekintéséhez kattintson a **tevékenységeket tartalmazó naplók** a StorSimple szolgáltatás összefoglalás panelén bal oldalán található hivatkozást. Ezzel továbblép a **tevékenységeket tartalmazó naplók** panel, ahol megtekintheti a legutóbbi végrehajtott műveletek összegzése.
 
 ![Tevékenységnaplók](./media/storsimple-8000-service-dashboard/activity-logs1.png)
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* További tudnivalók a [felügyelete a StorSimple eszközt a StorSimple Device Manager szolgáltatással](storsimple-8000-manager-service-administration.md).
+* Ismerje meg, hogyan [a StorSimple-eszköz felügyelete a StorSimple-Eszközkezelő szolgáltatás segítségével](storsimple-8000-manager-service-administration.md).
 

@@ -3,23 +3,23 @@ title: 'Gyors útmutató: Keressen videókat a Bing Video Search SDK a Pythonhoz
 titleSuffix: Azure Cognitive Services
 description: Ez a rövid útmutató segítségével a Bing Video Search SDK a Pythonhoz készült használatával videókeresési kérelmek küldése
 services: cognitive-services
-author: mikedodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 01/31/2019
-ms.author: rosh
-ms.openlocfilehash: ead69b0165831fef04e68b4c2eb7ea43115ca4ea
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 06/26/2019
+ms.author: aahi
+ms.openlocfilehash: 5fb6b2b349712a04b79564f9b748538a5cc32d73
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55867800"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446984"
 ---
-#  <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-python"></a>Gyors útmutató: Hajtsa végre a videókeresési Bing Video Search SDK-val a Pythonhoz
+# <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-python"></a>Gyors útmutató: Hajtsa végre a videókeresési Bing Video Search SDK-val a Pythonhoz
 
-Ez a rövid útmutató segítségével kezdeni a keresést hírkeresés a Bing Video Search SDK a Pythonhoz készült. Míg a Bing Video Search REST API-val kompatibilis szinte bármelyik programozási nyelvével, az SDK biztosít egy egyszerű módja annak, hogy a szolgáltatás integrálása az alkalmazásokba. Ez a minta forráskódja találhatók [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/video_search_samples.py). További jegyzetek és szolgáltatásokat tartalmazza.
+Ez a rövid útmutató segítségével kezdeni a keresést hírkeresés a Bing Video Search SDK a Pythonhoz készült. Míg a Bing Video Search REST API-val kompatibilis szinte bármelyik programozási nyelvével, az SDK biztosít egy egyszerű módja annak, hogy a szolgáltatás integrálása az alkalmazásokba. Ez a minta forráskódja találhatók [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/video_search_samples.py) további megjegyzéseket és szolgáltatásokkal.
 
 [!INCLUDE [cognitive-services-bing-video-search-signup-requirements](../../../../includes/cognitive-services-bing-video-search-signup-requirements.md)]
 
@@ -33,7 +33,7 @@ Javasoljuk, hogy használja-e egy python [virtuális környezet](https://docs.py
 ```console
 python -m venv mytestenv
 ```
-   
+
 A Bing videók keresése az SDK telepítése:
 
 ```console
@@ -50,8 +50,9 @@ python -m pip install azure-cognitiveservices-search-videosearch
     from azure.cognitiveservices.search.videosearch.models import VideoPricing, VideoLength, VideoResolution, VideoInsightModule
     from msrest.authentication import CognitiveServicesCredentials
     ```
+
 2. Hozzon létre egy változót az előfizetési kulcs. 
-    
+
     ```python
     subscription_key = "YOUR-SUBSCRIPTION-KEY"
     ```
@@ -60,9 +61,9 @@ python -m pip install azure-cognitiveservices-search-videosearch
 
 Hozza létre a `CognitiveServicesCredentials` egy példányát, és példányosítsa az ügyfelet:
 
-    ```python
-    client = VideoSearchAPI(CognitiveServicesCredentials(subscription_key))
-    ```
+```python
+client = VideoSearchAPI(CognitiveServicesCredentials(subscription_key))
+```
 
 ## <a name="send-a-search-request-and-get-a-response"></a>Egy keresési kérelmet küld, és a egy választ
 
@@ -92,5 +93,5 @@ Hozza létre a `CognitiveServicesCredentials` egy példányát, és példányos�
 
 ## <a name="see-also"></a>Lásd még 
 
-* [Mi az a Bing Videókeresési API?](../overview.md)
-* [Cognitive services .NET SDK-minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)
+- [Mi az a Bing Videókeresési API?](../overview.md)
+- [Cognitive services .NET SDK-minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)

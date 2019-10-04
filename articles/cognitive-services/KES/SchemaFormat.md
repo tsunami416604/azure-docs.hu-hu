@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
 ms.openlocfilehash: 51a812762659bcc67762b82e9c120772065aab53
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549681"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60814415"
 ---
 # <a name="schema-format"></a>Sémaformátum
 
@@ -41,7 +41,7 @@ Attribútum megkülönböztetik a kis-és nagybetűket azonosítók, amelyeket a
 
 Alább felsoroljuk a attribútum támogatott adattípusok:
 
-| Typo | Leírás | Műveletek | Példa |
+| Típus | Leírás | Műveletek | Példa |
 |------|-------------|------------|---------|
 | `String` | Karakterlánc (1 és 1024 karakter) | egyenlő, starts_with | "hello world" |
 | `Int32` | 32 bites, előjeles egész | egyenlő, starts_with, is_between | 2016 |

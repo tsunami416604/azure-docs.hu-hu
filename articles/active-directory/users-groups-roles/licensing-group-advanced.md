@@ -15,18 +15,18 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d2faefd8443383e7afff8e3729bf6f1cf25c3a7
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 24bf8e7cf103d583cf6604e0c529ad4ea267ce84
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57887024"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60471906"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Forgatókönyvek, korlátait és ismert problémák csoportok használata kezelheti az Azure Active Directory licencelése
 
 A következő információk és példák segítségével egy Azure Active Directory (Azure AD) a Csoportalapú licencelés speciális ismereteket szerezhet.
 
-## <a name="usage-location"></a>Felhasználás helye
+## <a name="usage-location"></a>Használat helye
 
 Nem minden Microsoft-szolgáltatás érhető el minden területen. Egy úgy lehet licencet a felhasználóhoz, mielőtt a rendszergazda adja meg, hogy rendelkezik-e a **a felhasználási hely** tulajdonság a felhasználóra. A [az Azure Portalon](https://portal.azure.com), megadhatja a **felhasználói** &gt; **profil** &gt; **beállítások**.
 
@@ -188,7 +188,7 @@ Licenc egy csoporttól változásakor Azure ad-ben indul el a módosítások alk
    > ```
 
 3. A teljes naplójában hogyan csoport dolgozta, beleértve az összes felhasználó módosításait, állítsa be a következő szűrőket:
-   - **Kezdeményező (szereplő)**: "A Microsoft Azure AD biztonságicsoport-alapú licencelése"
+   - **Kezdeményező (szereplő)** : "A Microsoft Azure AD biztonságicsoport-alapú licencelése"
    - **Dátumtartomány** (nem kötelező): Ha egy adott csoport ismeri az egyéni tartomány elindult és befejeződött a feldolgozás
 
 A kimeneti példa azt mutatja, hogy feldolgozás, az ebből származó felhasználói változások és a Befejezés gombra a feldolgozás megkezdése.
@@ -216,7 +216,7 @@ Ha Csoportalapú licencelést használ, célszerű Ismerkedjen meg az alábbi li
 
 - A funkció csak akkor használható a biztonsági csoportok és az Office 365-csoportokat, amelyek rendelkeznek a securityEnabled = TRUE.
 
-- A [Office 365 felügyeleti portálján](https://portal.office.com ) jelenleg nem támogatja a Csoportalapú licencelés. Ha egy felhasználói licenccel örököl egy csoportot, ez a licenc jelenik meg az Office rendszergazdai portál egy felhasználói licenccel. Ha megpróbálja módosítani a licencet, vagy próbálja meg eltávolítani a licencet, a portál hibaüzenetet ad vissza. Az örökölt csoportok licenceire közvetlenül a felhasználó nem módosítható.
+- A [Microsoft 365 felügyeleti központban](https://admin.microsoft.com) jelenleg nem támogatja a Csoportalapú licencelés. Ha egy felhasználói licenccel örököl egy csoportot, ez a licenc jelenik meg az Office rendszergazdai portál egy felhasználói licenccel. Ha megpróbálja módosítani a licencet, vagy próbálja meg eltávolítani a licencet, a portál hibaüzenetet ad vissza. Az örökölt csoportok licenceire közvetlenül a felhasználó nem módosítható.
 
 - Licencek hozzárendelve, vagy módosította egy nagy méretű csoport (például 100 000 felhasználó), amikor azt sikerült hatással a teljesítményre. Pontosabban, a módosításokat az Azure AD-automatizálás által generált mennyisége negatív hatással lehet a az Azure AD közötti címtár-szinkronizálás teljesítménye és a helyszíni rendszerekben.
 

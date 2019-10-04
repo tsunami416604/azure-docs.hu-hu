@@ -1,67 +1,62 @@
 ---
-title: Adatáttekintési és vizualizációs eszközök – Azure |} A Microsoft Docs
-description: Adatáttekintési és vizualizációs eszközök esetében az adatelemző virtuális gép.
+title: Adatáttekintési és vizualizációs eszközök
+titleSuffix: Azure Data Science Virtual Machine
+description: Adatfelderítési és vizualizációs eszközök a Data Science Virtual Machinehoz.
 keywords: adatelemzési eszközök, adatelemző virtuális gép, eszközök adatelemzéshez, linux adatelemzés
 services: machine-learning
-documentationcenter: ''
-author: gopitk
-manager: cgronlun
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.author: gokuma
-ms.openlocfilehash: 165df03ec06081fe9b2e1ab84ffe7579ac457758
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 14c34a13440d50fcf42c2207f9933dc1de014a14
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57855486"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70191964"
 ---
-# <a name="data-exploration-and-visualization-tools-on-the-data-science-virtual-machine"></a>Adatáttekintési és vizualizációs eszközök a Data Science virtuális gépen
+# <a name="data-exploration-and-visualization-tools-on-the-azure-data-science-virtual-machine"></a>Adatfelderítési és vizualizációs eszközök az Azure Data Science Virtual Machine
 
-Egy kulcs az adatelemzés lépéseként megérteni az adatokat. Megjelenítési és adatvizsgálati eszközök segítségével felgyorsíthatja az adatok megértését. Az alábbiakban az egyes eszközök a dsvm-hez megadott, amelyek elősegítik a legfontosabb ebben a lépésben. 
+Az adatelemzés során a legfontosabb az, hogy megértse az adatelemzést. A vizualizációk és az adatfeltárási eszközök segítenek felgyorsítani az adatmegismerést. A következő, a Data Science Virtual Machine (DSVM) szolgáltatásban elérhető eszközök megkönnyítik ezt a kulcsot.
 
 ## <a name="apache-drill"></a>Apache Drill
 |    |           |
 | ------------- | ------------- |
-| Mi ez?   | Nyílt forráskódú SQL lekérdezési motorja a Big data    |
-| A DSVM támogatott verziói      | Windows, Linux  |
-| Hogyan van azt konfigurálni / telepíteni a dsvm-hez?      |  A telepített `/dsvm/tools/drill*` csak beágyazott módban   |
-| Gyakori használati      |  Forrásgyűjteményben adatfeltárás anélkül, hogy az ETL. Különböző adatforrások és formátumokhoz, például a fürt megosztott kötetei szolgáltatás, JSON, relációs tábláival, Hadoop lekérdezése     |
-| Hogyan futtathatja / használata?      | Asztali parancsikon  <br/> [Ismerkedés a részletezés 10 perc múlva](https://drill.apache.org/docs/drill-in-10-minutes/)  |
-| A dsvm-hez kapcsolódó eszközök      |   Rattle, Weka, SQL Server Management Studio      |
+| Mi ez?   | Nyílt forráskódú SQL-lekérdezési motor big data    |
+| Támogatott DSVM-verziók      | Windows, Linux  |
+| Hogyan van konfigurálva és telepítve a DSVM?      |  `/dsvm/tools/drill*` Csak beágyazott módban van telepítve   |
+| Gyakori használati      |  Helyben történő adatfeltáráshoz kinyerési, átalakítási, betöltési (ETL) adatok nélkül. Különböző adatforrások és-formátumok lekérdezése, beleértve a CSV-t, a JSON-t, a rokon táblákat és a Hadoop.     |
+| Használat és Futtatás      | Asztali parancsikon  <br/> [Ismerkedés a részletezéssel 10 percen belül](https://drill.apache.org/docs/drill-in-10-minutes/)  |
+| A DSVM kapcsolódó eszközök      |   Rattle, Weka, SQL Server Management Studio      |
 
 ## <a name="weka"></a>Weka
 |    |           |
 | ------------- | ------------- |
-| Mi ez?   |  Weka adatbányászati feladatokhoz gépi tanulási algoritmusok gyűjteménye. Az algoritmusok közvetlenül egy adatkészlet a alkalmazni, vagy saját Java kódot meghívva. Weka előtti adatfeldolgozás, besorolás, regressziós, fürtözés, társítási szabályok és megjelenítési eszközöket tartalmaz. |
+| Mi ez?   |  Gépi tanulási algoritmusok gyűjteménye adatbányászati feladatokhoz. Ezeket az algoritmusokat közvetlenül egy adatkészletre lehet alkalmazni, vagy a saját Java-kódjából hívható meg. A WEKA az adatfeldolgozás, a besorolás, a regresszió, a fürtözés, a társítási szabályok és a vizualizáció eszközeit tartalmazza. |
 | Támogatott DSVM-kiadások     | Windows, Linux     |
-| Gyakori használati      | Általános gépi Tanulási eszköz     |
-| Hogyan futtathatja / használata?      | A Windows, a Start menü Weka keresése. A Linux-alapú bejelentkezés az X2Go, majd nyissa meg alkalmazások -> fejlesztés Weka ->. |
+| Gyakori használati      | Általános gépi tanulási eszköz     |
+| Használat és Futtatás      | A Windows, Weka keresése a Start menüben. Linux rendszeren jelentkezzen be a X2Go-be, majd lépjen az alkalmazások > fejlesztési > WEKA. |
 | A minták mutató hivatkozások      | [Weka minták](https://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
-| A dsvm-hez kapcsolódó eszközök      |LightGBM, Rattle, Xgboost   |
+| A DSVM kapcsolódó eszközök      |LightGBM, csörgő, Xgboost   |
 
 ## <a name="rattle"></a>Rattle
 |    |           |
 | ------------- | ------------- |
-| Mi ez?   |   Egy grafikus felhasználói felületet Data Mining az R használata   |
+| Mi ez?   |   Grafikus felhasználói felület (GUI) az R-t használó adatbányászathoz   |
 | Támogatott DSVM-kiadások     | Windows, Linux     |
-| Gyakori használati      | Általános felhasználói felület Data szintű adatbányászatra eszköz az R    |
-| Hogyan futtathatja / használata?      | UI-eszköz. A Windows, indítson el egy parancssort, és futtassa az R, majd futtassa az R belül `rattle()`. Linux rendszeren X2Go összekapcsolása, indítsa el a parancsot egy terminálban, R, majd futtassa az R belül futtassa `rattle()`. |
+| Gyakori használati      | Általános felhasználói felületi adatbányászati eszköz az R-hez    |
+| Használat és Futtatás      | UI-eszköz. Windows rendszeren nyisson meg egy parancssort, futtassa az R-t, majd az R `rattle()`-ben futtassa a parancsot. Linux rendszeren kapcsolódjon a X2Go, indítson el egy terminált, futtassa az R parancsot, majd `rattle()`az r-ben futtassa a parancsot. |
 | A minták mutató hivatkozások      | [Rattle](https://togaware.com/onepager/) |
-| A dsvm-hez kapcsolódó eszközök      |LightGBM, Weka, Xgboost   |
+| A DSVM kapcsolódó eszközök      |LightGBM, Weka, Xgboost   |
 
-## <a name="powerbi-desktop"></a>PowerBI Desktop 
+## <a name="power-bi-desktop"></a>Power BI Desktop 
 |    |           |
 | ------------- | ------------- |
-| Mi ez?   | Interaktív adatábrázolás és Üzletiintelligencia-eszköze    |
-| A DSVM támogatott verziói      | Windows  |
-| Gyakori használati      |  Adatvizualizációk és -irányítópultokat készít   |
-| Hogyan futtathatja / használata?      | Asztali parancsikon (`C:\Program Files\Microsoft Power BI Desktop\bin\PBIDesktop.exe`)      |
-| A dsvm-hez kapcsolódó eszközök      |   A Visual Studio 2017, a Visual Studio Code-ban Juno      |
+| Mi ez?   | Interaktív adatvizualizáció és BI-eszköz    |
+| Támogatott DSVM-verziók      | Windows  |
+| Gyakori használati      |  Adatvizualizációk és az irányítópultok fejlesztése   |
+| Használat és Futtatás      | Asztali parancsikon (`C:\Program Files\Microsoft Power BI Desktop\bin\PBIDesktop.exe`)      |
+| A DSVM kapcsolódó eszközök      |   Visual Studio 2019, Visual Studio Code, Juno      |
 

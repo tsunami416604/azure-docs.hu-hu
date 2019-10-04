@@ -1,101 +1,103 @@
 ---
-title: Jogkivonat-alapú (HTTP/2) hitelesítése az APN Szolgáltatáshoz az Azure Notification Hubs |} A Microsoft Docs
-description: Ez a témakör azt ismerteti, hogyan használható az APN Szolgáltatáshoz az új jogkivonat-hitelesítés
+title: Jogkivonat-alapú (HTTP/2) hitelesítés a APNS az Azure Notification Hubsban | Microsoft Docs
+description: Ez a témakör azt ismerteti, hogyan használható az új jogkivonat-hitelesítés a APNS
 services: notification-hubs
 documentationcenter: .net
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/13/2019
-ms.author: jowargo
-ms.openlocfilehash: 890577c013a96fc06acf3b05881649ad8202a083
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 02/13/2019
+ms.openlocfilehash: a7fdaae33e28bd543b44c54868324339d1269bc2
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56671641"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213122"
 ---
-# <a name="token-based-http2-authentication-for-apns"></a>Jogkivonat-alapú (HTTP/2) hitelesítése az APN Szolgáltatáshoz
+# <a name="token-based-http2-authentication-for-apns"></a>Jogkivonat-alapú (HTTP/2) hitelesítés a APNS
 
 ## <a name="overview"></a>Áttekintés
 
-Ez a cikk részletesen bemutatja az új APNS HTTP/2 protokoll használatára a jogkivonat-alapú hitelesítéssel.
+Ez a cikk részletesen ismerteti, hogyan használható az új APNS HTTP/2 protokoll a jogkivonat-alapú hitelesítéssel.
 
-Az új protokollal főbb előnyei a következők:
+Az új protokoll használatának legfontosabb előnyei a következők:
 
-* Tokenlétrehozási viszonylag gond nélkül az ingyenes (tanúsítványok képest)
-* Nincsenek további lejárati dátumokat – biztosan megfeleljen az a hitelesítési tokenek és a visszavont tanúsítványok ellenőrzése
-* Legfeljebb 4 KB-os is lehet is észleltünk adattartalmakat.
+* A jogkivonat-létrehozás viszonylag ingyenes (a tanúsítványokhoz képest)
+* Nincs több lejárati dátum – a hitelesítési jogkivonatok és azok visszavonása felett van
+* A hasznos adatok akár 4 KB-os is lehetnek
 * Szinkron visszajelzés
-* Az Apple legújabb protokollt használ – tanúsítványok továbbra is használhatja a bináris protokoll, amely meg van jelölve elavultként
+* Az Apple legújabb protokollját használja – a tanúsítványok továbbra is a bináris protokollt használják, amely elavultként van megjelölve.
 
-Ez az új mechanizmus használatával teheti meg két lépésben néhány perc múlva:
+Az új mechanizmus használata két lépésben végezhető el néhány perc alatt:
 
-1. Szerezze be a szükséges információkat az Apple Developer-fiók portálról
-2. Az új adatokkal az értesítési központ konfigurálása
+1. Szerezze be a szükséges információkat az Apple fejlesztői fiók portálján
+2. Az értesítési központ konfigurálása az új adatokkal
 
-A Notification Hubs már az új hitelesítési rendszert használja az apns-sel minden beállítás.
+A Notification Hubs mostantól az új hitelesítési rendszer használatára van beállítva a APNS használatával.
 
-Vegye figyelembe, hogy a beállítást, ha az APN szolgáltatás tanúsítványalapú át:
+Vegye figyelembe, hogy ha a APNS tanúsítvány-hitelesítő adatainak használatával migrálta a tanúsítványt:
 
-* a token tulajdonságait a tanúsítvány található a rendszerben, írja felül.
-* de az alkalmazás továbbra is zökkenőmentesen értesítéseket kapni.
+* a jogkivonat tulajdonságai felülírják a tanúsítványt a rendszeren,
+* az alkalmazás azonban továbbra is zökkenőmentesen fogadja az értesítéseket.
 
 ## <a name="obtaining-authentication-information-from-apple"></a>Hitelesítési adatok beszerzése az Apple-től
 
-Jogkivonat-alapú hitelesítés engedélyezéséhez a következő tulajdonságokat az Apple fejlesztői fiók nyitása kell:
+A jogkivonat-alapú hitelesítés engedélyezéséhez a következő tulajdonságok szükségesek az Apple Developer-fiókjából:
 
 ### <a name="key-identifier"></a>Kulcs azonosítója
 
-A kulcs azonosítóját szerezhető be a "Kulcsok" lapot az Apple Developer-fiók
+A kulcs azonosítóját az Apple fejlesztői fiókjának Keys (kulcsok) lapjáról lehet beszerezni
 
 ![](./media/notification-hubs-push-notification-http2-token-authentification/obtaining-auth-information-from-apple.png)
 
 ### <a name="application-identifier--application-name"></a>Alkalmazás azonosítója & alkalmazás neve
 
-Az alkalmazás neve a fejlesztői fiókban az Alkalmazásazonosítók lapján érhető el.
+Az alkalmazás neve a fejlesztői fiók alkalmazás-azonosítók lapján érhető el.
 
 ![](./media/notification-hubs-push-notification-http2-token-authentification/app-name.png)
 
-Az alkalmazásazonosító a fejlesztői fiók a tagság részleteit megjelenítő oldalra keresztül érhető el.
+Az alkalmazás azonosítója a fejlesztői fiók tagság részletei lapján érhető el.
 
 ![](./media/notification-hubs-push-notification-http2-token-authentification/app-id.png)
 
-### <a name="authentication-token"></a>A hitelesítési jogkivonat
+### <a name="authentication-token"></a>Hitelesítési jogkivonat
 
-A hitelesítési jogkivonat egy tokent az alkalmazás létrehozása után lehet letölteni. Ez a token létrehozása a részletekért tekintse meg a [az Apple fejlesztői dokumentációjában](https://help.apple.com/xcode/mac/current/#/devdfd3d04a1).
+A hitelesítési jogkivonat letölthető, miután létrehozta az alkalmazáshoz tartozó jogkivonatot. A jogkivonat létrehozásával kapcsolatos részletekért tekintse meg az [Apple fejlesztői dokumentációját](https://help.apple.com/xcode/mac/current/#/devdfd3d04a1).
 
-## <a name="configuring-your-notification-hub-to-use-token-based-authentication"></a>Jogkivonat-alapú hitelesítés használatára az értesítési központ konfigurálása
+## <a name="configuring-your-notification-hub-to-use-token-based-authentication"></a>Az értesítési központ konfigurálása jogkivonat-alapú hitelesítés használatára
 
-### <a name="configure-via-the-azure-portal"></a>Az Azure Portalon keresztül konfigurálása
+### <a name="configure-via-the-azure-portal"></a>Konfigurálás a Azure Portal használatával
 
-Ahhoz, hogy a jogkivonat-alapú hitelesítés a portálon, jelentkezzen be az Azure Portalon, és nyissa meg az értesítési központ > értesítési szolgáltatások > APNS panel.
+Ha engedélyezni szeretné a jogkivonat-alapú hitelesítést a portálon, jelentkezzen be a Azure Portalba, és lépjen az értesítési központ > Notification Services > APNS panelre.
 
-Egy új tulajdonság – *hitelesítési mód*. Token kiválasztása lehetővé teszi, hogy a hub frissítse az összes releváns token tulajdonságait.
+Új tulajdonság – *hitelesítési mód*. A jogkivonat kiválasztásával frissítheti a hubot az összes vonatkozó jogkivonat-tulajdonsággal.
 
 ![](./media/notification-hubs-push-notification-http2-token-authentification/azure-portal-apns-settings.png)
 
-* Adja meg a tulajdonságokat, az Apple developer-fiók lekért
-* Válassza ki az alkalmazás módban (éles vagy tesztkörnyezet)
-* Kattintson a **mentése** az APN szolgáltatás hitelesítő adatainak frissítése gomb
+* Adja meg az Apple Developer-fiókból beolvasott tulajdonságokat
+* Válassza ki az alkalmazási módot (éles vagy homokozó)
+* Kattintson a **Save (Mentés** ) gombra a APNS hitelesítő adatainak frissítéséhez
 
-### <a name="configure-via-management-api-rest"></a>Felügyeleti API (REST) konfigurálása
+### <a name="configure-via-management-api-rest"></a>Konfigurálás felügyeleti API-n keresztül (REST)
 
-Használhatja a [felügyeleti API-k](https://msdn.microsoft.com/library/azure/dn495827.aspx) frissíteni az értesítési központot a jogkivonat-alapú hitelesítés használatára.
-Attól függően, hogy az alkalmazás konfigurálása esetén a védőfal vagy éles alkalmazás (az Apple Developer-fiók megadva) használja a megfelelő végpontok egyikét:
+A [felügyeleti API](https://msdn.microsoft.com/library/azure/dn495827.aspx) -k segítségével a jogkivonat-alapú hitelesítés használatára frissítheti az értesítési központot.
+Attól függően, hogy az Ön által konfigurált alkalmazás egy sandbox vagy éles alkalmazás (az Apple fejlesztői fiókjában van megadva), használja a megfelelő végpontok egyikét:
 
-* A védőfal végpont: [https://api.development.push.apple.com:443/3/device](https://api.development.push.apple.com:443/3/device)
-* Éles végpont: [https://api.push.apple.com:443/3/device](https://api.push.apple.com:443/3/device)
+* Homokozó végpontja:[https://api.development.push.apple.com:443/3/device](https://api.development.push.apple.com:443/3/device)
+* Üzemi végpont:[https://api.push.apple.com:443/3/device](https://api.push.apple.com:443/3/device)
 
 > [!IMPORTANT]
-> Jogkivonat-alapú hitelesítéshez szükséges API-verziót: **2017-04 vagy újabb**.
+> A jogkivonat-alapú hitelesítéshez a (z) API-verziója szükséges: **2017-04 vagy újabb**.
 
-Íme egy példa egy PUT kérelem a hub frissíteni a jogkivonat-alapú hitelesítéssel:
+Az alábbi példa egy PUT-kérést mutat be, amely jogkivonat-alapú hitelesítéssel frissíti a hubot:
 
     ```text
     PUT https://{namespace}.servicebus.windows.net/{Notification Hub}?api-version=2017-04
@@ -112,11 +114,11 @@ Attól függően, hogy az alkalmazás konfigurálása esetén a védőfal vagy �
       }
     ```
 
-### <a name="configure-via-the-net-sdk"></a>Konfigurálja a .NET SDK-n keresztül
+### <a name="configure-via-the-net-sdk"></a>Konfigurálás a .NET SDK használatával
 
-A hub használata a jogkivonat-alapú hitelesítés használatával konfigurálhatja a [legújabb ügyféloldali SDK-val](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/1.0.8).
+A hub-t beállíthatja a jogkivonat-alapú hitelesítés használatára a [legújabb ÜGYFÉLOLDALI SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/1.0.8)-val.
 
-Íme egy helyes használatát bemutató kódminta:
+A helyes használatot bemutató kód minta:
 
 ```csharp
 NamespaceManager nm = NamespaceManager.CreateFromConnectionString(_endpoint);
@@ -130,6 +132,6 @@ desc.ApnsCredential.Endpoint = @"https://api.development.push.apple.com:443/3/de
 nm.UpdateNotificationHubAsync(desc);
 ```
 
-## <a name="reverting-to-using-certificate-based-authentication"></a>Visszatérés a Tanúsítványalapú hitelesítés használatával
+## <a name="reverting-to-using-certificate-based-authentication"></a>Visszaállítása tanúsítványalapú hitelesítés használatára
 
-Bármikor visszatérhet Tanúsítványalapú hitelesítés használatával bármilyen előző metódus használatával, és átadja a tanúsítvány helyett a token tulajdonságait. A művelet felülírja a korábban tárolt hitelesítő adatokat.
+Bármikor visszaállíthatja a tanúsítványalapú hitelesítést a fenti metódusok használatával, és a jogkivonat tulajdonságai helyett átadhatja a tanúsítványt. Ez a művelet felülírja a korábban tárolt hitelesítő adatokat.

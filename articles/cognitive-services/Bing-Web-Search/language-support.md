@@ -1,29 +1,29 @@
 ---
-title: Nyelvi támogatás – a Bing Web Search API
+title: Nyelvi támogatás – Bing Web Search API
 titleSuffix: Azure Cognitive Services
-description: Természetes nyelvek, ország és a Bing News Search API által támogatott régiók listáját.
+description: A Bing News Search API által támogatott természetes nyelvek, országok és régiók listája.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
-ms.topic: article
-ms.date: 09/25/2018
+ms.topic: conceptual
+ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: f5e75b30a7c196bb238c7bcb9c4704c1aec5e771
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 9425de6e75a9a46d71ff85ce49b0650c8e7a9a16
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59999123"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882676"
 ---
-# <a name="language-and-region-support-for-the-bing-web-search-api"></a>A Bing Web Search API nyelvéhez és régiójához támogatása
+# <a name="language-and-region-support-for-the-bing-web-search-api"></a>A Bing Web Search API nyelvi és területi támogatása
 
-A Bing Web Search API több mint három tucat országokban vagy régiókban, számos, az egynél több nyelvet támogat. Adjon meg egy ország vagy régió lekérdezéssel adott ország vagy régió kimutatott érdeklődések alapján találatok szűkítése segítségével. Az eredmények tartalmazhatják a Bing mutató hivatkozásokat, és ezeket a hivatkozásokat is honosítani a Bing felhasználói élmény az adott ország/régió vagy nyelv szerint.
+Az Bing Web Search API több mint három tucat országot vagy régiót támogat, több mint egy nyelvet. Ha egy olyan országot vagy régiót ad meg, amely egy lekérdezéssel segíti a keresési eredmények pontosítását az adott ország vagy régió érdekei alapján. Az eredmények tartalmazhatnak a Bingre mutató hivatkozásokat, és ezek a hivatkozások a megadott ország/régió vagy nyelv alapján honosítják meg a Bing felhasználói élményt.
 
-Ország vagy régió használatával megadhatja a `cc` lekérdezési paraméter. Ha egy ország vagy régió van megadva, meg kell adnia egy vagy több, a nyelvi kódot a [ `Accept-Language` fejléc](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#headers). Használja a [piacok tábla](#markets) az adott piacon támogatott nyelvek listáját.
+A `cc` lekérdezési paraméter segítségével megadhat egy országot vagy régiót. Ha meg van adva egy ország vagy régió, meg kell adnia egy vagy több, a [ `Accept-Language` fejlécet](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#headers)tartalmazó nyelvi kódot. Az egyes [piacokon](#markets) támogatott nyelvek listáját a Markets (piacok) táblában végezheti el.
 
-Másik lehetőségként megadhatja a piac a `mkt` lekérdezési paraméter, és a egy kódot a **piacok** tábla. Adja meg a piacon egyidejűleg megadja egy ország vagy régió és a egy előnyben részesített nyelvi. Explicit módon beállíthat a nyelvet, de a `setLang` lekérdezési paraméter.
+Másik lehetőségként megadhatja a piacot `mkt` a lekérdezési paraméterrel, valamint egy kódot a **piacok** táblából. A piac egyidejű megadása megadja az országot vagy régiót, valamint az előnyben részesített nyelvet. Explicit módon beállíthatja a nyelvet `setLang` a lekérdezési paraméterrel.
 
 ## <a name="countriesregions"></a>Országok/régiók
 
@@ -42,7 +42,7 @@ Másik lehetőségként megadhatja a piac a `mkt` lekérdezési paraméter, és 
 |Németország|DE|
 |Hongkong (KKT)|HK|
 |India|IN|
-|Indonézia|ID (Azonosító)|
+|Indonézia|id|
 |Olaszország|IT|
 |Japán|JP|
 |Korea|KR|
@@ -74,7 +74,7 @@ Másik lehetőségként megadhatja a piac a `mkt` lekérdezési paraméter, és 
 |Ausztrália|Angol|en-Ausztrália|
 |Ausztria|német|Németország-AT|
 |Belgium|holland|nl-BE|
-|Belgium|francia|FR-lehet|
+|Belgium|francia|fr-BE|
 |Brazília|portugál|pt-BR|
 |Kanada|Angol|en-hitelesítésszolgáltató|
 |Kanada|francia|FR-hitelesítésszolgáltató|
@@ -83,9 +83,9 @@ Másik lehetőségként megadhatja a piac a `mkt` lekérdezési paraméter, és 
 |Finnország|finn|fi-FI|
 |Franciaország|francia|FR-FR|
 |Németország|német|de-DE|
-|Hongkong (KKT)|Kínai (hagyományos)|zh-HK|
+|Hongkong (KKT)|Hagyományos kínai|zh-HK|
 |India|Angol|en-IN|
-|Indonézia|Angol|en-azonosító|
+|Indonézia|Angol|EN-ID|
 |Olaszország|olasz|it-IT|
 |Japán|japán|ja-JP|
 |Korea|koreai|ko-KR|
@@ -93,11 +93,11 @@ Másik lehetőségként megadhatja a piac a `mkt` lekérdezési paraméter, és 
 |Mexikó|spanyol|es-MX|
 |Hollandia|holland|NL-NL|
 |Új-Zéland|Angol|en-NZ|
-|Norvégia|norvég|no-NO|
+|Norvégia|norvég|nem – nem|
 |Kína|kínai|zh-CN|
 |Lengyelország|lengyel|pl-PL|
 |Portugália|portugál|PT-PT|
-|Fülöp-szigetek|Angol|en-PH|
+|Fülöp-szigetek|Angol|EN-PH|
 |Oroszország|orosz|ru-RU|
 |Szaúd-Arábia|arab|ar-SA|
 |Dél-Afrika|Angol|en-ZA|
@@ -105,8 +105,12 @@ Másik lehetőségként megadhatja a piac a `mkt` lekérdezési paraméter, és 
 |Svédország|svéd|SV-SE|
 |Svájc|francia|FR-CH|
 |Svájc|német|Németország – CH|
-|Tajvan|Kínai (hagyományos)|zh-TW|
+|Tajvan|Hagyományos kínai|zh-TW|
 |Törökország|török|tr-TR|
 |Egyesült Királyság|Angol|en-GB|
 |Egyesült Államok|Angol|en-US|
 |Egyesült Államok|spanyol|es-US|
+
+## <a name="next-steps"></a>További lépések
+
+* [Bing Image Search API – referencia](//docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

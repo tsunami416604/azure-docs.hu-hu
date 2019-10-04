@@ -1,6 +1,6 @@
 ---
-title: RBAC és az Azure CLI használatával Azure-erőforrásokhoz való hozzáférés kezelése |} A Microsoft Docs
-description: Ismerje meg, hogyan kezelheti a felhasználók, csoportok és alkalmazások szerepköralapú hozzáférés-vezérlés (RBAC) és az Azure CLI használatával Azure-erőforrásokhoz való hozzáférését. Ez tartalmazza a hozzáférés felsorolásának, a hozzáférés adásának és a hozzáférés eltávolításának módját.
+title: Az Azure-erőforrásokhoz való hozzáférés kezelése a RBAC és az Azure CLI használatával | Microsoft Docs
+description: Ismerje meg, hogyan kezelheti az Azure-erőforrásokhoz való hozzáférést a felhasználók, csoportok és alkalmazások számára szerepköralapú hozzáférés-vezérlés (RBAC) és az Azure CLI használatával. Ez tartalmazza a hozzáférés felsorolásának, a hozzáférés adásának és a hozzáférés eltávolításának módját.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,36 +11,36 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/17/2019
+ms.date: 09/11/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 1cc3d3eca4063a8120851a9d3de1a85292eacb11
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 3420374e90790bd1ffe4c845c19de1bfed317302
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011061"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173730"
 ---
-# <a name="manage-access-to-azure-resources-using-rbac-and-azure-cli"></a>RBAC és az Azure CLI használatával Azure-erőforrásokhoz való hozzáférés kezelése
+# <a name="manage-access-to-azure-resources-using-rbac-and-azure-cli"></a>Azure-erőforrásokhoz való hozzáférés kezelése a RBAC és az Azure CLI használatával
 
-[Szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) van az Azure-erőforrásokhoz való hozzáférés kezelése ugyanúgy. Ez a cikk bemutatja, hogyan kezelheti a felhasználók, csoportok és alkalmazások RBAC és az Azure CLI használatával hozzáférését.
+A [szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) az Azure-erőforrásokhoz való hozzáférés kezelésének módja. Ez a cikk azt ismerteti, hogyan kezelheti a felhasználók, csoportok és alkalmazások hozzáférését a RBAC és az Azure CLI használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Hozzáférés kezelése lesz szüksége a következők egyikét:
+A hozzáférés kezeléséhez a következők egyikére van szükség:
 
-* [Az Azure Cloud Shell bash](/azure/cloud-shell/overview)
+* [Bash Azure Cloud Shell](/azure/cloud-shell/overview)
 * [Azure CLI](/cli/azure)
 
 ## <a name="list-roles"></a>Szerepkörök felsorolása
 
-Az összes rendelkezésre álló szerepkör-definíciók listájában, használja a [az role definition listájában](/cli/azure/role/definition#az-role-definition-list):
+Az összes elérhető szerepkör-definíció listázásához használja [az az role definition List](/cli/azure/role/definition#az-role-definition-list):
 
 ```azurecli
 az role definition list
 ```
 
-Az alábbi példa felsorolja a nevét és leírását, az összes rendelkezésre álló szerepkör-definíciók:
+Az alábbi példa felsorolja az összes elérhető szerepkör-definíció nevét és leírását:
 
 ```azurecli
 az role definition list --output json | jq '.[] | {"roleName":.roleName, "description":.description}'
@@ -63,7 +63,7 @@ az role definition list --output json | jq '.[] | {"roleName":.roleName, "descri
 ...
 ```
 
-Az alábbi példa felsorolja a beépített szerepkör-definíciók mindegyikét:
+Az alábbi példa felsorolja az összes beépített szerepkör-definíciót:
 
 ```azurecli
 az role definition list --custom-role-only false --output json | jq '.[] | {"roleName":.roleName, "description":.description, "roleType":.roleType}'
@@ -89,15 +89,15 @@ az role definition list --custom-role-only false --output json | jq '.[] | {"rol
 ...
 ```
 
-## <a name="list-a-role-definition"></a>A szerepkör-definíciónak listázása
+## <a name="list-a-role-definition"></a>Szerepkör-definíció listázása
 
-Egy szerepkör-definíció listázásához használja [az role definition listájában](/cli/azure/role/definition#az-role-definition-list):
+A szerepkör-definíciók listázásához használja [az az role definition List](/cli/azure/role/definition#az-role-definition-list):
 
 ```azurecli
 az role definition list --name <role_name>
 ```
 
-A következő példa listákat a *közreműködői* szerepkör-definíció:
+Az alábbi példa a *közreműködő* szerepkör definícióját sorolja fel:
 
 ```azurecli
 az role definition list --name "Contributor"
@@ -135,9 +135,9 @@ az role definition list --name "Contributor"
 ]
 ```
 
-### <a name="list-actions-of-a-role"></a>A szerepkörök listája műveletek
+### <a name="list-actions-of-a-role"></a>Szerepkör műveleteinek listázása
 
-Az alábbi példa felsorolja csak a *műveletek* és *notActions* , a *közreműködői* szerepkör:
+Az alábbi példa csak a közreműködő szerepkör műveleteit és a *hozzájuk* tartozó *tevékenységeket* sorolja fel:
 
 ```azurecli
 az role definition list --name "Contributor" --output json | jq '.[] | {"actions":.permissions[0].actions, "notActions":.permissions[0].notActions}'
@@ -156,7 +156,7 @@ az role definition list --name "Contributor" --output json | jq '.[] | {"actions
 }
 ```
 
-Az alábbi példa felsorolja a csak a műveletek a *virtuális gépek Közreműködője* szerepkör:
+A következő példa csak a *virtuális gép közreműködői* szerepkörének műveleteit sorolja fel:
 
 ```azurecli
 az role definition list --name "Virtual Machine Contributor" --output json | jq '.[] | .permissions[0].actions'
@@ -182,19 +182,19 @@ az role definition list --name "Virtual Machine Contributor" --output json | jq 
 
 ## <a name="list-access"></a>Hozzáférések felsorolása
 
-Az RBAC lista hozzáférés listázása a szerepkör-hozzárendeléseket.
+A RBAC-ben a hozzáférés listázásához listázhatja a szerepkör-hozzárendeléseket.
 
 ### <a name="list-role-assignments-for-a-user"></a>Felhasználó szerepkör-hozzárendeléseinek felsorolása
 
-Egy adott felhasználó szerepkör-hozzárendelések listájában, használja a [az szerepkör-hozzárendelés lista](/cli/azure/role/assignment#az-role-assignment-list):
+Egy adott felhasználó szerepkör-hozzárendeléseinek listázásához használja az [az role hozzárendelés List](/cli/azure/role/assignment#az-role-assignment-list):
 
 ```azurecli
 az role assignment list --assignee <assignee>
 ```
 
-Alapértelmezés szerint csak a hatókörön belüli előfizetéshez hozzárendelések jelenik meg. Erőforrás vagy egy csoport hatóköre hozzárendelések megtekintéséhez használja `--all`.
+Alapértelmezés szerint csak az előfizetésre hatókörű közvetlen hozzárendelések jelennek meg. Ha erőforrás vagy csoport alapján szeretné megtekinteni a hozzárendeléseket, használja `--all` a és az örökölt hozzárendelések megjelenítését, használja `--include-inherited`a (z) lehetőséget.
 
-Az alábbi példa felsorolja a közvetlenül hozzárendelt szerepkör-hozzárendeléseket a *patlong\@contoso.com* felhasználói:
+Az alábbi példa felsorolja azokat a szerepkör-hozzárendeléseket, amelyek közvetlenül *a\@patlong contoso.com* -felhasználóhoz vannak rendelve:
 
 ```azurecli
 az role assignment list --all --assignee patlong@contoso.com --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
@@ -213,26 +213,28 @@ az role assignment list --all --assignee patlong@contoso.com --output json | jq 
 }
 ```
 
-### <a name="list-role-assignments-for-a-resource-group"></a>Erőforráscsoport szerepkör-hozzárendeléseinek felsorolása
+### <a name="list-role-assignments-at-a-resource-group-scope"></a>Szerepkör-hozzárendelések listázása erőforráscsoport-hatókörben
 
-A szerepkör-hozzárendeléseket létező erőforráscsoport listájában, használja a [az szerepkör-hozzárendelés lista](/cli/azure/role/assignment#az-role-assignment-list):
+Az erőforráscsoport-hatókörben létező szerepkör-hozzárendelések listázásához használja az [az role-hozzárendelési lista](/cli/azure/role/assignment#az-role-assignment-list):
 
 ```azurecli
 az role assignment list --resource-group <resource_group>
 ```
 
-Az alábbi példa felsorolja a szerepkör-hozzárendeléseit a *pharma – értékesítés* erőforráscsoportot:
+A következő példa a *Pharma-Sales* erőforráscsoport szerepkör-hozzárendeléseit sorolja fel:
 
 ```azurecli
-az role assignment list --resource-group pharma-sales --output json | jq '.[] | {"roleDefinitionName":.roleDefinitionName, "scope":.scope}'
+az role assignment list --resource-group pharma-sales --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
 ```
 
 ```Output
 {
+  "principalName": "patlong@contoso.com",
   "roleDefinitionName": "Backup Operator",
   "scope": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales"
 }
 {
+  "principalName": "patlong@contoso.com",
   "roleDefinitionName": "Virtual Machine Contributor",
   "scope": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales"
 }
@@ -240,104 +242,178 @@ az role assignment list --resource-group pharma-sales --output json | jq '.[] | 
 ...
 ```
 
+### <a name="list-role-assignments-at-a-subscription-scope"></a>Szerepkör-hozzárendelések listázása előfizetési hatókörben
+
+Az előfizetési hatókör összes szerepkör-hozzárendelésének listázásához használja [az az role-hozzárendelési lista](/cli/azure/role/assignment#az-role-assignment-list)lehetőséget. Az előfizetés-azonosító lekéréséhez a Azure Portal az **előfizetések** panelén található, vagy használhatja az [az Account List](/cli/azure/account#az-account-list)lehetőséget.
+
+```azurecli
+az role assignment list --subscription <subscription_name_or_id>
+```
+
+```Example
+az role assignment list --subscription 00000000-0000-0000-0000-000000000000 --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
+```
+
+### <a name="list-role-assignments-at-a-management-group-scope"></a>Szerepkör-hozzárendelések listázása egy felügyeleti csoport hatókörében
+
+A felügyeleti csoport hatókörében lévő összes szerepkör-hozzárendelés felsorolásához használja [az az role-hozzárendelési lista](/cli/azure/role/assignment#az-role-assignment-list)lehetőséget. A felügyeleti csoport AZONOSÍTÓjának lekéréséhez a Azure Portal **felügyeleti csoportok** paneljén található, vagy használhatja az [az Account Management-Group listát](/cli/azure/ext/managementgroups/account/management-group#ext-managementgroups-az-account-management-group-list).
+
+```azurecli
+az role assignment list --scope /providers/Microsoft.Management/managementGroups/<group_id>
+```
+
+```Example
+az role assignment list --scope /providers/Microsoft.Management/managementGroups/marketing-group --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
+```
+
 ## <a name="grant-access"></a>Hozzáférés biztosítása
 
 Az RBAC-ben a hozzáférés biztosítása egy szerepkör-hozzárendelés létrehozásával történik.
 
-### <a name="create-a-role-assignment-for-a-user"></a>Egy felhasználó szerepkör-hozzárendelés létrehozása
+### <a name="create-a-role-assignment-for-a-user-at-a-resource-group-scope"></a>Szerepkör-hozzárendelés létrehozása egy felhasználóhoz erőforráscsoport-hatókörben
 
-Az erőforrás-csoport hatókörben egy felhasználó szerepkör-hozzárendelés létrehozásához használja [az szerepkör-hozzárendelés létrehozása](/cli/azure/role/assignment#az-role-assignment-create):
+Egy erőforráscsoport-hatókörben lévő felhasználó hozzáférésének megadásához használja [az az role-hozzárendelés létrehozása](/cli/azure/role/assignment#az-role-assignment-create)parancsot.
 
 ```azurecli
 az role assignment create --role <role_name_or_id> --assignee <assignee> --resource-group <resource_group>
 ```
 
-Az alábbi példa a *virtuális gépek Közreműködője* szerepkör *patlong\@contoso.com* felhasználója a *pharma – értékesítés* erőforrás csoport hatóköre:
+A következő példa a *virtuális gépi közreműködő* szerepkört rendeli hozzá *a\@patlong contoso.com* -felhasználóhoz a *Pharma-Sales* erőforráscsoport hatókörében:
 
 ```azurecli
 az role assignment create --role "Virtual Machine Contributor" --assignee patlong@contoso.com --resource-group pharma-sales
 ```
 
-### <a name="create-a-role-assignment-using-the-unique-role-id"></a>A szerepkör egyedi azonosítója alapján a szerepkör-hozzárendelés létrehozása
+### <a name="create-a-role-assignment-using-the-unique-role-id"></a>Szerepkör-hozzárendelés létrehozása az egyedi szerepkör-azonosító használatával
 
-Van néhány alkalommal, amikor a szerepkör nevét változhatnak, például:
+Néhány alkalommal, amikor a szerepkör neve változhat, például:
 
-- Használja a saját egyéni szerepkört, és úgy dönt, hogy módosítsa a nevet.
-- Használ egy előzetes szerepkörnek **(előzetes verzió)** a nevében. Amikor megjelenik a szerepkört, átnevezése a szerepkört.
+- Saját egyéni szerepkört használ, és úgy dönt, hogy megváltoztatja a nevet.
+- Olyan előzetes verziójú szerepkört használ, amely **(előzetes verzió)** szerepel a névben. A szerepkör megjelenése után a rendszer átnevezi a szerepkört.
 
 > [!IMPORTANT]
-> Egy szolgáltatásiszint-szerződés nélkül biztosított egy előzetes verzióhoz, és nem javasolt éles számítási feladatok esetében. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
+> Az előzetes verzió szolgáltatási szintű szerződés nélkül van megadva, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
 > További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Akkor is, ha a szerepkör át lett nevezve, a szerepkör-azonosítója nem változik. Szkriptek vagy az automation használ a szerepkör-hozzárendelések létrehozására, esetén ajánlott használni, a szerepkör egyedi azonosítója a szerepkör neve helyett. Ezért szerepkör át lett nevezve, ha a parancsfájlok valószínűleg több működik.
+A szerepkör-azonosító nem változik, még akkor is, ha a szerepkör át lett nevezve. Ha parancsfájlokat vagy automationt használ a szerepkör-hozzárendelések létrehozásához, ajánlott az egyedi szerepkör-azonosítót használni a szerepkör neve helyett. Ezért ha egy szerepkört átneveznek, a parancsfájlok nagyobb valószínűséggel fognak működni.
 
-A szerepkör egyedi azonosítója alapján a szerepkör neve helyett a szerepkör-hozzárendelés létrehozásához használja [az szerepkör-hozzárendelés létrehozása](/cli/azure/role/assignment#az-role-assignment-create).
+Ha szerepkör-hozzárendelést a szerepkör neve helyett az egyedi szerepkör-AZONOSÍTÓval szeretne létrehozni, használja az [az role-hozzárendelés létrehozása](/cli/azure/role/assignment#az-role-assignment-create)parancsot.
 
 ```azurecli
 az role assignment create --role <role_id> --assignee <assignee> --resource-group <resource_group>
 ```
 
-Az alábbi példa a [virtuális gépek Közreműködője](built-in-roles.md#virtual-machine-contributor) szerepkör *patlong\@contoso.com* felhasználója a *pharma – értékesítés* erőforrás hatóköre. Az egyedi szerepkör-azonosító lekéréséhez használhatja [az role definition listájában](/cli/azure/role/definition#az-role-definition-list) vagy [beépített szerepkörök az Azure-erőforrások](built-in-roles.md).
+A következő példa a [virtuális gép közreműködői](built-in-roles.md#virtual-machine-contributor) szerepkört rendeli hozzá a *patlong\@contoso.com* felhasználóhoz a *Pharma-Sales erőforráscsoport-* hatókörben. Az egyedi szerepkör-azonosító beszerzéséhez használja az [az role definition List](/cli/azure/role/definition#az-role-definition-list) vagy [Az Azure-erőforrások beépített szerepköreit](built-in-roles.md).
 
 ```azurecli
 az role assignment create --role 9980e02c-c2be-4d73-94e8-173b1dc7cf3c --assignee patlong@contoso.com --resource-group pharma-sales
 ```
 
-### <a name="create-a-role-assignment-for-a-group"></a>Szerepkör-hozzárendelés egy csoport létrehozása
+### <a name="create-a-role-assignment-for-a-group"></a>Szerepkör-hozzárendelés létrehozása egy csoport számára
 
-Szerepkör-hozzárendelés csoport létrehozásához használja [az szerepkör-hozzárendelés létrehozása](/cli/azure/role/assignment#az-role-assignment-create):
+Ha hozzáférést szeretne adni egy csoporthoz, használja az [az role-hozzárendelés létrehozása](/cli/azure/role/assignment#az-role-assignment-create)lehetőséget. A csoport AZONOSÍTÓjának lekéréséhez az [az ad Group List](/cli/azure/ad/group#az-ad-group-list) vagy [az ad Group show](/cli/azure/ad/group#az-ad-group-show)lehetőséget használhatja.
 
 ```azurecli
 az role assignment create --role <role_name_or_id> --assignee-object-id <assignee_object_id> --resource-group <resource_group> --scope </subscriptions/subscription_id>
 ```
 
-Az alábbi példa a *olvasó* szerepkört a *Reino Mack csapat* azonosító 22222222-2222-2222-2222-222222222222 egy előfizetésre a csoporthoz. A csoport Azonosítójának lekéréséhez használhatja [az ad-csoportok listája](/cli/azure/ad/group#az-ad-group-list) vagy [az ad-csoport megjelenítése](/cli/azure/ad/group#az-ad-group-show).
+A következő példa hozzárendeli az *olvasó* szerepkört az *Ann Mack Team* csoporthoz, amelynek azonosítója 22222222-2222-2222-2222-222222222222, előfizetési hatókörben.
 
 ```azurecli
 az role assignment create --role Reader --assignee-object-id 22222222-2222-2222-2222-222222222222 --scope /subscriptions/00000000-0000-0000-0000-000000000000
 ```
 
-Az alábbi példa a *virtuális gépek Közreműködője* szerepkört a *Reino Mack csapat* azonosító 22222222-2222-2222-2222-222222222222 nevűvirtuálishálózatierőforráshatókörreacsoport*pharma-értékesítés-projekt – hálózati*:
+A következő példa hozzárendeli a *virtuálisgép-közreműködő* szerepkört az *Ann Mack Team* csoporthoz a 22222222-2222-2222-2222-222222222222 azonosítóval, amely egy *Pharma-Sales-Project-Network*nevű virtuális hálózat erőforrás-hatóköre.
 
 ```azurecli
 az role assignment create --role "Virtual Machine Contributor" --assignee-object-id 22222222-2222-2222-2222-222222222222 --scope /subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/pharma-sales/providers/Microsoft.Network/virtualNetworks/pharma-sales-project-network
 ```
 
-### <a name="create-a-role-assignment-for-an-application"></a>Alkalmazás szerepkör-hozzárendelés létrehozása
+### <a name="create-a-role-assignment-for-an-application-at-a-resource-group-scope"></a>Szerepkör-hozzárendelés létrehozása egy adott alkalmazáshoz erőforráscsoport-hatókörben
 
-Az alkalmazás-szerepkör létrehozásához használja a [az szerepkör-hozzárendelés létrehozása](/cli/azure/role/assignment#az-role-assignment-create):
+Az alkalmazáshoz való hozzáférés biztosításához használja [az az role-hozzárendelés létrehozása](/cli/azure/role/assignment#az-role-assignment-create)lehetőséget. Az alkalmazás objektum-AZONOSÍTÓjának lekéréséhez az [az AD App List](/cli/azure/ad/app#az-ad-app-list) vagy [az AD App show](/cli/azure/ad/app#az-ad-app-show)lehetőséget használhatja.
 
 ```azurecli
-az role assignment create --role <role_name_or_id> --assignee-object-id <assignee_object_id> --resource-group <resource_group> --scope </subscriptions/subscription_id>
+az role assignment create --role <role_name_or_id> --assignee-object-id <assignee_object_id> --resource-group <resource_group>
 ```
 
-Az alábbi példa a *virtuális gépek Közreműködője* alkalmazáshoz való hozzárendelésként az objektum azonosítója 44444444-4444-4444-4444-444444444444 a szerepkör a *pharma – értékesítés* erőforrás hatóköre. Az alkalmazás objektum Azonosítójának lekéréséhez használhatja [az ad app list](/cli/azure/ad/app#az-ad-app-list) vagy [az ad app show](/cli/azure/ad/app#az-ad-app-show).
+Az alábbi példa a virtuálisgép- *közreműködő* szerepkört hozzárendeli egy 44444444-4444-4444-4444-444444444444-es azonosítójú alkalmazáshoz a *Pharma-Sales* erőforráscsoport hatókörében.
 
 ```azurecli
 az role assignment create --role "Virtual Machine Contributor" --assignee-object-id 44444444-4444-4444-4444-444444444444 --resource-group pharma-sales
 ```
 
+### <a name="create-a-role-assignment-for-a-user-at-a-subscription-scope"></a>Szerepkör-hozzárendelés létrehozása egy felhasználóhoz előfizetési hatókörben
+
+Ha hozzáférést szeretne adni egy felhasználónak az előfizetési hatókörben, használja az [az role-hozzárendelés létrehozása](/cli/azure/role/assignment#az-role-assignment-create)parancsot. Az előfizetés-azonosító lekéréséhez a Azure Portal az **előfizetések** panelén található, vagy használhatja az [az Account List](/cli/azure/account#az-account-list)lehetőséget.
+
+```azurecli
+az role assignment create --role <role_name_or_id> --assignee <assignee> --subscription <subscription_name_or_id>
+```
+
+Az alábbi példa hozzárendeli az *olvasó* szerepkört a *annm\@example.com* -felhasználóhoz egy előfizetési hatókörben.
+
+```azurecli
+az role assignment create --role "Reader" --assignee annm@example.com --subscription 00000000-0000-0000-0000-000000000000
+```
+
+### <a name="create-a-role-assignment-for-a-user-at-a-management-group-scope"></a>Szerepkör-hozzárendelés létrehozása egy felhasználóhoz egy felügyeleti csoport hatókörében
+
+Ahhoz, hogy hozzáférést biztosítson egy felhasználónak egy felügyeleti csoport hatókörében, használja az [az role-hozzárendelés létrehozása](/cli/azure/role/assignment#az-role-assignment-create)parancsot. A felügyeleti csoport AZONOSÍTÓjának lekéréséhez a Azure Portal **felügyeleti csoportok** paneljén található, vagy használhatja az [az Account Management-Group listát](/cli/azure/ext/managementgroups/account/management-group#ext-managementgroups-az-account-management-group-list).
+
+```azurecli
+az role assignment create --role <role_name_or_id> --assignee <assignee> --scope /providers/Microsoft.Management/managementGroups/<group_id>
+```
+
+A következő példa hozzárendeli a *Számlázási olvasó* szerepkört az *Alain\@example.com* -felhasználóhoz egy felügyeleti csoport hatókörében.
+
+```azurecli
+az role assignment create --role "Billing Reader" --assignee alain@example.com --scope /providers/Microsoft.Management/managementGroups/marketing-group
+```
+
+### <a name="create-a-role-assignment-for-a-new-service-principal"></a>Szerepkör-hozzárendelés létrehozása egy új egyszerű szolgáltatáshoz
+
+Ha létrehoz egy új szolgáltatásnevet, és azonnal megpróbál hozzárendelni egy szerepkört az egyszerű szolgáltatáshoz, a szerepkör-hozzárendelés bizonyos esetekben sikertelen lehet. Ha például egy parancsfájl használatával új felügyelt identitást hoz létre, majd megpróbál hozzárendelni egy szerepkört az adott egyszerű szolgáltatáshoz, akkor a szerepkör-hozzárendelés sikertelen lehet. A hiba oka valószínűleg a replikálás késése. Az egyszerű szolgáltatás egy régióban jön létre; a szerepkör-hozzárendelés azonban egy másik régióban is előfordulhat, amely még nem replikálta a szolgáltatásnevet. Ennek a forgatókönyvnek a megoldásához a szerepkör-hozzárendelés létrehozásakor meg kell adnia a rendszerbiztonsági tag típusát.
+
+Szerepkör-hozzárendelés létrehozásához használja az [az szerepkör-hozzárendelési létrehozás](/cli/azure/role/assignment#az-role-assignment-create)lehetőséget, adja `--assignee-object-id`meg a értékét, `--assignee-principal-type` majd `ServicePrincipal`állítsa a következőre:.
+
+```azurecli
+az role assignment create --role <role_name_or_id> --assignee-object-id <assignee_object_id> --assignee-principal-type <assignee_principal_type> --resource-group <resource_group> --scope </subscriptions/subscription_id>
+```
+
+A következő példa a *virtuális gép közreműködői* szerepkört rendeli hozzá a *Pharma-Sales* erőforráscsoport hatókörének *MSI-test* felügyelt identitásához:
+
+```azurecli
+az role assignment create --role "Virtual Machine Contributor" --assignee-object-id 33333333-3333-3333-3333-333333333333 --assignee-principal-type ServicePrincipal --resource-group pharma-sales
+```
+
 ## <a name="remove-access"></a>Hozzáférés eltávolítása
 
-RBAC, a hozzáférést, akkor egy szerepkör-hozzárendelés eltávolítása használatával [az szerepkör-hozzárendelés törlése](/cli/azure/role/assignment#az-role-assignment-delete):
+A RBAC a hozzáférés eltávolításához távolítsa el a szerepkör-hozzárendelést az [az szerepkör-hozzárendelés törlése](/cli/azure/role/assignment#az-role-assignment-delete)paranccsal:
 
 ```azurecli
 az role assignment delete --assignee <assignee> --role <role_name_or_id> --resource-group <resource_group>
 ```
 
-A következő példában eltávolítjuk a *virtuális gépek Közreműködője* a szerepkör-hozzárendelés a *patlong\@contoso.com* felhasználója a *pharma – értékesítés* erőforráscsoport:
+Az alábbi példa eltávolítja a *virtuálisgép-közreműködő* szerepkör-hozzárendelést a *patlong\@contoso.com* -felhasználótól a *Pharma-Sales* erőforráscsoporthoz:
 
 ```azurecli
 az role assignment delete --assignee patlong@contoso.com --role "Virtual Machine Contributor" --resource-group pharma-sales
 ```
 
-A következő példa eltávolítja a *olvasó* a szerepkör a *Reino Mack csapat* azonosító 22222222-2222-2222-2222-222222222222 egy előfizetésre a csoporthoz. A csoport Azonosítójának lekéréséhez használhatja [az ad-csoportok listája](/cli/azure/ad/group#az-ad-group-list) vagy [az ad-csoport megjelenítése](/cli/azure/ad/group#az-ad-group-show).
+Az alábbi példa eltávolítja az *olvasó* szerepkört az *Ann Mack Team* CSOPORTból az 22222222-2222-2222-2222-222222222222 azonosítóval egy előfizetési hatókörben. A csoport AZONOSÍTÓjának lekéréséhez az [az ad Group List](/cli/azure/ad/group#az-ad-group-list) vagy [az ad Group show](/cli/azure/ad/group#az-ad-group-show)lehetőséget használhatja.
 
 ```azurecli
-az role assignment delete --assignee 22222222-2222-2222-2222-222222222222 --role "Reader" --scope /subscriptions/00000000-0000-0000-0000-000000000000
+az role assignment delete --assignee 22222222-2222-2222-2222-222222222222 --role "Reader" --subscription 00000000-0000-0000-0000-000000000000
+```
+
+A következő példa eltávolítja a *Számlázási olvasó* szerepkört a felügyeleti csoport hatókörében lévő *Alain\@example.com* -felhasználótól. A felügyeleti csoport AZONOSÍTÓjának lekéréséhez használhatja az [az Account Management-Group listát](/cli/azure/ext/managementgroups/account/management-group#ext-managementgroups-az-account-management-group-list).
+
+```azurecli
+az role assignment delete --assignee alain@example.com --role "Billing Reader" --scope /providers/Microsoft.Management/managementGroups/marketing-group
 ```
 
 ## <a name="next-steps"></a>További lépések
 
-- [Oktatóanyag: Az Azure-erőforrások Azure CLI-vel egyéni szerepkör létrehozása](tutorial-custom-role-cli.md)
-- [Azure-erőforrások és -erőforráscsoportok kezelése az Azure CLI használatával](../azure-resource-manager/cli-azure-resource-manager.md)
+- [Oktatóanyag: Egyéni szerepkör létrehozása Azure-erőforrásokhoz az Azure CLI használatával](tutorial-custom-role-cli.md)
+- [Azure-erőforrások és-erőforráscsoportok kezelése az Azure CLI használatával](../azure-resource-manager/cli-azure-resource-manager.md)

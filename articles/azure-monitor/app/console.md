@@ -1,6 +1,6 @@
 ---
-title: Az Azure Application Insights Konzolalkalmazással |} A Microsoft Docs
-description: Figyeli a webalkalmazásokat a rendelkezésre állását, teljesítményét és használatát.
+title: Azure-Application Insights a konzol alkalmazásaihoz | Microsoft Docs
+description: Webes alkalmazások figyelése a rendelkezésre állás, a teljesítmény és a használat érdekében.
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -13,47 +13,53 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.reviewer: lmolkova
 ms.author: mbullwin
-ms.openlocfilehash: 602cd9696271931babad9aa962638c5b646c80ac
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: b6ecf1e9cece51635afc0bf0f8025b6e117438ee
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55296766"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169451"
 ---
-# <a name="application-insights-for-net-console-applications"></a>.NET-hez készült Application Insights konzolon alkalmazások
-[Az Application Insights](../../azure-monitor/app/app-insights-overview.md) figyelni, webalkalmazása rendelkezésre állását, teljesítményét és használatát.
+# <a name="application-insights-for-net-console-applications"></a>Application Insights a .NET-konzol alkalmazásaihoz
 
-Az előfizetés kell [Microsoft Azure](https://azure.com). Jelentkezzen be Microsoft-fiókkal, amely Windows, Xbox Live, vagy a Microsoft más felhőszolgáltatásaival előfordulhat, hogy rendelkezik. A csapata szervezeti előfizetéssel az Azure-bA lehet: kérje meg a tulajdonosát, hogy vegye fel a Microsoft-fiók használatával.
+[Application Insights](../../azure-monitor/app/app-insights-overview.md) lehetővé teszi a webalkalmazások figyelését a rendelkezésre állás, a teljesítmény és a használat érdekében.
+
+[Microsoft Azure](https://azure.com)-előfizetésre van szüksége. Jelentkezzen be egy Microsoft-fiókval, amely lehet Windows, Xbox Live vagy más Microsoft Cloud Services. Előfordulhat, hogy a csapata szervezeti előfizetéssel rendelkezik az Azure-hoz: kérje meg a tulajdonost, hogy vegye fel Önt a Microsoft-fiók használatával.
+
+> [!NOTE]
+> Létezik egy [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) nevű új Beta Application Insights SDK, amely lehetővé teszi a Application Insights használatát bármely konzolos alkalmazáshoz. Ezt a csomagot és a hozzá tartozó utasításokat ajánlott [használni.](../../azure-monitor/app/worker-service.md) Ez a csomag [`NetStandard2.0`](https://docs.microsoft.com/dotnet/standard/net-standard)célja, és így a .net Core 2,0-as vagy újabb verzióban, illetve a .NET-keretrendszer 4.7.2 vagy újabb verziókban használható.
+Ez a dokumentum az új csomag stabil verziójának kiadása után elavult lesz.
 
 ## <a name="getting-started"></a>Első lépések
 
-* [Hozzon létre egy Application Insights-erőforrást](../../azure-monitor/app/create-new-resource.md ) az [Azure Portalon](https://portal.azure.com). Az alkalmazás típusánál válassza **általános**.
-* Végezze el a kialakítási kulcs másolását. Keresse meg a kulcsot a **Essentials** legördülő az új erőforrás létrehozása. 
-* Telepítse a legújabb [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) csomagot.
-* Állítsa be a rendszerállapotkulcsot a kódban semmilyen telemetriai adatot követése előtt (vagy állítani az APPINSIGHTS_INSTRUMENTATIONKEY környezeti változó beállítása). Ezt követően meg kell tudni manuálisan nyomon követheti a telemetriai adatokat, és nézze meg az Azure Portalon
+* [Hozzon létre egy Application Insights-erőforrást](../../azure-monitor/app/create-new-resource.md) az [Azure Portalon](https://portal.azure.com). Az alkalmazás típusa mezőben válassza az **általános**lehetőséget.
+* Végezze el a kialakítási kulcs másolását. Keresse meg a kulcsot a létrehozott új erőforrás **Essentials** legördülő menüjében. 
+* Telepítse a legújabb [Microsoft. ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) csomagot.
+* Adja meg a kialakítási kulcsot a kódban a telemetria követése előtt (vagy állítsa be a APPINSIGHTS_INSTRUMENTATIONKEY környezeti változót). Ezután manuálisan nyomon követheti a telemetria, és megtekintheti a Azure Portal
 
 ```csharp
-TelemetryConfiguration.Active.InstrumentationKey = " *your key* ";
-var telemetryClient = new TelemetryClient();
+// you may use different options to create configuration as shown later in this article
+TelemetryConfiguration configuration = TelemetryConfiguration.CreateDefault();
+configuration.InstrumentationKey = " *your key* ";
+var telemetryClient = new TelemetryClient(configuration);
 telemetryClient.TrackTrace("Hello World!");
 ```
 
-* Legújabb verziójának telepítése [Microsoft.ApplicationInsights.DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) package - automatikusan azt követi nyomon, HTTP-, SQL, vagy néhány egyéb külső függőségi hívások.
+* A [Microsoft. ApplicationInsights. DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) Package legújabb verziójának telepítése – automatikusan nyomon követi a http, az SQL vagy más külső függőségi hívásokat.
 
-Előfordulhat, hogy inicializálni és az Application Insights beállítása a kódból vagy `ApplicationInsights.config` fájlt. Ellenőrizze, hogy az inicializálás történik, amilyen hamar csak lehet. 
+A kód vagy a fájl használatával `ApplicationInsights.config` Application Insights inicializálható és konfigurálható. Győződjön meg arról, hogy az inicializálás a lehető leghamarabb megtörténik. 
 
 > [!NOTE]
-> Hivatkozó utasításokat **ApplicationInsights.config** csak a .NET-keretrendszer célozza, és nem vonatkoznak a .NET Core-alkalmazások alkalmazások vonatkoznak.
+> A **ApplicationInsights. config fájlra** hivatkozó utasítások csak a .NET-keretrendszert célzó alkalmazásokra vonatkoznak, és a .net Core-alkalmazásokra nem érvényesek.
 
-### <a name="using-config-file"></a>A konfigurációs fájl használatával
-
-Alapértelmezés szerint az Application Insights SDK keres `ApplicationInsights.config` fájlt a munkakönyvtárban amikor `TelemetryConfiguration` létrehozása folyamatban van
+### <a name="using-config-file"></a>Konfigurációs fájl használata
+Alapértelmezés szerint a Application Insights SDK a `ApplicationInsights.config` `TelemetryConfiguration` munkakönyvtárban keresi a fájlt a létrehozáskor
 
 ```csharp
 TelemetryConfiguration config = TelemetryConfiguration.Active; // Reads ApplicationInsights.config file if present
 ```
 
-A konfigurációs fájl elérési útját is megadható.
+A konfigurációs fájl elérési útját is megadhatja.
 
 ```csharp
 using System.IO;
@@ -61,9 +67,9 @@ TelemetryConfiguration configuration = TelemetryConfiguration.CreateFromConfigur
 var telemetryClient = new TelemetryClient(configuration);
 ```
 
-További információkért lásd: [konfigurációs fájl ismertetése](configuration-with-applicationinsights-config.md).
+További információ: [konfigurációs fájl leírása](configuration-with-applicationinsights-config.md).
 
-Előfordulhat, hogy kap egy teljes példa a konfigurációs fájl legfrissebb verziójának telepítésével [Microsoft.ApplicationInsights.WindowsServer](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer) csomagot. Íme a **minimális** függőségi gyűjteményt, amely megegyezik a példakód konfigurációját.
+A konfigurációs fájlhoz a [Microsoft. ApplicationInsights. windowsserver](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer) csomag legújabb verziójának telepítésével kaphat teljes példát. Itt látható a függőségi gyűjtemény **minimális** konfigurációja, amely egyenértékű a kóddal.
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -93,9 +99,11 @@ Előfordulhat, hogy kap egy teljes példa a konfigurációs fájl legfrissebb ve
 
 ```
 
-### <a name="configuring-telemetry-collection-from-code"></a>A kód telemetriai adatok gyűjtésének konfigurálása
+### <a name="configuring-telemetry-collection-from-code"></a>Telemetria-gyűjtemény konfigurálása a kódból
+> [!NOTE]
+> A konfigurációs fájl olvasása nem támogatott a .NET Core-ban. Érdemes lehet Application Insights SDK-t használni [a ASP.net Core](../../azure-monitor/app/asp-net-core.md)
 
-* Alkalmazás indítási során létrehozása és konfigurálása `DependencyTrackingTelemetryModule` példány -, egyedülálló kell lennie és meg kell őrizni az alkalmazás élettartamának.
+* Az alkalmazás indítási létrehozása és konfigurálása `DependencyTrackingTelemetryModule` során a példánynak egyedinek kell lennie, és meg kell őrizni az alkalmazás élettartamát.
 
 ```csharp
 var module = new DependencyTrackingTelemetryModule();
@@ -115,17 +123,21 @@ module.IncludeDiagnosticSourceActivities.Add("Microsoft.Azure.EventHubs");
 module.Initialize(configuration);
 ```
 
-* Közös telemetriai inicializálók hozzáadása
+* Általános telemetria-inicializálók hozzáadása
 
 ```csharp
-// stamps telemetry with correlation identifiers
-TelemetryConfiguration.Active.TelemetryInitializers.Add(new OperationCorrelationTelemetryInitializer());
-
 // ensures proper DependencyTelemetry.Type is set for Azure RESTful API calls
-TelemetryConfiguration.Active.TelemetryInitializers.Add(new HttpDependenciesParsingTelemetryInitializer());
+configuration.TelemetryInitializers.Add(new HttpDependenciesParsingTelemetryInitializer());
 ```
 
-* .NET-keretrendszer Windows-alkalmazások esetén is telepítheti és teljesítményszámláló gyűjtő modul inicializálása, amint [Itt](https://apmtips.com/blog/2017/02/13/enable-application-insights-live-metrics-from-code/)
+Ha egyszerű `TelemetryConfiguration()` konstruktorral hozta létre a konfigurációt, engedélyeznie kell a korrelációs támogatást is. **Nem szükséges** , ha a konfigurációt beolvassa a fájlból `TelemetryConfiguration.Active`, a használt `TelemetryConfiguration.CreateDefault()` vagy a elemet.
+
+```csharp
+configuration.TelemetryInitializers.Add(new OperationCorrelationTelemetryInitializer());
+```
+
+* Az [itt](https://apmtips.com/blog/2017/02/13/enable-application-insights-live-metrics-from-code/) leírtak szerint érdemes lehet a teljesítményszámláló-gyűjtő modult is telepíteni és inicializálni.
+
 
 #### <a name="full-example"></a>Teljes példa
 
@@ -142,10 +154,9 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
-            TelemetryConfiguration configuration = TelemetryConfiguration.Active;
+            TelemetryConfiguration configuration = TelemetryConfiguration.CreateDefault();
 
             configuration.InstrumentationKey = "removed";
-            configuration.TelemetryInitializers.Add(new OperationCorrelationTelemetryInitializer());
             configuration.TelemetryInitializers.Add(new HttpDependenciesParsingTelemetryInitializer());
 
             var telemetryClient = new TelemetryClient();
@@ -200,5 +211,5 @@ namespace ConsoleApp
 ```
 
 ## <a name="next-steps"></a>További lépések
-* [Függőségek figyelése](../../azure-monitor/app/asp-net-dependencies.md) megtekintheti, ha a REST, SQL és más külső erőforrások okoznak lassulást.
-* [Az API-val](../../azure-monitor/app/api-custom-events-metrics.md) küldése a saját események és mérőszámok az alkalmazás teljesítményének és használatának részletesebb megjelenítéséhez.
+* A [függőségek figyelésével](../../azure-monitor/app/asp-net-dependencies.md) ellenőrizheti, hogy a REST, az SQL vagy más külső erőforrások lassulnak-e.
+* [Az API használatával](../../azure-monitor/app/api-custom-events-metrics.md) saját eseményeket és mérőszámokat küldhet az alkalmazás teljesítményének és használatának részletesebb áttekintéséhez.

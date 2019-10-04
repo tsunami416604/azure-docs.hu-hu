@@ -1,0 +1,38 @@
+- name: Az Azure HPC Cache dokumentációja
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Mi az az Azure HPC Cache?
+      href: hpc-cache-overview.md
+- name: Alapelvek
+  items:
+    - name: Az aggregált névtér tervezése
+      href: hpc-cache-namespace.md
+- name: Útmutatók
+  items:
+    - name: Előfeltételek
+      href: hpc-cache-prereqs.md
+    - name: A gyorsítótár létrehozása
+      href: hpc-cache-create.md
+    - name: Tároló hozzáadása
+      items:
+        - name: Céltárak hozzáadása
+          href: hpc-cache-add-storage.md
+        - name: Adatok áthelyezése céltárakba (ha szükséges)
+          items:
+            - name: Az új blobtároló előzetes betöltése
+              href: hpc-cache-ingest.md
+            - name: Egyéb adatfeldolgozási módszerek
+              items:
+                - name: A gyorsítótár feltöltése párhuzamos másolással
+                  href: hpc-cache-ingest-parallelcp.md
+                - name: A gyorsítótár feltöltése msrsync használatával
+                  href: hpc-cache-ingest-msrsync.md
+                - name: A gyorsítótár feltöltése manuális fájlmásolással
+                  href: hpc-cache-ingest-manual.md
+    - name: Csatlakozás a gyorsítótárhoz
+      href: hpc-cache-mount.md
+- name: További források
+  items:
+    - name: Támogatási jegy megnyitása
+      href: hpc-cache-support-ticket.md

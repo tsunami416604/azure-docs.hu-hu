@@ -1,19 +1,19 @@
 ---
-title: Komplex veszélyforrások elleni védelem – Azure Database for postgresql-hez
+title: A komplex veszélyforrások elleni védelem – Azure Database for PostgreSQL – egyetlen kiszolgáló
 description: Veszélyforrások elleni védelem észleli a rendellenes adatbázis-tevékenységek utaló esetleges biztonsági fenyegetések az adatbázishoz.
 author: bolzmj
 ms.author: mbolz
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/24/2019
-ms.openlocfilehash: bbb48708d0e5a7cd07a3971a6966f40696107562
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.date: 5/6/2019
+ms.openlocfilehash: a69a8b651188b9566fdbec4bc6de09a8fec164c7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55095095"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65067468"
 ---
-# <a name="advanced-threat-protection-for-azure-database-for-postgresql"></a>Komplex veszélyforrások elleni védelem az Azure Database for postgresql-hez
+# <a name="advanced-threat-protection-for-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL – egyetlen kiszolgáló komplex veszélyforrások elleni védelem
 
 Az Azure Database for PostgreSQL-hez készült Komplex veszélyforrások elleni védelem észleli az adatbázisok hozzáférésére és az adatbázisok biztonságának megsértésére tett szokatlan és potenciálisan kártevő szándékú kísérleteket.
 
@@ -28,7 +28,7 @@ Komplex veszélyforrások elleni védelem a speciális adatbiztonság ajánlat, 
 
 ## <a name="set-up-threat-detection"></a>Állítsa be a fenyegetések észlelése
 1. Indítsa el az Azure Portalra a [ https://portal.azure.com ](https://portal.azure.com).
-2. Keresse meg az Azure Database for PostgreSQL-kiszolgáló védeni kívánt konfiguráció lapján. Válassza ki a biztonsági beállítások **komplex veszélyforrások elleni védelem (előzetes verzió)**.
+2. Keresse meg az Azure Database for PostgreSQL-kiszolgáló védeni kívánt konfiguráció lapján. Válassza ki a biztonsági beállítások **komplex veszélyforrások elleni védelem (előzetes verzió)** .
 3. Az a **komplex veszélyforrások elleni védelem (előzetes verzió)** konfigurációs lapon:
 
    - Komplex veszélyforrások elleni védelem engedélyezése a kiszolgálón.
@@ -46,7 +46,7 @@ Rendellenes adatbázis-tevékenységek észlelésekor e-mail-értesítést kap. 
 
     Aktív fenyegetések megtekintése:
 
-    ![Aktív fenyegetések](./media/howto-database-threat-protection-portal/active-threats.png)
+    ![aktív fenyegetések](./media/howto-database-threat-protection-portal/active-threats.png)
 
 2. Kattintson egy adott riasztás kivizsgálása a fenyegetés és a jövőbeli fenyegetésekkel szembeni szervizelését további részletek és műveletek beolvasásához.
     

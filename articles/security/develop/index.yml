@@ -1,0 +1,60 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: A biztonságos fejlesztés dokumentációja
+metadata:
+  document_id: null
+  title: Biztonságos fejlesztési dokumentáció a Microsoft Azure-ról
+  meta.description: Learn how to develop secure apps on Azure.
+  services: security
+  author: TerryLanfear
+  manager: rkarlin
+  ms.service: security
+  ms.subservice: develop
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 09/30/2019
+  ms.author: terrylan
+abstract:
+  description: 'Mintaalkalmazásaink, ajánlott eljárásaink és útmutatóink segítségével megtudhatja, hogyan fejleszthet és helyezhet üzembe biztonságos alkalmazásokat az Azure-ban.'
+sections:
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 2
+        items:
+          - href: /azure/security/develop/secure-dev-overview
+            html: <p>Biztonságos webalkalmazás fejlesztése az Azure-ban</p>
+            image:
+              src: 'https://docs.microsoft.com/media/common/i_get-started.svg'
+            title: Bevezetés
+          - href: 'https://docs.microsoft.com/learn/modules/top-5-security-items-to-consider'
+            html: <p>A webalkalmazások öt legfontosabb biztonsági eleme</p>
+            image:
+              src: 'https://docs.microsoft.com/media/common/i_learn-about.svg'
+            title: Fejlessze a készségeit a Microsoft Learnnel
+  - title: Biztonságos mintaalkalmazások
+    items:
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/security/develop/secure-web-app">Webalkalmazás egy Linux-tárolóban</a>
+          - html: <a href="/azure/security/develop/secure-aad-app">Webalkalmazás és az Azure Active Directory</a>
+          - html: <a href="/azure/security/develop/secure-pci-web-app">Bankkártyaágazat</a>
+  - title: Alapelvek
+    items:
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/security/develop/secure-dev-overview">A biztonságos fejlesztés ajánlott eljárásai</a>
+  - title: További források
+    items:
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/security/develop/security-code-analysis-overview">Microsoft Security Code Analysis</a>
+          - html: <a href="/azure/security/develop/threat-modeling-tool">Fenyegetésmodellezési eszköz</a>

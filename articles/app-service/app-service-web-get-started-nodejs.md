@@ -1,5 +1,5 @@
 ---
-title: Node.js-webalkalmazás – az Azure App Service létrehozása |} A Microsoft Docs
+title: Node. js-alapú Webalkalmazás létrehozása – Azure App Service | Microsoft Docs
 description: Percek alatt üzembe helyezheti első Hello World Node.js-alkalmazását az App Service Web Apps szolgáltatásban.
 services: app-service\web
 documentationcenter: ''
@@ -10,17 +10,16 @@ ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 02/15/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 4dbd65a391bdc5726436ba461a34e1ca7cab87b0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d03b209902d3ab0bcdb247b1deefdd70d01905cb
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57855180"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018492"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Node.js-webalkalmazás létrehozása az Azure-ban
 
@@ -28,7 +27,7 @@ ms.locfileid: "57855180"
 > Ebben a cikkben egy alkalmazást helyezünk üzembe a Windowson futó App Service-ben. A _Linuxon_ futó App Service-ben való üzembe helyezéssel kapcsolatban lásd: [Node.js-webalkalmazás létrehozása a Linuxon futó Azure App Service-ben](./containers/quickstart-nodejs.md).
 >
 
-Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás.  Ez a rövid útmutató bemutatja, hogyan Node.js-alkalmazás üzembe helyezése az Azure App Service-ben. Az [Azure CLI-vel](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) létrehozhatja a webalkalmazást, a ZipDeploy szoftver használatával pedig üzembe helyezheti a Node.js-mintakódot a webalkalmazásban.
+Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás.  Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe egy Node. js-alkalmazást a Azure App Service. Az [Azure CLI-vel](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) létrehozhatja a webalkalmazást, a ZipDeploy szoftver használatával pedig üzembe helyezheti a Node.js-mintakódot a webalkalmazásban.
 
 ![Az Azure-ban futó mintaalkalmazás](media/app-service-web-get-started-nodejs-poc/hello-world-in-browser.png)
 
@@ -52,9 +51,9 @@ Nyissa meg az _index.js_ fájlt, és keresse meg a következő sort:
 const port = process.env.PORT || 1337;
 ```
 
-Az App Service a process.env.PORT változót beilleszti az alkalmazásba, így a kód a változó segítségével tudni fogja, hogy melyik portot kell figyelni. 
+App Service feltölti a környezeti változót, a **Process. env. portot**. Használja ezt az alkalmazásban, hogy a kód tudja, melyik portot kell figyelni.
 
-Egy terminálablakban keresse meg a minta Node.js-projekt gyökérkönyvtárát (ez tartalmazza az _index.js_ fájlt).
+Egy terminál ablakban navigáljon a minta Node. js-projekt **gyökérkönyvtárához** (az _index. js fájlt_tartalmazó könyvtárra).
 
 ## <a name="run-the-app-locally"></a>Az alkalmazás futtatása helyben
 
@@ -75,7 +74,19 @@ A terminálablakban nyomja le a **Ctrl+C** billentyűkombinációt a webkiszolg�
 > [!NOTE]
 > Az Azure App Service-ben az alkalmazás IIS-ben, [iisnode](https://github.com/Azure/iisnode) használatával fut. Az alkalmazás iisnode-dal való futtatásának engedélyezéséhez az alkalmazás gyökérmappája tartalmaz egy web.config fájlt. A fájl IIS-sel olvasható és az iisnode-hoz kapcsolódó beállítások [az iisnode GitHub-adattárban](https://github.com/Azure/iisnode/blob/master/src/samples/configuration/web.config) vannak dokumentálva.
 
-[!INCLUDE [Create ZIP file](../../includes/app-service-web-create-zip.md)]
+## <a name="create-a-project-zip-file"></a>ZIP-fájl létrehozása a projekthez
+
+Győződjön meg arról, hogy még mindig a minta projekt **gyökérkönyvtárában** található (az _index. js fájlt_tartalmazó könyvtár). Készítsen ZIP-archívumot a projekt minden eleméről. A következő parancs a terminál alapértelmezett eszközét használja:
+
+```
+# Bash
+zip -r myAppFiles.zip .
+
+# PowerShell
+Compress-Archive -Path * -DestinationPath myAppFiles.zip
+```
+
+Később ezt a ZIP-fájlt fogja feltölteni az Azure-ba, majd üzembe helyezni az App Service-ben.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -112,7 +123,7 @@ A webalkalmazás létrehozása után az Azure CLI az alábbi példához hasonló
 
 ### <a name="set-nodejs-runtime"></a>Node.js-futtatókörnyezet beállítása
 
-A csomópont-futtatókörnyezet 10.14.1 beállítása. Az összes támogatott futtatókörnyezet megtekintéséhez futtassa az [`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes) parancsot.
+Állítsa a csomópont futtatókörnyezetét 10.14.1 értékre. Az összes támogatott futtatókörnyezet megtekintéséhez futtassa az [`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes) parancsot.
 
 ```azurecli-interactive
 # Bash and Powershell
@@ -153,7 +164,7 @@ Egy szövegszerkesztő használatával nyissa meg a Node.js-alkalmazáson belül
 response.end("Hello Azure!");
 ```
 
-Egy helyi terminálablakban keresse meg az alkalmazás gyökérkönyvtárát, majd hozzon létre egy új ZIP-fájlt a frissített projekt számára.
+A helyi terminál ablakban navigáljon az alkalmazás **gyökérkönyvtárához** (az _index. js fájlt_tartalmazó könyvtárhoz), hozzon létre egy új zip-fájlt a frissített projekthez.
 
 ```azurecli-interactive
 # Bash
@@ -173,7 +184,7 @@ Váltson vissza **Az alkalmazás megkeresése tallózással** lépésben megnyit
 
 A létrehozott webalkalmazás felügyeletéhez ugorjon az <a href="https://portal.azure.com" target="_blank">Azure Portalra</a>.
 
-A bal oldali menüben kattintson a **App Services**, majd kattintson az Azure-alkalmazás neve.
+A bal oldali menüben kattintson a **app Services**elemre, majd kattintson az Azure-alkalmazás nevére.
 
 ![Navigálás a portálon egy Azure-alkalmazáshoz](./media/app-service-web-get-started-nodejs-poc/nodejs-docs-hello-world-app-service-list.png)
 

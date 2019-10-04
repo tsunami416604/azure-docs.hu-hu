@@ -1,50 +1,49 @@
 ---
-title: Frissítse az Azure Linux-ügynök a Githubról |} A Microsoft Docs
-description: Ismerje meg, az Azure-beli Linuxos virtuális gép az Azure Linux-ügynök frissítése
+title: Az Azure Linux-ügynök frissítése a GitHubról | Microsoft Docs
+description: Ismerje meg, hogyan frissítheti az Azure Linux-ügynököt Linux rendszerű virtuális gépén az Azure-ban
 services: virtual-machines-linux
 documentationcenter: ''
-author: roiyz-msft
-manager: jeconnoc
+author: axayjo
+manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: f1f19300-987d-4f29-9393-9aba866f049c
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
-ms.author: roiyz
-ms.openlocfilehash: 5d53f34ea6b0983d0687cdaf6ec6271c703bb055
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: akjosh
+ms.openlocfilehash: 1ae3c3a74d1a46a98fa6676e18ffe71a4d6937a1
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57998526"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71168771"
 ---
-# <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>A virtuális gép az Azure Linux-ügynök frissítése
+# <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>Az Azure Linux-ügynök frissítése egy virtuális gépen
 
-Frissítése az [Azure Linux-ügynök](https://github.com/Azure/WALinuxAgent) egy Linux rendszerű virtuális gépen az Azure-ban, hogy rendelkezzen:
+Az Azure [Linux-ügynök](https://github.com/Azure/WALinuxAgent) Azure-beli Linux rendszerű virtuális gépen való frissítéséhez a következőket kell tennie:
 
-- Futó Linux rendszerű virtuális gépek az Azure-ban.
-- Egy kapcsolat a Linux rendszerű virtuális Gépre SSH-val.
+- Egy futó Linux rendszerű virtuális gép az Azure-ban.
+- Kapcsolódás az adott linuxos virtuális géphez SSH használatával.
 
-Mindig ellenőrizni kell a csomag a Linux-disztribúció tárházban először. A rendelkezésre álló csomagot nem lehet a legújabb verzió viszont automatikus frissítés engedélyezésével biztosíthatja a Linux-ügynök mindig legújabb frissítésének letöltése lehetőség. Kell-e rendelkeznie alapján a problémát, a disztribúció szállítói támogatás kell kérnie.
+Először a Linux disztribúciós tárházban érdemes megkeresni a csomagokat. Lehetséges, hogy az elérhető csomag nem a legújabb verzió, azonban az AutoUpdate engedélyezése biztosítja, hogy a Linux-ügynök mindig megkapja a legújabb frissítést. Ha problémába ütközik a Package Managers szolgáltatásból történő telepítéssel, akkor a disztribúció gyártójának támogatást kell kérnie.
 
-## <a name="minimum-virtual-machine-agent-support-in-azure"></a>Minimális virtuális gépek ügynök támogatása az Azure-ban
-Ellenőrizze a [minimális verzió támogatása az Azure-beli virtuálisgép-ügynökök](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) a folytatás előtt.
+## <a name="minimum-virtual-machine-agent-support-in-azure"></a>Virtuálisgép-ügynök minimális támogatása az Azure-ban
+A továbblépés előtt ellenőrizze, hogy az [Azure-beli virtuálisgép-ügynökök minimális verziója támogatott-](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) e.
 
 ## <a name="updating-the-azure-linux-agent"></a>Az Azure Linux-ügynök frissítése
 
 ## <a name="ubuntu"></a>Ubuntu
 
-#### <a name="check-your-current-package-version"></a>Ellenőrizze a jelenlegi csomag verziója
+#### <a name="check-your-current-package-version"></a>A csomag aktuális verziójának keresése
 
 ```bash
 apt list --installed | grep walinuxagent
 ```
 
-#### <a name="update-package-cache"></a>Frissítési csomag gyorsítótárát
+#### <a name="update-package-cache"></a>Frissítési csomag gyorsítótára
 
 ```bash
 sudo apt-get -qq update
@@ -56,36 +55,36 @@ sudo apt-get -qq update
 sudo apt-get install walinuxagent
 ```
 
-#### <a name="ensure-auto-update-is-enabled"></a>Győződjön meg arról, engedélyezve van az automatikus frissítés
+#### <a name="ensure-auto-update-is-enabled"></a>Győződjön meg arról, hogy az automatikus frissítés engedélyezve van
 
-Először ellenőrizze, hogy ha engedélyezve van:
+Először ellenőrizze, hogy engedélyezve van-e a következő:
 
 ```bash
 cat /etc/waagent.conf
 ```
 
-Keresse meg a "AutoUpdate.Enabled". A következő kimenet látható, ha engedélyezve van:
+Az "AutoUpdate. enabled" megkeresése. Ha ezt a kimenetet látja, engedélyezve van a következő:
 
 ```bash
 # AutoUpdate.Enabled=y
 AutoUpdate.Enabled=y
 ```
 
-Futtatás engedélyezése:
+A Futtatás engedélyezése:
 
 ```bash
 sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 ```
 
-### <a name="restart-the-waagent-service"></a>Indítsa újra a waagent szolgáltatást
+### <a name="restart-the-waagent-service"></a>A waagent szolgáltatás újraindítása
 
-#### <a name="restart-agent-for-1404"></a>Indítsa újra 14.04-ügynököt
+#### <a name="restart-agent-for-1404"></a>14,04-es újraindítási ügynök
 
 ```bash
 initctl restart walinuxagent
 ```
 
-#### <a name="restart-agent-for-1604--1704"></a>Indítsa újra 16.04-ügynököt / 17.04
+#### <a name="restart-agent-for-1604--1704"></a>Újraindítási ügynök a 16,04/17,04
 
 ```bash
 systemctl restart walinuxagent.service
@@ -93,15 +92,15 @@ systemctl restart walinuxagent.service
 
 ## <a name="debian"></a>Debian
 
-### <a name="debian-7-wheezy"></a>Debian 7 "Wheezy"
+### <a name="debian-7-wheezy"></a>Debian 7 "zihálás"
 
-#### <a name="check-your-current-package-version"></a>Ellenőrizze a jelenlegi csomag verziója
+#### <a name="check-your-current-package-version"></a>A csomag aktuális verziójának keresése
 
 ```bash
 dpkg -l | grep waagent
 ```
 
-#### <a name="update-package-cache"></a>Frissítési csomag gyorsítótárát
+#### <a name="update-package-cache"></a>Frissítési csomag gyorsítótára
 
 ```bash
 sudo apt-get -qq update
@@ -113,18 +112,18 @@ sudo apt-get -qq update
 sudo apt-get install waagent
 ```
 
-#### <a name="enable-agent-auto-update"></a>Az ügynök az automatikus frissítés engedélyezése
-Debian ezen verziója nem rendelkezik egy verzió > = 2.0.16-os, ezért AutoUpdate nem érhető el hozzá. A fenti parancs kimenete bemutatja, ha a csomag naprakész állapotban.
+#### <a name="enable-agent-auto-update"></a>Ügynök automatikus frissítésének engedélyezése
+A Debian ezen verziója nem rendelkezik > = 2.0.16 verzióval, ezért az AutoUpdate nem érhető el. A fenti parancs kimenete megmutatja, hogy a csomag naprakész-e.
 
-### <a name="debian-8-jessie--debian-9-stretch"></a>Debian 8 “Jessie” / Debian 9 “Stretch”
+### <a name="debian-8-jessie--debian-9-stretch"></a>Debian 8 "Jessie"/Debian 9 "stretch"
 
-#### <a name="check-your-current-package-version"></a>Ellenőrizze a jelenlegi csomag verziója
+#### <a name="check-your-current-package-version"></a>A csomag aktuális verziójának keresése
 
 ```bash
 apt list --installed | grep waagent
 ```
 
-#### <a name="update-package-cache"></a>Frissítési csomag gyorsítótárát
+#### <a name="update-package-cache"></a>Frissítési csomag gyorsítótára
 
 ```bash
 sudo apt-get -qq update
@@ -135,28 +134,28 @@ sudo apt-get -qq update
 ```bash
 sudo apt-get install waagent
 ```
-#### <a name="ensure-auto-update-is-enabled"></a>Győződjön meg arról, engedélyezve van az automatikus frissítés 
+#### <a name="ensure-auto-update-is-enabled"></a>Győződjön meg arról, hogy az automatikus frissítés engedélyezve van 
 
-Először ellenőrizze, hogy ha engedélyezve van:
+Először ellenőrizze, hogy engedélyezve van-e a következő:
 
 ```bash
 cat /etc/waagent.conf
 ```
 
-Keresse meg a "AutoUpdate.Enabled". A következő kimenet látható, ha engedélyezve van:
+Az "AutoUpdate. enabled" megkeresése. Ha ezt a kimenetet látja, engedélyezve van a következő:
 
 ```bash
 # AutoUpdate.Enabled=y
 AutoUpdate.Enabled=y
 ```
 
-Futtatás engedélyezése:
+A Futtatás engedélyezése:
 
 ```bash
 sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 ```
 
-### <a name="restart-the-waagent-service"></a>Indítsa újra a waagent szolgáltatást
+### <a name="restart-the-waagent-service"></a>A waagent szolgáltatás újraindítása
 
 ```
 sudo systemctl restart walinuxagent.service
@@ -166,13 +165,13 @@ sudo systemctl restart walinuxagent.service
 
 ### <a name="rhelcentos-6"></a>RHEL/CentOS 6
 
-#### <a name="check-your-current-package-version"></a>Ellenőrizze a jelenlegi csomag verziója
+#### <a name="check-your-current-package-version"></a>A csomag aktuális verziójának keresése
 
 ```bash
 sudo yum list WALinuxAgent
 ```
 
-#### <a name="check-available-updates"></a>Ellenőrizze az elérhető frissítések
+#### <a name="check-available-updates"></a>Elérhető frissítések keresése
 
 ```bash
 sudo yum check-update WALinuxAgent
@@ -184,28 +183,28 @@ sudo yum check-update WALinuxAgent
 sudo yum install WALinuxAgent
 ```
 
-#### <a name="ensure-auto-update-is-enabled"></a>Győződjön meg arról, engedélyezve van az automatikus frissítés 
+#### <a name="ensure-auto-update-is-enabled"></a>Győződjön meg arról, hogy az automatikus frissítés engedélyezve van 
 
-Először ellenőrizze, hogy ha engedélyezve van:
+Először ellenőrizze, hogy engedélyezve van-e a következő:
 
 ```bash
 cat /etc/waagent.conf
 ```
 
-Keresse meg a "AutoUpdate.Enabled". A következő kimenet látható, ha engedélyezve van:
+Az "AutoUpdate. enabled" megkeresése. Ha ezt a kimenetet látja, engedélyezve van a következő:
 
 ```bash
 # AutoUpdate.Enabled=y
 AutoUpdate.Enabled=y
 ```
 
-Futtatás engedélyezése:
+A Futtatás engedélyezése:
 
 ```bash
 sudo sed -i 's/\# AutoUpdate.Enabled=y/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 ```
 
-### <a name="restart-the-waagent-service"></a>Indítsa újra a waagent szolgáltatást
+### <a name="restart-the-waagent-service"></a>A waagent szolgáltatás újraindítása
 
 ```
 sudo service waagent restart
@@ -213,13 +212,13 @@ sudo service waagent restart
 
 ### <a name="rhelcentos-7"></a>RHEL/CentOS 7
 
-#### <a name="check-your-current-package-version"></a>Ellenőrizze a jelenlegi csomag verziója
+#### <a name="check-your-current-package-version"></a>A csomag aktuális verziójának keresése
 
 ```bash
 sudo yum list WALinuxAgent
 ```
 
-#### <a name="check-available-updates"></a>Ellenőrizze az elérhető frissítések
+#### <a name="check-available-updates"></a>Elérhető frissítések keresése
 
 ```bash
 sudo yum check-update WALinuxAgent
@@ -231,28 +230,28 @@ sudo yum check-update WALinuxAgent
 sudo yum install WALinuxAgent  
 ```
 
-#### <a name="ensure-auto-update-is-enabled"></a>Győződjön meg arról, engedélyezve van az automatikus frissítés 
+#### <a name="ensure-auto-update-is-enabled"></a>Győződjön meg arról, hogy az automatikus frissítés engedélyezve van 
 
-Először ellenőrizze, hogy ha engedélyezve van:
+Először ellenőrizze, hogy engedélyezve van-e a következő:
 
 ```bash
 cat /etc/waagent.conf
 ```
 
-Keresse meg a "AutoUpdate.Enabled". A következő kimenet látható, ha engedélyezve van:
+Az "AutoUpdate. enabled" megkeresése. Ha ezt a kimenetet látja, engedélyezve van a következő:
 
 ```bash
 # AutoUpdate.Enabled=y
 AutoUpdate.Enabled=y
 ```
 
-Futtatás engedélyezése:
+A Futtatás engedélyezése:
 
 ```bash
 sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 ```
 
-### <a name="restart-the-waagent-service"></a>Indítsa újra a waagent szolgáltatást
+### <a name="restart-the-waagent-service"></a>A waagent szolgáltatás újraindítása
 
 ```bash
 sudo systemctl restart waagent.service
@@ -262,15 +261,15 @@ sudo systemctl restart waagent.service
 
 ### <a name="suse-sles-11-sp4"></a>SUSE SLES 11 SP4
 
-#### <a name="check-your-current-package-version"></a>Ellenőrizze a jelenlegi csomag verziója
+#### <a name="check-your-current-package-version"></a>A csomag aktuális verziójának keresése
 
 ```bash
 zypper info python-azure-agent
 ```
 
-#### <a name="check-available-updates"></a>Ellenőrizze az elérhető frissítések
+#### <a name="check-available-updates"></a>Elérhető frissítések keresése
 
-A fenti kimeneti bemutatja, ha a csomag nincs mindig naprakészek.
+A fenti kimenet megmutatja, hogy a csomag naprakész-e.
 
 #### <a name="install-the-latest-package-version"></a>A csomag legújabb verziójának telepítése
 
@@ -278,28 +277,28 @@ A fenti kimeneti bemutatja, ha a csomag nincs mindig naprakészek.
 sudo zypper install python-azure-agent
 ```
 
-#### <a name="ensure-auto-update-is-enabled"></a>Győződjön meg arról, engedélyezve van az automatikus frissítés 
+#### <a name="ensure-auto-update-is-enabled"></a>Győződjön meg arról, hogy az automatikus frissítés engedélyezve van 
 
-Először ellenőrizze, hogy ha engedélyezve van:
+Először ellenőrizze, hogy engedélyezve van-e a következő:
 
 ```bash
 cat /etc/waagent.conf
 ```
 
-Keresse meg a "AutoUpdate.Enabled". A következő kimenet látható, ha engedélyezve van:
+Az "AutoUpdate. enabled" megkeresése. Ha ezt a kimenetet látja, engedélyezve van a következő:
 
 ```bash
 # AutoUpdate.Enabled=y
 AutoUpdate.Enabled=y
 ```
 
-Futtatás engedélyezése:
+A Futtatás engedélyezése:
 
 ```bash
 sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 ```
 
-### <a name="restart-the-waagent-service"></a>Indítsa újra a waagent szolgáltatást
+### <a name="restart-the-waagent-service"></a>A waagent szolgáltatás újraindítása
 
 ```bash
 sudo /etc/init.d/waagent restart
@@ -307,15 +306,15 @@ sudo /etc/init.d/waagent restart
 
 ### <a name="suse-sles-12-sp2"></a>SUSE SLES 12 SP2
 
-#### <a name="check-your-current-package-version"></a>Ellenőrizze a jelenlegi csomag verziója
+#### <a name="check-your-current-package-version"></a>A csomag aktuális verziójának keresése
 
 ```bash
 zypper info python-azure-agent
 ```
 
-#### <a name="check-available-updates"></a>Ellenőrizze az elérhető frissítések
+#### <a name="check-available-updates"></a>Elérhető frissítések keresése
 
-A fenti kimenetében meg fogja jeleníteni, ha a csomag naprakész állapotban.
+A fenti kimenetben ez megmutatja, hogy a csomag naprakész-e.
 
 #### <a name="install-the-latest-package-version"></a>A csomag legújabb verziójának telepítése
 
@@ -323,46 +322,46 @@ A fenti kimenetében meg fogja jeleníteni, ha a csomag naprakész állapotban.
 sudo zypper install python-azure-agent
 ```
 
-#### <a name="ensure-auto-update-is-enabled"></a>Győződjön meg arról, engedélyezve van az automatikus frissítés 
+#### <a name="ensure-auto-update-is-enabled"></a>Győződjön meg arról, hogy az automatikus frissítés engedélyezve van 
 
-Először ellenőrizze, hogy ha engedélyezve van:
+Először ellenőrizze, hogy engedélyezve van-e a következő:
 
 ```bash
 cat /etc/waagent.conf
 ```
 
-Keresse meg a "AutoUpdate.Enabled". A következő kimenet látható, ha engedélyezve van:
+Az "AutoUpdate. enabled" megkeresése. Ha ezt a kimenetet látja, engedélyezve van a következő:
 
 ```bash
 # AutoUpdate.Enabled=y
 AutoUpdate.Enabled=y
 ```
 
-Futtatás engedélyezése:
+A Futtatás engedélyezése:
 
 ```bash
 sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 ```
 
-### <a name="restart-the-waagent-service"></a>Indítsa újra a waagent szolgáltatást
+### <a name="restart-the-waagent-service"></a>A waagent szolgáltatás újraindítása
 
 ```bash
 sudo systemctl restart waagent.service
 ```
 
-## <a name="oracle-6-and-7"></a>6. és 7 Oracle
+## <a name="oracle-6-and-7"></a>Oracle 6 és 7
 
-Oracle Linux rendszeren, győződjön meg arról, hogy a `Addons` adattár engedélyezve van. A fájl szerkesztéséhez válassza `/etc/yum.repos.d/public-yum-ol6.repo`(Oracle Linux 6) vagy `/etc/yum.repos.d/public-yum-ol7.repo`(Oracle Linux), és módosítsa a sor `enabled=0` való `enabled=1` alatt **[ol6_addons]** vagy **[ol7_addons]** a jelen a fájl.
+Oracle Linux esetén győződjön meg arról, hogy `Addons` az adattár engedélyezve van. Szerkessze a `/etc/yum.repos.d/public-yum-ol6.repo`fájlt (Oracle Linux 6) vagy `/etc/yum.repos.d/public-yum-ol7.repo`(Oracle Linux), `enabled=1` és módosítsa a sort `enabled=0` a következőre: **[ol6_addons]** vagy **[ol7_addons]** .
 
-Ezt követően az Azure Linux-ügynök legújabb verziójának telepítéséhez írja be:
+Ezután az Azure Linux-ügynök legújabb verziójának telepítéséhez írja be a következőt:
 
 ```bash
 sudo yum install WALinuxAgent
 ```
 
-Ha nem találja a bővítményt tárház adhat hozzá egyszerűen ezeket a sorokat a .repo fájl végén az Oracle Linux kiadásban megfelelően:
+Ha nem találja a bővítmény tárházat, egyszerűen hozzáadhatja ezeket a sorokat a. repo fájl végén a Oracle Linux kiadásának megfelelően:
 
-A virtuális gépek Oracle Linux 6:
+Oracle Linux 6 virtuális gép esetén:
 
 ```sh
 [ol6_addons]
@@ -373,7 +372,7 @@ gpgcheck=1
 enabled=1
 ```
 
-Oracle Linux 7 virtuális gépek:
+Oracle Linux 7 virtuális gép esetén:
 
 ```sh
 [ol7_addons]
@@ -384,30 +383,30 @@ gpgcheck=1
 enabled=1
 ```
 
-Írja be:
+Ezután írja be a következőt:
 
 ```bash
 sudo yum update WALinuxAgent
 ```
 
-Általában ez ennyire szüksége, de ha valamilyen okból telepíteni szeretné a https://github.com közvetlenül, kövesse az alábbi lépéseket.
+Általában ez minden, amire szüksége van, de ha valamilyen okból nem kell https://github.com közvetlenül telepítenie, kövesse az alábbi lépéseket.
 
 
-## <a name="update-the-linux-agent-when-no-agent-package-exists-for-distribution"></a>A Linux-ügynök frissítése, amikor nincs ügynök a csomag terjesztési létezik
+## <a name="update-the-linux-agent-when-no-agent-package-exists-for-distribution"></a>A Linux-ügynök frissítése, ha nem létezik ügynök-csomag a terjesztéshez
 
-Telepítse a wget (vannak bizonyos disztribúciókhoz, amelyek nem telepítik azt, például a Red Hat, CentOS és Oracle Linux 6.4, 6.5-ös és verziók alapértelmezés szerint) írja be `sudo yum install wget` a parancssoron.
+A wget telepítése (vannak olyan disztribúciók, amelyek nem telepítik alapértelmezés szerint, például a Red Hat, a CentOS és a Oracle Linux 6,4-es és 6,5 `sudo yum install wget` -es verziókat) a parancssorba való beírásával.
 
-### <a name="1-download-the-latest-version"></a>1. Töltse le a legújabb verzióra
-Nyissa meg [az Azure Linux-ügynök a GitHub kiadását](https://github.com/Azure/WALinuxAgent/releases) egy weblap, és ismerje meg a legújabb verziószámot. (Írja be aktuális verziójának megkereséséhez `waagent --version`.)
+### <a name="1-download-the-latest-version"></a>1. A legújabb verzió letöltése
+Nyissa meg [Az Azure Linux Agent kiadását a githubon](https://github.com/Azure/WALinuxAgent/releases) egy weblapon, és keresse meg a legújabb verziószámot. (Az aktuális verziót megkeresheti a beírásával `waagent --version`.)
 
-#### <a name="for-version-22x-or-later-type"></a>Verzió 2.2.x vagy újabb, írja be:
+#### <a name="for-version-22x-or-later-type"></a>A 2.2. x vagy újabb verziónál írja be a következőt:
 ```bash
 wget https://github.com/Azure/WALinuxAgent/archive/v2.2.x.zip
 unzip v2.2.x.zip
 cd WALinuxAgent-2.2.x
 ```
 
-A következő sort 2.2.0-ás verzió használja példaként:
+A következő sor a 2.2.0-as verziót használja példaként:
 
 ```bash
 wget https://github.com/Azure/WALinuxAgent/archive/v2.2.14.zip
@@ -417,61 +416,61 @@ cd WALinuxAgent-2.2.14
 
 ### <a name="2-install-the-azure-linux-agent"></a>2. Az Azure Linux-ügynök telepítése
 
-#### <a name="for-version-22x-use"></a>Verzió 2.2.x, használja:
-A csomag telepítéséhez szükség lehet `setuptools` először – lásd: [Itt](https://pypi.python.org/pypi/setuptools). Majd futtassa ezt:
+#### <a name="for-version-22x-use"></a>A 2.2. x verzióhoz használja a következőt:
+Előfordulhat, hogy először telepítenie kell `setuptools` a csomagot – lásd [itt](https://pypi.python.org/pypi/setuptools). Majd futtassa ezt:
 
 ```bash
 sudo python setup.py install
 ```
 
-#### <a name="ensure-auto-update-is-enabled"></a>Győződjön meg arról, engedélyezve van az automatikus frissítés
+#### <a name="ensure-auto-update-is-enabled"></a>Győződjön meg arról, hogy az automatikus frissítés engedélyezve van
 
-Először ellenőrizze, hogy ha engedélyezve van:
+Először ellenőrizze, hogy engedélyezve van-e a következő:
 
 ```bash
 cat /etc/waagent.conf
 ```
 
-Keresse meg a "AutoUpdate.Enabled". A következő kimenet látható, ha engedélyezve van:
+Az "AutoUpdate. enabled" megkeresése. Ha ezt a kimenetet látja, engedélyezve van a következő:
 
 ```bash
 # AutoUpdate.Enabled=y
 AutoUpdate.Enabled=y
 ```
 
-Futtatás engedélyezése:
+A Futtatás engedélyezése:
 
 ```bash
 sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 ```
 
-### <a name="3-restart-the-waagent-service"></a>3. Indítsa újra a waagent szolgáltatást
-A legtöbb Linux-disztribúciók:
+### <a name="3-restart-the-waagent-service"></a>3. A waagent szolgáltatás újraindítása
+A legtöbb Linux-disztribúció esetében:
 
 ```bash
 sudo service waagent restart
 ```
 
-Ubuntu rendszeren használja:
+Ubuntu esetén használja a következőt:
 
 ```bash
 sudo service walinuxagent restart
 ```
 
-A CoreOS használhatja:
+A CoreOS használja a következőt:
 
 ```bash
 sudo systemctl restart waagent
 ```
 
-### <a name="4-confirm-the-azure-linux-agent-version"></a>4. Erősítse meg az Azure Linux-ügynök verziója
+### <a name="4-confirm-the-azure-linux-agent-version"></a>4. Az Azure Linux-ügynök verziójának megerősítése
     
 ```bash
 waagent -version
 ```
 
-A CoreOS a fenti parancs nem működik.
+A CoreOS esetében előfordulhat, hogy a fenti parancs nem működik.
 
 Látni fogja, hogy az Azure Linux-ügynök verziója frissítve lett az új verzióra.
 
-Az Azure Linux-ügynökkel kapcsolatos további információkért lásd: [Azure Linux Agent információs](https://github.com/Azure/WALinuxAgent).
+Az Azure Linux-ügynökkel kapcsolatos további információkért lásd: [Azure Linux Agent readme](https://github.com/Azure/WALinuxAgent).

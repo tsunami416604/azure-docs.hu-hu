@@ -4,26 +4,25 @@ description: Oktatóanyag – Ebben az oktatóanyagban megtudhatja, hogyan hozha
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6c6510113710ea19128fcd27adbf8671a8f083bc
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3d0b67227c8e80f23f111ec889f8cb1541b15f94
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57996510"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100768"
 ---
-# <a name="tutorial-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>Oktatóanyag: Egy Linux rendszerű virtuális gépen az Azure-ban a Jenkins, GitHub és Docker-fejlesztési infrastruktúra létrehozása
+# <a name="tutorial-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>Oktatóanyag: Fejlesztési infrastruktúra létrehozása Linux rendszerű virtuális gépen az Azure-ban a Jenkins, a GitHub és a Docker
 
 Az alkalmazás fejlesztésének létrehozási és tesztelési fázisának automatizálásához használhat egy folyamatos integrációs és fejlesztési (CI/CD) folyamatot. Ebben az oktatóanyagban létrehozhat egy CI/CD folyamatot egy Azure-beli virtuális gépen, továbbá megismerkedhet a következőkkel is:
 
@@ -109,7 +108,7 @@ Biztonsági okokból a Jenkins telepítésének megkezdéséhez meg kell adnia a
 ssh azureuser@<publicIps>
 ```
 
-Ellenőrizze a Jenkins használatával fut-e a `service` parancsot:
+Ellenőrizze, hogy a Jenkins fut `service` -e a parancs használatával:
 
 ```bash
 $ service jenkins status
@@ -140,7 +139,7 @@ Ezután indítson el egy webböngészőt és lépjen a `http://<publicIps>:8080`
 - Válassza a **Save and Finish** (Mentés és befejezés) elemet
 - Amint Jenkins készen áll, kattintson a **Start using Jenkins** (Jenkins használatának megkezdése) elemre
   - Ha a webböngésző Jenkins használatának megkezdésekor egy üres lapot jelenít meg, indítsa újra a Jenkins szolgáltatást. Az SSH-munkamenetben gépelje be a `sudo service jenkins restart` parancsot, majd frissítse a webböngészőt.
-- Ha szükséges, jelentkezzen be a felhasználónevet és jelszót, amelyet a Jenkins.
+- Ha szükséges, jelentkezzen be a Jenkins-be a létrehozott felhasználónévvel és jelszóval.
 
 
 ## <a name="create-github-webhook"></a>GitHub-webhook létrehozása
@@ -148,13 +147,13 @@ A GitHubbal való integráció konfigurálásához nyissa meg a [Node.js „Hell
 
 Hozzon létre egy webhookot a létrehozott elágazásban:
 
-- Válassza ki **beállítások**, majd **Webhookok** a bal oldalon.
-- Válasszon **webhook hozzáadása**, majd adja meg *Jenkins* a Szűrő mezőbe.
-- Az a **hasznos adat URL-cím**, adja meg `http://<publicIps>:8080/github-webhook/`. Ügyeljen rá, hogy az URL-címből ne maradjon le a „/” záró karakter.
-- A **tartalomtípus**válassza *application/x-www-form-urlencoded*.
-- A **mely eseményeket szeretné elindítani ezt a webhookot?** válassza *csak a leküldéses esemény.*
-- Állítsa be **aktív** az ellenőrzött.
-- Kattintson a **webhook hozzáadása**.
+- Válassza a **Beállítások**, majd a bal oldali webhookok lehetőséget.
+- Válassza a **webhook hozzáadása**lehetőséget, majd írja be a *Jenkins* kifejezést a szűrő mezőbe.
+- A **hasznos adatok URL-címéhez**írja be `http://<publicIps>:8080/github-webhook/`a következőt: Ügyeljen rá, hogy az URL-címből ne maradjon le a „/” záró karakter.
+- A **tartalom típusa**beállításnál válassza az *Application/x-www-Form-urlencoded*lehetőséget.
+- **Mely eseményekhez szeretné elindítani ezt**a webhookot? jelölje ki *a csak a leküldéses eseményt.*
+- Az **aktív** érték bejelölve.
+- Kattintson a **webhook hozzáadása**lehetőségre.
 
 ![A GitHub-webhook hozzáadása az elágaztatott adattárhoz](media/tutorial-jenkins-github-docker-cicd/github_webhook.png)
 

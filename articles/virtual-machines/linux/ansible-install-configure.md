@@ -1,31 +1,29 @@
 ---
-title: Az Ansible telepítése Azure-beli virtuális gépeken
-description: Megtudhatja, hogyan telepítheti és konfigurálhatja az Ansible-t az Azure-erőforrások felügyeletéhez az Ubuntu, a CentOS és az SLES rendszereken
-ms.service: virtual-machines-linux
+title: Rövid útmutató – telepítés Ansible az Azure-beli Linuxos virtuális gépeken |} A Microsoft Docs
+description: Ebből a gyorsútmutatóból megtudhatja, hogyan Ansible telepítése és konfigurálása az Ubuntu, a CentOS és a SLES az Azure-erőforrások kezeléséhez
 keywords: ansible, azure, devops, bash, cloudshell, forgatókönyv, bash
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.topic: quickstart
-ms.date: 08/21/2018
-ms.openlocfilehash: 38a1ffdc815b357f7bb7ebe2c337b55a738fb6b5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.service: ansible
+author: tomarchermsft
+manager: gwallace
+ms.author: tarcher
+ms.date: 04/30/2019
+ms.openlocfilehash: d3302d999dd70a83be18ce610b9c3d44992c865c
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60187724"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671831"
 ---
-# <a name="install-ansible-on-azure-virtual-machines"></a>Az Ansible telepítése Azure-beli virtuális gépeken
+# <a name="quickstart-install-ansible-on-linux-virtual-machines-in-azure"></a>Gyors útmutató: Az Azure-beli Linuxos virtuális gépeken az Ansible telepítése
 
-Az Ansible-lel automatizálhatja az erőforrások üzembe helyezését és konfigurálását a környezetében. Az Ansible segítségével ugyanúgy felügyelheti a virtuális gépeket (VM-eket) az Azure-ban, ahogy azt bármely más erőforrással tenné. A cikk részletesen bemutatja az Ansible és a szükséges Azure Python SDK-modulok telepítésének módját a leggyakrabban használt Linux-disztribúciókon. Az Ansible más disztribúciókra is telepíthető, ha a telepített csomagokat az adott platformhoz igazítja. Az Azure-erőforrások biztonságos létrehozása érdekében megtudhatja azt is, hogyan hozhat létre és definiálhat az Ansible által használt hitelesítő adatokat. A Cloud Shellben elérhető további eszközök listájáért tekintse meg [az Azure Cloud Shellben elérhető Bash-funkciókat és -eszközöket bemutató cikket](../../cloud-shell/features.md#tools).
+Az Ansible-lel automatizálhatja az erőforrások üzembe helyezését és konfigurálását a környezetében. Ez a cikk bemutatja a leggyakoribb Linux-disztribúciók némelyike az Ansible konfigurálása. Az Ansible telepítése a többi a disztribúciókat, módosíthatja a telepített csomagokat, az adott platform esetében. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- **Azure-előfizetés** – Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-
-- **Hozzáférés a Linuxhoz vagy egy Linux rendszerű virtuális géphez** – Ha nem rendelkezik Linux rendszerű géppel, hozzon létre egy [Linux rendszerű virtuális gépet](https://docs.microsoft.com/azure/virtual-network/quick-create-cli).
-
-- **Az Azure szolgáltatás egyszerű**: Szakaszának utasításait a **az egyszerű szolgáltatás létrehozása** szakasz a cikkben [Azure-beli szolgáltatásnév létrehozása az Azure CLI 2.0](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest). Jegyezze fel az **appId**, a **displayName**, a **password** és a **tenant** értékét.
+[!INCLUDE [open-source-devops-prereqs-azure-sub.md](../../../includes/open-source-devops-prereqs-azure-subscription.md)]
+[!INCLUDE [open-source-devops-prereqs-create-sp.md](../../../includes/open-source-devops-prereqs-create-service-principal.md)]
+- **Hozzáférés a Linuxhoz vagy egy Linux rendszerű virtuális géphez** – Ha nem rendelkezik Linux rendszerű géppel, hozzon létre egy [Linux rendszerű virtuális gépet](/azure/virtual-network/quick-create-cli).
 
 ## <a name="install-ansible-on-an-azure-linux-virtual-machine"></a>Az Ansible telepítése Azure-beli Linux rendszerű virtuális gépeken
 
@@ -37,103 +35,133 @@ Jelentkezzen be a Linux rendszerű gépre, és válassza ki az alábbi disztrib�
 
 ### <a name="centos-74"></a>CentOS 7.4
 
-Az Azure Python SDK modulok és az Ansible szükséges csomagjainak telepítéséhez írja be a következő parancsokat egy terminálablakba vagy Bash-ablakba:
+Ebben a szakaszban a CentOS használata az Ansible konfigurálása.
 
-```bash
-## Install pre-requisite packages
-sudo yum check-update; sudo yum install -y gcc libffi-devel python-devel openssl-devel epel-release
-sudo yum install -y python-pip python-wheel
+1. Nyisson meg egy terminálablakot.
 
-## Install Ansible and Azure SDKs via pip
-sudo pip install ansible[azure]
-```
+1. Adja meg az Azure Python SDK-modulok a szükséges csomagok telepítéséhez a következő parancsot:
 
-Kövesse [az Azure-beli hitelesítő adatok létrehozását](#create-azure-credentials) ismertető szakasz utasításait.
+    ```bash
+    sudo yum check-update; sudo yum install -y gcc libffi-devel python-devel openssl-devel epel-release
+    sudo yum install -y python-pip python-wheel
+    ```
+
+1. Adja meg a szükséges csomagokat az Ansible telepítése a következő parancsot:
+
+    ```bash
+    sudo pip install ansible[azure]
+    ```
+
+1. [Hozzon létre az Azure-beli hitelesítő](#create-azure-credentials).
 
 ### <a name="ubuntu-1604-lts"></a>Ubuntu 16.04 LTS
 
-Az Azure Python SDK modulok és az Ansible szükséges csomagjainak telepítéséhez írja be a következő parancsokat egy terminálablakba vagy Bash-ablakba:
+Ebben a szakaszban Ubuntu használata az Ansible konfigurálása.
 
+1. Nyisson meg egy terminálablakot.
 
-```bash
-## Install pre-requisite packages
-sudo apt-get update && sudo apt-get install -y libssl-dev libffi-dev python-dev python-pip
+1. Adja meg az Azure Python SDK-modulok a szükséges csomagok telepítéséhez a következő parancsot:
 
-## Install Ansible and Azure SDKs via pip
-sudo pip install ansible[azure]
-```
+    ```bash
+    sudo apt-get update && sudo apt-get install -y libssl-dev libffi-dev python-dev python-pip
+    ```
 
-Kövesse [az Azure-beli hitelesítő adatok létrehozását](#create-azure-credentials) ismertető szakasz utasításait.
+1. Adja meg a szükséges csomagokat az Ansible telepítése a következő parancsot:
+
+    ```bash
+    sudo pip install ansible[azure]
+    ```
+
+1. [Hozzon létre az Azure-beli hitelesítő](#create-azure-credentials).
 
 ### <a name="sles-12-sp2"></a>SLES 12 SP2
 
-Az Azure Python SDK modulok és az Ansible szükséges csomagjainak telepítéséhez írja be a következő parancsokat egy terminálablakba vagy Bash-ablakba:
+Ebben a szakaszban SLES használata az Ansible konfigurálása.
 
-```bash
-## Install pre-requisite packages
-sudo zypper refresh && sudo zypper --non-interactive install gcc libffi-devel-gcc5 make \
-    python-devel libopenssl-devel libtool python-pip python-setuptools
+1. Nyisson meg egy terminálablakot.
 
-## Install Ansible and Azure SDKs via pip
-sudo pip install ansible[azure]
+1. Adja meg az Azure Python SDK-modulok a szükséges csomagok telepítéséhez a következő parancsot:
 
-# Remove conflicting Python cryptography package
-sudo pip uninstall -y cryptography
-```
+    ```bash
+    sudo zypper refresh && sudo zypper --non-interactive install gcc libffi-devel-gcc5 make \
+        python-devel libopenssl-devel libtool python-pip python-setuptools
+    ```
 
-Kövesse [az Azure-beli hitelesítő adatok létrehozását](#create-azure-credentials) ismertető szakasz utasításait.
+1. Adja meg a szükséges csomagokat az Ansible telepítése a következő parancsot:
+
+    ```bash
+    sudo pip install ansible[azure]
+    ```
+
+1. Adja meg a következő paranccsal távolítható el az ütköző Python cryptography package:
+
+    ```bash
+    sudo pip uninstall -y cryptography
+    ```
+
+1. [Hozzon létre az Azure-beli hitelesítő](#create-azure-credentials).
 
 ## <a name="create-azure-credentials"></a>Azure-beli hitelesítő adatok létrehozása
 
-Az előfizetés-azonosító és a szolgáltatásnév létrehozása alkalmával kapott adatok kombinációjával az Ansible hitelesítő adatai kétféleképpen konfigurálhatók:
+Az Ansible hitelesítő adatok konfigurálásához szüksége van a következő információkat:
+
+* Az Azure-előfizetés azonosítója 
+* A szolgáltatás egyszerű értékek
+
+Az Ansible Tower vagy a Jenkins használata, környezeti változókként a szolgáltatás egyszerű értékek deklarálását ismerteti.
+
+Adja meg az Ansible hitelesítő adatokat a következő módszerek egyikével:
 
 - [Az Ansible hitelesítő adatait tartalmazó fájl létrehozása](#file-credentials)
 - [Ansible környezeti változók használata](#env-credentials)
 
-Az Ansible Tower, a Jenkins vagy más hasonló eszközök használata esetén azt a lehetőséget kell alkalmaznia, hogy a szolgáltatásnevek értékét környezeti változókként deklarálja.
-
 ### <a name="span-idfile-credentials-create-ansible-credentials-file"></a><span id="file-credentials"/> Az Ansible hitelesítő adatait tartalmazó fájl létrehozása
 
-Ez a témakör azt ismerteti, hogy hogyan lehet egy helyi, hitelesítő adatokat tartalmazó fájlt létrehozni az Ansible hitelesítő adatainak biztosítására. További információ az Ansible hitelesítő adatainak definiálásáról: [Azure modulok hitelesítő adatainak biztosítása](https://docs.ansible.com/ansible/guide_azure.html#providing-credentials-to-azure-modules).
+Ebben a szakaszban hozzon létre egy helyi hitelesítő adatokkal fájlt az Ansible hitelesítő adatok megadása. 
 
-Fejlesztési környezetben a virtuális gazdagépen futó Ansible *hitelesítő adatait* tartalmazó fájlt a következő módon hozhat létre:
+Az Ansible hitelesítő adatok meghatározása kapcsolatos további információkért lásd: [hitelesítő adatok megadása az Azure-modulok](https://docs.ansible.com/ansible/guide_azure.html#providing-credentials-to-azure-modules).
 
-```bash
-mkdir ~/.azure
-vi ~/.azure/credentials
-```
+1. Fejlesztői környezet, hozzon létre egy fájlt `credentials` a gazdagép virtuális gépen:
 
-Szúrja be a következő sorokat a *hitelesítő adatokat* tartalmazó fájlba, a helyőrzők helyére a szolgáltatásnév létrehozása során használt adatokat behelyettesítve.
+    ```bash
+    mkdir ~/.azure
+    vi ~/.azure/credentials
+    ```
 
-```bash
-[default]
-subscription_id=<your-subscription_id>
-client_id=<security-principal-appid>
-secret=<security-principal-password>
-tenant=<security-principal-tenant>
-```
+1. A következő sorokat beszúrni a fájlba. A helyőrzőket cserélje le a szolgáltatás egyszerű értékeket.
 
-Mentse és zárja be a fájlt.
+    ```bash
+    [default]
+    subscription_id=<your-subscription_id>
+    client_id=<security-principal-appid>
+    secret=<security-principal-password>
+    tenant=<security-principal-tenant>
+    ```
+
+1. Mentse és zárja be a fájlt.
 
 ### <a name="span-idenv-credentialsuse-ansible-environment-variables"></a><span id="env-credentials"/>Ansible környezeti változók használata
 
-Ez a szakasz azt ismerteti, hogy hogyan konfigurálhatja az Ansible hitelesítő adatait környezeti változóként exportálva azokat.
+Ebben a szakaszban exportálja a szolgáltatás hitelesítő adatait az Ansible konfigurálása egyszerű értékeket.
 
-Adja meg a következő parancsokat egy terminál- vagy Bask-ablakban:
+1. Nyisson meg egy terminálablakot.
 
-```bash
-export AZURE_SUBSCRIPTION_ID=<your-subscription_id>
-export AZURE_CLIENT_ID=<security-principal-appid>
-export AZURE_SECRET=<security-principal-password>
-export AZURE_TENANT=<security-principal-tenant>
-```
+1. A szolgáltatás egyszerű értékek exportálása:
+
+    ```bash
+    export AZURE_SUBSCRIPTION_ID=<your-subscription_id>
+    export AZURE_CLIENT_ID=<security-principal-appid>
+    export AZURE_SECRET=<security-principal-password>
+    export AZURE_TENANT=<security-principal-tenant>
+    ```
 
 ## <a name="verify-the-configuration"></a>A konfiguráció ellenőrzése
-A sikeres konfiguráció ellenőrzése végett most már létrehozhat egy erőforráscsoportot az Ansible használatával.
 
-[!INCLUDE [create-resource-group-with-ansible.md](../../../includes/ansible-create-resource-group.md)]
+A sikeres konfigurációjának ellenőrzéséhez az Ansible használatával hozzon létre egy Azure-erőforráscsoportot.
+
+[!INCLUDE [create-resource-group-with-ansible.md](../../../includes/ansible-snippet-create-resource-group.md)]
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"] 
-> [Linux rendszerű virtuális gép létrehozása az Azure-ban az Ansible használatával](./ansible-create-vm.md)
+> [Rövid útmutató: Linux rendszerű virtuális gép konfigurálása az Azure-ban az Ansible-lel](./ansible-create-vm.md)

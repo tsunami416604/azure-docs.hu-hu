@@ -1,5 +1,5 @@
 ---
-title: Python-alkalmazás létrehozása linuxon – az Azure App Service |} A Microsoft Docs
+title: Python-alkalmazás létrehozása Linux rendszeren – Azure App Service | Microsoft Docs
 description: Percek alatt üzembe helyezheti első Hello World Python-alkalmazását a Linuxon futó Azure App Service-ben.
 services: app-service\web
 documentationcenter: ''
@@ -10,21 +10,20 @@ ms.assetid: ''
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/28/2019
+ms.date: 08/23/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: a386924be2f82aadafeaccbeadc68e5e27404855
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 08b1b85b980f992e799fc5198891290ec0d55c5d
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59546331"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70071006"
 ---
-# <a name="create-a-python-app-in-azure-app-service-on-linux-preview"></a>Egy Python-alkalmazás létrehozása az Azure App Service Linux (előzetes verzió)
+# <a name="create-a-python-app-in-azure-app-service-on-linux-preview"></a>Python-alkalmazás létrehozása Azure App Service Linux rendszeren (előzetes verzió)
 
-A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt a Linux operációs rendszer használatával. A Linux használatával a rövid útmutató bemutatja az App Service-ben a beépített Python-rendszerképpel (előzetes verzió) épülő Python-alkalmazás üzembe helyezése a [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview).
+A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt a Linux operációs rendszer használatával. Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe egy Python-alkalmazást a beépített Python-lemezképen (előzetes verzió) App Service Linuxon a [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)használatával.
 
 A cikk lépéseit Mac, Windows vagy Linux rendszert futtató gépen is követheti.
 
@@ -41,7 +40,7 @@ A Cloud Shellben hozzon létre egy quickstart könyvtárat, és lépjen a könyv
 ```bash
 mkdir quickstart
 
-cd quickstart
+cd $HOME/quickstart
 ```
 
 Ezután futtassa a következő parancsot a mintaalkalmazás-adattár a quickstart könyvtárba való klónozásához.
@@ -64,7 +63,7 @@ Checking connectivity... done.
 
 Lépjen abba a könyvtárba, amelyben a mintakód található, és futtassa az `az webapp up` parancsot.
 
-A következő példában az <app_name> helyett adjon meg egy egyedi alkalmazásnevet.
+A következő példában cserélje ki az *\<app_name>* nevet egy globálisan egyedi névre (érvényes karakterek: `a-z`, `0-9` és `-`).
 
 ```bash
 cd python-docs-hello-world
@@ -107,7 +106,7 @@ Az `az webapp up` parancs a következő műveleteket hajtja végre:
 
 - Egy alkalmazás létrehozása a megadott néven.
 
-- [Zip üzembe helyezése](https://docs.microsoft.com/azure/app-service/deploy-zip) fájlok az alkalmazás az aktuális munkakönyvtár.
+- A [zip telepíti](https://docs.microsoft.com/azure/app-service/deploy-zip) a fájlokat az aktuális munkakönyvtárból az alkalmazásba.
 
 ## <a name="browse-to-the-app"></a>Az alkalmazás megkeresése tallózással
 
@@ -117,7 +116,7 @@ Tallózással keresse meg az üzembe helyezett alkalmazást a webböngésző has
 http://<app_name>.azurewebsites.net
 ```
 
-A Python-mintakód fut az App Service Linux rendszeren egy beépített rendszerképpel rendelkező.
+A Python-mintakód App Service Linux rendszeren fut, beépített képpel.
 
 ![Az Azure-ban futó mintaalkalmazás](media/quickstart-python/hello-world-in-browser.png)
 
@@ -125,9 +124,9 @@ A Python-mintakód fut az App Service Linux rendszeren egy beépített rendszerk
 
 ## <a name="update-locally-and-redeploy-the-code"></a>A kód frissítése helyileg és ismételt üzembe helyezése
 
-Írja be a Cloud shellben `code application.py` a Cloud Shell-szerkesztő megnyitásához.
+A Cloud Shell a Cloud Shell szerkesztő `code application.py` megnyitásához írja be a következőt:.
 
-![Kód application.py](media/quickstart-python/code-applicationpy.png)
+![Application.py kód](media/quickstart-python/code-applicationpy.png)
 
  Végezzen el egy kis módosítást a `return` hívásának szövegében:
 
@@ -137,7 +136,7 @@ return "Hello Azure!"
 
 Mentse a módosításokat, és zárja be a szerkesztőt. A mentéshez a `^S`, a kilépéshez a `^Q` parancsot használja.
 
-Most újra üzembe helyezzük az alkalmazást. A helyettesítő `<app_name>` az alkalmazással.
+Most újra üzembe helyezzük az alkalmazást. Helyettesítse `<app_name>` be az alkalmazást.
 
 ```bash
 az webapp up -n <app_name>
@@ -149,13 +148,13 @@ Az üzembe helyezés befejezését követően váltson vissza **Az alkalmazás m
 
 ## <a name="manage-your-new-azure-app"></a>Az új Azure-alkalmazás kezelése
 
-Nyissa meg a <a href="https://portal.azure.com" target="_blank">az Azure portal</a> kezelheti a létrehozott alkalmazást.
+A létrehozott alkalmazás kezeléséhez lépjen a <a href="https://portal.azure.com" target="_blank">Azure Portal</a> .
 
-A bal oldali menüben kattintson a **App Services**, majd kattintson az Azure-alkalmazás neve.
+A bal oldali menüben kattintson a **app Services**elemre, majd kattintson az Azure-alkalmazás nevére.
 
 ![Navigálás a portálon egy Azure-alkalmazáshoz](./media/quickstart-python/app-service-list.png)
 
-Az alkalmazás áttekintése oldal jelenik meg. Itt elvégezhet olyan alapszintű felügyeleti feladatokat, mint a tallózás, leállítás, elindítás, újraindítás és törlés.
+Megtekintheti az alkalmazás áttekintés lapját. Itt elvégezhet olyan alapszintű felügyeleti feladatokat, mint a tallózás, leállítás, elindítás, újraindítás és törlés.
 
 ![Az App Service lap az Azure Portalon](media/quickstart-python/app-service-detail.png)
 
@@ -165,13 +164,13 @@ A bal oldali menü az alkalmazás konfigurálásához biztosít különböző ol
 
 ## <a name="next-steps"></a>További lépések
 
-A Linuxon futó App Service beépített Python rendszerképe jelenleg előzetes verzióban érhető el, és lehetőség van az alkalmazásindítási parancs testreszabására. Éles Python-alkalmazásokat egyéni tároló használatával is létrehozhat.
+A Linuxon futó App Service beépített Python-rendszerképe jelenleg előzetes verzióban érhető el, és testreszabhatja az alkalmazás indításához használt parancsot. Éles Python-alkalmazásokat egyéni tároló használatával is létrehozhat.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Python-alkalmazás és PostgreSQL](tutorial-python-postgresql-app.md)
+> [Oktatóanyag: Python-alkalmazás a PostgreSQL-sel](tutorial-python-postgresql-app.md)
 
 > [!div class="nextstepaction"]
 > [Python-alkalmazás konfigurálása](how-to-configure-python.md)
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Üzembe helyezés a privát tárház](tutorial-custom-docker-image.md)
+> [Oktatóanyag: Üzembe helyezés Private Container adattárból](tutorial-custom-docker-image.md)

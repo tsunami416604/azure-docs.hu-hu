@@ -4,6 +4,8 @@
   items:
     - name: Mi az az Azure DB for MySQL?
       href: overview.md
+    - name: Melyik MySQL-beállítást válasszam?
+      href: select-right-deployment-type.md
 - name: Gyors útmutatók
   expanded: true
   items:
@@ -79,20 +81,30 @@
           href: concepts-ssl-connection-security.md
         - name: Fejlett fenyegetésvédelem
           href: concepts-data-access-and-security-threat-protection.md
-        - name: VNet
+        - name: Virtual Network
           href: concepts-data-access-and-security-vnet.md
+        - name: Kapcsolati architektúra
+          href: concepts-connectivity-architecture.md
     - name: Az üzletmenet folytonossága
       items:
         - name: Áttekintés
           href: concepts-business-continuity.md
         - name: Biztonsági mentés és visszaállítás
           href: concepts-backup.md
-    - name: Figyelés
+    - name: Figyelés és hangolás
       items:
-        - name: Figyelés
+        - name: Figyelés és hangolás
           href: concepts-monitoring.md
-        - name: Kiszolgálói naplók
+        - name: Lassú lekérdezési naplók
           href: concepts-server-logs.md
+        - name: Naplók
+          href: concepts-audit-logs.md
+        - name: Lekérdezéstár
+          href: concepts-query-store.md
+        - name: Lekérdezési terheléselemző
+          href: concepts-query-performance-insight.md
+        - name: Teljesítménnyel kapcsolatos javaslatok
+          href: concepts-performance-recommendations.md
     - name: Fejlesztés
       items:
         - name: Az illesztőprogramok és eszközök kompatibilitása
@@ -157,12 +169,24 @@
           href: howto-server-parameters.md
         - name: Azure CLI
           href: howto-configure-server-parameters-using-cli.md
-    - name: Hozzáférés a kiszolgálói naplókhoz
+    - name: Tárterület automatikus növelése
       items:
         - name: Azure Portal
-          href: howto-configure-server-logs-in-portal.md
+          href: howto-auto-grow-storage-portal.md
         - name: Azure CLI
-          href: howto-configure-server-logs-in-cli.md
+          href: howto-auto-grow-storage-cli.md
+    - name: Hozzáférés a kiszolgálói naplókhoz
+      items:
+        - name: Lassú lekérdezési naplók
+          items:
+            - name: Azure Portal
+              href: howto-configure-server-logs-in-portal.md
+            - name: Azure CLI
+              href: howto-configure-server-logs-in-cli.md
+        - name: Naplók
+          items:
+            - name: Azure Portal
+              href: howto-configure-audit-logs-portal.md
     - name: Figyelés
       items:
         - name: Riasztások létrehozása metrikákhoz
@@ -173,7 +197,7 @@
           href: howto-data-in-replication.md
         - name: Olvasási replikák létrehozása az Azure Portalon
           href: howto-read-replicas-portal.md
-        - name: Olvasási replikák létrehozása az Azure CLI felületen
+        - name: Olvasási replikák létrehozása – Azure CLI és REST API
           href: howto-read-replicas-cli.md
     - name: Hibaelhárítás
       items:
@@ -207,8 +231,8 @@
       href: /rest/api/mysql
     - name: Resource Manager-sablon
       href: /azure/templates/microsoft.dbformysql/allversions
-    - name: Beérkező adatokra épülő replikáció tárolt eljárásai
-      href: reference-data-in-stored-procedures.md
+    - name: Azure-beli tárolt eljárások
+      href: reference-stored-procedures.md
 - name: További források
   items:
     - name: Üzembehelyezési sablonok
@@ -218,7 +242,7 @@
     - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/mysql/'
     - name: MSDN-fórum
-      href: 'https://social.msdn.microsoft.com/forums/security/en-US/home?forum=AzureDatabaseforMySQL'
+      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDatabaseforMySQL'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-database-mysql'
     - name: Videók

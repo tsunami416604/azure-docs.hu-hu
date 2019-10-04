@@ -2,20 +2,19 @@
 title: A Spark MLlib a HDInsight - Azure Machine learning példa
 description: Megtudhatja, hogyan hozhat létre egy machine learning-alkalmazást, amely elemzi a logisztikai regressziós keresztül a fájlbesorolás segítségével adatkészlet a Spark MLlib segítségével.
 keywords: a Spark a machine learning, a spark machine learning-példa
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 02/26/2019
+ms.date: 06/17/2019
 ms.author: hrasheed
-ms.openlocfilehash: bf29fd8d9b707636fb5965669ad800517a6cf58f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bdc645bf8de95265158c3bb7ebf71952369e4ab2
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58075561"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190896"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Az Apache Spark MLlib segítségével hozhat létre a machine learning-alkalmazás, és a egy adatkészlet elemzése
 
@@ -25,7 +24,7 @@ MLlib egy Spark Alapkönyvtár, amely számos hasznos segédprogramokat biztosí
 
 * Besorolás
 * Regresszió
-* Fürtözés
+* Fürtszolgáltatás
 * A témakör modellezés
 * Egyetlen érték idősorfelbontási (SVD) és egyszerű összetevő elemzés (PEM)
 * Tesztelés és minta statisztikák kiszámításához elmélet
@@ -200,12 +199,12 @@ Kezdjük a megtapasztalhatja, az adatkészlet tartalmaz.
 
     Előre jelezni egy food ellenőrzési serkenti az eredményt, a szabálysértések alapuló modell fejlesztéshez szükséges. Mivel a logisztikai regressziós egy bináris osztályozási metódust, logikus csoportosítása az eredményadatok két kategóriába sorolhatók: **Sikertelen** és **átadni**:
 
-   - Sikeres
-       - Sikeres
+   - Fázis
+       - Fázis
        - Feltételek használatával adja át
    - Sikertelen
        - Sikertelen
-   - Elvetés
+   - Elvetése
        - Nem találhatók üzleti
        - Üzleti kívül
 

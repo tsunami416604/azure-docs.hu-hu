@@ -1,7 +1,6 @@
 ---
-title: A helyszíni Apache Hadoop-fürtök áttelepítése Azure HDInsight - Motiváció és előnyök
-description: Ismerje meg, a Motiváció és áttelepíteni a helyszíni Hadoop-fürtöket az Azure HDInsight-kedvezmények.
-services: hdinsight
+title: Helyszíni Apache Hadoop migrálása az Azure HDInsight – motiváció és előnyök
+description: Megismerheti a helyszíni Hadoop-fürtök Azure-HDInsight való áttelepítésének motivációját és előnyeit.
 author: hrasheed-msft
 ms.reviewer: ashishth
 ms.service: hdinsight
@@ -9,201 +8,199 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 73a2f0754cafaa5da09ebd437ecd62813296ffd9
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: a65b775a516bfccac2dee5ce00bc7d6495df256d
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56890079"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718361"
 ---
-# <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>A helyszíni Apache Hadoop-fürtök áttelepítése Azure HDInsight - Motiváció és előnyök
+# <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>Helyszíni Apache Hadoop-fürtök migrálása az Azure HDInsight – motiváció és előnyök
 
-Ez a cikk egy sorozat az ajánlott eljárások a migrálás első helyszíni: az Azure HDInsight az Apache Hadoop ökoszisztéma központi telepítések. A cikksorozat olyan személyek, akik felelősek a tervezési, telepítési és az Azure HDInsight az Apache Hadoop-megoldások áttelepítése. A szerepkörök, amelyek előfordulhat, hogy ezek a cikkek közé tartozik a felhőben dolgozó tervezők, a Hadoop-rendszergazdák és a fejlesztési és üzemeltetési mérnökök. A szoftverfejlesztők, az adatmérnökök és az adatelemzők kell is élvezhetik a magyarázat, különböző típusú fürtök munkát a felhőben.
+Ez a cikk a helyszíni Apache Hadoop öko-rendszer Azure HDInsight való áttelepítésének ajánlott eljárásainak első sorozata. A cikksorozat azon személyeknek szól, akik az Azure HDInsight Apache Hadoop-megoldások tervezésével, üzembe helyezésével és áttelepítésével felelősek. Ezek a cikkek a felhő-építészek, a Hadoop-rendszergazdák és a DevOps-mérnökök számára is hasznosak lehetnek. A szoftverfejlesztők, adatmérnökök és adatszakértők a különböző típusú fürtök Felhőbeli működésének magyarázatát is kihasználhatják.
 
-## <a name="why-to-migrate-to-azure-hdinsight"></a>Miért az Azure HDInsight áttelepítése
+## <a name="why-to-migrate-to-azure-hdinsight"></a>Miért érdemes migrálni az Azure HDInsight
 
-Az Azure HDInsight a Hadoop-összetevők felhőalapú terjesztett a [Hortonworks Data Platform(HDP)](https://hortonworks.com/products/data-center/hdp/). Az Azure HDInsight segítségével könnyen, gyorsan és költséghatékonyan dolgozható fel nagy mennyiségű adat. HDInsight a legnépszerűbb nyílt forráskódú keretrendszerekkel például tartalmazza:
+Az Azure HDInsight a Hadoop-összetevők Felhőbeli eloszlása. Az Azure HDInsight segítségével könnyen, gyorsan és költséghatékonyan dolgozható fel nagy mennyiségű adat. A HDInsight tartalmazza a legnépszerűbb nyílt forráskódú keretrendszereket, például a következőket:
 
 - Apache Hadoop
 - Apache Spark
-- Az Apache Hive LLAP-
+- Apache Hive LLAP
 - Apache Kafka
 - Apache Storm
 - Apache HBase
 - R
 
-## <a name="azure-hdinsight-advantages-over-on-premises-hadoop"></a>Helyszíni Hadoop előnyöket az Azure HDInsight
+## <a name="azure-hdinsight-advantages-over-on-premises-hadoop"></a>Az Azure HDInsight előnyei a helyszíni Hadoop
 
-- **Alacsony költség** -költségeket is csökkentette [igény szerinti fürtök létrehozása](../hdinsight-hadoop-create-linux-clusters-adf.md) , és csak azért kell fizetnie kell fizetni. Függetlenített számítás és tárolás rugalmasságot biztosít azáltal adatmennyiség független a fürt méretét.
+- Az **alacsony költségek** csökkentéséhez a [fürtöket igény](../hdinsight-hadoop-create-linux-clusters-adf.md) szerint kell létrehozni, és csak azért kell fizetnie, amit ténylegesen használ. A leválasztott számítás és tárolás rugalmasságot biztosít azáltal, hogy az adatmennyiséget a fürt méretétől függetlenül tartja.
 
-- **Fürt létrehozása az automatikus** automatizált – fürt létrehozása előtt minimális beállítása és konfigurációja. Igény szerinti fürtök Automation is használható.
+- **Automatikus fürt létrehozása** – a fürt automatikus létrehozásához minimális beállítás és konfigurálás szükséges. Az Automation használható igény szerinti fürtökhöz.
 
-- **A felügyelt hardveres és konfigurációs** – nem kell aggódnia a fizikai hardver- vagy infrastruktúra-HDInsight-fürthöz. Csak adja meg a fürt konfigurációját, és az Azure állítja be.
+- **Felügyelt hardverek és konfigurációk** – nem kell aggódnia a fizikai hardver vagy infrastruktúra HDInsight-fürttel való használatával kapcsolatban. Csak adja meg a fürt konfigurációját, és az Azure beállítja.
 
-- **Könnyen méretezhető** -HDInsight lehetővé teszi, hogy [méretezési](../hdinsight-administer-use-portal-linux.md) felfelé vagy lefelé számítási feladatokhoz. Azure gondoskodik az adatok újraelosztás és a számítási feladatok kiegyenlítése adatfeldolgozási feladatok megszakítása nélkül.
+- A **könnyen méretezhető** HDInsight lehetővé teszi a számítási feladatok fel-és [leskálázását](../hdinsight-administer-use-portal-linux.md) . Az Azure az adatfeldolgozási feladatok megszakítása nélkül gondoskodik az adatok újraelosztásáról és a számítási feladatok kiegyensúlyozásáról.
 
-- **Globális elérhetőség** -HDInsight érhető el további [régiók](https://azure.microsoft.com/regions/services/) , mint bármely más big data-elemzési ajánlat. Az Azure HDInsight elérhető az Azure Governmentben, Kínában, és Németországban is, így megfelelhet a vállalati igényeknek a főbb szuverén területeken.
+- **Globális rendelkezésre állás** – a HDInsight több [régióban](https://azure.microsoft.com/regions/services/) is elérhető, mint bármely más Big Data elemzési ajánlat. Az Azure HDInsight elérhető az Azure Governmentben, Kínában, és Németországban is, így megfelelhet a vállalati igényeknek a főbb szuverén területeken.
 
-- **Biztonságos és megfelelő** -HDInsight lehetővé teszi, hogy az a vállalati adategységek védelmét [Azure Virtual Network](../hdinsight-extend-hadoop-virtual-network.md), [titkosítási](../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md), és integrációs szolgáltatásaival [Azure Active Directory](../domain-joined/apache-domain-joined-introduction.md). HDInsight továbbá megfelel a legnépszerűbb iparági és kormányzati [megfelelőségi szabvány](https://azure.microsoft.com/overview/trusted-cloud).
+- A **biztonságos és megfelelő** HDInsight lehetővé teszi a vállalati adategységek védelmét az [Azure Virtual Network](../hdinsight-plan-virtual-network-deployment.md), [titkosítással](../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md)és az [Azure Active Directoryokkal](../domain-joined/hdinsight-security-overview.md)való integrációval. A HDInsight a legnépszerűbb iparági és kormányzati [megfelelőségi szabványoknak](https://azure.microsoft.com/overview/trusted-cloud)is megfelel.
 
-- **Verziókezelés egyszerűsített** – Azure HDInsight Hadoop-ökoszisztéma összetevők verziója kezeli, és naprakészen tartja őket. Szoftverfrissítések rendszerint összetett folyamat a helyszíni üzemelő példányok esetében.
+- **Egyszerűsített verziókövetés** – az Azure HDInsight kezeli a Hadoop Eco-System összetevőinek verzióját, és naprakészen tartja azokat. A szoftverfrissítések általában egy összetett folyamat a helyszíni környezetekben.
 
-- **Kisebb fürtök összetevői között kevesebb függőségekkel adott feladatokra optimalizált** – egy tipikus helyszíni Hadoop-beállítást használja, amely számos célra szolgál egy fürtön. Az Azure HDInsight, a munkaterhelés-specifikus fürtök hozható létre. Adott munkaterhelés-fürtök létrehozása során megszűnnek a fenntartása bonyolultsága nő az egy fürtön.
+- Az **összetevők közötti kevesebb függőséggel rendelkező, meghatározott számítási feladatokhoz optimalizált kisebb fürtök** – a tipikus helyszíni Hadoop-telepítő egyetlen fürtöt használ, amely számos célt szolgál. Az Azure HDInsight a munkaterhelés-specifikus fürtök hozhatók létre. A fürtök adott számítási feladatokhoz való létrehozása eltávolítja a bonyolultságot, amely egyre összetettebbé válik egyetlen fürt fenntartásával.
 
-- **Termelékenység** -használható különböző eszközöket biztosít a Hadoop és Spark a választott fejlesztési környezetben.
+- **Termelékenység** – különböző eszközöket használhat a Hadoop és a sparkhoz az előnyben részesített fejlesztési környezetben.
 
-- **Az egyéni eszközöket vagy harmadik féltől származó alkalmazások bővíthetőség** -HDInsight-fürtök telepített összetevők ki lehet terjeszteni, és segítségével az más big data-megoldások is integrálhatók [egykattintásos](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/)  az Azure Marketplace-beli telepítéseit.
+- **Bővíthetőség egyéni eszközökkel vagy harmadik féltől származó alkalmazásokkal** – a HDInsight-fürtök bővíthetők a telepített összetevőkkel, és a többi Big Data-megoldással is integrálhatók az Azure-ból származó [egykattintásos](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) deployments használatával. Piaci hely.
 
-- **Könnyű kezelés felügyeleti, feladatütemezési és figyelési** -integrálható az Azure HDInsight [naplózza az Azure Monitor](../hdinsight-hadoop-oms-log-analytics-tutorial.md) , amellyel követheti az összes fürt egységes felületet biztosít.
+- **Egyszerű felügyelet, felügyelet és figyelés** – az Azure HDInsight integrálható [Azure Monitor naplókkal](../hdinsight-hadoop-oms-log-analytics-tutorial.md)@no__t – a 2gombot egyetlen felületet biztosítanak, amellyel az összes fürtöt nyomon követheti.
 
-- **Integráció más Azure szolgáltatásokkal** -HDInsight egyszerűen integrálható más népszerű Azure-szolgáltatások például a következőket:
+- **Integráció más Azure-szolgáltatásokkal** – a HDInsight könnyen integrálható más népszerű Azure-szolgáltatásokkal, például a következőkkel:
 
-    - Az Azure Data Factory (ADF)
+    - Azure Data Factory (ADF)
     - Azure Blob Storage
-    - 2. generációs Azure Data Lake Storage
+    - Azure Data Lake Storage Gen2
     - Azure Cosmos DB
     - Azure SQL Database
     - Azure Analysis Services
 
-- **Önjavító tárolószervezéssel folyamatokkal és összetevőkkel** -HDInsight folyamatosan ellenőrzi az infrastruktúra és a nyílt forráskódú összetevők a saját figyelési infrastruktúra használatával. Kritikus hibák, például a nyílt forráskódú összetevőkkel és elérhetetlensége automatikusan is helyreállítja. Riasztások aktiválódnak az Ambari, ha bármely nyílt Forráskódú összetevő nem sikerült.
+- **Önjavító folyamatok és összetevők** – a HDInsight folyamatosan ellenőrzi az infrastruktúrát és a nyílt forráskódú összetevőket a saját figyelési infrastruktúrájának használatával. Emellett automatikusan helyreállítja a kritikus hibákat, például a nyílt forráskódú összetevők és csomópontok nem rendelkezésre állását. A riasztások a Ambari-ben aktiválódnak, ha bármely OSS-összetevő meghiúsult.
 
-További információkért tekintse meg a cikket [Mi az Azure HDInsight és az Apache Hadoop-technológiák](../hadoop/apache-hadoop-introduction.md).
+További információ: [Mi az Azure HDInsight és a Apache Hadoop Technology stack](../hadoop/apache-hadoop-introduction.md).
 
-## <a name="migration-planning-process"></a>Áttelepítés tervezési folyamat
+## <a name="migration-planning-process"></a>Áttelepítési tervezési folyamat
 
-Az Azure HDInsight Hadoop-fürtöket a helyszíni áttelepítés tervezése ajánlott az alábbi lépéseket:
+A helyszíni Hadoop-fürtök Azure HDInsight-ba történő áttelepítésének megtervezéséhez a következő lépések szükségesek:
 
-1. Ismerje meg a jelenlegi helyszíni üzemelő példány és a topológiák.
-2. Ismerje meg a jelenlegi projekt hatókörének, az ütemtervek és a csapat szaktudását.
-3. Ismerje meg az Azure-követelményeknek.
-4. A részletes terv az ajánlott eljárások alapján hozhatja létre.
+1. Ismerje meg az aktuális helyszíni üzembe helyezést és topológiákat.
+2. Ismerje meg az aktuális projekt hatókörét, az ütemterveket és a csapat szakértelmét.
+3. Az Azure követelményeinek megismerése.
+4. Hozzon létre részletes tervet az ajánlott eljárások alapján.
 
-## <a name="gathering-details-to-prepare-for-a-migration"></a>Az áttelepítés előkészítése részletek gyűjtése
+## <a name="gathering-details-to-prepare-for-a-migration"></a>Az áttelepítésre való felkészülés részleteinek összegyűjtése
 
-Ez a szakasz tartalmazza a sablon kérdőíveket kapcsolatos fontos információk összegyűjtése segítségével:
+Ez a szakasz olyan sablon-kérdőíveket biztosít, amelyek segítenek a következő fontos információk gyűjtésében:
 
-- A helyszíni üzembe helyezés
+- Helyszíni üzembe helyezés
 - Projekt részletei
 - Azure-követelmények
 
-### <a name="on-premises-deployment-questionnaire"></a>A helyszíni üzembe helyezés kérdőív
+### <a name="on-premises-deployment-questionnaire"></a>Helyszíni üzembe helyezési kérdőív
 
 | **Kérdés** | **Példa** | **Válasz** |
 |---|---|---|
-|**a témakör**: **környezet**|||
-|Fürt terjesztési típusa|Hortonworks, Cloudera, MapR| |
+|**Témakör**: **Környezet**|||
 |Fürt terjesztési verziója|HDP 2.6.5, CDH 5.7|
-|Big Data-ökoszisztéma összetevőket|HDFS, Yarn, Hive, LLAP, Impala, Kudu, HBase, Spark, a MapReduce, a Kafka, Zookeeper, Solr, Sqoop, Oozie, Ranger, Atlas, sólyom, Zeppelin, R|
-|Fürttípusok|Hadoop, Spark, Confluent Kafka, Storm, Solr|
+|Big adatkörnyezet-összetevők|HDFS, fonal, kaptár, LLAP, Impala, kudu, HBase, Spark, MapReduce, Kafka, Zookeeper, Solr, Sqoop, Oozie, Ranger, atlasz, Falcon, Zeppelin, R|
+|Fürtök típusai|Hadoop, Spark, Confluent Kafka, Storm, Solr|
 |Fürtök száma|4|
 |Fő csomópontok száma|2|
-|A feldolgozó csomópontok száma|100|
-|Edge-csomópontok száma| 5|
+|Munkavégző csomópontok száma|100|
+|Peremhálózati csomópontok száma| 5|
 |Teljes lemezterület|100 TB|
-|Fő csomópont-konfiguráció|m/y, processzor, lemez, stb.|
-|Csomópont-konfigurációt|m/y, processzor, lemez, stb.|
-|Peremhálózati csomópont-konfiguráció|m/y, processzor, lemez, stb.|
-|HDFS Encryption?|Igen|
-|Magas rendelkezésre állás|HDFS magas rendelkezésre ÁLLÁSÚ, magas rendelkezésre ÁLLÁSÚ Metaadattár|
-|Vész-helyreállítási / biztonsági mentése|Biztonsági mentési fürt?|  
-|Fürt függő rendszerek|Az SQL Server, Teradata, Power bi-ban, a mongodb-hez|
-|Külső integráció|A tableau, a GridGain, Qubole, az Informatica, Splunk|
-|**a témakör**: **Biztonsági**|||
-|Szegélyhálózat-alapú biztonság|Tűzfalak|
-|Fürt-hitelesítés és engedélyezés|Az Active Directory, az Ambari, Cloudera kezelő, hitelesítés nélkül|
-|HDFS Access Control|  Kézi, ssh felhasználók|
-|Hive-hitelesítés és engedélyezés|SENTRY, az LDAP, Kerberos, Ranger AD|
-|Naplózás|Ambari, a Cloudera-kezelő, a Ranger|
-|Figyelés|Grafit, összegyűjtött, statsd, Telegraf, InfluxDB|
-|Riasztások kezelése|Kapacitor, Prometheus, Datadog|
-|Adatok megőrzési időtartama| három év, 5 év|
-|Fürt-rendszergazdák|Egyetlen rendszergazdája, több rendszergazda|
+|Fő csomópont konfigurálása|m/y, CPU, lemez stb.|
+|Adatcsomópontok konfigurálása|m/y, CPU, lemez stb.|
+|Peremhálózati csomópontok konfigurálása|m/y, CPU, lemez stb.|
+|HDFS titkosítás?|Igen|
+|Magas rendelkezésre állás|HDFS HA, Metaadattár HA|
+|Vész-helyreállítás/biztonsági mentés|Biztonsági mentési fürt?|  
+|Fürttől függő rendszerek|SQL Server, Teradata, Power BI, MongoDB|
+|Harmadik féltől származó integrációk|Tabló, GridGain, Qubole, Informatica, splunk|
+|**Témakör**: **Biztonsági**|||
+|Szegélyhálózati biztonság|Tűzfalak|
+|Fürt hitelesítésének & engedélyezése|Active Directory, Ambari, Cloudera Manager, nincs hitelesítés|
+|HDFS Access Control|  Manuális, SSH-felhasználók|
+|Struktúra-hitelesítés & engedélyezése|Sentry, LDAP, AD és Kerberos, Ranger|
+|Naplózás|Ambari, Cloudera-navigátor, Ranger|
+|Figyelés|Grafit, Collected, statd, InfluxDB|
+|Riasztások kezelése|Kapacitor, Prometheus, Datadoggal|
+|Adatmegőrzés időtartama| 3 év, 5 év|
+|Fürt rendszergazdái|Egyetlen rendszergazda, több rendszergazda|
 
-### <a name="project-details-questionnaire"></a>Projekt részletei kérdőív
+### <a name="project-details-questionnaire"></a>Project details – kérdőív
 
 |**Kérdés**|**Példa**|**Válasz**|
 |---|---|---|
-|**a témakör**: **Számítási feladatok és gyakorisága**|||
-|MapReduce jobs|10 feladatok – naponta kétszer||
-|Hive-feladatok|100 feladat – az óránként||
-|Spark-feladatok batch|50 feladatok – 15 percenként||
-|Spark Streamelési feladatok|5 feladat--át 3 percenként||
-|Strukturált Streamelés a feladatok|5 feladat – percenként||
-|Gépi Tanulási modell betanítási feladatok|2 feladat – egyszer a hét||
+|**Témakör**: **Számítási feladatok és gyakoriság**|||
+|MapReduce-feladatok|10 feladat – naponta kétszer||
+|Struktúra-feladatok|100 feladat--óránként||
+|Spark batch-feladatok|50 feladat – 15 percenként||
+|Spark streaming-feladatok|5 feladat – 3 percenként||
+|Strukturált adatfolyam-feladatok|5 feladat – percenként||
+|ML Model betanítási feladatok|2 feladat – hetente egyszer||
 |Programozási nyelvek|Python, Scala, Java||
-|Parancsfájlkészítés|Python-rendszerhéj||
-|**a témakör**: **Adatok**|||
-|Adatforrások|Egybesimított fájlokba, Json, a Kafka, a relációsadatbázis-kezelő rendszer||
-|Adatkoordinálás|Az Oozie-munkafolyamatok, légmozgás||
-|A memória-keresések|Apache Ignite, Redis||
-|Adatcélok|HDFS, RDBMS, Kafka, MPP ||
-|**a témakör**: **Metaadatok**|||
-|Hive-adatbázis típusa|MySQL, Postgres||
-|Nem. a Hive-metaadattárak|2||
-|Nem. a Hive-táblák|100||
-|Nem. Ranger-házirendek|20||
-|Nem. az Oozie-munkafolyamatok|100||
-|**a témakör**: **Méretezés**|||
-|Többek között a replikációs adatok mennyisége|100 TB||
-|Napi Adatbetöltési kötet|50 GB||
-|Adatok növekedési aránya|évenként 10 %||
-|Fürt csomópontjai növekedésének aránya|5 %-os, évenként
-|**a témakör**: **Fürt kihasználtsága**|||
-|Átlagos CPU-% foglalt|60%||
-|Átlagos memória %-át használja|75%||
+|Parancsprogram-kezelés|Shell, Python||
+|**Témakör**: **Adatok**|||
+|Adatforrások|Lapos fájlok, JSON, Kafka, RDBMS||
+|Adatkoordinálás|Oozie-munkafolyamatok, légáram||
+|Memóriabeli keresések|Apache Ignite, Redis||
+|Adatelérési helyek|HDFS, RDBMS, Kafka, MPP ||
+|**Témakör**: **Meta-adatértékek**|||
+|Struktúra-adatbázis típusa|MySQL, postgres||
+|Struktúra metaadattárak száma|2||
+|Struktúra-táblák száma|100||
+|A Ranger-szabályzatok száma|20||
+|Oozie-munkafolyamatok száma|100||
+|**Témakör**: **Méretezés**|||
+|Adatmennyiség, beleértve a replikálást|100 TB||
+|Napi betöltési mennyiség|50 GB||
+|Adatmennyiség növekedési aránya|évi 10%||
+|Fürtcsomópontok növekedési aránya|évente 5%
+|**Témakör**: **Fürt kihasználtsága**|||
+|Átlagos CPU-használat (%)|60%||
+|Felhasznált memória átlagos százaléka (%)|75%||
 |Használt lemezterület|75%||
-|Átlagos hálózati % foglalt|25%
-|**a témakör**: **Staff**|||
-|Nem. a rendszergazdák|2||
-|Nem. a fejlesztők számára|10||
-|Nem. a végfelhasználók számára|100||
+|Átlagos hálózati használat%-ban|25%
+|**Témakör**: **Személyzet**|||
+|Rendszergazdák száma|2||
+|Fejlesztők száma|10||
+|Végfelhasználók száma|100||
 |Képességek|Hadoop, Spark||
-|Nem. rendelkezésre álló erőforrások áttelepítése munkája alapján|2||
-|**a témakör**: **Korlátozások**|||
-|Aktuális korlátozások|Túl magas a késés||
-|Aktuális kihívásai|Egyidejűségi hiba||
+|Az áttelepítési erőfeszítésekhez rendelkezésre álló erőforrások száma|2||
+|**Témakör**: **Korlátozások**|||
+|Aktuális korlátozások|A késés magas||
+|Aktuális kihívások|Egyidejűségi probléma||
 
-### <a name="azure-requirements-questionnaire"></a>Azure-követelmények kérdőív
+### <a name="azure-requirements-questionnaire"></a>Azure-követelmények – kérdőív
 
-|**a témakör**: **Infrastruktúra** |||
+|**Témakör**: **Infrastruktúra** |||
 |---|---|---|
 |**Kérdés**|**Példa**|**Válasz**|
 | Előnyben részesített régió|USA keleti régiója||
-|Virtuális hálózatok közötti előnyben részesített?|Igen||
-|HA / DR Needed?|Igen||
+|VNet előnyben részesített?|Igen||
+|HA/DR szükséges?|Igen||
 |Integráció más felhőalapú szolgáltatásokkal?|ADF, CosmosDB||
-|**a témakör**:   **Adatáthelyezés**  |||
-|Kezdeti betöltési elsőbbségi|DistCp, Data box, ADF, WANDisco||
-|Adatok átvitele a különbözeti|DistCp, AzCopy||
+|**Témakör**:   **Adatáthelyezés**  |||
+|Kezdeti betöltési beállítás|DistCp, adatmező, ADF, WANDisco||
+|Adatátviteli különbözet|DistCp, AzCopy||
 |Folyamatos növekményes adatátvitel|DistCp, Sqoop||
-|**a témakör**:   **Monitorozás és riasztások** |||
-|Azure figyelési és riasztási Vs integrálása külső figyelést|Az Azure Monitorozás és riasztások||
-|**a témakör**:   **Biztonsági beállítások** |||
-|A magán- és védett adatfolyamat?|Igen||
-|Tartományhoz csatlakoztatott fürtöt (ESP)?|     Igen||
-|A helyszíni AD-Szinkronizáló a felhőbe?|     Igen||
-|Nem. az AD-felhasználók szinkronizálása?|          100||
-|OK szinkronizálja a jelszavakat a felhőbe?|    Igen||
-|Csak felhőbeli felhasználók?|                 Igen||
+|**Témakör**:   **& Riasztás figyelése** |||
+|Az Azure Monitoring & a riasztások és a harmadik féltől származó figyelés integrálása|Az Azure Monitoring & riasztások használata||
+|**Témakör**:   **Biztonsági beállítások** |||
+|Magán-és védett adatfolyamatok?|Igen||
+|Tartományhoz csatlakoztatott fürt (ESP)?|     Igen||
+|Helyszíni AD-szinkronizáló a felhőbe?|     Igen||
+|A szinkronizálni kívánt AD-felhasználók száma?|          100||
+|Szeretné szinkronizálni a jelszavakat a felhőbe?|    Igen||
+|Csak Felhőbeli felhasználók?|                 Igen||
 |MFA needed?|                       Nem|| 
-|Adatok engedélyezési követelményei?|  Igen||
-|Szerepköralapú hozzáférés-vezérlés?|        Igen||
+|Az adatengedélyezési követelmények?|  Igen||
+|Szerepköralapú Access Control?|        Igen||
 |Naplózás szükséges?|                  Igen||
-|Adattitkosítás inaktív?|          Igen||
-|Adattitkosítás átvitel közben?|       Igen||
-|**a témakör**:   **Helyreállítási környezet – architektúra-beállítások** |||
-|Egyetlen fürthöz a vs adott fürttípusokat|Meghatározott fürttípusokat||
-|Közösen elhelyezett vagy távoli tárolást?|Remote Storage||
-|Kisebb fürt méretét, az adat távolról?|Kisebb fürt mérete||
-|Egy nagy fürt, hanem több kisebb fürtöt használ?|Több kisebb fürtökkel||
-|Egy távoli metaadattár használni?|Igen||
-|Különböző fürtök között megosztást metaadattárakat?|Igen||
-|Számítási feladatok deconstruct?|Cserélje le a Hive-feladatok a Spark-feladatok||
-|Adatok előkészítése az ADF használatával?|Nem||
-|HDInsight vs Hortonworks Data Platform az IaaS?|HDInsight||
+|Inaktív adatok titkosítása?|          Igen||
+|Adattitkosítás az átvitel során?|       Igen||
+|**Témakör**:   **Újraarchitektúra beállításai** |||
+|Egyetlen fürt és adott fürtök típusai|Adott fürtök típusai||
+|A tárolók és a távoli tárolók is találhatók?|Távoli tárterület||
+|Kisebb a fürt mérete, mert az adattárolás távolról történik?|Kisebb fürt mérete||
+|Egy nagyméretű fürt helyett több kisebb fürtöt használjon?|Több kisebb fürt használata||
+|Távoli metaadattár használ?|Igen||
+|Megoszthatja a metaadattárak a különböző fürtök között?|Igen||
+|Felépítési feladatok elkészítése?|Kaptár-feladatok cseréje a Spark-feladatokkal||
+|Az ADF használata az adatelőkészítéshez?|Nem||
 
 ## <a name="next-steps"></a>További lépések
 
-Olvassa el az oktatóanyag-sorozatban a következő cikkben:
+Olvassa el a következő cikket a sorozatban:
 
-- [A helyszíni Azure HDInsight Hadoop-áttelepítési architektúra ajánlott eljárásai](apache-hadoop-on-premises-migration-best-practices-architecture.md)
+- [Ajánlott eljárások a helyszíni környezethez Azure HDInsight Hadoop áttelepítéshez](apache-hadoop-on-premises-migration-best-practices-architecture.md)

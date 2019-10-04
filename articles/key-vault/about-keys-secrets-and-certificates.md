@@ -1,75 +1,71 @@
 ---
-title: Tudnivalók az Azure Key Vault kulcsok, titkos kódok és tanúsítványok – Azure Key Vault
-description: Az Azure Key Vault REST felületet és fejlesztői részletei kulcsok, titkos kódok és tanúsítványok áttekintése.
+title: Tudnivalók Azure Key Vault kulcsokról, titkokról és tanúsítványokról – Azure Key Vault
+description: A kulcsok, titkok és tanúsítványok Azure Key Vault REST-felületének és fejlesztői adatainak áttekintése.
 services: key-vault
-documentationcenter: ''
 author: msmbaldwin
-manager: barbkess
+manager: rkarlin
 tags: azure-resource-manager
-ms.assetid: abd1b743-1d58-413f-afc1-d08ebf93828a
 ms.service: key-vault
-ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 01d9f763983da2415aba0f9bae81414017bc2f02
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cca4f794fd3f84b991c7882307f74bcfadf6835b
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57842566"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71241057"
 ---
-# <a name="about-keys-secrets-and-certificates"></a>Tudnivalók a kulcsok, titkos kódok és tanúsítványok
+# <a name="about-keys-secrets-and-certificates"></a>Kulcsok, titkos kódok és tanúsítványok
 
-Az Azure Key Vault lehetővé teszi, hogy a Microsoft Azure-alkalmazások és felhasználók tárolhatják és számos különböző típusú adatok titkos kulcs vagy kulcs használata:
+A Azure Key Vault lehetővé teszi Microsoft Azure alkalmazások és felhasználók számára, hogy több típusú titkos/kulcsos adatot tároljanak és használjanak:
 
-- Titkosítási kulcsok: Több kulcstípusok és algoritmusokat támogatja, és lehetővé teszi az értékes kulcsok használható hardveres biztonsági modulok (HSM). 
-- Titkos kódok: Titkos adatait, például a jelszavak és adatbázis-kapcsolati karakterláncok biztonságos tárolást biztosít.
-- Tanúsítványok: Támogatja a tanúsítványok, amely a kulcsok és titkos kulcsok épülnek, és adja hozzá az automatikus megújítási funkciót.
-- Azure Storage: Kezelheti az Ön számára az Azure Storage-fiók kulcsok. Belsőleg, a Key Vault egy Azure Storage-fiók kulcsok (sync) listában, és (elforgatás) újragenerálja a kulcsokat rendszeres időközönként. 
+- Titkosítási kulcsok: A több kulcs típust és algoritmust is támogat, és lehetővé teszi a hardveres biztonsági modulok (HSM) használatát a nagy értékű kulcsokhoz. 
+- Titkok Biztonságos tárhelyet biztosít a titkok, például a jelszavak és az adatbázis-kapcsolatok karakterláncai számára.
+- Tanúsítványok A a kulcsokra és titkokra épülő tanúsítványokat támogatja, és egy automatikus megújítási funkciót is felvesz.
+- Azure Storage: Kezelheti az Azure Storage-fiók kulcsait. Belsőleg Key Vault a kulcsokat egy Azure Storage-fiókkal listázhatja (szinkronizálhatja), és rendszeresen újragenerálhatja (elforgathatja) a kulcsokat. 
 
-Tudnivalók a Key Vaultról további általános információkért lásd: [Mi az Azure Key Vault?](/azure/key-vault/key-vault-whatis)
+További általános információk a Key Vaultről: [Mi az Azure Key Vault?](/azure/key-vault/key-vault-overview)
 
 ## <a name="azure-key-vault"></a>Azure Key Vault
 
-Az alábbi szakaszok a Key Vault szolgáltatás megvalósítása között vonatkozó általános információkat kínálnak.
+A következő részekben a Key Vault szolgáltatás megvalósítására vonatkozó általános információk találhatók.
 
-### <a name="supporting-standards"></a>Szabványok támogatása
+### <a name="supporting-standards"></a>Támogató szabványok
 
-A JavaScript Object Notation (JSON) és a JavaScript Object aláírás és titkosítás (JOSE) előírások olyan fontos háttér-információkat.  
+A JavaScript Object Notation (JSON) és a JavaScript Object aláírási és titkosítási (JOSE) specifikációi fontos háttér-információk.  
 
--   [JSON webes kulcs (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key)  
+-   [JSON-webkulcs (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key)  
 -   [JSON webes titkosítás (JWE)](http://tools.ietf.org/html/draft-ietf-jose-json-web-encryption)  
 -   [JSON Web Algorithms (JWA)](http://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms)  
--   [JSON webes aláírás (KMH)](https://tools.ietf.org/html/draft-ietf-jose-json-web-signature)  
+-   [JSON webes aláírás (JWS)](https://tools.ietf.org/html/draft-ietf-jose-json-web-signature)  
 
 ### <a name="data-types"></a>Adattípusok
 
-Tekintse meg a megfelelő adattípusokat kulcsok, titkosítási és aláírási JOSE előírásainak.  
+Tekintse meg a következő témakört: a kulcsok, a titkosítás és az aláírás releváns adattípusaihoz tartozó JOSE-specifikációk.  
 
--   **algoritmus** -kulcs művelet esetén például RSA1_5 egy támogatott algoritmus  
--   **ciphertext-érték** -szöveg oktettben Base64URL használatával lett kódolva cipher  
--   **a kivonatoló-érték** -kivonatoló algoritmust, Base64URL használatával lett kódolva kimenete  
--   **kulcs-típusú** – a támogatott kulcs típusú, például RSA (egyeztetéséhez a Rivest-Shamir-Adleman).  
--   **egyszerű szöveges-érték** – egyszerű szöveges oktettben Base64URL használatával  
--   **aláírás-érték** – kimeneti Base64URL használatával lett kódolva aláírási algoritmus  
--   **base64URL** – egy Base64URL [RFC4648] kódolású bináris érték  
+-   **algoritmus** – a kulcs műveletének támogatott algoritmusa, például RSA1_5  
+-   **rejtjelezett-érték** -titkosítatlan szöveges oktettek, Base64URL használatával kódolva  
+-   **kivonatoló érték** – a Base64URL használatával kódolt kivonatoló algoritmus kimenete  
+-   **kulcs-típus** – az egyik támogatott kulcs típusa, például RSA (Rivest-a-Adleman).  
+-   **egyszerű szöveges érték** – egyszerű szöveges oktettek, Base64URL használatával kódolva  
+-   **aláírás-érték** – az Base64URL használatával kódolt aláírási algoritmus kimenete  
+-   **base64URL** – a BASE64URL [RFC4648] kódolású bináris érték  
 -   **logikai** – igaz vagy hamis  
--   **Identitás** - identitás az Azure Active Directory (AAD).  
--   **IntDate** – 1970. a másodpercek számát jelölő JSON decimális-01-ig az adott UTC szerinti dátuma/ideje (UTC) 01T0:0:0Z. Lásd: különösen RFC3339 date/times észlelésével kapcsolatos részletekért és az UTC.  
+-   **Identity (identitás** ) – Azure Active Directory identitása (HRE).  
+-   **IntDate** – egy JSON decimális érték, amely az 1970-01-01T0:0: 0z UTC és a megadott UTC dátum/idő közötti másodpercek számát jelöli. A dátum-és időpontokra vonatkozó részletekért, valamint az általános és az UTC RFC3339 lásd:.  
 
-### <a name="objects-identifiers-and-versioning"></a>Objektumok, azonosítók és verziókezelés
+### <a name="objects-identifiers-and-versioning"></a>Objektumok, azonosítók és verziószámozás
 
-A Key Vaultban tárolt objektumok verziószámmal is, amikor létrejön egy objektum új példányát. Minden verzió van rendelve egy egyedi azonosító URL-CÍMÉT. Objektum létrehozásakor megadott egyedi verzióazonosítót, és az objektum aktuális verziója megjelölve. Az azonos nevű objektum egy új példányának létrehozása lehetővé teszi az új objektum egyedi verzióazonosító okozza, hogy a jelenlegi verzió válik.  
+A Key Vaultban tárolt objektumok verziószámozást kapnak, amikor egy objektum új példánya jön létre. Minden verzióhoz egyedi azonosító és URL-cím tartozik. Egy objektum első létrehozásakor a rendszer egyedi verzióazonosító-azonosítót kap, és az objektum aktuális verziójaként van megjelölve. Egy új példány ugyanazzal az objektummal való létrehozása lehetővé teszi az új objektum egyedi verziószámát, ami azt eredményezi, hogy az aktuális verzió lesz.  
 
-A Key Vaultban objektumokat is kezelhetők, a jelenlegi azonosító vagy egy verzió-specifikus azonosító használatával. Például a megadott nevű kulcs `MasterKey`, az aktuális azonosítóval rendelkező műveletek végrehajtása hatására a rendszer az elérhető legújabb verzióra. A rendszer, hogy az objektum adott verzióját használja a verziófüggő azonosítóval műveleteket okozza.  
+A Key Vaultban lévő objektumok az aktuális azonosítóval vagy egy Version-specifikus azonosítóval kezelhetők. Például, ha egy kulcs a névvel `MasterKey`van megadva, az aktuális azonosítóval rendelkező műveletek végrehajtásával a rendszer a legújabb elérhető verziót használja. A verzió-specifikus azonosítóval végzett műveletek végrehajtása azt eredményezi, hogy a rendszer az objektum adott verzióját használja.  
 
-Objektumok egyedileg azonosítja a Key Vault URL-címen belül. Két objektum a rendszer az azonos URL-CÍMÉT, függetlenül attól, földrajzi hely rendelkezik. Az objektum teljes URL-CÍMÉT az objektumazonosító nevezzük. Az URL-címet tartalmaz egy előtagot, amely azonosítja a Key Vault objektumtípus, felhasználó által megadott objektum nevét, és a egy objektum verziója. Az objektum neve, kis-és nagybetűket, és nem módosítható. Azonosítók, amelyeket nem tartalmazza az objektum verzió alapja azonosítók nevezzük.  
+Az objektumok egyedileg azonosíthatók a Key Vaulton belül egy URL-cím használatával. A rendszeren nincs két objektum ugyanazzal az URL-címmel, a földrajzi helytől függetlenül. Az objektum teljes URL-címét objektumazonosítónak nevezzük. Az URL-cím egy előtagból áll, amely a Key Vault, az Objektumtípus, a felhasználó által megadott objektumnév és az objektum verziószámát azonosítja. Az Objektumnév megkülönbözteti a kis-és nagybetűket, és nem változtathatók meg. Az objektum verziószámát nem tartalmazó azonosítókat alapazonosítóknak nevezzük.  
 
-További információkért lásd: [hitelesítési kérelmek és válaszok](authentication-requests-and-responses.md)
+További információ: [hitelesítés, kérések és válaszok](authentication-requests-and-responses.md)
 
-Az objektumazonosító általános formátuma a következő:  
+Az objektumazonosító a következő általános formátumú:  
 
 `https://{keyvault-name}.vault.azure.net/{object-type}/{object-name}/{object-version}`  
 
@@ -77,408 +73,407 @@ Az elemek magyarázata:
 
 |||  
 |-|-|  
-|`keyvault-name`|A Microsoft Azure Key Vault szolgáltatás key vault neve.<br /><br /> A Key Vault neve a felhasználó ki van jelölve, és globálisan egyedi.<br /><br /> Key Vault-névre karakterláncnak kell lennie 3 – 24 karakter, csak 0-9, amely tartalmazza a – z, A-Z, - és.|  
-|`object-type`|Az objektumot, vagy a "kulcsok", vagy a "titok" típusú.|  
-|`object-name`|Egy `object-name` a felhasználó által megadott név és a egy Key Vaultot egyedinek kell lennie. A név csak 0-9, amely egy 1 – 127 karakter karakterlánc lehet a – z, A-Z, - és.|  
-|`object-version`|Egy `object-version` a rendszer hozta létre, 32 karakter karakterlánc-azonosító, amely szükség esetén használja az objektum egyedi verzióját.|  
+|`keyvault-name`|A Microsoft Azure Key Vault szolgáltatásban található kulcstartó neve.<br /><br /> A felhasználók a Key Vault neveket választják, és globálisan egyediek.<br /><br /> Key Vault neve csak 0-9, a-z, A-Z és-. karakterláncot tartalmazó 3-24 karakterből állhat.|  
+|`object-type`|Az objektum típusa "Keys" vagy "Secrets".|  
+|`object-name`|`object-name` Az a felhasználó által megadott név, és egyedinek kell lennie egy Key Vaulton belül. A névnek 1-127 karakterből álló karakterláncnak kell lennie, amely csak 0-9, a-z, A-Z és-.|  
+|`object-version`|Az `object-version` egy rendszer által létrehozott, 32 karakterből álló karakterlánc-azonosító, amely opcionálisan * o-címekkel rendelkezik egy objektum egyedi verziójához.|  
 
-## <a name="key-vault-keys"></a>A Key Vault-kulcsok
+## <a name="key-vault-keys"></a>Kulcsok Key Vault
 
-### <a name="keys-and-key-types"></a>Kulcsok és a kulcs típusa
+### <a name="keys-and-key-types"></a>Kulcsok és kulcsok típusai
 
-Titkosítási kulcsok a Key Vaultban JSON webes kulcs [JWK] objektumként jelennek meg. Az alap JWK/JWA előírásoknak is terjeszteni a Key Vault megvalósításához egyedi kulcstípusok engedélyezése. Például importálása a HSM szállító-specifikus csomagolás eszközzel, lehetővé teszi, hogy csak akkor használható, a Key Vault HSM-kulcsok biztonságos szállítása.  
+A Key Vaultban található titkosítási kulcsok JSON webkulcs [JWK] objektumként jelennek meg. Az alap JWK-/JWA-specifikációk is kiterjeszthetők a Key Vault implementációban egyedi kulcs típusú típusok engedélyezéséhez. Ha például a kulcsokat a HSM gyártótól függő csomagolás használatával importálja, a lehetővé teszi a kulcsok biztonságos szállítását, amelyek csak Key Vault HSM használhatók.  
 
-- **"Soft" kulcsok**: Egy kulcsot a szoftver a Key Vault által feldolgozott, de titkosítása egy hardveres biztonsági modulban rendszer kulcs használatával. Az ügyfelek előfordulhat, hogy egy meglévő RSA vagy -EK (elliptikus görbe alapú) kulcs importálása, vagy kérje a Key Vault generál egyet.
-- **"Rögzített" kulcsok**: Egy kulcs feldolgozása hardveres biztonsági modul (HSM-mel). Ezek a kulcsok a Key Vault HSM biztonsági Világai valamelyik védett (van az elszigetelés földrajzi hely szerint egy biztonsági világ). Ügyfelek előfordulhat, hogy importálja egy RSA vagy EK kulcsot a letölthető formában vagy exportálásával egy kompatibilis a HSM-eszközről. Az ügyfelek is kérheti a Key Vault-kulcs létrehozása. Ilyen típusú kulcs hozzáadja a T-attribútumot a JWK szerezze be a HSM-kulcs adatai számára.
+- **"Soft" kulcsok**: A szoftverben Key Vault által feldolgozott kulcs, de a rendszer egy HSM-ben lévő rendszerkulcs használatával titkosítja a nyugalmi állapotban. Az ügyfelek importálhatók egy meglévő RSA-vagy EC-(elliptikus görbe-) kulcs, vagy kérhetik, hogy Key Vault létrehozzon egyet.
+- **"Kemény" kulcsok**: Egy HSM-ben feldolgozott kulcs (hardveres biztonsági modul). Ezeket a kulcsokat a Key Vault HSM biztonsági világok egyikén védik (az elkülönítés fenntartása érdekében a földrajz egy biztonsági világa van). Előfordulhat, hogy az ügyfelek nem importálnak egy RSA-vagy EK-kulcsot, vagy egy kompatibilis HSM-eszközről exportálnak. Előfordulhat, hogy az ügyfelek Key Vault kérhetnek a kulcsok létrehozásához. Ez a kulcspár hozzáadja a key_hsm attribútumot a JWK a HSM-kulcs anyagának elvégzéséhez.
 
-     További információ a földrajzi határokon belül: [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/privacy/)  
+     A földrajzi határokra vonatkozó további információkért lásd: [Microsoft Azure Adatvédelmi központ](https://azure.microsoft.com/support/trust-center/privacy/)  
 
-A Key Vault támogatja az RSA és az elliptikus görbe alapú kulcsok csak. 
+A Key Vault csak az RSA és az elliptikus görbe kulcsait támogatja. 
 
--   **EK**: "Soft" elliptikus görbe alapú kulcsot.
--   **EC-HSM**: "Rögzített" elliptikus görbe alapú kulcsot.
--   **RSA**: "Soft" RSA-kulcsot.
--   **RSA-HSM**: "Rögzített" RSA-kulcsot.
+-   **EK**: "Soft" elliptikus görbe kulcsa.
+-   **EC-HSM**: "Hard" elliptikus görbe kulcsa.
+-   **RSA**: "Soft" RSA-kulcs.
+-   **RSA-HSM**: "Hard" RSA-kulcs.
 
-A Key Vault támogatja a 2048, 3072 és 4096-méretek RSA-kulcsok. A Key Vault támogatja az elliptikus görbe alapú kulcs-típusok P-256, p-384, p-521 és P-256_K (SECP256K1).
+A Key Vault a 2048, 3072 és 4096 méretű RSA-kulcsokat támogatja. Key Vault támogatja a P-256, a P-384, a P-521 és a P-256K (SECP256K1) elliptikus görbe típusú kulcsokat.
 
-### <a name="cryptographic-protection"></a>Titkosítási védelme
+### <a name="cryptographic-protection"></a>Titkosítási védelem
 
-A Key Vault használó titkosítási moduljait HSM, illetve szoftver –, hogy-e FIPS szabványnak (FIPS) érvényesítve. Nem kell különösebb FIPS-módban történő futtatására. Kulcsok **létrehozott** vagy **importált** , HSM-védelemmel vannak feldolgozott belül HSM, érvényesítve a FIPS 140-2 2. szintje. Kulcsok **létrehozott** vagy **importált** szoftveres védelemmel ellátott, mint feldolgozása belül érvényesítve a 1-es szintű FIPS 140-2 titkosítási moduljait. További információkért lásd: [kulcsokat és a kulcstípusok](#keys-and-key-types).
+A Key Vault által használt kriptográfiai modulok (a HSM vagy a szoftverek) a FIPS (szövetségi adatfeldolgozási szabványok) hitelesítése. A FIPS-módban való futtatáshoz nem szükséges semmilyen speciális művelet. A HSM által védettként **létrehozott** vagy **importált** kulcsok a HSM-ben lesznek feldolgozva, amely a 2. szintű FIPS 140-2-es szintre van érvényesítve. A szoftver által védettként **létrehozott** vagy **importált** kulcsok feldolgozása az 1. szintű FIPS 140-2-es szintre ellenőrzött titkosítási modulokon belül történik. További információ: [kulcsok és kulcsok típusai](#keys-and-key-types).
 
-###  <a name="ec-algorithms"></a>EK algoritmusok
- A Key Vault HSM-EK és a kulcsokat a következő algoritmus azonosítók használata támogatott. 
+###  <a name="ec-algorithms"></a>EK-algoritmusok
+ A következő algoritmus-azonosítók támogatottak a Key Vault EC és EC-HSM kulcsaival. 
 
-#### <a name="curve-types"></a>Görbe típusok
+#### <a name="curve-types"></a>Görbe típusai
 
--   **P-256** -p-256, meg van határozva a NIST-görbét [DSS FIPS PUB 186 – 4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf).
--   **P-256_K** -SECP256K1, meg van határozva az mp-görbe [2 mp-ben: Ajánlott az elliptikus görbe alapú Domain paramétereket](https://www.secg.org/sec2-v2.pdf).
--   **P-384** -p-384, meg van határozva a NIST-görbét [DSS FIPS PUB 186 – 4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf).
--   **P-521** -p-521, meg van határozva a NIST-görbét [DSS FIPS PUB 186 – 4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf).
+-   **P-256** – a (z) p-256-es NIST-görbe, amely a [DSS FIPS pub 186-4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf)-ban van meghatározva.
+-   **P-256K** – a másodperces görbe SECP256K1, amely [a 2. másodpercben van meghatározva: Javasolt elliptikus görbe tartományi paraméterek](https://www.secg.org/sec2-v2.pdf).
+-   **P-384** – a (z) p-384-es NIST-görbe, amely a [DSS FIPS pub 186-4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf)-ban van meghatározva.
+-   **P-521** – a (z) p-521-es NIST-görbe, amely a [DSS FIPS pub 186-4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf)-ban van meghatározva.
 
-#### <a name="signverify"></a>BEJELENTKEZÉSI/ELLENŐRZÉSE
+#### <a name="signverify"></a>ALÁÍRÁS/ELLENŐRZÉS
 
--   **ES256** – digests ECDSA az SHA-256 algoritmust és görbe p-256 használatával létrehozott kulcsokat. Ez az algoritmus címen leírt [RFC7518](https://tools.ietf.org/html/rfc7518).
--   **ES256K** – digests ECDSA az SHA-256 algoritmust és a görbe P-256_K létre kulcsokat. Ez az algoritmus szabványügyi szervezet függőben van.
--   **ES384** – az SHA-384 ECDSA digests, és a görbe p-384 létre kulcsokat. Ez az algoritmus címen leírt [RFC7518](https://tools.ietf.org/html/rfc7518).
--   **ES512** – az SHA-512 ECDSA digests, és a görbe p-521 létre kulcsokat. Ez az algoritmus címen leírt [RFC7518](https://tools.ietf.org/html/rfc7518).
+-   **ES256** – ECDSA a P-256 görbével létrehozott SHA-256 kivonatokhoz és kulcsokhoz. Ez az algoritmus a következő címen érhető el: [RFC7518](https://tools.ietf.org/html/rfc7518).
+-   **ES256K** – ECDSA a P-256K által létrehozott SHA-256 kivonatokhoz és kulcsokhoz. Ez az algoritmus a normalizálás függőben van.
+-   **ES384** – ECDSA a P-384 görbével létrehozott SHA-384 kivonatokhoz és kulcsokhoz. Ez az algoritmus a következő címen érhető el: [RFC7518](https://tools.ietf.org/html/rfc7518).
+-   **ES512** – ECDSA a P-521 görbével létrehozott SHA-512 kivonatokhoz és kulcsokhoz. Ez az algoritmus a következő címen érhető el: [RFC7518](https://tools.ietf.org/html/rfc7518).
 
-###  <a name="rsa-algorithms"></a>Az RSA algoritmus  
- A következő algoritmus azonosítók RSA és az RSA-HSM kulcsok a Key Vault használata támogatott.  
+###  <a name="rsa-algorithms"></a>RSA-algoritmusok  
+ A következő algoritmus-azonosítók támogatottak az RSA és az RSA-HSM kulcsok esetében Key Vaultban.  
 
-#### <a name="wrapkeyunwrapkey-encryptdecrypt"></a>WRAPKEY/UNWRAPKEY, TITKOSÍTÁSI/VISSZAFEJTÉSI
+#### <a name="wrapkeyunwrapkey-encryptdecrypt"></a>WRAPKEY/UNWRAPKEY, TITKOSÍTÁS/VISSZAFEJTÉS
 
 -   **RSA1_5** - RSAES-PKCS1-V1_5 [RFC3447] key encryption  
--   **Az RSA-OAEP** – RSAES optimális aszimmetrikus titkosítási Padding (OAEP) [RFC3447], szakasz A.2.1 az RFC 3447 által meghatározott alapértelmezett paraméterek használatával. Alapértelmezett paraméterek SHA-1 algoritmussal SHA-1 kivonatoló függvényt és a egy MGF1 maszk generációs funkcióját használja.  
+-   **RSA-OAEP** -RSAES az optimális aszimmetrikus titkosítási kitöltés (OAEP) [RFC3447] használatával az a. 2.1. szakaszban az RFC 3447 által meghatározott alapértelmezett paraméterekkel. Ezek az alapértelmezett paraméterek az SHA-1 kivonatoló függvényét használják, és a MGF1 maszk generálási funkciója az SHA-1.  
 
-#### <a name="signverify"></a>BEJELENTKEZÉSI/ELLENŐRZÉSE
+#### <a name="signverify"></a>ALÁÍRÁS/ELLENŐRZÉS
 
--   **RS256** - RSASSA-PKCS-v1_5 using SHA-256. Az alkalmazás megadott kivonatoló érték SHA-256 használatával kell számolni, és 32 bájt hosszú lehet.  
--   **RS384** – RSASSA-PKCS-v1_5 SHA-384-et használ. Az alkalmazás megadott kivonatoló érték SHA-384-et használó kell számolni, és 48 bájt hosszú lehet.  
--   **RS512** – RSASSA-PKCS-v1_5 SHA-512 használatával. Az alkalmazás megadott kivonatoló érték SHA-512 használatával kell számolni, és 64 bájt hosszú lehet.  
--   **RSNULL** – lásd: [RFC2437], egy speciális használati bizonyos TLS forgatókönyvek engedélyezéséhez.  
+-   **RS256** -RSASSA-PKCS-V1_5 az SHA-256 használatával. Az alkalmazás által biztosított kivonatoló értéket az SHA-256 értékkel kell kiszámítani, és 32 bájt hosszúságú kell lennie.  
+-   **RS384** -RSASSA-PKCS-V1_5 az SHA-384 használatával. Az alkalmazás által biztosított kivonatoló értéket az SHA-384 értékkel kell kiszámítani, és 48 bájt hosszúságú kell lennie.  
+-   **RS512** -RSASSA-PKCS-V1_5 az SHA-512 használatával. Az alkalmazás által biztosított kivonatoló értéket az SHA-512 értékkel kell kiszámítani, és 64 bájt hosszúságú kell lennie.  
+-   **RSNULL** – tekintse meg a következőt: [RFC2437], speciális használati eset az egyes TLS-forgatókönyvek engedélyezéséhez.  
 
-###  <a name="key-operations"></a>Kulcsműveletek
+###  <a name="key-operations"></a>Legfontosabb műveletek
 
-A Key Vault támogatja a következő műveleteket az objektumok:  
+Key Vault a következő műveleteket támogatja a legfontosabb objektumokon:  
 
--   **Hozzon létre**: Engedélyezi, hogy egy ügyfél hozzon létre egy kulcsot a Key Vaultban. A kulcs értékét a Key Vault által generált és tárolja, és nem az ügyfél általánosan elérhető. A Key Vaultban aszimmetrikus kulcsokhoz lehet létrehozni.  
--   **Importálás**: Lehetővé teszi, hogy egy ügyfél egy meglévő kulcs importálása a Key vaulthoz. A Key Vault használatával számos különböző csomagolási módszerrel belül egy JWK-szerkezet aszimmetrikus kulcsokhoz is importálhatók. 
--   **Frissítés**: Lehetővé teszi, hogy korábban tárolja a Key Vault-kulcshoz tartozó metaadatok (kulcsattribútum) módosításához szükséges engedélyekkel rendelkező ügyfelet.  
--   **Törlés**: Lehetővé teszi, hogy egy ügyfél a megfelelő engedélyekkel a Key Vaultból kulcs törlése.  
--   **Lista**: Lehetővé teszi, hogy egy ügyfél egy adott Key vaultban a összes kulcsok listázását.  
--   **Verziók listázása**: Lehetővé teszi, hogy az ügyfél egy adott kulcs egy adott kulcstartó összes verzió listázása.  
--   **Első**: Engedélyezi, hogy egy ügyfél lekérheti az egy adott kulcs a Key Vaultban nyilvános részeit.  
--   **Biztonsági mentés**: Exportálja egy kulcsot, védett formátumban.  
--   **Visszaállítás**: Importál egy biztonsági másolatból kulcsot.  
+-   **Létrehozás**: Lehetővé teszi, hogy az ügyfél Key Vault hozzon létre egy kulcsot. A kulcs értékét Key Vault és tárolja a rendszer, és az nem jelenik meg a-ügyfél számára. Az aszimmetrikus kulcsok a Key Vaultben hozhatók létre.  
+-   **Importálás**: Lehetővé teszi, hogy az ügyfél egy meglévő kulcsot importáljon Key Vaultba. Az aszimmetrikus kulcsok a JWK-konstrukción belül számos különböző csomagolási módszer használatával importálhatók Key Vaultba. 
+-   **Frissítés**: Lehetővé teszi, hogy az ügyfél megfelelő engedélyekkel módosítsa a korábban a Key Vault belül tárolt kulcs metaadatait (fő attribútumait).  
+-   **Törlés**: Lehetővé teszi, hogy az ügyfél megfelelő engedélyekkel törölje a kulcsot a Key Vaultból.  
+-   **Lista**: Lehetővé teszi az ügyfél számára az adott Key Vault összes kulcsának listázását.  
+-   **Verziók listázása**: Lehetővé teszi az ügyfél számára egy adott kulcs összes verziójának listázását egy adott Key Vaultban.  
+-   **Beolvasás**: Lehetővé teszi, hogy az ügyfél lekérje egy adott kulcs nyilvános részeit egy Key Vault.  
+-   **Biztonsági mentés**: Kulcs exportálása védett űrlapon.  
+-   **Visszaállítás**: Egy előzőleg mentett kulcs importálása.  
 
-További információkért lásd: [kulcs a Key Vault REST API-referencia-műveletek](/rest/api/keyvault).  
+További tudnivalókért tekintse [meg a Key Vault REST API dokumentációjában található főbb műveleteket](/rest/api/keyvault).  
 
-Egy kulcsot a Key Vaultban létrehozott, a következő titkosítási műveleteket végezhetik a kulccsal:  
+Miután létrehozta a kulcsot a Key Vaultban, a következő titkosítási műveletek végezhetők el a kulcs használatával:  
 
--   **Jelentkezzen, és ellenőrizze**: Szigorúan, tato operace je "bejelentkezési hash" vagy "a kivonatoló hitelesítés", mivel a Key Vault nem támogatja a kivonatolás tartalom jogosultságkód létrehozásának részeként. Az alkalmazások kell ujjlenyomat-helyileg kell aláírni az adatokat, majd a Key Vault bejelentkezési az ujjlenyomat kérése. Az aláírt kivonatok ellenőrzési az alkalmazásokat, amelyek nem férhetnek [nyilvános] megosztottkulcs-anyag kényelmi műveletként használata támogatott. Ajánlott alkalmazások teljesítménye ellenőrizze, hogy műveleteket helyileg.  
--   **Titkosítási kulcs / Alkalmazásburkoló**: A Key Vaultban tárolt kulcs egy másik kulcsot, általában egy tartalom szimmetrikus titkosítási kulcsot (CEK) védelmére használhatók. Ha a kulcsot a Key Vault aszimmetrikus, kulcstitkosítási szolgál. Például RSA-OAEP és a WRAPKEY és UNWRAPKEY műveletek megfelelői TITKOSÍTÁSA/VISSZAFEJTÉSE. Ha a kulcsot a Key Vault szimmetrikus, alkalmazásburkoló kulcsot használja. Ha például az AES-KW. A könnyebb az alkalmazások, amelyek nem rendelkeznek [nyilvános] megosztottkulcs-anyag a hozzáférést a WRAPKEY művelet támogatott. Az ajánlott alkalmazásteljesítmény helyileg kell WRAPKEY műveleteket végezni.  
--   **Titkosítása és visszafejtése**: A Key Vaultban tárolt kulcs titkosítására vagy visszafejtésére egyetlen az adatblokk használhatók. A blokk méretét a kulcs típusa és a kiválasztott titkosítási algoritmus határozza meg. A titkosítás művelet kényelmi célokat szolgál, alkalmazások, amelyek nem rendelkeznek [nyilvános] megosztottkulcs-anyag hozzáférést biztosítunk. Ajánlott alkalmazások teljesítménye, titkosítása műveletek helyileg kell elvégezni.  
+-   **Aláírás és ellenőrzés**: Szigorúan ez a művelet "aláírási kivonat" vagy "hash ellenőrzése", mivel a Key Vault nem támogatja a tartalom kivonatolását az aláírás létrehozása részeként. Az alkalmazásoknak a helyileg aláírandó adatokat kell megadniuk, majd Key Vault aláírni a kivonatot. Az aláírt kivonatok ellenőrzése olyan alkalmazások kényelmi művelete, amelyek esetleg nem férnek hozzá a [nyilvános] kulcsfontosságú anyagokhoz. A legjobb teljesítmény érdekében ellenőrizze, hogy a műveletek helyileg történnek-e.  
+-   **Kulcs titkosítása/csomagolása**: Key Vault tárolt kulcs egy másik kulcs, jellemzően szimmetrikus tartalom-titkosítási kulcs (CEK) elleni védelemre használható. Ha a kulcs Key Vault aszimmetrikus, a rendszer a kulcs titkosítását használja. Például az RSA-OAEP és a WRAPKEY/UNWRAPKEY műveletek egyenértékűek a TITKOSÍTÁSsal/VISSZAFEJTÉSsel. Ha a kulcs Key Vault szimmetrikus, a rendszer a kulcs-körbefuttatást használja. Például: AES-KW. A WRAPKEY művelet olyan alkalmazások számára használható, amelyek esetleg nem férnek hozzá a [nyilvános] kulcshoz. Az alkalmazások legjobb teljesítményéhez helyileg kell végrehajtani a WRAPKEY műveleteket.  
+-   **Titkosítás és visszafejtés**: Key Vault tárolt kulcs egyetlen adatblokk titkosítására és visszafejtésére használható. A blokk méretét a kulcs típusa és a kiválasztott titkosítási algoritmus határozza meg. A titkosító művelet kényelmi célokat szolgál olyan alkalmazások számára, amelyek esetleg nem férnek hozzá a [nyilvános] kulcshoz. A legjobb teljesítmény érdekében a titkosítási műveleteket helyileg kell végrehajtani.  
 
-Miközben WRAPKEY/UNWRAPKEY aszimmetrikus kulcsokkal tűnhet felesleges (mivel a művelet egyenértékű TITKOSÍTÁSA), a különböző műveletek használata fontos. A különbséget szemantikai biztosít, és ezek műveletek, és a konzisztencia, ha a szolgáltatás által támogatott más kulcstípusok engedélyezési szétválasztása.  
+Habár az aszimmetrikus kulcsokat használó WRAPKEY/UNWRAPKEY feleslegesnek tűnhet (mivel a művelet a TITKOSÍTÁShoz/VISSZAFEJTÉShez egyenértékű), a különböző műveletek használata fontos. A különbségtétel a művelet szemantikai és engedélyezési elkülönítését, valamint a szolgáltatás által támogatott más típusú kulcsok egységességét biztosítja.  
 
-A Key Vault nem támogatja az EXPORTÁLÁSI műveletekkel. Miután egy kulcsot a rendszer üzembe ne lehessen kinyerni, vagy módosította a kulcs adatai. Key vault felhasználók azonban megkövetelhetik kulcsát, a más használati eseteket, például, ha törölve lett. Ebben az esetben használhatják a biztonsági MENTÉSI és VISSZAÁLLÍTÁSI műveletek, az Exportálás/importálás a kulcsot, védett formátumban. A biztonsági MENTÉSI művelet által létrehozott kulcsok, amelyek nem használható a Key Vault kívül. Az IMPORTÁLÁSI művelet azt is megteheti, szemben a Key Vault több példány is használható.  
+A Key Vault nem támogatja az EXPORTÁLÁSi műveleteket. Ha a kulcsot kiépítik a rendszerbe, azt nem lehet kibontani, vagy a kulcs lényegét módosítani. Előfordulhat azonban, hogy a Key Vault felhasználóinak más használati esetekhez, például a törlésük után is szükségük van a kulcsra. Ebben az esetben a biztonsági mentési és VISSZAÁLLÍTÁSi műveleteket a kulcs védett formában való exportálására/importálására használhatják. A biztonsági mentési művelet által létrehozott kulcsok nem használhatók Key Vaulton kívül. Azt is megteheti, hogy az IMPORTÁLÁSi művelet több Key Vault példányon is használható.  
 
-Felhasználók korlátozhatják a titkosítási műveletek, amely támogatja a Key Vault-JWK objektum key_ops tulajdonsággal kulcs alapon.  
+A felhasználók a JWK objektum key_ops tulajdonságának használatával korlátozhatják az Key Vault által támogatott titkosítási műveleteket.  
 
-JWK-objektumokra vonatkozó további információkért lásd: [JSON webes kulcs (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key).  
+A JWK-objektumokkal kapcsolatos további információkért lásd a [JSON webkulcs (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key)című témakört.  
 
-###  <a name="key-attributes"></a>Legfőbb attribútumai
+###  <a name="key-attributes"></a>Fő attribútumok
 
-A kulcs adatai mellett a következő attribútumok adható meg. Egy JSON-kérelem a attribútumok kulcsszót, és kapcsos zárójelek a(z) {' "}", szükség, akkor is, ha a megadott attribútum sem.  
+A kulcs anyagán kívül a következő attribútumok is megadhatók. JSON-kérelemben az attribútumok kulcsszó és a kapcsos zárójelek ({"}") szükségesek, még akkor is, ha nincsenek megadva attribútumok.  
 
-- *engedélyezett*: logikai érték, nem kötelező, alapértelmezett érték a **igaz**. Megadja, hogy a kulcs engedélyezve van, és a titkosítási műveletek gyakorlatot. A *engedélyezve* attribútum együtt használatos *nbf* és *exp*. Ha a művelet között történik *nbf* és *exp*, akkor lesz csak engedélyezett, ha *engedélyezve* értékre van állítva **igaz**. Műveletek kívül a *nbf* / *exp* ablak automatikusan engedélyezettek, kivéve a művelet bizonyos [adott feltételek](#date-time-controlled-operations).
-- *nbf*: Kötelező megadni, alapértelmezett IntDate, már. A *nbf* (nem előtt) attribútum azonosítja az idő, ameddig a kulcs nem használható a titkosítási műveletek, kivéve a művelet bizonyos [adott feltételek](#date-time-controlled-operations). A feldolgozása a *nbf* attribútumot igényel, hogy az aktuális dátum/idő után kell vagy a nem egyenlő-szereplő dátum/idő előtt a *nbf* attribútum. A Key Vault néhány kisebb eltérést rendelkezhetnek általában legfeljebb pár percet, hogy óra figyelembe döntés. Az érték egy IntDate értéket tartalmazó számnak kell lennie.  
-- *Exp*: IntDate, nem kötelező, alapértelmezett érték a "végtelen". A *exp* (lejárati ideje) attribútum azonosítja a lejárati időt, vagy azt követően, amely nem használja a rendszer kriptográfiai művelet, kivéve a művelet bizonyos [adott feltételek](#date-time-controlled-operations). A feldolgozása a *exp* attribútumot igényel, hogy az aktuális dátumot és időpontot kell-e, mielőtt a lejárati dátum/idő szerepel a *exp* attribútum. A Key Vault néhány kisebb eltérést rendelkezhetnek általában legfeljebb pár percet, hogy óra figyelembe döntés. Az érték egy IntDate értéket tartalmazó számnak kell lennie.  
+- *engedélyezve*: logikai, nem kötelező, az alapértelmezett érték **true (igaz**). Megadja, hogy a kulcs engedélyezve van-e, és használható-e titkosítási műveletekhez. Az *engedélyezett* attribútum a *NBF* és az *exp*együttes használata esetén használatos. Ha a *NBF* és az *exp*közötti művelet történik, akkor csak akkor lesz *engedélyezve* , ha a beállítás értéke **true (igaz**). Az *NBF* / *exp* ablakon kívüli műveletek automatikusan le lesznek tiltva, kivéve az [adott körülmények között](#date-time-controlled-operations)meghatározott műveleti típusokat.
+- *nbf*: IntDate, nem kötelező, alapértelmezés szerint most. A *NBF* (nem előtte) attribútum azt az időpontot határozza meg, ameddig a kulcs nem használható a titkosítási műveletekhez, kivéve az [adott körülmények között](#date-time-controlled-operations)meghatározott műveleti típusokat. A *NBF* attribútum feldolgozásához az aktuális dátumnak és időpontnak a *NBF* attribútumban felsorolt nem korábbi dátummal és időponttal kell rendelkeznie. Előfordulhat, hogy a Key Vault némi mozgásteret biztosít, amely általában legfeljebb néhány percet vesz igénybe, hogy az óra döntse. Az értéknek egy IntDate értéket tartalmazó számnak kell lennie.  
+- *exp*: IntDate, nem kötelező, az alapértelmezett érték a "Forever". Az *exp* (lejárati idő) attribútum azt a lejárati időt határozza meg, amely után a kulcs nem használható a titkosítási művelethez, kivéve az [adott körülmények között](#date-time-controlled-operations)meghatározott műveleti típusokat. Az *exp* attribútum feldolgozásához szükséges, hogy az aktuális dátumnak és időpontnak az *exp* attribútumban felsorolt lejárati dátum/idő előtt kell lennie. Előfordulhat, hogy a Key Vault némi mozgásteret biztosít, amely jellemzően nem csupán néhány percet vesz igénybe, hogy az óra döntse. Az értéknek egy IntDate értéket tartalmazó számnak kell lennie.  
 
-Nincsenek további csak olvasható attribútumokat választ, amely tartalmazza a kulcsattribútum részét képező:  
+További írásvédett attribútumok is szerepelnek a legfontosabb attribútumokat tartalmazó válaszokban:  
 
-- *created*: IntDate, nem kötelező. A *létrehozott* attribútum azt jelöli, ez a verzió, a kulcs létrehozásakor. Ez az attribútum hozzáadása előtt létrehozott kulcsok null érték. Az érték egy IntDate értéket tartalmazó számnak kell lennie.  
-- *frissített*: IntDate, nem kötelező. A *frissített* attribútum azt jelöli, amikor ez a kulcs verziója módosult. Az érték null, a kulcsokhoz, a legutóbb frissített Ez az attribútum hozzáadása előtt. Az érték egy IntDate értéket tartalmazó számnak kell lennie.  
+- *Létrehozva*: IntDate, nem kötelező. A *létrehozott* attribútum azt jelzi, hogy mikor jött létre a kulcs ezen verziója. Az érték null értékű az attribútum hozzáadása előtt létrehozott kulcsok esetében. Az értéknek egy IntDate értéket tartalmazó számnak kell lennie.  
+- *frissítve*: IntDate, nem kötelező. A *frissített* attribútum azt jelzi, hogy a kulcs ezen verziója frissítve lett-e. Az érték null értékű azon kulcsok esetében, amelyek utolsó frissítése az attribútum hozzáadása előtt történt. Az értéknek egy IntDate értéket tartalmazó számnak kell lennie.  
 
-IntDate és más adatok további információkért lásd: [adattípusok](#data-types)  
+További információ a IntDate és az egyéb adattípusokról: [adattípusok](#data-types)  
 
-#### <a name="date-time-controlled-operations"></a>Dátum-idő ellenőrzött műveletek
+#### <a name="date-time-controlled-operations"></a>Dátum-idő vezérelt műveletek
 
-Nem, de érvényes és a kulcs, külső lejárt a *nbf* / *exp* ablakban fog működni az **visszafejtéséhez**, **kicsomagolása**, és **ellenőrzése** operations (nem ad vissza 403, tiltott). A közösségértékek nem még érvényes állapot segítségével, hogy a kulcs kell tesztelni, mielőtt éles környezetben való használathoz. A közösségértékek használata a lejárt állapotban, hogy a helyreállítási műveletek jött létre, amikor a kulcs érvényes volt-adatokat. Ezenkívül letilthatja a hozzáférést egy kulcsot a Key Vault-szabályzatok, vagy frissítésével a *engedélyezve* a kulcsattribútum **false (hamis)**.
+A *NBF* / *exp* ablakon kívül még nem érvényes és lejárt kulcsok is használhatók a **visszafejtéshez**, a **kicsomagoláshoz**és a műveletek **ellenőrzéséhez** (nem ad vissza 403, tiltott). A még nem érvényes állapot használatának indoklása az éles használat előtt a kulcs tesztelésének engedélyezése. A lejárt állapot használatának indoklása a helyreállítási műveletek engedélyezése a kulcs érvényessége után létrehozott adatokon. Emellett letilthatja a hozzáférést egy kulcshoz Key Vault szabályzatok használatával, vagy az *engedélyezett* kulcs attribútum **hamis értékre**való frissítésével.
 
-Az adattípusok további információkért lásd: [adattípusok](#data-types).
+Az adattípusokkal kapcsolatos további információkért lásd az [adattípusokat](#data-types)ismertető témakört.
 
-Más lehetséges attribútumok további információkért lásd: a [JSON webes kulcs (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key).
+További információ a többi lehetséges attribútumról: JSON- [webkulcs (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key).
 
-### <a name="key-tags"></a>Kulcs címkék
+### <a name="key-tags"></a>Kulcs Címkék
 
-További alkalmazások – is szolgáltatásspecifikus metaadatokat címkék formájában is megadhat. A Key Vault támogatja a legfeljebb 15 címkék, amelyek mindegyike egy 256 karakter hosszúságú név- és egy 256 karakter hosszúságú lehet.  
+További alkalmazásspecifikus metaadatokat is megadhat címkék formájában. A Key Vault legfeljebb 15 címkét támogat, amelyek mindegyike 256 karakterből és 256 karakterből állhat.  
 
 >[!Note]
->A címkék olyan a hívó által is olvasható, ha rendelkeznek a *lista* vagy *első* engedélyt adott objektumtípus (kulcsok, titkos kódok vagy tanúsítványokat).
+>A címkék a hívó által olvashatók, ha rendelkeznek a *listával* , vagy *kapnak* engedélyt az adott objektumtípus (kulcsok, titkos kódok vagy tanúsítványok) számára.
 
 ###  <a name="key-access-control"></a>Kulcshozzáférés-vezérlés
 
-Hozzáférés-vezérlés a Key Vault által kezelt kulcsok egy Key Vaultot, amely a kulcsok a tároló szintjén van megadva. A kulcsokhoz, a hozzáférés-vezérlési szabályzat az azonos Key Vault titkos hozzáférés-vezérlési házirend különbözik. Felhasználók előfordulhat, hogy hozzon létre egy vagy több tárolók, kulcsok tárolására, és a forgatókönyv megfelelő szegmentálását és a kulcsok kezelését fenntartásához szükséges. Hozzáférés-vezérlés a kulcsok nem függ a hozzáférés-vezérlés a titkos kulcsok.  
+A Key Vault által felügyelt kulcsok hozzáférés-vezérlését a kulcsok tárolójának Key Vault szintjén kell megadnia. A kulcsok hozzáférés-vezérlési házirendje különbözik az azonos Key Vault található titkos kódok hozzáférés-vezérlési házirendjétől. A felhasználók létrehozhatnak egy vagy több tárolót a kulcsok tárolására, és szükségesek a forgatókönyvek megfelelő szegmentálásának és a kulcsok kezelésének fenntartásához. A kulcsok hozzáférés-vezérlése független a titkok hozzáférés-vezérlésével.  
 
-A következő is adhatók engedélyek, az egy / felhasználó / service egy tároló kulcsainak hozzáférés-vezérlési bejegyzés egyszerű rendszeresen. Ezek az engedélyek szorosan tükrözik a kulcs-objektum engedélyezett műveletek:  
+A következő engedélyek adhatók meg felhasználónkénti vagy egyszerű szolgáltatás alapján a tárolóban található kulcsok hozzáférés-vezérlési bejegyzésében. Ezek az engedélyek szorosan tükrözik a Key objektumon engedélyezett műveleteket.  Egy egyszerű szolgáltatáshoz való hozzáférés biztosítása a Key vaultban egy egyszeri művelet, amely minden Azure-előfizetésnél azonos marad. Azt is megteheti, hogy tetszőleges számú tanúsítványt telepít. 
 
-- Kulcskezelési műveletek engedélyeket
-  - *Első*: A nyilvános részét egy kulcsot, valamint a hozzá tartozó attribútumok olvasása
-  - *Lista*: A kulcsok vagy a key vaultban tárolt kulcs verzióinak listázása
-  - *Frissítés*: Frissítse az attribútumot a kulcshoz
-  - *Hozzon létre*: Új kulcsok létrehozása
-  - *Importálás*: Kulcs importálása egy kulcstartóba
-  - *Törlés*: A kulcs-objektum törlése
-  - *helyreállítás*: Egy törölt kulcs helyreállítása
-  - *Biztonsági mentés*: A key vault-kulcs biztonsági mentése
-  - *Visszaállítás*: Key vault kulcs biztonsági visszaállítása
+- A kulcskezelő műveletekhez szükséges engedélyek
+  - *beolvasás*: Olvassa el a kulcs nyilvános részét, valamint annak attribútumait
+  - *lista*: A Key vaultban tárolt kulcsok kulcsainak vagy verzióinak listázása
+  - *frissítés*: Kulcs attribútumainak frissítése
+  - *Létrehozás*: Új kulcsok létrehozása
+  - *Importálás*: Kulcs importálása Key vaultba
+  - *Törlés*: A Key objektum törlése
+  - *helyreállítás*: Törölt kulcs helyreállítása
+  - *biztonsági mentés*: Key Vault-kulcs biztonsági mentése
+  - *visszaállítás*: Biztonsági másolatban lévő kulcs visszaállítása kulcstartóra
 
-- A titkosítási műveletek engedélyek
-  - *visszafejtés*: A kulcs használatával bájt sorozatát feloldása
-  - *titkosítása*: A kulcs használatával egy tetszőleges bájtsorrendet védelme
-  - *unwrapKey*: A kulcs használatával a burkolt szimmetrikus kulcsokat a védelem megszüntetése
-  - *wrapKey*: A kulcs használatával egy szimmetrikus kulcs védelme
-  - *Győződjön meg arról*: A kulcs használatával emésztett ellenőrzése  
-  - *bejelentkezési*: A kulcs használatával emésztett aláírása
+- Titkosítási műveletekhez szükséges engedélyek
+  - *Visszafejtés*: A kulcs használata a bájtok sorrendjének feloldásához
+  - *titkosítás*: A kulcs használatával tetszőleges bájtos sorozatot biztosíthat.
+  - *unwrapKey*: A kulcs használata a burkolt szimmetrikus kulcsok feloldásához
+  - *wrapKey*: A kulcs használata szimmetrikus kulcs védelemmel való ellátásához
+  - *ellenőrzés*: A kulcs használata a kivonatoló ellenőrzéséhez  
+  - *aláírás*: A kulcs használata a kivonatok aláírására
     
-- Privilegizált műveleteket vonatkozó engedélyek
-  - *végleges törlés*: Végleges törlés (végleges törlése) egy törölt kulcs
+- Jogosultsági szintű műveletek engedélyei
+  - *kiürítés*: Törölt kulcs végleges törlése (véglegesen törölve)
 
-Kulcsok való használatáról további információkért lásd: [kulcs a Key Vault REST API-referencia-műveletek](/rest/api/keyvault). Engedélyek meghatározása a további információkért lásd: [- tárolók létrehozása vagy frissítése](/rest/api/keyvault/vaults/createorupdate) és [tároló - hozzáférési szabályzat frissítése](/rest/api/keyvault/vaults/updateaccesspolicy). 
+A kulcsok használatával kapcsolatos további információkért tekintse meg [a Key Vault REST API-referenciával](/rest/api/keyvault)foglalkozó témakörben található főbb műveleteket. Az engedélyek létrehozásával kapcsolatos információkért lásd: tárolók [– Létrehozás vagy frissítés](/rest/api/keyvault/vaults/createorupdate) és tárolók [– frissítési hozzáférési szabályzat](/rest/api/keyvault/vaults/updateaccesspolicy). 
 
-## <a name="key-vault-secrets"></a>A Key Vault titkos kulcsok 
+## <a name="key-vault-secrets"></a>Key Vault titkok 
 
-### <a name="working-with-secrets"></a>Titkos kulcsok használata
+### <a name="working-with-secrets"></a>A titkok használata
 
-A fejlesztő szempontból a Key Vault API-k fogadja el, és karakterláncként titkos értéket ad vissza. A Key Vault belsőleg, tárolja és kezeli a titkos kulcsok sorrendje oktetben (8 bites bájt), mint minden 25 kilobájt maximális mérettel. A Key Vault szolgáltatás szemantika nem biztosít, például a következők. Csupán az adatokat fogad, titkosítja azokat, tárolja és egy titkos kulcs azonosítóját ("id") adja vissza. Az azonosító lekéréséhez a titkos kulcsot egy későbbi időpontban használható.  
+Fejlesztői szempontból Key Vault API-k elfogadják és visszaadják a titkos értékeket karakterláncként. Belsőleg Key Vault a titkokat az oktettek (8 bites bájtok) sorozatának megfelelően tárolja és kezeli, és a 25k maximális mérete (bájt). A Key Vault szolgáltatás nem biztosít szemantikai adatokat a titkokhoz. Csupán elfogadja az adatot, titkosítja, tárolja, és visszaadja a titkos azonosítót ("id"). Az azonosító segítségével később is lekérheti a titkos kulcsot.  
 
-Szigorúan bizalmas adatok esetén az ügyfelek figyelembe kell venni az kiegészítő védelmi rétegeket, az adatokat. Tárolás előtt egy külön védelmi kulcs használata a Key Vaultban az adatok titkosítása látható egy példa.  
+A szigorúan bizalmas adatok esetében az ügyfeleknek az adatok védelmének további rétegeit kell figyelembe venniük. Az adattitkosítás egy külön védelmi kulccsal történik, a tárolás előtt Key Vault egy példa.  
 
-A Key Vault titkos kódok contentType mező is támogatja. Ügyfelek, amelyek segítik az adatok értelmezéséhez, amikor lekéri azt a titkos kulcs tartalomtípusa megadhatja. Ez a mező maximális hossza 255 karakter lehet. Nincsenek előre meghatározott értékek. A javasolt használata gyors tippként annyit elmondunk, az adatok értelmezéséhez. Például egy megvalósítási előfordulhat, hogy tárolja a jelszavakat és a tanúsítványok titkos kódként, majd az ebben a mezőben megkülönböztetéséhez. Nincsenek előre meghatározott értékek.  
+A Key Vault a Secrets (contentType) mezőt is támogatja. Az ügyfelek megadhatják a titkos kód tartalomtípusát, hogy segítséget nyújtsanak a titkos adatokat a beolvasás során. A mező maximális hossza 255 karakter. Nincsenek előre definiált értékek. A javasolt használat a titkos adatok értelmezésére utal. Előfordulhat például, hogy egy implementáció titkos kulcsként tárolja a jelszavakat és a tanúsítványokat, majd ezt a mezőt használja a megkülönböztetéshez. Nincsenek előre definiált értékek.  
 
-### <a name="secret-attributes"></a>Titkos kód attribútumok
+### <a name="secret-attributes"></a>Titkos attribútumok
 
-A titkos adatok mellett a következő attribútumokkal lehet megadni:  
+A titkos adatok mellett a következő attribútumok is megadhatók:  
 
-- *Exp*: IntDate, nem kötelező, alapértelmezett érték a **örökre**. A *exp* (lejárati ideje) attribútum azonosítja a lejárati időt, vagy azt követően, amely a titkos adatokat kell nem olvashatók be, kivéve az [adott helyzetekben](#date-time-controlled-operations). Ez a mező **tájékoztató** célra használja, csak, hogy tájékoztatja a felhasználókat a key vault szolgáltatást, hogy egy adott titkos kód nem használható. Az érték egy IntDate értéket tartalmazó számnak kell lennie.   
-- *nbf*: IntDate, nem kötelező, alapértelmezett érték a **most**. A *nbf* (nem előtt) attribútum azonosítja az idő, ameddig a titkos adatokat kell nem olvashatók be, kivéve az [adott helyzetekben](#date-time-controlled-operations). Ez a mező **tájékoztató** csak célra használja. Az érték egy IntDate értéket tartalmazó számnak kell lennie. 
-- *engedélyezett*: logikai érték, nem kötelező, alapértelmezett érték a **igaz**. Ez az attribútum meghatározza, hogy a titkos adatok lekérhetők. Az engedélyezett attribútum együtt használatos *nbf* és *exp* között-művelet bekövetkezésekor *nbf* és *exp*, csak akkor lesz engedélyezett, ha engedélyezve beállítva **igaz**. Műveletek kívül a *nbf* és *exp* ablak a program automatikusan nem megengedett, kivéve a [adott helyzetekben](#date-time-controlled-operations).  
+- *exp*: IntDate, nem kötelező, az alapértelmezett érték **örökre**. Az *exp* (lejárati idő) attribútum azt a lejárati időt határozza meg, amely után a titkos adatok nem kérhetők le, kivéve [bizonyos helyzetekben](#date-time-controlled-operations). Ez a mező csak **tájékoztató** jellegű, mivel a Key Vault szolgáltatás felhasználóit nem használja fel, mert egy adott titok nem használható. Az értéknek egy IntDate értéket tartalmazó számnak kell lennie.   
+- *nbf*: IntDate, nem kötelező, alapértelmezés szerint **most**. A *NBF* (nem korábban) attribútum azt az időpontot határozza meg, ameddig a titkos adatokat nem lehet lekérni, kivéve [bizonyos helyzetekben](#date-time-controlled-operations). Ez a mező csak **tájékoztató** jellegű. Az értéknek egy IntDate értéket tartalmazó számnak kell lennie. 
+- *engedélyezve*: logikai, nem kötelező, az alapértelmezett érték **true (igaz**). Ez az attribútum határozza meg, hogy a titkos adatot lehet-e lekérni. Az enabled attribútum a *NBF* és az *exp* együttes használata esetén használatos, ha a *NBF* és az *exp*közötti művelet történik, akkor csak akkor lesz engedélyezve, ha a beállítás értéke **true (igaz**). A *NBF* és az *exp* ablakon kívüli műveletek automatikusan le lesznek tiltva, kivéve [bizonyos helyzetekben](#date-time-controlled-operations).  
 
-Nincsenek további csak olvasható attribútumok telepítésben lévő semmilyen választ, amely tartalmazza a titkos attribútumok:  
+A titkos attribútumokat tartalmazó válaszokban további írásvédett attribútumok is szerepelnek:  
 
-- *created*: IntDate, nem kötelező. A létrehozott attribútum jelzi, hogy jelen verziója a titkos kulcs létrehozásakor. Ez például a következők Ez az attribútum hozzáadása előtt létrehozott null értékű. Az érték egy IntDate értéket tartalmazó számnak kell lennie.  
-- *frissített*: IntDate, nem kötelező. A frissített attribútum azt jelzi, hogy ez a verzió, a titkos kód frissítésekor. Ez az érték értéke null, például a következők a legutóbb frissített Ez az attribútum hozzáadása előtt. Az érték egy IntDate értéket tartalmazó számnak kell lennie.
+- *Létrehozva*: IntDate, nem kötelező. A létrehozott attribútum azt jelzi, hogy a titkos kulcs ezen verzióját hozta-e létre. Ez az érték null értékű az attribútum hozzáadása előtt létrehozott titkok esetében. Az értéknek egy IntDate értéket tartalmazó számnak kell lennie.  
+- *frissítve*: IntDate, nem kötelező. A frissített attribútum azt jelzi, hogy a titkos kulcs ezen verziója frissítve lett-e. Ez az érték null értékű azoknál a titkoknál, amelyeket az attribútum hozzáadása előtt utoljára frissítettek. Az értéknek egy IntDate értéket tartalmazó számnak kell lennie.
 
-#### <a name="date-time-controlled-operations"></a>Dátum-idő ellenőrzött műveletek
+#### <a name="date-time-controlled-operations"></a>Dátum-idő vezérelt műveletek
 
-A titkos kulcs **első** kívül nem még érvényes, és a lejárt titkos adatait, a fog működni a művelet a *nbf* / *exp* ablak. A titkos kód hívása **lekérése** művelet, nem még érvényes titkos kulcs, a tesztelési célokra használható. Beolvasása (**első**sítése) egy lejárt titkos helyreállítási műveletekhez használható.
+A titkos **beolvasási** művelet a *NBF* / *exp* ablakon kívül még nem érvényes és lejárt titkokat fog működni. A titkos kód **lekérési** műveletének meghívása tesztelési célokra használható. A lejárt titkos kód beolvasása **(beolvasása**) helyreállítási műveletekhez használható.
 
-Az adattípusok további információkért lásd: [adattípusok](#data-types).  
+Az adattípusokkal kapcsolatos további információkért lásd az [adattípusokat](#data-types)ismertető témakört.  
 
 ### <a name="secret-access-control"></a>Titkoskulcs-hozzáférés vezérlése
 
-Hozzáférés-vezérlés a Key vaultban felügyelt titkos kulcsok, szintjén, amely tartalmazza ezeket a titkos kulcsok a Key Vault is biztosított. A titkos kulcsokat, a hozzáférés-vezérlési házirend különbözik a hozzáférés-vezérlési szabályzat az azonos Kulcstartóban lévő kulcsok. Felhasználók előfordulhat, hogy hozzon létre legalább egy tároló titkos kulcsok tárolására, és a forgatókönyv megfelelő szegmentálását és a titkos kulcsok kezelése fenntartásához szükséges.   
+A Key Vaultban felügyelt titkok Access Control az adott titkokat tartalmazó Key Vault szintjén vannak megadva. A titkos kulcsok hozzáférés-vezérlési szabályzata különbözik az azonos Key Vault található kulcsok hozzáférés-vezérlési házirendjétől. A felhasználók egy vagy több tárolót hozhatnak létre a titkos kulcsok megőrzése érdekében, és a forgatókönyvek megfelelő szegmentálásához és a titkok kezeléséhez szükségesek.   
 
-A következő engedélyeket is használható, egyszerű alapon, az egy tároló titkos kódok hozzáférés-vezérlési bejegyzés, és szorosan tükrözik a titkos objektum engedélyezett műveletek:  
+A következő engedélyek használhatók a tár Secrets hozzáférés-vezérlési bejegyzésében, valamint a titkos objektumon engedélyezett műveletek részletes tükrözéséhez:  
 
-- Titkoskód-kezelési műveletek vonatkozó engedélyek
-  - *Első*: Olvassa el a titkos kulcs  
-  - *Lista*: A titkos kulcsok vagy a Key Vaultban tárolt titkos kulcs verzióinak listázása  
-  - *Állítsa be*: Titkos kulcs létrehozása  
+- A titkos felügyeleti műveletekhez szükséges engedélyek
+  - *beolvasás*: Titkos kód beolvasása  
+  - *lista*: Egy Key Vault tárolt titkos kulcs titkainak vagy verzióinak listázása  
+  - *beállítás*: Titkos kód létrehozása  
   - *Törlés*: Titkos kulcs törlése  
-  - *helyreállítás*: Törölt titkos kulcs helyreállítása
-  - *Biztonsági mentés*: Készítsen biztonsági másolatot a kulcstartóban található titkos kulcs
-  - *Visszaállítás*: A key vault titkos kulcs biztonsági visszaállítása
+  - *helyreállítás*: Törölt titkos kód helyreállítása
+  - *biztonsági mentés*: Titkos kulcs biztonsági mentése a kulcstartóban
+  - *visszaállítás*: Biztonsági másolatból álló titkos kód visszaállítása kulcstartóra
 
-- Privilegizált műveleteket vonatkozó engedélyek
-  - *végleges törlés*: Végleges törlés (végleges törlése) titkos kulcs törlése
+- Jogosultsági szintű műveletek engedélyei
+  - *kiürítés*: Törölt titkos kód kiürítése (végleges törlése)
 
-Titkos kódok való használatáról további információkért lásd: [a Key Vault REST API-referencia a titkos műveletek](/rest/api/keyvault). Engedélyek meghatározása a további információkért lásd: [- tárolók létrehozása vagy frissítése](/rest/api/keyvault/vaults/createorupdate) és [tároló - hozzáférési szabályzat frissítése](/rest/api/keyvault/vaults/updateaccesspolicy). 
+A titkokkal kapcsolatos további információkért tekintse meg [a Key Vault REST API-referenciában található titkos műveletek](/rest/api/keyvault)című témakört. Az engedélyek létrehozásával kapcsolatos információkért lásd: tárolók [– Létrehozás vagy frissítés](/rest/api/keyvault/vaults/createorupdate) és tárolók [– frissítési hozzáférési szabályzat](/rest/api/keyvault/vaults/updateaccesspolicy). 
 
-### <a name="secret-tags"></a>Titkos kódok  
-További alkalmazások – is szolgáltatásspecifikus metaadatokat címkék formájában is megadhat. A Key Vault támogatja a legfeljebb 15 címkék, amelyek mindegyike egy 256 karakter hosszúságú név- és egy 256 karakter hosszúságú lehet.  
-
->[!Note]
->A címkék olyan a hívó által is olvasható, ha rendelkeznek a *lista* vagy *első* engedélyt adott objektumtípus (kulcsok, titkos kódok vagy tanúsítványokat).
-
-## <a name="key-vault-certificates"></a>A Key Vault-tanúsítványok
-
-A x509 kezelését biztosítja a Key Vault tanúsítványokkal támogatási tanúsítványok és az alábbi viselkedés tapasztalható:  
-
--   Lehetővé teszi, hogy a tanúsítvány tulajdonosát, hogy hozzon létre egy tanúsítványt, vagy egy meglévő tanúsítvány importálása a Key Vault létrehozási folyamata keresztül. Tartalmazza a mindkét önaláírt, és a hitelesítésszolgáltató tanúsítványokat jön létre.
--   Lehetővé teszi, hogy a Key Vault-tanúsítvány tulajdonosának biztonságos tárolását és kezelését a X509 megvalósításához tanúsítványok titkos kulcs adatai közreműködése nélkül.  
--   Lehetővé teszi, hogy a tanúsítvány tulajdonosát, hogy olyan szabályzatot, amely arra utasítja a Key Vault a tanúsítvány életciklusának kezelésére.  
--   Lehetővé teszi, hogy a tanúsítvány tulajdonos kapcsolattartási kapcsolatos adatok megadása az értesítésre életciklus-események lejárati és a tanúsítvány megújítása.  
--   Támogatja az automatikus megújítását a kiválasztott kiállítók – Key Vault partner X509 tanúsítvány-szolgáltatók / hitelesítésszolgáltatók.
+### <a name="secret-tags"></a>Titkos Címkék  
+További alkalmazásspecifikus metaadatokat is megadhat címkék formájában. A Key Vault legfeljebb 15 címkét támogat, amelyek mindegyike 256 karakterből és 256 karakterből állhat.  
 
 >[!Note]
->Nem-termékekért felelős csoportokkal együttműködésben szolgáltatók/hitelesítésszolgáltatók is használhatók, de nem támogatja az automatikus megújítási funkciót.
+>A címkék a hívó által olvashatók, ha rendelkeznek a *listával* , vagy *kapnak* engedélyt az adott objektumtípus (kulcsok, titkos kódok vagy tanúsítványok) számára.
 
-### <a name="composition-of-a-certificate"></a>A tanúsítvány összeállítás
+## <a name="key-vault-certificates"></a>Tanúsítványok Key Vault
 
-Key Vault-tanúsítvánnyal jön létre, amikor egy címezhető kulcsot és titkos kulcsot is jönnek létre ugyanazzal a névvel. A Key Vault-kulcs lehetővé teszi, hogy a kulcsfontosságú műveletek, és a Key Vault titkos kulcsából lehetővé teszi, hogy a tanúsítvány értékét, a titkos kulcs lekéréséhez. Key Vault-tanúsítvánnyal is tartalmazza nyilvános x509 tanúsítvány metaadatait.  
+Key Vault tanúsítványok támogatása biztosítja a x509-tanúsítványok kezelését, valamint a következő viselkedéseket:  
 
-Az azonosítóját, valamint a tanúsítványok verziója, valamint a kulcsok és titkos kulcsok hasonlít. A Key Vault tanúsítvány válasz-címmel rendelkező kulcs és a titkos kulcsot a Key Vault verziójának használatával létrehozott egy adott verzióját érhető el.
+-   Lehetővé teszi, hogy a tanúsítvány tulajdonosa egy Key Vault létrehozási folyamaton vagy egy meglévő tanúsítvány importálásán keresztül hozzon létre tanúsítványt. Magában foglalja az önaláírt és a hitelesítésszolgáltató által generált tanúsítványokat is.
+-   Lehetővé teszi, hogy a Key Vault tanúsítvány tulajdonosa a X509-tanúsítványok biztonságos tárolását és kezelését a titkos kulcsokkal való interakció nélkül implementálja.  
+-   Lehetővé teszi, hogy a tanúsítvány tulajdonosa olyan házirendet hozzon létre, amely a tanúsítvány életciklusának kezeléséhez Key Vault irányítja.  
+-   Lehetővé teszi a tanúsítvány tulajdonosai számára, hogy kapcsolattartási adatokat szolgáltassanak a lejárat és a tanúsítvány megújításának életciklusával kapcsolatos eseményekről.  
+-   Támogatja az automatikus megújítást a kiválasztott kiállítókkal – Key Vault partneri X509-szolgáltatók/hitelesítésszolgáltatók.
+
+>[!Note]
+>A nem partnerrel rendelkező szolgáltatók/hatóságok is engedélyezettek, de nem támogatják az automatikus megújítási funkciót.
+
+### <a name="composition-of-a-certificate"></a>Tanúsítvány összetétele
+
+Key Vault-tanúsítvány létrehozásakor a rendszer megcímezhető kulcsot és titkos kulcsot is létrehoz ugyanazzal a névvel. A Key Vault kulcs lehetővé teszi a kulcsfontosságú műveleteket, és a Key Vault titkos kulcs lehetővé teszi a tanúsítvány értékének beolvasását titkos fájlként. A Key Vault tanúsítvány A nyilvános x509 tanúsítvány-metaadatokat is tartalmaz.  
+
+A tanúsítványok azonosítója és verziója hasonló a kulcsok és a titkos kódokhoz. Az Key Vault-tanúsítvány verziószámával létrehozott címezhető kulcs és titok adott verziója elérhető a Key Vault-tanúsítvány válaszában.
  
-![Tanúsítványok olyan összetett objektumok](media/azure-key-vault.png)
+![A tanúsítványok összetett objektumok](media/azure-key-vault.png)
 
-### <a name="exportable-or-non-exportable-key"></a>Exportálható, vagy nem exportálható kulcs
+### <a name="exportable-or-non-exportable-key"></a>Exportálható vagy nem exportálható kulcs
 
-Amikor a Key Vault-tanúsítvánnyal jön létre, azt kérhető le a megcímezhető titkos PFX vagy PEM formátumban a titkos kulccsal. A szabályzat, a tanúsítvány létrehozásához használt kell azt jelzi, hogy a kulcs exportálható. Ha a szabályzat nem exportálható, a titkos kulcs nem az értéket, ha egy titkos kulcsot beolvashatók egy részét.  
+Key Vault-tanúsítvány létrehozásakor a megcímezhető titkos kulcsból a PFX vagy PEM formátumban kérhető le. A tanúsítvány létrehozásához használt házirendnek jeleznie kell, hogy a kulcs exportálható. Ha a házirend nem exportálható állapotot jelez, akkor a titkos kulcs nem része az értéknek, amikor a rendszer titokként kéri le.  
 
-A megcímezhető kulcs nem exportálható KV tanúsítványokkal relevánsabb lesz. A megcímezhető KV kulcs műveletek vannak leképezve a *keyusage* mezőjében a KV tanúsítási szabályzat a KV tanúsítvány létrehozásához használt.  
+A címezhető kulcs nagyobb jelentőséggel bír a nem exportálható KV-tanúsítványok esetén. A megcímezhető KV-kulcs műveletei a KV tanúsítvány létrehozásához használt KV-os tanúsítvány-házirend *kulcshasználat* mezőjéből vannak leképezve.  
 
-Kétféle típusú kulcs támogatottak – *RSA* vagy *RSA HSM* tanúsítványokkal. Exportálható csak engedélyezett az RSA, RSA HSM által nem támogatott.  
+Két típusú kulcs támogatott: *RSA* vagy *RSA HSM* tanúsítványokkal. Az exportálhatóként csak az RSA-mel engedélyezett, az RSA HSM nem támogatja.  
 
-### <a name="certificate-attributes-and-tags"></a>Tanúsítvány-attribútumok és címkék
+### <a name="certificate-attributes-and-tags"></a>Tanúsítvány attribútumai és címkéi
 
-Tanúsítvány metaadatait-címmel rendelkező kulcs és a megcímezhető titkos kívül Key Vault-tanúsítvánnyal azt is tartalmazza, attribútumok és címkék.  
+A tanúsítvány metaadatainak, a megcímezhető kulcs és a címezhető titok mellett egy Key Vault tanúsítvány is tartalmaz attribútumokat és címkéket.  
 
 #### <a name="attributes"></a>Attribútumok
 
-A tanúsítvány attribútumok attribútumok a megcímezhető kulcs és titkos kulcsot hozott létre, amikor KV tanúsítvány jön létre tükrözött esetén.  
+A tanúsítvány attribútumai a megcímezhető kulcs és titkos kód attribútumaira vannak tükrözve, amikor létrejön a KV-os tanúsítvány.  
 
-Key Vault-tanúsítvánnyal rendelkezik a következő attribútumokat:  
+A Key Vault tanúsítványa a következő tulajdonságokkal rendelkezik:  
 
--   *engedélyezett*: logikai érték, nem kötelező, alapértelmezett érték a **igaz**. Jelzi, hogy a tanúsítvány adatainak titkos vagy működtethető kulcsként beolvasható adható meg. Együtt is használható *nbf* és *exp* között-művelet bekövetkezésekor *nbf* és *exp*, és csak akkor engedélyezhetők, ha engedélyezve van értéke TRUE. Műveletek kívül a *nbf* és *exp* ablakban automatikusan engedélyezettek.  
+-   *engedélyezve*: logikai, nem kötelező, az alapértelmezett érték **true (igaz**). Megadható annak jelzése, hogy a tanúsítvány adatai titkos fájlként, vagy kulcsként működnek-e. A *NBF* és az *exp* együttes használata esetén is használatos, ha a *NBF* és az *exp*közötti művelet történik, és csak akkor lesz engedélyezve, ha a beállítás értéke TRUE (igaz). A *NBF* és az *exp* ablakon kívüli műveletek automatikusan le lesznek tiltva.  
 
-Nincsenek a válaszban szereplő további csak olvasható attribútumok:
+A válaszban további írásvédett attribútumok is szerepelnek:
 
--   *created*: IntDate: azt jelzi, hogy ez a verzió, a tanúsítvány létrehozásakor.  
--   *frissített*: IntDate: azt jelzi, hogy ez a verzió, a tanúsítvány frissítésekor.  
--   *Exp*: IntDate: tartalmazza az x509 lejárati idejét értékét tanúsítványt.  
--   *nbf*: IntDate: tartalmazza az érték a x509 számított tanúsítványt.  
+-   *Létrehozva*: IntDate: azt jelzi, hogy mikor jött létre a tanúsítvány ezen verziója.  
+-   *frissítve*: IntDate: azt jelzi, hogy mikor frissítették a tanúsítvány ezen verzióját.  
+-   *exp*: IntDate: az x509-tanúsítvány lejárati dátumának értékét tartalmazza.  
+-   *nbf*: IntDate: a x509-tanúsítvány dátumának értékét tartalmazza.  
 
 > [!Note] 
-> Ha lejár a Key Vault-tanúsítvánnyal, címezhető kulcs és titkos kulcs működésképtelenné válhatnak.  
+> Ha egy Key Vault-tanúsítvány lejár, az megcímezhető kulcs, és a titkos kód inműködőképes lesz.  
 
-#### <a name="tags"></a>Címkék
+#### <a name="tags"></a>Tags
 
- Kulcs – érték sztringpárok, kulcsok és titkos kódok hasonló megadott szótára ügyfél.  
+ Az ügyfél a kulcsok és titkok címkéhez hasonlóan a kulcs érték párok szótárát adta meg.  
 
  > [!Note]
-> A címkék olyan a hívó által is olvasható, ha rendelkeznek a *lista* vagy *első* engedélyt adott objektumtípus (kulcsok, titkos kódok vagy tanúsítványokat).
+> A címkék a hívó által olvashatók, ha rendelkeznek a *listával* , vagy *kapnak* engedélyt az adott objektumtípus (kulcsok, titkos kódok vagy tanúsítványok) számára.
 
 ### <a name="certificate-policy"></a>Tanúsítvány-házirend
 
-A tanúsítási szabályzat létrehozása és kezelése a Key Vault-tanúsítvánnyal életciklusát adatait tartalmazza. A titkos kulccsal rendelkező tanúsítványt a key vaultban való importálásakor, egy alapértelmezett szabályzat jön létre a x509 olvasásával tanúsítványt.  
+A tanúsítvány-szabályzat a Key Vault-tanúsítványok életciklusának létrehozásával és kezelésével kapcsolatos információkat tartalmaz. Ha egy titkos kulccsal rendelkező tanúsítványt importál a kulcstartóba, a rendszer létrehoz egy alapértelmezett szabályzatot az x509-tanúsítvány beolvasásával.  
 
-Key Vault-tanúsítvánnyal létrehozása az alapoktól, egy házirendet kell adni. A szabályzat előírja a Key Vault tanúsítvány verziója vagy a következő Key Vault verziójának létrehozása. Szabályzat létrehozása után nem szükséges az egymást követő-létrehozási műveletek a későbbi verziókban. Nincs Key Vault-tanúsítvánnyal összes verzióját a házirendet csak egy példánya.  
+Ha egy Key Vault-tanúsítvány teljesen létre lett hozva, a szabályzatot meg kell adni. A házirend meghatározza, hogyan kell létrehozni ezt a Key Vault-tanúsítvány verzióját vagy a következő Key Vault-tanúsítvány verzióját. A szabályzat létrehozása után a későbbi verziókhoz nem szükséges egymást követő létrehozási művelet. Egy Key Vault-tanúsítvány összes verziójához csak egy példány van.  
 
-Magas szinten a tanúsítási szabályzat a következő információkat tartalmazza:  
+A tanúsítvány-házirend magas szinten a következő információkat tartalmazza:  
 
--   X509 tanúsítvány tulajdonságai: Tulajdonos neve, a tulajdonos alternatív neve és a más egy x509 létrehozásához használt tulajdonságokat tartalmaz tanúsítványkérelmet.  
--   Kulcs tulajdonságai: tartalmazza a kulcs típusa, kulcshossz, exportálható, és újra felhasználhatja kulcsmezők. Ezek a mezők kérje meg a key vault való hozzon létre egy kulcsot.  
--   Titkos kulcs tulajdonságai: tartalmazza a titkos kulcs tulajdonságai, például a tartalomtípusa címezhető titkos kulcs létrehozásához a titkos értéket, a tanúsítványt a titkos kód beolvasása.  
--   Élettartam műveletek: a KV tanúsítvány élettartama műveleteket tartalmazza. Minden egyes élettartamművelet tartalmazza:  
+-   X509 tanúsítvány tulajdonságai: A tulajdonos nevét, a tulajdonos alternatív neveit, valamint a x509 létrehozásához használt egyéb tulajdonságokat tartalmazza.  
+-   Kulcs tulajdonságai: a kulcs típusát, a kulcs hosszát, az exportálható és a kulcs újrafelhasználására szolgáló mezőket tartalmazza. Ezek a mezők a Key vaultot tájékoztatják a kulcsok létrehozásáról.  
+-   Titkos kód tulajdonságai: olyan titkos tulajdonságokat tartalmaz, mint például a címezhető titok tartalomtípusa a titkos érték létrehozásához, a tanúsítvány titkosként való lekéréséhez.  
+-   Élettartam-műveletek: a KV-os tanúsítvány élettartamának műveleteit tartalmazza. Minden élettartam-művelet tartalmazza a következőket:  
 
-     - Eseményindító: nappal a lejárat vagy élettartama span százalékos előtt keresztül megadott  
+     - Trigger: a lejárat vagy az élettartam százalékában megadott napokon keresztül van megadva  
 
-     - Művelet: Adja meg a művelet típusa – *emailContacts* vagy *automatikus megújítás*  
+     - Művelet: Művelettípus megadása – *emailContacts* vagy *autorenew*  
 
--   Kiállító: A tanúsítvány kiállítója probléma x509 tanúsítványok használatával kapcsolatos paramétereket.  
--   Házirend attribútumainak: a szabályzathoz tartozó attribútumokat tartalmaz  
+-   Kibocsátó A tanúsítvány kiállítójának a x509-tanúsítványok kiállításához használt paraméterei.  
+-   Házirend-attribútumok: a Szabályzathoz társított attribútumokat tartalmazza.  
 
-#### <a name="x509-to-key-vault-usage-mapping"></a>A Key Vault használatának leképezés X509
+#### <a name="x509-to-key-vault-usage-mapping"></a>X509 Key Vault használati leképezéshez
 
-Az alábbi táblázat a Key Vault-tanúsítványok létrehozásának részeként létrehozott kulcs hatékony kulcsműveletek kulcshasználat szabályzatot x509 leképezése jelöli.
+A következő táblázat a x509-használati szabályzat hozzárendelését mutatja be egy Key Vault tanúsítvány létrehozása során létrehozott kulcs hatékony működéséhez.
 
-|**X509 kulcshasználat jelzői**|**A Key Vault-kulcs ops**|**Alapértelmezett viselkedés**|
+|**X509-használat jelzői**|**Key Vault Key Ops**|**Alapértelmezett viselkedés**|
 |----------|--------|--------|
-|DataEncipherment|titkosítása, visszafejtése| – |
-|DecipherOnly|visszafejtés| –  |
-|DigitalSignature|aláírása, ellenőrzése| A Key Vault alapértelmezett egy tanúsítvány létrehozáskor használati megadása nélkül | 
+|DataEncipherment|titkosítás, visszafejtés| – |
+|DecipherOnly|visszafejteni| –  |
+|DigitalSignature|aláírás, ellenőrzés| Key Vault alapértelmezett beállítás a tanúsítvány létrehozási idejének használati specifikációja nélkül | 
 |EncipherOnly|encrypt| – |
-|KeyCertSign|aláírása, ellenőrzése|–|
-|KeyEncipherment|wrapKey, unwrapKey| A Key Vault alapértelmezett egy tanúsítvány létrehozáskor használati megadása nélkül | 
-|NonRepudiation|aláírása, ellenőrzése| – |
-|crlsign|aláírása, ellenőrzése| – |
+|KeyCertSign|aláírás, ellenőrzés|–|
+|KeyEncipherment|wrapKey, unwrapKey| Key Vault alapértelmezett beállítás a tanúsítvány létrehozási idejének használati specifikációja nélkül | 
+|Letagadhatatlanság nyújtására|aláírás, ellenőrzés| – |
+|crlsign|aláírás, ellenőrzés| – |
 
 ### <a name="certificate-issuer"></a>Tanúsítvány kiállítója
 
-A Key Vault tanúsítvány objektum egy rendelés x509 tanúsítványok kiválasztott tanúsítvány kiállítója szolgáltató folytatott kommunikáció során használt konfigurációt tartalmazza.  
+A Key Vault Certificate objektum olyan konfigurációt tartalmaz, amely a kiválasztott tanúsítvány-kiállító szolgáltatóval való kommunikációra szolgál a x509-tanúsítványok megrendeléséhez.  
 
--   A következő SSL-tanúsítványokat kiállító tanúsítványszolgáltatók Key Vault-partnerek
+-   Key Vault partnerek az SSL-tanúsítványok következő tanúsítvány-kiállítói szolgáltatói által
 
 |**Szolgáltató neve**|**Helyek**|
 |----------|--------|
-|DigiCert|A nyilvános felhőben és az Azure Government minden a key vault szolgáltatás helyeken támogatott|
-|GlobalSign|A nyilvános felhőben és az Azure Government minden a key vault szolgáltatás helyeken támogatott|
+|DigiCert|A nyilvános felhőben és Azure Governmentban a Key Vault szolgáltatás összes helyén támogatott|
+|GlobalSign|A nyilvános felhőben és Azure Governmentban a Key Vault szolgáltatás összes helyén támogatott|
 
-Egy tanúsítvány kiállítója hozhat létre egy Key Vaultot, mielőtt a következő előfeltételként felsorolt lépéseket 1. és 2 sikeresen meg kell végezni.  
+Ahhoz, hogy a tanúsítvány kiállítója egy Key Vaulton legyen létrehozva, az 1. és a 2. előfeltételként szükséges lépések végrehajtása után sikeresen el kell végezni a műveletet.  
 
-1. Tanúsítványszolgáltatók (CA) származó megoldás előkészítése  
+1. Beléptetés a HITELESÍTÉSSZOLGÁLTATÓI szolgáltatókba  
 
-    -   Egy szervezet rendszergazdája fedélzeti kell (például vállalati Contoso) legalább egy hitelesítésszolgáltató-szolgáltatóval.  
+    -   A vállalati rendszergazdának be kell jelentkeznie a vállalatnál (pl. Contoso) legalább egy HITELESÍTÉSSZOLGÁLTATÓI szolgáltatóval.  
 
-2. A rendszergazda létrehozza a kérelmező hitelesítő adatokat a Key vault SSL-tanúsítványok regisztrálását (és megújítását)  
+2. A rendszergazda az SSL-tanúsítványok regisztrálásához (és megújításához) Key Vault kérő hitelesítő adatokat hoz létre.  
 
-    -   A konfiguráció a szolgáltató kibocsátó objektum létrehozása a key vaultban használt biztosít  
+    -   A Key vaultban a szolgáltató kiállító objektumának létrehozásához használandó konfigurációt adja meg.  
 
--Tanúsítványok portáljáról a kibocsátó objektumok létrehozásával kapcsolatos további információkért lásd: a [Key Vault Certificates blog](https://aka.ms/kvcertsblog)  
+A kiállítói objektumok tanúsítvány-portálról történő létrehozásával kapcsolatos további információkért tekintse meg a [Key Vault tanúsítványok blogját](https://aka.ms/kvcertsblog) .  
 
-Key Vault lehetővé teszi, hogy a különböző kibocsátó szolgáltató konfigurációjának több kibocsátó objektumok létrehozásához. Kiállító objektum létrehozása után a név egy vagy több tanúsítvány-házirendek lehet hivatkozni. A kibocsátó objektumra hivatkozik arra utasítja a Key Vault használata a kibocsátó objektumban megadott konfiguráció, a x509 kérésekor tanúsítványt a CA-szolgáltató a tanúsítvány-létrehozási és -megújítás során.  
+Key Vault lehetővé teszi több kiállító objektum létrehozását különböző kiállítói szolgáltatói konfigurációval. A kiállítói objektum létrehozása után a neve hivatkozhat egy vagy több tanúsítvány-házirendre. A kiállító objektumra való hivatkozás arra utasítja a Key Vault, hogy a kiállító objektumban megadott konfigurációt használja, amikor a tanúsítvány létrehozásakor és megújításakor a x509-tanúsítványt kéri a CA-szolgáltatótól.  
 
-Kibocsátó objektumok jönnek létre a tárolót, és csak akkor használható KV tanúsítványokkal az ugyanahhoz a tárolóhoz.  
+A kiállító objektumok a tárolóban jönnek létre, és csak a KV tanúsítványokkal használhatók ugyanabban a tárolóban.  
 
-### <a name="certificate-contacts"></a>Tanúsítványpartnerek
+### <a name="certificate-contacts"></a>Tanúsítványhoz tartozó névjegyek
 
-Tanúsítványpartnerek tartalmazhat elérhetőségi adatait a tanúsítvány élettartama események által kiváltott értesítések küldéséhez. A névjegyadatokhoz van osztva, minden tanúsítvány a key vaultban. Egy értesítést küld egy eseményt minden tanúsítványt a key vaultban az összes megadott ügyfelet.  
+A tanúsítványhoz tartozó névjegyek kapcsolattartási adatokat tartalmaznak a tanúsítvány élettartama eseményei által aktivált értesítések küldéséhez. A kapcsolattartási adatokat a Key Vault összes tanúsítványa megosztja. A Key Vault bármelyik tanúsítványa esetében értesítést küld a rendszer az adott esemény összes megadott ügyfelének.  
 
-Ha egy tanúsítási szabályzat automatikus megújítás értékre van állítva, majd egy értesítés érkezik a következő események.  
+Ha a tanúsítvány házirendje automatikus megújításra van beállítva, akkor a rendszer értesítést küld a következő eseményekről.  
 
-- Igényelje a tanúsítvány
-- Tanúsítványmegújítás figyelmezteti, ha a tanúsítvány megújítása sikeres volt, vagy hiba történt, ha a tanúsítvány manuális megújítás igénylő után.  
+- A tanúsítvány megújítása előtt
+- A tanúsítvány megújítása után, ha a tanúsítvány sikeres megújítása megtörtént, vagy ha hiba történt, a tanúsítvány manuális megújítását kell megkövetelni.  
 
-  A tanúsítási szabályzat, amely manuálisan kell megújítani (csak az e-mailekhez), amikor egy értesítés érkezik, amikor a tanúsítvány megújításához.  
+  Ha egy manuálisan megújított tanúsítvány-házirend (csak e-mail-cím), akkor a rendszer értesítést küld, amikor a tanúsítvány megújítására kerül sor.  
 
-### <a name="certificate-access-control"></a>Tanúsítvány hozzáférés-vezérlés
+### <a name="certificate-access-control"></a>Tanúsítvány Access Control
 
- Hozzáférés-vezérlés tanúsítványokat a Key Vault kezeli, és biztosítja, amely tartalmazza ezeket a tanúsítványokat a Key Vault. A tanúsítványok hozzáférés-vezérlési házirend különbözik a hozzáférés-vezérlési házirendeket, a kulcsok és titkos az azonos Key vaultban. Felhasználók egy vagy több tároló, amely tárolja a tanúsítványok, az eset megfelelő szegmentálását és felügyeleti tanúsítványok fenntartása érdekében előfordulhat, hogy létre.  
+ A tanúsítványok hozzáférés-vezérlését Key Vault kezeli, és a tanúsítványokat tartalmazó Key Vault nyújtja. A tanúsítványok hozzáférés-vezérlési házirendje különbözik az azonos Key Vault található kulcsok és titkok hozzáférés-vezérlési házirendjeitől. A felhasználók egy vagy több tárolót hozhatnak létre a tanúsítványok tárolására, a forgatókönyvek megfelelő szegmentálásának és a tanúsítványok kezelésének fenntartása érdekében.  
 
- Egyszerű – ellenében, a titkos kulcsok a key vault, és szorosan tükör titkos objektum engedélyezett műveletek hozzáférési szabály használható a következő engedélyekkel:  
+ A következő engedélyek a Key Vault Secrets hozzáférés-vezérlési bejegyzésében, és a titkos objektumon engedélyezett műveletek részletes tükrözése céljából használhatók:  
 
-- Tanúsítványkezelési műveletek vonatkozó engedélyek
-  - *Első*: A tanúsítvány bármely verzióját, illetve a jelenlegi verziójának lekérése 
-  - *Lista*: Az aktuális tanúsítványokat vagy tanúsítvány verzióinak listázása  
-  - *Frissítés*: A tanúsítvány frissítése
-  - *Hozzon létre*: Hozzon létre egy Key Vault-tanúsítvánnyal
-  - *Importálás*: Tanúsítvány anyag importálása a Key Vault-tanúsítvánnyal
-  - *Törlés*: Törölje a tanúsítványt, a házirendet, és annak összes verzióját  
-  - *helyreállítás*: Helyreállítás egy tanúsítvány törlése
-  - *Biztonsági mentés*: Készítsen biztonsági másolatot a kulcstartóban található tanúsítvány
-  - *Visszaállítás*: Key vault a biztonsági másolat tanúsítvány visszaállítása
-  - *managecontacts*: A Key Vault tanúsítványpartnerek kezelése  
-  - *manageissuers*: A Key Vault hatóságok/tanúsítványkiállítók kezelése
-  - *getissuers*: A tanúsítvány hatóságok/kiállítók beolvasása
-  - *listissuers*: A tanúsítvány hatóságok/tanúsítványkibocsátók listája  
-  - *setissuers*: Létrehozni vagy frissíteni a Key Vault-tanúsítvánnyal hatóságok/kiállítók  
-  - *deleteissuers*: A Key Vault-tanúsítvánnyal hatóságok/kiállítók törlése  
+- Tanúsítványkezelő műveletekhez szükséges engedélyek
+  - *beolvasás*: A tanúsítvány aktuális verziójának vagy bármely verziójának beolvasása 
+  - *lista*: A tanúsítvány aktuális tanúsítványainak vagy verzióinak listázása  
+  - *frissítés*: Tanúsítvány frissítése
+  - *Létrehozás*: Key Vault tanúsítvány létrehozása
+  - *Importálás*: Tanúsítvány anyagának importálása Key Vault-tanúsítványba
+  - *Törlés*: Tanúsítvány, a szabályzat és az összes verzió törlése  
+  - *helyreállítás*: Törölt tanúsítvány helyreállítása
+  - *biztonsági mentés*: A Key vaultban lévő tanúsítvány biztonsági mentése
+  - *visszaállítás*: Biztonsági másolatban lévő tanúsítvány visszaállítása kulcstartóba
+  - *managecontacts*: Key Vault-tanúsítványok kapcsolatainak kezelése  
+  - *manageissuers*: Key Vault hitelesítésszolgáltatók/kibocsátók kezelése
+  - *getissuers*: Tanúsítvány hitelesítő szerveinek/kiállítóinak beszerzése
+  - *listissuers*: A tanúsítvány szerveinek/kiállítóinak listázása  
+  - *setissuers*: Key Vault tanúsítvány szerveinek/kiállítóinak létrehozása vagy frissítése  
+  - *deleteissuers*: Key Vault tanúsítvány hatóságainak/kiállítóinak törlése  
  
-- Privilegizált műveleteket vonatkozó engedélyek
-  - *végleges törlés*: Végleges törlés (végleges törlése) tanúsítvány törlése
+- Jogosultsági szintű műveletek engedélyei
+  - *kiürítés*: Törölt tanúsítvány törlése (végleges törlése)
 
-További információkért lásd: a [tanúsítvány-műveletek és a Key Vault REST API-hivatkozás](/rest/api/keyvault). Engedélyek meghatározása a további információkért lásd: [- tárolók létrehozása vagy frissítése](/rest/api/keyvault/vaults/createorupdate) és [tároló - hozzáférési szabályzat frissítése](/rest/api/keyvault/vaults/updateaccesspolicy).
+További információkért tekintse meg a [tanúsítványok műveleteit a Key Vault REST API-referenciában](/rest/api/keyvault). Az engedélyek létrehozásával kapcsolatos információkért lásd: tárolók [– Létrehozás vagy frissítés](/rest/api/keyvault/vaults/createorupdate) és tárolók [– frissítési hozzáférési szabályzat](/rest/api/keyvault/vaults/updateaccesspolicy).
 
-## <a name="azure-storage-account-key-management"></a>Az Azure tárfiókkulcs-kezelés
+## <a name="azure-storage-account-key-management"></a>Azure Storage-fiók kulcsainak kezelése
 
-A Key Vault az Azure storage-fiók kulcsainak kezelheti:
+A Key Vault az Azure Storage-fiók kulcsait tudja kezelni:
 
-- Belsőleg a Key Vault listázhatja az Azure storage-fiók kulcsok (sync). 
-- Újragenerálja a Key Vault (rotálja) a kulcsokat rendszeres időközönként.
-- Kulcs értékeit a rendszer soha nem adja vissza a hívó adott válaszként.
-- A Key Vault kezeli a storage-fiókok és a klasszikus tárfiókok kulcsait.
+- Belsőleg az Azure Storage-fiókkal Key Vault listázhatja (szinkronizálhatja) a kulcsokat. 
+- Key Vault a kulcsok rendszeres újragenerálása (elforgatása).
+- A rendszer soha nem adja vissza a kulcs értékeit a hívónak válaszul.
+- Key Vault a Storage-fiókok és a klasszikus Storage-fiókok kulcsait kezeli.
 
-További információkért lásd: [Azure Key Vault Tárfiókkulcsokat](key-vault-ovw-storage-keys.md)
+További információ: [Azure Key Vault Storage-fiók kulcsainak](key-vault-ovw-storage-keys.md) használata
 
-### <a name="storage-account-access-control"></a>Storage-fiók hozzáférés-vezérlés
+### <a name="storage-account-access-control"></a>Storage-fiók hozzáférés-vezérlése
 
-A következő engedélyek használható egy felhasználó vagy alkalmazás egyszerű engedélyezésekor egy felügyelt tárfiókot műveletek végrehajtásához:  
+A következő engedélyek használhatók, ha egy felhasználó vagy egy alkalmazás egy felügyelt Storage-fiók műveleteinek elvégzését engedélyezi:  
 
-- A felügyelt tárfiókot és SaS-definíciója műveletek engedélyek
-  - *Első*: Storage-fiók adatainak beolvasása 
-  - *Lista*: A Key Vault kezeli tárfiókok listája
-  - *Frissítés*: Tárfiók frissítése
+- A felügyelt Storage-fiók és az SaS-definíciós műveletek engedélyei
+  - *beolvasás*: A Storage-fiókkal kapcsolatos információk beolvasása 
+  - *lista*: Key Vault által kezelt Storage-fiókok listázása
+  - *frissítés*: Storage-fiók frissítése
   - *Törlés*: Tárfiók törlése  
-  - *helyreállítás*: Helyreállítás törölt tárfiókokat
-  - *Biztonsági mentés*: Készítsen biztonsági másolatot egy storage-fiók
-  - *Visszaállítás*: Biztonsági másolat storage-fiók egy Key Vaultot visszaállítása
-  - *Állítsa be*: Létrehozni vagy frissíteni a storage-fiók
-  - *regeneratekey*: Storage-fiókok megadott kulcsérték újragenerálása
-  - *getsas*: Storage-fiókok egy SAS-definíció adatainak beolvasása
-  - *listsas*: SAS-definíciót tároló storage-fiókok listázása
-  - *deletesas*: Egy tárfiókból egy SAS-definíció törlése
-  - *setsas*: Létrehozása vagy frissítése egy új SAS definíció/attribútumok storage-fiókok
+  - *helyreállítás*: Törölt Storage-fiók helyreállítása
+  - *biztonsági mentés*: Storage-fiók biztonsági mentése
+  - *visszaállítás*: Biztonsági másolatból álló Storage-fiók visszaállítása Key Vault
+  - *beállítás*: Storage-fiók létrehozása vagy frissítése
+  - *regeneratekey*: Megadott kulcs értékének újralétrehozása egy Storage-fiókhoz
+  - *getsas*: A Storage-fiókhoz tartozó SAS-definícióval kapcsolatos információk beolvasása
+  - *listsas*: Storage-fiókhoz tartozó Storage SAS-definíciók listázása
+  - *deletesas*: SAS-definíció törlése egy Storage-fiókból
+  - *setsas*: Új SAS-definíció/-attribútumok létrehozása vagy frissítése egy Storage-fiókhoz
 
-- Privilegizált műveleteket vonatkozó engedélyek
-  - *végleges törlés*: Végleges törlés (végleges törlése) egy felügyelt tárfiókot
+- Jogosultsági szintű műveletek engedélyei
+  - *kiürítés*: Felügyelt Storage-fiók kiürítése (végleges törlése)
 
-További információkért lásd: a [a Key Vault REST API-referencia a tárolási fiók műveletek](/rest/api/keyvault). Engedélyek meghatározása a további információkért lásd: [- tárolók létrehozása vagy frissítése](/rest/api/keyvault/vaults/createorupdate) és [tároló - hozzáférési szabályzat frissítése](/rest/api/keyvault/vaults/updateaccesspolicy).
+További információ: a [Storage-fiók műveletei a Key Vault REST API-referenciában](/rest/api/keyvault). Az engedélyek létrehozásával kapcsolatos információkért lásd: tárolók [– Létrehozás vagy frissítés](/rest/api/keyvault/vaults/createorupdate) és tárolók [– frissítési hozzáférési szabályzat](/rest/api/keyvault/vaults/updateaccesspolicy).
 
 ## <a name="see-also"></a>Lásd még:
 
-- [Hitelesítési kérelmek és válaszok](authentication-requests-and-responses.md)
-- [A Key Vault-verziók](key-vault-versions.md)
+- [Hitelesítés, kérések és válaszok](authentication-requests-and-responses.md)
 - [Key Vault fejlesztői útmutató](/azure/key-vault/key-vault-developers-guide)

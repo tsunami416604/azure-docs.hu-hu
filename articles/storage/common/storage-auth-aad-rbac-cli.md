@@ -1,45 +1,46 @@
 ---
-title: Az Azure AD hozzáférési jogosultsága ahhoz, hogy az RBAC - Azure Storage blob és üzenetsor adatok kezelése az Azure CLI használatával
-description: Hozzáférés hozzárendelése a tárolókhoz és a szerepköralapú hozzáférés-vezérlés (RBAC) az üzenetsorok az Azure CLI használatával. Az Azure Storage támogatja a beépített és egyéni RBAC-szerepkörök az Azure AD-n keresztül hitelesítést.
+title: Azure AD hozzáférési jogosultságok kezelése az Azure CLI-vel a blob-és üzenetsor-kezeléshez a RBAC-Azure Storage használatával
+description: Használja az Azure CLI-t a tárolók és a várólisták hozzáférésének hozzárendeléséhez szerepköralapú hozzáférés-vezérléssel (RBAC). Az Azure Storage támogatja a beépített és az egyéni RBAC-szerepköröket az Azure AD-n keresztül történő hitelesítéshez.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
-ms.date: 03/21/2019
+ms.topic: conceptual
+ms.date: 07/25/2019
 ms.author: tamram
+ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: de8cb99ae5db93c2438a9ea982ad1c6c9324b47f
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 606dd88fbad8cbd5c7e24d47dcf71199a25b49a2
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58450139"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673209"
 ---
-# <a name="grant-access-to-azure-blob-and-queue-data-with-rbac-using-azure-cli"></a>Az RBAC Azure CLI-vel az Azure blob és üzenetsor adatokhoz való hozzáférés engedélyezése
+# <a name="grant-access-to-azure-blob-and-queue-data-with-rbac-using-azure-cli"></a>Hozzáférés biztosítása az Azure Blob-és üzenetsor-adataihoz az Azure CLI-vel való RBAC használatával
 
-Az Azure Active Directory (Azure AD) keresztül biztonságos erőforrásokhoz való hozzáférési jogosultságok engedélyezi [szerepköralapú hozzáférés-vezérlés (RBAC)](../../role-based-access-control/overview.md). Az Azure Storage blob vagy üzenetsor adatok eléréséhez használt gyakori jogosultságkészletek építőelemekkel beépített RBAC-szerepkör egy csoportját határozza meg. 
+Azure Active Directory (Azure AD) a [szerepköralapú hozzáférés-vezérlés (RBAC)](../../role-based-access-control/overview.md)segítségével engedélyezi a hozzáférési jogokat a biztonságos erőforrásokhoz. Az Azure Storage olyan beépített RBAC-szerepköröket határoz meg, amelyek a blob-vagy üzenetsor-adateléréshez használt engedélyek közös készleteit foglalják magukban.
 
-Az RBAC szerepkör van rendelve egy Azure AD rendszerbiztonsági tag, amikor az Azure biztosít hozzáférést az ezeket az erőforrásokat, hogy a rendszerbiztonsági tag esetében. Hozzáférés az előfizetéshez, az erőforráscsoport, a storage-fiókban vagy egy tároló vagy üzenetsor szintjét hatóköre. Az Azure AD rendszerbiztonsági tag lehet, hogy egy felhasználó, csoport, egy alkalmazás egyszerű szolgáltatást, vagy egy [-identitás az Azure-erőforrások](../../active-directory/managed-identities-azure-resources/overview.md).
+Ha egy Azure AD-rendszerbiztonsági tag egy RBAC-szerepkört rendel hozzá, az Azure hozzáférést biztosít ezen rendszerbiztonsági tag erőforrásaihoz. A hozzáférés hatóköre az előfizetés, az erőforráscsoport, a Storage-fiók vagy egy adott tároló vagy várólista szintjére is kiterjed. Az Azure AD rendszerbiztonsági tag lehet egy felhasználó, egy csoport, egy egyszerű alkalmazás vagy egy [felügyelt identitás az Azure-erőforrásokhoz](../../active-directory/managed-identities-azure-resources/overview.md).
 
-Ez a cikk ismerteti, hogyan használhatja az Azure CLI beépített RBAC-szerepkörök listája, és hozzárendelheti azokat a felhasználók számára. Azure CLI-vel kapcsolatos további információkért lásd: [Azure parancssori felület (CLI)](https://docs.microsoft.com/cli/azure).
+Ez a cikk bemutatja, hogyan használhatja az Azure CLI-t a beépített RBAC-szerepkörök listázásához és a felhasználókhoz való hozzárendeléséhez. További információ az Azure CLI használatáról: [Azure parancssori felület (CLI)](https://docs.microsoft.com/cli/azure).
 
-## <a name="rbac-roles-for-blobs-and-queues"></a>A blobok és üzenetsorok RBAC-szerepkörök
+## <a name="rbac-roles-for-blobs-and-queues"></a>Blobok és várólisták RBAC szerepkörei
 
 [!INCLUDE [storage-auth-rbac-roles-include](../../../includes/storage-auth-rbac-roles-include.md)]
 
-## <a name="determine-resource-scope"></a>Erőforrás-hatókör meghatározása 
+## <a name="determine-resource-scope"></a>Erőforrás hatókörének meghatározása 
 
 [!INCLUDE [storage-auth-resource-scope-include](../../../includes/storage-auth-resource-scope-include.md)]
 
-## <a name="list-available-rbac-roles"></a>Lista elérhető RBAC-szerepkörök
+## <a name="list-available-rbac-roles"></a>Elérhető RBAC-szerepkörök listázása
 
-Elérhető beépített RBAC-szerepkörök az Azure CLI-vel listájában, használja a [az role definition listájában](/cli/azure/role/definition#az-role-definition-list) parancsot:
+Az elérhető beépített RBAC-szerepkörök az Azure CLI-vel való listázásához használja az az [role definition List](/cli/azure/role/definition#az-role-definition-list) parancsot:
 
 ```azurecli-interactive
 az role definition list --out table
 ```
 
-Ekkor megjelenik a beépített Azure Storage együtt jelenik meg, más beépített szerepkörök az Azure data szerepkörök:
+Megjelenik az Azure Storage beépített adatszerepkörei, valamint az Azure egyéb beépített szerepkörei:
 
 ```Example
 Storage Blob Data Contributor             Allows for read, write and delete access to Azure Storage blob containers and data
@@ -51,91 +52,91 @@ Storage Queue Data Message Sender         Allows for sending of Azure Storage qu
 Storage Queue Data Reader                 Allows for read access to Azure Storage queues and queue messages
 ```
 
-## <a name="assign-an-rbac-role-to-a-user"></a>Az RBAC szerepkör hozzárendelése felhasználóhoz
+## <a name="assign-an-rbac-role-to-a-security-principal"></a>RBAC-szerepkör társítása egy rendszerbiztonsági tag számára
 
-Az RBAC szerepkör hozzárendelése felhasználóhoz, használja a [az szerepkör-hozzárendelés létrehozása](/cli/azure/role/assignment#az-role-assignment-create) parancsot. A parancs formátuma a hozzárendelés hatókörét is különböznek egymástól a rendszer. Az alábbi példák bemutatják, hogyan szerepkör hozzárendelése a felhasználók a különböző hatókörök.
+Ha RBAC szerepkört szeretne hozzárendelni egy rendszerbiztonsági tag számára, használja az az [szerepkör-hozzárendelés létrehozása](/cli/azure/role/assignment#az-role-assignment-create) parancsot. A parancs formátuma eltérő lehet a hozzárendelés hatóköre alapján. Az alábbi példák bemutatják, hogyan rendeljen hozzá egy szerepkört egy felhasználóhoz különböző hatókörökben, de ugyanazt a parancsot használhatja egy szerepkör hozzárendelésére bármely rendszerbiztonsági tag számára.
 
-### <a name="container-scope"></a>Tároló hatókör
+### <a name="container-scope"></a>Tároló hatóköre
 
-Egy tároló hatóköre szerepkör hozzárendelése tárolója hatókörének tartalmazó karakterláncot kell megadni a `--scope` paraméter. A hatókör egy tárolóhoz van a képernyőn:
+Egy tárolóhoz hatókörrel rendelkező szerepkör hozzárendeléséhez adjon meg egy karakterláncot, amely tartalmazza a `--scope` paraméter tárolójának hatókörét. A tároló hatóköre a következő formában van:
 
 ```
-/subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/blobServices/default/containers/<container-name>
+/subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/blobServices/default/containers/<container>
 ```
 
-Az alábbi példa a **Storage-Blobadatok Közreműködője** szerepkört egy felhasználóhoz kötődő nevű tárolóba *minta-tároló*. Ügyeljen arra, hogy mintaértékeket és zárójelben a helyőrző értékeket cserélje le a saját értékeit: 
+A következő példa hozzárendeli a **Storage blob-adatközreműködői** szerepkört egy felhasználóhoz, hatókörét a tároló szintjére. Ügyeljen rá, hogy a minták értékeit és a zárójelben lévő helyőrző értékeket a saját értékeire cserélje le:
 
 ```azurecli-interactive
 az role assignment create \
     --role "Storage Blob Data Contributor" \
     --assignee <email> \
-    --scope "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/blobServices/default/containers/sample-container"
+    --scope "/subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/blobServices/default/containers/<container>"
 ```
 
-### <a name="queue-scope"></a>Csoportjuk hatókörébe tartozó
+### <a name="queue-scope"></a>Várólista hatóköre
 
-Üzenetsor hatókörű szerepkör hozzárendelése a hatókör várólistájának tartalmazó karakterláncot kell megadni a `--scope` paraméter. A hatókör üzenetsorhoz van a képernyőn:
+Ha egy szerepkör hatókörét szeretné hozzárendelni egy várólistához, adjon meg egy karakterláncot, amely a `--scope` paraméter várólistájának hatókörét tartalmazza. Az üzenetsor hatóköre a következő formában van:
 
 ```
-/subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/queueServices/default/queues/<queue-name>
+/subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/queueServices/default/queues/<queue>
 ```
 
-Az alábbi példa a **tárolási Üzenetsorbeli adatok Közreműködője** szerepkört egy felhasználóhoz kötődő nevű üzenetsor *várólista-minta*. Ügyeljen arra, hogy mintaértékeket és zárójelben a helyőrző értékeket cserélje le a saját értékeit: 
+Az alábbi példa a **Storage üzenetsor-adatközreműködői** szerepkört rendeli hozzá egy felhasználóhoz, hatókörét pedig a várólista szintjére. Ügyeljen rá, hogy a minták értékeit és a zárójelben lévő helyőrző értékeket a saját értékeire cserélje le:
 
 ```azurecli-interactive
 az role assignment create \
     --role "Storage Queue Data Contributor" \
     --assignee <email> \
-    --scope "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/queueServices/default/queues/sample-queue"
+    --scope "/subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/queueServices/default/queues/<queue>"
 ```
 
-### <a name="storage-account-scope"></a>Storage-fiók hatókörében
+### <a name="storage-account-scope"></a>Storage-fiók hatóköre
 
-Hatóköre a tárfiók szerepkör hozzárendelése, adja meg a tárfiók típusú erőforrást a hatóköre a `--scope` paraméter. A storage-fiókok hatóköre a képernyőn:
+A Storage-fiókhoz tartozó szerepkör hozzárendeléséhez adja meg a Storage-fiók erőforrásának hatókörét a `--scope` paraméterhez. A Storage-fiók hatóköre a következő formában van:
 
 ```
 /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>
 ```
 
-Az alábbi példa bemutatja, hogyan rendelje hozzá a **Storage-Blobadatok olvasója** a tárfiók szintjén egy felhasználói szerepkört. Ügyeljen arra, hogy a minta értékeket cserélje le a saját értékeit: 
+Az alábbi példa bemutatja, hogyan rendelhető hozzá a **Storage blob-Adatolvasói** szerepkör a felhasználóhoz a Storage-fiók szintjén. Győződjön meg arról, hogy a minták értékeit a saját értékeire cseréli: \
 
 ```azurecli-interactive
 az role assignment create \
     --role "Storage Blob Data Reader" \
     --assignee <email> \
-    --scope "/subscriptions/<subscription-id>/resourceGroups/sample-resource-group/providers/Microsoft.Storage/storageAccounts/storagesamples"
+    --scope "/subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>"
 ```
 
-### <a name="resource-group-scope"></a>Erőforrás-csoport hatóköre
+### <a name="resource-group-scope"></a>Erőforráscsoport hatóköre
 
-Az erőforráscsoport hatóköre szerepkörök hozzárendeléséhez, adja meg az erőforráscsoport neve vagy azonosítója a `--resource-group` paraméter. Az alábbi példa a **tárolási Üzenetsorbeli adatok olvasója** szerepkört egy felhasználóhoz, az erőforráscsoport szintjén. Ügyeljen arra, hogy a mintaértékeket és zárójelben helyőrzőértékeket cserélje le a saját értékeit: 
+Az erőforráscsoport hatókörének hozzárendeléséhez adja meg az erőforráscsoport nevét vagy AZONOSÍTÓját a `--resource-group` paraméterhez. Az alábbi példa a **Storage üzenetsor-Adatolvasói** szerepkört rendeli hozzá egy felhasználóhoz az erőforráscsoport szintjén. Ügyeljen rá, hogy a minták értékeit és a helyőrző értékeket zárójelben adja meg a saját értékeivel:
 
 ```azurecli-interactive
 az role assignment create \
     --role "Storage Queue Data Reader" \
     --assignee <email> \
-    --resource-group sample-resource-group
+    --resource-group <resource-group>
 ```
 
-### <a name="subscription-scope"></a>Egy előfizetésre
+### <a name="subscription-scope"></a>Előfizetés hatóköre
 
-Az előfizetés hatóköre szerepkörök hozzárendeléséhez, adja meg azt az a előfizetés esetében a `--scope` paraméter. A hatókör-előfizetéssel van a képernyőn:
+Ahhoz, hogy az előfizetéshez hatókört rendeljen, adja meg az előfizetés hatókörét a `--scope` paraméterhez. Az előfizetés hatóköre a következő formában van:
 
 ```
 /subscriptions/<subscription>
 ```
 
-Az alábbi példa bemutatja, hogyan rendelje hozzá a **Storage-Blobadatok olvasója** a tárfiók szintjén egy felhasználói szerepkört. Ügyeljen arra, hogy a minta értékeket cserélje le a saját értékeit: 
+Az alábbi példa bemutatja, hogyan rendelhető hozzá a **Storage blob-Adatolvasói** szerepkör a felhasználóhoz a Storage-fiók szintjén. Győződjön meg arról, hogy a minták értékeit a saját értékeire cseréli: 
 
 ```azurecli-interactive
 az role assignment create \
     --role "Storage Blob Data Reader" \
     --assignee <email> \
-    --scope "/subscriptions/<subscription-id>"
+    --scope "/subscriptions/<subscription>"
 ```
 
 ## <a name="next-steps"></a>További lépések
 
-- [Rbac-RÓL és az Azure PowerShell használatával Azure-erőforrásokhoz való hozzáférés kezelése](../../role-based-access-control/role-assignments-powershell.md)
-- [Hozzáférés engedélyezése az Azure-beli blob és üzenetsor adat az RBAC Azure powershellel](storage-auth-aad-rbac-powershell.md)
-- [Hozzáférés engedélyezése az Azure blob és üzenetsor adatok RBAC használata az Azure Portalon](storage-auth-aad-rbac-portal.md)
+- [Azure-erőforrásokhoz való hozzáférés kezelése a RBAC és a Azure PowerShell használatával](../../role-based-access-control/role-assignments-powershell.md)
+- [Hozzáférés biztosítása az Azure Blob-és üzenetsor-adataihoz a RBAC használatával Azure PowerShell](storage-auth-aad-rbac-powershell.md)
+- [Hozzáférés biztosítása Azure-blobok és -üzenetsorok adataihoz RBAC használatával az Azure Portalon](storage-auth-aad-rbac-portal.md)

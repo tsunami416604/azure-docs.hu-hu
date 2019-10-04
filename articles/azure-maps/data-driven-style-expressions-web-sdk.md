@@ -1,6 +1,6 @@
 ---
-title: Az adatvezérelt stílusa kifejezés az Azure Maps Web SDK-ban |} A Microsoft Docs
-description: Az adatvezérelt stílus kifejezések használata az Azure Maps Web SDK hogyan.
+title: Adatvezérelt stílusú kifejezések a Azure Maps web SDK-ban | Microsoft Docs
+description: Adatvezérelt stílusú kifejezések használata a Azure Maps web SDK-ban.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 4/4/2019
@@ -9,26 +9,26 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 3b234ca37783fe557baf307f198de9636b06a382
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 507af54b8b4c2e7c67538a1a25a040c7ee5fdfd5
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579495"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976315"
 ---
-# <a name="data-driven-style-expressions-web-sdk"></a>Az adatvezérelt stílusa kifejezés (Web SDK-t)
+# <a name="data-driven-style-expressions-web-sdk"></a>Adatvezérelt stílusú kifejezések (web SDK)
 
-Kifejezések lehetővé teszik, hogy az üzleti logika alkalmazása, vizsgálja meg a tulajdonságait az adatforrás minden alakzathoz meghatározott stílusának beállítások. Kifejezések is használható egy adatforrás vagy réteg adatok szűréséhez. Kifejezések állhat, feltételes logikát, például ha-utasítások, és a; adatok kezelésére is használható karakterlánc, logikai és matematikai operátorokat. 
+A kifejezések lehetővé teszik, hogy üzleti logikát alkalmazzon az adatforrásban lévő egyes alakzatokban definiált tulajdonságokat betekintő formázási lehetőségekre. A kifejezések az adatforrásban vagy a rétegben lévő adatszűréshez is használhatók. A kifejezések tartalmazhatnak feltételes logikát, például if-utasítást, és az adatkezeléshez is használhatók; karakterlánc-, logikai és matematikai operátorok. 
 
-Az adatvezérelt stílusok csökkenti a kód szükséges üzleti logikát stílusának körül. A rétegek használatakor kifejezések egy önálló szálon, amely a felhasználói felület szálán üzleti logika kiértékelése képest nagyobb teljesítményt biztosít a renderelési időben értékeli ki.
+Az adatvezérelt stílusok csökkenthetik a szükséges kód mennyiségét, hogy az üzleti logikát a stílus alapján lehessen megvalósítani. A rétegekkel való használat esetén a kifejezések kiértékelése egy külön szálon történik, amely nagyobb teljesítményt biztosít a felhasználói felületi szál üzleti logikájának kiértékeléséhez képest.
 
-Az alábbi videó az Azure Maps Web SDK-ban az adatvezérelt stílusának áttekintést nyújt.
+Az alábbi videó áttekintést nyújt az adatvezérelt stílusról a Azure Maps web SDK-ban.
 
 <br/>
 
 <iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Data-Driven-Styling-with-Azure-Maps/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
 
-Kifejezések JSON-tömbök helyettesítik. A kifejezés a tömb első eleme egy karakterláncérték, amely meghatározza a kifejezés operátor neve. Például "+" vagy "kis". A következő elemek (ha vannak) az argumentumok a kifejezést. Minden argumentum egy konstans értéket (egy karakterlánc, szám, logikai értéket, vagy `null`), vagy egy másik kifejezés tömbben. A következő pseudocode alapszintű struktúrát egy kifejezést határozza meg. 
+A kifejezések JSON-tömbökként jelennek meg. A tömb egyik kifejezésének első eleme egy olyan karakterlánc, amely megadja a kifejezés operátor nevét. Például: "+" vagy "Case". A következő elemek (ha vannak ilyenek) a kifejezés argumentumai. Minden argumentum vagy egy literális érték (karakterlánc, szám, logikai vagy `null`), vagy egy másik Expression tömb. A következő pseudocode határozzák meg a kifejezés alapszerkezetét. 
 
 ```javascript
 [ 
@@ -39,23 +39,24 @@ Kifejezések JSON-tömbök helyettesítik. A kifejezés a tömb első eleme egy 
 ] 
 ```
 
-Az Azure Maps Web SDK támogatja a számos különböző típusú kifejezés, amely saját vagy egyéb kifejezések együtt is használhatók.
+A Azure Maps web SDK számos olyan típust támogat, amelyek a saját vagy más kifejezésekkel együtt használhatók.
 
-| A kifejezések típusa | Leírás |
+| Kifejezések típusa | Leírás |
 |---------------------|-------------|
-| [A logikai kifejezéseket](#boolean-expressions) | Logikai kifejezésen logikai operátorokkal kifejezések kiértékelése logikai összehasonlítások tárházát biztosítja. |
-| [Színe kifejezés](#color-expressions) | Szín kifejezés könnyebben hozhat létre és kezelheti a színértékek. |
-| [A feltételes kifejezések](#conditional-expressions) | A feltételes kifejezések biztosít logic, ha-utasítások hasonlóak. |
-| [Adatok kifejezések](#data-expressions) | Egy szolgáltatás tulajdonság adataihoz hozzáférést biztosít. |
-| [Interpolálja és kifejezések. lépés:](#interpolate-and-step-expressions) | Interpolálja és lépés kifejezések mentén interpolált görbe vagy lépés függvény értékek kiszámításához használható. |
-| [Réteg megadott kifejezések](#layer-specific-expressions) | Speciális kifejezések, amelyek csak egy rétegben alkalmazható. |
-| [Matematikai kifejezések](#math-expressions) | Kifejezés keretében adatokon alapuló számítások végrehajtásához matematikai operátorokat tartalmaz. |
-| [Karakterlánc operátor kifejezése](#string-operator-expressions) | Karakterlánc operátor kifejezések átalakítási műveletek végrehajtása a karakterláncok például kiszámításával és átalakítás az eset. |
-| [Típus kifejezés](#type-expressions) | Típus kifejezés biztosítanak eszközöket teszteléshez és a különböző adattípusok – például a karakterláncokat, számok és logikai értékek konvertálása. |
-| [Változókötés kifejezések](#variable-binding-expressions) | Változókötés kifejezések lehetővé teszik a számítások eredményét egy változóban tárolni, és a máshol kifejezésben hivatkozott egy többször számítsa ki újra a tárolt érték nélkül. |
-| [Nagyítás kifejezése](#zoom-expression) | Renderelési időben kérdezi le a térkép jelenlegi nagyítási szintjét. |
+| [Összesítő kifejezés](#aggregate-expression) | Egy olyan kifejezés, amely meghatározza egy adathalmazon feldolgozott számítást, és használható az `clusterProperties` a kapcsolóval. `DataSource` |
+| [Logikai kifejezések](#boolean-expressions) | A logikai kifejezések logikai operátorok egy készletét biztosítják a logikai összehasonlítások kiértékeléséhez. |
+| [Színkifejezések](#color-expressions) | A színkifejezések egyszerűbbé teszik a színértékek létrehozását és kezelését. |
+| [Feltételes kifejezések](#conditional-expressions) | A feltételes kifejezések olyan logikai műveleteket biztosítanak, amelyek például if-utasítások. |
+| [Adatkifejezések](#data-expressions) | Hozzáférést biztosít a szolgáltatásban található tulajdonság-információhoz. |
+| [Interpolációs és Step kifejezések](#interpolate-and-step-expressions) | Az interpolációs és a Step kifejezésekkel az értékek kiszámíthatók az interpolált görbe vagy a Step függvény használatával. |
+| [Réteg-specifikus kifejezések](#layer-specific-expressions) | Olyan speciális kifejezések, amelyek csak egyetlen rétegre érvényesek. |
+| [Matematikai kifejezések](#math-expressions) | Matematikai operátorokat biztosít az adatvezérelt számítások végrehajtásához a kifejezés-keretrendszeren belül. |
+| [Karakterlánc-operátor kifejezései](#string-operator-expressions) | A karakterlánc-operátor kifejezései olyan karakterlánc-átalakítási műveleteket hajtanak végre, mint például az Összefűzés és az átalakítás. |
+| [Típus kifejezések](#type-expressions) | A Type kifejezések a különböző adattípusok (például karakterláncok, számok és logikai értékek) tesztelésére és átalakítására szolgáló eszközöket biztosítanak. |
+| [Változó kötési kifejezések](#variable-binding-expressions) | A változó kötési kifejezések lehetővé teszik, hogy a számítás eredményei egy változóban legyenek tárolva, és többször is hivatkoznak egy kifejezésben, anélkül, hogy újra kellene számítani a tárolt értéket. |
+| [Nagyítás kifejezése](#zoom-expression) | Lekéri a Térkép jelenlegi nagyítási szintjét renderelési időben. |
 
-Ebben a dokumentumban szereplő összes példák a következő szolgáltatás segítségével különböző módszereket mutatnak be, hogy a különböző típusú kifejezéseket is használható. 
+A jelen dokumentumban szereplő összes példa a következő funkcióval mutatja be a különböző típusú kifejezések használatának különböző módjait. 
 
 ```javascript
 {
@@ -64,7 +65,8 @@ Ebben a dokumentumban szereplő összes példák a következő szolgáltatás se
         "type": "Point",
         "coordinates": [-122.13284, 47.63699]
     },
-    "properties": {     
+    "properties": { 
+        "id": 123,
         "entityType": "restaurant",
         "revenue": 12345,
         "subTitle": "Building 40", 
@@ -75,24 +77,24 @@ Ebben a dokumentumban szereplő összes példák a következő szolgáltatás se
 }
 ```
 
-## <a name="data-expressions"></a>Adatok kifejezések
+## <a name="data-expressions"></a>Adatkifejezések
 
-Adatok kifejezések funkció tulajdonság adataihoz hozzáférést biztosítanak. 
+Az adatkifejezések hozzáférést biztosítanak a szolgáltatásban található tulajdonság-értékekhez. 
 
-| Kifejezés | Visszatérési típusa | Leírás |
+| Kifejezés | Visszatérési típus | Leírás |
 |------------|-------------|-------------|
-| `['at', number, array]` | objektum | Lekérdezi egy elemet egy tömb. |
-| `['geometry-type']` | sztring | Lekérdezi a funkció geometriai típusa: Pont, MultiPoint, LineString, MultiLineString, Polygon, MultiPolygon. |
-| `['get', string]` | érték | A tulajdonság értéke az aktuális szolgáltatás tulajdonságainak beolvasása. Ha hiányzik a kért tulajdonsága null értéket ad vissza. |
-| `['get', string, object]` | érték | A tulajdonság értéke a megadott objektum tulajdonságait olvassa be. Ha hiányzik a kért tulajdonsága null értéket ad vissza. |
-| `['has', string]` | logikai | Meghatározza, hogy egy szolgáltatás tulajdonságainak van-e a megadott tulajdonságot. |
-| `['has', string, object]` | logikai | Meghatározza, hogy az objektum tulajdonságainak van-e a megadott tulajdonságot. |
-| `['id']` | érték | A Funkcióazonosító lekérdezi, ha rendelkezik ilyennel. |
-| `['length', string | array]` | szám | A tömb vagy karakterlánc hosszának beolvasása. |
+| `['at', number, array]` | object | Egy elem lekérése egy tömbből. |
+| `['geometry-type']` | Karakterlánc | A szolgáltatás geometriai típusának beolvasása: Pont, multipoint, LineString, MultiLineString, sokszög, többsokszögű. |
+| `['get', string]` | value | A tulajdonság értékének beolvasása az aktuális funkció tulajdonságaiból. Null értéket ad vissza, ha a kért tulajdonság hiányzik. |
+| `['get', string, object]` | value | A tulajdonság értékének beolvasása a megadott objektum tulajdonságaiból. Null értéket ad vissza, ha a kért tulajdonság hiányzik. |
+| `['has', string]` | boolean | Meghatározza, hogy a szolgáltatás tulajdonságai rendelkeznek-e a megadott tulajdonsággal. |
+| `['has', string, object]` | boolean | Meghatározza, hogy az objektum tulajdonságai rendelkeznek-e a megadott tulajdonsággal. |
+| `['id']` | value | A szolgáltatás AZONOSÍTÓjának beolvasása, ha rendelkezik ilyennel. |
+| `['length', string | array]` | szám | Egy karakterlánc vagy tömb hosszának beolvasása. |
 
 **Példák**
 
-Egy szolgáltatás tulajdonságainak elérhetők közvetlenül egy kifejezés használatával egy `get` kifejezés. Az alábbi példa egy buborék réteg színe tulajdonság megadására a szolgáltatás "zoneColor" értékét használja. 
+Egy szolgáltatás tulajdonságai közvetlenül egy kifejezés használatával `get` érhetők el egy kifejezésben. A következő példa a szolgáltatás "zoneColor" értékét használja a buborékdiagram szín tulajdonságának megadásához. 
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -100,7 +102,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-A fenti példában megfelelően fog működni, ha minden pont szolgáltatás rendelkezik a `zoneColor` tulajdonságot, ha nem, de a szín lesz valószínűleg térhet vissza "fekete". A tartalék szín módosítása egy `case` kifejezés használható együtt a `has` kifejezés, ellenőrizze, hogy a tulajdonság létezik, és ha ehelyett, nem visszaadja egy tartalék színt.
+A fenti példa akkor működik, ha az összes funkció rendelkezik a `zoneColor` tulajdonsággal, de ha nem, akkor a szín valószínűleg visszakerül a "fekete" értékre. A tartalék szín módosításához egy `case` kifejezés `has` használható a kifejezéssel együtt annak ellenőrzéséhez, hogy a tulajdonság létezik-e, és ha nem ad vissza egy tartalék színt.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -115,7 +117,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-Buborékdiagram és szimbólum rétegek alapértelmezés szerint egy adatforrásban alakzatokhoz koordinátáit jelennek meg. Ezt megteheti egy sokszög- vagy vonaldiagramon az csúcspont kiemeléséhez. A `filter` a réteg is a beállítással korlátozhatja a funkciókat a vártak geometry típusú egy `['geometry-type']` kifejezés belül egy logikai kifejezés. Az alábbi példa korlátozza, hogy csak egy buborék réteg `Point` funkciók vannak leképezve.
+A buborék és a szimbólum rétegek alapértelmezés szerint az adatforrásban lévő összes alakzat koordinátáit fogják megjeleníteni. Ezt megteheti egy sokszög vagy vonal csúcspontjának kiemeléséhez. A réteg `['geometry-type']` beállításával korlátozhatja az általa megjelenített szolgáltatások geometriájának típusát egy logikai kifejezésen belüli kifejezés használatával. `filter` Az alábbi példa egy buborék réteget korlátozza, hogy csak `Point` a funkciók legyenek megjelenítve.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -123,7 +125,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-Az alábbi példában is lehetővé teszi `Point` és `MultiPoint` funkciókat a megjelenítésre. 
+A következő példa lehetővé teszi `Point` a és `MultiPoint` a szolgáltatások megjelenítését. 
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -131,69 +133,90 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-Ehhez hasonlóan a Vázlat sokszögek sor rétegekben jelenik meg. Tiltsa le ezt a viselkedést egy vonalréteg, adjon hozzá egy szűrőt, amely csak lehetővé teszi, hogy `LineString` és `MultiLineString` funkciókat.  
+Hasonlóképpen a sokszögek körvonalai is megjelennek a sorokban. Ha le szeretné tiltani ezt a viselkedést egy vonal rétegben, adjon hozzá `LineString` egy `MultiLineString` olyan szűrőt, amely csak a és a funkciókat engedélyezi.  
 
 ## <a name="math-expressions"></a>Matematikai kifejezések
 
-Matematikai kifejezések matematikai operátorokat kifejezés keretében adatokon alapuló számítások végrehajtásához adja meg.
+A matematikai kifejezések matematikai operátorokat biztosítanak az adatvezérelt számítások végrehajtásához a kifejezés keretrendszerében.
 
-| Kifejezés | Visszatérési típusa | Leírás |
+| Kifejezés | Visszatérési típus | Leírás |
 |------------|-------------|-------------|
-| `['+', number, number, …]` | szám | A megadott számok összegét számítja ki. |
-| `['-', number]` | szám | Kivonja a megadott szám szerint 0. |
-| `['-', number, number]` | szám | A második szám szerint az első számok időpontból. |
-| `['*', number, number, …]` | szám | A megadott számok szorozza meg együtt. |
-| `['/', number, number]` | szám | Az első szám, a második szám alapján osztja fel. |
-| `['%', number, number]` | szám | Kiszámítja a fennmaradó, a második szám szerint az első szám való osztás esetén. |
-| `['^', number, number]` | szám | Az első olyan értéket, a teljesítmény, a második szám megadott hatványra emelt értékét számítja ki. |
-| `['abs', number]` | szám | A megadott szám abszolút értékét számítja ki. |
-| `['acos', number]` | szám | A megadott szám arkusz koszinuszát számítja ki. |
-| `['asin', number]` | szám | A megadott szám arkusz számítja ki. |
-| `['atan', number]` | szám | A megadott szám arkusz tangensét számítja ki. |
-| `['ceil', number]` | szám | A szám a következő egész egész számra kerekít. |
-| `['cos', number]` | szám | A megadott szám cos számítja ki. |
-| `['e']` | szám | Visszaadja a matematikai állandó `e`. |
-| `['floor', number]` | szám | A szám egész az előző egész számra kerekít. |
+| `['+', number, number, …]` | szám | Kiszámítja a megadott számok összegét. |
+| `['-', number]` | szám | A megadott szám szerinti 0 kivonása. |
+| `['-', number, number]` | szám | Kivonja az első számokat a második szám alapján. |
+| `['*', number, number, …]` | szám | A megadott számok összeszorzása. |
+| `['/', number, number]` | szám | Az első szám felosztása a második szám alapján. |
+| `['%', number, number]` | szám | Kiszámítja a maradékot az első szám második számmal való osztásakor. |
+| `['^', number, number]` | szám | Kiszámítja a második szám hatványára emelt első érték értékét. |
+| `['abs', number]` | szám | Kiszámítja a megadott szám abszolút értékét. |
+| `['acos', number]` | szám | Kiszámítja a megadott szám szám arkusz koszinuszát. |
+| `['asin', number]` | szám | Kiszámítja a megadott szám arkusz szinuszát. |
+| `['atan', number]` | szám | Kiszámítja a megadott szám arkusz tangensét. |
+| `['ceil', number]` | szám | Felfelé kerekíti a számot a következő egész számra. |
+| `['cos', number]` | szám | Kiszámítja a megadott szám cos-számát. |
+| `['e']` | szám | A matematikai állandót `e`adja vissza. |
+| `['floor', number]` | szám | Lefelé kerekíti a számot az előző egész egész számra. |
 | `['ln', number]` | szám | A megadott szám természetes alapú logaritmusát számítja ki. |
-| `['ln2']` | szám | Visszaadja a matematikai állandó `ln(2)`. |
-| `['log10', number]` | szám | A megadott szám logaritmusát base-tíz számítja ki. |
-| `['log2', number]` | szám | A megadott szám logaritmusát alapja a második kiszámítja. |
-| `['max', number, number, …]` | szám | Kiszámítja a szám a megadott készletben a maximális számát. |
-| `['min', number, number, …]` | szám | Kiszámítja a megadott készlet számok minimális száma. |
-| `['pi']` | szám | Visszaadja a matematikai állandó `PI`. |
-| `['round', number]` | szám | A számot a legközelebbi egész számra kerekít. Felénél értékek távolodó kerekíti. Ha például `['round', -1.5]` -2 értékelődik ki. |
-| `['sin', number]` | szám | A megadott szám szinuszát számítja ki. |
-| `['sqrt', number]` | szám | Kiszámítja a megadott szám négyzetgyökét. |
-| `['tan', number]` | szám | A megadott szám tangensét számítja ki. |
+| `['ln2']` | szám | A matematikai állandót `ln(2)`adja vissza. |
+| `['log10', number]` | szám | Kiszámítja a megadott szám 10-es alapú logaritmusát. |
+| `['log2', number]` | szám | Kiszámítja a megadott szám alap-két logaritmusát. |
+| `['max', number, number, …]` | szám | Kiszámítja a megadott Számsorozatok maximális számát. |
+| `['min', number, number, …]` | szám | Kiszámítja a minimális számot a megadott számú készletben. |
+| `['pi']` | szám | A matematikai állandót `PI`adja vissza. |
+| `['round', number]` | szám | A számot a legközelebbi egész számra kerekíti. A félúton lévő értékek a nullától távolabbi távolságra vannak kerekítve. Például `['round', -1.5]` a-2 értékre. |
+| `['sin', number]` | szám | Kiszámítja a megadott szám szinuszát. |
+| `['sqrt', number]` | szám | Kiszámítja a megadott szám négyzet gyökerét. |
+| `['tan', number]` | szám | Kiszámítja a megadott szám tangensét. |
+
+## <a name="aggregate-expression"></a>Összesítő kifejezés
+
+Az összesítő kifejezés egy adathalmazon feldolgozott számítást határoz meg, amely a használatával használható `clusterProperties`. `DataSource` A kifejezések kimenetének számnak vagy logikai értéknek kell lennie. 
+
+Az összesítő kifejezés három értéket vesz igénybe; egy operátor értéke és a kezdeti érték, valamint egy kifejezés, amely egy tulajdonságot kér le egy olyan adatokból, amely az összesített műveletet alkalmazza a alkalmazásban. A kifejezés formátuma a következő:
+
+```javascript
+[operator: string, initialValue: boolean | number, mapExpression: Expression]
+```
+
+- üzemeltető Egy kifejezési függvény, amely a fürt minden pontja által `mapExpression` kiszámított összes értékre vonatkozik. Támogatott operátorok; 
+    - Számok: `+` `*` ,,,`max``min`
+    - Logikai értékek esetén: `all`,`any`
+- initialValue: Egy kezdeti érték, amelyben az első számított érték összesítve lesz.
+- mapExpression: Az adathalmaz minden pontjára alkalmazott kifejezés.
+
+**Példák**
+
+Ha az adathalmaz összes funkciója rendelkezik egy `revenue` számmal rendelkező tulajdonsággal. Az adatkészletből létrehozott fürt összes pontjának teljes bevételét a következő összesítő kifejezéssel számíthatja ki:`['+', 0, ['get', 'revenue']]`
+
 ## <a name="boolean-expressions"></a>Logikai kifejezések
 
-Logikai kifejezésen logikai operátorokkal kifejezések kiértékelése logikai összehasonlítások tárházát biztosítja.
+A logikai kifejezések logikai operátorok egy készletét biztosítják a logikai összehasonlítások kiértékeléséhez.
 
-Értékek összehasonlítása, az összehasonlítás szigorúan írta be. Különböző típusú értékek mindig minősülnek nem egyenlő. Esetekben, ahol a típusok ismert parse időpontban eltérő lehet érvénytelen tekinti, és a egy elemzési hiba állítja elő. 
+Az értékek összehasonlításakor az összehasonlítás szigorúan be van írva. A különböző típusú értékek mindig egyenlőtlennek számítanak. Azok az esetek, amelyekben a típusok ismertek, hogy az elemzési idő eltérő, és elemzési hibát eredményez. 
 
-| Kifejezés | Visszatérési típusa | Leírás |
+| Kifejezés | Visszatérési típus | Leírás |
 |------------|-------------|-------------|
-| `['! ', boolean]` | logikai | Logikai negálás. Értéket ad vissza `true` Ha a bemenet `false`, és `false` Ha a bemenet `true`. |
-| `['!= ', value, value]` | logikai | Értéket ad vissza `true` Ha bemeneti érték nem egyenlő, `false` más módon. |
-| `['<', value, value]` | logikai | Értéket ad vissza `true` esetén az első bemeneti szigorúan kevesebb, mint a második `false` más módon. Az argumentumok kell lennie, vagy a karakterláncok vagy mindkét számot. |
-| `['<=', value, value]` | logikai | Értéket ad vissza `true` kisebb vagy egyenlő, mint a második, az első bemenet esetén `false` más módon. Az argumentumok kell lennie, vagy a karakterláncok vagy mindkét számot. |
-| `['==', value, value]` | logikai | Értéket ad vissza `true` esetén, ha a bemeneti értékek egyeznek, `false` más módon. Az argumentumok kell lennie, vagy a karakterláncok vagy mindkét számot. |
-| `['>', value, value]` | logikai | Értéket ad vissza `true` Ha az első bemeneti szigorúan nagyobb, mint a második `false` más módon. Az argumentumok kell lennie, vagy a karakterláncok vagy mindkét számot. |
-| `['>=' value, value]` | logikai | Értéket ad vissza `true` első bemeneti esetén nagyobb vagy egyenlő a második `false` más módon. Az argumentumok kell lennie, vagy a karakterláncok vagy mindkét számot. |
-| `['all', boolean, boolean, …]` | logikai | Értéket ad vissza `true` ha összes bemeneti `true`, `false` más módon. |
-| `['any', boolean, boolean, …]` | logikai | Értéket ad vissza `true` Ha bármelyik bemenetei `true`, `false` más módon. |
+| `['! ', boolean]` | boolean | Logikai tagadás. Visszaadja `true` `false`, ha a bemenet, `false` és ha a bemenet `true`szerepel. |
+| `['!= ', value, value]` | boolean | Visszaadja `true` , ha a bemeneti értékek nem egyenlőek, `false` ellenkező esetben. |
+| `['<', value, value]` | boolean | Akkor `true` adja vissza, ha az első bemenet szigorúan kisebb a másodiknál, `false` ellenkező esetben. Az argumentumoknak karakterláncoknak vagy mindkét számnak kell lenniük. |
+| `['<=', value, value]` | boolean | Azt `true` adja vissza, hogy az első bemenet kisebb-e vagy egyenlő- `false` e a másodikval, ellenkező esetben. Az argumentumoknak karakterláncoknak vagy mindkét számnak kell lenniük. |
+| `['==', value, value]` | boolean | Visszaadja `true` , ha a bemeneti értékek egyenlőek, `false` ellenkező esetben. Az argumentumoknak karakterláncoknak vagy mindkét számnak kell lenniük. |
+| `['>', value, value]` | boolean | Azt `true` adja vissza, hogy az első bemenet szigorúan nagyobb-e `false` , mint a második, ellenkező esetben. Az argumentumoknak karakterláncoknak vagy mindkét számnak kell lenniük. |
+| `['>=' value, value]` | boolean | Akkor `true` adja vissza, ha az első bemenet nagyobb vagy egyenlő, mint a `false` második, ellenkező esetben. Az argumentumoknak karakterláncoknak vagy mindkét számnak kell lenniük. |
+| `['all', boolean, boolean, …]` | boolean | Visszaadja `true` `true`, ha az összes bemenet `false` , ellenkező esetben. |
+| `['any', boolean, boolean, …]` | boolean | Visszaadja `true` `true`, ha a bemenetek bármelyike, `false` ellenkező esetben. |
 
 ## <a name="conditional-expressions"></a>Feltételes kifejezések
 
-A feltételes kifejezések biztosít logic, ha-utasítások hasonlóak.
+A feltételes kifejezések olyan logikai műveleteket biztosítanak, amelyek például if-utasítások.
 
-Az alábbi kifejezések feltételes logikát műveletek végrehajtása a bemeneti adatait. Ha például a `case` kifejezés "if/majd/else" logikai közben biztosít a `match` kifejezés olyan, mintha egy "switch utasítás". 
+A következő kifejezések feltételes logikai műveleteket hajtanak végre a bemeneti adatokon. A `case` kifejezés például "If/then/Else" logikát biztosít, miközben a `match` kifejezés olyan, mint a "Switch-utasítás". 
 
 ### <a name="case-expression"></a>Case kifejezés
 
-A `case` kifejezést is egy feltételt, amely if utasítás például logikai elemeket (Ha/majd/else) biztosít. Az ilyen típusú kifejezés végigvezeti a logikai feltételek listáját, és az első logikai feltétel "igaz" kimeneti értékét adja vissza.
+A `case` kifejezés olyan feltételes kifejezés, amely megadja a IF-utasításhoz hasonló logikát (ha/ha/ha van ilyen). Ez a típusú kifejezés a logikai feltételek listáján keresztül történik, és az első logikai feltétel kimeneti értékét adja vissza igaz értékként.
 
-A következő pseudocode struktúráját határozza meg a `case` kifejezés. 
+A következő pseudocode határozzák meg a `case` kifejezés szerkezetét. 
 
 ```javascript
 [
@@ -209,7 +232,7 @@ A következő pseudocode struktúráját határozza meg a `case` kifejezés.
 
 **Példa**
 
-Az alábbi példa végigvezeti különböző logikai feltételeket, amíg nem talál egy visszaadó `true`, és majd a kapcsolódó érték visszaadása. Ha nincs logikai feltétel `true`, egy tartalék értékét adja vissza. 
+A következő példa különböző logikai feltételeken halad végig `true`, amíg meg nem találja a kiértékelését, majd visszaadja a hozzá tartozó értéket. Ha egyetlen logikai feltétel sincs kiértékelve `true`, a rendszer visszaadja a tartalék értéket. 
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -230,11 +253,11 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-### <a name="match-expression"></a>Keresési kifejezést
+### <a name="match-expression"></a>Egyezés kifejezése
 
-A `match` kifejezés egy olyan feltételt, például a logikai kapcsoló utasítás biztosító típusú. A bemeneti mint minden kifejezés is lehet `['get', 'entityType']` , amely a szám vagy egy karakterláncot ad vissza. Minden címke egy konstans érték vagy egy olyan értéktömböt literal, amelynek értékeit kell lennie az összes karakterláncokat vagy csak számokat kell lennie. A bemeneti illeszkedik, ha a tömb találat az értékeket. Minden címkének egyedinek kell lennie. Ha a bemeneti típus nem felel meg a feliratok a típusát, az eredmény lesz tartalék értékét.
+A `match` kifejezés olyan feltételes kifejezés, amely switch-utasítást, például logikát biztosít. A bemenet bármely kifejezés lehet, `['get', 'entityType']` például egy sztringet vagy egy számot ad vissza. Minden címkének egy literális vagy literális értékből álló tömbnek kell lennie, amelynek értékének minden sztringnek vagy számnak kell lennie. A bemenet megegyezik, ha a tömb bármelyik értéke megegyezik. Minden címkének egyedinek kell lennie. Ha a bemeneti típus nem egyezik a címkék típusával, az eredmény a tartalék érték lesz.
 
-A következő pseudocode struktúráját határozza meg a `match` kifejezés. 
+A következő pseudocode határozzák meg a `match` kifejezés szerkezetét. 
 
 ```javascript
 [
@@ -251,7 +274,7 @@ A következő pseudocode struktúráját határozza meg a `match` kifejezés.
 
 **Példák**
 
-Az alábbi példa ellenőrzi a `entityType` egy buborék réteg pont szolgáltatása tulajdonsága egyezést keres. Ha egyezést talál, a megadott értéket ad vissza, vagy a tartalék értéket adja vissza.
+A következő példa `entityType` egy buborék rétegben lévő pont funkció tulajdonságát keresi meg. Ha egyezést talál, a rendszer a megadott értéket adja vissza, vagy visszaadja a tartalék értéket.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -271,7 +294,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-Az alábbi példában egy tömb listában címkék, amelyek az összes visszaküldje-e ugyanaz az érték egy készletét. Ez a sokkal hatékonyabb, mint minden címke listázása külön-külön. Ebben az esetben ha a `entityType` tulajdonság értéke "éttermi" vagy "grocery_store", a "red" színt adja vissza.
+Az alábbi példa egy tömböt használ a címkék egy halmazának listázásához, amelynek minden esetben ugyanazt az értéket kell visszaadnia. Ez sokkal hatékonyabb, mint a címkék egyenkénti listázása. Ebben az esetben, ha a `entityType` tulajdonság "Restaurant" vagy "grocery_store", a "Red" színt adja vissza.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -292,11 +315,33 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-### <a name="coalesce-expression"></a>Coalesce kifejezés
+A következő példa egy egyezési kifejezést használ egy "in Array" vagy "Array" típusú szűrő elvégzéséhez, ebben az esetben olyan adatszűrési értékeket tartalmaz, amely az engedélyezett azonosítók listáján szereplő azonosító értékkel rendelkezik. Ha szűrőket használó kifejezéseket használ, az eredménynek logikai értéknek kell lennie.
 
-A `coalesce` kifejezés kifejezések készletével lépések, amíg az első nem üres érték kapunk, és ezt az értéket adja vissza. 
+```javascript
+var layer = new atlas.layer.BubbleLayer(datasource, null, {
+    filter: [
+        'match',  
 
-A következő pseudocode struktúráját határozza meg a `coalesce` kifejezés. 
+        //Get the property to match.
+        ['get', 'id'],  
+
+         //List of values to match.
+        [24, 53, 98], 
+
+        //If there is a match, return true.
+        true,
+    
+        //Otherwise return false.
+        false
+    ]
+});
+```
+
+### <a name="coalesce-expression"></a>Egyesítő kifejezés
+
+Egy `coalesce` kifejezés a kifejezések egy halmazán halad át, amíg az első nem null értéket nem szerzi be, és az értéket adja vissza. 
+
+A következő pseudocode határozzák meg a `coalesce` kifejezés szerkezetét. 
 
 ```javascript
 [
@@ -309,7 +354,7 @@ A következő pseudocode struktúráját határozza meg a `coalesce` kifejezés.
 
 **Példa**
 
-Az alábbi példában egy `coalesce` kifejezés beállítása a `textField` szimbólum réteg lehetőséget. Ha a `title` tulajdonság hiányzik a funkció vagy a set `null`, a kifejezés eztuán megpróbálja keres a `subtitle` tulajdonságot, ha a hiányzó vagy `null`, azt fogja majd visszatér egy üres karakterlánc. 
+Az alábbi példa egy `coalesce` kifejezést használ egy szimbólum réteg `textField` beállításának beállításához. Ha a `title` tulajdonság hiányzik a szolgáltatásból `null`, vagy a értékre van állítva, a kifejezés ezután megpróbálja megkeresni a `subtitle` tulajdonságot, `null`ha a hiányzó, vagy pedig visszaesik egy üres karakterláncra. 
 
 ```javascript
 var layer = new atlas.layer.SymbolLayer(datasource, null, {
@@ -330,21 +375,21 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 });
 ```
 
-## <a name="type-expressions"></a>Típus kifejezés
+## <a name="type-expressions"></a>Típus kifejezések
 
-Típus kifejezés biztosítanak eszközöket teszteléshez és a különböző adattípusok – például a karakterláncokat, számok és logikai értékek konvertálása.
+A Type kifejezések a különböző adattípusok (például karakterláncok, számok és logikai értékek) tesztelésére és átalakítására szolgáló eszközöket biztosítanak.
 
-| Kifejezés | Visszatérési típusa | Leírás |
+| Kifejezés | Visszatérési típus | Leírás |
 |------------|-------------|-------------|
-| `['literal', array]`<br/><br/>`['literal', object]` | tömb \| objektum | Szövegkonstansérték tömböt vagy objektumot ad vissza. Ez a kifejezés használatával megakadályozza, hogy egy tömböt vagy objektumot, egy kifejezés kiértékelése megtörténik. Erre akkor szükség, amikor egy tömböt vagy objektumot kell egy kifejezés által visszaadott. |
-| `['to-boolean', value]` | logikai | A bemeneti érték konvertálása logikai érték beolvasása. Az eredmény `false` amikor a bemeneti érték egy üres karakterlánc, `0`, `false`, `null`, vagy `NaN`; ellenkező esetben a `true`. |
-| `['to-color', value]`<br/><br/>`['to-color', value1, value2…]` | szín | A bemeneti érték konvertálása egy színt. Ha több érték van megadva, egyenként értékeli ahhoz, amíg a az első sikeres átalakítás. A bemenetek egyike sem alakítható, ha a kifejezés nem megfelelő. |
-| `['to-number', value]`<br/><br/>`['to-number', value1, value2, …]` | szám | Ha lehetséges alakítja a bemeneti érték egy szám. Ha a bemenet `null` vagy `false`, az eredmény: 0. Ha a bemenet `true`, az eredmény: 1. Ha a bemeneti karakterláncot, akkor egy számot a alakítja át a [ToNumber](https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type) karakterláncot az ECMAScript nyelvi specifikáció függvény. Ha több érték van megadva, egyenként értékeli ahhoz, amíg a az első sikeres átalakítás. A bemenetek egyike sem alakítható, ha a kifejezés nem megfelelő. |
-| `['to-string', value]` | sztring | A bemeneti érték konvertálása egy karakterláncot. Ha a bemenet `null`, az eredmény `""`. Ha a bemenet egy logikai érték, az eredmény van `"true"` vagy `"false"`. Ha a bemenet több, azt egy karakterlánc használatával alakítja át a [ToString](https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type) az ECMAScript nyelvi specifikáció függvény számot. Ha a bemeneti színt, azt konvertálja CSS RGBA-szín karakterláncnak `"rgba(r,g,b,a)"`. Ellenkező esetben a bemeneti alakítja át egy karakterlánc használata a [JSON.stringify](https://tc39.github.io/ecma262/#sec-json.stringify) a ECMAScript nyelvi specifikáció funkcióját. |
-| `['typeof', value]` | sztring | Egy karakterlánc, amely a megadott érték típusát adja vissza. |
+| `['literal', array]`<br/><br/>`['literal', object]` | tömb \| objektum | Egy konstans tömb vagy objektum értékét adja vissza. Ezzel a kifejezéssel megakadályozható, hogy egy tömb vagy objektum kifejezésként legyen kiértékelve. Erre akkor van szükség, ha egy tömböt vagy objektumot egy kifejezésnek kell visszaadnia. |
+| `['to-boolean', value]` | boolean | A bemeneti értéket logikai értékre alakítja. Az eredmény `false` az, ha a bemenet egy üres karakterlánc `false`, `0` `null`,, vagy `NaN`;, ellenkező esetben `true`a. |
+| `['to-color', value]`<br/><br/>`['to-color', value1, value2…]` | szín | Átalakítja a bemeneti értéket egy színre. Ha több érték van megadva, a rendszer mindegyiket kiértékeli, amíg meg nem történik az első sikeres konverzió. Ha a bemenetek egyike sem alakítható át, akkor a kifejezés hibát jelez. |
+| `['to-number', value]`<br/><br/>`['to-number', value1, value2, …]` | szám | Ha lehetséges, átalakítja a bemeneti értéket egy számra. Ha a bemenet `null` vagy `false`a, az eredmény 0. Ha a bemenet értéke `true`, az eredmény 1. Ha a bemenet egy karakterlánc, akkor a rendszer a ECMAScript nyelvi specifikáció [ToNumber](https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type) string függvényével egy számra konvertálja. Ha több érték van megadva, a rendszer mindegyiket kiértékeli, amíg meg nem történik az első sikeres konverzió. Ha a bemenetek egyike sem alakítható át, akkor a kifejezés hibát jelez. |
+| `['to-string', value]` | Karakterlánc | A bemeneti értéket karakterlánccá alakítja. Ha a bemenet értéke `null`, az `""`eredmény:. Ha a bemenet logikai érték, az eredmény `"true"` a vagy `"false"`a. Ha a bemenet egy szám, a rendszer a ECMAScript nyelv specifikációjának [ToString](https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type) Number függvényét használva karakterlánccá alakítja át. Ha a bemenet szín, a rendszer átalakítja a CSS RGBA színkarakterlánccá `"rgba(r,g,b,a)"`. Ellenkező esetben a rendszer a bemenetet egy karakterlánccá alakítja át a ECMAScript nyelvi specifikációjának [JSON. stringify](https://tc39.github.io/ecma262/#sec-json.stringify) funkciója segítségével. |
+| `['typeof', value]` | Karakterlánc | A megadott érték típusát leíró karakterláncot ad vissza. |
 
 > [!TIP]
-> Ha egy ehhez hasonló hibaüzenetet `Expression name must be a string, but found number instead. If you wanted a literal array, use ["literal", [...]].` jelenik meg a böngészőbeli konzolon ez azt jelenti, hogy nincs-e valahol a kódban, amely rendelkezik egy tömb, amely nem rendelkezik az első értékét egy karakterláncot egy kifejezés. Ha azt szeretné, hogy a kifejezés egy tömböt adnak vissza, a tömb a sortörés a `literal` kifejezés. Az alábbi példa beállítja az ikon `offset` szimbólum réteg, amely kell lennie a két számot tartalmazó tömb beállítás egy `match` két eltolási értéket választhat kifejezés értéke alapján a `entityType` pont tulajdonság a szolgáltatás.
+> Ha egy hasonló `Expression name must be a string, but found number instead. If you wanted a literal array, use ["literal", [...]].` hibaüzenet jelenik meg a böngésző konzolján, akkor az azt jelenti, hogy a kódban van egy olyan kifejezés, amely egy olyan tömbvel rendelkezik, amely nem rendelkezik sztringtel az első értékhez. Ha azt szeretné, hogy a kifejezés egy tömböt ad vissza, zárja be `literal` a tömböt a kifejezéssel. Az alábbi példa egy szimbólum réteg `offset` ikonját állítja be, amelynek két számot tartalmazó tömbnek kell lennie, egy `match` kifejezéssel, amely két eltolási érték közötti választást alkalmaz a pont `entityType` tulajdonságának értéke alapján. vonás.
 >
 > ```javascript
 > var layer = new atlas.layer.SymbolLayer(datasource, null, {
@@ -365,19 +410,19 @@ Típus kifejezés biztosítanak eszközöket teszteléshez és a különböző a
 > });
 > ```
 
-## <a name="color-expressions"></a>Színe kifejezés
+## <a name="color-expressions"></a>Színkifejezések
 
-Szín kifejezés könnyebben hozhat létre és kezelheti a színértékek.
+A színkifejezések egyszerűbbé teszik a színértékek létrehozását és kezelését.
 
-| Kifejezés | Visszatérési típusa | Leírás |
+| Kifejezés | Visszatérési típus | Leírás |
 |------------|-------------|-------------|
-| `['rgb', number, number, number]` | szín | Létrehoz egy színértéket származó *piros*, *zöld*, és *kék* összetevők közötti tartományban kell `0` és `255`, és a egy azalfaösszetevő`1`. Ha valamelyik összetevő az engedélyezett tartományon kívül esik, a kifejezés nem megfelelő. |
-| `['rgba', number, number, number, number]` | szín | Létrehoz egy színértéket származó *piros*, *zöld*, *kék* összetevők közötti tartományban kell `0` és `255`, és a egy tartományon belül az alfa összetevő `0` és `1`. Ha valamelyik összetevő az engedélyezett tartományon kívül esik, a kifejezés nem megfelelő. |
-| `['to-rgba']` | \[number, number, number, number\] | Egy négy-elem tömböt tartalmazó a bemeneti színt ad vissza, *piros*, *zöld*, *kék*, és *alpha* összetevők, ebben a sorrendben. |
+| `['rgb', number, number, number]` | szín | Egy színértéket hoz létre a *vörös*, *zöld*és *kék* összetevőkből a és `0` `255`a között, és egy alfa- `1`összetevőt. Ha bármelyik összetevő tartományon kívül esik, a kifejezés hibát jelez. |
+| `['rgba', number, number, number, number]` | szín | Egy színértéket hoz létre a *vörös*, *zöld*és *kék* összetevők között `255`, `0` amelyeknek a és a közötti tartományba kell esnie `1`, valamint egy alfa `0` -összetevőt a és a tartományban. Ha bármelyik összetevő tartományon kívül esik, a kifejezés hibát jelez. |
+| `['to-rgba']` | \[szám, szám, szám, szám\] | Egy négy elemből álló tömböt ad vissza, amely a bemeneti szín *vörös*, *zöld*, *kék*és *alfa* összetevőit tartalmazza ebben a sorrendben. |
 
 **Példa**
 
-A következő példában létrehozunk és szín RGB, amely rendelkezik egy *piros* értékét `255`, és *zöld* és *kék* értékek szorzata `2.5` értékével a `temperature` tulajdonság. A hőmérséklet-változás különböző árnyalatait változik a színt, *piros*.
+A következő példa létrehoz és RGB színértéket `255`tartalmaz, amely *vörös* értékkel rendelkezik, a *zöld* és a `2.5` `temperature` kék értékeket pedig a tulajdonság értékének szorzatával számítjuk ki. Ahogy a hőmérséklet megváltozik, a szín különböző árnyalatú *vörös*színűre változik.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -393,19 +438,19 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-## <a name="string-operator-expressions"></a>Karakterlánc operátor kifejezése
+## <a name="string-operator-expressions"></a>Karakterlánc-operátor kifejezései
 
-Karakterlánc operátor kifejezések átalakítási műveletek végrehajtása a karakterláncok például kiszámításával és átalakítás az eset. 
+A karakterlánc-operátor kifejezései olyan karakterlánc-átalakítási műveleteket hajtanak végre, mint például az Összefűzés és az átalakítás. 
 
-| Kifejezés | Visszatérési típusa | Leírás |
+| Kifejezés | Visszatérési típus | Leírás |
 |------------|-------------|-------------|
-| `['concat', string, string, …]` | sztring | Több karakterláncokat fűz össze a együtt. Minden egyes értéknek karakterláncnak kell lennie. Használja a `to-string` kifejezés egyéb értéktípusok alakítandó karakterlánc, szükség esetén írja be. |
-| `['downcase', string]` | sztring | A megadott karakterlánc kisbetűvé alakítja. |
-| `['upcase', string]` | sztring | A megadott karakterlánc nagybetűssé alakít át. |
+| `['concat', string, string, …]` | Karakterlánc | Több karakterlánc összefűzése egymással. Minden értéknek sztringnek kell lennie. Ha szükséges `to-string` , használja a Type kifejezést más típusú értékek karakterlánccá alakításához. |
+| `['downcase', string]` | Karakterlánc | A megadott karakterláncot kisbetűsre alakítja. |
+| `['upcase', string]` | Karakterlánc | A megadott karakterláncot nagybetűssé alakítja. |
 
 **Példa**
 
-Az alábbi példa alakítja át a `temperature` pont tulajdonság egy karakterláncban funkciót, és majd a "° F" a végéhez fűzi össze.
+Az alábbi példa átalakítja `temperature` a pont funkció tulajdonságát egy sztringre, majd a végéhez összefűzi a "°f" karakterláncot.
 
 ```javascript
 var layer = new atlas.layer.SymbolLayer(datasource, null, {
@@ -420,33 +465,33 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 });
 ```
 
-A fenti kifejezést egy PIN-kód a következő szöveggel: "64° F" felett az alábbi képen látható módon átfedésben a térképen megjelenítve.
+A fenti kifejezés egy PIN-kódot jelenít meg a térképen a "64 °F" szöveggel, az alábbi képen látható módon.
 
 <center>
 
-![Operátor példában a karakterlánc-kifejezés](media/how-to-expressions/string-operator-expression.png) </center>
+![Karakterlánc-operátor kifejezése – példa](media/how-to-expressions/string-operator-expression.png)</center>
 
-## <a name="interpolate-and-step-expressions"></a>Interpolálja és kifejezések. lépés:
+## <a name="interpolate-and-step-expressions"></a>Interpolációs és Step kifejezések
 
-Interpolálja és lépés kifejezések mentén interpolált görbe vagy lépés függvény értékek kiszámításához használható. Ezek a kifejezések vesz egy kifejezés, amely egy numerikus értéket adja vissza a bemeneti például `['get',  'temperature']`. A bemeneti érték párok, bemeneti és kimeneti értékek, az úgynevezett "nem", az érték, amely legjobban megfelel az interpolált görbe vagy lépés függvény meghatározásához képest értékeli ki. Minden egyes állítsa le a bemeneti érték egy szám lehet, és növekvő sorrendben kell. A kimeneti értékeket kell lennie, egy szám és számból álló tömböt, vagy egy színt.
+Az interpolációs és a Step kifejezésekkel az értékek kiszámíthatók az interpolált görbe vagy a Step függvény használatával. Ezek a kifejezések olyan kifejezéssel rendelkeznek, amely egy numerikus értéket ad vissza bemenetként, `['get',  'temperature']`például:. A bemeneti érték kiértékelése a "leállítások" nevű bemeneti és kimeneti értékekkel, az interpolált görbe vagy a Step függvényhez legjobban illeszkedő érték meghatározásával történik. Az egyes leállítás bemeneti értékének számnak kell lennie, és növekvő sorrendben kell lennie. A kimeneti értékeknek számnak, számok tömbének vagy színnek kell lenniük.
 
-### <a name="interpolate-expression"></a>Interpolálja kifejezés
+### <a name="interpolate-expression"></a>Interpolációs kifejezés
 
-Egy `interpolate` stop érték közötti közbeszúrva alapján számítja ki az értékek egy halmazát folyamatos, zökkenőmentes kifejezés használható. Egy `interpolate` színértékek visszaadó hoz létre a kiválasztott értékek melyik eredményben szín átmenetekhez.
+Egy `interpolate` kifejezéssel folytonos és simított értékeket lehet kiszámítani a leállítási értékek közötti interpolációval. A színértékeket visszaadó kifejezés olyan színátmenetet hoz létre, amelyben a rendszer kijelöli az eredmények értékét. `interpolate`
 
-Három típusú interpolációs módszerek használhatók egy `interpolate` kifejezés:
+A `interpolate` kifejezésekben három típusú interpolációs módszer használható:
  
-* `['linear']` -Fedettségét a költségráfordításokkal egyenes arányban leállítja a két között.
-* `['exponential', base]` -Fedettségét a exponenciálisan között a leáll. A `base` érték azt határozza meg, ahol a kimeneti növeli a sebességét. A magasabb értékek győződjön meg a kimeneti növeli a tartomány magas vége felé. A `base` 1-hez közeli érték, amely több költségráfordításokkal egyenes arányban növekszik kimenet eredményez.
-* `['cubic-bezier', x1, y1, x2, y2]` -Fedettségét a használatával egy [m3 Bezier-görbe](https://developer.mozilla.org/docs/Web/CSS/timing-function) határozzák meg a megadott ellenőrző pontok.
+* `['linear']`– A leállások párosítása között lineárisan interpolált.
+* `['exponential', base]`– A leállás exponenciálisan megszakítható. Az `base` érték határozza meg, hogy a kimenet milyen sebességgel növekszik. A nagyobb értékek miatt a kimenet nagyobb mértékben növekszik a tartomány magas végén. Az `base` 1 értékhez közeledő értékek olyan kimenetet eredményeznek, amely lineárisan növekszik.
+* `['cubic-bezier', x1, y1, x2, y2]`– A megadott vezérlési pontok által meghatározott [köbméter Bezier-görbe](https://developer.mozilla.org/docs/Web/CSS/timing-function) használatával Interpolációk.
 
-Íme egy példa a különböző típusú interpolations kinézni. 
+Íme egy példa arra, hogy a különböző típusú Interpolációk hogyan néznek ki. 
 
-| Lineáris  | Exponenciális | Kijelző Bezier |
+| Lineáris  | Exponenciális | Köbméter Bezier |
 |---------|-------------|--------------|
-| ![Lineáris interpolációs graph](media/how-to-expressions/linear-interpolation.png) | ![Exponenciális interpolációs graph](media/how-to-expressions/exponential-interpolation.png) | ![Bezier-interpolációs m3 graph](media/how-to-expressions/bezier-curve-interpolation.png) |
+| ![Lineáris interpolációs gráf](media/how-to-expressions/linear-interpolation.png) | ![Exponenciális interpolációs gráf](media/how-to-expressions/exponential-interpolation.png) | ![Köbméter Bezier-interpolációs gráf](media/how-to-expressions/bezier-curve-interpolation.png) |
 
-A következő pseudocode struktúráját határozza meg a `interpolate` kifejezés. 
+A következő pseudocode határozzák meg a `interpolate` kifejezés szerkezetét. 
 
 ```javascript
 [
@@ -463,7 +508,7 @@ A következő pseudocode struktúráját határozza meg a `interpolate` kifejez�
 
 **Példa**
 
-Az alábbi példában egy `linear interpolate` kifejezés beállítása a `color` tulajdonság egy buborék réteg alapján a `temperature` pont szolgáltatásának tulajdonság. Ha a `temperature` értéke kisebb, mint 60, "blue" vissza kell adni, ha a 60-as és kisebb, mint 70, közötti sárga vissza kell adni, ha 70 és 80, között "narancs" vissza kell adni, ha a 80-s vagy újabb, "red" vissza kell adni.
+Az alábbi példa egy `linear interpolate` kifejezést használ egy `temperature` buborékdiagram `color` tulajdonságának beállítására a pont funkció tulajdonsága alapján. Ha az `temperature` érték kisebb, mint 60, akkor a rendszer a "Blue" értéket adja vissza, ha 60 és kevesebb, mint 70, a sárga értéket adja vissza, ha a 70 és kisebb, mint 80, a "narancssárga" értéket adja vissza a rendszer, ha az 80 vagy nagyobb értéke "Red".
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -483,17 +528,17 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-Az alábbi képen láthatja, hogyan a színeket a fenti kifejezés közül választ.
+Az alábbi képen látható, hogyan választják ki a színeket a fenti kifejezéshez.
  
 <center>
 
-![Interpolálja példában a kifejezés](media/how-to-expressions/interpolate-expression-example.png) </center>
+![Példa](media/how-to-expressions/interpolate-expression-example.png) interpolált kifejezésre</center>
 
-### <a name="step-expression"></a>Lépés kifejezés
+### <a name="step-expression"></a>Lépés kifejezése
 
-A `step` kifejezés kiértékelése diszkrét, lépcsőzetes eredmény érték kiszámításához használható egy [piecewise állandó függvény](http://mathworld.wolfram.com/PiecewiseConstantFunction.html) határozzák meg leáll. 
+Egy `step` kifejezéssel kiszámíthatja a különálló, lépcsőzetes eredmények értékét a leállások által definiált [piecewise függvény](http://mathworld.wolfram.com/PiecewiseConstantFunction.html) kiértékelésével. 
 
-A következő pseudocode struktúráját határozza meg a `step` kifejezés. 
+A következő pseudocode határozzák meg a `step` kifejezés szerkezetét. 
 
 ```javascript
 [
@@ -508,11 +553,11 @@ A következő pseudocode struktúráját határozza meg a `step` kifejezés.
 ]
 ```
 
-Lépés kifejezések a leállítás előtt a bemeneti érték, vagy ha a bemenet első bemeneti érték kisebb, mint az első lépésként kimeneti értékét adja vissza. 
+A Step kifejezésekkel közvetlenül a bemeneti érték előtt, vagy az első leállítási értéknél kisebb értéket kell megadni a Leállítás eredményében. 
 
 **Példa**
 
-Az alábbi példában egy `step` kifejezés beállítása a `color` tulajdonság egy buborék réteg alapján a `temperature` pont szolgáltatásának tulajdonság. Ha a `temperature` értéke kisebb, mint 60, "blue" vissza kell adni, ha a 60-as és kisebb, mint 70, között "sárga" vissza kell adni, ha 70 és 80, között "narancs" vissza kell adni, ha a 80-s vagy újabb, "red" vissza kell adni.
+Az alábbi példa egy `step` kifejezést használ egy `temperature` buborékdiagram `color` tulajdonságának beállítására a pont funkció tulajdonsága alapján. Ha az `temperature` érték kisebb, mint 60, akkor a "Blue" értéket adja vissza, ha 60 és kevesebb, mint 70, a "sárga" karakterláncot adja vissza, ha a 70 és kisebb, mint 80, a "narancssárga" értéket adja vissza, ha az 80 vagy a nagyobb, a "Red" értéket adja vissza a rendszer.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -530,27 +575,27 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-Az alábbi képen láthatja, hogyan a színeket a fenti kifejezés közül választ.
+Az alábbi képen látható, hogyan választják ki a színeket a fenti kifejezéshez.
  
 <center>
 
-![Lépés példában a kifejezés](media/how-to-expressions/step-expression-example.png)
+![Példa a Step kifejezésre](media/how-to-expressions/step-expression-example.png)
 </center>
 
-## <a name="layer-specific-expressions"></a>Réteg megadott kifejezések
+## <a name="layer-specific-expressions"></a>Réteg-specifikus kifejezések
 
-Speciális kifejezések, amelyek csak az adott réteg vonatkoznak.
+Speciális kifejezések, amelyek csak bizonyos rétegekre érvényesek.
 
-### <a name="heat-map-density-expression"></a>HEAT map sűrűségű kifejezés
+### <a name="heat-map-density-expression"></a>Hő-Térkép sűrűségének kifejezése
 
-Egy heat map sűrűségű kifejezés minden egyes képpont heat map rétegben heat map sűrűségű értékét kérdezi le, és típusúként van definiálva `['heatmap-density']`. Közötti szám értéke `0` és `1` együtt használatos, és egy `interpolation` vagy `step` meghatározásához a szín színátmenetes hőtérkép színezése használt kifejezés. Ez a kifejezés csak akkor használható a a [beállítás szín](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions?view=azure-iot-typescript-latest#color) a heat map réteg.
+A Heat Map sűrűség kifejezés lekérdezi a Heat Térkép sűrűségének értékét egy hő-Térkép réteg minden egyes képpontjához `['heatmap-density']`, és definiálva van. Ez `0` az érték a és `1` a közötti szám, amely egy `interpolation` vagy `step` kifejezéssel együtt használható a hő-Térkép színezéséhez használt színátmenet definiálásához. Ez a kifejezés csak a Heat Map réteg [szín beállításában](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions?view=azure-iot-typescript-latest#color) használható.
 
 > [!TIP]
-> A 0-interpolációs kifejezés indexnél vagy egy lépés szín alapértelmezett színét határozza meg a terület színe, ha nem szerepel megjeleníthető adat és a háttérszínt egy használható. Számos igény szerint állítsa be ezt az értéket átlátható és a egy félig átlátszók fekete. 
+> A 0 indexű szín egy interpolációs kifejezésben vagy egy lépés színének alapértelmezett színe határozza meg annak a területnek a színét, amelynél nincs olyan érték, amely a háttér színének meghatározására használható. Számos előnyben részesítette ezt az értéket áttetszőre vagy félig átlátszó feketére állítani. 
 
 **Példa**
 
-Ebben a példában egy vonalhajózási interpolációs kifejezés használatával hozzon létre egy zökkenőmentes szín színátmenetes hőtérkép renderelési. 
+Ez a példa egy vonalhajózási interpolációs kifejezést használ a hő-Térkép megjelenítésére szolgáló sima színátmenet létrehozásához. 
 
 ```javascript 
 var layer = new atlas.layer.HeatMapLayer(datasource, null, {
@@ -566,7 +611,7 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 });
 ```
 
-Mellett egy zökkenőmentes átmenet használatával egy hőtérkép színezése, színek adható meg a tartományok belül használatával egy `step` kifejezés. Használatával egy `step` hőtérkép színkódolása kifejezése működésképtelenné válik be, amely így több hasonlít a körvonal vagy a mérlegeli stílus térképet sűrűségű vizuálisan azokat a tartományokat.  
+Amellett, hogy a zökkenőmentes átmenetet egy hő-Térkép színezésére használja, a színeket `step` kifejezés használatával is megadhatja egy tartományon belül. A hő-Térkép színezésére szolgáló kifejezéshasználatávalasűrűségvizuálisanolyantartományokrakerül,amelyeknagyobbmértékbenhasonlítanakegykontúrosvagyradarstílusútérképre.`step`  
 
 ```javascript 
 var layer = new atlas.layer.HeatMapLayer(datasource, null, {
@@ -583,18 +628,18 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 });
 ```
 
-További információkért lásd: a [adjon hozzá egy megadott hőtérképrészlet térképréteg](map-add-heat-map-layer.md) dokumentációját.
+További információkért lásd a [Heat Map-réteg hozzáadása](map-add-heat-map-layer.md) című dokumentumot.
 
-### <a name="line-progress-expression"></a>Vonal folyamatban kifejezés
+### <a name="line-progress-expression"></a>Vonal állapota kifejezés
 
-Egy sor folyamatban kifejezés kérdezi le a folyamat egy vonalréteg egy színátmenetes vonal mentén, és típusúként van definiálva `['line-progress']`. Ez az érték 0 és 1 közötti szám, és együtt kell használni egy `interpolation` vagy `step` kifejezés. Ez a kifejezés csak használható a [strokeGradient beállítás]( https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest#strokegradient) a sor réteg. 
+Egy vonal-folyamatjelző kifejezés lekérdezi az előrehaladást egy vonal rétegében lévő átmenetes vonal mentén `['line-progress']`, és a következőképpen van definiálva:. Ez az érték 0 és 1 közötti szám, és egy `interpolation` vagy `step` kifejezéssel együtt használatos. Ez a kifejezés csak a vonal rétegének [strokeGradient kapcsolóval]( https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest#strokegradient) használható. 
 
 > [!NOTE]
-> A `strokeGradient` a sor réteg utóbbi lehetőség megköveteli a `lineMetrics` értékűre kell beállítani a beállítás az adatforrás `true`.
+> A vonal rétegének `true` `lineMetrics` `strokeGradient` beállításához meg kell adni az adatforrás beállítását.
 
 **Példa**
 
-Az alábbi példában a `['line-progress']` kifejezés egy vonal a körvonal színe színátmenet alkalmazandó.
+A következő példa a `['line-progress']` kifejezés használatával egy színátmenetet alkalmaz egy vonal körvonalára.
 
 ```javascript
 var layer = new atlas.layer.LineLayer(datasource, null, {
@@ -612,16 +657,16 @@ var layer = new atlas.layer.LineLayer(datasource, null, {
 });
 ```
 
-[Tekintse meg élő példát](map-add-shape.md#line-stroke-gradient)
+[Lásd az élő példát](map-add-line-layer.md#line-stroke-gradient)
 
-### <a name="text-field-format-expression"></a>Szöveges mező formátum kifejezése
+### <a name="text-field-format-expression"></a>Szöveg mező formázása kifejezés
 
-A szöveges formátum Mezőkifejezés használható a `textField` lehetőség a szimbólum rétegek `textOptions` tulajdonság vegyes szöveg formázása. Ez a kifejezés lehetővé teszi, hogy a bemeneti karakterláncok és a formázási beállítások megadását. Az alábbi lehetőségek a kifejezésben szereplő minden egyes bemeneti karakterlánc adható meg.
+A Text mező formázása kifejezés a Symbol Layers `textField` `textOptions` tulajdonsággal együtt használható vegyes szövegformázás biztosításához. Ez a kifejezés lehetővé teszi a bemeneti karakterláncok és a formázási beállítások megadását. Ebben a kifejezésben a következő beállítások adhatók meg minden bemeneti karakterlánchoz.
 
- * `'font-scale'` -Adja meg a betűméret a méretezési tényezőt. Ha meg van adva, ez az érték felülbírálja a `size` tulajdonságát a `textOptions` az egyedi karakterlánc.
- * `'text-font'` -Adja meg ezt a karakterláncot kell használni egy vagy több betűcsaládok. Ha meg van adva, ez az érték felülbírálja a `font` tulajdonságát a `textOptions` az egyedi karakterlánc.
+ * `'font-scale'`-Megadja a betűméret méretezési tényezőjét. Ha `textOptions` meg van adva, ez az érték `size` felülbírálja az egyéni sztringhez tartozó tulajdonságot.
+ * `'text-font'`-Egy vagy több olyan betűkészlet-családot határoz meg, amelyet ehhez a karakterlánchoz kell használni. Ha `textOptions` meg van adva, ez az érték `font` felülbírálja az egyéni sztringhez tartozó tulajdonságot.
 
-A következő pseudocode a szöveges formátum Mezőkifejezés struktúráját határozza meg. 
+A következő pseudocode határozzák meg a szöveg mező formázása kifejezés szerkezetét. 
 
 ```javascript
 [
@@ -642,7 +687,7 @@ A következő pseudocode a szöveges formátum Mezőkifejezés struktúráját h
 
 **Példa**
 
-Az alábbi példa a szövegmező formázza a félkövér betűtípus hozzáadásával és a betűmérete vertikális felskálázása az `title` tulajdonság a funkció. Ebben a példában is hozzáad a `subtitle` tulajdonság a egy új sor, és a méretezett funkciójának betűméret le.
+A következő példa egy félkövér betűkészlet hozzáadásával formázza a szövegmezőt, és a szolgáltatás `title` tulajdonságának betűméretét. Ez a példa a funkció `subtitle` tulajdonságát egy sortörésen is hozzáadja, és a méretezési betűméretet.
 
 ```javascript
 var layer = new atlas.layer.SymbolLayer(datasource, null, {
@@ -667,22 +712,22 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 });
 ```
 
-Ez a réteg a pont funkció az alábbi képen látható módon jelenik meg:
+Ez a réteg az alábbi képen látható módon fogja megjeleníteni a pont funkciót:
  
 <center>
 
-![Formázott szöveges mezőt pont funkció képe](media/how-to-expressions/text-field-format-expression.png) </center>
+![A pont funkció képe formázott szöveg mezővel](media/how-to-expressions/text-field-format-expression.png)</center>
 
-### <a name="number-format-expression"></a>Szám formátum kifejezése
+### <a name="number-format-expression"></a>Számformátum kifejezése
 
-A `number-format` kifejezés csak használható együtt a `textField` szimbólum réteg lehetőséget. Ez a kifejezés olyan formázott karakterláncot alakítja át a megadott számot. Ez a kifejezés burkolja JavaScript [Number.toLocalString](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString) funkciót, és támogatja a következő beállításokat.
+A `number-format` kifejezés csak szimbólum réteg `textField` beállításával használható. Ez a kifejezés egy formázott karakterlánccá alakítja át a megadott számot. Ez a kifejezés a JavaScript [Number. toLocalString](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString) függvényt csomagolja be, és a következő beállításokat támogatja.
 
- * `locale` -Adja meg ezt a beállítást, az olyan módon, amely igazodik a megadott nyelvre a karakterláncok számok átalakításához. Adja át a [BCP-47 nyelvcímkét](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Intl#Locale_identification_and_negotiation) be ezt a beállítást.
- * `currency` – Ha a szám átalakítása egy karakterlánc, amely egy pénznemet. Lehetséges értékek a következők a [ISO 4217 Pénznemkód](https://en.wikipedia.org/wiki/ISO_4217), például a "EUR" euro, vagy a kínai RMB "CNY", "USD" az Amerikai dollár.
- * `'min-fraction-digits'` – A tizedesjegyek számát, a karakterlánc verzióban minimális számát adja meg.
- * `'max-fraction-digits'` – A tizedesjegyek számát, a karakterlánc verzióban maximális számának megadása.
+ * `locale`-Adja meg ezt a lehetőséget, ha a számokat karakterlánccá szeretné konvertálni úgy, hogy az a megadott nyelven legyen igazítva. Adja át a [BCP 47 Language címkét](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Intl#Locale_identification_and_negotiation) ebbe a beállításba.
+ * `currency`– A szám konvertálása pénznemet jelölő sztringre. A lehetséges értékek az [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217)-es pénznem-kódok, például az USA-dollár "USD", az "EUR" az euro esetében, vagy a kínai RMB "CNY".
+ * `'min-fraction-digits'`-A szám karakterlánc-verziójában szerepeltetni kívánt tizedesjegyek minimális számát határozza meg.
+ * `'max-fraction-digits'`-A szám karakterlánc-verziójában szerepeltetni kívánt tizedesjegyek maximális számát adja meg.
 
-A következő pseudocode a szöveges formátum Mezőkifejezés struktúráját határozza meg. 
+A következő pseudocode határozzák meg a szöveg mező formázása kifejezés szerkezetét. 
 
 ```javascript
 [
@@ -699,7 +744,7 @@ A következő pseudocode a szöveges formátum Mezőkifejezés struktúráját h
 
 **Példa**
 
-Az alábbi példában egy `number-format` kifejezés módosítása a `revenue` tulajdonság pont szolgáltatásának a jelenik meg a `textField` lehetőség egy szimbólum réteg úgy, hogy az Amerikai dollár értékű megjelenik.
+Az alábbi példa egy kifejezést `number-format` használ egy kifejezés használatával, `revenue` amely azt módosítja, hogyan jelenik meg a pont funkció `textField` tulajdonsága egy szimbólum rétegben, hogy megjelenjen az amerikai dollár értéke.
 
 ```javascript
 var layer = new atlas.layer.SymbolLayer(datasource, null, {
@@ -715,19 +760,19 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 });
 ```
 
-Ez a réteg a pont funkció az alábbi képen látható módon jelenik meg:
+Ez a réteg az alábbi képen látható módon fogja megjeleníteni a pont funkciót:
 
 <center>
 
-![Szám formátum kifejezés példa](media/how-to-expressions/number-format-expression.png) </center>
+![Példa](media/how-to-expressions/number-format-expression.png) a számformátum kifejezésére</center>
 
 ## <a name="zoom-expression"></a>Nagyítás kifejezése
 
-A `zoom` kifejezés olvashatók be a térkép jelenlegi nagyítási szintjét a renderelési időben, és típusúként van definiálva `['zoom']`. Ez a kifejezés a térkép minimális és maximális nagyítási szint tartományán közötti számot ad vissza. Ez a kifejezés használata lehetővé teszi a stílusok módosul, a térkép nagyítási szintjét, dinamikusan módosíthatók. A `zoom` kifejezés csak akkor használható a `interpolate` és `step` kifejezéseket.
+A kifejezés használatával lekérdezhető a Térkép jelenlegi nagyítási szintje a renderelési időben, és a következőként van `['zoom']`definiálva:. `zoom` Ez a kifejezés a Térkép minimális és maximális nagyítási szintje közötti számot adja vissza. A kifejezés használata lehetővé teszi, hogy a stílusok dinamikusan legyenek módosítva, mivel módosul a Térkép nagyítási szintje. A `zoom` kifejezés csak `interpolate` és `step` kifejezésekkel használható.
 
 **Példa**
 
-Alapértelmezés szerint a megadott hőtérképrészlet térképréteg jelennek meg az adatpontok sugarait rendelkeznek egy rögzített képpontos sugarat rendel minden nagyítási szint. Mivel a térképet, mert már teljes együttesen az adatok összesítések és a megadott hőtérképrészlet térképréteg megjelenése. A `zoom` kifejezés segítségével méretezheti a sugarat rendel minden egyes nagyítási szintjét úgy, hogy az egyes vonatkozik a leképezés egy fizikai területen. Ez fogja elérhetővé tenni keresse meg a megadott hőtérképrészlet térképréteg statikus, és konzisztens. Minden egyes a térkép nagyítási szintjét rendelkezik kétszer annyi képpont vertikális és horizontális skálázást végezhet a korábbi nagyítási szintjét. A radius skálázás úgy, hogy az egyes nagyítási szintjét, megduplázódik hoz létre egy, a következőhöz konzisztens az összes nagyítási szint hőtérkép. A használatával lehet elvégezni a `zoom` kifejezés egy `base 2 exponential interpolation` kifejezés alább látható módon. 
+Alapértelmezés szerint a Heat Map rétegben megjelenített adatpontok sugara rögzített képpont-sugárral rendelkezik az összes nagyítási szinthez. Mivel a Térkép kinagyítja az adatösszesítéseket, és a Heat Map-réteg eltérőnek tűnik. Egy `zoom` kifejezés használható a sugár méretezésére az egyes nagyítási szintekhez úgy, hogy az egyes adatpontok a Térkép fizikai területére is kiterjednek. Így a Heat Térkép rétegének statikus és konzisztensnek kell lennie. A Térkép minden nagyítási szintje kétszer annyi képpontot tartalmaz függőlegesen és vízszintesen, mint az előző nagyítási szint. A sugár méretezése úgy, hogy az minden nagyítási szinten megduplázódik, egy olyan hő-térképet hoz létre, amely minden nagyítási szinten konzisztensnek tűnik. Ez a kifejezésnek az `zoom` alább látható `base 2 exponential interpolation` kifejezéssel való használatával valósítható meg. 
 
 ```javascript 
 var layer = new atlas.layer.HeatMapLayer(datasource, null, {
@@ -745,20 +790,20 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 };
 ```
 
-[Tekintse meg élő példát](map-add-heat-map-layer.md#consistent-zoomable-heat-map)
+[Lásd az élő példát](map-add-heat-map-layer.md#consistent-zoomable-heat-map)
 
-## <a name="variable-binding-expressions"></a>Változókötés kifejezések
+## <a name="variable-binding-expressions"></a>Változó kötési kifejezések
 
-Változókötés kifejezések, hogy azt lehet rá hivatkozni máshol kifejezésben többször azt újraszámítása nélkül tárolható egy változóban számítás eredménye. Ez a kifejezések, amelyek sok számítást magában foglalja a hasznos optimalizálása
+A változó kötési kifejezések egy változóban tárolják a számítás eredményét, így a kifejezésben máshol is hivatkozhatók, anélkül, hogy újra kellene számítani. Ez egy hasznos optimalizálás olyan kifejezésekhez, amelyek sok számítást tartalmaznak
 
-| Kifejezés | Visszatérési típusa | Leírás |
+| Kifejezés | Visszatérési típus | Leírás |
 |--------------|---------------|--------------|
-| \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;"let"<br/>&nbsp;&nbsp;&nbsp;&nbsp;Név1: karakterlánc,<br/>&nbsp;&nbsp;&nbsp;&nbsp;érték1: bármely,<br/>&nbsp;&nbsp;&nbsp;&nbsp;Név2: karakterlánc,<br/>&nbsp;&nbsp;&nbsp;&nbsp;value2: bármely,<br/>&nbsp;&nbsp;&nbsp;&nbsp;…<br/>&nbsp;&nbsp;&nbsp;&nbsp;childExpression<br/>\] | | Egy vagy több értéket által használható változók tárolja a `var` kifejezés a gyermek kifejezés, amely visszaadja az eredményt. |
-| `['var', name: string]` | bármilyen | Hivatkozik, amely használatával hoztuk létre a `let` kifejezés. |
+| \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;"Let",<br/>&nbsp;&nbsp;&nbsp;&nbsp;name1: karakterlánc,<br/>&nbsp;&nbsp;&nbsp;&nbsp;érték1: bármely,<br/>&nbsp;&nbsp;&nbsp;&nbsp;name2: karakterlánc,<br/>&nbsp;&nbsp;&nbsp;&nbsp;érték2: bármely,<br/>&nbsp;&nbsp;&nbsp;&nbsp;…<br/>&nbsp;&nbsp;&nbsp;&nbsp;childExpression<br/>\] | | Egy vagy több értéket tárol változóként az eredményt visszaadó `var` gyermek kifejezésben szereplő kifejezés használatával. |
+| `['var', name: string]` | bármilyen | A `let` kifejezés használatával létrehozott változóra hivatkozik. |
 
 **Példa**
 
-Ebben a példában egy kifejezés, amely kiszámítja a bevétel viszonyított hőmérséklet arány, majd használja a `case` ennek az értéknek logikai különböző műveleteket kiértékelendő kifejezés. A `let` kifejezés a bevétel viszonyított aránya hőmérséklet tárolására, úgy, hogy, csak egyszer lehet kiszámítani kell szolgál, és a `var` kifejezés gyakran nélkül újraszámítja, igény szerint hivatkozik a változót.
+Ez a példa egy olyan kifejezést használ, amely a bevételt a hőmérsékleti arányhoz viszonyítva kiszámítja, majd egy `case` kifejezés használatával kiértékeli a különböző logikai műveleteket ezen az értéken. A `let` kifejezés a bevétel hőmérsékleti arányhoz viszonyított tárolására szolgál, így azt csak egyszer kell kiszámítani, és `var` a kifejezés a szükségesnél gyakrabban hivatkozik erre a változóra anélkül, hogy újra kellene számítania.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -786,21 +831,24 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 ## <a name="next-steps"></a>További lépések
 
-A kifejezések megvalósító további Kódminták a következő cikkekben talál:
+Az alábbi cikkekben további kódokat talál a kifejezések megvalósításához:
 
 > [!div class="nextstepaction"] 
-> [Egy szimbólum réteg hozzáadása](map-add-pin.md)
+> [Szimbólum réteg hozzáadása](map-add-pin.md)
 
 > [!div class="nextstepaction"] 
-> [Egy buborék réteg hozzáadása](map-add-bubble-layer.md)
+> [Buborék réteg hozzáadása](map-add-bubble-layer.md)
+
+> [!div class="nextstepaction"]
+> [Vonal rétegének hozzáadása](map-add-line-layer.md)
+
+> [!div class="nextstepaction"]
+> [Sokszög réteg hozzáadása](map-add-shape.md)
 
 > [!div class="nextstepaction"] 
-> [Alakzat hozzáadása](map-add-shape.md)
+> [Heat Map-réteg hozzáadása](map-add-heat-map-layer.md)
 
-> [!div class="nextstepaction"] 
-> [Egy megadott hőtérképrészlet térképréteg hozzáadása](map-add-heat-map-layer.md)
-
-További információ a réteg beállításait, amelyek támogatják a kifejezések:
+További információ a kifejezéseket támogató rétegbeli lehetőségekről:
 
 > [!div class="nextstepaction"] 
 > [BubbleLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.bubblelayeroptions?view=azure-iot-typescript-latest)

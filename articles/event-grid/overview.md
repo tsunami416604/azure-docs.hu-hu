@@ -6,15 +6,15 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
-ms.date: 04/04/2019
+ms.date: 05/25/2019
 ms.author: babanisa
 ms.custom: seodec18
-ms.openlocfilehash: 8ceb3d2d97c63bd19333336314beb6c7444288e9
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: b262a06bc3d80bd1f8105c6629bbc07e6ccd34eb
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578407"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077158"
 ---
 # <a name="what-is-azure-event-grid"></a>Mi az Azure Event Grid?
 
@@ -22,7 +22,7 @@ Az Azure Event Griddel könnyen létrehozhat eseményalapú architektúrával re
 
 Szűrők segítségével adott eseményeket irányíthat át különböző végpontokra, csoportos küldést végezhet több végpontra, és meggyőződhet róla, hogy az események megbízhatóan célba érnek.
 
-Az Azure Event Grid jelenleg minden nyilvános régióban elérhető. Még nem érhető el az Azure Germany, Azure China 21Vianet vagy az Azure Government felhőben.
+Az Azure Event Grid telepítve van a rendelkezésre állás maximalizálása érdekében minden régióban több tartalék tartomány között, és a rendelkezésre állási zónában (az azokat támogató régiók) natív módon végződtetett. Az Azure Event Grid jelenleg minden nyilvános régióban elérhető. Még nem érhető el az Azure Germany, Azure China 21Vianet vagy az Azure Government felhőben.
 
 Ez a cikk az Azure Event Gridről nyújt áttekintést. Az Event Grid használatának első lépései: [Egyéni események létrehozása és átirányítása az Azure Event Griddel](custom-event-quickstart.md). 
 
@@ -56,6 +56,7 @@ Az egyes kezelők képességeire és a kapcsolódó cikkekre vonatkozó részlet
 * [Logic Apps](event-handlers.md#logic-apps)
 * [Microsoft Flow](https://preview.flow.microsoft.com/connectors/shared_azureeventgrid/azure-event-grid/)
 * [Queue Storage](event-handlers.md#queue-storage)
+* [Service Bus](event-handlers.md#service-bus-queue-preview) (előzetes verzió)
 * [Webhookok](event-handlers.md#webhooks)
 
 ## <a name="concepts"></a>Alapelvek

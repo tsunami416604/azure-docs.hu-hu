@@ -1,6 +1,6 @@
 ---
-title: Always On rendelkezésre állási csoportokra vonatkozó ILB figyelő konfigurálása az Azure-ban |} A Microsoft Docs
-description: Ebben az oktatóanyagban a klasszikus üzemi modellel létrehozott erőforrásokat használja, és a egy Always On rendelkezésre állási csoport figyelőjének hozza létre az Azure-ban, amely egy belső terheléselosztót használ.
+title: ILB-figyelő konfigurálása always on rendelkezésre állási csoportok számára az Azure-ban | Microsoft Docs
+description: Ez az oktatóanyag a klasszikus üzembe helyezési modellel létrehozott erőforrásokat használja, és létrehoz egy always on rendelkezésre állási csoport figyelőjét az Azure-ban, amely belső terheléselosztó használatával működik.
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
@@ -9,20 +9,19 @@ editor: ''
 tags: azure-service-management
 ms.assetid: 291288a0-740b-4cfa-af62-053218beba77
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: 0466265ad5a24e8ea6dc5079e2b4006d74e7dde0
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: ca8adf4f9ce221533240e6c797f1fb01dacf6e8d
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38452532"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101909"
 ---
-# <a name="configure-an-ilb-listener-for-always-on-availability-groups-in-azure"></a>Always On rendelkezésre állási csoportokra vonatkozó ILB figyelő konfigurálása az Azure-ban
+# <a name="configure-an-ilb-listener-for-always-on-availability-groups-in-azure"></a>ILB-figyelő konfigurálása always on rendelkezésre állási csoportok számára az Azure-ban
 > [!div class="op_single_selector"]
 > * [Belső figyelő](../classic/ps-sql-int-listener.md)
 > * [Külső figyelő](../classic/ps-sql-ext-listener.md)
@@ -32,62 +31,62 @@ ms.locfileid: "38452532"
 ## <a name="overview"></a>Áttekintés
 
 > [!IMPORTANT]
-> Az Azure az erőforrások létrehozásához és használatához két különböző üzembe helyezési modellel rendelkezik: [Azure Resource Manager és klasszikus](../../../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk a klasszikus üzemi modell használatát ismerteti. Azt javasoljuk, hogy az új telepítések esetén a Resource Manager modellt használja.
+> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Azure Resource Manager és klasszikus](../../../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk a klasszikus üzembe helyezési modell használatát ismerteti. Javasoljuk, hogy az új központi telepítések a Resource Manager-modellt használják.
 
-Egy Always On rendelkezésre állási csoporthoz figyelő beállítása a Resource Manager-modellben: [egy Always On rendelkezésre állási csoport terheléselosztó konfigurálása az Azure-ban](../sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md).
+A Resource Manager-modellben található always on rendelkezésre állási csoport figyelőjét a következő témakörben tekintheti meg: [Load Balancer konfigurálása az Azure-beli always on rendelkezésre állási csoporthoz](../sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md).
 
-A rendelkezésre állási csoport replikáit, amelyek csak helyszíni vagy csak az Azure, vagy a helyszíni és az Azure, amely span hibrid konfigurációk esetében is tartalmazhat. Azure replikák ugyanabban a régióban vagy több virtuális hálózatokat használó több régióban is lehetnek. Ebben a cikkben szereplő eljárások azt feltételezik, hogy már [konfigurálva a rendelkezésre állási csoport](../classic/portal-sql-alwayson-availability-groups.md) , de még nem konfigurálta a egy figyelőt.
+A rendelkezésre állási csoport olyan replikákat tartalmazhat, amelyek csak a helyszíni vagy az Azure-beli, illetve a helyszíni és az Azure-beli hibrid konfigurációkra is kiterjednek. Az Azure-replikák ugyanazon a régión belül vagy több, több virtuális hálózatot használó régióban találhatók. A cikkben ismertetett eljárások feltételezik, hogy már [konfigurált egy rendelkezésre állási csoportot](../classic/portal-sql-alwayson-availability-groups.md) , de még nem konfigurálta a figyelőt.
 
-## <a name="guidelines-and-limitations-for-internal-listeners"></a>Irányelvek és korlátozások a belső figyelők
-Belső terheléselosztó (ILB) rendelkező Azure-ban, egy rendelkezésre állási csoport figyelőjének használata a következőkre vonatkozik:
+## <a name="guidelines-and-limitations-for-internal-listeners"></a>A belső figyelőkre vonatkozó irányelvek és korlátozások
+A belső terheléselosztó (ILB) az Azure-beli rendelkezésre állási csoport figyelővel való használata az alábbi irányelvek hatálya alá esik:
 
-* A rendelkezésre állási csoport figyelőjének támogatott Windows Server 2008 R2, Windows Server 2012 és Windows Server 2012 R2.
-* Csak egy belső rendelkezésre állási csoport figyelőjét, mert a figyelő az ILB van konfigurálva, és minden felhőszolgáltatás esetében csak egy ILB minden felhőszolgáltatás esetében támogatott. Azonban akkor hozhat létre több külső figyelői lehet. További információkért lásd: [külső figyelő az Always On rendelkezésre állási csoportok konfigurálása az Azure-ban](../classic/ps-sql-ext-listener.md).
+* A rendelkezésre állási csoport figyelője a Windows Server 2008 R2, a Windows Server 2012 és a Windows Server 2012 R2 rendszeren támogatott.
+* Minden felhőalapú szolgáltatás esetében csak egy belső rendelkezésre állási csoport figyelője támogatott, mert a figyelő a ILB van konfigurálva, és az egyes felhőalapú szolgáltatások esetében csak egy ILB van beállítva. Azonban lehetséges, hogy több külső figyelő is létrehozható. További információ: [külső figyelő konfigurálása always on rendelkezésre állási csoportokhoz az Azure-ban](../classic/ps-sql-ext-listener.md).
 
-## <a name="determine-the-accessibility-of-the-listener"></a>A figyelő a kisegítő lehetőségek meghatározása
+## <a name="determine-the-accessibility-of-the-listener"></a>A figyelő hozzáférhetőségének meghatározása
 [!INCLUDE [ag-listener-accessibility](../../../../includes/virtual-machines-ag-listener-determine-accessibility.md)]
 
-Ez a cikk foglalkozik, amely egy ILB használja egy figyelő létrehozásához. Ha egy nyilvános vagy külső figyelő, ez a cikk ismerteti a beállítás mentése verziójának megtekintéséhez egy [külső figyelő](../classic/ps-sql-ext-listener.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+Ez a cikk egy ILB használó figyelő létrehozására összpontosít. Ha nyilvános vagy külső figyelőre van szüksége, tekintse meg a jelen cikk azon verzióját, amely a [külső figyelő](../classic/ps-sql-ext-listener.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)beállítását tárgyalja.
 
-## <a name="create-load-balanced-vm-endpoints-with-direct-server-return"></a>Elosztott terhelésű virtuális gépek végpontjaihoz visszatérési közvetlen kiszolgálói létrehozása
-Először hozzon létre egy ILB a szkript futtatásával később ebben a szakaszban.
+## <a name="create-load-balanced-vm-endpoints-with-direct-server-return"></a>Elosztott terhelésű virtuálisgép-végpontok létrehozása közvetlen kiszolgálói visszatéréssel
+Először hozzon létre egy ILB úgy, hogy a szkript későbbi részében futtatja a parancsfájlt.
 
-Az egyes virtuális Gépekhez az Azure-replikát tartalmazó elosztott terhelésű végpont létrehozásához. Ha replikákat több régióban, minden egyes replikának a régió ugyanazon a felhőszolgáltatáson ugyanazon az Azure virtuális hálózatban kell lennie. Rendelkezésre állási csoport replikái több Azure-régióra kiterjedő létrehozása több virtuális hálózat konfigurálása szükséges. Közötti virtuális hálózati kapcsolat konfigurálásával kapcsolatos további információkért lásd: [virtuális hálózati kapcsolat konfigurálása virtuális hálózat](../../../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md).
+Hozzon létre egy elosztott terhelésű végpontot minden olyan virtuális géphez, amely Azure-replikát üzemeltet. Ha több régióban is vannak replikák, akkor az adott régió összes replikájának ugyanabban a felhőalapú szolgáltatásban kell lennie ugyanazon az Azure-beli virtuális hálózaton. Több Azure-régióra kiterjedő rendelkezésre állási csoport replikáinak létrehozása több virtuális hálózat konfigurálását igényli. További információ a virtuális hálózati kapcsolatok konfigurálásáról: virtuális hálózat [konfigurálása virtuális](../../../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)hálózati kapcsolathoz.
 
-1. Az Azure Portalon nyissa meg minden virtuális gép, amelyen a replika a részletek megtekintéséhez.
+1. A Azure Portalban nyissa meg az egyes virtuális gépeket, amelyek replikát futtatnak a részletek megtekintéséhez.
 
-2. Kattintson a **végpontok** lapon az egyes virtuális Gépekhez.
+2. Kattintson az egyes virtuális gépek végpontok fülére.
 
-3. Ellenőrizze, hogy a **neve** és **nyilvános Port** a figyelő végpontot, amely a használni kívánt még nem használja. Ebben a szakaszban a példában a neve a következő *MyEndpoint*, és a portot *1433-as*.
+3. Győződjön meg arról, hogy a használni kívánt figyelő-végpont **neve** és **nyilvános portja** még nincs használatban. Az ebben a szakaszban szereplő példában a név *MyEndpoint*, a port pedig *1433*.
 
-4. A helyi ügyfélen, töltse le és telepítse a legújabb [PowerShell-modul](https://azure.microsoft.com/downloads/).
+4. A helyi ügyfélen töltse le és telepítse a legújabb [PowerShell](https://azure.microsoft.com/downloads/)-modult.
 
-5. Indítsa el az Azure Powershellt.  
-    Egy új PowerShell-munkamenetben nyílik meg, az Azure felügyeleti modulok terhelését.
+5. Azure PowerShell elindítása.  
+    Megnyílik egy új PowerShell-munkamenet, amelyen be van töltve az Azure felügyeleti moduljai.
 
-6. Futtassa az `Get-AzurePublishSettingsFile` parancsot. Ez a parancsmag egy böngészőt, és a közzétételi beállítások fájljának letöltése egy helyi könyvtárba irányítja. Akkor kérheti a bejelentkezési hitelesítő adatokat az Azure-előfizetésében.
+6. Futtassa az `Get-AzurePublishSettingsFile` parancsot. Ez a parancsmag arra utasítja a böngészőt, hogy töltsön le egy közzétételi beállítási fájlt egy helyi könyvtárba. Előfordulhat, hogy a rendszer felszólítja az Azure-előfizetéséhez tartozó bejelentkezési hitelesítő adatok megadására.
 
-7. Futtassa a következő `Import-AzurePublishSettingsFile` parancsot a letöltött közzétételi beállítások fájljának elérési útja:
+7. Futtassa a következő `Import-AzurePublishSettingsFile` parancsot a letöltött közzétételi beállítások fájljának elérési útjával:
 
         Import-AzurePublishSettingsFile -PublishSettingsFile <PublishSettingsFilePath>
 
-    A közzétételi beállítások fájljának importálása után kezelheti az Azure-előfizetés a PowerShell-munkamenetben.
+    A közzétételi beállítások fájljának importálása után a PowerShell-munkamenetben kezelheti az Azure-előfizetését.
 
-8. A *ILB*, statikus IP-címet rendelni. Vizsgálja meg az aktuális virtuális hálózati konfiguráció a következő parancs futtatásával:
+8. *ILB*esetén rendeljen hozzá egy statikus IP-címet. A következő parancs futtatásával vizsgálja meg az aktuális virtuális hálózat konfigurációját:
 
         (Get-AzureVNetConfig).XMLConfiguration
-9. Megjegyzés: a *alhálózati* nevét az alhálózatot, amelyet a virtuális gépeket tartalmaz, amelyeken a replikákat. Ez a név szolgál a szkriptben $SubnetName paraméterben.
+9. Jegyezze fel a replikákat futtató virtuális gépeket tartalmazó alhálózat alhálózatának nevét. A rendszer ezt a nevet használja a parancsfájl $SubnetName paraméterében.
 
-10. Megjegyzés: a *VirtualNetworkSite* nevét és a kezdő *AddressPrefix* az, hogy a replika virtuális gépeket tartalmazó alhálózathoz. Mindkét értéket átadásával elérhető IP-cím keresése a `Test-AzureStaticVNetIP` parancsot, és a vizsgálata a *AvailableAddresses*. Például, ha a virtuális hálózat neve *MyVNet* egy alhálózati címtartományt, amely kezdődik, és *172.16.0.128*, a következő parancsot kellene listában elérhető címek:
+10. Jegyezze fel a *VirtualNetworkSite* nevét és a replikákat futtató virtuális gépeket tartalmazó alhálózat kezdő *AddressPrefix* . Keressen egy elérhető IP-címet úgy, hogy mindkét értéket átadja a `Test-AzureStaticVNetIP` parancsnak, és megvizsgálja a *AvailableAddresses*. Ha például a virtuális hálózat neve *MyVNet* , és rendelkezik egy alhálózati címmel, amely az *172.16.0.128*-on indul el, a következő parancs az elérhető címeket sorolja fel:
 
         (Test-AzureStaticVNetIP -VNetName "MyVNet"-IPAddress 172.16.0.128).AvailableAddresses
-11. Válassza ki valamelyik rendelkezésre álló címet, és használja azt a parancsfájlt a következő lépésben $ILBStaticIP paraméterében.
+11. Válassza ki az egyik elérhető címet, majd használja a parancsfájl $ILBStaticIP paraméterében a következő lépésben.
 
-12. Másolja a következő PowerShell-parancsfájl egy szövegszerkesztőbe, és állítsa be a változó értéke a környezetnek megfelelően. Alapértelmezett érték az egyes paramétereket adott meg.  
+12. Másolja a következő PowerShell-szkriptet egy szövegszerkesztőbe, és állítsa be a változó értékeit a környezetének megfelelően. Egyes paramétereknél az alapértelmezett beállítások lettek megadva.  
 
-    Meglévő affinitáscsoportok használó központi telepítések ILB nem vehető fel. ILB-követelményeivel kapcsolatos további információkért lásd: [belső load balancer áttekintése](../../../load-balancer/load-balancer-internal-overview.md).
+    Az affinitási csoportokat használó meglévő központi telepítések nem adhatnak hozzá ILB. A ILB követelményeivel kapcsolatos további információkért lásd: [belső Load Balancer – áttekintés](../../../load-balancer/load-balancer-internal-overview.md).
 
-    Is ha a rendelkezésre állási csoport Azure-régióra is kiterjed, futtatnia kell a parancsfájl egyszer a valamennyi adatközpont a felhőszolgáltatás és a csomópontok található azt az adatközpontot.
+    Ha a rendelkezésre állási csoport az Azure-régiókat is felöleli, akkor a parancsfájlt egyszer kell futtatnia a Cloud Service és az adatközpontban található csomópontok minden adatközpontjában.
 
         # Define variables
         $ServiceName = "<MyCloudService>" # the name of the cloud service that contains the availability group nodes
@@ -105,31 +104,31 @@ Az egyes virtuális Gépekhez az Azure-replikát tartalmazó elosztott terhelés
             Get-AzureVM -ServiceName $ServiceName -Name $node | Add-AzureEndpoint -Name "ListenerEndpoint" -LBSetName "ListenerEndpointLB" -Protocol tcp -LocalPort 1433 -PublicPort 1433 -ProbePort 59999 -ProbeProtocol tcp -ProbeIntervalInSeconds 10 -InternalLoadBalancerName $ILBName -DirectServerReturn $true | Update-AzureVM
         }
 
-13. Miután beállította a változókat, másolja a szkriptet a szöveges szerkesztő a PowerShell-munkamenetet a futtatáshoz. Ha a rendszer még mindig **>>**, nyomja le az ENTER billentyűt a újra, hogy a parancsfájl futtatásának megkezdése.
+13. A változók beállítása után másolja a szkriptet a szövegszerkesztőből a PowerShell-munkamenetbe a futtatásához. Ha a kérdés továbbra **>>** is megjelenik, az ENTER billentyű lenyomásával ellenőrizze, hogy a parancsfájl fut-e.
 
-## <a name="verify-that-kb2854082-is-installed-if-necessary"></a>Győződjön meg arról, hogy KB2854082 telepítve van-e, ha szükséges
+## <a name="verify-that-kb2854082-is-installed-if-necessary"></a>Szükség esetén ellenőrizze, hogy a KB2854082 telepítve van-e
 [!INCLUDE [kb2854082](../../../../includes/virtual-machines-ag-listener-kb2854082.md)]
 
 ## <a name="open-the-firewall-ports-in-availability-group-nodes"></a>Nyissa meg a tűzfal portjait a rendelkezésre állási csoport csomópontjain
 [!INCLUDE [firewall](../../../../includes/virtual-machines-ag-listener-open-firewall.md)]
 
-## <a name="create-the-availability-group-listener"></a>A rendelkezésre állási csoport figyelőjének létrehozása
+## <a name="create-the-availability-group-listener"></a>A rendelkezésre állási csoport figyelő létrehozása
 
-A rendelkezésre állási csoport figyelőjének létrehozása két lépésben. Először hozzon létre az ügyfél-hozzáférési pont fürterőforrás, és a függőségek konfigurálása. Második konfigurálja a fürt erőforrásai a PowerShellben.
+Hozza létre a rendelkezésre állási csoport figyelőjét két lépésben. Először hozza létre az ügyfél-hozzáférési pont fürterőforrás-erőforrását, és konfigurálja a függőségeket. Másodszor konfigurálja a fürt erőforrásait a PowerShellben.
 
-### <a name="create-the-client-access-point-and-configure-the-cluster-dependencies"></a>Az ügyfél hozzáférési pontjának létrehozása és a függőségeit konfigurálása
+### <a name="create-the-client-access-point-and-configure-the-cluster-dependencies"></a>Az ügyfél-hozzáférési pont létrehozása és a fürt függőségeinek konfigurálása
 [!INCLUDE [firewall](../../../../includes/virtual-machines-ag-listener-create-listener.md)]
 
-### <a name="configure-the-cluster-resources-in-powershell"></a>Konfigurálja a fürt erőforrásai a PowerShellben
-1. ILB a korábban létrehozott ILB IP-címét kell használnia. Ez a PowerShell IP-cím beszerzéséhez használja a következő szkriptet:
+### <a name="configure-the-cluster-resources-in-powershell"></a>A fürt erőforrásainak konfigurálása a PowerShellben
+1. A ILB a korábban létrehozott ILB IP-címét kell használnia. Ha ezt az IP-címet a PowerShellben szeretné beszerezni, használja a következő parancsfájlt:
 
         # Define variables
         $ServiceName="<MyServiceName>" # the name of the cloud service that contains the AG nodes
         (Get-AzureInternalLoadBalancer -ServiceName $ServiceName).IPAddress
 
-2. A virtuális gépek egyik másolja a PowerShell-parancsfájl az operációs rendszerének egy szövegszerkesztőbe, és ezután állítsa be a változókat a korábban feljegyzett értékekre.
+2. Az egyik virtuális gépen másolja az operációs rendszer PowerShell-parancsfájlját egy szövegszerkesztőbe, majd állítsa be a változókat a korábban feljegyzett értékekre.
 
-    A Windows Server 2012 vagy újabb verzió használja a következő szkriptet:
+    A Windows Server 2012-es vagy újabb verzióiban használja a következő parancsfájlt:
 
         # Define variables
         $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
@@ -140,7 +139,7 @@ A rendelkezésre állási csoport figyelőjének létrehozása két lépésben. 
 
         Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ILBIP";"ProbePort"="59999";"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
 
-    A Windows Server 2008 R2 használja a következő szkriptet:
+    Windows Server 2008 R2 esetén használja a következő parancsfájlt:
 
         # Define variables
         $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
@@ -151,18 +150,18 @@ A rendelkezésre állási csoport figyelőjének létrehozása két lépésben. 
 
         cluster res $IPResourceName /priv enabledhcp=0 address=$ILBIP probeport=59999  subnetmask=255.255.255.255
 
-3. Miután beállította a változókat, nyisson meg egy rendszergazda jogú Windows PowerShell-ablakban, illessze be a szövegszerkesztőben a szkriptet a PowerShell-munkamenetet a futtatáshoz. Ha a rendszer még mindig **>>**, nyomja le az Enter újra, győződjön meg arról, hogy a parancsfájl futtatásának megkezdése.
+3. A változók beállítása után nyisson meg egy emelt szintű Windows PowerShell-ablakot, illessze be a szkriptet a szövegszerkesztőből a PowerShell-munkamenetbe a futtatásához. Ha a kérdés továbbra **>>** is megjelenik, nyomja le ismét az ENTER billentyűt, és győződjön meg arról, hogy a parancsfájl futása megkezdődik.
 
-4. Ismételje meg a fenti lépéseket minden egyes virtuális Géphez.  
-    Ez a szkript konfigurálja az IP-cím erőforrás a felhőszolgáltatás IP-címmel, és beállítja a más paramétereket, például a mintavételi portot. Az IP-cím erőforrás online állapotba kerül, ha azt a korábban létrehozott elosztott terhelésű végpont válaszolni tud a lekérdezés a a mintavételi portokon.
+4. Ismételje meg az előző lépéseket minden egyes virtuális géphez.  
+    Ez a szkript konfigurálja az IP-cím erőforrást a Cloud Service IP-címével, és más paramétereket (például a mintavételi portot) állít be. Ha az IP-cím erőforrás online állapotba kerül, az a korábban létrehozott elosztott terhelésű végponton keresztül válaszolhat a mintavételi port lekérdezésére.
 
-## <a name="bring-the-listener-online"></a>A figyelő online állapotba.
+## <a name="bring-the-listener-online"></a>A figyelő online állapotba hozása
 [!INCLUDE [Bring-Listener-Online](../../../../includes/virtual-machines-ag-listener-bring-online.md)]
 
-## <a name="follow-up-items"></a>Ellenőrzési elemek
+## <a name="follow-up-items"></a>Követő elemek
 [!INCLUDE [Follow-up](../../../../includes/virtual-machines-ag-listener-follow-up.md)]
 
-## <a name="test-the-availability-group-listener-within-the-same-virtual-network"></a>A rendelkezésre állási csoport figyelőjét (az azonos virtuális hálózaton belül) tesztelése
+## <a name="test-the-availability-group-listener-within-the-same-virtual-network"></a>A rendelkezésre állási csoport figyelője (ugyanazon a virtuális hálózaton belül) tesztelése
 [!INCLUDE [Test-Listener-Within-VNET](../../../../includes/virtual-machines-ag-listener-test.md)]
 
 ## <a name="next-steps"></a>További lépések

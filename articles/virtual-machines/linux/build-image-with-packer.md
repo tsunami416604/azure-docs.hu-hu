@@ -4,7 +4,7 @@ description: Ismerje meg, hogyan Packer használatával Linux virtuálisgép-ren
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,17 +13,20 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/03/2018
+ms.date: 05/07/2019
 ms.author: cynthn
-ms.openlocfilehash: 3a7ac2e7a86a135f20f46b03be2c38af330a5367
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 4dcf6f2e26a2cc589e350ee2b40c10b85786d4be
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730339"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671768"
 ---
 # <a name="how-to-use-packer-to-create-linux-virtual-machine-images-in-azure"></a>Linux virtuálisgép-rendszerképek létrehozása az Azure-ban a Packer használatával
 Az Azure-ban minden virtuális gép (VM) jön létre egy rendszerképből, amely meghatározza a Linux-disztribúció és operációsrendszer-verzió. Rendszerképek előre telepített alkalmazások és konfigurációk tartalmazhatnak. Az Azure piactér sok első és a külső képek biztosít rendszerek leggyakoribb disztribúciói és alkalmazás-környezetekhez, vagy létrehozhat saját igényeire szabott lemezképek. Ez a cikk részletesen bemutatja a nyílt forráskódú eszköz [Packer](https://www.packer.io/) definiálására és egyéni lemezképeket az Azure-ban.
+
+> [!NOTE]
+> Az Azure-szolgáltatás, az Azure az Image Builder (előzetes verzió), most már rendelkezik meghatározására és saját egyéni rendszerképek létrehozásához. Az Azure az Image Builder Packer, épül, így még akkor is használhatja a meglévő Packer rendszerhéj webhelykiépítőt parancsfájlok vele. Ismerkedés az Azure az Image Builder, lásd: [Linux rendszerű virtuális gép létrehozása az Azure az Image Builder](image-builder.md).
 
 
 ## <a name="create-azure-resource-group"></a>Azure-erőforráscsoport létrehozása
@@ -232,6 +235,4 @@ Most nyisson meg egy webböngészőt, és írja be a `http://publicIpAddress` c�
 
 
 ## <a name="next-steps"></a>További lépések
-Ebben a példában használt Packer a Virtuálisgép-rendszerkép létrehozása az NGINX már telepítve van. A Virtuálisgép-lemezkép együtt a meglévő központi telepítési munkafolyamatokba, mint például segítségével telepítse az alkalmazást az Ansible, Chef vagy Puppet a lemezképből létrehozott virtuális gépek.
-
-További Packer példasablonkészlet más Linux-disztribúciók, lásd: [a GitHub-adattár](https://github.com/hashicorp/packer/tree/master/examples/azure).
+Használhatja a meglévő Packer webhelykiépítőt parancsfájlok [Azure Image Builder](image-builder.md).

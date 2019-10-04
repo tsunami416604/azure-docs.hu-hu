@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.author: aschhab
 ms.openlocfilehash: 7cacabf4f171189810e943043b5513e20113d962
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54847031"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62125814"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>Service Bus queues, topics, and subscriptions (Service Bus-üzenetsorok, -témakörök és -előfizetések)
 
@@ -55,7 +55,7 @@ Várólisták, amelyben minden üzenetet dolgoz fel egy-egy fogyasztó, szakembe
 
 Összehasonlításképpen működésének üzenet küldése egy üzenetsorba közvetlenül a témakör vannak leképezve, és üzenet-forgalmat fogadó termékfunkciókat képez le egy előfizetést. Többek között a funkció azt jelenti, hogy az előfizetések támogatja-e a várólisták kapcsolatban a jelen szakaszban fentebb leírt azonos minták: versengő felhasználó, leválaszthatók, Terheléskiegyenlítés és terheléselosztást.
 
-### <a name="create-topics-and-subscriptions"></a>Üzenettémák és előfizetések létrehozása
+### <a name="create-topics-and-subscriptions"></a>Témakörök és előfizetések létrehozása
 
 A témakör létrehozása nagyon hasonlít egy üzenetsort, az előző szakaszban leírtak szerint. Elküldendő üzenetek a [TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient) osztály. Üzenetek fogadásához hozzon létre egy vagy több előfizetés a témakörbe. Üzenetsorok hasonlóan fogadása egy előfizetés az egy [SubscriptionClient](/dotnet/api/microsoft.azure.servicebus.subscriptionclient) objektumazonosító helyett egy [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) objektum. Hozzon létre az előfizetés-ügyfelet, az üzenettéma nevére, a neve, az előfizetés, és (opcionálisan) a fogadás mód átadása paraméterekként.
 

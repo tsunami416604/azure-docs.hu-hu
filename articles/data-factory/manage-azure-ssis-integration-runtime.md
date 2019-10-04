@@ -13,11 +13,11 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
 ms.openlocfilehash: 3c1178a20debc36fbdbbd374eaf9adb6005a93a7
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57454938"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66152354"
 ---
 # <a name="reconfigure-the-azure-ssis-integration-runtime"></a>Konfigurálja újra az Azure-SSIS integrációs modul
 Ez a cikk ismerteti, hogyan konfigurálható újra egy meglévő Azure-SSIS integrációs modult. Egy Azure-SSIS integrációs modul (IR) létrehozása az Azure Data Factoryban: [hozzon létre egy Azure-SSIS integrációs modul](create-azure-ssis-integration-runtime.md).  

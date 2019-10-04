@@ -1,37 +1,37 @@
 ---
-title: Állítsa be az Azure Active Directory B2C-vel egyéni szabályzatok használatával, a jelszó erősségét |} A Microsoft Docs
-description: Hogyan konfigurálható az Azure Active Directory B2C egy egyéni házirend használatával, jelszó-összetettségi követelményeknek.
+title: A jelszó bonyolultságának konfigurálása egyéni szabályzatok használatával Azure Active Directory B2Cban | Microsoft Docs
+description: A jelszó-összetettségi követelmények konfigurálása Azure Active Directory B2C egyéni házirendjének használatával.
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/13/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e8e3157bc9dfc97d364effee2ea90cfad85d18ff
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 6454d380b0f34e940951e3de44d1dee0ff6b597f
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55167827"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065530"
 ---
-# <a name="configure-password-complexity-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurálja a jelszó összetettségét, az Azure Active Directory B2C-vel egyéni szabályzatok használatával
+# <a name="configure-password-complexity-using-custom-policies-in-azure-active-directory-b2c"></a>A jelszó bonyolultságának konfigurálása egyéni szabályzatok használatával Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Az Azure Active Directory (Azure AD) B2C-vel konfigurálhatja úgy a bonyolultsági feltételeknek-fiók létrehozása során a felhasználó által megadott jelszót. Alapértelmezés szerint az Azure AD B2C-t használja **erős** jelszavakat. Ez a cikk bemutatja, hogyan állítsa be a jelszó erősségét [egyéni szabályzatok](active-directory-b2c-overview-custom.md). Állítsa a jelszó erősségét lehetőség arra is [felhasználókövetési adatai](active-directory-b2c-reference-password-complexity.md).
+Azure Active Directory B2C (Azure AD B2C) esetében beállíthatja a felhasználók által a fiók létrehozásakor biztosított jelszavak összetettségi követelményeit. Alapértelmezés szerint a Azure AD B2C **erős** jelszavakat használ. Ez a cikk bemutatja, hogyan konfigurálhatja a jelszó-bonyolultságot az [Egyéni házirendekben](active-directory-b2c-overview-custom.md). A [felhasználói folyamatokban](active-directory-b2c-reference-password-complexity.md)is konfigurálhatja a jelszó bonyolultságát.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Hajtsa végre a [az Active Directory B2C-vel egyéni szabályzatok – első lépések](active-directory-b2c-get-started-custom.md).
+Hajtsa végre a következő témakörben ismertetett lépéseket: Ismerkedés az [Egyéni szabályzatokkal Active Directory B2Cban](active-directory-b2c-get-started-custom.md).
 
-## <a name="add-the-elements"></a>Az elemek hozzáadása
+## <a name="add-the-elements"></a>Elemek hozzáadása
 
-1. Másolás a *SignUpOrSignIn.xml* fájlt, hogy letöltötte az alapszintű csomaggal, és adja neki *SingUpOrSignInPasswordComplexity.xml*.
-2. Nyissa meg a *SingUpOrSignInPasswordComplexity.xml* fájlt, és módosítsa a **PolicyId** és a **PublicPolicyUri** az új házirend nevét. Ha például *B2C_1A_signup_signin_password_complexity*.
-3. Adja hozzá a következő **takar** azonosítói elemmel `newPassword` és `reenterPassword`:
+1. Másolja az alapszintű csomaggal letöltött *SignUpOrSignIn. XML* fájlt, és nevezze el a *SingUpOrSignInPasswordComplexity. XML*néven.
+2. Nyissa meg a *SingUpOrSignInPasswordComplexity. XML* fájlt, és módosítsa a **PolicyId** és a **PublicPolicyUri** egy új házirend-névre. Például: *B2C_1A_signup_signin_password_complexity*.
+3. Adja hozzá a következő **claimType** `newPassword` -elemeket a és `reenterPassword`azonosítókkal:
 
     ```XML
     <ClaimsSchema>
@@ -44,7 +44,7 @@ Hajtsa végre a [az Active Directory B2C-vel egyéni szabályzatok – első lé
     </ClaimsSchema>
     ```
 
-4. [Predikátumokat](predicates.md) metódus típusú `IsLengthRange` vagy `MatchesRegex`. A `MatchesRegex` típusának segítségével egyezés reguláris kifejezéssel. A `IsLengthRange` írja be a minimális és maximális karakterlánchossz vesz igénybe. Adjon hozzá egy **predikátumokat** elem a **BuildingBlocks** elem, ha még nem létezik, az alábbi **predikátum** elemek:
+4. [](predicates.md) A `IsLengthRange` predikátumok metódus típusú vagy `MatchesRegex`. A `MatchesRegex` típus egy reguláris kifejezésnek felel meg. A `IsLengthRange` típus minimális és maximális hosszúságú karakterláncot vesz igénybe. Adjon hozzá egy **predikátum** elemet a **BuildingBlocks** elemhez, ha az nem létezik a következő **predikátum** -elemekkel:
 
     ```XML
     <Predicates>
@@ -62,7 +62,7 @@ Hajtsa végre a [az Active Directory B2C-vel egyéni szabályzatok – első lé
     </Predicates>
     ```
 
-5. Minden egyes **InputValidation** elem a definiált használatával összeállított **predikátum** elemeket. Ez az elem lehetővé teszi, hogy hajtsa végre a logikai összesítések hasonló `and` és `or`. Adjon hozzá egy **InputValidations** elem a **BuildingBlocks** elem, ha még nem létezik, az alábbi **InputValidation** elem:
+5. Az egyes **InputValidation** elemek a definiált **predikátum** -elemek használatával épülnek fel. Ez az elem lehetővé teszi a `and` és `or`a hasonló logikai összesítések elvégzését. Adjon hozzá egy **InputValidations** elemet a **BuildingBlocks** elemhez, ha az nem létezik a következő **InputValidation** elemmel:
 
     ```XML
     <InputValidations>
@@ -80,7 +80,7 @@ Hajtsa végre a [az Active Directory B2C-vel egyéni szabályzatok – első lé
     </InputValidations>
     ```
 
-6. Győződjön meg arról, hogy a **PolicyProfile** technikai profil a következő elemeket tartalmazza:
+6. Győződjön meg arról, hogy a **PolicyProfile** technikai profilja a következő elemeket tartalmazza:
 
     ```XML
     <RelyingParty>
@@ -103,31 +103,31 @@ Hajtsa végre a [az Active Directory B2C-vel egyéni szabályzatok – első lé
     </RelyingParty>
     ```
 
-7. Mentse a szabályzatot fájlt.
+7. Mentse a házirend-fájlt.
 
-## <a name="test-your-policy"></a>A házirend tesztelése
+## <a name="test-your-policy"></a>A szabályzat tesztelése
 
-Ha teszteli az alkalmazások Azure AD B2C-ben, hasznos lehet az Azure AD B2C jogkivonat vissza lehet `https://jwt.ms` lehet majd tekinteni a jogcímek, az.
+Az alkalmazások Azure ad B2C-ben történő tesztelésekor hasznos lehet, hogy a Azure ad B2C token visszaadja `https://jwt.ms` a jogcímeket, hogy áttekintse a benne lévő jogcímeket.
 
 ### <a name="upload-the-files"></a>A fájlok feltöltése
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő kattintva tartalmazó könyvtárba a **címtár és előfizetés-szűrő** a felső menüben, és a könyvtár, amely tartalmazza a bérlő kiválasztása.
-3. Válasszon **minden szolgáltatás** az Azure Portalon, és majd keresse meg és válassza a bal felső sarkában lévő **Azure AD B2C-vel**.
-4. Válassza ki **identitás-kezelőfelületi keretrendszer**.
-5. Egyéni szabályzatok lapon kattintson **szabályzat feltöltése**.
-6. Válassza ki **szabályzat felülírása, ha létezik**, és keressen rá, és válassza ki a *SingUpOrSignInPasswordComplexity.xml* fájlt.
+2. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki a bérlőt tartalmazó könyvtárat.
+3. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
+4. Válassza az **identitási élmény keretrendszert**.
+5. Az egyéni házirendek lapon kattintson a **házirend feltöltése**elemre.
+6. Ha létezik, válassza a **házirend felülírása**lehetőséget, majd keresse meg és válassza ki a *SingUpOrSignInPasswordComplexity. XML* fájlt.
 7. Kattintson a **Feltöltés** gombra.
 
 ### <a name="run-the-policy"></a>Szabályzat futtatása
 
-1. Nyissa meg a módosított szabályzatot. Ha például *B2C_1A_signup_signin_password_complexity*.
-2. A **alkalmazás**, válassza ki az alkalmazását, amely korábban regisztrálva. A jogkivonatot, hogy a **válasz URL-cím** megjelennie `https://jwt.ms`.
+1. Nyissa meg a módosított szabályzatot. Például: *B2C_1A_signup_signin_password_complexity*.
+2. **Alkalmazás**esetén válassza ki a korábban regisztrált alkalmazást. A token megjelenítéséhez a **Válasz URL-címének** meg kell jelennie `https://jwt.ms`.
 3. Kattintson a **Futtatás most** parancsra.
-4. Válassza ki **regisztráció**, írjon be egy e-mail címet, és a egy új jelszót. Útmutató a jelszóra jelennek meg. Befejezés, írja be a felhasználói adatokat, és kattintson a **létrehozás**. A visszaadott jogkivonat tartalma kell megjelennie.
+4. Válassza a **regisztráció most**lehetőséget, adjon meg egy e-mail-címet, és adjon meg egy új jelszót. Útmutatást a jelszóra vonatkozó korlátozásokban talál. Fejezze be a felhasználói adatok beírását, majd kattintson a **Létrehozás**gombra. Ekkor meg kell jelennie a visszaadott token tartalmának.
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg, hogyan [konfigurálja a jelszó módosítása az Azure Active Directory B2C-vel egyéni szabályzatok használatával](active-directory-b2c-reference-password-change-custom.md).
+- Megtudhatja, hogyan [konfigurálhatja a jelszó módosítását egyéni házirendek használatával Azure Active Directory B2Cban](active-directory-b2c-reference-password-change-custom.md).
 
 

@@ -1,282 +1,366 @@
 ---
-title: Azure Storage Explorer – hibaelhárítási útmutató |} A Microsoft Docs
-description: Hibakeresési technikák az Azure Storage Explorer – áttekintés
-services: virtual-machines
+title: Azure Storage Explorer hibaelhárítási útmutató | Microsoft Docs
+description: A Azure Storage Explorer hibakeresési módszereinek áttekintése
+services: storage
 author: Deland-Han
-ms.service: virtual-machines
+manager: dcscontentpm
+ms.service: storage
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 3e26365c4273611c81682a760695522575f3875d
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: ca9b4b337eed54f02f42cad53d22387eace6b76c
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225042"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694698"
 ---
-# <a name="azure-storage-explorer-troubleshooting-guide"></a>Az Azure Storage Explorer hibaelhárítási útmutatója
+# <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage Explorer hibaelhárítási útmutató
 
-A Microsoft Azure Storage Explorer egy különálló alkalmazás, amelynek segítségével egyszerűen dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszereken. Az alkalmazás üzemeltetett Azure, az országos felhők és az Azure Stack tárfiókok csatlakozhat.
+A Microsoft Azure Storage Explorer egy önálló alkalmazás, amely megkönnyíti az Azure Storage-szolgáltatásokkal való munkát Windows, macOS és Linux rendszereken. Az alkalmazás képes csatlakozni az Azure-ban, az országos felhőkben és a Azure Stack üzemeltetett Storage-fiókokhoz.
 
-Ez az útmutató összefoglalja a Storage Explorer leggyakoribb problémáinak megoldásait.
+Ez az útmutató a Storage Explorer gyakran előforduló problémák megoldásait összegzi.
 
-## <a name="role-based-access-control-permission-issues"></a>Szerepköralapú hozzáférés-vezérlési engedélyekkel kapcsolatos problémák
+## <a name="rbac-permissions-issues"></a>A RBAC engedélyeivel kapcsolatos problémák
 
-[Szerepköralapú hozzáférés-vezérlés (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) Azure-erőforrások részletes hozzáférés-vezérlést biztosít be jogosultságkészletek kombinálásával _szerepkörök_. Az alábbiakban néhány javaslatot beolvasni az RBAC használata a Storage Explorerben követheti.
+A szerepköralapú hozzáférés-vezérlési [RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview) lehetővé teszi az Azure-erőforrások nagy részletességű hozzáférés-kezelését azáltal, hogy az engedélyeket a _szerepkörökhöz_ötvözi. Íme néhány stratégia a RBAC optimális működéséhez Storage Explorerban.
 
-### <a name="what-do-i-need-to-see-my-resources-in-storage-explorer"></a>Hogyan készüljek megtekintheti az erőforrások a Storage Explorerben?
+### <a name="how-do-i-access-my-resources-in-storage-explorer"></a>Hogyan hozzáférni a Storage Explorer erőforrásaihoz?
 
-RBAC használatával tárolási erőforrások elérésével kapcsolatos problémák merültek fel, ha lehet, mert még nem a megfelelő szerepkört rendeltek. A következő szakaszok ismertetik a Storage Explorer jelenleg a tárolási erőforrások eléréséhez szükséges engedélyekkel.
+Ha problémába ütközik a tárolási erőforrások RBAC keresztüli elérésekor, előfordulhat, hogy a megfelelő szerepkörök nem lettek hozzárendelve. A következő szakaszok ismertetik azokat az engedélyeket, Storage Explorer jelenleg a tárolási erőforrásokhoz való hozzáférésre van szükség. Ha nem biztos benne, hogy rendelkezik a megfelelő szerepkörökkel vagy engedélyekkel, forduljon az Azure-fiók rendszergazdájához.
 
-Lépjen kapcsolatba az Azure-fiókja rendszergazda, ha biztos benne, hogy rendelkezik a megfelelő szerepkörök vagy engedélyek.
+#### <a name="read-listget-storage-accounts-permissions-issue"></a>Olvasni A Storage-fiók (ok) engedélyeinek listázása/beolvasása
 
-#### <a name="read-listget-storage-accounts"></a>Olvasás: Tárfióklista/tárfiók-tulajdonságok lekérése
+Rendelkeznie kell engedéllyel a Storage-fiókok listázásához. Az engedély beszerzéséhez hozzá kell rendelnie az _olvasó_ szerepkört.
 
-Storage-fiókok listája engedéllyel kell rendelkeznie. Ez az engedély kaphat, ha a "Olvasó" szerepkörrel.
+#### <a name="list-storage-account-keys"></a>Storage-fiók kulcsainak listázása
 
-#### <a name="list-storage-account-keys"></a>Tárfiókkulcsok listája
-
-Storage Explorer használatával is fiókkulcsok-kérések hitelesítéséhez. Hozzáférhet a kulcsokhoz, nagyobb teljesítményű szerepkörökhöz, például a "Közreműködő" szerepkör.
+A Storage Explorer a kérelmek hitelesítéséhez is használhatja a fiók kulcsait. A fiók kulcsaihoz nagyobb teljesítményű szerepkörök, például a _közreműködő_ szerepkör használatával férhet hozzá.
 
 > [!NOTE]
-> Hozzáférési kulcsok korlátlan engedélyeket bárki tárolja őket. Ezért általában nem ajánlott azokat a fiókot használó felhasználók kell átadni. Ha vissza kell vonnia a tárelérési kulcsok, újból létrehozhatja őket a [az Azure Portal](https://portal.azure.com/).
+> A hozzáférési kulcsok nem korlátozott engedélyeket biztosítanak mindazoknak, akik tárolják azokat. Ezért nem javasoljuk, hogy ezeket a kulcsokat a fiókok felhasználói számára kiadja. Ha vissza kell vonnia a hozzáférési kulcsokat, újragenerálhatja őket a [Azure Portalból](https://portal.azure.com/).
 
-#### <a name="data-roles"></a>Adatok szerepkörök
+#### <a name="data-roles"></a>Adatszerepkörök
 
-Legalább egy szerepkört, amely engedélyezi a hozzáférést adatokat olvasni az erőforrásokat kell hozzárendelni. Például ha kell listában vagy tölthet le blobokat, szüksége lesz legalább a "Storage-Blobadatok olvasója" szerepkör.
+Legalább egy olyan szerepkört hozzá kell rendelnie, amely hozzáférést biztosít az erőforrásokból származó adatok olvasásához. Ha például blobokat szeretne listázni vagy letölteni, akkor legalább a _Storage blob Adatolvasó_ szerepkörre lesz szüksége.
 
-### <a name="why-do-i-need-a-management-layer-role-to-see-my-resources-in-storage-explorer"></a>Miért kell a felügyeleti réteg szerepkör megtekintéséhez az erőforrások a Storage Explorerben?
+### <a name="why-do-i-need-a-management-layer-role-to-see-my-resources-in-storage-explorer"></a>Miért van szükség felügyeleti rétegbeli szerepkörre az erőforrások Storage Explorer való megtekintéséhez?
 
-Az Azure Storage van két hozzáférési réteget: _felügyeleti_ és _adatok_. Előfizetések és tárfiókok a felügyeleti réteg keresztül érhetők el. Tárolók, blobok és egyéb erőforrásokat az adatok réteg keresztül érhetők el. Például, ha a tárfiókok listájának lekérése az Azure-ból, egy kérelmet küld a felügyeleti végponthoz. Ha szeretne egy fiókot a blob-tárolók listája, a megfelelő szolgáltatási végpont egy kérelmet küld.
+Az Azure Storage két hozzáférési réteggel rendelkezik: a felügyelethez és _az_ _adatkezeléshez_ . Az előfizetések és a Storage-fiókok a felügyeleti rétegen keresztül érhetők el. A tárolók, a blobok és az egyéb adatforrások az adatrétegen keresztül érhetők el. Ha például szeretné lekérni a Storage-fiókjainak listáját az Azure-ból, küldjön egy kérelmet a felügyeleti végpontnak. Ha egy fiókban szeretné megtekinteni a blob-tárolók listáját, egy kérést küld a megfelelő szolgáltatási végpontnak.
 
-RBAC-szerepkörök felügyeleti vagy adatok réteg hozzáférési engedélyeket is tartalmazhat. Az "Olvasó", például szerepkörök, csak olvasási hozzáféréssel felügyeleti réteg erőforrásokat.
+A RBAC-szerepkörök a felügyelethez vagy az adatréteghez való hozzáférésre vonatkozó engedélyeket is tartalmazhatnak. Az olvasó szerepkör például csak olvasási hozzáférést biztosít a felügyeleti réteg erőforrásaihoz.
 
-Szigorú értelemben véve az "Olvasó" szerepkör nem adatok réteg engedélyeket biztosít, és nem szükséges az adatok réteg eléréséhez.
+Szigorúan véve az olvasó szerepkör nem biztosít adatrétegbeli engedélyeket, és nem szükséges az adatréteghez való hozzáféréshez.
 
-Storage Explorer egyszerűen csatlakozhat az Azure-erőforrások, az Ön számára szükséges információkat gyűjt az erőforrások eléréséhez. Például a blobtárolók megjelenítéséhez Storage Explorer egy lista tárolók kérést küld a blob service-végpont. Hogy a végpont beszerzéséhez a Storage Explorer keres az előfizetések listáját, és storage-fiókok fér hozzá. Azonban az előfizetések és tárfiókok megkereséséhez Storage Explorer is hozzá kell férnie a felügyeleti réteg.
+A Storage Explorer megkönnyíti az erőforrások elérését az Azure-erőforrásokhoz való kapcsolódáshoz szükséges információk összegyűjtésével. A blob-tárolók megjelenítéséhez például Storage Explorer a "tárolók listázása" kérelmet küld a blob Service-végpontnak. A végpont beszerzéséhez Storage Explorer megkeresi azon előfizetések és Storage-fiókok listáját, amelyekhez hozzáférése van. Az előfizetések és a Storage-fiókok megkereséséhez Storage Explorer is hozzá kell férnie a felügyeleti réteghez.
 
-Ha nem rendelkezik a szerepkör minden olyan felügyeleti réteg engedélyek megadását, a Storage Explorer nem olvasható be a adatrétege való kapcsolódáshoz szükséges adatokat.
+Ha nincs olyan szerepköre, amely felügyeleti rétegbeli engedélyeket biztosít, Storage Explorer nem tudja lekérni az adatréteghez való kapcsolódáshoz szükséges adatokat.
 
-### <a name="what-if-i-cant-get-the-management-layer-permissions-i-need-from-my-administrator"></a>Mi történik, ha nem jelenik meg a felügyeleti réteg engedélyeket kell a saját rendszergazdai?
+### <a name="what-if-i-cant-get-the-management-layer-permissions-i-need-from-my-administrator"></a>Mi a teendő, ha nem tudom beolvasni a felügyeleti réteghez szükséges engedélyeket a rendszergazdától?
 
-Még nem egy RBAC kapcsolatos megoldást most. Áthidaló megoldásként kérheti egy SAS URI-t [az erőforrás csatolása](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#attach-a-service-by-using-a-shared-access-signature-sas).
+Jelenleg nincs RBAC kapcsolatos megoldás ehhez a problémához. Megkerülő megoldásként igényelhet SAS URI-t az [erőforráshoz való csatoláshoz](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-sas-uri).
 
-## <a name="error-self-signed-certificate-in-certificate-chain-and-similar-errors"></a>Hiba: Önaláírt tanúsítványt a tanúsítványlánc (és ehhez hasonló hibaüzenetek)
+## <a name="error-self-signed-certificate-in-certificate-chain-and-similar-errors"></a>Hiba: Önaláírt tanúsítvány a tanúsítványláncot (és hasonló hibák)
 
-Tanúsítvánnyal kapcsolatos hiba okozza a két alábbi helyzetek bármelyike:
+A tanúsítványok hibái általában az alábbi helyzetekben fordulnak elő:
 
-1. Az alkalmazás egy "transzparens proxy", ami azt jelenti, hogy a kiszolgáló (például a vállalati kiszolgálónak) elfogja a HTTPS-forgalmat, visszafejti azt, és majd újra titkosítja egy önaláírt tanúsítvány használatával keresztül csatlakozik.
-2. Olyan alkalmazás, amely egy önaláírt SSL-tanúsítvány van injektálásra a fogadott HTTPS üzenetek futnak. Tanúsítványok beszúrása alkalmazások magában foglalja a víruskereső és a hálózati forgalom ellenőrzési szoftvereket.
+- Az alkalmazás egy _transzparens proxyn_keresztül csatlakozik, ami azt jelenti, hogy egy kiszolgáló (például a vállalati kiszolgáló) elfogja a https-forgalmat, visszafejti, majd egy önaláírt tanúsítvány használatával titkosítja.
+- Olyan alkalmazást futtat, amely önaláírt SSL-tanúsítványt szúr be a kapott HTTPS-üzenetbe. A tanúsítványokat beinjektáló alkalmazások például a víruskereső és a hálózati forgalom-ellenőrzési szoftver.
 
-Storage Explorer egy önaláírt vagy nem megbízható tanúsítvánnyal látja, amikor azt már tudja, a fogadott HTTPS-üzenetet módosították-e. Ha az önaláírt tanúsítvány egy példányát, utasíthatja Storage Explorer megbízzon benne a következő lépések végrehajtásával:
+Ha Storage Explorer egy önaláírt vagy nem megbízható tanúsítványt lát, már nem tudja, hogy megváltozott-e a kapott HTTPS-üzenet. Ha rendelkezik az önaláírt tanúsítvány egy példányával, akkor a következő lépések végrehajtásával utasíthatja Storage Explorer megbízni:
 
-1. Szerezzen be egy Base-64 kódolású X.509 (.cer) a tanúsítvány másolatát
-2. Kattintson a **szerkesztése** > **SSL-tanúsítványok** > **tanúsítványok importálása**, majd a Fájlkereső segítségével keresse meg, válassza ki, nyissa meg a .cer fájlt
+1. Szerezze be a tanúsítvány Base-64 kódolású X. 509 (. cer) másolatát.
+2.  > Nyissa meg az SSL-tanúsítványok importálása tanúsítványokat, majd a file Picker használatával keresse meg, válassza ki és nyissa meg a. cer fájlt. > 
 
-A probléma is előfordulhat, hogy több tanúsítványt (gyökér és köztes) eredménye. A hiba, hogy mindkét tanúsítvány hozzá kell adni.
+Ez a probléma akkor is előfordulhat, ha több tanúsítvány van (root és Intermediate). A hiba kijavításához mindkét tanúsítványt hozzá kell adni.
 
-Ha bizonytalan, a tanúsítvány forrását, megpróbálhatja, megtalálhatja ezeket a lépéseket:
+Ha nem biztos abban, hogy honnan származik a tanúsítvány, kövesse az alábbi lépéseket a kereséséhez:
 
-1. Telepítse az Open SSL-t.
-    * [Windows](https://slproweb.com/products/Win32OpenSSL.html) (bármelyik egyszerűsített verzió elegendőnek kell lennie)
-    * Mac és Linux: elvileg eleve mellékelve van az operációs rendszer
-2. Futtassa az Open SSL-t.
-    * Windows: Nyissa meg a telepítési könyvtárát, kattintson a **/bin/**, majd kattintson duplán **openssl.exe**.
-    * Mac és Linux: futtassa **openssl** parancsot egy terminálról.
-3. Hajtsa végre az `s_client -showcerts -connect microsoft.com:443` parancsot.
-4. Keresse meg az önaláírt tanúsítványokat. Ha biztos abban, hogy mely tanúsítványok önaláírt, keressen bárhol a tulajdonos `("s:")` és kiállító `("i:")` azonos.
-5. Ha talált önaláírt tanúsítványokat, másolja ki a is beleértve **---BEGIN CERTIFICATE---** való **---END CERTIFICATE---** egy új .cer fájlba.
-6. Nyissa meg a Storage Explorerben, kattintson a **szerkesztése** > **SSL-tanúsítványok** > **tanúsítványok importálása**, majd a Fájlkereső segítségével keresse meg, válassza ki, és Nyissa meg a létrehozott .cer fájlokat.
+1. Telepítse az OpenSSL-t.
+    * [Windows](https://slproweb.com/products/Win32OpenSSL.html): A fényváltozatok bármelyikének elegendőnek kell lennie.
+    * Mac és Linux: Az operációs rendszer részét képezi.
+2. Futtassa az OpenSSL-t.
+    * Windows: Nyissa meg a telepítési könyvtárat, válassza a **/bin/** lehetőséget, majd kattintson duplán az **OpenSSL. exe fájlra**.
+    * Mac és Linux: Futtatás `openssl` terminálról.
+3. Futtassa az `s_client -showcerts -connect microsoft.com:443` parancsot.
+4. Keresse meg az önaláírt tanúsítványokat. Ha nem biztos abban, hogy mely tanúsítványok önaláírtak, jegyezze fel a tárgyat `("s:")` és a `("i:")` kiállítót bárhol.
+5. Ha önaláírt tanúsítványokat talál, mindegyikhez másolja ki és illessze be a (és a (többek `-----BEGIN CERTIFICATE-----` között `-----END CERTIFICATE-----` ) új. cer kiterjesztésű fájlba.
+6. Nyissa meg Storage Explorer, **és kattintson az** > **SSL-tanúsítványok** > **importálása tanúsítványok importálása**gombra. Ezután a file Picker használatával megkeresheti, kiválaszthatja és megnyithatja a létrehozott. cer fájlokat.
 
-Ha nem talál önaláírt tanúsítványokat használ a fenti lépéseket, a visszajelzési eszközzel, további segítségért lépjen kapcsolatba velünk. Másik lehetőségként választhatja a parancssorból indítsa el a Storage Explorer a `--ignore-certificate-errors` jelzőt. Ez a jelző indításakor Storage Explorer tanúsítvánnyal kapcsolatos hiba figyelmen kívül.
+Ha a fenti lépések követésével nem talál önaláírt tanúsítványokat, lépjen kapcsolatba velünk a visszajelzési eszköz használatával. Storage Explorer a parancssorból is megnyithatja a `--ignore-certificate-errors` jelző használatával. Ezzel a jelzővel megnyitva Storage Explorer figyelmen kívül hagyja a tanúsítvány hibáit.
 
 ## <a name="sign-in-issues"></a>Bejelentkezési problémák
 
-### <a name="blank-sign-in-dialog"></a>Üres bejelentkezési párbeszédpanel
+### <a name="blank-sign-in-dialog-box"></a>Üres bejelentkezési párbeszédpanel
 
-Üres bejelentkezési párbeszédpanelek leggyakrabban okozzák ADFS kéri a Storage Explorer egy átirányítási, amely nem támogatja a Electron végrehajtásához. A probléma megkerüléséhez megpróbálhatja eszköz kód Flow használni a bejelentkezéshez. Ehhez végezze el az alábbi lépéseket:
+Az üres bejelentkezési párbeszédpanelek leggyakrabban akkor fordulnak elő, ha a Active Directory összevonási szolgáltatások (AD FS) (AD FS) az elektron által nem támogatott átirányítás elvégzésére kéri Storage Explorer. A probléma megkerüléséhez próbálja meg a bejelentkezéshez használni az eszköz kódjának folyamatát. Ehhez kövesse az alábbi lépéseket:
 
-1. "Ugrás az előzetes verzió" -> "Eszköz kód bejelentkezés használata".
-2. Nyissa meg a Csatlakozás párbeszédpanel (akár a Plug and ikonra a bal oldali függőleges vonal vagy a "Fiók hozzáadása" fiók panelen keresztül).
-3. Válassza ki, milyen jelentkezzen be a kívánt környezet.
-4. Kattintson a "bejelentkezés" gomb.
+1. A menüben keresse > meg az**eszköz kódja bejelentkezés használata**lehetőséget.
+2. Nyissa meg a **Csatlakoztatás** párbeszédpanelt (vagy a bal oldali függőleges sávban a dugó ikonra kattintva vagy a fiók **hozzáadása** a fiók paneljén).
+3. Válassza ki azt a környezetet, amelyre be szeretné jelentkezni.
+4. Válassza **a bejelentkezés**lehetőséget.
 5. Kövesse a következő panelen megjelenő utasításokat.
 
-Ha azt segítségre van szüksége a fiók használható, mert az alapértelmezett böngészőben már bejelentkezett egy másik fiókkal szeretne bejelentkezni, választhatja:
+Ha nem tud bejelentkezni a használni kívánt fiókba, mert az alapértelmezett böngésző már be van jelentkezve egy másik fiókba, tegye a következők egyikét:
 
-1. Manuálisan másolja a hivatkozást és a kód egy privát a böngésző-munkamenetet.
-2. Manuálisan másolja a hivatkozást és a kód egy másik böngészőben.
+- Manuálisan másolja a hivatkozást és a kódot a böngésző privát munkamenetére.
+- Manuálisan másolja a hivatkozást és a kódot egy másik böngészőbe.
 
-### <a name="reauthentication-loop-or-upn-change"></a>Hurok újrahitelesítést vagy egyszerű felhasználónév módosítása
+### <a name="reauthentication-loop-or-upn-change"></a>Újrahitelesítési hurok vagy UPN-változás
 
-Ha a hurok újrahitelesítést, vagy módosította az egyik a fiók egyszerű Felhasználóneve, megpróbálkozhat a következőkkel:
+Ha újrahitelesítési hurkot használ, vagy módosította valamelyik fiók UPN-azonosítóját, kövesse az alábbi lépéseket:
 
-1. Távolítsa el az összes fiókot, és zárja be a Storage Explorerben
-2. Törölje a. IdentityService mappájában található a gépen. A Windows, a mappa a következő helyen található `C:\users\<username>\AppData\Local`. A mappa gyökerénél legyen a felhasználói címtár annak Macre és Linuxra készült.
-3. Ha Mac vagy Linux rendszeren, is szüksége lesz a Microsoft.Developer.IdentityService tétel törlését az operációs rendszer keystore. A kulcstár Mac, a "Kulcslánc Gnome" alkalmazás, amely. A Linux rendszerre az alkalmazás általában neve "Kulcstár", de lehet, hogy a név attól függően változik, a terjesztési.
+1. Távolítsa el az összes fiókot, majd zárjunk be Storage Explorer.
+2. Törölje a t. IdentityService mappát a számítógépről. Windows rendszeren a mappa a következő helyen található `C:\users\<username>\AppData\Local`:. Mac és Linux rendszereken a felhasználói könyvtár gyökerében található mappát találja.
+3. Ha Mac vagy Linux rendszert futtat, akkor törölnie kell a Microsoft. Developer. IdentityService bejegyzést az operációs rendszer főtárolójából is. A Mac gépen a-tároló a *GNOME kulcstartó* alkalmazás. A Linux rendszerben az alkalmazást általában _kulcstartónak_nevezik, de a név a disztribúciótól függően eltérő lehet.
 
 ### <a name="conditional-access"></a>Feltételes hozzáférés
 
-Feltételes hozzáférés nem támogatott, ha a Storage Explorer a Windows 10, Linux vagy macOS rendszeren használja. A Storage Explorer által használt AAD-erőforrástárban korlátozása miatt nem lehetséges.
+Az Storage Explorer által használt Azure AD-könyvtár korlátozásai miatt a feltételes hozzáférés nem támogatott, ha a Windows 10, a Linux vagy a macOS rendszeren Storage Explorer használatban van.
 
-## <a name="mac-keychain-errors"></a>Mac kulcslánc-hibák
+## <a name="mac-keychain-errors"></a>Mac kulcstartó hibák
 
-A macOS kulcslánc néha kérheti le a Storage Explorer hitelesítési tár problémákat okozó állapotba. Ebben az állapotban nem a kulcslánc lekéréséhez kövesse az alábbi lépéseket:
+A macOS-kulcstartó időnként olyan állapotot is megadhat, amely problémákat okoz a Storage Explorer hitelesítési függvénytárban. A kulcstartónak az állapotból való lekéréséhez kövesse az alábbi lépéseket:
 
-1. Zárja be a Storage Explorerben.
-2. Nyissa meg a kulcslánc (**cmd + szóköz**, írja be a kulcslánc, találati adja meg).
-3. Válassza ki a "bejelentkezés" kulcslánc.
-4. Kattintson a lakat ikonra, zárolja a kulcsláncban (a lakat a zárolt helyzetben, amikor végzett, eltarthat néhány másodpercig függően rendelkezik alkalmazások nyissa meg a rendszer animálása).
+1. Storage Explorer bezárásához.
+2. Nyissa meg a kulcstartót (nyomja le a Command + szóköz billentyűkombinációt, írja be a **kulcstartó**parancsot, majd nyomja le az ENTER billentyűt
+3. Válassza ki a "login" kulcstartót.
+4. Válassza a lakat ikont a kulcstartó zárolásához. (A lakat a folyamat befejeződése után zárolva jelenik meg. Eltarthat néhány másodpercig, attól függően, hogy milyen alkalmazásokat nyitott meg).
 
-    ![image](./media/storage-explorer-troubleshooting/unlockingkeychain.png)
+    ![Lakat ikon](./media/storage-explorer-troubleshooting/unlockingkeychain.png)
 
-5. Indítsa el a Storage Explorerben.
-6. Egy előugró ablak akkor is meg kell jelennie üzenettel, ha valami, például a "Service hub szeretne hozzáférni a keychain". Amikor azt, Mac-rendszergazdai fiók jelszavát adja meg, és kattintson a **mindig** (vagy **engedélyezése** Ha **mindig** nem érhető el).
+5. Nyissa meg a Storage Explorert.
+6. Egy üzenet jelenik meg, például: "a Service hub szeretné elérni a kulcstartót." Adja meg a Mac-rendszergazdai fiók jelszavát, és válassza a **mindig az engedélyezés** lehetőséget (vagy **engedélyezze** , hogy a **mindig** engedélyezve legyen) lehetőséget.
 7. Próbáljon meg bejelentkezni.
 
-### <a name="general-sign-in-troubleshooting-steps"></a>Általános bejelentkezési hibaelhárítási lépéseket
+### <a name="general-sign-in-troubleshooting-steps"></a>Általános bejelentkezési hibaelhárítási lépések
 
-* Ha MacOS-gépeken, és soha nem megjelenik a bejelentkezési ablak fölé a "Várakozás a hitelesítés..." párbeszédpanelen, majd próbálja meg [ezeket a lépéseket](#mac-keychain-errors)
-* Indítsa újra a Tártallózót
-* Ha a hitelesítési ablak üres, várjon legalább egy percet, mielőtt bezárná a hitelesítési párbeszédpanelt.
-* Győződjön meg arról, hogy a proxy- és a tanúsítvány beállításait konfigurálja megfelelően a gép és a Storage Explorer.
-* Ha a Windows és a Visual Studio 2017 hozzá ugyanazon a gépen, és jelentkezzen be, próbálkozzon a bejelentkezés a Visual Studio 2017. A sikeres bejelentkezést követően a Visual Studio 2017 nyissa meg a Storage Explorert, és látja: saját fiók a fiók panel képesnek kell lennie.
+* Ha macOS-en van, és a bejelentkezési ablak soha nem jelenik meg a **hitelesítésre vár** párbeszédpanelen, próbálja meg [ezeket a lépéseket](#mac-keychain-errors).
+* Storage Explorer újraindítása.
+* Ha a hitelesítési ablak üres, várjon legalább egy percet, mielőtt bezárja a hitelesítés párbeszédpanelt.
+* Győződjön meg arról, hogy a proxy és a tanúsítvány beállításai megfelelően vannak konfigurálva a gép és a Storage Explorer számára.
+* Ha Windows rendszert futtat, és hozzáfér a Visual Studio 2019-hoz ugyanazon a gépen és a bejelentkezési hitelesítő adatokhoz, próbáljon meg bejelentkezni a Visual Studio 2019ba. Miután sikeresen bejelentkezett a Visual Studio 2019-be, megnyithatja Storage Explorer és megtekintheti a fiókját a fiók panelen.
 
-Ha ezen metódusok közül egyik sem működik [nyisson egy problémát a Githubon](https://github.com/Microsoft/AzureStorageExplorer/issues).
+Ha egyik módszer sem működik, [Nyisson meg egy problémát a githubon](https://github.com/Microsoft/AzureStorageExplorer/issues).
 
-### <a name="missing-subscriptions-and-broken-tenants"></a>Hiányzó előfizetések és a bérlők megszakadt
+### <a name="missing-subscriptions-and-broken-tenants"></a>Hiányzó előfizetések és megszakított bérlők
 
-Ha nem tudja lekérni az előfizetéseit, miután sikeresen bejelentkezett, próbálja meg a következő hibaelhárítási módszerek:
+Ha a sikeres bejelentkezést követően nem tudja lekérni az előfizetéseket, próbálkozzon a következő hibaelhárítási módszerekkel:
 
-* Győződjön meg arról, hogy a fiók rendelkezik-e hozzáférése az előfizetésekhez várt. A hozzáférés a használni kívánt Azure-környezetre vonatkozó portálra való bejelentkezés révén ellenőrizheti.
-* Győződjön meg arról, hogy bejelentkezett, az a megfelelő Azure-környezet (Azure, Azure China 21Vianet, Azure Germany, Azure US Government vagy egyéni környezet).
-* Ha proxy mögött található, győződjön meg arról, hogy a Storage Explorer-proxy megfelelően van konfigurálva.
-* Próbálja meg eltávolítani és újra hozzáadja a fiókot.
-* Ha a "További információ" hivatkozást, keresse meg, és tekintse meg, milyen hibaüzenetek a bérlők számára, amelyek nem jelentették. Ha nem biztos, hogy mi a hibaüzeneteket, tekintse meg, akkor nyugodtan [nyisson egy problémát a Githubon](https://github.com/Microsoft/AzureStorageExplorer/issues).
+* Ellenőrizze, hogy a fiókja rendelkezik-e hozzáféréssel a várt előfizetésekhez. A hozzáférést a használni kívánt Azure-környezethez való bejelentkezéssel ellenőrizheti a portálon.
+* Győződjön meg arról, hogy a megfelelő Azure-környezetben (Azure, Azure China 21Vianet, Azure Germany, Azure USA Government vagy egyéni környezet) keresztül jelentkezett be.
+* Ha a proxykiszolgáló mögött van, ellenőrizze, hogy helyesen konfigurálta-e a Storage Explorer proxyt.
+* Próbálja meg eltávolítani és újból hozzáadni a fiókot.
+* Ha van "További információ" hivatkozás, ellenőrizze, hogy a rendszer milyen hibaüzeneteket jelentett a sikertelen bérlők számára. Ha nem tudja, hogyan válaszoljon a hibaüzenetekre, nyugodtan [Nyisson meg egy problémát a githubon](https://github.com/Microsoft/AzureStorageExplorer/issues).
 
-## <a name="cannot-remove-attached-account-or-storage-resource"></a>Csatolt fiók vagy a storage erőforrás nem távolítható el.
+## <a name="cant-remove-an-attached-account-or-storage-resource"></a>Csatolt fiók vagy tárolási erőforrás nem távolítható el
 
-Ha Ön nem távolítható el egy csatolt fiók vagy a tárolási erőforrás a felhasználói felületen, manuálisan törölheti az összes kapcsolódó erőforrás a következő mappák törlésével:
+Ha nem távolíthat el egy csatolt fiókot vagy tárolási erőforrást a felhasználói felületen, manuálisan törölheti az összes csatolt erőforrást a következő mappák törlésével:
 
 * Windows: `%AppData%/StorageExplorer`
 * macOS: `/Users/<your_name>/Library/Application Support/StorageExplorer`
 * Linux: `~/.config/StorageExplorer`
 
 > [!NOTE]
-> A fenti mappák törlése előtt zárja be a Storage Explorerben.
+> A mappák törlése előtt Storage Explorer bezárásához.
 
 > [!NOTE]
-> Ha minden eddiginél importálta-e SSL-tanúsítványok, akkor biztonsági mentése a tartalmát a `certs` könyvtár. Később a biztonsági mentés használatával importálja újra az SSL-tanúsítványokat.
+> Ha valaha is importált SSL-tanúsítványokat, biztonsági mentést készíthet a `certs` könyvtár tartalmáról. Később a biztonsági mentés használatával újraimportálhatja az SSL-tanúsítványokat.
 
-## <a name="proxy-issues"></a>Proxy kapcsolatos problémák
+## <a name="proxy-issues"></a>Proxyval kapcsolatos problémák
 
-Először is győződjön meg arról, hogy minden helyesen-e a megadott a következő információkat:
+Először ellenőrizze, hogy helyesek-e a megadott adatok:
 
-* A proxykiszolgáló URL-cím és port száma
-* Felhasználónév és jelszó, ha a proxy által igényelt
+* A proxy URL-címe és portszáma
+* Felhasználónév és jelszó, ha a proxyhoz szükség van
 
 > [!NOTE]
-> Storage Explorer nem támogatja a Proxybeállítások konfigurálása proxy automatikus konfiguráció fájlokat.
+> A Storage Explorer nem támogatja a proxy automatikus konfigurációs fájljait a proxybeállítások konfigurálásához.
 
-### <a name="common-solutions"></a>Általános megoldások
+### <a name="common-solutions"></a>Gyakori megoldások
 
-Ha továbbra is problémákat tapasztal, próbálja meg a következő hibaelhárítási módszerek:
+Ha továbbra is problémákat tapasztal, próbálkozzon az alábbi hibaelhárítási módszerekkel:
 
-* Ha a proxy használata nélkül is csatlakozni az internethez, ellenőrizze a Storage Explorer nélkül engedélyezve proxybeállítások működését. Ez a helyzet, ha a proxybeállításai probléma lehet. A problémák azonosítását a proxy rendszergazdával együttműködve.
-* Győződjön meg arról, hogy a proxykiszolgáló használatát más alkalmazások a várt módon működik-e.
-* Győződjön meg arról, hogy képes-e csatlakozni a portálon használni kívánt Azure-környezetre vonatkozó
-* Győződjön meg arról, hogy kaphat szolgáltatásvégpontokra érkező válaszok. Adja meg a végpont URL-címek egyikét a böngészőbe. Csatlakoztathatja, ha egy InvalidQueryParameterValue vagy hasonló XML-választ kell kapnia.
-* Ha valaki más is használja a Tártallózó fel a proxykiszolgálón, győződjön meg arról, hogy csatlakozhassanak. Csatlakozás, ha előfordulhat, forduljon a proxy server rendszergazdához.
+* Ha a proxy használata nélkül tud csatlakozni az internethez, győződjön meg arról, hogy a Storage Explorer a proxybeállítások engedélyezése nélkül működik. Ebben az esetben előfordulhat, hogy probléma van a proxy beállításaival. A problémák azonosításához működjön együtt a rendszergazdájával.
+* Ellenőrizze, hogy a proxykiszolgálót használó más alkalmazások a várt módon működnek-e.
+* Ellenőrizze, hogy tud-e csatlakozni a használni kívánt Azure-környezethez a portálhoz.
+* Ellenőrizze, hogy kaphat-e válaszokat a szolgáltatási végpontokról. Adja meg az egyik végpont URL-címét a böngészőben. Ha csatlakozni tud, a InvalidQueryParameterValue vagy egy hasonló XML-választ kell kapnia.
+* Ha valaki más is Storage Explorert használ a proxykiszolgálóhoz, ellenőrizze, hogy tud-e kapcsolatot létesíteni. Ha lehetséges, kapcsolatba kell lépnie a proxykiszolgáló rendszergazdájával.
 
-### <a name="tools-for-diagnosing-issues"></a>Eszközök a problémák diagnosztizálása
+### <a name="tools-for-diagnosing-issues"></a>Problémák diagnosztizálására szolgáló eszközök
 
-Ha hálózati eszközök, például a Fiddlert a Windows, lehetnek a problémák diagnosztizálása a következő:
+Ha van hálózati eszköze, például a Hegedűs a Windowshoz, akkor a következő módon diagnosztizálhatja a problémákat:
 
-* Ha a proxyn keresztül működik, előfordulhat, a hálózati eszközzel csatlakozzon a proxyn keresztül történő konfigurálásához.
-* Ellenőrizze a hálózati eszköz által használt port számát.
-* Adja meg a helyi állomás URL-CÍMÉT és a hálózati eszköz portszám a Storage Explorerben proxykiszolgáló-beállításként. A megfelelően végzett a hálózati eszköz elindul, hálózati kérést hoz létre a felügyeleti és Szolgáltatásvégpontok Storage Explorer-naplózás. Adja meg például https://cawablobgrs.blob.core.windows.net/ a blob-végpont a böngészőben, és meg fogja kapni a válasz a következőhöz, ami alapján a az erőforrás létezik, de nem tudja elérni.
+* Ha a proxyn keresztül kell dolgoznia, előfordulhat, hogy a hálózati eszközt úgy kell konfigurálnia, hogy a proxyn keresztül csatlakozhasson.
+* Keresse meg a hálózati eszköz által használt portszámot.
+* Adja meg a helyi gazdagép URL-címét és a hálózati eszköz portszámát a Storage Explorer proxybeállításait. Ha ezt a lehetőséget választja, a hálózati eszköz elindítja a Storage Explorer által a felügyeleti és szolgáltatási végpontoknak küldött hálózati kérések naplózását. Adja meg `https://cawablobgrs.blob.core.windows.net/` például a blob-végpontot egy böngészőben, és egy olyan választ fog kapni, amely a következőhöz hasonló:
 
-![Kódminta](./media/storage-explorer-troubleshooting/4022502_en_2.png)
+  ![Kódminta](./media/storage-explorer-troubleshooting/4022502_en_2.png)
 
-### <a name="contact-proxy-server-admin"></a>Lépjen kapcsolatba a proxy server-rendszergazda
+  Ez a válasz azt sugallja, hogy az erőforrás létezik, még akkor is, ha nem fér hozzá.
 
-Ha a proxybeállításai megfelelőek, lehet a proxy server rendszergazdához, és
+### <a name="contact-proxy-server-admin"></a>Kapcsolatfelvétel a proxykiszolgáló rendszergazdájával
 
-* Győződjön meg arról, hogy a proxykiszolgáló nem blokkolja-e az Azure felügyeleti vagy az erőforrás-végpontokra irányuló forgalmat.
-* Ellenőrizze a proxy-kiszolgáló által használt hitelesítési protokoll. Storage Explorer jelenleg nem támogatja az NTLM-proxyk.
+Ha a proxybeállítások helyesek, előfordulhat, hogy a következőkre kell felvennie a kapcsolatot a proxykiszolgáló rendszergazdájával:
 
-## <a name="unable-to-retrieve-children-error-message"></a>"A gyermekek lekérése nem sikerült" hibaüzenet jelenik meg
+* Győződjön meg arról, hogy a proxy nem blokkolja az Azure-felügyeletre vagy az erőforrás-végpontokra irányuló forgalmat.
+* Ellenőrizze a proxykiszolgáló által használt hitelesítési protokollt. Storage Explorer jelenleg nem támogatja az NTLM-proxykat.
 
-Ha proxyn keresztül csatlakoznak az Azure-ba, győződjön meg arról, hogy helyesek-e a WebProxy beállításait. Ha erőforrásokhoz való hozzáférést kapnak a tulajdonosa az előfizetés vagy a fiók, győződjön meg arról, hogy rendelkezik-e olvasási vagy listában meghatározott engedélyek.
+## <a name="unable-to-retrieve-children-error-message"></a>"Nem sikerült beolvasni a gyermekeket" hibaüzenet jelenik meg
 
-## <a name="connection-string-does-not-have-complete-configuration-settings"></a>Kapcsolati karakterlánc nem rendelkezik teljes konfigurációs beállításai
+Ha egy proxyn keresztül csatlakozik az Azure-hoz, ellenőrizze, hogy helyesek-e a proxybeállítások. Ha hozzáférést kap az erőforráshoz az előfizetés vagy a fiók tulajdonosa, ellenőrizze, hogy rendelkezik-e az adott erőforráshoz tartozó olvasási vagy listázási engedélyekkel.
 
-Ha ezt a hibaüzenetet kapja, akkor lehet, hogy nem kell a szükséges engedélyekkel a tárfiók kulcsainak lekéréséhez. Győződjön meg arról, ha ez a helyzet, lépjen a portálra, és keresse meg a Storage-fiókjában. Segítségével gyorsan ehhez kattintson a jobb gombbal a tárfiók a csomóponton, és kattintson a "Megnyitás a portál". Ezt követően nyissa meg a "Hozzáférési kulcsok" panel. Ha nem rendelkezik engedéllyel a kulcsok megtekintéséhez, majd megjelenik egy oldal a "Nem rendelkezik hozzáféréssel" üzenettel. A probléma megkerüléséhez a fiókkulcs szerzi valaki és csatolása nevére és kulcsára, vagy kérjen egy SAS a tárfiókra, és csatlakoztassa a Storage-fiók használatával.
+## <a name="connection-string-doesnt-have-complete-configuration-settings"></a>A kapcsolatok karakterlánca nem rendelkezik teljes konfigurációs beállításokkal
 
-A fiókkulcsok látja, ha a fájl egy problémát a Githubon, segítünk a probléma megoldásához.
+Ha ez a hibaüzenet jelenik meg, lehetséges, hogy nem rendelkezik a szükséges engedélyekkel a Storage-fiók kulcsainak beszerzéséhez. Ha ellenőrizni szeretné, hogy ez a helyzet, lépjen a portálra, és keresse meg a Storage-fiókját. Ezt úgy teheti meg, hogy a jobb gombbal a Storage-fiók csomópontjára kattint, és kiválasztja **a Megnyitás a portálon**lehetőséget. Ezután nyissa meg a **hozzáférési kulcsok** panelt. Ha nem rendelkezik a kulcsok megtekintéséhez szükséges engedélyekkel, a "nincs hozzáférése" üzenet jelenik meg. A probléma megkerüléséhez megszerezheti a fiók kulcsát valaki mástól, és csatolhatja a nevet és a kulcsot, vagy megkérheti a SAS-t a Storage-fiókhoz, és használhatja azt a Storage-fiók csatolásához.
 
-## <a name="issues-with-sas-url"></a>Problémák az SAS URL-címe
+Ha látja a fiók kulcsait, akkor a GitHubon a probléma megoldásához segítséget nyújthat.
 
-Ha egy szolgáltatás SAS URL-címet használ, és ezt a hibát tapasztaló csatlakozik:
+## <a name="error-occurred-while-adding-new-connection-typeerror-cannot-read-property-version-of-undefined"></a>Hiba történt az új kapcsolatok hozzáadásakor: TypeError: Nem definiált "version" tulajdonság nem olvasható
 
-* Győződjön meg arról, hogy az URL-címet biztosít-e olvasási és erőforrások listázása a szükséges engedélyekkel.
-* Győződjön meg arról, hogy az URL-cím nem járt le.
-* Ha az SAS URL-cím alapján egy hozzáférési szabályzatot, győződjön meg arról, hogy a hozzáférési szabályzat nem vissza lett vonva.
+Ha ezt a hibaüzenetet kapja, amikor egyéni csatlakozást próbál hozzáadni, előfordulhat, hogy a helyi hitelesítőadat-kezelőben tárolt kapcsolódási adatok sérültek. A probléma megkerüléséhez próbálkozzon a sérült helyi kapcsolatok törlésével, majd adja hozzá újra a következőt:
 
-Ha véletlenül egy érvénytelen SAS URL-címet használó kapcsolt, és nem lehet leválasztani, kövesse az alábbi lépéseket:
+1. Storage Explorer elindítása. A menüből válassza a **Súgó** > **váltógomb fejlesztői eszközök**lehetőséget.
+2. A megnyitott ablak **alkalmazás** lapján lépjen a **helyi tároló** (bal oldalon) > **file://** elemre.
+3. Attól függően, hogy milyen típusú kapcsolatra van probléma, keresse meg a kulcsát, majd másolja az értékét egy szövegszerkesztőbe. Az érték az egyéni nevek tömbje, a következőhöz hasonlóan:
+    * Tárfiókok
+        * `StorageExplorer_CustomConnections_Accounts_v1`
+    * BLOB-tárolók
+        * `StorageExplorer_CustomConnections_Blobs_v1`
+        * `StorageExplorer_CustomConnections_Blobs_v2`
+    * Fájlmegosztások
+        * `StorageExplorer_CustomConnections_Files_v1`
+    * Üzenetsorok
+        * `StorageExplorer_CustomConnections_Queues_v1`
+    * Táblák
+        * `StorageExplorer_CustomConnections_Tables_v1`
+4. Az aktuális kapcsolatok nevének mentése után állítsa be Fejlesztői eszközök `[]`értékét a következőre:.
 
-1. Storage Explorer futtatásakor nyomja le az F12 billentyűt a fejlesztői eszközök ablak megnyitásához.
-2. Kattintson az alkalmazás lapon, majd kattintson a helyi tároló > file:// a bal oldali fában.
-3. Keresse meg a szolgáltatás típusa az problémás SAS URI társított kulcsot. Ha a hibás SAS URI blob tárolóhoz, keresse meg például a nevű kulcs `StorageExplorer_AddStorageServiceSAS_v1_blob`.
-4. A kulcsnak az értéke egy JSON-tömböt kell lennie. A hibás URI társított objektum található, és távolítsa el azt.
-5. Töltse be újra a Storage Explorer a Ctrl + R billentyűkombinációt.
+Ha meg szeretné őrizni a nem sérült kapcsolatokat, a következő lépésekkel megkeresheti a sérült kapcsolatokat. Ha nem veszik figyelembe az összes meglévő kapcsolat elvesztését, kihagyhatja ezeket a lépéseket, és követheti a platformra vonatkozó utasításokat a kapcsolati adatai törléséhez.
+
+1. Egy szövegszerkesztőben adja hozzá újra az egyes kapcsolatok nevét a Fejlesztői eszközökhoz, majd győződjön meg arról, hogy a kapcsolat továbbra is működik-e.
+2. Ha a kapcsolat megfelelően működik, nem sérült, és nyugodtan elhagyhatja. Ha egy kapcsolat nem működik, távolítsa el az értékét Fejlesztői eszközökból, és jegyezze fel, hogy később újra hozzá lehessen adni.
+3. Ismételje meg az összes kapcsolat vizsgálatát.
+
+Miután az összes kapcsolaton áthaladt, az összes nem hozzáadott kapcsolat nevében törölje a sérült adataikat (ha van ilyen), és adja hozzá őket a Storage Explorer alábbi szabványos lépéseivel:
+
+# <a name="windowstabwindows"></a>[Windows](#tab/Windows)
+
+1. A **Start** menüben keresse meg a **hitelesítőadat-kezelőt** , és nyissa meg.
+2. Nyissa meg a **Windows rendszerbeli hitelesítő adatokat**.
+3. Az **általános hitelesítő adatok**területen keresse meg a `<connection_type_key>/<corrupted_connection_name>` kulcsot tartalmazó bejegyzéseket `StorageExplorer_CustomConnections_Accounts_v1/account1`(például:).
+4. Törölje ezeket a bejegyzéseket, majd adja hozzá újra a kapcsolatokat.
+
+# <a name="macostabmacos"></a>[macOS](#tab/macOS)
+
+1. Nyisson meg egy reflektorfényt (Command + szóköz), és keressen rá a **kulcstartó-hozzáférés**kifejezésre.
+2. Keresse meg a `<connection_type_key>/<corrupted_connection_name>` kulcsot tartalmazó bejegyzéseket ( `StorageExplorer_CustomConnections_Accounts_v1/account1`például:).
+3. Törölje ezeket a bejegyzéseket, majd adja hozzá újra a kapcsolatokat.
+
+# <a name="linuxtablinux"></a>[Linux](#tab/Linux)
+
+A helyi hitelesítő adatok kezelése a Linux-disztribúciótól függően változhat. Ha a Linux-disztribúció nem biztosít beépített GUI-eszközt a helyi hitelesítő adatok kezeléséhez, telepíthet egy külső gyártótól származó eszközt a helyi hitelesítő adatok kezeléséhez. Használhatja például a [csikóhalat](https://wiki.gnome.org/Apps/Seahorse/), amely egy nyílt forráskódú GUI-eszköz a Linux helyi hitelesítő adatainak kezeléséhez.
+
+1. Nyissa meg a helyi Hitelesítőadat-kezelő eszközt, és keresse meg a mentett hitelesítő adatokat.
+2. Keresse meg a `<connection_type_key>/<corrupted_connection_name>` kulcsot tartalmazó bejegyzéseket ( `StorageExplorer_CustomConnections_Accounts_v1/account1`például:).
+3. Törölje ezeket a bejegyzéseket, majd adja hozzá újra a kapcsolatokat.
+---
+
+Ha a lépések futtatása után továbbra is ezt a hibát tapasztalja, vagy ha meg szeretné osztani, hogy mi sérült a kapcsolat, [Nyisson meg egy problémát](https://github.com/microsoft/AzureStorageExplorer/issues) a GitHub oldalán.
+
+## <a name="issues-with-sas-url"></a>Az SAS URL-címmel kapcsolatos problémák
+
+Ha SAS URL-címen keresztül csatlakozik egy szolgáltatáshoz, és hibát észlelt:
+
+* Ellenőrizze, hogy az URL-cím tartalmazza-e a szükséges engedélyeket az erőforrások olvasásához vagy listázásához.
+* Ellenőrizze, hogy az URL-cím nem járt-e le.
+* Ha a SAS URL-cím egy hozzáférési házirenden alapul, ellenőrizze, hogy a hozzáférési házirendet nem vonták-e vissza.
+
+Ha véletlenül csatolva van egy érvénytelen SAS URL-cím használatával, és most nem tud leválasztani, kövesse az alábbi lépéseket:
+
+1. Storage Explorer futtatásakor nyomja meg az F12 billentyűt a Fejlesztői eszközök ablak megnyitásához.
+2. Az **alkalmazás** lapon válassza a **helyi tároló** > **file://** a bal oldali fában.
+3. Keresse meg a problémás SAS URI-azonosító szolgáltatás típusához társított kulcsot. Ha például a hibás SAS URI egy blob-tárolóhoz tartozik, keresse meg a nevű `StorageExplorer_AddStorageServiceSAS_v1_blob`kulcsot.
+4. A kulcs értékének JSON-tömbnek kell lennie. Keresse meg a rossz URI-hoz társított objektumot, majd törölje.
+5. Nyomja le a CTRL + R billentyűkombinációt Storage Explorer újratöltéséhez.
 
 ## <a name="linux-dependencies"></a>Linux-függőségek
 
-Általában a következő csomagok szükségesek Storage Explorer linuxon fut:
+Storage Explorer 1.10.0 és újabb verzió is elérhető a Snap áruházban. A Storage Explorer beépülő modul automatikusan telepíti az összes függőségét, és frissül, ha a beépülő modul új verziója érhető el. Az Storage Explorer beépülő modul telepítése a javasolt telepítési módszer.
 
-* [.NET core 2.0 futtatókörnyezet](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)
-* `libgnome-keyring-common` és `libgnome-keyring-dev`
+Storage Explorer szükség van egy Password Manager használatára, amelyhez szükség lehet a manuális kapcsolódásra, mielőtt Storage Explorer megfelelően működni fognak. A következő parancs futtatásával csatlakozhat Storage Explorer a rendszer jelszavas kezelőjéhez:
+
+```bash
+snap connect storage-explorer:password-manager-service :password-manager-service
+```
+
+Az alkalmazást. tar. gz fájlként is letöltheti, de a függőségeket manuálisan kell telepítenie.
+
+> [!IMPORTANT]
+> A. tar. gz letöltésben megadott Storage Explorer csak Ubuntu-disztribúciók esetén támogatott. Más terjesztések nem lettek ellenőrizve, és alternatív vagy további csomagokat is igényelhetnek.
+
+Ezek a csomagok a leggyakoribb követelmények a Linux Storage Explorer esetén:
+
+* [.NET Core 2,0 futtatókörnyezet](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)
 * `libgconf-2-4`
+* `libgnome-keyring0` vagy `libgnome-keyring-dev`
+* `libgnome-keyring-common`
 
-A terjesztési attól függően, lehet különböző, vagy további csomagokat telepíteni kell.
+> [!NOTE]
+> Storage Explorer 1.7.0 és korábbi verziókhoz a .NET Core 2,0 szükséges. Ha a .NET Core újabb verziója van telepítve, akkor a [Storage Explorer javításra](#patching-storage-explorer-for-newer-versions-of-net-core)van szükség. Ha Storage Explorer 1.8.0-t vagy újabb verziót futtat, akkor akár a .NET Core 2,2-as verzióját is használhatja. Az 2,2-nál újabb verziók nem lettek ellenőrizve a működéshez.
 
-Storage Explorer Ubuntu 18.04, 16.04 és 14.04 hivatalosan támogatott. Egy tiszta gépek telepítésének lépései a következők:
+# <a name="ubuntu-1904tab1904"></a>[Ubuntu 19,04](#tab/1904)
 
-# <a name="ubuntu-1804tab1804"></a>[Ubuntu 18.04](#tab/1804)
+1. Storage Explorer letöltése.
+2. Telepítse a [.net Core futtatókörnyezetet](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu19-04/runtime-current).
+3. Futtassa a következő parancsot:
+   ```bash
+   sudo apt-get install libgconf-2-4 libgnome-keyring0
+   ```
 
-1. A Storage Explorer letöltése
-2. Telepítse a .NET Core Runtime, ellenőrzött legújabb verziója van: [2.0.8](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu18-04/runtime-2.0.8) (Ha már telepített egy újabb verzióra, szükség lehet javítani a Storage Explorer, lásd lent)
-3. Futtassa a `sudo apt-get install libgconf-2-4` parancsot.
-4. Futtassa a `sudo apt install libgnome-keyring-common libgnome-keyring-dev` parancsot.
+# <a name="ubuntu-1804tab1804"></a>[Ubuntu 18,04](#tab/1804)
 
-# <a name="ubuntu-1604tab1604"></a>[Ubuntu 16.04](#tab/1604)
+1. Storage Explorer letöltése.
+2. Telepítse a [.net Core futtatókörnyezetet](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu18-04/runtime-current).
+3. Futtassa a következő parancsot:
+   ```bash
+   sudo apt-get install libgconf-2-4 libgnome-keyring-common libgnome-keyring0
+   ```
 
-1. A Storage Explorer letöltése
-2. Telepítse a .NET Core Runtime, ellenőrzött legújabb verziója van: [2.0.8](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu16-04/runtime-2.0.8) (Ha már telepített egy újabb verzióra, szükség lehet javítani a Storage Explorer, lásd lent)
-3. Futtassa a `sudo apt install libgnome-keyring-dev` parancsot.
+# <a name="ubuntu-1604tab1604"></a>[Ubuntu 16,04](#tab/1604)
 
-# <a name="ubuntu-1404tab1404"></a>[Ubuntu 14.04](#tab/1404)
+1. Storage Explorer letöltése.
+2. Telepítse a [.net Core futtatókörnyezetet](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu16-04/runtime-current).
+3. Futtassa a következő parancsot:
+   ```bash
+   sudo apt install libgnome-keyring-dev
+   ```
 
-1. A Storage Explorer letöltése
-2. Telepítse a .NET Core Runtime, ellenőrzött legújabb verziója van: [2.0.8](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu14-04/runtime-2.0.8) (Ha már telepített egy újabb verzióra, szükség lehet javítani a Storage Explorer, lásd lent)
-3. Futtassa a `sudo apt install libgnome-keyring-dev` parancsot.
+# <a name="ubuntu-1404tab1404"></a>[Ubuntu 14,04](#tab/1404)
 
+1. Storage Explorer letöltése.
+2. Telepítse a [.net Core futtatókörnyezetet](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu14-04/runtime-current).
+3. Futtassa a következő parancsot:
+   ```bash
+   sudo apt install libgnome-keyring-dev
+   ```
 ---
 
-### <a name="patching-storage-explorer-for-newer-versions-of-net-core"></a>Javítás a Storage Explorer újabb verzióiban a .NET Core 
-Ha egy .NET Core nagyobb, mint a 2.0-s telepítették, és futtatják a Storage Explorer 1.7.0-ás verzió vagy annál régebbi verzióját, nagy valószínűséggel kell javítása a Storage Explorer; Ehhez hajtsa végre az alábbi lépéseket:
-1. Töltse le a StreamJsonRpc 1.5.43 verziója [nugetről](https://www.nuget.org/packages/StreamJsonRpc/1.5.43). Keresse meg a jobb oldalon az oldal a "Csomag letöltése" hivatkozásra.
-2. A csomag a letöltés után módosíthatja a fájl kiterjesztése a `.nupkg` , `.zip`
-3. Tömörítse ki a csomagot
-4. Nyissa meg a következőt: `streamjsonrpc.1.5.43/lib/netstandard1.1/`
-5. Másolás `StreamJsonRpc.dll` a Storage Explorer mappán belül a következő helyekre:
-    1. `StorageExplorer/resources/app/ServiceHub/Services/Microsoft.Developer.IdentityService/`
-    2. `StorageExplorer/resources/app/ServiceHub/Hosts/ServiceHub.Host.Core.CLR.x64/`
+### <a name="patching-storage-explorer-for-newer-versions-of-net-core"></a>Javítás Storage Explorer a .NET Core újabb verzióihoz
 
-## <a name="open-in-explorer-from-azure-portal-doesnt-work"></a>Nyissa meg a Explorer, az Azure portal nem működik
+Storage Explorer 1.7.0 vagy korábbi verzió esetén előfordulhat, hogy a Storage Explorer által használt .NET Core-verziót kell megjavítania:
 
-Ha a "Megnyitás az Explorerben" gombra az Azure Portalon az Ön számára nem működik, győződjön meg arról, kompatibilis böngészőt használ. Az alábbi böngészők kompatibilitás teszteltük.
+1. Töltse le a StreamJsonRpc 1.5.43 verzióját a [NuGet-](https://www.nuget.org/packages/StreamJsonRpc/1.5.43)ból. Keresse meg a "csomag letöltése" hivatkozást az oldal jobb oldalán.
+2. A csomag letöltése után módosítsa a fájl kiterjesztését `.nupkg` a verzióról a `.zip`verzióra.
+3. Bontsa ki a csomagot.
+4. Nyissa meg a `streamjsonrpc.1.5.43/lib/netstandard1.1/` mappát.
+5. Másolja `StreamJsonRpc.dll` a következő helyszínekre a Storage Explorer mappában:
+   * `StorageExplorer/resources/app/ServiceHub/Services/Microsoft.Developer.IdentityService/`
+   * `StorageExplorer/resources/app/ServiceHub/Hosts/ServiceHub.Host.Core.CLR.x64/`
+
+## <a name="open-in-explorer-from-the-azure-portal-doesnt-work"></a>Az Azure Portal nem működik az "Open in Explorer"
+
+Ha a Azure Portal **Megnyitás a Explorerben** gomb nem működik, győződjön meg róla, hogy kompatibilis böngészőt használ. A következő böngészők lettek tesztelve a kompatibilitás érdekében:
 * Microsoft Edge
 * Mozilla Firefox
 * Google Chrome
@@ -284,6 +368,6 @@ Ha a "Megnyitás az Explorerben" gombra az Azure Portalon az Ön számára nem m
 
 ## <a name="next-steps"></a>További lépések
 
-Ha a megoldások egyike sem működik, majd [nyisson egy problémát a Githubon](https://github.com/Microsoft/AzureStorageExplorer/issues). Is gyorsan kaphat a Githubra bal alsó sarokban lévő "Jelentés problémát a Githubban" gomb segítségével.
+Ha egyik megoldás sem működik, [Nyisson meg egy problémát a githubon](https://github.com/Microsoft/AzureStorageExplorer/issues). Ezt úgy is megteheti, hogy kijelöli a **jelentéssel kapcsolatos problémát a GitHub** gombra a bal alsó sarokban.
 
 ![Visszajelzés](./media/storage-explorer-troubleshooting/feedback-button.PNG)

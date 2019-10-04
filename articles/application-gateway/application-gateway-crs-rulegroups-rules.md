@@ -1,483 +1,485 @@
 ---
-title: Az Azure Application Gateway webalkalmazási tűzfal CRS-szabály, csoportok és szabályok
-description: Ez az oldal nyújt tájékoztatást web application firewall CRS-szabálycsoportjainak és szabályokat.
+title: Azure Application Gateway webalkalmazási tűzfal CRS-szabályok csoportjai és szabályai
+description: Ez az oldal információt nyújt a webalkalmazási tűzfal CRS-szabályainak csoportjairól és szabályairól.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.date: 4/11/2019
 ms.author: victorh
-ms.openlocfilehash: 0ad5cc76c0f4631fd60eea7d0a57e4740b6a9db3
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.topic: conceptual
+ms.openlocfilehash: 9f90f373bd6f1cfd34de1605783bf3a7f0185f4c
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523919"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240341"
 ---
-# <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Webes alkalmazás tűzfal CRS-szabálycsoportjainak és szabályok
+# <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Webalkalmazási tűzfal CRS-szabályok csoportjai és szabályai
 
-Application Gateway webalkalmazási tűzfal (WAF) megvédi a webalkalmazásokat a gyakori biztonsági rések és az azokat kihasználó támadások ellen. Ez a alapvető OWASP-szabálykészletek 3.0-s vagy 2.2.9-es verzióinak alapján meghatározott szabályok segítségével történik. Ezek a szabályok egy szabály által szabály alapján lehet letiltani. Ez a cikk tartalmazza az aktuális szabályok és a szabálykészletek érhető el.
+Application Gateway webalkalmazási tűzfal (WAF) megvédi a webalkalmazásokat a gyakori biztonsági rések és kiaknázások ellen. Ez az 3,0-es és a 2.2.9-es OWASP alapszabály-készletek alapján meghatározott szabályokon keresztül történik. Ezeket a szabályokat szabály alapján lehet letiltani. Ez a cikk a kínált aktuális szabályokat és szabályrendszerek tartalmazza.
 
-A következő szabály csoportokat és a szabályok érhetők el webalkalmazási tűzfallal rendelkező Application Gateway használata esetén.
+A következő szabálykészlet és szabályok érhetők el Application Gateway webalkalmazási tűzfallal való használatakor.
 
 # <a name="owasp-30tabowasp3"></a>[OWASP 3.0](#tab/owasp3)
 
-## <a name="owasp30"></a> Szabálykészletek
+## <a name="owasp30"></a>Szabálykészlet
 
-### <a name="General"></a> <p x-ms-format-detection="none">Általános kérdések</p>
+### <a name="General"></a> <p x-ms-format-detection="none">Általános</p>
 
-|RuleId|Leírás|
+|ruleId|Leírás|
 |---|---|
-|200004|Lehetséges többrészes páratlan határt.|
+|200004|Lehetséges többrészes nem egyező határ.|
 
 ### <a name="crs911"></a> <p x-ms-format-detection="none">REQUEST-911-METHOD-ENFORCEMENT</p>
 
-|RuleId|Leírás|
+|ruleId|Leírás|
 |---|---|
-|911100|Házirend által nem engedélyezett a metódus|
+|911100|A metódus nem engedélyezett a szabályzatban|
 
 
-### <a name="crs913"></a> <p x-ms-format-detection="none">REQUEST-913-SCANNER-DETECTION</p>
+### <a name="crs913"></a> <p x-ms-format-detection="none">KÉRELEM-913-SZKENNER-ÉSZLELÉS</p>
 
-|RuleId|Leírás|
+|ruleId|Leírás|
 |---|---|
-|913100|Biztonsági ellenőrzőeszköz társított felhasználói ügynök található.|
-|913110|Kérelem fejléce társított biztonsági ellenőrzőeszköz található|
-|913120|Kérelem fájlnév/argumentumnak társított biztonsági ellenőrzőeszköz található|
-|913101|Parancsfájl-kezelési/általános HTTP-alapú társított felhasználói ügynök található.|
-|913102|Webes webbejáró vagy robot társított felhasználói ügynök található.|
+|913100|A biztonsági ellenőrzőeszközhez társított felhasználói ügynök található|
+|913110|A biztonsági lapolvasóhoz tartozó kérelem fejléce található|
+|913120|A biztonsági lapolvasóhoz tartozó kérelem fájlnév/argumentuma található.|
+|913101|A parancsfájlhoz/általános HTTP-ügyfélhez társított felhasználói ügynök található.|
+|913102|A web lánctalpas/robothoz társított felhasználói ügynök található|
 
-### <a name="crs920"></a> <p x-ms-format-detection="none">KÉRELEM-920-PROTOKOLL-VÉGREHAJTÁS</p>
+### <a name="crs920"></a> <p x-ms-format-detection="none">KÉRELEM-920-PROTOCOL-KÉNYSZERÍTÉS</p>
 
-|RuleId|Leírás|
+|ruleId|Leírás|
 |---|---|
-|920100|Érvénytelen HTTP-kérelem-sor|
-|920130|Nem sikerült elemezni a kérelem törzsében.|
-|920140|Kéréstörzs többrészes szigorú érvényesítése sikertelen|
-|920160|Content-Length HTTP-fejléc nem numerikus.|
-|920170|GET vagy HEAD-kérést szövegtörzse.|
-|920180|POST-kérés Content-Length fejléc hiányzik.|
-|920190|Tartomány = utolsó bájtig eltelt értéke érvénytelen.|
-|920210|Több/ütköző kapcsolat fejléc adatok találhatók.|
-|920220|URL-cím kódolás visszaélés támadási kísérlet|
-|920240|URL-cím kódolás visszaélés támadási kísérlet|
-|920250|UTF8 Kódolást visszaélés támadási kísérlet|
-|920260|Unicode teljes vagy fél visszaélés támadási kísérlet|
-|920270|Érvénytelen karakter a (NULL értékű karakterrel) kérelem|
-|920280|Hiányzik az állomásfejléc kérelem|
-|920290|Üres állomásnév|
-|920310|Kérelem tartalmaz egy üres fogadja el a fejléc|
-|920311|Kérelem tartalmaz egy üres fogadja el a fejléc|
-|920330|Üres felhasználói ügynök fejléc|
-|920340|Tartalom tartalmazó, de hiányzik a Content-Type fejléc kérése|
-|920350|Állomásfejléc az egy numerikus IP-cím|
-|920380|Kérelemben túl sok argumentum|
-|920360|Argument neve túl hosszú.|
-|920370|Az argumentum értéke túl hosszú|
-|920390|Teljes argumentumok mérete meghaladta az engedélyezett|
-|920400|A feltöltött fájl mérete túl nagy|
-|920410|Feltöltött fájlok összesített mérete túl nagy|
-|920420|Házirend által nem engedélyezett a kérelem tartalom típusa|
-|920430|Házirend által nem engedélyezett a HTTP protokoll verziója|
-|920440|A házirend korlátozza URL-cím fájlkiterjesztés|
-|920450|HTTP-fejléc korlátozza a házirend (%@{MATCHED_VAR})|
+|920100|Érvénytelen HTTP-kérési sor|
+|920130|Nem sikerült elemezni a kérelem törzsét.|
+|920140|A többrészes kérelem törzse nem sikerült szigorú ellenőrzést végrehajtani|
+|920160|A Content-Length HTTP-fejléc nem numerikus.|
+|920170|GET vagy HEAD kérelem szövegtörzs tartalmával.|
+|920180|A POST kérelemből hiányzik a Content-Length fejléc.|
+|920190|Range = érvénytelen az utolsó bájt értéke.|
+|920210|Több/ütköző kapcsolatok fejléce nem található.|
+|920220|URL-kódolással való visszaélés elleni támadási kísérlet|
+|920240|URL-kódolással való visszaélés elleni támadási kísérlet|
+|920250|UTF8-kódolást használó támadási kísérlet|
+|920260|Unicode teljes vagy félszélességű támadási kísérlet|
+|920270|Érvénytelen karakter a kérelemben (null karakter)|
+|920280|A kérelemből hiányzik egy állomásfejléc|
+|920290|Üres állomásfejléc|
+|920310|A kérelemben üres az elfogadás fejléce|
+|920311|A kérelemben üres az elfogadás fejléce|
+|920330|Üres felhasználói ügynök fejléce|
+|920340|Tartalmat tartalmazó kérelem, de hiányzik a Content-Type fejléc|
+|920350|A állomásfejléc egy numerikus IP-cím|
+|920380|Túl sok argumentum van a kérelemben|
+|920360|Az argumentum neve túl hosszú|
+|920370|Túl hosszú az argumentum értéke|
+|920390|Az argumentumok teljes mérete túllépve|
+|920400|Túl nagy a feltöltött fájl mérete|
+|920410|A feltöltött fájlok teljes mérete túl nagy|
+|920420|A kérelem tartalmának típusa nem engedélyezett a szabályzatban|
+|920430|A házirend nem engedélyezi a HTTP protokoll verzióját|
+|920440|Az URL-fájl kiterjesztését házirend korlátozza|
+|920450|A HTTP-fejlécet a szabályzat korlátozza (% @ {MATCHED_VAR})|
 |920200|Tartomány = túl sok mező (6 vagy több)|
-|920201|Tartomány = túl sok mező pdf-kérelem (35 vagy több)|
-|920230|Több URL-Címének kódolása észlelt|
-|920300|Kérelem hiányzik egy fejléc elfogadása|
-|920271|Érvénytelen karakter a kérelem (nem nyomtatható karakter)|
-|920320|Felhasználói ügynök Záhlaví|
-|920272|Érvénytelen karakter a kérelem (kívül az alábbi ascii 127 nyomtatható karakter)|
-|920202|Tartomány = túl sok mező pdf-kérelem (6 vagy több)|
-|920273|Érvénytelen karakter a kérelem (kívül nagyon szigorú set)|
-|920274|Érvénytelen karakter a kérelem fejlécében (kívül nagyon szigorú set)|
-|920460|Rendellenes escape-karakter|
+|920201|Tartomány = túl sok mező a PDF-kérelemhez (35 vagy több)|
+|920230|Több URL-kódolás észlelhető|
+|920300|A kérelemből hiányzik egy Accept fejléc|
+|920271|Érvénytelen karakter a kérelemben (nem nyomtatható karakterek)|
+|920320|Hiányzó felhasználói ügynök fejléce|
+|920272|Érvénytelen karakter a kérelemben (az ASCII 127 alatti nyomtatható karaktereken kívül)|
+|920202|Tartomány = túl sok mező a PDF-kérelemhez (6 vagy több)|
+|920273|Érvénytelen karakter a kérelemben (a nagyon szigorú készleten kívül)|
+|920274|Érvénytelen karakter a kérések fejlécében (a nagyon szigorú készleten kívül)|
+|920460|Rendellenes Escape-karakterek|
 
-### <a name="crs921"></a> <p x-ms-format-detection="none">A KÉRELEM-921-PROTOKOLL-TÁMADÁS</p>
+### <a name="crs921"></a> <p x-ms-format-detection="none">KÉRELEM-921-PROTOCOL-ATTACK</p>
 
-|RuleId|Leírás|
+|ruleId|Leírás|
 |---|---|
-|921100|HTTP-Kéréscsempészet támadás.|
-|921110|HTTP-kérelem való támadás|
-|921120|HTTP-válasz a felosztás támadás|
-|921130|HTTP-válasz a felosztás támadás|
-|921140|Fejlécek via HTTP fejléc injektálásos támadásokkal szemben|
-|921150|Hasznos adat (CR vagy LF észlelt) keresztül HTTP fejléc injektálásos támadásokkal szemben|
-|921160|Hasznos adat (CR vagy LF Karakterrel és fejléc-nevet észlelt) keresztül HTTP fejléc injektálásos támadásokkal szemben|
-|921151|Hasznos adat (CR vagy LF észlelt) keresztül HTTP fejléc injektálásos támadásokkal szemben|
-|921170|HTTP-paraméter szennyezés|
-|921180|HTTP-paraméter szennyezés (% @{TX.1})|
+|921100|HTTP-kérelem csempészett támadása.|
+|921110|HTTP-kérelem csempészete elleni támadás|
+|921120|HTTP-válasz felosztásának támadása|
+|921130|HTTP-válasz felosztásának támadása|
+|921140|HTTP-fejléc injekciós támadása fejléceken keresztül|
+|921150|HTTP-fejléc injekciós támadása a hasznos adatokkal (CR/LF észlelve)|
+|921160|HTTP-fejléc injekciós támadás adattartalommal (CR/LF és header-Name)|
+|921151|HTTP-fejléc injekciós támadása a hasznos adatokkal (CR/LF észlelve)|
+|921170|HTTP-paraméterek szennyezése|
+|921180|HTTP-paraméterek szennyezése (% @ {TX. 1})|
 
-### <a name="crs930"></a> <p x-ms-format-detection="none">REQUEST-930-APPLICATION-ATTACK-LFI</p>
+### <a name="crs930"></a> <p x-ms-format-detection="none">KÉRELEM-930-APPLICATION-ATTACK-LFI</p>
 
-|RuleId|Leírás|
+|ruleId|Leírás|
 |---|---|
-|930100|A bejárási támadási elérési útja (/... /)|
-|930110|A bejárási támadási elérési útja (/... /)|
-|930120|Az operációs rendszer fájl hozzáférési kísérlet|
-|930130|A korlátozott fájl hozzáférési kísérlet|
+|930100|Elérési út átjárási támadása (/.. /)|
+|930110|Elérési út átjárási támadása (/.. /)|
+|930120|Operációs rendszer fájljának elérési kísérlete|
+|930130|Korlátozott fájl-hozzáférési kísérlet|
 
-### <a name="crs931"></a> <p x-ms-format-detection="none">REQUEST-931-APPLICATION-ATTACK-RFI</p>
+### <a name="crs931"></a> <p x-ms-format-detection="none">KÉRELEM-931-APPLICATION-ATTACK-RFI</p>
 
-|RuleId|Leírás|
+|ruleId|Leírás|
 |---|---|
-|931100|Lehetséges fájl beszúrásos (RFI) támadások = IP-címet használó URL-paraméter|
-|931110|Lehetséges fájl beszúrásos (RFI) támadások = RFI sebezhető paraméter használt név w/URL adattartalom|
-|931120|Lehetséges távoli fájl beszúrásos (RFI) támadások = URL-cím használt hasznos w/záró kérdés Mark karakter (?)|
-|931130|Lehetséges távoli fájl beszúrásos (RFI) támadások =-Domain hivatkozás|
+|931100|Lehetséges távoli fájlok felvételének (RFI) támadása = URL-paraméter IP-cím használatával|
+|931110|Lehetséges távoli fájlok bevonása (RFI) elleni támadás|
+|931120|Lehetséges távoli fájlok felvételének (RFI) támadása = URL-adattartalom a megadott kérdőjel (?) karakternél|
+|931130|Lehetséges távoli fájlok bevonása (RFI) támadás = off-domain hivatkozás/hivatkozás|
 
-### <a name="crs932"></a> <p x-ms-format-detection="none">REQUEST-932-APPLICATION-ATTACK-RCE</p>
+### <a name="crs932"></a> <p x-ms-format-detection="none">KÉRELEM-932-APPLICATION-ATTACK-RCE</p>
 
-|RuleId|Leírás|
+|ruleId|Leírás|
 |---|---|
-|932120|Távoli parancs végrehajtása található Windows PowerShell-paranccsal =|
-|932130|Távoli parancs végrehajtása Unix rendszerhéj-kifejezés található =|
-|932140|Távoli parancs végrehajtása Windows = / Ha parancs található|
-|932160|Távoli parancs végrehajtása található Unix rendszerhéj kód =|
-|932170|Távoli parancs végrehajtása Shellshock (CVE – 2014-6271) =|
-|932171|Távoli parancs végrehajtása Shellshock (CVE – 2014-6271) =|
+|932120|Távoli parancs végrehajtása = Windows PowerShell-parancs található|
+|932130|Távoli parancs végrehajtása = UNIX rendszerhéj-kifejezés található|
+|932140|Távoli parancs végrehajtása = Windows FOR/IF parancs található|
+|932160|Távoli parancs végrehajtása = UNIX rendszerhéj-kód található|
+|932170|Távoli parancs végrehajtása = Shellshock (CVE-2014-6271)|
+|932171|Távoli parancs végrehajtása = Shellshock (CVE-2014-6271)|
 
-### <a name="crs933"></a> <p x-ms-format-detection="none">REQUEST-933-APPLICATION-ATTACK-PHP</p>
+### <a name="crs933"></a> <p x-ms-format-detection="none">KÉRELEM-933-APPLICATION-ATTACK-PHP</p>
 
-|RuleId|Leírás|
+|ruleId|Leírás|
 |---|---|
-|933100|PHP-injektálási támadások Znak Levé nebo Pravé címke található =|
-|933110|PHP-injektálási támadások = található PHP parancsfájl-fájl feltöltése|
-|933120|PHP Injection Attack = Configuration Directive Found|
-|933130|PHP-injektálási támadások = található változók|
-|933150|PHP Injection Attack = High-Risk PHP Function Name Found|
-|933160|PHP-injektálási támadások magas kockázatú PHP függvény hívásához szükséges található =|
-|933180|PHP Injection Attack = Variable Function Call Found|
-|933151|PHP Injection Attack = Medium-Risk PHP Function Name Found|
-|933131|PHP-injektálási támadások = található változók|
-|933161|PHP-injektálási támadások kevés PHP függvény hívásához szükséges található =|
-|933111|PHP-injektálási támadások = található PHP parancsfájl-fájl feltöltése|
+|933100|PHP-befecskendező támadás = megtalált címke megnyitása/bezárása|
+|933110|PHP-befecskendezési támadás = PHP parancsfájl feltöltése megtalálva|
+|933120|PHP Injection Attack = konfigurációs irányelv található|
+|933130|PHP-befecskendező támadás = változók találhatók|
+|933150|PHP Injection támadás = magas kockázatú PHP-függvény neve|
+|933160|PHP Injection támadás = magas kockázatú PHP-függvény hívása|
+|933180|PHP Injection támadás = változó függvény hívása található|
+|933151|PHP Injection támadás = közepes kockázatú PHP-függvény neve található|
+|933131|PHP-befecskendező támadás = változók találhatók|
+|933161|PHP Injection támadás = alacsony értékű PHP-függvény hívása|
+|933111|PHP-befecskendezési támadás = PHP parancsfájl feltöltése megtalálva|
 
-### <a name="crs941"></a> <p x-ms-format-detection="none">REQUEST-941-APPLICATION-ATTACK-XSS</p>
+### <a name="crs941"></a> <p x-ms-format-detection="none">KÉRELEM-941-APPLICATION-ATTACK-XSS</p>
 
-|RuleId|Leírás|
+|ruleId|Leírás|
 |---|---|
-|941100|XSS támadás észlelve libinjection|
-|941110|XSS szűrő - kategória 1 = parancsfájl címke vektor|
-|941130|XSS szűrő - kategória 3 = attribútuma vektor|
-|941140|XSS szűrő - kategória 4 = Javascript URI vektor|
-|941150|XSS szűrő - kategória 5 = nem engedélyezett HTML-attribútumok|
-|941180|Csomópont-érvényesítő Blacklist kulcsszavak|
+|941100|XSS-támadás észlelhető a libinjection-n keresztül|
+|941110|XSS-szűrő – 1. kategória = parancsfájl-címke vektora|
+|941130|XSS-szűrő – 3. kategória = attribútum vektor|
+|941140|XSS-szűrő – 4. kategória = JavaScript URI-vektor|
+|941150|XSS-szűrő – 5. kategória = nem engedélyezett HTML-attribútumok|
+|941180|Csomópont-érvényesítő feketelista kulcsszavai|
 |941190|XSS stíluslapok használatával|
-|941200|XSS VML keretek használata|
-|941210|XSS rejtjelezett Javascript használatával|
-|941220|XSS rejtjelezett Visual Basic-parancsfájl használatával|
-|941230|XSS használatával "" címke beágyazása|
-|941240|XSS "import" vagy "végrehajtása" attribútum használatával|
-|941260|XSS "meta" címke használatával|
-|941270|XSS "hivatkozás" href használatával|
-|941280|XSS "base" címke használata|
-|941290|XSS "alkalmazás" címke használata|
-|941300|XSS "objektum" címke használata|
-|941310|US-ASCII hibás kódolás XSS szűrő - támadás észlelve.|
-|941330|Internet Explorer XSS szűrők - támadás észlelve.|
-|941340|Internet Explorer XSS szűrők - támadás észlelve.|
-|941350|UTF-7 kódolási IE XSS - támadás észlelve.|
-|941320|Lehetséges XSS-támadások észlelt – HTML-címke-kezelő|
+|941200|XSS VML-keretek használatával|
+|941210|XSS – eltorzított JavaScript használata|
+|941220|XSS, felhasznált VB-szkript|
+|941230|XSS a "beágyazás" címkével|
+|941240|XSS az "import" vagy a "megvalósítás" attribútum használatával|
+|941260|XSS a "meta" címkével|
+|941270|XSS a "link" href használatával|
+|941280|XSS a "Base" címkével|
+|941290|XSS az "applet" címkével|
+|941300|XSS az "Object" címkével|
+|941310|US-ASCII hibás kódolású XSS-szűrő-támadás észlelhető.|
+|941330|IE XSS-szűrők – a rendszer támadást észlelt.|
+|941340|IE XSS-szűrők – a rendszer támadást észlelt.|
+|941350|UTF-7 kódolás, azaz XSS – a rendszer támadást észlelt.|
+|941320|Lehetséges XSS-támadás észlelhető – HTML-címke kezelője|
 
 ### <a name="crs942"></a> <p x-ms-format-detection="none">REQUEST-942-APPLICATION-ATTACK-SQLI</p>
 
-|RuleId|Leírás|
+|ruleId|Leírás|
 |---|---|
-|942100|SQL injektálási támadások észlelt libinjection keresztül|
-|942110|SQL-injektálásos támadásokkal szemben: Közös olyan injektálás, a tesztelés észlelt|
-|942130|SQL-injektálásos támadásokkal szemben: SQL Tautology észlelt.|
-|942140|SQL-injektálásos támadásokkal szemben = közös DB nevet észlelt|
-|942160|Sleep() vagy benchmark() vak sqli teszteket észlel.|
-|942170|Észleli az SQL-injektálás referenciaalap és alvó állapottal kapcsolatos megkísérli többek között a feltételes lekérdezések|
-|942190|Észleli az MSSQL-végrehajtás és a információgyűjtés kísérletek|
-|942200|Észleli a MySQL Megjegyzés- / terület rejtjelezett injektálások és a használni kívánt szintaxiskiemelést megszüntetése|
-|942230|SQL-injektálási kísérleteket feltételes észleli|
-|942260|Észleli az SQL-hitelesítés alapszintű Mellőzés megkísérli 2/3|
-|942270|Alapszintű sql injektálás keres. Gyakori támadási karakterlánc, mysql oracle és mások.|
-|942290|Megkeresi a mongodb-hez alapszintű SQL injektálási kísérletek|
-|942300|Észleli a megjegyzéseket, a feltételek és a ch (a) r-injektálások MySQL|
-|942320|Észleli a MySQL és a PostgreSQL tárolt eljárás vagy függvény injektálások|
-|942330|Észleli a klasszikus SQL injektálási probings 1/2|
-|942340|Észleli az SQL-hitelesítés alapszintű Mellőzés megkísérli 3/3|
-|942350|Észleli a MySQL UDF injektálással vagy a más adatstruktúra /-manipuláció kísérletek|
-|942360|Észleli összefűzött alapszintű SQL injektálás és SQLLFI kísérletek|
-|942370|Észleli a klasszikus SQL injektálási probings 2/2|
-|942150|SQL-injektálásos támadásokkal szemben|
-|942410|SQL-injektálásos támadásokkal szemben|
-|942430|Korlátozott SQL karakter rendellenességek észlelése (argumentumok): speciális karakterek száma túllépte a (12)|
-|942440|SQL-megjegyzés feladatütemezési észlelt.|
-|942450|SQL hexadecimális kódolás azonosított|
-|942251|Észleli a HAVING injektálások|
-|942460|Meta karakter Anomáliadetektálási észleléséről szóló figyelmeztetés - ismétlődő a Word karakter|
+|942100|SQL-injektálási támadás észlelhető a libinjection-n keresztül|
+|942110|SQL-injektálási támadás: Gyakori befecskendezéses tesztelés észlelhető|
+|942130|SQL-injektálási támadás: Az SQL-tautológia észlelve.|
+|942140|SQL injection-támadás = közös adatbázis-nevek észlelhetők|
+|942160|Észleli a vak SQLi-teszteket az alvó () vagy a teljesítményteszt () használatával.|
+|942170|Észleli az SQL-teljesítményteszteket és az alvó adatbefecskendezési kísérleteket, beleértve a feltételes|
+|942190|Az MSSQL-kódok végrehajtásával és az információk gyűjtésével kapcsolatos kísérletek észlelése|
+|942200|Észleli a MySQL-megjegyzéseket – a/Space-Obfuscated-befecskendezést és a kezdő-lezárást|
+|942230|Feltételes SQL-injektálási kísérletek észlelése|
+|942260|Az alapszintű SQL-hitelesítési megkerülési kísérletek észlelése 2/3|
+|942270|Alapszintű SQL-injektálást keres. Gyakori támadási karakterlánc a MySQL Oracle és mások számára.|
+|942290|Alapszintű MongoDB SQL-injektálási kísérletek keresése|
+|942300|Észleli a MySQL-megjegyzéseket, a feltételeket és a ch (a) r-injektálásokat|
+|942310|Észleli a láncolt SQL-injektálási kísérleteket 2/2|
+|942320|A MySQL és a PostgreSQL tárolt eljárás/függvény befecskendezésének észlelése|
+|942330|Észleli a klasszikus SQL injection probs 1/2|
+|942340|Az alapszintű SQL-hitelesítési megkerülési kísérletek észlelése 3/3|
+|942350|Észleli a MySQL UDF-injektálást és más adat/struktúra manipulációs kísérleteket|
+|942360|Az összefűzött alapszintű SQL-injektálási és SQLLFI-kísérletek észlelése|
+|942370|Észleli a klasszikus SQL injection probs 2/2|
+|942150|SQL-injektálási támadás|
+|942410|SQL-injektálási támadás|
+|942430|Korlátozott SQL-karakteres anomáliák észlelése (argumentumok): a speciális karakterek száma túllépve (12)|
+|942440|A rendszer SQL-megjegyzési sorozatot észlelt.|
+|942450|SQL hex-kódolás azonosítva|
+|942251|Észleli az injekciókat|
+|942460|Meta-karakteres anomália észlelési riasztás – ismétlődő nem Word karakterek|
 
 ### <a name="crs943"></a> <p x-ms-format-detection="none">REQUEST-943-APPLICATION-ATTACK-SESSION-FIXATION</p>
 
-|RuleId|Leírás|
+|ruleId|Leírás|
 |---|---|
-|943100|Munkamenet-rögzítési támadási = HTML formátumban a cookie-k értékeinek beállítása|
-|943110|Munkamenet-rögzítési támadási = tartományon kívüli hivatkozó a munkamenet-azonosító paraméter neve|
-|943120|Munkamenet-rögzítési támadási = nincs hivatkozó a munkamenet-azonosító paraméter neve|
+|943100|Lehetséges munkamenet-rögzítési támadás = cookie-értékek beállítása HTML-ben|
+|943110|Lehetséges munkamenet-rögzítési támadás = munkamenet-azonosító paraméter neve a tartományon kívüli Hivatkozóval|
+|943120|Lehetséges munkamenet-rögzítési támadás = munkamenet-azonosító paraméter neve, hivatkozó nélkül|
 
-# <a name="owasp-229tabowasp2"></a>[OWASP 2.2.9-ES](#tab/owasp2)
+# <a name="owasp-229tabowasp2"></a>[OWASP 2.2.9](#tab/owasp2)
 
-## <a name="owasp229"></a> Szabálykészletek
+## <a name="owasp229"></a>Szabálykészlet
 
-### <a name="crs20"></a> crs_20_protocol_violations
+### <a name="crs20"></a>crs_20_protocol_violations
 
-|RuleId|Leírás|
+|ruleId|Leírás|
 |---|---|
-|960911|Érvénytelen HTTP-kérelem-sor|
-|981227|Az Apache hiba = a kérelem URI érvénytelen.|
-|960912|Nem sikerült elemezni a kérelem törzsében.|
-|960914|Kéréstörzs többrészes szigorú érvényesítése sikertelen|
-|960915|Többrészes elemző észlelt egy lehetséges páratlan határt.|
-|960016|Content-Length HTTP-fejléc nem numerikus.|
-|960011|GET vagy HEAD-kérést szövegtörzse.|
-|960012|POST-kérés Content-Length fejléc hiányzik.|
-|960902|Identitás-kódolást használva.|
-|960022|Nem engedélyezett a HTTP 1.0 fejléc várt.|
-|960020|Direktiva pragma fejléc Cache-Control fejléc a HTTP/1.1-es kérelmek kell rendelkeznie.|
-|958291|Tartomány = mező létezik, és 0-val kezdődik.|
-|958230|Tartomány = utolsó bájtig eltelt értéke érvénytelen.|
-|958295|Több/ütköző kapcsolat fejléc adatok találhatók.|
-|950107|URL-cím kódolás visszaélés támadási kísérlet|
-|950109|Több URL-Címének kódolása észlelt|
-|950108|URL-cím kódolás visszaélés támadási kísérlet|
-|950801|UTF8 Kódolást visszaélés támadási kísérlet|
-|950116|Unicode teljes vagy fél visszaélés támadási kísérlet|
-|960901|A kérelem érvénytelen karakter|
-|960018|A kérelem érvénytelen karakter|
+|960911|Érvénytelen HTTP-kérési sor|
+|981227|Apache Error = érvénytelen URI a kérelemben.|
+|960912|Nem sikerült elemezni a kérelem törzsét.|
+|960914|A többrészes kérelem törzse nem sikerült szigorú ellenőrzést végrehajtani|
+|960915|A többrészes elemző egy lehetséges nem egyező határt észlelt.|
+|960016|A Content-Length HTTP-fejléc nem numerikus.|
+|960011|GET vagy HEAD kérelem szövegtörzs tartalmával.|
+|960012|A POST kérelemből hiányzik a Content-Length fejléc.|
+|960902|Az identitás kódolásának használata érvénytelen.|
+|960022|A várakozási fejléc nem engedélyezett a HTTP 1,0 esetében.|
+|960020|A sorpragmákat fejlécének gyorsítótár-vezérlő fejlécre van szüksége a HTTP/1.1 kérelmekhez.|
+|958291|A Range = mező létezik, és a 0 karakterrel kezdődik.|
+|958230|Range = érvénytelen az utolsó bájt értéke.|
+|958295|Több/ütköző kapcsolatok fejléce nem található.|
+|950107|URL-kódolással való visszaélés elleni támadási kísérlet|
+|950109|Több URL-kódolás észlelhető|
+|950108|URL-kódolással való visszaélés elleni támadási kísérlet|
+|950801|UTF8-kódolást használó támadási kísérlet|
+|950116|Unicode teljes vagy félszélességű támadási kísérlet|
+|960901|Érvénytelen karakter a kérelemben|
+|960018|Érvénytelen karakter a kérelemben|
 
-### <a name="crs21"></a> crs_21_protocol_anomalies
+### <a name="crs21"></a>crs_21_protocol_anomalies
 
-|RuleId|Leírás|
+|ruleId|Leírás|
 |---|---|
-|960008|Hiányzik az állomásfejléc kérelem|
-|960007|Üres állomásnév|
-|960015|Kérelem hiányzik egy fejléc elfogadása|
-|960021|Kérelem tartalmaz egy üres fogadja el a fejléc|
-|960009|Felhasználói ügynök fejléc hiányzik a kérés|
-|960006|Üres felhasználói ügynök fejléc|
-|960904|Tartalom tartalmazó, de hiányzik a Content-Type fejléc kérése|
-|960017|Állomásfejléc az egy numerikus IP-cím|
+|960008|A kérelemből hiányzik egy állomásfejléc|
+|960007|Üres állomásfejléc|
+|960015|A kérelemből hiányzik egy Accept fejléc|
+|960021|A kérelemben üres az elfogadás fejléce|
+|960009|A kérelemből hiányzik egy felhasználói ügynök fejléce|
+|960006|Üres felhasználói ügynök fejléce|
+|960904|Tartalmat tartalmazó kérelem, de hiányzik a Content-Type fejléc|
+|960017|A állomásfejléc egy numerikus IP-cím|
 
-### <a name="crs23"></a> crs_23_request_limits
+### <a name="crs23"></a>crs_23_request_limits
 
-|RuleId|Leírás|
+|ruleId|Leírás|
 |---|---|
-|960209|Argument neve túl hosszú.|
-|960208|Az argumentum értéke túl hosszú|
-|960335|Kérelemben túl sok argumentum|
-|960341|Teljes argumentumok mérete meghaladta az engedélyezett|
-|960342|A feltöltött fájl mérete túl nagy|
-|960343|Feltöltött fájlok összesített mérete túl nagy|
+|960209|Az argumentum neve túl hosszú|
+|960208|Túl hosszú az argumentum értéke|
+|960335|Túl sok argumentum van a kérelemben|
+|960341|Az argumentumok teljes mérete túllépve|
+|960342|Túl nagy a feltöltött fájl mérete|
+|960343|A feltöltött fájlok teljes mérete túl nagy|
 
-### <a name="crs30"></a> crs_30_http_policy
+### <a name="crs30"></a>crs_30_http_policy
 
-|RuleId|Leírás|
+|ruleId|Leírás|
 |---|---|
-|960032|Házirend által nem engedélyezett a metódus|
-|960010|Házirend által nem engedélyezett a kérelem tartalom típusa|
-|960034|Házirend által nem engedélyezett a HTTP protokoll verziója|
-|960035|A házirend korlátozza URL-cím fájlkiterjesztés|
-|960038|A házirend korlátozza a HTTP-fejléc|
+|960032|A metódus nem engedélyezett a szabályzatban|
+|960010|A kérelem tartalmának típusa nem engedélyezett a szabályzatban|
+|960034|A házirend nem engedélyezi a HTTP protokoll verzióját|
+|960035|Az URL-fájl kiterjesztését házirend korlátozza|
+|960038|A HTTP-fejlécet házirend korlátozza|
 
-### <a name="crs35"></a> crs_35_bad_robots
+### <a name="crs35"></a>crs_35_bad_robots
 
-|RuleId|Leírás|
+|ruleId|Leírás|
 |---|---|
-|990002|Kérelem azt jelzi, hogy egy biztonsági ellenőrzőeszköz ellenőrzi a hely|
-|990901|Kérelem azt jelzi, hogy egy biztonsági ellenőrzőeszköz ellenőrzi a hely|
-|990902|Kérelem azt jelzi, hogy egy biztonsági ellenőrzőeszköz ellenőrzi a hely|
-|990012|Rosszindulatú webhely webbejáró|
+|990002|A kérelem azt jelzi, hogy a biztonsági ellenőrzőeszköz beolvasta a helyet|
+|990901|A kérelem azt jelzi, hogy a biztonsági ellenőrzőeszköz beolvasta a helyet|
+|990902|A kérelem azt jelzi, hogy a biztonsági ellenőrzőeszköz beolvasta a helyet|
+|990012|Gazember webhely lánctalpas|
 
-### <a name="crs40"></a> crs_40_generic_attacks
+### <a name="crs40"></a>crs_40_generic_attacks
 
-|RuleId|Leírás|
+|ruleId|Leírás|
 |---|---|
-|960024|Meta karakter Anomáliadetektálási észleléséről szóló figyelmeztetés - ismétlődő a Word karakter|
-|950008|Nem dokumentált ColdFusion címkék injektálás|
-|950010|LDAP-injektálásos támadásokkal szemben|
-|950011|SSI injektálási támadások|
-|950018|Univerzális PDF XSS URL-cím észlelhető.|
-|950019|E-mail-injektálásos támadásokkal szemben|
-|950012|HTTP-Kéréscsempészet támadás.|
-|950910|HTTP-válasz a felosztás támadás|
-|950911|HTTP-válasz a felosztás támadás|
-|950117|Távolifájl-beszúrásos támadás|
-|950118|Távolifájl-beszúrásos támadás|
-|950119|Távolifájl-beszúrásos támadás|
-|950120|Lehetséges távoli fájl beszúrásos (RFI) támadások =-Domain hivatkozás|
-|981133|A szabály 981133|
-|981134|A szabály 981134|
-|950009|Munkamenet-rögzítési támadások|
+|960024|Meta-karakteres anomália észlelési riasztás – ismétlődő nem Word karakterek|
+|950008|Nem dokumentált ColdFusion-címkék injektálása|
+|950010|LDAP-injektálási támadás|
+|950011|SSI-befecskendező támadás|
+|950018|A rendszer univerzális PDF XSS URL-címet észlelt.|
+|950019|E-mail-befecskendezési támadás|
+|950012|HTTP-kérelem csempészett támadása.|
+|950910|HTTP-válasz felosztásának támadása|
+|950911|HTTP-válasz felosztásának támadása|
+|950117|Távoli fájl-integrációs támadás|
+|950118|Távoli fájl-integrációs támadás|
+|950119|Távoli fájl-integrációs támadás|
+|950120|Lehetséges távoli fájlok bevonása (RFI) támadás = off-domain hivatkozás/hivatkozás|
+|981133|981133. szabály|
+|981134|981134. szabály|
+|950009|Munkamenet-rögzítési támadás|
 |950003|Munkamenet-rögzítés|
 |950000|Munkamenet-rögzítés|
-|950005|Távoli hozzáférési kísérlet|
-|950002|Rendszer-parancs hozzáférést|
-|950006|Rendszer Parancsinjektálás|
-|959151|PHP-injektálási támadások|
-|958976|PHP-injektálási támadások|
-|958977|PHP-injektálási támadások|
+|950005|Távoli fájl-hozzáférési kísérlet|
+|950002|Rendszerparancs-hozzáférés|
+|950006|Rendszerparancs-befecskendezés|
+|959151|PHP-befecskendezéses támadás|
+|958976|PHP-befecskendezéses támadás|
+|958977|PHP-befecskendezéses támadás|
 
-### <a name="crs41sql"></a> crs_41_sql_injection_attacks
+### <a name="crs41sql"></a>crs_41_sql_injection_attacks
 
-|RuleId|Leírás|
+|ruleId|Leírás|
 |---|---|
-|981231|SQL-megjegyzés feladatütemezési észlelt.|
-|981260|SQL hexadecimális kódolás azonosított|
-|981320|SQL-injektálásos támadásokkal szemben = közös DB nevet észlelt|
-|981300|A szabály 981300|
-|981301|A szabály 981301|
-|981302|A szabály 981302|
-|981303|A szabály 981303|
-|981304|A szabály 981304|
-|981305|A szabály 981305|
-|981306|A szabály 981306|
-|981307|A szabály 981307|
-|981308|A szabály 981308|
-|981309|A szabály 981309|
-|981310|A szabály 981310|
-|981311|A szabály 981311|
-|981312|A szabály 981312|
-|981313|A szabály 981313|
-|981314|A szabály 981314|
-|981315|A szabály 981315|
-|981316|A szabály 981316|
-|981317|SQL SELECT utasítás Anomáliadetektálási észleléséről szóló figyelmeztetés|
-|950007|Titkos SQL-injektálásos támadásokkal szemben|
-|950001|SQL-injektálásos támadásokkal szemben|
-|950908|SQL-injektálásos támadásokkal szemben.|
-|959073|SQL-injektálásos támadásokkal szemben|
-|981272|Sleep() vagy benchmark() vak sqli teszteket észlel.|
-|981250|Észleli az SQL-injektálás referenciaalap és alvó állapottal kapcsolatos megkísérli többek között a feltételes lekérdezések|
-|981241|SQL-injektálási kísérleteket feltételes észleli|
-|981276|Alapszintű sql injektálás keres. Gyakori támadási karakterlánc, mysql oracle és mások.|
-|981270|Megkeresi a mongodb-hez alapszintű SQL injektálási kísérletek|
-|981253|Észleli a MySQL és a PostgreSQL tárolt eljárás vagy függvény injektálások|
-|981251|Észleli a MySQL UDF injektálással vagy a más adatstruktúra /-manipuláció kísérletek|
+|981231|A rendszer SQL-megjegyzési sorozatot észlelt.|
+|981260|SQL hex-kódolás azonosítva|
+|981320|SQL injection-támadás = közös adatbázis-nevek észlelhetők|
+|981300|981300. szabály|
+|981301|981301. szabály|
+|981302|981302. szabály|
+|981303|981303. szabály|
+|981304|981304. szabály|
+|981305|981305. szabály|
+|981306|981306. szabály|
+|981307|981307. szabály|
+|981308|981308. szabály|
+|981309|981309. szabály|
+|981310|981310. szabály|
+|981311|981311. szabály|
+|981312|981312. szabály|
+|981313|981313. szabály|
+|981314|981314. szabály|
+|981315|981315. szabály|
+|981316|981316. szabály|
+|981317|SQL SELECT utasítás anomália észlelési riasztás|
+|950007|Vak SQL-injektálási támadás|
+|950001|SQL-injektálási támadás|
+|950908|SQL-injektálási támadás.|
+|959073|SQL-injektálási támadás|
+|981272|Észleli a vak SQLi-teszteket az alvó () vagy a teljesítményteszt () használatával.|
+|981250|Észleli az SQL-teljesítményteszteket és az alvó adatbefecskendezési kísérleteket, beleértve a feltételes|
+|981241|Feltételes SQL-injektálási kísérletek észlelése|
+|981276|Alapszintű SQL-injektálást keres. Gyakori támadási karakterlánc a MySQL Oracle és mások számára.|
+|981270|Alapszintű MongoDB SQL-injektálási kísérletek keresése|
+|981253|A MySQL és a PostgreSQL tárolt eljárás/függvény befecskendezésének észlelése|
+|981251|Észleli a MySQL UDF-injektálást és más adat/struktúra manipulációs kísérleteket|
 
-### <a name="crs41xss"></a> crs_41_xss_attacks
+### <a name="crs41xss"></a>crs_41_xss_attacks
 
-|RuleId|Leírás|
+|ruleId|Leírás|
 |---|---|
-|973336|XSS szűrő - kategória 1 = parancsfájl címke vektor|
-|973338|XSS szűrő - kategória 3 = Javascript URI vektor|
-|981136|A szabály 981136|
-|981018|A szabály 981018|
-|958016|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958414|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958032|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958026|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958027|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958054|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958418|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958034|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958019|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958013|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958408|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958012|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958423|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958002|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958017|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958007|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958047|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958410|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958415|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958022|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958405|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958419|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958028|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958057|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958031|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958006|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958033|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958038|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958409|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958001|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958005|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958404|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958023|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958010|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958411|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958422|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958036|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958000|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958018|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958406|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958040|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958052|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958037|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958049|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958030|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958041|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958416|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958024|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958059|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958417|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958020|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958045|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958004|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958421|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958009|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958025|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958413|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958051|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958420|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958407|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958056|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958011|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958412|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958008|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958046|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958039|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|958003|Többhelyes parancsfájl-kezelési (XSS) támadás|
-|973300|Lehetséges XSS-támadások észlelt – HTML-címke-kezelő|
-|973301|XSS támadás észlelve|
-|973302|XSS támadás észlelve|
-|973303|XSS támadás észlelve|
-|973304|XSS támadás észlelve|
-|973305|XSS támadás észlelve|
-|973306|XSS támadás észlelve|
-|973307|XSS támadás észlelve|
-|973308|XSS támadás észlelve|
-|973309|XSS támadás észlelve|
-|973311|XSS támadás észlelve|
-|973313|XSS támadás észlelve|
-|973314|XSS támadás észlelve|
-|973331|Internet Explorer XSS szűrők - támadás észlelve.|
-|973315|Internet Explorer XSS szűrők - támadás észlelve.|
-|973330|Internet Explorer XSS szűrők - támadás észlelve.|
-|973327|Internet Explorer XSS szűrők - támadás észlelve.|
-|973326|Internet Explorer XSS szűrők - támadás észlelve.|
-|973346|Internet Explorer XSS szűrők - támadás észlelve.|
-|973345|Internet Explorer XSS szűrők - támadás észlelve.|
-|973324|Internet Explorer XSS szűrők - támadás észlelve.|
-|973323|Internet Explorer XSS szűrők - támadás észlelve.|
-|973348|Internet Explorer XSS szűrők - támadás észlelve.|
-|973321|Internet Explorer XSS szűrők - támadás észlelve.|
-|973320|Internet Explorer XSS szűrők - támadás észlelve.|
-|973318|Internet Explorer XSS szűrők - támadás észlelve.|
-|973317|Internet Explorer XSS szűrők - támadás észlelve.|
-|973329|Internet Explorer XSS szűrők - támadás észlelve.|
-|973328|Internet Explorer XSS szűrők - támadás észlelve.|
+|973336|XSS-szűrő – 1. kategória = parancsfájl-címke vektora|
+|973338|XSS-szűrő – 3. kategória = JavaScript URI-vektor|
+|981136|981136. szabály|
+|981018|981018. szabály|
+|958016|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958414|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958032|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958026|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958027|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958054|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958418|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958034|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958019|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958013|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958408|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958012|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958423|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958002|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958017|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958007|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958047|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958410|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958415|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958022|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958405|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958419|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958028|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958057|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958031|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958006|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958033|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958038|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958409|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958001|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958005|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958404|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958023|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958010|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958411|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958422|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958036|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958000|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958018|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958406|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958040|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958052|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958037|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958049|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958030|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958041|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958416|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958024|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958059|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958417|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958020|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958045|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958004|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958421|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958009|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958025|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958413|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958051|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958420|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958407|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958056|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958011|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958412|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958008|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958046|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958039|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|958003|Helyek közötti parancsfájlok (XSS) elleni támadás|
+|973300|Lehetséges XSS-támadás észlelhető – HTML-címke kezelője|
+|973301|XSS-támadás észlelhető|
+|973302|XSS-támadás észlelhető|
+|973303|XSS-támadás észlelhető|
+|973304|XSS-támadás észlelhető|
+|973305|XSS-támadás észlelhető|
+|973306|XSS-támadás észlelhető|
+|973307|XSS-támadás észlelhető|
+|973308|XSS-támadás észlelhető|
+|973309|XSS-támadás észlelhető|
+|973311|XSS-támadás észlelhető|
+|973313|XSS-támadás észlelhető|
+|973314|XSS-támadás észlelhető|
+|973331|IE XSS-szűrők – a rendszer támadást észlelt.|
+|973315|IE XSS-szűrők – a rendszer támadást észlelt.|
+|973330|IE XSS-szűrők – a rendszer támadást észlelt.|
+|973327|IE XSS-szűrők – a rendszer támadást észlelt.|
+|973326|IE XSS-szűrők – a rendszer támadást észlelt.|
+|973346|IE XSS-szűrők – a rendszer támadást észlelt.|
+|973345|IE XSS-szűrők – a rendszer támadást észlelt.|
+|973324|IE XSS-szűrők – a rendszer támadást észlelt.|
+|973323|IE XSS-szűrők – a rendszer támadást észlelt.|
+|973348|IE XSS-szűrők – a rendszer támadást észlelt.|
+|973321|IE XSS-szűrők – a rendszer támadást észlelt.|
+|973320|IE XSS-szűrők – a rendszer támadást észlelt.|
+|973318|IE XSS-szűrők – a rendszer támadást észlelt.|
+|973317|IE XSS-szűrők – a rendszer támadást észlelt.|
+|973329|IE XSS-szűrők – a rendszer támadást észlelt.|
+|973328|IE XSS-szűrők – a rendszer támadást észlelt.|
 
-### <a name="crs42"></a> crs_42_tight_security
+### <a name="crs42"></a>crs_42_tight_security
 
-|RuleId|Leírás|
+|ruleId|Leírás|
 |---|---|
-|950103|A bejárási támadási elérési útja|
+|950103|Elérési út átjárási támadása|
 
-### <a name="crs45"></a> crs_45_trojans
+### <a name="crs45"></a>crs_45_trojans
 
-|RuleId|Leírás|
+|ruleId|Leírás|
 |---|---|
-|950110|Hátsó kapus hozzáférést|
-|950921|Hátsó kapus hozzáférést|
-|950922|Hátsó kapus hozzáférést|
+|950110|Backdoor-hozzáférés|
+|950921|Backdoor-hozzáférés|
+|950922|Backdoor-hozzáférés|
 
 ---
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg, hogyan tilthatja le a WAF-szabályok: [WAF-szabályok testreszabása](application-gateway-customize-waf-rules-portal.md)
+Ismerje meg, hogyan tilthatja le a WAF-szabályokat: [WAF-szabályok testreszabása](application-gateway-customize-waf-rules-portal.md)

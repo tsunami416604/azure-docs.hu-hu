@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
 ms.openlocfilehash: 7a589ba80b61ea5ef9ea1c941e9a0218a1653c99
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56669738"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60735516"
 ---
 # <a name="connecting-iot-devices-to-azure-iot-hub-and-event-hubs"></a>IoT-eszközök csatlakoztatása az Azure-bA: Az IoT Hub és az Event Hubs
 
@@ -34,7 +34,7 @@ Az alábbi táblázat ismerteti, hogyan a két réteg IoT-központ összehasonl�
 | Protokoll: Mqtt-ről, a websockets protokoll keresztüli mqtt-ről | ![Jelölőnégyzet][checkmark] | ![Jelölőnégyzet][checkmark] |  |
 | Eszközönkénti identitás | ![Jelölőnégyzet][checkmark] | ![Jelölőnégyzet][checkmark] |  |
 | Fájlfeltöltés az eszközökről | ![Jelölőnégyzet][checkmark] | ![Jelölőnégyzet][checkmark] |  |
-| Device Provisioning Service | ![Jelölőnégyzet][checkmark] | ![Jelölőnégyzet][checkmark] |  |
+| Eszközök kiépítési szolgáltatáshoz | ![Jelölőnégyzet][checkmark] | ![Jelölőnégyzet][checkmark] |  |
 | Üzenetküldés a felhőből eszközökre | ![Jelölőnégyzet][checkmark] |  |  |
 | Ikereszköz- és eszközkezelés | ![Jelölőnégyzet][checkmark] |  |  |
 | Eszköz adatfolyamok (előzetes verzió) | ![Jelölőnégyzet][checkmark] |  |  |

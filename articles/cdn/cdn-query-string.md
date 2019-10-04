@@ -7,19 +7,19 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: 17410e4f-130e-489c-834e-7ca6d6f9778d
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/11/2018
 ms.author: magattus
-ms.openlocfilehash: f0dab3dc81c626e3e7f8c79b4142e5eb4f2a1276
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 2b9e56f8a0a023c8423426fee081a5a48ebda330
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093799"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593462"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-query-strings---standard-tier"></a>Azure CDN gyorsítótárazási viselkedésének vezérlése lekérdezési karakterláncokkal – standard szintű vezérlése
 > [!div class="op_single_selector"]
@@ -35,11 +35,11 @@ Az Azure Content Delivery Network (CDN), szabályozhatja, hogyan kerül a gyors�
 
 Lekérdezési karakterlánc három mód érhetők el:
 
-- **Lekérdezési karakterláncok kihagyása**: alapértelmezett mód. Ebben a módban a CDN jelenléti pontok (POP) csomópontot adja át a lekérdezési karakterláncok a kérelmezőnek az eredeti kiszolgálóra első kérésére, és gyorsítótárba helyezi az eszközt. Az összes további kérelmet az adott eszközre, a jelenléti pont fájlnévkiterjesztései a lekérdezési karakterláncok figyelmen kívül, amíg le nem jár a gyorsítótárazott objektumhoz.
+- **Lekérdezési karakterláncok kihagyása**: Alapértelmezett mód. Ebben a módban a CDN jelenléti pontok (POP) csomópontot adja át a lekérdezési karakterláncok a kérelmezőnek az eredeti kiszolgálóra első kérésére, és gyorsítótárba helyezi az eszközt. Az összes további kérelmet az adott eszközre, a jelenléti pont fájlnévkiterjesztései a lekérdezési karakterláncok figyelmen kívül, amíg le nem jár a gyorsítótárazott objektumhoz.
 
 - **Lekérdezési karakterláncok gyorsítótárazásának megkerülése**: Ebben a módban lekérdezési karakterláncot tartalmazó kérelmek nincsenek gyorsítótárazva a CDN összes jelenléti Pontjára csomópontban. A POP-csomópont átveszi az eszköz közvetlenül a forráskiszolgálóról, és átadja azokat a kérelmezőnek minden egyes kérelemmel.
 
-- **Minden egyedi URL gyorsítótárazása**: Ebben a módban egy egyedi URL-címet, a lekérdezési karakterlánc, beleértve az egyes kérelmek egyedi saját gyorsítótár-eszközként kezelni. Például example.ashx?q=test1 a kérelmek származási kiszolgálótól kapott válasz van a POP-csomópont is gyorsítótárazza, és az ezt követő gyorsítótárakhoz, az ugyanabban a lekérdezési karakterláncban adja vissza. Example.ashx?q=test2 kérelmet a saját time-to-live-beállítással külön eszközként van gyorsítótárazva.
+- **Minden egyedi URL gyorsítótárazása**: Ebben a módban egy egyedi URL-címet, a lekérdezési karakterlánc, beleértve az egyes kérelmek számít egy egyedi eszközt a saját gyorsítótárhoz. Például example.ashx?q=test1 a kérelmek származási kiszolgálótól kapott válasz van a POP-csomópont is gyorsítótárazza, és az ezt követő gyorsítótárakhoz, az ugyanabban a lekérdezési karakterláncban adja vissza. Example.ashx?q=test2 kérelmet a saját time-to-live-beállítással külön eszközként van gyorsítótárazva.
    
     >[!IMPORTANT] 
     > Ne használja ezt a módot, ha a lekérdezési karakterlánc paraméterek, amely minden egyes kérelemmel, például a munkamenet-azonosító vagy a felhasználó neve, változást tartalmaz, mert egy alacsony gyorsítótár találati aránya eredményez.

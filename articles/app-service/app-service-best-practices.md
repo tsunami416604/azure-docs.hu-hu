@@ -1,6 +1,6 @@
 ---
-title: Ajánlott eljárások – az Azure App Service-ben
-description: Ismerje meg, ajánlott eljárások és hibaelhárítási az Azure App Service-ben.
+title: Ajánlott eljárások – Azure App Service
+description: Ismerkedjen meg a Azure App Service ajánlott eljárásaival és hibaelhárításával.
 services: app-service
 documentationcenter: ''
 author: dariagrigoriu
@@ -10,46 +10,45 @@ ms.assetid: f3359464-fa44-4f4a-9ea6-7821060e8d0d
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/01/2016
-ms.author: dariagrigoriu
+ms.author: dariac
 ms.custom: seodec18
-ms.openlocfilehash: fc3749a9ebfbf0319a57b471b6fce9f62042ba27
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: c40191c8682d6ff93f70e0853e767c89248ae887
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57849778"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70071617"
 ---
 # <a name="best-practices-for-azure-app-service"></a>Azure App Service – ajánlott eljárások
-Ez a cikk összegzi az ajánlott eljárások a [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). 
+Ez a cikk a [Azure app Service](https://go.microsoft.com/fwlink/?LinkId=529714)használatának ajánlott eljárásait foglalja össze. 
 
-## <a name="colocation"></a>A közös elhelyezés
-Ha egy megoldással, például egy webalkalmazás és adatbázis létrehozása Azure-erőforrások különböző régiókban találhatók, veheti fel a következő hatásai vannak:
+## <a name="colocation"></a>Bérelt kiszolgálói
+Ha olyan Azure-erőforrások, mint például egy webalkalmazás és egy adatbázis különböző régiókban találhatók, a következő hatásokkal járhat:
 
-* Az erőforrások közti kommunikációt késések
-* Pénzügyi fizetni a kimenő adatok átviteli régiók szerint vonatkozóan. a [Azure díjszabási oldalán](https://azure.microsoft.com/pricing/details/data-transfers).
+* Megnövekedett késés az erőforrások közötti kommunikációban
+* Az [Azure díjszabási oldalán](https://azure.microsoft.com/pricing/details/data-transfers)feljegyzett, a kimenő adatforgalomra vonatkozó pénzügyi költségek.
 
-A közös elhelyezés ugyanabban a régióban összeállítása hasonló megoldással például egy web app és a egy adatbázis vagy a storage-fiók tartalma vagy az adatok tárolásához használt Azure-erőforrások ajánlott. Az erőforrások létrehozásához, győződjön meg arról, ha azok ugyanazon Azure-régióban kivéve, ha azok nem az adott üzleti vagy a tervezési OK. Továbbléphet az App Service-alkalmazás ugyanabban a régióban legyen az adatbázis használatával a [klónozási szolgáltatásának App Service](app-service-web-app-cloning.md) jelenleg elérhető prémium szintű App Service-csomag alkalmazásokhoz.   
+Az azonos régióban található közös elhelyezés olyan Azure-erőforrások esetében ajánlott, mint például a webalkalmazások és a tartalom vagy az adatokat tároló adatbázis-vagy Storage-fiók. Erőforrások létrehozásakor ügyeljen arra, hogy ugyanabban az Azure-régióban legyenek, hacsak nincs konkrét üzleti vagy tervezési oka, hogy azok ne legyenek. App Service alkalmazást az adatbázissal megegyező régióba helyezheti át, ha a [app Service klónozási funkció](app-service-web-app-cloning.md) jelenleg elérhető a prémium szintű app Service csomag alkalmazásaiban.   
 
-## <a name="memoryresources"></a>Amikor használnak az alkalmazások a vártnál több memória
-Figyelési, illetve szolgáltatási javaslatok keresztül jelzett mikor láthatja, hogy egy alkalmazást a vártnál több memóriát használ fel, fontolja meg a [App Service automatikus gyógyítás szolgáltatásával](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites). Egyéni műveletek egy memória küszöbértékét a egyikét az automatikus javítás funkció tart. Műveletek által a feldolgozó folyamat újrahasznosítási ívelhet át az e-mail-értesítések palettát keresztül memóriaképet a helyszíni megoldás a vizsgálatot. Automatikus javítás konfigurálható és egy egyszerű felhasználói felületen keresztül web.config ebben a blogbejegyzésben találhat az ismertetett módon a [App Service támogatási Webhelybővítmény](https://azure.microsoft.com/blog/additional-updates-to-support-site-extension-for-azure-app-service-web-apps).   
+## <a name="memoryresources"></a>Ha az alkalmazások a vártnál több memóriát használnak
+Ha észreveszi, hogy egy alkalmazás a vártnál több memóriát használ fel, ahogy azt a figyelési vagy szolgáltatási javaslatok alapján jelezte, vegye figyelembe a [app Service automatikus gyógyulási funkciót](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites). Az automatikus javító funkció egyik beállítása a memória küszöbértékén alapuló egyéni műveleteket veszi igénybe. A műveletek az e-mail-értesítésekben a spektrumra terjednek ki, hogy a feldolgozói folyamat újrahasznosítása révén a rendszer a memórián keresztül, a helyszínen történő csökkentéssel Az automatikus javítás a web. config fájlon keresztül és egy felhasználóbarát felhasználói felületen keresztül konfigurálható a következő blogbejegyzésben leírtak szerint: [app Service támogatási hely kiterjesztése](https://azure.microsoft.com/blog/additional-updates-to-support-site-extension-for-azure-app-service-web-apps).   
 
-## <a name="CPUresources"></a>Ha használja a vártnál több CPU-alkalmazások
-Megfigyelheti, hogy az alkalmazás felhasználja a vártnál nagyobb CPU vagy élményt ismétlődő CPU adatforgalmi csúcsokhoz jelzett keresztül figyelési, illetve szolgáltatási javaslatok, fontolja meg vertikális vagy horizontális felskálázás az App Service-csomag. Ha az alkalmazást állapotalapú, vertikális felskálázása csak a lehetőség, míg ha az alkalmazás állapot nélküli, méretezési out történő további rugalmasságot és újabb skálázási lehetőségeit. 
+## <a name="CPUresources"></a>Ha az alkalmazások a vártnál több PROCESSZORt használnak
+Ha észreveszi, hogy egy alkalmazás a vártnál több CPU-t használ, vagy a figyelési vagy szolgáltatási javaslatok alapján megismétli a CPU-tüskéket, vegye fontolóra a App Service terv vertikális felskálázását vagy horizontális felskálázását. Ha az alkalmazás állapot-nyilvántartó, a vertikális felskálázás az egyetlen lehetőség, míg ha az alkalmazás állapota állapot nélküli, a horizontális felskálázás nagyobb rugalmasságot és nagyobb méretezhetőséget biztosít. 
 
-"Állapotalapú" és "állapot nélküli" alkalmazások kapcsolatos további részletekért tekintse meg ezt a videót: [Skálázható teljes körű Többrétegű alkalmazások tervezése az Azure App Service](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B414#fbid=?hashlink=fbid). App Service-ben skálázással és automatikus skálázást lehetőségekkel kapcsolatos további információkért lásd: [webalkalmazások méretezése az Azure App Service](web-sites-scale.md).  
+Az "állapot nélküli" és "állapot nélküli" alkalmazásokkal kapcsolatos további információkért tekintse meg ezt a videót: [Méretezhető, végpontok közötti többrétegű alkalmazás tervezése Azure app Serviceon](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B414#fbid=?hashlink=fbid). A App Service skálázással és az automatikus skálázási lehetőségekkel kapcsolatos további információkért [](manage-scale-up.md)lásd: webalkalmazás skálázása Azure app Serviceban.  
 
-## <a name="socketresources"></a>Amikor szoftvercsatorna-erőforrásai kimerültek
-Egy skálázását kimenő TCP-kapcsolatok gyakori oka klienskódtárak, amelyek nem felelnek meg újból felhasználhatja a TCP-kapcsolatok, vagy egy magasabb szintű protokoll, például HTTP - életben tartási nem használatakor használatát. Tekintse át a kódtárakat, az App Service-csomagra konfigurálva, vagy azok érhetők el a kód a kimenő kapcsolatok hatékony használatának biztosítása érdekében az alkalmazások által hivatkozott dokumentációját. Az alábbi is a megfelelő létrehozása és a kiadás vagy karbantartási kapcsolatok kiszivárgását elkerülése érdekében könyvtár dokumentációja nyújt segítséget. Ilyen ügyfél kódtárak vizsgálat van folyamatban, amíg hatás mérsékelheti horizontális felskálázás több példányra.
+## <a name="socketresources"></a>A szoftvercsatorna erőforrásainak kimerülése esetén
+A kimenő TCP-kapcsolatok kimerítésének gyakori oka az ügyféloldali kódtárak használata, amelyek nem használhatók a TCP-kapcsolatok újrafelhasználására, vagy ha egy magasabb szintű protokoll, például a HTTP-Keep-Alive nincs használatban. Tekintse át a App Service-csomag alkalmazásai által hivatkozott könyvtárak dokumentációját, hogy a rendszer konfigurálja vagy hozzáférjen a kódban a kimenő kapcsolatok hatékony újrafelhasználásához. A kapcsolatok kiszivárgásának elkerülése érdekében kövesse a könyvtár dokumentációját is a megfelelő létrehozáshoz és felszabadításhoz, illetve a karbantartáshoz. Amíg az ügyfél-kódtárak vizsgálata folyamatban van, a hatás a több példányra történő horizontális felskálázással enyhíthető lehet.
 
-### <a name="nodejs-and-outgoing-http-requests"></a>NODE.js- és kimenő http-kérelmekre
-Használata a Node.js és sok kimenő http-kérelmek, HTTP - életben tartási többé vesződnie a sérült esetén fontos. Használhatja a [agentkeepalive](https://www.npmjs.com/package/agentkeepalive) `npm` csomagot, hogy egyszerűbb legyen a kódban.
+### <a name="nodejs-and-outgoing-http-requests"></a>Node. js és kimenő HTTP-kérelmek
+A Node. js és számos kimenő HTTP-kérelem használata esetén fontos a HTTP-Keep-Alive kezelése. A [agentkeepalive](https://www.npmjs.com/package/agentkeepalive) `npm` csomag használatával egyszerűbbé teheti a kódot.
 
-Mindig kezelni a `http` választ, akkor is, ha nem tesz semmit, a kezelő a. Ha megfelelően kezelik a választ, a az alkalmazás idővel elakad, mert nincsenek további sockets érhetők el.
+Mindig kezelje `http` a választ, még akkor is, ha nem tesz semmit a kezelőben. Ha nem megfelelően kezeli a választ, az alkalmazás elakad, mert nem érhető el több szoftvercsatorna.
 
-Például, ha dolgozik a `http` vagy `https` csomag:
+Például a vagy `http` `https` a csomag használata esetén:
 
 ```javascript
 const request = https.request(options, function(response) {
@@ -57,19 +56,19 @@ const request = https.request(options, function(response) {
 });
 ```
 
-A linuxon futó App Service-ben több maggal rendelkező gépen fut, ha egy másik ajánlott eljárás az PM2 használata több Node.js folyamat végrehajtásához, hogy az alkalmazás indításához. Ez a tároló egy indítási parancs megadásával teheti meg.
+Ha App Service Linuxon fut egy több magot tartalmazó gépen, akkor egy másik ajánlott eljárás az, hogy a PM2 használatával több Node. js folyamat induljon el az alkalmazás végrehajtásához. Ezt megteheti egy indítási parancs megadásával a tárolóban.
 
-Ha például négy példány elindításához:
+Például négy példány elindításához:
 
 ```
 pm2 start /home/site/wwwroot/app.js --no-daemon -i 4
 ```
 
-## <a name="appbackup"></a>Ha az alkalmazás biztonsági mentése sikertelen kezdődik
-A két leggyakoribb okait, miért van a biztonsági mentés hibája app: érvénytelen, és érvénytelen adatbázis-konfiguráció. Ezek a hibák általában akkor történik, ha vannak a tárolási és adatbázis-erőforrásokat, és hogyan hozzáférni ezekhez az erőforrásokhoz (például a hitelesítő adatok frissítése a biztonsági mentés beállításait a kijelölt adatbázis) változásainak. Biztonsági másolatokat jellemzően egy ütemezés szerint fut és hozzá kell férniük (az ad ki a biztonságimásolat-fájlok) tárolási és adatbázis (a másolás és a biztonsági mentés foglalandó olvasásakor). A sikertelen vagy ezek az erőforrások eléréséhez az eredmény alkalmazáskonzisztens biztonsági mentés sikertelen lenne. 
+## <a name="appbackup"></a>Ha az alkalmazás biztonsági mentése meghiúsul
+A két leggyakoribb ok, amiért az alkalmazás biztonsági mentése meghiúsul: érvénytelen tárolási beállítások és érvénytelen adatbázis-konfiguráció. Ezek a hibák általában akkor fordulnak elő, ha módosulnak a tárolási vagy adatbázis-erőforrások, illetve az ilyen erőforrások elérésének módosításai (például a biztonsági mentési beállításokban kiválasztott adatbázishoz tartozó hitelesítő adatok). A biztonsági mentések jellemzően ütemezés szerint futnak, és hozzáférést igényelnek a tárolóhoz (a mentett fájlok kivonásához) és az adatbázisokhoz (a biztonsági mentésbe foglalandó tartalmak másolásához és olvasásához). Az ilyen erőforrások elérésének meghiúsulása konzisztens biztonsági mentési hibát eredményezhet. 
 
-Biztonsági mentési hibák esetén tekintse át a legutóbbi eredményeket, hogy milyen típusú hiba történik. A tároló-hozzáférési hiba tekintse át, és a biztonsági mentési konfigurációban használt tárolási beállításainak frissítése. Adatbázis-hozzáférési hibák tekintse át és Alkalmazásbeállítások; részeként a kapcsolatok karakterláncok frissítése Ezután folytassa a megfelelő tartalmazza a szükséges adatbázisokat a biztonsági mentési konfiguráció frissítése. Alkalmazás biztonsági mentések további információkért lásd: [biztonsági mentése az Azure App Service webalkalmazás](manage-backup.md).
+Ha a biztonsági mentési hibák történnek, tekintse át a legutóbbi eredmények listáját, és Ismerje meg, hogy milyen típusú hiba történik. A tárolási hozzáférési hibák esetében tekintse át és frissítse a biztonsági mentési konfigurációban használt tárolási beállításokat. Adatbázis-hozzáférési hibák esetén tekintse át és frissítse a kapcsolatok karakterláncait az Alkalmazásbeállítások részeként; Ezután folytassa a biztonsági mentési konfiguráció frissítésével, hogy megfelelően tartalmazza a szükséges adatbázisokat. Az alkalmazások biztonsági mentésével kapcsolatos további információkért lásd: [webalkalmazás biztonsági](manage-backup.md)mentése Azure app Serviceban.
 
-## <a name="nodejs"></a>Amikor új Node.js-alkalmazások vannak telepítve az Azure App Service-ben
-Node.js-alkalmazások az Azure App Service alapértelmezett konfigurációjának célja igény szerint a leggyakrabban használt alkalmazások igényeinek. Ha a Node.js-alkalmazás konfigurációja előnyös a teljesítmény javítása vagy a CPU/memória/hálózati erőforrások erőforrás-használat optimalizálása érdekében tekintse meg a személyre szabott hangolása [ajánlott eljárások és hibaelhárítási útmutató csomópont-alkalmazásokhoz az Azure-alkalmazás Szolgáltatás](app-service-web-nodejs-best-practices-and-troubleshoot-guide.md). Ez a cikk az iisnode-beállításait, előfordulhat, hogy konfigurálnia kell a Node.js-alkalmazás, ez a témakör a különböző vagy az, hogy az alkalmazás lehetséges, hogy legyen elérhető, és bemutatja, hogyan kezelheti ezeket a problémákat ismerteti.
+## <a name="nodejs"></a>Új Node. js-alkalmazások telepítésekor Azure App Service
+A Node. js-alkalmazások alapértelmezett konfigurációja Azure App Service a leggyakoribb alkalmazások igényeinek legmegfelelőbb. Ha a Node. js-alkalmazás konfigurációja a személyre szabott hangolás előnyeit kihasználva javítja a teljesítményt vagy optimalizálja a CPU/memória/hálózati erőforrások erőforrás-felhasználását, tekintse [meg az ajánlott eljárásokat és a hibaelhárítási útmutatót a Node-alkalmazásokhoz a Azure app Service](app-service-web-nodejs-best-practices-and-troubleshoot-guide.md). Ez a cikk a Node. js-alkalmazás konfigurálásához szükséges iisnode-beállításokat ismerteti, ismerteti az alkalmazás által megtekinthető különböző forgatókönyveket vagy problémákat, és bemutatja, hogyan kezelheti ezeket a problémákat.
 

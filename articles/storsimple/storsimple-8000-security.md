@@ -1,6 +1,6 @@
 ---
-title: A StorSimple 8000 sorozat biztonsági |} A Microsoft Docs
-description: Ismerteti a biztonság és adatvédelem a StorSimple szolgáltatás, az eszköz és a helyszíni és felhőbeli adatok védelmére.
+title: StorSimple 8000 sorozatú biztonság | Microsoft Docs
+description: Ismerteti azokat a biztonsági és adatvédelmi funkciókat, amelyek védik a StorSimple szolgáltatást, az eszközt és az adatokat a helyszínen és a felhőben.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,276 +14,278 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/18/2018
 ms.author: alkohli
-ms.openlocfilehash: 734b0cf9373ea98ab33c06b45ad53b46a3355dd6
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 31c432b884ce92c508dd7f893c12ba13acff28e8
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976018"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68963518"
 ---
-# <a name="storsimple-security-and-data-protection"></a>A StorSimple biztonsági és adatvédelmi
+# <a name="storsimple-security-and-data-protection"></a>StorSimple biztonság és adatvédelem
+
+[!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
 ## <a name="overview"></a>Áttekintés
 
-Bárki, aki bevezetni új technológia, különösen akkor, ha a technológiát a bizalmas vagy szellemi tulajdont képező adatokat használatos fő szempont. Mivel kiértékelni a különböző technológiák, meg kell fontolnia, megnövekedett kockázata és költsége adatainak védelme. A Microsoft Azure StorSimple biztosít a biztonsági és adatvédelmi megoldás is adatvédelmet biztosít, annak biztosításához:
+A biztonság fontos szempont mindazok számára, akik új technológiákat fogadnak el, különösen akkor, ha a technológiát bizalmas vagy tulajdonosi adatokkal használják. A különböző technológiák kiértékelése során nagyobb kockázatokat és költségeket kell figyelembe vennie az adatvédelem terén. A Microsoft Azure StorSimple biztonsági és adatvédelmi megoldást is biztosít az adatvédelem érdekében, így biztosítva a következőket:
 
-* **Bizalmas** – csak az arra jogosult személyek is megtekintheti az adatokat.
-* **Integritás** – csak arra jogosult személyek módosíthatják vagy törölhetik az adatokat.
+* **Bizalmas** – csak a jogosultsággal rendelkező entitások tekinthetik meg az adatait.
+* **Integritás** – csak az illetékes entitások módosíthatják vagy törölhetik az adataikat.
 
-A Microsoft Azure StorSimple megoldás egymással kommunikáló négy fő összetevőből áll:
+A Microsoft Azure StorSimple megoldás négy fő összetevőből áll, amelyek egymással együttműködnek:
 
-* **StorSimple-Eszközkezelő szolgáltatás a Microsoft Azure-ban üzemeltetett** – a felügyeleti szolgáltatás, amellyel konfigurálhatja és a StorSimple-eszköz kiépítése.
-* **StorSimple-eszköz** – a helyi adatközpontban telepített fizikai eszközt. Összes gazdagép és az ügyfelek adatokat generáló kapcsolódni a StorSimple-eszköz, és az eszköz kezeli az adatokat, és áthelyezi az Azure-felhő megfelelő módon.
-* **Az eszközhöz csatlakoztatott ügyfelek /-gazdagépekre** – az ügyfelek az infrastruktúra, amely a StorSimple-eszköz csatlakozik, és a védendő adatok létrehozására.
+* **StorSimple Eszközkezelő a Microsoft Azure üzemeltetett szolgáltatás** – a StorSimple-eszköz konfigurálásához és üzembe helyezéséhez használt felügyeleti szolgáltatás.
+* **StorSimple-eszköz** – az adatközpontba telepített fizikai eszköz. Minden olyan gazdagép és ügyfél, amely a StorSimple-eszközhöz csatlakozik, és az eszköz felügyeli az adatátvitelt, és szükség szerint áthelyezi az Azure-felhőbe.
+* **Az eszközhöz csatlakozó ügyfelek/gazdagépek** – az infrastruktúrában található azon ügyfelek, amelyek a StorSimple-eszközhöz csatlakoznak, és amelyek a védeni kívánt adatszolgáltatásokat eredményezik.
 * **Felhőalapú tároló** – a hely az Azure-felhőben, ahol az adatok tárolása történik.
 
-A következő szakaszok ismertetik a StorSimple biztonsági funkciók, amelyek az egyes összetevők és a rajtuk tárolt adatok védelme érdekében. Az esetleges Microsoft Azure StorSimple biztonsági és a hozzájuk tartozó válaszok kapcsolatos kérdések listáját is tartalmazza.
+A következő szakaszok ismertetik a StorSimple biztonsági funkcióit, amelyek segítenek az egyes összetevők és a rajtuk tárolt adataik védelmében. Emellett tartalmazza a Microsoft Azure StorSimple biztonsággal kapcsolatos kérdések listáját, valamint a hozzájuk tartozó válaszokat.
 
-## <a name="storsimple-device-manager-service-protection"></a>StorSimple-Eszközkezelő szolgáltatás védelme
+## <a name="storsimple-device-manager-service-protection"></a>StorSimple Eszközkezelő szolgáltatás védelme
 
-A StorSimple-Eszközkezelő szolgáltatásban a felügyeleti szolgáltatás a Microsoft Azure-ban üzemeltetett, és minden a StorSimple-eszköz, amely a szervezet közvetített kezelhetők. A StorSimple-Eszközkezelő szolgáltatás hozzáférhet a szervezeti hitelesítő adataival bejelentkezni az Azure Portalon egy webböngészőn keresztül.
+A StorSimple Eszközkezelő szolgáltatás egy Microsoft Azure üzemeltetett felügyeleti szolgáltatás, amely a szervezet által beszerzett összes StorSimple kezelésére szolgál. A StorSimple Eszközkezelő szolgáltatást a szervezeti hitelesítő adataival érheti el, hogy webböngészőn keresztül jelentkezzen be a Azure Portalba.
 
-A StorSimple-Eszközkezelő szolgáltatáshoz való hozzáférés szükséges, hogy a szervezet rendelkezik-e az Azure-előfizetéssel, amely magában foglalja a StorSimple. Az előfizetés szabályozza, hogy az Azure Portal mely szolgáltatásai érhetők el. Ha a szervezet nem rendelkezik Azure-előfizetéssel, és ha szeretne további információkat olvashat, lásd: [Azure-előfizetésre regisztrál](../active-directory/fundamentals/sign-up-organization.md).
+A StorSimple Eszközkezelő szolgáltatáshoz való hozzáféréshez a szervezetnek rendelkeznie kell egy Azure-előfizetéssel, amely tartalmazza a StorSimple. Az előfizetés szabályozza, hogy az Azure Portal mely szolgáltatásai érhetők el. Ha a szervezet nem rendelkezik Azure-előfizetéssel, és többet szeretne megtudni róluk, tekintse meg [a regisztráció az Azure](../active-directory/fundamentals/sign-up-organization.md)-ra szervezetként című témakört.
 
-A StorSimple-Eszközkezelő szolgáltatás az Azure-ban üzemel, mert védi az Azure biztonsági szolgáltatásait. A Microsoft Azure által biztosított biztonsági funkciókról a [Microsoft Azure biztonsági és adatkezelési központban](https://azure.microsoft.com/support/trust-center/security/) talál további információt.
+Mivel a StorSimple Eszközkezelő szolgáltatás az Azure-ban fut, az Azure biztonsági funkciói védik. A Microsoft Azure által biztosított biztonsági funkciókról a [Microsoft Azure biztonsági és adatkezelési központban](https://azure.microsoft.com/support/trust-center/security/) talál további információt.
 
-## <a name="storsimple-device-protection"></a>A StorSimple eszköz védelme
+## <a name="storsimple-device-protection"></a>StorSimple-eszközök védelme
 
-A StorSimple-eszköz azonban egy helyszíni hibrid tárolóeszköz, amely tartalmazza a tartós állapotú meghajtókkal (SSD-kkel) és a merevlemezes (HDD) meghajtók, redundáns vezérlőket és automatikus feladatátvételi funkciókat együtt. A tartományvezérlők kezelheti a tárolási rétegek, elhelyezése jelenleg használt (vagy forró) adatokat a helyi tárolóban (a StorSimple eszköz vagy a helyszíni kiszolgálók) ritkábban használt adatok a felhőbe való áthelyezés közben.
+A StorSimple-eszköz egy helyszíni hibrid tárolóeszköz, amely SSD-ket és merevlemez-meghajtókat (HDD-ket) tartalmaz, redundáns vezérlőkkel és automatikus feladatátvételi képességekkel együtt. A vezérlők a tárolási rétegek kezelését, a jelenleg használt (vagy forró) adatok helyi tárolón való elhelyezését (a StorSimple-eszközön vagy a helyszíni kiszolgálókon) a ritkábban használt adatok felhőbe való áthelyezésével kezelik.
 
-Csak a hitelesített eszközök férhessenek hozzá a StorSimple-Eszközkezelő szolgáltatás Azure-előfizetésében létrehozott csatlakozni a StorSimple. Egy eszköz hitelesítéséhez, regisztrálnia kell azt a StorSimple-Eszközkezelő szolgáltatással azáltal, hogy a szolgáltatás regisztrációs kulcsát. A szolgáltatás regisztrációs kulcsával az Azure Portalon létrehozott 128 bit véletlenszerű kulcsot.
+Csak a jogosult StorSimple-eszközök csatlakozhatnak az Azure-előfizetésében létrehozott StorSimple Eszközkezelő szolgáltatáshoz. Az eszköz engedélyezéséhez regisztrálnia kell a StorSimple Eszközkezelő szolgáltatással a szolgáltatás regisztrációs kulcsának megadásával. A szolgáltatás regisztrációs kulcsa a Azure Portal generált, 128 bites véletlenszerű kulcs.
 
-![Szolgáltatásregisztrációs kulcs](./media/storsimple-security/ServiceRegistrationKey.png)
+![Szolgáltatás regisztrációs kulcsa](./media/storsimple-security/ServiceRegistrationKey.png)
 
-Megtudhatja, hogyan a Szolgáltatásregisztrációs kulcs, lépjen be [2. lépés: A Szolgáltatásregisztrációs kulcs lekérése](storsimple-8000-deployment-walkthrough-u2.md#step-2-get-the-service-registration-key).
+A szolgáltatás regisztrációs kulcsának beszerzéséről további információt a [2. lépés: Szerezze be a szolgáltatás regisztrációs](storsimple-8000-deployment-walkthrough-u2.md#step-2-get-the-service-registration-key)kulcsát.
 
-A szolgáltatás regisztrációs kulcsával egy hosszú kulcs több mint 100 karakternél. Másolja a kulcsot, és mentse azt biztonságos helyre a fájlt, hogy történő hitelesítéséhez szükséges további eszközöket használhatja. Ha a szolgáltatás regisztrációs kulcsát a jelszó elvesztése esetén az első eszköz regisztrálása után létrehozhat egy új kulcsot a StorSimple-Eszközkezelő szolgáltatás. Ez nem érinti a meglévő eszközök működését.
+A szolgáltatás regisztrációs kulcsa egy olyan hosszú kulcs, amely 100 karakterből álló karaktert tartalmaz. Másolja a kulcsot, és mentse egy szövegfájlba egy biztonságos helyen, így szükség esetén további eszközöket is engedélyezhet. Ha a szolgáltatás regisztrációs kulcsa elveszett az első eszköz regisztrálása után, létrehozhat egy új kulcsot a StorSimple Eszközkezelő szolgáltatásból. Ez nem befolyásolja a meglévő eszközök működését.
 
-Eszköz regisztrálása után jogkivonatok használatával kommunikálni a Microsoft Azure. A Szolgáltatásregisztrációs kulcsot nem használja az eszköz regisztrálása után.
+Az eszközök regisztrálását követően a tokenek használatával kommunikál a Microsoft Azureokkal. A szolgáltatás regisztrációs kulcsát a rendszer nem használja az eszköz regisztrálása után.
 
 > [!NOTE]
-> Azt javasoljuk, hogy minden használat után a szolgáltatás regisztrációs kulcsának újragenerálása.
+> Javasoljuk, hogy minden használat után újra létrehozza a szolgáltatás regisztrációs kulcsát.
 
 
-## <a name="protect-your-storsimple-solution-via-passwords"></a>A StorSimple megoldás a jelszavak védelme
+## <a name="protect-your-storsimple-solution-via-passwords"></a>A StorSimple-megoldás jelszavas védelemmel való ellátása
 
-Jelszavak fontos szempont a számítógép biztonsági és széles körben a StorSimple-megoldásban érdekében győződjön meg arról, hogy az adatok csak a jogosult felhasználók számára is elérhető. A StorSimple lehetővé teszi a következő jelszavak beállítása:
+A jelszavak fontos részét képezik a számítógép biztonságának, és széles körben használhatók a StorSimple-megoldásban, így biztosítva, hogy az adatai csak a jogosult felhasználók számára legyenek elérhetők. A StorSimple lehetővé teszi a következő jelszavak konfigurálását:
 
-* A StorSimple eszköz rendszergazdai jelszava
-* Ellenőrző kérdés Handshake Authentication Protocol (CHAP) kezdeményező és a célként megadott jelszavak
+* StorSimple-eszköz rendszergazdai jelszava
+* Challenge Handshake Authentication Protocol (CHAP) kezdeményező és megcélzott jelszavak
 * StorSimple Snapshot Manager jelszava
 
-### <a name="windows-powershell-for-storsimple-and-the-storsimple-device-administrator-password"></a>Windows PowerShell a StorSimple és a StorSimple eszköz rendszergazdai jelszava
+### <a name="windows-powershell-for-storsimple-and-the-storsimple-device-administrator-password"></a>Windows PowerShell StorSimple-bővítménye és a StorSimple-eszköz rendszergazdai jelszava
 
-Windows PowerShell-bővítménye olyan parancssori felületet, amelyek segítségével kezelheti a StorSimple-eszköz. Storsimple-höz készült Windows PowerShell funkcióval rendelkezik, amelyeket lehetővé teszi, hogy regisztrálja az eszközt, az eszköz a hálózati adapter konfigurálásához, bizonyos típusú frissítések telepítése, az eszköz hibaelhárítása a támogatási munkamenet elérésével, és módosítsa az eszköz állapotát. Storsimple-höz készült Windows PowerShell hozzáférhetnek, az az eszköz soros konzoljához való csatlakozással, vagy a Windows PowerShell-távelérés használatával.
+A Windows PowerShell StorSimple-bővítménye egy parancssori felület, amely a StorSimple-eszköz felügyeletére használható. Windows PowerShell StorSimple-bővítménye rendelkezik olyan funkciókkal, amelyek lehetővé teszik az eszköz regisztrálását, a hálózati adapter konfigurálását az eszközön, bizonyos típusú frissítések telepítését, az eszköz hibakeresését a támogatási munkamenet elérésével, valamint az eszköz állapotának módosítását. Windows PowerShell StorSimple-bővítménye eléréséhez csatlakozzon az eszköz soros konzolján vagy a Windows PowerShell távelérési szolgáltatásával.
 
-PowerShell távoli eljáráshívás HTTPS vagy HTTP keresztül teheti meg. Ha engedélyezve van a Rendszerfelügyeleti webszolgáltatások HTTPS protokollon, szüksége lesz a távfelügyeleti tanúsítvány letöltéséhez az eszközről, és telepítse azt a távoli ügyfélhez. PowerShell-táveléréssel kapcsolatos további információkért látogasson el [távolról csatlakozhat a StorSimple-eszköz](storsimple-8000-remote-connect.md).
+A PowerShell-távelérés HTTPS-vagy HTTP-kapcsolaton keresztül is elvégezhető. Ha engedélyezve van a Távoli felügyelet a HTTPS protokollon keresztül, akkor le kell töltenie a távfelügyeleti tanúsítványt az eszközről, és telepítenie kell a távoli ügyfélre. A PowerShell távelérési szolgáltatásával kapcsolatos további információkért nyissa meg a [távoli kapcsolódás a StorSimple](storsimple-8000-remote-connect.md)-eszközhöz című témakört.
 
-Miután a storsimple-höz készült Windows PowerShell segítségével csatlakozni az eszközhöz, szüksége lesz adja meg, jelentkezzen be az eszközt, az eszköz rendszergazdai jelszava.
+Miután a Windows PowerShell StorSimple-bővítménye használatával csatlakozik az eszközhöz, meg kell adnia az eszköz rendszergazdai jelszavát az eszközre való bejelentkezéshez.
 
 ![Az eszköz rendszergazdai jelszava](./media/storsimple-security/DeviceAdminPW.png)
 
-Tartsa szem előtt az alábbi gyakorlati tanácsokat:
+Tartsa szem előtt az alábbi ajánlott eljárásokat:
 
-* Távfelügyelet alapértelmezés szerint ki van kapcsolva. A StorSimple-Eszközkezelő szolgáltatás használatával engedélyezheti. Bevált biztonsági gyakorlat csak a ténylegesen szükséges idő alatt közben távelérési engedélyezni kell.
-* Ha megváltoztatja a jelszót, mindenképpen az összes távelérési a felhasználók értesítése, hogy azok nem tapasztalnak egy váratlan kapcsolat megszakadását.
-* A StorSimple-Eszközkezelő szolgáltatás nem tudja beolvasni a már meglévő jelszavai: Ez csak alaphelyzetbe állíthatja őket. Azt javasoljuk, hogy minden jelszót biztonságos helyen tárolja el, így jelszó alaphelyzetbe állítása, ha elfelejti, nem kell. Ha szeretné állítani a jelszót, mindenképpen azt alaphelyzetbe állítása előtt az összes felhasználó értesítése.
+* A távfelügyelet alapértelmezés szerint ki van kapcsolva. A StorSimple Eszközkezelő szolgáltatás használatával engedélyezheti. Ajánlott biztonsági eljárásként a távelérést csak a ténylegesen szükséges időszakban kell engedélyezni.
+* Ha megváltoztatja a jelszót, ügyeljen arra, hogy tájékoztassa az összes távelérési felhasználót, hogy ne tapasztaljon váratlan kapcsolati adatvesztést.
+* A StorSimple Eszközkezelő szolgáltatás nem tudja beolvasni a meglévő jelszavakat: csak azokat állíthatja alaphelyzetbe. Javasoljuk, hogy az összes jelszót biztonságos helyen tárolja, hogy ne kelljen alaphelyzetbe állítani a jelszót, ha elfelejtik. Ha a jelszó alaphelyzetbe állítására van szükség, mindenképpen az Alaphelyzetbe állítás előtt értesítse az összes felhasználót.
 
-A Windows PowerShell felületen elérheti az eszköz soros kapcsolat használatával. Emellett azt távolról használatával a HTTP vagy HTTPS, amely további biztonságot nyújtanak. HTTPS vagy egy soros, vagy a HTTP-kapcsolat-nál magasabb fokú biztonságot nyújt. Azonban HTTPS protokoll használatához először telepítenie kell egy tanúsítványt az ügyfélszámítógépen, amely hozzá fog férni az eszközhöz. A távelérés tanúsítványt tölthet le az eszköz konfigurációs lapján, a StorSimple-Eszközkezelő szolgáltatásban. Ha a tanúsítvány a távoli hozzáféréshez elveszett, le kell töltenie egy új tanúsítványt és azt, hogy a távoli felügyeleti használatára jogosult összes ügyfél való propagálása.
+A Windows PowerShell felületét soros kapcsolaton keresztül érheti el az eszközhöz. A távoli elérést HTTP vagy HTTPS használatával is elérheti, amely további biztonságot nyújt. A HTTPS magasabb szintű biztonságot nyújt, mint akár a soros, akár a HTTP-kapcsolat. A HTTPS használatához azonban először telepítenie kell egy olyan tanúsítványt az ügyfélszámítógépen, amely hozzáfér az eszközhöz. A távelérési tanúsítványt a StorSimple Eszközkezelő szolgáltatás eszköz konfigurációja lapjáról töltheti le. Ha a távelérési tanúsítvány elvész, le kell töltenie egy új tanúsítványt, és propagálni kell az összes olyan ügyfél számára, amely jogosult a Távoli felügyelet használatára.
 
-### <a name="challenge-handshake-authentication-protocol-chap-initiator-and-target-passwords"></a>Ellenőrző kérdés Handshake Authentication Protocol (CHAP) kezdeményező és a célként megadott jelszavak
+### <a name="challenge-handshake-authentication-protocol-chap-initiator-and-target-passwords"></a>Challenge Handshake Authentication Protocol (CHAP) kezdeményező és megcélzott jelszavak
 
-A CHAP protokoll egy távoli ügyfelek identitásának ellenőrzése a StorSimple-eszköz által használt hitelesítési sémával. Az ellenőrzés megosztott jelszó alapján történik. Lehet, hogy a CHAP egyirányú (egyirányú) vagy a kölcsönös (kétirányú). Az egyirányú CHAP a cél (a StorSimple-eszköz) hitelesíti egy kezdeményező (fogadó). Kölcsönös vagy fordított CHAP szükséges, hogy a cél a kezdeményező hitelesítéséhez és a kezdeményező hitelesítse a cél. A StorSimple beállítható úgy, hogy bármelyik módszerrel.
+A CHAP egy hitelesítési séma, amelyet a StorSimple-eszköz használ a távoli ügyfelek identitásának ellenőrzéséhez. Az ellenőrzés egy megosztott jelszón alapul. A CHAP egyirányú (egyirányú) vagy kölcsönös (kétirányú) lehet. Egyirányú CHAP esetén a cél (a StorSimple-eszköz) hitelesíti a kezdeményezőt (gazdagépet). A kölcsönös vagy fordított irányú CHAP megköveteli, hogy a cél hitelesítse a kezdeményezőt, majd a kezdeményező hitelesítse a célt. A StorSimple bármely metódus használatára konfigurálható.
 
-Vegye figyelembe a következőket, ha a CHAP konfigurálása:
+A CHAP konfigurálásakor ügyeljen a következőkre:
 
-* A CHAP-felhasználónév 233-nél kevesebb karaktert tartalmazhat.
-* A CHAP-jelszó 12 és 16 karakter között kell lennie. Próbál hosszabb felhasználónév vagy jelszó a Windows-állomás hitelesítési hibát eredményez.
-* A CHAP-kezdeményező és CHAP-cél nem használhatja ugyanazt a jelszót.
-* A jelszó beállítása után is módosítható, de nem lehet beolvasni. Ha a jelszó módosítása, mindenképpen az összes távoli hozzáférés a felhasználók értesítése, hogy azok sikeresen csatlakozott-e a StorSimple-eszköz.
+* A CHAP-Felhasználónév 233 karakternél rövidebbnek kell lennie.
+* A CHAP-jelszónak 12 és 16 karakter közöttinek kell lennie. Ha egy hosszú felhasználónevet vagy jelszót próbál használni, a rendszer hitelesítési hibát okoz a Windows-gazdagépen.
+* Nem használhatja ugyanazt a jelszót a CHAP-kezdeményező és a CHAP-cél esetében is.
+* A jelszó beállítása után módosítható, de nem kérhető le. Ha a jelszó módosul, ügyeljen arra, hogy minden távelérési felhasználót értesítse, hogy sikeresen csatlakozhassanak a StorSimple-eszközhöz.
 
-A CHAP és a StorSimple megoldás konfigurálásának kapcsolatos további információkért látogasson el [CHAP konfigurálása a StorSimple-eszköz](storsimple-8000-configure-chap.md).
+A CHAP és a StorSimple-megoldás konfigurálásával kapcsolatos további információkért lépjen a [CHAP konfigurálása a StorSimple](storsimple-8000-configure-chap.md)-eszközhöz című témakörre.
 
 ### <a name="storsimple-snapshot-manager-password"></a>StorSimple Snapshot Manager jelszava
 
-A StorSimple Snapshot Manager egy Microsoft Management Console (MMC) beépülő modulja által használt kötet csoportok és a Windows kötet árnyékmásolata szolgáltatás alkalmazásfüggő biztonsági másolatok létrehozásához. Emellett használhatja a StorSimple Snapshot Manager biztonsági mentési ütemezés és a klón létrehozásához, vagy kötetek visszaállítása.
+A StorSimple Snapshot Manager egy Microsoft Management Console (MMC) beépülő modul, amely mennyiségi csoportokat és a Windows Kötet árnyékmásolata szolgáltatást használja az alkalmazással konzisztens biztonsági másolatok létrehozásához. Emellett a StorSimple Snapshot Manager használatával biztonsági mentési ütemterveket hozhat létre, illetve klónozott vagy helyreállíthatja a köteteket.
 
-Konfigurál egy eszközt a StorSimple Snapshot Manager használata, ha szükséges, adja meg a StorSimple Snapshot Manager jelszavát. Ez a jelszó először be a Windows PowerShell storsimple-höz készült regisztrációja során. A jelszó is állítsa be, és a StorSimple-Eszközkezelő szolgáltatás megváltozott. Ez a jelszó hitelesíti az eszközt a StorSimple Snapshot Managerrel.
+Ha a StorSimple Snapshot Manager használatára konfigurálja az eszközt, meg kell adnia a StorSimple Snapshot Manager jelszavát. A regisztráció során a rendszer először a jelszót Windows PowerShell StorSimple-bővítménye állítja be. A jelszó beállítható és módosítható a StorSimple Eszközkezelő szolgáltatásból is. Ez a jelszó hitelesíti az eszközt az StorSimple Snapshot Manager használatával.
 
 ![StorSimple Snapshot Manager jelszava](./media/storsimple-security/SnapshotMgrPassword.png)
 
-A StorSimple Snapshot Manager jelszavát 14 – 15 karakter lehet, és 3 vagy több nagybetűket, kisbetűket, számjegyeket és speciális karakterek kombinációjából kell tartalmaznia. A StorSimple Snapshot Manager jelszavának beállítása után is módosítható, de nem lehet beolvasni. Ha megváltoztatja a jelszót, ügyeljen arra, értesítse az összes távoli felhasználót.
+A StorSimple Snapshot Manager jelszavának 14 és 15 karakter közöttinek kell lennie, és legalább 3 nagybetűt, kisbetűt, számot és speciális karaktert kell tartalmaznia. A StorSimple Snapshot Manager jelszavának beállítása után módosítható, de nem kérhető le. Ha megváltoztatja a jelszót, ügyeljen arra, hogy értesítse az összes távoli felhasználót.
 
-A StorSimple Snapshot Managerrel kapcsolatos további információkért lépjen [Mi az a StorSimple Snapshot Manager?](storsimple-what-is-snapshot-manager.md)
+További információ a StorSimple Snapshot Managerről: [What is StorSimple Snapshot Manager?](storsimple-what-is-snapshot-manager.md)
 
 ### <a name="password-best-practices"></a>Ajánlott eljárások a jelszavakhoz
 
-Javasoljuk, hogy érdekében győződjön meg arról, hogy a StorSimple-jelszavak erős és a magas szintű védelmet használja az alábbi irányelveket:
+Javasoljuk, hogy az alábbi irányelvek segítségével biztosítsa, hogy a StorSimple-jelszavak erősek és jól védettek legyenek:
 
-* A jelszavak háromhavonta módosítása A jelszavak módosítása a évente kényszerítve.
-* Használjon erős jelszavakat. További információért ugorjon [erősebb jelszót létrehozni, és azok védelme](https://cloudblogs.microsoft.com/microsoftsecure/2014/08/25/create-stronger-passwords-and-protect-them/).
-* Mindig használjon különböző jelszót eltérő hozzáférési mechanizmusok; a megadott jelszavak mindegyike egyedinek kell lennie.
-* Ne ossza meg jelszót bárki, aki nem jogosult a StorSimple eszköz elérésére.
-* Ne előadásokat elé mások jelszó és jelszó formátumát a mutatót.
-* Ha azt gyanítja, hogy egy fiók vagy a jelszó biztonsága sérült, az információk biztonsági részleg jelentéseket az incidens.
-* Minden jelszót gyökérkönyvtárral bizalmas, bizalmas információkat. 
+* Változtassa meg a jelszavait háromhavonta. A jelszavak módosítása évente érvénybe lép.
+* Használjon erős jelszavakat. További információért látogasson el [erősebb jelszavak létrehozására és](https://cloudblogs.microsoft.com/microsoftsecure/2014/08/25/create-stronger-passwords-and-protect-them/)a védelemre.
+* Mindig használjon különböző jelszavakat a különböző hozzáférési mechanizmusokhoz; a megadott jelszavak mindegyikének egyedinek kell lennie.
+* Ne ossza meg a jelszavakat bárkivel, aki nem jogosult a StorSimple-eszköz elérésére.
+* Ne beszéljen más jelszóról a mások előtt, vagy a jelszó formátuma.
+* Ha azt gyanítja, hogy a fiók vagy a jelszó biztonsága sérült, jelentse az incidenst az informatikai részlegnek.
+* Az összes jelszót bizalmasként, bizalmas információként kezelheti. 
 
-## <a name="storsimple-data-protection"></a>A StorSimple-adatok védelme
+## <a name="storsimple-data-protection"></a>StorSimple-adatvédelem
 
-Ez a szakasz ismerteti a StorSimple biztonsági funkciók, amelyek az átvitt adatokat és a tárolt adatok védelméhez.
+Ez a szakasz azokat a StorSimple biztonsági funkciókat ismerteti, amelyek védik az adatátviteli és tárolt adataikat.
 
-Ahogy további fejezeteiben bővebben ismertetjük, jelszavak felhasználók engedélyezése vagy hitelesítése előtt, hogy hozzáférhessenek a StorSimple megoldáshoz szolgálnak. Egy másik biztonsági szempont védi az adatokat a jogosulatlan felhasználók átvitel közben, akkor alatt tárolási rendszerek között, és amíg folyamatban van tárolva. A következő szakaszok ismertetik a StorSimple a megadott adatvédelmi funkciókat.
+A más szakaszokban leírtaknak megfelelően a jelszavak segítségével engedélyezheti és hitelesítheti a felhasználókat, mielőtt hozzá tudnak férni a StorSimple-megoldáshoz. Egy másik biztonsági szempont a jogosulatlan felhasználóktól érkező adatok védelme, miközben a tárolási rendszerek és a tárolás közben is átkerülnek. A következő szakaszok ismertetik a StorSimple által biztosított adatvédelmi funkciókat.
 
 > [!NOTE]
-> A deduplikáció a StorSimple eszközön, és a Microsoft Azure storage-ban tárolt adatok további védelmet biztosít. Ha a deduplikált adatok, az adatobjektumok tárolódnak a metaadatokból leképezéséhez és érheti el őket: nincs elérhető tárolási szintű környezet helyreállítani az adatokat, a kötetek szerkezete, a fájlrendszert vagy a fájl nevét.
+> A deduplikálás további védelmet biztosít a StorSimple-eszközön és a Microsoft Azure tárolóban tárolt információk számára. Az adatok deduplikálása esetén az adatobjektumok a leképezéshez és a hozzáféréshez használt metaadatoktól függetlenül tárolódnak: nincs rendelkezésre álló tárolási szintű környezet, amely a kötet struktúrája, a fájlrendszer vagy a fájlnév alapján újraépíti az adatokat.
 
 
-## <a name="protect-data-flowing-through-the-service"></a>A szolgáltatás áthaladó adatok védelme
+## <a name="protect-data-flowing-through-the-service"></a>A szolgáltatáson keresztül áramló forgalom védelme
 
-A StorSimple-Eszközkezelő szolgáltatás elsődleges célja, hogy kezelheti és konfigurálhatja a StorSimple-eszköz. A StorSimple-Eszközkezelő szolgáltatás fut a Microsoft Azure-ban. Az Azure portal használatával adja meg az eszköz konfigurációs adatokat, és ezután a Microsoft Azure használatával a StorSimple-Eszközkezelő szolgáltatás adatokat küld az eszköznek. A StorSimple a rendszer, aszimmetrikus kulcspárokat használatával biztosíthatja, hogy az Azure-szolgáltatás biztonságának sérülése nem eredményez tárolt információ-biztonság sérülését.
+A StorSimple Eszközkezelő szolgáltatás elsődleges célja a StorSimple-eszköz kezelése és konfigurálása. A StorSimple Eszközkezelő szolgáltatás Microsoft Azure fut. A Azure Portal használatával adhatja meg az eszköz konfigurációs beállításait, majd a Microsoft Azure a StorSimple Eszközkezelő szolgáltatás segítségével küldi el az adott eszközt az eszköznek. A StorSimple aszimmetrikus kulcspár rendszerét használja annak biztosítására, hogy az Azure-szolgáltatás sérülése ne veszélyeztesse a tárolt adatokat.
 
-![Továbbított adatok titkosítása](./media/storsimple-security/DataEncryption.png)
+![Adattitkosítás a Flight szolgáltatásban](./media/storsimple-security/DataEncryption.png)
 
-Az aszimmetrikus kulcs rendszer védi az adatokat, amelyek a szolgáltatás a következő végig:
+Az aszimmetrikus kulcsrendszer a következő módon segíti a szolgáltatáson keresztül átáramló adatvédelmet:
 
-1. Adatok titkosítási tanúsítvány, amely egy aszimmetrikus nyilvános és titkos kulcs pár jön létre az eszközön, valamint az adatok védelmére szolgál. A kulcsok akkor jönnek létre, amikor az első eszköz regisztrálva van.
-2. Az adatok titkosítási tanúsítvány kulcsait a szolgáltatásadat-titkosítási kulcs, amely által az első eszköz regisztrációja során véletlenszerűen generált erős 128 bites kulcs által védett fájllá személyes információcsere (.pfx) exportálása.
-3. A tanúsítvány nyilvános kulcsa biztonságosan elérhető a StorSimple-Eszközkezelő szolgáltatásban, és a titkos kulcs az eszközön maradnak.
-4. A szolgáltatás adat titkosítása a nyilvános kulcs és visszafejtése a titkos kulcs az eszközön tárolt annak biztosítása, hogy az Azure-szolgáltatás nem tudja visszafejteni a adatforgalmát az eszközön.
+1. Az eszközön egy aszimmetrikus nyilvános és titkos kulcspárt használó adattitkosítási tanúsítvány jön létre, és az adatvédelemre szolgál. A kulcsok akkor jönnek létre, amikor az első eszköz regisztrálva van.
+2. Az adattitkosítási tanúsítvány kulcsait a szolgáltatás adattitkosítási kulcsa által védett személyes információcsere (. pfx) fájlba exportálja, amely egy erős 128 bites kulcs, amelyet az első eszköz véletlenszerűen generál a regisztráció során.
+3. A tanúsítvány nyilvános kulcsa biztonságosan elérhetővé válik a StorSimple Eszközkezelő szolgáltatás számára, és a titkos kulcs az eszközön marad.
+4. A szolgáltatásba beérkező adatokat a rendszer a nyilvános kulccsal titkosítja, és visszafejti az eszközön tárolt titkos kulccsal, így biztosítva, hogy az Azure szolgáltatás nem tudja visszafejteni az eszközre áramló adatokat.
 
-A szolgáltatásadat-titkosítási kulcs jön létre a csak az első eszköz regisztrálva a szolgáltatásban. A szolgáltatásban regisztrált összes ezt követő eszközök kell használnia az azonos szolgáltatásadat-titkosítási kulcs.
+A szolgáltatásban tárolt adattitkosítási kulcs csak a szolgáltatásban regisztrált első eszközön jön létre. A szolgáltatásban regisztrált összes további eszköznek ugyanazt a szolgáltatási adattitkosítási kulcsot kell használnia.
 
 > [!IMPORTANT]
-> Nagyon fontos másolatot készít a szolgáltatásadat-titkosítási kulcsot, és mentse azt egy biztonságos helyre. A szolgáltatásadat-titkosítási kulcs biztonsági másolatának oly módon, hogy egy arra jogosult személy is elérhető lesz, és az eszköz-rendszergazdai egyszerűen továbbítani kell tárolni.
+> Nagyon fontos, hogy készítsen másolatot a szolgáltatásban tárolt adattitkosítási kulcsról, és mentse biztonságos helyre. A szolgáltatásban tárolt adattitkosítási kulcs másolatát úgy kell tárolni, hogy egy jogosult személy hozzáférhessen, és könnyen kommunikálni tudjon az eszköz rendszergazdájával.
 > 
-> A szolgáltatásadat-titkosítási kulcs elveszne, ha a Microsoft támogatási szolgálatnak segítségével is lekérheti azt, feltéve, hogy legalább egy eszköz online állapotban van. Azt javasoljuk, hogy a szolgáltatásadat-titkosítási kulcs módosítása után lekéri azt.
+> Ha a szolgáltatás adattitkosítási kulcsa elvész, a Microsoft támogatási szolgálata segítséget nyújthat annak lekéréséhez, hogy legalább egy eszköz online állapotban van. Azt javasoljuk, hogy a lekérést követően módosítsa a szolgáltatás adattitkosítási kulcsát.
 
-A szolgáltatásadat-titkosítási kulcs és a megfelelő adatok titkosítási tanúsítvány megváltoztatásához kövesse [módosítani a szolgáltatásadat-titkosítási kulcsot a StorSimple-Eszközkezelő szolgáltatás](storsimple-8000-manage-service.md#change-the-service-data-encryption-key). A titkosítási kulcsok megváltoztatása megköveteli, hogy minden eszköz frissíteni kell-e az új kulccsal. Ezért azt javasoljuk, módosíthatja a kulcsot, ha az összes eszköz online állapotban. Ha az eszköz offline állapotban, a kulcsok egy másik időpontra is módosítható. Az elavult kulccsal rendelkező eszközök továbbra is képesek készüljön biztonsági mentés lesznek, de nem lesz a kulcs frissül, amíg az adatok helyreállítását.
+A szolgáltatás adattitkosítási kulcsának és a megfelelő adattitkosítási tanúsítványnak a módosításához kövesse a [StorSimple Eszközkezelő szolgáltatás adattitkosítási kulcsának módosítása című szakasz](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)lépéseit. A titkosítási kulcsok módosítása megköveteli, hogy minden eszköz frissítve legyen az új kulccsal. Ezért azt javasoljuk, hogy módosítsa a kulcsot, ha az összes eszköz online állapotban van. Ha az eszközök offline állapotban vannak, a kulcsaik más időpontban is megváltoztathatók. Az elavult kulccsal rendelkező eszközök továbbra is futtathatják a biztonsági mentéseket, de nem tudják visszaállítani az adatokat, amíg a kulcs nem frissül.
 
-A szolgáltatásadat-titkosítási kulcsot, és az adatok titkosítási tanúsítvány nem jár le. Azt javasoljuk azonban, hogy módosította-e a szolgáltatásadat-titkosítási kulcs évente, hogy megakadályozza a kulcs biztonsága sérült.
+A szolgáltatásban tárolt adattitkosítási kulcs és az adattitkosítási tanúsítvány nem jár le. Azt javasoljuk azonban, hogy évente módosítsa a szolgáltatás adattitkosítási kulcsát, hogy elkerülje a kulcsfontosságú adatsérülést.
 
-## <a name="protect-data-at-rest"></a>Inaktív adatok védelme
+## <a name="protect-data-at-rest"></a>Adatok védelme nyugalmi állapotban
 
-A StorSimple-eszköz helyileg és a felhőben, attól függően, a használat gyakorisága, tárolja őket szinten kezeli az adatokat. Az összes olyan gazdagépeken, amelyek az eszköz csatlakozik az eszköz, amely adatokat helyez át a felhőbe, szükség szerint történő adatküldéshez. Az átvitt adatok az eszközről a felhőbe biztonságos az interneten keresztül. Minden eszközhöz tartozik egy iSCSI-tároló, amely elérhetővé teszi az összes megosztott kötetek ezen az eszközön. Összes adat titkosítva van a felhőbeli tárhelyén való továbbítás előtt. 
+A StorSimple-eszköz a használat gyakorisága alapján helyi és Felhőbeli szinten tárolja az adatkezelést. Az eszközhöz csatlakozó összes gazdagép az eszközre küldi az adatküldést, majd szükség szerint áthelyezi az adatátvitelt a felhőbe. Az adatok átvitele az eszközről a felhőbe biztonságos módon történik az interneten keresztül. Minden eszköz egyetlen iSCSI-tárolóval rendelkezik, amely az adott eszközön lévő összes megosztott kötetet felfedi. A rendszer minden adattitkosítást elküld a Felhőbeli tárolóba. 
 
-![felhőalapú tárolás titkosítási kulcsa](./media/storsimple-security/CloudStorageEncryption.png)
+![Felhőbeli tárolás titkosítási kulcsa](./media/storsimple-security/CloudStorageEncryption.png)
 
-Biztonsági és a felhőben áthelyezett adatok integritásának biztosítása érdekében a StorSimple lehetővé teszi felhőalapú tárolás titkosítási kulcsok megadása a következő:
+A felhőbe áthelyezett adatok biztonságának és integritásának biztosításához a StorSimple lehetővé teszi a Felhőbeli tárolók titkosítási kulcsainak definiálását a következőképpen:
 
-* A felhőalapú tárolás titkosítási kulcsát adja meg, amikor hoz létre egy kötettárolót. A kulcs nem módosítható, és később hozzáadott.
-* A kötettároló összes kötet ugyanazt a titkosítási kulcsot használják. Ha azt szeretné, hogy a titkosítási egy meghatározott kötete esetében egy másik formája, azt javasoljuk, hogy hoz létre egy új kötettároló kötetet üzemeltetéséhez.
-* Amikor a felhőalapú tárolás titkosítási kulcsát a StorSimple-Eszközkezelő szolgáltatásban, a kulcs titkosítva van, a nyilvános részét a szolgáltatásadat-titkosítási kulcsot használja, és elküldi az eszköznek.
-* A felhőalapú tárolás titkosítási kulcsa nem tárolódik a szolgáltatásban, és csak az eszköz számára ismert.
-* A felhőalapú tárolás titkosítási kulcsa megadása nem kötelező. Az eszköz a gazdagépet a titkosított adatokat küldhet.
+* Mennyiségi tároló létrehozásakor a Felhőbeli tároló titkosítási kulcsát kell megadnia. A kulcs később nem módosítható és nem adható hozzá.
+* A kötet tárolójában lévő összes kötet ugyanazt a titkosítási kulcsot használja. Ha egy adott kötethez eltérő titkosítási formát szeretne használni, javasoljuk, hogy hozzon létre egy új mennyiségi tárolót a kötet üzemeltetéséhez.
+* Amikor megadja a Felhőbeli tároló titkosítási kulcsát a StorSimple Eszközkezelő szolgáltatásban, a kulcs titkosítása a szolgáltatás adattitkosítási kulcsának nyilvános részével történik, majd a rendszer elküldi az eszköznek.
+* A Felhőbeli tároló titkosítási kulcsát a szolgáltatás nem tárolja bárhol, és csak az eszköz ismeri.
+* A Felhőbeli tároló titkosítási kulcsának megadása nem kötelező. A gazdagépen titkosított olyan adatküldés, amely az eszközön található.
 
 ### <a name="additional-security-best-practices"></a>További ajánlott biztonsági eljárások
 
-* Felosztott forgalom: különítse el az iSCSI SAN érkező felhasználói forgalom egy vállalati hálózaton, és a egy teljesen elkülönített hálózatot és VLAN-OK használata, ahol fizikai elszigetelési lehetőség nem. Egy iSCSI-tároló esetén dedikált hálózati garantálja a biztonság és az üzleti szempontból kritikus fontosságú adatok teljesítményét. Tárolás és a felhasználói forgalom keverése vállalati helyi hálózaton keresztül nem javasolt és is növelheti a késést és hálózati hibákat okozhat.
-* A gazdagép-oldali hálózati biztonság érdekében használja a TCP/IP-tehermentesítés motor (TOE) támogató hálózati adaptereket. TOE CPU-terhelés csökkenti a hálózati adapteren TCP feldolgozása.
+* Felosztott forgalom: az iSCSI SAN-t a vállalati helyi hálózaton lévő felhasználói forgalom elkülönítésével egy teljesen elkülönített hálózat üzembe helyezésével és VLAN-ok használatával, ahol a fizikai elkülönítés nem választható. Az iSCSI-tárolók dedikált hálózata biztosítja az üzleti szempontból kritikus fontosságú adat biztonságát és teljesítményét. A tárolók és a felhasználói forgalom a vállalati helyi hálózaton keresztül történő keverése nem ajánlott, és növelheti a késést, és hálózati hibákat okozhat.
+* A gazdagép-oldali hálózati biztonság esetében használja a TCP/IP-kiszervezési motort (TOE) támogató hálózati adaptereket. A TOE csökkenti a CPU-terhelést a hálózati adapter TCP protokolljának feldolgozásával.
 
-## <a name="protect-data-via-storage-accounts"></a>Storage-fiókok keresztül adatok védelme
+## <a name="protect-data-via-storage-accounts"></a>Az adatvédelem a Storage-fiókok használatával
 
-Minden Microsoft Azure-előfizetés egy vagy több tárfiókot is létrehozhat. (A storage-fiók egy egyedi névteret biztosít az Azure-felhőben tárolt adatokkal folytatott munkához.) A tárfiókhoz való hozzáférést a storage-fiókhoz társított az előfizetés és a hozzáférési kulcsok vezérlik majd.
+Mindegyik Microsoft Azure-előfizetés létrehozhat egy vagy több Storage-fiókot. (A Storage-fiók egy egyedi névteret biztosít az Azure-felhőben tárolt adatkezeléshez.) A Storage-fiókhoz való hozzáférést az ehhez a Storage-fiókhoz társított előfizetés és hozzáférési kulcsok vezérlik.
 
-Amikor létrehoz egy tárfiókot, a Microsoft Azure két 512 bites tárelérési kulcsot, amelyek közül az egyik rendszer használja a hitelesítéshez, ha a StorSimple-eszköz hozzáfér a tárfiókhoz állít elő. Vegye figyelembe, hogy ezek a kulcsok csak az egyik használatban van. A másik hívóbetűt tárolt tartalék, amely lehetővé teszi a kulcsok rotálására rendszeres időközönként. Kulcsok rotálására, a másodlagos kulcsot aktívvá, és törölje az elsődleges kulcsot. Ezután létrehozhat egy új kulcsot használatra során a következő rotálásra. (Biztonsági okokból az adatközpontok számos szükséges kulcsrotálás.)
+A Storage-fiók létrehozásakor a Microsoft Azure 2 512 bites tárterület-hozzáférési kulcsokat hoz létre, amelyek közül az egyik a hitelesítéshez használatos, amikor a StorSimple-eszköz hozzáfér a Storage-fiókhoz. Vegye figyelembe, hogy a kulcsok közül csak az egyik használatban van. A másik kulcs a tartalékban van tárolva, így rendszeresen elforgathatja a kulcsokat. A kulcsok elforgatásához hajtsa végre a másodlagos kulcs aktív értékeit, majd törölje az elsődleges kulcsot. Ezután létrehozhat egy új kulcsot, amelyet a következő forgatás során használhat fel. (Biztonsági okokból számos adatközponthoz szükséges a kulcs elforgatása.)
 
-Javasoljuk, hogy kövesse az ajánlott eljárások kulcsrotálás:
+Javasoljuk, hogy kövesse az alábbi ajánlott eljárásokat a Key rotációhoz:
 
-* Tárfiókkulcsok rendszeresen annak érdekében, hogy a tárfiók nem érhető el a jogosulatlan felhasználók kell elforgatása.
-* Rendszeres időközönként az Azure-rendszergazda kell módosítani, vagy az elsődleges vagy másodlagos kulcsának újragenerálása: közvetlenül hozzáférni a tárfiókhoz a Storage szakaszban az Azure Portal használatával.
+* A Storage-fiók kulcsainak rendszeres elforgatásával biztosíthatja, hogy a Storage-fiók nem érhető el jogosulatlan felhasználók számára.
+* Az Azure-rendszergazdának rendszeresen módosítania kell vagy újra kell generálnia az elsődleges vagy másodlagos kulcsot a Azure Portal Storage szakaszának használatával, hogy közvetlenül hozzáférhessen a Storage-fiókhoz.
 
-## <a name="protect-data-via-encryption"></a>Titkosítási adatok védelme
+## <a name="protect-data-via-encryption"></a>Az adatvédelem titkosítás útján
 
-A StorSimple-ban tárolt adatok védelme érdekében a következő titkosítási algoritmusokat vagy utazás a StorSimple megoldás összetevői közötti használ.
+A StorSimple a következő titkosítási algoritmusokat használja a StorSimple-megoldás összetevői között tárolt vagy oda irányuló adatvédelemhez.
 
-| Algoritmus | Kulcshossz | Protokollok/applications/megjegyzések |
+| Algoritmus | Kulcs hossza | Protokollok/alkalmazások/megjegyzések |
 | --- | --- | --- |
-| RSA |2048 |RSA 1-PKCS 1.5-ös verzióját használják az Azure Portalon az eszközre elküldött konfigurációs adatok titkosítása: például tárolási fiók hitelesítő adatait, a StorSimple eszköz konfigurációs, és a felhőalapú tárolás titkosítási kulcsokat. |
-| AES |256 |AES-CBC segítségével titkosíthatja a szolgáltatásadat-titkosítási kulcs nyilvános részét, a StorSimple-eszközről az Azure Portalra való továbbítás előtt. Azt is használják a StorSimple-eszköz adatok titkosítása a felhős társzolgáltatás fiókjába az adatok elküldése előtt. |
+| RSA |2048 |Az RSA PKCS 1 v 1.5 eszközt a Azure Portal az eszközre továbbított konfigurációs adatok titkosítására használja: például a Storage-fiók hitelesítő adatait, a StorSimple és a Felhőbeli tárolás titkosítási kulcsait. |
+| AES |256 |Az AES és a CBC használatával titkosíthatja a szolgáltatás adattitkosítási kulcsának nyilvános részét, mielőtt elküldi a Azure Portalnak a StorSimple-eszközről. Azt is használja, hogy a StorSimple-eszköz titkosítsa az adatvédelmet, mielőtt a rendszer elküldte az adatátvitelt a felhőalapú Storage-fiókba. |
 
-## <a name="storsimple-cloud-appliance-security"></a>A StorSimple Cloud Appliance biztonsági
+## <a name="storsimple-cloud-appliance-security"></a>StorSimple Cloud Appliance biztonság
 
 [!INCLUDE [storsimple Cloud Appliance security](../../includes/storsimple-virtual-device-security.md)]
 
 ## <a name="managing-personal-information"></a>Személyes adatok kezelése
 
-A fizikai és virtuális Series StorSimple-Eszközkezelő gyűjt személyes adatokat a következő kulcs példányok:
+A fizikai és a virtuális adatsorozatok StorSimple Eszközkezelő a következő fő példányokban gyűjt személyes adatokat:
 
-- Riasztás, ahol a felhasználók e-mail-címe konfigurálva vannak-e a felhasználói beállításokat. Ez az információ is megtekinthető és nincs bejelölve, a rendszergazda által. Ez a StorSimple 8000 sorozatú eszközök és a StorSimple Virtual Arrayt vonatkozik.
-  * Megtekintheti, és törölje a beállításokat a StorSimple 8000 sorozat, kövesse a [megtekintése és kezelése a StorSimple-riasztások](storsimple-8000-manage-alerts.md#configure-alert-settings)
-  * Megtekintheti, és törölje a beállításokat a StorSimple Virtual Array, kövesse a [megtekintése és kezelése a StorSimple-riasztások](storsimple-virtual-array-manage-alerts.md#configure-alert-settings)
-- Felhasználók, akik férhet hozzá az adatokhoz, a megosztások elhelyezkedhet. Felhasználók férhetnek hozzá a megosztás adataihoz listája jelenik meg, és tekinthetnek meg. Ez a lista is törlődik. a megosztások törlésekor. Ez csak StorSimple Virtual Arrayt vonatkozik.
-  * Felhasználó, aki férhetnek hozzá, vagy törli a megosztást, kövesse a listájának megtekintéséhez [kezelése a StorSimple Virtual Array-megosztások](storsimple-virtual-array-manage-shares.md)
+- A riasztás felhasználói beállításai, ha a felhasználók e-mail-címe konfigurálva van. Ezeket az információkat a rendszergazda megtekintheti és törölheti. Ez a StorSimple 8000 sorozatú eszközökre és a StorSimple virtuális tömbökre is vonatkozik.
+  * A StorSimple 8000 sorozat beállításainak megtekintéséhez és törléséhez kövesse a StorSimple-riasztások [megtekintése és kezelése](storsimple-8000-manage-alerts.md#configure-alert-settings) című témakör lépéseit.
+  * A StorSimple virtuális tömb beállításainak megtekintéséhez és törléséhez kövesse a StorSimple-riasztások [megtekintése és kezelése](storsimple-virtual-array-manage-alerts.md#configure-alert-settings) című témakör lépéseit.
+- Azok a felhasználók, akik hozzáférhetnek a megosztásokon található adataihoz. Megjelenik a megjelenő megosztási adatelérést elérő felhasználók listája, és megtekinthető. Ezt a listát a megosztások törlésekor is törli a rendszer. Ez csak a StorSimple virtuális tömbökre vonatkozik.
+  * A megosztást elérő vagy törölni kívánt felhasználó listájának megtekintéséhez kövesse a [megosztások kezelése a StorSimple virtuális tömbben](storsimple-virtual-array-manage-shares.md) című témakör lépéseit.
 
 További információkért lásd a Microsoft szabályzatát a [biztonsági és adatkezelési központban](https://www.microsoft.com/trustcenter).
 
 ## <a name="frequently-asked-questions-faq"></a>Gyakori kérdések (GYIK)
 
-Az alábbi táblázat néhány kapcsolatos kérdéseket és válaszokat biztonsági és a Microsoft Azure storsimple szolgáltatásról.
+A következő kérdések és válaszok vannak a biztonsággal és a Microsoft Azure StorSimpleokkal kapcsolatban.
 
-**KÉRDÉS:** A szolgáltatás biztonsága sérül. Milyen kell összeállításának következő lépései?
+**K:** A szolgáltatás biztonsága sérült. Mi a következő lépés?
 
-**VÁLASZ:** Célszerű azonnal módosítani a szolgáltatásadat-titkosítási kulcs és a tárfiók kulcsait a rétegzési adatok használt tárfiók. Útmutatás Ugrás:
+**V:** Azonnal módosítania kell a szolgáltatás adattitkosítási kulcsát és a Storage-fiók kulcsait, amelyeket a rendszer a rétegek adatfeldolgozására használ. Útmutatásért keresse fel a következőt:
 
-* [A szolgáltatásadat-titkosítási kulcs módosítása](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
-* [A tárfiókok kulcsrotálás](storsimple-8000-manage-storage-accounts.md#key-rotation-of-storage-accounts)
+* [A szolgáltatásban tárolt adattitkosítási kulcs módosítása](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
+* [Storage-fiókok kulcsának rotációja](storsimple-8000-manage-storage-accounts.md#key-rotation-of-storage-accounts)
 
-**KÉRDÉS:** Van egy új StorSimple-eszköz, amely a szolgáltatás regisztrációs kulcsának kért. Hogyan azt beolvasása?
+**K:** Van egy új StorSimple-eszköz, amely a szolgáltatás regisztrációs kulcsát kéri. Hogyan beolvasni?
 
-**VÁLASZ:** Ezt a kulcsot a StorSimple-Eszközkezelő szolgáltatás első létrehozásakor lett létrehozva. A StorSimple-Eszközkezelő szolgáltatás használatával csatlakozni az eszközhöz, ha a szolgáltatás gyors üzembe helyezési oldal segítségével megtekintéséhez vagy a szolgáltatás regisztrációs kulcsának újragenerálása. Új szolgáltatás regisztrációs kulcsának generálása nem érinti a már regisztrált eszközök. Útmutatás Ugrás:
+**V:** Ez a kulcs akkor jött létre, amikor először hozta létre a StorSimple Eszközkezelő szolgáltatást. Ha a StorSimple Eszközkezelő szolgáltatást használja az eszközhöz való csatlakozáshoz, a szolgáltatás gyors üzembe helyezés lapján megtekintheti vagy újralétrehozhatja a szolgáltatás regisztrációs kulcsát. Az új szolgáltatás-regisztrációs kulcs létrehozása nem érinti a meglévő regisztrált eszközöket. Útmutatásért keresse fel a következőt:
 
-* [Megtekintheti, vagy a szolgáltatás regisztrációs kulcsának újragenerálása](storsimple-8000-manage-service.md##regenerate-the-service-registration-key)
+* [A szolgáltatás regisztrációs kulcsának megtekintése vagy újbóli előállítása](storsimple-8000-manage-service.md##regenerate-the-service-registration-key)
 
-**KÉRDÉS:** A szolgáltatásadat-titkosítási kulcs elvész. Mit tegyek?
+**K:** Elveszítettem a szolgáltatás adattitkosítási kulcsát. Mit tegyek?
 
-**VÁLASZ:** Vegye fel a kapcsolatot a Microsoft támogatási szolgálatával. Akkor is jelentkezzen be egy támogatási munkamenetet az eszközön, és segítséget lekérni a kulcsot (feltéve, hogy legalább egy eszköz online állapotban). A szolgáltatásadat-titkosítási kulcs beszerzéséhez után azonnal akkor kell megváltoztatnia, annak érdekében, hogy az új kulccsal csak Ön számára ismert. Útmutatás Ugrás:
+**V:** Forduljon a Microsoft támogatási szolgálatához. Bejelentkezhetnek egy támogatási munkamenetbe az eszközön, és segítséget nyújthatnak a kulcs lekéréséhez (legalább egy eszköz online állapotban van). A szolgáltatás adattitkosítási kulcsának beszerzése után azonnal meg kell változtatnia annak érdekében, hogy az új kulcs csak Ön számára legyen ismert. Útmutatásért keresse fel a következőt:
 
-* [A szolgáltatásadat-titkosítási kulcs módosítása](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
+* [A szolgáltatásban tárolt adattitkosítási kulcs módosítása](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
 
-**KÉRDÉS:**  Tudom a jogosult a szolgáltatási adatok titkosítási kulcs változásait egy eszközt, de a kulcsváltozás folyamat nem indult el. Mit tegyek?
+**K:**  A szolgáltatás adattitkosítási kulcsának módosítására engedélyt kapott egy eszköznek, de nem indította el a kulcs módosításának folyamatát. Mit tegyek?
 
-**VÁLASZ:** Ha az időkorlát lejárt, szüksége lesz a engedélyezze újra az eszközt a szolgáltatási adatok titkosítási kulcs módosítás, és indítsa újra a folyamatot.
+**V:** Ha az időkorlát lejárt, akkor újra kell engedélyeznie az eszközt a szolgáltatás adattitkosítási kulcsának módosításához, és újra kell indítania a folyamatot.
 
-**KÉRDÉS:**  A szolgáltatásadat-titkosítási kulcs módosítása, de a többi eszköz frissítése 4 órán belül nem tudta I. Kell újra elindítani?
+**K:**  Módosítottam a szolgáltatás adattitkosítási kulcsát, de 4 órán belül nem sikerült frissíteni a többi eszközt. Újra kell kezdeni?
 
-**VÁLASZ:** A 4 órás időszakon belül van csak a kezdeményezése a módosítást. A jogosult StorSimple eszközön a frissítési folyamat megkezdése után az engedélyezési akkor érvényes, addig, amíg az összes eszköz frissülnek.
+**V:** A 4 órás időszak csak a módosítás kezdeményezésére szolgál. Miután elindította a frissítési folyamatot a jogosult StorSimple-eszközön, az engedély érvényes, amíg az összes eszköz nem frissül.
 
-**KÉRDÉS:** A StorSimple-rendszergazdától elhagyta a vállalatot. Mit tegyek?
+**K:** A StorSimple rendszergazdája elhagyta a vállalatot. Mit tegyek?
 
-**VÁLASZ:** Módosítsa a jelszót, amely a StorSimple-eszközhöz való hozzáférés engedélyezése, és módosítani a szolgáltatásadat-titkosítási kulcs győződjön meg arról, hogy az új információk jogosulatlan személyek nem ismert. Útmutatás Ugrás:
+**V:** Módosítsa és állítsa alaphelyzetbe a StorSimple eszköz elérését engedélyező jelszavakat, és módosítsa a szolgáltatás adatainak titkosítási kulcsát, hogy az új információk nem ismertek legyenek a jogosulatlan személyek számára. Útmutatásért keresse fel a következőt:
 
-* [A StorSimple-Eszközkezelő szolgáltatás használata a storsimple-jelszavak módosítása](storsimple-8000-change-passwords.md)
-* [A szolgáltatásadat-titkosítási kulcs módosítása](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
-* [A CHAP konfigurálása a StorSimple eszköz](storsimple-8000-configure-chap.md)
+* [A StorSimple Eszközkezelő szolgáltatás használata a StorSimple jelszavának módosítására](storsimple-8000-change-passwords.md)
+* [A szolgáltatásban tárolt adattitkosítási kulcs módosítása](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
+* [A CHAP konfigurálása a StorSimple-eszközhöz](storsimple-8000-configure-chap.md)
 
-**KÉRDÉS:** Szeretnék megadni a StorSimple Snapshot Manager jelszavát egy gazdagépre, amely a StorSimple-eszköz csatlakozik, de a jelszó nem érhető el. Mi a teendő?
+**K:** Meg szeretném adni a StorSimple Snapshot Manager jelszót egy olyan gazdagéphez, amely csatlakozik a StorSimple-eszközhöz, de a jelszó nem érhető el. Mi a teendő?
 
-**VÁLASZ:** Ha elfelejtette a jelszavát, akkor hozzon létre egy újat. Ezt követően feltétlenül összes meglévő felhasználót tájékoztatja, hogy a jelszó megváltozott, és, hogy azok frissítenie kell az ügyfelek az új jelszóval. Útmutatás Ugrás:
+**V:** Ha elfelejtette a jelszót, hozzon létre egy újat. Ezt követően ügyeljen arra, hogy tájékoztassa az összes meglévő felhasználót, hogy a jelszó meg lett változtatva, és hogy frissítse az ügyfeleit az új jelszó használatára. Útmutatásért keresse fel a következőt:
 
 * [A StorSimple Snapshot Manager jelszavának módosítása](storsimple-8000-change-passwords.md#set-the-storsimple-snapshot-manager-password)
-* [Egy eszköz hitelesítéséhez](storsimple-snapshot-manager-manage-devices.md#authenticate-a-device)
+* [Eszköz hitelesítése](storsimple-snapshot-manager-manage-devices.md#authenticate-a-device)
 
-**KÉRDÉS:** A távoli hozzáférést a Windows PowerShell StorSimple-tanúsítvány megváltozott az eszközön. Hogyan frissíthetem a távelérési ügyfelek?
+**K:** Az eszközön a Windows PowerShell StorSimple-bővítménye távoli elérésére vonatkozó tanúsítvány megváltozott. Hogyan frissíteni a távelérési ügyfelet?
 
-**VÁLASZ:** Töltse le az új tanúsítványt a StorSimple-Eszközkezelő szolgáltatás, és adja meg azt a távoli ügyfelek tanúsítványtárolójában kell telepíteni. Útmutatás Ugrás:
+**V:** Az új tanúsítványt letöltheti a StorSimple Eszközkezelő szolgáltatásból, majd megadhatja, hogy a a távelérési ügyfelek tanúsítványtárolójában legyen telepítve. Útmutatásért keresse fel a következőt:
 
-* [Tanúsítvány importálása a parancsmag](https://docs.microsoft.com/powershell/module/pkiclient/import-certificate)
+* [Import-Certificate parancsmag](https://docs.microsoft.com/powershell/module/pkiclient/import-certificate)
 
-**KÉRDÉS:** A védett adatok if a StorSimple-Eszközkezelő szolgáltatás biztonsága sérül van?
+**K:** Védettek az adataim, ha a StorSimple Eszközkezelő szolgáltatás biztonsága sérül?
 
-**VÁLASZ:** Egy webböngészőben megtekintheti szolgáltatás konfigurációs adatok mindig titkosítva a nyilvános kulcsot. A szolgáltatás nem rendelkezik hozzáféréssel a titkos kulcsot, mert a szolgáltatás nem lesz képes jelennek meg adatok. A StorSimple-Eszközkezelő szolgáltatás biztonsága sérül, van-e nem érinti, mivel nincsenek a StorSimple-Eszközkezelő szolgáltatásban tárolt kulcsok.
+**V:** A szolgáltatás konfigurációs adatait a rendszer mindig titkosítja a nyilvános kulccsal, amikor megtekinti azt egy böngészőben. Mivel a szolgáltatás nem rendelkezik hozzáféréssel a titkos kulcshoz, a szolgáltatás nem fog tudni semmilyen információt megjeleníteni. Ha a StorSimple Eszközkezelő szolgáltatás biztonsága sérül, nincs hatása, mivel nem találhatók kulcsok a StorSimple Eszközkezelő szolgáltatásban.
 
-**KÉRDÉS:** Ha valaki hozzáfér a adatok titkosítási tanúsítványt, lesz az adatok biztonsága sérülhet?
+**K:** Ha valaki hozzáfér az adattitkosítási tanúsítványhoz, az adataim biztonságban lesznek?
 
-**VÁLASZ:** A Microsoft Azure az ügyfél szolgáltatásadat-titkosítási kulcsot (.pfx-fájl) titkosított formában tárolja. Mivel a .pfx fájl titkosítva van, és a StorSimple-szolgáltatás nem rendelkezik a szolgáltatásadat-titkosítási kulcs visszafejtése a .pfx-fájlt, egyszerűen hozzáférhetne a .pfx-fájlba fogja nem teszik elérhetővé a titkos kulcsok.
+**V:** A Microsoft Azure titkosított formátumban tárolja az ügyfél adattitkosítási kulcsát (. pfx-fájl). Mivel a. pfx-fájl titkosítva van, és a StorSimple szolgáltatás nem rendelkezik a szolgáltatás adattitkosítási kulcsával a. pfx fájl visszafejtéséhez, egyszerűen csak a. pfx fájlhoz férhet hozzá.
 
-**KÉRDÉS:** Mi történik, ha egy intézkedése kéri a Microsofttól az adataim?
+**K:** Mi történik, ha egy kormányzati szerv megkéri a Microsofttól az adataimat?
 
-**VÁLASZ:** Összes adat titkosítva van a szolgáltatásban, és a titkos kulcs az eszközhöz marad, mert a intézkedése kérje meg az ügyfél az adatok.
+**V:** Mivel az összes adat titkosítva van a szolgáltatásban, és a titkos kulcs az eszközön marad, a kormányzati szervnek fel kell kérnie az ügyfelet az adatra.
 
 
 
 ## <a name="next-steps"></a>További lépések
 
-[A StorSimple eszköz üzembe helyezése](storsimple-8000-deployment-walkthrough-u2.md).
+[Telepítse a StorSimple-eszközt](storsimple-8000-deployment-walkthrough-u2.md).
 

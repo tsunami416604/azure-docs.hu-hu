@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 6ab13e1ecd5f4825270f4b3a28251b959ad98f02
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 6b57ffbd3cb2b31da3fc2882e941f9788d83fea8
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59495396"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341677"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Engedélyezése és megtekintése az Application Insights Profiler kapcsolatos problémák elhárítása
 
@@ -88,7 +88,7 @@ A Profiler megfelelő működéséhez:
 
       ![profiler-webjob-log]
 
-Nem számítható ki, miért Profiler nem működik, ha a napló letöltése, és küldje el a csapatával. 
+Nem számítható ki, miért Profiler nem működik, ha a napló letöltése, és küldje el a csapatával, serviceprofilerhelp@microsoft.com. 
     
 ### <a name="manual-installation"></a>Manuális telepítés
 
@@ -147,7 +147,7 @@ Az Azure Diagnostics konfigurálása során használt beállítások ellenőrzé
     ```
     c:\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.log  
     ```
-    vagy
+    or
     ```
     c:\WindowsAzure\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.log
     ```

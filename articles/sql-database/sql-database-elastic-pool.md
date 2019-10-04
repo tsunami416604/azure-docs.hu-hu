@@ -1,6 +1,6 @@
 ---
-title: Több, a rugalmas készletek – Azure SQL-adatbázisok kezelése |} A Microsoft Docs
-description: Kezelése és méretezése több SQL-adatbázis – több száz és több ezer - rugalmas készletek használatával. Egyetlen díj oszthat meg, ahol szükséges erőforrások.
+title: Több SQL-adatbázis kezelése rugalmas készletekkel – Azure | Microsoft Docs
+description: Több száz és ezer SQL-adatbázist kezelhet és méretezheti rugalmas készletek használatával. Egy díj az erőforrások számára, amelyekhez szükség esetén terjeszthető.
 services: sql-database
 ms.service: sql-database
 ms.subservice: elastic-pools
@@ -10,42 +10,41 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
-manager: craigg
-ms.date: 02/28/2019
-ms.openlocfilehash: 96160745fa8702fc6f931904098c28d8968de2c1
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 08/06/2019
+ms.openlocfilehash: 0b0a6bec7916c056c187ed9e588dd3ac8fea8d84
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58010238"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876402"
 ---
-# <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Rugalmas készletek kezelése és a több Azure SQL-adatbázisok horizontális Súgó
+# <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>A rugalmas készletek segítségével több Azure SQL Database-adatbázist kezelhet és méretezheti
 
-Az SQL Database rugalmas készletei egyszerű, költséghatékony megoldást kínálnak egyszerre több olyan adatbázis kezelésére és méretezésére, amelyek felhasználási igénye nagy mértékben és kiszámíthatatlanul változik. A rugalmas készletben található adatbázisok egy Azure SQL Database-kiszolgálón, és beállítása a set áron erőforrások száma. Az Azure SQL Database rugalmas készleteivel az SaaS-fejlesztők az előre meghatározott költségvetésen belül maradva optimalizálhatják az adatbáziscsoportok ár-teljesítmény arányát, és rugalmas teljesítményt biztosíthatnak az egyes adatbázisokhoz.
+Az SQL Database rugalmas készletei egyszerű, költséghatékony megoldást kínálnak egyszerre több olyan adatbázis kezelésére és méretezésére, amelyek felhasználási igénye nagy mértékben és kiszámíthatatlanul változik. A rugalmas készletben lévő adatbázisok egyetlen Azure SQL Database-kiszolgálón találhatók, és meghatározott áron oszthatják meg az erőforrásokat. Az Azure SQL Database rugalmas készleteivel az SaaS-fejlesztők az előre meghatározott költségvetésen belül maradva optimalizálhatják az adatbáziscsoportok ár-teljesítmény arányát, és rugalmas teljesítményt biztosíthatnak az egyes adatbázisokhoz.
 
 ## <a name="what-are-sql-elastic-pools"></a>Mik a rugalmas SQL-készletek
 
-A SaaS-fejlesztők több adatbázisból álló nagyméretű adatrétegekre építenek alkalmazásokat. Gyakori alkalmazásminta az önálló adatbázis biztosítása minden egyes ügyfél számára. A különböző ügyfelek felhasználási mintája nagymértékben és kiszámíthatatlan módon változik, ezért nehéz megjósolni az adatbázis minden egyes felhasználójának erőforrásigényét. Hagyományosan két módja volt:
+A SaaS-fejlesztők több adatbázisból álló nagyméretű adatrétegekre építenek alkalmazásokat. Gyakori alkalmazásminta az önálló adatbázis biztosítása minden egyes ügyfél számára. A különböző ügyfelek felhasználási mintája nagymértékben és kiszámíthatatlan módon változik, ezért nehéz megjósolni az adatbázis minden egyes felhasználójának erőforrásigényét. Hagyományosan két lehetőség közül választhat:
 
-- Túltervezés az erőforrásokat a kihasználtsági csúcs- és keresztül használatalapú, vagy
-- Túlfizetés csökkenthetők a költségek, teljesítmény és az Ügyfélelégedettség rovására.
+- Többek között kiépíthető erőforrások a csúcsérték-használat és a fizetések alapján, vagy
+- A kiépítés a költségek megtakarítása érdekében, a teljesítmény és az ügyfelek elégedettségének rovására a csúcsok során.
 
-Rugalmas készletek megoldhatja a problémát azáltal, hogy az adatbázisok beolvasása a teljesítmény-erőforrásokat, amikor szükségük van rá szükségük. Egy egyszerű erőforrás-lefoglalási mechanizmust biztosítanak, kiszámítható költségekkel. A rugalmas készleteket használó SaaS-alkalmazások szerkezeti kialakításainak alaposabb megismeréséhez olvassa el a [Tervminták több-bérlős SaaS-alkalmazásokhoz Azure SQL Database esetén](sql-database-design-patterns-multi-tenancy-saas-applications.md) című részt.
+A rugalmas készletek a probléma megoldásához biztosítják, hogy az adatbázisok megkapják a szükséges teljesítménybeli erőforrásokat. Egy egyszerű erőforrás-lefoglalási mechanizmust biztosítanak, kiszámítható költségekkel. A rugalmas készleteket használó SaaS-alkalmazások szerkezeti kialakításainak alaposabb megismeréséhez olvassa el a [Tervminták több-bérlős SaaS-alkalmazásokhoz Azure SQL Database esetén](sql-database-design-patterns-multi-tenancy-saas-applications.md) című részt.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Elastic-databases-helps-SaaS-developers-tame-explosive-growth/player]
 >
 
 > [!IMPORTANT]
-> Nem jár a rugalmas adatbázis-költségekkel. Egy készlet a legmagasabb edtu-k vagy a virtuális magok, hogy egy óránál kevesebb ideig volt a készlet active függetlenül meglétének minden órája számlázzuk ki.
+> Rugalmas készletekhez nem tartozik adatbázis-díj. Minden órában, a legmagasabb eDTU vagy virtuális mag, a használattól függetlenül, illetve azt, hogy a készlet egy óránál kevesebb ideig volt-e aktív.
 
-Rugalmas készletek köszönhetően a fejlesztő által az egyes adatbázisok használati időszakok kiszámíthatatlan befogadásához több adatbázis által közösen használt készlethez tartozó erőforrások megvásárlására. A készlet alapján vagy konfigurálhat erőforrásokat a [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) vagy a [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md). Egy készlet erőforrás-követelmény-adatbázisa a összesített kihasználtsága határozza meg. A fejlesztői költségvetés határozza meg a készlet számára elérhető erőforrások mennyisége. A fejlesztő egyszerűen adatbázisokat ad a készlethez, beállítja az adatbázisok erőforrások minimális és maximális (vagy minimális és maximális dtu-k vagy minimális vagy maximális virtuális magok a választott modell resourcing függően), és ezután beállítja az erőforrás-készlet alapján azok Költségvetés. A készletek segítségével a fejlesztő zökkenőmentesen és fokozatosan növelheti szolgáltatásának teljesítményét a korlátozott erőforrásokkal bíró startupok szintjéről az érett vállalkozások szintjére.
+A rugalmas készletek lehetővé teszik, hogy a fejlesztő erőforrásokat vásároljon egy több adatbázis által megosztott készlet számára, hogy az egyes adatbázisok előre nem látható használati időszakait is kielégítse. A készlethez a [DTU-alapú vásárlási modellen](sql-database-service-tiers-dtu.md) vagy a [virtuális mag-alapú vásárlási modellen](sql-database-service-tiers-vcore.md)alapuló erőforrásokat is konfigurálhat. A készletre vonatkozó erőforrás-követelményt az adatbázisainak összesített kihasználtsága határozza meg. A készlet számára elérhető erőforrások mennyiségét a fejlesztői költségvetés vezérli. A fejlesztő egyszerűen hozzáadja az adatbázisokat a készlethez, beállítja az adatbázisok minimális és maximális erőforrásait (a minimális és a maximális DTU, illetve a minimális vagy maximális virtuális mag, attól függően, hogy milyen újrabeszerzési modellt választ), majd beállítja a készlet erőforrásait a következők alapján: költségvetés. A készletek segítségével a fejlesztő zökkenőmentesen és fokozatosan növelheti szolgáltatásának teljesítményét a korlátozott erőforrásokkal bíró startupok szintjéről az érett vállalkozások szintjére.
 
-A készleten belül az önálló adatbázisok az automatikus méretezés rugalmasságával rendelkeznek. Nagy terhelés alatt az adatbázisok használhatnak további erőforrásokat az igényeknek. A kisebb terhelésű adatbázisok kevesebbet, és terhelés alatt nem álló adatbázisoknak nincs erőforrás. Az erőforrásoknak az egyes adatbázisok helyett a teljes készlet számára hozzáférhetővé tétele jelentősen leegyszerűsíti a felügyeleti feladatokat. Emellett a készlet kiszámítható költségekkel rendelkezik. További erőforrások lehet hozzáadni egy meglévő készlet leállnának, azzal a különbséggel, hogy az adatbázisok áthelyezése a adja meg a további számítási erőforrásokat az új eDTU-foglalás szükség lehet. Hasonlóképpen ha már nincs szükség további erőforrásokat, távolíthatja el a létező készletből bármikor időben. Ezenfelül a készlethez adatbázisok adhatók hozzá vagy vonhatók ki belőle. Ha egy adatbázis kiszámítható módon nem használja ki az erőforrásokat, helyezze át az adatbázist.
+A készleten belül az önálló adatbázisok az automatikus méretezés rugalmasságával rendelkeznek. A nagy terhelés alatt az adatbázisok több erőforrást is felhasználhatnak az igények kielégítése érdekében. A világos terhelésű adatbázisok kevesebbet használnak, és a terhelés nélküli adatbázisok nem használnak fel erőforrásokat. Az erőforrásoknak az egyes adatbázisok helyett a teljes készlet számára hozzáférhetővé tétele jelentősen leegyszerűsíti a felügyeleti feladatokat. Emellett kiszámítható költségvetést is biztosít a készlethez. Az adatbázis leállása nélküli meglévő készletekhez további erőforrások is hozzáadhatók, azzal a különbséggel, hogy az adatbázisokat át kell helyezni az új eDTU-foglalás további számítási erőforrásainak biztosításához. Hasonlóképpen, ha már nincs szükség további erőforrásokra, a meglévő készletből bármikor eltávolítható. Ezenfelül a készlethez adatbázisok adhatók hozzá vagy vonhatók ki belőle. Ha egy adatbázis kiszámítható módon nem használja ki az erőforrásokat, helyezze át az adatbázist.
 
 > [!NOTE]
-> Adatbázisok áthelyezése vagy egy rugalmas készlet abból, ha nem jár egy rövid ideig (másodperc) sorrendje lesz a művelet végén kivéve ha az adatbázis-kapcsolatok megszakadnak.
+> Az adatbázisok rugalmas készletbe vagy onnan történő áthelyezésekor nincs leállás, kivéve a művelet végén lévő rövid időtartamot (másodpercben) az adatbázis-kapcsolatok eldobásakor.
 
-## <a name="when-should-you-consider-a-sql-database-elastic-pool"></a>Mikor érdemes egy SQL Database rugalmas készlet
+## <a name="when-should-you-consider-a-sql-database-elastic-pool"></a>Mikor érdemes figyelembe vennie SQL Database rugalmas készletet
 
 A készleteket kifejezetten a nagy számú, speciális felhasználási mintákkal rendelkező adatbázisokhoz tervezték. Az egyes adatbázisok mintáit átlagosan alacsony, és viszonylag rendszertelen időközönkénti hirtelen megugró kihasználtság jellemzi.
 
@@ -59,17 +58,17 @@ Az alábbi ábra egy olyan adatbázist mutat be, amely sok időt tölt tétlenü
 
    ![egy készletbe illő önálló adatbázis](./media/sql-database-elastic-pool/one-database.png)
 
-Az ábrázolt ötperces periódus során a DB1 adatbázis maximális DTU-használata 90, de az összesített átlagos használati érték öt DTU alatt van. Az S3 szintű számítási méret ilyen számítási feladatok futtatásához önálló adatbázis szükséges, de a kihasználatlan marad az erőforrások legnagyobb része kihasználatlan alacsony tevékenységű időszakok során.
+Az ábrázolt ötperces periódus során a DB1 adatbázis maximális DTU-használata 90, de az összesített átlagos használati érték öt DTU alatt van. Ezen munkaterhelés egyetlen adatbázisban való futtatásához S3 számítási méret szükséges, azonban ez a művelet az alacsony tevékenységű időszakok során nem használt erőforrások többségét elhagyja.
 
 Egy készletben ezek a használaton kívüli DTU-k több adatbázis között lehetnek megosztva, így a szükséges DTU-k száma és az összköltség is csökken.
 
-Az előző példa mentén továbbhaladva tegyük fel, hogy további adatbázisokkal rendelkezünk, amelyeket DB1-hez hasonló felhasználási minták jellemeznek. A következő két ábrán láthatja az alábbi a négy adatbázis és a 20 adatbázis kihasználtsági ugyanazon a grafikonon mutatja be a DTU-alapú vásárlási modell használatával időben egymást nem átfedő jellege szintekre épülő:
+Az előző példa mentén továbbhaladva tegyük fel, hogy további adatbázisokkal rendelkezünk, amelyeket DB1-hez hasonló felhasználási minták jellemeznek. Az alábbi két ábrán a négy adatbázis és 20 adatbázis kihasználtsága ugyanarra a gráfra van felhasználva, hogy a DTU-alapú vásárlási modell használatával ábrázolja a kihasználtsága nem átfedéses jellegét az idő múlásával:
 
    ![négy adatbázis egy készletbe illő kihasználtsági mintával](./media/sql-database-elastic-pool/four-databases.png)
 
    ![húsz adatbázis egy készletbe illő kihasználtsági mintával](./media/sql-database-elastic-pool/twenty-databases.png)
 
-A DTU-k mind a 20 adatbázisra vonatkozó összesített kihasználtságát a fekete vonal jelzi az előző ábrán. Ez alapján a teljes DTU-használat soha nem lépi túl a 100 DTU értéket, és az időtartam során a 20 adatbázis 100 eDTU-t használhat közösen. Ennek eredményeképpen a dtu-k a 20 x csökkenését, és a egy 13 x képest, mintha minden egyes adatbázis S3 díjcsökkentésnek számítási méretek az önálló adatbázisok számára.
+A DTU-k mind a 20 adatbázisra vonatkozó összesített kihasználtságát a fekete vonal jelzi az előző ábrán. Ez alapján a teljes DTU-használat soha nem lépi túl a 100 DTU értéket, és az időtartam során a 20 adatbázis 100 eDTU-t használhat közösen. Ez a DTU 20x-csökkenést eredményez, amely az egyes adatbázisok S3 számítási méretekben történő elhelyezésével összehasonlítható a 13x.
 
 Ez a példa az alábbi okokból ideális:
 
@@ -79,145 +78,151 @@ Ez a példa az alábbi okokból ideális:
 
 A készletre vonatkozó költség az eDTU-készlet függvénye. A készlethez tartozó eDTU-k egységára egy önálló adatbázis DTU-egységárának másfélszerese, azonban **a készlethez tartozó eDTU-kat sok adatbázis használhatja, így kevesebb eDTU-ra van szükség**. Ezek a díjszabásban és eDTU-megosztásban jelentkező különbségek adják a készletekkel elérhető megtakarítás alapját.
 
-A következő szabályok költségcsökkenést eredményezzen az adatbázisok és az adatbázis-kihasználtsági kapcsolódó segítségével biztosíthatja, hogy a készlet számítási méretek használatával az önálló adatbázisok képest.
+A következő, az adatbázis-használattal és az adatbázis-kihasználtsággal kapcsolatos szabályok biztosítják, hogy egy készlet csökkentett költségeket biztosítson, mint az önálló adatbázisok számítási méreteinek használata.
 
 ### <a name="minimum-number-of-databases"></a>Adatbázisok minimális száma
 
-Ha az önálló adatbázisok számára az erőforrások összesített mennyisége nem több, mint a készlet számára szükséges erőforrások x 1.5 költséghatékonyabb a rugalmas készlet használata.
+Ha az önálló adatbázisok erőforrásainak összesített mennyisége több mint 1,5 x a készlethez szükséges erőforrások száma, akkor a rugalmas készlet költséghatékonyabb.
 
-***DTU-alapú vásárlási modell példa***<br>
-Legalább két S3-adatbázis vagy legalább 15 S0-adatbázis 100 edtu-s készlet költséghatékonyabban, mint az önálló adatbázisok számítási méretek használata szükséges.
+***Példa a DTU-alapú vásárlási modellre***<br>
+Legalább két S3-adatbázis vagy legalább 15 S0-adatbázis szükséges ahhoz, hogy egy 100 eDTU-készlet költséghatékonyabb legyen, mint az önálló adatbázisok számítási méreteinek használata.
 
 ### <a name="maximum-number-of-concurrently-peaking-databases"></a>Egyidejűleg kiugró kihasználtságú adatbázisok maximális száma
 
-Az erőforrások megosztása a készlet nem minden adatbázis egyszerre használhatja a korlátig rendelkezésre álló erőforrások az önálló adatbázisok számára. Minél kevesebb adatbázis működik egyszerre kiugró kihasználtsággal, annál alacsonyabbra az adatbáziskészlet erőforrásainak akkor állítható be, és annál költséghatékonyabbá válik a készlet. Az általános, legfeljebb 2/3 (vagy 67 %) a készletben található adatbázisok működhet egyszerre a maximális erőforrások maximális számát.
+Az erőforrások megosztásával a készletben lévő összes adatbázis nem tud egyidejűleg erőforrásokat használni az önálló adatbázisok számára elérhető korlátig. Minél kevesebb adatbázis van, amely egyidejűleg meghaladja a maximális értéket, annál kisebb a készlet erőforrásai, és a készlet költséghatékonyabb lesz. Általánosságban nem több mint 2/3 (vagy 67%) a készletben lévő adatbázisoknak egyidejűleg kell megjelenniük a maximális erőforrás-korlátot.
 
-***DTU-alapú vásárlási modell példa***
+***Példa a DTU-alapú vásárlási modellre***
 
-Ha csökkenteni szeretnénk három S3-adatbázis költségét egy 200 eDTU-s készletben, akkor a háromból egyszerre legfeljebb kettő működhet kiugró kihasználtsággal. Ha ebből a három S3-adatbázisból több mint kettő működik egyszerre kiugró kihasználtsággal, akkor a készletnek több mint 200 eDTU-t kellene tartalmaznia. Ha a készletet 200 Edtu-nál nagyobbra, több S3-adatbázist kellene adni a készlethez, hogy a költség alacsonyabb, mint az önálló adatbázisok méretű számítási.
+Ha csökkenteni szeretnénk három S3-adatbázis költségét egy 200 eDTU-s készletben, akkor a háromból egyszerre legfeljebb kettő működhet kiugró kihasználtsággal. Ha ebből a három S3-adatbázisból több mint kettő működik egyszerre kiugró kihasználtsággal, akkor a készletnek több mint 200 eDTU-t kellene tartalmaznia. Ha a készlet átméretezése több mint 200 Edtu, a készlethez több S3-adatbázist kell hozzáadni, hogy a költségek kevesebbek legyenek, mint az önálló adatbázisok számítási méretei.
 
 Ne feledje, hogy ebben a példában nem vesszük számításba a készlet egyéb adatbázisainak kihasználását. Ha egy adott időpontban minden adatbázis használatban van valamilyen szinten, akkor az adatbázisok kevesebb mint kétharmad része (vagy 67%-a) működhet egyszerre kiugró kihasználtsággal.
 
-### <a name="resource-utilization-per-database"></a>Erőforrás-használat adatbázisonként
+### <a name="resource-utilization-per-database"></a>Erőforrás-használat/adatbázis
 
 Az adatbázisok kiugró és átlagos kihasználtsága közötti lényeges különbség a hosszú, alacsony kihasználtságú és a rövid magas kihasználtságú időszakokban mutatkozik meg. Ilyen felhasználási minta esetén ideális az erőforrások adatbázisok közötti megosztása. Az adatbázis készletben való használatát akkor érdemes megfontolni, ha a kiugró mértékű kihasználtsága hozzávetőlegesen másfélszer nagyobb az átlagos kihasználtságánál.
 
-**DTU-alapú vásárlási modell példa**: Ha egy 100 DTU-s kiugró kihasználtsággal működő S3-adatbázis átlagosan legfeljebb 67 DTU-t használ, akkor jó jelöltnek számít egy eDTU-kat közösen használó készlethez. Ha pedig egy 20 DTU-s kiugró kihasználtsággal működő S1-adatbázis átlagosan legfeljebb 13 DTU-t használ, akkor jó jelöltnek számít egy készlethez.
+**Példa a DTU-alapú vásárlási modellre**: Ha egy 100 DTU-s kiugró kihasználtsággal működő S3-adatbázis átlagosan legfeljebb 67 DTU-t használ, akkor jó jelöltnek számít egy eDTU-kat közösen használó készlethez. Ha pedig egy 20 DTU-s kiugró kihasználtsággal működő S1-adatbázis átlagosan legfeljebb 13 DTU-t használ, akkor jó jelöltnek számít egy készlethez.
 
-## <a name="how-do-i-choose-the-correct-pool-size"></a>A megfelelő készletméret kiválasztása
+## <a name="how-do-i-choose-the-correct-pool-size"></a>Hogyan a megfelelő készlet méretének kiválasztása
 
-A készlet optimális mérete attól függ, hogy a szükséges a készletben található adatbázisok összesített erőforrásokat. Ez magában foglalja, amely meghatározza, hogy a következő:
+A készletek legjobb mérete a készletben lévő összes adatbázishoz szükséges összesített erőforrásoktól függ. Ez a következők meghatározását foglalja magában:
 
-- (Maximális dtu-k vagy a maximális virtuális magot kapnak a választott modell resourcing függően) a készletben található összes adatbázis által használt erőforrások maximális száma.
+- A készletben lévő összes adatbázis által felhasznált erőforrások maximális száma (a maximális DTU vagy a maximális virtuális mag a választott újrabeszerzési modelltől függően).
 - A készletben szereplő összes adatbázis által használt maximális tárterület (bájtban).
 
-A szolgáltatásszintek érhető el minden egyes erőforrás-modellje, lásd: a [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) vagy a [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md).
+Az egyes erőforrás-modellekhez elérhető szolgáltatási rétegekért tekintse meg a [DTU-alapú vásárlási modellt](sql-database-service-tiers-dtu.md) vagy a [virtuális mag-alapú vásárlási modellt](sql-database-service-tiers-vcore.md).
 
 Ha nincs lehetősége eszközök használatára, az alábbi részletes útmutatóval megbecsülheti, hogy a készlet költséghatékonyabb-e az önálló adatbázisok használatánál:
 
-1. Megbecsülheti az edtu-k vagy a virtuális magok a készlet a következő szükséges:
+1. Becsülje meg a készlethez szükséges Edtu vagy virtuális mag a következőképpen:
 
-   A DTU-alapú vásárlási modell: MAX(<*Az adatbázisok teljes száma* X *Az egyes adatbázisok átlagos DTU-használata*>,<br>  
+   DTU-alapú vásárlási modell esetén: MAX(<*Az adatbázisok teljes száma* X *Az egyes adatbázisok átlagos DTU-használata*>,<br>  
    <*A kiugró kihasználtsággal egyszerre működő adatbázisok száma* X *Az egyes adatbázisok kiugró DTU-használata*)
 
-   A Virtuálismag-alapú vásárlási modell: MAX (<*adatbázisok száma* X *átlagos virtuális mag használata*>,<br>  
-   <*Több egyidejűleg kiugró kihasználtságú adatbázisok* X *csúcs-virtuális mag használata*)
+   Virtuális mag-alapú vásárlási modell esetén: MAX (<*adatbázisok* *átlagos virtuális mag*-kihasználtsága (db >)<br>  
+   <*Egyidejű csúcsérték-kiugró adatbázisok száma* X *csúcsérték-virtuális mag kihasználtsága/db*)
 
 2. A készlethez szükséges tárterület méretének becsléséhez adja össze a készlet egyes adatbázisaihoz szükséges bájtok számát. Ezután határozza meg a szükséges tárhelyet biztosító eDTU-készlet méretét.
-3. A DTU-alapú vásárlási modell igénybe meghatározott eDTU-becslések közül a nagyobb 1. lépést és a 2. lépés. A Virtuálismag-alapú vásárlási modell figyelembe venni a virtuális mag becslés az 1. lépésben.
-4. Tekintse meg a [SQL Database díjszabási oldalát](https://azure.microsoft.com/pricing/details/sql-database/) , és keresse meg a legkisebb készletméretet, amely nagyobb, mint 3. lépésben megbecsült.
-5. Hasonlítsa össze a készlet árát az 5. lépés árát az önálló adatbázisok számára a megfelelő számítási méretek használatával.
+3. A DTU-alapú vásárlási modell esetében az 1. és a 2. lépésben szereplő eDTU-becslések nagyobb mennyiségét kell megbecsülni. A virtuális mag-alapú vásárlási modell esetében az 1. lépés alapján végezze el a virtuális mag becslését.
+4. Tekintse meg a [SQL Database díjszabási oldalát](https://azure.microsoft.com/pricing/details/sql-database/) , és keresse meg a 3. lépésben megbecsülhető legkisebb méretű készletet.
+5. Hasonlítsa össze az 5. lépésben szereplő készlet árát az önálló adatbázisok megfelelő számítási méreteinek árával.
 
-## <a name="using-other-sql-database-features-with-elastic-pools"></a>Rugalmas készletek egyéb SQL adatbázis-szolgáltatások használata
+## <a name="using-other-sql-database-features-with-elastic-pools"></a>Más SQL Database funkciók használata rugalmas készletekkel
 
-### <a name="elastic-jobs-and-elastic-pools"></a>Rugalmas feladatok és a rugalmas készletek
+### <a name="elastic-jobs-and-elastic-pools"></a>Rugalmas feladatok és rugalmas készletek
 
-A készletek használata leegyszerűsíti a felügyeleti feladatokat, mivel a szkriptek **[rugalmas feladatokban](sql-database-elastic-jobs-overview.md)** futtathatók. A rugalmas feladatok használatával kiküszöbölhető a nagy számú adatbázis kezelésével járó monotonitás. Kezdetnek tekintse át [a rugalmas feladatokkal kapcsolatos első lépéseket ismertető](sql-database-elastic-jobs-getting-started.md) témakört.
+A készletek használata leegyszerűsíti a felügyeleti feladatokat, mivel a szkriptek **[rugalmas feladatokban](elastic-jobs-overview.md)** futtathatók. A rugalmas feladatok használatával kiküszöbölhető a nagy számú adatbázis kezelésével járó monotonitás.
 
 További információk a több adatbázissal dolgozó további adatbázis-eszközökről: [Horizontális felskálázás az Azure SQL Database-ben](sql-database-elastic-scale-introduction.md).
 
-### <a name="business-continuity-options-for-databases-in-an-elastic-pool"></a>A rugalmas készletben található adatbázisok üzletmenet-folytonossági funkciókat
+### <a name="business-continuity-options-for-databases-in-an-elastic-pool"></a>Rugalmas készletben lévő adatbázisok üzleti folytonossági lehetőségei
 
-A készletezett adatbázisok általánosságban ugyanazokat [az üzletmenet-folytonossági funkciókat](sql-database-business-continuity.md) támogatják, amelyek az önálló adatbázisokhoz is elérhetők.
+A rugalmas készletbe helyezett adatbázisok általánosságban ugyanazokat [az üzletmenet-folytonossági funkciókat](sql-database-business-continuity.md) támogatják, amelyek az önálló adatbázisokhoz is elérhetők.
 
-- **Pont – történő visszaállítás**
+- **Időponthoz való visszaállítás**
 
-  Időponthoz visszaállítási időben egy készlethez egy adott időpontra adatbázis helyreállítása az adatbázis automatikus biztonsági másolatokat használ. Lásd: [Időponthoz kötött visszaállítás](sql-database-recovery-using-backups.md#point-in-time-restore)
+  Az időponthoz való visszaállítás az adatbázis automatikus biztonsági mentését használja a készletben lévő adatbázisok egy adott időpontra történő helyreállításához. Lásd: [Időponthoz kötött visszaállítás](sql-database-recovery-using-backups.md#point-in-time-restore)
 
 - **Geo-restore**
 
-  GEO-visszaállítás az alapértelmezett helyreállítási lehetőséget biztosít, amikor a miatt incidens a régióban, az adatbázist üzemeltető adatbázis nem érhető el. Lásd: [Az Azure SQL Database visszaállítása vagy feladatátvétel a másodlagos kiszolgálóra](sql-database-disaster-recovery.md)
+  A Geo-visszaállítás az alapértelmezett helyreállítási beállítást adja meg, ha egy adatbázis nem érhető el, mert az adatbázist futtató régióban egy incidens található. Lásd: [Az Azure SQL-adatbázis visszaállítása vagy feladatátvétel a másodlagos kiszolgálóra](sql-database-disaster-recovery.md)
 
 - **Aktív georeplikáció**
 
-  A geo-visszaállítás kínálnak agresszívabb helyreállítási követelményekkel rendelkező alkalmazások esetében konfigurálhatja [aktív georeplikáció](sql-database-active-geo-replication.md) vagy egy [automatikus feladatátvételi csoport](sql-database-auto-failover-group.md).
+  Az agresszív helyreállítási követelményekkel rendelkező alkalmazások esetében, mint a Geo-visszaállítás, konfigurálhatja az [aktív földrajzi replikálást](sql-database-active-geo-replication.md) vagy egy [automatikus feladatátvételi csoportot](sql-database-auto-failover-group.md).
 
-## <a name="creating-a-new-sql-database-elastic-pool-using-the-azure-portal"></a>Az Azure portal használatával új SQL Database rugalmas készlet létrehozása
+## <a name="creating-a-new-sql-database-elastic-pool-using-the-azure-portal"></a>Új SQL Database rugalmas készlet létrehozása a Azure Portal használatával
 
-Az Azure Portalon is létrehozhat a rugalmas készlet két módja van.
+Kétféle módon hozhat létre rugalmas készletet a Azure Portal.
 
-1. Rugalmas készlet létrehozásához keressen **SQL rugalmas készlet** a a **Marketplace-en** vagy **+ Hozzáadás** a rugalmas SQL-készletek böngészőpanelen. Ön adja meg egy új vagy meglévő kiszolgáló alábbi készletkiépítő munkafolyamat révén képes.
-2. Vagy létrehozhat egy rugalmas készlet és gombra kattintva meglévő SQL server **készlet létrehozása** -készlet létrehozása közvetlenül a kiszolgálón. Az egyetlen különbség az, a lépés kihagyása adhatja meg a kiszolgáló a készletet érintő kiépítési munkafolyamat során.
+1. Válassza az **Azure SQL** lehetőséget a Azure Portal bal oldali menüjében. Ha az Azure SQL nem szerepel a listában, válassza a **minden szolgáltatás**lehetőséget, majd írja be az *Azure SQL* kifejezést a keresőmezőbe.
+2. Válassza a **+ Hozzáadás** lehetőséget az **SQL-telepítés kiválasztása** lap megnyitásához. A rugalmas készletekre vonatkozó további információkat az **adatbázisok** csempén látható **Részletek megjelenítése** lehetőség kiválasztásával tekintheti meg.
+3. Az **adatbázisok** csempén válassza a **rugalmas készlet** lehetőséget az **Erőforrás típusa** legördülő menüben, majd válassza a **Létrehozás**lehetőséget:
+
+   ![Rugalmas készlet létrehozása](./media/sql-database-elastic-pool/create-elastic-pool.png)
+
+
+1. Vagy létrehozhat egy rugalmas készletet egy meglévő Azure SQL Server-kiszolgálóhoz való navigálással, majd az **+ új készlet** lehetőségre kattintva közvetlenül a kiszolgálóra hozhat létre készletet.
 
 > [!NOTE]
-> Egy kiszolgálón több készletet is létrehozhat, de egy készlethez különböző kiszolgálókról származó adatbázisok nem adhat.
+> Egy kiszolgálón több készlet is létrehozható, de nem adhat hozzá különböző kiszolgálókon lévő adatbázisokat ugyanahhoz a készlethez.
 
-A készlet szolgáltatásszintje meghatározza, hogy a készlet, valamint az egyes adatbázisok számára elérhető erőforrások maximális mennyisége a elastics elérhető funkciók. További információkért lásd: a rugalmas készletek erőforráskorlátok a [DTU modell](sql-database-dtu-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes). Virtuálismag-alapú erőforráskorlátok a rugalmas készletek, lásd: [Virtuálismag-alapú erőforráskorlátok – rugalmas készletek](sql-database-vcore-resource-limits-elastic-pools.md).
+A készlet szolgáltatási szintje határozza meg a készletben lévő rugalmas készletek elérhető funkcióit, valamint az egyes adatbázisok számára elérhető erőforrások maximális mennyiségét. Részletekért lásd: rugalmas készletek erőforrás-korlátai a [DTU](sql-database-dtu-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes)-modellben. A rugalmas készletek virtuális mag-alapú erőforrás-korlátaival kapcsolatban lásd: [virtuális mag-alapú erőforrás-korlátok – rugalmas készletek](sql-database-vcore-resource-limits-elastic-pools.md).
 
-Konfigurálja az erőforrásokat, és kattintson a készlet díjszabás **készlet beállítása**. Válassza ki valamelyik szolgáltatási rétegben, a készlethez adatbázisok hozzáadása és konfigurálása a erőforráskorlátok a készlet és az adatbázisokhoz.
+A készlet erőforrásainak és díjszabásának konfigurálásához kattintson a **készlet konfigurálása**elemre. Ezután válasszon ki egy szolgáltatási szintet, adja hozzá az adatbázisokat a készlethez, és konfigurálja az erőforrás-korlátokat a készlethez és az adatbázisaihoz.
 
-Befejezése után a készlet konfigurálása, kattintson az "Alkalmaz", a készlet nevét, és kattintson az "OK" gombra a készlet létrehozásához.
+Ha befejezte a készlet konfigurálását, kattintson az Alkalmaz gombra, nevezze el a készletet, majd kattintson az OK gombra a készlet létrehozásához.
 
-## <a name="monitor-an-elastic-pool-and-its-databases"></a>Rugalmas készlet és a hozzá tartozó adatbázisok figyelése
+## <a name="monitor-an-elastic-pool-and-its-databases"></a>Rugalmas készlet és adatbázisainak figyelése
 
-Az Azure Portalon követheti nyomon a rugalmas készlet és az adott készletben lévő adatbázisok felhasználását. Módosítások egy készletének a rugalmas készlet részeként győződjön meg arról, és az összes változtatás mentése egyszerre is. Ezek a változások a következők hozzáadása vagy eltávolítása az adatbázisok, a rugalmas készlet beállításainak módosítása vagy az adatbázis-beállítások módosítása.
+A Azure Portal egy rugalmas készlet és a készleten belüli adatbázisok kihasználtságának figyelésére van lehetőség. A rugalmas készlet módosításait is elvégezheti, és egyszerre is elküldheti az összes módosítást. Ezek a változások közé tartoznak az adatbázisok hozzáadása vagy eltávolítása, a rugalmas készlet beállításainak módosítása vagy az adatbázis beállításainak módosítása.
 
-A rugalmas készlet figyelése, keresse meg és nyissa meg a rugalmas készlet a portálon. Először megjelenik egy képernyő, amely áttekintést nyújt a rugalmas készlet állapotát. Az érintett műveletek közé tartoznak az alábbiak:
+A rugalmas készlet figyelésének megkezdéséhez keresse meg és nyissa meg a portálon egy rugalmas készletet. Ekkor megjelenik egy képernyő, amely áttekintést nyújt a rugalmas készlet állapotáról. Az érintett műveletek közé tartoznak az alábbiak:
 
-- Diagramok erőforrások használatát a rugalmas készlet figyelése
-- Legutóbbi riasztások és javaslatok, ha elérhető, a rugalmas készlet
+- A rugalmas készlet erőforrásainak használatát bemutató diagramok figyelése
+- A rugalmas készletre vonatkozó legutóbbi riasztások és javaslatok, ha vannak ilyenek
 
-A következő ábrán látható egy példa a rugalmas készlet:
+Az alábbi ábrán egy példaként szolgáló rugalmas készlet látható:
 
-![Készlet megtekintése](./media/sql-database-elastic-pool-manage-portal/basic.png)
+![Készlet nézet](./media/sql-database-elastic-pool-manage-portal/basic.png)
 
-Ha azt szeretné, hogy további információ a készlet is kattinthat bármelyik ebben a cikkben áttekintjük a rendelkezésre álló információt. Kattintson a a **erőforrás-használat** diagram léphet az Azure figyelési nézet szabhatók testre a metrikák és idő ablakban látható a diagramon. Elérhető értesítések kattintva léphet egy riasztás vagy javaslat részletei panel.
+Ha további információra van szüksége a készletről, kattintson a jelen áttekintés bármely elérhető információja lehetőségre. Az erőforrás- **kihasználtsági** diagramra kattintva megtekintheti az Azure figyelési nézetét, ahol testreszabhatja a diagramon látható mérőszámokat és időablakokat. Az elérhető értesítések bármelyikére kattintva megnyílik egy panel, amely a riasztás vagy javaslat részletes adatait jeleníti meg.
 
-Ha szeretné figyelni a készleten belüli adatbázisok, kattintson a **adatbázis-erőforrás-használat** a a **figyelés** szakaszában az erőforrás a bal oldali menüben.
+Ha a készletben lévő adatbázisokat szeretné figyelni, kattintson a bal oldali erőforrás menü **figyelés** szakaszában található **adatbázis-Erőforrás kihasználtsága** lehetőségre.
 
-![Adatbázis erőforrás-felhasználási oldalon](./media/sql-database-elastic-pool-manage-portal/db-utilization.png)
+![Adatbázis-Erőforrás kihasználtsága lap](./media/sql-database-elastic-pool-manage-portal/db-utilization.png)
 
-### <a name="to-customize-the-chart-display"></a>Diagram megjelenítéséhez
+### <a name="to-customize-the-chart-display"></a>A diagram megjelenítésének testreszabása
 
-Módosíthatja a diagram és a metrika lap más mérőszámokat, például a CPU, adat IO százalékos aránya, és napló i/o (%) használt megjelenítéséhez.
+A diagram és a metrika oldalon szerkesztheti az egyéb mérőszámokat, például a CPU-százalékot, az adatio-százalékos arányt, valamint a napló i/o-százalékos arányát.
 
-Az a **diagram szerkesztése** képernyőn kiválaszthatja fix időpontot tartományt, vagy kattintson a **egyéni** bármely 24 órás időszakon belül az elmúlt két hétben, majd válassza ki és az erőforrások a figyelésére való.
+A **diagram szerkesztése** űrlapon kiválaszthat egy rögzített időtartományt, vagy az **Egyéni** lehetőségre kattintva kiválaszthatja a 24 órás időszakot az elmúlt két hétben, majd kiválaszthatja a figyelni kívánt erőforrásokat.
 
-### <a name="to-select-databases-to-monitor"></a>Válassza ki az adatbázisok figyelése
+### <a name="to-select-databases-to-monitor"></a>A figyelni kívánt adatbázisok kiválasztása
 
-A diagram a alapértelmezés szerint a **Adabáziserőforrás-felhasználás** panelen jelennek meg az első 5 adatbázisok dtu-k vagy a CPU (attól függően, a szolgáltatási szintben). Jelölje ki, és a listából a diagram a bal oldalon a jelölőnégyzetek segítségével alatt adatbázisok unselecting mentése ezen a diagramon az adatbázisok válthat.
+Alapértelmezés szerint az **adatbázis-Erőforrás kihasználtsága** panelen az első 5 adatbázis jelenik meg a DTU vagy a CPU alapján (a szolgáltatási szintjétől függően). A diagramon lévő adatbázisokat úgy állíthatja be, hogy kijelöli és törli az adatbázisok kijelölését a diagram alatti listából a bal oldali jelölőnégyzetek segítségével.
 
-Válassza ki a nézet egymás mellett az adatbázis-tábla az adatbázisok teljesítményének teljes képet kaphat a további metrikák is.
+További mérőszámokat is kiválaszthat az adatbázis-táblázat egymás melletti megtekintéséhez, így átfogóbb képet kaphat az adatbázis teljesítményéről.
 
-További információkért lásd: [SQL Database-riasztások létrehozása az Azure Portalon](sql-database-insights-alerts-portal.md).
+További információ: [SQL Database riasztások létrehozása Azure Portalokban](sql-database-insights-alerts-portal.md).
 
 ## <a name="customer-case-studies"></a>Ügyféleset-tanulmányok
 
 - [SnelStart](https://azure.microsoft.com/resources/videos/azure-sql-database-case-study-snelstart/)
 
-  SnelStart az Azure SQL Database rugalmas készletek segítségével rövid idő alatt bontsa ki az üzleti szolgáltatások 1000 új Azure SQL-adatbázis havi gyakorisággal.
+  A SnelStart rugalmas készleteket használt Azure SQL Databaseekkel, hogy havonta gyorsan bővítse üzleti szolgáltatásait, 1 000 új Azure SQL Database-adatbázist.
 
 - [Umbraco](https://azure.microsoft.com/resources/videos/azure-sql-database-case-study-umbraco/)
 
-  Umbraco az Azure SQL Database rugalmas készletek használatával gyorsan több ezer felhőalapú bérlők kiépítését és méretezését szolgáltatásokat.
+  A árnyék rugalmas készleteket használ a Azure SQL Database segítségével, amelyekkel gyorsan kiépítheti és méretezheti a szolgáltatásokat több ezer bérlő számára a felhőben.
 
-- [Daxko/CSI](https://customers.microsoft.com/story/csi-used-azure-to-accelerate-its-development-cycle-and-to-enhance-its-customer-services)
+- [Daxko/CSI](https://customers.microsoft.com/story/726277-csi-daxko-partner-professional-service-azure)    
 
-  Daxko/CSI lerövidítsék a szoftverfejlesztési ciklusokat, és az ügyfélszolgálat és a teljesítmény javítása érdekében használja az Azure SQL Database rugalmas készleteket.
+   A Daxko/CSI rugalmas készleteket használ Azure SQL Database a fejlesztési ciklus felgyorsításához, valamint az ügyfelek szolgáltatásainak és teljesítményének növeléséhez.   
 
 ## <a name="next-steps"></a>További lépések
 
-- Tekintse meg a rugalmas készletek vertikális felskálázásához [skálázás rugalmas készletek](sql-database-elastic-pool.md) és [méretezhető rugalmas készlet – mintakód](scripts/sql-database-monitor-and-scale-pool-powershell.md)
-- Egy videót [Microsoft Virtual Academy videotanfolyam az Azure SQL Database rugalmas funkcióiról](https://mva.microsoft.com/training-courses/elastic-database-capabilities-with-azure-sql-db-16554)
+- Rugalmas készletek méretezése: [rugalmas készletek skálázása](sql-database-elastic-pool-scale.md) és [rugalmas készlet méretezése – mintakód](scripts/sql-database-monitor-and-scale-pool-powershell.md)
+- A videókkal kapcsolatban lásd: [a Microsoft Virtual Academy videós kurzusa Azure SQL Database rugalmas képességek](https://mva.microsoft.com/training-courses/elastic-database-capabilities-with-azure-sql-db-16554)
 - A rugalmas készleteket használó SaaS-alkalmazások szerkezeti kialakításainak alaposabb megismeréséhez olvassa el a [Tervminták több-bérlős SaaS-alkalmazásokhoz Azure SQL Database esetén](sql-database-design-patterns-multi-tenancy-saas-applications.md) című részt.
-- Rugalmas készleteket használó SaaS oktatóanyagért lásd: [– a Wingtip SaaS-alkalmazás bevezetés](sql-database-wtp-overview.md).
+- A rugalmas készleteket használó SaaS-oktatóanyagért tekintse [meg a Wingtip SaaS-alkalmazás bemutatása](sql-database-wtp-overview.md)című témakört.

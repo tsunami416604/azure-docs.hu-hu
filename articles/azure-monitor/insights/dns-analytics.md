@@ -1,6 +1,6 @@
 ---
-title: DNS Analytics megoldás az Azure Monitor |} A Microsoft Docs
-description: Állítsa be, és az Azure Monitor a DNS Analytics megoldás segítségével gyűjtse össze a DNS-infrastruktúra a biztonság, teljesítmény és műveletek.
+title: DNS Analytics megoldás a Azure Monitorban | Microsoft Docs
+description: A Azure Monitor DNS Analytics megoldásának beállítása és használata a DNS-infrastruktúra biztonságával, teljesítményével és műveleteivel kapcsolatos információk gyűjtésére.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
-ms.openlocfilehash: 6dd5872d5ec3e79e3c76b1807aea946015fb0eac
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: ad61743751ace9ca0c7eba12ffcea5f15e1157d5
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521023"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316183"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Gyűjtsön információt a DNS-infrastruktúra, a DNS Analytics előzetes verziójának megoldással kapcsolatos
 
 ![DNS Analytics szimbólum](./media/dns-analytics/dns-analytics-symbol.png)
 
-Ez a cikk bemutatja, hogyan beállítását és az Azure Monitor az Azure DNS Analytics megoldás segítségével gyűjtse össze a DNS-infrastruktúra a biztonsági, teljesítmény és a műveletek.
+Ez a cikk azt ismerteti, hogyan állíthatja be és használhatja a Azure Monitor Azure DNS elemzési megoldását, hogy betekintést gyűjtsön a DNS-infrastruktúrába a biztonság, a teljesítmény és a műveletek terén.
 
 DNS-elemzés révén:
 
@@ -44,19 +44,19 @@ A következő táblázat ismerteti a megoldás által támogatott csatlakoztatot
 | --- | --- | --- |
 | [Windows-ügynökök](../platform/agent-windows.md) | Igen | A megoldás a DNS-adatok Windows-ügynököktől gyűjti. |
 | [Linux-ügynökök](../learn/quick-collect-linux-computer.md) | Nem | A megoldás nem DNS-információkat gyűjtsön a közvetlen Linux-ügynökök. |
-| [System Center Operations Manager felügyeleti csoport](../platform/om-agents.md) | Igen | A megoldás a DNS-adatok egy csatlakoztatott az Operations Manager felügyeleti csoportban lévő ügynököktől gyűjti. Az Azure monitornak közvetlen kapcsolat legyen az Operations Manager-ügynök nem kötelező. Adatok lesznek továbbítva a felügyeleti csoportból a Log Analytics-munkaterületet. |
+| [System Center Operations Manager felügyeleti csoport](../platform/om-agents.md) | Igen | A megoldás a DNS-adatok egy csatlakoztatott az Operations Manager felügyeleti csoportban lévő ügynököktől gyűjti. Nem szükséges közvetlen kapcsolódás a Operations Manager ügynöktől a Azure Monitorhoz. Adatok lesznek továbbítva a felügyeleti csoportból a Log Analytics-munkaterületet. |
 | [Azure Storage-fiók](../platform/collect-azure-metrics-logs.md) | Nem | A megoldás az Azure storage nem használja. |
 
 ### <a name="data-collection-details"></a>Adatok gyűjtése részletei
 
-A megoldás gyűjti DNS-leltár- és DNS-esemény kapcsolatos adatokat a DNS-kiszolgálók ahol egy Log Analytics-ügynök telepítve van. Ezeket az adatokat ezután feltölti az Azure Monitor és a megoldás irányítópultján jelenik meg. A DNS PowerShell-parancsmagok futtatása leltárhoz kapcsolódó adatok, például a DNS-kiszolgálók, zónák és rekordok, számát gyűjti. Az adatok két naponta egyszer frissül. Az esemény-kapcsolódó adatok gyűjtése történik, közel valós időben a [elemzési és auditnaplók](https://technet.microsoft.com/library/dn800669.aspx#enhanc) továbbfejlesztett DNS-naplózás és diagnosztika a Windows Server 2012 R2 által biztosított.
+A megoldás gyűjti DNS-leltár- és DNS-esemény kapcsolatos adatokat a DNS-kiszolgálók ahol egy Log Analytics-ügynök telepítve van. Ezt követően a rendszer feltölti ezeket az adatAzure Monitor, és megjeleníti a megoldás irányítópultján. A DNS PowerShell-parancsmagok futtatása leltárhoz kapcsolódó adatok, például a DNS-kiszolgálók, zónák és rekordok, számát gyűjti. Az adatok két naponta egyszer frissül. Az esemény-kapcsolódó adatok gyűjtése történik, közel valós időben a [elemzési és auditnaplók](https://technet.microsoft.com/library/dn800669.aspx#enhanc) továbbfejlesztett DNS-naplózás és diagnosztika a Windows Server 2012 R2 által biztosított.
 
 ## <a name="configuration"></a>Konfiguráció
 
 A megoldás konfigurálásához kövesse az alábbi adatokat:
 
 - Rendelkeznie kell egy [Windows](../platform/agent-windows.md) vagy [az Operations Manager](../platform/om-agents.md) ügynököt mindegyik figyelni kívánt DNS-kiszolgálón.
-- A DNS Analytics megoldás a Log Analytics-munkaterületet is hozzáadhat a [Azure Marketplace-en](https://aka.ms/dnsanalyticsazuremarketplace). Is használhatja a leírt folyamatot [hozzáadása az Azure Monitor megoldások kövesse a megoldástárban](solutions.md).
+- A DNS Analytics megoldás a Log Analytics-munkaterületet is hozzáadhat a [Azure Marketplace-en](https://aka.ms/dnsanalyticsazuremarketplace). Használhatja a [Solutions Gallery Azure monitor-megoldások hozzáadása](solutions.md)című részében ismertetett eljárást is.
 
 A megoldás elindult, nincs szükség további konfigurációs adatok gyűjtése. A következő konfiguráció használatával azonban adatgyűjtés testreszabása.
 
@@ -64,7 +64,7 @@ A megoldás elindult, nincs szükség további konfigurációs adatok gyűjtése
 
 A megoldás irányítópultján kattintson **konfigurációs** a DNS Analytics konfigurációs lap megnyitásához. Konfigurációs módosításokat végezhet két típusa van:
 
-- **Engedélyezett tartománynevek**. A megoldás nem dolgozza fel azokat a keresési lekérdezéseket. A tartománynév-utótagokat tartalmazó engedélyezési listát tárol. A keresési lekérdezéseket, hogy a megfelelő tartománynév-utótagokat az engedélyezési listán szereplő tartománynevek nem dolgozza fel a megoldás. Nem dolgozza fel az engedélyezési listához hozzáadni kívánt tartománynevek segít az Azure Monitor küldött adatok optimalizálása érdekében. Az alapértelmezett engedélyezési lista népszerű tartományneveket, mint például www.google.com, www.facebook.com és magában foglalja. Az alapértelmezett teljes lista megtekintéséhez görgetés.
+- **Engedélyezett tartománynevek**. A megoldás nem dolgozza fel azokat a keresési lekérdezéseket. A tartománynév-utótagokat tartalmazó engedélyezési listát tárol. A keresési lekérdezéseket, hogy a megfelelő tartománynév-utótagokat az engedélyezési listán szereplő tartománynevek nem dolgozza fel a megoldás. Az engedélyezett tartománynevek feldolgozásának mellőzése segít optimalizálni a Azure Monitor elküldhető adatátvitelt. Az alapértelmezett engedélyezési lista népszerű tartományneveket, mint például www.google.com, www.facebook.com és magában foglalja. Az alapértelmezett teljes lista megtekintéséhez görgetés.
 
   Módosíthatja bármely tartománynév utótagja, hogy meg szeretné tekinteni a keresési insights hozzáadása a listában. Valamint eltávolíthatja bármely tartománynév utótagja nem szeretnénk a keresési elemzések megtekintése.
 
@@ -76,11 +76,11 @@ A megoldás irányítópultján kattintson **konfigurációs** a DNS Analytics k
 
 Ha a Microsoft Monitoring Agent a Log Analytics-munkaterülethez való kapcsolódáshoz használ, a következő felügyeleti csomag telepítve van:
 
-- Microsoft DNS Data Collector Intelligence Pack (Microsoft.IntelligencePacks.Dns)
+- Microsoft DNS-adatgyűjtő Intelligence Pack (Microsoft. IntelligencePacks. DNS)
 
 Ha az Operations Manager felügyeleti csoportban a Log Analytics-munkaterülethez van csatlakoztatva, a következő felügyeleti csomagokat az Operations Manager települnek, ha ez a megoldás hozzáadásakor. Ne legyen kötelező konfigurációs vagy karbantartási a felügyeleti csomagok:
 
-- Microsoft DNS Data Collector Intelligence Pack (Microsoft.IntelligencePacks.Dns)
+- Microsoft DNS-adatgyűjtő Intelligence Pack (Microsoft. IntelligencePacks. DNS)
 - Microsoft System Center Advisor DNS Analytics Configuration (Microsoft.IntelligencePack.Dns.Configuration)
 
 A megoldási felügyeleti csomagok frissítéseivel kapcsolatban lásd: [Az Operations Manager csatlakoztatása a Log Analyticshez](../platform/om-agents.md).
@@ -90,7 +90,7 @@ A megoldási felügyeleti csomagok frissítéseivel kapcsolatban lásd: [Az Oper
 [!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
 
 
-A DNS-csempe tartalmazza a DNS-kiszolgálók, ahol az adatokat gyűjtenek számát. Rosszindulatú tartományok feloldani az elmúlt 24 órában az ügyfelek által végrehajtott kérelmek száma is tartalmaz. Ha a csempére kattint, megnyílik a megoldás irányítópultján.
+A DNS-csempe tartalmazza azon DNS-kiszolgálók számát, amelyeken az adatok gyűjtése történik. Rosszindulatú tartományok feloldani az elmúlt 24 órában az ügyfelek által végrehajtott kérelmek száma is tartalmaz. Ha a csempére kattint, megnyílik a megoldás irányítópultján.
 
 ![DNS Analytics tile](./media/dns-analytics/dns-tile.png)
 
@@ -179,14 +179,17 @@ A naplók keresése oldalát létrehozhat egy lekérdezést. A keresési eredmé
 1. Az a **lekérdezés keresőmezőbe**, típus `DnsInventory` összes DNS leltárhoz kapcsolódó adatok megtekintéséhez a megoldás által felügyelt DNS-kiszolgálók esetén. Az eredményeket a naplóadatok a DNS-kiszolgálók, DNS-zónák és rekordok listája.
 
     ![DnsInventory naplók keresése](./media/dns-analytics/log-search-dnsinventory.png)
+    
+## <a name="troubleshooting"></a>Hibaelhárítás
+
+Gyakori hibaelhárítási lépések:
+
+1. Hiányzó DNS-keresési információ – a probléma megoldásához próbálja meg alaphelyzetbe állítani a konfigurációt, vagy csak egyszer töltse be a konfigurációs oldalt a portálon. Az alaphelyzetbe állításhoz egyszerűen módosítsa a beállítást egy másik értékre, majd állítsa vissza az eredeti értékre, és mentse a konfigurációt.
 
 ## <a name="feedback"></a>Visszajelzés
 
-Kétféleképpen visszajelzést is:
-
-- **UserVoice**. Közzététele a DNS-elemzési funkciók működését az ötleteit. Látogasson el a [Log Analytics UserVoice-lapunkon](https://aka.ms/dnsanalyticsuservoice).
-- **Csatlakozzon a kohorsz**. Mindig érdekel rendelkező új ügyfeleket az új funkciók korai hozzáférést kaphat, és segítsen még jobbá tenni a DNS Analytics kohorszok csatlakozzon. Ha érdekli a kohorszok való csatlakozás, töltse ki [ez rövid felmérés](https://aka.ms/dnsanalyticssurvey).
+A visszajelzések megadásához látogasson el a [log Analytics UserVoice oldalára](https://aka.ms/dnsanalyticsuservoice) , és tegye fel ötleteit DNS Analytics funkcióinak működéséhez. 
 
 ## <a name="next-steps"></a>További lépések
 
-[Naplók lekérdezése](../log-query/log-query-overview.md) részletes DNS-rekordok naplózása megtekintéséhez.
+[Lekérdezési naplók](../log-query/log-query-overview.md) a részletes DNS-naplóbejegyzések megtekintéséhez.

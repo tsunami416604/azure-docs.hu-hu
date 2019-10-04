@@ -1,7 +1,6 @@
 ---
 title: A HDInsight - Azure WebHCat-hibák megértése és megoldása
 description: Ismerje meg, hogyan körülbelül gyakran előforduló hibák által visszaadott WebHCat a HDInsight és azok megoldását.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: f158e08f0f882801dc488721013e9705ea4ff738
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: cfbd42a67f9c9d6c66df3787b53575dc9e918e35
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58448313"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67067989"
 ---
 # <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>A HDInsight a webhcat használatával fogadott hibák megértése és megoldása
 
@@ -33,8 +32,6 @@ Ismerje meg hibaüzenetek érkeztek az WebHCat használata a HDInsight és azok 
 
 * A **Linux** fürtök: Az Apache Ambari (webes vagy a REST API), módosítsa az értéket használja. További információkért lásd: [kezelése HDInsight az Apache Ambari](hdinsight-hadoop-manage-ambari.md)
 
-> [!IMPORTANT]  
-> A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ### <a name="default-configuration"></a>Alapértelmezett konfiguráció
 
@@ -46,7 +43,7 @@ Túllépik a következő alapértelmezett értékek, ha azt WebHCat teljesítmé
 | [templeton.exec.max-procs][max-procs] |Is kiszolgálható kérelmek maximális száma |20 |
 | [mapreduce.jobhistory.max ezredmásodperces kora][max-age-ms] |A feladatelőzmények napok számának megmaradnak. |7 nap |
 
-## <a name="too-many-requests"></a>Túl sok a kérelem
+## <a name="too-many-requests"></a>Túl sok kérelem
 
 **HTTP-állapotkód**: 429
 

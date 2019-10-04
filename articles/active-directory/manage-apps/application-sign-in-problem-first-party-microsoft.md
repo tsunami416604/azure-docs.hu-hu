@@ -3,8 +3,8 @@ title: Egy Microsoft-alkalmazásba történő bejelentkezésnél |} A Microsoft 
 description: Belső Microsoft Applications (például Office 365) az Azure AD-vel való bejelentkezéskor problémákkal kapcsolatos gyakori problémák elhárítása
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/10/2018
-ms.author: celested
+ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0522311c12da8416504a6d502e1e2247ff8ce15b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7ee8802aeb2a760e255ab4f5e99010dfedc45e0d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58104148"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108303"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>Egy Microsoft-alkalmazásba történő bejelentkezésnél
 
@@ -31,7 +31,7 @@ Hogy egy felhasználó kaphat-e a Microsoft által közzétett alkalmazás háro
 
 -   Az Office 365 vagy más fizetős csomagok az alkalmazások, felhasználók kapjanak hozzáférést keresztül **licenc-hozzárendelés** közvetlenül a saját felhasználói fiókot, vagy egy csoport, a Csoportalapú licenc-hozzárendelés funkcióval.
 
--   A alkalmazások számára, amely közzéteszi a Microsoft vagy egy harmadik féltől származó megkötések nélkül bárki használandó, felhasználókat lehet, hogy hozzáférést keresztül **felhasználói beleegyezés**. This0 azt jelenti, hogy azok jelentkezzen be az alkalmazás Azure AD munkahelyi vagy iskolai fiókjával, és lehetővé teszi, hogy a fiók lehet elérni egyes adatok korlátozott készletét.
+-   A alkalmazások számára, amely közzéteszi a Microsoft vagy egy harmadik féltől származó megkötések nélkül bárki használandó, felhasználókat lehet, hogy hozzáférést keresztül **felhasználói beleegyezés**. Ez azt jelenti, hogy azok jelentkezzen be az alkalmazás Azure AD munkahelyi vagy iskolai fiókjával, és lehetővé teszi, hogy a fiók lehet elérni egyes adatok korlátozott készletét.
 
 -   A alkalmazások számára, amely közzéteszi a Microsoft vagy a 3. fél megkötések nélkül bárki használandó, felhasználókat lehet, hogy is hozzáférhetnek, keresztül **rendszergazdai jóváhagyást**. Ez azt jelenti, hogy a rendszergazda azt észlelte, az alkalmazás által a szervezet minden tagja használhatók, így jelentkezzen be az alkalmazás egy globális rendszergazdai fiókkal, és a hozzáférési jogot a szervezet minden tagja.
 
@@ -87,7 +87,7 @@ Az alábbiakban néhány gyakori probléma, azok számára be futtassa, amikor a
 
 - A **Microsoft** **alkalmazások, amelyeknek nincs szükségük licencre**, néhány további tevékenység következik, ellenőrizheti:
 
-  * Ha az alkalmazás által kért **felhasználói szintű engedélyek** (például "hozzáférni a felhasználó postaládájához"), győződjön meg arról, hogy a felhasználó bejelentkezett az alkalmazás- és hajtott végre egy **felhasználóiszintűengedéllyelaművelet** ahhoz, hogy az alkalmazás számára az adatok eléréséhez.
+  * Ha az alkalmazás által kért **felhasználói szintű engedélyek** (például "hozzáférni a felhasználó postaládájához"), győződjön meg arról, hogy a felhasználó bejelentkezett az alkalmazás- és hajtott végre egy **felhasználóiszintűengedéllyelaművelet** ahhoz, hogy az alkalmazás hozzáférhetnek az adataikhoz.
 
   * Ha az alkalmazás által kért **rendszergazdai szintű engedélyekkel a** (például "hozzáférés az összes felhasználói postaládákhoz"), győződjön meg arról, hogy elvégezte-e globális rendszergazda egy **rendszergazdai jóváhagyás művelet az összes olyan felhasználó nevében** a szervezetben.
 
@@ -435,7 +435,7 @@ Ellenőrizze, vagy ellenőrizheti a egyetlen feltételes hozzáférési szabály
 
 6. Jelölje ki az Önt érdeklő vizsgálatával házirendet.
 
-7. Tekintse át, hogy nincsenek-e nincsenek konkrét feltételek, hozzárendelések vagy más beállítást, amellyel a felhasználók hozzáférését blokkolja.
+7. Tekintse át, hogy nincsenek-e nincsenek konkrét feltételek, hozzárendelések vagy letilthatja a felhasználói hozzáférést egyéb beállításait.
 
    >[!NOTE]
    >Érdemes lehet ideiglenesen letiltja ezt a házirendet, győződjön meg arról, nincs hatással a bejelentkezések. Ehhez állítsa be a **házirend engedélyezése** kapcsolót **nem** , és kattintson a **mentése** gombra.
@@ -456,7 +456,7 @@ Ellenőrizze, vagy ellenőrizheti a egyetlen alkalmazás jelenleg a feltételes 
 
 5.  Kattintson a **minden alkalmazás**.
 
-6.  Keresse meg az Önt érdeklő alkalmazás vagy a felhasználó megpróbálja jelentkezzen be az alkalmazás megjelenített neve vagy azonosítója.
+6.  Keresse meg az Önt érdeklő alkalmazás vagy a felhasználó megpróbál bejelentkezni az alkalmazás megjelenítendő neve vagy az alkalmazás azonosítóját.
 
      >[!NOTE]
      >Ha nem látja a keresett alkalmazást, kattintson a **szűrő** gombra, és bontsa ki a lista hatókörét **minden alkalmazás**. Ha meg szeretné tekinteni a több oszlopot, kattintson a **oszlopok** gombra kattintva adhat hozzá további részletek az alkalmazások számára.
@@ -512,7 +512,7 @@ Alkalmazás-hozzáférés blokkolva lesz, mert a megfelelő engedélyekkel a jó
 
 ### <a name="perform-administrator-level-consent-operation-for-any-application"></a>Rendszergazdai jóváhagyás művelet bármely alkalmazás
 
--   A **csak a V1-alkalmazásmodell használatával fejlesztett alkalmazások**, kényszerítheti a rendszergazdai szintű jóváhagyást hozzáadásával történjen "**? rendszergazdai parancssorból =\_hozzájárulás**" végére egy alkalmazás a bejelentkezési URL-CÍMÉT.
+-   A **csak a V1-alkalmazásmodell használatával fejlesztett alkalmazások**, kényszerítheti a rendszergazdai szintű jóváhagyást hozzáadásával történjen " **? rendszergazdai parancssorból =\_hozzájárulás**" végére egy alkalmazás a bejelentkezési URL-CÍMÉT.
 
 -   A **bármilyen alkalmazást fejleszteni a V2-alkalmazásmodell használatával**, kényszerítheti a rendszergazdai jóváhagyás alatt utasításai alapján történjen a **engedélyeket kérhet a directory-rendszergazda** szakaszában [a rendszergazdai jóváhagyás végpont használatával](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint).
 

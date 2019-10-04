@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 01/09/2019
+ms.date: 06/18/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand what Data Box Disk is and how it works so I can use it to import on-premises data into Azure.
-ms.openlocfilehash: 96ff843ada9d9043d2c10f479d488617ae56da41
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 067d818b7d23fc0b83cb1d4255bfbb8659149412
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58497720"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204768"
 ---
 # <a name="what-is-azure-data-box-disk"></a>Mi az az Azure Data Box Disk-lemez?
 
@@ -89,20 +89,7 @@ További információt az [Azure Data Box biztonsága és adatvédelme](data-box
 
 ## <a name="region-availability"></a>Régiónkénti elérhetőség
 
-Jelenleg Data Box-lemezek adatokat adhatnak át a következő Azure-régiókhoz:
-
-
-|Azure-régió  |Azure-régió  |
-|---------|---------|
-|USA nyugati középső régiója     |Közép-Kanada       |        
-|USA 2. nyugati régiója     |Kelet-Kanada         |     
-|USA nyugati régiója     | Nyugat-Európa        |      
-|USA déli középső régiója   |Észak-Európa     |         
-|USA középső régiója     |Kelet-Ausztrália|
-|USA északi középső régiója  |Délkelet-Ausztrália   |
-|USA keleti régiója      |Ausztrália középső régiója |
-|USA 2. keleti régiója     |Ausztrália 2. középső régiója|
-|Kelet-Japán     |Korea középső régiója |
+Információk a régiók rendelkezésre állása, [elérhető Azure-termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Az Azure Government cloud Data Box-lemezek is telepíthető. További információkért lásd: [Mi az Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome).
 
 
 ## <a name="pricing"></a>Díjszabás

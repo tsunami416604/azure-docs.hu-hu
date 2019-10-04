@@ -1,7 +1,7 @@
 ---
-title: Tartalom alkalmazása-lemezképek – Computer Vision címkék
+title: Tartalom címkék – Computer Vision
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, a címkézés funkcióját a Computer Vision API képeket kapcsolatos fogalmakat.
+description: A Computer Vision API lemezképek címkézési funkciójával kapcsolatos fogalmak megismerése.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,24 +11,24 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: aeb03566a650fe46286d77913e0d36dcbb19f436
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: ad01751f7f7c573352c8fd15cc0f8cc2ebbbe700
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311069"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945111"
 ---
-# <a name="applying-content-tags-to-images"></a>Képek tartalmának címkékkel
+# <a name="applying-content-tags-to-images"></a>Tartalomcímkék alkalmazása képekre
 
-Számítógépes Látástechnológia alapján ad vissza címkéket ezer felismerhető objektumok, tárgy, táj és műveleteket. Amennyiben a címkék félreérthetőek vagy nem közismertek, az API válasza „tippeket” tartalmaz a címke adott környezetben való értelmezésének megkönnyítése érdekében. A címkékhez nincs besorolási rendszer és öröklési hierarchia. A tartalomcímkék gyűjteménye képezi a kép ember által olvasható nyelven, teljes mondatokban megformált „leírásának” alapját. Fontos tudni, hogy a képleírásokhoz jelenleg csak az angol nyelv támogatott.
+A Computer Vision több ezer felismerhető objektum, élő lény, díszlet és művelet alapján ad vissza címkéket. Amennyiben a címkék félreérthetőek vagy nem közismertek, az API válasza „tippeket” tartalmaz a címke adott környezetben való értelmezésének megkönnyítése érdekében. A címkékhez nincs besorolási rendszer és öröklési hierarchia. A tartalomcímkék gyűjteménye képezi a kép ember által olvasható nyelven, teljes mondatokban megformált „leírásának” alapját. Fontos tudni, hogy a képleírásokhoz jelenleg csak az angol nyelv támogatott.
 
-Kép feltöltése vagy a kép URL-címének megadása után a Látástechnológiai algoritmus kimeneti címkék az objektumok, a tárgy és a műveletek azonosítja a kép alapján. A címkézés nem korlátozódik a kép fő témájára, például az előtérben szereplő személyre, hanem magában foglalja a környezetet (beltér vagy kültér), bútorokat, eszközöket, növényeket, állatokat, kiegészítőket, készülékeket stb.
+Egy rendszerkép feltöltését vagy egy képurl-cím megadását követően Computer Vision algoritmusok kimeneti címkéket a képen azonosított objektumok, élő lények és műveletek alapján. A címkézés nem korlátozódik a kép fő témájára, például az előtérben szereplő személyre, hanem magában foglalja a környezetet (beltér vagy kültér), bútorokat, eszközöket, növényeket, állatokat, kiegészítőket, készülékeket stb.
 
-## <a name="image-tagging-example"></a>Kép címkézési példa
+## <a name="image-tagging-example"></a>Példa a képek címkézésére
 
-A következő JSON-választ mutatja be, milyen számítógépes Látástechnológiai ad vissza, ha vizuális jellemzőket észlelhető a példaképen a címkézést.
+A következő JSON-válasz azt szemlélteti, hogy milyen Computer Vision ad vissza, amikor az ábrán látható vizualizációs funkciókat címkézi.
 
-![Egy kék ház és az első yard](./Images/house_yard.png).
+![Egy kék ház és az első udvar](./Images/house_yard.png).
 
 ```json
 {
@@ -85,4 +85,4 @@ A következő JSON-választ mutatja be, milyen számítógépes Látástechnoló
 
 ## <a name="next-steps"></a>További lépések
 
-Fogalmak ismertetése [lemezképek kategorizálásához](concept-categorizing-images.md) és [lemezképek leíró](concept-describing-images.md).
+A [képek kategorizálásával](concept-categorizing-images.md) és a [képek leírásával](concept-describing-images.md)kapcsolatos fogalmak megismerése.

@@ -10,15 +10,15 @@ ms.reviewer: mbullwin
 ms.date: 03/13/2019
 ms.author: harelbr
 ms.openlocfilehash: f984a34be1c5d5fdd18a00812107318df8f5d9bf
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57889284"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61299001"
 ---
 # <a name="smart-detection-e-mail-notification-change"></a>Az intelligens észlelési e-mailben értesítést módosítása
 
-2019. április 1., az ügyfelek visszajelzései miatt, alapján azt megváltoztatja az alapértelmezett szerepköröket, aki az e-mail-értesítések fogadása az intelligens detektálás.
+2019\. április 1., az ügyfelek visszajelzései miatt, alapján azt megváltoztatja az alapértelmezett szerepköröket, aki az e-mail-értesítések fogadása az intelligens detektálás.
 
 ## <a name="what-is-changing"></a>Mi változik?
 

@@ -1,34 +1,36 @@
 ---
-title: 'Gyors útmutató: Beszéd átalakítás, lefordítása C# (.NET Framework Windows) – beszédszolgáltatások'
+title: 'Gyors útmutató: Beszéd fordítása C# , (.NET-keretrendszer Windows) – beszédfelismerési szolgáltatás'
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban fog létrehozni egy egyszerű .NET-keretrendszer alkalmazás rögzítése felhasználói speech, azt fordítása más nyelvre és a szöveg a parancssorba. Ez az útmutató Windows-felhasználók számára tervezték.
+description: Ebben a rövid útmutatóban egy .NET-keretrendszerbeli alkalmazást hoz létre a felhasználói beszéd rögzítéséhez, lefordítani egy másik nyelvre, és kiírja a szöveget a parancssorba. Ez az útmutató Windows-felhasználók számára készült.
 services: cognitive-services
 author: wolfma61
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 03/13/2019
+ms.date: 08/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 34161989bf98f2605cbc2e238cb832523b2f23cb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bb710a3e3adb13aa3999c13043c8bb93f6b885f1
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57843323"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327346"
 ---
-# <a name="quickstart-translate-speech-with-the-speech-sdk-for-net-framework"></a>Gyors útmutató: Lefordítja a beszéd, a beszéd SDK-val .NET-keretrendszer
+# <a name="quickstart-translate-speech-with-the-speech-sdk-for-net-framework-windows"></a>Gyors útmutató: Beszéd fordítása a .NET-keretrendszerhez készült Speech SDK-val (Windows)
 
-Ebben a rövid útmutatóban fog létrehozni egy egyszerű .NET-keretrendszer alkalmazás rögzíti a felhasználó beszéd, a számítógép mikrofon, a rendszer lefordítja a beszédfelismerési és transcribes a lefordított szöveg valós időben a parancssorba. Ez az alkalmazás a 64 bites Windows rendszerhez készült, és a beépített a [beszéd SDK NuGet-csomagot](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2017-ben.
+A [beszédfelismerést](quickstart-csharp-dotnet-windows.md) és a [beszédfelismerést](quickstart-text-to-speech-dotnet-windows.md)is elérhetővé teszi.
 
-Beszédalapú fordítási elérhető nyelvek teljes listáját lásd: [nyelvi támogatás](language-support.md).
+Ebben a rövid útmutatóban egy olyan .NET-keretrendszerbeli alkalmazást fog létrehozni, amely rögzíti a felhasználói beszédet a számítógép mikrofonjában, lefordítja a beszédet, és valós időben írja át a lefordított szöveget a parancssorba. Ez az alkalmazás 32 bites vagy 64 bites Windows rendszeren is futtatható, és a [SPEECH SDK NuGet-csomagjával](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2019-mel készült.
+
+A beszédfelismeréshez elérhető nyelvek teljes listáját a [nyelvi támogatás](language-support.md)című témakörben tekintheti meg.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
-* A beszédfelismerési szolgáltatás egy Azure-előfizetés kulcs. [Igényeljen ingyenesen egy](get-started.md).
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/).
+* Egy Azure-előfizetési kulcs a beszédfelismerési szolgáltatáshoz. [Szerezze be az egyiket ingyenesen](get-started.md).
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio-projekt létrehozása
 
@@ -36,38 +38,33 @@ Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
 ## <a name="add-sample-code"></a>Mintakód hozzáadása
 
-1. Nyissa meg a `Program.cs` fájlt, és cserélje le a benne lévő teljes kódot a következőre.
+1. Nyissa meg a **program.cs**, és cserélje le az összes kódot a következőre.
 
-    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/speech-translation/csharp-dotnet-windows/helloworld/Program.cs#code)]
+   [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/speech-translation/csharp-dotnet-windows/helloworld/Program.cs#code)]
 
-1. Ugyanabban a fájlban cserélje le a `YourSubscriptionKey` sztringet az előfizetői azonosítóra.
+1. Keresse meg a `YourSubscriptionKey` karakterláncot, és cserélje le az előfizetési kulcsra.
 
-1. Cserélje le a `YourServiceRegion` sztringet az előfizetéséhez társított [régióra](regions.md) (ez a `westus` régió, ha az ingyenes próbaverzióra regisztrált).
+1. Keresse meg a `YourServiceRegion` karakterláncot, és cserélje le az előfizetéshez társított [régióra](regions.md) . Ha például az ingyenes próbaverziós előfizetést használja, akkor a régió `westus`.
 
-1. Mentse a projekt módosításait.
+1. A menüsávban válassza a **fájl**@no__t – 1**Mentés összes mentése**elemet.
 
-## <a name="build-and-run-the-app"></a>Az alkalmazás létrehozása és futtatása
+## <a name="build-and-run-the-application"></a>Az alkalmazás fordítása és futtatása
 
-1. Hozza létre az alkalmazást. A menüsávon válassza a **Létrehozás** > **Megoldás fordítása** elemet. A kód fordításának hiba nélkül kell végbe mennie.
+1. A menüsávban válassza a **build** > **Build megoldás** elemet az alkalmazás létrehozásához. A kód fordításának hiba nélkül végbe kell mennie.
 
-    ![A Visual Studio képernyőképe, amelyen ki van emelve a Megoldás fordítása lehetőség](media/sdk/qs-csharp-dotnetcore-windows-05-build.png "Sikeres létrehozás")
+1. A **HelloWorld** alkalmazás indításához válassza a **hibakeresés @no__t –** 1**Indítás hibakeresése** lehetőséget (vagy válassza az **F5 billentyűt**).
 
-1. Indítsa el az alkalmazást. A menüsávon válassza a **Hibakeresés** > **Hibakeresés indítása** lehetőséget, vagy nyomja le az **F5** billentyűt.
+1. Beszéljen egy angol kifejezéssel vagy mondattal az eszköz mikrofonjában. Az alkalmazás továbbítja a beszédet a Speech Service-nek, amely egy másik nyelven (ebben az esetben a német nyelven) szövegre fordítja a beszédet. A beszédfelismerési szolgáltatás visszaküldi a lefordított szöveget az alkalmazásnak, amely megjeleníti a fordítást az ablakban.
 
-    ![A Visual Studio képernyőképe, amelyen ki van emelve a Hibakeresés indítása lehetőség](media/sdk/qs-csharp-dotnetcore-windows-06-start-debugging.png "Hibakeresés indítása az alkalmazáson")
-
-1. Megjelenik egy konzolablak, amely arra kéri Önt, hogy mondjon valamit. Mondjon ki egy angol nyelvű kifejezést vagy mondatot. A beszéd a Speech továbbításakor, lefordított, és megjelenített érzéseket szöveg, amely ugyanabban az ablakban jelenik meg.
-
-    ![Képernyőfelvétel a konzol kimenete a sikeres fordítás után](media/sdk/qs-translate-csharp-dotnetcore-windows-output.png "Konzolkimenetet sikeres fordítás után")
+   ![Beszéd fordítás felhasználói felülete](media/sdk/qs-translate-csharp-dotnetcore-windows-output.png)
 
 ## <a name="next-steps"></a>További lépések
 
-További példákat, beszéd olvasni hangfájl, és a lefordított szöveg szintetizált, mint például a Githubon érhetők el.
+További minták, mint például a hangfájlok beszédének beolvasása és a lefordított szöveg szintetizált beszédként való kiírása, a GitHubon érhetők el.
 
 > [!div class="nextstepaction"]
-> [Ismerkedés a C# példák a Githubon](https://aka.ms/csspeech/samples)
+> [Minták C# feltárása a githubon](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>Lásd még
 
-- [Akusztikai modellek testreszabása](how-to-customize-acoustic-models.md)
-- [Nyelvi modellek testreszabása](how-to-customize-language-model.md)
+- [Custom Speech modell betanítása](how-to-custom-speech-train-model.md)

@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 04/14/2019
 ms.author: ramamill
 ms.openlocfilehash: 35c317c4b73e9a22e3b0d6192abcfc2a596066b8
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
-ms.translationtype: HT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149996"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60598269"
 ---
 # <a name="automate-mobility-service-installation-with-system-center-configuration-manager"></a>Automatizálhatja a mobilitási szolgáltatás telepítése a System Center Configuration Managerrel
 
@@ -37,7 +37,7 @@ Azt is megteheti, automatizálhatja a mobilitási szolgáltatás telepítése [A
 > [!NOTE]
 > Ez a cikk azt feltételezi, hogy a konfigurációs kiszolgáló IP-címét 192.168.3.121, és hogy a biztonságos hálózati fájlmegosztás \\\ContosoSecureFS\MobilityServiceInstallers.
 
-### <a name="prepare-for-deployment"></a>Felkészülés az üzembe helyezésre
+### <a name="prepare-for-deployment"></a>Üzembe helyezés előkészítése
 1. Hozzon létre egy mappát a hálózati megosztást, és adja neki **MobSvcWindows**.
 2. Jelentkezzen be a konfigurációs kiszolgáló, és nyisson meg egy rendszergazdai parancssort.
 3. Futtassa a következő parancsokat egy hozzáférési fájl kódjának létrehozásához:
@@ -210,7 +210,7 @@ IF NOT %ERRORLEVEL% EQU 0 (
 > [!TIP]
 > A szükségtelen újraindítások elkerülése érdekében a csomag telepítése során a havi karbantartási időszak vagy szoftver frissítéseinek ablak ütemezése.
 
-A Configuration Manager konzol használatával figyelheti az üzembehelyezési folyamatot. Lépjen a **figyelés** > **központi telepítések** > *[a package name]*.
+A Configuration Manager konzol használatával figyelheti az üzembehelyezési folyamatot. Lépjen a **figyelés** > **központi telepítések** >  *[a package name]* .
 
   ![Képernyőfelvétel: a Configuration Manager-beállítás központi telepítéseinek figyeléséhez](./media/vmware-azure-mobility-install-configuration-mgr/report.PNG)
 
@@ -218,7 +218,7 @@ A Configuration Manager konzol használatával figyelheti az üzembehelyezési f
 > [!NOTE]
 > Ez a cikk azt feltételezi, hogy a konfigurációs kiszolgáló IP-címét 192.168.3.121, és hogy a biztonságos hálózati fájlmegosztás \\\ContosoSecureFS\MobilityServiceInstallers.
 
-### <a name="prepare-for-deployment"></a>Felkészülés az üzembe helyezésre
+### <a name="prepare-for-deployment"></a>Üzembe helyezés előkészítése
 1. Hozzon létre egy mappát a hálózati megosztást, és adja neki **MobSvcLinux**.
 2. Jelentkezzen be a konfigurációs kiszolgáló, és nyisson meg egy rendszergazdai parancssort.
 3. Futtassa a következő parancsokat egy hozzáférési fájl kódjának létrehozásához:

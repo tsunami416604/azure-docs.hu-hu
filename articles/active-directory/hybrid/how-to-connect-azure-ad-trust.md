@@ -19,11 +19,11 @@ author: billmath
 ms.custom: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8bd46bb820c7127c4fa6105fcc0be73bb66024c6
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57446639"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60245707"
 ---
 # <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>AD FS-megbízhatóság kezelése az Azure AD Connect használatával az Azure AD-vel
 
@@ -41,7 +41,7 @@ Kezeli az Azure AD Connect **csak** Azure AD-megbízhatóság kapcsolatos beáll
 
 | Beállítás | Leírás |
 | :--- | :--- |
-| Jogkivonat-aláíró tanúsítvány | Az Azure AD Connect alaphelyzetbe állítása, és hozza létre újból a bizalmi kapcsolat az Azure ad-vel is használható. Az Azure AD Connect egy jogkivonat-aláíró tanúsítványok közvetlen egyszeri kapcsolódó kulcsváltást nem az AD FS-hez, és frissíti az Azure AD-tartomány összevonási beállításokat.|
+| Jogkivonat-aláíró tanúsítványa | Az Azure AD Connect alaphelyzetbe állítása, és hozza létre újból a bizalmi kapcsolat az Azure ad-vel is használható. Az Azure AD Connect egy jogkivonat-aláíró tanúsítványok közvetlen egyszeri kapcsolódó kulcsváltást nem az AD FS-hez, és frissíti az Azure AD-tartomány összevonási beállításokat.|
 | Jogkivonat-aláíró algoritmus | A Microsoft javasolja, hogy a jogkivonat-aláíró algoritmus SHA-256 algoritmust használ. Az Azure AD Connect képes észlelni, ha a jogkivonat-aláíró algoritmus értékre van állítva egy kevésbé biztonságos, mint az SHA-256 algoritmust. A következő lehetséges konfigurációs művelet frissíti a beállítás az SHA-256. Más függő entitás megbízhatóságához frissíteni kell, hogy az új jogkivonat-aláíró tanúsítványt használja. |
 | Az Azure AD megbízhatóságának azonosítója | Az Azure AD Connect beállítja az Azure AD-megbízhatóság megfelelő azonosító értékét. Az AD FS egyedileg azonosítja az Azure AD-megbízhatóság azonosító értékének használatával. |
 | Azure AD-végpontok | Az Azure AD Connect gondoskodik arról, hogy a végpont konfigurálva az Azure AD-megbízhatóság mindig a legújabb ajánlott értékeit a rugalmasság és teljesítmény alapján. |
@@ -59,7 +59,7 @@ Az Azure AD connect nem az Azure AD-megbízhatóság minden beállítások friss
 | Először át telepítési (express) | None |
 | Először adja át a telepítési (új AD FS-farm) | Létrejön egy új AD FS-farm, és az Azure AD-megbízhatóság jön létre sablon nélkül. |
 | Először át telepítése (meglévő AD FS-farm, meglévő Azure AD-megbízhatóság) | Az Azure AD megbízhatóságának azonosítója, a kiadás átalakítási szabályai, az Azure AD-végpontok, másodlagos-azonosítója (ha szükséges), az automatikus metaadat-frissítés |
-| Azure AD-megbízhatóság alaphelyzetbe állítása | A jogkivonatot aláíró tanúsítvánnyal, jogkivonat-aláíró algoritmus, az Azure ad-ben megbízhatóságának azonosítója, a kiállítási átalakítási szabályok, az Azure AD-végpontok, másodlagos-azonosítója (ha szükséges), az automatikus metaadat-frissítés |
+| Az Azure AD-megbízhatóság alaphelyzetbe állítása | A jogkivonatot aláíró tanúsítvánnyal, jogkivonat-aláíró algoritmus, az Azure ad-ben megbízhatóságának azonosítója, a kiállítási átalakítási szabályok, az Azure AD-végpontok, másodlagos-azonosítója (ha szükséges), az automatikus metaadat-frissítés |
 | Összevonási kiszolgáló hozzáadása | None |
 | WAP-kiszolgáló hozzáadása | None |
 | Eszközbeállítások | Kiadás átalakítási szabályai, az eszközök regisztrációjával kapcsolatos IWA |
@@ -71,7 +71,7 @@ Minden művelet, amely során bármilyen érték módosított, az Azure AD Conne
 ![Az Azure AD Connect lapot ábrázoló üzenet meglévő az Azure AD-megbízhatóság biztonsági mentéssel kapcsolatos](./media/how-to-connect-azure-ad-trust/backup2.png)
 
 > [!NOTE]
-> 1.1.873.0 verziónál régebbi a biztonsági mentés csak jogcímkiadás-átalakítási szabályok foglalnak el, és a varázsló a nyomkövetési naplófájl másolatban.
+> 1\.1.873.0 verziónál régebbi a biztonsági mentés csak jogcímkiadás-átalakítási szabályok foglalnak el, és a varázsló a nyomkövetési naplófájl másolatban.
 
 ## <a name="issuance-transform-rules-set-by-azure-ad-connect"></a>Az Azure AD Connect által beállított jogcímkiadás-átalakítási szabályok
 

@@ -1,25 +1,25 @@
 ---
-title: Rövid útmutató – Azure-adatbázis létrehozása postgresql-kiszolgálóhoz egy egyszerű Azure CLI-paranccsal – az postgres mentése (előzetes verzió) használatával
-description: A rövid útmutató hozhat létre az Azure Database for PostgreSQL-kiszolgáló használatával az Azure CLI (parancssori felület) parancsot.
+title: 'Gyors útmutató: Azure-adatbázis létrehozása PostgreSQL - hez-CLI-parancsot az postgres Server egyetlen mentése'
+description: A rövid útmutató hozhat létre az Azure Database for PostgreSQL – egyetlen kiszolgálót az Azure CLI (parancssori felület) parancsot.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 3/18/2019
-ms.openlocfilehash: 0db49e2c370aee37cca4181cecbe4cf0b5585c51
-ms.sourcegitcommit: f68b0e128f0478444740172f54e92b453df696be
+ms.date: 05/06/2019
+ms.openlocfilehash: 49f71c199a2832d763bb3c19d878fade47dfb8e4
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58136444"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65069076"
 ---
-# <a name="quickstart-create-an-azure-database-for-postgresql-using-a-simple-azure-cli-command---az-postgres-up-preview"></a>Gyors útmutató: Hozzon létre egy Azure Database for PostgreSQL szolgáltatás egy egyszerű Azure CLI-paranccsal - be (előzetes verzió) az postgres
+# <a name="quickstart-use-an-azure-cli-command-az-postgres-up-preview-to-create-an-azure-database-for-postgresql---single-server"></a>Gyors útmutató: Egy Azure CLI-paranccsal, az postgres mentése (előzetes verzió) használatával hozzon létre egy Azure Database for PostgreSQL – egyetlen kiszolgáló
 
 > [!IMPORTANT]
 > A [fel az postgres](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) Azure CLI-paranccsal előzetes verzióban érhető el.
 
-A PostgreSQL-hez készült Azure Database felügyelt szolgáltatás, amely lehetővé teszi a magas rendelkezésre állású PostgreSQL-adatbázisok futtatását, kezelését és skálázását a felhőben. Az Azure CLI az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Ez a rövid útmutató bemutatja, hogyan használható a [fel az postgres](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) paranccsal hozzon létre egy Azure Database for PostgreSQL-kiszolgálóhoz az Azure CLI használatával. A kiszolgáló létrehozása mellett a `az postgres up` parancs hoz létre egy mintaadatbázist, a gyökér szintű felhasználó az adatbázisban, megnyitja a tűzfalat az Azure-szolgáltatásokhoz és az ügyfélszámítógép tűzfal-szabályokat hoz létre a alapértelmezett. Ez segít a fejlesztési folyamat meggyorsítása.
+A PostgreSQL-hez készült Azure Database felügyelt szolgáltatás, amely lehetővé teszi a magas rendelkezésre állású PostgreSQL-adatbázisok futtatását, kezelését és skálázását a felhőben. Az Azure CLI az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Ez a rövid útmutató bemutatja, hogyan használható a [fel az postgres](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) paranccsal hozzon létre egy Azure Database for PostgreSQL-kiszolgálóhoz az Azure CLI használatával. A kiszolgáló létrehozása mellett a `az postgres up` parancs hoz létre egy mintaadatbázist, a gyökér szintű felhasználó az adatbázisban, megnyitja a tűzfalat az Azure-szolgáltatásokhoz és az ügyfélszámítógép tűzfal-szabályokat hoz létre a alapértelmezett. Ezeket az alapértelmezett értékeket gyorsíthatja fel a fejlesztési folyamat segítségével.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -27,7 +27,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 Ehhez a cikkhez futtat az Azure CLI verziója a 2.0-s vagy újabb helyileg. A telepített verziók megtekintéséhez futtassa az `az --version` parancsot. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
-Jelentkezzen be a fiók használatával kell a [az bejelentkezési](/cli/azure/authenticate-azure-cli?view=interactive-log-in) parancsot. Jegyezze fel a megfelelő előfizetésnév parancskimenetéből az **id** tulajdonságot.
+Jelentkezzen be a fiók használatával kell a [az bejelentkezési](/cli/azure/authenticate-azure-cli?view=interactive-log-in) parancsot. Megjegyzés: a **azonosító** tulajdonság számára a megfelelő előfizetésnév parancskimenetéből a parancskimenetből.
 
 ```azurecli
 az login
@@ -60,13 +60,13 @@ A kiszolgáló létrehozása az alábbi alapértelmezett értékekkel (kivéve, 
 server-name | A rendszer által létrehozott | Egy egyedi név, amely az Azure Database for PostgreSQL-kiszolgálót azonosítja.
 resource-group | A rendszer által létrehozott | Egy új Azure-erőforráscsoportot.
 sku-name | GP_Gen5_2 | A termékváltozat neve. A {tarifacsomag}\_{számítási generáció}\_{virtuális magok} mintát követi rövidített módon. Az alapértelmezett érték egy általános célú Gen5 kiszolgáló 2 virtuális maggal. Tekintse meg a [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/postgresql/) a rétegek további információt.
-backup-retention | 7 | Az az időtartam, ameddig egy biztonsági mentést meg kell őrizni. A mértékegysége a nap.
+backup-retention | 7 | Biztonsági másolat hosszú ideig őrzi meg a rendszer hogyan. A mértékegysége a nap.
 geo-redundant-backup | Letiltva | Azt adja meg, hogy a georedundáns biztonsági mentést engedélyezni kell-e ehhez a kiszolgálóhoz.
 location | westus2 | A kiszolgáló Azure-helye.
 ssl-enforcement | Letiltva | Azt adja meg, hogy engedélyezni kell-e az ssl-t ehhez a kiszolgálóhoz.
 storage-size | 5120 | A kiszolgáló tárkapacitása (megabájtban megadva).
 version | 10 | A PostgreSQL főverziója.
-admin-user | A rendszer által létrehozott | A rendszergazda bejelentkezéshez használt felhasználóneve.
+admin-user | A rendszer által létrehozott | A rendszergazda felhasználóneve.
 admin-password | A rendszer által létrehozott | A rendszergazda felhasználó jelszava.
 
 > [!NOTE]

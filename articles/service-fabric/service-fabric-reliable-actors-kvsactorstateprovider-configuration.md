@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 10/2/2017
 ms.author: sumukhs
 ms.openlocfilehash: 8b10ef18fd389179a4f5422783606c45fa2e0d32
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669198"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60728049"
 ---
 # <a name="configuring-reliable-actors--kvsactorstateprovider"></a>A Reliable Actors – KVSActorStateProvider konfigurálása
 A Microsoft Visual Studio csomag gyökerében a Config mappában jön létre a megadott aktor settings.xml fájl módosításával módosíthatja a KVSActorStateProvider használható alapértelmezett konfigurációt.
@@ -39,14 +39,14 @@ Alapértelmezés szerint egy üres biztonsági konfigurációs szakasz megakadá
 > A Linux-csomópontokat a tanúsítványok kell PEM-formátumú. További információk megkeresése és tanúsítványok konfigurálása Linux kapcsolatban lásd: [tanúsítványok konfigurálása Linux](./service-fabric-configure-certificates-linux.md). 
 > 
 
-### <a name="section-name"></a>Szakasz neve
+### <a name="section-name"></a>A szakasz nevét
 &lt;ActorName&gt;ServiceReplicatorSecurityConfig
 
 ## <a name="replicator-configuration"></a>Replikációs konfiguráció
 A replikáló konfigurációk a replikátor, amely feladata, hogy az Aktor Riasztásiállapot-szolgáltató állapota magas megbízhatóságú konfigurálása.
 Az alapértelmezett konfiguráció a Visual Studio-sablon által létrehozott és elegendőnek kell lennie. Ez a szakasz ismerteti a replikátor finomhangolása elérhető további konfigurációs.
 
-### <a name="section-name"></a>Szakasz neve
+### <a name="section-name"></a>A szakasz nevét
 &lt;ActorName&gt;ServiceReplicatorConfig
 
 ### <a name="configuration-names"></a>Konfigurációs nevek
@@ -63,7 +63,7 @@ Az alapértelmezett konfiguráció a Visual Studio-sablon által létrehozott é
 Store konfigurációk segítségével konfigurálhatja a helyi tároló, amely továbbra is fennáll az állapot, az épp replikált szolgál.
 Az alapértelmezett konfiguráció a Visual Studio-sablon által létrehozott és elegendőnek kell lennie. Ez a szakasz ismerteti a helyi tároló finomhangolása elérhető további konfigurációs.
 
-### <a name="section-name"></a>Szakasz neve
+### <a name="section-name"></a>A szakasz nevét
 &lt;ActorName&gt;ServiceLocalStoreConfig
 
 ### <a name="configuration-names"></a>Konfigurációs nevek

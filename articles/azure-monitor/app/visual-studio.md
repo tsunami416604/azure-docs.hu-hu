@@ -15,12 +15,12 @@ ms.date: 07/07/2017
 ms.pm_owner: daviste;NumberByColors
 ms.reviewer: mbullwin
 ms.author: daviste
-ms.openlocfilehash: b22f52ce9aa7f57e5b6638eef580a2675d5c9b1f
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 1b2f429129c0bb9098f4f5029cb07ce06bc5db13
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117571"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66255117"
 ---
 # <a name="debug-your-applications-with-azure-application-insights-in-visual-studio"></a>Az alkalmazások az Azure Application Insights a Visual Studióban
 A Visual Studio 2015-ös és újabb verzióiban elemezheti az ASP.NET-webalkalmazások teljesítményét és diagnosztizálhatja a problémákat hibakeresés közben és éles környezetben is az [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) telemetriájával.
@@ -105,5 +105,5 @@ Az is hasznos, ha van [egyéni telemetriája](../../azure-monitor/app/api-custom
 |  |  |
 | --- | --- |
 | **[További adatok hozzáadása](../../azure-monitor/app/asp-net-more.md)**<br/>Figyelheti a használatot, az elérhetőséget, a függőségeket és a kivételeket. Integrálhatja a nyomkövetéseket naplózási keretrendszerekből. Egyéni telemetriát írhat. |![Visual Studio](./media/visual-studio/64.png) |
-| **[Az Application Insights-portál használata](../../azure-monitor/app/app-insights-dashboards.md)**<br/>Tekintse meg az irányítópultok, hatékony diagnosztikai és elemző eszközök, riasztások, egy élő függőségi térkép az alkalmazáshoz, és az exportált telemetriai adatokat. |![Visual Studio](./media/visual-studio/62.png) |
+| **[Az Application Insights-portál használata](../../azure-monitor/app/overview-dashboard.md)**<br/>Tekintse meg az irányítópultok, hatékony diagnosztikai és elemző eszközök, riasztások, egy élő függőségi térkép az alkalmazáshoz, és az exportált telemetriai adatokat. |![Visual Studio](./media/visual-studio/62.png) |
 

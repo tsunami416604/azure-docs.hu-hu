@@ -1,6 +1,6 @@
 ---
-title: Magas rendelkezésre állás – Azure SQL Database szolgáltatás |} A Microsoft Docs
-description: További tudnivalók az Azure SQL Database szolgáltatás magas rendelkezésre állás és a szolgáltatások
+title: Magas rendelkezésre állás – Azure SQL Database szolgáltatás | Microsoft Docs
+description: Ismerkedjen meg a Azure SQL Database szolgáltatás magas rendelkezésre állási képességeivel és funkcióival
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -10,75 +10,74 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: sashan
 ms.reviewer: carlrab, sashan
-manager: craigg
-ms.date: 04/17/2019
-ms.openlocfilehash: ec9f5aa8163ea9bb838b1a95ab8ad49233a72643
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 06/10/2019
+ms.openlocfilehash: 226b0c1cb11fc872cb7759e0d0e49275b9c2d9bf
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698229"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568149"
 ---
-# <a name="high-availability-and-azure-sql-database"></a>Magas rendelkezésre állású és az Azure SQL Database
+# <a name="high-availability-and-azure-sql-database"></a>Magas rendelkezésre állás és Azure SQL Database
 
-Az Azure SQL Database-ben a magas rendelkezésre állású architektúra célja, hogy garantálja, hogy az adatbázis működik, és futó idő 99,99 %-, nem kell bajlódnunk karbantartási műveleteket és a leállások hatásának. Az Azure automatikusan kezeli a kritikus fontosságú karbantartási feladatokat, például a javítás, biztonsági mentések, Windows és az SQL-frissítéseket, valamint nem tervezett esemény, például a mögöttes hardver-, szoftver- vagy hálózati hibák.  Ha az alapul szolgáló SQL-példány telepítve van, vagy átadja a feladatokat, az állásidő nem észrevehető Ha, [újrapróbálkozási logikát alkalmazni](sql-database-develop-overview.md#resiliency) az alkalmazásban. Az Azure SQL Database még akkor is, biztosítva, hogy az adatok mindig elérhető a kritikus fontosságú esetekben állíthatja helyre.
+A Azure SQL Database magas rendelkezésre állású architektúrájának célja annak biztosítása, hogy az adatbázis az idő 99,99%-ában működik, és ne aggódjon a karbantartási műveletek és kimaradások következményeivel. Az Azure automatikusan kezeli a kritikus karbantartási feladatokat, például a javításokat, a biztonsági mentéseket, a Windows-és az SQL-frissítéseket, valamint a nem tervezett eseményeket, például a mögöttes hardvereket, szoftvereket vagy hálózati hibákat.  Ha az alapul szolgáló SQL-példány javított vagy feladatátvételt végez, az állásidő nem észlelhető, ha az alkalmazásban újrapróbálkozási [logikát alkalmaz](sql-database-develop-overview.md#resiliency) . Azure SQL Database a legfontosabb körülmények között is gyorsan helyreállítható, így biztosítva, hogy az adatok mindig elérhetők legyenek.
 
-A magas rendelkezésre állású megoldás célja annak biztosítása érdekében, hogy véglegesített adatokat soha nem, hogy a karbantartási műveleteket nem befolyásolják a számítási feladatok, hibák miatt megszakadt, és, hogy az adatbázis nem lesz a szoftver az architektúrában a hibaérzékeny pont. Nincsenek, a karbantartási időszakok vagy állásidőt eredményezhetett, miközben az adatbázis frissítve vagy fenntartott, állítsa le a számítási feladatok elvégzéséhez szükséges. 
+A magas rendelkezésre állású megoldás úgy van kialakítva, hogy a hibák miatt soha ne vesszenek el az véglegesített adatok, hogy a karbantartási műveletek ne befolyásolják a munkaterhelést, és hogy az adatbázis nem lesz egyetlen meghibásodási pont a szoftver architektúrájában. Nincsenek olyan karbantartási időszakok vagy állásidők, amelyeknek az adatbázis frissítése vagy karbantartása közben le kell állítania a munkaterhelést. 
 
-Nincsenek használt Azure SQL Database-ben két magas rendelkezésre állású architekturális modellek:
+Két magas rendelkezésre állású építészeti modell van használatban a Azure SQL Databaseban:
 
-- Standard szintű rendelkezésre állás modell, amely a számítási és tárolási szétválasztása alapul.  A magas rendelkezésre állás és megbízhatóság a távoli tárolási réteg támaszkodik. Ez az architektúra célozza meg, amely tűri néhány teljesítménycsökkenés karbantartásának idejére költségvetés-orientált üzleti alkalmazásokat.
-- Prémium szintű rendelkezésre állás modell, amely egy olyan fürtjét, adatbázis-motor folyamatainak alapul. Az a tény, hogy nincs-e mindig elérhető database engine csomópont támaszkodik. Ez az architektúra célozza meg, alapvető fontosságú alkalmazásokat nagy i/o-teljesítményt, magas tranzakciós sebességű és garanciák hatással van a karbantartás idejére a számítási feladatok minimális teljesítményére.
+- A standard rendelkezésre állási modell, amely a számítás és a tárolás elkülönítésén alapul.  A távoli tárolási rétegek magas rendelkezésre állása és megbízhatósága alapján működik. Ez az architektúra olyan költségvetési alapú üzleti alkalmazásokat céloz meg, amelyek bizonyos teljesítménybeli romlást tudnak elviselni a karbantartási tevékenységek során.
+- Prémium rendelkezésre állási modell, amely az adatbázismotor folyamatainak egy fürtjén alapul. Arra támaszkodik, hogy a rendelkezésre álló adatbázismotor-csomópontok kvóruma mindig fennáll. Ez az architektúra olyan kritikus fontosságú alkalmazásokat céloz meg, amelyek magas i/o-teljesítménnyel, magas tranzakciós sebességgel rendelkeznek, és a karbantartási tevékenységek során minimális teljesítményt nyújtanak a számítási feladathoz.
 
-Az Azure SQL Database az SQL Server adatbázismotor és a Windows operációs rendszer legújabb stabil verziója fut, és a felhasználók többsége nem észre, hogy a frissítések a folyamatosan történik.
+A Azure SQL Database a SQL Server adatbázismotor és a Windows operációs rendszer legújabb stabil verzióján fut, és a legtöbb felhasználó nem észleli, hogy a frissítések folyamatosan vannak végrehajtva.
 
-## <a name="basic-standard-and-general-purpose-service-tier-availability"></a>A Basic, Standard és az általános célú szolgáltatási szint rendelkezésre állása
+## <a name="basic-standard-and-general-purpose-service-tier-availability"></a>Alapszintű, standard és általános célú szolgáltatási szint rendelkezésre állása
 
-Szolgáltatásszintek kihasználhatja a standard szintű rendelkezésre állású architektúra. A következő ábrán látható négy különböző csomópontokon elkülönített számítási és tárolási rétegeket.
+Ezek a szolgáltatási szintek a standard rendelkezésre állási architektúrát használják. Az alábbi ábra négy különböző csomópontot mutat be a elkülönített számítási és tárolási rétegekkel együtt.
 
-![Számítási és tárolási szétválasztása](media/sql-database-high-availability/general-purpose-service-tier.png)
+![A számítás és a tárolás elkülönítése](media/sql-database-high-availability/general-purpose-service-tier.png)
 
-A standard szintű rendelkezésre állás modell tartalmazza-e két réteg:
+A standard rendelkezésre állási modell két réteget tartalmaz:
 
-- Egy állapot nélküli számítási rétegben, amely futtatja a `sqlserver.exe` feldolgozásához, és csak átmeneti és a gyorsítótárazott adatokat a csatlakoztatott SSD, a tartalmaz, mint például a TempDB, a model adatbázis, a tervek gyorsítótárának, a pufferkészletben és a oszlop tárolni készlet. Ez az állapot nélküli csomópont üzemelteti az Azure Service Fabric inicializáló `sqlserver.exe`, a csomópont állapotát vezérli és hajt végre feladatátvételt egy másik csomópontra, ha szükséges.
-- Állapot-nyilvántartó adatrétege az Azure Blob storage-ban tárolt adatbázis-fájlok (.mdf/.ldf). Az Azure blob storage-bA beépített rendelkezésre állás és redundancia a szolgáltatás rendelkezik. Ez garantálja, hogy minden rekordot a naplófájl vagy lap az adatfájlban lévő adatok megmaradnak, még akkor is, ha az SQL Server-folyamat leáll.
+- Egy állapot nélküli számítási réteg, amely futtatja `sqlserver.exe` a folyamatot, és csak átmeneti és gyorsítótárazott adatokkal rendelkezik a csatlakoztatott SSD-gépen, például tempdb, modell-adatbázis, a terv gyorsítótára, a puffer készlete és az oszlopdiagram készlete. Ezt az állapot nélküli csomópontot az Azure Service Fabric működteti `sqlserver.exe`, amely inicializálja, szabályozza a csomópont állapotát, és szükség esetén feladatátvételt hajt végre egy másik csomóponton.
+- Az Azure Blob Storage-ban tárolt adatbázis-fájlokkal (. MDF/. ldf) rendelkező állapot-nyilvántartó adatréteg. Az Azure Blob Storage beépített adatelérhetőségi és redundancia-funkcióval rendelkezik. Ez garantálja, hogy az adatfájlban lévő naplófájl vagy oldal minden rekordja megmarad, még akkor is, ha SQL Server folyamat összeomlik.
 
-Amikor az adatbázismotor vagy az operációs rendszer frissítése, vagy hibát észlel, az Azure Service Fabric helyezi át az állapot nélküli SQL Server-folyamat egy másik az állapot nélküli számítási csomóponton elegendő szabad kapacitás. Az Azure Blob storage-adatokat nem érinti az áthelyezés, és az adatokat vagy naplófájlokat is csatlakozik az újonnan inicializált SQL Server folyamatán. Ez a folyamat 99,99 %-os rendelkezésre állást garantál, de nagy terhelést az áttérés során néhány teljesítménycsökkenés tapasztalhat, mivel az új SQL Server-példány hideg gyorsítótáras kezdődik.
+Ha az adatbázismotor vagy az operációs rendszer frissítése megtörtént, vagy hiba észlelhető, az Azure Service Fabric az állapot nélküli SQL Server folyamatot egy másik, elegendő szabad kapacitással rendelkező állapot nélküli számítási csomópontra helyezi át. Az áthelyezés nem érinti az Azure Blob Storage-ban tárolt adatátvitelt, és az adatfájlok és naplófájlok az újonnan inicializált SQL Server folyamathoz vannak csatolva. Ez a folyamat garantálja az 99,99%-os rendelkezésre állást, de a nagy számítási feladatok némi teljesítménybeli romlást tapasztalhatnak az átállás során, mivel az új SQL Server példány a hideg gyorsítótárral kezdődik.
 
 ## <a name="premium-and-business-critical-service-tier-availability"></a>Prémium és üzletileg kritikus szolgáltatási szint rendelkezésre állása
 
-Prémium és üzletileg kritikus szolgáltatási szintek kihasználhatja a prémium szintű rendelkezésre állás modell, amely integrálható a számítási erőforrások (SQL Server adatbázismotor folyamat) és a storage (helyileg csatlakoztatott SSD) egyetlen csomóponton. Magas rendelkezésre állás további csomópontokat három, négy - csomópont fürtöt hoz létre a számítási és tárolási replikálásával valósul meg. 
+A prémium és üzletileg kritikus szolgáltatási szintek kihasználják a prémium rendelkezésre állási modellt, amely egyesíti a számítási erőforrásokat (SQL Server adatbázismotor-folyamatot) és a tárterületet (helyileg csatlakoztatott SSD) egyetlen csomóponton. A magas rendelkezésre állást úgy érheti el, hogy a számítási és a tárolási tárterületet további csomópontokra replikálja, amelyek három-négy csomópontos fürtöt hoznak létre. 
 
-![Database engine fürtben](media/sql-database-high-availability/business-critical-service-tier.png)
+![Az adatbázismotor csomópontjainak fürtje](media/sql-database-high-availability/business-critical-service-tier.png)
 
-Az alapul szolgáló adatbázis-fájlok (.mdf/.ldf) a csatolt SSD-tárolóval, adja meg a számítási feladathoz nagyon alacsony késleltetési i/o kerülnek. Magas rendelkezésre állású SQL Server hasonló technológia használatával lett megvalósítva [Always On rendelkezésre állási csoportok](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server). A fürt tartalmaz egy elsődleges replikával (SQL Server-folyamat), amely elérhető ügyfél olvasási és írási számítási feladatok, és legfeljebb három másodlagos replika (számítási és tárolási) tartalmazó adatok másolatát. Az elsődleges csomópont folyamatosan módosítások leküldi a ahhoz a másodlagos csomópontot, és biztosítja, hogy a rendszer szinkronizálja az adatokat legalább egy másodlagos replikára minden tranzakció véglegesítése előtt. Ez a folyamat garantálja, hogy ha az elsődleges csomópont bármilyen okból leáll, mindig van egy teljesen szinkronizált csomópont átadja a feladatokat. A feladatátvétel az Azure Service Fabric által kezdeményezett. A másodlagos replikát az új elsődleges csomópont lesz, miután egy újabb másodlagos replika jön létre, a fürt rendelkezzen elegendő csomópontok (kvórum beállítása). Feladatátvétel befejezése után a SQL-kapcsolatok a rendszer automatikusan átirányítja az új elsődleges csomóponton.
+Az alapul szolgáló adatbázisfájlok (. MDF/. ldf) a csatlakoztatott SSD-tárolóba kerülnek, így nagyon kis késleltetésű IO-t biztosítanak a számítási feladatok számára. A magas rendelkezésre állás a SQL Server [Always On rendelkezésre állási csoportokhoz](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)hasonló technológia használatával valósítható meg. A fürt egyetlen elsődleges replikát (SQL Server folyamatot) tartalmaz, amely elérhető az írási és olvasási ügyfelek számítási feladataihoz, és legfeljebb három másodlagos replikát (számítás és tárolás), amely az adatok másolatait tartalmazza. Az elsődleges csomópont folyamatosan leküldi a változásokat a másodlagos csomópontokra, és gondoskodik arról, hogy az egyes tranzakciók véglegesítése előtt legalább egy másodlagos replikához szinkronizálja az adatokat. Ez a folyamat garantálja, hogy ha az elsődleges csomópont valamilyen okból összeomlik, mindig van egy teljesen szinkronizált csomópont a feladatátvételhez. A feladatátvételt az Azure Service Fabric kezdeményezi. Miután a másodlagos replika az új elsődleges csomópont lesz, létrejön egy másik másodlagos replika, amely biztosítja, hogy a fürt elegendő csomóponttal (kvórum készlettel) rendelkezik. A feladatátvétel befejezése után a rendszer automatikusan átirányítja az SQL-kapcsolatokat az új elsődleges csomópontra.
 
-Egy további előny, mint a prémium szintű rendelkezésre állás modell tartalmazza-e irányítható át a csak olvasható az SQL-kapcsolatok a másodlagos replikára. A szolgáltatás neve [olvasási kibővített](sql-database-read-scale-out.md). 100 %-os további számítási kapacitás, és díjmentes arra a célra csak olvasható műveletekhez, például az elemzési számítási feladatok, az elsődleges replikából biztosít.
+További előnyként a prémium rendelkezésre állási modell lehetővé teszi a csak olvasási SQL-kapcsolatok átirányítását az egyik másodlagos replikára. Ezt a funkciót az [olvasási](sql-database-read-scale-out.md)felskálázásnak nevezzük. A szolgáltatás 100%-os további számítási kapacitást biztosít külön díj nélkül a kikapcsolt írásvédett műveletekhez, például az analitikai számítási feladatokhoz az elsődleges replikából.
 
-## <a name="zone-redundant-configuration"></a>Zóna redundáns konfiguráció
+## <a name="zone-redundant-configuration"></a>Zóna redundáns konfigurációja
 
-Alapértelmezés szerint a fürt a csomópontok a prémium szintű rendelkezésre állás modell létrehozása ugyanabban az adatközpontban. Bevezetésével [Azure-beli rendelkezésre állási zónák](../availability-zones/az-overview.md), SQL Database különböző replikába elhelyezheti a fürt másik rendelkezésre állási zónák ugyanabban a régióban. Kiküszöbölése a meghibásodási pont, a vezérlő körgyűrűs is duplikálódnak több zónában, három átjárókiszolgáló körök (GW). Egy adott átjáró kör útválasztást vezérlik [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) (ATM). Mivel a zóna redundáns konfigurálása prémium szintű és az üzletileg kritikus szolgáltatási szinten nem hoz létre az adatbázis-redundancia, engedélyezheti az nélkül többletköltség. Egy zóna redundáns konfigurációs kiválasztásával teheti a prémium szintű és az üzletileg kritikus adatbázisok rugalmas jóval nagyobb körét a hiba, katasztrofális adatközpont kimaradások, anélkül, hogy az alkalmazás logikáját. A zóna redundáns konfiguráció bármely meglévő prémium és az üzletileg kritikus adatbázisokat vagy készleteket is konvertálható.
+Alapértelmezés szerint a prémium rendelkezésre állási modell csomópontjainak fürtje ugyanabban az adatközpontban jön létre. A [Azure Availability Zones](../availability-zones/az-overview.md)bevezetésével a SQL Database különböző replikákat helyezhet el a fürtben különböző rendelkezésre állási zónákba ugyanabban a régióban. Egyetlen meghibásodási pont kizárása érdekében a vezérlő gyűrűt több zónában is duplikálja három átjárós gyűrűként (GW). Egy adott átjáró-gyűrű útválasztását az [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) (ATM) vezérli. Mivel a zóna redundáns konfigurációja a prémium vagy üzletileg kritikus szolgáltatási szinten nem hoz létre további adatbázis-redundanciát, külön díj nélkül is engedélyezheti. A zóna redundáns konfigurációjának kiválasztásával a prémium vagy üzletileg kritikus-adatbázisok rugalmasan állíthatók be a hibák sokkal nagyobb részére, beleértve a katasztrofális adatközpont leállását, az alkalmazás logikájának módosítása nélkül. A meglévő prémium vagy üzletileg kritikus adatbázisok vagy készletek a zóna redundáns konfigurációjához is átalakíthatók.
 
-Mivel a zóna zónaredundáns adatbázisok az egyes távolságát különböző adatközpontokban replikával rendelkeznek, a hálózati késés növelheti a véglegesítés ideje, és így hatással az egyes OLTP számítási feladatok teljesítményére. Mindig visszatérhet az Egyzónás konfiguráció a zóna redundancia beállítás letiltásával. Ez a folyamat hasonló a normál szint frissítése egy online művelet. A folyamat végén az adatbázis vagy készlet való áttelepítése a zóna redundáns kört a zónában kört vagy fordítva.
+Mivel a zóna redundáns adatbázisai rendelkeznek a különböző adatközpontokban lévő replikákkal, és ezek között a távolságuk, a megnövelt hálózati késés növelheti a bevezetési időt, és így hatással lehet bizonyos OLTP-számítási feladatok teljesítményére. Bármikor visszatérhet az egyzónás konfigurációhoz a zóna redundancia beállítás letiltásával. Ez a folyamat egy olyan online művelet, amely a szolgáltatási csomag szokásos verziófrissítéséhez hasonló. A folyamat végén a rendszer áttelepíti az adatbázist vagy a készletet egy zónába tartozó redundáns gyűrűből egyetlen zónába, vagy fordítva.
 
 > [!IMPORTANT]
-> Zóna zónaredundáns adatbázisok és rugalmas készletek jelenleg csak a prémium és üzletileg kritikus szolgáltatási szinten támogatott. Alapértelmezés szerint biztonsági mentések és a naplózási bejegyzések az RA-GRS storage tárolja, és ezért nem lehet automatikusan elérhető egy zóna kiterjedő szolgáltatáskimaradás esetén. 
+> A zónák redundáns adatbázisai és a rugalmas készletek jelenleg csak a prémium és üzletileg kritikus szolgáltatási szinten támogatottak a régiók kiválasztása területen. A üzletileg kritikusi szintű használata esetén a zóna redundáns konfigurációja csak akkor érhető el, ha a Gen5 számítási hardver van kiválasztva. A zóna redundáns adatbázisokat támogató régiókkal kapcsolatos naprakész információ: [szolgáltatások támogatása régiónként](../availability-zones/az-overview.md#services-support-by-region).  
 
-A magas rendelkezésre állású architektúra redundáns zóna verziója által az alábbi ábra mutatja be:
+A magas rendelkezésre állású architektúra zóna redundáns verzióját a következő ábra szemlélteti:
 
-![magas rendelkezésre állású architektúra zónaredundáns](./media/sql-database-high-availability/zone-redundant-business-critical-service-tier.png)
+![magas rendelkezésre állású architektúra zóna redundáns](./media/sql-database-high-availability/zone-redundant-business-critical-service-tier.png)
 
 ## <a name="accelerated-database-recovery-adr"></a>Gyorsított adatbázis-helyreállítás (ADR)
 
-[A gyorsított adatbázis-helyreállítás (ADR)](sql-database-accelerated-database-recovery.md) fut egy új SQL database engine szolgáltatás, amely jelentősen csökkenti az adatbázis-elérhetőségi, különösen hosszú folytonosságát tranzakciókat. Automatikus központi telepítési szabály már érhető el az önálló adatbázisok, rugalmas készletek és Azure SQL Data warehouse-bA.
+A [gyorsított adatbázis-helyreállítás (ADR)](sql-database-accelerated-database-recovery.md) egy új SQL Database motor-szolgáltatás, amely nagy mértékben javítja az adatbázisok rendelkezésre állását, különösen a hosszú ideig futó tranzakciók jelenlétében. Az ADR jelenleg egyazon adatbázisok, rugalmas készletek és Azure SQL Data Warehouse számára érhető el.
 
 ## <a name="conclusion"></a>Összegzés
 
-Az Azure SQL Database egy beépített magas rendelkezésre állású megoldás, amely szorosan integrálva van az Azure platform szolgáltatásait. A Service Fabric hiba észlelése és a helyreállítási, az Azure Blob storage-adatok védelme és a hibatűrés magasabb rendelkezésre állási zónák függő. Emellett az Azure SQL database a replikációt és feladatátvételt az SQL Server Always On rendelkezésre állási csoport technológiáját használja. Ezek a technológiák kombinációja lehetővé teszi az alkalmazások teljes kihasználására – egy vegyes storage előnyei modellezheti, és a legnagyobb erőforrás-igényű SLA-kat támogatja.
+A Azure SQL Database egy beépített, magas rendelkezésre állású megoldást kínál, amely mélyen integrálva van az Azure platformmal. A probléma a hibák észlelése és helyreállítása Service Fabric függ, az Azure Blob Storage az adatvédelem érdekében, valamint a Availability Zones a nagyobb hibatűrés érdekében. Az Azure SQL Database emellett az Always On rendelkezésre állási csoport technológiáját is kihasználja SQL Server a replikációhoz és a feladatátvételhez. Ezeknek a technológiáknak a kombinációja lehetővé teszi, hogy az alkalmazások teljes mértékben felismerje a vegyes tárolási modell előnyeit, és támogassa a legigényesebb SLA-kat.
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg [Azure-beli rendelkezésre állási zónák](../availability-zones/az-overview.md)
-- Ismerje meg [Service Fabric](../service-fabric/service-fabric-overview.md)
-- Ismerje meg [az Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md)
-- A magas rendelkezésre állású és vész-helyreállítási További beállításokért lásd: [üzletmenet-folytonossági](sql-database-business-continuity.md)
+- Tudnivalók a [Azure Availability Zones](../availability-zones/az-overview.md)
+- Tudnivalók a [Service Fabric](../service-fabric/service-fabric-overview.md)
+- További tudnivalók az [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md)
+- A magas rendelkezésre állással és a vész-helyreállítással kapcsolatos további lehetőségekért lásd: [Üzletmenet-folytonosság](sql-database-business-continuity.md)

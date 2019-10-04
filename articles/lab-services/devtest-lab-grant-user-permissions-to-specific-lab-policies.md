@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 70469a9e8737a9df18628951a061c97081c74080
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56735101"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62127378"
 ---
 # <a name="grant-user-permissions-to-specific-lab-policies"></a>Felhasználói engedélyek adott laborszabályzatok megadása
 ## <a name="overview"></a>Áttekintés
@@ -28,7 +28,7 @@ Ez a cikk bemutatja, hogyan felhasználók egy adott labor házirend szükséges
 ## <a name="policies-as-resources"></a>Erőforrásként házirendek
 Az a [Azure szerepköralapú hozzáférés-vezérlés](../role-based-access-control/role-assignments-portal.md) a cikk az RBAC lehetővé teszi, hogy az Azure-erőforrások részletes hozzáférés-vezérlést. Az RBAC használatával, feladatköröket a fejlesztési és üzemeltetési csapaton belül, és csak olyan mértékű hozzáférést biztosítson a felhasználók számára, amelyek a feladataik elvégzéséhez szükségük van.
 
-DevTest Labs-környezetben, a házirend egy erőforrás típusa, amely lehetővé teszi, hogy az RBAC-művelet **Microsoft.DevTestLab/labs/policySets/policies/**. Minden labor házirend egy erőforrást a szabályzat erőforrás típusa, és hozzárendelheti az RBAC szerepkör hatóköreként.
+DevTest Labs-környezetben, a házirend egy erőforrás típusa, amely lehetővé teszi, hogy az RBAC-művelet **Microsoft.DevTestLab/labs/policySets/policies/** . Minden labor házirend egy erőforrást a szabályzat erőforrás típusa, és hozzárendelheti az RBAC szerepkör hatóköreként.
 
 Például ahhoz, hogy adjon felhasználók írási/olvasási engedélyt a **engedélyezett Virtuálisgép-méretek** szabályzat, akkor kell létrehoznia egy egyéni biztonsági szerepkört, amely együttműködik a **Microsoft.DevTestLab/labs/policySets/policies/** művelet , majd rendelje hozzá a megfelelő felhasználók az egyéni szerepkör hatókörébe tartozó **Microsoft.DevTestLab/labs/policySets/policies/AllowedVmSizesInLab**.
 

@@ -3,8 +3,8 @@ title: A hozzáférési panelen alkalmazáshoz való bejelentkezésnél |} A Mic
 description: Hogyan háríthatók el a problémák a Microsoft Azure AD hozzáférési Panel itt myapps.microsoft.com az alkalmazáshoz való hozzáférés
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
-ms.author: celested
+ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 691022762e63687c298090c02f486993b4fd77a5
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 51e486e8eb2fef04c1b876dff3de644dda4aaf2e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58076870"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65781133"
 ---
 # <a name="problems-signing-in-to-an-application-from-the-access-panel"></a>A hozzáférési panelen alkalmazáshoz való bejelentkezésnél
 
@@ -383,7 +383,7 @@ Az Azure AD katalógusából származó alkalmazás hozzáadásához kövesse az
 
 6.  Az a **adjon meg egy nevet** a szövegmezőbe a **Hozzáadás a katalógusból** területén adja meg az alkalmazás nevét
 
-7.  Válassza ki az alkalmazást szeretne konfigurálni az egyszeri bejelentkezés
+7.  Válassza ki az egyszeri bejelentkezésre konfigurálni kívánt alkalmazást.
 
 8.  Ad hozzá az alkalmazást, mielőtt a nevét módosíthatja a **neve** szövegmezőbe.
 
@@ -467,7 +467,7 @@ Egyszeri bejelentkezés az alkalmazás konfigurálásához kövesse az alábbi l
 
 8. Válassza ki a módot **jelszóalapú bejelentkezés.**
 
-9. Adja meg a **bejelentkezési URL-**. Ez az URL-CÍMÉT, írja be a felhasználók a felhasználónevével és jelszavával bejelentkezni. Győződjön meg arról, a bejelentkezési mezők láthatók az URL-címen.
+9. Adja meg a **bejelentkezési URL-** . Ez az URL-CÍMÉT, írja be a felhasználók a felhasználónevével és jelszavával bejelentkezni. Győződjön meg arról, a bejelentkezési mezők láthatók az URL-címen.
 
 10. Felhasználók hozzárendelése az alkalmazáshoz.
 

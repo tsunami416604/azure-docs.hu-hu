@@ -1,7 +1,7 @@
 ---
-title: Szövegelemzési API külső és közösségi tartalom
+title: Külső & közösségi tartalom Text Analytics API
 titleSuffix: Azure Cognitive Services
-description: Partner-blogok, a youtube-videók, a képzés a Microsoft Cognitive Services Text Analytics API az Azure-ban.
+description: Partneri Blogok, YouTube-videók, az Azure Cognitive Services Text Analytics API betanítása.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,44 +10,44 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: b46acb2f0fe04c37e73a69a09ee6ede9110864ca
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 51263af978ed599d7a7b8a2159c0c9c3c25b33a0
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57543542"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68558819"
 ---
-# <a name="external--community-content-for-the-text-analytics-cognitive-service"></a>A Text Analytics kognitív szolgáltatás külső és közösségi tartalom
+# <a name="external--community-content-for-the-text-analytics-cognitive-service"></a>Külső & közösségi tartalom a Text Analytics kognitív szolgáltatáshoz
 
- Ebben a cikkben szereplő hivatkozások hasznos webes tartalmak fejlett és a partnerek és a felhasználói felület a szövegelemzési API-val az informatikai szakemberek által előállított vezethet.
+ Az ebben a cikkben szereplő hivatkozásokkal a partnerek és szakemberek által fejlesztett és készített hasznos webtartalmakat találhatja meg a Text Analytics API használatának tapasztalataival.
 
 ## <a name="blogs"></a>Blogok
 
-+ [Text Analytics API eredeti közlemény (az Azure blog)](https://blogs.technet.microsoft.com/machinelearning/2015/04/08/introducing-text-analytics-in-the-azure-ml-marketplace/)
++ [Text Analytics API eredeti hirdetmény (Azure blog)](https://blogs.technet.microsoft.com/machinelearning/2015/04/08/introducing-text-analytics-in-the-azure-ml-marketplace/)
 
-+ [Szövegelemzési API-val Key kifejezés a Cognitive Services a Powershellből (AutomationNext blog)](https://automationnext.wordpress.com/tag/text-analytics/)
++ [Text Analytics Key kifejezés használata Cognitive Services API-val a PowerShellből (AutomationNext blog)](https://automationnext.wordpress.com/tag/text-analytics/)
 
-+ [R gyors. tipp: Microsoft Cognitive Services Text Analytics API (R blogírók)](https://www.r-bloggers.com/r-quick-tip-microsoft-cognitive-services-text-analytics-api/)
++ [R gyors tipp: Microsoft Cognitive Services "Text Analytics API (R bloggers)](https://www.r-bloggers.com/r-quick-tip-microsoft-cognitive-services-text-analytics-api/)
 
-+ [Hangulatelemzés a logikai alkalmazás használatával az SQL Server-adatok (TechNet blog)](https://social.technet.microsoft.com/wiki/contents/articles/36074.logic-apps-with-azure-cognitive-service.aspx)
++ [A logikai alkalmazásban SQL Server adataival (TechNet blog) kapcsolatos érzelmek elemzése](https://social.technet.microsoft.com/wiki/contents/articles/36074.logic-apps-with-azure-cognitive-service.aspx)
 
-+ [Hangulatelemzés a Dynamics 365 CRM Online-nal (az MSDN-blog)](https://blogs.msdn.microsoft.com/geoffreyinnis/2016/07/11/sentiment-analysis-in-usd-with-cognitive-services-text-analytics/) 
++ [Érzelmek elemzése a Dynamics 365 CRM Online-ban (MSDN blog)](https://blogs.msdn.microsoft.com/geoffreyinnis/2016/07/11/sentiment-analysis-in-usd-with-cognitive-services-text-analytics/) 
 
-+ A Power bi-blog: Kulcskifejezések kinyerése a Facebook-üzenetek: [1. rész](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88483) és [2. rész](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88487)
++ PowerBI blogja: A Facebook-üzenetekből származó legfontosabb kifejezések kinyerése: [1. rész](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88483) és [2. rész](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88487)
 
 ## <a name="videos"></a>Videók
 
-+ [Logikai alkalmazás hangulat felismerése és fontos kifejezések kigyűjtése a szöveg](https://www.youtube.com/watch?v=jVN9NObAzgk)
++ [Logikai alkalmazás az érzelmek észleléséhez és a legfontosabb kifejezések kinyeréséhez a szövegből](https://www.youtube.com/watch?v=jVN9NObAzgk)
 
-+ [Vélemények elemzése a Power bi-ban és a Microsoft Cognitive Services használatával](https://www.youtube.com/watch?v=gJ1j3N7Y75k)
++ [Hangulatelemzés a Power BI és a Microsoft Cognitive Services használatával](https://www.youtube.com/watch?v=gJ1j3N7Y75k)
 
-+ [Szövegelemzés a Power bi-ban és a Microsoft Cognitive Services használatával fontos kifejezések kigyűjtése](https://www.youtube.com/watch?v=R_-1TB2BF14)
++ [A Text Analytics Kinyeri a főbb kifejezéseket a Power BI és a Microsoft Cognitive Services használatával](https://www.youtube.com/watch?v=R_-1TB2BF14)
 
 ## <a name="next-steps"></a>További lépések
 
-Keres egy szolgáltatás vagy a használati esetekre, amely nem ismerteti információ? Fontolja meg kérése vagy szavaz, [UserVoice](https://cognitive.uservoice.com/forums/555922-text-analytics). 
+Információra van szüksége a szolgáltatásról vagy a használati esetről, amelyet nem takarunk el? Érdemes lehet a [UserVoice](https://cognitive.uservoice.com/forums/555922-text-analytics)-on megkeresni vagy szavazni. 
 
 ## <a name="see-also"></a>Lásd még
 
- [A StackOverflow: Az Azure szövegelemzési API-val](https://stackoverflow.com/questions/tagged/text-analytics-api)   
- [A StackOverflow: Azure Cognitive Services](https://stackoverflow.com/questions/tagged/microsoft-cognitive)
+ [StackOverflow Azure-Text Analytics API](https://stackoverflow.com/questions/tagged/text-analytics-api)   
+ [StackOverflow Azure-Cognitive Services](https://stackoverflow.com/questions/tagged/microsoft-cognitive)

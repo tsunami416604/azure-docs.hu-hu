@@ -4,12 +4,12 @@
   items:
     - name: Tudnivalók az Azure Portalról
       href: azure-portal-overview.md
+    - name: Bevezetés az Azure Gyorskonfigurálási központ használatába
+      href: azure-portal-quickstart-center.md
     - name: Támogatott böngészők és eszközök
       href: azure-portal-supported-browsers-devices.md
 - name: Alapelvek
   items:
-    - name: Azure-irányítópultok létrehozása és megosztása
-      href: azure-portal-dashboards.md
     - name: Irányítópultok megosztása szerepköralapú hozzáférés-vezérléssel
       href: azure-portal-dashboard-share-access.md
     - name: Azure-irányítópultok létrehozása programozott módon
@@ -20,16 +20,20 @@
       href: azure-portal-change-theme-high-contrast.md
     - name: 'Kedvencek hozzáadása, eltávolítása és rendezése'
       href: azure-portal-add-remove-sort-favorites.md
+    - name: Azure-irányítópultok létrehozása és megosztása
+      href: azure-portal-dashboards.md
     - name: Egyéni Markdown-csempe használata
       href: azure-portal-markdown-tile.md
     - name: Felhasználói beállítások exportálása vagy törlése
       href: azure-portal-export-delete-settings.md
     - name: Az Azure Portal útmutató videósorozata
-      href: 'https://www.youtube.com/playlist?list=PLLasX02E8BPBKgXP4oflOL29TtqTzwhxR'
+      href: azure-portal-video-series.md
 - name: Referencia
   items:
     - name: Billentyűparancsok
       href: azure-portal-keyboard-shortcuts.md
+    - name: Az Azure Portal URL-címeinek megbízhatósági listára helyezése
+      href: azure-portal-safelist-urls.md
     - name: Az Azure-irányítópultok struktúrája
       href: azure-portal-dashboards-structure.md
 - name: További források

@@ -3,8 +3,8 @@ title: Használja bérlői korlátozások saas-hozzáférés kezelése a felhőa
 description: Hogyan használható a bérlői korlátozások kezelése mely felhasználók férhetnek hozzá az alkalmazások az Azure AD-bérlő szerint.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/28/2019
-ms.author: celested
+ms.author: mimart
 ms.reviewer: richagi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b78897e2e03085a20f07ce8724226f0e0171861e
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 4a340663a1ec4ddf748c6dc2bc3a4e2ce0c4228e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545865"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65824383"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Bérlői korlátozások használatával felhőalapú SaaS-alkalmazásokhoz való hozzáférés kezelése
 
@@ -42,7 +42,7 @@ A teljes megoldás az alábbi összetevőkből áll:
 
 3. **Ügyfélszoftver**: Bérlői korlátozások támogatása érdekében ügyfélszoftvert kell újraindítást igényelnie jogkivonatok közvetlenül az Azure AD-ben, hogy a proxy infrastruktúra nem figyelheti a forgalmat. Office 365-alkalmazások böngészőalapú jelenleg használható bérlőkorlátozások, (például az OAuth 2.0-s) a modern hitelesítést használó Office-ügyfelekhez.
 
-4. **Modern hitelesítés nélküli**: A cloud services kell használnia a modern hitelesítés bérlőkorlátozások használhatja, és nem engedélyezett az összes bérlőre való hozzáférés letiltása. Office 365 felhőszolgáltatások alapértelmezés szerint a modern hitelesítési protokollok használatára kell konfigurálni. Az Office 365 modern hitelesítés támogatása a legfrissebb információkért olvassa el a [frissített Office 365 modern hitelesítését](https://blogs.office.com/2015/11/19/updated-office-365-modern-authentication-public-preview/).
+4. **Modern hitelesítés nélküli**: A cloud services kell használnia a modern hitelesítés bérlőkorlátozások használhatja, és nem engedélyezett az összes bérlőre való hozzáférés letiltása. Office 365 felhőszolgáltatások alapértelmezés szerint a modern hitelesítési protokollok használatára kell konfigurálni. Az Office 365 modern hitelesítés támogatása a legfrissebb információkért olvassa el a [frissített Office 365 modern hitelesítését](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/).
 
 A következő ábra szemlélteti a magas szintű adatforgalmat. Bérlői korlátozások csak a forgalmat az Azure ad-hez, az Office 365 cloud services, a nem SSL-ellenőrzés szükséges. Ezt a különbséget fontos, mert a forgalom mennyisége az Azure AD-hitelesítés általában sokkal alacsonyabb, mint a SaaS-alkalmazásokban, mint például az Exchange online-hoz és a SharePoint Online adatforgalma.
 
@@ -128,7 +128,7 @@ Office 365-alkalmazások bérlői korlátozások teljes támogatása érdekében
 1. A használt ügyfél támogatja a modern hitelesítést.
 2. Modern hitelesítés engedélyezve van, mint az alapértelmezett hitelesítési protokoll, a felhőszolgáltatás számára.
 
-Tekintse meg [frissített Office 365 modern hitelesítését](https://blogs.office.com/2015/11/19/updated-office-365-modern-authentication-public-preview/) a legfrissebb információkat a Microsoft Office mely ügyfelek jelenleg támogatja a modern hitelesítést. Az oldal adott Exchange Online és Skype vállalati Online bérlők modern hitelesítés engedélyezése az utasításokra mutató hivatkozásokat is tartalmaz. SharePoint online-hoz már Modern hitelesítést alapértelmezés szerint engedélyezi.
+Tekintse meg [frissített Office 365 modern hitelesítését](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/) a legfrissebb információkat a Microsoft Office mely ügyfelek jelenleg támogatja a modern hitelesítést. Az oldal adott Exchange Online és Skype vállalati Online bérlők modern hitelesítés engedélyezése az utasításokra mutató hivatkozásokat is tartalmaz. SharePoint online-hoz már Modern hitelesítést alapértelmezés szerint engedélyezi.
 
 Az Office 365 böngészőalapú alkalmazások (az Office-portálon, a Yammeren, SharePoint helyek, a webes és egyéb az Outlook) jelenleg támogatja a bérlői korlátozások. Vastag ügyfelek (Outlook, a Skype for Business, a Word, Excel, PowerPoint és további) kényszeríthetik bérlői korlátozások csak a modern hitelesítés használata esetén.  
 
@@ -185,5 +185,5 @@ Részletes tekintse meg a proxy server dokumentációjában talál.
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ [frissített Office 365 modern hitelesítését](https://blogs.office.com/2015/11/19/updated-office-365-modern-authentication-public-preview/)
+- További információ [frissített Office 365 modern hitelesítését](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)
 - Tekintse át a [Office 365 URL-címei és IP-címtartományok](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)

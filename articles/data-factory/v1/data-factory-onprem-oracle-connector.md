@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4ff7f92d1d13966be5d17f37210bef961f64faf2
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 51fae63b6db99f28a5b3bed056dadc0c2513ff0f
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58084606"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839934"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Adatok másolása, vagy a helyszíni Oracle az Azure Data Factory használatával
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
 > * [1-es verzió](data-factory-onprem-oracle-connector.md)
 > * [2-es verzió (aktuális verzió)](../connector-oracle.md)
 
@@ -83,7 +83,7 @@ Egy másolási tevékenységgel rendelkező folyamatot hozhat létre. A folyamat
 
 A folyamat létrehozásának legegyszerűbb módja, hogy a Másolás varázslóval. Lásd: [oktatóanyag: Hozzon létre egy folyamatot a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md) gyors bemutató folyamat létrehozása adatok másolása varázsló használatával.
 
-Használhatja a következő eszközök egyikét egy folyamat létrehozásához: a **az Azure portal**, **Visual Studio**, **Azure PowerShell-lel**, egy **Azure Resource Manager sablon**, a **.NET API**, vagy a **REST API-val**. Tekintse meg a [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) kapcsolatos lépésenkénti útmutatót egy másolási tevékenységgel rendelkező folyamat létrehozása.
+Emellett használhatja a következő eszközök egyikét egy folyamat létrehozásához: **A Visual Studio**, **Azure PowerShell-lel**, egy **Azure Resource Manager-sablon**, a **.NET API**, vagy a **REST API-val**. Tekintse meg a [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) kapcsolatos lépésenkénti útmutatót egy másolási tevékenységgel rendelkező folyamat létrehozása.
 
 Az eszközök vagy az API-kat használja, hogy a következő lépéseket egy folyamatot helyez át adatokat egy forrásadattárból egy fogadó adattárba hozunk létre:
 
@@ -104,8 +104,8 @@ A következő táblázat ismerteti, amelyek adott, az Oracle-beli társított sz
 | --- | --- | --- |
 | type |A **típus** tulajdonságot állítsa **OnPremisesOracle**. |Igen |
 | driverType | Adja meg az illesztőprogramok másolhat adatokat, vagy az Oracle-adatbázishoz. Engedélyezett értékek a következők **Microsoft** és **ODP** (alapértelmezett). Lásd: [verziójától és a telepítés támogatott](#supported-versions-and-installation) illesztőprogram adatai számára. | Nem |
-| kapcsolati Sztringje | Adja meg az információkat, amelyeket szeretne csatlakozni az Oracle database-példány a **connectionString** tulajdonság. | Igen |
-| átjáró neve | Az átjáró a helyszíni Oracle-kiszolgálóhoz való csatlakozáshoz használt neve. |Igen |
+| connectionString | Adja meg az információkat, amelyeket szeretne csatlakozni az Oracle database-példány a **connectionString** tulajdonság. | Igen |
+| gatewayName | Az átjáró a helyszíni Oracle-kiszolgálóhoz való csatlakozáshoz használt neve. |Igen |
 
 **Példa: A Microsoft-illesztő használatával**
 
@@ -181,13 +181,13 @@ A másolási tevékenység, ha a forrás a **OracleSource** típusa, a következ
 | Tulajdonság | Leírás | Megengedett értékek | Szükséges |
 | --- | --- | --- | --- |
 | writeBatchTimeout |A várakozási idő a köteg beszúrási művelet befejezését, mielőtt azt az időkorlátot. |**timespan**<br/><br/> Példa: 00:30:00 (30 minutes) |Nem |
-| WriteBatchSize |Szúr be adatokat az SQL-táblába, amikor a puffer mérete eléri a értékét **writeBatchSize**. |Egész szám (sorok száma) |Nem (alapértelmezett: 100) |
+| writeBatchSize |Szúr be adatokat az SQL-táblába, amikor a puffer mérete eléri a értékét **writeBatchSize**. |Egész szám (sorok száma) |Nem (alapértelmezett: 100) |
 | sqlWriterCleanupScript |Adja meg egy lekérdezést a másolási tevékenység végrehajtásához, hogy az adott szeletre vonatkozó adatok törlődnek. |A lekérdezési utasítást. |Nem |
-| sliceIdentifierColumnName |Meghatározza a másolási tevékenységhez egy automatikusan létrehozott szelet azonosító töltse ki az oszlop neve. Az érték **sliceIdentifierColumnName** mikor futtassa újra a adott szeletre adatainak szolgál. |Az oszlop nevét, amely rendelkezik az adattípus oszlop **binary(32)**. |Nem |
+| sliceIdentifierColumnName |Meghatározza a másolási tevékenységhez egy automatikusan létrehozott szelet azonosító töltse ki az oszlop neve. Az érték **sliceIdentifierColumnName** mikor futtassa újra a adott szeletre adatainak szolgál. |Az oszlop nevét, amely rendelkezik az adattípus oszlop **binary(32)** . |Nem |
 
 ## <a name="json-examples-for-copying-data-to-and-from-the-oracle-database"></a>JSON-példák az adatok másolása, és az Oracle-adatbázisból
 
-Az alábbi példák megadják példa JSON-definíciók, amelyek segítségével hozzon létre egy folyamatot a [az Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md), [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), vagy [Azure PowerShell-lel](data-factory-copy-activity-tutorial-using-powershell.md). A példák bemutatják, hogyan másolhat adatokat a vagy Oracle-adatbázishoz, és az Azure Blob storage-ból. Azonban adatok átmásolhatók a felsorolt fogadóként valamelyik [támogatott adattárak és formátumok](data-factory-data-movement-activities.md#supported-data-stores-and-formats) másolási tevékenységgel az Azure Data Factory használatával.
+Az alábbi példák megadják példa JSON-definíciók, amelyek segítségével létrehoz egy folyamatot használatával [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy [Azure PowerShell-lel](data-factory-copy-activity-tutorial-using-powershell.md). A példák bemutatják, hogyan másolhat adatokat a vagy Oracle-adatbázishoz, és az Azure Blob storage-ból. Azonban adatok átmásolhatók a felsorolt fogadóként valamelyik [támogatott adattárak és formátumok](data-factory-data-movement-activities.md#supported-data-stores-and-formats) másolási tevékenységgel az Azure Data Factory használatával.
 
 **Példa: Oracle az Azure Blob storage-adatok másolása**
 
@@ -553,7 +553,7 @@ A folyamat egy másolási tevékenység, amely a bemeneti és kimeneti adatkész
 
 ## <a name="troubleshooting-tips"></a>Hibaelhárítási tippek
 
-### <a name="problem-1-net-framework-data-provider"></a>1. hiba: .NET-keretrendszer adatszolgáltatója
+### <a name="problem-1-net-framework-data-provider"></a>1\. hiba: .NET-keretrendszer adatszolgáltatója
 
 **Hibaüzenet**
 
@@ -571,9 +571,9 @@ A folyamat egy másolási tevékenység, amely a bemeneti és kimeneti adatkész
     1. Nyissa meg a gép konfigurációs fájlját a mappából a .NET 2.0-s < rendszerlemez\>: \Windows\Microsoft.NET\Framework64\v2.0.50727\CONFIG\machine.config.
     2. Keresse meg **Oracle-adatszolgáltató a .NET-hez**. Egy bejegyzés található, ahogyan az alábbi minta alapján elvileg **system.data** > **DbProviderFactories**: `<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />`
 * Ez a bejegyzés átmásolása a machine.config fájlban a következő .NET 4.0-s: < rendszerlemez\>: \Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config. Ezután módosítsa a verzió 4.xxx.x.x.
-* Telepítés < ODP.NET telepített elérési\>a globális szerelvény-gyorsítótárban (GAC) futtatásával \11.2.0\client_1\odp.net\bin\4\Oracle.DataAccess.dll **gacutil /i [a szolgáltató elérési út]**.
+* Telepítés < ODP.NET telepített elérési\>a globális szerelvény-gyorsítótárban (GAC) futtatásával \11.2.0\client_1\odp.net\bin\4\Oracle.DataAccess.dll **gacutil /i [a szolgáltató elérési út]** .
 
-### <a name="problem-2-datetime-formatting"></a>2. hiba: Dátum és idő formázása
+### <a name="problem-2-datetime-formatting"></a>2\. hiba: Dátum és idő formázása
 
 **Hibaüzenet**
 
@@ -599,27 +599,27 @@ Ha áthelyezi adatait az Oracle, a következő hozzárendeléseket használatosa
 | --- | --- |
 | BFILE |Byte[] |
 | BLOB |Byte[]<br/>(csak a támogatott Oracle 10g és későbbi verziók és a egy Microsoft-illesztőprogram) |
-| CHAR |String |
-| CLOB |String |
-| DATE |DateTime |
-| LEBEGŐPONTOS |Tizedes tört, karakterlánc (Ha a pontosság > 28) |
-| INTEGER |Tizedes tört, karakterlánc (Ha a pontosság > 28) |
+| CHAR |Karakterlánc |
+| CLOB |Sztring |
+| DATE |Datetime |
+| FLOAT |Decimal, String (Ha a pontosság > 28) |
+| INTEGER |Decimal, String (Ha a pontosság > 28) |
 | INTERVALLUM ÉV, HÓNAP |Int32 |
 | INTERVALLUM NAP – MÁSODPERC |TimeSpan |
-| HOSSZÚ |String |
-| MENNYI IDEIG NYERS |Byte[] |
-| NCHAR |String |
-| NCLOB |String |
-| SZÁM |Tizedes tört, karakterlánc (Ha a pontosság > 28) |
-| NVARCHAR2 |String |
+| LONG |Karakterlánc |
+| LONG RAW |Byte[] |
+| NCHAR |Karakterlánc |
+| NCLOB |Karakterlánc |
+| NUMBER |Decimal, String (Ha a pontosság > 28) |
+| NVARCHAR2 |Sztring |
 | RAW |Byte[] |
-| }, ROWID |String |
-| IDŐBÉLYEG |DateTime |
-| A HELYI IDŐZÓNA IDŐBÉLYEG |DateTime |
-| AZ IDŐZÓNA IDŐBÉLYEG |DateTime |
-| ELŐJEL NÉLKÜLI EGÉSZ SZÁM |Szám |
-| VARCHAR2 |String |
-| XML |String |
+| ROWID |Karakterlánc |
+| TIMESTAMP |Datetime |
+| TIMESTAMP WITH LOCAL TIME ZONE |Datetime |
+| TIMESTAMP WITH TIME ZONE |Datetime |
+| UNSIGNED INTEGER |Number |
+| VARCHAR2 |Sztring |
+| XML |Sztring |
 
 > [!NOTE]
 > Az adattípusok **IDŐKÖZ YEAR TO hónap** és **IDŐKÖZ nap TO második** egy Microsoft-illesztőprogram használata esetén nem támogatottak.

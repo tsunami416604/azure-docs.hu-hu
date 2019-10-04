@@ -1,0 +1,87 @@
+- name: A biztonságos fejlesztés dokumentációja
+  href: index.yml
+- name: Mintaalkalmazások
+  expanded: true
+  items:
+    - name: Kezdő a biztonságos fejlesztés terén
+      items:
+        - name: Webalkalmazás egy Linux-tárolóban
+          href: secure-web-app.md
+        - name: Webalkalmazás és az Azure Active Directory
+          href: secure-aad-app.md
+    - name: Iparági megfelelőségi megoldások
+      items:
+        - name: Bankkártyaágazat
+          href: secure-pci-web-app.md
+- name: Alapelvek
+  expanded: true
+  items:
+    - name: Ajánlott eljárások
+      items:
+        - name: Áttekintés
+          href: secure-dev-overview.md
+        - name: Biztonságos alkalmazások tervezése
+          href: secure-design.md
+        - name: Biztonságos alkalmazások fejlesztése
+          href: secure-develop.md
+        - name: Biztonságos alkalmazások üzembe helyezése
+          href: secure-deploy.md
+- name: További források
+  expanded: true
+  items:
+    - name: Microsoft Security Code Analysis
+      items:
+        - name: Áttekintés
+          href: security-code-analysis-overview.md
+        - name: Előkészítés és telepítés
+          href: security-code-analysis-onboard.md
+        - name: Konfiguráció
+          href: security-code-analysis-customize.md
+        - name: Gyakori kérdések
+          href: security-code-analysis-faq.md
+    - name: Microsoft Threat Modeling Tool
+      displayName: stride
+      href: threat-modeling-tool.md
+      items:
+        - name: Első lépések
+          href: threat-modeling-tool-getting-started.md
+        - name: A funkciók áttekintése
+          href: threat-modeling-tool-feature-overview.md
+        - name: Fenyegetések
+          href: threat-modeling-tool-threats.md
+        - name: Kiadások
+          href: threat-modeling-tool-releases.md
+          items:
+            - name: 'A Threat Modeling Tool általánosan elérhető kiadása: 7.1.5091.2 – 2018. szeptember 12.'
+              href: threat-modeling-tool-releases-71509112.md
+            - name: 'A Threat Modeling Tool frissített kiadása: 7.1.51023.1 – 2018. november 1.'
+              href: threat-modeling-tool-releases-71510231.md
+            - name: 'A Threat Modeling Tool frissített kiadása: 7.1.60126.1 – 2019. január 29.'
+              href: threat-modeling-tool-releases-71601261.md
+            - name: 'A Threat Modeling Tool frissített kiadása: 7.1.60408.1 – 2019. április 9.'
+              href: threat-modeling-tool-releases-71604081.md
+            - name: 'A Threat Modeling Tool frissített kiadása: 7.1.60702.1 – 7/02/2019'
+              href: threat-modeling-tool-releases-71607021.md
+        - name: Kezelési lehetőségek
+          href: threat-modeling-tool-mitigations.md
+          items:
+            - name: Naplózás
+              href: threat-modeling-tool-auditing-and-logging.md
+            - name: Hitelesítés
+              href: threat-modeling-tool-authentication.md
+            - name: Engedélyezés
+              href: threat-modeling-tool-authorization.md
+            - name: Kommunikációs biztonság
+              href: threat-modeling-tool-communication-security.md
+            - name: Konfigurációkezelés
+              href: threat-modeling-tool-configuration-management.md
+            - name: Titkosítás
+              href: threat-modeling-tool-cryptography.md
+            - name: Kivételek kezelése
+              href: threat-modeling-tool-exception-management.md
+            - name: Bemenet-ellenőrzés
+              href: threat-modeling-tool-input-validation.md
+            - name: Bizalmas adatok
+              href: threat-modeling-tool-sensitive-data.md
+            - name: Munkamenet-kezelés
+              href: threat-modeling-tool-session-management.md

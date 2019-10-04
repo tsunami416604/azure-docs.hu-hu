@@ -14,14 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: dbdfac143cb3254e558622fc1eecfdf95876240e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 73a76162efaf7317c5e2f1668b76325da6f018ce
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58177738"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64868130"
 ---
 # <a name="use-media-services-to-deliver-drm-licenses-or-aes-keys"></a>DRM-licencek és az AES-kulcsok a Media Services használatával 
+
+> [!NOTE]
+> Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).   > A Media Services v2 jelennek meg nincs új szolgáltatásokat és funkciókat. <br/>Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még [v3 a v2 migrálási útmutató](../latest/migrate-from-v2-to-v3.md)
+>
 
 Az Azure Media Services lehetővé teszi, hogy a betöltési, kódolás, adja hozzá a content protection és a tartalmak streamelésére. További információkért lásd: [használja a PlayReady és/vagy Widevine dynamic common Encryption titkosítás](media-services-protect-with-playready-widevine.md). Egyes ügyfeleknek érdemes használni a Media Services csak való kézbesítéséhez, licencek és/vagy a kulcsok és kódolása, titkosítása és adatfolyam-azok a helyszíni kiszolgálók használatával. Ez a cikk bemutatja, hogyan használhatja a Media Services PlayReady és/vagy Widevine-licencek, de a többi tegye a helyszíni kiszolgálókkal. 
 
@@ -347,5 +351,5 @@ namespace DeliverDRMLicenses
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Lásd még
-* [PlayReady és/vagy Widevine dynamic common encryption használata](media-services-protect-with-playready-widevine.md)
+* [PlayReady és/vagy Widevine Dynamic Common Encryption használata](media-services-protect-with-playready-widevine.md)
 * [AES-128, a dinamikus titkosítás és a kulcstovábbítást használata](media-services-protect-with-aes128.md)

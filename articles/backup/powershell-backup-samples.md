@@ -1,20 +1,19 @@
 ---
 title: Azure Backup PowerShell-minták
 description: Azure Backup PowerShell-minták
-services: backup
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: sample
 ms.date: 01/31/2019
-ms.author: raynew
+ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 0fa22ea85d05ef6514c8b7da0d148a3262a1bbc3
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: af21ee3aa807228c5a6f0e70e22442bc15b59ddf
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55494867"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639456"
 ---
 # <a name="azure-backup-powershell-samples"></a>Azure Backup PowerShell-minták
 

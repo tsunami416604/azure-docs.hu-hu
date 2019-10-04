@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: dc871b29cdafa57d337f9be6cf01e76212f31b67
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50227376"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179095"
 ---
 ## <a name="migrate-iaas-resources-from-the-classic-deployment-model-to-azure-resource-manager"></a>IaaS-erőforrások áttelepítése a klasszikus üzemi modellből Azure Resource Manager
 Először is fontos, az infrastruktúra-szolgáltatás (IaaS) erőforrásként adatsíkon és a felügyeleti sík műveleteket közötti különbségek megértése.
@@ -107,7 +107,7 @@ Nincs beállított ablak, amely előtt a migrálás véglegesítése szükséges
 
 Ha bármilyen problémát észlel, mindig megszakíthatja a migrálást, és visszatérhet a klasszikus üzemi modellhez. Miután visszatér, az Azure megnyitja a felügyeleti sík műveleteket az erőforráson, úgy, hogy folytathassa a normál üzemeltetést a virtuális gépek a klasszikus üzemi modellben.
 
-### <a name="abort"></a>Megszakítás
+### <a name="abort"></a>Megszakítása
 Ez az egy választható lépés, ha azt szeretné, állítsa vissza a módosítást a klasszikus üzemi modellre és leállíthatja a migrálást. Ez a művelet törli a Resource Manager-metaadatokat (létrehozott az előkészítési lépés) az erőforrások. 
 
 ![Megszakítási lépés ábra](../articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-abort.png)

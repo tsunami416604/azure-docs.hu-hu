@@ -1,0 +1,57 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure SQL Database – Szolgáltatásként nyújtott platform
+metadata:
+  document_id: 36d89c48-3646-380e-34a0-ae3ac62e2641
+  title: Azure SQL Database – Szolgáltatásként nyújtott platform
+  meta.description: Learn about the PaaS capabilities of Azure SQL Database.
+  services: sql-database
+  ms.subservice: service
+  author: jovanpop-msft
+  ms.reviewer: carlrab
+  manager: craigg
+  requires-business-manager-approval: false
+  ms.service: sql-database
+  ms.tgt_pltfrm: na
+  ms.devlang: null
+  ms.topic: overview
+  ms.date: 11/11/2018
+  ms.author: jovanpop-msft
+sections:
+  - items:
+      - type: paragraph
+        text: 'Az Azure SQL Database egy olyan adatbázismotor, amely egy teljes mértékben felügyelt, szolgáltatásként nyújtott platform (PaaS), és képes kezelni az adatbázisok felügyeletével kapcsolatos legtöbb feladatot, például a frissítéseket, javítások telepítését, biztonsági mentések készítését és felhasználói beavatkozás nélküli monitorozást. Az Azure SQL Database mindig az SQL Server-adatbázismotor legfrissebb stabil verzióján és javított operációs rendszeren fut, 99,99%-os rendelkezésre állással. Az Azure SQL Database-be beépített PaaS-funkciók lehetővé teszik, hogy azon alkalmazási területre jellemző adatbázis-felügyeleti és optimalizálási tevékenységekre koncentráljon, amelyek kritikus fontosságúak a vállalat számára.'
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - title: Az üzletmenet folytonossága
+            href: /azure/sql-database/sql-database-business-continuity
+            html: '<p>Az Azure SQL Database lehetővé teszi, hogy a vállalat fennakadások esetén is működőképes maradjon, még akkor is, ha a fennakadások a számítási infrastruktúrában lépnek fel.</p>'
+          - title: Magas rendelkezésre állás
+            href: /azure/sql-database/sql-database-high-availability
+            html: '<p>Az Azure SQL Database garantálja, hogy az adatbázisok az idő 99,99%-ában működnek, így nem kell aggódnia a karbantartások és a leállások miatt.</p>'
+          - title: Automatikus biztonsági mentések
+            href: /azure/sql-database/sql-database-automated-backups
+            html: '<p>Az Azure SQL Database automatikusan elkészíti az adatbázis biztonsági mentéseit, és Azure-beli írásvédett georedundáns tárolást (RA-GRS) használ a georedundancia biztosításához.</p>'
+          - title: Biztonsági mentés hosszú távú megőrzése
+            href: /azure/sql-database/sql-database-long-term-retention
+            html: <p>Az Azure SQL Database lehetővé teszi egyes SQL-adatbázisok teljes biztonsági másolatának akár 10 évre kiterjedő tárolását.</p>
+          - title: Georeplikáció
+            href: /azure/sql-database/sql-database-geo-replication-overview
+            html: <p>Az Azure SQL Database olvasható adatbázis-replikák létrehozását is lehetővé teszi ugyanabban vagy egy másik adatközpontban (régióban).</p>
+          - title: Erőforrások skálázása
+            href: /azure/sql-database/sql-database-scale-resources
+            html: '<p>Az Azure SQL Database segítségével további erőforrásokat (processzort, memóriát, tárterületet) is egyszerűen hozzáadhat, anélkül, hogy az üzembe helyezésük túl sok időt emésztene fel.</p>'
+  - title: További erőforrások
+    items:
+      - type: paragraph
+        text: 'Az Azure SQL-adatbázis további beépített PaaS-funkciók teljes készletét kínálja, amelyekkel könnyebben felügyelheti adatbázisait.'
+      - type: list
+        style: ordered
+        items:
+          - html: 'A <a href="/azure/sql-database/sql-database-security-index">fokozott biztonsági</a> funkció felismeri az adatbázisait fenyegető veszélyeket és azok biztonsági réseit, és lehetővé teszi adatainak védelmét.'
+          - html: 'Az <a href="/azure/sql-database/sql-database-automatic-tuning">automatikus hangolás</a> elemzi a számítási feladatokat, és javaslatokat tesz az alkalmazások teljesítményének optimalizálására indexek hozzáadásával, a nem használt indexek eltávolításával, illetve a lekérdezéstervekkel kapcsolatos problémák automatikus javításával.'
+          - html: 'A <a href="/azure/log-analytics/log-analytics-azure-sql">beépített monitorozási képességek</a> lehetővé teszik az adatbázisok és a számítási feladatok teljesítményének részletes áttekintését, és segítenek a teljesítménnyel kapcsolatos problémák elhárításában.'
+          - html: 'A <a href="/azure/sql-database/sql-database-intelligent-insights">beépített intelligencia</a> automatikusan azonosítja a számítási feladatok lehetséges problémáit, és javaslatokat tesz azok megoldására.'

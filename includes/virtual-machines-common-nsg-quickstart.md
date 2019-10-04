@@ -9,11 +9,11 @@ ms.date: 09/12/2018
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: ec6cbcbc93fe87634c87caeb0041b75ec916a22f
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48888565"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179089"
 ---
 Nyisson meg egy portot, vagy hozzon létre egy végpontot a virtuális géphez (VM) az Azure-ban egy alhálózatot vagy egy virtuális hálózati adapter hálózati szűrő létrehozásával. Ezeket a szűrőket, amely a bejövő és kimenő adatforgalom vezérlésére, helyezze el az erőforrás a forgalmat fogadó csatolt hálózati biztonsági csoport.
 
@@ -25,7 +25,7 @@ Miután létrehozott egy virtuális Gépet, amely a szabványos 80-as TCP-portot
 
 2. Engedélyezi a forgalmat bejövő biztonsági szabály létrehozása, és rendelje hozzá az értékeket az alábbi beállításokat:
 
-   - **Célporttartományok**: 80-as
+   - **Célporttartományok**: 80
 
    - **Porttartományok forrás**: * (lehetővé teszi, hogy bármely forrásportból)
 

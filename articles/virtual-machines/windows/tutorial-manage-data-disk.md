@@ -4,12 +4,11 @@ description: Ez az oktatóanyag bemutatja, hogyan hozhat létre és felügyelhet
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
@@ -17,12 +16,12 @@ ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.subservice: disks
-ms.openlocfilehash: be6375972747c5c962bf1a8ef9b9b0093402bb7a
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: f44ea76ed22ab4feacc6ee37b165bbc33f7ddafc
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58368255"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101599"
 ---
 # <a name="tutorial---manage-azure-disks-with-azure-powershell"></a>Oktatóanyag – Azure-lemezek kezelése az Azure PowerShell-lel
 
@@ -51,7 +50,7 @@ Egy Azure-beli virtuális gép létrehozásakor a rendszer két lemezt automatik
 
 ## <a name="azure-data-disks"></a>Azure-adatlemezek
 
-További adatlemezeket adhat hozzá, amelyekre alkalmazásokat telepíthet és amelyeken adatokat tárolhat. Az adatlemezeket akkor érdemes használni, ha tartós és rugalmas adattárolásra van szükség. Az egyes adatlemezek kapacitása maximum 4 terabájt lehet. A virtuális gép mérete határozza meg, hány adatlemez csatolható a virtuális géphez. A virtuális gépek minden vCPU-jához négy adatlemez csatolható.
+További adatlemezeket adhat hozzá, amelyekre alkalmazásokat telepíthet és amelyeken adatokat tárolhat. Az adatlemezeket akkor érdemes használni, ha tartós és rugalmas adattárolásra van szükség. A virtuális gép mérete határozza meg, hány adatlemez csatolható a virtuális géphez. A virtuális gépek minden vCPU-jához négy adatlemez csatolható.
 
 ## <a name="vm-disk-types"></a>Virtuálisgép-lemezek típusai
 
@@ -73,7 +72,7 @@ Az oktatóanyagban található példa elvégzéséhez szüksége lesz egy meglé
 A virtuális gép rendszergazdai fiókjának felhasználónevét és jelszavát állítsa be a [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) paranccsal:
 
 
-A virtuális gép létrehozása [New-azvm parancsmag](https://docs.microsoft.com/powershell/module/az.compute/new-azvm). Amikor a rendszer kéri, adja meg a virtuális gép rendszergazdai fiókjának felhasználónevét és jelszavát.
+Hozza létre a virtuális gépet a [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm). Amikor a rendszer kéri, adja meg a virtuális gép rendszergazdai fiókjának felhasználónevét és jelszavát.
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -87,7 +86,7 @@ New-AzVm `
 ```
 
 
-Hozzon létre a kezdeti konfigurációt a [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig). A következő példa egy 128 GB méretű lemezt konfigurál.
+Hozza létre a kezdeti konfigurációt a [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig). A következő példa egy 128 GB méretű lemezt konfigurál.
 
 ```azurepowershell-interactive
 $diskConfig = New-AzDiskConfig `
@@ -96,7 +95,7 @@ $diskConfig = New-AzDiskConfig `
     -DiskSizeGB 128
 ```
 
-Hozzon létre az adatlemezt a [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-Azdisk) parancsot.
+Hozza létre az adatlemezt a [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-Azdisk) paranccsal.
 
 ```azurepowershell-interactive
 $dataDisk = New-AzDisk `
@@ -105,13 +104,13 @@ $dataDisk = New-AzDisk `
     -Disk $diskConfig
 ```
 
-Helyezze a virtuális gépet, amely szeretne hozzáadni az adatlemezt a [Get-azvm parancsmag](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) parancsot.
+Szerezze be azt a virtuális gépet, amelyhez hozzá szeretné adni az adatlemezt a [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) paranccsal.
 
 ```azurepowershell-interactive
 $vm = Get-AzVM -ResourceGroupName "myResourceGroupDisk" -Name "myVM"
 ```
 
-Adja hozzá az adatlemezt a virtuális gép konfigurációra az [Add-AzVMDataDisk](https://docs.microsoft.com/powershell/module/az.compute/add-azvmdatadisk) parancsot.
+Adja hozzá az adatlemezt a virtuális gép konfigurációjához az [Add-AzVMDataDisk](https://docs.microsoft.com/powershell/module/az.compute/add-azvmdatadisk) paranccsal.
 
 ```azurepowershell-interactive
 $vm = Add-AzVMDataDisk `
@@ -122,7 +121,7 @@ $vm = Add-AzVMDataDisk `
     -Lun 1
 ```
 
-A virtuális gép frissítése a [Update-azvm parancsmag](https://docs.microsoft.com/powershell/module/az.compute/add-azvmdatadisk) parancsot.
+Frissítse a virtuális gépet az [Update-AzVM](https://docs.microsoft.com/powershell/module/az.compute/add-azvmdatadisk) paranccsal.
 
 ```azurepowershell-interactive
 Update-AzVM -ResourceGroupName "myResourceGroupDisk" -VM $vm

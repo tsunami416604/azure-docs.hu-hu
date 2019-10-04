@@ -4,23 +4,23 @@ ms.service: storage
 ms.topic: include
 ms.date: 4/20/2019
 ms.author: tamram
-ms.openlocfilehash: d96f400332b7953b34a157b3b52cf00bb20db76e
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: aab17966862c57a52f252b3c4e9b757673078b0a
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60012520"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "67179331"
 ---
-| Erőforrás | Cél        |
+| Resource | Target        |
 |----------|---------------|
-| Egy blob-tároló maximális mérete | Ugyanaz, mint a maximális tárolókapacitás fiók |
-| Maximális száma blokkokat egy block blob vagy hozzáfűző blob | 50 000 blokkot |
-| A blokkblob egy blokk maximális mérete | 100 MiB |
-| A blokkblobok maximális mérete | 50 000 x 100 MiB (körülbelül 4,75 TiB) |
-| Egy blokkblob egy hozzáfűző BLOB maximális mérete | 4 MiB |
-| A hozzáfűző blob maximális mérete | 50 000 x 4 MiB (KB. 195 GB) |
-| Egy lapblob maximális mérete | 8 TiB |
-| Egy blob-tárolóban tárolt hozzáférési szabályzatok maximális számát | 5 |
-|Cél átviteli egyetlen BLOB |Tároló bejövő/kimenő forgalom korlátai legfeljebb<sup>1</sup> |
+| Egy blob-tároló maximális mérete | Ugyanaz, mint a Storage-fiókok maximális kapacitása |
+| Blokkok maximális száma egy blokk blobban vagy a blob hozzáfűzése | 50 000 blokk |
+| Blokk maximális mérete egy blokk blobban | 100 MiB |
+| Blokk blob maximális mérete | 50 000 X 100 MiB (körülbelül 4,75 TiB) |
+| Blokk maximális mérete egy hozzáfűző blobban | 4 MiB |
+| Hozzáfűző blob maximális mérete | 50 000 x 4 MiB (körülbelül 195 GiB) |
+| Oldal blobjának maximális mérete | 8 TiB |
+| Tárolt hozzáférési szabályzatok maximális száma blob-tárolón | 5 |
+|Cél átviteli sebesség egyetlen blobhoz |Legfeljebb Storage-fiók bejövő/kimenő korlátja<sup>1</sup> |
 
-<sup>1</sup> számos tényező befolyásolja, többek között, de nem kizárólagosan függ, hogy egyetlen objektum átviteli sebesség: egyidejűségi, a kérelem mérete, a teljesítményszint, a feltöltések a forrás és cél letöltések sebességétől. Kihasználásához [nagy átviteli sebességű blokkblob](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/) teljesítményt érintő továbbfejlesztés, használjon egy Put Blob- vagy Blokkelraktározási kérés mérete > 4 MiB (> 256 MiB prémium szintű teljesítményt blokkblob típusú tárolás vagy a Data Lake Storage Gen2).
+<sup>1</sup> az egyetlen objektum átviteli sebessége több tényezőtől függ, többek között a következőktől: Egyidejűség, kérelmek mérete, teljesítményszint, a feltöltések forrása, valamint a letöltések célja. A [nagy átviteli sebességű blokk Blobok](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/) teljesítményének kihasználásához használjon egy Put blobot, vagy > 4 MIB-t (> 256 KiB a prémium szintű teljesítményű blob Storage-hoz vagy a Data Lake Storage Gen2-hoz).

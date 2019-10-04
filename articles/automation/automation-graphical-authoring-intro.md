@@ -4,17 +4,17 @@ description: Grafikus létrehozásról lehetővé teszi a runbookok létrehozás
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ae732ab5c73dbec4a2aef6521b9edb490079112e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: 6d7626706951cc522dce9c6d70251455e64300bc
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59797107"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476697"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Grafikus létrehozás az Azure Automationben
 
@@ -44,7 +44,7 @@ A vászon alján a vezérlők használatával nagyíthat és.
 
 A könyvtár vezérlőben, ahol ki kell választania [tevékenységek](#activities) hozzáadása a runbookhoz. Hozzáadja őket a vásznon, ahol Ön csatlakoztathatja őket a többi tevékenység. Tartalmazza az alábbi táblázatban ismertetett négy részből áll:
 
-| Section | Leírás |
+| `Section` | Description |
 |:--- |:--- |
 | Parancsmagok |A runbook felhasználható összes parancsmagot tartalmazza. Parancsmagok modul szerint vannak rendszerezve. A modulokat az automation-fiókban telepített összes érhetők el. |
 | Runbookok |Tartalmazza a forgatókönyvek az automation-fiók. Ezek a runbookok gyermek runbookként használható vásznon lehet hozzáadni. Csak az azonos core típusú, a runbook szerkesztett forgatókönyvek jelennek meg; a grafikus runbookok csak PowerShell-alapú forgatókönyvek jelennek meg, amíg a grafikus PowerShell-munkafolyamati runbookok csak PowerShell-munkafolyamat-alapú forgatókönyvek jelennek meg. |
@@ -109,9 +109,9 @@ A következő példában a Get-AzureRmVM parancsmag három paraméterkészlettel
 
 Ha megad egy értéket a paraméterhez, ki kell választania egy adatforrás határozza meg, hogy az érték van megadva. Az adatforrásokat, amelyek egy adott paraméter függ, hogy a paraméter érvényes értékei érhető el. Például Null lehetőség nem érhető el az egyik paraméter, amely nem engedélyezi a null értékeket.
 
-| Adatforrás | Leírás |
+| Adatforrás | Description |
 |:--- |:--- |
-| Konstans érték |Adja meg a paraméter értékét. Ez a tulajdonság csak a következő adattípusokat érhető el: Int32, Int64, String, logikai értéket, DateTime, váltson. |
+| Állandó érték |Adja meg a paraméter értékét. Ez a tulajdonság csak a következő adattípusokat érhető el: Int32, Int64, String, logikai értéket, DateTime, váltson. |
 | Tevékenység kimenete |Egy tevékenységgel, amely szerepel az aktuális tevékenység a munkafolyamat kimenetét. Az összes érvényes tevékenységek jelennek meg. Válassza ki a csak a tevékenység kimenetét használja a paraméter értéke. Ha a tevékenység kimenete egy több tulajdonsággal rendelkező objektumot, majd beírhatja be a tulajdonság nevét a tevékenység kiválasztása után. |
 | Forgatókönyv-bemenet |Válassza ki a forgatókönyv bemeneti paramétere a tevékenység-paraméter bemeneteként. |
 | Változóeszköz |Válassza ki a egy automatizálási változó bemenetként. |
@@ -119,11 +119,11 @@ Ha megad egy értéket a paraméterhez, ki kell választania egy adatforrás hat
 | Tanúsítványobjektum |Válassza ki az Automation-tanúsítvány bemenetként. |
 | Kapcsolatobjektum |Válassza ki az automatizálási kapcsolat bemenetként. |
 | PowerShell-kifejezés |Adja meg az egyszerű [PowerShell-kifejezés](#powershell-expressions). A kifejezés előtt a tevékenység és az eredmény a paraméter értéke a használt lesz kiértékelve. Változók használatával tekintse meg a kimeneti tevékenység vagy a forgatókönyv bemeneti paramétere. |
-| Nincs beállítva |Törli a korábban beállított értéket. |
+| Nincs konfigurálva |Törli a korábban beállított értéket. |
 
 #### <a name="optional-additional-parameters"></a>További nem kötelező paraméterek
 
-Minden parancsmag lehetősége a további paramétereket adja meg. Ezek a PowerShell általános paramétereivel vagy más egyéni paraméterek. Megnyílik egy szövegmező, ahol megadhatja a paramétereket a PowerShell-szintaxis használatával. Használja például a **részletes** általános paramétert kell megadni **"-Verbose: $True"**.
+Minden parancsmag lehetősége a további paramétereket adja meg. Ezek a PowerShell általános paramétereivel vagy más egyéni paraméterek. Megnyílik egy szövegmező, ahol megadhatja a paramétereket a PowerShell-szintaxis használatával. Használja például a **részletes** általános paramétert kell megadni **"-Verbose: $True"** .
 
 ### <a name="retry-activity"></a>Ismételje meg a tevékenység
 
@@ -139,10 +139,10 @@ Az újrapróbálkozási feltétel, amely minden alkalommal, amikor a tevékenys�
 
 Az újrapróbálkozási feltétel használhatja, amely hozzáférést biztosít a tevékenység-újrapróbálkozások kapcsolatos adatokhoz $RetryData nevű változóra. Ezt a változót a következő táblázat a tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Leírás |
+| Tulajdonság | Description |
 |:--- |:--- |
 | NumberOfAttempts |Száma, amelyek a tevékenység futott. |
-| Kimenet |A tevékenység a legutóbbi futtatás kimenete. |
+| Output |A tevékenység a legutóbbi futtatás kimenete. |
 | TotalDuration |Lejárt az idő a tevékenység az első alkalommal indítása óta eltelt idő. |
 | StartedAt |Ideje UTC formátumban, a tevékenység először lett elindítva. |
 
@@ -191,10 +191,10 @@ Hozzon létre egy hivatkozást a forrásoldali tevékenység kiválasztva, majd 
 
 Válassza ki a hivatkozásra kattintva konfigurálja a tulajdonságait, a konfiguráció panelen. Ez tartalmazza a hivatkozás típusát, amely az alábbi táblázatban ismertetett:
 
-| Hivatkozás típusa | Leírás |
+| Hivatkozás típusa | Description |
 |:--- |:--- |
 | Folyamat |A céltevékenység fut egyszer minden egyes objektum kimeneti a forrásoldali tevékenységnek. A céltevékenység nem működik, ha a forrásoldali tevékenységnek nincs kimenet eredményez. A forrásoldali tevékenység kimenete objektumként érhető el. |
-| Szekvencia |A céltevékenység csak egyszer fut le. A forrásoldali tevékenység Eszközindítási objektumokból álló tömb. A forrásoldali tevékenység kimenete objektumok tömbjeként érhető el. |
+| Feladatütemezés |A céltevékenység csak egyszer fut le. A forrásoldali tevékenység Eszközindítási objektumokból álló tömb. A forrásoldali tevékenység kimenete objektumok tömbjeként érhető el. |
 
 ### <a name="starting-activity"></a>Kezdő tevékenység
 
@@ -249,7 +249,7 @@ Az alábbi példa egy runbookot, amely elindítja a virtuális gépek egyidejűl
 
 Egy ciklus akkor, ha egy cél tevékenység hivatkozások vissza a forrásoldali tevékenység vagy egy másik tevékenység hivatkozó végül forrásként. Ciklusok jelenleg nem engedélyezett a grafikus létrehozásról. Ha a runbook egy ciklust, megfelelően menti, de hibaüzenetet kap, futtatásakor.
 
-![Ciklikus](media/automation-graphical-authoring-intro/runbook-cycle.png)
+![Ciklus](media/automation-graphical-authoring-intro/runbook-cycle.png)
 
 ### <a name="sharing-data-between-activities"></a>Tevékenységek között adatokat megosztó
 
@@ -268,7 +268,7 @@ $ActivityOutput['Activity Label']
 $ActivityOutput['Activity Label'].PropertyName
 ```
 
-### <a name="checkpoints"></a>Ellenőrzőpontok
+### <a name="checkpoints"></a>Az ellenőrzőpontok
 
 Beállíthat [ellenőrzőpontok](automation-powershell-workflow.md#checkpoints) a grafikus PowerShell-munkafolyamati runbook kiválasztásával *ellenőrzőpont-forgatókönyv* minden olyan tevékenységnél. Ennek hatására a tevékenység futtatása után kell beállítani egy ellenőrzőpontot.
 
@@ -322,12 +322,12 @@ Ekkor megnyílik a **bemeneti és kimeneti** vezérlő, ahol szerkesztheti a meg
 
 Egyes bemeneti paramétereket határozzák meg a tulajdonságait az alábbi táblázatban:
 
-| Tulajdonság | Leírás |
+| Tulajdonság | Description |
 |:--- |:--- |
-| Name (Név) |A paraméternek egyedi neve. Ez csak alfanumerikus karaktereket tartalmazhat, és nem tartalmazhat szóközt. |
-| Leírás |A bemeneti paraméter leírását. |
-| Typo |A paraméter értéke a várt adattípus. Az Azure Portalon kimondása a bemeneti biztosít az egyes paraméterekhez tartozó adattípus egy megfelelő vezérlőt. |
-| Kötelező |Itt adhatja meg, hogy értéket kell adni a paraméter. A runbook nem indítható el, ha nem ad meg értéket minden kötelező paraméter, amely nem rendelkezik meghatározott alapértelmezett értéket. |
+| Name |A paraméternek egyedi neve. Ez csak alfanumerikus karaktereket tartalmazhat, és nem tartalmazhat szóközt. |
+| Description |A bemeneti paraméter leírását. |
+| Type |A paraméter értéke a várt adattípus. Az Azure Portalon kimondása a bemeneti biztosít az egyes paraméterekhez tartozó adattípus egy megfelelő vezérlőt. |
+| Mandatory |Itt adhatja meg, hogy értéket kell adni a paraméter. A runbook nem indítható el, ha nem ad meg értéket minden kötelező paraméter, amely nem rendelkezik meghatározott alapértelmezett értéket. |
 | Alapértelmezett érték |Itt adhatja meg, milyen értéket a paraméterhez szolgál, ha nincs megadva. Ez lehet null értékű vagy egy adott érték. |
 
 ### <a name="runbook-output"></a>Runbook kimenete

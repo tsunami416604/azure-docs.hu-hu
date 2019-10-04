@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 01/16/2018
 ms.author: alkohli
 ms.openlocfilehash: b837aab871827c468295a365727a282f6c8a1a4b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58086020"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60634104"
 ---
 # <a name="use-azure-automation-to-trigger-a-job"></a>Az Azure Automationnel elindítható egy feladat
 
@@ -90,21 +90,21 @@ A következő lépésekkel importálhatja, közzététel, és futtatja a runbook
 
 1. Az Azure Portalon nyissa meg az Automation-fiókját. Lépjen a **Folyamatautomatizálás > Runbookok** kattintson **+ forgatókönyv hozzáadása**.
 
-    ![1. forgatókönyv hozzáadása](./media/storsimple-data-manager-job-using-automation/add-runbook-1.png)
+    ![1\. forgatókönyv hozzáadása](./media/storsimple-data-manager-job-using-automation/add-runbook-1.png)
 
 2. A **adja hozzá a runbook**, kattintson a **meglévő runbook importálása**.
 
 3. Mutasson az Azure PowerShell-parancsfájlt a `Trigger-DataTransformation-Job.ps1` számára a **forgatókönyvfájl**. A runbook-típus automatikusan ki van jelölve. Adjon meg egy nevet és egy leírást a runbook. Kattintson a **Create** (Létrehozás) gombra.
 
-    ![2. forgatókönyv hozzáadása](./media/storsimple-data-manager-job-using-automation/add-runbook-2.png)
+    ![2\. forgatókönyv hozzáadása](./media/storsimple-data-manager-job-using-automation/add-runbook-2.png)
 
 4. Az új runbook megjelenik az Automation-fiók runbookok listája. Válassza ki, majd kattintson a runbook.
 
-    ![3. forgatókönyv hozzáadása](./media/storsimple-data-manager-job-using-automation/add-runbook-3.png)
+    ![3\. forgatókönyv hozzáadása](./media/storsimple-data-manager-job-using-automation/add-runbook-3.png)
 
 5. Szerkessze a runbookot, és kattintson a **teszt** ablaktáblán.
 
-    ![4. runbook hozzáadása](./media/storsimple-data-manager-job-using-automation/add-runbook-4.png)
+    ![4\. runbook hozzáadása](./media/storsimple-data-manager-job-using-automation/add-runbook-4.png)
 
 6. Adja meg a paraméterek, például nevét, a StorSimple Data Manager szolgáltatás, a társított erőforráscsoportot és a feladatdefiníció neve. **Indítsa el** a vizsgálatot. A jelentés jön létre, ha a Futtatás befejeződött. További információkért lépjen be, hogyan [egy runbook tesztelése](../automation/automation-first-runbook-textual-powershell.md#step-3---test-the-runbook).
 

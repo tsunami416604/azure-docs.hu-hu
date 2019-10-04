@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/13/2018
 ms.author: spelluru
-ms.openlocfilehash: d93818cd875c4050b1b35f21ce580933776c5bc5
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 2cd6998c7ac11638ead67fde384bdf4599692781
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40234943"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64706041"
 ---
 # <a name="configure-and-use-public-environments-in-azure-devtest-labs"></a>Konfigurálhatja és használhatja a nyilvános környezetben az Azure DevTest Labs szolgáltatásban
 Az Azure DevTest Labs rendelkezik egy [nyilvános tárházban az Azure Resource Manager-sablonok](https://github.com/Azure/azure-devtestlab/tree/master/Environments) , amelyek segítségével való csatlakozáshoz külső GitHub forrás saját magának nélkül hozhat létre környezeteket. Ez a tárház például az Azure Web Apps, a Service Fabric-fürt és a fejlesztési környezet SharePoint-Farm gyakran használt sablont tartalmaz. Ez a funkció az összetevők a nyilvános tárház, amely tartalmaz minden Ön által létrehozott laborban hasonlít. A környezet tárház használatának gyors megkezdése minimális bemeneti paraméterei, zökkenőmentes első lépések felhasználói élményt biztosíthat a PaaS-erőforrásokhoz labs belül az előre létrehozott környezeti sablonokkal teszi lehetővé. 

@@ -1,87 +1,86 @@
 ---
-title: Az első alkalmazás üzembe helyezése a Cloud Foundry-hoz a Microsoft Azure-on |} A Microsoft Docs
-description: Cloud Foundry az Azure-alkalmazás üzembe helyezése
+title: Az első alkalmazás üzembe helyezése Cloud Foundry on Microsoft Azure | Microsoft Docs
+description: Alkalmazás üzembe helyezése az Azure-ban Cloud Foundry
 services: virtual-machines-linux
 documentationcenter: ''
 author: seanmck
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: ''
 keywords: ''
 ms.assetid: 8fa04a58-56ad-4e6c-bef4-d02c80d4b60f
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/14/2017
 ms.author: seanmck
-ms.openlocfilehash: 9a0b12ec9d825fc665bd5beb89e911b80ed3889f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: c4088e593ca7d48a3e7a5c1a6699f316b57fff31
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58013872"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70083944"
 ---
-# <a name="deploy-your-first-app-to-cloud-foundry-on-microsoft-azure"></a>Az első alkalmazás üzembe helyezése a Cloud Foundry-hoz a Microsoft Azure
+# <a name="deploy-your-first-app-to-cloud-foundry-on-microsoft-azure"></a>Az első alkalmazás üzembe helyezése Cloud Foundry on Microsoft Azure
 
-[Cloud Foundry](https://cloudfoundry.org) egy népszerű nyílt forráskódú platform a Microsoft Azure-ban érhető el. Ebben a cikkben bemutatjuk, hogyan helyezheti üzembe és kezelheti egy alkalmazás a Cloud Foundry Azure-környezet.
+A [Cloud Foundry](https://cloudfoundry.org) egy népszerű, nyílt forráskódú alkalmazás-platform Microsoft Azure elérhető. Ebben a cikkben bemutatjuk, hogyan helyezhet üzembe és kezelhet egy alkalmazást Cloud Foundry Azure-környezetben.
 
-## <a name="create-a-cloud-foundry-environment"></a>A Cloud Foundry-környezet létrehozása
+## <a name="create-a-cloud-foundry-environment"></a>Cloud Foundry környezet létrehozása
 
-A Cloud Foundry környezet létrehozásához az Azure-ban számos lehetőség áll rendelkezésre:
+Az Azure-ban több lehetőség is létezik Cloud Foundry környezet létrehozására:
 
-- Használja a [Pivotal Cloud Foundry ajánlat] [ pcf-azuremarketplace] hozhat létre egy standard szintű környezet, amely tartalmazza a PCF az Ops Manager és az Azure Service Broker az Azure piactéren. Annak [utasításokkal] [ pcf-azuremarketplace-pivotaldocs] üzembe helyezéséhez a Marketplace-en kínálnak a Pivotal dokumentációjában.
-- Hozzon létre egy testre szabott környezetet által [Pivotal Cloud Foundry Feladatütemezőből][pcf-custom].
-- [Közvetlenül a nyílt forráskódú Cloud Foundry-csomagok üzembe helyezése] [ oss-cf-bosh] beállításával egy [BOSH](https://bosh.io) igazgató, egy virtuális Gépet, amely a központi telepítés, a Cloud Foundry környezet koordinálja.
+- A PCF Ops Managert és az Azure Service Brokert tartalmazó szabványos környezet létrehozásához használja a [pivotal Cloud Foundry ajánlatot][pcf-azuremarketplace] az Azure piactéren. A Marketplace-ajánlat a Pivotal dokumentációban történő üzembe helyezésével kapcsolatos [teljes útmutatást][pcf-azuremarketplace-pivotaldocs] talál.
+- Hozzon létre egy testreszabott környezetet a [pivotal Cloud Foundry manuális üzembe helyezésével][pcf-custom].
+- [A nyílt forráskódú Cloud Foundry csomagok közvetlen üzembe helyezéséhez][oss-cf-bosh] hozzon létre egy [Bosh](https://bosh.io) -IGAZGATÓT, egy virtuális gépet, amely összehangolja a Cloud Foundry környezet központi telepítését.
 
 > [!IMPORTANT] 
-> Ha az Azure Marketplace-ről a PCF helyez üzembe, jegyezze fel a SYSTEMDOMAINURL és a rendszergazdai hitelesítő adatait a Pivotal kezelő alkalmazások eléréséhez szükséges, amelyek a Marketplace-en üzembe helyezési útmutatóban ismertetett. Ezek az oktatóanyag elvégzéséhez szükségesek. Marketplace-en történő telepítés esetén a SYSTEMDOMAINURL szerepel az űrlap https://system. *IP-cím*. cf.pcfazure.com.
+> Ha az Azure Marketplace-en helyez üzembe PCF, jegyezze fel a SYSTEMDOMAINURL, valamint a Pivotal apps Manager eléréséhez szükséges rendszergazdai hitelesítő adatokat, amelyek közül mindkettőt a piactér telepítési útmutatója ismerteti. Ezek az oktatóanyag elvégzéséhez szükségesek. A piactéren üzemelő példányok esetében a SYSTEMDOMAINURL az https://system űrlapon van. *IP-cím*. cf.pcfazure.com.
 
-## <a name="connect-to-the-cloud-controller"></a>Csatlakozás a felhőalapú vezérlő
+## <a name="connect-to-the-cloud-controller"></a>Kapcsolódás a felhőalapú vezérlőhöz
 
-A felhő vezérlő a Cloud Foundry környezet üzembe helyezéséhez és felügyeletéhez alkalmazásokat az elsődleges belépési pontjához. Az alapvető felhőalapú adatkezelő API (CCAPI) REST API-t, de különböző eszközöket keresztül érhető el. Ebben az esetben kezelése során dinamikusabb keresztül a [Cloud Foundry parancssori felület][cf-cli]. Telepítheti a parancssori felület Linux, MacOS vagy Windows rendszeren, de ha inkább nem szeretne minden telepítheti, elérhető előre telepítve van az a [Azure Cloud Shell][cloudshell-docs].
+A felhőalapú vezérlő az alkalmazások üzembe helyezésére és kezelésére szolgáló Cloud Foundry környezet elsődleges belépési pontja. Az alapszintű Cloud Controller API (CCAPI) egy REST API, de különböző eszközökön keresztül érhető el. Ebben az esetben a [Cloud FOUNDRY CLI][cf-cli]-n keresztül kommunikálunk vele. Telepítheti a CLI-t Linux, MacOS vagy Windows rendszerre, de ha nem szeretné, hogy egyáltalán ne telepítse, a [Azure Cloud Shell][cloudshell-docs]előre telepítve lesz.
 
-A bejelentkezéshez illesztenie `api` , a SYSTEMDOMAINURL a Marketplace-en telepítési beszerzett. Mivel az alapértelmezett üzembe helyezés egy önaláírt tanúsítványt használ, akkor is tartalmaznia kell a `skip-ssl-validation` váltani.
+Ha be szeretne jelentkezni, `api` a piactér-telepítésből beszerzett SYSTEMDOMAINURL. Mivel az alapértelmezett telepítés önaláírt tanúsítványt használ, a `skip-ssl-validation` kapcsolót is tartalmaznia kell.
 
 ```bash
 cf login -a https://api.SYSTEMDOMAINURL --skip-ssl-validation
 ```
 
-Jelentkezzen be a felhő vezérlő kéri. Vásárolta meg a Marketplace-en üzembe helyezési lépéseket a rendszergazdai fiók hitelesítő adatait használja.
+A rendszer felszólítja, hogy jelentkezzen be a felhőalapú vezérlőbe. Használja a piactér üzembe helyezési lépéseiben beszerzett rendszergazdai fiók hitelesítő adatait.
 
-A cloud Foundry biztosít *cégek vagy intézmények* és *tárolóhelyek* , a teams és a egy megosztott telepítésben található környezetek elkülönítése névterek. A PCF üzemelő példányát marketplace magában foglalja az alapértelmezett *rendszer* szervezeti és a tárolóhelyek létrehozni tartalmazza az alapvető összetevői számos, például az automatikus skálázás szolgáltatás és az Azure service broker. Most válassza ki a *rendszer* terület.
+Cloud Foundry *szervezethez* és *szóközöket* biztosít a névterek számára a csoportok és a környezetek elkülönítéséhez egy megosztott telepítésen belül. A PCF Marketplace üzembe helyezése magában foglalja az alapértelmezett *rendszer* szervezeti egységét, valamint az Alapösszetevők, például az automatikus skálázási szolgáltatás és az Azure Service Broker tárolására létrehozott szóközöket. Most válassza ki a *rendszer* területet.
 
 
-## <a name="create-an-org-and-space"></a>Hozzon létre egy szervezeti és terület
+## <a name="create-an-org-and-space"></a>Szervezeti és tárhely létrehozása
 
-Ha `cf apps`, láthatja, hogy a rendszer területen belül. a rendszer szervezeti alkalmazott rendszer alkalmazások 
+Ha beírja `cf apps`a értéket, a rendszer a rendszerszervezeten belül telepített rendszeralkalmazások készletét látja. 
 
-Érdemes megtartani az *rendszer* szervezeti fenntartott systému, így hozhat létre egy szervezeti és a terület helyet adhat meg a mintaalkalmazást.
+Tartsa fenn a rendszeralkalmazások számára fenntartott rendszerszervezetet, ezért hozzon létre egy szervezetet és egy helyet a minta alkalmazásához.
 
 ```bash
 cf create-org myorg
 cf create-space dev -o myorg
 ```
 
-A cél paranccsal váltson át az új szervezeti és terület:
+A TARGET parancs használatával váltson át az új szervezeti felületre és területre:
 
 ```bash
 cf target -o testorg -s dev
 ```
 
-Most ha telepít egy alkalmazást, automatikusan létrejön az új szervezeti és a szükséges. Győződjön meg arról, hogy jelenleg nincs alkalmazás az új szervezeti/tárhely, írja be a következőt `cf apps` újra.
+Az alkalmazások központi telepítésekor a rendszer automatikusan létrehozza az új szervezetet és helyet. Annak ellenőrzéséhez, hogy az új szervezet/terület jelenleg nem rendelkezik alkalmazásokkal, `cf apps` írja be újra a következőt:.
 
 > [!NOTE] 
-> Cégek vagy intézmények és a tárolóhelyek és hogyan használhatók a szerepköralapú hozzáférés-vezérlés (RBAC) kapcsolatos további információkért lásd: a [Cloud Foundry – dokumentáció][cf-orgs-spaces-docs].
+> A szervezethez és a Spaces szolgáltatással, valamint a szerepköralapú hozzáférés-vezérlés (RBAC) használatával kapcsolatos további információkért tekintse meg az [Cloud Foundry dokumentációját][cf-orgs-spaces-docs].
 
 ## <a name="deploy-an-application"></a>Alkalmazás üzembe helyezése
 
-Cloud Foundry mintaalkalmazás nevű Hello Spring Cloud, amely Java nyelven íródtak, és alapján használja a [Spring-keretrendszert használó](https://spring.io) és [Spring Boot](https://projects.spring.io/spring-boot/).
+Használjuk a Hello Spring Cloud nevű minta Cloud Foundry alkalmazást, amely Java nyelven íródott, a Spring [Framework](https://spring.io) és a [Spring boot](https://projects.spring.io/spring-boot/)alapján.
 
-### <a name="clone-the-hello-spring-cloud-repository"></a>A Hello Spring Cloud tárház klónozása
+### <a name="clone-the-hello-spring-cloud-repository"></a>A Hello Spring Cloud repository klónozása
 
-A Hello Spring Cloud mintaalkalmazás a Githubon érhető el. Klónozza a környezetben, és módosítsa az új könyvtárba:
+A Hello Spring Cloud minta alkalmazás a GitHubon érhető el. Klónozás a környezetbe, és váltás az új könyvtárba:
 
 ```bash
 git clone https://github.com/cloudfoundry-samples/hello-spring-cloud
@@ -90,42 +89,42 @@ cd hello-spring-cloud
 
 ### <a name="build-the-application"></a>Az alkalmazás létrehozása
 
-Az alkalmazás használatával [Apache Maven](https://maven.apache.org).
+Az alkalmazás létrehozása az [Apache Maven](https://maven.apache.org)használatával.
 
 ```bash
 mvn clean package
 ```
 
-### <a name="deploy-the-application-with-cf-push"></a>Az alkalmazást a leküldéses cf-hez
+### <a name="deploy-the-application-with-cf-push"></a>Az alkalmazás üzembe helyezése a CF leküldéses paranccsal
 
-A Cloud Foundry használata a legtöbb alkalmazásokat helyezhet üzembe a `push` parancsot:
+A legtöbb alkalmazást telepítheti Cloud Foundry a `push` paranccsal:
 
 ```bash
 cf push
 ```
 
-Ha Ön *leküldéses* egy alkalmazást, a Cloud Foundry (az ebben az esetben egy Java-alkalmazás) az alkalmazás észleli, és annak függőségeit, (az ebben az esetben a Spring-keretrendszert használó) azonosítja. Majd csomagot minden szükséges futtathatja a kódot egy tárolórendszerképbe önálló, más néven egy *feldolgozó*. Végül a Cloud Foundry ütemezi az alkalmazás egy, a rendelkezésre álló gépek a környezetben, és létrehoz egy URL-címet, ha elérhetővé válik, amely is elérhető, a parancs kimenetében.
+Egy alkalmazás leküldésekor Cloud Foundry észleli az alkalmazás típusát (ebben az esetben egy Java-alkalmazást), és azonosítja a függőségeit (ebben az esetben a Spring Framework). Ezután csomagokat helyez el a kód futtatásához egy önálló tároló-rendszerképbe, amely egy *feldolgozó*. Végezetül Cloud Foundry a környezet egyik elérhető számítógépén ütemezze az alkalmazást, és létrehoz egy URL-címet, ahol elérheti azt, amely a parancs kimenetében is elérhető.
 
-![CF-hez leküldéses parancs kimenete][cf-push-output]
+![Kimenet a CF push parancsból][cf-push-output]
 
-A hello spring felhőbe alkalmazás megtekintéséhez nyissa meg a megadott URL-CÍMÉT a böngészőben:
+A Hello-Spring-Cloud alkalmazás megjelenítéséhez nyissa meg a megadott URL-címet a böngészőben:
 
-![Alapértelmezett felhasználói felület a Hello Spring Cloud][hello-spring-cloud-basic]
+![A Hello Spring Cloud alapértelmezett felhasználói felülete][hello-spring-cloud-basic]
 
 > [!NOTE] 
-> További információ arról, mi történik, során `cf push`, lásd: [hogyan alkalmazásokat elő van készítve] [ cf-push-docs] a Cloud Foundry-dokumentáció.
+> Ha többet szeretne megtudni arról `cf push`, hogy mi történik, tekintse meg az [alkalmazások előkészítésének módját][cf-push-docs] a Cloud Foundry dokumentációjában.
 
-## <a name="view-application-logs"></a>Alkalmazás-naplók megtekintése
+## <a name="view-application-logs"></a>Alkalmazás naplófájljainak megtekintése
 
-A Cloud Foundry parancssori felület használatával megtekinthetők a naplófájlok az alkalmazás neve:
+A Cloud Foundry CLI használatával megtekintheti az alkalmazás naplóit a nevével:
 
 ```bash
 cf logs hello-spring-cloud
 ```
 
-Alapértelmezés szerint a naplók parancsot használ *tail*, amely jelenik meg az új naplók megírásának. Megjelenik az új naplók megtekintéséhez frissítse a hello spring felhőbe alkalmazás a böngészőben.
+Alapértelmezés szerint a naplók parancs a *tail*parancsot használja, amely a megírt új naplókat jeleníti meg. Az új naplók megjelenítéséhez frissítse a Hello-Spring-Cloud alkalmazást a böngészőben.
 
-Már minden bizonnyal naplók megtekintéséhez adja hozzá a `recent` váltani:
+A már megírt naplók megtekintéséhez adja hozzá a `recent` kapcsolót:
 
 ```bash
 cf logs --recent hello-spring-cloud
@@ -133,20 +132,20 @@ cf logs --recent hello-spring-cloud
 
 ## <a name="scale-the-application"></a>Az alkalmazás méretezése
 
-Alapértelmezés szerint `cf push` csak hoz létre az alkalmazás egy példánya. A magas rendelkezésre állás biztosítása érdekében, és engedélyezi a horizontális felskálázás nagyobb átviteli sebességet, általában érdemes az alkalmazások több példányának futtatása. Már üzembe helyezett alkalmazások segítségével könnyedén horizontálisan a `scale` parancsot:
+Alapértelmezés `cf push` szerint csak egyetlen példányt hoz létre az alkalmazásból. A magas rendelkezésre állás biztosításához és a nagyobb átviteli sebesség érdekében az alkalmazások több példányának futtatásához általában érdemes futtatni az alkalmazásokat. A már üzembe helyezett alkalmazások egyszerűen kiméretezhetők a `scale` parancs használatával:
 
 ```bash
 cf scale -i 2 hello-spring-cloud
 ```
 
-Fut a `cf app` az alkalmazás a parancs megjeleníti, hogy a Cloud Foundry létrehozza-e az alkalmazás egy másik példánya. Az alkalmazás megkezdése után a Cloud Foundry terheléselosztási rá forgalmat automatikusan elindul.
+`cf app` A parancs futtatása az alkalmazásban azt mutatja, hogy Cloud Foundry az alkalmazás egy másik példányát hozza létre. Az alkalmazás elindítása után Cloud Foundry automatikusan elindítja a terheléselosztási forgalmat.
 
 
 ## <a name="next-steps"></a>További lépések
 
-- [Olvassa el a Cloud Foundry – dokumentáció][cloudfoundry-docs]
-- [Állítsa be az Azure DevOps Services beépülő modul a Cloud Foundry-hoz][vsts-plugin]
-- [Konfigurálja a Microsoft Log Analytics Nozzle a Cloud Foundry-hoz][loganalytics-nozzle]
+- [A Cloud Foundry dokumentációjának elolvasása][cloudfoundry-docs]
+- [Az Cloud Foundry Azure DevOps Services beépülő moduljának beállítása][vsts-plugin]
+- [A Microsoft Log Analytics szórófej konfigurálása Cloud Foundry][loganalytics-nozzle]
 
 <!-- LINKS -->
 

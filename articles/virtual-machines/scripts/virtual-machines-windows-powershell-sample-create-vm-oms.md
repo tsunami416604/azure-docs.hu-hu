@@ -1,35 +1,34 @@
 ---
-title: Az Azure PowerShell-Példaszkript – az Azure Monitor-naplók |} A Microsoft Docs
-description: Az Azure PowerShell-Példaszkript – az Azure Monitor-naplók
+title: Azure PowerShell parancsfájl mintája – Azure Monitor naplók | Microsoft Docs
+description: Azure PowerShell parancsfájl mintája – Azure Monitor naplók
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/12/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 11ae92770f712f2e809824d9caf5981f435b25a9
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 16c92d80bb299c73e662b63b5ebb3abc955005a2
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57541519"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70080783"
 ---
-# <a name="create-an-azure-monitor-vm-with-powershell"></a>Az Azure Monitor virtuális gép létrehozása a PowerShell használatával 
+# <a name="create-an-azure-monitor-vm-with-powershell"></a>Azure Monitor virtuális gép létrehozása a PowerShell-lel 
 
 Ez a szkript egy Azure-beli virtuális gépet hoz létre, telepíti a Log Analytics-ügynököt, és regisztrálja a rendszert egy Log Analytics-munkaterületen. A szkript futtatását követően a virtuális gép megjelenik az Azure Monitorban. Emellett frissítenie kell a Log Analytics-munkaterület azonosítóját és kulcsát.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="sample-script"></a>Példaszkript
 

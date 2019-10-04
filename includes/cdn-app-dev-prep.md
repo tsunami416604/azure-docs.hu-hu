@@ -1,15 +1,15 @@
 ---
 author: zhangmanling
-ms.service: cdn
+ms.service: azure-cdn
 ms.topic: include
 ms.date: 11/21/2018
 ms.author: mazha
-ms.openlocfilehash: 7f80c8f1773cfeb8ddfb222d068a5c6571c2e5c7
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: f21a768733456a6c00e5a87612f3055dd76d416c
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52331058"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594121"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 A CDN felügyeleti kódírás, mielőtt néhány előkészítő ahhoz, hogy a kódot, amellyel kezelheti az Azure Resource Manager kell elvégeznie. Ehhez az előkészítés, kell tennie:
@@ -32,7 +32,7 @@ A CDN felügyeleti kódírás, mielőtt néhány előkészítő ahhoz, hogy a k�
     ![Az erőforráscsoport elnevezése](./media/cdn-app-dev-prep/cdn-subscription-id-include.png)
 
 ### <a name="creating-the-azure-ad-application-and-applying-permissions"></a>Az Azure AD-alkalmazás létrehozásához és engedélyek alkalmazásához
-Alkalmazás-hitelesítés az Azure Active Directoryval kétféle módszerrel: egyéni felhasználók számára, vagy egy egyszerű szolgáltatást. Egyszerű szolgáltatás hasonlít a Windows-szolgáltatásfiókot.  Egy adott felhasználó a CDN-profilok interakcióba engedélyek megadását, helyett inkább engedélyekkel az egyszerű szolgáltatás.  Az egyszerű szolgáltatások jellemzően használják az automatikus, nem interaktív folyamat.  Bár ebben az oktatóanyagban egy interaktív konzolt alkalmazás ír, a szolgáltatás egyszerű módszer az fogunk összpontosítani.
+Nincsenek az Azure Active Directoryval alkalmazás hitelesítési folyamat két megközelítése: Egyéni felhasználók számára, vagy egy egyszerű szolgáltatást. Egyszerű szolgáltatás hasonlít a Windows-szolgáltatásfiókot.  Egy adott felhasználó a CDN-profilok interakcióba engedélyek megadását, helyett inkább engedélyekkel az egyszerű szolgáltatás.  Az egyszerű szolgáltatások jellemzően használják az automatikus, nem interaktív folyamat.  Bár ebben az oktatóanyagban egy interaktív konzolt alkalmazás ír, a szolgáltatás egyszerű módszer az fogunk összpontosítani.
 
 Egyszerű szolgáltatás létrehozása több lépést, mint például az Azure Active Directory-alkalmazás létrehozása áll.  Szeretne létrehozni, azt, hogy fogunk [ezt az oktatóanyagot követve](../articles/active-directory/develop/howto-create-service-principal-portal.md).
 

@@ -7,19 +7,19 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: magattus
-ms.openlocfilehash: f82675f1e93a5471f98c1778e9394f9eaec1a07b
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 92d93fbf9fa2f8df15acb62802d7ac53db836dc1
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813041"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593847"
 ---
 # <a name="how-caching-works"></a>A gyorsítótárazás működése
 
@@ -127,7 +127,7 @@ A következő táblázat ismerteti az alapértelmezett gyorsítótárazási vise
 |    | Microsoft: Általános webes kézbesítés | Verizon: Általános webes kézbesítés | Verizon: DSA | Akamai: Általános webes kézbesítés | Akamai: DSA | Akamai: Nagyméretű fájl letöltése | Akamai: általános vagy VOD médiatartalmak streamelése |
 |------------------------|--------|-------|------|--------|------|-------|--------|
 | **Fogadja el a forrás**       | Igen    | Igen   | Nem   | Igen    | Nem   | Igen   | Igen    |
-| **A CDN-gyorsítótárazás időtartama** | 2 nap |7 nap | None | 7 nap | None | 1 nap | 1 év |
+| **A CDN-gyorsítótárazás időtartama** | 2 nap |7 nap | Nincsenek | 7 nap | Nincsenek | 1 nap | 1 év |
 
 **Fogadja el a forrás**: Megadja, hogy tartsa tiszteletben a támogatott gyorsítótárirányelv-fejlécek, ha azok léteznek, a HTTP-válaszban a forráskiszolgálóról.
 

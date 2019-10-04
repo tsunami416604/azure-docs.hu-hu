@@ -3,20 +3,20 @@ title: Tudásbázisok – QnA Maker áttelepítése
 titleSuffix: Azure Cognitive Services
 description: Tudásbázis áttelepítése igényel, egy Tudásbázis exportálása, majd egy másik való importálásakor.
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
 ms.date: 04/08/2019
-ms.author: tulasim
+ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: eac5e43c69cc09c5945316827a35f729c158d47a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 04ee592122d7c76396f091f8d249518976682004
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59264318"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446596"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>Exportálás-importálás segítségével Tudásbázis áttelepítése
 
@@ -56,7 +56,7 @@ Tudásbázis áttelepítése igényel, egy Tudásbázis exportálása, majd egy 
     Ezen a ponton minden a Tudásbázis-tartalmat – kérdések, válaszok és metaadatokat, és a forrásfájlok az URL-címeket, nevét és az új Tudásbázis importálásakor. 
 
 ## <a name="chat-logs-and-alterations"></a>Csevegési naplók és változásokból
-Kis-és változásokból (szinonimák) nem lesznek automatikusan importálva. Használja a [V2 API-k](https://aka.ms/qnamaker-v2-apis) exportálhatja a módosításokat a régi ismereteket és a [V4 API-k](https://aka.ms/qnamaker-v4-apis) áthelyezése a módosításokat a új Tudásbázis.
+Kis-és változásokból (szinonimák) nem lesznek automatikusan importálva. Használja a [V4 API-k](https://go.microsoft.com/fwlink/?linkid=2092179) áthelyezése a módosításokat a új Tudásbázis.
 
 Nincs semmilyen módon nem lehet áttelepíteni a csevegési naplók, mivel az új Tudásbázis az Application Insights a csevegési naplók tárolásához. 
 

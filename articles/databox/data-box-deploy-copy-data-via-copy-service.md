@@ -1,19 +1,19 @@
 ---
-title: 'Oktatóanyag: Adatok másolása az adatok másolása szolgáltatáson keresztül a Microsoft Azure Data Box-eszközre |} A Microsoft Docs'
+title: 'Oktatóanyag: adatok másolása az adatok másolása szolgáltatáson keresztül az Azure Data Box-eszköz |} A Microsoft Docs'
 description: Ebben az oktatóanyagban megismerheti, hogyan másolhat adatokat az Azure Data Box-eszközre, az adatok másolása szolgáltatáson keresztül
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 01/24/2019
+ms.date: 06/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 3f76721129906b57a05e597aade9f2febb609968
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: a8a8b9d872860425be721515a7087085acf12065
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343527"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206050"
 ---
 # <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-preview"></a>Oktatóanyag: Adatok másolása az Azure Data Box (előzetes verzió) az adatok másolása használatára
 
@@ -59,11 +59,11 @@ Adatok másolása az adatok másolása használatával, meg kell hozzon létre e
     |-------------------------------|---------|
     |**Feladat neve**                       |Egy egyedi nevet a kevesebb mint 230 karaktereket a feladathoz. Ezeket a karaktereket a feladat neve nem engedélyezett: \<, \>, \|, \?, \*, \\, \:, \/, és \\\.         |
     |**Forrás helye**                |Adja meg az SMB elérési utat az adatforráshoz, a következő formátumban: `\\<ServerIPAddress>\<ShareName>` vagy `\\<ServerName>\<ShareName>`.        |
-    |**Felhasználónév**                       |A felhasználónév `\\<DomainName><UserName>` formátum az adatforrás eléréséhez.        |
+    |**Felhasználónév**                       |A felhasználónév `\\<DomainName><UserName>` formátum az adatforrás eléréséhez. Ha csatlakozik a helyi rendszergazdák, azok explicit biztonsági engedélyeket kell. Kattintson a jobb gombbal a mappára, válassza ki **tulajdonságok** majd **biztonsági**. Ez az a helyi rendszergazda adja hozzá a **biztonsági** fülre.       |
     |**Jelszó**                       |A jelszó az adatforrás eléréséhez.           |
     |**Cél tárfiók**    |Válassza ki a listából az adatok feltöltése a célként megadott tárfiók.         |
     |**Cél típusa**       |A listából válassza ki a cél tárolási típusa: **Blokkblob**, **Lapblob**, vagy **az Azure Files**.        |
-    |**Cél tároló és megosztási**    |Adja meg a tároló nevét, vagy megoszthatja, hogy szeretné-e a cél tárfiók az adatok feltöltése. A név lehet a megosztási nevet vagy a tároló nevét. Például `myshare` vagy `mycontainer`. A nevét adja meg a következő formátumban `sharename\directory_name` vagy `containername\virtual_directory_name`.        |
+    |**Cél tároló és megosztási**    |Adja meg a tároló nevét, vagy megoszthatja, hogy szeretné-e a cél tárfiók az adatok feltöltése. A név lehet a megosztási nevet vagy a tároló nevét. Például használhatja a következőket: `myshare` vagy `mycontainer`. A nevét adja meg a következő formátumban `sharename\directory_name` vagy `containername\virtual_directory_name`.        |
     |**Fájlok másolása a tartományegyeztetési minta.**    | A fájlnév egyeztetési minta az alábbi két módon adhat meg:<ul><li>**Helyettesítő kifejezések használata:** Csak `*` és `?` helyettesítő karakteres kifejezés támogatottak. Ha például a kifejezés `*.vhd` megegyezik a fájlokat, amelyek a `.vhd` bővítmény. Ehhez hasonlóan `*.dl?` megegyezik a bővítménnyel a fájlok `.dl` vagy kezdődő `.dl`, mint például `.dll`. Hasonlóképpen `*foo` megfelel az összes fájl nevében végződhet `foo`.<br>Közvetlenül a mezőben adja meg a helyettesítő karakteres kifejezést. Alapértelmezés szerint a mezőbe írt számít helyettesítő karakteres kifejezést.</li><li>**Reguláris kifejezések használata:** A POSIX-alapú reguláris kifejezések használata támogatott. Ha például a reguláris kifejezés `.*\.vhd` egyezni fog a fájlokat, amelyek rendelkeznek a `.vhd` bővítmény. Reguláris kifejezések, adja meg a `<pattern>` közvetlenül `regex(<pattern>)`. Reguláris kifejezésekkel kapcsolatos további információkért látogasson el [reguláris kifejezés language – rövid](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference).</li><ul>|
     |**Fájlok optimalizálása**              |Ha ez a funkció engedélyezve van, 1 MB-nál kisebb fájlok során Adatbetöltési rendszer csomagolt. A csomagolási felgyorsítja a kisméretű fájlok esetében az adatok másolását. Azt is menti a jelentős mennyiségű időt, amikor a fájlok száma messze meghaladja a könyvtárak száma.        |
  

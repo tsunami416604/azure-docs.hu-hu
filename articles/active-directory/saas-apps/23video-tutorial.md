@@ -1,255 +1,172 @@
 ---
-title: 'Oktatóanyag: 23 videó az Azure Active Directory-integráció |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a 23 videó között.
+title: 'Oktatóanyag: Azure Active Directory integráció 23 videóval | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és 23 videó között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 5e73dd1d-3995-4a73-b9cf-1b2318d49cb3
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 05/26/2017
+ms.topic: tutorial
+ms.date: 08/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec0cfaaf0d4ae692581d63c7745660ffeacfb11f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b5061c2e4c627e7919683bbf00970b626554df43
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175744"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879834"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-23-video"></a>Oktatóanyag: Az Azure Active Directory-integráció a 23-videók
+# <a name="tutorial-integrate-23-video-with-azure-active-directory"></a>Oktatóanyag: 23 videó integrálása a Azure Active Directory
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan 23 videó integrálása az Azure Active Directory (Azure AD).
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhat 23 videót Azure Active Directory (Azure AD-val). Ha 23 videót integrál az Azure AD-vel, a következőket teheti:
 
-23 integrálása az Azure AD-videó nyújt a következő előnyökkel jár:
+* A 23 videóhoz hozzáféréssel rendelkező Azure AD-vezérlés.
+* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek az Azure AD-fiókjával 23 videóba.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-- Szabályozhatja, hogy ki férhet hozzá 23 videó az Azure AD-ben
-- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett 23 Video (egyszeri bejelentkezés) az Azure AD-fiókjukat
-- Kezelheti a fiókokat, egyetlen központi helyen – az Azure Portalon
-
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-23 videó az Azure AD-integráció konfigurálásához a következőkre van szükség:
+Első lépésként a következő elemeket kell megadnia:
 
-- Azure AD-előfizetés
-- A 23 videó egyszeri bejelentkezéses előfizetés engedélyezve van.
-
-> [!NOTE]
-> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
-
-Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
-
-- Ne használja az éles környezetben, csak szükség esetén.
-- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, beszerezheti a egy egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/).
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* 23 videós egyszeri bejelentkezés (SSO) engedélyezett előfizetés.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. 23 videó hozzáadása a katalógusból
-2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
+
+* 23 videó támogatja az **SP** által KEZDEMÉNYEZett SSO-t
 
 ## <a name="adding-23-video-from-the-gallery"></a>23 videó hozzáadása a katalógusból
-Konfigurálja az integráció 23 videó az Azure AD-be, szüksége 23 videó hozzáadása a felügyelt SaaS-alkalmazások listájában a katalógusból.
 
-**23 videó hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
+A 23 videó Azure AD-be való integrálásának konfigurálásához a katalógusból 23 videót kell hozzáadnia a felügyelt SaaS-alkalmazások listájához.
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **23 videó** kifejezést a keresőmezőbe.
+1. Válassza az eredmények panel **23 videó** elemét, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-    ![Active Directory][1]
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+Konfigurálja és tesztelje az Azure AD SSO-t 23 videóval egy **B. Simon**nevű tesztelési felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között 23 videóban.
 
-    ![Alkalmazások][2]
-    
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+Az Azure AD SSO 23 videóval való konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
-    ![Alkalmazások][3]
+1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+2. **[23 videós egyszeri bejelentkezés konfigurálása](#configure-23-video-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+4. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+5. **[23 videós tesztelési felhasználó létrehozása](#create-23-video-test-user)** – a felhasználó Azure ad-képviseletéhez kapcsolódó 23 videóban található B. Simon-nek megfelelő.
+6. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
-4. A Keresés mezőbe írja be a **23 videó**.
+### <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/23video-tutorial/tutorial_23video_search.png)
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-5. Az eredmények panelen válassza ki a **23 videó**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. A [Azure Portal](https://portal.azure.com/) **23 video** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az alapszintű **SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/23video-tutorial/tutorial_23video_addfromgallery.png)
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
-Ebben a szakaszban konfigurálni, és a teszt "Britta Simon." nevű felhasználó 23 videó az Azure AD egyszeri bejelentkezés tesztelése
+1. Az alapszintű **SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-Egyszeri bejelentkezés működjön, az Azure ad-ben kell tudja, hogy mire 23 videóban a megfelelője felhasználó egy felhasználó Azure AD-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó 23 hivatkozás kapcsolata videó kell létrehozni.
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<subdomain>.23video.com`
 
-A videó 23 hozzárendelése értékét a **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** hivatkozás viszony.
+    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://www.23video.com/saml/trust/<uniqueid>`
 
-Az Azure AD egyszeri bejelentkezés 23 videó tesztelése és konfigurálása, hajtsa végre a következő építőelemeit kell:
+    > [!NOTE]
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az értékek megszerzéséhez forduljon a [23 videós ügyfél támogatási csapatához](mailto:support@23company.com) . Az Azure Portal alapszintű **SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-3. **[A videó 23 tesztfelhasználó létrehozása](#creating-a-23-video-test-user)**  – 23 videót, amely kapcsolódik az Azure AD felhasználói ábrázolása egy megfelelője a Britta Simon van.
-4. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+    ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
 
-Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és 23 videó alkalmazását az egyszeri bejelentkezés konfigurálása.
+1. A **23 videó beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények alapján.
 
-**Szeretné konfigurálni az Azure AD egyszeri bejelentkezés 23 videó, hajtsa végre az alábbi lépéseket:**
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-1. Az Azure Portalon az a **23 videó** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
+### <a name="configure-23-video-sso"></a>23 videós egyszeri bejelentkezés konfigurálása
 
-    ![Egyszeri bejelentkezés konfigurálása][4]
+Az egyszeri bejelentkezés **23 videós** oldalon való konfigurálásához a letöltött **tanúsítványt (Base64)** és a megfelelő másolt URL-címeket kell elküldenie Azure Portalról [23 videós támogatási csapatnak](mailto:support@23company.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
-2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
- 
-    ![Egyszeri bejelentkezés konfigurálása](./media/23video-tutorial/tutorial_23video_samlbase.png)
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-3. Az a **23 videó tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/23video-tutorial/tutorial_23video_url.png)
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. Válassza ki **új felhasználó** a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
+   1. A **Név** mezőbe írja a következőt: `B.Simon`.  
+   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
-    a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<subdomain>.23video.com`
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-    b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: `https://www.23video.com/saml/trust/<uniqueid>`
+Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést a 23 videóhoz való hozzáférés megadásával.
 
-    > [!NOTE] 
-    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL- és azonosító. Kapcsolattartó [23 videó ügyfél-támogatási csapatának](mailto:support@23company.com) beolvasni ezeket az értékeket. 
- 
-4. Az a **SAML-aláíró tanúsítvány** területén kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. Az alkalmazások listában válassza a **23 videó**lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/23video-tutorial/tutorial_23video_certificate.png) 
+   ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-5. Kattintson a **mentése** gombra.
+1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/23video-tutorial/tutorial_general_400.png)
+    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-6. Az a **23 videó konfiguráció** területén kattintson **konfigurálása 23 videó** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/23video-tutorial/tutorial_23video_configure.png) 
+### <a name="create-23-video-test-user"></a>23 videós teszt felhasználó létrehozása
 
-7. Az egyszeri bejelentkezés konfigurálása **23 videó** oldalon kell küldenie a letöltött **tanúsítvány (Base64)**, **kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím**való [23 videó támogatási csapatának](mailto:support@23company.com). 
+Ennek a szakasznak a célja egy B. Simon nevű felhasználó létrehozása 23 videóban.
 
+**Ha a B. Simon nevű felhasználót 23 videóban szeretné létrehozni, hajtsa végre a következő lépéseket:**
 
-> [!TIP]
-> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Az Azure AD embedded dokumentációja]( https://go.microsoft.com/fwlink/?linkid=845985)
-
-### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása
-Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
-
-![Az Azure AD-felhasználó létrehozása][100]
-
-**Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
-
-1. Az a **az Azure portal**, a bal oldali navigációs panelén kattintson **Azure Active Directory** ikonra.
-
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/23video-tutorial/create_aaduser_01.png) 
-
-2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
-    
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/23video-tutorial/create_aaduser_02.png) 
-
-3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
- 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/23video-tutorial/create_aaduser_03.png) 
-
-4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
- 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/23video-tutorial/create_aaduser_04.png) 
-
-    a. Az a **neve** szövegmezőbe írja be **BrittaSimon**.
-
-    b. Az a **felhasználónév** szövegmezőbe írja be a **e-mail-cím** BrittaSimon az.
-
-    c. Válassza ki **jelszó megjelenítése** és jegyezze fel az értékét a **jelszó**.
-
-    d. Kattintson a **Create** (Létrehozás) gombra.
- 
-### <a name="creating-a-23-video-test-user"></a>A videó 23 tesztfelhasználó létrehozása
-
-Ez a szakasz célja egy 23 videóban Britta Simon nevű felhasználó létrehozásához.
-
-**Egy 23 videóban Britta Simon nevű felhasználó létrehozásához hajtsa végre az alábbi lépéseket:**
-
-1. Jelentkezzen be rendszergazdaként a videó céges 23 webhelyét.
+1. Jelentkezzen be a 23. videós céges webhelyre rendszergazdaként.
 
 2. Lépjen a **beállítások**.
- 
-3. A **felhasználók** területén kattintson **konfigurálása**.
-   
-    ![Felhasználó hozzárendelése][400]
 
-4. Kattintson a **új felhasználó hozzáadása**. 
-   
-    ![Felhasználó hozzárendelése][401]
+3. A **felhasználók** szakaszban kattintson a **Konfigurálás**elemre.
 
-5. Az a **meghívás a helyhez való csatlakozást** szakaszban, hajtsa végre az alábbi lépéseket:
-   
-    ![Felhasználó hozzárendelése][402]
+    ![Felhasználó hozzárendelése](./media/23video-tutorial/tutorial-23video-10.png)
 
-    a. Az a **E-mail címek** szövegmezőbe írja be a Britta Simon e-mail címet az Azure ad-ben.  
- 
-    b. Kattintson a **adja hozzá a felhasználót**.   
+4. Kattintson **az új felhasználó hozzáadása**lehetőségre.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+    ![Felhasználó hozzárendelése](./media/23video-tutorial/tutorial-23video-11.png)
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 23 videó Azure egyszeri bejelentkezés használatára.
+5. A webhelyhez **való csatlakozás** meghívása című szakaszban hajtsa végre a következő lépéseket:
 
-![Felhasználó hozzárendelése][200] 
+    ![Felhasználó hozzárendelése](./media/23video-tutorial/tutorial-23video-12.png)
 
-**Britta Simon rendel 23 videó, hajtsa végre az alábbi lépéseket:**
+    a. Az **e-mail címek** szövegmezőbe írja be a következőhöz hasonló B.Simon@contoso.comfelhasználó e-mail címét:.  
 
-1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
+    b. Kattintson **a felhasználó hozzáadása..** . elemre.
 
-    ![Felhasználó hozzárendelése][201] 
+### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
-2. Az alkalmazások listájában jelölje ki a **23 videó**.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/23video-tutorial/tutorial_23video_app.png) 
-
-3. A bal oldali menüben kattintson **felhasználók és csoportok**.
-
-    ![Felhasználó hozzárendelése][202] 
-
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
-
-    ![Felhasználó hozzárendelése][203]
-
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
-
-6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
-
-7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
-    
-### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
-
-Ez a szakasz célja a a hozzáférési Panel használatával az Azure AD egyszeri bejelentkezési konfiguráció tesztelése.
-
-Ha a hozzáférési panelen a 23 videó csempére kattint, meg kell lekérése automatikusan bejelentkezett a 23 videó alkalmazásba. 
+Ha a hozzáférési panelen a 23 videó csempére kattint, automatikusan be kell jelentkeznie arra a 23-videóra, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: ./media/23video-tutorial/tutorial_general_01.png
-[2]: ./media/23video-tutorial/tutorial_general_02.png
-[3]: ./media/23video-tutorial/tutorial_general_03.png
-[4]: ./media/23video-tutorial/tutorial_general_04.png
-
-[100]: ./media/23video-tutorial/tutorial_general_100.png
-
-[200]: ./media/23video-tutorial/tutorial_general_200.png
-[201]: ./media/23video-tutorial/tutorial_general_201.png
-[202]: ./media/23video-tutorial/tutorial_general_202.png
-[203]: ./media/23video-tutorial/tutorial_general_203.png
-
-[400]: ./media/23video-tutorial/tutorial_23video_10.png
-[401]: ./media/23video-tutorial/tutorial_23video_11.png
-[402]: ./media/23video-tutorial/tutorial_23video_12.png
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

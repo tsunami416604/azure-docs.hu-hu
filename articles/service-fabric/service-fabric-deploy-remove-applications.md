@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 01/19/2018
 ms.author: aljo
 ms.openlocfilehash: f0f66cd32721e277cbd6e4578b0e58bb201ee966
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58793152"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60393270"
 ---
 # <a name="deploy-and-remove-applications-using-powershell"></a>Üzembe helyezése és távolíthat el alkalmazásokat a PowerShell használatával
 

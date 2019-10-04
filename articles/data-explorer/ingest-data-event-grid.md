@@ -1,24 +1,24 @@
 ---
-title: 'Gyors útmutató: Azure-Blobok tölti be az Azure Data Explorer'
-description: Ez a rövid útmutatóban megismerheti, hogyan tárolási fiók adatokat küldeni az Azure Data Explorer Event Grid-előfizetés használatával.
+title: Azure-Blobok tölti be az Azure Data Explorer
+description: Ebből a cikkből elsajátíthatja az Event Grid-előfizetés használatával Adatkezelőbe az Azure storage-fiók adatok küldése.
 author: radennis
 ms.author: radennis
 ms.reviewer: orspodek
 ms.service: data-explorer
-ms.topic: quickstart
-ms.date: 01/30/2019
-ms.openlocfilehash: 19db47610449ced45fa61610bbe964042e815c7a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.topic: conceptual
+ms.date: 06/03/2019
+ms.openlocfilehash: 5854a8974a4d2a9dbc1aa690dc2340fd806f4219
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59051852"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490136"
 ---
-# <a name="quickstart-ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Gyors útmutató: Blobok tölti be az adatkezelőt az Azure Event Grid értesítések való feliratkozással
+# <a name="ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Blobok tölti be az adatkezelőt az Azure Event Grid értesítések való feliratkozással
 
 Az Azure Data Explorer az napló és a telemetriai adatok gyors és méretezhető exploration szolgáltatás. A blobok, blob-tárolók írt folyamatos Adatbetöltési (adatok betöltése) kínál. 
 
-Ebben a rövid útmutató beállítani egy [Azure Event Grid](/azure/event-grid/overview) előfizetés és a egy eseményközpont-n keresztül az Azure Data Explorer események átirányítása. Első lépésként kell egy event grid-előfizetést, amely értesítéseket küld az Azure Event Hubs egy tárfiókot. Ezután fogja hozzon létre egy Event Grid adatkapcsolat, és tekintse meg az adatokat a folyamat során a rendszer.
+Ebből a cikkből megismerheti, hogyan állíthatja be egy [Azure Event Grid](/azure/event-grid/overview) előfizetés és a egy eseményközpont-n keresztül az Azure Data Explorer események átirányítása. Első lépésként kell egy event grid-előfizetést, amely értesítéseket küld az Azure Event Hubs egy tárfiókot. Ezután fogja hozzon létre egy Event Grid adatkapcsolat, és tekintse meg az adatokat a folyamat során a rendszer.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -41,16 +41,16 @@ Ebben a rövid útmutató beállítani egy [Azure Event Grid](/azure/event-grid/
     | Name (Név) | *test-grid-connection* | Az event griddel, hogy a létrehozni kívánt nevére.|
     | Eseményséma | *Event Grid-séma* | A séma, amely az event grid kell használni. |
     | Témakörtípus | *Storage-fiók* | Az event grid-témakör típusa. |
-    | Témakörerőforrás | *gridteststorage* | A tárfiók neve. |
-    | Előfizetés az összes eseménytípusra | *clear* | Nem minden eseményt a értesítést kaphat. |
-    | Definiált eseménytípusok | *Létrehozott BLOB* | Értesítés küldése a meghatározott események. |
+    | A témakör erőforrás | *gridteststorage* | A tárfiók neve. |
+    | Fizessen elő az összes eseménytípusra | *clear* | Nem minden eseményt a értesítést kaphat. |
+    | Meghatározott események típusai | *Létrehozott BLOB* | Értesítés küldése a meghatározott események. |
     | Végpont típusa | *Az Event hubs* | A végpont, amelyhez az események küldése típusa. |
     | Végpont | *test-hub* | A létrehozott eseményközpont. |
     | | |
 
 1. Válassza ki a **további funkciók** lapon, ha szeretné nyomon követni a fájlokat az adott tárolóban. Állítsa be a szűrőket, az értesítéseket a következőképpen:
     * **Megkezdődik a tulajdonos** mező a *szövegkonstans* blobtároló előtag. Mivel a alkalmazni minta *startswith*, több tárolót is kiterjedhetnek. A helyettesítő karakterek nem engedélyezettek.
-     Ez *kell* értéke a következő lehet: *`/blobServices/default/containers/`*[tároló előtag]
+     Ez *kell* értéke a következő lehet: *`/blobServices/default/containers/`* [tároló előtag]
     * **Ér véget a tulajdonos** mező a *szövegkonstans* a blob-utótagját. A helyettesítő karakterek nem engedélyezettek.
 
 ## <a name="create-a-target-table-in-azure-data-explorer"></a>Céltábla létrehozása az Azure Data Explorerben
@@ -89,7 +89,7 @@ Mostantól csatlakozhat az event grid Azure Data Explorer, úgy, hogy a tárfió
 
     ![Adatfeldolgozás](media/ingest-data-event-grid/data-ingestion-create.png)
 
-1.  Válassza ki a kapcsolat típusa: **A BLOB Storage-**.
+1.  Válassza ki a kapcsolat típusa: **A BLOB Storage-** .
 
 1. Töltse ki az űrlapot a következő információkat, és válassza ki **létrehozás**.
 
@@ -100,7 +100,7 @@ Mostantól csatlakozhat az event grid Azure Data Explorer, úgy, hogy a tárfió
     **Beállítás** | **Ajánlott érték** | **Mező leírása**
     |---|---|---|
     | Adatkapcsolat neve | *test-hub-connection* | Hozzon létre az Azure Data Explorer kívánt kapcsolat nevére.|
-    | Tárfiók-előfizetés | Az előfizetés-azonosító | A storage-fiókot tartalmazó előfizetés azonosítója.|
+    | A tárfiók-előfizetés | Az előfizetés-azonosító | A storage-fiókot tartalmazó előfizetés azonosítója.|
     | Tárfiók | *gridteststorage* | A korábban létrehozott tárfiók neve.|
     | Event Grid | *test-grid-connection* | Az event grid létrehozott neve. |
     | Eseményközpont neve | *test-hub* | Az event hubs, amelyet Ön hozott létre. Válasszon ki egy event grid során a rendszer automatikusan kitölti ezt a mezőt. |
@@ -112,10 +112,10 @@ Mostantól csatlakozhat az event grid Azure Data Explorer, úgy, hogy a tárfió
      **Beállítás** | **Ajánlott érték** | **Mező leírása**
     |---|---|---|
     | Tábla | *TestTable* | A **TestDatabase** adatbázisban létrehozott tábla. |
-    | Adatformátum | *JSON* | Támogatott formátumok a következők: Avro, CSV, JSON, TÖBBSOROS JSON, PSV, Rendszerállapot, SCSV, TSV és TXT. |
+    | Adatformátum | *JSON* | Támogatott formátumok a következők: Avro, CSV, JSON, TÖBBSOROS JSON, PSV, Rendszerállapot, SCSV, TSV és TXT. Támogatott a tömörítési beállítások: Zip és GZip |
     | Oszlopleképezés | *TestMapping* | A **TestDatabase** adatbázisban létrehozott leképezés, amely a bejövő JSON-adatokat leképezi a **TestTable** tábla esetében használt oszlopnevekre és adattípusokra.|
     | | |
-
+    
 ## <a name="generate-sample-data"></a>Mintaadatok létrehozása
 
 Most, hogy az Azure Data Explorer és a storage-fiók csatlakoztatva, mintaadatok létrehozása, és töltse fel a blob Storage.
@@ -157,7 +157,7 @@ Az adatok mentése fájlba, és töltse fel ezt a parancsfájlt:
 > [!NOTE]
 > Az adatkezelő az Azure-összesítési (kötegelés) szabályzat optimalizálja a betöltési folyamat adatbetöltés rendelkezik.
 A házirend alapértelmezés szerint 5 perc van konfigurálva.
-Módosíthatja a szabályzatot egy későbbi időpontban, szükség lesz. Ebben a rövid útmutatóban egy néhány perces késés várható.
+Módosíthatja a szabályzatot egy későbbi időpontban, szükség lesz. Ebben a cikkben egy néhány perces késés várható.
 
 1. Az Azure Portalon az event grid alatt jelenik meg a megnövekedett tevékenység az alkalmazás futása közben.
 
@@ -196,5 +196,4 @@ Ha nem szeretné újra használni az event griddel, tisztítása **test-hub-rg**
 
 ## <a name="next-steps"></a>További lépések
 
-> [!div class="nextstepaction"]
-> [Rövid útmutató: Az Azure Data Explorer adatok lekérdezése](web-query-data.md)
+* [Az Azure Data Explorer adatok lekérdezése](web-query-data.md)

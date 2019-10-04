@@ -1,6 +1,6 @@
 ---
-title: A StorSimple 8000-es sorozat megoldásainak áttekintése |} A Microsoft Docs
-description: Ismerteti a StorSimple rétegezés, az eszköz, virtuális eszköz, szolgáltatások és tárolók kezelése, és bemutatja a legfontosabb kifejezések a StorSimple.
+title: A StorSimple 8000 Series megoldás áttekintése | Microsoft Docs
+description: Leírja a StorSimple-rétegek, az eszköz, a virtuális eszköz, a szolgáltatások és a tárolók felügyeletét, és bevezeti a StorSimple használt kulcsfontosságú kifejezéseket.
 services: storsimple
 documentationcenter: NA
 author: SharS
@@ -13,303 +13,306 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/10/2017
-ms.author: v-sharos@microsoft.com
-ms.openlocfilehash: 63906e65acb8e8aa836e6e59714bddca24ea21eb
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.author: timlt
+ms.openlocfilehash: 2a6650cac975c575415a329361da00d4fbfcaa9d
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56326926"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68965117"
 ---
-# <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>A StorSimple 8000 sorozat: a hibrid felhőalapú tárolási megoldás
+# <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000 sorozat: hibrid felhőalapú tárolási megoldás
+
+[!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
+
 ## <a name="overview"></a>Áttekintés
-Üdvözli a Microsoft Azure StorSimple egy integrált tárolási megoldás, amely a helyszíni eszközök és a Microsoft Azure felhőalapú tárolást közötti tárolási feladatokat kezeli. StorSimple egy hatékony, költségkímélő és könnyen felügyelhető terület tárolóhálózat (SAN) tárolómegoldás, amely a problémák és a költségeket, a nagyvállalati adattárolás és -védelem számos költsége kiküszöbölhető a. Azt a jogvédett StorSimple 8000 sorozatú eszköz használja, integrálható a felhőszolgáltatásokkal, és felügyeleti eszközöket biztosít minden vállalati tárhely, beleértve a felhőalapú tárolás áttekinthetőségét. (A Microsoft Azure webhelyen közzétett StorSimple üzembehelyezési információk csak a StorSimple 8000 sorozatú eszközök vonatkozik. Ha egy StorSimple 5000/7000 sorozat eszközt használ, lépjen a [StorSimple súgó](http://onlinehelp.storsimple.com/).)
+Üdvözli a Microsoft Azure StorSimple, amely egy integrált tárolási megoldás, amely a helyszíni eszközök és a Microsoft Azure felhőalapú tárolók közötti tárolási feladatokat kezeli. A StorSimple egy hatékony, költséghatékony és könnyen kezelhető Tárolóhálózati megoldás, amely kiküszöböli a nagyvállalati tárterülettel és az adatvédelemmel kapcsolatos számos problémát és költséget. A saját StorSimple 8000 sorozatú eszközt használja, integrálja a Cloud Services szolgáltatással, és számos felügyeleti eszközt biztosít az összes vállalati tárterület, beleértve a felhőalapú tárolást, zökkenőmentes áttekintéséhez. (A Microsoft Azure webhelyen közzétett StorSimple-telepítési információk csak a StorSimple 8000 Series-eszközökre vonatkoznak. Ha StorSimple 5000/7000 sorozatú eszközt használ, lépjen a [StorSimple súgóra](http://onlinehelp.storsimple.com/).)
 
-StorSimple az [tárolórétegzés](#automatic-storage-tiering) különböző adathordozóján tárolt adatok kezeléséhez. A jelenlegi munkakészlet a helyszínen tárolt a tartós állapotú meghajtókkal (SSD-kkel), merevlemezes (HDD) meghajtók rajta ritkábban használt adatokat, és a felhőbe archiválási adatok leküldésekor. Továbbá a StorSimple használatával a deduplikáció és a tömörítést Rövidítse le a tárolási megoldás, amely az adatokat használ fel. További információért ugorjon [Deduplikáció és a tömörítés](#deduplication-and-compression). Más legfontosabb kifejezések és a StorSimple 8000-es sorozat dokumentációban használt fogalmak definícióját, Ugrás [StorSimple terminológia](#storsimple-terminology) Ez a cikk végén található.
+A StorSimple a [tárolási rétegek](#automatic-storage-tiering) használatával kezeli a tárolt adattárakat a különböző adathordozók között. Az aktuális munkakészletet stabil állapotú meghajtókon (SSD-k) tárolja a rendszer a ritkábban használt, a merevlemez-meghajtókon (HDD-k) tárolt, valamint az archivált adatmennyiségeket a felhőbe küldi. Emellett a StorSimple a deduplikálás és a tömörítés használatával csökkenti az adatmennyiséget. További információkért keresse fel a deduplikálás [és a tömörítés](#deduplication-and-compression)című témakört. Az StorSimple 8000 Series dokumentációjában használt egyéb kulcsfontosságú kifejezések és fogalmak definícióit a cikk végén, a [StorSimple](#storsimple-terminology) -terminológiában találja.
 
-Tárolási felügyeleten felül a StorSimple adatvédelmi funkciók engedélyezése hozhat létre igény szerinti és ütemezett biztonsági mentések, és biztonságosan tárolja helyileg vagy a felhőben. Biztonsági mentés növekményes pillanatkép, ami azt jelenti, hogy azok hozhat létre és gyorsan vissza formájában kerül. Felhőbeli pillanatképek adathelyreállítás kritikus része a vész-helyreállítási helyzetekben lehet, mivel azok cserélje le a másodlagos tárhelyen rendszereket (ilyen például a szalagos biztonsági mentés), és lehetővé teszi az adatok helyreállítását az adatközpontban vagy a másodlagos helyek szükség esetén.
+A Storage kezelése mellett a StorSimple adatvédelmi funkciói lehetővé teszik az igény szerinti és ütemezett biztonsági mentések létrehozását, majd a helyileg vagy a felhőben történő tárolását. A biztonsági mentések növekményes Pillanatképek formájában készülnek, ami azt jelenti, hogy gyorsan létrehozhatók és visszaállíthatók. A Felhőbeli Pillanatképek kritikus fontosságúak lehetnek a vész-helyreállítási forgatókönyvekben, mert a másodlagos tárolási rendszereket (például szalagos biztonsági mentést) cserélik le, és szükség esetén lehetővé teszik az adatközpontba vagy más helyekre való visszaállítását.
 
-![videó ikon](./media/storsimple-overview/video_icon.png) Tekintse meg a videót, amely röviden ismerteti a Microsoft Azure StorSimple.
+![videó ikon](./media/storsimple-overview/video_icon.png) Tekintse meg a videót a Microsoft Azure StorSimple gyors bevezetéséhez.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/StorSimple-Hybrid-Cloud-Storage-Solution/player]
 
-## <a name="why-use-storsimple"></a>A StorSimple miért érdemes használni?
-A következő táblázat néhány fontos előnye, hogy a Microsoft Azure StorSimple biztosít.
+## <a name="why-use-storsimple"></a>Miért érdemes használni a StorSimple?
+Az alábbi táblázat a Microsoft Azure StorSimple által biztosított főbb előnyöket ismerteti.
 
-| Szolgáltatás | Előny |
+| Funkció | Előny |
 | --- | --- |
-| Transzparens integráció |Használja az iSCSI protokoll alapfeladatokat tárolólétesítmények adatok mutat. Ez biztosítja, hogy az adatközpont, a felhőben tárolt adatok, vagy a távoli kiszolgálókon úgy tűnik, hogy egyetlen helyen kell tárolni. |
-| Alacsonyabb tárolási költségek |Foglalja le a megfelelő helyi vagy felhőbeli tárhely aktuális igények figyelembevételével, és kiterjeszti a felhőalapú tárolás csak szükség esetén. Ez tovább csökkenti a tárolási követelmények és költségek ugyanazokat az adatokat (a deduplikáció) redundáns verziói kiküszöbölése révén, és a tömörítéssel. |
-| Egyszerűbb |Konfigurálhatja és kezelheti a tárolt adatok a helyszínen, egy távoli kiszolgálóra, és a felhőbeli felügyeleti eszközöket biztosít a rendszer. Emellett biztonsági mentés kezelése, és állítsa vissza a függvények egy Microsoft Management Console (MMC) beépülő modulból.|
-| Továbbfejlesztett vész-helyreállítási és megfelelőség |Kiterjesztett helyreállítás ideje nem igényel. Ehelyett azt visszaállítja az adatokat igény szerint. Ez azt jelenti, hogy minimális továbbra is a normál működést. Ezenkívül beállíthatja, adja meg a biztonsági mentési ütemezések és az adatmegőrzés. |
-| Rugalmasan áthelyezhető adatok |A Microsoft Azure-felhőszolgáltatások feltöltött adatok más helyekre, helyreállítási és migrálási célokból is elérhetők. A StorSimple segítségével ezenkívül a StorSimple Cloud Appliance konfigurálása a Microsoft Azure-ban futó virtuális gépek (VM). A virtuális gépek virtuális eszközök felhasználhatja tesztelési és helyreállítási célokra tárolt adatok elérésére. |
-| Az üzletmenet folytonossága |Lehetővé teszi a StorSimple 5000-7000-es sorozat az adatok áttelepítését egy StorSimple 8000 sorozatú eszköz. |
-| Rendelkezésre állás az Azure Government Portalon |A StorSimple az Azure Government Portalon érhető el. További információkért lásd: [központi telepítése a helyszíni StorSimple eszköz a Government Portalon](storsimple-8000-deployment-walkthrough-gov-u2.md). |
-| Az adatvédelem és a rendelkezésre állás |A StorSimple 8000 sorozat támogatja a Zónaredundáns tárolás (ZRS), helyileg redundáns tárolás (LRS) és a georedundáns tárolás (GRS) felül. Tekintse meg [Ez a cikk az Azure Storage redundanciabeállításai](https://azure.microsoft.com/documentation/articles/storage-redundancy/) ZRS részleteiről. |
-| Kritikus fontosságú alkalmazások támogatása |A StorSimple lehetővé teszi, hogy megfelelő, a helyileg rögzített kötetek azonosíthatja Ez viszont biztosítja, hogy a kritikus fontosságú alkalmazásai által igényelt adatok nem rétegzett a felhőbe. A gyors helyi kötetek nem vonatkozik felhőalapú késések vagy kapcsolódási problémák. A gyors helyi kötetek kapcsolatos további információkért lásd: [kötetek kezelése a StorSimple-Eszközkezelő szolgáltatás segítségével](storsimple-8000-manage-volumes-u2.md). |
-| Kis késésű és nagy teljesítményű |Felhőalapú berendezések, amelyek kihasználják a nagy teljesítményű, kis késésű funkcióit az Azure premium storage is létrehozhat. A StorSimple prémium szintű felhőalapú berendezések kapcsolatos további információkért lásd: [üzembe helyezése és kezelése az Azure StorSimple Cloud Appliance](storsimple-8000-cloud-appliance-u2.md). |
+| Transzparens integráció |Az iSCSI protokollt használja az adattárolási létesítmények láthatatlan csatolásához. Ez biztosítja, hogy a felhőben, az adatközpontban vagy távoli kiszolgálókon tárolt adattárolók egyetlen helyen legyenek tárolva. |
+| Csökkentett tárolási költségek |Elegendő helyi vagy Felhőbeli tárterületet foglal le a jelenlegi igények kielégítéséhez, és csak szükség esetén terjeszti ki a felhőalapú tárhelyet. A szolgáltatás tovább csökkenti a tárolási követelményeket és a költségeket azáltal, hogy megszünteti az azonos adatmennyiségek redundáns verzióit (deduplikálás) és a tömörítést. |
+| Egyszerűsített tárolók kezelése |Rendszerfelügyeleti eszközöket biztosít a helyszínen, távoli kiszolgálón és a felhőben tárolt adattárolás konfigurálásához és kezeléséhez. Emellett a biztonsági mentési és visszaállítási függvények a Microsoft Management Console (MMC) beépülő modulból is kezelhetők.|
+| A vész-helyreállítás és-megfelelőség javítása |A nem igényel kiterjesztett helyreállítási időt. Ehelyett szükség esetén visszaállítja az adattárolást. Ez azt jelenti, hogy a normál műveletek továbbra is minimális fennakadást okozhatnak. Emellett házirendeket is beállíthat a biztonsági mentési ütemtervek és az adatmegőrzés megadásához. |
+| Adatmobilitás |A Microsoft Azure Cloud Services szolgáltatásba feltöltött adatok a helyreállítási és áttelepítési célból más helyekről is elérhetők. Emellett a StorSimple használatával is konfigurálhatja a Microsoft Azure rendszerű virtuális gépeken futó StorSimple felhőalapú készülékeit. A virtuális gépek ezután a virtuális eszközök segítségével érhetik el a tárolt, tesztelésre vagy helyreállításra szolgáló eszközöket. |
+| Az üzletmenet folytonossága |Lehetővé teszi, hogy a StorSimple 5000-7000 sorozat felhasználói áttelepítsenek az StorSimple 8000 Series-eszközre. |
+| Rendelkezésre állás a Azure Government portálon |A StorSimple a Azure Government portálon érhető el. További információ: [helyszíni StorSimple-eszköz üzembe helyezése a kormányzati portálon](storsimple-8000-deployment-walkthrough-gov-u2.md). |
+| Adatvédelem és rendelkezésre állás |A StorSimple 8000 sorozat a helyileg redundáns tárolás (LRS) és a Geo-redundáns tárolás (GRS) mellett támogatja a zóna redundáns tárolását (ZRS). Tekintse [meg ezt a cikket az Azure Storage redundancia](https://azure.microsoft.com/documentation/articles/storage-redundancy/) -beállításairól a ZRS részleteinek megtekintéséhez. |
+| Kritikus alkalmazások támogatása |A StorSimple lehetővé teszi a megfelelő kötetek helyi rögzítettként való azonosítását, ami viszont biztosítja, hogy a kritikus fontosságú alkalmazások által igényelt adatmennyiség ne legyen a felhőbe bontva. A helyileg rögzített kötetek nem vonatkoznak a Felhőbeli késésekre vagy a kapcsolódási problémákra. További információ a helyileg rögzített kötetekről: [a kötetek kezelésére szolgáló StorSimple Eszközkezelő szolgáltatás használata](storsimple-8000-manage-volumes-u2.md). |
+| Kis késleltetés és nagy teljesítmény |Létrehozhat olyan felhőalapú berendezéseket, amelyek kihasználják az Azure Premium Storage nagy teljesítményű, kis késleltetésű funkcióit. További információ a StorSimple prémium szintű felhőalapú készülékekről: [StorSimple Cloud Appliance üzembe helyezése és kezelése az Azure-ban](storsimple-8000-cloud-appliance-u2.md). |
 
 
-## <a name="storsimple-components"></a>A StorSimple-összetevők
+## <a name="storsimple-components"></a>StorSimple-összetevők
 A Microsoft Azure StorSimple megoldás a következő összetevőket tartalmazza:
 
-* **A Microsoft Azure StorSimple-eszköz** – egy helyszíni hibrid tárolási tömb, amely tartalmazza az SSD-kből és merevlemezekből kialakított, redundáns vezérlőket és automatikus feladatátvételi funkciókat együtt. A tartományvezérlők kezelheti a tárolási rétegek, elhelyezése jelenleg használt (vagy forró) adatokat a helyi tárterület (az eszköz vagy a helyszíni kiszolgálók), ritkábban használt adatok a felhőbe való áthelyezés közben.
-* **A StorSimple Cloud Appliance** – más néven a StorSimple virtuális készülék, ez az a StorSimple-eszköz, amely replikálja az architektúra egy szoftver verziója és a hibrid fizikai tárolóeszközt a legtöbb képességeit. A StorSimple felhőalapú készülék az Azure virtuális gép egyetlen csomópontján fut. Prémium szintű virtuális eszközök, amely az Azure premium storage előnyeit, 2. frissítést és újabb verziói is.
-* **StorSimple-Eszközkezelő szolgáltatás** kiterjesztése az Azure Portal, amely lehetővé teszi, hogy a StorSimple-eszköz vagy a StorSimple felhőalapú készülék egy közös webes felületről kezelheti. A StorSimple-Eszközkezelő szolgáltatás segítségével hozzon létre és a szolgáltatások kezeléséhez, megtekintése és kezelése az eszközök, riasztások megtekintése, kötetek kezelése, és megtekintése és kezelése biztonsági mentési szabályzatok és a biztonságimásolat-katalógus.
-* **Storsimple-höz készült Windows PowerShell** – olyan parancssori felületet, amely a StorSimple-eszköz kezeléséhez használhatja. Storsimple-höz készült Windows PowerShell funkcióval rendelkezik, amelyeket lehetővé teszik a StorSimple-eszköz regisztrálása, konfigurálja a hálózati adaptert az eszközön, bizonyos típusú frissítések telepítése, az eszköz hibaelhárítása a támogatási munkamenet elérésével, és az eszköz módosítása állapot. Storsimple-höz készült Windows PowerShell hozzáférhet, a soros konzol csatlakozik, vagy a Windows PowerShell-távelérés használatával.
-* **Azure PowerShell StorSimple-parancsmagok** –, amelyek lehetővé teszik, hogy automatizálja a parancssorból a szolgáltatási szint és az áttelepítési feladatokat Windows PowerShell-parancsmagok egy gyűjteményét. Storsimple-höz készült Azure PowerShell-parancsmagokkal kapcsolatos további információkért látogasson el a [parancsmag-referencia](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0#azure).
-* **A StorSimple Snapshot Manager** – egy MMC beépülő modul által használt kötet csoportok és a Windows kötet árnyékmásolata szolgáltatás alkalmazásfüggő biztonsági másolatok létrehozásához. Emellett használhatja a StorSimple Snapshot Manager biztonsági mentési ütemezés és a klón létrehozásához, vagy kötetek visszaállítása.
-* **A StorSimple Adapter for SharePoint** – olyan eszköz, amely transzparens módon kiterjeszti a Microsoft Azure StorSimple tárolás és adatok védelme a SharePoint Server halgazdaságok közben StorSimple tárolási megtekinthető és kezelhető a a SharePoint központi Felügyeleti portál.
+* **Microsoft Azure StorSimple eszköz** – egy helyszíni hibrid tárolási tömb, amely SSD-ket és HDD-ket tartalmaz, redundáns vezérlőkkel és automatikus feladatátvételi képességekkel együtt. A vezérlők a tárolási rétegek kezelését, a jelenleg használt (vagy forró) adatoknak a helyi tárolón való elhelyezését (az eszközön vagy a helyszíni kiszolgálókon) a ritkábban használt adatok felhőbe való áthelyezésével kezelik.
+* **StorSimple Cloud Appliance** – más néven a StorSimple virtuális berendezés, ez a StorSimple-eszköz szoftveres verziója, amely a fizikai hibrid tárolóeszköz architektúráját és képességeit replikálja. A StorSimple Cloud Appliance egy Azure-beli virtuális gép egyetlen csomópontján fut. Az Azure Premium Storage előnyeit kihasználó prémium szintű virtuális eszközök a 2. frissítésben és az újabb verziókban is elérhetők.
+* **StorSimple Eszközkezelő Service** – a Azure Portal egy bővítménye, amely lehetővé teszi egy StorSimple-eszköz vagy-StorSimple Cloud Appliance kezelését egyetlen webes felületen. A StorSimple Eszközkezelő szolgáltatással szolgáltatásokat hozhat létre és kezelhet, eszközöket tekinthet meg és kezelhet, megtekintheti a riasztásokat, kezelheti a köteteket, valamint megtekintheti és kezelheti a biztonsági mentési házirendeket és a biztonsági mentési katalógust.
+* **Windows PowerShell StorSimple-bővítménye** – parancssori felület, amely a StorSimple-eszköz felügyeletére használható. Windows PowerShell StorSimple-bővítménye rendelkezik olyan funkciókkal, amelyek lehetővé teszik a StorSimple-eszköz regisztrálását, a hálózati adapter konfigurálását az eszközön, bizonyos típusú frissítések telepítését, az eszköz hibakeresését a támogatási munkamenet elérésével, valamint az eszköz módosítását. állapot. Windows PowerShell StorSimple-bővítménye a soros konzolhoz való csatlakozással vagy a Windows PowerShell-távelérés használatával érhető el.
+* **Azure PowerShell StorSimple** -parancsmagok – olyan Windows PowerShell-parancsmagok gyűjteménye, amelyek segítségével automatizálhatja a szolgáltatás-és áttelepítési feladatokat a parancssorból. A StorSimple Azure PowerShell-parancsmagokkal kapcsolatos további információkért nyissa meg a [parancsmag](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0#azure)-referenciát.
+* **StorSimple Snapshot Manager** – egy MMC beépülő modul, amely mennyiségi csoportokat és a Windows Kötet árnyékmásolata szolgáltatás használ az alkalmazással konzisztens biztonsági másolatok létrehozásához. Emellett a StorSimple Snapshot Manager használatával biztonsági mentési ütemterveket hozhat létre, illetve klónozott vagy helyreállíthatja a köteteket.
+* **StorSimple-adapter a sharepointhoz** – olyan eszköz, amely transzparens módon kiterjeszti Microsoft Azure StorSimple tárolót és az adatvédelmet a SharePoint Server-farmokra, miközben megtekintheti és kezelheti a SharePoint-központból a StorSimple tárolót Felügyeleti portál.
 
-Az alábbi ábrán a Microsoft Azure StorSimple-architektúra és összetevők magas szintű nézetét jeleníti meg.
+Az alábbi ábrán a Microsoft Azure StorSimple architektúrájának és összetevőinek áttekintése látható.
 
-![A StorSimple-architektúra](./media/storsimple-overview/overview-big-picture.png)
+![StorSimple architektúra](./media/storsimple-overview/overview-big-picture.png)
 
-Az alábbi szakaszok ismertetik ezeket az összetevőket nagyobb részletességgel, és a megoldás hogyan rendezi az adatokat, foglalja le a storage, és megkönnyíti a tárolók kezelése és az adatvédelem ismertetik. Az utolsó szakaszban biztosít jelentésdefiníciókat néhány fontos fogalmakat és a StorSimple-összetevők és a felügyeleti kapcsolatos fogalmakat.
+Az alábbi szakaszok részletesebben ismertetik ezeket az összetevőket, és elmagyarázzák, hogyan rendezi a megoldás az adatokat, lefoglalja a tárterületet, és megkönnyíti a tárolási felügyeletet és az adatvédelmet. Az utolsó szakasz a StorSimple-összetevőkkel és azok kezelésével kapcsolatos fontos kifejezések és fogalmak definícióit tartalmazza.
 
 ## <a name="storsimple-device"></a>StorSimple-eszköz
-A Microsoft Azure StorSimple-eszközhöz egy helyszíni hibrid tárolótömböt, amely elsődleges tárolás és a rajta tárolt adatok iSCSI hozzáférést biztosít. A felhőalapú tárolással kommunikációt kezeli, és segít biztosítani, a biztonsági és, hogy a Microsoft Azure StorSimple megoldás az adatok titkosságát.
+A Microsoft Azure StorSimple eszköz egy helyszíni hibrid tárolási tömb, amely elsődleges tárterületet és iSCSI-hozzáférést biztosít a rajta tárolt adathoz. Kezeli a Felhőbeli tárolással folytatott kommunikációt, és segít a Microsoft Azure StorSimple-megoldáson tárolt összes adat biztonságának és titkosságának biztosításában.
 
-A StorSimple-eszközt tartalmaz, SSD-kből és merevlemez-meghajtók HDD-k, valamint a fürtözési és az Automatikus feladatátvétel támogatása. Egy megosztott processzor, a megosztott tároló, valamint a két tükrözött tartományvezérlők tartalmazza. Minden vezérlő az alábbi előnyöket nyújtja:
+A StorSimple-eszközön az SSD-k és a merevlemez-meghajtók HDD-k, valamint a fürtözés és az automatikus feladatátvétel támogatása is támogatott. Egy megosztott processzort, megosztott tárolót és két tükrözött vezérlőt tartalmaz. Mindegyik vezérlő a következőket biztosítja:
 
-* Kapcsolat egy gazdagépen
-* Csatlakozás a helyi hálózati (LAN) legfeljebb hat hálózati portok
-* Hardver ellenőrzése
-* Nem felejtő közvetlen elérésű memória (NVRAM), amely mindaddig megőrzi az adatokat, még akkor is, ha power megszakad
-* Fürttámogató frissítés egy feladatátvevő fürtben lévő kiszolgálók a szoftverfrissítések kezeléséhez, hogy a frissítések minimális, vagy nincs hatással a szolgáltatás rendelkezésre állása
-* Fürtszolgáltatás, hogy mely funkciók, például egy háttér-fürthöz, a magas rendelkezésre állás biztosítása, és semmilyen negatív hatások minimalizálása érdekében, hogy okozhat, ha egy HDD vagy SSD meghibásodik vagy offline állapotba
+* Kapcsolódás egy gazdagép számítógéphez
+* Legfeljebb hat hálózati port a helyi hálózathoz (LAN) való csatlakozáshoz
+* Hardver figyelése
+* Nem felejtő véletlen hozzáférésű memória (NVRAM), amely akkor is megőrzi az adatokat, ha az áramellátás megszakad
+* Fürtöket támogató frissítés a feladatátvevő fürtben lévő kiszolgálókon lévő szoftverfrissítések kezeléséhez, hogy a frissítések minimális vagy semmilyen hatással legyenek a szolgáltatás rendelkezésre állására
+* Fürtszolgáltatás, amely a háttér-fürthöz hasonlóan működik, magas rendelkezésre állást biztosít, és minimalizálja az esetleges, ha egy HDD vagy SSD meghibásodik vagy offline állapotba kerül.
 
-Időben csak egy tartományvezérlő aktív, bármikor. Ha az aktív vezérlő nem sikerül, a második vezérlőn automatikusan aktívvá válik.
+Egy adott időpontban csak egy vezérlő aktív. Ha az aktív vezérlő meghibásodik, a második vezérlő automatikusan aktívvá válik.
 
-További információért ugorjon [StorSimple hardverösszetevők és állapot](storsimple-8000-monitor-hardware-status.md).
+További információkért keresse fel a [StorSimple hardver összetevői és állapota](storsimple-8000-monitor-hardware-status.md)című témakört.
 
 ## <a name="storsimple-cloud-appliance"></a>StorSimple Cloud Appliance
-A StorSimple segítségével architektúráját és funkcióit a fizikai hibrid tárolóeszköz sorolja a felhőalapú berendezés létrehozása. A StorSimple Cloud Appliance eszköz (más néven a virtuális StorSimple-készülék) az Azure virtuális gép egyetlen csomópontján fut. (A felhőalapú berendezés csak lehet létrehozni egy Azure virtuális gépen. Nem hozható létre a StorSimple eszköz vagy egy helyszíni kiszolgálón.)
+A StorSimple használatával olyan felhőalapú berendezést hozhat létre, amely replikálja a fizikai hibrid tárolóeszköz architektúráját és képességeit. A StorSimple Cloud Appliance (más néven a StorSimple virtuális berendezés) egy Azure-beli virtuális gép egyetlen csomópontján fut. (A felhőalapú berendezés csak Azure-beli virtuális gépen hozható létre. Nem hozhat létre egyet egy StorSimple-eszközön vagy egy helyszíni kiszolgálón.)
 
-A felhőalapú berendezés a következő funkciókkal rendelkezik:
+A felhőalapú berendezés a következő funkciókat tartalmazza:
 
-* Ez egy fizikai készüléket viselkedik, és a felhőben lévő virtuális gépek iSCSI felületet kínálnak.
-* Felhőalapú berendezések korlátlan számú létrehozásához a felhőben, és kapcsolja be- és bekapcsolhatja őket szükség szerint.
-* Segíthet a helyszíni környezetekben a vész-helyreállítási, fejlesztési és tesztelési forgatókönyvek szimulálása, és segíthet a biztonsági mentésekből elemszintű előhívásokhoz.
+* Úgy viselkedik, mint egy fizikai berendezés, és iSCSI-felületet tud biztosítani a felhőben lévő virtuális gépekhez.
+* Korlátlan számú felhőalapú készüléket hozhat létre a felhőben, és szükség szerint be-és kikapcsolhatja őket.
+* Segítheti a helyszíni környezetek szimulálását a vész-helyreállítási, fejlesztési és tesztelési forgatókönyvekben, és segítséget nyújthat a biztonsági másolatok elemszintű lekéréséhez.
 
-A StorSimple felhőalapú készülék két modellben érhető el: a 8010-es eszköz (korábbi nevén az 1100-as modell) és a 8020-as eszköz. A 8010-es eszköz 30 TB-os maximális kapacitása nem. A 8020-as eszközt, és kihasználja az Azure premium storage kapacitása maximum 64 TB-os. (Helyi szinten az Azure premium storage tárolja az adatokat az SSD-k, míg a standard szintű tárolóban tárolja az adatokat a HDD-k.) Vegye figyelembe, hogy prémium szintű storage használata az Azure premium storage-fiók kell rendelkeznie.
+A StorSimple Cloud Appliance két modellben érhető el: a 8010-es eszközön (korábbi nevén 1100 modell) és a 8020 eszközön. Az 8010-es eszköz kapacitása legfeljebb 30 TB. Az Azure Premium Storage előnyeit kihasználó 8020-es eszköz maximális kapacitása 64 TB. (A helyi szinteken az Azure Premium Storage tárolja az SSD-ket, míg a standard Storage a HDD-on tárolja az adattárakat.) Vegye figyelembe, hogy a Premium Storage használatához rendelkeznie kell egy prémium szintű Azure Storage-fiókkal.
 
-A StorSimple felhőalapú készülék kapcsolatos további információkért látogasson el [üzembe helyezése és kezelése az Azure StorSimple Cloud Appliance](storsimple-8000-cloud-appliance-u2.md).
+További információ a StorSimple Cloud Applianceről [: StorSimple Cloud Appliance üzembe helyezése és kezelése az Azure-ban](storsimple-8000-cloud-appliance-u2.md).
 
 ## <a name="storsimple-device-manager-service"></a>StorSimple-eszközkezelő szolgáltatás
-A Microsoft Azure StorSimple egy webalapú felhasználói felület (a StorSimple-Eszközkezelő szolgáltatás), amely lehetővé teszi, hogy központilag kezelheti az adatközpont és a felhőalapú tárolás biztosítja. A StorSimple-Eszközkezelő szolgáltatás segítségével a következő feladatokat:
+A Microsoft Azure StorSimple webalapú felhasználói felületet (StorSimple Eszközkezelő szolgáltatást) biztosít, amely lehetővé teszi az adatközpontok és a felhőalapú tárolók központi kezelését. A következő feladatok elvégzéséhez használhatja a StorSimple Eszközkezelő szolgáltatást:
 
-* A StorSimple-eszközök rendszerbeállításainak konfigurálására.
-* Konfigurálása és kezelése a StorSimple eszköz biztonsági beállításai.
-* Felhőhöz tartozó hitelesítő adatok és a tulajdonságok konfigurálása.
-* Konfigurálása és kezelése a kötet a kiszolgálón.
-* Kötet-csoportok konfigurálása.
-* Készítsen biztonsági másolatot, és állítsa vissza az adatokat.
-* Teljesítmény figyelése.
-* Tekintse át a rendszer beállításait, és azonosíthatja a lehetséges problémákat.
+* Konfigurálja a rendszerbeállításokat a StorSimple-eszközökhöz.
+* StorSimple-eszközök biztonsági beállításainak konfigurálása és kezelése.
+* Felhőbeli hitelesítő adatok és tulajdonságok konfigurálása.
+* Kötetek konfigurálása és kezelése egy kiszolgálón.
+* Állítsa be a kötetek csoportjait.
+* Az adatbiztonsági mentés és a visszaállítás.
+* A teljesítmény figyelése.
+* Tekintse át a rendszerbeállításokat, és azonosítsa a lehetséges problémákat.
 
-A StorSimple-Eszközkezelő szolgáltatás segítségével az összes felügyeleti feladatot, kivéve azokat, a szükséges állásidő, például a kezdeti beállítás és a frissítések telepítését a rendszer.
+A StorSimple Eszközkezelő szolgáltatással az összes felügyeleti feladatot elvégezheti, kivéve azokat, amelyek rendszer-leállási időt igényelnek, mint például a kezdeti beállítás és a frissítések telepítése.
 
-További információért ugorjon [a StorSimple-eszköz felügyelete a StorSimple-Eszközkezelő szolgáltatás segítségével](storsimple-8000-manager-service-administration.md).
+További információért látogasson el [a StorSimple Eszközkezelő szolgáltatás használatára a StorSimple-eszköz felügyeletéhez](storsimple-8000-manager-service-administration.md).
 
-## <a name="windows-powershell-for-storsimple"></a>Windows PowerShell-bővítménye
-Windows PowerShell-bővítménye olyan parancssori felületet, amely létrehozása és a Microsoft Azure StorSimple szolgáltatás, és állítsa be a eszközök kezelése és figyelése a StorSimple segítségével biztosít. Egy Windows PowerShell-alapú, parancssori felület, amely a StorSimple-eszköz kezelésére szolgáló dedikált parancsokat tartalmaz. Windows PowerShell storsimple-höz készült funkciói, amelyek lehetővé teszik, hogy rendelkezik:
+## <a name="windows-powershell-for-storsimple"></a>Windows PowerShell StorSimple-bővítménye
+A Windows PowerShell StorSimple-bővítménye parancssori felületet biztosít a Microsoft Azure StorSimple szolgáltatás létrehozásához és kezeléséhez, valamint a StorSimple-eszközök beállításához és figyeléséhez. Ez egy Windows PowerShell-alapú parancssori felület, amely dedikált parancsmagokat tartalmaz a StorSimple-eszköz kezeléséhez. A Windows PowerShell StorSimple-bővítménye szolgáltatásai a következőket teszik lehetővé:
 
 * Eszköz regisztrálása.
-* Konfigurálja a hálózati adaptert az eszközön.
+* Konfigurálja a hálózati adaptert egy eszközön.
 * Bizonyos típusú frissítések telepítése.
-* Az eszköz hibaelhárítása a támogatási munkamenet elérésével.
-* Az Eszközállapot módosítása.
+* A támogatási munkamenethez való hozzáféréssel elháríthatja az eszközt.
+* Módosítsa az eszköz állapotát.
 
-Elérheti Windows PowerShell storsimple-höz készült soros konzolon (a gazdaszámítógép közvetlenül csatlakozik az eszköz) vagy távoli Windows PowerShell-távelérés használatával. Vegye figyelembe, hogy egy Windows PowerShell StorSimple-feladatokhoz, például a kezdeti regisztrációt, csak a soros konzolon végezhető.
+A Windows PowerShell StorSimple-bővítménye egy soros konzolról (közvetlenül az eszközhöz csatlakozó gazdagépen) vagy távolról a Windows PowerShell távelérés használatával érhető el. Vegye figyelembe, hogy néhány Windows PowerShell StorSimple-bővítménye feladat, például a kezdeti eszköz regisztrálása csak a soros konzolon végezhető el.
 
-További információért ugorjon [használható Windows PowerShell-bővítménye az eszköz felügyeletéhez](storsimple-8000-windows-powershell-administration.md).
+További információért látogasson el a [Windows PowerShell StorSimple-bővítménye használatára az eszköz felügyeletéhez](storsimple-8000-windows-powershell-administration.md).
 
 ## <a name="azure-powershell-storsimple-cmdlets"></a>Azure PowerShell StorSimple-parancsmagok
-Az Azure PowerShell StorSimple-parancsmagok a Windows PowerShell-parancsmagokkal a parancssorból a szolgáltatási szint és az áttelepítési feladatokat automatizálhat gyűjteményei. Storsimple-höz készült Azure PowerShell-parancsmagokkal kapcsolatos további információkért látogasson el a [parancsmag-referencia](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0).
+A Azure PowerShell StorSimple-parancsmagok olyan Windows PowerShell-parancsmagok gyűjteményei, amelyek lehetővé teszik a parancssorból a szolgáltatás-és áttelepítési feladatok automatizálását. A StorSimple Azure PowerShell-parancsmagokkal kapcsolatos további információkért nyissa meg a [parancsmag](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0)-referenciát.
 
 ## <a name="storsimple-snapshot-manager"></a>StorSimple Snapshot Manager
-A StorSimple Snapshot Manager egy Microsoft Management Console (MMC) beépülő modulja, amely segítségével létrehozhat egységes, időponthoz – biztonsági másolatok a helyi és felhőbeli adatok. A beépülő modul a Windows Server-alapú gazdagépen futtatja. A StorSimple Snapshot Manager használhatja:
+A StorSimple Snapshot Manager egy Microsoft Management Console (MMC) beépülő modul, amely a helyi és a Felhőbeli adatbiztonsági másolatok konzisztens, időponthoz kötött biztonsági másolatának létrehozásához használható. A beépülő modul egy Windows Server-alapú gazdagépen fut. A StorSimple Snapshot Manager a következőre használhatja:
 
-* Konfigurálja, biztonsági mentése és kötetek törlése.
-* Konfigurálja a kötet csoportokat, győződjön meg arról, hogy a biztonsági másolatba mentett adatok alkalmazáskonzisztens.
-* Biztonsági mentési házirendek kezelése, hogy az adatok biztonsági mentése egy előre meghatározott ütemezés szerint, és a kijelölt helyen tárolja (helyi vagy a felhőben).
-* Kötetek és az egyes fájlok visszaállítása.
+* Kötetek konfigurálása, biztonsági mentése és törlése.
+* Konfigurálja a mennyiségi csoportokat annak biztosítására, hogy a biztonsági másolatok az alkalmazások konzisztensek legyenek.
+* Biztonsági mentési házirendek kezelése, hogy az adatbiztonsági mentés előre meghatározott ütemterv alapján történjen, és egy kijelölt helyen (helyileg vagy a felhőben) legyen tárolva.
+* Kötetek és egyedi fájlok visszaállítása.
 
-Biztonsági másolatok pillanatképként, amely csak a változásokat jegyezze fel, mivel a legutolsó pillanatfelvétel idejével bezárólag, és sokkal kevesebb, mint a teljes biztonsági mentések helyet igényel lesznek rögzítve. Hozzon létre biztonsági mentési ütemezéseket, vagy azonnali biztonsági mentés időpontjának, igény szerint. Ezenkívül használhatja a StorSimple Snapshot Manager adatmegőrzési szabályzatok létrehozásához, hogy hány pillanatképek menti a rendszer vezérlő. Ha később szeretne adatokat visszaállítani egy biztonsági mentési és a StorSimple Snapshot Manager lehetővé teszi a helyi katalógus vagy a felhőbeli pillanatképekkel közül választhat. 
+A biztonsági mentések pillanatképként vannak rögzítve, amely csak a legutóbbi pillanatkép óta történt változásokat rögzíti, és sokkal kevesebb tárterületet igényel, mint a teljes biztonsági mentés. Biztonsági mentési ütemezéseket hozhat létre, vagy igény szerint azonnali biztonsági mentést készíthet. Emellett a StorSimple Snapshot Manager használatával olyan adatmegőrzési házirendeket hozhat létre, amelyek azt szabályozzák, hogy hány pillanatképet fog menteni a rendszer. Ha később vissza kell állítania az adatok biztonsági mentésből való visszaállítását, a StorSimple Snapshot Manager lehetővé teszi a helyi vagy Felhőbeli Pillanatképek katalógusból való kiválasztását. 
 
-Ha katasztrófa történik, vagy valamilyen más okból adatokat vissza kell állítania, a StorSimple Snapshot Manager visszaállítja azt növekményes igény szerint. Adatok visszaállítása nem szükséges, hogy leállítja a teljes rendszer állítsa vissza egy fájlt, cserélje le a berendezések, vagy műveleteket helyez át egy másik helyre.
+Ha katasztrófa következik be, vagy ha egy másik ok miatt vissza kell állítania az adatgyűjtést, a StorSimple Snapshot Manager növekményes módon visszaállítja, ahogy szükséges. Az adatok visszaállítása nem igényli a teljes rendszer leállítását egy fájl visszaállításakor, a berendezések cseréjével vagy a műveletek másik helyre való áthelyezésével.
 
-További információért ugorjon [Mi az a StorSimple Snapshot Manager?](storsimple-what-is-snapshot-manager.md)
+További információért látogasson el a [Mi az StorSimple Snapshot Manager?](storsimple-what-is-snapshot-manager.md)
 
 ## <a name="storsimple-adapter-for-sharepoint"></a>SharePointhoz készült StorSimple-adapter
-A Microsoft Azure StorSimple a Sharepointhoz, egy összetevő, amely transzparens módon kiterjeszti a StorSimple tárolási és adatvédelmi funkcióit a SharePoint-kiszolgálófarmok magában foglalja a StorSimple Adapter. Az adapter működik, a Blob Storage (RBS) szolgáltató és az SQL Server RBS szolgáltatás lehetővé teszi, hogy helyezze át a blobokat egy biztonsági másolatot készít a Microsoft Azure StorSimple rendszerbe kiszolgálóra. A Microsoft Azure StorSimple majd tárol a BLOB-adatokat helyben vagy a felhőben, használat alapján.
+Microsoft Azure StorSimple tartalmazza a SharePointhoz készült StorSimple-adaptert, amely egy opcionális összetevő, amely transzparens módon kiterjeszti a StorSimple tároló-és adatvédelmi funkcióit a SharePoint Server-farmokra. Az adapter egy távoli Blob Storage (RBS) szolgáltatóval és az SQL Server RBS szolgáltatással működik, amely lehetővé teszi a Blobok áthelyezését egy, a Microsoft Azure StorSimple rendszer által készített kiszolgálóra. Microsoft Azure StorSimple a BLOB-adatokat helyileg vagy a felhőben tárolja a használat alapján.
 
-A StorSimple Adapter for SharePoint felügyelje a SharePoint központi felügyeleti portálon. Ennek következtében központosított marad, a SharePoint felügyeleti, és úgy tűnik, hogy a SharePoint-farm összes tárolót.
+A SharePoint rendszerhez készült StorSimple-adapter a SharePoint központi felügyeleti portálján található. Ennek következtében a SharePoint-felügyelet központosított marad, és úgy tűnik, hogy a SharePoint-farmban minden tárterület megjelenik.
 
-További információért ugorjon [StorSimple Adapter for SharePoint](storsimple-adapter-for-sharepoint.md). 
+További információkért keresse fel a [StorSimple-adapter a sharepointhoz](storsimple-adapter-for-sharepoint.md)című témakört. 
 
-## <a name="storage-management-technologies"></a>Tárolási felügyeleti technológiák
-A dedikált StorSimple-eszköz, a virtuális eszköz és a más összetevők mellett a Microsoft Azure StorSimple gyors hozzáférést biztosít a adatok és a tárhelyfelhasználás csökkentésében használ a következő szoftver technológiák:
+## <a name="storage-management-technologies"></a>Storage-felügyeleti technológiák
+A dedikált StorSimple-eszközön, a virtuális eszközön és az egyéb összetevőkön kívül a Microsoft Azure StorSimple a következő szoftver-technológiákat használja az adatok gyors eléréséhez és a tárolási felhasználás csökkentéséhez:
 
-* [Automatikus tárolórétegzés](#automatic-storage-tiering) 
-* [A dinamikus kiosztás](#thin-provisioning) 
-* [A deduplikáció és a tömörítés](#deduplication-and-compression) 
+* [Automatikus tárolási rétegek](#automatic-storage-tiering) 
+* [Dinamikus kiépítés](#thin-provisioning) 
+* [Deduplikálás és tömörítés](#deduplication-and-compression) 
 
-### <a name="automatic-storage-tiering"></a>Automatikus tárolórétegzés
-A Microsoft Azure StorSimple automatikusan elrendezése az adatok alapján a jelenlegi felhasználás életkor és más adatokhoz való kapcsolat logikai szinten. Legaktívabb adatok helyileg van tárolva, míg a kevésbé aktív és inaktív adatok automatikus áttelepítése a felhőbe. A következő ábra szemlélteti az adattárolási módszer.
+### <a name="automatic-storage-tiering"></a>Automatikus tárolási rétegek
+A Microsoft Azure StorSimple az adatokat az aktuális használat, az életkor és a más adatokkal való kapcsolat alapján automatikusan rendezi a logikai rétegekbe. A legtöbb aktív adattárolás helyileg történik, míg a rendszer a kevésbé aktív és inaktív adatmennyiségeket automatikusan áttelepíti a felhőbe. A következő ábra szemlélteti ezt a tárolási módszert.
 
-![A StorSimple tárolási rétegek](./media/storsimple-overview/hcs-data-services-storsimple-components-tiers.png)
+![StorSimple tárolási szintjei](./media/storsimple-overview/hcs-data-services-storsimple-components-tiers.png)
 
-A gyors hozzáférés engedélyezéséhez a StorSimple tárolja nagyon aktív (hideg) adatok az SSD-k a StorSimple-eszköz. Alkalmanként használt adatokat tárolja (meleg adatok) a HDD-k, az eszköz vagy az Adatközpont-kiszolgálójára. Inaktív adatokat, a biztonsági mentési adatokat, áthelyezése és az adatok megőrizve archiválási vagy megfelelőségi okokból a felhőbe. 
-
-> [!NOTE]
-> A 2. frissítés vagy újabb verziójú a helyileg rögzített kötet is megadhat, ebben az esetben az adatok a helyi eszközön maradnak, és nem a rétegzett a felhőbe. 
-
-
-StorSimple állítja be, és újrarendezi az adatokat, és a használati mintákat, tároló-hozzárendelések módosítása. Például bizonyos adatok válhat, kevésbé aktív idővel. Váló fokozatosan kevésbé aktív, áttelepítése az SSD-k HDD, majd a felhőbe. Ha ugyanazokat az adatokat, hogy újra aktívvá válik, térjen vissza a tárolóeszköz áttelepítése.
-
-A storage rétegezési folyamat a következő történik:
-
-1. Egy rendszergazda állít be egy Microsoft Azure felhős társzolgáltatás fiókjába.
-2. A rendszergazda használja a soros konzol és a StorSimple-Eszközkezelő szolgáltatás (az Azure Portalon fut) az eszköz- és kiszolgáló konfigurálása a kötetek és adatok alkalmazásvédelmi szabályzatok létrehozására. A helyszíni gépek (például a fájlkiszolgálók) az Internet Small Computer System Interface (iSCSI) használata a StorSimple-eszköz eléréséhez.
-3. A StorSimple kezdetben a gyors SSD-rétegen a készülék tárolja az adatokat.
-4. Ahogy az SSD-réteg kapacitása megközelíti, a StorSimple adattömbökbe megfelelően és tömöríti a legrégebbi adatblokkok, és áthelyezi őket a HDD-réteget.
-5. A HDD szint megközelítések kapacitás StorSimple titkosítja a legrégebbi az adatblokkokat és biztonságosan a Microsoft Azure storage-fiókot a HTTPS-kapcsolaton keresztül küldi őket.
-6. A Microsoft az Azure létrehozza az adatok több replika az adatközpontban és a egy távoli adatközpontban annak biztosítása, hogy az adatok helyreállíthatók, ha katasztrófa történik.
-7. Amikor a fájlkiszolgáló, a felhőben tárolt adatok, a StorSimple adja vissza zökkenőmentesen, és tárolja a az SSD-rétegen a StorSimple-eszköz.
-
-#### <a name="how-storsimple-manages-cloud-data"></a>Hogyan kezeli a StorSimple a felhőbeli adatok
-
-A StorSimple adattömbökbe megfelelően a vásárlói adatokat összes pillanatképet, és az elsődleges adatok (állomások által írt adatok). Míg a deduplikáció nagyszerűen használható tárolási hatékonyságot, lehetővé teszi, a kérdés, "Mi az a felhőben" bonyolult. Az elsődleges rétegzett adatok és a pillanatkép adatainak átfedésben egymással. Egy olyan adattömb a felhőben tárolt rétegzett elsődleges adatként használható, és is hivatkozhatnak több pillanatképeket. Minden felhőbeli pillanatkép biztosítja, hogy az összes időpontban az adatok másolatát zárolva van a felhőbe, hogy a pillanatkép törléséig.
-
-Adatok csak törlődik a felhőből, amikor is az adatok nem hivatkozik. Például egy felhőbeli pillanatképet az összes adat, amely a StorSimple eszközön, és ezután törölje az egyes elsődleges adatok vessünk láthatjuk lenne a _elsődleges_ dobja el azonnal. A _felhőbeli adatok_ amely magában foglalja a rétegzett adatok és a biztonsági mentések változatlan marad. Ez azért van egy pillanatképet a felhőbeli adatok továbbra is hivatkozik. A felhő után a rendszer törli a pillanatképét (és bármely egyéb pillanatkép, amely a hivatkozott ugyanazokat az adatokat), a felhő felhasználási csepp. Előtt azt távolítsa el a felhőbeli adatok, hogy ellenőrizze, hogy a pillanatképek nem még mindig hivatkoznak az adatokat. Ez a folyamat _szemétgyűjtés_ és a egy háttér-szolgáltatás fut az eszközön. Felhőbeli adatok eltávolítását a lehetőség nem azonnali egyéb hivatkozások az adatok a törlés előtt ellenőrzi a szemétgyűjtési szolgáltatást. Szemétgyűjtési sebességétől függ, pillanatképeket és az összes adat teljes száma. Általában a felhőbeli adatok törlődnek a kevesebb mint egy hét.
-
-
-### <a name="thin-provisioning"></a>A dinamikus kiosztás
-A dinamikus kiosztás egy virtualizációs technológia, amely rendelkezésre álló tár meghaladja a fizikai erőforrásokat jelenik meg. Ahelyett, hogy elegendő tárhely az előzetesen lefoglalását, a StorSimple használja a dinamikus kiosztás aktuális követelményeinek éppen elegendő lemezterületet foglaljon le. Rugalmas jellegének köszönhetően felhőalapú tárolás Ez a megközelítés lehetővé teszi, mert StorSimple növelheti vagy csökkentheti a változó igényekkel összhangban a felhőalapú tárolás.
+A gyors hozzáférés engedélyezéséhez a StorSimple a StorSimple-eszközön lévő SSD-lemezeken nagyon aktív adatok (forró adatok) tárolására. A szolgáltatás esetenként (meleg) tárolt, az eszközön vagy az adatközpontban található kiszolgálókon tárolt HDD-ket tárolja. Áthelyezi az inaktív és a biztonsági mentési, illetve a felhőbe archiválásra vagy megfelelőségre fenntartott adatait. 
 
 > [!NOTE]
-> A gyors helyi kötetek nem dinamikusan kiosztott. Csak helyi kötet lefoglalt tárolót ebben az esetben van kiépítve, a kötet létrehozásakor.
+> A 2-es vagy újabb verzióban megadhatja a kötetet helyileg rögzítettként, ebben az esetben az adatforgalom a helyi eszközön marad, és nem a felhőbe van bontva. 
 
 
-### <a name="deduplication-and-compression"></a>A deduplikáció és a tömörítés
-A Microsoft Azure StorSimple a deduplikáció és az adatok tömörítés használja tovább csökkenti a tárolási követelményeket.
+A StorSimple módosítja és átrendezi az adatokat és a tárolási hozzárendeléseket a használati minták változásakor. Előfordulhat például, hogy egyes információk kevésbé lesznek aktívak az idő múlásával. Mivel egyre kevésbé aktív, a rendszer az SSD-ről a HDD-re, majd a felhőbe telepíti át. Ha ugyanezen az adategység ismét aktívvá válik, a rendszer visszatelepíti a tárolóeszközre.
 
-A deduplikáció csökkenti a tárolt adatkészlet redundanciájának kiküszöbölése révén tárolt adatok teljes mennyisége. Adat változik, ahogy a StorSimple figyelmen kívül hagyja a változatlan adatok, és csak a változtatásokat rögzíti. Emellett a StorSimple azonosításával és a felesleges adatok eltávolítása csökkenti a tárolt adatok mennyisége. 
+A tárolási rétegek feldolgozási folyamata a következőképpen történik:
+
+1. A rendszergazda egy Microsoft Azure felhőalapú Storage-fiókot állít be.
+2. A rendszergazda a soros konzolt és a StorSimple Eszközkezelő szolgáltatást használja (amely a Azure Portalban fut) az eszköz-és fájlkiszolgáló konfigurálásához, kötetek és adatvédelmi házirendek létrehozásához. A helyszíni gépek (például fájlkiszolgálók) az Internet kis számítógép rendszerfelületét (iSCSI) használják a StorSimple-eszköz eléréséhez.
+3. Kezdetben a StorSimple az eszköz gyors SSD-szintjéről tárolja az adattárolást.
+4. Ahogy az SSD-szint megközelíti a kapacitást, a StorSimple deduplikálja és tömöríti a legrégebbi adatblokkokat, és áthelyezi őket a HDD-szintre.
+5. Ahogy a HDD-csomag képes a kapacitásra, a StorSimple titkosítja a legrégebbi adatblokkokat, és biztonságosan küldi el azokat a HTTPS-en keresztül a Microsoft Azure Storage-fióknak.
+6. Microsoft Azure több replikát hoz létre az adatközpontban és egy távoli adatközpontban, így biztosítható, hogy az adatsérülés bekövetkezése esetén helyreállítható legyen.
+7. Ha a fájlkiszolgáló a felhőben tárolt adatokra kéri a StorSimple, a rendszer zökkenőmentesen visszaadja, és a StorSimple-eszköz SSD-szintjére másol egy másolatot.
+
+#### <a name="how-storsimple-manages-cloud-data"></a>Hogyan kezeli a StorSimple a Felhőbeli adatszolgáltatásokat
+
+A StorSimple a pillanatképek és az elsődleges adategységek (gazdagépek által írt) alapján deduplikálja az ügyféladatokat. Míg a deduplikálás nagy mennyiségű tárolási hatékonyságot jelent, a "mi a felhőben" bonyolult kérdés. A rétegű elsődleges adatok és a pillanatképek adatátfedésben vannak egymással. A felhőben egyetlen adatrészletet is felhasználhat a rétegbeli elsődleges adatként, és több pillanatkép is hivatkozhat rájuk. Minden Felhőbeli pillanatkép biztosítja, hogy az adott időponthoz tartozó adatok másolata zárolva legyen a felhőbe, amíg a pillanatkép nem törlődik.
+
+Az adatok csak akkor törlődnek a felhőből, ha nincsenek erre az adatokra mutató hivatkozások. Ha például a StorSimple-eszközön lévő összes adattal Felhőbeli pillanatképet készít, majd néhány elsődleges adatmennyiséget töröl, akkor a rendszer azonnal megtekinti az _elsődleges_ adatvesztést. A többszintes adatokat és a biztonsági másolatokat tartalmazó _Felhőbeli adatokat_ változatlanok maradnak. Ennek az az oka, hogy egy pillanatkép továbbra is hivatkozik a Felhőbeli adatokra. A Felhőbeli pillanatkép törlése (és az ugyanazon adatokra hivatkozó egyéb Pillanatképek) után a Felhőbeli felhasználás csökken. A Felhőbeli adatmennyiség eltávolítása előtt győződjön meg arról, hogy a pillanatképek nem hivatkoznak az adott adatmennyiségre. Ezt a folyamatot _szemét_ -gyűjteménynek nevezzük, és az eszközön futó háttér-szolgáltatás. A Felhőbeli adatok eltávolítása nem azonnal történik, mert a szemetet gyűjtő szolgáltatás a törlés előtt ellenőrzi az adatokra vonatkozó egyéb hivatkozásokat. A szemét gyűjtésének sebessége a pillanatképek teljes számától és a teljes adatoktól függ. A Felhőbeli adatmennyiséget általában kevesebb mint egy hete takarítják meg.
+
+
+### <a name="thin-provisioning"></a>Dinamikus kiépítés
+A dinamikus kiépítés olyan virtualizációs technológia, amelyben a rendelkezésre álló tár úgy tűnik, hogy meghaladja a fizikai erőforrásokat. Ahelyett, hogy a megfelelő tárterületet nem kívánja megtartani, a StorSimple dinamikus kiosztást használ, hogy elegendő helyet foglaljon le az aktuális követelmények kielégítése érdekében. A felhőalapú tárolás rugalmas jellege megkönnyíti ezt a megközelítést, mivel a StorSimple növelheti vagy csökkentheti a Felhőbeli tárolást a változó igények kielégítése érdekében.
 
 > [!NOTE]
-> A gyors helyi kötetek lévő adatok nem deduplikált vagy tömörítve. Azonban helyileg rögzített kötetek biztonsági másolatokat deduplikált, és tömöríti.
+> A helyileg rögzített kötetek nincsenek kiépítve. A csak helyi kötethez lefoglalt tárterület teljes egészében a kötet létrehozásakor lesz kiépítve.
 
 
-## <a name="storsimple-workload-summary"></a>A StorSimple a számítási feladatok összefoglalása
-A StorSimple elvégezhető feladatok összefoglalása a lenti táblázatban láthatóak.
+### <a name="deduplication-and-compression"></a>Deduplikálás és tömörítés
+Microsoft Azure StorSimple a tárolási követelmények további csökkentése érdekében a deduplikálás és az adattömörítést használja.
 
-| Forgatókönyv | Számítási feladat | Támogatott | Korlátozások | Verzió |
+A deduplikálás csökkenti a tárolt adatkészletben lévő redundancia megszüntetésével a tárolt adatmennyiséget. Ahogy az információ megváltozik, a StorSimple figyelmen kívül hagyja a változatlan adatokat, és csak a módosításokat rögzíti. Emellett a StorSimple a szükségtelen információk azonosításával és eltávolításával csökkenti a tárolt adatok mennyiségét. 
+
+> [!NOTE]
+> A helyileg rögzített köteteken lévő adatmennyiség nem deduplikált vagy tömörítve van. A helyileg rögzített kötetek biztonsági másolatait azonban deduplikálja és tömöríti.
+
+
+## <a name="storsimple-workload-summary"></a>StorSimple munkaterhelés összegzése
+Az alábbi táblázat a támogatott StorSimple-számítási feladatok összefoglalóját mutatja be.
+
+| Forgatókönyv | Számítási feladat | Támogatott | Korlátozások | Version |
 | --- | --- | --- | --- | --- |
 | Együttműködés |Fájlmegosztás |Igen | |Az összes verzió |
 | Együttműködés |Elosztott fájlmegosztás |Igen | |Az összes verzió |
-| Együttműködés |SharePoint |Igen* |Csak a helyileg rögzített kötetekhez támogatott |2. frissítés vagy újabb |
-| Archiválás |Egyszerű fájlba az Archiválás |Igen | |Az összes verzió |
-| Virtualizáció |Virtual machines (Virtuális gépek) |Igen* |Csak a helyileg rögzített kötetekhez támogatott |2. frissítés vagy újabb |
-| Adatbázis |SQL |Igen* |Csak a helyileg rögzített kötetekhez támogatott |2. frissítés vagy újabb |
-| Videó felügyelet |Videó felügyelet |Igen* |Támogatott, ha a StorSimple-eszköz csak a számítási feladatok vannak kijelölve |2. frissítés vagy újabb |
-| Backup |Elsődleges célhely biztonsági mentés |Igen* |Támogatott, ha a StorSimple-eszköz csak a számítási feladatok vannak kijelölve |3. frissítés vagy újabb |
-| Backup |Másodlagos cél biztonsági mentés |Igen* |Támogatott, ha a StorSimple-eszköz csak a számítási feladatok vannak kijelölve |3. frissítés vagy újabb |
+| Együttműködés |SharePoint |Igen* |Csak helyileg rögzített kötetekkel támogatott |2\. frissítés és újabb |
+| Archiválási |Egyszerű fájl archiválása |Igen | |Az összes verzió |
+| Virtualizáció |Virtual machines (Virtuális gépek) |Igen* |Csak helyileg rögzített kötetekkel támogatott |2\. frissítés és újabb |
+| Adatbázis |SQL |Igen* |Csak helyileg rögzített kötetekkel támogatott |2\. frissítés és újabb |
+| Videó-megfigyelés |Videó-megfigyelés |Igen* |Csak akkor támogatott, ha a StorSimple-eszköz csak erre a számítási feladatra van dedikált |2\. frissítés és újabb |
+| Tartalék |Elsődleges cél biztonsági mentése |Igen* |Csak akkor támogatott, ha a StorSimple-eszköz csak erre a számítási feladatra van dedikált |3\. frissítés és újabb |
+| Tartalék |Másodlagos cél biztonsági mentése |Igen* |Csak akkor támogatott, ha a StorSimple-eszköz csak erre a számítási feladatra van dedikált |3\. frissítés és újabb |
 
-*Igen&#42; -megoldás irányelvek és korlátozások kell alkalmazni.*
+*Igen&#42; – a megoldásra vonatkozó irányelvek és korlátozások érvényesek.*
 
-A StorSimple 8000 sorozatú eszközök nem támogatottak a következő számítási feladatokkal. Ha üzembe helyezte a StorSimple, ezeket a feladatokat eredményez konfigurációja nem támogatott.
+A StorSimple 8000 sorozatú eszközök nem támogatják a következő munkaterheléseket. Ha a StorSimple-on van telepítve, akkor ezek a számítási feladatok nem támogatott konfigurációt eredményeznek.
 
-* Orvosi lemezképpel végrehajtott telepítéshez
+* Orvosi képalkotás
 * Exchange
 * VDI
 * Oracle
 * SAP
-* Big Data
+* Big data
 * Tartalom terjesztése
-* Rendszerindítás SCSI
+* Rendszerindítás SCSI-ről
 
-Az alábbiakban olyan infrastruktúra támogatja a StorSimple-összetevőt.
+A következő lista a StorSimple által támogatott infrastruktúra-összetevőket tartalmazza.
 
-| Forgatókönyv | Számítási feladat | Támogatott | Korlátozások | Verzió |
+| Forgatókönyv | Számítási feladat | Támogatott | Korlátozások | Version |
 | --- | --- | --- | --- | --- |
-| Általános kérdések |Express Route |Igen | |Az összes verzió |
-| Általános kérdések |FC DataCore |Igen* |Támogatott DataCore SANsymphony |Az összes verzió |
-| Általános kérdések |DFSR |Igen* |Csak a helyileg rögzített kötetekhez támogatott |Az összes verzió |
-| Általános kérdések |Indexelés |Igen* |A rétegzett kötetek csak metaadatokat indexelje támogat (adatok nélkül).<br>A helyileg rögzített kötetekhez teljes indexelő használata támogatott. |Az összes verzió |
-| Általános kérdések |Anti-virus |Igen* |Csak nyissa meg a vizsgálatot, zárja be a rétegzett kötetek használata támogatott.<br> A gyors helyi kötetek teljes vizsgálat támogatott. |Az összes verzió |
+| Általános |Express Route |Igen | |Az összes verzió |
+| Általános |DataCore FC |Igen* |Támogatott a DataCore SANsymphony |Az összes verzió |
+| Általános |DFSR |Igen* |Csak helyileg rögzített kötetekkel támogatott |Az összes verzió |
+| Általános |Indexelés |Igen* |A többszintes kötetek esetében csak a metaadatok indexelése támogatott (nincs adat).<br>A helyileg rögzített kötetek esetében a teljes indexelés támogatott. |Az összes verzió |
+| Általános |Anti-virus |Igen* |A többszintes kötetek esetében csak a Megnyitás és bezárás vizsgálat támogatott.<br> A helyileg rögzített kötetek esetében a teljes vizsgálat támogatott. |Az összes verzió |
 
-*Igen&#42; -megoldás irányelvek és korlátozások kell alkalmazni.*
+*Igen&#42; – a megoldásra vonatkozó irányelvek és korlátozások érvényesek.*
 
-Az alábbiakban olyan egyéb szoftverek, a StorSimple megoldások létrehozásához használt.
+A következő lista felsorolja azokat a szoftvereket, amelyeket a StorSimple a megoldások létrehozásához használ.
 
-| Számítási feladat típusa | A StorSimple használt szoftverek | Támogatott verziók|Megoldási útmutató mutató hivatkozás| 
+| Számítási feladat típusa | StorSimple használt szoftverek | Támogatott verziók|Hivatkozás a megoldási útmutatóra| 
 | --- | --- | --- | --- |
-| Biztonsági mentési cél |Veeam |Veeam v 9 és újabb verziók |[StorSimple biztonsági mentési célként Veaam](storsimple-configure-backup-target-veeam.md)|
-| Biztonsági mentési cél |VERITAS Backup Execkel |Biztonsági mentési Exec 16 és újabb verziók |[A biztonsági mentési Exec a StorSimple mint biztonsági mentési cél](storsimple-configure-backup-target-using-backup-exec.md)|
-| Biztonsági mentési cél |VERITAS Netbackuppal |Netbackuppal 7.7.x és újabb verziók  |[StorSimple biztonsági mentési célként Netbackuppal](storsimple-configure-backuptarget-netbackup.md)|
-| Általános fájlmegosztás <br></br> Együttműködés |Talon  |[A Talon StorSimple](https://www.talonstorage.com/products/archive/fast-deployment-azure-storsimple) | |
+| Biztonsági mentés célja |Veeam |Veeam v 9-es és újabb verziók |[StorSimple biztonsági mentési célként a Veaam](storsimple-configure-backup-target-veeam.md)|
+| Biztonsági mentés célja |A Veritas Backup Exec |Backup Exec 16 és újabb verziók |[StorSimple biztonsági mentési célként a Backup Exec](storsimple-configure-backup-target-using-backup-exec.md)|
+| Biztonsági mentés célja |VERITAS NetBackup |NetBackup 7.7. x és újabb verziók  |[StorSimple biztonsági mentési célként a NetBackup](storsimple-configure-backuptarget-netbackup.md)|
+| Globális fájlmegosztás <br></br> Együttműködés |Talon  |[StorSimple Talonral](https://www.talonstorage.com/products/archive/fast-deployment-azure-storsimple) | |
 
-## <a name="storsimple-terminology"></a>A StorSimple-terminológia
-A Microsoft Azure StorSimple megoldás üzembe helyezése előtt javasoljuk, hogy tekintse át a következő feltételeket és a definíciókat.
+## <a name="storsimple-terminology"></a>StorSimple-terminológia
+A Microsoft Azure StorSimple-megoldás üzembe helyezése előtt javasoljuk, hogy tekintse át a következő feltételeket és definíciókat.
 
-### <a name="key-terms-and-definitions"></a>Legfontosabb kifejezések és meghatározások
-| Kifejezés (betűszó vagy rövidítése) | Leírás |
+### <a name="key-terms-and-definitions"></a>A legfontosabb feltételek és definíciók
+| Kifejezés (betűszó vagy rövidítés) | Leírás |
 | --- | --- |
-| hozzáférés-vezérlési rekord (ACR) |Egy rekord, azt a kötetet a Microsoft Azure StorSimple-eszköz, amely meghatározza, hogy mely állomások tudjon hozzá csatlakozni a társított. Meghatározása alapján az iSCSI minősített nevét (IQN) a gazdagépet (a az ACR-REL), amely a StorSimple-eszköz csatlakozik. |
-| AES-256 |Egy 256 bites Advanced Encryption Standard (AES) algoritmus, mert az adatok titkosítására helyezi át, és a felhőből. |
-| lemezfoglalási egység mérete (AU) |A legkisebb memóriamennyiség, amely kiosztható tárolni egy fájlt a Windows-fájlrendszer. Ha egy fájl mérete nem egy páros számú többszöröse az a fürt méretét, további területnek kell használni, amely tárolja a fájlt (akár a fürtméret tovább többszöröse) elveszett terület és a merevlemez töredezettsége eredményez. <br>A javasolt au-k az Azure StorSimple-köteteket a 64 KB-os azért azt nagyszerűen működik a deduplikációs algoritmusokkal. |
-| automatizált tárolórétegzés |Kevésbé aktív adatok automatikusan áthelyezése az SSD-k HDD, majd a felhőben szintre, és ezután ami lehetővé teszi az összes tárolási központi felhasználói felületről. |
-| a biztonságimásolat-katalógus |Biztonsági másolatok, általában használt alkalmazások típusa szerint kapcsolódó gyűjteménye. A StorSimple-Eszközkezelő szolgáltatás felhasználói Felületet a biztonságimásolat-katalógus panel jelenik meg ebben a gyűjteményben. |
-| a biztonságimásolat-katalógus fájl |Elérhető a StorSimple Snapshot Manager biztonsági mentési adatbázisban jelenleg tárolt pillanatképek listáját tartalmazó fájl. |
-| a biztonsági mentési szabályzat |A kijelölt kötetek, a biztonsági mentés típusát és a egy ütemterv, amely lehetővé teszi a biztonsági mentések létrehozását egy előre meghatározott ütemezés szerint. |
-| nagyméretű bináris objektumok (Blobok) |Egy adatbázis-kezelő rendszer egyetlen egységként tárolt bináris adatok gyűjteménye. Blobok jellemzően képek, hang vagy más multimédiás objektumok, de néha bináris végrehajtható kód blobként tárolt. |
-| Challenge Handshake Authentication Protocol (CHAP) |A társ-kapcsolat, a jelszó vagy titkos kulcs megosztása társ alapján hitelesítéséhez használandó protokoll. A CHAP egyirányú és kölcsönös is lehetnek. Az egyirányú CHAP PROTOKOLLT vagy a cél hitelesíti egy kezdeményező. Kölcsönös CHAP megköveteli, hogy a cél hitelesítést a kezdeményező és, hogy a kezdeményező végzi a hitelesítést a cél. |
-| Klónozás |A kötet duplikált másolata. |
-| Felhő mint egy csomagja (CaaT) |Felhőalapú tárolás integrált belül a tároló-architektúra egy réteget, hogy az összes tárolási úgy tűnik, hogy egy nagyvállalati tárolási hálózat részét. |
-| felhőszolgáltató (CSP) |A szolgáltató felhőszolgáltatások alapkategóriája. |
-| felhőbeli pillanatkép |A felhőben tárolt adatmennyiség pont kötött másolata. Felhőbeli pillanatkép megegyezik egy másik, külső helyszínen lévő tárolórendszer replikált pillanatképet. Felhőbeli pillanatképek különösen hasznosak a vész-helyreállítási helyzetekben. |
-| felhőalapú tárolás titkosítási kulcsa |Jelszó vagy egy kulcsot a StorSimple-eszköz használja a titkosított adatokat a felhőbe a eszköz által küldött elérésére. |
-| fürttámogató frissítés |Szoftverfrissítések egy feladatátvevő fürtben lévő kiszolgálók kezelése, hogy a frissítések minimális, vagy nincs hatással a szolgáltatás rendelkezésre állása. |
-| DataPath |Funkcionális egység közötti csatlakoztatott adatokat feldolgozó műveleteket végrehajtó gyűjteménye. |
-| inaktiválás |Egy állandó művelet, amely a StorSimple-eszköz és a kapcsolódó felhőalapú szolgáltatás közötti kapcsolat megszakad. Felhőbeli pillanatképekkel az eszköz ezen folyamat után továbbra is, és is klónozta vagy vész-helyreállítási használt. |
-| lemez tükrözés |Logikai lemez-kötetek a külön, rögzített replikációs meghajtók valós idejű folyamatos rendelkezésre állás biztosítása érdekében. |
-| dinamikus lemez-tükrözés |A dinamikus lemezek a logikai lemez kötet replikálása. |
-| a dinamikus lemezek |Egy kötet lemezformátum, amely a logikai lemezkezelő (LDM) használatával tárolhatja és kezelheti az adatokat több fizikai lemezek között. Szabadítson fel helyet adja meg a dinamikus lemezek is javasolt. |
-| Kiterjesztett lemez kötegnek (EBOD) ház |A Microsoft Azure StorSimple eszköz, amely tartalmazza a további tárhely külön merevlemez lemezeinek másodlagos ház. |
-| FAT-kiépítés |Egy hagyományos tárfiók kiépítésének melyik tárolási hely lefoglalhatók alapján a várható igényeinek (és általában túl az aktuális kell). Lásd még: *dinamikus kiosztás*. |
-| merevlemez (HDD) |A meghajtó, amely a rotált egyedi lemezeinek száma általában használja adatok tárolására. |
-| a hibrid felhőalapú tárolás |Egy tároló-architektúra, amely a helyi és a külső helyszínen lévő erőforrások, például a felhőalapú tárolást használ. |
-| Az Internet Small Computer System Interface (iSCSI) |Egy Internet Protocol IP-alapú tárolási hálózati szabvány kapcsolásának adatok tárolási berendezés vagy üzemeltetnek. |
-| az iSCSI-kezdeményező |A szoftverfrissítési összetevő, amely lehetővé teszi egy iSCSI-alapú tárolás külső hálózathoz való csatlakozáshoz Windows rendszerű gazdagépen. |
-| iSCSI Qualified Name (IQN) |ISCSI-tároló vagy kezdeményező azonosító egyedi név. |
-| iSCSI-tároló |A szoftverfrissítési összetevő központi iSCSI-tárolóhálózatok kialakítása a lemez-alrendszereket biztosító. |
-| élő archiválás |Egy adattárolási módszer, amely archív adatokhoz érhető el (a rendszer nem tárolja adathordozókra szalagon, például) folyamatosan. A Microsoft Azure StorSimple használ élő archiválás. |
-| helyileg rögzített kötet |olyan kötetre, amely az eszközön található, és soha nem lesz rétegzett, a felhőbe. |
-| helyi pillanatkép |A Microsoft Azure StorSimple eszközön tárolt adatmennyiség pont kötött másolata. |
-| Microsoft Azure StorSimple |Egy adatközpontban storsimple készülék és a szoftver, amely lehetővé teszi az informatikai szervezetek, felhőalapú tárolás kihasználhatja az Adatközpont tárolójában, mintha egy hatékony megoldás. A StorSimple megkönnyíti az adatvédelmi és adatkezelési költségek csökkentése mellett. A megoldás egyesíti az elsődleges tárhelyként archiválásra, biztonsági mentési és vész-helyreállítási zökkenőmentes integráció révén a felhőben. SAN tároló és a felhőbeli adatkezelés egy nagyvállalati szintű platform kombinálásával a StorSimple-eszközök engedélyezése sebességét, az egyszerűség és megbízhatóság minden, a storage szolgáltatással kapcsolatos igényeinek. |
-| Energia- és hűtési modul (PCM) |A StorSimple-eszköz álló a tápegységek és a hűtési ventilátor, ezért a nevét, a Power és hűtéssel modul hardverösszetevő. Az eszköz elsődleges ház két 764W PCMs van, mivel a EBOD ház két 580W PCMs. |
-| Elsődleges ház |Fő lemezház a StorSimple-eszköz, amely tartalmazza az alkalmazás platform tartományvezérlőkön. |
-| A helyreállítási időre vonatkozó célkitűzés (RTO) |A legnagyobb, hogy mennyi ideig kell lennie feljegyzi előtt egy üzleti folyamat vagy a rendszer teljes visszaállítása egy vészhelyzetet követően. |
-| soros csatlakozású SCSI (SAS) |Merevlemez (HDD) típus. |
-| szolgáltatásadat-titkosítási kulcs |Egy kulcs elérhetővé minden olyan új StorSimple-eszköz, amely a StorSimple-Eszközkezelő szolgáltatással regisztrálja. A konfigurációs adatokat a StorSimple-Eszközkezelő szolgáltatás és az eszköz között továbbított nyilvános kulccsal titkosított, és ezután csak a titkos kulcs segítségével az eszköz lehet visszafejteni. Szolgáltatásadat-titkosítási kulcs lehetővé teszi, hogy a szolgáltatás a visszafejtéshez a titkos kulcs beszerzése. |
-| Szolgáltatásregisztrációs kulcs |Egy kulcs, amely segít regisztrálni a StorSimple eszközt a StorSimple-Eszközkezelő szolgáltatással, így további felügyeleti műveletek esetében az Azure Portalon megjelenik. |
-| Small Computer System Interface (SCSI) |A fizikai számítógépek kapcsolódásához és adatcserével szabványok gyűjteménye. |
-| tartós állapotú meghajtót (SSD) |Nincs részek; tartalmazó lemez Ha például egy USB-meghajtóra. |
-| tárfiók |Egy adott felhőre szolgáltató a storage-fiókhoz társított hozzáférési hitelesítő adatok egy készletét. |
-| SharePointhoz készült StorSimple-adapter |A Microsoft Azure StorSimple összetevője, amely kiterjeszti a StorSimple tárolás és adatok védelme a SharePoint-kiszolgálófarmok transzparens módon. |
-| StorSimple-eszközkezelő szolgáltatás |Az Azure Portalon, amely lehetővé teszi, hogy az Azure StorSimple a helyi és virtuális eszközök kezelésére a kiterjesztése. |
-| StorSimple Snapshot Manager |A Microsoft Management Console (MMC) beépülő kezeléséhez a Microsoft Azure StorSimple biztonsági mentési és visszaállítási műveletek. |
-| biztonsági mentés |Ez a funkció lehetővé teszi, hogy a felhasználót, hogy a kötet egy interaktív biztonsági mentés. Manuális biztonsági másolat egy automatizált biztonsági másolat egy meghatározott szabályzat helyett egy kötet más módja. |
-| A dinamikus kiosztás |Módszer, amellyel a rendelkezésre álló lemezterület szerepel a tárolórendszerek hatékonyságának optimalizálása. A dinamikus kiosztást, a tároló lefoglalása egy adott időpontban minden felhasználó által igényelt terület alapján több felhasználó használ. Lásd még: *fat kiépítés*. |
-| rétegezést |Aktuális használat életkor és más adatokhoz való kapcsolat alapuló logikai csoportok adatainak rendezése. A StorSimple automatikusan elrendezése adatok szinten. |
-| kötet |Logikai tárolási területek meghajtók formájában jelenik meg. StorSimple-köteteket a kötetek csatlakoztatva van a gazdagép, beleértve a felderített iSCSI és a egy StorSimple-eszköz felel meg. |
-| kötettároló |Csoportja, kötetek és a rájuk vonatkozó beállításokat. A StorSimple-eszköz minden kötet kötettárolók vannak csoportosítva. Kötet tároló beállítások közé tartozik a storage-fiókok, a titkosítási beállítások a kapcsolódó titkosítási kulcsokat a felhőbe küldött adatok és a felhőt érintő műveletek felhasznált sávszélesség. |
-| kötetcsoport |A StorSimple Snapshot Managerben, egy kötetcsoport gyűjteménye kötetek konfigurálni a biztonsági mentés megkönnyítése érdekében. |
-| Kötet árnyékmásolata szolgáltatás (VSS) |Egy Windows Server operációsrendszer-szolgáltatás, amely elősegíti a alkalmazáskonzisztencia kommunikálva Kötetárnyékmásolat-felismerésre képes alkalmazások koordinálása a növekményes pillanatképek létrehozása. VSS biztosítja, hogy az alkalmazások legyenek ideiglenesen inaktív pillanatképek készülnek. |
-| Windows PowerShell-bővítménye |Windows PowerShell-alapú parancssori felület üzemeltetése és kezelése a StorSimple-eszköz. Miközben a Windows PowerShell alapvető funkciói, ez az interfész rendelkezik további dedikált parancsokat, amelyek felügyelete a StorSimple eszköz irányába. |
+| hozzáférés-vezérlési rekord (ACR) |A Microsoft Azure StorSimple eszközön lévő kötethez társított rekord, amely meghatározza, hogy mely gazdagépek csatlakozhatnak hozzá. A meghatározás a StorSimple-eszközhöz csatlakozó gazdagépek (ACR-ben található) iSCSI minősített nevén (IQN) alapul. |
+| AES-256 |256 bites Advanced Encryption Standard (AES) algoritmus a felhőbe irányuló és onnan áthelyezett adatok titkosításához. |
+| foglalási egység mérete (AUS) |A Windows-fájlrendszerek fájljának tárolására lefoglalható lemezterület legkisebb mérete. Ha a fájl mérete nem a fürt méretének még többszöröse, akkor a fájl (a fürt következő többszöröse számára) felesleges helyet kell használnia, ami az elveszett helyet és a merevlemez töredezettségét eredményezi. <br>Az ajánlott Azure StorSimple-kötetek 64 KB méretűek, mert jól működik a deduplikáló algoritmusokkal. |
+| automatizált tárolási rétegek |A kevésbé aktív adatok automatikus áthelyezése az SSD-ről a HDD-re, majd a felhőben lévő egyik szintjére, majd a központi felhasználói felületen lévő összes tárterület kezelésének engedélyezése. |
+| biztonsági mentési katalógus |Biztonsági másolatok gyűjteménye, amely általában a használt alkalmazás típusától van összefüggésben. Ez a gyűjtemény a StorSimple Eszközkezelő szolgáltatás felhasználói felületének biztonsági mentési katalógus paneljén jelenik meg. |
+| biztonságimásolat-katalógus fájlja |A StorSimple Snapshot Manager biztonsági mentési adatbázisában jelenleg tárolt elérhető Pillanatképek listáját tartalmazó fájl. |
+| biztonsági mentési szabályzat |A kötetek, a biztonsági mentés típusa, valamint egy ütemezés, amely lehetővé teszi, hogy a biztonsági mentéseket előre meghatározott ütemezés szerint hozza létre. |
+| bináris nagyméretű objektumok (Blobok) |Az adatbázis-kezelő rendszerekben egyetlen entitásként tárolt bináris adathalmaz. A Blobok jellemzően képek, hang vagy más multimédiás objektumok, bár a bináris végrehajtható kódokat a rendszer BLOBként tárolja. |
+| Challenge Handshake Authentication Protocol (CHAP) |A kapcsolat társának hitelesítésére szolgáló protokoll a jelszóval vagy titkos kulccsal megosztó társ alapján. A CHAP lehet egyirányú vagy kölcsönös. Egyirányú CHAP esetén a cél hitelesíti a kezdeményezőt. A kölcsönös CHAP megköveteli, hogy a cél hitelesítse a kezdeményezőt, és hogy a kezdeményező hitelesítse a célt. |
+| klónozott |Egy kötet duplikált példánya. |
+| Felhő (CaaT) |A Felhőbeli tárolás a tárolási architektúrában rétegként integrált, így úgy tűnik, hogy minden tárterület egy vállalati tárolóeszközhöz tartozik. |
+| felhőalapú szolgáltató (CSP) |A felhőalapú számítástechnikai szolgáltatások szolgáltatója. |
+| Felhőbeli pillanatkép |A felhőben tárolt mennyiségi adatforgalom időpontra vonatkozó másolata. A Felhőbeli Pillanatképek egy másik, nem helyszíni tárolási rendszeren replikált pillanatképnek felelnek meg. A Felhőbeli Pillanatképek különösen hasznosak a vész-helyreállítási helyzetekben. |
+| Felhőbeli tárolás titkosítási kulcsa |A StorSimple-eszköz által az eszköz által a felhőbe továbbított titkosított adatforgalom eléréséhez használt jelszó vagy kulcs. |
+| fürtöket támogató frissítés |Szoftverfrissítések kezelése feladatátvevő fürt kiszolgálóin, hogy a frissítések minimális vagy semmilyen hatással legyenek a szolgáltatás rendelkezésre állására. |
+| datapath |Olyan funkcionális egységek gyűjteménye, amelyek egymással összekapcsolt adatfeldolgozási műveleteket hajtanak végre. |
+| inaktiválás |Állandó művelet, amely megszakítja a kapcsolatot a StorSimple-eszköz és a hozzá tartozó felhőalapú szolgáltatás között. Az eszköz Felhőbeli pillanatképei a folyamat után is megmaradnak, és klónozott vagy vész-helyreállítási felhasználható. |
+| lemez tükrözése |A folyamatos rendelkezésre állás biztosítása érdekében valós időben replikálja a logikai lemez köteteit külön merevlemezeken. |
+| dinamikus lemez tükrözése |Logikai lemez köteteinek replikálása dinamikus lemezeken. |
+| dinamikus lemezek |Egy lemezes kötet formátuma, amely a logikai lemezkezelő (LDM) használatával tárolja és kezeli az adatmennyiséget több fizikai lemez között. A dinamikus lemezek kinagyítható, így több szabad terület is elérhető. |
+| Kiterjesztett lemez (EBOD) – ház |A Microsoft Azure StorSimple eszköz másodlagos bekerítése, amely további merevlemez-lemezeket tartalmaz a további tároláshoz. |
+| FAT-kiépítés |Egy hagyományos tárolási kiépítés, amelyben a tárolóhelyek a várt igények alapján vannak lefoglalva (és általában az aktuális szükségleten felül). Lásd még: dinamikus kiépítés. |
+| merevlemez-meghajtó (HDD) |Egy meghajtó, amely a forgó lemezeket használja az adattároláshoz. |
+| hibrid felhőalapú tárolás |Helyi és telephelyen kívüli erőforrásokat használó tárolási architektúra, beleértve a felhőalapú tárolást. |
+| Internetes kis számítógép rendszerfelülete (iSCSI) |Az adattárolók vagy létesítmények összekapcsolására szolgáló Internet Protocol (IP)-alapú tárolási hálózatkezelési szabvány. |
+| iSCSI-kezdeményező |Olyan szoftver-összetevő, amely lehetővé teszi, hogy a Windows rendszerű gazdaszámítógép egy külső iSCSI-alapú tárolóeszközhöz kapcsolódjon. |
+| iSCSI Qualified Name (IQN) |Egy iSCSI-tárolót vagy kezdeményezőt azonosító egyedi név. |
+| iSCSI-tároló |Egy szoftver-összetevő, amely központosított iSCSI-lemezes alrendszereket biztosít a tárolóhelyek hálózatában. |
+| élő archiválás |A tárolási módszer, amelyben az archivált adatok bármikor elérhetők (például nem a szalagon van tárolva). A Microsoft Azure StorSimple élő archiválást használ. |
+| helyileg rögzített kötet |az eszközön található kötet, amely soha nem a felhőbe van bontva. |
+| helyi pillanatkép |A Microsoft Azure StorSimple eszközön tárolt mennyiségi adatmennyiség időponthoz tartozó másolata. |
+| Microsoft Azure StorSimple |Egy olyan hatékony megoldás, amely egy adatközpont-tárolóeszközből és-szoftverből áll, amely lehetővé teszi az informatikai szervezetek számára, hogy az adatközpont-tárolást használják. A StorSimple leegyszerűsíti az adatvédelmet és az adatkezelést, miközben csökkenti a költségeket. A megoldás a felhővel való zökkenőmentes integráció révén összevonja az elsődleges tárhelyet, az archiválást, a biztonsági mentést és a vész-helyreállítást (DR). A SAN Storage és a Felhőbeli adatkezelés nagyvállalati szintű platformon történő kombinálásával a StorSimple-eszközök lehetővé teszik az összes tárterülettel kapcsolatos igény sebességét, egyszerűségét és megbízhatóságát. |
+| Energiagazdálkodási és hűtési modul (PCM) |A StorSimple-eszköz hardveres összetevői, amelyek a tápegységből és a hűtési ventilátorból állnak, ezért a name Power és a hűtési modul. Az eszköz elsődleges bekerítésének két 764W van PCMs, míg a EBOD-ház két 580W PCMs rendelkezik. |
+| elsődleges ház |Az Application Platform-vezérlőket tartalmazó StorSimple-eszköz fő bekerítése. |
+| helyreállítási időre vonatkozó célkitűzés (RTO) |Az a maximális időtartam, amelyet az üzleti folyamat vagy a rendszer a katasztrófa utáni teljes helyreállítás előtt ki kell állítani. |
+| sorosan csatlakoztatott SCSI (SAS) |Merevlemez-meghajtó (HDD) típusa. |
+| szolgáltatás adattitkosítási kulcsa |Minden olyan új StorSimple-eszköz számára elérhető kulcs, amely regisztrálva van a StorSimple Eszközkezelő szolgáltatásban. A StorSimple Eszközkezelő szolgáltatás és az eszköz között továbbított konfigurációs adatforgalom nyilvános kulccsal van titkosítva, és ezt követően csak titkos kulccsal lehet visszafejteni az eszközön. A szolgáltatásban tárolt adattitkosítási kulcs lehetővé teszi, hogy a szolgáltatás megszerezze ezt a titkos kulcsot a visszafejtéshez. |
+| szolgáltatás regisztrációs kulcsa |Egy kulcs, amely segít regisztrálni a StorSimple eszközt a StorSimple Eszközkezelő szolgáltatással, hogy a további felügyeleti műveletekhez a Azure Portal megjelenjen. |
+| Kis számítógéprendszer felülete (SCSI) |A számítógépek fizikai csatlakoztatására és az azok közötti adattovábbításra vonatkozó szabványok összessége. |
+| stabil állapotú meghajtó (SSD) |Olyan lemez, amely nem tartalmaz mozgó részeket; például egy flash meghajtó. |
+| tárfiók |Egy adott felhőalapú szolgáltatóhoz tartozó Storage-fiókhoz társított hozzáférési hitelesítő adatok halmaza. |
+| SharePointhoz készült StorSimple-adapter |Microsoft Azure StorSimple-összetevő, amely transzparens módon kiterjeszti a StorSimple-tárolót és az adatvédelmet a SharePoint Server-farmokra. |
+| StorSimple-eszközkezelő szolgáltatás |A Azure Portal kiterjesztése, amely lehetővé teszi az Azure-StorSimple helyszíni és virtuális eszközökön való kezelését. |
+| StorSimple Snapshot Manager |Egy Microsoft Management Console (MMC) beépülő modul a Microsoft Azure StorSimple biztonsági mentési és visszaállítási műveleteinek kezeléséhez. |
+| biztonsági mentés készítése |Egy szolgáltatás, amely lehetővé teszi a felhasználó számára, hogy interaktív biztonsági másolatot készítsen egy kötetről. A kötet manuális biztonsági mentésének másik módja, ha a biztonsági mentést egy meghatározott házirend alapján veszi figyelembe. |
+| dinamikus kiépítés |Az a módszer, amellyel optimalizálható a rendelkezésre álló tárolóhelyek tárolási rendszerekben való használatának hatékonysága. A dinamikus kiosztásban a tárterület több felhasználó között van lefoglalva, az egyes felhasználók által adott időpontban minimálisan szükséges lemezterület alapján. Lásd még: *FAT*-kiépítés. |
+| rétegezés |Az adatok logikai csoportosításban való rendezése az aktuális használat, az életkor és más adatokkal való kapcsolat alapján. A StorSimple automatikusan rendezi az adatszinteket. |
+| kötet |Meghajtók formájában bemutatott logikai tárolóhelyek. A StorSimple-kötetek a gazdagép által csatlakoztatott köteteknek felelnek meg, beleértve az iSCSI és a StorSimple eszköz használatával felderített mennyiségeket is. |
+| kötet tárolója |Kötetek csoportosítása és azok beállításai. A StorSimple-eszköz összes kötete mennyiségi tárolóba van csoportosítva. A mennyiségi tároló beállításai közé tartoznak a Storage-fiókok, a felhőbe a társított titkosítási kulcsokkal továbbított adatok titkosítási beállításai, valamint a felhővel kapcsolatos műveletek során felhasznált sávszélesség. |
+| kötet csoport |A StorSimple Snapshot Managerban a kötetek csoportja a biztonsági másolatok feldolgozásának megkönnyítésére konfigurált kötetek gyűjteménye. |
+| Kötet árnyékmásolata szolgáltatás (VSS) |Egy Windows Server operációs rendszer szolgáltatás, amely megkönnyíti az alkalmazások konzisztenciáját a VSS-t támogató alkalmazásokkal való kommunikációval, hogy összehangolja a növekményes pillanatképek létrehozását. A VSS biztosítja, hogy az alkalmazások a pillanatképek elkészítésekor átmenetileg inaktívak legyenek. |
+| Windows PowerShell StorSimple-bővítménye |A StorSimple-eszköz üzemeltetéséhez és kezeléséhez használt Windows PowerShell-alapú parancssori felület. A Windows PowerShell néhány alapszintű funkciójának fenntartása mellett ez az illesztő további dedikált parancsmagokkal rendelkezik, amelyek a StorSimple-eszközök felügyeletére irányulnak. |
 
 ## <a name="next-steps"></a>További lépések
-Ismerje meg [StorSimple biztonsági](storsimple-8000-security.md).
+A [StorSimple biztonság](storsimple-8000-security.md)megismerése.
 

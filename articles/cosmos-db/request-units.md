@@ -1,77 +1,78 @@
 ---
-title: Kérelemegységek és átviteli sebesség az Azure Cosmos DB-ben
-description: Megtudhatja, hogyan adja meg, és az Azure Cosmos DB-ben a kérelemegység követelményeinek becslése
+title: Kérelmek egységei és átviteli sebessége Azure Cosmos DB
+description: Tudnivalók a kérések egységre vonatkozó követelményeinek megadásáról és becsléséről Azure Cosmos DB
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/31/2019
+ms.date: 07/23/2019
 ms.author: rimman
-ms.openlocfilehash: 72ec8332a3363d5336fb84b3390d5e44ced0b2e5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: a1143f912d894c1219de05b03a2338dc4e5bdc5f
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59798963"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467651"
 ---
-# <a name="request-units-in-azure-cosmos-db"></a>Az Azure Cosmos DB-kérésegységeiről
+# <a name="request-units-in-azure-cosmos-db"></a>Kérelmek egységei Azure Cosmos DB
 
-Az Azure Cosmos DB kell fizetnie az átviteli sebességet, üzembe helyezése és az óránként felhasznált storage. Átviteli sebesség arról, hogy elegendő rendszererőforrásra elérhető az Azure Cosmos-adatbázis mindig ki kell építeni. Elérik vagy túllépik a elegendő erőforrása van szüksége a [Azure Cosmos DB SLA-k](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/).
+A Azure Cosmos DB a kiépített átviteli sebességért és az óránként felhasznált tárhelyért kell fizetnie. Az átviteli sebességet úgy kell kiépíteni, hogy mindig elegendő rendszererőforrás legyen elérhető az Azure Cosmos-adatbázishoz. Elegendő erőforrásra van szüksége ahhoz, hogy elérje vagy túllépje a [Azure Cosmos db SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)-kat.
 
-Az Azure Cosmos DB támogatja a több API-k, például az SQL, a MongoDB, a Cassandra, a Gremlin és a tábla. Minden API rendelkezik a saját adatbázis-műveletek. E műveletek közé eső egyszerű pont beolvassa és az összetett lekérdezéseket. Minden egyes adatbázis-művelet alapján a művelet összetettsége rendszer-erőforrásokat használ fel. 
+Azure Cosmos DB számos olyan API-t támogat, mint például az SQL, a MongoDB, a Cassandra, a Gremlin és a table. Mindegyik API saját adatbázis-műveletekkel rendelkezik. Ezek a műveletek az egyszerű pont olvasási és írási műveleteiből származnak összetett lekérdezésekre. Minden adatbázis-művelet a művelet bonyolultsága alapján használja a rendszererőforrásokat. 
 
-Minden adatbázis-műveletek díja az Azure Cosmos DB által van normalizálva, és van kifejezve *kérelemegység* (vagy röviden a RUs). Átviteli sebességet a pénznemként másodpercenkénti kérelemegység is felfoghatók. Kérelemegység / másodperc az a sebesség-alapú pénznem. Ez kivonatolja a rendszererőforrásokat akadályozhatnak, mint a Processzor, az IOPS és a memória, amelyek szükségesek az Azure Cosmos DB által támogatott adatbázis-műveletek végrehajtásához. 
+Az összes adatbázis-művelet díját a Azure Cosmos DB normalizálja, és a *kérelmek egységei* (vagy RUs, röviden) szerint vannak kifejezve. Azt is megteheti, hogy a másodpercenkénti RUs pénzneme az átviteli sebesség. Az RUs/mp érték alapú pénznem. A rendszer elvégzi a Azure Cosmos DB által támogatott adatbázis-műveletek végrehajtásához szükséges rendszererőforrásokat, például a PROCESSZORt, a IOPS és a memóriát. 
 
-Elem a rendszer 1 kérelemegység egy 1 KB-os olvasási költség (vagy 1 RU). Minden más adatbázis-műveletek egy fenntartott egységek használata költség hasonlóképpen hozzá vannak rendelve. Függetlenül attól, hogy melyik API-t, amellyel kommunikálhat az Azure Cosmos-tároló költségek mindig mérik által fenntartott egységek. -E az adatbázis-művelet az írási, olvasási, vagy a lekérdezés, költségek mindig a fenntartott egységek mérése történik.
+1 KB-os elemek beolvasásának díja 1 kérési egység (vagy 1 RU). Az összes többi adatbázis-művelet hasonlóképpen hozzá van rendelve az RUs használatával. Függetlenül attól, hogy melyik API-t használja az Azure Cosmos-tárolóval való kommunikációra, a költségeket mindig az RUs méri. Azt jelzi, hogy az adatbázis-művelet írási, olvasási vagy lekérdezési jellegű-e, a költségeket mindig az RUs méri.
 
-Az alábbi képen látható a magas szintű kiindulópont annak megértéséhez, kérelemegység:
+Az alábbi képen az RUs magas szintű ötlete látható:
 
-![Adatbázis-műveletek Kérelemegységet használhat.](./media/request-units/request-units.png)
+![Adatbázis-műveletek felhasználásának kérelmezési egységei](./media/request-units/request-units.png)
 
-Kezelheti és kapacitásának megtervezése, az Azure Cosmos DB biztosítja, hogy a fenntartott egységek számát egy adott adatbázis-művelet fölé egy adott adatkészlet determinisztikus. Tekintse meg a válasz fejléce bármilyen adatbázis-művelet által felhasznált Kérelemegységek számát nyomon követéséhez. Ha már megismerte a [tényező befolyásolja a Kérelemegység díjai](request-units.md#request-unit-considerations) és az alkalmazás átviteli sebességet megkövetelő, költséghatékony alkalmazását futtathatja.
+A kapacitás kezeléséhez és megtervezéséhez Azure Cosmos DB biztosítja, hogy egy adott adatbázis-művelethez tartozó RUs száma determinisztikus. Megvizsgálhatja a válasz fejlécét, hogy nyomon kövesse a bármely adatbázis-művelet által felhasznált RUs számát. Ha megérti azokat a tényezőket, [amelyek hatással vannak az ru](request-units.md#request-unit-considerations) -díjakra és az alkalmazás átviteli sebességére vonatkozó követelményekre, akkor az alkalmazás költségei hatékonyan futtathatók.
 
-A fenntartott egységek számát 100 kérelemegység / másodperc, másodpercalapú alapon lépésekben az alkalmazás üzembe helyezése. Az alkalmazás a kiosztott átviteli kapacitás méretezését, növelheti vagy csökkentheti a fenntartott egységek számát bármikor. A lépésekben vagy 100 kérelemegységet csökkentésére skálázhatja. A módosításokat végezheti el, vagy programozott módon, vagy az Azure portal használatával. Óradíjat számítunk fel.
+Az alkalmazáshoz tartozó RUs számát a másodpercenként 100 RUs-onként kell kiépíteni. Az alkalmazás kiépített átviteli sebességének méretezéséhez bármikor növelheti vagy csökkentheti az RUs számát. A 100 RUs-es növekmények vagy csökkentések méretezhetők. A módosításokat programozott módon vagy a Azure Portal használatával végezheti el. A számlázás óránként történik.
 
-Átviteli sebességet két különböző granularitással is kioszthatja: 
+Az átviteli sebességet két különböző részletességgel is kiépítheti: 
 
-* **Tárolók**: További információkért lásd: [üzembe helyezése egy Azure Cosmos-tároló átviteli sebességet](how-to-provision-container-throughput.md).
-* **Adatbázisok**: További információkért lásd: [üzembe helyezése egy Azure Cosmos database átviteli sebességet](how-to-provision-database-throughput.md).
+* **Tárolók**: További információ: az [átviteli sebesség kiépítése egy Azure Cosmos](how-to-provision-container-throughput.md)-tárolón.
+* **Adatbázisok**: További információ: az [átviteli sebesség kiépítése egy Azure Cosmos-adatbázisban](how-to-provision-database-throughput.md).
 
-## <a name="request-unit-considerations"></a>Kérelem egység kapcsolatos szempontok
+## <a name="request-unit-considerations"></a>Kérési egység szempontjai
 
-Becslései szerint a fenntartott egységek száma másodpercenként üzembe helyezni, míg a következő tényezőket kell figyelembe venni:
+A kiépítés során a másodpercenkénti számú RUs becslése során vegye figyelembe a következő tényezőket:
 
-* **Konfigurációelem-méret**: Egy elem mérete növekszik, olvasására vagy írására elem felhasznált Kérelemegységek számát is növekszik.
+* **Elemek mérete**: Az elemek mérete növekszik, az elem olvasásához vagy írásához felhasznált RUs száma is növekszik.
 
-* **Elem indexelő**: Alapértelmezés szerint automatikusan indexelt egyes elemek. Ha úgy dönt, hogy nem a tárolóban lévő elemek index kevesebb Kérelemegységet felhasznált.
+* **Elemek indexelése**: Alapértelmezés szerint minden elem automatikusan indexelve lesz. Ha úgy dönt, hogy nem indexel néhány elemet egy tárolóban, a rendszer kevesebb RUs-t használ fel.
 
-* **Konfigurációelem-tulajdonság száma**: A fenntartott egységek számát írhat egy elem növeli az elem tulajdonság száma növekszik, feltéve, hogy az összes tulajdonság az alapértelmezett indexelési van, felhasznált.
+* **Elemek tulajdonságainak száma**: Feltételezve, hogy az alapértelmezett indexelés az összes tulajdonságra vonatkozik, az elem írásához felhasznált RUs száma nő, mivel az elem tulajdonságainak száma nő.
 
-* **Indexelt tulajdonságok**: Az egyes tárolók index szabályzatokhoz meghatározza, hogy mely tulajdonságok indexelt alapértelmezés szerint. Az írási műveletek a fogyasztott csökkentése érdekében az indexelt tulajdonságok számának korlátozásához.
+* **Indexelt tulajdonságok**: Az egyes tárolók indexelési szabályzata határozza meg, hogy alapértelmezés szerint mely tulajdonságok vannak indexelve. Az írási műveletek esetében az RU-felhasználás csökkentése érdekében korlátozza az indexelt tulajdonságok számát.
 
-* **Az adatkonzisztencia**: Az erős és a korlátozott frissesség konzisztenciaszint körülbelül kétszer több fogyasztanak képest, hogy az egyéb enyhe konzisztenciaszintek olvasási műveletek végrehajtása közben.
+* **Adatkonzisztencia**: Az erős és a határos inkonzisztens konzisztencia-szintek körülbelül kétszer használják az olvasási műveleteket a többi nyugodt konzisztencia-szinthez képest.
 
-* **Lekérdezési minták**: A lekérdezés összetettségétől hatással van egy művelet felhasznált Kérelemegységek számát. A lekérdezési műveletek költségét befolyásoló tényezőket a következők: 
+* **Lekérdezési minták**: A lekérdezés bonyolultsága befolyásolja, hogy hány RUs van felhasználva egy művelethez. A lekérdezési műveletek költségeit befolyásoló tényezők a következők: 
     
-    - A lekérdezési eredmények száma
-    - A predikátum száma
-    - A predikátum jellege
+    - A lekérdezés eredményeinek száma
+    - A predikátumok száma
+    - A predikátumok természete
     - A felhasználó által definiált függvények száma
-    - Az adatok mérete
+    - A forrásadatok mérete
     - Az eredményhalmaz mérete
-    - Kivetítések
+    - Leképezések
 
-  Az Azure Cosmos DB garantálja, hogy ugyanabból a lekérdezés ugyanazokat az adatokat a always költségek ismételt végrehajtás RUs azonos számú.
+  Azure Cosmos DB garantálja, hogy ugyanaz a lekérdezés ugyanazokat az adatmennyiségeket is felszámítja, mint az azonos számú RUs az ismétlődő végrehajtásokban.
 
-* **Parancsfájl-használat**: Lekérdezések, a tárolt eljárások és eseményindítók alapján fogyasztanak végrehajtott műveleteket bonyolultságát. Mivel az alkalmazás fejlesztését, vizsgálja meg a [díj fejléc](optimize-cost-queries.md#evaluate-request-unit-charge-for-a-query) segít jobban megérteni, mekkora igényel minden egyes művelet RU kapacitást.
+* **Parancsfájlok használata**: A lekérdezésekhez hasonlóan a tárolt eljárások és eseményindítók a végrehajtott műveletek összetettsége alapján használják az RUs-ket. Az alkalmazás fejlesztése során vizsgálja meg a [kérelem díjszabási fejlécét](optimize-cost-queries.md#evaluate-request-unit-charge-for-a-query) , hogy jobban megértse az egyes műveletek által felhasznált ru-kapacitás mennyiségét.
 
 ## <a name="next-steps"></a>További lépések
 
-* Ismerje meg, hogyan [az Azure Cosmos-tárolók és adatbázisok kiépítése átviteli](set-throughput.md).
-* Tudjon meg többet [logikai partíció](partition-data.md).
-* Ismerje meg, hogyan [globálisan méretezési kiosztott átviteli sebesség](scaling-throughput.md).
-* Ismerje meg, hogyan [üzembe helyezése egy Azure Cosmos-tároló átviteli sebességet](how-to-provision-container-throughput.md).
-* Ismerje meg, hogyan [üzembe helyezése egy Azure Cosmos database átviteli sebességet](how-to-provision-database-throughput.md).
-* Ismerje meg, hogyan [keresse meg a kérelem egységek használata után egy művelet](find-request-unit-charge.md).
-* Ismerje meg, hogyan [optimalizálása az Azure Cosmos DB kiosztott átviteli sebesség költség](optimize-cost-throughput.md).
-* Ismerje meg, hogyan [olvasása és írása az Azure Cosmos DB költségek optimalizálása](optimize-cost-reads-writes.md).
-* Ismerje meg, hogyan [optimalizálása az Azure Cosmos DB lekérdezési költség](optimize-cost-queries.md).
+* További információ az [átviteli sebesség Azure Cosmos-tárolók és-adatbázisok létesítéséről](set-throughput.md).
+* További információ a [logikai partíciókhoz](partition-data.md).
+* További információ a kiépített [átviteli sebesség globális skálázásáról](scaling-throughput.md).
+* Útmutató az [átviteli sebesség Azure Cosmos](how-to-provision-container-throughput.md)-tárolón való kiépítéséhez.
+* Útmutató az [átviteli sebesség Azure Cosmos](how-to-provision-database-throughput.md)-adatbázison való kiépítéséhez.
+* Megtudhatja, hogyan [keresheti meg a műveletre vonatkozó kérési egység díját](find-request-unit-charge.md).
+* Ismerje meg, hogyan [optimalizálható a kiépített átviteli sebesség a Azure Cosmos DBban](optimize-cost-throughput.md).
+* Megtudhatja, hogyan [optimalizálhatja az olvasási és írási költségeket a Azure Cosmos DBban](optimize-cost-reads-writes.md).
+* Megtudhatja, hogyan [optimalizálhatja Azure Cosmos db lekérdezési költségeit](optimize-cost-queries.md).
+* Megtudhatja, hogyan [használhatja a mérőszámokat az átviteli sebesség figyelésére](use-metrics.md).

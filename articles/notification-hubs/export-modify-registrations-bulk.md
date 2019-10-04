@@ -1,43 +1,45 @@
 ---
-title: Exportálása és importálása az Azure Notification Hubs regisztrációk tömeges |} A Microsoft Docs
-description: Ismerje meg, hogyan használja a Notification hubs szolgáltatás tömeges támogatási egy értesítési központ műveletek nagy számú végrehajtásához, illetve minden regisztrációk exportálása.
+title: Azure Notification Hubs-regisztrációk tömeges exportálása és importálása | Microsoft Docs
+description: Megtudhatja, hogyan használhatja a Notification Hubs tömeges támogatást nagy számú művelet végrehajtásához egy értesítési központban, illetve az összes regisztráció exportálásához.
 services: notification-hubs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: jowargo
-ms.openlocfilehash: c24fcd5f007b641bb594bb07348491f70c03ea41
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 03/18/2019
+ms.openlocfilehash: 8eb03a42f38c0cc7fe82eda6a81d1c8c1213ec74
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59490843"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212397"
 ---
-# <a name="export-and-import-azure-notification-hubs-registrations-in-bulk"></a>Exportálása és importálása az Azure Notification Hubs regisztrációk tömeges
-Vannak olyan forgatókönyvek, amelyben létrehozása vagy módosítása egy értesítési központ regisztrációk nagy számú van szükség. Ezek a forgatókönyvek némelyike címke frissítések kötegelt számításokat a következő, vagy a Notification Hubs használata leküldéses meglévő implementációjával áttelepítés.
+# <a name="export-and-import-azure-notification-hubs-registrations-in-bulk"></a>Azure Notification Hubs-regisztrációk tömeges exportálása és importálása
+Vannak olyan helyzetek, amikor nagy számú regisztrációt kell létrehozni vagy módosítani egy értesítési központban. Ezen forgatókönyvek némelyike a Batch-számításokat követő, vagy egy meglévő leküldéses implementáció áttelepítését végzi a Notification Hubs használatára.
 
-Ez a cikk bemutatja, hogyan hajtsa végre egy értesítési központ műveletek nagy számú, vagy minden regisztrációk tömeges exportálása.
+Ez a cikk azt ismerteti, hogyan hajtható végre nagy számú művelet egy értesítési központban, vagy az összes regisztrációt tömegesen exportálhatja.
 
 ## <a name="high-level-flow"></a>Magas szintű folyamat
-Batch támogatás célja a regisztrációk millió hosszú ideig futó feladatok támogatása. Méretezhetőség, a batch támogatás használja az Azure Storage feladat részleteinek és kimenetének tárolásához. A tömeges frissítés műveletek a felhasználó nem szükséges, hozzon létre egy fájlt a blobtárolóba, amelynek tartalma látható regisztráció-frissítési műveletek listája. A feladat indításakor a felhasználó megadja a bemeneti blob és a egy URL-címet a kimeneti könyvtárba (is a blobtárolóban) URL-CÍMÉT. Miután a feladat elindult, a felhasználó állapota ellenőrizhető egy URL-címét adja meg a feladat kezdési lekérdezésével. Egy adott feladat csak az egy adott típusú műveleteket hajthat végre (hoz létre, frissít vagy törli). Exportálási műveleteket adatproblémák.
+A Batch-támogatás úgy lett kialakítva, hogy támogassa a hosszú ideig futó, több millió regisztrációt igénylő feladatokat. A skála megvalósítása érdekében a Batch-támogatás az Azure Storage használatával tárolja a feladatok részleteit és kimeneteit. Tömeges frissítési műveletek esetén a felhasználónak egy blob-tárolóban kell létrehoznia egy fájlt, amelynek tartalma a regisztrációs frissítési műveletek listája. A feladatok indításakor a felhasználó a bemeneti blob URL-címét, valamint egy kimeneti könyvtár URL-címét (blob-tárolóban is) jeleníti meg. A feladatoknak a megkezdése után a felhasználó megtekintheti az állapotot a feladatokhoz megadott URL-cím lekérdezésével. Egy adott feladathoz csak adott típusú műveletek hajthatók végre (létrehozás, frissítés vagy törlés). Az exportálási műveletek végrehajtása analogously történik.
 
 ## <a name="import"></a>Importálás
 
 ### <a name="set-up"></a>Beállítás
-Ez a szakasz feltételezi, hogy a következő entitásokat:
+Ez a szakasz feltételezi, hogy rendelkezik a következő entitásokkal:
 
-- A kiépített értesítési központban.
-- Egy Azure Storage blob-tárolóba.
-- A hivatkozik a [Azure Storage NuGet-csomagot](https://www.nuget.org/packages/windowsazure.storage/) és [Notification Hubs NuGet-csomag](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/1.0.9).
+- Egy kiépített értesítési központ.
+- Egy Azure Storage blob-tároló.
+- Az [Azure Storage NuGet-csomagra](https://www.nuget.org/packages/windowsazure.storage/) és [Notification Hubs NuGet-csomagra](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)mutató hivatkozások.
 
-### <a name="create-input-file-and-store-it-in-a-blob"></a>Hozzon létre a bemeneti fájlt, és tárolja a blob
-Egy bemeneti fájlt az XML-ben, egy sor egy szerializált regisztrációk listáját tartalmazza. Az Azure SDK-val, az alábbi példakód bemutatja, hogyan szerializálni a regisztrációkat, és feltölteni őket a blob-tárolóba.
+### <a name="create-input-file-and-store-it-in-a-blob"></a>Bemeneti fájl létrehozása és tárolása blobban
+A bemeneti fájl tartalmazza az XML-ben szerializált regisztrációk listáját, soronként egy sorba. Az Azure SDK-val az alábbi kódrészlet szemlélteti a regisztrációk szerializálását és a blob-tárolóba való feltöltését.
 
 ```csharp
 private static void SerializeToBlob(CloudBlobContainer container, RegistrationDescription[] descriptions)
@@ -57,10 +59,10 @@ private static void SerializeToBlob(CloudBlobContainer container, RegistrationDe
 ```
 
 > [!IMPORTANT]
-> A fenti kód szerializálja a regisztrációk a memóriában, és ezután feltölti a teljes streamet az egy blobot. Ha több mint néhány (MB) fájlt töltött fel, tekintse meg az Azure blob-útmutatót hogyan végezheti el ezeket a lépéseket; Ha például [blokkblobok](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs).
+> Az előző kód szerializálja a regisztrációkat a memóriában, majd feltölti a teljes streamet egy blobba. Ha több, mint néhány megabájtos fájlt töltött fel, tekintse meg az Azure Blob útmutatását a lépések végrehajtásáról. Például tiltsa le a [blobokat](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs).
 
-### <a name="create-url-tokens"></a>A jogkivonatok URL-cím létrehozása
-A bemeneti fájl feltöltését követően hozzon létre a bemeneti fájl és a kimeneti könyvtárat az értesítési központ biztosítania az URL-címeket. A bemeneti és kimeneti két másik blob-tárolót is használhatja.
+### <a name="create-url-tokens"></a>URL-tokenek létrehozása
+A bemeneti fájl feltöltése után hozza elő az URL-címeket, hogy a bemeneti fájl és a kimeneti könyvtár egyaránt megadja az értesítési központot. A bemenetekhez és kimenetekhez két különböző BLOB-tárolót használhat.
 
 ```csharp
 static Uri GetOutputDirectoryUrl(CloudBlobContainer container)
@@ -88,7 +90,7 @@ static Uri GetInputFileUrl(CloudBlobContainer container, string filePath)
 ```
 
 ### <a name="submit-the-job"></a>Feladat küldése
-A két bemeneti és kimeneti URL-címekkel rendelkező most már megkezdheti a batch-feladat.
+A két bemeneti és kimeneti URL-cím segítségével most már elindíthatja a Batch-feladatot.
 
 ```csharp
 NotificationHubClient client = NotificationHubClient.CreateClientFromConnectionString(CONNECTION_STRING, HUB_NAME);
@@ -113,23 +115,23 @@ while (i > 0 && job.Status != NotificationHubJobStatus.Completed)
 }
 ```
 
-A bemeneti és kimeneti URL-címek mellett ez a példa létrehoz egy `NotificationHubJob` objektum, amely tartalmaz egy `JobType` objektum, amely a következők egyike lehet:
+A bemeneti és a kimeneti URL-címeken kívül ez a példa `NotificationHubJob` egy objektumot `JobType` tartalmazó objektumot hoz létre, amely a következő típusok egyike lehet:
 
 - `ImportCreateRegistrations`
 - `ImportUpdateRegistrations`
 - `ImportDeleteRegistrations`
 
-Miután a hívás befejeződött, a feladat most az értesítési központ által, és ellenőrizheti annak állapotát a hívást a [GetNotificationHubJobAsync](/dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.getnotificationhubjobasync?view=azure-dotnet).
+A hívás befejezését követően az értesítési központ folytatja a feladatot, és megtekintheti annak állapotát a [GetNotificationHubJobAsync](/dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.getnotificationhubjobasync?view=azure-dotnet)hívásával.
 
-A feladat befejezése után vizsgálja meg az eredmények megtekintésével a következő fájlokat a kimeneti könyvtár:
+A feladatok elvégzése után a kimeneti könyvtár következő fájljainak megtekintésével ellenőrizheti az eredményeket:
 
 - `/<hub>/<jobid>/Failed.txt`
 - `/<hub>/<jobid>/Output.txt`
 
-Ezek a fájlok a batch sikeres és sikertelen műveleteinek listáját tartalmazzák. A fájl formátuma `.cvs`, mely minden egyes sor nullértékkel rendelkezik, a sor száma, a bemeneti fájlt, és a kimenet a művelet (általában a létrehozott vagy frissített regisztrációs leírása) a.
+Ezek a fájlok tartalmazzák a Batch sikeres és sikertelen műveleteinek listáját. A fájlformátum `.cvs`, amelyben minden sorban szerepel az eredeti bemeneti fájl sorszáma, valamint a művelet kimenete (általában a létrehozott vagy frissített regisztráció leírása).
 
-### <a name="full-sample-code"></a>A teljes minta kódja
-Az alábbi mintakód egy értesítési központ importálja a regisztrációk.
+### <a name="full-sample-code"></a>Teljes mintakód
+Az alábbi mintakód egy értesítési központba importálja a regisztrációkat.
 
 ```csharp
 using Microsoft.Azure.NotificationHubs;
@@ -260,13 +262,13 @@ namespace ConsoleApplication1
 ```
 
 ## <a name="export"></a>Exportálás
-Regisztrációs exportálása hasonlít az importálás a következő eltérésekkel:
+A regisztráció exportálásának az importáláshoz hasonlónak kell lennie, a következő eltérésekkel:
 
-- A kimeneti URL-cím csak kell.
-- Létrehozhat egy NotificationHubJob ExportRegistrations típusú.
+- Csak a kimeneti URL-címet kell megadnia.
+- Létre kell hoznia egy ExportRegistrations típusú NotificationHubJob.
 
-### <a name="sample-code-snippet"></a>Példa kódtöredékek
-Itt látható egy minta kódrészlet, a Java regisztrációk exportálása:
+### <a name="sample-code-snippet"></a>Minta kódrészlet
+Íme egy kódrészlet a regisztrációk exportálásához javában:
 
 ```java
 // submit an export job
@@ -286,8 +288,8 @@ while(true){
 ```
 
 ## <a name="next-steps"></a>További lépések
-Regisztrációk kapcsolatos további információkért tekintse meg a következő cikkeket:
+A regisztrációval kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 
-- [Regisztrációkezelés](notification-hubs-push-notification-registration-management.md)
-- [Regisztrációs címkék](notification-hubs-tags-segment-push-message.md)
-- [Sablonregisztrációk](notification-hubs-templates-cross-platform-push-messages.md)
+- [Regisztráció kezelése](notification-hubs-push-notification-registration-management.md)
+- [Regisztrációk címkéi](notification-hubs-tags-segment-push-message.md)
+- [Sablon-regisztrációk](notification-hubs-templates-cross-platform-push-messages.md)

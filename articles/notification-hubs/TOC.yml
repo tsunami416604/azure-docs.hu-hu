@@ -4,7 +4,10 @@
   items:
     - name: Tudnivalók a Notification Hubsról
       href: notification-hubs-push-notification-overview.md
+    - name: App Service Mobile Apps-integráció
+      href: notification-hubs-app-service.md
 - name: Gyors útmutatók
+  expanded: true
   items:
     - name: Értesítési központ létrehozása – Azure Portal
       href: create-notification-hub-portal.md
@@ -14,28 +17,32 @@
   items:
     - name: Android
       items:
-        - name: Leküldéses értesítések küldése a Firebase Cloud Messaging használatával
-          href: notification-hubs-android-push-notification-google-fcm-get-started.md
-        - name: Leküldéses értesítések küldése a Google Cloud Messaging használatával
-          href: notification-hubs-android-push-notification-google-gcm-get-started.md
-        - name: Leküldéses értesítések küldése adott eszközökre
-          href: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
-        - name: Leküldéses értesítések küldése adott felhasználóknak
-          href: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
-        - name: Leküldéses értesítések küldése Xamarin Android-alkalmazásokba
-          href: xamarin-notification-hubs-push-notifications-android-gcm.md
-    - name: Baidu
-      items:
-        - name: Leküldéses értesítések küldése felhőalapú Baidu-értesítés használatával
-          href: notification-hubs-baidu-china-android-notifications-get-started.md
-    - name: Chrome
-      items:
-        - name: Leküldéses értesítések küldése Chrome-alkalmazásokba
-          href: notification-hubs-chrome-push-notifications-get-started.md
+        - name: Firebase Cloud Messaging
+          items:
+            - name: Leküldéses értesítések az összes regisztráció számára
+              href: notification-hubs-android-push-notification-google-fcm-get-started.md
+            - name: Leküldéses értesítések küldése adott eszközökre
+              href: push-notifications-android-specific-devices-firebase-cloud-messaging.md
+            - name: Leküldéses értesítések küldése adott felhasználóknak
+              href: push-notifications-android-specific-users-firebase-cloud-messaging.md
+            - name: Leküldéses értesítések küldése Xamarin Android-alkalmazásokba
+              href: xamarin-notification-hubs-push-notifications-android-gcm.md
+        - name: Google Cloud Message (elavult)
+          items:
+            - name: Leküldéses értesítések az összes regisztráció számára
+              href: notification-hubs-android-push-notification-google-gcm-get-started.md
+            - name: Leküldéses értesítések küldése adott eszközökre
+              href: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
+            - name: Leküldéses értesítések küldése adott felhasználóknak
+              href: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
     - name: iOS
       items:
         - name: Leküldéses értesítések küldése iOS-alkalmazásokba
-          href: notification-hubs-ios-apple-push-notification-apns-get-started.md
+          items:
+            - name: Objective-C
+              href: notification-hubs-ios-apple-push-notification-apns-get-started.md
+            - name: Swift
+              href: notification-hubs-ios-push-notifications-swift-apps-get-started.md
         - name: Leküldéses értesítések küldése adott eszközökre
           href: notification-hubs-ios-xplat-segmented-apns-push-notification.md
         - name: Leküldéses értesítések küldése adott felhasználóknak
@@ -44,10 +51,6 @@
           href: xamarin-notification-hubs-ios-push-notification-apns-get-started.md
         - name: Honosított leküldéses értesítések küldése iOS-eszközökre
           href: notification-hubs-ios-xplat-localized-apns-push-notification.md
-    - name: Kindle
-      items:
-        - name: Leküldéses értesítések küldése az Amazon Device Messaging használatával
-          href: notification-hubs-kindle-amazon-adm-push-notification.md
     - name: Windows Phone
       items:
         - name: Leküldéses értesítések küldése alkalmazásokba
@@ -123,8 +126,6 @@
           href: configure-windows-push-notification-service.md
         - name: A Microsoft Push Notification szolgáltatás konfigurálása
           href: configure-microsoft-push-notification-service.md
-        - name: Az Android Device Messaging konfigurálása
-          href: configure-android-device-messaging.md
         - name: A felhőalapú Baidu-értesítés konfigurálása
           href: configure-baidu-cloud-push.md
     - name: Regisztráció az alkalmazás háttérrendszerével
@@ -133,6 +134,8 @@
       href: notification-hubs-push-notification-http2-token-authentification.md
     - name: Elvetett értesítések hibaelhárítása
       href: notification-hubs-push-notification-fixer.md
+    - name: Leküldéses értesítések küldése felhőalapú Baidu-értesítés használatával
+      href: notification-hubs-baidu-china-android-notifications-get-started.md
 - name: Referencia
   items:
     - name: .NET

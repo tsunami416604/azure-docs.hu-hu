@@ -1,7 +1,6 @@
 ---
 title: A .NET SDK használatával – Azure HDInsight az Apache Hadoop-fürtök kezelése
 description: Ismerje meg, hogyan hajthat végre felügyeleti feladatokat a HDInsight .NET SDK-val a HDInsight az Apache Hadoop-fürtök.
-services: hdinsight
 ms.reviewer: jasonh
 author: hrasheed-msft
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 2e57726c3519fbb2660d7dfb4794a885871acc0d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: abfbac552cc5cb4449a75c45d0c1ffdbcf6b770c
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58793937"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508105"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>A HDInsight Apache Hadoop-fürtök kezelése a .NET SDK-val
 
@@ -258,10 +257,6 @@ Lásd: [futtatása MapReduce-minták a HDInsight](hadoop/apache-hadoop-run-sampl
 
 Lásd: [.NET SDK használatával futtassa az Apache Hive lekérdezések](hadoop/apache-hadoop-use-hive-dotnet-sdk.md).
 
-**Az Apache Pig-feladatok elküldése**
-
-Lásd: [.NET SDK használatával futtassa az Apache Pig-feladatok](hadoop/apache-hadoop-use-pig-dotnet-sdk.md).
-
 **Az Apache Sqoop-feladatok elküldése**
 
 Lásd: [Apache Sqoop használata a HDInsight](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md).
@@ -272,7 +267,7 @@ Lásd: [használata Apache Oozie megadásához és a munkafolyamat futtatása a 
 
 ## <a name="upload-data-to-azure-blob-storage"></a>Az Azure Blob storage-adatok feltöltése
 
-Lásd: [Adatok feltöltése a HDInsightba][hdinsight-upload-data].
+Lásd: [adatok feltöltése a HDInsight][hdinsight-upload-data].
 
 ## <a name="see-also"></a>Lásd még:
 
@@ -280,8 +275,8 @@ Lásd: [Adatok feltöltése a HDInsightba][hdinsight-upload-data].
 * [A HDInsight Apache Hadoop-fürtök kezelése az Azure portal használatával](hdinsight-administer-use-portal-linux.md)
 * [Felügyelheti a HDInsight egy parancssori felülettel][hdinsight-admin-cli]
 * [HDInsight-fürtök létrehozása][hdinsight-provision]
-* [Adatok feltöltése a HDInsightba][hdinsight-upload-data]
-* [Azure HDInsight – első lépések][hdinsight-get-started]
+* [Adatok feltöltése a HDInsight][hdinsight-upload-data]
+* [Az Azure HDInsight – első lépések][hdinsight-get-started]
 
 [azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
 [azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/

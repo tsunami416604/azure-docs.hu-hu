@@ -1,6 +1,6 @@
 ---
-title: Tekintse át az Azure nagyvállalati beléptetés számlázási adatok REST API-val |} A Microsoft Docs
-description: Ismerje meg, hogyan használható az Azure REST API-k a vállalati beléptetési számlázási információk áttekintéséhez.
+title: Azure-beli nagyvállalati regisztráció számlázási adatainak áttekintése REST API-val | Microsoft Docs
+description: Megtudhatja, hogyan tekintheti át a nagyvállalati regisztrációk számlázási adatait Azure REST API-kkal.
 services: billing
 documentationcenter: na
 author: lleonard-msft
@@ -12,24 +12,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/06/2018
-ms.author: erikre
-ms.openlocfilehash: 9a0b536426ab024d5af7b257e44a2d5e20f14def
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.date: 10/01/2019
+ms.author: banders
+ms.openlocfilehash: 3ff1a119ed87c8bffff227679bec41bc653c0c42
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57898703"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718772"
 ---
-# <a name="review-enterprise-enrollment-billing-using-rest-apis"></a>Tekintse át a vállalati beléptetési számlázási REST API-k használatával
+# <a name="review-enterprise-enrollment-billing-using-rest-apis"></a>Nagyvállalati regisztráció számlázásának áttekintése REST API-kkal
 
-Az Azure Reporting API-k segítségével tekintse át és az Azure-költségek kezeléséhez.
+Az Azure Reporting API-k az Azure-költségek áttekintésében és kezelésében segítenek.
 
-Ez a cikk bemutatja a számlázási fiókok, részleg vagy az Azure REST API-k használatával a nagyvállalati szerződés (EA) regisztrációs fiókok tartozó számlázási információk lekéréséhez. 
+Ebből a cikkből megtudhatja, hogyan kérheti le a számlázási fiókokkal, részlegekkel vagy Nagyvállalati Szerződéssel (EA) rendelkező regisztrációs fiókokkal kapcsolatos számlázási adatokat az Azure REST API-k használatával. 
 
-## <a name="individual-account-billing"></a>Egyéni fiók számlázás
+## <a name="individual-account-billing"></a>Egyéni fiókok számlázása
 
-A felhasználói fiókok beolvasása a használat részleteiről:
+Egy részlegben lévő fiókok használati adatainak lekérése:
 
 ```http
 GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Consumption/usageDetails?api-version=2018-06-30
@@ -37,21 +37,21 @@ Content-Type: application/json
 Authorization: Bearer
 ```
 
-A `{billingAccountId}` paraméter megadása kötelező, és tartalmaznia kell a fiók azonosítója.
+A `{billingAccountId}` paraméter megadása kötelező, és tartalmaznia kell a fiók azonosítóját.
 
-A következő fejléceket szükség: 
+A következő fejlécek megadása kötelező: 
 
 |Kérelem fejléce|Leírás|  
 |--------------------|-----------------|  
-|*A Content-Type:*|Kötelező. Állítsa be `application/json`.|  
-|*Hitelesítés:*|Kötelező. Egy érvényes értékre `Bearer` [API-kulcs](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based). |  
+|*Content-Type* (Tartalomtípus):|Kötelező. Állítsa `application/json` értékre.|  
+|*Authorization* (Engedélyezés):|Kötelező. Állítsa egy érvényes `Bearer` [API-kulcsra](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based). |  
 
-Ez a példa bemutatja egy szinkron hívás, amely az aktuális elszámolási időszakban az adatait adja vissza. Teljesítménybeli megfontolások miatt a szinkron hívások számára az elmúlt hónapban információkat ad vissza.  Ön is meghívhatja a [API aszinkron módon](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) való 36 hónapos adatokat adja vissza.
+Ez a példa egy szinkron hívást mutat be, amely az aktuális számlázási ciklus részleteit adja vissza. A teljesítmény érdekében a szinkron hívások a múlt hónapra vonatkozó adatokat adják vissza.  Az elmúlt 36 hónap adataiért [aszinkron módon is meghívhatja az API-t](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based).
 
 
 ## <a name="response"></a>Válasz  
 
-Állapotkód: 200 (OK) adja vissza a sikeres válasz, amely a fiók költségeinek részletes listáját tartalmazza.
+Sikeres válasz esetén a rendszer a 200-as (OK) állapotkódot adja vissza, amely a fiók részletes költségeinek listáját tartalmazza.
 
 ```json
 {
@@ -78,11 +78,11 @@ Ez a példa bemutatja egy szinkron hívás, amely az aktuális elszámolási id�
 }
 ```  
 
-Ebben a példában a rendszer rövidítéseket tartalmaz; Lásd: [számlázási fiók részletes használati adatok lekérése](/rest/api/consumption/usagedetails/list#billingaccountusagedetailslist) minden válasz mező és a hibakezelés részletes ismertetése.
+Ez a példa rövidítve van; a válaszmezők és a hibakezelés teljes leírását a [számlázási fiókok használati adatainak lekérésével](/rest/api/consumption/usagedetails/list#billingaccountusagedetailslist) kapcsolatos szakaszban találja.
 
-## <a name="department-billing"></a>Részleg számlázás 
+## <a name="department-billing"></a>Részleg számlázása 
 
-Egy osztály összes fiók összesített használati részleteinek beolvasása. 
+Lekérheti egy részleg összes fiókjának összesített használati adatait. 
 
 ```http
 GET https://management.azure.com/providers/Microsoft.Billing/departments/{departmentId}/providers/Microsoft.Consumption/usageDetails?api-version=2018-06-30
@@ -90,23 +90,23 @@ Content-Type: application/json
 Authorization: Bearer
 ```
 
-A `{departmentId}` paraméter megadása kötelező, és tartalmaznia kell az osztály a regisztrációs fiók azonosítója.
+A `{departmentId}` paraméter megadása kötelező, és tartalmaznia kell a regisztrációs fiók részlegének azonosítóját.
 
-A következő fejléceket szükség: 
+A következő fejlécek megadása kötelező: 
 
 |Kérelem fejléce|Leírás|  
 |--------------------|-----------------|  
-|*A Content-Type:*|Kötelező. Állítsa be `application/json`.|  
-|*Hitelesítés:*|Kötelező. Egy érvényes értékre `Bearer` [API-kulcs](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based). |  
+|*Content-Type* (Tartalomtípus):|Kötelező. Állítsa `application/json` értékre.|  
+|*Authorization* (Engedélyezés):|Kötelező. Állítsa egy érvényes `Bearer` [API-kulcsra](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based). |  
 
-Ez a példa bemutatja egy szinkron hívás, amely az aktuális elszámolási időszakban az adatait adja vissza. Teljesítménybeli megfontolások miatt a szinkron hívások számára az elmúlt hónapban információkat ad vissza.  Ön is meghívhatja a [API aszinkron módon](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) való 36 hónapos adatokat adja vissza.
+Ez a példa egy szinkron hívást mutat be, amely az aktuális számlázási ciklus részleteit adja vissza. A teljesítmény érdekében a szinkron hívások a múlt hónapra vonatkozó adatokat adják vissza.  Az elmúlt 36 hónap adataiért [aszinkron módon is meghívhatja az API-t](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based).
 
 ### <a name="response"></a>Válasz  
 
-Állapotkód: 200 (OK) adja vissza a sikeres válasz, amely egy adott számlázási időszak és a számla Azonosítót az osztály a részletes használati adatok és a költségek listáját tartalmazza.
+Sikeres válasz esetén a rendszer a 200 (OK) állapotkódot adja vissza, amely tartalmazza egy adott számlázási időszak részletes használati adatainak és költségeinek listáját, valamint a részleg számlájának azonosítóját.
 
 
-Az alábbi példa bemutatja a REST API-val részleg kimenete `1234`.
+Az alábbi példa az `1234` részleg REST API-jának kimenetét mutatja be.
 
 ```json
 {
@@ -134,11 +134,11 @@ Az alábbi példa bemutatja a REST API-val részleg kimenete `1234`.
 }
 ```  
 
-Ebben a példában a rendszer rövidítéseket tartalmaz; Lásd: [felhasználási részletek beolvasása Intézet](/rest/api/consumption/usagedetails/list#departmentusagedetailslist) minden válasz mező és a hibakezelés részletes ismertetése.
+Ez a példa rövidítve van; a válaszmezők és a hibakezelés teljes leírását a [részlegek használati adatainak lekérésével](/rest/api/consumption/usagedetails/list#departmentusagedetailslist) kapcsolatos szakaszban találja.
 
-## <a name="enrollment-account-billing"></a>Regisztrációs fiók számlázás
+## <a name="enrollment-account-billing"></a>Regisztrációs fiók számlázása
 
-A regisztrációs fiók összesített használati részleteinek beolvasása.
+Lekérheti a regisztrációs fiók összesített használati adatait.
 
 ```http
 GET GET https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts/{enrollmentAccountId}/providers/Microsoft.Consumption/usageDetails?api-version=2018-06-30
@@ -146,22 +146,22 @@ Content-Type: application/json
 Authorization: Bearer
 ```
 
-A `{enrollmentAccountId}` paraméter megadása kötelező, és tartalmaznia kell az eszközregisztráció-fiók azonosítója.
+Az `{enrollmentAccountId}` paraméter megadása kötelező, és tartalmaznia kell a regisztrációs fiók azonosítóját.
 
-A következő fejléceket szükség: 
+A következő fejlécek megadása kötelező: 
 
 |Kérelem fejléce|Leírás|  
 |--------------------|-----------------|  
-|*A Content-Type:*|Kötelező. Állítsa be `application/json`.|  
-|*Hitelesítés:*|Kötelező. Egy érvényes értékre `Bearer` [API-kulcs](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based). |  
+|*Content-Type* (Tartalomtípus):|Kötelező. Állítsa `application/json` értékre.|  
+|*Authorization* (Engedélyezés):|Kötelező. Állítsa egy érvényes `Bearer` [API-kulcsra](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based). |  
 
-Ez a példa bemutatja egy szinkron hívás, amely az aktuális elszámolási időszakban az adatait adja vissza. Teljesítménybeli megfontolások miatt a szinkron hívások számára az elmúlt hónapban információkat ad vissza.  Ön is meghívhatja a [API aszinkron módon](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) való 36 hónapos adatokat adja vissza.
+Ez a példa egy szinkron hívást mutat be, amely az aktuális számlázási ciklus részleteit adja vissza. A teljesítmény érdekében a szinkron hívások a múlt hónapra vonatkozó adatokat adják vissza.  Az elmúlt 36 hónap adataiért [aszinkron módon is meghívhatja az API-t](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based).
 
 ### <a name="response"></a>Válasz  
 
-Állapotkód: 200 (OK) adja vissza a sikeres válasz, amely egy adott számlázási időszak és a számla Azonosítót az osztály a részletes használati adatok és a költségek listáját tartalmazza.
+Sikeres válasz esetén a rendszer a 200 (OK) állapotkódot adja vissza, amely tartalmazza egy adott számlázási időszak részletes használati adatainak és költségeinek listáját, valamint a részleg számlájának azonosítóját.
 
-Az alábbi példa bemutatja a REST API, a nagyvállalati beléptetés kimenete `1234`.
+Az alábbi példa az `1234` vállalati regisztráció REST API-jának kimenetét mutatja be.
 
 ```json
 {
@@ -187,9 +187,9 @@ Az alábbi példa bemutatja a REST API, a nagyvállalati beléptetés kimenete `
 }
 ``` 
 
-Ebben a példában a rendszer rövidítéseket tartalmaz; Lásd: [regisztrációs fiók részletes használati adatok lekérése](/rest/api/consumption/usagedetails/list#enrollmentaccountusagedetailslist) minden válasz mező és a hibakezelés részletes ismertetése.
+Ez a példa rövidítve van; a válaszmezők és a hibakezelés teljes leírását a [regisztrációs fiókok használati adatainak lekérésével](/rest/api/consumption/usagedetails/list#enrollmentaccountusagedetailslist) kapcsolatos szakaszban találja.
 
 ## <a name="next-steps"></a>További lépések 
-- Felülvizsgálat [Enterprise reporting áttekintése](https://docs.microsoft.com/azure/billing/billing-enterprise-api)
-- Vizsgálja meg [vállalati számlázási REST API](https://docs.microsoft.com/rest/api/billing/)   
-- [Azure REST API használatának első lépései](https://docs.microsoft.com/rest/api/azure/)   
+- Tekintse meg [a vállalati jelentéskészítés áttekintését](https://docs.microsoft.com/azure/billing/billing-enterprise-api) ismertető szakaszt
+- Vizsgálja meg az [Enterprise Billing REST API](https://docs.microsoft.com/rest/api/billing/) használatának lehetőségét   
+- [Bevezetés az Azure REST API használatába](https://docs.microsoft.com/rest/api/azure/)   

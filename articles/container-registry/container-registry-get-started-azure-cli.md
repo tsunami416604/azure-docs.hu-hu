@@ -1,27 +1,28 @@
 ---
-title: Rövid útmutató – privát Docker-tárolójegyzék létrehozása az Azure-ban – Azure CLI-vel
+title: Rövid útmutató – privát Docker-beállításjegyzék létrehozása az Azure-ban – Azure CLI
 description: Az útmutató azt ismerteti, hogyan hozhat létre egy privát Docker regisztrációs adatbázist az Azure CLI-vel.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: quickstart
 ms.date: 01/22/2019
 ms.author: danlep
 ms.custom: seodec18, H1Hack27Feb2017, mvc
-ms.openlocfilehash: 24bdd52673c65d039166dc28f9f0a0a784569a1a
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 6c511c56ab8df14cc6ea81363772ae0fd6d61272
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678700"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68309536"
 ---
-# <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>Gyors útmutató: Az Azure CLI használatával privát tárolóregisztrációs adatbázis létrehozása
+# <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>Gyors útmutató: Privát tároló-beállításjegyzék létrehozása az Azure CLI használatával
 
-Az Azure Container Registry egy felügyelt Docker-tárolóregisztrációs adatbázis-szolgáltatás, amely a privát Docker-tárolók rendszerképeinek tárolására szolgál. Ez az útmutató az Azure Container Registry-példányok Azure CLI-vel való létrehozásának módját ismerteti. Ezután a Docker-parancsok segítségével továbbít egy rendszerképet a regisztrációs adatbázisba, és végül kérje le, és futtassa a rendszerképet a regisztrációs adatbázisból.
+Az Azure Container Registry egy felügyelt Docker-tárolóregisztrációs adatbázis-szolgáltatás, amely a privát Docker-tárolók rendszerképeinek tárolására szolgál. Ez az útmutató az Azure Container Registry-példányok Azure CLI-vel való létrehozásának módját ismerteti. Ezután a Docker-parancsokkal leküldheti a tárolók rendszerképét a beállításjegyzékbe, és végül lekérdezheti és futtathatja a rendszerképet a beállításjegyzékből.
 
-Ez a rövid útmutatóhoz, hogy futnak-e az Azure parancssori felület (2.0.55 verzió vagy újabb ajánlott). A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli].
+Ehhez a rövid útmutatóhoz az Azure CLI-t (2.0.55 vagy újabb verzió ajánlott) kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli].
 
-A Dockert is telepítenie kell helyileg. A Docker csomagokat biztosít, amelyekkel a Docker egyszerűen konfigurálható bármely [macOS][docker-mac], [Windows][docker-windows] vagy [Linux][docker-linux] rendszeren.
+A Dockert is telepítenie kell helyileg. A Docker olyan csomagokat biztosít, amelyekkel egyszerűen konfigurálható a Docker bármely [MacOS][docker-mac]-, [Windows][docker-windows]-vagy [Linux][docker-linux] -rendszeren.
 
 Mivel az Azure Cloud Shell nem tartalmazza az összes szükséges Docker-összetevőt (a `dockerd`-démont), ehhez a rövid útmutatóhoz nem használható a Cloud Shell.
 
@@ -37,7 +38,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container-registry"></a>Tároló-beállításjegyzék létrehozása
 
-Ebben a rövid útmutatóban létrehozott egy *alapszintű* beállításjegyzékbe, amely költségek optimalizált megoldás megismerése az Azure Container Registry-fejlesztőknek. További információ az elérhető szolgáltatáscsomagban: [tároló-beállításjegyzék Termékváltozatai][container-registry-skus].
+Ebben a rövid útmutatóban egy alapszintű beállításjegyzéket hozunk létre, amely egy költséghatékony megoldás a fejlesztők számára a Azure Container Registry megismeréséhez. A rendelkezésre álló szolgáltatási szintek részletes ismertetését lásd: [Container Registry SKU][container-registry-skus]-i.
 
 Hozzon létre egy ACR-példányt az [az acr create][az-acr-create] paranccsal. A beállításjegyzék nevének egyedinek kell lennie az Azure rendszerben, és 5–50 alfanumerikus karaktert kell tartalmaznia. Az alábbi példában a *myContainerRegistry007* nevet használjuk. Ezt cserélje le egy egyedi értékre.
 
@@ -68,11 +69,11 @@ A tárolóregisztrációs adatbázis létrehozásakor a kimenet a következő p�
 }
 ```
 
-Jegyezze fel annak `loginServer` a kimenetben, azaz a teljes tartománynév (csak kisbetűvel). A rövid útmutató hátralevő részében az `<acrName>` elem helyettesíti a tárolóregisztrációs adatbázis nevét.
+Jegyezze `loginServer` fel a kimenetben, amely a beállításjegyzék teljes neve (az összes kisbetűs). A rövid útmutató hátralevő részében az `<acrName>` elem helyettesíti a tárolóregisztrációs adatbázis nevét.
 
 ## <a name="log-in-to-registry"></a>Bejelentkezés a beállításjegyzékbe
 
-Mozgatásához tárolórendszerképek, be kell jelentkezni a beállításjegyzékben. Ehhez használja az [az acr login][az-acr-login] parancsot.
+A tároló-lemezképek leküldése és húzása előtt be kell jelentkeznie a beállításjegyzékbe. Ehhez használja az [az acr login][az-acr-login] parancsot.
 
 ```azurecli
 az acr login --name <acrName>
@@ -84,7 +85,7 @@ A parancs a `Login Succeeded` üzenetet adja vissza, ha befejeződött.
 
 ## <a name="list-container-images"></a>Tárolórendszerképek listázása
 
-Az alábbi példa a regisztrációs adatbázisba adattárait listázza:
+Az alábbi példa felsorolja a beállításjegyzékben található adattárakat:
 
 ```azurecli
 az acr repository list --name <acrName> --output table
@@ -98,7 +99,7 @@ Result
 hello-world
 ```
 
-Az alábbi példa címkéket listázza a **hello-world** tárház.
+A következő példa a **Hello-World** adattár címkéit sorolja fel.
 
 ```azurecli
 az acr repository show-tags --name <acrName> --repository hello-world --output table
@@ -116,7 +117,7 @@ v1
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, használhatja a [az csoport törlése] [ az-group-delete] paranccsal eltávolítható az erőforráscsoport, a container registry és az ott tárolt tárolórendszerképek.
+Ha már nincs rá szükség, az az [Group delete][az-group-delete] paranccsal eltávolítható az erőforráscsoport, a tároló-beállításjegyzék és az ott tárolt tároló-lemezképek.
 
 ```azurecli
 az group delete --name myResourceGroup
@@ -124,10 +125,10 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban létrehozott egy Azure Container Registry az Azure CLI-vel, leküldtünk bele egy tárolórendszerképet a regisztrációs adatbázisba, és kéri le, és futtatta a rendszerképet a beállításjegyzékből. Továbbra is az Azure Container Registry oktatóanyagok az ACR alaposabban.
+Ebben a rövid útmutatóban létrehozott egy Azure Container Registry az Azure CLI-vel, leküldte egy tároló rendszerképét a beállításjegyzékbe, és lehúzta és futtatta a rendszerképet a beállításjegyzékből. Folytassa a Azure Container Registry oktatóanyagokkal, és tekintse meg az ACR mélyebb megjelenését.
 
 > [!div class="nextstepaction"]
-> [Azure Container Registry-oktatóanyagok][container-registry-tutorial-quick-task]
+> [Oktatóanyagok Azure Container Registry][container-registry-tutorial-quick-task]
 
 <!-- LINKS - external -->
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms

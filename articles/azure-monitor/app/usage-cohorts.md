@@ -13,12 +13,12 @@ ms.date: 04/10/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: a575161be0a339973f9c59cc13c2320b38939d04
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 263316028e7b35a1a515322dddc4ee867011dcac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58108525"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65604099"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights kohorszok
 
@@ -123,13 +123,13 @@ Az előző két kohorszok legördülő listák használatával lettek definiálv
     | where client_CountryOrRegion == "United Kingdom"
     ```
 
-3. Válassza ki **lekérdezés futtatása**. Ha nem látja a felhasználói azonosítók jelenik meg a táblázatban, váltson egy országot, ahol az alkalmazás egy felhasználó hozzá van.
+3. Válassza ki **lekérdezés futtatása**. Ha nem látja a felhasználói azonosítók jelenik meg a táblázatban, váltson egy ország/régió, ahol az alkalmazás rendelkezik a felhasználók.
 
 4. Mentse, és nevezze el a kohorsz.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-_E egy bizonyos országból felhasználói kohorsz a következő definiált. E hasonlítsa össze a kohorsz a következő egyszerűen beállít egy szűrőt az adott ország, a felhasználók eszköz, ha különböző eredményeket látható. Hogy miért?_
+_A felhasználók egy bizonyos országból/régióból egy kohorszt definiált I. E hasonlítsa össze a kohorsz a következő egyszerűen beállít egy szűrőt az adott ország/régió, a felhasználók eszköz, ha különböző eredményeket látható. Hogy miért?_
 
 Kohorszok és szűrők eltérőek. Tegyük fel, hogy a felhasználók az Egyesült Királyság (az előző példához hasonlóan meghatározott) az egyik példasablonunk rendelkezik, és összehasonlítja az eredményeket, ha a szűrőt, "ország vagy régió Nagy-Britannia =."
 

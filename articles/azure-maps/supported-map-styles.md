@@ -1,77 +1,98 @@
 ---
-title: Térkép stílusok támogatott az Azure Maps |} A Microsoft Docs
-description: Az Azure Maps által támogatott térképstílusok
+title: Támogatott térképi stílusok a Azure Mapsban | Microsoft Docs
+description: Azure Maps által támogatott Stílusok leképezése
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/12/2019
+ms.date: 05/06/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 76ab49c7f28260249483bf3bc4387e8cbaca13b2
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 1aad2284c0f64c92efaefe3f9145d95c4aabec67
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57570538"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839447"
 ---
-# <a name="azure-maps-supported-map-styles"></a>Az Azure Maps támogatott térkép stílusok
-Az Azure Maps számos különféle beépített térkép stílusok támogatja, az alább ismertetett.
+# <a name="azure-maps-supported-map-styles"></a>Azure Maps támogatott Térkép stílusa
+A Azure Maps az alább leírtak szerint számos különböző beépített térképi stílust támogat.
 
-## <a name="road"></a>Közúti
-A **közúti** térkép a szokásos természetes utak megjelenítő térképet és mesterséges szolgáltatások, a címkék esetében ezek a funkciók mellett.
+## <a name="road"></a>közúti
+A **közúti** Térkép egy szabványos Térkép, amely az utakat, természetes és mesterséges funkciókat, valamint a funkciók címkéit jeleníti meg.
 
-![Közúti](./media/supported-map-styles/road.png)
+![közúti](./media/supported-map-styles/road.png)
 
-**Megfelelő API-kat:**
-* [Térkép képének](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
-* [Szolgáltatástérkép csempe](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
-* A térkép vezérlőelem-JS
-* Android térkép vezérlőelem
+**Alkalmazható API-k:**
+* [Térkép képe](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
+* [Térkép csempe](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
+* Web SDK Térkép vezérlőelem
+* Android Térkép vezérlőelem
 
-## <a name="satellite"></a>Szatellit 
-A **műholdas** stílus műholdas és légi képanyag.
+## <a name="blank-and-blank_accessible"></a>üres és blank_accessible
 
-![Szatellit](./media/supported-map-styles/satellite.png)
+Az **üres** és a **blank_accessible** Térkép stílusa üres vásznon jeleníti meg az adatmegjelenítést. A **blank_accessible** stílusa továbbra is biztosítja a képernyőolvasó frissítéseinek helyét, ahol a Térkép helye található, annak ellenére, hogy az alap térkép nem jelenik meg.
 
-**Megfelelő API-kat:**
+> [!Note]
+> A web SDK-ban módosíthatja a Térkép háttérszínét úgy, hogy beállítja a Térkép div `background-color` elemének CSS-stílusát.
+
+**Alkalmazható API-k:**
+* Web SDK Térkép vezérlőelem
+
+## <a name="satellite"></a>műholdas 
+A **műhold** stílusa a szatellit és a légi felvételek kombinációja.
+
+![műholdas](./media/supported-map-styles/satellite.png)
+
+**Alkalmazható API-k:**
 * [Műholdas csempe](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytilepreview)
-* A térkép vezérlőelem-JS
-* Android térkép vezérlőelem
+* Web SDK Térkép vezérlőelem
+* Android Térkép vezérlőelem
 
-## <a name="satelliteroadlabels"></a>satellite_road_labels
-A térkép stílus egy hibrid utak és címkék, műholdas és a légi képanyag felett átfedésben.
+## <a name="satellite_road_labels"></a>satellite_road_labels
+Ez a Térkép stílusa a műholdon és a légi képeken behelyezett utak és feliratok hibrid útvonala.
 
 ![satellite_road_labels](./media/supported-map-styles/satellite_road_labels.png)
 
-**Megfelelő API-kat:**
-* A térkép vezérlőelem-JS
-* Android térkép vezérlőelem
+**Alkalmazható API-k:**
+* Web SDK Térkép vezérlőelem
+* Android Térkép vezérlőelem
 
-## <a name="grayscaledark"></a>grayscale_dark
-**Szürkeárnyalatos sötét** közúti térképes styl sötét verziója.
+## <a name="grayscale_dark"></a>grayscale_dark
+a **szürkeárnyalatos sötét** a közúti Térkép stílusának sötét változata.
 
 ![gray_scale](./media/supported-map-styles/grayscale_dark.png)
 
-**Megfelelő API-kat:**
-* A térkép vezérlőelem-JS 
-* Android térkép vezérlőelem
+**Alkalmazható API-k:**
+* Web SDK Térkép vezérlőelem 
+* Android Térkép vezérlőelem
 
-## <a name="night"></a>az éjszakai
-**az éjszakai** színes utak és szimbólumok közúti térképes styl sötét verziója.
 
-![az éjszakai](./media/supported-map-styles/night.png)
+## <a name="grayscale_light"></a>grayscale_light
+a **szürkeárnyalatos fény** a közúti Térkép stílusának egyszerűsített változata.
 
-**Megfelelő API-kat:**
-* A térkép vezérlőelem-JS
-* Android térkép vezérlőelem
+![szürkeárnyalatos fény](./media/supported-map-styles/grayscale_light.png)
 
-## <a name="roadshadedrelief"></a>road_shaded_relief
-**közúti színezve mentesség** egy az Azure Maps fő stílus a föld vonala befejeződött.
+**Alkalmazható API-k:**
+* Web SDK Térkép vezérlőelem
+* Android Térkép vezérlőelem
 
-![Árnyékolt mentesség](./media/supported-map-styles/shaded-relief.png)
 
-**Megfelelő API-kat:**
-* [Szolgáltatástérkép csempe](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
-* A térkép vezérlőelem-JS
-* Android térkép vezérlőelem
+## <a name="night"></a>éjszaka
+a **Night** a közúti Térkép stílusa sötét változata, amely színes utakat és szimbólumokat is mutat.
+
+![éjszaka](./media/supported-map-styles/night.png)
+
+**Alkalmazható API-k:**
+* Web SDK Térkép vezérlőelem
+* Android Térkép vezérlőelem
+
+## <a name="road_shaded_relief"></a>road_shaded_relief
+a **közúti árnyékolt Relief** egy Azure Maps fő stílus, amelyet a föld körvonalával töltöttek be.
+
+![árnyékolt megkönnyebbülés](./media/supported-map-styles/shaded-relief.png)
+
+**Alkalmazható API-k:**
+* [Térkép csempe](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
+* Web SDK Térkép vezérlőelem
+* Android Térkép vezérlőelem

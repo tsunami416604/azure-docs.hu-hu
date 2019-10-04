@@ -1,7 +1,7 @@
 ---
-title: Az Azure AD Connect ismételt futtatásával a telepítővarázsló |} A Microsoft Docs
-description: Ismerteti, hogyan a telepítési varázsló második futtatásakor.
-keywords: Az Azure AD Connect telepítővarázsló lehetővé teszi, hogy konfigurálja a karbantartási beállításait, a második futtatásakor
+title: A Azure AD Connect telepítési varázsló ismételt futtatása | Microsoft Docs
+description: Azt ismerteti, hogyan működik a telepítővarázsló a második futtatásakor.
+keywords: A Azure AD Connect telepítővarázsló lehetővé teszi a karbantartási beállítások konfigurálását a második alkalommal, amikor futtatja
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -13,83 +13,86 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/13/2017
+ms.date: 07/17/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ff2caae7cb387f4f0d88cf059d01ad28861b9ad
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 5440c54b01f62b3ad61b355f4c622a31910a65c1
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57191987"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71290932"
 ---
-# <a name="azure-ad-connect-sync-running-the-installation-wizard-a-second-time"></a>Az Azure AD Connect szinkronizálása: A telepítési varázsló másodszori futtatása
-Az Azure AD Connect telepítővarázsló első futtatásakor, bemutatja, hogyan konfigurálhatja a telepítést. Ha újra futtatja a telepítési varázsló, azt a karbantartási lehetőséget kínál.
+# <a name="azure-ad-connect-sync-running-the-installation-wizard-a-second-time"></a>Azure AD Connect szinkronizálás: A telepítési varázsló másodszori futtatása
+A Azure AD Connect telepítővarázsló első futtatásakor végigvezeti a telepítés konfigurálásának lépésein. Ha újra futtatja a telepítővarázslót, a karbantartási lehetőségeket kínál.
 
-A telepítővarázsló találhatja meg a start menüben nevű **az Azure AD Connect**.
+>[!IMPORTANT]
+>Vegye figyelembe, hogy a telepítővarázsló nem futtatható, amíg a szinkronizálás folyamatban van.  A varázsló elindítása előtt ellenőrizze, hogy a szinkronizálás nem fut-e.
+
+A telepítővarázsló a **Azure ad Connect**nevű Start menüben található.
 
 ![Start menü](./media/how-to-connect-installation-wizard/startmenu.png)
 
-A telepítővarázsló indításakor megjelenik egy lap ezekkel a beállításokkal:
+A telepítővarázsló indításakor a következő beállításokat tartalmazó oldal jelenik meg:
 
-![További feladatok listája lap](./media/how-to-connect-installation-wizard/additionaltasks.png)
+![További feladatok listáját tartalmazó oldal](./media/how-to-connect-installation-wizard/additionaltasks.png)
 
-Ha az Azure AD Connecttel telepített AD FS, még több lehetősége van. A további lehetőségeket az AD FS vannak dokumentálva [AD FS felügyeleti](how-to-connect-fed-management.md#manage-ad-fs).
+Ha telepítette az ADFS-t Azure AD Connect, még több lehetőség is rendelkezésre áll. Az ADFS-hez szükséges további beállítások dokumentálva vannak az [ADFS felügyeletében](how-to-connect-fed-management.md#manage-ad-fs).
 
-Válassza ki az egyik feladat, és kattintson a **tovább** folytatásához.
+Válassza ki az egyik feladatot, majd a folytatáshoz kattintson a **tovább** gombra.
 
 > [!IMPORTANT]
-> Miközben a telepítési varázsló megnyitása, a szinkronizálási motor az összes művelet fel vannak függesztve. Ellenőrizze, hogy bezárja a telepítési varázslót, amint befejezte a konfigurációs módosításokat.
+> Amíg a telepítővarázsló meg van nyitva, a Szinkronizáló motor összes művelete fel lesz függesztve. Győződjön meg arról, hogy a konfigurációs módosítások elvégzése után a varázsló bezárását végzi.
 >
 >
 
 ## <a name="view-current-configuration"></a>Aktuális konfiguráció megtekintése
-Ez a beállítás hozzáférést biztosít a jelenleg konfigurált beállítások gyors áttekintést.
+Ez a beállítás gyors áttekintést nyújt az aktuálisan konfigurált lehetőségekről.
 
-![Az összes beállítás és az állapotuk listáját lap](./media/how-to-connect-installation-wizard/viewconfig.png)
+![Az összes beállítást és azok állapotát tartalmazó oldal](./media/how-to-connect-installation-wizard/viewconfig.png)
 
-Kattintson a **előző** térhet vissza. Ha **kilépési**, a telepítővarázsló bezárása.
+Az **előző** gombra kattintva lépjen vissza. Ha a **Kilépés**lehetőséget választja, bezárja a telepítővarázslóját.
 
 ## <a name="customize-synchronization-options"></a>Szinkronizálási beállítások testreszabása
-Ezzel a beállítással a szinkronizálási konfiguráció módosításához. Egyéni konfigurációs telepítési útvonaláról lehetőségek egy részét látja. Ez a beállítás akkor is, ha először használja az Expressz telepítés láthatja.
+Ezzel a beállítással módosíthatja a szinkronizálási konfigurációt. Az egyéni konfiguráció telepítési útvonalán a beállítások egy részhalmaza jelenik meg. Ez a beállítás akkor is megjelenik, ha kezdetben az expressz telepítést használta.
 
-* [Adjon hozzá további címtárak](how-to-connect-install-custom.md#connect-your-directories). A könyvtár eltávolítása, lásd: [egy összekötő törlése](how-to-connect-sync-service-manager-ui-connectors.md#delete).
-* [Módosítsa a tartomány és szervezeti egységek szűrése](how-to-connect-install-custom.md#domain-and-ou-filtering).
-* Csoport eltávolítása a szűrés.
-* [Módosítsa a választható funkciók](how-to-connect-install-custom.md#optional-features).
+* [Adjon hozzá további címtárakat](how-to-connect-install-custom.md#connect-your-directories). A címtár eltávolításával kapcsolatban lásd: [összekötő törlése](how-to-connect-sync-service-manager-ui-connectors.md#delete).
+* [A tartomány és a szervezeti egység szűrésének módosítása](how-to-connect-install-custom.md#domain-and-ou-filtering).
+* Csoport szűrésének eltávolítása.
+* [Módosítsa a választható szolgáltatásokat](how-to-connect-install-custom.md#optional-features).
 
-A többi beállítást a kezdeti telepítés nem módosítható és nem érhetők el. Ezek a lehetőségek a következők:
+A kezdeti telepítés többi beállítása nem módosítható, és nem érhető el. Ezek a lehetőségek a következők:
 
-* Módosítsa a sourceAnchor és a userPrincipalName tulajdonsághoz használt attribútumot.
-* Objektumok csatlakozó módjának módosítása a másik erdőben találhatók.
-* Engedélyezze a Csoportalapú szűrés.
+* Módosítsa a userPrincipalName és a sourceAnchor használandó attribútumot.
+* Módosítsa az összekapcsolási módszert különböző erdő objektumaihoz.
+* Csoportházirend-alapú szűrés engedélyezése.
 
 ## <a name="refresh-directory-schema"></a>Címtárséma frissítése
-Ez a beállítás használható, ha módosította a séma egy a helyszíni AD DS-erdőt. Például, előfordulhat, hogy telepítette az Exchange vagy egy Windows Server 2012 sémára eszköz objektumok frissítése. Ebben az esetben kell újra olvassa el a séma AD DS-ből, és frissíti a gyorsítótárat az Azure AD Connect utasíthatja. Ezzel a művelettel újragenerálja a szinkronizálási szabályok is. Ha például az Exchange-séma ad hozzá, az Exchange-hez a szinkronizálási szabályok vannak része a konfigurációnak.
+Ez a beállítás akkor használható, ha a sémát a helyszíni AD DS erdők egyikén módosította. Előfordulhat például, hogy telepítette az Exchange-et, vagy frissített egy Windows Server 2012 sémára az eszköz objektumaival. Ebben az esetben meg kell utasítania Azure AD Connect a séma újbóli beolvasásához AD DS és frissítenie kell a gyorsítótárat. Ezzel a művelettel a szinkronizálási szabályokat is újra létrehozza. Ha hozzáadja az Exchange-sémát, például az Exchange szinkronizálási szabályait a rendszer hozzáadja a konfigurációhoz.
 
-Ha ezt a lehetőséget választja, a konfigurációban minden címtár jelennek meg. Megtartani az alapértelmezett beállítást, és frissítse minden olyan erdőben, vagy néhányat, törölje.
+Ha ezt a beállítást választja, a rendszer a konfigurációban lévő összes könyvtárat listázza. Megtarthatja az alapértelmezett beállítást, és frissítheti az összes erdőt, vagy törölheti a kijelölését.
 
-![A környezet összes könyvtárak listája lap](./media/how-to-connect-installation-wizard/refreshschema.png)
+![A környezetben található összes könyvtár listáját tartalmazó oldal](./media/how-to-connect-installation-wizard/refreshschema.png)
 
 ## <a name="configure-staging-mode"></a>Átmeneti környezetű üzemmód konfigurálása
-Ezzel a beállítással engedélyezheti vagy letilthatja az átmeneti környezetű üzemmód a kiszolgálón. Átmeneti mód és azok felhasználási módjáról további információ található [műveletek](how-to-connect-sync-staging-server.md).
+Ezzel a beállítással engedélyezheti és letilthatja az átmeneti üzemmódot a kiszolgálón. További információt az átmeneti üzemmódról és annak használatáról az [Operations (műveletek](how-to-connect-sync-staging-server.md)) című témakörben találhat.
 
-A beállítás jeleníti meg, ha átmeneti jelenleg engedélyezve van vagy le van tiltva:  
-![A beállítás, amely az átmeneti környezetű üzemmód aktuális állapota is látható](./media/how-to-connect-installation-wizard/stagingmodecurrentstate.png)
+A beállítás azt mutatja, hogy jelenleg engedélyezve van-e az előkészítés, vagy le van tiltva:  
+![Az átmeneti üzemmód aktuális állapotát is megjelenítő beállítás](./media/how-to-connect-installation-wizard/stagingmodecurrentstate.png)
 
-Ha módosítani szeretné az állapot, ezt a beállítást, és válassza ki, vagy törölje a jelölőnégyzet jelölését.  
-![A beállítás, amely az átmeneti környezetű üzemmód aktuális állapota is látható](./media/how-to-connect-installation-wizard/stagingmodeenable.png)
+Az állapot módosításához jelölje be ezt a beállítást, majd jelölje be vagy törölje a jelölőnégyzet jelölését.  
+![Az átmeneti üzemmód aktuális állapotát is megjelenítő beállítás](./media/how-to-connect-installation-wizard/stagingmodeenable.png)
 
 ## <a name="change-user-sign-in"></a>Felhasználói bejelentkezés módosítása
-Ez a beállítás lehetővé teszi, hogy a felhasználói bejelentkezési módszer módosítását, és a jelszókivonatok szinkronizálása, átmenő hitelesítés vagy összevonás. Nem lehet **ne konfiguráljon**.
+Ez a beállítás lehetővé teszi a felhasználói bejelentkezési módszer módosítását jelszó-kivonatos szinkronizálás, átmenő hitelesítés vagy összevonás használatával. Nem lehet módosítani a nem **konfigurálást**.
 
-Ez a beállítás további információkért lásd: [felhasználói bejelentkezés](plan-connect-user-signin.md#changing-the-user-sign-in-method).
+A beállítással kapcsolatos további információkért lásd: [felhasználói bejelentkezés](plan-connect-user-signin.md#changing-the-user-sign-in-method).
 
 ## <a name="next-steps"></a>További lépések
-* További információ az Azure AD Connect szinkronizálása által használt konfigurációs modell [ismertetése deklaratív kiépítés](concept-azure-ad-connect-sync-declarative-provisioning.md).
+* További információ a Azure AD Connect Sync által használt konfigurációs modellről a [deklaratív kiépítés ismertetése](concept-azure-ad-connect-sync-declarative-provisioning.md)című témakörben található.
 
-**Áttekintő témakör**
+**Áttekintő témakörök**
 
-* [Az Azure AD Connect szinkronizálása: Megismerheti, és testre szabhatja a szinkronizálás](how-to-connect-sync-whatis.md)
+* [Az Azure AD Connect szinkronizálása: A szinkronizálás megismerése és testreszabása](how-to-connect-sync-whatis.md)
 * [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md)

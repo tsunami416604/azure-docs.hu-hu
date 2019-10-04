@@ -1,142 +1,187 @@
 ---
-title: Értékelési számítások az Azure Migrate |} A Microsoft Docs
-description: Értékelési számítások az Azure Migrate szolgáltatás áttekintése.
+title: Értékelési számítások a Azure Migrateban | Microsoft Docs
+description: Áttekintést nyújt az értékelési számításokról a Azure Migrate szolgáltatásban.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 02/19/2019
+ms.date: 08/06/2019
 ms.author: raynew
-ms.openlocfilehash: 012a352b00de2e2d1bf64fd18125ddd10faba5cd
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 4511c42514a5399d41029b61297bd4c1b0b63d9a
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58122807"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827548"
 ---
-# <a name="assessment-calculations"></a>Értékelési számítások
+# <a name="assessment-calculations-in-azure-migrate"></a>Értékelési számítások a Azure Migrate
 
-[Az Azure Migrate](migrate-overview.md) felméri a helyszíni számítási feladatokat az Azure-ba való migrálásra. Ez a cikk ismerteti, értékelések számításával.
+[Azure Migrate](migrate-services-overview.md) központi központot biztosít a helyszíni alkalmazások és munkaterhelések felderítésének, értékelésének és áttelepítésének nyomon követéséhez. Emellett nyomon követi a privát és a nyilvános Felhőbeli példányokat az Azure-ban. Az elosztó Azure Migrate eszközöket kínál az értékeléshez és az áttelepítéshez, valamint a harmadik féltől származó független szoftvergyártók (ISV) ajánlatait.
 
+A kiszolgáló értékelése Azure Migrate eszköz, amely a helyszíni kiszolgálókat értékeli át az Azure-ba való áttelepítéshez. Ez a cikk Az értékelések kiszámításának módját ismerteti.
 
-## <a name="overview"></a>Áttekintés
+## <a name="whats-in-an-assessment"></a>Mit tartalmaz egy értékelés?
 
-Az Azure Migrate értékelés három fázisa van. Értékelés egy alkalmasságát elemzés, a méretezés, kiegészítve előtaggal kezdődik, és végül egy-egy havi költségbecsléshez. A gép csak áthelyezi egy későbbi szakaszban Ha átadja az előzőre. Például egy gép az Azure-megfelelőségi ellenőrzés meghiúsul, ha meg van jelölve, nem alkalmasak az Azure, és a méretezési és költségszámítási nem történik meg.
+**Tulajdonság** | **Részletek**
+--- | ---
+**Célhely** | Azt az Azure-helyet adja meg, amelyre az áttelepítést szeretné végezni.<br/><br/>A kiszolgáló értékelése jelenleg a következő célcsoportokat támogatja: Kelet-Ausztrália, Délkelet-Ausztrália, Dél-Brazília, Közép-Kanada, Kelet-Kanada, Közép-India, USA középső régiója, Kelet-Kína, Észak-Kína, Kelet-Ázsia, USA keleti régiója, Kelet-RÉGIÓJA, Közép-Németország, Északkelet-Németország, Kelet-Japán, Nyugat-Japán, Korea középső régiója, Dél-Korea, Észak USA középső régiója, Észak-Európa, az USA déli középső régiója, Délkelet-Ázsia, Dél-India, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, US Gov Arizona, US Gov Texas, US Gov Virginia, az USA nyugati középső régiója, Nyugat-Európa, Nyugat-India, USA nyugati régiója és Nyugat-RÉGIÓJA.
+**Tárolás típusa** | Megadja az Azure-beli tároláshoz használni kívánt lemezek típusát. <br/><br/> A helyszíni méretezéshez megadhatja a célként megadott Storage-lemez típusát prémium szintű felügyelt, standard SSD által felügyelt vagy standard HDD által felügyelt módon. A teljesítmény-alapú méretezéshez megadhatja a célként megadott tároló lemezének típusát automatikus, prémium szintű felügyelt, standard HDD által felügyelt vagy standard SSD által felügyelt módon. Ha a tárolási típust automatikusként adja meg, a lemezre vonatkozó javaslat a lemezek teljesítmény-adatain alapul: a másodpercenkénti bemeneti/kimeneti műveletek (IOPS) és az átviteli sebesség. <br/><br/>Ha a tárolási típust prémium vagy standard szintűként adja meg, akkor az értékelés a kiválasztott tárolási típuson belül egy lemez SKU-t javasol. Ha az Egypéldányos VM 99,9%-os SLA-t kívánja elérni, érdemes lehet a tárolási típust prémium szintű felügyelt lemezként megadni. Ez biztosítja, hogy az értékelés összes lemeze prémium szintű felügyelt lemezként legyen ajánlott. Vegye figyelembe, hogy az Azure Migrate kizárólag a felügyelt lemezek migrálásfelmérését támogatja.
+**Fenntartott példányok (RIs)** | Ez a tulajdonság segít a [fenntartott példányok](https://azure.microsoft.com/pricing/reserved-vm-instances/) megadásában az Azure-ban. Az értékelésben szereplő költségbecslés során a rendszer figyelembe veszi az "RI-kedvezményeket". A RIs jelenleg csak az utólagos elszámolású ajánlatokhoz támogatott Azure Migrateban.
+**Méretezési feltételek** | Az Azure-beli virtuális gépekhez használt feltételek beállítása. A teljesítmény *-alapú* méretezést vagy a helyszíni virtuális gépek méretének megtervezése nélkül is dönthet úgy, hogy megtekintette a teljesítményt.
+**Teljesítményelőzmények** | Beállítja a gépek teljesítményi adatai kiértékeléséhez szükséges időtartamot. Ez a tulajdonság csak akkor alkalmazható, ha a méretezési feltétel *teljesítmény-alapú*.
+**Százalékos kihasználtság** | Meghatározza a jobb méretezéshez beállított teljesítményi minta százalékos értékét. Ez a tulajdonság csak akkor alkalmazható, ha a méretezés teljesítmény-alapú.
+**Virtuálisgép-sorozatok** | Itt adhatja meg azt a virtuálisgép-sorozatot, amelyet a jobb méretezés érdekében fontolóra kíván venni. Ha például olyan éles környezettel rendelkezik, amelyet nem szeretne áttelepíteni az Azure-beli sorozatú virtuális gépekre, kizárhatja a-sorozatokat a listából vagy adatsorozatból, és a jobb méretezés csak a kiválasztott adatsorozatban végezhető el.
+**Kényelmi faktor** | Azure Migrate kiszolgáló értékelése az értékelés során egy puffert (komfort faktor) tekint. Ezt a puffert a rendszer a virtuális gépek gépkihasználtsági adatai (CPU, memória, lemez és hálózat) mellett alkalmazza. A kényelmi faktor áll az olyan problémák mögött, mint a szezonális használat, a rövid teljesítményelőzmények és a jövőbeli használat várható növekedése.<br/><br/> Például egy 10 magos virtuális gép 20%-os kihasználtsággal normál esetben egy 2 magos virtuális gépnek felel meg. 2\.0x-es kényelmi faktorral azonban az eredmény ehelyett egy 4 magos virtuális gép.
+**Ajánlat** | Megjeleníti a regisztrált [Azure-ajánlatot](https://azure.microsoft.com/support/legal/offer-details/) . Az Azure Migrate ez alapján becsüli meg a költségeket.
+**Pénznem** | A fiók számlázási pénznemét jeleníti meg.
+**Kedvezmény (%)** | Felsorolja az Azure-ajánlaton keresztül kapott előfizetés-specifikus kedvezményeket. Az alapértelmezett beállítás 0%.
+**Virtuális gép üzemideje** | Ha a virtuális gépek a nap 24 órájában nem futnak, az Azure-ban hetente 7 napon belül megadhatja azt az időtartamot (a havi napok számát és a napi óraszámot). Az alapértelmezett érték havi 31 nap, és naponta 24 óra.
+**Azure Hybrid Benefit** | Megadja, hogy rendelkezik-e frissítési garanciával, [](https://azure.microsoft.com/pricing/hybrid-use-benefit/)és jogosult-e a Azure Hybrid Benefitre. Ha az Igen értéket állítja be, a nem Microsoft Azure-alapú árazás érvényes a windowsos virtuális gépekre. Az alapértelmezett beállítás az igen.
+
+## <a name="how-are-assessments-calculated"></a>Hogyan számítják ki az értékeléseket?
+
+A rendszer a helyszíni kiszolgálókról összegyűjtött metaadatok használatával kiszámítja Azure Migrate kiszolgáló értékelésének értékelését. Az értékelés kiszámítása három lépésben történik. Az értékelési számítás az egyes kiszolgálók esetében egy Azure-megfelelőségi elemzéssel kezdődik, majd a méret és végül a havi költségbecslés. A kiszolgálók csak akkor mozognak egy későbbi fázisba, ha az előzőt átadja. Ha például egy kiszolgáló meghibásodik az Azure alkalmassági ellenőrzésének, az nem megfelelőként van megjelölve az Azure-hoz, és a méretezés és a költségszámítás nem történik meg az adott kiszolgálón.
 
 ## <a name="azure-suitability-analysis"></a>Azure-megfelelőségi elemzés
 
-Nem minden gépek kiválóan alkalmasak a felhőben futó, a felhő rendelkezik a saját korlátokat és követelményeket. Az Azure Migrate értékeli az egyes helyszíni gépek migrálásra való alkalmasságukat az Azure-ba, és kategorizálja a gépek az alábbi kategóriák valamelyikébe:
-- **Azure-beli használatra kész** – a gép is telepíthető-módosítás nélkül az Azure-ban van. Teljes Azure-támogatással az Azure-ban indul.
-- **Feltételesen készen áll az Azure-ban** – a gép elindulhat az Azure-ban, de nem rendelkezik teljes körű Azure-támogatás. Például olyan gépeken, Windows Server operációs rendszer régebbi verziója nem támogatott az Azure-ban. Ezek a gépek Azure-ba való migrálás előtt legyen óvatos, és kövesse a szervizelési az értékelésben készültségi problémák megoldásához áttelepítése előtt ajánlott útmutatás szerint kell.
-- **Nem áll készen az Azure-ban** – a gép nem indul el az Azure-ban. Például ha egy helyszíni gép méretű több mint 4 TB-os csatlakoztatott lemez rendelkezik, akkor nem futhat az Azure-ban. Az értékelésben a készültségi probléma megoldásához az Azure-ba való migrálás előtt javasolt szervizelés kövessék kell. Megfelelő méretezéséhez és költségbecslés nem történik a gépekhez, amely nem áll készen az Azure-hoz vannak megjelölve.
-- **A kompatibilitás ismeretlen** – Azure Migrate nem található a gépen, mert nincs elég adat érhető el a vCenter Server készen áll-e.
+Nem minden gép alkalmas az Azure-ban való futtatásra. A kiszolgáló értékelése a helyszíni gépeket az Azure áttelepítésre való alkalmasságának megfelelően értékeli. Emellett az egyes mért gépeket a következő alkalmassági kategóriák valamelyikébe rendeli:
+- **Készen áll az Azure-ra**: A gép a következő módon telepíthető át az Azure-ba: módosítás nélkül. Az Azure teljes körű Azure-támogatással fog indulni.
+- **Feltételesen készen áll az Azure-ra**: Előfordulhat, hogy a gép az Azure-ban indul el, de nem rendelkezik teljes körű Azure-támogatással. Például a Windows Server régebbi verzióját futtató gépek nem támogatottak az Azure-ban. Ezeknek a gépeknek az Azure-ba történő áttelepítése előtt körültekintően kell eljárnia, és az értékelés során javasolt szervizelési útmutatást követve javítsa ki a készültségi problémákat.
+- **Nem áll készen az Azure-ra**: A gép nem fog elindulni az Azure-ban. Ha például egy helyszíni gépen több mint 64 terabájt (TB) lemez van csatolva, akkor az nem üzemeltethető az Azure-ban. Az értékelés során javasolt szervizelési útmutatást követve javítsa ki a készültségi problémát, mielőtt áttelepíti a gépet az Azure-ba. Az Azure-ra nem készként megjelölt gépek esetében nem végezhető el a jobb méretezés és a költségbecslés.
+- **Készültség ismeretlen**: A Azure Migrate nem tudta megállapítani a gép készültségét, mert nem áll rendelkezésre elegendő, a helyszíni környezetből gyűjtött metaadatok.
 
-Az Azure Migrate áttekinti a virtuálisgép-tulajdonságokat, és a vendég operációs rendszer azonosításához az Azure készen áll-e a helyszíni gépen.
+A kiszolgáló értékelése ellenőrzi a számítógép tulajdonságait és a vendég operációs rendszert, hogy meghatározza a helyszíni gép Azure-készültségét.
 
-### <a name="machine-properties"></a>Virtuálisgép-tulajdonságokat
-Az Azure Migrate áttekinti a következő tulajdonságok azonosítani, hogy egy virtuális Gépet az Azure-ban futtatható-e a helyszíni virtuális gép.
+### <a name="machine-properties"></a>Számítógép tulajdonságai
 
-**Tulajdonság** | **Részletek** | **Azure-kompatibilitás állapota**
+A kiszolgáló értékelése a helyszíni virtuális gép alábbi tulajdonságait tekinti át annak megállapítására, hogy futtatható-e az Azure-ban.
+
+**Tulajdonság** | **Részletek** | **Azure-készültségi állapot**
 --- | --- | ---
-**Rendszerindítás típusa** | Az Azure virtuális gépek a BIOS-ban, és nem UEFI típusú rendszerindítást támogatja. | Feltételesen készen áll arra, ha UEFI típusú rendszerindítást.
-**Processzormagok** | A magok számát a a gépek mag (128 mag), egy Azure virtuális gép támogatott maximális számának kisebbnek vagy azzal egyenlőnek kell lennie.<br/><br/> Teljesítményelőzmények érhető el, ha az Azure Migrate figyelembe veszi a túl magas kihasználtsággal rendelkező magok, az összehasonlítást. Ha egy kompatibilitási faktor értékelés beállításaiban van megadva, a rendszer megszorozza a túl magas kihasználtsággal rendelkező magok számát a kompatibilitási faktor.<br/><br/> Ha nincsenek teljesítményelőzményei, a kompatibilitási faktor alkalmazása nélkül az Azure Migrate használja a lefoglalt magok száma. | Készen áll, ha kevesebb mint vagy egyenlő korlátok.
-**Memória** | A memória mérete kisebb, mint a maximális memóriát, vagy azzal egyenlőnek kell lennie. (az Azure M sorozatú Standard_M128m 3892 GB&nbsp;<sup>2</sup>) egy Azure virtuális gép engedélyezett. [További információk](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).<br/><br/> Teljesítményelőzmények érhető el, ha az Azure Migrate figyelembe veszi a magas kihasználtságú memóriát, az összehasonlítást. Ha egy kompatibilitási faktor van megadva, a rendszer megszorozza a magas kihasználtságú memória a kompatibilitási faktor.<br/><br/> Ha nincsenek előzményei a lefoglalt memória használata esetén a kompatibilitási faktor alkalmazása nélkül.<br/><br/> | Készen áll a korlátokon belül.
-**Tárolólemez** | A lemez lefoglalt mérete 4 TB-ig (4096 GB) kell lennie, vagy kisebb.<br/><br/> A géphez csatolt lemezek száma 65 vagy annál kisebb, többek között az operációsrendszer-lemez kell lennie. | Készen áll a korlátokon belül.
-**Hálózat** | Egy gép 32 kell rendelkeznie, vagy kevesebb hálózati adapter csatlakozik. | Készen áll a korlátokon belül.
+**Rendszerindítás típusa** | Az Azure a BIOS rendszerindítási típusával támogatja a virtuális gépeket, nem az UEFI-t. | Feltételesen üzemkész, ha a rendszerindítás UEFI típusú.
+**Mag** | A gépekben lévő magok számának egyenlőnek vagy kisebbnek kell lennie, mint az Azure-beli virtuális gép által támogatott magok maximális száma (128).<br/><br/> Ha rendelkezésre áll a teljesítmény előzményei, Azure Migrate az összehasonlításhoz a felhasznált magokat veszi figyelembe. Ha az értékelési beállításokban meg van adva egy kényelmi tényező, a kihasználatlan magok számát a Comfort faktor megszorozza.<br/><br/> Ha nincsenek teljesítménybeli előzmények, Azure Migrate a lefoglalt magokat a komfort tényező alkalmazása nélkül használja. | Ha a korlát értéke kisebb vagy egyenlő, akkor készen áll.
+**Memória** | A számítógép memóriájának mérete nem lehet kisebb, mint az Azure-beli virtuális gép számára engedélyezett maximális memória (3892 gigabájt [GB]&nbsp;az Azure M Series Standard_M128m<sup>2</sup>esetében). [További információk](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).<br/><br/> Ha elérhetők a teljesítmény előzményei, Azure Migrate az összehasonlításhoz használt memóriát veszi figyelembe. Ha meg van adva egy kényelmi tényező, a kihasznált memóriát a komfort tényező szorozza meg.<br/><br/> Ha nincsenek előzmények, a rendszer a lefoglalt memóriát használja a komfort tényező alkalmazása nélkül.<br/><br/> | A határértékeken belül készen áll.
+**Storage-lemez** | A lemez lefoglalt méretének 32 TB-nak vagy ennél kisebbnek kell lennie. Bár az Azure támogatja az 64 TB-os lemezeket ultra SSD lemezekkel, Azure Migrate: A kiszolgáló-értékelés jelenleg a 32 TB TÁRTERÜLETET korlátozza a lemez méretének korlátozását, mivel a ultra SSD még nem támogatja. <br/><br/> A géphez csatolt lemezek számának 65 vagy kevesebbnek kell lennie, beleértve az operációsrendszer-lemezt is. | A határértékeken belül készen áll.
+**Hálózat** | A gépnek 32 vagy kevesebb hálózati adapterrel (NIC) kell rendelkeznie. | A határértékeken belül készen áll.
 
 ### <a name="guest-operating-system"></a>Vendég operációs rendszer
-Virtuális gép tulajdonságait, valamint is az Azure Migrate megvizsgálja a vendég operációs rendszer a helyszíni virtuális gép azonosításához, ha a virtuális gép az Azure-on futtatható.
+A virtuális gép tulajdonságaival együtt a kiszolgáló értékelése a gépek vendég operációs rendszerét vizsgálja annak megállapítására, hogy futtatható-e az Azure-ban.
 
 > [!NOTE]
-> Az Azure Migrate úgy véli, hogy a vCenter-kiszolgáló a következő elemzéseket végezhet a megadott operációs rendszer. Mivel az Azure Migrate által végzett felderítés készülék-alapú, úgy ellenőrizheti, hogy a virtuális gépen futó operációs rendszer megegyezik-e az egyik megadott vCenter-kiszolgáló nem rendelkezik.
+> A VMware virtuális gépek esetében a kiszolgáló értékelése a virtuális géphez megadott operációs rendszert használja vCenter Server a vendég operációs rendszer elemzésének kezeléséhez. A VMware-en futó Linux rendszerű virtuális gépek esetében jelenleg nem azonosítja a vendég operációs rendszer pontos kernel-verzióját.
 
-A következő logikai Azure Migrate által azonosítására szolgál az Azure készen áll-e a virtuális Gépet az operációs rendszer alapján.
+A kiszolgáló értékelése a következő logikát használja az Azure-készültség azonosítására az operációs rendszer alapján.
 
-**Operációs rendszer** | **Részletek** | **Azure-kompatibilitás állapota**
+**Operációs rendszer** | **Részletek** | **Azure-készültségi állapot**
 --- | --- | ---
-A Windows Server 2016 és az összes szervizcsomagok | Az Azure teljes körű támogatást biztosít. | Készen áll az Azure-beli használatra
-A Windows Server 2012 R2 és az összes szervizcsomagok | Az Azure teljes körű támogatást biztosít. | Készen áll az Azure-beli használatra
-A Windows Server 2012 és az összes szervizcsomagok | Az Azure teljes körű támogatást biztosít. | Készen áll az Azure-beli használatra
-A Windows Server 2008 R2 minden szervizcsomagok | Az Azure teljes körű támogatást biztosít.| Készen áll az Azure-beli használatra
-A Windows Server 2008 (32 bites és 64 bites) | Az Azure teljes körű támogatást biztosít. | Készen áll az Azure-beli használatra
-A Windows Server 2003, Server 2003 R2 | Ezek az operációs rendszerek megfeleltek támogatása, és meg kell azok végén egy [egyéni támogatási megállapodás (CSA)](https://aka.ms/WSosstatement) támogatás az Azure-ban. | Feltételesen készen áll az Azure-hoz, fontolja meg az operációs rendszer frissítését az Azure-ba való migrálás előtt.
-Windows 2000, 98, 95, NT, 3.1, MS-DOS | Az említett operációs rendszerektől azok befejezési támogatása estek át, a gép elindulhat az Azure-ban, de nem az operációs rendszer biztosít támogatást az Azure-ban. | Feltételesen készen az Azure-hoz, javasolt az Azure-ba való migrálás előtt az operációs rendszer verziófrissítéséhez.
-Windows-ügyfél 7, 8 és 10 | Az Azure-támogatást kínál [csak a Visual Studio-előfizetéssel.](https://docs.microsoft.com/azure/virtual-machines/windows/client-images) | Feltételesen készen áll az Azure-beli használatra
-Windows 10 Pro asztali | Az Azure-támogatást kínál [több-Bérlős üzemeltetési jogosultságok.](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment) | Feltételesen készen áll az Azure-beli használatra
-Windows Vista, XP Professional | Az említett operációs rendszerektől azok befejezési támogatása estek át, a gép elindulhat az Azure-ban, de nem az operációs rendszer biztosít támogatást az Azure-ban. | Feltételesen készen az Azure-hoz, javasolt az Azure-ba való migrálás előtt az operációs rendszer verziófrissítéséhez.
-Linux | Azure vannak jóváhagyva, ezek [Linux operációs rendszerek](../virtual-machines/linux/endorsed-distros.md). Más Linux operációs rendszerek elindulhat az Azure-ban, de javasoljuk, hogy az operációs rendszer frissítése egy támogatott verzióra az Azure-ba való migrálás előtt. | Készen áll az Azure-hoz, ha a verzió támogatja.<br/><br/>Feltételesen készen áll arra, ha a verzió nem támogatja.
-Más operációs rendszerek<br/><br/> Példa: Oracle Solaris, az Apple Mac OS stb., a FreeBSD stb. | Az Azure nem támogat nyíltan az említett operációs rendszerektől. A gép elindulhat az Azure-ban, de nem az operációs rendszer biztosít támogatást az Azure-ban. | Feltételesen készen az Azure-hoz, javasoljuk, hogy egy támogatott operációs rendszer telepítése az Azure-ba való migrálás előtt.  
-Az operációs rendszer megadott **más** a vCenter Serverben | Az Azure Migrate ebben az esetben az operációs rendszer nem tudja azonosítani. | Ismeretlen készültségi. Győződjön meg arról, hogy a virtuális gépen futó operációs rendszer támogatott az Azure-ban.
-32 bites operációs rendszerek | A gép elindulhat az Azure-ban, de az Azure nem rendelkezhetnek teljes körű támogatást. | Feltételesen készen áll az Azure-hoz, érdemes lehet frissíteni a gép operációs rendszerének 32 bites operációs Rendszereken a 64 bites operációs Rendszereken az Azure-ba való migrálás előtt.
+Windows Server 2016 & összes SPs | Az Azure teljes körű támogatást biztosít. | Azure-beli használatra kész
+Windows Server 2012 R2 & összes SPs | Az Azure teljes körű támogatást biztosít. | Azure-beli használatra kész
+Windows Server 2012 & összes SPs | Az Azure teljes körű támogatást biztosít. | Azure-beli használatra kész
+Windows Server 2008 R2 minden SPs-vel | Az Azure teljes körű támogatást biztosít.| Azure-beli használatra kész
+Windows Server 2008 (32 bites és 64 bites) | Az Azure teljes körű támogatást biztosít. | Azure-beli használatra kész
+Windows Server 2003, 2003 R2 | Ezek az operációs rendszerek átadták a támogatásuk befejezésének dátumát, és [egyéni támogatási szerződést (CSA)](https://aka.ms/WSosstatement) igényelnek az Azure támogatásához. | Feltételesen készen áll az Azure-ra. Az Azure-ba való Migrálás előtt érdemes frissíteni az operációs rendszert.
+Windows 2000, 98, 95, NT, 3.1, MS-DOS | Ezek az operációs rendszerek a támogatásuk befejezésének napját adták át. Előfordulhat, hogy a gép az Azure-ban indul el, de az Azure nem biztosít operációsrendszer-támogatást. | Feltételesen készen áll az Azure-ra. Javasoljuk, hogy az Azure-ba való Migrálás előtt frissítse az operációs rendszert.
+Windows-ügyfél 7, 8 és 10 | Az Azure csak a [Visual Studio](https://docs.microsoft.com/azure/virtual-machines/windows/client-images) -előfizetéshez nyújt támogatást. | Feltételesen készen áll az Azure-beli használatra
+Windows 10 Pro asztali verzió | Az Azure támogatást nyújt a több- [bérlős üzemeltetési jogosultságokhoz.](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment) | Feltételesen készen áll az Azure-beli használatra
+Windows Vista, XP Professional | Ezek az operációs rendszerek a támogatásuk befejezésének napját adták át. Előfordulhat, hogy a gép az Azure-ban indul el, de az Azure nem biztosít operációsrendszer-támogatást. | Feltételesen készen áll az Azure-ra. Javasoljuk, hogy az Azure-ba való Migrálás előtt frissítse az operációs rendszert.
+Linux | Az Azure támogatja ezeket a [Linux operációs rendszereket](../virtual-machines/linux/endorsed-distros.md). Az Azure-ban más linuxos operációs rendszerek is elindíthatók, de javasoljuk, hogy az Azure-ba való Migrálás előtt frissítse az operációs rendszert egy támogatott verzióra. | Készen áll az Azure-ra, ha a verziót jóváhagyták.<br/><br/>Feltételesen üzemkész, ha a verzió nincs támogatva.
+Egyéb operációs rendszerek<br/><br/> Például: Oracle Solaris, Apple Mac OS stb., FreeBSD stb. | Az Azure nem támogatja ezeket az operációs rendszereket. Előfordulhat, hogy a gép az Azure-ban indul el, de az Azure nem biztosít operációsrendszer-támogatást. | Feltételesen készen áll az Azure-ra. Javasoljuk, hogy telepítsen egy támogatott operációs rendszert az Azure-ba való áttelepítés előtt.  
+Az operációs rendszer vCenter Serverként van megadva | A Azure Migrate ebben az esetben nem tudja azonosítani az operációs rendszert. | Ismeretlen készültség. Győződjön meg arról, hogy a virtuális gépen futó operációs rendszer támogatott az Azure-ban.
+32 bites operációs rendszerek | Előfordulhat, hogy a gép az Azure-ban indul el, de előfordulhat, hogy az Azure nem nyújt teljes körű támogatást. | Feltételesen készen áll az Azure-ra. Az Azure-ba való Migrálás előtt érdemes lehet a gép operációs rendszerét 32 bites operációs rendszerről 64-bites operációs rendszerre frissíteni.
 
 ## <a name="sizing"></a>Méretezés
 
-Után a gép van megjelölve, készen áll az Azure-hoz, az Azure Migrate úgy méretezi a virtuális gép és annak lemezeire az Azure-hoz. Ha a az értékelési tulajdonságokban meghatározott méretezési feltétel teljesítményalapú tennie, az Azure Migrate teljesítményelőzményeit a gép azonosításához az Azure-beli virtuális gép méretét és a lemez típusa. Ez a módszer hasznos forgatókönyvekben, ahol túlságosan foglalt le a helyszíni virtuális gép, de a kihasználtság alacsony, és szeretné méretezése a virtuális gépek az Azure-ban csökkenthetők a költségek.
+Miután egy gép az Azure-ra készként van megjelölve, a kiszolgáló értékelése méretezési javaslatokat tesz, amely magában foglalja a megfelelő Azure-beli virtuális gép és SKU azonosítását a helyszíni virtuális géphez. Ezek az ajánlások a megadott értékelési tulajdonságokkal függően változnak.
 
-Ha nem szeretné, hogy Virtuálisgép-méretezési teljesítményelőzményeinek figyelembe venni, és szeretné állítani a virtuális gép,-van az Azure-ba, adja meg a méretezési feltétel teljesítményalapú, *helyszíni* és az Azure Migrate majd méretezheti a virtuális gépeket a helyszíni alapján a konfiguráció a kihasználtsági adatok figyelembe vétele nélkül. Lemez átméretezése, ebben az esetben akkor történik, a tárolótípus (standard szintű lemezes vagy prémium szintű lemezt) az értékelés tulajdonságaiban megadott alapján
+- Ha az értékelés *teljesítmény-alapú méretezést*használ, Azure Migrate figyelembe veszi a gép teljesítményének előzményeit, hogy azonosítsa a virtuális gép méretét és típusát az Azure-ban. Ez a módszer különösen akkor hasznos, ha felhasználta a helyszíni virtuális gépet, de a kihasználtság alacsony, és az Azure-ban a virtuális gép jobb méretét szeretné megtakarítani a költségek megtakarítása érdekében. Ez a módszer segít optimalizálni a méreteket az áttelepítés során.
+- Ha nem szeretné figyelembe venni a virtuálisgép-méretezési teljesítményadatokat, és a helyszíni gépeket az Azure-ba szeretné átvenni, akkor a méretezési feltételeket a következőképpen állíthatja be *a helyszínen*:. Ezt követően a kiszolgáló értékelése a helyszíni konfiguráció alapján méretezi a virtuális gépeket a kihasználtsági adatmennyiség figyelembevétele nélkül. Ebben az esetben a lemezre méretezési tevékenységek az értékelés tulajdonságainál (standard HDD, standard SSD vagy prémium lemez) megadott tárolási típuson alapulnak.
 
-### <a name="performance-based-sizing"></a>Teljesítményalapú
+### <a name="performance-based-sizing"></a>Teljesítmény-alapú méretezés
 
-Teljesítményalapú méretezéshez az Azure Migrate kezdődik a lemezeket, a virtuális Géphez csatolt hálózati adapterek követ, és majd maps egy Azure virtuális gép számítási követelményei alapján a helyszíni virtuális gép.
+A teljesítmény-alapú méretezés érdekében a kiszolgáló értékelése a virtuális géphez csatlakoztatott lemezekkel kezdődik, majd a hálózati adapterek. Ezután leképezi az Azure-beli virtuális gépek SKU-jának a helyszíni virtuális gép számítási követelményei alapján. A Azure Migrate berendezés a helyszíni környezetet a CPU, a memória, a lemezek és a hálózati adapter teljesítményadatait gyűjti.
 
-- **Tárolási**: Az Azure Migrate megkísérli minden, a gép az Azure-ban lemez csatlakoztatott lemez.
+**Teljesítményadatok gyűjtésének lépései:**
 
-    > [!NOTE]
-    > Az Azure Migrate támogatja a csak managed disks értékeléshez.
+1. A VMware virtuális gépek esetében a Azure Migrate készülék minden 20 másodperces intervallumban gyűjt valós idejű mintavételi pontot. A Hyper-V virtuális gépek esetében a valós idejű mintavételi pont gyűjtése minden 30 másodperces intervallumban történik.
+1. A készülék 10 percenként gyűjti össze a mintavételi pontokat, és az elmúlt 10 percben a kiszolgáló értékeléséhez elküldi a maximális értéket.
+1. A kiszolgáló értékelése az elmúlt egy hónapban az összes 10 perces mintavételi pontot tárolja. Ezután a *teljesítmény előzményeihez* és a *percentilis kihasználtságához*megadott értékelési tulajdonságoktól függően azonosítja a megfelelő adatpontot, amelyet a jobb méretezés érdekében használ. Ha például a teljesítmény-előzmények értéke 1 nap, a percentilis kihasználtsága pedig a 95. percentilis, a Server Assessment az elmúlt egy nap 10 perces mintavételi pontját használja, növekvő sorrendbe rendezi őket, és kiválasztja a 95. percentilis értékét a jobb méretezés érdekében.
+1. Ennek az értéknek a megszorozza a komforttal, hogy az egyes mérőszámok (CPU-kihasználtság, memória kihasználtsága, lemez IOPS (olvasási és írási), lemez átviteli sebessége (olvasási és írási) és hálózati átviteli sebesség ( a készülék gyűjti.
 
-    - A hatékony lemez i/o másodpercenként (IOPS) és az átviteli sebesség (MB/s) lekéréséhez az Azure Migrate szorozza meg a lemez iops-t és az átviteli sebességet a kompatibilitási faktor együtt. A hatékony IOPS és átviteli sebesség értékek alapján, ha a lemez le kell képezni egy standard vagy prémium szintű lemezt az Azure-ban az Azure Migrate azonosítja.
-    - Az Azure Migrate nem található a szükséges iops-t és az átviteli sebesség lemezzel, ha azt nem alkalmasak a géphez jelöli meg az Azure-hoz. [További](../azure-subscription-service-limits.md#storage-limits) Azure-ral kapcsolatos korlátozza a lemez és a virtuális gépek száma.
-    - Ha megtalálta a megfelelő lemezek egy készlete, az Azure Migrate kiválasztja azokat, amelyek támogatják a storage-redundancia módját, valamint az értékelési beállítások megadott helyen.
-    - Ha több jogosult lemezek vannak, a legalacsonyabb költséget rendelkezőt választja ki.
-    - Ha a lemezek, a teljesítménnyel kapcsolatos adatai nem érhető el, az összes lemez vannak leképezve az Azure standard szintű lemezek.
+A tényleges kihasználtsági érték meghatározása után a tároló, a hálózat és a számítási méret a következőképpen lesz kezelve.
 
-- **Hálózati**: Az Azure Migrate megpróbálja megkeresni egy Azure virtuális Gépen, hogy a helyi géphez csatlakoztatott hálózati adapterek és a teljesítmény, ezek a hálózati adapterek által igényelt támogatja.
-    - A helyszíni virtuális gép a tényleges hálózati teljesítmény eléréséhez, az Azure Migrate összesíti az összes hálózati adapteren másodpercenként (MBps) kívül a géphez (hálózati ki), továbbított adatokat, és a kompatibilitási faktor vonatkozik. Ez a szám egy Azure virtuális gép támogatására képes a szükséges hálózati teljesítménynek kereséséhez használt.
-    - Hálózati teljesítmény, valamint azt is figyelembe veszi az Azure virtuális gép támogatják-e a szükséges hálózati adapterek száma.
-    - Ha nincs hálózati teljesítménnyel adatai nem érhető el, a csak a hálózati adapterek száma a Virtuálisgép-méretezési számít.
+**Tároló méretezése**: Azure Migrate megkísérli leképezni a géphez csatolt összes lemezt az Azure-beli lemezre.
 
-- **COMPUTE**: Tárolási és hálózati követelményeinek kiszámítása, miután az Azure Migrate figyelembe veszi a Processzor- és követelmények található Virtuálisgép-méret az Azure-ban.
-    - Az Azure Migrate megvizsgálja a túl magas kihasználtsággal rendelkező magok és a memória, és a hatékony magok és a memória a kompatibilitási faktor vonatkozik. Adott száma alapján, azt próbál meg megtalálni egy Virtuálisgép-méret az Azure-ban.
-    - Ha nem megfelelő méretű található, a gép van megjelölve nem alkalmasak az Azure-hoz.
-    - Ha egy megfelelő méretű található, a tárolási és hálózatkezelési számítások az Azure Migrate vonatkozik. Ezt követően végrehajtja, helyét és a tarifacsomag-beállításokat, a virtuális gép mérete végleges javaslatot.
-    - Ha több lehetséges Azure-beli virtuálisgép-méret létezik, a rendszer a legalacsonyabb költségűt ajánlja.
+> [!NOTE]
+> Azure Migrate Server Assessment csak a felügyelt lemezeket támogatja az értékeléshez.
 
-### <a name="as-on-premises-sizing"></a>Helyszíni méretezése
-Ha a méretezési feltétel teljesítményalapú *helyszíni méretezési*, az Azure Migrate nem veszi figyelembe a lemezek és virtuális gépek korábbi teljesítménye és a egy Virtuálisgép-Termékváltozatra, az Azure-ban a helyszínen lefoglalt méret alapján foglalja le. Ehhez hasonlóan az lemez méretezés, azt a tárolótípus (Standard vagy prémium) értékelés tulajdonságaiban megadott megvizsgál, és javasolja a lemez típusát ennek megfelelően. Alapértelmezett tárolási típus prémium szintű lemezeket.
+  - A kiszolgáló értékelése hozzáadja a lemez olvasási és írási IOPS az összes szükséges IOPS lekéréséhez. Hasonlóképpen hozzáadja az olvasási és írási sebesség értékét az egyes lemezek teljes átviteli sebességének lekéréséhez.
+  - Ha a tárolási típust automatikusként adta meg, a IOPS és az átviteli sebesség alapján, akkor a kiszolgáló értékelése meghatározza, hogy a lemezt szabványos HDD-re, standard SSD-re vagy egy prémium szintű lemezre kell-e leképezni az Azure-ban. Ha a tárolási típus értéke standard HDD/SSD/Premium, a Server Assessment megpróbál a kiválasztott tárolási típuson belül egy lemezes SKU-t keresni (standard HDD/SSD/prémium lemez).
+  - Ha a kiszolgáló értékelése nem talál a szükséges IOPS és adatátviteli sebességű lemezt, az az Azure számára nem megfelelőként jelöli meg a gépet.
+  - Ha a kiszolgáló értékelése megfelelő lemezeket talál, akkor kiválasztja azokat a lemezeket, amelyek támogatják az értékelési beállításokban megadott helyet.
+  - Ha több jogosult lemez van, a kiszolgáló értékelése a legalacsonyabb költséggel kiválasztja a lemezt.
+  - Ha valamelyik lemez teljesítményadatokat nem érhető el, a lemez konfigurációs adatai (lemez mérete) az Azure-ban szabványos SSD-lemez megtalálására szolgálnak.
 
-### <a name="confidence-rating"></a>Megbízhatósági minősítés
-Az Azure Migrate minden teljesítményalapú értékelése olyan megbízhatósági minősítéssel van társítva, amely 1 csillagtól az 5 csillagig terjed (az 1 csillag a legalacsonyabb, az 5 csillag pedig a legmagasabb). A megbízhatósági minősítés az értékelések kiszámításához szükséges adatpontok rendelkezésre állása alapján vannak az értékelésekhez rendelve. Az értékelés megbízhatósági minősítése segít megbecsülni az Azure Migrate által nyújtott méretjavaslatok megbízhatóságát. A megbízhatósági minősítés nem vonatkozik a helyszíni értékelésekre.
+**Hálózati méretezés**: A kiszolgáló értékelése megpróbál olyan Azure-beli virtuális gépet találni, amely támogatja a helyszíni géphez csatlakoztatott hálózati adapterek számát és a hálózati adapterek által igényelt teljesítményt.
+- A helyszíni virtuális gép hatékony hálózati teljesítményének lekéréséhez a kiszolgáló értékelése összesíti a másodpercenként továbbított adatokat (MB/s) a gépen (kimenő hálózat), az összes hálózati adapteren, és alkalmazza a komfort tényezőt. Ezt a számot használja egy olyan Azure-beli virtuális gép megtalálására, amely támogatja a szükséges hálózati teljesítményt.
+- A hálózati teljesítmény mellett a kiszolgáló értékelése azt is mérlegeli, hogy az Azure-beli virtuális gép támogatja-e a hálózati adapterek számát.
+- Ha nem érhető el hálózati teljesítményadatok, a kiszolgáló értékelése csak a virtuális gép méretének megfelelő hálózati adapterek darabszámát veszi figyelembe.
 
-A teljesítményalapú méretezéshez az Azure Migrate-nek szüksége van a virtuális gép processzorának és memóriájának kihasználtsági adataira. Emellett szükség van a lemez IOPS-értékére és az adatátviteli teljesítményre is a virtuális géphez csatlakoztatott minden lemezre vonatkozóan. Ugyanígy az Azure Migrate-nek a virtuális géphez csatlakoztatott összes hálózati adapterre vonatkozóan szüksége van a bejövő és kimenő hálózati forgalom adataira a teljesítményalapú méretezés elvégzéséhez. Ha a fenti kihasználtsági számok valamelyike nem érhető el a vCenter Serveren, lehet, hogy az Azure Migrate által adott méretjavaslat nem megbízható. Az elérhető adatpontok százalékától függően meg van adva a megbízhatósági minősítés az értékeléshez az alábbiak szerint:
+**Számítási méretezés**: A tárolási és hálózati követelmények kiszámítását követően a kiszolgáló értékelése a processzor-és memória-követelményeket úgy tekinti meg, hogy megfelelő virtuálisgép-méretet találjon az Azure-ban.
+- Azure Migrate az Azure-ban egy megfelelő virtuálisgép-méret megtalálását vizsgálja a ténylegesen felhasznált magok és memória alapján.
+- Ha nem található megfelelő méret, a gép nem megfelelőként van megjelölve az Azure-hoz.
+- Ha talál megfelelő méretet, Azure Migrate alkalmazza a tárolási és hálózati számításokat. Ezután alkalmazza a hely és az árképzési szintek beállításait a virtuális gép végső méretére vonatkozó javaslatra.
+- Ha több lehetséges Azure-beli virtuálisgép-méret létezik, a rendszer a legalacsonyabb költségűt ajánlja.
+
+### <a name="as-on-premises-sizing"></a>Helyszíni méretezés
+
+Ha helyszíni *méretezést*használ, a kiszolgáló értékelése nem veszi figyelembe a virtuális gépek és lemezek teljesítményének előzményeit. Ehelyett egy virtuálisgép-SKU-t foglal le az Azure-ban a helyszínen lefoglalt méret alapján. A lemezek méretezéséhez hasonlóan a kiszolgáló értékelése az értékelés tulajdonságainál (standard HDD/SSD/prémium) megadott tárolási típust vizsgálja, és ennek megfelelően javasolja a lemez típusát. Az alapértelmezett tárolási típus a prémium szintű lemezek.
+
+## <a name="confidence-ratings"></a>Megbízhatósági minősítések
+Azure Migrate minden teljesítmény-alapú értékelése egy olyan megbízhatósági minősítéssel van társítva, amely egy (legalacsonyabb) és öt csillag közötti (a legmagasabb) tartományba esik.
+- A megbízhatósági minősítés az értékelések kiszámításához szükséges adatpontok rendelkezésre állása alapján vannak az értékelésekhez rendelve.
+- Az értékelés megbízhatósági minősítése segít megbecsülni az Azure Migrate által nyújtott méretjavaslatok megbízhatóságát.
+- A megbízhatósági minősítések nem alkalmazhatók *a* helyszíni értékelésekhez.
+- A teljesítmény-alapú méretezéshez a kiszolgáló értékeléséhez a következőket kell tennie:
+    - A processzor és a virtuális gép memóriájának kihasználtsági adatai.
+    - A lemez a virtuális géphez csatolt minden lemez IOPS és adatátviteli adatokkal rendelkezik.
+    - A hálózati I/O-t a virtuális géphez csatlakoztatott összes hálózati adapter teljesítmény-alapú méretezésének kezeléséhez.
+
+   Ha ezek a kihasználtsági számok nem érhetők el vCenter Serverban, előfordulhat, hogy a méretre vonatkozó javaslat nem megbízható.
+
+Az elérhető adatpontok százalékos arányának függvényében az értékelés megbízhatósági minősítése az alábbiak szerint megy végbe.
 
    **Az adatpontok rendelkezésre állása** | **Megbízhatósági minősítés**
    --- | ---
-   0%–20% | 1 csillag
-   21%–40% | 2 csillag
-   41%–60% | 3 csillag
-   61%–80% | 4 csillag
-   81%–100% | 5 csillag
+   0-20% | 1 csillag
+   21-40% | 2 csillag
+   41-60% | 3 csillag
+   61-80% | 4 csillag
+   81-100% | 5 csillag
 
-   Az okok, az alábbiakban a vannak vonatkozóan miért értékelés kérhetők le egy alacsony megbízhatósági minősítés:
+### <a name="low-confidence-ratings"></a>Alacsony megbízhatósági minősítések
 
-- Nem végzett profilkészítést a környezeten abban az időtartamban, amelyre az értékelést létrehozta. Ha például létrehoz egy teljesítményértékelést 1 napra állított időtartammal, akkor a felderítés indítását követően legalább egy napot várnia kell arra, hogy az összes adatpont be legyen gyűjtve.
+Íme néhány ok, amiért egy értékelés alacsony megbízhatósági minősítést kaphat:
 
-- Néhány virtuális gép le lett állítva abban az időszakban, amelyhez az értékelést számította. Ha valamelyik virtuális gép egy ideig ki volt kapcsolva, nem fogjuk tudni begyűjteni az adott időszak teljesítményadatait.
+- Nem tudta felmérni a környezetét arra az időtartamra, amelyhez az értékelést létrehozza. Ha például az értékelést egy napra állítja be, akkor az összes adatpont felderítésének megkezdése után legalább egy nappal meg kell várnia a begyűjtést.
+- Néhány virtuális gép leállt az értékelés kiszámításának időtartama alatt. Ha bármely virtuális gép ki van kapcsolva bizonyos időtartamra, a kiszolgáló értékelése nem tudja összegyűjteni az adott időszak teljesítményadatait.
+- Néhány virtuális gép az értékelés kiszámításának időtartama alatt lett létrehozva. Ha például az előző hónap teljesítmény-előzményeire vonatkozó értékelést hozott létre, de egyes virtuális gépeket csak egy héttel ezelőtt hoztak létre a környezetben, akkor az új virtuális gépek teljesítménybeli előzményei nem állnak a teljes időtartamra.
 
-- Néhány virtuális gép létrejött abban az időszakban, amelyhez az értékelést számította. Ha például az utolsó egy hónap teljesítményelőzményeinek értékelését hozza létre, de néhány virtuális gép csak egy hete jött létre a környezetben. Ilyen esetekben az új virtuális gépeknek nincsenek teljesítményelőzményei a teljes időtartamhoz.
+> [!NOTE]
+> Ha az értékelések megbízhatósági minősítése kevesebb, mint öt csillag, javasoljuk, hogy várjon legalább egy napot, amíg a készülék felkeresi a környezetet, majd számítsa ki újra az értékelést. Ha nem, akkor előfordulhat, hogy a teljesítmény-alapú méretezés nem megbízható. Ebben az esetben javasoljuk, hogy az értékelést a helyszíni méretezésre állítsa át.
 
-  > [!NOTE]
-  > Ha valamely értékelés megbízhatósági minősítése 5 csillag alatt van, azt javasoljuk, hogy Várjon, amíg legalább egy napot a berendezés-profil a környezetre, majd *újraszámítása* az értékelést. Ha ez nem végezhető el, akkor lehet, hogy a teljesítményalapú méretezés nem megbízható, és azt javasoljuk, hogy az értékelés tulajdonságainak módosításával váltson *helyszíni méretezésre*.
+## <a name="monthly-cost-estimation"></a>Havi költségbecslés
 
-## <a name="monthly-cost-estimation"></a>Havi Költségbecslés
+A méretezési javaslatok befejezését követően a Azure Migrate kiszámítja a számítási és tárolási költségeket az áttelepítés után.
 
-Méretezési javaslatok befejezése után az Azure Migrate számítja ki az áttelepítés utáni számítási és tárolási költségeit.
+- **Számítási díj**: Az ajánlott Azure-beli virtuális gép méretének használatával a Azure Migrate a számlázási API-val számítja ki a virtuális gép havi költségét.
+    - A számítás az operációs rendszer, a frissítési garancia, a fenntartott példányok, a virtuális gép üzemidő, a hely és a pénznem beállításait veszi figyelembe.
+    - Összesíti a költségeket az összes gépen a teljes havi számítási költség kiszámításához.
+- **Tárolási díj**: A gép havi tárolási költségeit a rendszer a géphez csatlakoztatott összes lemez havi költségének összesítésével számítja ki a következőképpen:
+    - A kiszolgáló értékelése a teljes havi tárolási költségeket az összes gép tárolási költségeinek összesítésével számítja ki.
+    - Jelenleg a számítás nem veszi figyelembe az értékelési beállításokban megadott ajánlatokat.
 
-- **Számítási költségeit tartalmazza**: Használja az Azure virtuális gép ajánlott mérete, az Azure Migrate használatával a számlázási API-t a havi költségek kiszámítása a virtuális gép. A kiszámítása az operációs rendszer, frissítési garanciával rendelkező, a fenntartott példányok, virtuális gép Üzemidő, helye és pénznem beállítások figyelembe vesz igénybe. A költségek gyűjti az összes gépen, a teljes havi számítási költség kiszámítása.
-- **Tárolási költségek**: A havi költségét a géphez csatlakoztatott összes lemez összevonása gép havi tárolási költségek kiszámításához. Az Azure Migrate a tárolási költségeket összes gép összesítésével számítja ki a teljes havi tárolási költségeket. A számítási jelenleg nem használ a felmérés beállításaiban figyelembe ajánlatok.
-
-Az értékelési beállítások megadott pénznem költségek jelenik meg.
+A költségek az értékelési beállításokban megadott pénznemben jelennek meg.
 
 
 ## <a name="next-steps"></a>További lépések
 
-[Hozzon létre egy értékelést a helyszíni VMware virtuális gépekhez](tutorial-assessment-vmware.md)
+Hozzon létre egy értékelést a [VMWare virtuális gépek](tutorial-assess-vmware.md) vagy a [Hyper-V virtuális gépek](tutorial-assess-hyper-v.md)számára.

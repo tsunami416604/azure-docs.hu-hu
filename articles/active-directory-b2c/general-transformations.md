@@ -1,44 +1,44 @@
 ---
-title: Általános jogcímek átalakítása példák az identitás élmény keretrendszer sémát az Azure Active Directory B2C |} A Microsoft Docs
-description: Az identitás élmény keretrendszer sémát az Azure Active Directory B2C általános jogcímek átalakítása példákat.
+title: Általános jogcím-átalakítási példák a Azure Active Directory B2C Identity Experience Framework sémájához
+description: Általános jogcím-átalakítási példák a Azure Active Directory B2C Identity Experience Framework sémájához.
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
-ms.author: davidmu
+ms.date: 08/27/2019
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 6a9a819e75e487999a2b50ae758b8d9c6c716a4f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7cea33cb61f8f8d0fe305a757f11c80bc5da24ca
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58084895"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70032902"
 ---
-# <a name="general-claims-transformations"></a>Általános jogcímek átalakítása
+# <a name="general-claims-transformations"></a>Általános jogcím-átalakítások
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Ez a cikk példákat ad az Azure Active Directory (Azure AD) B2C általános jogcímek átalakítása az identitás-kezelőfelületi keretrendszer séma használatával. További információkért lásd: [ClaimsTransformations](claimstransformations.md).
+Ez a cikk példákat tartalmaz a Azure Active Directory B2C (Azure AD B2C) Identity Experience Framework sémájának általános jogcímek átalakítására. További információ: [ClaimsTransformations](claimstransformations.md).
 
 ## <a name="doesclaimexist"></a>DoesClaimExist
 
-Ellenőrzi, hogy a **bemeneti jogcím** vagy nem létezik, és beállítja a **kimeneti jogcím** igaz vagy hamis értéket annak megfelelően.
+Ellenőrzi, hogy a **inputClaim** létezik-e vagy sem, és a **outputClaim** igaz vagy hamis értékre állítja.
 
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| Bemeneti jogcím | Bemeneti jogcím |Bármelyik | A bemeneti jogcímek, amelynek megléte ellenőrizni kell. |
-| OutputClaim | outputClaim | logikai | A takar, amelyek a ClaimsTransformation meghívása után jön létre. |
+| InputClaim | inputClaim |Any | Az a bemeneti jogcím, amelynek létezését ellenőrizni kell. |
+| OutputClaim | outputClaim | boolean | A ClaimsTransformation után létrehozott ClaimType meghívása megtörtént. |
 
-Használja a jogcím-átalakítás annak ellenőrzésére, ha egy jogcímet létezik, vagy minden olyan értéket tartalmaz. A visszatérési érték logikai érték beolvasása, amely azt jelzi, hogy létezik-e a jogcím. Alábbi példa ellenőrzi, hogy létezik-e az e-mail-cím.
+Ezzel a jogcím-átalakítással ellenőrizhető, hogy létezik-e jogcím, vagy tartalmaz-e értéket. A visszatérési érték egy logikai érték, amely jelzi, hogy a jogcím létezik-e. A következő példa ellenőrzi, hogy létezik-e e-mail-cím.
 
 ```XML
 <ClaimsTransformation Id="CheckIfEmailPresent" TransformationMethod="DoesClaimExist">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="inputClaim" />
-  </InputClaims>                    
+  </InputClaims>
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="isEmailPresent" TransformationClaimType="outputClaim" />
   </OutputClaims>
@@ -47,21 +47,21 @@ Használja a jogcím-átalakítás annak ellenőrzésére, ha egy jogcímet lét
 
 ### <a name="example"></a>Példa
 
-- A bemeneti jogcímek:
-  - **bemeneti jogcím**: someone@contoso.com
-- Kimeneti jogcímek: 
-    - **kimeneti jogcím**: igaz
+- Bemeneti jogcímek:
+  - **inputClaim**:someone@contoso.com
+- Kimeneti jogcímek:
+  - **outputClaim**: true
 
 ## <a name="hash"></a>Kivonat
 
-A megadott egyszerű szöveges a védőérték és a titkos kulcs kivonata.
+A megadott egyszerű szöveg kivonatolása a só és a titok használatával. A használt kivonatoló algoritmus az SHA-256.
 
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| Bemeneti jogcím | egyszerű szöveg | sztring | A bemeneti jogcímek titkosítását |
-| Bemeneti jogcím | Salt érték | sztring | A védőérték paramétert. Létrehozhat egy véletlenszerű értéket használ `CreateRandomString` jogcím-átalakítás. |
-| InputParameter | randomizerSecret | sztring | Egy meglévő Azure AD B2C mutat **Szabályzatbejegyzések**. Hozzon létre egy újat: Válassza ki az Azure AD B2C-bérlőben **B2C-beállítások > identitás-kezelőfelületi keretrendszer**. Válassza ki **Szabályzatbejegyzések** a elérhető a bérlői kulcsok megtekintéséhez. Válassza a **Hozzáadás** lehetőséget. A **beállítások**válassza **manuális**. Adjon meg egy nevet (a B2C_1A_ automatikusan hozzáadhatók előtag.). Titkos kód mezőben adja meg minden olyan titkos kulcsot szeretné használni, például a 1234567890. A kulcshasználat, válassza ki a **titkos**. Kattintson a **Létrehozás** gombra. |
-| OutputClaim | Ujjlenyomat | sztring | Az a jogcím-átalakítás után előállított takar meghívása. A konfigurált jogcímszabályok a `plaintext` bemeneti jogcím. |
+| InputClaim | egyszerű szöveges | Karakterlánc | A titkosítani kívánt bemeneti jogcím |
+| InputClaim | só | Karakterlánc | A Salt paraméter. A jogcím-átalakítás használatával `CreateRandomString` véletlenszerű értéket hozhat létre. |
+| InputParameter | randomizerSecret | Karakterlánc | Egy meglévő Azure AD B2C házirend- **kulcsra**mutat. Új házirend-kulcs létrehozásához: A Azure AD B2C-bérlőben, a **kezelés**területen válassza az **identitási élmény keretrendszere**elemet. Válassza ki a **házirend-kulcsok** elemet a bérlőben elérhető kulcsok megtekintéséhez. Válassza a **Hozzáadás** lehetőséget. A **Beállítások**lapon válassza a **manuális**lehetőséget. Adjon meg egy nevet (a *B2C_1A_* előtagot lehet automatikusan hozzáadni.). A **titkos** szövegmezőbe írja be a használni kívánt titkos kulcsot (például 1234567890). A **kulcshasználat**beállításnál válassza az **aláírás**lehetőséget. Kattintson a **Létrehozás** gombra. |
+| OutputClaim | hash | Karakterlánc | A jogcím-átalakítás után létrehozott ClaimType meghívása megtörtént. A `plaintext` inputClaim konfigurált jogcím. |
 
 ```XML
 <ClaimsTransformation Id="HashPasswordWithEmail" TransformationMethod="Hash">
@@ -80,12 +80,9 @@ A megadott egyszerű szöveges a védőérték és a titkos kulcs kivonata.
 
 ### <a name="example"></a>Példa
 
-- A bemeneti jogcímek:
-    - **egyszerű szöveges**: MyPass@word1
-    - **védőérték**: 487624568
-    - **randomizerSecret**: B2C_1A_AccountTransformSecret
-- Kimeneti jogcímek: 
-    - **kimeneti jogcím**: CdMNb/KTEfsWzh9MR1kQGRZCKjuxGMWhA5YQNihzV6U=
-
-
-
+- Bemeneti jogcímek:
+  - **egyszerű szöveg**:MyPass@word1
+  - **só**: 487624568
+  - **randomizerSecret**: B2C_1A_AccountTransformSecret
+- Kimeneti jogcímek:
+  - **outputClaim**: CdMNb/KTEfsWzh9MR1kQGRZCKjuxGMWhA5YQNihzV6U=

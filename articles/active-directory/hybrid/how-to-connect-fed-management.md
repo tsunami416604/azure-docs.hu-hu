@@ -1,7 +1,7 @@
 ---
-title: Az Azure AD Connect – az AD FS kezelése és testreszabása |} A Microsoft Docs
-description: AD FS-kezelőben az Azure AD Connect és a felhasználó AD FS bejelentkezési élmény az Azure AD Connect és a PowerShell segítségével testre szabhatja.
-keywords: Az AD FS, ADFS, az AD FS felügyeleti, az AAD Connect, csatlakozás, bejelentkezési, az AD FS testreszabás, javítsa ki a megbízhatósági kapcsolat, O365, összevonást, a függő entitás
+title: Azure AD Connect – AD FS felügyelet és testreszabás | Microsoft Docs
+description: A Azure AD Connect és a PowerShell használatával AD FS a felügyeletet a felhasználói AD FS bejelentkezési felületének Azure AD Connectával és testreszabásával.
+keywords: AD FS, ADFS, AD FS felügyelet, HRE-kapcsolat, csatlakozási, bejelentkezés, AD FS testreszabás, megbízhatóság javítása, O365, összevonás, függő entitás
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -18,237 +18,237 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 021e13dafcc659337d4096a068e224312e69db1b
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 7249f2077666530964afa16ef47d69731cee846a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56870941"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70085222"
 ---
-# <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Kezelés és testreszabás Active Directory összevonási szolgáltatások az Azure AD Connect használatával
-Ez a cikk bemutatja, hogyan kezelheti, és testre szabhatja az Active Directory összevonási szolgáltatások (AD FS) Azure Active Directory (Azure AD) Connect használatával. Más általános az AD FS-feladatokat, amelyeket az AD FS-farm teljes konfiguráció megtenni, előfordulhat, hogy is tartalmaz.
+# <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Active Directory összevonási szolgáltatások (AD FS) kezelése és testreszabása Azure AD Connect használatával
+Ez a cikk a Active Directory összevonási szolgáltatások (AD FS) (AD FS) Azure Active Directory (Azure AD) használatával történő kezelését és testreszabását ismerteti. Emellett olyan gyakori AD FS feladatokat is tartalmaz, amelyeket a AD FS farmok teljes konfigurálásához lehet szükség.
 
-| Témakör | Ez fedezi |
+| Témakör | Mire terjed ki |
 |:--- |:--- |
-| **Az AD FS kezelése** | |
-| [A bizalmi kapcsolat javítása](#repairthetrust) |Hogyan javítsa ki az összevonási megbízhatósági kapcsolat, az Office 365-tel. |
-| [Az Azure AD-bA a másodlagos bejelentkezési Azonosítót összevonása](#alternateid) | Alternatív bejelentkezési azonosítóval összevonás konfigurálása  |
-| [Az AD FS-kiszolgáló hozzáadása](#addadfsserver) |Hogyan bővít ki egy további AD FS-kiszolgálót az AD FS farmot. |
-| [Az AD FS webalkalmazás-Proxy kiszolgáló hozzáadása](#addwapserver) |Hogyan bővít ki egy AD FS-farm további webalkalmazás-proxykiszolgálóként (WAP)-kiszolgálóról. |
-| [Összevont tartomány hozzáadása](#addfeddomain) |Hogyan adható hozzá egy összevont tartomány. |
-| [Az SSL-tanúsítvány frissítése](how-to-connect-fed-ssl-update.md)| Hogyan frissíthető egy AD FS-farm SSL-tanúsítványát. |
-| **Az AD FS testreszabása** | |
-| [Adjon hozzá egy egyéni vállalati emblémát vagy ábra](#customlogo) |Az AD FS bejelentkezési oldal vállalati embléma és illusztráció testreszabásának módját. |
-| [A bejelentkezési leírásának hozzáadása](#addsignindescription) |Hogyan bejelentkezésilap-leírást. |
-| [Az AD FS-jogcímszabályok módosítása](#modclaims) |Hogyan lehet módosítani az AD FS-jogcímek a különböző összevonásos helyzetekben. |
+| **AD FS kezelése** | |
+| [A megbízhatóság javítása](#repairthetrust) |Az Office 365 összevonási megbízhatóságának javítása. |
+| [Összevonása az Azure AD-vel alternatív bejelentkezési azonosító használatával](#alternateid) | Összevonás konfigurálása alternatív bejelentkezési azonosító használatával  |
+| [AD FS-kiszolgáló hozzáadása](#addadfsserver) |AD FS Farm kibontása további AD FS-kiszolgálóval. |
+| [AD FS webalkalmazás-proxy kiszolgáló hozzáadása](#addwapserver) |AD FS Farm kibontása egy további webalkalmazás-proxy (WAP) kiszolgálóval. |
+| [Összevont tartomány hozzáadása](#addfeddomain) |Összevont tartomány hozzáadása. |
+| [Az SSL-tanúsítvány frissítése](how-to-connect-fed-ssl-update.md)| AD FS Farm SSL-tanúsítványának frissítése. |
+| **AD FS testreszabása** | |
+| [Egyéni vállalati embléma vagy illusztráció hozzáadása](#customlogo) |AD FS bejelentkezési oldal testreszabása vállalati emblémával és illusztrációval. |
+| [Bejelentkezési Leírás hozzáadása](#addsignindescription) |Bejelentkezési oldal leírásának hozzáadása. |
+| [AD FSi jogcím szabályainak módosítása](#modclaims) |AD FS jogcímek módosítása különböző összevonási forgatókönyvekhez. |
 
-## <a name="manage-ad-fs"></a>Az AD FS kezelése
-Az Azure AD Connect minimális felhasználói beavatkozás különböző AD FS kapcsolatos feladatokat végez az Azure AD Connect varázsló használatával. Ha végzett a varázsló futtatásával az Azure AD Connectet telepíti, a varázsló futtatása újra hajthat végre további feladatokat.
+## <a name="manage-ad-fs"></a>AD FS kezelése
+A Azure AD Connect varázslóval számos AD FS kapcsolódó feladatot is végrehajthat Azure AD Connect minimális felhasználói beavatkozással. Miután befejezte a Azure AD Connect telepítését a varázsló futtatásával, további feladatok elvégzéséhez futtassa újra a varázslót.
 
-## <a name="repairthetrust"></a>A bizalmi kapcsolat javítása 
-Az Azure AD Connect használatával ellenőrizze, az AD FS és az Azure AD megbízik, és a megfelelő műveletet, a bizalmi kapcsolat javítása az aktuális állapotát. Kövesse az alábbi lépéseket az Azure AD-kijavításához és az AD FS-megbízhatóság.
+## <a name="repairthetrust"></a>A megbízhatóság javítása 
+A Azure AD Connect segítségével megtekintheti a AD FS és az Azure AD megbízhatóságának aktuális állapotát, és megteheti a szükséges lépéseket a megbízhatóság kijavításához. Az Azure AD és a AD FS megbízhatóság javításához kövesse az alábbi lépéseket.
 
-1. Válassza ki **javítási aad-ben és az AD FS-megbízhatóság** további feladatok listájából.
-   ![Javítsa ki az aad-ben és az AD FS megbízható](./media/how-to-connect-fed-management/RepairADTrust1.PNG)
+1. Válassza ki a **HRE és az ADFS-megbízhatóság javítása** elemet a további feladatok listájából.
+   ![HRE-és ADFS-megbízhatóság javítása](./media/how-to-connect-fed-management/RepairADTrust1.PNG)
 
-2. Az a **az Azure AD Connect** lapon adja meg az Azure AD globális rendszergazdai hitelesítő adataival, és kattintson a **tovább**.
+2. A **Kapcsolódás az Azure ad-hoz** lapon adja meg az Azure ad globális rendszergazdai hitelesítő adatait, és kattintson a **tovább**gombra.
    ![Csatlakozás az Azure AD-hez](./media/how-to-connect-fed-management/RepairADTrust2.PNG)
 
-3. Az a **távelérési hitelesítő adatainak** lap, adja meg a tartományi rendszergazda hitelesítő adatait.
+3. A **távelérési hitelesítő adatok** lapon adja meg a tartományi rendszergazda hitelesítő adatait.
 
-   ![Távoli hozzáférési hitelesítő adatok](./media/how-to-connect-fed-management/RepairADTrust3.PNG)
+   ![Távelérési hitelesítő adatok](./media/how-to-connect-fed-management/RepairADTrust3.PNG)
 
-    Miután rákattintott **tovább**, az Azure AD Connect ellenőrzi a tanúsítvány állapotának és az esetleges problémákat jeleníti meg.
+    Miután rákattintott a **tovább**gombra, Azure ad Connect ellenőrzi a tanúsítvány állapotát, és megjeleníti a problémákat.
 
-    ![Tanúsítvány állapota](./media/how-to-connect-fed-management/RepairADTrust4.PNG)
+    ![Tanúsítványok állapota](./media/how-to-connect-fed-management/RepairADTrust4.PNG)
 
-    A **konfigurálásra kész** lap kijavításához a bizalmi kapcsolat végrehajtott műveletek listáját jeleníti meg.
+    A **konfigurálásra kész** lapon a megbízhatóság javításához végrehajtandó műveletek listája látható.
 
-    ![Ready to configure (Konfigurálásra kész)](./media/how-to-connect-fed-management/RepairADTrust5.PNG)
+    ![Konfigurálásra kész](./media/how-to-connect-fed-management/RepairADTrust5.PNG)
 
-4. Kattintson a **telepítése** a megbízhatóság javításához.
-
-> [!NOTE]
-> Az Azure AD Connect is csak kijavítása vagy önaláírt tanúsítványokat való reagálás. Az Azure AD Connect nem tudja kijavítani a harmadik féltől származó tanúsítványok.
-
-## <a name="alternateid"></a>Az Azure AD szolgáltatással AlternateID összevonása 
-Javasoljuk, hogy a helyszíni felhasználó egyszerű felhasználóneve, és a felhőben, egyszerű felhasználónév is ugyanaz marad. Ha a helyszíni egyszerű Felhasználónévvel használ (például nem átirányítható tartomány Contoso.local), vagy nem módosítható miatt a helyi alkalmazások függőségei, javasoljuk, hogy állítsa be másodlagos bejelentkezési azonosítót. Másodlagos bejelentkezési Azonosítót lehetővé teszi, hogy felhasználói bejelentkezés beállítása ahol a felhasználók nem egyszerű, például a mail attribútum be lehet jelentkezni. A választás egyszerű felhasználónév az Azure AD Connect, az alapértelmezett érték a userPrincipalName attribútum az Active Directoryban. Ha bármely egyéb attribútumuk egyszerű felhasználónév kiválasztása és összevonja a az AD FS használatával, majd az Azure AD Connect lesz az AD FS konfigurálása alternatív bejelentkezési azonosítóval. Alább látható egy példa az egyszerű felhasználónév egy másik attribútum kiválasztása:
-
-![Másik azonosító attribútum kiválasztása](./media/how-to-connect-fed-management/attributeselection.png)
-
-Alternatív bejelentkezési azonosító konfigurálása az AD FS-hez két fő lépésből áll:
-1. **Állítsa be az megfelelő kiállítási jogcímek**: Az Azure AD függő entitás megbízhatóságához a kiállítási jogcímszabályok módosultak, hogy a másik azonosító a felhasználó a kiválasztott UserPrincipalName attribútum használja.
-2. **Engedélyezze a másodlagos bejelentkezési Azonosítót a az AD FS konfigurációt**: Az AD FS konfigurációt, hogy az AD FS használatával a másik azonosítót. a megfelelő erdőkben található felhasználókat kereshet frissül. Ez a konfiguráció az AD FS Windows Server 2012 R2 (KB2919355) vagy újabb rendszeren támogatott. Ha az AD FS-kiszolgáló 2012 R2, az Azure AD Connect ellenőrzi, hogy a szükséges KB-os. Ha a KB nem észlel, egy figyelmeztetés fog megjelenni konfiguráció befejezése után alább látható módon:
-
-    ![Hiányzó KB-os 2012R2 kapcsolatos figyelmeztetés](./media/how-to-connect-fed-management/kbwarning.png)
-
-    A konfiguráció esetén a hiányzó KB válhat, telepítse a szükséges [KB2919355](https://go.microsoft.com/fwlink/?LinkID=396590) , majd javítsa a bizalmi kapcsolat használatával [AAD javítása és az AD FS-megbízhatóság](#repairthetrust).
+4. A megbízhatóság kijavításához kattintson a **telepítés** gombra.
 
 > [!NOTE]
-> A alternateID és manuális konfigurálásához szükséges lépésekről további információért olvassa el [másik bejelentkezési azonosító konfigurálása](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configuring-alternate-login-id)
+> Azure AD Connect csak önaláírt tanúsítványokat tud kijavítani vagy fellépni. Azure AD Connect nem tudja kijavítani a külső gyártótól származó tanúsítványokat.
 
-## <a name="addadfsserver"></a>Az AD FS-kiszolgáló hozzáadása 
+## <a name="alternateid"></a>Összevonása az Azure AD-vel a AlternateID használatával 
+Javasoljuk, hogy a helyszíni egyszerű felhasználónevet (UPN) és a Felhőbeli egyszerű felhasználónevet is megtartsa. Ha a helyszíni UPN nem útválasztón alapuló tartományt használ (pl. Contoso. local) vagy a helyi alkalmazás függőségei miatt nem módosítható, javasoljuk, hogy állítson be alternatív bejelentkezési azonosítót. Az alternatív bejelentkezési azonosító lehetővé teszi a bejelentkezési élmény konfigurálását, amelyben a felhasználók az egyszerű felhasználónévtől (például a levelezéstől) eltérő attribútummal jelentkezhetnek be. Az egyszerű felhasználónevek Azure AD Connect alapértelmezett értéke a Active Directory userPrincipalName attribútuma. Ha az egyszerű felhasználónévhez más attribútumot is választ, és a AD FS használatával egyesítő, Azure AD Connect konfigurálja AD FS a helyettesítő bejelentkezési AZONOSÍTÓhoz. Alább látható egy példa arra, hogy egy másik attribútumot válasszon a felhasználó egyszerű neveként:
+
+![Alternatív azonosító attribútum kiválasztása](./media/how-to-connect-fed-management/attributeselection.png)
+
+A AD FS alternatív bejelentkezési AZONOSÍTÓjának konfigurálása két fő lépésből áll:
+1. **Adja meg a kiállítási jogcímek megfelelő készletét**: Az Azure AD függő entitás megbízhatóságában a kiállítási jogcím szabályai úgy módosulnak, hogy a kiválasztott UserPrincipalName attribútumot használják a felhasználó másodlagos AZONOSÍTÓJAként.
+2. **Alternatív bejelentkezési azonosító engedélyezése a AD FS konfigurációban**: A AD FS konfiguráció frissült, így a AD FS a megfelelő erdőkben kereshet felhasználókat a helyettesítő azonosító használatával. Ezt a konfigurációt AD FS Windows Server 2012 R2 (KB2919355) vagy újabb rendszereken támogatja. Ha a AD FS-kiszolgálók 2012 R2, Azure AD Connect ellenőrzi a szükséges KB jelenlétét. Ha a KB-ot nem észleli a rendszer, a konfiguráció befejezése után egy figyelmeztetés jelenik meg, ahogy az alábbi ábrán is látható:
+
+    ![Figyelmeztetés a 2012R2 hiányzó KB-ról](./media/how-to-connect-fed-management/kbwarning.png)
+
+    Ha hiányzó TUDÁSBÁZIS esetén szeretné kijavítani a konfigurációt, telepítse a szükséges [KB2919355](https://go.microsoft.com/fwlink/?LinkID=396590) , majd javítsa ki a megbízhatóságot a [javítási hre és a AD FS megbízhatóság](#repairthetrust)használatával.
 
 > [!NOTE]
-> Az AD FS kiszolgáló hozzáadása az Azure AD Connect a PFX-tanúsítvány szükséges. Ezért a művelet végrehajtása, csak akkor, ha az AD FS-farm konfigurálta az Azure AD Connect használatával.
+> A alternateID és a manuális konfigurálásával kapcsolatos további információkért olvassa el a [másik bejelentkezési azonosító konfigurálása](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configuring-alternate-login-id) című témakört.
 
-1. Válassza ki **további összevonási kiszolgáló telepítése**, és kattintson a **tovább**.
+## <a name="addadfsserver"></a>AD FS-kiszolgáló hozzáadása 
+
+> [!NOTE]
+> AD FS kiszolgáló hozzáadásához Azure AD Connect szükséges a PFX-tanúsítvány. Ezért ezt a műveletet csak akkor hajthatja végre, ha a AD FS farmot Azure AD Connect használatával konfigurálta.
+
+1. Válassza **a további összevonási kiszolgáló telepítése**lehetőséget, majd kattintson a **tovább**gombra.
 
    ![További összevonási kiszolgáló](./media/how-to-connect-fed-management/AddNewADFSServer1.PNG)
 
-2. Az a **az Azure AD Connect** lapon adja meg az Azure AD globális rendszergazdai hitelesítő adataival, és kattintson a **tovább**.
+2. A **Kapcsolódás az Azure ad-hoz** lapon adja meg az Azure ad globális rendszergazdai hitelesítő adatait, és kattintson a **tovább**gombra.
 
-   ![Csatlakozás az Azure AD szolgáltatáshoz](./media/how-to-connect-fed-management/AddNewADFSServer2.PNG)
+   ![Összekapcsolás az Azure AD-vel](./media/how-to-connect-fed-management/AddNewADFSServer2.PNG)
 
-3. Adja meg a tartomány rendszergazdai hitelesítő adatait.
+3. Adja meg a tartományi rendszergazda hitelesítő adatait.
 
-   ![Tartományi rendszergazdai hitelesítő adatokkal](./media/how-to-connect-fed-management/AddNewADFSServer3.PNG)
+   ![Tartományi rendszergazdai hitelesítő adatok](./media/how-to-connect-fed-management/AddNewADFSServer3.PNG)
 
-4. Az Azure AD Connect kéri a jelszót az új AD FS-farm konfigurálása az Azure AD Connecttel során megadott PFX-fájl. Kattintson a **jelszó megadása** PFX-fájljának jelszónak a megadását.
+4. Azure AD Connect kéri a PFX-fájl jelszavának megadását, miközben az új AD FS Farm konfigurálását Azure AD Connect. Kattintson a **jelszó megadása** gombra a pfx-fájl jelszavának megadásához.
 
    ![Tanúsítványjelszó](./media/how-to-connect-fed-management/AddNewADFSServer4.PNG)
 
     ![SSL-tanúsítvány megadása](./media/how-to-connect-fed-management/AddNewADFSServer5.PNG)
 
-5. Az a **AD FS-kiszolgálók** lap, adja meg a kiszolgáló nevét vagy IP-cím lehet hozzáadni az AD FS-farm.
+5. A **AD FS kiszolgálók** lapon adja meg a AD FS farmhoz hozzáadandó kiszolgáló nevét vagy IP-címét.
 
    ![AD FS-kiszolgálók](./media/how-to-connect-fed-management/AddNewADFSServer6.PNG)
 
-6. Kattintson a **tovább**, és végezze el a végső **konfigurálása** lapot. Miután az Azure AD Connect befejezte a kiszolgálók hozzáadását az AD FS-farm, egyúttal arra, hogy ellenőrizze a kapcsolatot.
+6. Kattintson a **tovább**gombra, és folytassa a **konfigurálást** a végső oldalon. Miután Azure AD Connect befejezte a kiszolgálók hozzáadását a AD FS farmhoz, lehetősége lesz ellenőrizni a kapcsolatot.
 
-   ![Ready to configure (Konfigurálásra kész)](./media/how-to-connect-fed-management/AddNewADFSServer7.PNG)
+   ![Konfigurálásra kész](./media/how-to-connect-fed-management/AddNewADFSServer7.PNG)
 
     ![A telepítés befejeződött](./media/how-to-connect-fed-management/AddNewADFSServer8.PNG)
 
-## <a name="addwapserver"></a>Az AD FS WAP-kiszolgáló hozzáadása 
+## <a name="addwapserver"></a>AD FS WAP-kiszolgáló hozzáadása 
 
 > [!NOTE]
-> A WAP-kiszolgáló hozzáadása az Azure AD Connect a PFX-tanúsítvány szükséges. Ezért csak ezt a műveletet is végezhet, ha az AD FS-farm konfigurált Azure AD Connect használatával.
+> WAP-kiszolgáló hozzáadásához Azure AD Connect szükséges a PFX-tanúsítvány. Ezért ezt a műveletet csak akkor hajthatja végre, ha a AD FS farmot Azure AD Connect használatával konfigurálta.
 
-1. Válassza ki **webalkalmazás-Proxy üzembe helyezése** elérhető feladatok listájában.
+1. Válassza a webalkalmazás- **proxy telepítése** lehetőséget az elérhető feladatok listájából.
 
-   ![Webalkalmazás-Proxy telepítéséhez](./media/how-to-connect-fed-management/WapServer1.PNG)
+   ![Webalkalmazás-proxy üzembe helyezése](./media/how-to-connect-fed-management/WapServer1.PNG)
 
-2. Adja meg az Azure globális rendszergazdai hitelesítő adatokkal.
+2. Adja meg az Azure globális rendszergazdai hitelesítő adatait.
 
-   ![Csatlakozás az Azure AD szolgáltatáshoz](./media/how-to-connect-fed-management/wapserver2.PNG)
+   ![Összekapcsolás az Azure AD-vel](./media/how-to-connect-fed-management/wapserver2.PNG)
 
-3. Az a **adja meg az SSL-tanúsítvány** lap, adja meg a jelszót, amely az Azure AD Connect az AD FS-farm konfigurálásakor megadott PFX-fájl.
+3. Az **SSL-tanúsítvány megadása** lapon adja meg a AD FS Farm Azure ad Connect használatával való konfigurálásakor megadott pfx-fájl jelszavát.
    ![Tanúsítvány jelszava](./media/how-to-connect-fed-management/WapServer3.PNG)
 
     ![SSL-tanúsítvány megadása](./media/how-to-connect-fed-management/WapServer4.PNG)
 
-4. Adja hozzá a kiszolgálót a WAP-kiszolgáló számára. Mivel előfordulhat, hogy a WAP-kiszolgáló nem csatlakozik a tartományhoz, a varázsló a hozzáadni kívánt kiszolgálón rendszergazdai hitelesítő adatokat kér.
+4. Adja hozzá a kiszolgálót a WAP-kiszolgálóként való hozzáadáshoz. Mivel előfordulhat, hogy a WAP-kiszolgáló nem csatlakozik a tartományhoz, a varázsló kéri a rendszergazdai hitelesítő adatok megadását a hozzáadott kiszolgáló számára.
 
-   ![A felügyeleti kiszolgáló hitelesítő adatai](./media/how-to-connect-fed-management/WapServer5.PNG)
+   ![Felügyeleti kiszolgáló hitelesítő adatai](./media/how-to-connect-fed-management/WapServer5.PNG)
 
-5. Az a **Proxy megbízhatósági hitelesítő adatai** lap, adja meg a rendszergazdai hitelesítő adatokat konfigurálni a proxyt, megbízható, és a az AD FS-farm elsődleges kiszolgálóját eléréséhez.
+5. A **proxy megbízhatóságának hitelesítő adatai** lapon adja meg a rendszergazdai hitelesítő adatokat a proxy megbízhatóságának konfigurálásához és a AD FS Farm elsődleges kiszolgálójának eléréséhez.
 
    ![Proxy megbízhatósági hitelesítő adatai](./media/how-to-connect-fed-management/WapServer6.PNG)
 
-6. Az a **konfigurálásra kész** oldalon, a varázslóban végrehajtott műveletek listáját jeleníti meg.
+6. A **készen áll** a konfigurálásra lapon a varázsló megjeleníti a végrehajtandó műveletek listáját.
 
-   ![Ready to configure (Konfigurálásra kész)](./media/how-to-connect-fed-management/WapServer7.PNG)
+   ![Konfigurálásra kész](./media/how-to-connect-fed-management/WapServer7.PNG)
 
-7. Kattintson a **telepítése** az a konfiguráció befejezéséhez. A konfiguráció befejezését követően a varázslóban teszi, az a-kiszolgálók elérhetőségének ellenőrzése. Kattintson a **ellenőrizze** , ellenőrizze a kapcsolatot.
+7. A konfigurálás befejezéséhez kattintson a **telepítés** gombra. A konfiguráció befejezése után a varázsló lehetőséget ad a kiszolgálók kapcsolatának ellenőrzésére. A kapcsolat ellenőrzéséhez kattintson az **ellenőrzés** gombra.
 
    ![A telepítés befejeződött](./media/how-to-connect-fed-management/WapServer8.PNG)
 
 ## <a name="addfeddomain"></a>Összevont tartomány hozzáadása 
 
-Az Azure AD Connect használatával összevonni az Azure AD-tartomány hozzáadása könnyebbé vált. Az Azure AD Connect a tartományt összevonásra hozzáadja, és módosítja a jogcímszabályok a kibocsátó megfelelően megfelelően, ha az Azure ad-vel összevont több tartomány.
+Egyszerűen hozzáadhat egy tartományt az Azure AD-vel összevont tartományhoz Azure AD Connect használatával. Azure AD Connect hozzáadja a tartományt az összevonáshoz, és módosítja a jogcím szabályait, hogy megfelelően tükrözze a kiállítót, ha több, az Azure AD-vel összevont tartománnyal rendelkezik.
 
-1. Összevont tartomány hozzáadása, válassza ki a feladatot **hozzá egy további Azure AD-tartomány**.
+1. Összevont tartomány hozzáadásához válassza a **további Azure ad-tartomány hozzáadása**feladatot.
 
    ![További Azure AD-tartomány](./media/how-to-connect-fed-management/AdditionalDomain1.PNG)
 
-2. A varázsló következő oldalán adja meg Azure ad-ben a globális rendszergazdai hitelesítő adatokkal.
+2. A varázsló következő lapján adja meg az Azure AD globális rendszergazdai hitelesítő adatait.
 
-   ![Csatlakozás az Azure AD szolgáltatáshoz](./media/how-to-connect-fed-management/AdditionalDomain2.PNG)
+   ![Összekapcsolás az Azure AD-vel](./media/how-to-connect-fed-management/AdditionalDomain2.PNG)
 
-3. Az a **távelérési hitelesítő adatainak** lap, adja meg a tartomány rendszergazdai hitelesítő adatait.
+3. A **távelérési hitelesítő adatok** lapon adja meg a tartományi rendszergazdai hitelesítő adatokat.
 
-   ![Távoli hozzáférési hitelesítő adatok](./media/how-to-connect-fed-management/additionaldomain3.PNG)
+   ![Távelérési hitelesítő adatok](./media/how-to-connect-fed-management/additionaldomain3.PNG)
 
-4. A következő oldalon a varázsló akkor is összevonható a helyszíni címtár az Azure AD-tartomány listáját tartalmazza. Válassza ki a tartományt a listából.
+4. A következő lapon a varázsló megjeleníti azon Azure AD-tartományok listáját, amelyekkel összevonása a helyszíni címtárat. Válassza ki a tartományt a listából.
 
-   ![Azure AD-tartomány](./media/how-to-connect-fed-management/AdditionalDomain4.PNG)
+   ![Azure AD domain](./media/how-to-connect-fed-management/AdditionalDomain4.PNG)
 
-    Miután kiválasztotta a tartományhoz, a varázsló biztosít további a varázsló által elvégzendő műveleteket és a konfiguráció hatásának megfelelő információt. Bizonyos esetekben egy tartományhoz, amely még nem ellenőrizte az Azure ad-ben, ha a varázsló nyújt segítséget a tartomány ellenőrzéséhez. Lásd: [az egyéni tartománynév hozzáadása az Azure Active Directory](../active-directory-domains-add-azure-portal.md) további részletekért.
+    A tartomány kiválasztása után a varázsló megfelelő információkat biztosít a varázsló által végrehajtandó további műveletekről és a konfiguráció hatásáról. Bizonyos esetekben, ha olyan tartományt választ ki, amely még nem lett ellenőrizve az Azure AD-ben, a varázsló információt nyújt a tartomány ellenőrzéséhez. További részletekért tekintse [meg az Egyéni tartománynév hozzáadása](../active-directory-domains-add-azure-portal.md) a Azure Active Directoryhoz című témakört.
 
-5. Kattintson a **tovább**. A **konfigurálásra kész** lapján láthatja azokat a műveleteket, amelyeket az Azure AD Connect elvégzi. Kattintson a **telepítése** az a konfiguráció befejezéséhez.
+5. Kattintson a **Tovább** gombra. A **konfigurálásra kész** lapon látható azoknak a műveleteknek a listája, amelyeket a Azure ad Connect végrehajt. A konfigurálás befejezéséhez kattintson a **telepítés** gombra.
 
-   ![Ready to configure (Konfigurálásra kész)](./media/how-to-connect-fed-management/AdditionalDomain5.PNG)
-
-> [!NOTE]
-> A hozzáadott összevont tartomány felhasználóinak szinkronizálása előtt fognak tudni bejelentkezni az Azure AD kell.
-
-## <a name="ad-fs-customization"></a>Az AD FS Testreszabás
-Az alábbiakban néhány gyakori feladatot, amelyet lehetséges, hogy az AD FS bejelentkezési oldal testreszabása végrehajtásához részleteit.
-
-## <a name="customlogo"></a>Adjon hozzá egy egyéni vállalati emblémát vagy ábra 
-A megjelenő vállalatembléma módosításához a **bejelentkezési** lapon, a következő Windows PowerShell-parancsmagot és szintaxist.
+   ![Konfigurálásra kész](./media/how-to-connect-fed-management/AdditionalDomain5.PNG)
 
 > [!NOTE]
-> Az emblémát a javasolt dimenziók 260 x 35 \@ 96 dpi 10 KB-nál nem nagyobb mérete.
+> A hozzáadott összevont tartományba tartozó felhasználókat szinkronizálni kell, mielőtt be tudnak jelentkezni az Azure AD-be.
+
+## <a name="ad-fs-customization"></a>AD FS testreszabása
+A következő szakaszokban részletesen ismertetjük azokat a gyakori feladatokat, amelyeket a AD FS bejelentkezési oldalának testreszabásakor végre kell hajtania.
+
+## <a name="customlogo"></a>Egyéni vállalati embléma vagy illusztráció hozzáadása 
+A **bejelentkezési** lapon megjelenő cég emblémájának módosításához használja a következő Windows PowerShell-parancsmagot és szintaxist.
+
+> [!NOTE]
+> Az embléma ajánlott méretei 260 x 35 \@ 96 dpi, amely nem haladja meg a 10 KB-ot.
 
     Set-AdfsWebTheme -TargetName default -Logo @{path="c:\Contoso\logo.PNG"}
 
 > [!NOTE]
-> A *TargetName* paraméter megadása kötelező. Az alapértelmezett témájának és az AD FS alapértelmezett neve.
+> A *TargetName* paraméter megadása kötelező. Az AD FS nevű alapértelmezett téma a default (alapértelmezett).
 
-## <a name="addsignindescription"></a>A bejelentkezési leírásának hozzáadása 
-A bejelentkezésilap-leírást a **bejelentkezési oldal**, használja a következő Windows PowerShell-parancsmagot és szintaxist.
+## <a name="addsignindescription"></a>Bejelentkezési Leírás hozzáadása 
+A bejelentkezési oldal leírásának hozzáadásához használja a következőWindows PowerShell-parancsmagot és szintaxist.
 
     Set-AdfsGlobalWebContent -SignInPageDescriptionText "<p>Sign-in to Contoso requires device registration. Click <A href='http://fs1.contoso.com/deviceregistration/'>here</A> for more information.</p>"
 
-## <a name="modclaims"></a>Az AD FS-jogcímszabályok módosítása 
-Az AD FS támogatja egy gazdag jogcím nyelvet használó egyéni jogcímszabályok létrehozása. További információkért lásd: [a Jogcímszabály nyelvének szerepe](https://technet.microsoft.com/library/dd807118.aspx).
+## <a name="modclaims"></a>AD FSi jogcím szabályainak módosítása 
+A AD FS támogatja az egyéni jogcím-szabályok létrehozásához használható, sokoldalú jogcímek nyelvét. További információ: a [jogcím-szabály nyelvének szerepe](https://technet.microsoft.com/library/dd807118.aspx).
 
-A következő szakaszok ismertetik, hogyan írhat az egyes forgatókönyvekhez kapcsolódik az Azure ad-ben egyéni szabályok és az AD FS összevonási.
+Az alábbi szakaszok azt ismertetik, hogyan írhat egyéni szabályokat az Azure AD-hez és a AD FS-összevonáshoz kapcsolódó egyes forgatókönyvekhez.
 
-### <a name="immutable-id-conditional-on-a-value-being-present-in-the-attribute"></a>Egy érték van jelen, az attribútum az a feltétele nem módosítható azonosító
-Az Azure AD Connect teszi lehetővé, a forráshorgony használt objektumok szinkronizálva lesznek az Azure AD-attribútum. Ha az egyéni attribútum értéke nem üres, érdemes egy nem módosítható azonosító jogcímet.
+### <a name="immutable-id-conditional-on-a-value-being-present-in-the-attribute"></a>Megváltoztathatatlan azonosító az attribútumban található értéktől függ.
+Azure AD Connect lehetővé teszi, hogy olyan attribútumot határozzon meg, amelyet forrásként kell használni az objektumok Azure AD-vel való szinkronizálásakor. Ha az egyéni attribútum értéke nem üres, előfordulhat, hogy egy nem módosítható azonosító jogcímet szeretne kiállítani.
 
-Kiválaszthatja például **ms-ds-consistencyguid** a forráshorgony és a probléma attribútumként **ImmutableID** , **ms-ds-consistencyguid** a használatieset-attribútum értéke alapján. Ha nincs szemben az attribútum értéke, **objectGuid** nem módosítható azonosító néven A következő szakaszban leírtak szerint egyéni jogcímszabályok készlete hozhatnak létre.
+Például kiválaszthatja az **MS-DS-consistencyguid** attribútumot a forrás-horgonyhoz, és a **ImmutableID** -et **MS-DS-consistencyguid-** ként adja meg, ha az attribútumnak van egy értéke. Ha nem áll rendelkezésre érték az attribútumhoz, a **ObjectGUID** a nem változtatható azonosítóként adja ki. Az egyéni jogcím-szabályok készletét a következő szakaszban leírtak szerint hozhatja létre.
 
-**1. szabály: Lekérdezés attribútumok**
+**1. szabály: Lekérdezési attribútumok**
 
     c:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname"]
     => add(store = "Active Directory", types = ("http://contoso.com/ws/2016/02/identity/claims/objectguid", "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"), query = "; objectGuid,ms-ds-consistencyguid;{0}", param = c.Value);
 
-Ez a szabály a értékeit lekérdezésekor **ms-ds-consistencyguid** és **objectGuid** a felhasználó az Active Directoryból. Módosítsa a tároló nevét az AD FS központi telepítésben a megfelelő Tárolónév. Is módosítása a jogcímek írja be a megfelelő jogcím-e az összevonási típust meghatározottak szerint **objectGuid** és **ms-ds-consistencyguid**.
+Ebben a szabályban az **MS-DS-consistencyguid** és a **ObjectGUID** értékeit kérdezi le a felhasználó számára a Active Directory. Módosítsa az áruház nevét egy megfelelő tároló nevére a AD FS üzemelő példányában. Módosítsa a jogcím típusát a **ObjectGUID** és az **MS-DS-consistencyguid**számára meghatározott megfelelő jogcím-típusra is.
 
-Ezenkívül használatával **hozzáadása** , és nem **probléma**, hozzáadása az entitáshoz tartozó kimenő probléma elkerüléséhez, és az értékeket is használhat, mint köztes értékek. A későbbi szabályokban jogcímet állít ki, melyik értéket használja, mint a nem módosítható azonosítója. a létrehozása után
+Emellett a **Hozzáadás** és a nem **probléma**használatával nem adhat hozzá kimenő hibát az entitáshoz, és az értékeket közbenső értékként használhatja. A jogcímet egy későbbi szabályban kell kiadnia, miután létrehozta a megváltoztathatatlan AZONOSÍTÓként használandó értéket.
 
-**2. szabály: Ellenőrizze, hogy a felhasználó létezik-e az ms-ds-consistencyguid**
+**2. szabály: Ellenőrizze, hogy létezik-e ms-DS-consistencyguid a felhasználó számára**
 
     NOT EXISTS([Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"])
     => add(Type = "urn:anandmsft:tmp/idflag", Value = "useguid");
 
-Ez a szabály meghatározása jelző ideiglenes nevű **idflag** , amely **useguid** esetén nincs **ms-ds-consistencyguid** kitölti a rendszer a felhasználó számára. Ez mögötti logika az a tény, hogy az AD FS nem engedélyezi üres jogcímeket. Igen, jogcímek hozzáadásakor http://contoso.com/ws/2016/02/identity/claims/objectguid és http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid az 1. szabály, hogy a kialakított egy **msdsconsistencyguid** csak jogcímet, ha az érték a felhasználó van feltöltve. Ha ez nincs feltöltve, az AD FS látja, hogy üres értéket fog rendelkezni, és azonnal csökken. Összes objektum lesz **objectGuid**, így a jogcím mindig ott 1. szabály végrehajtása után.
+Ez a szabály egy **idflag** nevű ideiglenes jelzőt határoz meg, amely **useguid** van beállítva, ha nincs **MS-DS-consistencyguid** feltöltve a felhasználó számára. A mögöttes logika az a tény, hogy AD FS nem engedélyezi az üres jogcímeket. Tehát a jogcímek http://contoso.com/ws/2016/02/identity/claims/objectguid hozzáadásakor és http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid az 1. szabályban csak akkor fejeződik be egy **msdsconsistencyguid** -jogcím, ha az érték a felhasználó számára van feltöltve. Ha nincs feltöltve, AD FS úgy látja, hogy üres értékkel fog rendelkezni, és azonnal eldobja. Az összes objektum **ObjectGUID**fog rendelkezni, így az 1. szabály végrehajtása után a jogcím mindig ott marad.
 
-**3. szabály: Ms-ds-consistencyguid ki, nem módosítható azonosító, ha telepítve**
+**3. szabály: Az MS-DS-consistencyguid nem változtatható AZONOSÍTÓként való kiadása**
 
     c:[Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"]
-    => issue(Type = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier", Value = c.Value);
+    => issue(Type = "http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID", Value = c.Value);
 
-Ez az egy implicit **Exist** ellenőrzése. Ha a jogcím értéke már létezik, majd adja ki, amely nem módosítható azonosító néven Az előző példában a **nameidentifier** jogcím. A környezetben nem módosítható azonosító módosíthatja a megfelelő jogcím típusa kell.
+Ez egy implicit **létezési** vizsgálat. Ha a jogcím értéke létezik, ezt a problémát nem módosítható AZONOSÍTÓként adja ki. Az előző példa a **NameIdentifier** jogcímet használja. Ezt a megfelelő jogcím-típusra kell módosítania a környezetben megváltoztathatatlan AZONOSÍTÓhoz.
 
-**4. szabály: Nem módosítható azonosító objectGuid ki, ha ms-ds-consistencyGuid nem található**
+**4. szabály: ObjectGuid-probléma nem módosítható AZONOSÍTÓként, ha az MS-DS-consistencyGuid nincs jelen**
 
     c1:[Type == "urn:anandmsft:tmp/idflag", Value =~ "useguid"]
     && c2:[Type == "http://contoso.com/ws/2016/02/identity/claims/objectguid"]
-    => issue(Type = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier", Value = c2.Value);
+    => issue(Type = "http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID", Value = c2.Value);
 
-Ebben a szabályban, már egyszerűen ellenőrzése az ideiglenes jelző **idflag**. Eldöntheti, hogy-e a jogcímet ad hozzá tartozó érték alapján.
+Ebben a szabályban egyszerűen ellenőrzi az ideiglenes jelző **idflag**. Ön dönti el, hogy a jogcímet az értéke alapján állítja-e ki.
 
 > [!NOTE]
-> Ezek a szabályok sorrendjének fontos.
+> Ezeknek a szabályoknak a sorszáma fontos.
 
-### <a name="sso-with-a-subdomain-upn"></a>SSO with a subdomain UPN
+### <a name="sso-with-a-subdomain-upn"></a>SSO altartománybeli egyszerű felhasználónévvel
 
-Több tartomány az Azure AD Connect használatával leírtak szerint adhat hozzá [adjon hozzá egy új összevont tartományt](how-to-connect-fed-management.md#addfeddomain). Az Azure AD Connect verziója 1.1.553.0 és a legújabb automatikusan létrehozza a megfelelő jogcímszabály issuerID számára. Ha nem használhatja az Azure AD Connect verziója 1.1.553.0 vagy legújabb, javasoljuk, hogy [Azure AD RPT Jogcímszabályok](https://aka.ms/aadrptclaimrules) eszköz létrehozásához, és állítsa be az Azure AD függő entitás megbízhatóságához a megfelelő jogcímszabályok segítségével.
+Az [új összevont tartomány hozzáadása](how-to-connect-fed-management.md#addfeddomain)című témakörben leírtak szerint több tartományt is hozzáadhat összevontként Azure ad Connect használatával. Azure AD Connect a 1.1.553.0 és a legújabb verzió automatikusan létrehozza a megfelelő issuerID. Ha nem tudja használni a Azure AD Connect 1.1.553.0 vagy legújabb verzióját, ajánlott az [Azure ad RPT jogcím-szabályok](https://aka.ms/aadrptclaimrules) eszközzel létrehozni és beállítani az Azure ad függő entitás megbízhatóságának megfelelő jogcímeket.
 
 ## <a name="next-steps"></a>További lépések
-Tudjon meg többet [felhasználói bejelentkezési lehetőségek](plan-connect-user-signin.md).
+További információ a [felhasználói bejelentkezési lehetőségekről](plan-connect-user-signin.md).

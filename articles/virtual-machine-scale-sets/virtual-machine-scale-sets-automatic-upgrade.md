@@ -1,9 +1,9 @@
 ---
-title: Operációs rendszer lemezkép automatikus verziófrissítését, az Azure-beli virtuálisgép-méretezési csoportokban |} A Microsoft Docs
-description: Ismerje meg az operációsrendszer-képet egy méretezési csoportban lévő Virtuálisgép-példányokon automatikus frissítése
+title: Az operációs rendszer rendszerképének automatikus frissítése Azure-beli virtuálisgép-méretezési csoportokkal | Microsoft Docs
+description: Ismerje meg, hogyan frissítheti automatikusan az operációsrendszer-rendszerképet a méretezési csoport virtuálisgép-példányain
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: mayanknayar
+author: shandilvarun
 manager: drewm
 editor: ''
 tags: azure-resource-manager
@@ -13,74 +13,87 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/25/2019
-ms.author: manayar
-ms.openlocfilehash: 007f2801efed8da4964808056563418dec7f64d5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.date: 07/16/2019
+ms.author: vashan
+ms.openlocfilehash: 9825ef1426a1c93f94b502c396fbaab1f86a924e
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59798508"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71263502"
 ---
-# <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Az Azure virtuálisgép-méretezési csoport automatikus operációs rendszer lemezkép frissítéseinek beállítása
+# <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Azure virtuálisgép-méretezési csoport automatikus operációsrendszer-rendszerképének frissítése
 
-Biztonságos, és automatikusan frissítse az operációsrendszer-lemezt a méretezési csoportban szereplő összes példány automatikus operációsrendszer-lemezkép engedélyezése a méretezési készlet segít a könnyű felügyeleti frissíti.
+Az operációsrendszer-lemezképek automatikus verziófrissítésének engedélyezése a méretezési csoporton belül a méretezési csoport összes példányához tartozó operációsrendszer-lemez biztonságos és automatikus frissítésével megkönnyíti a frissítés kezelését.
 
-Operációs rendszer automatikus verziófrissítése a következő jellemzőkkel rendelkezik:
+Az operációs rendszer automatikus frissítése a következő jellemzőkkel rendelkezik:
 
-- A beállítása után rendszerképet kiadók által közzétett legújabb operációsrendszer-lemezkép a rendszer automatikusan alkalmazza a méretezési csoport felhasználói beavatkozás nélkül.
-- Frissíti a példányok kötegek működés közbeni módon minden alkalommal, amikor a közzétevő által közzétett új platform-lemezképet.
-- Alkalmazás állapotadat-mintavételek integrálható és [Application Health bővítmény](virtual-machine-scale-sets-health-extension.md).
-- A Virtuálisgép-méretek és a Windows- és Linux platform rendszerképeit működik.
-- (Operációs rendszer Verziófrissítései is kezdeményezhető, manuálisan is) bármikor is kikapcsolja az automatikus frissítéseket.
-- Virtuális gép operációsrendszer-lemezének helyére az új operációsrendszer-lemez legfrissebb rendszerképverzió hoztak létre. Konfigurált bővítmények és adatok egyéni parancsfájlok futnak, közben megőrződnek lemezen tárolt adatokat.
-- [Végrehajtási](virtual-machine-scale-sets-extension-sequencing.md) használata támogatott.
+- A konfigurálást követően a lemezkép-közzétevők által közzétett legújabb operációsrendszer-lemezképet a rendszer automatikusan alkalmazza a méretezési csoportra felhasználói beavatkozás nélkül.
+- A példányok kötegeit folyamatosan, a kiadó által közzétett új platform-rendszerkép közzétételekor frissíti.
+- Integrálható az Application Health-szondákkal és az [alkalmazás-állapot bővítménnyel](virtual-machine-scale-sets-health-extension.md).
+- Minden virtuálisgép-mérethez használható, valamint Windows-és Linux-rendszerképekhez is.
+- Bármikor letilthatja az automatikus frissítést (az operációs rendszer frissítései manuálisan is elindíthatók).
+- A virtuális gép operációsrendszer-lemezét a rendszer a legújabb rendszerkép-verzióval létrehozott új operációsrendszer-lemezzel helyettesíti. A konfigurált bővítmények és az egyéni adatszkriptek futnak, míg a megőrzött adatlemezek megmaradnak.
+- A [bővítmények sorrendbe rendezése](virtual-machine-scale-sets-extension-sequencing.md) támogatott.
+- Az operációs rendszer rendszerképének automatikus frissítése bármilyen méretű méretezési csoporton engedélyezhető.
 
-## <a name="how-does-automatic-os-image-upgrade-work"></a>Hogyan történik az operációs rendszer frissítési munka kép?
+## <a name="how-does-automatic-os-image-upgrade-work"></a>Hogyan működik az operációs rendszer rendszerképének automatikus frissítése?
 
-Frissítés működik, és cserélje le a legfrissebb rendszerképverzió használatával létrehozott egy új lemezt a virtuális gépek az operációsrendszer-lemez. Minden konfigurált bővítmények és egyéni parancsfájlok futtathatók az operációsrendszer-lemez közben megőrződnek lemezen tárolt adatokat. Az alkalmazás állásidő minimalizálása érdekében a verziófrissítések kerül sor kötegek, a méretezési csoport frissítése a tetszőleges időpontban nem több mint 20 %-át. Integrálhatja az Azure Load Balancer állapotadat-mintavétel vagy [Application Health bővítmény](virtual-machine-scale-sets-health-extension.md). Egy alkalmazás szívverés beépítése ajánlott azt, és a frissítési folyamat során az egyes kötegek frissítés sikerült érvényesíteni.
+A frissítés úgy működik, hogy egy virtuális gép operációsrendszer-lemezét egy új, a legújabb rendszerkép-verzió használatával létrehozott lemezzel helyettesíti. Minden konfigurált bővítmény és egyéni adatparancsfájl az operációsrendszer-lemezen fut, míg a megőrzött adatlemezek megmaradnak. Az alkalmazás leállásának csökkentése érdekében a frissítések a kötegekben történnek, és a méretezési csoport több mint 20%-a bármikor frissül. Emellett integrálhat egy Azure Load Balancer alkalmazás állapotának mintavétele vagy az [alkalmazás állapota bővítményt](virtual-machine-scale-sets-health-extension.md)is. Javasoljuk, hogy az alkalmazás szívverését tartalmazza, és ellenőrizze a verziófrissítés sikerességét a frissítési folyamat minden egyes kötegében.
 
-A frissítési folyamat a következőképpen történik:
-1. A verziófrissítés megkezdése előtt az orchestrator biztosítja, hogy nem több mint 20 %-a teljes méretezési csoportban lévő példányok (bármilyen okból) sérült állapotban.
-2. A frissítés orchestrator azonosítja a kötegelt frissítés bármely egy kötegben legfeljebb 20 %-a teljes példányok száma a Virtuálisgép-példányok.
-3. Az operációsrendszer-lemez a kijelölt köteg Virtuálisgép-példányok helyére egy új operációsrendszer-lemez, a legújabb lemezképből létrehozott, és az összes megadott bővítmények és a méretezési csoport modelljéből beállításokat alkalmazza a frissített példányhoz.
-4. A méretezési csoportok a konfigurált alkalmazáshoz a állapotadat-mintavételek vagy alkalmazásállapot-bővítmény a frissítés vár, a példány lesz kifogástalan, mielőtt a következő köteg frissítése akár 5 percet.
-5. A frissítés orchestrator is nyomon követi a százalékos aránya, amelyek nem megfelelő állapotú post válik a frissítés. A frissítés le fog állni, ha több mint 20 %-a frissített példányok nem megfelelő állapotú legyen a frissítési folyamat során.
-6. A fenti folyamat továbbra is fennáll, addig, amíg a méretezési csoportban lévő összes példány frissítettek.
+A frissítési folyamat a következőképpen működik:
+1. A frissítési folyamat megkezdése előtt a Orchestrator gondoskodni fog arról, hogy a teljes méretezési csoport példányainak legfeljebb 20%-a sérült legyen (bármilyen okból).
+2. A frissítési Orchestrator azonosítja a frissítendő virtuálisgép-példányok kötegét, és a kötegek száma összesen legfeljebb 20%-a lehet. 5 vagy kevesebb példánnyal rendelkező kisebb méretezési csoportok esetén a frissítés kötegének mérete egy virtuálisgép-példány.
+3. A rendszer lecseréli a virtuálisgép-példányok kiválasztott kötegének operációsrendszer-lemezét a legújabb rendszerképből létrehozott új operációsrendszer-lemezre. A méretezési csoport modelljében megadott bővítmények és konfigurációk a frissített példányra lesznek alkalmazva.
+4. A konfigurált alkalmazás-állapottal vagy az alkalmazás állapotával rendelkező méretezési csoportok esetében a frissítés akár 5 percet vár, amíg a példány Kifogástalan állapotba kerül, mielőtt továbblépne a következő köteg frissítésére. Ha egy példány a frissítés után 5 perccel nem állítja helyre az állapotát, akkor alapértelmezés szerint a rendszer a példány előző operációsrendszer-lemezét állítja vissza.
+5. A frissítési Orchestrator azt is nyomon követi, hogy a példányok hány százalékát nem Kifogástalan állapotba kell frissíteni a frissítés után. A frissítés leáll, ha a frissített példányok több mint 20%-a nem Kifogástalan állapotba kerül a frissítési folyamat során.
+6. A fenti folyamat addig folytatódik, amíg a méretezési csoport összes példánya frissítve nem lett.
 
-A méretezési csoport operációs rendszer frissítési orchestrator keres a méretezési csoport általános állapotát minden batch frissítése előtt. A batch a frissítés során lehetnek más egyidejű tervezett vagy nem tervezett karbantartási tevékenységek, amelyek hatással lehetnek a méretezési csoport példányaihoz állapotát. Ebben az esetben ha több mint 20 %-a méretezési példányok nem megfelelő állapotú, majd a méretezési csoport frissítési leállítja az aktuális köteg végén.
+A méretezési csoport operációs rendszerének frissítése Orchestrator az összes köteg frissítése előtt ellenőrzi a teljes méretezési csoport állapotát. Egy köteg frissítése közben más párhuzamos tervezett vagy nem tervezett karbantartási tevékenységek lehetnek, amelyek hatással lehetnek a méretezési csoport példányainak állapotára. Ilyen esetekben, ha a méretezési csoport példányainak több mint 20%-a állapota sérült, akkor a méretezési csoport frissítése az aktuális köteg végén leáll.
 
 ## <a name="supported-os-images"></a>Támogatott operációsrendszer-lemezképek
-Jelenleg csak bizonyos operációs rendszer platform lemezképek támogatottak. Egyéni lemezképek jelenleg nem támogatottak.
+Jelenleg csak bizonyos operációsrendszer-platform-lemezképek támogatottak. Az egyéni lemezképek jelenleg nem támogatottak.
 
-Jelenleg a következő termékváltozatok támogatottak (és további rendszeres időközönként hozzáadja):
+A következő SKU-EK jelenleg támogatottak (és a továbbiak rendszeresen bővülnek):
 
-| Közzétevő               | Operációs ajánlat      |  SKU               |
+| Kiadó               | Operációs rendszer ajánlata      |  Termékváltozat               |
 |-------------------------|---------------|--------------------|
 | Canonical               | UbuntuServer  | 16.04-LTS          |
 | Canonical               | UbuntuServer  | 18.04-LTS          |
 | Rogue Wave (OpenLogic)  | CentOS        | 7.5                |
 | CoreOS                  | CoreOS        | Stable             |
 | Microsoft Corporation   | WindowsServer | 2012-R2-Datacenter |
-| Microsoft Corporation   | WindowsServer | 2016-Datacenter    |
+| Microsoft Corporation   | WindowsServer | 2016 – Datacenter    |
 | Microsoft Corporation   | WindowsServer | 2016-Datacenter-Smalldisk |
 | Microsoft Corporation   | WindowsServer | 2016-Datacenter-with-Containers |
-| Microsoft Corporation   | WindowsServer | A 2019-Datacenter |
+| Microsoft Corporation   | WindowsServer | 2019 – Datacenter |
 | Microsoft Corporation   | WindowsServer | 2019-Datacenter-Smalldisk |
 | Microsoft Corporation   | WindowsServer | 2019-Datacenter-with-Containers |
+| Microsoft Corporation   | WindowsServer | Datacenter-Core-1903-with-containers-smalldisk |
 
 
-## <a name="requirements-for-configuring-automatic-os-image-upgrade"></a>Automatikus operációsrendszer-lemezkép frissítés követelmények
+## <a name="requirements-for-configuring-automatic-os-image-upgrade"></a>Az operációsrendszer-rendszerkép automatikus frissítésének konfigurálására vonatkozó követelmények
 
-- A *verzió* értékre kell állítani a platformlemezkép tulajdonsága *legújabb*.
-- Használja az alkalmazás állapotadat-mintavételek vagy [Application Health bővítmény](virtual-machine-scale-sets-health-extension.md) nem Service Fabric-méretezési csoportok.
-- Győződjön meg arról, hogy a méretezési csoport modelljéből megadott külső erőforrások rendelkezésre álló és frissített. Példák közé tartozik a SAS URI-t a virtuális gép bővítmény tulajdonságai, a storage-fiók hasznos adattartalom rendszerindításra, a modell és egyéb titkok referenciáját.
+- A platform rendszerképének *Version* tulajdonságát a *legújabb*értékre kell állítani.
+- A nem Service Fabric méretezési csoportokhoz használjon Application Health-mintavételt vagy az [alkalmazás állapotának kiterjesztését](virtual-machine-scale-sets-health-extension.md) .
+- A számítási API 2018-10-01-es vagy újabb verzióját használja.
+- Győződjön meg arról, hogy a méretezési csoport modelljében megadott külső erőforrások elérhetők és frissülnek. Ilyenek például a virtuális gépek bővítményének tulajdonságai, a Storage-fiók hasznos adatai, a modellben található titkos kódok, valamint egyebek között az SAS URI-ja.
+- A Windows rendszerű virtuális gépeket használó méretezési csoportok esetében, a számítási API 2019-03-01-es verziójától kezdve a *virtualMachineProfile. osProfile. windowsConfiguration. enableAutomaticUpdates* tulajdonságnak *false* értékre kell állítani a méretezési csoport modelljében. definition. A fenti tulajdonság lehetővé teszi a virtuális gépeken belüli verziófrissítéseket, ahol a "Windows Update" az operációsrendszer-lemez cseréje nélkül alkalmazza az operációs rendszer javításait. Ha a méretezési csoporton engedélyezve vannak az operációs rendszer rendszerképének automatikus frissítése, a "Windows Update" nem szükséges további frissítésre.
 
-## <a name="configure-automatic-os-image-upgrade"></a>Automatikus operációsrendszer-lemezkép frissítés konfigurálása
-Automatikus operációsrendszer-lemezkép frissítés konfigurálásához ellenőrizze, hogy a *automaticOSUpgradePolicy.enableAutomaticOSUpgrade* tulajdonsága *igaz* a méretezésicsoport-modell definícióját.
+### <a name="service-fabric-requirements"></a>Service Fabric követelmények
+
+Ha Service Fabric használ, győződjön meg arról, hogy teljesülnek a következő feltételek:
+-   Service Fabric [tartóssági szint](../service-fabric/service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) Silver vagy Gold, és nem bronz.
+-   A méretezési csoport modelljének definíciójában a Service Fabric-bővítménynek TypeHandlerVersion 1,1 vagy újabb értékűnek kell lennie.
+-   A tartóssági szintnek azonosnak kell lennie a Service Fabric-fürtön, és Service Fabric bővítményt a méretezési csoport modelljének definíciójában.
+
+Győződjön meg arról, hogy a tartóssági beállítások nem egyeznek meg a Service Fabric-fürtön, és Service Fabric a bővítményt, mivel az eltérés a frissítési hibákat eredményezi. A tartóssági szintek az [ezen az oldalon](../service-fabric/service-fabric-cluster-capacity.md#changing-durability-levels)vázolt irányelvek szerint módosíthatók.
+
+## <a name="configure-automatic-os-image-upgrade"></a>Az operációsrendszer-rendszerkép automatikus frissítésének konfigurálása
+Az operációsrendszer-rendszerkép automatikus frissítésének konfigurálásához győződjön meg arról, hogy a *automaticOSUpgradePolicy. enableAutomaticOSUpgrade* tulajdonság értéke *true (igaz* ) értékre van állítva a méretezési csoport modelljének definíciójában.
 
 ### <a name="rest-api"></a>REST API
-A következő példa ismerteti, hogyan lehet beállítani egy méretezési csoport modelljéből operációs rendszer automatikus frissítései:
+Az alábbi példa azt ismerteti, hogyan állíthatja be az operációs rendszer frissítéseit egy méretezési csoport modelljére:
 
 ```
 PUT or PATCH on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet?api-version=2018-10-01`
@@ -99,31 +112,31 @@ PUT or PATCH on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/p
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-Használja a [Update-AzVmss](/powershell/module/az.compute/update-azvmss) parancsmaggal ellenőrizheti az operációs rendszer frissítési előzmények a méretezési csoporthoz. Az alábbi példa konfigurálja a elnevezésű méretezési csoportot az automatikus frissítéseket *myVMSS* az erőforráscsoport neve *myResourceGroup*:
+Az [Update-AzVmss](/powershell/module/az.compute/update-azvmss) parancsmag használatával tekintse meg a méretezési csoport operációsrendszer-frissítési előzményeit. A következő példa a *myResourceGroup*nevű erőforráscsoport *myScaleSet* nevű méretezési csoportjának automatikus frissítését konfigurálja:
 
 ```azurepowershell-interactive
 Update-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -AutomaticOSUpgrade $true
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-Használat [az vmss update](/cli/azure/vmss#az-vmss-update) ellenőrizze az operációs rendszer frissítési előzmények a méretezési csoporthoz. Az Azure CLI használatával 2.0.47 vagy újabb. Az alábbi példa konfigurálja a elnevezésű méretezési csoportot az automatikus frissítéseket *myVMSS* az erőforráscsoport neve *myResourceGroup*:
+Az az [vmss Update](/cli/azure/vmss#az-vmss-update) paranccsal tekintheti meg a méretezési csoport operációsrendszer-frissítési előzményeit. Használja az Azure CLI-2.0.47 vagy újabb verzióját. A következő példa a *myResourceGroup*nevű erőforráscsoport *myScaleSet* nevű méretezési csoportjának automatikus frissítését konfigurálja:
 
 ```azurecli-interactive
-az vmss update --name myVMSS --resource-group myResourceGroup --set UpgradePolicy.AutomaticOSUpgradePolicy.EnableAutomaticOSUpgrade=true
+az vmss update --name myScaleSet --resource-group myResourceGroup --set UpgradePolicy.AutomaticOSUpgradePolicy.EnableAutomaticOSUpgrade=true
 ```
 
-## <a name="using-application-health-probes"></a>Az alkalmazás Health mintavételek
+## <a name="using-application-health-probes"></a>Application Health-mintavételek használata
 
-Az operációs rendszer a frissítés során megtörténik a méretezési csoportban lévő Virtuálisgép-példányok egyszerre csak egy köteg. A frissítés továbbra is csak ha az ügyfél-alkalmazás állapota kifogástalan, a frissített Virtuálisgép-példányokon. Azt javasoljuk, hogy az alkalmazás maga biztosítja a méretezési csoport operációs rendszer frissítési motor egészségügyi jelek. Alapértelmezés szerint az operációs rendszer frissítése során a platform figyelembe veszi virtuális gép energiaállapotát és bővítmény kiépítési állapota annak megállapításához, hogy egy Virtuálisgép-példány kifogástalan állapotú a frissítés után. Egy Virtuálisgép-példánnyal az operációs rendszer frissítése közben az operációsrendszer-lemez egy Virtuálisgép-példány helyére egy új lemezt, legfrissebb rendszerképverzió alapján. Miután az operációs rendszer frissítése befejeződött, a konfigurált bővítmények ezek a virtuális gépek futnak. Az alkalmazás megfelelő számít, csak akkor, ha a példányon a bővítmények vannak kiépítve.
+Az operációs rendszer frissítése során a méretezési csoportokban lévő virtuálisgép-példányok egyszerre egy köteget frissítenek. A frissítés csak akkor folytatható, ha az ügyfélalkalmazás kifogástalan állapotban van a frissített VM-példányokon. Javasoljuk, hogy az alkalmazás egészségügyi jeleket biztosítson a méretezési csoport operációsrendszer-frissítési motorjának. Alapértelmezés szerint az operációs rendszer frissítése során a platform úgy véli, hogy a virtuális gép energiagazdálkodási állapota és a bővítmények kiépítési állapota határozza meg, hogy a virtuálisgép-példány kifogástalan állapotú-e a frissítés után. Egy virtuálisgép-példány operációsrendszer-frissítése során a virtuálisgép-példány operációsrendszer-lemezét a rendszer a legújabb lemezkép-verzió alapján egy új lemezzel helyettesíti. Az operációs rendszer frissítésének befejeződése után a konfigurált bővítmények futnak ezeken a virtuális gépeken. Az alkalmazás csak akkor tekinthető kifogástalannak, ha a példány összes bővítménye sikeresen kiépítve.
 
-Egy méretezési csoportban igény szerint konfigurálható úgy, hogy az alkalmazás állapotadat-mintavételek alkotják azt a platformot a folyamatban lévő, az alkalmazás állapota a pontos információkkal. Alkalmazás állapotadat-mintavételek olyan egyéni Load Balancer-mintavételek állapotáról legutoljára jelzés használt. Az alkalmazás egy méretezési csoport Virtuálisgép-példány fut jelzi-e megfelelő külső HTTP vagy TCP-kérésekre is válaszol. A Custom betölteni a Terheléselosztói Mintavételezők működéséről további információkért lásd: [megismerése a load balancer vizsgálatok](../load-balancer/load-balancer-custom-probe-overview.md). Egy alkalmazás-Állapotminta nem szükséges a Service Fabric méretezési csoportokhoz, de ajánlott. Nem – a Service Fabric-méretezési csoportok megkövetelése vagy terheléselosztó alkalmazás állapotadat-mintavételek vagy [Application Health bővítmény](virtual-machine-scale-sets-health-extension.md).
+A méretezési csoport opcionálisan konfigurálható az Application Health-mintavételekkel, hogy a platform pontos információkat nyújtson az alkalmazás folyamatos állapotáról. Az Application Health-mintavételek olyan egyéni Load Balancer-mintavételek, amelyek állapot-jelzésként használatosak. A méretezési csoport virtuálisgép-példányán futó alkalmazás reagálhat a külső HTTP-vagy TCP-kérelmekre, ami azt jelzi, hogy kifogástalan-e. Az egyéni Load Balancer mintavételek működésével kapcsolatos további információkért lásd: a [Load Balancer](../load-balancer/load-balancer-custom-probe-overview.md)-tesztek megismerése. Service Fabric méretezési csoportok nem támogatják az alkalmazás állapotának mintavételét. A nem Service Fabric méretezési csoportoknak az alkalmazás állapotának vagy az [alkalmazás állapotának kiterjesztésére](virtual-machine-scale-sets-health-extension.md)van Load Balancer szükségük.
 
-Ha a méretezési csoportban több elhelyezési csoport használatára van konfigurálva, mintavételezők használatával egy [Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) kell használni.
+Ha a méretezési csoport több elhelyezési csoport használatára van konfigurálva, akkor standard Load Balancert [](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) használó mintavételt kell használnia.
 
-### <a name="configuring-a-custom-load-balancer-probe-as-application-health-probe-on-a-scale-set"></a>Konfigurálható egy egyéni Load Balancer-vizsgálatokra, alkalmazás-Állapotminta a méretezési csoport beállítása
-Ajánlott eljárásként létrehozni a terheléselosztói mintavételezők explicit módon méretezési csoport állapotát. Egy meglévő HTTP-mintavétel vagy a TCP-mintavétel egyazon végpont használható, de az állapotfigyelő mintavételező szükségük a hagyományos terheléselosztó mintavétel eltérő viselkedést. Hagyományos terheléselosztói mintavételezők például sikerült vissza nem megfelelő állapotú. Ha a terhelés a példányon túl nagy, de, amely nem lenne megfelelő a példány állapotának meghatározása során egy operációs rendszer automatikus verziófrissítése. Szeretné, hogy kevesebb két percnél ellenőrzési gyakorisága a mintavétel konfigurálása.
+### <a name="configuring-a-custom-load-balancer-probe-as-application-health-probe-on-a-scale-set"></a>Egyéni Load Balancer mintavétel konfigurálása alkalmazás állapotának mintavétele egy méretezési csoporton
+Ajánlott eljárásként hozzon létre egy Load Balancer-mintavételt explicit módon a méretezési csoport állapotához. Egy meglévő HTTP-mintavételi vagy TCP-mintavételi végpont is használható, de az állapot-mintavétel a hagyományos terheléselosztó-mintavételtől eltérő viselkedést igényelhet. Például a hagyományos terheléselosztó-mintavétel nem megfelelő állapotba kerülhet, ha a példány terhelése túl magas, de ez nem lenne helyénvaló a példány állapotának meghatározására egy automatikus operációsrendszer-frissítés során. Konfigurálja a mintavételt úgy, hogy a magas szondázás sebessége kevesebb, mint két perc.
 
-A load balancer mintavételi lehet hivatkozni a *networkProfile* a méretezési csoport beállítása és társítható vagy egy belső vagy nyilvános internetkapcsolattal rendelkező terheléselosztó a következő:
+A terheléselosztó mintavételét a méretezési csoport *networkProfile* lehet hivatkozni, és a következőkkel társítható belső vagy nyilvános terhelésű terheléselosztó használatával:
 
 ```json
 "networkProfile": {
@@ -136,36 +149,36 @@ A load balancer mintavételi lehet hivatkozni a *networkProfile* a méretezési 
 ```
 
 > [!NOTE]
-> Operációs rendszer automatikus frissítéseinek használata a Service Fabric, az új operációsrendszer-képet bevezetési frissítési tartományt frissítési tartományonként a Service Fabric-ban futó szolgáltatások magas rendelkezésre állás fenntartása érdekében. Hogy az operációs rendszer automatikus verziófrissítése, a Service Fabric a fürthöz konfigurálva a Silver szintű tartóssági szint vagy újabb kell lennie. A Service Fabric-fürtök tartóssági jellemzői további információkért tekintse meg [ebben a dokumentációban](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster).
+> Ha a Service Fabric használatával automatikus operációsrendszer-frissítést használ, az új operációsrendszer-rendszerképet a frissítési tartomány frissíti a tartomány frissítésével, hogy fenntartsa a Service Fabric futó szolgáltatások magas rendelkezésre állását. Ha az operációs rendszer automatikus frissítését szeretné használni Service Fabric a fürtöt úgy kell konfigurálni, hogy az ezüst tartóssági szintet vagy ennél nagyobbat használjon. A Service Fabric-fürtök tartóssági jellemzőivel kapcsolatos további információkért tekintse meg [ezt](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster)a dokumentációt.
 
-### <a name="keep-credentials-up-to-date"></a>Tartsa naprakészen a hitelesítő adatok
-Ha a méretezési a hitelesítő adatokat használ a külső erőforrások eléréséhez, például ha egy Virtuálisgép-bővítményt van konfigurálva egy SAS-jogkivonatot használó tárfiók, győződjön meg arról, hogy a hitelesítő adatai frissültek. A lejárt a hitelesítő adatokat, többek között a tanúsítványok és a jogkivonatok, ha a frissítés sikertelen lesz, és az első kötegbe tartozó virtuális gépeket a hibás állapotban marad.
+### <a name="keep-credentials-up-to-date"></a>Hitelesítő adatok naprakészen tartása
+Ha a méretezési csoport bármilyen hitelesítő adatot használ a külső erőforrások eléréséhez, például egy virtuálisgép-bővítményt, amely egy SAS-jogkivonat használatára van konfigurálva a Storage-fiókhoz, akkor győződjön meg arról, hogy a hitelesítő adatok frissülnek. Ha a hitelesítő adatok (beleértve a tanúsítványokat és a jogkivonatokat is) elévültek, a frissítés sikertelen lesz, és a virtuális gépek első kötege sikertelen állapotba kerül.
 
-Virtuális gépek helyreállítása, majd újra engedélyeznie az operációs rendszer automatikus verziófrissítése, egy erőforrás hitelesítési hiba esetén a javasolt lépések a következők:
+Az ajánlott lépések a virtuális gépek helyreállításához és az automatikus operációs rendszer frissítésének újbóli engedélyezéséhez, ha van erőforrás-hitelesítési hiba:
 
-* A token (vagy bármely más hitelesítő adatokat) átad a fájlformátum(ok) kiterjesztését vagy kiterjesztéseit újragenerálása.
-* Győződjön meg arról, hogy naprakész állapotban-e a virtuális gép külső entitások kommunikáljon a használt hitelesítő adat.
-* Új-tokenekkel frissítse fájlformátum(ok) kiterjesztését vagy kiterjesztéseit, az a méretezési csoport modelljéből.
-* Helyezze üzembe a frissített méretezési csoportot, amely frissíti az összes Virtuálisgép-példány sikertelen azokat is beleértve.
+* A token (vagy más hitelesítő adatok) átadása a bővítmény (ek) ba.
+* Győződjön meg arról, hogy a virtuális gépen belül a külső entitásokkal való kommunikációhoz használt hitelesítő adatok naprakészek.
+* Frissítse a méretezési csoport modelljében lévő kiterjesztés (eke) t az új jogkivonatokkal.
+* Telepítse a frissített méretezési készletet, amely frissíti az összes VM-példányt, beleértve a sikerteleneket is.
 
-## <a name="using-application-health-extension"></a>Alkalmazásállapot-bővítmény használata
-Az alkalmazás állapotának bővítmény virtuálisgép-méretezési készlet példány és a méretezési csoport példány belül a virtuális gép állapota a jelentések belül van telepítve. Beállíthatja, hogy a bővítmény alkalmazása a végpont mintavételi és azon a példányon az alkalmazás állapotának frissítése. A példány állapota be van jelölve, az Azure-példány jogosult a frissítési műveletek meghatározásához.
+## <a name="using-application-health-extension"></a>Az Application Health bővítmény használata
+Az alkalmazás állapotának kiterjesztése egy virtuálisgép-méretezési csoport példányain belül történik, és a virtuális gépek állapotáról szóló jelentések a méretezési csoport példányán belül vannak. A bővítményt beállíthatja a mintavételhez egy alkalmazás-végponton, és frissítheti az alkalmazás állapotát az adott példányon. A példány állapotát az Azure ellenőrzi, hogy a példány jogosult-e a frissítési műveletekre.
 
-A bővítmény jelentések összesíti a virtuális Gépen belül, mint a bővítmény használható helyzetekben, ahol a külső alkalmazás állapotadat-mintavételek például mintavételek (, amelyek használják az egyéni Azure Load Balancer [mintavételek](../load-balancer/load-balancer-custom-probe-overview.md)) nem használható.
+Mivel a bővítmény a virtuális gépen belülről jelenti az állapotot, a bővítmény olyan helyzetekben használható, ahol az olyan külső mintavételek, mint az alkalmazás-állapotú [](../load-balancer/load-balancer-custom-probe-overview.md)mintavételek (amelyek az egyéni Azure Load Balancer-mintavételeket használják) nem használhatók.
 
-Többféleképpen is üzembe helyezése a bővítményt a méretezési csoportban szereplő példák leírt módon beállítja az Alkalmazásállapot [Ez a cikk](virtual-machine-scale-sets-health-extension.md#deploy-the-application-health-extension).
+Az alkalmazás-állapot bővítmény a méretezési csoportokra több módon is üzembe helyezhető a [jelen cikkben](virtual-machine-scale-sets-health-extension.md#deploy-the-application-health-extension)található példákban részletezve.
 
-## <a name="get-the-history-of-automatic-os-image-upgrades"></a>Az operációs rendszer lemezkép automatikus frissítéseinek előzményeit beolvasása
-Ellenőrizheti a legújabb operációs rendszer frissítése a méretezési csoportban Azure PowerShell-lel, az Azure CLI 2.0-s vagy a REST API-k végrehajtott előzményeit. Az utolsó öt operációs rendszer frissítési kísérletek az elmúlt két hónapon belül előzmények kérheti le.
+## <a name="get-the-history-of-automatic-os-image-upgrades"></a>Az operációs rendszer rendszerképének automatikus frissítéseinek előzményeinek beolvasása
+A méretezési csoporton végrehajtott legújabb verziófrissítések előzményeit a Azure PowerShell, az Azure CLI 2,0 vagy a REST API-k segítségével tekintheti meg. Az elmúlt két hónap során az elmúlt öt operációsrendszer-frissítési kísérlet előzményeit is megszerezheti.
 
 ### <a name="rest-api"></a>REST API
-Az alábbi példában [REST API-val](/rest/api/compute/virtualmachinescalesets/getosupgradehistory) ellenőrizheti az állapotot, a méretezési csoport nevű *myVMSS* az erőforráscsoport neve *myResourceGroup*:
+A következő példa a [REST API](/rest/api/compute/virtualmachinescalesets/getosupgradehistory) használatával vizsgálja meg az *myScaleSet* nevű méretezési csoport állapotát a *myResourceGroup*nevű erőforráscsoport-csoportban:
 
 ```
 GET on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/osUpgradeHistory?api-version=2018-10-01`
 ```
 
-A GET hívást hasonló ad vissza tulajdonságait az alábbi példa kimenetében:
+A GET hívás a következő példa kimenetéhez hasonló tulajdonságokat ad vissza:
 
 ```json
 {
@@ -203,22 +216,22 @@ A GET hívást hasonló ad vissza tulajdonságait az alábbi példa kimenetében
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-Használja a [Get-AzVmss](/powershell/module/az.compute/get-azvmss) parancsmaggal ellenőrizheti az operációs rendszer frissítési előzmények a méretezési csoporthoz. Az alábbi példa részletezi, hogyan tekintse át az operációs rendszer frissítésének állapotában találhat egy méretezési csoportot elnevezett *myVMSS* az erőforráscsoport neve *myResourceGroup*:
+Használja a [Get-AzVmss](/powershell/module/az.compute/get-azvmss) parancsmagot a méretezési csoport operációsrendszer-frissítési előzményeinek megtekintéséhez. A következő példa részletesen ismerteti, hogyan tekintheti át egy *myScaleSet* nevű méretezési csoport operációsrendszer-frissítési állapotát a *myResourceGroup*nevű erőforráscsoport:
 
 ```azurepowershell-interactive
-Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS" -OSUpgradeHistory
+Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -OSUpgradeHistory
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-Használat [az vmss get-operációsrendszer-frissítés-előzmények](/cli/azure/vmss#az-vmss-get-os-upgrade-history) ellenőrizze az operációs rendszer frissítési előzmények a méretezési csoporthoz. Az Azure CLI használatával 2.0.47 vagy újabb. Az alábbi példa részletezi, hogyan tekintse át az operációs rendszer frissítésének állapotában találhat egy méretezési csoportot elnevezett *myVMSS* az erőforráscsoport neve *myResourceGroup*:
+Az az [vmss Get-os-upgrade-History](/cli/azure/vmss#az-vmss-get-os-upgrade-history) paranccsal tekintheti meg a méretezési csoport operációsrendszer-frissítési előzményeit. Használja az Azure CLI-2.0.47 vagy újabb verzióját. A következő példa részletesen ismerteti, hogyan tekintheti át egy *myScaleSet* nevű méretezési csoport operációsrendszer-frissítési állapotát a *myResourceGroup*nevű erőforráscsoport:
 
 ```azurecli-interactive
-az vmss get-os-upgrade-history --resource-group myResourceGroup --name myVMSS
+az vmss get-os-upgrade-history --resource-group myResourceGroup --name myScaleSet
 ```
 
-## <a name="how-to-get-the-latest-version-of-a-platform-os-image"></a>Szerezze be a legújabb verziót a platform operációsrendszer-lemezkép hogyan?
+## <a name="how-to-get-the-latest-version-of-a-platform-os-image"></a>A platform operációsrendszer-lemezkép legújabb verziójának beszerzése
 
-A lemezkép-verziók esetében az operációs rendszer frissítése támogatott SKU-k használatával megtekintheti az alábbi példákat:
+Az alábbi példákkal beszerezheti az operációs rendszer frissítésének támogatott verzióit a támogatott SKU-lemezeken:
 
 ### <a name="rest-api"></a>REST API
 ```
@@ -235,11 +248,40 @@ Get-AzVmImage -Location "westus" -PublisherName "Canonical" -Offer "UbuntuServer
 az vm image list --location "westus" --publisher "Canonical" --offer "UbuntuServer" --sku "16.04-LTS" --all
 ```
 
-## <a name="deploy-with-a-template"></a>Üzembe helyezés egy sablon használatával
+## <a name="manually-trigger-os-image-upgrades"></a>OPERÁCIÓSRENDSZER-rendszerkép frissítéseinek manuális elindítása
+Ha engedélyezve van az operációs rendszer rendszerképének frissítése a méretezési csoporton, a méretezési csoporton nem szükséges manuálisan elindítani a rendszerkép-frissítéseket. Az operációs rendszer frissítése Orchestrator automatikusan alkalmazza a legújabb elérhető lemezkép-verziót a méretezési csoport példányaira manuális beavatkozás nélkül.
 
-Sablonok használatával is üzembe helyez egy méretezési csoportot az operációs rendszer automatikus verziófrissítése támogatott rendszerképek például [Ubuntu 16.04-LTS](https://github.com/Azure/vm-scale-sets/blob/master/preview/upgrade/autoupdate.json).
+Bizonyos esetekben, amikor nem szeretné megvárni, hogy a Orchestrator a legújabb lemezképet alkalmazza, az alábbi példák használatával manuálisan aktiválhatja az operációsrendszer-lemezképek frissítését.
+
+> [!NOTE]
+> Az operációsrendszer-rendszerkép frissítéseinek manuális triggere nem biztosít Automatikus visszaállítási képességeket. Ha egy példány nem állítja helyre az állapotát egy frissítési művelet után, az előző operációsrendszer-lemez nem állítható vissza.
+
+### <a name="rest-api"></a>REST API
+Az [operációs rendszer upgrade](/rest/api/compute/virtualmachinescalesetrollingupgrades/startosupgrade) API-hívásával indítson el egy működés közbeni frissítést, hogy az összes virtuálisgép-méretezési csoport példányai a legújabb elérhető platform-lemezkép operációsrendszer-verzióra legyenek áthelyezve. Azokat a példányokat, amelyek már futtatják a legújabb elérhető operációsrendszer-verziót, nem érintettek. Az alábbi példa azt ismerteti, hogyan indíthatja el a működés közbeni operációs rendszer frissítését egy *myScaleSet* nevű méretezési csoporton az *myResourceGroup*nevű erőforráscsoport:
+
+```
+POST on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/osRollingUpgrade?api-version=2018-10-01`
+```
+
+### <a name="azure-powershell"></a>Azure PowerShell
+A [Start-AzVmssRollingOSUpgrade](/powershell/module/az.compute/Start-AzVmssRollingOSUpgrade) parancsmag használatával tekintse meg a méretezési csoport operációsrendszer-frissítési előzményeit. Az alábbi példa azt ismerteti, hogyan indíthatja el a működés közbeni operációs rendszer frissítését egy *myScaleSet* nevű méretezési csoporton az *myResourceGroup*nevű erőforráscsoport:
+
+```azurepowershell-interactive
+Start-AzVmssRollingOSUpgrade -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
+```
+
+### <a name="azure-cli-20"></a>Azure CLI 2.0
+Az az [vmss Rolling-upgrade Start](/cli/azure/vmss/rolling-upgrade#az-vmss-rolling-upgrade-start) paranccsal tekintheti meg a méretezési csoport operációsrendszer-frissítési előzményeit. Használja az Azure CLI-2.0.47 vagy újabb verzióját. Az alábbi példa azt ismerteti, hogyan indíthatja el a működés közbeni operációs rendszer frissítését egy *myScaleSet* nevű méretezési csoporton az *myResourceGroup*nevű erőforráscsoport:
+
+```azurecli-interactive
+az vmss rolling-upgrade start --resource-group "myResourceGroup" --name "myScaleSet" --subscription "subscriptionId"
+```
+
+## <a name="deploy-with-a-template"></a>Üzembe helyezés sablonnal
+
+A sablonok használatával olyan méretezési csoport helyezhető üzembe, amely a támogatott lemezképek (például [Ubuntu 16,04-LTS](https://github.com/Azure/vm-scale-sets/blob/master/preview/upgrade/autoupdate.json)) esetében automatikusan frissíti az operációs rendszer frissítéseit.
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fvm-scale-sets%2Fmaster%2Fpreview%2Fupgrade%2Fautoupdate.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
 ## <a name="next-steps"></a>További lépések
-Operációs rendszer automatikus frissítéseinek használata méretezési csoportokkal kapcsolatos további példákért tekintse át a [GitHub-adattárat](https://github.com/Azure/vm-scale-sets/tree/master/preview/upgrade).
+Ha további példákat szeretne arról, hogyan használhatók az operációs rendszerek automatikus frissítése a méretezési csoportokkal, tekintse át a [GitHub](https://github.com/Azure/vm-scale-sets/tree/master/preview/upgrade)-tárházat.

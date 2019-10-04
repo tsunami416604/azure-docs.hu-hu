@@ -1,38 +1,37 @@
 ---
-title: Az Azure Windows virtuális gép mérete – előző generációs szoftvereknél jobban |} A Microsoft Docs
-description: Az előző generációs szoftvereknél jobban elérhető méretek az Azure-beli Windows virtuális gépek listája.
+title: Azure Windowsos VM-méretek – korábbi generációk | Microsoft Docs
+description: Az Azure-beli Windows rendszerű virtuális gépekhez elérhető méretek korábbi generációit sorolja fel.
 services: virtual-machines-windows
 documentationcenter: ''
 author: jonbeck7
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/11/2019
 ms.author: jonbeck
-ms.openlocfilehash: 8ae5cbac61a35d3be712c34b6bbde6caffba265b
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 43fecfcdbb381588f0c717b7ca771c23c19f367d
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549118"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70088480"
 ---
-# <a name="previous-generations-of-virtual-machine-sizes"></a>Előző generációs szoftvereknél jobban virtuálisgép-méretek
+# <a name="previous-generations-of-virtual-machine-sizes"></a>A virtuális gépek méreteinek korábbi generációi
 
 [!INCLUDE [virtual-machines-common-sizes-general](../../../includes/virtual-machines-common-sizes-previous-gen.md)]
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../../includes/virtual-machines-common-sizes-table-defs.md)]
 
-## <a name="older-generations-of-virtual-machine-sizes"></a>Régebbi generációs szoftvereknél jobban virtuálisgép-méretek
+## <a name="older-generations-of-virtual-machine-sizes"></a>A virtuális gépek méreteinek régebbi generációi
 
 [!INCLUDE [virtual-machines-common-sizes-older](../../../includes/virtual-machines-common-sizes-older.md)]
 
-## <a name="other-sizes"></a>További méretek
+## <a name="other-sizes"></a>Egyéb méretek
 
 - [Általános célú](sizes-general.md)
 - [Számításra optimalizált](sizes-compute.md)
@@ -43,4 +42,4 @@ ms.locfileid: "59549118"
 
 ## <a name="next-steps"></a>További lépések
 
-Tudjon meg többet [Azure számítási egységek (ACU)](acu.md) Azure-termékváltozatok hasonlítsa össze a számítási teljesítményt nyújt segítséget.
+További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

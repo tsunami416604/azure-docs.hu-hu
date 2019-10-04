@@ -4,15 +4,15 @@ description: Ez a cikk a webalkalmazási tűzfal (WAF) áttekintést nyújt az A
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.date: 2/22/2019
+ms.date: 5/22/2019
 ms.author: amsriva
 ms.topic: conceptual
-ms.openlocfilehash: 830513a03bd65ca14cb0938ae599a676f1bb3bca
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 9c2759222198f5df682d9e7a5363c0d9679e0fad
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518184"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65991403"
 ---
 # <a name="web-application-firewall-for-azure-application-gateway"></a>Az Azure Application Gateway webalkalmazási tűzfal
 
@@ -38,7 +38,7 @@ Ez a szakasz ismerteti, amelyek az Application Gateway és a WAF-ja használatá
 
 * Megvédik a webalkalmazásokat a webes biztonsági résektől és támadásoktól háttér-kód módosítása nélkül.
 
-* Több webalkalmazást védhet egy időben. Application Gateway-példány üzemeltetésére is képes, akár 20 webhelyet egy webalkalmazás-tűzfal által védett.
+* Több webalkalmazást védhet egy időben. Application Gateway-példány üzemeltetésére is képes akár 100-webhelyek, amelyek webalkalmazási tűzfal védi.
 
 ### <a name="monitoring"></a>Figyelés
 
@@ -121,12 +121,19 @@ Az Application Gateway WAF beállítható úgy, hogy futtassa a következő két
 * **Megelőzés üzemmód**: Blokkok támadásokkal szemben, amely észleli a szabályokat. A támadó egy "403-as jogosulatlan hozzáférés" kivételt kap, és a kapcsolat megszakad. Megelőzés üzemmód rögzíti az ilyen támadásokat a WAF-naplókban.
 
 ### <a name="anomaly-scoring-mode"></a>Anomáliadetektálási pontozás mód
- 
+
 OWASP eldöntötte, hogy a forgalom blokkolására a két mód áll: A hagyományos és Anomáliadetektálási pontozási módról.
 
 Hagyományos módban függetlenül bármilyen más szabály megegyezik bármilyen szabálynak megfelelő forgalom számít ki. Ebben a módban is könnyen áttekinthető. De hány szabályai megegyeznek egy adott kéréshez információ hiánya egy korlátozás. Tehát Anomáliadetektálási pontozási mód jelent meg. Ez az alapértelmezett érték az OWASP 3. *x*.
 
 Anomáliadetektálási pontozási módban minden olyan szabálynak megfelelő forgalom nem azonnal letiltva a tűzfal megelőzés üzemmódban van. Szabályok rendelkezik egy bizonyos súlyossága: *Kritikus fontosságú*, *hiba*, *figyelmeztetés*, vagy *értesítés*. Adott súlyossági hatással van a kérést, az Anomáliadetektálás pontszámot nevezett által használt számérték. Ha például egy *figyelmeztetés* egyezés járul hozzá a pontszámot 3 szabály. Egy *kritikus* szabály egyezést járul hozzá az 5.
+
+|Severity  |Érték  |
+|---------|---------|
+|Kritikus     |5|
+|Hiba        |4|
+|Figyelmeztetés      |3|
+|Értesítés       |2|
 
 Nincs forgalom blokkolása a Anomáliadetektálási pontszám 5 küszöbértékét. Így egyetlen *kritikus* szabály egyezést is megfelel az Application Gateway WAF egy kérelmet, még akkor is, a megelőzés üzemmód blokkolása. Azonban egy *figyelmeztetés* szabály egyezést csak növeli a nem elég letiltja a forgalmat saját maga által 3 pontszám, Anomáliadetektálás.
 

@@ -10,16 +10,15 @@ ms.assetid: 740f6a27-8323-474d-ade2-828ae0c75e7a
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: a0459eb67b5a79219e556cb03473a5ddf691b49d
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 76a87d539e19acc30944a6a896cb0e01f431fa37
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577016"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073565"
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>Gyorsítótárazás hozzáadása az Azure API Management teljesítményének javításához
 
@@ -38,7 +37,7 @@ Ismertetett témák:
 ## <a name="availability"></a>Rendelkezésre állás
 
 > [!NOTE]
-> Belső gyorsítótár nem érhető el a a **fogyasztás** az Azure API Management szintjéhez. Is [használni egy külső Azure Cache Redis](api-management-howto-cache-external.md) helyette.
+> A belső gyorsítótár nem érhető el az Azure API Management **felhasználási** szintjében. Ehelyett [egy külső Azure cache-t is használhat a Redis](api-management-howto-cache-external.md) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -57,7 +56,7 @@ A példában bemutatott gyorsítótárazási házirendek használata esetén a *
 4. Kattintson a **Demo Conference API** elemre az API-k listájában.
 5. Válassza a **GetSpeakers** lehetőséget.
 6. A képernyő felső részén válassza a **Tervezés** lapot.
-7. Az a **bejövő feldolgozás** területén kattintson a **</>** ikonra.
+7. A **bejövő feldolgozás** szakaszban kattintson az **</>** ikonra.
 
     ![kódszerkesztő](media/api-management-howto-cache/code-editor.png)
 
@@ -76,7 +75,7 @@ A példában bemutatott gyorsítótárazási házirendek használata esetén a *
     Az **Időtartam** megadja a gyorsítótárazott válaszok lejárati időközét. Ebben a példában az időköz **20** másodperc.
 
 > [!TIP]
-> Ha használ egy külső gyorsítótár leírtak szerint [használni egy külső Azure Cache Redis az Azure API Management](api-management-howto-cache-external.md), előfordulhat, hogy szeretne megadni a `caching-type` a gyorsítótárazási házirendek attribútumát. Lásd: [API Management gyorsítótárazási házirendjei](api-management-caching-policies.md) további részletekért.
+> Ha külső gyorsítótárat használ, a következő témakörben leírtak szerint: [külső Azure cache használata az Azure-beli Redis-API Management](api-management-howto-cache-external.md)esetén érdemes `caching-type` megadnia a gyorsítótárazási házirendek attribútumát. További részletekért tekintse meg [API Management gyorsítótárazási házirendeket](api-management-caching-policies.md) .
 
 ## <a name="test-operation"></a>Művelet meghívása és a gyorsítótárazás tesztelése
 A gyorsítótárazás működés közbeni megtekintéséhez hívja meg a műveletet a fejlesztői portálról.
@@ -89,9 +88,9 @@ A gyorsítótárazás működés közbeni megtekintéséhez hívja meg a művele
 6. Kattintson a **Küldés** gombra.
 
 ## <a name="next-steps"></a>Következő lépések
-* További információt a gyorsítótárazási házirendekről az [API Management házirend-referencia][API Management policy reference] oktatóanyag [Gyorsítótárazási házirendek][Caching policies] szakaszában talál.
+* További információt a gyorsítótárazási házirendekről az [API Management házirend-referencia][API Management policy reference] [Gyorsítótárazási házirendek][Caching policies] szakaszában talál.
 * További információ az elemeknek a házirend-kifejezések kulcsával történő gyorsítótárazásáról: [Egyéni gyorsítótárazás az Azure API Management szolgáltatásban](api-management-sample-cache-by-key.md).
-* Redis külső Azure Cache használatával kapcsolatos további információkért lásd: [használni egy külső Azure Cache Redis az Azure API Management](api-management-howto-cache-external.md).
+* További információ a Redis külső Azure cache-ről való használatáról: [külső Azure-gyorsítótár használata az azure API Management-ben való Redis](api-management-howto-cache-external.md).
 
 [api-management-management-console]: ./media/api-management-howto-cache/api-management-management-console.png
 [api-management-echo-api]: ./media/api-management-howto-cache/api-management-echo-api.png

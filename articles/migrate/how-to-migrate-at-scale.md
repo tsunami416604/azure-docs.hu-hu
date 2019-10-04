@@ -6,16 +6,16 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: snehaa
-ms.openlocfilehash: f90140e9464ee72e9ceae8ca140bd060c51aade8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b45a158569b3be8250728293c1bf73c1a860a0f6
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58762650"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67808021"
 ---
 # <a name="scale-migration-of-vms-using-azure-site-recovery"></a>Méretezési csoport áttelepítése a virtuális gépek Azure Site Recovery használatával
 
-Ez a cikk segít megérteni a parancsprogramokkal áttelepíteni a virtuális gépek Azure Site Recovery használatával nagy számú folyamatán. Ezek a szkriptek érhetők el a letölthető innen [Azure PowerShell-minták](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-with-site-recovery) adattárat a Githubon. A parancsfájlok segítségével VMware, AWS, GCP virtuális gépek és fizikai kiszolgálók áttelepítése az Azure és a támogatási migrálása felügyelt lemezekre. Ezek a parancsfájlok segítségével a Hyper-V virtuális gépek migrálása, ha telepít át, hogy a virtuális gépek, mint a fizikai kiszolgálókat. A parancsfájlok kihasználhatja az Azure Site Recovery PowerShell dokumentált [Itt](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell).
+Ez a cikk segít megérteni a parancsfájlok használata áttelepítése nagy számú virtuális gép Azure Site Recovery használatával. Ezek a szkriptek érhetők el a letölthető innen [Azure PowerShell-minták](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-with-site-recovery) adattárat a Githubon. A parancsfájlok VMware, AWS, GCP virtuális gépek és fizikai kiszolgálók áttelepítése az Azure-ban felügyelt lemezekkel használható. Ezek a parancsfájlok segítségével a Hyper-V virtuális gépek migrálása, ha telepít át, hogy a virtuális gépek, mint a fizikai kiszolgálókat. A parancsfájlok, az Azure Site Recovery PowerShell vannak dokumentálva [Itt](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell).
 
 ## <a name="current-limitations"></a>Aktuális korlátozások:
 - Támogatja a csak az a cél virtuális gép az elsődleges hálózati adapter statikus IP-címének megadása
@@ -39,7 +39,7 @@ Mielőtt elkezdené, tegye a következőket kell:
     - Rendelkezésre állási csoport (ha szükséges)
     - Céloldali hálózati biztonsági csoport és az erőforráscsoport
 - Győződjön meg arról, hogy a cél virtuális gép tulajdonságainak döntött
-    - Céloldali virtuális gép neve
+    - Cél virtuális gép neve
     - Cél virtuális gép méretét az Azure-ban (születhet értékelése az Azure Migrate használatával)
     - Az elsődleges hálózati Adaptert a virtuális gép magánhálózati IP-címe
 - Töltse le a parancsfájlok [Azure PowerShell-minták](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-with-site-recovery) adattárat a Githubon

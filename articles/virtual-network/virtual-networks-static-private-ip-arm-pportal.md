@@ -3,8 +3,8 @@ title: Magánhálózati IP-címek konfigurálása virtuális gépek – az Azure
 description: Ismerje meg, hogyan konfigurálhatja a magánhálózati IP-címek a virtuális gépek az Azure portal használatával.
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: timlt
+author: KumudD
+manager: twooley
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: 11245645-357d-4358-9a14-dd78e367b494
@@ -14,14 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/04/2016
-ms.author: jdial
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e5efe0516d1b2dd387532d31a0a6654e6651fe41
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: kumud
+ms.openlocfilehash: 31aeab946b9ad740e2f56eb1ecaafd3e76cc42b3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58011739"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64723795"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal"></a>Az Azure portal használatával virtuális gép magánhálózati IP-címek konfigurálása
 

@@ -1,0 +1,14 @@
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure/index
+  items:
+    - name: HDInsight
+      tocHref: /azure/hdinsight/
+      topicHref: /azure/hdinsight/index
+      items:
+        - name: Vállalati biztonság
+          tocHref: /azure/hdinsight/hadoop/
+          topicHref: /azure/hdinsight/domain-joined/index
+        - name: Vállalati biztonság
+          tocHref: /azure/hdinsight/domain-joined/
+          topicHref: /azure/hdinsight/domain-joined/index

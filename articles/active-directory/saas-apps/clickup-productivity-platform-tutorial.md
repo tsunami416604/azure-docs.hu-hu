@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 3244140999dc61560549db077d4c402b3986956b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a6958e88e7e20b94a54216a92651c2f6d3fe650e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59282644"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67105318"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clickup-productivity-platform"></a>Oktatóanyag: Az Azure Active Directory-integráció ClickUp termelékenység platformmal
 
@@ -52,7 +52,7 @@ Konfigurálása az Azure AD integrálása a ClickUp termelékenység Platform, h
 
 **ClickUp termelékenység Platform hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -203,7 +203,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
     ![ClickUp termelékenység konfiguráció](./media/clickup-productivity-platform-tutorial/user2.png)
 
     > [!NOTE]
-    > Felhasználó megkapja az értesítést, és rendelkezik a fiók aktiválásához a meghívás elfogadásához.
+    > A felhasználó megkapja az értesítést, és el kell fogadnia a meghívást, a fiók aktiválásához.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 

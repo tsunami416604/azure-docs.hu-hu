@@ -1,6 +1,6 @@
 ---
-title: ApplicationInsights.config referencia – Azure |} A Microsoft Docs
-description: Engedélyezze vagy tiltsa le az adatgyűjtő modulok adatok, és adja hozzá a teljesítményszámlálók és más paramétereket.
+title: ApplicationInsights. config – útmutató – Azure | Microsoft Docs
+description: Az adatgyűjtési modulok engedélyezése vagy letiltása, valamint teljesítményszámlálók és egyéb paraméterek hozzáadása.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -10,137 +10,141 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 09/19/2018
+ms.date: 05/22/2019
 ms.reviewer: olegan
 ms.author: mbullwin
-ms.openlocfilehash: 1a5b6d435dcc82b59c30302f9cd711975864594c
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 02ad74e5b1f8b86a0072b413db2a572f8ed92781
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522247"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932151"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Az Application Insights SDK konfigurálása az ApplicationInsights.config vagy .xml használatával
-Az Application Insights .NET SDK NuGet-csomagok számos áll. A [core csomag](https://www.nuget.org/packages/Microsoft.ApplicationInsights) az API-t biztosít a telemetria küldését az Application Insights. [További csomagok](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights) adja meg a telemetriai adatok *modulok* és *inicializálók* automatikusan nyomon követési telemetria az alkalmazás és a környezetben. A konfigurációs fájl módosításával engedélyezze vagy tiltsa le a telemetriai adatok modulok és az inicializálók, és némelyike paramétereinek megadása.
+A Application Insights .NET SDK számos NuGet-csomagot tartalmaz. Az [alapcsomag](https://www.nuget.org/packages/Microsoft.ApplicationInsights) biztosítja az API-t, amely telemetria küld a Application Insightsnak. A [további csomagok](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights) telemetria *modulokat* és *inicializáló* csomagokat biztosítanak az alkalmazás és a környezet telemetria automatikus nyomon követéséhez. A konfigurációs fájl módosításával engedélyezheti vagy letilthatja a telemetria-modulokat és-inicializálók beállításait, és beállíthat paramétereket.
 
-A konfigurációs fájl neve `ApplicationInsights.config` vagy `ApplicationInsights.xml`az alkalmazás típusától függően. Automatikusan hozzáadódik a projekthez, amikor Ön [telepítheti az SDK legtöbb verzióját][start]. Is megjelenik a webalkalmazás [Állapotfigyelőt az IIS-kiszolgálón történő][redfield], vagy amikor kiválasztja az Application Insights [egy Azure-beli webhelyen vagy a VM-bővítmény](azure-web-apps.md).
+A konfigurációs fájl neve `ApplicationInsights.config` vagy `ApplicationInsights.xml`, az alkalmazás típusától függően. A rendszer automatikusan hozzáadja a projekthez [az SDK legtöbb verziójának telepítésekor][start]. Alapértelmezés szerint, ha a Visual Studio-sablon olyan projektjeiből származó automatizált élményt használ, amelyek támogatják a **> Application Insights telemetria hozzáadását**, akkor a ApplicationInsights. config fájl a projekt gyökérkönyvtárában jön létre, és amikor a rendszer átmásolja a megfelelést a következőre: bin mappa. Emellett egy webalkalmazáshoz is hozzá lesz adva [Állapotmonitor egy IIS-kiszolgálón][redfield]. A konfigurációs fájlt a rendszer figyelmen [](azure-web-apps.md) kívül hagyja, ha az Azure-beli virtuális [gép és a virtuálisgép-méretezési csoport](azure-vm-vmss-apps.md) bővítményét használja.
 
-Egy ezzel egyenértékű fájlt a vezérlő nem létezik a [SDK egy weblapon][client].
+Nem található megfelelő fájl az [SDK-nak egy weblapon][client]való vezérléséhez.
 
-Ez a dokumentum ismerteti a szakaszok jelenik meg a konfigurációs fájlt, hogy szabályozzák az SDK összetevői, és mely NuGet-csomagok betöltése összetevőket.
+Ez a dokumentum a konfigurációs fájlban látható szakaszokat ismerteti, hogyan szabályozzák az SDK összetevőit, és hogy mely NuGet-csomagok töltődnek be ezek az összetevők.
 
 > [!NOTE]
-> Csak akkor érvényesíthetők ApplicationInsights.config és .xml utasításokat a .NET Core SDK-t. Egy .NET Core-alkalmazást módosítások általában használjuk az appsettings.json fájlt. Ez egy példát találhat a [Snapshot Debugger dokumentációját.](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger)
+> A ApplicationInsights. config és az. XML utasítások nem vonatkoznak a .NET Core SDKra. A .NET Core-alkalmazások konfigurálásához kövesse [ezt az](../../azure-monitor/app/asp-net-core.md) útmutatót.
 
 ## <a name="telemetry-modules-aspnet"></a>Telemetria modulok (ASP.NET)
-Minden telemetriai modul egy adott típusú adatokat gyűjt, és a fő API segítségével az adatok küldése. A modulok telepítése különböző NuGet-csomagok, amelyek is hozzáadhat a .config fájlt a szükséges sorok szerint.
+Az egyes telemetria-modulok adott típusú adatokat gyűjtenek, és az alapszintű API használatával küldik el az adatokat. A modulokat különböző NuGet-csomagok telepítik, és a szükséges sorokat is hozzáadja a. config fájlhoz.
 
-Egy csomópont van a konfigurációs fájlban, az egyes modulok. Modul letiltásához törölje a csomópont, vagy megjegyzéssé alakíthatja ki.
+Minden modulhoz van egy csomópont a konfigurációs fájlban. A modul letiltásához törölje a csomópontot, vagy véleményezze azt.
 
-### <a name="dependency-tracking"></a>Függőségi nyomkövetés
-[Függőségi nyomkövetés](../../azure-monitor/app/asp-net-dependencies.md) gyűjt telemetriai adatokat gyűjthessen az alkalmazás lehetővé teszi az adatbázisok és a külső szolgáltatások és az adatbázisok hívások. Ahhoz, hogy ez a modul egy IIS-kiszolgálón működik, kell [telepítse az Állapotfigyelőt][redfield]. Az Azure web apps vagy a virtuális gépek, a használandó [válassza ki az Application Insights bővítményt](azure-web-apps.md).
+### <a name="dependency-tracking"></a>Függőségek nyomon követése
+[](../../azure-monitor/app/asp-net-dependencies.md) A függőségek követése telemetria gyűjt az alkalmazás által az adatbázisokra és a külső szolgáltatásokra és adatbázisokra irányuló hívásokról. A modul IIS-kiszolgálón való működésének engedélyezéséhez telepítenie kell [Állapotmonitor][redfield].
 
-A saját függőségi nyomkövetés a kódot is írhat a [TrackDependency API](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency).
+A [TRACKDEPENDENCY API](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency)használatával is írhat saját függőségi követési kódot.
 
 * `Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule`
-* [Microsoft.ApplicationInsights.DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) NuGet-csomagot.
+* [Microsoft. ApplicationInsights. DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) NuGet-csomag.
 
-### <a name="performance-collector"></a>Teljesítmény-gyűjtő
-[Gyűjti a rendszerteljesítmény-számlálók](../../azure-monitor/app/performance-counters.md) például a CPU, memória- és betölteni az IIS telepítését. Megadhat számlálók összegyűjtése, többek között a teljesítményszámlálók állított be saját magának.
+A függőségek automatikusan gyűjthetők a kód módosítása nélkül, ügynök-alapú (kód nélküli) csatolással. Ha az Azure Web Apps szolgáltatásban szeretné használni, engedélyezze a [Application Insights](azure-web-apps.md)-bővítményt. Ha az Azure-beli virtuális gépen vagy az Azure virtuálisgép-méretezési csoporton szeretné használni, engedélyezze a virtuális gép [és a virtuálisgép-méretezési csoport alkalmazás](azure-vm-vmss-apps.md)-figyelési bővítményét.
+
+### <a name="performance-collector"></a>Teljesítmény gyűjtője
+[](../../azure-monitor/app/performance-counters.md) A rendszerteljesítmény-számlálókat, például a processzort, a memóriát és a hálózati terhelést az IIS-telepítésből gyűjti. Megadhatja, hogy mely számlálókat szeretné összegyűjteni, beleértve a saját maga beállított teljesítményszámlálók adatait is.
 
 * `Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.PerformanceCollectorModule`
-* [Microsoft.ApplicationInsights.PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector) NuGet-csomagot.
+* [Microsoft. ApplicationInsights. PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector) NuGet-csomag.
 
-### <a name="application-insights-diagnostics-telemetry"></a>Application Insights diagnosztikai Telemetria
-A `DiagnosticsTelemetryModule` jelenti a hibákat a kódban az Application Insights instrumentation magát. Például ha a kódot a teljesítményszámlálók nem férhet hozzá, vagy ha egy `ITelemetryInitializer` kivételt jelez. Ez a modul által nyomon követett híváslánc-telemetria megjelenik a [diagnosztikai keresés][diagnostic]. Diagnosztikai adatokat küld a dc.services.vsallin.net.
+### <a name="application-insights-diagnostics-telemetry"></a>Application Insights diagnosztikai telemetria
+A `DiagnosticsTelemetryModule` jelentés hibákat tartalmaz a Application Insights Instrumentation-kódban. Ha például a kód nem fér hozzá a teljesítményszámlálók számára, vagy `ITelemetryInitializer` kivételt jelez. A modul által követett nyomkövetési telemetria a [diagnosztikai keresésben][diagnostic]jelenik meg.
 
+```
 * `Microsoft.ApplicationInsights.Extensibility.Implementation.Tracing.DiagnosticsTelemetryModule`
-* [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) NuGet-csomagot. Ha csak telepíteni ezt a csomagot, az ApplicationInsights.config fájlban nem jön automatikusan létre.
+* [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) NuGet package. If you only install this package, the ApplicationInsights.config file is not automatically created.
+```
 
 ### <a name="developer-mode"></a>Fejlesztői mód
-`DeveloperModeWithDebuggerAttachedTelemetryModule` arra kényszeríti az Application Insights `TelemetryChannel` is küldhet adatokat, azonnal egyszerre, amikor egy hibakereső kapcsolódik az alkalmazás folyamatának egyik telemetriaelemhez. Ez csökkenti a pillanattól idő, amikor az alkalmazás telemetriai nyomon követi, és az Application Insights portálon megjelenő. A Processzor és a hálózati sávszélesség jelentős többletterhelést okoz.
+`DeveloperModeWithDebuggerAttachedTelemetryModule`a Application Insights `TelemetryChannel` azonnal küldi el az adatküldést, egy telemetria-elem egyszerre, amikor egy hibakereső csatlakozik az alkalmazási folyamathoz. Ez csökkenti azt az időtartamot, ameddig az alkalmazás nyomon követi a telemetria, és amikor megjelenik a Application Insights-portálon. Jelentős terhelést okoz a processzor-és a hálózati sávszélességben.
 
 * `Microsoft.ApplicationInsights.WindowsServer.DeveloperModeWithDebuggerAttachedTelemetryModule`
 * [Application Insights Windows Server](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/) NuGet-csomag
 
 ### <a name="web-request-tracking"></a>Webes kérelmek nyomon követése
-Jelentések a [idő és az eredmény válaszkód](../../azure-monitor/app/asp-net.md) a HTTP-kérések.
+A HTTP [-kérések válaszideje és eredmény-kódjának](../../azure-monitor/app/asp-net.md) jelentése.
 
 * `Microsoft.ApplicationInsights.Web.RequestTrackingTelemetryModule`
-* [Microsoft.ApplicationInsights.Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) NuGet-csomag
+* [Microsoft. ApplicationInsights. Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) NuGet csomag
 
 ### <a name="exception-tracking"></a>Kivétel követése
-`ExceptionTrackingTelemetryModule` a webalkalmazás előforduló kezeletlen kivételek nyomon követi. Lásd: [hibák és kivételek][exceptions].
+`ExceptionTrackingTelemetryModule`nyomon követi a webalkalmazás kezeletlen kivételeit. Lásd: [hibák és kivételek][exceptions].
 
 * `Microsoft.ApplicationInsights.Web.ExceptionTrackingTelemetryModule`
-* [Microsoft.ApplicationInsights.Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) NuGet-csomag
-* `Microsoft.ApplicationInsights.WindowsServer.UnobservedExceptionTelemetryModule` -számok [feladat kivételek észrevétlen](https://blogs.msdn.com/b/pfxteam/archive/2011/09/28/task-exception-handling-in-net-4-5.aspx).
-* `Microsoft.ApplicationInsights.WindowsServer.UnhandledExceptionTelemetryModule` -a feldolgozói szerepkörök, a windows-szolgáltatások és a konzol alkalmazások nem kezelt kivételek nyomon követi.
-* [Application Insights Windows Server](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/) NuGet-csomagot.
+* [Microsoft. ApplicationInsights. Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) NuGet csomag
+* `Microsoft.ApplicationInsights.WindowsServer.UnobservedExceptionTelemetryModule`– nyomon követi a nem [figyelt feladatok kivételeit](https://blogs.msdn.com/b/pfxteam/archive/2011/09/28/task-exception-handling-in-net-4-5.aspx).
+* `Microsoft.ApplicationInsights.WindowsServer.UnhandledExceptionTelemetryModule`– nyomon követi a feldolgozói szerepkörök, a Windows-szolgáltatások és a konzolos alkalmazások nem kezelt kivételeit.
+* [Application Insights Windows Server](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/) NuGet-csomag.
 
-### <a name="eventsource-tracking"></a>EventSource nyomon követése
-`EventSourceTelemetryModule` az Application Insights nyomkövetésként küldendő EventSource események konfigurálását teszi lehetővé. A követési események EventSource információkért lásd: [EventSource események használatával](../../azure-monitor/app/asp-net-trace-logs.md#using-eventsource-events).
+### <a name="eventsource-tracking"></a>EventSource követése
+`EventSourceTelemetryModule`lehetővé teszi, hogy a nyomkövetési Application Insightsként küldendő EventSource eseményeket konfigurálja. További információ a EventSource-események nyomon követéséről: [EventSource-események használata](../../azure-monitor/app/asp-net-trace-logs.md#use-eventsource-events).
 
 * `Microsoft.ApplicationInsights.EventSourceListener.EventSourceTelemetryModule`
 * [Microsoft.ApplicationInsights.EventSourceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener) 
 
-### <a name="etw-event-tracking"></a>ETW-események követése
-`EtwCollectorTelemetryModule` az Application Insights nyomkövetésként küldendő ETW-szolgáltató eseményei konfigurálását teszi lehetővé. ETW-események nyomon követésével kapcsolatos információkért lásd: [ETW-események használatával](../../azure-monitor/app/asp-net-trace-logs.md#using-etw-events).
+### <a name="etw-event-tracking"></a>ETW események követése
+`EtwCollectorTelemetryModule`lehetővé teszi, hogy a ETW-szolgáltatóktól származó eseményeket a nyomkövetési Application Insights küldje el. További információ a ETW-események nyomon követéséről: [ETW-események használata](../../azure-monitor/app/asp-net-trace-logs.md#use-etw-events).
 
 * `Microsoft.ApplicationInsights.EtwCollector.EtwCollectorTelemetryModule`
 * [Microsoft.ApplicationInsights.EtwCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector) 
 
 ### <a name="microsoftapplicationinsights"></a>Microsoft.ApplicationInsights
-A Microsoft.ApplicationInsights csomagot biztosít a [core API](https://msdn.microsoft.com/library/mt420197.aspx) SDK. A telemetriai adatok modulok használja, és is [segítségével határozza meg a saját telemetriája](../../azure-monitor/app/api-custom-events-metrics.md).
+A Microsoft. ApplicationInsights csomag biztosítja az SDK [alapvető API](https://msdn.microsoft.com/library/mt420197.aspx) -ját. A többi telemetria-modul ezt használja, és azt is [használhatja a saját telemetria definiálásához](../../azure-monitor/app/api-custom-events-metrics.md).
 
-* Nem tartozik bejegyzés az applicationinsights.config fájlban.
-* [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) NuGet-csomagot. Csak a NuGet telepítése esetén nem .config fájl jön létre.
+* Nincs bejegyzés a ApplicationInsights. config fájlban.
+* [Microsoft. ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) NuGet-csomag. Ha most telepíti ezt a NuGet, a rendszer nem hoz létre. config fájlt.
 
 ## <a name="telemetry-channel"></a>Telemetria-csatorna
-A telemetriai adatok csatorna pufferelés és továbbítását a telemetria az Application Insights szolgáltatás kezeli.
+A [telemetria-csatorna](telemetry-channels.md) kezeli a telemetria pufferelését és továbbítását a Application Insights szolgáltatás számára.
 
-* `Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.ServerTelemetryChannel` a szolgáltatások az alapértelmezett csatornán. Adatok a memóriában puffereli azt.
-* `Microsoft.ApplicationInsights.PersistenceChannel` a alternatívája a konzolalkalmazást. Azt mentheti unflushed adatok állandó tárolókba, amikor az alkalmazás bezárul, és elküldi azt az alkalmazás indításakor újra.
+* `Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.ServerTelemetryChannel`a webalkalmazások alapértelmezett csatornája. A szolgáltatás a memóriában puffert használ, és újrapróbálkozási mechanizmusokat és helyi lemezes tárolást alkalmaz a megbízhatóbb telemetria-kézbesítés érdekében.
+* `Microsoft.ApplicationInsights.InMemoryChannel`egy egyszerűsített telemetria-csatorna, amely akkor használható, ha nincs más csatorna konfigurálva. 
 
 ## <a name="telemetry-initializers-aspnet"></a>Telemetria inicializálók (ASP.NET)
-Környezeti tulajdonsága, valamint a telemetria minden eleméhez küldött telemetriai adatok inicializálók megadása
+A telemetria inicializálók a telemetria minden eleme mellett eljuttatott környezeti tulajdonságokat határozzák meg.
 
-Is [írhat saját inicializálók](../../azure-monitor/app/api-filtering-sampling.md#add-properties) környezeti tulajdonságok beállításához.
+[Saját inicializálók](../../azure-monitor/app/api-filtering-sampling.md#add-properties) is megírhatók a környezeti tulajdonságok beállításához.
 
-A standard szintű inicializálók összes állítottak vagy a Web- vagy WindowsServer NuGet-csomagokat:
+A szabványos inicializálók mind a web-, mind a WindowsServer NuGet-csomagok szerint vannak beállítva:
 
-* `AccountIdTelemetryInitializer` az AccountId tulajdonságát állítja be.
-* `AuthenticatedUserIdTelemetryInitializer` a JavaScript SDK által beállított AuthenticatedUserId tulajdonságát állítja be.
-* `AzureRoleEnvironmentTelemetryInitializer` frissítések a `RoleName` és `RoleInstance` tulajdonságait a `Device` környezet összes telemetriai cikkhez az Azure futtatókörnyezet kinyert adatokkal.
-* `BuildInfoConfigComponentVersionTelemetryInitializer` frissítések a `Version` tulajdonsága a `Component` környezete összes telemetriai elem kinyert értékkel a `BuildInfo.config` MS Build által előállított fájlt.
-* `ClientIpHeaderTelemetryInitializer` frissítések `Ip` tulajdonságát a `Location` összes telemetriai elem kontextusában alapján a `X-Forwarded-For` a kérelem HTTP-fejléc.
-* `DeviceTelemetryInitializer` a következő tulajdonságait frissíti a `Device` az összes telemetriai elem környezetével.
-  * `Type` "PC" értékre van állítva
-  * `Id` értéke a számítógép tartományneve a webalkalmazást futtató kiszolgáló.
-  * `OemName` a kinyert értékre van állítva a `Win32_ComputerSystem.Manufacturer` mezőt, a WMI használatával.
-  * `Model` a kinyert értékre van állítva a `Win32_ComputerSystem.Model` mezőt, a WMI használatával.
-  * `NetworkType` a kinyert értékre van állítva a `NetworkInterface`.
-  * `Language` nevére van beállítva a `CurrentCulture`.
-* `DomainNameRoleInstanceTelemetryInitializer` frissítések a `RoleInstance` tulajdonságát a `Device` környezet a számítógépen, amelyen a webalkalmazás fut, a tartomány nevét az összes telemetriai elemek.
-* `OperationNameTelemetryInitializer` frissítések a `Name` tulajdonságát a `RequestTelemetry` és a `Name` tulajdonságát a `Operation` összes telemetriai elem kontextusában a HTTP-metódus, valamint a ASP.NET MVC-vezérlő és a kérelem feldolgozását meghívott művelet neve alapján.
-* `OperationIdTelemetryInitializer` vagy `OperationCorrelationTelemetryInitializer` frissítések a `Operation.Id` környezeti tulajdonsága az összes telemetriai elem közben az automatikusan létrehozott kérések nyomon követett `RequestTelemetry.Id`.
-* `SessionTelemetryInitializer` frissítések a `Id` tulajdonságát a `Session` kinyert értékkel rendelkező összes telemetriai elem környezetét a `ai_session` cookie-k a felhasználó böngészőjében futó applicationinsights – JavaScript-kialakítási kód által generált.
-* `SyntheticTelemetryInitializer` vagy `SyntheticUserAgentTelemetryInitializer` frissítések a `User`, `Session`, és `Operation` környezetek tulajdonságokat az összes telemetriai elem nyomon követni a kérések feldolgozása során a szintetikus forrásból, például egy rendelkezésre állási teszt, vagy keressen motor robot. Alapértelmezés szerint [Metrikaböngésző](../../azure-monitor/app/metrics-explorer.md) szintetikus telemetriai adatok nem jelennek meg.
+* `AccountIdTelemetryInitializer`beállítja a AccountId tulajdonságot.
+* `AuthenticatedUserIdTelemetryInitializer`a JavaScript SDK által beállított AuthenticatedUserId tulajdonságot állítja be.
+* `AzureRoleEnvironmentTelemetryInitializer`Az Azure Runtime `RoleInstance` environmentből kinyert információkkal frissíti az összes telemetria `Device`-elem kontextusát és tulajdonságait. `RoleName`
+* `BuildInfoConfigComponentVersionTelemetryInitializer`frissíti az összes telemetria- `Component` `BuildInfo.config` elem környezetének tulajdonságátazMSBuildáltallétrehozottfájlbólkinyertértékkel.`Version`
+* `ClientIpHeaderTelemetryInitializer`frissíti `Ip` az `Location` összes`X-Forwarded-For` telemetria-elem környezetének tulajdonságát a kérelem http-fejléce alapján.
+* `DeviceTelemetryInitializer`frissíti az összes telemetria-elem `Device` környezetének következő tulajdonságait.
+  * `Type`a "PC" értékre van állítva
+  * `Id`annak a számítógépnek a tartománynevére van beállítva, amelyen a webalkalmazás fut.
+  * `OemName`a a `Win32_ComputerSystem.Manufacturer` mezőből a WMI használatával kinyert értékre van állítva.
+  * `Model`a a `Win32_ComputerSystem.Model` mezőből a WMI használatával kinyert értékre van állítva.
+  * `NetworkType`értéke a következőből `NetworkInterface`kinyert értékre van állítva:.
+  * `Language`értéke a (z `CurrentCulture`) neve.
+* `DomainNameRoleInstanceTelemetryInitializer`frissíti az összes telemetria- `Device` elem környezetének tulajdonságátannakaszámítógépnekatartománynevével,amelyenawebalkalmazásfut.`RoleInstance`
+* `OperationNameTelemetryInitializer`frissíti a (z) `RequestTelemetry` `Name`ésa (z) `Name` tulajdonságát a http-metódus alapján az összes telemetria-elem környezetében,valamintaASP.netMVC-vezérlőésakérelemfeldolgozásárameghívott`Operation` művelet nevét.
+* `OperationIdTelemetryInitializer`vagy `OperationCorrelationTelemetryInitializer` frissíti az `Operation.Id` összes olyan telemetria környezeti tulajdonságát, amelyet a rendszer automatikusan generált `RequestTelemetry.Id`a kérések feldolgozása során.
+* `SessionTelemetryInitializer`frissíti a `Session` környezet `ai_session` tulajdonságát minden olyan telemetria elemnél, amely a felhasználó böngészőjében futó ApplicationInsights JavaScript-rendszerállapot-kód által generált cookie-ból kinyert értékkel rendelkezik. `Id`
+* `SyntheticTelemetryInitializer`a szintetikus forrásból érkező `Session`kérések kezelésekor követett összes telemetria-elem (például egy rendelkezésre állási teszt vagy a keresőmotor robot) esetében a, és `Operation` a `User`környezetek tulajdonságai is frissülnek.`SyntheticUserAgentTelemetryInitializer` Alapértelmezés szerint a [Metrikaböngésző](../../azure-monitor/app/metrics-explorer.md) nem jeleníti meg a szintetikus telemetria.
 
-    A `<Filters>` azonosítási a kérések tulajdonságainak beállítása.
-* `UserTelemetryInitializer` frissítések a `Id` és `AcquisitionDate` tulajdonságainak `User` kinyert értékek az összes telemetriai elem környezetét a `ai_user` az Application Insights JavaScript instrumentation kód fut, a felhasználó által létrehozott cookie-k böngésző.
-* `WebTestTelemetryInitializer` a felhasználói azonosítóját, a munkamenet-azonosító és a szintetikus adatforrás tulajdonságai beállítása a HTTP-kérések származó [rendelkezésre állási tesztek](../../azure-monitor/app/monitor-web-app-availability.md).
-  A `<Filters>` azonosítási a kérések tulajdonságainak beállítása.
+    A `<Filters>` kérelmek azonosító tulajdonságainak beállítása.
+* `UserTelemetryInitializer`frissíti az `Id` `AcquisitionDate` összesolyan`User` telemetria-elem környezetét és tulajdonságait, amely a felhasználó által futtatott Application Insights JavaScript-rendszerállapot-kód által generált cookie-valkinyertértékekkelrendelkezik.`ai_user` böngésző.
+* `WebTestTelemetryInitializer`a [rendelkezésre állási tesztekből](../../azure-monitor/app/monitor-web-app-availability.md)származó HTTP-kérelmek felhasználói azonosítójának, munkamenet-azonosítójának és a szintetikus forrás tulajdonságainak beállítása.
+  A `<Filters>` kérelmek azonosító tulajdonságainak beállítása.
 
-A Service Fabric-ban futó .NET-alkalmazásokban, hozzáadhatja a `Microsoft.ApplicationInsights.ServiceFabric` NuGet-csomagot. Ez a csomag tartalmaz egy `FabricTelemetryInitializer`, amely a Service Fabric további tulajdonságokkal bővít telemetriai. További információkért lásd: a [GitHub-oldalon](https://github.com/Microsoft/ApplicationInsights-ServiceFabric/blob/master/README.md) hozzá a NuGet-csomag tulajdonságait.
+Service Fabricban futó .NET-alkalmazások esetén a `Microsoft.ApplicationInsights.ServiceFabric` NuGet csomagot is használhatja. Ez a csomag tartalmazza `FabricTelemetryInitializer`a, amely Service Fabric tulajdonságokat adja hozzá a telemetria elemekhez. További információt a NuGet-csomag által hozzáadott tulajdonságokkal kapcsolatos [GitHub-lapon](https://github.com/Microsoft/ApplicationInsights-ServiceFabric/blob/master/README.md) talál.
 
-## <a name="telemetry-processors-aspnet"></a>Telemetry Processors (ASP.NET)
-Telemetria processzorok szűrheti és módosíthatja mindegyik telemetriaelemhez, az SDK-ból a portálon való továbbítás előtt.
+## <a name="telemetry-processors-aspnet"></a>Telemetria processzorok (ASP.NET)
+A telemetria-processzorok csak az SDK-ból a portálra történő elküldése előtt szűrhetik és módosíthatják az egyes telemetria elemeket.
 
-Is [írhat saját telemetriát processzorok](../../azure-monitor/app/api-filtering-sampling.md#filtering).
+[Írhat saját telemetria](../../azure-monitor/app/api-filtering-sampling.md#filtering)-processzorokat is.
 
-#### <a name="adaptive-sampling-telemetry-processor-from-200-beta3"></a>Az adaptív mintavételezési telemetriai processzor (a 2.0.0-beta3)
-Ez e beállítás alapértelmezés szerint engedélyezve van. Ha az alkalmazása sok telemetriát küld, a processzor, néhány eltávolítja.
+#### <a name="adaptive-sampling-telemetry-processor-from-200-beta3"></a>Adaptív mintavételi telemetria processzor (a 2.0.0-beta3)
+Ez e beállítás alapértelmezés szerint engedélyezve van. Ha az alkalmazás sok telemetria küld, a processzor eltávolítja azt.
 
 ```xml
 
@@ -152,12 +156,12 @@ Ez e beállítás alapértelmezés szerint engedélyezve van. Ha az alkalmazása
 
 ```
 
-A paraméter a cél elérése érdekében próbálja meg az algoritmus biztosít. Az SDK-t minden egyes példányánál egymástól függetlenül, működik, így ha a kiszolgáló egy fürt több gépet, a telemetriai adatok tényleges mérete szorozva ennek megfelelően kell-e.
+A paraméter biztosítja azt a célt, amelyet az algoritmus megpróbál elérni. Az SDK minden példánya egymástól függetlenül működik, így ha a kiszolgáló több gép fürtje, a rendszer ennek megfelelően megszorozza a telemetria tényleges mennyiségét.
 
-[További tudnivalók a mintavételezésről](../../azure-monitor/app/sampling.md).
+[További információ a mintavételezésről](../../azure-monitor/app/sampling.md).
 
-#### <a name="fixed-rate-sampling-telemetry-processor-from-200-beta1"></a>Rögzített mintavételi telemetriai processzor (a 2.0.0-beta1)
-Emellett van egy standard [telemetriai processzor mintavételi](../../azure-monitor/app/api-filtering-sampling.md) (a 2.0.1):
+#### <a name="fixed-rate-sampling-telemetry-processor-from-200-beta1"></a>Rögzített arányú mintavételi telemetria processzor (a 2.0.0-béta-ről)
+Létezik egy standard [mintavételi telemetria processzor](../../azure-monitor/app/api-filtering-sampling.md) is (az 2.0.1-ből):
 
 ```XML
 
@@ -174,13 +178,13 @@ Emellett van egy standard [telemetriai processzor mintavételi](../../azure-moni
 
 
 
-## <a name="channel-parameters-java"></a>Csatornán paraméterekkel (Java)
-Ezeket a paramétereket befolyásolják, hogyan a Java SDK-t kell tárolni és a gyűjtött telemetriai adatait.
+## <a name="channel-parameters-java"></a>Csatorna paramétereinek (Java)
+Ezek a paraméterek befolyásolják, hogy a Java SDK hogyan tárolja és ürítse ki a gyűjtött telemetria-adatokat.
 
 #### <a name="maxtelemetrybuffercapacity"></a>MaxTelemetryBufferCapacity
-Az SDK-t a memóriában tárolt tárolható telemetriai elemek száma. Ha eléri ezt a számot, a telemetriai adatok kiürítené –, a telemetriai adatok elemek érkeznek az Application Insights-kiszolgáló.
+Az SDK memóriában tárolt tárolójában tárolható telemetria-elemek száma. Ha eléri ezt a számot, a rendszer kiüríti a telemetria-puffert – vagyis a telemetria-elemeket a rendszer elküldi a Application Insights kiszolgálónak.
 
-* Min: 1
+* Min 1
 * Max: 1000
 * Alapértelmezett: 500
 
@@ -196,9 +200,9 @@ Az SDK-t a memóriában tárolt tárolható telemetriai elemek száma. Ha eléri
 ```
 
 #### <a name="flushintervalinseconds"></a>FlushIntervalInSeconds
-Meghatározza, hogy milyen gyakran a memórián belüli storage-ban tárolt adatok ki kell üríteni (az Application Insightsnak elküldött).
+Meghatározza, hogy a memóriában tárolt tárolóban tárolt adatmennyiséget milyen gyakran kell kiüríteni (Application Insights).
 
-* Min: 1
+* Min 1
 * Max: 300
 * Alapértelmezett: 5
 
@@ -214,9 +218,9 @@ Meghatározza, hogy milyen gyakran a memórián belüli storage-ban tárolt adat
 ```
 
 #### <a name="maxtransmissionstoragecapacityinmb"></a>MaxTransmissionStorageCapacityInMB
-Meghatározza a maximális mérete (MB), amely a helyi lemezen az állandó tároló számára engedélyezett. Ez a tároló megőrzése telemetriai elemeket, amelyeket nem sikerült az Application Insights-végpont továbbíthatja a Microsoftnak szolgál. A tároló mérete feltétele teljesült, amikor új telemetriai tételek elvesznek.
+Meghatározza a helyi lemezen lévő állandó tárterületre kiosztott MB maximális méretét. Ez a tároló a Application Insights végpontnak nem továbbítandó telemetria elemek megőrzésére szolgál. Ha a tárolási méret teljesül, a rendszer elveti az új telemetria elemeket.
 
-* Min: 1
+* Min 1
 * Max: 100
 * Alapértelmezett: 10
 
@@ -233,7 +237,7 @@ Meghatározza a maximális mérete (MB), amely a helyi lemezen az állandó tár
 
 #### <a name="local-forwarder"></a>Helyi továbbító
 
-[Helyi továbbító](opencensus-local-forwarder.md) olyan ügynök, amely gyűjti az Application Insights vagy [OpenCensus](https://opencensus.io/) használati adatok gyűjtése a különböző SDK-k és keretrendszereket és továbbítja azt az Application Insights. Windows és Linux alatt alkalmas állapotban. Amikor az Application Insights Java SDK szolgáltatással párosítva a helyi továbbító teljes mértékben támogatja [élő mérőszámok](../../azure-monitor/app/live-stream.md) és adaptív mintavételezés.
+A [helyi továbbító](opencensus-local-forwarder.md) egy olyan ügynök, amely különböző SDK-k és keretrendszerek alapján gyűjt Application Insights vagy [OpenCensus](https://opencensus.io/) telemetria, és átirányítja a Application Insightsba. Windows és Linux rendszeren is futtatható. Ha a Application Insights Java SDK-val párosul, a helyi továbbító teljes körű támogatást nyújt az [élő metrikák](../../azure-monitor/app/live-stream.md) és az adaptív mintavételezések számára.
 
 ```xml
 <Channel type="com.microsoft.applicationinsights.channel.concrete.localforwarder.LocalForwarderTelemetryChannel">
@@ -246,7 +250,7 @@ Meghatározza a maximális mérete (MB), amely a helyi lemezen az állandó tár
 </Channel>
 ```
 
-SpringBoot alapszintű használja, ha a konfigurációs fájl (application.properties) adja hozzá a következő:
+Ha a SpringBoot Starter-t használja, adja hozzá a következőt a konfigurációs fájlhoz (Application. properties):
 
 ```yml
 azure.application-insights.channel.local-forwarder.endpoint-address=<!--put the hostname:port of your LocalForwarder instance here-->
@@ -254,14 +258,14 @@ azure.application-insights.channel.local-forwarder.flush-interval-in-seconds=<!-
 azure.application-insights.channel.local-forwarder.max-telemetry-buffer-capacity=<!--optional-->
 ```
 
-Alapértelmezett értékek azonosak SpringBoot application.properties és applicationinsights.xml konfigurációját.
+Az alapértelmezett értékek megegyeznek a SpringBoot Application. Properties és a applicationinsights. XML konfigurációval.
 
 ## <a name="instrumentationkey"></a>InstrumentationKey
-Ez határozza meg az Application Insights-erőforrást, amelyben az adatok jelennek meg. Általában létrehozhat egy külön erőforrás külön kulccsal, minden, az alkalmazások.
+Ez határozza meg azt a Application Insights-erőforrást, amelyben az adatai megjelennek. Jellemzően külön erőforrást hoz létre minden egyes alkalmazáshoz, külön kulccsal.
 
-Ha szeretné állítani a kulcs dinamikusan – például ha szeretne küldeni az eredményeket a különböző erőforrások – az alkalmazásból, hagyja ki a kulcsot a konfigurációs fájlból, és ehelyett beállíthatja a programkódban.
+Ha dinamikusan szeretné beállítani a kulcsot – például ha az alkalmazásból különböző erőforrásokhoz szeretne eredményeket küldeni –, kihagyhatja a kulcsot a konfigurációs fájlból, és beállíthatja azt kód helyett.
 
-TelemetryClient összes példánya esetén állítsa be a kulcsot, beleértve a normál telemetriai modulok, állítsa a kulcs TelemetryConfiguration.Active. Ehhez egy inicializálási metódust, például a Global.aspx.cs osztályból, egy ASP.NET-szolgáltatásban:
+A TelemetryClient összes példánya kulcsának beállításához, beleértve a standard telemetria-modulokat is, állítsa a kulcsot a TelemetryConfiguration. Active értékre. Ezt egy inicializálási metódusban kell végrehajtani, például global.aspx.cs egy ASP.NET-szolgáltatásban:
 
 ```csharp
 
@@ -274,7 +278,7 @@ TelemetryClient összes példánya esetén állítsa be a kulcsot, beleértve a 
       //...
 ```
 
-Ha csak át szeretné egy meghatározott készletének eseményeket küldeni egy másik erőforrás, beállíthat egy adott TelemetryClient a kulcs:
+Ha csak egy adott eseményt szeretne elküldeni egy másik erőforrásba, beállíthatja egy adott TelemetryClient kulcsát:
 
 ```csharp
 
@@ -285,19 +289,19 @@ Ha csak át szeretné egy meghatározott készletének eseményeket küldeni egy
 
 ```
 
-Egy új kulcs lekérése [hozzon létre egy új erőforrást az Application Insights portálon][new].
+Új kulcs beszerzéséhez [hozzon létre egy új erőforrást a Application Insights-portálon][new].
 
 
 
-## <a name="applicationid-provider"></a>Alkalmazásazonosító-szolgáltató
+## <a name="applicationid-provider"></a>ApplicationId-szolgáltató
 
-_Rendelkezésre álló v2.6.0 kezdődően_
+_Elérhető a v 2.6.0-től_
 
-Ez a szolgáltató célja egy alkalmazás azonosítója alapján egy kialakítási kulcsot talált. Az Alkalmazásazonosítót a RequestTelemetry és DependencyTelemetry szerepel, és határozza meg a korrelációs a portálon.
+Ennek a szolgáltatónak a célja egy alkalmazás AZONOSÍTÓjának megkeresése a kialakítási kulcs alapján. Az alkalmazás azonosítója a RequestTelemetry és a DependencyTelemetry része, és a portál korrelációjának meghatározására szolgál.
 
-Ez a lehetőség beállításával `TelemetryConfiguration.ApplicationIdProvider` kód vagy a config.
+Ez a kód vagy a `TelemetryConfiguration.ApplicationIdProvider` konfiguráció beállításban érhető el.
 
-### <a name="interface-iapplicationidprovider"></a>Kapcsolat: IApplicationIdProvider
+### <a name="interface-iapplicationidprovider"></a>Felület IApplicationIdProvider
 
 ```csharp
 public interface IApplicationIdProvider
@@ -307,19 +311,19 @@ public interface IApplicationIdProvider
 ```
 
 
-A két megvalósításokhoz biztosítunk a [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) sdk: `ApplicationInsightsApplicationIdProvider` és `DictionaryApplicationIdProvider`.
+Két implementációt biztosítunk a [Microsoft. ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) SDK-ban `ApplicationInsightsApplicationIdProvider` : `DictionaryApplicationIdProvider`és.
 
 ### <a name="applicationinsightsapplicationidprovider"></a>ApplicationInsightsApplicationIdProvider
 
-Ez az a profil API burkolója. Kérelmek és a gyorsítótár eredményeket fogja forgalmának szabályozása.
+Ez egy burkoló a profil API-ról. A kérelmeket és a gyorsítótár eredményeit fogja szabályozni.
 
-Ez a szolgáltató hozzáadódik a konfigurációs fájlban vagy telepítésekor [Microsoft.ApplicationInsights.DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) vagy [Microsoft.ApplicationInsights.Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/)
+Ezt a szolgáltatót a rendszer a [Microsoft. ApplicationInsights. DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) vagy a [Microsoft. ApplicationInsights. Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) telepítésekor adja hozzá a konfigurációs fájlhoz.
 
-Ez az osztály tulajdonsága egy nem kötelező `ProfileQueryEndpoint`.
-Alapértelmezés szerint a beállított érték `https://dc.services.visualstudio.com/api/profiles/{0}/appId`.
-Ha ezt a konfigurációt a proxy konfigurálása van szüksége, javasoljuk, hogy proxyzás alap címet, és többek között "/api/profilok/{0}/appId". Vegye figyelembe, hogy "{0}" változó helyére kérelmenként futásidőben a kialakítási kulcsot.
+Ez az osztály nem kötelező tulajdonsággal `ProfileQueryEndpoint`rendelkezik.
+Alapértelmezés szerint ez a következőre `https://dc.services.visualstudio.com/api/profiles/{0}/appId`van beállítva:.
+Ha proxyt kell konfigurálnia ehhez a konfigurációhoz, javasoljuk, hogy az alapcímet proxyként adja meg{0}, beleértve a "/API/Profiles//AppID". Vegye figyelembe,{0}hogy a (z) "
 
-#### <a name="example-configuration-via-applicationinsightsconfig"></a>Példa konfigurációs ApplicationInsights.config keresztül:
+#### <a name="example-configuration-via-applicationinsightsconfig"></a>Példa konfiguráció a ApplicationInsights. config használatával:
 ```xml
 <ApplicationInsights>
     ...
@@ -330,20 +334,20 @@ Ha ezt a konfigurációt a proxy konfigurálása van szüksége, javasoljuk, hog
 </ApplicationInsights>
 ```
 
-#### <a name="example-configuration-via-code"></a>Kód példa konfiguráció:
+#### <a name="example-configuration-via-code"></a>Példa konfiguráció kód használatával:
 ```csharp
 TelemetryConfiguration.Active.ApplicationIdProvider = new ApplicationInsightsApplicationIdProvider();
 ```
 
 ### <a name="dictionaryapplicationidprovider"></a>DictionaryApplicationIdProvider
 
-Ez egy statikus szolgáltató, amely a konfigurált Rendszerállapotkulcs fog támaszkodni a / alkalmazás azonosítója párokat.
+Ez egy statikus szolgáltató, amely a konfigurált kialakítási kulcs/alkalmazás-azonosító párokra támaszkodik.
 
-Ez az osztály tulajdonsága `Defined`, ez a kialakítási kulcsot Dictionary < karakterlánc, karakterlánc > az Alkalmazásazonosítót párok.
+Ez az osztály egy tulajdonsággal `Defined`rendelkezik, amely egy szótár < karakterlánc, karakterlánc > az alkalmazás-azonosító párokhoz.
 
-Ez az osztály tulajdonsága egy nem kötelező `Next` konfigurálása egy másik szolgáltatót használja, ha egy kialakítási kulcs van szükség, amely nem létezik a konfigurációban is használható.
+Ez az osztály nem kötelező tulajdonsággal `Next` rendelkezik, amely egy másik szolgáltató konfigurálására szolgál, ha olyan rendszerállapot-kulcsot kér, amely nem létezik a konfigurációban.
 
-#### <a name="example-configuration-via-applicationinsightsconfig"></a>Példa konfigurációs ApplicationInsights.config keresztül:
+#### <a name="example-configuration-via-applicationinsightsconfig"></a>Példa konfiguráció a ApplicationInsights. config használatával:
 ```xml
 <ApplicationInsights>
     ...
@@ -358,7 +362,7 @@ Ez az osztály tulajdonsága egy nem kötelező `Next` konfigurálása egy mási
 </ApplicationInsights>
 ```
 
-#### <a name="example-configuration-via-code"></a>Kód példa konfiguráció:
+#### <a name="example-configuration-via-code"></a>Példa konfiguráció kód használatával:
 ```csharp
 TelemetryConfiguration.Active.ApplicationIdProvider = new DictionaryApplicationIdProvider{
  Defined = new Dictionary<string, string>
@@ -373,7 +377,7 @@ TelemetryConfiguration.Active.ApplicationIdProvider = new DictionaryApplicationI
 
 
 ## <a name="next-steps"></a>További lépések
-[További információ az API-t][api].
+[További információ az API-ról][api].
 
 <!--Link references-->
 

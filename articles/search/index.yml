@@ -1,74 +1,130 @@
-### YamlMime:YamlDocument
-ms.openlocfilehash: 8385fe5ecb9a6e17d872795ba4eff5c038e4df47
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58199869"
-documentType: LandingData
+### YamlMime:Landing
 title: Azure Search-dokumentáció
+summary: Felhőbeli keresés különböző típusú privát tartalmakon, mesterséges intelligencián alapuló tartalombővítési lehetőséggel arra az esetre, ha a tartalom nem strukturált, vagy nem kereshető nyers formában.
 metadata:
-  document_id: 
-  title: Az Azure Search dokumentációja – oktatóanyagok, gyors útmutatók és API-referenciák
-  description: Megtudhatja, hogyan hozható létre vállalati keresési megoldás különféle személyes tartalmakhoz az Azure Search használatával. Az oktatóanyagok, API-hivatkozások és más dokumentumok bemutatják, hogyan egyesíthetők a kereshető tartalmak egyetlen gyors indexbe, amely az alkalmazási helyzetek széles körében lekérdezhető egyszerű vagy összetett szintaxissal.
+  title: Azure Search-dokumentáció
+  description: Felhőbeli keresés különböző típusú privát tartalmakon, mesterséges intelligencián alapuló tartalombővítési lehetőséggel arra az esetre, ha a tartalom nem strukturált, vagy nem kereshető nyers formában.
   services: search
-  author: HeidiSteen
-  manager: cgronlun
-  ms.service: search
-  ms.devlang: na
+  ms.service: service
   ms.topic: landing-page
-  ms.date: 01/18/2019
+  ms.collection: collection
+  author: HeidiSteen
   ms.author: heidist
-abstract:
-  description: Megtudhatja, hogyan hozható létre vállalati keresési megoldás különféle személyes tartalmakhoz az Azure Search használatával. Az oktatóanyagok, API-hivatkozások és más dokumentumok bemutatják, hogyan egyesíthetők a kereshető tartalmak egyetlen gyors indexbe, amely az alkalmazási helyzetek széles körében lekérdezhető egyszerű vagy összetett szintaxissal. <p/><a href="/azure/search/cognitive-search-concept-intro"><b>Az új kognitív keresés előzetes verziója.</b></a> Egy kiadás előtti verziójú REST API-val mesterséges intelligencia által vezérelt algoritmusokat társíthat az indexelési folyamathoz. Az adatok kinyerésével és a természetes nyelvi és képfeldolgozással a nyers, strukturálatlan tartalmak kereshető tartalmakká alakíthatóak egy Azure Search-indexben. <p/>Megismerkedhet a kognitív kereséssel az <a href="/azure/search/cognitive-search-quickstart-blob">erőforrások és a mintaadatok</a> használatával, vagy többet tudhat meg a <a href="/azure/search/cognitive-search-concept-intro">fogalmakat</a> ismertető cikkben.
-  aside:
-    image:
-      alt: 
-      height: 110
-      src: https://docs.microsoft.com/azure/search/media/index/search-page-callouts3.png
-      width: 250
-    title: Mi az az Azure Search? (1:27)
-    href: https://channel9.msdn.com/Blogs/Azure/What-is-Azure-Search/player
-    width: 250
-sections:
-- title: 5 perces gyors útmutatók
-  items:
-  - type: paragraph
-    text: A portálon egy keresési szolgáltatással kezdhet, majd indexeket határozhat meg, tölthet be és kérhet le C# vagy REST nyelven.
-  - type: list
-    style: icon48
-    items:
-    - image:
-        src: /azure/search/media/index/portal.svg
-      text: Azure Portal
-      href: https://docs.microsoft.com/azure/search/search-create-service-portal
-    - image:
-        src: /azure/search/media/index/logo_Csharp.svg
-      text: .NET
-      href: https://docs.microsoft.com/azure/search/search-create-index-dotnet
-    - image:
-        src: /azure/search/media/index/rest.svg
-      text: REST
-      href: https://docs.microsoft.com/azure/search/search-fiddler
-- title: Részletes útmutatók
-  items:
-  - type: paragraph
-    text: .NET vagy REST nyelven kódolhat, vagy kipróbálhatja a portálon a gyors fogalomtesztelést.
-  - type: list
-    style: ordered
-    items:
-    - html: <a href="/azure/search/cognitive-search-tutorial-blob">Indexelés mesterséges intelligenciával (Cognitive Services)</a>
-    - html: <a href="/azure/search/search-howto-dotnet-sdk">Az Azure Search használata a .NET-tel</a>
-    - html: <a href="/azure/search/search-indexer-tutorial">Azure SQL Database-tartalom indexelése a .NET-tel</a>
-    - html: <a href="/azure/search/search-semi-structured-data">Részben strukturált adatok indexelése az Azure Blob Storage-ban a REST-tel</a>
-    - html: <a href="/azure/search/search-get-started-portal">A portál használata indexeléshez és lekérdezésteszteléshez</a>
-- title: Referencia
-  items:
-  - type: list
-    style: cards
-    className: cardsD
-    items:
-    - title: Nyelvek
-      html: <p><a href="/dotnet/api/?term=microsoft.azure.search">.NET</a></p><p><a href="/dotnet/api/?term=microsoft.azure.management.search">.NET (Felügyelet)</a></p><p><a href="https://docs.microsoft.com/python/api/?view=azure-python&term=search">Python (Felügyelet)</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/searchservice">Szolgáltatási API-referencia</a></p><p><a href="/rest/api/searchmanagement">Felügyeleti API-referencia</a></p>
+  ms.date: 09/20/2019
+  ms.openlocfilehash: 9c89fa143ad5e7fb2c4ba9c227682d14aa511bd9
+  ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 09/25/2019
+  ms.locfileid: "71265645"
+landingContent:
+- title: Az Azure Search névjegye
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az Azure Search?
+      url: search-what-is-azure-search.md
+  - linkListType: architecture
+    links:
+    - text: A teljes szöveges keresés működése az Azure Searchben
+      url: search-lucene-query-architecture.md
+  - linkListType: video
+    links:
+    - text: Az Azure Search ismertetése (1 perc 27 másodperc)
+      url: https://channel9.msdn.com/Blogs/Azure/What-is-Azure-Search/player
+- title: Bevezetés
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Szolgáltatás létrehozása
+      url: search-create-service-portal.md
+    - text: Index létrehozása
+      url: search-get-started-portal.md
+    - text: Bővítési folyamat létrehozása
+      url: cognitive-search-quickstart-blob.md
+  - linkListType: learn
+    links:
+    - text: Az Azure Search bemutatása
+      url: https://docs.microsoft.com/learn/modules/intro-to-azure-search/
+- title: Adatok indexelése
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Index definíciója
+      url: search-what-is-an-index.md
+    - text: Adatok importálása
+      url: search-what-is-data-import.md
+    - text: Indexelő használata
+      url: search-indexer-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Indexelés blobtárolóból
+      url: search-howto-indexing-azure-blob-storage.md
+    - text: JSON-blobok indexelése
+      url: search-howto-index-json-blobs.md
+    - text: Indexelés Azure SQL Database-ből
+      url: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
+    - text: Indexelés Cosmos DB-adatokból
+      url: search-howto-index-cosmosdb.md
+  - linkListType: reference
+    links:
+    - text: Index létrehozása (REST)
+      url: https://docs.microsoft.com/rest/api/searchservice/create-index
+    - text: Indexelő létrehozása (REST)
+      url: https://docs.microsoft.com/rest/api/searchservice/create-indexer
+- title: Adatok bővítése
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Mi az a kognitív keresés?
+      url: cognitive-search-concept-intro.md
+    - text: Készségek
+      url: cognitive-search-defining-skillset.md
+    - text: Tudástárak
+      url: knowledge-store-concept-intro.md
+    - text: Leképezések
+      url: knowledge-store-projection-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: A Cognitive Services csatolása
+      url: cognitive-search-attach-cognitive-services.md
+    - text: Képességcsoport megadása
+      url: cognitive-search-defining-skillset.md
+    - text: Tudástár létrehozása
+      url: knowledge-store-create-portal.md
+  - linkListType: reference
+    links:
+    - text: Előre megadott képesség
+      url: cognitive-search-predefined-skills.md
+- title: Adatok lekérdezése
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Áttekintés
+      url: search-query-overview.md
+    - text: Egyszerű szintaxis (alapértelmezett)
+      url: query-simple-syntax.md
+    - text: Teljes Lucene-szintaxis
+      url: query-lucene-syntax.md
+  - linkListType: how-to-guide
+    links:
+    - text: Egyszerű lekérdezés létrehozása
+      url: search-query-simple-examples.md
+    - text: Teljes szintaxis használata
+      url: search-query-lucene-examples.md
+  - linkListType: reference
+    links:
+    - text: OData nyelvi referencia
+      url: query-odata-filter-orderby-syntax.md
+    - text: Dokumentumok keresése (REST)
+      url: https://docs.microsoft.com/rest/api/searchservice/search-documents
+- title: Súgó és visszajelzés
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: GYIK
+      url: search-faq-frequently-asked-questions.md
+    - text: Tegye fel kérdéseit a Stack Overflow-val kapcsolatban
+      url: https://stackoverflow.com/questions/tagged/azure-search
+    - text: Szolgáltatás igénylése
+      url: https://feedback.azure.com/forums/263029-azure-search

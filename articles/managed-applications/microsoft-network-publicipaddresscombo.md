@@ -1,5 +1,5 @@
 ---
-title: Az Azure PublicIpAddressCombo felhasználói felületi elemben |} A Microsoft Docs
+title: Azure PublicIpAddressCombo UI element | Microsoft Docs
 description: Az Azure portal a Microsoft.Network.PublicIpAddressCombo felhasználói felületi elem ismerteti.
 services: managed-applications
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: tomfitz
 ms.openlocfilehash: c3e8c99f6648f0f4927140f3215978566afb9eb8
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868904"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60251096"
 ---
 # <a name="microsoftnetworkpublicipaddresscombo-ui-element"></a>Microsoft.Network.PublicIpAddressCombo UI element
 Funkciók kiválasztása egy új vagy meglévő nyilvános IP-cím csoportja.
@@ -27,7 +27,7 @@ Funkciók kiválasztása egy új vagy meglévő nyilvános IP-cím csoportja.
 ![Microsoft.Network.PublicIpAddressCombo](./media/managed-application-elements/microsoft.network.publicipaddresscombo.png)
 
 - Ha a felhasználó kiválasztja a "Nincs" nyilvános IP-cím, a tartomány neve felirat szövegmező rejtve marad.
-- Ha a felhasználó kiválaszt egy meglévő nyilvános IP-címet, a tartomány neve felirat szövegmező le van tiltva. A kiválasztott IP-cím tartománynévcímkéje értéke.
+- Ha a felhasználó kiválaszt egy meglévő nyilvános IP-címet, a tartomány neve felirat szövegmező le van tiltva. Its value is the domain name label of the selected IP address.
 - A tartomány neve (például westus.cloudapp.azure.com) utótag frissítések automatikusan a kiválasztott hely alapján.
 
 ## <a name="schema"></a>Séma

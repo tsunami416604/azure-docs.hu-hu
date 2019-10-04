@@ -1,6 +1,6 @@
 ---
-title: 'Application Insights: nyelvek, platformok és integrációk| Microsoft Docs'
-description: Az Application Insightshoz elérhető nyelvek, platformok és integrációk
+title: 'Application Insights: nyelvek, platformok és integrációk | Microsoft Docs'
+description: A Application Insights számára elérhető nyelvek, platformok és integrációk
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -10,80 +10,51 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 09/01/2016
+ms.date: 07/18/2019
 ms.reviewer: olegan
 ms.author: mbullwin
-ms.openlocfilehash: 5a7fbeafe74926c7d89ac76dc2964756b3582d61
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: ab573d1d9ca9d9db39135ea76e555bb0720d7b68
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56671148"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68878777"
 ---
-# <a name="developer-analytics-languages-platforms-and-integrations"></a>Fejlesztői elemzések: nyelvek, platformok és integrációk
-Ezen elemek az [Application Insights](../../azure-monitor/app/app-insights-overview.md) azon megvalósításai, amelyekről hallottunk, beleértve néhány harmadik fél által létrehozottat.
+# <a name="supported-languages"></a>Támogatott nyelvek
 
-## <a name="languages---officially-supported-by-application-insights-team"></a>Az Application Insights csapata által hivatalosan támogatott nyelvek
 * [C#|VB (.NET)](../../azure-monitor/app/asp-net.md)
 * [Java](../../azure-monitor/app/java-get-started.md)
-* [JavaScript-weblapok](../../azure-monitor/app/javascript.md)
+* [JavaScript](../../azure-monitor/app/javascript.md)
 * [Node.JS](../../azure-monitor/app/nodejs.md)
 
-## <a name="languages---community-supported"></a>Közösség által támogatott nyelvek
-* [F#](https://safe-stack.github.io/docs/template-azure-ai/)
-* [PHP](https://github.com/Microsoft/ApplicationInsights-PHP)
-* [Python](https://pypi.python.org/pypi/applicationinsights/0.1.0)
-* [Ruby](https://rubygems.org/gems/application_insights)
-* [Bármi más](#projects)
+## <a name="supported-platforms-and-frameworks"></a>Támogatott platformok és keretrendszerek
 
-## <a name="platforms-and-frameworks"></a>Platformok és keretrendszerek
-* [ASP.NET](../../azure-monitor/app/asp-net.md)
+### <a name="instrumentation-for-already-deployed-applications-codeless-agent-based"></a>Már üzembe helyezett alkalmazások rendszerállapotba állítása (kód nélküli, ügynök-alapú)
+* [Azure-beli virtuális gépek és Azure-beli virtuálisgép-méretezési csoportok](../../azure-monitor/app/azure-vm-vmss-apps.md)
+* [Azure App Service](../../azure-monitor/app/azure-web-apps.md)
 * [ASP.NET – már élő alkalmazásokhoz](../../azure-monitor/app/monitor-performance-live-website-now.md)
+* [Azure-Cloud Services](../../azure-monitor/app/cloudservices.md), beleértve a webes és a feldolgozói szerepköröket is
+* [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-monitoring)
+### <a name="instrumentation-through-code-sdks"></a>Rendszerállapot-kódok (SDK-k)
+* [ASP.NET](../../azure-monitor/app/asp-net.md)
 * [ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
 * [Android](../../azure-monitor/learn/mobile-center-quickstart.md) (App Center)
-* [Android](https://github.com/Microsoft/ApplicationInsights-Android) (App Center)
-* [Angular](https://github.com/MarkPieszak/angular-application-insights)
-* [Azure App Service](../../azure-monitor/app/azure-web-apps.md)
-* 
-  [Azure Cloud Services](../../azure-monitor/app/cloudservices.md)&#151;beleértve a webes és a feldolgozói szerepköröket
-* [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample)
-* [Docker](../../azure-monitor/app/docker.md)
-* [Glimpse](https://azure.microsoft.com/blog/glimpse-application-insights/)
 * [iOS](../../azure-monitor/learn/mobile-center-quickstart.md) (App Center)
-* [Ionic](https://github.com/SoftwarePioniere/ionic-application-insights)
-* [iOS](https://github.com/Microsoft/ApplicationInsights-iOS) (App Center)
 * [Java EE](../../azure-monitor/app/java-get-started.md)
 * [Node.JS](https://www.npmjs.com/package/applicationinsights)
-* [OSX](https://github.com/Microsoft/ApplicationInsights-OSX)
-* [SAFE Stack](https://safe-stack.github.io/docs/template-azure-ai/)
-* [Spring](https://joe.blog.freemansoft.com/2015/12/enabling-microsoft-application-insight.html)
 * [Univerzális Windows-alkalmazás](../../azure-monitor/learn/mobile-center-quickstart.md) (App Center)
-* [WCF](https://github.com/Microsoft/ApplicationInsights-SDK-Labs/blob/master/WCF/readme.md)
 * [Asztali Windows-alkalmazások, szolgáltatások és feldolgozói szerepkörök](../../azure-monitor/app/windows-desktop.md)
-* [Bármi más](#projects)
 
 ## <a name="logging-frameworks"></a>Naplózási keretrendszerek
+* [ILogger](https://docs.microsoft.com/azure/azure-monitor/app/ilogger)
 * [Log4Net, NLog, vagy System.Diagnostics.Trace](../../azure-monitor/app/asp-net-trace-logs.md)
 * [Java, Log4J, vagy Logback](../../azure-monitor/app/java-trace-logs.md)
-* [Szemantikus naplózás (SLAB)](https://github.com/fidmor89/SLAB_AppInsights) – integrálható a [szemantikus naplózási alkalmazásblokkal](https://msdn.microsoft.com/library/dn440729.aspx)
-* [Felhőalapú terheléses tesztelés](https://blogs.msdn.com/b/visualstudioalm/archive/2015/07/30/getting-application-insights-counters-with-cloud-based-load-testing.aspx)
 * [LogStash beépülő modul](https://github.com/Azure/azure-diagnostics-tools/tree/master/Logstash/logstash-output-applicationinsights)
-* [Logary](https://www.nuget.org/packages/Logary.Targets.AppInsights/)
-* [Logrus](https://github.com/jjcollinge/logrus-appinsights)
 * [Azure Monitor](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/)
 
-## <a name="content-management-systems"></a>Tartalomkezelő rendszerek
-* [Concrete](https://github.com/fidmor89/appInsights-Concrete)
-* [Drupal](https://github.com/fidmor89/AppInsights-Drupal)
-* [Joomla](https://github.com/fidmor89/AppInsights-Joomla)
-* [Orchard](https://azure.microsoft.com/blog/integrating-application-insights-into-a-modular-cms-and-a-multi-tenant-public-saas/preview/)
-* [SharePoint](../../azure-monitor/app/sharepoint.md)
-* [WordPress](https://wordpress.org/plugins/application-insights/)
-
 ## <a name="export-and-data-analysis"></a>Exportálás és adatelemzés
-* [Alooma](https://www.alooma.com/blog/application-insights-amazon-redshift)
 * [Power BI](https://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx)
-* [Stream Analytics](../../azure-monitor/app/export-power-bi.md )
+* [Stream Analytics](../../azure-monitor/app/export-power-bi.md)
 
-## <a name="projects"></a> Saját SDK kialakítása
-Ha még nem készült SDK az Ön nyelvéhez vagy platformjához, akár Ön is létrehozhat egyet. Tekintse meg a meglévő SDK-k kódjainak listáját a [GitHubon elérhető Application Insights SDK-projektben](https://github.com/Microsoft/AppInsights-Home).
+## <a name="unsupported-sdks"></a>Nem támogatott SDK-k
+Tisztában vagyunk azzal, hogy számos más Közösség által támogatott SDK létezik. A Azure Monitor azonban csak az ezen a lapon felsorolt támogatott SDK-k használata esetén nyújt támogatást. Folyamatosan kivizsgáljuk, hogyan bővítjük támogatását más nyelvekre, ezért kövesse a [GitHub](https://github.com/microsoft/ApplicationInsights-Announcements/issues) -közlemények oldalon a legújabb SDK-híreket. 

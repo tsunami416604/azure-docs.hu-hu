@@ -1,37 +1,37 @@
 ---
-title: " Egyoldalas webes alkalmazás összeállítása – a Bing vizuális keresés"
+title: " Egyoldalas Webalkalmazás létrehozása – Bing Visual Search"
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan integrálhatja a Bing Visual Search API egy egyoldalas webalkalmazást.
+description: Megtudhatja, hogyan integrálhatja a Bing Visual Search API egy egyoldalas webalkalmazásba.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
-ms.topic: article
+ms.topic: tutorial
 ms.date: 04/05/2019
 ms.author: aahi
-ms.openlocfilehash: 084aad5540a2bd56d98e343639a45c16f786e599
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e0370be1c10bc0f5813bec833be78ad31a3d61a7
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59496556"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880645"
 ---
-# <a name="create-a-visual-search-single-page-web-app"></a>Hozzon létre egy vizuális keresés egyoldalas webalkalmazást
+# <a name="create-a-visual-search-single-page-web-app"></a>Visual Search egyoldalas Webalkalmazás létrehozása
 
-A Bing Visual Search API a képhez insights adja vissza. Töltsön fel egy képet, vagy adjon meg egy URL-címet. Insights vizuálisan hasonló képek, a vásárlási forrás, a weblapok, például a lemezkép és a további. A Bing Visual Search API által visszaadott insights hasonlóak kiépítettektől Bing.com/images jelenik meg.
+A Bing Visual Search API egy rendszerkép elemzéseit adja vissza. Feltölthet egy képet, vagy megadhat egy URL-címet is. Az elemzések vizuálisan hasonló képek, vásárlási források, weblapok, amelyek tartalmazzák a képet, és így tovább. A Bing Visual Search API által visszaadott bepillantások hasonlóak a Bing.com/images-on láthatók számára.
 
-Ez az oktatóanyag azt ismerteti, hogyan egy egyoldalas webalkalmazást a Bing Image Search API-k kiterjesztése. Oktatóanyag megtekintése, vagy szerezze be az itt használt forráskódját, lásd: [oktatóanyag: Hozzon létre egy egyoldalas alkalmazásból a Bing Image Search API](../Bing-Image-Search/tutorial-bing-image-search-single-page-app.md).
+Ez az oktatóanyag azt ismerteti, hogyan bővíthető egy egyoldalas webalkalmazás a Bing Image Search API számára. Az oktatóanyag megtekintéséhez vagy az itt használt forráskód beszerzéséhez tekintse [meg az oktatóanyagot: Hozzon létre egy egyoldalas alkalmazást a](../Bing-Image-Search/tutorial-bing-image-search-single-page-app.md)Bing Image Search API számára.
 
-A teljes (történő bővítése után, hogy a Bing Visual Search API), az alkalmazás forráskódja elérhető a [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchApp.html).
+Az alkalmazás teljes forráskódja (miután kiterjeszti a Bing Visual Search API használatára), elérhető a [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchApp.html).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
-## <a name="call-the-bing-visual-search-api-and-handle-the-response"></a>A Bing Visual Search API meghívása, és kezelni a válasz
+## <a name="call-the-bing-visual-search-api-and-handle-the-response"></a>A Bing Visual Search API meghívása és a válasz kezelése
 
-A Bing Képkeresés oktatóprogram szerkessze, és adja hozzá a következő kódot, végén a `<script>` elem (és a Bezárás előtt `</script>` címke). Az alábbi kód kezeli az API-ból vizuális keresés választ, végighalad az eredményeket, és megjeleníti őket:
+Szerkessze a Bing Image Search oktatóanyagot, és adja hozzá a következő kódot az `<script>` elem végéhez (és a `</script>` záró címke előtt). A következő kód egy vizuális keresési választ kezel az API-ból, megismétli az eredményeket, és megjeleníti őket:
 
 ``` javascript
 function handleVisualSearchResponse(){
@@ -63,7 +63,7 @@ function handleVisualSearchResponse(){
 }
 ```
 
-A következő kódot keresési kérelmet küld az API meghívásához egy Eseményfigyelőt használatával `handleVisualSearchResponse()`:
+A következő kód egy keresési kérelmet küld az API-nak egy esemény-figyelő `handleVisualSearchResponse()`használatával:
 
 ```javascript
 function bingVisualSearch(insightsToken){
@@ -101,7 +101,7 @@ function bingVisualSearch(insightsToken){
 
 ## <a name="capture-insights-token"></a>Megállapítási jogkivonat rögzítése
 
-Adja hozzá a következő kódot a `searchItemsRenderer` objektum. Ez a kód hozzáad egy **hasonló keresése** hivatkozást, amely meghívja a `bingVisualSearch` függvényt, ha rákattintanak. A függvény kap a `imageInsightsToken` argumentumként.
+Adja hozzá a következő kódot az `searchItemsRenderer` objektumhoz. Ez a kód hozzáad egy **hasonló keresése** hivatkozást, amely meghívja a `bingVisualSearch` függvényt, ha rákattintanak. A függvény argumentumként `imageInsightsToken` fogadja a paramétert.
 
 ``` javascript
 html.push("<a href='javascript:bingVisualSearch(\"" + item.imageInsightsToken + "\");'>find similar</a><br>");
@@ -109,7 +109,7 @@ html.push("<a href='javascript:bingVisualSearch(\"" + item.imageInsightsToken + 
 
 ## <a name="display-similar-images"></a>Hasonló képek megjelenítése
 
-Adja hozzá a következő HTML-kódot a 601. sorban. Ez a jelölőnyelvi kód ad hozzá egy elem, a Bing Visual Search API-hívások eredményeinek megjelenítéséhez:
+Adja hozzá a következő HTML-kódot a 601. sorban. Ez a jelölő kód egy elemet hoz létre a Bing Visual Search API hívás eredményének megjelenítéséhez:
 
 ``` html
 <div id="insights">
@@ -123,4 +123,4 @@ A rendelkezésre álló új JavaScript-kódok és HTML-elemek segítségével a 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: A Bing Visual Search készült SDK-val kép levágásaC#](tutorial-visual-search-crop-area-results.md)
+> [Oktatóanyag: Rendszerkép levágása a Bing Visual Search SDK-valC#](tutorial-visual-search-crop-area-results.md)

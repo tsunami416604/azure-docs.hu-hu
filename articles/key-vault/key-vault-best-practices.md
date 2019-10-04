@@ -1,50 +1,46 @@
 ---
-title: Ajánlott eljárások az Azure Key Vault használata a Key Vault - |} A Microsoft Docs
-description: Ez a dokumentum azt ismerteti, néhány ajánlott eljárást a Key vaulttal
+title: Ajánlott eljárások a Key Vault-Azure Key Vault használatához | Microsoft Docs
+description: Ez a dokumentum a Key Vault használatának ajánlott eljárásait ismerteti.
 services: key-vault
-documentationcenter: ''
-author: yvprashanth
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 tags: azure-key-vault
-ms.assetid: e5b4e083-4a39-4410-8e3a-2832ad6db405
 ms.service: key-vault
-ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/07/2019
-ms.author: prashanthyv
-ms.openlocfilehash: ee4418700cec5de1dc404c3669dd5de315aab983
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.author: mbaldwin
+ms.openlocfilehash: 654a9bb772c8a7426a335c98dfeca69515b9ce67
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58368610"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881616"
 ---
-# <a name="best-practices-to-use-key-vault"></a>A Key Vault használatának ajánlott eljárásait
+# <a name="best-practices-to-use-key-vault"></a>Ajánlott eljárások a Key Vault használatához
 
-## <a name="control-access-to-your-vault"></a>A tároló hozzáférés-vezérlése
+## <a name="control-access-to-your-vault"></a>A tárolóhoz való hozzáférés szabályozása
 
-Az Azure Key Vault egy felhőszolgáltatás, amely megvédi a titkosítási kulcsokat és titkokat – például a tanúsítványok, kapcsolati karakterláncok és jelszavak. Mivel ezek az adatok bizalmas és kritikus fontosságú üzleti szeretné megvédeni a kulcstartókhoz azáltal, hogy csak az engedélyezett alkalmazások és felhasználók. Ez [cikk](key-vault-secure-your-key-vault.md) nyújt áttekintést a Key Vault hozzáférés modell. Hitelesítését és engedélyezését ismerteti és bemutatja, hogyan teheti biztonságossá a kulcstartók való hozzáférést.
+A Azure Key Vault egy felhőalapú szolgáltatás, amely védelmet biztosít a titkosítási kulcsok és a titkok, például a tanúsítványok, a kapcsolatok karakterláncai és a jelszavak számára. Mivel ezek az adatok érzékenyek és üzleti szempontból kritikus fontosságúak, a kulcstartóhoz való hozzáférést csak a jogosult alkalmazások és felhasználók engedélyezésével kell biztosítani. Ez a [cikk](key-vault-secure-your-key-vault.md) a Key Vault hozzáférési modell áttekintését tartalmazza. Ismerteti a hitelesítést és az engedélyezést, valamint ismerteti a kulcstartók hozzáférésének biztonságossá tételét.
 
-A tároló hozzáférésének ellenőrzése közben a javaslatok a következők:
-1. Az előfizetés, erőforráscsoport és a kulcs tárolók (RBAC) való hozzáférés zárolása
-2. Hozzáférési szabályzatok minden tároló létrehozása
-3. Használja a legalacsonyabb jogosultsági hozzáférés egyszerű hozzáférést
-4. A tűzfal bekapcsolása és [virtuális hálózati Szolgáltatásvégpontok](key-vault-overview-vnet-service-endpoints.md)
+A tárolóhoz való hozzáférés szabályozása során a következő javaslatok érhetők el:
+1. Az előfizetés, az erőforráscsoport és a kulcstartók (RBAC) hozzáférésének zárolása
+2. Hozzáférési szabályzatok létrehozása minden tárolóhoz
+3. A minimális jogosultság-hozzáférési tag használata hozzáférés biztosításához
+4. A tűzfal és a [VNET szolgáltatás-végpontok](key-vault-overview-vnet-service-endpoints.md) bekapcsolása
 
-## <a name="use-separate-key-vault"></a>Külön a Key Vault használata
+## <a name="use-separate-key-vault"></a>Külön Key Vault használata
 
-Azt javasoljuk, hogy a környezetben (fejlesztői, éles üzem előtti és éles környezetek) alkalmazásonként egy tárolót. Ez segít a titkos kulcsok ossza meg környezetekben, és csökkenti a fenyegetés megsértése esetén is.
+Javasoljuk, hogy a tárolót egy alkalmazás/környezet (fejlesztés, üzem előtti és éles üzem) alapján használja. Ez segít abban, hogy ne ossza meg a titkokat a környezetek között, és a fenyegetést is csökkenti a szabálysértés esetén.
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>Tartalék
 
-Győződjön meg arról is regular vissza a ups a [tároló](https://blogs.technet.microsoft.com/kv/2018/07/20/announcing-backup-and-restore-of-keys-secrets-and-certificates/) az update/delete/hozzon létre egy tárolóban található objektumok.
+Győződjön meg arról, hogy a tárolóban rendszeresen [](https://blogs.technet.microsoft.com/kv/2018/07/20/announcing-backup-and-restore-of-keys-secrets-and-certificates/) készít biztonsági másolatot a tárolóban lévő objektumok frissítéséről/törléséről/létrehozásáról.
 
 ## <a name="turn-on-logging"></a>Naplózás bekapcsolása
 
-[Kapcsolja be a naplózást](key-vault-logging.md) a tároló számára. Emellett riasztásokat állíthat be.
+A [naplózás bekapcsolása](key-vault-logging.md) a tárolóban. Riasztásokat is beállíthat.
 
-## <a name="turn-on-recovery-options"></a>Kapcsolja be a helyreállítási lehetőségek
+## <a name="turn-on-recovery-options"></a>Helyreállítási beállítások bekapcsolása
 
-1. Kapcsolja be a [helyreállítható törlési](key-vault-ovw-soft-delete.md).
-2. Kapcsolja be a végleges törlés elleni védelem, ha azt szeretné, a titkos kulcs kényszerített törlése ellen őr / tároló akkor is helyreállítható törlési be van kapcsolva.
+1. A helyreállítható [Törlés](key-vault-ovw-soft-delete.md)bekapcsolása.
+2. Ha be szeretné állítani a védelem kiürítését, akkor is be kell kapcsolni a védelmet, ha a törlés után is be van kapcsolva.

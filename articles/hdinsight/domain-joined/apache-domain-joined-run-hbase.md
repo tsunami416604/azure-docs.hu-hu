@@ -1,29 +1,29 @@
 ---
-title: A vállalati biztonsági csomaggal – Azure HDInsight az Apache HBase-szabályzatok konfigurálása
-description: Ismerje meg, az Apache Ranger-házirendek konfigurálása a hbase-hez az Azure HDInsight vállalati biztonsági csomaggal.
-services: hdinsight
+title: Oktatóanyag – Apache HBase konfigurálása Enterprise Security Package-Azure-ban
+description: Oktatóanyag – megtudhatja, hogyan konfigurálhatja az Apache Ranger-szabályzatokat az Azure HDInsight-ben való HBase az Enterprise Security Package használatával.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.topic: tutorial
-ms.date: 02/01/2019
-ms.openlocfilehash: 1421b142fbca83d2de46f52f8390d0c25f22780c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 09/04/2019
+ms.openlocfilehash: 5823bed08e0fc2ed67dbbf3c58c39982f3a1897e
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58117285"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037272"
 ---
-# <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Oktatóanyag: Az Apache HBase-házirendek konfigurálása a HDInsight vállalati biztonsági csomaggal (előzetes verzió)
+# <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>Oktatóanyag: Apache HBase-házirendek konfigurálása a HDInsight-ben Enterprise Security Package
 
-Megtudhatja, hogyan konfigurálhatja a vállalati biztonsági csomag (ESP) az Apache HBase-fürtök az Apache Ranger-házirendet. Az ESP-fürtök egy tartományhoz csatlakoznak, lehetővé téve a felhasználók számára a tartományi hitelesítő adatokkal való hitelesítést. Ebben az oktatóanyagban létrehozhat két Ranger-házirendek különböző oszlopcsaláddal egy HBase-táblában való hozzáférés korlátozásához.
+Ismerje meg, hogyan konfigurálhatja az Apache Ranger-házirendeket Enterprise Security Package (ESP) Apache HBase-fürtökhöz. Az ESP-fürtök egy tartományhoz csatlakoznak, lehetővé téve a felhasználók számára a tartományi hitelesítő adatokkal való hitelesítést. Ebben az oktatóanyagban két Ranger-szabályzatot hoz létre, hogy korlátozza a hozzáférést egy HBase-táblában lévő különböző oszlopokhoz.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Tartományi felhasználók létrehozása
 > * Ranger-házirendek létrehozása
-> * Táblázatok HBase-fürt létrehozása
+> * Táblák létrehozása HBase-fürtben
 > * Ranger-házirendek tesztelése
 
 ## <a name="before-you-begin"></a>Előkészületek
@@ -32,11 +32,11 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 * Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-* Hozzon létre egy [HDInsight HBase-fürt a vállalati biztonsági csomaggal](apache-domain-joined-configure-using-azure-adds.md).
+* Hozzon létre egy [HDInsight HBase-fürtöt Enterprise Security Package](apache-domain-joined-configure-using-azure-adds.md).
 
 ## <a name="connect-to-apache-ranger-admin-ui"></a>Csatlakozás az Apache Ranger felügyeleti felhasználói felületéhez
 
-1. Egy böngészőből lépjen be a Ranger rendszergazdai felhasználói felületére a következő címen: `https://<ClusterName>.azurehdinsight.net/Ranger/`. Ne felejtse el módosítani `<ClusterName>` a HBase-fürt nevére.
+1. Egy böngészőből lépjen be a Ranger rendszergazdai felhasználói felületére a következő címen: `https://<ClusterName>.azurehdinsight.net/Ranger/`. Ne felejtse `<ClusterName>` el megváltoztatni a HBase-fürt nevét.
 
     > [!NOTE]  
     > A Ranger hitelesítő adatai nem ugyanazok, mint a Hadoop-fürthöz használt hitelesítő adatok. Ha meg szeretné akadályozni, hogy a böngészők gyorsítótárazott Hadoop hitelesítő adatokat használjanak, egy új InPrivate-böngészőablakból csatlakozzon a Ranger rendszergazdai felhasználói felületéhez.
@@ -45,11 +45,11 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="create-domain-users"></a>Tartományi felhasználók létrehozása
 
-Látogasson el [egy HDInsight-fürt létrehozása a vállalati biztonsági csomag](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds), megtudhatja, hogyan hozhat létre a **sales_user1** és **marketing_user1** tartományi felhasználók. Az éles forgatókönyvekben a tartományi felhasználókat az Active Directory-bérlő adja meg.
+Látogasson el a [HDInsight-fürt létrehozásához Enterprise Security Package](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds)segítségével, és Ismerje meg, hogyan hozhatja létre a **sales_user1** és a **marketing_user1** tartományi felhasználókat. Az éles forgatókönyvekben a tartományi felhasználókat az Active Directory-bérlő adja meg.
 
-## <a name="create-hbase-tables-and-import-sample-data"></a>HBase-táblákat hozhat létre és Mintaadatok importálása
+## <a name="create-hbase-tables-and-import-sample-data"></a>HBase táblák létrehozása és mintaadatok importálása
 
-Ön SSH-val HBase-fürtökhöz csatlakozhat, és ezután [Apache HBase rendszerhéj](https://hbase.apache.org/0.94/book/shell.html) hozhat létre HBase-táblákat, helyezze be az adatokat, és adatokat kérdezhet le. További információ: [Az SSH használata HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
+Az SSH-val HBase-fürtökhöz csatlakozhat, majd az [Apache HBase-rendszerhéj](https://hbase.apache.org/0.94/book/shell.html) használatával HBase-táblákat hozhat létre, és adatbeszúrási és Adatlekérdezési adatként is létrehozhat. További információ: [Az SSH használata HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ### <a name="to-use-the-hbase-shell"></a>A HBase rendszerhéj használata
 
@@ -59,7 +59,7 @@ Látogasson el [egy HDInsight-fürt létrehozása a vállalati biztonsági csoma
     hbase shell
     ```
 
-2. Hozzon létre egy HBase-tábla `Customers` két oszlopcsaláddal: `Name` és `Contact`.
+2. Hozzon létre egy `Customers` HBase táblázatot kétoszlopos családokkal `Contact`: `Name` és.
 
     ```hbaseshell   
     create 'Customers', 'Name', 'Contact'
@@ -88,38 +88,39 @@ Látogasson el [egy HDInsight-fürt létrehozása a vállalati biztonsági csoma
     ```hbaseshell
     scan 'Contacts'
     ```
-    ![HDInsight Hadoop HBase-rendszerhéj](./media/apache-domain-joined-run-hbase/hbase-shell-scan-table.png)
+
+    ![HDInsight Hadoop HBase-rendszerhéj kimenete](./media/apache-domain-joined-run-hbase/hbase-shell-scan-table.png)
 
 ## <a name="create-ranger-policies"></a>Ranger-házirendek létrehozása
 
-Hozzon létre egy Ranger-házirendet a **sales_user1** és **marketing_user1**.
+Hozzon létre egy Ranger-szabályzatot a **sales_user1** és a **marketing_user1**számára.
 
-1. Nyissa meg a **Ranger rendszergazdai felhasználói felületét**. Kattintson a  **\<ClusterName > _hbase** alatt **HBase**.
+1. Nyissa meg a **Ranger rendszergazdai felhasználói felületét**. Kattintson a  **\<ClusterName > _hbase** elemre a **hbase**alatt.
 
-   ![Apache Ranger rendszergazdai felhasználói felület](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
+   ![HDInsight Apache Ranger felügyeleti felhasználói felülete](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
 
-2. A **házirendek felsorolása** képernyő jelenik meg a fürt számára létrehozott összes Ranger-házirendet. Előfordulhat, hogy a felsorolásban megjelenik egy előre beállított házirend. Kattintson a **új szabályzat hozzáadása**.
+2. A **szabályzatok listája** képernyőn megjelenik a fürthöz létrehozott összes Ranger-szabályzat. Előfordulhat, hogy a felsorolásban megjelenik egy előre beállított házirend. Kattintson az **új szabályzat hozzáadása**lehetőségre.
 
-    ![Házirend létrehozása az Apache Ranger rendszergazdai felhasználói felületen](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policies-list.png)
+    ![Apache Ranger HBase szabályzatok listája](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policies-list.png)
 
-3. Az a **házirend létrehozása** képernyőn, adja meg a következő értékeket:
+3. A **házirend létrehozása** képernyőn adja meg a következő értékeket:
 
    |**Beállítás**  |**Ajánlott érték**  |
    |---------|---------|
-   |Házirend neve  |  sales_customers_name_contact   |
-   |HBase-tábla   |  Ügyfelek |
-   |A HBase oszlopcsalád-   |  Kapcsolattartó neve |
-   |A HBase oszlop   |  * |
+   |Szabályzat neve  |  sales_customers_name_contact   |
+   |HBase táblázat   |  Ügyfelek |
+   |HBase oszlop – család   |  Név, kapcsolattartó |
+   |HBase oszlop   |  * |
    |Csoport kiválasztása  | |
-   |Felhasználó kiválasztása  | sales_user1 |
+   |Felhasználó kijelölése  | sales_user1 |
    |Engedélyek  | Olvasás |
 
    A témakör nevében a következő helyettesítő karakterek használhatók:
 
-   * `*` azt jelzi, hogy nulla vagy több karakter előfordulását.
-   * `?` azt jelzi, hogy egyetlen karaktert.
+   * `*`nulla vagy több karakterből álló előfordulást jelez.
+   * `?`egyetlen karaktert jelöl.
 
-   ![Házirend létrehozása az Apache Ranger rendszergazdai felhasználói felületen](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-sales.png)
+   ![Apache Ranger-szabályzat – értékesítések létrehozása](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-sales.png)
 
    >[!NOTE]
    >Várjon néhány pillanatot, míg a Ranger szinkronizálódik az Azure AD-vel, ha a rendszer nem tölt be automatikusan egy tartományi felhasználót a **Select User** (Felhasználó kiválasztása) beállításhoz.
@@ -130,44 +131,44 @@ Hozzon létre egy Ranger-házirendet a **sales_user1** és **marketing_user1**.
 
    |**Beállítás**  |**Ajánlott érték**  |
    |---------|---------|
-   |Házirend neve  |  marketing_customers_contact   |
-   |HBase-tábla   |  Ügyfelek |
-   |A HBase oszlopcsalád-   |  Kapcsolattartó |
-   |A HBase oszlop   |  * |
+   |Szabályzat neve  |  marketing_customers_contact   |
+   |HBase táblázat   |  Ügyfelek |
+   |HBase oszlop – család   |  Kapcsolattartó |
+   |HBase oszlop   |  * |
    |Csoport kiválasztása  | |
-   |Felhasználó kiválasztása  | marketing_user1 |
+   |Felhasználó kijelölése  | marketing_user1 |
    |Engedélyek  | Olvasás |
 
-   ![Házirend létrehozása az Apache Ranger rendszergazdai felhasználói felületen](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-marketing.png)  
+   ![Apache Ranger-szabályzat létrehozása marketing](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-marketing.png)  
 
 6. A házirend mentéséhez kattintson a **Hozzáadás** gombra.
 
 ## <a name="test-the-ranger-policies"></a>Ranger-házirendek tesztelése
 
-Konfigurálva, a Ranger-házirendek alapján **sales_user1** is megtekintheti az adatok az oszlopok a `Name` és `Contact` oszlopcsaláddal. A **marketing_user1** csak megtekintheti az adatokat a `Contact` oszlopcsalád.
+A konfigurált Ranger-házirendek alapján a **sales_user1** megtekintheti az oszlopok összes adatait az és `Name` `Contact` az oszlop családokban is. A **marketing_user1** csak az `Contact` oszlop családjában lévő adatmegjelenítést tudja megtekinteni.
 
-### <a name="access-data-as-salesuser1"></a>Mint sales_user1 érheti el adatait
+### <a name="access-data-as-sales_user1"></a>Hozzáférés az sales_user1-hez
 
-1. Nyisson meg egy új SSH-kapcsolatot a fürthöz. A következő paranccsal jelentkezzen be a fürthöz:
+1. Nyisson meg egy új SSH-kapcsolatot a fürthöz. A fürtbe való bejelentkezéshez használja a következő parancsot:
 
    ```bash
    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
    ```
 
-1. Módosítsa a kívánt felhasználó használja a kinit parancsot.
+1. A kinit parancsot parancs használatával váltson a kívánt felhasználó környezetére.
 
    ```bash
    kinit sales_user1
    ```
 
-2. Nyissa meg a hbase rendszerhéjat, és a tábla beolvasása `Customers`.
+2. Nyissa meg a HBase-rendszerhéjt `Customers`, és vizsgálja meg a táblázatot.
 
    ```hbaseshell
    hbase shell
    scan `Customers`
    ```
 
-3. Figyelje meg, hogy az értékesítési felhasználói megtekinthetik az összes oszlopot a `Customers` többek között a két oszlop a tábla a `Name` oszlopcsalád-, valamint az öt oszlopa a `Contact` oszlopcsalád.
+3. Figyelje meg, hogy az értékesítési felhasználó megtekintheti a `Customers` tábla összes oszlopát, beleértve az `Name` oszlop két oszlopát, valamint az `Contact` oszlop-család öt oszlopát.
 
     ```hbaseshell
     ROW                                COLUMN+CELL
@@ -188,28 +189,28 @@ Konfigurálva, a Ranger-házirendek alapján **sales_user1** is megtekintheti az
     2 row(s) in 0.1000 seconds
     ```
 
-### <a name="access-data-as-marketinguser1"></a>Mint marketing_user1 érheti el adatait
+### <a name="access-data-as-marketing_user1"></a>Hozzáférés az marketing_user1-hez
 
-1. Nyisson meg egy új SSH-kapcsolatot a fürthöz. Jelentkezzen be a következő paranccsal **marketing_user1**:
+1. Nyisson meg egy új SSH-kapcsolatot a fürthöz. A következő parancs használatával jelentkezzen be **marketing_user1**:
 
    ```bash
    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
    ```
 
-1. Módosítsa a kívánt felhasználó használja a kinit parancsot
+1. A kinit parancsot parancs használata a kívánt felhasználó kontextusára való váltáshoz
 
    ```bash
    kinit marketing_user1
    ```
 
-2. Nyissa meg a hbase rendszerhéjat, és a tábla beolvasása `Customers`:
+1. Nyissa meg a HBase-rendszerhéjt `Customers`, és vizsgálja meg a táblázatot:
 
     ```hbaseshell
     hbase shell
     scan `Customers`
     ```
 
-3. Figyelje meg, hogy a marketing felhasználó csak megtekintheti az öt oszlopára vonatkozó a `Contact` oszlopcsalád.
+1. Figyelje meg, hogy a marketing felhasználó csak az `Contact` oszlop öt oszlopát tekintheti meg.
 
     ```hbaseshell
     ROW                                COLUMN+CELL
@@ -226,21 +227,21 @@ Konfigurálva, a Ranger-házirendek alapján **sales_user1** is megtekintheti az
     2 row(s) in 0.0730 seconds
     ```
 
-9. A hozzáférési események naplózása a Ranger felhasználói felületről tekinthető meg.
+1. A hozzáférési események naplózása a Ranger felhasználói felületről tekinthető meg.
 
-   ![A Ranger felhasználói felület házirendnaplózása](./media/apache-domain-joined-run-hbase/apache-ranger-admin-audit.png)
+   ![HDInsight Ranger felhasználói felületi szabályzatának naplózása](./media/apache-domain-joined-run-hbase/apache-ranger-admin-audit.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha nem folytatja az alkalmazás használatához, törölje a HBase-fürtöt az alábbi lépéseket követve létrehozott:
+Ha nem folytatja az alkalmazás használatát, törölje a létrehozott HBase-fürtöt a következő lépésekkel:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Az a **keresési** tetején típus **HDInsight**. 
-1. Válassza ki **HDInsight-fürtök** alatt **szolgáltatások**.
-1. A HDInsight-fürtök megjelenő listában kattintson a **...**  ebben az oktatóanyagban létrehozott fürt mellett. 
+2. A felső **keresőmezőbe** írja be a **HDInsight**kifejezést. 
+1. Válassza ki a **HDInsight-fürtök** elemet a **szolgáltatások**területen.
+1. A megjelenő HDInsight-fürtök listájában kattintson a **...** elemre az oktatóanyaghoz létrehozott fürt mellett. 
 1. Kattintson a **Törlés** gombra. Kattintson a **Yes** (Igen) gombra.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Az Apache HBase használatának első lépései](../hbase/apache-hbase-tutorial-get-started-linux.md)
+> [Az Apache HBase első lépései](../hbase/apache-hbase-tutorial-get-started-linux.md)

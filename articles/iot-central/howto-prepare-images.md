@@ -1,122 +1,123 @@
 ---
-title: Képek feltöltése az Azure IoT Central alkalmazáshoz |} A Microsoft Docs
-description: A jelentéskészítő, megtudhatja, hogyan készítheti elő és képek feltöltése az Azure IoT Central alkalmazáshoz.
+title: Képek feltöltése az Azure IoT Central alkalmazásba | Microsoft Docs
+description: Építőként megtudhatja, hogyan készítheti elő és tölthet fel képeket az Azure IoT Central alkalmazásba.
 author: dominicbetts
 ms.author: dobett
-ms.date: 02/05/2019
+ms.date: 07/11/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: c8444fd57fe939dfb212d88c22a071c13dac691e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 255033f03acd40580fb4d4a92b0aa9b3e16969f3
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57767328"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67850163"
 ---
-# <a name="prepare-and-upload-images-to-your-azure-iot-central-application"></a>Készítse elő és képek feltöltése az Azure IoT Central alkalmazáshoz
+# <a name="prepare-and-upload-images-to-your-azure-iot-central-application"></a>Képek előkészítése és feltöltése az Azure IoT Central-alkalmazásba
 
-Ez a cikk bemutatja, hogyan, mint szerkesztő, szabhatja testre az Azure IoT Central alkalmazásnak fel kell töltenie egyéni rendszerképek. Például egy képet az eszköz irányítópultját szabhatja testre.
+Ez a cikk azt ismerteti, hogyan lehet testre szabni az Azure IoT Central alkalmazást egyéni lemezképek feltöltésével. Testreszabhatja például az eszköz irányítópultját az eszköz képével.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
 A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 
-1. Azure IoT Central alkalmazáshoz. További információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](quick-deploy-iot-central.md).
-1. Egy eszköz méretezés és képfájlok átméretezése.
+1. Azure IoT Central-alkalmazás. További információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](quick-deploy-iot-central.md).
+1. A képfájlok méretezésére és átméretezésére szolgáló eszköz.
 
-## <a name="choose-where-to-use-custom-images"></a>Válassza ki, hogy egyéni lemezképeket használ
+## <a name="choose-where-to-use-custom-images"></a>Válassza ki, hol szeretné használni az egyéni lemezképeket
 
-Egyéni rendszerképek adhat hozzá a következő helyeken és az Azure IoT Central alkalmazáshoz:
+Egyéni lemezképeket az Azure IoT Central alkalmazás következő helyeihez adhat hozzá:
 
-* A **alkalmazásaimat** lap
+* A **saját alkalmazások** oldal
 
-    ![Kép application manager oldalon](media/howto-prepare-images/applicationmanager.png)
+    ![Rendszerkép az Application Manager lapon](media/howto-prepare-images/applicationmanager.png)
 
-* Az irányítópult
+* Az alkalmazás irányítópultja
 
-    ![Alkalmazás irányítópult lemezkép](media/howto-prepare-images/homepage.png)
+    ![Alkalmazás-irányítópult képe](media/howto-prepare-images/homepage.png)
 
-* Egy eszköz sablon
+* Egy eszköz sablonja
 
-    ![Az eszköz sablon rendszerképet](media/howto-prepare-images/devicetemplate.png)
+    ![Rendszerkép az eszköz sablonján](media/howto-prepare-images/devicetemplate.png)
 
-* Az eszköz Irányítópulton egy csempe
+* Egy csempe egy eszköz irányítópultján
 
-    ![Az eszköz csempére kép](media/howto-prepare-images/devicetile.png)
+    ![Rendszerkép az eszköz csempén](media/howto-prepare-images/devicetile.png)
 
-* Egy csempe az eszközön irányítópult beállítása
+* Egy eszközre beállított irányítópult csempéje
 
-    ![Az eszköz beállítása csempére kép](media/howto-prepare-images/devicesettile.png)
+    ![Rendszerkép az eszköz set csempén](media/howto-prepare-images/devicesettile.png)
 
-## <a name="prepare-the-images"></a>A rendszerképek előkészítése
+## <a name="prepare-the-images"></a>A képek előkészítése
 
-Az összes négy helyszínen PNG, GIF, vagy JPEG-képek is használhatja.
+Mind a négy helyen használhat PNG, GIF vagy JPEG formátumú képeket.
 
-A következő táblázat összefoglalja a lemezkép mérete is használhatja:
+A következő táblázat összefoglalja a használható képméreteket:
 
-| Hely | Méretek |
+| Location | Méretek |
 | -------- | ------ |
 | Application Manager | 268x160 px |
-| Eszközsablon | 64 x 64 képpont |
-| Irányítópult-csempék | A legkisebb méretű csempe 200 x 200 képpont, nagyobb csempék kisméretű csempe négyzet vagy téglalap alakú többszöröse lehet. Ha például 200-as x 400 képpont, 400 x 200 képpont vagy 400 x 400 képpont |
+| Eszköz sablonja | 64x64 px |
+| Irányítópult-csempék | A legkisebb méretű csempe a 200x200 px, a nagyobb csempék pedig négyzetes vagy téglalap alakú, kis csempék lehetnek. Például 200x400 px, 400x200 px vagy 400x400 px |
 
-A legjobb megjelenítés az alkalmazásban létre kell hoznia a lemezképek, amelyek megfelelnek a dimenziók az előző táblázatban látható.
+Az alkalmazás legjobb megjelenítéséhez olyan képeket kell létrehoznia, amelyek megfelelnek az előző táblázatban látható dimenzióknak.
 
-## <a name="upload-the-images"></a>A képek feltöltése
+## <a name="upload-the-images"></a>Képek feltöltése
 
-A következő szakaszok ismertetik a különböző helyeken található rendszerképek feltöltése:
+A következő szakaszok azt ismertetik, hogyan tölthetők fel a lemezképek a különböző helyszínekre:
 
-### <a name="application-manager"></a>Alkalmazás-kezelő
+### <a name="application-manager"></a>Application Manager
 
-Tölthet fel képeket a használandó a **alkalmazásaimat** lapon, keresse meg a **nastavení Aplikace** lap a **felügyeleti** szakaszban. Ez a feladat végrehajtásához rendszergazdának kell lennie:
+Ha fel szeretne tölteni egy képet, amelyet a **saját alkalmazások** oldalon szeretne használni, navigáljon az **alkalmazás beállításai** lapra az **Adminisztráció** szakaszban. A feladat végrehajtásához rendszergazdának kell lennie:
 
-![Alkalmazás-Rendszerkép feltöltése](media/howto-prepare-images/uploadapplicationmanager.png)
+![Alkalmazás rendszerképének feltöltése](media/howto-prepare-images/uploadapplicationmanager.png)
 
-Válassza ki az előkészített Rendszerkép feltöltése az alkalmazás-lemezképet csempére (268 x 160 px) a helyi gépen.
+Válassza ki az **alkalmazás rendszerképének** csempéjét a rendszerkép (268x160 px) a helyi gépről való feltöltéséhez.
 
 ### <a name="application-dashboard"></a>Alkalmazás irányítópultja
 
-Töltsön fel egy képet, az alkalmazás irányítópult, lépjen a **irányítópult** az alkalmazást, és válassza az oldal **szerkesztése**. Ez a feladat végrehajtásához egy jelentéskészítő kell lennie:
+Ha fel szeretne tölteni egy rendszerképet az alkalmazás irányítópultján, navigáljon az alkalmazás **irányítópult** lapjára, és válassza a **Szerkesztés**lehetőséget. A feladat elvégzéséhez a következőnek kell lennie:
 
-![Irányítópult-Rendszerkép feltöltése](media/howto-prepare-images/uploadhomepage.png)
+![Irányítópult-rendszerkép feltöltése](media/howto-prepare-images/uploadhomepage.png)
 
-Konfigurálása kép alatt válassza ki a kép csempére, és töltse fel az előkészített rendszerképet a helyi gépen. A legkisebb méretű csempe 200 x 200 képpont, nagyobb csempék kisméretű csempe négyzet vagy téglalap alakú többszöröse lehet. Ha például 200-as x 400 képpont, 400 x 200 képpont vagy 400 x 400 képpont.
+A rendszerkép **beállítása**területen válassza a **rendszerkép** csempét a rendszerkép helyi számítógépről való feltöltéséhez. A legkisebb méretű csempe a 200x200 px, a nagyobb csempék pedig négyzetes vagy téglalap alakú, kis csempék lehetnek. Például 200x400 px, 400x200 px vagy 400x400 px.
 
-**Mentés** a feltöltött kép. Átméretezhető a szerkesztési módban. Válassza ki **kész** befejezésekor.
+**Mentse** a feltöltött képet. A szerkesztési módban is átméretezheti. Ha elkészült, válassza a **kész** lehetőséget.
 
-### <a name="device-template"></a>Eszközsablon
+### <a name="device-template"></a>Eszköz sablonja
 
-Töltsön fel egy képet, az eszköz sablonból, navigáljon a **eszközsablonok** és az eszköz-sablon kiválasztása. Ez a feladat végrehajtásához egy jelentéskészítő kell lennie:
+Ha egy sablont szeretne feltölteni egy eszközre, navigáljon az **eszközök sablonjaihoz** , és válassza ki az eszköz sablonját. A feladat elvégzéséhez a következőnek kell lennie:
 
-![Eszköz sablon Rendszerkép feltöltése](media/howto-prepare-images/uploaddevicetemplate.png)
+![Eszköz sablonjának feltöltése](media/howto-prepare-images/uploaddevicetemplate.png)
 
-Válassza ki az előkészített kép feltöltése a képcsempe (64 x 64 képpont) a helyi gépen.
+Válassza ki a képcsempét a rendszerkép (64x64 px) a helyi gépről való feltöltéséhez.
 
 ### <a name="device-dashboard"></a>Az eszköz irányítópultja
 
-Töltsön fel egy képet, az eszköz irányítópulton, navigáljon a **eszközsablonok** és az eszköz-sablon kiválasztása. Majd válassza ki a **irányítópult** fülre. Ez a feladat végrehajtásához egy jelentéskészítő kell lennie:
+Ha fel szeretne tölteni egy képet egy eszköz irányítópultján, navigáljon az **eszközök sablonjaihoz** , és válassza ki az eszköz sablonját. Ezután válassza az **irányítópult** fület. A feladat elvégzéséhez a következőnek kell lennie:
 
-![Eszköz irányítópult Rendszerkép feltöltése](media/howto-prepare-images/uploaddevicedashboard.png)
+![Eszköz irányítópult-rendszerképének feltöltése](media/howto-prepare-images/uploaddevicedashboard.png)
 
-Konfigurálása kép alatt válassza a képet, és válassza a helyi gépen a feltölteni kívánt fájl. A legkisebb méretű csempe 200 x 200 képpont, nagyobb csempék kisméretű csempe négyzet vagy téglalap alakú többszöröse lehet. Ha például 200-as x 400 képpont, 400 x 200 képpont vagy 400 x 400 képpont.
+A **rendszerkép konfigurálása**területen válassza a **rendszerkép** csempét, majd válassza ki a feltölteni kívánt fájlt a helyi gépről. A legkisebb méretű csempe a 200x200 px, a nagyobb csempék pedig négyzetes vagy téglalap alakú, kis csempék lehetnek. Például 200x400 px, 400x200 px vagy 400x400 px.
 
-**Mentés** a feltöltött kép. Átméretezheti és áthelyezheti, míg a szerkesztési módban. Válassza ki **kész** befejezésekor.
+**Mentse** a feltöltött képet. A szerkesztési mód használatával átméretezheti és áthelyezheti azt. Ha elkészült, válassza a **kész** lehetőséget.
 
-### <a name="device-set-dashboard"></a>Eszköz irányítópult beállítása
+### <a name="device-set-dashboard"></a>Eszközbeállítások irányítópultja
 
-Töltsön fel egy képet, az eszköz beállítása irányítópulton, navigáljon a **eszköz csoportok** , és válassza ki az eszköz beállítása, és egy eszköz. Majd válassza ki a **irányítópult** lapon, és válassza **szerkesztése**:
+Ha a képet egy eszközbeállítások irányítópultján szeretné feltölteni, navigáljon az **eszközök** készletéhez, és válassza ki az eszközt, majd egy eszközt. Ezután válassza az **irányítópult** lapot, és válassza a **Szerkesztés**lehetőséget:
 
-![Töltse fel az eszköz az irányítópulton kép beállítása](media/howto-prepare-images/uploaddevicesetdashboard.png)
+![Eszköz készletének irányítópult-rendszerképének feltöltése](media/howto-prepare-images/uploaddevicesetdashboard.png)
 
-Konfigurálása kép alatt válassza ki a kép csempére, és töltse fel az előkészített rendszerképet a helyi gépen. A legkisebb méretű csempe 200 x 200 képpont, nagyobb csempék kisméretű csempe négyzet vagy téglalap alakú többszöröse lehet. Ha például 200-as x 400 képpont, 400 x 200 képpont vagy 400 x 400 képpont.
+A rendszerkép **beállítása**területen válassza a **rendszerkép** csempét a rendszerkép helyi számítógépről való feltöltéséhez. A legkisebb méretű csempe a 200x200 px, a nagyobb csempék pedig négyzetes vagy téglalap alakú, kis csempék lehetnek. Például 200x400 px, 400x200 px vagy 400x400 px.
 
-**Mentés** a feltöltött kép. Átméretezheti és áthelyezheti, míg a szerkesztési módban. Válassza ki **kész** befejezésekor.
+**Mentse** a feltöltött képet. A szerkesztési mód használatával átméretezheti és áthelyezheti azt. Ha elkészült, válassza a **kész** lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megtanulhatta, hogyan készítheti elő és képek feltöltése az Azure IoT Central alkalmazáshoz, Íme a javasolt következő lépésre:
+Most, hogy megismerte, hogyan készítheti elő és töltheti fel a rendszerképeket az Azure IoT Central-alkalmazásba, a következő lépéseket javasoljuk:
 
-> [!div class="nextstepaction"]
-> [Eszközök kezelése az Azure IoT Central alkalmazáshoz a](howto-manage-devices.md)
+* [Az Azure IoT Central felhasználói felületének testreszabása](./howto-customize-ui.md)
+* [Az alkalmazás irányítópultjának konfigurálása](./howto-configure-homepage.md)
+* [Az Azure IoT Central-alkalmazásban lévő eszközök kezelése](howto-manage-devices.md)

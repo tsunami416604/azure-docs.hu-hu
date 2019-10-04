@@ -1,9 +1,9 @@
 ---
-title: Az Azure Service Fabric éles készültségi ellenőrzőlista |} A Microsoft Docs
-description: Felkészülés a Service Fabric-alkalmazás és a fürt éles környezetben a következő bevált gyakorlatát.
+title: Azure Service Fabric üzemi készültségi ellenőrzőlista | Microsoft Docs
+description: Az ajánlott eljárások követésével megkezdheti Service Fabric alkalmazás és a fürt gyártását.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chakdan
 editor: ''
 ms.assetid: ''
@@ -12,66 +12,60 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 7/10/2018
-ms.author: aljo
-ms.openlocfilehash: e94280f9df1d4ac59856a73f6f6c2b7f7a0b9cc0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 6/05/2019
+ms.author: atsenthi
+ms.openlocfilehash: 9e86f7306ee70bee2e084b967867e2a9be5b66e1
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58107491"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599353"
 ---
 # <a name="production-readiness-checklist"></a>Termelési készenlét ellenőrzőlistája
 
-Az alkalmazás és a fürt készen áll az éles forgalmat is? Futtathatja és tesztelheti az alkalmazások és a fürt nem feltétlenül jelenti azt, készen áll, éles környezetben. Tartsa meg az alkalmazás és a fürt zökkenőmentes végig a következő címen. Erősen ajánlott ezeket kell ellenőrizni összes elemet. Természetesen lehet váltani, használja az alternatív megoldások egy adott vonal elem (például a saját diagnosztikai keretrendszer).
+Készen áll az alkalmazás és a fürt a termelési forgalom elvégzésére? Az alkalmazás és a fürt futtatása és tesztelése nem feltétlenül jelenti azt, hogy készen áll az éles környezetben való működésre. Az alkalmazás és a fürt zökkenőmentesen működik az alábbi ellenőrzőlista használatával. Erősen ajánlott az összes ilyen elemet kijelölni. Természetesen dönthet úgy is, hogy alternatív megoldásokat használ egy adott sorra (például saját diagnosztikai keretrendszerek).
 
 
-## <a name="pre-requisites-for-production"></a>Éles előfeltételei
-1. [Az Azure Service Fabric ajánlott biztonsági eljárások](https://docs.microsoft.com/azure/security/azure-service-fabric-security-best-practices) vannak: 
-1. X.509-tanúsítványok használata
-1. Biztonsági szabályzatok beállítása
-1. Az SSL konfigurálása az Azure Service Fabric
-1. Az Azure Service Fabric hálózati elkülönítési és biztonsági használata
-1. A biztonság az Azure Key Vault beállítása
-1. A felhasználók szerepkörökhöz Microsoft.Network/loadBalancersAssign
-1. A Reliable Actors biztonsági konfiguráció megvalósításához, ha az Actors programozási modell használatával
-1. 20-nál több maggal vagy a 10 csomópont-fürtöket hozzon létre egy dedikált elsődleges csomóponttípus-szolgáltatások. Adjon hozzá [elhelyezési korlátozások](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md) lefoglalni az elsődleges csomóponttípushoz,-szolgáltatások.
-1. Egy D2v2 vagy magasabb szintű Termékváltozatot használja az elsődleges csomóponttípushoz. Javasoljuk, hogy válasszon ki egy Termékváltozat legalább 50 GB merevlemez-kapacitással rendelkező.
-1. Éles fürtök kell [biztonságos](service-fabric-cluster-security.md). Például egy biztonságos fürt beállításának, ez látható [fürtöket](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/7-VM-Windows-3-NodeTypes-Secure-NSG). Tanúsítványok köznapi nevek használata, és elkerülheti a saját önaláírt tanúsítványokkal.
-1. Adjon hozzá [a tárolók és szolgáltatások erőforrás-korlátozások](service-fabric-resource-governance.md), így több mint 75 %-a-csomópont erőforrások nem használnak. 
-1. Megismerheti és beállíthatja a [tartóssági szint](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster). Állapotalapú alkalmazások és szolgáltatások futtatása csomóponttípusok Silver és magasabb szintű tartóssági szint használata ajánlott. Az elsődleges csomóponttípushoz kell rendelkeznie a tartóssági szint beállítása a Silver vagy újabb.
-1. Megismerheti, és válassza ki a [megbízhatósági szint](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) a csomópont típusa. Silver és magasabb szintű megbízhatóság használata javasolt.
-1. Terhelés és a méretezési csoport teszteléséhez a számítási feladatok azonosításához [kapacitásigények](service-fabric-cluster-capacity.md) a fürt számára. 
-1. A szolgáltatások és alkalmazások állnak figyelés és az alkalmazásnaplókat a rendszer éppen létrehozott és tárolt, a riasztás. Lásd a [naplózás hozzáadása a Service Fabric-alkalmazás](service-fabric-how-to-diagnostics-log.md) és [figyelheti a tárolókat az Azure Monitor naplóira](service-fabric-diagnostics-oms-containers.md).
-1. A fürt a riasztási rendszer figyeli (például [naplózza az Azure Monitor](service-fabric-diagnostics-event-analysis-oms.md)). 
-1. Az alapul szolgáló virtual machine scale set infrastruktúra-riasztások figyel (például [naplózza az Azure Monitor](service-fabric-diagnostics-oms-agent.md).
-1. A fürt rendelkezik [elsődleges és másodlagos tanúsítványát](service-fabric-cluster-security-update-certs-azure.md) mindig (tehát Ön nem kizárva).
-1. A fejlesztési, átmeneti és éles környezetek különálló fürtöket karbantartása. 
-1. [Alkalmazásfrissítések](service-fabric-application-upgrade.md) és [verziófrissítések fürt](service-fabric-tutorial-upgrade-cluster.md) fejlesztés tesztelését és előkészítési fürtök. 
-1. Kapcsolja ki az automatikus frissítéseket éles fürtökben, és kapcsolja be a fejlesztési és átmeneti fürtök (visszaállítás igény szerint). 
-1. A helyreállítási időkorlátot (RPO) a szolgáltatás létrehozásához, és állítsa be a [vész-helyreállítási folyamat](service-fabric-disaster-recovery.md) és próbálhatja ki.
-1. Tervezze meg [skálázás](service-fabric-cluster-scaling.md) a fürt manuálisan vagy programon keresztül.
-1. Tervezze meg [javítás](service-fabric-patch-orchestration-application.md) a fürtcsomópontokat. 
-1. A CI/CD-folyamat kialakítani, hogy a legutóbbi módosításoknak folyamatosan tesztelt. Például [Azure DevOps](service-fabric-tutorial-deploy-app-with-cicd-vsts.md) vagy [Jenkins](service-fabric-cicd-your-linux-applications-with-jenkins.md)
-1. A fejlesztés és a terhelés alatt fürtök átmeneti tesztelése a [Fault Analysis Service](service-fabric-testability-overview.md) és idéz elő az ellenőrzött [káosz](service-fabric-controlled-chaos.md). 
-1. Tervezze meg [skálázás](service-fabric-concepts-scalability.md) alkalmazásait. 
+## <a name="prerequisites-for-production"></a>Az éles környezet előfeltételei
+1. Azure Service Fabric – ajánlott eljárások: [Alkalmazások tervezése](./service-fabric-best-practices-applications.md), [Biztonság](./service-fabric-best-practices-security.md), [hálózatkezelés](./service-fabric-best-practices-networking.md), [kapacitás megtervezése és skálázás](./service-fabric-best-practices-capacity-scaling.md), [infrastruktúra-kód](./service-fabric-best-practices-infrastructure-as-code.md), [monitorozás és diagnosztika](./service-fabric-best-practices-monitoring.md). 
+1. A Reliable Actors biztonsági konfigurációjának implementálása a Actors programozási modell használata esetén
+1. A több mint 20 magot vagy 10 csomópontot tartalmazó fürtök esetében hozzon létre egy dedikált elsődleges csomópont-típust a rendszerszolgáltatások számára. [Elhelyezési](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md) megkötések hozzáadása a rendszerszolgáltatások elsődleges csomópont-típusának lefoglalásához.
+1. Használjon D2v2 vagy magasabb SKU-t az elsődleges csomópont típusához. Ajánlott olyan SKU-t választani, amelynek legalább 50 GB-os merevlemez-kapacitása van.
+1. Az üzemi fürtöknek [biztonságosnak](service-fabric-cluster-security.md)kell lenniük. Egy biztonságos fürt beállításával kapcsolatos példát ebben a [fürtözött sablonban](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/7-VM-Windows-3-NodeTypes-Secure-NSG)talál. Használjon köznapi neveket a tanúsítványokhoz, és ne használjon önaláírt tanúsítványokat.
+1. [Erőforrás-korlátozásokat adhat hozzá a tárolók és szolgáltatások](service-fabric-resource-governance.md)számára, hogy ne használják a csomópont-erőforrások 75%-át. 
+1. Ismerje meg és állítsa be a [tartóssági szintet](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster). Állapot-nyilvántartó számítási feladatokat futtató csomópont-típusok esetén ezüst vagy magasabb tartóssági szint ajánlott. Az elsődleges csomópont típusának az ezüst vagy a magasabb értéknek kell lennie.
+1. Ismerje meg és válassza ki a csomópont típusának [megbízhatósági szintjét](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) . Az ezüst vagy a nagyobb megbízhatóság ajánlott.
+1. A számítási feladatok terhelésének és méretezésének tesztelésével azonosíthatja a fürt [kapacitásának követelményeit](service-fabric-cluster-capacity.md) . 
+1. A szolgáltatásait és alkalmazásait figyelik, és az alkalmazások naplóit a rendszer riasztással hozza létre és tárolja. Lásd például: [naplózás hozzáadása a Service Fabric alkalmazáshoz](service-fabric-how-to-diagnostics-log.md) és a [tárolók figyelése Azure monitor naplókkal](service-fabric-diagnostics-oms-containers.md).
+1. A fürt figyelése riasztásokkal történik (például [Azure monitor naplók](service-fabric-diagnostics-event-analysis-oms.md)esetében). 
+1. Az alapul szolgáló virtuálisgép-méretezési csoport infrastruktúrájának figyelése riasztásokkal történik (például [Azure monitor naplókkal](service-fabric-diagnostics-oms-agent.md).
+1. A fürtben mindig van [elsődleges és másodlagos tanúsítvány](service-fabric-cluster-security-update-certs-azure.md) (így nem lesz kizárva).
+1. Külön fürtöket kezelhet a fejlesztéshez, az előkészítéshez és a gyártáshoz. 
+1. Az [alkalmazások frissítéseit](service-fabric-application-upgrade.md) és a [fürtök frissítéseit](service-fabric-tutorial-upgrade-cluster.md) először a fejlesztési és előkészítési fürtök tesztelik. 
+1. Kapcsolja ki az automatikus frissítéseket az üzemi fürtökben, és kapcsolja be fejlesztési és előkészítési fürtök esetén (szükség esetén a visszaállítást). 
+1. Hozzon létre egy helyreállítási időkorlátot (RPO) a szolgáltatáshoz, és állítson be egy vész- [helyreállítási folyamatot](service-fabric-disaster-recovery.md) , és tesztelje.
+1. Tervezze [](service-fabric-cluster-scaling.md) meg manuálisan vagy programozott módon a fürt méretezését.
+1. Tervezze [](service-fabric-patch-orchestration-application.md) meg a fürtcsomópontok javítását. 
+1. Hozzon létre egy CI/CD-folyamatot, hogy a legújabb módosítások folyamatosan legyenek tesztelve. Például az [Azure DevOps](service-fabric-tutorial-deploy-app-with-cicd-vsts.md) vagy a [Jenkins](service-fabric-cicd-your-linux-applications-with-jenkins.md) használatával
+1. Tesztelje a fejlesztési & átmeneti fürtöket a Load és a [fault Analysis Service szolgáltatásban](service-fabric-testability-overview.md) , és indukálja a szabályozott [káoszt](service-fabric-controlled-chaos.md). 
+1. Tervezze [](service-fabric-concepts-scalability.md) meg az alkalmazások méretezését. 
 
 
-Ha a Service Fabric Reliable Services és Reliable Actors programozási modellt használ, a következő elemeket kell ellenőrizni kell,:
-1. Ellenőrizze, hogy a szolgáltatás kód van érvényesítenie a megszakítás lexikális elem szerepel a helyi fejlesztés során az alkalmazások frissítése a `RunAsync` metódust, és bezárja az egyéni kommunikációs figyelőket.
-1. Kerülje [közös alkalmazásmegoldásokra](service-fabric-work-with-reliable-collections.md) a Reliable Collections használata esetén.
-1. Számlálók futtatásakor terheléses teszteket, és ellenőrizze a szemétgyűjtés vagy sorozatos halommemória növekedési nagy mértékű .NET CLR memória teljesítményének figyeléséhez.
-1. Offline biztonsági másolat karbantartása [Reliable Services és Reliable Actors](service-fabric-reliable-services-backup-restore.md) és a visszaállítási folyamat tesztelése.
-1. Az elsődleges NodeType csomóponttípus virtuálisgép-példányok száma ideális esetben meg kell egyeznie a fürt megbízhatósági szint; a minimális tartalmazza a feltételeknek megfelelő meghaladja a réteg minimális: ideiglenesen mikor függőleges skálázás az elsődleges NodeType virtuális gép méretezési csoport Termékváltozatának.
+Ha a Service Fabric Reliable Services vagy Reliable Actors programozási modellt használja, a következő elemeket kell kijelölnie:
+1. Frissítse az alkalmazásokat a `RunAsync` helyi fejlesztés során annak ellenőrzéséhez, hogy a szolgáltatási kód tiszteletben tartja-e a lemondási tokent a metódusban, és zárja be az egyéni kommunikációs figyelőket.
+1. A megbízható gyűjtemények használata esetén Kerülje a [gyakori buktatókat](service-fabric-work-with-reliable-collections.md) .
+1. Figyelje a .NET CLR memória-teljesítményszámlálók terhelési tesztek futtatásakor, és ellenőrizze, hogy magas-e a szemetet vagy a Runaway heap növekedését.
+1. [Reliable Services és Reliable Actors](service-fabric-reliable-services-backup-restore.md) offline biztonsági mentésének fenntartása és a visszaállítási folyamat tesztelése.
+1. Az elsődleges NodeType virtuálisgép-példányok számának ideális esetben meg kell egyeznie a fürtök megbízhatósági szintjéhez szükséges minimális értékkel. a minimális szintet meghaladó feltételek a következők: átmenetileg, ha az elsődleges NodeTypes virtuálisgép-méretezési készlet SKU-jának vertikális skálázása.
 
-## <a name="optional-best-practices"></a>Választható eljárások
+## <a name="optional-best-practices"></a>Választható ajánlott eljárások
 
-A fenti listák éles környezetben nyissa meg az előfeltételeket, amelyek a következő elemek figyelembe kell venni:
-1. Csatlakoztassa a [Service Fabric állapotmodell](service-fabric-health-introduction.md) kiterjesztheti a beépített állapot-értékelést, és jelentéskészítés.
-1. Egy egyéni figyelő által figyelt, az alkalmazás és a jelentések telepítése [betöltése](service-fabric-cluster-resource-manager-metrics.md) a [erőforrás terheléselosztási](service-fabric-cluster-resource-manager-balancing.md). 
+Míg a fenti lista az előfeltétel, hogy az éles környezetbe lépjen, a következő elemeket is figyelembe kell venni:
+1. Csatlakoztassa a [Service Fabric Health modelt](service-fabric-health-introduction.md) a beépített egészségügyi Értékelés és jelentéskészítés kibővítéséhez.
+1. Helyezzen üzembe egy egyéni watchdogot, amely figyeli az alkalmazást, és betölti az [erőforrás-kiegyensúlyozás](service-fabric-cluster-resource-manager-balancing.md) [terhelését](service-fabric-cluster-resource-manager-metrics.md) . 
 
 
 ## <a name="next-steps"></a>További lépések
 * [Service Fabric Windows-fürt üzembe helyezése](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
-* [Linux-alapú Service Fabric-fürt üzembe helyezése](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
+* [Service Fabric Linux-fürt üzembe helyezése](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
 * További információk a Service Fabric [alkalmazásainak élettartamáról](service-fabric-application-lifecycle.md).

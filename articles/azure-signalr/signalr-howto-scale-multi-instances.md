@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: zhshang
 ms.openlocfilehash: e284a0492774e02cab79db6d9006c1718a7fcfc9
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58623183"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60809239"
 ---
 # <a name="how-to-scale-signalr-service-with-multiple-instances"></a>Hogyan méretezése a SignalR Service több példányra?
 A legújabb SignalR Service SDK támogatja a több végpontot SignalR Service-példányokhoz. Ez a funkció segítségével méretezheti az egyidejű kapcsolatok, vagy a régiók közötti üzenetkezelés használata.
@@ -64,7 +64,7 @@ Alapértelmezés szerint az SDK-t használja a [DefaultEndpointRouter](https://g
 
 2. Kiszolgáló üzenet-útválasztása
 
-    Ha a * üzenetet küld egy adott ** kapcsolat x és a cél kapcsolat továbbítja a rendszer az aktuális kiszolgáló, az üzenet közvetlenül csatlakoztatott, hogy a végpont kerül. Ellenkező esetben az üzenetek vannak küldött minden Azure SignalR-végpontra.
+    Ha a *üzenetet küld egy adott **kapcsolat*** x és a cél kapcsolat továbbítja a rendszer az aktuális kiszolgáló, az üzenet közvetlenül csatlakoztatott, hogy a végpont kerül. Ellenkező esetben az üzenetek vannak küldött minden Azure SignalR-végpontra.
 
 #### <a name="customize-routing-algorithm"></a>Útválasztási algoritmust testreszabása
 A saját útválasztó hozhat létre, ha alapos ismeretére azonosításához milyen végpontokat, az üzenetek el kell küldeni.

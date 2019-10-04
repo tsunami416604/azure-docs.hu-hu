@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/29/2019
 ms.author: sutalasi
-ms.openlocfilehash: d11ebad3eaa629a1b03d22c6548f3b7ad591cf5b
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: fe74080387f76b858f60c5285a98c9b67f051449
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60003808"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671889"
 ---
 # <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>Azure PowerShell-lel az Azure virtuális gépek vészhelyreállításának beállítása
 
@@ -135,19 +135,12 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 ```
 ## <a name="set-the-vault-context"></a>A tárolási környezet beállítása
 
-> [!TIP]
-> A legtöbb parancsmag könnyen használható aliasok az Azure Site Recovery PowerShell modul (Az.RecoveryServices modul) tartalmaz. A modul parancsmagjai utat  *\<művelet >-**AzRecoveryServicesAsr**\<objektum >* és egyenértékű aliast is beállíthat, amely formájában  *\< A művelet >-**ASR**\<objektum >*. Ebben a cikkben a parancsmag aliasok átláthatóbbá tétele.
 
-A tárolási környezet használatra beállítása a PowerShell-munkamenetben. Ehhez töltse le a tároló beállításait, és importálni a letöltött fájlt a PowerShell-munkamenetben, a tárolási környezet beállításához.
-
-Beállítása után a PowerShell-munkamenetben későbbi Azure Site Recovery-műveletek a kiválasztott tár környezetében történik.
+A tárolási környezet használatra beállítása a PowerShell-munkamenetben. Beállítása után a PowerShell-munkamenetben későbbi Azure Site Recovery-műveletek a kiválasztott tár környezetében történik.
 
  ```azurepowershell
-#Download the vault settings file for the vault.
-$Vaultsettingsfile = Get-AzRecoveryServicesVaultSettingsFile -Vault $vault -SiteRecovery -Path C:\users\user\Documents\
-
-#Import the downloaded vault settings file to set the vault context for the PowerShell session.
-Import-AzRecoveryServicesAsrVaultSettingsFile -Path $Vaultsettingsfile.FilePath
+#Setting the vault context.
+Set-AsrVaultSettings -Vault $vault
 
 ```
 ```
@@ -160,6 +153,16 @@ a2aDemoRecoveryVault a2ademorecoveryrg Microsoft.RecoveryServices Vaults
 #Delete the downloaded vault settings file
 Remove-Item -Path $Vaultsettingsfile.FilePath
 ```
+
+Egy Azure-ról Azure migráláshoz az újonnan létrehozott tárolóban és a tárolási környezetet megadható: 
+
+```azurepowershell
+
+#Set the vault context for the PowerShell session.
+Set-AzRecoveryServicesAsrVaultContext -Vault $vault
+
+```
+
 ## <a name="prepare-the-vault-to-start-replicating-azure-virtual-machines"></a>A tároló replikáljon az Azure-beli virtuális gépek előkészítése
 
 ### <a name="create-a-site-recovery-fabric-object-to-represent-the-primary-source-region"></a>Hozzon létre egy Site Recovery fabric objektumot képviselő az elsődleges (forrás) régióban
@@ -408,11 +411,11 @@ $OSDiskReplicationConfig = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationC
 
 # Data disk
 $datadiskId1  = $vm.StorageProfile.DataDisks[0].ManagedDisk.id
-$RecoveryReplicaDiskAccountType =  $vm.StorageProfile.DataDisks[0]. StorageAccountType
-$RecoveryTargetDiskAccountType = $vm.StorageProfile.DataDisks[0]. StorageAccountType
+$RecoveryReplicaDiskAccountType =  $vm.StorageProfile.DataDisks[0].StorageAccountType
+$RecoveryTargetDiskAccountType = $vm.StorageProfile.DataDisks[0].StorageAccountType
 
 $DataDisk1ReplicationConfig  = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $CacheStorageAccount.Id `
-         -DiskId $datadiskId1 -RecoveryResourceGroupId  $RecoveryRG.ResourceId -RecoveryReplicaDiskAccountType  $RecoveryReplicaDiskAccountType `
+         -DiskId $datadiskId1 -RecoveryResourceGroupId $RecoveryRG.ResourceId -RecoveryReplicaDiskAccountType $RecoveryReplicaDiskAccountType `
          -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
 
 #Create a list of disk replication configuration objects for the disks of the virtual machine that are to be replicated.
@@ -607,6 +610,14 @@ Update-AzRecoveryServicesAsrProtectionDirection -ReplicationProtectedItem $Repli
 ```
 
 Ismételt védelem befejezése után a feladatátvételi fordított irányban (USA nyugati RÉGIÓJA, USA keleti régiója) és a feladat-visszavétel forrásrégió is kezdeményezhető.
+
+## <a name="disable-replication"></a>A replikálás letiltása
+
+Remove-ASRReplicationProtectedItem parancsmaggal letilthatja a replikáció.
+
+```azurepowershell
+Remove-ASRReplicationProtectedItem -ReplicationProtectedItem $ReplicatedItem
+```
 
 ## <a name="next-steps"></a>További lépések
 Nézet a [Azure Site Recovery PowerShell-referencia](https://docs.microsoft.com/powershell/module/az.RecoveryServices) megtudhatja, hogyan hajthat végre egyéb feladatok, például a helyreállítási tervek létrehozása és tesztelése a Powershellen keresztül a helyreállítási terv feladatátvételét.

@@ -1,96 +1,111 @@
 ---
 title: Ismert problémák az Azure Data Lake Storage Gen2 |} A Microsoft Docs
 description: További információ a korlátozások és az Azure Data Lake Storage Gen2 ismert problémái
-services: storage
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/28/2019
+ms.date: 07/31/2019
 ms.author: normesta
-ms.openlocfilehash: d56fb411eb032e5e6227d68cd8abe02c0e30850b
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.reviewer: jamesbak
+ms.openlocfilehash: fb333db693c0f42b66e9fd45f5eb3c879787875d
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60006862"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70959113"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Az Azure Data Lake Storage Gen2 ismert problémái
 
-Ez a cikk az ismert problémák és korlátozások vonatkoznak a Data Lake Storage Gen2 tartalmazza.
+Ez a cikk azokat a funkciókat és eszközöket sorolja fel, amelyek még nem támogatottak, vagy csak részlegesen támogatottak olyan Storage-fiókokkal, amelyek hierarchikus névtérrel rendelkeznek (Azure Data Lake Storage Gen2).
 
-## <a name="sdk-support-for-data-lake-storage-gen2-accounts"></a>SDK-t a Data Lake Storage Gen2-fiókok támogatása
-
-Nincsenek elérhető SDK-k, amelyek a Data Lake Storage Gen2 fiókokkal fog működni.
+<a id="blob-apis-disabled" />
 
 ## <a name="blob-storage-apis"></a>A BLOB storage API-k
 
-A BLOB storage API-k még nem érhetők el a Data Lake Storage Gen2-fiókokat.
+A blob Storage API-k le vannak tiltva, hogy megakadályozzák a funkciók működőképességét, amelyek felmerülhetnek, mivel Blob Storage API-k még nem működnek együtt Azure Data Lake Gen2 API-kkal.
 
-Ezen API-k sikerült merülnek fel, mert a Blob Storage API-k még nem működik együtt az Azure Data Lake Gen2 API-k nem szándékos adatok hozzáférési problémák elkerülése érdekében le vannak tiltva.
+> [!NOTE]
+> Ha a többprotokollos hozzáférés nyilvános előzetesét regisztrálja Data Lake Storage, akkor a blob API-k és a Data Lake Storage Gen2 API-k ugyanazon az adattárban működhetnek. További információ: [Data Lake Storage több protokollos hozzáférése](data-lake-storage-multi-protocol-access.md).
+
+### <a name="what-to-do-with-existing-tools-applications-and-services"></a>Mi a teendő a meglévő eszközökkel, alkalmazásokkal és szolgáltatásokkal
+
+Ha ezek bármelyike blob API-kat használ, és azt szeretné használni, hogy az összes, a fiókjába feltöltött tartalommal működjön, akkor két lehetőség közül választhat.
+
+* **1. lehetőség**: Ne engedélyezzen hierarchikus névteret a blob Storage-fiókban, amíg a blob API-k nem tudnak együttműködni Azure Data Lake Gen2 API-kkal. Ha a Storage-fiókot hierarchikus névtér nélkül szeretné használni, akkor nem férhet hozzá Data Lake Storage Gen2 adott szolgáltatásokhoz, például a címtárhoz és a tároló hozzáférés-vezérlési listájához.
+
+* **2. lehetőség**: Regisztráljon a [multi-Protocol hozzáférés](data-lake-storage-multi-protocol-access.md)nyilvános előzetes verziójára Data Lake Storageon. A blob API-kat meghívó eszközök és alkalmazások, valamint a blob Storage-funkciók, például a diagnosztikai naplók a hierarchikus névtérrel rendelkező fiókokkal is működhetnek.
+
+### <a name="what-to-do-if-you-used-blob-apis-to-load-data-before-blob-apis-were-disabled"></a>Mi a teendő, ha blob API-kat használt az adatgyűjtés előtt a blob API-k letiltásához
 
 Ha ezekkel az API-adatok betöltése előtt letiltottuk azokat, és a, termelési adatokhoz való hozzáférést, majd lépjen kapcsolatba Microsoft Support a következő információkat:
 
-* Előfizetés-azonosító (GUID azonosítója, nem a név)
+> [!div class="checklist"]
+> * Előfizetés-azonosító (a GUID, nem a név).
+> * A Storage-fiók neve (i).
+> * Függetlenül attól, hogy aktív hatással van-e az éles üzemre, és ha igen, milyen tárolási fiókokhoz?
+> * Akkor is, ha az aktívan nem érintett éles környezetben, akkor mondja el, hogy ezeket az adatokat a valamilyen okból egy másik tárfiókba másolni kell, és ha igen, hogy miért?
 
-* Storage-fiók neve
+Ilyen esetben a blob API-hoz csak korlátozott ideig lehet visszaállítani a hozzáférést, így az ilyen típusú Adatmásolás olyan Storage-fiókba is elvégezhető, amelyen nincs engedélyezve a hierarchikus névtér funkció.
 
-* Éles környezetben aktívan érinti-e, és ha igen, melyik storage-fiókok?
+### <a name="issues-and-limitations-with-using-blob-apis-on-accounts-that-have-a-hierarchical-namespace"></a>Problémák és korlátozások a blob API-k használatával hierarchikus névtérrel rendelkező fiókokon
 
-* Akkor is, ha az aktívan nem érintett éles környezetben, akkor mondja el, hogy ezeket az adatokat a valamilyen okból egy másik tárfiókba másolni kell, és ha igen, hogy miért?
+Ha a többprotokollos hozzáférés nyilvános előzetesét regisztrálja Data Lake Storage, akkor a blob API-k és a Data Lake Storage Gen2 API-k ugyanazon az adattárban működhetnek.
 
-Ilyen körülmények azt is visszaállíthatók hozzáférés a Blob API-t egy korlátozott ideig, hogy a storage-fiókra, amely nem rendelkezik a hierarchikus névtér szolgáltatás engedélyezve van az adatokat másolja.
+Ez a szakasz a blob API-k és a Data Lake Storage Gen2 API-k használatával kapcsolatos problémákat és korlátozásokat ismerteti ugyanazon az adatközponton.
 
-Virtuális gép (VM) a nem felügyelt lemezek a letiltott Blob Storage API-k attól függenek, ezért ha szeretné engedélyezni a storage-fiók, hierarchikus névtér, érdemes egy storage-fiókot, amely nem rendelkezik a hierarchikus névtér funkció elhelyezését a nem felügyelt Virtuálisgép-lemezek engedélyezve van.
+* A blob API-k és a Data Lake Storage API-k nem használhatók a fájlok ugyanazon példányára való íráshoz.
 
-## <a name="api-interoperability"></a>API-együttműködés
+* Ha Data Lake Storage Gen2 API-k használatával ír fájlba egy fájlt, a rendszer nem fogja látni a fájl blokkokat a letiltási [lista](https://docs.microsoft.com/rest/api/storageservices/get-block-list) blob API-jának meghívásához.
 
-A BLOB Storage API-k és az Azure Data Lake Gen2 API-k nem együttműködésre egymással.
+* A fájlokat Data Lake Storage Gen2 API-k vagy blob API-k használatával írhatja felül. Ez nem befolyásolja a fájl tulajdonságait.
 
-Ha az eszközök, alkalmazások, szolgáltatások vagy parancsfájlok, amelyek a Blob API-kkal rendelkezik, és ezek segítségével a fiókjába feltöltött tartalom mindegyikét dolgozni szeretne, majd nem engedélyezi az a Blob storage-fiókjában hierarchikus névtér mindaddig, amíg a Blob API-k válnak együttműködik az Azure Data Lake Gen2 API-k. Hierarchikus névtér nélkül-tárfiókok használata azt jelenti, akkor nem rendelkezik hozzáféréssel a Data Lake Storage Gen2 funkciók, például a fájl és könyvtár rendszer hozzáférés-vezérlési listák.
+* Ha a [lista Blobok](https://docs.microsoft.com/rest/api/storageservices/list-blobs) műveletet határolójel megadása nélkül használja, az eredmények a címtárakat és a blobokat is tartalmazzák.
 
-## <a name="azure-storage-explorer"></a>Azure Storage Explorer
+  Ha elválasztót választ, csak egy perjelet (`/`) használjon. Ez az egyetlen támogatott elválasztó karakter.
 
-Megtekintéséhez vagy a Data Lake Storage Gen2-fiókok kezelése az Azure Storage Explorer használatával kell rendelkeznie legalább verzió `1.6.0` az eszköz, amely egy [ingyenesen letölthető](https://azure.microsoft.com/features/storage-explorer/).
+* Ha a [blob törlése](https://docs.microsoft.com/rest/api/storageservices/delete-blob) API-t használja egy könyvtár törléséhez, akkor a rendszer csak akkor törli a könyvtárat, ha üres.
 
-Vegye figyelembe, hogy a Storage Explorer, az Azure Portalon történő beágyazott verziója amelyen jelenleg nem támogatja a megtekintése, vagy a hierarchikus névtér szolgáltatás engedélyezve van a Data Lake Storage Gen2-fiókok kezelése.
+  Ez azt jelenti, hogy a blob API rekurzív törlése nem végezhető el.
 
-## <a name="blob-viewing-tool"></a>BLOB megtekintése eszköz
+Ezek a blob REST API-k nem támogatottak:
 
-Eszköz megtekintése az Azure Portallal BLOB csak korlátozott mértékben támogatja a Data Lake Storage Gen2.
+* [BLOB (oldal) elhelyezése](https://docs.microsoft.com/rest/api/storageservices/put-blob)
+* [Oldal elhelyezése](https://docs.microsoft.com/rest/api/storageservices/put-page)
+* [Oldalak tartományának beolvasása](https://docs.microsoft.com/rest/api/storageservices/get-page-ranges)
+* [Növekményes másolási blob](https://docs.microsoft.com/rest/api/storageservices/incremental-copy-blob)
+* [Oldal elhelyezése az URL-címről](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)
+* [BLOB elhelyezése (Hozzáfűzés)](https://docs.microsoft.com/rest/api/storageservices/put-blob)
+* [Blokk hozzáfűzése](https://docs.microsoft.com/rest/api/storageservices/append-block)
+* [Blokk hozzáfűzése URL-címről](https://docs.microsoft.com/rest/api/storageservices/append-block-from-url)
 
-## <a name="third-party-applications"></a>Harmadik féltől származó alkalmazások
+## <a name="issues-with-unmanaged-virtual-machine-vm-disks"></a>Nem felügyelt virtuálisgép-lemezekkel kapcsolatos problémák
 
-Harmadik féltől származó alkalmazások előfordulhat, hogy támogatja a Data Lake Storage Gen2.
+A nem felügyelt virtuálisgép-lemezek nem támogatottak olyan fiókoknál, amelyek hierarchikus névtérrel rendelkeznek. Ha egy hierarchikus névteret szeretne engedélyezni egy Storage-fiókban, helyezze a nem felügyelt virtuális gépek lemezeit olyan Storage-fiókba, amelyben nincs engedélyezve a hierarchikus névtér funkció.
 
-Minden külső alkalmazás szolgáltatója belátása szerint a rendszer támogatja. Jelenleg a Blob storage API-k és Data Lake Storage Gen2 API-k nem használható ugyanaz a tartalom kezeléséhez. Mert dolgozunk, hogy együttműködést, lehetőség számos harmadik felektől származó eszközök automatikusan támogatja a Data Lake Storage Gen2.
 
-## <a name="azcopy-support"></a>Az AzCopy-támogatás
+## <a name="support-for-other-blob-storage-features"></a>Egyéb blob Storage-funkciók támogatása
 
-Az AzCopy 8-as verzió nem támogatja a Data Lake Storage Gen2.
+A következő táblázat felsorolja az összes olyan funkciót és eszközt, amely még nem támogatott, vagy csak részben támogatott olyan Storage-fiókokkal, amelyek hierarchikus névtérrel rendelkeznek (Azure Data Lake Storage Gen2).
 
-Ehelyett használja az AzCopy legújabb előzetes verzióját ( [AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json) ), a Data Lake Storage Gen2 végpontokat támogatja.
+| Szolgáltatás/eszköz    | További információ    |
+|--------|-----------|
+| **Data Lake Storage Gen2 Storage-fiókok API-jai** | Részlegesen támogatott <br><br>a multi-Protocol hozzáférés Data Lake Storage jelenleg nyilvános előzetes verzióban érhető el. Ez az előzetes verzió lehetővé teszi a blob API-k használatát a .NET, a Java, a Python SDK-k és a hierarchikus névteret tartalmazó fiókok használatával.  Az SDK-k még nem tartalmaznak olyan API-kat, amelyek lehetővé teszik a címtárak használatát vagy a hozzáférés-vezérlési listák (ACL-ek) beállítását. A függvények végrehajtásához használhatja Data Lake Storage Gen2 **Rest** API-kat. |
+| **AzCopy** | Verzió-specifikus támogatás <br><br>Csak a AzCopy legújabb verzióját használja ([AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)). A AzCopy korábbi verziói (például a AzCopy v 8.1) nem támogatottak.|
+| **Az Azure Blob Storage életciklus-kezelési házirendjei** | Csak akkor támogatott, ha Data Lake Storage előzetes verzióban regisztrál a [több protokollos hozzáférésre](data-lake-storage-multi-protocol-access.md) . A ritka elérésű és az archív hozzáférési rétegek csak az előzetes verzióban támogatottak. A blob-Pillanatképek törlése még nem támogatott. |
+| **Azure Content Delivery Network (CDN)** | Még nem támogatott|
+| **Azure-keresés** |Csak akkor támogatott, ha Data Lake Storage előzetes verzióban regisztrál a [több protokollos hozzáférésre](data-lake-storage-multi-protocol-access.md) .|
+| **Azure Storage Explorer** | Verzió-specifikus támogatás <br><br>Csak a vagy `1.6.0` újabb verziót használja. <br>A `1.6.0` verzió [ingyenes letöltésként](https://azure.microsoft.com/features/storage-explorer/)érhető el.|
+| **BLOB Container ACL-ek** |Még nem támogatott|
+| **Blobfuse** |Még nem támogatott|
+| **Egyéni tartományok** |Még nem támogatott|
+| **Fájlrendszer Explorer** | Korlátozott támogatás |
+| **Diagnosztikai naplózás** |A diagnosztikai naplók csak akkor támogatottak, ha Data Lake Storage előzetes verzióban regisztrál a [több protokollos hozzáférésre](data-lake-storage-multi-protocol-access.md) . <br><br>A naplók engedélyezése a Azure Portal jelenleg nem támogatott. Az alábbi példa bemutatja, hogyan engedélyezheti a naplókat a PowerShell használatával. <br><br>`$storageAccount = Get-AzStorageAccount -ResourceGroupName <resourceGroup> -Name <storageAccountName>`<br><br>`Set-AzStorageServiceLoggingProperty -Context $storageAccount.Context -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays <days>`. <br><br>Ügyeljen arra, hogy `Blob` a `-ServiceType` paraméter értékeként az ebben a példában látható módon legyen megadva. <br><br>A Azure Storage Explorer jelenleg nem használható a diagnosztikai naplók megtekintéséhez. A naplók megtekintéséhez használja a AzCopy vagy SDK-kat.
+| **Megváltoztathatatlan tároló** |Még nem támogatott <br><br>A nem módosítható tárterület lehetővé teszi az adattárolást egy [féregben (egyszer írható, olvasható)](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) állapottal.|
+| **Objektum szintű szintek** |A ritka elérésű és az archiválási rétegek csak akkor támogatottak, ha Data Lake Storage előzetes verzióban regisztrál a [multi-Protocol hozzáférésre](data-lake-storage-multi-protocol-access.md) . <br><br> Az összes többi hozzáférési szintet még nem támogatja a rendszer.|
+| **A PowerShell és a parancssori felület támogatása** | Korlátozott funkcionalitás <br><br>A felügyeleti műveletek, például a fiókok létrehozása is támogatottak. Az adatsík-műveletek, például a fájlok feltöltése és letöltése nyilvános előzetes verzióban érhető el [Data Lake Storage a többprotokollos hozzáférés](data-lake-storage-multi-protocol-access.md)részeként. A címtárak használata és a hozzáférés-vezérlési listák (ACL-ek) beállítása még nem támogatott. |
+| **Statikus webhelyek** |Még nem támogatott <br><br>Konkrétan a fájlok [statikus](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website)webhelyekre való kiszolgálásának lehetősége.|
+| **Harmadik féltől származó alkalmazások** | Korlátozott támogatás <br><br>A REST API-kat használó harmadik féltől származó alkalmazások továbbra is működni fognak, ha Data Lake Storage Gen2 használatával használják őket. <br>A blob API-kat meghívó alkalmazások valószínűleg akkor fognak működni, ha a többprotokollos [hozzáférés](data-lake-storage-multi-protocol-access.md)nyilvános előzetes verzióját regisztrálja Data Lake Storageon. 
+| **Verziószámozási funkciók** |Még nem támogatott <br><br>Ide tartoznak [](https://docs.microsoft.com/rest/api/storageservices/creating-a-snapshot-of-a-blob) a pillanatképek és a helyreállítható [Törlés](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete).|
 
-## <a name="azure-event-grid"></a>Azure Event Grid
 
-[Az Azure Event Grid](https://azure.microsoft.com/services/event-grid/) nem események fogadása az Azure Data Lake Gen2 fiókok mert azok a fiókok nem még létre őket.  
-
-## <a name="soft-delete-and-snapshots"></a>Helyreállítható törlés és pillanatképek
-
-Helyreállítható törlés és a pillanatképek nem a Data Lake Storage Gen2 fiókokhoz érhető el.
-
-Összes versioning funkciót, beleértve a [pillanatképek](https://docs.microsoft.com/rest/api/storageservices/creating-a-snapshot-of-a-blob) és [helyreállítható törlési](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) még nem érhetők el, a Storage-fiókok, amelyek rendelkeznek a hierarchikus névtér szolgáltatás engedélyezve van.
-
-## <a name="object-level-storage-tiers"></a>Objektum szintű tárolási rétegek
-
-Objektum szintű tárolási rétegek (gyors Elérésűre, ritka elérésű és archív) még nem érhetők el az Azure Data Lake Storage általános 2 fiókok esetében, de érhetők el a Storage-fiókok, amelyek nem rendelkeznek a hierarchikus névtér szolgáltatás engedélyezve van.
-
-## <a name="azure-blob-storage-lifecycle-management-policies"></a>Az Azure Blob Storage életciklus-kezelési házirendek
-
-Az Azure Blob Storage életciklus-kezelési házirendek még nem érhetők el a Data Lake Storage Gen2-fiókokat.
-
-Tárfiókok, amelyek nem rendelkeznek a hierarchikus névtér szolgáltatás engedélyezve van, ezek a szabályzatok érhetők el.
-
-## <a name="diagnostic-logs"></a>Diagnosztikai naplók
-
-Diagnosztikai naplók nem érhetők el a Data Lake Storage Gen2-fiókok esetében.

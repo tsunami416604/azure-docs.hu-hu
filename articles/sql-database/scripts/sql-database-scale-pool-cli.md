@@ -1,27 +1,26 @@
 ---
 title: CLI-példaszkript – Rugalmas SQL-készlet méretezése az Azure SQL Database-ben | Microsoft Docs
-description: Az Azure CLI-példaszkript Azure SQL Database rugalmas készlet méretezése
+description: Azure CLI-példa parancsfájl egy rugalmas készlet méretezéséhez Azure SQL Database
 services: sql-database
 ms.service: sql-database
 ms.subservice: elastic-pools
 ms.custom: ''
 ms.devlang: azurecli
 ms.topic: sample
-author: CarlRabeler
-ms.author: carlrab
+author: stevestein
+ms.author: sstein
 ms.reviewer: ''
-manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: fd219e9aaf684600f76ed81eb45ed9a5bf78f62c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 06/25/2019
+ms.openlocfilehash: b378bef296f7cf6546887bcf760a4e14ed66a385
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59359999"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569834"
 ---
-# <a name="use-cli-to-scale-an-elastic-pool-in-azure-sql-database"></a>Az Azure SQL Database rugalmas készlet méretezése CLI használatával
+# <a name="use-cli-to-scale-an-elastic-pool-in-azure-sql-database"></a>Rugalmas készlet méretezése a CLI használatával Azure SQL Database
 
-Az Azure CLI-példaszkript rugalmas készleteket, hoz létre áthelyezi a készletezett adatbázisokat, és a módosítások a rugalmas készlet számítási méretek.
+Ez az Azure CLI-parancsfájl rugalmas készleteket hoz létre, áthelyezi a készletezett adatbázisokat, és módosítja a rugalmas készlet számítási méreteit.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -35,23 +34,23 @@ Ha a parancssori felület helyi telepítése és használata mellett dönt, a t�
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 
-A következő paranccsal távolítsa el az erőforráscsoportot és az ahhoz kapcsolódó összes erőforrás.
+A következő parancs használatával távolítsa el az erőforráscsoportot és az ahhoz társított összes erőforrást.
 
 ```azurecli-interactive
-az group delete --name myResourceGroup
+az group delete --name $resourceGroupName
 ```
 
 ## <a name="script-explanation"></a>Szkript ismertetése
 
-Ez a szkript a következő parancsokat használja egy erőforráscsoport, SQL Database-kiszolgálóhoz, önálló adatbázishoz és az SQL Database-tűzfalszabályok létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
+Ez a szkript a következő parancsokat használja egy erőforráscsoport, egy SQL Database kiszolgáló, egy adatbázis és egy SQL Database tűzfalszabályok létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [az sql server create](https://docs.microsoft.com/cli/azure/sql/server#az-sql-server-create) | Létrehoz egy SQL Database-kiszolgálót, amelyen az önálló adatbázisok és rugalmas készleteket. |
-| [az sql elastic-pools create](https://docs.microsoft.com/cli/azure/sql/elastic-pool#az-sql-elastic-pool-create) | Egy rugalmas készletet hoz létre. |
+| [az sql server create](https://docs.microsoft.com/cli/azure/sql/server#az-sql-server-create) | Létrehoz egy SQL Database kiszolgálót, amely önálló adatbázist és rugalmas készleteket üzemeltet. |
+| [az sql elastic-pools create](https://docs.microsoft.com/cli/azure/sql/elastic-pool#az-sql-elastic-pool-create) | Rugalmas készletet hoz létre. |
 | [az sql db create](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create) | Egyetlen vagy készletezett adatbázist hoz létre. |
-| [az sql elastic-pools update](https://docs.microsoft.com/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update) | Frissíti a rugalmas készlet, ebben a példában módosul a hozzárendelt edtu-t. |
+| [az sql elastic-pools update](https://docs.microsoft.com/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update) | Frissít egy rugalmas készletet, ebben a példában a hozzárendelt eDTU módosítjuk. |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
 ## <a name="next-steps"></a>További lépések

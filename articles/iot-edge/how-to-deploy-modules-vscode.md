@@ -10,12 +10,12 @@ ms.reviewer: ''
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 91a074cf98291b105864a69730314efff3482254
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 61ea7eb0b81c5489ad2bf20e8148d2481bb4fb13
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54155014"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840179"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-visual-studio-code"></a>A Visual Studio Code-ból az Azure IoT Edge-modulok telepítése
 
@@ -28,7 +28,7 @@ Ez a cikk bemutatja, hogyan hozzon létre egy JSON-manifest nasazení, majd kül
 * Egy [az IoT hub](../iot-hub/iot-hub-create-through-portal.md) az Azure-előfizetésében.
 * Egy [IoT Edge-eszköz](how-to-register-device-portal.md) az telepítve van az IoT Edge-futtatókörnyezet.
 * [Visual Studio Code](https://code.visualstudio.com/).
-* [Az Azure IoT-eszközök](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools#overview) a Visual Studio Code.
+* A Visual Studio Code-hoz készült [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools#overview) .
 
 ## <a name="configure-a-deployment-manifest"></a>A manifest nasazení konfigurálása
 
@@ -71,7 +71,7 @@ A Visual Studio Code modulok üzembe helyezéséhez az üzembe helyezés a jegyz
              }
            },
            "modules": {
-             "tempSensor": {
+             "SimulatedTemperatureSensor": {
                "version": "1.0",
                "type": "docker",
                "status": "running",
@@ -95,7 +95,7 @@ A Visual Studio Code modulok üzembe helyezéséhez az üzembe helyezés a jegyz
            }
          }
        },
-       "tempSensor": {
+       "SimulatedTemperatureSensor": {
          "properties.desired": {}
        }
      }
@@ -128,10 +128,10 @@ A modul információkkal konfigurált manifest nasazení alkalmazása modulok ü
 
 1. A Visual Studio Code terület Intézőbeli nézetében bontsa ki a **Azure IoT Hub-eszközök** szakaszban.
 
-1. Kattintson a jobb gombbal manifest nasazení a konfigurálni kívánt IoT Edge-eszközön.
+1. Kattintson a jobb gombbal arra a IoT Edge eszközre, amelyet az üzembe helyezési jegyzékkel szeretne konfigurálni.
 
     > [!TIP]
-    > Győződjön meg arról, hogy úgy döntött, az eszköz IoT Edge-eszköz, válassza azt, bontsa ki a modulok listájához, és meglétének ellenőrzése **$edgeHub** és **$edgeAgent**. Minden IoT Edge-eszköz az alábbi két modulokat tartalmaz.
+    > Annak ellenőrzéséhez, hogy a kiválasztott eszköz egy IoT Edge eszköz-e, válassza ki a modulok listájának kibontásához és a **$edgeHub** és a **$edgeAgent**meglétének ellenőrzéséhez. Minden IoT Edge eszköz tartalmazza ezt a két modult.
 
 1. Válassza ki **hozzon létre telepítést az adott eszköz**.
 

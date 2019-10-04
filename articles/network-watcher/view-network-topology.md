@@ -3,8 +3,8 @@ title: Az Azure virtuális hálózati topológia megtekintése |} A Microsoft Do
 description: Ismerje meg, hogyan erőforrás megtekintését egy virtuális hálózatot és az erőforrásainak kapcsolatai.
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 ms.assetid: ''
 ms.service: network-watcher
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2018
-ms.author: jdial
-ms.openlocfilehash: a9cddf3f8091115f7cd39999e8c52d87ead4af07
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: kumud
+ms.openlocfilehash: a67f1cca54c89ead9ae7fc46ef0c9fc8c5217c74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59786829"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64682051"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>Az Azure-beli virtuális hálózathoz a topológia megtekintése
 
@@ -134,7 +134,7 @@ A topológiában visszaadott összes erőforrásnak rendelkeznie kell egy másik
 | Kapcsolat típusa | Példa                                                                                                |
 | ---               | ---                                                                                                    |
 | Tartalmazottsági       | Virtuális hálózat egy alhálózatot tartalmaz. Egy alhálózat egy hálózati adaptert tartalmaz.                            |
-| Társított        | Hálózati adapter kapcsolódik egy virtuális Gépet. Nyilvános IP-cím egy hálózati adapter társítva. |
+| Kapcsolódó        | Hálózati adapter kapcsolódik egy virtuális Gépet. Nyilvános IP-cím egy hálózati adapter társítva. |
 
 ## <a name="properties"></a>Tulajdonságok
 

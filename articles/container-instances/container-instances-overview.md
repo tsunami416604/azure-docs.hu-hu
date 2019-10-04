@@ -1,20 +1,20 @@
 ---
 title: Mi az Azure Container Instances?
-description: Az Azure Container Instances szolgáltatás elkülönített-tárolókat futtathat az Azure-ban, virtuális gépek kezelése nélkül, és a egy magasabb szintű orchestrator kellene a leggyorsabb és legegyszerűbb megoldást kínál.
+description: A Azure Container Instances szolgáltatás az elkülönített tárolók Azure-ban való futtatásának leggyorsabb és legegyszerűbb módját kínálja anélkül, hogy virtuális gépeket kellene kezelnie, és nem kell magasabb szintű Orchestrator alkalmaznia.
 services: container-instances
 author: dlepow
-manager: jeconnoc
+manager: gwallace
 ms.service: container-instances
 ms.topic: overview
-ms.date: 11/30/2018
+ms.date: 04/25/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 91cf0986241a40c48430d8305849c12864d645fb
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: a07eda709c813e68bc3e4f08b6aab3f93dec65a6
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58499556"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325745"
 ---
 # <a name="what-is-azure-container-instances"></a>Mi az Azure Container Instances?
 
@@ -38,7 +38,7 @@ Korábban a tárolók biztosítottak ugyan alkalmazásfüggőség-elkülöníté
 
 A tárolók általában egyetlen alkalmazás futtatására vannak optimalizálva, azonban ezeknek az alkalmazásoknak a pontos igényei nagyon is eltérőek lehetnek. Az Azure Container Instances optimális kihasználtságot biztosít, mivel pontosan megadható a processzormagok száma és a memória mennyisége. A fizetés az igényelt erőforrások alapján történik másodpercalapú elszámolás szerint, így tényleges igényeinek megfelelően optimalizálhatja költségeit a legkisebb részletekig.
 
-Nagy számítási igényű feladatok például machine learning, az Azure Container Instances ütemezheti a Linux-tárolók használata NVIDIA Tesla [GPU-erőforrások](container-instances-gpu.md) (előzetes verzió).
+A nagy számítási igényű feladatok, például a gépi tanulás esetében a Azure Container Instances a Linux-tárolókat az NVIDIA Tesla [GPU-erőforrások](container-instances-gpu.md) (előzetes verzió) használatára is képes ütemezni.
 
 ## <a name="persistent-storage"></a>Állandó tárolók
 
@@ -48,15 +48,18 @@ Az állapotok az Azure Container Instanceszel való lekéréséhez és megőrzé
 
 Az Azure Container Instances használatával a Windows- és a Linux-tárolókat ugyanazzal az API-val ütemezheti. Egyszerűen adja meg az operációs rendszer típusát a [tárolócsoportok](container-instances-container-groups.md) létrehozásakor.
 
-Néhány funkció jelenleg csak Linux-tárolók:
+Egyes funkciók jelenleg csak Linux-tárolók:
 
 * Több tároló tárolócsoportonként
-* Kötet csatlakoztatási ([Azure Files](container-instances-volume-azure-files.md), [emptyDir](container-instances-volume-emptydir.md), [GitRepo](container-instances-volume-gitrepo.md), [titkos](container-instances-volume-secret.md))
-* [Erőforrás-használati metrikák](container-instances-monitor.md) az Azure Monitor szolgáltatással
-* [Virtuális hálózat üzembe helyezési](container-instances-vnet.md) (előzetes verzió)
-* [GPU-erőforrások](container-instances-gpu.md) (előzetes verzió)
+* Kötet csatlakoztatása ([Azure Files](container-instances-volume-azure-files.md), [emptyDir](container-instances-volume-emptydir.md), [gitrepo típusú](container-instances-volume-gitrepo.md), [Secret](container-instances-volume-secret.md))
+* [Erőforrás-használati metrikák](container-instances-monitor.md) Azure monitor
+* [Virtuális hálózat központi telepítése](container-instances-vnet.md) előnézet
+* [GPU-erőforrások](container-instances-gpu.md) előnézet
 
-Az Azure Container Instances jelenleg támogatja a Windows Server 2016 lemezképek hosszú távú karbantartási csatorna (LTSC) alapján. A Windows féléves csatorna (SAC) egyes kiadásai, például az 1709 és az 1803 nem támogatottak.
+A Windows-tárolók központi telepítése esetén a lemezképeket a gyakori [Windows alapképek](container-instances-faq.md#what-windows-base-os-images-are-supported)alapján kell használni.
+
+> [!NOTE]
+> A Windows Server 2019-alapú rendszerképek használata a Azure Container Instances előzetes verzióban érhető el.
 
 ## <a name="co-scheduled-groups"></a>Együttesen ütemezett csoportok
 
@@ -67,7 +70,7 @@ Az Azure Container Instances támogatja az olyan [több tárolóból álló csop
 Ez a jelenleg előzetes verzióban lévő Azure Container Instances-funkció lehetővé teszi [tárolópéldányok üzembe helyezését egy Azure virtuális hálózatban](container-instances-vnet.md). Ha a tárolópéldányokat a virtuális hálózat egyik alhálózatában helyezi üzembe, biztonságosan tudnak majd kommunikálni a virtuális hálózat más erőforrásaival, így a helyszíniekkel is (a [VPN Gateway-en](../vpn-gateway/vpn-gateway-about-vpngateways.md) vagy az [ExpressRoute-on](../expressroute/expressroute-introduction.md) keresztül).
 
 > [!IMPORTANT]
-> Azure Container Instances bizonyos funkciói a következők előzetes verzióban érhető el, és néhány [korlátozások érvényesek a](container-instances-vnet.md#preview-limitations). Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe][terms-of-use]. Ezek a szolgáltatások egyes funkcióit általánosan (elérhetővé tétel GA) előtt módosíthatja.
+> A Azure Container Instances bizonyos funkciói előzetes verzióban érhetők el, és bizonyos [korlátozások érvényesek](container-instances-vnet.md#preview-limitations). Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe][terms-of-use]. A funkciók bizonyos aspektusai megváltozhatnak az általánosan elérhetővé válás előtt.
 
 ## <a name="next-steps"></a>További lépések
 

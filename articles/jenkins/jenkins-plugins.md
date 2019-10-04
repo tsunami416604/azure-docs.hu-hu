@@ -9,11 +9,11 @@ ms.author: tarcher
 ms.date: 03/22/2019
 ms.topic: article
 ms.openlocfilehash: c103bc0a314f1e5a4a0afef3f7969f53b6a0dccd
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621600"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60640973"
 ---
 # <a name="jenkins-plugins-for-azure"></a>Az Azure-ban a Jenkins beépülő modulok
 

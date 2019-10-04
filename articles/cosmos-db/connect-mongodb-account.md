@@ -5,18 +5,18 @@ author: rimman
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
-ms.date: 12/26/2018
+ms.date: 05/21/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 737e179c2c16937d00bc9b6601f12ebe392c1906
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: dabce19d60a380b47d3583dedb5c11303f416ce7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54040319"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65978702"
 ---
 # <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>Egy Azure Cosmos DB MongoDB-alkalmazás csatlakoztatása
-Ismerje meg, a MongoDB-alkalmazás csatlakoztatása egy Azure Cosmos DB MongoDB-kapcsolati karakterlánc használatával. Ezután használhatja az Azure Cosmos DB-adatbázis az adatokat, a MongoDB-alkalmazást az áruházból. 
+Ismerje meg, a MongoDB-alkalmazás csatlakoztatása egy Azure Cosmos DB MongoDB-kapcsolati karakterlánc használatával. Az adatok egy Azure Cosmos database ezután használhatja a MongoDB-alkalmazást az áruházból. 
 
 Ebben az oktatóanyagban a kapcsolati sztring adatainak lekéréséhez két lehetőséget biztosít:
 
@@ -32,7 +32,7 @@ Ebben az oktatóanyagban a kapcsolati sztring adatainak lekéréséhez két lehe
 1. Egy böngészőből, jelentkezzen be a [az Azure portal](https://portal.azure.com).
 2. Az a **Azure Cosmos DB** panelen válassza ki az API-t. 
 3. A fiók panel bal oldali panelen kattintson a **gyors üzembe helyezési**. 
-4. Válassza ki a platformot (**.NET**, **Node.js**, **MongoDB Shell**, **Java**, **Python**). Ha nem látja, hogy az illesztőprogram vagy eszköz szerepel a listán, ne aggódjon – a Microsoft folyamatosan a dokumentum további kapcsolat-kódtöredékek. Várjuk a megjegyzéseket alább az Önnek tetszőt megtekintéséhez. Ismerje meg, hogyan írhat saját kapcsolatot, olvassa el [a fiók kapcsolati sztringek adatainak lekérése](#GetCustomConnection).
+4. Válassza ki a platformot ( **.NET**, **Node.js**, **MongoDB Shell**, **Java**, **Python**). Ha nem látja, hogy az illesztőprogram vagy eszköz szerepel a listán, ne aggódjon – a Microsoft folyamatosan a dokumentum további kapcsolat-kódtöredékek. Várjuk a megjegyzéseket alább az Önnek tetszőt megtekintéséhez. Ismerje meg, hogyan írhat saját kapcsolatot, olvassa el [a fiók kapcsolati sztringek adatainak lekérése](#GetCustomConnection).
 5. Másolja és illessze be a kódrészletet a MongoDB-alkalmazást.
 
     ![Gyors üzembe helyezési panel](./media/connect-mongodb-account/QuickStartBlade.png)
@@ -62,7 +62,7 @@ Ez a karakterlánc értékét érhetők el a **kapcsolati karakterlánc** koráb
 * A gazdagép (kötelező): A Cosmos-fiók teljes Tartományneve.
 * Port (kötelező): 10255.
 * Az adatbázis (nem kötelező): Az adatbázis, amely a kapcsolatot használ. Ha nincs adatbázis van megadva, az alapértelmezett adatbázis-e a "teszt".
-* az SSL = true (kötelező)
+* ssl=true (required)
 
 Vegyük példaként a fiók látható a **kapcsolati karakterlánc** panelen. Egy érvényes kapcsolati karakterláncot a következő:
 

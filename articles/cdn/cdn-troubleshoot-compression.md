@@ -7,19 +7,19 @@ author: zhangmanling
 manager: erikre
 editor: ''
 ms.assetid: a6624e65-1a77-4486-b473-8d720ce28f8b
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 4df8e5d4560a813c47319833a8cd91726abcb8e6
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
-ms.translationtype: HT
+ms.openlocfilehash: 5195dc3c47d2a4377147b2ef49b23bab6b3fee77
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149455"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593325"
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>A CDN-fájlok tömörítési hibáinak elhárítása
 Ez a cikk segít a hibák elhárításában [CDN-fájltömörítés](cdn-improve-performance.md).
@@ -97,7 +97,7 @@ Keresse meg a végpont a [az Azure portal](https://portal.azure.com) , és katti
 
 A böngésző fejlesztői eszközök használatával, ellenőrizze a válaszfejlécek biztosításához a régióban, ahol éppen kérés gyorsítótárazza a fájlt.
 
-* Ellenőrizze a **kiszolgáló** válaszfejléc.  A fejléc kell rendelkeznie a formátum **platformmal (POP vagy kiszolgáló-azonosító)**, az alábbi példában látható módon.
+* Ellenőrizze a **kiszolgáló** válaszfejléc.  A fejléc kell rendelkeznie a formátum **platformmal (POP vagy kiszolgáló-azonosító)** , az alábbi példában látható módon.
 * Ellenőrizze a **X-gyorsítótár** válaszfejléc.  Beolvassa a fejléc **TALÁLATI**.  
 
 ![A CDN-válaszfejlécek](./media/cdn-troubleshoot-compression/cdn-response-headers.png)

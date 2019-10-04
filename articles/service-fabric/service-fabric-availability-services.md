@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: dd10af0d3c8a57168a27a039286ea0ec4c1dad02
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662745"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60310944"
 ---
 # <a name="availability-of-service-fabric-services"></a>Service Fabric-szolgáltatások rendelkezésre állása
 Ez a cikk áttekintést nyújt, hogyan kezeli az Azure Service Fabric a egy szolgáltatás rendelkezésre állását.

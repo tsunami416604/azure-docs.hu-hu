@@ -3,7 +3,7 @@ title: Hozzon létre egy virtuális Géphez statikus magánhálózati IP-cím �
 description: Ismerje meg, hogyan hozhat létre egy virtuális gépet PowerShell-lel magánhálózati IP-cím.
 services: virtual-network
 documentationcenter: na
-author: jimdial
+author: KumudD
 manager: twooley
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/07/2019
-ms.author: jdial
+ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 812b3752bfffd16c09b466b036fb0ac91e77d5a4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9115386b0543e1ac840aec29fc7f57e7c98c03bb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58104352"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64685334"
 ---
 # <a name="create-a-virtual-machine-with-a-static-private-ip-address-using-powershell"></a>Hozzon létre egy virtuális gépet PowerShell-lel statikus magánhálózati IP-cím
 

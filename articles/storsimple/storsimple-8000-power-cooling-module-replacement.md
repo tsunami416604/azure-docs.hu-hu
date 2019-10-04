@@ -1,6 +1,6 @@
 ---
-title: Cserélje le a StorSimple 8000 series eszközén PCM |} Microsoft Docs
-description: Ismerteti, hogyan eltávolítja és pótolja az energia- és hűtési modul (PCM) a StorSimple eszköz
+title: Az a StorSimple 8000 sorozatú eszköz a PCM cseréje |} A Microsoft Docs
+description: Azt ismerteti, hogyan távolítsa el, és cserélje le a teljesítmény- és hűtési modul (PCM) a StorSimple-eszközön
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,131 +14,131 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 7d181e6e434c998573dbea4b541cfacf7a28ee66
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 42561570e24aec5edd33248ef1738e53175e480e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23875059"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60632463"
 ---
-# <a name="replace-a-power-and-cooling-module-on-your-storsimple-device"></a>Cserélje le a energia- és hűtési modul a StorSimple eszköz
+# <a name="replace-a-power-and-cooling-module-on-your-storsimple-device"></a>Cserélje le a Power és hűtéssel modul a StorSimple eszköz
 ## <a name="overview"></a>Áttekintés
-A energia- és hűtési modul (PCM) a Microsoft Azure StorSimple eszközt a áll egy tápegység- és hűtési az elsődleges és a EBOD ház által szabályozott ventilátor. Csak egy modellje, amely minden ház minősítéssel PCM van. Az elsődleges ház egy 764 W PCM minősítéssel, és a EBOD ház egy 580 W PCM minősítéssel. Annak ellenére, hogy az elsődleges ház és a EBOD ház PCMs különböző, a csere eljárás megegyezik.
+Egy tápegység és hűtéssel ventilátorok szabályozott az elsődleges és a EBOD ház áll a teljesítmény és a hűtési modul (PCM) a Microsoft Azure StorSimple eszközön. Csak egy modellje, amely az összes rendszerházon minősítéssel PCM van. Az elsődleges ház egy 764 W PCM minősítéssel, és a egy 580 W PCM a EBOD ház minősítéssel. Bár a PCMs az elsődleges ház és a EBOD ház különböző, a csere eljárás megegyezik.
 
-Ez az oktatóanyag azt ismerteti, hogyan:
+Ez az oktatóanyag a következőket ismerteti:
 
-* Távolítsa el a PCM
-* A helyettesítő PCM telepítése
+* A PCM eltávolítása
+* Telepítse a PCM cseréje
 
 > [!IMPORTANT]
-> Mielőtt eltávolítása és cseréje egy PCM, tekintse át a biztonsági információk [StorSimple hardver összetevő cseréje](storsimple-8000-hardware-component-replacement.md).
+> Mielőtt eltávolítása és a egy PCM cseréje tekintse át a biztonsági információk [StorSimple összetevő hardvercseréhez](storsimple-8000-hardware-component-replacement.md).
 
 
-## <a name="before-you-replace-a-pcm"></a>Mielőtt lecseréli a PCM
-Vegye figyelembe a következő fontos problémák a PCM cseréje előtt:
+## <a name="before-you-replace-a-pcm"></a>Mielőtt egy a PCM cseréje
+Vegye figyelembe a következő fontos problémák a a PCM cseréje előtt:
 
-* Ha a PCM tápegység. meghibásodik, a hibás modul telepítve hagyja, de a tápkábel eltávolítása. A ventilátor power kapnak a ház, és továbbra is biztosítani a megfelelő hűtési továbbra is. Ha nem sikerül a ventilátor, a PCM kell azonnal le kell cserélni.
-* Mielőtt eltávolítaná a PCM, válassza le a teljesítmény a PCM (ha van ilyen) a fő kapcsoló kikapcsolásával vagy a tápkábel fizikailag eltávolításával. Így lehetővé teszi a rendszer figyelmeztetést, hogy egy power leállítás rövidesen.
-* Győződjön meg arról, hogy a többi PCM működési folyamatos rendszer működéséhez a hibás PCM cseréje előtt. Hibás PCM kell helyettesíteni egy teljesen működőképes PCM lehető legrövidebb időn belül.
-* PCM modul helyettesítő csak néhány percet is igénybe vehet, de túlmelegedése megelőzése érdekében sikertelen PCM eltávolításával 10 percen belül kell végezni.
-* Vegye figyelembe, hogy a csere 764 W PCM modulok gyártól szállított tartalmaz a biztonsági mentési akkumulátor modul. Szüksége lesz az akkumulátor eltávolítása a hibás PCM, majd szúrja be a csere modulba váltja végrehajtása előtt. További információkért lásd: hogyan [távolítsa el, majd szúrja be a biztonsági mentési akkumulátor modul](storsimple-8000-battery-replacement.md).
+* Ha nem sikerül, a PCM az áramellátás, a hibás modul telepítve hagyja, de a tápkábel eltávolítása. A ventilátor power fogadjon a ház, és továbbra is biztosítani a megfelelő hűtéssel továbbra is. Ha nem sikerül a ventilátor, a PCM kell azonnal cserélni.
+* Mielőtt eltávolítaná a PCM, bontsa a kapcsolatot a teljesítmény a PCM kikapcsolja a fő kapcsoló (ha van ilyen), vagy az elektromos hálózathoz fizikailag eltávolításával. Ez biztosítja a rendszer figyelmeztetést, hogy a power leállítása rövidesen.
+* Győződjön meg arról, hogy a többi PCM működési folyamatos rendszer működéséhez a hibás PCM cseréje előtt. Hibás PCM kell helyettesíteni egy teljesen működőképes PCM minél hamarabb.
+* A PCM modul helyettesítő csak néhány percet vesz igénybe, de kell elvégezni, hogy életbe hibás PCM eltávolításának 10 percen belül.
+* Vegye figyelembe, hogy a csere 764 W PCM modulok postáztuk az előállító nem tartalmaznak a biztonsági mentési akkumulátor modul. Szüksége lesz az akkumulátor távolítsa el a hibás PCM és beszúrni a csere modul előtt váltja fel. További információkért lásd: hogyan [távolítsa el, és a egy biztonsági mentési akkumulátor modul beszúrása](storsimple-8000-battery-replacement.md).
 
-## <a name="remove-a-pcm"></a>Távolítsa el a PCM
-Kövesse ezeket az utasításokat, ha készen áll egy Power és hűtési modul (PCM) eltávolítása a Microsoft Azure StorSimple eszközt.
+## <a name="remove-a-pcm"></a>A PCM eltávolítása
+Amikor elkészült, a Power és hűtéssel modul (PCM) eltávolítása a Microsoft Azure StorSimple-eszköz, kövesse az alábbi utasításokat.
 
 > [!NOTE]
-> A PCM eltávolítása előtt győződjön meg arról, hogy rendelkezik-e (az elsődleges ház W 764) vagy 580 W a EBOD ház a megfelelő helyettesíti.
+> Mielőtt eltávolítja a PCM, győződjön meg arról, hogy rendelkezik-e a megfelelő helyettesítő (az elsődleges ház W 764) vagy a EBOD ház a W 580.
 
-#### <a name="to-remove-a-pcm"></a>Egy PCM eltávolítása
-1. A klasszikus Azure portálon kattintson **beállítások > figyelő > hardver állapotának**. Tekintse meg a PCM összetevők alatt **összetevők megosztott** azonosításához, amely PCM sikertelen volt:
+#### <a name="to-remove-a-pcm"></a>A PCM eltávolítása
+1. A klasszikus Azure portálon kattintson a **beállítások > figyelő > hardverállapot**. A PCM összetevők állapotának ellenőrzéséhez **Shared components** azonosítására PCM sikertelen volt:
    
-   * Ha a tápegységet PCM 0 sikertelen volt, állapotának **tápegység PCM 0 a** pedig piros színűvé változik.
-   * Ha egy tápegység PCM az 1. sikertelen volt, állapotának **PCM az 1. tápegység** pedig piros színűvé változik.
-   * Ha a ventilátor PCM az 1. sikertelen volt, vagy állapotának **0 hűtési PCM 0 a** vagy **PCM 0 1 hűtési** pedig piros színűvé változik.
-2. Keresse meg a sikertelen PCM az elsődleges ház hátulján olvasható. Ha futtat egy 8600 modell, azonosítsa az elsődleges ház alapján a rendszer egység azonosítószámának a előlapján LED megjelenítendő látható. Az alapértelmezett érték a egység azonosítója: jelenik meg a elsődleges ház **00**, mivel az alapértelmezett egység azonosítója: jelenik meg a EBOD ház **01**. A következő ábra és táblázat magyarázza el, a LED megjelenítési előlapja.
+   * Ha egy tápegység a PCM 0-ban nem sikerült, állapotának **tápegység a PCM 0-ban** piros színűvé változik.
+   * Ha a PCM 1-tápegység sikertelen, az állapota **tápegység a PCM 1** piros színűvé változik.
+   * Ha a PCM 1 összegyűjtésének sikertelen volt, vagy állapotának **0 hűtés a PCM 0-ban** vagy **1 hűtés a PCM 0-ban** piros színűvé változik.
+2. Keresse meg a elsődleges ház-jének a hibás PCM. Ha egy 8600-as modell futtatja, azonosítsa az elsődleges ház megnézzük a előlapján LED megjelenített System-egység azonosító szám. Az alapértelmezett érték a jelenik meg a elsődleges tárolóeszközön egység azonosítója **00**, mivel az alapértelmezett érték a egység azonosítója megjelenik a EBOD tárolóeszközön **01**. A következő ábra és táblázat magyarázza el, a LED megjelenített előlapja.
    
-    ![Előlapján OPS azonosító](./media/storsimple-power-cooling-module-replacement/IC740991.png)
+    ![Az OPS előlapján rendszer-azonosító](./media/storsimple-power-cooling-module-replacement/IC740991.png)
    
      **1. ábra** az eszköz első panel  
    
    | Címke | Leírás |
    |:--- |:--- |
-   | 1 |Némító gomb |
-   | 2 |Rendszer energiagazdálkodási |
-   | 3 |A modul hiba |
+   | 1 |Vypnutí gomb |
+   | 2 |Rendszer power |
+   | 3 |A modul hibája |
    | 4 |Logikai hiba |
    | 5 |Egység azonosító megjelenítése |
-3. A figyelési kijelző LED hátulján az elsődleges ház is használható a hibás PCM azonosításához. Tekintse meg a következő ábra és táblázat segít megérteni, hogyan keresse meg a hibás PCM a LED segítségével. Például ha a LED megfelelő a **ventilátor sikertelen** van bekapcsolásával; a ventilátor sikertelen volt. Hasonlóképpen ha a LED megfelelő **AC sikertelen** van bekapcsolásával, az áramellátás sikertelen volt. 
+3. A monitorozási jelző LED-ek az elsődleges ház hátulján is használható, a hibás PCM azonosítása. Tekintse meg a következő ábra és táblázat segít megérteni, hogyan keresse meg a hibás PCM a LED-ek használatával. Például ha a LED megfelelő a **ventilátor sikertelen** van bekapcsolásával; a ventilátor nem sikerült. Hasonlóképpen ha a LED megfelelő **AC sikertelen** van bekapcsolásával, az áramellátás sikertelen volt. 
    
-    ![Eszköz PCM figyelési kijelző LED Csatlakozópanel](./media/storsimple-power-cooling-module-replacement/IC740992.png)
+    ![Az eszköz PCM monitorozási jelző LED-ek csatlakozópanel meghibásodása](./media/storsimple-power-cooling-module-replacement/IC740992.png)
    
-     **2. ábra** vissza a PCM a kijelző LED
+     **2. ábra** vissza a PCM-jelző LED-EK
    
    | Címke | Leírás |
    |:--- |:--- |
    | 1 |AC áramszünet esetén |
-   | 2 |Hiba ventilátor |
-   | 3 |Akkumulátor hiba |
-   | 4 |PCM OK |
-   | 5 |DC áramszünet esetén |
-   | 6 |Kifogástalan akkumulátor |
-4. Tekintse meg a következő ábra a háttér a StorSimple eszköz keresse meg a sikertelen PCM modul. PCM 0 a bal oldali és a jobb oldalon pedig PCM 1. Az alábbi táblázat ismerteti a modulokat.
+   | 2 |Ventilátor hibája |
+   | 3 |Tartalék akkumulátor |
+   | 4 |A PCM OK |
+   | 5 |Tartományvezérlő áramszünet esetén |
+   | 6 |Kifogástalan állapotú akkumulátor |
+4. Tekintse meg a következő ábra a háttér keresse meg a hibás PCM modul a StorSimple eszközt. A bal oldalon a PCM 0-ban, és a jobb oldalon pedig a PCM 1. Az alábbi táblázat azt ismerteti, hogy a modulok.
    
-     ![Az eszköz elsődleges ház modulok Csatlakozópanel](./media/storsimple-power-cooling-module-replacement/IC740994.png)
+     ![Az eszköz elsődleges ház modulok csatlakozópanel meghibásodása](./media/storsimple-power-cooling-module-replacement/IC740994.png)
    
-     **3. ábra** oldalán a beépülő modulok eszköz 
+     **3. ábra** oldalán a beépülő modulok rendelkező eszköz 
    
    | Címke | Leírás |
    |:--- |:--- |
    | 1 |PCM 0 |
    | 2 |PCM 1 |
-   | 3 |A vezérlő 0 |
-   | 4 |1. vezérlő |
+   | 3 |Vezérlő 0 |
+   | 4 |Vezérlő 1 |
 5. Kapcsolja ki a hibás PCM, és húzza ki a forrás. Most már eltávolíthatja a PCM.
-6. A zárolás és az USB és mutatóujj között a PCM leíró oldalán megfogható, és nyomja össze együtt, hogy a leírót megnyitni.
+6. A zárolás és az USB- és mutatóujj között a PCM leíró oldalán bonyolultnak, és azok egymáshoz nyissa meg a leíró nyomja össze.
    
     ![Nyitó PCM leíró](./media/storsimple-power-cooling-module-replacement/IC740995.png)
    
     **4. ábra** a PCM leíró megnyitása
 7. A leíró fogja túl, és távolítsa el a PCM.
    
-    ![PCM-eszközök eltávolítása](./media/storsimple-power-cooling-module-replacement/IC740996.png)
+    ![A PCM eszköz eltávolítása](./media/storsimple-power-cooling-module-replacement/IC740996.png)
    
     **5. ábra** a PCM eltávolítása
 
-## <a name="install-a-replacement-pcm"></a>A helyettesítő PCM telepítése
-Kövesse ezeket az utasításokat egy PCM a StorSimple eszköz telepítése. Győződjön meg arról, hogy a csere PCM (764 W PCMs vonatkozik) telepítése előtt a biztonsági mentési akkumulátor modul beszúrt. További információkért lásd: hogyan [távolítsa el, majd szúrja be a biztonsági mentési akkumulátor modul](storsimple-8000-battery-replacement.md).
+## <a name="install-a-replacement-pcm"></a>Telepítse a PCM cseréje
+Kövesse ezeket az utasításokat egy PCM telepítse a StorSimple-eszköz. Győződjön meg arról, hogy beszúrta-e a biztonsági mentési akkumulátor modult váltja fel a PCM (764 W PCMs vonatkozik) telepítése előtt. További információkért lásd: hogyan [távolítsa el, és a egy biztonsági mentési akkumulátor modul beszúrása](storsimple-8000-battery-replacement.md).
 
-#### <a name="to-install-a-pcm"></a>Egy PCM telepítése
-1. Győződjön meg arról, hogy rendelkezik-e a ház megfelelő PCM helyettesítője. Az elsődleges ház kell egy 764 W PCM, és a EBOD ház kell egy 580 W PCM. Ne próbáljon a 580 W PCM az elsődleges szolgáltatással, illetve a 764 W PCM a EBOD szolgáltatással. A következő kép bemutatja, hol határozza meg az adatokat, amelyek a PCM dobozának a címkén.
+#### <a name="to-install-a-pcm"></a>A PCM telepítése
+1. Győződjön meg arról, hogy rendelkezik-e a megfelelő helyettesítő PCM a ház. Az elsődleges ház kell egy 764 W PCM, és a EBOD ház egy 580 W PCM van szüksége. A 580 W PCM az elsődleges ház a vagy a 764 W PCM a a EBOD ház használata nem meg kell próbálni. A következő képen látható határozza meg az adatokat a címke, amely a PCM rögzítettek.
    
-    ![Eszköz PCM címke](./media/storsimple-power-cooling-module-replacement/IC740973.png)
+    ![Eszköz PCM felirat](./media/storsimple-power-cooling-module-replacement/IC740973.png)
    
-    **6. ábra** PCM címke
-2. Ellenőrizze, hogy a ház, különös tekintettel az összekötők való megosztása kárt. 
+    **6. ábra** PCM felirat
+2. Ellenőrizze, hogy a ház, különös tekintettel az összekötők kárt. 
    
    > [!NOTE]
-   > **A modul nem telepítése, ha bármely összekötő elgörbülve.**
+   > **Ha minden olyan összekötő elgörbülve ne telepítse a modul.**
    > 
    > 
-3. A nyitott állapotban PCM leíró, és csúsztassa be a modul a ház be.
+3. A PCM leíró nyitva, az ujját a modul a ház be.
    
-    ![PCM eszköz telepítése](./media/storsimple-power-cooling-module-replacement/IC740975.png)
+    ![A PCM eszköz telepítése](./media/storsimple-power-cooling-module-replacement/IC740975.png)
    
     **7. ábra** a PCM telepítése
-4. Kézzel zárja be a PCM leíró. Egy kattintással kell hall, mivel a leíró zárolás kapcsolatba lép.
+4. A PCM leíró manuálisan lezárja. Egy-két kattintással hallott kell, a leíró zárolás bekövetkezése várható.
    
    > [!NOTE]
-   > Győződjön meg arról, hogy folytat rendelkezik-e az összekötő PIN-kód, hogy akkor is óvatosan tug a leírón a zárolás feloldása nélkül. A PCM diák ki, ha azt feltételezi, hogy a zárolás bezárult, mielőtt az összekötők részt vevő.
+   > Annak biztosítása érdekében, hogy az összekötő PIN-kód foglalkozó rendelkezik, akkor is óvatosan tug a leíró a a zárolás feloldása nélkül. A PCM kicsúszik, azt jelenti, hogy a zárolás bezárult, mielőtt az összekötők foglalkozó.
    
-5. A tápkábelek csatlakoztatja a áramforrásról és a PCM.
+5. Csatlakozás a kábelek, az áramforrás és a PCM.
 6. A törzs mentesség bálákban biztonságos.
 7. Kapcsolja be a PCM.
-8. Győződjön meg arról, hogy sikeres volt-e a helyettesítő: az Azure-portálon a StorSimple eszköz kezelő szolgáltatás, keresse meg az eszköz, és ezután **beállítások > figyelő > hardver állapotának**. Az a **összetevők megosztott**, a PCM állapota zöld kell lennie.
+8. Győződjön meg arról, hogy sikeres volt-e a csere: az Azure Portalon a StorSimple-Eszközkezelő szolgáltatás, keresse meg az eszköz majd **beállítások > figyelő > hardverállapot**. Alatt a **Shared components**, állapotát, a PCM zölden kell megjelennie.
    
    > [!NOTE]
-   > A csere PCM teljesen inicializálni a néhány percig is eltarthat.
+   > A teljesen inicializálni a PCM cseréje néhány percig is eltarthat.
 
-## <a name="next-steps"></a>Következő lépések
-További információ [StorSimple hardver összetevő cseréje](storsimple-8000-hardware-component-replacement.md).
+## <a name="next-steps"></a>További lépések
+Tudjon meg többet [StorSimple összetevő hardvercseréhez](storsimple-8000-hardware-component-replacement.md).
 

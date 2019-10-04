@@ -15,11 +15,11 @@ ms.workload: multiple
 ms.date: 8/04/2017
 ms.author: cawa
 ms.openlocfilehash: 8d76a2144234591792359ed8dd4a0779e6a2fc5c
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42060602"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60628296"
 ---
 # <a name="configure-secure-connections-to-a-service-fabric-cluster-from-visual-studio"></a>Biztonságos kapcsolatok konfigurálása a Service Fabric-fürtön a Visual Studióból
 Ismerje meg, hogyan használható a Visual Studio biztonságosan elérni az Azure Service Fabric-fürt a beállított hozzáférés-vezérlési házirendeket.
@@ -42,9 +42,9 @@ A **Service Fabric-alkalmazás közzététele** párbeszédpanel automatikusan e
 1. Ellenőrizze, hogy az ügyféltanúsítványokat, amely megbízik a célul szolgáló fürtcsomópont hozzáférhet. A tanúsítvány általában a személyes információcsere (.pfx) fájlként van osztva. Lásd: [beállítása a Service Fabric-fürtön az Azure Portalról](service-fabric-cluster-creation-via-portal.md) számára a hozzáférést biztosítani az ügyfél-kiszolgáló konfigurálása.
 2. Telepítse a megbízható tanúsítvány. Ehhez kattintson duplán a .pfx-fájlt, vagy a PowerShell-szkripttel az Import-PfxCertificate a tanúsítványok importálásához. Telepítse a tanúsítványt a **Cert: \LocalMachine\My**. Beleegyezem, fogadja el az összes alapértelmezett beállítást tanúsítvány importálása közben.
 3. Válassza ki a **közzététele...**  parancsot a helyi menüben nyissa meg a projekt a **Azure-alkalmazások közzététele** párbeszédpanel, és válassza ki a cél fürtnek. Az eszköz automatikusan oldja fel a kapcsolatot, és menti a biztonságos kapcsolat paramétereit a közzétételi profilt.
-4. Választható lehetőség: Szerkesztheti a közzétételi profilt, a biztonságos fürthöz kapcsolat megadásához.
+4. Nem kötelező: A közzétételi profilt, adjon meg egy biztonságos fürt kapcsolatot szerkesztheti.
    
-   Manuálisan szerkeszti a közzétételi profil XML-fájlt adja meg a tanúsítvány adatait, feltétlenül ellenőrizze, hogy a tanúsítványtároló-nevet, mivel tárolja a hely és a tanúsítvány ujjlenyomatát. Adja meg ezeket az értékeket a tanúsítványtároló neve és a tároló helye kell. Lásd: [hogyan: a tanúsítvány ujjlenyomatának lekérését](https://msdn.microsoft.com/library/ms734695\(v=vs.110\).aspx) további információt.
+   Manuálisan szerkeszti a közzétételi profil XML-fájlt adja meg a tanúsítvány adatait, feltétlenül ellenőrizze, hogy a tanúsítványtároló-nevet, mivel tárolja a hely és a tanúsítvány ujjlenyomatát. Adja meg ezeket az értékeket a tanúsítványtároló neve és a tároló helye kell. Lásd: [hogyan: A tanúsítvány ujjlenyomatának lekérését](https://msdn.microsoft.com/library/ms734695\(v=vs.110\).aspx) további információt.
    
    Használhatja a *ClusterConnectionParameters* paraméterek használatával adja meg a Service Fabric-fürtön való csatlakozáskor használni kívánt PowerShell-paramétereket. Érvényes paramétereket a rendszer minden olyan, amely fogadja el a Connect-ServiceFabricCluster parancsmag. Lásd: [Connect-ServiceFabricCluster](https://docs.microsoft.com/powershell/module/servicefabric/connect-servicefabriccluster) elérhető paraméterek listáját.
    

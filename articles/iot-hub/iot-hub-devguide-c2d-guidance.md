@@ -9,11 +9,11 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.openlocfilehash: 4b738f34ae75478c0120832e7ad2b6a6a83dbf69
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010701"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61224778"
 ---
 # <a name="cloud-to-device-communications-guidance"></a>Felhőből az eszközre irányuló kommunikáció útmutatóját
 
@@ -37,7 +37,7 @@ Az IoT Hub egy háttéralkalmazás funkciókat elérhetővé készült három le
 | Célok | Egyetlen eszköz használatával **deviceId**, vagy több eszköz [feladatok](iot-hub-devguide-jobs.md). | Egyetlen eszköz használatával **deviceId**, vagy több eszköz [feladatok](iot-hub-devguide-jobs.md). | Egyetlen eszköz által **deviceId**. |
 | Méret | Maximális közvetlen metódus hasznos adatainak mérete 128 KB-os. | Maximális kívánt tulajdonságok mérete 8 KB-os. | Legfeljebb 64 KB-os üzenetet. |
 | Gyakoriság | Magas. További információkért lásd: [korlátozza az IoT Hub](iot-hub-devguide-quotas-throttling.md). | Közepes. További információkért lásd: [korlátozza az IoT Hub](iot-hub-devguide-quotas-throttling.md). | Alacsony. További információkért lásd: [korlátozza az IoT Hub](iot-hub-devguide-quotas-throttling.md). |
-| Protokoll | Mqtt-ről vagy AMQP használatával akkor érhető el. | Mqtt-ről vagy AMQP használatával akkor érhető el. | Elérhető az összes protokollon. Eszköz kell elindítja a lekérdezést, amikor HTTPS-en keresztül. |
+| Protocol | Mqtt-ről vagy AMQP használatával akkor érhető el. | Mqtt-ről vagy AMQP használatával akkor érhető el. | Elérhető az összes protokollon. Eszköz kell elindítja a lekérdezést, amikor HTTPS-en keresztül. |
 
 Ismerje meg, hogyan használhatja a közvetlen metódusok, a kívánt tulajdonságok és a felhőből az eszközre irányuló üzenetek az alábbi oktatóanyagok:
 

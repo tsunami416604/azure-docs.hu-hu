@@ -4,24 +4,23 @@ description: Ez a rövid útmutató a Windows rendszerű virtuális gépek az Az
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 03/19/2019
+ms.date: 07/02/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 08c33068845855fca85f793c21264582be423c2f
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 60f74de308938ee155cf61f3360f73d92feaa67c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58368109"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102498"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-the-azure-portal"></a>Gyors útmutató: Windowsos virtuális gép létrehozása az Azure Portalon
 
@@ -37,9 +36,9 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 1. Válassza az Azure Portal bal felső sarkában az **Erőforrás létrehozása** lehetőséget.
 
-1. Az a **új** lap **Népszerű elemek**válassza **Windows Server 2016 Datacenter**.
+1. Az **új** lap **népszerű**területén válassza a **Windows Server 2016 Datacenter**elemet.
 
-1. Az **Alapok** fül **Projektadatok** részén győződjön meg arról, hogy a megfelelő előfizetés van kiválasztva, és válassza az **Új létrehozása** lehetőséget az Erőforráscsoport részen. Típus *myResourceGroup* neve. 
+1. Az **Alapok** fül **Projektadatok** részén győződjön meg arról, hogy a megfelelő előfizetés van kiválasztva, és válassza az **Új létrehozása** lehetőséget az Erőforráscsoport részen. A név mezőbe írja be a *myResourceGroup* nevet. 
 
     ![Új erőforráscsoport létrehozása virtuális géphez](./media/quick-create-portal/project-details.png)
 
@@ -57,7 +56,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 1. Hagyja változatlanul a többi alapértelmezett beállítást, és kattintson a **Áttekintés + létrehozás** gombra a lap alján.
 
-    ![Áttekintés és létrehozás](./media/quick-create-portal/review-create.png)
+    ![Ellenőrzés és létrehozás](./media/quick-create-portal/review-create.png)
 
 
 ## <a name="connect-to-virtual-machine"></a>Csatlakozás virtuális géphez
@@ -95,7 +94,7 @@ A portálon válassza ki a virtuális gépet, majd a virtuális gép áttekinté
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rájuk szükség, törölheti az erőforráscsoportot, a virtuális gépet és az összes kapcsolódó erőforrást. Ehhez válassza ki a virtuális gép erőforráscsoportját, kattintson a **Törlés** elemre, majd erősítse meg a törölni kívánt erőforráscsoport nevét.
+Ha már nincs rájuk szükség, törölheti az erőforráscsoportot, a virtuális gépet és az összes kapcsolódó erőforrást. Válassza ki a virtuális géphez tartozó erőforráscsoportot, majd válassza a **Törlés**lehetőséget. Erősítse meg az erőforráscsoport nevét az erőforrások törlésének befejezéséhez.
 
 ## <a name="next-steps"></a>További lépések
 

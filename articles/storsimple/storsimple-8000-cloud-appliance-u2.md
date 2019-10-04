@@ -14,14 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
-ms.openlocfilehash: df7866d4f87f55523e8139232e48d81cb17c80e4
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 01ce952ea774ba852c83d0d6aa3fe38d5dfd677e
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763163"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68965728"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>A StorSimple Cloud Appliance üzembe helyezése és kezelése az Azure-ban (3. frissítés és újabb)
+
+[!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
 ## <a name="overview"></a>Áttekintés
 
@@ -62,8 +64,8 @@ Az alábbi táblázat a StorSimple felhőalapú készülék és a StorSimple fiz
 
 |  | Fizikai eszköz | Felhőalapú készülék |
 | --- | --- | --- |
-| **Hely** |Az adatközpontban található. |Az Azure-ban fut. |
-| **Hálózati illesztők** |Hat hálózati adapterrel rendelkezik: DATA 0 DATA 5 számozásig. |Csak egy hálózati adapterrel rendelkezik: AZ ADATOK 0. |
+| **Location** |Az adatközpontban található. |Az Azure-ban fut. |
+| **Hálózati illesztők** |Hat hálózati csatolóval rendelkezik: Adatértékek: 0, 5. |Csak egy hálózati adapterrel rendelkezik: ADATÉRTÉK 0. |
 | **Regisztráció** |A rendszer a kezdeti konfigurációs lépés során regisztrálja. |A regisztráció egy külön feladat. |
 | **Szolgáltatásadat-titkosítási kulcs** |Újra létrejön a fizikai eszközön, majd az új kulccsal frissíti a felhőalapú készüléket. |A felhőalapú készülékről nem tud újra létrejönni. |
 | **Támogatott kötettípusok** |A helyileg rögzített és a rétegzett köteteket is támogatja. |Csak a rétegzett köteteket támogatja. |
@@ -94,7 +96,7 @@ A felhőalapú készülék kiépítése előtt a következő előkészületekre 
 Hajtsa végre a következő frissítéseket a StorSimple-eszközkezelő szolgáltatáson a felhőalapú készülék létrehozása előtt:
 
 * Vegyen fel [hozzáférés-vezérlési rekordokat](storsimple-8000-manage-acrs.md) azokhoz a gépekhez, amelyek a felhőalapú készülék gazdakiszolgálói lesznek.
-* A felhőalapú készülékkel megegyező régióban lévő [tárfiókot](storsimple-8000-manage-storage-accounts.md#add-a-storage-account) használjon. Különböző régiókban lévő tárfiókok használata esetén a teljesítmény gyenge lehet. A felhőalapú készülékkel Standard vagy Prémium szintű Storage-fiókot is használhat. További információ a létrehozása egy [standard szintű tárfiók](../storage/common/storage-create-storage-account.md).
+* A felhőalapú készülékkel megegyező régióban lévő [tárfiókot](storsimple-8000-manage-storage-accounts.md#add-a-storage-account) használjon. Különböző régiókban lévő tárfiókok használata esetén a teljesítmény gyenge lehet. A felhőalapú készülékkel Standard vagy Prémium szintű Storage-fiókot is használhat. További információ a [standard szintű Storage-fiókok](../storage/common/storage-create-storage-account.md)létrehozásáról.
 * A felhőalapú készülék létrehozásához ne használja ugyanazt a tárfiókot, amelyet az adataihoz is használ. Ugyanazon tárfiók használata esetén a teljesítmény gyenge lehet.
 
 Mielőtt hozzákezd, ellenőrizze az alábbi információk meglétét:
@@ -108,7 +110,7 @@ Az eljárások végrehajtása előtt ellenőrizze, hogy teljesülnek-e [a felhő
 
 Az alábbi lépések végrehajtásával hozhat létre StorSimple felhőalapú készüléket.
 
-### <a name="step-1-create-a-cloud-appliance"></a>1. lépés: A felhőalapú berendezés létrehozása
+### <a name="step-1-create-a-cloud-appliance"></a>1\. lépés: Felhőalapú berendezés létrehozása
 
 Az alábbi lépések végrehajtásával létrehozhatja a StorSimple felhőalapú készüléket.
 
@@ -116,7 +118,7 @@ Az alábbi lépések végrehajtásával létrehozhatja a StorSimple felhőalapú
 
 Ha a felhőalapú készülék létrehozása ebben a lépésben meghiúsul, lehet, hogy nem rendelkezik internetkapcsolattal. Felhőalapú készülék létrehozásakor olvassa el az [internetkapcsolat hibáinak elhárításával](#troubleshoot-internet-connectivity-errors) foglalkozó szakaszt a további információk megtekintéséhez.
 
-### <a name="step-2-configure-and-register-the-cloud-appliance"></a>2. lépés: Konfigurálása és regisztrálása a felhőalapú készülék
+### <a name="step-2-configure-and-register-the-cloud-appliance"></a>2\. lépés: A felhőalapú berendezés konfigurálása és regisztrálása
 
 Mielőtt hozzákezdene ehhez az eljáráshoz, ellenőrizze, hogy rendelkezik-e a szolgáltatásadat-titkosítási kulcs másolatával. A szolgáltatásadat-titkosítási kulcs akkor jött létre, amikor az első StorSimple fizikai eszközt regisztrálta a StorSimple-eszközkezelő szolgáltatásban. A kulcsot biztonságos helyre kellett mentenie. Ha nem rendelkezik a szolgáltatásadat-titkosítási kulcs másolatával, akkor a Microsoft támogatási szolgálat segítségét kell kérnie.
 
@@ -124,7 +126,7 @@ A StorSimple felhőalapú készülék konfigurálásához és regisztrálásáho
 
 [!INCLUDE [Configure and register a cloud appliance](../../includes/storsimple-8000-configure-register-cloud-appliance.md)]
 
-### <a name="step-3-optional-modify-the-device-configuration-settings"></a>3. lépés: (Nem kötelező) Az eszköz konfigurációs beállításainak módosítása
+### <a name="step-3-optional-modify-the-device-configuration-settings"></a>3\. lépés: Választható Az eszköz konfigurációs beállításainak módosítása
 
 Az alábbi szakasz azokat az eszközkonfigurációs beállításokat ismerteti, amelyek a StorSimple felhőalapú készülék számára szükségesek, ha a CHAP protokollt vagy a StorSimple Snapshot Managert kívánja használni, vagy módosítani szeretné az eszköz rendszergazdai jelszavát.
 
@@ -160,13 +162,13 @@ A felhőalapú berendezés a Windows PowerShell felületéről való elérése a
 
 Az alábbi kétlépéses eljárás bemutatja, hogyan lehet távolról csatlakozni a felhőalapú berendezéshez.
 
-### <a name="step-1-configure-remote-management"></a>1. lépés: Távfelügyelet konfigurálása
+### <a name="step-1-configure-remote-management"></a>1\. lépés: Távfelügyelet konfigurálása
 
 A StorSimple Cloud Appliance távfelügyeletének konfigurálásához hajtsa végre az alábbi lépéseket.
 
 [!INCLUDE [Configure remote management via HTTP for cloud appliance](../../includes/storsimple-8000-configure-remote-management-http-device.md)]
 
-### <a name="step-2-remotely-access-the-cloud-appliance"></a>2. lépés: A felhőalapú berendezés távoli elérése
+### <a name="step-2-remotely-access-the-cloud-appliance"></a>2\. lépés: Távoli hozzáférés a felhőalapú berendezéshez
 
 Miután engedélyezte távfelügyeletet a felhőalapú berendezésen, a Windows PowerShell távoli eljáráshívás segítségével egy ugyanazon virtuális hálózatban lévő másik virtuális gépről is csatlakozhat a berendezéshez. Ez lehet például az a virtuális gazdagép, amelyet az iSCSI csatlakoztatásához használt és konfigurált. A legtöbb üzemelő példányban ekkor megnyit egy nyilvános végpontot a virtuális gazdagépe elérésére, amelyet a felhőalapú berendezés eléréséhez használhat.
 

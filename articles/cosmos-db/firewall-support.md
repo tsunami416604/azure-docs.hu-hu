@@ -4,14 +4,14 @@ description: Ismerje meg, hogyan teheti biztonságossá az Azure Cosmos DB-adata
 author: kanshiG
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/06/2018
+ms.date: 05/23/2019
 ms.author: govindk
-ms.openlocfilehash: c5c103fcb7f80533f6f34cb51fd661364d77d6ef
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 9398eb4038afcd17788e750fcb5c27c76e9f3f44
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549012"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66241079"
 ---
 # <a name="ip-firewall-in-azure-cosmos-db"></a>Az Azure Cosmos DB IP-tűzfal
 

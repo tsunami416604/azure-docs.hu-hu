@@ -1,21 +1,20 @@
 ---
 title: Rövid útmutató az Azure-fájlmegosztások felügyeletéhez az Azure Storage Explorerrel
 description: Ebből a rövid útmutatóból megtudhatja, hogyan felügyelheti az Azure Files szolgáltatást az Azure Storage Explorerrel.
-services: storage
-author: wmgries
+author: roygara
 ms.service: storage
 ms.topic: quickstart
 ms.date: 10/18/2018
-ms.author: wgries
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 931098d688e39490aa0aadaa8ade8405e5ba8a12
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: b034b3e7aa5fcb61cf83565f3e4c3b1c83f3610c
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452243"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699462"
 ---
-# <a name="quickstart-create-and-manage-azure-file-shares-with-azure-storage-explorer"></a>Gyors útmutató: Létrehozása és kezelése az Azure-fájlmegosztások az Azure Storage Explorerrel
+# <a name="quickstart-create-and-manage-azure-file-shares-with-azure-storage-explorer"></a>Gyors útmutató: Azure-fájlmegosztás létrehozása és kezelése Azure Storage Explorer
 Ez az útmutató az [Azure-fájlmegosztások](storage-files-introduction.md) Azure Storage Explorerrel történő használatának alapvető lépéseit mutatja be. Az Azure-fájlmegosztások nem különböznek más fájlmegosztásoktól, a tárolásuk azonban a felhőben történik, és az Azure platform nyújt számukra támogatást. Az Azure-fájlmegosztások támogatják az iparági szabvány SMB protokollt, és lehetővé teszik a több gép, alkalmazás és példány közötti fájlmegosztást. 
 
 Az Azure Storage Explorer a Windows, macOS és Linux esetén egyaránt elérhető népszerű ügyféleszköz. A Storage Explorer segítségével felügyelheti az Azure-fájlmegosztásokat és más tárolási erőforrásokat.
@@ -33,9 +32,9 @@ A Storage Explorer nem használható új erőforrások létrehozására. A bemut
 ## <a name="connect-storage-explorer-to-azure-resources"></a>A Storage Explorer csatlakoztatása Azure-erőforrásokhoz
 A Storage Explorer első indításakor megjelenik a **Microsoft Azure Storage Explorer – Csatlakozás** ablak. A Storage Explorer számos különféle módot kínál a tárfiókokhoz való csatlakozáshoz: 
 
-- **Jelentkezzen be az Azure-fiókjával**: A cége vagy Microsoft-fiókja felhasználói hitelesítő adatok használatával jelentkezhetnek be. 
-- **Csatlakozás adott tárfiókhoz kapcsolati karakterlánc vagy SAS-jogkivonat használatával**: Kapcsolati karakterlánc egy speciális karakterlánc, amely tartalmazza a tárfiók nevét és a tárfiók kulcsát/SAS-jogkivonatának. A jogkivonattal a Storage Explorer közvetlenül a tárfiókhoz fér hozzá (ahelyett, hogy egyszerűen az Azure-fiókban lévő összes tárfiókot látná). További információ a kapcsolati sztringekról: [Az Azure Storage kapcsolati sztringek konfigurálása](../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
-- **Csatlakozás adott tárfiókhoz a tárfiók nevét és a kulcs használatával**: Használja a tárfiók nevét és a tárfiók kulcsával csatlakozhat az Azure storage.
+- **Jelentkezzen be az Azure-fiókjával**: Bejelentkezhet a szervezete vagy a Microsoft-fiók felhasználói hitelesítő adataival. 
+- **Kapcsolódás egy adott Storage-fiókhoz kapcsolati sztring vagy sas-jogkivonat használatával**: A kapcsolati karakterlánc egy speciális karakterlánc, amely tartalmazza a Storage-fiók nevét és a Storage-fiók kulcsát/SAS-jogkivonatát. A jogkivonattal a Storage Explorer közvetlenül a tárfiókhoz fér hozzá (ahelyett, hogy egyszerűen az Azure-fiókban lévő összes tárfiókot látná). További információ a kapcsolati sztringekról: [Az Azure Storage kapcsolati sztringek konfigurálása](../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+- **Kapcsolódjon egy adott Storage-fiókhoz egy Storage-fiók neve és kulcsa használatával**: Az Azure Storage-hoz való kapcsolódáshoz használja a Storage-fiók nevét és kulcsát a Storage-fiókhoz.
 
 Ebben a rövid útmutatóban az Azure-fiókjával jelentkezzen be. Válassza az **Azure-fiók hozzáadása**, majd a **Bejelentkezés** elemet. Az utasításokat követve jelentkezzen be Azure-fiókjába.
 

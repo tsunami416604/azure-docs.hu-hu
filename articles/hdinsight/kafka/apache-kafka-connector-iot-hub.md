@@ -1,7 +1,6 @@
 ---
 title: Használat Apache Kafka on HDInsight az Azure IoT hubbal
 description: Ismerje meg, hogyan használható az Apache Kafka a HDInsight az Azure IoT Hub. A Kafka csatlakoztatása Azure IoT Hub-projekt Kafka biztosít egy forrás és fogadó-összekötőt. A forrás-összekötő tudja olvasni az adatokat az IoT hubról, és a fogadó-összekötő az IoT Hub írja.
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: e64490517603687684617ce915e0d3f3e35298e9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5559d243573ea04400007cdce0e71009dc91e27a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58093388"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446441"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>Használat Apache Kafka on HDInsight az Azure IoT hubbal
 
@@ -38,7 +37,7 @@ A csatlakozás API további információkért lásd: [ https://kafka.apache.org/
 
 * A Kafka-fürt az élcsomóponthoz. További információkért lásd: a [élcsomópontok használata a HDInsight](../hdinsight-apps-use-edge-node.md) dokumentumot.
 
-* Az Azure IoT hubra. A jelen oktatóanyag esetében javasolni tudom a [online szimulátor Raspberry Pi csatlakoztatása az Azure IoT hubra](https://docs.microsoft.com/azure/iot-hub/iot-hub-raspberry-pi-web-simulator-get-started) dokumentumot.
+* Az Azure IoT hubra. Ebben a cikkben javasolt a [online szimulátor Raspberry Pi csatlakoztatása az Azure IoT hubra](https://docs.microsoft.com/azure/iot-hub/iot-hub-raspberry-pi-web-simulator-get-started) dokumentumot.
 
 * Egy SSH-ügyfél. A jelen dokumentum lépései SSH használatával csatlakoznak a fürthöz. További információ: [SSH használata a HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -168,7 +167,7 @@ Az összekötő által használt IoT hub információk lekéréséhez használja
 
 1. Töltse le az Event Hub-kompatibilis végpont és az IoT hub Event Hub-kompatibilis végpont neve. Ezek az információk lekéréséhez használja a következő módszerek egyikét:
 
-   * __Az a [az Azure portal](https://portal.azure.com/)__, kövesse az alábbi lépéseket:
+   * __Az a [az Azure portal](https://portal.azure.com/)__ , kövesse az alábbi lépéseket:
 
      1. Keresse meg az IoT hubot és jelölje ki __végpontok__.
      2. A __beépített végpontokról__válassza __események__.
@@ -181,7 +180,7 @@ Az összekötő által használt IoT hub információk lekéréséhez használja
         > [!IMPORTANT]  
         > A végpont értékét a Portalról, amely ebben a példában nincs szükség további szöveg tartalmazhat. Csomagolja ki, amely megfelel ennek a mintának a szöveg `sb://<randomnamespace>.servicebus.windows.net/`.
 
-   * __Az a [Azure CLI-vel](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)__, használja a következő parancsot:
+   * __Az a [Azure CLI-vel](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)__ , használja a következő parancsot:
 
        ```azure-cli
        az iot hub show --name myhubname --query "{EventHubCompatibleName:properties.eventHubEndpoints.events.path,EventHubCompatibleEndpoint:properties.eventHubEndpoints.events.endpoint,Partitions:properties.eventHubEndpoints.events.partitionCount}"
@@ -197,13 +196,13 @@ Az összekötő által használt IoT hub információk lekéréséhez használja
 
 2. Első a __megosztott hozzáférési szabályzat__ és __kulcs__. Ebben a példában használja a __szolgáltatás__ kulcsot. Ezek az információk lekéréséhez használja a következő módszerek egyikét:
 
-    * __Az a [az Azure portal](https://portal.azure.com/)__, kövesse az alábbi lépéseket:
+    * __Az a [az Azure portal](https://portal.azure.com/)__ , kövesse az alábbi lépéseket:
 
         1. Válassza ki __megosztott elérési házirendek__, majd válassza ki __szolgáltatás__.
         2. Másolás a __elsődleges kulcs__ értéket.
         3. Másolás a __kapcsolati karakterlánc – elsődleges kulcs__ értéket.
 
-    * __Az a [Azure CLI-vel](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)__, használja a következő parancsot:
+    * __Az a [Azure CLI-vel](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)__ , használja a következő parancsot:
 
         1. Az elsődleges kulcs-érték lekéréséhez használja a következő parancsot:
 

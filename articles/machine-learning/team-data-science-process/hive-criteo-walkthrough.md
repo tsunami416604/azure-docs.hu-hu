@@ -12,11 +12,11 @@ ms.date: 11/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: ac627907e3f595ef59edc606f34fd27353e4c577
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57850043"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60305919"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>A csoportos adatelemzési folyamat működés közben – használatával egy Azure HDInsight Hadoop-fürt az 1 TB-os adatkészlet
 
@@ -51,8 +51,8 @@ Ez a forgatókönyv két minta előrejelzési problémák foglalkozik:
 
 1. **Bináris osztályozás**: Előrejelzi, hogy a felhasználó rákattint egy hozzáadása:
 
-   * 0. osztály: Egyetlen kattintással
-   * 1. osztály: Kattintson a következőre:
+   * 0\. osztály: Egyetlen kattintással
+   * 1\. osztály: Kattintson a következőre:
 2. **Regresszió**: Előre megbecsüli egy ad kattintson a felhasználói funkciók valószínűségét.
 
 ## <a name="setup"></a>Adatelemzés mentése beállítása egy HDInsight szabható Hadoop bemutatása-fürt

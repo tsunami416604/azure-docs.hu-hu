@@ -1,51 +1,95 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Alkalmazáskezelési dokumentáció
+summary: Az Azure Active Directory biztonságos és zökkenőmentes hozzáférést nyújt a felhőalapú és helyszíni alkalmazásokhoz. Ezenkívül nincs szükség a jelszavak kezelésére sem. A végfelhasználók egyetlen bejelentkezéssel elérhetik az Office 365-öt és több ezer egyéb alkalmazást. Rövid útmutatóinkból, oktatóanyagainkból és segédleteinkből megtudhatja, hogyan kezelheti és helyezheti üzembe az alkalmazásokat.
 metadata:
-  title: Az Azure AD alkalmazáskezelési dokumentációja – Azure Active Directory
-  description: 'Megtudhatja, hogyan kezelheti és helyezheti üzembe alkalmazásait az Azure Active Directoryval.'
-  services: active-directory
-  author: barbkess
-  manager: daveba
-  layout: LandingPage
-  ms.assetid: null
+  title: Alkalmazáskezelési dokumentáció
+  description: Az Azure Active Directory biztonságos és zökkenőmentes hozzáférést nyújt a felhőalapú és helyszíni alkalmazásokhoz. Ezenkívül nincs szükség a jelszavak kezelésére sem. A végfelhasználók egyetlen bejelentkezéssel elérhetik az Office 365-öt és több ezer egyéb alkalmazást. Rövid útmutatóinkból, oktatóanyagainkból és segédleteinkből megtudhatja, hogyan kezelheti és helyezheti üzembe az alkalmazásokat.
   ms.service: active-directory
+  ms.subservice: manage-apps
+  ms.workload: identity
   ms.topic: landing-page
-  ms.date: 09/14/2018
-  ms.author: barbkess
-abstract:
-  description: 'Az Azure Active Directory biztonságos és zökkenőmentes hozzáférést nyújt a felhőalapú és helyszíni alkalmazásokhoz. Ezenkívül nincs szükség a jelszavak kezelésére sem. A végfelhasználók egyetlen bejelentkezéssel elérhetik az Office 365-öt és több ezer egyéb alkalmazást. Rövid útmutatóinkból, oktatóanyagainkból és segédleteinkből megtudhatja, hogyan kezelheti és helyezheti üzembe az alkalmazásokat.'
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: media/index/video.png
-      width: 250
-    title: 'Biztonságos hozzáférés az alkalmazásokhoz az Azure AD-vel (1:47)'
-    href: 'https://youtu.be/BSUuXXcJKCk/'
-    width: 250
-sections:
-  - title: 5 perces gyors útmutatók
-    items:
-      - type: paragraph
-        text: 'Megtudhatja, hogyan adhat hozzá egy felhasználóknak szánt alkalmazást az Azure Active Directoryn keresztüli hozzáféréshez.'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_protect.svg'
-            text: Alkalmazás hozzáadása
-            href: 'https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal'
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_protect.svg'
-            text: Saját alkalmazások megtekintése
-            href: 'https://docs.microsoft.com/azure/active-directory/manage-apps/view-applications-portal'
-  - title: Részletes útmutatók
-    items:
-      - type: paragraph
-        text: 'Megtudhatja, hogyan biztosíthat egyszerű és biztonságos bejelentkezési folyamatot alkalmazásaiban.'
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="https://docs.microsoft.com/azure/active-directory/saas-apps/">A SaaS-alkalmazás oktatóanyagai</a>'
-          - html: <a href="/azure/active-directory/manage-apps/configure-single-sign-on-portal">Egyszeri bejelentkezés konfigurálása</a>
+  ms.date: 08/16/2019
+  author: msmimart
+  ms.author: mimart
+  manager: celested
+  ms.openlocfilehash: acb99eab233836f46c1e1dfe4c857fb2e80ed3de
+  ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 08/28/2019
+  ms.locfileid: "70127546"
+landingContent:
+- title: Az alkalmazáskezelés ismertetése
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az alkalmazáskezelés?
+      url: what-is-application-management.md
+- title: Felhőalkalmazások és egyszeri bejelentkezés kezelése
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Az egyszeri bejelentkezés ismertetése
+      url: what-is-single-sign-on.md
+    - text: Végfelhasználói élmény
+      url: end-user-experiences.md
+  - linkListType: quickstart
+    links:
+    - text: Katalógusalkalmazás hozzáadása
+      url: add-application-portal.md
+  - linkListType: how-to-guide
+    links:
+    - text: Nem katalógusbeli alkalmazás hozzáadása
+      url: add-non-gallery-app.md
+    - text: Egyszeri bejelentkezés konfigurálása
+      url: configure-single-sign-on-non-gallery-applications.md
+    - text: Felhasználó vagy csoport hozzárendelése egy alkalmazáshoz
+      url: assign-user-or-group-access-portal.md
+- title: Felhasználók és csoportok kiépítése egy alkalmazáshoz
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az automatikus felhasználóátadás?
+      url: user-provisioning.md
+  - linkListType: concept
+    links:
+    - text: Felhasználók és csoportok kiépítése SCIM használatával
+      url: use-scim-to-provision-users-and-groups.md
+  - linkListType: how-to-guide
+    links:
+    - text: A felhasználók automatikus átadásának konfigurálása
+      url: configure-automatic-user-provisioning-portal.md
+    - text: Attribútumleképezések testreszabása
+      url: customize-application-attributes.md
+    - text: Az átadási állapot ellenőrzése
+      url: application-provisioning-when-will-provisioning-finish-specific-user.md
+  - linkListType: reference
+    links:
+    - text: Kifejezések írása attribútumleképezésekhez
+      url: functions-for-customizing-application-data.md
+- title: Helyszíni alkalmazás közzététele alkalmazásproxy használatával
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az alkalmazásproxy?
+      url: what-is-application-proxy.md
+  - linkListType: concept
+    links:
+    - text: Alkalmazásproxy tervezése
+      url: application-proxy-deployment-plan.md
+  - linkListType: tutorial
+    links:
+    - text: Helyszíni alkalmazás hozzáadása
+      url: application-proxy-add-on-premises-application.md
+  - linkListType: how-to-guide
+    links:
+    - text: Összekötők konfigurálása proxykiszolgálókkal
+      url: application-proxy-configure-connectors-with-proxy-servers.md
+    - text: Egyéni kezdőlap konfigurálása
+      url: application-proxy-configure-custom-home-page.md
+  - linkListType: deploy
+    links:
+    - text: Távoli asztal közzététele alkalmazásproxy használatával
+      url: application-proxy-integrate-with-remote-desktop-services.md
+    - text: Távoli hozzáférés engedélyezése a SharePointhoz az Azure AD-alkalmazásproxy segítségével
+      url: application-proxy-integrate-with-sharepoint-server.md

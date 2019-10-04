@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 12/10/2018
 ms.author: genemi
 ms.openlocfilehash: e30651cb0ed7d74082163a92acbc428c21018255
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53728570"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179197"
 ---
 ## <a name="c-program-example"></a>C#program példa
 
@@ -17,7 +17,7 @@ A következő szakaszok a jelen cikk egy C# program, amely az SQL database Trans
 
 - [Csatlakozás SQL Database adatbázishoz az ADO.NET használatával](#cs_1_connect)
 - [Metod, které vracejí a T-SQL-utasítások](#cs_2_return)
-    - Táblázatok létrehozása
+    - Táblák létrehozása
     - Töltse fel az adatokat tartalmazó táblák
     - Frissítési, törlési és kiválasztja az adatokat
 - [Küldje el a T-SQL az adatbázishoz](#cs_3_submit)
@@ -37,7 +37,7 @@ A helyreállító lemez jeleníti meg a kapcsolat a két táblázat között. Az
 
 A C# program logikailag egy .cs fájlt, és számos kódblokkok, hogy minden egyes megérteni a fizikailag oszlik. Fordítsa le és futtassa a programot, hajtsa végre a következő lépéseket:
 
-1. Hozzon létre egy C# projektre a Visual Studióban. A projekt típusúnak kell lennie egy *konzol*, alatt található **sablonok** > **Visual C#**   >  **Windows asztali**  >  **Console App (.NET Framework)**.
+1. Hozzon létre egy C# projektre a Visual Studióban. A projekt típusúnak kell lennie egy *konzol*, alatt található **sablonok** > **Visual C#**   >  **Windows asztali**  >  **Console App (.NET Framework)** .
 
 1. A fájl *Program.cs*, az alapszintű kódsorokat cserélje le az alábbi lépéseket:
 
@@ -45,10 +45,10 @@ A C# program logikailag egy .cs fájlt, és számos kódblokkok, hogy minden egy
 
     1. A következő értékeket módosítsa a `Main` módszer:
 
-        - *CB. Adatforrás*
-        - *CB. Felhasználói azonosító*
-        - *CB. Jelszó*
-        - *CB. InitialCatalog*
+        - *cb.DataSource*
+        - *cb.UserID*
+        - *cb.Password*
+        - *cb.InitialCatalog*
 
 1. Ellenőrizze a szerelvény *System.Data.dll* hivatkozik. Annak ellenőrzéséhez, bontsa ki a **hivatkozások** csomópontja a **Megoldáskezelőben** ablaktáblán.
 

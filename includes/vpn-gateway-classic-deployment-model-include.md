@@ -9,11 +9,11 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 1cf8babe1e769382ba86a2cfa8c570ae2d1e5c62
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53439373"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67178952"
 ---
 > [!NOTE]
 > Ez a cikk a klasszikus üzemi modellhez készült. Ha még nem ismeri az Azure-t, javasoljuk, hogy használja inkább a Resource Manager-alapú üzemi modellt. A Resource Manager-alapú üzemi modell a legújabb üzembehelyezési modell, és a klasszikus üzemi modellnél több beállítási lehetőséget és nagyobb funkciókompatibilitást kínál. Az üzembehelyezési modellekről [az üzembehelyezési modellek ismertetésében](../articles/resource-manager-deployment-model.md) talál további információt.

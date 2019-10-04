@@ -5,15 +5,15 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 12/10/2018
+ms.date: 05/21/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 91889971e1ab8a9ea8341f6bc57735d973ea0e89
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bae66078a1bcb1d80f0798b1d501598fa785fb80
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60188320"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66241204"
 ---
 ## <a name="launch-azure-cloud-shell"></a>Az Azure Cloud Shell indítása
 
@@ -21,17 +21,6 @@ Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a j
 
 A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shellt egy külön böngészőlapon is elindíthatja a [https://shell.azure.com/powershell](https://shell.azure.com/powershell) cím megnyitásával. A **Másolás** kiválasztásával másolja és illessze be a kódrészleteket a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
 
-
-## <a name="preview-register-the-feature"></a>Előzetes verzió: A funkció regisztrálása
-
-Megosztott kép katalógusok előzetes verzióban érhető el, de szeretne regisztrálni a szolgáltatást ahhoz is használhatja. A megosztott kép katalógusok funkció regisztrálása:
-
-```azurepowershell-interactive
-Register-AzProviderFeature `
-   -FeatureName GalleryPreview `
-   -ProviderNamespace Microsoft.Compute
-Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
-```
 
 ## <a name="get-the-managed-image"></a>A felügyelt lemezkép beolvasása
 
@@ -45,7 +34,9 @@ $managedImage = Get-AzImage `
 
 ## <a name="create-an-image-gallery"></a>Lemezkép-katalógus létrehozása 
 
-Lemezkép-katalógus, hogy az elsődleges erőforrás használt lemezkép megosztása. Katalógus egyedieknek kell lenniük az előfizetésben. Hozzon létre egy rendszerképet katalógus [New-AzGallery](https://docs.microsoft.com/powershell/module/az.compute/new-azgallery). A következő példában létrehozunk egy katalógusban nevű *myGallery* a a *myGalleryRG* erőforráscsoportot.
+Lemezkép-katalógus, hogy az elsődleges erőforrás használt lemezkép megosztása. Katalógus neveként engedélyezett karakterek:, kis-és nagybetűket, számokat, pontokat és időszakok. A katalógus neve nem tartalmazhat kötőjeleket. Katalógus egyedieknek kell lenniük az előfizetésben. 
+
+Hozzon létre egy rendszerképet katalógus [New-AzGallery](https://docs.microsoft.com/powershell/module/az.compute/new-azgallery). A következő példában létrehozunk egy katalógusban nevű *myGallery* a a *myGalleryRG* erőforráscsoportot.
 
 ```azurepowershell-interactive
 $resourceGroup = New-AzResourceGroup `
@@ -60,7 +51,9 @@ $gallery = New-AzGallery `
    
 ## <a name="create-an-image-definition"></a>Kép definíció létrehozása 
 
-Létrehozhatja a katalógus kép definíció [New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion). Ebben a példában a katalógus-lemezkép neve *myGalleryImage*.
+Lemezkép-definíciók létrehozása lemezképek logikai jellegű csoportosítását. A lemezkép-verziók azokon belül létrehozott adatainak kezeléséhez használhatók. Definíció rendszerképnevek a kis-és nagybetűket, számokat, pontokat, kötőjeleket és időszakok lehet tenni. Az értékeket is megadhat egy rendszerkép definíciójában kapcsolatos további információkért lásd: [definíciók kép](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions).
+
+Létrehozhatja a lemezkép definíció [New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion). Ebben a példában a katalógus-lemezkép neve *myGalleryImage*.
 
 ```azurepowershell-interactive
 $galleryImage = New-AzGalleryImageDefinition `
@@ -74,30 +67,15 @@ $galleryImage = New-AzGalleryImageDefinition `
    -Offer 'myOffer' `
    -Sku 'mySKU'
 ```
-### <a name="using-publisher-offer-and-sku"></a>Közzétevő, ajánlat és a Termékváltozat használatával 
-Az ügyfelek végrehajtási megosztott lemezképek tervezése **egy soron következő kiadásban**, fogja tudni használni a személyes meghatározott **-közzétevő**, **-ajánlat** és **- Termékváltozat** értékek, keresse meg és adja meg a rendszerkép definíciójában, majd a rendszer a legfrissebb rendszerképverzió virtuális gép létrehozása lemezkép definíciója. Ha például az alábbiakban három rendszerkép-definíciók és azok értékeit:
 
-|Rendszerkép-definíció|Közzétevő|Ajánlat|SKU|
-|---|---|---|---|
-|myImage1|myPublisher|myOffer|mySku|
-|myImage2|myPublisher|standardOffer|mySku|
-|myImage3|Tesztelés|standardOffer|testSku|
-
-Az alábbi három egyedi értékek amelyekre. Lemezkép verziója, amelyek egy vagy két, de nem minden három érték lehet. **Egy soron következő kiadásban**, lesz úgy, hogy ezek az értékek annak érdekében, hogy a kérelem egy adott rendszerkép legújabb verzióját. **Ez nem működik a jelenlegi kiadásban**, de a jövőben lesz elérhető. Kiadásakor, a következő szintaxis használatával használandó be, mint a forrás lemezkép *myImage1* a fenti táblázatból.
-
-```powershell
-$vmConfig = Set-AzVMSourceImage `
-   -VM $vmConfig `
-   -PublisherName myPublisher `
-   -Offer myOffer `
-   -Skus mySku 
-```
-
-Ez hasonlít hogyan jelenleg megadhat használható közzétevő, ajánlat és a Termékváltozat [Azure Marketplace-rendszerképek](../articles/virtual-machines/windows/cli-ps-findimage.md) Piactéri lemezképet legújabb verziójának beszerzéséhez. Ezt szem minden rendszerkép definíciójában rendelkeznie kell egy egyedi készletét ezeket az értékeket.  
 
 ## <a name="create-an-image-version"></a>Hozzon létre egy lemezkép verziója
 
-Hozzon létre egy lemezkép verziója egy felügyelt rendszerképet az [New-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) . Ebben a példában a rendszerkép verziószáma *1.0.0-s* , és mindkét replikálás *USA nyugati középső Régiója* és *USA déli középső Régiójában* adatközpontokban.
+Hozzon létre egy lemezkép verziója egy felügyelt rendszerképet az [New-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion). 
+
+Lemezkép-verzió engedélyezett karakterek:, számokat és pontokat. Számok belül a 32 bites egész számnak kell lennie. Formátum: *Főverzió*. *MinorVersion*. *Javítás*.
+
+Ebben a példában a rendszerkép verziószáma *1.0.0-s* , és mindkét replikálás *USA nyugati középső Régiója* és *USA déli középső Régiójában* adatközpontokban. Replikáció célrégiók kiválasztásakor ne feledje, hogy is kell tartalmaznia a *forrás* régió a replikációs cél.
 
 
 ```azurepowershell-interactive
@@ -122,3 +100,25 @@ Eltarthat egy ideig a kép replikálása összes a célrégiók, ezért létreho
 $job.State
 ```
 
+> [!NOTE]
+> Várjon, amíg a rendszerkép verziószámát teljesen befejeződik, beépített és a replikált felügyelt ugyanazt a lemezképet létrehozni egy másik lemezkép-verzió használata előtt kell. 
+>
+> A kép verzióját is tárolhatja [Zónaredundáns tárolás](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) hozzáadásával `-StorageAccountType Standard_ZRS` létrehozásakor, a rendszerkép verziószámát.
+>
+
+
+## <a name="share-the-gallery"></a>A katalógus megosztása
+
+Azt javasoljuk, hogy megosztott hozzáférés a lemezkép katalógus szintjén. E-mail-címet használ, és a [Get-AzADUser](/powershell/module/az.resources/get-azaduser) parancsmagot, hogy a felhasználó objektum Azonosítójának lekéréséhez, majd a [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment) biztosíthat hozzáférést a katalógusban. Cserélje le a például szolgáló e-mail, alinne_montes@contoso.com ebben a példában a saját adataira.
+
+```azurepowershell-interactive
+# Get the object ID for the user
+$user = Get-AzADUser -StartsWith alinne_montes@contoso.com
+# Grant access to the user for our gallery
+New-AzRoleAssignment `
+   -ObjectId $user.Id `
+   -RoleDefinitionName Reader `
+   -ResourceName $gallery.Name `
+   -ResourceType Microsoft.Compute/galleries `
+   -ResourceGroupName $resourceGroup.ResourceGroupName
+```

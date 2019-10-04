@@ -1,10 +1,10 @@
 ---
-title: PowerShell – Azure Batch használatának első lépései |} A Microsoft Docs
+title: Ismerkedés a PowerShell-Azure Batchokkal | Microsoft Docs
 description: Gyors bevezetés a Batch-erőforrások kezeléséhez használható Azure PowerShell-parancsmagok használatába.
 services: batch
 documentationcenter: ''
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: batch
@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 01/15/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 11028561cf6742cfd5e8c0c882de16ff35ebf0ef
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 21930d5240225540159fa425d9d9fa518a1b19d5
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486361"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68323083"
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>Batch-erőforrások kezelése PowerShell-parancsmagokkal
 
@@ -28,13 +28,13 @@ Az Azure Batch PowerShell-parancsmagokkal a Batch API-k, az Azure Portal és az 
 
 A Batch-parancsmagok teljes listájáért és a parancsmagok részletes szintaxisáért lásd: [Azure Batch-parancsmagok referenciája](/powershell/module/az.batch).
 
-Ez a cikk Az kötegelt modul 1.0.0-s parancsmagjain alapul. Ajánlott gyakran frissíteni az Azure PowerShell-modulokat a szolgáltatásfrissítések és -fejlesztések kihasználása érdekében.
+Ez a cikk parancsmagokon alapul az az batch modul 1.0.0-ban. Ajánlott gyakran frissíteni az Azure PowerShell-modulokat a szolgáltatásfrissítések és -fejlesztések kihasználása érdekében.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * [Telepítse és konfigurálja az Azure PowerShell modul legújabb verzióját](/powershell/azure/overview). Egy adott Azure Batch-modul, például egy kiadás előtti modul telepítésével kapcsolatban lásd a [PowerShell-galériát](https://www.powershellgallery.com/packages/Az.Batch/1.0.0) ismertető cikket.
 
-* Futtassa a **Connect-AzAccount** parancsmag használatával csatlakozzon az előfizetéséhez (az Azure Batch parancsmagok modulban az Azure Resource Manager):
+* Futtassa a **AzAccount** parancsmagot az előfizetéshez való kapcsolódáshoz (a Azure batch parancsmagok a Azure Resource Manager modulban):
 
   ```powershell
   Connect-AzAccount
@@ -50,13 +50,13 @@ Ez a cikk Az kötegelt modul 1.0.0-s parancsmagjain alapul. Ajánlott gyakran fr
 
 ### <a name="create-a-batch-account"></a>Batch-fiók létrehozása
 
-**Új AzBatchAccount** létrehoz egy Batch-fiókot a meghatározott erőforráscsoportban. Ha még nem rendelkezik egy erőforráscsoportot, hozzon létre egyet futtatásával a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancsmagot. A **Hely** paraméternél adjon meg egy Azure régiót, például az „USA középső régiója”. Példa:
+A **New-AzBatchAccount** létrehoz egy batch-fiókot egy adott erőforráscsoporthoz. Ha még nem rendelkezik erőforráscsoporthoz, hozzon létre egyet a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancsmag futtatásával. A **Hely** paraméternél adjon meg egy Azure régiót, például az „USA középső régiója”. Példa:
 
 ```powershell
 New-AzResourceGroup –Name MyBatchResourceGroup –Location "Central US"
 ```
 
-Ezután hozzon létre egy Batch-fiókot az erőforráscsoportban. Adjon meg egy nevet a fiókjához <*account_name*>, a hely, az erőforráscsoport nevét. A Batch-fiókok létrehozása eltarthat egy ideig. Példa:
+Ezután hozzon létre egy batch-fiókot az erőforráscsoporthoz. Adja meg a fiók nevét <*account_name*>, valamint az erőforráscsoport helyét és nevét. A Batch-fiókok létrehozása eltarthat egy ideig. Példa:
 
 ```powershell
 New-AzBatchAccount –AccountName <account_name> –Location "Central US" –ResourceGroupName <res_group_name>
@@ -67,7 +67,7 @@ New-AzBatchAccount –AccountName <account_name> –Location "Central US" –Res
 
 ### <a name="get-account-access-keys"></a>Fiók hívóbetűinek beszerzése
 
-**Get-AzBatchAccountKeys** bemutatja egy Azure Batch-fiókhoz társított hozzáférési kulcsait. Például a következő futtatásával lekérheti a létrehozott fiók elsődleges és másodlagos hívóbetűit.
+A **Get-AzBatchAccountKeys** megjeleníti az Azure batch-fiókhoz társított hozzáférési kulcsokat. Például a következő futtatásával lekérheti a létrehozott fiók elsődleges és másodlagos hívóbetűit.
 
  ```powershell
 $Account = Get-AzBatchAccountKeys –AccountName <account_name>
@@ -79,7 +79,7 @@ $Account.SecondaryAccountKey
 
 ### <a name="generate-a-new-access-key"></a>Új hívóbetű létrehozása
 
-**Új AzBatchAccountKey** új kulcsot generál egy elsődleges vagy másodlagos fiókot egy Azure Batch-fiókhoz. Ha például új elsődleges hívóbetűt szeretne létrehozni a Batch-fiókhoz, írja be a következőt:
+A **New-AzBatchAccountKey** új elsődleges vagy másodlagos fiók kulcsot hoz létre egy Azure batch-fiókhoz. Ha például új elsődleges hívóbetűt szeretne létrehozni a Batch-fiókhoz, írja be a következőt:
 
 ```powershell
 New-AzBatchAccountKey -AccountName <account_name> -KeyType Primary
@@ -90,7 +90,7 @@ New-AzBatchAccountKey -AccountName <account_name> -KeyType Primary
 
 ### <a name="delete-a-batch-account"></a>Batch-fiók törlése
 
-**Remove-AzBatchAccount** törli a Batch-fiókot. Példa:
+A **Remove-AzBatchAccount** törli a Batch-fiókot. Példa:
 
 ```powershell
 Remove-AzBatchAccount -AccountName <account_name>
@@ -119,33 +119,33 @@ $context = Get-AzBatchAccount -AccountName <account_name>
 
 ## <a name="create-and-modify-batch-resources"></a>Batch-erőforrások létrehozása és módosítása
 
-Használja például a parancsmagokat **New-AzBatchPool**, **New-AzBatchJob**, és **New-AzBatchTask** erőforrásokat a Batch-fiók létrehozásához. Megfelelő **Get-** és **Set-** parancsmagokkal frissítheti a meglévő erőforrások tulajdonságait, és a **Remove-** parancsmagokkal távolíthatja el az erőforrásokat a Batch-fiókokról.
+Használjon olyan parancsmagokat, mint a **New-AzBatchPool**, a **New-AzBatchJob**és a **New-AzBatchTask** , és hozzon létre erőforrásokat a Batch-fiókokban. Megfelelő **Get-** és **Set-** parancsmagokkal frissítheti a meglévő erőforrások tulajdonságait, és a **Remove-** parancsmagokkal távolíthatja el az erőforrásokat a Batch-fiókokról.
 
 Sok parancsmag használatakor egy BatchContext objektum átadása mellett részletes erőforrás-beállításokat tartalmazó objektumok létrehozására vagy átadására is szükség van, ahogyan az a következő példában látható. További példákat az egyes parancsmagok részletes súgójában talál.
 
 ### <a name="create-a-batch-pool"></a>Batch-készlet létrehozása
 
-Batch-készlet létrehozásakor vagy frissítésekor kiválaszthatja a felhőszolgáltatás- vagy a virtuálisgép-konfigurációt az operációs rendszerhez a számítási csomópontokon (lásd a [Batch-funkciók áttekintésével](batch-api-basics.md#pool) kapcsolatos témakört). Ha a felhőszolgáltatás-konfigurációt adja meg, a számítási csomópontokról az egyik [Azure-beli vendég operációs rendszer kiadásával](../cloud-services/cloud-services-guestos-update-matrix.md#releases) készül rendszerkép. Ha a virtuálisgép-konfigurációt választja, megadhatja az [Azure Virtual Machines Marketplace-en][vm_marketplace] felsorolt támogatott Linux vagy Windows virtuálisgép-rendszerképek egyikét, vagy megadhat egy Ön által előkészített egyéni rendszerképet.
+Batch-készlet létrehozásakor vagy frissítésekor kiválaszthatja a felhőszolgáltatás- vagy a virtuálisgép-konfigurációt az operációs rendszerhez a számítási csomópontokon (lásd a [Batch-funkciók áttekintésével](batch-api-basics.md#pool) kapcsolatos témakört). Ha a felhőszolgáltatás-konfigurációt adja meg, a számítási csomópontokról az egyik [Azure-beli vendég operációs rendszer kiadásával](../cloud-services/cloud-services-guestos-update-matrix.md#releases) készül rendszerkép. Ha megadja a virtuális gép konfigurációját, megadhatja az [Azure Virtual Machines piactéren][vm_marketplace]felsorolt támogatott Linux vagy Windows rendszerű virtuálisgép-rendszerképek egyikét, vagy megadhat egy előkészített egyéni rendszerképet.
 
-Futtatásakor **New-AzBatchPool**, adja át a PSCloudServiceConfiguration vagy PSVirtualMachineConfiguration objektumban található operációsrendszer-beállításokat. Például az alábbi kódrészlet létrehoz egy Batch Standard_A1 méretű készlet számítási csomópontjain a virtuális gép konfigurációja, az Ubuntu Server 18.04-LTS rendszerképe. Itt a **VirtualMachineConfiguration** paraméter a *$configuration* változót a PSVirtualMachineConfiguration objektumként határozza meg. A **BatchContext** paraméter egy korábban meghatározott *$context* változót ad meg a BatchAccountContext objektumként.
+A **New-AzBatchPool**futtatásakor adja meg az operációs rendszer beállításait egy PSCloudServiceConfiguration vagy PSVirtualMachineConfiguration objektumban. Az alábbi kódrészlet például egy Standard_A1 számítási csomópontokkal rendelkező batch-készletet hoz létre a virtuálisgép-konfigurációban, amely az Ubuntu Server 18,04-LTS formátummal van ellátva. Itt a **VirtualMachineConfiguration** paraméter a *$configuration* változót a PSVirtualMachineConfiguration objektumként határozza meg. A **BatchContext** paraméter egy korábban meghatározott *$context* változót ad meg a BatchAccountContext objektumként.
 
 ```powershell
-$imageRef = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSImageReference" -ArgumentList @("UbuntuServer","Canonical","18.04.0-LTS")
+$imageRef = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSImageReference" -ArgumentList @("UbuntuServer","Canonical","18.04-LTS")
 
 $configuration = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSVirtualMachineConfiguration" -ArgumentList @($imageRef, "batch.node.ubuntu 18.04")
 
 New-AzBatchPool -Id "mypspool" -VirtualMachineSize "Standard_a1" -VirtualMachineConfiguration $configuration -AutoScaleFormula '$TargetDedicated=4;' -BatchContext $context
 ```
 
-Az új készletben lévő számítási csomópontok célszámát egy automatikus skálázási képletet számolható ki. Ebben az esetben a képlet egyszerűen a **$TargetDedicated=4**, ami jelzi, hogy a készletben lévő számítási csomópontok száma legfeljebb 4.
+Az új készletben lévő számítási csomópontok megcélzott számát egy automatikus skálázási képlet számítja ki. Ebben az esetben a képlet egyszerűen a **$TargetDedicated=4**, ami jelzi, hogy a készletben lévő számítási csomópontok száma legfeljebb 4.
 
 ## <a name="query-for-pools-jobs-tasks-and-other-details"></a>Készletek, feladatok, tevékenységek és egyéb részletek lekérdezése
 
-Használja például a parancsmagokat **Get-AzBatchPool**, **Get-AzBatchJob**, és **Get-AzBatchTask** lekérdezéshez létrehozott Batch-fiók entitásokat.
+Használjon olyan parancsmagokat, mint például a **Get-AzBatchPool**, a **Get-AzBatchJob**és a **Get-AzBatchTask** a Batch-fiókban létrehozott entitások lekérdezéséhez.
 
 ### <a name="query-for-data"></a>Adatok lekérdezése
 
-Tegyük fel, használja a **Get-AzBatchPools** használatával megkeresheti a készleteket. Ez alapértelmezés szerint a fiók összes készletét lekérdezi, ha a BatchAccountContext objektumot már tárolta a *$context* helyen:
+Például a **Get-AzBatchPools** használatával megkeresheti a készleteket. Ez alapértelmezés szerint a fiók összes készletét lekérdezi, ha a BatchAccountContext objektumot már tárolta a *$context* helyen:
 
 ```powershell
 Get-AzBatchPool -BatchContext $context
@@ -153,7 +153,7 @@ Get-AzBatchPool -BatchContext $context
 
 ### <a name="use-an-odata-filter"></a>OData-szűrő használata
 
-Megadhat egy OData-szűrőt a **Filter** paraméterrel, ha csak a kívánt objektumokat szeretné megkeresni. Például található összes azonosítókkal rendelkező "myPool" kezdve:
+Megadhat egy OData-szűrőt a **Filter** paraméterrel, ha csak a kívánt objektumokat szeretné megkeresni. Megkeresheti például az összes olyan készletet, amelynek azonosítói a "myPool" értékkel kezdődnek:
 
 ```powershell
 $filter = "startswith(id,'myPool')"
@@ -171,7 +171,7 @@ Az OData-szűrő alternatívája az **Id** paraméter használata. Egy „myPool
 Get-AzBatchPool -Id "myPool" -BatchContext $context
 ```
 
-A **azonosító** paraméter csak a teljes Azonosítót keresés; nem helyettesítő karaktereket vagy OData stílusú szűrőket támogatja.
+Az **ID** paraméter csak a teljes azonosítót támogató kereséseket támogatja. nem helyettesítő karakter vagy OData típusú szűrő.
 
 ### <a name="use-the-maxcount-parameter"></a>A MaxCount paraméter használata
 
@@ -185,7 +185,7 @@ A felső határ eltávolításához 0 vagy kisebb értéket adjon meg a **MaxCou
 
 ### <a name="use-the-powershell-pipeline"></a>A PowerShell-folyamat használata
 
-A Batch-parancsmagok a PowerShell-adatcsatorna használatával parancsmagok közötti adatküldéshez. Ennek ugyanaz a hatása, mint a paraméterek megadása, de megkönnyíti a több entitással való munkát.
+A Batch-parancsmagok a PowerShell-folyamat használatával küldik el az adatparancsmagok közötti adatküldést. Ennek ugyanaz a hatása, mint a paraméterek megadása, de megkönnyíti a több entitással való munkát.
 
 Például keresse meg és jelenítse meg fiókjában az összes feladatot:
 
@@ -248,7 +248,7 @@ Remove-AzBatchApplication -AccountName <account_name> -ResourceGroupName <res_gr
 
 Készlet létrehozásakor megadhat egy vagy több alkalmazáscsomagot az üzembe helyezéshez. Ha a készlet létrehozásakor megad egy csomagot, az a csomópont készlethez való csatlakoztatásakor minden csomóponton üzembe lesz helyezve. A csomagok akkor is üzembe lesznek helyezve, ha a csomópontot újraindítják vagy alaphelyzetbe állítják.
 
-Adja meg az `-ApplicationPackageReference` kapcsolót, ha készletet hoz létre egy alkalmazáscsomag üzembe helyezéséhez a készlet csomópontjain, amikor azok csatlakoznak a készlethez. Először hozzon létre egy **PSApplicationPackageReference** objektumot, és konfigurálja azt a, a készlet számítási csomópontjain telepítendő alkalmazás Alkalmazásazonosító és Csomagverzió verziója:
+Adja meg az `-ApplicationPackageReference` kapcsolót, ha készletet hoz létre egy alkalmazáscsomag üzembe helyezéséhez a készlet csomópontjain, amikor azok csatlakoznak a készlethez. Először hozzon létre egy **PSApplicationPackageReference** objektumot, és konfigurálja a készlet számítási csomópontjain telepíteni kívánt alkalmazás-azonosítóval és csomag-verzióval:
 
 ```powershell
 $appPackageReference = New-Object Microsoft.Azure.Commands.Batch.Models.PSApplicationPackageReference
@@ -267,11 +267,11 @@ New-AzBatchPool -Id "PoolWithAppPackage" -VirtualMachineSize "Small" -CloudServi
 Az alkalmazáscsomagok használatával kapcsolatban további információkat a [Batch-alkalmazáscsomagokkal számítási csomópontokra végzett alkalmazástelepítést](batch-application-packages.md) ismertető cikkben talál.
 
 > [!IMPORTANT]
-> Az alkalmazáscsomagok használatához a Batch-fiókhoz kell kapcsolni egy Azure Storage-fiókot.
+> Alkalmazáscsomag használatához egy Azure Storage-fiókot kell összekapcsolnia a Batch-fiókkal.
 
 ### <a name="update-a-pools-application-packages"></a>Készlet alkalmazáscsomagjainak frissítése
 
-Egy meglévő készlethez rendelt alkalmazások frissítéséhez, először hozzon létre PSApplicationPackageReference-objektumot a kívánt tulajdonságokkal (Alkalmazásazonosító és Csomagverzió verziója):
+Egy meglévő készlethez rendelt alkalmazások frissítéséhez először hozzon létre egy PSApplicationPackageReference-objektumot a kívánt tulajdonságokkal (alkalmazás-azonosító és csomag verziója):
 
 ```powershell
 $appPackageReference = New-Object Microsoft.Azure.Commands.Batch.Models.PSApplicationPackageReference

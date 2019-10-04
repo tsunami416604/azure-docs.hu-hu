@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus-üzenettémakörök használata javával |} A Microsoft Docs
-description: Service Bus-üzenettémák és előfizetések használata az Azure-ban.
+title: A Java használatával Azure Service Bus témaköröket és előfizetéseket használhat
+description: Service Bus témaköröket és előfizetéseket használhat az Azure-ban.
 services: service-bus-messaging
 documentationcenter: java
 author: axisc
@@ -14,41 +14,42 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: 0771656358503afc91bab7523d0c835e0050c2bc
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: affd62bd7cae0103b7d2510022fc12a66d26c865
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59607875"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155588"
 ---
-# <a name="how-to-use-service-bus-topics-and-subscriptions-with-java"></a>Service Bus-üzenettémák és előfizetések használata javával
+# <a name="use-service-bus-topics-and-subscriptions-with-java"></a>A Java használatával Service Bus témaköröket és előfizetéseket használhat
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-Ebben a rövid üzeneteket küldeni a Service Bus-témakörbe, és majd üzeneteket fogadjon előfizetést az üzenettémára Java kód írása. 
+Ebben a rövid útmutatóban a Java-kódokat kell írnia, hogy üzeneteket küldjön egy Azure Service Bus témakörbe, majd üzeneteket fogadjon az előfizetésből az adott témakörbe. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-1. Azure-előfizetés. Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Aktiválhatja a [Visual Studio vagy az MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-2. Kövesse lépéseket a [a rövid útmutató: Az Azure portal használatával hozzon létre egy Service Bus-témakörbe, és a témakörbe az előfizetések](service-bus-quickstart-topics-subscriptions-portal.md) a következő feladatokat végezheti el:
-    1. Hozzon létre egy Service Bus **névtér**.
-    2. Első a **kapcsolati karakterlánc**.
-    3. Hozzon létre egy **témakör** a névtérben.
-    4. Hozzon létre **három előfizetés** névtér a témakörbe.
-3. [A Javához készült Azure SDK][Azure SDK for Java].
+1. Azure-előfizetés. Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Aktiválhatja [Visual Studio-vagy MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) , vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+2. Kövesse a rövid útmutató [lépéseit: Az Azure Portal segítségével hozzon létre egy Service Bus témakört és előfizetéseket a témakörbe](service-bus-quickstart-topics-subscriptions-portal.md) a következő feladatok elvégzéséhez:
+    1. Hozzon létre egy Service Bus **névteret**.
+    2. A **kapcsolatok karakterláncának**beolvasása.
+    3. Hozzon létre egy **témakört** a névtérben.
+    4. Hozzon létre **három előfizetést** a témakörben a névtérben.
+3. [Javához készült Azure SDK][Azure SDK for Java].
 
-## <a name="configure-your-application-to-use-service-bus"></a>A Service Bus-alkalmazás konfigurálása
-Győződjön meg arról, hogy telepítette a [Javához készült Azure SDK] [ Azure SDK for Java] Ez a minta létrehozása előtt. Ha az Eclipse használja, telepítheti a [Azure Toolkit for Eclipse] [ Azure Toolkit for Eclipse] , amely tartalmazza a Javához készült Azure SDK. Ezután hozzáadhatja a **Javához készült Azure-könyvtárak Microsoft** a projekthez:
+## <a name="configure-your-application-to-use-service-bus"></a>Az alkalmazás konfigurálása Service Bus használatára
+A minta létrehozása előtt győződjön meg arról, hogy telepítette a [Javához készült Azure SDK][Azure SDK for Java] -t. Ha az Eclipse-t használja, akkor telepítheti a Javához készült Azure SDK-t tartalmazó [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] . Ezután hozzáadhatja a **javához Microsoft Azure kódtárakat** a projekthez:
 
-![Az eclipse-ben könyvtárak létrehozása elérési útja](media/service-bus-java-how-to-use-topics-subscriptions/eclipselibs.png)
+![A Java-hoz készült Microsoft Azure-kódtárak hozzáadása az Eclipse-projekthez](media/service-bus-java-how-to-use-topics-subscriptions/eclipse-azure-libraries-java.png)
 
-Is szüksége lesz, a következő JAR-fájlok kivételével hozzáadása a Java Build elérési útja:
+Emellett hozzá kell adnia a következő tégelyeket a Java Build elérési útjához:
 
-- gson-2.6.2.jar
-- Commons-cli-1.4.jar
-- proton-j-0.21.0.jar
+- gson-2.6.2. jar
+- Commons-CLI-1.4. jar
+- proton-j-0.21.0. jar
 
-Adjon hozzá egy osztályt, egy **fő** módot, majd adja hozzá a következő `import` utasítást a Java-fájl elejéhez:
+Adjon hozzá egy **fő** metódussal rendelkező osztályt, majd adja hozzá `import` a következő utasításokat a Java-fájl elejéhez:
 
 ```java
 import com.google.gson.reflect.TypeToken;
@@ -65,11 +66,11 @@ import org.apache.commons.cli.DefaultParser;
 ```
 
 ## <a name="send-messages-to-a-topic"></a>Üzenetek küldése egy üzenettémakörbe
-Frissítés a **fő** metódussal hoz létre egy **TopicClient** objektum és a egy olyan segédmetódus, amely aszinkron minta üzeneteket küld a Service Bus-témakörbe.
+Frissítse a **Main** metódust egy **TopicClient** objektum létrehozásához, és hívja meg a segítő metódust, amely aszinkron módon küldi el a Service Bus témakört.
 
 > [!NOTE] 
-> - Cserélje le `<NameOfServiceBusNamespace>` a Service Bus-névtér nevét. 
-> - Cserélje le `<AccessKey>` névteréhez hozzáférési kulcsára.
+> - Cserélje `<NameOfServiceBusNamespace>` le a helyére a Service Bus névtér nevét. 
+> - Cserélje `<AccessKey>` le a-t a névtérhez tartozó hozzáférési kulcsra.
 
 ```java
 public class MyServiceBusTopicClient {
@@ -122,10 +123,10 @@ public class MyServiceBusTopicClient {
 }
 ```
 
-A Service Bus-üzenettémakörök a [Standard csomagban](service-bus-premium-messaging.md) legfeljebb 256 KB, a [Prémium csomagban](service-bus-premium-messaging.md) legfeljebb 1 MB méretű üzeneteket támogatnak. A szabványos és az egyéni alkalmazástulajdonságokat tartalmazó fejléc mérete legfeljebb 64 KB lehet. Nem található a témakörökben tárolt üzenetek száma korlátozott, de, a témakörök által tárolt üzenetek teljes mérete korlátozva van. A témakör ezen méretét a létrehozáskor kell meghatározni, és a felső korlátja 5 GB.
+A Service Bus-üzenettémakörök a [Standard csomagban](service-bus-premium-messaging.md) legfeljebb 256 KB, a [Prémium csomagban](service-bus-premium-messaging.md) legfeljebb 1 MB méretű üzeneteket támogatnak. A szabványos és az egyéni alkalmazástulajdonságokat tartalmazó fejléc mérete legfeljebb 64 KB lehet. A témakörben tárolt üzenetek száma nincs korlátozva, de a témakörben tárolt üzenetek teljes mérete korlátozva van. A témakör ezen méretét a létrehozáskor kell meghatározni, és a felső korlátja 5 GB.
 
 ## <a name="how-to-receive-messages-from-a-subscription"></a>Üzenetek fogadása egy előfizetésből
-Frissítés a **fő** metódussal hoz létre három **SubscriptionClient** három előfizetés az objektumokat és a egy olyan segédmetódus, amely aszinkron módon kap üzeneteket a Service Bus-témakörbe. A mintakód feltételezi, hogy létrehozott egy témakör nevű **BasicTopic** és három előfizetés nevű **Subscription1**, **Subscription2**, és  **Subscription3**. Ha használta a számukra különböző neveket, frissítse a kódot, a tesztelés előtt. 
+Frissítse a **Main** metódust három **SubscriptionClient** objektum létrehozásához három előfizetéshez, és hozzon létre egy segítő metódust, amely aszinkron módon fogad üzeneteket a Service Bus témakörből. A mintakód feltételezi, hogy létrehozott egy **BasicTopic** nevű témakört, valamint három előfizetést ( **Subscription1**, **előfizetés2**és **Subscription3**). Ha más neveket használt hozzájuk, akkor a tesztelés előtt frissítse a kódot. 
 
 ```java
 public class MyServiceBusTopicClient {
@@ -189,7 +190,7 @@ public class MyServiceBusTopicClient {
 ```
 
 ## <a name="run-the-program"></a>A program futtatása
-A következő kimenethez hasonló kimenet jelenik meg, hogy a program futtatása:
+A program futtatásával tekintse meg a következő kimenethez hasonló kimenetet:
 
 ```java
 Message sending: Id = 0
@@ -454,12 +455,14 @@ Message sending: Id = 9
                         Content: [ firstName = Werner, name = Heisenberg ]
 ```
 
+> [!NOTE]
+> [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/)kezelheti Service Bus erőforrásait. A Service Bus Explorer lehetővé teszi a felhasználók számára, hogy egy Service Bus névtérhez kapcsolódjanak, és egyszerű módon felügyelhetik az üzenetkezelési entitásokat. Az eszköz olyan speciális funkciókat biztosít, mint az importálási/exportálási funkció, illetve a témakör, a várólisták, az előfizetések, a Relay-szolgáltatások, az értesítési központok és az események hubok. 
 
 ## <a name="next-steps"></a>További lépések
-További információkért lásd: [Service Bus-üzenetsorok, témakörök és előfizetések][Service Bus queues, topics, and subscriptions].
+További információ: [Service Bus várólisták, témakörök és előfizetések][Service Bus queues, topics, and subscriptions].
 
-[Azure SDK for Java]: https://azure.microsoft.com/develop/java/
-[Azure Toolkit for Eclipse]: ../azure-toolkit-for-eclipse.md
+[Azure SDK for Java]: https://docs.microsoft.com/java/api/overview/azure/
+[Azure Toolkit for Eclipse]: https://docs.microsoft.com/java/azure/eclipse/azure-toolkit-for-eclipse
 [Service Bus queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [SqlFilter]: /dotnet/api/microsoft.azure.servicebus.sqlfilter
 [SqlFilter.SqlExpression]: /dotnet/api/microsoft.azure.servicebus.sqlfilter.sqlexpression

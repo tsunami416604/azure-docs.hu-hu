@@ -1,42 +1,41 @@
 ---
-title: Írja le a felnőtt és szexuális tartalom – a Computer Vision
+title: Felnőtt, pikáns, véres tartalom – Computer Vision
 titleSuffix: Azure Cognitive Services
-description: Észleli a felnőtt és szexuális tartalom képeket a Computer Vision APi használatával kapcsolatos fogalmakat.
+description: Az Computer Vision APi-val a képeken a felnőtt tartalom észlelésével kapcsolatos fogalmak.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 02/08/2019
+ms.date: 10/01/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 69a4c136e9c210dd40e004b8d5e1c1a2a8fceaa7
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: ee18916a59bb081d65494f46e7aba7c29c7177cc
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312533"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718517"
 ---
-# <a name="detect-adult-and-racy-content"></a>Észleli a felnőtt és szexuális tartalom
+# <a name="detect-adult-content"></a>Felnőtt tartalom észlelése
 
-Computer Vision felnőtteknek szóló anyagot észlelését képeken az, hogy a fejlesztők korlátozhatja a szoftvereket a képeket a megjelenítését. Tartalom jelzőket, hogy a fejlesztők az eredmények a saját beállítások szerint tudja értelmezni a nulla és a egy közötti pontszámot érvényesek. 
+A Computer Vision képes felderíteni a képeken elérhető felnőtt anyagokat, hogy a fejlesztők a szoftverben korlátozzák a képek megjelenítését. A tartalom jelzői a nulla és az egyik pontszám között lesznek alkalmazva, így a fejlesztők a saját preferenciáiknak megfelelően tudják értelmezni az eredményeket.
 
 > [!NOTE]
-> Ez a funkció is kínál a [Azure Content Moderator](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview) szolgáltatás. Tekintse meg az alternatív megoldások szigorúbb tartalom-jóváhagyás forgatókönyveket, például szöveg moderálása és emberi munkafolyamatokat.
+> A funkció nagy részét az [Azure Content moderator](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview) szolgáltatás kínálja. Tekintse meg ezt az alternatívát a megoldásokhoz a szigorúbb tartalomkezelési forgatókönyvek, például a szöveges moderálás és az emberi felülvizsgálati munkafolyamatok terén.
 
-## <a name="content-flag-definitions"></a>Tartalom jelző definíciók
+## <a name="content-flag-definitions"></a>Content Flag-definíciók
 
-**Felnőtt** azokra, amelyek pornográf jellegűek, és gyakran meztelenség és a szexuális tevékenység ábrázoló képek lettek definiálva. 
+A "felnőtt" besorolás több különböző kategóriába esik:
 
-**Pikáns** képeket a meghatározott jellegűek, és gyakran nyíltan kétértelmű rendszerképek kevesebb nyíltan szexuális tartalmú képek megjelölve mint **felnőtt**. 
+- A **felnőtt** képeket a kifejezetten szexuális természetű képek határozzák meg, és gyakran a meztelenség és a szexuális tevékenységek láthatók.
+- A **zamatos** képek olyan képként vannak definiálva, amelyek szexuálisan szuggesztív jellegűek, és gyakran kevésbé szexuálisan explicit tartalmú tartalmat tartalmaznak, mint a **felnőttként**megjelölt képek.
+- A **véres** képeket a Gore-t ábrázoló képek határozzák meg.
 
-## <a name="identify-adult-and-racy-content"></a>Felnőtt és szexuális tartalom azonosítása
+## <a name="use-the-api"></a>Az API használata
 
-A [elemzése](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API-t.
+A felnőtt tartalmat a [képek elemzése](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API-val ismerheti meg. Ha `Adult` értéket ad hozzá a **visualFeatures** lekérdezési paraméterhez, az API három logikai tulajdonságot ad vissza: @ no__t-2 @ no__t-3, `isRacyContent`, és `isGoryContent` @ no__t-6in JSON-válasza. A metódus a @ no__t-0 @ no__t-1, `racyScore` és `goreScore` @ no__t-4which megfelelő tulajdonságokat is visszaadja.
 
-A kép elemzése metódus adja vissza a két logikai tulajdonságokat, `isAdultContent` és `isRacyContent`, az a JSON-válasz jelzi a felnőtt és szexuális tartalom rendre metody. A módszer is adja vissza a két tulajdonság `adultScore` és `racyScore`, amely a felnőtt és szexuális tartalom azonosítja törléseknek megfelelő megbízhatósági értékeket jelölik.
-
-## <a name="next-steps"></a>További lépések
-
-Tudnivalók a fogalmak [tartomány-specifikus tartalom észlelése](concept-detecting-domain-content.md) és [arcok észlelése](concept-detecting-faces.md).
+- [Rövid útmutató: Rendszerkép elemzése (.NET SDK) ](./quickstarts-sdk/csharp-analyze-sdk.md)
+- [Rövid útmutató: Rendszerkép elemzése (REST API)](./quickstarts/csharp-analyze.md)

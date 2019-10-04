@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: d200f72b3c0e5634c3dca8f60a4754a14351110a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58877958"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60878716"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>Az Azure Data Lake Storage Gen1 diagnosztikai naplóinak elérése
 Ismerje meg, diagnosztikai naplózás az Azure Data Lake Storage Gen1 fiókját és a fiókja gyűjtött naplók megtekintése a engedélyezéséhez.
@@ -115,14 +115,14 @@ A naplózási és a kérés naplók JSON formátumban vannak. Ebben a szakaszban
 #### <a name="request-log-schema"></a>Kérelem séma
 | Name (Név) | Típus | Leírás |
 | --- | --- | --- |
-| idő- |String |A napló időbélyegzője (az UTC) |
+| time |String |A napló időbélyegzője (az UTC) |
 | resourceId |String |Helyezze a művelet igénybe vett erőforrás azonosítója |
 | category |String |A naplózási kategóriát. Ha például **kérelmek**. |
 | operationName |String |A művelet, amelyet a rendszer neve. Ha például getfilestatus. |
 | resultType |String |A művelet, például 200-as állapotát. |
 | callerIpAddress |String |Az ügyfél a kérés IP-címe |
 | correlationId |String |Csoportosíthatja a kapcsolódó bejegyzései készletét használja, amely a napló azonosítója |
-| identity |Objektum |Az identitás által generált napló |
+| identity |Object |Az identitás által generált napló |
 | properties |JSON |Részletes információkat lejjebb talál |
 
 #### <a name="request-log-properties-schema"></a>Kérelem tulajdonságai séma
@@ -132,8 +132,8 @@ A naplózási és a kérés naplók JSON formátumban vannak. Ebben a szakaszban
 | Útvonal |String |Az elérési utat a művelet végrehajtásának ideje |
 | RequestContentLength |int |A HTTP-kérelem tartalmának hossza |
 | ClientRequestId |String |Az azonosítója, amely egyedileg azonosítja ezt a kérelmet |
-| Kezdés időpontja |String |Az idő, amelyen a kiszolgáló a kérelem érkezett |
-| Befejezés időpontja: |String |Az idő, amikor a kiszolgáló által küldött választ |
+| StartTime |String |Az idő, amelyen a kiszolgáló a kérelem érkezett |
+| EndTime |String |Az idő, amikor a kiszolgáló által küldött választ |
 
 ### <a name="audit-logs"></a>Naplók
 Íme egy minta-bejegyzést a JSON-formátumú naplóban. Minden egyes blob van egy gyökérobjektum nevű **rekordok** , amely tartalmazza a napló objektumokból álló tömb
@@ -162,14 +162,14 @@ A naplózási és a kérés naplók JSON formátumban vannak. Ebben a szakaszban
 #### <a name="audit-log-schema"></a>Auditnapló sémája
 | Name (Név) | Típus | Leírás |
 | --- | --- | --- |
-| idő- |String |A napló időbélyegzője (az UTC) |
+| time |String |A napló időbélyegzője (az UTC) |
 | resourceId |String |Helyezze a művelet igénybe vett erőforrás azonosítója |
 | category |String |A naplózási kategóriát. Ha például **naplózási**. |
 | operationName |String |A művelet, amelyet a rendszer neve. Ha például getfilestatus. |
 | resultType |String |A művelet, például 200-as állapotát. |
 | resultSignature |String |További információt a műveletet. |
 | correlationId |String |Csoportosíthatja a kapcsolódó bejegyzései készletét használja, amely a napló azonosítója |
-| identity |Objektum |Az identitás által generált napló |
+| identity |Object |Az identitás által generált napló |
 | properties |JSON |Részletes információkat lejjebb talál |
 
 #### <a name="audit-log-properties-schema"></a>Naplózási tulajdonságok séma

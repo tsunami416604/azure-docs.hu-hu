@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: bwren
 ms.openlocfilehash: dead1fae9bc3287ed0fc80c6120914e965ef96dd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59493025"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61341877"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-azure-monitor"></a>Nézettervező vizualizációs részére az Azure monitorban referencia-útmutató
 Nézettervező az Azure Monitor használatával létrehozhat egyéni nézetek számos az Azure Portalon, amelyek segítségével adatokat a Log Analytics-munkaterület megjelenítése. Ez a cikk egy referencia-útmutató a beállítások a vizualizációs rész, amely szerepel az egyéni nézetek.
@@ -56,13 +56,13 @@ A lista lekérdezések egy részét a naplólekérdezések listáját jeleníti 
 | Beállítás | Leírás |
 |:--- |:--- |
 | **Általános** | |
-| Cím |A nézet tetején megjelenő szöveg. |
+| Beosztás |A nézet tetején megjelenő szöveg. |
 | Új csoport |Válassza ki ezt a hivatkozást az új csoport létrehozása a nézetben, a jelenlegi nézet ellenében. |
 | Előre kijelölt szűrők |A bal oldali szűrőterület felhőtulajdonságok, amikor kiválaszt egy vesszővel tagolt listája. |
 | Megjelenítési mód |A kezdeti nézet jelenik meg, ha a lekérdezés van kiválasztva. Minden elérhető nézetek után, nyissa meg a lekérdezés választhat. |
 | **Lekérdezések** | |
 | Keresési lekérdezés |A lekérdezés futtatásához. |
-| Felhasználóbarát név | A megjelenített leíró nevet. |
+| Rövid név | A megjelenített leíró nevet. |
 
 ## <a name="number-and-list-part"></a>Szám és lista
 A fejléc egyetlen szám, amely megjeleníti a log lekérdezésből származó rekordok számát jeleníti meg. A lista egy lekérdezést, amely azt jelzi, hogy az relatív érték egy numerikus oszlopot vagy annak módosulnak grafikon a felső tíz eredményeit jeleníti meg.
@@ -137,17 +137,17 @@ A fejléc egyetlen szám, amely összefoglalja a log lekérdezésben érték osz
 | Ikon |A result fejlécben mellett megjelenik az képfájl. |
 | Ikon használata |Válassza ki ezt a hivatkozást a ikonjának megjelenítése. |
 | **Header** | |
-| Cím |A fejléc tetején megjelenő szöveg. |
-| Alcím |A szöveg, amely a fejléc tetején a cím alatt jelenik meg. |
+| Beosztás |A fejléc tetején megjelenő szöveg. |
+| Felirat |A szöveg, amely a fejléc tetején a cím alatt jelenik meg. |
 | **fánkdiagram** | |
 | Lekérdezés |A lekérdezés futtatása a fánkdiagram. Az első tulajdonság egy szöveges érték, a második tulajdonság pedig egy numerikus értéket. |
 | Átkattintásos navigáció | A fejlécére kattintva végrehajtott műveletet.  További információkért lásd: [közös beállítások](#click-through-navigation). |
 | **fánkdiagram** |**> Center** |
-| Szöveg |A szöveg, amely alatt a fánkdiagram belül az érték jelenik meg. |
+| Text |A szöveg, amely alatt a fánkdiagram belül az érték jelenik meg. |
 | Művelet |A value tulajdonság együtt, egyetlen értékként kell elvégezni a műveletet.<ul><li>Összeg: Hozzáadja az összes rekord értékeit.</li><li>Százalékos aránya: A rekordok szereplő értékek által visszaadott aránya **center művelet során használt értékek eredmény** a teljes rekordot a lekérdezésben.</li></ul> |
-| A fánkdiagram közepén megjelenített eredményértékek |Kiválaszthat egy vagy több érték hozzáadása a plusz jelre (+). A lekérdezés eredményeit rögzíti a megadott tulajdonság értékek korlátozódnak. Nincsenek értékek vesznek fel, ha a lekérdezés szereplő összes rekordok. |
+| Center művelet során használt eredmény érték |Kiválaszthat egy vagy több érték hozzáadása a plusz jelre (+). A lekérdezés eredményeit rögzíti a megadott tulajdonság értékek korlátozódnak. Nincsenek értékek vesznek fel, ha a lekérdezés szereplő összes rekordok. |
 | **További beállítások** |**> Színek** |
-| 1 színe<br>2. szín<br>Szín 3 |Válassza ki a színt a fánkdiagramon megjelenő értékeit. |
+| 1 színe<br>2\. szín<br>Szín 3 |Válassza ki a színt a fánkdiagramon megjelenő értékeit. |
 | **További beállítások** |**> Speciális színleképezés** |
 | A mező értéke |Írja be a egy mezőt egy-egy formátumban jeleníti meg, ha a fánk szerepeljen. |
 | Szín |Válassza ki a színt, az egyedi mező. |
@@ -209,13 +209,13 @@ A fejléc statikus szöveget és a egy nem kötelező hivatkozást jeleníti meg
 | Új csoport |Válassza ki ezt a hivatkozást az új csoport létrehozása a nézetben, a jelenlegi nézet ellenében. |
 | Szín |A fejléc háttérszíne. |
 | **Header** | |
-| Kép |A fejléc megjelenik a képfájl. |
+| Image |A fejléc megjelenik a képfájl. |
 | Címke |A fejlécében megjelenő szöveg. |
 | **Header** |**> Link** |
 | Címke |A hivatkozás szövege. |
-| URL-cím |A hivatkozás URL-címét. |
+| URL |A hivatkozás URL-címét. |
 | **Információs elemek** | |
-| Cím |A cím az egyes elemek megjelenő szöveg. |
+| Beosztás |A cím az egyes elemek megjelenő szöveg. |
 | Tartalom |Az egyes elemekhez megjelenített szöveg. |
 
 ## <a name="line-chart-callout-and-list-part"></a>Vonaldiagram, képfelirat és lista része
@@ -231,14 +231,14 @@ A fejléc log lekérdezésből származó több sorozat vonaldiagramot időt és
 | Ikon |A result fejlécben mellett megjelenik az képfájl. |
 | Ikon használata |Válassza ki ezt a hivatkozást a ikonjának megjelenítése. |
 | **Header** | |
-| Cím |A fejléc tetején megjelenő szöveg. |
-| Alcím |A szöveg, amely a fejléc tetején a cím alatt jelenik meg. |
+| Beosztás |A fejléc tetején megjelenő szöveg. |
+| Felirat |A szöveg, amely a fejléc tetején a cím alatt jelenik meg. |
 | **Vonaldiagram** | |
 | Lekérdezés |A lekérdezés futtatása a vonaldiagramot. Az első tulajdonság egy szöveges érték, a második tulajdonság pedig egy numerikus értéket. Ez a lekérdezés parancsmagokéval használ a *mérték* kulcsszó összefoglalva az eredményeket. Ha a lekérdezés a *időköz* kulcsszó, a diagram x tengely ez alatt az időtartam használja. Ha a lekérdezés nem tartalmazza a *időköz* kulcsszó, az x tengely használ óránként történik. |
 | Átkattintásos navigáció | A fejlécére kattintva végrehajtott műveletet.  További információkért lásd: [közös beállítások](#click-through-navigation). |
 | **Vonaldiagram** |**> Képfelirat** |
 | Képfelirat címe |A képfelirat értéke felett megjelenő szöveg. |
-| Adatsorozat neve |A képfelirat értékéhez használandó adatsor tulajdonság értéke. Ha nincsenek adatsorozatok áll rendelkezésre, a lekérdezés összes rekordját használja. |
+| Az adatsorozat neve |A képfelirat értékéhez használandó adatsor tulajdonság értéke. Ha nincsenek adatsorozatok áll rendelkezésre, a lekérdezés összes rekordját használja. |
 | Művelet |A művelet végrehajtásához együtt, egyetlen értékként az a kihívás értékének tulajdonság.<ul><li>Átlagos: Az összes rekord értékek átlaga.</li><li>Száma: A lekérdezés által visszaadott összes rekord száma.</li><li>Legutóbbi minta: Az utolsó időközt, amely megtalálható a diagramon az értékét.</li><li>Max: Az időközök, amelyek szerepelnek a diagram a maximális értékét.</li><li>Min: A minimális érték a a diagramban szereplő időszakok közül.</li><li>Összeg: Az összes rekord értékek összegét.</li></ul> |
 | **Vonaldiagram** |**> Y tengely** |
 | Logaritmikus skála használata |Válassza ki ezt a hivatkozást az y-tengely logaritmikus skála használata. |
@@ -271,8 +271,8 @@ A fejléc log lekérdezésből származó több sorozat vonaldiagramot idővel j
 | Ikon |A result fejlécben mellett megjelenik az képfájl. |
 | Ikon használata |Válassza ki ezt a hivatkozást a ikonjának megjelenítése. |
 | **Header** | |
-| Cím |A fejléc tetején megjelenő szöveg. |
-| Alcím |A szöveg, amely a fejléc tetején a cím alatt jelenik meg. |
+| Beosztás |A fejléc tetején megjelenő szöveg. |
+| Felirat |A szöveg, amely a fejléc tetején a cím alatt jelenik meg. |
 | **Vonaldiagram** | |
 | Lekérdezés |A lekérdezés futtatása a vonaldiagramot. Az első tulajdonság egy szöveges érték, a második tulajdonság pedig egy numerikus értéket. Ez a lekérdezés parancsmagokéval használ a *mérték* kulcsszó összefoglalva az eredményeket. Ha a lekérdezés a *időköz* kulcsszó, a diagram x tengely ez alatt az időtartam használja. Ha a lekérdezés nem tartalmazza a *időköz* kulcsszó, az x tengely használ óránként történik. |
 | Átkattintásos navigáció | A fejlécére kattintva végrehajtott műveletet.  További információkért lásd: [közös beállítások](#click-through-navigation). |
@@ -306,8 +306,8 @@ A vonaldiagram-verem három külön vonaldiagramok használata több sorozat id�
 | Új csoport |Válassza ki ezt a hivatkozást az új csoport létrehozása a nézetben, a jelenlegi nézet ellenében. |
 | Ikon |A result fejlécben mellett megjelenik az képfájl. |
 | **Diagram – 1<br>2 diagram<br>3 mutató részletes diagram** |**> Header** |
-| Cím |A diagram tetején megjelenő szöveg. |
-| Alcím |A szöveg, amely a diagram tetején a cím alatt jelenik meg. |
+| Beosztás |A diagram tetején megjelenő szöveg. |
+| Felirat |A szöveg, amely a diagram tetején a cím alatt jelenik meg. |
 | **Diagram – 1<br>2 diagram<br>3 mutató részletes diagram** |**Vonaldiagram** |
 | Lekérdezés |A lekérdezés futtatása a vonaldiagramot. Az első tulajdonság egy szöveges érték, a második tulajdonság pedig egy numerikus értéket. Ez a lekérdezés parancsmagokéval használ a *mérték* kulcsszó összefoglalva az eredményeket. Ha a lekérdezés a *időköz* kulcsszó, a diagram x tengely ez alatt az időtartam használja. Ha a lekérdezés nem tartalmazza a *időköz* kulcsszó, az x tengely használ óránként történik. |
 | Átkattintásos navigáció | A fejlécére kattintva végrehajtott műveletet.  További információkért lásd: [közös beállítások](#click-through-navigation). |
@@ -332,7 +332,7 @@ Az alábbi táblázat az átkattintásos navigáció vonatkozó beállításait 
 | Beállítás           | Leírás |
 |:--|:--|
 | Naplókeresés (automatikus) | Napló lekérdezés futtatását, amikor kiválaszt egy fejléc elemet.  Ez az elem alapján ugyanazon log lekérdezés.
-| Naplók keresése        | Napló lekérdezés futtatását, amikor kiválaszt egy elemet a listában.  Írja be a lekérdezést a **navigációs lekérdezés** mezőbe.   Használat *{kijelölt elem}* a szintaxist, az a felhasználó által kiválasztott elem tartalmazza.  Például, ha a lekérdezés nevű oszlop *számítógép* és a navigációs lekérdezés *{kijelölt elem}*, mint például a lekérdezés *számítógép = "Sajátgép"* fut, amikor kiválaszt egy számítógép. Ha a navigációs lekérdezés *típus = {kijelölt elem} esemény*, a lekérdezés *típusa = esemény számítógép = "Sajátgép"* futtatása. |
+| Naplók keresése        | Napló lekérdezés futtatását, amikor kiválaszt egy elemet a listában.  Írja be a lekérdezést a **navigációs lekérdezés** mezőbe.   Használat *{kijelölt elem}* a szintaxist, az a felhasználó által kiválasztott elem tartalmazza.  Például, ha a lekérdezés nevű oszlop *számítógép* és a navigációs lekérdezés *{kijelölt elem}* , mint például a lekérdezés *számítógép = "Sajátgép"* fut, amikor kiválaszt egy számítógép. Ha a navigációs lekérdezés *típus = {kijelölt elem} esemény*, a lekérdezés *típusa = esemény számítógép = "Sajátgép"* futtatása. |
 | Nézet              | Nyissa meg a listában egy fejléc elemet vagy egy elem kijelölésekor nézetet.  Válassza ki a nézet nevét a munkaterület a **nézetnév** mezőbe. |
 
 

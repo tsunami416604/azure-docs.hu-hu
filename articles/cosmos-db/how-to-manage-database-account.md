@@ -1,23 +1,23 @@
 ---
 title: Megismerheti, hogyan kezelhet adatbázisfiókokat az Azure Cosmos DB-ben.
 description: Megismerheti, hogyan kezelhet adatbázisfiókokat az Azure Cosmos DB-ben.
-author: rimman
+author: markjbrown
 ms.service: cosmos-db
-ms.topic: sample
-ms.date: 04/08/2019
-ms.author: rimman
-ms.openlocfilehash: b2b5e58ca480aa3abaa0766319977b8d1160ebeb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.topic: conceptual
+ms.date: 09/28/2019
+ms.author: mjbrown
+ms.openlocfilehash: f67487f6da5c9be028703d7890e16ffab0c858c6
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59283001"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71812531"
 ---
-# <a name="manage-an-azure-cosmos-account"></a>Egy Azure Cosmos-fiók kezelése
+# <a name="manage-an-azure-cosmos-account"></a>Azure Cosmos-fiók kezelése
 
-Ez a cikk ismerteti az Azure Cosmos-fiók kezeléséhez. Megtudhatja, hogyan állítsa be a többhelyű, adja hozzá vagy távolítsa el a régióban, több írási régiót konfigurálása és feladatátvételi prioritások beállítása. 
+Ez a cikk azt ismerteti, hogyan kezelhető az Azure Cosmos-fiók különböző feladatai a Azure Portal, a Azure PowerShell, az Azure CLI és a Azure Resource Manager sablonok használatával.
 
-## <a name="create-a-database-account"></a>Adatbázisfiók létrehozása
+## <a name="create-an-account"></a>Fiók létrehozása
 
 ### <a id="create-database-account-via-portal"></a>Azure Portal
 
@@ -25,124 +25,63 @@ Ez a cikk ismerteti az Azure Cosmos-fiók kezeléséhez. Megtudhatja, hogyan ál
 
 ### <a id="create-database-account-via-cli"></a>Azure CLI
 
-```bash
-# Create an account
-az cosmosdb create --name <Azure Cosmos account name> --resource-group <Resource Group Name>
-```
+Lásd: [Azure Cosmos db fiók létrehozása az Azure CLI-vel](manage-with-cli.md#create-an-azure-cosmos-db-account)
 
-## <a name="configure-clients-for-multi-homing"></a>Ügyfelek konfigurálása többkiszolgálós környezethez
+### <a id="create-database-account-via-ps"></a>Azure PowerShell
 
-### <a id="configure-clients-multi-homing-dotnet"></a>.NET SDK-val v2
+Tekintse meg [Azure Cosmos db fiók létrehozása a PowerShell használatával](manage-with-powershell.md#create-account) című témakört.
 
-```csharp
-ConnectionPolicy policy = new ConnectionPolicy
-    {
-        ConnectionMode = ConnectionMode.Direct,
-        ConnectionProtocol = Protocol.Tcp,
-        UseMultipleWriteLocations = true
-    };
-policy.SetCurrentLocation("West US 2");
+### <a id="create-database-account-via-arm-template"></a>Azure Resource Manager sablon
 
-// Pass the connection policy with the preferred locations on it to the client.
-DocumentClient client = new DocumentClient(new Uri(this.accountEndpoint), this.accountKey, policy);
-```
-
-### <a id="configure-clients-multi-homing-dotnet-v3"></a>.NET SDK-val v3 (előzetes verzió)
-
-```csharp
-CosmosConfiguration config = new CosmosConfiguration("endpoint", "key");
-config.UseCurrentRegion("West US");
-CosmosClient client = new CosmosClient(config);
-```
-
-### <a id="configure-clients-multi-homing-java-async"></a>Java Async SDK
-
-```java
-ConnectionPolicy policy = new ConnectionPolicy();
-policy.setUsingMultipleWriteLocations(true);
-policy.setPreferredLocations(Collections.singletonList(region));
-
-AsyncDocumentClient client =
-    new AsyncDocumentClient.Builder()
-        .withMasterKeyOrResourceToken(this.accountKey)
-        .withServiceEndpoint(this.accountEndpoint)
-        .withConsistencyLevel(ConsistencyLevel.Eventual)
-        .withConnectionPolicy(policy).build();
-```
-
-### <a id="configure-clients-multi-homing-javascript"></a>Node.js/JavaScript/TypeScript SDK
-
-```javascript
-const connectionPolicy: ConnectionPolicy = new ConnectionPolicy();
-connectionPolicy.UseMultipleWriteLocations = true;
-connectionPolicy.PreferredLocations = [region];
-
-const client = new CosmosClient({
-  endpoint: config.endpoint,
-  auth: { masterKey: config.key },
-  connectionPolicy,
-  consistencyLevel: ConsistencyLevel.Eventual
-});
-```
-
-### <a id="configure-clients-multi-homing-python"></a>Python SDK
-
-```python
-connection_policy = documents.ConnectionPolicy()
-connection_policy.UseMultipleWriteLocations = True
-connection_policy.PreferredLocations = [region]
-
-client = cosmos_client.CosmosClient(self.account_endpoint, {'masterKey': self.account_key}, connection_policy, documents.ConsistencyLevel.Session)
-```
+Ez a Azure Resource Manager sablon létrehoz egy Azure Cosmos-fiókot minden olyan támogatott API számára, amely két régióval van konfigurálva, és lehetőség van a konzisztencia, az automatikus feladatátvétel és a több főkiszolgáló kiválasztására. A sablon üzembe helyezéséhez kattintson az üzembe helyezés az Azure-ra lehetőségre a readme oldalon, [Azure Cosmos-fiók létrehozása](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-create-multi-region-account)
 
 ## <a name="addremove-regions-from-your-database-account"></a>Régiók hozzáadása és eltávolítása az adatbázisfiókból
 
 ### <a id="add-remove-regions-via-portal"></a>Azure Portal
 
-1. Nyissa meg az Azure Cosmos-fiók, és nyissa meg a **adatok globális replikálása** menü.
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com). 
 
-2. Régiók hozzáadásához válassza a hatszögek a térképen a **+** , amelyek megfelelnek a kívánt régió(k) címkét. Másik lehetőségként egy régió hozzáadásához válassza a **+ Hozzáadás régió** lehetőséget, majd válassza ki a régiót a legördülő menüből.
+1. Nyissa meg az Azure Cosmos-fiókját, és nyissa meg az **adatreplikálás globális** menüjét.
 
-3. Régiók, törölje a leképezés egy vagy több régióban a kék hatszögek pipákkal kiválasztásával. Vagy válassza az "Ez a" (🗑) ikon mellett a régiót, a jobb oldalon.
+1. Régiók hozzáadásához válassza ki a térképen **+** a hatszögeket a kívánt régió (k) nek megfelelő címkével. Másik lehetőségként a régió hozzáadásához válassza a **+ régió hozzáadása** lehetőséget, és válasszon egy régiót a legördülő menüből.
 
-4. A módosítások mentéséhez válassza **OK**.
+1. A régiók eltávolításához törölje a térképen egy vagy több régiót úgy, hogy a kék hatszögeket jelöli a pipa jelekkel. Vagy válassza a jobb oldalon található régió🗑melletti "szemétkosár" () ikont.
 
-   ![Adja hozzá, vagy távolítsa el a régiók menü](./media/how-to-manage-database-account/add-region.png)
+1. A módosítások mentéséhez kattintson **az OK gombra**.
 
-Egy adott régióban írási módban, az írási régió nem távolítható el. Akkor kell feladatátvételt egy másik régióban az aktuális írási régióba törlése előtt.
+   ![Régiók hozzáadása vagy eltávolítása menü](./media/how-to-manage-database-account/add-region.png)
 
-Egy több régióban írási módban, hozzáadhat és eltávolíthat a bármely régió, ha legalább egy régiót.
+Egy egyrégiós írási módban nem távolíthatja el az írási régiót. Az aktuális írási régió törlése előtt a feladatátvételt egy másik régióba kell átadnia.
+
+Többrégiós írási módban bármely régiót hozzáadhat vagy eltávolíthat, ha legalább egy régióval rendelkezik.
 
 ### <a id="add-remove-regions-via-cli"></a>Azure CLI
 
-```bash
-# Create an account with 1 region
-az cosmosdb create --name <Azure Cosmos account name> --resource-group <Resource Group name> --locations eastus=0
+További információ: [régiók hozzáadása vagy eltávolítása az Azure CLI-vel](manage-with-cli.md#add-or-remove-regions)
 
-# Add a region
-az cosmosdb update --name <Azure Cosmos account name> --resource-group <Resource Group name> --locations eastus=0 westus=1
+### <a id="add-remove-regions-via-ps"></a>Azure PowerShell
 
-# Remove a region
-az cosmosdb update --name <Azure Cosmos account name> --resource-group <Resource Group name> --locations westus=0
-```
+További információ: [régiók hozzáadása vagy eltávolítása a PowerShell](manage-with-powershell.md#update-account) -lel
 
-## <a name="configure-multiple-write-regions"></a>Több írási régió konfigurálása
+## <a id="configure-multiple-write-regions"></a>Több írási régió konfigurálása
 
 ### <a id="configure-multiple-write-regions-portal"></a>Azure Portal
 
-Adatbázisfiók létrehozásakor győződjön meg arról, hogy a **Többrégiós írás** beállítás engedélyezve van.
+Nyissa meg az **adatreplikálás globálisan** lapot, és válassza az **Engedélyezés** lehetőséget a többrégiós írások engedélyezéséhez. Miután engedélyezte a többrégiós írást, az összes olyan olvasási régió, amelyre jelenleg a fiók tartozik, olvasási és írási régiók lesznek.
 
-![Az Azure Cosmos-fiók létrehozása képernyőképe](./media/how-to-manage-database-account/account-create.png)
+![Az Azure Cosmos-fiók több főkiszolgálós képernyőképet konfigurál](./media/how-to-manage-database-account/single-to-multi-master.png)
 
 ### <a id="configure-multiple-write-regions-cli"></a>Azure CLI
 
-```bash
-az cosmosdb create --name <Azure Cosmos account name> --resource-group <Resource Group name> --enable-multiple-write-locations true
-```
+Lásd: [több írási régió engedélyezése az Azure CLI-vel](manage-with-cli.md#enable-multiple-write-regions)
+
+### <a id="configure-multiple-write-regions-ps"></a>Azure PowerShell
+
+Lásd: [több írási régió engedélyezése a PowerShell](manage-with-powershell.md#multi-master) -lel
 
 ### <a id="configure-multiple-write-regions-arm"></a>Resource Manager-sablon
 
-A következő JSON-kód egyik példája egy [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) sablont. Használhatja egy Azure Cosmos-fiókra a telepítendő [korlátozott frissesség konzisztenciaszint](consistency-levels.md). A maximális frissesség időköze 5 másodperc. A kérelmek maximális számát elavult, amely még elfogadható 100 értékre van állítva. A Resource Manager-sablon formátuma és a szintaxissal kapcsolatos további információkért lásd: [Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md).
+A fiók a fiók és a beállítás `enableMultipleWriteLocations: true`létrehozásához használt Resource Manager-sablon üzembe helyezésével telepíthető át egyetlen főkiszolgálóról a több főkiszolgálóra. A következő Azure Resource Manager sablon egy egyszerű sablon, amely az SQL API-hoz két régióval és több írási hellyel rendelkező Azure Cosmos-fiókot helyez üzembe.
 
 ```json
 {
@@ -153,13 +92,20 @@ A következő JSON-kód egyik példája egy [Azure Resource Manager](https://doc
             "type": "String"
         },
         "location": {
-            "type": "String"
+            "type": "String",
+            "defaultValue": "[resourceGroup().location]"
         },
-        "locationName": {
-            "type": "String"
+        "primaryRegion":{
+            "type":"string",
+            "metadata": {
+                "description": "The primary replica region for the Cosmos DB account."
+            }
         },
-        "defaultExperience": {
-            "type": "String"
+        "secondaryRegion":{
+            "type":"string",
+            "metadata": {
+              "description": "The secondary replica region for the Cosmos DB account."
+          }
         }
     },
     "resources": [
@@ -169,125 +115,120 @@ A következő JSON-kód egyik példája egy [Azure Resource Manager](https://doc
             "name": "[parameters('name')]",
             "apiVersion": "2015-04-08",
             "location": "[parameters('location')]",
-            "tags": {
-                "defaultExperience": "[parameters('defaultExperience')]"
-            },
+            "tags": {},
             "properties": {
                 "databaseAccountOfferType": "Standard",
-                "consistencyPolicy": {
-                    "defaultConsistencyLevel": "BoundedStaleness",
-                    "maxIntervalInSeconds": 5,
-                    "maxStalenessPrefix": 100
-                },
-                "locations": [
+                "consistencyPolicy": { "defaultConsistencyLevel": "Session" },
+                "locations":
+                [
                     {
-                        "id": "[concat(parameters('name'), '-', parameters('location'))]",
-                        "failoverPriority": 0,
-                        "locationName": "[parameters('locationName')]"
+                        "locationName": "[parameters('primaryRegion')]",
+                        "failoverPriority": 0
+                    },
+                    {
+                        "locationName": "[parameters('secondaryRegion')]",
+                        "failoverPriority": 1
                     }
                 ],
-                "isVirtualNetworkFilterEnabled": false,
-                "enableMultipleWriteLocations": true,
-                "virtualNetworkRules": [],
-                "dependsOn": []
+                "enableMultipleWriteLocations": true
             }
         }
     ]
 }
 ```
 
+## <a id="automatic-failover"></a>Automatikus feladatátvétel engedélyezése az Azure Cosmos-fiókhoz
 
-## <a id="manual-failover"></a>Manuális feladatátvétel az Azure Cosmos-fiók engedélyezése
-
-### <a id="enable-manual-failover-via-portal"></a>Azure Portal
-
-1. Nyissa meg az Azure Cosmos-fiók, és nyissa meg a **adatok globális replikálása** menü.
-
-2. Válassza a menü tetején **kézi feladatátvételt**.
-
-   ![Adatok globális replikálása menü](./media/how-to-manage-database-account/replicate-data-globally.png)
-
-3. Az a **kézi feladatátvételt** menüben válassza ki az új írási régiót. Válassza ki a jelölőnégyzet bejelölésével jelezze, hogy tudomásul veszi ezt a beállítást módosítja az írási régiót.
-
-4. A feladatátvétel indításához válasszon **OK**.
-
-   ![Manuális feladatátvétel menü a portálon](./media/how-to-manage-database-account/manual-failover.png)
-
-### <a id="enable-manual-failover-via-cli"></a>Azure CLI
-
-```bash
-# Given your account currently has regions with priority: eastus=0 westus=1
-# Change the priority order to trigger a failover of the write region
-az cosmosdb update --name <Azure Cosmos account name> --resource-group <Resource Group name> --locations westus=0 eastus=1
-```
-
-## <a id="automatic-failover"></a>Az Azure Cosmos DB-fiók automatikus feladatátvétel engedélyezése
+Az automatikus feladatátvételi beállítás lehetővé teszi, hogy az Azure Cosmos DB a legmagasabb feladatátvételi prioritással rendelkező régióba feladatátvételt hajtson végre, ha egy adott régió elérhetetlenné válik. Ha engedélyezve van az automatikus feladatátvétel, a régió prioritását módosíthatja. A fióknak két vagy több régióval kell rendelkeznie az automatikus feladatátvétel engedélyezéséhez.
 
 ### <a id="enable-automatic-failover-via-portal"></a>Azure Portal
 
-1. Az Azure Cosmos DB-fiók megnyitása a **adatok globális replikálása** ablaktáblán. 
+1. Az Azure Cosmos-fiókjából nyissa meg az **adatok replikálása globális** ablaktáblát.
 
-2. Válassza a panel tetején lévő **automatikus feladatátvétel**.
+2. A panel tetején válassza az **automatikus feladatátvétel**lehetőséget.
 
    ![Adatok globális replikálása menü](./media/how-to-manage-database-account/replicate-data-globally.png)
 
-3. Az a **automatikus feladatátvétel** ablaktáblán ellenőrizze, hogy **automatikus feladatátvétel engedélyezése** értékre van állítva **ON**. 
+3. Az **automatikus feladatátvétel** ablaktáblán **Győződjön meg arról**, hogy az **automatikus feladatátvétel engedélyezése** beállítás be értékre van állítva. 
 
 4. Kattintson a **Mentés** gombra.
 
    ![Automatikus feladatátvétel menü a portálon](./media/how-to-manage-database-account/automatic-failover.png)
 
-Is beállíthat a feladatátvételi prioritások ebben a menüben.
-
 ### <a id="enable-automatic-failover-via-cli"></a>Azure CLI
 
-```bash
-# Enable automatic failover on account creation
-az cosmosdb create --name <Azure Cosmos account name> --resource-group <Resource Group name> --enable-automatic-failover true
+Lásd: [az automatikus feladatátvétel engedélyezése az Azure CLI-vel](manage-with-cli.md#enable-automatic-failover)
 
-# Enable automatic failover on an existing account
-az cosmosdb update --name <Azure Cosmos account name> --resource-group <Resource Group name> --enable-automatic-failover true
+### <a id="enable-automatic-failover-via-ps"></a>Azure PowerShell
 
-# Disable automatic failover on an existing account
-az cosmosdb update --name <Azure Cosmos account name> --resource-group <Resource Group name> --enable-automatic-failover false
-```
+Lásd: [az automatikus feladatátvétel engedélyezése a PowerShell](manage-with-powershell.md#enable-automatic-failover) -lel
 
-## <a name="set-failover-priorities-for-your-azure-cosmos-account"></a>Állítsa be a feladatátvételi prioritásokat az Azure Cosmos-fiók
+## <a name="set-failover-priorities-for-your-azure-cosmos-account"></a>Feladatátvételi prioritások beállítása az Azure Cosmos-fiókhoz
+
+Ha egy Cosmos-fiók automatikus feladatátvételre van konfigurálva, a régiók feladatátvételi prioritása módosítható.
+
+> [!IMPORTANT]
+> Az írási régió (nulla feladatátvételi prioritása) nem módosítható, ha a fiók konfigurálva van az automatikus feladatátvételre. Az írási régió módosításához le kell tiltania az automatikus feladatátvételt, és manuális feladatátvételt kell végrehajtania.
 
 ### <a id="set-failover-priorities-via-portal"></a>Azure Portal
 
-1. Az Azure Cosmos-fiók megnyitása a **adatok globális replikálása** ablaktáblán. 
+1. Az Azure Cosmos-fiókjából nyissa meg az **adatok replikálása globális** ablaktáblát.
 
-2. Válassza a panel tetején lévő **automatikus feladatátvétel**.
+2. A panel tetején válassza az **automatikus feladatátvétel**lehetőséget.
 
    ![Adatok globális replikálása menü](./media/how-to-manage-database-account/replicate-data-globally.png)
 
-3. Az a **automatikus feladatátvétel** ablaktáblán ellenőrizze, hogy **automatikus feladatátvétel engedélyezése** értékre van állítva **ON**. 
+3. Az **automatikus feladatátvétel** ablaktáblán **Győződjön meg arról**, hogy az **automatikus feladatátvétel engedélyezése** beállítás be értékre van állítva.
 
-4. Feladatátvétel prioritásának módosítására, húzza az olvasási régiók a három ponttal jelölt keresztül jelennek meg, ha rámutat a sor bal oldalán. 
+4. A feladatátvételi prioritás módosításához húzza az olvasási régiókat a sor bal oldalán lévő három pontra, amikor az egérmutatót a fölé viszi.
 
 5. Kattintson a **Mentés** gombra.
 
    ![Automatikus feladatátvétel menü a portálon](./media/how-to-manage-database-account/automatic-failover.png)
 
-Ebben a menüben nem módosíthatja az írási régiót. Az írási régió manuális módosításához manuális feladatátvételt kell végrehajtania.
-
 ### <a id="set-failover-priorities-via-cli"></a>Azure CLI
 
-```bash
-# Assume region order is initially eastus=0 westus=1 automatic failover on account creation
-az cosmosdb failover-priority-change --name <Azure Cosmos account name> --resource-group <Resource Group name> --failover-policies westus=0 eastus=1
-```
+Lásd: [a feladatátvételi prioritás beállítása az Azure CLI-vel](manage-with-cli.md#set-failover-priority)
+
+### <a id="set-failover-priorities-via-ps"></a>Azure PowerShell
+
+Lásd: [a feladatátvételi prioritás beállítása a PowerShell](manage-with-powershell.md#modify-failover-priority) -lel
+
+## <a id="manual-failover"></a>Manuális feladatátvétel végrehajtása Azure Cosmos-fiókon
+
+> [!IMPORTANT]
+> Ahhoz, hogy a művelet sikeres legyen, az Azure Cosmos-fióknak konfigurálva kell lennie a manuális feladatátvételhez.
+
+A manuális feladatátvétel végrehajtásának folyamata magában foglalja a fiók írási régiójának (feladatátvételi prioritás = 0) a fiókhoz konfigurált másik régióba való módosítását.
+
+> [!NOTE]
+> A több főkiszolgálós fiókok feladatátvétele nem végezhető el manuálisan. Az Azure Cosmos SDK-t használó alkalmazások esetében az SDK felismeri, ha egy régió elérhetetlenné válik, majd automatikusan átirányítja a következő legközelebbi régióba, ha az SDK-ban több-vezérlési API-t használ.
+
+### <a id="enable-manual-failover-via-portal"></a>Azure Portal
+
+1. Nyissa meg az Azure Cosmos-fiókját, és nyissa meg az **adatreplikálás globális** menüjét.
+
+2. A menü tetején válassza a **manuális feladatátvétel**lehetőséget.
+
+   ![Adatok globális replikálása menü](./media/how-to-manage-database-account/replicate-data-globally.png)
+
+3. A **manuális feladatátvétel** menüben válassza ki az új írási régiót. Jelölje be a jelölőnégyzetet, és jelezze, hogy ezt a lehetőséget az írási régió módosításakor adja meg.
+
+4. A feladatátvétel elindításához kattintson **az OK gombra**.
+
+   ![Manuális feladatátvétel menü a portálon](./media/how-to-manage-database-account/manual-failover.png)
+
+### <a id="enable-manual-failover-via-cli"></a>Azure CLI
+
+Lásd: [a manuális feladatátvétel elindítása az Azure CLI-vel](manage-with-cli.md#trigger-manual-failover)
+
+### <a id="enable-manual-failover-via-ps"></a>Azure PowerShell
+
+Lásd: [a manuális feladatátvétel elindítása a PowerShell](manage-with-powershell.md#trigger-manual-failover) -lel
 
 ## <a name="next-steps"></a>További lépések
 
-Olvassa el a következő cikkeket:
+Az Azure Cosmos-fiók, valamint az adatbázis és a tárolók kezelésével kapcsolatos további információkért és példákért olvassa el a következő cikkeket:
 
-* [Konzisztencia kezelése](how-to-manage-consistency.md)
-* [Régiók közötti ütközések kezelése](how-to-manage-conflicts.md)
-* [Globális terjesztés – technikai részletek](global-dist-under-the-hood.md)
-* [Az alkalmazások több főkiszolgálós konfigurálása](how-to-multi-master.md)
-* [Ügynökönkénti ügyfelek konfigurálása](how-to-manage-database-account.md#configure-clients-for-multi-homing)
-* [Régiók hozzáadása vagy eltávolítása az Azure Cosmos DB-fiókból](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
-* [Hozzon létre egy egyéni ütközésfeloldási házirend](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy)
-
+* [Azure Cosmos DB kezelése Azure PowerShell használatával](manage-with-powershell.md)
+* [Az Azure Cosmos DB kezelése az Azure CLI-vel](manage-with-cli.md)

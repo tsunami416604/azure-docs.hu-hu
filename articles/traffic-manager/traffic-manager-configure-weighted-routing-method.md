@@ -3,20 +3,21 @@ title: Konfigurálja a súlyozott ciklikus időszeletelési forgalom-útválaszt
 description: Ez a cikk azt ismerteti, hogyan forgalom Ciklikus időszeleteléses metódus a Traffic Managerrel
 services: traffic-manager
 documentationcenter: ''
-author: kumudd
+author: asudbring
+manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
-ms.author: kumud
-ms.openlocfilehash: ef39c09d4fc411937fdd6f4b5b5aec491efd0c5f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: allensu
+ms.openlocfilehash: 4ca43bf958606a71911bf5d35f31e4fe0b342601
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57994551"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071282"
 ---
 # <a name="configure-the-weighted-traffic-routing-method-in-traffic-manager"></a>Súlyozott forgalom-útválasztási módszer a Traffic Manager konfigurálása
 
@@ -34,7 +35,7 @@ Forgalom útválasztási módszer egyik biztosítanak megegyező végpontokat, a
     1. A **forgalom-útválasztási módszer beállításait**, győződjön meg arról, hogy a forgalom-útválasztási módszer **súlyozott**. Ha nem, kattintson a **súlyozott** a legördülő listából.
     2. Állítsa be a **Végpontfigyelő beállításai** azonos az összes minden végpontot a profiljában, az alábbiak szerint:
         1. Válassza ki a megfelelő **protokoll**, és adja meg a **Port** számát. 
-        2. A **elérési** írja be a perjellel */*. Végpontok monitorozása, az elérési útvonalat és fájlnevet kell megadnia. A perjel "/" érvényes bejegyzés a relatív elérési útja, és azt jelenti, hogy a fájl a gyökérmappában lévő (alapértelmezett).
+        2. A **elérési** írja be a perjellel */* . Végpontok monitorozása, az elérési útvonalat és fájlnevet kell megadnia. A perjel "/" érvényes bejegyzés a relatív elérési útja, és azt jelenti, hogy a fájl a gyökérmappában lévő (alapértelmezett).
         3. Kattintson a lap tetején **mentése**.
 5. A módosítások teszteléséhez a konfiguráció a következő:
     1.  A portál keresősávjában, keresse meg a Traffic Manager-profil nevét és a Traffic Manager-profil az eredmények között kattintson, amely jelenik meg.

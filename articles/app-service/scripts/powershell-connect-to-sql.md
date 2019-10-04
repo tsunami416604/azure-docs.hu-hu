@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell-Példaszkript – alkalmazás csatlakoztatása SQL-adatbázishoz |} A Microsoft Docs
-description: Azure PowerShell-Példaszkript – egy App Service-alkalmazás csatlakoztatása SQL-adatbázis
+title: Azure PowerShell parancsfájl-minta – alkalmazás összekötése egy SQL-adatbázissal | Microsoft Docs
+description: Azure PowerShell parancsfájl-minta – egy App Service-alkalmazás összekötése egy SQL-adatbázissal
 services: app-service\web
 documentationcenter: ''
 author: syntaxc4
@@ -9,23 +9,22 @@ editor: ''
 tags: azure-service-management
 ms.assetid: 055440a9-fff1-49b2-b964-9c95b364e533
 ms.service: app-service
-ms.devlang: multiple
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: web
 ms.date: 03/20/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: d0c38b69d8cb2fda85a85fd27f0a5b26da51b699
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 799fb67b20c45653ec741a92ec7a75aff2f8c509
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106205"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70087827"
 ---
-# <a name="connect-an-app-service-app-to-a-sql-database"></a>Az App Service alkalmazás csatlakoztatása SQL-adatbázishoz
+# <a name="connect-an-app-service-app-to-a-sql-database"></a>App Service-alkalmazás összekötése egy SQL-adatbázissal
 
-Ebben a forgatókönyvben megtudhatja, hogyan hozhat létre egy Azure SQL database és a egy App Service-alkalmazást. Ezután társítani fogja az SQL database az alkalmazás Alkalmazásbeállítások használatával.
+Ebből a forgatókönyvből megtudhatja, hogyan hozhat létre egy Azure SQL Database-adatbázist és egy App Service alkalmazást. Ezután az alkalmazás-beállítások használatával összekapcsolja az SQL-adatbázist az alkalmazással.
 
 Szükség esetén telepítse az Azure PowerShellt az [Azure PowerShell útmutatójának](/powershell/azure/overview) utasításait követve, majd a `Connect-AzAccount` futtatásával hozza létre a kapcsolatot az Azure-ral.
 
@@ -37,7 +36,7 @@ Szükség esetén telepítse az Azure PowerShellt az [Azure PowerShell útmutat�
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása 
 
-A példaszkript futtatása után a következő parancs segítségével törölheti az erőforráscsoportot, App Service-alkalmazást, és az összes kapcsolódó erőforrás.
+A parancsfájl-minta futtatása után a következő paranccsal távolíthatja el az erőforráscsoportot, App Service alkalmazást és az összes kapcsolódó erőforrást.
 
 ```powershell
 Remove-AzResourceGroup -Name myResourceGroup -Force
@@ -51,14 +50,14 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | Létrehoz egy App Service-csomagot. |
-| [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Létrehoz egy App Service-alkalmazást. |
-| [New-AzSQLServer](/powershell/module/az.sql/new-azsqlserver) | Létrehoz egy SQL Database-kiszolgálót. |
-| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Létrehoz egy tűzfalszabályt egy SQL Database-kiszolgáló számára. |
+| [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Létrehoz egy App Service alkalmazást. |
+| [New-AzSQLServer](/powershell/module/az.sql/new-azsqlserver) | Létrehoz egy SQL-adatbáziskiszolgálót. |
+| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Létrehoz egy tűzfalszabályt egy SQL-adatbáziskiszolgáló számára. |
 | [New-AzSQLDatabase](/powershell/module/az.sql/new-azsqldatabase) | Létrehoz egy adatbázist vagy egy rugalmas adatbázist. |
-| [Set-AzWebApp](/powershell/module/az.websites/set-azwebapp) | Módosítja egy App Service-alkalmazás konfigurációja. |
+| [Set-AzWebApp](/powershell/module/az.websites/set-azwebapp) | Módosítja egy App Service alkalmazás konfigurációját. |
 
 ## <a name="next-steps"></a>További lépések
 
 Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](/powershell/azure/overview).
 
-További Azure Powershell-minták az Azure App Service-ben megtalálható a [Azure PowerShell-minták](../samples-powershell.md).
+A Azure App Service további Azure PowerShell-mintákat talál a [Azure PowerShell mintákban](../samples-powershell.md).

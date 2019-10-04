@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 9b9922602218280d58331a755ed0dfed7df96f40
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55889511"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179155"
 ---
 #### <a name="to-cable-your-device-for-power"></a>A teljesítményre az eszköz bekábelezése
 > [!NOTE]
@@ -42,8 +42,8 @@ ms.locfileid: "55889511"
     | 1 |Elsődleges ház |
     | 2 |PCM 0 |
     | 3 |PCM 1 |
-    | 4 |0. vezérlő |
-    | 5 |1. vezérlő |
+    | 4 |Vezérlő 0 |
+    | 5 |Vezérlő 1 |
     | 6 |Az EBOD-vezérlő 0 |
     | 7 |Az EBOD-vezérlő 1 |
     | 8 |EBOD ház |

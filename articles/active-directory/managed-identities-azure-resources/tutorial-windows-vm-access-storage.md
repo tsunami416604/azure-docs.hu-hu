@@ -15,16 +15,21 @@ ms.workload: identity
 ms.date: 01/24/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5fd2e30f7ae96ff38b0ded11c158fcef636e3a26
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 147ee2450a6a67f8ca02149105533401d038a53a
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58448802"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65191080"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>Oktatóanyag: Az Azure Storage elérése hozzáférési kulcs használatával egy Windows virtuális gép alapértelmezett felügyelt identitás használata
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
+
+
+> [!IMPORTANT] 
+> Az Azure Storage mostantól támogatja az Azure AD-hitelesítés. Ajánlott eljárásként használja [Azure AD-hitelesítés](tutorial-vm-windows-access-storage.md) tárelérési kulcsok helyett. 
+
 
 Ez az oktatóanyag bemutatja, hogyan kérheti le a tárfiókok hozzáférési kulcsait egy Windows rendszerű virtuális gép (VM) rendszer által hozzárendelt felügyelt identitásának használatával. A tárelérési kulcsokat a szokásos módon használhatja a tárolási műveletek során, például a Storage SDK használata esetén. Ebben az oktatóanyagban blobokat töltünk fel és le az Azure Storage PowerShell használatával. Az alábbiakat fogja elsajátítani:
 

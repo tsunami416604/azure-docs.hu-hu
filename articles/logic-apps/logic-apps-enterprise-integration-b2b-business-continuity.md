@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: cf44af18-1fe5-41d5-9e06-cc57a968207c
 ms.date: 04/10/2017
-ms.openlocfilehash: 8d024e0bc90724892bc53f8895b270716ad0cefc
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ac29ef7f0599cc41924ba1a5a00e46b0292e7e9b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58099433"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65967744"
 ---
 # <a name="cross-region-disaster-recovery-for-b2b-integration-accounts-in-azure-logic-apps"></a>Régiók közötti vészhelyreállítása az Azure Logic Apps B2B-integrációs fiókok
 
@@ -62,7 +62,7 @@ A Logic Apps integrációs fiókban lévő üzletmenet-folytonossági támogatja
 
 Során vész-helyreállítási esemény, ha az elsődleges régióban nem érhető el az üzletmenet folytonosságának forgalmat a másodlagos régióba. A partnerek által teljesítésével egy másodlagos régióba segítséget nyújt egy üzleti függvények gyors felel meg az RPO/RTO történő helyreállításához. A minimálisra csökkenti a feladatátvételt egy másik régióban egy adott régióban található erőfeszítéseket is. 
 
-Nincs a várható késés ellenőrzőszámok másolása egy elsődleges régióról egy másodlagos régióba közben. Az ajánlás az ismétlődő létrehozott ellenőrzőszámok partnereknek küldenek egy vész-helyreállítási esemény elkerüléséhez, az ellenőrzőszámok növekszik a másodlagos régióba szerződés használatával [PowerShell-parancsmagok](https://blogs.msdn.microsoft.com/david_burgs_blog/2017/03/09/fresh-of-the-press-new-azure-powershell-cmdlets-for-upcoming-x12-connector-disaster-recovery).
+Nincs a várható késés ellenőrzőszámok másolása egy elsődleges régióról egy másodlagos régióba közben. Az ajánlás az ismétlődő létrehozott ellenőrzőszámok partnereknek küldenek egy vész-helyreállítási esemény elkerüléséhez, az ellenőrzőszámok növekszik a másodlagos régióba szerződés használatával [PowerShell-parancsmagok](https://docs.microsoft.com/powershell/module/azurerm.logicapp/set-azurermintegrationaccountgeneratedicn?view=azurermps-6.13.0).
 
 ## <a name="fall-back-to-a-primary-region-post-disaster-event"></a>Visszatérés egy elsődleges régióban utáni vész-helyreállítási esemény
 
@@ -70,7 +70,7 @@ Visszaállni egy elsődleges régióban elérhetővé válik, kövesse az alább
 
 1. A másodlagos régió partnerektől származó üzenetek fogadását.  
 
-2. Növelje a generált ellenőrzőszámok az elsődleges régió-megállapodásokat használatával [PowerShell-parancsmagok](https://blogs.msdn.microsoft.com/david_burgs_blog/2017/03/09/fresh-of-the-press-new-azure-powershell-cmdlets-for-upcoming-x12-connector-disaster-recovery).  
+2. Növelje a generált ellenőrzőszámok az elsődleges régió-megállapodásokat használatával [PowerShell-parancsmagok](https://docs.microsoft.com/powershell/module/azurerm.logicapp/set-azurermintegrationaccountgeneratedicn?view=azurermps-6.13.0).  
 
 3. Közvetlen forgalmat a másodlagos régióból az elsődleges régióba.
 
@@ -112,7 +112,7 @@ Ahhoz, hogy a vész-helyreállítási bejövő üzenetek, válassza ki a duplik�
 
 6. A Keresés **X12**, és válassza ki **X12 – a hozzáadandó vagy frissítendő ellenőrzőszámok**.   
 
-   ![Ellenőrzőszámok hozzáadása vagy frissítése](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn5.png)
+   ![A hozzáadandó vagy frissítendő ellenőrzőszámok](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn5.png)
 
 7. Szeretne egy másodlagos régióba integrációs fiók művelet csatlakozni, válassza ki a **kapcsolat módosítása** > **új kapcsolat hozzáadása** a rendelkezésre álló integrációs fiókok listáját. Adja meg a kapcsolat nevét, és válassza ki a *másodlagos régióba integrációs fiók* a listából, és válassza a **létrehozás**. 
 
@@ -167,7 +167,7 @@ Ahhoz, hogy a vész-helyreállítási bejövő üzenetek, válassza ki a duplik�
 
 7. A Keresés **EDIFACT**, és válassza ki **EDIFACT - hozzáadandó vagy frissítendő ellenőrzőszámok**.   
 
-   ![Ellenőrzőszámok hozzáadása vagy frissítése](./media/logic-apps-enterprise-integration-b2b-business-continuity/EdifactChooseAction.png)
+   ![A hozzáadandó vagy frissítendő ellenőrzőszámok](./media/logic-apps-enterprise-integration-b2b-business-continuity/EdifactChooseAction.png)
 
 8. Szeretne egy másodlagos régióba integrációs fiók művelet csatlakozni, válassza ki a **kapcsolat módosítása** > **új kapcsolat hozzáadása** a rendelkezésre álló integrációs fiókok listáját. Adja meg a kapcsolat nevét, és válassza ki a *másodlagos régióba integrációs fiók* a listából, és válassza a **létrehozás**.
 

@@ -5,6 +5,7 @@
     - name: Mi az Azure Maps?
       href: about-azure-maps.md
 - name: Gyors útmutatók
+  expanded: true
   items:
     - name: Webalkalmazás létrehozása
       href: quick-demo-map-app.md
@@ -24,6 +25,10 @@
       items:
         - name: Geokerítés beállítása
           href: tutorial-geofence.md
+        - name: Térelemzés
+          href: tutorial-iot-hub-maps.md
+        - name: EV-útválasztás az Azure Notebooks használatával (Python)
+          href: tutorial-ev-routing.md
 - name: Alapelvek
   items:
     - name: Hitelesítés az Azure Maps használatával
@@ -42,7 +47,9 @@
           href: render-coverage.md
         - name: Útválasztási lefedettség
           href: routing-coverage.md
-    - name: Támogatott nyelvek
+        - name: Mobilitási lefedettség
+          href: mobility-coverage.md
+    - name: Honosítási támogatás
       href: supported-languages.md
     - name: Támogatott térképstílusok
       href: supported-map-styles.md
@@ -50,6 +57,8 @@
       href: supported-browsers.md
     - name: Nagyítási szintek és csemperács
       href: zoom-levels-and-tile-grid.md
+    - name: Mobilitási szolgáltatás adatstruktúrája
+      href: mobility-service-data-structure.md
 - name: Útmutatók
   items:
     - name: Maps-fiókok kezelése
@@ -70,33 +79,43 @@
           href: how-to-use-best-practices-for-search.md
         - name: Egyéni adatok megjelenítése statikus térképen
           href: how-to-render-custom-data.md
+        - name: Nyilvános átviteli útvonalak kérése
+          href: how-to-request-transit-data.md
+        - name: Valós idejű nyilvános átviteli adatok kérése
+          href: how-to-request-real-time-data.md
     - name: Fejlesztés a webes SDK-val
       items:
         - name: Térképvezérlő
           items:
-            - name: A térkép vezérlőelem használata
+            - name: A webes térképvezérlő használatának első lépései
               href: how-to-use-map-control.md
             - name: Térkép létrehozása
               href: map-create.md
-            - name: Térképstílus kiválasztása
+            - name: Térkép stílusának módosítása
               href: choose-map-style.md
             - name: Vezérlőelemek hozzáadása a térképhez
               href: map-add-controls.md
+            - name: Adatforrás létrehozása
+              href: create-data-source-web-sdk.md
             - name: Szimbólumréteg hozzáadása
               href: map-add-pin.md
-            - name: Előugró ablak hozzáadása
-              href: map-add-popup.md
             - name: Buborékréteg hozzáadása
               href: map-add-bubble-layer.md
-            - name: Alakzatok hozzáadása
+            - name: Vonalréteg hozzáadása
+              href: map-add-line-layer.md
+            - name: Sokszögréteg hozzáadása
               href: map-add-shape.md
             - name: Hőtérképréteg hozzáadása
               href: map-add-heat-map-layer.md
+            - name: Előugró ablak hozzáadása
+              href: map-add-popup.md
             - name: Fürt pontadatai
               href: clustering-point-data-web-sdk.md
             - name: Adatvezérelt stíluskifejezések használata
               href: data-driven-style-expressions-web-sdk.md
-            - name: Kép átfedése
+            - name: Rendszerképsablonok használata
+              href: how-to-use-image-templates-web-sdk.md
+            - name: Rendszerképréteg hozzáadása
               href: map-add-image-layer.md
             - name: Csemperétegek hozzáadása
               href: map-add-tile-layer.md
@@ -108,6 +127,14 @@
               href: map-events.md
             - name: Alkalmazás elérhetővé tétele
               href: map-accessibility.md
+        - name: Rajzeszközök
+          items:
+            - name: Rajzolási eszköztár hozzáadása
+              href: map-add-drawing-toolbar.md
+            - name: Rajzolási beállítások megadása
+              href: set-drawing-options.md
+            - name: Formázott adatok lekérése
+              href: map-get-shape-data.md
         - name: Szolgáltatások modul
           items:
             - name: A szolgáltatásmodul használata
@@ -120,8 +147,20 @@
               href: map-route.md
     - name: Fejlesztés az Android SDK-val
       items:
-        - name: Android-térképvezérlőelemek használata
+        - name: Az androidos térképvezérlő használatának első lépései
           href: how-to-use-android-map-control-library.md
+        - name: A térkép stílusának módosítása
+          href: set-android-map-styles.md
+        - name: Szimbólumréteg hozzáadása
+          href: how-to-add-symbol-to-android-map.md
+        - name: Alakzatok hozzáadása
+          href: how-to-add-shapes-to-android-map.md
+        - name: Funkcióinformációk megjelenítése
+          href: display-feature-information-android.md
+        - name: Mozaikréteg hozzáadása
+          href: how-to-add-tile-layer-android-map.md
+    - name: Adatokkal kapcsolatos visszajelzés küldése
+      href: how-to-use-feedback-tool.md
 - name: Referencia
   items:
     - name: API- és paraméterbővítmények
@@ -140,6 +179,8 @@
           href: 'https://docs.microsoft.com/rest/api/maps/data'
         - name: Földrajzi hely szolgáltatás
           href: 'https://docs.microsoft.com/rest/api/maps/geolocation'
+        - name: Mobilitási szolgáltatás
+          href: 'https://docs.microsoft.com/rest/api/maps/mobility'
         - name: Megjelenítő szolgáltatás
           href: 'https://docs.microsoft.com/rest/api/maps/render'
         - name: Útvonal szolgáltatás
@@ -158,6 +199,8 @@
       items:
         - name: Térképvezérlő
           href: 'https://docs.microsoft.com/javascript/api/azure-maps-javascript/'
+        - name: Rajzeszközök
+          href: 'https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/'
         - name: Szolgáltatásmodul
           href: 'https://docs.microsoft.com/javascript/api/azure-maps-rest/'
     - name: Resource Manager-sablon
@@ -165,7 +208,7 @@
 - name: További források
   items:
     - name: Az Azure Maps használati feltételei
-      href: 'https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31'
+      href: 'https://azure.microsoft.com/support/legal/'
     - name: Az Azure Maps árképzése
       href: 'https://azure.microsoft.com/pricing/details/azure-maps'
     - name: Díjkalkulátor
@@ -176,6 +219,8 @@
       href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=azurelbs'
     - name: Azure Maps-videók
       href: 'https://aka.ms/AzureMapsVideos'
+    - name: Azure Maps-esettanulmányok
+      href: 'https://aka.ms/AzureMapsCaseStudies'
     - name: Azure Maps-szószedet
       href: glossary.md
     - name: Szolgáltatási hírek
@@ -200,6 +245,8 @@
       items:
         - name: IoT Hub
           href: /azure/iot-hub
+        - name: IoT Plug and Play
+          href: /azure/iot-pnp
         - name: IoT Hub Device Provisioning Service
           href: /azure/iot-dps
         - name: Maps

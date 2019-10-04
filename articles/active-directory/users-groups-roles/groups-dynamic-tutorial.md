@@ -1,5 +1,5 @@
 ---
-title: Dinamikus csoporttagság hozzáadása – oktatóanyag – Azure Active Directory felhasználók eltávolítása
+title: Dinamikus csoporttagság hozzáadása felhasználók eltávolítása-oktatóanyag-Azure Active Directory
 description: Az oktatóanyagban felhasználói tagsági szabályokkal rendelkező csoportokat használunk a felhasználók automatikus hozzáadásához és eltávolításához
 services: active-directory
 documentationcenter: ''
@@ -15,20 +15,20 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93b59a108d5d87479c12174e97713d4c12d84f2e
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 1429841ca1376d67c7372f36bd35694afd4cd7ce
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58200055"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71102630"
 ---
-# <a name="tutorial-add-or-remove-group-members-automatically"></a>Oktatóanyag: Tagok hozzáadása vagy eltávolítása csoport automatikusan
+# <a name="tutorial-add-or-remove-group-members-automatically"></a>Oktatóanyag: Csoporttagok automatikus hozzáadása vagy eltávolítása
 
 Az Azure Active Directory (Azure AD) szolgáltatásban automatikusan adhat hozzá vagy távolíthat el felhasználókat a biztonsági vagy Office 365-csoportokban, így ezt nem kell minden alkalommal manuálisan elvégeznie. Ha egy felhasználó vagy eszköz bármely tulajdonsága megváltozik, az Azure AD kiértékeli a dinamikus csoportokra vonatkozó összes szabályt a bérlőn, és ezáltal ellenőrzi, hogy a változás magával vonja-e tagok hozzáadását vagy eltávolítását.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
-> * Hozzon létre egy vendég felhasználók automatikusan kitöltött csoportja partnercég
+> * Partneri vállalaton belül automatikusan feltöltött vendég felhasználói csoport létrehozása
 > * Licencek hozzárendelése a csoporthoz a partnerspecifikus funkciók számára, amelyekhez a vendégfelhasználók hozzáférhetnek
 > * Bónusz: a **Minden felhasználó** csoport biztonságossá tétele a vendégfelhasználók eltávolításával, hogy például hozzáférést adhasson a tagfelhasználóknak a csak belső elérésű helyekhez
 
@@ -36,7 +36,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a funkció egy prémium szintű Azure AD-licenc szükséges az Ön számára a bérlő globális rendszergazdájaként. Ha még nem rendelkezik ilyennel, válassza az Azure AD-ben a **Licencek** > **Termékek** > **Kipróbálás/vásárlás** lehetőséget.
+Ehhez a szolgáltatáshoz egy prémium szintű Azure AD licencre van szükség a bérlő globális rendszergazdája számára. Ha még nem rendelkezik ilyennel, válassza az Azure AD-ben a **Licencek** > **Termékek** > **Kipróbálás/vásárlás** lehetőséget.
 
 A felhasználókhoz nem szükséges licenceket hozzárendelnie ahhoz, hogy dinamikus csoportok tagjai lehessenek. Csupán a bérlőn elérhető minimális számú prémium szintű Azure AD P1 licencre van szükség az összes ilyen felhasználó lefedéséhez. 
 
@@ -44,19 +44,31 @@ A felhasználókhoz nem szükséges licenceket hozzárendelnie ahhoz, hogy dinam
 
 Először létrehozunk egy csoportot az egy partnervállalatból származó vendégfelhasználók számára. Esetükben speciális licencelésre van szükség, ezért érdemes erre a célra létrehozni egy csoportot.
 
-1. Jelentkezzen be az Azure Portalon (https://portal.azure.com) egy olyan fiókkal, amely a bérlő globális rendszergazdája.
+1. Jelentkezzen be a Azure Portalba https://portal.azure.com) (egy olyan fiókkal, amely a bérlő globális rendszergazdája.
 2. Válassza az **Azure Active Directory** > **Csoportok** > **Új csoport** lehetőséget.
-   ![Válassza ki a parancsot egy új csoport indítása](./media/groups-dynamic-tutorial/new-group.png)
+   ![új csoport indításához válassza a parancs lehetőséget](./media/groups-dynamic-tutorial/new-group.png)
 3. A **Csoport** panelen:
   
-   * Válassza a **Biztonsági** lehetőséget a csoport típusaként.
-   * Adja meg a következőt a csoport nevénél és leírásánál: `Guest users Contoso`
-   * Módosítsa a **Tagság típusát** a **Dinamikus felhasználó** értékre.
-   * Válassza a **Dinamikus lekérdezés hozzáadása** lehetőséget.
-  
-4. Válassza a **Speciális szabály** lehetőséget, majd a **Speciális szabály** mezőbe írja be a következőt: `(user.userType -eq "Guest") -and (user.companyName -eq "Contoso")`.
-5. A panel bezárásához kattintson a **Lekérdezés hozzáadása** gombra.
-6. A fiók létrehozásához kattintson a **Csoport** panel **Létrehozás** elemére.
+   * Válassza a **Biztonság** lehetőséget a csoport típusaként.
+   * Adja `Guest users Contoso` meg a csoport nevét és leírását.
+   * A **tagság típusának** módosítása a **dinamikus felhasználóra**.
+   
+4. Válassza a **tulajdonosok** lehetőséget, majd a **tulajdonosok hozzáadása** panelen keresse meg a kívánt tulajdonosokat. Kattintson a kívánt tulajdonosokra a kijelöléshez való hozzáadáshoz.
+5. Kattintson a **kiválasztás** elemre a **tulajdonosok hozzáadása** panel bezárásához.  
+6. Válassza a dinamikus **lekérdezés szerkesztése** lehetőséget a **dinamikus felhasználói tagok** mezőben.
+7. A **dinamikus tagsági szabályok** panelen:
+
+   * A **tulajdonság** mezőben kattintson a meglévő értékre, majd válassza a **userType**lehetőséget. 
+   * Ellenőrizze, hogy az **operátor** mező **értéke** ki van-e jelölve.  
+   * Válassza ki az érték mezőt, és adja meg a **vendég** **értéket** . 
+   * Kattintson a **kifejezés hozzáadása** hivatkozásra egy másik sor hozzáadásához.
+   * A **és/vagy** mezőben válassza a **és**a elemet.
+   * A **tulajdonság** mezőben válassza a **Cégnév**lehetőséget.
+   * Ellenőrizze, hogy az **operátor** mező **értéke** ki van-e jelölve.
+   * Az érték mezőbe írja be a **contoso** **értéket** .
+   * A **dinamikus tagsági szabályok** panel bezárásához kattintson a **Mentés** gombra.
+   
+8. A fiók létrehozásához kattintson a **Csoport** panel **Létrehozás** elemére.
 
 ## <a name="assign-licenses"></a>Licencek hozzárendelése
 

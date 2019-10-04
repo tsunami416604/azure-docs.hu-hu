@@ -18,11 +18,11 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c851b5ef024e6584e6f8c93995208b08a91fbb60
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58096673"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62095489"
 ---
 # <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Az Azure AD Connect szinkronizálása: UserCertificate attribútum által okozott LargeObject hibák kezelése
 
@@ -70,7 +70,7 @@ A lépések szerint lehet összegezni:
 8. Exportálja a módosításokat az Azure ad-hez.
 9. Engedélyezze újra a sync schedulert.
 
-### <a name="step-1-disable-sync-scheduler-and-verify-there-is-no-synchronization-in-progress"></a>1. lépés Tiltsa le a szinkronizálásütemező, és ellenőrizze, hogy nincs folyamatban lévő szinkronizálás
+### <a name="step-1-disable-sync-scheduler-and-verify-there-is-no-synchronization-in-progress"></a>1\.lépés Tiltsa le a szinkronizálásütemező, és ellenőrizze, hogy nincs folyamatban lévő szinkronizálás
 Győződjön meg arról, szinkronizálás nem kerül sor, amíg Ön közepén egy új szinkronizálási szabály elkerülése érdekében az Azure AD-exportálás alatt álló nem szándékos módosítások végrehajtására. A beépített szinkronizálásütemező letiltása:
 1. Az Azure AD Connect-kiszolgálón indítsa el a PowerShell-munkamenetben.
 
@@ -83,7 +83,7 @@ Győződjön meg arról, szinkronizálás nem kerül sor, amíg Ön közepén eg
 
 1. Nyissa meg a **műveletek** fülre és ellenőrizze, nincs művelet, amelynek állapota *"folyamatban."*
 
-### <a name="step-2-find-the-existing-outbound-sync-rule-for-usercertificate-attribute"></a>2. lépés Keresse meg a meglévő kimenő szinkronizálási szabály userCertificate attribútum
+### <a name="step-2-find-the-existing-outbound-sync-rule-for-usercertificate-attribute"></a>2\.lépés Keresse meg a meglévő kimenő szinkronizálási szabály userCertificate attribútum
 Meglévő szinkronizálási szabály, amely engedélyezve és konfigurálva userCertificate attribútum esetén a felhasználói objektumok exportálása az Azure AD lehetnek. Keresse meg a szinkronizálási szabály ismerje meg, hogy a **elsőbbséget** és **Hatókörszűrő** konfiguráció:
 
 1. Indítsa el a **szinkronizálási Szabályszerkesztővel** KEZDŐ → szinkronizálási Szabályszerkesztővel címen.
@@ -92,7 +92,7 @@ Meglévő szinkronizálási szabály, amely engedélyezve és konfigurálva user
 
     | Attribútum | Érték |
     | --- | --- |
-    | Irány |**Kimenő** |
+    | Direction |**Kimenő** |
     | MV-objektum típusa |**Személy** |
     | Összekötő |*az Azure AD-összekötő* |
     | Összekötő-objektum típusa |**user** |
@@ -110,7 +110,7 @@ Meglévő szinkronizálási szabály, amely engedélyezve és konfigurálva user
     | sourceObjectType | EQUAL | Felhasználó |
     | cloudMastered | NOTEQUAL | True (Igaz) |
 
-### <a name="step-3-create-the-outbound-sync-rule-required"></a>3. lépés A szükséges kimenő szinkronizálási szabály létrehozása
+### <a name="step-3-create-the-outbound-sync-rule-required"></a>3\. lépés. A szükséges kimenő szinkronizálási szabály létrehozása
 Az új szinkronizálási szabályt kell rendelkeznie, ugyanez **Hatókörszűrő** és **nagyobb prioritással** , mint a meglévő szinkronizálási szabályt. Ez biztosítja, hogy az új szinkronizálási szabály ugyanazt az objektumhalmazt tartalmazza, mint a meglévő szinkronizálási szabály vonatkozik, és felülírja a meglévő szinkronizálási szabályt a userCertificate attribútum. A szinkronizálási szabály létrehozása:
 1. A szinkronizálási Szabályszerkesztővel, kattintson a **új szabály hozzáadása** gombra.
 2. Alatt a **leírása lap**, adja meg a következő konfigurációt:
@@ -137,7 +137,7 @@ Az új szinkronizálási szabályt kell rendelkeznie, ugyanez **Hatókörszűrő
     
 6. Kattintson a **Hozzáadás** a szinkronizálási szabály létrehozása gombra.
 
-### <a name="step-4-verify-the-new-sync-rule-on-an-existing-object-with-largeobject-error"></a>4. lépés Ellenőrizze az új szinkronizálási szabályt egy meglévő objektum LargeObject hiba
+### <a name="step-4-verify-the-new-sync-rule-on-an-existing-object-with-largeobject-error"></a>4\. lépés. Ellenőrizze az új szinkronizálási szabályt egy meglévő objektum LargeObject hiba
 Ezzel esetén ellenőrizze, hogy a szinkronizálási szabály létrehozása megfelelően működik, egy meglévő AD-objektum LargeObject hiba más objektumokra való alkalmazása előtt:
 1. Nyissa meg a **műveletek** fülre a Synchronization Service Managert.
 2. Válassza ki a legutóbbi Exportálás az Azure AD-műveletet, majd kattintson a LargeObject-hibák az objektumok közül.
@@ -149,7 +149,7 @@ Ezzel esetén ellenőrizze, hogy a szinkronizálási szabály létrehozása megf
 8. Az összekötő futtatásához előugró ablakban válassza ki a **exportálása** lépést, és kattintson a **OK**.
 9. Várjon, amíg befejeződik, majd erősítse meg, nincs további LargeObject hiba ezt az objektumot az Azure Active Directoryba való exportálás.
 
-### <a name="step-5-apply-the-new-sync-rule-to-remaining-objects-with-largeobject-error"></a>5. lépés Az új szinkronizálási szabályt alkalmazni a hátralévő objektumokhoz LargeObject hiba
+### <a name="step-5-apply-the-new-sync-rule-to-remaining-objects-with-largeobject-error"></a>5\. lépés. Az új szinkronizálási szabályt alkalmazni a hátralévő objektumokhoz LargeObject hiba
 Ha a szinkronizálási szabály hozzá lett adva, az AD Connectoron egy teljes szinkronizálást lépés futtatásához szükséges:
 1. Nyissa meg a **összekötők** fülre a Synchronization Service Managert.
 2. Kattintson a jobb gombbal a **AD** összekötő, és válassza ki **futtatása...**
@@ -157,7 +157,7 @@ Ha a szinkronizálási szabály hozzá lett adva, az AD Connectoron egy teljes s
 4. Várjon, amíg a teljes szinkronizálás lépés befejezéséhez.
 5. Ha egynél több AD-összekötők ismételje meg a fenti lépéseket a fennmaradó AD-összekötők. Általában több összekötőt szükség, ha több helyszíni címtárral rendelkezik.
 
-### <a name="step-6-verify-there-are-no-unexpected-changes-waiting-to-be-exported-to-azure-ad"></a>6. lépés Ellenőrizze, hogy nem az Azure ad Szolgáltatásba exportálni váró váratlan mértékben
+### <a name="step-6-verify-there-are-no-unexpected-changes-waiting-to-be-exported-to-azure-ad"></a>6\. lépés Ellenőrizze, hogy nem az Azure ad Szolgáltatásba exportálni váró váratlan mértékben
 1. Nyissa meg a **összekötők** fülre a Synchronization Service Managert.
 2. Kattintson a jobb gombbal a **Azure ad-ben** összekötő, és válassza ki **keresési Összekötőterét**.
 3. A keresési Összekötőterét előugró:
@@ -166,14 +166,14 @@ Ha a szinkronizálási szabály hozzá lett adva, az AD Connectoron egy teljes s
     3. Kattintson a **keresési** gomb az Azure ad Szolgáltatásba exportálni váró változások az összes objektum visszaadása.
     4. Ellenőrizze, hogy nem várt változtak. A módosítások egy adott objektum vizsgálatához kattintson duplán az objektumot.
 
-### <a name="step-7-export-the-changes-to-azure-ad"></a>7. lépés A módosítások exportálása az Azure ad-hez
+### <a name="step-7-export-the-changes-to-azure-ad"></a>7\. lépés A módosítások exportálása az Azure ad-hez
 A módosítások exportálása az Azure ad-hez:
 1. Nyissa meg a **összekötők** fülre a Synchronization Service Managert.
 2. Kattintson a jobb gombbal a **Azure ad-ben** összekötő, és válassza ki **futtatása...**
 4. Az összekötő futtatásához előugró ablakban válassza ki a **exportálása** lépést, és kattintson a **OK**.
 5. Várjon, amíg befejeződik, majd ellenőrizze, hogy nincsenek további LargeObject-hibák az Azure Active Directoryba való exportálás.
 
-### <a name="step-8-re-enable-sync-scheduler"></a>8. lépés Szinkronizálásütemező újbóli engedélyezése
+### <a name="step-8-re-enable-sync-scheduler"></a>8\. lépés Szinkronizálásütemező újbóli engedélyezése
 Most, hogy a probléma megoldódik, engedélyezze újra a beépített szinkronizálásütemező:
 1. Indítsa el a PowerShell-munkamenetben.
 2. Ütemezett szinkronizálás újra engedélyezéséhez a parancsmag futtatásával: `Set-ADSyncScheduler -SyncCycleEnabled $true`

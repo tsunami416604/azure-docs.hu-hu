@@ -1,6 +1,6 @@
 ---
-title: AS2-üzenetek B2B vállalati integráció – Azure Logic Apps |} A Microsoft Docs
-description: AS2-üzenetek váltása a B2B vállalati integráció az Azure Logic Apps Enterprise Integration Pack
+title: AS2-üzenetek a B2B vállalati integrációhoz – Azure Logic Apps
+description: Exchange AS2-üzenetek Azure Logic Appsban Enterprise Integration Pack
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -8,170 +8,117 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.assetid: c9b7e1a9-4791-474c-855f-988bd7bf4b7f
-ms.date: 06/08/2017
-ms.openlocfilehash: 3413b235d9202530eb1a3129637e3746bbe6585b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 08/22/2019
+ms.openlocfilehash: b1e7664aa08171c16c83e17ad93977b29e31b5c0
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57872565"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656459"
 ---
-# <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>AS2-üzenetek váltása a B2B vállalati integráció az Azure Logic Apps Enterprise Integration Pack
+# <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Exchange AS2-üzenetek a B2B vállalati integrációhoz Azure Logic Apps a Enterprise Integration Pack
 
-AS2-üzenetek is cserél az Azure Logic Apps, mielőtt kell létrehozni egy AS2-egyezményt és az integrációs fiókban lévő megállapodás tárolja. AS2-egyezményt létrehozásának lépései a következők.
+Az AS2-üzenetek Azure Logic Appsban való használatához használhatja az AS2-összekötőt, amely az AS2-kommunikáció kezelésére szolgáló eseményindítókat és műveleteket biztosít. Ha például az üzenetek továbbításakor meg szeretné teremteni a biztonságot és a megbízhatóságot, a következő műveleteket használhatja:
 
-## <a name="before-you-start"></a>Előkészületek
+* Az [ **AS2** ](#encode) a titkosítás, a digitális aláírás és a nyugták küldését teszi lehetővé az üzenet-törlési értesítések (MDN) révén, ami segít a nem megtagadási támogatásban. Ez a művelet például az AS2/HTTP fejléceket alkalmazza, és a következő konfiguráláskor hajtja végre ezeket a feladatokat:
 
-A következő szükséges elemek:
+  * A kimenő üzeneteket aláírja.
+  * Titkosítja a kimenő üzeneteket.
+  * Tömöríti az üzenetet.
+  * Továbbítja a fájl nevét a MIME-fejlécben.
 
-* Egy [integrációs fiók](../logic-apps/logic-apps-enterprise-integration-accounts.md) , amely már definiált és az Azure-előfizetéséhez társított
-* Legalább két [partnerek](logic-apps-enterprise-integration-partners.md) , amely már definiálva az integrációs fiókban lévő és az AS2-minősítő a konfigurált **üzleti identitások**
+* [ **AS2** ](#decode) -dekódolási művelet a visszafejtés, a digitális aláírás és a nyugták küldéséhez üzenet-törlési értesítések (MDN) használatával. Ez a művelet például a következő feladatokat hajtja végre:
 
-> [!NOTE]
-> Amikor egy szerződést hoz létre, a tartalmat a szerződés fájlban meg kell egyeznie a szerződés típusának.    
+  * AS2/HTTP-fejlécek feldolgozása.
+  * Egyezteti a kapott MDNs az eredeti kimenő üzenetekkel.
+  * Frissíti és korrelálja a nem megtagadási adatbázisban lévő rekordokat.
+  * Az AS2-állapot jelentéskészítési rekordjait írja be.
+  * A hasznos adatok tartalmát Base64 kódolással adja vissza.
+  * Meghatározza, hogy szükség van-e a MDNs. Az AS2-szerződés alapján meghatározza, hogy a MDNs szinkron vagy aszinkron legyen-e.
+  * Az AS2-szerződés alapján szinkron vagy aszinkron MDNs generál.
+  * A korrelációs jogkivonatok és tulajdonságok beállítása a MDNs.
 
-Miután [integrációs fiók létrehozásáról](../logic-apps/logic-apps-enterprise-integration-accounts.md) és [partnerek felvétele](logic-apps-enterprise-integration-partners.md), AS2-egyezményt a következő lépésekkel hozhat létre.
+  A művelet a konfiguráláskor is végrehajtja ezeket a feladatokat:
 
-## <a name="create-an-as2-agreement"></a>Az AS2-egyezmény létrehozása
+  * Ellenőrzi az aláírást.
+  * Visszafejti az üzeneteket.
+  * Kibontja az üzenetet.
+  * Az üzenetek AZONOSÍTÓjának duplikálása és letiltása.
 
-1.  Jelentkezzen be az [Azure Portalra](https://portal.azure.com "Azure Portal")  
+Ez a cikk bemutatja, hogyan adhatja hozzá az AS2-kódolást és a dekódolási műveleteket egy meglévő logikai alkalmazáshoz.
 
-2. Az Azure fő menüjéből válassza **minden szolgáltatás**. A Keresés mezőbe írja be a "integráció" névre, és válassza ki **integrációs fiókok**.
+> [!IMPORTANT]
+> Az eredeti AS2-összekötő elavult lesz, ezért ne felejtse el használni az **AS2 (v2)** összekötőt. Ez a verzió ugyanazokat a képességeket biztosítja, mint az eredeti verzió, a Logic Apps futtatókörnyezetnek natív, és jelentős teljesítménybeli továbbfejlesztéseket biztosít az átviteli sebesség és az üzenetek mérete tekintetében. Emellett a natív v2-összekötő nem igényli, hogy az integrációs fiókhoz hozzon létre egy kapcsolódást. Ehelyett az előfeltételek szakaszban leírtaknak megfelelően ügyeljen arra, hogy összekapcsolja az integrációs fiókját ahhoz a logikai alkalmazáshoz, ahol az összekötőt használni szeretné.
 
-   ![Keresse meg az integrációs fiók](./media/logic-apps-enterprise-integration-as2/overview-1.png)
+## <a name="prerequisites"></a>Előfeltételek
 
-   > [!TIP]
-   > Ha nem lát **minden szolgáltatás**, lehetséges, hogy először bontsa ki a menüben. A összecsukott menü tetején válassza **feliratok megjelenítése**.
+* Azure-előfizetés. Ha még nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure](https://azure.microsoft.com/free/)-fiókra.
 
-3. A **integrációs fiókok**, válassza ki az integrációs fiók, ahol szeretné létrehozni a szerződést.
+* A logikai alkalmazás, amelyből az AS2-összekötőt és egy olyan triggert szeretne használni, amely elindítja a logikai alkalmazás munkafolyamatát. Az AS2-összekötő csak olyan műveleteket biztosít, amelyek nem triggerek. Ha most ismerkedik a Logic apps szolgáltatással, tekintse át [a mi az Azure Logic apps](../logic-apps/logic-apps-overview.md) és [a gyors útmutató: Hozza létre az első logikai](../logic-apps/quickstart-create-first-logic-app-workflow.md)alkalmazását.
 
-   ![Válassza ki az integrációs fiók, hová hozza létre a szerződés](./media/logic-apps-enterprise-integration-overview/overview-3.png)
+* Az Azure-előfizetéshez társított [integrációs fiók](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) , amely ahhoz a logikai alkalmazáshoz van társítva, ahol az AS2-összekötőt tervezi használni. A logikai alkalmazásnak és az integrációs fióknak ugyanazon a helyen vagy az Azure-régióban kell lennie.
 
-4. Válassza ki a **szerződések** csempére. Ha nem rendelkezik egy szerződés-csempét, először adja hozzá a csempét.
+* Legalább két olyan [kereskedelmi partner](../logic-apps/logic-apps-enterprise-integration-partners.md) , amelyet már definiált az integrációs fiókjában az AS2 Identity minősítő használatával.
 
-    ![Válassza a "Szerződés" csempe](./media/logic-apps-enterprise-integration-as2/agreement-1.png)
+* Az AS2-összekötő használata előtt létre kell hoznia egy AS2- [szerződést](../logic-apps/logic-apps-enterprise-integration-agreements.md) a kereskedelmi partnerei között, és a szerződést az integrációs fiókban kell tárolnia.
 
-5. A **szerződések**, válassza a **Hozzáadás**.
+* Ha Azure Key Vaultt [](../key-vault/key-vault-overview.md) használ a Tanúsítványkezelők számára, ellenőrizze, hogy a tároló kulcsai engedélyezik-e a **titkosítási** és a **visszafejtési** műveleteket. Ellenkező esetben a kódolási és a dekódolási műveletek meghiúsulnak.
 
-    ![Válassza az "Add"](./media/logic-apps-enterprise-integration-as2/agreement-2.png)
+  A Azure Portal lépjen a kulcstartóba, tekintse meg a tár kulcsának **engedélyezett műveleteit**, és ellenőrizze, hogy ki van-e választva a **titkosítási** és a **visszafejtési** művelet.
 
-6. Alatt **Hozzáadás**, adjon meg egy **neve** esetében a szerződés hatálya alá. A **Szerződéstípus**válassza **AS2**. Válassza ki a **Gazdagéppartner**, **gazdagép-identitás**, **Vendégpartner**, és **Vendégidentitás** esetében a szerződés hatálya alá.
+  ![A Vault-kulcsok műveleteinek megtekintése](media/logic-apps-enterprise-integration-as2/vault-key-permitted-operations.png)
 
-    ![Adja meg a szerződés részletei](./media/logic-apps-enterprise-integration-as2/agreement-3.png)  
+<a name="encode"></a>
 
-    | Tulajdonság | Leírás |
-    | --- | --- |
-    | Name (Név) |A Szerződés neve |
-    | Egyezmény típusa | AS2 kell lennie. |
-    | Gazdagéppartner |Egy szerződést kell a gazdagép és Vendég partner. A gazdagéppartner a szervezet, amely beállítja a szerződés jelöli. |
-    | Gazdagép-identitás |A gazdagéppartner azonosítója |
-    | Vendégpartner |Egy szerződést kell a gazdagép és Vendég partner. A vendégpartner a szervezet, amely a fogadó partner üzleti állapotát jelöli. |
-    | Vendégidentitás |A vendégpartner azonosítója |
-    | Fogadási beállítások |Ezek a tulajdonságok vonatkoznak az összes, a szerződés által fogadott üzeneteket. |
-    | Küldési beállítások |Ezek a tulajdonságok a szerződés által küldött összes üzenet vonatkozik. |
+## <a name="encode-as2-messages"></a>AS2-üzenetek kódolása
 
-## <a name="configure-how-your-agreement-handles-received-messages"></a>Hogyan fogadja a szerződés kezeli az üzenetek konfigurálása
+1. Ha még nem tette meg, a [Azure Portalban](https://portal.azure.com)nyissa meg a logikai alkalmazást a Logic app Designerben.
 
-Most, hogy beállította a megállapodás tulajdonságai, konfigurálhatja, hogyan azonosítja a jelen szerződés, és kezeli a partner a jelen szerződés keretében kapott bejövő üzenetek.
+1. A tervezőben adjon hozzá egy új műveletet a logikai alkalmazáshoz.
 
-1.  A **Hozzáadás**válassza **fogadási beállítások**.
-Konfigurálja ezeket a tulajdonságokat a partnerrel, amely az üzeneteket, a szerződés alapján. Vlastnost leírásáért lásd: Ebben a szakaszban a táblában.
+1. A **művelet kiválasztása** és a keresőmező területen válassza az **összes**lehetőséget. A keresőmezőbe írja be az "AS2 kódolása" kifejezést, és győződjön meg arról, hogy az AS2 (v2) műveletet választotta: **AS2-kódolás**
 
-    ![Konfigurálja a "Kapják meg a beállításokat"](./media/logic-apps-enterprise-integration-as2/agreement-4.png)
+   !["AS2 kódolás" kiválasztása](./media/logic-apps-enterprise-integration-as2/select-as2-encode.png)
 
-2. Igény szerint, felülbírálhatja a bejövő üzenetek tulajdonságainak kiválasztásával **üzenettulajdonságok felülbírálása**.
+1. Most adja meg a következő tulajdonságokkal kapcsolatos információkat:
 
-3. Minden bejövő üzenetet alá kell írni szükséges, jelölje be **üzenetet alá kell írni**. Az a **tanúsítvány** válasszon ki egy meglévő [Vendég partner nyilvános tanúsítvány](../logic-apps/logic-apps-enterprise-integration-certificates.md) esetében az üzenetek az aláírás ellenőrzése. Vagy ha nem rendelkezik ilyennel, hozzon létre a tanúsítványt.
+   | Tulajdonság | Leírás |
+   |----------|-------------|
+   | **A kódolásra szolgáló üzenet** | Az üzenet tartalma |
+   | **AS2-ból** | Az AS2-szerződés által meghatározott üzenet feladójának azonosítója |
+   | **AS2-ből** | Az AS2-szerződés által meghatározott üzenet-fogadó azonosítója |
+   |||
 
-4.  Az összes bejövő üzenetek titkosításához szükséges, jelölje be **üzenetnek titkosítottnak kell lennie**. Az a **tanúsítvány** válasszon ki egy meglévő [fogadó partner személyes tanúsítvány](../logic-apps/logic-apps-enterprise-integration-certificates.md) bejövő üzenetek tartalomkulcsot. Vagy ha nem rendelkezik ilyennel, hozzon létre a tanúsítványt.
+   Példa:
 
-5. Tömörítendő üzenetek szükséges, jelölje be **üzenetnek tömörítettnek kell lennie**.
+   ![Üzenet kódolásának tulajdonságai](./media/logic-apps-enterprise-integration-as2/as2-message-encoding-details.png)
 
-6. Szinkron disposition értesítő üzenetet (MDN) érkező üzenetek küldéséhez válassza **MDN küldése**.
+<a name="decode"></a>
 
-7. Aláírt visszaigazolással a kapott üzeneteket küldeni, válassza ki a **aláírt MDN küldése**.
+## <a name="decode-as2-messages"></a>AS2-üzenetek dekódolása
 
-8. A fogadott üzenetek aszinkron visszaigazolással küldeni, válassza ki a **aszinkron MDN küldésének cél**.
+1. Ha még nem tette meg, a [Azure Portalban](https://portal.azure.com)nyissa meg a logikai alkalmazást a Logic app Designerben.
 
-9. Miután elkészült, ügyeljen arra, hogy a beállítások mentéséhez kiválasztásával **OK**.
+1. A tervezőben adjon hozzá egy új műveletet a logikai alkalmazáshoz.
 
-Most a szerződés elkészült kezelje a bejövő üzenetek, amelyek megfelelnek a kiválasztott beállításokat.
+1. A **művelet kiválasztása** és a keresőmező területen válassza az **összes**lehetőséget. A keresőmezőbe írja be az "AS2 Decode" kifejezést, és győződjön meg arról, hogy az AS2 (v2) műveletet választotta: **AS2-dekódolás**
 
-| Tulajdonság | Leírás |
-| --- | --- |
-| Üzenettulajdonságok felülbírálása |Azt jelzi, hogy a fogadott üzenetek tulajdonságok felülbírálható lesz. |
-| Az üzenetet alá kell írni |Szükséges az üzenetek digitális aláírással kell. A Vendég partner nyilvános tanúsítvány konfigurálása a aláírás-ellenőrzése.  |
-| Az üzenetnek titkosítottnak kell lennie |Üzenetek titkosításához szükséges. A nem titkosított üzeneteket a rendszer elutasítja. A fogadó partner privát tanúsítvány konfigurálása az üzenetek visszafejtésére.  |
-| Az üzenetnek tömörítettnek kell lennie |Üzenetek tömörítve van szükség. Nem-tömörített üzeneteket a rendszer elutasítja. |
-| MDN-szöveg |Az alapértelmezett üzenet törlése értesítés (MDN) kell küldeni az üzenet küldője. |
-| MDN küldése |Szükséges küldendő visszaigazolással. |
-| Aláírt MDN küldése |Csak az aláírt visszaigazolással igényel. |
-| MIC-algoritmus |Válassza ki a üzenetek aláírásához használt algoritmust. |
-| Aszinkron MDN küldése | Üzenetek küldését aszinkron módon van szükség. |
-| URL-cím | Az URL-címet adja meg, hova küldhetők a visszaigazolással. |
+   ![Válassza az AS2 dekódolása lehetőséget](media/logic-apps-enterprise-integration-as2/select-as2-decode.png)
 
-## <a name="configure-how-your-agreement-sends-messages"></a>Hogyan a szerződéshez küldi az üzeneteket konfigurálása
+1. Az **üzenet kódolásához** és az **üzenetek fejlécének** tulajdonságaihoz válassza ki ezeket az értékeket az előző triggerből vagy a művelet kimenetből.
 
-Beállíthatja, hogyan azonosítja a jelen szerződés, és kezeli a kimenő üzenetek küldését a jelen szerződés keretében a partnerek számára.
+   Tegyük fel például, hogy a logikai alkalmazás fogadja az üzeneteket egy kérelem-triggeren keresztül. Kiválaszthatja az adott trigger kimeneteit.
 
-1.  A **Hozzáadás**válassza **küldési beállítások**.
-Konfigurálja ezeket a tulajdonságokat a partnerrel, amely az üzeneteket, a szerződés alapján. Vlastnost leírásáért lásd: Ebben a szakaszban a táblában.
+   ![Törzs és fejlécek kiválasztása a kérelmek kimenetei közül](media/logic-apps-enterprise-integration-as2/as2-message-decoding-details.png)
 
-    ![Állítsa be a "Küldés" tulajdonságai](./media/logic-apps-enterprise-integration-as2/agreement-51.png)
+## <a name="sample"></a>Minta
 
-2. Aláírt üzeneteket küldeni a partner, válassza ki a **üzenetek aláírásának engedélyezése**. Az üzenetek aláírására a a **MIC-algoritmust** listáról válassza ki a *fogadó partner személyes tanúsítvány MIC-algoritmust*. Majd a a **tanúsítvány** válasszon ki egy meglévő [fogadó partner személyes tanúsítvány](../logic-apps/logic-apps-enterprise-integration-certificates.md).
+Egy teljesen működőképes logikai alkalmazás és példa AS2-forgatókönyv üzembe helyezéséhez tekintse meg az [AS2 Logic app-sablon és-forgatókönyv](https://azure.microsoft.com/documentation/templates/201-logic-app-as2-send-receive/)című témakört.
 
-3. Válassza ki a titkosított üzeneteket küldeni a partner, **üzenettitkosítás engedélyezése**. Az üzenetek titkosításához a a **titkosítási algoritmus** listáról válassza ki a *Vendég partner nyilvános tanúsítvány algoritmus*.
-Majd a a **tanúsítvány** válasszon ki egy meglévő [Vendég partner nyilvános tanúsítvány](../logic-apps/logic-apps-enterprise-integration-certificates.md).
+## <a name="connector-reference"></a>Összekötő-referencia
 
-4. Az üzenet tömöríteni, válassza ki a **üzenettömörítés engedélyezése**.
-
-5. Válassza a HTTP-content-type fejléc kibontása egyetlen sorba, **kibontása HTTP-fejlécek**.
-
-6. Szinkron visszaigazolással az elküldött üzenetek fogadásához, válassza ki a **MDN kérése**.
-
-7. Aláírt visszaigazolással az elküldött üzenetek fogadásához, válassza ki a **aláírt MDN kérése**.
-
-8. Aszinkron visszaigazolással az elküldött üzenetek fogadásához, válassza ki a **aszinkron MDN kérése**. Ha ezt a lehetőséget választja, adja meg az URL-címet, amelyre a visszaigazolással.
-
-9. Nyugta nem hitelesítettek szükséges, jelölje be **NRR engedélyezése**.  
-
-10. A MIC vagy az AS2-üzenet vagy az MDN kimenő fejléceiben aláírási algoritmus formátumát, adja meg **SHA2-algoritmus formátuma**.  
-
-11. Miután elkészült, ügyeljen arra, hogy a beállítások mentéséhez kiválasztásával **OK**.
-
-Most már a szerződés elkészült kezelésére, amelyek megfelelnek a kiválasztott beállításokat kimenő üzenetek.
-
-| Tulajdonság | Leírás |
-| --- | --- |
-| Üzenetek aláírásának engedélyezése |Minden aláírt az egyezményben szereplő küldött üzenetek igényel. |
-| MIC-algoritmus |Az üzenetek az aláíráshoz használandó algoritmus. Konfigurálja a fogadó partner privát tanúsítványt MIC-algoritmust az üzenetek aláírására. |
-| Tanúsítvány |Válassza ki az üzeneteket az aláíráshoz használandó tanúsítványt. Az üzenetek aláírására tanúsítványt titkos fogadó partner konfigurálja. |
-| Üzenettitkosítás engedélyezése |A jelen szerződés küldött összes üzenet titkosításához szükséges. Konfigurálja a Vendég partner nyilvános tanúsítvány algoritmus az üzenetek titkosítására. |
-| Titkosítási algoritmus |Az üzenet titkosításhoz használandó titkosítási algoritmus. Konfigurálja a Vendég partner nyilvános tanúsítványt az üzenetek titkosítására. |
-| Tanúsítvány |Üzenetek titkosítására használandó tanúsítvány. Konfigurálja a Vendég partner privát tanúsítványt az üzenetek titkosítására. |
-| Üzenettömörítés engedélyezése |A jelen szerződés küldött összes üzenet tömörítési igényel. |
-| HTTP-fejlécek kibontása |A HTTP-content-type fejléc egyetlen sor alakzatot helyezi. |
-| MDN kérése |A jelen szerződés küldött összes üzenet MDN-igényel. |
-| Aláírt MDN kérése |A jelen szerződés alá legyen írva küldött összes visszaigazolással igényel. |
-| Aszinkron MDN kérése |Aszinkron visszaigazolással kell küldeni a jelen szerződés szükséges. |
-| URL-cím |Az URL-címet adja meg, hova küldhetők a visszaigazolással. |
-| NRR engedélyezése |Nyugta (NRR), a kommunikáció attribútum, amely bizonyítja nem hitelesítettek igényel, amely az adatok érkezett, a címzett. |
-| SHA2-algoritmus formátuma |Válassza ki a MIC vagy az AS2-üzenet vagy az MDN kimenő fejléceiben aláírási algoritmus formátumát |
-
-## <a name="find-your-created-agreement"></a>Keresse meg a létrehozott szerződés
-
-1. A megállapodás tulajdonságai a beállítás befejezése után a **Hozzáadás** lapon a **OK** véglegesítse a szerződés hatálya alá, és térjen vissza az integrációs fiókban.
-
-    Az újonnan hozzáadott szerződés most már megjelenik a **szerződések** listája.
-
-2. Az integrációs fiókok áttekintése is megtekintheti a szerződéseket. Az integrációs fiók menüjében válassza a **áttekintése**, majd válassza ki a **szerződések** csempére. 
-
-   ![Válassza a "Szerződés" csempe megtekintéséhez minden szerződés](./media/logic-apps-enterprise-integration-as2/agreement-6.png)
-
-## <a name="view-the-swagger"></a>A swagger megtekintése
-Tekintse meg a [részletek swagger](/connectors/as2/). 
+A technikai részleteket, például az eseményindítókat, a műveleteket és a korlátozásokat az összekötő OpenAPI (korábban hencegő) fájljában leírtak szerint tekintse [meg az összekötő hivatkozási oldalát](/connectors/as2/).
 
 ## <a name="next-steps"></a>További lépések
-* [További információ az Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "megismerheti a vállalati integrációs csomag")  
+
+További információ a [Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md)

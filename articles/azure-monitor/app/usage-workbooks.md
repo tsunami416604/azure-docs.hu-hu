@@ -13,12 +13,12 @@ ms.date: 09/19/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: bcd4ae5b7092aafc452c5af3d17fd22c263b5d35
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 6d84ad69b067f730bbfbcad9e46bdc9ae2036ead
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270147"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64569602"
 ---
 # <a name="create-interactive-reports-with-azure-monitor-workbooks"></a>Interaktív jelentések létrehozása az Azure Monitor-munkafüzetekkel
 
@@ -166,7 +166,7 @@ A jelenleg támogatott paraméterek négy különböző típusa van:
 
 ### <a name="using-a-text-parameter"></a>Egy szöveges paraméter használatával
 
-Az érték a felhasználó begépeli a szövegmezőben közvetlenül a lekérdezésben az escape-karaktersorozat vagy idézése váltja fel. A szükséges érték karakterlánc, ha a lekérdezés kell rendelkeznie a paraméter idézőjeleket (például **'{parameter}'**).
+Az érték a felhasználó begépeli a szövegmezőben közvetlenül a lekérdezésben az escape-karaktersorozat vagy idézése váltja fel. A szükséges érték karakterlánc, ha a lekérdezés kell rendelkeznie a paraméter idézőjeleket (például **'{parameter}'** ).
 
 Ez lehetővé teszi, hogy egy szövegmező, bárhol használható az értéket. Lehet, hogy a táblázat neve, oszlopnév, függvénynév, operátor, stb.
 
@@ -206,7 +206,7 @@ datatable( column1:string, column2:string )
 
 ![Application Insights munkafüzetek szakasz szerkesztési vezérlők](./media/usage-workbooks/011-data-table.png)
 
-Egy több megfelelő példa használja legördülő lista bizonyos országokban név alapján választja ki:
+Egy több megfelelő példa használja legördülő lista használatával név szerint az országok/régiók közül választhat:
 
 ```
 customEvents

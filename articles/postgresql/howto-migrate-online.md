@@ -1,19 +1,19 @@
 ---
-title: Migrálás minimális állásidővel az Azure Database for postgresql-hez
-description: Ez a cikk bemutatja, hogyan áttelepítése egy minimális állásidővel PostgreSQL-adatbázis, Azure database for postgresql-hez az Azure Database Migration Service használatával.
+title: Migrálás minimális állásidővel az Azure Database for PostgreSQL – egyetlen kiszolgáló
+description: Ez a cikk bemutatja, hogyan minimális állásidővel áttelepítése egy PostgreSQL-adatbázis, Azure database for PostgreSQL – egyetlen kiszolgáló az Azure Database Migration Service használatával.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 12/07/2018
-ms.openlocfilehash: ceb64781dc7e5243f785ad239c24e5f21b0481ce
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 5/6/2019
+ms.openlocfilehash: 93cd390889c023adf1c30a8470e1c2298598439e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53543648"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65067511"
 ---
-# <a name="minimal-downtime-migration-to-azure-database-for-postgresql"></a>Migrálás minimális állásidővel az Azure Database for postgresql-hez
+# <a name="minimal-downtime-migration-to-azure-database-for-postgresql---single-server"></a>Migrálás minimális állásidővel az Azure Database for PostgreSQL – egyetlen kiszolgáló
 Hajthat végre PostgreSQL migrálást az Azure Database for postgresql-hez minimális állásidővel segítségével az újonnan bevezetett **folyamatos szinkronizálás képesség** számára a [Azure Database Migration Service](https://aka.ms/get-dms) (DMS) . Ez a funkció az alkalmazás által felmerülő állásidő mennyiségét korlátozza.
 
 ## <a name="overview"></a>Áttekintés

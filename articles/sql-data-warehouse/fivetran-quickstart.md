@@ -2,20 +2,20 @@
 title: Az Azure SQL Data Warehouse Fivetran rövid |} A Microsoft Docs
 description: Gyorsan használatba Fivetran és az Azure SQL Data warehouse-bA.
 services: sql-data-warehouse
-author: hirokib
-manager: jrj
+author: mlee3gsd
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: manage
+ms.subservice: integration
 ms.date: 10/12/2018
-ms.author: elbutter
-ms.reviewer: craigg
-ms.openlocfilehash: 1d8b6d2df21fe0aabe85754e061db4deb129b32e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: martinle
+ms.reviewer: igorstan
+ms.openlocfilehash: d829ee67d516892283fa31d9180336d768170ac1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57895702"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65857001"
 ---
 # <a name="get-started-quickly-with-fivetran-and-sql-data-warehouse"></a>Gyorsan használatba Fivetran és az SQL Data warehouse-bA
 

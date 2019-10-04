@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: 46eea21e1eafce1696ed1cf77a1f334798f0bc17
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a6fc9f1a5c32fc9ffa1e1e6ebe525b72030fe803
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58848396"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67155650"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Az Azure Cosmos DB Cassandra API-ja által támogatott Apache Cassandra-funkciók 
 
@@ -74,6 +74,8 @@ Az Azure Cosmos DB Cassandra API a következő CQL-adattípusokat támogatja:
 Az Azure Cosmos DB Cassandra API a következő CQL-függvényeket támogatja:
 
 * Jogkivonat  
+* Aggregátumfüggvények
+  * Min, max, avg, száma
 * Blob-konverziós függvények 
   * typeAsBlob(value)  
   * blobAsType(value)
@@ -88,7 +90,8 @@ Az Azure Cosmos DB Cassandra API a következő CQL-függvényeket támogatja:
   * toDate(timestamp)  
   * toUnixTimestamp(timestamp)  
   * toTimestamp(date)  
-  * toUnixTimestamp(date)  
+  * toUnixTimestamp(date) 
+  
 
 
 ## <a name="cassandra-query-language-limits"></a>A Cassandra lekérdezési nyelv korlátai
@@ -154,11 +157,11 @@ foreach (string key in insertResult.Info.IncomingPayload)
 
 ## <a name="consistency-mapping"></a>Konzisztencialeképezés 
 
-Az Azure Cosmos DB Cassandra API konzisztenciaválasztási lehetőséget kínál az olvasási műveletekhez. A fiók konzisztenciájától függetlenül az összes írási művelet végrehajtása mindig az írási műveletekre vonatkozó SLA szerint történik.
+Az Azure Cosmos DB Cassandra API konzisztenciaválasztási lehetőséget kínál az olvasási műveletekhez.  A konzisztencia-hozzárendelés részletes [Ide [(https://docs.microsoft.com/azure/cosmos-db/consistency-levels-across-apis#cassandra-mapping).
 
 ## <a name="permission-and-role-management"></a>Engedély- és szerepkörkezelés
 
-Az Azure Cosmos DB támogatja a szerepköralapú hozzáférés-vezérlést (RBAC), illetve az írható-olvasható és a csak olvasható jelszavakat/kulcsokat, amelyeket az [Azure Portalon](https://portal.azure.com) lehet beszerezni. Az Azure Cosmos DB az adatsík-tevékenységek esetében még nem támogatja a felhasználókat és a szerepköröket. 
+Az Azure Cosmos DB támogatja a szerepköralapú hozzáférés-vezérlés (RBAC) kiépítése, a kulcsok, a mérőszámok megtekintésével és az olvasási és írási és olvasási jelszavakkal/kulcsokkal keresztül elérhető a [az Azure portal](https://portal.azure.com). Az Azure Cosmos DB még nem támogatja felhasználók és szerepkörök CRUD-tevékenységekhez. 
 
 ## <a name="planned-support"></a>Tervezett támogatás 
 * A régió nevét a create keyspace parancsban a rendszer figyelmen kívül hagyja – Az adatok elosztása az alapul szolgáló Cosmos DB platformon valósul meg, és a portálon vagy a fiókhoz tartozó PowerShellen keresztül történik a közzététel. 

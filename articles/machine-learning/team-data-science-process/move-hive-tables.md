@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 28e399eaf62731d7c38cea5f5a8cb8ebf876e686
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: af9c072c428c486cab89288db4c9ee1c26513185
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59522503"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68250129"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Hive táblák létrehozása és az adatok betöltése az Azure Blob Storage-ból
 
@@ -26,8 +26,8 @@ Ez a cikk bemutatja az általános Hive-lekérdezések, amelyek Hive táblákat 
 Ez a cikk feltételezi, hogy rendelkezik:
 
 * Létrehozott egy Azure storage-fiókot. Ha utasításokat van szüksége, tekintse meg [tudnivalók az Azure storage-fiókok](../../storage/common/storage-introduction.md).
-* A HDInsight szolgáltatással egyéni Hadoop-fürt kiépítése.  Ha utasításokat van szüksége, tekintse meg [telepítő HDInsight-fürtök](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md).
-* A fürthöz engedélyezett távelérési jelentkezett be, és a Hadoop parancssori konzolt megnyitva. Ha utasításokat van szüksége, tekintse meg [kezelése az Apache Hadoop-fürtök](../../hdinsight/hdinsight-administer-use-portal-linux.md).
+* A HDInsight szolgáltatással egyéni Hadoop-fürt kiépítése.  Ha útmutatásra van szüksége, tekintse meg [a fürtök beállítása a HDInsight-ben](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)című témakört.
+* A fürthöz engedélyezett távelérési jelentkezett be, és a Hadoop parancssori konzolt megnyitva. Ha útmutatásra van szüksége, tekintse meg a [Apache Hadoop-fürtök kezelése](../../hdinsight/hdinsight-administer-use-portal-linux.md)című témakört.
 
 ## <a name="upload-data-to-azure-blob-storage"></a>Adatfeltöltés az Azure blob storage-bA
 Ha létrehozott egy Azure virtuális gépen található utasításokat követve [állítsa be az Azure virtuális gép fejlett analitikai](../../machine-learning/data-science-virtual-machine/overview.md), a parancsfájl kell letöltötte a *C:\\felhasználók \\ \<felhasználónév\>\\dokumentumok\\Data Science parancsfájlok* könyvtárban a virtuális gépen. A Hive-lekérdezések csak akkor van szükség, hogy csatlakoztassa a saját adatok séma és az Azure blob storage konfigurációs beküldésre kell a megfelelő mezőkbe.
@@ -38,7 +38,7 @@ Ha meg szeretné gyakorlat a **NYC Taxi Útadatok**, kell tennie:
 
 * **Töltse le** az 24 [NYC Taxi Útadatok](https://www.andresmh.com/nyctaxitrips) (12 Útadatokat tartalmazó fájlt, és 12 diszkont fájlok),
 * **Csomagolja ki** tartalmazó .csv fájlt, az összes fájlt, majd
-* **Töltse fel** őket az alapértelmezett (vagy megfelelő tárolót) az Azure Storage-fiók; ilyen fiókja jelenik meg a vonatkozó beállítások [az Azure storage, Azure HDInsight-fürtökkel](../../hdinsight/hdinsight-hadoop-use-blob-storage.md) témakör. A folyamat a .csv-fájlok feltöltése az alapértelmezett tároló a tárfiókban található ezen [oldal](hive-walkthrough.md#upload).
+* **töltse fel** őket az Azure Storage-fiók alapértelmezett (vagy megfelelő) tárolójába; az ilyen fiókra vonatkozó beállítások az [Azure Storage és az Azure HDInsight-fürtök használata](../../hdinsight/hdinsight-hadoop-use-blob-storage.md) című témakörben jelennek meg. A folyamat a .csv-fájlok feltöltése az alapértelmezett tároló a tárfiókban található ezen [oldal](hive-walkthrough.md#upload).
 
 ## <a name="submit"></a>Hogyan lehet elküldeni a Hive-lekérdezések
 Hive-lekérdezések használatával küldheti:
@@ -47,7 +47,7 @@ Hive-lekérdezések használatával küldheti:
 2. [A Hive szerkesztőben a Hive-lekérdezések elküldéséhez](#hive-editor)
 3. [Azure PowerShell-parancsokkal Hive-lekérdezések elküldéséhez](#ps)
 
-Hive-lekérdezések a következő SQL-szerű. Ha ismeri az SQL, hasznosnak találhatja a [Hive SQL-felhasználók Adatlap lap](http://hortonworks.com/wp-content/uploads/2013/05/hql_cheat_sheet.pdf) hasznos.
+Hive-lekérdezések a következő SQL-szerű. Ha ismeri az SQL, hasznosnak találhatja a [Hive SQL-felhasználók Adatlap lap](https://hortonworks.com/wp-content/uploads/2013/05/hql_cheat_sheet.pdf) hasznos.
 
 Hive-lekérdezés elküldésekor is szabályozhatja és Hive-lekérdezések eredményének legyen szó a képernyőn, vagy egy helyi fájlt a fő csomópontot vagy az Azure-blobba.
 
@@ -112,7 +112,7 @@ A Hadoop-fürt Azure Storage Explorer használatával az alapértelmezett tárol
 ![A Hive-lekérdezés kimenete bemutató az Azure Storage Explorerrel](./media/move-hive-tables/output-hive-results-3.png)
 
 ### <a name="hive-editor"></a> 2. A Hive szerkesztőben a Hive-lekérdezések elküldéséhez
-A Lekérdezéskonzol (Hive szerkesztő) is használhatja az űrlap egy URL-cím megadásával *https:\//\<Hadoop-fürt neve >.azurehdinsight.net/Home/HiveEditor* kifejezés webböngészőbe. Kell lennie a lásd: Ez a konzol bejelentkezett, és ezért szüksége a Hadoop fürt hitelesítő adatait.
+A lekérdezési konzolt (kaptár-szerkesztő) is használhatja a *https\/:/\<Hadoop-fürt neve >. azurehdinsight. net/Home/HiveEditor* egy webböngészőbe való beírásával. Kell lennie a lásd: Ez a konzol bejelentkezett, és ezért szüksége a Hadoop fürt hitelesítő adatait.
 
 ### <a name="ps"></a> 3. Azure PowerShell-parancsokkal Hive-lekérdezések elküldéséhez
 PowerShell használatával Hive-lekérdezések elküldéséhez. Útmutatásért lásd: [elküldése Hive-feladatok PowerShell-lel](../../hdinsight/hadoop/apache-hadoop-use-hive-powershell.md).
@@ -137,19 +137,19 @@ Itt van a Hive-lekérdezést, amely létrehoz egy Hive-táblába.
 
 Az alábbiakban a leírásokat a mezőket, amelyek kell csatlakoztatni és más konfigurációkat:
 
-* **\<adatbázis neve\>**: a létrehozni kívánt adatbázis nevét. Ha csak át szeretné használni az alapértelmezett adatbázis, a lekérdezés *adatbázis létrehozása...*  elhagyható.
-* **\<táblanév\>**: a tábla, amely a megadott adatbázison belül létrehozni kívánt nevét. Ha szeretné használni az alapértelmezett adatbázis, a tábla lehet közvetlenül hivatkozni által *\<táblanév\>* nélkül \<adatbázisnév\>.
-* **\<a mező elválasztó\>**: az elválasztó, amely az adatfájlban, fel kell tölteni a Hive-táblában a mezők.
-* **\<Sorelválasztó\>**: az elválasztó, amely az adatfájl sorainak.
-* **\<tárolási hely\>**: menteni az adatokat a Hive táblák az Azure tárolási helyét. Ha nincs megadva *hely \<tárolási hely\>*, az adatbázis és a táblák *hive/adatraktár/* könyvtárat az alapértelmezett tároló, a Hive-fürt által a Alapértelmezés szerint. Ha azt szeretné, adja meg a tárolási helyét, a tárolási hely nem lehet belül az adatbázis és a táblák az alapértelmezett tároló. Ezen a helyen van, a fürt formátumban az alapértelmezett tároló viszonyított helyét kell nevezett *"wasb: / / / < 1 könyvtár > /"* vagy *"wasb: / / / < 1 könyvtár > / < 2. könyvtár > /"* stb. A lekérdezés végrehajtása, miután a relatív könyvtárak hoz létre a rendszer az alapértelmezett tároló.
-* **TBLPROPERTIES("skip.header.line.count"="1")**: Ha a fájlt egy fejlécsort, fel kell vennie, ez a tulajdonság **végén** , a *tábla létrehozása* lekérdezés. Ellenkező esetben a fejlécsort betöltése a táblába egy rekord formájában. Az adatfájl nem rendelkezik egy fejlécsort, ha ezt a konfigurációt a lekérdezésben elhagyható.
+* **adatbázis neve:\>a létrehozni kívánt adatbázis neve. \<** Ha csak át szeretné használni az alapértelmezett adatbázis, a lekérdezés *adatbázis létrehozása...*  elhagyható.
+* **táblázat neve:\>a megadott adatbázison belül létrehozni kívánt tábla neve. \<** Ha az alapértelmezett adatbázist szeretné használni, a tábla *\<neve\>* nem lehet az adatbázis neve\>nélkül \<.
+* **mező elválasztó\>: az adatfájlban a kaptár táblába feltöltendő mezőket határoló elválasztót. \<**
+* **line elválasztó\>: az adatfájl sorait határoló elválasztó. \<**
+* **tárolási hely:\>az Azure Storage-hely, amely a kaptár-táblák adatmentését menti. \<** Ha nem ad meg  *\<tárolási helyet\>* , a rendszer alapértelmezés szerint az adatbázist és a táblákat a kaptár-fürt alapértelmezett tárolójában, a kaptár */Warehouse/* könyvtárban tárolja. Ha azt szeretné, adja meg a tárolási helyét, a tárolási hely nem lehet belül az adatbázis és a táblák az alapértelmezett tároló. Ezt a helyet a fürt alapértelmezett tárolójához viszonyítva kell megadni a *"wasb:///\<Directory 1 >/"* vagy a *"\<wasb:///Directory 1 >/\<Directory 2 >/"* formátumban, stb. A lekérdezés végrehajtása, miután a relatív könyvtárak hoz létre a rendszer az alapértelmezett tároló.
+* **TBLPROPERTIES("skip.header.line.count"="1")** : Ha az adatfájlnak van fejléce, akkor a *tábla létrehozása* lekérdezés **végén** fel kell vennie ezt a tulajdonságot. Ellenkező esetben a fejlécsort betöltése a táblába egy rekord formájában. Az adatfájl nem rendelkezik egy fejlécsort, ha ezt a konfigurációt a lekérdezésben elhagyható.
 
 ## <a name="load-data"></a>Adatok betöltése a Hive-táblák
 Itt van a Hive-lekérdezést, amely adatokat tölt be egy Hive-táblába.
 
     LOAD DATA INPATH '<path to blob data>' INTO TABLE <database name>.<table name>;
 
-* **\<adatok a blob elérési útja\>**: Az alapértelmezett tárolóban a HDInsight Hadoop-fürt, a Hive-táblában való feltöltésre blob fájl esetén a *\<blob adatok elérési útja\>* formátumúnak kell lennie *"wasb: / /\< az ezen tároló könyvtár > /\<blob fájlneve > "*. A blob-fájlt egy további tárolóban a HDInsight Hadoop-fürt is lehet. Ebben az esetben *\<blob adatok elérési útja\>* formátumúnak kell lennie *"wasb: / /\<tároló neve >\<tárfiók neve >.blob.core.windows.net/\<blob fájlneve > "*.
+* BLOB-adatelérési út:  **\<\>** Ha a kaptár táblába feltöltendő blob-fájl a HDInsight Hadoop-fürt alapértelmezett tárolójában van, a *\<blob\>* -adatelérési út a tárolóban található *"wasb://\<könyvtárában kell lennie >/a\<blob fájlneve > "* . A blob-fájlt egy további tárolóban a HDInsight Hadoop-fürt is lehet. Ebben az esetben *\<a blob\>* -adatelérési útnak a *"\<wasb://tároló neve >\<Storage-fiók neve >. blob. Core. Windows. net/\<blob file Name >"* formátumban kell lennie.
 
   > [!NOTE]
   > A Hive-táblába való feltöltésre Blobadatok nem az alapértelmezett vagy a storage-fiók, a Hadoop-fürt kiegészítő tároló lehet. Ellenkező esetben a *adatok betöltése* lekérdezés nem sikerült panaszkodik, hogy az adatok nem férhet hozzá.
@@ -216,7 +216,7 @@ Válassza az 1. lépésben a külső tábla az adatok és az ORC-táblába besz�
             SELECT * FROM <database name>.<external textfile table name>;
 
 > [!NOTE]
-> Ha a TEXTFILE tábla *\<adatbázisnév\>.\< külső textfile táblanév\>* partícióval, rendelkezik a 3. LÉPÉSBEN a `SELECT * FROM <database name>.<external textfile table name>` parancs kiválasztja a partíció változó a visszaadott adatkészlet mezőként. Szúr be őket a *\<adatbázisnév\>.\< ORC-táblanév\>* óta nem sikerül *\<adatbázisnév\>.\< ORC-táblanév\>* nem rendelkezik a partíció változót a következő tábla sémáját mezőként. Ebben az esetben kell kifejezetten válassza ki a mezőket a beszúrásával *\<adatbázisnév\>.\< ORC-táblanév\>* módon:
+> Ha a TEXTFILE tábla *\<adatbázisának\>neve\< . a külső textfile\>* található partíciók a 3. lépésben a `SELECT * FROM <database name>.<external textfile table name>` parancs kiválasztja a partíció változót a visszaadott adatkészletben lévő mezőként. Szúrja be az  *\<adatbázis nevére\>.\< Az ork-\> tábla neve* sikertelen az  *\<adatbázis\< neve\>óta. Az ork-\> táblázat neve* nem tartalmazza a partíció változót a tábla séma mezőjében. Ebben az esetben kifejezetten ki kell választania az  *\<adatbázis neveként\>\< beszúrandó mezőket. Az ork-\> táblázat neve* a következőképpen történik:
 >
 >
 
@@ -225,7 +225,7 @@ Válassza az 1. lépésben a külső tábla az adatok és az ORC-táblába besz�
            FROM <database name>.<external textfile table name>
            WHERE <partition variable>=<partition value>;
 
-Biztonságosan dobja el a *\<külső textfile táblanév\>* Ha használja a következő lekérdezést az összes adat után már be van szúrva  *\<adatbázisnév\>.\< ORC-táblanév\>*:
+A  *\<külső\> textfile* eldobása a következő lekérdezés használata esetén biztonságos,  *\<\>miután az összes adattal beszúrta az adatbázis nevére.\< ORK-táblázat\>neve*:
 
         DROP TABLE IF EXISTS <database name>.<external textfile table name>;
 

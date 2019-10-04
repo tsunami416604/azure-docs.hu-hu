@@ -3,21 +3,21 @@ title: Azure rövid útmutató – Batch-feladat futtatása – CLI
 description: Rövid áttekintést kaphat arról, hogyan futtathat Batch-feladatokat az Azure CLI-vel.
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.service: batch
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 07/03/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: df56fd00d5a5ff2f9e9000b39939d0f33b3737d5
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 72c3244fbd9c8d547e35c31f0cd6e659e367e21a
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752347"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68322495"
 ---
-# <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>Gyors útmutató: Az első Batch-feladat futtatása az Azure CLI-vel
+# <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>Gyors útmutató: Az első batch-feladatok futtatása az Azure CLI-vel
 
 Az Azure CLI az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Ez a rövid útmutató ismerteti, hogyan lehet létrehozni az Azure CLI-vel Batch-fiókot, számítási csomópontok (virtuális gépek) *készletét*, valamint egy olyan *feladatot*, amely alapszintű *tevékenységeket* futtat a készleten. Minden egyes mintatevékenység egy alapvető parancsot futtat a készlet egyik csomópontján. A rövid útmutatóból megismerheti a Batch szolgáltatás fő fogalmait, és készen áll majd a Batch szolgáltatás használatára realisztikusabb számítási feladatokkal, nagyobb léptékben.
 

@@ -15,11 +15,11 @@ ms.date: 05/24/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 1c9b13f44dae068597cb82a0aa803283ad5e67bc
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763606"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62110361"
 ---
 # <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>Azure Automation-erőforrások hozzáadása a felügyeleti megoldásra (előzetes verzió)
 > [!NOTE]
@@ -242,8 +242,8 @@ Az alábbi táblázatban ismertetett feladatok ütemezésének tulajdonságai.
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| schedule name |Egyetlen **neve** entitás az ütemezés nevét. |
-| runbook name  |Egyetlen **neve** a runbook nevére entitáshoz.  |
+| schedule name |Egyetlen **name** entitás az ütemezés nevét. |
+| runbook name  |Egyetlen **name** a runbook nevére entitáshoz.  |
 
 
 
@@ -281,9 +281,9 @@ Ha a változó kezdeti értéke, hogy kell konfigurálni a megfelelő adattípus
 
 | Adattípus | Leírás | Példa | Oldja fel |
 |:--|:--|:--|:--|
-| string   | Tegye idézőjelek értéket.  | "\"Helló, világ\"" | "Hello world" |
+| string   | Tegye idézőjelek értéket.  | "\"Hello world\"" | "Hello world" |
 | numeric  | A numerikus értékek a szimpla idézőjelek között.| "64" | 64 |
-| boolean  | **Igaz** vagy **hamis** idézőjelben.  Vegye figyelembe, hogy ez az érték csak kisbetűket tartalmazhatnak. | "true" | true |
+| boolean  | **true** vagy **false** idézőjelben.  Vegye figyelembe, hogy ez az érték csak kisbetűket tartalmazhatnak. | "true" | true |
 | datetime | A szerializált dátumérték.<br>A PowerShellben a ConvertTo-Json-parancsmag segítségével hozza létre ezt az értéket egy adott dátumot.<br>Példa: get-date "5/24/2017 13:14:57" \| ConvertTo-Json | "\\/Date(1495656897378)\\/" | 2017-05-24 13:14:57 |
 
 ## <a name="modules"></a>Modulok

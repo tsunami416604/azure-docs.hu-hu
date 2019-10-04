@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5fdf88ed6cedaa38676a56536ff1eda7ee6bca66
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a229eef3d49964e71becf066d67f60b18da6fc18
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204797"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67113246"
 ---
 # <a name="tutorial-complete-an-azure-multi-factor-authentication-pilot-roll-out"></a>Oktatóanyag: Végezze el az Azure multi-factor Authentication kísérleti bevezetés
 
-Az oktatóanyag végigvezeti egy olyan feltételes hozzáférési szabályzat konfigurálásán, amely engedélyezi az Azure Multi-Factor Authenticationt (Azure MFA-t) az Azure Portalra való bejelentkezéskor. A szabályzat bevezetése és tesztelése tesztfelhasználók egy adott csoportján történik. Az Azure MFA bevezetése a feltételes hozzáféréssel a hagyományos kikényszerítéses módszerrel szemben hatalmas rugalmasságot biztosít a vállalatok és a rendszergazdák számára.
+Ebben az oktatóanyagban vezeti végig, ha jelentkezik be, amely lehetővé teszi, hogy az Azure multi-factor Authentication (az Azure MFA) feltételes hozzáférési szabályzat konfigurálása az Azure Portalra. A szabályzat bevezetése és tesztelése tesztfelhasználók egy adott csoportján történik. Üzembe helyezés az Azure MFA, feltételes hozzáférés használatával a vállalatok és a rendszergazdák a hagyományos kényszerített metódus képest jelentős rugalmasságot biztosít.
 
 > [!div class="checklist"]
 > * Az Azure Multi-Factor Authentication engedélyezése
@@ -36,7 +36,7 @@ Az oktatóanyag végigvezeti egy olyan feltételes hozzáférési szabályzat ko
 ## <a name="enable-azure-multi-factor-authentication"></a>Az Azure Multi-Factor Authentication engedélyezése
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) egy globális rendszergazdai fiókkal.
-1. Lépjen az **Azure Active Directory**, **Feltételes hozzáférés** területre.
+1. Keresse meg a **az Azure Active Directory**, **feltételes hozzáférés**
 1. Válassza az **Új szabályzat** lehetőséget.
 1. Adja az **MFA teszt** nevet a szabályzatnak.
 1. A **Felhasználók és csoportok** területen válassza a **Felhasználók és csoportok kiválasztása** választógombot.
@@ -52,11 +52,11 @@ Az oktatóanyag végigvezeti egy olyan feltételes hozzáférési szabályzat ko
     * Kattintson a **Kiválasztás** gombra.
 1. Hagyja ki a **Munkamenet** szakaszt.
 1. Állítsa a **Házirend engedélyezése** kapcsolót **Be** állásba.
-1. Kattintson a **Create** (Létrehozás) gombra
+1. Kattintson a **Létrehozás** gombra.
 
 ## <a name="test-azure-multi-factor-authentication"></a>Az Azure Multi-Factor Authentication tesztelése
 
-Annak ellenőrzéséhez, hogy a feltételes hozzáférési szabályzat működik-e, próbáljon bejelentkezni egy olyan erőforrásba, amely nem igényel többtényezős hitelesítést, majd az Azure Portalra, amely azonban igen.
+Hogy igazolja, hogy működik-e a feltételes hozzáférési szabályzatot, akkor tesztelje a olyan erőforrások, amelyek elvégzéséhez nem szükséges az MFA, és ezután az Azure Portalra, amely többtényezős Hitelesítést követel meg.
 
 1. Nyisson meg egy új böngészőablakot InPrivate vagy inkognitó módban, és lépjen a következő oldalra: [https://account.activedirectory.windowsazure.com](https://account.activedirectory.windowsazure.com).
    * Jelentkezzen be a cikk előfeltételeket ismertető szakaszában létrehozott tesztfelhasználóval. Ekkor a rendszer nem igényel többtényezős hitelesítést.
@@ -70,8 +70,8 @@ Annak ellenőrzéséhez, hogy a feltételes hozzáférési szabályzat működik
 Ha az oktatóanyag keretében konfigurált funkciót a továbbiakban már nem szeretné használni, végezze el a következő módosításokat.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Lépjen az **Azure Active Directory**, **Feltételes hozzáférés** területre.
-1. Válassza ki a létrehozott feltételes hozzáférési szabályzatot.
+1. Keresse meg a **az Azure Active Directory**, **feltételes hozzáférési**.
+1. Válassza ki a feltételes hozzáférési szabályzatot hozott létre.
 1. Kattintson a **Törlés** gombra.
 
 ## <a name="next-steps"></a>További lépések

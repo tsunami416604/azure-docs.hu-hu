@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0dec40027441432845d44828eb61e6b9e0ff081
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: bd351191e780118fbce81cd804204bc4dfa00285
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59281522"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67098402"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lecorpio"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Lecorpio
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a Lecorpio konfigurálásához hozzá kell Lecorpio a 
 
 **Lecorpio hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

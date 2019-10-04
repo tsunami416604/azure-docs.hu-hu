@@ -1,10 +1,10 @@
 ---
-title: Több hálózati adapterrel – az Azure klasszikus parancssori felület (klasszikus) virtuális gép létrehozása |} A Microsoft Docs
-description: Útmutató az Azure klasszikus parancssori felület (CLI) használatával több hálózati adapterrel rendelkező virtuális gép (klasszikus) létrehozása.
+title: Virtuális gép (klasszikus) létrehozása több hálózati adapterrel – klasszikus Azure CLI | Microsoft Docs
+description: Megtudhatja, hogyan hozhat létre virtuális gépet (klasszikus) több hálózati adapterrel a klasszikus Azure parancssori felület (CLI) használatával.
 services: virtual-network
 documentationcenter: na
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: azure-service-management
 ms.assetid: b436e41e-866c-439f-a7c7-7b4b041725ef
@@ -16,49 +16,49 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1e47b1e548516960c6aab3c48d64255370c94a77
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 2dc437b15f73866f76361da529690eac7a10af1a
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650019"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058746"
 ---
-# <a name="create-a-vm-classic-with-multiple-nics-using-the-azure-classic-cli"></a>A klasszikus Azure CLI használatával több hálózati adapterrel rendelkező virtuális gép (klasszikus) létrehozása
+# <a name="create-a-vm-classic-with-multiple-nics-using-the-azure-classic-cli"></a>Virtuális gép (klasszikus) létrehozása több hálózati adapterrel a klasszikus Azure CLI használatával
 
 [!INCLUDE [virtual-network-deploy-multinic-classic-selectors-include.md](../../includes/virtual-network-deploy-multinic-classic-selectors-include.md)]
 
-Hozza létre az Azure virtuális gépeken (VM), és csatolni a virtuális gépek mindegyike több hálózati adapterrel (NIC). Több hálózati adapter engedélyezze a hálózati adaptereken keresztüli forgalom típusainak elkülönítését. Ha például egy hálózati adapter előfordulhat, hogy kommunikáljon az internettel, amíg egy másik kommunikál, csak a belső erőforrásokhoz nem csatlakozik az internethez. Lehetővé teszi több hálózati adapter közötti hálózati forgalom külön számos hálózati virtuális berendezések, például az alkalmazásszolgáltatást és WAN-optimalizálás megoldások szükség.
+Létrehozhat virtuális gépeket (VM-ket) az Azure-ban, és több hálózati adaptert (NIC) is csatolhat az egyes virtuális gépekhez. Több hálózati adapter teszi lehetővé a forgalmi típusok elkülönítését a hálózati adapterek között. Előfordulhat például, hogy egy hálózati adapter kommunikál az internettel, míg egy másik csak az internethez csatlakozó belső erőforrásokkal kommunikál. Számos hálózati virtuális berendezés, például az alkalmazások kézbesítése és a WAN-optimalizálási megoldások esetében több hálózati adapter közötti hálózati forgalom elkülönítésére van szükség.
 
 > [!IMPORTANT]
-> Az Azure az erőforrások létrehozásához és használatához két különböző üzembe helyezési modellel rendelkezik:  [Resource Manager és klasszikus](../resource-manager-deployment-model.md). Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja. Ismerje meg, hogyan használja a következő lépésekkel a [Resource Manager üzemi modell](../virtual-machines/linux/multiple-nics.md).
+> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához:  [Resource Manager és klasszikus](../resource-manager-deployment-model.md). Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja. Ismerje meg, hogyan hajthatja végre ezeket a lépéseket a [Resource Manager](../virtual-machines/linux/multiple-nics.md)-alapú üzemi modell használatával.
 
 [!INCLUDE [virtual-network-deploy-multinic-scenario-include.md](../../includes/virtual-network-deploy-multinic-scenario-include.md)]
 
-Az alábbi lépéseket nevű erőforráscsoportot használ *IaaSStory* a webkiszolgálók és a egy erőforráscsoport nevű *IaaSStory-háttérrendszer* a DB kiszolgálók.
+A következő lépések a *IaaSStory* nevű erőforráscsoportot használják a webkiszolgálók és a *IaaSStory-backend* nevű erőforráscsoport számára az adatbázis-kiszolgálók esetében.
 
 ## <a name="prerequisites"></a>Előfeltételek
-A DB kiszolgálók hozhat létre, meg kell hoznia a *IaaSStory* erőforráscsoportot az összes szükséges erőforrást ehhez a forgatókönyvhöz. Ezek az erőforrások létrehozásához hajtsa végre a szükséges. Virtuális hálózat létrehozása a lépéseket követve a [hozzon létre egy virtuális hálózatot](virtual-networks-create-vnet-classic-cli.md) cikk.
+Az adatbázis-kiszolgálók létrehozása előtt létre kell hoznia a *IaaSStory* erőforráscsoportot az ehhez a forgatókönyvhöz szükséges összes erőforrással. Az erőforrások létrehozásához hajtsa végre az alábbi lépéseket. Hozzon létre egy virtuális hálózatot a [virtuális hálózat létrehozása](virtual-networks-create-vnet-classic-cli.md) című cikk lépéseit követve.
 
 [!INCLUDE [azure-cli-prerequisites-include.md](../../includes/azure-cli-prerequisites-include.md)]
 
-## <a name="deploy-the-back-end-vms"></a>A háttérbeli virtuális gép üzembe helyezése
-A háttérbeli virtuális gépek létrehozása a következő erőforrások függenek:
+## <a name="deploy-the-back-end-vms"></a>A háttérben futó virtuális gépek üzembe helyezése
+A háttérben futó virtuális gépek a következő erőforrások létrehozásával függenek:
 
-* **Storage-fiók adatlemezek**. A jobb teljesítmény érdekében az adatbázis-kiszolgálók a adatlemezét szemben – tartós állapotú meghajtót (SSD) technológiát, amely megköveteli a premium storage-fiók fogja használni. Győződjön meg arról, hogy telepíti központilag a prémium szintű tárolást támogató Azure-helyen.
-* **Hálózati adapterek**. Minden virtuális gép két hálózati adapterrel, egy adatbázis-hozzáférés, az lesz, a másik felügyeleti.
-* **Rendelkezésre állási csoport**. Egyetlen rendelkezésre állási beállítása, biztosítása érdekében a virtuális gépek legalább egyikének működik, és karbantartási futtató összes adatbázis-kiszolgáló megjelenik.
+* **Adatlemezek Storage-fiókja**. A jobb teljesítmény érdekében az adatbázis-kiszolgálók adatlemezei SSD-technológiát használnak, amelyhez prémium szintű Storage-fiók szükséges. Győződjön meg arról, hogy az Azure-beli hely a Premium Storage támogatásához van üzembe helyezve.
+* **Hálózati adapterek**. Mindegyik virtuális gép két hálózati adapterrel rendelkezik, egyet az adatbázis-hozzáféréshez, egyet pedig a felügyelethez.
+* **Rendelkezésre állási csoport**. Minden adatbázis-kiszolgáló egyetlen rendelkezésre állási csoportba kerül, így biztosítva, hogy a virtuális gépek legalább egyike működőképes legyen a karbantartás során.
 
-### <a name="step-1---start-your-script"></a>1. lépés – a parancsfájl futtatásához
-Letöltheti a teljes bash-szkript használt [Itt](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/classic/virtual-network-deploy-multinic-classic-cli.sh). A következő lépéseket követve módosítsa a parancsfájlt a saját környezetéhez:
+### <a name="step-1---start-your-script"></a>1\. lépés – a parancsfájl elindítása
+Az [itt](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/classic/virtual-network-deploy-multinic-classic-cli.sh)használt teljes bash-szkriptet letöltheti. A következő lépések végrehajtásával módosíthatja a parancsfájlt, hogy működjön a környezetben:
 
-1. A meglévő erőforráscsoportot, a fent telepített alapján az alábbi változók értékeinek módosítása [Előfeltételek](#prerequisites).
+1. Módosítsa az alábbi változók értékeit az [Előfeltételek](#prerequisites)között a fent üzembe helyezett meglévő erőforráscsoport alapján.
 
     ```azurecli
     location="useast2"
     vnetName="WTestVNet"
     backendSubnetName="BackEnd"
     ```
-2. A háttérrendszer központi telepítéshez használni kívánt értékek alapján az alábbi változók értékeinek módosítása
+2. Módosítsa az alábbi változók értékeit a háttérbeli telepítéshez használni kívánt értékek alapján.
 
     ```azurecli
     backendCSName="IaaSStory-Backend"
@@ -77,15 +77,15 @@ Letöltheti a teljes bash-szkript használt [Itt](https://raw.githubusercontent.
     numberOfVMs=2
     ```
 
-### <a name="step-2---create-necessary-resources-for-your-vms"></a>2. lépés – a virtuális gépek számára szükséges erőforrások létrehozása
-1. Hozzon létre egy új felhőszolgáltatást a háttérbeli virtuális gépeket. Figyelje meg a a `$backendCSName` változó az erőforráscsoport nevéhez, és `$location` tartozó Azure-régió.
+### <a name="step-2---create-necessary-resources-for-your-vms"></a>2\. lépés – a szükséges erőforrások létrehozása a virtuális gépekhez
+1. Hozzon létre egy új felhőalapú szolgáltatást az összes háttérbeli virtuális gép számára. Figyelje meg a `$backendCSName` változó használatát az erőforráscsoport neveként és az Azure- `$location` régióban.
 
     ```azurecli
     azure service create --serviceName $backendCSName \
         --location $location
     ```
 
-2. Hozzon létre egy prémium szintű tárfiók az Öné virtuális gépek által használt operációsrendszer- és adatlemezek.
+2. Hozzon létre egy prémium szintű Storage-fiókot az operációs rendszer és az adatlemezek számára, amelyeket a tiéd virtuális gépek használnak.
 
     ```azurecli
     azure storage account create $prmStorageAccountName \
@@ -93,15 +93,15 @@ Letöltheti a teljes bash-szkript használt [Itt](https://raw.githubusercontent.
         --type PLRS
     ```
 
-### <a name="step-3---create-vms-with-multiple-nics"></a>3. lépés – több hálózati adapterrel rendelkező virtuális gépek létrehozása
-1. Indítsa el egy hurkot, és hozzon létre több virtuális gép alapján az `numberOfVMs` változókat.
+### <a name="step-3---create-vms-with-multiple-nics"></a>3\. lépés – virtuális gépek létrehozása több hálózati adapterrel
+1. Indítson el egy hurkot több virtuális gép létrehozásához `numberOfVMs` a változók alapján.
 
     ```azurecli
     for ((suffixNumber=1;suffixNumber<=numberOfVMs;suffixNumber++));
     do
     ```
 
-2. Az egyes virtuális Gépekhez adja meg a nevét és az egyes két hálózati adapter IP-cím.
+2. Minden egyes virtuális gép esetében adja meg a két hálózati adapter nevét és IP-címét.
 
     ```azurecli
     nic1Name=$vmNamePrefix$suffixNumber-DA
@@ -113,7 +113,7 @@ Letöltheti a teljes bash-szkript használt [Itt](https://raw.githubusercontent.
     ipAddress2=$ipAddressPrefix$x
     ```
 
-3. A virtuális gép létrehozásához. Figyelje meg, hogy a használatát a `--nic-config` paraméter, amely az összes hálózati adapter neve, alhálózatot és IP-cím.
+3. Hozza létre a virtuális gépet. Figyelje meg a `--nic-config` paraméter használatát, amely tartalmazza az összes nevet, alhálózatot és IP-címet tartalmazó hálózati adapterek listáját.
 
     ```azurecli
     azure vm create $backendCSName $image $username $password \
@@ -127,7 +127,7 @@ Letöltheti a teljes bash-szkript használt [Itt](https://raw.githubusercontent.
         --nic-config $nic1Name:$backendSubnetName:$ipAddress1::,$nic2Name:$backendSubnetName:$ipAddress2::
     ```
 
-4. Az egyes virtuális Gépekhez hozzon létre két adatlemezeket.
+4. Minden virtuális gép esetében hozzon létre két adatlemezt.
 
     ```azurecli
     azure vm disk attach-new $vmNamePrefix$suffixNumber \
@@ -140,10 +140,10 @@ Letöltheti a teljes bash-szkript használt [Itt](https://raw.githubusercontent.
     done
     ```
 
-### <a name="step-4---run-the-script"></a>4. lépés: a parancsfájl futtatása
-Most, hogy letöltötte és igényei alapján a parancsfájl megváltozott, futtassa a szkriptet létrehozni a háttér adatbázis virtuális gépek több hálózati adapterrel rendelkező.
+### <a name="step-4---run-the-script"></a>4\. lépés – a parancsfájl futtatása
+Most, hogy az igényeinek megfelelően letöltötte és módosította a parancsfájlt, futtassa a szkriptet a háttér-adatbázis virtuális gépei létrehozásához több hálózati adapterrel.
 
-1. Mentse a parancsfájlt, és futtathatja a **Bash** terminál. A kezdeti kimenetének, látni fogja, ahogy az alábbi.
+1. Mentse a parancsfájlt, és futtassa a **bash** -terminálról. A kezdeti kimenet a lent látható módon jelenik meg.
 
         info:    Executing command service create
         info:    Creating cloud service
@@ -160,7 +160,7 @@ Most, hogy letöltötte és igényei alapján a parancsfájl megváltozott, futt
         info:    Looking up deployment
         info:    Creating VM
 
-2. Néhány perc múlva a végrehajtás befejeződik, és látni fogja a kimenet a többi alább látható módon.
+2. Néhány perc elteltével a végrehajtás véget ért, és megjelenik a kimenet többi része az alább látható módon.
 
         info:    OK
         info:    vm create command OK
@@ -190,6 +190,6 @@ Most, hogy letöltötte és igényei alapján a parancsfájl megváltozott, futt
         info:    Adding Data-Disk
         info:    vm disk attach-new command OK
 
-### <a name="step-5---configure-routing-within-the-vms-operating-system"></a>5. lépés – a virtuális gép operációs rendszerén belül útválasztás konfigurálása
+### <a name="step-5---configure-routing-within-the-vms-operating-system"></a>5\. lépés – az Útválasztás konfigurálása a virtuális gép operációs rendszerén belül
 
-Az Azure DHCP egy alapértelmezett átjáró a virtuális géphez csatolt első (elsődleges) hálózati adapterhez rendeli. Az Azure nem rendel hozzá alapértelmezett átjárót a virtuális géphez csatolt további (másodlagos) hálózati adapterekhez. Alapértelmezés szerint ezért nem lehetséges a kommunikáció olyan erőforrásokkal, amelyek a másodlagos hálózati adaptert tartalmazó alhálózaton kívül vannak. A másodlagos hálózati adapterek kommunikálhatnak az alhálózatukon kívül található erőforrásokkal. Másodlagos hálózati adapterek útválasztásának konfigurálása, lásd: [útválasztás több hálózati adapterrel rendelkező virtuális gép operációs rendszerből](virtual-network-network-interface-vm.md).
+Az Azure DHCP egy alapértelmezett átjárót rendel hozzá a virtuális géphez csatolt első (elsődleges) hálózati adapterhez. Az Azure nem rendel hozzá alapértelmezett átjárót a virtuális géphez csatolt további (másodlagos) hálózati adapterekhez. Alapértelmezés szerint ezért nem lehetséges a kommunikáció olyan erőforrásokkal, amelyek a másodlagos hálózati adaptert tartalmazó alhálózaton kívül vannak. A másodlagos hálózati adapterek kommunikálhatnak az alhálózatukon kívül található erőforrásokkal. A másodlagos hálózati adapterek útválasztásának konfigurálásához tekintse meg [a virtuális gépek operációs rendszerének útválasztása több hálózati adapterrel](virtual-network-network-interface-vm.md)című témakört.

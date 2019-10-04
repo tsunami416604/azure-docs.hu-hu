@@ -7,22 +7,23 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 1c77d0ea9e67c8d69f3f632cace164d8a0c4d921
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: 0821c749a6cb718e1b8abb74a2925bc041850eaf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617597"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66305256"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Az Azure Event Griddel kapcsolatos fogalmak
 
 Ez a cikk az Azure Event Grid főbb fogalmakat ismerteti.
 
-## <a name="events"></a>Események
+## <a name="events"></a>Events
 
 Az esemény leíró adatokkal teljes hiba történt a rendszer a legkisebb mennyisége jelenti. Minden esemény rendelkezik közös információkat, például: az esemény forrása idő az esemény tartott a hely és az egyedi azonosítója. Minden esemény is rendelkezik, amely csak az adott típusú eseményre vonatkozó információkat. Például az Azure Storage-ban létrehozott új fájlt rendezvényére részletesen a fájlról, például a `lastTimeModified` értéket. Vagy az Event Hubs esemény rendelkezik a rögzítési fájl URL-CÍMÉT. 
 
-Minden esemény legfeljebb 64 KB méretű adatot.
+Egy esemény mérete legfeljebb 64 KB-os által általánosan elérhető (GA) szolgáltatói szerződés (SLA) vonatkozik. Támogatást biztosít az esemény mérete legfeljebb 1 MB jelenleg előzetes verzióban érhető el. Események több mint 64 KB-os 64 KB-os egységekben számoljuk. 
+
 
 A tulajdonságok, amelyek egy eseményt küld, lásd: [Azure Event Grid-esemény séma](event-schema.md).
 
@@ -59,9 +60,6 @@ Az előfizetés-létrehozási példákért lásd:
 További információ az aktuális event grid-előfizetések első: [lekérdezés Event Grid-előfizetések](query-event-subscriptions.md).
 
 ## <a name="event-subscription-expiration"></a>Esemény-előfizetés lejárta
-
-A [Event Grid-bővítmény](/cli/azure/azure-cli-extensions-list) az Azure parancssori felület lehetővé teszi, hogy állítsa be a lejárati dátum, amikor egy esemény-előfizetés létrehozása. Ha a REST API-t használ, használja a `api-version=2018-09-15-preview`
-
 Az esemény-előfizetés a megadott dátumot követően automatikusan lejár. Beállíthatja egy esemény-előfizetésekhez, amely csak korlátozott ideig szükséges lejárati idejét, és nem kívánja ezen előfizetések törlése foglalkoznia. Például amikor a forgatókönyv teszteléséhez egy esemény-előfizetést hoz létre, érdemes beállíthatja egy lejárati idejét. 
 
 Egy példa egy lejárati beállítása: [előfizetés a speciális szűrők](how-to-filter-events.md#subscribe-with-advanced-filters).
@@ -82,7 +80,10 @@ Event Grid nem győződjön meg arról, hogy az előfizető végpontja egy esem�
 
 ## <a name="batching"></a>Kötegelés
 
-Egy egyéni témakör használatakor az események mindig közzé kell tenni a tömbben. Ez lehet egy kötegelt, az alacsony átviteli sebességű forgatókönyvek, azonban a nagy mennyiségű használati esetek, azt javasoljuk, hogy több batch együtt kiszolgálónként események közzététele nagyobb hatékonyság elérése érdekében. Kötegek legfeljebb 1 MB lehet. Minden esemény még mindig nem lehet 64 KB-nál nagyobb.
+Egy egyéni témakör használatakor az események mindig közzé kell tenni a tömbben. Ez lehet egy kötegelt, az alacsony átviteli sebességű forgatókönyvek, azonban a nagy mennyiségű használati esetek, azt javasoljuk, hogy több batch együtt kiszolgálónként események közzététele nagyobb hatékonyság elérése érdekében. Kötegek legfeljebb 1 MB lehet. Minden esemény még mindig nem lehet nagyobb, mint 64 KB-os (nyilvánosan elérhetők) vagy 1 MB (előzetes verzió).
+
+> [!NOTE]
+> Egy esemény mérete legfeljebb 64 KB-os által általánosan elérhető (GA) szolgáltatói szerződés (SLA) vonatkozik. Támogatást biztosít az esemény mérete legfeljebb 1 MB jelenleg előzetes verzióban érhető el. Több mint 64 KB-os esemény 64 KB-os léptékben számítjuk fel. 
 
 ## <a name="next-steps"></a>További lépések
 

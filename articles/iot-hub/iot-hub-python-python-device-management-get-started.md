@@ -1,175 +1,172 @@
 ---
-title: Ismerkedés az Azure IoT Hub-Eszközfelügyelet (Python) |} A Microsoft Docs
-description: Hogyan használhatja az IoT Hub-Eszközfelügyelet egy távoli eszköz-újraindítás kezdeményezése. A Pythonhoz készült Azure IoT SDK használatával egy szimulált eszközalkalmazás, amely tartalmazza a közvetlen metódus és egy service-alkalmazás, amely a közvetlen metódust hív meg.
-author: kgremban
-manager: philmea
+title: Ismerkedés az Azure IoT Hub-eszközkezelés (Python) szolgáltatással | Microsoft Docs
+description: Távoli eszköz újraindításának kezdeményezése IoT Hub-eszközkezelés használatával. A Pythonhoz készült Azure IoT SDK-val egy olyan szimulált eszköz alkalmazást hozhat létre, amely közvetlen metódust és egy közvetlen metódust meghívó szolgáltatási alkalmazást tartalmaz.
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
-ms.date: 02/20/2019
-ms.author: kgremban
-ms.openlocfilehash: 04fc1da04d9da715acfed8ca9d26e9c325afb403
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 08/20/2019
+ms.author: robinsh
+ms.openlocfilehash: eb5085db10c5763a4173f460eabde6afcccd5aff
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59786784"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000450"
 ---
-# <a name="get-started-with-device-management-python"></a>Ismerkedés az eszközfelügyelettel (Python)
+# <a name="get-started-with-device-management-python"></a>Ismerkedés az Eszközkezelővel (Python)
 
 [!INCLUDE [iot-hub-selector-dm-getstarted](../../includes/iot-hub-selector-dm-getstarted.md)]
 
 Ez az oktatóanyag a következőket mutatja be:
 
-* Az Azure portal használatával hozzon létre egy IoT hubot, és hozzon létre egy új eszközidentitást az IoT hubban.
+* A Azure Portal használatával hozzon létre egy IoT Hub, és hozzon létre egy eszköz-identitást az IoT hub-ban.
 
-* Egy szimulált eszközalkalmazás létrehozása, amely közvetlen metódus, amely az eszköz újraindul. Közvetlen metódusok a felhő kerül meghívásra.
+* Hozzon létre egy szimulált eszköz alkalmazást, amely egy közvetlen metódust tartalmaz, amely újraindítja az eszközt. A közvetlen metódusok meghívása a felhőből történik.
 
-* Hozzon létre egy Python-Konzolalkalmazás, amely meghívja ezt az újraindítást közvetlen metódus a szimulált eszközalkalmazásnak, az IoT hub segítségével a.
+* Hozzon létre egy olyan Python-konzol alkalmazást, amely a szimulált eszközön a IoT hub használatával meghívja a közvetlen újraindítási módszert.
 
-Ez az oktatóanyag végén két Python-konzolalkalmazással fog rendelkezni:
+Az oktatóanyag végén két Python-konzolos alkalmazás található:
 
-* **dmpatterns_getstarted_device.PY**, csatlakozik az IoT hubhoz a korábban létrehozott eszközidentitással újraindítás közvetlen metódus kap, szimulálja a fizikai számítógép újraindítása és az utolsó újraindítás időpontja jelenti.
+* a korábban létrehozott **dmpatterns_getstarted_device.** , amely a IoT hubhoz csatlakozik, a rendszer újraindítási közvetlen módszert kap, szimulálja a fizikai újraindítást, és az utolsó újraindítás idejét jelenti.
 
-* **dmpatterns_getstarted_service.PY**, közvetlen metódus a szimulált eszközalkalmazásnak, amely hívások jeleníti meg a választ, és megjeleníti a frissített jelentett tulajdonságokként.
+* a **dmpatterns_getstarted_service.** a szimulált eszköz alkalmazásban közvetlen metódust hív meg, a válasz pedig megjeleníti a frissített jelentett tulajdonságokat.
 
-Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
+[!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-* [Python 2.x vagy 3.x](https://www.python.org/downloads/). Mindenképp a rendszernek megfelelő, 32 vagy 64 bites telepítést használja. Amikor a rendszer erre kéri, mindenképp adja hozzá a Pythont a platformspecifikus környezeti változóhoz. Ha a Python 2.x verziót használja, előfordulhat, hogy [telepítenie vagy frissítenie kell a *pip*-et, a Python csomagkezelő rendszerét](https://pip.pypa.io/en/stable/installing/).
+## <a name="prerequisites"></a>Előfeltételek
 
-* Telepítse a [azure-iothub-device-client](https://pypi.org/project/azure-iothub-device-client/) csomag, a parancs használatával       `pip install azure-iothub-device-client`
-
-* Telepítse a [azure-iothub-service-client](https://pypi.org/project/azure-iothub-service-client/) csomag, a parancs használatával       `pip install azure-iothub-service-client`
-
-* Ha Windows operációs rendszert használ, a [Visual C++ terjeszthető csomagra](https://www.microsoft.com/download/confirmation.aspx?id=48145) van szükség a Python natív DLL-jei használatához.
-
-* Aktív Azure-fiók. (Ha nincs fiókja, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) mindössze néhány perc alatt.)
+[!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-### <a name="retrieve-connection-string-for-iot-hub"></a>Az IoT hub kapcsolati karakterlánc
+## <a name="register-a-new-device-in-the-iot-hub"></a>Új eszköz regisztrálása az IoT hub-ban
 
-[!INCLUDE [iot-hub-include-find-connection-string](../../includes/iot-hub-include-find-connection-string.md)]
+[!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
 ## <a name="create-a-simulated-device-app"></a>Szimulált eszközalkalmazás létrehozása
 
-Ez a szakasz tartalma:
+Ebben a szakaszban:
 
-* Hozzon létre egy Python-Konzolalkalmazás, amely a felhő által meghívott közvetlen metódusra válaszol
+* Hozzon létre egy olyan Python-konzol alkalmazást, amely válaszol a felhő által meghívott közvetlen metódusra
 
-* Egy eszköz-újraindítás szimulálásához.
+* Eszköz újraindításának szimulálása
 
-* A jelentett tulajdonságok használatával ikereszköz-lekérdezéseket engedélyez az eszközök azonosítására és ha azok utolsó újraindítása
+* A jelentett tulajdonságok használatával engedélyezheti az eszköz kettős lekérdezéseit az eszközök azonosításához és a legutóbbi újraindításkor
 
-1. Egy szövegszerkesztővel hozzon létre egy **dmpatterns_getstarted_device.py** fájlt.
+1. A parancssorban futtassa a következő parancsot az **Azure-IOT-Device** csomag telepítéséhez:
 
-2. Adja hozzá a következő `import` elején található utasításokat a **dmpatterns_getstarted_device.py** fájlt.
-
-    ```python
-    import random
-    import time, datetime
-    import sys
-
-    import iothub_client
-    from iothub_client import IoTHubClient, IoTHubClientError, IoTHubTransportProvider, IoTHubClientResult, IoTHubError, DeviceMethodReturnValue
+    ```cmd/sh
+    pip install azure-iot-device
     ```
 
-3. Adja hozzá változókat, például egy **connections_string** változót, és az ügyfél inicializálása.  Cserélje le a kapcsolati karakterláncot az eszköz kapcsolati karakterláncát.  
+   > [!NOTE]
+   > Az Azure-iothub-Service-Client pip-csomagjai csak Windows operációs rendszer esetén érhetők el. Linux/Mac OS esetén tekintse meg a Linux-és Mac OS-specifikus szakaszt a [fejlesztői környezet előkészítése a Pythonhoz](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) című témakörben.
+   >
+
+2. Egy szövegszerkesztővel hozzon létre egy **dmpatterns_getstarted_device.** file nevű fájlt a munkakönyvtárában.
+
+3. Adja hozzá a `import` következő utasításokat az **dmpatterns_getstarted_device.** a fájl elejéhez.
+
+    ```python
+    import threading
+    import time
+    import datetime
+    from azure.iot.device import IoTHubDeviceClient, MethodResponse
+    ```
+
+4. Adja hozzá a **CONNECTION_STRING** változót. Cserélje le `{deviceConnectionString}` a helyőrző értékét az eszköz csatlakoztatási karakterláncára. Ezt a kapcsolattípus-karakterláncot korábban a [IoT hub új eszközének regisztrálása](#register-a-new-device-in-the-iot-hub)során másolta.  
 
     ```python
     CONNECTION_STRING = "{deviceConnectionString}"
-    PROTOCOL = IoTHubTransportProvider.MQTT
-
-    CLIENT = IoTHubClient(CONNECTION_STRING, PROTOCOL)
-
-    WAIT_COUNT = 5
-
-    SEND_REPORTED_STATE_CONTEXT = 0
-    METHOD_CONTEXT = 0
-
-    SEND_REPORTED_STATE_CALLBACKS = 0
-    METHOD_CALLBACKS = 0
     ```
 
-4. Adja hozzá a következő függvény visszahívásait, hogy a közvetlen metódus megvalósításához az eszközön.
+5. Adja hozzá a következő függvény visszahívásait a közvetlen metódus eszközön való megvalósításához.
 
     ```python
-    def send_reported_state_callback(status_code, user_context):
-        global SEND_REPORTED_STATE_CALLBACKS
+    def reboot_listener(client):
+        while True:
+            # Receive the direct method request
+            method_request = client.receive_method_request("rebootDevice")  # blocking call
 
-        print ( "Device twins updated." )
-
-    def device_method_callback(method_name, payload, user_context):
-        global METHOD_CALLBACKS
-
-        if method_name == "rebootDevice":
-            print ( "Rebooting device..." )
+            # Act on the method by rebooting the device...
+            print( "Rebooting device" )
             time.sleep(20)
+            print( "Device rebooted")
 
-            print ( "Device rebooted." )
-
+            # ...and patching the reported properties
             current_time = str(datetime.datetime.now())
-            reported_state = "{\"rebootTime\":\"" + current_time + "\"}"
-            CLIENT.send_reported_state(reported_state, len(reported_state), send_reported_state_callback, SEND_REPORTED_STATE_CONTEXT)
+            reported_props = {"rebootTime": current_time}
+            client.patch_twin_reported_properties(reported_props)
+            print( "Device twins updated with latest rebootTime")
 
-            print ( "Updating device twins: rebootTime" )
-
-        device_method_return_value = DeviceMethodReturnValue()
-        device_method_return_value.response = "{ \"Response\": \"This is the response from the device\" }"
-        device_method_return_value.status = 200
-
-        return device_method_return_value
+            # Send a method response indicating the method request was resolved
+            resp_status = 200
+            resp_payload = {"Response": "This is the response from the device"}
+            method_response = MethodResponse(method_request.request_id, resp_status, resp_payload)
+            client.send_method_response(method_response)
     ```
 
-5. Indítsa el a közvetlen metódus figyelőt, és várjon.
+6. Indítsa el a Direct metódus-figyelőt, és várjon.
 
     ```python
     def iothub_client_init():
-        if CLIENT.protocol == IoTHubTransportProvider.MQTT or client.protocol == IoTHubTransportProvider.MQTT_WS:
-            CLIENT.set_device_method_callback(device_method_callback, METHOD_CONTEXT)
+        client = IoTHubDeviceClient.create_from_connection_string(CONNECTION_STRING)
+        return client
 
     def iothub_client_sample_run():
         try:
-            iothub_client_init()
+            client = iothub_client_init()
+
+            # Start a thread listening for "rebootDevice" direct method invocations
+            reboot_listener_thread = threading.Thread(target=reboot_listener, args=(client,))
+            reboot_listener_thread.daemon = True
+            reboot_listener_thread.start()
 
             while True:
-                print ( "IoTHubClient waiting for commands, press Ctrl-C to exit" )
+                time.sleep(1000)
 
-                status_counter = 0
-                while status_counter <= WAIT_COUNT:
-                    time.sleep(10)
-                    status_counter += 1
-
-        except IoTHubError as iothub_error:
-            print ( "Unexpected error %s from IoTHub" % iothub_error )
-            return
         except KeyboardInterrupt:
-            print ( "IoTHubClient sample stopped" )
+            print ( "IoTHubDeviceClient sample stopped" )
 
     if __name__ == '__main__':
         print ( "Starting the IoT Hub Python sample..." )
-        print ( "    Protocol %s" % PROTOCOL )
-        print ( "    Connection string=%s" % CONNECTION_STRING )
+        print ( "IoTHubDeviceClient waiting for commands, press Ctrl-C to exit" )
 
         iothub_client_sample_run()
     ```
 
-6. Mentse és zárja be a **dmpatterns_getstarted_device.py** fájlt.
+7. Mentse és zárjuk be a **dmpatterns_getstarted_device.** a fájlt.
 
 > [!NOTE]
-> Az egyszerűség kedvéért ez az oktatóanyag nem valósít meg semmilyen újrapróbálkozási házirendet. Az éles kódban újrapróbálkozási házirendeket (például egy exponenciális leállítást), a cikkben leírtak implementálandó [átmeneti hibák kezelésével](/azure/architecture/best-practices/transient-faults).
+> Az egyszerűség kedvéért ez az oktatóanyag nem valósít meg semmilyen újrapróbálkozási házirendet. Az éles kódban az újrapróbálkozási szabályzatokat (például egy exponenciális leállítási) kell megvalósítani, ahogy azt a cikkben is ismertetjük, az [átmeneti hibák kezelésére](/azure/architecture/best-practices/transient-faults).
 
+## <a name="get-the-iot-hub-connection-string"></a>Az IoT hub-beli kapcsolatok karakterláncának beolvasása
 
-## <a name="trigger-a-remote-reboot-on-the-device-using-a-direct-method"></a>A távoli közvetlen metódus az eszközön újra kell indítani az eseményindító
+[!INCLUDE [iot-hub-howto-device-management-shared-access-policy-text](../../includes/iot-hub-howto-device-management-shared-access-policy-text.md)]
 
-Ebben a szakaszban hozzon létre egy Python-Konzolalkalmazás, amely közvetlen metódus használó eszközök távoli újraindítást kezdeményez. Az alkalmazás számára az eszköz legutóbbi újraindítás ikereszköz-lekérdezések használja.
+[!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
-1. Egy szövegszerkesztővel hozzon létre egy **dmpatterns_getstarted_service.py** fájlt.
+## <a name="trigger-a-remote-reboot-on-the-device-using-a-direct-method"></a>Távoli újraindítás indítása az eszközön közvetlen módszer használatával
 
-2. Adja hozzá a következő `import` elején található utasításokat a **dmpatterns_getstarted_service.py** fájlt.
+Ebben a szakaszban egy olyan Python-konzol alkalmazást hoz létre, amely egy távoli újraindítást kezdeményez egy eszközön egy közvetlen metódus használatával. Az alkalmazás az eszköz kettős lekérdezéseit használva észleli az adott eszköz utolsó újraindításának idejét.
+
+1. A parancssorban futtassa a következő parancsot az **Azure-IOT-Service-Client** csomag telepítéséhez:
+
+    ```cmd/sh
+    pip install azure-iothub-service-client
+    ```
+
+   > [!NOTE]
+   > Az Azure-iothub-Service-Client és az Azure-iothub-Device-Client pip-csomagjai jelenleg csak Windows operációs rendszer esetén érhetők el. Linux/Mac OS esetén tekintse meg a Linux-és Mac OS-specifikus szakaszt a [fejlesztői környezet előkészítése a Pythonhoz](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) című témakörben.
+   >
+
+2. Egy szövegszerkesztővel hozzon létre egy **dmpatterns_getstarted_service.** file nevű fájlt a munkakönyvtárában.
+
+3. Adja hozzá a `import` következő utasításokat az **dmpatterns_getstarted_service.** a fájl elejéhez.
 
     ```python
     import sys, time
@@ -178,7 +175,7 @@ Ebben a szakaszban hozzon létre egy Python-Konzolalkalmazás, amely közvetlen 
     from iothub_service_client import IoTHubDeviceMethod, IoTHubError, IoTHubDeviceTwin
     ```
 
-3. Adja hozzá a következő változódeklarációkat. Csak cserélje le a helyőrző értékeket _IoTHubConnectionString_ és _deviceId_.
+4. Adja hozzá a következő változó deklarációkat. Cserélje le `{IoTHubConnectionString}` a helyőrző értékét a korábban átmásolt IoT hub-beli [IoT hub-kapcsolatok karakterláncának lekérése](#get-the-iot-hub-connection-string)elemre. Cserélje le `{deviceId}` a helyőrző értékét az [új eszköz regisztrálása az IoT hub](#register-a-new-device-in-the-iot-hub)-ban regisztrált eszköz azonosítójával.
 
     ```python
     CONNECTION_STRING = "{IoTHubConnectionString}"
@@ -190,7 +187,7 @@ Ebben a szakaszban hozzon létre egy Python-Konzolalkalmazás, amely közvetlen 
     WAIT_COUNT = 10
     ```
 
-4. Adja hozzá a következő függvényt indítsa újra a céleszközt, majd az ikereszközök lekérdezése az eszközmetódus meghívása és az utolsó újraindítás időpontja beolvasása.
+5. Adja hozzá a következő függvényt az eszköz metódusának meghívásához a céleszköz újraindításához, majd az eszközhöz tartozó ikrek lekérdezéséhez és az utolsó újraindítás időpontjának lekéréséhez.
 
     ```python
     def iothub_devicemethod_sample_run():
@@ -241,24 +238,32 @@ Ebben a szakaszban hozzon létre egy Python-Konzolalkalmazás, amely közvetlen 
         iothub_devicemethod_sample_run()
     ```
 
-5. Mentse és zárja be a **dmpatterns_getstarted_service.py** fájlt.
+6. Mentse és zárjuk be a **dmpatterns_getstarted_service.** a fájlt.
 
 ## <a name="run-the-apps"></a>Az alkalmazások futtatása
 
 Most már készen áll az alkalmazások futtatására.
 
-1. Parancsot a parancssorba futtassa a következő parancsot, amellyel megkezdheti a újraindítás közvetlen metódus figyel.
+1. A parancssorban futtassa a következő parancsot a közvetlen újraindítási módszer figyelésének megkezdéséhez.
 
-    ```
+    ```cmd/sh
     python dmpatterns_getstarted_device.py
     ```
 
-2. Egy másik parancssorban futtassa a következő parancsot a távoli újraindítás és a lekérdezés az ikereszköz található az utolsó újraindítás időpontja eseményindítóra.
+2. Egy másik parancssorban futtassa a következő parancsot a Távoli újraindítás és a lekérdezés elindításához a Twin eszközre, hogy megkeresse az utolsó újraindítási időt.
 
-    ```
+    ```cmd/sh
     python dmpatterns_getstarted_service.py
     ```
 
-3. Láthatja, hogy az eszköz válasza a közvetlen metódus a konzolon.
+3. Megjelenik az eszköz válasza a Direct metódusra a konzolon.
+
+   Az alábbi ábrán látható az eszköz válasza a közvetlen újraindítási módszerre:
+
+   ![Szimulált eszköz alkalmazás kimenete](./media/iot-hub-python-python-device-management-get-started/device.png)
+
+   Az alábbi ábrán látható, hogy a szolgáltatás hívja meg a Direct reboot metódust, és az eszköz Twin lekérdezése állapotot kérdezi le:
+
+   ![Újraindítási szolgáltatás kimenetének indítása](./media/iot-hub-python-python-device-management-get-started/service.png)
 
 [!INCLUDE [iot-hub-dm-followup](../../includes/iot-hub-dm-followup.md)]

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/20/2017
 ms.author: spelluru
-ms.openlocfilehash: 0fe30fe95e77adceaa5013f89206b08daf2a58a2
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: fe8f057443b978e70e7cdd2591affd455fefdca8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702095"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60749036"
 ---
 # <a name="azure-relay-exceptions"></a>Az Azure Relay-kivételek
 
@@ -29,18 +29,18 @@ Ez a cikk néhány kivétel, előfordulhat, hogy létrejött az Azure Relay API-
 
 A Relay-API-k készítése a kivételeket, amelyek előfordulhat, hogy a következő kategóriákba esnek. Is megtalálhatók javasolt műveleteket, amelyeket a kivételek megoldása érdekében.
 
-*   **Kódolási hiba felhasználói**: [System.ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx), [System.InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx), [System.OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx), [System.Runtime.Serialization.SerializationException](https://msdn.microsoft.com/library/system.runtime.serialization.serializationexception.aspx). 
+*   **Kódolási hiba felhasználói**: System.ArgumentException, [System.InvalidOperationException](https://msdn.microsoft.com/library/system.argumentexception.aspx), [System.OperationCanceledException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx), [System.Runtime.Serialization.SerializationException](https://msdn.microsoft.com/library/system.runtime.serialization.serializationexception.aspx). 
 
-    **Általános művelet**: próbálja meg kijavítani a kódot, folytatás előtt.
+    **Általános művelet**: Próbálja meg kijavítani a kódot, folytatás előtt.
 *   **A telepítő vagy konfigurációs hiba**: [System.UnauthorizedAccessException](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx). 
 
-    **Általános művelet**: tekintse át a konfigurációt. Szükség esetén módosítsa a konfigurációt.
-*   **Átmeneti kivételek**: [Microsoft.ServiceBus.Messaging.MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception), [Microsoft.ServiceBus.Messaging.ServerBusyException](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception), [ Microsoft.ServiceBus.Messaging.MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception). 
+    **Általános művelet**: Tekintse át a konfigurációt. Szükség esetén módosítsa a konfigurációt.
+*   **Átmeneti kivételek**: [Microsoft.ServiceBus.Messaging.MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception), [Microsoft.ServiceBus.Messaging.ServerBusyException](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception), [Microsoft.ServiceBus.Messaging.MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception). 
 
-    **Általános művelet**: értesítse a felhasználókat, vagy próbálja megismételni a műveletet.
+    **Általános művelet**: Próbálja megismételni a műveletet, vagy értesítse a felhasználókat.
 *   **Kivételek**: [System.Transactions.TransactionException](https://msdn.microsoft.com/library/system.transactions.transactionexception.aspx), [System.TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx). 
 
-    **Általános művelet**: jellemző a kivétel típusát. A táblázatban a következő szakaszban találja. 
+    **Általános művelet**: A kivétel típusát jellemző. A táblázatban a következő szakaszban találja. 
 
 ## <a name="exception-types"></a>Kivételtípusok
 

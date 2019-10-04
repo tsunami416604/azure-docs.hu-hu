@@ -1,110 +1,74 @@
 ---
-title: Állítsa be a kétlépéses ellenőrzés – Azure Active Directory |} A Microsoft Docs
-description: A vállalat Azure multi-factor Authentication állítja be, amikor a program felkéri iratkozzon fel a kétlépéses ellenőrzéshez. Ismerje meg, hogyan állítsa be.
+title: A kétfaktoros ellenőrzési módszerek beállítása – Azure Active Directory | Microsoft Docs
+description: A kétfaktoros ellenőrzési módszerek beállításának áttekintése a kétfaktoros ellenőrzéshez.
 services: active-directory
-keywords: az azure directory, a felhőben, az active directory az oktatóanyag az active directory használata
 author: eross-msft
 manager: daveba
-ms.reviewer: richagi
-ms.assetid: 46f83a6a-dbdd-4375-8dc4-e7ea77c16357
-ms.workload: identity
 ms.service: active-directory
 ms.subservice: user-help
-ms.topic: conceptual
-ms.date: 05/15/2017
+ms.workload: identity
+ms.topic: overview
+ms.date: 08/12/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0749e1acba9f13f9e0e95dfc66f9cf818c752cff
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 83bba343ac73fd0df575ae1e8a83c589a0bc15ac
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56165620"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616168"
 ---
-# <a name="set-up-my-account-for-two-step-verification"></a>A kétlépéses ellenőrzéshez a fiók beállítása
-A kétlépéses ellenőrzés egy kiegészítő biztonsági lépés, amely megnehezíti mások feltörhessék fiókja védelme érdekében. Ha ez a cikk olvasása közben, valószínűleg kapott e-mailt a munkahelyi vagy iskolai rendszergazda multi-factor Authentication hitelesítéssel kapcsolatban. Vagy esetleg próbált meg bejelentkezni, és itt van egy üzenet, hogy további biztonsági ellenőrzés beállítása. Ebben az esetben, ha **nem tud bejelentkezni, amíg el nem végezte az automatikus regisztrációs folyamatot**.
+# <a name="set-up-your-two-factor-verification-methods-overview"></a>A kétfaktoros ellenőrzési módszerek beállítása – áttekintés
 
-Ez a cikk segít beállítani a **munkahelyi vagy iskolai fiók**. Ha a saját, személyes Microsoft-fiók kétlépéses ellenőrzéshez engedélyezni szeretné, tekintse meg [tudnivalók a kétlépéses ellenőrzés](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification).
+A szervezet bekapcsolta a kétfaktoros ellenőrzést, ami azt jelenti, hogy a munkahelyi vagy iskolai fiókja most már a Felhasználónév, a jelszó, valamint a mobileszköz vagy telefon kombinációját igényli. A szervezet bekapcsolta ezt az extra ellenőrzést, mert az sokkal biztonságosabb, mint a jelszó, és a hitelesítés két formájára támaszkodik. A kétfaktoros ellenőrzés segítségével megakadályozható, hogy rosszindulatú hackerek ne legyenek az Ön számára, mert akkor is, ha a jelszavuk is van, de az is előfordulhat, hogy nem rendelkeznek az eszközzel.
 
-## <a name="set-up-your-account"></a>Fiók beállítása
+>[!Important]
+>Ezek az anyagok felhasználók számára készültek. Amennyiben Ön rendszergazda, az Azure Active Directory- (Azure AD-) környezet beállításával és kezelésével kapcsolatosan további információt az [Azure Active Directory dokumentációjában](https://docs.microsoft.com/azure/active-directory) talál.
 
-A cég informatikai támogatási kell kezdeni használni a kétlépéses ellenőrzést, ha megjelenik egy képernyő, amely szerint **a rendszergazda megköveteli, hogy állítsa be ezt a fiókot a további biztonsági ellenőrzés**:
+## <a name="who-decides-if-you-use-this-feature"></a>Ki dönti el, hogy használja-e ezt a funkciót?
 
-![Beállítás](./media/multi-factor-authentication-end-user-first-time/first.png)
+A fiók típusától függően a szervezet dönthet úgy, hogy kétfaktoros ellenőrzést kell használnia, vagy Ön is dönthet úgy, hogy eldönti.
 
-Első lépésként válassza ki a **hozza létre most.**
+- **Munkahelyi vagy iskolai fiókjával.** Ha munkahelyi vagy iskolai fiókot használ (például alain@contoso.com:), akkor akár a szervezet számára is, akár kétfaktoros ellenőrzést kell használnia, az adott ellenőrzési módszerekkel együtt. Mivel a szervezet úgy döntött, hogy ezt a funkciót kell használnia, nincs mód arra, hogy önállóan kikapcsolja.
 
-Ha nem látja a egy ilyen képernyőt, amikor bejelentkezik, kövesse a megjelenő utasításokat [felügyelheti a kétlépéses ellenőrzés](multi-factor-authentication-end-user-manage-settings.md#where-to-find-the-settings-page) találja a beállítások lapra, ahol kezelheti az ellenőrzési lehetőség.
+- **Személyes Microsoft-fiók.** Dönthet úgy, hogy a személyes Microsoft-fiókjaihoz (például alain@outlook.com:) kétfaktoros ellenőrzést állít be. Ha problémák merülnek fel a kétfaktoros ellenőrzéssel és a személyes Microsoft-fiókával kapcsolatban, tekintse meg a kétfaktoros ellenőrzés bekapcsolását a [Microsoft-fiók](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off). Mivel Ön dönti el, hogy szeretné-e használni ezt a funkciót, bármikor be-és kikapcsolhatja azt.
 
-## <a name="decide-how-you-want-to-verify-your-sign-ins"></a>Annak eldöntése, hogyan szeretné ellenőrizni a bejelentkezések
+## <a name="access-the-additional-security-verification-page"></a>A további biztonsági ellenőrzés oldal elérése
 
-A regisztrációs folyamat az első kérdést a kívánt kapcsolatba lépni velünk. Tekintse meg a beállításokat a táblázatban, és nyissa meg a telepítési lépéseket az egyes módszerek hivatkozások segítségével.
+Miután a szervezet bekapcsolta és beállítja a kétfaktoros ellenőrzést, a rendszer felszólítja, hogy adjon meg további információkat a fiókja biztonságának megőrzéséhez.
 
-| Kapcsolattartási mód | Leírás |
-| --- | --- |
-| [Mobilalkalmazás](#use-a-mobile-app-as-the-contact-method) |- **Értesítések küldése az ellenőrzéshez.** Ez a beállítás leküldéses értesítést az authenticator alkalmazás a okostelefonján vagy táblagépén lévő. Tekintse meg az értesítést, és ha az megbízható, válassza az **hitelesítés** az alkalmazásban. A munkahelyi vagy iskolai szükség lehet PIN-kód megadását, mielőtt Önt a hitelesítéshez.<br>- **Ellenőrzőkód használata.** Ebben a módban az authenticator alkalmazás egy ellenőrző kódot, amely frissíti a 30 másodpercenként hoz létre. A bejelentkezési felületen írja be az aktuális ellenőrzőkódot.<br>A Microsoft Authenticator alkalmazás érhető el az [Android](https://go.microsoft.com/fwlink/?linkid=866594) és [iOS](https://go.microsoft.com/fwlink/?linkid=866594).|
-| [Mobiltelefon hívás vagy szöveges üzenet](#use-your-mobile-phone-as-the-contact-method) |- **Telefonhívás** helyezi el az Ön telefonszám automatikus hanghívást indít. A hívás, és nyomja le a hitelesítéshez lenyomja a telefon billentyűzetén a #.<br>- **Szöveges üzenet** egy ellenőrző kódot tartalmazó szöveges üzenetet ér véget. A rendszer a szövegben, a következő válaszoljon az üzenetre, vagy adja meg a bejelentkezési felületen megadott ellenőrző kód. |
-| [Irodai telefon hívása](#use-your-office-phone-as-the-contact-method) |Automatikus hanghívást indít az Ön telefonszám helyezi. A hívás és a hitelesítéshez lenyomja a telefon billentyűzetén a # gombot. |
+![További információ kérése szükséges](media/multi-factor-authentication-verification-methods/multi-factor-authentication-initial-prompt.png)
 
-## <a name="use-a-mobile-app-as-the-contact-method"></a>A mobilalkalmazás használata kapcsolattartási módszerként
-Ez a módszer használatához, hogy egy hitelesítő alkalmazást telepítenie a telefonját vagy táblagépét. A jelen cikkben ismertetett lépések a Microsoft Authenticator alkalmazást, amely alapuló [Android](https://go.microsoft.com/fwlink/?Linkid=825072) és [iOS](https://go.microsoft.com/fwlink/?Linkid=825073).
+### <a name="to-access-the-additional-security-verification-page"></a>A további biztonsági ellenőrzés oldalának elérése
 
->[!NOTE]
->Nem kell használni a Microsoft Authenticator alkalmazást. Ha már használja egy másik hitelesítő alkalmazás, továbbra is használhatja.
+1. Kattintson a **Tovább gombra** a **További információk** megadásához.
 
-1. Válassza ki **mobilalkalmazás** a legördülő listából.
-2. Ezek közül bármelyikre **értesítések küldése az ellenőrzéshez** vagy **Ellenőrzőkód használata**, majd **beállítása**.
+    Megjelenik a **további biztonsági ellenőrzés** oldal.
 
-   ![További biztonsági ellenőrzési képernyő](./media/multi-factor-authentication-end-user-first-time/mobileapp.png)
+2. A **további biztonsági ellenőrzés** oldalon el kell döntenie, hogy melyik kétfaktoros ellenőrzési módszert használja a rendszer annak ellenőrzésére, hogy ki a munkahelyi vagy iskolai fiókjába való bejelentkezés után. Az alábbiak közül választhat:
 
-3. Telefonján vagy táblagépén, nyissa meg az alkalmazást, és válassza ki **+** egy fiók hozzáadásához. (Az Android-eszközökön, válassza a három pontra, majd **fiók hozzáadása**.)
-4. Adja meg, hogy szeretné-e munkahelyi vagy iskolai fiók hozzáadása. Megnyílik a QR-kódolvasót a telefonján. Ha a kamera nem működik megfelelően, válassza ki manuálisan adja meg a vállalati adatok. További információkért lásd: [fiók manuális hozzáadása](#add-an-account-manually).  
-5. A QR-kód kép megjelent a képernyőt a mobilalkalmazás konfigurálásához beolvasása.  Válassza ki **kész** gombra kattintva zárja be a QR-kód képernyőn.  
-
-   ![QR-kód képernyőn](./media/multi-factor-authentication-end-user-first-time/scan2.png)
-
-6. Az aktiválás a telefonon befejezése után válassza **kapcsolatfelvételi**.  Ebben a lépésben vagy egy értesítést, vagy egy ellenőrzőkódot küld a telefonjára. Válassza ki **ellenőrzése**.  
-7. Ha a cég egy PIN-kódot a bejelentkezés-ellenőrző jóváhagyása, adja meg.
-
-   ![A PIN-kód megadására szolgáló mező](./media/multi-factor-authentication-end-user-first-time/scan3.png)
-
-8. PIN-kód bevitelének befejezése után jelölje ki a **Bezárás**. Ezen a ponton az ellenőrzés sikeres legyen.
-9. Azt javasoljuk, hogy meg mobiltelefonszámát arra az esetre, ha megszakadna a mobilalkalmazással. Adja meg a legördülő listából válassza ki az országot, és adja meg mobiltelefonszámát az ország neve melletti jelölőnégyzetbe. Kattintson a **Tovább** gombra.
-10. Ezen a ponton kéri alkalmazásjelszókat a böngészőn kívüli alkalmazások, például az Outlook 2010 vagy korábbi, vagy a natív e-mail alkalmazás Apple-eszközök beállításához. Ennek oka az, bizonyos alkalmazások nem támogatják a kétlépéses ellenőrzést. Ha nem használja ezeket az alkalmazásokat, kattintson a **kész** és a további lépéseit kihagyhatja.
-11. Ha használja ezeket az alkalmazásokat, a Másolás az alkalmazásjelszót megadott, és illessze be az alkalmazás a szokásos jelszava helyett. Ugyanazt a jelszót több alkalmazáshoz is használhat. További információ [segítség az alkalmazásjelszókhoz].
-12. Kattintson a **Done** (Kész) gombra.
-
-### <a name="add-an-account-manually"></a>Fiók manuális hozzáadása
-Ha azt szeretné, hogy hozzáadjon egy fiókot a mobilalkalmazásba manuálisan, helyett használja az QR-olvasót, kövesse az alábbi lépéseket.
-
-1. Válassza ki a **manuálisan adja meg a fiók** gombra.  
-2. Adja meg a kódot és a vonalkód meg, amely ugyanazon az oldalon lévő URL-CÍMÉT. Ezek az adatok kerül a **kód** és **URL-cím** mezőkbe a mobilalkalmazásban.
-
-    ![Beállítás](./media/multi-factor-authentication-end-user-first-time/barcode2.png)
-3. Ha az aktiválás befejeződött, válassza ki a **kapcsolatfelvételi**. Ebben a lépésben vagy egy értesítést, vagy egy ellenőrzőkódot küld a telefonjára. Válassza ki **ellenőrzése**.
-
-## <a name="use-your-mobile-phone-as-the-contact-method"></a>A mobiltelefon használata kapcsolattartási módszerként
-1. Válassza ki **hitelesítéshez használt telefon** a legördülő listából.  
-
-    ![Beállítás](./media/multi-factor-authentication-end-user-first-time/phone.png)  
-2. A legördülő listából válassza ki az országot, és adja meg mobiltelefonszámát.
-3. Válassza inkább a mobiltelefonjára – szöveges vagy telefonhíváson alapuló használandó módszert.
-4. Válassza ki **kapcsolatfelvételi** ellenőrzése a telefonszámát. A kiválasztott módtól függően a Microsoft egy szöveges üzenet elküldéséhez, vagy hívja meg. Kövesse a képernyőn megjelenő utasításokat, majd válassza a **ellenőrizze**.
-5. Ezen a ponton kéri alkalmazásjelszókat a böngészőn kívüli alkalmazások, például az Outlook 2010 vagy korábbi, vagy a natív e-mail alkalmazás Apple-eszközök beállításához. Ennek oka az, bizonyos alkalmazások nem támogatják a kétlépéses ellenőrzést. Ha nem használja ezeket az alkalmazásokat, kattintson a **kész** és a további lépéseit kihagyhatja.
-6. Ha használja ezeket az alkalmazásokat, a Másolás az alkalmazásjelszót megadott, és illessze be az alkalmazás a szokásos jelszava helyett. Ugyanazt a jelszót több alkalmazáshoz is használhat. További információ [segítség az alkalmazásjelszókhoz].
-7. Kattintson a **Done** (Kész) gombra.
-
-## <a name="use-your-office-phone-as-the-contact-method"></a>A kapcsolattartási módszerként az irodai telefonját használja
-1. Válassza ki **irodai telefon** a legördülő listából  
-
-    ![Beállítás](./media/multi-factor-authentication-end-user-first-time/office.png)  
-2. A telefonszám mezőben automatikusan kitölti a kapcsolattartási adatokat. Ha a szám nem megfelelő vagy hiányzó, kérje a rendszergazda módosíthatja.
-3. Válassza ki **kapcsolatfelvételi** telefon ellenőrzése számát, valamint hogy hívni fogja a számot. Kövesse a képernyőn megjelenő utasításokat, majd válassza a **ellenőrizze**.
-4. Ezen a ponton kéri alkalmazásjelszókat a böngészőn kívüli alkalmazások, például az Outlook 2010 vagy korábbi, vagy a natív e-mail alkalmazás Apple-eszközök beállításához. Ennek oka az, bizonyos alkalmazások nem támogatják a kétlépéses ellenőrzést. Ha nem használja ezeket az alkalmazásokat, kattintson a **kész** és a további lépéseit kihagyhatja.
-5. Ha használja ezeket az alkalmazásokat, a Másolás az alkalmazásjelszót megadott, és illessze be az alkalmazás a szokásos jelszava helyett. Ugyanazt a jelszót több alkalmazáshoz is használhat. További információ: [Mik azok az Alkalmazásjelszavak](multi-factor-authentication-end-user-app-passwords.md).
-6. Kattintson a **Done** (Kész) gombra.
+    | Kapcsolattartási mód | Leírás |
+    | --- | --- |
+    | Mobilalkalmazás | <ul><li>**Értesítések fogadása az ellenőrzéshez.** Ez a beállítás egy értesítést küld az okostelefonján vagy a táblaszámítógépen lévő hitelesítő alkalmazásnak. Tekintse meg az értesítést, és ha az megbízható, válassza a **hitelesítés** lehetőséget az alkalmazásban. Előfordulhat, hogy a munkahelye vagy iskolája megköveteli, hogy a hitelesítés előtt PIN-kódot adjon meg.</li><li>**Ellenőrző kód használata.** Ebben a módban a hitelesítő alkalmazás 30 másodpercenként frissülő ellenőrző kódot hoz létre. Adja meg a jelenlegi ellenőrző kódot a bejelentkezési képernyőn.<br>Az Microsoft Authenticator alkalmazás [Android](https://go.microsoft.com/fwlink/?linkid=866594) és [iOS](https://go.microsoft.com/fwlink/?linkid=866594)rendszerhez érhető el.</li></ul> |
+    | Hitelesítéshez használt telefon | <ul><li>A **telefonhívás** egy automatikus hanghívást helyez el az Ön által megadott telefonszámra. Válaszolja meg a hívást, majd a hitelesítéshez nyomja meg a telefon billentyűzetén a font (#) gombot.</li><li>A **szöveges üzenet** egy ellenőrző kódot tartalmazó szöveges üzenetet ér véget. A szövegben szereplő Rákérdezés után válaszoljon a szöveges üzenetre, vagy adja meg a bejelentkezési felületen megadott ellenőrző kódot.</li></ul> |
+    | Irodai telefon | Elhelyez egy automatikus hanghívást az Ön által megadott telefonszámon. Válaszolja meg a hívást, majd a hitelesítéshez nyomja meg a telefon billentyűzetén a font (#) gombot. |
 
 ## <a name="next-steps"></a>További lépések
-* Az előnyben részesített beállításainak módosítása és [a kétlépéses ellenőrzés beállításainak kezelése](multi-factor-authentication-end-user-manage-settings.md)
-* Állítsa be a [alkalmazásjelszók](multi-factor-authentication-end-user-app-passwords.md) natív eszköz alkalmazások, amelyek nem támogatják a kétlépéses ellenőrzést.
-* Tekintse meg a [Microsoft Authenticator alkalmazás](user-help-auth-app-download-install.md) gyors, biztonságos hitelesítést akkor is, ha a cella szolgáltatás nem rendelkezik.
+
+A **további biztonsági ellenőrzés** lap elérését követően ki kell választania és be kell állítania a kétfaktoros ellenőrzési módszert:
+
+- [Mobileszköz beállítása ellenőrzési módszerként](multi-factor-authentication-setup-phone-number.md)
+
+- [Az irodai telefon beállítása ellenőrzési módszerként](multi-factor-authentication-setup-office-phone.md)
+
+- [A Microsoft Authenticator alkalmazás beállítása ellenőrzési módszerként](multi-factor-authentication-setup-auth-app.md)
+
+## <a name="related-resources"></a>Kapcsolódó erőforrások
+
+- [A kétfaktoros ellenőrzési módszer beállításainak kezelése](multi-factor-authentication-end-user-manage-settings.md)
+
+- [Alkalmazásjelszavak kezelése](multi-factor-authentication-end-user-app-passwords.md)
+
+- [Bejelentkezés kétfaktoros ellenőrzés használatával](multi-factor-authentication-end-user-signin.md)
+
+- [Segítség kérése kétfaktoros ellenőrzéssel](multi-factor-authentication-end-user-troubleshoot.md) 

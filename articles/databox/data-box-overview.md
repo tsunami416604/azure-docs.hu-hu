@@ -7,14 +7,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 01/18/2019
+ms.date: 09/17/2019
 ms.author: alkohli
-ms.openlocfilehash: a81eef9e3f7892afa1d64befec35852381ffe17b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a3e27cf427de3a33f71d6f4a0af9b1590abeb573
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58117744"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067002"
 ---
 # <a name="what-is-azure-data-box"></a>Mi az az Azure Data Box?
 
@@ -59,12 +59,12 @@ A Data Box eszköz jelen kiadása az alábbi funkciókkal rendelkezik.
 | Specifikációk                                          | Leírás              |
 |---------------------------------------------------------|--------------------------|
 | Tömeg                                                  | < 22,7 kg                |
-| Dimenziók                                              | Eszköz - Width: Magasság 309.0 HH: 430.4 mm mélysége: 502.0 mm |            
+| Dimenziók                                              | Eszköz szélessége: 309,0 mm magasság: 430,4 mm mélység: 502,0 mm |            
 | Kiszolgálószekrény-terület                                              | 7 U a kiszolgálószekrénybe helyezve, az oldalára állítva (nem szerelhető rá az állványra)|
 | Szükséges kábelek                                         | 1 db tápkábel (a csomag tartalmazza) <br> 2 db RJ45-kábel <br> 2 db SFP+ Twinax-rézkábel|
 | Tárkapacitás                                        | A 100 TB-os eszköz 80 TB felhasználható kapacitással rendelkezik a RAID 5-védelem alkalmazása után|
-| Energiagazdálkodási minősítése                                            | A kiemelt ellátási egység besorolású 700. <br> Általában egység húz 375.|
-| Hálózati illesztők                                      | 2 db 1 GbE sávszélességű illesztő – MGMT, Data 3. <br> MGMT – a kezeléshez, felhasználó által nem konfigurálható, a kezdeti beállításhoz szükséges <br> DATA3 – az adatokhoz, felhasználó által konfigurálható, alapértelmezetten dinamikus <br> Az MGMT és a DATA 3 is működhet 10 GbE-ként <br> 2 db 10 GbE sávszélességű illesztő – DATA 1, DATA 2 <br> Mindkettő az adatokhoz, konfigurálhatók dinamikusra (alapértelmezés) vagy statikusra |
+| Energiaellátási minősítés                                            | Az áramellátási egység 700 W-ra van értékelve. <br> Az egység jellemzően a 375 W-ot hívja meg.|
+| Hálózati adapterek                                      | 2 db 1 GbE sávszélességű illesztő – MGMT, Data 3. <br> MGMT – a kezeléshez, felhasználó által nem konfigurálható, a kezdeti beállításhoz szükséges <br> DATA3 – az adatokhoz, felhasználó által konfigurálható, alapértelmezetten dinamikus <br> Az MGMT és a DATA 3 is működhet 10 GbE-ként <br> 2 db 10 GbE sávszélességű illesztő – DATA 1, DATA 2 <br> Mindkettő az adatokhoz, konfigurálhatók dinamikusra (alapértelmezés) vagy statikusra |
 | Adatátviteli felület                                     | RJ45, SFP + 10 GbE réz Ethernet  |
 | Biztonság                                                | Ütésálló eszköztok, az illetéktelen hozzáférést gátló, egyedi csavarokkal <br> Az illetéktelen hozzáférést jelző matricák az eszköz alján|
 | Adatátviteli sebesség                                      | Legfeljebb 80 TB naponta, 10 GbE sávszélességű hálózati adapter használata esetén        |
@@ -109,13 +109,9 @@ A folyamat alatt minden lépéséről e-mailben kap értesítést. További info
 
 ## <a name="region-availability"></a>Régiónkénti elérhetőség
 
-A Data Box az adatok átvitelét a szolgáltatás üzembehelyezési régiója, az eszköz szállítási célországa és az adatátvitel célját képező Azure-tárfiók alapján végzi. 
+A Data Box a szolgáltatás üzembe helyezése, az adott ország/régió, valamint az adatok átviteléhez használt cél Azure Storage-fiók alapján tudja átvinni az adatok átvitelét. 
 
-- **A szolgáltatás rendelkezésre állása** – Ebben a kiadásban a Data Box szolgáltatás a következő régiókban érhető el:
-    - Az Egyesült Államok minden régiója: az USA nyugati középső régiója, az USA 2. nyugati régiója, az USA nyugati régiója, az USA déli középső régiója, az USA középső régiója, az USA északi középső régiója, az USA keleti régiója és az USA 2. keleti régiója.
-    - Európai Unió: Nyugat-Európa és Észak-Európa.
-    - Egyesült Királyság: az Egyesült Királyság déli régiója és az Egyesült Királyság nyugati régiója.
-    - Franciaország: Közép-Franciaország és Dél-Franciaország.
+- **Szolgáltatás rendelkezésre állása** – a régió rendelkezésre állásával kapcsolatos információkért tekintse meg a [régiók által elérhető Azure-termékeket](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Data Box a Azure Government felhőben is üzembe helyezhető. További információ: [Mi az Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)
 
 - **Cél tárfiókok** – Az adatokat tároló tárfiókok az összes olyan Azure-régióban elérhetők, amelyben a szolgáltatás is.  
 

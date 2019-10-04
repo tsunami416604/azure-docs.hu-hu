@@ -1,6 +1,6 @@
 ---
-title: Kötet létrehozása az Azure NetApp Files számára | Microsoft Docs
-description: A cikk azt ismerteti, hogyan hozható létre kötet az Azure NetApp Files számára.
+title: NFS-kötet létrehozása a Azure NetApp Fileshoz | Microsoft Docs
+description: Ismerteti, hogyan lehet NFS-kötetet létrehozni a Azure NetApp Fileshoz.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,42 +12,44 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 3/17/2019
+ms.date: 7/9/2019
 ms.author: b-juche
-ms.openlocfilehash: 3c59fb6abe9c26e6886706dae360ff40787e8faa
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 45164acd89fc9634d6929bafb35e64a5dc9f2b86
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549184"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178220"
 ---
-# <a name="create-a-volume-for-azure-netapp-files"></a>Kötet létrehozása az Azure NetApp Files számára
+# <a name="create-an-nfs-volume-for-azure-netapp-files"></a>NFS-kötet létrehozása az Azure NetApp Files számára
 
-Minden kapacitás készlet legfeljebb 500 kötetek. A kötet kapacitásfogyasztása beleszámít a készlet kiosztott kapacitásába. NetApp Azure Files támogatja az SMBv3- és NFS-kötetek. 
+Azure NetApp Files támogatja az NFS-és SMBv3-köteteket. A kötet kapacitásfogyasztása beleszámít a készlet kiosztott kapacitásába. Ebből a cikkből megtudhatja, hogyan hozhat létre NFS-köteteket. Ha SMB-kötetet szeretne létrehozni, tekintse [meg az SMB-kötet létrehozása Azure NetApp Fileshoz](azure-netapp-files-create-volumes-smb.md)című témakört. 
 
 ## <a name="before-you-begin"></a>Előkészületek 
 A cikk előfeltételeinek részeként korábban már be kellett állítania egy kapacitáskészletet.   
-[Kapacitás készlet beállítása](azure-netapp-files-set-up-capacity-pool.md)   
-Egy alhálózatot az Azure Files-NetApp delegálni.  
-[Az Azure Files-NetApp alhálózat delegálása](azure-netapp-files-delegate-subnet.md)
+[Kapacitási készlet beállítása](azure-netapp-files-set-up-capacity-pool.md)   
+Az alhálózatot delegálni kell Azure NetApp Files.  
+[Alhálózat delegálása Azure NetApp Filesre](azure-netapp-files-delegate-subnet.md)
 
-## <a name="create-an-nfs-volume"></a>Az NFS-kötet létrehozása
+## <a name="create-an-nfs-volume"></a>NFS-kötet létrehozása
 
-1.  Kattintson a **kötetek** panel kapacitás készletek paneljéről. 
+1.  Kattintson a **kötetek** panelre a kapacitási készletek panelen. 
 
-    ![Navigáljon a kötetek](../media/azure-netapp-files/azure-netapp-files-navigate-to-volumes.png)
+    ![A kötetek navigálása](../media/azure-netapp-files/azure-netapp-files-navigate-to-volumes.png)
 
 2.  Kattintson a **+ Kötet létrehozása** lehetőségre egy kötet létrehozásához.  
-    A létrehozás egy kötet ablak jelenik meg.
+    Megjelenik a kötet létrehozása ablak.
 
-3.  A létrehozását egy kötet ablak, kattintson **létrehozás** és adjon meg információt a következő mezőket:   
+3.  A kötet létrehozása ablakban kattintson a **Létrehozás** gombra, és adja meg a következő mezők adatait:   
     * **Kötet neve**      
         Adja meg a létrehozni kívánt kötet nevét.   
 
-        A névnek egyedinek kell lennie az erőforráscsoporton belül. Legalább három karakter hosszúságúnak kell lennie.  Minden olyan alfanumerikus karaktert használhat.
+        A kötet nevének egyedinek kell lennie az egyes kapacitási készleteken belül. Legalább három karakter hosszúnak kell lennie. Bármely alfanumerikus karaktert használhat.   
 
-    * **A kapacitás a készlet**  
-        Adja meg a kapacitás-készletet, hol szeretné létrehozni a kötetet.
+        A kötet neve `default` nem használható.
+
+    * **Kapacitási készlet**  
+        Határozza meg azt a kapacitási készletet, amelyben létre szeretné hozni a kötetet.
 
     * **Kvóta**  
         Adja meg a kötet számára kiosztott logikai tárterület mennyiségét.  
@@ -57,128 +59,39 @@ Egy alhálózatot az Azure Files-NetApp delegálni.
     * **Virtuális hálózat**  
         Adja meg azt az Azure-beli virtuális hálózatot (VNet), amelyről el szeretné érni a kötetet.  
 
-        A megadott virtuális hálózathoz rendelkeznie kell egy alhálózatot az Azure Files-NetApp delegált. Az Azure Files-NetApp szolgáltatás csak az azonos virtuális hálózaton vagy a virtuális hálózaton lévő virtuális hálózatok közötti társviszony-létesítésen keresztül a kötet és ugyanabban a régióban is elérhető. A kötet a helyszíni hálózatból Express Route használatával is elérheti.   
+        A megadott vnet rendelkeznie kell egy Azure NetApp Files delegált alhálózattal. A Azure NetApp Files szolgáltatás csak ugyanarról a vnet érhető el, vagy egy olyan vnet, amely ugyanabban a régióban található, mint a kötet vnet-társításon keresztül. Az Express Route használatával is elérheti a kötetet a helyszíni hálózatról.   
 
     * **Alhálózat**  
-        Adja meg az alhálózatot, amelyet a kötet használni kívánt.  
-        Az alhálózatot, adja meg az Azure Files-NetApp delegálni. 
+        Itt adhatja meg a kötethez használni kívánt alhálózatot.  
+        A megadott alhálózatot delegálni kell Azure NetApp Files. 
         
-        Ha nem rendelkezik delegálta egy alhálózathoz, kattintson **új létrehozása** kötet létrehozása a lapon. Ezután az alhálózat létrehozásához lapon adja meg az alhálózati adatokat, és válassza ki **Microsoft.NetApp/volumes** és az alhálózat delegálja a NetApp Azure-fájlok. Az egyes virtuális hálózatok csak egy alhálózatot az Azure Files-NetApp delegálható.   
+        Ha nem delegált alhálózatot, a kötet létrehozása lapon kattintson az **új létrehozása** lehetőségre. Ezután az alhálózat létrehozása lapon adja meg az alhálózati adatokat, majd válassza a **Microsoft. NetApp/kötetek** lehetőséget az alhálózat delegálásához Azure NetApp Files számára. Minden vnet csak egy alhálózat delegálható Azure NetApp Filesra.   
  
         ![Kötet létrehozása](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     
         ![Alhálózat létrehozása](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
 
-4. Kattintson a **protokoll**, majd **NFS** , a kötet protokoll típusát.   
-    * Adja meg a **fájl elérési útja** kulcsindexet exportálás elérési útjának az új kötet létrehozásához. A rendszer az exportálási útvonal használatával csatlakoztatja és éri el a kötetet.
+4. Kattintson a **protokoll**elemre, majd válassza az **NFS** lehetőséget a kötethez tartozó protokoll típusaként.   
+    * Itt adhatja meg a **fájl elérési útját** , amelyet az új kötet exportálási útvonalának létrehozásához fog használni. A rendszer az exportálási útvonal használatával csatlakoztatja és éri el a kötetet.
 
-        Az elérési út neve csak betűket, számokat és kötőjeleket („-”) tartalmazhat. A név 16–40 karakter hosszú lehet.  
+        Az elérési út neve csak betűket, számokat és kötőjeleket („-”) tartalmazhat. A név 16–40 karakter hosszú lehet. 
 
-    * Másik lehetőségként [házirend exportálása az NFS-kötet konfigurálása](azure-netapp-files-configure-export-policy.md)
+        A fájl elérési útjának egyedinek kell lennie az egyes előfizetésekben és az egyes régiókban. 
 
-    ![Adja meg az NFS-protokollt](../media/azure-netapp-files/azure-netapp-files-protocol-nfs.png)
+    * Szükség esetén [az NFS-kötet exportálási házirendjének konfigurálása](azure-netapp-files-configure-export-policy.md)
 
-5. Kattintson a **felülvizsgálat + létrehozás** , tekintse át a kötet.  Kattintson a **létrehozás** az NFS-kötet létrehozásához.
+    ![NFS-protokoll meghatározása](../media/azure-netapp-files/azure-netapp-files-protocol-nfs.png)
 
-    A létrehozott kötet a kötetek lap jelenik meg. 
+5. A kötet részleteinek áttekintéséhez kattintson a **felülvizsgálat + létrehozás** elemre.  Ezután kattintson a **Létrehozás** gombra az NFS-kötet létrehozásához.
+
+    A létrehozott kötet megjelenik a kötetek lapon. 
  
     A kötetek a kapacitáskészletről öröklik az előfizetésre, az erőforráscsoportra és a helyre vonatkozó attribútumokat. A kötet üzembe helyezésének állapotát az Értesítések lapon követheti nyomon.
 
-## <a name="create-an-smb-volume"></a>Az SMB-kötet létrehozása
-
-NetApp Azure Files SMBv3 köteteket támogatja. Az Active Directory-kapcsolatok létrehozása az SMB-kötet hozzáadása előtt kell. 
-
-### <a name="create-an-active-directory-connection"></a>Az Active Directory-kapcsolat létrehozása
-
-1. A NetApp fiókból, kattintson a **Active Directory kapcsolatok**, majd kattintson a **csatlakozzon**.  
-
-    ![Az Active Directory-kapcsolatok](../media/azure-netapp-files/azure-netapp-files-active-directory-connections.png)
-
-2. Az Join Active Directory ablakban adja meg a következő információkat:
-
-    * **Elsődleges DNS**   
-        Ez a tartomány tartományvezérlő IP-címét az előnyben részesített Active Directory Domain Services használata az Azure NetApp fájlokkal. 
-    * **Secondary DNS**  
-        Ez a tartomány tartományvezérlő IP-címét a másodlagos Active Directory Domain Services használata az Azure NetApp fájlokkal. 
-    * **Tartomány**  
-        Ez a tartomány nevét az Active Directory Domain Services, amely csatlakozni szeretne.
-    * **SMB-kiszolgáló (számítógép-fiók) előtag**  
-        Ez az Active Directoryban, amely Azure NetApp fájlokat fogja használni kívánt új fiókok a számítógépfiók névelőtagjának.
-
-        Írja be például az elnevezési szabványnak, amely a szervezet használja a fájlkiszolgálók esetén NAS-01, NAS-02..., NAS-045, majd volna "NAS" a előtag. 
-
-        Igény szerint a szolgáltatás további számítógép-fiókot hoz létre az Active Directoryban.
-
-    * **Szervezeti egység elérési útja**  
-        Ez az a szervezeti egység (OU), ahol létrejön az SMB-kiszolgálói számítógépfiókhoz LDAP elérési útját. Azt jelenti, OU = az második szint, szervezeti egység = első szintjét. 
-    * Hitelesítő adatait, beleértve a **felhasználónév** és **jelszó**
-
-    ![Csatlakozás Active Directory-címtárhoz](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)
-
-3. Kattintson a **Csatlakozás** parancsra.  
-
-    Megjelenik a létrehozott Active Directory-kapcsolatot.
-
-    ![Az Active Directory-kapcsolatok](../media/azure-netapp-files/azure-netapp-files-active-directory-connections-created.png)
-
-### <a name="add-an-smb-volume"></a>Az SMB-kötet hozzáadása
-
-1. Kattintson a **kötetek** panel kapacitás készletek paneljéről. 
-
-    ![Navigáljon a kötetek](../media/azure-netapp-files/azure-netapp-files-navigate-to-volumes.png)
-
-2. Kattintson a **+ Kötet létrehozása** lehetőségre egy kötet létrehozásához.  
-    A létrehozás egy kötet ablak jelenik meg.
-
-3. A létrehozását egy kötet ablak, kattintson **létrehozás** és adjon meg információt a következő mezőket:   
-    * **Kötet neve**      
-        Adja meg a létrehozni kívánt kötet nevét.   
-
-        A névnek egyedinek kell lennie az erőforráscsoporton belül. Legalább három karakter hosszúságúnak kell lennie.  Minden olyan alfanumerikus karaktert használhat.
-
-    * **Elérési út**  
-        Adja meg az új kötet exportálási útvonalának létrehozásához használni kívánt fájlelérési utat. A rendszer az exportálási útvonal használatával csatlakoztatja és éri el a kötetet.   
-     
-        Az elérési út neve csak betűket, számokat és kötőjeleket („-”) tartalmazhat. A név 16–40 karakter hosszú lehet.  
-
-    * **A kapacitás a készlet**  
-        Adja meg a kapacitás-készletet, hol szeretné létrehozni a kötetet.
-
-    * **Kvóta**  
-        Adja meg a kötet számára kiosztott logikai tárterület mennyiségét.  
-
-        A **Rendelkezésre álló kvóta** mező a kiválasztott kapacitáskészletben fel nem használt terület mennyiségét mutatja, amely felhasználható egy új kötet létrehozása során. Az új kötet mérete nem haladhatja meg a rendelkezésre álló kvótát.  
-
-    * **Virtuális hálózat**  
-        Adja meg azt az Azure-beli virtuális hálózatot (VNet), amelyről el szeretné érni a kötetet.  
-
-        A megadott virtuális hálózathoz rendelkeznie kell egy alhálózatot az Azure Files-NetApp delegált. Az Azure Files-NetApp szolgáltatás csak az azonos virtuális hálózaton vagy a virtuális hálózaton lévő virtuális hálózatok közötti társviszony-létesítésen keresztül a kötet és ugyanabban a régióban is elérhető. A kötet a helyszíni hálózatból Express Route használatával is elérheti.   
-
-    * **Alhálózat**  
-        Adja meg az alhálózatot, amelyet a kötet használni kívánt.  
-        Az alhálózatot, adja meg az Azure Files-NetApp delegálni. 
-        
-        Ha nem rendelkezik delegálta egy alhálózathoz, kattintson **új létrehozása** kötet létrehozása a lapon. Ezután az alhálózat létrehozásához lapon adja meg az alhálózati adatokat, és válassza ki **Microsoft.NetApp/volumes** és az alhálózat delegálja a NetApp Azure-fájlok. Az egyes virtuális hálózatok csak egy alhálózatot az Azure Files-NetApp delegálható.   
- 
-        ![Kötet létrehozása](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
-    
-        ![Alhálózat létrehozása](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
-
-4. Kattintson a **protokoll** hajtsa végre a következő információkat:  
-    * Válassza ki **SMB** , a kötet protokoll típusát. 
-    * Válassza ki a **Active Directory** kapcsolat a legördülő listából.
-    * Adja meg a nevét, a megosztott kötet **megosztásnév**.
-
-    ![Adja meg az SMB protokoll](../media/azure-netapp-files/azure-netapp-files-protocol-smb.png)
-
-5. Kattintson a **felülvizsgálat + létrehozás** , tekintse át a kötet.  Kattintson a **létrehozás** az SMB-kötet létrehozásához.
-
-    A létrehozott kötet a kötetek lap jelenik meg. 
- 
-    A kötetek a kapacitáskészletről öröklik az előfizetésre, az erőforráscsoportra és a helyre vonatkozó attribútumokat. A kötet üzembe helyezésének állapotát az Értesítések lapon követheti nyomon.
 
 ## <a name="next-steps"></a>További lépések  
 
-* [Csatlakoztatni vagy leválasztani egy kötet a Windows vagy Linux rendszerű virtuális gépekhez](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
-* [Az NFS-kötet exportálási vonatkozó házirend konfigurálása](azure-netapp-files-configure-export-policy.md)
-* [Virtuális hálózat integrációja Azure-szolgáltatások ismertetése](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)
+* [Kötetek csatlakoztatása vagy leválasztása Windows vagy Linux rendszerű virtuális gépekhez](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
+* [Exportálási szabályzat konfigurálása NFS-kötethez](azure-netapp-files-configure-export-policy.md)
+* [Az Azure NetApp Files erőforráskorlátai](azure-netapp-files-resource-limits.md)
+* [Ismerje meg az Azure-szolgáltatások virtuális hálózati integrációját](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)

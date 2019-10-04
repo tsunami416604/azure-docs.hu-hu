@@ -7,17 +7,16 @@ author: ggailey777
 manager: jeconnoc
 ms.assetid: 0b609bc0-c264-4092-8e3e-0784dcc23b5d
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 09/19/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 381eecefbba238e712820a09c8ec489706ef3751
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 1d24eb81361a337ed00d719a7fb5895e73583030
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58106457"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70096313"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Üzenetek hozzáadása az Azure Storage üzenetsorába a Functions szolgáltatás használatával
 
@@ -67,7 +66,7 @@ Miután meghatározta a kimeneti kötést, módosítania kell a kódot, hogy az 
 
 ## <a name="add-code-that-uses-the-output-binding"></a>Kimeneti kötést használó kód hozzáadása
 
-Ebben a szakaszban egy olyan kódot fog hozzáadni, amely a kimeneti üzenetsorba ír üzeneteket. Ez az üzenet tartalmazza az értéket, amelyet a HTTP-eseményindító a lekérdezési sztringben kap meg. Például, ha a lekérdezési karakterláncot tartalmaz `name=Azure`, az üzenetsorban található üzenet lesz *a függvénynek átadott név: Azure*.
+Ebben a szakaszban egy olyan kódot fog hozzáadni, amely a kimeneti üzenetsorba ír üzeneteket. Ez az üzenet tartalmazza az értéket, amelyet a HTTP-eseményindító a lekérdezési sztringben kap meg. Ha például a lekérdezési karakterlánc tartalmazza `name=Azure`, a várólista-üzenet a következő függvénynek *lesz átadva: Azure*-ban.
 
 1. A függvényre kattintva jelenítse meg a szerkesztőben a függvénykódot.
 
@@ -150,7 +149,7 @@ Hagyja ki ezt a szakaszt, ha már telepítette és csatlakoztatta a Storage Expl
 
 1. Bontsa ki az **Üzenetsorok** csomópontot, majd válassza ki az **outqueue** nevű üzenetsort. 
 
-   Az üzenetsor tartalmazza az üzenetet, amelyet az üzenetsor kimeneti kötése létrehozott a HTTP által aktivált függvény futtatásakor. Ha a függvény az alapértelmezett hívta `name` értékét *Azure*, az üzenetsorban található üzenet van *a függvénynek átadott név: Azure*.
+   Az üzenetsor tartalmazza az üzenetet, amelyet az üzenetsor kimeneti kötése létrehozott a HTTP által aktivált függvény futtatásakor. Ha a függvényt az `name` *Azure*alapértelmezett értékével hívja meg, a várólista-üzenet a *következő függvénynek lesz átadva: Azure*-ban.
 
     ![A Storage Explorerben megjelenő üzenetsori üzenet](./media/functions-integrate-storage-queue-output-binding/function-queue-storage-output-view-queue.png)
 

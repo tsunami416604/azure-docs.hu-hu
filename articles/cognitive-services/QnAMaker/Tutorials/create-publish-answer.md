@@ -1,6 +1,6 @@
 ---
-title: Hozzon létre, közzététel, választ
-titleSuffix: QnA Maker - Azure Cognitive Services
+title: 'Oktatóanyag: Létrehozás, közzététel, válasz-QnA Maker'
+titleSuffix: Azure Cognitive Services
 description: Ez a REST-alapú oktatóanyag végigvezeti egy tudásbázis programozott módon történő létrehozásának és közzétételének, majd egy kérdés a tudásbázisból való megválaszolásának folyamatán.
 services: cognitive-services
 author: diberry
@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 01/24/2019
+ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: d209d73d67af96e99589dddcb71b6b50214356ee
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: f0888b25258f6a7830df1195995159432b19907d
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58877278"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802821"
 ---
-# <a name="tutorial-using-c-create-knowledge-base-then-answer-question"></a>Oktatóanyag: Használatával C#, hozzon létre alapszintű majd kapcsolatos kérdésére választ kaphat
+# <a name="tutorial-using-c-create-knowledge-base-then-answer-question"></a>Oktatóanyag: A C#, Tudásbázis létrehozása, majd a kérdés megválaszolása
 
 Ez az oktatóanyag végigvezeti egy tudásbázis (KB) programozott módon történő létrehozásának és közzétételének, majd egy ügyféltől származó kérdés a tudásbázisból való megválaszolásának folyamatán. 
 
@@ -30,21 +30,21 @@ Ez az oktatóanyag végigvezeti egy tudásbázis (KB) programozott módon tört�
 > * CURL használata a tudásbázis lekérdezéséhez
 
 
-Ebben a rövid útmutatóban QnA Maker API-kat hívunk meg:
+Ez a rövid útmutató meghívja a QnA Maker REST API-kat:
 
-* [Tudásbázis (KB) létrehozása](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
-* [Műveletek részleteinek lekérése](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails)
-* [Tudásbázis részleteinek lekérése](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasedetails) 
-* [Tudásbázis végpontjainak lekérése](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_getendpointkeys)
-* [Közzététel](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) 
+* [Tudásbázis (KB) létrehozása](https://go.microsoft.com/fwlink/?linkid=2092179)
+* [Műveletek részleteinek lekérése](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)
+* [Tudásbázis részleteinek lekérése](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/getdetails) 
+* [Tudásbázis végpontjainak lekérése](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/endpointkeys/getkeys)
+* [Közzététel](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish) 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Legújabb [**Visual Studio Community kiadás**](https://www.visualstudio.com/downloads/).
-* Rendelkeznie kell [QnA Maker-szolgáltatással](../How-To/set-up-qnamaker-service-azure.md) is. A kulcs lekéréséhez válassza az irányítópulton az **Erőforrás-kezelés** területen lévő **Kulcsok** lehetőséget. 
+* Rendelkeznie kell [QnA Maker-szolgáltatással](../How-To/set-up-qnamaker-service-azure.md) is. A kulcs és az erőforrás nevének lekéréséhez **válassza a** gyors üzembe helyezés lehetőséget a QnA Maker erőforrásának Azure Portal. 
 
 > [!NOTE] 
-> A teljes megoldás fájl(ok) érhetők el a [ **Azure-Samples/cognitive-services-qnamaker-csharp** GitHub-adattár](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/tutorials/create-publish-answer-knowledge-base).
+> A teljes megoldás fájl (ok) az [ **Azure-Samples/kognitív-Services-qnamaker-csharp** GitHub-adattárból](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/tutorials/create-publish-answer-knowledge-base)érhetők el.
 
 ## <a name="create-a-knowledge-base-project"></a>Tudásbázisprojekt létrehozása
 
@@ -146,13 +146,13 @@ Az API-hívás egy 204-es állapotot küld vissza a sikeres közzététel nyugt�
 Bármely egyéb válasz esetében a rendszer a választ változtatás nélkül adja vissza.
 
 ## <a name="generating-an-answer"></a>Válasz létrehozása
-Ahhoz, hogy egy kérdés elküldése és a legjobb válasz lekérése céljából hozzáférhessen a tudásbázishoz, a programnak egy, a tudásbázis részletei API-ból származó _végpont gazdagépre_, és a végpontok API-ból származó _elsődleges végpont kulcsra_ van szüksége. Ezek a metódusok a válasz összeállításához szükséges metódussal együtt a következő szakaszokban találhatók. 
+Ahhoz, hogy a KB-hoz hozzáférjen egy kérdés elküldéséhez, és megkapja a legjobb választ, a programnak szüksége van az _erőforrás nevére_ a kb részletek API-ból és az _elsődleges Endpoint kulcsból_ a végpontok API-ból. Ezek a metódusok a válasz összeállításához szükséges metódussal együtt a következő szakaszokban találhatók. 
 
 Az alábbi táblázat bemutatja, hogyan használja a rendszer az adatokat az URI létrehozására:
 
 |Válasz URI-sablon létrehozása|
 |--|
-|https://**HOSTNAME**.azurewebsites.net/qnamaker/knowledgebases/**KBID**/generateAnswer|
+|https:// **-Erőforrás-név**. Azurewebsites.net/qnamaker/knowledgebases/**KBID**/generateAnswer|
 
 Az _elsődleges végpont_ fejlécként továbbítódik a válasz létrehozására vonatkozó kérelem hitelesítéséhez:
 
@@ -169,7 +169,7 @@ A kérelem törzsének a megfelelő JSON-t kell továbbítania:
 ```
 
 ## <a name="get-kb-details"></a>Tudásbázis részleteinek lekérése
-Adja hozzá a következő metódust a tudásbázis részleteinek lekéréséhez. Ezek a részletek tartalmazzák a tudásbázis gazdagépnevét. A gazdagépnév a QnA Maker azon Azure-beli webszolgáltatásának neve, amelyet a QnA Maker-erőforrás létrehozásakor megadott. 
+Adja hozzá a következő metódust a tudásbázis részleteinek lekéréséhez. Ezek az adatok tartalmazzák a KB-ban található, az alábbi JSON-ban `hostName` néven ismert erőforrás nevét. Az erőforrás neve annak a QnA Maker erőforrásnak a neve, amelyet a QnA Maker erőforrás létrehozásakor megadott. 
 
 [!code-csharp[Get KB Details](~/samples-qnamaker-csharp/documentation-samples/tutorials/create-publish-answer-knowledge-base/QnaMakerQuickstart/Program.cs?range=260-273 "Add publish method")]
 
@@ -185,7 +185,7 @@ Ez az API-hívás egy JSON-választ ad vissza:
   "name": "QnA Maker FAQ from quickstart",
   "userId": "AAAc3841df0b42cdb00f53a49d51a89c",
   "urls": [
-    "https://docs.microsoft.com/en-in/azure/cognitive-services/qnamaker/faqs",
+    "https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs",
     "https://docs.microsoft.com/bot-framework/resources-bot-framework-faq"
   ],
   "sources": [
@@ -224,10 +224,10 @@ Ez az API-hívás egy JSON-választ ad vissza:
       "questions": [
         "Does QnA Maker support non-English languages?"
       ],
-      "answer": "See more details about [supported languages](https://docs.microsoft.com/en-in/azure/cognitive-services/qnamaker/overview/languages-supported).\n\n\nIf you have content from multiple languages, be sure to create a separate service for each language.",
+      "answer": "See more details about [supported languages](https://docs.microsoft.com/azure/cognitive-services/qnamaker/overview/languages-supported).\n\n\nIf you have content from multiple languages, be sure to create a separate service for each language.",
       "score": 82.19,
       "id": 11,
-      "source": "https://docs.microsoft.com/en-in/azure/cognitive-services/qnamaker/faqs",
+      "source": "https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs",
       "metadata": []
     }
   ]
@@ -248,4 +248,4 @@ A tudásbázis létrehozása után a QnA Maker portálján, a [My knowledge base
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [QnA Maker (V4) REST API-referencia](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
+> [QnA Maker (V4) REST API-referencia](https://go.microsoft.com/fwlink/?linkid=2092179)

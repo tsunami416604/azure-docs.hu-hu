@@ -1,20 +1,20 @@
 ---
-title: PostgreSQL-hez készült Azure Database-kapcsolatok problémáinak hibaelhárítása
-description: Ismerje meg, hogyan PostgreSQL-hez készült Azure Database-kapcsolatok problémáinak hibaelhárítása.
+title: PostgreSQL - hez-kiszolgáló egyetlen Azure-adatbázis-kapcsolatok problémáinak hibaelhárítása
+description: Ismerje meg, hogyan háríthatók el a kapcsolódási problémák az Azure Database for PostgreSQL – egyetlen kiszolgáló.
 keywords: postgresql-kapcsolat, kapcsolati karakterlánc, kapcsolódási problémák, átmeneti hiba, kapcsolódási hiba
 author: jan-eng
 ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 11/09/2018
-ms.openlocfilehash: a78167e9b143a4c8d424947b489043dd45dfe2db
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 5/6/2019
+ms.openlocfilehash: 8a0fe87703c9fb471174c761a6e8296e6e7a37ec
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57886422"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65952111"
 ---
-# <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql"></a>PostgreSQL-hez készült Azure Database-kapcsolatok problémáinak hibaelhárítása
+# <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---single-server"></a>PostgreSQL - hez-kiszolgáló egyetlen Azure-adatbázis-kapcsolatok problémáinak hibaelhárítása
 
 Csatlakozási problémák oka lehet a különböző dolgok, többek között:
 
@@ -53,7 +53,7 @@ Ha az alkalmazás nem állandó csatlakozás az Azure Database for postgresql-he
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Állandó kapcsolattal összefüggő problémák megoldásának lépései
 
 1. Állítsa be a [tűzfalszabályok](howto-manage-firewall-using-portal.md) lehetővé teszi az ügyfél IP-címet. Ideiglenes kizárólag tesztelési célra egy tűzfalszabályt 0.0.0.0 használja, mint a kezdő IP-cím és a 255.255.255.255 használja, mint a záró IP-cím beállított. Ekkor megnyílik a kiszolgáló összes IP-címet. A kapcsolódási probléma így megoldódik, amennyiben ez a szabály eltávolításához, és hozzon létre egy tűzfalszabályt megfelelően korlátozott IP-címet vagy címtartományt.
-2. Az ügyfél és az internet közötti összes tűzfalnak győződjön meg arról, hogy a 3306-os porton a kimenő kapcsolatok számára nyitva-e.
+2. Az ügyfél és az internet közötti összes tűzfalnak győződjön meg róla, hogy 5432-es port nyitva a kimenő kapcsolatok számára.
 3. Ellenőrizze a kapcsolati karakterláncot, és egyéb kapcsolati beállításokat.
 4. Ellenőrizze a szolgáltatás állapotát az irányítópulton. Ha úgy gondolja, hogy van egy regionális kimaradás, [üzletmenet-folytonossági funkcióinak áttekintése az Azure Database for PostgreSQL](concepts-business-continuity.md) a lépéseket egy új régióban helyreállításához.
 

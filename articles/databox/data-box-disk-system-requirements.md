@@ -1,40 +1,56 @@
 ---
-title: A Microsoft Azure Data Box-lemezek követelményei |} A Microsoft Docs
-description: Ismerje meg a szoftver- és hálózati követelményei az Azure Data Box-lemezek
+title: A Microsoft Azure Data Box Disk rendszerkövetelményei | Microsoft Docs
+description: Az Azure Data Box Disk szoftveres és hálózati követelményeinek ismertetése
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 02/22/2019
+ms.date: 09/04/2019
 ms.author: alkohli
-ms.openlocfilehash: 067bb6b806ddd9b83d4ea755876a980ca45d76e9
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
-ms.translationtype: MT
+ms.localizationpriority: high
+ms.openlocfilehash: fb2fd89664517e44cf5128a5c82e583f03087061
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57407629"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70307697"
 ---
-# <a name="azure-data-box-disk-system-requirements"></a>Az Azure Data Box-lemezek rendszerkövetelményei
+::: zone target="docs"
 
-Ez a cikk a Microsoft Azure Data Box-lemezek megoldás és a kapcsolódó ügyfelek számára a Data Box-lemezek fontos rendszerkövetelményeit ismerteti. Azt javasoljuk, hogy tekintse át az információkat gondosan előtt a Data Box-lemezek üzembe helyezése, majd tekintse át biztonsági, szükség szerint a telepítési és az ezt követő művelet során.
+# <a name="azure-data-box-disk-system-requirements"></a>Az Azure Data Box Disk rendszerkövetelményei
 
-A rendszerkövetelmények lemezek, a támogatott tárfiókok és a tárolási típusok csatlakozó ügyfelek által támogatott platformok közé tartoznak.
+A cikk a Microsoft Azure Data Box Disk megoldással és a Data Box Diskhez csatlakozó ügyfelekkel kapcsolatos fontos rendszerkövetelményeket írja le. Azt javasoljuk, hogy a Data Box Disk üzembe helyezése előtt alaposan tekintse át az információkat, és az üzembe helyezés és a későbbi üzemeltetés során térjen vissza ezekre.
 
+A rendszerkövetelmények közé tartoznak a lemezekhez csatlakozó ügyfelek támogatott platformjai, a támogatott tárfiókok és a tárolótípusok.
 
-## <a name="supported-operating-systems-for-clients"></a>Ügyfelek támogatott operációs rendszerek
+::: zone-end
 
-A támogatott operációs rendszerek listáját itt van a lemez zárolásának feloldásához és adatmásolási műveletet az ügyfelek keresztül csatlakozik a Data Box-lemezek.
+::: zone target="chromeless"
 
-| **Operációs rendszer** | **A tesztelt verziók** |
+## <a name="review-prerequisites"></a>Előfeltételek áttekintése
+
+1. Megrendelte a Data Box Disket az [Oktatóanyag: Az Azure Data Box Disk megrendelése](data-box-disk-deploy-ordered.md) című szakaszban leírtak szerint. Megkapta a lemezeket, és lemezenként egy csatlakozókábelt.
+2. Rendelkezik egy ügyfélszámítógéppel, amelyről lemásolhatja az adatokat. Az ügyfélszámítógépen:
+
+    - Egy támogatott operációs rendszernek kell futnia.
+    - Telepítve kell lennie a további szükséges szoftvereknek.
+
+::: zone-end
+
+## <a name="supported-operating-systems-for-clients"></a>Az ügyfelekhez támogatott operációs rendszerek
+
+Itt láthatja azon operációs rendszerek listáját, amelyeken támogatott a lemezek zárolásának feloldása és az adatmásolás a Data Box Diskhez csatlakozó ügyfeleken keresztül.
+
+| **Operációs rendszer** | **Tesztelt verziók** |
 | --- | --- |
 | Windows Server |2008 R2 SP1 <br> 2012 <br> 2012 R2 <br> 2016 |
-| Windows |7, 8, 10 |
-|Linux <br> <li> Ubuntu </li><li> Debian </li><li> Red Hat Enterprise Linux (RHEL) </li><li> CentOS| <br>14.04-es, 16.04, 18.04 <br> 8.11, 9 <br> 7.0 <br> 6.5, 6.9, 7.0, 7.5 |  
+| Windows (64 bites) |7, 8, 10 |
+|Linux <br> <li> Ubuntu </li><li> Debian </li><li> Red Hat Enterprise Linux (RHEL) </li><li> CentOS| <br>14.04, 16.04, 18.04 <br> 8.11, 9 <br> 7.0 <br> 6.5, 6.9, 7.0, 7.5 |  
 
-## <a name="other-required-software-for-windows-clients"></a>Windows-ügyfelek számára szükséges szoftverek
+## <a name="other-required-software-for-windows-clients"></a>A Windows rendszerű ügyfelekhez kötelező egyéb szoftverek
 
-Windows-ügyfél következő is telepítenie kell.
+Windows rendszerű ügyfelek esetén a következőket is telepíteni kell.
 
 | **Szoftver**| **Verzió** |
 | --- | --- |
@@ -43,44 +59,47 @@ Windows-ügyfél következő is telepítenie kell.
 | Windows Management Framework |5.0|
 | BitLocker| - |
 
-## <a name="other-required-software-for-linux-clients"></a>Linux-ügyfelek számára szükséges szoftverek
+## <a name="other-required-software-for-linux-clients"></a>A Linux rendszerű ügyfelekhez kötelező egyéb szoftverek
 
-Linux-ügyfél a Data Box-lemezek eszközkészlet telepíti a következő szükséges szoftverek:
+Linux ügyfelek esetén a Data Box Disk a következő kötelező szoftvereket telepíti:
 
 - dislocker
 - OpenSSL
 
-## <a name="supported-connection"></a>Támogatott kapcsolatok
+## <a name="supported-connection"></a>Támogatott kapcsolat
 
-Az ügyfélszámítógépen, az adatokat tartalmazó rendelkeznie kell egy USB 3.0-s vagy újabb port. Ez az ügyfél a megadott kábelen csatlakozzon a lemezek.
+Az adatokat tartalmazó ügyfélszámítógépnek USB 3.0-s vagy újabb porttal kell rendelkeznie. A lemezek a mellékelt kábellel csatlakoznak ehhez az ügyfélhez.
 
 ## <a name="supported-storage-accounts"></a>Támogatott tárfiókok
 
-Íme a támogatott tárolási típusokat a Data Box-lemezek listája.
+Itt láthatja a Data Box Disk támogatott tárolótípusainak listáját.
 
 | **Storage-fiók** | **Megjegyzések** |
 | --- | --- |
 | Klasszikus | Standard |
-| Általános rendeltetés  |Standard; a V1 és V2 is támogatja. A gyakori és ritka elérésű szint használata támogatott. |
-| BLOB storage-fiók | |
+| Általános célú  |Standard; a V1 és a V2 is támogatott. A gyakori és a ritka elérésű szintek is támogatottak. |
+| Blob Storage-fiók | |
 
 >[!NOTE]
-> Az Azure Data Lake Storage 2. generációs gyűjtések fiókok nem támogatottak.
+> Az Azure Data Lake Storage Gen2-fiókok nem támogatottak.
 
 
-## <a name="supported-storage-types-for-upload"></a>A feltöltéshez támogatott tárolási típus
+## <a name="supported-storage-types-for-upload"></a>Feltöltéshez támogatott tárolótípusok
 
-Íme a Data Box-lemezek használata Azure-bA feltöltött támogatott tárolási típusok listáját.
+Itt láthatja a Data Box Diskkel az Azure-ba való feltöltéshez támogatott tárolótípusok listáját.
 
 | **Fájlformátum** | **Megjegyzések** |
 | --- | --- |
-| Az Azure blokkblob | |
-| Oldala az Azure blob  | |
+| Azure-blokkblob | |
+| Azure-lapblob  | |
 | Azure Files  | |
 | Felügyelt lemezek | |
 
+::: zone target="docs"
 
 ## <a name="next-step"></a>Következő lépés
 
-* [Az Azure Data Box-lemezek üzembe helyezése](data-box-disk-deploy-ordered.md)
+* [Az Azure Data Box üzembe helyezése](data-box-disk-deploy-ordered.md)
+
+::: zone-end
 

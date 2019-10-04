@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
 ms.openlocfilehash: eb7deacc068661ca9a4f473ee2d36b7d4464c81c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58905511"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60199459"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Hibaelhárítási & korlátozások az Azure Cloud Shell
 
@@ -32,56 +32,56 @@ Ismert megoldásuk kapcsolatos hibák elhárítása az Azure Cloud Shellben a k�
 ### <a name="early-timeouts-in-firefox"></a>Korai időtúllépések, a Firefoxban
 
 - **Részletek**: A cloud Shell egy bemeneti/kimeneti átadása a böngészőben nyissa meg websocket használja. A FireFox, bezárhatja a websocket túl korán okozó korai időtúllépések a Cloud Shellben előre beállított házirendek rendelkezik.
-- **Megoldás**: Nyissa meg a FireFox, és navigáljon a "kapcsolatos: config" az URL mezőbe. Keresse meg a "network.websocket.timeout.ping.request", és módosítsa az értéket 0 és 10.
+- **Feloldási**: Nyissa meg a FireFox, és navigáljon a "kapcsolatos: config" az URL mezőbe. Keresse meg a "network.websocket.timeout.ping.request", és módosítsa az értéket 0 és 10.
 
 ### <a name="disabling-cloud-shell-in-a-locked-down-network-environment"></a>A Cloud Shell letiltása zárolt hálózati környezet
 
 - **Részletek**: Előfordulhat, hogy a rendszergazdák szeretne tiltsa le a hozzáférést a Cloud Shellbe a felhasználók számára. A cloud Shell használja a hozzáférést a `ux.console.azure.com` tartományt, amely megtagadható, férjen hozzá a Cloud Shell entrypoints, beleértve a portal.azure.com, a shell.azure.com, a Visual Studio Code az Azure-fiók bővítmény és a docs.microsoft.com leállítása.
-- **Megoldás**: Korlátozza a hozzáférést a `ux.console.azure.com` hálózati beállításokat, és a környezetben keresztül. A Cloud Shell ikon a Portal.Azure.com címen továbbra is megmarad, de fog nem sikerült kapcsolódni a szolgáltatáshoz.
+- **Feloldási**: Korlátozza a hozzáférést a `ux.console.azure.com` hálózati beállításokat, és a környezetben keresztül. A Cloud Shell ikon a Portal.Azure.com címen továbbra is megmarad, de fog nem sikerült kapcsolódni a szolgáltatáshoz.
 
 ### <a name="storage-dialog---error-403-requestdisallowedbypolicy"></a>Tároló párbeszédpanelen - hiba: 403-as RequestDisallowedByPolicy
 
 - **Részletek**: A Cloud Shell – tárfiók létrehozása esetén a rendszergazda által elhelyezett egy az Azure policy miatt volt sikertelen Hibaüzenet jelenik meg a következőket tartalmazzák: `The resource action 'Microsoft.Storage/storageAccounts/write' is disallowed by one or more policies.`
-- **Megoldás**: Távolítsa el vagy frissítse a tagadja meg a tároló létrehozása az Azure policy az Azure rendszergazdával.
+- **Feloldási**: Távolítsa el vagy frissítse a tagadja meg a tároló létrehozása az Azure policy az Azure rendszergazdával.
 
 ### <a name="storage-dialog---error-400-disallowedoperation"></a>Tároló párbeszédpanelen - hiba: 400 DisallowedOperation
 
 - **Részletek**: Az Azure Active Directory-előfizetés használata esetén nem hozható létre tároló.
-- **Megoldás**: Használja a tároló-erőforrásokat hozhat létre Azure-előfizetéssel. Az Azure-erőforrások létrehozása az Azure AD-előfizetések nem jelennek meg.
+- **Feloldási**: Használja a tároló-erőforrásokat hozhat létre Azure-előfizetéssel. Az Azure-erőforrások létrehozása az Azure AD-előfizetések nem jelennek meg.
 
 ### <a name="terminal-output---error-failed-to-connect-terminal-websocket-cannot-be-established-press-enter-to-reconnect"></a>Terminálszolgáltatások kimenete – hiba: Nem sikerült kapcsolódni a terminálon: websocket nem hozható létre. Nyomja meg `Enter` az újracsatlakozáshoz.
 - **Részletek**: A cloud Shell lehetővé teszi a Cloud Shell infrastruktúra websocket kapcsolatot igényel.
-- **Megoldás**: Check you have configured your network settings to enable sending https requests and websocket requests to domains at *.console.azure.com.
+- **Feloldási**: Check you have configured your network settings to enable sending https requests and websocket requests to domains at *.console.azure.com.
 
 ### <a name="set-your-cloud-shell-connection-to-support-using-tls-12"></a>Támogatja a TLS 1.2 használatával a Cloud Shell-kapcsolat beállítása
  - **Részletek**: A TLS verzióját a kapcsolat definiálása a Cloud Shellbe, be kell böngésző egyedi beállításait.
- - **Megoldás**: Keresse meg a böngésző biztonsági beállításait, és válassza a "Használja a TLS 1.2-es" jelölőnégyzetét.
+ - **Feloldási**: Keresse meg a böngésző biztonsági beállításait, és válassza a "Használja a TLS 1.2-es" jelölőnégyzetét.
 
 ## <a name="bash-troubleshooting"></a>Bash-hibaelhárítás
 
 ### <a name="cannot-run-the-docker-daemon"></a>A docker-démon nem futtatható.
 
 - **Részletek**: A cloud Shell egy tárolót a gazdagép a rendszerhéj-környezetet használja, ezért fut a démon nem engedélyezett.
-- **Megoldás**: Vételéhez [docker-machine](https://docs.docker.com/machine/overview/), amely alapértelmezés szerint az kezelése a docker-tárolók egy távoli Docker gazdagépen települ.
+- **Feloldási**: Vételéhez [docker-machine](https://docs.docker.com/machine/overview/), amely alapértelmezés szerint az kezelése a docker-tárolók egy távoli Docker gazdagépen települ.
 
 ## <a name="powershell-troubleshooting"></a>PowerShell-hibaelhárítás
 
 ### <a name="gui-applications-are-not-supported"></a>Grafikus felhasználói Felülettel alkalmazások nem támogatottak.
 
 - **Részletek**: Ha egy felhasználó elindít egy grafikus felhasználói felület alkalmazás, a rendszer nem adja vissza. Például egy klónozza, privát GitHub-tárházba, amely rendelkezik a kéttényezős hitelesítés engedélyezve van, ha egy párbeszédpanel jelenik meg a kéttényezős hitelesítés elvégzése a.
-- **Megoldás**: Zárja be és nyissa meg újra a rendszerhéjat.
+- **Feloldási**: Zárja be és nyissa meg újra a rendszerhéjat.
 
 ### <a name="troubleshooting-remote-management-of-azure-vms"></a>Hibaelhárítás Azure virtuális gépek távoli felügyelete
 > [!NOTE]
 > Az Azure virtuális gépek rendelkeznie kell egy nyilvános IP-cím elérhető.
 
 - **Részletek**: A Rendszerfelügyeleti webszolgáltatások a Windows tűzfal alapértelmezett beállításai miatt a felhasználó a következő hiba jelenhet meg: `Ensure the WinRM service is running. Remote Desktop into the VM for the first time and ensure it can be discovered.`
-- **Megoldás**:  Futtatás `Enable-AzVMPSRemoting` engedélyezése a PowerShell-táveléréssel a célgépen minden aspektusát.
+- **Feloldási**:  Futtatás `Enable-AzVMPSRemoting` engedélyezése a PowerShell-táveléréssel a célgépen minden aspektusát.
 
 ### <a name="dir-does-not-update-the-result-in-azure-drive"></a>`dir` az eredmény az Azure-meghajtó nem frissül
 
 - **Részletek**: Alapértelmezés szerint az Optimalizálás a felhasználói élmény, eredményeit `dir` tárolja a rendszer Azure-meghajtó.
-- **Megoldás**: Miután hoz létre, frissíteni vagy eltávolítani egy Azure-erőforrás, futtassa `dir -force` frissíteni az eredményeket az Azure-meghajtó.
+- **Feloldási**: Miután hoz létre, frissíteni vagy eltávolítani egy Azure-erőforrás, futtassa `dir -force` frissíteni az eredményeket az Azure-meghajtó.
 
 ## <a name="general-limitations"></a>Általános korlátozások
 

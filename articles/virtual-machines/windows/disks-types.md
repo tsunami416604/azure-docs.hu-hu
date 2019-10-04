@@ -1,27 +1,25 @@
 ---
-title: Válassza ki a lemez típusát az Azure IaaS Windows virtuális gépek – felügyelt lemezek
-description: További információ az elérhető Azure-lemeztípusokkal Windows virtuális gépekhez, beleértve a ultranagy SSD-k, prémium szintű SSD-k, standard SSD-k és HDD-k szabványos.
-services: virtual-machines-windows,storage
+title: Lemez típusának kiválasztása az Azure IaaS Windows rendszerű virtuális gépek által felügyelt lemezekhez
+description: Ismerje meg a Windows rendszerű virtuális gépekhez elérhető Azure-lemezeket, például az ultrakönnyű lemezeket, a prémium SSD-ket, a standard SSD-ket és a standard HDD-ket
 author: roygara
 ms.author: rogarana
-ms.date: 02/11/2019
-ms.topic: article
+ms.date: 08/15/2019
+ms.topic: conceptual
 ms.service: virtual-machines-windows
-ms.tgt_pltfrm: windows
 ms.subservice: disks
-ms.openlocfilehash: 91318489e715fccd7c99b968c60509e4642afd5e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 634ff02b216403788c1ded9223909e2cce230207
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57975695"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69512670"
 ---
 [!INCLUDE [virtual-machines-disk-types](../../../includes/virtual-machines-managed-disks-types-overview.md)]
 
-Ha szeretné ultranagy SSD-k használatának megkezdése, ismertető a cikk a tulajdonos: [Az Azure ultranagy SSD-k engedélyezése](disks-enable-ultra-ssd.md).
+Ha szeretné megkezdeni az ultra-lemezek használatát, tekintse meg a tárgyat ismertető cikket: [Az Azure Ultra Disks használata](disks-enable-ultra-ssd.md).
 
 [!INCLUDE [virtual-machines-managed-disks-types-ga](../../../includes/virtual-machines-managed-disks-types-ga.md)]
 
-A pillanatképek további információkért lásd a pillanatképek a [felügyelt lemez – áttekintés](managed-disks-overview.md).
+A pillanatképekkel kapcsolatos további információkért tekintse meg a [felügyelt lemez – áttekintés](managed-disks-overview.md)című témakör a pillanatképek című szakaszát.
 
 [!INCLUDE [virtual-machines-disk-types](../../../includes/virtual-machines-managed-disks-types-billing-and-fees.md)]

@@ -1,59 +1,58 @@
 ---
-title: Nyelv észlelése cognitive search szakértelem – Azure Search
-description: Kiértékeli a strukturálatlan szöveg, és az egyes rekordokhoz, az Azure Search-felderítési bővítést folyamatban elemzés erőssége jelző pontszámot nyelvi azonosítónak visszaad.
+title: Nyelvfelismerés kognitív keresési képesség – Azure Search
+description: Kiértékeli a strukturálatlan szöveget, és minden rekord esetében egy olyan nyelvi azonosítót ad vissza, amely egy Azure Search alkoholtartalom-növelési folyamat elemzésének erősségét jelzi.
 services: search
-manager: pablocas
+manager: nitinme
 author: luiscabrer
 ms.service: search
-ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 02/25/2019
+ms.date: 05/02/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: 605f4c639cfc8c0f9732f7347532e1bd7edc055f
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: fe21477865b5bbad65f5e4639e8df253f12dc1b6
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404654"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265420"
 ---
-#   <a name="language-detection-cognitive-skill"></a>Nyelv észlelése cognitive szakértelem
+#   <a name="language-detection-cognitive-skill"></a>Nyelvfelismerés – kognitív képességek
 
-A **nyelvfelismerés** szakértelem észleli a bemeneti szöveg nyelvét, és a kérés küldése minden dokumentum egyetlen nyelvkód jelentéseket. A nyelvi kód az elemzés erőssége jelző pontszámot párban áll. Ezen a képzettségi használja a gépi tanulási modellek által biztosított [Szövegelemzés](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) a Cognitive Services.
+A **nyelvfelismerési** képesség észleli a bemeneti szöveg nyelvét, és egyetlen nyelvi kódot jelent a kérelemben elküldött összes dokumentumhoz. A nyelvi kód párosítva van egy pontszámmal, amely az elemzés erősségét jelzi. Ez a képesség a Cognitive Services [text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) által biztosított gépi tanulási modelleket használja.
 
-Ez a funkció akkor különösen hasznos, ha a meg kell adnia a szöveg nyelvét, egyéb képességek bemenetként (például a [Hangulatelemzés szakértelem](cognitive-search-skill-sentiment.md) vagy [szöveg felosztása szakértelem](cognitive-search-skill-textsplit.md)).
+Ez a képesség különösen akkor hasznos, ha meg kell adnia a szöveg nyelvét más képességeknek (például a [Hangulatelemzés skill](cognitive-search-skill-sentiment.md) vagy a [text Split skill](cognitive-search-skill-textsplit.md)).
 
-Nyelv észlelése kihasználja a Bing a természetes nyelvi feldolgozás könyvtárak, ami meghaladja az értéket a [támogatott nyelvek és régiók](https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support) szövegelemzési felsorolt. Nyelvek listája pontosan nincs közzétéve, de minden széles körben beszélt nyelv plusz variantní hodnoty, dialektusok és néhány regionális és kulturális nyelv. Ha a kevésbé gyakran használt nyelven tartalommal rendelkezik, [az nyelvi API-t próbálja](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) megtekintheti, ha egy kódot ad vissza. A válasz nem észlelhető nyelvek `unknown`.
+A nyelvfelismerés a Bing természetes nyelvi feldolgozó kódtárait használja, ami meghaladja a [támogatott nyelvek és régiók](https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support) számát Text Analytics. A nyelvek pontos listája nincs közzétéve, de az összes széles körben beszélt nyelvet, valamint a változatokat, a dialektusokat és néhány regionális és kulturális nyelvet tartalmaz. Ha a tartalom ritkábban használt nyelven van kifejezve, [kipróbálhatja a NYELVFELISMERÉS API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) -t, és megnézheti, hogy visszaadja-e a kódot. A nem észlelhető `unknown`nyelvek válasza a következő:.
 
 > [!NOTE]
-> 2018. December 21., kezdési is [Cognitive Services-erőforrás csatolása](cognitive-search-attach-cognitive-services.md) és a egy Azure Search-képességek alkalmazási lehetőségét. Ez lehetővé teszi indexmezők végrehajtási díjszabási elindításához. Ezen a napon azt is már díjszabási kép kinyerése a dokumentumfeltörést fázis részeként. A dokumentumok szövegkinyerés továbbra is ingyenesen kínáljuk.
+> Ha a hatókört a feldolgozás gyakoriságának növelésével, további dokumentumok hozzáadásával vagy további AI-algoritmusok hozzáadásával bővíti, akkor [a számlázható Cognitive Services erőforrást](cognitive-search-attach-cognitive-services.md)kell csatolnia. Az API-k Cognitive Services-ben való meghívásakor felmerülő díjak, valamint a képek kinyerése a dokumentum repedési szakaszának részeként Azure Search. A dokumentumokból való szöveg kinyerése díjmentes.
 >
-> [Beépített kognitív szakértelem](cognitive-search-predefined-skills.md) végrehajtás díja a [használatalapú-as-, a Cognitive Services nyissa meg az árat](https://azure.microsoft.com/pricing/details/cognitive-services), azonos értékelje, ha végrehajtotta a feladat közvetlenül. Kép kinyerése nem egy Azure Search költségekkel, jelenleg az előzetes verzió áron érhető el. További információkért lásd: a [díjszabását ismertető oldalt az Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400) vagy [számlázás módját works](search-sku-tier.md#how-billing-works).
+> A beépített készségek elvégzése a meglévő Cognitive Services utólagos elszámolású [díjszabás szerint](https://azure.microsoft.com/pricing/details/cognitive-services/)történik. A rendszerkép kibontásának díjszabását a [Azure Search díjszabási oldalán](https://go.microsoft.com/fwlink/?linkid=2042400)találja.
+
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft.Skills.Text.LanguageDetectionSkill
+Microsoft. Skills. Text. LanguageDetectionSkill
 
 ## <a name="data-limits"></a>Adatkorlátok
-Egy rekord maximális mérete 50 000 karakter által mért kell lennie `String.Length`. Ha az adatok tördelésével, mielőtt elküldené a róluk szóló véleményeket analyzer van szüksége, használhat a [szöveg felosztása szakértelem](cognitive-search-skill-textsplit.md).
+A rekordok maximális méretének 50 000 karakternek kell lennie, a [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)következőképpen mérve:. Ha meg kell szakítania az adatait, mielőtt elküldené az a hangulat-elemzőnek, használhatja a [szöveg felosztása](cognitive-search-skill-textsplit.md)lehetőséget.
 
-## <a name="skill-inputs"></a>Ismeretek bemenetek
+## <a name="skill-inputs"></a>Szaktudás bemenetei
 
-A paraméterei a kis-és nagybetűket.
+A paraméterek megkülönböztetik a kis-és nagybetűket.
 
 | Bemenetek     | Leírás |
 |--------------------|-------------|
-| szöveg | Elemezni kívánt szöveget.|
+| text | Az elemezni kívánt szöveg.|
 
-## <a name="skill-outputs"></a>Ismeretek kimenetek
+## <a name="skill-outputs"></a>Szaktudás kimenetei
 
-| Kimeneti név    | Leírás |
+| Kimenet neve    | Leírás |
 |--------------------|-------------|
-| languageCode | Az azonosított nyelv ISO 6391 nyelvi kódot. Például "hu". |
-| LanguageName | Nyelv neve. Például "angol". |
-| pontszám | 0 és 1 közötti értéket. Annak valószínűsége, hogy nyelvi megfelelően legyen azonosítva. A pontszám 1-nél kisebb lehet, ha a mondat van vegyes nyelveket.  |
+| languageCode | Az ISO 6391 nyelvi kódja az azonosított nyelvhez. Például: "en". |
+| languageName | A nyelv neve. Például: "English". |
+| pontszám | 0 és 1 közötti érték. A nyelv helyes azonosításának valószínűsége. A pontszám értéke 1-nél kisebb lehet, ha a mondat vegyes nyelvekkel rendelkezik.  |
 
-##  <a name="sample-definition"></a>Minta-definíció
+##  <a name="sample-definition"></a>Minta definíciója
 
 ```json
  {
@@ -82,7 +81,7 @@ A paraméterei a kis-és nagybetűket.
   }
 ```
 
-##  <a name="sample-input"></a>Minta beviteli
+##  <a name="sample-input"></a>Minta bemenet
 
 ```json
 {
@@ -133,10 +132,10 @@ A paraméterei a kis-és nagybetűket.
 ```
 
 
-## <a name="error-cases"></a>Hibák esetén
-Szöveg egy nem támogatott nyelven van kifejezve, ha hiba történik, és nincs nyelvi azonosítót adja vissza.
+## <a name="error-cases"></a>Hibák esetei
+Ha a szöveg nem támogatott nyelven van kifejezve, a rendszer hibát generál, és nem ad vissza nyelvi azonosítót.
 
 ## <a name="see-also"></a>Lásd még
 
-+ [Előre megadott képesség](cognitive-search-predefined-skills.md)
-+ [Hogyan képességcsoport megadása](cognitive-search-defining-skillset.md)
++ [Előre definiált képességek](cognitive-search-predefined-skills.md)
++ [Készségkészlet definiálása](cognitive-search-defining-skillset.md)

@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: dc72ec9bf2e7e7c5c77685368167357a0108f2d3
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 3a1497211cc42c702537cbbdfea32ff71a400c7c
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57541927"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836689"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Adatok áthelyezése az Amazon Redshift Azure Data Factory használatával
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
 > * [1-es verzió](data-factory-amazon-redshift-connector.md)
 > * [2-es verzió (aktuális verzió)](../connector-amazon-redshift.md)
 
@@ -44,7 +44,7 @@ Adatok áthelyezése a különböző eszközök és API-k segítségével az Ama
 
 A folyamat létrehozásának legegyszerűbb módja, hogy az Azure Data Factory Copy varázslót használja. A folyamatot a másolás varázsló használatával történő létrehozásának egy gyors bemutatóért lásd: a [oktatóanyag: Hozzon létre egy folyamatot a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md).
 
-Az Azure Portalon, a Visual Studio, az Azure PowerShell vagy más eszközök használatával is létrehozhat egy folyamatot. Az Azure Resource Manager-sablonok, a .NET API-t vagy a REST API is használható a folyamat létrehozásához. Egy másolási tevékenységgel ellátott adatcsatorna létrehozása a lépésenkénti útmutatójáért lásd: a [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+A Visual Studio, az Azure PowerShell vagy más eszközök használatával is létrehozhat egy folyamatot. Az Azure Resource Manager-sablonok, a .NET API-t vagy a REST API is használható a folyamat létrehozásához. Egy másolási tevékenységgel ellátott adatcsatorna létrehozása a lépésenkénti útmutatójáért lásd: a [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 Az eszközök vagy az API-kat használja, hogy létrehoz egy folyamatot, amely a helyez át adatokat egy forrásadattárból egy fogadó adattárba a következő lépéseket fogja végrehajtani:
 
@@ -87,7 +87,7 @@ A másolási tevékenység, ha a forrás típusa **AmazonRedshiftSource**, a kö
 
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
-| **Lekérdezés** | Az egyéni lekérdezés használata az adatok olvasásához. |Nem (Ha a **tableName** adatkészlet tulajdonság meg van adva) |
+| **query** | Az egyéni lekérdezés használata az adatok olvasásához. |Nem (Ha a **tableName** adatkészlet tulajdonság meg van adva) |
 | **redshiftUnloadSettings** | A tulajdonságcsoport tartalmazza a Redshift használatakor **UNLOAD** parancsot. | Nem |
 | **s3LinkedServiceName** | Az Amazon S3-ideiglenes tárolóként használni. A társított szolgáltatás típusa egy Azure Data Factory neve van megadva **AwsAccessKey**. | Használata esetén szükséges a **redshiftunloadsettings beállításaiban** tulajdonság |
 | **bucketName** | Azt jelzi, hogy az Amazon S3 gyűjtőt tárolja a köztes adatokat. Ha ez a tulajdonság nincs megadva, a másolási tevékenység automatikusan létrehozza a gyűjtőbe. | Használata esetén szükséges a **redshiftunloadsettings beállításaiban** tulajdonság |
@@ -96,7 +96,7 @@ Másik lehetőségként használhatja a **RelationalSource** típus, amely tarta
 
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
-| **Lekérdezés** |Az egyéni lekérdezés használata az adatok olvasásához. | Nem (Ha a **tableName** adatkészlet tulajdonság meg van adva) |
+| **query** |Az egyéni lekérdezés használata az adatok olvasásához. | Nem (Ha a **tableName** adatkészlet tulajdonság meg van adva) |
 
 ## <a name="use-unload-to-copy-data-from-amazon-redshift"></a>Használja az adatok másolása az Amazon Redshift eltávolítása
 
@@ -334,14 +334,14 @@ A következő hozzárendeléseket használják, amikor a másolási tevékenysé
 | INTEGER |Int32 |
 | BIGINT |Int64 |
 | DECIMAL |Decimal |
-| VALÓDI |Single |
-| A KÉTSZERES PONTOSSÁG |Double |
-| LOGIKAI ÉRTÉK |String |
-| CHAR |String |
-| VARCHAR |String |
-| DATE |DateTime |
-| IDŐBÉLYEG |DateTime |
-| SZÖVEG |String |
+| REAL |Single |
+| DOUBLE PRECISION |Double |
+| BOOLEAN |Sztring |
+| CHAR |Karakterlánc |
+| VARCHAR |Sztring |
+| DATE |Datetime |
+| TIMESTAMP |Datetime |
+| TEXT |Karakterlánc |
 
 ## <a name="map-source-to-sink-columns"></a>A fogadó-oszlopok térkép forrása
 A forrásadatkészlet oszlopok leképezése a fogadó-adatkészlet az oszlopok kapcsolatban lásd: [az Azure Data Factoryban adatkészletoszlopok leképezése](data-factory-map-columns.md).

@@ -1,50 +1,50 @@
 ---
-title: Azure tűzfal log analytics-minták
-description: Azure tűzfal log analytics-minták
+title: Log Analytics-minták Azure Firewall
+description: Log Analytics-minták Azure Firewall
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 2/15/2019
+ms.date: 09/17/2019
 ms.author: victorh
-ms.openlocfilehash: 3f329d3dd4af1faef8f77d08db655cc7d6ef79fd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a4ab1263abac67714357594e5bd87a4b910953b1
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59793831"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033981"
 ---
-# <a name="azure-firewall-log-analytics-samples"></a>Azure tűzfal log analytics-minták
+# <a name="azure-firewall-log-analytics-samples"></a>Log Analytics-minták Azure Firewall
 
-Az Azure Monitor naplók a következő minták segítségével az Azure tűzfal-naplók elemzése. A minta-fájl jön létre az Azure Monitor, az adatforrásnézet-tervezőből a [Nézettervező az Azure monitorban](https://docs.microsoft.com/azure/log-analytics/log-analytics-view-designer) cikkben további információkat tartalmaz arról Nézetterv fogalma.
+A következő Azure Monitor naplók használatával elemezheti a Azure Firewall naplókat. A minta-fájl a Azure Monitor Tervező nézetében található, Azure Monitor cikkben található [tervezői](https://docs.microsoft.com/azure/log-analytics/log-analytics-view-designer) koncepció további információkkal szolgál a nézet kialakítási felépítéséről.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="azure-monitor-logs-view"></a>Az Azure Monitor-naplók megtekintése
+## <a name="azure-monitor-logs-view"></a>Azure Monitor naplók nézet
 
-Íme egy példa az Azure Monitor naplók Vizualizáció konfigurálásához. A példa vizualizációkat letöltheti a [azure-docs-json-samples](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-firewall/AzureFirewall.omsview) tárház. A legegyszerűbben a jobb gombbal a hivatkozás ezen az oldalon, és *Mentés másként* , és adjon meg egy nevet, például **AzureFirewall.omsview**. 
+A következőképpen konfigurálhatja például a naplók vizualizációját Azure Monitor. A példa vizualizációt az [Azure-docs-JSON-Samples](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-firewall/AzureFirewall.omsview) adattárból töltheti le. A legegyszerűbben a lapon kattintson a jobb gombbal a hiperhivatkozásra, majd válassza a *Mentés másként* lehetőséget, és adjon meg egy nevet, például a **AzureFirewall. omsview**. 
 
-Hajtsa végre a nézet hozzáadása a Log Analytics-munkaterület az alábbi lépéseket:
+A nézet a Log Analytics munkaterülethez való hozzáadásához hajtsa végre a következő lépéseket:
 
-1. Az Azure Portalon nyissa meg a Log Analytics-munkaterületet.
-2. Nyissa meg **Designer megtekintése** alábbi **általános**.
-3. Kattintson az **Importálás** gombra.
-4. Keresse meg és válassza a **AzureFirewall.omsview** előzőleg letöltött fájl.
+1. Nyissa meg az Log Analytics munkaterületet az Azure Portalon.
+2. Nyissa meg az **általános** **nézet tervezőjét** .
+3. Kattintson az **Importálás** elemre.
+4. Tallózással keresse meg és válassza ki a letöltött **AzureFirewall. omsview** fájlt.
 5. Kattintson a **Save** (Mentés) gombra.
 
-Itt látható, hogyan néz ki a nézet az alkalmazás szabály naplóadatok:
+A nézet az alkalmazási szabály naplózási információit keresi:
 
-![Alkalmazás szabály naplóadatok](./media/log-analytics-samples/azurefirewall-applicationrulelogstats.png)
+![Alkalmazási szabály naplójának adatkészlete](./media/log-analytics-samples/azurefirewall-applicationrulelogstats.png)
 
-És a hálózati szabály naplóadatok:
+És a hálózati szabály naplójának adatértékei:
 
-![Hálózati szabály naplóadatok]( ./media/log-analytics-samples/azurefirewall-networkrulelogstats.png)
+![Hálózati szabály naplójának adatkészlete]( ./media/log-analytics-samples/azurefirewall-networkrulelogstats.png)
 
-Az Azure tűzfal-naplókon adatokat alább: AzureDiagnostics kategóriával rendelkezik, vagy **AzureFirewallApplicationRule** vagy **AzureFirewallNetworkRule**. Az adatok részleteit tartalmazó msg_s mező van tárolva. Használatával a [elemezni](https://docs.microsoft.com/azure/kusto/query/parseoperator) azt is érdekes tulajdonságait kinyerése a msg_s mező operátor. Az alábbi lekérdezésekhez bontsa ki a mindkét kategóriák vonatkozó információkat.
+Azure Firewall a AzureDiagnostics alatti adatnaplókat a **AzureFirewallApplicationRule** vagy a **AzureFirewallNetworkRule**kategóriába. A részleteket tartalmazó adatokat a msg_s mezőben tárolja a rendszer. Az [elemzési](https://docs.microsoft.com/azure/kusto/query/parseoperator) operátor használatával kinyerhetjük a különböző érdekes tulajdonságokat a msg_s mezőből. Az alábbi lekérdezések mindkét kategóriához kinyerik az adatokat.
 
-## <a name="application-rules-log-data-query"></a>Alkalmazás szabályok naplólekérdezés adatok
+## <a name="application-rules-log-data-query"></a>Az alkalmazás-szabályok naplójának adatlekérdezése
 
-Az alábbi lekérdezés az alkalmazás szabály naplóadatok elemzi. A különböző Megjegyzés sorok van némi útmutatással feltárhatja, hogy hogyan lett létrehozva a lekérdezés:
+Az alábbi lekérdezés az alkalmazási szabály naplófájljainak elemzését végzi. A különböző megjegyzési sorokban van néhány útmutatás a lekérdezés létrehozásáról:
 
 ```Kusto
 AzureDiagnostics
@@ -70,7 +70,7 @@ SourcePort = tostring(SourcePortInt)
 TargetPort = tostring(TargetPortInt)
 | extend
 //make sure we only have Allowed / Deny in the Action Field
-Action1 = case(Action1 == "denied","Deny","Unknown Action")
+Action1 = case(Action1 == "Deny","Deny","Unknown Action")
 | extend
     Action = case(Action2 == "",Action1,Action2),
     Rule = case(Rule2a == "",case(Rule1 == "",case(Rule2b == "","N/A", Rule2b),Rule1),Rule2a), 
@@ -80,7 +80,7 @@ Action1 = case(Action1 == "denied","Deny","Unknown Action")
 | project TimeGenerated, msg_s, Protocol, SourceIP, SourcePort, FQDN, TargetPort, Action ,RuleCollection, Rule
 ```
 
-Ugyanabból a lekérdezés tömörebb formátuma:
+Ugyanazzal a lekérdezéssel tömörített formátumú:
 
 ```Kusto
 AzureDiagnostics
@@ -92,15 +92,15 @@ AzureDiagnostics
 | parse TempDetails with * "Deny." RuleCollection2b ". Proceeding with" Rule2b
 | extend SourcePort = tostring(SourcePortInt)
 | extend TargetPort = tostring(TargetPortInt)
-| extend Action1 = case(Action1 == "denied","Deny","Unknown Action")
+| extend Action1 = case(Action1 == "Deny","Deny","Unknown Action")
 | extend Action = case(Action2 == "",Action1,Action2),Rule = case(Rule2a == "", case(Rule1 == "",case(Rule2b == "","N/A", Rule2b),Rule1),Rule2a), 
 RuleCollection = case(RuleCollection2b == "",case(RuleCollection2a == "","No rule matched",RuleCollection2a), RuleCollection2b),FQDN = case(FQDN == "", "N/A", FQDN),TargetPort = case(TargetPort == "", "N/A", TargetPort)
 | project TimeGenerated, msg_s, Protocol, SourceIP, SourcePort, FQDN, TargetPort, Action ,RuleCollection, Rule
 ```
 
-## <a name="network-rules-log-data-query"></a>Hálózati szabályok naplólekérdezés adatok
+## <a name="network-rules-log-data-query"></a>Hálózati szabályok naplójának adatlekérdezése
 
-A következő lekérdezés elemzi a hálózati szabály naplóadatokat. A különböző Megjegyzés sorok van némi útmutatással feltárhatja, hogy hogyan lett létrehozva a lekérdezés:
+A következő lekérdezés elemzi a hálózati szabály naplójának adatszolgáltatását. A különböző megjegyzési sorokban van néhány útmutatás a lekérdezés létrehozásáról:
 
 ```Kusto
 AzureDiagnostics
@@ -137,7 +137,7 @@ TargetPort = tostring(TargetPortInt)
 | project TimeGenerated, msg_s, Protocol, SourceIP,SourcePort,TargetIP,TargetPort,Action, NatDestination
 ```
 
-Ugyanabból a lekérdezés tömörebb formátuma:
+Ugyanazzal a lekérdezéssel tömörített formátumú:
 
 ```Kusto
 AzureDiagnostics
@@ -151,9 +151,9 @@ AzureDiagnostics
 | project TimeGenerated, msg_s, Protocol, SourceIP,SourcePort,TargetIP,TargetPort,Action, NatDestination
 ```
 
-## <a name="threat-intelligence-log-data-query"></a>Threat Intelligence naplólekérdezés adatok
+## <a name="threat-intelligence-log-data-query"></a>Fenyegetési intelligencia naplózási adatok lekérdezése
 
-A következő lekérdezés elemzi a fenyegetésekkel kapcsolatos Tudásbázis szabály naplóadatok:
+A következő lekérdezés elemzi a veszélyforrások intelligencia-szabályának naplójának információit:
 
 ```Kusto
 AzureDiagnostics
@@ -168,4 +168,4 @@ AzureDiagnostics
 
 ## <a name="next-steps"></a>További lépések
 
-Azure tűzfal figyelési és diagnosztikai funkciókkal kapcsolatos további információkért lásd: [oktatóanyag: Azure tűzfal-naplók és metrikák figyelése](tutorial-diagnostics.md).
+A Azure Firewall monitorozási és diagnosztikai funkcióinak megismeréséhez tekintse [meg az oktatóanyag: Azure Firewall naplók és metrikák](tutorial-diagnostics.md)figyelése.

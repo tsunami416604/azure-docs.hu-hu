@@ -5,23 +5,23 @@ services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: include
-ms.date: 04/13/2018
+ms.date: 08/07/2019
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: 92b739424d1d6f0e1eb89d5993718f5c36162204
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.openlocfilehash: f80efbac256871af073354f23317c447d6a85f1e
+ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38733784"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70020174"
 ---
-Az Adatkezelő segítségével adatokat adhat hozzá az új gyűjteményhez.
+Az új tárolóba az Adatkezelő használatával adhat hozzá adatait.
 
-1. Az új adatbázis az Adatkezelőben a Gyűjtemények ablaktáblán jelenik meg. Bontsa ki a **Feladatok** adatbázist, majd az **Elemek** gyűjteményt, végül kattintson a **Dokumentumok**, majd pedig az **Új dokumentumok** lehetőségre. 
+1. A **adatkezelő**bontsa ki a **feladatok** adatbázist, és bontsa ki az **elemek** tárolót. Válassza az **elemek**lehetőséget, majd válassza az **új elem**lehetőséget.
 
    ![Új dokumentumok létrehozása az Azure Portal Adatkezelőjében](./media/cosmos-db-create-sql-api-add-sample-data/azure-cosmosdb-data-explorer-new-document.png)
   
-2. Adjon hozzá egy dokumentumot a gyűjteményhez az alábbi struktúrával.
+2. Most adjon hozzá egy dokumentumot a tárolóhoz az alábbi struktúrával.
 
      ```json
      {
@@ -33,8 +33,8 @@ Az Adatkezelő segítségével adatokat adhat hozzá az új gyűjteményhez.
      }
      ```
 
-3. A JSON hozzáadása után a **Dokumentumok** lapon kattintson a **Mentés** gombra.
+3. Miután hozzáadta a JSON-t a **dokumentumok** laphoz, válassza a **Mentés**lehetőséget.
 
-    ![Másolja át a json-adatokat, és kattintson a Mentés gombra az Adatkezelőben az Azure-portálon](./media/cosmos-db-create-sql-api-add-sample-data/azure-cosmosdb-data-explorer-save-document.png)
+    ![Másolja a JSON-adatfájlt, és válassza a Mentés Adatkezelő a Azure Portal](./media/cosmos-db-create-sql-api-add-sample-data/azure-cosmosdb-data-explorer-save-document.png)
 
 4.  Hozzon létre és mentsen még egy dokumentumot, amelyben egyedi értéket szúr be az `id` tulajdonság számára, és tetszés szerint módosítja a többi tulajdonságot. Mivel az Azure Cosmos DB nem kötelezi egy adott adatséma használatára, új dokumentumaihoz bármilyen struktúrát választhat.

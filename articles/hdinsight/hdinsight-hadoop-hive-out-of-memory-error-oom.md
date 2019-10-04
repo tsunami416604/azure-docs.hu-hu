@@ -2,7 +2,6 @@
 title: Egy kevés a memória az Azure HDInsight Hive javítása
 description: Javítsa ki a kevés a memória, a HDInsight Hive. A forgatókönyv a lekérdezés számos nagy táblák esetében.
 keywords: Hiba történt, OOM, Hive memóriabeállítások kívül
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -10,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: c0017d0b0255f5b585f9d8e6f6ec2f3a12752625
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 2e7328b95aecc8e644d7b9e2ec407a62551fff79
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55691487"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64712783"
 ---
 # <a name="fix-an-apache-hive-out-of-memory-error-in-azure-hdinsight"></a>Kevés a memória az Azure HDInsight egy Apache Hive javítása
 

@@ -2,7 +2,7 @@
   href: index.yml
 - name: Áttekintés
   items:
-    - name: 'Felhasználók, csoportok, licenckezelés és szerepkörök'
+    - name: 'Azure AD-felhasználók, -csoportok, -licenckezelés és -szerepkörök'
       href: directory-overview-user-model.md
 - name: Gyors útmutatók
   items:
@@ -10,6 +10,8 @@
       href: /azure/active-directory/fundamentals/add-users-azure-active-directory?context=azure/active-directory/users-groups-roles/context/ugr-context
     - name: Licencek hozzárendelése felhasználókhoz
       href: /azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - name: Korlátlan számú alkalmazásregisztráció engedélyezése
+      href: roles-quickstart-app-registration-limits.md
     - name: Csoportok lejáratának beállítása
       href: groups-quickstart-expiration.md
     - name: Csoportelnevezési szabályzat beállítása
@@ -34,16 +36,26 @@
   items:
     - name: Felhasználók kezelése
       items:
-        - name: Új felhasználók hozzáadása az Azure AD-hez
+        - name: Felhasználók létrehozása
           href: /azure/active-directory/fundamentals/add-users-azure-active-directory?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Felhasználók tömeges létrehozása (előzetes verzió)
+          href: users-bulk-add.md
         - name: Felhasználói profilok kezelése
           href: /azure/active-directory/fundamentals/active-directory-users-profile-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Felhasználóinformációk letöltése (előzetes verzió)
+          href: users-bulk-download.md
         - name: Felhasználói fiókok megosztása
           href: users-sharing-accounts.md
         - name: Felhasználók hozzárendelése rendszergazdai szerepkörökhöz
           href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Felhasználók tömeges törlése (előzetes verzió)
+          href: users-bulk-delete.md
         - name: Törölt felhasználó visszaállítása
           href: /azure/active-directory/fundamentals/active-directory-users-restore?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Felhasználók tömeges visszaállítása (előzetes verzió)
+          href: users-bulk-restore.md
+        - name: Nem felügyelt könyvtárban található fiók bezárása
+          href: users-close-account.md
         - name: B2B-felhasználók hozzáadása
           href: /azure/active-directory/b2b/what-is-b2b?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: Szerepkörök hozzárendelése B2B-felhasználókhoz
@@ -70,16 +82,26 @@
       items:
         - name: Hozzáférések kezelése csoportokkal
           href: /azure/active-directory/fundamentals/active-directory-manage-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: Csoportok kezelése az Azure Portalon
+        - name: Csoportok és tagok listáinak keresése (előzetes verzió)
+          href: groups-members-owners-search.md
+        - name: Csoport létrehozása (Azure Portal)
           href: /azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: Csoportok kezelése a PowerShell for Graph (v2) modullal
           href: groups-settings-v2-cmdlets.md
         - name: Csoportok kezelése a PowerShell MSOnline modullal
           href: groups-settings-cmdlets.md
-        - name: Csoporttagok kezelése
+        - name: Csoporttagok hozzáadása és eltávolítása
           href: /azure/active-directory/fundamentals/active-directory-groups-members-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Tagok tömeges hozzáadása (előzetes verzió)
+          href: groups-bulk-import-members.md
+        - name: Tagok tömeges eltávolítása (előzetes verzió)
+          href: groups-bulk-remove-members.md
+        - name: Taglista tömeges letöltése (előzetes verzió)
+          href: groups-bulk-download-members.md
         - name: Csoporttulajdonosok kezelése
           href: /azure/active-directory/fundamentals/active-directory-accessmanagement-managing-group-owners?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Csoportok listájának tömeges letöltése (előzetes verzió)
+          href: groups-bulk-download.md
         - name: Csoportokon belüli csoportok kezelése
           href: /azure/active-directory/fundamentals/active-directory-groups-membership-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: Csoportszintű hozzáférés biztosítása az SaaS-alkalmazásokhoz
@@ -98,7 +120,9 @@
           items:
             - name: Dinamikus csoport létrehozása
               href: groups-create-rule.md
-            - name: Dinamikus csoportok szabályai
+            - name: Tagsági szabály frissítése
+              href: groups-update-rule.md
+            - name: Dinamikus csoportok szabályai és szintaxisa
               href: groups-dynamic-membership.md
             - name: Csoporttagság típusának módosítása
               href: groups-change-type.md
@@ -114,7 +138,7 @@
           href: licensing-groups-change-licenses.md
         - name: További helyzetek
           href: licensing-group-advanced.md
-        - name: Csoportalapú licencelés a PowerShell-lel
+        - name: Csoportalapú licencelés a PowerShell és a Graph használatával
           href: licensing-ps-examples.md
         - name: Szolgáltatáscsomag-azonosítók licenckezeléshez
           href: licensing-service-plan-reference.md
@@ -124,10 +148,22 @@
           href: directory-assign-admin-roles.md
         - name: Szerepkörök megtekintése és hozzárendelése
           href: directory-manage-roles-portal.md
-        - name: Szerepkörök hozzárendelése a PowerShell-lel
-          href: roles-assign-powershell.md
-        - name: Alkalmazás rendszergazdai szerepköreinek delegálása
-          href: roles-delegate-app-roles.md
+        - name: Egyéni szerepkörök – előzetes verzió
+          items:
+            - name: Egyéni szerepkörök – előzetes verzió
+              href: roles-custom-overview.md
+            - name: Egyéni szerepkör létrehozása
+              href: roles-create-custom.md
+            - name: Egyéni szerepkör-hozzárendelések megtekintése
+              href: roles-view-assignments.md
+            - name: Szerepkörök hozzárendelése az Azure AD felügyeleti központjában
+              href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+            - name: Egyéni szerepkörök hozzárendelése a PowerShellben
+              href: roles-assign-powershell.md
+            - name: Előzetes verziós egyéni szerepkörök engedélyei
+              href: roles-custom-available-permissions.md
+            - name: Alkalmazás rendszergazdai engedélyeinek delegálása
+              href: roles-delegate-app-roles.md
         - name: Legkisebb jogosultságú szerepkörök feladatonként
           href: roles-delegate-by-task.md
         - name: Microsoft 365-szerepkörök

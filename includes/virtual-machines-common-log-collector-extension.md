@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 072864d565e2edbddd4b7df851ad0e30daf7e5fa
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58505819"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179143"
 ---
 Egy Microsoft Azure felhőalapú szolgáltatással kapcsolatos problémák diagnosztizálásához szükséges virtuális gépeken a szolgáltatás-naplófájl összegyűjtése, a hibák bekövetkezésekor. A AzureLogCollector bővítmény igény szerinti segítségével hajtsa végre a naplók egyszeri gyűjtemény egy vagy több Felhőbeli szolgáltatás virtuális gépek (a webes és feldolgozói szerepkörök), és az összegyűjtött fájlok átvitele az Azure storage-fiók – bármely távoli bejelentkezés nélkül a virtuális gépek.
 
@@ -20,8 +20,8 @@ Egy Microsoft Azure felhőalapú szolgáltatással kapcsolatos problémák diagn
 
 Nincsenek függ a gyűjtendő fájlok típusú gyűjtemény két módot.
 
-* **Az Azure Vendég ügynök naplók csak elérhetővé tétel (GA)**. A gyűjtemény üzemmódja Azure Vendég ügynök és az egyéb Azure-összetevőkkel kapcsolatos naplók mindegyikét tartalmazza.
-* **Az összes napló (teljes)**. A gyűjtemény üzemmódja gyűjti össze a plusz a végleges verzió módban lévő összes fájl:
+* **Az Azure Vendég ügynök naplók csak elérhetővé tétel (GA)** . A gyűjtemény üzemmódja Azure Vendég ügynök és az egyéb Azure-összetevőkkel kapcsolatos naplók mindegyikét tartalmazza.
+* **Az összes napló (teljes)** . A gyűjtemény üzemmódja gyűjti össze a plusz a végleges verzió módban lévő összes fájl:
   
   * rendszer- és eseménynaplók
   * HTTP-hibanaplók

@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 06/07/2017
 ms.author: motanv
 ms.openlocfilehash: 37a794387f3a2f02124805705d380ad9f1fc1270
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662856"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60544780"
 ---
 # <a name="testability-actions"></a>Testability műveletek
 Annak érdekében, hogy szimulálja egy nem megbízható infrastruktúra, az Azure Service Fabric biztosít, a fejlesztői, azzal, hogy különböző valós hibák és állapotváltozási adat áramlik szimulálásához. Ezek a testability műveletként érhetők el. A műveletek végezhetők az alacsony szintű API-k, amelyek egy adott hibabeszúrás, állapotváltás vagy érvényesítés. Ezek a műveletek kombinálásával átfogó tesztelési helyzetek írhat a szolgáltatásokhoz.

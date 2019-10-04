@@ -2,8 +2,8 @@
 title: Üzembe helyezési architektúra – Azure dedikált HSM-be |} A Microsoft Docs
 description: Alapvető tervezési szempontok Azure dedikált HSM-architektúra részeként használatakor
 services: dedicated-hsm
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 ms.custom: mvc, seodec18
 ms.service: key-vault
 ms.workload: identity
@@ -11,13 +11,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/27/2019
-ms.author: barclayn
-ms.openlocfilehash: 1e00e1f06f2409c94174a752a799cd4c1b7b23ef
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.author: mbaldwin
+ms.openlocfilehash: 93755ded8f9db27cf8e78079f32e90cccfac2831
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58539972"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883831"
 ---
 # <a name="azure-dedicated-hsm-deployment-architecture"></a>Az Azure dedikált HSM üzembe helyezési architektúrája
 

@@ -11,17 +11,17 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 49743130966589cceedb7756540c723a6f3276ff
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 06/25/2019
+ms.openlocfilehash: d8949f63dfa9b409cc14fe9c3bbed70f23a73c86
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471667"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357134"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>Dinamikusan méretezheti az adatbázis-erőforrások minimális állásidővel
 
-Az Azure SQL Database lehetővé teszi az adatbázis minimális állásidővel dinamikusan rendeljen több erőforrást.
+Az Azure SQL Database lehetővé teszi, hogy további erőforrásokat dinamikusan vehet fel az adatbázis minimális [állásidő](https://azure.microsoft.com/support/legal/sla/sql-database/v1_2/), azonban van egy kapcsoló időtartamon belül hol való kapcsolata megszakad az adatbázis egy rövid ideig, amely lehet a problémák elhárításáról újrapróbálkozási logika használata.
 
 ## <a name="overview"></a>Áttekintés
 
@@ -35,15 +35,13 @@ Nem kell aggódnia a hardver megvásárlása és az alapul szolgáló infrastruk
 
 Az Azure SQL Database kínál a [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) és a [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md).
 
-- A [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) számítási, memória és IO-erőforrások kis és nagy terhelést jelentő adatbázisokhoz database három szolgáltatásszintet kínálja: Alapszintű, Standard és prémium. Az egyes szolgáltatásszintek teljesítményszintjei ezen erőforrások különféle keverékét kínálják, amelyhez további tárterület-erőforrások is hozzáadhatók.
-- A [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md) válassza ki a virtuális magok, a vagy a memória, és a számát és a storage sebességétől teszi lehetővé. A vásárlási modell három különböző szolgáltatásszinttel rendelkezik: Általános célú, üzletileg kritikus és a nagy kapacitású (előzetes verzió).
+- A [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) számítási, memória és IO-erőforrások kis és nagy terhelést jelentő adatbázisokhoz database három szolgáltatásszintet kínálja: Alapszintű, Standard és Prémium. Az egyes szolgáltatásszintek teljesítményszintjei ezen erőforrások különféle keverékét kínálják, amelyhez további tárterület-erőforrások is hozzáadhatók.
+- A [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md) válassza ki a virtuális magok, a vagy a memória, és a számát és a storage sebességétől teszi lehetővé. A vásárlási modell három különböző szolgáltatásszinttel rendelkezik: Általános célú, kritikus fontosságú üzleti és nagy kapacitású.
 
 Hozza létre első alkalmazását egy egyedülálló, kisméretű adatbázison alacsony áron a Basic, Standard vagy általános célú szolgáltatási szinten a havonta, és ezután szolgáltatásszintet manuálisan vagy programon keresztül bármikor módosíthatja a prémium szintű és az üzletileg kritikus szolgáltatásszinthez megfelelni a ne a megoldás eds. Úgy módosíthatja a teljesítményt, hogy az nem jár leállással az alkalmazás vagy az ügyfelek számára. A dinamikus méretezhetőség révén az adatbázis átlátható módon reagál a gyorsan változó erőforrásigényekre, és lehetővé teszi, hogy csak azokért az erőforrásokért fizessen, amelyekre és amikor szüksége van.
 
-> [!IMPORTANT]
-> Nagy kapacitású szolgáltatási szint jelenleg nyilvános előzetes verzióban érhető el, és elérhető a korlátozott Azure-régióban. Nagy kapacitású adatbázis egyéb szolgáltatási csomagokra nem frissíthető. Tesztelési célra ajánlott másolatot készít az aktuális adatbázisban, és frissíti a példányt nagy kapacitású szolgáltatásszinthez.
 > [!NOTE]
-> A dinamikus méretezhetőség különbözik az automatikus skálázástól. Automatikus skálázás esetén a szolgáltatás adott feltételek alapján, automatikusan méretez, míg a dinamikus méretezhetőség lehetővé teszi a manuális méretezést, amely nem jár állásidővel.
+> A dinamikus méretezhetőség különbözik az automatikus skálázástól. Automatikus skálázási akkor, ha a szolgáltatás alapján automatikusan méretezi a feltételek, mivel a dinamikus méretezhetőség lehetővé teszi, hogy manuális egy minimális állásidővel.
 
 Az önálló Azure SQL Database a manuális dinamikus méretezhetőséget támogatja, de az automatikus skálázást nem. Ha *automatikus* megoldást keres, érdemes megfontolni a rugalmas készletek használatát, amely lehetővé teszi, hogy az adatbázisok osztozzanak egy készlet erőforrásain az egyes adatbázisok egyedi igényei alapján.
 Vannak azonban olyan parancsfájlok, amelyek segítségével automatizálhatja a méretezhetőség egyetlen Azure SQL-adatbázishoz. Erre az [Egyetlen SQL-adatbázis monitorozása és skálázása a PowerShell használatával](scripts/sql-database-monitor-and-scale-database-powershell.md) című témakörben láthat példát.
@@ -57,6 +55,9 @@ Az Azure SQL Database összes három változatban érhetők el ajánlat dinamiku
 - Az egy [önálló adatbázis](sql-database-single-database-scale.md), használhat [DTU](sql-database-dtu-resource-limits-single-databases.md) vagy [virtuális mag](sql-database-vcore-resource-limits-single-databases.md) modellek meghatározásához rendeli hozzá az egyes adatbázisok erőforrások maximális mennyiségét.
 - A [felügyelt példány](sql-database-managed-instance.md) használ [virtuális magok](sql-database-managed-instance.md#vcore-based-purchasing-model) módban, és lehetővé teszi, hogy meghatározza a maximális CPU-magok és a példányhoz lefoglalt tárterület maximális. A példány belüli összes adatbázist fog ugyanazokat az a példányhoz lefoglalt erőforrásokat.
 - [Rugalmas készletek](sql-database-elastic-pool-scale.md) engedélyezése, hogy a készlet maximális erőforrás felső határ az egyes adatbázisok csoport definiálja.
+
+> [!NOTE]
+> Várható a kapcsolat rövid szünet, ha a méretezési csoport legfeljebb/vertikális leskálázási folyamat befejeződött. Ha megvalósította [újrapróbálkozási logika standard átmeneti hibák esetén](sql-database-connectivity-issues.md#retry-logic-for-transient-errors), nem láthatja a feladatátvételt.
 
 ## <a name="alternative-scale-methods"></a>Alternatív méretezési módszer
 

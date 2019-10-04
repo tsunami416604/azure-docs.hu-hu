@@ -9,11 +9,11 @@ ms.date: 12/20/2017
 ms.author: jonor
 ms.custom: seodec18
 ms.openlocfilehash: 9ec310ffaa9d2bb297abde9341bf7b6c2dc763b4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57995797"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60883316"
 ---
 # <a name="troubleshooting-network-performance"></a>A hálózati teljesítmény hibaelhárítása
 ## <a name="overview"></a>Áttekintés
@@ -127,7 +127,7 @@ Ha nem biztos abban, ahol a peremhálózaton, a felhő ténylegesen van, az Azur
 
 Ha két virtuális hálózat (virtuális hálózatok A és B a diagram) vannak csatlakoztatva a **ugyanazon** ExpressRoute-kapcsolatcsoport hajthat végre az teszteken elkülönítése a probléma az Azure-ban (vagy igazolnia nem szerepel az Azure)
  
-### <a name="test-plan"></a>Tesztterv
+### <a name="test-plan"></a>Tesztelési terv
 1. Futtassa a Get-LinkPerformance tesztet a VM1, VM2 és között. Ez a vizsgálat bepillantást enged a, ha a probléma a helyi, akár nem. Ez a vizsgálat elfogadható késés és sávszélesség-eredmények állít elő, ha a helyi virtuális hálózatok közötti hálózati jelölheti meg, a megfelelő választás.
 2. Feltéve, hogy a helyi virtuális hálózatok közötti forgalom mindig jó, futtassa a Get-LinkPerformance tesztet VM1 és vm3 virtuális gép között. Ez a vizsgálat gyakorolja a kapcsolatot az MSEE lefelé, és vissza az Azure-bA a Microsoft hálózatán keresztül. Ez a vizsgálat elfogadható késés és sávszélesség-eredmények állít elő, ha jelölheti meg az Azure-hálózatot, megfelelő választás.
 3. Azure kiderül, hogy a rendszer, ha a vállalati hálózaton is hajtsa végre a tesztek hasonló sorrendben. Amely szintén teszt is, ha, ideje a szolgáltató vagy az Internetszolgáltató diagnosztizálhatja a WAN-kapcsolaton. Példa: Ez a vizsgálat futtatása a két fiókirodákban, vagy az ügyfélszolgálat és a egy adatközponti kiszolgáló között. Attól függően, mi tesztelt, keresse meg a végpont (kiszolgálók, számítógépek, stb.), amely kísérletezhet az elérési út.
@@ -179,7 +179,7 @@ Beállítások ellenőrzése:
 
 | | | | | | |
 |-|-|-|-|-|-|
-|ExpressRoute<br/>Hely|Azure<br/>Régió|Becsült<br/>Távolságskála (km-re)|Késés|1 munkamenet<br/>Bandwidth|Maximum<br/>Bandwidth|
+|ExpressRoute<br/>Location egység|Azure<br/>Régió|Becsült<br/>Távolságskála (km-re)|Késés|1 munkamenet<br/>A sávszélesség|Maximum<br/>A sávszélesség|
 | Seattle | USA nyugati régiója, 2.        |    191 km |   5 ms | 262.0 MB/s |  3.74 Gbits/mp |
 | Seattle | USA nyugati régiója          |  1,094 km-re |  18 ms |  82.3 MB/s |  3.70 Gbits/mp |
 | Seattle | USA középső régiója       |  2,357 km-re |  40 ms |  38.8 MB/s |  2.55 Gbits/mp |

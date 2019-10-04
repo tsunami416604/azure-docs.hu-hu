@@ -1,5 +1,5 @@
 ---
-title: Programozási útmutató – Azure Event Hubs |} A Microsoft Docs
+title: .NET programozási útmutató – Azure Event Hubs | Microsoft Docs
 description: Ez a cikk információt nyújt az írási kódot az Azure Event hubs az Azure .NET SDK használatával.
 services: event-hubs
 documentationcenter: na
@@ -7,23 +7,23 @@ author: ShubhaVijayasarathy
 ms.service: event-hubs
 ms.custom: seodec18
 ms.topic: article
-ms.date: 12/06/2018
+ms.date: 09/25/2019
 ms.author: shvija
-ms.openlocfilehash: 29814cb8aef09a8ead30d6daa615554dd55135dd
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: c2e23c38abbec5fd0e6010bdfc0feca882a6180d
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678581"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309818"
 ---
-# <a name="programming-guide-for-azure-event-hubs"></a>Az Azure Event Hubs programozási útmutatója
+# <a name="net-programming-guide-for-azure-event-hubs"></a>.NET programozási útmutató az Azure Event Hubs
 Ez a cikk ismerteti az Azure Event Hubs használatával kód írása néhány gyakori forgatókönyvet. A témakör feltételezi az Event Hubs szolgáltatással kapcsolatos előzetes ismeretek meglétét. Az Event Hubs fogalmi áttekintése: [Event Hubs – áttekintés](event-hubs-what-is-event-hubs.md).
 
 ## <a name="event-publishers"></a>Esemény-közzétevők
 
 Eseményeket küldeni egy eseményközpontba, vagy a HTTP POST használatával vagy egy AMQP 1.0-kapcsolaton keresztül. Hogy melyiket kívánja használni a kiválasztott és mikor javítása folyamatban az adott forgatókönyvtől függ. Az AMQP 1.0-kapcsolatok mérése közvetített kapcsolatként történik a Service Bus szolgáltatásban, és az olyan forgatókönyvekben megfelelőbbek, ahol gyakoriak a nagyobb üzenetmennyiségek és alacsony késés szükséges, mivel ezek állandó üzenetkezelési csatornát biztosítanak.
 
-A .NET által felügyelt API-k használatakor az adatoknak az Event Hubs számára történő közzétételére szolgáló elsődleges szerkezetek az [EventHubClient][] és az [EventData][] osztály. [EventHubClient][] biztosít, amelyben az események küldhetők az event hubs AMQP kommunikációs csatornát. A [EventData][] osztály egy eseményt képvisel, és az üzeneteknek az eseményközpontba való közzétételéhez használható. Ez az osztály az esemény törzsét, bizonyos metaadatait és fejléc-információit tartalmazza. Egyéb tulajdonságokkal is bővül, a [EventData][] objektumot, ahogy keresztülhalad az eseményközpontba.
+A .NET által felügyelt API-k használatakor az adatoknak az Event Hubs számára történő közzétételére szolgáló elsődleges szerkezetek az [EventHubClient][] és az [EventData][] osztály. [EventHubClient][] biztosít, amelyben az események küldhetők az event hubs AMQP kommunikációs csatornát. A [EventData][] osztály egy eseményt képvisel, és az üzeneteknek az eseményközpontba való közzétételéhez használható. Ebbe az osztályba beletartozik a törzs, az egyes metaadatok (Tulajdonságok) és a fejléc információi (SystemProperties) az eseményről. Egyéb tulajdonságokkal is bővül, a [EventData][] objektumot, ahogy keresztülhalad az eseményközpontba.
 
 ## <a name="get-started"></a>Bevezetés
 A .NET-osztályok támogató az Event Hubs szerepelnek a [Microsoft.Azure.EventHubs](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) NuGet-csomagot. Telepítheti a Visual Studio Solution explorer használatával vagy a [Package Manager Console](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) a Visual Studióban. Ehhez adja ki a következő parancsot a [Csomagkezelő konzol](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) ablakában:
@@ -71,6 +71,9 @@ for (var i = 0; i < numMessagesToSend; i++)
 
 ## <a name="partition-key"></a>Partíciókulcs
 
+> [!NOTE]
+> Ha nem ismeri a partíciókat, tekintse meg [ezt a cikket](event-hubs-features.md#partitions). 
+
 Eseményadatokat küld, ha egy partíció-hozzárendelést kivonatolásával értéket is megadhat. Megadhatja, hogy a partíció használata a [PartitionSender.PartitionID](/dotnet/api/microsoft.azure.eventhubs.partitionsender.partitionid) tulajdonság. Azonban a partíciók használata mellett is választhat rendelkezésre állás és konzisztencia. 
 
 ### <a name="availability-considerations"></a>Rendelkezésre állási szempontok
@@ -91,7 +94,7 @@ További információ és rendelkezésre állás és konzisztencia közötti sk�
 
 Események kötegekben való küldésével segíthet az átviteli sebesség növelése. Használhatja a [CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) hozzon létre egy, amelyhez objektumok később hozzáadhatók a batch API-t egy [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) hívja.
 
-Az egy kötegben nem haladhatja meg a 1 Megabájtos korlátot, ha az eseményeket. Továbbá a kötegben lévő egyes üzenetek ugyanazzal a közzétevői identitással rendelkezik majd. A küldő felelőssége annak biztosítása, hogy a köteg mérete nem haladja meg az események maximális méretét. Ha mégis meghaladja, az ügyfél **Küldési** hibát jelez. Használhatja a segédmetódus [EventHubClient.CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) , győződjön meg arról, hogy a batch nem haladja meg az 1 MB. Megjelenik egy üres [EventDataBatch](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch) származó a [CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) API-t, majd [TryAdd](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch.tryadd) eseményeket létrehozásához a batch hozzáadásához. 
+Egyetlen köteg nem lépheti túl az esemény 1 MB-os korlátját. Továbbá a kötegben lévő egyes üzenetek ugyanazzal a közzétevői identitással rendelkezik majd. A küldő felelőssége annak biztosítása, hogy a köteg mérete nem haladja meg az események maximális méretét. Ha mégis meghaladja, az ügyfél **Küldési** hibát jelez. A [EventHubClient. CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) segítő metódussal biztosíthatja, hogy a köteg ne haladja meg az 1 MB-ot. Megjelenik egy üres [EventDataBatch](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch) származó a [CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) API-t, majd [TryAdd](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch.tryadd) eseményeket létrehozásához a batch hozzáadásához. 
 
 ## <a name="send-asynchronously-and-send-at-scale"></a>Aszinkron küldés és nagy léptékű küldés
 
@@ -110,7 +113,7 @@ Az [EventProcessorHost][] osztály használatához megvalósítható az [IEventP
 Az események feldolgozásának indításához példányosítható [EventProcessorHost][], így a megfelelő paramétereket az eseményközpont. Példa:
 
 > [!NOTE]
-> EventProcessorHost és a kapcsolódó osztályok szerepelnek a **Microsoft.Azure.EventHubs.Processor** csomagot. Adja hozzá a csomagot a Visual Studio-projektben található utasításokat követve [Ez a cikk](event-hubs-dotnet-framework-getstarted-send.md#add-the-event-hubs-nuget-package) vagy a következő parancsot a a [Package Manager Console](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) ablak:`Install-Package Microsoft.Azure.EventHubs.Processor`.
+> A EventProcessorHost és a hozzá kapcsolódó osztályok a **Microsoft. Azure. EventHubs. Processor** csomagban találhatók. Adja hozzá a csomagot a Visual Studio-projekthez a [cikk](event-hubs-dotnet-framework-getstarted-send.md#add-the-event-hubs-nuget-package) utasításait követve, vagy a következő parancs kiadásával a [Package Manager konzol](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) ablakban:`Install-Package Microsoft.Azure.EventHubs.Processor`.
 
 ```csharp
 var eventProcessorHost = new EventProcessorHost(
@@ -137,7 +140,10 @@ Az [EventProcessorHost][] osztály megvalósít továbbá egy Azure Storage-alap
 
 ## <a name="publisher-revocation"></a>Közzétevők visszavonása
 
-Fejlett futtatókörnyezeti szolgáltatásai mellett [EventProcessorHost][], az Event Hubs lehetővé teszi, hogy a közzétevők visszavonását annak érdekében, hogy adott közzétevők események eseményközpontba letiltása. Ezek a funkciók hasznosak, ha egy közzétevői token biztonsága sérült, vagy ha egy szoftverfrissítés okozza, azokat nem megfelelően viselkednek. Ilyen helyzetekben a közzétevő identitása (amely a SAS-token részét képezi) blokkolható az események közzétételének a megakadályozásához.
+Az Event Processor Host speciális futásidejű funkciói mellett a Event Hubs szolgáltatás lehetővé teszi a [közzétevők visszavonását](/rest/api/eventhub/revoke-publisher) annak érdekében, hogy letiltsa bizonyos közzétevők számára esemény küldését az Event hub-ba. Ezek a funkciók hasznosak, ha egy közzétevői token biztonsága sérült, vagy ha egy szoftverfrissítés okozza, azokat nem megfelelően viselkednek. Ilyen helyzetekben a közzétevő identitása (amely a SAS-token részét képezi) blokkolható az események közzétételének a megakadályozásához.
+
+> [!NOTE]
+> Jelenleg csak a REST API támogatja ezt a funkciót (a[közzétevő visszavonása](/rest/api/eventhub/revoke-publisher)).
 
 A közzétevők visszavonásával és az eseményközpontokba közzétevőként való küldés módjával kapcsolatban a [Event Hubs Large Scale Secure Publishing](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-99ce67ab) (Event Hubs nagyléptékű biztonságos közzététele) mintában tekinthet meg további információt.
 

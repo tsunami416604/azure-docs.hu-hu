@@ -9,11 +9,11 @@ ms.topic: reference
 ms.date: 03/12/2019
 ms.author: spelluru
 ms.openlocfilehash: c5998ff428c4b6f4c1f7a4087c6ccb27d93773eb
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58084327"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60345464"
 ---
 # <a name="azure-event-grid-event-schema-for-container-registry"></a>Tároló-beállításjegyzék Azure Event Grid eseménysémája
 
@@ -157,47 +157,47 @@ Egy esemény a következő legfelső szintű adatokat tartalmaz:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| témakör | sztring | A forrás teljes erőforrás elérési útja. Ez a mező nem írható. Event Grid biztosítja ezt az értéket. |
-| tárgy | sztring | Az esemény tárgya közzétevő által megadott elérési útja. |
-| eventType | sztring | Ehhez eseményre adatforráshoz regisztrált esemény típusok egyikét. |
-| eventTime | sztring | Az esemény akkor jön létre az idő alapján a szolgáltató UTC idő. |
-| id | sztring | Az esemény egyedi azonosítója. |
-| adat | objektum | A BLOB storage-eseményadatok. |
-| dataVersion | sztring | Az adatobjektum sémaverziója. A közzétevő a sémaverziót határozza meg. |
-| metadataVersion | sztring | Az esemény-metaadatok sémaverziója. Event Grid sémáját, a legfelső szintű tulajdonságait határozza meg. Event Grid biztosítja ezt az értéket. |
+| topic | string | A forrás teljes erőforrás elérési útja. Ez a mező nem írható. Event Grid biztosítja ezt az értéket. |
+| subject | string | Az esemény tárgya közzétevő által megadott elérési útja. |
+| eventType | string | Ehhez eseményre adatforráshoz regisztrált esemény típusok egyikét. |
+| eventTime | string | Az esemény akkor jön létre az idő alapján a szolgáltató UTC idő. |
+| id | string | Az esemény egyedi azonosítója. |
+| data | object | A BLOB storage-eseményadatok. |
+| dataVersion | string | Az adatobjektum sémaverziója. A közzétevő a sémaverziót határozza meg. |
+| metadataVersion | string | Az esemény-metaadatok sémaverziója. Event Grid sémáját, a legfelső szintű tulajdonságait határozza meg. Event Grid biztosítja ezt az értéket. |
 
 Az objektum a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| id | sztring | Az esemény azonosítója. |
-| időbélyeg | sztring | Az az időpont, amikor az esemény történt. |
-| action | sztring | A művelet, amely magában foglalja a megadott esemény. |
-| cél | objektum | A cél az esemény. |
-| kérelem | objektum | A kérelem, ami az esemény jön létre. |
+| id | string | Az esemény azonosítója. |
+| timestamp | string | Az az időpont, amikor az esemény történt. |
+| action | string | A művelet, amely magában foglalja a megadott esemény. |
+| target | object | A cél az esemény. |
+| request | object | A kérelem, ami az esemény jön létre. |
 
 A célobjektum a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| mediaType | sztring | A hivatkozott objektum MIME-típusát. |
-| méret | egész szám | A tartalom bájtok száma. Ugyanaz, mint a Hossz mezőben. |
-| a kivonatoló | sztring | A tartalom, ahogyan a beállításjegyzék V2 HTTP API-specifikációnak a kivonat. |
-| Hossza | egész szám | A tartalom bájtok száma. Ugyanaz, mint mérete mező. |
-| Adattár | sztring | A tárház nevét. |
-| címke | sztring | A címke neve. |
-| név | sztring | A diagram neve. |
-| version | sztring | A diagram verziója. |
+| mediaType | string | A hivatkozott objektum MIME-típusát. |
+| size | integer | A tartalom bájtok száma. Ugyanaz, mint a Hossz mezőben. |
+| digest | string | A tartalom, ahogyan a beállításjegyzék V2 HTTP API-specifikációnak a kivonat. |
+| length | integer | A tartalom bájtok száma. Ugyanaz, mint mérete mező. |
+| repository | string | A tárház nevét. |
+| tag | string | A címke neve. |
+| name | string | A diagram neve. |
+| version | string | A diagram verziója. |
 
 A kérelem objektum a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| id | sztring | Az esemény által kezdeményezett kérelem azonosítója. |
-| addr | sztring | Az IP vagy állomásnév, esetleg az ügyfél kapcsolata az eseményt inicializáló portjával. Ez az érték a szabványos http-kérelem a RemoteAddr. |
-| gazdagép | sztring | A kívülről elérhető-példányának gazdagépnevét a beállításjegyzék, a bejövő kérelem http-állomásfejlécet által megadott. |
-| method | sztring | A kérelmi metódust, ami az esemény jön létre. |
-| USERAGENT | sztring | A felhasználói ügynök fejléc a kérelem. |
+| id | string | Az esemény által kezdeményezett kérelem azonosítója. |
+| addr | string | Az IP vagy állomásnév, esetleg az ügyfél kapcsolata az eseményt inicializáló portjával. Ez az érték a szabványos http-kérelem a RemoteAddr. |
+| host | string | A kívülről elérhető-példányának gazdagépnevét a beállításjegyzék, a bejövő kérelem http-állomásfejlécet által megadott. |
+| method | string | A kérelmi metódust, ami az esemény jön létre. |
+| useragent | string | A felhasználói ügynök fejléc a kérelem. |
 
 ## <a name="next-steps"></a>További lépések
 

@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: 92e8435e4336c68982e4becc2a95f99b2c776c0e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58861842"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60736640"
 ---
 # <a name="protocol-support-for-http-headers-in-azure-front-door-service"></a>Az Azure bejárati ajtajának Service HTTP-fejlécek protokoll támogatása
 Ez a cikk ismerteti a bejárati ajtajának Service támogatja. a hívás elérési útjának részei a protokollt (lásd a képen). A következő szakaszok további információ a bejárati ajtajának szolgáltatás által támogatott HTTP-fejléceket.
@@ -35,7 +35,7 @@ Bejárati ajtajának szolgáltatás tartalmaz egy bejövő kérésnek fejlécet,
 
 | Fejléc  | Példa és leírás |
 | ------------- | ------------- |
-| Ezzel |  Keresztül: 1.1 azure </br> Bejárati ajtajának hozzáadja az ügyfél HTTP-verzió követ *Azure* a Via fejléc értékeként. Ez azt jelzi, hogy az ügyfél HTTP-verzió és bejárati ajtó a kérelem, az ügyfél és a háttérrendszer között egy köztes címzettnek.  |
+| -n keresztül |  Keresztül: 1.1 azure </br> Bejárati ajtajának hozzáadja az ügyfél HTTP-verzió követ *Azure* a Via fejléc értékeként. Ez azt jelzi, hogy az ügyfél HTTP-verzió és bejárati ajtó a kérelem, az ügyfél és a háttérrendszer között egy köztes címzettnek.  |
 | X-Azure-ClientIP | X-Azure-ClientIP: 127.0.0.1 </br> A kérés feldolgozása folyamatban társított ügyfél IP-címet jelenti. Például egy proxy érkező kérelmet előfordulhat, hogy adja hozzá az X-továbbított – a fejléc jelzi az eredeti hívó IP-címét. |
 | X-Azure-SocketIP |  X-Azure-SocketIP: 127.0.0.1 </br> A szoftvercsatorna IP-címet, amely az aktuális kérelem származik a TCP-kapcsolathoz társított jelenti. A kérés ügyfél IP-cím nem feltétlenül szoftvercsatorna IP-címének egyenlő, mert lehet önkényesen felülírni azt a felhasználó által.|
 | X-Azure-Ref |  X-Azure-Ref: 0zxV+XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz </br> A kérés kiszolgálása az internetszolgáltatójuk által bejárati ajtajának azonosító egyedi hivatkozást karakterlánc. Hozzáférési naplók keresése szolgál, kritikus fontosságú hibakeresési.|

@@ -1,9 +1,9 @@
 ---
-title: Windows Azure-ban futó Service Fabric-fürt létrehozása |} A Microsoft Docs
-description: Ebben az oktatóanyagban megismerheti, hogyan helyezheti üzembe Windows Service Fabric-fürtön az Azure virtuális hálózat és a hálózati biztonsági csoport PowerShell-lel.
+title: Windows rendszerű Service Fabric-fürt létrehozása az Azure-ban | Microsoft Docs
+description: Ebből az oktatóanyagból megtudhatja, hogyan helyezhet üzembe Windows Service Fabric-fürtöt egy Azure-beli virtuális hálózatban és hálózati biztonsági csoportban a PowerShell használatával.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: ''
@@ -12,31 +12,31 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/13/2019
-ms.author: aljo
+ms.date: 07/22/2019
+ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: dabbefa8ca2073e30948f1c70782f730bceae030
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 12e886c107249c338dc27aefcd2e1a32eba13d3e
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59050006"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598878"
 ---
-# <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>Oktatóanyag: Windows rendszerű Azure-beli virtuális hálózatban a Service Fabric-fürt üzembe helyezése
+# <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>Oktatóanyag: Windows rendszerű Service Fabric-fürt üzembe helyezése Azure-beli virtuális hálózatban
 
-Ez az oktatóanyag egy sorozat első része. Megtudhatja, hogyan-rendszert futtató, Windows Azure Service Fabric-fürt üzembe helyezése egy [az Azure virtual network](../virtual-network/virtual-networks-overview.md) és [hálózati biztonsági csoport](../virtual-network/virtual-networks-nsg.md) PowerShell és a egy sablon használatával. Ha elkészült, rendelkezni, amelyre alkalmazásokat telepíthet a felhőben futó fürttel. Az Azure CLI Linux-fürt létrehozása: [biztonságos Linux-fürt létrehozása az Azure-ban](service-fabric-tutorial-create-vnet-and-linux-cluster.md).
+Ez az oktatóanyag egy sorozat első része. Megtudhatja, hogyan helyezhet üzembe Windows rendszerű Azure Service Fabric-fürtöt egy Azure-beli [virtuális hálózatban](../virtual-network/virtual-networks-overview.md) és [hálózati biztonsági csoportban](../virtual-network/virtual-networks-nsg.md) a PowerShell és egy sablon használatával. Ha elkészült, egy olyan fürt fut a felhőben, amelybe alkalmazásokat telepíthet. Az Azure CLI-t használó linuxos fürtök létrehozásával kapcsolatban lásd: [biztonságos Linux-fürt létrehozása az Azure](service-fabric-tutorial-create-vnet-and-linux-cluster.md)-ban.
 
-Ez az oktatóanyag egy éles forgatókönyvet ismertet. Ha azt szeretné, hozzon létre egy kisebb fürtöt tesztelési célokra, lásd: [egy tesztfürt létrehozása](./scripts/service-fabric-powershell-create-secure-cluster-cert.md).
+Ez az oktatóanyag egy éles forgatókönyvet ismertet. Ha egy kisebb fürtöt szeretne tesztelési célokra létrehozni, tekintse meg [a tesztelési fürt létrehozása](./scripts/service-fabric-powershell-create-secure-cluster-cert.md)című témakört.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * VNET létrehozása a PowerShell használatával
 > * Kulcstartó létrehozása és tanúsítvány feltöltése
-> * Az Azure Active Directory-hitelesítés beállítása
-> * Diagnosztikai gyűjtésének konfigurálása
-> * Az EventStore szolgáltatás beállítása
-> * Állítsa be az Azure Monitor naplóira
+> * A telepítő Azure Active Directory hitelesítés
+> * Diagnosztikai gyűjtemény konfigurálása
+> * A EventStore szolgáltatás beállítása
+> * Azure Monitor naplók beállítása
 > * Biztonságos Service Fabric-fürt létrehozása az Azure PowerShellben
 > * A fürt védelme X.509-tanúsítvánnyal
 > * Csatlakozás a fürthöz PowerShell használatával
@@ -45,7 +45,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 > [!div class="checklist"]
 > * Biztonságos fürt létrehozása az Azure-ban
-> * [-Fürt monitorozása](service-fabric-tutorial-monitor-cluster.md)
+> * [Fürt figyelése](service-fabric-tutorial-monitor-cluster.md)
 > * [Fürt horizontális fel- és leskálázása](service-fabric-tutorial-scale-cluster.md)
 > * [Fürt futtatókörnyezetének frissítése](service-fabric-tutorial-upgrade-cluster.md)
 > * [Fürt törlése](service-fabric-tutorial-delete-cluster.md)
@@ -58,71 +58,71 @@ Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 Az oktatóanyag elkezdése előtt:
 
 * Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Telepítse a [Service Fabric SDK és a PowerShell-modult](service-fabric-get-started.md).
-* Telepítés [az Azure Powershell](https://docs.microsoft.com/powershell/azure/install-Az-ps).
-* Tekintse át a kapcsolatos főbb fogalmakat [Azure fürtök](service-fabric-azure-clusters-overview.md).
-* [Megtervezheti és előkészítheti a](service-fabric-cluster-azure-deployment-preparation.md) éles fürt üzembe helyezéséhez.
+* Telepítse a [Service FABRIC SDK-t és a PowerShell-modult](service-fabric-get-started.md).
+* Telepítse az [Azure PowerShellt](https://docs.microsoft.com/powershell/azure/install-Az-ps).
+* Tekintse át az [Azure-fürtök](service-fabric-azure-clusters-overview.md)főbb fogalmait.
+* [Tervezze meg és készítse elő](service-fabric-cluster-azure-deployment-preparation.md) az üzemi fürtök üzembe helyezését.
 
-Az alábbi eljárással létrehozunk egy hét csomópontos Service Fabric-fürtön. Használja a [Azure Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/) Service Fabric-fürtön az Azure-ban való futtatásával járó költségek kiszámításához.
+Az alábbi eljárások hét csomópontos Service Fabric fürtöt hoznak létre. Az [Azure díjszabási kalkulátorával](https://azure.microsoft.com/pricing/calculator/) kiszámíthatja a Service Fabric-fürt Azure-ban való futtatásával járó költségeket.
 
 ## <a name="download-and-explore-the-template"></a>A sablon letöltése és megismerése
 
-Töltse le a következő Azure Resource Manager-sablonfájlokat:
+Töltse le a következő Azure Resource Manager sablonfájlokat:
 
-* [azuredeploy.json][template]
-* [azuredeploy.parameters.json][parameters]
+* [azuredeploy. JSON][template]
+* [azuredeploy. Parameters. JSON][parameters]
 
-Ez a sablon egy virtuális hálózatot és a egy hálózati biztonsági csoport hét virtuális gépek és a három csomóponttípusok biztonságos fürt üzembe helyezése.  További mintasablonokat a [GitHubon](https://github.com/Azure-Samples/service-fabric-cluster-templates) talál. A [azuredeploy.json] [ template] számos, többek között az alábbiakat telepíti.
+Ez a sablon hét virtuális gép és három csomópont típusú biztonságos fürtöt telepít egy virtuális hálózatba és egy hálózati biztonsági csoportba.  További mintasablonokat a [GitHubon](https://github.com/Azure-Samples/service-fabric-cluster-templates) talál. A [azuredeploy. JSON][template] több erőforrást is üzembe helyez, többek között az alábbiakat.
 
 ### <a name="service-fabric-cluster"></a>Service Fabric-fürt
 
 A **Microsoft.ServiceFabric/clusters** erőforrásban egy Windows-fürt az alábbi jellemzőkkel lesz konfigurálva:
 
-* Három csomópont típusa.
-* Öt csomópont van az elsődleges csomóponttípusban (a sablon paramétereiben konfigurálható), és a egy csomópont minden más két csomóponttípus.
-* Operációs rendszer: A Windows Server 2016 Datacenter tárolókkal (a sablon paramétereiben konfigurálható).
-* Tanúsítványon alapuló védelem (a sablon paramétereiben konfigurálható).
-* [Fordított proxy](service-fabric-reverseproxy.md) engedélyezve van.
-* [DNS-szolgáltatás](service-fabric-dnsservice.md) engedélyezve van.
-* [Tartóssági szint](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) bronz (a sablon paramétereiben konfigurálható).
-* [Megbízhatósági szint](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) ezüst (a sablon paramétereiben konfigurálható).
-* ügyfélkapcsolati végpont: 19000 (a sablon paramétereiben konfigurálható).
-* HTTP-átjáró végpontja: a 19080-as (a sablon paramétereiben konfigurálható).
+* Három csomópont-típus.
+* Az elsődleges csomópont típusának öt csomópontja (a sablon paramétereinek megfelelően konfigurálható), a másik két csomópontban pedig egy csomópont található.
+* OS: Windows Server 2016 Datacenter tárolókkal (konfigurálható a sablon paraméterei között).
+* A tanúsítvány védett (a sablon paramétereinek megfelelően konfigurálható).
+* A [fordított proxy](service-fabric-reverseproxy.md) engedélyezve van.
+* A [DNS-szolgáltatás](service-fabric-dnsservice.md) engedélyezve van.
+* A bronz [tartóssági szintje](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) (a sablon paramétereinek megfelelően konfigurálható).
+* Az ezüst [megbízhatósági szintje](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) (a sablon paramétereinek megfelelően konfigurálható).
+* Ügyfélkapcsolati végpont: 19000 (konfigurálható a sablon paraméterei között).
+* HTTP-átjáró végpontja: 19080 (konfigurálható a sablon paraméterei között).
 
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
 
-Az a **Microsoft.Network/loadBalancers** erőforrás, egy terheléselosztó van konfigurálva. Minták és szabályok vannak beállítva a következő portokat:
+A **Microsoft. Network/loadBalancers** erőforrásban a terheléselosztó konfigurálva van. A mintavételek és szabályok a következő portokra vannak beállítva:
 
-* ügyfélkapcsolati végpont: 19000
+* Ügyfélkapcsolati végpont: 19000
 * HTTP-átjáró végpontja: 19080
-* alkalmazásport: 80
-* alkalmazásport: 443
-* A Service Fabric fordított proxy: 19081
+* Alkalmazás portja: 80
+* Alkalmazás portja: 443
+* Fordított proxy Service Fabric: 19081
 
-Ha más alkalmazás portok van szükség, módosítani kell a **Microsoft.Network/loadBalancers** erőforrás és a **Microsoft.Network/networkSecurityGroups** engedélyezi a forgalmat az erőforrás.
+Ha más alkalmazás-portok is szükségesek, akkor módosítania kell a **Microsoft. Network/loadBalancers** erőforrást és a **Microsoft. Network/networkSecurityGroups** erőforrást a forgalom engedélyezéséhez.
 
 ### <a name="virtual-network-subnet-and-network-security-group"></a>Virtuális hálózat, alhálózat és hálózati biztonsági csoport
 
 A virtuális hálózat, az alhálózat és a hálózati biztonsági csoport neve a sablon paramétereiben van meghatározva. A virtuális hálózat és az alhálózat címtere szintén a sablon paramétereiben határozható meg és a **Microsoft.Network/virtualNetworks** erőforrásban van konfigurálva:
 
-* virtuális hálózat címtere: 172.16.0.0/20
-* A Service Fabric-alhálózat címtere: 172.16.2.0/23
+* Virtuális hálózati címtartomány: 172.16.0.0/20
+* Alhálózati címterület Service Fabric: 172.16.2.0/23
 
 Az alábbi bejövő forgalmi szabályok vannak engedélyezve a **Microsoft.Network/networkSecurityGroups** erőforrásban. A portok értékét a sablon változóinak módosításával módosíthatja.
 
 * ClientConnectionEndpoint (TCP): 19000
 * HttpGatewayEndpoint (HTTP/TCP): 19080
-* SMB: 445
-* Csomópontok közötti kommunikáció: 1025, 1026, 1027
-* A rövid élettartamú porttartomány: 49152 65534 (legalább 256 port szükséges).
-* Alkalmazások által használható portok: 80 és 443
-* Alkalmazás porttartománya: 49152 65534 (szolgáltatások közötti kommunikációhoz használt. Más portok nem nyílik meg a terheléselosztó).
+* SMB 445
+* Internodecommunication: 1025, 1026, 1027
+* Időszakos porttartomány: 49152 – 65534 (legalább 256 portnak kell lennie).
+* Alkalmazások által használt portok: 80 és 443
+* Alkalmazási porttartomány: 49152 – 65534 (a szolgáltatás és a szolgáltatás közötti kommunikációhoz használatos. Más portok nincsenek megnyitva a terheléselosztó esetében).
 * összes többi port letiltása.
 
-Ha más alkalmazás portok van szükség, módosítani kell a **Microsoft.Network/loadBalancers** erőforrás és a **Microsoft.Network/networkSecurityGroups** engedélyezi a forgalmat az erőforrás.
+Ha más alkalmazás-portok is szükségesek, akkor módosítania kell a **Microsoft. Network/loadBalancers** erőforrást és a **Microsoft. Network/networkSecurityGroups** erőforrást a forgalom engedélyezéséhez.
 
 ### <a name="windows-defender"></a>Windows Defender
-Alapértelmezés szerint a [a Windows Defender víruskereső program](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016) telepítve és működőképes a Windows Server 2016-on. A felhasználói felület néhány termékváltozat alapértelmezés szerint telepítve van, de nincs szükség. Minden egyes csomópont típusa vagy Virtuálisgép-méretezési deklarált a sablonban a [Azure virtuális gép az Antimaleware bővítmény](/azure/virtual-machines/extensions/iaas-antimalware-windows) szolgál a Service Fabric-könyvtárak és folyamatok kizárása:
+Alapértelmezés szerint a Windows [Defender víruskereső program](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016) telepítve van és működőképes a windows Server 2016 rendszeren. A felhasználói felület néhány SKU-ban alapértelmezés szerint telepítve van, de nem kötelező. A sablonban deklarált minden egyes csomópont típus/virtuálisgép-méretezési csoport esetében az [Azure VM antimalware bővítmény](/azure/virtual-machines/extensions/iaas-antimalware-windows) a Service Fabric címtárak és folyamatok kizárására szolgál:
 
 ```json
 {
@@ -152,38 +152,38 @@ Alapértelmezés szerint a [a Windows Defender víruskereső program](/windows/s
 
 ## <a name="set-template-parameters"></a>Sablon paramétereinek megadása
 
-Az [azuredeploy.parameters.json][parameters] paraméterfájl számos, a fürt és a társított erőforrások üzembe helyezéséhez használt értéket meghatároz. Módosíthatja az üzemelő példány paramétereit a következők:
+A [azuredeploy. Parameters. JSON][parameters] paraméterek fájlja deklarálja a fürt és a kapcsolódó erőforrások üzembe helyezéséhez használt számos értéket. A következő paramétereket kell módosítani a telepítéshez:
 
-**A paraméter** | **Példaérték** | **Megjegyzések** 
+**A paraméter** | **Példa értéke** | **Megjegyzések** 
 |---|---|---|
-|adminUserName|vmadmin| Rendszergazdai felhasználónév a fürt virtuális gépeihez. [Virtuális gép követelményei felhasználónév](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-username-requirements-when-creating-a-vm). |
-|adminPassword|Password#1234| Rendszergazdai jelszó a fürt virtuális gépeihez. [Virtuális gép jelszókövetelményeinek](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm).|
+|adminUserName|vmadmin| Rendszergazdai felhasználónév a fürt virtuális gépeihez. [A virtuális gép felhasználónévre vonatkozó követelményei](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-username-requirements-when-creating-a-vm). |
+|adminPassword|Password#1234| Rendszergazdai jelszó a fürt virtuális gépeihez. [A virtuális gép jelszavára vonatkozó követelmények](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm).|
 |clusterName|mysfcluster123| A fürt neve. Csak betűket és számokat tartalmazhat. 3–23 karakter hosszú lehet.|
 |location|southcentralus| A fürt helye. |
 |certificateThumbprint|| <p>Önaláírt tanúsítvány létrehozása vagy tanúsítványfájl megadása esetén az értéknek üresnek kell lennie.</p><p>Ha meglévő, egy kulcstárolóba korábban feltöltött tanúsítványt szeretne használni, adja meg a tanúsítvány SHA1 ujjlenyomatának értékét. Például: „6190390162C988701DB5676EB81083EA608DCCF3”</p> |
-|certificateUrlValue|| <p>Önaláírt tanúsítvány létrehozása vagy tanúsítványfájl megadása esetén az értéknek üresnek kell lennie. </p><p>Ha meglévő, egy kulcstárolóba korábban feltöltött tanúsítványt szeretne használni, adja meg a tanúsítvány URL-címét. Például "https:\//mykeyvault.vault.azure.net:443/secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346".</p>|
+|certificateUrlValue|| <p>Önaláírt tanúsítvány létrehozása vagy tanúsítványfájl megadása esetén az értéknek üresnek kell lennie. </p><p>Ha meglévő, egy kulcstárolóba korábban feltöltött tanúsítványt szeretne használni, adja meg a tanúsítvány URL-címét. Példa: "https:\//mykeyvault.Vault.Azure.net:443/Secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346".</p>|
 |sourceVaultValue||<p>Önaláírt tanúsítvány létrehozása vagy tanúsítványfájl megadása esetén az értéknek üresnek kell lennie.</p><p>Ha meglévő, egy kulcstárolóba korábban feltöltött tanúsítványt szeretne használni, adja meg a forrástároló értékét. For example, "/subscriptions/333cc2c84-12fa-5778-bd71-c71c07bf873f/resourceGroups/MyTestRG/providers/Microsoft.KeyVault/vaults/MYKEYVAULT".</p>|
 
-## <a name="set-up-azure-active-directory-client-authentication"></a>Azure Active Directory-ügyfél-hitelesítés beállítása
-Service Fabric-fürtök az Azure-ban üzemeltetett nyilvános hálózaton üzembe helyezett az ügyfél és a csomópont közötti kölcsönös hitelesítés ajánlás van:
-* Azure Active Directory használata az ügyfelek identitását.
-* Tanúsítvány használata a kiszolgáló identitása és a HTTP-kommunikációhoz SSL-titkosítást.
+## <a name="set-up-azure-active-directory-client-authentication"></a>Azure Active Directory ügyfél-hitelesítés beállítása
+Az Azure-ban üzemeltetett nyilvános hálózatokban üzembe helyezett Service Fabric-fürtök esetén az ügyfél és a csomópont közötti kölcsönös hitelesítésre vonatkozó javaslat a következő:
+* Azure Active Directory használata az ügyfél identitásához.
+* Tanúsítvány használata a HTTP-kommunikáció kiszolgálói identitásához és SSL-titkosításához.
 
-Az Azure Active Directory (Azure AD) beállítása a Service Fabric-fürt-ügyfelek hitelesítésére kell elvégezni, mielőtt [a fürt létrehozása](#createvaultandcert). Azure ad-ben alkalmazásokhoz való felhasználói hozzáférés kezelése lehetővé teszi a szervezetek (más néven bérlők). 
+Az Azure Active Directory (Azure AD) beállításával a [fürt létrehozása](#createvaultandcert)előtt el kell végezni a Service Fabric-fürthöz tartozó ügyfelek hitelesítését. Az Azure AD lehetővé teszi, hogy a szervezetek (más néven bérlők) az alkalmazásokhoz való felhasználói hozzáférést kezeljék. 
 
-Service Fabric-fürt kínál a különböző belépési pontok annak felügyeleti funkciójához, beleértve a webalapú [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) és [Visual Studio](service-fabric-manage-application-in-visual-studio.md). Ennek eredményeképpen hoz létre, ki férhet hozzá a fürt két Azure AD-alkalmazások: egy webalkalmazás és a egy natív alkalmazást.  Az alkalmazások létrehozása után felhasználók hozzárendelése csak olvasható, és rendszergazdai szerepkörök.
+A Service Fabric-fürtök több belépési pontot biztosítanak a felügyeleti funkcióihoz, beleértve a webalapú [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) és a [Visual studiót](service-fabric-manage-application-in-visual-studio.md)is. Ennek eredményeképpen két Azure AD-alkalmazást hoz létre a fürt elérésének vezérléséhez: egy webalkalmazást és egy natív alkalmazást.  Az alkalmazások létrehozása után a felhasználókat a csak olvasási és rendszergazdai szerepkörökhöz rendelheti hozzá.
 
 > [!NOTE]
-> A következő lépéseket kell elvégeznie, a fürt létrehozása előtt. A parancsfájlok várhatóan a fürt nevét és a végpontok, mert az értékeket meg kell tervezni, és nem az, hogy már létrehozott értékeket.
+> A fürt létrehozása előtt végre kell hajtania a következő lépéseket. Mivel a parancsfájlok a fürtök és a végpontok számára is várnak, az értékeket meg kell tervezni, és nem a már létrehozott értékeket.
 
-Ez a cikk feltételezzük, hogy már létrehozott egy bérlőt. Ha még nem, először olvassa el [Azure Active Directory-bérlő beszerzése](../active-directory/develop/quickstart-create-new-tenant.md).
+Ez a cikk azt feltételezi, hogy már létrehozott egy bérlőt. Ha még nem tette meg, először olvassa el a [Azure Active Directory bérlő beszerzését ismertető témakört](../active-directory/develop/quickstart-create-new-tenant.md).
 
-Szükséges lépések eltérőek konfigurálása az Azure AD-ben a Service Fabric-fürt leegyszerűsítése létrehoztuk a Windows PowerShell-parancsprogramok halmaza. [Töltse le a parancsfájlok](https://github.com/robotechredmond/Azure-PowerShell-Snippets/tree/master/MicrosoftAzureServiceFabric-AADHelpers/AADTool) a számítógépre.
+Az Azure AD Service Fabric-fürttel való konfigurálásának lépéseinek egyszerűbbé tétele érdekében létrehoztunk egy Windows PowerShell-szkriptet. [Töltse le a szkripteket](https://github.com/robotechredmond/Azure-PowerShell-Snippets/tree/master/MicrosoftAzureServiceFabric-AADHelpers/AADTool) a számítógépre.
 
-### <a name="create-azure-ad-applications-and-assign-users-to-roles"></a>Az Azure AD-alkalmazások létrehozása és a felhasználók szerepkörökhöz rendelése
-Hozzon létre két Azure AD-alkalmazást a fürthöz való hozzáférés szabályozásához: egy webalkalmazás és a egy natív alkalmazást. Az alkalmazások, amelyek a fürt létrehozása után rendelje hozzá a felhasználókat, hogy a [szerepkörök a Service Fabric által támogatott](service-fabric-cluster-security-roles.md): csak olvasható és a rendszergazdával.
+### <a name="create-azure-ad-applications-and-assign-users-to-roles"></a>Azure AD-alkalmazások létrehozása és felhasználók szerepkörökhöz rendelése
+Hozzon létre két Azure AD-alkalmazást a fürt elérésének vezérléséhez: egy webalkalmazást és egy natív alkalmazást. Miután létrehozta az alkalmazásokat a fürt képviseletére, rendelje hozzá a felhasználókat a [Service Fabric által támogatott szerepkörökhöz](service-fabric-cluster-security-roles.md): csak olvasható és rendszergazda.
 
-Futtatás `SetupApplications.ps1`, és meg paraméterekként a bérlő azonosítója, a fürt neve és a webes alkalmazás válasz URL-cím. Adja meg a felhasználóneveket és jelszavakat, a felhasználók számára. Példa:
+Futtassa `SetupApplications.ps1`a parancsot, és adja meg a bérlő azonosítóját, a fürt nevét és a webalkalmazás válaszának URL-címét paraméterként. Felhasználónevek és jelszavak megadása a felhasználók számára. Példa:
 
 ```powershell
 $Configobj = .\SetupApplications.ps1 -TenantId '<MyTenantID>' -ClusterName 'mysfcluster123' -WebApplicationReplyUrl 'https://mysfcluster123.eastus.cloudapp.azure.com:19080/Explorer/index.html' -AddResourceAccess
@@ -192,22 +192,22 @@ $Configobj = .\SetupApplications.ps1 -TenantId '<MyTenantID>' -ClusterName 'mysf
 ```
 
 > [!NOTE]
-> Az országos felhők (például az Azure Government, Azure China esetén az Azure Germany), adja meg a `-Location` paraméter.
+> Az országos felhőknél (például Azure Government, Azure China, Azure Germany) a `-Location` paramétert kell megadnia.
 
-Annak a *TenantId*, vagy a címtár-azonosító, az a [az Azure portal](https://portal.azure.com). Válassza ki **Azure Active Directory** > **tulajdonságok** , és másolja a **címtár-azonosító** értéket.
+A *TenantId*vagy a könyvtár azonosítóját a Azure Portalban találja. [](https://portal.azure.com) Válassza ki **Azure Active Directory** > **tulajdonságokat** , és másolja a **címtár-azonosító** értékét.
 
-*ClusterName* az Azure AD-alkalmazások, a parancsfájl által létrehozott előtagot használja. Ennek nem kell pontosan egyezik a tényleges fürt neve. Csak egyszerűbbé teszi az Azure AD-összetevők leképezése a Service Fabric-fürt használja.
+A *ClusterName* a parancsfájl által létrehozott Azure ad-alkalmazások előtagját használja. Nem kell pontosan megegyeznie a fürt tényleges nevével. Ez a művelet csak az Azure AD-összetevők leképezését teszi lehetővé a használatban lévő Service Fabric-fürthöz.
 
-*WebApplicationReplyUrl* van az alapértelmezett végpont, amely az Azure AD a felhasználóknak ad vissza, miután a bejelentkezés befejezéséhez. Állítsa be ezt a végpontot a Service Fabric Explorert a fürtben, amely alapértelmezés szerint az átemelt:
+A *WebApplicationReplyUrl* az az alapértelmezett végpont, amelyet az Azure ad visszaküld a felhasználóknak a bejelentkezés befejezését követően. Állítsa ezt a végpontot a fürt Service Fabric Explorer végpontjának, amely alapértelmezés szerint a következő:
 
 https://&lt;cluster_domain&gt;:19080/Explorer
 
-Kéri, hogy jelentkezzen be az Azure AD-bérlőhöz tartozó rendszergazdai jogosultságokkal rendelkező fiókkal. Miután bejelentkezett, a parancsfájl a webes és natív alkalmazások, amelyek a Service Fabric-fürtöt hoz létre. A bérlő alkalmazásaiban az [az Azure portal](https://portal.azure.com), két új bejegyzést kell megjelennie:
+A rendszer arra kéri, hogy jelentkezzen be egy olyan fiókba, amely rendszergazdai jogosultságokkal rendelkezik az Azure AD-bérlőhöz. A bejelentkezést követően a parancsfájl létrehozza a webes és natív alkalmazásokat, hogy az Service Fabric-fürtöt képviseljék. A [Azure Portal](https://portal.azure.com)bérlő alkalmazásaiban két új bejegyzést kell látnia:
 
-   * *ClusterName*\_fürt
-   * *ClusterName*\_ügyfél
+   * ClusterName\_-fürt
+   * ClusterName\_-ügyfél
 
-A parancsfájl megjeleníti a JSON, így célszerű hagyja megnyitva a PowerShell-ablakot, hogy a fürt létrehozásakor a Resource Manager sablonhoz szükséges.
+A parancsfájl a fürt létrehozásakor kinyomtatja a Resource Manager-sablon által megkövetelt JSON-t, ezért érdemes megnyitnia a PowerShell ablakát.
 
 ```json
 "azureActiveDirectory": {
@@ -217,8 +217,8 @@ A parancsfájl megjeleníti a JSON, így célszerű hagyja megnyitva a PowerShel
 },
 ```
 
-### <a name="add-azure-ad-configuration-to-use-azure-ad-for-client-access"></a>Azure AD használata az ügyfél hozzáférésének az Azure AD-konfiguráció hozzáadása
-Az a [azuredeploy.json][template], konfigurálja az Azure AD-t a **Microsoft.ServiceFabric/clusters** szakaszban. Paraméterek hozzáadása a bérlő azonosítója, fürt Alkalmazásazonosító és ügyfél-alkalmazás azonosítója.  
+### <a name="add-azure-ad-configuration-to-use-azure-ad-for-client-access"></a>Azure AD-konfiguráció hozzáadása az Azure AD ügyfél-hozzáféréshez való használatához
+Az [azuredeploy. JSON][template]fájlban konfigurálja az Azure ad-t a **Microsoft. ServiceFabric/fürtök** szakaszban. Adja hozzá a bérlői azonosító, a fürt alkalmazás-azonosítója és az ügyfélalkalmazás AZONOSÍTÓjának paramétereit.  
 
 ```json
 {
@@ -260,7 +260,7 @@ Az a [azuredeploy.json][template], konfigurálja az Azure AD-t a **Microsoft.Ser
 }
 ```
 
-Adja hozzá a paraméter értékét a [azuredeploy.parameters.json] [ parameters] paramétereket tartalmazó fájlt. Példa:
+Adja hozzá a paramétereket a [azuredeploy. Parameters. JSON][parameters] paraméterek fájljában. Példa:
 
 ```json
 "aadTenantId": {
@@ -275,16 +275,16 @@ Adja hozzá a paraméter értékét a [azuredeploy.parameters.json] [ parameters
 ```
 <a id="configurediagnostics" name="configurediagnostics_anchor"></a>
 
-## <a name="configure-diagnostics-collection-on-the-cluster"></a>Diagnosztikai adatgyűjtési konfigurálása a fürtön
-Service Fabric-fürtön futtatja, esetén érdemes egy központi helyen összes csomópontja a naplók gyűjtését. A naplók kellene egy központi helyen segítségével elemezheti és a fürtben, vagy az alkalmazások és szolgáltatások a fürtben futó problémák elhárítása.
+## <a name="configure-diagnostics-collection-on-the-cluster"></a>Diagnosztikai gyűjtemény konfigurálása a fürtön
+Ha Service Fabric fürtöt futtat, érdemes összegyűjteni a naplókat egy központi helyen lévő összes csomópontról. A központi helyen található naplók segítségével elemezheti és elháríthatja a fürtben felmerülő problémákat, illetve a fürtben futó alkalmazások és szolgáltatások hibáit.
 
-Fel-és naplók gyűjtése az egyik módja az Azure Diagnostics (WAD) bővítménye, amely feltölti a naplókat az Azure Storage, és a naplók elküldése az Azure Application Insights és az Event Hubs lehetősége is van. A külső folyamatok használatával olvassa az eseményeket a storage-ból, és a egy elemzési platform termék, például az Azure Monitor naplóira vagy egy másik log-elemzési megoldás helyezze el őket.
+A naplók feltöltésének és összegyűjtésének egyik módja a Azure Diagnostics (WAD) bővítmény használata, amely a naplókat feltölti az Azure Storage-ba, és lehetővé teszi a naplók küldését az Azure-ba Application Insights vagy Event Hubs. Külső folyamattal is elolvashatja az eseményeket a tárolóból, és elhelyezheti azokat egy Analysis platform termékében, például Azure Monitor naplókban vagy egy másik naplózási megoldásban.
 
-Ha az ebben az oktatóanyagban, diagnosztikai gyűjteményét már konfigurálva van az a [sablon][template].
+Ha ezt az oktatóanyagot követi, a diagnosztikai gyűjtemény már konfigurálva van a [sablonban][template].
 
-Ha meglévő fürtöt, amely nem rendelkezik telepített diagnosztikai, adja hozzá, vagy frissítse a fürt sablon használatával. Módosítsa a Resource Manager-sablon, amellyel a meglévő fürt létrehozásához, vagy letöltheti a sablont a portálról. Módosítsa a template.json fájlt az alábbi feladatok végrehajtásával:
+Ha olyan meglévő fürttel rendelkezik, amelyen nincs telepítve a diagnosztika, a fürt sablonján keresztül is hozzáadhatja vagy frissítheti azt. Módosítsa a meglévő fürt létrehozásához használt Resource Manager-sablont, vagy töltse le a sablont a portálról. Módosítsa a template. JSON fájlt a következő feladatok végrehajtásával:
 
-Új storage-erőforrás hozzáadása az erőforrások szerepelnek a sablonban:
+Adjon hozzá egy új tárolási erőforrást a sablon erőforrások szakaszához:
 ```json
 "resources": [
 ...
@@ -305,7 +305,7 @@ Ha meglévő fürtöt, amely nem rendelkezik telepített diagnosztikai, adja hoz
 ]
 ```
 
-Ezután adjon hozzá paramétereket a tárfiók nevét, és írja be a sablon a paraméterek szakaszához. Szeretné, cserélje le a helyőrző szöveg tárfiók neve kerül itt nevét a storage-fiók.
+Ezután adjon hozzá paramétereket a Storage-fiók nevéhez, és írja be a sablon parameters (paraméterek) szakaszát. Cserélje le a helyőrző szöveges Storage-fiók nevét a kívánt Storage-fiók nevére.
 
 ```json
 "parameters": {
@@ -332,7 +332,7 @@ Ezután adjon hozzá paramétereket a tárfiók nevét, és írja be a sablon a 
 }
 ```
 
-Ezután adja hozzá a **IaaSDiagnostics** tömbjének extensions kiterjesztése a **VirtualMachineProfile** minden egyes tulajdonság **Microsoft.Compute/virtualMachineScaleSets** az erőforrás a fürtben.  Ha használja a [mintasablon][template], nincsenek a három virtuális gép méretezési (az egyes csomóponttípusok a fürt egyik).
+Ezután adja hozzá a **IaaSDiagnostics** bővítményt a fürt minden **Microsoft. számítási/virtualMachineScaleSets** -erőforrásának **VirtualMachineProfile** tulajdonságának Extensions tömbéhez.  A [minta sablon][template]használata esetén három virtuálisgép-méretezési csoport létezik (egyet a fürt minden egyes csomópont-típusához).
 
 ```json
 "apiVersion": "2018-10-01",
@@ -403,16 +403,16 @@ Ezután adja hozzá a **IaaSDiagnostics** tömbjének extensions kiterjesztése 
 ```
 <a id="configureeventstore" name="configureeventstore_anchor"></a>
 
-## <a name="configure-the-eventstore-service"></a>Az EventStore szolgáltatás konfigurálása
-Az EventStore szolgáltatás figyelési lehetőség csak a Service Fabricben. Az EventStore lehetővé teszi a fürt vagy az adott számítási feladatok állapotának megjelenítése az idő. Az EventStore egy állapotalapú Service Fabric-szolgáltatás, amely fenntartja az események a fürtből. Az esemény a Service Fabric Explorert, REST és API-k keresztül érhetők el. EventStore lekérdezi a közvetlenül a diagnosztikai adatok gyorsan minden entitás, a fürtben a fürt, és könnyebben használható:
+## <a name="configure-the-eventstore-service"></a>A EventStore szolgáltatás konfigurálása
+A EventStore szolgáltatás egy figyelési lehetőség a Service Fabricban. A EventStore lehetővé teszi a fürt vagy a számítási feladatok állapotának megértését egy adott időpontban. A EventStore olyan állapot-nyilvántartó Service Fabric szolgáltatás, amely az eseményeket a fürtből tartja karban. Az eseményt a Service Fabric Explorer, a REST és az API-k teszik elérhetővé. A EventStore közvetlenül lekérdezi a fürtöt a fürtben lévő bármely entitás diagnosztikai adataihoz, és a következő segítségére használható:
 
-* Fejlesztési vagy tesztelési időben diagnosztizálhatja a problémákat, vagy ahol a monitorozási folyamatban használni lehet, hogy
-* Győződjön meg arról, hogy felügyeleti műveleteket a fürtön készítésének feldolgozott megfelelően
-* "Pillanatkép" hogyan Service Fabric egy adott entitás implementálására beolvasása
+* A fejlesztési vagy tesztelési problémák diagnosztizálása, illetve a figyelési folyamat használata
+* Győződjön meg arról, hogy a fürtön végzett felügyeleti műveletek megfelelően vannak feldolgozva
+* Az Service Fabric egy adott entitással való interakciójának pillanatképe
 
 
 
-A fürtön a EventStore szolgáltatás engedélyezéséhez adja hozzá a következőt a **fabricSettings** tulajdonságát a **Microsoft.ServiceFabric/clusters** erőforrás:
+A EventStore szolgáltatás fürtön való engedélyezéséhez adja hozzá a következőt a **Microsoft. ServiceFabric/Clusters** erőforrás **fabricSettings** tulajdonságához:
 
 ```json
 "apiVersion": "2018-02-01",
@@ -440,13 +440,13 @@ A fürtön a EventStore szolgáltatás engedélyezéséhez adja hozzá a követk
 ```
 <a id="configureloganalytics" name="configureloganalytics_anchor"></a>
 
-## <a name="set-up-azure-monitor-logs-for-the-cluster"></a>Állítsa be a fürt az Azure Monitor naplóira
+## <a name="set-up-azure-monitor-logs-for-the-cluster"></a>Azure Monitor naplók beállítása a fürthöz
 
-Az Azure Monitor naplóira Javaslataink fürt események figyelésére. Az Azure Monitor naplóira be, a fürt monitorozásához, rendelkeznie kell [diagnosztika engedélyezve van a fürt-szintű események megtekintéséhez](#configure-diagnostics-collection-on-the-cluster).  
+Azure Monitor naplókat ajánljuk a fürt szintű események figyelésére. Ha Azure Monitor naplókat szeretne beállítani a fürt figyeléséhez, engedélyezni kell a [diagnosztika szolgáltatást a fürt szintű események megtekintéséhez](#configure-diagnostics-collection-on-the-cluster).  
 
-A munkaterület csatlakoztatva kell lennie a fürt származó diagnosztikai adatokhoz.  A napló adatokat tárolja a *applicationDiagnosticsStorageAccountName* tárfiókot, a WADServiceFabric * címke WADWindowsEventLogsTable és WADETWEventTable táblákat.
+A munkaterület csatlakoztatva kell lennie a fürt származó diagnosztikai adatokhoz.  A rendszer a *applicationDiagnosticsStorageAccountName* a WADServiceFabric * EventTable, a WADWindowsEventLogsTable és a WADETWEventTable táblákban tárolja.
 
-Adja hozzá az Azure Log Analytics-munkaterületet, és a megoldás a munkaterület hozzáadása:
+Adja hozzá az Azure Log Analytics munkaterületet, és adja hozzá a megoldást a munkaterülethez:
 
 ```json
 "resources": [
@@ -536,7 +536,7 @@ Adja hozzá az Azure Log Analytics-munkaterületet, és a megoldás a munkaterü
 ]
 ```
 
-Ezután adjon hozzá paramétereket
+Következő lépésként adja hozzá a paramétereket
 ```json
 "parameters": {
     ...
@@ -562,7 +562,7 @@ Ezután adjon hozzá paramétereket
 }
 ```
 
-Ezután adjon hozzá változókat:
+Következő lépésként adja hozzá a változókat:
 ```json
 "variables": {
     ...
@@ -571,7 +571,7 @@ Ezután adjon hozzá változókat:
 }
 ```
 
-Adja hozzá a Log Analytics agent bővítmény minden egyes virtuálisgép-méretezési állítsa be a fürt és az ügynök csatlakoztatása a Log Analytics-munkaterületre. Ez lehetővé teszi a tárolók, alkalmazások és alkalmazásteljesítmény-figyelési gyűjtését diagnosztikai adatait. Bővítményeként való hozzáadásával a virtuálisgép-méretezési készlet erőforrás, az Azure Resource Manager biztosítja, hogy megkapja-e telepítve minden csomóponton, még ha méretezése a fürtben.
+Adja hozzá a Log Analytics Agent bővítményt a fürt minden virtuálisgép-méretezési készletéhez, és az ügynököt a Log Analytics munkaterülethez. Ez lehetővé teszi a tárolók, alkalmazások és Teljesítményfigyelés diagnosztikai adatainak gyűjtését. Ha hozzáad egy bővítményt a virtuálisgép-méretezési csoport erőforrásához, Azure Resource Manager biztosítja, hogy az minden csomóponton telepítve legyen, még a fürt skálázásakor is.
 
 ```json
 "apiVersion": "2018-10-01",
@@ -608,13 +608,13 @@ Adja hozzá a Log Analytics agent bővítmény minden egyes virtuálisgép-mére
 
 ## <a name="deploy-the-virtual-network-and-cluster"></a>A virtuális hálózat és a fürt üzembe helyezése
 
-Ezután állítsa be a hálózati topológiát, és helyezze üzembe a Service Fabric-fürtöt. A [azuredeploy.json] [ template] Resource Manager-sablont hoz létre egy virtuális hálózat, alhálózat és hálózati biztonsági csoport a Service Fabric. A sablon emellett egy fürtöt is üzembe helyez engedélyezett tanúsítványalapú biztonsággal. Éles fürtök esetén egy hitelesítésszolgáltatótól származó tanúsítványt használjon fürttanúsítványként. A tesztfürtök számára önaláírt tanúsítvánnyal is biztosítható védelem.
+Ezután állítsa be a hálózati topológiát, és helyezze üzembe a Service Fabric-fürtöt. A [azuredeploy. JSON][template] Resource Manager-sablon egy virtuális hálózatot, alhálózatot és hálózati biztonsági csoportot hoz létre a Service Fabrichoz. A sablon emellett egy fürtöt is üzembe helyez engedélyezett tanúsítványalapú biztonsággal. Éles fürtök esetén használjon tanúsítványokat a hitelesítésszolgáltatótól a fürt tanúsítványa alapján. A tesztfürtök számára önaláírt tanúsítvánnyal is biztosítható védelem.
 
-Ez a cikk a sablon üzembe helyez egy fürtöt, amely a tanúsítvány ujjlenyomatát a fürttanúsítvány azonosítására használ. Nincs két tanúsítványt ugyanazzal az ujjlenyomattal, ami megnehezíti a tanúsítványkezelés is rendelkezhet. A tanúsítvány köznapi nevek a tanúsítvány-ujjlenyomatok egy üzembe helyezett fürt közötti váltás egyszerűbbé teszi a tanúsítványok kezelése. A tanúsítvány köznapi nevek a tanúsítványok kezeléséhez használja a fürt frissítése, olvassa el [tanúsítvány köznapi neve felügyeleti fürt módosítása](service-fabric-cluster-change-cert-thumbprint-to-cn.md).
+A cikkben található sablon olyan fürtöt helyez üzembe, amely a tanúsítvány ujjlenyomatát használja a fürt tanúsítványának azonosításához. Nincs két tanúsítvány ugyanazzal az ujjlenyomattal, ami nehezebbé teszi a Tanúsítványkezelőt. Ha egy telepített fürtöt a tanúsítvány ujjlenyomatai megfelelnek a tanúsítvány köznapi neveire vált, egyszerűsíti a Tanúsítványkezelőt. Ha meg szeretné tudni, hogyan frissítheti a fürtöt a tanúsítványok köznapi neveinek használatára, olvassa el a [fürt módosítása a tanúsítvány köznapi nevének kezelése](service-fabric-cluster-change-cert-thumbprint-to-cn.md)című témakört.
 
 ### <a name="create-a-cluster-by-using-an-existing-certificate"></a>Fürt létrehozása meglévő tanúsítvány használatával
 
-Az alábbi szkript a [New-AzServiceFabricCluster](/powershell/module/az.servicefabric/New-azServiceFabricCluster) parancsmag és egy sablon használatával helyezhet üzembe egy új fürtöt az Azure-ban. A parancsmag létrehoz egy új kulcstárolót az Azure-ban, és feltölti a tanúsítványt.
+Az alábbi szkript a [New-AzServiceFabricCluster](/powershell/module/az.servicefabric/New-azServiceFabricCluster) parancsmagot és egy sablont használ egy új fürt üzembe helyezéséhez az Azure-ban. A parancsmag létrehoz egy új Key vaultot az Azure-ban, és feltölti a tanúsítványt.
 
 ```powershell
 # Variables.
@@ -642,9 +642,9 @@ New-AzServiceFabricCluster  -ResourceGroupName $groupname -TemplateFile "$templa
 -KeyVaultName $vaultname -KeyVaultResourceGroupName $vaultgroupname -CertificateFile $certpath
 ```
 
-### <a name="create-a-cluster-by-using-a-new-self-signed-certificate"></a>Fürt létrehozása az új, önaláírt tanúsítvány használatával
+### <a name="create-a-cluster-by-using-a-new-self-signed-certificate"></a>Fürt létrehozása új, önaláírt tanúsítvány használatával
 
-Az alábbi szkript a [New-AzServiceFabricCluster](/powershell/module/az.servicefabric/New-azServiceFabricCluster) parancsmag és egy sablon használatával helyezhet üzembe egy új fürtöt az Azure-ban. A parancsmag létrehoz egy új kulcstárolót az Azure-ban, hozzáad egy új önaláírt tanúsítványt a key vaultban, és letölti helyben a tanúsítványfájlt.
+Az alábbi szkript a [New-AzServiceFabricCluster](/powershell/module/az.servicefabric/New-azServiceFabricCluster) parancsmagot és egy sablont használ egy új fürt üzembe helyezéséhez az Azure-ban. A parancsmag létrehoz egy új kulcstartót az Azure-ban, hozzáadja az új önaláírt tanúsítványt a kulcstartóhoz, és helyileg letölti a tanúsítványt.
 
 ```powershell
 # Variables.
@@ -676,7 +676,7 @@ New-AzServiceFabricCluster  -ResourceGroupName $groupname -TemplateFile "$templa
 
 ## <a name="connect-to-the-secure-cluster"></a>Csatlakozás a biztonságos fürthöz
 
-Csatlakozzon a fürthöz a Service Fabric SDK telepítése a Service Fabric PowerShell-modul segítségével.  Először telepítse a tanúsítványt a számítógépen az aktuális felhasználó Személyes (Saját) tárolójába. Futtassa az alábbi PowerShell-parancsot:
+Kapcsolódjon a fürthöz a Service Fabric SDK-val telepített Service Fabric PowerShell-modul használatával.  Először telepítse a tanúsítványt a számítógépen az aktuális felhasználó Személyes (Saját) tárolójába. Futtassa az alábbi PowerShell-parancsot:
 
 ```powershell
 $certpwd="q6D7nN%6ck@6" | ConvertTo-SecureString -AsPlainText -Force
@@ -685,11 +685,11 @@ Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\My `
         -Password $certpwd
 ```
 
-Most már készen áll a biztonságos fürthöz való csatlakozáshoz.
+Most már készen áll a biztonságos fürthöz való kapcsolódásra.
 
 A **Service Fabric** PowerShell-modul számos parancsmagot biztosít a Service Fabric-fürtök, -alkalmazások és -szolgáltatások kezelésére. A biztonságos fürthöz való kapcsolódáshoz használja a [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster) parancsmagot. A tanúsítvány SHA1 ujjlenyomatával és kapcsolati végpontjával kapcsolatos részletek az előző lépés kimenetében találhatók.
 
-Ha korábban már beállított Azure AD ügyfél-hitelesítés, futtassa a következő parancsot: 
+Ha korábban már beállította az Azure AD-ügyfél hitelesítését, futtassa a következő parancsot: 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint mysfcluster123.southcentralus.cloudapp.azure.com:19000 `
         -KeepAliveIntervalInSec 10 `
@@ -697,7 +697,7 @@ Connect-ServiceFabricCluster -ConnectionEndpoint mysfcluster123.southcentralus.c
         -ServerCertThumbprint C4C1E541AD512B8065280292A8BA6079C3F26F10
 ```
 
-Ha nem állít be az Azure AD ügyfél-hitelesítés, futtassa a következő parancsot:
+Ha nem állította be az Azure AD-ügyfél hitelesítését, futtassa a következő parancsot:
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint mysfcluster123.southcentralus.cloudapp.azure.com:19000 `
           -KeepAliveIntervalInSec 10 `
@@ -706,7 +706,7 @@ Connect-ServiceFabricCluster -ConnectionEndpoint mysfcluster123.southcentralus.c
           -StoreLocation CurrentUser -StoreName My
 ```
 
-Ellenőrizze, hogy csatlakozott, és a fürt állapota kifogástalan a használatával a [Get-ServiceFabricClusterHealth](/powershell/module/servicefabric/get-servicefabricclusterhealth) parancsmagot.
+A [Get-ServiceFabricClusterHealth](/powershell/module/servicefabric/get-servicefabricclusterhealth) parancsmag használatával győződjön meg arról, hogy csatlakoztatva van, és hogy a fürt kifogástalan állapotú.
 
 ```powershell
 Get-ServiceFabricClusterHealth
@@ -714,27 +714,27 @@ Get-ServiceFabricClusterHealth
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ez az oktatóanyag-sorozatban található további cikkek a létrehozott fürt használja. Ha nem azonnal tér rá a következő cikkre, érdemes [törölnie a fürtöt](service-fabric-cluster-delete.md) a felmerülő költségek elkerülése érdekében.
+Az oktatóanyag-Sorozat további cikkei a létrehozott fürtöt használják. Ha nem azonnal tér rá a következő cikkre, érdemes [törölnie a fürtöt](service-fabric-cluster-delete.md) a felmerülő költségek elkerülése érdekében.
 
 ## <a name="next-steps"></a>További lépések
 
-Folytassa a következő oktatóanyagra lépve megismerheti a fürtök skálázásának.
+Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan méretezheti a fürtöt.
 
 > [!div class="checklist"]
 > * VNET létrehozása a PowerShell használatával
 > * Kulcstartó létrehozása és tanúsítvány feltöltése
-> * Az Azure Active Directory-hitelesítés beállítása
-> * Diagnosztikai gyűjtésének konfigurálása
-> * Az EventStore szolgáltatás beállítása
-> * Állítsa be az Azure Monitor naplóira
+> * A telepítő Azure Active Directory hitelesítés
+> * Diagnosztikai gyűjtemény konfigurálása
+> * A EventStore szolgáltatás beállítása
+> * Azure Monitor naplók beállítása
 > * Biztonságos Service Fabric-fürt létrehozása az Azure PowerShellben
 > * A fürt védelme X.509-tanúsítvánnyal
 > * Csatlakozás a fürthöz PowerShell használatával
 > * Fürt eltávolítása
 
-Ezután folytassa a következő oktatóanyaggal, a fürt figyelése.
+Ezután folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan figyelheti meg a fürtöt.
 > [!div class="nextstepaction"]
-> [-Fürt monitorozása](service-fabric-tutorial-monitor-cluster.md)
+> [Fürt figyelése](service-fabric-tutorial-monitor-cluster.md)
 
 [template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.json
 [parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.Parameters.json

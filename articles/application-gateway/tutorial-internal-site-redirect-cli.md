@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
 ms.openlocfilehash: 186d0bb9161d70d9e458d25dc1b9cbe518bb790e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58082736"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66133523"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-the-azure-cli"></a>Egy application gateway létrehozása belső átirányítás, az Azure CLI használatával
 
@@ -213,7 +213,7 @@ Adja meg a tartománya nevét a böngésző címsorában. Például: http://www.
 
 ![Contoso webhely tesztelése az alkalmazásátjáróban](./media/tutorial-internal-site-redirect-cli/application-gateway-nginxtest.png)
 
-Módosítsa a címet a tartomány, például http://www.contoso.org és megtekintheti, hogy a forgalom átirányította a térjen vissza a figyelő a www\.contoso.com.
+Módosítsa a címet a tartomány, például http://www.contoso.org és megtekintheti, hogy a forgalom átirányította a térjen vissza a figyelő a www\. contoso.com.
 
 ## <a name="next-steps"></a>További lépések
 

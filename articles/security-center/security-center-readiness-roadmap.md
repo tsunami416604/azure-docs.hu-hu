@@ -3,9 +3,8 @@ title: Azure Security Center készültségi ütemterv | Microsoft Docs
 description: Ez a dokumentum egy készültségi ütemtervet biztosít, amelynek segítségével gyorsan megismerkedhet az Azure Security Centerrel.
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: ndicola
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: fece670cc-df70-445d-9773-b32cbaba8d4a
 ms.service: security-center
 ms.devlang: na
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: yurid
-ms.openlocfilehash: 7de085766ae700b5c76d9eca49c1127aabdddb9b
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: a5d11be7d4fbe7f23b5584775c5d9a57c2214155
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244642"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200982"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Azure Security Center készültségi ütemterv
 Ez a dokumentum egy készültségi ütemtervet tartalmaz, amely az Azure Security Center használatának első lépéseiben nyújt segítséget.
@@ -67,9 +66,8 @@ A következő forrásanyagok segítségére lehetnek a biztonsági riasztások k
 
 Cikkek    
 * [Biztonsági állapot monitorozása az Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-monitoring)
-* [Virtuális gépek védelme az Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-virtual-machine-recommendations)
+* [A gépek és alkalmazások védelme az Azure Security Centerben](security-center-virtual-machine-protection.md)
 * [Hálózat védelme az Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
-* [Alkalmazások védelme az Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-application-recommendations)
 * [Az Azure SQL-szolgáltatás és -adatok védelme az Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-sql-service-recommendations)
 
 
@@ -107,18 +105,18 @@ Cikkek
 
 * [Security Center – gyakorlati labor](https://www.microsoft.com/handsonlabs/SelfPacedLabs/?storyGuid=78871abf-6f35-4aa0-840f-d801f5cdbd72)
 * [Webalkalmazási tűzfal (WAF) javasolt forgatókönyve a Security Centerben](https://gallery.technet.microsoft.com/ASC-Playbook-Protect-38bd47ff)
-* [Az Azure Security Center-forgatókönyv: Biztonsági riasztások](https://gallery.technet.microsoft.com/Azure-Security-Center-f621a046)
+* [Azure Security Center-forgatókönyv: Biztonsági riasztások](https://gallery.technet.microsoft.com/Azure-Security-Center-f621a046)
 
 ## <a name="additional-resources"></a>További források
 * [Security Center – dokumentációs oldal](https://docs.microsoft.com/azure/security-center/)
 * [Security Center – REST API-dokumentációs oldal](https://msdn.microsoft.com/library/mt704034.aspx)
 * [Azure Security Center – gyakori kérdések (GYIK)](https://docs.microsoft.com/azure/security-center/security-center-faq)
 * [Security Center – díjszabási oldal](https://azure.microsoft.com/pricing/details/security-center/)
-* [Az identitásbiztonságra vonatkozó ajánlott eljárások](https://docs.microsoft.com/azure/security/azure-security-identity-management-best-practices)
-* [Ajánlott hálózati biztonsági eljárások](https://docs.microsoft.com/azure/security/azure-security-network-security-best-practices)
+* [Az identitásbiztonságra vonatkozó ajánlott eljárások](https://docs.microsoft.com/azure/security/fundamentals/identity-management-best-practices)
+* [Ajánlott hálózati biztonsági eljárások](https://docs.microsoft.com/azure/security/fundamentals/network-best-practices)
 * [PaaS-javaslatok](https://docs.microsoft.com/azure/security/security-paas-deployments)
 * [Megfelelőség](https://www.microsoft.com/en-us/trustcenter/compliance/due-diligence-checklist)
-* [Log analytics-ügyfél most már használhatja az Azure Security Center a hibrid felhőbeli számítási feladatok védelme](https://blogs.technet.microsoft.com/msoms/2017/09/25/oms-customers-can-now-use-azure-security-center-to-protect-their-hybrid-cloud-workloads/)
+* [A log Analytics-ügyfelek mostantól a Azure Security Center használatával védik a hibrid felhőalapú számítási feladatait](https://blogs.technet.microsoft.com/msoms/2017/09/25/oms-customers-can-now-use-azure-security-center-to-protect-their-hybrid-cloud-workloads/)
 
 ## <a name="community-resources"></a>Közösségi forrásanyagok
 

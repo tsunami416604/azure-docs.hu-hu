@@ -14,12 +14,12 @@ ms.service: azure
 ms.tgt_pltfrm: multiple
 ms.topic: tutorial
 ms.workload: web
-ms.openlocfilehash: 382e342f2144bcc6eeedafd74790bb442b8f9308
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: f5ae599b516ac3ce6a9fcc40c0e26d242134e7d7
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59784858"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226621"
 ---
 # <a name="create-a-pivotal-cloud-foundry-cluster-on-azure"></a>A Pivotal Cloud Foundry-fürt létrehozása az Azure-ban
 
@@ -64,7 +64,7 @@ További információkért lásd: [használata SSH-kulcsok az Azure-on Windows](
 
     > [!NOTE]
     >
-    > Válassza ki a saját alkalmazás kezdőlapját és azonosító URI-t, például http://www.contoso.com.
+    > Válassza ki a saját alkalmazás kezdőlapját és azonosító URI-t, például http\://www\.contoso.com.
 
 4. Egyszerű szolgáltatás létrehozása új app ID azonosítójával.
 

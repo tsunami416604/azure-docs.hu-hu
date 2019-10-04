@@ -1,23 +1,23 @@
 ---
 title: Szöveg ellenőrzése egyéni kifejezéslisták alapján a C# használatával – Content Moderator
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: A cikk bemutatja, hogyan végezhető el szövegek moderálása egyéni kifejezéslistákkal a C#-hoz készült Content Moderator SDK-val.
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: quickstart
-ms.date: 10/10/2018
+ms.topic: conceptual
+ms.date: 07/03/2019
 ms.author: sajagtap
-ms.openlocfilehash: da8ad71ccf8b58ddf3ef7cc6a2f9e9c732913caa
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 144137109f97a8c2049430ed1e05117ea6c95d7f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55858399"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564416"
 ---
-# <a name="quickstart-check-text-against-a-custom-term-list-in-c"></a>Gyors útmutató: Egyéni kifejezés listájában összeveti ellenőrzéseC#
+# <a name="check-text-against-a-custom-term-list-in-c"></a>Szöveg keresése egyéni kifejezési listához aC#
 
 Az Azure Content Moderator alapértelmezett globális kifejezéslistája a legtöbb tartalommoderálási igénynek megfelel. Azonban szükség lehet bizonyos szervezetspecifikus kifejezések szűrésére is. Például elképzelhető, hogy meg szeretné címkézni az üzleti vetélytársak neveit további ellenőrzés céljából. 
 
@@ -373,7 +373,7 @@ static void DeleteTermList (ContentModeratorClient client, string list_id)
 }
 ```
 
-## <a name="putting-it-all-together"></a>Végső összeállítás
+## <a name="compose-the-main-method"></a>A Main metódus összeállítása
 
 Adja hozzá a **Main** metódusdefiníciót a **TermLists** névtér **Program** osztályához. Végül zárja be a **Program** osztályt és a **TermLists** névteret.
 
@@ -415,9 +415,9 @@ static void Main(string[] args)
 
 ## <a name="run-the-application-to-see-the-output"></a>Futtassa az alkalmazást a kimenet megtekintéséhez
 
-A kimenet az alábbihoz hasonló lesz, de eltérő adatokkal.
+A konzol kimenete az alábbihoz hasonlóan fog kinézni:
 
-```
+```console
 Creating term list.
 Term list created. ID: 252.
 Updating information for term list with ID 252.

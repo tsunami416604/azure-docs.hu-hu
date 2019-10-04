@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 03/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: b6e546130efd52312fca62ab4e6a22626778a19e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 65e28b557a3708c155bf80f21a784374c4497783
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57847983"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66383040"
 ---
 # <a name="what-is-the-bing-web-search-api"></a>Mi az a Bing Web Search API?
 
@@ -30,7 +30,7 @@ Szeretné látni működés közben? Próbálja ki a [Bing Web Search API bemuta
 
 Bing – internetes keresés csak nem ad hozzáférést, azonnali választ. További szolgáltatások és funkciók, amelyek segítségével testre szabhatja a keresési eredmények a felhasználók számára is biztosít.
 
-| Szolgáltatás | Leírás |
+| Funkció | Leírás |
 |---------|-------------|
 | [Keresési kifejezések valós idejű felkínálása](../bing-autosuggest/get-suggested-search-terms.md) | A Bing Autosuggest API a begépelés során javaslatokat tesz a keresési kifejezésekre, így könnyebbé teszi az alkalmazások használatát. |
 | [Találatok szűrése és korlátozása a tartalom típusa alapján](filter-answers.md) | Keresési eredmények szűrőkkel és lekérdezési paraméterekkel történő testre szabása és finomítása a weboldalakra, képekre, videókra, a biztonságos keresésre és egyebekre vonatkozóan. |
@@ -50,5 +50,5 @@ A Bing Web Search API bármely olyan programnyelvből meghívható, amely képes
 
 * A [Python rövid útmutatója](quickstarts/python.md) alapján végezze el az első hívást a Bing Web Search API-ra.  
 * [Hozzon létre egy egyoldalas webalkalmazást](tutorial-bing-web-search-single-page-app.md).
-* Tekintse át a [Web Search API 7-es verziójának referenciadokumentációját](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference).  
+* Tekintse át a [Web Search API 7-es verziójának referenciadokumentációját](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference).  
 * Tekintse át részletesebben a Bing Web Search [használati és megjelenítési követelményeit](UseAndDisplayRequirements.md).  

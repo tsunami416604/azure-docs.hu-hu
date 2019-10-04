@@ -5,18 +5,15 @@ services: azure-resource-manager
 documentationcenter: ''
 author: mumian
 ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 8ae86d8bc7914a7a9c41eee93bb16b2f774993b9
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 5197358e3bd8a3052fbf71cafc2f1e3acda46b26
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58651784"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721144"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-powershell"></a>Azure Resource Manager-erőforráscsoportok kezelése az Azure PowerShell-lel
 
@@ -27,7 +24,7 @@ Más cikkek erőforráscsoportok kezeléséről:
 - [Az Azure-erőforráscsoportok kezelése az Azure portal használatával](./manage-resources-portal.md)
 - [Az Azure-erőforráscsoportok kezelése az Azure CLI-vel](./manage-resources-cli.md)
 
-## <a name="what-is-a-resource-group"></a>Az erőforráscsoportok ismertetése
+## <a name="what-is-a-resource-group"></a>Mi az erőforráscsoport
 
 Az erőforráscsoport egy tároló, amely Azure-megoldásokhoz kapcsolódó erőforrásokat tárol. Az erőforráscsoport tartalmazhatja a megoldás összes erőforrását, vagy csak azokat az erőforrásokat, amelyeket Ön egy csoportként szeretne kezelni. A szervezet számára legideálisabb elosztás alapján eldöntheti, hogyan szeretné elosztani az erőforrásokat az erőforráscsoportok között. Általánosságban elmondható adjon hozzá erőforrásokat, azonos életciklussal ugyanabban az erőforráscsoportban, így könnyen telepítése, frissítése és csoportként törölheti őket.
 
@@ -48,7 +45,7 @@ New-AzResourceGroup -Name $resourceGroupName -Location $location
 Get-AzResourceGroup -Name $resourceGroupName
 ```
 
-## <a name="list-resource-groups"></a>Erőforráscsoportok listázása
+## <a name="list-resource-groups"></a>Erőforráscsoportok listázásához
 
 A következő PowerShell-parancsfájlt az előfizetéshez tartozó erőforráscsoportok listája.
 
@@ -92,7 +89,7 @@ Ez a funkció más néven van *visszaállítási hiba*. További információké
 
 ## <a name="move-to-another-resource-group-or-subscription"></a>Helyezze át egy másik erőforráscsoportba vagy előfizetésbe
 
-A csoport az erőforrásokat áthelyezheti egy másik erőforráscsoportot. További információ: [Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](./resource-group-move-resources.md#move-resources).
+A csoport az erőforrásokat áthelyezheti egy másik erőforráscsoportot. További információ: [Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](./resource-group-move-resources.md).
 
 ## <a name="lock-resource-groups"></a>Zárolási erőforráscsoportok
 
@@ -122,10 +119,12 @@ A címkékkel erőforráscsoportok és erőforrásokhoz, hogy logikusan rendszer
 
 ## <a name="export-resource-groups-to-templates"></a>Erőforráscsoportok exportálása sablonokhoz
 
-Az erőforráscsoport sikeres beállítása után érdemes a Resource Manager-sablon az erőforráscsoport megtekintéséhez. A sablon exportálása két előnyöket kínál:
+Miután beállította az erőforráscsoportban, megtekintheti a Resource Manager-sablon, az erőforráscsoport. A sablon exportálása két előnyöket kínál:
 
 - Automatizálhatja a később üzembe helyezések, a megoldás, mert a sablon tartalmazza a teljes infrastruktúra.
 - Ismerje meg a sablon szintaxisáról alapján, a JavaScript Object Notation (JSON), amely a megoldás jelöli.
+
+Egy erőforráscsoportba tartozó összes erőforrás exportálásához használja a [Export-AzResourceGroup](/powershell/module/az.resources/Export-AzResourceGroup) parancsmagot, és adja meg az erőforráscsoport nevét.
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -133,7 +132,87 @@ $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
 Export-AzResourceGroup -ResourceGroupName $resourceGroupName
 ```
 
-További információkért lásd: [exportálási erőforráscsoport](./manage-resource-groups-portal.md#export-resource-groups-to-templates).
+Egy helyi fájlba menti a sablont.
+
+Exportálása az erőforráscsoportban lévő összes erőforrást, helyett válassza ki az exportálandó erőforrásokat.
+
+Egy erőforrás exportálásához adja át az adott erőforrás-azonosítója.
+
+```azurepowershell-interactive
+$resource = Get-AzResource `
+  -ResourceGroupName <resource-group-name> `
+  -ResourceName <resource-name> `
+  -ResourceType <resource-type>
+Export-AzResourceGroup `
+  -ResourceGroupName <resource-group-name> `
+  -Resource $resource.ResourceId
+```
+
+Egynél több erőforrás exportálása, át kell adnia az erőforrás-azonosítók a tömbben.
+
+```azurepowershell-interactive
+Export-AzResourceGroup `
+  -ResourceGroupName <resource-group-name> `
+  -Resource @($resource1.ResourceId, $resource2.ResourceId)
+```
+
+Ha exportálja a sablont, megadhatja a használja-e a sablon paramétereit. Alapértelmezés szerint az erőforrásnevek paraméterek szerepelnek, de nem rendelkeznek alapértelmezett értékkel. Üzembe helyezés során át kell adnia, hogy a paraméter értékét.
+
+```json
+"parameters": {
+  "serverfarms_demoHostPlan_name": {
+    "defaultValue": null,
+    "type": "String"
+  },
+  "sites_webSite3bwt23ktvdo36_name": {
+    "defaultValue": null,
+    "type": "String"
+  }
+}
+```
+
+Az erőforrás a paraméter neve szolgál.
+
+```json
+"resources": [
+  {
+    "type": "Microsoft.Web/serverfarms",
+    "apiVersion": "2016-09-01",
+    "name": "[parameters('serverfarms_demoHostPlan_name')]",
+    ...
+  }
+]
+```
+
+Ha használja a `-IncludeParameterDefaultValue` paramétert, ha a sablon exportálása, a sablonparaméter tartalmaz egy alapértelmezett értéket, amely az aktuális értékre van állítva. Használja adott alapértelmezett értéket, vagy felülírja az alapértelmezett érték egy másik érték megadásával.
+
+```json
+"parameters": {
+  "serverfarms_demoHostPlan_name": {
+    "defaultValue": "demoHostPlan",
+    "type": "String"
+  },
+  "sites_webSite3bwt23ktvdo36_name": {
+    "defaultValue": "webSite3bwt23ktvdo36",
+    "type": "String"
+  }
+}
+```
+
+Ha használja a `-SkipResourceNameParameterization` a sablon paramétereit exportálásakor, az erőforrás neve a sablon nem szerepelnek a paramétert. Ehelyett az erőforrásnév közvetlenül az erőforráson, az aktuális érték van beállítva. Üzembe helyezés során nem szabhatja testre a neve.
+
+```json
+"resources": [
+  {
+    "type": "Microsoft.Web/serverfarms",
+    "apiVersion": "2016-09-01",
+    "name": "demoHostPlan",
+    ...
+  }
+]
+```
+
+További információkért lásd: [sablont az Azure Portalon egyetlen vagy több erőforrás exportálási](./export-template-portal.md).
 
 ## <a name="manage-access-to-resource-groups"></a>Erőforráscsoportok való hozzáférés kezelése
 

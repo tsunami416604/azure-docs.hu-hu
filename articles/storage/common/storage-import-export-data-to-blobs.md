@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 04/08/2019
+ms.date: 06/06/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: e60a58a8d2f1c69728a2d049fe1414ca1997893e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 72a91fefc26e9c0b6d5a91223119815c4fcb9551
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59283273"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66808583"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Az Azure Blob Storage-adatok importálása az Azure Import/Export szolgáltatás használata
 
@@ -39,7 +39,7 @@ Adatok átviteléhez az Azure Blob Storage-bA importálási feladat létrehozás
         - [Hozzon létre egy FedEX fiókot](https://www.fedex.com/en-us/create-account.html), vagy 
         - [Hozzon létre egy DHL fiókot](http://www.dhl-usa.com/en/express/shipping/open_account.html).
 
-## <a name="step-1-prepare-the-drives"></a>1. lépés: A meghajtó előkészítése
+## <a name="step-1-prepare-the-drives"></a>1\. lépés: A meghajtó előkészítése
 
 Ebben a lépésben létrehoz egy naplót fájlt. A naplófájl alapvető információkat, például a meghajtó sorozatszáma, a titkosítási kulcsot és a storage-fiók adatait tárolja. 
 
@@ -58,7 +58,7 @@ Hajtsa végre az alábbi lépések végrehajtásával készítse elő a meghajt�
 6.  Készítse elő a lemezen, futtassa a következő parancsot. **Az adatok méretétől függően ez eltarthat néhány órát napra.** 
 
     ```
-    ./WAImportExport.exe PrepImport /j:<journal file name> /id:session#<session number> /sk:<Storage account key> /t:<Drive letter> /bk:<BitLocker key> /srcdir:<Drive letter>:\ /dstdir:<Container name>/ /skipwrite 
+    ./WAImportExport.exe PrepImport /j:<journal file name> /id:session#<session number> /t:<Drive letter> /bk:<BitLocker key> /srcdir:<Drive letter>:\ /dstdir:<Container name>/ /blobtype:<BlockBlob or PageBlob> /skipwrite 
     ```
     Egy journal-fájl jön létre ugyanabban a mappában, ahol az eszközt futtatta. Két más fájlok is létrejönnek - egy *.xml* fájlt (a mappa, ahol futtatja az eszközt) és a egy *meghajtó-manifest.xml* fájlt (adatokat tartalmazó mappát).
     
@@ -68,18 +68,19 @@ Hajtsa végre az alábbi lépések végrehajtásával készítse elő a meghajt�
     |---------|---------|
     |/j:     |A napló .jrn kiterjesztésű fájl neve. A naplófájl meghajtónkénti jön létre. Azt javasoljuk, hogy a lemez sorozatszáma használjon a napló-fájl neve.         |
     |/ ID:     |A munkamenet-azonosítót. A parancs minden példánya esetében egyedi munkamenet több használ.      |
-    |/sk:     |Az Azure Storage-fiókkulcs.         |
     |/t:     |A meghajtóbetűjel, a lemez szállításra. Ha például meghajtó `D`.         |
     |/bk:     |A meghajtó BitLocker-kulcsa. A numerikus jelszó kimenetéből: `manage-bde -protectors -get D:`      |
     |/srcdir:     |A lemez szállításra meghajtóbetűjelének követ `:\`. Például: `D:\`.         |
     |/dstdir:     |Az Azure Storage-ban a cél tároló neve.         |
+    |/blobtype:     |Ez a beállítás határozza meg az adatokat importálni kívánt blobok. A blokkblobok esetében ez a `BlockBlob` , a lapblobokhoz, pedig `PagaBlob`.         |
     |/skipwrite:     |A beállítást, amely megadja, hogy nem szükséges átmásolni új adatokat és a lemezen található meglévő adatokat, hogy elő kell készíteni.          |
+    |/enablecontentmd5:     |A beállítást, ha engedélyezve van, biztosítja, hogy MD5 számított és állítja be `Content-md5` minden egyes blob tulajdonsága. Használja ezt a beállítást csak akkor, ha használni szeretné a `Content-md5` mező követően az adatok az Azure-bA. <br> Ez a beállítás nincs hatással az adatok integritás-ellenőrzése (amely alapértelmezés szerint történik). A beállítás növelheti az adatok felhőbe való feltöltéséhez szükséges idő.          |
 7. Ismételje meg minden egyes szállításra lemezt az előző lépésben. A megadott nevű napló fájl jön létre minden egyes futtatáskor a parancssor.
     
     > [!IMPORTANT]
     > - A naplófájl együtt egy `<Journal file name>_DriveInfo_<Drive serial ID>.xml` fájl is létrejön ugyanabban a mappában, amelyben az eszköz található. Az XML-fájl használja journal-fájl helyett a feladat létrehozásakor, ha a napló-fájl túl nagy. 
 
-## <a name="step-2-create-an-import-job"></a>2. lépés: Importálási feladat létrehozása
+## <a name="step-2-create-an-import-job"></a>2\. lépés: Importálási feladat létrehozása
 
 A következő lépésekkel importálási feladat létrehozása az Azure Portalon.
 
@@ -114,7 +115,7 @@ A következő lépésekkel importálási feladat létrehozása az Azure Portalon
 4. A **szállítási adatok visszaadása**:
 
    - A legördülő listából válassza ki a szolgáltató. Ha szeretne egy szolgáltató eltérő FedEx/DHL használja, válasszon egy meglévő lehetőséget a legördülő listából. A csapat kapcsolattartási Azure Data Box Operations `adbops@microsoft.com` együtt tervezi használni a szállítmányozó vonatkozó információkat.
-   - Adjon meg egy érvényes Szállítmányozó számlaszáma, amelyek a szolgáltató létrehozta. A Microsoft ezt a fiókot használja, a meghajtók vissza tehetnek az importálási feladat befejeződése után. Ha nincs egy fiók száma, hozzon létre egy [FedEx](https://www.fedex.com/us/oadr/) vagy [DHL](http://www.dhl.com/) Szállítmányozói fiókjára.
+   - Adjon meg egy érvényes Szállítmányozó számlaszáma, amelyek a szolgáltató létrehozta. A Microsoft ezt a fiókot használja, a meghajtók vissza tehetnek az importálási feladat befejeződése után. Ha nincs egy fiók száma, hozzon létre egy [FedEx](https://www.fedex.com/us/oadr/) vagy [DHL](https://www.dhl.com/) Szállítmányozói fiókjára.
    - Adja meg a kész, érvényes ügyfél nevét, telefonszám, e-mail, utca, házszám, város, zip, államot/megyét és ország/régió. 
         
        > [!TIP] 
@@ -129,16 +130,16 @@ A következő lépésekkel importálási feladat létrehozása az Azure Portalon
 
      ![Importálási feladat létrehozása – 4. lépés](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
 
-## <a name="step-3-ship-the-drives"></a>3. lépés: A meghajtók szállításra 
+## <a name="step-3-ship-the-drives"></a>3\. lépés: A meghajtók szállításra 
 
 [!INCLUDE [storage-import-export-ship-drives](../../../includes/storage-import-export-ship-drives.md)]
 
 
-## <a name="step-4-update-the-job-with-tracking-information"></a>4. lépés: A nyomkövetési adatokat a feladat frissítése
+## <a name="step-4-update-the-job-with-tracking-information"></a>4\. lépés: A nyomkövetési adatokat a feladat frissítése
 
 [!INCLUDE [storage-import-export-update-job-tracking](../../../includes/storage-import-export-update-job-tracking.md)]
 
-## <a name="step-5-verify-data-upload-to-azure"></a>5. lépés: Az Azure-ba történő adatfeltöltés ellenőrzése
+## <a name="step-5-verify-data-upload-to-azure"></a>5\. lépés: Az Azure-ba történő adatfeltöltés ellenőrzése
 
 Nyomon követheti a feladat befejezését. A feladat befejeződése után győződjön meg arról, hogy az adatok feltöltötte-e az Azure-bA. Törli a helyszíni adatokat, csak azt követően, ha megbizonyosodott arról, hogy a feltöltés sikeres volt.
 

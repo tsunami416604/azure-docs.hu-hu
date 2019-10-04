@@ -1,91 +1,120 @@
 ---
-title: API-k a foglalást az Azure automationhöz |} A Microsoft Docs
-description: További információ az Azure API-kat, hogy programozott módon megszerezni a foglalási információkat használhatja.
-documentationcenter: ''
+title: API-k az Azure-foglalás automatizálásához | Microsoft Docs
+description: Ismerje meg azokat az Azure API-kat, amelyekkel programozott módon kérhet le foglalási információkat.
 author: yashesvi
 manager: yashesvi
-editor: ''
 tags: billing
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/13/2019
+ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 246278df61d4f13e2634a1cdfc5ff6b635cecbbf
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 50de654fb9222951a7380a322160496421006e7a
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60008211"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719681"
 ---
-# <a name="apis-for-azure-reservation-automation"></a>API-k a foglalást az Azure automation
+# <a name="apis-for-azure-reservation-automation"></a>API-k az Azure-foglalás automatizálásához
 
-Azure API-k használatával programozott módon az Azure szolgáltatás, vagy a szoftverfrissítési foglalások adatainak a szervezet lekérése.
+Az Azure API-k használatával programozott módon kérhet le információkat a szervezet számára az Azure-szolgáltatások vagy -szoftverek foglalásaival kapcsolatban.
 
-## <a name="find-reservation-plans-to-buy"></a>Keresse meg a Foglalás csomag megvásárlása
+## <a name="find-reservation-plans-to-buy"></a>Foglalási csomagok keresése vásárláshoz
 
-A javaslatok API-t, amelyen foglalást vásárolhat megtervezése javaslatokat beolvasni a szervezet használat alapján foglalás további használatához. További információkért lásd: [foglalás javaslatok](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation).
+A foglalási javaslat API-javaslatokat ad arra vonatkozóan, hogy mely foglalási csomagokat érdemes megvásárolni a szervezet használati adatai alapján. További információk: [Foglalási javaslatok kérése](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation).
 
-Az erőforrás-használatot a Használatalapú API részletes használati használatával is elemezheti. További információkért lásd: [használat részleteiről - listát a számlázási időszak szerint számlázási fiók](/rest/api/consumption/usagedetails/list#billingaccountusagedetailslistforbillingperiod). Az Azure-erőforrások konzisztens módon használó rendszerint egy foglalás a legjobb lehetőség.
+Emellett elemezheti saját erőforrás-használatát a használatai API használati adatai segítségével. További információk: [Használati adatok – Lista a számlázási időszakra számlázási fiók szerint](/rest/api/consumption/usagedetails/list#billingaccountusagedetailslistforbillingperiod). A legtöbb esetben elsősorban a folyamatosan használt Azure-erőforrásokat érdemes lefoglalni.
 
 ## <a name="buy-a-reservation"></a>Foglalás vásárlása
 
-Nem lehet jelenleg vásárolhat egy foglalást programozott módon. Megvásárolni a foglalást, tekintse meg a következő cikkeket:
+A REST API-kkal programozott módon vásárolhat Azure-foglalásokat és szoftvercsomagokat. További tudnivalókért lásd: [Foglalás rendelése – Vásárlás API](/rest/api/reserved-vm-instances/reservationorder/purchase).
+
+Íme egy mintakérés egy REST API-val történő vásárláshoz:
+
+```
+PUT https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/<GUID>?api-version=2019-04-01
+```
+
+Kérés törzse:
+
+```
+{
+ "sku": {
+    "name": "standard_D1"
+  },
+ "location": "westus",
+ "properties": {
+    "reservedResourceType": "VirtualMachines",
+    "billingScopeId": "/subscriptions/ed3a1871-612d-abcd-a849-c2542a68be83",
+    "term": "P1Y",
+    "quantity": "1",
+    "displayName": "TestReservationOrder",
+    "appliedScopes": null,
+    "appliedScopeType": "Shared",
+    "reservedResourceProperties": {
+      "instanceFlexibility": "On"
+    }
+  }
+}
+```
+
+Foglalásokat vásárolhat az Azure Portalon is. További információkért tekintse át a következő cikkeket:
 
 Szolgáltatáscsomagok:
 - [Virtuális gép](../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json)
 -  [Cosmos DB](../cosmos-db/cosmos-db-reserved-capacity.md?toc=/azure/billing/TOC.json)
 - [SQL Database](../sql-database/sql-database-reserved-capacity.md?toc=/azure/billing/TOC.json)
 
-Szoftverfrissítési csomagok:
-- [SUSE Linux-szoftver](../virtual-machines/linux/prepay-suse-software-charges.md?toc=/azure/billing/TOC.json)
+Szoftvercsomagok:
+- [SUSE Linux-szoftverek](../virtual-machines/linux/prepay-suse-software-charges.md?toc=/azure/billing/TOC.json)
 
-## <a name="get-reservations"></a>Foglalások beolvasása
+## <a name="get-reservations"></a>Foglalások kérése
 
-Ha Ön nagyvállalati szerződéssel (EA-ügyfél) rendelkező Azure-ügyfelek, beszerezheti a foglalások használatával vásárolt a szervezet a [beolvasni a fenntartott példányok tranzakciós díjat API](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-charges). Más előfizetések listájának megtekintéséhez, amelytől vásárolta foglalások és engedélye annak megtekintésére, az API-val [Foglalásrendelés - lista](/rest/api/reserved-vm-instances/reservationorder/list). Alapértelmezés szerint a fiók tulajdonosa vagy a Foglalás vásárolta, aki rendelkezik a Foglalás megtekintéséhez szükséges engedélyekkel.
+Ha Ön Nagyvállalati Szerződéssel rendelkező Azure-ügyfél (EA-ügyfél), akkor lekérheti a szervezet által megvásárolt foglalásokat a [Fenntartott példányok tranzakciós díjainak lekérése API-val](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-charges). Ha másféle előfizetése van, akkor a [Foglalás rendelése – Lista](/rest/api/reserved-vm-instances/reservationorder/list) API használatával kérheti le a foglalások listáját, amelyeket megvásárolt, és jogosult megtekinteni. Alapértelmezés szerint a fiók tulajdonosának vagy a foglalást megvásárló személynek van engedélye a foglalást megtekinteni.
 
-## <a name="see-reservation-usage"></a>Foglalás használati
+## <a name="see-reservation-usage"></a>Foglalás használatának megtekintése
 
-Ha Ön nagyvállalati szerződéssel rendelkező ügyfelek, szoftveresen megtekintheti hogyan a foglalások a szervezetben vannak használatban. További információkért lásd: [első fenntartott példány használata a vállalati ügyfelek](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage). Másik előfizetés esetén az API-val [foglalások összegzéseket - lista által foglalás rendelési és a Foglalás](/rest/api/consumption/reservationssummaries/listbyreservationorderandreservation).
+Ha Ön EA-ügyfél, programozott módon megtekintheti, hogyan vannak kihasználva a szervezeten belüli foglalások. További információk: [Fenntartott példányok használatának lekérdezése vállalati ügyfeleknek](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage). Egyéb előfizetések esetén használja a [Foglalások összegzése – Felsorolás foglalási rendelés és foglalás szerint](/rest/api/consumption/reservationssummaries/listbyreservationorderandreservation) API-t.
 
-Ha látja, hogy a szervezet foglalások éppen használt alatt:
+Ha azt tapasztalja, hogy a szervezete foglalásai nincsenek kihasználva:
 
-- Ellenőrizze, hogy a virtuális gépek, amelyek a szervezet által létrehozott felel meg, hogy a Foglalás található a Virtuálisgép-méretet.
-- Ellenőrizze, hogy a példány mérete rugalmasan be van kapcsolva. További információkért lásd: [kezelés foglalások - módosítás optimalizálása beállítás a Reserved VM Instances](billing-manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances).
-- A megosztott szélesebb körben vonatkozik, hogy a foglalás hatókörének módosítása További információkért lásd: [foglalások kezelése – a foglalás hatókörének módosítása](billing-manage-reserved-vm-instance.md#change-the-reservation-scope).
-- Exchange-a nem használt mennyiség. További információkért lásd: [foglalások - általi hóközi lemondás és cseréje kezelése](billing-manage-reserved-vm-instance.md#cancellations-and-exchanges).
+- Ellenőrizze, hogy a szervezet által létrehozott virtuális gépek megfelelnek-e a foglalásban szereplő virtuálisgép-méretnek.
+- Ellenőrizze, hogy a példányméret rugalmassága be van-e kapcsolva. További információk: [Foglalások kezelése – A Reserved VM Instances optimalizálási beállításának módosítása](billing-manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances).
+- Módosítsa a foglalás hatókörét közösre, hogy az szélesebb körre vonatkozzon. További információk: [Foglalások kezelése – Foglalás hatókörének módosítása](billing-manage-reserved-vm-instance.md#change-the-reservation-scope).
+- Cserélje be a nem használt mennyiséget. További információk: [Foglalások kezelése](billing-manage-reserved-vm-instance.md).
 
-## <a name="give-access-to-reservations"></a>Hozzáférést biztosít a foglalások
+## <a name="give-access-to-reservations"></a>A foglalásokhoz való hozzáférés megadása
 
-Minden foglalást listájának lekéréséhez, hogy egy felhasználó rendelkezik-e a hozzáférést a [lista API - művelet - foglalás](/rest/api/reserved-vm-instances/reservationorder/list). Programozott módon biztosíthat hozzáférést egy foglalást, az alábbi cikkekben talál:
+A [Foglalás – Működés – Lista API](/rest/api/reserved-vm-instances/reservationorder/list) használatával lekérheti az összes olyan foglalás listáját, amelyekhez egy adott felhasználónak hozzáférése van. A foglalások programozott módon való hozzáférésével kapcsolatban lásd a következők cikkek valamelyikét:
 
-- [Rbac-RÓL és a REST API-hozzáférés kezelése](../role-based-access-control/role-assignments-rest.md)
-- [Rbac-RÓL és az Azure PowerShell-hozzáférés kezelése](../role-based-access-control/role-assignments-powershell.md)
-- [Rbac-RÓL és az Azure CLI-hozzáférés kezelése](../role-based-access-control/role-assignments-cli.md)
+- [Hozzáférés-kezelés az RBAC és a REST API használatával](../role-based-access-control/role-assignments-rest.md)
+- [Hozzáférés-kezelés az RBAC és az Azure PowerShell használatával](../role-based-access-control/role-assignments-powershell.md)
+- [Hozzáférés-kezelés az RBAC és az Azure CLI használatával](../role-based-access-control/role-assignments-cli.md)
 
-## <a name="split-or-merge-reservation"></a>Foglalás felosztása és egyesítése
+## <a name="split-or-merge-reservation"></a>Foglalás felosztása vagy egyesítése
 
-Miután vásárol egy foglalást belül egynél több erőforráspéldány, érdemes a Foglalás példányok hozzárendelése eltérő előfizetésekben. A Foglalás hatóköre módosítható úgy, hogy ugyanabban a számlázási környezetben belüli összes előfizetésre vonatkozik. Azonban a cost management vagy a költségvetés célokra, érdemes lehet az "egy előfizetés" hatókör tartani, és rendelje hozzá a Foglalás példányok egy meghatározott előfizetésre.
+Miután egy foglalásban egynél több erőforrás-példányt vásárol, érdemes lehet a foglalásban lévő példányokat különböző előfizetésekhez hozzárendelni. Módosíthatja a foglalások hatókörét, hogy az ugyanabban a számlázási környezetben található összes előfizetésre kiterjedjenek. Azonban költségkezelési vagy költséghatékonysági okokból érdemes lehet megtartani a hatókört „egyszeri előfizetésként”, és a foglalási példányokat egy bizonyos előfizetéshez hozzárendelni.
 
-A Foglalás felosztása, az API-val [- foglalás felosztása](/rest/api/reserved-vm-instances/reservation/split). PowerShell-lel is oszthatja a foglalást. További információkért lásd: [foglalások - felosztás foglalás be két foglalást kezelése](billing-manage-reserved-vm-instance.md#split-a-single-reservation-into-two-reservations).
+Egy foglalás felosztásához használja a [Foglalás – Felosztás](/rest/api/reserved-vm-instances/reservation/split) API-t. A foglalások a PowerShell használatával is feloszthatók. További információk: [Foglalások kezelése – Egy foglalás felosztása két foglalásra](billing-manage-reserved-vm-instance.md#split-a-single-reservation-into-two-reservations).
 
-Két foglalást egyesít egy foglalás megadása, hogy az API-val [foglalás - egyesítési](/rest/api/reserved-vm-instances/reservation/merge).
+Ha két foglalást szeretne egyesíteni egy foglalásban, használja a [Foglalás – egyesítés](/rest/api/reserved-vm-instances/reservation/merge) API-t.
 
-## <a name="change-scope-for-a-reservation"></a>A foglalás hatókörének módosítása
+## <a name="change-scope-for-a-reservation"></a>Foglalás hatókörének módosítása
 
-A Foglalás hatóköre egy előfizetés vagy az összes előfizetést a számlázási környezetben lehet. Egyetlen előfizetéshez állítsa be a hatókört, ha a Foglalás megfeleltetett futó erőforrások a kijelölt előfizetésben. A megosztott hatókör beállítása, ha az Azure megfelel a Foglalás számlázási környezetében előfizetések futtató erőforrások. A számlázási környezetben szolgáltatás függ az előfizetést, amellyel megvásárolni a foglalást. További információkért lásd: [foglalások kezelése – a hatókör módosítása](billing-manage-reserved-vm-instance.md#change-the-reservation-scope).
+A foglalás hatóköre kiterjedhet egyetlen előfizetésre, egyetlen erőforráscsoportra, vagy a számlázási környezethez tartozó összes előfizetésre. Ha a hatókört egyetlen előfizetésre vagy erőforráscsoportra állítja be, a foglalást a rendszer a kiválasztott előfizetésben futó erőforrásokhoz igazítja. Ha törli vagy áthelyezi az előfizetést vagy az erőforráscsoportot, a foglalás nem lesz felhasználva.  Ha a hatókört közösre állítja, az Azure a foglalást a számlázási környezethez tartozó összes előfizetésben futó erőforrásokhoz igazítja. A számlázási környezet a foglalás megvásárlásához használt előfizetéstől függ. A hatókör a vásárláskor választható ki, és később bármikor módosítható. További információk: [Foglalások kezelése – Hatókör módosítása](billing-manage-reserved-vm-instance.md#change-the-reservation-scope).
 
-A hatókör módosítása a programozott módon, az API-val [foglalás - frissítés](/rest/api/reserved-vm-instances/reservation/update).
+A hatókör programozott módon történő módosításához használja a [Foglalás – Frissítés](/rest/api/reserved-vm-instances/reservation/update) API-t.
 
 ## <a name="learn-more"></a>Részletek
 
-- [Mik azok a foglalást az Azure-hoz](billing-save-compute-costs-reservations.md)
-- [Megismerheti, hogyan kell alkalmazni a Virtuálisgép-foglalási kedvezményt](billing-understand-vm-reservation-charges.md)
-- [Megismerheti, hogyan kell alkalmazni a SUSE Linux Enterprise szoftverfrissítési csomag kedvezmény](billing-understand-suse-reservation-charges.md)
-- [Megismerheti, hogyan más foglalás kedvezmények](billing-understand-reservation-charges.md)
-- [A használatalapú fizetéses előfizetést foglalás használati adatai](billing-understand-reserved-instance-usage.md)
-- [A nagyvállalati beléptetés foglalás használati adatai](billing-understand-reserved-instance-usage-ea.md)
-- [Windows szoftverek díjait nem tartalmazza a foglalások](billing-reserved-instance-windows-software-costs.md)
-- [A Partner Center Felhőszolgáltató (CSP) program Azure foglalások](https://docs.microsoft.com/partner-center/azure-reservations)
+- [Mik azok az Azure-beli foglalások?](billing-save-compute-costs-reservations.md)
+- [A virtuális gépek foglalására vonatkozó kedvezmény alkalmazásának ismertetése](billing-understand-vm-reservation-charges.md)
+- [A SUSE Linux Enterprise szoftvercsomag kedvezményei alkalmazásának ismertetése](billing-understand-suse-reservation-charges.md)
+- [Az egyéb foglalási kedvezmények alkalmazásának ismertetése](billing-understand-reservation-charges.md)
+- [A foglalási kihasználtság ismertetése használatalapú fizetéses előfizetésnél](billing-understand-reserved-instance-usage.md)
+- [A foglalási kihasználtság ismertetése vállalati regisztrációnál](billing-understand-reserved-instance-usage-ea.md)
+- [A Reservations díjában nem szereplő Windows-szoftverköltségek](billing-reserved-instance-windows-software-costs.md)
+- [Azure Reservations a Partner Center felhőszolgáltatói (CSP) programjában](https://docs.microsoft.com/partner-center/azure-reservations)

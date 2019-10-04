@@ -1,64 +1,66 @@
 ---
-title: Küldés a vendég operációs rendszer mérőszámok az Azure Monitor metrika tárolására klasszikus Cloud Services
-description: Küldés a vendég operációs rendszer mérőszámok az Azure Monitor metrika tárolja a Cloud Services
+title: Vendég operációs rendszer metrikáinak küldése a klasszikus Azure Monitor metrikai tárolóba Cloud Services
+description: Vendég operációs rendszer metrikáinak küldése a Azure Monitor metrika-tárolóba Cloud Services
 author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 90e841628d989a16f504d2efd7a2c7b18335ff48
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 56138277866d3b2bf02733a2c595a5a232faed8c
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482623"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844931"
 ---
-# <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>Küldés a vendég operációs rendszer mérőszámok az Azure Monitor metrika tárolására klasszikus Cloud Services 
+# <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>Vendég operációs rendszer metrikáinak küldése a klasszikus Azure Monitor metrikai tárolóba Cloud Services 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Az Azure Monitor szolgáltatással [diagnosztikai bővítmény](diagnostics-extension-overview.md), gyűjthet metrikák és a egy virtuális gép, a felhőalapú szolgáltatás vagy a Service Fabric-fürt részeként futó a vendég operációs rendszerek (Guest OS) származó naplók. A bővítmény küldhet telemetriát [számos különböző helyeken.](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)
+A Azure Monitor [Diagnostics bővítmény](diagnostics-extension-overview.md)használatával metrikákat és naplókat gyűjthet a virtuális gép, a Cloud Service vagy a Service Fabric fürt részeként futó vendég operációs rendszerből (vendég operációs rendszerből). A bővítmény [több különböző helyen](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json) is elküldheti a telemetria.
 
-Ez a cikk ismerteti a folyamatot a vendég operációs rendszer teljesítmény-mérőszámok az Azure klasszikus Felhőszolgáltatás küldését a metrika az Azure Monitor-tároló. 1.11-es verzió diagnosztikai kezdve írhatja metrikák közvetlenül az Azure Monitor metrikák tárol, ahol már standard platform metrikákat gyűjt. 
+Ez a cikk ismerteti a vendég operációs rendszer teljesítményének mérőszámait a klasszikus Azure Cloud Services a Azure Monitor metrika-tárolóba való küldésének folyamatát. A diagnosztika 1,11-es verziójától kezdődően a metrikák közvetlenül a Azure Monitor metrikák tárolójába írhatók, ahol a standard platform metrikái már begyűjtése megtörtént. 
 
-Ezen a helyen tárolja őket lehetővé teszi ugyanazokat a műveleteket, platform metrikákat is elérheti. Műveletek közé tartoznak a közel valós idejű riasztás, a diagram, útválasztás, a REST API-t, és a további hozzáférés.  A múltban a diagnosztikai bővítmény írt, az Azure Storage, de nem az Azure Monitor adattár.  
+Az ezen a helyen való tárolás lehetővé teszi, hogy ugyanazokat a műveleteket érheti el, mint a platform metrikái esetében. A műveletek közé tartozik a közel valós idejű riasztás, a diagramok, az Útválasztás, a hozzáférés egy REST API és egyebek.  Korábban a diagnosztikai bővítmény az Azure Storage-ba írt, de nem a Azure Monitor adattárba.  
 
-Ez a cikk csak működik az Azure Cloud Servicesben teljesítményszámlálók a folyamata. Az egyéb egyéni metrika nem működik. 
+Az ebben a cikkben ismertetett folyamat csak az Azure Cloud Services teljesítményszámlálói esetében működik. Más egyéni metrikák esetében nem működik. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Kell egy [szolgáltatás-rendszergazdaként vagy társ-rendszergazdaként](~/articles/billing/billing-add-change-azure-subscription-administrator.md) az Azure-előfizetésében. 
+- Az Azure-előfizetéséhez [szolgáltatás-rendszergazdának vagy társ-rendszergazdának](~/articles/billing/billing-add-change-azure-subscription-administrator.md) kell lennie. 
 
-- Az előfizetés regisztrálva kell lenniük [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services). 
+- Az előfizetést regisztrálni kell a [Microsoft.](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)ininsights szolgáltatásban. 
 
-- Rendelkeznie kell [Azure PowerShell-lel](/powershell/azure) vagy [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) telepítve.
+- [Azure PowerShell](/powershell/azure) vagy [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) telepítve kell lennie.
 
-## <a name="provision-a-cloud-service-and-storage-account"></a>A felhő és a tárolási fiók kiépítése 
+- A felhőalapú szolgáltatásnak olyan régióban kell lennie [, amely támogatja az egyéni metrikákat](metrics-custom-overview.md#supported-regions).
 
-1. Hozzon létre és telepíthet egy klasszikus felhőszolgáltatást. Egy minta klasszikus Cloud Services-alkalmazás és központi telepítési fürtpéldány [Ismerkedés az Azure Cloud Services és ASP.NET](../../cloud-services/cloud-services-dotnet-get-started.md). 
+## <a name="provision-a-cloud-service-and-storage-account"></a>Cloud Service-és Storage-fiók kiépítése 
 
-2. Használjon egy meglévő tárfiókot, vagy üzembe helyezhet egy új tárfiókot. Emellett akkor ajánlott, ha a tárfiók a klasszikus felhőszolgáltatásáról létrehozott ugyanabban a régióban van. Az Azure Portalon nyissa meg a **tárfiókok** erőforráspanel, és válassza ki **kulcsok**. Jegyezze fel a tárfiók nevét és a tárfiók-kulcsot. Ezt az információt későbbi lépésekben szüksége.
+1. Klasszikus felhőalapú szolgáltatás létrehozása és üzembe helyezése. Az [Azure Cloud Services és a ASP.net első lépéseiben](../../cloud-services/cloud-services-dotnet-get-started.md)megtalálható a klasszikus Cloud Services alkalmazás és üzembe helyezés. 
+
+2. Használhat meglévő Storage-fiókot, vagy üzembe helyezhet egy új Storage-fiókot. A legjobb megoldás, ha a Storage-fiók ugyanabban a régióban található, mint a létrehozott klasszikus felhőalapú szolgáltatás. A Azure Portal nyissa meg a **Storage-fiókok** erőforrás panelt, majd válassza a **kulcsok**lehetőséget. Jegyezze fel a Storage-fiók nevét és a Storage-fiók kulcsát. Ezekre az információkra szüksége lesz a későbbi lépésekben.
 
    ![Tárfiókkulcsok](./media/collect-custom-metrics-guestos-vm-cloud-service-classic/storage-keys.png)
 
 ## <a name="create-a-service-principal"></a>Egyszerű szolgáltatás létrehozása 
 
-Egy egyszerű szolgáltatásnév létrehozása az Azure Active Directory-bérlőben található utasítások segítségével [egy Azure Active Directory-alkalmazás és -erőforrások eléréséhez szolgáltatásnév létrehozása a portálon](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal). Amíg a folyamat során fog, vegye figyelembe a következőket: 
+Hozzon létre egy szolgáltatási elvet a Azure Active Directory-bérlőben a használati portál utasításait követve [hozzon létre egy Azure Active Directory alkalmazást és egyszerű szolgáltatásnevet, amely hozzáférhet az erőforrásokhoz](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal). Vegye figyelembe, hogy a folyamat a következő lépésekkel halad át: 
 
-- A bejelentkezési URL-címéhez helyezheti bármely URL-címben.  
-- Hozzon létre új titkos ügyfélkulcsot ehhez az alkalmazáshoz.  
-- Mentse a kulcsot, és használja az ügyfél-Azonosítóját a későbbi lépésekben.  
+- A bejelentkezési URL-címhez bármilyen URL-címet behelyezhet.  
+- Hozzon létre új ügyfél-titkos kulcsot ehhez az alkalmazáshoz.  
+- Mentse a kulcsot és az ügyfél-azonosítót a későbbi lépésekben való használatra.  
 
-Adjon meg az alkalmazáshoz, az előző lépésben létrehozott *figyelési metrikákat közzétevő* engedélyekkel a metrikákat az kibocsátható kívánt erőforrást. Ha azt tervezi, az alkalmazás használatát, gridre bocsáthatja ki az egyéni metrikákat az erőforrások száma, adja meg ezeket az engedélyeket az erőforrás-csoportba vagy előfizetésbe szinten.  
+Adja meg az alkalmazás számára az előző lépésben *figyelt metrikák közzétevője* engedélyt arra az erőforrásra, amelynek a metrikáit el szeretné bocsátani. Ha azt tervezi, hogy az alkalmazás használatával több erőforrásra vonatkozó egyéni metrikákat bocsát ki, ezeket az engedélyeket az erőforráscsoport vagy az előfizetés szintjén adhatja meg.  
 
 > [!NOTE]
-> A diagnosztikai bővítményt használja az egyszerű szolgáltatás hitelesítése az Azure Monitor és a felhőszolgáltatásokhoz tartozó mérőszámok küldik.
+> A diagnosztikai bővítmény az egyszerű szolgáltatásnév használatával hitelesíti a Azure Monitor és mérőszámokat bocsát ki a felhőalapú szolgáltatáshoz.
 
-## <a name="author-diagnostics-extension-configuration"></a>Szerző diagnosztikai bővítmény konfigurációja 
+## <a name="author-diagnostics-extension-configuration"></a>Diagnosztikai bővítmény konfigurációjának létrehozása 
 
-Készítse elő a diagnosztikai bővítmény konfigurációs fájlban. Ez a fájl szabja meg, melyik eseménynaplókat és teljesítményszámlálókat a diagnosztikai bővítményt a felhőszolgáltatásokhoz tartozó kell gyűjteni. Következő mintafájl diagnosztikai konfigurációs:  
+Készítse elő a diagnosztikai bővítmény konfigurációs fájlját. Ez a fájl határozza meg, hogy mely naplók és teljesítményszámlálók esetében kell gyűjteni a diagnosztikai bővítményt a felhőalapú szolgáltatáshoz. A következő egy példa diagnosztikai konfigurációs fájl:  
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?> 
@@ -100,7 +102,7 @@ Készítse elő a diagnosztikai bővítmény konfigurációs fájlban. Ez a fáj
 </DiagnosticsConfiguration> 
 ```
 
-A diagnosztika fájl a "SinksConfig" területen adja meg egy új Azure Monitor-fogadó: 
+A diagnosztikai fájl "SinksConfig" szakaszában Definiáljon egy új Azure Monitor fogadót: 
 
 ```XML
   <SinksConfig> 
@@ -113,7 +115,7 @@ A diagnosztika fájl a "SinksConfig" területen adja meg egy új Azure Monitor-f
   </SinksConfig> 
 ```
 
-A konfigurációs fájlban, ahol a gyűjtendő teljesítményszámlálókat listázza az szakaszban adja hozzá az Azure Monitor-fogadó. Ez a bejegyzés biztosítja, hogy az Azure Monitor mérőszámokként megadott összes teljesítményszámlálójához legyenek irányítva. Adja hozzá, vagy távolítsa el a teljesítményszámlálók igény szerint. 
+Adja hozzá a Azure Monitor fogadót a konfigurációs fájl szakaszához, ahol a gyűjteni kívánt teljesítményszámlálók listáját listázza. Ez a bejegyzés biztosítja, hogy a megadott teljesítményszámlálók a metrikák Azure Monitor legyenek átirányítva. A teljesítményszámlálók igény szerint adhatók hozzá vagy távolíthatók el. 
 
 ```xml
     <PerformanceCounters scheduledTransferPeriod="PT1M" sinks="AzMonSink">
@@ -122,7 +124,7 @@ A konfigurációs fájlban, ahol a gyűjtendő teljesítményszámlálókat list
     </PerformanceCounters>
 ```
 
-Végül a privát konfigurációjának hozzáadása egy *Azure Monitor-fiókhoz* szakaszban. Adja meg a szolgáltatáspéldány ügyfél-azonosítója és a titkos kulcsot, amelyet korábban hozott létre. 
+Végül a privát konfigurációban vegyen fel egy *Azure monitor fiók* szakaszt. Adja meg a korábban létrehozott egyszerű szolgáltatásnév ügyfél-azonosítót és titkot. 
 
 ```XML
 <PrivateConfig xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration"> 
@@ -138,57 +140,57 @@ Végül a privát konfigurációjának hozzáadása egy *Azure Monitor-fiókhoz*
 
 Mentse helyileg a diagnosztikai fájlt.  
 
-## <a name="deploy-the-diagnostics-extension-to-your-cloud-service"></a>A felhőszolgáltatásban üzembe helyezni a diagnosztikai bővítmény 
+## <a name="deploy-the-diagnostics-extension-to-your-cloud-service"></a>A diagnosztikai bővítmény üzembe helyezése a Cloud Service-ben 
 
-Indítsa el a Powershellt, és jelentkezzen be az Azure-bA. 
+Indítsa el a PowerShellt, és jelentkezzen be az Azure-ba. 
 
 ```powershell
 Login-AzAccount 
 ```
 
-A következő parancsokat használja a korábban létrehozott tárfiók adatait tárolja. 
+A korábban létrehozott Storage-fiók adatainak tárolásához használja az alábbi parancsokat. 
 
 ```powershell
 $storage_account = <name of your storage account from step 3> 
 $storage_keys = <storage account key from step 3> 
 ```
 
-Hasonlóképpen állítsa be a diagnosztikai fájl elérési útja változóhoz a következő paranccsal:
+Hasonlóképpen állítsa be a diagnosztikai fájl elérési útját egy változóra a következő parancs használatával:
 
 ```powershell
 $diagconfig = “<path of the Diagnostics configuration file with the Azure Monitor sink configured>” 
 ```
 
-Üzembe helyezés a diagnosztikai bővítményt a felhőszolgáltatáshoz a diagnostics-fájllal az Azure Monitor-fogadó konfigurálva, a következő paranccsal:  
+Telepítse a diagnosztikai bővítményt a Cloud Service-be a diagnosztikai fájllal a következő paranccsal konfigurált Azure Monitor-gyűjtővel:  
 
 ```powershell
 Set-AzureServiceDiagnosticsExtension -ServiceName <classicCloudServiceName> -StorageAccountName $storage_account -StorageAccountKey $storage_keys -DiagnosticsConfigurationPath $diagconfig 
 ```
 
 > [!NOTE] 
-> Továbbra is kötelező, biztosít egy tárfiókot a diagnosztikai bővítmény telepítésének részeként. A megadott tárfiók naplóit, vagy a diagnosztika pluginconfig.JSON fájlban megadott teljesítményszámlálók kerüljenek.  
+> Továbbra is kötelező megadni a Storage-fiókot a diagnosztikai bővítmény telepítésének részeként. A diagnosztikai konfigurációs fájlban megadott naplók vagy teljesítményszámlálók a megadott Storage-fiókba íródnak.  
 
-## <a name="plot-metrics-in-the-azure-portal"></a>Diagram mérőszámok az Azure Portalon 
+## <a name="plot-metrics-in-the-azure-portal"></a>Mérőszámok ábrázolása a Azure Portalban 
 
 1. Nyissa meg az Azure Portalt. 
 
-   ![Metrikák az Azure Portalon](./media/collect-custom-metrics-guestos-vm-cloud-service-classic/navigate-metrics.png)
+   ![Metrikák Azure Portal](./media/collect-custom-metrics-guestos-vm-cloud-service-classic/navigate-metrics.png)
 
-2. A bal oldali menüben válassza ki a **figyelő.**
+2. A bal oldali menüben válassza a **figyelő lehetőséget.**
 
-3. Az a **figyelő** panelen válassza ki a **metrikák előzetes** fülre.
+3. A **figyelő** panelen válassza a **metrikák előnézet** fület.
 
-4. A források legördülő menüben válassza ki a klasszikus felhőszolgáltatásáról.
+4. Az erőforrások legördülő menüben válassza ki a klasszikus felhőalapú szolgáltatást.
 
-5. A névterek legördülő menüben válassza ki a **azure.vm.windows.guest**. 
+5. A névterek legördülő menüben válassza az **Azure. VM. Windows. Guest**lehetőséget. 
 
-6. A metrikák legördülő menüben válassza ki a **használt lefoglalt bájtok**. 
+6. A metrikák legördülő menüben válassza a **Memory\Committed bájtok használatban**lehetőséget. 
 
-A dimenzió szűrést, és a felosztás képességek segítségével megtekintheti egy adott szerepkör vagy a szerepkör-példány által használt a teljes memória. 
+A dimenzió-szűrés és a felosztási képességek segítségével megtekintheti egy adott szerepkör vagy szerepkör-példány által használt teljes memóriát. 
 
- ![Metrikák az Azure Portalon](./media/collect-custom-metrics-guestos-vm-cloud-service-classic/metrics-graph.png)
+ ![Metrikák Azure Portal](./media/collect-custom-metrics-guestos-vm-cloud-service-classic/metrics-graph.png)
 
 ## <a name="next-steps"></a>További lépések
 
-- Tudjon meg többet [egyéni metrikákat](metrics-custom-overview.md).
+- További információ az [Egyéni metrikákkal](metrics-custom-overview.md)kapcsolatban.
 

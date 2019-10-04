@@ -3,21 +3,21 @@ title: Párhuzamos számítási feladat futtatása – Azure Batch Python
 description: Oktatóanyag – Médiafájlok párhuzamos feldolgozása ffmpeg segítségével az Azure Batchben a Batch Python ügyfélkódtár használatával
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.service: batch
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 286bc73cb7226d95c1e46fc51ae5999ea27d44ad
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: d06cf74b2a29af3fea2c24facac2899d09a0a84f
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535671"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090790"
 ---
-# <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>Oktatóanyag: Párhuzamos számítási feladatok futtatása az Azure Batch Python API használatával
+# <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>Oktatóanyag: Párhuzamos számítási feladatok futtatása Azure Batch a Python API használatával
 
 Az Azure Batch használatával hatékonyan futtathat nagy méretű párhuzamos és nagy teljesítményű feldolgozási (high-performance computing, HPC) Batch-feladatokat az Azure-ban. Ez az oktatóanyag végigvezeti egy, a Batch segítségével párhuzamos számításifeladat-futtatást bemutató Python-példán. Megismerheti a Batch-alkalmazások általános munkafolyamatát, valamint azt, hogyan kommunikálhat programkódon keresztül a Batch- és Storage-erőforrásokkal. Az alábbiak végrehajtásának módját ismerheti meg:
 
@@ -123,7 +123,7 @@ A következő szakaszok a mintaalkalmazást felosztják azokra a lépésekre, am
 
 ### <a name="authenticate-blob-and-batch-clients"></a>Blob- és Batch-ügyfelek hitelesítése
 
-Az alkalmazás az [azure-storage-blob](https://pypi.python.org/pypi/azure-storage-blob) csomag használatával létrehozott [BlockBlobService](/python/api/azure.storage.blob.blockblobservice.blockblobservice) objektum segítségével kommunikál a Storage-fiókkal.
+Az alkalmazás az [azure-storage-blob](https://pypi.python.org/pypi/azure-storage-blob) csomag használatával létrehozott [BlockBlobService](/python/api/azure-storage-blob/azure.storage.blob.blockblobservice.blockblobservice) objektum segítségével kommunikál a Storage-fiókkal.
 
 ```python
 blob_client = azureblob.BlockBlobService(
@@ -135,7 +135,7 @@ Az alkalmazás létrehoz egy [BatchServiceClient](/python/api/azure.batch.batchs
 
 ```python
 credentials = batchauth.SharedKeyCredentials(_BATCH_ACCOUNT_NAME,
-    _BATCH_ACCOUNT_KEY)
+                                             _BATCH_ACCOUNT_KEY)
 
 batch_client = batch.BatchServiceClient(
     credentials,
@@ -144,19 +144,20 @@ batch_client = batch.BatchServiceClient(
 
 ### <a name="upload-input-files"></a>Bemeneti fájlok feltöltése
 
-Az alkalmazás a `blob_client` hivatkozás segítségével hoz létre egy Storage-tárolót a bemeneti MP4-fájlokhoz, valamint egy tárolót a tevékenység kimenetének. Ezután az `upload_file_to_container` meghívásával feltölti a helyi `InputFiles` mappában lévő MP4-fájlokat a tárolóba. A tárolóban lévő fájlokat a rendszer a Batch által később a számítási csomópontra letölthető Batch [ResourceFile](/python/api/azure.batch.models.resourcefile)-objektumként határozza meg.
+Az alkalmazás a `blob_client` hivatkozás segítségével hoz létre egy Storage-tárolót a bemeneti MP4-fájlokhoz, valamint egy tárolót a tevékenység kimenetének. Ezután az `upload_file_to_container` meghívásával feltölti a helyi `InputFiles` mappában lévő MP4-fájlokat a tárolóba. A tárolóban lévő fájlokat a rendszer a Batch által később a számítási csomópontra letölthető Batch [ResourceFile](/python/api/azure-batch/azure.batch.models.resourcefile)-objektumként határozza meg.
 
 ```python
 blob_client.create_container(input_container_name, fail_on_exist=False)
 blob_client.create_container(output_container_name, fail_on_exist=False)
 input_file_paths = []
-    
-for folder, subs, files in os.walk(os.path.join(sys.path[0],'./InputFiles/')):
+
+for folder, subs, files in os.walk(os.path.join(sys.path[0], './InputFiles/')):
     for filename in files:
         if filename.endswith(".mp4"):
-            input_file_paths.append(os.path.abspath(os.path.join(folder, filename)))
+            input_file_paths.append(os.path.abspath(
+                os.path.join(folder, filename)))
 
-# Upload the input files. This is the collection of files that are to be processed by the tasks. 
+# Upload the input files. This is the collection of files that are to be processed by the tasks.
 input_files = [
     upload_file_to_container(blob_client, input_container_name, file_path)
     for file_path in input_file_paths]
@@ -164,13 +165,13 @@ input_files = [
 
 ### <a name="create-a-pool-of-compute-nodes"></a>Számításicsomópont-készlet létrehozása
 
-A következő lépésben a minta létrehozza a számítási csomópontok készletét a Batch-fiókban a `create_pool` hívásával. Ez a meghatározott funkció a Batch [PoolAddParameter](/python/api/azure.batch.models.pooladdparameter) osztályával adja meg a csomópontok számát, a virtuális gép méretét és a készletkonfigurációt. Itt egy [VirtualMachineConfiguration](/python/api/azure.batch.models.virtualmachineconfiguration) objektum adja meg egy [ImageReference](/python/api/azure.batch.models.imagereference) az Azure Marketplace-en közzétett Ubuntu Server 18.04 LTS lemezképre. A Batch az Azure Marketplace virtuálisgép-rendszerképeinek széles választékát támogatja, de egyéni rendszerképeket is használhat.
+A következő lépésben a minta létrehozza a számítási csomópontok készletét a Batch-fiókban a `create_pool` hívásával. Ez a meghatározott funkció a Batch [PoolAddParameter](/python/api/azure-batch/azure.batch.models.pooladdparameter) osztályával adja meg a csomópontok számát, a virtuális gép méretét és a készletkonfigurációt. Itt egy [VirtualMachineConfiguration](/python/api/azure-batch/azure.batch.models.virtualmachineconfiguration) objektum az Azure Marketplace-en közzétett Ubuntu Server 18,04 LTS-rendszerképhez [ImageReference](/python/api/azure-batch/azure.batch.models.imagereference) ad meg. A Batch az Azure Marketplace virtuálisgép-rendszerképeinek széles választékát támogatja, de egyéni rendszerképeket is használhat.
 
 A csomópontok száma és a virtuális gépek mérete meghatározott állandókkal van megadva. A Batch támogatja a dedikált csomópontokat és az [alacsony prioritású](batch-low-pri-vms.md) csomópontokat is, és a készletekben használhatja mindkét fajtát, akár egyszerre is. A dedikált csomópontok a készlet számára vannak fenntartva. Az alacsony prioritású csomópontok kedvezményes áron érhetők el az Azure többlet VM-kapacitásából. Ha az Azure nem rendelkezik elegendő kapacitással, az alacsony prioritású csomópontok elérhetetlenné válnak. A minta alapértelmezés szerint egy csupán 5 alacsony prioritású, *Standard_A1_v2* méretű csomópontot tartalmazó készletet hoz létre. 
 
-A fizikai csomópont tulajdonságain felül ez a készletkonfiguráció tartalmaz egy [StartTask](/python/api/azure.batch.models.starttask) objektumot. A StartTask mindegyik csomóponton fut, amikor a csomópont csatlakozik a készlethez, vagy amikor újraindul. Ebben a példában a StartTask Bash-rendszerhéjparancsokat futtat az ffmpeg csomag és a függőségek csomópontokon való telepítéséhez.
+A fizikai csomópont tulajdonságain felül ez a készletkonfiguráció tartalmaz egy [StartTask](/python/api/azure-batch/azure.batch.models.starttask) objektumot. A StartTask mindegyik csomóponton fut, amikor a csomópont csatlakozik a készlethez, vagy amikor újraindul. Ebben a példában a StartTask Bash-rendszerhéjparancsokat futtat az ffmpeg csomag és a függőségek csomópontokon való telepítéséhez.
 
-A [pool.add](/python/api/azure.batch.operations.pooloperations) metódus elküldi a készletet a Batch szolgáltatásnak.
+A [pool.add](/python/api/azure-batch/azure.batch.operations.pooloperations) metódus elküldi a készletet a Batch szolgáltatásnak.
 
 ```python
 new_pool = batch.models.PoolAddParameter(
@@ -181,7 +182,7 @@ new_pool = batch.models.PoolAddParameter(
             offer="UbuntuServer",
             sku="18.04-LTS",
             version="latest"
-            ),
+        ),
         node_agent_sku_id="batch.node.ubuntu 18.04"),
     vm_size=_POOL_VM_SIZE,
     target_dedicated_nodes=_DEDICATED_POOL_NODE_COUNT,
@@ -200,7 +201,7 @@ batch_service_client.pool.add(new_pool)
 
 ### <a name="create-a-job"></a>Feladat létrehozása
 
-Egy Batch-feladat meghatároz egy készletet, amelyen futtathatók tevékenységek, valamint opcionális beállításokat, például a prioritást és az ütemezést a munkához. A minta a `create_job` hívásával létrehoz egy feladatot. Ez a meghatározott függvény a [JobAddParameter](/python/api/azure.batch.models.jobaddparameter) osztály használatával létrehoz egy feladatot a készleten. A [job.add](/python/api/azure.batch.operations.joboperations) metódus elküldi a készletet a Batch szolgáltatásnak. A feladat kezdetben nem tartalmaz tevékenységeket.
+Egy Batch-feladat meghatároz egy készletet, amelyen futtathatók tevékenységek, valamint opcionális beállításokat, például a prioritást és az ütemezést a munkához. A minta a `create_job` hívásával létrehoz egy feladatot. Ez a meghatározott függvény a [JobAddParameter](/python/api/azure-batch/azure.batch.models.jobaddparameter) osztály használatával létrehoz egy feladatot a készleten. A [job.add](/python/api/azure-batch/azure.batch.operations.joboperations) metódus elküldi a készletet a Batch szolgáltatásnak. A feladat kezdetben nem tartalmaz tevékenységeket.
 
 ```python
 job = batch.models.JobAddParameter(
@@ -212,19 +213,20 @@ batch_service_client.job.add(job)
 
 ### <a name="create-tasks"></a>Tevékenységek létrehozása
 
-Az alkalmazás az `add_tasks` meghívásával hoz létre tevékenységeket a feladatban. Ez a megadott függvény létrehoz egy listát a tevékenységobjektumokról a [TaskAddParameter](/python/api/azure.batch.models.taskaddparameter) osztály segítségével. Minden feladat az ffmpeg futtatásával dolgoz fel egy bemeneti `resource_files`-objektumot egy `command_line` paraméter segítségével. Az ffmpeg már korábban, a készlet létrehozásakor telepítve lett minden egyes csomóponton. Itt a parancssor az ffmpeg futtatásával konvertálja az egyes bemeneti MP4-videofájlokat MP3-hangfájllá.
+Az alkalmazás az `add_tasks` meghívásával hoz létre tevékenységeket a feladatban. Ez a megadott függvény létrehoz egy listát a tevékenységobjektumokról a [TaskAddParameter](/python/api/azure-batch/azure.batch.models.taskaddparameter) osztály segítségével. Minden feladat az ffmpeg futtatásával dolgoz fel egy bemeneti `resource_files`-objektumot egy `command_line` paraméter segítségével. Az ffmpeg már korábban, a készlet létrehozásakor telepítve lett minden egyes csomóponton. Itt a parancssor az ffmpeg futtatásával konvertálja az egyes bemeneti MP4-videofájlokat MP3-hangfájllá.
 
-A minta a parancssor futtatása után létrehoz egy [OutputFile](/python/api/azure.batch.models.outputfile) objektumot az MP3-fájlhoz. A rendszer az összes tevékenység kimeneti fájlját (ebben az esetben egyet) feltölti egy, a társított Storage-fiókban lévő tárolóba a tevékenység `output_files` tulajdonsága segítségével.
+A minta a parancssor futtatása után létrehoz egy [OutputFile](/python/api/azure-batch/azure.batch.models.outputfile) objektumot az MP3-fájlhoz. A rendszer az összes tevékenység kimeneti fájlját (ebben az esetben egyet) feltölti egy, a társított Storage-fiókban lévő tárolóba a tevékenység `output_files` tulajdonsága segítségével.
 
-Ezt követően az alkalmazás tevékenységeket ad a feladathoz a [task.add_colection](/python/api/azure.batch.operations.taskoperations) metódussal, amely várólistára helyezi azokat a számítási csomópontokon való futtatáshoz. 
+Ezt követően az alkalmazás tevékenységeket ad a feladathoz a [task.add_colection](/python/api/azure-batch/azure.batch.operations.taskoperations) metódussal, amely várólistára helyezi azokat a számítási csomópontokon való futtatáshoz. 
 
 ```python
 tasks = list()
 
-for idx, input_file in enumerate(input_files): 
-    input_file_path=input_file.file_path
-    output_file_path="".join((input_file_path).split('.')[:-1]) + '.mp3'
-    command = "/bin/bash -c \"ffmpeg -i {} {} \"".format(input_file_path, output_file_path)
+for idx, input_file in enumerate(input_files):
+    input_file_path = input_file.file_path
+    output_file_path = "".join((input_file_path).split('.')[:-1]) + '.mp3'
+    command = "/bin/bash -c \"ffmpeg -i {} {} \"".format(
+        input_file_path, output_file_path)
     tasks.append(batch.models.TaskAddParameter(
         id='Task{}'.format(idx),
         command_line=command,
@@ -236,16 +238,16 @@ for idx, input_file in enumerate(input_files):
                     container_url=output_container_sas_url)),
             upload_options=batchmodels.OutputFileUploadOptions(
                 upload_condition=batchmodels.OutputFileUploadCondition.task_success))]
-        )
+    )
     )
 batch_service_client.task.add_collection(job_id, tasks)
-```    
+```
 
 ### <a name="monitor-tasks"></a>Tevékenységek figyelése
 
 Amikor az alkalmazás tevékenységeket ad egy feladathoz, a Batch automatikusan várólistára helyezi és ütemezi azok végrehajtását a társított készlet számítási csomópontjain. A Batch a megadott beállítások alapján elvégzi a tevékenységek várólistára helyezésével, ütemezésével, újrapróbálásával kapcsolatos összes feladatot, valamint a tevékenységekhez kapcsolódó egyéb rendszergazdai teendőket. 
 
-A tevékenységek végrehajtása sokféleképpen megfigyelhető. A példában szereplő `wait_for_tasks_to_complete` funkció a [TaskState](/python/api/azure.batch.models.taskstate) objektum segítségével figyel tevékenységeket egy adott (ebben az esetben a befejezett) állapotra vonatkozóan megadott időkorláton belül.
+A tevékenységek végrehajtása sokféleképpen megfigyelhető. A példában szereplő `wait_for_tasks_to_complete` funkció a [TaskState](/python/api/azure-batch/azure.batch.models.taskstate) objektum segítségével figyel tevékenységeket egy adott (ebben az esetben a befejezett) állapotra vonatkozóan megadott időkorláton belül.
 
 ```python
 while datetime.datetime.now() < timeout_expiration:
@@ -254,7 +256,7 @@ while datetime.datetime.now() < timeout_expiration:
     tasks = batch_service_client.task.list(job_id)
 
     incomplete_tasks = [task for task in tasks if
-                         task.state != batchmodels.TaskState.completed]
+                        task.state != batchmodels.TaskState.completed]
     if not incomplete_tasks:
         print()
         return True
@@ -265,7 +267,7 @@ while datetime.datetime.now() < timeout_expiration:
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-A tevékenységek futtatása után az alkalmazás automatikusan törli a létrehozott bemeneti Storage-tárolót, és felkínálja a Batch-készlet és -feladat törlésének lehetőségét. A BatchClient [JobOperations](/python/api/azure.batch.operations.joboperations) és [PoolOperations](/python/api/azure.batch.operations.pooloperations) osztálya is rendelkezik törlési metódusokkal, amelyeket a rendszer meghív, ha megerősíti a törlést. Bár magukért a feladatokért és tevékenységekért nem kell fizetnie, a számítási csomópontokért igen. Ezért ajánlott csak szükség szerint lefoglalni a készleteket. A készlet törlésekor a rendszer a csomópont összes tevékenységének kimenetét is törli. A bemeneti és kimeneti fájlok azonban megmaradnak a Storage-fiókban.
+A tevékenységek futtatása után az alkalmazás automatikusan törli a létrehozott bemeneti Storage-tárolót, és felkínálja a Batch-készlet és -feladat törlésének lehetőségét. A BatchClient [JobOperations](/python/api/azure-batch/azure.batch.operations.joboperations) és [PoolOperations](/python/api/azure-batch/azure.batch.operations.pooloperations) osztálya is rendelkezik törlési metódusokkal, amelyeket a rendszer meghív, ha megerősíti a törlést. Bár magukért a feladatokért és tevékenységekért nem kell fizetnie, a számítási csomópontokért igen. Ezért ajánlott csak szükség szerint lefoglalni a készleteket. A készlet törlésekor a rendszer a csomópont összes tevékenységének kimenetét is törli. A bemeneti és kimeneti fájlok azonban megmaradnak a Storage-fiókban.
 
 Ha már nincs rájuk szükség, törölje az erőforráscsoportot, a Batch-fiókot és a Storage-fiókot. Ehhez az Azure Portalon válassza ki a Batch-fiókhoz tartozó erőforráscsoportot, és kattintson az **Erőforráscsoport törlése** elemre.
 

@@ -4,18 +4,18 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: cynthn
-ms.openlocfilehash: 0ee40c3ad692deccbc185fa7f8e51dd25eeaf95d
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 40f0a667ffa23010ef00ed105454ab305171cc19
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52440193"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67812486"
 ---
 ### <a name="number-of-fault-domains-per-region"></a>Tartalék tartományok száma régiónként
 
 | Régió              | Tartalék tartományok maximális száma  |
 |---------------------|-------------------------|
-| USA keleti régiója             | 3                       |
+| East US             | 3                       |
 | USA 2. keleti régiója           | 3                       |
 | USA nyugati régiója             | 3                       |
 | USA nyugati régiója, 2.           | 2                       |
@@ -40,9 +40,12 @@ ms.locfileid: "52440193"
 | Nyugat-India          | 2                       |
 | Korea középső régiója       | 2                       |
 | Korea déli régiója         | 2                       |
+| Az Egyesült Arab Emírségek északi régiója           | 2                       |
 |                     |                         |
 | Kelet-Ausztrália      | 2                       |
 | Délkelet-Ausztrália | 2                       |
+| Ausztrália középső régiója   | 2                       |
+| Ausztrália 2. középső régiója | 2                       |
 |                     |                         |
 | Dél-Brazília        | 2                       |
 |                     |                         |

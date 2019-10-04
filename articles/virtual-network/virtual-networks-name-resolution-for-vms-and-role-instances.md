@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
-ms.openlocfilehash: fe63b76589c841706ae335c61e56a57c3c33fb3e
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: e0f3de95cfd4a18294e5e8e2adcf3b52a7487dbb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527183"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65411360"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Erőforrások az Azure virtual networkök névfeloldása
 
@@ -88,15 +88,15 @@ Az alapértelmezett Windows DNS-ügyfél rendelkezik egy beépített DNS-gyorsí
 
 Számos különböző DNS-gyorsítótárazást (például dnsmasq) elérhető csomagokat. A következő rendszerek leggyakoribb disztribúciói dnsmasq telepítése:
 
-* **Ubuntu (használ resolvconf)**:
+* **Ubuntu (használ resolvconf)** :
   * Telepítse a dnsmasq csomagot `sudo apt-get install dnsmasq`.
-* **SUSE (használ netconf)**:
+* **SUSE (használ netconf)** :
   * Telepítse a dnsmasq csomagot `sudo zypper install dnsmasq`.
   * Engedélyezze a dnsmasq szolgáltatást a `systemctl enable dnsmasq.service`. 
   * Indítsa el a dnsmasq szolgáltatást a `systemctl start dnsmasq.service`. 
   * Szerkesztés **/etc/sysconfig/network/config**, és módosítsa *NETCONFIG_DNS_FORWARDER = ""* való *dnsmasq*.
   * A resolv.conf frissítése `netconfig update`, hogy a gyorsítótár állítja be a helyi DNS-feloldási.
-* **OpenLogic (NetworkManager használ)**:
+* **CentOS (használ NetworkManager)** :
   * Telepítse a dnsmasq csomagot `sudo yum install dnsmasq`.
   * Engedélyezze a dnsmasq szolgáltatást a `systemctl enable dnsmasq.service`.
   * Indítsa el a dnsmasq szolgáltatást a `systemctl start dnsmasq.service`.
@@ -129,7 +129,7 @@ A resolv.conf fájlt általában automatikusan létrehozott, és nem szerkeszthe
 * **SUSE** (netconf használja):
   1. Adjon hozzá *timeout:1 kísérletek: 5* , a **NETCONFIG_DNS_RESOLVER_OPTIONS = ""** paraméter **/etc/sysconfig/network/config**.
   2. Futtatás `netconfig update` frissíteni.
-* **OpenLogic** (NetworkManager használja):
+* **CentOS** (NetworkManager használja):
   1. Adjon hozzá *echo "beállítások timeout:1 kísérletek: 5"* való **/etc/NetworkManager/dispatcher.d/11-dhclient**.
   2. Frissítse `service network restart`.
 
@@ -154,7 +154,7 @@ DNS-továbbítást is lehetővé teszi a DNS-feloldási virtuális hálózatok k
 
 ![Virtuális hálózatok közötti DNS ábrája](./media/virtual-networks-name-resolution-for-vms-and-role-instances/inter-vnet-dns.png)
 
-Az Azure által biztosított névfeloldást használ, amikor Azure Dynamic Host Configuration Protocol (DHCP) biztosít olyan belső DNS-utótagot (**. internal.cloudapp.net**) minden egyes virtuális géphez. Ennek az utótagnak állomásnév-feloldás lehetővé teszi, mivel a gazdagép neve rekordokat a **internal.cloudapp.net** zóna. Ha saját név feloldása megoldást használ, ennek az utótagnak nincs megadva virtuális gépekhez, mivel ez rontja más DNS-architektúrákat (például a tartományhoz csatlakoztatott forgatókönyv). Ehelyett az Azure biztosít a nem működő helyőrző (*reddog.microsoft.com*).
+Az Azure által biztosított névfeloldást használ, amikor Azure Dynamic Host Configuration Protocol (DHCP) biztosít olyan belső DNS-utótagot ( **. internal.cloudapp.net**) minden egyes virtuális géphez. Ennek az utótagnak állomásnév-feloldás lehetővé teszi, mivel a gazdagép neve rekordokat a **internal.cloudapp.net** zóna. Ha saját név feloldása megoldást használ, ennek az utótagnak nincs megadva virtuális gépekhez, mivel ez rontja más DNS-architektúrákat (például a tartományhoz csatlakoztatott forgatókönyv). Ehelyett az Azure biztosít a nem működő helyőrző (*reddog.microsoft.com*).
 
 Szükség esetén a PowerShell vagy az API segítségével meghatározhatja a belső DNS-utótag:
 
@@ -169,7 +169,7 @@ Lekérdezések továbbítása az Azure-ba nem felel meg igényeinek, ha meg kell
 * Védhető szemben az internetről, külső ügynökök által jelentett fenyegetéseket csökkentése érdekében.
 
 > [!NOTE]
-> A legjobb teljesítmény érdekében az Azure virtuális gépek DNS-kiszolgálóként használata esetén IPv6 le kell tiltani. A [nyilvános IP-cím](virtual-network-public-ip-address.md) minden DNS-kiszolgáló virtuális Géphez hozzá kell rendelni. További Teljesítményelemzés és optimalizálási lehetőségek a Windows Server, a DNS-kiszolgáló használata esetén lásd [név feloldása teljesítményét egy rekurzív Windows DNS Server 2012 R2](http://blogs.technet.com/b/networking/archive/2015/08/19/name-resolution-performance-of-a-recursive-windows-dns-server-2012-r2.aspx).
+> A legjobb teljesítmény érdekében az Azure virtuális gépek DNS-kiszolgálóként használata esetén IPv6 le kell tiltani. A [nyilvános IP-cím](virtual-network-public-ip-address.md) minden DNS-kiszolgáló virtuális Géphez hozzá kell rendelni. További Teljesítményelemzés és optimalizálási lehetőségek a Windows Server, a DNS-kiszolgáló használata esetén lásd [név feloldása teljesítményét egy rekurzív Windows DNS Server 2012 R2](https://blogs.technet.com/b/networking/archive/2015/08/19/name-resolution-performance-of-a-recursive-windows-dns-server-2012-r2.aspx).
 > 
 > 
 

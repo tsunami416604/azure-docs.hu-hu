@@ -1,250 +1,250 @@
 ---
-title: Az Azure CDN szabálymotorral HTTP változók |} A Microsoft Docs
-description: HTTP-változók lehetővé teszik a HTTP kérés- és metaadatok lekérése céljából.
+title: A Azure CDN Rules Engine HTTP-változói | Microsoft Docs
+description: A HTTP-változók lehetővé teszik a HTTP-kérések és a válasz metaadatainak beolvasását.
 services: cdn
 documentationcenter: ''
 author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: magattus
-ms.openlocfilehash: 8d4fc5fbdc3185c46f00d94537b197ec03f66755
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 53ad0c516547e17801bd57c2fd6b0d1704383797
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59528169"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "67593822"
 ---
-# <a name="http-variables-for-azure-cdn-rules-engine"></a>Az Azure CDN szabálymotorral HTTP változói
-HTTP-változók adja meg az eszközöket, amelyekkel HTTP kérés- és metaadatok lehet lekérdezni. A metaadatok majd dinamikusan a kérelem vagy válasz módosításához használható. HTTP-változók használata a következő szabályok adatbázismotor-funkciók korlátozva:
+# <a name="http-variables-for-azure-cdn-rules-engine"></a>Azure CDN szabályok motorjának HTTP-változói
+A HTTP-változók biztosítják a HTTP-kérések és-válaszok metaadatainak beolvasására szolgáló eszközöket. Ez a metaadatok ezután a kérések és válaszok dinamikus módosítására használhatók. A HTTP-változók használata a következő szabályok motor-funkcióihoz korlátozódik:
 
-- [Gyorsítótár-kulcs átírás](cdn-rules-engine-reference-features.md#cache-key-rewrite)
-- [Ügyfél-kérelem fejléce módosítsa](cdn-rules-engine-reference-features.md#modify-client-request-header)
-- [Ügyfél válasz fejléce módosítsa](cdn-rules-engine-reference-features.md#modify-client-response-header)
-- [URL Redirect](cdn-rules-engine-reference-features.md#url-redirect)
-- [URL-átírás](cdn-rules-engine-reference-features.md#url-rewrite)
+- [Gyorsítótár – kulcs újraírása](cdn-verizon-premium-rules-engine-reference-features.md#cache-key-rewrite)
+- [Ügyfél-kérelem fejlécének módosítása](cdn-verizon-premium-rules-engine-reference-features.md#modify-client-request-header)
+- [Ügyfél-válasz fejlécének módosítása](cdn-verizon-premium-rules-engine-reference-features.md#modify-client-response-header)
+- [URL Redirect](cdn-verizon-premium-rules-engine-reference-features.md#url-redirect)
+- [URL-újraírás](cdn-verizon-premium-rules-engine-reference-features.md#url-rewrite)
 
-## <a name="definitions"></a>Meghatározások
-A következő táblázat ismerteti a támogatott HTTP-változókat. Üres érték van adja vissza, ha Georedundáns metaadatokat (például postai irányítószám) egy adott kérés nem érhető el.
+## <a name="definitions"></a>Definíciók
+A következő táblázat a támogatott HTTP-változókat ismerteti. A rendszer üres értéket ad vissza, ha a GEO-metaadatok (például postai kód) nem érhetők el egy adott kéréshez.
 
 
 | Name (Név) | Változó | Leírás | Mintaérték |
 | ---- | -------- | ----------- | ------------ |
-| Az ASN (kérelmező) | %{geo_asnum} | Azt jelzi, hogy a kérelmező AS-szám. <br /><br />**Elavult:** a(z) % {virt_dst_asnum}. <br />Ez a változó értéke: % {geo_asnum} érvénytelenítve lett. Bár ez a változó elavult használó szabály továbbra is működni fog, frissítenie kell, hogy az új változót használja. | AS15133 |
-| Város (kérelmező) | %{geo_city} | Azt jelzi, hogy a kérelmező város. | Los Angeles |
-| Kontinens (kérelmező) | %{geo_continent} | Azt jelzi, hogy a kérelmező kontinens keresztül annak rövidítése. <br />Érvényes értékek a következők: <br />AF: Afrika<br />AS: Ázsia<br />EU: Európa<br />NA: Észak-Amerika<br />C: Óceánia<br />SA: Dél-Amerika<br /><br />**Elavult:** a(z) % {virt_dst_continent}. <br />Ez a változó értéke: % {geo_continent} érvénytelenítve lett. <br />Bár ez a változó elavult használó szabály továbbra is működni fog, frissítenie kell, hogy az új változót használja.| – |
-| Cookie-értéket | %{cookie_Cookie} | A cookie-kulcs a cookie-k kifejezés által azonosított megfelelő értéket adja vissza. | Példa: <br />%{cookie__utma}<br /><br />Mintaérték:<br />111662281.2.10.1222100123 |
-| Ország (kérelmező) | a(z) % {geo_country} | Azt jelzi, hogy a kérelmező származási keresztül az országkódot. <br />**Elavult:** a(z) % {virt_dst_country}. <br /><br />Ez a változó értéke: % {geo_country} érvénytelenítve lett. Bár ez a változó elavult használó szabály továbbra is működni fog, frissítenie kell, hogy az új változót használja. | USA |
-| Kijelölt piaci területen (kérelmező) | %{geo_dma_code} |Azt jelzi, hogy a kérelmező media piac által a régiókód. <br /><br />Ez a mező csak akkor érvényes, a kérelmekre, amely az Egyesült Államokból származnak.| 745 |
-| HTTP-kérési metódus | %{request_method} | Azt jelzi, hogy a HTTP-kérési metódust. | GET |
-| HTTP-állapotkód | %{status} | Azt jelzi, hogy a válasz HTTP-állapotkódot. | 200 |
-| IP-cím (kérelmező) | %{virt_dst_addr} | Azt jelzi, hogy a kérelmező IP-címet. | 192.168.1.1 |
-| Szélesség (kérelmező) | %{geo_latitude} | Azt jelzi, hogy a kérelmező szélességi. | 34.0995 |
-| Longitude (Requester) | %{geo_longitude} | Azt jelzi, hogy a kérelmező hosszúság. | -118.4143 |
-| Statisztikai nagyvárosi (kérelmező) | %{geo_metro_code} | Azt jelzi, hogy a kérelmező nagyvárosi körzetében. <br /><br />Ez a mező csak akkor érvényes, a kérelmekre, amely az Egyesült Államokból származnak.<br />| 745 |
-| Port (kérelmező) | %{virt_dst_port} | Azt jelzi, hogy az igénylő a rövid élettartamú port. | 55885 |
-| Irányítószám (kérelmező) | %{geo_postal_code} | Azt jelzi, hogy a kérelmező irányítószámot. | 90210 |
-| Lekérdezési karakterlánc | a(z) % {is_args} | Ez a változó értéke megfelelően, hogy a kérelem tartalmaz-e a lekérdezési karakterlánc változik.<br /><br />-Lekérdezési karakterlánc:?<br />– Nincs lekérdezési karakterlánc: NULL | ? |
-| Lekérdezési karakterlánc paramétereként található | %{is_amp} | Ez a változó értéke megfelelően, hogy a kérés tartalmaz-e legalább egy lekérdezési karakterlánc paramétereként változik.<br /><br />-Paraméter találhatók: &<br />-Nincsenek paraméterei: NULL | & |
-| Lekérdezési karakterlánc paraméter értéke | a(z) % {arg_&lt;paraméter&gt;} | A lekérdezési karakterlánc paraméter által azonosított megfelelő értéket adja vissza a &lt;paraméter&gt; kifejezés. | Példa: <br />%{arg_language}<br /><br />Minta lekérdezésikarakterlánc-paramétert: <br />?language=en<br /><br />Érték példa: en |
-| Lekérdezési karakterlánc értéke | a(z) % {query_string} | A kérelem URL-címben meghatározott teljes lekérdezési karakterlánc értékét jelöli. |1. kulcs = 1. érték & 2. kulcs = érték2 & key3 = val3 |
-| Hivatkozó tartomány | %{referring_domain} | Azt jelzi, hogy a tartományt a hivatkozó kérés fejlécében. | <www.google.com> |
-| Régió (kérelmező) | a(z) % {geo_region} | Azt jelzi, hogy az igénylő a régióban (például állam/megye) annak alfanumerikus rövidítése. | CA |
-| Kérelem fejlécének értéke | %{http_RequestHeader} | A kérelem fejlécében RequestHeader kifejezés által azonosított megfelelő értéket adja vissza. <br /><br />Ha a kérelem fejlécében neve tartalmaz egy kötőjellel (például felhasználói ügynök), cserélje le az aláhúzás (például User_Agent).| Példa: % {http_Connection}<br /><br />Mintaérték: Keep-Alive | 
-| Request Host | %{host} | Azt jelzi, hogy a gazdagépen definiált a kérelem URL-CÍMÉT. | <www.mydomain.com> |
-| Kérelem protokoll | %{request_protocol} | Azt jelzi, hogy a kérelem protokollt. | HTTP/1.1-ES |
-| Kérelem séma | a(z) % {scheme} | Azt jelzi, hogy a kérelem sémát. |http |
-| Kérés URI-ja (relatív) | %{request_uri} | Azt jelzi, hogy a relatív elérési utat, beleértve a lekérdezési karakterláncot, a kérés URI Azonosítójában megadott. | /marketing/foo.js?loggedin=true |
-| Kérés URI-ja (relatív lekérdezési karakterlánc nélkül) | a(z) % {URI-t} | Azt jelzi, hogy a relatív elérési útját a kért tartalmat. <br /><br/>Legfontosabb tudnivalókat:<br />– A relatív elérési út nem tartalmazza a lekérdezési karakterlánc.<br />– A relatív elérési út tartalmazza az URL-cím újraírások. Egy URL-címet fog kell írni a következő feltételek:<br />  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-URL Újraírási szolgáltatás: Ez a funkció átírja a kérés URI Azonosítójában megadott relatív elérési útját.<br />    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Edge CNAME URL-címe: Az ilyen típusú kérelmet a megfelelő CDN URL-címre van átírása. |/800001/corigin/rewrittendir/foo.js |
-| Kérés URI-ja | a(z) % {kérelem} | A kérelem ismerteti. <br />Szintaxis: &lt;HTTP-metódus&gt; &lt;relatív elérési út&gt; &lt;HTTP-protokoll&gt; | GET /marketing/foo.js?loggedin=true HTTP/1.1 |
-| Válasz fejléc értéke | %{resp_&lt;ResponseHeader&gt;} | A válasz fejléce által azonosított megfelelő értéket adja vissza a &lt;ResponseHeader&gt; kifejezés. <br /><br />Ha a válasz fejléce neve tartalmaz egy kötőjellel (például felhasználói ügynök), cserélje le az aláhúzás (például User_Agent). | Példa: % {resp_Content_Length}<br /><br />Mintaérték: 100 |
+| ASN (kérelmező) | %{geo_asnum} | Megadja a kérelmező AS-számát. <br /><br />**Elavult:** % {virt_dst_asnum}. <br />Ezt a változót a (z)% {geo_asnum} javára elavulták. Habár ez az elavult változót használó szabály továbbra is működni fog, frissítenie kell az új változó használatára. | AS15133 |
+| Város (kérelmező) | %{geo_city} | A kérelmező városát jelzi. | Los Angeles |
+| Kontinens (kérelmező) | %{geo_continent} | Azt jelzi, hogy a kérelmező kontinense a rövidítése. <br />Érvényes értékek a következők: <br />AF Afrika<br />AS: Ázsia<br />EU: Európa<br />NA Észak-Amerika<br />OC Oceania<br />SA Dél-Amerika<br /><br />**Elavult:** % {virt_dst_continent}. <br />Ezt a változót a (z)% {geo_continent} javára elavulták. <br />Habár ez az elavult változót használó szabály továbbra is működni fog, frissítenie kell az új változó használatára.| – |
+| Cookie értéke | %{cookie_Cookie} | A cookie-kifejezés által azonosított cookie-kulcsnak megfelelő értéket adja vissza. | Minta használata: <br />%{cookie__utma}<br /><br />Minta értéke:<br />111662281.2.10.1222100123 |
+| Ország (kérelmező) | %{geo_country} | Azt jelzi, hogy a kérelmező országa az ország kódja alapján van-e. <br />**Elavult:** % {virt_dst_country}. <br /><br />Ezt a változót a (z)% {geo_country} javára elavulták. Habár ez az elavult változót használó szabály továbbra is működni fog, frissítenie kell az új változó használatára. | USA |
+| Kijelölt piaci térség (kérelmező) | %{geo_dma_code} |A kérelmező adathordozó-piacát jelzi a régió kódja alapján. <br /><br />Ez a mező csak a Egyesült Államokból származó kérelmekre vonatkozik.| 745 |
+| HTTP-kérelem módszere | %{request_method} | A HTTP-kérés módszerét jelzi. | GET |
+| HTTP-állapotkód | % {Status} | Megadja a válasz HTTP-állapotkódot. | 200 |
+| IP-cím (kérelmező) | %{virt_dst_addr} | A kérelmező IP-címét jelzi. | 192.168.1.1 |
+| Földrajzi szélesség (kérelmező) | %{geo_latitude} | A kérelmező szélességét jelzi. | 34.0995 |
+| Hosszúság (kérelmező) | %{geo_longitude} | A kérelmező hosszúságát jelzi. | -118.4143 |
+| Nagyvárosi statisztikai körzet (kérelmező) | %{geo_metro_code} | A kérelmező nagyvárosi régióját jelzi. <br /><br />Ez a mező csak a Egyesült Államokból származó kérelmekre vonatkozik.<br />| 745 |
+| Port (kérelmező) | %{virt_dst_port} | A kérelmező ideiglenes portját jelzi. | 55885 |
+| Irányítószám (kérelmező) | %{geo_postal_code} | A kérelmező postai irányítószámát jelzi. | 90210 |
+| Lekérdezési karakterlánc található | %{is_args} | A változó értéke attól függően változik, hogy a kérelem tartalmaz-e lekérdezési karakterláncot.<br /><br />-Lekérdezési karakterlánc található:?<br />-Nincs lekérdezési karakterlánc: NULL | ? |
+| A lekérdezési karakterlánc paraméterét találta | %{is_amp} | A változó értéke attól függően változik, hogy a kérelem legalább egy lekérdezési karakterlánc paramétert tartalmaz-e.<br /><br />-Paraméter található: &<br />-Nincsenek paraméterek: NULL | & |
+| Lekérdezési karakterlánc paraméterének értéke | % {arg_&lt;paraméter&gt;} | A &lt;paraméter&gt; kifejezésével azonosított lekérdezési karakterlánc paraméterének megfelelő értéket adja vissza. | Minta használata: <br />%{arg_language}<br /><br />Példa lekérdezési karakterlánc paraméterre: <br />? Language = en<br /><br />Minta értéke: en |
+| Lekérdezési karakterlánc értéke | %{query_string} | A kérelem URL-címében definiált teljes lekérdezési karakterlánc értéket jelzi. |key1 = val1 & key2 = val2 & key3 = val3 |
+| Hivatkozó tartomány | %{referring_domain} | A hivatkozói kérelem fejlécében definiált tartományt jelzi. | <www.google.com> |
+| Régió (kérelmező) | %{geo_region} | Megadja a kérelmező régióját (például az államot vagy a tartományt) az alfanumerikus rövidítése alapján. | CA |
+| Kérelem fejlécének értéke | %{http_RequestHeader} | A RequestHeader kifejezéssel azonosított kérelem fejlécének megfelelő értéket adja vissza. <br /><br />Ha a kérelem fejlécének neve kötőjelet tartalmaz (például felhasználói ügynök), cserélje le aláhúzásra (például User_Agent).| Minta használata:% {http_Connection}<br /><br />Minta értéke: Keep-Alive | 
+| Kérelem gazdagépe | %{host} | A kérelem URL-címében definiált gazdagépet jelzi. | <www.mydomain.com> |
+| Kérelem protokollja | %{request_protocol} | A kérelem protokollját jelzi. | HTTP/1.1 |
+| Kérési séma | % {séma} | A kérelem sémáját jelzi. |http |
+| Kérelem URI-ja (relatív) | %{request_uri} | Megadja a relatív elérési utat, beleértve a lekérdezési karakterláncot is, amely a kérelem URI-ja alapján van meghatározva. | /marketing/foo.js?loggedin=true |
+| Kérelem URI-ja (relatív lekérdezési karakterlánc nélkül) | % {URI} | A kért tartalom relatív elérési útját jelzi. <br /><br/>Legfontosabb információk:<br />– Ez a relatív elérési út kizárja a lekérdezési karakterláncot.<br />– Ez a relatív elérési út az URL-címek újraírását tükrözi. Az URL-cím a következő feltételekkel lesz újraírva:<br />  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-URL-Újraírási funkció: Ez a szolgáltatás átírja a kérelem URI azonosítójában megadott relatív elérési utat.<br />    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Edge CNAME URL-cím: Az ilyen típusú kérést a rendszer a megfelelő CDN URL-címre írja át. |/800001/corigin/rewrittendir/foo.js |
+| Kérés URI-ja | % {kérelem} | Leírja a kérelmet. <br />Szintaxis &lt;Http-&gt; metódus &lt;relatív&gt; elérési útja &lt;HTTP protokoll&gt; | GET /marketing/foo.js?loggedin=true HTTP/1.1 |
+| Válasz fejlécének értéke | %{resp_&lt;ResponseHeader&gt;} | A &lt;ResponseHeader&gt; kifejezés által azonosított válasz fejlécének megfelelő értéket adja vissza. <br /><br />Ha a válasz fejlécének neve kötőjelet tartalmaz (például felhasználói ügynök), cserélje le aláhúzásra (például User_Agent). | Minta használata:% {resp_Content_Length}<br /><br />Minta értéke: 100 |
 
 ## <a name="usage"></a>Használat
-A következő táblázat ismerteti a megfelelő szintaxist egy HTTP-változó megadásához.
+Az alábbi táblázat a HTTP-változó megadásának megfelelő szintaxisát ismerteti.
 
 
 | Szintaxis | Példa | Leírás |
 | ------ | -------- | ---------- |
-| %{&lt;HTTPVariable&gt;} | %{host} | Ez a szintaxis használatával a teljes értéket a megadott megfelelő &lt;HTTPVariable&gt;. |
-| %{&lt;HTTPVariableDelimiter&gt;} | a(z) % {host} | Ez a szintaxis használatával állítsa be az esetben az egész érték a megadott megfelelő &lt;HTTPVariableDelimiter&gt;. |
-| %{&lt;HTTPVariableDelimiterExpression&gt;} | %{host/=^www\.([^\.]+)\.([^\.:]+)/cdn.$2.$3:80} | A reguláris kifejezés használata &lt;HTTPVariableDelimiterExpression&gt; helyett, törlése, módosítására vagy egy HTTP-változó értékét. |
+| % {&lt;HTTPVariable&gt;} | %{host} | Használja ezt a szintaxist a megadott &lt;HTTPVariable&gt;megfelelő teljes érték beolvasásához. |
+| %{&lt;HTTPVariableDelimiter&gt;} | % {gazdagép,} | Ezzel a szintaxissal állíthatja be a megadott &lt;HTTPVariableDelimiter&gt;megfelelő teljes értékhez tartozó esetet. |
+| %{&lt;HTTPVariableDelimiterExpression&gt;} | % {Host/= ^ www\.([^\.] +)\.([^\.:] +)/CDN. $2. $3:80} | Használjon reguláris kifejezést &lt;a http-&gt; változó értékének lecserélése, törlése és módosítása HTTPVariableDelimiterExpression. |
 
-HTTP-változó neve csak akkor támogatott, alfabetikus karaktereket és aláhúzásjeleket tartalmazhat. Nem támogatott karaktereket átalakítása aláhúzásjeleket tartalmazhat.
+A HTTP-változók nevei csak betűket és aláhúzást támogatnak. A nem támogatott karakterek konvertálása aláhúzásra.
 
-## <a name="delimiter-reference"></a>Elválasztó referencia
-Egy elválasztó karakter után egy HTTP-változó eléréséhez a következő effektusokat adható meg:
+## <a name="delimiter-reference"></a>Határoló hivatkozás
+Ha egy HTTP-változó a következő hatások bármelyikét elérheti, elválasztó karakter adható meg:
 
-- Alakítsa át a változó társított értéket.
+- Alakítsa át a változóhoz társított értéket.
 
-     Példa: A teljes érték átalakítása kisbetűvé.
+     Példa: A teljes értéket kisbetűsre konvertálja.
 
-- Törölje a társított a változó értékét.
+- Törölje a változóhoz társított értéket.
 
-- Módosíthatja a változó társított értéket.
+- A változóhoz társított érték módosítása.
 
-     Példa: Reguláris kifejezések használata társított a HTTP-változó értékének módosításához.
+     Példa: Reguláris kifejezések használatával módosíthatja a HTTP-változóhoz társított értéket.
 
-Az elválasztó karakterek a következő táblázat ismerteti.
+Az elhatárolókat az alábbi táblázat ismerteti.
 
 | Elválasztó karakter | Leírás |
 | --------- | ----------- |
-| := | Azt jelzi, hogy egy alapértelmezett érték lesz hozzárendelve a változó vagy ha: <br />– Hiányzik <br />-NULL értékű. |
-| :+ | Azt jelzi, hogy egy alapértelmezett értéket hozzá lesz rendelve a változó, ha egy érték van hozzárendelve. |
-| : | Azt jelzi, hogy a változóhoz rendelt érték részkarakterláncot kibomlik. |
-| # | Azt jelzi, hogy a határolójel utáni megadott sémának törli-e, ha a változóhoz hozzárendelt érték elején található. |
-| % | Azt jelzi, hogy a határolójel utáni megadott sémának törli-e, ha a változó hozzárendelt érték végén található. <br />Ez a definíció csak akkor alkalmazható, ha a % szimbólum elválasztóként használható. |
-| / | Határoló egy HTTP-változó vagy minta. |
-| // | Keresse meg, és cserélje le a megadott minta összes példánya. |
-| /= | Található, másolja, majd írja újra a megadott minta összes előfordulását. |
-| ;  | A HTTP-változó kisbetűssé hozzárendelt érték konvertálása. |
-| ^ | A HTTP-változó nagybetűvé hozzárendelt érték konvertálása. |
-| ,, | Társított kisbetűssé HTTP változó értéke a megadott karakter minden előfordulását konvertálni. |
-| ^^ | Társított nagybetűvé HTTP változó értéke a megadott karakter minden előfordulását konvertálni. |
+| := | Azt jelzi, hogy egy alapértelmezett érték lesz hozzárendelve a változóhoz, ha a következők valamelyike: <br />-Hiányzó <br />-NULL értékűre van állítva. |
+| :+ | Azt jelzi, hogy egy alapértelmezett érték lesz hozzárendelve a változóhoz, ha hozzá van rendelve egy érték. |
+| : | Azt jelzi, hogy a rendszer kibontja a változóhoz rendelt érték egy alsztringjét. |
+| # | Azt jelzi, hogy az elválasztó karakter után megadott mintát törölni kell, ha a változóhoz társított érték elején található. |
+| % | Azt jelzi, hogy az elválasztó karakter után megadott mintát törölni kell, ha a változóhoz társított érték végén található. <br />Ez a definíció csak akkor alkalmazható, ha a (z)% Symbol határolójelként van használatban. |
+| / | Egy HTTP-változó vagy egy minta elértékének korlátozása. |
+| // | A megadott minta összes példányának megkeresése és cseréje. |
+| /= | A megadott minta összes előfordulásának megkeresése, másolása és újraírása. |
+| ; | Alakítsa át a HTTP-változóhoz társított értéket kisbetűs értékre. |
+| ^ | Alakítsa át a HTTP-változóhoz társított értéket nagybetűs értékre. |
+| ,, | A megadott karakter összes példányának átalakítása kisbetűs értékre a HTTP-változóhoz társított értékben. |
+| ^^ | A megadott karakter összes példányának konvertálása a HTTP-változóhoz tartozó érték nagybetűvel. |
 
 ## <a name="exceptions"></a>Kivételek
-A következő táblázat ismerteti a körülmények között, amely alatt a megadott szöveg egy HTTP-változó nem számít.
+Az alábbi táblázat azokat a körülményeket ismerteti, amelyekben a megadott szöveg nem a HTTP-változóként van kezelve.
 
 | Állapot | Leírás | Példa |
 | --------- | ----------- | --------|
-| Escape-karaktersorozat % szimbólum | Százalék szimbólummal is kell megjelölni egy fordított perjel használatával. <br />A jobb Mintaérték Szövegkonstansérték, nem pedig egy HTTP-változó lesznek kezelve.| \%{host} |
-| Ismeretlen változók | Üres karakterlánc mindig ismeretlen változók adja vissza. | a(z) % {unknownvariable} |
-| Érvénytelen karakterek vagy szintaxis | Érvénytelen karakterek vagy szintaxis tartalmazó változókat konstans értékeket számít. <br /><br />#1. példa: A megadott érték érvénytelen karaktert tartalmaz (például-). <br /><br />#2. példa: A megadott értéket tartalmaz a dupla kapcsos zárójelek. <br /><br />#3. példa: A megadott érték hiányzik egy záró kapcsos zárójelet.<br /> | #1. példa: % {resp_user-ügynök} <br /><br />#2. példa: % {{gazdagép}} <br /><br />#3. példa: % {gazdagép |
-| Hiányzik a változó neve. | NULL érték mindig adja vissza, ha a változó értéke nincs megadva. | %{} |
-| Záró karakterek | Egy változó végén karaktereket konstansértékekkel kell kezelni. <br />Jobb minta érték tartalmaz egy záró kapcsos zárójelet, amely egy literálérték, lesznek kezelve. | %{host}} |
+| Escape-% szimbólum | A százalékos szimbólum egy fordított perjel használatával lehet megszökni. <br />A jobb oldali minta értéket literál értékként, nem pedig HTTP-változóként kezeli a rendszer.| \%gazdagép |
+| Ismeretlen változók | A rendszer mindig üres karakterláncot ad vissza az ismeretlen változókhoz. | %{unknown_variable} |
+| Érvénytelen karakterek vagy szintaxis | Az érvénytelen karaktereket vagy szintaxist tartalmazó változókat literál értékként kezeli a rendszer. <br /><br />Példa #1: A megadott érték érvénytelen karaktert tartalmaz (például:-). <br /><br />Példa #2: A megadott érték kapcsos zárójelek dupla készletét tartalmazza. <br /><br />Példa #3: A megadott értékből hiányzik egy záró kapcsos zárójel.<br /> | Példa #1:% {resp_user-Agent} <br /><br />Példa #2:% {{host}} <br /><br />Példa #3:% {gazdagép |
+| Hiányzó változó neve | A rendszer mindig NULL értéket ad vissza, ha nincs megadva változó. | %{} |
+| Záró karakterek | Az a karakter, amelynél a változót a rendszer literál értékként kezeli. <br />A jobb oldali mintavételi érték olyan záró kapcsos zárójelet tartalmaz, amely literál értékként lesz kezelve. | %{host}} |
 
 ## <a name="setting-default-header-values"></a>Alapértelmezett fejléc értékeinek beállítása
-Alapértelmezett érték hozzárendelheti egy fejléc a következő feltételek bármelyikének teljesülésekor:
+Egy alapértelmezett érték rendelhető hozzá egy fejléchez, ha az megfelel a következő feltételek bármelyikének:
 - Missing/unset
-- NULL értékű.
+- NULL értékűre van állítva.
 
-A következő táblázat ismerteti, hogyan adhat meg egy alapértelmezett értéket.
+Az alábbi táblázat leírja, hogyan határozhat meg alapértelmezett értéket.
 
 | Állapot | Szintaxis | Példa | Leírás |
 | --------- | ------ | --------| ----------- |
-| Egy alapértelmezett értékre állítva egy fejléc a következő feltételek bármelyikének teljesülésekor: <br /><br />– Hiányzik egy fejléc <br /><br />-Fejléc értéke NULL értékre van beállítva.| %{Variable:=Value} | %{http_referer:=unspecified} | A Referer fejléc csak állítja be *meghatározatlan* hiányzik vagy NULL értékre. Nincs művelet kerül sor, ha van beállítva. |
-| Ha ez hiányzik, állítsa be egy fejléc egy alapértelmezett értéket. | %{Variable=Value} | %{http_referer=unspecified} | A Referer fejléc csak állítja be *meghatározatlan* megadva. Nincs művelet kerül sor, ha van beállítva. |
-| Állítsa be a fejléc egy alapértelmezett értéket, ha nem teljesíti az alábbi feltételek bármelyike: <br /><br />– Hiányzik<br /><br /> -NULL értékű. | %{Variable:+Value} | %{http_referer:+unspecified} | A Referer fejléc csak állítja be *meghatározatlan* mikor értéket rendelték hozzá. Nincs művelet kerül sor, ha hiányzik vagy null. |
+| Állítsa be az alapértelmezett érték fejlécét, ha az megfelel a következő feltételek bármelyikének: <br /><br />-Hiányzó fejléc <br /><br />– A fejléc értéke NULL értékre van állítva.| %{Variable:=Value} | % {http_referrer: = meghatározatlan} | A hivatkozó fejléc csak akkor lesz meghatározatlan , ha hiányzik vagy NULL értékűre van állítva. Ha be van állítva, semmilyen művelet nem kerül sor. |
+| Ha hiányzik, állítsa be a fejlécet az alapértelmezett értékre. | %{Variable=Value} | %{http_referrer=unspecified} | A hivatkozó fejléc csak akkor lesz meghatározatlan értékre állítva, ha hiányzik. Ha be van állítva, semmilyen művelet nem kerül sor. |
+| Állítsa be a fejlécet alapértelmezett értékre, ha az nem felel meg a következő feltételek egyikének: <br /><br />-Hiányzó<br /><br /> -NULL értékűre van állítva. | % {Változó: + érték} | %{http_referrer:+unspecified} | A hivatkozó fejléc csak meghatározatlan értékre lesz állítva, ha hozzá van rendelve egy érték. Ha hiányzik vagy NULL értékűre van állítva, a művelet nem kerül sor. |
 
 ## <a name="manipulating-variables"></a>Változók módosítása
-Változók a következő módon kezelhetők:
+A változók a következő módokon kezelhetők:
 
-- Bővülő karakterláncrész
-- Minták eltávolítása
+- Alsztringek kibontása
+- Mintázatok eltávolítása
 
-### <a name="substring-expansion"></a>Karakterláncrészlet bővítése
-Alapértelmezés szerint a teljes érték bővített változóhoz. Az alábbi szintaxissal csak bontsa ki a változó értékének egy karakterláncrészletet.
+### <a name="substring-expansion"></a>Alsztring bővítése
+Alapértelmezés szerint a változó a teljes értékre lesz kibontva. A következő szintaxissal csak a változó értékének egy alsztringjét bontsa ki.
 
 `%<Variable>:<Offset>:<Length>}`
 
-Legfontosabb tudnivalókat:
+Legfontosabb információk:
 
-- Hozzárendelt eltolása kifejezés érték határozza meg a kezdő karakter a karakterláncrész:
+- Az eltolási kifejezéshez rendelt érték határozza meg az alsztring kezdő karakterét:
 
-     - Pozitív: A kezdő karakter a karakterláncrész kiszámítása a karakterlánc első karaktere.
-     - Zero: A kezdő karakter a karakterláncrész a karakterlánc első karaktere.
-     - Negatív: A kezdő karakter a karakterláncrész kiszámítása az utolsó karakter a karakterláncban.
+     - Pozitív Az alkarakterlánc kezdő karakterének kiszámítása a karakterlánc első karaktere alapján történik.
+     - Nulla Az alsztring kezdő karaktere a karakterlánc első karaktere.
+     - Negatív Az alsztring kezdő karakterének kiszámítása a karakterlánc utolsó karaktere alapján történik.
 
-- A karakterláncrész hossza határozza meg a *hossza* kifejezés:
+- Az alsztring hosszának meghatározása a *Hossz* kifejezéssel történik:
 
-     - Nincs megadva: Hossz kifejezés felsorolhatja lehetővé teszi, hogy a keresendő karakterláncrészletet tartalmazza az összes karaktert a karakterlánc végén és a kezdő karakter között.
-     - Pozitív: Meghatározza, hogy a kezdő karakter jobb karakterláncrész hossza.
-     - Negatív: Meghatározza, hogy a kezdő karakter a bal oldali karakterláncrész hossza.
+     - Kimaradt A hossz kifejezés kihagyása lehetővé teszi, hogy az alkarakterlánc a kezdő karakter és a sztring vége közötti összes karaktert tartalmazza.
+     - Pozitív Meghatározza az alkarakterlánc hosszát a kezdő karaktertől jobbra.
+     - Negatív Meghatározza a kezdő karakterből balra lévő alsztring hosszát.
 
 #### <a name="example"></a>Példa:
 
-Az alábbi példa a következő minta kérelem URL-címe támaszkodik:
+A következő példa a minta kérelem URL-címére támaszkodik:
 
-https:\//cdn.mydomain.com/folder/marketing/myconsultant/proposal.html
+https:\//CDN.mydomain.com/Folder/marketing/myconsultant/Proposal.html
 
-A következő karakterláncot a változók kezelésére szolgáló különböző módszereket mutat be:
+A következő sztring különböző módszereket mutat be a változók módosításához:
 
 https:\//www%{http_host:3}/mobile/%{request_uri:7:10}/%{request_uri:-5:-8}.htm
 
-A minta-kérelem URL-cím alapján, a fenti változó adatkezelési állítja elő a következő értéket:
+A mintául szolgáló kérelem URL-címe alapján a fenti változó manipuláció a következő értéket fogja eredményezni:
 
-https:\//www.mydomain.com/mobile/marketing/proposal.htm
+https:\//www.mydomain.com/Mobile/marketing/Proposal.htm
 
 
 ### <a name="pattern-removal"></a>Minta eltávolítása
-Szöveg, amely megfelel egy adott minta elején vagy végén egy változó értékének távolíthatja el.
+Egy adott mintázatnak megfelelő szöveg eltávolítható egy változó értékének elejéről vagy végéről.
 
-| Szintaxis | Műveletek |
+| Szintaxis | Action |
 | ------ | ------ |
-| %{Variable#Pattern} | Távolítsa el a szöveget, ha a megadott karakterlánc megtalálható a változó értékének elejére. |
-| %{Variable%Pattern} | Távolítsa el a szöveg, ha a megadott karakterlánc megtalálható a változó értékét a végén. |
+| % {Változó # minta} | Szöveg eltávolítása, ha a megadott minta a változó értékének elején található. |
+| %{Variable%Pattern} | A szöveg eltávolítása, ha a megadott minta a változó értékének végén található. |
 
 #### <a name="example"></a>Példa:
 
-Minta ebben a forgatókönyvben a *request_uri* változó értéke:
+Ebben a példában a *REQUEST_URI* változó a következőre van beállítva:
 
 `/800001/myorigin/marketing/product.html?language=en-US`
 
-Az alábbi táblázat azt ismerteti, hogyan működik ez a szintaxis.
+A következő táblázat bemutatja, hogyan működik ez a szintaxis.
 
-| Mintául szolgáló szintaxis | Results (Eredmények) | |
+| Minta szintaxisa | Results (Eredmények) | |
 | ------------- | ------- | --- |
-| %{request_uri#/800001}/customerorigin | /customerorigin/myorigin/marketing/product.html?language=en-US | A változó a minta kezdődik, mert a lett cserélve. |
-| %{request_uri%html}htm | /800001/myorigin/marketing/product.html?language=en-US | A változó nem végződhet a mintának, mert nem változott.|
+| %{request_uri#/800001}/customerorigin | /customerorigin/myorigin/marketing/Product.html? Language = en-US | Mivel a változó a mintával kezdődik, lecserélték. |
+| %{request_uri%html}htm | /800001/myorigin/marketing/Product.html? Language = en-US | Mivel a változó nem a mintával végződik, nem történt változás.|
 
 ### <a name="find-and-replace"></a>Keresés és csere
-A Keresés és csere szintaxisa a következő táblázatban leírt.
+A Find és a Replace szintaxist az alábbi táblázat ismerteti.
 
-| Szintaxis | Műveletek |
+| Szintaxis | Action |
 | ------ | ------ |
-| %{Variable/find/replace} | Keresse meg, és cserélje le a megadott minta első előfordulása. |
-| %{Variable//find/replace} | Keresse meg, és cserélje le a megadott minta összes előfordulását. |
-| %{Variable^} |A teljes érték átalakítása nagybetűssé. |
-| %{Variable^Find} | A megadott minta a első előfordulása átalakítása nagybetűvé. |
-| A(z) % {, változó} | A teljes érték átalakítása kisbetűvé. |
-| A(z) % {változó, keresés} | A megadott minta a első előfordulása átalakítása kisbetűvé. |
+| % {Változó/Keresés/csere} | A megadott minta első előfordulásának megkeresése és cseréje. |
+| % {Változó//Keresés/csere} | A megadott minta összes előfordulásának megkeresése és cseréje. |
+| % {Változó ^} |A teljes érték nagybetűssé konvertálása. |
+| % {Változó ^ keresés} | A megadott minta első előfordulásának átalakítása nagybetűs értékre. |
+| % {Változó,} | A teljes értéket kisbetűsre konvertálja. |
+| % {Változó, keresés} | A megadott minta első előfordulásának konvertálása kisbetűsre. |
 
-### <a name="find-and-rewrite"></a>A Keresés és átírás
-Keresés és csere egy variációja a szöveg, amely megfelel a megadott minta újraírását, amikor használja. A Keresés és újraírási szintaxis a következő táblázatban leírt.
+### <a name="find-and-rewrite"></a>Keresés és újraírás
+A keresés és csere megváltoztatásához használja a megadott mintának megfelelő szöveget az újraíráskor. A keresés és az újraírás szintaxisát az alábbi táblázat ismerteti.
 
-| Szintaxis | Műveletek |
+| Szintaxis | Action |
 | ------ | ------ |
-| %{Variable/=find/Rewrite} | Található, másolja, majd írja újra a megadott minta összes előfordulását. |
-| %{Variable/^find/Rewrite} | Található, másolja, majd a megadott minta újraírási elején. a változó esetén. |
-| %{Variable/$find/Rewrite} | Található, másolja, majd a megadott minta újraírási változó végén esetén. |
-| %{Variable/find} | Keresse meg és törölje a megadott minta összes előfordulását. |
+| % {Változó/= keresés/újraírás} | A megadott minta összes előfordulásának megkeresése, másolása és újraírása. |
+| % {Változó/^ keresés/újraírás} | A megadott minta megkeresése, másolása és újraírása a változó elején. |
+| % {Változó/$Find/rewrite} | Keresse meg, másolja és írja át a megadott mintát, amikor az a változó végén fordul elő. |
+| % {Változó/keresés} | Megkeresheti és törölheti a megadott minta összes előfordulását. |
 
-Legfontosabb tudnivalókat:
+Legfontosabb információk:
 
-- Bontsa ki a szöveget, amely megegyezik a megadott minta egy dollárjel követ egész számnak egész (például $1) megadásával.
+- A megadott mintának megfelelő szöveg kibontásához adja meg a dollár-aláírást, majd egy egész számot (például $1).
 
-- Több is megadhatók. A sorrend, amelyben a minta van megadva a hozzá rendelt egész számot határozza meg. A következő példában az első minta egyezik "www.," a második minta megegyezik a második szintű tartomány, és a harmadik minta megfelel a legfelső szintű tartományt:
+- Több minta is megadható. A minta meghatározásának sorrendje határozza meg azt az egész számot, amely hozzá lesz rendelve. Az alábbi példában az első minta megegyezik a "www." értékkel, a második mintának felel meg a második szintű tartománynak, és a harmadik minta megegyezik a legfelső szintű tartománnyal:
 
     `%{host/=^www\.([^\.]+)\.([^\.:]+)/cdn.$2.$3:80}`
 
-- A Átdolgozta érték szöveg és a helyőrzők bármely kombinációja állhat.
+- Az újraírásos érték szöveg és ezek helyőrzői tetszőleges kombinációját tartalmazhatja.
 
-    Az előző példában az állomásnevet a feladatátvitelt `cdn.$2.$3:80` (például cdn.mydomain.com:80).
+    Az előző példában az állomásnév újra lett írva `cdn.$2.$3:80` (például CDN.mydomain.com:80).
 
-- A kis-és a egy minta helyőrző (például $1) a következő jelzőket keresztül lehet módosítani:
-     - U: A kibontott érték nagybetűk.
+- A mintázat helyőrzője (például $1) a következő jelzők használatával módosítható:
+     - U A kibontott érték nagybetűvel.
 
-         Mintául szolgáló szintaxis:
+         Minta szintaxisa:
 
          `%{host/=^www\.([^\.]+)\.([^\.:]+)/cdn.$U2.$3:80}`
 
-     - L: A kibontott érték kisbetűs.
+     - L A kibontott érték kisbetűs.
 
-         Mintául szolgáló szintaxis:
+         Minta szintaxisa:
 
          `%{host/=^www\.([^\.]+)\.([^\.:]+)/cdn.$L2.$3:80}`
 
-- Az operátornak meg kell adni a minta előtt. A megadott operátor határozza meg a minta-rögzítés viselkedés:
+- A minta előtt meg kell adni egy operátort. A megadott operátor határozza meg a minta-rögzítési viselkedést:
 
-     - `=`: Azt jelzi, hogy a megadott minta összes előfordulását rögzíteni kell, és átírása.
-     - `^`: Azt jelzi, hogy csak a megadott minta kezdetű szöveg lesz rögzíthetők.
-     - `$`: Azt jelzi, hogy csak a megadott minta végződő szöveg lesz rögzítése.
+     - `=`: Azt jelzi, hogy a megadott minta összes előfordulását rögzíteni kell, és újra kell írni.
+     - `^`: Azt jelzi, hogy csak a megadott mintával kezdődő szövegek lesznek rögzítve.
+     - `$`: Azt jelzi, hogy csak a megadott mintával végződő szöveg lesz rögzítve.
  
-- Ha kihagyja a */Újraírási* érték, amely megfelel a mintának a szöveg törlődik.
+- Ha kihagyja a */rewrite* értéket, a rendszer törli a mintázattal egyező szöveget.
 
 

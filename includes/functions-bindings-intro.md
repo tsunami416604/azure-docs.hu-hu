@@ -10,11 +10,11 @@ ms.date: 01/09/2019
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: b9f0816ad67afa05a5325f03991ac22393c1b416
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54211857"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67178907"
 ---
 Ez az információ az Azure Functions-fejlesztők számára. Ha most ismerkedik az Azure Functions, indítsa el az alábbi forrásanyagokat:
 

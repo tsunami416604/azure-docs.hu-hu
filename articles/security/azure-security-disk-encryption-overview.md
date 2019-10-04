@@ -1,34 +1,22 @@
 ---
-title: Áttekintés – IaaS virtuális gépekhez az Azure Disk Encryption |} A Microsoft Docs
-description: Ez a cikk a Microsoft Azure Disk Encryption áttekintést nyújt az IaaS virtuális gépekhez.
+title: Mi az Azure Disk Encryption?
+description: Ez a cikk áttekintést nyújt Azure Disk Encryption
 author: msmbaldwin
 ms.service: security
 ms.topic: article
 ms.author: mbaldwin
-ms.date: 03/16/2019
+ms.date: 09/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 66d788aec83e3e57a49b063f2ca80484360f639d
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 7855b1048826a9146e206226ae7326661e4609cb
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295283"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70764402"
 ---
-# <a name="azure-disk-encryption-for-iaas-vms"></a>Az Azure Disk Encryption IaaS virtuális gépekhez
+# <a name="azure-disk-encryption-overview"></a>Azure Disk Encryption áttekintése
 
-A Microsoft Azure számára fontos, hogy az adatvédelem és az adatok elkülönítése. Az Azure segítségével szabályozható a titkosítása, szabályozhatja és titkosítási kulcsokat, és az adatok ellenőrzésére és hozzáférés kezelése a fejlett technológiák számos Azure-ban tárolt adatait. Ez a vezérlő biztosít az Azure-ügyfelek rugalmasan választhatja ki a saját üzleti igényeinek leginkább megfelelő megoldást. Ez a cikk bemutatja a technológiai megoldásokat: "Az azure Disk Encryption Windows és Linux rendszerű IaaS virtuális gépek (VM)." Ez a technológia segítségével a szervezeti biztonsági és megfelelőségi követelmények kielégítése érdekében az adatok biztonságos megőrzésében. 
-
-[!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
-
-
-## <a name="overview"></a>Áttekintés
-
-Az Azure Disk Encryption egy olyan funkció, amely segítséget nyújt a Windows és Linux rendszerű IaaS VM-lemezek titkosítása. Lemeztitkosítás kihasználja az iparági szabvány [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) Windows szolgáltatása és a [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) biztosít az operációs rendszer és az adatlemezek kötettitkosítását Linux funkcióját. A megoldás integrált [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) segítségével vezérelheti és felügyelheti a lemeztitkosítási kulcsokat és titkos kulcsok. A megoldás emellett biztosítja, hogy a Virtuálisgép-lemezeken lévő összes adatot is titkosítása az Azure storage-ban.
-
-Általában minden nyilvános Azure-régióban és a standard szintű virtuális gépek és az Azure Premium Storage virtuális gépek Azure Government-régiók rendelkezésre állása Disk Encryption Windows és Linux rendszerű IaaS virtuális gépekhez. Amikor alkalmazza a lemeztitkosítás felügyeleti megoldás, akkor a következő üzleti igényekre is képes kielégíteni:
-
-* IaaS virtuális gépek védett inaktív szervezeti biztonsági és megfelelőségi követelmények teljesítésére az iparági szabványnak megfelelő titkosítási technológia használatával.
-* IaaS virtuális gépek rendszerindítási ügyfél által felügyelt kulcsok és szabályzatok alapján. A key vaultban lévő naplózhatja a használatuk.
+Azure Disk Encryption segíti az adatai védelmét és védelmét a szervezeti biztonsági és megfelelőségi kötelezettségvállalások teljesítése érdekében. A Windows [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) szolgáltatását és a Linux [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) funkcióját használja, hogy mennyiségi titkosítást biztosítson az Azure Virtual Machines (VM) operációsrendszer-és adatlemezei számára. Emellett integrálva van [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) a lemezes titkosítási kulcsok és titkos kódok szabályozásához és kezeléséhez, és gondoskodik arról, hogy a virtuálisgép-lemezeken lévő összes adatok titkosítva legyenek az Azure Storage-ban. A Windows-és Linux-alapú virtuális gépek Azure Disk Encryption általánosan elérhetők az összes Azure-beli nyilvános régióban és Azure Government régióban a standard virtuális gépekhez és a virtuális gépekhez az Azure Premium Storage. 
 
 Az Azure Security Center, ha rögtön riasztást kap, ha azok nem titkosított virtuális gépek. A riasztások magas súlyossági szintű szabályzatként jelenik meg, és az javasoljuk, hogy ezek a virtuális gépek titkosításához.
 
@@ -40,108 +28,101 @@ Az Azure Security Center, ha rögtön riasztást kap, ha azok nem titkosított v
 
 ## <a name="encryption-scenarios"></a>Titkosítási megoldások
 
-A Disk Encryption megoldás a következő ügyfél-forgatókönyveket teszi lehetővé:
+A Azure Disk Encryption segítségével a szervezeti biztonsági és megfelelőségi követelményeket úgy kezelheti, ha az Azure-beli virtuális gépeket az iparági szabványnak megfelelő titkosítási technológiával védi. A virtuális gépeket konfigurálhatja úgy is, hogy az ügyfél által vezérelt kulcsok és szabályzatok (BYOK-EK) alá induljon, és naplózza a kulcsok használatát a kulcstartóban.
 
-* Új Windows IaaS virtuális gépek előzetes titkosítással VHD-t és a titkosítási kulcsok alapján létrehozott titkosításának engedélyezése.
-* A támogatott Azure-gyűjtemény lemezképei alapján létrehozott új IaaS virtuális gépek titkosításának engedélyezése.
-* A titkosítást a meglévő IaaS virtuális gépeken, amelyek az Azure-ban futnak.
-* A Windows virtual machine scale sets titkosítást.
-* Linux virtuális gép méretezési csoportokhoz tartozó adatmeghajtók titkosításának engedélyezése.
-* Tiltsa le a Windows IaaS virtuális gépek a titkosítást.
-* Linux rendszerű IaaS virtuális gépek adatmeghajtók titkosításának letiltása.
-* Tiltsa le a Windows virtual machine scale sets titkosítást.
-* Linux virtuális gép méretezési csoportokhoz tartozó adatmeghajtók titkosításának letiltása.
-* Felügyelt lemezes virtuális gépek titkosításának engedélyezése.
-* Egy meglévő titkosított prémium és a nem Premium Storage virtuális gépek titkosítási beállításainak frissítése.
-* Biztonsági mentése és visszaállítása titkosított virtuális gépek.
+Azure Disk Encryption a következő felhasználói forgatókönyveket támogatja:
 
-A megoldás a következő eseteket támogatja IaaS virtuális gépekhez, ha engedélyezve vannak a Microsoft Azure-ban:
+* A támogatott Azure Gallery-rendszerképekből létrehozott új virtuális gépek titkosításának engedélyezése és letiltása.
+* Az Azure-ban futó meglévő virtuális gépek titkosításának engedélyezése és letiltása.
+* A titkosítás engedélyezése és letiltása az előre titkosított VHD-és titkosítási kulcsokból létrehozott új Windows-alapú virtuális gépeken.
+* A titkosítás engedélyezése és letiltása a Windows rendszerű virtuálisgép-méretezési csoportokban.
+* A Linux rendszerű virtuálisgép-méretezési csoportokhoz tartozó adatmeghajtók titkosításának engedélyezése és letiltása.
+* Felügyelt lemezes virtuális gépek titkosításának engedélyezése és letiltása.
+* Meglévő titkosított prémium és nem Premium Storage virtuális gép titkosítási beállításainak frissítése.
+* Titkosított virtuális gépek biztonsági mentése és visszaállítása.
+* Saját titkosítást (BYOE) alkalmazhat, és saját kulcsokra (BYOK) használhat, amelyekben az ügyfelek a saját titkosítási kulcsaikat használják, és egy Azure Key vaultban tárolják őket.
+
+Emellett a következő forgatókönyveket is támogatja a virtuális gépekhez, amikor engedélyezve vannak Microsoft Azureban:
 
 * Az Azure Key Vault-integráció.
-* Standard szintű virtuális gépek: [A, D, DS, G, GS, F és így tovább, sorozat IaaS virtuális gépek](https://azure.microsoft.com/pricing/details/virtual-machines/). [Linux rendszerű virtuális gépek](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) ezen a szinten belül meg kell felelnie a minimális memóriára vonatkozó követelmény, 7 GB.
-* Titkosítás engedélyezése a Windows és Linux rendszerű IaaS virtuális gépek, felügyelt lemezes és a méretezési csoport virtuális gépek a támogatott Azure-katalógus-rendszerképek állítható be.
-* Tiltsa le a Windows IaaS virtuális gépek méretezési csoport operációsrendszer- és meghajtók titkosításának virtuális gépei, és a felügyelt lemezes virtuális gépek.
-* Tiltsa le a Linuxos IaaS virtuális gépek méretezési adatmeghajtók titkosításának virtuális gépei, és a felügyelt lemezes virtuális gépek.
-* A Windows ügyfél operációs rendszerű IaaS virtuális gépek titkosításának engedélyezése.
-* Csatlakoztatási elérési úttal köteteken titkosítást.
-* Linux rendszerű virtuális gépek, amelyeken lemez összevonása (RAID) mdadm használatával a titkosítást.
-* Linux rendszerű virtuális gépeken, amelyek LVM adatlemezeket a titkosítást.
-* A Linux rendszerű virtuális gép operációsrendszer- és adatlemezek titkosításának engedélyezése.
+* [Standard szintű virtuális gépek](https://azure.microsoft.com/pricing/details/virtual-machines/) , amelyek megfelelnek a [minimálisan szükséges memória követelményeinek](azure-security-disk-encryption-prerequisites.md#supported-vm-sizes). 
+* A titkosítás engedélyezése Windows és Linux rendszerű virtuális gépeken, felügyelt lemezeken és a virtuális gépek méretezési csoportján a támogatott Azure Gallery-rendszerképekből.
+* A Windows rendszerű virtuális gépek, a méretezési csoport virtuális gépei és a felügyelt lemezes virtuális gépek titkosításának letiltása az operációsrendszer-és adatmeghajtókon
+* A Linux rendszerű virtuális gépek, a méretezési csoport virtuális gépei és a felügyelt lemezes virtuális gépek adatmeghajtóinak titkosításának letiltása.
+* A titkosítás engedélyezése a Windows ügyfél operációs rendszerét futtató virtuális gépeken.
+* A kötetek titkosításának engedélyezése csatlakoztatási útvonalakkal.
+* A titkosítás engedélyezése olyan Linux rendszerű virtuális gépeken, amelyek a mdadm használatával vannak konfigurálva lemezes csíkozással (RAID).
+* Az LVM-t használó Linux rendszerű virtuális gépek titkosításának engedélyezése adatlemezekhez.
+* A titkosítás engedélyezése a Linux RENDSZERű virtuális gépek és az adatlemezek esetében.
 
    > [!NOTE]
-   > Egyes Linux-disztribúciókon az operációs rendszer meghajtótitkosítás nem támogatott. További információkért lásd: a [Azure Disk Encryption – gyakori kérdések](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) cikk.
+   > Egyes Linux-disztribúciókon az operációs rendszer meghajtótitkosítás nem támogatott. További tudnivalókért tekintse meg a [Azure Disk Encryption támogatott operációs rendszereket: Linux](azure-security-disk-encryption-prerequisites.md#linux).
    
-* Windows Storage Spaces elején a Windows Server 2016 rendszerben konfigurált virtuális gépek titkosításának engedélyezése.
-* Egy meglévő titkosított prémium és a nem Premium Storage virtuális gépek titkosítási beállításainak frissítése.
-* Biztonsági mentése és visszaállítása titkosított virtuális gépek kulcstitkosítási kulcs-(KEK) és a nem KEK-forgatókönyvekhez.
-* Az összes Azure-beli nyilvános és az Azure Government-régiók támogatottak.
+* Titkosítás engedélyezése olyan virtuális gépeken, amelyek Windows-tárolóhelyekkel vannak konfigurálva a Windows Server 2016-es verziójától kezdődően. A Közvetlen tárolóhelyek (S2D) még nem támogatott.
+* Titkosított virtuális gépek biztonsági mentése és helyreállítása a kulcs titkosítási kulcs (KEK) és a nem KEK-forgatókönyvek esetében.
 
-A megoldás a következő forgatókönyvek, szolgáltatások és technológiák nem támogatja:
+A Azure Disk Encryption a következő forgatókönyvek, funkciók és technológiák esetében nem működik:
 
-* Alapszintű csomag IaaS virtuális gépeket.
-* Linux rendszerű IaaS virtuális gépek egy operációs rendszer meghajtójának titkosításának letiltása.
-* Adatmeghajtók titkosításának letiltása, ha az operációs rendszer meghajtójának Linux rendszerű IaaS virtuális gépek titkosítva van.
-* Linux virtuálisgép-méretezési csoport meghajtó titkosítása az operációs rendszer állítja be.
-* IaaS virtuális gépek jönnek létre a klasszikus virtuális gép létrehozási módszer használatával.
-* Az ügyfél Linux rendszerű IaaS virtuális gépek egyéni rendszerképek titkosítást.
-* Integráció a helyszíni kulcskezelő rendszerrel.
+* A klasszikus virtuálisgép-létrehozási módszerrel létrehozott alapszintű virtuális gép vagy virtuális gépek titkosítása.
+* Egy Linux rendszerű virtuális gép operációsrendszer-meghajtóján vagy adatmeghajtóján lévő titkosítás letiltása az operációs rendszer meghajtójának titkosítása esetén.
+* Operációs rendszer meghajtójának titkosítása linuxos virtuálisgép-méretezési csoportokhoz.
+* A szoftveres RAID-rendszerekkel konfigurált Windows-alapú virtuális gépek titkosítása.
+* Egyéni lemezképek titkosítása Linux rendszerű virtuális gépeken.
+* Integráció egy helyszíni kulcskezelő rendszerrel.
 * Az Azure Files (megosztott fájlrendszert).
 * Hálózati fájlrendszer (NFS).
 * A dinamikus köteteket.
-* Windows virtuális gépek, amelyeken a szoftveres RAID-rendszerekkel.
+* Windows Server-tárolók, amelyek mindegyik tárolóhoz dinamikus köteteket hoznak létre.
+* Ideiglenes operációsrendszer-lemezek.
+* Megosztott/elosztott fájlrendszerek titkosítása, például (de nem kizárólag): DFS, GFS, DRDB, CephFS stb.
 
 ## <a name="encryption-features"></a>Titkosítási funkciók
 
-Engedélyezi, és az Azure IaaS virtuális gépek üzembe helyezése a Lemeztitkosítást, ha az alábbi képességeket engedélyezve vannak a megadott konfigurációtól függően:
+Azure Disk Encryption Azure-beli virtuális gépekhez való engedélyezésekor és telepítésekor a következő képességeket engedélyezheti:
 
-* Az operációsrendszer-kötet védelmét a rendszerindító kötet a tárolás titkosítása.
-* Adatkötetek védelme érdekében az adatkötetek a tárolás titkosítása.
-* Tiltsa le a Windows IaaS virtuális gépek az operációsrendszer- és meghajtók titkosítását.
-* Linux rendszerű IaaS virtuális gépekhez az adatmeghajtók titkosításának letiltása (csak akkor, ha az operációs rendszer meghajtójának nem titkosított)
-* Titkosítási kulcsok és titkos kulcsok Azure Key Vault-előfizetésből az biztosítása érdekében.
-* A jelentés a titkosított IaaS virtuális gépek lemeztitkosítási állapotát.
-* Távolítsa el az IaaS virtuális gépek lemezkonfigurációs titkosítási beállításait.
-* Készítsen biztonsági másolatot, és a titkosított virtuális gépek visszaállítása az Azure Backup szolgáltatás használatával.
+* Az operációs rendszer kötetének titkosítása, hogy megvédje a rendszerindító kötetet a tárolóban található nyugalmi állapotban.
+* Az adatkötetek titkosításával gondoskodhat a tárterületen tárolt adatmennyiségek védelme érdekében.
+* A titkosítás letiltása a Windows rendszerű virtuális gépek operációsrendszer-és adatmeghajtóján.
+* A Linux rendszerű virtuális gépekhez tartozó adatmeghajtók titkosításának letiltása (csak akkor, ha az operációsrendszer-meghajtó nincs titkosítva).
+* A titkosítási kulcsok és a titkos kódok védelme a Azure Key Vault-előfizetésben.
+* A titkosított virtuális gép titkosítási állapotának jelentése.
+* A lemez titkosítási konfigurációs beállításainak eltávolítása a virtuális gépről.
+* A titkosított virtuális gépek biztonsági mentése és visszaállítása a Azure Backup szolgáltatás használatával.
 
-Az Azure Disk Encryption Windows és Linux-megoldás IaaS virtuális gépekhez tartalmazza:
+A Windows és a Linux rendszerű virtuális gépekhez Azure Disk Encryption a következők:
 
-* A Windows disk encryption bővítményt.
-* Linux-disk encryption bővítményt.
-* A PowerShell lemez titkosítási parancsmagokat.
-* Az Azure CLI-vel lemez titkosítási parancsmagok.
-* Az Azure Resource Manager lemez titkosítási sablonok.
-
-Az Azure Disk Encryption megoldás IaaS virtuális gépeket futtató, Windows vagy Linux operációs rendszer esetében támogatott. A támogatott operációs rendszerekkel kapcsolatos további információkért tekintse meg a [Előfeltételek](azure-security-disk-encryption-prerequisites.md) cikk.
+* [A Windows lemez titkosítási bővítménye](../virtual-machines/extensions/azure-disk-enc-windows.md).
+* [A Linux rendszerhez készült lemez-titkosítási bővítmény](../virtual-machines/extensions/azure-disk-enc-linux.md).
+* [A PowerShell-lemez titkosítási parancsmagjai](/powershell/module/az.compute/set-azvmdiskencryptionextension?view=azps-2.2.0).
+* [Az Azure CLI lemez titkosítási parancsmagjai](/cli/azure/vm/encryption?view=azure-cli-latest).
+* [A Azure Resource Manager lemez titkosítási sablonjai](azure-security-disk-encryption-appendix.md#resource-manager-templates).
 
 > [!NOTE]
 > Nem jár további költségekkel együtt az Azure Disk Encryption Virtuálisgép-lemezek titkosítása. Standard szintű [Key Vault díjszabását ismertető](https://azure.microsoft.com/pricing/details/key-vault/) vonatkozik a kulcstartóhoz, amely a titkosítási kulcsok tárolására szolgál. 
-
 
 ## <a name="encryption-workflow"></a>Titkosítási munkafolyamat
 
 Ahhoz, hogy a lemeztitkosítás Windows és Linux rendszerű virtuális gépekhez, tegye a következőket:
 
-1. Egy titkosítási forgatókönyvet a felsorolt forgatókönyvek közül választhat a [titkosítási megoldások](#encryption-scenarios) szakaszban.
-
 1. Részvétel a az Azure Disk Encryption Resource Manager-sablon, PowerShell-parancsmagok vagy az Azure CLI-n keresztül a lemeztitkosítás engedélyezve, és adja meg a titkosítási konfiguráció.
 
-   * Az ügyfél által titkosított VHD forgatókönyvhöz töltse fel a titkosított virtuális Merevlemezt a storage-fiók és a titkosítási kulcs adatai a kulcstartóba. Ezután adja meg a titkosítási konfiguráció engedélyezze a titkosítást egy új IaaS virtuális gépen.
-   * Adja meg a titkosítási konfiguráció engedélyezze a titkosítást az IaaS virtuális gépen a Marketplace-ről létrehozott új virtuális gépeket és a meglévő virtuális gépek, amelyek már futtatnak az Azure-ban.
+   * Az ügyfél által titkosított VHD forgatókönyvhöz töltse fel a titkosított virtuális Merevlemezt a storage-fiók és a titkosítási kulcs adatai a kulcstartóba. Ezután adja meg a titkosítási konfigurációt, hogy engedélyezze a titkosítást egy új virtuális gépen.
+   * A támogatott katalógus-rendszerképekből létrehozott új virtuális gépek és az Azure-ban már meglévő virtuális gépek esetében adja meg a titkosítási konfigurációt a virtuális gép titkosításának engedélyezéséhez.
 
-1. Hozzáférést biztosít az Azure platform a titkosítási kulcs adatai (a BitLocker titkosítási kulcsok Windows rendszerekhez) és a Linux-hozzáférési kódot olvasni az IaaS virtuális gép titkosításának a key vaultban.
+1. Hozzáférés biztosítása az Azure platformhoz a Key vaultban lévő titkosítási kulcs (a Windows rendszerekhez és a Linux-jelszóhoz tartozó titkosítási kulcsok) elolvasásához, hogy a virtuális gép titkosítása engedélyezve legyen.
 
 1. Azure titkosítási és a key vault beállítása a virtuális gép modell frissíti, és beállítja a titkosított virtuális gép.
 
    ![Microsoft Antimalware szolgáltatás az Azure-ban](./media/azure-security-disk-encryption/disk-encryption-fig1.png)
 
 ## <a name="decryption-workflow"></a>A visszafejtés munkafolyamat
-Lemeztitkosítás IaaS virtuális gépekhez letiltásához kövesse az alábbi magas szintű lépéseket:
+A virtuális gépek lemezes titkosításának letiltásához hajtsa végre a következő magas szintű lépéseket:
 
-1. Dönt, hogy tiltsa le a titkosítást (visszafejtési) az Azure-ban futó IaaS virtuális gépen, és adja meg a visszafejtési konfigurációt. Az Azure Disk Encryption Resource Manager-sablon, PowerShell-parancsmagok vagy az Azure CLI-n keresztül is letilthatja.
+1. Letilthatja a titkosítást (visszafejtést) egy futó virtuális gépen az Azure-ban, és megadhatja a visszafejtési konfigurációt. Az Azure Disk Encryption Resource Manager-sablon, PowerShell-parancsmagok vagy az Azure CLI-n keresztül is letilthatja.
 
-   Ebben a lépésben letiltja a titkosítást az operációs rendszer vagy adatmennyiség, illetve mindkettőt a futó Windows IaaS virtuális gépen. Az előző szakaszban említett operációs rendszer lemeztitkosítás linuxos letiltása nem támogatott. A visszafejtési lépés csak engedélyezett adatmeghajtókon a Linux rendszerű virtuális gépek mindaddig, amíg az operációsrendszer-lemez nincs titkosítva.
+   Ez a lépés letiltja az operációs rendszer vagy az adatkötet titkosítását, vagy mindkettőt a futó Windows-alapú virtuális gépen. Az előző szakaszban említett operációs rendszer lemeztitkosítás linuxos letiltása nem támogatott. A visszafejtési lépés csak engedélyezett adatmeghajtókon a Linux rendszerű virtuális gépek mindaddig, amíg az operációsrendszer-lemez nincs titkosítva.
 
-1. A Virtuálisgép-modell és az IaaS virtuális gép van megjelölve, Azure-frissítések visszafejteni. A virtuális gép tartalmát már nem titkosított inaktív.
+1. Az Azure frissíti a virtuálisgép-szolgáltatás modelljét, a virtuális gép pedig visszafejtett van megjelölve. A virtuális gép tartalmát már nem titkosított inaktív.
 
    > [!NOTE]
    > A titkosítási művelet nem törli a kulcstartót és a titkosítási kulcs adatai (BitLocker titkosítási kulcsok Windows rendszerekhez) vagy a Linux-jelszó.
@@ -159,30 +140,31 @@ Az új kiadásban az Azure Disk Encryption, így nem kell adja meg egy Azure Act
 
 1. Részvétel a az Azure Disk Encryption Resource Manager-sablon, PowerShell-parancsmagok vagy az Azure CLI-n keresztül a lemeztitkosítás engedélyezve, és adja meg a titkosítási konfiguráció.
 
-   * Az ügyfél által titkosított VHD forgatókönyvhöz töltse fel a titkosított virtuális Merevlemezt a storage-fiók és a titkosítási kulcs adatai a kulcstartóba. Ezután adja meg a titkosítási konfiguráció engedélyezze a titkosítást egy új IaaS virtuális gépen.
-   * Adja meg a titkosítási konfiguráció engedélyezze a titkosítást az IaaS virtuális gépen a Marketplace-ről létrehozott új virtuális gépeket és a meglévő virtuális gépek, amelyek már futtatnak az Azure-ban.
+   * Az ügyfél által titkosított VHD forgatókönyvhöz töltse fel a titkosított virtuális Merevlemezt a storage-fiók és a titkosítási kulcs adatai a kulcstartóba. Ezután adja meg a titkosítási konfigurációt, hogy engedélyezze a titkosítást egy új virtuális gépen.
+   * A piactéren és az Azure-ban már futó meglévő virtuális gépeken létrehozott új virtuális gépek esetében adja meg a titkosítási konfigurációt a virtuális gép titkosításának engedélyezéséhez.
 
-1. Hozzáférést biztosít az Azure platform a titkosítási kulcs adatai (a BitLocker titkosítási kulcsok Windows rendszerekhez) és a Linux-hozzáférési kódot olvasni az IaaS virtuális gép titkosításának a key vaultban.
+1. Hozzáférés biztosítása az Azure platformhoz a Key vaultban lévő titkosítási kulcs (a Windows rendszerekhez és a Linux-jelszóhoz tartozó titkosítási kulcsok) elolvasásához, hogy a virtuális gép titkosítása engedélyezve legyen.
 
-1. Adja meg az Azure ad-ben a titkosítási kulcsot a key vault anyag írása identitása. Ez a lépés lehetővé teszi a titkosítást az IaaS virtuális gépen a 2. lépésben említett forgatókönyvekhez.
+1. Adja meg az Azure ad-ben a titkosítási kulcsot a key vault anyag írása identitása. Ez a lépés lehetővé teszi a virtuális gép titkosítását a 2. lépésben említett forgatókönyvek esetében.
 
 1. Azure titkosítási és a key vault beállítása a virtuális gép modell frissíti, és beállítja a titkosított virtuális gép.
 
 
 ## <a name="terminology"></a>Terminológia
-Az alábbi táblázat a technológia egyes használt gyakori kifejezések meghatározása:
+Az alábbi táblázat az Azure Disk Encryption dokumentációjában használt általános kifejezéseket ismerteti:
 
 | Terminológia | Meghatározás |
 | --- | --- |
 | Azure AD | Egy [Azure ad-ben](https://azure.microsoft.com/documentation/services/active-directory/) fiók hitelesítéséhez, tárolása és titkos kódok lekérése a key vault segítségével. |
 | Azure Key Vault | A Key Vault szolgáltatás titkosítási, key management, amelyek az rendelkezik a Federal Information Processing szabványok (FIPS) hitelesített hardveres biztonsági modulokban. Ezen irányelvek segítenek a kriptográfiai kulcsok és a bizalmas, titkos kulcsok védelme érdekében. További információkért lásd: a [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) dokumentációját. |
-| BitLocker |[A BitLocker](https://technet.microsoft.com/library/hh831713.aspx) egy iparági ismerhető fel Windows kötet titkosítási technológia, amely lehetővé teszi a lemeztitkosítást a Windows IaaS virtuális gépeket, hogy. |
+| BitLocker |A [BitLocker](https://technet.microsoft.com/library/hh831713.aspx) egy iparág által felismert Windows mennyiségi titkosítási technológia, amely lehetővé teszi a lemezes titkosítás használatát a Windows rendszerű virtuális gépeken. |
 | BEK | A BitLocker titkosítási kulcsok (rendelkeznek BEk-KEL) segítségével titkosítja az operációs rendszer rendszerindító kötet és adatkötetek. BEKs számára biztosít védelmet a kulcstartóban található titkos kódként. |
 | Azure CLI | [Az Azure CLI](/cli/azure/install-azure-cli) kezelésére és felügyeletére az Azure-erőforrások parancssorból van optimalizálva.|
-| DM-Crypt |[DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) a Linux-alapú, átlátható lemeztitkosítás alrendszer, amely engedélyezi a lemeztitkosítást a Linuxos IaaS virtuális gépek szolgál. |
-| KEK | Kulcstitkosítási kulcs-(KEK) az az aszimmetrikus kulcs (RSA 2048), amellyel védelméhez vagy burkolásához a titkos kulcsot. Megadhat egy hardveres biztonsági modul (HSM) – vagy szoftveres védelemmel ellátott kulcs védett. További információkért lásd: a [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) dokumentációját. |
+| DM-Crypt |A [dm-crypt](https://gitlab.com/cryptsetup/cryptsetup/wikis/DMCrypt) a Linux-alapú, transzparens lemezes titkosítási alrendszer, amely lehetővé teszi a lemezes titkosítás használatát a Linux rendszerű virtuális gépeken. |
+| Kulcs titkosítási kulcsa (KEK) | Az aszimmetrikus kulcs (RSA 2048), amellyel védetté teheti vagy becsomagolhatja a titkos kulcsot. Megadhat egy hardveres biztonsági modul (HSM) – vagy szoftveres védelemmel ellátott kulcs védett. További információkért lásd: a [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) dokumentációját. |
 | PowerShell-parancsmagok | További információkért lásd: [Azure PowerShell-parancsmagok](/powershell/azure/overview). |
 
 ## <a name="next-steps"></a>További lépések
-> [!div class="nextstepaction"]
-> [Az Azure Disk Encryption előfeltételei](azure-security-disk-encryption-prerequisites.md)
+
+Első lépésként tekintse meg a [Azure Disk Encryption előfeltételek](azure-security-disk-encryption-prerequisites.md)című témakört.
+

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/18/2019
 ms.author: jeedes
-ms.openlocfilehash: be8f70e36636fc090552fdc64a18f4d1829388e9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: db51e4020e3f16244b19c8107a17080bf85c3330
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57897248"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67101955"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fuze"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Fuze
 
@@ -54,7 +54,7 @@ Az Azure AD integrálása a Fuze konfigurálásához hozzá kell Fuze a katalóg
 
 **Fuze hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

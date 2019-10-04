@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: spelluru
 ms.openlocfilehash: 16ce537a54fc77fc0f72b859d6d193501d86c1fc
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52270354"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179352"
 ---
 ## <a name="create-a-ruby-application"></a>Ruby alkalmazás létrehozása
 Útmutatásért lásd: [egy Ruby-alkalmazás létrehozása az Azure-ban](../articles/virtual-machines/linux/classic/ruby-rails-web-app.md).
@@ -41,4 +41,4 @@ signer = Azure::ServiceBus::Auth::SharedAccessSigner.new
 sb_host = "https://#{Azure.sb_namespace}.servicebus.windows.net"
 ```
 
-Állítsa be a névtér értéke, a létrehozott értéket adja meg a teljes URL-cím helyett. Például **"yourexamplenamespace"**, nem "yourexamplenamespace.servicebus.windows.net".
+Állítsa be a névtér értéke, a létrehozott értéket adja meg a teljes URL-cím helyett. Például **"yourexamplenamespace"** , nem "yourexamplenamespace.servicebus.windows.net".

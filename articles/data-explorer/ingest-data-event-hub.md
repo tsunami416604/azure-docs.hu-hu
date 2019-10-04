@@ -1,32 +1,32 @@
 ---
-title: 'Gyors útmutató: Betölteni az adatokat az Event Hubs az Azure Data Explorer'
-description: Ebből a rövid útmutatóból megtudhatja, hogyan tölthet be adatokat az Azure Data Explorerbe az Event Hubsból.
+title: Adatok beolvasása az Event hub-ből az Azure-ba Adatkezelő
+description: Ebből a cikkből megtudhatja, hogyan végezheti el az adatok betöltését az Azure Adatkezelőba az Event hub-ból.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-ms.topic: quickstart
-ms.date: 02/02/2018
-ms.openlocfilehash: 52bdbe6d34fb631cd4b2205dfad25399fe0e43fb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.topic: conceptual
+ms.date: 07/17/2019
+ms.openlocfilehash: 2dbb900d297f1acf05e77dca3e1753745e9b2b38
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59048387"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937398"
 ---
-# <a name="quickstart-ingest-data-from-event-hub-into-azure-data-explorer"></a>Gyors útmutató: Betölteni az adatokat az Event Hubs az Azure Data Explorer
+# <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>Adatok beolvasása az Event hub-ből az Azure-ba Adatkezelő
 
-Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Data Explorer adatbetöltési lehetőséget tesz elérhetővé az Event Hubsból, amely egy big data-streamelési platform és eseményfeldolgozó szolgáltatás. [Az Event Hubs](/azure/event-hubs/event-hubs-about) millió másodpercenként a közel valós idejű események feldolgozására is. Ebben a rövid útmutatóban létrehozunk egy eseményközpontot, csatlakozunk hozzá az Azure Data Explorerből, és megfigyeljük az adatok a rendszeren keresztüli áramlását.
+Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Data Explorer adatbetöltési lehetőséget tesz elérhetővé az Event Hubsból, amely egy big data-streamelési platform és eseményfeldolgozó szolgáltatás. A [Event Hubs](/azure/event-hubs/event-hubs-about) másodpercenként több millió eseményt képes feldolgozni a közel valós időben. Ebben a cikkben létrehoz egy Event hubot, csatlakozik hozzá az Azure Adatkezelő, és megtekintheti az adatfolyamot a rendszeren keresztül.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 
-* [Egy tesztfürt és -adatbázis](create-cluster-database-portal.md)
+* [Egy tesztelési fürt és adatbázis](create-cluster-database-portal.md).
 
-* [Egy mintaalkalmazás](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) , amely adatokat állít elő, és elküldi azt az eseményközpontba. Töltse le a mintaalkalmazást a rendszer.
+* [Egy minta alkalmazás](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) , amely adatokat hoz létre, és elküldi azt egy Event hub-nak. Töltse le a minta alkalmazást a rendszeren.
 
-* A [Visual Studio 2017 szoftver 15.3.2-es vagy újabb verziója](https://www.visualstudio.com/vs/) a mintaalkalmazás futtatásához
+* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) a minta alkalmazás futtatásához.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
@@ -34,9 +34,9 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 ## <a name="create-an-event-hub"></a>Eseményközpont létrehozása
 
-A rövid útmutatóban mintaadatokat állítunk elő, és elküldjük azokat egy eseményközpontnak. Első lépésként létre kell hoznia egy eseményközpontot. Ezt egy Azure Resource Manager-sablon használatával teheti meg az Azure Portalon.
+Ebben a cikkben mintaadatok létrehozásához és az Event hub-hoz való elküldéséhez. Első lépésként létre kell hoznia egy eseményközpontot. Ezt egy Azure Resource Manager-sablon használatával teheti meg az Azure Portalon.
 
-1. Létrehoz egy eseményközpontot, használja az alábbi gombra a telepítés elindításához. Kattintson a jobb gombbal, és válassza ki **Megnyitás új ablakban**, ezért kövesse a cikkben ismertetett lépések a többi.
+1. Az Event hub létrehozásához használja a következő gombot a központi telepítés elindításához. Kattintson a jobb gombbal, és válassza a **Megnyitás új ablakban**lehetőséget, így követheti a cikk további lépéseit.
 
     [![Üzembe helyezés az Azure-ban](media/ingest-data-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
 
@@ -56,9 +56,9 @@ A rövid útmutatóban mintaadatokat állítunk elő, és elküldjük azokat egy
 
     **Beállítás** | **Ajánlott érték** | **Mező leírása**
     |---|---|---|
-    | Előfizetés | Az Ön előfizetése | Válassza ki az eseményközponthoz használni kívánt Azure-előfizetést.|
-    | Erőforráscsoport | *test-hub-rg* | Hozzon létre egy új erőforráscsoportot. |
-    | Földrajzi egység | *USA nyugati régiója* | Ebben a rövid útmutatóban válassza az *USA nyugati régióját*. Éles üzemben az igényeinek leginkább megfelelő régiót válassza. Az eseményközpont-névtér létrehozása a legjobb teljesítmény érdekében a Kusto-fürt ugyanazon a helyen (leginkább fontos a nagy átviteli sebességgel eseményközpont-névtér).
+    | Subscription | Az Ön előfizetése | Válassza ki az eseményközponthoz használni kívánt Azure-előfizetést.|
+    | Resource group | *test-hub-rg* | Hozzon létre egy új erőforráscsoportot. |
+    | Location | *USA nyugati régiója* | A cikkhez válassza az *USA nyugati* régiója lehetőséget. Éles üzemben az igényeinek leginkább megfelelő régiót válassza. Hozza létre az Event hub-névteret ugyanabban a helyen, mint a Kusto-fürtöt a legjobb teljesítmény érdekében (amely a nagy átviteli sebességű Event hub-névterek esetében fontos
     | Névtér neve | A névtér egyedi neve | Válasszon egy egyedi nevet a névtér azonosításához. Például: *mytestnamespace*. A rendszer hozzáfűzi a *servicebus.windows.net* tartománynevet a megadott névhez. A név csak betűket, számokat és kötőjelet tartalmazhat. A névnek betűvel kell kezdődnie, és betűvel vagy számmal kell végződnie. Az érték 6 és 50 karakter közötti hosszúságú lehet.
     | Event Hubs neve | *test-hub* | Az eseményközpont a névtéren belül helyezkedik el, ami egy egyedi hatókörkezelési tárolóként szolgál. Az eseményközpont nevének egyedinek kell lennie a névtéren belül. |
     | Fogyasztói csoport neve | *test-group* | A fogyasztói csoportokkal több fogyasztói alkalmazás is rendelkezhet az eseménystream külön nézetével. |
@@ -78,7 +78,7 @@ Most létrehozunk egy táblát az Azure Data Explorerben, amelyre az Event Hubs 
 
     ![Alkalmazáshivatkozás lekérdezése](media/ingest-data-event-hub/query-explorer-link.png)
 
-1. A következő parancs másolja be az ablakot, és válassza ki **futtatása** fogadják a feldolgozott adatokat (TestTable) tábla létrehozásához.
+1. Másolja a következő parancsot az ablakba, és válassza a **Futtatás** elemet a betöltött adatot fogadó tábla (TestTable) létrehozásához.
 
     ```Kusto
     .create table TestTable (TimeStamp: datetime, Name: string, Metric: int, Source:string)
@@ -86,7 +86,7 @@ Most létrehozunk egy táblát az Azure Data Explorerben, amelyre az Event Hubs 
 
     ![Létrehozási lekérdezés futtatása](media/ingest-data-event-hub/run-create-query.png)
 
-1. A következő parancs másolja be az ablakot, és válassza ki **futtatása** való leképezéséhez a tábla (TestTable) oszlop nevükkel és adattípusukkal bejövő JSON-adatokat.
+1. Másolja a következő parancsot az ablakba, és válassza a **Futtatás** elemet a bejövő JSON-adattípusok a tábla oszlopnevek és adattípusai (TestTable) szerinti leképezéséhez.
 
     ```Kusto
     .create table TestTable ingestion json mapping 'TestMapping' '[{"column":"TimeStamp","path":"$.timeStamp","datatype":"datetime"},{"column":"Name","path":"$.name","datatype":"string"},{"column":"Metric","path":"$.metric","datatype":"int"},{"column":"Source","path":"$.source","datatype":"string"}]'
@@ -102,7 +102,7 @@ Most csatlakozzon az eseményközponthoz az Azure Data Explorerből. Ha ez a kap
 
     ![Tesztadatbázis kiválasztása](media/ingest-data-event-hub/select-test-database.png)
 
-1. Válassza ki **adatbetöltés** és **adatkapcsolat hozzáadása**. Ezután töltse ki az űrlapot a következő információkat. Válassza ki **létrehozás** befejezése után.
+1. Válassza **az adatfeldolgozás** lehetőséget, és **adja hozzá az adatkapcsolatok**elemet. Ezután töltse ki az űrlapot a következő információkkal. Ha elkészült, válassza a **Létrehozás** lehetőséget.
 
     ![Eseményközpont-kapcsolat](media/ingest-data-event-hub/event-hub-connection.png)
 
@@ -116,17 +116,21 @@ Most csatlakozzon az eseményközponthoz az Azure Data Explorerből. Ha ez a kap
     | Fogyasztói csoport | *test-group* | A létrehozott eseményközponton definiált fogyasztói csoport. |
     | | |
 
-    Céloldali tábla:
+    Céltábla:
 
-    Az útvonalválasztás esetében két lehetőség érhető el: a *statikus* és a *dinamikus*. Ebben a rövid útmutatóban statikus útválasztást alkalmazunk (ez az alapértelmezett), amelyben megadjuk a táblanevet, a fájlformátumot és a leképezést. Ezért hagyja **adataimat magában foglalja az útválasztási információ** nincs bejelölve.
-    Dinamikus útválasztás is alkalmazható, ha a saját adatok tartalmazzák a szükséges útválasztási információkat.
+    Két lehetőség van a betöltött adatmennyiség útválasztására: *statikus* és *dinamikus*. 
+    Ebben a cikkben statikus útválasztást használ, ahol megadhatja a tábla nevét, az adatformátumot és a leképezést. Ezért hagyja, hogy az adatok között ne legyenek kiválasztva **az útválasztási adatok** .
 
      **Beállítás** | **Ajánlott érték** | **Mező leírása**
     |---|---|---|
     | Tábla | *TestTable* | A **TestDatabase** adatbázisban létrehozott tábla. |
-    | Adatformátum | *JSON* | Támogatott formátumok a következők: Avro, CSV, JSON, TÖBBSOROS JSON, PSV, Rendszerállapot, SCSV, TSV és TXT. |
-    | Oszlopleképezés | *TestMapping* | A **TestDatabase** adatbázisban létrehozott leképezés, amely a bejövő JSON-adatokat leképezi a **TestTable** tábla esetében használt oszlopnevekre és adattípusokra.|
+    | Adatformátum | *JSON* | A támogatott formátumok a következők: Avro, CSV, JSON, többsoros JSON, PSV, rendszerállapot-kimutatás, SCSV, TSV és TXT. Támogatott tömörítési beállítások: GZip |
+    | Oszlop-hozzárendelés | *TestMapping* | A **TestDatabase** adatbázisban létrehozott leképezés, amely a bejövő JSON-adatokat leképezi a **TestTable** tábla esetében használt oszlopnevekre és adattípusokra. JSON-, többsoros JSON-vagy AVRO szükséges, és más formátumokhoz nem kötelező.|
     | | |
+
+    > [!NOTE]
+    > * Válassza a **saját adatok: útválasztási információ** lehetőséget a dinamikus útválasztás használatához, ahol az adatok tartalmazzák a szükséges útválasztási információkat a [minta alkalmazás](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) megjegyzésében látható módon. Ha a statikus és a dinamikus tulajdonságok is be vannak állítva, a dinamikus tulajdonságok felülbírálják a statikus fájlokat. 
+    > * A rendszer csak az adatkapcsolatok létrehozását követően várólistán lévő eseményeket.
 
 ## <a name="copy-the-connection-string"></a>A kapcsolati sztring másolása
 
@@ -134,7 +138,7 @@ Amikor elindítja az Előfeltételek között szereplő [mintaalkalmazást](http
 
 1. A létrehozott eseményközpont-névtér alatt válassza a **Megosztott elérési szabályzatok**, majd a **RootManageSharedAccessKey** lehetőséget.
 
-    ![Megosztott elérési házirendek](media/ingest-data-event-hub/shared-access-policies.png)
+    ![Megosztott elérési szabályzatok](media/ingest-data-event-hub/shared-access-policies.png)
 
 1. Másolja ki a **kapcsolati sztring elsődleges kulcsát**. A következő szakaszban kell beillesztenie.
 
@@ -142,7 +146,7 @@ Amikor elindítja az Előfeltételek között szereplő [mintaalkalmazást](http
 
 ## <a name="generate-sample-data"></a>Mintaadatok létrehozása
 
-Használja a [mintaalkalmazás](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) letöltött adatok létrehozására.
+Használja a letöltött [minta alkalmazást](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) az adatlétrehozáshoz.
 
 1. Nyissa meg a mintaalkalmazást a Visual Studióban.
 
@@ -173,18 +177,20 @@ Most, hogy az alkalmazás adatokat állít elő, láthatja, ahogy ezek az adatok
     | count
     ```
 
-1. Az üzenetek a tartalom megtekintéséhez futtassa a következő lekérdezést:
+1. Az üzenetek tartalmának megtekintéséhez futtassa a következő lekérdezést:
 
     ```Kusto
     TestTable
     ```
 
-    Az eredményhalmaz a következőhöz hasonlóan kell kinéznie:
+    Az eredményhalmaz a következőhöz hasonlóan néz ki:
 
     ![Üzenetek eredményhalmaza](media/ingest-data-event-hub/message-result-set.png)
 
     > [!NOTE]
-    > Az adatkezelő az Azure-összesítési (kötegelés) szabályzat adatbetöltés, optimalizálja a betöltési folyamat rendelkezik. A házirendet 5 perc van konfigurálva, a késés tapasztalható.
+    > * Az Azure Adatkezelő a betöltési folyamat optimalizálására szolgáló összesítési (batch-) szabályzattal rendelkezik az adatfeldolgozáshoz. A házirend alapértelmezés szerint 5 percre vagy 500 MB-ra van konfigurálva, így késést tapasztalhat. Lásd: az összesítési beállításokra vonatkozó [kötegelt házirend](/azure/kusto/concepts/batchingpolicy) . 
+    > * Az Event hub betöltésének része az Event hub válaszideje 10 másodperc vagy 1 MB. 
+    > * Konfigurálja a táblázatot a folyamatos átvitel támogatásához, és távolítsa el a késést a válaszadás időpontjában. Lásd: [streaming Policy](/azure/kusto/concepts/streamingingestionpolicy). 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -192,7 +198,7 @@ Ha nem tervezi, hogy továbbra is használja, a költségek elkerülése érdek�
 
 1. Az Azure Portalon válassza az **Erőforráscsoportok** lehetőséget a bal szélen, majd a létrehozott erőforráscsoport.  
 
-    Ha a bal oldali menü össze van csukva, kattintson a ![Kibontás gombra](media/ingest-data-event-hub/expand.png) a kinyitásához.
+    Ha a bal oldali menü össze van csukva, kattintson a ![Kibontás gomb](media/ingest-data-event-hub/expand.png) a kinyitásához.
 
    ![A törölni kívánt erőforráscsoport kiválasztása](media/ingest-data-event-hub/delete-resources-select.png)
 
@@ -202,5 +208,4 @@ Ha nem tervezi, hogy továbbra is használja, a költségek elkerülése érdek�
 
 ## <a name="next-steps"></a>További lépések
 
-> [!div class="nextstepaction"]
-> [Rövid útmutató: Az Azure Data Explorer adatok lekérdezése](web-query-data.md)
+* [Az Azure Adatkezelő lekérdezése](web-query-data.md)

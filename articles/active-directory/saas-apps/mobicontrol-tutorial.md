@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 120be3ef7299391e611dc393e70af697c1daf2ba
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a5ec603b65161f3b0b2d9c88224aef0004cc686a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59279839"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67096908"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobicontrol"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező MobiControl
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a MobiControl konfigurálásához hozzá kell MobiCont
 
 **MobiControl hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

@@ -9,15 +9,15 @@ ms.topic: conceptual
 author: sdgilley
 ms.author: sgilley
 ms.date: 03/22/2019
-ms.openlocfilehash: 815aeb9ae6036f08fc87e41980a623e2be8414e5
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 7343692e8484e50a02963b4528889a35cc1fcaa6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371094"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66239080"
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>Adatokkal megválaszolható kérdések megfogalmazása
-## <a name="video-3-data-science-for-beginners-series"></a>3. Videó: Adatelemzés kezdőknek sorozat
+## <a name="video-3-data-science-for-beginners-series"></a>3\. Videó: Adatelemzés kezdőknek sorozat
 Megtudhatja, hogyan határozhatja meg a data science probléma, az adatelemzés kezdőknek videó 3 kérdést. Ez a videó besorolási és regressziós algoritmus kérdések összehasonlítását tartalmazza.
 
 A lehető leghatékonyabban a sorozat, tekintse meg az összes. [Nyissa meg a videók listájában](#other-videos-in-this-series)
@@ -30,11 +30,11 @@ A lehető leghatékonyabban a sorozat, tekintse meg az összes. [Nyissa meg a vi
 ## <a name="other-videos-in-this-series"></a>Ez a sorozat egyéb videók
 *Adatelemzés kezdőknek* egy gyors bevezetőt az öt rövid videóban a rendszer.
 
-* 1. Videó: [A 5 kérdés adatelemzés választ ad](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 perc 14 mp)*
-* 2. Videó: [Az adatelemzés készen áll az adatok?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 perc 56 másodperc)*
-* 3. Videó: Adatokkal megválaszolható kérdések megfogalmazása
-* 4. Videó: [Egy egyszerű modellel válasz előrejelzése](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 perc 42 másodperc)*
-* 5. Videó: [Más emberek munkájának lemásolása az adatelemzéshez való másolása](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 perc 18 másodperc)*
+* 1\. Videó: [A 5 kérdés adatelemzés választ ad](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 perc 14 mp)*
+* 2\. Videó: [Az adatelemzés készen áll az adatok?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 perc 56 másodperc)*
+* 3\. Videó: Adatokkal megválaszolható kérdések megfogalmazása
+* 4\. Videó: [Egy egyszerű modellel válasz előrejelzése](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 perc 42 másodperc)*
+* 5\. Videó: [Más emberek munkájának lemásolása az adatelemzéshez való másolása](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 perc 18 másodperc)*
 
 ## <a name="transcript-ask-a-question-you-can-answer-with-data"></a>A szövegben: Adatokkal megválaszolható kérdések megfogalmazása
 Üdvözli az a sorozat harmadik videó "Adatelemzés kezdőknek."  
@@ -48,7 +48,7 @@ Beszéltünk hogyan adatelemzés során a rendszer egy kérdésre adott válasz 
 
 Országról kérdés nem rendelkezik egy vagy több vet fel. Éles kérdést kell.
 
-Tegyük fel, hogy megtalálta, egy-egy genie, akik bármely tegye fel kérdését valósághűen mutathatja be válaszolni fog magic lamp. De mischievous genie, és ő lesz próbál győződjön meg arról, a válasz országról és zavarosnak, ahogy azt a nyelvet a lenti listában kaphat. Szeretne egy kérdést, hogy ő nem segít, de állapítható meg, hogy meg szeretné tudni, hogy így záródó rögzíteni neki.
+Tegyük fel, hogy megtalálta, egy-egy genie, akik bármely tegye fel kérdését valósághűen mutathatja be válaszolni fog magic lamp. De mischievous genie, akik megpróbálja győződjön meg arról, a válasz országról és zavarosnak, akkor értesítést kaphatnak azonnal a. Szeretne egy kérdést, hogy azok nem segít, de állapítható meg, hogy meg szeretné tudni, hogy így záródó rögzítheti őket.
 
 Ha a kérdés feltevése országról, például a "Mi történik meg a készlet?", a genie előfordulhat, hogy választ, "az árat fog módosítása". Ez egy truthful választ, de az nem nagyon hasznos.
 

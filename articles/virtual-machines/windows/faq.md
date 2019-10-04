@@ -1,140 +1,129 @@
 ---
-title: Windows virtuális gépek az Azure-ban – gyakori kérdések |} A Microsoft Docs
-description: A Resource Manager modellel létrehozott Windows virtuális gépek kapcsolatos gyakori kérdésekre adott válaszokat biztosít.
+title: Gyakori kérdések az Azure-beli Windows rendszerű virtuális gépekről | Microsoft Docs
+description: Választ ad a Resource Manager-modellel létrehozott Windows rendszerű virtuális gépekkel kapcsolatos gyakori kérdésekre.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-management
 ms.assetid: 757da816-a050-4889-a010-6f75d7978eb7
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
-ms.date: 10/20/2017
+ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 65d4326763ef9754159e94c9426f3aee69f80ffd
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 0b1af2052e8aa916bf5fd6a40bea3502ff81a02d
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253363"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70079477"
 ---
-# <a name="frequently-asked-question-about-windows-virtual-machines"></a>Gyakori kérdések a Windows Virtual Machines szolgáltatásról
-Ez a cikk foglalkozik az Azure Resource Manager-alapú üzemi modellel létrehozott Windows virtuális gépek kapcsolatos gyakori kérdésekre. Ez a témakör Linux-verzióját, lásd: [gyakori kérdést Linux Virtual Machines szolgáltatásról](../linux/faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+# <a name="frequently-asked-question-about-windows-virtual-machines"></a>Gyakori kérdések a Windows Virtual Machines
+Ez a cikk az Azure-ban a Resource Manager-alapú üzemi modellel létrehozott Windows rendszerű virtuális gépekkel kapcsolatos gyakori kérdéseket tárgyalja. A jelen témakör Linux-verziójával kapcsolatban lásd: [Linux Virtual Machines kapcsolatos gyakori kérdések](../linux/faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="what-can-i-run-on-an-azure-vm"></a>Mit futtathatok egy Azure-beli virtuális gépen?
-Minden előfizető kiszolgálószoftvereket futtathat az Azure-beli virtuális gépeken. Az Azure-ban futó Microsoft kiszolgálói szoftverek a támogatási házirenddel kapcsolatos további információkért lásd: [Microsoft kiszolgálószoftveres támogatás az Azure Virtual Machines szolgáltatáshoz](https://support.microsoft.com/kb/2721672)
+Minden előfizető kiszolgálószoftvereket futtathat az Azure-beli virtuális gépeken. További információ az Azure-beli Microsoft Server-szoftverek futtatására vonatkozó támogatási szabályzatról: a [Microsoft Server szoftver támogatása az azure Virtual Machines](https://support.microsoft.com/kb/2721672).
 
-Windows 7, Windows 8.1 és Windows 10 egyes verzióit MSDN Azure előfizetői előnyöket és az MSDN-es fejlesztési és tesztelés – használatalapú fizetést előfizetők fejlesztési és tesztelési feladatok érhetők el. Részletekért, többek között az utasításokért és korlátozásokért tekintse meg az [MSDN-előfizetők számára elérhető Windows-rendszerképeket](https://azure.microsoft.com/blog/2014/05/29/windows-client-images-on-azure/) ismertető cikket. 
+A Windows 7, a Windows 8,1 és a Windows 10 bizonyos verziói elérhetők az MSDN Azure Benefit előfizetők és az MSDN dev and test utólagos elszámolású előfizetők számára fejlesztési és tesztelési feladatokhoz. Részletekért, többek között az utasításokért és korlátozásokért tekintse meg az [MSDN-előfizetők számára elérhető Windows-rendszerképeket](https://azure.microsoft.com/blog/2014/05/29/windows-client-images-on-azure/) ismertető cikket. 
 
 ## <a name="how-much-storage-can-i-use-with-a-virtual-machine"></a>Mennyi tárhelyet használhatok egy virtuális gép esetén?
-Minden adatlemez akár 4 TB-ig (4095 GB) lehet. A használható adatlemezek száma a virtuális gép méretétől függ. Részletek: [Virtuális gépek méretei](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Az egyes adatlemezek akár 32 767 GiB-t is használhatnak. A használható adatlemezek száma a virtuális gép méretétől függ. Részletek: [Virtuális gépek méretei](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-Azure Managed Disks szolgáltatást ajánljuk lemezes tárolás ajánlatokra használatra az Azure Virtual Machines hosszú távú adattárolásra az adatok. Egy-egy virtuális géppel több felügyelt lemez is használható. A Managed Disks kétféle tartós tárolási lehetőséget kínál: Premium és Standard szintű Managed Disks. Díjszabási információkért tekintse meg a [Managed Disks díjszabását ismertető](https://azure.microsoft.com/pricing/details/managed-disks).
+Az Azure-Managed Disks az Azure Virtual Machines által az adattároláshoz használt ajánlott lemezes tárolási ajánlatok. Egy-egy virtuális géppel több felügyelt lemez is használható. Managed Disks kétféle tartós tárolási lehetőséget kínál: Prémium és standard Managed Disks. A díjszabással kapcsolatos információkért tekintse meg a [Managed Disks díjszabását](https://azure.microsoft.com/pricing/details/managed-disks).
 
-Az Azure storage-fiókok storage is lehetővé teszi az operációsrendszer-lemez és bármely adatlemez számára. Minden lemez egy lapblobként tárolt .vhd-fájl. A díjszabás részleteiért lásd [a Storage szolgáltatás díjszabását](https://azure.microsoft.com/pricing/details/storage/).
+Az Azure Storage-fiókok az operációs rendszer lemezét és az adatlemezeket is megadhatják. Minden lemez egy lapblobként tárolt .vhd-fájl. A díjszabás részleteiért lásd [a Storage szolgáltatás díjszabását](https://azure.microsoft.com/pricing/details/storage/).
 
-## <a name="how-can-i-access-my-virtual-machine"></a>Hogyan érhetem el a virtuális gépem?
-Windows virtuális gép távoli asztali kapcsolat (RDP) használatával távoli kapcsolatot létesíteni. Útmutatásért lásd: [csatlakoztatása és bejelentkezés Windows rendszert futtató Azure virtuális gép](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Legfeljebb két egyidejű kapcsolatok támogatottak, kivéve, ha a kiszolgáló úgy van konfigurálva, a távoli asztali szolgáltatások munkamenet-gazdagépként.  
+## <a name="how-can-i-access-my-virtual-machine"></a>Hogyan lehet hozzáférni a virtuális géphez?
+Hozzon létre egy távoli kapcsolatot egy Windows rendszerű virtuális gép Távoli asztali kapcsolat (RDP) használatával. Útmutatásért lásd: [Kapcsolódás és bejelentkezés egy Windows rendszerű Azure-beli virtuális gépre](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Legfeljebb két egyidejű kapcsolat támogatott, kivéve, ha a kiszolgáló Távoli asztali szolgáltatások munkamenet-gazdagépként van konfigurálva.  
 
-Ha a távoli asztal problémákat tapasztal, tekintse meg [távoli asztali kapcsolatok hibaelhárítása a Windows-alapú Azure virtuális gép](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+Ha problémákat tapasztal a Távoli asztalával kapcsolatban, tekintse [meg a Windows-alapú Azure-beli virtuális gépek távoli asztal kapcsolatainak hibaelhárításával](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)foglalkozó témakört. 
 
 Ha járatos a Hyper-V használatában, akkor előfordulhat, hogy egy, a VMConnecthez hasonló eszközt szeretne használni. Az Azure nem biztosít hasonló eszközt, mivel nem támogatja a virtuális gépek konzolos elérését.
 
-## <a name="can-i-use-the-temporary-disk-the-d-drive-by-default-to-store-data"></a>Használhatom az ideiglenes lemezt (a D: meghajtó alapértelmezés szerint) adatok tárolására?
-Ne használja az ideiglenes lemez a adatok tárolásához. Csak ideiglenes tároló, így azt kockáztatja adatok nem állíthatók vissza. Adatvesztés fordulhat elő, ha a virtuális gép egy másik gazdagépre helyezi. A virtuális gép átméretezése, a gazdagép frissítése vagy a gazdagépen bekövetkezett hardverhiba lehet az oka egy virtuális gép áthelyezésének.
+## <a name="can-i-use-the-temporary-disk-the-d-drive-by-default-to-store-data"></a>Használhatom az ideiglenes lemezt (a D: meghajtó alapértelmezés szerint) az adattároláshoz?
+Ne használja az ideiglenes lemezt az adattároláshoz. Csak átmeneti tárterület, ezért a nem helyreállítható adatvesztés kockázatát kockáztatja. Adatvesztés történhet, ha a virtuális gép egy másik gazdagépre lép. A virtuális gép átméretezése, a gazdagép frissítése vagy a gazdagépen bekövetkezett hardverhiba lehet az oka egy virtuális gép áthelyezésének.
 
-Ha egy alkalmazás, amely kell használnia a D: meghajtó betűjelét, akkor is meghajtóbetűjeleket, hogy az ideiglenes lemez D: nem használja. Útmutatásért lásd a [Windows ideiglenes lemezének meghajtóbetűjel-módosítását](change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) ismertető cikket.
+Ha van olyan alkalmazás, amelynek a D: meghajtó betűjelét kell használnia, a meghajtóbetűjelek ismételt hozzárendelésével az ideiglenes lemez nem a D:.-t használja. Útmutatásért lásd a [Windows ideiglenes lemezének meghajtóbetűjel-módosítását](change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) ismertető cikket.
 
 
 ## <a name="how-can-i-change-the-drive-letter-of-the-temporary-disk"></a>Hogyan módosíthatom egy ideiglenes lemez meghajtóbetűjelét?
-A meghajtó betűjelét a lapozófájl áthelyezésével és a meghajtóbetűjel módosíthatja, de győződjön meg arról, hogy a lépések a meghatározott sorrendben kell. Útmutatásért lásd a [Windows ideiglenes lemezének meghajtóbetűjel-módosítását](change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) ismertető cikket.
+A meghajtóbetűjelet úgy módosíthatja, hogy áthelyezi a lapozófájlt, és újból hozzárendeli a meghajtóbetűjeleket, de meg kell győződnie arról, hogy a lépéseket egy adott sorrendben hajtja végre. Útmutatásért lásd a [Windows ideiglenes lemezének meghajtóbetűjel-módosítását](change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) ismertető cikket.
 
-## <a name="can-i-add-an-existing-vm-to-an-availability-set"></a>Adhatok hozzá egy meglévő virtuális Gépet egy rendelkezésre állási csoportot?
-Nem. Ha azt szeretné, hogy a virtuális gép egy rendelkezésre állási csoport részeként, a csoporton belül a virtuális gép létrehozásához szüksége. Jelenleg nem lehet megoldást a virtuális gép hozzáadása egy rendelkezésre állási csoport létrehozása után.
+## <a name="can-i-add-an-existing-vm-to-an-availability-set"></a>Felvehetek meglévő virtuális gépet egy rendelkezésre állási csoportba?
+Nem. Ha azt szeretné, hogy a virtuális gép egy rendelkezésre állási csoport része legyen, létre kell hoznia a virtuális gépet a készleten belül. A létrehozást követően jelenleg nem lehet hozzáadni egy virtuális gépet egy rendelkezésre állási csoporthoz.
 
-## <a name="can-i-upload-a-virtual-machine-to-azure"></a>Képes a virtuális gépek is feltölthetők az Azure-bA?
-Igen. Útmutatásért lásd: [való Migrálás a helyszíni virtuális gépek az Azure-bA](on-prem-to-azure.md).
+## <a name="can-i-upload-a-virtual-machine-to-azure"></a>Fel lehet tölteni egy virtuális gépet az Azure-ba?
+Igen. Útmutatásért lásd: helyszíni [virtuális gépek áttelepítése az Azure-ba](on-prem-to-azure.md).
 
-## <a name="can-i-resize-the-os-disk"></a>Átméretezheti az operációsrendszer-lemez?
-Igen. Útmutatásért lásd: [annak az operációs rendszer meghajtóját, a virtuális gép az Azure-erőforráscsoport](expand-os-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+## <a name="can-i-resize-the-os-disk"></a>Átméretezhetim az operációsrendszer-lemezt?
+Igen. Útmutatásért lásd: [virtuális gép operációsrendszer-meghajtójának kibontása Azure-erőforráscsoport](expand-os-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)esetén.
 
-## <a name="can-i-copy-or-clone-an-existing-azure-vm"></a>Másolása vagy egy meglévő Azure virtuális gép klónozása?
-Igen. Felügyelt rendszerképekből, hozzon létre egy rendszerképet a virtuális gép és a lemezkép használatával több új virtuális gépeket hozhat létre. Útmutatásért lásd: [hozzon létre egy egyéni rendszerképet a virtuális gépek](tutorial-custom-images.md).
+## <a name="can-i-copy-or-clone-an-existing-azure-vm"></a>Másolhatok vagy klónozott egy meglévő Azure-beli virtuális gépet?
+Igen. A felügyelt lemezképek használatával létrehozhat egy virtuális gép lemezképét, majd a lemezkép használatával több új virtuális gépet építhet ki. Útmutatásért tekintse meg a [virtuális gép egyéni rendszerképének létrehozása](tutorial-custom-images.md)című témakört.
 
-## <a name="why-am-i-not-seeing-canada-central-and-canada-east-regions-through-azure-resource-manager"></a>Miért nem látok közép-Kanada és kelet-Kanada régióban az Azure Resource Manager?
+## <a name="why-am-i-not-seeing-canada-central-and-canada-east-regions-through-azure-resource-manager"></a>Miért nem látom a közép-és Kelet-Kanada régióját a Azure Resource Manageron keresztül?
 
-Közép-Kanada és kelet-Kanada két új régió automatikusan nincs regisztrálva a virtuális gép létrehozása meglévő Azure-előfizetés számára. Ez a regisztráció automatikusan történik, ha egy virtuális gép telepítve van az Azure Resource Manager bármelyik régióban az Azure Portalon keresztül. Egy virtuális gépet bármely más Azure-régióban való üzembe helyezését követően az új régiókban érhető el a következő virtuális gépek kell lennie.
+A közép-és Kelet-Kanada két új régióját nem regisztrálja automatikusan a rendszer a meglévő Azure-előfizetések virtuális géphez való létrehozásához. Ez a regisztráció automatikusan történik, ha egy virtuális gépet a Azure Portal a Azure Resource Manager használatával bármely más régióba telepítenek. A virtuális gép bármely más Azure-régióba való üzembe helyezését követően az új régióknak elérhetőnek kell lenniük a további virtuális gépek számára.
 
-## <a name="does-azure-support-linux-vms"></a>Támogatja az Azure Linux rendszerű virtuális gépek?
-Igen. Próbálja ki a Linuxos virtuális gép gyors létrehozásához lásd: [Linux rendszerű virtuális gép létrehozása az Azure-ban a portál használatával](../linux/quick-create-portal.md).
+## <a name="does-azure-support-linux-vms"></a>Támogatja az Azure a Linux rendszerű virtuális gépeket?
+Igen. Linux rendszerű virtuális gép gyors létrehozásához a kipróbáláshoz lásd: [Linux rendszerű virtuális gép létrehozása az Azure-ban a portál használatával](../linux/quick-create-portal.md).
 
-## <a name="can-i-add-a-nic-to-my-vm-after-its-created"></a>Is hozzáadhatok egy hálózati Adaptert a virtuális gép létrehozása után?
-Igen, ez a lehetőség most. A virtuális Gépet először meg kell állítani a felszabadítása sikeresen megtörtént. Ezután adja hozzá, vagy távolítsa el a hálózati adapter (kivéve a legutóbbi hálózati Adaptert a virtuális gépen). 
+## <a name="can-i-add-a-nic-to-my-vm-after-its-created"></a>Hozzá lehet adni egy hálózati adaptert a virtuális géphez a létrehozásuk után?
+Igen, ez már lehetséges. Először le kell állítani a virtuális gépet. Ezután hozzáadhat vagy eltávolíthat egy hálózati adaptert (kivéve, ha ez a virtuális gép utolsó hálózati adaptere). 
 
-## <a name="are-there-any-computer-name-requirements"></a>Vannak-e minden olyan számítógépre vonatkozó követelményeknek?
-Igen. A számítógépnév legfeljebb 15 karakter hosszú lehet. Lásd: [elnevezési konvenciók szabályokat és korlátozásokat](/azure/architecture/best-practices/naming-conventions#compute) további információt az erőforrások elnevezési körül.
+## <a name="are-there-any-computer-name-requirements"></a>Van-e számítógépnév-követelmény?
+Igen. A számítógép neve legfeljebb 15 karakter hosszú lehet. Az erőforrások elnevezésével kapcsolatos további információkért lásd: [elnevezési konvenciók szabályai és korlátozásai](/azure/architecture/best-practices/naming-conventions#compute) .
 
-## <a name="are-there-any-resource-group-name-requirements"></a>Vannak-e valamelyik erőforrás csoport vonatkozó követelményeknek?
-Igen. Az erőforráscsoport neve legfeljebb 90 karakter hosszúságú lehet. Lásd: [elnevezési konvenciók szabályokat és korlátozásokat](/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions) erőforráscsoportokkal kapcsolatos további információt.
+## <a name="are-there-any-resource-group-name-requirements"></a>Vannak az erőforráscsoport-nevekre vonatkozó követelmények?
+Igen. Az erőforráscsoport neve legfeljebb 90 karakter hosszú lehet. Az erőforráscsoportok további információit az [elnevezési konvenciók szabályai és korlátozásai](/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions) című témakörben talál.
 
-## <a name="what-are-the-username-requirements-when-creating-a-vm"></a>Mik a felhasználónév egy virtuális gép létrehozásakor?
+## <a name="what-are-the-username-requirements-when-creating-a-vm"></a>Milyen felhasználónévre vonatkozó követelmények vonatkoznak a virtuális gépek létrehozásakor?
 
-Felhasználónevek legfeljebb 20 karakter hosszúságú lehet, és nem végződhet ponttal ("."). 
-
+A Felhasználónév legfeljebb 20 karakter hosszúságú lehet, és nem végződhet ponttal ("."). 
 
 A következő felhasználónevek nem engedélyezettek:
-<table>
-    <tr>
-        <td style="text-align:center">1</td><td style="text-align:center">123</td><td style="text-align:center">a</td><td style="text-align:center">actuser</td>
-    </tr>
-    <tr>
-        <td style="text-align:center">ADM –</td><td style="text-align:center">rendszergazda</td><td style="text-align:center">rendszergazda1</td><td style="text-align:center">admin2</td>
-    </tr>   <tr>
-        <td style="text-align:center">Rendszergazda</td><td style="text-align:center">aspnet</td><td style="text-align:center">biztonsági mentés</td><td style="text-align:center">konzol</td>
-    </tr>
-    <tr>
-        <td style="text-align:center">David </td><td style="text-align:center">Vendég</td><td style="text-align:center">János</td><td style="text-align:center">tulajdonos</td>
-    </tr>
-    <tr>
-        <td style="text-align:center">legfelső szintű</td><td style="text-align:center">kiszolgáló</td><td style="text-align:center">sql</td><td style="text-align:center">támogatás</td>
-    </tr>
-    <tr>
-        <td style="text-align:center">support_388945a0</td><td style="text-align:center">sys.</td><td style="text-align:center">test</td><td style="text-align:center">test1</td>
-    </tr>
-    <tr>
-        <td style="text-align:center">test2</td><td style="text-align:center">Teszt3</td><td style="text-align:center">Felhasználó</td><td style="text-align:center">Felhasználó1</td>
-    </tr>
-    <tr>
-        <td style="text-align:center">mind a Felhasználó2</td><td style="text-align:center">Felhasználó3</td><td style="text-align:center">Felhasználó4</td><td style="text-align:center">user5</td>
-    </tr>
-</table>
 
-## <a name="what-are-the-password-requirements-when-creating-a-vm"></a>Mik a jelszót a virtuális gép létrehozásakor?
-Jelszavak kell 12 – 123 karakter hosszúságú lehet, és felel meg a 3 tartományon kívül az alábbi 4 összetettségi követelményeknek:
+| | | | |
+|-----------------|-----------|--------------------|----------|
+| `administrator` | `admin`   | `user`             | `user1`  |
+| `test`          | `user2`   | `test1`            | `user3`  |
+| `admin1`        | `1`       | `123`              | `a`      |
+| `actuser`       | `adm`     | `admin2`           | `aspnet` |
+| `backup`        | `console` | `david`            | `guest`  |
+| `john`          | `owner`   | `root`             | `server` |
+| `sql`           | `support` | `support_388945a0` | `sys`    |
+| `test2`         | `test3`   | `user4`            | `user5`  |
 
-* Alacsonyabb karakter hosszúságú lehet
-* Felső karakter hosszúságú lehet
-* Rendelkezik egy számjegy
-* Egy speciális karaktert (reguláris kifejezéssel egyező [\W_])
 
-A következő jelszavak használata nem megengedett:
+## <a name="what-are-the-password-requirements-when-creating-a-vm"></a>Mik a jelszóra vonatkozó követelmények a virtuális gépek létrehozásakor?
+
+Az Ön által használt eszköztől függően eltérő jelszó-hosszúsági követelmények szükségesek:
+ - Portál – 12-72 karakter közötti
+ - PowerShell – 8-123 karakter közötti
+ - CLI – 12-123 között
+
+* Alsó karakter
+* Felső karaktereket tartalmaz
+* Számjegyet tartalmaz
+* Speciális karakter (regex egyezés [\W_])
+
+A következő jelszavak nem engedélyezettek:
 
 <table>
     <tr>
         <td>abc@123</td>
         <td>ILOVEYOU!</td>
-        <td>P@$$w0rd</td>
+        <td>P @ $ $w 0rd</td>
         <td>P@ssw0rd</td>
         <td>P@ssword123</td>
     </tr>
     <tr>
-        <td>Pa$ $word</td>
+        <td>PA $ $word</td>
         <td>pass@word1</td>
-        <td>Jelszót!</td>
+        <td>Jelszó!</td>
         <td>Jelszó1</td>
         <td>Password22</td>
     </tr>

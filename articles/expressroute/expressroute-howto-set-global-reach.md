@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 8ea3b3580cb70d0453a5ec6a38f6063788ebf7f4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: de9cbd9cfac766e2a67274684d3fb6b447e45200
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58082024"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64572753"
 ---
 # <a name="configure-expressroute-global-reach"></a>Az ExpressRoute Global Reach konfigurálása
 
@@ -39,7 +39,7 @@ Mielőtt elkezdené a konfigurációt, ellenőrizze az alábbiakat:
 1. A konfiguráció indításához jelentkezzen be az Azure-fiókjával, és válassza ki a használni kívánt előfizetést.
 
    [!INCLUDE [sign in](../../includes/expressroute-cloud-shell-connect.md)]
-2. A kívánt ExpressRoute-Kapcsolatcsoportok azonosításához. Engedélyezheti a globális elérhetőségű ExpressRoute bármely két ExpressRoute-Kapcsolatcsoportok között mindaddig, amíg Ön található a támogatott országok és a létrehozásuk másik társviszony-létesítési helyszínek. 
+2. A kívánt ExpressRoute-Kapcsolatcsoportok azonosításához. Engedélyezheti a globális elérhetőségű ExpressRoute bármely két ExpressRoute-Kapcsolatcsoportok között mindaddig, amíg Ön található a támogatott országok/régiók és a létrehozásuk másik társviszony-létesítési helyszínek. 
 
    * Ha az előfizetés tulajdonosa mindkét Kapcsolatcsoportok, vagy futtassa a konfigurációt az alábbi szakaszok a kapcsolatcsoport választhat.
    * Ha a két kapcsolatcsoporttal az Azure-előfizetések, szüksége van egy Azure-előfizetésből engedélyezési. Ezután adja át az engedélyezési kulcsot a többi Azure-előfizetésben a konfigurációs parancs futtatásakor.
@@ -89,7 +89,7 @@ Ha a két Kapcsolatcsoportok nem az Azure-előfizetéshez, engedélyt kell. A k�
    ```
 
    Jegyezze fel a kapcsolatcsoport 2, valamint a hitelesítési kulcs privát társviszony-létesítési azonosítója.
-2. Futtassa a következő parancsot a kapcsolatcsoport 1 ellen. 2. és a hitelesítési kulcs adja át a privát társviszony-létesítési kör Azonosítóját.
+2. Futtassa a következő parancsot a kapcsolatcsoport 1 ellen. 2\. és a hitelesítési kulcs adja át a privát társviszony-létesítési kör Azonosítóját.
 
    ```azurepowershell-interactive
    Add-AzExpressRouteCircuitConnectionConfig -Name 'Your_connection_name' -ExpressRouteCircuit $ckt_1 -PeerExpressRouteCircuitPeering "circuit_2_private_peering_id" -AddressPrefix '__.__.__.__/29' -AuthorizationKey '########-####-####-####-############'

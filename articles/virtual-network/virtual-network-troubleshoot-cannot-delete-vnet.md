@@ -1,10 +1,10 @@
 ---
-title: Nem lehet törölni a virtuális hálózat az Azure-ban |} A Microsoft Docs
-description: Ismerje meg, hogyan háríthatók el a problémát, amelyben az Azure-beli virtuális hálózat nem törölhető.
+title: Nem lehet törölni egy virtuális hálózatot az Azure-ban | Microsoft Docs
+description: Megtudhatja, hogyan lehet elhárítani a problémát, amelyben nem törölhet virtuális hálózatot az Azure-ban.
 services: virtual-network
 documentationcenter: na
 author: chadmath
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-network
@@ -14,79 +14,79 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 4bd143b37e4403d039108b4349b27604b6503e0e
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 2d427a8b40fcb537801ce76aae6bc32fcda3a307
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415219"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71056930"
 ---
-# <a name="troubleshooting-failed-to-delete-a-virtual-network-in-azure"></a>Hibaelhárítás: Nem sikerült törölni a virtuális hálózat az Azure-ban
+# <a name="troubleshooting-failed-to-delete-a-virtual-network-in-azure"></a>Hibaelhárítás Nem sikerült törölni egy virtuális hálózatot az Azure-ban
 
-Hibák jelenhet meg a Microsoft Azure virtuális hálózat törlése. Ez a cikk segítséget nyújt a probléma megoldásához hibaelhárítási lépéseket. 
+Előfordulhat, hogy hibaüzeneteket kap, amikor Microsoft Azure-ben próbál meg törölni egy virtuális hálózatot. Ez a cikk a probléma megoldásához szükséges hibaelhárítási lépéseket ismerteti. 
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## <a name="troubleshooting-guidance"></a>Hibaelhárítási útmutató 
 
-1. [Ellenőrizze, hogy fut-e a virtuális hálózati átjáró a virtuális hálózatban](#check-whether-a-virtual-network-gateway-is-running-in-the-virtual-network).
-2. [Ellenőrizze, hogy a virtuális hálózatban fut-e az application gateway](#check-whether-an-application-gateway-is-running-in-the-virtual-network).
-3. [Ellenőrizze, hogy az Azure Active Directory tartományi szolgáltatások engedélyezve van-e a virtuális hálózatban](#check-whether-azure-active-directory-domain-service-is-enabled-in-the-virtual-network).
-4. [Ellenőrizze a többi erőforrás csatlakozik a virtuális hálózat](#check-whether-the-virtual-network-is-connected-to-other-resource).
-5. [Ellenőrizze a virtuális gép továbbra is fut-e a virtuális hálózatban](#check-whether-a-virtual-machine-is-still-running-in-the-virtual-network).
-6. [Ellenőrizze-e a virtuális hálózati áttelepítés Beragadt](#check-whether-the-virtual-network-is-stuck-in-migration).
+1. [Győződjön meg arról, hogy a virtuális hálózati átjáró fut-e a virtuális hálózaton](#check-whether-a-virtual-network-gateway-is-running-in-the-virtual-network).
+2. [Győződjön meg arról, hogy fut-e az Application Gateway a virtuális hálózaton](#check-whether-an-application-gateway-is-running-in-the-virtual-network).
+3. [Győződjön meg arról, hogy a Azure Active Directory tartományi szolgáltatás engedélyezve van-e a virtuális hálózaton](#check-whether-azure-active-directory-domain-service-is-enabled-in-the-virtual-network).
+4. [Győződjön meg arról, hogy a virtuális hálózat más erőforráshoz van csatlakoztatva](#check-whether-the-virtual-network-is-connected-to-other-resource).
+5. [Győződjön meg arról, hogy a virtuális gép továbbra is fut-e a virtuális hálózaton](#check-whether-a-virtual-machine-is-still-running-in-the-virtual-network).
+6. [Győződjön meg arról, hogy a virtuális hálózat beragadt-e az áttelepítés során](#check-whether-the-virtual-network-is-stuck-in-migration).
 
 ## <a name="troubleshooting-steps"></a>Hibaelhárítási lépések
 
-### <a name="check-whether-a-virtual-network-gateway-is-running-in-the-virtual-network"></a>Ellenőrizze, hogy fut-e a virtuális hálózati átjáró a virtuális hálózatban
+### <a name="check-whether-a-virtual-network-gateway-is-running-in-the-virtual-network"></a>Győződjön meg arról, hogy a virtuális hálózati átjáró fut-e a virtuális hálózaton
 
-Távolítsa el a virtuális hálózatot, először el kell távolítania a virtuális hálózati átjárót.
+A virtuális hálózat eltávolításához először el kell távolítania a virtuális hálózati átjárót.
 
-A klasszikus virtuális hálózatok, keresse fel a **áttekintése** az Azure Portalon a klasszikus virtuális hálózat lapján. Az a **VPN-kapcsolatok** szakaszban, ha az átjáró fut, a virtuális hálózatban, látni fogja az átjáró IP-címét. 
+A klasszikus virtuális hálózatok esetében lépjen a Azure Portal klasszikus virtuális hálózatának **Áttekintés** lapjára. Ha az átjáró a virtuális hálózaton fut, a **VPN-kapcsolatok** szakaszban látni fogja az átjáró IP-címét. 
 
-![Ellenőrizze, hogy az átjáró fut.](media/virtual-network-troubleshoot-cannot-delete-vnet/classic-gateway.png)
+![Annak megállapítása, hogy az átjáró fut-e](media/virtual-network-troubleshoot-cannot-delete-vnet/classic-gateway.png)
 
-Virtuális hálózatok esetében, nyissa meg a **áttekintése** a virtuális hálózat lapján. Ellenőrizze **csatlakoztatott eszközök** a virtuális hálózati átjáróhoz.
+A virtuális hálózatok esetében lépjen a virtuális hálózat **Áttekintés** lapjára. Keresse meg a virtuális hálózati átjáróhoz **csatlakoztatott eszközöket** .
 
-![A csatlakoztatott eszköz](media/virtual-network-troubleshoot-cannot-delete-vnet/vnet-gateway.png)
+![A csatlakoztatott eszköz keresése](media/virtual-network-troubleshoot-cannot-delete-vnet/vnet-gateway.png)
 
-Az átjáró eltávolítása előtt először távolítsa el bármelyik **kapcsolat** objektumok az átjáróban. 
+Az átjáró eltávolítása előtt először távolítsa el az átjárón lévő összes **összekötő** objektumot. 
 
-### <a name="check-whether-an-application-gateway-is-running-in-the-virtual-network"></a>Ellenőrizze, hogy az application gateway fut-e a virtuális hálózatban
+### <a name="check-whether-an-application-gateway-is-running-in-the-virtual-network"></a>Annak megállapítása, hogy fut-e az Application Gateway a virtuális hálózaton
 
-Nyissa meg a **áttekintése** a virtuális hálózat lapján. Ellenőrizze a **csatlakoztatott eszközök** az application gateway számára.
+Nyissa meg a virtuális hálózat **Áttekintés** lapját. Keresse meg az Application Gateway **csatlakoztatott eszközeit** .
 
-![A csatlakoztatott eszköz](media/virtual-network-troubleshoot-cannot-delete-vnet/app-gateway.png)
+![A csatlakoztatott eszköz keresése](media/virtual-network-troubleshoot-cannot-delete-vnet/app-gateway.png)
 
-Ha egy application gateway, el kell távolítania azt a virtuális hálózat törlése előtt.
+Ha van egy Application Gateway, el kell távolítania a virtuális hálózat törlése előtt.
 
-### <a name="check-whether-azure-active-directory-domain-service-is-enabled-in-the-virtual-network"></a>Ellenőrizze, hogy az Azure Active Directory tartományi szolgáltatások engedélyezve van-e a virtuális hálózatban
+### <a name="check-whether-azure-active-directory-domain-service-is-enabled-in-the-virtual-network"></a>Annak megállapítása, hogy a Azure Active Directory tartományi szolgáltatás engedélyezve van-e a virtuális hálózaton
 
-Ha az Active Directory tartományi szolgáltatások engedélyezve, és a virtuális hálózathoz csatlakoztatva van, ez a virtuális hálózat nem törölhető. 
+Ha a Active Directory-tartomány szolgáltatás engedélyezve van, és csatlakozik a virtuális hálózathoz, a virtuális hálózat nem törölhető. 
 
-![A csatlakoztatott eszköz](media/virtual-network-troubleshoot-cannot-delete-vnet/enable-domain-services.png)
+![A csatlakoztatott eszköz keresése](media/virtual-network-troubleshoot-cannot-delete-vnet/enable-domain-services.png)
 
-Letilthatja a szolgáltatást, lásd: [tiltsa le az Active Directory Domain Servicest az Azure portal használatával](../active-directory-domain-services/active-directory-ds-disable-aadds.md).
+A szolgáltatás letiltásához lásd: [Azure Active Directory Domain Services letiltása a Azure Portal használatával](../active-directory-domain-services/delete-aadds.md).
 
-### <a name="check-whether-the-virtual-network-is-connected-to-other-resource"></a>Ellenőrizze a többi erőforrás csatlakozik a virtuális hálózat
+### <a name="check-whether-the-virtual-network-is-connected-to-other-resource"></a>Győződjön meg arról, hogy a virtuális hálózat más erőforráshoz van csatlakoztatva
 
-Ellenőrizze a Kapcsolatcsoportok kapcsolatai, kapcsolatok és virtuális hálózati társviszony-létesítéseket. Ezek egyikét sem okozhat, egy virtuális hálózat törlése meghiúsul. 
+Az áramköri kapcsolatok, a kapcsolatok és a virtuális hálózati társítások keresése. Ezek bármelyike okozhatja, hogy a virtuális hálózat törlése meghiúsul. 
 
-A javasolt törlési sorrend a következőképpen történik:
+Az ajánlott törlési sorrend a következő:
 
-1. Gateway-kapcsolatok
+1. Átjáró kapcsolatai
 2. Átjárók
 3. IP-címek
-4. Virtuális társhálózatok
-5. Az App Service Environment (ASE)
+4. Virtuális hálózati társítások
+5. App Service Environment (ASE)
 
-### <a name="check-whether-a-virtual-machine-is-still-running-in-the-virtual-network"></a>Ellenőrizze a virtuális gép továbbra is fut-e a virtuális hálózatban
+### <a name="check-whether-a-virtual-machine-is-still-running-in-the-virtual-network"></a>Annak megkeresése, hogy a virtuális gép továbbra is fut-e a virtuális hálózaton
 
-Győződjön meg arról, hogy egyetlen virtuális gép se a virtuális hálózatban.
+Győződjön meg arról, hogy egyetlen virtuális gép sincs a virtuális hálózaton.
 
-### <a name="check-whether-the-virtual-network-is-stuck-in-migration"></a>-E a virtuális hálózat elakadt az áttelepítés ellenőrzése
+### <a name="check-whether-the-virtual-network-is-stuck-in-migration"></a>Győződjön meg arról, hogy a virtuális hálózat beragadt-e az áttelepítés során
 
-Ha a virtuális hálózat elakadt áttelepítési állapotban lévő, nem lehet törölni. A migrálás megszakítása a következő parancsot, és ezután törölje a virtuális hálózat.
+Ha a virtuális hálózat áttelepítési állapotban van, nem törölhető. Futtassa az alábbi parancsot az áttelepítés megszakításához, majd törölje a virtuális hálózatot.
 
     Move-AzureVirtualNetwork -VirtualNetworkName "Name" -Abort
 

@@ -14,11 +14,11 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 08e7341bfd1c384e41e6d3f1bd7810552899849a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58092191"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60488633"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Az adatkezelési átjáró – magas rendelkezésre állás és méretezhetőség (előzetes verzió)
 > [!NOTE]
@@ -165,12 +165,12 @@ Az alábbiakban az integrációsmodul-csomópontot integrációs közötti kommu
 - Minden egyes az integration runtime csomópontja meg kell bízniuk ezt a tanúsítványt, valamint az ügyfélszámítógépen, amelyen fut a hitelesítőadat-kezelő alkalmazást. 
   > [!NOTE]
   > Hitelesítőadat-kezelő alkalmazást használja a másolás varázsló hitelesítő adatok biztonságos beállításakor / Azure-portálon. És ez lehet a helyszíni ugyanazon a hálózaton belül bármely gépről aktivált / titkos adattár.
-- A rendszer támogatja a helyettesítő tanúsítványokat. Ha a tartománynév **node1.domain.contoso.com**, használhatja ***. domain.contoso.com** a tanúsítvány tulajdonos neve.
+- A rendszer támogatja a helyettesítő tanúsítványokat. Ha a tartománynév **node1.domain.contoso.com**, használhatja * **. domain.contoso.com** a tanúsítvány tulajdonos neve.
 - A SAN-tanúsítványok használata nem ajánlott, mert a tulajdonos alternatív neveket csak az utolsó elem fogja használni, és minden más figyelmen kívül jelenlegi korlátozás miatt. Például van egy SAN-tanúsítvány, amelynek SAN vannak **node1.domain.contoso.com** és **node2.domain.contoso.com**, ezzel a tanúsítvánnyal csak használhatja a gépet, amelynek FQDN-je **node2.domain.contoso.com**.
 - Támogatja az SSL-tanúsítványokra vonatkozó Windows Server 2012 R2 által támogatott bármely kulcsának mérete.
 - Tanúsítvány használata a CNG kulcsok nem támogatottak.
 
-#### <a name="faq-when-would-i-not-enable-this-encryption"></a>FAQ: Ha szeretné nem engedélyezhető a titkosítás?
+#### <a name="faq-when-would-i-not-enable-this-encryption"></a>GYIK: Ha szeretné nem engedélyezhető a titkosítás?
 Titkosítás engedélyezése adhat hozzá, bizonyos ezért az infrastruktúra (tulajdonos nyilvános tanúsítvány) költség, kihagyhatja a titkosításának engedélyezésével az alábbi esetekben:
 - Ha az integrációs modul megbízható hálózathoz, vagy a hálózaton, például IP küszöbértéküket átlátható titkosítási fut. Mivel ez a csatorna kommunikáció csak korlátozott megbízható hálózaton belül, előfordulhat, hogy nem kell további titkosítási.
 - Ha az integrációs modul nem fut éles környezetben. Ez segít a TLS/SSL-tanúsítvány költségek csökkentésére.
@@ -187,9 +187,9 @@ Engedélyezheti a **speciális beállítások** a a **átjáró** oldalon tekint
 Figyelési tulajdonság | Leírás
 :------------------ | :---------- 
 Name (Név) | A logikai átjáró és a csomópontok kívánt átjáróval társított neve.  
-status | A logikai átjáró és az átjáró csomópontok állapotát. Példa: Online/Offline/korlátozott/stb. A fenti állapotok megjelenése kapcsolatos információkért lásd: [átjáró állapota](#gateway-status) szakaszban. 
-Verzió | A logikai átjáró, és minden egyes átjárócsomópont verzióját mutatja. A logikai átjáró verziója határozza meg a csoport csomópontjának többsége verzióján alapul. Ha nincs a logikai átjáró beállításai, és verzió száma azonos a logikai átjáró függvény csak a csomópontok különböző verziójú csomópontok megfelelően. Mások a korlátozott módban van, és manuálisan kell frissíteni, (csak abban az esetben az automatikus frissítés nem működik). 
-Elérhető memória | Rendelkezésre álló memória egy átjáró-csomóponton. Ez az érték közel valós idejű pillanatképet. 
+Állapot | A logikai átjáró és az átjáró csomópontok állapotát. Példa: Online/Offline/korlátozott/stb. A fenti állapotok megjelenése kapcsolatos információkért lásd: [átjáró állapota](#gateway-status) szakaszban. 
+Version | A logikai átjáró, és minden egyes átjárócsomópont verzióját mutatja. A logikai átjáró verziója határozza meg a csoport csomópontjának többsége verzióján alapul. Ha nincs a logikai átjáró beállításai, és verzió száma azonos a logikai átjáró függvény csak a csomópontok különböző verziójú csomópontok megfelelően. Mások a korlátozott módban van, és manuálisan kell frissíteni, (csak abban az esetben az automatikus frissítés nem működik). 
+Rendelkezésre álló memória | Rendelkezésre álló memória egy átjáró-csomóponton. Ez az érték közel valós idejű pillanatképet. 
 Processzorkihasználtság | CPU-kihasználtság egy átjáró-csomópont. Ez az érték közel valós idejű pillanatképet. 
 Hálózatkezelés (In/Out) | A hálózathasználat egy átjáró-csomópont. Ez az érték közel valós idejű pillanatképet. 
 Egyidejű feladatok (futó / Limit) | Feladatok és minden egyes csomóponton futó feladatok száma. Ez az érték közel valós idejű pillanatképet. Korlát azt jelzi, hogy az egyidejű feladatok maximális száma minden egyes csomópont esetében. Ez az érték van megadva a mérete alapján. A vertikális felskálázása a speciális alkalmazási egyidejű feladat-végrehajtási korlát növeléséhez, CPU / memória / hálózati kevésbé használt, de a tevékenység időkorlátja. Ez a funkció egy egycsomópontos átjárón (akkor is, ha a skálázhatóság és rendelkezésre állás funkció nincs engedélyezve) is érhető el. További információkért lásd: [szempontok méretezése](#scale-considerations) szakaszban. 
@@ -201,18 +201,18 @@ Szerepkör | –-Dispatcher és feldolgozói szerepkörök két típusa van. Min
 
 Az alábbi táblázat ismerteti a lehetséges állapotok egy **átjárócsomópont**: 
 
-status  | Megjegyzések és forgatókönyvek
+Állapot  | Megjegyzések és forgatókönyvek
 :------- | :------------------
 Online | Csomópont csatlakoztatva a Data Factory szolgáltatásban.
 Offline | Csomópont offline állapotban.
-Frissítés | A csomópont automatikus frissítése folyamatban van.
+A frissítés | A csomópont automatikus frissítése folyamatban van.
 Korlátozott | Kapcsolat nem látható probléma miatt. HTTP-port 8050 probléma, a service bus kapcsolódási probléma vagy a hitelesítő adatok szinkronizálási problémája miatt lehet. 
 Inaktív | Csomópontnak számít eltér a többi legtöbb csomópont konfigurációjának konfigurációban.<br/><br/> Egy csomópont inaktív lehet, ha a többi csomópont nem tud kapcsolódni. 
 
 
 Az alábbi táblázat ismerteti a lehetséges állapotok egy **logikai átjáró**. Az átjáró állapotának ellenőrzéséhez az átjárócsomópontok állapotainak függ. 
 
-status | Megjegyzések
+Állapot | Megjegyzések
 :----- | :-------
 Regisztrálni kell | Nem csomópont még regisztrálva van a logikai átjáró
 Online | Az Átjárócsomópontok online állapotban.

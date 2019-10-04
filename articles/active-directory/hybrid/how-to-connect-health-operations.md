@@ -15,11 +15,11 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 090a066afb24c4776f9844b8850264ffad842c59
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56187049"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60350160"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Az Azure Active Directory Connect Health műveletei
 Ez a témakör ismerteti a különféle műveleteket hajthat végre az Azure Active Directory (Azure AD) Connect Health használatával.
@@ -120,10 +120,10 @@ Engedélyt kapnak, ha egy végfelhasználó hozzáfér a directory vagy a szolg�
 
 ### <a name="allow-users-or-groups-access-to-azure-ad-connect-health"></a>Lehetővé teszi a felhasználók vagy csoportok hozzáférés az Azure AD Connect Health
 A következő lépések bemutatják, hogyan engedélyezi a hozzáférést.
-#### <a name="step-1-select-the-appropriate-access-scope"></a>1. lépés: Válassza ki a megfelelő hozzáférési hatókör
+#### <a name="step-1-select-the-appropriate-access-scope"></a>1\. lépés: Válassza ki a megfelelő hozzáférési hatókör
 A felhasználói hozzáférés engedélyezéséhez a *minden szolgáltatáspéldány* szintű Azure AD Connect Health belül, nyissa meg az Azure AD Connect Health fő panelje.<br>
 
-#### <a name="step-2-add-users-and-groups-and-assign-roles"></a>2. lépés: Felhasználók és csoportok hozzáadása, és a szerepkörök hozzárendelésére
+#### <a name="step-2-add-users-and-groups-and-assign-roles"></a>2\. lépés: Felhasználók és csoportok hozzáadása, és a szerepkörök hozzárendelésére
 1. Az a **konfigurálása** területén kattintson **felhasználók**.<br>
    ![Képernyőkép az Azure AD Connect Health erőforrás oldalsáv](./media/how-to-connect-health-operations/startRBAC.png)
 2. Válassza a **Hozzáadás** lehetőséget.
@@ -143,7 +143,7 @@ Most már a listán szereplő felhasználók és csoportok rendelkezik hozzáfé
 >
 >
 
-#### <a name="step-3-share-the-blade-location-with-users-or-groups"></a>3. lépés: A panel helye megoszthatja a felhasználók vagy csoportok
+#### <a name="step-3-share-the-blade-location-with-users-or-groups"></a>3\. lépés: A panel helye megoszthatja a felhasználók vagy csoportok
 1. Engedélyek hozzárendelése után a felhasználó hozzáférhet-e az Azure AD Connect Health címen [Itt](https://aka.ms/aadconnecthealth).
 2. A panelen a felhasználó rögzítheti a panelt, vagy különböző részeit, az irányítópulton. Egyszerűen kattintson a **rögzítés az irányítópulton** ikonra.<br>
    ![Képernyőkép az Azure AD Connect Health RBAC PIN-kód panelen, a rögzítés ikonja kiemelve](./media/how-to-connect-health-operations/RBAC_pin_blade.png)

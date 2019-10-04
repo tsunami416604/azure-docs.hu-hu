@@ -7,11 +7,11 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2018
 ms.openlocfilehash: 6ce0f2c761ede7d326f52f4d93d7f1b0bfa98cb2
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53543062"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60525558"
 ---
 # <a name="connection-libraries-for-azure-database-for-mysql"></a>Az Azure Database for MySQL csatlakozási kódtárak
 Ez a cikk felsorolja az egyes könyvtár vagy illesztőprogram, ügyfélprogramok használhat a MySQL-hez készült Azure-adatbázishoz való csatlakozáskor.

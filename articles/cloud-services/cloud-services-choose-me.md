@@ -1,59 +1,53 @@
 ---
-title: Mi az Azure Cloud Servicesben |} A Microsoft Docs
-description: 'További tudnivalók: Mi az Azure Cloud Servicesben.'
+title: Mi az Azure Cloud Services | Microsoft Docs
+description: Ismerje meg, mi az Azure Cloud Services.
 services: cloud-services
-documentationcenter: ''
-author: jpconnock
-manager: timlt
-ms.assetid: ed7ad348-6018-41bb-a27d-523accd90305
+author: georgewallace
 ms.service: multiple
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: jeconnoc
-ms.openlocfilehash: ce88dcaedf32f293fc121cda2a088388c99badee
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.author: gwallace
+ms.openlocfilehash: 61369d51056607d8176d301afa945c7c77895b12
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53603827"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359709"
 ---
 # <a name="overview-of-azure-cloud-services"></a>Az Azure Cloud Services áttekintése
-Az Azure Cloud Services egyik példája egy [szolgáltatásként nyújtott platformon](https://azure.microsoft.com/overview/what-is-paas/) (PaaS). Például [Azure App Service](../app-service/overview.md), ez a technológia úgy tervezték, hogy skálázható, megbízható és költséghatékony működéséhez alkalmazások támogatása. Ugyanolyan módon, hogy App Service-ben üzemeltetett virtuális gépeken (VM), tehát túl van az Azure Cloud Servicesben. Azonban hogy jobban szabályozhatja a virtuális gépeket. Azure Cloud Services szolgáltatást használó virtuális gépek is telepíthető a saját szoftvereit, és távolról elérheti azokat.
+Az Azure Cloud Services a szolgáltatásként szolgáló [platform](https://azure.microsoft.com/overview/what-is-paas/) (Péter) példája. A [Azure app Servicehoz](../app-service/overview.md)hasonlóan ez a technológia a méretezhető, megbízható és olcsó működést támogató alkalmazások támogatására szolgál. Ugyanúgy, ahogy a App Service a virtuális gépeken (VM) üzemel, így az Azure Cloud Services is. Azonban nagyobb mértékben szabályozhatja a virtuális gépeket. Telepítheti saját szoftvereit az Azure Cloud Servicest használó virtuális gépeken, és távolról is elérheti őket.
 
-![Az Azure Cloud Services – diagram](./media/cloud-services-choose-me/diagram.png)
+![Azure Cloud Services diagram](./media/cloud-services-choose-me/diagram.png)
 
-Nagyobb mértékű is azt jelenti, hogy kevesebb a könnyű használatra. Ha nincs szükség a további beállítások, általában gyorsabb és könnyebb a webalkalmazások használatának és a webalkalmazások futtatása az App Service szolgáltatás képest Azure Cloud servicesben.
+A további szabályozás a kevésbé egyszerű használatot is jelenti. Ha a további vezérlési lehetőségekre van szüksége, általában gyorsabb és egyszerűbb a webalkalmazások beszerzése a App Service Web Apps szolgáltatásában az Azure Cloud Services-hoz képest.
 
-Azure Cloud Services-szerepkörök két típusa van. Az egyetlen különbség a kettő között, a szerepkört virtuális gépeken üzemeltetett hogyan:
+Az Azure Cloud Services szerepköreinek két típusa van. Az egyetlen különbség a kettő között az, hogy a szerepkör a virtuális gépeken van tárolva:
 
-* **Webová role**: Automatikusan üzembe helyezi és futtatja az alkalmazás IIS-en keresztül.
+* **Webes szerepkör**: Az alkalmazás automatikus üzembe helyezése és üzemeltetése az IIS-en keresztül.
 
-* **Feldolgozói szerepkör**: Nem használja az IIS és az alkalmazás különálló futtatja.
+* **Feldolgozói szerepkör**: A nem használja az IIS-t, és önálló alkalmazást futtat.
 
-Előfordulhat, hogy például, hogy egy egyszerű alkalmazást csak egyetlen webes szerepkör, a kiszolgáló a webhely használja. Olyan összetettebb alkalmazást előfordulhat, hogy egy webes szerepkör segítségével kezeli a felhasználók a bejövő kéréseket, és akkor továbbítja a feldolgozói szerepkör feldolgozási be ezeket a kérelmeket. (Ehhez a kommunikációhoz használhat [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) vagy [Azure Queue storage](../storage/common/storage-introduction.md).)
+Egy egyszerű alkalmazás például csak egyetlen webes szerepkört használhat, amely egy webhelyet fog kiszolgálni. Egy összetettebb alkalmazás webes szerepkörrel kezelheti a felhasználóktól érkező kéréseket, majd átadhatja ezeket a kérelmeket a feldolgozásra feldolgozói szerepkörnek. (Ez a kommunikáció [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) vagy az [Azure üzenetsor](../storage/common/storage-introduction.md)-tárolást is használhatja.)
 
-Mivel az előző ábrán javasol, egy alkalmazást az összes virtuális gép ugyanazon a felhőszolgáltatáson futnak. Az alkalmazás keretében egyetlen nyilvános IP-címet, a kérelmek automatikusan betölteni a felhasználói hozzáférés az alkalmazás virtuális gépek kiegyensúlyozását. A platform [méretezi és helyezi üzembe](cloud-services-how-to-scale-portal.md) a virtuális gépek az Azure Cloud Services alkalmazások úgy, hogy elkerüli a hardverhiba hibaérzékeny pont.
+Ahogy az előző ábrán is látható, egy adott alkalmazás összes virtuális gépe ugyanabban a felhőalapú szolgáltatásban fut. A felhasználók egyetlen nyilvános IP-címen keresztül férhetnek hozzá az alkalmazáshoz, és a kérések automatikusan terheléselosztást végeznek az alkalmazás virtuális gépei között. A platform a virtuális gépeket egy Azure Cloud Services alkalmazásban [méretezi és helyezi üzembe](cloud-services-how-to-scale-portal.md) úgy, hogy elkerülje a hardver meghibásodását.
 
-Annak ellenére, hogy az alkalmazások virtuális gépeken futnak, fontos tudni, hogy az Azure Cloud Services nyújt PaaS, nem infrastruktúra-szolgáltatás (IaaS). Íme, gondolja át, az egyik lehetőség. Az IaaS, például az Azure Virtual Machines akkor először létrehozhat és konfigurálhat a környezetben fusson az alkalmazás. Ezt követően üzembe az alkalmazást erre a környezetre. Most már a világ számos módon többek között az új javított verziói az operációs rendszer az egyes virtuális gépek üzembe helyezése kezeléséért. A PaaS ezzel szemben az legyen, ha a környezet már létezik. Ehhez csak az alkalmazás üzembe helyezéséhez. A platform az fut, beleértve az operációs rendszer új verzióinak telepítése felügyeleti történik meg.
+Annak ellenére, hogy az alkalmazások virtuális gépeken futnak, fontos tisztában lenni azzal, hogy az Azure Cloud Services a nem infrastruktúra-szolgáltatásként (IaaS) biztosítja a Pásti szolgáltatást. Itt az egyik lehetőség, hogy meggondoljuk. A IaaS-mel (például Azure Virtual Machines) először létre kell hoznia és konfigurálnia kell azt a környezetet, amelyben az alkalmazás fut. Ezután üzembe helyezi az alkalmazást ebbe a környezetbe. Ennek a világnak az Ön feladata, hogy olyan dolgokat hajtson végre, mint például az operációs rendszer új, javított verzióinak üzembe helyezése az egyes virtuális gépeken. A Pástiban, ezzel szemben, mintha a környezet már létezik. Mindössze annyit kell tennie, hogy üzembe helyezi az alkalmazást. Az Ön által futtatott platform kezelése, beleértve az operációs rendszer új verzióinak telepítését is, kezeljük Önnek.
 
 ## <a name="scaling-and-management"></a>Skálázás és felügyelet
-Az Azure Cloud Serviceshez ne hozzon létre virtuális gépeket. Ehelyett adja meg a konfigurációs fájlt, amely jelzi az Azure egyes hány szeretne, például a "három webes szerepkör példányai" és "két feldolgozói szerepkörpéldányok." A platform majd őket az Ön hozza létre. Továbbra is választja [milyen méretű](cloud-services-sizes-specs.md) azokat a virtuális gépek biztonsági kell lennie, de nincs explicit módon létrehozhatja saját magának. Ha az alkalmazásnak egy nagyobb terhelés kezeléséhez, kérhet további virtuális gépeket, és az Azure létrehozza az ezekhez a példányokhoz. Ha a terhelés csökkenése, állítsa le az ezekhez a példányokhoz, és állítsa le azokat kellene fizetnie.
+Az Azure Cloud Services nem hoz létre virtuális gépeket. Ehelyett meg kell adnia egy konfigurációs fájlt, amely megadja, hogy az Azure hányat szeretne, például a "három webes szerepkör példányai" és a "két feldolgozói szerepkör példányai". A platform ezután létrehozza azokat. Továbbra is kiválaszthatja, hogy a virtuális gépek [milyen méretűek](cloud-services-sizes-specs.md) legyenek, de Ön kifejezetten nem hozza létre őket. Ha az alkalmazásnak nagyobb terhelést kell kezelnie, több virtuális gépet is kérhet, és az Azure létrehozza ezeket a példányokat. Ha csökkenti a terhelést, leállíthatja ezeket a példányokat, és leállíthatja azok fizetését.
 
-Az Azure Cloud Services-alkalmazás általában szeretné elérhetővé tenni a felhasználók számára egy kétlépéses folyamat keresztül. A fejlesztő első [feltölti az alkalmazást](cloud-services-how-to-create-deploy-portal.md) a platform előkészítési területéhez. Amikor készen áll a fejlesztő ellenőrizze az alkalmazás live, a Váltás az Azure portal használata az éles átmeneti. Ez [váltás átmeneti és éles környezet között](cloud-services-how-to-manage-portal.md#swap-deployments-to-promote-a-staged-deployment-to-production) üzemkimaradás nélkül, amely lehetővé teszi, hogy a felhasználók megzavarása nélkül egy új verzióra szeretne frissíteni egy futó alkalmazás teheti meg.
+Az Azure Cloud Services-alkalmazások általában két lépésből álló folyamaton keresztül érhetők el a felhasználók számára. A fejlesztő először [feltölti az alkalmazást](cloud-services-how-to-create-deploy-portal.md) a platform előkészítési területeire. Ha a fejlesztő készen áll az alkalmazás élő állapotba helyezésére, a Azure Portal az éles környezetben történő előkészítést használják. Az [előkészítés és a gyártás közötti váltás](cloud-services-how-to-manage-portal.md#swap-deployments-to-promote-a-staged-deployment-to-production) leállás nélkül is elvégezhető, ami lehetővé teszi, hogy egy futó alkalmazás frissítve legyen egy új verzióra anélkül, hogy zavarja a felhasználóit.
 
 ## <a name="monitoring"></a>Figyelés
-Az Azure Cloud Services is figyelését teszi lehetővé. Például virtuális gépeket azt észleli hibás fizikai kiszolgálóra, és újraindítja az új gép adott kiszolgálón futó virtuális gépet. De Azure Cloud Services is észleli a hibás virtuális gépek és alkalmazások, nem csak a hardveres hibák esetén. Ellentétben a virtuális gépek az ügynök belül minden webes és feldolgozói szerepkör rendelkezik, és így elindíthatja az új virtuális gépek és alkalmazáspéldányok, ha hiba történik.
+Az Azure Cloud Services monitorozást is biztosít. A Virtual Machineshoz hasonlóan a rendszer hibás fizikai kiszolgálót észlel, és újraindítja az adott kiszolgálón futó virtuális gépeket egy új gépen. Az Azure Cloud Services azonban a sikertelen virtuális gépeket és alkalmazásokat is észleli, nem csak a hardver meghibásodását. A Virtual Machinestól eltérően a szolgáltatás minden webes és feldolgozói szerepkörben rendelkezik ügynökkel, így a hibák bekövetkezésekor új virtuális gépeket és alkalmazás-példányokat indíthat el.
 
-Az Azure Cloud Services PaaS jellege egyéb következmények túl van. A legfontosabb egyik célja, hogy ez a technológia-alapú alkalmazásokhoz kell írni megfelelően futni, ha bármely webes vagy feldolgozói szerepkör-példány nem sikerült. Ennek érdekében az Azure Cloud Services-alkalmazás állapota a fájlrendszer, a saját virtuális gépek nem karbantartása. Virtuális gépek használatával létrehozott virtuális gépek, eltérően az Azure Cloud Services virtuális gépeire írási nem állandó. Nincs virtuálisgép-adatlemez nem hasonlít. Ehelyett az Azure Cloud Services-alkalmazás kell explicit módon állapotadatokat írni az összes Azure SQL Database, blobok, táblák vagy valamilyen egyéb külső tárhelyen. Alkalmazások létrehozását, így megkönnyíti a méretezési csoport és ellenállóbbá hiba, amely mindkét fontos célja a Azure Cloud Services.
+Az Azure Cloud Services Pásti természete más következményekkel is jár. Az egyik legfontosabb az, hogy az erre a technológiára épülő alkalmazások megfelelően fussanak, ha a webes vagy feldolgozói szerepkör-példány meghibásodik. Ennek eléréséhez az Azure Cloud Services-alkalmazásoknak nem kell megtartaniuk a saját virtuális gépei fájlrendszerében lévő állapotot. A Virtual Machines-vel létrehozott virtuális gépekkel ellentétben az Azure Cloud Services virtuális gépekre tett írások nem állandóak. Nincs semmi, mint egy Virtual Machines adatlemez. Ehelyett egy Azure Cloud Services alkalmazásnak explicit módon írnia kell az összes állapotot Azure SQL Database, blobok, táblák vagy más külső tárolóba. Az alkalmazások ily módon történő kiépítése megkönnyíti a meghibásodások méretezését és nagyobb ellenálló képességét, amely az Azure Cloud Services fontos célja.
 
 ## <a name="next-steps"></a>További lépések
-* [Felhőszolgáltatás-alapú alkalmazás létrehozása a .NET-ben](cloud-services-dotnet-get-started.md) 
-* [Felhőszolgáltatás-alapú alkalmazás létrehozása Node.js-ben](cloud-services-nodejs-develop-deploy-app.md) 
-* [Felhőszolgáltatás-alapú alkalmazás létrehozása php](../cloud-services-php-create-web-role.md) 
-* [Felhőszolgáltatás-alapú alkalmazás létrehozása pythonban](cloud-services-python-ptvs.md)
+* [Cloud Service-alkalmazás létrehozása a .NET-ben](cloud-services-dotnet-get-started.md) 
+* [Cloud Service-alkalmazás létrehozása a Node. js-ben](cloud-services-nodejs-develop-deploy-app.md) 
+* [Cloud Service-alkalmazás létrehozása PHP-ben](../cloud-services-php-create-web-role.md) 
+* [Cloud Service-alkalmazás létrehozása Pythonban](cloud-services-python-ptvs.md)
 
 
 

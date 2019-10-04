@@ -4,26 +4,25 @@ description: Ez az oktatóanyag bemutatja, hogyan hozhat létre és felügyelhet
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 11/28/2018
+ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 94858a147dc0383376a54bc94685d855d37e12d5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0c60cd335e9d280d59fd872d1d0724f2eabd3afb
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57991200"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101578"
 ---
-# <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>Oktatóanyag: Létrehozása és kezelése Windows virtuális gépek az Azure PowerShell használatával
+# <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>Oktatóanyag: Windows rendszerű virtuális gépek létrehozása és kezelése Azure PowerShell
 
 Az Azure-beli virtuális gépek egy teljes mértékben konfigurálható és rugalmas számítási környezetet nyújtanak. Az oktatóanyag az Azure-beli virtuális gépek (VM) üzembe helyezésének alapvető feladatait ismerteti, például a virtuális gépek méretének és rendszerképeinek kiválasztását és a virtuális gépek üzembe helyezését. Az alábbiak végrehajtásának módját ismerheti meg:
 
@@ -42,7 +41,7 @@ A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy k�
 
 ## <a name="create-resource-group"></a>Erőforráscsoport létrehozása
 
-Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) parancsot.
+Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) paranccsal.
 
 Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Az erőforráscsoportot még a virtuális gép létrejötte előtt létre kell hozni. A következő példában egy *myResourceGroupVM* nevű erőforráscsoportot hozunk létre az *EastUs* régióban:
 
@@ -56,7 +55,7 @@ Az erőforráscsoport meghatározására a virtuális gép létrehozásakor vagy
 
 ## <a name="create-a-vm"></a>Virtuális gép létrehozása
 
-Virtuális gép létrehozásakor több lehetőség is elérhető, mint például az operációs rendszer lemezképét, a hálózati konfiguráció vagy a rendszergazdai hitelesítő adatokkal. Ez a példa létrehoz egy *myVM* nevű virtuális gépet, amely a Windows Server 2016 Datacenter alapértelmezett verzióját futtatja.
+A virtuális gépek létrehozásakor több lehetőség is elérhető, például az operációs rendszer képe, a hálózati konfiguráció és a rendszergazdai hitelesítő adatok. Ez a példa létrehoz egy *myVM* nevű virtuális gépet, amely a Windows Server 2016 Datacenter alapértelmezett verzióját futtatja.
 
 A virtuális gép rendszergazdai fiókjának felhasználónevét és jelszavát állítsa be a [Get-Credential](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential?view=powershell-6) paranccsal:
 
@@ -64,7 +63,7 @@ A virtuális gép rendszergazdai fiókjának felhasználónevét és jelszavát 
 $cred = Get-Credential
 ```
 
-A virtuális Gépet a létrehozása [új AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm).
+Hozza létre a virtuális gépet a [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm).
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -101,13 +100,13 @@ A **Windows rendszerbiztonság** ablakban válassza a **További lehetőségek**
 
 Az Azure Marketplace-en számos rendszerkép található, amelyekkel új virtuális gépeket lehet létrehozni. Az előző lépések során a virtuális gépet a Windows Server 2016 Datacenter rendszerképének használatával hoztuk létre. Ebben a lépésben a PowerShell-modul segítségével további Windows-rendszerképeket keresünk a piactéren, amelyek az új virtuális gépek alapjául szolgálhatnak. Ez a folyamat a rendszerkép [azonosításához](cli-ps-findimage.md#terminology) szükséges közzétevő, ajánlat, termékváltozat és esetleg verziószám megkereséséből áll.
 
-Használja a [Get-AzVMImagePublisher](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagepublisher) parancsot a rendszerkép-közzétevők listájának lekéréséhez:
+A [Get-AzVMImagePublisher](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagepublisher) parancs használatával visszaállíthatja a rendszerkép-közzétevők listáját:
 
 ```azurepowershell-interactive
 Get-AzVMImagePublisher -Location "EastUS"
 ```
 
-Használja a [Get-AzVMImageOffer](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimageoffer) a rendszerképajánlatok listájának lekéréséhez. Ezzel a paranccsal a lekért lista az adott közzétevőre lesz szűrve, amelynek neve `MicrosoftWindowsServer`:
+A [Get-AzVMImageOffer](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimageoffer) segítségével visszaállíthatja a képajánlatok listáját. Ezzel a paranccsal a lekért lista az adott közzétevőre lesz szűrve, amelynek neve `MicrosoftWindowsServer`:
 
 ```azurepowershell-interactive
 Get-AzVMImageOffer `
@@ -125,7 +124,7 @@ WindowsServer     MicrosoftWindowsServer EastUS
 WindowsServer-HUB MicrosoftWindowsServer EastUS
 ```
 
-A [Get-AzVMImageSku](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagesku) parancs majd szűrést a rendszerképnevek listájának lekéréséhez a közzétevő és az ajánlat nevét.
+A [Get-AzVMImageSku](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagesku) parancs ezután a közzétevő és az ajánlat neve alapján szűri a képnevek listáját.
 
 ```azurepowershell-interactive
 Get-AzVMImageSku `
@@ -175,24 +174,24 @@ Az `-AsJob` paraméter háttérfeladatként létrehozza a virtuális gépet, íg
 
 ## <a name="understand-vm-sizes"></a>Virtuális gépek méreteinek ismertetése
 
-A virtuális gép mérete határozza meg a számítási erőforrások, például a Processzor, a grafikus Processzor és memória, amely a virtuális gép számára elérhetővé válnak. Virtuális gépek a számítási feladathoz megfelelő Virtuálisgép-mérettel kell létrehozni. Ha a számítási feladatok mennyisége nő, a meglévő virtuális gépet át is lehet méretezni.
+A virtuális gép mérete határozza meg a virtuális gép számára elérhető számítási erőforrások, például a processzor, a GPU és a memória mennyiségét. A virtuális gépeket a számítási feladatok számára megfelelő virtuálisgép-mérettel kell létrehozni. Ha a számítási feladatok mennyisége nő, a meglévő virtuális gépet át is lehet méretezni.
 
 ### <a name="vm-sizes"></a>A virtuális gépek mérete
 
 Az alábbi táblázat a méreteket használati esetek alapján kategorizálja.  
 
-| Typo                     | Gyakori méretek           |    Leírás       |
+| Type                     | Gyakori méretek           |    Leírás       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Általános célú](sizes-general.md)         |B, Dsv3, Dv3, DSv2, Dv2, Av2, DC| Kiegyensúlyozott processzor-memória arány. Ideális választás fejlesztéshez/teszteléshez, valamint kis- és közepes méretű alkalmazásokhoz és adatkezelési megoldásokhoz.  |
-| [Számításra optimalizált](sizes-compute.md)   | Fsv2, Fs, F             | Magas processzor-memória arány a processzor javára. Megfelelő választás a közepes forgalmú alkalmazásokhoz, hálózati berendezésekhez és kötegelt folyamatokhoz.        |
-| [Memóriaoptimalizált](sizes-memory.md)    | Esv3, Ev3, M, GS, G, DSv2, Dv2  | Magas memória-mag arány a memória javára. Ideális választás relációs adatbázisokhoz, közepes és nagy gyorsítótárakhoz, memóriában végzett elemzésekhez.                 |
-| [Tárolásra optimalizált](sizes-storage.md)      | Ls                | Magas lemez-adatátviteli és I/O-műveleti jellemzők. Ideális Big Data-, SQL- és NoSQL-adatbázisok esetén.                                                         |
+| [Számításra optimalizált](sizes-compute.md)   | Fsv2          | Magas processzor-memória arány a processzor javára. Megfelelő választás a közepes forgalmú alkalmazásokhoz, hálózati berendezésekhez és kötegelt folyamatokhoz.        |
+| [Memóriaoptimalizált](sizes-memory.md)    | Esv3, Ev3, M, DSv2, Dv2  | Magas memória-mag arány a memória javára. Ideális választás relációs adatbázisokhoz, közepes és nagy gyorsítótárakhoz, memóriában végzett elemzésekhez.                 |
+| [Tárolásra optimalizált](sizes-storage.md)      | Lsv2, ls              | Magas lemez-adatátviteli és I/O-műveleti jellemzők. Ideális Big Data-, SQL- és NoSQL-adatbázisok esetén.                                                         |
 | [GPU](sizes-gpu.md)          | NV, NVv2, NC, NCv2, NCv3, ND            | Specializált virtuális gépek nagy terhelést jelentő grafikus rendereléshez és videószerkesztéshez.       |
 | [Nagy teljesítmény](sizes-hpc.md) | H        | Leghatékonyabb processzorral rendelkező virtuális gépeink, választható nagy átviteli sebességű hálózati adapterekkel (RDMA). |
 
 ### <a name="find-available-vm-sizes"></a>Elérhető virtuálisgép-méretek keresése
 
-Egy adott régióban elérhető VM méretek megtekintéséhez használja a [Get-AzVMSize](https://docs.microsoft.com/powershell/module/az.compute/get-azvmsize) parancsot.
+Egy adott régióban elérhető virtuálisgép-méretek listájának megtekintéséhez használja a [Get-AzVMSize](https://docs.microsoft.com/powershell/module/az.compute/get-azvmsize) parancsot.
 
 ```azurepowershell-interactive
 Get-AzVMSize -Location "EastUS"
@@ -202,13 +201,13 @@ Get-AzVMSize -Location "EastUS"
 
 A virtuális gépek az üzembe helyezésüket követően a rendelkezésre álló erőforrás-kiosztás növelése vagy csökkentése érdekében átméretezhetők.
 
-A virtuális gép átméretezése előtt ellenőrizze a kívánt elérhető-e az aktuális virtuális gép fürtön. A [Get-AzVMSize](https://docs.microsoft.com/powershell/module/az.compute/get-azvmsize) parancs a méretek listáját adja vissza.
+A virtuális gép átméretezése előtt ellenőrizze, hogy a kívánt méret elérhető-e az aktuális virtuálisgép-fürtön. A [Get-AzVMSize](https://docs.microsoft.com/powershell/module/az.compute/get-azvmsize) parancs a méretek listáját adja vissza.
 
 ```azurepowershell-interactive
 Get-AzVMSize -ResourceGroupName "myResourceGroupVM" -VMName "myVM"
 ```
 
-A méret érhető el, ha a virtuális gép is át lehet méretezni a bekapcsolt állapotban, azonban a művelet során újraindul.
+Ha a méret elérhető, a virtuális gép átméretezhető a bekapcsolt állapotból, azonban a művelet során újraindul.
 
 ```azurepowershell-interactive
 $vm = Get-AzVM `
@@ -220,7 +219,7 @@ Update-AzVM `
    -ResourceGroupName "myResourceGroupVM"
 ```
 
-Ha a kívánt méret nem érhető el az aktuális fürtön, a virtuális Gépet fel kell szabadítani az átméretezés végrehajtása előtt kell. A virtuális gép felszabadítása törli az ideiglenes lemezen található adatokat, és a nyilvános IP-cím is módosul, ha nem statikus IP-címet használ.
+Ha a kívánt méret nem érhető el az aktuális fürtön, akkor a virtuális gépet fel kell osztani az átméretezési művelet megkezdése előtt. A virtuális gép felszabadítása törli az ideiglenes lemezen található adatokat, és a nyilvános IP-cím is módosul, ha nem statikus IP-címet használ.
 
 ```azurepowershell-interactive
 Stop-AzVM `
@@ -246,14 +245,14 @@ Számos energiaállapot van, amelyek közül az Azure-beli virtuális gépek fel
 |----|----|
 | Indítás | A virtuális gép indítása folyamatban van. |
 | Fut | Még fut a virtuális gép. |
-| Leállítás | A virtuális gép leáll. |
+| Leállítás | A virtuális gép leállítása folyamatban van. |
 | Leállítva | A virtuális gép leállt. A leállított virtuális gépekért továbbra is díjat kell fizetni.  |
-| Felszabadítás | A virtuális gép felszabadítása folyamatban van. |
-| Felszabadítva | Azt jelzi, hogy a virtuális gép törlődik a hipervizor, de továbbra is elérhető a vezérlősík a. A `Deallocated` állapotban lévő virtuális gépekért nem kell díjat fizetni. |
-| - | A virtuális gép energiaállapota ismeretlen. |
+| Felszabadítás | A virtuális gép fel van foglalva. |
+| Felszabadítva | Azt jelzi, hogy a virtuális gép el lett távolítva a hypervisorból, de továbbra is elérhető a vezérlési síkon. A `Deallocated` állapotban lévő virtuális gépekért nem kell díjat fizetni. |
+| - | A virtuális gép energiagazdálkodási állapota ismeretlen. |
 
 
-Egy adott virtuális gép állapotának lekérdezéséhez használja a [Get-azvm parancsmag](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) parancsot. Ügyeljen arra, hogy érvényes nevet adjon meg a virtuális gép és az erőforráscsoport számára.
+Egy adott virtuális gép állapotának beszerzéséhez használja a [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) parancsot. Ügyeljen arra, hogy érvényes nevet adjon meg a virtuális gép és az erőforráscsoport számára.
 
 ```azurepowershell-interactive
 Get-AzVM `
@@ -270,13 +269,13 @@ Status
 PowerState/running
 ```
 
-## <a name="management-tasks"></a>Felügyeleti feladatok
+## <a name="management-tasks"></a>Kezelési feladatok
 
-Virtuális gép élettartama során érdemes futtatni a felügyeleti feladatokat, mint indítása, leállítása vagy törlése a virtuális gép. Emellett előfordulhat, hogy szkripteket is szeretne létrehozni az ismétlődő vagy összetett feladatok automatizálására. Az Azure PowerShell használatával számos gyakori felügyeleti feladat futtatható a parancssorból vagy szkriptek segítségével.
+A virtuális gépek életciklusa során előfordulhat, hogy olyan felügyeleti feladatokat szeretne futtatni, mint például a virtuális gépek elindítása, leállítása vagy törlése. Emellett előfordulhat, hogy szkripteket is szeretne létrehozni az ismétlődő vagy összetett feladatok automatizálására. Az Azure PowerShell használatával számos gyakori felügyeleti feladat futtatható a parancssorból vagy szkriptek segítségével.
 
 ### <a name="stop-a-vm"></a>Virtuális gép leállítása
 
-Leállítás és felszabadítás rendelkező virtuális gép [Stop-azvm parancsmag](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm):
+Állítsa le és szabadítson fel egy virtuális gépet a [stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm):
 
 ```azurepowershell-interactive
 Stop-AzVM `
@@ -296,7 +295,7 @@ Start-AzVM `
 
 ### <a name="delete-resource-group"></a>Erőforráscsoport törlése
 
-Minden belül egy erőforráscsoport törlésekor a rendszer az erőforráscsoport törlése.
+Az erőforráscsoport minden elemét törli, amikor törli az erőforráscsoportot.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup `

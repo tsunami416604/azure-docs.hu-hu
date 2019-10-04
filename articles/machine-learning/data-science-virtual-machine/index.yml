@@ -1,59 +1,62 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Az Azure Data Science Virtual Machine dokumentációja
+summary: Az Azure Data Science Virtual Machine (DSVM) egy virtuálisgép-lemezkép előre betöltött adatelemzési és gépi tanulási eszközökkel. Ezzel a virtuális géppel intelligens, fejlett analitikai alkalmazásokat hozhat létre.
 metadata:
   title: A Data Science Virtual Machine dokumentációja – Azure
-  description: 'Útmutató a Data Science Virtual Machine használatához, amely egy kísérleti környezet az Azure-felhőben kifejezetten adatelemzéshez. Számos népszerű adatelemzési és egyéb eszköz található meg rajta előre telepítve és konfigurálva, amelyek jelentősen felgyorsítják az intelligens alkalmazások fejlett elemzésekhez történő összeállítását.'
-  services: machine-learning
-  author: gopitk
-  manager: cgronlun
+  description: Az Azure Data Science Virtual Machine (DSVM) egy virtuálisgép-lemezkép előre betöltött adatelemzési és gépi tanulási eszközökkel.
   ms.service: machine-learning
   ms.subservice: data-science-vm
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 01/18/2018
-  ms.author: gokuma
-abstract:
-  description: 'Az adatelemzési és a mélytanulási virtuális gépek testre szabott Azure VM-rendszerképek, rengeteg beépített adatelemzési eszközzel, amelyek fejlett elemzésre tervezett, intelligens alkalmazások létrehozására használhatók.'
-sections:
-  - title: 5 perces gyors útmutatók
-    items:
-      - type: paragraph
-        text: 'Útmutató a Windows- vagy Linux-alapú adatelemzési virtuális gépek üzembe helyezéséhez:'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="provision-vm.md">Windows</a>
-          - html: <a href="linux-dsvm-intro.md">Linux CentOS</a>
-          - html: <a href="dsvm-ubuntu-intro.md">Linux Ubuntu</a>
-  - title: Részletes útmutatók
-    items:
-      - type: paragraph
-        text: 'Útmutató az adatelemzési virtuális gépek (DSVM) kiépítéséről és használatához:'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="provision-vm">Windowsos DSVM kiépítése</a>
-          - html: <a href="vm-do-ten-things">Windowsos DSVM használata</a>
-          - html: <a href="linux-dsvm-intro">Linux CentOS-alapú DSVM kiépítése</a>
-          - html: <a href="dsvm-ubuntu-intro">Linux Ubuntu-alapú DSVM kiépítése</a>
-          - html: <a href="linux-dsvm-walkthrough">Linuxos DSVM használata</a>
-  - title: További Azure Machine Learning-technológiák
-    items:
-      - type: paragraph
-        text: 'Az Azure Machine Learningben elérhető további technológiák:'
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Azure Machine Learning szolgáltatás (előzetes verzió)
-            href: /azure/machine-learning/service/
-            image:
-              src: media/index/i_machine-learning.svg
-              href: /azure/machine-learning/service/
-          - title: Azure Machine Learning Studio
-            href: /azure/machine-learning/studio/
-            image:
-              src: media/index/machine-learning-studio.svg
-              href: /azure/machine-learning/studio/
+  ms.collection: collection
+  author: gvashishtha
+  ms.author: gopalv
+  ms.date: 09/13/2019
+  ms.openlocfilehash: 894ba48c0bc9d080b7e68ff722afe3a658bef5f7
+  ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 10/02/2019
+  ms.locfileid: "71802347"
+landingContent:
+- title: Bevezetés a DSVM használatába
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az a DSVM?
+      url: overview.md
+    - text: Mi az a mesterséges intelligenciát használó geo-adatelemzési virtuális gép (GEO AI DSVM)?
+      url: geo-ai-dsvm-overview.md
+    - text: A DSVM-en elérhető eszközök
+      url: tools-included.md
+  - linkListType: get-started
+    links:
+    - text: Windows rendszerű DSVM létrehozása
+      url: provision-vm.md
+    - text: Ubuntu rendszerű DSVM létrehozása
+      url: dsvm-ubuntu-intro.md
+    - text: CentOS rendszerű DSVM létrehozása
+      url: linux-dsvm-intro.md
+    - text: Geo AI DSVM létrehozása
+      url: provision-geo-ai-dsvm.md
+- title: A DSVM kezelése
+  linkLists:
+  - linkListType: architecture
+    links:
+    - text: Vállalati biztonság és útmutatás
+      url: dsvm-enterprise-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Automatikus skálázású DSVM-készletek létrehozása
+      url: dsvm-pools.md
+    - text: Az integrációt az Active Directoryval.
+      url: dsvm-common-identity.md
+    - text: Biztonságos erőforrás-hozzáférési hitelesítő adatok
+      url: dsvm-secure-access-keys.md
+- title: További Azure Machine Learning-technológiák
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Azure Machine Learning szolgáltatás
+      url: /azure/machine-learning/
+    - text: Machine Learning-termékeink összehasonlítása
+      url: https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/studio/context/ml-context

@@ -4,7 +4,7 @@ description: Virtuálisgép-méretezési csoportokkal kapcsolatos gyakori kérd�
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: mayanknayar
-manager: jeconnoc
+manager: drewm
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
@@ -13,15 +13,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/13/2019
+ms.date: 05/24/2019
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: 56a31770c374cdccaec4dbee751925a6da00fa59
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 429e201ba1d15103ae130ee2fb767cd1b4fa909a
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59683953"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779428"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure-beli virtuálisgép-méretezési csoportok – gyakori kérdések
 
@@ -61,7 +61,7 @@ Ha 18-ra növeli a kapacitást, akkor a rendszer 3 új virtuális gépet hoz lé
 
 ### <a name="when-im-using-multiple-extensions-in-a-scale-set-can-i-enforce-an-execution-sequence"></a>Ha több bővítményt használok egy méretezési csoportban, van lehetőség végrehajtási sorrend kényszerítésére?
 
-Igen, használhatja a méretezési csoport [sorrendről](virtual-machine-scale-sets-extension-sequencing.md).
+Igen, a méretezési csoport [bővítmények sorrendjét](virtual-machine-scale-sets-extension-sequencing.md)is használhatja.
 
 ### <a name="do-scale-sets-work-with-azure-availability-sets"></a>Használhatok virtuálisgép-méretezési csoportokat Azure rendelkezésre állási csoportokkal?
 
@@ -140,7 +140,7 @@ Nem. Ha az automatikus skálázási szabályok további Virtuálisgép-példány
 
 ## <a name="certificates"></a>Tanúsítványok
 
-### <a name="how-do-i-securely-ship-a-certificate-to-the-vm-how-do-i-provision-a-virtual-machine-scale-set-to-run-a-website-where-the-ssl-for-the-website-is-shipped-securely-from-a-certificate-configuration-the-common-certificate-rotation-operation-would-be-almost-the-same-as-a-configuration-update-operation-do-you-have-an-example-of-how-to-do-this"></a>Hogyan do I biztonságos szállításra egy tanúsítványt a virtuális géphez? Hogyan helyezhetek üzembe egy webhely, ahol a webhely az SSL nyújtják biztonságosan futtatható egy tanúsítvány konfigurálását a virtuális gép méretezési? (A közös tanúsítvány rotációja művelet lenne majdnem megegyezik a konfiguráció frissítési művelet.) Példa bemutatja, hogyan ehhez van?
+### <a name="how-do-i-securely-ship-a-certificate-to-the-vm"></a>Hogyan do I biztonságos szállításra egy tanúsítványt a virtuális géphez?
 
 Biztonságos szállításra egy tanúsítványt a virtuális gépre, telepíthet egy ügyfél-tanúsítványt közvetlenül egy Windows-tanúsítványtároló az ügyfél-kulcstartóból való.
 
@@ -167,16 +167,14 @@ A kód támogatja a Windows és Linux rendszereken.
 További információkért lásd: [létrehozás vagy frissítés egy virtuálisgép-méretezési csoport beállítása](https://msdn.microsoft.com/library/mt589035.aspx).
 
 
-### <a name="example-of-self-signed-certificates-provisioned-for-azure-service-fabric-clusters"></a>Példa az Azure Service Fabric-fürtök kiépítése önaláírt tanúsítványokat.
-A legújabb használja például a következő azure CLI utasítást az azure shell belül olvassa el a szolgáltatás hálók CLI modul példa dokumentációját, amely a stdout nyomtatja:
+### <a name="how-do-i-use-self-signed-certificates-provisioned-for-azure-service-fabric-clusters"></a>Hogyan használhat az Azure Service Fabric-fürtökhöz kiépített önaláírt tanúsítványokat?
+A legújabb példa a következő Azure CLI-utasítást használja az Azure shellben, olvassa el a Service Fabric CLI-modul – példa dokumentációját, amely az stdout-ra lesz kinyomtatva:
 
 ```bash
 az sf cluster create -h
 ```
 
-Tekintse át a legújabb támogatott API-tanúsítvány-műveletek az Azure-ban keyvaults dokumentációját.
-
-Önaláírt tanúsítványokat egy hitelesítésszolgáltató által megadott elosztott megbízhatósági kapcsolatban nem használható, és nem használható a minden gazdagép vállalati éles megoldásokat; szánt Service Fabric-fürt Service Fabric biztonsága kapcsolatos további információkért tekintse át a [Azure Service Fabric bevált biztonsági gyakorlatok](https://docs.microsoft.com/azure/security/azure-service-fabric-security-best-practices) és [Service Fabric-fürtök biztonsági forgatókönyveit](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/).
+Az önaláírt tanúsítványok nem használhatók a hitelesítésszolgáltató által biztosított elosztott megbízhatósági kapcsolatokhoz, és nem használhatók olyan Service Fabric-fürthöz, amely vállalati üzemi megoldások üzemeltetésére szolgál. További Service Fabric biztonsági útmutatásért tekintse át az [Azure Service Fabric biztonsági eljárásokat](https://docs.microsoft.com/azure/security/fundamentals/service-fabric-best-practices) és az [Service Fabric-fürtök biztonsági forgatókönyveit](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/).
 
 ### <a name="can-i-specify-an-ssh-key-pair-to-use-for-ssh-authentication-with-a-linux-virtual-machine-scale-set-from-a-resource-manager-template"></a>Meghatározható, hogy ssh-kulcs az SSH-hitelesítés használata a Resource Manager-sablon egy Linux virtuális gép méretezési?
 
@@ -202,9 +200,7 @@ Például **osProfile** a sablonban:
 }
 ```
 
-Ez a JSON-tömb szerepel [a 101-vm-ssh-kulcsfájl GitHub gyorsindítási sablon](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json).
-
-Az operációs rendszer profilja is használatban van [a grelayhost.json GitHub gyorsindítási sablon](https://github.com/ExchMaster/gadgetron/blob/master/Gadgetron/Templates/grelayhost.json).
+Ez a JSON-blokk ebben az [Azure](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json)gyorsindítási sablonban van használatban.
 
 További információkért lásd: [létrehozás vagy frissítés egy virtuálisgép-méretezési csoport beállítása](https://msdn.microsoft.com/library/azure/mt589035.aspx#linuxconfiguration).
 
@@ -212,9 +208,9 @@ További információkért lásd: [létrehozás vagy frissítés egy virtuálisg
 
 Elavult tanúsítványok eltávolításához törölje a régi tanúsítvány tároló tanúsítványok listájából. Hagyja meg szeretné őrizni a számítógépen, a lista összes tanúsítványt. Ez nem távolítja a tanúsítványt az összes virtuális gépet. Azt is nem adható hozzá a tanúsítványt a virtuális gép méretezési csoportban létrehozott új virtuális gépeket.
 
-Eltávolítani a tanúsítványt a meglévő virtuális gépekről, írjon egy egyéni szkriptbővítményt manuálisan távolítsa el a tanúsítványokat a tanúsítványtárolóból.
+Ha el szeretné távolítani a tanúsítványt a meglévő virtuális gépekről, egyéni parancsfájl-bővítmény használatával távolítsa el manuálisan a tanúsítványokat a tanúsítványtárolóból.
 
-### <a name="how-do-i-inject-an-existing-ssh-public-key-into-the-virtual-machine-scale-set-ssh-layer-during-provisioning-i-want-to-store-the-ssh-public-key-values-in-azure-key-vault-and-then-use-them-in-my-resource-manager-template"></a>Hogyan do I behelyezése egy meglévő nyilvános SSH-kulcs a virtuális gép méretezési készlet SSH réteg kiépítése során? Az SSH nyilvános kulcs értékeit az Azure Key Vaultban tárolni, és használja őket a saját Resource Manager-sablon szeretnék.
+### <a name="how-do-i-inject-an-existing-ssh-public-key-into-the-virtual-machine-scale-set-ssh-layer-during-provisioning"></a>Hogyan do I behelyezése egy meglévő nyilvános SSH-kulcs a virtuális gép méretezési készlet SSH réteg kiépítése során?
 
 Ha meg van adva a virtuális gépek csak a nyilvános SSH-kulcsot, nem kell helyezni a nyilvános kulcsokat a Key Vaultban. Nyilvános kulcsok, amelyek nem titkos.
 
@@ -234,7 +230,7 @@ Egyszerű szöveges nyilvános SSH-kulcsokat a Linux rendszerű virtuális gép 
 ```
 
 linuxConfiguration elem neve | Szükséges | Típus | Leírás
---- | --- | --- | --- 
+--- | --- | --- | ---
 ssh | Nem | Gyűjtemény | Adja meg a Linux operációs rendszer SSH-kulcs konfigurációja
 elérési út | Igen | Karakterlánc | Linux fájl elérési útját adja meg, az SSH-kulcsokat, vagy a tanúsítványt kell lennie
 keyData | Igen | Karakterlánc | Adja meg a base64-kódolású SSH nyilvános kulcs
@@ -243,7 +239,7 @@ Egy vonatkozó példáért lásd: [a 101-vm-ssh-kulcsfájl GitHub gyorsindítás
 
 ### <a name="when-i-run-update-azvmss-after-adding-more-than-one-certificate-from-the-same-key-vault-i-see-the-following-message"></a>A futtatási amikor `Update-AzVmss` után egynél több tanúsítvány felvétele a azonos key vaultban tárolt, az alábbi üzenet látható:
 
->Update-AzVmss: Lista titkos kulcsot tartalmazza: /subscriptions/ több példánya\<my-subscription-id > / resourceGroups/internal-rg-dev/providers/Microsoft.KeyVault/vaults/internal-keyvault-dev, ami nem engedélyezett.
+>Update-AzVmss: A titkos lista a/Subscriptions/\<saját előfizetés-azonosító >/resourceGroups/Internal-RG-dev/Providers/Microsoft.KeyVault/Vaults/Internal-keyvault-dev ismétlődő példányait tartalmazza, ami nem engedélyezett.
 
 Ez akkor fordulhat elő, ha megpróbálja újra hozzá ugyanahhoz a tárolóhoz, a forrás meglévő tárolóhoz tartozó új tárolóra tanúsítvány használata helyett. A `Add-AzVmssSecret` parancs nem működik megfelelően további titkos kulcsok hozzáadása esetén.
 
@@ -303,16 +299,6 @@ A CRP-összetevő nem marad az ügyfél titkos kulcsok. Ha `stop deallocate` a v
 
 Ez a probléma nem tapasztal, amikor a horizontális felskálázás, mert a titkos kulcsot az Azure Service Fabric (a modellben egyetlen fabric-bérlő) gyorsítótárazott másolatának.
 
-### <a name="why-do-i-have-to-specify-the-exact-location-for-the-certificate-url-httpsname-of-the-vaultvaultazurenet443secretsexact-location-as-indicated-in-service-fabric-cluster-security-scenarioshttpsazuremicrosoftcomdocumentationarticlesservice-fabric-cluster-security"></a>Miért van, adja meg a pontos helyét a tanúsítvány URL-címe (https:\/\/\<a tároló neve >.vault.azure.net:443/secrets/\<a pontos helyet >), a [Service Fabric fürtök – biztonsági helyzetek](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/)?
-
-Az Azure Key Vault-dokumentáció megállapítja, hogy az első titkos REST API a titkos kulcs legújabb verzióját kell visszaadnia, ha a verzió nincs megadva.
-
-Módszer | URL-cím
---- | ---
-GET | <https://mykeyvault.vault.azure.net/secrets/{secret-name}/{secret-version}?api-version={api-version}>
-
-Cserélje le a(z)*titkos kulcs-name*} a nevét, és cserélje le a {*titkos kulcs-verzió*} verziójával, a titkos kulcsot szeretné beolvasni. Előfordulhat, hogy ki kell zárni a titkos kulcs verzióját. Ebben az esetben lekéri a jelenlegi verziót.
-
 ### <a name="why-do-i-have-to-specify-the-certificate-version-when-i-use-key-vault"></a>Miért kell megadnia a verziójának Key Vault használata esetén?
 
 A Key Vault követelmény a verziójának megadása az a célja, hogy győződjön meg arról, hogy egyértelmű, hogy a felhasználó milyen tanúsítvány telepítve van a virtuális gépeiken.
@@ -325,7 +311,7 @@ Ha létrehoz egy virtuális Gépet, és frissítse a titkos kulcsot a kulcstart�
 
 További információkért lásd: [X509Certificate.Export metódus (X509ContentType, String)](https://msdn.microsoft.com/library/24ww6yzk(v=vs.110.aspx)).
 
-### <a name="i-do-not-see-an-option-for-users-to-pass-in-certificates-as-base64-strings-most-other-resource-providers-have-this-option"></a>Miért nem jelenik meg egy beállítást, a felhasználók számára tanúsítványok Base64 kódolású karakterláncként adja át. A legtöbb más erőforrás-szolgáltatók kell ezt a beállítást.
+### <a name="how-do-i-pass-in-certificates-as-base64-strings"></a>A tanúsítványokat Base64-karakterláncként Hogyan továbbítani?
 
 A tanúsítvány Base64 kódolású karakterláncként ad emulációjához, kibonthatja a legújabb verzióval ellátott URL-címet a Resource Manager-sablonnal. A Resource Manager-sablon a következő JSON-tulajdonságot tartalmazza:
 
@@ -355,7 +341,7 @@ További információkért lásd: [Microsoft Adatvédelmi központ](https://www.
 
 ### <a name="does-managed-identities-for-azure-resourceshttpsdocsmicrosoftcomazureactive-directorymsi-overview-work-with-virtual-machine-scale-sets"></a>Does [felügyelt identitások az Azure-erőforrások](https://docs.microsoft.com/azure/active-directory/msi-overview) munkahelyi virtuálisgép-méretezési csoportok?
 
-Igen. Egyes MSI példasablonkészlet az Azure-gyorssablonok látható. Linux: [ https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi ](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi). Windows: [ https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi ](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi).
+Igen. A [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi) és a [Windows rendszerhez](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi)készült Azure gyorsindítási sablonokban néhány példát láthat az MSI-sablonokra.
 
 
 ## <a name="extensions"></a>Bővítmények
@@ -374,38 +360,9 @@ Update-AzVmss -ResourceGroupName "resource_group_name" -VMScaleSetName "vmssName
 
 Az bővítménynév értéket annak `$vmss`.
 
-### <a name="is-there-a-virtual-machine-scale-set-template-example-that-integrates-with-azure-monitor-logs"></a>Nincs virtuálisgép-méretezési csoportot, amely integrálható az Azure Monitor naplóira példasablonban beállítani?
+### <a name="is-there-a-virtual-machine-scale-set-template-example-that-integrates-with-azure-monitor-logs"></a>Van egy virtuálisgép-méretezési csoport sablonja, amely integrálható Azure Monitor naplókba?
 
-Virtuálisgép-méretezési csoportot, amely integrálható az Azure Monitor naplóira példasablonban beállítása, tekintse meg a második példáját [egy Azure Service Fabric-fürt üzembe helyezése és figyelése az Azure Monitor-naplók használatával engedélyezése](https://github.com/krnese/AzureDeploy/tree/master/OMS/MSOMS/ServiceFabric).
-
-### <a name="extensions-seem-to-run-in-parallel-on-virtual-machine-scale-sets-this-causes-my-custom-script-extension-to-fail-what-can-i-do-to-fix-this"></a>Bővítmények úgy tűnik, hogy a virtual machine scale sets párhuzamosan futnak. Ennek hatására a saját egyéni szkriptek futtatására szolgáló bővítmény sikertelen lesz. Mire használhatom a probléma megoldásához?
-
-A virtual machine scale sets sorrendről kapcsolatos további információkért lásd: [az Azure-beli virtuálisgép-méretezési csoportok végrehajtási](https://msftstack.wordpress.com/2016/05/12/extension-sequencing-in-azure-vm-scale-sets/).
-
-### <a name="how-do-i-reset-the-password-for-vms-in-my-virtual-machine-scale-set"></a>Hogyan do I alaphelyzetbe állíthatja a jelszót a virtuális gépek saját virtuálisgép-méretezési csoportban lévő?
-
-Módosíthatja a jelszót a virtuális gépek méretezési két fő módja van.
-
-- Közvetlenül módosítsa a virtuálisgép-méretezési csoport modelljéből. A Compute API 2017-12-01 vagy újabb érhető el.
-
-    Frissítse közvetlenül a méretezési csoport modelljéből (például az Azure Resource Explorer, a PowerShell vagy a parancssori felület használatával) a rendszergazdai hitelesítő adatait. Amint a méretezési frissített, minden új virtuális gépek rendelkeznek az új hitelesítő adatokkal. Meglévő virtuális gépek csak az új hitelesítő adatokkal rendelkezik, ha azok rendszerképét alaphelyzetbe állítják.
-
-- Alaphelyzetbe a jelszót a hozzáférést a Virtuálisgép-bővítmények használatával.
-
-    Használja a következő PowerShell-példát:
-
-    ```powershell
-    $vmssName = "myvmss"
-    $vmssResourceGroup = "myvmssrg"
-    $publicConfig = @{"UserName" = "newuser"}
-    $privateConfig = @{"Password" = "********"}
-
-    $extName = "VMAccessAgent"
-    $publisher = "Microsoft.Compute"
-    $vmss = Get-AzVmss -ResourceGroupName $vmssResourceGroup -VMScaleSetName $vmssName
-    $vmss = Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name $extName -Publisher $publisher -Setting $publicConfig -ProtectedSetting $privateConfig -Type $extName -TypeHandlerVersion "2.0" -AutoUpgradeMinorVersion $true
-    Update-AzVmss -ResourceGroupName $vmssResourceGroup -Name $vmssName -VirtualMachineScaleSet $vmss
-    ```
+Egy virtuálisgép-méretezési csoport sablonja, amely integrálható Azure Monitor naplókba, tekintse meg a második példát az [Azure Service Fabric-fürt üzembe helyezése és a figyelés Azure monitor naplók használatával](https://github.com/krnese/AzureDeploy/tree/master/OMS/MSOMS/ServiceFabric)történő engedélyezéséhez.
 
 ### <a name="how-do-i-add-an-extension-to-all-vms-in-my-virtual-machine-scale-set"></a>Hogyan adhatok hozzá egy bővítmény az összes virtuális gépre a saját virtuálisgép-méretezési csoportot?
 
@@ -413,11 +370,13 @@ Ha a frissítési szabályzat lesz beállítva **automatikus**, minden virtuáli
 
 Ha a frissítési szabályzat lesz beállítva **manuális**, először frissítse a bővítményt, és frissítse manuálisan a virtuális gépek szereplő összes példányt.
 
-### <a name="if-the-extensions-associated-with-an-existing-virtual-machine-scale-set-are-updated-are-existing-vms-affected-that-is-will-the-vms-not-match-the-virtual-machine-scale-set-model-or-are-they-ignored-when-an-existing-machine-is-service-healed-or-reimaged-are-the-scripts-that-are-currently-configured-on-the-virtual-machine-scale-set-executed-or-are-the-scripts-that-were-configured-when-the-vm-was-first-created-used"></a>A bővítmények egy meglévő virtuálisgép-méretezési társított frissülnek, ha a virtuális gépeit érinti a meglévő? (Azaz lesz a virtuális gépek *nem* felel meg a virtuálisgép-méretezési csoport modelljéből?) Vagy azok mellőz a rendszer? Ha egy meglévő gépre a szolgáltatás-kezelte, vagy rendszerképét alaphelyzetbe állítják, azok a parancsprogramok, végrehajtott virtuálisgép-méretezési vannak beállítva, vagy azokat a parancsprogramokat, ha a virtuális gép létrehozásakor konfigurált használni?
+### <a name="if-the-extensions-associated-with-an-existing-virtual-machine-scale-set-are-updated-are-existing-vms-affected"></a>A bővítmények egy meglévő virtuálisgép-méretezési társított frissülnek, ha a virtuális gépeit érinti a meglévő?
 
 Ha a bővítmény a virtuálisgép-méretezési csoport definíciójában modell frissül, és a upgradePolicy tulajdonság értéke **automatikus**, a virtuális gépeket frissíti. Ha a upgradePolicy tulajdonság értéke **manuális**, bővítmények megjelölt a modell nem egyeznek.
 
-Ha egy meglévő virtuális gép szolgáltatás kezelte, újraindítás jelenik meg, és a bővítményeket nem Újrafuttatja. Ha rendszerképét alaphelyzetbe állítják, például az operációs rendszer meghajtójának cserélje le a forrás lemezkép van. Minden olyan bővítmények, mint például a legújabb modellből specializáció futnak.
+### <a name="are-extensions-run-again-when-an-existing-machine-is-service-healed-or-reimaged"></a>A bővítmények újra futnak, amikor egy meglévő gép szolgáltatás által meggyógyult vagy alaphelyzetbe áll?
+
+Ha egy meglévő virtuális gép szolgáltatás által meggyógyult, akkor a rendszer újraindítással jelenik meg, és a bővítmények nem futnak újra. Ha a virtuális gép rendszerképét alaphelyzetbe állítja, a folyamat hasonló módon helyettesíti az operációsrendszer-meghajtót a forrás rendszerképpel. A legújabb modelltől (például a bővítmények) való specializáció újra fut.
 
 ### <a name="how-do-i-join-a-virtual-machine-scale-set-to-an-active-directory-domain"></a>Hogyan csatlakozzon a Active Directory-tartomány beállítása egy virtuálisgép-méretezési csoport?
 
@@ -450,7 +409,7 @@ Egy bővítmény meghatározásához használja a JsonADDomainExtension tulajdon
 }
 ```
 
-### <a name="my-virtual-machine-scale-set-extension-is-trying-to-install-something-that-requires-a-reboot-for-example-commandtoexecute-powershellexe--executionpolicy-unrestricted-install-windowsfeature-name-fs-resource-manager-includemanagementtools"></a>Saját virtuálisgép-méretezési csoport bővítményének próbálja meg telepíteni, hogy újra kell indítani. Például: "commandToExecute": "powershell.exe - ExecutionPolicy Unrestricted Install-WindowsFeature-Name FS-Resource-Manager – IncludeManagementTools"
+### <a name="my-virtual-machine-scale-set-extension-is-trying-to-install-something-that-requires-a-reboot"></a>Saját virtuálisgép-méretezési csoport bővítményének próbálja meg telepíteni, hogy újra kell indítani.
 
 Ha a virtuálisgép-méretezési csoport bővítményének próbálja meg telepíteni, hogy újra kell indítani, használhatja az Azure Automation Desired State Configuration (Automation DSC) bővítmény. Ha az operációs rendszer Windows Server 2012 R2, az Azure lekéri az újraindítások, a Windows Management Framework (WMF) 5.0 telepítés, és majd folytatja az a konfiguráció.
 
@@ -473,9 +432,36 @@ Add-AzVmssExtension -VirtualMachineScaleSet $VMSS -Name "IaaSAntimalware" -Publi
 Update-AzVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineScaleSet $VMSS
 ```
 
-### <a name="i-need-to-execute-a-custom-script-thats-hosted-in-a-private-storage-account-the-script-runs-successfully-when-the-storage-is-public-but-when-i-try-to-use-a-shared-access-signature-sas-it-fails-this-message-is-displayed-missing-mandatory-parameters-for-valid-shared-access-signature-linksas-works-fine-from-my-local-browser"></a>Privát storage-fiókban lévő üzemeltetett egyéni parancsfájl végrehajtására van szükségem. A szkript sikeresen lefutott, amikor a tároló nem nyilvános, de jelenik meg a közös hozzáférésű Jogosultságkód (SAS) használni, akkor sem jár sikerrel. Ez az üzenet jelenik meg: "Hiányzik a kötelező paraméterekhez tartozó érvényes közös hozzáférésű Jogosultságkód". Hivatkozás + SAS jól működik a helyi böngészőből.
+### <a name="how-do-i-execute-a-custom-script-thats-hosted-in-a-private-storage-account"></a>Hogyan egy egyéni parancsfájlt, amelyet egy privát Storage-fiókban futtat?
 
-Privát storage-fiókban lévő üzemeltetett egyéni parancsfájl végrehajtása védett beállítások megadása a tárfiók kulcsát, a név. További információkért lásd: [Custom Script bővítmény a Windows](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/#template-example-for-a-windows-vm-with-protected-settings).
+Privát storage-fiókban lévő üzemeltetett egyéni parancsfájl végrehajtása védett beállítások megadása a tárfiók kulcsát, a név. További információ: [Egyéni szkriptek bővítménye](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/#template-example-for-a-windows-vm-with-protected-settings).
+
+## <a name="passwords"></a>Jelszavak
+
+### <a name="how-do-i-reset-the-password-for-vms-in-my-virtual-machine-scale-set"></a>Hogyan do I alaphelyzetbe állíthatja a jelszót a virtuális gépek saját virtuálisgép-méretezési csoportban lévő?
+
+Módosíthatja a jelszót a virtuális gépek méretezési két fő módja van.
+
+- Közvetlenül módosítsa a virtuálisgép-méretezési csoport modelljéből. Elérhető a 2017-12-01-es és újabb API-val.
+
+    Frissítse közvetlenül a méretezési csoport modelljéből (például az Azure Resource Explorer, a PowerShell vagy a parancssori felület használatával) a rendszergazdai hitelesítő adatait. Amint a méretezési frissített, minden új virtuális gépek rendelkeznek az új hitelesítő adatokkal. Meglévő virtuális gépek csak az új hitelesítő adatokkal rendelkezik, ha azok rendszerképét alaphelyzetbe állítják.
+
+- Alaphelyzetbe a jelszót a hozzáférést a Virtuálisgép-bővítmények használatával.
+
+    Használja a következő PowerShell-példát:
+
+    ```powershell
+    $vmssName = "myvmss"
+    $vmssResourceGroup = "myvmssrg"
+    $publicConfig = @{"UserName" = "newuser"}
+    $privateConfig = @{"Password" = "********"}
+
+    $extName = "VMAccessAgent"
+    $publisher = "Microsoft.Compute"
+    $vmss = Get-AzVmss -ResourceGroupName $vmssResourceGroup -VMScaleSetName $vmssName
+    $vmss = Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name $extName -Publisher $publisher -Setting $publicConfig -ProtectedSetting $privateConfig -Type $extName -TypeHandlerVersion "2.0" -AutoUpgradeMinorVersion $true
+    Update-AzVmss -ResourceGroupName $vmssResourceGroup -Name $vmssName -VirtualMachineScaleSet $vmss
+    ```
 
 ## <a name="networking"></a>Hálózat
 
@@ -521,7 +507,7 @@ Igen. A hálózati biztonsági csoportok közvetlenül egy méretezési csoport 
 
 ### <a name="how-do-i-do-a-vip-swap-for-virtual-machine-scale-sets-in-the-same-subscription-and-same-region"></a>Hogyan hajthatok végre egy virtuális IP-címcsere a virtuális gép méretezési csoportokhoz az ugyanahhoz az előfizetéshez, és ugyanabban a régióban?
 
-Ha két virtuálisgép-méretezési csoportok az Azure Load Balancer az előtér-kiszolgálókon, és azok, azonos előfizetésben és régióban, sikerült szabadítsa fel az egyes nyilvános IP-címét, és hozzárendelheti a másik. Lásd: [virtuális IP-Címcsere: Kék-zöld üzembe helyezés az Azure Resource Manager](https://msftstack.wordpress.com/2017/02/24/vip-swap-blue-green-deployment-in-azure-resource-manager/) például. Ez hasonló a késést, ha az erőforrások vannak a hálózaton, felszabadítva vagy lefoglalt szintű. A gyorsabb megoldás, ha az Azure Application Gateway használatára két háttérkészletek, és a egy útválasztási szabályt. Azt is megteheti, hogy sikerült az alkalmazások üzemeltetéséhez [Azure App Service-ben](https://azure.microsoft.com/services/app-service/) amely támogatást biztosít a gyors váltás átmeneti és éles pontok között.
+Ha két virtuálisgép-méretezési csoportok az Azure Load Balancer az előtér-kiszolgálókon, és azok, azonos előfizetésben és régióban, sikerült szabadítsa fel az egyes nyilvános IP-címét, és hozzárendelheti a másik. Lásd [: VIP-csere: A kék-zöld üzembe helyezés](https://msftstack.wordpress.com/2017/02/24/vip-swap-blue-green-deployment-in-azure-resource-manager/) Azure Resource Manager például. Ez hasonló a késést, ha az erőforrások vannak a hálózaton, felszabadítva vagy lefoglalt szintű. A gyorsabb megoldás, ha az Azure Application Gateway használatára két háttérkészletek, és a egy útválasztási szabályt. Azt is megteheti, hogy sikerült az alkalmazások üzemeltetéséhez [Azure App Service-ben](https://azure.microsoft.com/services/app-service/) amely támogatást biztosít a gyors váltás átmeneti és éles pontok között.
 
 ### <a name="how-do-i-specify-a-range-of-private-ip-addresses-to-use-for-static-private-ip-address-allocation"></a>Hogyan határozhatom meg magánhálózati IP-címek statikus magánhálózati IP-cím lefoglalását használandó számos?
 
@@ -532,10 +518,6 @@ A virtuális gép méretezési készlet IP-cím-kiosztási módszerét mindig "d
 ### <a name="how-do-i-deploy-a-virtual-machine-scale-set-to-an-existing-azure-virtual-network"></a>Hogyan helyezhetek üzembe egy meglévő Azure virtuális hálózat beállítása egy virtuálisgép-méretezési csoport?
 
 Egy meglévő Azure virtuális hálózat beállítása egy virtuálisgép-méretezési csoport üzembe helyezéséhez lásd: [üzembe helyezése virtuálisgép-méretezési csoportot a meglévő virtuális hálózat beállítása](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-existing-vnet).
-
-### <a name="how-do-i-add-the-ip-address-of-the-first-vm-in-a-virtual-machine-scale-set-to-the-output-of-a-template"></a>Hogyan adhatok hozzá az első virtuális gép IP-címét egy virtuális gép méretezési sablon kimenete?
-
-Adja hozzá az első virtuális gép IP-címét egy virtuális gép méretezési sablon kimenete, lásd: [Azure Resource Manager: Első virtuálisgép-méretezési csoportok magánhálózati IP-címek](https://stackoverflow.com/questions/42790392/arm-get-vmsss-private-ips).
 
 ### <a name="can-i-use-scale-sets-with-accelerated-networking"></a>A méretezési csoportok használata a gyorsított hálózatkezelés?
 
@@ -580,7 +562,7 @@ Hozzon létre egy virtuális gép méretezési csoportot, amely a nyilvános IP-
 
 ### <a name="can-i-configure-a-scale-set-to-work-with-multiple-application-gateways"></a>Konfigurálhatja egy méretezési csoport használata több Application Gateway átjárókkal?
 
-Igen. Erőforrás azonosítója a több Application Gateway háttér-címkészletet, adhat hozzá a _applicationGatewayBackendAddressPools_ listájában a _IP-konfigurációk_ szakasz a méretezési csoport hálózati beállítása profil.
+Igen. A méretezési csoport hálózati profiljának _ipConfigurations_ szakaszának _applicationGatewayBackendAddressPools_ listájához több Application Gateway háttérbeli címkészlet erőforrás-azonosítóit is hozzáadhatja.
 
 ## <a name="scale"></a>Méretezés
 
@@ -592,7 +574,7 @@ Létrehozhat egy virtuális gép méretezési kevesebb mint két virtuális gép
 
 ### <a name="how-do-i-change-the-number-of-vms-in-a-virtual-machine-scale-set"></a>Hogyan változtatható meg a virtuálisgép-méretezési csoportban lévő virtuális gépek száma?
 
-Ha módosítani szeretné az Azure Portal virtuális gép méretezési csoportban lévő virtuális gépek számát, a virtuálisgép-méretezési csoport tulajdonságok szakaszában állítsa be, kattintson a a "Méretezés" panel és a csúszkával. Módosítsa a példányszám egyéb módjai, lásd: [módosítása egy virtuálisgép-méretezési csoportot példányainak számát](https://msftstack.wordpress.com/2016/05/13/change-the-instance-count-of-an-azure-vm-scale-set/).
+Ha módosítani szeretné az Azure Portal virtuális gép méretezési csoportban lévő virtuális gépek számát, a virtuálisgép-méretezési csoport tulajdonságok szakaszában állítsa be, kattintson a a "Méretezés" panel és a csúszkával.
 
 ### <a name="how-do-i-define-custom-alerts-for-when-certain-thresholds-are-reached"></a>Hogyan határozza meg az egyéni riasztások bizonyos küszöbértékek elérésekor?
 
@@ -623,7 +605,7 @@ Bizonyos fokú szabadsága van a hogyan kezeli a megadott küszöbértékek kapc
                 },
                 "webhooks": [
                     {
-                        "serviceUri": "https://events.pagerduty.com/integration/0b75b57246814149b4d87fa6e1273687/enqueue",
+                        "serviceUri": "<service uri>",
                         "properties": {
                             "key1": "custommetric",
                             "key2": "scalevmss"
@@ -636,15 +618,14 @@ Bizonyos fokú szabadsága van a hogyan kezeli a megadott küszöbértékek kapc
 }
 ```
 
-Ebben a példában egy riasztás kerül Pagerduty.com a küszöbérték elérésekor.
 
 ## <a name="patching-and-operations"></a>Javítás és műveletek
 
-### <a name="how-do-i-create-a-scale-set-in-an-existing-resource-group"></a>Hogyan hozhatok létre egy méretezési csoportot egy meglévő erőforráscsoportban?
+### <a name="can-i-create-a-scale-set-in-an-existing-resource-group"></a>Létrehozhatok egy méretezési csoportot egy meglévő erőforráscsoporthoz?
 
-Méretezési csoportok létrehozása a meglévő erőforrás csoport még nem lehetséges az Azure Portalról, de megadhat egy meglévő erőforráscsoportot, ha a méretezési csoport üzembe helyezése az Azure Resource Manager-sablon beállítása. Egy meglévő erőforráscsoportot is adja meg, amikor hoz létre egy méretezési csoportot az Azure PowerShell vagy parancssori felület használatával.
+Igen, létrehozhat egy méretezési csoportot egy meglévő erőforráscsoporthoz.
 
-### <a name="can-we-move-a-scale-set-to-another-resource-group"></a>Nem áthelyezni egy méretezési csoportot egy másik erőforráscsoportba?
+### <a name="can-i-move-a-scale-set-to-another-resource-group"></a>Át lehet helyezni egy méretezési csoportot egy másik erőforráscsoporthoz?
 
 Igen, áthelyezheti a méretezési erőforrások új előfizetéshez vagy erőforráscsoporthoz.
 
@@ -656,18 +637,16 @@ Frissítse a virtuális gép méretezési egy új rendszerképet, és kezelje a 
 
 Igen, használhatja a rendszerkép alaphelyzetbe állítására alaphelyzetbe állítani a virtuális gép a lemezkép módosítása nélkül. Azonban, ha a virtuális gép méretezési hivatkozik platformlemezképen `version = latest`, a virtuális gép is lehet frissíteni egy újabb operációsrendszer-lemezkép hívásakor `reimage`.
 
-További információkért lásd: [virtuálisgép-méretezési csoportban lévő összes virtuális gép kezelése](https://docs.microsoft.com/rest/api/virtualmachinescalesets/manage-all-vms-in-a-set).
+### <a name="is-it-possible-to-integrate-scale-sets-with-azure-monitor-logs"></a>Lehetséges a méretezési csoportok integrálása Azure Monitor naplókkal?
 
-### <a name="is-it-possible-to-integrate-scale-sets-with-azure-monitor-logs"></a>Az is integrálhatók a méretezési csoportok az Azure Monitor naplóira?
-
-Igen, a méretezési csoport az Azure Monitor-bővítmény telepítésével állíthatja be virtuális gépeket. A következő Azure CLI-példa:
+Igen, telepítheti a Azure Monitor bővítményt a méretezési csoport virtuális gépei között. A következő Azure CLI-példa:
 ```
 az vmss extension set --name MicrosoftMonitoringAgent --publisher Microsoft.EnterpriseCloud.Monitoring --resource-group Team-03 --vmss-name nt01 --settings "{'workspaceId': '<your workspace ID here>'}" --protected-settings "{'workspaceKey': '<your workspace key here'}"
 ```
 A szükséges munkaterület azonosítója és workspaceKey a Log Analytics-munkaterületet az Azure Portalon találhatja. Az Áttekintés lapon kattintson a beállítások csempe. Kattintson a csatlakoztatott források fülre az oldal tetején.
 
 > [!NOTE]
-> Ha a méretezési csoport _upgradePolicy_ értéke kézi, meg kell alkalmaznia a bővítmény a csoport összes virtuális gépére a frissítés meghívásával rajtuk. CLI-ben ez lenne _az vmss update-instances_.
+> Ha a méretezési csoport _UpgradePolicy_ manuális értékre van állítva, a bővítményt a készletben lévő összes virtuális gépre alkalmaznia kell a frissítés meghívásával. CLI-ben ez lenne _az vmss update-instances_.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -722,25 +701,25 @@ A virtuálisgép-méretezési csoportban lévő virtuális gépek törlése és 
   - A forgatókönyvhöz kapcsolódó, előfordulhat, hogy létrehozta a saját automatikus skálázási motor és a egy gyorsabb végpontok közötti skálán szeretné.
 - Rendelkezik egy virtuális gép méretezési csoportot, amely a egyenetlenül oszlanak el a tartalék tartomány vagy a frissítési tartományok között. Ez lehet, mert a szelektíven törölt virtuális gépek vagy virtuális gépek után túlzott törölve lett. Futó `stop deallocate` követ `start` a virtuális gép méretezési csoportot egyenlően osztja el a virtuális gépek tartalék tartomány és frissítési tartományok között.
 
-### <a name="how-do-i-take-a-snapshot-of-a-vmss-instance"></a>Hogyan használhatom a VMSS-példány pillanatkép?
-Hozzon létre egy pillanatképet egy VMSS egy példányát.
+### <a name="how-do-i-take-a-snapshot-of-a-virtual-machine-scale-set-instance"></a>Hogyan készítsen pillanatképet a virtuálisgép-méretezési csoport példányairól?
+Hozzon létre egy pillanatképet egy virtuálisgép-méretezési csoport egy példányáról.
 
 ```azurepowershell-interactive
 $rgname = "myResourceGroup"
 $vmssname = "myVMScaleSet"
 $Id = 0
 $location = "East US"
- 
+
 $vmss1 = Get-AzVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssname -InstanceId $Id     
 $snapshotconfig = New-AzSnapshotConfig -Location $location -AccountType Standard_LRS -OsType Windows -CreateOption Copy -SourceUri $vmss1.StorageProfile.OsDisk.ManagedDisk.id
 New-AzSnapshot -ResourceGroupName $rgname -SnapshotName 'mySnapshot' -Snapshot $snapshotconfig
-``` 
- 
-Felügyelt lemez létrehozása pillanatképből a.
+```
+
+Hozzon létre egy felügyelt lemezt a pillanatképből.
 
 ```azurepowershell-interactive
 $snapshotName = "myShapshot"
 $snapshot = Get-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotName  
 $diskConfig = New-AzDiskConfig -AccountType Premium_LRS -Location $location -CreateOption Copy -SourceResourceId $snapshot.Id
-$osDisk = New-AzDisk -Disk $diskConfig -ResourceGroupName $rgname -DiskName ($snapshotName + '_Disk') 
+$osDisk = New-AzDisk -Disk $diskConfig -ResourceGroupName $rgname -DiskName ($snapshotName + '_Disk')
 ```

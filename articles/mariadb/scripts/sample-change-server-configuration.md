@@ -9,11 +9,11 @@ ms.topic: sample
 ms.custom: mvc
 ms.date: 11/28/2018
 ms.openlocfilehash: 514f2fe7e8c2b94e175bc6f6fb0cec8ea3d0c9c6
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53547422"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62125882"
 ---
 # <a name="list-and-update-configurations-of-an-azure-database-for-mariadb-server-using-azure-cli"></a>Az Azure Database for MariaDB-kiszolgálót az Azure CLI-konfigurációinak felsorolása és frissítése
 A CLI-példaszkript felsorolja az összes elérhető konfigurációs paraméterét, valamint azok engedélyezett értékeit Azure Database for MariaDB-kiszolgáló, és beállítja a *innodb_lock_wait_timeout* , az alapértelmezett értéktől eltérő értékre.

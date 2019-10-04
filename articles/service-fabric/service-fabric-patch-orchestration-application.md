@@ -1,6 +1,6 @@
 ---
-title: Az Azure Service Fabric patch orchestration application |} A Microsoft Docs
-description: Az alkalmazás egy Service Fabric-fürtöt operációs rendszer javításának automatizálása.
+title: A Windows operációs rendszer javítása a Service Fabric-fürtben | Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan automatizálható az operációs rendszerek javítása egy Service Fabric-fürtön a javítás-előkészítési alkalmazás használatával.
 services: service-fabric
 documentationcenter: .net
 author: khandelwalbrijeshiitr
@@ -14,80 +14,76 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: brkhande
-ms.openlocfilehash: 6c0aa42cc22d22431d7d0270aca52e089046cb01
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d1ff58611278f02d74f064f0536e5f6f77195fb2
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58847745"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828866"
 ---
-# <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>A Windows operációs rendszer a Service Fabric-fürtben
-
-> [!div class="op_single_selector"]
-> * [Windows](service-fabric-patch-orchestration-application.md)
-> * [Linux](service-fabric-patch-orchestration-application-linux.md)
->
->
-
+# <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>A Windows operációs rendszer javítása a Service Fabric-fürtben
 
 > 
 > [!IMPORTANT]
-> 1.2-es verziója. * nem támogatott a 2019. április 30. történik. Frissítsen a legújabb verzióra.
+> 2019. április 30-ig a patch-előkészítési alkalmazás 1,2. * verziója már nem támogatott. Ügyeljen arra, hogy a legújabb verzióra frissítsen.
 
 
-[Azure virtuális gép méretezési csoport automatikus operációs rendszer lemezkép frissítéseinek](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) az ajánlott eljárás, megtartja az operációs rendszerek javítani az Azure-ban, és a Patch Orchestration Application (POA) szolgáltatás hálók RepairManager Systems service – burkolója amely lehetővé teszi, hogy-alapú konfigurációs operációs rendszer javítási ütemezése nem Azure-beli üzemeltetett fürtök esetén. POA nem Azure-beli üzemeltetett fürtök esetén nem kötelező, de a frissítési tartományok szerint javítás telepítésének ütemezése szükség javítások a Service Fabric-fürtök gazdagépek üzemkimaradás nélkül.
+Az operációs rendszer javításának az Azure-ban való megtartásának ajánlott módja a [virtuális gépi méretezési csoport automatikus operációsrendszer-rendszerkép-frissítéseinek](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) beszerzése. A javítási előkészítési alkalmazás (POA) az Azure Service Fabric javításkezelő szolgáltatás egyik burkolója, amely lehetővé teszi a konfiguráció-alapú operációsrendszer-javítások ütemezését a nem Azure-beli üzemeltetett fürtökhöz. A POA nem szükséges a nem Azure-beli üzemeltetett fürtökhöz, de a frissítési tartományon belüli javítás telepítésének ütemezése szükséges ahhoz, hogy leállást ne kelljen kijavítani Service Fabric-fürtöt.
 
-POA az Azure Service Fabric-alkalmazás, amely automatizálja az operációs rendszer javításának Service Fabric-fürt, üzemkimaradás nélkül.
+A POA egy Service Fabric alkalmazás, amely az operációs rendszer javítását automatizálja egy Service Fabric-fürtön anélkül, hogy leállás lenne.
 
-A patch orchestration alkalmazást a következő szolgáltatásokat biztosítja:
+A POA a következő funkciókat biztosítja:
 
-- **Az operációs rendszer telepítése**. Az operációs rendszer frissítése automatikusan letöltődjön és települjön. Fürtcsomópontok fürt állásidő nélkül igény szerint indulnak újra.
+- Az **operációs rendszer automatikus frissítésének telepítése**. Az operációs rendszer frissítéseinek letöltése és telepítése automatikusan megtörténik. A fürtcsomópontok szükség szerint újraindulnak a fürt leállásának hiánya nélkül.
 
-- **A fürttámogató javításait és egészségügyi integrációs**. Frissítések alkalmazása során a patch orchestration alkalmazást a fürt csomópontjainak állapotát figyeli. Fürtcsomópontok frissített egy csomópont egyszerre egy időben vagy több frissítési tartományt. Ha a fürt állapota miatt a javítási folyamat leáll, javítás leállt súlyosbító a probléma elkerülése érdekében.
+- **Fürtöket támogató javítások és állapot-integráció**. Amíg a POA a frissítéseket alkalmazza, a a fürtcsomópontok állapotát figyeli. A fürtcsomópontok egyszerre egy csomópontot vagy egy frissítési tartományt frissítenek. Ha a fürt állapota a javítási folyamat miatt leáll, a javítás leáll a probléma súlyosbodása érdekében.
 
-## <a name="internal-details-of-the-app"></a>Az alkalmazás belső részletei
+## <a name="internal-details-of-poa"></a>A POA belső adatai
 
-A patch orchestration alkalmazást a következő alösszetevők tevődik össze:
+A POA a következő alösszetevőkből áll:
 
-- **Koordinátor szolgáltatást**: Az állapotalapú szolgáltatás felelős:
-    - A Windows Update feladatot az egész fürt összehangolása.
-    - Az eredmény a befejezett Windows-frissítési műveletek tárolására.
-- **Csomópont-ügynökszolgáltatás**: Az állapotmentes szolgáltatás fut, a Service Fabric-fürt összes csomópontján. A szolgáltatás felelős:
-    - A Node-Agent NTService rendszerindításra.
-    - A Node-Agent NTService figyelése.
-- **NODE-Agent NTService**: A Windows NT-szolgáltatás fut, a magasabb szintű jogosultság (rendszer). Ezzel szemben a csomópont az ügynök és a koordinátor szolgáltatást futtatni egy alacsonyabb szintű jogosultság (hálózati szolgáltatás). A szolgáltatás felelős a a fürt összes csomópontján a következő Windows-frissítési feladatok végrehajtása:
-    - A csomóponton automatikus Windows-frissítési letiltása.
-    - Letöltése és telepítése a Windows Update a házirend szerint a felhasználó adta meg.
-    - A gép utáni Windows-frissítés telepítésének újraindítása.
-    - Feltöltése a Windows-frissítések eredményeit a koordinátor szolgáltatást.
-    - Jelentéskészítési rendszerállapot-jelentéseket abban az esetben, ha egy művelet nem sikerült kimerítése összes újrapróbálkozás után.
+- **Koordinátori szolgáltatás**: Ez az állapot-nyilvántartó szolgáltatás a következőkért felelős:
+    - A Windows Update feladatok koordinálása a teljes fürtön.
+    - A befejezett Windows Update műveletek eredményének tárolása.
+
+- **Csomópont-ügynök szolgáltatás**: Ez az állapot nélküli szolgáltatás minden Service Fabric fürtcsomóponton fut. A szolgáltatás feladatai a következők:
+    - A csomópont-ügynök NTService elindításához.
+    - A csomópont-ügynök NTService figyelése.
+
+- **Csomópont-ügynök NTService**: Ez a Windows NT-szolgáltatás magasabb szintű jogosultsággal (rendszer) fut. Ezzel szemben a Node Agent szolgáltatás és a koordinátor szolgáltatás alacsonyabb szintű jogosultsággal (hálózati szolgáltatás) fut. A szolgáltatás felelős a következő Windows Update feladatok végrehajtásához az összes fürtcsomóponton:
+    - Az automatikus Windows-frissítések letiltása a csomóponton.
+    - Windows-frissítések letöltése és telepítése a felhasználó által megadott szabályzat alapján.
+    - A gép újraindítása a Windows-frissítések telepítése után.
+    - A Windows-frissítések eredményeinek feltöltése a koordinátori szolgáltatásba.
+    - Jelentési állapot-jelentések, ha egy művelet meghiúsult, miután az összes újrapróbálkozást kimeríti.
 
 > [!NOTE]
-> A patch orchestration app letiltása vagy engedélyezése a csomópont és állapotellenőrzéseket hajthat végre a Service Fabric javítási manager rendszer szolgáltatást használja. A javítási feladat a patch orchestration alkalmazás által létrehozott minden egyes csomópont esetében a Windows Update folyamatot követi nyomon.
+> A POA a Service Fabric javításkezelő szolgáltatást használja a csomópont letiltásához vagy engedélyezéséhez, illetve az állapot-ellenőrzés elvégzéséhez. A POA által létrehozott javítási feladat nyomon követi az egyes csomópontok Windows Update folyamatát.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 > [!NOTE]
-> .NET-keretrendszer minimális verziója szükséges 4.6.
+> A .NET-keretrendszer szükséges minimális verziója 4,6.
 
-### <a name="enable-the-repair-manager-service-if-its-not-running-already"></a>A repair-kezelő szolgáltatás engedélyezése (Ha nincs már fut)
+### <a name="enable-the-repair-manager-service-if-its-not-running-already"></a>A javításkezelő szolgáltatás engedélyezése (ha már nem fut)
 
-A patch orchestration alkalmazás szükséges a javítási manager rendszerszolgáltatás engedélyezni kell a fürtön.
+A POA megköveteli, hogy a javításkezelő szolgáltatás engedélyezve legyen a fürtön.
 
-#### <a name="azure-clusters"></a>Az Azure-fürtök
+#### <a name="azure-clusters"></a>Azure-fürtök
 
-Az Azure-fürtöket a Silver szintű tartóssági szint a repair-kezelő szolgáltatás alapértelmezés szerint engedélyezve van. Az Azure-fürtöket az arany tartóssági szint előfordulhat, hogy, vagy nem rendelkezik a javítás-kezelő szolgáltatás engedélyezve van, attól függően, amikor ezek a fürtök létrejöttek. Az Azure-fürtöket a bronz tartóssági szint, alapértelmezés szerint nem rendelkezik a repair-kezelő szolgáltatás engedélyezve van. Ha a szolgáltatás már engedélyezve van, a rendszer-services szakaszban a Service Fabric Explorert a működés láthatja.
+Az ezüst tartóssági szinten található Azure-fürtökön alapértelmezés szerint engedélyezve van a javításkezelő szolgáltatás. Az arany tartóssági szinten lévő Azure-fürtök esetében előfordulhat, hogy a fürt létrehozásakor a javításkezelő szolgáltatás engedélyezve van. A bronz tartóssági szinten lévő Azure-fürtök esetében alapértelmezés szerint nincs engedélyezve a javításkezelő szolgáltatás. Ha a szolgáltatás már engedélyezve van, a Service Fabric Explorer-ben a rendszerszolgáltatások szakaszban láthatja a rendszert.
 
-##### <a name="azure-portal"></a>Azure Portal
-A fürt beállításának idején manager javítást igényel az Azure Portal használatával engedélyezheti. Válassza ki **közé tartozik a javításkezelő** lehetőség **bővítmény szolgáltatásai** fürtkonfiguráció időpontjában.
-![Az Azure Portalról, amely lehetővé teszi javításkezelő kép](media/service-fabric-patch-orchestration-application/EnableRepairManager.png)
+##### <a name="the-azure-portal"></a>Az Azure Portal
+A fürt beállításakor engedélyezheti javításkezelő a Azure Portal. A fürt konfigurálásakor jelölje be a **javításkezelő belefoglalása** lehetőséget a **kiegészítő funkciók**területen.
 
-##### <a name="azure-resource-manager-deployment-model"></a>Az Azure Resource Manager üzemi modell
-Másik lehetőségként használhatja a [Azure Resource Manager üzemi modell](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm) ahhoz, hogy a javítási manager szolgáltatás új és meglévő Service Fabric-fürtökön. Szerezze be a sablon a fürt, amely számára telepíteni kívánja. A mintasablonokat használja, vagy hozzon létre egy egyéni Azure Resource Manager üzembe helyezési modell sablont. 
+![A javításkezelő engedélyezésének képe a Azure Portal](media/service-fabric-patch-orchestration-application/EnableRepairManager.png)
 
-Ahhoz, hogy a javítási manager szolgáltatás használata [Azure Resource Manager üzembe helyezési modell sablon](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm):
+##### <a name="the-azure-resource-manager-deployment-model"></a>A Azure Resource Manager üzembe helyezési modell
+Azt is megteheti, hogy a [Azure Resource Manager üzembe helyezési modell](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm) segítségével engedélyezi a javításkezelő szolgáltatást az új és a meglévő Service Fabric-fürtökön. Szerezze be a telepíteni kívánt fürt sablonját. Használhatja a minta sablonokat, vagy létrehozhat egy egyéni Azure Resource Manager telepítési modell sablonját. 
 
-1. Először ellenőrizze, hogy a `apiversion` értékre van állítva `2017-07-01-preview` számára a `Microsoft.ServiceFabric/clusters` erőforrás. Ha nem egyeznek, akkor frissítenie kell a `apiVersion` értékre `2017-07-01-preview` vagy magasabb:
+A javításkezelő szolgáltatás a [Azure Resource Manager telepítési modell sablon](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)használatával történő engedélyezéséhez tegye a következőket:
+
+1. Győződjön meg arról, hogy a `apiVersion` értéke *2017-07-01 – előzetes* verzió a *Microsoft. ServiceFabric/Clusters* erőforráshoz. Ha ez különbözik, frissítenie kell `apiVersion` és *2017-07-01 – Preview* vagy újabb verzióra:
 
     ```json
     {
@@ -99,7 +95,7 @@ Ahhoz, hogy a javítási manager szolgáltatás használata [Azure Resource Mana
     }
     ```
 
-2. Mostantól engedélyezheti a repair-kezelő szolgáltatás a következő `addonFeatures` szakasz után a `fabricSettings` szakaszban:
+1. Engedélyezze a javításkezelő szolgáltatást a `fabricSettings` szakasz után a következő `addonFeatures` szakasz hozzáadásával:
 
     ```json
     "fabricSettings": [
@@ -110,15 +106,15 @@ Ahhoz, hogy a javítási manager szolgáltatás használata [Azure Resource Mana
     ],
     ```
 
-3. Ezek a módosítások a fürtsablonhoz frissítése után alkalmazza őket, és lehetővé teszik a frissítés befejezéséhez. Most már megtekintheti a javítási manager rendszer szolgáltatás fut a fürtben. Azt nevezzük `fabric:/System/RepairManagerService` a Service Fabric Explorert a rendszer szolgáltatások szakaszában. 
+3. Miután frissítette a fürtözött sablont ezekkel a módosításokkal, alkalmazza őket, és hagyja befejezni a frissítést. Most már megtekintheti a fürtben futó javításkezelő szolgáltatást. Ezt a *háló:/System/RepairManagerService* nevű rendszer a Service Fabric Explorer rendszerszolgáltatások szakaszában találja. 
 
 ### <a name="standalone-on-premises-clusters"></a>Önálló helyszíni fürtök
 
-Használhatja a [különálló Windows-fürt konfigurációs beállításainak](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-manifest) a javítási manager szolgáltatások új és meglévő Service Fabric-fürtön történő engedélyezéséhez.
+Az javításkezelő szolgáltatás új vagy meglévő Service Fabric-fürtön való engedélyezéséhez használhatja a [különálló Windows-fürt konfigurációs beállításait](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-manifest).
 
-A repair-kezelő szolgáltatás engedélyezése:
+A javításkezelő szolgáltatás engedélyezése:
 
-1. Először ellenőrizze, hogy a `apiversion` a [általános fürtkonfigurációk](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-manifest#general-cluster-configurations) értékre van állítva `04-2017` vagy újabb verziója:
+1. Győződjön meg arról, hogy az [általános fürtkonfiguráció](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-manifest#general-cluster-configurations) `apiVersion` értéke *04-2017* vagy újabb, az itt látható módon:
 
     ```json
     {
@@ -129,7 +125,7 @@ A repair-kezelő szolgáltatás engedélyezése:
     }
     ```
 
-2. Most már engedélyezheti a javítási manager szolgáltatás a következő `addonFeatures` szakasz után a `fabricSettings` szakasz alább látható módon:
+1. A javításkezelő szolgáltatás engedélyezéséhez adja hozzá a következő `addonFeatures` szakaszt az `fabricSettings` szakasz után, ahogy az itt látható:
 
     ```json
     "fabricSettings": [
@@ -140,70 +136,70 @@ A repair-kezelő szolgáltatás engedélyezése:
     ],
     ```
 
-3. Ezeket a módosításokat, a frissített fürtjegyzék használatával frissítse a fürtjegyzék [hozzon létre egy új fürtöt](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-for-windows-server) vagy [a fürt konfigurációjának frissítése](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade-windows-server). Ha a fürt már fut a frissített fürtjegyzék, a javítási manager rendszer szolgáltatás fut a fürtben, amelynek a neve most már megtekintheti `fabric:/System/RepairManagerService`, a rendszer services szakaszban a Service Fabric Explorerben.
+1. Frissítse a fürt jegyzékfájlját ezekkel a módosításokkal a frissített fürtcsomópont használatával [hozzon létre egy új fürtöt](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-for-windows-server) , vagy [frissítse a fürt konfigurációját](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade-windows-server). 
 
-### <a name="configure-windows-updates-for-all-nodes"></a>Az összes csomópont Windows-frissítések konfigurálása
+   Miután a fürt frissítette a fürt jegyzékét, megtekintheti a fürtben futó javításkezelő szolgáltatást. Ennek neve *Fabric:/System/RepairManagerService*, és a Service Fabric Explorer rendszer rendszerszolgáltatások szakaszában található.
 
-Windows automatikus frissítések rendelkezésre állás elvesztése vezethet, mivel egyszerre több fürtcsomópont újraindíthatja. A patch orchestration alkalmazás alapértelmezés szerint próbálja meg a fürt minden csomópontján Windows automatikus frissítését letiltani. Javasoljuk azonban, ha a beállításokat egy rendszergazda vagy a csoportházirend által felügyelt, a Windows-frissítési szabályzat "Értesíti, mielőtt letöltéséhez" beállítás explicit módon.
+### <a name="configure-windows-updates-for-all-nodes"></a>Windows-frissítések konfigurálása az összes csomóponthoz
 
-## <a name="download-the-app-package"></a>Az alkalmazás-csomag letöltése
+Az automatikus Windows-frissítések a rendelkezésre állás elvesztéséhez vezethetnek, mert több fürtcsomópont is újraindulhat egyszerre. A POA alapértelmezés szerint megkísérli letiltani az automatikus Windows-frissítéseket az egyes fürtcsomópontokon. Ha azonban a beállításokat egy rendszergazda vagy egy Csoportházirend felügyeli, javasoljuk, hogy a Windows Update szabályzatot explicit módon "értesítés a letöltés előtt" beállítással állítsa be.
 
-Telepítési parancsfájlok mellett alkalmazást is letölthető [archív hivatkozás](https://go.microsoft.com/fwlink/?linkid=869566).
+## <a name="download-the-application-package"></a>Alkalmazáscsomag letöltése
 
-Alkalmazás sfpkg formátumban letölthető [sfpkg hivatkozás](https://aka.ms/POA/POA.sfpkg). Ez hasznos tartalmaz [Azure Resource Manager-alapú alkalmazás központi telepítésének](service-fabric-application-arm-resource.md).
+Az alkalmazáscsomag letöltéséhez nyissa meg a javítás-előkészítési [alkalmazás kiadása lapot](https://github.com/microsoft/Service-Fabric-POA/releases/latest/) a githubon.
 
-## <a name="configure-the-app"></a>Az alkalmazás konfigurálása
+## <a name="configure-poa-behavior"></a>A POA viselkedés konfigurálása
 
-A patch orchestration app viselkedését konfigurálhatja az igényeinek. Alkalmazás létrehozása vagy módosítása során az alkalmazás paraméter megadásával bírálja felül az alapértelmezett értékeket. Alkalmazás paraméterek megadásával adható meg `ApplicationParameter` , a `Start-ServiceFabricApplicationUpgrade` vagy `New-ServiceFabricApplication` parancsmagok.
+A POA viselkedést az igényeinek megfelelően konfigurálhatja. Az alkalmazás létrehozásakor vagy frissítésekor az alkalmazás paraméterének megadásával felülbírálhatja az alapértelmezett értékeket. Az alkalmazás paramétereinek megadásához `ApplicationParameter` értéket kell megadnia a `Start-ServiceFabricApplicationUpgrade` vagy a `New-ServiceFabricApplication` parancsmaghoz.
 
-|**A paraméter**        |**Típus**                          | **Részletek**|
+| Paraméter        | Type                          | Részletek |
 |:-|-|-|
-|MaxResultsToCache    |Hosszú                              | Windows Update-eredményeket, amely a gyorsítótárba kerüljenek maximális számát. <br>Alapértelmezett érték 3000 feltéve, hogy a: <br> -Csomópontok száma, 20. <br> -Történik a havi csomópont frissítések száma, öt. <br> -Művelet eredmények száma 10 lehet. <br> -Az elmúlt három havi eredmény kell tárolni. |
-|TaskApprovalPolicy   |Enum <br> {NodeWise, UpgradeDomainWise}                          |TaskApprovalPolicy azt jelzi, hogy a szabályzatot, amely a Windows-frissítések telepítése a Service Fabric-fürt csomópontjain a koordinátor-szolgáltatás által használandó.<br>                         Engedélyezett értékek a következők: <br>                                                           <b>NodeWise</b>. Windows Update telepítve egy csomópont egyszerre. <br>                                                           <b>UpgradeDomainWise</b>. Windows Update egyszerre több frissítési tartományt telepítve. (A maximumot, a frissítési tartományokhoz tartozó összes csomópontját meg a Windows Update.)<br> Tekintse meg [– gyakori kérdések](#frequently-asked-questions) szakasz útmutatást a fürt számára leginkább alkalmas házirend kiválasztásában.
-|LogsDiskQuotaInMB   |Hosszú  <br> (Alapértelmezett: 1024)               |Patch orchestration alkalmazás maximális mérete (MB), amely megőrizhetők a csomópontok helyi naplózza.
-| WUQuery               | sztring<br>(Alapértelmezett: "IsInstalled = 0")                | Windows-frissítések lekérdezése. További információkért lásd: [WuQuery.](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)
-| InstallWindowsOSOnlyUpdates | Logikai <br> (alapértelmezés: hamis)                 | Használja ezt a jelzőt, hogy mely frissítések letölti és telepíti. Következő értékek használata engedélyezett <br>Igaz - telepítése csak a Windows operációs rendszer frissítéseit.<br>hamis – a gép a rendelkezésre álló frissítéseket telepíti.          |
-| WUOperationTimeOutInMinutes | Int <br>(Alapértelmezett: 90)                   | Megadja azt az időtartamot, bármely Windows-frissítési művelet (keresési vagy letöltése vagy telepítése). A művelet a megadott időkorláton belül nem végzi el, ha megszakadt.       |
-| WURescheduleCount     | Int <br> (Alapértelmezett: 5)                  | Maximális száma a szolgáltatás átütemez a Windows update abban az esetben, ha egy művelet meghiúsul, osztályozását.          |
-| WURescheduleTimeInMinutes | Int <br>(Alapértelmezett: 30) | Az időköz, amelyen a a szolgáltatás a Windows update átütemez, abban az esetben, ha hiba továbbra is fennáll. |
-| WUFrequency           | Vesszővel tagolt karakterláncot (alapértelmezett: "Hetente, szerda, 7:00:00")     | Az Windows frissítésének gyakoriságát. A formátum és a lehetséges értékek a következők: <br>-Havi nn óó, például havonta, 5., 12: 22:32.<br>Megengedett értékek mező nn (nap) értékek, amelyek a tartomány 1 – 28 és a "last" között. <br> -Hetente, nap, formátumban, például hetente, kedd, 12:22:32.  <br> – Napi, formátumban, például naponta, 12:22:32.  <br> – Nincs azt jelzi, hogy a Windows Update nem végezhető.  <br><br> Vegye figyelembe, hogy idő (UTC).|
-| AcceptWindowsUpdateEula | Logikai <br>(Alapértelmezett: igaz) | Állít be ezt a jelzőt, az alkalmazás fogad a Windows Update végfelhasználói licenc a gép a tulajdonos nevében.              |
+|MaxResultsToCache    |Hosszú                              | A gyorsítótárazható Windows Update eredmények maximális száma. <br><br>Az alapértelmezett érték 3000, feltéve, hogy: <br> &nbsp; @ no__t-1 – a csomópontok száma 20. <br> &nbsp; @ no__t-1 – a csomópontok havonta történő frissítéseinek száma 5. <br> &nbsp; @ no__t-1 – az eredmények másodpercenkénti száma 10 lehet. <br> &nbsp; @ no__t-1 – az elmúlt három hónap eredményeit tárolni kell. |
+|TaskApprovalPolicy   |Felsorolás <br> { NodeWise, UpgradeDomainWise }                          |A TaskApprovalPolicy azt a házirendet jelzi, amelyet a koordinátori szolgáltatás a Windows-frissítések a Service Fabric-fürt csomópontjain való telepítéséhez használ.<br><br>Az engedélyezett értékek a következők: <br>*NodeWise*: A Windows-frissítések egyszerre egy csomópontot telepítenek. <br> *UpgradeDomainWise*: A Windows-frissítések egyszerre egy frissítési tartományt telepítenek. (A legtöbb frissítési tartományhoz tartozó csomópont a Windows Update számára is elérhető.)<br><br> Annak eldöntéséhez, hogy melyik házirend a legmegfelelőbb a fürthöz, tekintse meg a [Gyakori kérdések](#frequently-asked-questions) szakaszt.
+|LogsDiskQuotaInMB   |Hosszú  <br> Alapértelmezett *1024*)               | A javítás-előkészítési alkalmazás maximális mérete MB-ban, amely helyileg tárolható a csomópontokon.
+| WUQuery               | Karakterlánc<br>Alapértelmezett *IsInstalled = 0*)                | Lekérdezés a Windows-frissítések beszerzéséhez. További információ: [WuQuery.](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)
+| InstallWindowsOSOnlyUpdates | *Logikai érték* <br> (alapértelmezett: hamis)                 | Ezzel a jelzővel szabályozhatja, hogy mely frissítéseket kell letölteni és telepíteni. A következő értékek engedélyezettek <br>True – csak a Windows operációs rendszer frissítéseinek telepítése.<br>false (hamis) – telepíti az összes elérhető frissítést a gépre.          |
+| WUOperationTimeOutInMinutes | Int <br>Alapértelmezett *90*)                   | Megadja a Windows Update művelet időtúllépését (keresés vagy letöltés vagy telepítés). Ha a művelet nem fejeződött be a megadott időkorláton belül, a rendszer megszakítja a műveletet.       |
+| WURescheduleCount     | Int <br> Alapértelmezett *5*)                  | A szolgáltatás által a Windows Update újraütemezett maximális száma, ha egy művelet tartósan leáll.          |
+| WURescheduleTimeInMinutes | Int <br>Alapértelmezett *30*) | Az az időtartam, amikor a szolgáltatás átütemezze a Windows-frissítéseket, ha a hiba továbbra is fennáll. |
+| WUFrequency           | Vesszővel tagolt karakterlánc (alapértelmezett: *Hetente, szerda, 7:00:00*)     | A Windows-frissítések telepítésének gyakorisága. A formátum és a lehetséges értékek a következők: <br>&nbsp; @ no__t-1-havonta: DD, óó: PP: MM (például *havi, 5, 12:22:32*)<br>A DD (nap) mező megengedett értékei 1 és 28 közötti számok, a "Last". <br> &nbsp; @ no__t-1-hetente, nap, óó: PP: MM (például *hetente, kedd, 12:22:32*)  <br> &nbsp; @ no__t-1-Daily, óó: PP: mm (például *naponta, 12:22:32*)  <br> &nbsp; @ no__t-1 @ no__t-2*none* érték azt jelzi, hogy a Windows-frissítések nem lesznek végrehajtva.  <br><br> Az időpontok UTC-ben vannak.|
+| AcceptWindowsUpdateEula | Logikai <br>(Alapértelmezett: *true*) | A jelző beállításával az alkalmazás elfogadja a számítógép tulajdonosának nevében Windows Update végfelhasználói licencszerződést.              |
 
 > [!TIP]
-> Ha azt szeretné, hogy a Windows Update azonnal elvégzi, `WUFrequency` az alkalmazás üzembe helyezési idő viszonyítva. Tegyük fel, hogy egy öt csomópontot számláló tesztfürt és tervez üzembe helyezni az alkalmazást, körülbelül 5:00 Órakor (UTC). Ha azt feltételezik, hogy az alkalmazás frissítése vagy telepítése 30 percig tart, a maximális, állítsa be a WUFrequency "Naponta, 17:30:00"
+> Ha azt szeretné, hogy a Windows-frissítések azonnal megtörténjenek, állítsa a `WUFrequency` értéket az alkalmazás központi telepítésének időpontjához képest. Tegyük fel például, hogy rendelkezik egy öt csomópontos tesztelési fürttel, és tervezi az alkalmazás üzembe helyezését a 5:00 PM UTC-kor. Ha azt feltételezi, hogy az alkalmazás frissítése vagy üzembe helyezése legfeljebb 30 percet vesz igénybe, állítsa a WUFrequency *naponta, 17:30:00-* re.
 
-## <a name="deploy-the-app"></a>Az alkalmazás üzembe helyezése
+## <a name="deploy-poa"></a>A cselekvési terv üzembe helyezése
 
-1. Fejezze be a fürt előkészítése az összes előfeltételként felsorolt lépéseket.
-2. A patch orchestration alkalmazás például a többi Service Fabric-alkalmazást üzembe helyezése. PowerShell használatával telepítheti az alkalmazást. Kövesse a [PowerShell-lel telepítés és eltávolítás alkalmazások](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications).
-3. Az alkalmazás konfigurálása a központi telepítés alkalmával, át kell adnia a `ApplicationParameter` , a `New-ServiceFabricApplication` parancsmagot. Az Ön kényelme érdekében megadtuk a parancsfájl Deploy.ps1 együtt az alkalmazás. A parancsprogram használata:
+1. Fejezze be az összes előfeltételként szükséges lépést a fürt előkészítéséhez.
+1. A POA üzembe helyezése, mint bármely más Service Fabric alkalmazás. A PowerShell használatával történő telepítéséhez tekintse meg az [alkalmazások telepítése és eltávolítása a PowerShell használatával](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications)című témakört.
+1. Az alkalmazás az üzembe helyezés időpontjában történő konfigurálásához adja `ApplicationParameter` át a `New-ServiceFabricApplication` parancsot a parancsmagnak. Az Ön kényelme érdekében a. ps1 parancsfájlt az alkalmazással együtt adtuk meg. A szkript használata:
 
-    - Csatlakozás a Service Fabric-fürt használatával `Connect-ServiceFabricCluster`.
-    - Hajtsa végre a megfelelő PowerShell parancsfájlt Deploy.ps1 `ApplicationParameter` értéket.
-
-> [!NOTE]
-> A parancsfájl, és az alkalmazás mappájában PatchOrchestrationApplication tartsa ugyanabban a címtárban.
-
-## <a name="upgrade-the-app"></a>Az alkalmazás frissítése
-
-Patch orchestration meglévő alkalmazás frissítése a PowerShell használatával, kövesse a lépéseket a [PowerShell használatával a Service Fabric-alkalmazás frissítése](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade-tutorial-powershell).
-
-## <a name="remove-the-app"></a>Távolítsa el az alkalmazást
-
-Az alkalmazás eltávolításához kövesse [PowerShell-lel telepítés és eltávolítás alkalmazások](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications).
-
-Az Ön kényelme érdekében megadtuk a parancsfájl Undeploy.ps1 együtt az alkalmazás. A parancsprogram használata:
-
-  - Csatlakozás a Service Fabric-fürt használatával ```Connect-ServiceFabricCluster```.
-
-  - Hajtsa végre a PowerShell-parancsfájl Undeploy.ps1.
+    - Kapcsolódjon Service Fabric-fürthöz a `Connect-ServiceFabricCluster`használatával.
+    - Futtassa a. ps1 PowerShell-parancsfájlt a megfelelő `ApplicationParameter` értékkel.
 
 > [!NOTE]
-> A parancsfájl, és az alkalmazás mappájában PatchOrchestrationApplication tartsa ugyanabban a címtárban.
+> Tartsa meg a parancsfájlt és az alkalmazás mappáját a *PatchOrchestrationApplication* ugyanabban a címtárban.
 
-## <a name="view-the-windows-update-results"></a>Az eredmények megtekintése a Windows Update
+## <a name="upgrade-poa"></a>A cselekvési terv frissítése
 
-A patch orchestration app közzététele a REST API-k, a felhasználó korábbi eredményeinek megjelenítésére. Az eredmény JSON példát:
+A POA-verzió PowerShell használatával történő frissítéséhez kövesse a [Service Fabric alkalmazás frissítése a PowerShell használatával](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade-tutorial-powershell)című témakör utasításait.
+
+## <a name="remove-poa"></a>POA eltávolítása
+
+Az alkalmazás eltávolításához kövesse az [alkalmazások telepítése és eltávolítása a PowerShell használatával](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications)című témakör utasításait.
+
+Az Ön kényelme érdekében a. ps1 parancsfájlt az alkalmazással együtt adtuk meg. A szkript használata:
+
+  - Kapcsolódjon Service Fabric-fürthöz a ```Connect-ServiceFabricCluster```használatával.
+  - Futtassa a PowerShell-szkriptet a Deploy. ps1 eszközön.
+
+> [!NOTE]
+> Tartsa meg a parancsfájlt és az alkalmazás mappáját a *PatchOrchestrationApplication* ugyanabban a címtárban.
+
+## <a name="view-the-windows-update-results"></a>A Windows Update eredményeinek megtekintése
+
+A POA a REST API-kat teszi elérhetővé a felhasználók korábbi eredményeinek megjelenítéséhez. Íme egy példa az eredmény JSON-ra:
+
 ```json
 [
   {
@@ -212,13 +208,15 @@ A patch orchestration app közzététele a REST API-k, a felhasználó korábbi 
       {
         "OperationResult": 0,
         "NodeName": "_stg1vm_1",
-        "OperationTime": "2017-05-21T11:46:52.1953713Z",
+        "OperationTime": "2019-05-13T08:44:56.4836889Z",
+        "OperationStartTime": "2019-05-13T08:44:33.5285601Z",
         "UpdateDetails": [
           {
             "UpdateId": "7392acaf-6a85-427c-8a8d-058c25beb0d6",
             "Title": "Cumulative Security Update for Internet Explorer 11 for Windows Server 2012 R2 (KB3185319)",
             "Description": "A security issue has been identified in a Microsoft software product that could affect your system. You can help protect your system by installing this update from Microsoft. For a complete listing of the issues that are included in this update, see the associated Microsoft Knowledge Base article. After you install this update, you may have to restart your system.",
-            "ResultCode": 0
+            "ResultCode": 0,
+            "HResult": 0
           }
         ],
         "OperationType": 1,
@@ -232,196 +230,283 @@ A patch orchestration app közzététele a REST API-k, a felhasználó korábbi 
 ]
 ```
 
-A JSON-mezőt az alábbiakban tekintheti át.
+A JSON-mezőket a következő táblázat ismerteti:
 
 Mező | Értékek | Részletek
 -- | -- | --
-OperationResult | 0 – sikeres<br> 1 – sikeres hibákkal<br> 2 – nem sikerült<br> 3 – megszakítva<br> 4 – megszakítva időkorlát | Azt jelzi, hogy általános művelet (általában egy vagy több frissítés telepítését) eredményét.
-Eredménykód | Ugyanaz, mint az operationresult adatokat a | Ebben a mezőben azt jelzi, hogy egyedi frissítés telepítési művelet eredményét.
-OperationType | 1 – telepítés<br> 0 – keresse meg és töltse le.| Telepítés a, amelyek akkor jelennek meg az eredményeket alapértelmezés szerint csak OperationType.
-WindowsUpdateQuery | Alapértelmezett érték a "IsInstalled = 0" |Windows update frissítések kereséséhez használt lekérdezés. További információkért lásd: [WuQuery.](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)
-RebootRequired | igaz – volt szükség újraindításra<br> hamis – nem volt szükség újraindításra | Azt jelzi, ha újraindítás szükséges a frissítések telepítésének befejezéséhez.
+OperationResult | 0 – sikeres<br> 1 – sikeres hibák<br> 2 – sikertelen<br> 3 – megszakítva<br> 4 – időtúllépés miatt megszakítva | A teljes művelet eredményét jelzi, amely általában egy vagy több frissítés telepítését jelenti.
+resultCode | Ugyanaz, mint a Operationresult tevékenységen | Ez a mező egy egyedi frissítés telepítési műveletének eredményét jelzi.
+OperationType | 1 – telepítés<br> 0 – keresés és letöltés| Alapértelmezés szerint a telepítés az egyetlen OperationType, amely az eredmények között látható.
+WindowsUpdateQuery | Az alapértelmezett érték a "IsInstalled = 0" | A frissítések kereséséhez használt Windows Update-lekérdezés. További információ: [WuQuery](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx).
+RebootRequired | igaz – újraindítás szükséges<br> hamis – újraindítás nem szükséges | Azt jelzi, hogy szükséges-e újraindítás a frissítések telepítésének befejezéséhez.
+OperationStartTime | DateTime | A művelet (Letöltés/telepítés) elindításának időpontját jelzi.
+OperationTime | DateTime | Azt jelzi, hogy mikor fejeződött be a művelet (Letöltés/telepítés).
+HResult | 0 – sikeres<br> egyéb – hiba| A "7392acaf-6a85-427c-8a8d-058c25beb0d6" updateID rendelkező Windows Update hibájának okát jelzi.
 
-Nincs frissítés még van ütemezve, akkor az eredmény JSON je prázdná.
+Ha még nincs ütemezve frissítés, az eredmény JSON üres.
 
-Jelentkezzen be a fürt Windows Update lekérdezési eredmények. Ismerje meg, a koordinátor szolgáltatást az elsődleges replika címét, és nyomja le az URL-címet a böngésző: http://&lt;REPLIKA IP-&gt;:&lt;ApplicationPort&gt;/PatchOrchestrationApplication/v1 / GetWindowsUpdateResults.
+Windows Update eredmények lekérdezéséhez jelentkezzen be a fürtbe. Keresse meg a koordinátori szolgáltatás elsődleges címének replika IP-címét, és nyissa meg a következő URL-címet a böngészőből: http://&lt;REPLICA-IP @ no__t-1: &lt;ApplicationPort @ no__t-3/PatchOrchestrationApplication/v1/GetWindowsUpdateResults.
 
-A REST-végpont a koordinátor szolgáltatást a dinamikus port van. Ellenőrizze a pontos URL-címet, tekintse meg a Service Fabric Explorert. Ha például az eredmények esetén érhető el `http://10.0.0.7:20000/PatchOrchestrationApplication/v1/GetWindowsUpdateResults`.
+A koordinátori szolgáltatás REST-végpontja dinamikus porttal rendelkezik. A pontos URL-cím megadásához tekintse meg a Service Fabric Explorer. Az eredmények például a következő címen érhetők el: *http://10.0.0.7:20000/PatchOrchestrationApplication/v1/GetWindowsUpdateResults* .
 
-![REST-végpont képe](media/service-fabric-patch-orchestration-application/Rest_Endpoint.png)
+![A REST-végpont képe](media/service-fabric-patch-orchestration-application/Rest_Endpoint.png)
 
+Ha a fordított proxy engedélyezve van a fürtön, akkor a fürtön kívülről is elérheti az URL-címet.
 
-A fordított proxy engedélyezve van a fürtön, akkor is hozzáférhet, ha az URL-címet, valamint a fürtön kívüli.
-A végpont, akit el kell találati: http://&lt;SERVERURL&gt;:&lt;REVERSEPROXYPORT&gt;/PatchOrchestrationApplication/CoordinatorService/v1/GetWindowsUpdateResults.
+A találathoz szükséges végpont *http://&lt;SERVERURL @ no__t-2: &lt;REVERSEPROXYPORT @ no__t-4/PatchOrchestrationApplication/CoordinatorService/v1/GetWindowsUpdateResults*.
 
-A fordított proxy a fürtön engedélyezéséhez kövesse a lépéseket a [fordított proxy az Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy). 
+A fordított proxynak a fürtön való engedélyezéséhez kövesse az [Azure Service Fabric fordított proxy](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy)utasításait. 
 
 > 
 > [!WARNING]
-> A fordított proxy konfigurálása után minden mikroszolgáltatásokhoz a fürtben, amely közzétenni egy HTTP-végpontot a fürtön kívülről címezhető.
+> A fordított proxy konfigurálása után a fürtben lévő összes olyan szolgáltatás, amely egy HTTP-végpontot tesz elérhetővé, a fürtön kívülről címezhető.
 
-## <a name="diagnosticshealth-events"></a>Diagnosztikai/hálózatállapot-események
+## <a name="diagnostics-and-health-events"></a>Diagnosztikai és állapot-események
 
-### <a name="diagnostic-logs"></a>Diagnosztikai naplók
+Ez a szakasz azt ismerteti, hogyan lehet hibakeresést végezni, illetve diagnosztizálni a javítási frissítésekkel kapcsolatos problémákat Service Fabric fürtökön a POA használatával.
 
-Patch orchestration alkalmazásnaplókat a rendszer a Service Fabric-futtatókörnyezet naplóiban részeként gyűjti.
+> [!NOTE]
+> Ahhoz, hogy a következő kinevezett, öndiagnosztika funkciók közül sokat megszerezzen, a POA Version 1.4.0 vagy újabb verziójára lesz szükség.
 
-Szeretne diagnosztikai eszköz vagy folyamat tetszőleges keresztül naplók rögzítésére. Patch orchestration application használ rögzített szolgáltató azonosítók alábbi eseményeket keresztül [eventsource](https://docs.microsoft.com/dotnet/api/system.diagnostics.tracing.eventsource?view=netframework-4.5.1)
+A csomópont-ügynök NTService a frissítések telepítésére szolgáló [javítási feladatokat](https://docs.microsoft.com/dotnet/api/system.fabric.repair.repairtask?view=azure-dotnet) hoz létre a csomópontokon. Ezután a koordinátori szolgáltatás előkészíti a feladatokat a feladat-jóváhagyási házirend szerint. Végezetül javításkezelő jóváhagyja az előkészített feladatokat, ami nem hagy jóvá semmilyen feladatot, ha a fürt nem kifogástalan állapotú. 
+
+Ha meg szeretné ismerni, hogy a frissítések hogyan folytatódnak egy adott csomóponton, ugorjon a lépésről lépésre:
+
+1. Az összes csomóponton futó NodeAgentNTService az elérhető Windows-frissítéseket az ütemezett időpontban keresi. Ha a frissítések elérhetők, letölti őket a csomóponton.
+
+1. A frissítések letöltése után a Node Agent NTService létrehoz egy megfelelő javítási feladatot a csomóponthoz a következő néven: *POS___ @ no__t-1unique_id >* . Ezeket a javítási feladatokat a [Get-ServiceFabricRepairTask](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps) parancsmag használatával vagy az SFX használatával tekintheti meg a csomópont részletei szakaszban. A javítási feladat létrehozása után a rendszer gyorsan áthelyezi az [ *igényelt* állapotba](https://docs.microsoft.com/dotnet/api/system.fabric.repair.repairtaskstate?view=azure-dotnet).
+
+1. A koordinátori szolgáltatás rendszeresen megkeresi a *kért* állapotú javítási feladatokat, majd frissíti őket a TaskApprovalPolicy alapján történő *előkészítésre* . Ha a TaskApprovalPolicy úgy van konfigurálva, hogy NodeWise, a csomópontnak megfelelő javítási feladat csak akkor készüljön fel, ha nincs más javítási feladat jelenleg *előkészítési*, *jóváhagyási*, *végrehajtási*vagy *visszaállítási* állapotban. 
+
+   Hasonlóképpen, a UpgradeWise TaskApprovalPolicy esetében az előző állapotokban csak az azonos frissítési tartományhoz tartozó csomópontok vannak feladatai. Ha a javítási feladatot áthelyezi az *előkészítési* állapotba, a megfelelő Service Fabric csomópont [le lesz tiltva](https://docs.microsoft.com/powershell/module/servicefabric/disable-servicefabricnode?view=azureservicefabricps) az *Újraindítás*beállítással.
+
+   A POA-verziók 1.4.0 és újabb eseményeket tesznek közzé a CoordinatorService ClusterPatchingStatus tulajdonságával a javított csomópontok megjelenítéséhez. A frissítések a _poanode_0-on vannak telepítve, ahogy az az alábbi képen is látható:
+
+    [@no__t – 1Image állapotának javítása](media/service-fabric-patch-orchestration-application/clusterpatchingstatus.png)](media/service-fabric-patch-orchestration-application/clusterpatchingstatus.png#lightbox)
+
+1. A csomópont letiltása után a rendszer áthelyezi a javítási feladatot a *végrehajtás* állapotba. 
+   
+   > [!NOTE]
+   > Egy *letiltott* állapotú csomópont blokkolhat egy új javítási feladatot, amely leállítja a javítás műveletet a fürtön.
+
+1. Ha a javítási feladat *végrehajtási* állapotban van, a rendszer megkezdi a javítás telepítését a csomóponton. A javítás telepítését követően előfordulhat, hogy a rendszer nem indítja újra a csomópontot a javítástól függően. Ezután a javítási feladat átkerül a *visszaállítási* állapotba, amely újraengedélyezi a csomópontot. A javítási feladat ezután befejezettként van megjelölve.
+
+   A POA-verziók 1.4.0 és újabb verzióiban megtekintheti a frissítés állapotát, ha a WUOperationStatus-\<NodeName > tulajdonsággal megtekinti a NodeAgentService állapotával kapcsolatos eseményeket. A következő képek kiemelt részei a Windows-frissítések állapotát mutatják a *poanode_0* és a *poanode_2*csomóponton:
+
+   [@no__t – Windows Update műveleti állapot 1Image](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png#lightbox)
+
+   [@no__t – Windows Update műveleti állapot 1Image](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png#lightbox)
+
+   A részleteket a PowerShell használatával is lekérheti. Ehhez kapcsolódjon a fürthöz, és kérje le a javítási feladat állapotát a [Get-ServiceFabricRepairTask](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps)használatával. 
+   
+   A következő példában a "POS__poanode_2_125f2969-933c-4774-85d1-ebdf85e79f15" feladat *DownloadComplete* állapotban van. Ez azt jelenti, hogy a frissítések le lettek töltve a *poanode_2* csomóponton, és a telepítést a rendszer megkísérli, amikor a feladat *végrehajtja* az állapotot.
+
+   ``` powershell
+    D:\service-fabric-poa-bin\service-fabric-poa-bin\Release> $k = Get-ServiceFabricRepairTask -TaskId "POS__poanode_2_125f2969-933c-4774-85d1-ebdf85e79f15"
+
+    D:\service-fabric-poa-bin\service-fabric-poa-bin\Release> $k.ExecutorData
+    {"ExecutorSubState":2,"ExecutorTimeoutInMinutes":90,"RestartRequestedTime":"0001-01-01T00:00:00"}
+    ```
+
+   Ha további problémák is megtalálhatók, jelentkezzen be a virtuális gépre vagy virtuális gépekre, és ismerkedjen meg velük a Windows-eseménynaplók használatával. A korábban említett javítási feladat csak a következő végrehajtó alállapotokban létezhet:
+
+      ExecutorSubState | Leírás
+    -- | -- 
+      None=1 |  Azt jelenti, hogy nem volt folyamatban művelet a csomóponton. Lehet, hogy az állapot átmeneti állapotban van.
+      DownloadCompleted=2 | Azt jelenti, hogy a letöltési művelet sikerrel, részleges meghibásodással vagy meghibásodással fejeződött be.
+      InstallationApproved = 3 | Azt jelenti, hogy a letöltési művelet korábban fejeződött be, és javításkezelő jóváhagyta a telepítést.
+      InstallationInProgress=4 | Megfelel a javítási feladat végrehajtásának állapotának.
+      InstallationCompleted=5 | Azt jelenti, hogy a telepítés sikeres, részleges sikerrel vagy hibával fejeződött be.
+      RestartRequested=6 | Azt jelenti, hogy a javítás telepítése befejeződött, és a csomóponton folyamatban van egy újraindítási művelet.
+      RestartNotNeeded=7 |  Azt jelenti, hogy a javítás telepítésének befejeződése után nem volt szükség az újraindításra.
+      RestartCompleted=8 | Azt jelzi, hogy az újraindítás sikeresen befejeződött.
+      OperationCompleted=9 | A Windows Update művelet sikeresen befejeződött.
+      OperationAborted=10 | Azt jelenti, hogy a Windows Update művelet meg lett szakítva.
+
+1. A POA-verziók 1.4.0 és újabb verzióiban a csomópont-frissítési kísérlet befejeződése után egy "WUOperationStatus-[csomópontnév]" tulajdonsággal rendelkező esemény jelenik meg a NodeAgentService, amely értesíti a felhasználót, ha a Windows-frissítések letöltésére és telepítésére vonatkozó következő kísérlet megkezdődik. Ez az alábbi képen látható:
+
+     [@no__t – Windows Update műveleti állapot 1Image](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png#lightbox)
+
+### <a name="diagnostics-logs"></a>Diagnosztikai naplók
+
+A javítási előkészítési alkalmazások naplói a Service Fabric futtatókörnyezeti naplók részeként lesznek összegyűjtve.
+
+A naplókat a választott diagnosztikai eszköz vagy folyamat használatával rögzítheti. A POA a következő rögzített szolgáltatói azonosítókat használja az események naplózásához az [eseményforrás](https://docs.microsoft.com/dotnet/api/system.diagnostics.tracing.eventsource?view=netframework-4.5.1)használatával:
 
 - e39b723c-590c-4090-abb0-11e3e6616346
 - fc0028ff-bfdc-499f-80dc-ed922c52c5e9
 - 24afa313-0d3b-4c7c-b485-1047fd964b60
 - 05dc046c-60e9-4ef7-965e-91660adffa68
 
-### <a name="health-reports"></a>Rendszerállapot-jelentések
+### <a name="health-reports"></a>Állapotjelentés
 
-A patch orchestration alkalmazás rendszerállapot-jelentések a koordinátor szolgáltatást vagy a csomópont-ügynökszolgáltatás is közzéteszi a következő esetekben:
+A POA a következő helyzetekben is közzéteszi a Node Agent szolgáltatás vagy a koordinátor szolgáltatás állapotát:
 
-#### <a name="a-windows-update-operation-failed"></a>Egy Windows-frissítési művelet sikertelen
+* A csomópont-ügynök NTService nem érhető el
 
-Egy csomópontot egy Windows-frissítési művelet meghiúsul, ha egy jelentés jön létre a csomópont-ügynök szolgáltatáshoz. Az állapotjelentés részleteit a problematikus csomópontot nevét tartalmazzák.
+   Ha a csomópont-ügynök NTService leállt egy csomóponton, a rendszer figyelmeztetési szintű állapotjelentést hoz létre a csomópont-ügynök szolgáltatással szemben.
 
-Javítás sikeresen befejeződött a problematikus csomópontot, miután a rendszer automatikusan törli a jelentést.
+* A javításkezelő szolgáltatás nincs engedélyezve
 
-#### <a name="the-node-agent-ntservice-is-down"></a>A Node-Agent NTService nem működik
-
-A Node-Agent NTService a csomópont nem működik, ha a csomópont-ügynök szolgáltatás figyelmeztetési szintű állapotjelentés jön létre.
-
-#### <a name="the-repair-manager-service-is-not-enabled"></a>A javítási manager szolgáltatás nincs engedélyezve
-
-Ha a repair-kezelő szolgáltatás nem található a fürtön, figyelmeztetési szintű állapotjelentés a koordináló szolgáltatás jön létre.
+   Ha a javításkezelő szolgáltatás nem található a fürtön, a rendszer figyelmeztetési szintű állapotjelentést hoz létre a koordinátori szolgáltatáshoz.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-K. **Miért látok a fürt hibás állapotú, a patch orchestration alkalmazás futása során?**
+**K: Miért jelenik meg a fürt hibás állapotú, ha a POA fut?**
 
-A. A telepítési folyamat során a patch orchestration app letiltja, vagy újraindul a csomópontokon, ami növelheti ideiglenesen leáll a fürt állapotát.
+V: A telepítési folyamat során a POA letiltja vagy újraindítja a csomópontokat, ami átmenetileg egy nem kifogástalan állapotú fürtöt eredményezhet.
 
-Az alkalmazás a házirend alapján, vagy egy csomópont is leáll a javítási művelet során *vagy* teljes frissítési tartomány egyszerre is leáll.
+Az alkalmazás házirendjétől függően akár egy csomópont is lemehet a javítási művelet során, *vagy* egy teljes frissítési tartomány egyszerre is lemehet.
 
-A végén a Windows telepítését, a csomópontok ismét vannak engedélyezve. Indítsa újra közzé.
+A Windows-frissítések telepítésének végén a csomópontok újraindítást követően ismét engedélyezve lesznek.
 
-A következő példában a fürt hiba történt a hibás állapotú ideiglenesen két csomópont volt, mert a megsértette a MaxPercentageUnhealthyNodes szabályzatot. A hiba nem átmeneti, amíg folyamatban a javítási művelet.
+A következő példában a fürt átmenetileg hibás állapotba került, mert két csomópont leállt, és a MaxPercentageUnhealthyNodes szabályzat megsértése megsértette. A hiba ideiglenes, amíg a javítási művelet megkezdődhet.
 
-![Nem megfelelő állapotú-fürt képe](media/service-fabric-patch-orchestration-application/MaxPercentage_causing_unhealthy_cluster.png)
+![Nem kifogástalan állapotú fürt képe](media/service-fabric-patch-orchestration-application/MaxPercentage_causing_unhealthy_cluster.png)
 
-Ha a probléma nem szűnik meg, tekintse meg a hibaelhárítási szakaszt.
+Ha a probléma továbbra is fennáll, tekintse meg a hibaelhárítás szakaszt.
 
-K. **Patch orchestration alkalmazás figyelmeztetési állapotban van.**
+**K: Mit tehetek, ha a POA figyelmeztetési állapotban van?**
 
-A. Ellenőrizze, hogy ha egy jelentés tesznek közzé az alkalmazáshoz képest-e a hiba okát. Általában a figyelmeztetés a probléma részleteit tartalmazza. Ha a probléma átmeneti, az alkalmazás az automatikus helyreállítás ebből az állapotból kellene szerepelnie.
+V: Ellenőrizze, hogy az alkalmazásban közzétett állapotjelentés a kiváltó okot jelzi-e. A figyelmeztetés általában a probléma részleteit tartalmazza. Ha a probléma átmeneti, a rendszer automatikusan helyreállítja az alkalmazást.
 
-K. **Mi a teendő, ha a fürt nem kifogástalan, és egy sürgős operációsrendszer-frissítés van szükség?**
+**K: Mi a teendő, ha a fürtem nem kifogástalan állapotú, és sürgős operációs rendszerre van szükségem?**
 
-A. A patch orchestration app nem frissítések telepítése, míg a fürt állapota nem kifogástalan. Próbálja meg a fürt hálózatra kapcsolása a tiltásának feloldása a patch orchestration munkafolyamat Kifogástalan állapotba.
+V: A POA nem telepíti a frissítéseket, amíg a fürt állapota nem megfelelő. Próbálja meg a fürtöt Kifogástalan állapotba hozni, hogy feloldja a POA-munkafolyamatot.
 
-K. **Kell i beállítása "NodeWise" vagy "UpgradeDomainWise" TaskApprovalPolicy a fürtöm számára?**
+**K: A TaskApprovalPolicy "NodeWise" vagy "UpgradeDomainWise" értéket kell beállítani a fürthöz?**
 
-A. "UpgradeDomainWise" lehetővé teszi a teljes fürt javítás gyorsabban azáltal, hogy kijavítja a párhuzamos frissítési tartományokhoz tartozó összes csomópontját. Ez azt jelenti, hogy a teljes frissítési tartományokhoz tartozó lenne nem érhető el (a [letiltott](https://docs.microsoft.com/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabled) állapot) a javítási folyamat során.
+V: A "UpgradeDomainWise" beállítás felgyorsítja a fürt teljes javítását a frissítéssel párhuzamosan a frissítési tartományhoz tartozó összes csomóponton. A folyamat során a teljes frissítési tartományhoz tartozó csomópontok nem érhetők el ( [ *letiltott* állapotban](https://docs.microsoft.com/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabled)).
 
-Ezzel szemben a NodeWise"szabályzat javítások egyszerre csak egy csomópont, ez azt jelenti, hogy általános fürt javítás hosszabb ideig igénybe. Azonban, max, csak egy csomópont lenne nem érhető el (a [letiltott](https://docs.microsoft.com/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabled) állapot) a javítási folyamat során.
+Ezzel szemben a "NodeWise" beállítás egyszerre csak egy csomópontot javít, ami azt jelenti, hogy a fürt teljes javítása hosszabb időt is igénybe vehet. A javítási folyamat során azonban csak egyetlen csomópont nem érhető el ( *letiltott* állapotban).
 
-Ha a fürt fut az frissítési tartományok száma N-1 javítás ciklus (ahol N az a fürt frissítési tartományok száma), majd a szabályzat másként "UpgradeDomainWise" alatt képes elviselni, ellenkező esetben állítsa "NodeWise".
+Ha a fürt a javítási ciklus során N-1 számú frissítési tartományon fut, akkor a (z) N érték a fürt frissítési tartományának teljes számát jelöli, a szabályzatot pedig "UpgradeDomainWise" értékre állíthatja. Ellenkező esetben állítsa "NodeWise" értékre.
 
-K. **Mennyi idő mindezt hajtsa végre a megfelelő csomópont javítására?**
+**K: Mennyi idő szükséges a csomópontok javításához?**
 
-A. Egy csomópont javítás percet is igénybe vehet (például: [A Windows Defender definíciófrissítéseit](https://www.microsoft.com/en-us/wdsi/definitions)) óra (például: [Windows összegző frissítések](https://www.catalog.update.microsoft.com/Search.aspx?q=windows%20server%20cumulative%20update)). Egy csomópont javítása szükséges idő leggyakrabban függ 
- - Frissítések mérete
- - Frissítéseket, amelyek azt a javítási időszakot a alkalmazni kell száma
- - Telepítse a frissítéseket, újraindíthatja a csomópontot (ha szükséges), és újraindítás utáni telepítési lépéseket szükséges idő.
- - Virtuális gép és számítógép- és hálózati körülményekhez teljesítményét.
+V: A csomópontok javítását percek alatt (például a [Windows Defender definíciójának frissítései](https://www.microsoft.com/en-us/wdsi/definitions)) is elvégezheti (például a [Windows összegző frissítéseit](https://www.catalog.update.microsoft.com/Search.aspx?q=windows%20server%20cumulative%20update)). A csomópontok javításához szükséges idő többnyire a következőktől függ: 
+ - A frissítések mérete.
+ - Azon frissítések száma, amelyeket egy javítási ablakban kell alkalmazni.
+ - A frissítések telepítéséhez szükséges idő, indítsa újra a csomópontot (ha szükséges), majd fejezze be az újraindítás utáni telepítési lépéseket.
+ - A virtuális gép vagy a gép teljesítménye, valamint a hálózati feltételek.
 
-K. **Mennyi ideig tart egy teljes fürtre javítására?**
+**K: Mennyi ideig tart a teljes fürt javítása?**
 
-A. A teljes fürtöt javítása szükséges idő a következő tényezőktől függ:
+V: A teljes fürt javításához szükséges idő a következőktől függ:
 
-- Egy csomópont javítása szükséges idő.
-- A szabályzat a koordinátor szolgáltatást. – Az alapértelmezett házirend `NodeWise`, egyszerre, amelyek alacsonyabb, mint egyetlen csomópont javítás eredményeként `UpgradeDomainWise`. Példa: Ha egy csomópont a javítandó ~ 1 órát vesz igénybe, annak érdekében, hogy egy 20 javítására csomópontban (csomópont ugyanolyan típusú) a fürt 5 frissítési tartománnyal 4 csomópontot tartalmazó.
-    - Az egész fürt javítására irányuló körülbelül 20 óra múlva szabályzat a `NodeWise`
-    - Ha a házirend ~ 5 óra múlva `UpgradeDomainWise`
-- Fürt betöltés – minden javítási műveletet igényel, az ügyfél számítási feladata áthelyezése más elérhető csomópontokhoz a fürtben. Javítás alatt áll csomópont kell, hogy [letiltása](https://docs.microsoft.com/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabling) állapot ebben az időszakban. Ha a fürt csúcsterhelés között közel fut, a letiltását folyamat hosszabb ideig igénybe. Ezért átfogó a javítási folyamat lassú ilyen teherhordó feltételek jelenhet meg.
-- Állapottal kapcsolatos hibák bármilyen során javítás - fürt [teljesítménycsökkenés](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet#System_Fabric_Health_HealthState_Error) a [a fürt állapota](https://docs.microsoft.com/azure/service-fabric/service-fabric-health-introduction) megszakítaná a javítási folyamatot. Ez az egész fürt javítása szükséges teljes időt volna hozzá.
+- A csomópontok javításához szükséges idő.
 
-K. **Miért látok néhány frissítést, a Windows Update eredmények REST API-n keresztül, de nem a számítógépen a Windows Update előzmények alapján?**
+- A koordinátori szolgáltatás szabályzata. Az alapértelmezett "NodeWise" házirend egyszerre csak egy csomópont javítását eredményezi, ami lassabb, mint a "UpgradeDomainWise" használata. 
 
-A. Egyes frissítéseket csak tűnik, a megfelelő frissítések/javítások előzményeiben. Például előfordulhat, hogy a Windows Defender frissítések vagy előfordulhat, hogy nem jelennek meg a Windows Server 2016-on Windows Update előzmények.
+   Példa: Ha egy csomópont ~ 1 órát vesz igénybe, a javításhoz egy 20 csomópontos (azonos típusú csomópont) fürtöt kell kijavítani 5 frissítési tartománnyal, amelyek mindegyike 4 csomópontot tartalmaz, a következőket igényli:
+    - A "NodeWise" esetében: ~ 20 óra.
+    - A "UpgradeDomainWise": ~ 5 óra.
 
-K. **Patch Orchestration alkalmazás használható fejlesztési fürt (egycsomópontos fürt) javítására?**
+- A fürt terhelése. Az egyes javítási műveletekhez az ügyfél munkaterhelésének áthelyezésére van szükség a fürt más elérhető csomópontjain. Az éppen javított csomópont [ *letiltási* állapotban](https://docs.microsoft.com/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabling) lenne ebben az időszakban. Ha a fürt a csúcs terhelése közelében fut, a letiltási folyamat hosszabb időt is igénybe veheti. Ezért előfordulhat, hogy a teljes javítási folyamat lassúnak tűnhet az ilyen feltett körülmények között.
 
-A. Nem, Patch orchestration alkalmazás javítás egycsomópontos fürt nem használható. Ezt a korlátozást a rendszer kialakításából fakad, [service fabric-rendszerszolgáltatások](https://docs.microsoft.com/azure/service-fabric/service-fabric-technical-overview#system-services) vagy vevő alkalmazások leállhatnak, és ezért bármely javítás a javítási feladat lenne soha nem get jóvá manager javítást igényel.
+- A fürtök állapotával kapcsolatos hibák a javítások során. A [fürt állapotának](https://docs.microsoft.com/azure/service-fabric/service-fabric-health-introduction) [romlása](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet#System_Fabric_Health_HealthState_Error) megszakítja a javítási folyamatot. Ezt a problémát a teljes fürt javításához szükséges teljes időre adja hozzá a rendszer.
+
+**K: Miért látok néhány frissítést a Windows Update találatok között, amelyek REST APIn keresztül szerezhetők be, de nem a gép Windows Update előzményei alatt?**
+
+V: Egyes Termékfrissítések csak a saját frissítési vagy javítási előzményeiben jelennek meg. Előfordulhat például, hogy a Windows Defender frissítései nem jelennek meg Windows Update előzményekben a Windows Server 2016 rendszeren.
+
+**K: A fejlesztési fürt (egycsomópontos fürt) javítására is használható?**
+
+V: Nem, a POA nem használható egy egycsomópontos fürt kijavítására. Ez a korlátozás a tervezés szerint történik, mivel [Service Fabric rendszerszolgáltatások](https://docs.microsoft.com/azure/service-fabric/service-fabric-technical-overview#system-services) vagy más ügyfélalkalmazások állásidőt okozna. Ezért a javítási feladatok javítását soha nem hagyja jóvá javításkezelő.
+
+**K: A fürt csomópontjainak Hogyan Linux rendszeren? @no__t – 0
+
+V: A Linux rendszerű frissítések előkészítéséről az Azure-beli [virtuálisgép-méretezési csoport automatikus operációsrendszer-rendszerképének frissítései](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade)című témakörben olvashat bővebben.
+
+**K: Miért tart ilyen sokáig a frissítési ciklus? @no__t – 0
+
+V: Lekérdezés az eredmény JSON-hoz, adja meg az összes csomópont frissítési ciklusát, majd próbálja meg megkeresni a frissítés telepítésének idejét minden csomóponton a OperationStartTime és a OperationTime (OperationCompletionTime) használatával. 
+
+Ha van olyan nagy időablak, amelyben nem zajlik frissítés, előfordulhat, hogy a fürt hibás állapotban van, és ezért javításkezelő nem hagyhat jóvá semmilyen POA javítási feladatot. Ha a frissítés telepítése bármely csomóponton hosszú időt vesz igénybe, előfordulhat, hogy a csomópont egy ideje nem frissült. Előfordulhat, hogy sok frissítés van függőben, ami késéseket eredményezhet. 
+
+Előfordulhat, hogy a csomópont-javítások le vannak tiltva, mert a *letiltási* állapotban van. Ez általában azért történik, mert a csomópont letiltásával kvórumhoz vagy adatvesztéshez vezethet.
+
+**K: Miért kell letiltani a csomópontot a POA javításakor?**
+
+V: A POA *Újraindítási* szándéktal letiltja a csomópontot, amely leállítja vagy újraosztja a csomóponton futó összes Service Fabric-szolgáltatást. A POA ezt biztosítja, hogy az alkalmazások ne használják fel az új és a régi DLL-eket, ezért azt javasoljuk, hogy tiltsa le a csomópontokat anélkül, hogy le kellene tiltani.
 
 ## <a name="disclaimers"></a>Felelősséget kizáró nyilatkozatok
 
-- A patch orchestration alkalmazást a felhasználó nevében fogadja el a Windows Update szoftverre a végfelhasználói licenc. Szükség esetén a beállítást is ki kell kapcsolni az alkalmazás konfigurációjában.
+- A POA a felhasználó nevében fogadja el Windows Update végfelhasználói licencszerződését. Opcionálisan a beállítás kikapcsolható az alkalmazás konfigurációjában.
 
-- A patch orchestration alkalmazás használatának és teljesítményének nyomon követéséhez telemetriát gyűjt. Az alkalmazás telemetriai követi a beállítást, a Service Fabric-futtatókörnyezet telemetriai beállítás (amely alapértelmezés szerint be van kapcsolva).
+- A POA a használat és a teljesítmény nyomon követésére szolgáló telemetria gyűjt. Az alkalmazás telemetria követi a Service Fabric futtatókörnyezet telemetria beállítását (amely alapértelmezés szerint be van kapcsolva).
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-### <a name="a-node-is-not-coming-back-to-up-state"></a>A csomópont nem várható biztonsági állapot mentése
+Ez a szakasz a javítási csomópontokkal kapcsolatos problémák megoldásához nyújt lehetséges hibaelhárítási megoldásokat.
 
-**A csomópont előfordulhat, hogy elakadt letiltását állapotban, mert**:
+### <a name="a-node-is-not-coming-back-to-up-state"></a>Egy csomópont nem jön vissza állapotba
 
-Egy biztonsági ellenőrzés függőben. A helyzet orvoslása érdekében győződjön meg arról, hogy elegendő csomópontok elérhető kifogástalan állapotban.
+* Előfordulhat, hogy a csomópont *letiltási* állapotban van, mert:
 
-**A csomópont előfordulhat, hogy elakadt tiltva, mert**:
+  - A biztonsági ellenőrzések függőben vannak. A helyzet orvoslása érdekében győződjön meg arról, hogy elegendő csomópont áll rendelkezésre kifogástalan állapotban.
 
-- A csomópont manuálisan le lett tiltva.
-- A csomópont egy folyamatban lévő Azure-infrastruktúra feladat miatt le lett tiltva.
-- A csomópont ideiglenesen letiltotta a patch orchestration alkalmazás javítása a csomópontot.
+* Előfordulhat, hogy a csomópont *letiltott állapotban van* , mert:
 
-**A csomópont előfordulhat, hogy elakadt lefelé állapotban, mert**:
+  - A rendszer manuálisan letiltotta.
+  - Egy folyamatban lévő Azure-infrastruktúra-feladatok miatt le lett tiltva.
+  - Ezt a POA a csomópont javításához átmenetileg letiltotta.
 
-- A csomópont manuálisan okot lefelé állapotban.
-- A csomópont (ami előfordulhat, hogy a patch orchestration alkalmazás által kiváltott) újraindítás alatt állnak.
-- A csomópont hibás virtuális gép vagy a gép vagy a hálózati kapcsolódási problémák miatt nem működik.
+* Előfordulhat, hogy a csomópont le van ragadva, mert:
 
-### <a name="updates-were-skipped-on-some-nodes"></a>Frissítések ki lett hagyva az egyes csomópontok
+  - A szolgáltatás manuálisan lett elhelyezve.
+  - A rendszer újraindítást végez (amelyet a POA is aktiválhat).
+  - Hibás virtuális géppel vagy géppel rendelkezik, vagy hálózati kapcsolati problémák léptek fel.
 
-A patch orchestration alkalmazást próbál meg telepíteni a Windows frissítése a átütemezése házirendnek megfelelően. A szolgáltatás megpróbálja helyreállítani a csomópontot, és hagyja ki a frissítést az alkalmazás-házirend szerint.
+### <a name="updates-were-skipped-on-some-nodes"></a>Egyes csomópontokon a frissítések ki lettek hagyva
 
-Ebben az esetben a csomópont-ügynök szolgáltatás figyelmeztetési szintű állapotjelentés jön létre. A Windows-frissítés eredménye is tartalmazza a hiba lehetséges okát.
+A POA megpróbál telepíteni egy Windows-frissítést az átütemezési házirendnek megfelelően. A szolgáltatás megkísérli helyreállítani a csomópontot, és az alkalmazás házirendjének megfelelően kihagyja a frissítést.
 
-### <a name="the-health-of-the-cluster-goes-to-error-while-the-update-installs"></a>A fürt állapotának hiba kerül, amíg a frissítés telepítése
+Ebben az esetben a rendszer figyelmeztetési szintű állapotjelentést hoz létre a csomópont-ügynök szolgáltatással kapcsolatban. A Windows Update eredmény a hiba lehetséges okát is tartalmazza.
 
-Egy hibás Windows update alkalmazást vagy egy adott csomópont vagy a frissítési tartomány a fürt állapotának leállíthatja. A patch orchestration alkalmazás bármely ezt követő Windows-frissítési művelet megszünteti, mindaddig, amíg a fürt állapota kifogástalan újra.
+### <a name="the-health-of-the-cluster-goes-to-error-while-the-update-is-being-installed"></a>A fürt állapota hiba miatt leáll a frissítés telepítésekor
 
-A rendszergazdák beavatkozhat kell, és határozza meg, miért érdemes az alkalmazás vagy a fürt vált Windows-frissítés miatt nem kifogástalan.
+Egy hibás Windows-frissítés egy adott csomóponton vagy frissítési tartományban lévő alkalmazás vagy fürt állapotát leállíthatja. POA felhagy minden további Windows Update műveletet, amíg a fürt újra Kifogástalan állapotba nem kerül.
 
-## <a name="release-notes"></a>Kibocsátási megjegyzések
+A rendszergazdának beavatkoznia kell, és meg kell határoznia, hogy az alkalmazás vagy a fürt miért nem megfelelő állapotba került a Windows Update miatt.
 
-### <a name="version-110"></a>1.1.0-s verzió
-- Nyilvános kiadása
+## <a name="poa-release-notes"></a>POA kibocsátási megjegyzések
 
-### <a name="version-111"></a>1.1.1-es
-- Kijavítva a hiba a SetupEntryPoint, NodeAgentService NodeAgentNTService telepítését megakadályozó.
+>[!NOTE]
+> A POA-verziók 1.4.0 és újabb verzióiban megtalálhatja a kiadással kapcsolatos megjegyzéseket és kiadásokat a GitHubon a javítás-előkészítési [alkalmazás kiadás lapján](https://github.com/microsoft/Service-Fabric-POA/releases/) .
 
-### <a name="version-120"></a>1.2.0-s vagy annál újabb verzió
+### <a name="version-110"></a>1\.1.0-s verzió
+- Nyilvános kiadás
 
-- Hibajavítások kerülő rendszer indítsa újra a munkafolyamatot.
-- Hibajavítás a létrehozásakor erőforrás-kezelő feladatot, mely állapota miatt ellenőrizze a javítási feladatok előkészítése során nem a várt módon történik.
-- Windows POANodeSvc Service automatikus késleltetett automatikus módosítani az indítási módja.
+### <a name="version-111"></a>1\.1.1-es verzió
+- Kijavítva egy olyan hibát a NodeAgentService SetupEntryPoint, amely meggátolta a NodeAgentNTService telepítését.
 
-### <a name="version-121"></a>1.2.1-es
+### <a name="version-120"></a>1\.2.0-s vagy annál újabb verzió
 
-- Hibajavítás a fürt skálázási munkafolyamatban. Szemétgyűjtési gyűjtemény logikai POA javítási tevékenységek nem létező csomóponthoz tartozó vezetett be.
+- Hibajavítások a rendszerindító munkafolyamatok köré.
+- Hibajavítás az RM-feladatok létrehozásakor, mert a javítási feladatok előkészítése során felmerülő állapot-ellenőrzés nem a várt módon történt.
+- A Windows-szolgáltatás POANodeSvc indítási üzemmódjának módosítása automatikusról késleltetve – automatikus.
 
-### <a name="version-122"></a>Verzió 1.2.2
+### <a name="version-121"></a>1\.2.1-es verzió
 
-- Vegyes hibajavításokat tartalmaz.
-- Bináris fájlok most már van bejelentkezve.
-- Az alkalmazás sfpkg hivatkozás hozzá.
+- Hibajavítás a fürt Felskálázási munkafolyamatában. A nem létező csomópontokhoz tartozó POA javítási feladatok esetében bevezette a Garbage-gyűjtési logikát.
+
+### <a name="version-122"></a>1\.2.2-es verzió
+
+- Egyéb hibajavítások.
+- A bináris fájlok most már alá vannak írva.
+- Az alkalmazáshoz hozzáadott sfpkg-hivatkozás.
 
 ### <a name="version-130"></a>Verzió 1.3.0
 
-- Az összes elérhető frissítés InstallWindowsOSOnlyUpdates beállítás FALSE mostantól telepíti.
-- Módosult az automatikus frissítések letiltása logikáját. Ez kijavítja a hibát, az automatikus frissítések nem első letiltottuk a Server 2016 vagy újabb.
-- A speciális usecases POA, mind a mikroszolgáltatások paraméteres elhelyezési korlátozás.
+- A InstallWindowsOSOnlyUpdates beállítása hamis értékre most telepíti az összes elérhető frissítést.
+- Módosult az automatikus frissítések letiltásának logikája. Ez egy olyan hibát javít, amelyben az automatikus frissítések nem voltak letiltva a 2016-es és újabb kiszolgálókon.
+- Paraméteres elhelyezési megkötés a speciális használati esetekhez tartozó POA-szolgáltatások esetében is.
 
-### <a name="version-131"></a>1.3.1 verzió
-- Ahol POA 1.3.0 nem fog működni a Windows Server 2012 R2 vagy alacsonyabb, mert hiba történt az automatikus frissítések letiltása a rögzítési regressziós. 
-- Hiba kijavítása, ahol InstallWindowsOSOnlyUpdates konfigurációs mindig ki van TRUE.
-- Változó alapértelmezett értéke InstallWindowsOSOnlyUpdates FALSE.
+### <a name="version-131"></a>1\.3.1-es verzió
+- A regresszió javítása, ha a POA 1.3.0 nem fog működni a Windows Server 2012 R2 vagy korábbi verzióban, mert hiba történt az automatikus frissítések letiltásakor. 
+- Kijavíthatja a hibát, hogy a InstallWindowsOSOnlyUpdates-konfiguráció mindig igaz legyen.
+- A InstallWindowsOSOnlyUpdates alapértelmezett értékének hamisra váltása.
 
-### <a name="version-132"></a>1.3.2 verzió
-- Egy probléma, amely befolyásolja a javítási élettartam-cyle egy csomóponton, abban az esetben, ha az aktuális csomópont nevét részhalmaza nevű csomópont kijavítása. Az ilyen csomópontokon, lehetséges, a javítás hiányzik, vagy újraindítás függőben. 
+### <a name="version-132"></a>1\.3.2-es verzió
+- Olyan probléma elhárítása, amely hatással van a javítási életciklusra egy csomóponton, ha vannak olyan csomópontok, amelyek neve az aktuális csomópont nevének egy részhalmaza. Ilyen csomópontok esetén előfordulhat, hogy a javítás kimaradt, vagy függőben van egy újraindítás.

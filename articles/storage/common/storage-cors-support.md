@@ -2,19 +2,20 @@
 title: Eltérő eredetű erőforrások megosztása (CORS) támogatása |} A Microsoft Docs
 description: Ismerje meg a CORS-támogatásának engedélyezése a Microsoft Azure tárolási szolgáltatások.
 services: storage
-author: cbrooksmsft
+author: tamram
 ms.service: storage
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 2/22/2017
-ms.author: cbrooks
+ms.author: tamram
+ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 5e65965678ed042081e4a406d3a207fb7ede299f
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: bb296db0d97382deac984369704777de5d5cb362
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313651"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65147691"
 ---
 # <a name="cross-origin-resource-sharing-cors-support-for-the-azure-storage-services"></a>Eltérő eredetű erőforrások megosztása (CORS) támogatása az Azure Storage szolgáltatások
 2013-08-15 verzióval kezdve, az Azure storage szolgáltatások támogatja az eltérő eredetű erőforrások megosztása (CORS) a Blob, Table, Queue és fájl szolgáltatások. A CORS egy HTTP-funkció, amely lehetővé teszi egy adott tartományban futó webes alkalmazás egy másik tartományban lévő erőforrások eléréséhez. Webböngészők néven ismert biztonsági korlátozással akadályozzák meg [azonoseredet-](https://www.w3.org/Security/wiki/Same_Origin_Policy) , amely megakadályozza, hogy egy weblap, egy másik tartományban; API-k A CORS biztonságos megoldást nyújt, hogy egy tartomány (a forrástartomány) API-k meghívása egy másik tartományban található. Tekintse meg a [CORS-specifikáció](https://www.w3.org/TR/cors/) CORS részleteiért.
@@ -82,7 +83,7 @@ CORS-szabályok a következő korlátozások vonatkoznak:
 * Egy engedélyezett fejléc, közzétett fejléc vagy engedélyezett származási hossza legfeljebb 256 karakter.
 * Engedélyezett fejlécek és közzétett fejlécek lehetnek:
   * Szövegkonstans fejlécek, ahol a pontos fejlécnév áll rendelkezésre, mint például **x-ms-meta – feldolgozott**. Egy legfeljebb 64 szövegkonstans fejlécek a kérésben adható meg.
-  * A fejlécek, ahol a fejléc előtag áll rendelkezésre, például a következő előtaggal ** x-ms-meta-data x. Ily módon előtag megadása lehetővé teszi, vagy tesz közzé bármilyen fejlécet, amely a megadott előtaggal kezdődik. Legfeljebb két előtaggal ellátott fejléc adható meg a kérés adható meg.
+  * A fejlécek, ahol a fejléc előtag áll rendelkezésre, például a következő előtaggal **x-ms-meta-data x** *. Ily módon előtag megadása lehetővé teszi, vagy tesz közzé bármilyen fejlécet, amely a megadott előtaggal kezdődik. Legfeljebb két előtaggal ellátott fejléc adható meg a kérés adható meg.
 * A megadott metódusok (vagy HTTP-műveletek) a **AllowedMethods** elemet meg kell felelnie az Azure storage szolgáltatás API-k által támogatott módszerek. Támogatott módszerek állnak a DELETE, GET, HEAD, EGYESÍTÉS, POST, beállítások és PUT.
 
 ## <a name="understanding-cors-rule-evaluation-logic"></a>CORS-szabály kiértékelési logika ismertetése
@@ -130,8 +131,8 @@ Ezután vegye figyelembe a következő CORS-kérések:
 | Kérés |  |  | Válasz |  |
 | --- | --- | --- | --- | --- |
 | **Metódus** |**Forrás** |**Kérelemfejlécek** |**A szabály egyezés** |**Eredmény** |
-| **PUT** |http:\//www.contoso.com |x-ms-blob-content-type |Első szabály |Sikeres |
-| **GET** |http:\//www.contoso.com |x-ms-blob-content-type |Második szabály |Sikeres |
+| **PUT** |http:\//www.contoso.com |x-ms-blob-content-type |Első szabály |Siker |
+| **GET** |http:\//www.contoso.com |x-ms-blob-content-type |Második szabály |Siker |
 | **GET** |http:\//www.contoso.com |x-ms-client-request-id |Második szabály |Hiba |
 
 Az első kérelem megegyezik az első szabály – a forrástartomány megegyezik az engedélyezett eredetek, a metódus felel meg az engedélyezett metódusok és a fejléc megegyezik az engedélyezett fejlécek – és így sikeres.

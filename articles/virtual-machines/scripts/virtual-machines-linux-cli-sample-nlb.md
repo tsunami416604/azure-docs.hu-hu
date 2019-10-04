@@ -4,7 +4,7 @@ description: Azure CLI-példaszkript – Linux rendszerű virtuális gép létre
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-service-management
 ms.assetid: ''
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 8c599aa1060b9f5f05518416d08b197d018aa3db
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 2e9b536ae6c7056348ac964a2c85ccd698a80ae4
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55692847"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709365"
 ---
 # <a name="create-a-highly-available-vm"></a>Magas rendelkezésre állású virtuális gép létrehozása
 

@@ -1,6 +1,6 @@
 ---
-title: Az Azure Service Fabric parancssori felület - sfctl értéke |} A Microsoft Docs
-description: Ismerteti a Service Fabric parancssori felület sfctl értéke parancsokat.
+title: Azure Service Fabric CLI – sfctl | Microsoft Docs
+description: Leírja, hogy az Service Fabric CLI-sfctl parancsai.
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
@@ -8,76 +8,75 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 2039dd9222809d2c05aaeaf01f9d38c51f3b3797
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 998a94350250402d4face64f64e12f32cf5b2a36
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58661592"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036494"
 ---
 # <a name="sfctl-is"></a>sfctl értéke
-Lekérdezés, és parancsokat küldjön az infrastruktúra-szolgáltatás.
+Parancsok lekérdezése és küldése az infrastruktúra-szolgáltatásnak.
 
 ## <a name="commands"></a>Parancsok
 
 |Parancs|Leírás|
 | --- | --- |
-| command | Hívja meg az adott példányon infrastruktúra-szolgáltatás-rendszergazdai parancs. |
-| lekérdezés | Hívja meg az adott infrastruktúra szolgáltatáspéldány lekérdezés csak olvasható. |
+| A parancs | Egy rendszergazdai parancsot hív meg a megadott infrastruktúra-szolgáltatási példányon. |
+| query | Egy írásvédett lekérdezést hív meg a megadott infrastruktúra-szolgáltatási példányon. |
 
-## <a name="sfctl-is-command"></a>sfctl értéke parancs
-Hívja meg az adott példányon infrastruktúra-szolgáltatás-rendszergazdai parancs.
+## <a name="sfctl-is-command"></a>a sfctl parancs
+Egy rendszergazdai parancsot hív meg a megadott infrastruktúra-szolgáltatási példányon.
 
-Az infrastruktúra-szolgáltatás konfigurált egy vagy több példányban fürtök esetén az API-t biztosítja az infrastruktúra-specifikus parancsokat küldenek egy adott példányt az infrastruktúra-szolgáltatás. Elérhető parancsok és a megfelelő választ formátumukban eltérőek lehetnek attól függően, hogy az infrastruktúra, amelyen fut a fürtön. Ez az API támogatja a Service Fabric platformot; azt nem jelenti, hogy közvetlenül a kódból használni.
-
-### <a name="arguments"></a>Argumentumok
-
-|Argumentum|Leírás|
-| --- | --- |
-| – [kötelező] parancsot | Meg kell hívni a parancs szövege. A parancs tartalma infrastruktúra-specifikus. |
-| --service-id | Az infrastruktúra-szolgáltatás identitásának. <br><br> Az infrastruktúra-szolgáltatás nélkül teljes neve a "fabric\:" URI-séma. Ez a paraméter csak a fürt, amelyben több példányát futtató infrastruktúra-szolgáltatás szükséges. |
-| --időkorlát -t | Kiszolgálói időtúllépés másodpercben.  Alapértelmezett\: 60. |
-
-### <a name="global-arguments"></a>Globális argumentumok
-
-|Argumentum|Leírás|
-| --- | --- |
-| --debug | Növelése a naplózás az összes hibakeresési naplók megjelenítése. |
-| --help -h | A súgóüzenetet és kilépési jelennek meg. |
-| --kimeneti -o | Kimeneti formátum.  Megengedett értékek\: JSON-t, jsonc, tábla, tsv.  Alapértelmezett\: json. |
-| – lekérdezés | JMESPath lekérdezési karakterláncot. Tekintse meg a http\://jmespath.org/ további információt és példákat. |
-| --verbose | Növelése a naplózást. Használja a--debug teljes hibakeresési naplók. |
-
-## <a name="sfctl-is-query"></a>sfctl értéke lekérdezés
-Hívja meg az adott infrastruktúra szolgáltatáspéldány lekérdezés csak olvasható.
-
-Az infrastruktúra-szolgáltatás konfigurált egy vagy több példányban fürtök esetén az API-t biztosítja az infrastruktúra-specifikus lekérdezéseket küldeni egy adott példányt az infrastruktúra-szolgáltatás. Elérhető parancsok és a megfelelő választ formátumukban eltérőek lehetnek attól függően, hogy az infrastruktúra, amelyen fut a fürtön. Ez az API támogatja a Service Fabric platformot; azt nem jelenti, hogy közvetlenül a kódból használni.
+Azon fürtök esetében, amelyeken az infrastruktúra-szolgáltatás egy vagy több példánya van konfigurálva, ez az API lehetővé teszi az infrastruktúra-specifikus parancsok küldését az infrastruktúra-szolgáltatás egy adott példányára. Az elérhető parancsok és a hozzájuk tartozó válaszok formátuma attól függően változik, hogy a fürt melyik infrastruktúrán fut. Ez az API támogatja a Service Fabric platformot; nem közvetlenül a kódból való használatra készült.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| – [kötelező] parancsot | Meg kell hívni a parancs szövege. A parancs tartalma infrastruktúra-specifikus. |
-| --service-id | Az infrastruktúra-szolgáltatás identitásának. <br><br> Az infrastruktúra-szolgáltatás nélkül teljes neve a "fabric\:" URI-séma. Ez a paraméter csak a fürt, amelyben több példányát futtató infrastruktúra-szolgáltatás szükséges. |
-| --időkorlát -t | Kiszolgálói időtúllépés másodpercben.  Alapértelmezett\: 60. |
+| --Command [kötelező] | A meghívni kívánt parancs szövege. A parancs tartalma infrastruktúra-specifikus. |
+| --service-id | Az infrastruktúra-szolgáltatás identitása. <br><br> Ez az infrastruktúra-szolgáltatás teljes neve a "Fabric\:" URI-séma nélkül. Ez a paraméter csak azon fürt esetében szükséges, amelynél az infrastruktúra-szolgáltatás egynél több példánya fut. |
+| --időtúllépés-t | Kiszolgáló időtúllépése másodpercben.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --debug | Növelése a naplózás az összes hibakeresési naplók megjelenítése. |
-| --help -h | A súgóüzenetet és kilépési jelennek meg. |
-| --kimeneti -o | Kimeneti formátum.  Megengedett értékek\: JSON-t, jsonc, tábla, tsv.  Alapértelmezett\: json. |
-| – lekérdezés | JMESPath lekérdezési karakterláncot. Tekintse meg a http\://jmespath.org/ további információt és példákat. |
-| --verbose | Növelése a naplózást. Használja a--debug teljes hibakeresési naplók. |
+| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
+| --Help-h | A súgó üzenet megjelenítése és kilépés. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
+
+## <a name="sfctl-is-query"></a>sfctl lekérdezés
+Egy írásvédett lekérdezést hív meg a megadott infrastruktúra-szolgáltatási példányon.
+
+Azon fürtök esetében, amelyeken az infrastruktúra-szolgáltatás egy vagy több példánya van konfigurálva, ez az API lehetővé teszi az infrastruktúra-specifikus lekérdezések küldését az infrastruktúra-szolgáltatás egy adott példányára. Az elérhető parancsok és a hozzájuk tartozó válaszok formátuma attól függően változik, hogy a fürt melyik infrastruktúrán fut. Ez az API támogatja a Service Fabric platformot; nem közvetlenül a kódból való használatra készült.
+
+### <a name="arguments"></a>Argumentumok
+
+|Argumentum|Leírás|
+| --- | --- |
+| --Command [kötelező] | A meghívni kívánt parancs szövege. A parancs tartalma infrastruktúra-specifikus. |
+| --service-id | Az infrastruktúra-szolgáltatás identitása. <br><br> Ez az infrastruktúra-szolgáltatás teljes neve a "Fabric\:" URI-séma nélkül. Ez a paraméter csak azon fürt esetében szükséges, amelynél az infrastruktúra-szolgáltatás egynél több példánya fut. |
+| --időtúllépés-t | Kiszolgáló időtúllépése másodpercben.  Alapértelmezett\: 60. |
+
+### <a name="global-arguments"></a>Globális argumentumok
+
+|Argumentum|Leírás|
+| --- | --- |
+| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
+| --Help-h | A súgó üzenet megjelenítése és kilépés. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 
 ## <a name="next-steps"></a>További lépések
-- [Állítsa be a](service-fabric-cli.md) a Service Fabric parancssori felület.
-- Ismerje meg, hogyan használható a Service Fabric parancssori felület használatával a [-szkript minták](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- [Állítsa be](service-fabric-cli.md) a Service Fabric CLI-t.
+- Megtudhatja, hogyan használhatja a Service Fabric CLI-t a [minta-parancsfájlok](/azure/service-fabric/scripts/sfctl-upgrade-application)használatával.

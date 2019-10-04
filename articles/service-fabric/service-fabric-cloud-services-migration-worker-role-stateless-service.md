@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 10fb44b0e76282ad78e7687beaa2e50e819e5cd9
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: e82abd6a7915123a94b4355e24cb94f13f9693c8
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667718"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67550388"
 ---
 # <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>Útmutató a webes és feldolgozói szerepkörök a Service Fabric állapotmentes szolgáltatások alakítása
 Ez a cikk ismerteti, hogyan telepítheti át a Cloud Services webes és feldolgozói szerepkörök a Service Fabric állapotmentes szolgáltatások. Ez az a legegyszerűbb áttelepítési út a Cloud Servicesből a Service Fabric alkalmazásokhoz, amelyek általános architektúrát fog maradni nagyjából azonos.
@@ -32,7 +32,7 @@ A különbség az, hogy a Felhőszolgáltatás-projekt-párok az alkalmazás tel
 ![A Service Fabric és Cloud Services, project összehasonlítása][3]
 
 ## <a name="worker-role-to-stateless-service"></a>Feldolgozói szerepkör állapotmentes szolgáltatásnak
-Elméleti szinten feldolgozói szerepkör jelöli az állapot nélküli munkaterhelés, azaz a számítási feladat összes példánya azonos és a kérések átirányítható bármelyik példányra bármikor. Minden példány várhatóan nem ne felejtse el az előző kérelem. Egy külső állapot tárolásának, például az Azure Table Storage vagy Azure dokumentum-adatbázis, amely a számítási feladatok állapotát kezeli. A Service Fabric az ilyen típusú számítási feladatok állapotmentes szolgáltatás által jelölt. A feldolgozói szerepkör Service Fabric-ba való migrálás legegyszerűbb módja a feldolgozói szerepkör kódját áttérve egy állapotmentes szolgáltatás teheti meg.
+Elméleti szinten feldolgozói szerepkör jelöli az állapot nélküli munkaterhelés, azaz a számítási feladat összes példánya azonos és a kérések átirányítható bármelyik példányra bármikor. Minden példány várhatóan nem ne felejtse el az előző kérelem. Egy külső állapot tárolásának, például az Azure Table Storage vagy az Azure Cosmos DB, amely a számítási feladatok állapotát kezeli. A Service Fabric az ilyen típusú számítási feladatok állapotmentes szolgáltatás által jelölt. A feldolgozói szerepkör Service Fabric-ba való migrálás legegyszerűbb módja a feldolgozói szerepkör kódját áttérve egy állapotmentes szolgáltatás teheti meg.
 
 ![Feldolgozói szerepkör állapotmentes szolgáltatásnak][4]
 
@@ -41,7 +41,7 @@ Feldolgozói szerepkör hasonlóan egy webes szerepkörben is jelenti állapot n
 
 | **Alkalmazás** | **Támogatott** | **Áttelepítés** |
 | --- | --- | --- |
-| ASP.NET Web Forms |Nem |1. az ASP.NET Core MVC átalakítása |
+| ASP.NET Web Forms |Nem |1\. az ASP.NET Core MVC átalakítása |
 | ASP.NET, MVC |A Migrálást |Frissítés ASP.NET Core 1 MVC |
 | ASP.NET, webes API |A Migrálást |Használja a helyi kiszolgáló vagy az ASP.NET Core-1 |
 | ASP.NET Core 1 |Igen |– |

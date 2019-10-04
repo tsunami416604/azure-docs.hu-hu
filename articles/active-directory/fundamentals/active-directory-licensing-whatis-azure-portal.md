@@ -3,23 +3,23 @@ title: Mi az a Csoportalapú licencelés – Azure Active Directory |} A Microso
 description: További információ az Azure Active Directory Csoportalapú licencelést, beleértve annak működését és ajánlott eljárásokat.
 services: active-directory
 keywords: Az Azure AD licencelése
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/29/2018
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be7094db14f53af939ded2313823bf2749e59a46
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a455f0e1959ad496a04f531cc0c3ece240c757ad
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58183152"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68987153"
 ---
 # <a name="what-is-group-based-licensing-in-azure-active-directory"></a>Mit jelent a Csoportalapú licencelés az Azure Active Directoryban?
 
@@ -27,17 +27,17 @@ A Microsoft fizetős felhőszolgáltatásainak, például az Office 365, az Ente
 
 A licencek hozzárendelése eddig csak az egyes felhasználók szintjén volt lehetséges, ami megnehezíthette a kezelést nagy számú felhasználó esetén. A rendszergazdáknak például gyakran kellett összetett PowerShell-szkriptet írniuk a felhasználói licencek hozzáadásához vagy eltávolításához a szervezeti változásoknak megfelelően, például amikor felhasználók csatlakoztak a szervezethez vagy egy részleghez, illetve elhagyták azokat. A szkript egymástól független hívásokat kezdeményezett a felhőszolgáltatás felé.
 
-Ezen kihívások kezelésére biztosítja az Azure AD a csoportalapú licencelést. A terméklicenceket hozzárendelheti egy csoporthoz. Ezután az Azure AD gondoskodik arról, hogy megtörténjen a licencek hozzárendelése a csoport mindegyik tagjához. A csoporthoz csatlakozó új tagokhoz is hozzárendeli a megfelelő licenceket. Amikor a felhasználók elhagyják a csoportot, eltávolítja a licenceket. Ez a licencelési felügyeleti kiküszöböli a automatizálása a PowerShell-lel Licenckezelés változásainak a szervezet és a részlegszintű struktúra felhasználónkénti alapon.
+Ezen kihívások kezelésére biztosítja az Azure AD a csoportalapú licencelést. A terméklicenceket hozzárendelheti egy csoporthoz. Ezután az Azure AD gondoskodik arról, hogy megtörténjen a licencek hozzárendelése a csoport mindegyik tagjához. A csoporthoz csatlakozó új tagokhoz is hozzárendeli a megfelelő licenceket. Amikor a felhasználók elhagyják a csoportot, eltávolítja a licenceket. Ez a licencelési felügyelet szükségtelenné teszi, hogy a PowerShell használatával automatizálja a licencek kezelését, hogy a szervezet és a részleg struktúrájának változásait felhasználónkénti alapon tükrözze.
 
-## <a name="licensing-requirements"></a>Licencelési követelményeket
-A következő licencek használata a Csoportalapú licencelés egyikét kell rendelkeznie:
+## <a name="licensing-requirements"></a>Licencelési követelmények
+A csoport alapú licencelés használatához a következő licencek egyike szükséges:
 
-- Az Azure AD alapszintű fizetős vagy próba-előfizetést
+- Fizetős vagy próbaverziós előfizetés prémium szintű Azure AD P1 és újabb rendszerekhez
 
-- Fizetős vagy próba kiadás, az Office 365 nagyvállalati E3 vagy Office 365 a3-as vagy újabb verzióhoz
+- Fizetős vagy próbaverziós Office 365 Enterprise E3 vagy Office 365 a3 vagy Office 365 GCC G3 vagy újabb verzió
 
 ### <a name="required-number-of-licenses"></a>Szükséges licencek száma
-Minden olyan licenc hozzárendelése csoportok esetén is rendelkezik licenccel minden egyedi tag. Nem kell minden egyes tagja a csoport egy licencet hozzárendelni, amíg minden tagot legalább elegendő licenccel kell rendelkeznie. Például ha 1000 egyedi tagjai, akik a saját bérlőjében licenccel rendelkező csoportok részét képezik, meg kell rendelkeznie legalább 1000 licenceket felel meg a licencszerződést.
+A licenccel rendelkező csoportok esetében az egyes egyedi tagokhoz is licenccel kell rendelkeznie. Noha nem kell hozzárendelni az a csoport minden tagját, legalább annyi licenccel kell rendelkeznie, hogy tartalmazza az összes tagot. Ha például olyan egyedi tagokkal 1 000 rendelkezik, akik a bérlőhöz tartozó licencelt csoportok részét képezik, legalább 1 000 licenccel kell rendelkeznie a licencszerződés teljesítéséhez.
 
 ## <a name="features"></a>Szolgáltatások
 
@@ -45,11 +45,11 @@ A csoportalapú licencelés fő funkciói az alábbiak:
 
 - A licencek bármilyen biztonsági csoporthoz hozzárendelhetők az Azure AD-ben. Biztonsági csoportok is szinkronizálható a helyszíni, az Azure AD Connect használatával. Biztonsági csoportokat közvetlenül az Azure AD-ben is létrehozhat (csak felhőalapú csoportok), vagy pedig automatikusan, az Azure AD dinamikus csoportok kezelésére szolgáló funkciójával.
 
-- Egy terméklicencnek csoporthoz való hozzárendelésekor a rendszergazda letilthat szolgáltatáscsomagokat a termékben. Ez a hozzárendelés általában történik, ha a szervezet még nem áll készen a termékben szolgáltatás használatának megkezdéséhez. A rendszergazda hozzárendelheti például az Office 365-öt egy részleghez, de átmenetileg letilthatja a Yammer szolgáltatást.
+- Egy terméklicencnek csoporthoz való hozzárendelésekor a rendszergazda letilthat szolgáltatáscsomagokat a termékben. Ezt a hozzárendelést általában akkor kell elvégezni, ha a szervezet még nem áll készen a termékben található szolgáltatás használatának megkezdésére. A rendszergazda hozzárendelheti például az Office 365-öt egy részleghez, de átmenetileg letilthatja a Yammer szolgáltatást.
 
-- A felhasználószintű licencelést igénylő Microsoft-felhőszolgáltatások mindegyike támogatott. Ez a támogatás magában foglalja a minden Office 365 termékek, Enterprise Mobility + Security és Dynamics 365.
+- A felhasználószintű licencelést igénylő Microsoft-felhőszolgáltatások mindegyike támogatott. Ez a támogatás magában foglalja az Office 365-termékek, a Enterprise Mobility + Security és a Dynamics 365.
 
-- Csoportalapú licencelés jelenleg csak a [az Azure portal](https://portal.azure.com). Ha elsősorban használ egyéb alkalmazáskezelési portálokon a felhasználók és csoportok kezelése, mint például a [Microsoft 365 felügyeleti központban](https://admin.microsoft.com), ehhez továbbra is. A licencek csoportszintű kezeléséhez azonban az Azure Portalt kell használnia.
+- A csoport alapú licencelés jelenleg csak a Azure Portalon érhető [](https://portal.azure.com)el. Ha elsődlegesen más felügyeleti portálokat használ a felhasználók és a csoportok felügyeletéhez, például a [Microsoft 365 felügyeleti](https://admin.microsoft.com)központot, továbbra is megteheti. A licencek csoportszintű kezeléséhez azonban az Azure Portalt kell használnia.
 
 - Az Azure AD automatikusan kezeli a csoporttagság változásaiból eredő licencmódosításokat. A licencmódosítások általában a tagság változása után pár percen belül érvénybe lépnek.
 
@@ -59,7 +59,7 @@ A csoportalapú licencelés fő funkciói az alábbiak:
 
 ## <a name="your-feedback-is-welcome"></a>Szívesen vesszük visszajelzését!
 
-Ha visszajelzést vagy funkciókérést, megoszthatja velünk a kapcsolatot [az Azure AD rendszergazdai fórum](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=162510).
+Ha visszajelzést vagy szolgáltatási kérést használ, ossza meg velünk az [Azure ad felügyeleti Fórumával](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=162510).
 
 ## <a name="next-steps"></a>További lépések
 

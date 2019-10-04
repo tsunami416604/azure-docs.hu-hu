@@ -3,7 +3,7 @@ title: Az App Service Mobile Apps felügyelt ügyfélkódtárának használata |
 description: Ismerje meg, hogy a .NET ügyféloldali kódtár használata az Azure App Service Mobile Apps Windows és a Xamarin-alkalmazások.
 services: app-service\mobile
 documentationcenter: ''
-author: conceptdev
+author: elamalani
 manager: crdun
 editor: ''
 ms.assetid: 0280785c-e027-4e0d-aaf2-6f155e5a6197
@@ -12,20 +12,25 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/24/2018
-ms.author: crdun
-ms.openlocfilehash: 8f014f1cb40e1a629d1989f00805fc91015a3ae9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: af0a4af2bec29e68175d2e15203a02507f08bfeb
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58886012"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446358"
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>A felügyelt ügyfelek használata az Azure Mobile Apps-alkalmazásokhoz
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
+> [!NOTE]
+> A Visual Studio App Center fektet a mobilalkalmazás-fejlesztés központi új, integrált szolgáltatások. A fejlesztők a **hozhat létre**, **teszt** és **terjesztése** állíthat be folyamatos integrációt és teljesítést folyamat szolgáltatások. Az alkalmazás telepítve van, a fejlesztők monitorozható az állapot és az alkalmazás használatával használatát a **Analytics** és **diagnosztikai** -szolgáltatásokat, és kapcsolatba léphet a felhasználókat a **leküldéses** a szolgáltatás. A fejlesztők is kihasználhatják a **Auth** azok a felhasználók hitelesítéséhez és **adatok** szolgáltatás és a felhőbeli alkalmazások adatainak szinkronizálása. Tekintse meg [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-dotnet-how-to-use-client-library) még ma.
+>
+
 ## <a name="overview"></a>Áttekintés
-Ez az útmutató bemutatja, hogyan lehet a felügyelt ügyféloldali kódtár használatával az Azure App Service Mobile Apps a Windows és a Xamarin-alkalmazások általános forgatókönyveinek végrehajtásával. Ha most ismerkedik a Mobile Apps, érdemes lehet először befejezése a [Azure Mobile Apps – első lépések] [ 1] oktatóanyag. Ebben az útmutatóban koncentrálunk a felügyelt ügyféloldali SDK. További információ a kiszolgálóoldali SDK-k a Mobile Apps, lásd a dokumentációban a [.NET Server SDK] [ 2] vagy a [Node.js Server SDK] [ 3].
+Ez az útmutató bemutatja, hogyan lehet a felügyelt ügyféloldali kódtár használatával az Azure App Service Mobile Apps a Windows és a Xamarin-alkalmazások általános forgatókönyveinek végrehajtásával. Ha most ismerkedik a Mobile Apps, érdemes lehet először befejezése a [Azure Mobile Apps – első lépések][1] oktatóanyag. Ebben az útmutatóban koncentrálunk a felügyelt ügyféloldali SDK. További információ a kiszolgálóoldali SDK-k a Mobile Apps, lásd a dokumentációban a [.NET Server SDK][2] or the
+[Node.js Server SDK][3].
 
 ## <a name="reference-documentation"></a>Segédanyagok
 A referencia dokumentációja az ügyfél SDK is található itt: [Az Azure Mobile Apps .NET client hivatkozás][4].
@@ -60,9 +65,10 @@ public class TodoItem
 }
 ```
 
-A [JsonPropertyAttribute] [ 6] meghatározására szolgál a *PropertyName* az ügyfél és a tábla mező közötti megfeleltetés.
+A [JsonPropertyAttribute][6] meghatározására szolgál a *PropertyName* az ügyfél és a tábla mező közötti megfeleltetés.
 
-Megtudhatja, hogyan hozhat létre táblák a Mobile Apps-háttéralkalmazást, tekintse meg a [.NET Server SDK témakörben] [ 7] vagy a [Node.js Server SDK témakörben][8]. Mobile Apps-háttéralkalmazását az Azure Portalon a rövid útmutató segítségével létrehozott, ha akkor is használhatja a **könnyen kezelhető táblák** beállítását a [Azure Portal].
+Ismerje meg, hogyan hozhat létre táblák a Mobile Apps-háttéralkalmazást, tekintse meg a [.NET Server SDK témakörben][7]
+or the [Node.js Server SDK topic][8]. Mobile Apps-háttéralkalmazását az Azure Portalon a rövid útmutató segítségével létrehozott, ha akkor is használhatja a **könnyen kezelhető táblák** beállítását a [Azure Portal].
 
 ### <a name="how-to-install-the-managed-client-sdk-package"></a>Útmutató: Telepítse a felügyelt ügyfél SDK-csomagot
 A felügyelt ügyfél SDK-csomag telepítéséhez a Mobile Apps-alkalmazáshoz az alábbi módszerek valamelyikével [NuGet][9]:
@@ -80,10 +86,11 @@ using Microsoft.WindowsAzure.MobileServices;
 > Vegye figyelembe, hogy az Android-projektjében hivatkozott összes támogatási csomagnak azonos verziójúnak kell lennie. Az SDK-val rendelkezik `Xamarin.Android.Support.CustomTabs` függőséget az Android platformhoz, így ha a projekt újabb használja a támogatási csomagok, a csomag telepítéséhez szükséges verziójú ütközések elkerülése érdekében közvetlenül kell.
 
 ### <a name="symbolsource"></a>kézikönyv: A Visual Studio hibakeresési szimbólumok használata
-A szimbólumok Microsoft.Azure.Mobile névtérhez érhetők el a [SymbolSource][10].  Tekintse meg a [SymbolSource utasításokat] [ 11] SymbolSource integrálhatja a Visual Studio használatával.
+A szimbólumok Microsoft.Azure.Mobile névtérhez érhetők el a [SymbolSource][10] .  Refer to the
+[SymbolSource instructions][11] SymbolSource integrálhatja a Visual Studio használatával.
 
 ## <a name="create-client"></a>A Mobile Apps-ügyfél létrehozása
-Az alábbi kód létrehoz a [MobileServiceClient] [ 12] objektum, amely használható a Mobile Apps-háttéralkalmazás eléréséhez.
+Az alábbi kód létrehoz a [MobileServiceClient][12] objektum, amely használható a Mobile Apps-háttéralkalmazás eléréséhez.
 
 ```csharp
 var client = new MobileServiceClient("MOBILE_APP_URL");
@@ -249,7 +256,7 @@ Egy valós alkalmazásban az előző példához hasonló lekérdezések használ
 
 
 ### <a name="selecting"></a>kézikönyv: Egyes oszlopok kiválasztásához
-Megadhatja, amely tulajdonságainak beállítása való hozzáadásával a keresési eredmények között szerepeljen egy [Kiválasztás] záradék a lekérdezés. Ha például a következő kód bemutatja, hogyan válassza ki egy mezőt, és válassza ki, és több mező formázása:
+Megadhatja, amely tulajdonságainak beállítása való hozzáadásával a keresési eredmények között szerepeljen egy [Select] záradék a lekérdezés. Ha például a következő kód bemutatja, hogyan válassza ki egy mezőt, és válassza ki, és több mező formázása:
 
 ```csharp
 // Select one field -- just the Text
@@ -657,7 +664,7 @@ Kezdeményezési felhasználói hitelesítést az Active Directory Authenticatio
    * Cserélje le **INSERT-SZOLGÁLTATÓ – Itt** , amelyben az alkalmazás kiosztása a bérlő nevével. A formátum https://login.microsoftonline.com/contoso.onmicrosoft.com. Ez az érték lehet másolni az Azure Active Directory tartományi lapról a [Azure Portal].
    * Cserélje le **INSERT-erőforrás-azonosító – Itt** az ügyfél-Azonosítóját a mobile Apps-háttéralkalmazást. Az ügyfél-Azonosítót a szerezheti be a **speciális** lapjára **Azure Active Directory-beállítások** a portálon.
    * Cserélje le **INSERT-ügyfél-azonosító – Itt** és az ügyfél-Azonosítót a natív ügyfélalkalmazás fájlból kimásolt.
-   * Cserélje le **INSERT-REDIRECT-URI-Itt** a hellyel */.auth/login/done* végpontról, a HTTPS-sémát. Ez az érték legyen hasonló *https://contoso.azurewebsites.net/.auth/login/done*.
+   * Cserélje le **INSERT-REDIRECT-URI-Itt** a hellyel */.auth/login/done* végpontról, a HTTPS-sémát. Ez az érték legyen hasonló *https://contoso.azurewebsites.net/.auth/login/done* .
 
      Az egyes platformokra vonatkozó szükséges kódot a következőképpen:
 
@@ -1063,7 +1070,7 @@ public class MyHandler : DelegatingHandler
 [OrderByDescending]: https://msdn.microsoft.com/library/azure/dn250568(v=azure.10).aspx
 [ReadAsync]: https://msdn.microsoft.com/library/azure/mt691741(v=azure.10).aspx
 [igénybe]: https://msdn.microsoft.com/library/azure/dn250574(v=azure.10).aspx
-[Kiválasztás]: https://msdn.microsoft.com/library/azure/dn250569(v=azure.10).aspx
+[Select]: https://msdn.microsoft.com/library/azure/dn250569(v=azure.10).aspx
 [Skip]: https://msdn.microsoft.com/library/azure/dn250573(v=azure.10).aspx
 [UpdateAsync]: https://msdn.microsoft.com/library/azure/dn250536.(v=azure.10)aspx
 [Felhasználói azonosító]: https://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.userid(v=azure.10).aspx

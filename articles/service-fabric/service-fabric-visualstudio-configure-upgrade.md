@@ -1,6 +1,6 @@
 ---
-title: Service Fabric-alkalmazás verziófrissítésének konfigurálása |} A Microsoft Docs
-description: Ismerje meg, hogy a beállítások konfigurálása a Service Fabric-alkalmazás frissítése a Microsoft Visual Studio használatával.
+title: Service Fabric alkalmazás frissítésének konfigurálása | Microsoft Docs
+description: Megtudhatja, hogyan konfigurálhatja a Service Fabric alkalmazás frissítésének beállításait a Microsoft Visual Studio használatával.
 services: service-fabric
 documentationcenter: na
 author: mikkelhegn
@@ -13,65 +13,65 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/29/2017
-ms.author: mikkelhegn
-ms.openlocfilehash: 79120371ca2a62e5ef9f2bf38476635db12e9fcc
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.author: mikhegn
+ms.openlocfilehash: 5979541146b7cd7b854f35c5bf204e71208f066b
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42055091"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876758"
 ---
-# <a name="configure-the-upgrade-of-a-service-fabric-application-in-visual-studio"></a>Service Fabric-alkalmazás verziófrissítésének konfigurálása Visual studióban
-Visual Studio-eszközök az Azure Service Fabric frissítési támogatást nyújt a helyi vagy távoli fürtökhöz való közzététel beállításait. Nincsenek három forgatókönyv, amelyben meg szeretné frissíteni az alkalmazást egy újabb verzióra, és cserélje le az alkalmazás tesztelése és hibakeresése során helyett:
+# <a name="configure-the-upgrade-of-a-service-fabric-application-in-visual-studio"></a>Service Fabric alkalmazás frissítésének konfigurálása a Visual Studióban
+Az Azure-hoz készült Visual Studio Tools Service Fabric biztosítanak a helyi vagy távoli fürtökre való közzétételhez szükséges frissítési támogatást. Az alkalmazásnak a tesztelés és a hibakeresés során való lecserélése helyett három forgatókönyvvel kell frissítenie az alkalmazást egy újabb verzióra:
 
-* Alkalmazásadatok a frissítés során legyen adatvesztés.
-* Rendelkezésre állási marad, magas így nem lesz a frissítés során szolgáltatás megszakítás van-e elegendő szolgáltatáspéldányok elosztva frissítési tartományok között.
-* Tesztek is futtathatók alkalmazások ellen, miközben frissítés alatt áll.
+* Az alkalmazásadatok nem vesznek el a frissítés során.
+* A rendelkezésre állás magas marad, így a frissítés során a szolgáltatás nem szakad meg, ha elegendő szolgáltatási példány van elosztva a frissítési tartományok között.
+* A tesztek futtathatók egy alkalmazáson, amíg a frissítés folyamatban van.
 
-## <a name="parameters-needed-to-upgrade"></a>Frissítés szükséges paraméterek
-Két típusú központi közül választhat: rendszeres vagy a verziófrissítésre. Egy normál központi telepítés egy frissítés telepítése megőrzi, amíg a korábbi központi telepítési információk és az adatokat a fürtön törli. Amikor frissít egy Service Fabric-alkalmazás a Visual Studióban, meg kell adnia a alkalmazásfrissítési paraméterek és egészségügyi ellenőrizheti a szabályzatokat. Alkalmazásfrissítési paraméterek segítségével szabályozhatja a frissítés állapotának ellenőrzése szabályzatok határozzák meg, hogy sikeres volt-e a frissítés közben. Lásd: [Service Fabric-alkalmazás frissítése: frissítési paraméterek](service-fabric-application-upgrade-parameters.md) további részletekért.
+## <a name="parameters-needed-to-upgrade"></a>A frissítéshez szükséges paraméterek
+Két telepítési típus közül választhat: normál vagy frissítés. A normál telepítés törli az összes korábbi központi telepítési információt és adatot a fürtön, míg a frissítési központi telepítés megőrzi azt. Amikor egy Service Fabric alkalmazást frissít a Visual Studióban, meg kell adnia az alkalmazás frissítési paramétereit és az állapot-ellenőrzési házirendeket. Az alkalmazás-frissítési paraméterek segítenek a frissítés szabályozásában, míg az állapot-ellenőrzési házirendek határozzák meg, hogy a frissítés sikeres volt-e. További részletekért tekintse meg [Service Fabric alkalmazás frissítése: frissítési paraméterek](service-fabric-application-upgrade-parameters.md) című témakört.
 
-Három frissítési módot: *figyelt*, *UnmonitoredAuto*, és *UnmonitoredManual*.
+Három frissítési mód létezik: *Figyelt*, *UnmonitoredAuto*és *UnmonitoredManual*.
 
-* A figyelt frissítés automatizálja a frissítés és az alkalmazás állapotának ellenőrzése.
-* UnmonitoredAuto frissítés automatizálja a frissítést, de kihagyja az állapot-ellenőrzés.
-* Amikor ezt teszi, hogy a frissítés UnmonitoredManual, mindegyik frissítési tartományon manuálisan frissíteni szeretne.
+* A figyelt frissítés automatizálja a frissítés és az alkalmazás állapotának ellenőrzését.
+* Egy UnmonitoredAuto-frissítés automatizálja a frissítést, de kihagyja az alkalmazás állapotának ellenőrzését.
+* Ha UnmonitoredManual-frissítést végez, manuálisan kell frissítenie az egyes frissítési tartományokat.
 
-Minden frissítési üzemmódban szükséges paraméterek más-más részhalmazához. Lásd: [alkalmazásfrissítési paraméterek](service-fabric-application-upgrade-parameters.md) további információ az elérhető frissítési beállítások.
+Minden frissítési módnak különböző paramétereket kell megadnia. Az elérhető frissítési lehetőségekkel kapcsolatos további tudnivalókért tekintse meg az [alkalmazás frissítési paramétereit](service-fabric-application-upgrade-parameters.md) .
 
-## <a name="upgrade-a-service-fabric-application-in-visual-studio"></a>Frissítés a Service Fabric-alkalmazás a Visual Studióban
-A Visual Studio Service Fabric-eszközök frissítése a Service Fabric-alkalmazás használata, megadhatja a közzététel a folyamatok ellenőrzésével által normál központi telepítés helyett a frissítés a **Upgradovat aplikaci** jelölőnégyzetet.
+## <a name="upgrade-a-service-fabric-application-in-visual-studio"></a>Service Fabric alkalmazás frissítése a Visual Studióban
+Ha a Visual Studio Service Fabric eszközeit használja egy Service Fabric alkalmazás frissítésére, akkor az **alkalmazás frissítése** jelölőnégyzet bejelölésével megadhat egy frissítésre való közzétételi folyamatot, amely nem normál telepítés.
 
 ### <a name="to-configure-the-upgrade-parameters"></a>A frissítési paraméterek konfigurálása
-1. Kattintson a **beállítások** gomb mellett a jelölőnégyzet jelölését. A **frissítési paraméterek szerkesztése** párbeszédpanel jelenik meg. A **frissítési paraméterek szerkesztése** párbeszédpanel a figyelt UnmonitoredAuto és UnmonitoredManual frissítési módot támogat.
-2. Válassza ki a frissítési módot, amelyet szeretne használni, és töltse ki a paraméter rács.
+1. Kattintson a jelölőnégyzet melletti **Beállítások** gombra. Megjelenik a **frissítési paraméterek szerkesztése** párbeszédpanel. A **frissítési paraméterek szerkesztése** párbeszédpanel támogatja a figyelt, a UnmonitoredAuto és a UnmonitoredManual frissítési módjait.
+2. Válassza ki a használni kívánt frissítési módot, majd töltse ki a paraméter rácsát.
 
-    Minden paraméter alapértelmezett értéke van. A nem kötelező paraméter *DefaultServiceTypeHealthPolicy* egy kivonatot tábla bemenete vesz igénybe. Íme egy példa a kivonat tábla bemeneti formátum a *DefaultServiceTypeHealthPolicy*:
+    Minden paraméternek van alapértelmezett értéke. A nem kötelező paraméter *DefaultServiceTypeHealthPolicy* -bemenetet vesz fel. Íme egy példa a kivonatoló táblázat bemeneti formátumára a *DefaultServiceTypeHealthPolicy*:
 
     ```
     @{ ConsiderWarningAsError = "false"; MaxPercentUnhealthyDeployedApplications = 0; MaxPercentUnhealthyServices = 0; MaxPercentUnhealthyPartitionsPerService = 0; MaxPercentUnhealthyReplicasPerPartition = 0 }
     ```
 
-    *ServiceTypeHealthPolicyMap* van egy másik olyan nem kötelező paraméter, amely egy kivonatot tábla bemenete a következő formátumban:
+    A *ServiceTypeHealthPolicyMap* egy másik opcionális paraméter, amely a kivonatoló tábla bemenetét a következő formátumban veszi figyelembe:
 
     ```    
     @ {"ServiceTypeName" : "MaxPercentUnhealthyPartitionsPerService,MaxPercentUnhealthyReplicasPerPartition,MaxPercentUnhealthyServices"}
     ```
 
-    Íme egy valós beszédhelyzetek példa:
+    Itt egy valós példa:
 
     ```
     @{ "ServiceTypeName01" = "5,10,5"; "ServiceTypeName02" = "5,5,5" }
     ```
-3. Ha UnmonitoredManual frissítési módot választja, a PowerShell-konzolt, a folytatáshoz, és a frissítési folyamat befejezéséhez manuálisan kell elindítani. Tekintse meg [Service Fabric-alkalmazás frissítése: Speciális témakörök](service-fabric-application-upgrade-advanced.md) megtudhatja, hogyan kézi frissítés működik.
+3. Ha a UnmonitoredManual frissítési módot választja, akkor a folytatáshoz manuálisan kell elindítania a PowerShell-konzolt, és be kell fejeznie a frissítési folyamatot. A manuális frissítés működésének megismeréséhez tekintse meg az [Service Fabric alkalmazás frissítése: speciális témaköröket](service-fabric-application-upgrade-advanced.md) .
 
-## <a name="upgrade-an-application-by-using-powershell"></a>Alkalmazások frissítése a PowerShell használatával
-PowerShell-parancsmagok segítségével Service Fabric-alkalmazás frissítése. Lásd: [Service Fabric-alkalmazás frissítési oktatóanyag](service-fabric-application-upgrade-tutorial.md) és [Start-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationupgrade) részletes információkat.
+## <a name="upgrade-an-application-by-using-powershell"></a>Alkalmazás frissítése a PowerShell használatával
+Service Fabric alkalmazások frissítéséhez PowerShell-parancsmagokat használhat. Részletes információkért lásd: [Service Fabric alkalmazás verziófrissítésének oktatóanyaga](service-fabric-application-upgrade-tutorial.md) és a [Start-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationupgrade) .
 
-## <a name="specify-a-health-check-policy-in-the-application-manifest-file"></a>Adja meg egy állapotházirend-ellenőrzés az Alkalmazásjegyzék-fájl
-Minden szolgáltatás a Service Fabric-alkalmazás rendelkezhet saját egészségügyi házirend paramétereket, amelyek felülírják az alapértelmezett értékeket. Megadhatja, hogy ezek a paraméterértékek az Alkalmazásjegyzék-fájl található.
+## <a name="specify-a-health-check-policy-in-the-application-manifest-file"></a>Állapot-ellenőrzési házirend meghatározása az alkalmazás jegyzékfájljában
+Egy Service Fabric alkalmazás minden szolgáltatása rendelkezhet saját állapotházirend-paraméterekkel, amelyek felülbírálják az alapértelmezett értékeket. Ezeket a paramétereket megadhatja az alkalmazás jegyzékfájljában.
 
-Az alábbi példa bemutatja, hogyan az egyes szolgáltatások az alkalmazásjegyzékben egyedi állapotának ellenőrzése szabályzat alkalmazásához.
+Az alábbi példa bemutatja, hogyan alkalmazhat egyedi állapot-ellenőrzési házirendet az alkalmazás jegyzékfájljában lévő egyes szolgáltatásokhoz.
 
 ```xml
 <Policies>
@@ -87,4 +87,4 @@ Az alábbi példa bemutatja, hogyan az egyes szolgáltatások az alkalmazásjegy
 </Policies>
 ```
 ## <a name="next-steps"></a>További lépések
-Egy alkalmazás frissítésével kapcsolatos további információkért lásd: [Visual studióval egy alkalmazás frissítése](service-fabric-application-upgrade-tutorial.md).
+Az alkalmazások frissítésével kapcsolatos további információkért lásd: [alkalmazások frissítése a Visual Studióval](service-fabric-application-upgrade-tutorial.md).

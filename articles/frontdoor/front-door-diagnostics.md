@@ -1,6 +1,6 @@
 ---
-title: Figyelési metrikák és naplók az Azure bejárati ajtajának Service |} A Microsoft Docs
-description: Ez a cikk ismerteti a különböző metrikák és az Azure bejárati ajtajának szolgáltatás támogatja a naplók elérése
+title: Metrikák és naplók figyelése az Azure-beli előtérben szolgáltatásban | Microsoft Docs
+description: Ez a cikk azokat a különböző mérőszámokat és hozzáférési naplókat ismerteti, amelyekkel az Azure bejárati szolgáltatása támogatja
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -11,86 +11,86 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sharadag
-ms.openlocfilehash: 16770ea0a320b3d9f081cc21a102ab050a6467f6
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 229706ff91b776363d3e9de080e02cee5edf9c77
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60009752"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677901"
 ---
-# <a name="monitoring-metrics-and-logs-in-azure-front-door-service"></a>Figyelési metrikák és naplók Azure bejárati ajtajának Service-ben
+# <a name="monitoring-metrics-and-logs-in-azure-front-door-service"></a>Metrikák és naplók figyelése az Azure bejárati ajtó szolgáltatásban
 
-Azure bejárati ajtajának Service használatával figyelemmel kísérheti az erőforrásokat a következőképpen:
+Az Azure bejárati ajtó szolgáltatásának használatával a következő módokon figyelheti az erőforrásokat:
 
-- **Metrikák**. Az Application Gateway jelenleg rendelkezik hét metrikák megtekintéséhez a teljesítményszámlálókat.
-- **Naplók**. Tevékenység és a diagnosztikai naplók lehetővé teszi a teljesítmény, a hozzáférési és egyéb adatok mentése vagy figyelési célból az erőforrásból felhasznált.
+- **Metrikák**. Az Azure bejárati ajtajának jelenleg hét mérőszáma van a teljesítményszámlálók megtekintéséhez.
+- **Naplók**. A tevékenység-és diagnosztikai naplók lehetővé teszik a teljesítmény, hozzáférés és egyéb adatok mentését, illetve az erőforrásokból való felhasználását figyelés céljából.
 
 ### <a name="metrics"></a>Mérőszámok
 
-Metrikák egyik újdonsága az egyes Azure-erőforrásokhoz, amelyek lehetővé teszik, hogy a teljesítményszámlálók megtekintése a portálon. Rendelkezésre álló bejárati ajtajának metrikák a következők:
+A metrikák bizonyos Azure-erőforrások, amelyek lehetővé teszik a teljesítményszámlálók megtekintését a portálon. A következő elérhetők a bejárati ajtó metrikái:
 
 | Metrika | Metrika megjelenített neve | Unit (Egység) | Dimenziók | Leírás |
 | --- | --- | --- | --- | --- |
-| RequestCount | Kérelmek száma | Darabszám | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Bejárati ajtajának által kiszolgált ügyfélkérések száma.  |
-| RequestSize | Kérés mérete | Bájt | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Az ügyfelek által az bejárati ajtajának kérések küldött bájtok száma. |
-| ResponseSize | Válasz mérete | Bájt | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Az ügyfelek számára a bejárati ajtajának válaszokat, küldött bájtok száma. |
-| TotalLatency | Teljes késés | Ezredmásodperc | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Az idő alapján az ügyfél kérése bejárati ajtajának által fogadott, mindaddig, amíg az ügyfél arra vonatkozik, a bejárati ajtajának válasz utolsó bájtját számítja ki. |
-| BackendRequestCount | Háttér-kérések száma | Darabszám | HttpStatus</br>HttpStatusGroup</br>Háttérszolgáltatás | A bejárati ajtajának háttérkomponenseinek küldött kérelmek száma. |
-| BackendRequestLatency | Háttérbeli késleltetése | Ezredmásodperc | Háttérszolgáltatás | Az az időpont alapján számítja ki, ha a kérés által küldött bejárati ajtó a háttérrendszerhez mindaddig, amíg a bejárati ajtajának kapott válasz utolsó bájtját a háttérrendszerből. |
-| BackendHealthPercentage | Háttérkiszolgáló állapotadatainak százalékos aránya | Százalék | Háttérszolgáltatás</br>BackendPool | Sikeres állapotjelentés aránya mintavételek a bejárati ajtajának háttérkomponenseinek. |
-| WebApplicationFirewallRequestCount | Web Application Firewall kérések száma | Darabszám | PolicyName</br>RuleName</br>Műveletek | Az alkalmazás réteg biztonsági bejárati ajtó által feldolgozott ügyfél-kérések száma. |
+| RequestCount | Kérelmek száma | Count | httpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | A bejárati ajtó által kiszolgált ügyfél-kérelmek száma.  |
+| RequestSize | Kérelem mérete | Bájt | httpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Az ügyfelektől a befelé irányuló kérelmekként küldött bájtok száma. |
+| ResponseSize | Válasz mérete | Bájt | httpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | A bejárati ajtótól az ügyfeleknek küldött válaszként küldött bájtok száma. |
+| TotalLatency | Teljes késés | Ezredmásodperc | httpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Az ügyféltől érkező kérelemből kiszámított idő, amíg az ügyfél el nem fogadta az utolsó válasz bájtját a bejárati ajtótól. |
+| BackendRequestCount | Háttérbeli kérelmek száma | Count | httpStatus</br>HttpStatusGroup</br>Háttérszolgáltatás | A bejárati ajtóról a háttérbe küldött kérések száma. |
+| BackendRequestLatency | Háttérbeli kérelmek késése | Ezredmásodperc | Háttérszolgáltatás | A kérelemnek a háttérbe való beérkezése után kiszámított idő, amíg be nem érkezett az utolsó válasz bájtja a háttérből. |
+| BackendHealthPercentage | Háttér állapotának százalékos aránya | Percent | Háttérszolgáltatás</br>BackendPool | A sikeres állapot-mintavételek százalékos aránya a bejárati ajtóról a háttérbe. |
+| WebApplicationFirewallRequestCount | Webalkalmazási tűzfalra vonatkozó kérelmek száma | Count | PolicyName</br>RuleName</br>Action | Az alkalmazási rétegben a bejárati ajtó biztonságával feldolgozott ügyfélalkalmazások száma |
 
 ## <a name="activity-log"></a>Tevékenységnaplók
 
-A Tevékenységnaplók a bejárati ajtajának szolgáltatásban végzett műveleteket ismertetik. Akkor is meghatározza, mit, ki és mikor minden írási műveletek (put, post és a delete) bejárati ajtajának szolgáltatásban végzett.
+A Tevékenységnaplók a bejárati szolgáltatáson végzett műveletekről nyújtanak információt. Azt is meghatározzák, hogy mi, ki és mikor történik a bejárati szolgáltatáson elvégzett bármilyen írási művelet (Put, post vagy DELETE).
 
 >[!NOTE]
->Tevékenységnaplók az olvasási (get) műveleteket nem tartalmazzák. Nem is, az Azure Portalon vagy az eredeti felügyeleti API használatával végrehajtott műveletek.
+>A Tevékenységnaplók nem tartalmaznak olvasási (Get) műveleteket. Emellett nem tartalmazzák a Azure Portal vagy az eredeti felügyeleti API használatával végrehajtott műveleteket.
 
-Access-Tevékenységnaplók a bejárati ajtajának szolgáltatásban vagy az Azure-erőforrások az Azure monitorban a naplókat. A tevékenységnaplók megtekintése:
+A hozzáférési tevékenység naplói a bejárati ajtó szolgáltatásban vagy az Azure-erőforrások összes naplójában Azure Monitor. A tevékenységnaplók megtekintése:
 
-1. Válassza ki a bejárati ajtajának példányt.
-2. Válassza ki **tevékenységnapló**.
+1. Válassza ki az előtérben lévő példányt.
+2. Válassza a **műveletnapló**lehetőséget.
 
     ![Tevékenységnapló](./media/front-door-diagnostics/activity-log.png)
 
-3. Válassza ki a szűrési hatókört, és válassza ki **alkalmaz**.
+3. Válasszon egy szűrési hatókört, majd kattintson az **alkalmaz**gombra.
 
 ## <a name="diagnostic-logging"></a>Diagnosztikai naplók
-Diagnosztikai naplók rengeteg információt kapcsolatos műveletek és hibák naplózása és a hibaelhárítás fontos tartalmaznak. Diagnosztikai naplók különböznek a tevékenységnaplóktól.
+A diagnosztikai naplók részletes információkat biztosítanak a naplózáshoz és a hibaelhárításhoz fontos műveletekről és hibákról. A diagnosztikai naplók eltérnek a tevékenység naplóitól.
 
-A Tevékenységnaplók az Azure-erőforrások kész műveletekkel kapcsolatos információkat. Diagnosztikai naplók adja meg az erőforrás által végrehajtott műveletekkel kapcsolatos információk. További információkért lásd: [diagnosztikai naplók az Azure Monitor](../azure-monitor/platform/diagnostic-logs-overview.md).
+A Tevékenységnaplók betekintést nyújtanak az Azure-erőforrásokon végzett műveletekre. A diagnosztikai naplók betekintést nyújtanak az erőforrás által végrehajtott műveletekre. További információ: [Azure monitor diagnosztikai naplók](../azure-monitor/platform/resource-logs-overview.md).
 
 ![Diagnosztikai naplók](./media/front-door-diagnostics/diagnostic-log.png)
 
-Diagnosztikai naplók konfigurálása a bejárati ajtajának szolgáltatáshoz:
+Diagnosztikai naplók konfigurálása az előtérben lévő szolgáltatáshoz:
 
-1. Válassza ki az Azure bejárati ajtajának szolgáltatást.
+1. Válassza ki az Azure bejárati ajtó szolgáltatását.
 
-2. Válasszon **diagnosztikai beállítások**.
+2. Válassza a **diagnosztikai beállítások**lehetőséget.
 
-3. Válassza ki **diagnosztika bekapcsolása**. Diagnosztikai naplókat és mérőszámokat tárfiókba archiválhatja, azok streamelésére az eseményközpontok felé, vagy küldhet nekik az Azure Monitor naplóira.
+3. Válassza ki **diagnosztika bekapcsolása**. Archiválja a diagnosztikai naplókat, valamint mérőszámokat egy Storage-fiókba, továbbíthatja őket egy Event hubhoz, vagy elküldheti azokat Azure Monitor naplókba.
 
-Bejárati ajtajának szolgáltatás jelenleg biztosít a diagnosztikai naplók (kötegelt óránként). Diagnosztikai naplók egyéni API-kérések adja meg a bejegyzései a következő mintát követik:
+A bejárati ajtó szolgáltatás jelenleg a diagnosztikai naplókat (óránként kötegelt feldolgozást) biztosítja. A diagnosztikai naplók egyedi API-kérelmeket biztosítanak minden egyes bejegyzéshez a következő sémával:
 
 | Tulajdonság  | Leírás |
 | ------------- | ------------- |
-| ClientIp | A kérést leadó ügyfél IP-címét. |
-| ClientPort | A kérést leadó ügyfél IP-portot. |
+| Ügyfélip | Annak az ügyfélnek az IP-címe, amely a kérelmet elvégezte. |
+| ClientPort | Az ügyfél IP-portja, amely a kérést elvégezte. |
 | HttpMethod | A kérelem által használt HTTP-metódus. |
-| HttpStatusCode | A proxy a HTTP-állapotkódot adott vissza. |
-| HttpStatusDetails | Eredményül kapott állapotának a kérésre. A karakterlánc értéke szerinti egy állapot referenciatábla tekinthet meg. |
-| HttpVersion | A kérelem vagy a kapcsolat típusát. |
-| RequestBytes | A HTTP kérésüzenetben bájt, beleértve a kérelemfejlécek és a kérelem törzsében mérete. |
-| requestUri | A fogadott kérelem URI azonosítója. |
-| ResponseBytes | A háttérkiszolgáló, a válaszban elküldött bájtok száma.  |
-| RoutingRuleName | Az útválasztási szabályt, amely megfelel a kérelem neve. |
-| SecurityProtocol | A kérelem vagy null, ha titkosítás nélkül használja a TLS/SSL protokoll verziója. |
-| TimeTaken | Az, hogy mennyi ideig tartott a művelet (MS). |
+| HttpStatusCode | A proxy által visszaadott HTTP-állapotkód. |
+| HttpStatusDetails | Az eredményül kapott állapot a kérelemben. A karakterlánc értékének jelentése az állapot-hivatkozási táblában található. |
+| httpVersion | A kérelem vagy a kapcsolatok típusa. |
+| RequestBytes | A HTTP-kérelem üzenetének mérete bájtban, beleértve a kérések fejléceit és a kérelem törzsét. |
+| RequestUri | A fogadott kérelem URI-ja. |
+| ResponseBytes | A háttér-kiszolgáló által válaszként küldött bájtok.  |
+| RoutingRuleName | Annak az útválasztási szabálynak a neve, amelyhez a kérelem illeszkedik. |
+| SecurityProtocol | A kérelem által használt TLS/SSL protokoll verziója vagy Null, ha nincs titkosítás. |
+| Eltelt idő | A művelet végrehajtásának időtartama (ezredmásodpercben). |
 | UserAgent | Az ügyfél által használt böngésző típusa |
-| TrackingReference | Az egyedi hivatkozási karakterlánc, amely azonosítja a bejárati ajtó, által kiszolgált kérés is X-Azure-Ref fejléccé az ügyfélnek küldött. A szükséges részleteket egy adott kérés esetében a hozzáférési naplók keresése. |
+| TrackingReference | A bejárati ajtó által kiszolgált kérést azonosító egyedi hivatkozási sztring, amely az ügyfélnek X-Azure-ref fejlécként is elküldve. Egy adott kérelem hozzáférési naplóiban található adatok kereséséhez szükséges. |
 
 ## <a name="next-steps"></a>További lépések
 
-- [Bejárati ajtajának profil létrehozása](quickstart-create-front-door.md)
-- [Hogyan működik a bejárati ajtó](front-door-routing-architecture.md)
+- [Bejárati ajtó profiljának létrehozása](quickstart-create-front-door.md)
+- [Az előtérben működik](front-door-routing-architecture.md)

@@ -1,8 +1,8 @@
-- name: Az eszközfelügyelet dokumentációja
+- name: A Device Identities dokumentációja
   href: index.yml
 - name: Áttekintés
   items:
-    - name: Az Azure AD eszközfelügyeletének ismertetése
+    - name: Mi az az eszközidentitás?
       href: overview.md
     - name: Mi az az Enterprise State Roaming?
       href: enterprise-state-roaming-overview.md
@@ -18,37 +18,55 @@
     - name: Az Azure AD-csatlakozás konfigurálása a Windows 10 első futtatásakor
       href: azuread-joined-devices-frx.md
 - name: Alapelvek
-  expanded: false
-  items:
-    - name: Egyszeri bejelentkezés a helyszíni erőforrásokba
-      href: azuread-join-sso.md
-- name: Útmutatók
   expanded: true
   items:
-    - name: Eszközök kezelése az Azure Portalon
+    - name: Azure AD-ben regisztrált eszközök
+      href: concept-azure-ad-register.md
+    - name: Azure AD-hez csatlakoztatott eszközök
+      href: concept-azure-ad-join.md
+    - name: Hibrid Azure AD-csatlakoztatott eszközök
+      href: concept-azure-ad-join-hybrid.md
+    - name: Egyszeri bejelentkezés a helyszíni erőforrásokba
+      href: azuread-join-sso.md
+    - name: Elsődleges frissítési jogkivonatok
+      href: concept-primary-refresh-token.md
+    - name: Azure által felügyelt munkaállomások
+      href: concept-azure-managed-workstation.md
+- name: Útmutatók
+  expanded: false
+  items:
+    - name: Az Azure AD-csatlakozás implementálásának megtervezése
+      href: azureadjoin-plan.md
+    - name: Helyi rendszergazdák hozzárendelése Azure AD-csatlakoztatott eszközökhöz
+      href: assign-local-admin.md
+    - name: A hibrid Azure AD-csatlakozás implementálásának megtervezése
+      href: hybrid-azuread-join-plan.md
+    - name: Hibrid Azure AD-csatlakozás szabályozott ellenőrzése
+      href: hybrid-azuread-join-control.md
+    - name: Eszközidentitások kezelése
       href: device-management-azure-portal.md
     - name: Elavult eszközök kezelése
       href: manage-stale-devices.md
-    - name: Az Azure AD-csatlakozás implementálásának megtervezése
-      href: azureadjoin-plan.md
-    - name: A hibrid Azure AD-csatlakozás implementálásának megtervezése
-      href: hybrid-azuread-join-plan.md
-    - name: Az eszközök hibrid Azure AD-csatlakozásának vezérlése
-      href: hybrid-azuread-join-control.md
-    - name: Helyi rendszergazdák hozzárendelése Azure AD-csatlakoztatott eszközökhöz
-      href: assign-local-admin.md
     - name: Az Enterprise State Roaming engedélyezése
       href: enterprise-state-roaming-enable.md
-    - name: Jelenlegi hibrid Azure AD-csatlakoztatott Windows-eszközök hibaelhárítása
-      href: troubleshoot-hybrid-join-windows-current.md
-    - name: Korábbi hibrid Azure AD-csatlakoztatott Windows-eszközök hibaelhárítása
-      href: troubleshoot-hybrid-join-windows-legacy.md
-    - name: Az Enterprise State Roaming hibaelhárítása
-      href: enterprise-state-roaming-troubleshooting.md
+    - name: Azure által felügyelt munkaállomások üzembe helyezése
+      href: howto-azure-managed-workstation.md
+    - name: Eszközidentitásokkal kapcsolatos problémák elhárítása
+      items:
+        - name: Jelenlegi hibrid Azure AD-csatlakoztatott Windows-eszközök hibaelhárítása
+          href: troubleshoot-hybrid-join-windows-current.md
+        - name: Hibaelhárítás dsregcmd használatával
+          href: troubleshoot-device-dsregcmd.md
+        - name: 'Hibrid Azure AD-csatlakoztatott, korábbi verziójú Windows-eszközök hibaelhárítása'
+          href: troubleshoot-hybrid-join-windows-legacy.md
+        - name: Az Enterprise State Roaming hibaelhárítása
+          href: enterprise-state-roaming-troubleshooting.md
     - name: Gyakori kérdések
-      href: faq.md
-    - name: Az Enterprise State Roaming GYIK-dokumentumok engedélyezése
-      href: enterprise-state-roaming-faqs.md
+      items:
+        - name: Gyakori kérdések
+          href: faq.md
+        - name: Az Enterprise State Roaming GYIK-dokumentumok engedélyezése
+          href: enterprise-state-roaming-faqs.md
 - name: Referencia
   items:
     - name: Az Enterprise State Roaming csoportházirend-objektumainak beállításai

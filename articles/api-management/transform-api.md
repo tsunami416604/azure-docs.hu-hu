@@ -9,17 +9,16 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 02/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 68c516ee7ca2d76339760ce0ad95590686250603
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 5dec08bd4bc0a63a419d2bdc63383348a69b02db
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59521937"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70067468"
 ---
 # <a name="transform-and-protect-your-api"></a>Az API-k átalakítása és védelme
 
@@ -42,8 +41,8 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 -   Az [Azure API Management terminológiájának](api-management-terminology.md) ismerete.
 -   Az [Azure API Management-szabályzatok alapelveinek](api-management-howto-policies.md) ismerete.
--   Hajtsa végre a következő rövid útmutatót: [Az Azure API Management szolgáltatáspéldány létrehozása](get-started-create-service-instance.md).
--   Ezenkívül hajtsa végre a következő oktatóanyaggal: [Az első API importálása és közzététele](import-and-publish.md).
+-   Hajtsa végre a következő rövid útmutatót: [Hozzon létre egy Azure API Management-példányt](get-started-create-service-instance.md).
+-   Továbbá hajtsa végre a következő oktatóanyagot: [Az első API importálása és közzététele](import-and-publish.md).
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -81,7 +80,7 @@ Az eredeti válasznak így kell kinéznie:
 
    ![Házirendek](./media/transform-api/transform-api.png)
 
-7. Módosítsa a  **\<kimenő >** kód a következő módon:
+7. Módosítsa a  **\<kimenő >** kódot a következőképpen:
 
        <set-header name="X-Powered-By" exists-action="delete" />
        <set-header name="X-AspNet-Version" exists-action="delete" />
@@ -128,7 +127,7 @@ Ez a szakasz bemutatja, hogyan lehet védelmet biztosítani a háttérbeli API-k
 1.  Válassza a **Demo Conference API** lehetőséget.
 2.  Válassza a **Minden művelet** lehetőséget.
 3.  A képernyő felső részén válassza a **Tervezés** lapot.
-4.  Az a **bejövő feldolgozás** területén kattintson a **</>** ikonra.
+4.  A **bejövő feldolgozás** szakaszban kattintson az **</>** ikonra.
 5.  Vigye a kurzort a **&lt;bejövő&gt;** elemen belülre.
 6.  A jobb oldali ablak **Hozzáférés-korlátozási szabályzatok** területén kattintson a **+ Hívások számának korlátozása kulcsonként** elemre.
 7.  Módosítsa a **rate-limit-by-key** kódot (az **\<inbound\>** elemben) a következőre:
@@ -194,7 +193,7 @@ A szakasz további részében teszteljük a szabályzatátalakításokat, amelye
 
 5. Várjon 15 másodpercet, majd kattintson ismét a **Küldés** gombra. Ezúttal a **200 OK** választ kapja.
 
-    ![Throttling](./media/transform-api/test-throttling.png)
+    ![Szabályozás](./media/transform-api/test-throttling.png)
 
 ## <a name="video"></a>Videó
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d60ecfff4e634d6a92eaf1022761c2f23167918
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 68fa570ecfbafe2000bfa6eb9fa159dff48219a6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60003003"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67107073"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-andromeda"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Andromeda
 
@@ -55,7 +55,7 @@ Az Azure AD integrálása a Andromeda konfigurálásához hozzá kell Andromeda 
 
 **Andromeda hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -131,7 +131,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Andromeda, hajtsa v�
 
     | Name (Név) | Adatforrás-attribútum|
     | ------ | -----------|
-    | szerepkör        | Adott alkalmazás-szerepkör |
+    | role        | Adott alkalmazás-szerepkör |
     | type        | Alkalmazás típusa |
     | Vállalati       | CompanyName |
 

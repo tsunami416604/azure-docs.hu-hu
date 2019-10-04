@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 04/05/2018
 author: wmengmsft
 ms.author: wmeng
-ms.openlocfilehash: 977b59c3344eaf2c4877f51afea176455d22ecc9
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 7611af5f4d5b79ddb2abb7546f2e3ea6c0d4c4c5
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59546687"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308414"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Az Azure Table Storage és az Azure Cosmos DB Table API használata a Node.js segítségével
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -365,7 +365,7 @@ dc.table.queryEntities(tableName,
 
 Ha megvizsgálja a `continuationToken` objektumot, olyan tulajdonságokat fog találni, mint például a `nextPartitionKey`, `nextRowKey` és `targetLocation`, amelyeket az eredmények közti iterációhoz használhat.
 
-Is `top` rendszerképkeresés `continuationToken` az oldalméret beállítása. 
+A és `top` `continuationToken` a együtt is használható az oldalméret beállításához. 
 
 ## <a name="work-with-shared-access-signatures"></a>Közös hozzáférésű jogosultságkódok használata
 A közös hozzáférésű jogosultságkódokkal (Shared access signatures, SAS) biztonságos és részletes hozzáférést biztosíthat a táblákhoz anélkül, hogy megadná Storage-fiókjának nevét vagy kulcsait. Az SAS-t gyakran használják az adatokhoz való korlátozott hozzáférés biztosítására, például arra, hogy a mobilalkalmazások hozzáférhessenek a lekérdezésrekordokhoz.
@@ -394,7 +394,7 @@ var host = tableSvc.host;
 
 Vegye figyelembe, hogy a gazdagép adatait is meg kell adnia, mivel szükség van rájuk, ha az SAS tulajdonosa megkísérel hozzáférni a táblához.
 
-Ezután az ügyfélalkalmazás az SAS-t használja a **TableServiceWithSAS** metódussal, hogy műveleteket hajtson végre a táblán. A következő példa csatlakozik a táblához, és végrehajt egy lekérdezést. Lásd: [használatával a közös hozzáférésű jogosultságkódot](../storage/common/storage-dotnet-shared-access-signature-part-1.md#examples-of-sas-uris) tableSAS formátumban ismertető cikket. 
+Ezután az ügyfélalkalmazás az SAS-t használja a **TableServiceWithSAS** metódussal, hogy műveleteket hajtson végre a táblán. A következő példa csatlakozik a táblához, és végrehajt egy lekérdezést. Lásd: [korlátozott hozzáférés engedélyezése az Azure Storage-erőforrásokhoz megosztott hozzáférési aláírások (SAS) használatával](../storage/common/storage-sas-overview.md) a tableSAS formátumához. 
 
 ```javascript
 // Note in the following command, host is in the format: `https://<your_storage_account_name>.table.core.windows.net` and the tableSAS is in the format: `sv=2018-03-28&si=saspolicy&tn=mytable&sig=9aCzs76n0E7y5BpEi2GvsSv433BZa22leDOZXX%2BXXIU%3D`;
@@ -459,6 +459,6 @@ További információkért lásd a következő forrásanyagokat.
 
 * A [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) egy ingyenes, önálló alkalmazás, amelynek segítségével vizuálisan dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszereken.
 * [Azure Storage SDK for Node.js](https://github.com/Azure/azure-storage-node) adattár a GitHubon.
-* [Azure for Node.js-fejlesztők](https://docs.microsoft.com/javascript/azure/?view=azure-node-latest)
+* [Azure for Node.js-fejlesztők](https://docs.microsoft.com/azure/javascript/)
 * [Node.js-webalkalmazás létrehozása az Azure-ban](../app-service/app-service-web-get-started-nodejs.md)
 * [Node.js-alkalmazás létrehozása és telepítése egy Azure-felhőszolgáltatásban](../cloud-services/cloud-services-nodejs-develop-deploy-app.md) (a Windows PowerShell használatával)

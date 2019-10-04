@@ -8,45 +8,41 @@ ms.author: sgilley
 manager: cgronlund
 ms.custom: include file
 ms.topic: include
-ms.date: 09/24/2018
-ms.openlocfilehash: 05331c710817e575deb7729189c9b2d8ccbafd7d
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.date: 08/14/2019
+ms.openlocfilehash: 1da2afc6c0dfa0571d6e7ccbf358bb574aa736c5
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54489567"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71830101"
 ---
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) használhatja az Azure-előfizetés hitelesítő adataival. 
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) a használt Azure-előfizetés hitelesítő adataival. 
 
-   ![Azure Portal](./media/aml-create-in-portal/portal-dashboard.png)
+1. A Azure Portal bal felső sarkában válassza az **+ erőforrás létrehozása**lehetőséget.
 
-1. A portál bal felső sarkában válassza **erőforrás létrehozása**.
+      ![Új erőforrás létrehozása](media/aml-create-in-portal/portal-create-resource.png)
 
-   ![Erőforrás létrehozása az Azure Portalon](./media/aml-create-in-portal/portal-create-a-resource.png)
+1. A keresősáv használatával megkeresheti **Machine learning szolgáltatás**munkaterületét.
 
-1. A keresősávba írja be a **Machine Learning**. Válassza ki a **Machine Learning szolgáltatás munkaterület** keresési eredmény.
+1. Válassza **Machine learning szolgáltatás**munkaterületet.
 
-   ![Keresse meg a munkaterület](./media/aml-create-in-portal/allservices-search.PNG)
+1. A **Machine learning szolgáltatás munkaterülete** ablaktáblán kattintson a **Létrehozás** elemre a kezdéshez.
 
-1. Az a **ML-munkaterület szolgáltatási** panelen görgessen lefelé, és válassza **létrehozás** megkezdéséhez.
+1. Adja meg az alábbi adatokat az új munkaterület konfigurálásához:
 
-   ![Létrehozás](./media/aml-create-in-portal/portal-create-button.png)
-
-1. Az a **ML-munkaterület szolgáltatási** panelen konfigurálja a munkaterülethez.
-
-   Mező|Leírás
+   Mező|Leírás 
    ---|---
-   Munkaterület neve |Adjon meg egy egyedi nevet, amely azonosítja a munkaterülethez. Ebben a példában használjuk **docs-ws**. Nevének egyedinek kell lennie az erőforráscsoport. Olyan nevet, amely könnyen visszahívása és mások által létrehozott munkaterületek megkülönböztessük használja.  
-   Előfizetés |Válassza ki a használni kívánt Azure-előfizetést.
-   Erőforráscsoport | Használjon egy meglévő erőforráscsoportot az előfizetésében, vagy adjon meg egy nevet új erőforráscsoport létrehozásához. Az erőforráscsoport egy tároló, amely Azure-megoldásokhoz kapcsolódó erőforrásokat tárol. Ebben a példában használjuk **docs-aml**. 
-   Hely | Válassza ki a felhasználók és az adatforrásokhoz legközelebb eső helyet. Ez a hely, ahol a munkaterület létrehozását.
+   Munkaterület neve |Adjon meg egy egyedi nevet, amely azonosítja a munkaterületet. Ebben a példában a **docs-ws-** t használjuk. A névnek egyedinek kell lennie az erőforráscsoport között. Használjon könnyen felhívható nevet, és a mások által létrehozott munkaterületek megkülönböztetését.  
+   Subscription |Válassza ki a használni kívánt Azure-előfizetést.
+   Resource group | Használjon egy meglévő erőforráscsoportot az előfizetésben, vagy adjon meg egy nevet egy új erőforráscsoport létrehozásához. Egy erőforráscsoport kapcsolódó erőforrásokat tárol egy Azure-megoldáshoz. Ebben a példában a **docs-pénzmosást**használjuk. 
+   Location | Válassza ki a felhasználókhoz legközelebb eső helyet, valamint az adatforrásokat a munkaterület létrehozásához.
 
-   ![Munkaterület létrehozása](./media/aml-create-in-portal/workspace-create.png)
+1. Miután befejezte a munkaterület konfigurálását, válassza a **Létrehozás**lehetőséget. 
 
-1. A létrehozási folyamat indításához válassza **létrehozás**. A munkaterület létrehozása egy kis ideig is eltarthat.
+   > [!Warning] 
+   > Több percet is igénybe vehet, hogy a munkaterületet a felhőben hozza létre.
 
-1. Az üzembe helyezés állapotának ellenőrzéséhez válassza az értesítések ikonjára **harang**, az eszköztáron.
+   Ha a folyamat elkészült, megjelenik egy központi telepítés sikerességét jelző üzenet. 
+ 
+ 1. Az új munkaterület megtekintéséhez válassza az **Ugrás erőforráshoz**lehetőséget.
 
-1. A folyamat befejeződött, a telepítés sikeres üzenet jelenik meg. Is megtalálható az értesítések szakaszban. Az új munkaterület megtekintéséhez jelölje ki **erőforrás megnyitása**.
-
-   ![Munkaterület létrehozási állapota](./media/aml-create-in-portal/notifications.png)

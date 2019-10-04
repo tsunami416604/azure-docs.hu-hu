@@ -1,25 +1,18 @@
 ---
-title: Cloud Partner Portalon navigációs Azure Marketplace-en |} A Microsoft Docs
-description: .
+title: Cloud Partner Portalon navigációs Azure Marketplace-en
+description: A navigációs Azure Marketplace-en belül a Felhőpartnerportál ismertetése.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/09/2018
-ms.author: pbutlerm
-ms.openlocfilehash: e963734af450a96ac08830769560a2b5e8eef9c6
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.author: pabutler
+ms.openlocfilehash: ef329bfef9dc4f98dfd975a33c190f0b1825df4e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52266938"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64942093"
 ---
 # <a name="cloud-partner-portal-navigation"></a>Cloud Partner Portalon navigáció
 

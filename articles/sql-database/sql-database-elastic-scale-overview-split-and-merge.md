@@ -1,6 +1,6 @@
 ---
-title: Adatok mozgatása kiterjesztett felhőalapú adatbázisok között |} A Microsoft Docs
-description: Azt ismerteti, hogyan kezelheti a szegmenseket, és helyezze át az adatokat az elastic database API-k saját üzemeltetésű szolgáltatáson keresztül.
+title: Az adatáthelyezés a kibővített felhőalapú adatbázisok között | Microsoft Docs
+description: Elmagyarázza, hogyan kezelhetők a szegmensek, és hogyan helyezhetők át az adatai egy saját üzemeltetésű szolgáltatással a rugalmas adatbázis-API-k használatával.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -10,20 +10,19 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 2127c05d7e52b0103d91ecfac4fb5977a4815f31
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 841794dcbb41249ea25f615524150df4bd257b45
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57901933"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568395"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>Adatok mozgatása kiterjesztett felhőalapú adatbázisok között
 
-Ha szolgáltatás a fejlesztők olyan szoftver, és hirtelen az alkalmazás megy keresztül áttekintse igény szerint, akkor a növekedéshez. Ezért adjon hozzá további adatbázisok (szilánkok). Hogyan az adatokat az új adatbázisok újraterjeszteni a az adatok integritásának megőrzése megszakítása nélkül Használja a **felosztási-egyesítési eszközének** korlátozott adatbázisok adatok áthelyezése az új adatbázisokat.  
+Ha Ön egy szolgáltatás-fejlesztőként szolgáló szoftver, és az alkalmazás hirtelen igénybe veszi a növekedést, alkalmazkodnia kell a növekedéshez. Így további adatbázisokat (szegmenseket) adhat hozzá. Hogyan terjeszthetők újra az adatok az új adatbázisokra az adatok integritásának megszakadása nélkül? A **felosztott egyesítés eszköz** használatával a korlátozott adatbázisokból származó adatok az új adatbázisokra helyezhetők át.  
 
-A felosztási-egyesítési eszközének egy Azure-webalkalmazások szolgáltatásként fusson. Egy rendszergazda vagy fejlesztő eszközt használja a különböző adatbázisok (szilánkok) közötti áthelyezéséhez a shardlet (egy szegmensből adatokat). Az eszköz a szilánkleképezés kezelése a service metaadatokat tároló adatbázis karbantartása és egységes leképezések biztosítása használja.
+A felosztási egyesítési eszköz Azure-webszolgáltatásként fut. A rendszergazda vagy a fejlesztő az eszköz használatával helyezi át a shardletek (a szegmensből származó adatok) a különböző adatbázisok (szegmensek) között. Az eszköz a szegmensek közötti leképezések felügyeletét használja a szolgáltatás metaadatainak adatbázisának karbantartásához, és biztosítja a konzisztens leképezéseket.
 
 ![Áttekintés][1]
 
@@ -33,75 +32,75 @@ A felosztási-egyesítési eszközének egy Azure-webalkalmazások szolgáltatá
 
 ## <a name="documentation"></a>Dokumentáció
 
-1. [Elastic database felosztási-egyesítési eszközzel oktatóanyag](sql-database-elastic-scale-configure-deploy-split-and-merge.md)
-2. [Biztonság szétválasztás és egyesítés konfiguráció](sql-database-elastic-scale-split-merge-security-configuration.md)
-3. [Biztonság szétválasztás és egyesítés kapcsolatos szempontok](sql-database-elastic-scale-split-merge-security-configuration.md)
+1. [Rugalmas adatbázis felosztása – egyesítési eszköz oktatóanyaga](sql-database-elastic-scale-configure-deploy-split-and-merge.md)
+2. [Felosztás – biztonsági konfiguráció egyesítése](sql-database-elastic-scale-split-merge-security-configuration.md)
+3. [Felosztás – biztonsági szempontok egyesítése](sql-database-elastic-scale-split-merge-security-configuration.md)
 4. [A szilánkleképezés kezelése](sql-database-elastic-scale-shard-map-management.md)
 5. [Meglévő adatbázisok migrálása horizontális felskálázáshoz](sql-database-elastic-convert-to-use-elastic-tools.md)
-6. [Elastic database-eszközökkel](sql-database-elastic-scale-introduction.md)
-7. [Rugalmas adatbáziseszközökkel kapcsolatos](sql-database-elastic-scale-glossary.md)
+6. [Rugalmas adatbázis-eszközök](sql-database-elastic-scale-introduction.md)
+7. [Elastic Database eszközök szószedete](sql-database-elastic-scale-glossary.md)
 
-## <a name="why-use-the-split-merge-tool"></a>Miért érdemes használni a felosztó / egyesítő eszköz
+## <a name="why-use-the-split-merge-tool"></a>Miért érdemes a Split-Merge eszközt használni
 
-- **Rugalmasság**
+- **Rugalmasságot**
 
-  Alkalmazások rugalmasan kívüli egy egyetlen Azure SQL Database-adatbázist Stretch kell. Az eszköz használatával adatok áthelyezése az új adatbázisok integritás megőrzése igény szerint.
+  Az alkalmazásoknak rugalmasan kell kiterjeszteniük az egyetlen Azure SQL DB-adatbázis korlátain kívül. Az eszköz használatával az adatok szükség szerint helyezhetők át az új adatbázisokra az integritás megőrzése mellett.
 
-- **Split növekedésért**
+- **Felosztás növekvőre**
 
-  Növeli a teljes kapacitás a robbanásszerű növekedést, hozzon létre további kapacitást az adatok horizontális skálázást, és által szétosztása több növekményes további adatbázisban, amíg kapacitást kell teljesülnek. Ez az elsődleges példát a **felosztása** funkció.
+  A teljes kapacitás növeléséhez a robbanásszerű növekedés kezelése érdekében hozzon létre további kapacitást az adatelosztással és a Növekményesen több adatbázis között, amíg a kapacitási igények nem teljesülnek. Ez az **osztott** funkció elsődleges példája.
 
-- **Egyesítési zsugorítása**
+- **Egyesítés a zsugorodáshoz**
 
-  Kapacitás egy üzleti szezonális jellege miatt kell zsugorítani. Vertikális leskálázás kevesebb skálázási egység, ha üzleti lelassítja az eszköz segítségével. A "merge" funkció a rugalmasan méretezhető felosztási-egyesítési szolgáltatás ismerteti ennek a követelménynek.
+  A kapacitást a vállalat szezonális jellege miatt kell csökkenteni. Az eszköz lehetővé teszi, hogy kevesebb méretezési egységre Szűkítse az üzleti lassulást. A rugalmas méretezésű felosztott egyesítési szolgáltatás "Merge" funkciója magában foglalja ezt a követelményt.
 
-- **Shardlet váltással elérési pontokhoz való kezelése**
+- **Pontok kezelése a shardletek áthelyezésével**
 
-  Több bérlő adatbázisonként shardlet szegmenseken való kiosztását az egyes szegmensek vezethet, kapacitás szűk keresztmetszeteket. Ehhez a shardlet újbóli lefoglalása, és foglalt shardlet áthelyezése az új vagy kevésbé kihasznált szegmensek.
+  Ha az adatbázis több Bérlővel rendelkezik, a shardletek szegmensekre való kiosztása a kapacitás szűk keresztmetszetét eredményezheti bizonyos szegmensekben. Ehhez újra le kell foglalni a shardletek, vagy a foglalt shardletek új vagy kevésbé használt szegmensekre kell áthelyeznie.
 
-## <a name="concepts--key-features"></a>Fogalmait és főbb funkcióiról
+## <a name="concepts--key-features"></a>Alapfogalmak & főbb funkciók
 
-- **Ügyfél-ban üzemeltetett szolgáltatásokkal**
+- **Ügyfél által üzemeltetett szolgáltatások**
 
-  A szétválasztás és egyesítés ügyfél által üzemeltetett szolgáltatás kézbesíti a rendszer. Kell üzembe és üzemeltethet a szolgáltatás a Microsoft Azure-előfizetésében. A letöltött NuGet csomag tartalmaz egy konfigurációs sablonját a információkat az adott központi telepítés befejezéséhez. Tekintse meg a [felosztási-egyesítési oktatóanyag](sql-database-elastic-scale-configure-deploy-split-and-merge.md) részleteiről. Mivel a szolgáltatás fut az Azure-előfizetésében, szabályozhatja, és a szolgáltatás a legtöbb biztonsági beállításait konfigurálja. Az alapértelmezett sablont a SSL, a tanúsítvány alapú ügyfél-hitelesítés, a tárolt hitelesítő adatokat, esetlegesen korán DoS és IP-korlátozások konfigurálása a lehetőségeket tartalmazza. A biztonsági szempontokra vonatkozó további információ található a következő dokumentum [biztonság szétválasztás és egyesítés konfigurációs](sql-database-elastic-scale-split-merge-security-configuration.md).
+  A felosztott egyesítés ügyfél által üzemeltetett szolgáltatásként történik. A szolgáltatást a Microsoft Azure-előfizetésében kell telepítenie és üzemeltetni. A NuGet-ből letöltött csomag egy olyan konfigurációs sablont tartalmaz, amely az adott üzemelő példányra vonatkozó információkkal fejeződött be. A részletekért tekintse meg a [Split-Merge oktatóanyagot](sql-database-elastic-scale-configure-deploy-split-and-merge.md) . Mivel a szolgáltatás az Azure-előfizetésben fut, a szolgáltatás legtöbb biztonsági aspektusát szabályozhatja és konfigurálhatja. Az alapértelmezett sablon az SSL konfigurálására, a tanúsítványalapú ügyfél-hitelesítésre, a tárolt hitelesítő adatok titkosítására, a DoS-védelemre és az IP-korlátozásokra vonatkozó beállításokat tartalmazza. A biztonsági szempontokról további információt a következő dokumentum [felosztás – egyesítés biztonsági konfigurációjában](sql-database-elastic-scale-split-merge-security-configuration.md)talál.
 
-  Az alapértelmezett üzembe helyezett egy feldolgozó és a egy webes szerepkör-szolgáltatásának futtatásakor. Minden egyes használja az a1-es virtuális gép méretét az Azure Cloud Servicesben. Bár ezek a beállítások nem módosítható, ha a csomag rendszerbe állítása, ezt módosíthatja őket a futó felhőszolgáltatás, (az Azure Portalon) sikeres üzembe helyezést követően. Vegye figyelembe, hogy a feldolgozói szerepkör kell nem konfigurálható a több mint egy egypéldányos technikai okokból.
+  Az alapértelmezett telepített szolgáltatás egy feldolgozóval és egy webes szerepkörrel fut. Mindegyik az A1-es VM-méretet használja az Azure Cloud Servicesban. Noha ezeket a beállításokat nem lehet módosítani a csomag telepítésekor, a futó felhőalapú szolgáltatásban (a Azure Portalon keresztül) sikeres üzembe helyezés után megváltoztathatja őket. Vegye figyelembe, hogy a feldolgozói szerepkört a technikai okokból nem lehet egynél több példányra konfigurálni.
 
-- **Szilánkleképezés térkép-integráció**
+- **Szegmens Térkép integrációja**
 
-  A felosztási-egyesítési szolgáltatás kommunikál az alkalmazás horizontális skálázási térképet. A felosztási-egyesítési szolgáltatás használatakor fel vagy egyesíthet tartományok vagy shardlet áthelyezése a szegmensek között, a szolgáltatás automatikusan megőrzi a szegmenstérkép naprakész. Ehhez a szolgáltatás a szegmenstérkép-kezelő adatbázis az alkalmazás csatlakozik, és fenntartja a tartományokat és leképezések felosztása és egyesítése /-áthelyezési kérelem állapotát. Ez biztosítja, hogy a szegmenstérkép mindig megadja naprakész képet, amikor felosztási-egyesítési műveletek fog. Felosztása, egyesítése és shardlet adatátviteli műveletek vannak megvalósítva shardlet kötegelt a forrás-szegmenst a cél szegmensre helyezi át. A shardlet adatátviteli művelet során vonatkoznak az aktuális köteg shardlet adatain a szegmenstérkép offline állapotúként vannak megjelölve, és Adatfüggő útválasztás használatával kapcsolatokhoz nem érhető el a **OpenConnectionForKey** API-t.
+  A felosztási-egyesítési szolgáltatás az alkalmazás szegmenses térképével kommunikál. Ha a felosztási és egyesítési szolgáltatást a tartományok felosztása vagy egyesítése céljából, vagy a szegmensek közötti shardletek helyezi át, a szolgáltatás automatikusan naprakészen tartja a szegmenses leképezést. Ehhez a szolgáltatás csatlakozik az alkalmazás szegmens Map Manager-adatbázisához, és megtartja a tartományokat és a leképezéseket a felosztott/egyesítés/áthelyezési kérelmek folyamata során. Ez biztosítja, hogy a szegmens Térkép mindig naprakész nézetet jelenít meg, amikor a felosztott egyesítési műveletek folyamatban vannak. A felosztott, egyesíthető és shardletbe mozgatási műveletek a shardletek a forrás szegmensből a cél szegmensbe való áthelyezésével valósíthatók meg. A shardletbe-áthelyezési művelet során az aktuális köteg alá tartozó shardletek offline állapotú vannak megjelölve a szegmenses térképen, és nem érhetők el az adatkezelési útválasztási kapcsolatok számára a **OpenConnectionForKey** API használatával.
 
-- **Egységes shardlet kapcsolatok**
+- **Konzisztens shardletbe-kapcsolatok**
 
-  Adatáthelyezés shardlet új kötegelt indul el, ha bármely szegmenstérkép megadott Adatfüggő útválasztás kapcsolatokat a szegmens tárolja a shardlet leállított vannak, és az API-k segítségével shardlet adatain le vannak tiltva, míg az adatok áthelyezése a szegmenstérkép kapcsolatait a folyamatban lévő inkonzisztenciák elkerülése érdekében. Más shardlet ugyanabban a szegmensben lévő kapcsolatokat is első leállított, de újra lesz sikeres, azonnal az újra gombra. Után a batch helyezik, shardlet adatain újra az a cél szegmens online vannak megjelölve, és a forrásadatok törlődik a forrás-szegmens. A szolgáltatás halad át ezeket a lépéseket minden, mindaddig, amíg az összes shardlet át lett helyezve. Több kapcsolat kill művelet ez fog vezethet, továbbá a teljes felosztása/egyesítése/áthelyezési művelet során.  
+  Ha az adatátvitel új batch-shardletek kezdődik, akkor a rendszer a shardletbe tároló szegmensek által biztosított adatátviteli útválasztási kapcsolatokat is letiltotta, és a szegmenses Térkép API-jai és a shardletek közötti kapcsolatok blokkolása le van tiltva az adatáthelyezés során. folyamatban van a következetlenségek elkerülése érdekében. Az ugyanazon a szegmensen lévő más shardletek létesített kapcsolatok is megszakadnak, de az újrapróbálkozáskor azonnal sikeresek lesznek. A köteg áthelyezése után a shardletek ismét online állapotba kerülnek, és a forrásadatok el lesznek távolítva a forrás szegmensből. A szolgáltatás minden köteghez végrehajtja ezeket a lépéseket, amíg az összes shardletek át nem helyezi. Ez több kapcsolódási műveletet is eredményez a teljes felosztási/egyesítési/áthelyezési művelet során.  
 
-- **Shardlet rendelkezésre állás kezelése**
+- **A shardletbe rendelkezésre állásának kezelése**
 
-  Egy kötegelt shardlet elérhetetlensége hatókörének egyszerre korlátozza a kapcsolatot a shardlet mint már említettük, az aktuális köteg leállítása korlátozza. Ez az előnyben részesített keresztül megközelítést, a teljes szegmensek marad offline állapotban van, a hozzá tartozó összes shardlet felosztása és egyesítése művelet során. Egy köteg különböző shardlet áthelyezése egyszerre, mennyi mérete egy konfigurációs paraméter. Az alkalmazások rendelkezésre állását és teljesítményét szükségleteinek minden felosztása és egyesítése művelet lehet meghatározni. Vegye figyelembe, hogy a tartományt a horizontális skálázási térképet zárolva van, előfordulhat, hogy nagyobb, mint a megadott köteg mérete. Ennek az oka a szolgáltatás választja ki a tartomány méretét úgy, hogy a horizontális skálázási kulcs értékeit az adatok tényleges száma körülbelül megegyezik a Köteg mérete. Ez nem szabad elfelejteni, különösen a horizontális skálázás ritkásan feltöltött kulcsok.
+  Ha a fentiekben leírtak szerint korlátozni szeretné a shardletek aktuális kötegét, a fentiekben ismertetett módon korlátozza a nem rendelkezésre állási hatókört egyszerre egy köteg shardletek. Ez előnyben részesített egy olyan megközelítésnél, amelyben a teljes szegmens kapcsolat nélküli állapotban marad az összes shardletek egy megosztott vagy egyesítési művelet során. Egy olyan köteg mérete, amely egy időben áthelyezendő különböző shardletek száma, egy konfigurációs paraméter. Az alkalmazás rendelkezésre állási és teljesítménybeli igényeitől függően minden felosztási és egyesítési művelethez definiálható. Vegye figyelembe, hogy a szegmenses térképen zárolt tartomány mérete nagyobb, mint a megadott batch-méret. Ennek az az oka, hogy a szolgáltatás a tartomány méretét úgy keresi meg, hogy az adatokban szereplő, hozzávetőleges kulcs értékeinek tényleges száma nagyjából megfelel a köteg méretének. Fontos megjegyezni, hogy különösen a ritkán használt horizontális Felskálázási kulcsok esetében.
 
 - **Metaadat-tároló**
 
-  A felosztási-egyesítési szolgáltatás adatbázist használ, annak állapotát és a kérelem feldolgozása során naplók tárolása céljából. A felhasználó hoz létre ehhez az adatbázishoz előfizetésüket, és biztosít a kapcsolati karakterláncot, a szolgáltatás központi telepítés konfigurációs fájlban. A felhasználó szervezete rendszergazdákat is csatlakozhat az adatbázis kérelem előrehaladását, és vizsgálja meg a lehetséges hibák kapcsolatos részletes információkat.
+  A felosztási-egyesítési szolgáltatás adatbázis használatával tartja karban az állapotát, és a naplók a kérelmek feldolgozásakor maradnak. A felhasználó létrehozza ezt az adatbázist az előfizetésében, és megadja a kapcsolódási karakterláncot a szolgáltatás központi telepítésének konfigurációs fájljában. A felhasználó szervezetének rendszergazdái is csatlakozhatnak ehhez az adatbázishoz a kérelmek előrehaladásának áttekintéséhez és a lehetséges hibákkal kapcsolatos részletes információk vizsgálatához.
 
-- **Sharding-awareness**
+- **Horizontális felskálázás – figyelemfelkeltés**
 
-  A felosztási-egyesítési szolgáltatás (1) horizontálisan particionált táblák, (2) referencia táblák és (3) a normál táblázatokhoz állapottípust. Felosztás/egyesítés/áthelyezési művelet szemantikáját használja a tábla típusa határozza meg, és meghatározása a következő:
+  A felosztott egyesítési szolgáltatás különbséget tesz a (1) tagolt táblázatok, (2) és a (3) normál táblák között. A felosztási/egyesítési/áthelyezési művelet szemantikai köre a használt táblázat típusától függ, és a következők szerint van meghatározva:
 
-  - **Horizontálisan particionált táblák**
+  - **Szilánkokra osztott táblák**
 
-    Felosztása, egyesítése és áthelyezési műveleteket áthelyezése shardlet forrásból cél szegmensben. A teljes kérelem a sikeres telepítést követően a ezeket shardlet már nem találhatók el a forráson. Vegye figyelembe, hogy a célként megadott táblákhoz a cél szegmens léteznie kell, és nem tartalmazhatja a célként megadott tartomány, a művelet feldolgozása előtt adatait.
+    A felosztási, egyesítési és áthelyezési műveletek shardletek helyezik át a forrásról a cél szegmensbe. A teljes kérelem sikeres befejezése után ezek a shardletek már nem jelennek meg a forráson. Vegye figyelembe, hogy a cél-tábláknak léteznie kell a cél szegmensen, és a művelet feldolgozása előtt nem tartalmazhatnak a céltartományban lévő adatmennyiséget.
 
-  - **Referencia táblák**
+  - **Hivatkozási táblák**
 
-    Referencia táblák, a felosztás egyesítése és áthelyezése az operations másolja az adatokat a forrásból a célként megadott szegmensre. Vegye figyelembe azonban, hogy a módosítása nélkül az adott táblában a cél horizontális történnek, ha bármely sor már létezik ebben a táblázatban a célon. A tábla nem lehet üres hivatkozás tábla másolási műveletek feldolgozni.
+    A hivatkozási táblák esetében a felosztási, egyesítési és áthelyezési műveletek az adatok a forrásról a cél szegmensbe másolhatók. Ne feledje azonban, hogy egy adott tábla cél szegmensén nem történt változás, ha a cél egy sor már szerepel ebben a táblázatban. A táblázatnak üresnek kell lennie minden táblázatos másolási művelet feldolgozásához.
 
-  - **Más táblák**
+  - **Egyéb táblák**
 
-    Más táblák lehetnek jelen a forrás- és a egy felosztása és egyesítése művelet célja. A felosztási-egyesítési szolgáltatás nem veszi figyelembe ezeket a táblákat, bármilyen adatáthelyezés és másolási műveletek. Vegye figyelembe azonban, hogy azok zavaró megkötések esetén ezeket a műveleteket.
+    A többi tábla lehet egy felosztási és egyesítési művelet forrásán vagy célján is. A felosztási-egyesítési szolgáltatás figyelmen kívül hagyja ezeket a táblákat bármilyen adatáthelyezési vagy másolási művelet esetében. Ne feledje azonban, hogy megkötések esetén ezek a műveletek zavarhatják a műveleteket.
 
-    Az információkat a horizontálisan particionált táblák és a hivatkozás által biztosított a `SchemaInfo` API-k a horizontális skálázási térképet. Az alábbi példa egy adott szegmens térkép Engedélyezéskezelő objektum a következő API-k használatát mutatja be:
+    A hivatkozással és a többrétegű táblákkal kapcsolatos információkat az `SchemaInfo` API-k tartalmazzák a szegmenses térképen. Az alábbi példa bemutatja, hogyan használhatók ezek az API-k egy adott szegmenses Térkép-kezelő objektumon:
 
-    ```c#
+    ```csharp
     // Create the schema annotations
     SchemaInfo schemaInfo = new SchemaInfo();
 
@@ -116,111 +115,111 @@ A felosztási-egyesítési eszközének egy Azure-webalkalmazások szolgáltatá
     smm.GetSchemaInfoCollection().Add(Configuration.ShardMapName, schemaInfo);
     ```
 
-    A táblák "régió" és "nemzet" referencia táblák vannak meghatározva, és másolja a felosztás/egyesítés/áthelyezési műveleteket. "ügyfél" és "orders" pedig vannak meghatározva horizontálisan particionált táblák. `C_CUSTKEY` és `O_CUSTKEY` a horizontális skálázási kulcs szolgál.
+    A "Region" és a "Nation" tábla a hivatkozási táblákként van definiálva, és a rendszer a felosztott/egyesítési/áthelyezési műveletekkel másolja őket. a "Customer" és a "Orders" elem a következőként van meghatározva: szilánkokra osztott táblák. `C_CUSTKEY`és `O_CUSTKEY` a kiosztott kulcsként szolgál.
 
-- **A hivatkozási integritás**
+- **Hivatkozási integritás**
 
-  A felosztási-egyesítési szolgáltatás a táblák közötti függőségek elemzésével biztosítja, és használja az elsődleges kulcs külső kulcsok kapcsolatai előkészítéséhez referencia táblák és shardlet áthelyezéséhez a műveletek. Általában referencia táblák másolása először függőségi sorrendben shardlet belül az egyes kötegek függősége sorrendben másolja, majd. Erre akkor szükség, hogy a cél szegmens FK-PK korlátait is figyelembe véve, amint új adatok érkeznek.
+  A felosztási-egyesítési szolgáltatás elemzi a táblák közötti függőségeket, és a idegenkulcs-elsődleges kulcs kapcsolatait használja a táblák és shardletek áthelyezésére szolgáló műveletek előkészítéséhez. Általánosságban a hivatkozási táblákat a rendszer először a függőségi sorrendben másolja, majd az egyes kötegeken belüli függőségeik sorrendjében másolja a shardletek. Erre azért van szükség, hogy a célként megadott szegmensen az FK-PK megkötések tiszteletben legyenek, mivel az új adatértékek megérkeznek.
 
-- **Szilánkleképezés-térkép konzisztencia és a végleges**
+- **Szegmens Térkép konzisztenciája és végleges befejezése**
 
-  Folytonosságát hibák esetén a felosztási-egyesítési szolgáltatás bármely leállás után folytatja a műveleteket, és a célja, hogy hajtsa végre a végrehajtási kérelem. Azonban lehetnek helyreállíthatatlan olyan esetekben, például amikor a célként megadott szegmens elveszett vagy sérült a biztonsága javíthatók. Ilyen körülmények egyes shardletek áthelyezésének amelyeknek elhelyezése a forrás-szegmens továbbra is. A szolgáltatás biztosítja, hogy shardlet leképezéseket csak akkor frissülnek, miután a szükséges adatok másolása sikeresen megtörtént a cél. Shardlet csak törlődnek a forrás minden adataikat a rendszer átmásolt a cél, és a megfelelő leképezések frissítése sikeresen megtörtént. A törlési művelet a háttérben történik, amíg a tartomány már kapcsolódik a célként megadott szegmens a. A felosztási-egyesítési szolgáltatás mindig biztosítja helyességét a horizontális skálázási térképet tárolt leképezéseket.
+  A meghibásodások jelenléte esetén a felosztási-egyesítési szolgáltatás a leállás után folytatja a műveleteket, és a folyamatban lévő kérelmek teljesítését célozza meg. Előfordulhat azonban, hogy helyreállíthatatlan helyzetek merülhetnek fel, például ha a cél szegmens elvész, vagy a javítás után sérült. Ilyen körülmények között előfordulhat, hogy egyes áthelyezni kívánt shardletek továbbra is a forrás szegmensen találhatók. A szolgáltatás biztosítja, hogy a shardletbe-hozzárendelések csak akkor frissüljenek, ha sikeresen átmásolta a szükséges adatfájlokat a célhelyre. A shardletek csak akkor törlődnek a forráshoz, ha az összes adattal a célhelyre másolták, és a megfelelő leképezések frissítése sikeresen megtörtént. A törlési művelet a háttérben történik, miközben a tartomány már online állapotú a cél szegmensen. A felosztási-egyesítési szolgáltatás mindig biztosítja a szegmenses térképen tárolt leképezések helyességét.
 
-## <a name="the-split-merge-user-interface"></a>A szétválasztás és egyesítés felhasználói felület
+## <a name="the-split-merge-user-interface"></a>A felosztás és egyesítés felhasználói felülete
 
-A felosztási-egyesítési szolgáltatás csomag tartalmazza a feldolgozói szerepkör és a egy webes szerepkörben. A webes szerepkör segítségével felosztási-egyesítési kérelmek elküldése interaktív módon. A felhasználói felület fő összetevői a következők:
+A felosztási-egyesítési szolgáltatási csomag tartalmaz egy feldolgozói szerepkört és egy webes szerepkört. A webes szerepkör a felosztott egyesítési kérelmek interaktív módon történő küldésére szolgál. A felhasználói felület fő összetevői a következők:
 
 - **Művelet típusa**
 
-  A művelet típus egy választógombot, amely szabályozza a kérelem a szolgáltatás által végrehajtott műveletet. Választhat a felosztás egyesítése és áthelyezése forgatókönyveket. Egy korábban elküldött művelet is visszavonhatja. Használata felosztása, egyesítése, és helyezze át a tartomány szegmenstérképet kérelmeket. Lista szilánkleképezések csak a támogatási áthelyezési műveleteket.
+  A művelet típusa egy választógomb, amely a kérelem által a szolgáltatás által végrehajtott művelet típusát vezérli. Választhat a felosztás, az egyesítés és az áthelyezés forgatókönyvek között. Egy korábban elküldött műveletet is megszakíthat. Használhatja a felosztási, egyesítési és áthelyezési kérelmeket a tartományhoz tartozó szegmenses térképekhez. A szegmenses térképek listázása csak az áthelyezési műveleteket támogatja.
 
-- **Horizontális skálázási térképet**
+- **Szegmenses Térkép**
 
-  A következő szakaszban, a kérelem paramétereit a szegmenstérkép és az adatbázis-üzemeltetési a szegmenstérkép kapcsolatos információkat ismerteti. Különösen meg kell adnia az Azure SQL Database-kiszolgáló és a shardmap eléréséhez megadott hitelesítő adatok a szegmenstérkép-adatbázis, és végül a szegmenstérkép neve üzemeltető adatbázis nevére. A művelet jelenleg csak egyetlen hitelesítő adatra fogad el. Ezekkel a hitelesítő adatokkal kell rendelkeznie a szegmensek a horizontális skálázási térképet, valamint a felhasználói adatok esetleges szabályozási hiányosságok elhárítását módosítások végrehajtásához szükséges engedélyekkel.
+  A kérelem paramétereinek következő szakasza a szegmenses térképre és a szegmens-térképet üzemeltető adatbázisra vonatkozó információkat tartalmazza. Különösen meg kell adnia a shardmap üzemeltető Azure SQL Database-kiszolgáló és-adatbázis nevét, a szegmens Térkép adatbázisához való kapcsolódáshoz szükséges hitelesítő adatokat, végül pedig a szegmens Térkép nevét. Jelenleg a művelet csak a hitelesítő adatok egyetlen halmazát fogadja el. Ezeknek a hitelesítő adatoknak megfelelő engedélyekkel kell rendelkezniük a szegmenses Térkép módosításainak végrehajtásához, valamint a szegmensekben lévő felhasználói adatokhoz.
 
-- **Forrástartomány (felosztása és egyesítése)**
+- **Forrás tartománya (felosztás és egyesítés)**
 
-  Egy felosztása és egyesítése a művelet a alacsony és magas kulcsok segítségével dolgozza fel. Adjon meg egy műveletet a korlátlan streameken működő magas kulcsérték, jelölje be a "felső kulcs is maximális" jelölőnégyzetet, és a magas kulcs mezőt hagyja üresen. Tartomány-tartományneveket, amelyeket nem kell pontosan egyezik a leképezés és a horizontális skálázási térképet a határokon. Ha nem ad meg semmilyen címtartomány típusú határokra egyáltalán a szolgáltatás lesz kikövetkeztetni a legközelebb esik meg automatikusan. A GetMappings.ps1 PowerShell-parancsfájlt használhatja a jelenlegi lekérdezéseket egy adott szegmenstérkép lekéréséhez.
+  A felosztott és egyesítési művelet az alacsony és a magas kulcs használatával dolgozza fel a tartományt. Ha nem kötött magas kulccsal rendelkező műveletet szeretne megadni, jelölje be a "magas kulcs max." jelölőnégyzetet, és hagyja üresen a magas kulcs mezőt. A megadott tartomány-kulcs értékeinek nem kell pontosan egyezniük a leképezés és a hozzá tartozó szegélyek között a szegmens térképen. Ha nem ad meg tartományon kívüli határokat az összes szolgáltatásnál, a rendszer automatikusan kikövetkezteti a legközelebbi tartományt. A GetMappings. ps1 PowerShell-parancsfájl segítségével lekérheti az aktuális leképezéseket egy adott szegmens-térképen.
 
-- **Split forrás viselkedés (split)**
+- **Felosztott forrás viselkedése (Split)**
 
-  A felosztás műveletek adja meg a pont a forrástartomány felosztása. Ehhez a horizontális skálázási kulcs, ahol azt szeretné, hogy megtörténjen a felosztás megadásával. Használja a választógomb adja meg, hogy kívánja-e a tartomány (kivéve a Felosztás kulcs) alsó részén áthelyezése, illetve hogy szeretné-e a felső rész áthelyezése (a felosztás kulcsot is beleértve).
+  A felosztási műveletek esetében adja meg a forrástartomány felosztására szolgáló pontot. Ezt úgy teheti meg, hogy megadja a felosztáshoz használni kívánt horizontális kulcsot. A választógomb használatával megadhatja, hogy a tartomány alsó részét (a felosztott kulcs kivételével) át kívánja-e helyezni, vagy hogy szeretné-e áthelyezni a felső részt (beleértve a felosztott kulcsot is).
 
-- **Forrás Shardlet (áthelyezése)**
+- **Forrás Shardletbe (áthelyezés)**
 
-  Áthelyezési műveleteket eltérnek a felosztása és egyesítése operations, mivel nincs szükségük a forrás leírására széles. Áthelyezés forrást egyszerűen azonosítja a horizontális skálázási kulcs értékét, amelyet át szeretne.
+  Az áthelyezési műveletek nem különböznek a felosztási vagy egyesítési művelettől, mert a forrás leírásához nem szükséges tartomány. Az áthelyezés forrása egyszerűen azonosítható az áthelyezni kívánt horizontálisan használt kulcs értékével.
 
-- **Cél-szegmens (split)**
+- **Cél szilánk (felosztás)**
 
-  Miután az adatokat a forrás a felosztási művelet, meghatározzák, hogy az adatokat az Azure SQL Database-kiszolgáló és a cél az adatbázisnév megadásával kell másolni kell.
+  Miután megadta az adatokat a felosztott művelet forrásán, meg kell adnia, hogy hová szeretné másolni az adatokat az Azure SQL db-kiszolgáló és az adatbázis nevének biztosításával.
 
 - **Céltartomány (egyesítés)**
 
-  Az egyesítési műveletek áthelyezési shardlet egy meglévő szegmensre. A meglévő szegmens azonosítható azáltal, hogy a meglévő tartomány egyesítés a kívánt címtartomány típusú határokra.
+  Az egyesítési műveletek áthelyezik a shardletek egy meglévő szegmensbe. A meglévő szegmenst úgy azonosíthatja, hogy megadja a meglévő tartomány tartományának határait, amelyekkel egyesíteni kívánja a-t.
 
 - **Köteg mérete**
 
-  A Köteg mérete határozza meg, hogy a kapcsolat nélküli során az adatok áthelyezése egyszerre shardlet száma. Ez az egész szám használható a kisebb értékek Ha hosszú időszakok shardlet az érzékeny áll. A nagyobb értékek növeli az idő, amely egy adott shardlet offline de javíthatja a teljesítményt.
+  A köteg mérete határozza meg az adatáthelyezés során az offline állapotú shardletek számát. Ez egy egész szám, amelyben kisebb értékeket használhat, ha a shardletek hosszú ideje érzékeny. A nagyobb értékek növelik azt az időt, ameddig egy adott shardletbe offline állapotban van, de javíthatja a teljesítményt.
 
-- **A művelet azonosítója (Mégse)**
+- **Művelet azonosítója (Mégse)**
 
-  Ha már nincs szükség egy folyamatban lévő műveletet, azáltal, hogy a művelet azonosítója ebben a mezőben megszakíthatja a műveletet. A kérelem állapotát tábla lehet lekérdezni a művelet azonosítója (lásd a szakasz 8.1) vagy a böngésző, ahol a kérelmet küldte el a kimenetből.
+  Ha már folyamatban van egy már nem szükséges művelet, megszakíthatja a műveletet úgy, hogy megadja a művelet AZONOSÍTÓját ebben a mezőben. A művelet AZONOSÍTÓját a kérelem állapota táblából kérheti le (lásd a 8,1 szakaszt) vagy a webböngészőben lévő kimenetet, ahová a kérelmet elküldte.
 
 ## <a name="requirements-and-limitations"></a>Követelmények és korlátozások
 
-A felosztási-egyesítési szolgáltatás jelenlegi implementációja el az alábbi követelmények és korlátozások érvényesek:
+A felosztási-egyesítési szolgáltatás aktuális implementációja az alábbi követelmények és korlátozások hatálya alá tartozik:
 
-- A szegmensek létezik, és a egy ezekben a szegmensekben felosztási-egyesítési művelet végrehajtása előtt a szegmenstérkép regisztrálni kell.
-- A szolgáltatás nem hoz létre táblák vagy bármely más adatbázis-objektumok automatikusan a műveleteit részeként. Ez azt jelenti, hogy a séma összes horizontálisan particionált táblák és referencia táblák kell léteznie, a cél szegmens bármely felosztása/egyesítése/áthelyezési művelet előtt. Horizontálisan particionált táblák különösen kell megadni a tartományban, ahol új shardlet felosztása/egyesítése/áthelyezési művelet fel kell venni. Ellenkező esetben a művelet sikertelen lesz a cél szegmens a kezdeti konzisztencia-ellenőrzést. Azt is vegye figyelembe az adatok másolásakor csak ha a referencia-tábla üres-e, és, hogy más egyidejű semmiféle garanciát nem konzisztencia jelentenek írási művelet a referencia táblák mutató. Azt javasoljuk, hogy ez: Ha a felosztó/egyesítő műveletek fut, nincs más írási műveleteket módosítja a referencia táblák.
-- A szolgáltatás egy egyedi indexet vagy kulcs, amely tartalmazza a jobb teljesítmény és megbízhatóság nagy shardlet a horizontális skálázási kulcs által létrehozott sor identitás támaszkodik. Ez lehetővé teszi az adatok áthelyezése egy még részletesebben részletességet használni, csupán a horizontális skálázási kulcs értékét, mint a szolgáltatás. Ez segít csökkenteni a maximális mennyisége naplózási helyet és a zárolásokat, amelyek szükségesek a művelet során. Fontolja meg egy egyedi indexet vagy egy elsődleges kulcs, köztük a horizontális skálázási kulcs egy adott táblán, ha azt szeretné, hogy a táblázat használata felosztása és egyesítése /-áthelyezési kérelem létrehozása. Teljesítménybeli megfontolások miatt a horizontális skálázási kulcs a kulcs vagy az index a vezető oszlop kell lennie.
-- A kérelem feldolgozása során egyes shardletek adatok mind a forrás- és a cél szegmens a jelen lehetnek. Ez azért szükséges, a shardlet mozgás során hibák ellen. Felosztási-egyesítési a szegmenstérkép-integrációja biztosítja, hogy a Adatfüggő útválasztás API-k használatával keresztüli kapcsolat a **OpenConnectionForKey** módszerrel a szegmenstérkép nem jelenik meg semmilyen inkonzisztens köztes állapotok. Azonban ha használata nélkül a forrás vagy a cél szegmensek csatlakozik a **OpenConnectionForKey** metódus, köztes inkonzisztens állapotok előfordulhat, hogy láthatók, ha felosztás/egyesítés/áthelyezési kéréseket fog. Ezek a kapcsolatok részleges vagy ismétlődő eredmények időzítése vagy a mögöttes a kapcsolat szegmens függően előfordulhat, hogy megjelenítése. Ezt a korlátozást jelenleg a rugalmas méretezés több-Shard-lekérdezések által létrehozott kapcsolatok is tartalmaz.
-- A felosztási-egyesítési szolgáltatás a metaadatokat tároló adatbázis különböző szerepkörök között nem kell megosztani. Például az átmeneti állapotában is futó felosztási-egyesítési szolgáltatás szerepkör kell mutatnia, mint az éles szerepkör különböző metaadat-adatbázishoz.
+- A szegmenseknek léteznie kell a szegmensben, és regisztrálni kell őket a szegmensben lévő felosztási művelet elvégzése előtt.
+- A szolgáltatás a művelet részeként nem hoz létre táblákat vagy más adatbázis-objektumokat automatikusan. Ez azt jelenti, hogy az összes felosztott tábla és hivatkozási tábla sémájának léteznie kell a cél szegmensen a felosztás/egyesítés/áthelyezés művelet előtt. A többrészes táblázatok csak abban a tartományban maradhatnak üresen, amelyben az új shardletek hozzá kell adni egy felosztott/egyesítési/áthelyezési művelethez. Ellenkező esetben a művelet sikertelen lesz a kezdeti konzisztencia-ellenőrzés a cél szegmensen. Azt is vegye figyelembe, hogy a hivatkozási adatok csak akkor másolódnak le, ha a hivatkozási tábla üres, és hogy nincsenek konzisztencia-garanciák a hivatkozási táblákon lévő más egyidejű írási műveletekkel kapcsolatban. Javasoljuk, hogy a felosztási/egyesítési műveletek futtatásakor más írási műveletek ne módosítsák a hivatkozási táblákat.
+- A szolgáltatás egy egyedi index vagy kulcs által létrehozott sor identitásra támaszkodik, amely magában foglalja a horizontális Felskálázási kulcsot a nagy shardletek teljesítményének és megbízhatóságának javítása érdekében. Ez lehetővé teszi, hogy a szolgáltatás még finomabb részletességgel helyezze át az adatokat, mint a horizontális Felskálázási kulcs értéke. Ez segít csökkenteni a művelet során szükséges naplófájlok és zárolások maximális mennyiségét. Hozzon létre egy egyedi indexet vagy egy elsődleges kulcsot, beleértve az adott tábla horizontális Felskálázási kulcsát is, ha azt szeretné, hogy a táblázatot a felosztott/egyesítési/áthelyezési kérelmekkel kívánja használni. A teljesítménnyel kapcsolatos okokból a horizontális Felskálázási kulcsnak a kulcs vagy az index vezető oszlopának kell lennie.
+- A kérelmek feldolgozásának során bizonyos shardletbe-adatmennyiségek a forráson és a cél szegmensen is szerepelhetnek. Ez a shardletbe-áthelyezés során fellépő hibák elleni védelemhez szükséges. A felosztási egyesítés és a szegmenses társítás összevonása biztosítja, hogy az Adatfüggő útválasztási API-k által a **OpenConnectionForKey** metódus használatával létesített kapcsolatok ne lássanak inkonzisztens közbenső állapotokat. Ha azonban a **OpenConnectionForKey** metódus használata nélkül csatlakozik a forráshoz vagy a cél szegmensekhez, inkonzisztens közbenső állapotok jelenhetnek meg, ha a felosztási/egyesítési/áthelyezési kérelmek folyamatban vannak. Ezek a kapcsolatok részleges vagy ismétlődő eredményeket is megjeleníthetnek az Időzítéstől vagy a kapcsolat alapjául szolgáló szegmenstől függően. Ez a korlátozás jelenleg a rugalmas skálázású többszegmenses lekérdezések által létrehozott kapcsolatokat foglalja magában.
+- A felosztási-egyesítési szolgáltatás metaadat-adatbázisa nem osztható meg a különböző szerepkörök között. Például az átmeneti tárolásban futó felosztási-egyesítési szolgáltatás szerepkörének egy másik metaadat-adatbázisra kell mutatnia, mint a termelési szerepkörnek.
 
 ## <a name="billing"></a>Számlázás
 
-A felosztási-egyesítési szolgáltatás fut, felhőalapú szolgáltatásként a Microsoft Azure-előfizetésében. Ezért a cloud services díját kell megfizetni a szolgáltatáspéldányt. Kivéve, ha gyakran felosztása/egyesítése/áthelyezési műveleteket végez, javasoljuk, hogy a szétválasztás és egyesítés felhőszolgáltatás törlése. Amely költséget futtatásához, vagy üzembe helyezett cloud service-példányok. Újbóli üzembe helyezés, és indítsa el a könnyen futtatható konfiguráció felosztása és egyesítése műveletek elvégzésére van szüksége.
+A felosztott egyesítés szolgáltatás felhőalapú szolgáltatásként fut a Microsoft Azure-előfizetésben. Ezért a Cloud Services díjai a szolgáltatás egy példányára vonatkoznak. Ha gyakran végez felosztási/egyesítési/áthelyezési műveleteket, javasoljuk, hogy törölje a felosztott egyesítéses felhőalapú szolgáltatást. Ez a szolgáltatás a Cloud Service-példányok futtatására és üzembe helyezésére vonatkozó költségeket takarít meg. Bármikor újratelepítheti és elindíthatja az azonnal futtatható-konfigurációt, amikor felosztási vagy egyesítési műveleteket kell végrehajtania.
 
 ## <a name="monitoring"></a>Figyelés
 
-### <a name="status-tables"></a>Állapot-táblák
+### <a name="status-tables"></a>Állapot táblák
 
-A felosztási-egyesítési szolgáltatás biztosítja a **RequestStatus** a metaadatokat tároló adatbázis figyelés befejezett és folyamatban lévő kérelmek táblájában. A táblázat minden egyes felosztási-egyesítési kérelem ezt a példányt a felosztási-egyesítési szolgáltatás elküldött sor. Kínál az egyes kérések a következő információkat:
+A felosztott egyesítés szolgáltatás biztosítja a **RequestStatus** táblát a metaadat-tároló adatbázisban a befejezett és a folyamatban lévő kérések figyeléséhez. A táblázat felsorolja az egyes felosztott egyesítési kérelmek sorát, amelyeket elküldtek a felosztott egyesítési szolgáltatás ezen példánya számára. Minden kérelemhez a következő információkat adja meg:
 
 - **Időbélyeg**
 
-  Az idő és dátum, amikor a kérelem meg lett elindítva.
+  A kérelem elindításának időpontja és dátuma.
 
 - **OperationId**
 
-  Egy GUID Azonosítót, amely egyedileg azonosítja a kérelmet. A kérelem is használható, szakítsa meg a műveletet, amíg még mindig folyamatban.
+  Egy GUID, amely egyedileg azonosítja a kérést. Ezt a kérést a művelet megszakítására is használhatja, amíg még folyamatban van.
 
 - **Állapot**
 
-  A kérés aktuális állapotát. Folyamatban lévő kérések esetén, amelyben a kérelme, mert a jelenlegi fázis is felsorolja.
+  A kérelem aktuális állapota. A folyamatban lévő kérések esetében az azt is felsorolja, hogy a kérelem milyen aktuális fázisban van.
 
 - **CancelRequest**
 
-  Azt a jelzőt, amely azt jelzi, hogy a kérelem meg lett szakítva.
+  Egy jelző, amely jelzi, hogy a kérést megszakították-e.
 
-- **Folyamatban van**
+- **Haladás**
 
-  A százalékos becslése a művelet befejezését. 50 érték azt jelzi, hogy a művelet körülbelül 50 % kész.
+  A művelet befejezésének százalékos értéke. A 50 érték azt jelzi, hogy a művelet körülbelül 50%-ban befejeződött.
 
 - **Részletek**
 
-  Egy XML-érték, amely egy részletes jelentést biztosít. Az állapotjelentés sorok részhalmazához forrásból másolandó cél rendszeresen frissül. Hibák vagy kivételek Ez az oszlop a hibával kapcsolatos részletes információkat is tartalmaz.
+  Egy XML-érték, amely részletesebb jelentést nyújt a folyamatról. Az előrehaladási jelentés rendszeres időközönként frissül, mert a rendszer a forrásról a célhelyre másolja a sorok készletét. Meghibásodások vagy kivételek esetén ez az oszlop a hibával kapcsolatos részletesebb információkat is tartalmaz.
 
 ### <a name="azure-diagnostics"></a>Azure Diagnostics
 
-A felosztási-egyesítési szolgáltatás használja az Azure Diagnostics monitorozást és diagnosztikát az Azure SDK 2.5-ös alapján. Itt leírtak szabályozhatja a diagnosztikai konfigurációja: [Diagnosztika engedélyezése az Azure Cloud Services és Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md). A letöltött csomag tartalmazza a két diagnosztikai konfiguráció – egy, a webes szerepkör és egy, a feldolgozói szerepkör esetében. Naplófájl teljesítményszámlálók, az IIS-naplók, Windows-eseménynaplók és felosztási-egyesítési alkalmazás eseménynaplóit kapcsolatos definíciókat tartalmazza.
+A felosztási-egyesítési szolgáltatás az Azure SDK 2,5-alapú, monitorozási és diagnosztikai célú Azure Diagnosticst használja. A diagnosztika konfigurációját az itt leírtak szerint szabályozhatja: [Diagnosztika engedélyezése az Azure Cloud Services és Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md). A letöltési csomag két diagnosztikai konfigurációt tartalmaz: egyet a webes szerepkörhöz, egyet pedig a feldolgozói szerepkörhöz. Ez magában foglalja a teljesítményszámlálók naplózását, az IIS-naplókat, a Windows-eseménynaplókat és a felosztott alkalmazás-eseménynaplókat.
 
-## <a name="deploy-diagnostics"></a>Diagnosztikai üzembe helyezése
+## <a name="deploy-diagnostics"></a>Diagnosztika üzembe helyezése
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> A PowerShell Azure Resource Manager-modul továbbra is támogatja az Azure SQL Database, de minden jövőbeli fejlesztés Az.Sql modul. Ezeket a parancsmagokat lásd: [azurerm.SQL-hez](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). A parancsok a Az modul, és az AzureRm-modulok argumentumainak lényegében megegyeznek.
+> Az Azure SQL Database továbbra is támogatja a PowerShell Azure Resource Manager modult, de a jövőbeli fejlesztés az az. SQL-modulhoz készült. Ezekhez a parancsmagokhoz lásd: [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak.
 
-Figyelési és diagnosztikai konfiguráció használatával a webes és feldolgozói szerepkörök a NuGet-csomag által nyújtott diagnosztika engedélyezéséhez futtassa a következő parancsokat az Azure PowerShell használatával:
+Ha a NuGet-csomag által biztosított webes és feldolgozói szerepkörök diagnosztikai konfigurációjának használatával szeretné engedélyezni a figyelést és a diagnosztikát, futtassa a következő parancsokat a Azure PowerShell használatával:
 
 ```powershell
     $storage_name = "<YourAzureStorageAccount>"
@@ -234,42 +233,42 @@ Figyelési és diagnosztikai konfiguráció használatával a webes és feldolgo
     Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -DiagnosticsConfigurationPath $config_path -ServiceName $service_name -Slot Production -Role "SplitMergeWorker"
 ```
 
-Annak konfigurálása és üzembe helyezése a diagnosztikai beállítások itt olvashat: [Diagnosztika engedélyezése az Azure Cloud Services és Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md).
+A diagnosztikai beállítások konfigurálásával és telepítésével kapcsolatos további információkért tekintse meg a következőt: [Diagnosztika engedélyezése az Azure Cloud Services és Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md).
 
-## <a name="retrieve-diagnostics"></a>Diagnosztikai beolvasása
+## <a name="retrieve-diagnostics"></a>Diagnosztika beolvasása
 
-A diagnosztikai könnyen elérhető a Visual Studio Server Explorerben a Server Explorer fa Azure részében. Nyissa meg a Visual Studio-példányon, és a menüsávon kattintson a nézet és a Server Explorerben. Kattintson a csatlakozás az Azure-előfizetéshez az Azure ikonra. Ezután lépjen az Azure Storage -> -> `<your storage account>` -> táblák, -> WADLogsTable. További információkért lásd: [Server Explorer](https://msdn.microsoft.com/library/x603htbk.aspx).
+A diagnosztika a Server Explorer fájának Azure-részében könnyen elérhető a Visual Studio Server Explorerben. Nyisson meg egy Visual Studio-példányt, és a menüsávban kattintson a nézet, majd a Server Explorer elemre. Az Azure-előfizetéshez való kapcsolódáshoz kattintson az Azure ikonra. Ezután navigáljon az Azure-> Storage- `<your storage account>` >-> Tables-> WADLogsTable. További információ: [Server Explorer](https://msdn.microsoft.com/library/x603htbk.aspx).
 
 ![WADLogsTable][2]
 
-A fenti ábrán vannak kiemelve a WADLogsTable a felosztási-egyesítési szolgáltatás napló részletes eseményeit tartalmazza. Vegye figyelembe, hogy az alapértelmezett konfiguráció, a letöltött csomag éles környezet részesíti előnyben. Ezért a milyen naplók és -számlálók kikerülnek a szolgáltatáspéldányok időköz nagy méretű (5 perc). A fejlesztéshez és teszteléshez csökkentheti az időközt a diagnosztikai beállítások, a weben vagy a feldolgozói szerepkör az igényeinek megfelelően. Kattintson a jobb gombbal a szerepkör a Visual Studio Server Explorer (lásd fent), majd az átviteli időszak a diagnosztika a konfigurációs beállításokat a párbeszédpanelen:
+A fenti ábrán Kiemelt WADLogsTable a felosztott egyesítési szolgáltatás alkalmazási naplójának részletes eseményeit tartalmazza. Vegye figyelembe, hogy a letöltött csomag alapértelmezett konfigurációja az éles üzembe helyezésre irányul. Ezért a naplók és a számlálók a szolgáltatási példányokból való kihúzásának időköze nagy (5 perc). A teszteléshez és fejlesztéshez csökkentse az intervallumot úgy, hogy a webes vagy a feldolgozói szerepkör diagnosztikai beállításait módosítja az igényeinek megfelelően. Kattintson a jobb gombbal a szerepkörre a Visual Studio Server Explorerben (lásd fentebb), majd módosítsa az átvitel időtartamát a párbeszédpanelen a diagnosztika konfigurációs beállításaihoz:
 
 ![Konfiguráció][3]
 
 ## <a name="performance"></a>Teljesítmény
 
-Általában jobb teljesítményt, hogy minél nagyobb, több nagy teljesítményű szolgáltatásszintek az Azure SQL Database várható. A szolgáltatás magasabb szinten magasabb i/o-, Processzor- és memória kiosztásokat a tömeges másolási előnyeit, és törlési műveletek a felosztási-egyesítési szolgáltatás által használt. Éppen ezért növelése a szolgáltatási rétegben, és ezeket az adatbázisokat az egy meghatározott, korlátozott ideig.
+Általánosságban elmondható, hogy a jobb teljesítmény várható a magasabb, több teljesítményt nyújtó szolgáltatási szinten Azure SQL Database. Magasabb IO-, processzor-és memória-kiosztások a magasabb szolgáltatási rétegekhez előnyben részesülnek a felosztott egyesítési szolgáltatás által használt tömeges másolási és törlési műveletekben. Ebből kifolyólag növelje a szolgáltatási szintet az adott adatbázisokra vonatkozóan egy meghatározott, korlátozott ideig.
 
-A szolgáltatás a normál működés részeként érvényesítési lekérdezéseket is végez. A lekérdezések érvényesítés keresse meg a célként megadott tartomány adatainak váratlan jelenlétét, és győződjön meg arról, hogy bármely felosztása/egyesítése/áthelyezési művelet elindítja a konzisztens. Ezek a lekérdezések összes működnek a horizontális skálázás kulcstartományokkal határozzák meg a műveletet hatókörének és a Köteg mérete, a kérelem definíciójának részeként. Ezeket a lekérdezéseket akkor teljesítenek a legjobban, ha index jelen, a horizontális skálázási kulcs oszlopként vezető.
+A szolgáltatás a szokásos műveleteinek részeként is végrehajtja az érvényesítési lekérdezéseket. Ezek az ellenőrzési lekérdezések az adatok váratlan jelenlétét keresik a céltartományban, és biztosítják, hogy a felosztott/egyesítési/áthelyezési műveletek konzisztens állapotból induljon el. Ezek a lekérdezések mindegyike a művelet hatóköre és a kérelem definíciójának részeként megadott köteg mérete által meghatározott horizontális skálázási tartományokon működik. Ezeket a lekérdezéseket a legjobban akkor hajtják végre, ha egy olyan index van jelen, amely a fő oszlophoz tartozó horizontális Felskálázási kulccsal rendelkezik.
 
-Emellett a horizontális skálázási kulcs a vezető oszlop egyediségének tulajdonságot lehetővé teszi a szolgáltatás egy optimalizált módszerrel, amely korlátozza a naplózási helyet és memória szempontjából erőforrás-használat. Ez a tulajdonság egyedi-e nagy mennyiségű adat méretek (általában újabb 1 GB-os) áthelyezése szükséges.
+Továbbá egy egyediségi tulajdonság a horizontális Felskálázási kulccsal, amely a vezető oszlopban lehetővé teszi, hogy a szolgáltatás egy optimalizált megközelítést használjon, amely az erőforrás-felhasználást korlátozza a naplózási terület és a memória tekintetében. Ez az egyediségi tulajdonság a nagyméretű adatméretek áthelyezéséhez szükséges (általában 1 GB-nál nagyobb).
 
-## <a name="how-to-upgrade"></a>Frissítése
+## <a name="how-to-upgrade"></a>A frissítés módja
 
-1. Kövesse a [felosztási-egyesítési szolgáltatás üzembe helyezése](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
-2. Módosítsa a felhőszolgáltatás konfigurációs fájljához, hogy az új konfigurációs paramétereket az felosztási-egyesítési üzembe helyezéshez. Egy új kötelező paraméter a titkosításhoz használt tanúsítvány adatait. Ehhez egyszerűen az hasonlítsa össze a letöltés a meglévő konfiguráció szemben az új konfigurációs sablon fájlt. Ne feledje megadni a "DataEncryptionPrimaryCertificateThumbprint" és "DataEncryptionPrimary" beállításait a webes és a feldolgozói szerepkör.
-3. Üzembe helyezés előtt a frissítés az Azure-ba, győződjön meg arról, hogy minden jelenlegi felosztási-egyesítési művelet befejezése után. Könnyedén megteheti ezt a szétválasztás és egyesítés metaadatokat tároló adatbázis folyamatban lévő kérések RequestStatus és PendingWorkflows táblázatok lekérdezésével.
-4. Frissítse a meglévő felhőszolgáltatás üzembe helyezésének a szétválasztás és egyesítés esetén az Azure-előfizetésében az új csomag és a frissített konfigurációs fájlt.
+1. Kövesse a [Split-Merge szolgáltatás üzembe helyezése](sql-database-elastic-scale-configure-deploy-split-and-merge.md)című témakör lépéseit.
+2. Módosítsa a felhőalapú szolgáltatás konfigurációs fájlját a felosztott egyesítési központi telepítésre, hogy az tükrözze az új konfigurációs paramétereket. Egy új kötelező paraméter a titkosításhoz használt tanúsítványra vonatkozó információ. Ennek egyszerű módja, ha összehasonlítja az új konfigurációs sablonfájl fájlját a letöltéssel a meglévő konfiguráció alapján. Ügyeljen rá, hogy a "DataEncryptionPrimaryCertificateThumbprint" és a "DataEncryptionPrimary" beállításait is hozzáadja a webes és a feldolgozói szerepkörhöz.
+3. Mielőtt telepítené a frissítést az Azure-ban, győződjön meg arról, hogy az összes jelenleg futó felosztott egyesítési művelet befejeződött. Ezt egyszerűen megteheti úgy, hogy lekérdezi a RequestStatus és a PendingWorkflows táblákat a folyamatos kérések összevonása a metaadatokat tartalmazó adatbázisban.
+4. Frissítse meglévő felhőalapú szolgáltatását az Azure-előfizetésben az új csomaggal és a frissített szolgáltatás konfigurációs fájljával, és ossza meg az Azure-előfizetését.
 
-Felosztási-egyesítési frissítése új metaadat-adatbázis kiépítése nem kell. Az új verzió automatikusan frissíti a meglévő metaadatokat tároló adatbázis az új verzióra.
+A frissítéshez nem szükséges új metaadat-adatbázist kiépíteni a felosztott egyesítéshez. Az új verzió automatikusan frissíti a meglévő metaadat-adatbázist az új verzióra.
 
-## <a name="best-practices--troubleshooting"></a>Ajánlott eljárások és hibaelhárítás
+## <a name="best-practices--troubleshooting"></a>Ajánlott eljárások & hibaelhárításhoz
 
-- Határozzon meg egy tesztelési bérlőn, és a legfontosabb felosztása/egyesítése/áthelyezési műveleteket a tesztbérlővel gyakorolja több szegmens között. Győződjön meg arról, hogy minden metaadat helyesen van definiálva a horizontális skálázási térképet, hogy a műveletek sérti korlátozások vagy a külső kulcsok.
-- Tartsa a tesztelési célú bérlői adatok mérete fölött a legnagyobb bérlő annak érdekében, hogy nem adatok mérete eléri a maximális adatméret kapcsolatos problémákat. Ez segít a egyetlen új bérlő mozgáshoz szükséges időt a felmérheti a felső határt.
-- Győződjön meg arról, hogy a séma lehetővé teszi a törlést. A felosztási-egyesítési szolgáltatás lehetővé teszi távolíthatja el az adatokat a forrás-szegmens után az adatok másolása sikeresen megtörtént a cél szükséges. Ha például **triggerek törlése** megakadályozhatja, hogy a szolgáltatás törlésével az adatokat a forrás és a sikertelen műveletek okozhat.
-- A horizontális skálázási kulcs a vezető oszlop legyen az elsődleges kulcs, vagy egyedi index definícióját. Ezzel biztosítható a felosztása és egyesítése lekérdezések érvényesítés, és a tényleges adatok mozgását és törlési műveletek horizontális skálázási kulcstartományokkal mindig működésbe, amelyek a lehető legjobb teljesítményt.
-- A régiótól és központban, amelyen az adatbázisok találhatók a felosztási-egyesítési szolgáltatás elhelyezésének engedélyezése.
+- Definiáljon egy teszt bérlőt, és gyakorolja a legfontosabb felosztott/egyesítési/áthelyezési műveleteket a több szegmensen belüli tesztelési Bérlővel. Győződjön meg arról, hogy az összes metaadat helyesen van definiálva a szegmenses térképen, és hogy a műveletek nem sértik a korlátozásokat vagy a külső kulcsokat.
+- Tartsa meg a legnagyobb bérlő maximális adatmérete feletti teszt bérlői adatméretet, hogy ne legyenek az adatmérettel kapcsolatos problémák. Ez segít felmérni a felső határt arra az időre, amíg egyetlen bérlőt helyez át a köré.
+- Győződjön meg arról, hogy a séma lehetővé teszi a törlést. A felosztási-egyesítési szolgáltatásnak képesnek kell lennie az adatok eltávolítására a forrás szegmensből, ha az adatok a célhelyre való másolása sikeresen megtörtént. Az eseményindítók **törlésével** például megakadályozhatja, hogy a szolgáltatás törölje a forrás adatait, és a műveletek meghiúsulnak.
+- A horizontális Felskálázási kulcsnak az elsődleges kulcs vagy az egyedi index definíciójának vezető oszlopának kell lennie. Ez biztosítja a legjobb teljesítményt a felosztási vagy egyesítési ellenőrzési lekérdezéseknél, valamint a tényleges adatáthelyezési és törlési műveletekhez, amelyek mindig a kulcsfontosságú tartományokon működnek.
+- A rézvezetékes végezhet a régióban és az adatközpontban tárolja az adatbázisokat.
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

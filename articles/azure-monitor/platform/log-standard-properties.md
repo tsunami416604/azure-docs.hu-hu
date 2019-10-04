@@ -1,6 +1,6 @@
 ---
-title: Az Azure monitorban alapvető tulajdonságainak naplórekordok |} A Microsoft Docs
-description: Az Azure Monitor naplóira adattípusok közös tulajdonságokat ismerteti.
+title: Azure Monitor naplóbejegyzések szabványos tulajdonságai | Microsoft Docs
+description: A Azure Monitor-naplók több adattípusának gyakori tulajdonságait ismerteti.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -10,26 +10,29 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 07/18/2019
 ms.author: bwren
-ms.openlocfilehash: c01cdb967fd7f9516b4403aa4f0c76f2577d5050
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 0fe174f309656011a1d05762927e254ff210b1e7
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294722"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262014"
 ---
-# <a name="standard-properties-in-azure-monitor-log-records"></a>Az Azure Monitor naplórekordok standard tulajdonságok
-Naplóadatok az Azure monitorban [tárolt rekordkészletet és](../log-query/log-query-overview.md), amelyek mindegyike egy adott adattípus, amely egy egyedi tulajdonságkészlettel rendelkezik. Számos adattípusok, amelyek közösek a több típus több alapvető tulajdonságainak lesz. Ez a cikk ismerteti ezeket a tulajdonságokat és példákat, hogyan használhatja ezeket a lekérdezéseket.
+# <a name="standard-properties-in-azure-monitor-logs"></a>Azure Monitor naplók standard tulajdonságai
+Azure Monitor naplókban lévő adatokat egy [log Analytics munkaterületen vagy Application Insights alkalmazásban található rekordok halmaza tárolja](../log-query/logs-structure.md), amelyek mindegyike egy adott adattípussal rendelkezik, amely egyedi tulajdonságokkal rendelkezik. Számos adattípushoz általános tulajdonságok tartoznak, amelyek több típusra is jellemzőek. Ez a cikk ismerteti ezeket a tulajdonságokat, és példákat tartalmaz arra, hogyan használhatja őket a lekérdezésekben.
 
-Ezek a tulajdonságok néhány létrehozás folyamatban van megvalósítva, így előfordulhat, hogy megjelennek az egyes adattípusok, de még nincs a többi.
+> [!NOTE]
+> A standard szintű általános szolgáltatás nem fog megjelenni a séma nézetben vagy az IntelliSense Log Analyticsban, és a lekérdezési eredményekben nem jelennek meg, kivéve, ha explicit módon megadja a tulajdonságot a kimenetben.
 
-## <a name="timegenerated"></a>TimeGenerated
-A **TimeGenerated** tulajdonság tartalmazza a dátum és idő, hogy a rekord létrehozásának. Szűrés vagy időpontig összefoglalójához közös tulajdonság biztosít. Amikor kiválaszt egy időtartományt, nézetben vagy Irányítópulton az Azure Portalon, az eredmények szűréséhez TimeGenerated használ.
+## <a name="timegenerated-and-timestamp"></a>TimeGenerated és időbélyeg
+A **TimeGenerated** (log Analytics munkaterület) és az **időbélyeg** (Application Insights alkalmazás) tulajdonságai azt a dátumot és időpontot tartalmazzák, ameddig a rekordot az adatforrás hozta létre. További részletekért lásd: a [naplózási adatok betöltési ideje Azure monitorban](data-ingestion-time.md) .
+
+A **TimeGenerated** és az **időbélyeg** közös tulajdonságot biztosít a szűréshez, illetve az időbeli összesítéshez. Amikor kiválaszt egy időtartományt egy nézethez vagy egy irányítópulthoz a Azure Portalban, a TimeGenerated vagy időbélyeg használatával szűri az eredményeket. 
 
 ### <a name="examples"></a>Példák
 
-Az alábbi lekérdezés minden nap az előző héten létrehozott események számát adja vissza.
+A következő lekérdezés az előző hét egyes napjaihoz létrehozott hibák eseményeinek számát adja vissza.
 
 ```Kusto
 Event
@@ -39,28 +42,55 @@ Event
 | sort by TimeGenerated asc 
 ```
 
-## <a name="type"></a>Typo
-A **típus** tulajdonság nevét tárolja a tábla, hogy a rekord, amelyből beolvasták is is értelmezhetők, a rekord típusa. Ez a tulajdonság akkor hasznos, a lekérdezések, amelyek több táblából, például rekordok a `search` operátor szerinti szűrése, megkülönböztetni a különböző típusú rekordok. **$table** helyén használható **típus** egyes helyeken.
+A következő lekérdezés az előző hét egyes napjaihoz létrehozott kivételek számát adja vissza.
+
+```Kusto
+exceptions
+| where timestamp between(startofweek(ago(7days))..endofweek(ago(7days))) 
+| summarize count() by bin(TimeGenerated, 1day) 
+| sort by timestamp asc 
+```
+
+## <a name="_timereceived"></a>\_TimeReceived
+A TimeReceived tulajdonság azt a dátumot és időpontot tartalmazza, ameddig a rekord az Azure-felhőben lévő Azure monitor betöltési ponttól érkezett.  **\_** Ez hasznos lehet az adatforrás és a felhő közötti késési problémák azonosításához. Ilyen például egy hálózati probléma, ami késlelteti az ügynöktől küldött adatok késését. További részletekért lásd: a [naplózási adatok betöltési ideje Azure monitorban](data-ingestion-time.md) .
+
+Az alábbi lekérdezés átlagos késést biztosít egy ügynöktől származó esemény-rekordok esetében óránként. Ez magában foglalja az ügynök és a felhő közötti időt, valamint azt, hogy a rekord teljes ideje elérhető legyen a naplók lekérdezéséhez.
+
+```Kusto
+Event
+| where TimeGenerated > ago(1d) 
+| project TimeGenerated, TimeReceived = _TimeReceived, IngestionTime = ingestion_time() 
+| extend AgentLatency = toreal(datetime_diff('Millisecond',TimeReceived,TimeGenerated)) / 1000
+| extend TotalLatency = toreal(datetime_diff('Millisecond',IngestionTime,TimeGenerated)) / 1000
+| summarize avg(AgentLatency), avg(TotalLatency) by bin(TimeGenerated,1hr)
+``` 
+
+## <a name="type-and-itemtype"></a>Típus-és itemType
+A **típus** (log Analytics munkaterület) és a **itemtype** (Application Insights alkalmazás) tulajdonságai megtartják annak a táblának a nevét, amelyből a rekordot beolvasták, amelyből a rekord típusa is lehet. Ez a tulajdonság olyan lekérdezésekben hasznos, amelyek több tábla rekordjait egyesítik, például a `search` kezelőt használó rekordokat a különböző típusú rekordok megkülönböztetéséhez. a **$Table** egyes helyeken a **típus** helyett lehet használni.
 
 ### <a name="examples"></a>Példák
-Az alábbi lekérdezés a bejegyzések száma az elmúlt egy órában gyűjtött típus szerint adja vissza.
+A következő lekérdezés a rekordok számát adja vissza az elmúlt órában összegyűjtött típusok alapján.
 
 ```Kusto
 search * 
-| where TimeGenerated > ago(1h) 
-| summarize count() by Type 
+| where TimeGenerated > ago(1h)
+| summarize count() by Type
+
 ```
+## <a name="_itemid"></a>\_Elemazonosító
+A elemazonosító tulajdonság a rekord egyedi azonosítóját tárolja.  **\_**
 
-## <a name="resourceid"></a>\_ResourceId
-A  **\_ResourceId** a tulajdonság tárolja az erőforrást, amelyhez társítva van a rekord egyedi azonosítója. Ez lehetővé teszi a lekérdezés hatókörét, csak a rekordok egy adott erőforrásból, vagy a kapcsolódó adatok join több különböző táblázat standard tulajdonságot.
 
-Az Azure-erőforrásokhoz, értékét **_ResourceId** van a [Azure-erőforrást azonosító URL-cím](../../azure-resource-manager/resource-group-template-functions-resource.md). A tulajdonság jelenleg csak Azure-erőforrások, de például a helyi számítógépek Azure-on kívüli erőforrások terjeszteni.
+## <a name="_resourceid"></a>\_ResourceId
+A ResourceId tulajdonság az erőforrás egyedi azonosítóját tartalmazza, amelyhez a rekord társítva van.  **\_** Ez egy szabványos tulajdonságot biztosít, amellyel a lekérdezés hatókörét csak egy adott erőforrás rekordjaira, illetve a kapcsolódó adatok több táblába való csatlakoztatására használhatja.
+
+Az Azure-erőforrások esetében a **_ResourceId** értéke az [Azure-erőforrás azonosítójának URL-címe](../../azure-resource-manager/resource-group-template-functions-resource.md). A tulajdonság jelenleg Azure-erőforrásokra korlátozódik, de az Azure-on kívüli erőforrásokra, például a helyszíni számítógépekre is kiterjeszthető.
 
 > [!NOTE]
-> Egyes adattípusok már rendelkezik mezőkkel, amelyek tartalmazzák az Azure erőforrás-azonosító, vagy legalább részeit, például az előfizetés-azonosítójára. Bár ezek a mezők őrzi meg az előző verziókkal való kompatibilitás, javasoljuk, hogy használja a _ResourceId közötti korreláció végrehajtásához, mivel a egységesebb lesz.
+> Egyes adattípusok már rendelkeznek olyan mezőkkel, amelyek tartalmazzák az Azure Resource ID-t, vagy legalább egy részét, például az előfizetés-azonosítót. Habár ezek a mezők visszamenőleges kompatibilitást biztosítanak, javasoljuk, hogy a _ResourceId használatával több korrelációt végezzen el, mivel az konzisztens lesz.
 
 ### <a name="examples"></a>Példák
-A következő lekérdezés teljesítmény- és esemény adatokat minden számítógéphez csatlakozik. Összes esemény azonosítóval jelenik meg _101_ és 50 % feletti processzorhasználat.
+A következő lekérdezés összekapcsolja az egyes számítógépek teljesítmény-és esemény-adatait. Az _101_ -es azonosítójú és a processzor kihasználtsága 50%-nál több eseményt mutat be.
 
 ```Kusto
 Perf 
@@ -71,7 +101,7 @@ Perf
 ) on _ResourceId
 ```
 
-Az alábbi lekérdezés illesztések _AzureActivity_ rögzíti a _SecurityEvent_ rögzíti. A felhasználókkal, hogy ezek a gépek naplózott összes tevékenység műveleteket jeleníti meg.
+A következő lekérdezés összekapcsolja a _AzureActivity_ -rekordokat a _SecurityEvent_ -rekordokkal. Megjeleníti az összes olyan tevékenység-műveletet, amelynek a felhasználóinak bejelentkezett a gépre.
 
 ```Kusto
 AzureActivity 
@@ -85,7 +115,7 @@ AzureActivity
 ) on _ResourceId  
 ```
 
-Az alábbi lekérdezés elemzi **_ResourceId** és összesítések az adatkötetek Azure-előfizetésenként külön számlázzuk.
+A következő lekérdezés elemzi a **_ResourceId** , és összesíti az Azure-előfizetések által számlázott adatmennyiséget.
 
 ```Kusto
 union withsource = tt * 
@@ -95,16 +125,16 @@ union withsource = tt *
 | summarize Bytes=sum(_BilledSize) by subscriptionId | sort by Bytes nulls last 
 ```
 
-E `union withsource = tt *` , különböző adattípusok keresésekre végrehajtása költséges takarékosan kérdezi le.
+Ezeket `union withsource = tt *` a lekérdezéseket takarékosan használhatja az adattípusok megkereséséhez.
 
-## <a name="isbillable"></a>\_IsBillable
-A  **\_IsBillable** tulajdonság határozza meg, hogy a feldolgozott adatok számlázható. Az adatok  **\_IsBillable** egyenlő _hamis_ gyűjtött ingyenesen, és nem számítunk fel az Azure-fiókjával.
+## <a name="_isbillable"></a>\_Számlázható
+A  **\_számlázható** tulajdonság azt határozza meg, hogy a betöltött adatmennyiség számlázható-e. A számlázható megegyező, _hamis_ értékű adatok gyűjtése ingyenes, és nem számítunk fel az Azure-fiókra.  **\_**
 
 ### <a name="examples"></a>Példák
-Számlázott adattípusok küldő számítógépek listájának lekéréséhez használja a következő lekérdezést:
+A számlázott adattípusokat küldő számítógépek listájának lekéréséhez használja a következő lekérdezést:
 
 > [!NOTE]
-> A lekérdezések használata `union withsource = tt *` takarékosan vizsgálatok különböző adattípusok drágák végrehajtásához. 
+> A lekérdezések `union withsource = tt *` használatával takarékosan végezheti el az adattípusok megkeresését. 
 
 ```Kusto
 union withsource = tt * 
@@ -114,7 +144,7 @@ union withsource = tt *
 | summarize TotalVolumeBytes=sum(_BilledSize) by computerName
 ```
 
-Ez is kiterjeszthető való visszatéréshez, a küldő számítógépek óránkénti száma számlázzuk adattípusok:
+Ezt kiterjesztheti a számlázott adattípusokat küldő számítógépek száma óránként:
 
 ```Kusto
 union withsource = tt * 
@@ -124,11 +154,12 @@ union withsource = tt *
 | summarize dcount(computerName) by bin(TimeGenerated, 1h) | sort by TimeGenerated asc
 ```
 
-## <a name="billedsize"></a>\_BilledSize
-A  **\_BilledSize** tulajdonság határozza meg a mérete (bájt), amelyek számítjuk fel az Azure-fiókjával, ha  **\_IsBillable** igaz.
+## <a name="_billedsize"></a>\_BilledSize
+**A\_BilledSize** tulajdonság azt az adatmennyiséget adja meg bájtban, amely az Azure-fiókba kerül  **\_** , ha a számlázható értéke igaz.
+
 
 ### <a name="examples"></a>Példák
-Számítógép betöltött üzenetnek méretének megtekintéséhez használja a `_BilledSize` -tulajdonsággal, amely biztosítja a mérete (bájt):
+Ha meg szeretné tekinteni a számítógépen betöltött számlázható események méretét, használja `_BilledSize` a méretet bájtban megadó tulajdonságot:
 
 ```Kusto
 union withsource = tt * 
@@ -136,14 +167,34 @@ union withsource = tt *
 | summarize Bytes=sum(_BilledSize) by  Computer | sort by Bytes nulls last 
 ```
 
-A számítógép betöltött események száma megtekintéséhez használja a következő lekérdezést:
+Az előfizetéshez tartozó számlázható események méretének megtekintéséhez használja a következő lekérdezést:
+
+```Kusto
+union withsource=table * 
+| where _IsBillable == true 
+| parse _ResourceId with "/subscriptions/" SubscriptionId "/" *
+| summarize Bytes=sum(_BilledSize) by  SubscriptionId | sort by Bytes nulls last 
+```
+
+Ha szeretné megtekinteni, hogy mekkora a számlázható események száma egy erőforráscsoport esetében, használja a következő lekérdezést:
+
+```Kusto
+union withsource=table * 
+| where _IsBillable == true 
+| parse _ResourceId with "/subscriptions/" SubscriptionId "/resourcegroups/" ResourceGroupName "/" *
+| summarize Bytes=sum(_BilledSize) by  SubscriptionId, ResourceGroupName | sort by Bytes nulls last 
+
+```
+
+
+A számítógépen betöltött események számának megtekintéséhez használja a következő lekérdezést:
 
 ```Kusto
 union withsource = tt *
 | summarize count() by Computer | sort by count_ nulls last
 ```
 
-A számítógép betöltött számlázható események száma megtekintéséhez használja a következő lekérdezést: 
+A számítógépeken betöltött számlázható események számának megtekintéséhez használja a következő lekérdezést: 
 
 ```Kusto
 union withsource = tt * 
@@ -151,7 +202,7 @@ union withsource = tt *
 | summarize count() by Computer  | sort by count_ nulls last
 ```
 
-Ha meg szeretné tekinteni a számlázható adattípusok darabszáma adatot küldenek, adott számítógéphez, használja a következő lekérdezést:
+Egy adott számítógépről származó számlázható adattípusok számának megtekintéséhez használja a következő lekérdezést:
 
 ```Kusto
 union withsource = tt *
@@ -160,9 +211,8 @@ union withsource = tt *
 | summarize count() by tt | sort by count_ nulls last 
 ```
 
-
 ## <a name="next-steps"></a>További lépések
 
-- További információk [tárolt naplóadatokat az Azure Monitor](../log-query/log-query-overview.md).
-- Gyorsan egy leckében a [log-lekérdezések írása](../../azure-monitor/log-query/get-started-queries.md).
-- Gyorsan egy leckében a [a táblázatok összekapcsolása a naplólekérdezések](../../azure-monitor/log-query/joins.md).
+- További információ a [Azure monitor naplózási adatainak tárolásáról](../log-query/log-query-overview.md).
+- Vegyen fel egy leckét a [naplók írásához](../../azure-monitor/log-query/get-started-queries.md).
+- Bemutatjuk [, hogyan csatlakozhatnak táblákhoz a naplók lekérdezésében](../../azure-monitor/log-query/joins.md).

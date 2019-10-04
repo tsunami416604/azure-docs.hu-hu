@@ -1,6 +1,6 @@
 ---
-title: A figyelő számítási feladat feldolgozása – Azure portal |} A Microsoft Docs
-description: A figyelő az Azure SQL Data Warehouse az Azure portal használatával
+title: Munkaterhelés figyelése – Azure Portal | Microsoft Docs
+description: Azure SQL Data Warehouse figyelése a Azure Portal használatával
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,37 +10,37 @@ ms.subservice: manage
 ms.date: 03/22/2019
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6c8ce090039e3d5cc85c86d920710294de2165f9
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 176762e0d1c007f924d779a1b77dd52c7ed56e01
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58405782"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981488"
 ---
-# <a name="monitor-workload---azure-portal"></a>A figyelő számítási feladat feldolgozása – Azure portal
+# <a name="monitor-workload---azure-portal"></a>Munkaterhelés figyelése – Azure Portal
 
-Ez a cikk ismerteti a számítási feladat monitorozása az Azure portal használatával. Ez magában foglalja az Azure Monitor naplóira vizsgálja meg a lekérdezés végrehajtása és a számítási feladatok trendeket a log analytics használatával való beállításával [Azure SQL Data Warehouse](https://azure.microsoft.com/blog/workload-insights-with-sql-data-warehouse-delivered-through-azure-monitor-diagnostic-logs-pass/).
+Ez a cikk azt ismerteti, hogyan használható a Azure Portal a számítási feladatok figyelésére. Ebbe beletartozik Azure Monitor naplók beállítása a lekérdezés-végrehajtás és a számítási feladatok trendjeinek vizsgálatához a [Azure SQL Data Warehouse](https://azure.microsoft.com/blog/workload-insights-with-sql-data-warehouse-delivered-through-azure-monitor-diagnostic-logs-pass/)log Analytics használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Azure-előfizetés: Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
-- Azure SQL Data Warehouse: Fogja azt gyűjtése naplók egy SQL data warehouse-hoz. Ha egy SQL data warehouse kiépítése nem rendelkezik, tekintse meg a következő témakör utasításait [hozzon létre egy SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-tutorial).
+- Azure SQL Data Warehouse: Egy SQL Data Warehouse naplók gyűjtése történik. Ha nincs SQL Data Warehouse kiépítve, tekintse meg a [SQL Data Warehouse létrehozása](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-tutorial)című témakör utasításait.
 
-## <a name="create-a-log-analytics-workspace"></a>Log Analytics-munkaterület létrehozása
+## <a name="create-a-log-analytics-workspace"></a>Log Analytics munkaterület létrehozása
 
-Keresse meg a Log Analytics-munkaterületek a – Tallózás panel és a egy munkaterület létrehozása 
+Navigáljon Log Analytics munkaterületek Tallózás paneljére, és hozzon létre egy munkaterületet 
 
 ![Log Analytics-munkaterületek](media/sql-data-warehouse-monitor/log_analytics_workspaces.png)
 
-![Analytics-munkaterület hozzáadása](media/sql-data-warehouse-monitor/add_analytics_workspace.png)
+![Elemzési munkaterület hozzáadása](media/sql-data-warehouse-monitor/add_analytics_workspace.png)
 
-![Analytics-munkaterület hozzáadása](media/sql-data-warehouse-monitor/add_analytics_workspace_2.png)
+![Elemzési munkaterület hozzáadása](media/sql-data-warehouse-monitor/add_analytics_workspace_2.png)
 
-A munkaterületek további információért látogasson el a következő [dokumentáció](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#create-a-workspace).
+A munkaterületekkel kapcsolatos további információkért tekintse meg [](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace#create-a-workspace)az alábbi dokumentációt.
 
-## <a name="turn-on-diagnostic-logs"></a>Kapcsolja be a diagnosztikai naplók 
+## <a name="turn-on-diagnostic-logs"></a>Diagnosztikai naplók bekapcsolása 
 
-Hozzon létre naplókat az SQL data warehouse-ból a diagnosztikai beállítások konfigurálása. Naplók az egyenértékű a leggyakrabban használt teljesítménnyel kapcsolatos hibaelhárítás a DMV-vel az SQL Data Warehouse adattárházzal telemetriai nézetek állnak. Jelenleg a következő nézet használható:
+A diagnosztikai beállítások konfigurálásával naplófájlokat bocsáthat ki a SQL Data Warehouseból. A naplók az adatraktár telemetria-nézeteiből állnak, amelyek a SQL Data Warehouse leggyakrabban használt teljesítménnyel kapcsolatos hibaelhárítási DMV vonatkoznak. Jelenleg a következő nézetek támogatottak:
 
 - [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=aps-pdw-2016-au7)
 - [sys.dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?view=aps-pdw-2016-au7)
@@ -51,28 +51,28 @@ Hozzon létre naplókat az SQL data warehouse-ból a diagnosztikai beállításo
 
 ![Diagnosztikai naplók engedélyezése](media/sql-data-warehouse-monitor/enable_diagnostic_logs.png)
 
-Naplók is az Azure Storage, a Stream Analytics és a Log Analytics bocsátja ki. A jelen oktatóanyag esetében válassza ki a Log Analytics.
+A naplók az Azure Storage, Stream Analytics vagy Log Analytics számára is kiállíthatók. Ebben az oktatóanyagban válassza a Log Analytics lehetőséget.
 
-![Adja meg a naplók](media/sql-data-warehouse-monitor/specify_logs.png)
+![Naplók meghatározása](media/sql-data-warehouse-monitor/specify_logs.png)
 
-## <a name="run-queries-against-log-analytics"></a>A Log Analytics-lekérdezések futtatásához
+## <a name="run-queries-against-log-analytics"></a>Lekérdezések futtatása Log Analytics
 
-Keresse meg a Log Analytics-munkaterületet, ahol a következőket teheti:
+Navigáljon a Log Analytics munkaterületre, ahol a következőket teheti:
 
-- Napló lekérdezésekkel-naplók elemzése és ismételt használata lekérdezések mentése
-- Mentheti a lekérdezéseket újrafelhasználása
-- Riasztások létrehozása
-- PIN-kód lekérdezés eredményeit az irányítópulton
+- Naplók elemzése a naplófájlok használatával és a lekérdezések ismételt újbóli lekérdezése
+- Lekérdezések mentése ismételt használatra
+- Naplóbeli riasztások létrehozása
+- Lekérdezési eredmények rögzítése egy irányítópulton
 
-A naplólekérdezések képességeit a részletekért látogasson el a következő [dokumentáció](https://docs.microsoft.com/azure/azure-monitor/log-query/query-language).
+A naplózott lekérdezések képességeiről a következő [dokumentációban](https://docs.microsoft.com/azure/azure-monitor/log-query/query-language)olvashat bővebben.
 
-![Log Analytics-munkaterület szerkesztő](media/sql-data-warehouse-monitor/log_analytics_workspace_editor.png)
+![Log Analytics munkaterület-szerkesztő](media/sql-data-warehouse-monitor/log_analytics_workspace_editor.png)
 
 
 
-![Log Analytics-munkaterület lekérdezések](media/sql-data-warehouse-monitor/log_analytics_workspace_queries.png)
+![Log Analytics munkaterület-lekérdezések](media/sql-data-warehouse-monitor/log_analytics_workspace_queries.png)
 
-## <a name="sample-log-queries"></a>Mintalekérdezések napló
+## <a name="sample-log-queries"></a>Példák a naplók lekérdezésére
 
 
 
@@ -99,4 +99,4 @@ AzureDiagnostics
 ```
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy állítsa be és konfigurálta az Azure monitor naplóira, [testreszabása az Azure-irányítópultok](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards) , megoszthatja munkatársaival.
+Most, hogy beállította és konfigurálta az Azure monitor-naplókat, testreszabhatja az [Azure](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards) -irányítópultokat a csapaton belüli megosztáshoz.

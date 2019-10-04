@@ -1,7 +1,7 @@
 ---
 title: Adja meg az egyéni R-modulok
 titleSuffix: Azure Machine Learning Studio
-description: Ez a témakör ismerteti, hogyan hozhat létre, és üzembe helyezése az Azure Machine Learning Studióban, egy egyéni R modult. Ismerteti, milyen egyéni R-modulok és fájlokat adhat meg hozzájuk.
+description: Ez a témakör azt ismerteti, hogyan hozhat létre, és a egy egyéni R Studio telepítése. Ismerteti, milyen egyéni R-modulok és fájlokat adhat meg hozzájuk.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,16 +10,16 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 0dec86eff9b9df70514be6f32f3aad60bfb311ca
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6d330340ff09ddb6c2bec04259f964f2298dbffc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58120380"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65025065"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio"></a>Adja meg az egyéni R-modulok az Azure Machine Learning Studióban
 
-Ez a témakör ismerteti, hogyan hozhat létre, és üzembe helyezése az Azure Machine Learning Studióban, egy egyéni R modult. Ismerteti, milyen egyéni R-modulok és fájlokat adhat meg hozzájuk. Azt mutatja be, hogyan hozható létre a fájlokat, a modulok meghatározásához és a Machine Learning-munkaterület központi telepítés a modul regisztrálása. Az elemek és attribútumok az egyéni modult definíciójában használt majd ismerteti részletesen. Kiegészítő funkciók és a fájlok és több kimenetek használata is tárgyalja. 
+Ez a témakör azt ismerteti, hogyan hozhat létre, és a egy egyéni R Studio telepítése. Ismerteti, milyen egyéni R-modulok és fájlokat adhat meg hozzájuk. Azt mutatja be, hogyan hozható létre a fájlokat, a modulok meghatározásához és a Machine Learning-munkaterület központi telepítés a modul regisztrálása. Az elemek és attribútumok az egyéni modult definíciójában használt majd ismerteti részletesen. Kiegészítő funkciók és a fájlok és több kimenetek használata is tárgyalja. 
 
 
 
@@ -225,7 +225,7 @@ Például, ha módosítani szeretné a **egyéni sorok hozzáadása** modul kime
 ### <a name="arguments"></a>Argumentumok
 További adatok adható át az R függvény a meghatározott modul paraméterekkel a **argumentumok** elemet. A modul kiválasztásakor ezeket a paramétereket a Machine Learning a felhasználói felület a jobb szélső tulajdonságait tartalmazó ablaktáblán jelennek meg. Az argumentumok lehetnek, a támogatott típusok, vagy létrehozhat egy egyéni felsorolás, amikor szükséges. Hasonló a **portok** elemek **argumentumok** elemek rendelkezhet egy választható **leírás** elem, amely meghatározza a szöveg jelenik meg, amikor, vigye az egérmutatót a a paraméter neve.
 Egy modul, például a DefaultValue érték, a minValue és maxValue választható tulajdonságokkal, attribútumokat is hozzáadhatók bármelyik argumentum egy **tulajdonságok** elemet. Az érvényes tulajdonságok a **tulajdonságok** elem argumentum típusa határozza meg, és a támogatott argumentumtípusaival a következő szakaszban ismertetjük. Az argumentumok a **isOptional** tulajdonság **"true"** nem igénylik a felhasználónak meg kell adnia egy értéket. Ha az argumentum nincs megadva érték, majd a van nem függvénynek átadott argumentum a belépési pont. A belépési pont függvény megadása nem kötelező argumentumok kell explicit módon kell kezelnie a függvényt, például az a belépési ponthoz függvénydefiníció a NULL alapértelmezett értéket kapja. Nem kötelező argumentum csak érvényesíti a más argumentum megkötések, azaz a min vagy max, ha a felhasználó által megadott értéket.
-A bemenetek és kimenetek, rendkívül fontos, hogy a paraméterek értékűek egyedi azonosító tartozik. Ebben a gyors üzembe helyezési példában a társított azonosító paraméter lett *lapozófájl-kapacitás*.
+A bemenetek és kimenetek, rendkívül fontos, hogy a paraméterek rendelkezik-e hozzájuk társított egyedi azonosító értékeket. A jelen rövid példában a társított azonosító paraméter lett *lapozófájl-kapacitás*.
 
 ### <a name="arg-element"></a>Arg elem
 Egy modul paraméter használatával van definiálva a **Arg** gyermekeleme a **argumentumok** XML-definíciós fájljának szakaszában. A gyermek elemei a **portok** részben, a paramétereket a rendezése a **argumentumok** szakasz definiálja az elrendezést észlelt a UX a A paraméterek megjelennek az első le a felhasználói felület ugyanabban a sorrendben, amelyben az XML-fájlban vannak definiálva. A paraméterek a Machine Learning által támogatott típusok itt jelennek meg. 
@@ -327,7 +327,7 @@ Egy modul paraméter használatával van definiálva a **Arg** gyermekeleme a **
     </Arg>    
 
 * *Nem kötelező tulajdonságok*:
-  * **alapértelmezett** – az alapértelmezett tulajdonság értékét meg kell felelnie az egyik egy azonosítót tartalmazó a **elem** elemeket.
+  * **alapértelmezett** – az alapértelmezett tulajdonság értékét meg kell felelnie az egyik egy Azonosítót tartalmazó a **elem** elemeket.
 
 ### <a name="auxiliary-files"></a>Külső fájlok
 Összes fájl, amely az egyéni modul ZIP-fájlja kerül lesz használható végrehajtási idő alatt. Jelen könyvtárstruktúrák megmaradnak. Ez azt jelenti, sourcing works fájl azonos helyileg és az Azure Machine Learning Studio végrehajtását. 

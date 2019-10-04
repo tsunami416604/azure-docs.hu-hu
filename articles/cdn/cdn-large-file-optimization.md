@@ -7,19 +7,19 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: magattus
-ms.openlocfilehash: 9793348b47763e6de10992b9a8a4606fc532cc4d
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 4fe72985a799595908a0ff6bceb1a73dca823c8f
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094020"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593785"
 ---
 # <a name="large-file-download-optimization-with-azure-cdn"></a>Nagyméretű fájlok letöltési optimalizálása az Azure CDN-nel
 
@@ -125,7 +125,7 @@ A következő táblázatban megtalálható, a nagyméretű fájlok optimalizál�
 
 Állapot | Értékek 
 --- | --- 
-Támogatott fájltípusok | 3g, 2, 3gp, az ASP, avi, bz2, dmg, exe, f4v, flv, <br> GZ, hdp, iso, jxr, m4v, mkv, mov, mp4, <br> MPEG, mpg, mts, pkg, qt, erőforrás-kezelő, swf, tar, <br> TGZ, wdp, webm, webp, wma, wmv, zip  
+Támogatott fájltípusok | 3g2, 3gp, asf, avi, bz2, dmg, exe, f4v, flv, <br> gz, hdp, iso, jxr, m4v, mkv, mov, mp4, <br> MPEG, mpg, mts, pkg, qt, erőforrás-kezelő, swf, tar, <br> TGZ, wdp, webm, webp, wma, wmv, zip  
 Fájlok minimális mérete | 10 MB 
 Maximális fájlméret | 150 GB 
 Forrás kiszolgáló jellemzői | Támogatnia kell a bájttartomány-kérelmek 

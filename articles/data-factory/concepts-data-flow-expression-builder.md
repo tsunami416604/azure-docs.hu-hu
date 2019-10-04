@@ -1,80 +1,83 @@
 ---
-title: Az Azure Data Factory leképezési adatok folyamat Kifejezésszerkesztő
-description: Az Azure Data Factory-térképadatokat a Kifejezésszerkesztő folyamatok
+title: Azure Data Factory leképezési adatfolyam-Kifejezésszerkesztő
+description: A Azure Data Factory leképezési adatforgalmához tartozó Kifejezésszerkesztő
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 01/30/2019
-ms.openlocfilehash: df9cfb0c0e36f54c8b1fbee4def552c78e9d42c1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 09/30/2019
+ms.openlocfilehash: 67a6de6d85a58f48af4761e0b5d5b0a1a4d74b1a
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59359771"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703395"
 ---
-# <a name="mapping-data-flow-expression-builder"></a>Data Flow Kifejezésszerkesztő leképezése
+# <a name="mapping-data-flow-expression-builder"></a>Adatforgalmi kifejezés-szerkesztő leképezése
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Az Azure Data Factory leképezési adatfolyam látni fogja, amelyen megadhatja a kifejezéseket adatátalakítás kifejezés mezőkbe. Ezek a mezők oszlopok, mezők, változókat, paraméterek, az adatfolyam funkciókat használja. Kifejezés összeállítása, használja a Kifejezésszerkesztő, amely indítja el a kifejezés szövegmezőbe az átalakítás belül kattintva. Oszlopok átalakítása kiválasztásakor "Számított oszlop" beállítások néha is megjelenik. Gombra, amely elindítja a Kifejezésszerkesztő is látni fogja.
+Azure Data Factory leképezési adatfolyamatban megtalálhatja azokat a kifejezéseket, amelyekben kifejezéseket adhat meg az adatátalakításhoz. Ezekben a mezőkben oszlopok, mezők, változók, paraméterek és függvények használhatók az adatforgalomból. A kifejezés létrehozásához használja a kifejezés-szerkesztőt, amelyet az átalakítás során a kifejezés szövegmezőre kattintva indít el. Időnként a "számított oszlop" lehetőséget is láthatja az átalakítási oszlopok kiválasztásakor. Ha erre kattint, megjelenik a Kifejezésszerkesztő elindítva.
 
-![Expression Builder](media/data-flow/expression.png "Expression Builder")
+![Expression Builder](media/data-flow/xpb1.png "Expression Builder")
 
-A Kifejezésszerkesztő eszköz az alapértelmezett érték a szöveges szerkesztő lehetőséget. az automatikus kiegészítés funkció szintaxissal ellenőrzése és a kiemelés olvassa be a teljes Azure Data Factory adatfolyam hálózatiobjektum-modellt.
+A Kifejezésszerkesztő eszköz alapértelmezett értéke a szövegszerkesztő beállítás. az automatikus kiegészítés funkció a teljes Azure Data Factory adatfolyam-objektum modellből olvassa be a szintaxis-ellenőrzést és a kiemelést.
 
-![Automatikus kitöltés Kifejezésszerkesztő](media/data-flow/expb1.png "Kifejezésszerkesztő automatikus kiegészítés")
+![Expression Builder automatikus befejezése](media/data-flow/expb1.png "Expression Builder automatikus kiegészítése")
 
-## <a name="currently-working-on-field"></a>A mező jelenleg működik
+## <a name="build-schemas-in-output-schema-pane"></a>Sémák összeállítása a kimeneti séma ablaktáblán
 
-![Kifejezésszerkesztő](media/data-flow/exp3.png "éppen dolgozik")
+![Összetett oszlop]hozzáadása(media/data-flow/complexcolumn.png "Oszlopok hozzáadása")
 
-At bal felső részén a kifejezés a jelentéskészítő felhasználói felületén, látni fogja, amely jelenleg dolgozunk a mező neve "Jelenleg működik a" nevű mező. Csak a jelenleg működő mező, a kifejezés, amely a felhasználói felületen fejleszt lépnek érvénybe. Ha szeretne egy másik mező átalakítása, az adatok aktuális mentése és a legördülő jelöljön ki egy másik mezőt, és a többi mező kifejezésének felépítéséhez.
+A bal oldali kimeneti séma ablaktáblán látni fogja a módosított oszlopokat, és hozzáadja a sémához. Itt interaktív módon hozhat létre egyszerű és összetett adatstruktúrákat. Vegyen fel további mezőket az "oszlop hozzáadása" és a hierarchiák létrehozása az "aloszlop hozzáadása" használatával.
 
-## <a name="data-preview-in-debug-mode"></a>Adatelőnézet hibakeresési módban
+![Aloszlop hozzáadása](media/data-flow/addsubcolumn.png "aloszlop hozzáadása")
 
-![Kifejezésszerkesztő](media/data-flow/exp4b.png "kifejezés Adatelőnézet")
+## <a name="data-preview-in-debug-mode"></a>Az adatelőnézet hibakeresési módban
 
-Ha éppen dolgozik a kifejezések, igény szerint válthat hibakeresési módban az Azure Data Factory adatfolyam tervezési felületéhez a kifejezés, amely hoz létre az adatok eredményeit a folyamatban lévő élő előnézetének engedélyezése. Valós idejű élő hibakeresés engedélyezve van a kifejezéseket.
+![Expression Build](media/data-flow/exp4b.png "Expression – adatelőnézet")
 
-![Hibakeresési mód](media/data-flow/debugbutton.png "gomb hibakeresése")
+Ha az adatfolyam-kifejezéseken dolgozik, kapcsolja be a hibakeresési módot a Azure Data Factory adatfolyam tervezési felületéről, amely lehetővé teszi, hogy a rendszer az Ön által létrehozott kifejezésből élő, folyamatban lévő előnézetet jelenítse meg az adatok eredményeiről. A valós idejű élő hibakeresés engedélyezve van a kifejezésekhez.
 
+![Hibakeresési mód](media/data-flow/debugbutton.png "hibakeresése gomb")
 
-![Kifejezésszerkesztő](media/data-flow/exp5.png "kifejezés Adatelőnézet")
+A frissítés gombra kattintva frissítheti a kifejezés eredményét a forrás élő mintáján valós időben.
+
+![Expression Build](media/data-flow/exp5.png "Expression – adatelőnézet")
 
 ## <a name="comments"></a>Megjegyzések
 
-Megjegyzések hozzáadása a kifejezések egyetlen sor és többsoros megjegyzés szintaxisa:
+Megjegyzések hozzáadása a kifejezésekhez az egysoros és a többsoros Megjegyzés szintaxisának használatával:
 
-![Megjegyzések](media/data-flow/comments.png "megjegyzések")
+![Hozzászólások](media/data-flow/comments.png "megjegyzései")
 
 ## <a name="regular-expressions"></a>Reguláris kifejezések
 
-Az Azure Data Factory adatfolyam kifejezésnyelveket [teljes leírása itt található dokumentáció](https://aka.ms/dataflowexpressions), lehetővé teszi, hogy az funkciók, amelyek tartalmazzák a reguláris kifejezések szintaxisát. Reguláriskifejezés-függvényeket használatakor a Kifejezésszerkesztő megpróbálja értelmezése fordított perjel (\\), az escape-karaktersorozat. Ha fordított perjelet használ a reguláris kifejezés, vagy tegye a teljes regex órajel során végbemenő (\`) vagy egy dupla fordított perjelet.
+A Azure Data Factory adatáramlás kifejezésének nyelve, a [teljes referenciák dokumentációja itt](https://aka.ms/dataflowexpressions)lehetővé teszi a reguláris kifejezések szintaxisát tartalmazó függvények használatát. Reguláris kifejezések funkcióinak használatakor a Kifejezésszerkesztő a fordított perjelet (\\) fogja értelmezni Escape-karakteres sorozatként. Ha a reguláris kifejezésben fordított perjeleket használ, zárja be a teljes regexet a kullancsokban (\`), vagy használjon dupla fordított perjelet.
 
-Példa órajel során végbemenő használatával
+Példa a ticks használatával
 
 ```
 regex_replace('100 and 200', `(\d+)`, 'digits')
 ```
 
-vagy kettős perjel használatával
+vagy dupla perjel használatával
 
 ```
 regex_replace('100 and 200', '(\\d+)', 'digits')
 ```
 
-## <a name="addressing-array-indexes"></a>Tömb indexek-címzés
+## <a name="addressing-array-indexes"></a>Tömb indexek kezelése
 
-A tömbök visszaadó kifejezés funkciók szögletes zárójeleket [] használatával oldja meg a visszaadott tömb objektumában lévő egyetlen egyedi indexeket. A tömb a meglévőket-alapú.
+A tömböket visszaadó Expression függvények a szögletes zárójelek ([]) használatával kezelik a visszaadott tömb objektumon belüli indexeket. A tömb a-alapú.
 
-![Kifejezés Builder tömb](media/data-flow/expb2.png "kifejezés Adatelőnézet")
+![Expression Build Array](media/data-flow/expb2.png "kifejezés adatelőnézete")
 
-## <a name="handling-names-with-special-characters"></a>Speciális karaktereket tartalmazó neveket kezelése
+## <a name="handling-names-with-special-characters"></a>Nevek speciális karakterekkel való kezelésére
 
-Ha különleges karaktereket vagy a szóközt tartalmazó oszlopnevek, tegyük a kapcsos zárójelek elé.
+Ha speciális karaktereket vagy szóközöket tartalmazó oszlopnevek vannak, a nevet kapcsos zárójelekkel kell megadnia.
 * ```{[dbo].this_is my complex name$$$}```
 
 ## <a name="next-steps"></a>További lépések
 
-[Adatok átalakítása kifejezés felépítésének megkezdését](data-flow-expression-functions.md)
+[Az Adatátalakítási kifejezések létrehozásának megkezdése](data-flow-expression-functions.md)

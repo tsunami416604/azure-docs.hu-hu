@@ -3,7 +3,7 @@ title: A Mobile Apps használatának első lépései a Xamarin.Forms eszközkés
 description: Ezt az oktatóanyagot követve elkezdheti a Mobile Apps szolgáltatást Xamarin.Forms-alapú fejlesztésre használni.
 services: app-service\mobile
 documentationcenter: xamarin
-author: conceptdev
+author: elamalani
 manager: crdun
 ms.assetid: 5e692220-cc89-4548-96c8-35259722acf5
 ms.service: app-service-mobile
@@ -11,19 +11,24 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.author: crdun
-ms.openlocfilehash: 2e0a4b51e9140b9b3c0032980b7c6cd5a4d55638
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: bca0f0de7de321060635459c4435525f650c7467
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57761387"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446326"
 ---
 # <a name="create-a-xamarinforms-app-with-azure"></a>Xamarin.Forms-alkalmazás létrehozása az Azure-ral
 
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
+> [!NOTE]
+> A Visual Studio App Center fektet a mobilalkalmazás-fejlesztés központi új, integrált szolgáltatások. A fejlesztők a **hozhat létre**, **teszt** és **terjesztése** állíthat be folyamatos integrációt és teljesítést folyamat szolgáltatások. Az alkalmazás telepítve van, a fejlesztők monitorozható az állapot és az alkalmazás használatával használatát a **Analytics** és **diagnosztikai** -szolgáltatásokat, és kapcsolatba léphet a felhasználókat a **leküldéses** a szolgáltatás. A fejlesztők is kihasználhatják a **Auth** azok a felhasználók hitelesítéséhez és **adatok** szolgáltatás és a felhőbeli alkalmazások adatainak szinkronizálása. Tekintse meg [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-xamarin-forms-get-started) még ma.
+>
+
+## <a name="overview"></a>Áttekintés
 Ez az oktatóanyag azt ismerteti, hogyan adhat felhőalapú háttérszolgáltatásokat a Xamarin.Forms-mobilalkalmazásokhoz az Azure App Service Mobile Apps szolgáltatását használva háttérrendszerként. Létrehoz egy új Mobile Apps-háttéralkalmazást, illetve egy olyan egyszerű Xamarin.Forms-alapú teendőlista alkalmazást, amely az alkalmazásadatait az Azure-ban tárolja.
 
 Az oktatóanyag végrehajtása feltétele a Mobile Apps Xamarin.Forms-alkalmazásokra vonatkozó összes többi oktatóanyagának elérésének.
@@ -34,57 +39,35 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 * Aktív Azure-fiók. Ha nincs fiókja, regisztráljon az Azure próba-előfizetésére, és akár 10 ingyenes mobilalkalmazáshoz is hozzájuthat, amelyeket a próba-előfizetés lejárta után is tovább használhat. További információk: [Ingyenes Azure-próbaverzió](https://azure.microsoft.com/pricing/free-trial/).
 
-* A Xamarinhoz készült Visual Studio Tools a Visual Studio 2017-ben vagy a Visual Studio for Mac-ben. Útmutatást a [Xamarin telepítési oldalán][Install Xamarin] talál.
+* A Xamarin, a Visual Studio 2017 vagy újabb, illetve a Visual Studio-eszközök vagy a Visual Studio for Mac. Tekintse meg a [Xamarin telepítési lapja][Install Xamarin] útmutatást.
 
-* (választható) iOS-alkalmazás készítéséhez Xcode 9.0 vagy újabb verzióval rendelkező Mac szükséges. iOS-alkalmazások fejlesztéséhez a Visual Studio for Mac használható, vagy a Visual Studio 2017 (ha a Mac elérhető a hálózaton).
+* (választható) iOS-alkalmazás készítéséhez Xcode 9.0 vagy újabb verzióval rendelkező Mac szükséges. A Visual Studio for Mac, vagy a Visual Studio 2017 iOS-alkalmazások fejlesztéséhez használható, vagy később is használható (mindaddig, amíg a Mac az a hálózaton elérhető).
 
 ## <a name="create-a-new-mobile-apps-back-end"></a>Új Mobile Apps-háttéralkalmazás létrehozása
-
-Új Mobile Apps-háttéralkalmazást a következő módon hozhat létre:
-
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-Ezzel beállított egy Mobile App-háttéralkalmazást, amelyet a mobilos alkalmazásai használhatnak. A következő lépésben le kell töltenie egy kiszolgálóprojektet egy egyszerű teendőlista-háttéralkalmazáshoz, és közzé kell tennie az Azure-ban.
+## <a name="create-a-database-connection-and-configure-the-client-and-server-project"></a>Az ügyfél és kiszolgáló projekt egy adatbázis-kapcsolat létrehozása és konfigurálása
+[!INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
-## <a name="configure-the-server-project"></a>Kiszolgálóprojekt konfigurálása
+## <a name="run-the-xamarinforms-solution"></a>A Xamarin.Forms-megoldás futtatása
 
-Konfigurálja a kiszolgálóprojektet a Node.js vagy a .NET-háttéralkalmazás használatára az alábbi lépésekkel:
+A Visual Studio Tools for Xamarin szükségesek, nyissa meg a megoldást, tekintse meg a [Xamarin telepítési utasításokat][Install Xamarin]. Ha az eszközök már telepítve vannak, akkor a megoldást a következő lépesekben töltheti le és nyithatja meg:
 
-[!INCLUDE [app-service-mobile-configure-new-backend](../../includes/app-service-mobile-configure-new-backend.md)]
+### <a name="visual-studio-windows-and-mac"></a>A Visual Studio (Windows és Mac)
 
-## <a name="download-and-run-the-xamarinforms-solution"></a>A Xamarin.Forms-megoldás letöltése és futtatása
+1. Nyissa meg a [az Azure portal](https://portal.azure.com/) , és keresse meg a mobilalkalmazás, amelyet Ön hozott létre. Az a `Overview` panelen keresse meg az URL-címet, amely a nyilvános végpont számára. Például: a sitename for my app name "test123" lesz https://test123.azurewebsites.net.
 
-A megoldás megnyitásához a Xamarinhoz készült Visual Studio Tools szükséges. Lásd a [Xamarin telepítési útmutatót][Install Xamarin]. Ha az eszközök már telepítve vannak, akkor a megoldást a következő lépesekben töltheti le és nyithatja meg:
+2. Nyissa meg a fájlt `Constants.cs` ebben a mappában - xamarin.forms/ZUMOAPPNAME. Az alkalmazás neve `ZUMOAPPNAME`.
 
-### <a name="visual-studio"></a>Visual Studio
+3. A `Constants.cs` osztály, cserélje le `ZUMOAPPURL` változó fenti nyilvános végponthoz.
 
-1. Nyissa meg az [Azure Portal].
+    `public static string ApplicationURL = @"ZUMOAPPURL";`
 
-2. A mobilalkalmazás beállítási paneljén kattintson az (Üzemelő példány alatt található) **Első lépések** > **Xamarin.Forms** elemre. A 3. lépésben kattintson az **Új alkalmazás létrehozása** lehetőségre, ha még nincs kiválasztva.  Ezután kattintson a **Letöltés** gombra.
+    válik
 
-   Ez a művelet letölt egy projektet, amely tartalmazza a mobilalkalmazáshoz kapcsolódó ügyfélalkalmazást. Mentse el a tömörített projektfájlt a helyi számítógépen, és jegyezze fel a mentési helyét.
-
-3. Bontsa ki a letöltött projektet, és nyissa meg a Visual Studio 2017-ben.
-
-   ![Kibontott projekt a Visual Studióban][8]
-
+    `public static string ApplicationURL = @"https://test123.azurewebsites.net";`
+    
 4. Az alábbi utasításokat végrehajtva futtathatja az Androidos vagy Windowsos projekteket, és ha rendelkezik a hálózaton elérhető Mac-számítógéppel, az iOS-projektet is.
-
-### <a name="visual-studio-for-mac"></a>Visual Studio for Mac
-
-1. Nyissa meg az [Azure Portal].
-
-2. A mobilalkalmazás beállítási paneljén kattintson az (Üzemelő példány alatt található) **Első lépések** > **Xamarin.Forms** elemre. A 3. lépésben kattintson az **Új alkalmazás létrehozása** lehetőségre, ha még nincs kiválasztva.  Ezután kattintson a **Letöltés** gombra.
-
-   Ez a művelet letölt egy projektet, amely tartalmazza a mobilalkalmazáshoz kapcsolódó ügyfélalkalmazást. Mentse el a tömörített projektfájlt a helyi számítógépen, és jegyezze fel a mentési helyét.
-
-3. Bontsa ki a letöltött projektet, és nyissa meg a Visual Studio for Mac-ben.
-
-   ![Kibontott projekt a Visual Studio for Mac-ben][9]
-
-4. Az Androidos vagy iOS-es projektek futtatásához kövesse az alábbi utasításokat.
-
-
 
 ## <a name="optional-run-the-android-project"></a>Az Android-projekt futtatása (nem kötelező)
 
@@ -106,9 +89,7 @@ Ebben a szakaszban a Xamarin.Android-projektet fogja futtatni. Kihagyhatja ezt a
 
 2. A projekt fordításához és az alkalmazás Android-emulátoron való futtatásához válassza a **Run** (Futtatás) menüt, majd a **Start Debugging** (Hibakeresés indítása) lehetőséget.
 
-
-
-Az alkalmazásban írjon be egy értelmes szöveget, például *Xamarin-tanulás*, majd válassza a pluszjelet (**+**).
+Az alkalmazásban írjon be egy értelmes szöveget, például *Xamarin-tanulás*, majd válassza a pluszjelet ( **+** ).
 
 ![Androidos Teendők alkalmazás][11]
 
@@ -138,9 +119,7 @@ Ebben a szakaszban az iOS-eszközökhöz készült Xamarin.iOS-projektet fogja f
 
 2. A **Run** (Futtatás) menüben válassza a **Start Debugging** (Hibakeresés indítása) lehetőséget a projekt buildjének elkészítéséhez, és indítsa el az alkalmazást az iPhone-emulátoron.
 
-
-
-Az alkalmazásban írjon be egy értelmes szöveget, például *Xamarin-tanulás*, majd válassza a pluszjelet (**+**).
+Az alkalmazásban írjon be egy értelmes szöveget, például *Xamarin-tanulás*, majd válassza a pluszjelet ( **+** ).
 
 ![iOS-es Teendők alkalmazás][10]
 
@@ -167,9 +146,7 @@ Ebben a szakaszban a Xamarin.Forms Universal Windows Platform (UWP) projektet fo
 > [!NOTE]
 > A Windows-projekt macOS-en nem futtatható.
 
-
-
-Az alkalmazásban írjon be egy értelmes szöveget, például *Xamarin-tanulás*, majd válassza a pluszjelet (**+**).
+Az alkalmazásban írjon be egy értelmes szöveget, például *Xamarin-tanulás*, majd válassza a pluszjelet ( **+** ).
 
 Ez a művelet egy közzétételi kérést küld az Azure szolgáltatásban üzemeltetett új Mobile Apps-háttéralkalmazás számára. A kérelem adatai beillesztésre kerülnek a TodoItem táblába. A Mobile Apps-háttéralkalmazás visszaadja a táblában tárolt elemeket, amelyek egy listában jelennek meg.
 
@@ -183,34 +160,12 @@ Ez a művelet egy közzétételi kérést küld az Azure szolgáltatásban üzem
 
 Ha a megoldás fordítása során problémákat tapasztal, futtassa a NuGet csomagkezelőt, és frissítsen a `Xamarin.Forms` legújabb verziójára, az Android-projektben pedig frissítse a `Xamarin.Android` támogatási csomagjait. Előfordulhat, hogy a gyorsindítási projektek nem tartalmazzák a legújabb verziót.
 
-Vegye figyelembe, hogy az Android-projektjében hivatkozott összes támogatási csomagnak azonos verziójúnak kell lennie. Az [Azure Mobile Apps NuGet-csomag](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/) Android platform esetén `Xamarin.Android.Support.CustomTabs`-függőséggel rendelkezik, így ha a projektjében újabb támogatási csomagokat használ, akkor az ütközések elkerülése érdekében közvetlenül kell telepítenie ennek a csomagnak a szükséges verzióját.
-
-## <a name="next-steps"></a>További lépések
-
-* [Hitelesítés hozzáadása alkalmazáshoz](app-service-mobile-xamarin-forms-get-started-users.md) Ismerje meg, hogyan hitelesítheti az alkalmazás felhasználóit egy identitásszolgáltatóval.
-
-* [Leküldéses értesítések hozzáadása alkalmazáshoz](app-service-mobile-xamarin-forms-get-started-push.md) Ismerje meg, hogyan adhat leküldéses értesítéseket az alkalmazásához, illetve hogyan konfigurálhatja Mobile Apps-háttéralkalmazását az Azure Notification Hubs használatára a leküldéses értesítések küldéséhez.
-
-* [Alkalmazás offline szinkronizálásának engedélyezése](app-service-mobile-xamarin-forms-get-started-offline-data.md) Ismerje meg, hogyan adhat offline támogatást alkalmazásához egy Mobile Apps-háttéralkalmazás segítségével. A kapcsolat nélküli szinkronizálás lehetővé teszi a mobilalkalmazás adatainak megtekintését, hozzáadását és módosítását akkor is, ha nincs hálózati kapcsolat.
-
-* [A felügyelt ügyfél használata a Mobile Apps-alkalmazásokhoz](app-service-mobile-dotnet-how-to-use-client-library.md) Ismerje meg, hogyan működnek a felügyelt ügyfél-SDK-k a Xamarin-alkalmazásokban.
-
-* [Más Azure-szolgáltatások használata a Xamarin.Forms-zal](https://docs.microsoft.com/xamarin/xamarin-forms/data-cloud/) Olyan további Azure-funkciók hozzáadása a Xamarin.Forms-alkalmazásokhoz, mint a keresés, tárolás és a Cognitive Services.
-
-<!-- Anchors. -->
-[Get started with Mobile Apps back ends]:#getting-started
-[Create a new Mobile Apps back end]:#create-new-service
-[Next steps]:#next-steps
+Vegye figyelembe, hogy az Android-projektjében hivatkozott összes támogatási csomagnak azonos verziójúnak kell lennie. Az [Azure Mobile Apps NuGet csomag](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/) Android platform esetén `Xamarin.Android.Support.CustomTabs`-függőséggel rendelkezik, így ha a projektjében újabb támogatási csomagokat használ, akkor az ütközések elkerülése érdekében közvetlenül kell telepítenie ennek a csomagnak a szükséges verzióját.
 
 <!-- Images. -->
-[6]: ./media/app-service-mobile-xamarin-forms-get-started/xamarin-forms-quickstart.png
-[8]: ./media/app-service-mobile-xamarin-forms-get-started/xamarin-forms-quickstart-vs.png
-[9]: ./media/app-service-mobile-xamarin-forms-get-started/xamarin-forms-quickstart-xs.png
 [10]: ./media/app-service-mobile-xamarin-forms-get-started/mobile-quickstart-startup-ios.png
 [11]: ./media/app-service-mobile-xamarin-forms-get-started/mobile-quickstart-startup-android.png
 [12]: ./media/app-service-mobile-xamarin-forms-get-started/mobile-quickstart-startup-windows.png
 
 <!-- URLs. -->
 [Install Xamarin]: https://docs.microsoft.com/xamarin/cross-platform/get-started/installation/
-[Mobile app SDK]: https://go.microsoft.com/fwlink/?LinkId=257545
-[Azure Portal]: https://portal.azure.com/

@@ -8,12 +8,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: quickstart
 ms.date: 01/11/2019
-ms.openlocfilehash: 4c8d488021ca12a704a5c0a06bb0c491588bcaed
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: b2d68f878aed5ce400214b6bdf6e1c0d713043bb
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261689"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67670749"
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>Gyors útmutató: Munkafolyamat futtatása a Microsoft Genomics szolgáltatással
 
@@ -22,7 +22,7 @@ Ez a rövid útmutató bemutatja, hogyan tölthet be bementi adatokat az Azure B
 Bevezetés mindössze néhány lépésben: 
 1.  Állítsa be: Az Azure Portalon keresztül a Microsoft Genomics-fiók létrehozása és telepítése a Microsoft Genomics Python-klienst a helyi környezetben. 
 2.  Bemeneti adatok feltöltése: A Microsoft Azure storage-fiók létrehozása az Azure Portalon keresztül, és töltse fel a bemeneti fájlokhoz. A bemeneti fájloknak párosított végű beolvasásokból kell állniuk (fastq- vagy bam-fájlok).
-3.  Futtassa: Használja a Microsoft Genomics parancssori felületét a munkafolyamatok futtatásához a Microsoft Genomics szolgáltatással. 
+3.  Futtassa a következőt: Használja a Microsoft Genomics parancssori felületét a munkafolyamatok futtatásához a Microsoft Genomics szolgáltatással. 
 
 További információk a Microsoft Genomics szolgáltatásról: [Mi az a Microsoft Genomics?](overview-what-is-genomics.md)
 
@@ -38,10 +38,10 @@ Konfigurálja Genomics-fiókját az alábbi információkkal az előző képen l
 
  |**Beállítás**          |  **Ajánlott érték**  | **Mező leírása** |
  |:-------------       |:-------------         |:----------            |
- |Előfizetés         | Az Ön előfizetésének neve|Ez az Azure-szolgáltatásokhoz tartozó számlázási egység – Az előfizetései részleteivel kapcsolatban lásd az [előfizetéseket](https://account.azure.com/Subscriptions) ismertető cikket. |      
- |Erőforráscsoport       | MyResourceGroup       |  Az erőforráscsoportok használatával több Azure-erőforrást (Storage-fiók, Genomics-fiók stb.) rendezhet egy csoportba a könnyebb kezelhetőség érdekében. További információkért lásd: [Erőforráscsoportok](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups). Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) ismertető cikket. |
+ |Subscription         | Az Ön előfizetésének neve|Ez az Azure-szolgáltatásokhoz tartozó számlázási egység – Az előfizetései részleteivel kapcsolatban lásd az [előfizetéseket](https://account.azure.com/Subscriptions) ismertető cikket. |      
+ |Resource group       | MyResourceGroup       |  Az erőforráscsoportok használatával több Azure-erőforrást (Storage-fiók, Genomics-fiók stb.) rendezhet egy csoportba a könnyebb kezelhetőség érdekében. További információkért lásd: [Erőforráscsoportok](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups). Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) ismertető cikket. |
  |Fióknév         | MyGenomicsAccount     |Válasszon egyedi fiókazonosítót. Az érvényes nevekkel kapcsolatban lásd az [elnevezési szabályokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) ismertető cikket. |
- |Hely                   | USA nyugati régiója, 2.                    |    A szolgáltatás a következő régiókban érhető el: az USA 2. nyugati régiója, Nyugat-Európa, és Délkelet-Ázsia |
+ |Location                   | USA nyugati régiója, 2.                    |    A szolgáltatás a következő régiókban érhető el: az USA 2. nyugati régiója, Nyugat-Európa, és Délkelet-Ázsia |
 
 
 
@@ -57,7 +57,7 @@ A felhasználóknak telepíteniük kell a Pythont, valamint a Microsoft Genomics
 
 ### <a name="install-python"></a>Telepítse a Pythont
 
-A Microsoft Genomics Python-kliens a Python 2.7-es verziójával kompatibilis. 2.7.12-es vagy újabb verzió. A szöveg megírásának pillanatában a 2.7.15-ös a legújabb verzió. Javasoljuk a 2.7.14-es verzió használatát. A letöltés [itt](https://www.python.org/downloads/) található. 
+A Microsoft Genomics Python-kliens a Python 2.7-es verziójával kompatibilis. 2\.7.12-es vagy újabb verzió. A szöveg megírásának pillanatában a 2.7.15-ös a legújabb verzió. Javasoljuk a 2.7.14-es verzió használatát. A letöltés [itt](https://www.python.org/downloads/) található. 
 
 MEGJEGYZÉS: Python 3.x nem kompatibilis az Python 2.7.xx.  Az MSGen egy Python 2.7-alkalmazás. Ha az MSGen alkalmazást futtatja, ügyeljen arra, hogy az aktív Python-környezete 2.7.xx-es Python-verziót használjon. Ha az MSGen alkalmazást egy 3.x-es Python-verzióval használja, előfordulhat, hogy hibák jelentkeznek.
 
@@ -117,10 +117,10 @@ Konfigurálja Storage-fiókját az alábbi információkkal az előző képen l�
 
  |**Beállítás**          |  **Ajánlott érték**  | **Mező leírása** |
  |:-------------------------       |:-------------         |:----------            |
- |Előfizetés         | Az Azure-előfizetése |Az előfizetései részleteivel kapcsolatban lásd: [Előfizetések](https://account.azure.com/Subscriptions) |      
- |Erőforráscsoport       | MyResourceGroup       |  A Genomics-fiókéval megegyező erőforráscsoportot is választhatja. Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) ismertető cikket. |
+ |Subscription         | Az Azure-előfizetése |Az előfizetései részleteivel kapcsolatban lásd: [Előfizetések](https://account.azure.com/Subscriptions) |      
+ |Resource group       | MyResourceGroup       |  A Genomics-fiókéval megegyező erőforráscsoportot is választhatja. Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) ismertető cikket. |
  |Storage account name (Tárfiók neve)         | MyStorageAccount     |Válasszon egyedi fiókazonosítót. Az érvényes nevekkel kapcsolatban lásd az [elnevezési szabályokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) ismertető cikket. |
- |Hely                  | USA nyugati régiója, 2.                  | A kimenő forgalmi díjak, illetve a késés mértékének csökkentése érdekében használja ugyanazt a helyet, ahol a Genomics-fiókja található.  | 
+ |Location                  | USA nyugati régiója, 2.                  | A kimenő forgalmi díjak, illetve a késés mértékének csökkentése érdekében használja ugyanazt a helyet, ahol a Genomics-fiókja található.  | 
  |Teljesítmény                  | Standard                   | Az alapértelmezett beállítás a standard. A standard és a prémium szintű tárfiókokkal kapcsolatos további információ: [A Microsoft Azure Storage bemutatása](https://docs.microsoft.com/azure/storage/common/storage-introduction)    |
  |Fióktípus       | Blob Storage       |  A le- és feltöltés a blobtárolók esetében 2–5-ször gyorsabb az általános célú fiókokhoz képest. |
  |Replikáció                  | Helyileg redundáns tárolás                  | A helyileg redundáns tárolással a rendszer abban a régióban lévő adatközpontba replikálja az adatokat, amelyben a tárfiókot létrehozták. További információ: [Azure Storage replikáció](https://docs.microsoft.com/azure/storage/common/storage-redundancy)    |
@@ -152,7 +152,7 @@ Nyissa meg a config.txt fájlt, amelyet a Genomics-fiókból töltött le. A meg
 ![A Genomics konfigurációja](./media/quickstart-run-genomics-workflow-portal/genomics-config.png "A Genomics konfigurációja")
 
 
-Ha szeretné futtatni a GATK4, állítsa be a `process_name` gatk4 vagy gatk4-promóciós paramétert. A GATK4 előléptetés kapcsolatos további információkért látogasson el [ezt oldal](https://aka.ms/msgatk4).
+Ha szeretné futtatni a GATK4, állítsa be a `process_name` paramétert `gatk4`.
 
 Alapértelmezés szerint a Genomics szolgáltatás VCF fájlok jelenít meg. Ha lenne egy kimeneti ahelyett, hogy egy VCF gVCF hasonló kimenet (egyenértékű `-emitRefConfidence` GATK a 3.x és `emit-ref-confidence` GATK a 4.x-es), adja hozzá a `emit_ref_confidence` paramétert a `config.txt` , beállíthatja azt a `gvcf`, a fenti ábrán látható módon.  Vissza a kimeneti VCF módosításához vagy távolítsa el azt a `config.txt` fájlt, vagy állítsa be a `emit_ref_confidence` paramétert `none`. 
 

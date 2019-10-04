@@ -9,11 +9,11 @@ ms.date: 12/03/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 72ddd0b6cd6c3e12417d3698c403f89312b531f4
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53111914"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67178940"
 ---
 A VNet – VNet – gyakori kérdések VPN gateway-kapcsolatok vonatkozik. További információ a virtuális hálózatok közötti társviszony-létesítés: [virtuális hálózatok közötti társviszony](../articles/virtual-network/virtual-network-peering-overview.md).
 

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 8cc5dbb907c342b766cebe6da36cf580ddac5e2c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55888700"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179151"
 ---
 #### <a name="to-install-regular-hotfixes-via-windows-powershell-for-storsimple"></a>Storsimple-höz készült Windows Powershellen keresztül rendszeres gyorsjavítások telepítése
 1. Az eszköz soros konzoljához való csatlakozáshoz. További információkért lásd: [1. lépés: Csatlakozás soros konzolon](../articles/storsimple/storsimple-update-device.md#step1).

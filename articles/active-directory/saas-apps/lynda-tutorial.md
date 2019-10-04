@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f20c917a889450f0eacd34e86683b4346681cfc
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: df563eaac68f8293664f3b79692ab6d4647b3e71
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59258844"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67097834"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lyndacom"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Lynda.com
 
@@ -54,7 +54,7 @@ Az Azure AD integrálása a Lynda.com konfigurálásához hozzá kell Lynda.com 
 
 **Lynda.com hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

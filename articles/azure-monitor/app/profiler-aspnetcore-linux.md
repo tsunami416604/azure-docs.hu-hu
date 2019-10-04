@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: cweining
 ms.openlocfilehash: 35789cc1e516fb24d5e985e12b44fe3cd01b795d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59790155"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60306482"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Az ASP.NET Core Azure Linux-webalkalmazások Application Insights Profiler-profil
 
@@ -27,7 +27,7 @@ Ismerje meg, hogy mennyi időt vesz igénybe az egyes módszerek az élő webalk
 
 Ez az útmutató befejeztével az alkalmazás például a képen látható a nyomkövetés Profiler-nyomkövetések képes összegyűjteni. Ebben a példában a Profiler nyomkövetést azt jelzi, hogy egy bizonyos webes kérés lassú várakozással töltött idő miatt. A *gyakori elérésű útvonal* egy személy ikon jelöli, amelyet a rendszer lassítása az alkalmazást. A **kapcsolatos** metódus az a **HomeController** szakaszban van a webalkalmazás lassítása, mert a metódust hívja a **Thread.Sleep** függvény.
 
-![Profiler hívásláncai](./media/profiler-aspnetcore-linux/profiler-traces.png)
+![Profiler-nyomkövetések](./media/profiler-aspnetcore-linux/profiler-traces.png)
 
 ## <a name="prerequisites"></a>Előfeltételek
 Összes Windows, Linux és Mac fejlesztési környezetre vonatkozik az alábbi utasításokat:

@@ -1,89 +1,89 @@
 ---
-title: Azure Data Catalog-terminológia
-description: Ez a cikk mutatja be a fogalmakat és használja az Azure Data Catalog dokumentációja feltételeit.
+title: Azure Data Catalog terminológia
+description: Ez a cikk a Azure Data Catalog dokumentációjában használt fogalmakat és kifejezéseket ismerteti.
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 04/05/2019
-ms.openlocfilehash: a6f2cf1dcee6a85376c8d767e57c504b6b246e5d
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.date: 08/01/2019
+ms.openlocfilehash: d6c813dec3922334f7462b1226ea22371fd5f43b
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011384"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736292"
 ---
-# <a name="azure-data-catalog-terminology"></a>Azure Data Catalog-terminológia
+# <a name="azure-data-catalog-terminology"></a>Azure Data Catalog terminológia
 
-Ez a cikk mutatja be a fogalmakat és használja az Azure Data Catalog dokumentációja feltételeit.
+Ez a cikk a Azure Data Catalog dokumentációjában használt fogalmakat és kifejezéseket ismerteti.
 
 ## <a name="catalog"></a>Katalógus
 
-Az Azure Data Catalog egy felhőalapú metaadat-adattár, amely során források és az eszközöket regisztrálni lehet. A katalógus egy központi tárolóhely adatforrások kinyert szerkezeti metaadatokat és a felhasználók által hozzáadott leíró metaadatok funkcionál.
+A Azure Data Catalog egy felhőalapú metaadat-tárház, amelyben az adatforrások és az adategységek regisztrálhatók. A katalógus központi tárolóhelyként szolgál az adatforrásokból kinyert szerkezeti metaadatokhoz, valamint a felhasználók által hozzáadott leíró metaadatokhoz.
 
 ## <a name="data-source"></a>Adatforrás
 
-Egy adatforrás, a rendszer vagy a tároló, amely kezeli az adategységeket. Ilyenek például az SQL Server-adatbázisok, Oracle-adatbázisok, SQL Server Analysis Services-adatbázisok (táblázatos vagy többdimenziós) és az SQL Server Reporting Services-kiszolgálóval.
+Az adatforrások olyan rendszerek vagy tárolók, amelyek az adategységeket kezelik. Ilyenek például SQL Server adatbázisok, Oracle-adatbázisok, SQL Server Analysis Services-adatbázisok (táblázatos vagy többdimenziós) és SQL Server Reporting Services-kiszolgálók.
 
 ## <a name="data-asset"></a>Adategység
 
-Adategységei számára a belüli a katalógusban regisztrált adatforrásokat. Ilyenek például az SQL Server-táblák és nézetek, Oracle-táblák és nézetek, SQL Server Analysis Services mértékek, dimenziók és KPI-k, és az SQL Server Reporting Services-jelentések.
+Az adategységek olyan objektumok, amelyek a katalógusban regisztrálható adatforrásokon belül találhatók. Ilyenek például SQL Server táblák és nézetek, Oracle-táblák és nézetek, SQL Server Analysis Services mértékek, méretek és KPI-k, valamint SQL Server Reporting Services jelentések.
 
-## <a name="data-asset-location"></a>Az adatok eszköz helye
+## <a name="data-asset-location"></a>Adategység helye
 
-A katalógus helyét egy adatforrás vagy az adategységhez, amely használható a forrás egy ügyfélalkalmazással kapcsolódni tárolja. A formátum és a részletek a hely változnak az az adatforrás típusa alapján. Például egy SQL Server-táblát úgy azonosítható a négyrészes név – a kiszolgáló neve, a adatbázis neve, a séma neve, a objektum neve – bár egy SQL Server Reporting Services jelentés azonosíthatja azokat az URL-CÍMÉT.
+A katalógus egy adatforrás vagy adategység helyét tárolja, amely a forráshoz való kapcsolódáshoz használható ügyfélalkalmazás használatával. A hely formátuma és részletei az adatforrás típusától függően változnak. Például egy SQL Server tábla azonosítható a négy részének nevével, a kiszolgáló nevét, az adatbázis nevét, a séma nevét, az objektum nevét, míg a SQL Server Reporting Services jelentés az URL-címmel azonosítható.
 
 ## <a name="structural-metadata"></a>Szerkezeti metaadatok
 
-Szerkezeti metaadatokat egy adategységhez szerkezetét leíró adatforrás kinyert metaadatok. Ez magában foglalja az eszközök helyét, az objektum neve és típusa és további típusspecifikus jellemzőit. Például a táblák és nézetek szerkezeti metaadatokat tartalmaz, nevét és az objektum oszlopok adattípusát.
+A strukturális metaadatok az adategység szerkezetét leíró adatforrásból kinyert metaadatok. Ebbe beletartozik az eszközök helye, az objektum neve és típusa, valamint a további Type-specifikus jellemzők. A táblák és nézetek szerkezeti metaadatai például tartalmazzák az objektum oszlopainak nevét és adattípusait.
 
-## <a name="descriptive-metadata"></a>A leíró metaadatok
+## <a name="descriptive-metadata"></a>Leíró metaadatok
 
-A leíró metaadatok célját vagy egy adategységet célját leíró metaadatok. Általában a leíró metaadatok használatával az Azure Data Catalog portál katalógus felhasználói által hozzáadott, de azt is kinyerésének az adatforrás regisztrációja során. Például az Azure Data Catalog-regisztráló eszköz fogja kinyerni leírások Description tulajdonságában, illetve az SQL Server Analysis Services és az SQL Server Reporting Services a [kiterjesztett tulajdonság ms_description](https://technet.microsoft.com/library/ms190243.aspx) SQL-ben Server-adatbázisok, ha ezek a tulajdonságok vannak-e töltve értékekkel.
+A leíró metaadatok olyan metaadatok, amelyek egy adategység célját vagy szándékát írják le. Általában a Azure Data Catalog portál használatával adja hozzá a katalógus-felhasználók a leíró metaadatokat, de az adatforrásból is kinyerhető a regisztráció során. A Azure Data Catalog regisztrációs eszköz például Kinyeri a leírásokat a SQL Server Analysis Services és a SQL Server Reporting Services Description tulajdonságában, illetve a SQL Server-adatbázisok [ms_description kiterjesztett tulajdonságában](https://technet.microsoft.com/library/ms190243.aspx) , ha Ezek a tulajdonságok értékekkel vannak feltöltve.
 
 ## <a name="request-access"></a>Hozzáférés kérése
 
-Leíró metaadatokat egy adategységhez tájékoztatást arról, hogyan kérhet hozzáférést az adategységhez vagy adatforrás is tartalmazhat. Ez az információ egyike jelenik meg az adatok eszköz helyét, és tartalmazhat egy vagy több, a következő lehetőségek közül:
+Az adategység leíró metaadatai tartalmazhatják az adategységhez vagy az adatforráshoz való hozzáférés kérésének módját. Ezek az adatok az adategység helyeként jelennek meg, és az alábbi lehetőségek közül egyet vagy többet tartalmazhatnak:
 
-* A felhasználó vagy az adatforráshoz való hozzáférés biztosítása felelős csapat e-mail-cím.
-* Az URL-címe a dokumentált folyamat, amely a felhasználók követnie kell a hozzáférést az adatforráshoz.
-* Egy identitás- és hozzáférés-kezelési eszköz (például a Microsoft Identity Manager) az adatforrás eléréséhez használható URL-címe
-* Egy szabad szöveges bejegyzést, amely leírja, hogyan felhasználók is hozzáférhetnek az adatforrás.
+* Az adatforráshoz való hozzáférés biztosításához felelős felhasználó vagy csoport e-mail-címe.
+* A dokumentált folyamat URL-címe, amelyet a felhasználóknak követniük kell, hogy hozzáférjenek az adatforráshoz.
+* Az adatforráshoz való hozzáféréshez használható identitás-és hozzáférés-kezelési eszköz (például Microsoft Identity Manager) URL-címe.
+* Egy ingyenes szöveges bejegyzés, amely leírja, hogy a felhasználók hogyan férhetnek hozzá az adatforráshoz.
 
 ## <a name="preview"></a>Előzetes verzió
 
-Egy minta Azure Data Catalog a pillanatkép legfeljebb 20 bejegyzést, amely a regisztráció során az adatforrásból kinyert, és a katalógusban az adatok adategység metaadatait tárolja. Az előnézet segítségével felhasználók számára egy adategységet értelmezheti annak funkciójára és céljára. Más szóval minta adatmegjelenítési lehet még értékesebb, mint a oszlopneveket és adattípusokat.
-Előzetes verziók csak a táblák és nézetek támogatják, és kell lennie explicit módon a felhasználó által kiválasztott regisztrációja során.
+A Azure Data Catalog egy előzetes verziója legfeljebb 20 rekordot tartalmaz, amelyeket a rendszer a regisztráció során kinyerheti az adatforrásból, és a katalógusban tárolhatja az adategység metaadatainak használatával. Az előzetes verzió segíthet az adategységeket felderítő felhasználók számára, hogy jobban megértsék a funkcióját és célját. Más szóval a mintaadatok meglátása értékesebb lehet, mint az oszlopnevek és az adattípusok.
+Az előzetes verziók csak táblák és nézetek esetén támogatottak, és a felhasználónak explicit módon ki kell választania a regisztráció során.
 
 ## <a name="data-profile"></a>Adatprofil
 
-Az Azure Data Catalog egy adatprofil a regisztráció során az adatforrásból kinyert, és tárolja az adatokat az eszközintelligencia metaadatokkal a katalógusban regisztrált adatforrásokat adategység metaadatait táblaszintű és oszlopszintű pillanatképét. Segíthet az adatok profil felhasználók számára egy adategységet értelmezheti annak funkciójára és céljára. Előzetes verziók hasonlóan adatok profilokat kell kell explicit módon a felhasználó által kiválasztott regisztrációja során.
+A Azure Data Catalog adatprofilja egy olyan regisztrált adategységre vonatkozó táblázat szintű és oszlopos metaadatokat tartalmazó pillanatkép, amely az adatforrásból kinyerhető a regisztráció során, és a katalógusban az adategység metaadatainak használatával tárolható. Az adatprofil segíthet az adategységeket felderítő felhasználók számára, hogy jobban megértsék a funkcióját és célját. Az előzetes verziókhoz hasonlóan az adatprofilokat a felhasználónak explicit módon kell kiválasztania a regisztráció során.
 
 > [!NOTE]
-> Egy adatprofil kibontása nagy táblák és nézetek az erőforrás-igényes művelet lehet, és jelentősen növelheti a adatforrást regisztrálni szükséges időt.
+> Az adatprofil kinyerése költséges művelet lehet a nagyméretű táblák és nézetek esetében, és jelentősen növelheti az adatforrások regisztrálásához szükséges időt.
 
 
-## <a name="user-perspective"></a>Felhasználó szemszögéből
+## <a name="user-perspective"></a>Felhasználói perspektíva
 
-Az Azure Data Catalog minden felhasználó biztosíthatja a leíró metaadatok regisztrált adategység. Minden felhasználó rendelkezik egy különálló perspektíva az adatokkal és annak használatára. Például adja meg a kiszolgáló felelős rendszergazda előfordulhat, hogy a szolgáltatói szerződés (SLA) vagy a biztonsági mentési Időablakok; adatait egy az adatgazdai nyújthat az üzleti dokumentációs hivatkozásokat feldolgozza az adatokat támogatja; és elemző előfordulhat, hogy ismertesse a feltételeit, amelyek más elemzők számára leginkább releváns, és amely lehet a legértékesebb, ezek a felhasználók, akiknek szükség van a megismerni és értelmezni az adatokat.
+A Azure Data Catalogban bármely felhasználó leíró metaadatokat adhat meg a regisztrált adategységekhez. Minden felhasználónak külön perspektívája van az adatra és annak használatára. A kiszolgálókért felelős rendszergazda például megadhatja a szolgáltatói szerződés (SLA) vagy a biztonsági mentési ablakok részleteit; az adatkezelők az által támogatott üzleti folyamatokra mutató hivatkozásokat is tartalmazhatnak. az elemzők pedig leírást adhatnak a más elemzőknek leginkább megfelelő feltételekről, amelyek pedig az adatokat felderíteni és értelmezni igénylő felhasználók számára is hasznosak lehetnek.
 
-A szempontok mindegyikének természetüknél fogva értékes, és az Azure Data Catalog minden felhasználó a megfelelő, kifejező, amíg minden felhasználó használhatja ezt az információt megtudhatja, hogy az adatok és a cél információkat biztosítja.
+Ezek a perspektívák természetüknél fogva értékesek, és Azure Data Catalog minden felhasználó megadhatja azokat az adatokat, amelyek hasznosak lehetnek számukra, míg az összes felhasználó ezeket az információkat felhasználhatja az adatok és annak céljának megismerésére.
 
 ## <a name="expert"></a>Szakértő
 
-Szakértő az egy felhasználó, aki az adategység-megalapozott "szakértői" perspektívát tartalmazóként lett azonosítva. Bármely felhasználó adhat hozzá az adott eszköz számára szakértőként maguk vagy egy másik felhasználó. Szakértőként alatt felsorolt nem tartalmazza automatikusan az Azure Data Catalog; további jogosultságokra Ez lehetővé teszi a felhasználók könnyen elérhetők az adott perspektívákat, amelyek a legnagyobb valószínűséggel lehet hasznos, ha egy eszköz a leíró metaadatok áttekintése.
+A szakértő olyan felhasználó, aki egy adategységre vonatkozó tájékozott "szakértői" perspektívával rendelkezik. Bármely felhasználó hozzáadhat önmagához vagy egy másik felhasználóhoz szakértőként egy adott eszközhöz. A szakértőként való Listázás nem nyújt további jogosultságokat a Azure Data Catalog; lehetővé teszi a felhasználók számára, hogy könnyen megtalálják azokat a perspektívákat, amelyek a legvalószínűbben hasznosak az eszköz leíró metaadatainak áttekintéséhez.
 
 ## <a name="owner"></a>Tulajdonos
 
-A tulajdonos az kezeléséhez az Azure Data Catalog adategység további jogosultságokkal rendelkező felhasználóként. Felhasználók regisztrált adategységek tulajdonjogát, és az tulajdonosok, társtulajdonosok adhat hozzá más felhasználókat. További információkért lásd: [adategységek felügyelete](data-catalog-how-to-manage.md)  
+A tulajdonos olyan felhasználó, aki további jogosultságokkal rendelkezik a Azure Data Catalog adategységének kezeléséhez. A felhasználók tulajdonba vehetik a regisztrált adategységeket, és a tulajdonosok más felhasználókat is hozzáadhatnak tulajdonosként. További információ: az adategységek [kezelése](data-catalog-how-to-manage.md)  
 
 > [!NOTE]
-> Tulajdonosi és felügyeleti csak az a az Azure Data Catalog Standard kiadásában érhetők el.
+> A tulajdonosi és a felügyeleti szolgáltatás csak a Azure Data Catalog standard kiadásában érhető el.
 
 ## <a name="registration"></a>Regisztráció
 
-Regisztráció az adatok eszköz metaadatok beolvasása egy adatforrásból, és másolja az Azure Data Catalog szolgáltatást. Regisztrált adategységeket ezután feliratozva és felderítése.
+A regisztráció az adategység metaadatainak adatforrásból való kinyerésének és a Azure Data Catalog szolgáltatásba való másolásának a feladata. A regisztrált adategységeket ezután megjegyzéseket és felderíteni lehet.
 
 ## <a name="next-steps"></a>További lépések
 
-[Rövid útmutató: Hozzon létre egy Azure Data Catalog](data-catalog-get-started.md) 
+[Rövid útmutató: Azure Data Catalog létrehozása](data-catalog-get-started.md) 

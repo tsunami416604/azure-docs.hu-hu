@@ -1,44 +1,44 @@
 ---
-title: Az Azure Active Directory hitelesítési protokolljai |} A Microsoft Docs
-description: A támogatott által az Azure Active Directory (AD) hitelesítési protokollokat áttekintése
+title: Azure Active Directory hitelesítési protokollok | Microsoft Docs
+description: A Azure Active Directory (AD) által támogatott hitelesítési protokollok áttekintése
 documentationcenter: dev-center-name
-author: CelesteDG
+author: rwike77
 services: active-directory
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.assetid: 7a838ae2-c24c-4304-b6c0-e77fb888e6c0
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/27/2017
-ms.author: celested
+ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 937aa5d5874ff2915bfb51d289bfb1aac44a0530
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f292d4804adf7e1a58e5c2097f689aac182ff783
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207823"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68835491"
 ---
-# <a name="azure-active-directory-authentication-protocols"></a>Az Azure Active Directory hitelesítési protokolljai
-Az Azure Active Directory (Azure AD) közül a legszélesebb körben használt hitelesítési és engedélyezési protokollokat támogatja. Ez a szakasz témakörei ismertetik a támogatott protokollok és a végrehajtásuk az Azure ad-ben. A témakörök támogatott jogcímtípusok, az összevonási metaadatok használatát bemutató áttekintését tartalmazza, az OAuth 2.0 részletes. SAML 2.0 protokoll dokumentációja és a egy hibaelhárítási szakaszt.
+# <a name="azure-active-directory-authentication-protocols"></a>Hitelesítési protokollok Azure Active Directory
+A Azure Active Directory (Azure AD) számos, a legszélesebb körben használt hitelesítési és engedélyezési protokollt támogat. A szakasz témakörei a támogatott protokollokat és azok megvalósítását írják le az Azure AD-ben. A témakörökbe beletartozik a támogatott jogcím-típusok áttekintése, az összevonási metaadatok használatának bemutatása, részletes OAuth 2,0. és a SAML 2,0 protokoll dokumentációját, valamint egy hibaelhárítási szakaszt.
 
-## <a name="authentication-protocols-articles-and-reference"></a>Hitelesítési protokollok, cikkek és referencia
-* [Fontos információk kapcsolatos aláíró kulcs váltása az Azure ad-ben](active-directory-signing-key-rollover.md) – további információ az Azure AD aláírási kulcsváltás kiadása ütemben történik, a módosítások automatikusan frissíti a kulcs és a vitát a következőhöz: a leggyakoribb alkalmazási frissítése.
-* [Támogatott Token- és jogcímtípusok](v1-id-and-access-tokens.md) – ismerje meg a jogkivonatok, amelyek az Azure AD kibocsát jogcímeket.
-* [Összevonási metaadatok](azure-ad-federation-metadata.md) – ismerje meg, hogyan keresse meg és értelmezni a metaadatok dokumentumok, amelyek az Azure AD-hoz létre.
-* [Az Azure AD OAuth 2.0-s](v1-protocols-oauth-code.md) – ismerje meg az OAuth 2.0 megvalósítását az Azure ad-ben.
-* [OpenID Connect 1.0](v1-protocols-openid-connect-code.md) – ismerje meg, hogyan lehet OAuth 2.0, egy engedélyezési protokollt használnak a hitelesítéshez.
-* [Szolgáltatások közötti hívások ügyfél-hitelesítő adatok](v1-oauth2-client-creds-grant-flow.md) -szolgáltatások közötti hívások OAuth 2.0 ügyfél-hitelesítő adatok megadási folyamatában használata.
-* [Szolgáltatások közötti hívások-alapú meghatalmazásos folyamat](v1-oauth2-on-behalf-of-flow.md) -szolgáltatások közötti hívások OAuth 2.0-alapú meghatalmazásos folyamat használata.
-* [SAML-protokoll referenciája](active-directory-saml-protocol-reference.md) – ismerje meg az Azure AD egyszeri bejelentkezés és egyszeri kijelentkezéses SAML profilok.
+## <a name="authentication-protocols-articles-and-reference"></a>A hitelesítési protokollok cikkei és referenciái
+* [Fontos információk az Azure ad](active-directory-signing-key-rollover.md) -beli aláírási kulcs átváltásáról – Ismerje meg az Azure ad aláírási kulcsának átváltási ritmusát, a kulcs automatikus frissítését, valamint a leggyakoribb alkalmazás-forgatókönyvek frissítését ismertető témakört.
+* [Támogatott jogkivonatok és](v1-id-and-access-tokens.md) jogcímek – Ismerje meg az Azure ad által felmerülő jogkivonatokban lévő jogcímeket.
+* [Összevonási metaadatok](azure-ad-federation-metadata.md) – megismerheti az Azure ad által generált metaadatokat tartalmazó dokumentumok megkeresését és értelmezését.
+* [OAuth 2,0 az Azure ad-ben](v1-protocols-oauth-code.md) – Ismerje meg a OAuth 2,0 megvalósítását az Azure ad-ben.
+* [OpenID Connect 1,0](v1-protocols-openid-connect-code.md) – Ismerje meg, hogyan használható az OAuth 2,0, hitelesítési protokoll a hitelesítéshez.
+* [Szolgáltatások közötti hívások ügyfél](v1-oauth2-client-creds-grant-flow.md) -hitelesítő adatokkal – megtudhatja, hogyan használhatja a OAuth 2,0-ügyfél hitelesítő adatait a szolgáltatás és a szolgáltatás közötti hívások megadására.
+* [A szolgáltatás és a szolgáltatás közötti hívások hívása folyamaton](v1-oauth2-on-behalf-of-flow.md) keresztül – megtudhatja, hogyan használhatja a OAuth 2,0-et a szolgáltatás és a szolgáltatás közötti hívásokhoz.
+* [SAML protokoll referenciája](active-directory-saml-protocol-reference.md) – Ismerje meg az Azure ad egyszeri bejelentkezéssel és egyszeri kijelentkezési SAML-profiljaival kapcsolatos tudnivalókat.
 
 ## <a name="see-also"></a>Lásd még:
-[Az Azure Active Directory fejlesztői útmutatója](v1-overview.md)
+[Azure Active Directory fejlesztői útmutató](v1-overview.md)
 
-[Az Active Directory-Kódminták](sample-v1-code.md)
+[Active Directory kód mintái](sample-v1-code.md)

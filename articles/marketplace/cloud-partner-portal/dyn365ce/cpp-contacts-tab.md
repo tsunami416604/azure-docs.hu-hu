@@ -1,25 +1,18 @@
 ---
-title: Dynamics 365 for Customer Engagement ajánlat partnerek lap – Azure Marketplace-en |} A Microsoft Docs
+title: Dynamics 365 for Customer Engagement kínálnak az ügyfelek lapon |} Az Azure Marketplace-en
 description: Konfigurálja a kapcsolattartási adatait a Dynamics 365 Customer Engagement ajánlat az appsource-ban Marketplace-en.
 services: Dynamics 365 for Customer Engagement, Azure, AppSource, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
-ms.date: 12/27/2018
-ms.author: pbutlerm
-ms.openlocfilehash: e15b20c4b874e68c09321e00604aed24b7970371
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.date: 04/24/2019
+ms.author: pabutler
+ms.openlocfilehash: cdd3d01c9295ef5ae8e7bc1936b5926fb38cfe77
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54083038"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64942517"
 ---
 # <a name="azure-application-contacts-tab"></a>Az Azure application névjegyek lapja
 
@@ -30,22 +23,22 @@ Használja a **névjegyek** fülre, és adja meg a termékgondozó csoportja és
 
 ## <a name="specify-customer-and-engineering-contacts"></a>Adja meg az ügyfél és a mérnöki csapathoz névjegyek
 
-Adja meg a következő értékeket adja meg az elsődleges **Engineering Contact** és az ajánlatban.
+Adja meg a következő értékeket adja meg az elsődleges **Engineering Contact** és az ajánlatban. Kötelező mezőt csillag (*) rendszer feltehetően.
 
 |    Mező        |  Leírás                    |
 |    ---------    |  ---------------                |
-|  **Name (Név)**       |  Az alkalmazás a mérnöki kapcsolattartó nevét. Ez a kapcsolat műszaki kommunikáció fog kapni a Microsoft.   |
-|  **E-mail**      |  A mérnöki kapcsolattartási e-mail-címe  |
-|  **Telefonszám**      |  A mérnöki kapcsolattartó telefonszám  |
+|  **Név\***       |  Az alkalmazás a mérnöki kapcsolattartó nevét. Ez a kapcsolat műszaki kommunikáció fog kapni a Microsoft.   |
+|  **e-mailben\***      |  A mérnöki kapcsolattartási e-mail-címe  |
+|  **Telefonszám\***      |  A mérnöki kapcsolattartó telefonszám  |
 |  |  |
 
 Adja meg a következő értékeket adja meg az elsődleges **támogatási kapcsolattartó** és az ajánlatban.
 
 |    Mező        |   Leírás                   |
 |    ---------    |  ---------------                |
-|  **Name (Név)**       |  Az alkalmazás az ügyfél-támogatási kapcsolattartó neve. Ez a kapcsolat támogatási kapcsolatos üzeneteket fog kapni a Microsoft.   |
-|  **E-mail**      |  Az ügyfél-támogatási kapcsolattartó e-mail-címe  |
-|  **Telefonszám**      |  Az ügyfél-támogatási kapcsolattartó telefonszáma  |
+|  **Név\***       |  Az alkalmazás az ügyfél-támogatási kapcsolattartó neve. Ez a kapcsolat támogatási kapcsolatos üzeneteket fog kapni a Microsoft.   |
+|  **e-mailben\***      |  Az ügyfél-támogatási kapcsolattartó e-mail-címe  |
+|  **Telefonszám\***      |  Az ügyfél-támogatási kapcsolattartó telefonszáma  |
 |  |  |
 
 

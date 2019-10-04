@@ -6,19 +6,20 @@ services: media-services
 author: anikaz
 manager: johndeu
 ms.service: media-services
+ms.subservice: video-indexer
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: c4ccc189c0f8ed3de868c9965d7068ad9670cbcb
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 516ecd8842e7b673201cc640b283c081a02d2b2f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004094"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65799559"
 ---
 # <a name="customize-a-language-model-with-video-indexer"></a>A Video Indexer nyelvi modell testreszabása
 
-A video Indexer-integráció révén a Microsoft automatikus beszédfelismerés támogatja [Custom Speech Service](https://azure.microsoft.com/services/cognitive-services/custom-speech-service/). Adaptációs szöveg, nevezetesen a tartományhoz, amelyek a motor mértékének megfelelően szeretné szószedet szöveget feltöltésével testre szabhatja a nyelvi modell. Modellje betanításához, miután a betanítás szövegben szereplő szavakat felismer, alapértelmezett írásmódja, feltéve, és ismertetjük, hogy a nyelvi modell szavak új várható sorrendje. Egyéni nyelvi modellek támogatottak angol, spanyol, francia, német, olasz, egyszerűsített kínai, japán, orosz, portugál (brazíliai), Hindi és koreai. 
+A video Indexer-integráció révén a Microsoft automatikus beszédfelismerés támogatja [Custom Speech Service](https://azure.microsoft.com/services/cognitive-services/custom-speech-service/). Adaptációs szöveg, nevezetesen a tartományhoz, amelyek a motor mértékének megfelelően szeretné szószedet szöveget feltöltésével testre szabhatja a nyelvi modell. Modellje betanításához, miután a betanítás szövegben szereplő szavakat felismer, alapértelmezett írásmódja, feltéve, és ismertetjük, hogy a nyelvi modell szavak új várható sorrendje. Egyéni nyelvi modellek támogatottak angol, spanyol, francia, német, olasz, kínai (egyszerűsített), japán, spanyol, brazíliai portugál, Hindi és koreai. 
 
 Nézzük meg, amely rendkívül specifikus, mint például a példaként (a gyorsjavítások gyökérmappájában lévő Azure Kubernetes Service szolgáltatásban), "Kubernetes" szó. Mivel a szó új a Video Indexer, mint "közösségeiben" ismerhető fel. A "Kubernetes" ismeri fel a modell betanítását kell. Más esetekben a szavakat léteznek, de a nyelvi modell, nem a várt rendezhet egy bizonyos környezetben. Például "container service" nem egy 2 – word sorozat, amelyek nem speciális nyelvi modell számára ismerősek szavak adott halmazát.
 

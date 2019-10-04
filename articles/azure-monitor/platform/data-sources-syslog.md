@@ -1,6 +1,6 @@
 ---
-title: Összegyűjtheti és elemezheti a Syslog-üzeneteket az Azure Monitor |} A Microsoft Docs
-description: Syslog-esemény naplózása protokoll, amely Linux közös. Ez a cikk ismerteti a Syslog-üzeneteket gyűjteményét konfigurálása a Log Analytics és az általuk létrehozott rekordok részleteit.
+title: Syslog-üzenetek összegyűjtése és elemzése a Azure Monitorban | Microsoft Docs
+description: Syslog-esemény naplózása protokoll, amely Linux közös. Ez a cikk ismerteti, hogyan konfigurálhatja a syslog-üzenetek gyűjteményét Log Analytics és a létrehozott rekordok részleteit.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,55 +13,55 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2019
 ms.author: magoedte
-ms.openlocfilehash: 41ea6222689516f224fc23ce6a658d17f7f81866
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: dc3aa502dccdd4eb4e8bd1a82456656e5d389160
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372301"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327436"
 ---
-# <a name="syslog-data-sources-in-azure-monitor"></a>Syslog-adatforrások az Azure monitorban
-Syslog-esemény naplózása protokoll, amely Linux közös. Alkalmazások küld üzeneteket, amelyek a helyi számítógépen tárolt vagy a Syslog-gyűjtő lett elküldve. A Linuxhoz készült Log Analytics-ügynök telepítve van, konfigurálja a továbbított üzenetek az ügynöknek a helyi Syslog démon. Az ügynök ezután elküldi az üzenetet az Azure Monitor, ahol létrejön egy megfelelő bejegyzés.  
+# <a name="syslog-data-sources-in-azure-monitor"></a>Syslog-adatforrások a Azure Monitorban
+Syslog-esemény naplózása protokoll, amely Linux közös. Alkalmazások küld üzeneteket, amelyek a helyi számítógépen tárolt vagy a Syslog-gyűjtő lett elküldve. A Linux rendszerhez készült Log Analytics-ügynök telepítésekor a helyi syslog démont úgy konfigurálja, hogy továbbítsa az üzeneteket az ügynöknek. Az ügynök ezután elküldi az üzenetet, hogy Azure Monitor, ahol létrejön egy megfelelő rekord.  
 
 > [!NOTE]
-> Az Azure Monitor támogatja az üzeneteket a rsyslog vagy syslog-ng, ahol rsyslog-e az alapértelmezett démon gyűjteménye. Red Hat Enterprise Linux, CentOS és Oracle Linux-verzió (sysklog) 5-ös verzióját az alapértelmezett syslog démon nem támogatott a syslog-események gyűjtése. A syslog-adatok gyűjtésére ezek disztribúciók jelen verziója a [rsyslog démonnal](http://rsyslog.com) telepíteni és konfigurálni kell az sysklog helyett.
+> Azure Monitor támogatja a rsyslog vagy syslog-ng által küldött üzenetek gyűjteményét, ahol a rsyslog az alapértelmezett démon. Red Hat Enterprise Linux, CentOS és Oracle Linux-verzió (sysklog) 5-ös verzióját az alapértelmezett syslog démon nem támogatott a syslog-események gyűjtése. A syslog-adatok gyűjtésére ezek disztribúciók jelen verziója a [rsyslog démonnal](http://rsyslog.com) telepíteni és konfigurálni kell az sysklog helyett.
 >
 >
 
 ![A rendszernaplók gyűjtése](media/data-sources-syslog/overview.png)
 
-A következő létesítmények a Syslog-gyűjtő támogatottak:
+A syslog-gyűjtő a következő létesítményeket támogatja:
 
-* kern
+* egalizálás
 * Felhasználó
 * levelezés
 * Démon
-* hitelesítés
+* Auth
 * syslog
 * LPR
 * Hírek
-* uucp
+* UUCP
 * cron
 * authpriv
-* ftp
-* local0-local7
+* FTP
+* local0 – local7
 
-Az egyéb létesítmény [egy egyéni naplók-adatforrás konfigurálása](data-sources-custom-logs.md) az Azure monitorban.
+Bármilyen más létesítmény esetében [konfigurálja az egyéni naplók adatforrását](data-sources-custom-logs.md) Azure monitor.
  
 ## <a name="configuring-syslog"></a>Syslog konfigurálása
-A Linuxhoz készült Log Analytics-ügynököt csak a létesítmények és súlyossági szinten pedig a konfigurációban megadott eseményeket gyűjt. Syslog konfigurálhatja az Azure Portalon keresztül, vagy konfigurációs fájlokat a Linux-ügynökök kezelése.
+A Linux rendszerhez készült Log Analytics-ügynök csak a konfigurációjában megadott létesítményekkel és megszakításokkal gyűjt eseményeket. Syslog konfigurálhatja az Azure Portalon keresztül, vagy konfigurációs fájlokat a Linux-ügynökök kezelése.
 
 ### <a name="configure-syslog-in-the-azure-portal"></a>Syslog konfigurálása az Azure Portalon
-A Syslog beállítása a [adatok menü a Speciális beállítások](agent-data-sources.md#configuring-data-sources). Ez a konfiguráció minden egyes Linux-ügynök a konfigurációs fájlt érkeznek.
+Konfigurálja a syslog-t a [Speciális beállítások adatok menüjéből](agent-data-sources.md#configuring-data-sources). Ez a konfiguráció minden egyes Linux-ügynök a konfigurációs fájlt érkeznek.
 
-Írja be a nevét, majd egy új funkció is hozzáadhat **+**. Minden funkció esetében csak a kiválasztott súlyossági szinten pedig a üzenetek összegyűjtött.  Ellenőrizze a súlyossági szint esetén csak az adott létesítmény gyűjteni kívánt számára. Szűrő üzenetek további feltételeket nem tud biztosítani.
+Írja be a nevét, majd egy új funkció is hozzáadhat **+** . Minden funkció esetében csak a kiválasztott súlyossági szinten pedig a üzenetek összegyűjtött.  Ellenőrizze a súlyossági szint esetén csak az adott létesítmény gyűjteni kívánt számára. Szűrő üzenetek további feltételeket nem tud biztosítani.
 
 ![Syslog konfigurálása](media/data-sources-syslog/configure.png)
 
-Alapértelmezés szerint az összes konfigurációs módosítást automatikusan leküld az összes ügynököt. Ha azt szeretné, Syslog konfigurálása minden egyes Linux-ügynök manuálisan, törölje a jelet *alkalmaz az alábbi konfiguráció Linuxos gépeimre*.
+Alapértelmezés szerint az összes konfigurációs módosítást automatikusan leküld az összes ügynököt. Ha minden Linux-ügynökön manuálisan szeretné konfigurálni a syslog-t, törölje a jelet az *alábbi konfiguráció alkalmazása a saját gépekre*jelölőnégyzetből.
 
 ### <a name="configure-syslog-on-linux-agent"></a>Syslog konfigurálása Linux-ügynök
-Ha a [Log Analytics-ügynök telepítve van egy Linux-ügyfél](../../azure-monitor/learn/quick-collect-linux-computer.md), egy alapértelmezett syslog-konfigurációs fájl, amely meghatározza a létesítmény és az üzenetek gyűjtött súlyossági telepíti. Ehhez a fájlhoz, a konfiguráció módosítása módosíthatja. A konfigurációs fájl attól függően változik, a Syslog-démont, amely az ügyfél telepítve.
+Ha a [log Analytics-ügynök Linux-ügyfélre van telepítve](../../azure-monitor/learn/quick-collect-linux-computer.md), egy alapértelmezett syslog-konfigurációs fájlt telepít, amely meghatározza a begyűjtött üzenetek létesítményét és súlyosságát. Ehhez a fájlhoz, a konfiguráció módosítása módosíthatja. A konfigurációs fájl attól függően változik, a Syslog-démont, amely az ügyfél telepítve.
 
 > [!NOTE]
 > Ha szerkeszti a syslog-konfiguráció, a syslog démon a módosítások érvénybe léptetéséhez újra kell indítani.
@@ -154,7 +154,7 @@ Eltávolíthatja a létesítmény eltávolítása a konfigurációs fájl vonatk
 
 
 ### <a name="collecting-data-from-additional-syslog-ports"></a>Adatgyűjtés a további Syslog-portok
-Syslog-üzeneteket a helyi ügyfél 25224 porton figyeli a Log Analytics-ügynököket.  Az ügynök telepítve van, ha syslog alapértelmezett konfigurációja a alkalmazni, és a következő helyen található:
+A Log Analytics ügynök a 25224-as porton a helyi ügyfélen figyeli a syslog-üzeneteket.  Az ügynök telepítve van, ha syslog alapértelmezett konfigurációja a alkalmazni, és a következő helyen található:
 
 * Rsyslog: `/etc/rsyslog.d/95-omsagent.conf`
 * Syslog-ng: `/etc/syslog-ng/syslog-ng.conf`
@@ -196,7 +196,7 @@ A portszám két konfigurációs fájlok létrehozásával módosíthatja: egy F
         destination d_custom_dest { udp("127.0.0.1" port(%SYSLOG_PORT%)); };
         log { source(s_src); filter(f_custom_filter); destination(d_custom_dest); };
 
-Miután befejezte a módosításokat, a Syslog- és a Log Analytics agent szolgáltatást újra kell indítani ahhoz, hogy a konfigurációs módosítások érvénybe léptetéséhez.   
+A módosítások elvégzése után újra kell indítani a syslog és a Log Analytics Agent szolgáltatást, hogy a konfigurációs változások életbe léptetése megtörténjen.   
 
 ## <a name="syslog-record-properties"></a>Syslog-rekord tulajdonságai
 Syslog-rekord rendelkezik olyan típusú **Syslog** , és a tulajdonságait az alábbi táblázatban.

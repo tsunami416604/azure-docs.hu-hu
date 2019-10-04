@@ -1,20 +1,19 @@
 ---
-title: Az Azure service health-riasztások konfigurálás az opsgenie segítségével |} A Microsoft Docs
+title: Az Azure service health-riasztások küldése az opsgenie segítségével webhookok használata
 description: A Szolgáltatásállapot-események az opsgenie segítségével példányra kapcsolatos személyre szabott értesítések küldése.
 author: stephbaron
 ms.author: stbaron
 ms.topic: article
 ms.service: service-health
-ms.workload: Supportability
-ms.date: 11/14/2017
-ms.openlocfilehash: 79a77fff206831c0f9b3bb73ad33f951d99e2c81
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 06/10/2019
+ms.openlocfilehash: fab99b7093ac3f18f6313273d21905e0a3ed7e5b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55858828"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67067161"
 ---
-# <a name="configure-service-health-alerts-with-opsgenie"></a>Service health-riasztások konfigurálás az opsgenie segítségével
+# <a name="send-azure-service-health-alerts-with-opsgenie-using-webhooks"></a>Az Azure service health-riasztások küldése az opsgenie segítségével webhookok használata
 
 Ez a cikk bemutatja, hogyan állíthatja be az Azure service health-riasztások az opsgenie segítségével egy webhook használatával. Használatával [opsgenie segítségével](https://www.opsgenie.com/)az Azure Service Health integráció, a továbbíthatja az Azure Service Health-riasztások az opsgenie segítségével. Opsgenie segítségével megadhatja, hogy a megfelelő értesítendő személyeket és az alapján a készenléti ütemezéseket, e-mailben, szöveges üzenetben (SMS), telefonhívások, iOS és Android leküldéses értesítések használatával, és a problémák továbbítása riasztások, amíg a riasztás nem igazoltak vissza vagy lezárt.
 

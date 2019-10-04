@@ -1,30 +1,30 @@
 ---
-title: 'Gyors útmutató: Lemezkép-elemzések, az a Bing Visual Search SDK for node.js használatával'
+title: 'Gyors útmutató: Képelemzések beolvasása a Node. js-hez készült Bing Visual Search SDK-val'
 titleSuffix: Azure Cognitive Services
-description: Töltsön fel egy képet, a Bing Visual Search SDK használatával, és nyerjen kapcsolatos.
+description: Töltsön fel egy rendszerképet a Bing Visual Search SDK-val, és szerezzen információt.
 services: cognitive-services
-author: mikedodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 05/18/2018
-ms.author: v-gedod
-ms.openlocfilehash: c46c33b81a1162bdb30edc7a39a04fea8c0abb7d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 07/15/2019
+ms.author: aahi
+ms.openlocfilehash: f0dd0bb82f899146956b5671497d298c7ce076ef
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55866933"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360518"
 ---
-# <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-nodejs"></a>Gyors útmutató: Lemezkép-elemzések, az a Bing Visual Search SDK for node.js használatával
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-nodejs"></a>Gyors útmutató: Képelemzések beolvasása a Node. js-hez készült Bing Visual Search SDK-val
 
-Ez a rövid útmutató segítségével hasznos képadatok lekérése a Bing Visual Search service, a Node.js SDK-val kezdeni. Míg a Bing Visual Search REST API-val kompatibilis szinte bármelyik programozási nyelvével, az SDK biztosít egy egyszerű módja annak, hogy a szolgáltatás integrálása az alkalmazásokba. Ez a minta forráskódja találhatók [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/visualSearch.js). 
+Ezzel a rövid útmutatóval megkezdheti a rendszerképek elemzését a Bing Visual Search szolgáltatásból a Node. js SDK használatával. Habár a Bing Visual Search REST API kompatibilis a legtöbb programozási nyelvvel, az SDK egyszerű módszert kínál a szolgáltatás integrálására az alkalmazásokba. A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/visualSearch.js)található. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 * [Node.js](https://www.nodejs.org/)
-* A Bing Visual Search SDK-t, a node.js-ben
-    * Állítsa be a Bing Visual Search SDK használatával egy konzolalkalmazást, futtassa a következő parancsokat:
+* A Node. js-hez készült Bing Visual Search SDK
+    * Ha a Bing Visual Search SDK-val szeretné beállítani a konzol alkalmazást, futtassa a következő parancsokat:
         1. `npm install ms-rest-azure`
         2. `npm install azure-cognitiveservices-search-visualSearch`.
 
@@ -35,7 +35,7 @@ Ez a rövid útmutató segítségével hasznos képadatok lekérése a Bing Visu
 
 ## <a name="create-and-initialize-the-application"></a>Az alkalmazás létrehozása és inicializálása
 
-1. Hozzon létre egy új JavaScript-fájlt a kedvenc integrált Fejlesztőkörnyezetével vagy szerkesztőjével, és adja hozzá az alábbi követelményeknek. Ezután hozzon létre változókat az előfizetési kulcs, egyéni konfiguráció azonosítója és a fájl elérési útját a feltölteni kívánt kép. 
+1. Hozzon létre egy új JavaScript-fájlt a kedvenc IDE vagy szerkesztőben, és adja hozzá az alábbi követelményeket. Ezután hozzon létre változókat az előfizetési kulcshoz, az egyéni konfigurációs AZONOSÍTÓhoz és a feltölteni kívánt rendszerkép elérési útjához. 
 
     ```javascript
     const os = require("os");
@@ -49,15 +49,15 @@ Ez a rövid útmutató segítségével hasznos képadatok lekérése a Bing Visu
     let filePath = "../Data/image.jpg";
     ```
 
-2. Hozza létre az ügyfél.
+2. Hozza létre az ügyfelet.
 
     ```javascript
     let visualSearchClient = new Search.VisualSearchClient(credentials);
     ```
 
-## <a name="search-for-images"></a>Rendszerképek keresése
+## <a name="search-for-images"></a>Képek keresése
 
-1. Használat `fs.createReadStream()` olvassa el a képfájlt, és hozhat létre változókat a keresési kérelmet, és az eredmények. Ezután használja az ügyfél kereshet a lemezképeket.
+1. A `fs.createReadStream()` használatával beolvashatja a képfájlt, és változókat hozhat létre a keresési kérelemhez és az eredményekhez. Ezután használja az ügyfelet a képek kereséséhez.
 
     ```javascript
     let fileStream = fs.createReadStream(filePath);
@@ -110,4 +110,4 @@ Ez a rövid útmutató segítségével hasznos képadatok lekérése a Bing Visu
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Egyoldalas webes alkalmazás készítése](tutorial-bing-visual-search-single-page-app.md)
+> [Egyoldalas Webalkalmazás létrehozása](tutorial-bing-visual-search-single-page-app.md)

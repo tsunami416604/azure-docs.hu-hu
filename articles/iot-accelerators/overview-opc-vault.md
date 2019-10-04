@@ -1,32 +1,39 @@
 ---
-title: Mi az OPC-tároló – Azure |} A Microsoft Docs
+title: Mi az OPC-tár – Azure | Microsoft Docs
 description: Az OPC-tároló áttekintése
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
 ms.topic: overview
-ms.service: iot-industrialiot
+ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 99dfcaeb1ef5b52e6827f1b3ac65d6201557a8fb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 44315790116545dd888aed533731bbf01abe801d
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59783517"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997307"
 ---
-# <a name="what-is-opc-vault"></a>Mi az OPC-tároló?
+# <a name="what-is-opc-vault"></a>Mi az az OPC Vault?
 
-Az OPC-tároló, konfigurálása, regisztrálja, és az OPC UA-kiszolgáló és az ügyfélalkalmazások számára a felhőben a tanúsítvány életciklusának kezelése mikroszolgáltatások. Ez a cikk ismerteti az OPC-tároló egyszerű használati eseteket.
+Az OPC-tár egy olyan szolgáltatás, amely a tanúsítványok életciklusát konfigurálhatja, regisztrálhatja és kezelheti a felhőben lévő OPC UA-kiszolgáló és ügyfélalkalmazások számára. Ez a cikk az OPC-tár egyszerű felhasználási eseteit ismerteti.
 
-## <a name="certificate-management"></a>Tanúsítványkezelés
+## <a name="certificate-management"></a>Tanúsítványok kezelése
 
-Például egy gyártóvállalat cég az újonnan létrehozott ügyfélalkalmazás saját OPC UA-kiszolgáló gép csatlakozni kell. Ha a gyártó hajt végre a kezdeti hozzáférés a kiszolgáló gép, egy hibaüzenet azonnal jelenik meg a OPC UA kiszolgálói alkalmazás azt jelzi, hogy az ügyfélalkalmazás nem biztonságos. Ez a mechanizmus jön létre az OPC UA kiszolgáló gép minden nem engedélyezett alkalmazás-hozzáférés, amely megakadályozza az üzemi képzett ismétlem elkerülése érdekében.
+Egy gyártó vállalatnak például csatlakoznia kell az OPC UA-kiszolgáló számítógépéhez az újonnan létrehozott ügyfélalkalmazás számára. Ha a gyártó a kiszolgáló első hozzáférését végzi, az OPC UA-kiszolgáló alkalmazásban egy hibaüzenet jelenik meg, amely jelzi, hogy az ügyfélalkalmazás nem biztonságos. Ez a mechanizmus az OPC UA-kiszolgáló számítógépén található, hogy megakadályozza a jogosulatlan hozzáférések elérését, ami megakadályozza a gonosz hackelést az üzemi emeleten.
 
-## <a name="application-security-management"></a>Alkalmazás biztonsági kezelése
-Professzionális biztonsági OPC tároló mikroszolgáltatás használatával könnyen engedélyezheti az OPC UA-kiszolgálóval való kommunikációhoz bármelyik ügyfélalkalmazás, mert OPC-tároló tanúsítvány rendszerleíró adatbázis, tárolására és életciklus-felügyelet a függvényeket. Most már az OPC UA-kiszolgálóval biztonságos csatlakoztatva van, akkor kommunikálhatnak az újonnan létrehozott ügyfélalkalmazás
+## <a name="application-security-management"></a>Alkalmazások biztonságának kezelése
+Egy biztonsági szakember az OPC Vault-szolgáltatást használja az OPC UA-kiszolgáló bármely ügyfélalkalmazás általi kommunikációhoz való egyszerű engedélyezéséhez, mivel az OPC-tároló rendelkezik a tanúsítványok beállításjegyzékének, tárolásának és életciklus-kezelésének összes funkcióját. Az OPC UA-kiszolgáló most már biztonságosan csatlakozik, és képes kommunikálni az újonnan létrehozott ügyfélalkalmazás
 
-## <a name="the-complete-opc-vault-architecture"></a>A teljes OPC tároló-architektúra
-A következő ábra szemlélteti a teljes OPC tároló-architektúra.
+## <a name="the-complete-opc-vault-architecture"></a>Az OPC-tár teljes architektúrája
+Az alábbi ábra az OPC-tár architektúráját mutatja be.
 
-![Az OPC-tároló-architektúra](media/overview-opc-vault-architecture/opc-vault.png)
+![OPC-tár architektúrája](media/overview-opc-vault-architecture/opc-vault.png)
+
+## <a name="next-steps"></a>További lépések
+
+Most, hogy megismerte az OPC-tárolót és annak felhasználási lehetőségeit, itt látható a következő lépés:
+
+> [!div class="nextstepaction"]
+> [OPC-tár architektúrája](overview-opc-vault-architecture.md)

@@ -1,106 +1,110 @@
 ---
-title: Egy indexmezők – Azure Search a Cognitive Services-erőforrás csatolása
-description: A Cognitive Services teljes körű előfizetéssel csatolása az Azure Search cognitive Adatbővítés folyamat utasítások.
-manager: cgronlun
+title: Cognitive Services-erőforrás csatolása készségkészlet-Azure Search
+description: Útmutatás Cognitive Services teljes körű előfizetés összekapcsolásához egy kognitív dúsítási folyamathoz Azure Searchban.
+manager: nitinme
 author: LuisCabrer
 services: search
 ms.service: search
-ms.devlang: NA
 ms.topic: conceptual
-ms.date: 04/14/2019
+ms.date: 05/20/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: 09695f764ff71b274e125e90835f5314eb25c980
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 113286f829b628d4740fbba34e7279741a934aef
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59683970"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265927"
 ---
-# <a name="attach-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>Az Azure Search-képességek alkalmazási lehetőségét a Cognitive Services-erőforrás csatolása 
+# <a name="attach-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>Cognitive Services-erőforrás csatolása egy készségkészlet a Azure Search 
 
-AI-algoritmusokat meghajtó a [indexelés kognitív folyamatok](cognitive-search-concept-intro.md) az Azure Search strukturálatlan adatok feldolgozására használható. Ezek az algoritmusok alapuló [Cognitive Services-erőforrások](https://azure.microsoft.com/services/cognitive-services/), többek között [Computer Vision](https://azure.microsoft.com/services/cognitive-services/computer-vision/) képelemzés és optikai karakterfelismerés (OCR), és [Text Analytics](https://azure.microsoft.com/services/cognitive-services/text-analytics/)entitásfelismerés, kulcsszókeresést és más végrehajtott információbeolvasás.
+Az AI-algoritmusok a dokumentumok dúsításához használt [kognitív indexelési folyamatokat](cognitive-search-concept-intro.md) hajtják Azure Search. Ezek az algoritmusok az Azure Cognitive Services-erőforrásokon alapulnak, [Computer Vision](https://azure.microsoft.com/services/cognitive-services/computer-vision/) többek között a képelemzéshez és az optikai karakterfelismeréshez (OCR) és [text Analytics](https://azure.microsoft.com/services/cognitive-services/text-analytics/) az entitások felismeréséhez, a fő kifejezés kinyeréséhez és egyéb dúsításokhoz. . A dokumentum-dúsítási célokra Azure Search által használt algoritmusokat a rendszer egy *készségkészlet*helyezi *el,* és *egy indexelő az indexelés során* hivatkozik rá.
 
-Ingyenesen bővíthet korlátozott számú dokumentumot, vagy csatolhat egy fizetős Cognitive Services-erőforrást a nagyobb és gyakoribb számítási feladatok elvégzéséhez. Ebből a cikkből megtudhatja, hogyan társítsa a Cognitive Services-erőforrás során adatokat feldúsítani a kognitív képességek alkalmazási lehetőségét [Azure Search-indexelő](search-what-is-an-index.md).
-
-Ha a folyamat a Cognitive Services API-k egymástól független képességek áll, továbbra is kell megadni a Cognitive Services-erőforrás. Ez igen felülbírálások a **ingyenes** , amely korlátozza, hogy naponta végrehajtott információbeolvasás kis mennyiségű erőforrást. Nem jár, hogy nem köti a Cognitive Services API-k képességek. Ezek a képességek közé tartozik: [egyéni képesség](cognitive-search-create-custom-skill-example.md), [szövegegyesítő](cognitive-search-skill-textmerger.md), [szöveg felosztó](cognitive-search-skill-textsplit.md), és [shaper](cognitive-search-skill-shaper.md).
+A korlátozott számú dokumentumot ingyenesen bővítheti. Az is előfordulhat, hogy számlázható Cognitive Services erőforrást is csatolhat egy *készségkészlet* nagyobb és gyakoribb számítási feladatokhoz. Ebből a cikkből megtudhatja, hogyan csatolhat számlázható Cognitive Services-erőforrásokat a dokumentumok gazdagítása érdekében Azure Search [indexelés](search-what-is-an-index.md)során.
 
 > [!NOTE]
-> Növelje a feldolgozása, további dokumentumok hozzáadása, illetve további AI-algoritmusokat hozzáadása gyakorisága bontsa ki a hatókört, szüksége lesz egy számlázható Cognitive Services-erőforrás csatolása. A díjakat API-k hívásakor, a Cognitive Services, valamint a lemezkép kinyerése a az Azure Search-dokumentumfeltörést fázis részeként. Nem számítunk fel díjat a szövegkinyerés dokumentumok közül.
+> A számlázható események közé tartoznak a Cognitive Services API-k és a képek kinyerésének meghívása a dokumentum repedési szakaszának részeként Azure Search. Nem számítunk fel díjat a dokumentumokból kinyert szövegből vagy a Cognitive Servicest nem meghívó ismeretekből.
 >
-> Végrehajtásának [beépített kognitív szakértelem](cognitive-search-predefined-skills.md) végrehajtás díja a [használatalapú-as-, a Cognitive Services nyissa meg az árat](https://azure.microsoft.com/pricing/details/cognitive-services), azonos értékelje, ha végrehajtotta a feladat közvetlenül. Kép kinyerési, egy Azure Search számítunk fel díjat, megjelennek a [díjszabását ismertető oldalt az Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400).
+> A számlázható képességek végrehajtása az [Cognitive Services utólagos elszámolású áron](https://azure.microsoft.com/pricing/details/cognitive-services/)érhető el. A képek kinyerésének díjszabását a [Azure Search díjszabását ismertető oldalon](https://go.microsoft.com/fwlink/?linkid=2042400)tekintheti meg.
 
+## <a name="same-region-requirement"></a>Azonos régióra vonatkozó követelmény
+
+A Azure Search és az Azure Cognitive Services ugyanazon a régión belül kell lennie. Ellenkező esetben az üzenet futtatása a következő időpontban történik:`"Provided key is not a valid CognitiveServices type key for the region of your search service."` 
+
+Egy szolgáltatás nem helyezhető át a régiók között. Ha ezt a hibaüzenetet kapja, hozzon létre egy új Cognitive Services-erőforrást ugyanabban a régióban, mint Azure Search.
+
+> [!NOTE]
+> Néhány beépített képesség nem regionális Cognitive Services alapul (például a [szöveges fordítási képességre](cognitive-search-skill-text-translation.md)). Vegye figyelembe, hogy ha ezen ismeretek bármelyikét hozzáadjuk a készségkészlet, hogy az adatai nem garantáltak maradnak ugyanabban a régióban, mint a Azure Search vagy Cognitive Services erőforrás. További részletekért tekintse meg a [szolgáltatás állapota lapot](https://aka.ms/allinoneregioninfo) .
 
 ## <a name="use-free-resources"></a>Ingyenes erőforrások használata
 
-A korlátozott, ingyenes feldolgozási beállítás segítségével végezze el a cognitive search oktatóanyag és a rövid útmutató gyakorlatok. 
+A kognitív keresési oktatóanyag és a gyors üzembe helyezési feladatok elvégzéséhez korlátozott, ingyenes feldolgozási lehetőség használható.
 
-**Ingyenes (korlátozott végrehajtott Információbeolvasás)** naponta előfizetésenként 20 dokumentumok korlátozódik.
+Az ingyenes (korlátozott dúsítású) erőforrások napi 20 dokumentumra korlátozódnak.
 
-1. Nyissa meg a **adatimportálás** varázsló.
+1. Nyissa meg az adatimportálás varázslót:
 
-   ![Adatok importálása parancs](media/search-get-started-portal/import-data-cmd2.png "adatok importálása parancs")
+   ![Az adatimportálás varázsló megnyitása](media/search-get-started-portal/import-data-cmd.png "Az adatimportálás varázsló megnyitása")
 
-1. Válasszon egy adatforrást, és továbbra is **hozzáadása (nem kötelező) a kognitív keresés**. Ezzel a varázslóval részletes bemutatóért lásd: [importálása index és a lekérdezés portal-eszközök használatával](search-get-started-portal.md).
+1. Válasszon ki egy adatforrást, és folytassa a **kognitív keresés hozzáadásával (opcionális)** . A varázsló lépésenkénti útmutatója: [Importálás, indexelés és lekérdezés a portál Tools használatával](search-get-started-portal.md).
 
-1. Bontsa ki a **csatolása a Cognitive Services** válassza **(korlátozott végrehajtott Információbeolvasás) ingyenes**.
+1. Bontsa ki a **csatolás Cognitive Services** elemet, majd válassza az **ingyenes (korlátozott dúsítások)** lehetőséget:
 
-   ![Cognitive Services csatolása szakasz kibontva](./media/cognitive-search-attach-cognitive-services/attach1.png "Cognitive Services csatolása kibontva")
+   ![Kibontott csatolás Cognitive Services szakasz](./media/cognitive-search-attach-cognitive-services/attach1.png "Kibontott csatolás Cognitive Services szakasz")
 
-A következő lépésben **végrehajtott információbeolvasás hozzáadása**. A portálon elérhető képességek ismertetését lásd: ["2. lépés: A cognitive ismeretek hozzáadása"](cognitive-search-quickstart-blob.md#create-the-enrichment-pipeline) a kognitív keresés a rövid útmutatóban.
+1. Folytassa a következő lépéssel, **bővítse a bővítéseket**. A portálon elérhető képességek leírását lásd [: 2. lépés: Kognitív ismeretek](cognitive-search-quickstart-blob.md#create-the-enrichment-pipeline) hozzáadása a kognitív keresési útmutatóban.
 
 ## <a name="use-billable-resources"></a>Számlázható erőforrások használata
 
-A több mint 20 végrehajtott információbeolvasás naponta számozása számítási feladatokhoz kell csatolnia a Cognitive Services-számlázható erőforrás. 
+A napi 20-nál több frissítést létrehozó munkaterhelések esetében ügyeljen arra, hogy számlázható Cognitive Services erőforrást csatoljon. Azt javasoljuk, hogy mindig csatoljon számlázható Cognitive Services-erőforrást, még akkor is, ha soha nem kívánja hívni a Cognitive Services API-k. Egy erőforrás csatolása felülbírálja a napi korlátot.
 
-Képességek, amelyek a Cognitive Services API-k hívása csak díjkötelesek. Nem-API-alapú képességek, például [egyéni képesség](cognitive-search-create-custom-skill-example.md), [szövegegyesítő](cognitive-search-skill-textmerger.md), [szöveg felosztó](cognitive-search-skill-textsplit.md), és [shaper](cognitive-search-skill-shaper.md) képességek nem lesznek számlázva.
+Csak olyan készségekért kell fizetnie, amelyek meghívja a Cognitive Services API-k. Nem számítunk fel díjat az [Egyéni készségekért](cognitive-search-create-custom-skill-example.md), vagy olyan készségekért, mint a [szöveges egyesítés](cognitive-search-skill-textmerger.md), a [szöveges osztó](cognitive-search-skill-textsplit.md)és a [formáló](cognitive-search-skill-shaper.md), amelyek nem API-alapúak.
 
-1. Nyissa meg a **adatimportálás** varázslóban válassza ki egy adatforrást, és továbbra is **hozzáadása (nem kötelező) a kognitív keresés**. 
+1. Nyissa meg az adatimportálás varázslót, válasszon ki egy adatforrást, és folytassa a **kognitív keresés hozzáadásával (opcionális)** .
 
-1. Bontsa ki a **csatolása a Cognitive Services** majd **új Cognitive Services-erőforrás létrehozása**. Egy új lapon nyílik meg, úgy, hogy az erőforrást is létrehozhat. 
+1. Bontsa ki a **csatolás Cognitive Services** elemet, majd válassza az **új Cognitive Services erőforrás létrehozása**lehetőséget. Megnyílik egy új lap, ahol létrehozhatja az erőforrást:
 
-   ![Cognitive Services-erőforrás létrehozása](./media/cognitive-search-attach-cognitive-services/cog-services-create.png "Cognitive Services-erőforrás létrehozása")
+   ![Cognitive Services erőforrás létrehozása](./media/cognitive-search-attach-cognitive-services/cog-services-create.png "Cognitive Services erőforrás létrehozása")
 
-1. A hely kiválasztása és az Azure Search-régiók között a kimenő sávszélesség díjak elkerülése érdekében ugyanabban a régióban.
+1. A **hely** listában válassza ki azt a régiót, ahol a Azure Search szolgáltatás található. Ügyeljen arra, hogy ezt a régiót használja a teljesítmény szempontjából. Ezen régió használata esetén a kimenő sávszélességgel kapcsolatos díjak is megadhatók a régiók között.
 
-1. A tarifacsomag, válassza a **S0** , a Cognitive Services szolgáltatásait, beleértve a biztonsági másolatot az Azure Search által használt, előre megadott képesség látás- és nyelvi funkciók teljes körű gyűjtemény beolvasása. 
+1. A **díjszabási réteg** listában válassza a **S0** lehetőséget a Cognitive Services-funkciók teljes gyűjteményének beszerzéséhez, beleértve a jövőképet és a nyelvi funkciókat is, amelyek a Azure Search által használt előre meghatározott ismereteket használják.
 
-   A S0 szint található árfolyamok adott munkaterhelés konkrét a [Cognitive Services díjszabási oldalán](https://azure.microsoft.com/pricing/details/cognitive-services/).
+   A S0 szinten a [Cognitive Services díjszabási oldalán](https://azure.microsoft.com/pricing/details/cognitive-services/)találhat meghatározott számítási feladatokra vonatkozó díjszabást.
   
-   + A **ajánlat kiválasztása**, ügyeljen arra, hogy *Cognitive Services* van kiválasztva.
-   + A nyelvi funkciók a díjait *Text Analytics Standard* mesterséges indexeléshez vonatkoznak. 
-   + A vizuális szolgáltatások, a díjait *számítógép Vision S1* érvényesek.
+   + Győződjön meg arról, hogy az **ajánlat kiválasztása** listán a **Cognitive Services** van kiválasztva.
+   + A **nyelvi** szolgáltatások területen az **text Analytics standard** díjszabása az AI-indexelésre vonatkozik.
+   + A **látási** funkciók területen **Computer Vision S1** díjszabása érvényes.
 
-1. Kattintson a **létrehozás** az új Cognitive Services-erőforrás létrehozásához. 
+1. Válassza a **Létrehozás** lehetőséget az új Cognitive Services erőforrás kiépítéséhez.
 
-1. Térjen vissza az előző lapon tartalmazó a **adatimportálás** varázsló. Kattintson a **frissítése** megjelenítése a Cognitive Services-erőforrás, és válassza ki az erőforrást.
+1. Térjen vissza az előző lapra, amely tartalmazza az adatimportálás varázslót. Válassza a **frissítés** lehetőséget a Cognitive Services erőforrás megjelenítéséhez, majd válassza ki az erőforrást:
 
-   ![Cognitive Services-erőforrás kiválasztott](./media/cognitive-search-attach-cognitive-services/attach2.png "kiválasztott Cognitive Service erőforrás")
+   ![Cognitive Services erőforrás kiválasztása](./media/cognitive-search-attach-cognitive-services/attach2.png "Cognitive Services erőforrás kiválasztása")
 
-1. Bontsa ki a **hozzáadása végrehajtott Információbeolvasás** válassza ki az adott kognitív képességekkel, amelyek az adatok futtatni kívánt szakaszt, és a többi folyamat folytatásához. A portálon elérhető képességek ismertetését lásd: ["2. lépés: A cognitive ismeretek hozzáadása"](cognitive-search-quickstart-blob.md#create-the-enrichment-pipeline) a kognitív keresés a rövid útmutatóban.
+1. Bontsa ki a **dúsítások hozzáadása** szakaszt az adatain futtatni kívánt kognitív képességek kiválasztásához. Fejezze be a varázsló hátralévő részét. A portálon elérhető képességek leírását lásd [: 2. lépés: Kognitív ismeretek](cognitive-search-quickstart-blob.md#create-the-enrichment-pipeline) hozzáadása a kognitív keresési útmutatóban.
 
-## <a name="attach-an-existing-skillset-to-a-cognitive-services-resource"></a>Egy meglévő tudásával Cognitive Services-erőforrás csatolása
+## <a name="attach-an-existing-skillset-to-a-cognitive-services-resource"></a>Meglévő készségkészlet csatolása Cognitive Services erőforráshoz
 
-Ha rendelkezik egy meglévő tudásával, egy új vagy eltérő a Cognitive Services-erőforrás is csatlakoztatható.
+Ha rendelkezik meglévő készségkészlet, csatolhatja azt egy új vagy egy másik Cognitive Services erőforráshoz.
 
-1. Az a **szolgáltatás áttekintése** kattintson **szakértelmével**.
+1. A **szolgáltatás áttekintése** lapon válassza a **szakértelmével**:
 
-   ![Szakértelmével lapon](./media/cognitive-search-attach-cognitive-services/attach-existing1.png "szakértelmével lap")
+   ![Szakértelmével lap](./media/cognitive-search-attach-cognitive-services/attach-existing1.png "Szakértelmével lap")
 
-1. Kattintson a képességek alkalmazási lehetőségét, és válassza ki a meglévő erőforrás, vagy hozzon létre egy újat. Kattintson a **OK** , hagyja jóvá a módosításokat. 
+1. Válassza ki a készségkészlet nevét, majd válasszon ki egy meglévő erőforrást, vagy hozzon létre újat. A módosítások jóváhagyásához kattintson **az OK gombra** .
 
-   ![Képességcsoport erőforráslista](./media/cognitive-search-attach-cognitive-services/attach-existing2.png "indexmezők erőforrások listája")
+   ![Készségkészlet-erőforrások listája](./media/cognitive-search-attach-cognitive-services/attach-existing2.png "Készségkészlet-erőforrások listája")
 
-Emlékeztetnek arra, hogy **(korlátozott végrehajtott Információbeolvasás) ingyenes** korlátozott a naponta 20 dokumentumokhoz, és hogy van **új Cognitive Services-erőforrás létrehozása** épít ki egy új számlázható erőforrás. Ha egy új erőforrást hoz létre, válassza ki a **frissítése** a Cognitive Services-erőforrások listájának frissítése, és válassza ki az erőforrást.
+   Ne feledje, hogy az **ingyenes (korlátozott dúsítású)** beállítás naponta 20 dokumentumra korlátozza a dokumentumokat, és az új **Cognitive Services erőforrás létrehozása** lehetőséggel új számlázható erőforrást építhet ki. Ha új erőforrást hoz létre, válassza a **frissítés** lehetőséget a Cognitive Services erőforrások listájának frissítéséhez, majd válassza ki az erőforrást.
 
-## <a name="attach-cognitive-services-programmatically"></a>Cognitive Services programozott módon csatolása
+## <a name="attach-cognitive-services-programmatically"></a>Cognitive Services programozott csatolása
 
-Definiálásakor készségeitől programozott módon, adjon hozzá egy `cognitiveServices` készségeitől szakaszt. A szakaszban a kulcsot a Cognitive Services-erőforrás készségeitől társítani kívánt tartalmazza. Ne felejtse el, hogy az erőforrást az Azure Search és ugyanabban a régióban kell lennie. Is `@odata.type`, és állítsa be `#Microsoft.Azure.Search.CognitiveServicesByKey`. 
+Ha programozott módon definiálja a készségkészlet, vegyen fel egy `cognitiveServices` szakaszt a készségkészlet. Ebben a szakaszban adja meg a készségkészlet társítandó Cognitive Services erőforrás kulcsát. Ne feledje, hogy az erőforrásnak ugyanabban a régióban kell lennie, mint a Azure Search erőforrásnak. Adja meg a és a `#Microsoft.Azure.Search.CognitiveServicesByKey`értékeit is. `@odata.type`
 
-Az alábbi példa bemutatja ennek a mintának. Figyelje meg, hogy a cognitive Services szakasz alján, a definition
+A következő példa ezt a mintát mutatja be. Figyelje meg a definíció végén található szakaszt.`cognitiveServices`
 
 ```http
-PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2017-11-11-Preview
+PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2019-05-06
 api-key: [admin key]
 Content-Type: application/json
 ```
@@ -110,7 +114,7 @@ Content-Type: application/json
     "skills": 
     [
       {
-        "@odata.type": "#Microsoft.Skills.Text.NamedEntityRecognitionSkill",
+        "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
         "categories": [ "Organization" ],
         "defaultLanguageCode": "en",
         "inputs": [
@@ -135,27 +139,27 @@ Content-Type: application/json
 
 ## <a name="example-estimate-costs"></a>Példa: Költségek megbecslése
 
-Indexelés kognitív kereséssel kapcsolatos költségeket megbecsülheti, indítsa el a képet az átlagos dokumentum néz ki, hogy egyes számok is futtatható. Ha például költségbecslési célokat, akkor előfordulhat, hogy hozzávetőleges:
+A kognitív keresési indexeléshez kapcsolódó költségek kiszámításához Kezdje azzal, hogy egy átlagos dokumentum hogyan néz ki, így néhány számot futtathat. Például megközelítheti a következőket:
 
-+ 1000 PDF-fájlok
-+ Hat oldalak
-+ Egy rendszerkép egy-egy lapon (6000 lemezképek esetén)
-+ 3000 karakterek száma oldalanként
++ 1 000 PDF-fájlok.
++ Hat oldal.
++ Oldalanként egy kép (6 000 lemezkép).
++ 3 000 karakter/oldal.
 
-Tegyük fel, repedés a képi és szöveges kinyerési, optikai karakterfelismerés (OCR) a képek, PDF-dokumentumot, elnevezett entitásfelismerés szervezetek álló folyamatot. 
+Tegyük fel, hogy egy olyan folyamat, amely az egyes PDF-fájlokból, képekből és szöveg-kivonásokból, optikai karakterfelismerésből (OCR) és a szervezetek entitás-felismerésével kapcsolatos dokumentumok repedését tartalmazza.
 
-Ebben a gyakorlatban a legköltségesebb tranzakciónkénti árral használunk. Tényleges költségek miatt adatmennyiségen díjszabás alacsonyabb lehet. Lásd: [Cognitive Services díjszabása](https://azure.microsoft.com/pricing/details/cognitive-services).
+A cikkben szereplő díjak feltételezettek. A becslési folyamat szemléltetésére szolgálnak. A költségek alacsonyabbak lehetnek. A tranzakciók tényleges áraival kapcsolatban lásd: [Cognitive Services díjszabása](https://azure.microsoft.com/pricing/details/cognitive-services).
 
-1. Szöveg- és tartalommal dokumentumleképezési szövegkinyerés jelenleg ingyenes. 6000 képek esetén minden 1000 lemezképek ki kell olvasni, ára $6,00 ehhez a lépéshez 1 dolláros feltételezik.
+1. Szöveg-és képtartalommal való repedés esetén a szöveg kibontása jelenleg ingyenes. 6 000-lemezkép esetén tegyük fel, hogy $1 minden kinyert 1 000-lemezképhez. Ez a lépés a $6,00-as díj.
 
-2. Az optikai Karakterfelismerés cognitive szakértelem optikai Karakterfelismerés 6000 lemezképek angol nyelven, a legjobb algoritmus (DescribeText) használja. Ha egy 2,50 $ / 1000 lemezképek elemezni költségét, ehhez a lépéshez $15,00 lenne fizet.
+2. Az 6 000-es rendszerképek optikai KARAKTERFELISMERÉSi képességei a legjobb algoritmust használják (DescribeText). Ennek a lépésnek a $2,50/1 000 rendszerképekkel való elemzését feltételezve kell $15,00 fizetnie.
 
-3. Az entitások kinyeréséhez 3 szöveg rekordok száma oldalanként összesen kell. Minden bejegyzés 1000 karakter szerepel. Három szöveg rekordok száma oldalanként * 6000 oldalak = 18,000 szöveg rögzíti. 2,00 $ / 1000 szöveg rekordok, feltéve, hogy ezt a lépést akkor költség $36.00.
+3. Az entitások kinyeréséhez oldalanként összesen három szöveges rekord van. Minden rekord 1 000 karakterből áll. Oldalanként három szöveges rekord, szorozva az 6 000-lapokkal, 18 000 szöveges rekordokkal. Az $2,00-as 1 000-es szöveges rekordok esetében ennek a lépésnek a díja $36,00.
 
-A teljes kép, fizetjük készül $57.00 az itt ismertetett készségeitől ilyen jellegű 1000 PDF-dokumentumok betöltését. 
+Mindezt együttesen a $57,00-es számú 1 000-es PDF-dokumentumot kell fizetnie a leírt készségkészlet.
 
 ## <a name="next-steps"></a>További lépések
-+ [Az Azure Search-díjszabást ismertető oldalon](https://azure.microsoft.com/pricing/details/search/)
-+ [Hogyan képességcsoport megadása](cognitive-search-defining-skillset.md)
-+ [Képességcsoport (REST) létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
-+ [Hogyan hidaljuk mezők leképezése](cognitive-search-output-field-mapping.md)
++ [Azure Search díjszabási oldala](https://azure.microsoft.com/pricing/details/search/)
++ [Készségkészlet definiálása](cognitive-search-defining-skillset.md)
++ [Készségkészlet létrehozása (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [A dúsított mezők leképezése](cognitive-search-output-field-mapping.md)

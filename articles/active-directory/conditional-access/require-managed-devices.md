@@ -1,28 +1,22 @@
 ---
-title: Hogyan – megkövetelése felügyelt eszközök az Azure Active Directory feltételes hozzáféréssel felhőalapú alkalmazás eléréséhez |} A Microsoft Docs
-description: Ismerje meg, amely a felügyelt eszközök igényel a felhőalapú alkalmazások elérésének Azure Active Directory (Azure AD) eszközalapú feltételes hozzáférési szabályzatok konfigurálása.
+title: Hogyan – megkövetelése felügyelt eszközök számára a felhőalapú alkalmazás-hozzáférés az Azure Active Directory feltételes hozzáférés |} A Microsoft Docs
+description: Útmutató Azure Active Directory (Azure AD) eszközalapú feltételes hozzáférési szabályzatok konfigurálhatók, amely a felügyelt eszközök igényel a felhőalapú alkalmazás eléréséhez.
 services: active-directory
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-editor: ''
-ms.assetid: a27862a6-d513-43ba-97c1-1c0d400bf243
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2018
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75f55f1058537da255a2611f544239f693615678
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: e9c99b8390cd43c3f0767123684fe06e0ae74f86
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517351"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509377"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>kézikönyv: A felügyelt eszközök szükségesek a feltételes hozzáféréssel felhőalapú alkalmazás-hozzáférés
 
@@ -30,15 +24,12 @@ Mobileszközök és a felhő-és felhőközpontú világában Azure Active Direc
 
 Ez a cikk azt ismerteti, hogy hogyan konfigurálhat feltételes hozzáférési szabályzatokat, amelyek a felügyelt eszközök férhessenek hozzá az egyes felhőalkalmazások a környezetében szükséges. 
 
-
 ## <a name="prerequisites"></a>Előfeltételek
 
-A felügyelt eszközök megkövetelése a cloud app access ties **Azure AD feltételes hozzáférés** és **Azure AD eszközkezeléséről** együtt. Ha Ön még nem ismeri a következő területeken, olvassa el a következő témakörök először:
+A felügyelt eszközök megkövetelése a cloud app access ties **Azure AD feltételes hozzáférési** és **Azure AD eszközkezeléséről** együtt. Ha Ön még nem ismeri a következő területeken, olvassa el a következő témakörök először:
 
 - **[Az Azure Active Directory feltételes hozzáférés](../active-directory-conditional-access-azure-portal.md)**  – Ez a cikk ismerteti a feltételes hozzáférés és a kapcsolódó terminológia fogalmi áttekintése.
-
 - **[Az Eszközfelügyelet az Azure Active Directory bemutatása](../devices/overview.md)**  – Ez a cikk áttekintést nyújt a különböző beállítások eszközök szervezeti ellenőrzés alatt van. 
-
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
@@ -47,11 +38,8 @@ Biztonság és hatékonyság közötti egyensúly szakértő kezelése kihívás
 Az Azure AD feltételes hozzáférés meg lehet oldani ezt a követelményt, egy egyetlen szabályzattal, amely engedélyezi a hozzáférést:
 
 - A kiválasztott felhőalapú alkalmazások
-
 - A kijelölt felhasználók és csoportok
-
 - Felügyelt eszköz megkövetelése
-
 
 ## <a name="managed-devices"></a>A felügyelt eszközök  
 
@@ -59,18 +47,17 @@ Egyszerűen fogalmazva a felügyelt eszközök azok az alatt álló eszközök *
   
 ![Eszköz-alapú feltételek](./media/require-managed-devices/32.png)
 
-Három lehetősége van az Azure ad-vel regisztrált eszköz lekéréséhez:
+Három lehetősége van az Azure ad-vel regisztrált eszköz lekéréséhez: 
 
-- **[Az Azure ad-ben regisztrált eszközök](../devices/overview.md#azure-ad-registered-devices)**  – az Azure ad-vel regisztrált egy személyes eszköz
+- **Az Azure ad-ben regisztrált eszközök** – az Azure ad-vel regisztrált egy személyes eszköz
+- **Az Azure AD-hez csatlakoztatott eszközök** – egy szervezeti Windows 10 rendszerű eszköz, amely nem csatlakozik egy helyszíni ad-ben regisztrált az Azure ad-ben. 
+- **Hibrid Azure AD-hez csatlakoztatott eszközök** – a Windows 10-es vagy a támogatott régebbi verziójú eszközt, amely csatlakozik egy helyszíni ad-ben regisztrált az Azure ad-ben.
 
-- **[Az Azure AD-hez csatlakoztatott eszközök](../devices/overview.md#azure-ad-joined-devices)**  – egy szervezeti Windows 10 rendszerű eszköz, amely nem csatlakozik egy helyszíni ad-ben regisztrált az Azure ad-ben. 
-
-- **[Hibrid Azure AD-hez csatlakoztatott eszközök](../devices/overview.md#hybrid-azure-ad-joined-devices)**  – a Windows 10-es vagy a támogatott régebbi verziójú eszközt, amely csatlakozik egy helyszíni ad-ben regisztrált az Azure ad-ben.
+Ezek a beállítások a cikkben említett [eszközidentitás mi?](../devices/overview.md)
 
 Felügyelt eszközzé válik, egy regisztrált eszközt kell, vagy egy **hibrid Azure AD-hez csatlakoztatott eszköz** vagy egy **megfelelőként megjelölt eszköz**.  
 
 ![Eszköz-alapú feltételek](./media/require-managed-devices/47.png)
-
  
 ## <a name="require-hybrid-azure-ad-joined-devices"></a>Szükséges a hibrid Azure AD-hez csatlakoztatott eszközök
 
@@ -84,8 +71,7 @@ Ez a beállítás csak Windows 10-es vagy régebbi verziójú eszközök példá
 
 Eszköz teszi a hibrid Azure ad-ben csatlakozott egy felügyelt eszközt?  Egy helyszíni tartományhoz csatlakoztatott eszközök AD, feltételezzük, hogy ezek az eszközök felett van érvényben, használjon, például felügyeleti megoldások **System Center Configuration Manager (SCCM)** vagy **csoportházirend (GP)** őket. Mivel nincs semmilyen metódus az Azure ad-e az alábbi módszereket írtunk egy eszközt meghatározásához, a hibrid Azure AD léptetett eszköz megkövetelése egy viszonylag egyszerű olyan mechanizmus, egy felügyelt eszköz megkövetelése. Célszerű megítélhető, hogy a módszereket, amelyek érvényesek a helyi tartományhoz csatlakoztatott eszközök-e elég erős a felügyelt eszközök jelent, ha ilyen eszközt is egy hibrid Azure AD-csatlakoztatású eszközt rendszergazdaként.
 
-
-## <a name="require-device-to-be-marked-as-compliant"></a>Eszköz megfelelőként való megjelölésének megkövetelése
+## <a name="require-device-to-be-marked-as-compliant"></a>Megfelelőként megjelölt eszköz megkövetelése
 
 Lehetőség *megfelelőként megjelölt eszköz megkövetelése* a legerősebb űrlap kérése egy felügyelt eszközt.
 
@@ -98,8 +84,6 @@ Ez utóbbi lehetőség megköveteli egy eszközt regisztrálni kell az Azure ad-
  
 ![Eszköz-alapú feltételek](./media/require-managed-devices/46.png)
 
-
-
 Megfelelőként megjelölt eszköz akkor feltételezheti, hogy: 
 
 - Kezeli a mobileszközöket, a munkatársak által használt céges adatok elérésére
@@ -107,10 +91,6 @@ Megfelelőként megjelölt eszköz akkor feltételezheti, hogy:
 - A vállalati adatok védelmét a módja a munkatársak elérik és megosztják őket szabályozva
 - Az eszköz és az alkalmazások megfeleljenek a vállalat biztonsági követelményeinek
 
-
-
-
 ## <a name="next-steps"></a>További lépések
 
-Eszközalapú feltételes hozzáférési szabályzat konfigurálása a környezetében, előtt meg kell vessen egy pillantást a [ajánlott eljárások az Azure Active Directory feltételes hozzáférés](best-practices.md).
-
+Eszközalapú feltételes hozzáférési szabályzat konfigurálása a környezetében, előtt meg kell vessen egy pillantást a [gyakorlati tanácsok az Azure Active Directory feltételes hozzáférés](best-practices.md).

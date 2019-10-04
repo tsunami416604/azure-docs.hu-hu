@@ -1,46 +1,46 @@
 ---
-title: GitHub - Azure Logic Apps csatlakozni |} Microsoft Docs
-description: A GitHub REST API-k és az Azure Logic Apps GitHub-események figyelésére
-author: ecfan
-manager: jeconnoc
-ms.author: estfan
-ms.date: 03/02/2018
-ms.topic: article
-ms.service: logic-apps
+title: Kapcsolódás a GitHubhoz – Azure Logic Apps
+description: GitHub-események monitorozása a GitHub REST API-kkal és Azure Logic Apps
 services: logic-apps
-ms.reviewer: klam, LADocs
+ms.service: logic-apps
 ms.suite: integration
+author: ecfan
+ms.author: estfan
+manager: carmonm
+ms.reviewer: klam, LADocs
+ms.topic: conceptual
+ms.date: 03/02/2018
 tags: connectors
-ms.openlocfilehash: ce567dc631c3a147b795eb2355a4961faa8881d6
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 6a6e2a803ee2a272189abf0f21796b2305eea40b
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295812"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050903"
 ---
-# <a name="connect-to-github"></a>Kapcsolódás a Githubon
+# <a name="connect-to-github-from-azure-logic-apps"></a>Kapcsolódás a GitHubhoz Azure Logic Apps
 
-GitHub egy olyan webes Git tárház üzemeltetési szolgáltatás, amely az összes elosztott változat vezérlő és forrás kódot (SCM) felügyeleti funkciókat a Git és egyéb szolgáltatásokat kínál.
+A GitHub egy webalapú git-tárház, amely a git és más szolgáltatások összes elosztott változat-és forráskód-kezelési (SCM) funkcióját kínálja.
 
-A GitHub-összekötővel, első lépésként [először hozzon létre egy logikai alkalmazás](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Első lépésként [hozzon létre egy logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md)a GitHub-összekötő megkezdéséhez.
 
-## <a name="create-a-connection-to-github"></a>Kapcsolatot létesíthet a Githubon
+## <a name="create-a-connection-to-github"></a>Hozzon létre egy kapcsolódást a GitHubhoz
 
-A logikai alkalmazás a GitHub-összekötő használatára, akkor először létre kell hoznia egy *kapcsolat* részletek adja meg ezeket a tulajdonságokat: 
+Ha logikai alkalmazásban szeretné használni a GitHub-összekötőt, először létre kell hoznia egy *kapcsolatokat* , majd meg kell adnia a következő tulajdonságokkal kapcsolatos adatokat: 
 
-| Tulajdonság | Szükséges | Leírás | 
+| Tulajdonság | Kötelező | Leírás | 
 | -------- | -------- | ----------- | 
-| Jogkivonat | Igen | Adja meg a GitHub hitelesítő adatokat. |
+| Jogkivonat | Igen | Adja meg a GitHub hitelesítő adatait. |
 
-Miután létrehozta a kapcsolatot, a műveletek végrehajtása, és a jelen cikkben ismertetett eseményindítók figyelését.
+A kapcsolatok létrehozása után végrehajthatja a műveleteket, és figyelheti a cikkben ismertetett eseményindítókat.
 
 > [!INCLUDE [Steps to create a connection to GitHub](../../includes/connectors-create-api-github.md)]
 > 
 
-## <a name="connector-specific-details"></a>Összekötő-specifikus részletei
+## <a name="connector-reference"></a>Összekötő-referencia
 
-Eseményindítók és műveletek Swagger és bármely korlátok, tekintse át a [connector részleteket](/connectors/github/).
+Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos technikai részletekért lásd az összekötő OpenAPI (korábban: hencegés) leírását, tekintse át az [összekötő hivatkozási oldalát](/connectors/github/).
 
-## <a name="find-more-connectors"></a>További összekötők keresése
+## <a name="next-steps"></a>További lépések
 
-* Tekintse át a [összekötőket felsoroló](apis-list.md).
+* További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

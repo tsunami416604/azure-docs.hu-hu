@@ -1,96 +1,98 @@
 ---
-title: Az Azure Data Box Edge biztonsági |} A Microsoft Docs
-description: Ismerteti a biztonság és adatvédelem az Azure Data Box Edge eszköz-, szolgáltatás és a helyszíni és felhőbeli adatok védelmére.
+title: Azure Data Box Edge biztonság | Microsoft Docs
+description: Ismerteti azokat a biztonsági és adatvédelmi funkciókat, amelyek megvédik Azure Data Box Edge eszközét, szolgáltatását és adatait a helyszínen és a felhőben.
 services: Data Box Edge
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 04/15/2019
+ms.date: 08/21/2019
 ms.author: alkohli
-ms.openlocfilehash: 5316ddf9d456731f2789241434926366f732993a
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 375576dd4a7897c48474fd2af00a99084292d854
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59682100"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69970888"
 ---
-# <a name="azure-data-box-edge-security-and-data-protection"></a>Az Azure Data Box Edge biztonság és adatvédelem
+# <a name="azure-data-box-edge-security-and-data-protection"></a>Biztonság és adatvédelem Azure Data Box Edge
 
-Biztonsági esetén a fő szempont bevezetése új technológia, különösen akkor, ha a technológiát a bizalmas vagy szellemi tulajdont képező adatokat használatos. A Microsoft Azure Data Box peremhálózati megoldás segítségével, győződjön meg arról, hogy csak hitelesített entitások is megtekintése, módosítása vagy törlése az adatok.
+A biztonság jelentős jelentőséggel bír az új technológiák bevezetésekor, különösen akkor, ha a technológiát bizalmas vagy tulajdonosi adatokkal használják. Azure Data Box Edge segítségével biztosíthatja, hogy csak a felhatalmazott entitások tudják megtekinteni, módosítani vagy törölni az adatait.
 
-Ez a cikk ismerteti a Data Box Edge biztonsági funkciók, amelyek mindegyike a megoldás-összetevőket és az azokon tárolt adatok védelme érdekében.
+Ez a cikk azokat a Data Box Edge biztonsági funkciókat ismerteti, amelyek segítenek a megoldás egyes összetevőinek és a bennük tárolt adatainak a védelmében.
 
-Az Azure Data Box peremhálózati megoldás egymással kommunikáló négy fő összetevőből áll:
+A Azure Data Box Edge négy fő összetevőből áll, amelyek egymással együttműködnek:
 
-- **Data Box Edge szolgáltatás Azure-ban üzemeltetett** – a felügyeleti erőforrás, amellyel az eszköz rendelés létrehozása, az eszköz konfigurálása és a rendelés nyomon követésével befejezését.
-- **Data Box peremhálózati eszköz** – az átvitel eszköz, amely tartalmazza a szükséges, hogy a helyszíni adatok importálása az Azure-ba való.
-- **Az eszközhöz csatlakoztatott ügyfelek /-gazdagépekre** – az ügyfelek az infrastruktúra, amely a Data Box peremhálózati eszköz csatlakozik, és adatokat tartalmaznak, amelyek kell védeni.
-- **Felhőalapú tároló** – a hely az Azure-felhőben, ahol az adatok tárolása történik. Ez a hely általában a létrehozott Data Box Edge-erőforráshoz társított storage-fiók.
+- **Az Azure-ban üzemeltetett Data Box Edge szolgáltatás**. Az eszköz megrendelésének létrehozásához használt felügyeleti erőforrás, konfigurálja az eszközt, majd kövesse nyomon a befejezési sorrendet.
+- **Data Box Edge eszköz**. Az Ön által szállított továbbítási eszköz, amely a helyszíni adatok Azure-ba való importálására használható.
+- **Az eszközhöz csatlakoztatott ügyfelek/gazdagépek**. Az infrastruktúra azon ügyfelei, amelyek a Data Box Edge eszközhöz csatlakoznak, és a védeni kívánt adatait tartalmazzák.
+- **Felhőbeli tárolás**. A hely az Azure Cloud platformon, ahol az adatgyűjtés történik. Ez a hely általában a létrehozott Data Box Edge erőforráshoz csatolt Storage-fiók.
 
-## <a name="data-box-edge-service-protection"></a>Box Edge szolgáltatás adatvédelem
+## <a name="data-box-edge-service-protection"></a>Data Box Edge szolgáltatás védelme
 
-A Data Box Edge szolgáltatás nem a Microsoft Azure-ban üzemeltetett felügyeleti szolgáltatás. A szolgáltatás konfigurálása és kezelése az eszköz segítségével.
+A Data Box Edge szolgáltatás az Azure-ban üzemeltetett felügyeleti szolgáltatás. A szolgáltatás az eszköz konfigurálására és kezelésére szolgál.
 
 [!INCLUDE [data-box-edge-gateway-data-rest](../../includes/data-box-edge-gateway-service-protection.md)]
 
-## <a name="data-box-edge-device-protection"></a>Adatvédelem Box peremhálózati eszköz
+## <a name="data-box-edge-device-protection"></a>Data Box Edge eszköz védelme
 
-A Data Box peremhálózati eszköz egy helyszíni eszköz, amely segít az adatok átalakítása a helyi feldolgozásra, és elküldi azt az Azure-ban. Az eszköz:
+A Data Box Edge eszköz egy helyszíni eszköz, amely megkönnyíti az adatok helyi feldolgozását, majd az Azure-ba történő küldését. Az eszköz:
 
-- Szüksége van egy aktiválási kulcsot a Data Box Edge szolgáltatás eléréséhez.
-- Van minden alkalommal eszköz jelszóval védett.
-- A zárolt eszköz van. Az eszköz BMC- és BIOS-ban, a BIOS-ban korlátozott felhasználói hozzáféréssel rendelkező jelszóval védett.
+- Aktiválási kulcsra van szükség a Data Box Edge szolgáltatás eléréséhez.
+- Az eszköz jelszavai mindig védelmet biztosítanak.
+- Egy zárolt eszköz. Az eszköz BMC és BIOS jelszavas védelemmel van ellátva. A BIOS-t korlátozott felhasználói hozzáférés védi.
 - A biztonságos rendszerindítás engedélyezve van.
-- A Windows Defender Device Guard futtatja. A Device Guard lehetővé teszi, hogy csak az a kódintegritási házirendekben meghatározott megbízható alkalmazások futtathatók.
+- A Windows Defender Device Guard eszközt futtatja. Az Eszközkezelő lehetővé teszi, hogy csak a kód-integritási házirendekben meghatározott megbízható alkalmazásokat futtasson.
 
-### <a name="protect-the-device-via-activation-key"></a>Az eszköz aktiválási kulccsal védelme
+### <a name="protect-the-device-via-activation-key"></a>Az eszköz védetté aktiválása az aktiválási kulcs használatával
 
-Csatlakozás a Data Box Edge szolgáltatást az Azure-előfizetésében létrehozott csak jogosult Data Box peremhálózati eszköz engedélyezett. Egy eszköz hitelesítéséhez, az aktiválási kulcs aktiválásához az eszköz a Data Box Edge szolgáltatással kell használnia.
+Csak egy engedélyezett Data Box Edge eszköz csatlakozhat az Azure-előfizetésében létrehozott Data Box Edge szolgáltatáshoz. Az eszköz engedélyezéséhez aktiválnia kell egy aktiválási kulcsot az eszköz Data Box Edge szolgáltatással való aktiválásához.
 
 [!INCLUDE [data-box-edge-gateway-data-rest](../../includes/data-box-edge-gateway-activation-key.md)]
 
-További információért ugorjon [aktiválási kulcs beszerzése](data-box-edge-deploy-prep.md#get-the-activation-key).
+További információ: aktiválási [kulcs](data-box-edge-deploy-prep.md#get-the-activation-key)beszerzése.
 
-### <a name="protect-the-device-via-password"></a>Jelszó-n keresztül az eszköz védelme
+### <a name="protect-the-device-via-password"></a>Az eszköz jelszavas védelemmel való ellátása
 
-Jelszavak győződjön meg arról, hogy az adatok csak a jogosult felhasználók számára is elérhető. Data Box peremhálózati eszközök rendszerindítás zárolt állapotban.
+A jelszavak biztosítják, hogy csak a jogosult felhasználók férjenek hozzá az adataihoz. Data Box Edge az eszközök zárolt állapotban vannak.
 
 A következőket teheti:
 
-- A helyi webes felhasználói felületen, az eszköz egy böngészőből csatlakozzon, és adja meg egy jelszót az eszköz bejelentkezik.
-- Távoli csatlakozás az eszköz PowerShell-felületén az HTTP-n keresztül. Távfelügyelet alapértelmezés szerint be van kapcsolva. Majd adja meg, jelentkezzen be az eszköz az eszköz jelszavát. További információért ugorjon [távolról csatlakozhat a Data Box peremhálózati eszköz](data-box-edge-connect-powershell-interface.md#connect-to-the-powershell-interface).
+- Kapcsolódjon az eszköz helyi webes FELÜLETéhez egy böngészőben, majd adjon meg egy jelszót az eszközre való bejelentkezéshez.
+- Távolról kapcsolódhat az eszköz PowerShell-felületéhez HTTP-n keresztül. A távfelügyelet alapértelmezés szerint be van kapcsolva. Ezután megadhatja az eszköz jelszavát az eszközre való bejelentkezéshez. További információ: [távoli kapcsolódás a Data Box Edge eszközhöz](data-box-edge-connect-powershell-interface.md#connect-to-the-powershell-interface).
 
 [!INCLUDE [data-box-edge-gateway-data-rest](../../includes/data-box-edge-gateway-password-best-practices.md)]
-- Használja a helyi webes felhasználói Felületét, hogy [módosítsa a jelszót](data-box-edge-manage-access-power-connectivity-mode.md#manage-device-access). Ha megváltoztatja a jelszót, mindenképpen az összes távelérési a felhasználók értesítése, hogy azok nem tapasztalnak egy bejelentkezési hiba.
+- A [jelszó](data-box-edge-manage-access-power-connectivity-mode.md#manage-device-access)megváltoztatásához használja a helyi webes felhasználói felületet. Ha megváltoztatja a jelszót, ügyeljen arra, hogy értesítse az összes távelérési felhasználót, hogy ne legyenek a bejelentkezéssel kapcsolatos problémák.
 
-## <a name="protect-the-data"></a>Az adatok védelme
+## <a name="protect-your-data"></a>Az adatok védelme
 
-Ez a szakasz ismerteti a Data Box Edge biztonsági funkciók, amelyek az átvitt adatokat és a tárolt adatok védelméhez.
+Ez a szakasz azokat a Data Box Edge biztonsági szolgáltatásokat ismerteti, amelyek a továbbítást és a tárolt információkat védik.
 
-### <a name="protect-data-at-rest"></a>Inaktív adatok védelme
+### <a name="protect-data-at-rest"></a>Adatok védelme nyugalmi állapotban
 
 [!INCLUDE [data-box-edge-gateway-data-rest](../../includes/data-box-edge-gateway-data-rest.md)]
+- A BitLocker XTS-AES 256 bites titkosítás a helyi adatvédelemre szolgál.
 
-### <a name="protect-data-in-flight"></a>Továbbított adatok védelme
+
+### <a name="protect-data-in-flight"></a>A repülésben tárolt adatvédelem
 
 [!INCLUDE [data-box-edge-gateway-data-rest](../../includes/data-box-edge-gateway-data-flight.md)]
 
-### <a name="protect-data-via-storage-accounts"></a>Storage-fiókok keresztül adatok védelme
+### <a name="protect-data-via-storage-accounts"></a>Az adatvédelem a Storage-fiókok használatával
 
 [!INCLUDE [data-box-edge-gateway-data-rest](../../includes/data-box-edge-gateway-protect-data-storage-accounts.md)]
-- Forgatás, majd [a tárfiókkulcsok szinkronizálása](data-box-edge-manage-shares.md#sync-storage-keys) rendszeresen annak érdekében, hogy a tárfiók nem érhető el a jogosulatlan felhasználók.
+- Forgassa el és szinkronizálja rendszeresen a [Storage-fiók kulcsait](data-box-edge-manage-shares.md#sync-storage-keys) , hogy megvédje a Storage-fiókját a jogosulatlan felhasználóktól.
 
 ## <a name="manage-personal-information"></a>Személyes adatok kezelése
 
-A Data Box Edge szolgáltatás adatokat gyűjt személyes adatokat a következő kulcs példányok:
+A Data Box Edge szolgáltatás a következő helyzetekben gyűjt személyes adatokat:
 
 [!INCLUDE [data-box-edge-gateway-data-rest](../../includes/data-box-edge-gateway-manage-personal-data.md)]
 
-A felhasználók férhetnek hozzá, vagy törli a megosztást listájának megtekintéséhez kövesse [a Data Box Edge-megosztások kezelése](data-box-edge-manage-shares.md).
+A megosztásokat elérő vagy törölhető felhasználók listájának megtekintéséhez kövesse a [megosztások kezelése](data-box-edge-manage-shares.md)a Data Box Edgeban című témakör lépéseit.
 
-További információkért lásd a Microsoft szabályzatát a [biztonsági és adatkezelési központban](https://www.microsoft.com/trustcenter).
+További információkért tekintse át a Microsoft adatvédelmi szabályzatát a [megbízhatósági központban](https://www.microsoft.com/trustcenter).
 
 ## <a name="next-steps"></a>További lépések
 
-[A Data Box Edge-eszköz üzembe helyezése](data-box-edge-deploy-prep.md).
+[A Data Box Edge eszköz üzembe helyezése](data-box-edge-deploy-prep.md)

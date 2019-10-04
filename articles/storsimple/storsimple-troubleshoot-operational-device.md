@@ -1,6 +1,6 @@
 ---
-title: A StorSimple eszköz üzembe helyezett hibaelhárítása |} Microsoft Docs
-description: Ismerteti a StorSimple eszközön a jelenleg telepített és működő bekövetkező hibák megoldásában.
+title: A StorSimple eszköz üzembe helyezett hibaelhárítása |} A Microsoft Docs
+description: Ismerteti, hogyan diagnosztizálhatja és megoldhatja a bekövetkező hibák, amelyek jelenleg üzembe helyezett és működési StorSimple eszközön.
 services: storsimple
 documentationcenter: NA
 author: SharS
@@ -14,54 +14,54 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: v-sharos
-ms.openlocfilehash: cf037f7f1c1384b654a7144485d38f569eb7c167
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8ad3f09bf46caf426b2008b583ebd2ff78522462
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32187334"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64713066"
 ---
-# <a name="troubleshoot-an-operational-storsimple-device"></a>Az operatív StorSimple eszköz hibáinak elhárítása
+# <a name="troubleshoot-an-operational-storsimple-device"></a>Működési StorSimple-eszköz hibaelhárítása
 > [!NOTE]
-> A StorSimple klasszikus portálja elavult. A StorSimple-eszközkezelők automatikusan átkerülnek az új Azure Portalra az elavulási ütemezésnek megfelelően. Erről az áthelyezésről kapni fog egy e-mailt és egy Portal-értesítést. Ez a dokumentum hamarosan el lesz távolítva. Ha kérdései vannak az áthelyezéssel kapcsolatban, tekintse meg a [Gyakori kérdések: Váltás az Azure Portalra](storsimple-8000-move-azure-portal-faq.md) szakaszt.
+> A StorSimple klasszikus portálja elavult. A StorSimple-eszközkezelők automatikusan átkerülnek az új Azure Portalra az elavulási ütemezésnek megfelelően. Erről az áthelyezésről kapni fog egy e-mailt és egy Portal-értesítést. Ez a dokumentum hamarosan el lesz távolítva. Kérdései vannak az áthelyezéssel, lásd: [– gyakori kérdések: Az Azure Portalra](storsimple-8000-move-azure-portal-faq.md).
 
 ## <a name="overview"></a>Áttekintés
-A cikkben kapcsolatos konfigurációs problémák hasznos hibaelhárítási útmutatót, hogy esetleg felmerülő után a StorSimple eszköz üzembe helyezett és működik. Kapcsolatos gyakori hibák, lehetséges okok, és a Microsoft Azure StorSimple futtatásakor az esetleg előforduló problémák megoldását segítő javasolt lépéseket ismerteti. Ez az információ a StorSimple fizikai eszköz helyszíni, mind a StorSimple virtuális eszköz vonatkozik.
+Ez a cikk kapcsolatos konfigurációs problémák megoldásához hasznosak hibaelhárítási útmutatót, hogy találkozik, előfordulhat, hogy a StorSimple eszköz üzembe helyezett és működési után. Ismerteti a gyakori problémák lehetséges okok és javasolt lépések segítséget nyújtanak a Microsoft Azure StorSimple futtatásakor az esetleg előforduló problémák megoldásához. Ez az információ a StorSimple fizikai eszköz a helyszíni és a StorSimple virtuális eszköz is vonatkozik.
 
-A Microsoft Azure StorSimple művelet során esetleg előforduló hibakódok listáját megtalálja a cikk végén valamint lépéseket is tehet javítsa ki a hibákat. 
+A Microsoft Azure StorSimple művelet során előforduló hibakódok listáját megtalálhatja a cikk végén valamint lépéseket szükségesek javítsa ki a hibákat. 
 
-## <a name="setup-wizard-process-for-operational-devices"></a>A telepítő varázsló folyamat működési eszközökhöz
-A telepítő varázsló ([Invoke-HcsSetupWizard][1]) az eszközök konfigurációját és javítási művelet elvégzése, ha szükséges.
+## <a name="setup-wizard-process-for-operational-devices"></a>A telepítő varázsló folyamat üzemeltetési eszközök
+A telepítővarázsló használata ([Invoke-hcssetupwizard parancsmagot][1]) az eszköz konfigurálása és javítási intézkedéseket, ha szükséges.
 
-A telepítővarázsló a korábban konfigurált és működési eszköz futtatásakor a folyamatábra nem azonos. Módosíthatja, hogy csak az alábbi bejegyzéseket:
+Egy korábban konfigurált és üzemeltetési eszközök, a varázsló futtatásakor a folyamat eltér. Módosíthatja, hogy csak az alábbi bejegyzéseket:
 
 * IP-cím, alhálózati maszk és átjáró
 * Elsődleges DNS-kiszolgáló
 * Elsődleges NTP-kiszolgáló
-* Nem kötelező webproxy-konfigurációja
+* Webproxy konfigurálása nem kötelező
 
-A telepítővarázsló nem jelszó adatgyűjtési és -eszköz regisztrációs kapcsolatos műveletek végrehajtása.
+A varázsló nem jelszó adatgyűjtési és -eszköz regisztrációja kapcsolatos műveletek végrehajtása.
 
-## <a name="errors-that-occur-during-subsequent-runs-of-the-setup-wizard"></a>A telepítési varázsló ezt követő futtatása során előforduló hibák
-Az alábbi táblázat a hibákat, hogy a telepítő varázsló működési-eszközön, a hibák lehetséges okát futtatásakor előforduló, és javasolt műveletek azok megoldását ismerteti. 
+## <a name="errors-that-occur-during-subsequent-runs-of-the-setup-wizard"></a>A telepítő varázsló későbbi futtatások során felmerülő hibák
+A következő táblázat ismerteti a hibák fordulhatnak elő, amikor futtatja a egy működési eszközön telepítővarázsló, a hibák lehetséges okát, és javasolt műveletek a problémák megoldásához. 
 
-| Nem. | Hiba vagy a feltétel | Lehetséges okok | Javasolt művelet |
+| Nem. | Hiba vagy feltétel | Lehetséges okok | Javasolt művelet |
 |:--- |:--- |:--- |:--- |
-| 1 |350032. hiba: Az eszköz már inaktív. |Ez a hiba jelenik meg a telepítővarázsló az inaktív állapotú eszköz futtatásakor. |[Forduljon a Microsoft Support](storsimple-contact-microsoft-support.md) további lépéseket. Deaktivált eszköz szolgáltatást nem lehet rendezni. A gyári beállítások visszaállítása lehet szükség, mielőtt az eszköz újra kell aktiválni. |
-| 2 |Invoke-HcsSetupWizard: ERROR_INVALID_FUNCTION (kivétel HRESULT: 0x80070001) |A DNS-kiszolgáló frissítése sikertelen. DNS-beállítások globálisak, és minden engedélyezett hálózati adaptert alkalmaz a rendszer. |Engedélyezze a felületet, és a DNS-beállítások alkalmazásához újra. Az zavart okozhat a hálózat más engedélyezett kapcsolatok mivel ezek a beállítások globális. |
-| 3 |Az eszköz úgy tűnik, hogy online állapotú legyen a StorSimple Manager szolgáltatás portálján, de kísérli meg a minimális beállításának befejezése és a konfiguráció mentéséhez, a művelet sikertelen lesz. |Kezdeti beállítás során a webalkalmazás-proxy nem lett konfigurálva, annak ellenére, hogy hiba történt egy tényleges proxykiszolgáló helyen. |Használja a [Test-HcsmConnection parancsmag] [ 2] a hiba található. [Forduljon a Microsoft Support](storsimple-contact-microsoft-support.md) Ha nem sikerül, a probléma elhárítása érdekében. |
-| 4 |Invoke-HcsSetupWizard: Érték kívül esik a várt tartományon. |Alhálózati maszk ezt a hibát eredményez. Lehetséges okok a következők: <ul><li> Az alhálózati maszk nem található vagy üres.</li><li>Az Ipv6-előtag formátuma nem megfelelő.</li><li>A felület a felhőalapú, de az átjáró hiányzik vagy nem helyes.</li></ul>Vegye figyelembe, hogy a DATA 0 automatikusan felhő-engedélyezett, ha a telepítővarázsló segítségével konfigurálható. |Annak megállapításához, a problémát, 0.0.0.0 vagy 256.256.256.256 használni, és tekintse meg a kimeneti. Adja meg helyes értékeit az alhálózati maszk, az átjárót és az Ipv6-előtagot, igény szerint. |
+| 1 |350032\. hiba: Az eszköz már inaktiválva van. |Ez a hiba jelenik meg a varázsló futtatásakor az inaktivált eszközön. |A további lépésekért [forduljon a Microsoft ügyfélszolgálatához](storsimple-contact-microsoft-support.md). Inaktivált eszköz nem állítható. Ebben a szolgáltatásban. A gyári beállítások visszaállítását akkor lehet szükség, az eszköz újra aktiválása előtt. |
+| 2 |Invoke-hcssetupwizard: parancsmagot ERROR_INVALID_FUNCTION (kivétel HRESULT: 0x80070001) |A DNS-kiszolgáló frissítése sikertelen. DNS-beállításainak globálisak, és minden engedélyezett hálózati adaptert érvényesek. |A felület engedélyezéséhez és a DNS-beállítások alkalmazásához újra. Ez előfordulhat, hogy zavarja a hálózat többi engedélyezett adapterek, mivel ezek a beállítások globális. |
+| 3 |Az eszköz úgy tűnik, hogy a StorSimple Manager szolgáltatás portálon elérhető nem lesz, de meg a minimális telepítés befejezéséhez és a konfiguráció mentéséhez, a művelet sikertelen lesz. |Kezdeti beállítás során a webalkalmazás-proxy nem volt konfigurálva, annak ellenére, hogy hiba történt egy tényleges proxykiszolgáló helyen. |Használja a [Test-HcsmConnection parancsmaggal] [ 2] keresse meg a hibát. [Forduljon a Microsoft Support](storsimple-contact-microsoft-support.md) Ha nem sikerül, a probléma elhárításához. |
+| 4 |Invoke-hcssetupwizard: parancsmagot Érték nem a várt tartományba esik. |Alhálózati maszk ezt a hibát eredményez. Lehetséges okok a következők: <ul><li> Az alhálózati maszk nem található vagy üres.</li><li>Az Ipv6-előtag formátuma nem megfelelő.</li><li>A felület felhőalapú, de az átjáró nem hiányzik vagy helytelen.</li></ul>Vegye figyelembe, hogy a DATA 0 automatikusan felhőképes, ha a telepítővarázsló keresztül lehet konfigurálni. |Annak megállapításához, a probléma, 0.0.0.0 vagy 256.256.256.256 alhálózatot használja, és tekintse meg a kimenetet. Adja meg a megfelelő értékeit az alhálózati maszk, az átjáró és az Ipv6-előtagot, igény szerint. |
 
 ## <a name="error-codes"></a>Hibakódok
 Hibák numerikus sorrendben vannak felsorolva.
 
-| Hiba száma | Hibaüzenet-szöveg vagy leírása | Ajánlott teendő |
+| Hiba száma | Hiba szövege vagy leírása | Ajánlott felhasználói művelet |
 |:--- |:--- |:--- |
-| 10502 |Hiba történt a tárfiók elérése során. |Várjon néhány percet, és próbálkozzon újra. Ha a probléma továbbra is fennáll, további lépéseket kérjük, forduljon a Microsoft ügyfélszolgálatához. |
-| 40017 |A biztonsági mentési művelet sikertelen volt, mivel a biztonsági mentési házirendben megadott kötet nem található az eszközön. |Próbálja megismételni a biztonsági mentési műveletet, ha a probléma továbbra is fennáll, forduljon a Microsoft Support. a következő lépéseket. |
-| 40018 |A biztonsági mentési művelet sikertelen volt, mert nincs megadva a biztonsági mentési házirendben kötetek találhatók, az eszközön. |Próbálja megismételni a biztonsági mentési műveletet, ha a probléma továbbra is fennáll, forduljon a Microsoft Support. a következő lépéseket. |
-| 390061 |A rendszer nem foglalt vagy nem érhető el. |Várjon néhány percet, és próbálkozzon újra. Ha a probléma továbbra is fennáll, további lépéseket kérjük, forduljon a Microsoft ügyfélszolgálatához. |
-| 390143 |Hiba történt a következő hibakóddal 390143. (Ismeretlen hiba történt.) |Ha a probléma továbbra is fennáll, forduljon a Microsoft Support további lépéseket. |
+| 10502 |Hiba történt a tárfiók eléréséhez. |Várjon néhány percet, és próbálkozzon újra. Ha a hiba nem szűnik meg, kérjük, forduljon a Microsoft ügyfélszolgálatához a következő lépéseket. |
+| 40017 |A biztonsági mentési művelet sikertelen volt, mint a biztonsági mentési szabályzatban megadott kötet nem található az eszközön. |Ismételje meg a biztonsági mentési műveletet, ha a hiba továbbra is fennáll, forduljon a Microsoft Support. a következő lépéseket. |
+| 40018 |A biztonsági mentési művelet sikertelen volt, mert a kötetek a biztonsági mentési szabályzatban megadott egyike sem található az eszközön. |Ismételje meg a biztonsági mentési műveletet, ha a hiba továbbra is fennáll, forduljon a Microsoft Support. a következő lépéseket. |
+| 390061 |A rendszer nem foglalt vagy nem érhető el. |Várjon néhány percet, és próbálkozzon újra. Ha a hiba nem szűnik meg, kérjük, forduljon a Microsoft ügyfélszolgálatához a következő lépéseket. |
+| 390143 |Hiba történt a következő hibakóddal 390143. (Ismeretlen hiba.) |Ha a hiba továbbra is fennáll, forduljon a Microsoft Support a következő lépéseket. |
 
 ## <a name="next-steps"></a>További lépések
 Ha a probléma megoldásához nem [forduljon a Microsoft Support](storsimple-contact-microsoft-support.md) segítségért. 

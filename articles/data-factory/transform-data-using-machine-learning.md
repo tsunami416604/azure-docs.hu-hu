@@ -12,14 +12,14 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 ms.openlocfilehash: aaf1d72a0c9c56e7d140fb615caf014507ebf263
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57840562"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60928084"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Az Azure Machine Learning és az Azure Data Factory prediktív adatcsatornák létrehozása
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
 > * [1-es verzió](v1/data-factory-azure-ml-batch-execution-activity.md)
 > * [Aktuális verzió](transform-data-using-machine-learning.md)
 
@@ -126,15 +126,15 @@ A következő JSON-kódrészlet definiál egy Azure Machine Learning Batch Execu
 
 | Tulajdonság          | Leírás                              | Szükséges |
 | :---------------- | :--------------------------------------- | :------- |
-| név              | A folyamat a tevékenység neve     | Igen      |
-| leírás       | A tevékenység leírása leíró szöveg.  | Nem       |
+| name              | A folyamat a tevékenység neve     | Igen      |
+| description       | A tevékenység leírása leíró szöveg.  | Nem       |
 | type              | Data Lake Analytics U-SQL-tevékenység, a tevékenység típusa van **AzureMLBatchExecution**. | Igen      |
 | linkedServiceName | Társított szolgáltatások, az Azure Machine Learning társított szolgáltatást. Ezt a társított szolgáltatást kapcsolatos további információkért lásd: [társított szolgáltatások számítása](compute-linked-services.md) cikk. | Igen      |
 | webServiceInputs  | Kulcs érték párok, leképezése az Azure Machine Learning Web Service bemenetek nevei. Kulcsot meg kell egyeznie a közzétett Azure Machine Learning Web Service a definiált bemeneti paraméterek. A bemeneti Blob helyének megadása egy Azure Storage társított szolgáltatásokat és a fájl elérési útja tulajdonságok pár értéke. | Nem       |
 | webServiceOutputs | Kulcs érték párok, leképezése az Azure Machine Learning Web Service kimenetek nevei. A közzétett Azure Machine Learning Web Service a kimeneti paraméterek kell egyeznie. Egy Azure Storage társított szolgáltatást, és a fájl elérési útja tulajdonságok pár adja meg a kimeneti Blob-helyeken. | Nem       |
 | globalParameters  | Kulcs érték párok történő átadása az Azure Machine Learning studio kötegelt végrehajtási szolgáltatás végpontját. Kulcsok meg kell egyeznie a közzétett Azure Machine Learning studio-webszolgáltatás definiált webszolgáltatás-paraméterek nevei. Az Azure Machine Learning studio kötegelt végrehajtási kérelem GlobalParameters tulajdonságában érték lett átadva | Nem       |
 
-### <a name="scenario-1-experiments-using-web-service-inputsoutputs-that-refer-to-data-in-azure-blob-storage"></a>1. forgatókönyv: A kísérletek webes szolgáltatás bemenete/kimenete, amely az adatoknak az Azure Blob Storage használatával
+### <a name="scenario-1-experiments-using-web-service-inputsoutputs-that-refer-to-data-in-azure-blob-storage"></a>1\. forgatókönyv: A kísérletek webes szolgáltatás bemenete/kimenete, amely az adatoknak az Azure Blob Storage használatával
 
 Ebben a forgatókönyvben az Azure Machine Learning Web service-adatok egy Azure blob Storage-fájlból előrejelzéseket tesz, és a blob Storage-Előrejelzési eredményeket tárolja. A következő JSON-kódrészlet meghatározza egy Data Factory-folyamatot egy olyan AzureMLBatchExecution tevékenységgel. A bemeneti és kimeneti adatokat az Azure Blog Storage olyan LinkedName és FilePath virtuálisgép-pár hivatkozik. A minta a társított szolgáltatás a bemenetek és kimenetek különböző, különböző társított szolgáltatásokat, az egyes a bemenetekben/kimenetekben. a Data Factory segítségével a megfelelő fájlok felvétele és küldeni az Azure Machine Learning studio webszolgáltatás.
 
@@ -188,7 +188,7 @@ Ebben a forgatókönyvben az Azure Machine Learning Web service-adatok egy Azure
     }
 }
 ```
-### <a name="scenario-2-experiments-using-readerwriter-modules-to-refer-to-data-in-various-storages"></a>2. forgatókönyv: Író vagy olvasó modulok használata az adatoknak a különböző tárolók kísérletek
+### <a name="scenario-2-experiments-using-readerwriter-modules-to-refer-to-data-in-various-storages"></a>2\. forgatókönyv: Író vagy olvasó modulok használata az adatoknak a különböző tárolók kísérletek
 Egy másik gyakori forgatókönyv, amikor az Azure Machine Learning studio-kísérletek létrehozása az adatok importálása és a kimeneti adatokat modult használja. Adatok betöltése egy kísérletet az szolgál az adatok importálása modullal, és a kimeneti adatokat modul az adatok mentése a kísérletekből. Adatok importálása és a kimeneti adatokat modullal kapcsolatos részletekért lásd: [adatok importálása](https://msdn.microsoft.com/library/azure/dn905997.aspx) és [kimeneti adatok](https://msdn.microsoft.com/library/azure/dn905984.aspx) témakörök az MSDN könyvtárában.
 
 Az adatok importálása és a kimeneti adatokat modulok használata esetén hasznos lehet egy webes szolgáltatás paraméter használata minden egyes tulajdonsága ezeket a modulokat. Webes paraméterek lehetővé teszik az értékek konfigurálása során. Például létrehozhat egy kísérlet használja az Azure SQL Database-adatok importálása modullal: XXX.database.windows.net. Miután a web service telepítve lett, a web service, adjon meg egy másik Azure SQL Server nevű felhasználói számára engedélyezni szeretné `YYY.database.windows.net`. A Web service paramétert használhatja, hogy ezt az értéket kell konfigurálni.

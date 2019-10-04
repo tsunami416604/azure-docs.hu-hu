@@ -1,55 +1,55 @@
 ---
-title: Tartalom indexelése az Azure Table storage, az Azure Search – a teljes szöveges keresés
-description: Ismerje meg az Azure Search indexelők az Azure Table storage-ban tárolt adatok indexelése.
-ms.date: 03/01/2019
+title: Tartalom indexelése az Azure Table Storage-ból a teljes szöveges kereséshez – Azure Search
+description: Megtudhatja, hogyan indexelheti az Azure Table Storage-ban tárolt információkat egy Azure Search indexelő használatával.
+ms.date: 05/02/2019
 author: mgottein
-manager: cgronlun
+manager: nitinme
 ms.author: magottei
 services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: e1b411ab54a5b666849893ba9d246eff85e7e54e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: dffb0a41dbf33cd86014115b089036d69a8e4718
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57306884"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648181"
 ---
-# <a name="index-azure-table-storage-with-azure-search"></a>Az Azure Search szolgáltatással az Azure Table storage indexelése
-Ez a cikk bemutatja, hogyan használhatja az Azure Search index, az Azure Table storage-ban tárolt adatok.
+# <a name="index-azure-table-storage-with-azure-search"></a>Az Azure Table Storage indexelése Azure Search
+Ez a cikk bemutatja, hogyan használható a Azure Search az Azure Table Storage-ban tárolt adatindexeléshez.
 
-## <a name="set-up-azure-table-storage-indexing"></a>Állítsa be az Azure Table storage-indexelő
+## <a name="set-up-azure-table-storage-indexing"></a>Az Azure Table Storage indexelésének beállítása
 
-Az Azure Table storage-indexelő beállítása a forrásanyagok használata:
+Az alábbi erőforrásokkal állíthatja be az Azure Table Storage indexelő szolgáltatását:
 
 * [Azure Portal](https://ms.portal.azure.com)
-* Az Azure Search [REST API-val](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
+* Azure Search [REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
 * Azure Search [.NET SDK](https://aka.ms/search-sdk)
 
-Itt bemutatjuk a folyamatot a REST API-val. 
+Itt mutatjuk be a folyamatot a REST API használatával. 
 
-### <a name="step-1-create-a-datasource"></a>1. lépés: Adatforrás létrehozása
+### <a name="step-1-create-a-datasource"></a>1\. lépés: Adatforrás létrehozása
 
-Egy adatforrás indexelni, a az adatokat, és a házirendeket, amelyek lehetővé teszik az Azure Search hatékony azonosításához az adatok módosítása eléréséhez szükséges hitelesítő adatok megadása
+Az adatforrás meghatározza, hogy mely adatokat kell indexelni, az adatokhoz való hozzáféréshez szükséges hitelesítő adatokat, valamint azokat a házirendeket, amelyek lehetővé teszik a Azure Search számára az adatok változásainak hatékony azonosítását.
 
-A tábla indexelése, az adatforrást a következő tulajdonságokkal kell rendelkeznie:
+A tábla indexeléséhez az adatforrásnak a következő tulajdonságokkal kell rendelkeznie:
 
-- **név** az adatforrást a keresési szolgáltatás belül egyedi neve.
-- **típus** kell `azuretable`.
-- **hitelesítő adatok** paraméter a tárfiók kapcsolati sztringje tartalmazza. Tekintse meg a [adja meg a hitelesítő adatok](#Credentials) című szakasz részletezi.
-- **tároló** állítja be a táblázat neve és a egy opcionális lekérdezési.
-    - A táblázat neve használatával adja meg a `name` paraméter.
-    - Szükség esetén adjon meg egy lekérdezést a `query` paraméter. 
+- a **Name** a keresési szolgáltatásban található adatforrás egyedi neve.
+- a típusnak `azuretable`a következőnek kell lennie:
+- a **hitelesítő adatok** paraméter tartalmazza a Storage-fiókhoz tartozó kapcsolatok sztringjét. A részletekért tekintse [meg a hitelesítő adatok megadása](#Credentials) szakaszt.
+- a **tároló** beállítja a tábla nevét és egy opcionális lekérdezést.
+    - Adja meg a tábla nevét a `name` paraméter használatával.
+    - Igény szerint megadhat egy lekérdezést a `query` paraméter használatával. 
 
 > [!IMPORTANT] 
-> Amikor csak lehetséges, használjon szűrőt a partitionkey értékéhez a jobb teljesítmény érdekében. Minden más lekérdezés a teljes tábla beolvasásával, ami nagy táblák esetében teljesítményromlást végzi. Tekintse meg a [teljesítménnyel kapcsolatos megfontolások](#Performance) szakaszban.
+> Ha lehetséges, használjon egy szűrőt a PartitionKey a jobb teljesítmény érdekében. Minden más lekérdezés teljes táblázatos vizsgálatot végez, ami a nagyméretű táblák gyenge teljesítményét eredményezi. Lásd a [teljesítménnyel kapcsolatos szempontok](#Performance) szakaszt.
 
 
-Egy adatforrás létrehozása:
+Adatforrás létrehozása:
 
-    POST https://[service name].search.windows.net/datasources?api-version=2017-11-11
+    POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 
@@ -60,28 +60,28 @@ Egy adatforrás létrehozása:
         "container" : { "name" : "my-table", "query" : "PartitionKey eq '123'" }
     }   
 
-Adatforrás létrehozása API további információkért lásd: [adatforrás létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-data-source).
+További információ a Create DataSource API-ról: [adatforrás létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-data-source).
 
 <a name="Credentials"></a>
-#### <a name="ways-to-specify-credentials"></a>Hitelesítő adatok megadása ####
+#### <a name="ways-to-specify-credentials"></a>A hitelesítő adatok megadásának módjai ####
 
-A hitelesítő adatokat megadhatja a tábla a következő módszerek egyikével: 
+A következő módszerek egyikével megadhatja a táblázat hitelesítő adatait: 
 
-- **Teljes hozzáférés tárfiók kapcsolati sztringje**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` Kérheti a kapcsolati karakterláncot az Azure Portalról nyissa meg a **Tárfiók panelén** > **beállítások** > **kulcsok** (a klasszikus üzemi modell esetén Storage-fiókok esetében) vagy **beállítások** > **hozzáférési kulcsok** (az Azure Resource Manager-tárfiókok).
-- **Tárfiók megosztott hozzáférési aláírást kapcsolati karakterlánc**: `TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=t&sp=rl` A közös hozzáférésű jogosultságkód kell rendelkeznie a listában, és olvasási jogosultságokkal (ebben az esetben táblák) tárolókkal és objektumokkal (táblázat sorai).
--  **Tábla közös hozzáférésű jogosultságkód**: `ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?tn=<table name>&sv=2016-05-31&sig=<the signature>&se=<the validity end time>&sp=r` A közös hozzáférésű jogosultságkód lekérdezés (olvasás) engedélyekkel kell rendelkeznie a tábla.
+- **Teljes hozzáférésű Storage-fiók kapcsolati sztringje**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>`A kapcsolati karakterláncot a Azure Portalban szerezheti be, ha a **Storage-fiók** > panel**Beállítások** > **kulcsait** (klasszikus Storage-fiókok esetében) vagy a **Beállítások** > elérési kulcsait keresi(Azure Resource Manager Storage-fiókok esetében).
+- **Storage-fiók közös hozzáférési aláírásának kapcsolati karakterlánca**: `TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=t&sp=rl`A közös hozzáférésű aláírásnak tartalmaznia kell a listát és az olvasási engedélyeket a tárolókban (ebben az esetben a táblákat) és az objektumokat (tábla sorai).
+-  **Táblázat közös hozzáférésének aláírása**: `ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?tn=<table name>&sv=2016-05-31&sig=<the signature>&se=<the validity end time>&sp=r`A közös hozzáférésű aláírásnak lekérdezési (olvasási) engedélyekkel kell rendelkeznie a táblához.
 
-További információ a megosztott tároló eléréséhez aláírásokat, lásd: [a közös hozzáférésű jogosultságkódot](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+További információ a Storage közös hozzáférésű aláírásáról: a [közös hozzáférésű aláírások használata](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
 
 > [!NOTE]
-> Ha a közös hozzáférésű jogosultságkód hitelesítő adatokat használja, szüksége lesz az adatforrás hitelesítő adatainak frissítése rendszeresen megújított jogosultságkódokkal lejárati idejük elkerülése érdekében. Ha a közös hozzáférésű jogosultságkód hitelesítő adatai lejárnak, az indexelő hibaüzenettel meghiúsul egy hasonló "A kapcsolati karakterláncban megadott hitelesítő adatok érvénytelenek, vagy lejárt."  
+> Ha közös hozzáférés-aláírási hitelesítő adatokat használ, az adatforráshoz tartozó hitelesítő adatokat rendszeresen frissíteni kell a megújított aláírásokkal, hogy megakadályozza a lejáratát. Ha a megosztott hozzáférés aláírásának hitelesítő adatai lejárnak, az indexelő a következőhöz hasonló hibaüzenetet küld: "a kapcsolati sztringben megadott hitelesítő adatok érvénytelenek vagy lejártak."  
 
-### <a name="step-2-create-an-index"></a>2. lépés: Index létrehozása
-Az index egy dokumentumot, az attribútumot, adja meg a mezőket, és egyéb szerkezetek, amelyek formázhatja a keresési élmény.
+### <a name="step-2-create-an-index"></a>2\. lépés: Index létrehozása
+Az index határozza meg a dokumentum, az attribútumok és a keresési élményt formáló egyéb szerkezetek mezőit.
 
 Index létrehozása:
 
-    POST https://[service name].search.windows.net/indexes?api-version=2017-11-11
+    POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 
@@ -93,14 +93,14 @@ Index létrehozása:
           ]
     }
 
-Indexek létrehozásával kapcsolatos további információkért lásd: [a Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index).
+Az indexek létrehozásával kapcsolatos további információkért lásd: [create index](https://docs.microsoft.com/rest/api/searchservice/create-index).
 
-### <a name="step-3-create-an-indexer"></a>3. lépés: Indexelő létrehozása
-Az indexelő a cél keresési indexhez datasource csatlakozik, és biztosítja az Adatfrissítés automatizálásához ütemezés szerint. 
+### <a name="step-3-create-an-indexer"></a>3\. lépés: Indexelő létrehozása
+Az indexelő Összekapcsol egy adatforrást a cél keresési indexszel, és az Adatfrissítés automatizálására szolgáló ütemtervet biztosít. 
 
-Az index és az adatforrás létrehozása után készen áll az indexelő létrehozása:
+Az index és az adatforrás létrehozása után készen áll az indexelő létrehozására:
 
-    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
+    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 
@@ -111,29 +111,31 @@ Az index és az adatforrás létrehozása után készen áll az indexelő létre
       "schedule" : { "interval" : "PT2H" }
     }
 
-Az indexelő futása kétóránként. (Az ütemezési időköz értéke "PT2H".) Az indexelők futtatásához a 30 percenként, a "PT30M" időközt beállítani. A legrövidebb támogatott időköz öt perc alatt. Nem kötelező megadni. az ütemezés Ha nincs megadva, az indexelők futtatja, csak ha a létrehozást követően. Ugyanakkor igény szerint bármikor az indexelő is futtathatja.   
+Ez az indexelő két óránként fut. (Az ütemezett időköz értéke "PT2H".) Az indexelő 30 percenkénti futtatásához állítsa az intervallumot "PT30M" értékre. A legrövidebb támogatott időköz öt perc. Az ütemterv nem kötelező; Ha nincs megadva, az indexelő csak egyszer fut a létrehozásakor. Az Indexelő szolgáltatást azonban bármikor futtathatja igény szerint.   
 
-Indexelő létrehozása API további információkért lásd: [indexelő létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
+Az indexelő API létrehozásával kapcsolatos további információkért lásd: az [Indexelő létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
 
-## <a name="deal-with-different-field-names"></a>Különböző mezőnevek kezelése
-Egyes esetekben a meglévő index a mezőnevek eltérnek a tulajdonságneveket a táblában. Mezőleképezések használhatja a mezők nevét a táblázatból tulajdonságneveket leképezni a keresési index. További információ a mezőmegfeleltetésről, lásd: [Azure Search-indexelő Mezőleképezések áthidalhatók az adatforrások és a keresési indexek közötti különbségekről](search-indexer-field-mappings.md).
+Az indexelő-ütemtervek definiálásával kapcsolatos további információkért lásd: [az indexelő ütemezett Azure Search](search-howto-schedule-indexers.md).
 
-## <a name="handle-document-keys"></a>A dokumentum kulcsok kezelése
-Az Azure Search szolgáltatásban a dokumentumkulcsot egyedileg azonosítja az egy dokumentumot. Minden keresési index rendelkeznie kell típusú pontosan egy kulcsmező `Edm.String`. Kulcsmező szükség minden egyes dokumentum, amely az indexet ad hozzá. (Tulajdonképpen azt az egyetlen mező kitöltése kötelező.)
+## <a name="deal-with-different-field-names"></a>Más mezőnevek kezelése
+Előfordulhat, hogy a meglévő index mezőinek nevei eltérnek a táblában lévő tulajdonságok neveitől. A mező-hozzárendelések segítségével leképezheti a tulajdonságok nevét a táblából a keresési indexben lévő mezőnevek alapján. További információ a mezők-hozzárendelésekről: [Azure Search indexelő mező-hozzárendelések áthidalják az adatforrások és a keresési indexek közötti különbségeket](search-indexer-field-mappings.md).
 
-Táblázatsorok egy összetett kulccsal rendelkezik, mert az Azure Search állít elő, szintetikus mezője `Key` , amely partíciós kulcs és a sor értékek összefűzésével. Például ha egy sort a PartitionKey, `PK1` rowkey tulajdonságok esetén pedig `RK1`, akkor a `Key` mezők értékei `PK1RK1`.
+## <a name="handle-document-keys"></a>Dokumentum kulcsainak kezelése
+Azure Search a dokumentum kulcsa egyedileg azonosít egy dokumentumot. Minden keresési indexnek pontosan egy típusú `Edm.String`Key mezővel kell rendelkeznie. Az indexhez hozzáadott minden dokumentumhoz meg kell adni a Key mezőt. (Valójában ez az egyetlen kötelező mező.)
+
+Mivel a tábla sorainak összetett kulcsa van, Azure Search létrehoz egy nevű `Key` szintetikus mezőt, amely a partíciós kulcs és a sor kulcsainak összefűzése. Ha például egy sor `PK1` PartitionKey és `RK1`RowKey, akkor `PK1RK1`a `Key` mező értéke.
 
 > [!NOTE]
-> A `Key` érték a dokumentum kulcsok, például kötőjelek érvénytelen karaktert tartalmaz. Az érvénytelen karakterek kezelhető a `base64Encode` [leképezési függvény mezőben](search-indexer-field-mappings.md#base64EncodeFunction). Ha így tesz, ne felejtse el is használhatja az URL-cím környezetben is biztonságos Base64 kódolást, amikor például a keresési meghívja passing dokumentum kulcsok API-ban.
+> Az `Key` érték olyan karaktereket tartalmazhat, amelyek érvénytelenek a dokumentum kulcsaiban, például kötőjelek. Az érvénytelen karaktereket a `base64Encode` [mező-hozzárendelési függvény](search-indexer-field-mappings.md#base64EncodeFunction)használatával kezelheti. Ha ezt teszi, ne feledje, hogy az URL-alapú biztonságos Base64-kódolást is használja, ha olyan API-hívásokba kerül, mint a keresés.
 >
 >
 
-## <a name="incremental-indexing-and-deletion-detection"></a>Növekményes indexelést és a törlés észlelése
-Egy táblában indexelője ütemezés szerint futtatni beállításakor azt reindexes csak az új vagy frissített sorok határoz meg egy sor `Timestamp` értéket. Adja meg a változásészlelési házirend nem kell. Indexelő növekményes automatikusan engedélyezve lesz az Ön számára.
+## <a name="incremental-indexing-and-deletion-detection"></a>Növekményes indexelés és törlés észlelése
+Ha úgy állítja be a tábla-indexelő, hogy az ütemterv szerint fusson, akkor csak az új vagy frissített sorokat indexeli, ahogy azt `Timestamp` egy sor értéke határozza meg. Nem kell megadnia a változás-észlelési szabályzatot. A növekményes indexelés automatikusan engedélyezve van.
 
-Jelzi, hogy bizonyos dokumentumok el kell távolítani az indexet, használhatja a helyreállítható törlés stratégiát. Helyett egy sor törlése, adjon hozzá egy tulajdonság jelzi, hogy azt törölni, pedig az az adatforrás egy helyreállítható törlési szabályzat beállítása. Például a következő szabályzatot úgy véli, hogy egy sor törlődött, ha a sor nullértékkel rendelkezik egy tulajdonság `IsDeleted` értékkel `"true"`:
+Ha azt szeretné jelezni, hogy bizonyos dokumentumokat el kell távolítani az indexből, használhat Soft delete stratégiát. Egy sor törlése helyett adjon hozzá egy tulajdonságot, amely jelzi, hogy törölve lett, és állítson be egy törlési észlelési házirendet az adatforráshoz. Az alábbi házirend például azt veszi figyelembe, hogy a sor törölve lett, ha a sor `IsDeleted` tulajdonsága a `"true"`következő értékkel rendelkezik:
 
-    PUT https://[service name].search.windows.net/datasources?api-version=2017-11-11
+    PUT https://[service name].search.windows.net/datasources?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 
@@ -148,21 +150,21 @@ Jelzi, hogy bizonyos dokumentumok el kell távolítani az indexet, használhatja
 <a name="Performance"></a>
 ## <a name="performance-considerations"></a>A teljesítménnyel kapcsolatos megfontolások
 
-Alapértelmezés szerint az Azure Search használja a következő lekérdezési szűrő: `Timestamp >= HighWaterMarkValue`. Mivel az Azure-táblák nem rendelkezik egy másodlagos indexet a `Timestamp` mezőt, ilyen típusú lekérdezésekre van szükség a teljes tábla beolvasásával, és ezért lassú nagy táblák esetében.
+Alapértelmezés szerint a Azure Search a következő lekérdezési szűrőt használja `Timestamp >= HighWaterMarkValue`:. Mivel az Azure-táblák nem rendelkeznek másodlagos indexszel a `Timestamp` mezőhöz, az ilyen típusú lekérdezésekhez teljes táblázatos vizsgálat szükséges, ezért a nagyméretű táblák esetében lassú.
 
 
-Az alábbiakban két lehetséges módszer tábla indexelési teljesítmény javításához. Mindkét módszer táblapartíciók használatára támaszkodik: 
+Íme két lehetséges módszer a tábla indexelési teljesítményének javításához. Mindkét módszer a Table Partitions használatára támaszkodik: 
 
-- Ha az adatok természetes módon kell felosztani több partíció-címtartományokat, hozzon létre egy adatforrás- és egy megfelelő egy-egy partíció tartományhoz. Minden indexelő most már csak egy adott partícióra tartomány, jobb lekérdezési teljesítményt eredményez feldolgozásához. Ha az adatok indexelése rögzített partíciók, még jobb kis számú: minden indexelő csak egy partíció vizsgálat does. Ha például egy adatforrás egy partíciótartomány feldolgozásra a kulcsok létrehozásához `000` való `100`, ehhez hasonló lekérdezés használata: 
+- Ha az adatai természetesen több partícióra is particionálva vannak, hozzon létre egy adatforrást és egy megfelelő indexelő az egyes partíciós tartományokhoz. Minden indexelő mostantól csak egy adott partíciós tartományt dolgoz fel, ami jobb lekérdezési teljesítményt eredményez. Ha az indexelni kívánt adat kis számú rögzített partícióval rendelkezik, még jobbá is: minden indexelő csak a partíciók vizsgálatát végzi el. Ha például egy olyan adatforrást szeretne `000` `100`létrehozni, amely a-ből származó kulcsokat tartalmazó partíciós tartományt dolgozza fel, a következőhöz hasonló lekérdezést használjon: 
     ```
     "container" : { "name" : "my-table", "query" : "PartitionKey ge '000' and PartitionKey lt '100' " }
     ```
 
-- Ha az adatok particionálása idő szerint (például, hogy új partíciót létrehozni minden nap vagy hét), vegye figyelembe a következő módon: 
-    - Használja a lekérdezés a következő formában: `(PartitionKey ge <TimeStamp>) and (other filters)`. 
-    - Az indexelő állapotának figyelése [indexelő állapotának API első](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status), és rendszeres időközönként frissíti a `<TimeStamp>` feltétel alapján a legutóbbi magas vízjel értéket a sikeres lekérdezés. 
-    - Ezt a módszert használja Ha szeretné elindítani a teljes újraindexelés, akkor alaphelyzetbe kell állítania az adatforrás lekérdezési mellett az indexelő alaphelyzetbe állítása. 
+- Ha az adatait idő szerint particionálja (például naponta vagy hetente létrehoz egy új partíciót), vegye figyelembe a következő megközelítést: 
+    - Használja az űrlap lekérdezését: `(PartitionKey ge <TimeStamp>) and (other filters)`. 
+    - Figyelje az indexelő állapotát az [Indexelő állapot API](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)beolvasása szolgáltatással, `<TimeStamp>` és rendszeres időközönként frissítse a lekérdezés feltételét a legújabb sikeres magas vízjelek érték alapján. 
+    - Ha ezzel a módszerrel teljes újraindexelést kell elindítania, alaphelyzetbe kell állítania az adatforrás-lekérdezést az indexelő alaphelyzetbe állítása mellett. 
 
 
-## <a name="help-us-make-azure-search-better"></a>Segítsen jobbá Azure Search
-Ha funkcióra vonatkozó javaslata vagy ötlete van javításai, küldje el őket a saját [UserVoice webhelyén](https://feedback.azure.com/forums/263029-azure-search/).
+## <a name="help-us-make-azure-search-better"></a>Segítsen nekünk, hogy jobban Azure Search
+Ha a szolgáltatással kapcsolatos kérések vagy ötletek vannak, küldje el azokat a [UserVoice webhelyen](https://feedback.azure.com/forums/263029-azure-search/).

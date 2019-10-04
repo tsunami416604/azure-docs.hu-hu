@@ -7,11 +7,11 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: ed373cfa0ac755d56e7bc2601c65e0e6482ff6d5
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58349450"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61038871"
 ---
 # <a name="create-users-in-azure-database-for-mariadb"></a>Felhasználók létrehozása az Azure Database for MariaDB 
 Ez a cikk bemutatja, hogyan hozhat létre felhasználókat az Azure Database for MariaDB.
@@ -29,7 +29,7 @@ Az Azure Database for MariaDB-kiszolgáló létrehozása után további felhaszn
 2. A rendszergazdai fiókot és jelszót használja az adatbázis-kiszolgálóhoz való kapcsolódáshoz. Használja az ügyfél előnyben részesített eszközt, például a MySQL Workbench, mysql.exe, HeidiSQL vagy mások. 
    Ha biztos benne, hogy hogyan kapcsolódhat, [való csatlakozás és adatlekérdezés a MySQL Workbench](./connect-workbench.md)
 
-3. Szerkessze és futtassa a következő SQL-kódot. Cserélje le a helyőrző értékét az új felhasználói nevet `new_master_user`. Ezt a szintaxist biztosít a listában szereplő összes adatbázissémák jogosultságokkal (*.*), a felhasználó nevét (ebben a példában new_master_user). 
+3. Szerkessze és futtassa a következő SQL-kódot. Cserélje le a helyőrző értékét az új felhasználói nevet `new_master_user`. Ezt a szintaxist biztosít a listában szereplő összes adatbázissémák jogosultságokkal ( *.* ), a felhasználó nevét (ebben a példában new_master_user). 
 
    ```sql
    CREATE USER 'new_master_user'@'%' IDENTIFIED BY 'StrongPassword!';

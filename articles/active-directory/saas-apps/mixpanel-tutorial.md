@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 7fa4c78269464b1a38507acd6512e5f44ed94945
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ae93c9911034cf9cba1fdcf8c9472e4d3332bcad
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59267667"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67097001"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mixpanel"></a>Oktatóanyag: Mixpanel az Azure Active Directory-integráció
 
@@ -52,7 +52,7 @@ Az Azure AD integrálása a Mixpanel konfigurálásához hozzá kell Mixpanel a 
 
 **Mixpanel hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

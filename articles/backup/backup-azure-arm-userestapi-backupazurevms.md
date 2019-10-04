@@ -1,60 +1,60 @@
 ---
-title: 'Az Azure Backup: Azure virtuális gépek biztonsági mentése – REST API használatával'
-description: Azure VM Backup – REST API használatával a biztonsági mentési műveletek kezelése
-services: backup
-author: pvrk
-manager: shivamg
-keywords: REST API-JA; Az Azure virtuális gép biztonsági mentése; Az Azure virtuális gép visszaállítási;
+title: 'Azure Backup: Azure-beli virtuális gépek biztonsági mentése REST API használatával'
+description: Azure-beli virtuális gépek biztonsági mentési műveleteinek kezelése REST API használatával
+ms.reviewer: pullabhk
+author: dcurwin
+manager: carmonm
+keywords: REST API; Azure-beli virtuális gép biztonsági mentése; Azure-beli virtuális gép visszaállítása;
 ms.service: backup
 ms.topic: conceptual
 ms.date: 08/03/2018
-ms.author: pullabhk
+ms.author: dacurwin
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 8a47d3cf346d7961e9f8b1c4fa615a2faa6b1da0
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
-ms.translationtype: MT
+ms.openlocfilehash: 7a69fc7c9077fa10ddf808f1cd953f6739eabe20
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51289784"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688724"
 ---
-# <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Egy Azure virtuális gép biztonsági mentése a Azure Backup – REST API-n keresztül
+# <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Azure-beli virtuális gép biztonsági mentése Azure Backup használatával REST API
 
-Ez a cikk ismerteti a biztonsági másolatok kezelése a REST API-n keresztül az Azure Backup használatával, egy Azure virtuális gép. Először egy korábban védelem nélküli Azure virtuális gép védelme nem konfigurálható, aktiválhat egy igény szerinti biztonsági mentés egy védett Azure virtuális gép és a egy biztonsági másolat REST API-n keresztül a virtuális gép biztonsági mentési tulajdonságainak módosítása a itt leírtak.
+Ez a cikk bemutatja, hogyan kezelheti az Azure-beli virtuális gépek biztonsági másolatait a Azure Backup segítségével REST API használatával. Először konfigurálja a védelmet egy korábban nem védett Azure-beli virtuális gép számára, indítson el egy igény szerinti biztonsági mentést egy védett Azure-beli virtuális gép számára, és módosítsa a biztonsági másolatban szereplő virtuális gép biztonsági mentési tulajdonságait REST API az itt leírtak szerint.
 
-Tekintse meg [tároló létrehozása](backup-azure-arm-userestapi-createorupdatevault.md) és [szabályzat létrehozása](backup-azure-arm-userestapi-createorupdatepolicy.md) új tárolókat és szabályzatok létrehozására szolgáló REST API-oktatóanyagok.
+Tekintse meg a tár [létrehozása](backup-azure-arm-userestapi-createorupdatevault.md) és a szabályzat [létrehozása](backup-azure-arm-userestapi-createorupdatepolicy.md) REST API oktatóanyagokat az új tárolók és házirendek létrehozásához.
 
-Tegyük fel, védendő virtuális gép "testVM" a "testVault", "testVaultRG," erőforráscsoportban található Recovery Services-tárolót egy erőforrás csoport "testRG" ("DefaultPolicy" nevű) alapértelmezett szabályzat.
+Tegyük fel, hogy egy "testRG" erőforráscsoport alatt lévő "testVM" nevű virtuális gépet szeretne védelemmel ellátni Recovery Services egy "testVaultRG" erőforráscsoport "testVault" csoportjába, az alapértelmezett házirenddel ("DefaultPolicy").
 
-## <a name="configure-backup-for-an-unprotected-azure-vm-using-rest-api"></a>Biztonsági mentés konfigurálása egy védelem nélküli Azure virtuális gép, a REST API használatával
+## <a name="configure-backup-for-an-unprotected-azure-vm-using-rest-api"></a>Nem védett Azure-beli virtuális gép biztonsági mentésének konfigurálása REST API használatával
 
-### <a name="discover-unprotected-azure-vms"></a>A védelem nélküli Azure virtuális gépek felderítése
+### <a name="discover-unprotected-azure-vms"></a>Nem védett Azure-beli virtuális gépek felderítése
 
-A tároló először azonosításához az Azure virtuális gép képesnek kell lennie. Ez egy automatikus használatával a [frissítési művelet](https://docs.microsoft.com/rest/api/backup/protectioncontainers/refresh). Egy aszinkron *POST* művelet, amely biztosítja, hogy a tároló összes nem védett virtuális gép legfrissebb listáját olvassa be az aktuális előfizetésben és a(z) "gyorsítótárazza" őket. Miután a virtuális gép "gyorsítótárazott", a Recovery services fogja tudni eléri a virtuális Gépet, és védje.
+Először a tárolónak képesnek kell lennie az Azure-beli virtuális gép azonosítására. Ez a [frissítési művelettel](https://docs.microsoft.com/rest/api/backup/protectioncontainers/refresh)aktiválódik. Ez egy aszinkron *post* művelet, amely gondoskodik arról, hogy a tároló megkapja az aktuális előfizetésben és a "gyorsítótárban" lévő összes nem védett virtuális gép legújabb listáját. Ha a virtuális gép gyorsítótárazva van, a helyreállítási szolgáltatások hozzáférhetnek majd a virtuális géphez, és megtehetik azt.
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupname}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/refreshContainers?api-version=2016-12-01
 ```
 
-A POST URI rendelkezik `{subscriptionId}`, `{vaultName}`, `{vaultresourceGroupName}`, `{fabricName}` paramétereket. A `{fabricName}` "Azure". A példa kedvéért megfelelően `{vaultName}` "testVault" van, és `{vaultresourceGroupName}` "testVaultRG" van. A szükséges paraméterek nincsenek megadva az URI-ban, mert nem ajánlatos egy külön kérés törzsének.
+A `{subscriptionId}`post URI `{vaultName}` `{fabricName}` a,,, paraméterek. `{vaultresourceGroupName}` Az `{fabricName}` az "Azure". A példa `{vaultName}` szerint a "testVault" és `{vaultresourceGroupName}` a "testVaultRG". Mivel az összes szükséges paraméter meg van adva az URI-ban, nincs szükség külön kérelem törzsére.
 
 ```http
 POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/refreshContainers?api-version=2016-12-01
 ```
 
-#### <a name="responses"></a>Válaszok
+#### <a name="responses"></a>Responses
 
-A "frissítés" művelet egy [aszinkron művelet](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Ez azt jelenti, hogy a művelet létrehoz egy másik művelet, külön-külön nyomon kell követni.
+A "refresh" művelet egy [aszinkron művelet](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Ez azt jelenti, hogy ez a művelet egy másik műveletet hoz létre, amelyet külön kell nyomon követni.
 
-Két választ adja vissza: 202 (elfogadva), ha egy másik művelet jön létre, majd a 200 (OK), hogy a művelet befejeződésekor.
+Két választ ad vissza: 202 (elfogadva) egy másik művelet létrehozásakor, majd 200 (OK), amikor a művelet befejeződik.
 
 |Name (Név)  |Típus  |Leírás  |
 |---------|---------|---------|
-|204 Nincs tartalom     |         |  Nincs visszaadott tartalommal OK      |
-|202-es elfogadva     |         |     Elfogadva    |
+|204 nincs tartalom     |         |  Nem visszaadott tartalommal rendelkező OK      |
+|202 elfogadva     |         |     Elfogadva    |
 
-##### <a name="example-responses"></a>Példa válaszok
+##### <a name="example-responses"></a>Válaszok – példa
 
-Miután a *POST* kérelem elküldését a 202-es (elfogadva) válasszal adja vissza.
+A *post* kérelem elküldése után a rendszer egy 202 (elfogadott) választ ad vissza.
 
 ```http
 HTTP/1.1 202 Accepted
@@ -73,13 +73,13 @@ Location: https://management.azure.com/subscriptions//00000000-0000-0000-0000-00
 X-Powered-By: ASP.NET
 ```
 
-Nyomon követheti az eredményül kapott művelet a "Location" fejléc használatával egy egyszerű *első* parancs
+Az eredményül kapott művelet nyomon követése a "location" fejléc használatával egy egyszerű *Get* paranccsal
 
 ```http
 GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/operationResults/aad204aa-a5cf-4be2-a7db-a224819e5890?api-version=2016-12-01
 ```
 
-Az Azure virtuális gépeket a felderítésüket követően a GET parancs egy 204 (nincs tartalom) választ ad vissza. A tároló már az előfizetésen belüli összes virtuális gép felderítése.
+Ha az összes Azure-beli virtuális gép fel van derítve, a GET parancs 204 (nincs tartalom) választ ad vissza. A tár mostantól képes felderíteni az előfizetésen belüli virtuális gépeket.
 
 ```http
 HTTP/1.1 204 NoContent
@@ -96,27 +96,27 @@ Date: Mon, 21 May 2018 10:58:25 GMT
 X-Powered-By: ASP.NET
 ```
 
-### <a name="selecting-the-relevant-azure-vm"></a>A megfelelő Azure virtuális gép kiválasztása
+### <a name="selecting-the-relevant-azure-vm"></a>A megfelelő Azure-beli virtuális gép kiválasztása
 
- Ellenőrizheti, hogy "gyorsítótárazás" végzi el [védhető elemek listázása](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list) az előfizetéshez tartozó, és keresse meg a kívánt virtuális Gépet a válaszban. [Ennek a műveletnek a válasz](#example-responses-1) hogyan a Recovery services azonosítja a virtuális gép az információkat is biztosít.  Ha ismeri a mintát, ezt a lépést kihagyhatja, és lépjen közvetlenül [védelem](#enabling-protection-for-the-azure-vm).
+ A "gyorsítótárazás" megadásával megerősítheti az előfizetés alatt található [összes védhető elemet](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list) , és megkeresheti a kívánt virtuális gépet a válaszban. [A művelet válasza](#example-responses-1) információt nyújt arról, hogy a Recovery Services hogyan azonosít egy virtuális gépet.  Ha már ismeri a mintát, kihagyhatja ezt a lépést, és közvetlenül folytathatja a [védelem engedélyezését](#enabling-protection-for-the-azure-vm).
 
-Ez a művelet egy *első* műveletet.
+Ez a művelet egy *Get* művelet.
 
 ```http
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupProtectableItems?api-version=2016-12-01&$filter=backupManagementType eq 'AzureIaasVM'
 ```
 
-A *első* URI rendelkezik a szükséges paramétereket. Nincsenek további kérelem törzsében van szükség.
+A *Get* URI az összes szükséges paraméterrel rendelkezik. Nincs szükség további kérelem törzsére.
 
-#### <a name="responses"></a>Válaszok
+##### <a name="responses-1"></a>Válaszok
 
 |Name (Név)  |Típus  |Leírás  |
 |---------|---------|---------|
 |200 OK     | [WorkloadProtectableItemResourceList](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       OK |
 
-##### <a name="example-responses"></a>Példa válaszok
+##### <a name="example-responses-1"></a>Válaszok – példa
 
-Miután a *első* kérelem elküldését a 200 (OK) válasz.
+A *Get* kérelem elküldése után a rendszer egy 200 (ok) választ ad vissza.
 
 ```http
 HTTP/1.1 200 OK
@@ -153,30 +153,30 @@ X-Powered-By: ASP.NET
 ```
 
 > [!TIP]
-> Az értékek száma egy *első* válasz "lap" 200 korlátozódik. Használja a "nextLink" mezőt a válaszok tovább van állítva az URL-Címének lekéréséhez.
+> A *Get* válaszban lévő értékek száma az "oldal" 200-ra korlátozódik. A következő válaszok URL-címének lekéréséhez használja a "nextLink" mezőt.
 
-A válasz tartalmazza a minden nem védett Azure virtuális gépek és az egyes `{value}` backup konfigurálása az Azure Recovery Service által szükséges összes információt tartalmazza. Biztonsági mentés konfigurálásához jegyezze fel a `{name}` mezőt és a `{virtualMachineId}` mező `{properties}` szakaszban. Hozhatnak létre két változót a mező értéke a említettek szerint.
+A válasz tartalmazza az összes nem védett Azure-beli virtuális gép listáját, `{value}` és mindegyik tartalmazza az Azure Recovery Service által a biztonsági mentés konfigurálásához szükséges összes információt. A biztonsági mentés konfigurálásához jegyezze `{name}` fel a mezőt `{virtualMachineId}` és a `{properties}` mezőt a szakaszban. Két változót hozhat létre ezekből a mezőértékekből az alább leírtak szerint.
 
 - containerName = "iaasvmcontainer;" +`{name}`
-- protectedItemName = "virtuális gép;" + `{name}`
-- `{virtualMachineId}` később, a használt [a kérelem törzse](#example-request-body)
+- protectedItemName = "virtuális gép;" +`{name}`
+- `{virtualMachineId}`[a kérelem törzsében](#example-request-body) később használatos
 
-A példában a fenti értékek fordítás:
+A példában a fenti értékek a következőkre fordíthatók le:
 
-- containerName = "iaasvmcontainer; iaasvmcontainerv2; testRG; testVM."
-- protectedItemName = "virtuális gép; iaasvmcontainerv2; testRG; testVM."
+- containerName = "iaasvmcontainer; iaasvmcontainerv2; testRG; testVM"
+- protectedItemName = "virtuális gép; iaasvmcontainerv2; testRG; testVM"
 
-### <a name="enabling-protection-for-the-azure-vm"></a>Az Azure virtuális gép védelmének engedélyezése
+### <a name="enabling-protection-for-the-azure-vm"></a>Az Azure-beli virtuális gép védelmének engedélyezése
 
-Után a megfelelő virtuális gép "gyorsítótárazott" és "azonosított", válassza ki a szabályzat védelme érdekében. Többet is megtudni a meglévő szabályzatok a tárolóban, tekintse meg [házirend API listában](https://docs.microsoft.com/rest/api/backup/backuppolicies/list). Válassza ki a [vonatkozó házirend](https://docs.microsoft.com/rest/api/backup/protectionpolicies/get) lépésként tekintse át a szabályzat neve. Szabályzatok létrehozása, tekintse meg [hozzon létre házirendet oktatóanyag](backup-azure-arm-userestapi-createorupdatepolicy.md). "DefaultPolicy" van kiválasztva, az az alábbi példában.
+Ha az érintett virtuális gép "gyorsítótárazva" és "azonosítva", válassza ki a védelemmel ellátni kívánt szabályzatot. A meglévő szabályzatok a tárolóban való megismeréséhez tekintse meg a [házirend-API listázása](https://docs.microsoft.com/rest/api/backup/backuppolicies/list)című témakört. Ezután válassza ki a [megfelelő szabályzatot](https://docs.microsoft.com/rest/api/backup/protectionpolicies/get) a szabályzat nevére hivatkozva. A szabályzatok létrehozásával kapcsolatban tekintse meg a [házirend létrehozása oktatóanyagot](backup-azure-arm-userestapi-createorupdatepolicy.md). Az alábbi példában a "DefaultPolicy" lehetőség van kiválasztva.
 
-Védelem engedélyezése az aszinkron *PUT* védett elem létrehozó műveletet.
+A védelem engedélyezése egy aszinkron *put* művelet, amely létrehoz egy "védett elemeket".
 
 ```http
 https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}?api-version=2016-12-01
 ```
 
-A `{containerName}` és `{protectedItemName}` áll a fenti kialakítani. A `{fabricName}` "Azure". A példánkban ez a rendszer lefordítja arra:
+A `{containerName}` és`{protectedItemName}` a fent kiépítve. Az `{fabricName}` az "Azure". A példánkban ez a következőt jelenti:
 
 ```http
 PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM?api-version=2016-12-01
@@ -184,17 +184,17 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 #### <a name="create-the-request-body"></a>A kérelem törzsének létrehozása
 
-Védett elem létrehozásához, az alábbiakban a kérelem törzsében összetevői.
+Védett elem létrehozásához kövesse a kérelem törzsének összetevőit.
 
 |Name (Név)  |Típus  |Leírás  |
 |---------|---------|---------|
-|properties     | AzureIaaSVMProtectedItem        |ProtectedItem erőforrás-tulajdonságok         |
+|properties     | AzureIaaSVMProtectedItem        |ProtectedItem erőforrás tulajdonságai         |
 
-A kérelem törzsében és egyéb részletek definíciója teljes listájáért tekintse meg [létrehozása REST API-t a dokumentum védett elem](https://docs.microsoft.com/rest/api/backup/protecteditems/createorupdate#request-body).
+A kérelem törzsének és egyéb részleteinek teljes listájáért tekintse meg a [védett elem REST API dokumentum létrehozása](https://docs.microsoft.com/rest/api/backup/protecteditems/createorupdate#request-body)című témakört.
 
-##### <a name="example-request-body"></a>Példa kérelem törzse
+##### <a name="example-request-body"></a>Példa kérelem törzsére
 
-A következő kérés törzse egy védett elem létrehozásához szükséges tulajdonságokat határozza meg.
+A következő kérelem törzse a védett elemek létrehozásához szükséges tulajdonságokat definiálja.
 
 ```json
 {
@@ -206,22 +206,22 @@ A következő kérés törzse egy védett elem létrehozásához szükséges tul
 }
 ```
 
-A `{sourceResourceId}` van a `{virtualMachineId}` a fent említett a [lista védhető elemek válasz](#example-responses-1).
+A `{sourceResourceId}`fentemlítettek a [lista védhető elemeinek válasza.](#example-responses-1) `{virtualMachineId}`
 
-#### <a name="responses"></a>Válaszok
+#### <a name="responses"></a>Responses
 
-A védett elem létrehozása egy [aszinkron művelet](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Ez azt jelenti, hogy a művelet létrehoz egy másik művelet, külön-külön nyomon kell követni.
+A védett elemek létrehozása egy [aszinkron művelet](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Ez azt jelenti, hogy ez a művelet egy másik műveletet hoz létre, amelyet külön kell nyomon követni.
 
-Két választ adja vissza: 202 (elfogadva), ha egy másik művelet jön létre, majd a 200 (OK), hogy a művelet befejeződésekor.
+Két választ ad vissza: 202 (elfogadva) egy másik művelet létrehozásakor, majd 200 (OK), amikor a művelet befejeződik.
 
 |Name (Név)  |Típus  |Leírás  |
 |---------|---------|---------|
 |200 OK     |    [ProtectedItemResource](https://docs.microsoft.com/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  OK       |
-|202-es elfogadva     |         |     Elfogadva    |
+|202 elfogadva     |         |     Elfogadva    |
 
-##### <a name="example-responses"></a>Példa válaszok
+##### <a name="example-responses"></a>Válaszok – példa
 
-Miután a *PUT* -kérést a védett elem létrehozásakor vagy frissítésekor, az első válaszig a 202 (elfogadva) egy helyre vagy az Azure-aszinkron-fejléc.
+Miután elküldte a *put* kérelmet a védett elemek létrehozásához vagy frissítéséhez, a kezdeti válasz 202 (elfogadva), egy Location fejléctel vagy egy Azure-aszinkron-fejléccel.
 
 ```http
 HTTP/1.1 202 Accepted
@@ -241,13 +241,13 @@ Location: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000
 X-Powered-By: ASP.NET
 ```
 
-Az eredményül kapott művelet a location fejlécet, vagy az Azure-AsyncOperation fejlécet használja egy egyszerű, majd nyomon követheti *első* parancsot.
+Ezután nyomon követheti az eredményül kapott műveletet a Location fejléc vagy az Azure-AsyncOperation fejléc használatával egy egyszerű *Get* paranccsal.
 
 ```http
 GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationsStatus/a0866047-6fc7-4ac3-ba38-fb0ae8aa550f?api-version=2016-12-01
 ```
 
-A művelet befejezése után a védett elem tartalommal, a válasz törzsében ad vissza 200 (OK).
+A művelet befejezése után a 200 (OK) értéket adja vissza a válasz törzsében található védett elem tartalmával.
 
 ```json
 {
@@ -278,19 +278,19 @@ A művelet befejezése után a védett elem tartalommal, a válasz törzsében a
 }
 ```
 
-Ez megerősíti, hogy a virtuális gép védelmének engedélyezése és az első biztonsági mentés akkor aktiválódik, a házirend-ütemezés alapján.
+Ezzel a beállítással ellenőrizhető, hogy a virtuális gép védelme engedélyezve van-e, és az első biztonsági mentés a házirend-ütemterv szerint lesz aktiválva.
 
-## <a name="trigger-an-on-demand-backup-for-a-protected-azure-vm"></a>A biztonsági mentés egy védett Azure virtuális gép elindítása egy igény szerinti
+## <a name="trigger-an-on-demand-backup-for-a-protected-azure-vm"></a>Igény szerinti biztonsági mentés elindítása egy védett Azure-beli virtuális gépen
 
-Ha egy Azure virtuális gép már konfigurálva van a biztonsági mentéshez, biztonsági mentések fordulhat elő, a házirend-ütemezés alapján. Várjon, amíg az első ütemezett biztonsági mentést, vagy egy igény szerinti biztonsági mentést bármikor aktiválhat. Igény szerinti biztonsági mentések megőrzési elkülönül a biztonsági mentési szabályzat megőrzési, és a egy adott dátum és idő adható meg. Ha nincs megadva, feltételezzük fel a igény szerinti biztonsági mentés az eseményindító 30 nap.
+Ha egy Azure-beli virtuális gép biztonsági mentésre van konfigurálva, a biztonsági mentések a házirend-ütemezés szerint történnek. Megvárhatja az első ütemezett biztonsági mentést, vagy bármikor elindíthat egy igény szerinti biztonsági mentést. Az igény szerinti biztonsági mentések megtartása eltér a biztonsági mentési szabályzatok megőrzésének, és egy adott dátumra és időpontra is megadható. Ha nincs megadva, a rendszer azt feltételezi, hogy az igény szerinti biztonsági mentés napjától számított 30 nap.
 
-Van egy igény szerinti biztonsági mentésének elindítása egy *POST* műveletet.
+Az igény szerinti biztonsági mentés aktiválás *utáni* művelet.
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/backup?api-version=2016-12-01
 ```
 
-A `{containerName}` és `{protectedItemName}` áll össze [fent](#responses-1). A `{fabricName}` "Azure". A példánkban ez a rendszer lefordítja arra:
+A `{containerName}` és `{protectedItemName}` a [fent](#responses-1)kiépítve. Az `{fabricName}` az "Azure". A példánkban ez a következőt jelenti:
 
 ```http
 POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM/backup?api-version=2016-12-01
@@ -298,17 +298,17 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 ### <a name="create-the-request-body"></a>A kérelem törzsének létrehozása
 
-Egy igény szerinti biztonsági mentés elindítása, az alábbiakban a kérelem törzsében összetevői.
+Az igény szerinti biztonsági mentés elindításához kövesse a kérelem törzsének összetevőit.
 
 |Name (Név)  |Típus  |Leírás  |
 |---------|---------|---------|
 |properties     | [IaaSVMBackupRequest](https://docs.microsoft.com/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |BackupRequestResource tulajdonságai         |
 
-A kérelem törzsében és egyéb részletek definíciója teljes listájáért tekintse meg [aktiválja a biztonsági mentés a védett elemek REST API-dokumentumban](https://docs.microsoft.com/rest/api/backup/backups/trigger#request-body).
+A kérelem törzsének és egyéb részleteinek teljes listájáért lásd: a [védett elemek biztonsági mentésének elindítása REST API dokumentum](https://docs.microsoft.com/rest/api/backup/backups/trigger#request-body).
 
-#### <a name="example-request-body"></a>Példa kérelem törzse
+#### <a name="example-request-body"></a>Példa kérelem törzsére
 
-A következő kérés törzse egy védett elem biztonsági másolatának aktiválásához szükséges tulajdonságokat határozza meg. Ha a megőrzési nincs megadva, idő a trigger a biztonsági mentési feladat 30 napig megőrzi.
+A következő kérelem törzse a védett elemek biztonsági mentésének elindításához szükséges tulajdonságokat határozza meg. Ha nincs megadva az adatmegőrzés, a biztonsági mentési feladathoz tartozó triggertől számított 30 napig megőrzi a rendszer.
 
 ```json
 {
@@ -319,19 +319,19 @@ A következő kérés törzse egy védett elem biztonsági másolatának aktivá
 }
 ```
 
-### <a name="responses"></a>Válaszok
+### <a name="responses"></a>Responses
 
-Van egy igény szerinti biztonsági mentésének elindítása egy [aszinkron művelet](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Ez azt jelenti, hogy a művelet létrehoz egy másik művelet, külön-külön nyomon kell követni.
+Az igény szerinti biztonsági mentés indítása [aszinkron művelet](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Ez azt jelenti, hogy ez a művelet egy másik műveletet hoz létre, amelyet külön kell nyomon követni.
 
-Két választ adja vissza: 202 (elfogadva), ha egy másik művelet jön létre, majd a 200 (OK), hogy a művelet befejeződésekor.
+Két választ ad vissza: 202 (elfogadva) egy másik művelet létrehozásakor, majd 200 (OK), amikor a művelet befejeződik.
 
 |Name (Név)  |Típus  |Leírás  |
 |---------|---------|---------|
-|202-es elfogadva     |         |     Elfogadva    |
+|202 elfogadva     |         |     Elfogadva    |
 
-#### <a name="example-responses"></a>Példa válaszok
+##### <a name="example-responses-3"></a>Válaszok – példa
 
-Miután a *POST* kérést egy igény szerinti biztonsági mentés, az első válaszig a 202 (elfogadva) egy helyre vagy az Azure-aszinkron-fejléc.
+Miután elküldte a *post* -kérést egy igény szerinti biztonsági mentéshez, a kezdeti válasz 202 (elfogadva), egy Location fejlécet vagy egy Azure-aszinkron-fejlécet tartalmaz.
 
 ```http
 HTTP/1.1 202 Accepted
@@ -351,13 +351,13 @@ Location: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000
 X-Powered-By: ASP.NET
 ```
 
-Az eredményül kapott művelet a location fejlécet, vagy az Azure-AsyncOperation fejlécet használja egy egyszerű, majd nyomon követheti *első* parancsot.
+Ezután nyomon követheti az eredményül kapott műveletet a Location fejléc vagy az Azure-AsyncOperation fejléc használatával egy egyszerű *Get* paranccsal.
 
 ```http
 GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationsStatus/a0866047-6fc7-4ac3-ba38-fb0ae8aa550f?api-version=2016-12-01
 ```
 
-A művelet befejezése után az eredményül kapott biztonsági mentési feladat, a válasz törzsében azonosítójú ad vissza 200 (OK).
+A művelet befejezése után a 200 (OK) értéket adja vissza az eredményül kapott biztonsági mentési feladatoknak a válasz törzsében.
 
 ```json
 HTTP/1.1 200 OK
@@ -387,13 +387,13 @@ X-Powered-By: ASP.NET
 }
 ```
 
-Mivel a biztonsági mentési feladat egy hosszú ideig futó művelet, kell követni, amint azt a [REST API-dokumentumban használatával a feladatok monitorozásához](backup-azure-arm-userestapi-managejobs.md#tracking-the-job).
+Mivel a biztonsági mentési feladat hosszú ideig futó művelet, azt a [feladatok figyelése REST API dokumentum használatával](backup-azure-arm-userestapi-managejobs.md#tracking-the-job)című részben leírtak szerint kell követni.
 
-## <a name="modify-the-backup-configuration-for-a-protected-azure-vm"></a>Az Azure a védett virtuális gépek biztonsági mentési konfigurációjának módosítása
+## <a name="modify-the-backup-configuration-for-a-protected-azure-vm"></a>Védett Azure-beli virtuális gép biztonsági mentési konfigurációjának módosítása
 
-### <a name="changing-the-policy-of-protection"></a>A védelmi házirend módosítása
+### <a name="changing-the-policy-of-protection"></a>A védelem szabályzatának módosítása
 
-Ha módosítani szeretné a szabályzatot, amellyel a virtuális gép védett, használhatja ugyanazt a formátumot, [védelem](#enabling-protection-for-the-azure-vm). Csak adja meg az új házirend-azonosító [a kérelem törzsében](#example-request-body) , és küldje el a kérelmet. A példa: 'ProdPolicy', "DefaultPolicy" a testVM, a szabályzat módosításához adja meg a "ProdPolicy" azonosítóját, a kérelem törzsében.
+A védelemmel ellátott virtuális géppel rendelkező házirend módosításához használhatja ugyanazt a formátumot, mint a [védelem engedélyezése](#enabling-protection-for-the-azure-vm). Csak adja meg az új házirend-azonosítót [a kérelem törzsében](#example-request-body) , és küldje el a kérelmet. Például: Ha módosítani szeretné a testVM szabályzatát a "DefaultPolicy" típusról a "ProdPolicy" értékre, adja meg a "ProdPolicy" azonosítót a kérelem törzsében.
 
 ```http
 {
@@ -405,11 +405,11 @@ Ha módosítani szeretné a szabályzatot, amellyel a virtuális gép védett, h
 }
 ```
 
-A válasz ugyanazt a formátumot követi említett [védelem](#responses-2)
+A válasz a [védelem engedélyezésével](#responses-2) megegyező formátumot fogja követni.
 
-### <a name="stop-protection-but-retain-existing-data"></a>Állítsa le a védelmet, de a meglévő adatok megőrzése
+### <a name="stop-protection-but-retain-existing-data"></a>Védelem leállítása, de meglévő adat megőrzése
 
-Távolítsa el a védett virtuális gép védelmét, de megőrizni az adatokat, már rendelkezik biztonsági, távolítsa el a szabályzatot a kérelem törzsében szereplő, és küldje el a kérelmet. Házirend társítását a rendszer eltávolítja, ha már nem aktivált biztonsági mentés, és nincs új helyreállítási pontokat.
+Ha el szeretné távolítani a védelmet egy védett virtuális gépen, de megtartja a már biztonsági mentést, távolítsa el a szabályzatot a kérelem törzsében, és küldje el a kérelmet. Ha a társítás a szabályzattal megszűnik, a biztonsági mentések már nem aktiválódnak, és nem jön létre új helyreállítási pont.
 
 ```http
 {
@@ -421,40 +421,40 @@ Távolítsa el a védett virtuális gép védelmét, de megőrizni az adatokat, 
 }
 ```
 
-A válasz ugyanazt a formátumot követi említett [egy igény szerinti biztonsági mentés indítására](#example-responses-3). Az eredő feladat követni kell leírtak a [REST API-dokumentumban használatával a feladatok monitorozásához](backup-azure-arm-userestapi-managejobs.md#tracking-the-job).
+A válasz az [igény szerinti biztonsági mentés elindításához használt](#example-responses-3)formátumot fogja követni. Az eredő feladatot nyomon kell követni a [feladatok figyelése REST API dokumentum használatával](backup-azure-arm-userestapi-managejobs.md#tracking-the-job)című részben leírtak szerint.
 
-### <a name="stop-protection-and-delete-data"></a>Védelem leállítása és adatok törlése
+### <a name="stop-protection-and-delete-data"></a>Védelem leállítása és az adattörlés
 
-Távolítsa el a védett virtuális gép védelmét, és a biztonsági mentési adatok törlése, hajtsa végre egy törlési művelet leírtaknak megfelelően [Itt](https://docs.microsoft.com/rest/api/backup/protecteditems/delete).
+A védett virtuális gépek védelmének eltávolításához és a biztonsági másolati adatok törléséhez végezze el az [itt](https://docs.microsoft.com/rest/api/backup/protecteditems/delete)részletezett törlési műveletet.
 
-Védelem leállítása és az adatok törlése egy *törlése* műveletet.
+A védelem leállítása és az adattörlés egy törlési művelet.
 
 ```http
 DELETE https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}?api-version=2016-12-01
 ```
 
-A `{containerName}` és `{protectedItemName}` áll össze [fent](#responses-1). `{fabricName}` az "Azure". A példánkban ez a rendszer lefordítja arra:
+A `{containerName}` és `{protectedItemName}` a [fent](#responses-1)kiépítve. `{fabricName}`az "Azure". A példánkban ez a következőt jelenti:
 
 ```http
 DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM?api-version=2016-12-01
 ```
 
-### <a name="responses"></a>Válaszok
+### <a name="responses-2"></a>Válaszok
 
-*Törlés* védelem egy [aszinkron művelet](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Ez azt jelenti, hogy a művelet létrehoz egy másik művelet, külön-külön nyomon kell követni.
+A védelem *törlése* [aszinkron művelet](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Ez azt jelenti, hogy ez a művelet egy másik műveletet hoz létre, amelyet külön kell nyomon követni.
 
-Két választ adja vissza: 202 (elfogadva), ha egy másik művelet jön létre, majd a 204 (NoContent), hogy a művelet befejeződésekor.
+Két választ ad vissza: 202 (elfogadva) Ha egy másik művelet jön létre, majd 204 (nincs tartalom), amikor a művelet befejeződik.
 
 |Name (Név)  |Típus  |Leírás  |
 |---------|---------|---------|
-|204 NoContent     |         |  NoContent       |
-|202-es elfogadva     |         |     Elfogadva    |
+|204 tartalom     |         |  NoContent       |
+|202 elfogadva     |         |     Elfogadva    |
 
 ## <a name="next-steps"></a>További lépések
 
-[Adatok visszaállítása egy Azure-beli virtuális gépek biztonsági mentésének](backup-azure-arm-userestapi-restoreazurevms.md).
+[Adatok visszaállítása egy Azure-beli virtuális gép biztonsági másolatából](backup-azure-arm-userestapi-restoreazurevms.md).
 
-Az Azure Backup – REST API-k további információkért tekintse meg a következő dokumentumokat:
+A Azure Backup REST API-kkal kapcsolatos további információkért tekintse meg a következő dokumentumokat:
 
-- [Az Azure Recovery Services-szolgáltató REST API-val](/rest/api/recoveryservices/)
-- [Azure REST API használatának első lépései](/rest/api/azure/)
+- [Azure Recovery Services-szolgáltató REST API](/rest/api/recoveryservices/)
+- [Ismerkedés az Azure REST API](/rest/api/azure/)

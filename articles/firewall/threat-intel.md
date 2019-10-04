@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 3/11/2019
 ms.author: victorh
 ms.openlocfilehash: 4ef9089c94d9e806cc519c4f8243cdcb7e73953a
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57730527"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60194047"
 ---
 # <a name="azure-firewall-threat-intelligence-based-filtering---public-preview"></a>Azure tűzfal threat intelligence-alapú szűrés – nyilvános előzetes verzió
 
-Threat intelligence szerinti szűrés a tűzfalat, hogy a riasztás és a forgalom, és az ismert kártékony IP-címek és tartományok esetén is engedélyezhető. The IP addresses and domains are sourced from the Microsoft Threat Intelligence feed. [Intelligent Security Graph](https://www.microsoft.com/en-us/security/operations/intelligence) Microsoft fenyegetésfelderítő működteti, és több szolgáltatást, többek között az Azure Security Center által használt.
+Engedélyezheti a veszélyforrás-felderítésen alapuló szűrést a tűzfalon az ismert kártékony IP-címekről és tartományokból származó vagy azokba irányuló adatforgalomról való riasztáshoz és annak letiltásához. Az IP-címek és a tartományok a Microsoft Threat Intelligence hírcsatornájáról származnak. [Intelligent Security Graph](https://www.microsoft.com/en-us/security/operations/intelligence) Microsoft fenyegetésfelderítő működteti, és több szolgáltatást, többek között az Azure Security Center által használt.
 
 ![Tűzfal fenyegetések felderítése](media/threat-intel/firewall-threat.png)
 

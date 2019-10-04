@@ -1,5 +1,5 @@
 ---
-title: Vezeték-Data-megoldás az Azure Monitor |} A Microsoft Docs
+title: Adatátviteli megoldás a Azure Monitorban | Microsoft Docs
 description: Átviteli adatok az összevont hálózati és a teljesítmény adatok Log Analytics-ügynökök számítógépeken. A hálózati adatok és a naplóadatok összevonása segít az adatok összevetésében.
 services: log-analytics
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: magoedte
-ms.openlocfilehash: d295a5a7eae2bdc7983e7271aa11bce1840b92dd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 4e1324bb90c0b92daf709b695a0a8b3af9161c2e
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58882072"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905426"
 ---
-# <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Az Azure monitorban Wire Data 2.0 (előzetes verzió) megoldás
+# <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Wire Data 2.0 (előzetes verzió) megoldás a Azure Monitor
 
 ![Wire Data-szimbólum](media/wire-data/wire-data2-symbol.png)
 
@@ -28,12 +28,12 @@ ms.locfileid: "58882072"
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Mellett a Log Analytics-ügynököket a Wire Data megoldást használja a Microsoft függőségi ügynökök telepítése a számítógépeken az informatikai infrastruktúra. A függőségi ügynökök monitorozzák a számítógépek által fogadott és küldött adatokat az [OSI-modell](https://en.wikipedia.org/wiki/OSI_model) szerinti 2. és 3. szintű hálózatokon, beleértve a különböző alkalmazott protokollokat és portokat. Adatok majd küld az Azure Monitor használatával ügynökök.  
+Mellett a Log Analytics-ügynököket a Wire Data megoldást használja a Microsoft függőségi ügynökök telepítése a számítógépeken az informatikai infrastruktúra. A függőségi ügynökök monitorozzák a számítógépek által fogadott és küldött adatokat az [OSI-modell](https://en.wikipedia.org/wiki/OSI_model) szerinti 2. és 3. szintű hálózatokon, beleértve a különböző alkalmazott protokollokat és portokat. Ezután az ügynökök használatával küldi el az Azure Monitor.  
 
 >[!NOTE]
->Ha a Service Map már üzembe helyezte, vagy a Service Map használatát fontolgatja, vagy [Azure Monitor-beli virtuális gépek](../../azure-monitor/insights/vminsights-overview.md), van egy új kapcsolat metrikák adatkészlet gyűjtse össze ő, majd az Azure monitorban, amely hasonló információt szolgáltat az átviteli adatok tárolására.
+>Ha már telepítette a Service Mapt, vagy Service Map vagy [Azure monitor for VMS](../../azure-monitor/insights/vminsights-overview.md)fontolgatja, akkor a rendszer egy új, a hálózatra vonatkozó adatokat tartalmazó adatkészletet gyűjt és tárol Azure monitorokban, amelyek összehasonlítják az adatokat.
 
-Alapértelmezés szerint az Azure Monitor naplózza a CPU, memória, lemez és hálózati teljesítménnyel adatai a beépített Windows és Linux rendszerű számlálók, valamint más teljesítményszámlálók, Ön által megadott adatokat. A hálózati és egyéb adatok gyűjtése valós időben történik az egyes ügynökökre vonatkozóan, beleértve a számítógép által használt alhálózatokat és alkalmazásszintű protokollokat.  A Wire Data a hálózati adatokat az alkalmazások szintjén kezeli, nem a TCP átviteli réteg szintjén.  A megoldás nem veszi figyelembe az önálló ACK-kat és SYN-eket.  Ha a kézfogás befejeződött, onnantól a kapcsolat élőnek számít és Csatlakoztatva jelölést kap. A kapcsolat addig marad élő, amíg mindkét oldal egyetért a szoftvercsatorna nyitva tartásában, és az adatok átvitele oda-vissza lehetséges.  Ha bármelyik oldal lezárja a kapcsolatot, leválasztott van megjelölve.  Ezért csak sikeresen elküldött csomagok által használt sávszélességet veszi számításba, az újraküldött vagy sikertelenül elküldött csomagok nem lesznek jelentve.
+Alapértelmezés szerint a Azure Monitor naplózza a CPU-, memória-, lemez-és hálózati teljesítményadatokat a Windows és a Linux rendszerbe épített számlálók, valamint a megadható egyéb teljesítményszámlálók adatait. A hálózati és egyéb adatok gyűjtése valós időben történik az egyes ügynökökre vonatkozóan, beleértve a számítógép által használt alhálózatokat és alkalmazásszintű protokollokat.  A Wire Data a hálózati adatokat az alkalmazások szintjén kezeli, nem a TCP átviteli réteg szintjén.  A megoldás nem veszi figyelembe az önálló ACK-kat és SYN-eket.  Ha a kézfogás befejeződött, onnantól a kapcsolat élőnek számít és Csatlakoztatva jelölést kap. A kapcsolat addig marad élő, amíg mindkét oldal egyetért a szoftvercsatorna nyitva tartásában, és az adatok átvitele oda-vissza lehetséges.  Ha az egyik oldalon lezárja a kapcsolatot, a rendszer leválasztott állapotként jelöli meg.  Ezért csak sikeresen elküldött csomagok által használt sávszélességet veszi számításba, az újraküldött vagy sikertelenül elküldött csomagok nem lesznek jelentve.
 
 Ha már használta az [sFlow](http://www.sflow.org/)-t vagy valamilyen egyéb szoftvert a [Cisco NetFlow protokolljával](https://www.cisco.com/c/en/us/products/collateral/ios-nx-os-software/ios-netflow/prod_white_paper0900aecd80406232.html), akkor a Wire Data statisztikái és adatai már ismerősek lesznek.
 
@@ -52,44 +52,44 @@ A beépített naplókeresési lekérdezések néhány típusa:
 
 Az átviteli adatok használatával történő kereséskor az adatokat szűrheti és csoportosíthatja, így megtekintheti a leggyakoribb ügynökök és a leggyakoribb protokollok információit. Emellett megtekintheti, hogy az egyes számítógépek (IP-címek vagy MAC-címek) mikor kommunikáltak egymással, mennyi ideig, és mennyi adatot küldtek. Tulajdonképpen metaadatokat tekinthet meg a hálózati forgalomról, a keresések alapján.
 
-Mivel azonban metaadatokról van szó, ezek a részletes hibakereséshez nem feltétlenül lesznek hasznosak. Átviteli adatok az Azure monitorban nem egy teljes rögzítési hálózati adatforgalmat.  A szolgáltatást nem mélyre menő, csomagszintű hibakereséshez tervezték. Az ügynök képest más gyűjtési módszerek használatának előnye, hogy nem kell telepíteni a berendezések, konfigurálja újra a hálózati kapcsolókon vagy bonyolult konfigurációk végrehajtása. A Wire Data egy egyszerű ügynökalapú megoldás – Ön telepíti az ügynököt egy számítógépen, az ügynök pedig monitorozza a saját hálózati forgalmát. Egy másik előny, hogy a felhasználó monitorozhatja a felhőszolgáltatókon, tárhelyszolgáltatókon vagy a Microsoft Azure-ban futó számítási feladatokat is, vagyis olyan helyeken, ahol nem a hálóréteg tulajdonosa.
+Mivel azonban metaadatokról van szó, ezek a részletes hibakereséshez nem feltétlenül lesznek hasznosak. A Azure Monitor adatátviteli szolgáltatás nem a hálózati adatmennyiség teljes rögzítése.  A szolgáltatást nem mélyre menő, csomagszintű hibakereséshez tervezték. Az ügynök használatának előnye más gyűjteményi módszerekhez képest, hogy nem kell telepítenie a berendezéseket, újra kell konfigurálnia a hálózati kapcsolókat, vagy bonyolult konfigurációkat kell végrehajtania. A Wire Data egy egyszerű ügynökalapú megoldás – Ön telepíti az ügynököt egy számítógépen, az ügynök pedig monitorozza a saját hálózati forgalmát. Egy másik előny, hogy a felhasználó monitorozhatja a felhőszolgáltatókon, tárhelyszolgáltatókon vagy a Microsoft Azure-ban futó számítási feladatokat is, vagyis olyan helyeken, ahol nem a hálóréteg tulajdonosa.
 
 ## <a name="connected-sources"></a>Összekapcsolt források
 
-A Wire Data a Microsoft függőségi ügynöktől kapja az adatokat. A függőségi ügynök attól függ, hogy a kapcsolatok az Azure monitornak a Log Analytics-ügynököket. Ez azt jelenti, hogy egy kiszolgáló rendelkeznie kell a Log Analytics-ügynököket telepíteni és konfigurálni a függőségi ügynök. A következő táblázat ismerteti a Wire Data megoldás által támogatott csatlakoztatott forrásokat:
+A Wire Data a Microsoft függőségi ügynöktől kapja az adatokat. A Dependency Agent az Log Analytics ügynöktől függ, hogy a kapcsolata Azure Monitor. Ez azt jelenti, hogy egy kiszolgáló rendelkeznie kell a Log Analytics-ügynököket telepíteni és konfigurálni a függőségi ügynök. A következő táblázat ismerteti a Wire Data megoldás által támogatott csatlakoztatott forrásokat:
 
 | **Csatlakoztatott forrás** | **Támogatott** | **Leírás** |
 | --- | --- | --- |
-| Windows-ügynökök | Igen | A Wire Data adatok elemez és gyűjt a Windows rendszerű ügynökszámítógépekről. <br><br> Mellett a [Log Analytics-ügynököket for Windows](../../azure-monitor/platform/agent-windows.md), Windows-ügynökök a Microsoft Dependency Agent szükséges. A támogatott operációsrendszer-verziók teljes listáját megtekintheti a [támogatott operációs rendszerek](../../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems) szakaszban. |
-| Linux-ügynökök | Igen | A Wire Data adatokat elemez és gyűjt a Linux rendszerű ügynökszámítógépekről.<br><br> Mellett a [Linuxhoz készült Log Analytics-ügynök](../../azure-monitor/learn/quick-collect-linux-computer.md), Linux-ügynökök a Microsoft Dependency Agent szükséges. A támogatott operációsrendszer-verziók teljes listáját megtekintheti a [támogatott operációs rendszerek](../../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems) szakaszban. |
-| System Center Operations Manage felügyeleti csoport | Igen | A Wire Data adatokat elemez és gyűjt az olyan Windows- és Linux-ügynököktől, amelyek egy csatlakoztatott [System Center Operations Manager felügyeleti csoporthoz](../../azure-monitor/platform/om-agents.md) tartoznak. <br><br> A System Center Operations Manager ügynök számítógépről közvetlenül kapcsolódik az Azure Monitor megadása kötelező. |
+| Windows-ügynökök | Igen | A Wire Data adatok elemez és gyűjt a Windows rendszerű ügynökszámítógépekről. <br><br> Mellett a [Log Analytics-ügynököket for Windows](../platform/agent-windows.md), Windows-ügynökök a Microsoft Dependency agent szükséges. A támogatott operációsrendszer-verziók teljes listáját megtekintheti a [támogatott operációs rendszerek](vminsights-enable-overview.md#supported-operating-systems) szakaszban. |
+| Linux-ügynökök | Igen | A Wire Data adatokat elemez és gyűjt a Linux rendszerű ügynökszámítógépekről.<br><br> Mellett a [Linuxhoz készült Log Analytics-ügynök](../learn/quick-collect-linux-computer.md), Linux-ügynökök a Microsoft Dependency agent szükséges. A támogatott operációsrendszer-verziók teljes listáját megtekintheti a [támogatott operációs rendszerek](vminsights-enable-overview.md#supported-operating-systems) szakaszban. |
+| System Center Operations Manage felügyeleti csoport | Igen | A Wire Data adatokat elemez és gyűjt az olyan Windows- és Linux-ügynököktől, amelyek egy csatlakoztatott [System Center Operations Manager felügyeleti csoporthoz](../platform/om-agents.md) tartoznak. <br><br> Szükség van egy közvetlen kapcsolódásra a System Center Operations Manager ügynök számítógépéről Azure Monitorre. |
 | Azure Storage-fiók | Nem | A Wire Data ügynökszámítógépekről gyűjt adatokat, így az Azure Storage-ből nem tud adatokat gyűjteni. |
 
-A Windows a Microsoft Monitoring Agent (MMA) segítségével a System Center Operations Manager és az Azure Monitor gyűjtse össze és adatokat küldeni. A környezettől függően az ügynököt a System Center Operations Manager ügynök, a Log Analytics-ügynököket, az MMA vagy a közvetlen ügynök nevezzük. A System Center Operations Manager és az Azure Monitor adja meg az MMA némileg különböző verzióit. Ezek a fájlok minden egyes jelenthetik a System Center Operations Manager, az Azure Monitor vagy mindkettő értékre.
+Windows rendszeren a Microsoft monitoring Agent (MMA) szolgáltatást a System Center Operations Manager és a Azure Monitor egyaránt használja az adatok összegyűjtéséhez és elküldéséhez. A környezettől függően az ügynököt a System Center Operations Manager ügynök, a Log Analytics-ügynököket, az MMA vagy a közvetlen ügynök nevezzük. System Center Operations Manager és Azure Monitor az MMA némileg eltérő verzióját nyújtják. Ezek a verziók az egyes jelentések System Center Operations Manager, Azure Monitor vagy mindkettőre használhatók.
 
-A Linuxhoz készült Log Analytics-ügynök Linux rendszeren gyűjt, és adatokat küld az Azure Monitor. Átviteli adatok közvetlenül csatlakozik az Azure Monitor-ügynökökkel kiszolgálókon, vagy olyan kiszolgálókra, amelyek a System Center Operations Manager felügyeleti csoportok keresztül csatlakozik az Azure Monitor használható.
+Linux rendszeren a Linux rendszerhez készült Log Analytics-ügynök összegyűjti és elküldi az adatokat a Azure Monitornak. Az adatátviteli kiszolgálókon a Azure Monitorhoz közvetlenül csatlakoztatott, vagy System Center Operations Manager felügyeleti csoportokon keresztül Azure Monitorhoz csatlakozó kiszolgálókon is használhatók.
 
-Maga a függőségi ügynök nem közvetít adatokat, ezért nem igényli a tűzfalak vagy portok semmilyen módosítását. Az átviteli adatok mindig továbbított adatok az Azure Monitor, a Log Analytics-ügynök által közvetlenül vagy a Log Analytics-átjárón.
+A függőségi ügynök nem küld magába adatokat, és nem igényel semmilyen módosítást a tűzfalakon vagy a portokon. A Log Analytics Azure Monitor ügynök mindig továbbítja az adatokat a vezetékes adatokban, közvetlenül vagy az Log Analytics-átjárón keresztül.
 
 ![ügynök diagram](./media/wire-data/agents.png)
 
-Ha egy System Center Operations Manager felhasználói az Azure Monitor csatlakozik a felügyeleti csoport:
+Ha a Azure Monitorhoz csatlakoztatott felügyeleti csoporttal rendelkező System Center Operations Manager felhasználó:
 
-- További konfiguráció nélkül nem szükséges, ha a System Center Operations Manager-ügynökök hozzáférhet az interneten keresztül csatlakozni az Azure Monitor.
-- A Log Analytics-átjáró használata a System Center Operations Manager, ha a System Center Operations Manager-ügynökök az interneten keresztül nem tud hozzáférni az Azure Monitor konfigurálása kell.
+- Nincs szükség további konfigurálásra, ha a System Center Operations Manager-ügynökök hozzáférhetnek az internethez a Azure Monitorhoz való csatlakozáshoz.
+- A Log Analytics átjárót úgy kell konfigurálnia, hogy működjön a System Center Operations Manager, ha a System Center Operations Manager-ügynökök nem férnek hozzá a Azure Monitorhoz az interneten keresztül.
 
-Ha a Windows vagy Linux rendszerű számítógépek közvetlenül nem tud csatlakozni a szolgáltatáshoz, konfigurálása a Log Analytics-ügynököket a Log Analytics-átjáró használata az Azure Monitor csatlakozni szeretne. A Log Analytics átjáróhoz letöltheti a [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=52666).
+Ha a Windows vagy Linux rendszerű számítógépek nem tudnak közvetlenül csatlakozni a szolgáltatáshoz, úgy kell konfigurálnia a Log Analytics ügynököt, hogy az Log Analytics átjáró használatával kapcsolódjon a Azure Monitorhoz. A Log Analytics átjáróhoz letöltheti a [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=52666).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Szükség van a [Betekintések és elemzés](https://www.microsoft.com/cloud-platform/operations-management-suite-pricing) megoldásra.
 - Ha a Wire Data előző verzióját használja, először el kell távolítania azt. Az eredeti Wire Data megoldással rögzített adatok azonban továbbra is elérhetők lesznek a Wire Data 2.0-ban és a naplókeresésben.
-- A függőségi ügynök telepítéséhez vagy eltávolításához rendszergazdai jogosultság szükséges.
-- A függőségi ügynököt egy 64 bites operációs rendszert futtató számítógépre kell telepíteni.
+- A függőségi ügynök telepítéséhez vagy eltávolításához rendszergazdai jogosultságok szükségesek.
+- A függőségi ügynököt a 64 bites operációs rendszert futtató számítógépre kell telepíteni.
 
 ### <a name="operating-systems"></a>Operációs rendszerek
 
-Az alábbi táblázat a függőségi ügynök által támogatott operációs rendszereket tartalmazza: A Wire Data semmilyen operációs rendszer esetében nem támogatja a 32 bites architektúrákat.
+A következő részei a függőségi ügynök támogatott operációs rendszereit sorolja fel. A Wire Data semmilyen operációs rendszer esetében nem támogatja a 32 bites architektúrákat.
 
 #### <a name="windows-server"></a>Windows Server
 
@@ -109,7 +109,7 @@ Az alábbi táblázat a függőségi ügynök által támogatott operációs ren
 - Windows 7
 
 #### <a name="supported-linux-operating-systems"></a>Támogatott Linux operációs rendszerek
-Az alábbi szakaszok a támogatott operációs rendszerek listázása a függőségi ügynök Linux rendszeren.  
+A következő részben a Linux rendszeren futó függőségi ügynök támogatott operációs rendszereit sorolja fel.  
 
 - Csak az alapértelmezett és az SMP Linux kernelű kiadások támogatottak.
 - A nem szabványos kernelű kiadások, például a PAE és a Xen nem támogatottak semmilyen Linux-disztribúció esetén. Ha például kiadási karakterlánc "2.6.16.21-0.8-xen", a rendszer nem támogatott.
@@ -121,7 +121,7 @@ Az alábbi szakaszok a támogatott operációs rendszerek listázása a függős
 |:--|:--|
 | 7.4 | 3.10.0-693 |
 | 7.5 | 3.10.0-862 |
-| 7.6 | 3.10.0-957 |
+| 7,6 | 3.10.0-957 |
 
 ##### <a name="red-hat-linux-6"></a>Red Hat Linux 6
 
@@ -140,12 +140,12 @@ Az alábbi szakaszok a támogatott operációs rendszerek listázása a függős
 
 | Operációs rendszer verziója | Kernel verziója |
 |:--|:--|
-| Ubuntu 18.04 | kernel 4.15.\*<br>4.18* |
+| Ubuntu 18.04 | kernel 4,15.\*<br>4,18 * |
 | Ubuntu 16.04.3 | kernel 4.15. * |
 | 16.04 | 4.4.\*<br>4.8.\*<br>4.10.\*<br>4.11.\*<br>4.13.\* |
 | 14.04 | 3.13.\*<br>4.4.\* |
 
-##### <a name="suse-linux-11-enterprise-server"></a>SUSE Linux 11 nagyvállalati Server
+##### <a name="suse-linux-11-enterprise-server"></a>SUSE Linux 11 Enterprise Server
 
 | Operációs rendszer verziója | Kernel verziója
 |:--|:--|
@@ -171,25 +171,25 @@ Az alábbi szakaszok a támogatott operációs rendszerek listázása a függős
 
 A Wire Data megoldásnak a munkaterületekhez való konfigurálásához végezze el az alábbi lépéseket:
 
-1. Engedélyezze a Activity Log Analytics megoldást, a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WireData2OMS?tab=Overview) vagy leírt folyamatot követve [hozzáadása a megoldástárból megoldások monitorozása](../../azure-monitor/insights/solutions.md).
-2. Telepítse a függőségi ügynököt az összes olyan számítógépen, amelyről adatokat kíván gyűjteni. A függőségi ügynök képesek a közvetlen szomszédaikkal való kapcsolatok monitorozására, így lehetséges, hogy nem kell minden egyes számítógépre ügynököt telepíteni.
+1. Engedélyezze a Activity Log Analytics megoldást az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WireData2OMS?tab=Overview) -en, vagy használja a figyelési [megoldások hozzáadása a Solutions Galleryból](../../azure-monitor/insights/solutions.md)című témakörben ismertetett eljárást.
+2. Telepítse a függőségi ügynököt minden olyan számítógépre, amelyen le szeretné kérni az adatgyűjtést. A függőségi ügynök nyomon követheti a kapcsolatokat az azonnali szomszédokkal, így előfordulhat, hogy nincs szüksége ügynökre minden számítógépen.
 
 > [!NOTE]
 > A Wire Data előző verzióját nem lehet hozzáadni új munkaterületekhez. Ha engedélyezve van az eredeti Wire Data megoldás, azt továbbra is használhatja. Azonban a Wire Data 2.0 használatához először el kell távolítani az eredeti verziót.
 > 
  
-### <a name="install-the-dependency-agent-on-windows"></a>A függőségi ügynök telepítése Windows rendszeren
+### <a name="install-the-dependency-agent-on-windows"></a>Telepítse a függőségi ügynököt Windows
 
 Az ügynök telepítéséhez vagy eltávolításához rendszergazdai jogosultság szükséges.
 
-A függőségi ügynök a Windows rendszerű számítógépekre az InstallDependencyAgent-Windows.exe fájllal telepíthető. Ha a végrehajtható fájlt bármilyen paraméter nélkül futtatja, akkor elindul egy varázsló, amelyet követve párbeszédes formában telepítheti az ügynököt.
+A függőségi ügynök telepítve van a Windows rendszerű számítógépeken a InstallDependencyAgent-Windows. exe használatával. Ha a végrehajtható fájlt bármilyen paraméter nélkül futtatja, akkor elindul egy varázsló, amelyet követve párbeszédes formában telepítheti az ügynököt.
 
-A függőségi ügynököt az alábbi lépésekkel telepítheti minden Windows rendszerű számítógépre:
+A következő lépésekkel telepítheti a függőségi ügynököt a Windows rendszerű számítógépekre:
 
 1. A Log Analytics-ügynököket leírt lépések végrehajtásával telepítse [adatok gyűjtése saját környezetben futtatott Windows-számítógépekről](../../azure-monitor/platform/agent-windows.md).
-2. Töltse le a Windows függőségi ügynököt az előző szakaszban található hivatkozás használatával, majd futtassa a következő paranccsal: `InstallDependencyAgent-Windows.exe`
+2. Töltse le a Windows-függőségi ügynököt az előző szakaszban található hivatkozás használatával, majd futtassa a következő paranccsal:`InstallDependencyAgent-Windows.exe`
 3. Az ügynök telepítéséhez kövesse a varázslót.
-4. Ha a függőségi ügynök nem indul el, tekintse meg a naplókat a hibával kapcsolatos részletes információért. Windows-ügynökök esetén a naplózási könyvtár a következő: %Programfiles%\Microsoft Dependency Agent\logs.
+4. Ha a függőségi ügynök nem indul el, ellenőrizze a hibával kapcsolatos részletes információk a naplókat. Windows-ügynökök esetén a naplózási könyvtár a következő: %Programfiles%\Microsoft Dependency Agent\logs.
 
 #### <a name="windows-command-line"></a>Windows parancssor
 
@@ -202,19 +202,19 @@ InstallDependencyAgent-Windows.exe /?
 | <code>/?</code> | A parancssori kapcsolók listájának lekérése. |
 | <code>/S</code> | Beavatkozás nélküli telepítés a felhasználónak szóló üzenetek nélkül. |
 
-A Windows függőségi ügynök fájljai alapértelmezés szerint a következő könyvtárba kerülnek: C:\Program Files\Microsoft Dependency Agent.
+A Windows-függőségi ügynök fájljai alapértelmezés szerint a C:\Program Files\Microsoft függőségi ügynökbe kerülnek.
 
 ### <a name="install-the-dependency-agent-on-linux"></a>A függőségi ügynök telepítése Linux rendszeren
 
 Az ügynök telepítéséhez vagy eltávolításához gyökérszintű hozzáférés szükséges.
 
-A függőségi ügynök Linux rendszerű számítógépekre az InstallDependencyAgent-Linux64.bin fájllal telepíthető, amely egy önkicsomagoló bináris héjszkript. A fájlt futtathatja az _sh_ használatával, vagy hozzáadhat végrehajtási engedélyeket a fájlhoz.
+A függőségi ügynök Linux rendszerű számítógépekre van telepítve a InstallDependencyAgent-Linux64. bin használatával, amely egy önkicsomagoló bináris fájlt tartalmazó rendszerhéj-parancsfájl. A fájlt futtathatja az _sh_ használatával, vagy hozzáadhat végrehajtási engedélyeket a fájlhoz.
 
-A függőségi ügynököt az alábbi lépésekkel telepítheti minden Linux rendszerű számítógépre:
+Az alábbi lépések segítségével a függőségi ügynök telepítése minden egyes Linux rendszerű számítógépen:
 
 1. A Log Analytics-ügynököket leírt lépések végrehajtásával telepítse [adatok gyűjtése saját környezetben futtatott Linuxos számítógépekről](../../azure-monitor/learn/quick-collect-linux-computer.md#obtain-workspace-id-and-key).
-2. Töltse le a Linux függőségi ügynököt az előző szakaszban található hivatkozás használatával, majd telepítse gyökérként a következő paranccsal: sh InstallDependencyAgent-Linux64.bin
-3. Ha a függőségi ügynök nem indul el, tekintse meg a naplókat a hibával kapcsolatos részletes információért. A Linux-ügynökökön a naplókönyvtár a következő: /var/opt/microsoft/dependency-agent/log.
+2. Töltse le a Linux-függőségi ügynököt az előző szakaszban található hivatkozásra kattintva, majd a következő paranccsal telepítse root-ként: sh InstallDependencyAgent-Linux64. bin
+3. Ha a függőségi ügynök nem indul el, ellenőrizze a hibával kapcsolatos részletes információk a naplókat. A Linux-ügynökökön a naplókönyvtár a következő: /var/opt/microsoft/dependency-agent/log.
 
 A telepítésjelzők listájának megtekintéséhez futtassa a `-help` jelzővel rendelkező telepítőprogramot az alábbiak szerint.
 
@@ -228,7 +228,7 @@ InstallDependencyAgent-Linux64.bin -help
 | <code>-s</code> | Beavatkozás nélküli telepítés a felhasználónak szóló üzenetek nélkül. |
 | <code>--check</code> | Az engedélyek és az operációs rendszer ellenőrzése, az ügynök telepítése nélkül. |
 
-A függőségi ügynök fájljai az alábbi könyvtárakba kerülnek:
+A függőségi ügynök fájlok kerülnek a következő könyvtárak:
 
 | **Fájlok** | **Hely** |
 | --- | --- |
@@ -240,7 +240,7 @@ A függőségi ügynök fájljai az alábbi könyvtárakba kerülnek:
 
 ### <a name="installation-script-examples"></a>Telepítési példaszkriptek
 
-Egy szkript használata segíthet, ha egyszerre több kiszolgálóra szeretné könnyen telepíteni a függőségi ügynököt. Az alábbi példaszkriptekkel letöltheti és telepítheti a függőségi ügynököt Windows vagy Linux rendszerű számítógépre.
+Ha a függőségi ügynököt egyszerre sok kiszolgálóra szeretné egyszerűen üzembe helyezni, akkor a parancsfájl használatát is lehetővé teszi. A következő parancsfájl-példákkal letöltheti és telepítheti a függőségi ügynököt Windows vagy Linux rendszeren.
 
 #### <a name="powershell-script-for-windows"></a>PowerShell-szkript Windowshoz
 
@@ -264,7 +264,7 @@ sh InstallDependencyAgent-Linux64.bin -s
 
 ### <a name="desired-state-configuration"></a>Célállapot-konfiguráló
 
-A függőségi ügynök Desired State Configuration segítségével történő telepítéséhez használhatja az xPSDesiredStateConfiguration modult és egy, az alábbihoz hasonló kódrészletet:
+A függőségi ügynök a kívánt állapot-konfiguráción keresztüli üzembe helyezéséhez használhatja a xPSDesiredStateConfiguration modult és egy olyan kódot, amely a következőhöz hasonló:
 
 ```powershell
 Import-DscResource -ModuleName xPSDesiredStateConfiguration
@@ -277,7 +277,7 @@ Node $NodeName
 
 {
 
-    # Download and install the Dependency Agent
+    # Download and install the Dependency agent
 
     xRemoteFile DAPackage
 
@@ -319,17 +319,17 @@ Node $NodeName
 
 ### <a name="uninstall-the-dependency-agent"></a>A függőségi ügynök eltávolítása
 
-Az alábbi szakaszok segítséget nyújtanak a függőségi ügynök eltávolításában.
+A következő fejezetei segítséget nyújtanak a függőségi ügynök eltávolításához.
 
 #### <a name="uninstall-the-dependency-agent-on-windows"></a>A függőségi ügynök eltávolítása Windows rendszeren
 
-A rendszergazda Windows esetén a Vezérlőpulton keresztül törölheti a függőségi ügynököt.
+A rendszergazda eltávolíthatja a függőségi ügynököt Windows Vezérlőpult segítségével.
 
-Egy rendszergazda a következő fájl futtatásával is eltávolíthatja a függőségi ügynököt: %Programfiles%\Microsoft Dependency Agent\Uninstall.exe.
+A rendszergazda a függőségi ügynök eltávolítása a függőségi Agent\Uninstall.exe %Programfiles%\Microsoft is futtathatja.
 
 #### <a name="uninstall-the-dependency-agent-on-linux"></a>A függőségi ügynök eltávolítása Linux rendszeren
 
-A függőségi ügynök Linux rendszerről történő teljes eltávolításához el kell távolítania az ügynököt és az ügynökkel együtt automatikusan telepített összekötőt. Az alábbi egyszerű parancs futtatásával mindkettőt eltávolíthatja:
+A függőségi ügynök Linux rendszerből való teljes eltávolításához el kell távolítania magát az ügynököt és az összekötőt, amely automatikusan települ az ügynökkel. Az alábbi egyszerű parancs futtatásával mindkettőt eltávolíthatja:
 
 ```
 rpm -e dependency-agent dependency-agent-connector
@@ -337,7 +337,7 @@ rpm -e dependency-agent dependency-agent-connector
 
 ## <a name="management-packs"></a>Felügyeleti csomagok
 
-Ha az átviteli adatok aktiválva vannak a Log Analytics-munkaterületen, a rendszer egy 300 KB méretű felügyeleti csomagot küld a munkaterület Windows-kiszolgálóinak. Ha System Center Operations Manager-ügynököt használ egy [csatlakoztatott felügyeleti csoportban](../platform/om-agents.md), a Függőségfigyelő felügyeleti csomag a System Center Operations Managerből lesz telepítve. Ha az ügynököket közvetlenül csatlakoztatva van, az Azure Monitor biztosít a felügyeleti csomag.
+Ha az átviteli adatok aktiválva vannak a Log Analytics-munkaterületen, a rendszer egy 300 KB méretű felügyeleti csomagot küld a munkaterület Windows-kiszolgálóinak. Ha System Center Operations Manager-ügynököt használ egy [csatlakoztatott felügyeleti csoportban](../platform/om-agents.md), a Függőségfigyelő felügyeleti csomag a System Center Operations Managerből lesz telepítve. Ha az ügynökök közvetlenül vannak csatlakoztatva, Azure Monitor biztosítja a felügyeleti csomagot.
 
 A felügyeleti csomag neve Microsoft.IntelligencePacks.ApplicationDependencyMonitor. A következő helyre írja a rendszer: %Programfiles%\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs. A felügyeleti csomag az alábbi adatforrást használja: %Program files%\Microsoft Monitoring Agent\Agent\Health Service State\Resources&lt;AutoGeneratedID&gt;\Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll.
 
@@ -347,7 +347,7 @@ A megoldás telepítésekor és konfigurálásakor vegye figyelembe az alábbi i
 
 - A Wire Data megoldás a Windows Server 2012 R2, Windows 8.1 és újabb operációs rendszert futtató számítógépekről gyűjt adatokat.
 - A Microsoft .NET-keretrendszer 4.0-s vagy újabb verziójával kell rendelkeznie azoknak a számítógépeknek, amelyekről átviteli adatokat szeretne gyűjteni.
-- Adja hozzá a Wire Data megoldás a Log Analytics-munkaterülethez ismertetett folyamatot [hozzáadása a megoldástárból megoldások monitorozása](solutions.md). Nincs szükség további konfigurációra.
+- Adja hozzá az adatátviteli megoldást a Log Analytics munkaterülethez a [felügyeleti megoldások hozzáadása a Solutions Galleryból](solutions.md)című témakörben leírt eljárással. Nincs szükség további konfigurációra.
 - Egy adott megoldás átviteli adatainak megtekintéséhez már rendelkeznie kell a megoldással a munkaterületen.
 
 Miután telepítette az ügynököket és telepíti a megoldást, a munkaterületen megjelenik a Wire Data 2.0 csempéje.
@@ -400,7 +400,7 @@ A bemeneti adatok minden típusához létrejön egy _WireData_ típusú rekord. 
 | Direction | Bemeneti vagy kimeneti |
 | MaliciousIP | Ismert kártevő forrás IP-címe |
 | Severity | Gyanús kártevő súlyossága |
-| RemoteIPCountry | Az ország, ahol a távoli IP-cím található |
+| RemoteIPCountry | A távoli IP-cím országa/régiója |
 | ManagementGroupName | Az Operations Manager felügyeleti csoportjának neve |
 | SourceSystem | A gyűjtött adatok forrása |
 | SessionStartTime | A munkamenet kezdési időpontja |
@@ -417,7 +417,6 @@ A bemeneti adatok minden típusához létrejön egy _WireData_ típusú rekord. 
 | ProcessName | A folyamat elérési útja és neve |
 | RemoteIPLongitude | IP-cím hosszúsági értéke |
 | RemoteIPLatitude | IP-cím szélességi értéke |
-
 
 ## <a name="next-steps"></a>További lépések
 

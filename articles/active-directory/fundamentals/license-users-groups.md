@@ -2,7 +2,7 @@
 title: Rendelje hozzá, vagy távolítsa el a licencek – Azure Active Directory |} A Microsoft Docs
 description: Rendelje hozzá, vagy távolítsa el az Azure Active Directory-licenceket a felhasználók vagy csoportok kapcsolatos utasításokat.
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.assetid: f8b932bc-8b4f-42b5-a2d3-f2c076234a78
 ms.service: active-directory
@@ -10,16 +10,16 @@ ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/05/2018
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e7a3f80067adb3093bd27e34a45b3afd72b4993
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 9f76e766d0aedae88eb11dd244f71f130f77c57e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286856"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561662"
 ---
 # <a name="assign-or-remove-licenses-using-the-azure-active-directory-portal"></a>Rendelje hozzá, vagy távolítsa el a licencek használata az Azure Active Directory portálon
 Számos Azure Active Directory (Azure AD) szolgáltatás az adott termék szükséges, hogy aktiválja az Azure AD-termékre, és a felhasználók vagy csoportok (és társított tagok) minden egyes licenc. Csak az aktív licenccel rendelkező felhasználók hozzáférhetnek, és a licencelt használata az Azure AD-szolgáltatások.
@@ -47,7 +47,7 @@ Megtekintheti az elérhető termékek, többek között az egyes licencek ellen�
 
     A **licencek** lap jelenik meg.
 
-    ![Licencek lapon, a megvásárolt termékek és a hozzárendelt licencek száma](media/license-users-groups/license-details-blade.png)
+    ![Licencek lap, a megvásárolt termékek számával és a hozzárendelt licencekkel](media/license-users-groups/license-details-blade.png)
     
 3. Válassza ki a **vásárolt termékek** hivatkozásra kattintva a **termékek** lapot, és tekintse meg a **hozzárendelt**, **elérhető**, és  **Hamarosan lejáró** minden egyes megadott termék kiadásának részleteit.
 
@@ -59,7 +59,7 @@ Megtekintheti az elérhető termékek, többek között az egyes licencek ellen�
 Győződjön meg arról, hogy bárki használja egy licencelt kellene az Azure AD szolgáltatás rendelkezik a megfelelő licenccel. Arra, hogy adja hozzá a licencelési jogokat, egyéni felhasználók számára vagy egy teljes csoport szeretné.
 
 >[!Note]
->Csoportalapú licencelés nyilvános előzetes verziójú funkció az Azure AD és az összes rendelkezésre álló fizetős Azure AD-licenccsomag. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).<br><br>Felhasználók hozzáadásával kapcsolatos részletes információkért lásd: [hozzáadása vagy törlése az Azure Active Directory felhasználók](add-users-azure-active-directory.md). Csoportok létrehozása és tagok hozzáadása kapcsolatos részletes információkért lásd: [létrehozásához, és tagokat vehet fel](active-directory-groups-create-azure-portal.md).
+>A csoportos licencelés az Azure AD nyilvános előzetes verziója, és minden fizetős Azure AD-licenccel elérhető. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).<br><br>Felhasználók hozzáadásával kapcsolatos részletes információkért lásd: [hozzáadása vagy törlése az Azure Active Directory felhasználók](add-users-azure-active-directory.md). Csoportok létrehozása és tagok hozzáadása kapcsolatos részletes információkért lásd: [létrehozásához, és tagokat vehet fel](active-directory-groups-create-azure-portal.md).
 
 ### <a name="to-assign-a-license-to-a-specific-user"></a>Licenc hozzárendelése egy adott felhasználó
 1. Az a **termékek** lapon, válassza ki a nevét, a felhasználóhoz rendelni kívánt kiadást. Ha például _Azure Active Directory Premium 2. csomag_.
@@ -76,7 +76,7 @@ Győződjön meg arról, hogy bárki használja egy licencelt kellene az Azure A
 
 4. Válassza ki **hozzárendelési beállítások**, ellenőrizze, hogy a megfelelő licencet a beállítások engedélyezve van, és válassza ki **OK**.
 
-    ![Licenc lehetőséget oldala, amelyen az összes kiadásában elérhető beállítások](media/license-users-groups/license-option-blade-assignments.png)
+    ![Licencelési lehetőség lap, a kiadásban elérhető összes lehetőséggel](media/license-users-groups/license-option-blade-assignments.png)
 
     A **licenc hozzárendelése** frissítések jeleníti meg, hogy egy felhasználó van kiválasztva, valamint, hogy vannak-e konfigurálva a hozzárendeléseket lapon.
 
@@ -102,7 +102,7 @@ Győződjön meg arról, hogy bárki használja egy licencelt kellene az Azure A
 
 4. Válassza ki **hozzárendelési beállítások**, ellenőrizze, hogy a megfelelő licencet a beállítások engedélyezve van, és válassza ki **OK**.
 
-    ![Licenc lehetőséget oldala, amelyen az összes kiadásában elérhető beállítások](media/license-users-groups/license-option-blade-group-assignments.png)
+    ![Licencelési lehetőség lap, a kiadásban elérhető összes lehetőséggel](media/license-users-groups/license-option-blade-group-assignments.png)
 
     A **licenc hozzárendelése** frissítések jeleníti meg, hogy egy felhasználó van kiválasztva, valamint, hogy vannak-e konfigurálva a hozzárendeléseket lapon.
 

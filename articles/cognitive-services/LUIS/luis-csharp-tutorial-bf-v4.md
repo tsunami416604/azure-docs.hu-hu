@@ -1,7 +1,7 @@
 ---
-title: A robot - C# -v4
-titleSuffix: Language Understanding - Azure Cognitive Services
-description: A C# használatával hozzon létre egy csevegőrobotot integrált nyelvfelismeréssel (LUIS). Ez csevegőrobot a Human Resources app használatával rövid idő alatt megvalósít egy robotmegoldást. A robot összeállításához a Bot Framework 4-es verzióját és az Azure webalkalmazás-robotot használja.
+title: 'Oktatóanyag: Language Understanding bot C# v4'
+titleSuffix: Azure Cognitive Services
+description: A C# használatával hozzon létre egy csevegőrobotot integrált nyelvfelismeréssel (LUIS). A robot a robot Framework 4-es verziójával és az Azure Web App bot Service-szel készült.
 services: cognitive-services
 author: diberry
 ms.custom: seodec18
@@ -9,26 +9,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 01/09/2019
+ms.date: 09/06/2019
 ms.author: diberry
-ms.openlocfilehash: 028c06924e41606ba1d4e0b15fe26f2b7270db3c
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 0911747da38ed736a79e692fd511e5bfbfaf7439
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56960298"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772916"
 ---
-# <a name="tutorial-luis-bot-in-c-with-the-bot-framework-4x-and-the-azure-web-app-bot"></a>Oktatóanyag: A LUIS-robot C# a Bot keretrendszer 4.x-es és az Azure Web app bot
-A C# használatával létrehozhat egy integrált nyelvfelismerési (LUIS) képességekkel rendelkező csevegőrobotot. Ez a robot a HomeAutomation app használatával valósítja meg a robotmegoldást. A robot összeállításához a [Bot Framework 4-es verzióját](https://github.com/Microsoft/botbuilder-js) és az Azure [webalkalmazás-robotot](https://docs.microsoft.com/azure/bot-service/) használja.
+# <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-c"></a>Oktatóanyag: Webalkalmazás-robot használata Language Understanding használatávalC#
+
+A C# használatával a Language Understanding (Luis) segítségével integrált csevegési robotot hozhat létre. A robot az Azure [Web App bot](https://docs.microsoft.com/azure/bot-service/) Resource és a bot Framework v4-es [verziójával](https://github.com/Microsoft/botbuilder-dotnet) készült.
 
 **Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
 > [!div class="checklist"]
 > * Webalkalmazás-robot létrehozása. Ez a folyamat egy új LUIS-appot hoz létre az Ön számára.
-> * Előre összeállított tartomány hozzáadása az új LUIS-modellhez
-> * A Web Bot Service által létrehozott projekt letöltése
+> * A web bot Service által létrehozott robot-projekt letöltése
 > * A robot és az emulátor elindítása a helyi számítógépen
-> * A robot kódjának módosítása az új LUIS-szándékokhoz
 > * Kimondottszöveg-eredmények megtekintése a robotban
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -37,13 +36,13 @@ A C# használatával létrehozhat egy integrált nyelvfelismerési (LUIS) képes
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/)
 
 
-## <a name="create-web-app-bot"></a>Webalkalmazás-robot létrehozása
+## <a name="create-a-web-app-bot-resource"></a>Webalkalmazás-robot erőforrás létrehozása
 
 1. Az [Azure Portalon](https://portal.azure.com) válassza az **Új erőforrás létrehozása** lehetőséget.
 
-2. A keresőmezőben keresse meg, majd válassza ki a **Webalkalmazás-robot** elemet. Kattintson a **Létrehozás** gombra.
+1. A keresőmezőben keresse meg, majd válassza ki a **Webalkalmazás-robot** elemet. Kattintson a **Létrehozás** gombra.
 
-3. A **Bot Service** szolgáltatásban adja meg a szükséges adatokat:
+1. A **Bot Service** szolgáltatásban adja meg a szükséges adatokat:
 
     |Beállítás|Cél|Javasolt beállítás|
     |--|--|--|
@@ -55,253 +54,198 @@ A C# használatával létrehozhat egy integrált nyelvfelismerési (LUIS) képes
     |App neve|A név lesz az altartomány a robot felhőbeli üzembe helyezésekor (például humanresourcesbot.azurewebsites.net).|`luis-csharp-bot-` + `<your-name>`, például: `luis-csharp-bot-johnsmith`|
     |Robotsablon|A Bot Framework beállításai – lásd a következő táblázatot|
     |A LUIS-app helye|Egyeznie kell a LUIS-erőforrás régiójával|`westus`|
+    |App Service-csomag/hely|Ne módosítsa a megadott alapértelmezett értéket.|
+    |Application Insights|Ne módosítsa a megadott alapértelmezett értéket.|
+    |Microsoft-alkalmazás azonosítója és jelszava|Ne módosítsa a megadott alapértelmezett értéket.|
 
-4. A **Bot template settings** (Robotsablon beállításai) menüpontban válassza az alábbi lehetőségeket, majd kattintson a beállítások alatt található **Select** (Kiválasztás) gombra:
+1. A **bot-sablonban**válassza ki a következőt, majd a beállítások területen válassza a **kiválasztás** gombot:
 
     |Beállítás|Cél|Kiválasztás|
     |--|--|--|
     |SDK verziója|Bot Framework verziója|**SDK v4**|
     |SDK nyelve|Robot programozási nyelve|**C#**|
-    |Echo/Alapszintű robot|Robot típusa|**Alapszintű robot**|
+    |Bot|Robot típusa|**Alapszintű robot**|
     
-5. Kattintson a **Létrehozás** gombra. Ezzel létrehozza a robotszolgáltatást, és üzembe helyezi azt az Azure-ban. A folyamat egyik része egy `luis-csharp-bot-XXXX` nevű LUIS-appot hoz létre. Ez a név a robot és az app előző szakaszban szereplő nevén alapul.
+1. Kattintson a **Létrehozás** gombra. Ezzel létrehozza a robotszolgáltatást, és üzembe helyezi azt az Azure-ban. A folyamat egyik része egy `luis-csharp-bot-XXXX` nevű LUIS-appot hoz létre. Ez a név a/Azure bot Service-alkalmazás nevén alapul.
 
-    [![Web app bot létrehozása](./media/bfv4-csharp/create-web-app-service.png)](./media/bfv4-csharp/create-web-app-service.png#lightbox)
+    [![Webalkalmazás robotjának létrehozása](./media/bfv4-csharp/create-web-app-service.png)](./media/bfv4-csharp/create-web-app-service.png#lightbox)
 
-6. Hagyja megnyitva ezt a böngészőlapot. A LUIS portálon elvégzendő lépésekhez nyisson új böngészőlapot. Folytassa a következő szakasszal, amely az új robotszolgáltatás üzembe helyezését mutatja be.
+    A folytatás előtt várjon, amíg létrejött a robot szolgáltatás.
 
-## <a name="add-prebuilt-domain-to-model"></a>Előre összeállított tartomány hozzáadása a modellhez
-A robotszolgáltatás üzembehelyezési folyamatának egyik része egy szándékokat és példaszövegeket tartalmazó új LUIS-appot hoz létre. A robot szándékleképezéseket biztosít az új LUIS-apphoz a következő szándékok esetén: 
+## <a name="the-bot-has-a-language-understanding-model"></a>A robot Language Understanding modellt tartalmaz
+
+A bot Service létrehozási folyamata egy új LUIS-alkalmazást is létrehoz a szándékokkal és példa hosszúságú kimondott szöveg. A robot szándékleképezéseket biztosít az új LUIS-apphoz a következő szándékok esetén: 
 
 |Alapszintű robot LUIS-szándékai|példa kimondott szöveg|
 |--|--|
-|Mégse|`stop`|
-|Üdvözlés|`hello`|
-|Súgó|`help`|
-|None|Az app tartományán kívül bármi.|
+|Repülőjegy|`Travel to Paris`|
+|Mégse|`bye`|
+|GetWeather|`what's the weather like?`|
+|Nincsenek|Az app tartományán kívül bármi.|
 
-Adja hozzá az előre összeállított HomeAutomation alkalmazást a modellhez, a következőhöz hasonló kimondott szövegek kezelése érdekében: `Turn off the living room lights`
+## <a name="test-the-bot-in-web-chat"></a>A robot webes csevegési tesztelése
 
-1. Nyissa meg a [LUIS portált](https://www.luis.ai), és jelentkezzen be.
-2. A **My Apps** (Saját alkalmazások) lapon kattintson a **Created date** (Létrehozás dátuma) oszlopra, így az app létrehozásának dátuma szerint rendezheti azt. Az Azure Bot Service egy új appot hozott létre az előző szakaszban. A neve `luis-csharp-bot-` + `<your-name>` + 4 véletlenszerű karakter.
-3. Nyissa meg az appot, és a felső navigációs ablakban lépjen a **Build** (Létrehozás) szakaszhoz.
-4. Válassza a **Prebuilt Domains** (Előre összeállított tartományok) elemet a bal oldali menüben.
-5. Válassza ki a **HomeAutomation** tartományt a kártyán szereplő **Add domain** (Tartomány hozzáadása) lehetőségre kattintva.
-6. A jobb felső menüben válassza a **Train** (Betanítás) elemet.
-7. A jobb felső menüben válassza a **Publish** (Közzététel) lehetőséget. 
+1. Miközben az új robot Azure Portal továbbra is elérhető, válassza a **tesztelés webes csevegésben**lehetőséget. 
+1. Az írja be az **üzenet** szövegmezőbe írja be a `Book a flight from Seattle to Berlin tomorrow`szöveget. A robot ellenőrzi, hogy szeretne-e repülőjáratot foglalni. 
 
-    Az Azure Bot Service által létrehozott app most már tartalmazza az új szándékokat:
+    ![A Azure Portal képernyőképe a "Hello" szöveg beírásával.](./media/bfv4-nodejs/ask-bot-question-in-portal-test-in-web-chat.png)
 
-    |Az alapszintű robot új szándékai|példa kimondott szöveg|
-    |--|--|
-    |HomeAutomation.TurnOn|`turn the fan to high`
-    |HomeAutomation.TurnOff|`turn off ac please`|
+    A teszt funkció használatával gyorsan tesztelheti a robotot. A teljes teszteléshez, beleértve a hibakeresést, töltse le a robot kódját, és használja a Visual studiót. 
 
-## <a name="download-the-web-app-bot"></a>A webalkalmazás-robot letöltése 
+## <a name="download-the-web-app-bot-source-code"></a>A webalkalmazás robot-forráskódjának letöltése
 A webalkalmazás-robot kódjának fejlesztéséhez töltse le a kódot a helyi számítógépre. 
 
-1. Az Azure Portalon, a webalkalmazás-robot erőforrásán kattintson az **Alkalmazásbeállítások** menüpontra, és másolja a **botFilePath** és a **botFileSecret** értékeit. Ezeket a későbbiekben hozzá kell adnia egy környezeti fájlhoz. 
+1. Az Azure Portalon a **Robot felügyelete** szakaszban kattintson a **Build** elemre. 
 
-2. Az Azure Portalon a **Robot felügyelete** szakaszban kattintson a **Build** elemre. 
+1. Válassza a **Robot forráskódjának letöltse** lehetőséget. 
 
-3. Válassza a **Robot forráskódjának letöltse** lehetőséget. 
+    [![Webalkalmazás-robot forráskódjának letöltése alapszintű robothoz](../../../includes/media/cognitive-services-luis/bfv4/download-code.png)](../../../includes/media/cognitive-services-luis/bfv4/download-code.png#lightbox)
 
-    [![Töltse le a web app bot forráskódja alapszintű robot](../../../includes/media/cognitive-services-luis/bfv4/download-code.png)](../../../includes/media/cognitive-services-luis/bfv4/download-code.png#lightbox)
+1. Ha az előugró ablak **a letöltött zip-fájlban is**megkéri az Alkalmazásbeállítások megadását, válassza az **Igen**lehetőséget.
 
-4. Tömörített forráskód esetén az üzenet tartalmazza a kód letöltéséhez szükséges hivatkozást. Kattintson a hivatkozásra. 
+1. Tömörített forráskód esetén az üzenet tartalmazza a kód letöltéséhez szükséges hivatkozást. Kattintson a hivatkozásra. 
 
-5. Mentse a .zip-fájlt a helyi számítógépére, és bontsa ki a fájlokat. Nyissa meg a projektet. 
+1. Mentse a .zip-fájlt a helyi számítógépére, és bontsa ki a fájlokat. Nyissa meg a projektet a Visual Studióval. 
 
-6. Nyissa meg a bot.cs fájlt, és keresse meg a `_services.LuisServices` kifejezést. A rendszer ezen a ponton küldi a robotban megadott felhasználói kimondott szöveget a LUIS-hoz.
+## <a name="review-code-to-send-utterance-to-luis-and-get-response"></a>Tekintse át a kódot, hogy kinyerje a LUIS-t és a választ
+
+1. A felhasználónak a LUIS előrejelzési végpontra történő elküldéséhez nyissa meg a **FlightBookingRecognizer.cs** fájlt. A rendszer ezen a ponton küldi a robotban megadott felhasználói kimondott szöveget a LUIS-hoz. A LUIS válaszát a **RecognizeAsync** metódus adja vissza.  
 
     ```csharp
-    /// <summary>
-    /// Run every turn of the conversation. Handles orchestration of messages.
-    /// </summary>
-    /// <param name="turnContext">Bot Turn Context.</param>
-    /// <param name="cancellationToken">Task CancellationToken.</param>
-    /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
-    public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken)
+    using System.Threading;
+    using System.Threading.Tasks;
+    using Microsoft.Bot.Builder;
+    using Microsoft.Bot.Builder.AI.Luis;
+    using Microsoft.Extensions.Configuration;
+    
+    namespace Microsoft.BotBuilderSamples
     {
-        var activity = turnContext.Activity;
-
-        if (activity.Type == ActivityTypes.Message)
+        public class FlightBookingRecognizer : IRecognizer
         {
-            // Perform a call to LUIS to retrieve results for the current activity message.
-            var luisResults = await _services.LuisServices[LuisConfiguration].RecognizeAsync(turnContext, cancellationToken).ConfigureAwait(false);
-
-            // If any entities were updated, treat as interruption.
-            // For example, "no my name is tony" will manifest as an update of the name to be "tony".
-            var topScoringIntent = luisResults?.GetTopScoringIntent();
-
-            var topIntent = topScoringIntent.Value.intent;
-            switch (topIntent)
+            private readonly LuisRecognizer _recognizer;
+    
+            public FlightBookingRecognizer(IConfiguration configuration)
             {
-                case GreetingIntent:
-                    await turnContext.SendActivityAsync("Hello.");
-                    break;
-                case HelpIntent:
-                    await turnContext.SendActivityAsync("Let me try to provide some help.");
-                    await turnContext.SendActivityAsync("I understand greetings, being asked for help, or being asked to cancel what I am doing.");
-                    break;
-                case CancelIntent:
-                    await turnContext.SendActivityAsync("I have nothing to cancel.");
-                    break;
-                case NoneIntent:
-                default:
-                    // Help or no intent identified, either way, let's provide some help.
-                    // to the user
-                    await turnContext.SendActivityAsync("I didn't understand what you just said to me.");
-                    break;
-            }
-        }
-        else if (activity.Type == ActivityTypes.ConversationUpdate)
-        {
-            if (activity.MembersAdded.Any())
-            {
-                // Iterate over all new members added to the conversation.
-                foreach (var member in activity.MembersAdded)
+                var luisIsConfigured = !string.IsNullOrEmpty(configuration["LuisAppId"]) && !string.IsNullOrEmpty(configuration["LuisAPIKey"]) && !string.IsNullOrEmpty(configuration["LuisAPIHostName"]);
+                if (luisIsConfigured)
                 {
-                    // Greet anyone that was not the target (recipient) of this message.
-                    // To learn more about Adaptive Cards, see https://aka.ms/msbot-adaptivecards for more details.
-                    if (member.Id != activity.Recipient.Id)
+                    var luisApplication = new LuisApplication(
+                        configuration["LuisAppId"],
+                        configuration["LuisAPIKey"],
+                        "https://" + configuration["LuisAPIHostName"]);
+    
+                    _recognizer = new LuisRecognizer(luisApplication);
+                }
+            }
+    
+            // Returns true if luis is configured in the appsettings.json and initialized.
+            public virtual bool IsConfigured => _recognizer != null;
+    
+            public virtual async Task<RecognizerResult> RecognizeAsync(ITurnContext turnContext, CancellationToken cancellationToken)
+                => await _recognizer.RecognizeAsync(turnContext, cancellationToken);
+    
+            public virtual async Task<T> RecognizeAsync<T>(ITurnContext turnContext, CancellationToken cancellationToken)
+                where T : IRecognizerConvert, new()
+                => await _recognizer.RecognizeAsync<T>(turnContext, cancellationToken);
+        }
+    }
+    ````
+
+1. **Párbeszédpanelek megnyitása – > MainDialog.cs** rögzíti a megadást, és elküldi a ActStep metódus executeLuisQuery. 
+
+    ```csharp
+    public class MainDialog : ComponentDialog
+    {
+        private readonly FlightBookingRecognizer _luisRecognizer;
+
+        ...
+
+        public MainDialog(FlightBookingRecognizer luisRecognizer, BookingDialog bookingDialog, ILogger<MainDialog> logger)
+                    : base(nameof(MainDialog))
+        {
+            _luisRecognizer = luisRecognizer;
+            ...
+        }
+
+        private async Task<DialogTurnResult> ActStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
+        {
+            if (!_luisRecognizer.IsConfigured)
+            {
+                // LUIS is not configured, we just run the BookingDialog path with an empty BookingDetailsInstance.
+                return await stepContext.BeginDialogAsync(nameof(BookingDialog), new BookingDetails(), cancellationToken);
+            }
+
+            // Call LUIS and gather any potential booking details. (Note the TurnContext has the response to the prompt.)
+            var luisResult = await _luisRecognizer.RecognizeAsync<FlightBooking>(stepContext.Context, cancellationToken);
+            switch (luisResult.TopIntent().intent)
+            {
+                case FlightBooking.Intent.BookFlight:
+                    await ShowWarningForUnsupportedCities(stepContext.Context, luisResult, cancellationToken);
+
+                    // Initialize BookingDetails with any entities we may have found in the response.
+                    var bookingDetails = new BookingDetails()
                     {
-                        var welcomeCard = CreateAdaptiveCardAttachment();
-                        var response = CreateResponse(activity, welcomeCard);
-                        await turnContext.SendActivityAsync(response).ConfigureAwait(false);
-                    }
-                }
+                        // Get destination and origin from the composite entities arrays.
+                        Destination = luisResult.ToEntities.Airport,
+                        Origin = luisResult.FromEntities.Airport,
+                        TravelDate = luisResult.TravelDate,
+                    };
+
+                    // Run the BookingDialog giving it whatever details we have from the LUIS call, it will fill out the remainder.
+                    return await stepContext.BeginDialogAsync(nameof(BookingDialog), bookingDetails, cancellationToken);
+
+                case FlightBooking.Intent.GetWeather:
+                    // We haven't implemented the GetWeatherDialog so we just display a TODO message.
+                    var getWeatherMessageText = "TODO: get weather flow here";
+                    var getWeatherMessage = MessageFactory.Text(getWeatherMessageText, getWeatherMessageText, InputHints.IgnoringInput);
+                    await stepContext.Context.SendActivityAsync(getWeatherMessage, cancellationToken);
+                    break;
+
+                default:
+                    // Catch all for unhandled intents
+                    var didntUnderstandMessageText = $"Sorry, I didn't get that. Please try asking in a different way (intent was {luisResult.TopIntent().intent})";
+                    var didntUnderstandMessage = MessageFactory.Text(didntUnderstandMessageText, didntUnderstandMessageText, InputHints.IgnoringInput);
+                    await stepContext.Context.SendActivityAsync(didntUnderstandMessage, cancellationToken);
+                    break;
             }
+
+            return await stepContext.NextAsync(null, cancellationToken);
         }
+        
+        ...
 
     }
     ```
 
-    A robot elküldi a felhasználói kimondott szöveget a LUIS-hoz, és lekéri az eredményeket. A felső szándék határozza meg a beszélgetés folyamát. 
+## <a name="start-the-bot-code-in-visual-studio"></a>A robot kódjának elindítása a Visual Studióban
+
+A Visual Studio 2019-ben indítsa el a robotot. Ekkor megnyílik egy böngészőablak a webalkalmazás-robot webhelyével a `http://localhost:3978/` címen. A kezdőlapon megjelennek a robottal kapcsolatos információk.
+
+![A kezdőlapon megjelennek a robottal kapcsolatos információk.](./media/bfv4-csharp/running-bot-web-home-page-success.png)
+
+## <a name="use-the-bot-emulator-to-test-the-bot"></a>A bot-emulátor használata a robot teszteléséhez
+
+1. Indítsa el a robot-emulátort, és válassza a **robot megnyitása**lehetőséget.
+1. A **bot megnyitása** előugró ablakban adja meg a robot URL-címét, például `http://localhost:3978/api/messages`:. Az `/api/messages` útvonal a robot webes címe.
+1. Adja meg a **Microsoft-alkalmazás azonosítóját** és a **Microsoft-alkalmazás jelszavát**, amely a letöltött robot-kód gyökerében található **appSettings. JSON** fájlban található.
 
 
-## <a name="start-the-bot"></a>A robot indítása
-A kód vagy a beállítások módosítása előtt ellenőrizze a robot működését. 
+1. A bot-emulátorban adja `Book a flight from Seattle to Berlin tomorrow` meg és kérje le ugyanazt a választ az alapszintű robotra, mint amit a **teszt webes csevegésben**kapott.
 
-1. Nyissa meg a megoldásfájlt a Visual Studióban. 
+    [![Alapszintű bot-válasz az emulátorban](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png)](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png#lightbox)
 
-2. Hozzon létre egy `appsettings.json` fájlt, amely a robot kódja által keresett robotváltozókat tartalmazza:
+1. Válassza az **Igen**lehetőséget. A robot a műveleteinek összegzésével válaszol. 
+1. A robot-emulátor naplójából válassza ki a sort, amely tartalmazza `Luis Trace`a elemet. Ez megjeleníti a LUIS által a cél és a Kimondás entitásai számára küldött JSON-választ.
 
-    ```JSON
-    {
-    "botFileSecret": "",
-    "botFilePath": ""
-
-    }
-    ```
-
-    Állítsa be a változók értékét a **[Webalkalmazás-robot letöltése](#download-the-web-app-bot)** című szakasz 1. lépésében az Azure Bot Service alkalmazásbeállításaiból kimásolt értékekre.
-
-3. Indítsa el a robotot a Visual Studióban. Ekkor megnyílik egy böngészőablak a webalkalmazás-robot webhelyével a `http://localhost:3978/` címen.
-
-## <a name="start-the-emulator"></a>Az emulátor indítása
-
-1. Indítsa el a Bot Emulatort.
-
-2. A Bot Emulatorban válassza ki a projekt gyökérmappájában található *.bot fájlt. Ez a `.bot` fájl tartalmazza a robot üzenetekhez tartozó URL-végpontját:
-
-    [![A robot emulátor v4](../../../includes/media/cognitive-services-luis/bfv4/bot-emulator-v4.png)](../../../includes/media/cognitive-services-luis/bfv4/bot-emulator-v4.png#lightbox)
-
-3. Adja meg a robot titkos kódját, amelyet a **[Webalkalmazás-robot letöltése](#download-the-web-app-bot)** című szakasz 1. lépésében az Azure Bot Service alkalmazásbeállításaiból másolt ki. Ez lehetővé teszi, hogy az emulátor hozzáférjen a `.bot` fájl titkosított mezőihez.
-
-    ![A Bot Emulator v4 titkos kódja](../../../includes/media/cognitive-services-luis/bfv4/bot-secret.png)
-
-4. A Bot Emulatorban írja be a `Hello` kifejezést, és kérje le az alapszintű robothoz tartozó megfelelő választ.
-
-    [![Alapszintű robot válasz emulátorban](../../../includes/media/cognitive-services-luis/bfv4/emulator-test.png)](../../../includes/media/cognitive-services-luis/bfv4/emulator-test.png#lightbox)
-
-## <a name="modify-bot-code"></a>A robot kódjának módosítása 
-
-A `BasicBot.cs` fájlban adja hozzá az új szándékok kezeléséhez szükséges kódot. 
-
-1. A fájl tetején keresse meg a **Támogatott LUIS-szándékok** szakaszt, és adja hozzá a HomeAutomation-szándékokhoz tartozó állandókat:
-
-    ```csharp
-    // Supported LUIS Intents
-    public const string GreetingIntent = "Greeting";
-    public const string CancelIntent = "Cancel";
-    public const string HelpIntent = "Help";
-    public const string NoneIntent = "None";
-    public const string TurnOnIntent = "HomeAutomation_TurnOn"; // new intent
-    public const string TurnOffIntent = "HomeAutomation_TurnOff"; // new intent
-    ```
-
-    Figyelje meg, hogy a tartomány és a LUIS portálról származó app szándéka között elhelyezkedő pontot (`.`) a rendszer aláhúzásjelre (`_`) cserélte. 
-
-2. Keresse meg az **OnTurnAsync** metódust, amely a kimondott szöveg LUIS-előrejelzését fogadja. Adja hozzá a kódot a switch utasításhoz, hogy a rendszer visszaadja a két HomeAutomation-szándékra adott választ. 
-
-    ```csharp
-    case TurnOnIntent:
-        await turnContext.SendActivityAsync("TurnOn intent found, JSON response: " + luisResults?.Entities.ToString());
-        break;
-    case TurnOffIntent:
-        await turnContext.SendActivityAsync("TurnOff intent found, JSON response: " + luisResults?.Entities.ToString());
-        break;
-    ```
-
-    A robot nem pontosan ugyanazt a választ adja, mint a LUIS REST API-kérés, ezért fontos, hogy a válaszként kapott JSON-ban ellenőrizze a különbségeket. A szöveg és a szándék tulajdonságai azonosak, de az entitások tulajdonságértékei módosultak. 
-
-    ```JSON
-    {
-        "$instance": {
-            "HomeAutomation_Device": [
-                {
-                    "startIndex": 23,
-                    "endIndex": 29,
-                    "score": 0.9776345,
-                    "text": "lights",
-                    "type": "HomeAutomation.Device"
-                }
-            ],
-            "HomeAutomation_Room": [
-                {
-                    "startIndex": 12,
-                    "endIndex": 22,
-                    "score": 0.9079433,
-                    "text": "livingroom",
-                    "type": "HomeAutomation.Room"
-                }
-            ]
-        },
-        "HomeAutomation_Device": [
-            "lights"
-        ],
-        "HomeAutomation_Room": [
-            "livingroom"
-        ]
-    }
-    ```
+    [![Alapszintű bot-válasz az emulátorban](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png)](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png#lightbox)
 
 
+[!INCLUDE [Bot Information](../../../includes/cognitive-services-qnamaker-luis-bot-info.md)]
 
-## <a name="view-results-in-bot"></a>Eredmények megtekintése a robotban
-
-1. A Bot Emulatorban írja be a következő szöveget: `Turn on the livingroom lights to 50%`
-
-2. A robot a következővel válaszol:
-
-    ```JSON
-    TurnOn intent found, JSON response: {"$instance":{“HomeAutomation_Device”:[{“startIndex”:23,“endIndex”:29,“score”:0.9776345,“text”:“lights”,“type”:“HomeAutomation.Device”}],“HomeAutomation_Room”:[{“startIndex”:12,“endIndex”:22,“score”:0.9079433,“text”:“livingroom”,“type”:“HomeAutomation.Room”}]},“HomeAutomation_Device”:[“lights”],“HomeAutomation_Room”:[“livingroom”]}
-    ```    
-
-## <a name="learn-more-about-bot-framework"></a>További tudnivalók a Bot Frameworkről
-Az Azure Bot Service a Bot Framework SDK-t használja. További információk az SDK-ról és a Bot Frameworkről:
-
-* Az [Azure Bot Service](https://docs.microsoft.com/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0) v4 dokumentációja
-* [Bot Builder minták](https://github.com/Microsoft/botbuilder-samples)
-* [Bot Builder SDK](https://docs.microsoft.com/javascript/api/botbuilder-core/?view=botbuilder-ts-latest)
-* [Bot Builder eszközök](https://github.com/Microsoft/botbuilder-tools):
 
 ## <a name="next-steps"></a>További lépések
 
-Létrehozott egy Azure Bot Service-szolgáltatást, kimásolta a robot titkos kódját, valamint a `.bot`-fájl elérési útját, és letöltötte a kódot tartalmazó zip-fájlt. Hozzáadta az előre összeállított HomeAutomation-tartományt az új Azure Bot Service részeként létrehozott LUIS-apphoz, majd ismét betanította és közzétette az alkalmazást. Kibontotta a kódprojektet, létrehozott egy környezeti fájlt (`.env`), és beállította a robot titkos kódját, valamint a `.bot`-fájl elérési útját. A bot.js fájlban hozzáadta a két új szándék kezeléséhez szükséges kódot. Majd letesztelte a robotot a Bot Emulatorral, hogy láthassa az új szándékok egyikéhez tartozó kimondott szövegre adott LUIS-választ. 
-
-Még több [minták](https://github.com/Microsoft/AI) a természetes nyelvi robotokat. 
+További [mintákat](https://github.com/microsoft/botframework-solutions) tekinthet meg a társalgási robotokkal. 
 
 > [!div class="nextstepaction"]
-> [Egyéni tartomány létrehozása a LUIS-ban](luis-quickstart-intents-only.md)
+> [Language Understanding-alkalmazás létrehozása egyéni tárgyú tartománnyal](luis-quickstart-intents-only.md)

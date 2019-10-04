@@ -1,290 +1,264 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Veracode |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Veracode között.
+title: 'Oktatóanyag: Azure Active Directory integráció a Veracode-szel | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Veracode között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 4fe78050-cb6d-4db9-96ec-58cc0779167f
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 07/27/2017
+ms.topic: tutorial
+ms.date: 04/05/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e80a2e554d31ad85ddb1111f84a96e1814c3969f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 67b4d4842bfa330e51244cee0d9ad8ad0ab6a24f
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194648"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68825956"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-veracode"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Veracode
+# <a name="tutorial-azure-active-directory-integration-with-veracode"></a>Oktatóanyag: Azure Active Directory integráció a Veracode
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan Veracode integrálása az Azure Active Directory (Azure AD).
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Veracode a Azure Active Directory (Azure AD) szolgáltatással.
+A Veracode és az Azure AD integrálásával a következő előnyöket nyújtja:
 
-Veracode integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
+* Az Azure AD-ben beállíthatja, hogy ki férhet hozzá a Veracode.
+* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a Veracode (egyszeri bejelentkezés) az Azure AD-fiókokkal.
+* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-- Szabályozhatja, ki férhet hozzá Veracode Azure AD-ben.
-- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett Veracode (egyszeri bejelentkezés), az Azure AD-fiókjukat.
-- A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
-
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Veracode az Azure AD-integráció konfigurálásához a következőkre van szükség:
+Az Azure AD-integráció Veracode való konfigurálásához a következő elemek szükségesek:
 
-- Azure AD-előfizetés
-- Egy Veracode egyszeri bejelentkezés engedélyezve van az előfizetés
-
-> [!NOTE]
-> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
-
-Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
-
-- Ne használja az éles környezetben, csak szükség esetén.
-- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, [ingyenes fiókot](https://azure.microsoft.com/free/) szerezhet be
+* Veracode egyszeri bejelentkezésre engedélyezett előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. Veracode hozzáadása a katalógusból
-1. Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
-## <a name="add-veracode-from-the-gallery"></a>Veracode hozzáadása a katalógusból
-Az Azure AD integrálása a Veracode konfigurálásához hozzá kell Veracode a katalógusból a felügyelt SaaS-alkalmazások listájára.
+* A Veracode támogatja a **identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést
 
-**Veracode hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
+* A Veracode **csak időben támogatja a** felhasználók kiépítési folyamatát
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+## <a name="adding-veracode-from-the-gallery"></a>Veracode hozzáadása a gyűjteményből
 
-    ![Az Azure Active Directory gomb][1]
+A Veracode Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Veracode a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+**Ha Veracode szeretne hozzáadni a katalógusból, hajtsa végre a következő lépéseket:**
 
-    ![A vállalati alkalmazások panelen][2]
-    
-1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
-    ![Az új alkalmazás gomb][3]
+    ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-1. A Keresés mezőbe írja be a **Veracode**válassza **Veracode** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
-    ![Az eredmények listájában Veracode](./media/veracode-tutorial/tutorial_veracode_addfromgallery.png)
+    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+
+    ![Az új alkalmazás gomb](common/add-new-app.png)
+
+4. A keresőmezőbe írja be a **Veracode**kifejezést, válassza a **Veracode** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+
+     ![Veracode az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés Veracode a teszt "Britta Simon" nevű felhasználó.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az Veracode-mel konfigurálja és teszteli a **Britta Simon**nevű tesztelési felhasználó alapján.
+Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Veracode kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
-Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó Veracode mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó Veracode hivatkozás kapcsolata kell létrehozni.
-
-Veracode, rendelje hozzá az értékét a **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
-
-Az Azure AD egyszeri bejelentkezés az Veracode tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
+Az Azure AD egyszeri bejelentkezés Veracode való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-1. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-1. **[Hozzon létre egy Veracode tesztfelhasználót](#create-a-veracode-test-user)**  – egy megfelelője a Britta Simon Veracode, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-1. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-1. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+2. **[Veracode egyszeri bejelentkezés konfigurálása](#configure-veracode-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. **[Hozzon létre Veracode-teszt felhasználót](#create-veracode-test-user)** – hogy a Veracode Britta, a felhasználó Azure ad-képviseletéhez kapcsolódó partnerrel rendelkezzen.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és Veracode alkalmazását az egyszeri bejelentkezés konfigurálása.
+Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
 
-**Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Veracode, hajtsa végre az alábbi lépéseket:**
+Az Azure AD egyszeri bejelentkezés Veracode való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. Az Azure Portalon az a **Veracode** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
+1. A [Azure Portal](https://portal.azure.com/) **Veracode** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
- 
-    ![Egyszeri bejelentkezési párbeszédpanel](./media/veracode-tutorial/tutorial_veracode_samlbase.png)
+2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
 
-1. Az a **Veracode tartomány és URL-címek** szakaszban, a felhasználónak nem kell végrehajthatja a lépéseket, ahogy az alkalmazás már előre integrálva van az Azure-ral. 
+    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/veracode-tutorial/tutorial_veracode_url.png)
+3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
 
-1. Az a **SAML-aláíró tanúsítvány** területén kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
+    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-    ![A tanúsítvány letöltési hivatkozás](./media/veracode-tutorial/tutorial_veracode_certificate.png) 
+4. Az alapszintű **SAML-konfiguráció** szakaszban a felhasználónak nem kell végrehajtania egy lépést, mivel az alkalmazás már előre integrálva van az Azure-ban.
 
-1. Ez a szakasz célja kidolgozására engedélyezése a felhasználóknak a hitelesítést Veracode fiókkal az Azure AD összevonási SAML protokoll használatával.
+    ![Veracode tartomány és URL-címek egyszeri bejelentkezési adatai](common/preintegrated.png)
 
-    Veracode alkalmazását a SAML helyességi feltételek vár egy megadott formátumban, amelyhez egyéni attribútumleképezések való hozzáadása a **saml-jogkivonat attribútumai** konfigurációja. Az alábbi képernyőfelvételen látható erre egy példa látható.
-    
-    ![Attribútumok](./media/veracode-tutorial/tutorial_veracode_attr.png "attribútumok")
+5. A Veracode alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható. Kattintson a **Szerkesztés** ikonra a **felhasználói attribútumok** párbeszédpanel megnyitásához.
 
-1. Adja hozzá a szükséges attribútumleképezések, hajtsa végre az alábbi lépéseket:
+    ![image](common/edit-attribute.png)
 
-    | Attribútum neve | Attribútum értéke |
-    |--- |--- |
-    | Keresztnév |User.givenname |
-    | Vezetéknév |User.surname |
-    | e-mail |User.mail |
-    
-    a. Kattintson a fenti táblázatban szereplő minden egyes adatok sorban **adja hozzá a felhasználói attribútum**.
-    
-    ![Attribútumok](./media/veracode-tutorial/tutorial_veracode_addattr.png "attribútumok")
-    
-    ![Attribútumok](./media/veracode-tutorial/tutorial_veracode_addattr1.png "attribútumok")
-    
-    b. Az a **attribútumnév** szövegmezőbe írja be azon attribútum nevét, a sorhoz látható.
-    
-    c. Az a **attribútumérték** szövegmezőben válassza ki az adott sorhoz feltüntetett attribútum értéke.
-    
-    d. Kattintson az **OK** gombra.
+6. A fentieken kívül a Veracode alkalmazás néhány további attribútumot vár, amelyeket az SAML-válaszban vissza kell adni. A **felhasználó attribútumai** párbeszédpanel **felhasználói** jogcímek szakaszában a következő lépésekkel adja hozzá az SAML-jogkivonat attribútumát az alábbi táblázatban látható módon:
 
-1. Kattintson a **mentése** gombra.
+    | Name (Név) | Forrás attribútum|
+    | ---------------| --------------- |
+    | FirstName |User. givenName |
+    | LastName |Felhasználó. vezetéknév |
+    | email |User. mail |
 
-    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/veracode-tutorial/tutorial_general_400.png)
+    a. Kattintson az **új jogcím hozzáadása** elemre a **felhasználói jogcímek kezelése** párbeszédpanel megnyitásához.
 
-1. Az a **Veracode konfigurációs** területén kattintson **konfigurálása Veracode** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML Entitásazonosító** származó a **gyors útmutató szakaszban.**
+    ![image](common/new-save-attribute.png)
 
-    ![Veracode konfiguráció](./media/veracode-tutorial/tutorial_veracode_configure.png) 
+    ![image](common/new-attribute-details.png)
 
-1. Egy másik böngészőablakban jelentkezzen be a Veracode vállalati hely rendszergazdaként.
+    b. A **név** szövegmezőbe írja be az adott sorhoz megjelenített attribútum nevét.
 
-1. A felső menüben kattintson **beállítások**, és kattintson a **rendszergazdai**.
+    c. Hagyja üresen a **névteret** .
+
+    d. Válassza a forrás **attribútumként**lehetőséget.
+
+    e. A **forrás attribútum** listáról írja be az adott sorhoz megjelenő attribútum értékét.
+
+    f. Kattintson a **Ok**
+
+    g. Kattintson a **Save** (Mentés) gombra.
+
+7. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
+
+    ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
+
+8. A **Veracode beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények szerint.
+
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
+
+    a. Bejelentkezési URL
+
+    b. Azure AD-azonosító
+
+    c. Kijelentkezési URL
+
+### <a name="configure-veracode-single-sign-on"></a>Veracode egyszeri bejelentkezés konfigurálása
+
+1. Egy másik böngészőablakban jelentkezzen be a Veracode vállalati webhelyre rendszergazdaként.
+
+2. A felső menüben kattintson a **Beállítások**, majd a **rendszergazda**elemre.
    
-    ![Felügyeleti](./media/veracode-tutorial/ic802911.png "felügyelete")
+    ![Felügyelet](./media/veracode-tutorial/ic802911.png "Felügyelet")
 
-1. Kattintson a **SAML** fülre.
+3. Kattintson az **SAML** fülre.
 
-1. Az a **szervezet SAML-beállítások** szakaszban, hajtsa végre az alábbi lépéseket:
+4. A **szervezet SAML-beállításai** szakaszban hajtsa végre a következő lépéseket:
    
-    ![Felügyeleti](./media/veracode-tutorial/ic802912.png "felügyelete")
+    ![Felügyelet](./media/veracode-tutorial/ic802912.png "Felügyelet")
    
-    a.  A **kibocsátó** szövegmezőjébe illessze be az értéket, **SAML Entitásazonosító** Azure Portalról másolt.
+    a.  A **kiállító** szövegmezőbe illessze be a Azure Portalból másolt **Azure ad-azonosító** értékét.
     
-    b. Az Azure Portalról letöltött tanúsítvány feltöltéséhez kattintson **fájl kiválasztása**.
+    b. A letöltött tanúsítvány Azure Portalból való feltöltéséhez kattintson a **fájl kiválasztása**lehetőségre.
    
-    c. Válassza ki **önkiszolgáló regisztráció engedélyezése**.
+    c. Válassza a **saját regisztráció engedélyezése**lehetőséget.
 
-1. Az a **önkiszolgáló regisztrációs beállításaira** szakaszt, hajtsa végre az alábbi lépéseket, és kattintson a **mentése**:
+1. Az **Önregisztráció beállításai** szakaszban hajtsa végre az alábbi lépéseket, majd kattintson a **Save (Mentés**) gombra:
    
-    ![Felügyeleti](./media/veracode-tutorial/ic802913.png "felügyelete")
+    ![Felügyelet](./media/veracode-tutorial/ic802913.png "Felügyelet")
    
-    a. Mint **új felhasználó az aktiválás**válassza **nincs szükség aktiválásra**.
+    a. **Új felhasználói aktiválás**esetén válassza a **nincs szükség aktiválásra**lehetőséget.
    
-    b. Mint **felhasználói adatok frissítése**válassza **szabályozó Veracode felhasználói adatok**.
+    b. A **felhasználói**adatfrissítések elemnél válassza a **Veracode felhasználói adatvédelme**lehetőséget.
    
-    c. A **SAML attribútum részletei**, jelölje be az alábbiakat:
+    c. Az **SAML-attribútumok részleteihez**válassza ki a következőket:
       * **Felhasználói szerepkörök**
-      * **Csoportházirendet felügyelő rendszergazda**
+      * **Házirend rendszergazdája**
       * **Felülvizsgáló**
-      * **Biztonsági vezető**
-      * **Executive**
-      * **Submitter**
-      * **Létrehozója**
-      * **Az összes vizsgálat típusa**
-      * **A csoporttagságot**
-      * **Alapértelmezett csoport**
+      * **Biztonsági érdeklődő**
+      * **Végrehajtó**
+      * **Beküldő**
+      * **Creator**
+      * **Minden vizsgálat típusa**
+      * **Csoport tagsága**
+      * **Alapértelmezett csapat**
 
-> [!TIP]
-> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Az Azure AD embedded dokumentációja]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
-
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
 
 Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-   ![Hozzon létre egy Azure ad-ben tesztfelhasználó számára][100]
+1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
 
-**Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
+    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
 
-1. Az Azure Portalon, a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
+2. Válassza ki **új felhasználó** a képernyő tetején.
 
-    ![Az Azure Active Directory gomb](./media/veracode-tutorial/create_aaduser_01.png)
+    ![Új felhasználó gomb](common/new-user.png)
 
-1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
 
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/veracode-tutorial/create_aaduser_02.png)
+    ![A felhasználó párbeszédpanel](common/user-properties.png)
 
-1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
+    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
+  
+    b. A **Felhasználónév** mezőbe írja be brittasimon@yourcompanydomain.extensiona nevet. Például: BrittaSimon@contoso.com
 
-    ![A Hozzáadás gombra.](./media/veracode-tutorial/create_aaduser_03.png)
-
-1. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
-
-    ![A felhasználó párbeszédpanel](./media/veracode-tutorial/create_aaduser_04.png)
-
-    a. Az a **neve** mezőbe írja be **BrittaSimon**.
-
-    b. Az a **felhasználónév** mezőbe írja be a felhasználó Britta Simon e-mail-címét.
-
-    c. Válassza ki a **jelszó megjelenítése** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
- 
-### <a name="create-a-veracode-test-user"></a>Veracode tesztfelhasználó létrehozása
-Ahhoz, hogy az Azure AD-felhasználók Veracode szolgáltatásba való bejelentkezéshez, akkor ki kell építeni Veracode be. Veracode, esetén egy automatizált tevékenység kiépítése. Nincs művelet elem az Ön számára. Felhasználók automatikusan jönnek létre szükség esetén az első egyszeri bejelentkezési kísérlet során.
-
-> [!NOTE]
-> Eszközt is használhat bármilyen más Veracode felhasználói fiók létrehozása, vagy az Azure AD-felhasználói fiókok kiépítése Veracode által biztosított API-k.
-> 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Veracode Azure egyszeri bejelentkezés használatára.
+Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a Veracode hozzáférésének biztosításával.
 
-![A felhasználói szerepkör hozzárendelése][200] 
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **Veracode**lehetőséget.
 
-**Britta Simon rendel Veracode, hajtsa végre az alábbi lépéseket:**
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
+2. Az alkalmazások listában válassza a **Veracode**lehetőséget.
 
-    ![Felhasználó hozzárendelése][201] 
+    ![Az Veracode hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-1. Az alkalmazások listájában jelölje ki a **Veracode**.
+3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
 
-    ![Az alkalmazások listáját a Veracode hivatkozásra](./media/veracode-tutorial/tutorial_veracode_app.png)  
+    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-1. A bal oldali menüben kattintson **felhasználók és csoportok**.
+4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
 
-    ![A "Felhasználók és csoportok" hivatkozásra][202]
+    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
-1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
 
-    ![A hozzárendelés hozzáadása panel][203]
+6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
 
-1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
+### <a name="create-veracode-test-user"></a>Veracode-tesztelési felhasználó létrehozása
 
-1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
-    
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek a Veracode, a Veracode-ben kell kiépíteni őket. Veracode esetén a kiépítés automatizált feladat. Nincs feltételhez tartozó művelet. A felhasználók szükség esetén automatikusan létrejönnek az első egyszeri bejelentkezés megkísérlése során.
+
+> [!NOTE]
+> Az Azure AD felhasználói fiókjainak kiépítéséhez bármilyen más, a Veracode által biztosított Veracode felhasználói fiók létrehozására szolgáló eszközt vagy API-t használhat.
+
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen a Veracode csempére kattint, meg kell lekérése automatikusan bejelentkezett az Veracode alkalmazáshoz.
-A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md). 
+Ha a hozzáférési panelen a Veracode csempére kattint, automatikusan be kell jelentkeznie arra a Veracode, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/veracode-tutorial/tutorial_general_01.png
-[2]: ./media/veracode-tutorial/tutorial_general_02.png
-[3]: ./media/veracode-tutorial/tutorial_general_03.png
-[4]: ./media/veracode-tutorial/tutorial_general_04.png
-
-[100]: ./media/veracode-tutorial/tutorial_general_100.png
-
-[200]: ./media/veracode-tutorial/tutorial_general_200.png
-[201]: ./media/veracode-tutorial/tutorial_general_201.png
-[202]: ./media/veracode-tutorial/tutorial_general_202.png
-[203]: ./media/veracode-tutorial/tutorial_general_203.png
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

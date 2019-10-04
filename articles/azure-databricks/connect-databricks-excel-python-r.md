@@ -9,12 +9,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: mamccrea
-ms.openlocfilehash: c57550a8b683ad8f184884374c4f09216417fc40
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 1805f04d7833dea180847defadd865cb23e9df62
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995622"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67340859"
 ---
 # <a name="connect-to-azure-databricks-from-excel-python-or-r"></a>Csatlakozás az Azure Databricks a Excel-, Python vagy R
 
@@ -82,7 +82,7 @@ Ebben a szakaszban, kér le adatot az Azure Databricks a Microsoft Excel formát
 
 2. Az a **származó ODBC** párbeszédpanelen válassza ki a korábban létrehozott Adatforrásnevet, majd kattintson **OK**.
 
-    ![Válassza ki a DSN](./media/connect-databricks-excel-python-r/excel-select-dsn.png "DSN kiválasztása")
+    ![Select DSN](./media/connect-databricks-excel-python-r/excel-select-dsn.png "Select DSN")
 
 3. Ha a rendszer kéri a hitelesítő adatokat, a felhasználó nevét adja meg **token**. A jelszó adja meg a token értékét, a Databricks-munkaterület lekért.
 
@@ -134,7 +134,7 @@ Ebben a szakaszban a referenciaadatok elérhető az Azure Databricksben (példá
 
 * Telepítse a Pythont a [Itt](https://www.python.org/downloads/). Is erre a hivatkozásra a Python telepítése telepíti a TÉTLEN.
 
-* Egy parancssorból a számítógépen, telepítse a `pyodbc` csomagot. Futtassa az alábbi parancsot:
+* Egy parancssorból a számítógépen, telepítse a `pyodbc` csomagot. Futtassa a következő parancsot:
 
       pip install pyodbc
 
@@ -152,7 +152,7 @@ A következő kódrészletet az alábbi feladatokat hajtja végre:
 import pyodbc
 
 # establish a connection using the DSN you created earlier
-conn = pyodbc.connect("DSN=<ENTER DSN NAME HERE>", autocommit = True)
+conn = pyodbc.connect("DSN=<ENTER DSN NAME HERE>", autocommit=True)
 
 # run a SQL query using the connection you created
 cursor = conn.cursor()
@@ -161,7 +161,6 @@ cursor.execute("SELECT * FROM radio_sample_data")
 # print the rows retrieved by the query.
 for row in cursor.fetchall():
     print(row)
-
 ```
 
 ## <a name="next-steps"></a>További lépések

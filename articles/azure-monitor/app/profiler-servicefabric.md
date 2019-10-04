@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 0b1a06d181fc4d2a44d389d47d1f9480c2fdcb40
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 5c01c2721a29bf142ee0ba53c9bc29ec66a7278f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401102"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64727912"
 ---
 # <a name="profile-live-azure-service-fabric-applications-with-application-insights"></a>Profil élő Azure Service Fabric-alkalmazásokat az Application insights segítségével
 
@@ -32,7 +32,7 @@ Application Insights Profiler az Azure Diagnostics részét képezi. Az Azure Di
 
 Állítsa be a környezetet, hajtsa végre a következő műveleteket:
 
-1. Győződjön meg arról, hogy használja a [.NET-keretrendszer 4.6.1-es](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) vagy újabb, elegendő ahhoz, hogy erősítse meg, hogy a telepített operációs rendszer `Windows Server 2012 R2` vagy újabb.
+1. Profiler támogatja a .NET-keretrendszer és a .net Core. .NET-keretrendszer használata, győződjön meg arról, hogy használja [.NET-keretrendszer 4.6.1-es](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) vagy újabb. Győződjön meg arról, hogy a telepített operációs rendszer elegendő `Windows Server 2012 R2` vagy újabb. Profiler támogatja a .NET Core 2.1-es és újabb alkalmazásokat.
 
 1. Keresse meg a [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) a Rendszertelepítési sablonfájl-bővítményt.
 
@@ -55,11 +55,10 @@ Application Insights Profiler az Azure Diagnostics részét képezi. Az Azure Di
   Ha a beállítások helyesek, Application Insights Profiler telepítve, és engedélyezve van az Azure Diagnostics bővítmény telepítésekor. 
 
 1. Az Application Insights hozzáadása a Service Fabric-alkalmazásokat.  
-  A Profiler gyűjtéséhez profilok számára a kérelmek az alkalmazás kell kell nyomon követéséhez az Application Insights-műveletek. Útmutatásért olvassa el az állapot nélküli API-k [kérelmek követésének profilkészítés](profiler-trackrequests.md?toc=/azure/azure-monitor/toc.json). Egyéb típusú alkalmazások egyéni műveletek követése kapcsolatos további információkért tekintse meg a [Application Insights .NET SDK-val egyéni műveletek követése](custom-operations-tracking.md?toc=/azure/azure-monitor/toc.json).
+  A Profiler gyűjtéséhez profilok számára a kérelmek az alkalmazás kell kell nyomon követéséhez az Application Insights-műveletek. Útmutatásért olvassa el az állapot nélküli API-k [kérelmek követésének profilkészítés](profiler-trackrequests.md?toc=/azure/azure-monitor/toc.json). Egyéb típusú alkalmazások egyéni műveletek követése kapcsolatos további információkért lásd: [Application Insights .NET SDK-val egyéni műveletek követése](custom-operations-tracking.md?toc=/azure/azure-monitor/toc.json).
 
 1. Az alkalmazás újbóli üzembe helyezése.
 
-> [TIPP] Virtuális gépek, a fenti JSON-alapú lépések helyett, hogy az Azure Portalon lépjen **virtuális gépek** > **diagnosztikai beállítások** > **Fogadók** > **beállítása diagnosztikai adatok küldése az Application Insights engedélyezve** , és válassza ki az Application Insights-fiókot vagy egy adott rendszerállapotkulcsot.
 
 ## <a name="next-steps"></a>További lépések
 

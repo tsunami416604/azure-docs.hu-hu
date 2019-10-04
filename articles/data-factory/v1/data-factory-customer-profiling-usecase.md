@@ -1,70 +1,68 @@
 ---
 title: Használati eset – Ügyfélprofil-készítés
-description: Ismerje meg, hogyan használható az Azure Data Factory adatvezérelt munkafolyamat létrehozása (folyamat) játék ügyfelek profilját.
+description: Megtudhatja, hogyan hozhat létre Azure Data Factory adatvezérelt munkafolyamatot (folyamat) a profil játékok ügyfelei számára.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.assetid: e07d55cf-8051-4203-9966-bdfa1035104b
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: bb7d6531da330bcfbf6de786ffb19984cfd1964e
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 866a7fdabaf51738333d8583bea5d0fa9fabf6f2
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017429"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70139857"
 ---
 # <a name="use-case---customer-profiling"></a>Használati eset – Ügyfélprofil-készítés
-Az Azure Data Factory a Cortana Intelligence Suite-megoldásgyorsítók megvalósításához használt számos szolgáltatás egyike.  Cortana Intelligence kapcsolatos további információkért látogasson el [Cortana Intelligence Suite](https://www.microsoft.com/cortanaanalytics). Ez a dokumentum egyszerű használati esetek segítenek megérteni, hogyan tudja oldani az Azure Data Factory analytics kapcsolatos gyakori problémák a ismertetünk.
+Azure Data Factory a megoldási gyorssegédek Cortana Intelligence Suite megvalósításához használt számos szolgáltatás egyike.  További információ a Cortana Intelligenceről: [Cortana Intelligence Suite](https://www.microsoft.com/cortanaanalytics). Ebben a dokumentumban egy egyszerű használati esetet ismertetünk, amely segít megismerni, hogy Azure Data Factory Hogyan oldhatók meg a gyakori elemzési problémák.
 
 ## <a name="scenario"></a>Forgatókönyv
-Contoso egy játékokkal foglalkozó vállalatot, amely létrehozza a játékok, több platformon: játékok konzolok, az aktuális birtokolt eszközök és személyes számítógépek. Lejátszók ezek játékokat, mivel nagy mennyiségű napló jön létre, amely nyomon követi a használati mintákat, játék stílusának és a felhasználói beállítások.  Demográfiai, regionális, kombinálva és termékadatokat, Contoso játékos élmény fokozásával kapcsolatos nyújt számukra az analitikai hajthat végre, és azokat, frissítéseket és a játékbeli cél vásárol. 
+A contoso egy szerencsejáték-cég, amely több platformhoz hoz létre játékokat: játékkonzolok, kézi eszközök és személyi számítógépek (PC-k). Ahogy a játékosok játszanak ilyen játékokat, nagy mennyiségű naplózási adatok készülnek, amelyek nyomon követik a felhasználó használati mintáit, a játék stílusát és a felhasználói preferenciákat.  Demográfiai, regionális és Termékadatok együttes használata esetén a contoso az elemzések elvégzésével megtudhatja, hogyan javíthatja a játékosok élményét, és hogyan célozhatja meg azokat a frissítésekhez és a játékon belüli vásárlásokhoz. 
 
-A Contoso cél azonosítása a játékosok játék előzményei alapján akár-értékesítési és keresztértékesítési lehetőségeket, és meggyőző funkciót hozzáadhat az üzleti növekedés elősegítése érdekében, és jobb felhasználói élményt nyújtson az ügyfeleknek. Jelen esetben minden a egy játékokkal foglalkozó vállalat üzleti példaként használjuk. A vállalat úgy kívánja optimalizálni a játékok játékos viselkedés alapján. Minden olyan cég, amely körül a termékek és szolgáltatások ügyfeleinek és javíthatja a felhasználói élményt szeretné alkalmazni ezeket az alapelveket.
+A contoso célja, hogy a játékosok szerencsejáték-előzményei alapján azonosítsa a fel-eladás/értékesítés utáni lehetőségeket, és látványos funkciókat adjon az üzleti növekedéshez, és jobb felhasználói élményt nyújtson az ügyfeleknek. Ebben a használati esetben egy szerencsejáték-vállalatot használunk egy üzleti példaként. A vállalat a játékosok viselkedése alapján szeretné optimalizálni játékait. Ezek az alapelvek minden olyan vállalkozásra érvényesek, amely az ügyfeleit a termékeivel és szolgáltatásaival kapcsolatban kívánja elérni, és fokozza ügyfelei tapasztalatait.
 
-Ebben a megoldásban a Contoso biztosítani szeretné kiértékelni a nemrég elindította marketingkampány hatékonyságának. Azt indítsa el a nyers játék naplók, feldolgozása és bővítését őket a földrajzi helyadatokat, csatlakozik, a referenciaadatok hirdetési és végül másolja őket egy Azure SQL Database a kampány hatás elemzése.
+Ebben a megoldásban a contoso szeretné kiértékelni a közelmúltban elindított marketing-kampány hatékonyságát. Kezdjük a nyers játékok naplóival, feldolgozzuk és gazdagítjuk azokat a térinformatikai adataival, összekapcsoljuk azokat a hirdetési referenciákkal, és végül egy Azure SQL Databaseba másoljuk a kampány hatásának elemzéséhez.
 
 ## <a name="deploy-solution"></a>Megoldás üzembe helyezése
-Elérheti és kipróbálhatja ezt a egyszerű használati esetet, mindössze egy [Azure-előfizetés](https://azure.microsoft.com/pricing/free-trial/), egy [Azure Blob storage-fiók](../../storage/common/storage-quickstart-create-account.md), és a egy [Azure SQL Database](../../sql-database/sql-database-get-started.md). Az Ügyfélprofil-készítés a folyamat üzembe a **folyamatok minta** csempére az adat-előállító kezdőlapja.
+Ehhez az egyszerű használati esethez mindössze egy [Azure-előfizetés](https://azure.microsoft.com/pricing/free-trial/), egy [Azure Blob Storage-fiók](../../storage/common/storage-quickstart-create-account.md)és egy [Azure SQL Database](../../sql-database/sql-database-get-started.md)szükséges. Az ügyfél profilkészítési folyamatát az adatok előállítójának kezdőlapján a **minta folyamatok** csempén helyezheti üzembe.
 
-1. Adat-előállító létrehozása, vagy nyisson meg egy meglévő data factoryt. Lásd: [adatok másolása Blob Storage-ból az SQL Database használatával a Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) az adat-előállító létrehozásához szükséges lépéseket.
-2. Az a **adat-előállító** a data Factory panelen kattintson a **folyamatok minta** csempére.
+1. Hozzon létre egy adatelőállítót, vagy nyisson meg egy meglévő adatgyárat. Az adatok-előállító létrehozásához szükséges lépésekért lásd: [adatok másolása blob Storageról SQL Databasera Data Factory használatával](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+2. Az adatelőállító adatelőállító paneljén kattintson a **mintavételezési folyamatok** csempére.
 
-    ![Minta folyamatok csempe](./media/data-factory-samples/SamplePipelinesTile.png)
-3. Az a **folyamatok minta** panelen kattintson a **Ügyfélprofil-készítés** , amely számára telepíteni kívánja.
+    ![Mintavételezési folyamatok csempe](./media/data-factory-samples/SamplePipelinesTile.png)
+3. A **mintavételezési folyamatok** panelen kattintson a telepíteni kívánt **ügyfél** -profilkészítésre.
 
-    ![Minta folyamatok panel](./media/data-factory-samples/SampleTile.png)
-4. Adja meg a minta konfigurációs beállításait. Például az Azure storage-fiók neve és a kulcs, az Azure SQL-kiszolgáló neve, adatbázis, felhasználói azonosító és jelszó.
+    ![Mintavételezési folyamatok panel](./media/data-factory-samples/SampleTile.png)
+4. A minta konfigurációs beállításainak megadása. Például az Azure Storage-fiók nevét és kulcsát, az Azure SQL Server nevét, az adatbázist, a felhasználói azonosítót és a jelszót.
 
-    ![Mintául szolgáló panelt](./media/data-factory-samples/SampleBlade.png)
-5. Miután végzett a konfigurációs beállítások megadása gombra **létrehozás** létrehozása és üzembe helyezéséhez a mintában a folyamatok és a társított szolgáltatások/táblák az egyes folyamatok által használt.
-6. Központi telepítés állapotát az minta csempéjén, amire kattintott korábban tekintse meg a **folyamatok minta** panelen.
+    ![Minta panel](./media/data-factory-samples/SampleBlade.png)
+5. Miután végzett a konfigurációs beállítások megadásával, a **Létrehozás** gombra kattintva hozhatja létre és helyezheti üzembe a folyamatok által használt mintavételi folyamatokat és társított szolgáltatásokat/táblákat.
+6. A telepítési állapotot a minta csempén láthatja, amelyet korábban a **mintavételezési folyamatok** panelen kattintott.
 
     ![Üzembe helyezés állapota](./media/data-factory-samples/DeploymentStatus.png)
-7. Amikor megjelenik a **üzembe helyezés sikeres** jelenik meg, zárja be a mintához a csempe a **folyamatok minta** panelen.  
-8. A **adat-előállító** panelen láthatja, hogy a társított szolgáltatások, adatkészletek és folyamatok kerülnek az adat-előállítóhoz.  
+7. Amikor megjelenik az **üzembe helyezés sikeres** üzenete a minta csempén, akkor zárjuk be a **mintavételezési folyamatok** panelt.  
+8. A **adat-előállító** panelen láthatja, hogy a társított szolgáltatások, adatkészletek és folyamatok hozzáadódnak az adat-előállítóhoz.  
 
     ![A Data Factory panel](./media/data-factory-samples/DataFactoryBladeAfter.png)
 
 ## <a name="solution-overview"></a>Megoldás áttekintése
-Ebben az esetben egyszerű, hogyan használhatja az Azure Data Factory a betöltési, előkészítése, átalakíthatja, elemezheti és adatok közzététele példaként használható.
+Ez az egyszerű használati eset példaként használható arra, hogy miként használhatók a Azure Data Factory az adatgyűjtésre,-előkészítésre,-átalakításra,-elemzésre és-közzétételre.
 
 ![Teljes körű munkafolyamat](./media/data-factory-customer-profiling-usecase/EndToEndWorkflow.png)
 
-Ez az ábra bemutatja, hogyan az adatfolyamatok jelennek meg az Azure Portalon a telepítés után.
+Ez az ábra azt ábrázolja, hogyan jelennek meg az adatfolyamatok a Azure Portal az üzembe helyezésük után.
 
-1. A **PartitionGameLogsPipeline** játék nyers események beolvassa a blob storage-ból, és év, hónap és nap alapján hoz létre.
-2. A **EnrichGameLogsPipeline** földrajzi kód referenciaadatok particionált játék események csatlakozik, és bővíti az adatok IP-címek leképezi a megfelelő földrajzi helyekre.
-3. A **AnalyzeMarketingCampaignPipeline** folyamat képi elemekben gazdag adatokat használja, és feldolgozza őket a hirdetés adatokkal hozhat létre, amely tartalmazza a marketing kampány hatékonyságát a végeredmény.
+1. A **PartitionGameLogsPipeline** beolvassa a nyers játék eseményeit a blob Storage-ból, és a partíciókat az év, hónap és nap alapján hozza létre.
+2. A **EnrichGameLogsPipeline** összekapcsolja a particionált játékhoz tartozó eseményeket a Geo-kóddal kapcsolatos hivatkozásokkal, és az IP-címek a megfelelő földrajzi helyszínekre való leképezésével bővíti az adatmennyiséget.
+3. A **AnalyzeMarketingCampaignPipeline** folyamat a kibővített adatokat használja, és a hirdetési adatokat feldolgozza a marketing kampány hatékonyságát tartalmazó végső kimenet létrehozásához.
 
-Ebben a példában a Data Factory segítségével, amely bemeneti adatokat, átalakítási és a folyamat az adatok másolása, és a végső soron az adatok egy Azure SQL Database kimeneti tevékenységek szervezését.  Megjelenítheti a hálózaton az adatfolyamatok, kezelheti azokat, valamint figyelheti azok állapotát a felhasználói felületen.
+Ebben a példában a Data Factory a bemeneti adatokat másoló tevékenységek, az adatok átalakítására és feldolgozására, valamint a végső adatok egy Azure SQL Databaseba való exportálására szolgál.  Emellett megjelenítheti az adatfolyamatok hálózatát, kezelheti őket, és figyelheti az állapotukat a felhasználói felületen.
 
 ## <a name="benefits"></a>Előnyök
-Saját felhasználói profil analytics optimalizálása, és azt üzleti céljaihoz igazodó, játékokkal foglalkozó vállalatot is képes gyorsan használati minták összegyűjtheti és elemezheti a saját digitálismarketing-kampányok hatékonyságát.
+A felhasználói profil elemzésének optimalizálása és az üzleti célokkal való összehangolása révén a Gaming Company gyorsan gyűjthet használati mintákat, és elemezheti a marketing kampányok hatékonyságát.
 

@@ -1,73 +1,64 @@
 ---
-title: Új verzió – Azure HDInsight egy HBase-fürt migrálása
-description: Hogyan lehet HBase-fürtök áttelepítése egy új verzióra.
-services: hdinsight
+title: HBase-fürt migrálása egy új verzióra – Azure HDInsight
+description: Apache HBase-fürtök migrálása egy újabb verzióra az Azure HDInsight-ben.
 author: ashishthaps
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/22/2018
+ms.date: 05/06/2019
 ms.author: ashishth
-ms.openlocfilehash: 3b27fe0bec4ec23739e3cff02d6aed667f1d3e1d
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 75158fbe5604c6fcf54c2fa08636cb87dfd9da80
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226827"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70917442"
 ---
-# <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>Az Apache HBase-fürt áttelepítése új verzióra
+# <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>Apache HBase-fürt migrálása egy új verzióra
 
-Feladat-alapú fürtök esetében például [Apache Spark](https://spark.apache.org/) és [Apache Hadoop](https://hadoop.apache.org/), egyszerű frissítése – lásd: [újabb verzióra való frissítése HDInsight-fürt](../hdinsight-upgrade-cluster.md):
-
-1. Átmeneti (helyileg tárolt) adatok biztonsági másolatát.
-2. Törölje a meglévő fürtből.
-3. Új fürt létrehozása a virtuális hálózat ugyanabban az alhálózatban.
-4. Átmeneti adatok importálása.
-5. Indítsa el a feladatokat, és folytatja a műveletet az új fürtön.
-
-Frissítése az [Apache HBase](https://hbase.apache.org/) fürt további lépésekre van szükség, ebben a cikkben leírtak szerint.
+Ez a cikk azt ismerteti, hogyan lehet frissíteni az Apache HBase-fürtöt az Azure HDInsight egy újabb verzióra.
 
 > [!NOTE]  
-> A frissítés során állásidő minimális, perc sorrendjéről kell lennie. Az üzemszünet kiüríteni a memóriában lévő összes adatot, majd konfigurálja, és indítsa újra az új fürtön a szolgáltatásokat az idő okozza a lépéseket. Az eredmények csomópontok, adatok mennyisége és más változók számától függően változhat.
+> A frissítés közbeni állásidőnek minimálisnak kell lennie a percek sorrendjében. Ezt az állásidőt a memóriában tárolt összes érték kiürítésének lépései okozták, majd a szolgáltatások konfigurálásának és újraindításának ideje az új fürtön. Az eredmények a csomópontok számától, az adatmennyiségtől és más változóktól függően változhatnak.
 
-## <a name="review-apache-hbase-compatibility"></a>Tekintse át az Apache HBase-kompatibilitás
+## <a name="review-apache-hbase-compatibility"></a>Az Apache HBase kompatibilitásának áttekintése
 
-Az Apache HBase a frissítés előtt győződjön meg arról, a HBase-verziók a forrás és cél fürtökön kompatibilisek. További információkért lásd: [elérhető HDInsight az Apache Hadoop-összetevők és verziók](../hdinsight-component-versioning.md).
+Az Apache HBase frissítése előtt győződjön meg arról, hogy a forrás-és a HBase lévő verziók kompatibilisek. További információ: [Apache Hadoop összetevők és verziók elérhetők a HDInsight](../hdinsight-component-versioning.md)-ben.
 
 > [!NOTE]  
-> Kifejezetten ajánljuk, hogy tekintse át az a verzió-kompatibilitási mátrixot a [HBase könyv](https://hbase.apache.org/book.html#upgrading).
+> Javasoljuk, hogy tekintse át a verzió kompatibilitási mátrixát a [HBase-könyvben](https://hbase.apache.org/book.html#upgrading).
 
-Íme egy példa verziójú kompatibilitási mátrix, ahol Y azt jelzi, hogy kompatibilitási és N azt jelzi, hogy egy esetleges kompatibilitási:
+Íme egy példa a verzió kompatibilitási mátrixára. Az Y a kompatibilitást jelzi, az N pedig potenciális inkompatibilitást jelez:
 
-| Való kompatibilitásának típusa | Főverzió| Alverzió | Javítás |
+| Kompatibilitási típus | Főverzió| Másodlagos verzió | Javítás |
 | --- | --- | --- | --- |
-| Ügyfél-kiszolgáló átviteli kompatibilitása | N | I | I |
-| Kiszolgálók kompatibilitása | N | I | I |
-| Fájl kompatibilitása | N | I | I |
-| Ügyfél API-kompatibilitás | N | I | I |
-| Ügyfél bináris kompatibilitás | N | N | I |
+| Ügyfél – kiszolgáló huzalok kompatibilitása | N | I | I |
+| Kiszolgáló – kiszolgáló kompatibilitás | N | I | I |
+| Fájlformátumok kompatibilitása | N | I | I |
+| Ügyfél API-kompatibilitása | N | I | I |
+| Ügyfél bináris kompatibilitása | N | N | I |
 | **Kiszolgálóoldali korlátozott API-kompatibilitás** |  |  |  |
 | Stable | N | I | I |
-| Folyamatosan fejlődő | N | N | I |
-| Nem stabil | N | N | N |
-| Függőségi kompatibilitása | N | I | I |
-| Működési kompatibilitása | N | N | I |
+| Fejlődő | N | N | I |
+| Instabil | N | N | N |
+| Függőségek kompatibilitása | N | I | I |
+| Működési kompatibilitás | N | N | I |
 
 > [!NOTE]  
-> A HBase verzió kibocsátási megjegyzésekben használhatatlanná tévő inkompatibilitásokat le kell írni.
+> A HBase verziójának kibocsátási megjegyzései között szerepelnie kell a betörési inkompatibilitásnak.
 
-## <a name="upgrade-with-same-apache-hbase-major-version"></a>A frissítés ugyanazt az Apache HBase-főverzió
+## <a name="upgrade-with-same-apache-hbase-major-version"></a>Frissítés ugyanazzal az Apache HBase főverzióval
 
-A következő forgatókönyv olyan ugyanazzal a verzióval HBase fő 3.6 (mindkettő származnak, az Apache HBase 1.1.2) a HDInsight 3.4-es verzióra. Más verziófrissítések hasonlóak, mindaddig, amíg nincsenek kompatibilitási problémák a forrás és cél között.
+Az Apache HBase-fürt Azure HDInsight való frissítéséhez hajtsa végre a következő lépéseket:
 
-1. Győződjön meg arról, hogy az alkalmazás kompatibilis az új verziót, ahogyan az a HBase-kompatibilitási mátrix és a kiadási megjegyzések. Az alkalmazás tesztelése a HDInsight és a HBase cél verzióját futtató fürtre.
+1. Győződjön meg arról, hogy az alkalmazás kompatibilis az új verzióval, ahogy az a HBase kompatibilitási mátrixban és a kibocsátási megjegyzésekben is látható. Tesztelje alkalmazását egy olyan fürtön, amely a HDInsight és a HBase cél verzióját futtatja.
 
-2. [Egy új cél HDInsight-fürt beállítása](../hdinsight-hadoop-provision-linux-clusters.md) ugyanazt a tárfiókot, használatával, de egy másik tároló neve:
+2. [Hozzon létre egy új cél HDInsight-fürtöt](../hdinsight-hadoop-provision-linux-clusters.md) ugyanazzal a Storage-fiókkal, de egy másik tároló nevével:
 
-    ![Ugyanazt a tárfiókot használják, de egy másik tároló létrehozása](./media/apache-hbase-migrate-new-version/same-storage-different-container.png)
+    ![Használja ugyanazt a Storage-fiókot, de hozzon létre egy másik tárolót.](./media/apache-hbase-migrate-new-version/same-storage-different-container.png)
 
-3. Kiüríti a forrás HBase-fürtöt. Ez a frissít, amelyről a fürtöt. A HBase a bejövő adatokat ír egy memórián belüli tároló nevű egy _kapott_. Miután a kapott elér egy bizonyos méretet, a kapott ki van-e ürítve lemezre, hosszú távú tároláshoz a fürt storage-fiókban. A régi fürt törlésekor az memstores újrahasznosítására, potenciálisan adatvesztés. A kapott, minden egyes manuálisan kiüríteni a lemezre, futtassa a következő szkriptet. Ennek a parancsfájlnak a legújabb verzióra van az Azure-ban a [GitHub](https://raw.githubusercontent.com/Azure/hbase-utils/master/scripts/flush_all_tables.sh).
+3. Ürítse ki a forrás HBase-fürtöt, amely a frissíteni kívánt fürt. A HBase beírja a beérkező adatot a memóriában tárolt tárolóba, amelyet _memstore_nevezünk. Ha a memstore elér egy adott méretet, a HBase kiüríti azt a lemezre a fürt Storage-fiókjában lévő hosszú távú tároláshoz. A régi fürt törlésekor a rendszer újrahasznosítja a memstores, ami esetleg elveszíti az adatvesztést. Az egyes táblák memstore manuális kiürítéséhez futtassa az alábbi szkriptet. A szkript legújabb verziója az Azure [githubon](https://raw.githubusercontent.com/Azure/hbase-utils/master/scripts/flush_all_tables.sh)érhető el.
 
     ```bash
     #!/bin/bash
@@ -185,41 +176,46 @@ A következő forgatókönyv olyan ugyanazzal a verzióval HBase fő 3.6 (mindke
     
     ```
     
-4. Állítsa le a régi HBase-fürt Adatbetöltési.
-5. Győződjön meg arról, hogy a kapott friss adatokat ki van-e ürítve, futtassa újra az előző parancsfájlt.
-6. Jelentkezzen be [Apache Ambari](https://ambari.apache.org/) a régi fürtön (https://OLDCLUSTERNAME.azurehdidnsight.net) , és állítsa le a HBase-szolgáltatásokat. Amikor a rendszer kéri, győződjön meg arról, hogy szeretné-e leállítani a szolgáltatásokat, jelölje be a jelölőnégyzetet, a hbase-hez a karbantartási mód bekapcsolása. A csatlakozás és az Ambari további információkért lásd: [kezelése a HDInsight-fürtök az Ambari webes felhasználói felület használatával](../hdinsight-hadoop-manage-ambari.md).
+4. Állítsa le a betöltést a régi HBase-fürtön.
+5. Annak ellenőrzéséhez, hogy a memstore lévő legutóbbi összes érték ki van-e ürítve, futtassa újra az előző parancsfájlt.
+6. Jelentkezzen be az [Apache Ambari](https://ambari.apache.org/) a régi fürtön https://OLDCLUSTERNAME.azurehdidnsight.net) (és állítsa le a HBase szolgáltatásokat. Amikor a rendszer felszólítja, hogy erősítse meg a szolgáltatások leállítását, jelölje be a HBase karbantartási módjának bekapcsolására szolgáló jelölőnégyzetet. További információ a Ambari-hez való csatlakozásról és a használatával kapcsolatban: [HDInsight-fürtök kezelése a Ambari webes felületének használatával](../hdinsight-hadoop-manage-ambari.md).
 
-    ![Az Ambari kattintson az intézménye lapjára, majd a bal oldali menüben, HBase, majd állítsa le a szolgáltatási műveletek](./media/apache-hbase-migrate-new-version/stop-hbase-services.png)
+    ![A Ambari-ben kattintson a szolgáltatások > HBase > leállítás a szolgáltatási műveletek alatt elemre.](./media/apache-hbase-migrate-new-version/stop-hbase-services1.png)
 
-    ![Ellenőrizze a karbantartási mód bekapcsolása HBase jelölőnégyzet, majd adja meg](./media/apache-hbase-migrate-new-version/turn-on-maintenance-mode.png)
+    ![Jelölje be a karbantartási mód bekapcsolása a HBase jelölőnégyzetet, majd erősítse meg](./media/apache-hbase-migrate-new-version/turn-on-maintenance-mode.png)
 
-7. Jelentkezzen be az Ambari az új HDInsight-fürtön. Módosítsa a `fs.defaultFS` mutasson a tároló nevére, az eredeti fürt által használt HDFS-beállítás. Ez a beállítás alatt áll **HDFS > Configs > Speciális > speciális hely**.
+7. Jelentkezzen be a Ambari-be az új HDInsight-fürtön. Módosítsa a `fs.defaultFS` HDFS beállítást úgy, hogy az az eredeti fürt által használt tároló nevére mutasson. Ez a beállítás a **HDFS > konfigurációk területen > advanced > Advanced Core-site**.
 
-    ![Az Ambari kattintson az intézménye lapjára, majd a bal oldali menüben, majd a Configs fülre, majd a Speciális lap alatt HDFS](./media/apache-hbase-migrate-new-version/hdfs-advanced-settings.png)
+    ![A Ambari-ben kattintson a szolgáltatások > HDFS > konfigurációk > Speciális elemre.](./media/apache-hbase-migrate-new-version/hdfs-advanced-settings.png)
 
-    ![Az Ambari a tároló nevének módosítása](./media/apache-hbase-migrate-new-version/change-container-name.png)
+    ![A Ambari módosítsa a tároló nevét](./media/apache-hbase-migrate-new-version/change-container-name.png)
 
-8. **Ha a HBase-fürtök a fokozott ír a funkcióval nem használ, akkor kihagyhatja ezt a lépést. Szükség esetén csak a HBase-fürtök fokozott ír a szolgáltatással.**
+8. **Ha nem használ HBase-fürtöket a továbbfejlesztett írási funkcióval, hagyja ki ezt a lépést. Csak a továbbfejlesztett írási funkcióval rendelkező HBase-fürtökre van szükség.**
    
-   Az eredeti fürthöz a tároló átirányítása hbase.rootdir elérési útvonalának módosításához.
+   Módosítsa az `hbase.rootdir` elérési utat úgy, hogy az az eredeti fürt tárolójára mutasson.
 
-    ![Az Ambari a hbase rootdir tároló nevének módosítása](./media/apache-hbase-migrate-new-version/change-container-name-for-hbase-rootdir.png)
-    
-9. Mentse a módosításokat.
-10. Ambari jelzett módon, indítsa újra az összes szükséges szolgáltatást.
-11. Az alkalmazás az új fürtre mutat.
+    ![A Ambari módosítsa a HBase rootdir tartozó tároló nevét.](./media/apache-hbase-migrate-new-version/change-container-name-for-hbase-rootdir.png)
+1. Ha a HDInsight 3,6-et 4,0-re frissíti, kövesse az alábbi lépéseket, ellenkező esetben ugorjon a 10. lépésre:
+    1. Indítsa újra az összes szükséges szolgáltatást a Ambari-ben a **szolgáltatások** > **újraindítása**lehetőség kiválasztásával.
+    1. Állítsa le a HBase szolgáltatást.
+    1. SSH-t a Zookeeper csomóponthoz, és [](https://github.com/go-zkcli/zkcli) hajtsa `rmr /hbase-unsecure` végre a zkCli parancsot, hogy eltávolítsa a HBase gyökérszintű znode a Zookeeper.
+    1. Indítsa újra a HBase.
+1. Ha a 4,0-es verzión kívül más HDInsight is frissít, kövesse az alábbi lépéseket:
+    1. Mentse a módosításokat.
+    1. Indítsa újra az összes szükséges szolgáltatást a Ambari által jelzett módon.
+1. Mutasson az alkalmazást az új fürtre.
 
     > [!NOTE]  
-    > A statikus DNS, az alkalmazás módosítja a frissítése. Fix kódolása helyett a DNS, konfigurálhatja egy olyan CNAME REKORDOT a tartománynév DNS-beállítások, amely a fürt neve. Egy másik lehetőség, használhat egy konfigurációs fájlt az alkalmazás újbóli telepítése nélkül frissíthető.
+    > Az alkalmazás statikus DNS-je módosul a frissítéskor. A DNS nem megfelelő kódolása helyett beállíthat egy CNAME nevet a tartománynév DNS-beállításai között, amelyek a fürt nevére mutatnak. Egy másik lehetőség az alkalmazáshoz tartozó konfigurációs fájl használata, amelyet újbóli üzembe helyezés nélkül frissíthet.
 
-12. Indítsa el a bevitelt megtekintheti, ha minden rendben van a várt módon működik.
-13. Ha az új fürt kielégítő, törölje az eredeti fürthöz.
+12. Indítsa el a betöltést, és ellenőrizze, hogy minden a várt módon működik-e.
+13. Ha az új fürt kielégítő, törölje az eredeti fürtöt.
 
 ## <a name="next-steps"></a>További lépések
 
-Tudjon meg többet a [Apache HBase](https://hbase.apache.org/) és a HDInsight-fürtök frissítése, lásd az alábbi cikkeket:
+Az [Apache HBase](https://hbase.apache.org/) és a HDInsight-fürtök frissítésével kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 
-* [Egy HDInsight-fürt frissítése újabb verzióra](../hdinsight-upgrade-cluster.md)
-* [Figyelése és felügyelete az Azure HDInsight az Apache Ambari webes felhasználói felület használatával](../hdinsight-hadoop-manage-ambari.md)
-* [Az Apache Hadoop-összetevők és verziók](../hdinsight-component-versioning.md)
-* [Az Apache Ambari konfigurációk optimalizálása](../hdinsight-changing-configs-via-ambari.md#apache-hbase-optimization-with-the-ambari-web-ui)
+* [HDInsight-fürt frissítése újabb verzióra](../hdinsight-upgrade-cluster.md)
+* [Azure-HDInsight monitorozása és kezelése az Apache Ambari webes felhasználói felületén](../hdinsight-hadoop-manage-ambari.md)
+* [Összetevők és verziók Apache Hadoop](../hdinsight-component-versioning.md)
+* [Konfigurációk optimalizálása Apache Ambari használatával](../hdinsight-changing-configs-via-ambari.md#apache-hbase-optimization-with-the-ambari-web-ui)

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: cynthn
 ms.openlocfilehash: c2ed33aea77b5478e8d17f6bd0213ef3e778b806
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51572212"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179456"
 ---
 ## <a name="transfer-local-files-to-cloud-shell"></a>Helyi fájlok átvitele a Cloud Shellben
 A `clouddrive` directory szinkronizál az Azure portal tároló panelen. Használja ezt a panelt, vagy a fájlmegosztásból helyi fájlok átvitelét. A Cloud Shell található fájlokat frissítése tükrözi a file storage grafikus felhasználói felület a panel frissítésekor.

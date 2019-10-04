@@ -1,269 +1,321 @@
 ---
-title: Az Azure Active Directory-Eszközfelügyelet – gyakori kérdések |} A Microsoft Docs
-description: Azure Active Directory-Eszközfelügyelet – gyakori kérdések.
+title: Azure Active Directory eszközkezelés – GYIK | Microsoft Docs
+description: Azure Active Directory eszközkezelés – gyakori kérdések.
 services: active-directory
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-ms.assetid: cdc25576-37f2-4afb-a786-f59ba4c284c2
 ms.service: active-directory
 ms.subservice: devices
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/22/2019
+ms.topic: troubleshooting
+ms.date: 06/28/2019
 ms.author: joflore
-ms.reviewer: jairoc
+author: MicrosoftGuyJFlo
+manager: daveba
+ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af10596fb1ddf4a4f9eba2b8265eb77221a19f4c
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 0a6b1782b9822877850f7c223dd80eed008ef706
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59996067"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193186"
 ---
-# <a name="azure-active-directory-device-management-faq"></a>Az Azure Active Directory-Eszközfelügyelet – gyakori kérdések
+# <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory eszközkezelés – gyakori kérdések
 
-### <a name="q-i-registered-the-device-recently-why-cant-i-see-the-device-under-my-user-info-in-the-azure-portal-or-why-is-the-device-owner-marked-as-na-for-hybrid-azure-active-directory-azure-ad-joined-devices"></a>K: Az eszköz nemrég e regisztrálva. Miért nem látom az eszközt a saját felhasználói adatokat az Azure Portalon? Vagy miért van az eszköz tulajdonosa megjelölve, a hibrid Azure Active Directory (Azure AD) N/A-hez csatlakoztatott eszközök?
+## <a name="general-faq"></a>Általános GYIK
 
-**V:** Hibrid Azure AD-hez Windows 10 rendszerű eszközök nem jelennek meg a **felhasználói eszközök**.
-Használja a **minden eszköz** megtekintése az Azure Portalon. A PowerShell is használható [Get-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) parancsmagot.
+### <a name="q-i-registered-the-device-recently-why-cant-i-see-the-device-under-my-user-info-in-the-azure-portal-or-why-is-the-device-owner-marked-as-na-for-hybrid-azure-active-directory-azure-ad-joined-devices"></a>K: Nemrég regisztráltam az eszközt. Miért nem látom az eszközt a felhasználói adatok között a Azure Portal? Vagy a hibrid Azure Active Directory (Azure AD) csatlakoztatott eszközökhöz tartozó N/A-ként jelölt eszköz tulajdonosa
 
-Csak az alábbi eszközök vannak felsorolva **felhasználói eszközök**:
+**V:** A hibrid Azure AD-hez csatlakoztatott Windows 10-es eszközök nem jelennek meg a **felhasználói eszközök**területen.
+Használja a Azure Portal **minden eszköz** nézetét. Használhat egy PowerShell [Get-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) parancsmagot is.
 
-- Hibrid Azure AD nem az összes személyes eszközök tartományhoz. 
-- Minden Windows 10 vagy Windows Server 2016-eszközök.
-- Az összes nem-Windows-eszközök. 
+Csak a következő eszközök szerepelnek a **felhasználói eszközök**területen:
 
----
-
-### <a name="q-how-do-i-know-what-the-device-registration-state-of-the-client-is"></a>K: Honnan tudhatom meg, hogy az eszköz regisztrációs állapotát, az ügyfél van?
-
-**V:** Az Azure Portalon lépjen a **minden eszköz**. Keresse meg az eszköz segítségével, hogy az eszköz azonosítójával. Ellenőrizze az értéket az illesztési típus oszlop alatt. Egyes esetekben az eszköz alaphelyzetbe állítása lehet, vagy rendszerképét alaphelyzetbe állítják. Ezért elengedhetetlen is ellenőrizheti az eszköz regisztrációs állapotát az eszközön:
-
-- Futtassa a Windows 10 és Windows Server 2016 vagy újabb rendszerű eszközök, `dsregcmd.exe /status`.
-- A régebbi verziójú operációs rendszerekről, futtassa `%programFiles%\Microsoft Workplace Join\autoworkplace.exe`.
+- Minden olyan személyes eszköz, amely nem rendelkezik hibrid Azure AD-csatlakozással. 
+- Az összes nem Windows 10 vagy Windows Server 2016 rendszerű eszköz.
+- Az összes nem Windows rendszerű eszköz. 
 
 ---
 
-### <a name="q-i-see-the-device-record-under-the-user-info-in-the-azure-portal-and-i-see-the-state-as-registered-on-the-device-am-i-set-up-correctly-to-use-conditional-access"></a>K: A felhasználói adatokat az Azure Portalon alatt eszközrekordhoz látható. És az állapot jelenik meg, az eszköz regisztrálva. Vagyok állíthatom be megfelelően a feltételes hozzáférés?
+### <a name="q-how-do-i-know-what-the-device-registration-state-of-the-client-is"></a>K: Hogyan tudni, hogy mi az ügyfél az eszköz regisztrációs állapota?
 
-**V:** Az illesztési állapot, által megjelenített **deviceID**, kell az állapot egyező az Azure ad-ben, és megfelelnek a feltételes hozzáférés bármely értékelés által. További információkért lásd: [megkövetelése eszközök feltételes hozzáféréssel felhőalapú alkalmazás-hozzáférés felügyelt](../conditional-access/require-managed-devices.md).
+**V:** A Azure Portal lépjen a **minden eszköz**elemre. Keresse meg az eszközt az eszköz azonosítója alapján. Tekintse meg az értéket az illesztés típusa oszlopban. Előfordulhat, hogy az eszköz alaphelyzetbe áll vagy alaphelyzetbe áll. Ezért fontos, hogy az eszköz regisztrációs állapotát is ellenőrizzék:
 
----
+- Windows 10 és Windows Server 2016 vagy újabb rendszerű eszközök esetén `dsregcmd.exe /status`futtassa a parancsot.
+- A régebbi verziójú operációsrendszer-verziók esetében futtassa `%programFiles%\Microsoft Workplace Join\autoworkplace.exe`a parancsot.
 
-### <a name="q-i-deleted-my-device-in-the-azure-portal-or-by-using-windows-powershell-but-the-local-state-on-the-device-says-its-still-registered"></a>K: Az eszköz az Azure Portalon vagy a Windows PowerShell-lel törlődött. De az eszközön a helyi állapot szerint továbbra is regisztrálva lesz.
-
-**V:** Ezt a műveletet a rendszer kialakításából fakad. Az eszköz nem rendelkezik erőforrásokhoz való hozzáférés a felhőben. 
-
-Ha azt szeretné, az újbóli regisztrációt, a manuális műveletet az eszközön kell végeznie. 
-
-A Windows 10 és Windows Server 2016-ban a helyszíni Active Directory tartományhoz való csatlakozás állapot törléséhez tegye a következőket:
-
-1.  Nyissa meg a parancssort rendszergazdaként.
-
-2.  Írja be a `dsregcmd.exe /debug /leave` (igen) kifejezést.
-
-3.  Jelentkezzen ki, és jelentkezzen be az ütemezett feladatot, amely regisztrálja újra az eszközt az Azure AD-trigger. 
-
-A régebbi verziójú Windows operációs rendszerekről, amelyek a helyszíni Active Directory-tartományhoz csatlakozik, hajtsa végre az alábbi lépéseket:
-
-1.  Nyissa meg a parancssort rendszergazdaként.
-2.  Írja be a `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /l"` (igen) kifejezést.
-3.  Írja be a `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /j"` (igen) kifejezést.
+**V:** Hibaelhárítási információkért tekintse meg a következő cikkeket:
+- [Eszközök hibaelhárítása a dsregcmd paranccsal](troubleshoot-device-dsregcmd.md)
+- [Hibrid Azure Active Directory csatlakoztatott Windows 10 és Windows Server 2016 rendszerű eszközök hibaelhárítása](troubleshoot-hybrid-join-windows-current.md)
+- [A hibrid Azure Active Directory csatlakoztatása a régebbi verziójú eszközökhöz](troubleshoot-hybrid-join-windows-legacy.md)
 
 ---
 
-### <a name="q-why-do-i-see-duplicate-device-entries-in-the-azure-portal"></a>K: Miért jelennek meg az Azure Portal, ismétlődő eszközbevitelek?
+### <a name="q-i-see-the-device-record-under-the-user-info-in-the-azure-portal-and-i-see-the-state-as-registered-on-the-device-am-i-set-up-correctly-to-use-conditional-access"></a>K: Megjelenik az eszköz rekordja a Azure Portal felhasználói információi között. Az állapotot pedig regisztráltként látom az eszközön. Helyesen állítottam be a feltételes hozzáférés használatát?
+
+**V:** Az eszköz csatlakoztatási állapota, amelyet a **deviceID**mutat, meg kell egyeznie az Azure ad-beli állapottal, és meg kell felelnie a feltételes hozzáférésre vonatkozó értékelési feltételeknek. További információkért lásd: [felügyelt eszközök megkövetelése a Cloud app Accesshez feltételes hozzáféréssel](../conditional-access/require-managed-devices.md).
+
+---
+
+### <a name="q-why-do-my-users-see-an-error-message-saying-your-organization-has-deleted-the-device-or-your-organization-has-disabled-the-device-on-their-windows-10-devices-"></a>K: A felhasználók miért látnak hibaüzenetet arról, hogy "a szervezet törölte az eszközt" vagy "a szervezete letiltotta az eszközt" a Windows 10-es eszközökön?
+
+**V:** Az Azure AD-hez csatlakoztatott vagy regisztrált Windows 10-es eszközökön a felhasználóknak egy [elsődleges frissítési tokent (PRT)](concept-primary-refresh-token.md) kell kiállítaniuk, amely lehetővé teszi az egyszeri bejelentkezést. A PRT érvényessége az eszköz validaity alapul. Ez az üzenet akkor jelenik meg, ha az eszköz törölve van vagy le van tiltva az Azure AD-ben anélkül, hogy magáról az eszközről kezdeményezze a műveletet. Egy eszköz törölhető vagy letiltható az Azure AD-ben az alábbi forgatókönyvek egyikével: 
+
+- A felhasználó letiltja az eszközt a saját alkalmazások portálján. 
+- A rendszergazda (vagy felhasználó) törli vagy letiltja az eszközt a Azure Portal vagy a PowerShell használatával
+- Csak hibrid Azure AD-csatlakozás: A rendszergazda eltávolítja az eszközök szervezeti egységen kívüli hatókörét, ami azt eredményezi, hogy az eszközök törlődnek az Azure AD-ből
+
+A műveletek kijavításának menetét alább találja.
+
+---
+
+### <a name="q-i-disabled-or-deleted-my-device-in-the-azure-portal-or-by-using-windows-powershell-but-the-local-state-on-the-device-says-its-still-registered-what-should-i-do"></a>K: Letiltottam vagy Töröltem az eszközt a Azure Portal vagy a Windows PowerShell használatával. Az eszköz helyi állapota azonban még regisztrálva van. Mit tegyek?
+
+**V:** Ez a művelet kialakítás szerint történik. Ebben az esetben az eszköz nem fér hozzá a felhőben található erőforrásokhoz. A rendszergazdák elvégezhetik ezt a műveletet elavult, elveszett vagy ellopott eszközökön a jogosulatlan hozzáférés megakadályozása érdekében. Ha a művelet szándékosan lett elvégezve, újra engedélyeznie kell vagy újra regisztrálnia kell az eszközt az alább leírtak szerint.
+
+- Ha az eszköz le lett tiltva az Azure AD-ben, akkor a megfelelő jogosultságokkal rendelkező rendszergazda engedélyezheti az Azure AD-portálon  
+  > [!NOTE]
+  > Ha Azure AD Connect használatával szinkronizálja az eszközöket, a hibrid Azure AD-hez csatlakoztatott eszközök automatikusan újra engedélyezve lesznek a következő szinkronizálási ciklusban. Ha tehát le kell tiltania egy hibrid Azure AD-hez csatlakoztatott eszközt, le kell tiltania azt a helyszíni AD-ből.
+
+ - Ha az eszköz törlődik az Azure AD-ben, újra regisztrálnia kell az eszközt. Az újraregisztráláshoz manuális műveletet kell végrehajtani az eszközön. Az eszköz állapotán alapuló ismételt regisztrációra vonatkozó utasításokért lásd alább. 
+
+      A hibrid Azure AD-hez csatlakoztatott Windows 10-és Windows Server 2016/2019-eszközök újbóli regisztrálásához hajtsa végre a következő lépéseket:
+
+      1. Nyissa meg a parancssort rendszergazdaként.
+      1. Írja be a `dsregcmd.exe /debug /leave` (igen) kifejezést.
+      1. Jelentkezzen ki, majd jelentkezzen be az eszközt az Azure AD-vel újra regisztráló ütemezett feladat elindításához. 
+
+      Az Azure AD-hez csatlakoztatott, régebbi verziójú Windows operációsrendszer-verziók esetén hajtsa végre a következő lépéseket:
+
+      1. Nyissa meg a parancssort rendszergazdaként.
+      1. Írja be a `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /l"` (igen) kifejezést.
+      1. Írja be a `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /j"` (igen) kifejezést.
+
+      Az Azure AD-hez csatlakoztatott eszközök Windows 10-es eszközeihez hajtsa végre a következő lépéseket:
+
+      1. Nyissa meg a parancssort rendszergazdaként
+      1. ENTER `dsregcmd /forcerecovery` (Megjegyzés: A művelet végrehajtásához rendszergazdának kell lennie.
+      1. A megnyíló párbeszédpanelen kattintson a Bejelentkezés gombra, és folytassa a bejelentkezés folyamatával.
+      1. Jelentkezzen ki, majd jelentkezzen be újra az eszközre a helyreállítás befejezéséhez.
+
+      Az Azure AD-ban regisztrált Windows 10-es eszközök esetén hajtsa végre a következő lépéseket:
+
+      1. Lépjen a **Beállítások** > **fiókok** > **hozzáférés munkahelyi vagy iskolai rendszerhez elemre**. 
+      1. Válassza ki a fiókot, és válassza a **Leválasztás**lehetőséget.
+      1. Kattintson a "+ Csatlakoztatás" gombra, és regisztrálja újra az eszközt a bejelentkezési folyamaton keresztül.
+
+---
+
+### <a name="q-why-do-i-see-duplicate-device-entries-in-the-azure-portal"></a>K: Miért jelenik meg ismétlődő eszközök bejegyzései a Azure Portal?
 
 **V:**
 
--   A Windows 10 és Windows Server 2016 elhagyása, és csatlakozzon újra ugyanarra az eszközre való ismételt próbálkozás okozhat ismétlődő bejegyzéseket. 
-
--   Összes Windows felhasználónak **adja hozzá munkahelyi vagy iskolai fiókkal** új eszközrekordot hoz létre az azonos nevű eszköz.
-
--   A régebbi verziójú Windows operációs rendszerekről, amelyek a helyszíni Azure Directory-tartományhoz csatlakoztatott automatikus regisztráció az egyes tartományi felhasználók, akik az eszköz bejelentkezik ilyen eszköz nevű új eszközrekordot hoz létre. 
-
--   Az Azure ad-ben csatlakozó számítógépeken, törlése, telepíteni és ugyanazzal a névvel újracsatlakozik megjelenik-e az azonos nevű eszköz egy másik rekord formájában.
+- A Windows 10 és a Windows Server 2016 esetében az ismétlődő próbálkozások megismétlésével és az ugyanahhoz az eszközhöz való újracsatlakozással ismétlődő bejegyzések is előfordulhatnak. 
+- Minden olyan Windows-felhasználó, aki a **munkahelyi vagy iskolai fiók hozzáadása** szolgáltatást használja, létrehoz egy új, azonos eszköznév nevű eszközt.
+- A helyi Azure címtár-tartományhoz csatlakozó, régebbi verziójú Windows operációsrendszer-verziók esetében az automatikus regisztráció egy új eszközt hoz létre ugyanazzal az eszköznév, mint minden olyan tartományi felhasználó, aki bejelentkezik az eszközre. 
+- Egy olyan Azure AD-hez csatlakoztatott számítógép, amely törölve lett, újratelepült és újra csatlakozik ugyanazzal a névvel, egy másik, azonos nevű rekordként jelenik meg.
 
 ---
 
-### <a name="q-does-windows-10-device-registration-in-azure-ad-support-tpms-in-fips-mode"></a>K: Windows 10-es eszközregisztráció az Azure ad-ben támogatja a TPM FIPS-módban?
+### <a name="q-does-windows-10-device-registration-in-azure-ad-support-tpms-in-fips-mode"></a>K: Támogatja a Windows 10-es eszközök regisztrációját az Azure AD-ben a TPM FIPS módban?
 
-**V:** Nem, jelenleg eszközregisztráció – hibrid Azure AD-csatlakozás, Azure AD-csatlakozás és az Azure AD-ban regisztrálva – összes eszköz állapotának a Windows 10-es nem támogatja TPM FIPS-módban. Sikeresen csatlakozzon, vagy regisztráljon az Azure ad-hez, a FIPS-módban kell ki kell kapcsolni a TPM-EK ezeken az eszközökön
+**V:** Nem, jelenleg a Windows 10-es eszközök regisztrálása az összes eszköz állapotához – hibrid Azure AD-csatlakozás, Azure AD-csatlakozás és Azure AD-regisztráció – nem támogatja a TPM FIPS módban. Az Azure AD-hez való sikeres csatlakozáshoz vagy regisztráláshoz az FIPS-módot ki kell kapcsolni az eszközök TPM.
 
 ---
 
-**K: Miért felhasználó erőforrásaihoz is hozzáférjenek az e tiltva, az Azure Portalon eszközökről?**
+**K: Miért férhet hozzá egy felhasználó a Azure Portal letiltott eszköz erőforrásaihoz?**
 
-**V:** Vesz egy visszavonni a alkalmazni egy órát.
+**V:** Akár egy óráig is eltarthat, amíg a visszavonás érvénybe lép az Azure AD-eszköz letiltottként való jelölésének időpontjában.
 
 >[!NOTE] 
->A regisztrált eszközök esetében azt javasoljuk, hogy az eszköz számára, győződjön meg arról, hogy a felhasználók nem férhetnek hozzá az erőforrásokat minden adatának. További információkért lásd: [Mi az eszközök regisztrálása?](https://docs.microsoft.com/intune/deploy-use/enroll-devices-in-microsoft-intune). 
+>A regisztrált eszközök esetében ajánlott törölni az eszközt, hogy a felhasználók ne férhessenek hozzá az erőforrásokhoz. További információ: [Mi az az eszköz beléptetése?](https://docs.microsoft.com/intune/deploy-use/enroll-devices-in-microsoft-intune). 
 
 ---
 
-## <a name="azure-ad-join-faq"></a>Az Azure AD join – gyakori kérdések
+### <a name="q-why-are-there-devices-marked-as-pending-under-the-registered-column-in-the-azure-portal"></a>K: Miért vannak "függőben" jelölésű eszközök a Azure Portal regisztrált oszlopában?
 
-### <a name="q-how-do-i-unjoin-an-azure-ad-joined-device-locally-on-the-device"></a>K: Hogyan do I elhagyása egy az Azure AD-csatlakoztatott eszközön helyileg az eszközön?
+**A**:  A függőben állapot azt jelzi, hogy az eszköz nincs regisztrálva. Ez az állapot azt jelzi, hogy az eszköz szinkronizálása az Azure AD-kapcsolattal történik a helyszíni AD-ből, és készen áll az eszköz regisztrálására. Az eszköz CSATLAKOZTATÁSi típusa "hibrid Azure AD-hez csatlakoztatott". További információ a [hibrid Azure Active Directory való csatlakozás megvalósításának megtervezéséről](hybrid-azuread-join-plan.md).
 
-**V:** 
-- A hibrid Azure AD a csatlakoztatott eszközökre, ellenőrizze, hogy kapcsolja ki az automatikus regisztráció. Ezután az ütemezett feladat nem regisztrálja újra az eszközt. Ezután nyisson meg egy parancssort rendszergazdaként, és adja meg `dsregcmd.exe /debug /leave`. Vagy futtassa a következő parancsot, a parancsfájl több eszközön való tömeges kilépése.
+>[!NOTE]
+>Előfordulhat, hogy egy eszköz regisztrálva van a "függőben" állapotból.
+>* Ha egy eszköz törölve lett, és először az Azure AD-ből szinkronizálja őket, és újra szinkronizálódik a helyszíni AD-ből.
+>* Ha egy eszköz el lett távolítva egy szinkronizálási hatókörből Azure AD Connect és újra hozzá lett adva.
+>
+>Mindkét esetben manuálisan kell regisztrálnia az eszközt az egyes eszközökön. Annak ellenőrzéséhez, hogy az eszköz korábban regisztrálva van-e, [a dsregcmd parancs használatával elháríthatja az eszközöket](troubleshoot-device-dsregcmd.md).
 
-- Igazi Azure AD-hez csatlakoztatott eszközök, győződjön meg arról, offline helyi rendszergazdai fiókkal rendelkezik, vagy hozzon létre egyet. Minden olyan Azure AD-felhasználói hitelesítő adatok nem tud bejelentkezni. Folytassa **beállítások** > **fiókok** > **hozzáférés munkahelyi vagy iskolai**. Válassza ki a fiókját, és válassza ki **Disconnect**. Kövesse az utasításokat, és adja meg a helyi rendszergazdai hitelesítő adatokat, amikor a rendszer kéri. Indítsa újra az eszközt a elhagyásra folyamat befejezéséhez.
+---
+## <a name="azure-ad-join-faq"></a>Azure AD-csatlakozás – gyakori kérdések
+
+### <a name="q-how-do-i-unjoin-an-azure-ad-joined-device-locally-on-the-device"></a>K: Hogyan egy Azure AD-hez csatlakoztatott eszköz csatlakoztatását helyileg az eszközön?
+
+**V:** A tiszta Azure AD-hez csatlakoztatott eszközökhöz ellenőrizze, hogy van-e offline helyi rendszergazdai fiókja, vagy hozzon létre egyet. Nem tud bejelentkezni bármilyen Azure AD-felhasználó hitelesítő adataival. Ezután lépjen a **Beállítások** > **fiókok** > **hozzáférés munkahelyi vagy iskolai**rendszerhez. Válassza ki a fiókját, és válassza a **Leválasztás**lehetőséget. Ha a rendszer kéri, kövesse az utasításokat, és adja meg a helyi rendszergazdai hitelesítő adatokat. Indítsa újra az eszközt a leválasztási folyamat befejezéséhez.
 
 ---
 
-### <a name="q-can-my-users-sign-in-to-azure-ad-joined-devices-that-are-deleted-or-disabled-in-azure-ad"></a>K: A felhasználók bejelentkezhetnek a törölt vagy le van tiltva, az Azure ad-ben az Azure AD-hez csatlakoztatott eszközök?
+### <a name="q-can-my-users-sign-in-to-azure-ad-joined-devices-that-are-deleted-or-disabled-in-azure-ad"></a>K: Bejelentkezhetnek a felhasználók az Azure ad-hez csatlakoztatott eszközökre, amelyeket törölnek vagy letiltanak az Azure AD-ben?
 
-**V:** Igen. Windows Gyorsítótárazott felhasználónév és jelszó képesség, amely lehetővé teszi a felhasználók, akik korábban jelentkezett be az asztal gyorsan elérni a hálózati kapcsolat nélkül is rendelkezik. 
+**V:** Igen. A Windows gyorsítótárazott felhasználónevet és jelszót biztosít, amely lehetővé teszi, hogy a korábban bejelentkezett felhasználók a hálózati kapcsolat nélkül is gyorsan hozzáférjenek az asztalhoz. 
 
-Egy eszköz törlésekor vagy le van tiltva, az Azure ad-ben, nem ismert, a Windows-eszköz. Így továbbra is a felhasználók, akik korábban már bejelentkezett az asztalon, a gyorsítótárazott felhasználónévvel és jelszóval eléréséhez. Azonban amíg az eszköz törli vagy le van tiltva, a felhasználók nem férhetnek hozzá a eszközalapú feltételes hozzáférés által védett erőforrásokat. 
+Ha egy eszközt törölnek vagy letiltanak az Azure AD-ben, azt a Windows-eszköz nem ismeri. Így a korábban bejelentkezett felhasználók továbbra is hozzáférhetnek az asztalhoz a gyorsítótárazott felhasználónévvel és jelszóval. Ha azonban az eszközt törölték vagy letiltották, a felhasználók nem férhetnek hozzá az eszközön alapuló feltételes hozzáférés által védett erőforrásokhoz. 
 
-Felhasználók, akik nem jelentkezzen be a korábban az eszköz nem lehet hozzáférni. Nincs nem gyorsítótárazott felhasználónevet és jelszót a számukra engedélyezett. 
-
----
-
-### <a name="q-can-disabled-or-deleted-users-sign-in-to-azure-ad-joined-devices"></a>K: Letiltott vagy törölt felhasználók jelentkezhetnek be az Azure AD-csatlakoztatott eszközök?
-
-**V:** Igen, de csak korlátozott ideig. A felhasználó törlésekor vagy le van tiltva, az Azure ad-ben, azonnal nem ismert, a Windows-eszköz. Így a felhasználók, akik korábban már bejelentkezett hozzáférhet az asztalon, a gyorsítótárazott felhasználónévvel és jelszóval. 
-
-Az eszköz általában a felhasználói állapot tudomást négy órán belül. Majd a Windows blokkolja ezen felhasználók hozzáférését az asztalon. Amíg a felhasználó törli vagy le van tiltva, az Azure ad-ben, az összes tokenjeiket visszavonódnak. Így nem tudják elérni erőforrásokat. 
-
-Egy eszköz nem jelentkezzen be a korábban törölt vagy letiltott felhasználók férhetnek hozzá. Nincs nem gyorsítótárazott felhasználónevet és jelszót a számukra engedélyezett. 
+A korábban nem bejelentkezett felhasználók nem férhetnek hozzá az eszközhöz. Nincs engedélyezve a gyorsítótárazott Felhasználónév és jelszó. 
 
 ---
 
-### <a name="q-why-do-my-users-have-issues-on-azure-ad-joined-devices-after-changing-their-upn"></a>K: Miért érdemes a felhasználók rendelkeznek problémák az Azure AD-csatlakoztatott eszközök Felhasználónevük módosítása után?
+### <a name="q-can-a-disabled-or-deleted-user-sign-in-to-an-azure-ad-joined-devices"></a>K: Letiltott vagy törölt felhasználói bejelentkezés egy Azure AD-hez csatlakoztatott eszközökre
 
-**V:** Jelenleg UPN módosítások nem teljesen támogatottak az Azure AD-csatlakoztatott eszközökön. Így az Azure AD-hitelesítés sikertelen lesz, az egyszerű felhasználónév módosítása után. Ennek eredményeképpen felhasználóinak egyszeri Bejelentkezést és feltételes hozzáférési problémák az eszközeiken. Jelenleg a felhasználóknak kell bejelentkezni a Windows a probléma megoldásához új Felhasználónevük használatával "Más felhasználó" csempe keresztül. Jelenleg dolgozunk a probléma megoldásához. Bejelentkezés Windows Hello for Business felhasználók azonban nem ütköznek a probléma. 
+**V:** Igen, de csak korlátozott ideig. Ha egy felhasználót törölnek vagy letiltanak az Azure AD-ben, azt a Windows-eszköz nem ismeri azonnal. A korábban bejelentkezett felhasználók a gyorsítótárazott felhasználónévvel és jelszóval érhetik el az asztalt. 
 
----
+Az eszköz általában kevesebb, mint négy óra alatt ismeri a felhasználói állapotot. Ezt követően a Windows letiltja a felhasználók hozzáférését az asztalhoz. Mivel a felhasználó törölve lett, vagy le van tiltva az Azure AD-ben, az összes token visszavonásra kerül. Így nem férhetnek hozzá egyetlen erőforráshoz sem. 
 
-### <a name="q-my-users-cant-search-printers-from-azure-ad-joined-devices-how-can-i-enable-printing-from-those-devices"></a>K: A felhasználók nem tud keresni, nyomtatók, az Azure AD-hez csatlakoztatott eszközökről. Hogyan lehet engedélyezni, hogy azokat az eszközöket a nyomtatás?
-
-**V:** Nyomtatók telepítése az Azure ad-hez csatlakoztatott eszközök, lásd: [üzembe helyezése a Windows Server hibrid Felhőbeli nyomtatás előtti hitelesítés](https://docs.microsoft.com/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy). Egy helyszíni Windows Server üzembe helyezéséhez a hibrid felhőbeli nyomtatás van szüksége. Felhőalapú nyomtatási szolgáltatás jelenleg nem érhető el. 
+A korábban nem bejelentkezett felhasználók törlése vagy letiltása nem fér hozzá az eszközhöz. Nincs engedélyezve a gyorsítótárazott Felhasználónév és jelszó. 
 
 ---
 
-### <a name="q-how-do-i-connect-to-a-remote-azure-ad-joined-device"></a>K: Hogyan létesíthetek kapcsolatot egy távoli Azure ad-hez csatlakoztatott eszközök?
+### <a name="q-why-do-my-users-have-issues-on-azure-ad-joined-devices-after-changing-their-upn"></a>K: Miért van a felhasználói problémák az Azure AD-hez csatlakoztatott eszközökön az egyszerű felhasználónév módosítása után?
 
-**V:** Lásd: [csatlakozhat az Azure Active Directoryhoz csatlakoztatott távoli Számítógépekhez](https://docs.microsoft.com/windows/client-management/connect-to-remote-aadj-pc).
-
----
-
-### <a name="q-why-do-my-users-see-you-cant-get-there-from-here"></a>K: Miért érdemes a felhasználók látnak *nem érheti el itt*?
-
-**V:** Adott konfigurálása bizonyos feltételes hozzáférési szabályokat szükséges egy adott eszköz állapota? Ha az eszköz nem teljesíti a feltételeket, felhasználók le vannak tiltva, és megjelenik az üzenet. Értékelje ki a feltételes hozzáférési szabályzat előírásainak. Győződjön meg arról, hogy az eszköz megfelel a feltételeknek, az üzenet elkerülése érdekében.
+**V:** Jelenleg az UPN-módosítások nem teljes mértékben támogatottak az Azure AD-hez csatlakoztatott eszközökön. Így az Azure AD-vel való hitelesítés az UPN módosítása után meghiúsul. Ennek eredményeképpen a felhasználóknak egyszeri bejelentkezéses és feltételes hozzáférési problémájuk van az eszközön. Jelenleg a felhasználóknak be kell jelentkezniük a Windowsba az új UPN használatával a probléma megoldásához. Jelenleg dolgozunk a probléma megoldásán. A vállalati Windows Hello szolgáltatással bejelentkezett felhasználók azonban nem szembesülnek ezzel a problémával. 
 
 ---
 
-### <a name="q-why-dont-some-of-my-users-get-azure-multi-factor-authentication-prompts-on-azure-ad-joined-devices"></a>K: Miért nem a felhasználói egy része jelenik meg az Azure multi-factor Authentication utasításokat az Azure AD-csatlakoztatott eszközökön?
+### <a name="q-my-users-cant-search-printers-from-azure-ad-joined-devices-how-can-i-enable-printing-from-those-devices"></a>K: A felhasználók nem kereshetnek nyomtatókat az Azure AD-hez csatlakoztatott eszközökről. Hogyan engedélyezhető a nyomtatás az eszközökről?
 
-**V:** Előfordulhat, hogy a felhasználó csatlakozzon, vagy eszköz regisztrálása az Azure ad-vel a multi-factor Authentication szolgáltatás használatával. Maga az eszköz válik, hogy a felhasználó egy megbízható második tényező. Ha ugyanaz a felhasználó az eszköz bejelentkezik, és hozzáfér az alkalmazáshoz, az Azure AD az eszköz második tényezőként figyelembe veszi. Lehetővé teszi, hogy a felhasználó zökkenőmentes az alkalmazások további multi-factor Authentication-kérések nélküli eléréséhez. 
+**V:** A nyomtatók Azure AD-hez csatlakoztatott eszközökön való üzembe helyezéséről lásd: [a Windows Server Hybrid Cloud Print üzembe helyezése előzetes hitelesítéssel](https://docs.microsoft.com/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy). A hibrid Felhőbeli nyomtatás üzembe helyezéséhez helyszíni Windows Serverre van szükség. Jelenleg a felhőalapú nyomtatási szolgáltatás nem érhető el. 
+
+---
+
+### <a name="q-how-do-i-connect-to-a-remote-azure-ad-joined-device"></a>K: Hogyan csatlakozni egy távoli Azure AD-hez csatlakoztatott eszközhöz?
+
+**V:** Lásd: [Csatlakozás távoli Azure Active Directoryhoz csatlakoztatott számítógép](https://docs.microsoft.com/windows/client-management/connect-to-remote-aadj-pc).
+
+---
+
+### <a name="q-why-do-my-users-see-you-cant-get-there-from-here"></a>K: Miért látom a felhasználók *, hogy itt nem tud innen bejutni*?
+
+**V:** Konfigurált bizonyos feltételes hozzáférési szabályokat egy adott eszköz állapotának megköveteléséhez? Ha az eszköz nem felel meg a feltételeknek, a rendszer letiltja a felhasználókat, és látja ezt az üzenetet. Értékelje ki a feltételes hozzáférési szabályzat szabályait. Győződjön meg arról, hogy az eszköz megfelel a feltételeknek, hogy elkerülje az üzenetet.
+
+---
+
+### <a name="q-why-dont-some-of-my-users-get-azure-multi-factor-authentication-prompts-on-azure-ad-joined-devices"></a>K: Miért nem a felhasználók egy része kapja meg az Azure Multi-Factor Authentication az Azure AD-hez csatlakoztatott eszközöket?
+
+**V:** A felhasználók Multi-Factor Authentication használatával csatlakozhatnak vagy regisztrálhatnak egy eszközt az Azure AD-vel. Az eszköz maga is megbízható második tényezővé válik az adott felhasználó számára. Ha ugyanaz a felhasználó bejelentkezik az eszközre, és egy alkalmazáshoz fér hozzá, az Azure AD az eszközt második tényezőnek tekinti. Lehetővé teszi, hogy a felhasználó zökkenőmentesen hozzáférhessen az alkalmazásokhoz további Multi-Factor Authentication kérések nélkül. 
 
 Ez a viselkedés:
 
-- Alkalmazható az Azure AD-tartományhoz csatlakozik, és az Azure ad-ben regisztrált eszközökön –, de nem a hibrid Azure AD-hez csatlakoztatott eszközök.
-
-- Nem alkalmazható az semmilyen más felhasználó, aki az adott eszközre bejelentkezik. Így minden egyéb eszköz hozzáféréssel rendelkező felhasználókat a multi-factor Authentication szolgáltatás kihívást beolvasása. Utána hozzáférhet a multi-factor Authentication hitelesítést igénylő alkalmazásokhoz.
-
----
-
-### <a name="q-why-do-i-get-a-username-or-password-is-incorrect-message-for-a-device-i-just-joined-to-azure-ad"></a>K: Miért kapok egy *helytelen felhasználónév vagy jelszó* üzenet az eszköz az Azure AD közvetlenül csatlakoztatott?
-
-**V:** Ez a forgatókönyv gyakori okai a következők:
-
-- A felhasználói hitelesítő adatok már nem érvényesek.
-
-- A számítógép nem tud kommunikálni az Azure Active Directoryval. Ellenőrizze, hogy minden hálózati problémák léptek fel.
-
-- Összevont bejelentkezések támogatásához a WS-Trust végpontok, amelyek engedélyezve vannak és elérhetők az összevonási kiszolgálóra van szükség. 
-
-- Engedélyezte az átmenő hitelesítést. Ezért az ideiglenes jelszót kell módosítani, amikor bejelentkezik.
+- Az Azure AD-hez csatlakoztatott és az Azure AD-ban regisztrált eszközökre vonatkozik – a hibrid Azure AD-hez csatlakoztatott eszközök esetében nem.
+- Nem alkalmazható minden olyan felhasználóra, aki bejelentkezik az adott eszközre. Tehát minden más felhasználó, aki hozzáfér az eszközhöz, Multi-Factor Authentication kihívást kap. Ezután hozzáférhetnek Multi-Factor Authenticationt igénylő alkalmazásokhoz.
 
 ---
 
-### <a name="q-why-do-i-see-the-oops-an-error-occurred-dialog-when-i-try-to-azure-ad-join-my-pc"></a>K: Miért látok a *Hoppá... Hiba történt!* párbeszédpanel jelenik meg az Azure AD join számítógépre?
+### <a name="q-why-do-i-get-a-username-or-password-is-incorrect-message-for-a-device-i-just-joined-to-azure-ad"></a>K: Miért nem *megfelelő a Felhasználónév vagy a jelszó az* Azure ad-hez csatlakoztatott eszközhöz?
 
-**V:** Ez a hiba akkor fordul elő, ha beállította az Azure Active Directory-regisztráció az Intune-nal. Győződjön meg arról, hogy a felhasználó, aki az Azure AD-csatlakozás próbál rendelkezik-e a megfelelő Intune-licenccel. További információkért lásd: [Windows-eszközök regisztrációjának beállítása](https://docs.microsoft.com/intune/windows-enroll).  
+**V:** A forgatókönyv gyakori okai a következők:
 
----
-
-### <a name="q-why-did-my-attempt-to-azure-ad-join-a-pc-fail-although-i-didnt-get-any-error-information"></a>K: Miért volt saját kísérlet az Azure AD join a PC-s sikertelenek lesznek, bár minden hibaadatok nem kaptam?
-
-**V:** Ennek valószínű oka az, hogy jelentkezett be az eszközön a beépített helyi rendszergazdai fiók használatával. Hozzon létre egy másik helyi fiókot, a beállítás befejezéséhez az Azure Active Directory join használata előtt. 
-
----
-
-### <a name="qwhat-are-the-ms-organization-p2p-access-certificates-present-on-our-windows-10-devices"></a>Válaszok: Mik azok az MS-szervezet-P2P-hozzáférési tanúsítvány található, a Windows 10 rendszerű eszközökön?
-
-**V:** Az MS-szervezet-P2P-hozzáférési engedélyeket adtak ki az Azure AD egyaránt, az Azure AD-hez, és a hibrid Azure AD-hez csatlakoztatott eszközök. Ezek a tanúsítványok segítségével engedélyezze a távoli asztali esetekre ugyanabban a bérlőben eszközök közötti megbízhatósági kapcsolat. Egy tanúsítványt az eszközre, és a egy másik kiadni a felhasználó. Az eszköz tanúsítványa megtalálható `Local Computer\Personal\Certificates` és a egy napig érvényes. Ez a tanúsítvány megújításának (egy új tanúsítvány kiállításával) Ha az eszköz még aktív, az Azure ad-ben. A felhasználói tanúsítvány jelen `Current User\Personal\Certificates` , és ezt a tanúsítványt is érvényes egy nap, de azt ki igény szerinti, ha egy felhasználó megpróbál egy távoli asztali munkamenetet egy másik Azure ad-ben csatlakoztatott eszközre. Ez nem újítja meg lejártakor. Mindkét ezeket a tanúsítványokat kibocsátott használatával a MS-szervezet-P2P-hozzáférési tanúsítvány megtalálható az `Local Computer\AAD Token Issuer\Certificates`. A tanúsítványt az Azure AD-eszközök regisztrációja során. 
+- A felhasználói hitelesítő adatai már nem érvényesek.
+- A számítógép nem tud kommunikálni Azure Active Directoryokkal. Keresse meg a hálózati kapcsolattal kapcsolatos problémákat.
+- Az összevont bejelentkezésekhez szükséges, hogy az összevonási kiszolgáló támogassa a WS-Trust végpontokat, amelyek engedélyezve vannak és elérhetők. 
+- Engedélyezte az átmenő hitelesítést. Ezért az ideiglenes jelszót módosítani kell a bejelentkezéskor.
 
 ---
 
-### <a name="qwhy-do-i-see-multiple-expired-certificates-issued-by-ms-organization-p2p-access-on-our-windows-10-devices-how-can-i-delete-them"></a>Q:Why lásd a Windows 10 rendszerű eszközökön az MS-szervezet-P2P-hozzáférés által kiadott több lejárt tanúsítványok? Hogyan törölhetek őket?
+### <a name="q-why-do-i-see-the-oops-an-error-occurred-dialog-when-i-try-to-azure-ad-join-my-pc"></a>K: Miért látom a *Hoppá... Hiba történt.* párbeszédpanel, amikor megpróbálok csatlakozni a számítógéphez az Azure AD-vel?
 
-**V:** Hiba történt a Windows 10 1709-es és alacsonyabb, ahol az MS-szervezet-P2P-hozzáférés lejárt tanúsítványokat továbbra is létezik a számítógép tárolja a titkosítási problémák miatt azonosított. A felhasználók sikerült által tapasztalt problémák a hálózati kapcsolatot, ha bármely VPN-ügyfelek (pl. Cisco AnyConnect), amely nem tudja kezelni a nagy számú lejárt tanúsítványokat használ. A probléma javítását a Windows 10 1803 kiadás automatikusan törli az összes ilyen lejárt MS-szervezet-P2P-hozzáférés tanúsítványokat. A probléma megoldható az eszközök frissítése a Windows 10 1803. Ha Ön nem lehet frissíteni, törölheti ezek a tanúsítványok semmilyen negatív hatással.  
+**V:** Ez a hiba akkor fordul elő, amikor beállítja Azure Active Directory az Intune-ban való regisztrálást. Győződjön meg arról, hogy az Azure AD JOIN-t próbáló felhasználó a megfelelő Intune-licenccel van hozzárendelve. További információ: [a Windows-eszközök regisztrálásának beállítása](https://docs.microsoft.com/intune/windows-enroll).  
 
 ---
 
+### <a name="q-why-did-my-attempt-to-azure-ad-join-a-pc-fail-although-i-didnt-get-any-error-information"></a>K: Miért nem sikerül az Azure AD-hez csatlakozni egy számítógéphez, de nem kaptam hibaüzenetet?
 
-## <a name="hybrid-azure-ad-join-faq"></a>Hibrid Azure AD joinnal kapcsolatos gyakori kérdések
+**V:** A probléma valószínű oka az, hogy a helyi beépített rendszergazdai fiók használatával jelentkezett be az eszközre. A telepítés befejezéséhez hozzon létre egy másik helyi fiókot a Azure Active Directory csatlakoztatása előtt. 
 
-### <a name="q-where-can-i-find-troubleshooting-information-to-diagnose-hybrid-azure-ad-join-failures"></a>K: Hol találom meg hibaelhárítási információ a hibrid Azure AD join hibák diagnosztizálását?
+---
 
-**V:** Hibaelhárítási információkat, tanulmányozza a következő cikkeket:
+### <a name="qwhat-are-the-ms-organization-p2p-access-certificates-present-on-our-windows-10-devices"></a>A K:mi a Windows 10-es eszközökön megtalálható MS-Organization-P2P-Access tanúsítványok?
 
-- [Hibaelhárítás az Azure Active Directory hibrid csatlakoztatott Windows 10 és Windows Server 2016-eszközök](troubleshoot-hybrid-join-windows-current.md)
+**V:** Az MS-Organization-P2P-Access tanúsítványokat az Azure AD állítja be mind az Azure AD-hez csatlakoztatott, mind a hibrid Azure AD-hez csatlakoztatott eszközökhöz. Ezek a tanúsítványok lehetővé teszik az azonos bérlőben lévő eszközök közötti megbízhatóságot a távoli asztali környezetekben. A rendszer egy tanúsítványt állít ki az eszköz számára, és egy másikat bocsát ki a felhasználó számára. Az eszköz tanúsítványa megtalálható a `Local Computer\Personal\Certificates` -ben, és egy napig érvényes. Ez a tanúsítvány megújul (új tanúsítvány kiállításával), ha az eszköz még aktív az Azure AD-ben. A felhasználói tanúsítvány megtalálható a- `Current User\Personal\Certificates` ben, és ez a tanúsítvány egy napig érvényes, de igény szerint van kiadva, ha a felhasználó egy távoli asztali munkamenetet próbál egy másik Azure ad-hoz csatlakoztatott eszközhöz csatlakozni. Nem újítható meg lejáratkor. Mindkét tanúsítvány a-ban található `Local Computer\AAD Token Issuer\Certificates`MS-Organization-P2P-Access tanúsítvány használatával lett kibocsátva. Ezt a tanúsítványt az Azure AD állítja ki az eszköz regisztrálása során. 
 
-- [Hibaelhárítás az Azure Active Directory hibrid csatlakoztatott régebbi verziójú eszközök](troubleshoot-hybrid-join-windows-legacy.md)
+---
+
+### <a name="qwhy-do-i-see-multiple-expired-certificates-issued-by-ms-organization-p2p-access-on-our-windows-10-devices-how-can-i-delete-them"></a>Q:Why az MS-Organization-P2P-Access által kiállított több lejárt tanúsítvány a Windows 10-es eszközökön? Hogyan törölhetem őket?
+
+**V:** Probléma merült fel a Windows 10 1709-es verziójában, illetve alacsonyabb, ahol a lejárt MS-Organization-P2P-Access tanúsítványok továbbra is léteznek a számítógép-tárolóban a titkosítási problémák miatt. A felhasználók a hálózati kapcsolattal kapcsolatos problémákat okozhatnak, ha olyan VPN-ügyfeleket használ (például Cisco AnyConnect), amelyek nem képesek a nagy számú lejárt tanúsítvány kezelésére. Ezt a problémát a Windows 10 1803 kiadásban rögzítették, hogy automatikusan törölje a lejárt MS-Organization-P2P-Access tanúsítványokat. A probléma megoldásához frissítse az eszközöket a Windows 10 1803-re. Ha nem tudja frissíteni, törölheti ezeket a tanúsítványokat a negatív hatás nélkül.  
+
+---
+
+## <a name="hybrid-azure-ad-join-faq"></a>Hibrid Azure AD-csatlakozás – gyakori kérdések
+
+### <a name="q-how-do-i-unjoin-a-hybrid-azure-ad-joined-device-locally-on-the-device"></a>K: Hogyan a hibrid Azure AD-hez csatlakoztatott eszköz csatlakoztatását helyileg az eszközön?
+
+**V:** A hibrid Azure AD-hez csatlakoztatott eszközök esetében ügyeljen arra, hogy kikapcsolja az automatikus regisztrációt. Ezután az ütemezett feladat nem regisztrálja újra az eszközt. Ezután nyisson meg egy parancssort rendszergazdaként, és írja `dsregcmd.exe /debug /leave`be a következőt:. Vagy futtathatja ezt a parancsot parancsfájlként több eszközön a tömeges kikapcsoláshoz.
+
+### <a name="q-where-can-i-find-troubleshooting-information-to-diagnose-hybrid-azure-ad-join-failures"></a>K: Hol találhatok hibaelhárítási információkat a hibrid Azure AD-csatlakozási hibák diagnosztizálásához?
+
+**V:** Hibaelhárítási információkért tekintse meg a következő cikkeket:
+
+- [Hibrid Azure Active Directory csatlakoztatott Windows 10 és Windows Server 2016 rendszerű eszközök hibaelhárítása](troubleshoot-hybrid-join-windows-current.md)
+- [A hibrid Azure Active Directory csatlakoztatása a régebbi verziójú eszközökhöz](troubleshoot-hybrid-join-windows-legacy.md)
  
-### <a name="q-why-do-i-see-a-duplicate-azure-ad-registered-record-for-my-windows-10-hybrid-azure-ad-joined-device-in-the-azure-ad-devices-list"></a>K: Miért látok egy ismétlődő Azure ad-ben a Windows 10-es hibrid Azure ad-ben regisztrált rekord csatlakoztatott eszköz az Azure ad-ben eszközlistán?
+### <a name="q-why-do-i-see-a-duplicate-azure-ad-registered-record-for-my-windows-10-hybrid-azure-ad-joined-device-in-the-azure-ad-devices-list"></a>K: Miért jelenik meg egy duplikált Azure AD-beli regisztrált rekord a Windows 10-es hibrid Azure AD-hez csatlakoztatott eszközhöz az Azure AD-eszközök listájában?
 
-**V:** Amikor a felhasználók hozzá egy tartományhoz csatlakoztatott eszközön lévő alkalmazások fiókjukat, akkor előfordulhat, hogy meg kell adnia **fiók hozzáadása a Windows?** Ha belép **Igen** a parancssorban, az eszköz regisztrálása az Azure AD. A megbízhatósági típust az Azure AD-ban regisztrálva van megjelölve. Miután engedélyezte a hibrid Azure AD-csatlakozás a szervezetben, az eszköz is lekéri a hibrid Azure AD-hez. Ezután két eszköz állapota jelenik meg az ugyanazon az eszközön. 
+**V:** Ha a felhasználók fiókokat vesznek fel egy tartományhoz csatlakoztatott eszközön lévő alkalmazásokba, a rendszer a **fiók hozzáadása a Windowshoz** lehetőséget kér? Ha **Igen** értéket ad meg a parancssorban, az eszköz regisztrálva van az Azure ad-ben. A megbízhatósági kapcsolat típusa az Azure AD-ban regisztráltként van megjelölve. Miután engedélyezte a hibrid Azure AD-csatlakozást a szervezetben, az eszköz a hibrid Azure AD-hez is csatlakoztatva lesz. Ezután két eszköz állapot jelenik meg ugyanarra az eszközre. 
 
-Hibrid Azure AD-csatlakozás az Azure ad-ben regisztrált átadta a feladatait élvez elsőbbséget. Így az eszköz számít a hibrid Azure AD-hez bármely hitelesítési és feltételes hozzáférési kiértékelésnek. Az Azure ad-ben regisztrált eszközrekordot nyugodtan törölheti az Azure AD portálon. Ismerje meg, hogyan [elkerüléséhez vagy a Windows 10-es gépen a kettős állapot tisztítása](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan#review-things-you-should-know). 
-
-
----
-
-### <a name="q-why-do-my-users-have-issues-on-windows-10-hybrid-azure-ad-joined-devices-after-changing-their-upn"></a>K: Miért érdemes a felhasználók rendelkeznek problémák a Windows 10-es hibrid Azure AD-csatlakoztatott eszközök Felhasználónevük módosítása után?
-
-**V:** Jelenleg UPN módosítások nem teljesen támogatottak a hibrid Azure AD-csatlakoztatott eszközök. Felhasználók jelentkezzen be az eszköz és a helyszíni alkalmazások elérését, amíg az Azure AD-hitelesítés nem sikerül, egy UPN módosítását követően. Ennek eredményeképpen felhasználóinak egyszeri Bejelentkezést és feltételes hozzáférési problémák az eszközeiken. Jelenleg az eszköz az Azure ad-ből ("dsregcmd /leave" futtassa megemelt jogosultságokkal) elhagyása kell újra belépni az (automatikusan megtörténik), és a probléma megoldásához. Jelenleg dolgozunk a probléma megoldásához. Bejelentkezés Windows Hello for Business felhasználók azonban nem ütköznek a probléma. 
+A hibrid Azure AD-csatlakozás elsőbbséget élvez az Azure AD regisztrált állapotával szemben. Így az eszköz minden hitelesítési és feltételes hozzáférési kiértékeléshez csatlakoztatva lesz a hibrid Azure AD-hez. Biztonságosan törölheti az Azure AD-beli regisztrált eszköz rekordját az Azure AD-portálról. Ebből a [kettős állapotból elkerülheti a Windows 10 rendszerű gépen, vagy megtisztíthatja](hybrid-azuread-join-plan.md#review-things-you-should-know)azt. 
 
 ---
 
-### <a name="q-do-windows-10-hybrid-azure-ad-joined-devices-require-line-of-sight-to-the-domain-controller-to-get-access-to-cloud-resources"></a>K: Igényelnek-e a Windows 10-es hibrid Azure AD-csatlakoztatott eszközök üzemel, a tartományvezérlő a felhőbeli erőforrások eléréséhez?
+### <a name="q-why-do-my-users-have-issues-on-windows-10-hybrid-azure-ad-joined-devices-after-changing-their-upn"></a>K: Miért vannak problémák a felhasználók számára a Windows 10 hibrid Azure AD-hez csatlakoztatott eszközökön az egyszerű felhasználónév módosítása után?
 
-**V:** Általában nem, kivéve, ha a felhasználó jelszava megváltozott. Windows 10-es hibrid Azure AD-csatlakozás ésőbb befejeződött, és a felhasználó legalább egyszer már bejelentkezett, az eszköz nem igényel üzemel, a tartományvezérlő a felhőbeli erőforrások eléréséhez. Windows 10-es is elérhető egyszeri bejelentkezéshez Azure AD-alkalmazások bárhonnan internet-kapcsolattal, kivéve, ha a jelszó módosítása. Felhasználók, akik jelentkezzen be Windows Hello for Business továbbra is egyetlen jelentkezzen be az Azure AD-alkalmazások után is módosíthatja a jelszót, még akkor is, ha nincs üzemel a tartományvezérlőre. 
-
----
-
-### <a name="q-what-happens-if-a-user-changes-their-password-and-tries-to-login-to-their-windows-10-hybrid-azure-ad-joined-device-outside-the-corporate-network"></a>K: Mi történik, ha a felhasználó megváltoztatja a jelszavát, és megpróbál bejelentkezni a Windows 10-es hibrid Azure AD a csatlakoztatott eszköz a vállalati hálózaton kívül?
-
-**V:** Ha jelszó megváltozik a vállalati hálózaton kívül (például a Azure AD SSPR használatával), majd az új jelszót a felhasználó bejelentkezése sikertelen lesz. A hibrid Azure AD-hez csatlakoztatott eszközök esetében a helyszíni Active Directory az elsődleges szolgáltató. Egy eszköz nem rendelkezik üzemel, a tartományvezérlő, esetén nem lehet érvényesíteni az új jelszót. Így a felhasználónak kell kapcsolatot létesíteni az a tartományvezérlő (akár VPN, vagy folyamatban van a vállalati hálózaton keresztül), mielőtt azok az eszközre az új jelszóval jelentkezhet be. Ellenkező esetben akkor is csak jelentkezzen be a régi jelszavát miatt gyorsítótárazott bejelentkezés funkció a Windows. Azonban a régi jelszó érvénytelenné válik, jogkivonat-kérelmeket közben az Azure AD, és ezért megakadályozza, hogy egyszeri bejelentkezést a és sikertelen lesz minden olyan eszközalapú feltételes hozzáférési szabályzatokat. A probléma nem fordul elő, ha Windows Hello for Business. 
+**V:** A hibrid Azure AD-hez csatlakoztatott eszközök jelenleg nem támogatják teljes mértékben az UPN-módosításokat. Habár a felhasználók bejelentkezhetnek az eszközre, és hozzáférhetnek a helyi alkalmazásokhoz, az Azure AD-vel való hitelesítés az egyszerű felhasználónév módosítása után meghiúsul. Ennek eredményeképpen a felhasználóknak egyszeri bejelentkezéses és feltételes hozzáférési problémájuk van az eszközön. Ekkor meg kell szüntetnie az eszköz csatlakoztatását az Azure AD-ből (futtassa a "dsregcmd/Leave" parancsot emelt szintű jogosultságokkal), és csatlakozzon újra (automatikusan megtörténik) a probléma megoldásához. Jelenleg dolgozunk a probléma megoldásán. A vállalati Windows Hello szolgáltatással bejelentkezett felhasználók azonban nem szembesülnek ezzel a problémával. 
 
 ---
 
+### <a name="q-do-windows-10-hybrid-azure-ad-joined-devices-require-line-of-sight-to-the-domain-controller-to-get-access-to-cloud-resources"></a>K: A Windows 10 hibrid Azure AD-hez csatlakoztatott eszközök megkívánják a tartományvezérlőnek a felhőalapú erőforrásokhoz való hozzáférés megszerzését?
 
-## <a name="azure-ad-register-faq"></a>Az Azure AD regisztrálása – gyakori kérdések
+**V:** Nem, kivéve, ha a felhasználó jelszava megváltozik. Ha a Windows 10 hibrid Azure AD-csatlakozás befejeződött, és a felhasználó legalább egyszer bejelentkezett, az eszközön nincs szükség a tartományvezérlőre a felhőalapú erőforrások eléréséhez. A Windows 10 az Azure AD-alkalmazásokhoz bárhonnan, internetkapcsolattal jelentkezhet be egyszeri bejelentkezésre, kivéve a jelszó módosításakor. Azok a felhasználók, akik bejelentkeznek a vállalati Windows Hello szolgáltatásba, továbbra is egyszeri bejelentkezést kaphatnak az Azure AD-alkalmazásokhoz még a jelszó módosítása után is, még akkor is, ha nem látják a tartományvezérlőt. 
 
-### <a name="q-can-i-register-android-or-ios-byod-devices"></a>K: Android vagy IOS rendszerű BYOD-eszközöket is regisztrálni?
+---
 
-**V:** Igen, de csak az Azure eszközregisztrációs szolgáltatással és a hibrid ügyfelek számára. Nem támogatott az a helyszíni Active Directory összevonási szolgáltatások (AD FS) az eszközregisztrációs szolgáltatással.
+### <a name="q-what-happens-if-a-user-changes-their-password-and-tries-to-login-to-their-windows-10-hybrid-azure-ad-joined-device-outside-the-corporate-network"></a>K: Mi történik, ha egy felhasználó megváltoztatja a jelszavát, és megpróbál bejelentkezni a Windows 10 hibrid Azure AD-hez csatlakoztatott eszközére a vállalati hálózaton kívül?
 
-### <a name="q-how-can-i-register-a-macos-device"></a>K: Hogyan regisztrálhatnak a macOS-eszközön?
+**V:** Ha a jelszó a vállalati hálózaton kívülre módosul (például az Azure AD-SSPR használatával), akkor a felhasználó nem fog tudni bejelentkezni az új jelszóval. A hibrid Azure AD-hez csatlakoztatott eszközök esetében a helyszíni Active Directory az elsődleges szolgáltató. Ha egy eszköz nem rendelkezik a tartományvezérlőre mutató vonallal, nem tudja érvényesíteni az új jelszót. Ezért a felhasználónak létre kell hoznia a kapcsolatot a tartományvezérlővel (VPN-en keresztül vagy a vállalati hálózaton keresztül), mielőtt be tudja jelentkezni az eszközre az új jelszóval. Ellenkező esetben csak a régi jelszavas bejelentkezést lehet bejelentkezni a Windows gyorsítótárazott bejelentkezési funkciója miatt. A régi jelszót azonban az Azure AD érvényteleníti a jogkivonat-kérelmek során, ezért megakadályozza az egyszeri bejelentkezést, és az eszközön alapuló feltételes hozzáférési szabályzatok meghibásodását. Ez a probléma nem lép fel, ha a vállalati Windows Hello-t használja. 
 
-**V:** Az alábbi lépéseket:
+---
+
+## <a name="azure-ad-register-faq"></a>Azure AD-regisztráció – gyakori kérdések
+
+### <a name="q-how-do-i-remove-an-azure-ad-registered-state-for-a-device-locally"></a>K: Hogyan eltávolít egy Azure AD-beli regisztrált állapotot egy eszköz számára helyileg?
+
+**V:** 
+- A Windows 10 Azure ad-ban regisztrált eszközökhöz lépjen a **Beállítások** > **fiókok** > **hozzáférés munkahelyi vagy iskolai**rendszerhez. Válassza ki a fiókját, és válassza a **Leválasztás**lehetőséget. Az eszköz regisztrálása felhasználónkénti profil a Windows 10 rendszeren.
+- Az iOS és az Android esetében használhatja a **Microsoft Authenticator Alkalmazásbeállítások** > **eszköz regisztrációját** , és válassza az **eszköz regisztrációjának törlése**lehetőséget.
+- MacOS esetén a Microsoft Intune Céges portál alkalmazással visszavonhatja az eszközt a felügyelet alól, és törölheti a regisztrációt. 
+
+---
+### <a name="q-how-can-i-block-users-from-adding-additional-work-accounts-azure-ad-registered-on-my-corporate-windows-10-devices"></a>K: Hogyan tiltható le a felhasználók további munkahelyi fiókok (Azure AD-regisztráció) hozzáadására a vállalati Windows 10-es eszközökön?
+
+**V:** A következő beállításjegyzék engedélyezésével letilthatja, hogy a felhasználók további munkahelyi fiókokat adjanak hozzá a vállalati tartományhoz, az Azure AD-hez csatlakoztatott vagy hibrid Azure AD-hez csatlakoztatott Windows 10-es eszközökhöz. Ezzel a szabályzattal letilthatja a tartományhoz csatlakozó gépeket, hogy véletlenül ugyanazzal a felhasználói fiókkal regisztrálják az Azure AD-t. 
+
+`HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin"=dword:00000001`
+
+---
+### <a name="q-can-i-register-android-or-ios-byod-devices"></a>K: Regisztrálhatok Android vagy iOS rendszerű BYOD-eszközöket?
+
+**V:** Igen, de csak az Azure-eszköz regisztrációs szolgáltatásával és a hibrid ügyfeleknél. Active Directory összevonási szolgáltatások (AD FS) (AD FS) helyszíni eszköz regisztrációs szolgáltatása nem támogatja.
+
+---
+### <a name="q-how-can-i-register-a-macos-device"></a>K: Hogyan regisztrálhatok macOS-eszközt?
+
+**V:** Hajtsa végre a következő lépéseket:
 
 1.  [Megfelelőségi szabályzat létrehozása](https://docs.microsoft.com/intune/compliance-policy-create-mac-os)
-2.  [MacOS-eszközökre vonatkozó feltételes hozzáférési szabályzat definiálása](../active-directory-conditional-access-azure-portal.md) 
+1.  [Feltételes hozzáférési szabályzat definiálása macOS-eszközökhöz](../active-directory-conditional-access-azure-portal.md) 
 
-**Megjegyzés:**
+**Megjegyzéseket tartalmazó**
 
-- A feltételes hozzáférési házirendben a felhasználókat kell egy [támogatott Office-verzió macOS-hez készült](../conditional-access/technical-reference.md#client-apps-condition) erőforrások eléréséhez. 
+- A feltételes hozzáférési szabályzatban szereplő felhasználóknak a macOS- [hez készült Office támogatott verziójára](../conditional-access/technical-reference.md#client-apps-condition) van szükségük az erőforrások eléréséhez. 
+- Az első hozzáférés kipróbálásakor a rendszer felszólítja a felhasználókat, hogy regisztrálják az eszközt a vállalati portál használatával.
 
-- Az első hozzáférési próbálkozzon során a rendszer kéri a felhasználók regisztrálja az eszközt a vállalati portál használatával.
+---
+## <a name="next-steps"></a>További lépések
 
+- További információ az [Azure ad regisztrált eszközeiről](concept-azure-ad-register.md)
+- További információ az [Azure ad-hez csatlakoztatott eszközökről](concept-azure-ad-join.md)
+- További információ a [hibrid Azure ad-hez csatlakoztatott eszközökről](concept-azure-ad-join-hybrid.md)

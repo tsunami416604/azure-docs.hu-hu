@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 8ea17e5615c0256c084b0745a392fb49f8873f99
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 1e5513b28c1ae64fc8c87bb7a949596feab4623e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58805363"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65873419"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>Hozzon létre egy Linux rendszerű virtuális gép gyorsított hálózatkezelésű
 
@@ -224,6 +224,10 @@ vf_tx_bytes: 1099443970
 vf_tx_dropped: 0
 ```
 Gyorsított hálózatkezelés engedélyezve van a virtuális géphez.
+
+## <a name="handle-dynamic-binding-and-revocation-of-virtual-function"></a>Dinamikus kötés és -visszavonás virtuális függvény kezeléséhez 
+Alkalmazások a szintetikus hálózati Adaptert, amely ki van téve a virtuális Gépen keresztül kell futtatnia. Ha az alkalmazás közvetlenül a hálózati adapter VF keresztül futtat, akkor nem kap **összes** a virtuális géphez, mivel az egyes csomagok mutatja a szintetikus adapter küldött csomagokat.
+Ha egy alkalmazás a szintetikus hálózati adapter keresztül futtatja, Ez garantálja, hogy az alkalmazás fogad **összes** csomagokat, amelyek végül azt. Azt is gondoskodik arról, hogy a rendszer az alkalmazás továbbra is működik, akkor is, ha a VF vissza lett vonva, ha a gazdagép javítás alatt áll. Alkalmazások a szintetikus hálózati Adapterhez kötve van egy **kötelező** kihasználhatja a minden alkalmazás esetében követelmény **gyorsított hálózatkezelés**.
 
 ## <a name="enable-accelerated-networking-on-existing-vms"></a>A meglévő virtuális gépek gyorsított hálózatkezelés engedélyezéséhez
 Létrehozott egy virtuális gép gyorsított hálózatkezelés nélkül, célszerű lehet engedélyezni ezt a funkciót egy meglévő virtuális Gépet.  A virtuális gép támogatnia kell a gyorsított hálózatkezelés az alábbi előfeltételek is fent leírt feltételek:

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 1ab404b838af65dcb75395dfeee1ca0553e497a1
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51572239"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179789"
 ---
 ## <a name="specifying-structure-definition-for-rectangular-datasets"></a>Struktúrameghatározások négyszögletes adatkészletek esetén
 A struktúra szakasza az adatkészletek JSON- **választható** téglalap alakú táblák (a sorok és oszlopok) szakaszt, és a tábla oszlopait gyűjteményét tartalmazza. A struktúra szakasz vagy biztosító informace o typu típuskonverziók vagy az oszlop-hozzárendelések során fogja használni. A következő szakaszok ismertetik részletesebben ezeket a funkciókat. 
@@ -18,10 +18,10 @@ Minden oszlop a következő tulajdonságokat tartalmazza:
 
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
-| név |Az oszlop neve. |Igen |
+| name |Az oszlop neve. |Igen |
 | type |Az oszlop adattípusát. Tekintse meg a típus átalakítások kapcsolatos alábbi szakasz további részletek kapcsolatban, hogy mikor kell hogy típussal kapcsolatos információk megadása |Nem |
-| kulturális környezet |.NET-alapú kulturális környezet esetén a típus van megadva, és jelenleg .NET Datetime vagy Datetimeoffset használandó. Alapértelmezett érték "en-us". |Nem |
-| Formátum |Formázó karakterlánc típus van megadva, és .NET használandó Datetime vagy Datetimeoffset írja be. |Nem |
+| culture |.NET-alapú kulturális környezet esetén a típus van megadva, és jelenleg .NET Datetime vagy Datetimeoffset használandó. Alapértelmezett érték "en-us". |Nem |
+| format |Formázó karakterlánc típus van megadva, és .NET használandó Datetime vagy Datetimeoffset írja be. |Nem |
 
 A következő minta bemutatja a struktúra részben JSON három oszlopot felhasználói azonosítóját, nevét és lastlogindate tartalmazó tábla.
 
@@ -49,14 +49,14 @@ A Data factory a következő CLS megfelelő .NET-alapú típusú értékeket tá
 * Int16
 * Int32 
 * Int64
-* Önálló
-* Dupla
-* tizedes tört
-* Byte]
-* Logikai
-* Karakterlánc 
-* GUID
-* Dátum és idő
+* Single
+* Double
+* Decimal
+* Byte[]
+* Bool
+* String 
+* Guid
+* Datetime
 * Datetimeoffset
 * Időtartomány 
 

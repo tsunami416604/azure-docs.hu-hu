@@ -1,33 +1,32 @@
 ---
 title: Képadatok feltöltése a felhőbe az Azure Storage segítségével | Microsoft Docs
 description: Azure Blob storage használata egy olyan webalkalmazással az alkalmazásadatok tárolására szolgáló
-services: storage
-author: tamram
+author: normesta
 ms.service: storage
-ms.devlang: dotnet
+ms.subservice: blobs
 ms.topic: tutorial
 ms.date: 11/26/2018
-ms.author: tamram
-ms.custom: mvc
-ms.openlocfilehash: 7d06d23af8d4d4f0282f6eb743c0f47dba80e3f0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: normesta
+ms.reviewer: dineshm
+ms.openlocfilehash: 7185d118c9f4419713ebe1291dd55c44635f0c56
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58015305"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68844954"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>Oktatóanyag: Képadatok feltöltése a felhőbe az Azure Storage segítségével
 
 Ez az oktatóanyag egy sorozat első része. Ebben az oktatóanyagban megtudhatja, hogyan helyezhet üzembe egy webalkalmazást, amely az Azure Storage ügyféloldali kódtárat használja tölthet fel képeket a storage-fiók. Ha elkészült, rendelkezni fog a egy webalkalmazást, amely tárolja, és megjeleníti a rendszerképeket az Azure storage-ból.
 
 # <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
-![Képek tároló nézete](media/storage-upload-process-images/figure2.png)
+![Rendszerkép-alkalmazás a .NET-ben](media/storage-upload-process-images/figure2.png)
 
 # <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
-![Képek tároló nézete](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
+![A Node. js v2-ben elérhető rendszerkép-alkalmazás](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 # <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
-![Képek tároló nézete](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
+![Képresizer alkalmazás Node. js v10-ben](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 ---
 
@@ -116,7 +115,7 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
 
 A webalkalmazás üzemeltetési tárterületet biztosít a GitHub-mintaadattárból az üzembe helyezett app mintakódot. Az [ az webapp create](/cli/azure/webapp) paranccsal hozzon létre egy [webalkalmazást](../../app-service/overview.md) a `myAppServicePlan` App Service-csomagban.  
 
-A következő parancsban cserélje le a `<web_app>` , egyedi névvel. Érvényes karakterek: `a-z`, `0-9` és `-`. Ha `<web_app>` van a hibaüzenet kap nem egyedi: _Ezzel a névvel webhely `<web_app>` már létezik._ A webalkalmazás alapértelmezett URL-címe `https://<web_app>.azurewebsites.net`.  
+A következő parancsban cserélje le a `<web_app>` , egyedi névvel. Érvényes karakterek: `a-z`, `0-9` és `-`. Ha `<web_app>` az nem egyedi, a következő hibaüzenet jelenik meg: _A megadott nevű `<web_app>` webhely már létezik._ A webalkalmazás alapértelmezett URL-címe `https://<web_app>.azurewebsites.net`.  
 
 ```azurecli-interactive
 webapp=<web_app>
@@ -130,7 +129,7 @@ az webapp create --name $webapp --resource-group myResourceGroup --plan myAppSer
 
 Az App Service több módszert is támogat tartalmak webalkalmazásba való üzembe helyezésére. Ebben az oktatóanyagban a webalkalmazást egy [nyilvános GitHub-mintaadattárból](https://github.com/Azure-Samples/storage-blob-upload-from-webapp) telepítheti. Konfigurálja a GitHubról való telepítést a webalkalmazásba az [az webapp deployment source config](/cli/azure/webapp/deployment/source) parancs segítségével.
 
-A mintaprojekt tartalmaz egy [ASP.NET MVC](https://www.asp.net/mvc) alkalmazást. Az alkalmazás fogad, a storage-tárfiókba menti és képeket miniatűrtárolóból jeleníti meg. A webes alkalmazás használja a [Microsoft.WindowsAzure.Storage](/dotnet/api/microsoft.windowsazure.storage?view=azure-dotnet), [Microsoft.WindowsAzure.Storage.Blob](/dotnet/api/microsoft.windowsazure.storage.blob?view=azure-dotnet), és a [Microsoft.WindowsAzure.Storage.Auth](/dotnet/api/microsoft.windowsazure.storage.auth?view=azure-dotnet) névtereket az Azure storage ügyféloldali kódtár használatával kommunikálhat az Azure storage.
+A mintaprojekt tartalmaz egy [ASP.NET MVC](https://www.asp.net/mvc) alkalmazást. Az alkalmazás fogad, a storage-tárfiókba menti és képeket miniatűrtárolóból jeleníti meg. A webalkalmazás a [Microsoft. Azure. Storage](/dotnet/api/overview/azure/storage), a [Microsoft. Azure. Storage. blob](/dotnet/api/microsoft.azure.storage.blob)és a Microsoft. Azure. Storage. auth névtereket használja az Azure Storage ügyféloldali könyvtárából az Azure Storage szolgáltatással való kommunikációhoz.
 
 ```azurecli-interactive
 az webapp deployment source config --name $webapp \
@@ -162,7 +161,7 @@ az webapp deployment source config --name $webapp \
 
 # <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
 
-A minta-webalkalmazás az [Azure Storage ügyféloldali kódtár](/dotnet/api/overview/azure/storage?view=azure-dotnet) segítségével kér a képfeltöltéshez használt hozzáférési jogkivonatokat. A tárfiók hitelesítő adatainak a Storage SDK-t használja a web app alkalmazás beállításai vannak beállítva. Alkalmazásbeállítások hozzáadása a telepített alkalmazás lecserélhető a [az webapp config appsettings set](/cli/azure/webapp/config/appsettings) parancsot.
+A minta-webalkalmazás az [Azure Storage ügyféloldali kódtár](/dotnet/api/overview/azure/storage) segítségével kér a képfeltöltéshez használt hozzáférési jogkivonatokat. A tárfiók hitelesítő adatainak a Storage SDK-t használja a web app alkalmazás beállításai vannak beállítva. Alkalmazásbeállítások hozzáadása a telepített alkalmazás lecserélhető a [az webapp config appsettings set](/cli/azure/webapp/config/appsettings) parancsot.
 
 ```azurecli-interactive
 az webapp config appsettings set --name $webapp --resource-group myResourceGroup \
@@ -208,11 +207,11 @@ A webalkalmazás teszteléséhez nyissa meg a közzétett alkalmazás URL-címé
 
 # <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
 
-Válassza ki a **fényképek feltöltése** régiót válassza ki, és töltsön fel egy fájlt, vagy egy fájl húzza a régió. Sikeres feltöltés esetén a kép eltűnik. A **létrehozott miniatűrök** szakasz üres marad, amíg ez a témakör későbbi részében teszteljük.
+Válassza ki a **fényképek feltöltése** régiót válassza ki, és töltsön fel egy fájlt, vagy egy fájl húzza a régió. Sikeres feltöltés esetén a kép eltűnik. A **létrehozott miniatűrök** szakasz üres marad, amíg a témakör későbbi szakaszában nem teszteljük.
 
-![ImageResizer alkalmazás](media/storage-upload-process-images/figure1.png)
+![Fényképek feltöltése a .NET-ben](media/storage-upload-process-images/figure1.png)
 
-A mintakód a `UploadFiletoStorage` a feladat a *Storagehelper.cs* fájllal a képek a *lemezképek* tárolón belül a tárfiók tárfiókkulcsait a [ UploadFromStreamAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob.uploadfromstreamasync?view=azure-dotnet) metódust. A következő mintakód tartalmazza a `UploadFiletoStorage` műveletet.
+A mintakód a `UploadFiletoStorage` a feladat a *Storagehelper.cs* fájllal a képek a *lemezképek* tárolón belül a tárfiók tárfiókkulcsait a [ UploadFromStreamAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.uploadfromstreamasync) metódust. A következő mintakód tartalmazza a `UploadFiletoStorage` műveletet.
 
 ```csharp
 public static async Task<bool> UploadFileToStorage(Stream fileStream, string fileName, AzureStorageConfig _storageConfig)
@@ -243,17 +242,17 @@ Az előző feladatban használt osztályok és módszerek a következők:
 
 |Osztály  |Módszer  |
 |---------|---------|
-|[StorageCredentials](/dotnet/api/microsoft.windowsazure.storage.auth.storagecredentials?view=azure-dotnet)     |         |
-|[CloudStorageAccount](/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount?view=azure-dotnet)    |  [CreateCloudBlobClient](/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount.createcloudblobclient?view=azure-dotnet)       |
-|[CloudBlobClient](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobclient?view=azure-dotnet)     |[GetContainerReference](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobclient.getcontainerreference?view=azure-dotnet)         |
-|[CloudBlobContainer](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer?view=azure-dotnet)    | [GetBlockBlobReference](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.getblockblobreference?view=azure-dotnet)        |
-|[CloudBlockBlob](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob?view=azure-dotnet)     | [UploadFromStreamAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob.uploadfromstreamasync?view=azure-dotnet)        |
+|[StorageCredentials](/dotnet/api/microsoft.azure.cosmos.table.storagecredentials)     |         |
+|[CloudStorageAccount](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount)    |  [CreateCloudBlobClient](/dotnet/api/microsoft.azure.storage.blob.blobaccountextensions.createcloudblobclient)       |
+|[CloudBlobClient](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient)     |[GetContainerReference](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.getcontainerreference)         |
+|[CloudBlobContainer](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer)    | [GetBlockBlobReference](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getblockblobreference)        |
+|[CloudBlockBlob](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob)     | [UploadFromStreamAsync](/dotnet/api/microsoft.azure.storage.file.cloudfile.uploadfromstreamasync)        |
 
 # <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
 
-Válassza ki **fájl kiválasztása** jelöljön ki egy fájlt, majd kattintson a **kép feltöltése**. A **létrehozott miniatűrök** szakasz üres marad, amíg ez a témakör későbbi részében teszteljük. 
+Válassza a **fájl** kiválasztása lehetőséget egy fájl kiválasztásához, majd kattintson a **rendszerkép feltöltése**elemre. A **létrehozott miniatűrök** szakasz üres marad, amíg a témakör későbbi szakaszában nem teszteljük. 
 
-![Képfeltöltő alkalmazás](media/storage-upload-process-images/upload-app-nodejs.png)
+![Fényképek feltöltése a Node. js v2-ben](media/storage-upload-process-images/upload-app-nodejs.png)
 
 A mintakódban a `post` útvonal felelős a képek blobtárolóba való feltöltéséért. Az útvonal modulok használatával segíti a feltöltés feldolgozását:
 
@@ -315,14 +314,14 @@ router.post('/', uploadStrategy, (req, res) => {
 
 # <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
 
-Válassza ki **fájl kiválasztása** jelöljön ki egy fájlt, majd kattintson a **kép feltöltése**. A **létrehozott miniatűrök** szakasz üres marad, amíg ez a témakör későbbi részében teszteljük. 
+Válassza a **fájl** kiválasztása lehetőséget egy fájl kiválasztásához, majd kattintson a **rendszerkép feltöltése**elemre. A **létrehozott miniatűrök** szakasz üres marad, amíg a témakör későbbi szakaszában nem teszteljük. 
 
-![Képfeltöltő alkalmazás](media/storage-upload-process-images/upload-app-nodejs.png)
+![Fényképek feltöltése a Node. js v10-ben](media/storage-upload-process-images/upload-app-nodejs.png)
 
 A mintakódban a `post` útvonal felelős a képek blobtárolóba való feltöltéséért. Az útvonal modulok használatával segíti a feltöltés feldolgozását:
 
 - [multer](https://github.com/expressjs/multer) az útvonal-kezelő a feltöltés stratégiát valósít meg.
-- [az adatfolyam](https://github.com/sindresorhus/into-stream) a puffer alakít át egy stream által kért [createBlockBlobFromStream](https://azure.github.io/azure-sdk-for-node/azure-storage-legacy/latest/BlobService.html).
+- a [into-stream](https://github.com/sindresorhus/into-stream) a [createBlockBlobFromStream](https://azure.github.io/azure-sdk-for-node/azure-storage-legacy/latest/BlobService.html)által előírt módon átalakítja a puffert egy adatfolyamba.
 
 A fájlt küld az útvonalat, mivel a fájl tartalmát a memóriában marad, amíg nem a feltölti a blobtárolóba.
 
@@ -399,7 +398,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com). A bal oldali men�
 
 Ellenőrizze, hogy a kép megjelenik-e a tárolóban.
 
-![Képek tároló nézete](media/storage-upload-process-images/figure13.png)
+![Képek tárolójának Azure Portal-listája](media/storage-upload-process-images/figure13.png)
 
 ## <a name="test-thumbnail-viewing"></a>Miniatűr megtekintésének tesztelése
 
@@ -412,13 +411,13 @@ A Fájlkereső a válasszon ki egy fájlt, és válassza ki **feltöltése**.
 Lépjen vissza az alkalmazásba és ellenőrizze, hogy a **thumbnails** tárolóba feltöltött kép látható-e.
 
 # <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
-![Képek tároló nézete](media/storage-upload-process-images/figure2.png)
+![.NET-rendszerkép Resizer-alkalmazás új képpel megjelenítve](media/storage-upload-process-images/figure2.png)
 
 # <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
-![Képek tároló nézete](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
+![Node. js v2 rendszerkép-alkalmazás új képpel megjelenítve](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 # <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
-![Képek tároló nézete](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
+![Node. js v10 rendszerkép-alkalmazás új képpel megjelenítve](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 ---
 

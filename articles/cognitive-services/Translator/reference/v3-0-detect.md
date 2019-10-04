@@ -1,29 +1,29 @@
 ---
-title: Translator Text API metódus észlelése
-titlesuffix: Azure Cognitive Services
-description: A Translator Text API észlelése módszert használja.
+title: Translator Text API észlelési módszer
+titleSuffix: Azure Cognitive Services
+description: Használja a Translator Text API észlelési módszert.
 services: cognitive-services
-author: v-pawal
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
-ms.author: v-jansko
-ms.openlocfilehash: fa618c5c623a631e7a88f8235a0b7b16fcb2bc88
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.author: swmachan
+ms.openlocfilehash: ba73b75e30639dd3f5cf5523124c926ea3442fa1
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578657"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932025"
 ---
 # <a name="translator-text-api-30-detect"></a>Translator Text API 3.0: Detect
 
-Egy adott szöveg nyelvét adja meg.
+Egy szöveg nyelvét azonosítja.
 
 ## <a name="request-url"></a>Kérés URL-címe
 
-Küldjön egy `POST` kérelmet:
+`POST` Kérelem küldése a következőnek:
 
 ```HTTP
 https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
@@ -31,43 +31,43 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
 
 ## <a name="request-parameters"></a>A kérés paraméterei
 
-A kérelem lekérdezési karakterláncot az átadott paraméterek a következők:
+A lekérdezési karakterláncon átadott kérési paraméterek a következők:
 
 <table width="100%">
   <th width="20%">Lekérdezési paraméter</th>
   <th>Leírás</th>
   <tr>
-    <td>API-verzió</td>
-    <td>*Kötelező paraméter*.<br/>Az ügyfél által kért API-verzió. Az érték lehet `3.0`.</td>
+    <td>api-version</td>
+    <td>*Kötelező paraméter*.<br/>Az ügyfél által kért API-verzió. Az értéknek `3.0`a számnak kell lennie.</td>
   </tr>
 </table> 
 
-Kérelemfejlécek a következők:
+A kérelem fejlécei a következők:
 
 <table width="100%">
   <th width="20%">Fejlécek</th>
   <th>Leírás</th>
   <tr>
-    <td>Hitelesítési fejléc(ek)</td>
-    <td><em>Szükséges kérelem fejléce</em>.<br/>Lásd: <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">elérhető lehetőségek a hitelesítéshez</a>.</td>
+    <td>Hitelesítési fejléc (ek)</td>
+    <td><em>Kötelező kérelem fejléce</em><br/>Tekintse <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">meg a hitelesítés elérhető beállításait</a>.</td>
   </tr>
   <tr>
     <td>Content-Type</td>
-    <td>*Szükséges kérelem fejléce*.<br/>Megadja a hasznos tartalom típusát. Lehetséges értékek a következők: `application/json`.</td>
+    <td>*Kötelező kérelem fejléce*<br/>Megadja az adattartalom tartalomtípusát. A lehetséges értékek a `application/json`következők:.</td>
   </tr>
   <tr>
     <td>Content-Length</td>
-    <td>*Szükséges kérelem fejléce*.<br/>A kérelem törzsében mennyi.</td>
+    <td>*Kötelező kérelem fejléce*<br/>A kérelem törzsének hossza</td>
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td>*Választható*.<br/>Egy ügyfél által létrehozott GUID egyedi azonosítására szolgál a kérelmet. Vegye figyelembe, hogy ez a fejléc kihagyhatja, ha a lekérdezési karakterláncban nevű lekérdezési paraméter használatával adja meg a nyomkövetési azonosító `ClientTraceId`.</td>
+    <td>*Választható*.<br/>Ügyfél által generált GUID a kérelem egyedi azonosításához. Vegye figyelembe, hogy kihagyhatja ezt a fejlécet, ha a lekérdezési karakterláncban szerepel a nyomkövetési `ClientTraceId`azonosító a nevű lekérdezési paraméter használatával.</td>
   </tr>
 </table> 
 
 ## <a name="request-body"></a>A kérés törzse
 
-A kérelem törzsében egy JSON-tömböt. Egyes tömbelemeken nevű karakterlánc tulajdonsággal rendelkező JSON-objektum `Text`. Nyelv észlelése alkalmazott értékét a `Text` tulajdonság. Minta kéréstörzs hasonlóan néz ki:
+A kérelem törzse egy JSON-tömb. Minden tömb elem egy nevű `Text`JSON-objektum. A `Text` nyelvfelismerés a tulajdonság értékére lesz alkalmazva. A mintául szolgáló kérelem törzse így néz ki:
 
 ```json
 [
@@ -75,27 +75,27 @@ A kérelem törzsében egy JSON-tömböt. Egyes tömbelemeken nevű karakterlán
 ]
 ```
 
-Az alábbi korlátozások érvényesek:
+A következő korlátozások érvényesek:
 
-* A tömb legfeljebb 100 elemeket is rendelkezhet.
-* A szöveges érték egy tömbelem nem lehet 10 000 karakternél, beleértve a szóközöket.
-* A kérelem tartalmazza a teljes szöveg nem lehet 50 000 karakternél, beleértve a szóközöket.
+* A tömb legfeljebb 100 elemet tartalmazhat.
+* Egy tömb elemének szöveges értéke nem lehet hosszabb 10 000 karakternél, beleértve a szóközöket is.
+* A kérelemben szereplő teljes szöveg nem lehet hosszabb 50 000 karakternél, beleértve a szóközöket is.
 
-## <a name="response-body"></a>Választörzs
+## <a name="response-body"></a>Válasz törzse
 
-A sikeres válasz egy JSON-tömböt az egyes sztringek a bemeneti számtömbből egy eredmény. Egy objektumra a következő tulajdonságokat tartalmazza:
+A sikeres válasz egy JSON-tömb, amely egyetlen eredménnyel rendelkezik a bemeneti tömb minden karakterláncához. Az eredmény objektum a következő tulajdonságokat tartalmazza:
 
-  * `language`: A felismert nyelv kódja.
+  * `language`: Az észlelt nyelv kódja.
 
-  * `score`: Az eredmény magabiztosan jelző float érték. A pontszám, nulla és a egy között, és a egy alacsony pontszámmal azt jelzi, hogy egy alacsony megbízhatósági.
+  * `score`: Egy lebegőpontos érték, amely az eredmény megbízhatóságát jelzi. A pontszám nulla és egy, az alacsony pontszám pedig alacsony megbízhatóságot jelez.
 
-  * `isTranslationSupported`: Logikai érték, amely igaz, ha a felismert nyelv szövegfordítás támogatott nyelvek valamelyikével.
+  * `isTranslationSupported`: Logikai érték, amely akkor igaz, ha az észlelt nyelv a szöveges fordításhoz támogatott nyelvek egyike.
 
-  * `isTransliterationSupported`: Logikai érték, amely igaz, ha a felismert nyelv támogatott átbetűzésű nyelvek valamelyikével.
+  * `isTransliterationSupported`: Egy logikai érték, amely akkor igaz, ha az észlelt nyelv az a nyelvek egyike, amelyet az írásban támogatnak.
   
-  * `alternatives`: Más lehetséges nyelvek tömbjét. A tömb egyes elemei egy másik objektum azonos tulajdonságokkal felsorolt: `language`, `score`, `isTranslationSupported` és `isTransliterationSupported`.
+  * `alternatives`: Más lehetséges nyelvek tömbje. A tömb minden eleme egy másik objektum, amely ugyanazokat a tulajdonságokat tartalmazza: `language` `isTranslationSupported` , `score`és `isTransliterationSupported`.
 
-A következő egy példa JSON-választ:
+Példa JSON-válaszra:
 
 ```json
 [
@@ -129,57 +129,53 @@ A következő egy példa JSON-választ:
   <th>Leírás</th>
   <tr>
     <td>X-RequestId</td>
-    <td>A kérelem azonosíthatja a szolgáltatás által létrehozott értéket. Hibaelhárítási célokra szolgál.</td>
+    <td>A szolgáltatás által a kérelem azonosítására generált érték. Hibaelhárítási célokra szolgál.</td>
   </tr>
 </table> 
 
-## <a name="response-status-codes"></a>Állapotkódok
+## <a name="response-status-codes"></a>Válasz-állapotkódok
 
-Az alábbi táblázat a lehetséges HTTP-állapotkódok, amely egy kérés adja vissza. 
+A kérelem által visszaadott lehetséges HTTP-állapotkódok a következők: 
 
 <table width="100%">
   <th width="20%">Állapotkód</th>
   <th>Leírás</th>
   <tr>
     <td>200</td>
-    <td>Siker.</td>
+    <td>Sikeres művelet.</td>
   </tr>
   <tr>
     <td>400</td>
-    <td>A lekérdezési paraméterek egyike hiányzik vagy érvénytelen. Javítsa ki a kérelem paramétereinek újrapróbálkozás előtt.</td>
+    <td>A lekérdezési paraméterek egyike hiányzik vagy érvénytelen. Az újrapróbálkozás előtt javítsa a kérelmek paramétereit.</td>
   </tr>
   <tr>
     <td>401</td>
-    <td>Nem sikerült hitelesíteni a kérelmet. Ellenőrizze a használt hitelesítő adatok-e a megadott, és érvényes.</td>
+    <td>Nem sikerült hitelesíteni a kérelmet. Győződjön meg arról, hogy a hitelesítő adatok meg vannak adva és érvényesek.</td>
   </tr>
   <tr>
     <td>403</td>
-    <td>A kérelem nem engedélyezett. Tekintse meg a részletes hibaüzenetet. Ez gyakran azt jelenti, hogy a próba-előfizetéshez biztosított összes ingyenes fordítások használtak.</td>
+    <td>A kérelem nem engedélyezett. Olvassa el a részletek hibaüzenetét. Ez gyakran azt jelzi, hogy a próbaverziós előfizetéssel biztosított összes ingyenes fordítás fel lett használva.</td>
   </tr>
   <tr>
     <td>429</td>
-    <td>A hívó túl sok kérelmet küld.</td>
+    <td>A kiszolgáló elutasította a kérelmet, mert az ügyfél túllépte a kérelmek korlátait.</td>
   </tr>
   <tr>
     <td>500</td>
-    <td>Váratlan hiba történt. Ha a hiba továbbra is fennáll, jelentse be a: dátum és idő a hiba, a válaszfejlécet a kérelem azonosító `X-RequestId`, és az ügyfél-azonosítója a fejléc `X-ClientTraceId`.</td>
+    <td>Váratlan hiba történt. Ha a hiba továbbra is fennáll, jelentse a következőt: a hiba dátuma és időpontja, a kérelem azonosítója `X-RequestId`a válasz fejlécből és az ügyfél `X-ClientTraceId`azonosítója a kérelem fejlécében.</td>
   </tr>
   <tr>
     <td>503</td>
-    <td>A kiszolgáló átmenetileg nem érhető el. Ismételje meg a kérelmet. Ha a hiba továbbra is fennáll, jelentse be a: dátum és idő a hiba, a válaszfejlécet a kérelem azonosító `X-RequestId`, és az ügyfél-azonosítója a fejléc `X-ClientTraceId`.</td>
+    <td>A kiszolgáló átmenetileg nem érhető el. Próbálja megismételni a kérelmet. Ha a hiba továbbra is fennáll, jelentse a következőt: a hiba dátuma és időpontja, a kérelem azonosítója `X-RequestId`a válasz fejlécből és az ügyfél `X-ClientTraceId`azonosítója a kérelem fejlécében.</td>
   </tr>
 </table> 
 
-Ha hiba történik, a kérelem is hiba JSON-választ adja vissza. A hibakód egy 6 jegyű számot csoportba foglalása 3 számjegyből HTTP-állapotkód további követ és 3-jegyű szám kategorizálása a hibát. Gyakori hibakódok találhatók a [v3 a Translator Text API referencialapja](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors). 
+Ha hiba történik, a kérés JSON-hibaüzenetet is ad vissza. A hibakód egy 6 számjegyből álló szám, amely a 3 számjegyből álló HTTP-állapotkódot kombinálja, majd egy 3 számjegyű számot, amely további kategorizálja a hibát. Gyakori hibakódok a [v3 Translator Text API hivatkozási oldalon](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)találhatók. 
 
 ## <a name="examples"></a>Példák
 
-Az alábbi példa bemutatja, hogyan szövegfordítás támogatott nyelvek beolvasása.
+Az alábbi példa bemutatja, hogyan kérheti le a szöveg fordításához támogatott nyelveket.
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
-
-```
+```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/detect?api-version=3.0" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'What language is this text written in?'}]"
 ```
-
----

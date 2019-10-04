@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: af849fa6790dfdb57d8073b17f6d31a3f59a532d
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: c78fa8ec470f04bcd88ab403249f77a65120c707
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59999757"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67550394"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-foresee-cx-suite"></a>Oktatóanyag: A CX Suite bizonyulhat az Azure Active Directory-integráció
 
@@ -55,7 +55,7 @@ Az Azure AD-be fája CX Suite integrációjának konfigurálásához hozzá kell
 
 **Adja hozzá a CX Suite bizonyulhat a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -119,7 +119,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés CX Suite bizonyulhat
 
     a. Az a **bejelentkezési URL-** szövegmezőbe írja be egy URL-címe: `https://cxsuite.foresee.com/`
 
-    b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: https:\//www.okta.com/saml2/service-provider/<UniqueID>
+    b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: https:\//www.okta.com/saml2/service-provider/\<UniqueID >
 
     > [!Note]
     > Ha a **azonosító** értéke nem kérdezhető le az automatikus polulated, majd töltse ki az értéket manuálisan a következők szerint minta felett. Az azonosító értéke nem valódi. Ez az érték frissítse a tényleges azonosítója. Kapcsolattartó [fája CX Suite ügyfél-támogatási csapatának](mailto:support@foresee.com) lekérni ezt az értéket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
@@ -194,7 +194,7 @@ Ebben a szakaszban engedélyezze Britta Simon CX Suite bizonyulhat a hozzáfér�
 
 ### <a name="create-foresee-cx-suite-test-user"></a>Fája CX Suite tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű CX Suite bizonyulhat a felhasználó hoz létre. Együttműködve [fája CX Suite támogatási csapatának](mailto:support@foresee.com) hozzáadása a felhasználók és a tartományt, amely a CX Suite fája platform az engedélyezéshez van szükség. Ha a tartomány a csapata által hozzáadott, a CX Suite fája platform automatikusan kiépítve felhasználók. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ebben a szakaszban egy Britta Simon nevű CX Suite bizonyulhat a felhasználó hoz létre. Együttműködve [fája CX Suite támogatási csapatának](mailto:support@foresee.com) a felhasználók vagy a tartományban, amelyhez hozzá kell adni a CX Suite fája platform engedélyezési lista hozzáadása. Ha a tartomány a csapata által hozzáadott, a CX Suite fája platform automatikusan kiépítve felhasználók. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 

@@ -1,85 +1,84 @@
 ---
-title: Az Azure Resource Manager üzembe helyezési mód |} A Microsoft Docs
-description: Ismerteti, hogyan adhatja meg, hogy egy teljes vagy növekményes üzembe helyezési mód használatára az Azure Resource Managerrel.
-services: azure-resource-manager
-documentationcenter: na
+title: Azure Resource Manager üzembe helyezési módok | Microsoft Docs
+description: Leírja, hogy miként lehet megállapítani, hogy a teljes vagy növekményes központi telepítési módot használja-e Azure Resource Manager.
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 04/08/2019
+ms.date: 07/01/2019
 ms.author: tomfitz
-ms.openlocfilehash: d2de802b2170feb6130cdce8007e16cc37561f5e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c82d8b90d9da44ab8f4b8ea0aa0e063ea70350e2
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59791284"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258964"
 ---
-# <a name="azure-resource-manager-deployment-modes"></a>Az Azure Resource Manager üzembe helyezési mód
+# <a name="azure-resource-manager-deployment-modes"></a>Azure Resource Manager üzembe helyezési módok
 
-Az erőforrások üzembe helyezésekor, megadhatja, hogy az üzemelő példány-e a növekményes frissítés vagy a frissítés befejezéséhez.  A legfontosabb különbség a két módról, hogyan kezeli a Resource Manager a meglévő erőforrások az erőforráscsoportban, amelyek nem szerepelnek a sablonban. Az alapértelmezett mód növekményes.
+Az erőforrások telepítésekor meg kell adnia, hogy a központi telepítés Növekményes frissítés vagy teljes frissítés.  A két mód közötti elsődleges különbség az, hogy a Resource Manager hogyan kezelje a sablonban nem szereplő erőforrás-csoport meglévő erőforrásait. Az alapértelmezett mód növekményes.
 
-Mindkét mód esetében az erőforrás-kezelő megpróbálja létrehozni a sablonban megadott összes erőforrást. Ha az erőforrás már létezik az erőforráscsoportban, és a beállítások nem változnak, nincs művelet az adott erőforrás használatban van. Ha módosítja egy erőforráshoz tartozó tulajdonságértékek, ezeket az új értékeket az erőforrás frissül. Próbálja meg frissíteni a hely vagy egy meglévő erőforrás típusa, ha a központi telepítés egy hibaüzenettel meghiúsul. Ehelyett üzembe helyezése egy új erőforrás helyét, vagy adjon meg, hogy nincs szüksége.
+A Resource Manager mindkét módban megpróbálja létrehozni a sablonban megadott összes erőforrást. Ha az erőforrás már létezik az erőforráscsoporthoz, és a beállításai nem változnak, akkor a rendszer nem végez műveletet az adott erőforráshoz. Ha módosítja egy erőforrás tulajdonságérték értékét, az erőforrás frissül az új értékekkel. Ha egy meglévő erőforrás helyét vagy típusát kísérli meg frissíteni, a központi telepítés hibát jelez. Ehelyett helyezzen üzembe egy új erőforrást a szükséges hely vagy típus szerint.
 
 ## <a name="complete-mode"></a>Teljes mód
 
-Resource Manager a teljes módban **törli** erőforráscsoportban létezik, de nem a sablonban megadott erőforrások. Erőforrások, amelyek a sablonban megadott, de nincs telepítve, mert egy [feltétel](resource-group-authoring-templates.md#condition) kifejezés hamis, a rendszer nem törli.
+Teljes módban a Resource Manager **törli** az erőforráscsoport meglévő erőforrásait, de nincs megadva a sablonban. A sablonban megadott erőforrások, de nincs telepítve, mert egy [feltétel](conditional-resource-deployment.md) hamis értékre van kiértékelve, nem törlődik.
 
-Nincsenek eltérések hogyan kezelik az erőforrástípusok a teljes mód törlések. Szülő erőforrások telepítésekor nem a sablon, amely teljes körű módban automatikusan törlődnek. Néhány gyermekerőforrásait automatikusan nem, amely a sablon nem törlődnek. Ezek gyermekerőforrásait azonban akkor is törlődik, ha a szülő erőforrás törléséig. 
+Ügyeljen arra, hogy a teljes mód legyen a [másolási hurkokkal](resource-group-create-multiple.md). A rendszer a másolási hurok feloldása után nem a sablonban megadott erőforrásokat törli.
 
-Például az erőforráscsoport tartalmazza a DNS-zóna (Microsoft.Network/dnsZones erőforrás típusa) és a egy CNAME-rekordot (Microsoft.Network/dnsZones/CNAME erőforrástípus), a DNS-zóna-e a CNAME rekord a szülő erőforrás. Ha üzembe helyezés a teljes módban, és a sablon ne tartalmazza a DNS-zóna, a DNS-zóna és a CNAME-rekordot is törlődik. Ha a DNS-zónát tartalmazza a sablonban szereplő, de nem tartalmazza a CNAME rekord, a CNAME nem törlődik. 
+Az erőforrástípusok eltérő módon kezelik a teljes módú törlést. A fölérendelt erőforrások automatikusan törlődnek, ha nem egy teljes módban telepített sablonban vannak. Néhány alárendelt erőforrás nem törlődik automatikusan, ha nem a sablonban. Ezeket a gyermek erőforrásokat azonban törli a rendszer, ha törli a fölérendelt erőforrást. 
 
-Hogyan erőforrástípusok kezeli a törlés listáját lásd: [törlése az Azure-erőforrások teljes üzemmód központi telepítésekhez](complete-mode-deletion.md).
+Ha például az erőforráscsoport egy DNS-zónát (Microsoft. Network/dnsZones erőforrástípus) és egy CNAME rekordot (Microsoft. Network/dnsZones/CNAME erőforrástípus) tartalmaz, a DNS-zóna a CNAME rekord szülő erőforrása. Ha a üzembe helyezése teljes módban történik, és nem tartalmazza a DNS-zónát a sablonban, a DNS-zónát és a CNAME-rekordot is törli a rendszer. Ha belefoglalja a DNS-zónát a sablonba, de nem tartalmazza a CNAME rekordot, a CNAME nem törlődik. 
 
-Ha az erőforráscsoport [zárolva](resource-group-lock-resources.md), teljes körű mód nem törli az erőforrásokat.
+Az erőforrástípusok törlésének módjával kapcsolatban lásd: [Az Azure-erőforrások törlése a teljes módú telepítésekhez](complete-mode-deletion.md).
+
+Ha az erőforráscsoport [zárolva](resource-group-lock-resources.md)van, a teljes mód nem törli az erőforrásokat.
 
 > [!NOTE]
-> Csak a legfelső szintű sablonok támogatja a teljes üzembe helyezési módot. A [sablonok beágyazott vagy kapcsolódó](resource-group-linked-templates.md), növekményes módot kell használnia. 
+> Csak a legfelső szintű sablonok támogatják a teljes telepítési módot. [Csatolt vagy beágyazott sablonok](resource-group-linked-templates.md)esetén a növekményes módot kell használnia. 
 >
-> [Előfizetés-szintű telepítések](deploy-to-subscription.md) teljes mód nem támogatott.
+> Az [előfizetési szintű központi telepítések](deploy-to-subscription.md) nem támogatják a teljes üzemmódot.
 >
-> A portálon jelenleg nem támogatja teljes mód.
+> A portál jelenleg nem támogatja a teljes üzemmódot.
 >
 
 ## <a name="incremental-mode"></a>Növekményes mód
 
-Erőforrás-kezelő a növekményes módban **hagyja változatlanul** erőforráscsoportban létezik, de nem a sablonban megadott erőforrások. Ha újbóli üzembe helyezés növekményes módban egy erőforrást, adja meg az erőforrást, nem csak a kapcsolatok, amikor frissít minden tulajdonság értékét. Bizonyos tulajdonságokat nem adja meg, ha a Resource Manager értelmezi a frissítést, ezek az értékek felülírják.
+A növekményes módban a Resource Manager változatlan erőforrásokat **hagy** az erőforráscsoporthoz, de nincs megadva a sablonban.
+
+Ha azonban egy meglévő erőforrást növekményes módban helyez üzembe, az eredmény egy másik. Az erőforrás összes tulajdonságát megadhatja, nem csak a frissíteni kívánt tulajdonságokat. Gyakori félreértés, hogy a nem megadott tulajdonságok változatlanok maradnak. Ha nem ad meg bizonyos tulajdonságokat, a Resource Manager az értékek felülírásával értelmezi a frissítést.
 
 ## <a name="example-result"></a>Példa eredménye
 
-A növekményes és teljes körű módok közötti különbséget mutatja be, fontolja meg az alábbi forgatókönyvet.
+A növekményes és a teljes üzemmód közötti különbség szemléltetéséhez vegye figyelembe a következő helyzetet.
 
-**Erőforráscsoport** tartalmazza:
+**Erőforráscsoport** :
 
-* Erőforrás
+* A erőforrás
 * B erőforrás
-* Erőforrás C
+* C erőforrás
 
-**Sablon** tartalmazza:
+A **sablon** tartalma:
 
-* Erőforrás
+* A erőforrás
 * B erőforrás
-* Erőforrás D
+* D erőforrás
 
-Ha telepítve **növekményes** módot, az erőforráscsoport rendelkezik:
+**Növekményes** módban való üzembe helyezéskor az erőforráscsoport a következőket végzi el:
 
-* Erőforrás
+* A erőforrás
 * B erőforrás
-* Erőforrás C
-* Erőforrás D
+* C erőforrás
+* D erőforrás
 
-Ha telepítve **teljes** módban erőforrás C törlődik. Az erőforráscsoporthoz:
+A **teljes** módban való üzembe helyezéskor a C erőforrás törlődik. Az erőforráscsoport a következőket tartalmazta:
 
-* Erőforrás
+* A erőforrás
 * B erőforrás
-* Erőforrás D
+* D erőforrás
 
-## <a name="set-deployment-mode"></a>Üzembe helyezési mód beállítása
+## <a name="set-deployment-mode"></a>Telepítési mód beállítása
 
-A PowerShell-lel üzembe helyezésekor az üzembe helyezési mód beállításához használja a `Mode` paraméter.
+A PowerShell használatával történő üzembe helyezési mód beállításához használja a `Mode` paramétert.
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment `
@@ -89,7 +88,7 @@ New-AzResourceGroupDeployment `
   -TemplateFile c:\MyTemplates\storage.json
 ```
 
-Az Azure CLI-vel való telepítésekor, állítsa be az üzembe helyezési mód, használja a `mode` paraméter.
+Az Azure CLI-vel történő üzembe helyezési mód beállításához használja a `mode` paramétert.
 
 ```azurecli-interactive
 az group deployment create \
@@ -100,7 +99,7 @@ az group deployment create \
   --parameters storageAccountType=Standard_GRS
 ```
 
-Az alábbi példa bemutatja egy hivatkozott sablonnak növekményes üzembe helyezési mód beállítása:
+A következő példa egy olyan csatolt sablont mutat be, amely növekményes üzembe helyezési módra van beállítva:
 
 ```json
 "resources": [
@@ -118,6 +117,6 @@ Az alábbi példa bemutatja egy hivatkozott sablonnak növekményes üzembe hely
 
 ## <a name="next-steps"></a>További lépések
 
-* Resource Manager-sablonok létrehozásával kapcsolatos további információkért lásd: [Azure Resource Manager-sablonok készítése](resource-group-authoring-templates.md).
-* Erőforrások üzembe helyezése kapcsolatos további információkért lásd: [alkalmazás üzembe helyezése Azure Resource Manager-sablonnal](resource-group-template-deploy.md).
-* A műveletek esetében egy erőforrás-szolgáltató megtekintése: [Azure REST API](/rest/api/).
+* A Resource Manager-sablonok létrehozásával kapcsolatos további információkért lásd: [Azure Resource Manager-sablonok](resource-group-authoring-templates.md)készítése.
+* További információ az erőforrások üzembe helyezéséről: [alkalmazások központi telepítése Azure Resource Manager sablonnal](resource-group-template-deploy.md).
+* Az erőforrás-szolgáltató műveleteinek megtekintéséhez lásd: [Azure REST API](/rest/api/).

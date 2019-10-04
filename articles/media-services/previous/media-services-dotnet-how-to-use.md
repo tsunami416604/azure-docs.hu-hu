@@ -12,17 +12,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 7da57c01b6717b505ea09fa9e6197bab4d4976fd
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 51fffbd170daecfec6fcea95caa0526e6d881407
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57873825"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64724115"
 ---
 # <a name="media-services-development-with-net"></a>.NET-keretrendszerrel történő Media Services-fejlesztés 
-[!INCLUDE [media-services-selector-setup](../../../includes/media-services-selector-setup.md)]
+
+> [!NOTE]
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még [v3 a v2 migrálási útmutató](../latest/migrate-from-v2-to-v3.md)
 
 Ez a cikk leírja, hogyan elindításához a .NET használatával a Media Services-alkalmazások fejlesztéséhez használható.
 

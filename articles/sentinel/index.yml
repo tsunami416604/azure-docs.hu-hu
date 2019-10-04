@@ -1,68 +1,91 @@
-### YamlMime:YamlDocument
-ms.openlocfilehash: 5f1d6005dd94bc700682e749f08c47356fcdc829
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56993333"
-documentType: LandingData
-title: Az Azure Sentinel előzetes verziójának dokumentációja
+### YamlMime:Landing
+title: Az Azure Sentinel dokumentációja
+summary: Ez a cikk használati eseteket mutat be az Azure Sentinel használatának megkezdéséhez. A SIEM modern világra való újragondolása révén még azelőtt észlelheti és hatástalaníthatja a fenyegetéseket, hogy azok kárt tennének. Az Azure Sentinel biztosítja a teljes vállalat áttekintését.
 metadata:
-  title: Az Azure Sentinel előzetes verziójának dokumentációja – Oktatóanyagok, rövid útmutatók | Microsoft Docs
-  meta.description: Azure Sentinel is a cloud-native SIEM that provides intelligent security analytics for your entire enterprise at cloud scale.
+  title: Az Azure Sentinel dokumentációja
+  description: Ez a cikk használati eseteket és forgatókönyveket mutat be az Azure Sentinel használatának megkezdéséhez. A SIEM modern világra való újragondolása révén még azelőtt észlelheti és hatástalaníthatja a fenyegetéseket, hogy azok kárt tennének. Az Azure Sentinel biztosítja a teljes vállalat áttekintését.# Követelmény; a keresési eredmények között megjelenő cikk leírása. < 160 karakter.
   services: sentinel
-  author: cmcclister
-  manager: carolz
   ms.service: sentinel
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: azure-sentinel
   ms.topic: landing-page
-  ms.date: 02/28/19
-  ms.author: cmcclister
-abstract:
-  description: Az Azure Sentinel előzetes verziója egy natív felhőbeli SIEM-megoldás, amely intelligens biztonsági elemzési szolgáltatásokat biztosít a teljes vállalat számára felhőszinten. Korlátlan sebességet és skálázhatóságot biztosít a felhőben, így Ön az igazán fontos dolgokra összpontosíthat. Könnyen gyűjthet adatokat a felhőbeli és a helyszíni objektumokból, az Office 365-ből, az Azure-erőforrásokból és más felhőkből. A Microsoft biztonsági elemzési szakemberei által fejlesztett beépített gépi tanulási algoritmusokkal hatékonyan észlelheti a fenyegetéseket. A beépített vezénylési és automatizálási forgatókönyvekkel automatizálhatja a fenyegetésekre adott választ.
-sections:
-- title: 5 perces gyors útmutatók
-  items:
-  - type: paragraph
-    text: Megtudhatja, hogyan készítheti elő adatait az Azure Sentinel számára, és hogyan teheti könnyen átláthatóvá az adatokat és a potenciális fenyegetéseket.
-  - type: list
-    style: icon48
-    items:
-    - image:
-        src: media/index/deploy.svg
-      text: Az Azure Sentinel előkészítése
-      href: /azure/sentinel/quickstart-onboard
-    - image:
-        src: media/index/get-started.svg
-      text: Az Azure Sentinel használatának első lépései
-      href: /azure/sentinel/quickstart-get-visibility
-- title: Részletes útmutatók
-  items:
-  - type: paragraph
-    text: Ismerje meg, hogyan adhat meg biztonsági szabályzatokat, hogyan védheti meg az erőforrásait a rosszindulatú tevékenységektől, és illetve hogyan válaszolhat a biztonsági riasztásokra és incidensekre.
-  - type: list
-    style: ordered
-    items:
-    - html: <a href="/azure/sentinel/tutorial-detect-threats">Fenyegetések észlelése az Azure Sentinellel</a>
-    - html: <a href="/azure/sentinel/tutorial-respond-threats-playbook">A fenyegetésekre adott automatikus válaszok beállítása</a>
-- title: Fejlessze a készségeit a Microsoft Learnnel
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
-    items:
-    - title: Az Azure-beli biztonság – bevezetés
-      href: https://docs.microsoft.com/learn/azure
-      image:
-        src: media/index/tutorial.svg
-        href: https://docs.microsoft.com/learn/azure
-  - type: paragraph
-    text: <a href="/learn/browse/?term=security">További interaktív oktatóanyagok...</a>
-- title: Referencia
-  items:
-  - type: list
-    style: cards
-    className: cardsD
-    items:
-    - html: <a href="https://azure.microsoft.com/updates/?product=sentinel">Szolgáltatási hírek</a>
+  ms.collection: collection
+  author: rkarlin
+  ms.author: rkarlin
+  ms.date: 25/09/2019
+  ms.openlocfilehash: 8f8815645b7dfcdcc5e1ed5212ecd1ec298f8644
+  ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 09/26/2019
+  ms.locfileid: "71316482"
+landingContent:
+- title: Információk az Azure Sentinelről
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az Azure Sentinel?
+      url: overview.md
+- title: Bevezetés
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Az Azure Sentinel előkészítése
+      url: quickstart-onboard.md
+    - text: Áttekinthető riasztások
+      url: quickstart-get-visibility.md
+  - linkListType: how-to-guide
+    links:
+    - text: Adatok csatlakoztatása az Azure Sentinelhez
+      url: connect-data-sources.md
+- title: További adatforrások csatlakoztatása
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Az Azure AD csatlakoztatása
+      url: connect-azure-active-directory.md
+    - text: Az Azure Information Protection csatlakoztatása
+      url: connect-azure-information-protection.md
+    - text: Az AWS csatlakoztatása
+      url: connect-aws.md
+    - text: A Palo Alto Networks csatlakoztatása
+      url: connect-paloalto.md
+    - text: Fenyegetésfelderítés csatlakoztatása
+      url: connect-threat-intelligence.md
+- title: Munkavégzés egyszerre több bérlővel
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Több-bérlős támogatás engedélyezése az Azure Sentinelben
+      url: multiple-tenants-service-providers.md
+- title: Tudjon róla, mi történik környezetében
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Adatok monitorozása
+      url: tutorial-monitor-your-data.md
+    - text: Incidensek vizsgálata
+      url: tutorial-investigate-cases.md
+- title: Fenyegetésészlelés
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Fenyegetésészlelés a beépített elemzésekkel
+      url: tutorial-detect-threats-built-in.md
+    - text: Egyéni észlelési szabályok létrehozása
+      url: tutorial-detect-threats-custom.md
+- title: A fenyegetéselhárítás automatizálása
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Automatikus reagálás a fenyegetésekre
+      url: tutorial-respond-threats-playbook.md
+    - text: Biztonsági fenyegetések keresése a Jupyter Notebooks segítségével
+      url: notebooks.md
+- title: Proaktív fenyegetésészlelés
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Fenyegetésfelderítés csatlakoztatása
+      url: connect-threat-intelligence.md
+    - text: Fenyegetések keresése
+      url: hunting.md

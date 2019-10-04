@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/09/2018
-ms.author: alkohli@microsoft.com
-ms.openlocfilehash: e6053ef9b5e1fc113e3bd3057d627347f285cd99
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: alkohli
+ms.openlocfilehash: 7e488a1b2a63323361a597aaa6a438630fc09a05
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58003119"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621625"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>Eszköz felügyelete a storsimple-höz készült Windows PowerShell használatával
 
@@ -97,12 +97,12 @@ Az alábbi képen látható a különböző futási térben lehetőségek, amely
 
 A következő beállítások közül választhat:
 
-1. **Jelentkezzen be a teljes hozzáféréssel** Ez a beállítás lehetővé teszi, hogy csatlakozni (a szükséges hitelesítő adatokat), a **SSAdminConsole** futási térben a helyi tartományvezérlőn. (A helyi tartományvezérlő a tartományvezérlővel, amely jelenleg a StorSimple-eszköz soros konzolon keresztül Ön hozzáfér.) Ezt a lehetőséget is, hogy Support eléréséhez nem korlátozott futási térrel (egy támogatási munkamenetet) esetleges lehetséges problémák megoldásához használható. 1. lehetőség használatával jelentkezzen be, miután a Microsoft Support mérnök, nem korlátozott futási térrel eléréséhez egy adott parancsmag futtatásával engedélyezheti. Részletekért tekintse meg a [indítson el egy támogatási munkamenetet](storsimple-8000-contact-microsoft-support.md#start-a-support-session-in-windows-powershell-for-storsimple).
+1. **Jelentkezzen be a teljes hozzáféréssel** Ez a beállítás lehetővé teszi, hogy csatlakozni (a szükséges hitelesítő adatokat), a **SSAdminConsole** futási térben a helyi tartományvezérlőn. (A helyi tartományvezérlő a tartományvezérlővel, amely jelenleg a StorSimple-eszköz soros konzolon keresztül Ön hozzáfér.) Ezt a lehetőséget is, hogy Support eléréséhez nem korlátozott futási térrel (egy támogatási munkamenetet) esetleges lehetséges problémák megoldásához használható. 1\. lehetőség használatával jelentkezzen be, miután a Microsoft Support mérnök, nem korlátozott futási térrel eléréséhez egy adott parancsmag futtatásával engedélyezheti. Részletekért tekintse meg a [indítson el egy támogatási munkamenetet](storsimple-8000-contact-microsoft-support.md#start-a-support-session-in-windows-powershell-for-storsimple).
    
 2. **Jelentkezzen be a teljes hozzáféréssel rendelkező társ vezérlő** Ez a lehetőség ugyanaz, mint 1. lehetőség – akkor, azzal a különbséggel, hogy csatlakozhasson (a szükséges hitelesítő adatokat) a **SSAdminConsole** futási térben a társ-vezérlőn. Mivel a két vezérlőn egy aktív / passzív konfigurációt a magas rendelkezésre állású eszköz, a StorSimple-eszköz társ hivatkozik az eszköz soros konzolon keresztül elérő a másik vezérlőre).
    Hasonló az 1. lehetőség, ezt a lehetőséget is használható, hogy a Microsoft Support társ tartományvezérlőn nem korlátozott futási térrel eléréséhez.
 
-3. **Korlátozott hozzáférésű csatlakozás** ezzel a beállítással Windows PowerShell felületét korlátozott módban eléréséhez. Nem kéri a hozzáférési hitelesítő adatokat. Ez a beállítás 1. és 2 beállítások képest nagyobb korlátozott futási térrel csatlakozik.  1. lehetőség keresztül elérhető feladatokat, amelyek **nem* végezhető el a futási térben van:
+3. **Korlátozott hozzáférésű csatlakozás** ezzel a beállítással Windows PowerShell felületét korlátozott módban eléréséhez. Nem kéri a hozzáférési hitelesítő adatokat. Ez a beállítás 1. és 2 beállítások képest nagyobb korlátozott futási térrel csatlakozik.  1\. lehetőség keresztül elérhető feladatokat, amelyek **nem* végezhető el a futási térben van:
    
    * A gyári beállításainak visszaállítása
    * A jelszó módosítása
@@ -159,7 +159,7 @@ Az alábbi táblázat a gyakori felügyeleti feladatok és a komplex munkafolyam
 
 A storsimple-höz készült Windows PowerShell a parancsmag súgójában érhető el. Egy online, naprakész verziója a Súgó is érhető el, amely a rendszeren a súgójának frissítéséhez használhatja.
 
-Segítség kérése ezen a felületen hasonló, mint a Windows PowerShellben, és a Súgó kapcsolatos parancsmagok a legtöbb fog működni. Súgó a Windows PowerShell környezethez online a TechNet könyvtárban találja meg: [Parancsfájlkezelés a Windows PowerShell](https://go.microsoft.com/fwlink/?LinkID=108518).
+Segítség kérése ezen a felületen hasonló, mint a Windows PowerShellben, és a Súgó kapcsolatos parancsmagok a legtöbb fog működni. Súgó a Windows PowerShell online találhatja meg: [Microsoft.PowerShell.Core](/powershell/module/Microsoft.PowerShell.Core/).
 
 Az alábbiakban látható a a Windows PowerShell felületén, beleértve a súgó frissítése súgó típusú rövid leírását.
 

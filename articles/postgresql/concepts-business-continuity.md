@@ -1,54 +1,59 @@
 ---
-title: Az Azure Database for PostgreSQL üzletmenet-folytonossági funkcióinak áttekintése
-description: Az Azure Database for PostgreSQL üzletmenet-folytonossági funkcióinak áttekintése.
+title: Az üzletmenet folytonosságának áttekintése Azure Database for PostgreSQL – egyetlen kiszolgálóval
+description: A Azure Database for PostgreSQL üzleti folytonosságának áttekintése.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/01/2019
-ms.openlocfilehash: b1d566ac571ddd2b2be3aff160f669e277887209
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.date: 08/21/2019
+ms.openlocfilehash: c346360c125d9316aed81ceeedbe265fd09465c1
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55698233"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907501"
 ---
-# <a name="overview-of-business-continuity-with-azure-database-for-postgresql"></a>Az Azure Database for PostgreSQL üzletmenet-folytonossági funkcióinak áttekintése
+# <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>Az üzletmenet folytonosságának áttekintése Azure Database for PostgreSQL – egyetlen kiszolgálóval
 
-Ez az áttekintés, Azure Database for PostgreSQL biztosítja az üzletmenet-folytonosság és vészhelyreállítás funkcióit írja le. Ismerje meg azokat a káros eseményeket, amelyek adatvesztéshez vezethetnek vagy az adatbázis és az alkalmazás elérhetetlenné okozhat a beállításokat. Ismerje meg, mi a teendő, ha egy felhasználó vagy alkalmazás hiba hatással van az adatok integritásának megőrzése, egy Azure-régióban van kimaradás vagy az alkalmazás karbantartásra szorul.
+Ez az Áttekintés ismerteti azokat a képességeket, amelyeket a Azure Database for PostgreSQL az üzletmenet folytonosságát és a vész-helyreállítást biztosítja. Megtudhatja, hogyan lehet helyreállítani az adatvesztést okozó, vagy az adatbázis és az alkalmazás elérhetetlenné válását okozó zavaró események helyreállításának lehetőségeit. Megtudhatja, mi a teendő, ha egy felhasználói vagy alkalmazáshiba hatással van az adatok integritására, egy Azure-régió leáll, vagy az alkalmazás karbantartást igényel.
 
-## <a name="features-that-you-can-use-to-provide-business-continuity"></a>Üzletmenet-folytonosságot biztosító használó szolgáltatások
+## <a name="features-that-you-can-use-to-provide-business-continuity"></a>Az üzletmenet folytonosságának biztosítására használható funkciók
 
-Azure Database for PostgreSQL üzletmenet-folytonossági funkciókat, beleértve az automatikus biztonsági mentést és a felhasználók a geo-visszaállítás kezdeményezése itt. Minden más paraméterekkel rendelkezik a becsült helyreállítási idő (ERT) és az esetleges adatvesztés. Ha már megismerte, hogy ezek a beállítások, válogathat közülük, és a különböző helyzetekhez együtt használja azokat. Az üzletmenet folytonosságát biztosító terve kidolgozásakor kell megérteni a maximális elfogadható idő, mielőtt az alkalmazás a zavaró eseményeket követő teljes helyreállításának – ez a helyreállítási időre vonatkozó célkitűzés (RTO). Emellett ismernie kell a legújabb adatok maximális mérete (időintervallum) frissítéseket az alkalmazás működését a zavaró eseményeket követő helyreállítása során elvesztése – Ez a helyreállítási időkorlátot (RPO).
+A Azure Database for PostgreSQL olyan üzletmenet-folytonossági funkciókat biztosít, amelyek automatikus biztonsági mentést tartalmaznak, és lehetővé teszi a felhasználók számára a Geo-visszaállítás kezdeményezését. Mindegyik különböző tulajdonságokkal rendelkezik a becsült helyreállítási idő (ERT) és a lehetséges adatvesztés tekintetében. Ha megértette ezeket a lehetőségeket, választhat közülük, és együtt használhatja őket különböző forgatókönyvek esetén. Az üzletmenet-folytonossági terv kidolgozása során meg kell ismernie a maximális elfogadható időtartamot, mielőtt az alkalmazás teljesen helyreáll a zavaró esemény után – ez a helyreállítási idő célkitűzése (RTO). Meg kell ismernie a legutóbbi adatfrissítések (időintervallum) maximális mennyiségét is, ha az alkalmazás a zavaró esemény utáni helyreállítás során elveszíti az adatvesztést – ez a helyreállítási pont célkitűzése (RPO).
 
-Az alábbi táblázat összehasonlítja a ERT és RPO elérhető funkciók:
+A következő táblázat összehasonlítja a rendelkezésre álló funkciók ERT-és RPO:
 
-| **Képesség** | **Basic** | **Általános célú** | **Memóriaoptimalizált** |
+| **Képesség** | **Basic** | **általános célú** | **Memóriaoptimalizált** |
 | :------------: | :-------: | :-----------------: | :------------------: |
-| Időponthoz kötött visszaállítás biztonsági másolatból | A megőrzési időtartamon belül bármely visszaállítási pont | A megőrzési időtartamon belül bármely visszaállítási pont | A megőrzési időtartamon belül bármely visszaállítási pont |
-| Georedundáns visszaállítás georeplikált biztonsági másolatokból | Nem támogatott | ERT < 12 óra<br/>RPO < 1 óra | ERT < 12 óra<br/>RPO < 1 óra |
+| Időponthoz kötött visszaállítás biztonsági másolatból | A megőrzési időtartamon belüli visszaállítási pontok | A megőrzési időtartamon belüli visszaállítási pontok | A megőrzési időtartamon belüli visszaállítási pontok |
+| Geo-visszaállítás földrajzilag replikált biztonsági másolatokból | Nem támogatott | ERT < 12 h<br/>RPO < 1 óra | ERT < 12 h<br/>RPO < 1 óra |
 
 > [!IMPORTANT]
-> Törölt kiszolgálók **nem** állítható vissza. Ha törli a kiszolgálót, akkor a kiszolgálóhoz tartozó összes adatbázis is törlődik, és nem állítható helyre.
+> A törölt kiszolgálók **nem** állíthatók vissza. Ha törli a kiszolgálót, a kiszolgálóhoz tartozó összes adatbázis is törlődik, és nem állítható helyre. Az [Azure erőforrás-zárolás](../azure-resource-manager/resource-group-lock-resources.md) segítségével megakadályozhatja a kiszolgáló véletlen törlését.
 
-## <a name="recover-a-server-after-a-user-or-application-error"></a>A kiszolgáló helyreállítása után a felhasználó vagy alkalmazás hiba
+## <a name="recover-a-server-after-a-user-or-application-error"></a>Kiszolgáló helyreállítása felhasználói vagy alkalmazáshiba miatt
 
-A szolgáltatás biztonsági mentések használatával egy kiszolgáló helyreállítása a különféle zavaró eseményeket. A felhasználó előfordulhat, hogy véletlenül törölhet néhány adatot, véletlenül dobja el egy fontos táblát, vagy még dobja el a teljes adatbázisra vonatkozóan. Egy alkalmazás előfordulhat, hogy véletlenül felülírja a helyes adatokat rossz adatokkal egy alkalmazás valamilyen alkalmazáshiba miatt, és így tovább.
+A szolgáltatás biztonsági másolatai segítségével helyreállíthat egy kiszolgálót a különböző zavaró eseményekről. Előfordulhat, hogy A felhasználók véletlenül törölhetnek bizonyos adatfájlokat, és véletlenül eldobják egy fontos táblát, vagy akár el is dobják a teljes adatbázist. Előfordulhat, hogy egy alkalmazás helytelenül írja felül a megfelelő adatmennyiséget az alkalmazás hibája miatt, és így tovább.
 
-A pont a-időponthoz kötött visszaállítás hozhat létre a kiszolgáló számára ismert jó pont másolatát időben hajthat végre. Az időponthoz kötött konfigurálta, a kiszolgáló a biztonsági másolatok megőrzési időszakán belül kell lennie. Az adatok az új kiszolgáló visszaállítása után az eredeti kiszolgáló cserélje le az újonnan visszaállított kiszolgáló, vagy átmásolhatja a szükséges adatokat a visszaállított kiszolgáló az eredeti kiszolgálóra.
+Elvégezheti egy időponthoz való visszaállítást, hogy a kiszolgálóról egy ismert jó időpontra készítsen másolatot. Az időpontnak a kiszolgálón beállított biztonsági mentési megőrzési időtartamon belül kell lennie. Miután az adatok vissza lettek állítva az új kiszolgálóra, lecserélheti az eredeti kiszolgálót az újonnan visszaállított kiszolgálóra, vagy átmásolhatja a szükséges adatait a visszaállított kiszolgálóról az eredeti kiszolgálóra.
 
-## <a name="recover-from-an-azure-regional-data-center-outage"></a>Az Azure regionális adatközpontjának leállása esetén helyreállítható
+## <a name="recover-from-an-azure-data-center-outage"></a>Helyreállítás Azure-adatközpontból
 
-Bár ritka, mégis előfordulhat, hogy valamelyik Azure-adatközpont leáll. Szolgáltatáskimaradás esetén előfordulhat, hogy csak az elmúlt pár perc alatt, de sikerült az elmúlt óra üzletmenet okoz.
+Bár ritka, mégis előfordulhat, hogy valamelyik Azure-adatközpont leáll. Leállás esetén az üzleti megszakadást okoz, amely csak néhány percet vesz igénybe, de az elmúlt órákban is tarthat.
 
-Az egyik lehetőség, hogy Várjon, amíg a kiszolgáló ismét online állapotú lesz, ha a tartós adatközponti üzemkimaradások keresztül. Az alkalmazásokat, amelyek esetében megengedhető, a kiszolgáló offline állapotba kell bizonyos ideig, például egy fejlesztési környezetben működik. Amikor adatközpontban szolgáltatáskimaradás következik, nem tudja, mennyi ideig a szolgáltatáskimaradás elhárítása után előfordulhat, hogy a legutóbbi, így ez a beállítás csak akkor működik, ha már nincs szüksége a kiszolgáló egy ideig.
+Az egyik lehetőség, hogy megvárja, amíg a kiszolgáló ismét online állapotba kerül, amikor az adatközpont kimaradása meghalad. Ez olyan alkalmazásokhoz használható, amelyek megengedhetik maguknak, hogy a kiszolgáló bizonyos ideig offline állapotba kerüljön, például egy fejlesztési környezetben. Ha egy adatközpont leáll, nem tudja, mennyi ideig tarthat a leállás, így ez a lehetőség csak akkor működik, ha egy ideig nincs szüksége a kiszolgálóra.
 
-A másik lehetőség, hogy az Azure Database for PostgreSQL a geo-visszaállítás szolgáltatás, amely visszaállítja az a kiszolgáló georedundáns biztonsági másolatokból. Ezeket a biztonsági másolatokat elérhetők, még akkor is, ha a régió, a kiszolgáló üzemel, a kapcsolat nélküli üzemmódban. Ezek a biztonsági mentések visszaállítása bármelyik régióban, és a kiszolgáló ismét online állapotba.
+## <a name="geo-restore"></a>Georedundáns helyreállítás
+
+A Geo-visszaállítási szolgáltatás visszaállítja a kiszolgálót a Geo-redundáns biztonsági másolatok használatával. A biztonsági mentéseket a kiszolgáló párosított [régiójában](../best-practices-availability-paired-regions.md)tárolja a rendszer. Ezeket a biztonsági másolatokból bármely más régióba visszaállíthatja. A Geo-visszaállítás egy új kiszolgálót hoz létre a biztonsági másolatokból származó adatokkal. További információ a Geo-visszaállításról a [biztonsági mentési és visszaállítási fogalmakról](concepts-backup.md)szóló cikkből.
 
 > [!IMPORTANT]
-> A GEO-visszaállítás csak akkor lehetséges, a kiszolgáló georedundáns biztonsági mentési tároló üzembe helyezése. Ha szeretné, váltson át egy meglévő kiszolgáló georedundáns biztonsági mentését, a helyileg redundáns, kell igénybe vehet egy memóriakép pg_dump a meglévő kiszolgáló használata és annak visszaállítására egy újonnan létrehozott georedundáns biztonsági mentés konfigurálva.
+> A Geo-visszaállítás csak akkor lehetséges, ha a kiszolgálót geo-redundáns biztonsági mentési tárolóval kiépített. Ha szeretné, hogy a helyileg redundáns biztonsági mentést a meglévő kiszolgálókon, akkor a meglévő kiszolgáló pg_dump használatával készítsen memóriaképet, és állítsa vissza egy, a Geo-redundáns biztonsági mentéssel konfigurált, újonnan létrehozott kiszolgálóra.
+
+## <a name="cross-region-read-replicas"></a>Régiók közötti olvasási replikák
+Az üzleti folytonosság és a vész-helyreállítás megtervezése érdekében a tartományok közötti olvasási replikákat is használhatja. Az olvasási replikák aszinkron módon frissülnek a PostgreSQL fizikai replikációs technológiájának használatával. További információk az olvasási replikák, az elérhető régiók és a feladatátvétel az [olvasási replikák fogalmai című cikkben](concepts-read-replicas.md)olvashatók. 
 
 ## <a name="next-steps"></a>További lépések
-- Tudjon meg többet a [automatikus biztonsági másolatokat az Azure Database for postgresql-hez](concepts-backup.md). 
-- Ismerje meg, hogyan segítségével történő visszaállításhoz [az Azure Portalon](howto-restore-server-portal.md) vagy [az Azure CLI](howto-restore-server-cli.md).
-- Ismerje meg [olvassa el a replikákat az Azure Database for postgresql-hez](concepts-read-replicas.md).
+- További információ a [Azure Database for PostgreSQL automatikus biztonsági mentéséről](concepts-backup.md). 
+- Ismerje meg, hogyan lehet visszaállítani [a Azure Portal](howto-restore-server-portal.md) vagy [Az Azure CLI](howto-restore-server-cli.md)használatával.
+- További információ a [Azure Database for PostgreSQL található olvasási replikáról](concepts-read-replicas.md).

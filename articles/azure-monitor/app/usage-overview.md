@@ -1,100 +1,97 @@
 ---
-title: Használatelemzés az Azure Application Insights |} A Microsoft docs
-description: Ismerje meg a felhasználók számára, és mit tesznek azt az alkalmazást.
+title: Használat elemzése az Azure Application Insights használatával | Microsoft docs
+description: Ismerje meg a felhasználókat, és hogy mit csinálnak az alkalmazással.
 services: application-insights
 documentationcenter: ''
-author: NumberByColors
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 10/10/2017
-ms.pm_owner: daviste;NumberByColors
-ms.reviewer: mbullwin
-ms.author: daviste
-ms.openlocfilehash: f2539d5250ff436a720fe10f748f40db29b0ee25
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.date: 09/19/2019
+ms.author: mbullwin
+ms.openlocfilehash: 77aa39ae68800128409beb17ce3eb636ddcf28d1
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118523"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71128966"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Használatelemzés az Application Insights szolgáltatással
 
-A webes vagy mobilalkalmazásának szolgáltatásaitól legnépszerűbb? Tegye a felhasználók a kitűzött célokat az alkalmazással? Hajtsa végre, drop adott időpontokban, és tegye vissza később?  [Az Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) segítséget nyújt a felhasználók miként használják alkalmazását hatékony elemzéseket készíthet. Minden alkalommal, amikor frissíti az alkalmazást, mérje fel arról, hogy működik a felhasználók számára. Ezt a tudást teheti az adatvezérelt döntések kapcsolatban a következő fejlesztési ciklusokat.
+A webes vagy mobil alkalmazások mely funkciói a legnépszerűbbek? A felhasználók a céljaikat az alkalmazással érik el? Kiesnek bizonyos pontokon, és később visszatérnek?  Az [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) segítségével hatékony információkhoz juthat az alkalmazás használatáról. Minden alkalommal, amikor frissíti az alkalmazást, megvizsgálhatja, hogy milyen jól működik a felhasználók számára. Ezzel az ismerettel a következő fejlesztési ciklusokra vonatkozó adatvezérelt döntéseket hozhat.
 
 ## <a name="send-telemetry-from-your-app"></a>Telemetria küldése az alkalmazásból
 
-A legjobb élményt az Application Insights telepítésével az alkalmazáskód kiszolgáló, mind a weblapok kapjuk meg. Az alkalmazás ügyfél- és összetevői telemetriát küldjön az Azure Portalon elemzés céljából.
+A legjobb megoldás a Application Insights telepítésével érhető el az App Server kódjában és a weblapjain. Az alkalmazás ügyfél-és kiszolgáló-összetevői telemetria küldenek a Azure Portalnak elemzés céljából.
 
-1. **Kiszolgálóoldali kódban:** A megfelelő moduljának telepítése a [ASP.NET](../../azure-monitor/app/asp-net.md), [Azure](../../azure-monitor/app/app-insights-overview.md), [Java](../../azure-monitor/app/java-get-started.md), [Node.js](../../azure-monitor/app/nodejs.md), vagy [más](../../azure-monitor/app/platforms.md) alkalmazás.
+1. **Kiszolgáló kódja:** Telepítse a megfelelő modult a [ASP.net](../../azure-monitor/app/asp-net.md), az [Azure](../../azure-monitor/app/app-insights-overview.md), a [Java](../../azure-monitor/app/java-get-started.md), a [Node. js](../../azure-monitor/app/nodejs.md)vagy [más](../../azure-monitor/app/platforms.md) alkalmazáshoz.
 
-    * *Nem szeretné telepíteni a kiszolgálói kód? Csak [hozzon létre egy Azure Application Insights-erőforrást](../../azure-monitor/app/create-new-resource.md ).*
+    * *Nem szeretné telepíteni a kiszolgálói kódot? Egyszerűen [hozzon létre egy Azure Application Insights-erőforrást](../../azure-monitor/app/create-new-resource.md ).*
 
-2. **Weblap-kódot:** Adja hozzá a következő szkriptet a weblapra a Bezárás előtt ``</head>``. Cserélje le a megfelelő értéket, az Application Insights-erőforrás kialakítási kulcsát:
-
-   ```javascript
-      <script type="text/javascript">
-        var appInsights=window.appInsights||function(a){
-            function b(a){c[a]=function(){var b=arguments;c.queue.push(function(){c[a].apply(c,b)})}}var c={config:a},d=document,e=window;setTimeout(function(){var b=d.createElement("script");b.src=a.url||"https://az416426.vo.msecnd.net/scripts/a/ai.0.js",d.getElementsByTagName("script")[0].parentNode.appendChild(b)});try{c.cookie=d.cookie}catch(a){}c.queue=[];for(var f=["Event","Exception","Metric","PageView","Trace","Dependency"];f.length;)b("track"+f.pop());if(b("setAuthenticatedUserContext"),b("clearAuthenticatedUserContext"),b("startTrackEvent"),b("stopTrackEvent"),b("startTrackPage"),b("stopTrackPage"),b("flush"),!a.disableExceptionTracking){f="onerror",b("_"+f);var g=e[f];e[f]=function(a,b,d,e,h){var i=g&&g(a,b,d,e,h);return!0!==i&&c["_"+f](a,b,d,e,h),i}}return c
-        }({
-            instrumentationKey: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
-        });
-        
-        window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&appInsights.trackPageView();
+2. **Weblap kódja:** A Bezárás ``</head>``előtt adja hozzá a következő szkriptet a weboldalához. Cserélje le a rendszerállapot-kulcsot a Application Insights erőforrás megfelelő értékére:
+    
+    ```html
+    <script type="text/javascript">
+    var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(e){function n(e){t[e]=function(){var n=arguments;t.queue.push(function(){t[e].apply(t,n)})}}var t={config:e};t.initialize=!0;var i=document,a=window;setTimeout(function(){var n=i.createElement("script");n.src=e.url||"https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",i.getElementsByTagName("script")[0].parentNode.appendChild(n)});try{t.cookie=i.cookie}catch(e){}t.queue=[],t.version=2;for(var r=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];r.length;)n("track"+r.pop());n("startTrackPage"),n("stopTrackPage");var s="Track"+r[0];if(n("start"+s),n("stop"+s),n("setAuthenticatedUserContext"),n("clearAuthenticatedUserContext"),n("flush"),!(!0===e.disableExceptionTracking||e.extensionConfig&&e.extensionConfig.ApplicationInsightsAnalytics&&!0===e.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){n("_"+(r="onerror"));var o=a[r];a[r]=function(e,n,i,a,s){var c=o&&o(e,n,i,a,s);return!0!==c&&t["_"+r]({message:e,url:n,lineNumber:i,columnNumber:a,error:s}),c},e.autoExceptionInstrumented=!0}return t}(
+    {
+      instrumentationKey:"INSTRUMENTATION_KEY"
+    }
+    );window[aiName]=aisdk,aisdk.queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
     </script>
     ```
-    A webhelyek monitorozásával kapcsolatos speciális konfigurációkról a [JavaScript SDK API-referenciáiban](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md) olvashat.
 
-3. **Mobilalkalmazás-kód:** Az App Center SDK segítségével eseményeinek gyűjtése az alkalmazásból, majd elküldi ezeket az eseményeket az Application Insights által végzett elemzéshez [ezt az útmutatót](../../azure-monitor/learn/mobile-center-quickstart.md).
+    A webhelyek figyeléséhez szükséges speciális konfigurációk megismeréséhez tekintse meg a [JavaScript SDK-referenciát ismertető cikket](https://docs.microsoft.com/azure/azure-monitor/app/javascript).
 
-4. **Máris:** A projekt hibakeresési módban futtatja a néhány percet, és keresse meg az Application Insights áttekintő paneljén eredményez.
+3. **Mobile App code:** Az App Center SDK használatával gyűjthet eseményeket az alkalmazásból, majd az események másolatait elküldheti az elemzéshez az [útmutató](../../azure-monitor/learn/mobile-center-quickstart.md)alapján Application Insights.
 
-    Tegye közzé az alkalmazást, az alkalmazás teljesítményének figyeléséhez, és ismerje meg, mivel foglalkoznak az a felhasználók az alkalmazását.
+4. **Telemetria beolvasása:** Futtassa a projektet hibakeresési módban néhány percre, majd keresse meg az eredményeket a Application Insights áttekintés paneljén.
 
-## <a name="include-user-and-session-id-in-your-telemetry"></a>Tartalmazza a telemetria felhasználó és a munkamenet-Azonosítót
-Az Application Insights nyomon követheti a felhasználók idővel, megköveteli a azonosítani tudja azokat. Az események eszköz az egyetlen használati eszköz, amely nem igényel felhasználói azonosító vagy egy munkamenet-azonosítót.
+    Tegye közzé alkalmazását az alkalmazás teljesítményének figyeléséhez, és Ismerje meg, hogy a felhasználók hogyan használják az alkalmazást.
 
-Felhasználó és a munkamenet-azonosítók használatával küldésének megkezdése [Ez a folyamat](https://docs.microsoft.com/azure/application-insights/app-insights-usage-send-user-context).
+## <a name="include-user-and-session-id-in-your-telemetry"></a>Felhasználói és munkamenet-azonosító belefoglalása a telemetria
+A felhasználók az idő múlásával követhetik nyomon a felhasználókat, Application Insights az azonosítását. Az Events eszköz az egyetlen olyan használati eszköz, amelyhez nincs szükség felhasználói AZONOSÍTÓra vagy munkamenet-AZONOSÍTÓra.
 
-## <a name="explore-usage-demographics-and-statistics"></a>Ismerkedés a demográfiai használat és statisztikák
-Ismerje meg, amikor a felhasználók használják az alkalmazást, azok leginkább érdeklő, hol találhatók a felhasználók milyen lapok, mely böngészőket és operációs rendszereket használnak. 
+A felhasználói és munkamenet-azonosítók küldésének megkezdése [ezzel a folyamattal](https://docs.microsoft.com/azure/application-insights/app-insights-usage-send-user-context).
 
-A felhasználók és munkamenetek jelentések oldalak vagy egyéni események az adatok szűrése és szegmentálása azok tulajdonságok, mint például hely, a környezet és a lap által. A saját szűrőket is hozzáadhat.
+## <a name="explore-usage-demographics-and-statistics"></a>A használati demográfia és a statisztika megismerése
+Megtudhatja, hogy mikor használják a felhasználók az alkalmazást, milyen lapokat érdeklik leginkább, hol találhatók a felhasználók, milyen böngészőket és operációs rendszereket használnak. 
+
+A felhasználók és a munkamenetek jelentés az adatait lapok vagy egyéni események alapján szűri, és azokat a tulajdonságok, például a hely, a környezet és a lap alapján szegmentálja. Saját szűrőket is hozzáadhat.
 
 ![Felhasználók](./media/usage-overview/users.png)  
 
-A jobb oldali insights érdekes szabályszerűségeket az adatkészlet mutasson.  
+A jobb oldali elemzések érdekes mintákat mutatnak az adathalmazban.  
 
-* A **felhasználók** jelentés száma a kiválasztott időtartamon belül a lapok használó egyedi felhasználók számát. A web apps a felhasználók a cookie-k használatával bájtjai számítanak. Ha valaki hozzáfér a hely különböző böngészők vagy az ügyfélgépek, vagy törli a cookie-kat, majd azok beleszámítanak egynél többször.
-* A **munkamenetek** jelentés számolja meg a felhasználói munkamenetek, amelyek hozzáférhetnek a webhelyhez. A munkamenet a felhasználó megszakította a több mint fél óra inaktivitási tevékenysége bizonyos.
+* A **felhasználók** jelentés a kiválasztott időszakokban lévő lapokhoz hozzáférő egyedi felhasználók számát számolja. A Web Apps esetében a felhasználók a cookie-k használatával számítanak. Ha valaki különböző böngészőkkel vagy ügyfélszámítógépekkel fér hozzá a webhelyhez, vagy törli a cookie-kat, akkor a rendszer többször is megszámolja őket.
+* A **munkamenetek** jelentés megszámolja a webhelyhez hozzáférő felhasználói munkamenetek számát. A munkamenet egy adott felhasználó által végzett tevékenység, amely több mint fél óra inaktivitási időtartammal leállt.
 
-[További információ a felhasználók, munkamenetek és események eszközök](usage-segmentation.md)  
+[További információ a felhasználókról, a munkamenetekről és az események eszközeiről](usage-segmentation.md)  
 
-## <a name="retention---how-many-users-come-back"></a>Megőrzés – hány felhasználók visszatérő használóivá?
+## <a name="retention---how-many-users-come-back"></a>Megőrzés – hány felhasználó érkezik vissza?
 
-Adatmegőrzési segítségével megismerheti, milyen gyakran adja vissza a felhasználók használni az alkalmazást, a felhasználók által végrehajtott bizonyos üzleti művelet során egy bizonyos idő gyűjtő kohorszok alapján. 
+Az adatmegőrzés segítségével megismerheti, hogy a felhasználók milyen gyakran térnek vissza az alkalmazás használatára, azon felhasználók kohorszai alapján, akik bizonyos üzleti műveleteket hajtottak végre egy adott időszakban. 
 
-- Milyen funkciók felhasználóktól származnak, vissza több, mint a többi ismertetése 
-- Űrlap feltételezéseket valós felhasználói adatok alapján 
-- Ellenőrizze, hogy megőrzési a termékkel kapcsolatos probléma 
+- Annak megismerése, hogy a felhasználók miként térhetnek vissza másokhoz 
+- A valós felhasználói adathalmazok alapján alkotott hipotézisek 
+- Annak megállapítása, hogy probléma van-e az adatmegőrzéssel a termékben 
 
-![Megőrzés](./media/usage-overview/retention.png) 
+![Adatmegőrzés](./media/usage-overview/retention.png) 
 
-Felül megőrzési vezérlők lehetővé teszik adott események és időtartomány alapján számítja ki a megőrzési határozhatja meg. A grafikon a középső vizuális megjelenítését, a teljes megőrzési százalékos aránya a megadott időtartományban biztosít. A diagram alján egyéni megőrzési jelöli egy adott időszakban. A részletesség ilyen szintje lehetővé teszi a felhasználók mire, és milyen hatással lehet egy részletesebb granularitási vracející felhasználójához.  
+A felső megőrzési vezérlők lehetővé teszik meghatározott események és időtartományok meghatározását a megőrzés kiszámításához. A középső gráf a megadott időtartomány alapján vizuálisan ábrázolja a teljes megőrzési arányt. Az alsó diagram az egyes adatmegőrzési időszakot jelöli. Ez a részletességi szint lehetővé teszi, hogy megtudja, mit csinálnak a felhasználók, és mi befolyásolhatja a visszatérő felhasználók részletesebb részletességét.  
 
-[További információ a megtartási eszköz](usage-retention.md)
+[További információ az adatmegőrzési eszközről](usage-retention.md)
 
-## <a name="custom-business-events"></a>Egyéni üzleti eseményeket
+## <a name="custom-business-events"></a>Egyéni üzleti események
 
-Mit a felhasználók az alkalmazását egyértelművé lekéréséhez hasznos beszúrása kódsorokat egyéni eseményeket. Ezek az események követheti nyomon a részletes felhasználói műveletek, például az adott gombokkal, a jelentősebb üzleti eseményeket, mint például a vásárlás vagy a játék lettek a winning semmit. 
+Ha szeretné megismerni, hogy a felhasználók mit tesznek az alkalmazással, hasznos lehet a kód sorait beszúrni az egyéni események naplózására. Ezek az események a részletes felhasználói műveletekkel, például az adott gombokra kattintva követhetik nyomon a jelentős üzleti eseményeket, például a vásárlást vagy a játék megnyerését. 
 
-Bár bizonyos esetekben a lapmegtekintések hasznos események hozhat létre, nem igaz általában. Egy felhasználó egy termékoldalán nyissa meg a termék vásárlása nélkül is. 
+Bár bizonyos esetekben az oldalletöltések hasznos eseményeket jelenthetnek, általában nem igaz. A felhasználó megnyithatja a termék oldalát a termék megvásárlása nélkül. 
 
-Az adott üzleti eseményeket a folyamat a felhasználók diagram is a webhelyen keresztül. Meg is preferenciáik különböző lehetőségeket talál, és, ha azok a drop ki vagy nehézségekbe. Ezt a tudást a teheti a fejlesztési mappájában várakozó fájlok számát a prioritásokkal kapcsolatos megalapozott döntéseket hozhasson.
+Adott üzleti események esetében a felhasználók előrehaladását a webhelyről is elvégezheti. Megtudhatja, hogy milyen beállítások állnak rendelkezésre a különböző lehetőségekhez, és hogy hol vannak kiesésük vagy nehézségei. Ezzel az ismerettel tájékozott döntéseket hozhat a fejlesztési várakozó prioritásokkal kapcsolatban.
 
-Események az alkalmazás az ügyféloldalról rögzíthető:
+Az eseményeket az alkalmazás ügyféloldali oldaláról lehet naplózni:
 
 ```JavaScript
 
@@ -112,31 +109,31 @@ Vagy a kiszolgáló oldalán:
     tc.TrackEvent("CompletedPurchase");
 ```
 
-Csatlakoztathat tulajdonságértékek ezeket az eseményeket, hogy szűrhető és az eseményeket, amikor a portálon ellenőrizze őket osztani. Emellett egy szabványos tulajdonságkészlettel minden egyes esemény, például a névtelen felhasználó azonosítója, amely lehetővé teszi, hogy követni a tevékenységek egy egyéni felhasználó csatolva van.
+Ezekhez az eseményekhez tulajdonságokat is csatolhat, így szűrheti vagy feloszthatja az eseményeket a portálon való vizsgálat során. Emellett az egyes eseményekhez, például a névtelen felhasználói AZONOSÍTÓhoz is csatolni kell a tulajdonságok standard készletét, amely lehetővé teszi egy adott felhasználó tevékenységi sorrendjének nyomon követését.
 
-Tudjon meg többet [egyéni események](../../azure-monitor/app/api-custom-events-metrics.md#trackevent) és [tulajdonságok](../../azure-monitor/app/api-custom-events-metrics.md#properties).
+További információ az [Egyéni](../../azure-monitor/app/api-custom-events-metrics.md#trackevent) eseményekről [](../../azure-monitor/app/api-custom-events-metrics.md#properties)és a tulajdonságokról.
 
-### <a name="slice-and-dice-events"></a>Szeletelésére és feldarabolására használnak események
+### <a name="slice-and-dice-events"></a>Szeletek és kockák eseményei
 
-A felhasználók, munkamenetek és események Tools szeletelni, és a felhasználó, esemény neve és tulajdonságai egyéni események menően.
+A felhasználók, a munkamenetek és az események eszközökön egyéni eseményeket adhat meg a felhasználó, az esemény neve és a tulajdonságok alapján.
 ![Felhasználók](./media/usage-overview/users.png)  
   
-## <a name="design-the-telemetry-with-the-app"></a>Az alkalmazás a telemetriai adatok megtervezése
+## <a name="design-the-telemetry-with-the-app"></a>A telemetria megtervezése az alkalmazással
 
-Tervezésekor az alkalmazás egyes szolgáltatásokhoz, fontolja meg, hogyan kívánja a sikeresség a felhasználóival. Döntse el, milyen üzleti eseményeket rögzíteni kell, és a követési események az alkalmazásba hívásainak a kezdetektől kódot.
+Ha az alkalmazás minden funkcióját megtervezi, gondolja át, hogyan fogja mérni a sikerességét a felhasználókkal. Döntse el, hogy milyen üzleti eseményeket kell rögzítenie, és az események követési hívásait az alkalmazásba az elejétől.
 
-## <a name="a--b-testing"></a>A |} B tesztelés
-Ha nem tudja, melyik változatot egy szolgáltatás több sikeres lesz, kiadási őket, így minden elérhető különböző felhasználók. Az egyes sikerének mérését, és helyezze át egy egyesített verzió.
+## <a name="a--b-testing"></a>A | B tesztelés
+Ha nem tudja, hogy egy adott szolgáltatás melyik változata lesz sikeres, szabadítson fel mindkettőt, hogy minden elérhető legyen a különböző felhasználók számára. Mérje fel az egyes műveletek sikerességét, majd váltson át egy egységes verzióra.
 
-Ezzel a technikával a csatlakoztat különböző tulajdonságértékek minden egyes verziója, az alkalmazás által küldött telemetriát. Amely az aktív TelemetryContext a tulajdonságok megadásával teheti meg. Minden telemetriai üzenetet küld az alkalmazás - nem csak az egyéni üzenetek, de a normál telemetriai alapértelmezett ezeket a tulajdonságokat kerülnek.
+Ehhez a technikához külön tulajdonságértékeket kell csatolni az alkalmazás egyes verziói által eljuttatott összes telemetria. Ezt úgy teheti meg, hogy meghatározza a tulajdonságokat az aktív TelemetryContext. Ezek az alapértelmezett tulajdonságok minden olyan telemetria-üzenethez hozzáadódnak, amelyet az alkalmazás küld – nem csak az egyéni üzeneteket, hanem a standard telemetria is.
 
-Az Application Insights portálon szűrése, és az adatok a tulajdonság értékekhez, úgy, hogy a különböző verziók összehasonlítása felosztása.
+A Application Insights portálon szűrje és ossza meg az adatait a tulajdonságértékek alapján, hogy összehasonlítsa a különböző verziókat.
 
-Ehhez [beállítása egy telemetriainicializáló](../../azure-monitor/app/api-filtering-sampling.md##add-properties-itelemetryinitializer):
+Ehhez [állítson be egy telemetria-inicializálást](../../azure-monitor/app/api-filtering-sampling.md#add-properties-itelemetryinitializer):
+
+**ASP.NET-alkalmazások**
 
 ```csharp
-
-
     // Telemetry initializer class
     public class MyTelemetryInitializer : ITelemetryInitializer
     {
@@ -147,7 +144,7 @@ Ehhez [beállítása egy telemetriainicializáló](../../azure-monitor/app/api-f
     }
 ```
 
-A webes alkalmazást inicializáló Global.asax.cs például:
+A webalkalmazás-inicializáló, például a Global.asax.cs:
 
 ```csharp
 
@@ -155,11 +152,27 @@ A webes alkalmazást inicializáló Global.asax.cs például:
     {
         // ...
         TelemetryConfiguration.Active.TelemetryInitializers
-        .Add(new MyTelemetryInitializer());
+         .Add(new MyTelemetryInitializer());
     }
 ```
 
-Minden új TelemetryClients automatikusan hozzáadja a megadott tulajdonság értéke. Egyéni telemetriaeseményeknek felülbírálhatja az alapértelmezett értékeket.
+**Alkalmazások ASP.NET Core**
+
+> [!NOTE]
+> Az inicializálás `ApplicationInsights.config` a vagy a használatával `TelemetryConfiguration.Active` való hozzáadása ASP.net Core alkalmazások esetében nem érvényes. 
+
+[ASP.net Core](asp-net-core.md#adding-telemetryinitializers) alkalmazások esetében az új `TelemetryInitializer` hozzáadását a függőségi injektálási tárolóba való hozzáadásával végezheti el, az alább látható módon. Ez az `ConfigureServices` `Startup.cs` osztály metódusában történik.
+
+```csharp
+ using Microsoft.ApplicationInsights.Extensibility;
+ using CustomInitializer.Telemetry;
+ public void ConfigureServices(IServiceCollection services)
+{
+    services.AddSingleton<ITelemetryInitializer, MyTelemetryInitializer>();
+}
+```
+
+Minden új TelemetryClients automatikusan hozzáadja a megadott tulajdonságérték értékét. Az egyes telemetria-események felülbírálják az alapértelmezett értékeket.
 
 ## <a name="next-steps"></a>További lépések
    - [Felhasználók, munkamenetek, események](usage-segmentation.md)
@@ -167,4 +180,4 @@ Minden új TelemetryClients automatikusan hozzáadja a megadott tulajdonság ér
    - [Megőrzés](usage-retention.md)
    - [Felhasználói folyamatok](usage-flows.md)
    - [Munkafüzetek](../../azure-monitor/app/usage-workbooks.md)
-   - [Adja hozzá a felhasználói környezet](usage-send-user-context.md)
+   - [Felhasználói környezet hozzáadása](usage-send-user-context.md)

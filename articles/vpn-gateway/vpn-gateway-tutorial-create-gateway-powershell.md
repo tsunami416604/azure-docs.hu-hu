@@ -2,26 +2,26 @@
 title: Azure VPN-átjárók létrehozása és felügyelete a PowerShell használatával | Microsoft Docs
 description: Oktatóanyag – Windows rendszerű VPN-átjáró létrehozása és felügyelete az Azure PowerShell-modullal
 services: vpn-gateway
-author: yushwang
+author: cherylmc
 ms.service: vpn-gateway
 ms.topic: tutorial
-ms.date: 02/11/2019
-ms.author: yushwang
+ms.date: 07/23/2019
+ms.author: cherylmc
 ms.custom: mvc
-ms.openlocfilehash: 790a8b74f437fe8fd7b8660c2ac9d208328b487f
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: d1c90e61890ee98dc5371faed872d03409aaf31f
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58445217"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489551"
 ---
-# <a name="tutorial-create-and-manage-a-vpn-gateway-using-powershell"></a>Oktatóanyag: Létrehozása és kezelése a PowerShell használatával a VPN-átjáró
+# <a name="tutorial-create-and-manage-a-vpn-gateway-using-powershell"></a>Oktatóanyag: VPN-átjáró létrehozása és kezelése a PowerShell-lel
 
 Az Azure VPN-átjárók helyszínek közötti kapcsolatot biztosítanak az ügyfél helyszínei és az Azure között. Ez az oktatóanyag az Azure VPN-átjárók üzembe helyezésének alapvető elemeit ismerteti, például a VPN-átjárók létrehozását és felügyeletét. Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
 > * VPN-átjáró létrehozása
-> * Nyilvános IP-címének megtekintése
+> * A nyilvános IP-cím megtekintése
 > * VPN-átjáró átméretezése
 > * VPN-átjáró alaphelyzetbe állítása
 
@@ -37,7 +37,26 @@ Az alábbi diagram az oktatóanyag keretében létrehozott virtuális hálózato
 
 ## <a name="common-network-parameter-values"></a>A hálózati paraméterek gyakori értékei
 
-Módosítsa az értékeket az alábbi a környezet és a hálózat beállítása, majd másolja be a állíthatja be a változókat a jelen oktatóanyag alapján. Ha a Cloud Shell-munkamenetek túllépi az időkorlátot, vagy szeretné használni egy másik PowerShell-ablakot, másolja és illessze be a változókat az új munkamenet, és folytassa az oktatóanyagot.
+Az alábbiakban az oktatóanyaghoz használt paraméterek értékei láthatók. A példákban a változók a következőre fordíthatók le:
+
+```
+#$RG1         = The name of the resource group
+#$VNet1       = The name of the virtual network
+#$Location1   = The location region
+#$FESubnet1   = The name of the first subnet
+#$BESubnet1   = The name of the second subnet
+#$VNet1Prefix = The address range for the virtual network
+#$FEPrefix1   = Addresses for the first subnet
+#$BEPrefix1   = Addresses for the second subnet
+#$GwPrefix1   = Addresses for the GatewaySubnet
+#$VNet1ASN    = ASN for the virtual network
+#$DNS1        = The IP address of the DNS server you want to use for name resolution
+#$Gw1         = The name of the virtual network gateway
+#$GwIP1       = The public IP address for the virtual network gateway
+#$GwIPConf1   = The name of the IP configuration
+```
+
+Módosítsa az alábbi értékeket a környezet és a hálózat beállítása alapján, majd másolja és illessze be az oktatóanyag változóinak megadásához. Ha a Cloud Shell munkamenete időtúllépést tapasztal, vagy egy másik PowerShell-ablakot kell használnia, másolja és illessze be a változókat az új munkamenetbe, és folytassa az oktatóanyagot.
 
 ```azurepowershell-interactive
 $RG1         = "TestRG1"
@@ -45,7 +64,6 @@ $VNet1       = "VNet1"
 $Location1   = "East US"
 $FESubnet1   = "FrontEnd"
 $BESubnet1   = "Backend"
-$GwSubnet1   = "GatewaySubnet"
 $VNet1Prefix = "10.1.0.0/16"
 $FEPrefix1   = "10.1.0.0/24"
 $BEPrefix1   = "10.1.1.0/24"
@@ -59,7 +77,7 @@ $GwIPConf1   = "gwipconf1"
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancsot. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Először az erőforráscsoportot kell létrehozni. A következő példában egy *TestRG1* nevű erőforráscsoportot hozunk létre az *USA keleti régiójában*:
+Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Először az erőforráscsoportot kell létrehozni. A következő példában egy *TestRG1* nevű erőforráscsoportot hozunk létre az *USA keleti régiójában*:
 
 ```azurepowershell-interactive
 New-AzResourceGroup -ResourceGroupName $RG1 -Location $Location1
@@ -67,12 +85,12 @@ New-AzResourceGroup -ResourceGroupName $RG1 -Location $Location1
 
 ## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
-Az Azure VPN-átjáró helyszínek közötti kapcsolatot és P2S VPN-kiszolgálói funkciókat biztosít a virtuális hálózatán. A VPN-átjárót hozzáadhatja egy meglévő virtuális hálózathoz, vagy létrehozhat egy új virtuális hálózatot az átjáróval együtt. Ez a példa létrehoz egy új virtuális hálózatot három alhálózattal: Előtér, háttér és átjáró-alhálózat használatával [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) és [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork):
+Az Azure VPN-átjáró helyszínek közötti kapcsolatot és P2S VPN-kiszolgálói funkciókat biztosít a virtuális hálózatán. A VPN-átjárót hozzáadhatja egy meglévő virtuális hálózathoz, vagy létrehozhat egy új virtuális hálózatot az átjáróval együtt. Figyelje meg, hogy a példa pontosan megadja az átjáró-alhálózat nevét. Az átjáró-alhálózat nevét mindig az "GatewaySubnet" értékkel kell megadnia ahhoz, hogy megfelelően működjön. Ez a példa egy új virtuális hálózatot hoz létre három alhálózattal: A frontend, a háttér és a GatewaySubnet a [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) és a [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)használatával:
 
 ```azurepowershell-interactive
 $fesub1 = New-AzVirtualNetworkSubnetConfig -Name $FESubnet1 -AddressPrefix $FEPrefix1
 $besub1 = New-AzVirtualNetworkSubnetConfig -Name $BESubnet1 -AddressPrefix $BEPrefix1
-$gwsub1 = New-AzVirtualNetworkSubnetConfig -Name $GWSubnet1 -AddressPrefix $GwPrefix1
+$gwsub1 = New-AzVirtualNetworkSubnetConfig -Name GatewaySubnet -AddressPrefix $GwPrefix1
 $vnet   = New-AzVirtualNetwork `
             -Name $VNet1 `
             -ResourceGroupName $RG1 `
@@ -83,7 +101,7 @@ $vnet   = New-AzVirtualNetwork `
 
 ## <a name="request-a-public-ip-address-for-the-vpn-gateway"></a>Nyilvános IP-cím kérése a VPN-átjáró számára
 
-Az Azure VPN-átjárók a helyszíni VPN-eszközökkel az interneten keresztül kommunikálnak az IKE (internetes kulcscsere) egyeztetéséhez és az IPsec-alagutak kiépítéséhez. Hozzon létre, és a egy nyilvános IP-cím hozzárendelése a VPN-átjáróhoz, az alábbi példában látható módon [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) és [New-AzVirtualNetworkGatewayIpConfig](/powershell/module/az.network/new-azvirtualnetworkgatewayipconfig):
+Az Azure VPN-átjárók a helyszíni VPN-eszközökkel az interneten keresztül kommunikálnak az IKE (internetes kulcscsere) egyeztetéséhez és az IPsec-alagutak kiépítéséhez. Hozzon létre és rendeljen egy nyilvános IP-címet a VPN-átjáróhoz az alábbi példában látható módon: [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) és [New-AzVirtualNetworkGatewayIpConfig](/powershell/module/az.network/new-azvirtualnetworkgatewayipconfig):
 
 > [!IMPORTANT]
 > Jelenleg csak dinamikus nyilvános IP-címeket használhat az átjárókhoz. A statikus IP-címek nem támogatottak az Azure VPN-átjárókon.
@@ -99,7 +117,7 @@ $gwipconf = New-AzVirtualNetworkGatewayIpConfig -Name $GwIPConf1 `
 
 ## <a name="create-a-vpn-gateway"></a>VPN-átjáró létrehozása
 
-A VPN-átjáró létrehozása több mint 45 percet is igénybe vehet. Amint az átjáró létrejött, létrehozhat egy kapcsolatot a virtuális hálózat és egy másik VNet között. Vagy létrehozhat egy kapcsolatot a virtuális hálózat és egy helyszíni hely között. Hozzon létre egy VPN gateway-t a [New-AzVirtualNetworkGateway](/powershell/module/az.network/New-azVirtualNetworkGateway) parancsmagot.
+A VPN-átjáró létrehozása több mint 45 percet is igénybe vehet. Amint az átjáró létrejött, létrehozhat egy kapcsolatot a virtuális hálózat és egy másik VNet között. Vagy létrehozhat egy kapcsolatot a virtuális hálózat és egy helyszíni hely között. Hozzon létre egy VPN-átjárót a [New-AzVirtualNetworkGateway](/powershell/module/az.network/New-azVirtualNetworkGateway) parancsmag használatával.
 
 ```azurepowershell-interactive
 New-AzVirtualNetworkGateway -Name $Gw1 -ResourceGroupName $RG1 `
@@ -108,28 +126,28 @@ New-AzVirtualNetworkGateway -Name $Gw1 -ResourceGroupName $RG1 `
 ```
 
 Fő paraméterértékek:
-* GatewayType: Használat **Vpn** a helyek közötti és VNet – VNet kapcsolatokhoz
-* VpnType: Használat **RouteBased** szélesebb tartományban a VPN-eszközök és több útválasztási szolgáltatással kommunikál
-* A GatewaySku: **VpnGw1** az alapértelmezett érték; a módosításhoz VpnGw2 és VpnGw3, ha magasabb szintű termékváltozatot vagy több kapcsolat van szüksége. További információkért lásd: [Az átjárók termékváltozatai](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
+* GatewayType **VPN** használata helyek közötti és VNet-VNet kapcsolatokhoz
+* VpnType A **útvonalalapú** használata a VPN-eszközök szélesebb körének és több útválasztási funkciójának használatával
+* Gatewaysku paraméterben A **VpnGw1** az alapértelmezett; módosítsa a VpnGw2 vagy a VpnGw3, ha nagyobb átviteli sebességre vagy több kapcsolatra van szüksége. További információkért lásd: [Az átjárók termékváltozatai](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
 
-Ha a TryIt használ, a munkamenet előfordulhat, hogy időtúllépés. rendben van. Az átjáró továbbra is létrehoz.
+Ha a TryIt használja, előfordulhat, hogy a munkamenet időtúllépést okoz. rendben van. Az átjáró továbbra is létrejön.
 
 Amint az átjáró létrejött, létrehozhat egy kapcsolatot a virtuális hálózat és egy másik VNet vagy a virtuális hálózat és egy helyszíni hely között. Konfigurálhat egy P2S-kapcsolatot is a VNethez egy ügyfélszámítógéptől.
 
 ## <a name="view-the-gateway-public-ip-address"></a>Az átjáró nyilvános IP-címének megtekintése
 
-Ha tudja, hogy a nyilvános IP-cím nevére, [Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) átjáróhoz rendelt nyilvános IP-cím megjelenítéséhez.
+Ha ismeri a nyilvános IP-cím nevét, a [Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) használatával jelenítse meg az átjáróhoz rendelt nyilvános IP-címet.
 
-A munkamenet túllépte az időkorlátot, ha közös hálózati paraméterek másolja az új munkamenetbe, ez az oktatóanyag elején található folytatja, majd a folytatáshoz.
+Ha a munkamenet időkorlátja lejárt, másolja az oktatóanyag elejétől származó általános hálózati paramétereket az új munkamenetbe, majd folytassa a következővel:.
 
 ```azurepowershell-interactive
 $myGwIp = Get-AzPublicIpAddress -Name $GwIP1 -ResourceGroup $RG1
 $myGwIp.IpAddress
 ```
 
-## <a name="resize-a-gateway"></a>Az átjáró átméretezése
+## <a name="resize-a-gateway"></a>Átjáró átméretezése
 
-A VPN-átjáró termékváltozata az átjáró létrehozása után is módosítható. A különböző átjáró-termékváltozatok különböző specifikációkat, például sebességet, kapcsolatszámot stb. támogatnak. Az alábbi példában [átméretezése-AzVirtualNetworkGateway](/powershell/module/az.network/Resize-azVirtualNetworkGateway) méretezze át az átjáró a VpnGw1, VpnGw2. További információkért lásd: [Az átjárók termékváltozatai](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
+A VPN-átjáró termékváltozata az átjáró létrehozása után is módosítható. A különböző átjáró-termékváltozatok különböző specifikációkat, például sebességet, kapcsolatszámot stb. támogatnak. Az alábbi példa a [Resize-AzVirtualNetworkGateway](/powershell/module/az.network/Resize-azVirtualNetworkGateway) használatával átméretezi az átjárót a VpnGw1-ről a VpnGw2-re. További információkért lásd: [Az átjárók termékváltozatai](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
 
 ```azurepowershell-interactive
 $gateway = Get-AzVirtualNetworkGateway -Name $Gw1 -ResourceGroup $RG1
@@ -138,9 +156,9 @@ Resize-AzVirtualNetworkGateway -GatewaySku VpnGw2 -VirtualNetworkGateway $gatewa
 
 A VPN-átjárók átméretezése szintén hozzávetőleg 30–45 percet vesz igénybe, bár ez a művelet **nem** szakítja meg vagy törli a meglévő kapcsolatokat és konfigurációkat.
 
-## <a name="reset-a-gateway"></a>Egy átjáró alaphelyzetbe állítása
+## <a name="reset-a-gateway"></a>Átjáró alaphelyzetbe állítása
 
-Hibaelhárítás keretében az Azure VPN-átjáró alaphelyzetbe állításával kényszerítheti a VPN-átjárót az IPsec/IKE-alagútkonfigurációk újraindítására. Használat [alaphelyzetbe állítása – AzVirtualNetworkGateway](/powershell/module/az.network/Reset-azVirtualNetworkGateway) az átjáró alaphelyzetbe állítása.
+Hibaelhárítás keretében az Azure VPN-átjáró alaphelyzetbe állításával kényszerítheti a VPN-átjárót az IPsec/IKE-alagútkonfigurációk újraindítására. Az átjáró alaphelyzetbe állításához használja az [reset-AzVirtualNetworkGateway](/powershell/module/az.network/Reset-azVirtualNetworkGateway) .
 
 ```azurepowershell-interactive
 $gateway = Get-AzVirtualNetworkGateway -Name $Gw1 -ResourceGroup $RG1
@@ -151,9 +169,9 @@ További információ: [VPN-átjáró alaphelyzetbe állítása](vpn-gateway-res
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha Ön nézetváltás a [tovább az oktatóanyag](vpn-gateway-tutorial-vpnconnection-powershell.md), fog szeretné megőrizni ezeket az erőforrásokat, mert az előfeltételként szükséges szoftvert.
+Ha a [következő oktatóanyagra](vpn-gateway-tutorial-vpnconnection-powershell.md)készül, érdemes megtartania ezeket az erőforrásokat, mert ezek az előfeltételek.
 
-Azonban ha az átjáró egy prototípust, tesztelési vagy proof-of-concept-telepítés része, használhatja a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) paranccsal eltávolítható az erőforráscsoport, a VPN-átjáró és az összes kapcsolódó erőforrás.
+Ha azonban az átjáró egy prototípus, tesztelés vagy próba-koncepciós telepítés része, a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) paranccsal távolíthatja el az erőforráscsoportot, a VPN-átjárót és az összes kapcsolódó erőforrást.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name $RG1
@@ -165,7 +183,7 @@ Ebben az oktatóanyagban a VPN-átjárók létrehozásának és kezelésének al
 
 > [!div class="checklist"]
 > * VPN-átjáró létrehozása
-> * Nyilvános IP-címének megtekintése
+> * A nyilvános IP-cím megtekintése
 > * VPN-átjáró átméretezése
 > * VPN-átjáró alaphelyzetbe állítása
 

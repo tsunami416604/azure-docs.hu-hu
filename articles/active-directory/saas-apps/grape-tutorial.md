@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 192db67f481f3a4c420c19be7ce1febe55342050
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: cd7b382e35191571af5a9d7ddd9884dff32e023d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57901372"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67101537"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gra-pe"></a>Oktatóanyag: A szürke-Pe az Azure Active Directory-integráció
 
@@ -52,7 +52,7 @@ Az Azure AD-be a szürkével-Pe integráció konfigurálásához, hozzá kell sz
 
 **Szürkével-Pe hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -64,7 +64,7 @@ Az Azure AD-be a szürkével-Pe integráció konfigurálásához, hozzá kell sz
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **szürkével Pe-**, jelölje be **szürkével-Pe** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A Keresés mezőbe írja be a **szürkével Pe-** , jelölje be **szürkével-Pe** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
      ![Az eredmények listájában szürkével-előtelepítési környezet](common/search-new-app.png)
 
@@ -153,7 +153,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
 Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés szürkével-Pe Azure egyszeri bejelentkezés használatára.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **szürkével Pe-**.
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **szürkével Pe-** .
 
     ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
 

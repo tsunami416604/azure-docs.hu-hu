@@ -1,86 +1,71 @@
 ---
-title: A helyszíni erőforrásokhoz való egyszeri bejelentkezés működése az Azure AD-hez csatlakoztatott eszközök |} A Microsoft Docs
+title: Hogyan működik az SSO a helyszíni erőforrásokkal az Azure AD-hez csatlakoztatott eszközökön | Microsoft Docs
 description: Ebből a cikkből megtudhatja, hogyan konfigurálhatja a hibrid Azure Active Directory-csatlakoztatott eszközöket.
 services: active-directory
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-editor: ''
-ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
 ms.subservice: devices
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 11/20/2018
+ms.topic: conceptual
+ms.date: 06/28/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45941de6a90a5824ebc1e5d31b18b68f5fd9d493
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 14e7a4389c192dde8d086a69a35114f3b8b33e96
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520547"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562191"
 ---
-# <a name="how-sso-to-on-premises-resources-works-on-azure-ad-joined-devices"></a>A helyszíni erőforrásokhoz való egyszeri bejelentkezés működése az Azure AD-hez csatlakoztatott eszközök
+# <a name="how-sso-to-on-premises-resources-works-on-azure-ad-joined-devices"></a>Hogyan működik az SSO a helyszíni erőforrásokkal az Azure AD-hez csatlakoztatott eszközökön
 
-Már valószínűleg nem meglepő, hogy az Azure Active Directory (Azure AD) eszköztől, egyszeri bejelentkezés (SSO) környezetet biztosít a bérlő felhőalkalmazásokhoz. Ha a környezetben a helyszíni Active Directory (AD), ezeken az eszközökön, hogy az egyszeri Bejelentkezéses felhasználói élmény bővítheti.
+Valószínűleg nem meglepő, hogy egy Azure Active Directory (Azure AD) csatlakoztatott eszköz egyszeri bejelentkezéses (SSO) élményt biztosít a bérlő felhőalapú alkalmazásai számára. Ha a környezet helyszíni Active Directory (AD) rendelkezik, kiterjesztheti az SSO-élményt ezeken az eszközökön.
 
-Ez a cikk bemutatja, hogyan is működik mindez.
+Ez a cikk a működésének módját ismerteti.
 
 ## <a name="how-it-works"></a>Működés 
 
-Ne feledje, csak egy egyetlen felhasználónév és jelszó van szüksége, mivel az egyszeri Bejelentkezéssel egyszerűbbé teszi az erőforrásokhoz való hozzáférés, és biztonságosabbá teszi a környezetében. Egy az Azure AD-csatlakoztatott eszköz, a felhasználóknak már van egy egyszeri Bejelentkezéses felhasználói élmény, a felhőalapú alkalmazások a környezetben. Ha a környezetben az Azure ad-ben, és a egy helyszíni ad-ben, érdemes lehet bontsa ki az egyszeri Bejelentkezéses felhasználói élmény hatókörét a saját helyszíni üzletági (LOB) alkalmazások, a fájlmegosztások, és a nyomtatókat.  
+Mivel csak egyetlen felhasználónevet és jelszót kell megjegyeznie, az SSO leegyszerűsíti a hozzáférést az erőforrásokhoz, és javítja a környezet biztonságát. Az Azure AD-hez csatlakoztatott eszközzel a felhasználók már rendelkeznek egyszeri bejelentkezéssel a környezetében lévő felhőalapú alkalmazásokhoz. Ha a környezet rendelkezik Azure AD-val és helyszíni AD-vel, érdemes kiterjesztenie az egyszeri bejelentkezés hatókörét a helyszíni üzletági (LOB) alkalmazások, a fájlmegosztás és a nyomtatók számára.  
 
+Az Azure AD-hez csatlakoztatott eszközök nem rendelkeznek a helyszíni AD-környezettel kapcsolatos ismeretekkel, mivel azok nem csatlakoznak hozzá. A helyszíni AD-vel kapcsolatos további információkat azonban Azure AD Connect használatával is megadhat.
+Az Azure AD-t és a helyszíni AD-t egyaránt tartalmazó környezetek is ismertek hibrid környezettel. Ha hibrid környezettel rendelkezik, valószínű, hogy már rendelkezik Azure AD Connect központilag, hogy szinkronizálja a helyszíni identitás adatait a felhőbe. A szinkronizálási folyamat részeként Azure AD Connect szinkronizálja a helyszíni tartomány adatait az Azure AD-vel. Amikor egy felhasználó egy hibrid környezetben jelentkezik be egy Azure AD-hez csatlakoztatott eszközre:
 
-Az Azure AD-csatlakoztatott eszközök rendelkezik nincs ismereteket a helyszíni AD-környezetet, mivel azok nem csatlakoztatott. Azonban, az további információkkal kapcsolatban, hogy a helyszíni ad-ben, ezeket az eszközöket az Azure AD Connecttel.
-Egy környezetet, amelyben mindkettő szerepel, egy Azure ad-ben és a egy helyszíni ad-ben, akkor is ismert hibrid környezettel rendelkezik. Ha hibrid környezettel rendelkezik, akkor valószínű, hogy már rendelkezik Azure AD Connect telepített szinkronizálhatja a helyszíni identitás adatait a felhőbe. A szinkronizálási folyamat részeként az Azure AD Connect szinkronizálja a helyszíni tartomány információk az Azure ad-hez. Amikor egy felhasználó bejelentkezik az Azure ad-hez csatlakoztatott eszközök hibrid környezetben:
+1. Az Azure AD elküldi annak a helyszíni tartománynak a nevét, amelyhez a felhasználó visszaesik az eszközhöz. 
+1. A helyi biztonsági szervezet (LSA) szolgáltatás engedélyezi a Kerberos-hitelesítést az eszközön.
 
-1. Az Azure AD elküldi a helyszíni tartomány a felhasználó nevét tartomány tagja, vissza az eszközön. 
+A felhasználó helyszíni tartományában lévő erőforráshoz való hozzáférési kísérlet során az eszköz:
 
-2. A helyi biztonsági szervezet (LSA) szolgáltatás lehetővé teszi a Kerberos-hitelesítést az eszközön.
+1. A tartományi információk használatával megkeresi a tartományvezérlőt (DC). 
+1. Elküldi a helyszíni tartományi adatokat és a felhasználói hitelesítő adatokat a helyi tartományvezérlőnek a hitelesített felhasználó beszerzéséhez.
+1. Az AD-hez csatlakoztatott erőforrások eléréséhez használt Kerberos [-jegy (TGT)](https://docs.microsoft.com/windows/desktop/secauthn/ticket-granting-tickets) fogadása.
 
-A felhasználó a helyi tartomány, az eszköz az erőforráshoz hozzáférést próbál:
+Minden, a **Windows rendszerhez integrált hitelesítéshez** konfigurált alkalmazás ZÖKKENŐMENTESEN egyszeri bejelentkezést kap, amikor egy felhasználó megpróbál hozzáférni azokhoz.  
 
-1. A tartomány információk segítségével keresse meg a tartományvezérlő (DC). 
-
-2. A helyszíni tartomány adatait és a felhasználói hitelesítő adatokat küld a található tartományvezérlő a hitelesített felhasználó beolvasásához.
-
-3. A Kerberos kap [jegykiadó jegyet (TGT)](https://docs.microsoft.com/windows/desktop/secauthn/ticket-granting-tickets) AD-hez csatlakoztatott erőforrások eléréséhez használt.
-
-Minden alkalmazás konfigurált **Windows-hitelesítést** zökkenőmentesen kaphat az egyszeri bejelentkezés, ha egy felhasználó megpróbál hozzáférni őket.  
-
-Windows Hello for Business további konfigurálására van szükség ahhoz, hogy a helyszíni egyszeri bejelentkezés az Azure AD-csatlakoztatott eszközről. További információkért lásd: [konfigurálása az Azure AD-hez csatlakoztatott eszközök esetében a helyszíni egyszeri bejelentkezést a használatával Windows Hello for Business](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-hybrid-aadj-sso-base). 
+A vállalati Windows Hello használatához további konfiguráció szükséges, amely lehetővé teszi a helyszíni egyszeri bejelentkezést egy Azure AD-hez csatlakoztatott eszközről. További információ: az [Azure ad-hez csatlakoztatott eszközök konfigurálása helyszíni egyszeri bejelentkezéshez a Windows Hello for Business használatával](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-hybrid-aadj-sso-base). 
 
 ## <a name="what-you-get"></a>Amihez jut
 
-Az egyszeri bejelentkezés egy Azure AD a csatlakoztatott a eszköz használható: 
+Az SSO-val egy Azure AD-hez csatlakoztatott eszközön a következőket teheti: 
 
-- Egy AD tagkiszolgálón UNC elérési út elérésére
+- UNC elérési út elérése egy AD-tagkiszolgálón
+- Hozzáférés a Windows rendszerhez integrált biztonsági szolgáltatáshoz konfigurált AD tag webkiszolgálóhoz 
 
-- Egy AD tag webkiszolgálón beállított Windows integrált biztonsági eléréséhez 
+Ha Windowsos eszközről szeretné felügyelni a helyszíni AD-t, telepítse a [Windows 10-es Távoli kiszolgálófelügyelet eszközei](https://www.microsoft.com/download/details.aspx?id=45520).
 
+A következőket használhatja:
 
-
-Ha szeretné kezelni a helyszíni AD egy Windows-eszközről, telepítse a [távoli kiszolgáló felügyeleti eszközei a Windows 10-es](https://www.microsoft.com/en-us/download/details.aspx?id=45520).
-
-Használhatja:
-
-- Az Active Directory – felhasználók és számítógépek (aduc-ban) beépülő modul az összes AD-objektumok felügyeletéhez. Azonban akkor adja meg a tartományt, amelyeket manuálisan csatlakozni szeretne.
-
-- A DHCP beépülő modul egy AD-hez csatlakoztatott DHCP-kiszolgáló felügyeletéhez. Azonban szükség lehet a DHCP-kiszolgáló nevét vagy címét adja meg.
-
+- A Active Directory felhasználók és számítógépek (ADUC) beépülő modul az összes AD objektum felügyeletéhez. Azonban meg kell adnia azt a tartományt, amelyhez manuálisan szeretne csatlakozni.
+- Az AD-hez csatlakoztatott DHCP-kiszolgáló felügyeletére szolgáló DHCP beépülő modul. Előfordulhat azonban, hogy meg kell adnia a DHCP-kiszolgáló nevét vagy címeit.
  
 ## <a name="what-you-should-know"></a>Alapismeretek
 
-Előfordulhat, hogy módosítani kell a [tartományalapú szűrés](../hybrid/how-to-connect-sync-configure-filtering.md#domain-based-filtering) az Azure AD Connectben, győződjön meg arról, hogy a rendszer szinkronizálja az adatokat a szükséges tartományok.
+Előfordulhat, hogy módosítania kell a [tartományalapú szűrést](../hybrid/how-to-connect-sync-configure-filtering.md#domain-based-filtering) Azure ad Connect a szükséges tartományokkal kapcsolatos információk szinkronizálásának biztosítása érdekében.
 
-Alkalmazásokhoz és erőforrásokhoz ettől az Active Directory számítógép-hitelesítés nem működik, mert az Azure AD-hez csatlakoztatott eszközök nincsenek számítógép-objektumot az ad-ben. 
+A Active Directory számítógép-hitelesítéstől függő alkalmazások és erőforrások nem működnek, mert az Azure AD-hez csatlakoztatott eszközök nem rendelkeznek számítógép-objektummal az AD-ben. 
 
-Az Azure AD-csatlakoztatott eszközön lévő többi felhasználóval fájlmegosztást nem lehet.
+Egy Azure AD-hez csatlakoztatott eszközön nem oszthat meg fájlokat más felhasználókkal.
 
 ## <a name="next-steps"></a>További lépések
 
-További információkért lásd: [Eszközfelügyelet az Azure Active Directoryban?](overview.md) 
+További információ: [Mi az Eszközkezelés a Azure Active Directory?](overview.md) 

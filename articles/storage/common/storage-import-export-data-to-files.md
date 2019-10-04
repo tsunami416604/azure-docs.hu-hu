@@ -9,11 +9,11 @@ ms.date: 04/08/2019
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 28026a429643c62434ddfd7591126169857a7371
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59265634"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61479076"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Adatok importálása az Azure Files Azure Import/Export szolgáltatás használata
 
@@ -40,7 +40,7 @@ Adatok átviteléhez az Azure Files importálási feladat létrehozása, előtt 
  
 
 
-## <a name="step-1-prepare-the-drives"></a>1. lépés: A meghajtó előkészítése
+## <a name="step-1-prepare-the-drives"></a>1\. lépés: A meghajtó előkészítése
 
 Ebben a lépésben létrehoz egy naplót fájlt. A naplófájl alapvető információkat, például a meghajtó sorozatszáma, a titkosítási kulcsot és a storage-fiók adatait tárolja.
 
@@ -112,7 +112,7 @@ Hajtsa végre az alábbi lépések végrehajtásával készítse elő a meghajt�
 
 További példákat talál [-minták az adatbázisnapló-fájlok](#samples-for-journal-files).
 
-## <a name="step-2-create-an-import-job"></a>2. lépés: Importálási feladat létrehozása 
+## <a name="step-2-create-an-import-job"></a>2\. lépés: Importálási feladat létrehozása 
 
 A következő lépésekkel importálási feladat létrehozása az Azure Portalon.
 1. Jelentkezzen be https://portal.azure.com/.
@@ -162,15 +162,15 @@ A következő lépésekkel importálási feladat létrehozása az Azure Portalon
 
         ![Importálási feladat létrehozása – 4. lépés](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
 
-## <a name="step-3-ship-the-drives-to-the-azure-datacenter"></a>3. lépés: Az Azure-adatközpontba a meghajtók szállításra 
+## <a name="step-3-ship-the-drives-to-the-azure-datacenter"></a>3\. lépés: Az Azure-adatközpontba a meghajtók szállításra 
 
 [!INCLUDE [storage-import-export-ship-drives](../../../includes/storage-import-export-ship-drives.md)]
 
-## <a name="step-4-update-the-job-with-tracking-information"></a>4. lépés: A nyomkövetési adatokat a feladat frissítése
+## <a name="step-4-update-the-job-with-tracking-information"></a>4\. lépés: A nyomkövetési adatokat a feladat frissítése
 
 [!INCLUDE [storage-import-export-update-job-tracking](../../../includes/storage-import-export-update-job-tracking.md)]
 
-## <a name="step-5-verify-data-upload-to-azure"></a>5. lépés: Az Azure-ba történő adatfeltöltés ellenőrzése
+## <a name="step-5-verify-data-upload-to-azure"></a>5\. lépés: Az Azure-ba történő adatfeltöltés ellenőrzése
 
 Nyomon követheti a feladat befejezését. A feladat befejeződése után győződjön meg arról, hogy az adatok feltöltötte-e az Azure-bA. Törli a helyszíni adatokat, csak azt követően, ha megbizonyosodott arról, hogy a feltöltés sikeres volt.
 

@@ -1,27 +1,20 @@
 ---
-title: Az Azure IoT Edge-modul ajánlat közzététele |} A Microsoft Docs
+title: Publish Azure IoT Edge module offer | Azure Marketplace
 description: Az IoT Edge-modul ajánlat közzétételének módjáról.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 10/18/2018
-ms.author: pbutlerm
-ms.openlocfilehash: dfa512a26334567301812ecefd8c5673b0ea4094
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.author: pabutler
+ms.openlocfilehash: c853bd3bad9f02f6824c26fb5d18e9e59d921fe8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955900"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64942042"
 ---
-# <a name="publish-iot-edge-module-offer"></a>IoT Edge-modul ajánlat közzététele
+# <a name="publish-iot-edge-module-offer"></a>IoT Edge-modulajánlat közzététele
 
  Az adatokat azáltal, hogy az új ajánlat létrehozása után a **új ajánlat** lapon teheti közzé az ajánlatot. Válassza ki **közzététel** a közzétételi folyamat elindításához.
 

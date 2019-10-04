@@ -1,6 +1,6 @@
 ---
-title: Fejlesztői fiókok engedélyezése az Azure Active Directory B2C – az Azure API Management |} A Microsoft Docs
-description: Ismerje meg, hogyan engedélyezheti a felhasználók az API Management az Azure Active Directory B2C használatával.
+title: Fejlesztői fiókok engedélyezése Azure Active Directory B2C-Azure API Management használatával | Microsoft Docs
+description: Megtudhatja, hogyan engedélyezheti a felhasználókat a API Management Azure Active Directory B2C használatával.
 services: api-management
 documentationcenter: API Management
 author: miaojiang
@@ -9,121 +9,111 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: db701a239aedb312c7671e403cdfde7135130c6d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 4260f4640f488e67d6bb3101ff2cf7d269e2bf3e
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58089607"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073660"
 ---
-# <a name="how-to-authorize-developer-accounts-by-using-azure-active-directory-b2c-in-azure-api-management"></a>Hogyan lehet Azure Active Directory B2C használatával az Azure API Management fejlesztői fiókok engedélyezése
+# <a name="how-to-authorize-developer-accounts-by-using-azure-active-directory-b2c-in-azure-api-management"></a>Fejlesztői fiókok engedélyezése Azure Active Directory B2C használatával az Azure-ban API Management
 
 ## <a name="overview"></a>Áttekintés
 
-Az Azure Active Directory B2C egy felhőbeli identitáskezelő megoldás a felhasználók felé néző webes és mobilalkalmazások. A fejlesztői portál hozzáférés kezelésére használható. Ez az útmutató bemutatja, a konfiguráció szükséges az API Management szolgáltatás integrálása az Azure Active Directory B2C a. A fejlesztői portálra való hozzáférés engedélyezése a klasszikus Azure Active Directory használatával kapcsolatos információkért lásd: [Hogyan lehet az Azure Active Directory fejlesztői fiókok engedélyezése].
+A Azure Active Directory B2C egy felhőalapú identitáskezelési megoldás a fogyasztóknak szánt webes és mobil alkalmazásokhoz. A segítségével kezelheti a fejlesztői portálhoz való hozzáférést. Ez az útmutató bemutatja, hogy a API Management szolgáltatásban milyen konfiguráció szükséges a Azure Active Directory B2C integrálásához. A fejlesztői portál klasszikus Azure Active Directory használatával történő hozzáférésének engedélyezéséről a következő témakörben talál további információt: [fejlesztői fiókok engedélyezése Azure Active Directory használatával].
 
 > [!NOTE]
-> Hajtsa végre a jelen útmutató lépéseit, először szüksége van az alkalmazás létrehozása az Azure Active Directory B2C-bérlő. Emellett szüksége lesz készen áll a regisztráció és bejelentkezés házirendeket. További információkért lásd: [Az Azure Active Directory B2C – áttekintés].
+> Az útmutató lépéseinek elvégzéséhez először Azure Active Directory B2C Bérlővel kell létrehoznia alkalmazást a alkalmazásban. Emellett készen kell lennie a regisztrációra és a bejelentkezési szabályzatokra. További információ: [Azure Active Directory B2C áttekintése]).
 
 [!INCLUDE [premium-dev-standard.md](../../includes/api-management-availability-premium-dev-standard.md)]
 
-## <a name="authorize-developer-accounts-by-using-azure-active-directory-b2c"></a>Fejlesztői fiókok engedélyezése az Azure Active Directory B2C használatával
+## <a name="authorize-developer-accounts-by-using-azure-active-directory-b2c"></a>Fejlesztői fiókok engedélyezése Azure Active Directory B2C használatával
 
-1. Első lépésként jelentkezzen be a [az Azure portal](https://portal.azure.com) , és keresse meg az API Management-példány.
+1. Első lépésként jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és keresse meg a API Management-példányt.
 
    > [!NOTE]
-   > Ha még még nem hozott létre API Management szolgáltatáspéldányt, tekintse meg [az API Management szolgáltatáspéldány létrehozása] [ Create an API Management service instance] a a [Ismerkedés az Azure API Management oktatóanyag] [Get started with Azure API Management].
+   > Ha még nem hozott létre API Management Service-példányt, tekintse meg a [API Management Service-példány létrehozása][Create an API Management service instance] című témakört az [Azure API Management oktatóanyag][Get started with Azure API Management]első lépéseiben.
 
-2. A **identitások**. Kattintson a **+ Hozzáadás** tetején.
+2. Az **identitások**területen. Kattintson a felül található **+ Hozzáadás** gombra.
 
-   A **Hozzáadás identitásszolgáltató** ablaktáblán a jobb oldalon jelenik meg. Válasszon **az Azure Active Directory B2C**.
+   A jobb oldalon megjelenik az **identitás-szolgáltató hozzáadása** panel. Válassza a **Azure Active Directory B2C**lehetőséget.
     
-   ![Identitásszolgáltató hozzáadása AAD B2C-vel][api-management-howto-add-b2c-identity-provider]
+   ![AAD B2C hozzáadása identitás-szolgáltatóként][api-management-howto-add-b2c-identity-provider]
 
-3. Másolás a **átirányítási URL-cím**.
+3. Másolja az **átirányítási URL-címet**.
 
-   ![AAD B2C identitásszolgáltató szolgáltató átirányítási URL-címe][api-management-howto-copy-b2c-identity-provider-redirect-url]
+   ![AAD B2C identitás-szolgáltató átirányítási URL-címe][api-management-howto-copy-b2c-identity-provider-redirect-url]
 
-4. Új lapon, az az Azure Portalon, és nyissa meg az Azure Active Directory B2C-bérlő eléréséhez a **alkalmazások** panelen.
+4. Egy új lapon nyissa meg Azure Active Directory B2C-bérlőjét a Azure Portal, és nyissa meg az **alkalmazások** panelt.
 
-   ![1 új alkalmazás regisztrálása][api-management-howto-aad-b2c-portal-menu]
+   ![Új 1. alkalmazás regisztrálása][api-management-howto-aad-b2c-portal-menu]
 
-5. Kattintson a **Hozzáadás** gombra kattintva hozzon létre egy új Azure Active Directory B2C-alkalmazást.
+5. Új Azure Active Directory B2C alkalmazás létrehozásához kattintson a **Hozzáadás** gombra.
 
-   ![2 új alkalmazás regisztrálása][api-management-howto-aad-b2c-add-button]
+   ![Új alkalmazás regisztrálása 2][api-management-howto-aad-b2c-add-button]
 
-6. Az a **új alkalmazás** panelen adja meg az alkalmazás nevét. Válassza a **Igen** alatt **Web App/Web API**, és válassza a **Igen** alatt **implicit engedélyezési folyamat engedélyezése**. Illessze be a **átirányítási URL-cím** , 3. lépésben másolt a **válasz URL-cím** szövegmezőben.
+6. Az **új alkalmazás** panelen adja meg az alkalmazás nevét. Válassza az **Igen** lehetőséget a **webalkalmazás/webes API**területen, majd válassza az **Igen** lehetőséget az **implicit folyamat engedélyezése**lehetőségnél. Ezután illessze be a 3. lépésben a **Válasz URL-cím** szövegmezőbe másolt **átirányítási URL-címet** .
 
-   ![3 új alkalmazás regisztrálása][api-management-howto-aad-b2c-app-details]
+   ![Új alkalmazás regisztrálása 3][api-management-howto-aad-b2c-app-details]
 
-7. Kattintson a **Létrehozás** gombra. Amikor az alkalmazás létrejött, megjelenik a **alkalmazások** panelen. Kattintson az alkalmazás nevére a részletek megtekintéséhez.
+7. Kattintson a **Létrehozás** gombra. Az alkalmazás létrehozásakor megjelenik az **alkalmazások** panelen. A részletek megtekintéséhez kattintson az alkalmazás nevére.
 
-   ![4 új alkalmazás regisztrálása][api-management-howto-aad-b2c-app-created]
+   ![Új alkalmazás regisztrálása 4][api-management-howto-aad-b2c-app-created]
 
-8. Az a **tulajdonságok** panelen, a Másolás a **Alkalmazásazonosító** a vágólapra.
+8. A **Tulajdonságok** panelen másolja a vágólapra az **alkalmazás azonosítóját** .
 
-   ![1 alkalmazás azonosítója][api-management-howto-aad-b2c-app-id]
+   ![1\. alkalmazás azonosítója][api-management-howto-aad-b2c-app-id]
 
-9. Váltson vissza az API Management **Hozzáadás identitásszolgáltató** ablaktábla és a Beillesztés Azonosítóját, a **ügyfél-azonosító** szövegmezőben.
+9. Váltson vissza az API Management **identitás-szolgáltató hozzáadása** panelre, és illessze be az azonosítót az **ügyfél-azonosító** szövegmezőbe.
+    
+10. Váltson vissza a B2C-alkalmazás regisztrálására, kattintson a **kulcsok** gombra, majd kattintson a **kulcs generálása**elemre. Kattintson a **Save (Mentés** ) gombra a konfiguráció mentéséhez és az **alkalmazás kulcsának**megjelenítéséhez. Másolja a kulcsot a vágólapra.
 
-   ![Kérelem azonosítója 2][api-management-howto-aad-b2c-client-id]
+    ![1\. alkalmazás kulcsa][api-management-howto-aad-b2c-app-key]
 
-10. Váltson vissza a B2C-alkalmazás regisztrációja, kattintson a **kulcsok** gombra, majd **kulcs generálása**. Kattintson a **mentése** a konfiguráció mentéséhez és megjelenítéséhez a **Alkalmazáskulcs**. Másolja a vágólapra a kulcsot.
+11. Váltson vissza az API Management **identitás-szolgáltató hozzáadása** panelre, és illessze be a kulcsot az **ügyfél titka** szövegmezőbe.
+    
+12. Adja meg az Azure Active Directory B2C-bérlő tartománynevét a **bejelentkezési**-bérlőben.
 
-    ![Alkalmazáskulcs 1][api-management-howto-aad-b2c-app-key]
+13. A szolgáltató mezőben megadhatja a használni kívánt Azure ad B2C bejelentkezési URL-címet. Állítsa be az értéket a következőre: **< your_b2c_tenant_name >. b2clogin. com**.
 
-11. Váltson vissza az API Management **Hozzáadás identitásszolgáltató** ablaktáblán, majd illessze be a kulcsot a **titkos Ügyfélkód** szövegmezőben.
+14. Határozza meg a **regisztrációs házirendet** és a **bejelentkezési** szabályzatot a B2C-bérlői házirendekben. Megadhatja a **profil szerkesztési házirendjét** és a jelszó- **visszaállítási szabályzatot**is.
 
-    ![2 alkalmazás-kulcs][api-management-howto-aad-b2c-client-secret]
+15. A kívánt konfiguráció megadása után kattintson a **Mentés**gombra.
 
-12. Adja meg a tartomány nevét az Azure Active Directory B2C-bérlő **engedélyezett bérlő**.
+    A módosítások mentése után a fejlesztők új fiókokat hozhatnak létre, és bejelentkezhetnek a fejlesztői portálra Azure Active Directory B2C használatával.
 
-    ![Az engedélyezett bérlő][api-management-howto-aad-b2c-allowed-tenant]
+## <a name="sign-up-for-a-developer-account-by-using-azure-active-directory-b2c"></a>Regisztráció a fejlesztői fiókra Azure Active Directory B2C használatával
 
-13. Adja meg a **előfizetési szabályzat** és **bejelentkezési házirend** a B2C-bérlő szabályzatokból származó. Igény szerint is megadhatja a **szerkesztési Profilházirendet** és **jelszó-visszaállítási házirend**.
+1. Ha Azure Active Directory B2C használatával szeretne regisztrálni egy fejlesztői fiókra, nyisson meg egy új böngészőablakot, és nyissa meg a fejlesztői portált. Kattintson a **Sign up (regisztráció** ) gombra.
 
-    ![Házirendek][api-management-howto-aad-b2c-policies]
+   ![Fejlesztői portál 1][api-management-howto-aad-b2c-dev-portal]
 
-    > [!NOTE]
-    > További információ a házirendek, lásd: [Azure Active Directory B2C: Bővíthető házirend-keretrendszer].
-
-14. A szükséges konfiguráció megadása után kattintson a **mentése**.
-
-    A módosítások mentése után a fejlesztők fog tudni új fiókok létrehozásához, és jelentkezzen be a fejlesztői portálra az Azure Active Directory B2C használatával.
-
-## <a name="sign-up-for-a-developer-account-by-using-azure-active-directory-b2c"></a>Azure Active Directory B2C használatával egy fejlesztői fiók regisztrálása
-
-1. Azure Active Directory B2C használatával egy fejlesztői fiókot regisztrálni, nyisson meg egy új böngészőablakot, és a fejlesztői portálon. Kattintson a **regisztráció** gombra.
-
-   ![1 fejlesztői portálon][api-management-howto-aad-b2c-dev-portal]
-
-2. Válassza ki a regisztráció **Azure Active Directory B2C**.
+2. Válassza a **Azure Active Directory B2C**-regisztrációt.
 
    ![Fejlesztői portál 2][api-management-howto-aad-b2c-dev-portal-b2c-button]
 
-3. A program átirányítja a regisztrációs szabályzat, amely az előző szakaszban konfigurált. Válassza ki az e-mail-címét vagy a meglévő közösségi fiókjaik egyikét a regisztrációhoz.
+3. A rendszer átirányítja az előző szakaszban konfigurált regisztrációs szabályzatra. Az e-mail-cím vagy az egyik meglévő közösségi fiók használatával regisztrálhat.
 
    > [!NOTE]
-   > Az egyetlen lehetőség, hogy engedélyezve van az Azure Active Directory B2C-e a **identitások** fülre a közzétevő portálon átirányítjuk az előfizetési szabályzat közvetlenül.
+   > Ha Azure Active Directory B2C az egyetlen lehetőség, amely engedélyezve van a közzétevő portál identitások lapján, a rendszer közvetlenül átirányítja a regisztrációs szabályzatba.
 
    ![Fejlesztői portál][api-management-howto-aad-b2c-dev-portal-b2c-options]
 
-   Ha a regisztráció befejeződött, a program átirányítja vissza a fejlesztői portál. Ön már bejelentkezett a a fejlesztői portál az API Management szolgáltatáspéldányhoz tartozó.
+   Ha a regisztráció befejeződött, a rendszer átirányítja a fejlesztői portálra. Most bejelentkezett a API Management Service-példány fejlesztői portálján.
 
-    ![Regisztráció kész][api-management-registration-complete]
+    ![A regisztráció befejeződött][api-management-registration-complete]
 
 ## <a name="next-steps"></a>További lépések
 
-*  [Az Azure Active Directory B2C – áttekintés]
+*  [Azure Active Directory B2C áttekintése]
 *  [Azure Active Directory B2C: Bővíthető házirend-keretrendszer]
-*  [Microsoft-fiókot használni Identitásszolgáltatóként az Azure Active Directory B2C-vel]
-*  [Identitás-szolgáltatóként az Azure Active Directory B2C egy Google-fiók használata]
-*  [A LinkedIn-fiók használata Identitásszolgáltatóként az Azure Active Directory B2C-vel]
-*  [Egy Facebook-fiók használata Identitásszolgáltatóként az Azure Active Directory B2C]
+*  [Microsoft-fiók használata identitás-szolgáltatóként a Azure Active Directory B2C]
+*  [Google-fiók használata identitás-szolgáltatóként Azure Active Directory B2C]
+*  [LinkedIn-fiók használata identitás-szolgáltatóként Azure Active Directory B2C]
+*  [Facebook-fiók használata identitás-szolgáltatóként Azure Active Directory B2C]
 
 
 
@@ -188,13 +178,13 @@ Az Azure Active Directory B2C egy felhőbeli identitáskezelő megoldás a felha
 [https://oauth.net/2/]: https://oauth.net/2/
 [WebApp-GraphAPI-DotNet]: https://github.com/AzureADSamples/WebApp-GraphAPI-DotNet
 [Accessing the Graph API]: https://msdn.microsoft.com/library/azure/dn132599.aspx#BKMK_Graph
-[Az Azure Active Directory B2C – áttekintés]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview
-[Hogyan lehet az Azure Active Directory fejlesztői fiókok engedélyezése]: https://docs.microsoft.com/azure/api-management/api-management-howto-aad
+[Azure Active Directory B2C áttekintése]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview
+[Fejlesztői fiókok engedélyezése Azure Active Directory használatával]: https://docs.microsoft.com/azure/api-management/api-management-howto-aad
 [Azure Active Directory B2C: Bővíthető házirend-keretrendszer]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies
-[Microsoft-fiókot használni Identitásszolgáltatóként az Azure Active Directory B2C-vel]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-msa-app
-[Identitás-szolgáltatóként az Azure Active Directory B2C egy Google-fiók használata]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-goog-app
-[Egy Facebook-fiók használata Identitásszolgáltatóként az Azure Active Directory B2C]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-fb-app
-[A LinkedIn-fiók használata Identitásszolgáltatóként az Azure Active Directory B2C-vel]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-li-app
+[Microsoft-fiók használata identitás-szolgáltatóként a Azure Active Directory B2C]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-msa-app
+[Google-fiók használata identitás-szolgáltatóként Azure Active Directory B2C]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-goog-app
+[Facebook-fiók használata identitás-szolgáltatóként Azure Active Directory B2C]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-fb-app
+[LinkedIn-fiók használata identitás-szolgáltatóként Azure Active Directory B2C]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-li-app
 
 [Prerequisites]: #prerequisites
 [Configure an OAuth 2.0 authorization server in API Management]: #step1

@@ -8,11 +8,11 @@ ms.topic: troubleshooting
 ms.date: 11/27/2018
 ms.author: asgang
 ms.openlocfilehash: 5ea701682c03370cea46f9126ecf78427a776371
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58103536"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61280671"
 ---
 # <a name="troubleshoot-issues-with-the-azure-site-recovery-agent"></a>Az Azure Site Recovery-ügynök hibáinak elhárítása
 
@@ -21,35 +21,35 @@ Ez a cikk ismerteti a hibaelhárítási lépéseket tartalmaz, amely segítség�
 
 ## <a name="azure-site-recovery-extension-time-out"></a>Az Azure Site Recovery bővítmény időtúllépés  
 
-Hibaüzenet: "A feladat végrehajtása túllépte az időkorlátot elindítandó bővítményművelet nyomon követése közben"<br>
+Hibaüzenet jelenik meg: "A feladat végrehajtása túllépte az időkorlátot elindítandó bővítményművelet nyomon követése közben"<br>
 Hibakód: "151076"
 
  Az Azure Site Recovery-bővítmény telepítése a virtuális gépen a védelemengedélyezési feladatot részeként. Az alábbi feltételek bármelyike megakadályozhatja, hogy a védelem aktiválása és a feladat sikertelen lesz. A következő hibaelhárítási lépéseket, és ismételje meg a műveletet:
 
-**1. ok: [Az ügynök telepítve van a virtuális gépen, de nem válaszoló (Windows virtuális gépek esetén)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
+**1. ok: [Az ügynök telepítve van a virtuális gépen, de nem válaszoló (Windows virtuális gépek esetén)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**     
 **2. ok: [Az ügynök telepítve van a virtuális gépen nem naprakész (a Linux rendszerű virtuális gépek)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
 **3. ok: [A Site Recovery-bővítmény frissítése és betöltése sikertelen](#the-site-recovery-extension-fails-to-update-or-load)**  
 
-Hibaüzenet: "Előző site recovery bővítmény műveletét tart a vártnál több időt."<br>
+Hibaüzenet jelenik meg: "Előző site recovery bővítmény műveletét tart a vártnál több időt."<br>
 Hibakód: "150066"<br>
 
-**1. ok: [Az ügynök telepítve van a virtuális gépen, de nem válaszoló (Windows virtuális gépek esetén)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
+**1. ok: [Az ügynök telepítve van a virtuális gépen, de nem válaszoló (Windows virtuális gépek esetén)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**     
 **2. ok: [Az ügynök telepítve van a virtuális gépen nem naprakész (a Linux rendszerű virtuális gépek)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
 **3. ok: [A Site Recovery bővítmény állapota nem megfelelő](#the-site-recovery-extension-fails-to-update-or-load)**  
 
 ## <a name="protection-fails-because-the-vm-agent-is-unresponsive"></a>Védelem sikertelen lesz, mivel a Virtuálisgép-ügynök nem válaszol
 
-Hibaüzenet: "A feladat végrehajtása túllépte az időkorlátot elindítandó bővítményművelet nyomon követése közben."<br>
+Hibaüzenet jelenik meg: "A feladat végrehajtása túllépte az időkorlátot elindítandó bővítményművelet nyomon követése közben."<br>
 Hibakód: "151099"<br>
 
 Ez a hiba akkor fordulhat elő, ha az Azure-vendégügynök a virtuális gép nem üzemkész állapotba kerül.
 Ellenőrizheti az állapotát az Azure-vendégügynök [az Azure portal](https://portal.azure.com/). Nyissa meg a virtuális gép védelmét, majd ellenőrizze kívánt "virtuális gép > Beállítások > Tulajdonságok > ügynök állapota". A legtöbbször az ügynök állapotát felkészülésére a virtuális gép újraindítása után. Azonban ha az újraindítás nem használható lehetőség, vagy a probléma továbbra is fennálló, majd hajtsa végre az alábbi hibaelhárítási lépésekkel.
 
-**1. ok: [Az ügynök telepítve van a virtuális gépen, de nem válaszoló (Windows virtuális gépek esetén)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
+**1. ok: [Az ügynök telepítve van a virtuális gépen, de nem válaszoló (Windows virtuális gépek esetén)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**     
 **2. ok: [Az ügynök telepítve van a virtuális gépen nem naprakész (a Linux rendszerű virtuális gépek)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
 
 
-Hibaüzenet: "A feladat végrehajtása túllépte az időkorlátot elindítandó bővítményművelet nyomon követése közben."<br>
+Hibaüzenet jelenik meg: "A feladat végrehajtása túllépte az időkorlátot elindítandó bővítményművelet nyomon követése közben."<br>
 Hibakód: "151095"<br>
 
 Ez történhet, ha az ügynök verziója, a Linux rendszerű gépen régi. Kérjük, végezze el a következő hibaelhárítási lépéseket.<br>

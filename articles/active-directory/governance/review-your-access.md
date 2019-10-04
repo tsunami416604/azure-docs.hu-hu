@@ -1,9 +1,9 @@
 ---
-title: Hozzáférés felülvizsgálata saját csoportok vagy a hozzáférési felülvizsgálatok – Azure Active Directory-alkalmazások |} A Microsoft Docs
-description: Ismerje meg, hogyan tekintse át a saját csoportokat vagy alkalmazásokat az Azure Active Directory hozzáférési felülvizsgálatokkal a hozzáférést.
+title: A hozzáférési felülvizsgálatokban lévő csoportok vagy alkalmazások hozzáférésének áttekintése – Azure Active Directory | Microsoft Docs
+description: Megtudhatja, hogyan tekintheti át a csoportokhoz vagy alkalmazásokhoz való saját hozzáférését Azure Active Directory hozzáférési felülvizsgálatokban.
 services: active-directory
-author: rolyon
-manager: mtillman
+author: msaburnley
+manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
@@ -11,74 +11,80 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 02/20/2019
-ms.author: rolyon
+ms.date: 05/21/2019
+ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3fe2013ff84dd0451fed7d108539606520cb9403
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: d4b48e035476e5381104b442f87dcac03ac11778
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576309"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68499674"
 ---
-# <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>Hozzáférés felülvizsgálata maga a csoportokat vagy alkalmazásokat az Azure AD hozzáférési felülvizsgálatokkal
+# <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>Az Azure AD hozzáférési felülvizsgálatokban lévő csoportok és alkalmazások hozzáférésének áttekintése
 
-Az Azure Active Directory (Azure AD) egyszerűbbé teszi a vállalatok csoportokhoz vagy alkalmazásokhoz való hozzáférés kezelése az Azure AD és más Microsoft Online Services szolgáltatás az Azure AD hozzáférési felülvizsgálatok.
+Azure Active Directory (Azure AD) leegyszerűsíti, hogy a vállalatok hogyan kezelhetik az Azure ad-ben és más Microsoft Online Servicesben lévő csoportokhoz vagy alkalmazásokhoz való hozzáférést az Azure AD hozzáférési felülvizsgálatok szolgáltatásával.
 
-Ez a cikk a saját egy csoporthoz vagy alkalmazáshoz való hozzáférés felülvizsgálata ismerteti.
+Ez a cikk bemutatja, hogyan tekintheti át a saját hozzáférését egy csoporthoz vagy alkalmazáshoz.
 
-## <a name="open-the-access-review"></a>Nyissa meg a hozzáférési felülvizsgálatba
+## <a name="prerequisites"></a>Előfeltételek
 
-Hozzáférési felülvizsgálat végrehajtása első lépése, hogy keresse meg és nyissa meg a hozzáférési felülvizsgálatot.
+- Azure AD Premium P2
 
-1. Keresse meg a Microsoft, amely rákérdez, hogy tekintse át a hozzáférést egy e-mailt. Íme egy példa e-mailt a csoportba hozzáférés felülvizsgálata.
+További információ: [mely felhasználóknak kell licenceket tartalmazniuk?](access-reviews-overview.md#which-users-must-have-licenses)
 
-    ![E-mailek hozzáférési felülvizsgálat](./media/review-your-access/access-review-email.png)
+## <a name="open-the-access-review"></a>A hozzáférési felülvizsgálat megnyitása
 
-1. Kattintson a **hozzáférés felülvizsgálata** nyissa meg a hozzáférési felülvizsgálat mutató hivatkozást.
+A hozzáférési felülvizsgálat végrehajtásának első lépése a hozzáférési felülvizsgálat megkeresése és megnyitása.
 
-Ha nem rendelkezik az e-mailt, Észreveheti, hogy a függőben lévő hozzáférési felülvizsgálatok az alábbi lépéseket.
+1. Keresse meg a Microsoft e-mail-címét, amely arra kéri, hogy tekintse át a hozzáférést. Íme egy példa e-mailben, amely áttekinti a csoporthoz való hozzáférést.
 
-1. Jelentkezzen be a MyApps portálról, [ https://myapps.microsoft.com ](https://myapps.microsoft.com).
+    ![Példa a Microsoft e-mail-címére a csoporthoz való hozzáférés áttekintéséhez](./media/review-your-access/access-review-email.png)
 
-    ![MyApps portálról](./media/review-your-access/myapps-access-panel.png)
+1. A hozzáférési felülvizsgálat megnyitásához kattintson a **hozzáférés áttekintése** hivatkozásra.
 
-1. Az oldal jobb felső sarkában kattintson a felhasználói szimbólum, mely megjeleníti a szervezet nevét és az alapértelmezett. Ha egynél több szervezet szerepel a listán, válassza ki a szervezet, amely a hozzáférési felülvizsgálat kért.
+Ha nem rendelkezik az e-mail-címmel, a következő lépésekkel megkeresheti a függőben lévő hozzáférési felülvizsgálatokat.
 
-1. Kattintson a lap jobb oldalán a **hozzáférési felülvizsgálatokkal** csempére kattintva megjelenítheti a függőben lévő hozzáférési felülvizsgálatok listáját.
+1. Jelentkezzen be a MyApps portálra [https://myapps.microsoft.com](https://myapps.microsoft.com)a címen.
 
-    A csempe nem látható, ha nincsenek hozzáférési felülvizsgálatok végrehajtani az adott szervezet lesznek, és nem kell módosítania jelenleg.
+    ![A MyApps-portál felsorolja azokat az alkalmazásokat, amelyekre jogosult](./media/review-your-access/myapps-access-panel.png)
 
-    ![A hozzáférési felülvizsgálatok listája](./media/review-your-access/access-reviews-list.png)
+1. Az oldal jobb felső sarkában kattintson a felhasználó szimbólumára. Ekkor megjelenik a neve és az alapértelmezett szervezete. Ha egynél több szervezet szerepel a listán, válassza ki azt a szervezetet, amely a hozzáférési felülvizsgálatot kérte.
 
-1. Kattintson a **felülvizsgálat megkezdése** hivatkozásra a hozzáférési felülvizsgálatot végrehajtására vonatkozó szándékát.
+1. Az oldal jobb oldalán kattintson a **hozzáférési felülvizsgálatok** csempére a függőben lévő hozzáférési felülvizsgálatok listájának megtekintéséhez.
+
+    A csempe nem látható, ha nincsenek végrehajtandó hozzáférési felülvizsgálatok az adott szervezetre vonatkozóan, és ilyenkor semmilyen műveletre nincs szükség.
+
+    ![Alkalmazások és csoportok függőben lévő hozzáférési felülvizsgálatok listája](./media/review-your-access/access-reviews-list.png)
+
+1. Kattintson a **megkezdés felülvizsgálati** hivatkozásra a végrehajtani kívánt hozzáférési felülvizsgálathoz.
 
 ## <a name="perform-the-access-review"></a>A hozzáférési felülvizsgálat végrehajtása
 
-Miután megnyitotta a hozzáférési felülvizsgálatot, láthatja a hozzáférést.
+Ha megnyitotta a hozzáférési felülvizsgálatot, a hozzáférését láthatja.
 
-1. A hozzáférés felülvizsgálata, és eldöntheti, hogy továbbra is kell hozzáférést.
+1. Tekintse át a hozzáférését, és döntse el, hogy van-e hozzáférése.
 
-    Ha a kérés hozzáférés felülvizsgálata mások számára, az oldal fog kinézni. További információkért lásd: [csoportokhoz vagy alkalmazásokhoz való hozzáférés felülvizsgálata](perform-access-review.md).
+    Ha a kérelem a mások számára való hozzáférés felülvizsgálatát kéri, a lap eltérő lesz. További információ: a [csoportok vagy alkalmazások hozzáférésének áttekintése](perform-access-review.md).
 
-    ![Hozzáférési felülvizsgálat végrehajtása](./media/review-your-access/perform-access-review.png)
+    ![Nyissa meg a hozzáférési felülvizsgálatot, és kérje meg, hogy van-e hozzáférése egy csoporthoz](./media/review-your-access/perform-access-review.png)
 
-1. Kattintson a **Igen** tartsa a hozzáférést, vagy kattintson a **nem** a hozzáférést.
+1. Az **Igen** gombra kattintva megtarthatja a hozzáférését, vagy a **nem** gombra kattintva eltávolíthatja a hozzáférését.
 
-1. Ha rákattint **Igen**, adja meg az indoklást szüksége lehet a **OK** mezőbe.
+1. Ha az **Igen**gombra kattint, lehet, hogy meg kell adnia egy indoklást az **OK** mezőben.
 
-    ![Hozzáférési felülvizsgálat végrehajtása](./media/review-your-access/perform-access-review-submit.png)
+    ![A hozzáférési felülvizsgálat befejezésével megkérdezte, hogy továbbra is szüksége van-e egy csoport elérésére](./media/review-your-access/perform-access-review-submit.png)
 
 1. Kattintson a **Submit** (Küldés) gombra.
 
-    Választását elküldésekor, és Ön visszatér a MyApps portálról.
+    A rendszer elküldte a kijelölést, és visszatér a MyApps-portálra.
 
-    Ha szeretné módosítani a választ, nyissa meg újra a hozzáférési felülvizsgálatok lapot, és frissítse a válaszát. A válasz mindaddig, amíg a hozzáférési felülvizsgálat befejeződött bármikor módosíthatja.
+    Ha módosítani szeretné a választ, nyissa meg újra a hozzáférési felülvizsgálatok lapot, és frissítse a választ. Bármikor módosíthatja a választ, amíg a hozzáférési felülvizsgálat véget nem ér.
 
     > [!NOTE]
-    > Ha már nincs szüksége hozzáférés, azonnal, nem törlődnek. Ha a felülvizsgálat befejeződött, vagy ha egy rendszergazda leállítja a felülvizsgálatot el lesznek távolítva.
+    > Ha azt jelezte, hogy már nincs szüksége a hozzáférésre, nem távolítja el azonnal. Ha a felülvizsgálat véget ért, vagy ha a rendszergazda leállítja a felülvizsgálatot, a rendszer eltávolítja.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Csoportokat vagy alkalmazásokat a hozzáférési felülvizsgálat befejezése](complete-access-review.md)
+- [Csoportok vagy alkalmazások hozzáférési felülvizsgálatának befejezése](complete-access-review.md)

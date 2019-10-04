@@ -1,41 +1,35 @@
 ---
 title: Kérelmekre vonatkozó korlátok és sávszélesség-szabályozási – Azure Resource Manager
 description: Ismerteti, hogyan használható az Azure Resource Manager által szabályozás előfizetési korlátok elérésekor.
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-ms.assetid: e1047233-b8e4-4232-8919-3268d93a3824
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 03/05/2019
+ms.date: 07/09/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 91a776ba13ffaeeb4f8184371ae45a80d829ae46
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: f457b316d9f499f2cab02452c1b03ad07a9aef27
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550628"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302836"
 ---
 # <a name="throttling-resource-manager-requests"></a>Resource Manager-kérelmek szabályozása
 
-Minden Azure-előfizetés és bérlő erőforrás-kezelő lehetővé teszi, hogy legfeljebb 12 000 olvasási kérelmek száma óránként és 1200 írási kérelmek száma óránként. Ezek a korlátok a kérelmet benyújtó résztvevő-Azonosítót és az előfizetés-azonosító hatóköre, vagy a bérlői azonosító. Ha a kérések érkeznek, az egynél több résztvevő-azonosító, a korlátot, az előfizetés vagy a bérlő között nagyobb, mint 12 000 és 1200 óránként.
+Minden Azure-előfizetés és bérlő erőforrás-kezelő lehetővé teszi, hogy legfeljebb 12 000 olvasási kérelmek száma óránként és 1200 írási kérelmek száma óránként. Ezek a korlátok a kéréseket és az előfizetés-azonosítót, vagy a bérlő AZONOSÍTÓját képező rendszerbiztonsági tag (felhasználó vagy alkalmazás) hatókörére vonatkoznak. Ha a kérések több rendszerbiztonsági tag között érkeznek, az előfizetés vagy a bérlő nagyobb, mint 12 000 és 1 200/óra.
 
-Az előfizetés vagy a bérlő kérelmek lépnek. Feliratkozási kérelmeket azok az előfizetés átadása a involve ID, például az erőforráscsoportok az előfizetésében beolvasása. Bérlő kérelmek nem tartalmaznak, például lekér érvényes Azure-helyen az előfizetés-Azonosítóját.
+Az előfizetés vagy a bérlő kérelmek lépnek. Az előfizetési kérelmek olyanok, amelyek az előfizetés-azonosító átadását foglalják magukban, például az erőforráscsoportok beolvasása az előfizetésben. Bérlő kérelmek nem tartalmaznak, például lekér érvényes Azure-helyen az előfizetés-Azonosítóját.
 
 Ezek a korlátok vonatkoznak minden Azure Resource Manager-példány. Több példány minden Azure-régióban, és Azure Resource Manager az összes Azure-régióban üzemel.  Így a gyakorlatban korlátai hatékonyan sokkal nagyobb ezeket a korlátokat, felhasználói kérések általában által kiszolgált számos különböző példányait.
 
-Ha az alkalmazást vagy parancsfájlt eléri az ezeket a korlátokat, akkor a kérelmek szabályozása. Ez a cikk bemutatja, miként állapítható meg, a fennmaradó kérelmek korlátjának elérése előtt, és hogyan reagáljon, amikor eléri a korlátot.
+Ha az alkalmazást vagy parancsfájlt eléri az ezeket a korlátokat, akkor a kérelmek szabályozása. Ez a cikk bemutatja, hogyan határozhatja meg a fennmaradó kérelmeket a korlát elérése előtt, és hogyan válaszolhat a korlát elérésekor.
 
 Ha eléri a korlátot, kap-e a HTTP-állapotkódot **429 túl sok kérelem**.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+Az Azure Resource Graph korlátozza a műveleteire irányuló kérések számát. A cikkben ismertetett lépések alapján megállapíthatja a fennmaradó kérelmeket, és hogyan reagálhat a korlátra, ha az erőforrás-gráfra is érvényes. Az erőforrás-gráf azonban beállítja a saját korlátját és az alaphelyzetbe állítási arányt. További információ: [szabályozás az Azure Resource Graph-ban](../governance/resource-graph/overview.md#throttling).
 
 ## <a name="remaining-requests"></a>Fennmaradó kérelmek
-Megadhatja, hogy a fennmaradó kérések száma válaszfejlécek megvizsgálásával. Olvasási kérelmek ad vissza értéket, a fennmaradó olvasási kérelmek száma a fejlécében. Az írási kérések tartalmazzák a fennmaradó írási kérelmek száma értékét. A következő táblázat ismerteti a válaszfejlécek ezekhez az értékekhez ellenőrizheti:
+Megadhatja, hogy a fennmaradó kérések száma válaszfejlécek megvizsgálásával. Az olvasási kérelmek egy értéket adnak vissza a fejlécben a hátralévő olvasási kérelmek számának megfelelően. Az írási kérelmek tartalmazzák a fennmaradó írási kérések számát. A következő táblázat ismerteti a válaszfejlécek ezekhez az értékekhez ellenőrizheti:
 
 | Válaszfejléc | Leírás |
 | --- | --- |
@@ -51,7 +45,7 @@ Megadhatja, hogy a fennmaradó kérések száma válaszfejlécek megvizsgálás�
 ## <a name="retrieving-the-header-values"></a>A fejléc értékek beolvasása
 Ezek a kódot vagy szkriptet fejléc az értékek beolvasása semmiben nem különbözik minden fejléc értékének beolvasása. 
 
-Például a **C#**, kérheti le a Fejlécérték egy **HttpWebResponse** nevű objektum **válasz** a következő kóddal:
+Például a **C#** , kérheti le a Fejlécérték egy **HttpWebResponse** nevű objektum **válasz** a következő kóddal:
 
 ```cs
 response.Headers.GetValues("x-ms-ratelimit-remaining-subscription-reads").GetValue(0)

@@ -1,6 +1,6 @@
 ---
-title: 'Az Azure Cosmos DB: tömeges végrehajtó Java API, SDK és -erőforrások'
-description: Mindent megtudhat a tömeges végrehajtó Java API-t és az SDK-val többek között a kiadási dátum, használatból való kivonást egyaránt dátumokat és az Azure Cosmos DB Java SDK tömeges végrehajtó minden verziója között végrehajtott módosítások.
+title: 'Az Azure Cosmos DB: Tömeges végrehajtó Java API, SDK &-erőforrások'
+description: Ismerkedjen meg a tömeges végrehajtó Java API-val és az SDK-val, beleértve a kiadási dátumokat, a nyugdíjazási dátumokat, valamint a Azure Cosmos DB tömeges végrehajtó Java SDK egyes verzióiban végrehajtott módosításokat.
 author: tknandu
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -8,14 +8,14 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 11/21/2018
 ms.author: ramkris
-ms.openlocfilehash: 51499b86aa44b89442f84a345cba6e9093f8c274
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 018c8f7895669d437b129d92a840a393e2453a79
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57882794"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624655"
 ---
-# <a name="java-bulk-executor-library-download-information"></a>Java tömeges végrehajtó definíciótára: Adatok letöltése
+# <a name="java-bulk-executor-library-download-information"></a>Java tömeges végrehajtó könyvtára: Információk letöltése
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
@@ -28,15 +28,15 @@ ms.locfileid: "57882794"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST erőforrás-szolgáltató](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [bulk executor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [tömeges végrehajtó – Java](sql-api-sdk-bulk-executor-java.md)
+> * [Tömeges végrehajtó – .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Tömeges végrehajtó – Java](sql-api-sdk-bulk-executor-java.md)
 
 | |  |
 |---|---|
-|**Leírás**|A tömeges végrehajtó kódtár lehetővé teszi, hogy az ügyfélalkalmazások az Azure Cosmos DB-fiókokhoz tömeges műveletek végrehajtásához. tömeges végrehajtó kódtár biztosít BulkImport, és BulkUpdate névtereket. A modul tömegesen BulkImport dokumentumok betöltését optimalizált módon, hogy a legnagyobb mértékben használja fel a gyűjteményhez kiosztott átviteli sebesség. A modul tömegesen BulkUpdate frissíti a meglévő adatok az Azure Cosmos DB-tárolók javítások.|
+|**Leírás**|A tömeges végrehajtó függvénytár lehetővé teszi, hogy az ügyfélalkalmazások tömeges műveleteket végezzenek Azure Cosmos DB fiókokban. a tömeges végrehajtó függvénytár BulkImport és BulkUpdate névtereket biztosít. A BulkImport modul képes a dokumentumok egy optimalizált módon történő betöltésére, így a gyűjtemény számára kiépített átviteli sebesség a maximális mértékben felhasználható. A BulkUpdate modul a meglévő, az Azure Cosmos-tárolókban tárolt adatmennyiséget javításként is frissítheti.|
 |**SDK letöltése**|[Maven 3](https://search.maven.org/#search%7Cga%7C1%7Cdocumentdb-bulkexecutor)|
-|**BulkExecutor könyvtár a Githubon**|[GitHubon](https://github.com/Azure/azure-cosmosdb-bulkexecutor-java-getting-started)|
+|**Tömeges végrehajtó könyvtár a GitHubban**|[GitHubon](https://github.com/Azure/azure-cosmosdb-bulkexecutor-java-getting-started)|
 | **API-dokumentáció**| [.NET API dokumentációja](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor)|
-|**Első lépések**|[A tömeges végrehajtó library Java SDK használatának első lépései](bulk-executor-java.md)|
+|**Első lépések**|[Ismerkedés a tömeges végrehajtó függvénytár Java SDK-val](bulk-executor-java.md)|
 |**Minimális támogatott futtatókörnyezet**|[Java fejlesztői készlet (JDK) 7 +](https://aka.ms/azure-jdks)|
 

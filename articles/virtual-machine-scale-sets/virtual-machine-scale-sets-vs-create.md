@@ -1,6 +1,6 @@
 ---
-title: Üzembe helyezése a Virtual Machine Scale Set Visual studióval |} A Microsoft Docs
-description: Virtual Machine Scale Sets használatával a Visual Studio és a egy Resource Manager-sablon üzembe helyezése
+title: Virtuálisgép-méretezési csoport üzembe helyezése a Visual Studióval | Microsoft Docs
+description: Virtual Machine Scale Sets üzembe helyezése a Visual Studióval és egy Resource Manager-sablonnal
 services: virtual-machine-scale-sets
 ms.custom: H1Hack27Feb2017
 ms.workload: na
@@ -14,96 +14,91 @@ ms.service: virtual-machine-scale-sets
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/13/2017
+ms.date: 09/09/2019
 ms.author: manayar
-ms.openlocfilehash: 3d472aeaae7e7f02eba58aadea1df042d6c0f27b
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: d397f81ce29e0ec738156b755948985a4edfc70b
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741422"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802255"
 ---
-# <a name="how-to-create-a-virtual-machine-scale-set-with-visual-studio"></a>Egy virtuálisgép-méretezési csoportban létrehozása a Visual Studióval
-Ez a cikk bemutatja, hogyan helyezhet üzembe egy Azure Virtual Machine Scale Set használatával a Visual Studio erőforráscsoport üzemelő példányához.
+# <a name="how-to-create-a-virtual-machine-scale-set-with-visual-studio"></a>Virtuálisgép-méretezési csoport létrehozása a Visual Studióval
 
-[Az Azure Virtual Machine Scale Sets](https://azure.microsoft.com/blog/azure-vm-scale-sets-public-preview/) van olyan Azure Compute-erőforrások üzembe helyezése és az automatikus skálázás hasonló virtuális gépek gyűjteményét kezelheti és terheléselosztási funkciók. Építse ki, és üzembe helyezése a Virtual Machine Scale Sets használatával [Azure Resource Manager-sablonok](https://github.com/Azure/azure-quickstart-templates). Az Azure Resource Manager-sablonok is üzembe helyezhetők az Azure CLI, PowerShell, REST használatával, és emellett közvetlenül a Visual Studióból. A Visual Studio biztosít, például sablonokat, amelyek egy Azure erőforráscsoport-telepítés projekt részeként telepíthető.
+Ez a cikk bemutatja, hogyan helyezhet üzembe egy Azure-beli virtuálisgép-méretezési csoportot egy Visual Studio erőforráscsoport-telepítés használatával.
 
-Azure-erőforráscsoport központi telepítések, amelyek egy csoportot, és tegye közzé a kapcsolódó Azure-erőforrások egy csoportját egyetlen központi telepítési művelettel. Többet is megtudhat velük kapcsolatban itt: [létrehozása és telepítése az Azure erőforráscsoport-sablonok a Visual Studio](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
+Az [azure Virtual Machine Scale sets](https://azure.microsoft.com/blog/azure-vm-scale-sets-public-preview/) egy Azure-beli számítási erőforrás, amely hasonló virtuális gépek gyűjteményét helyezi üzembe és felügyeli, Automatikus méretezéssel és terheléselosztással. Virtual Machine Scale Sets üzembe helyezése és központi telepítése [Azure Resource Manager sablonok](https://github.com/Azure/azure-quickstart-templates)használatával. Azure Resource Manager sablonok az Azure CLI-vel, a PowerShell-lel, a REST-tel és közvetlenül a Visual studióból is üzembe helyezhetők. A Visual Studio egy példa sablonokat tartalmaz, amelyeket üzembe helyezhet egy Azure erőforráscsoport-telepítési projekt részeként.
 
-## <a name="pre-requisites"></a>Előfeltételek
-A Visual Studióban a Virtual Machine Scale Sets üzembe helyezésének első lépései, a következőkre lesz szüksége:
+Az Azure erőforráscsoport-telepítések lehetővé teszik a kapcsolódó Azure-erőforrások csoportosítását és közzétételét egyetlen telepítési művelet során. További információ: [Azure-erőforráscsoportok létrehozása és telepítése a Visual Studióval](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
+
+## <a name="prerequisites"></a>Előfeltételek
+
+A Virtual Machine Scale Sets a Visual Studióban való üzembe helyezésének megkezdéséhez a következő előfeltételek szükségesek:
 
 * A Visual Studio 2013-as vagy újabb
-* Az Azure SDK 2.7-es, 2.8-as vagy 2.9
+* Azure SDK 2,7, 2,8 vagy 2,9
 
 >[!NOTE]
->Ezek az utasítások feltételezik, hogy használja a Visual Studio [Azure SDK 2.8-as](https://azure.microsoft.com/blog/announcing-the-azure-sdk-2-8-for-net/).
+>Ez a cikk a Visual Studio 2019 és az [Azure SDK 2,8](https://azure.microsoft.com/blog/announcing-the-azure-sdk-2-8-for-net/)használatával készült.
 
-## <a name="creating-a-project"></a>Projekt létrehozása
-1. Hozzon létre egy új projektet a Visual Studióban kiválasztásával **fájl |} Új |} Projekt**.
-   
-    ![Új fájl][file_new]
+## Projekt létrehozása<a name="creating-a-project"></a> 
 
-2. A **Visual C# |} Felhőalapú**, válassza a **Azure Resource Manager** , hozzon létre egy projektet egy Azure Resource Manager-sablon üzembe helyezéséhez.
-   
-    ![Projekt létrehozása][create_project]
+1. Nyissa meg a Visual studiót, és válassza **az új projekt létrehozása**lehetőséget.
 
-3. A sablonok listájában válassza ki a Linux vagy Windows virtuális gép méretezési beállítása sablon.
-   
-   ![Sablon kiválasztása][select_Template]
+1. A **create a New Project (új projekt létrehozása**) területen C# válassza az **Azure-erőforráscsoport** lehetőséget, majd kattintson a **tovább**gombra.
 
-4. A projekt létrehozása után láthatja PowerShell telepítési parancsprogramjaival, az Azure Resource Manager-sablonok és alkalmazásparaméter-fájlt a virtuálisgép-méretezési.
-   
-    ![Megoldáskezelő][solution_explorer]
+1. Az **új projekt konfigurálása**lapon adjon meg egy nevet, és válassza a **Létrehozás**lehetőséget.
+
+    ![A projekt neve és létrehozása](media/virtual-machine-scale-sets-vs-create/configure-azure-resource-group.png)
+
+1. A sablonok listájában válassza a **Windows virtuálisgép-méretezési csoport** vagy a **Linux virtuálisgép** -méretezési csoport sablonját. Kattintson az **OK** gombra.
+
+   ![Virtuálisgép-sablon kiválasztása](media/virtual-machine-scale-sets-vs-create/select-vm-template.png)
+
+A projekt létrehozása után **megoldáskezelő** egy PowerShell telepítési parancsfájlt, egy Azure Resource Manager sablont és egy, a virtuálisgép-méretezési csoporthoz tartozó paraméter-fájlt tartalmaz.
 
 ## <a name="customize-your-project"></a>A projekt testreszabása
-Most már szerkesztheti a sablont testre szabni az alkalmazás igényeinek megfelelően, például a VM-bővítmény tulajdonságai hozzáadása vagy szerkesztése a terheléselosztási szabályok. Alapértelmezés szerint a virtuálisgép-méretezési csoport beállítása sablonok üzembe helyezéséhez a AzureDiagnostics bővítményt, ami lehetővé teszi az automatikus skálázási szabályok hozzáadásához egyszerűen vannak konfigurálva. Emellett központilag telepíti a terheléselosztó nyilvános IP-címmel, bejövő NAT-szabályok konfigurálva. 
 
-A terheléselosztó lehetővé teszi, hogy az SSH (Linux) vagy RDP (Windows) a Virtuálisgép-példányokhoz csatlakozhat. Az előtér-porttartománya 50000-nél kezdődik. Ez azt jelenti, hogy ha a Linux rendszeren, ssh-n, 50000-es port, kapcsolódóak pedig az első a méretezési csoportban lévő virtuális gép 22-es portot. Kapcsolódás az 50001-es port irányítja a rendszer a második virtuális gép 22-es port és így tovább.
+Most szerkesztheti a sablont az alkalmazás igényeinek megfelelően. Hozzáadhat virtuálisgép-bővítményi tulajdonságokat, vagy szerkesztheti a terheléselosztási szabályokat. Alapértelmezés szerint a virtuálisgép-méretezési csoport sablonjai a **AzureDiagnostics** -bővítmény üzembe helyezésére vannak konfigurálva, ami megkönnyíti az autoskálázási szabályok hozzáadását. A sablonok egy nyilvános IP-címmel rendelkező terheléselosztó is üzembe helyezhetők, amely bejövő NAT-szabályokkal van konfigurálva.
 
- Egy jó módszer a Visual Studio-sablonok szerkesztésekor, hogy a JSON-vázlat a paraméterek, a változók és az erőforrások rendszerezéséhez. A Visual Studio a séma ismeretében mutathat hibák a sablonban meg az üzembe helyezés előtt.
+A terheléselosztó lehetővé teszi, hogy a virtuálisgép-példányokhoz SSH (Linux) vagy RDP (Windows) rendszerű virtuális gépekhez csatlakozzon. Az előtér-porttartomány 50000-kor kezdődik. Linux esetén, ha az 50000-es porton keresztül SSH-val rendelkezik, a terheléselosztás a méretezési csoport első virtuális gépe 22-es portjára irányítja át. Az 50001-es porthoz való csatlakozás a második virtuális gép 22-es portjára van irányítva, és így tovább.
 
-![JSON-Explorer][json_explorer]
+ A sablonok Visual Studióval való szerkesztésének jó módja a **JSON-vázlat**használata. Rendszerezheti a paramétereket, a változókat és az erőforrásokat. A séma megismerése érdekében a Visual Studio az üzembe helyezése előtt rámutathat a hibákra a sablonban.
 
-## <a name="deploy-the-project"></a>A projekt telepítése
-1. Telepítse az Azure Resource Manager-sablon a Virtual Machine Scale Set-erőforrás létrehozásához. Kattintson a jobb gombbal a projektcsomópontra, majd válassza **üzembe helyezés |} Új központi telepítés**.
-   
-    ![Sablon üzembe helyezése][5deploy_Template]
-    
-2. A "Üzembe helyezése a Resource Group" párbeszédpanelen válassza ki az előfizetését.
-   
-    ![Sablon üzembe helyezése][6deploy_Template]
+![JSON Explorer](media/virtual-machine-scale-sets-vs-create/json-explorer.png)
 
-3. Itt létrehozhat egy Azure-erőforráscsoportot, a sablon üzembe helyezéséhez.
-   
-    ![Új erőforráscsoport][new_resource]
+## <a name="deploy-the-project"></a>A projekt üzembe helyezése
 
-4. Ezután kattintson **paraméterek szerkesztése** , adja meg a sablon átadott paramétereket. Adja meg a felhasználónevet és jelszót az operációs rendszer, amely a központi telepítés létrehozásához szükséges. Ha nem rendelkezik nástroje PowerShell Tools for Visual Studio telepítése, javasoljuk, hogy ellenőrizze **jelszavak mentése egyszerű** elkerülése érdekében egy rejtett PowerShell-parancssort, vagy használjon [keyvault támogatási](https://azure.microsoft.com/blog/keyvault-support-for-arm-templates/).
-   
-    ![Paraméterek szerkesztése][edit_parameters]
+Helyezze üzembe a Azure Resource Manager sablont a virtuálisgép-méretezési csoport erőforrásának létrehozásához:
 
-5. Most kattintson **telepítés**. A **kimeneti** ablakban jelennek meg az üzembehelyezési folyamatot. Vegye figyelembe, hogy a művelet végrehajtása a **üzembe helyezés – AzureResourceGroup.ps1** parancsfájlt.
-   
-   ![Kimeneti ablak][output_window]
+1. **Megoldáskezelőban**kattintson a jobb gombbal a projektre, és válassza a  >  **telepítése**–**új**lehetőséget.
 
-## <a name="exploring-your-virtual-machine-scale-set"></a>A virtuális gép méretezési felfedezése
-Miután befejeződött a telepítés, megtekintheti az új virtuálisgép-méretezési a Visual Studio **Cloud Explorer** (a lista frissítéséhez). Cloud Explorer lehetővé teszi alkalmazások fejlesztése során a Visual Studio Azure-erőforrások kezelését. Megtekintheti a Virtual Machine Scale Set a a [az Azure portal](https://portal.azure.com) és [Azure erőforrás-kezelő](https://resources.azure.com/).
+    ![A projekt üzembe helyezése](media/virtual-machine-scale-sets-vs-create/deploy-new-project.png)
 
-![Cloud Explorer][cloud_explorer]
+1. A **telepítés az erőforráscsoporthoz**területen válassza ki a használni kívánt előfizetést, és válasszon ki egy erőforráscsoportot. Szükség esetén létrehozhat egy erőforráscsoportot is.
 
- A portál biztosítja a legjobb módszer az Azure-infrastruktúra egy webböngészővel rendelkező vizuálisan felügyelheti Azure erőforrás-kezelő vizsgálata és az Azure-erőforrások hibakeresése egyszerű megoldást kínál a ablak így be az "instance-view", és a PowerShell-parancsokat is megjelenítése az erőforrások helyzet.
+1. Ezután válassza a **Paraméterek szerkesztése** lehetőséget a sablonnak átadott paraméterek megadásához.
+
+   ![Előfizetés és erőforráscsoport megadása](media/virtual-machine-scale-sets-vs-create/deploy-to-resource-group.png)
+
+1. Adja meg az operációs rendszer felhasználónevét és jelszavát. Ezek az értékek szükségesek az üzemelő példány létrehozásához. Ha nincs telepítve a PowerShell-eszközök a Visual studióhoz, válassza a **jelszavak mentése** lehetőséget a rejtett PowerShell-parancssor elkerüléséhez, vagy használja [Key Vault támogatást](https://azure.microsoft.com/blog/keyvault-support-for-arm-templates/). A folytatáshoz válassza a **Mentés** lehetőséget.
+
+    ![Telepítési paraméterek szerkesztése](media/virtual-machine-scale-sets-vs-create/edit-deployment-parameters.png)
+
+1. Az **üzembe helyezés az erőforráscsoporthoz**területen válassza a **telepítés**lehetőséget. A művelet a **Deploy-AzureResourceGroup. ps1** parancsfájlt futtatja. A **kimeneti** ablak megjeleníti a telepítési folyamatot.
+
+   ![A kimenet az eredményeket jeleníti meg](media/virtual-machine-scale-sets-vs-create/deployment-output.png)
+
+## A virtuálisgép-méretezési csoport megismerése<a name="exploring-your-virtual-machine-scale-set"></a>
+
+Az új virtuálisgép-méretezési **csoport megtekintéséhez válassza a**@no__t – 1**Cloud Explorer** lehetőséget. Ha szükséges, használja az **összes frissítése**parancsot.
+
+![Cloud Explorer](media/virtual-machine-scale-sets-vs-create/cloud-explorer.png)
+
+A **Cloud Explorer** lehetővé teszi az Azure-erőforrások kezelését a Visual Studióban az alkalmazások fejlesztése során. A virtuálisgép-méretezési csoport a [Azure Portal](https://portal.azure.com) és [Azure erőforrás-kezelő](https://resources.azure.com/)is megtekinthető.
+
+ A portál lehetővé teszi az Azure-infrastruktúra webböngészővel való felügyeletének legmegfelelőbb módját. Azure Erőforrás-kezelő egyszerű módszert kínál az Azure-erőforrások feltárására és hibakeresésére. Azure Erőforrás-kezelő a példány nézetét, valamint a megtekintett erőforrásokhoz tartozó PowerShell-parancsokat is megjeleníti.
 
 ## <a name="next-steps"></a>További lépések
-Miután sikeresen telepítette a Visual Studión keresztül a Virtual Machine Scale Sets, további szabhatja testre a projekthez, hogy az alkalmazás követelményeinek. Például adja hozzá az automatikus méretezés beállítása egy **Insights** erőforrás, infrastruktúra ad hozzá a sablont (például önálló virtuális gépeket), illetve az egyéni szkriptek bővítményét használó alkalmazások telepítését. Jó példa sablonok megtalálható a [Azure gyorsindítási sablonok](https://github.com/Azure/azure-quickstart-templates) GitHub-adattárból (Keresés az "vmss-hez").
 
-[file_new]: ./media/virtual-machine-scale-sets-vs-create/1-FileNew.png
-[create_project]: ./media/virtual-machine-scale-sets-vs-create/2-CreateProject.png
-[select_Template]: ./media/virtual-machine-scale-sets-vs-create/3b-SelectTemplateLin.png
-[solution_explorer]: ./media/virtual-machine-scale-sets-vs-create/4-SolutionExplorer.png
-[json_explorer]: ./media/virtual-machine-scale-sets-vs-create/10-JsonExplorer.png
-[5deploy_Template]: ./media/virtual-machine-scale-sets-vs-create/5-DeployTemplate.png
-[6deploy_Template]: ./media/virtual-machine-scale-sets-vs-create/6-DeployTemplate.png
-[new_resource]: ./media/virtual-machine-scale-sets-vs-create/7-NewResourceGroup.png
-[edit_parameters]: ./media/virtual-machine-scale-sets-vs-create/8-EditParameter.png
-[output_window]: ./media/virtual-machine-scale-sets-vs-create/9-Output.png
-[cloud_explorer]: ./media/virtual-machine-scale-sets-vs-create/12-CloudExplorer.png
+Miután sikeresen üzembe helyezte Virtual Machine Scale Sets a Visual studión keresztül, a projekt tovább szabható az alkalmazás követelményeinek megfelelően. Például úgy konfigurálhatja az autoskálázást, hogy hozzáad egy **bepillantást** az erőforráshoz. Hozzáadhat infrastruktúrát a sablonhoz, például az önálló virtuális gépekhez, vagy telepíthet alkalmazásokat az egyéni szkriptek bővítmény használatával. A jó példaként szolgáló sablonok az Azure rövid útmutató [sablonok](https://github.com/Azure/azure-quickstart-templates) GitHub-tárházában találhatók. Keressen a `vmss` kifejezésre.

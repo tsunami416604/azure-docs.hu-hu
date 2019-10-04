@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 11/13/2017
-ms.openlocfilehash: a0358859d6f806a94c529bae2eb6fa9d1ab82963
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 09/20/2019
+ms.openlocfilehash: bf9539512961930a97d9dcfe86722d0103c1facc
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58077836"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173463"
 ---
 # <a name="create-a-vm-cluster-with-terraform-and-hcl"></a>Virtuálisgép-fürt létrehozása Terraformmal és HCL-lel
 
@@ -46,7 +46,7 @@ Ebben a szakaszban egy Azure-szolgáltatásnevet hozunk létre, valamint két Te
 
 5. Másolja az alábbi kódot a változódeklarációs fájlba:
 
-   ```tf
+   ```hcl
    variable subscription_id {}
    variable tenant_id {}
    variable client_id {}
@@ -62,9 +62,9 @@ Ebben a szakaszban egy Azure-szolgáltatásnevet hozunk létre, valamint két Te
 
 6. Hozzon létre egy új fájlt a Terraform-változók értékeinek tárolására. A Terraform-változók fájlját szokás a `terraform.tfvars` néven elnevezni, mivel a Terraform automatikusan betölti a `terraform.tfvars` (vagy a `*.auto.tfvars` mintát követő) nevű fájlt, ha az aktuális könyvtárban található ilyen fájl. 
 
-7. Másolja az alábbi kódot a változók fájljába. Ügyeljen arra, hogy cserélje le a helyőrzőket a következőképpen: A `subscription_id`, használja az Azure-előfizetés azonosítója futtatásakor megadott `az account set`. A `tenant_id` helyett használja az `az ad sp create-for-rbac` által visszaadott `tenant` értéket. A `client_id` helyett használja az `az ad sp create-for-rbac` által visszaadott `appId` értéket. A `client_secret` helyett használja az `az ad sp create-for-rbac` által visszaadott `password` értéket.
+7. Másolja az alábbi kódot a változók fájljába. Ügyeljen arra, hogy a helyőrzőket a következőképpen cserélje le: A `subscription_id`esetében használja a futtatáskor `az account set`megadott Azure-előfizetés azonosítóját. A `tenant_id` helyett használja az `az ad sp create-for-rbac` által visszaadott `tenant` értéket. A `client_id` helyett használja az `az ad sp create-for-rbac` által visszaadott `appId` értéket. A `client_secret` helyett használja az `az ad sp create-for-rbac` által visszaadott `password` értéket.
 
-   ```tf
+   ```hcl
    subscription_id = "<azure-subscription-id>"
    tenant_id = "<tenant-returned-from-creating-a-service-principal>"
    client_id = "<appId-returned-from-creating-a-service-principal>"
@@ -79,7 +79,7 @@ Ebben a szakaszban egy fájlt hozunk létre az infrastruktúra erőforrás-defin
 
 2. Másolja az alábbi erőforrás-definíció mintákat az újonnan létrehozott `main.tf` fájlba: 
 
-   ```tf
+   ```hcl
    resource "azurerm_resource_group" "test" {
     name     = "acctestrg"
     location = "West US 2"
@@ -103,7 +103,7 @@ Ebben a szakaszban egy fájlt hozunk létre az infrastruktúra erőforrás-defin
     name                         = "publicIPForLB"
     location                     = "${azurerm_resource_group.test.location}"
     resource_group_name          = "${azurerm_resource_group.test.name}"
-    public_ip_address_allocation = "static"
+    allocation_method            = "Static"
    }
 
    resource "azurerm_lb" "test" {
@@ -227,7 +227,7 @@ A [terraform init parancs](https://www.terraform.io/docs/commands/init.html) egy
 
 A Terraform inicializálásához futtassa az alábbi parancsot:
 
-  ```cmd
+  ```bash
   terraform init
   ```
 
@@ -245,13 +245,13 @@ A `terraform plan` parancs feldolgozásakor a Terraform végrehajt egy frissít�
 
 Ha a végrehajtási tervet nem szükséges mentenie, futtassa a következő parancsot:
 
-  ```cmd
+  ```bash
   terraform plan
   ```
 
 Ha a végrehajtási tervet menteni kell, a következő parancsot futtassa (és cserélje le a &lt;path> helyőrzőt a kívánt mentési hely elérési útjára):
 
-  ```cmd
+  ```bash
   terraform plan -out=<path>
   ```
 
@@ -263,13 +263,13 @@ A jelen oktatóanyag utolsó lépéseként a [terraform apply parancs](https://w
 
 Ha a legfrissebb végrehajtási tervet szeretné alkalmazni, futtassa a következő parancsot:
 
-  ```cmd
+  ```bash
   terraform apply
   ```
 
 Ha egy korábban mentett végrehajtási tervet szeretne alkalmazni, a következő parancsot futtassa (és cserélje le a &lt;path> helyőrzőt a mentett végrehajtási terv elérési útjára):
 
-  ```cmd
+  ```bash
   terraform apply <path>
   ```
 

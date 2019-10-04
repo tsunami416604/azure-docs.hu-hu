@@ -1,77 +1,80 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: cc30c4552cfa672121a5e7fc520fb4412237b7e9
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56591689"
 documentType: LandingData
 title: Batch – dokumentáció
 metadata:
   title: A Batch dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
-  description: A Batch használatával hatékonyan futtathat nagy méretű párhuzamos és nagy teljesítményű feldolgozási (high-performance computing, HPC) alkalmazásokat a felhőben. Definiálhat olyan Azure számítási erőforrásokat, amelyek manuális konfigurálás vagy infrastruktúra-kezelés nélkül is párhuzamosan vagy a megfelelő léptékben futtatják az alkalmazásokat. Beütemezhet nagy számítási igényű feladatokat, és dinamikusan, a pillanatnyi szükségletek alapján adhat hozzá vagy távolíthat el számítási erőforrásokat. Gyors útmutatóink, oktatóanyagaink és a felhozott példák segítségével megismerkedhet az Azure Batch használatával.
+  description: 'A Batch használatával hatékonyan futtathat nagy méretű párhuzamos és nagy teljesítményű feldolgozási (high-performance computing, HPC) alkalmazásokat a felhőben. Definiálhat olyan Azure számítási erőforrásokat, amelyek manuális konfigurálás vagy infrastruktúra-kezelés nélkül is párhuzamosan vagy a megfelelő léptékben futtatják az alkalmazásokat. Beütemezhet nagy számítási igényű feladatokat, és dinamikusan, a pillanatnyi szükségletek alapján adhat hozzá vagy távolíthat el számítási erőforrásokat. Gyors útmutatóink, oktatóanyagaink és a felhozott példák segítségével megismerkedhet az Azure Batch használatával.'
   services: batch
-  author: czeumault
-  manager: carolz
+  author: georgewallace
+  manager: gwallace
   ms.service: batch
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 11/30/2017
-  ms.author: carolz
+  ms.author: gwallace
 abstract:
-  description: A Batch használatával hatékonyan futtathat nagy méretű párhuzamos és nagy teljesítményű feldolgozási (high-performance computing, HPC) alkalmazásokat a felhőben. Definiálhat olyan Azure számítási erőforrásokat, amelyek manuális konfigurálás vagy infrastruktúra-kezelés nélkül is párhuzamosan vagy a megfelelő léptékben futtatják az alkalmazásokat. Beütemezhet nagy számítási igényű feladatokat, és dinamikusan, a pillanatnyi szükségletek alapján adhat hozzá vagy távolíthat el számítási erőforrásokat. Gyors útmutatóink, oktatóanyagaink és a felhozott példák segítségével megismerkedhet az Azure Batch használatával.
+  description: 'A Batch használatával hatékonyan futtathat nagy méretű párhuzamos és nagy teljesítményű feldolgozási (high-performance computing, HPC) alkalmazásokat a felhőben. Definiálhat olyan Azure számítási erőforrásokat, amelyek manuális konfigurálás vagy infrastruktúra-kezelés nélkül is párhuzamosan vagy a megfelelő léptékben futtatják az alkalmazásokat. Beütemezhet nagy számítási igényű feladatokat, és dinamikusan, a pillanatnyi szükségletek alapján adhat hozzá vagy távolíthat el számítási erőforrásokat. Gyors útmutatóink, oktatóanyagaink és a felhozott példák segítségével megismerkedhet az Azure Batch használatával.'
 sections:
-- title: 5 perces gyors útmutatók
-  items:
-  - type: paragraph
-    text: Útmutató az első Batch-feladat futtatásához az Azure-ban.
-  - type: list
-    style: icon48
+  - title: 5 perces gyors útmutatók
     items:
-    - image:
-        src: https://docs.microsoft.com/media/common/i_cligeneric.svg
-      text: Azure CLI
-      href: quick-create-cli
-    - image:
-        src: https://docs.microsoft.com/media/common/i_portal.svg
-      text: Azure Portal
-      href: quick-create-portal
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_NET.svg
-      text: .NET
-      href: quick-run-dotnet
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_python.svg
-      text: Python
-      href: quick-run-python
-- title: Részletes útmutatók
-  items:
-  - type: paragraph
-    text: Útmutató a nagy számítási igényű számítási feladatok futtatásához a Batch szolgáltatásban.
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: Útmutató az első Batch-feladat futtatásához az Azure-ban.
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_cligeneric.svg'
+            text: Azure CLI
+            href: quick-create-cli
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
+            text: Azure Portal
+            href: quick-create-portal
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_NET.svg'
+            text: .NET
+            href: quick-run-dotnet
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_python.svg'
+            text: Python
+            href: quick-run-python
+  - title: Részletes útmutatók
     items:
-    - html: <a href="tutorial-parallel-dotnet">Párhuzamos fájlfeldolgozás a .NET SDK-val</a>
-    - html: <a href="tutorial-parallel-python">Párhuzamos fájlfeldolgozás a Python SDK-val</a>
-    - html: <a href="tutorial-rendering-cli">Jelenetek renderelése az Arnolddal</a>
-    - html: <a href="tutorial-r-doazureparallel">Párhuzamos R-szimuláció</a>
-- title: Példák
-  items:
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: paragraph
+        text: Útmutató a nagy számítási igényű számítási feladatok futtatásához a Batch szolgáltatásban.
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="tutorial-parallel-dotnet">Párhuzamos fájlfeldolgozás a .NET SDK-val</a>
+          - html: <a href="tutorial-parallel-python">Párhuzamos fájlfeldolgozás a Python SDK-val</a>
+          - html: <a href="tutorial-rendering-cli">Jelenetek renderelése az Arnolddal</a>
+          - html: <a href="tutorial-r-doazureparallel">Párhuzamos R-szimuláció</a>
+  - title: Példák
     items:
-    - html: <a href="cli-samples">Azure CLI</a>
-- title: Referencia
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="cli-samples">Azure CLI</a>
+  - title: Ingyenes Pluralsight videós képzés
     items:
-    - title: Parancssor
-      html: <p><a href="/cli/azure/batch">Azure CLI</a></p><p><a href="/powershell/module/az.batch">Azure PowerShell</a></p>
-    - title: Nyelvek
-      html: <p><a href="/dotnet/api/overview/azure/batch">.NET</a></p><p><a href="/java/api/overview/azure/batch">Java</a></p><p><a href="/javascript/api/overview/azure/batch">Node.js</a></p><p><a href="/python/api/overview/azure/batch">Python</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/batchservice">A Batch szolgáltatás REST API-ja</a></p><p><a href="/rest/api/batchmanagement/">A Batch Management REST API</a></p>
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: 'Microsoft Azure Batch, első lépések'
+            href: 'https://app.pluralsight.com/library/courses/microsoft-azure-batch-getting-started/table-of-contents'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://app.pluralsight.com/library/courses/microsoft-azure-batch-getting-started/table-of-contents'
+  - title: Referencia
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Parancssor
+            html: <p><a href="/cli/azure/batch">Azure CLI</a></p><p><a href="/powershell/module/az.batch">Azure PowerShell</a></p>
+          - title: Nyelvek
+            html: <p><a href="/dotnet/api/overview/azure/batch">.NET</a></p><p><a href="/java/api/overview/azure/batch">Java</a></p><p><a href="/javascript/api/overview/azure/batch">Node.js</a></p><p><a href="/python/api/overview/azure/batch">Python</a></p>
+          - title: REST
+            html: <p><a href="/rest/api/batchservice">A Batch szolgáltatás REST API-ja</a></p><p><a href="/rest/api/batchmanagement/">A Batch Management REST API</a></p>

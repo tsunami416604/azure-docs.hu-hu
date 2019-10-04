@@ -1,5 +1,5 @@
 ---
-title: Ügyfél tárolókat – az Azure App Service konfigurálása |} A Microsoft Docs
+title: Egyéni tároló – az Azure App Service konfigurálása |} A Microsoft Docs
 description: Ismerje meg, hogyan működik az Azure App Service Node.js-alkalmazások konfigurálása
 services: app-service
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
-ms.openlocfilehash: 1e5faa8d356b891d825586414c0a1a1b9fa47090
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 02231f86d4ceddd6cde53fd242c2c91158d744a9
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60001881"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67480756"
 ---
 # <a name="configure-a-custom-linux-container-for-azure-app-service"></a>Egyéni Linux-tárolóban konfigurálása az Azure App Service-ben
 
@@ -28,7 +28,7 @@ Ez az útmutató a főbb fogalmakat és a Linux-alkalmazások App Service-ben bo
 
 ## <a name="configure-port-number"></a>Portszám konfigurálása
 
-A webkiszolgálót az egyéni rendszerkép az előfordulhat, hogy a nem a 80-as portot használja. A port, amelyet az egyéni használ használatával kapcsolatos utasítja az Azure a `WEBSITES_PORT` alkalmazásbeállítást. A [jelen oktatóanyagban lévő Python-mintához](https://github.com/Azure-Samples/docker-django-webapp-linux) tartozó GitHub-oldalon az látható, hogy a `WEBSITES_PORT` értékét _8000_-re kell állítani. Beállíthatja a futó [ `az webapp config appsettings set` ](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) parancsot a Cloud Shellben. Példa:
+A webkiszolgálót az egyéni rendszerkép az előfordulhat, hogy a nem a 80-as portot használja. A port, amelyet az egyéni tároló használ használatával kapcsolatos utasítja az Azure a `WEBSITES_PORT` alkalmazásbeállítást. A [jelen oktatóanyagban lévő Python-mintához](https://github.com/Azure-Samples/docker-django-webapp-linux) tartozó GitHub-oldalon az látható, hogy a `WEBSITES_PORT` értékét _8000_-re kell állítani. Beállíthatja a futó [ `az webapp config appsettings set` ](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) parancsot a Cloud Shellben. Példa:
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_PORT=8000
@@ -50,10 +50,10 @@ Használhatja a */home* könyvtárat az alkalmazás fájlrendszerében fájlok m
 
 Amikor az állandó tároló le van tiltva, majd kiírja a `/home` directory alkalmazás-újraindítások között vagy több példánya között nem maradnak meg. Az egyetlen kivétel a `/home/LogFiles` könyvtár, amely a Docker és a tároló naplóinak tárolására szolgál. Ha engedélyezve van-e az állandó tárolóból, az összes írási művelet a `/home` directory megmaradnak, és a egy kiterjesztett alkalmazás összes példánya hozzáférhet.
 
-Alapértelmezés szerint az állandó tárolóból *le van tiltva*. Engedélyezze vagy tiltsa le, állítsa be a `WEBSITES_ENABLE_APP_SERVICE_STORAGE` Alkalmazásbeállítás futtatásával [ `az webapp config appsettings set` ](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) parancsot a Cloud Shellben. Példa:
+Alapértelmezés szerint az állandó tárolóból *engedélyezve* és a beállítás nem érhető el a az alkalmazás beállításait. A letiltáshoz, állítsa be a `WEBSITES_ENABLE_APP_SERVICE_STORAGE` Alkalmazásbeállítás futtatásával [ `az webapp config appsettings set` ](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) parancsot a Cloud Shellben. Példa:
 
 ```azurecli-interactive
-az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=true
+az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=false
 ```
 
 > [!NOTE]
@@ -109,7 +109,6 @@ Az SSH lehetővé teszi a tároló és az ügyfél közötti biztonságos kommun
 - [Tartós tároláshoz használjon a Docker Compose](#use-persistent-storage-in-docker-compose)
 - [Előzetes verzió korlátozásai](#preview-limitations)
 - [A docker Compose-beállítások](#docker-compose-options)
-- [Kubernetes konfigurációs lehetőségek](#kubernetes-configuration-options)
 
 ### <a name="use-persistent-storage-in-docker-compose"></a>Tartós tároláshoz használjon a Docker Compose
 
@@ -134,25 +133,12 @@ wordpress:
   - ${WEBAPP_STORAGE_HOME}/LogFiles:/var/log
 ```
 
-### <a name="use-custom-storage-in-docker-compose"></a>Egyéni storage használata a Docker Compose
-
-Az Azure Storage (Azure Blob vagy az Azure-fájlok) az egyéni-azonosító használatával többtárolós alkalmazások csatlakoztathatók. Az egyéni-azonosító neve megtekintéséhez futtassa [ `az webapp config storage-account list --name <app_name> --resource-group <resource_group>` ](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-list).
-
-Az a *docker-compose.yml* fájlt, és leképezheti a `volumes` beállítást `custom-id`. Példa:
-
-```yaml
-wordpress:
-  image: wordpress:latest
-  volumes:
-  - <custom-id>:<path_in_container>
-```
-
 ### <a name="preview-limitations"></a>Előzetes verzió korlátozásai
 
 Többtárolós jelenleg előzetes verzióban érhető el. A következő App Service platform funkciók nem támogatottak:
 
-- Hitelesítés/engedélyezés
-- Felügyelt identitások
+- Hitelesítés / engedélyezés
+- Managed Identities
 
 ### <a name="docker-compose-options"></a>A docker Compose-beállítások
 
@@ -179,22 +165,6 @@ A következő listákban támogatott és nem támogatott a Docker Compose konfig
 
 > [!NOTE]
 > Nem kifejezetten feltüntettük az egyéb beállításokat figyelmen kívül hagyja a nyilvános előzetes verzióban érhető el.
-
-### <a name="kubernetes-configuration-options"></a>Kubernetes konfigurációs lehetőségek
-
-Az alábbi konfigurációs lehetőségeket a Kubernetes támogatja:
-
-- args
-- command
-- tárolók
-- image
-- név
-- ports
-- spec
-
-> [!NOTE]
-> Az egyéb beállításokat nem kifejezetten emelte ki a nyilvános előzetes verzióban nem támogatottak.
->
 
 ## <a name="next-steps"></a>További lépések
 

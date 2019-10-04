@@ -1,7 +1,6 @@
 ---
-title: Tömeges betöltési Apache phoenixbe a psql - Azure HDInsight használatával
-description: A psql-jének eszközzel betölteni az adatok kötegelt betöltése a Phoenix táblákba.
-services: hdinsight
+title: Tömeges betöltés Apache Phoenix a psql használatával – Azure HDInsight
+description: A psql eszközzel tömeges betöltési adatmennyiségeket tölthet be Apache Phoenix táblákba az Azure HDInsight
 author: ashishthaps
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,32 +8,32 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: ashishth
-ms.openlocfilehash: 5faea45a55d69cece56137d70862d80dfe335971
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 43465a1c31b953620c45dfe759de7b6e1b4dc3c9
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342456"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70917273"
 ---
 # <a name="bulk-load-data-into-apache-phoenix-using-psql"></a>Adatok tömeges betöltése az Apache Phoenixbe a psql használatával
 
-[Az Apache Phoenix](https://phoenix.apache.org/) egy nyílt forráskódú, nagy mértékben párhuzamosított relációs adatbázis, [Apache HBase](../hbase/apache-hbase-overview.md). A Phoenix SQL-szerű lekérdezéseket biztosít a HBase-en. A Phoenix JDBC-illesztőprogramok engedélyezése a felhasználók létrehozása, törlése, és egyenként és tömegesen az SQL táblák, indexek, nézetek és a feladatütemezések és upsert sorok alter használ. Phoenix-lekérdezések összeállításához MapReduce használata helyett natív noSQL-fordítási használja HBase felett közel valós idejű alkalmazások létrehozásához. Phoenix hozzáadja az adatok közös elhelyezése a kód végrehajtása támogatja az ügyfél által megadott kódot futtató kiszolgáló, a címtér a közös processzorral. Így minimálisra csökkenthető az ügyfél-kiszolgáló az adatátvitelt.  Phoenix használata a HDInsight adatokkal dolgozik, először hozzon létre táblák, és ezután az adatok betöltése az őket.
+A [Apache Phoenix](https://phoenix.apache.org/) egy [Apache HBase](../hbase/apache-hbase-overview.md)-ra épülő, nyílt forráskódú, nagymértékben párhuzamos, összehasonlítható, integrált adatbázis. A Phoenix SQL-szerű lekérdezéseket biztosít a HBase-en keresztül. A Phoenix a JDBC-illesztőprogramokat használva lehetővé teszi a felhasználók számára az SQL-táblák,-indexek,-nézetek és-folyamatok létrehozását, törlését és módosítását, valamint a upsert-sorok egyenkénti és tömeges megváltoztatását. A Phoenix noSQL natív fordítást használ ahelyett, hogy a MapReduce-t használja a lekérdezések fordításához, hogy alacsony késleltetésű alkalmazásokat hozzon létre a HBase-on. A Phoenix közös processzorokkal támogatja az ügyfél által megadott kód futtatását a-kiszolgáló címterület használatával, amely az adathalmazban található kódot hajtja végre. Ez lekicsinyíti az ügyfél/kiszolgáló adatátvitelt.  Ha az HDInsight-ben Phoenix használatával szeretne dolgozni az adataival, először hozzon létre táblákat, majd töltse be őket.
 
-## <a name="bulk-loading-with-apache-phoenix"></a>Tömeges betöltés az Apache Phoenixhez
+## <a name="bulk-loading-with-apache-phoenix"></a>Tömeges betöltés Apache Phoenix
 
-Többféle módon olvashatja be őket a HBase, beleértve az ügyfél API-k, egy MapReduce-feladatot a TableOutputFormat, vagy manuálisan, a HBase rendszerhéj segítségével az adatok bevitelével. A Phoenix a CSV-adatok betöltése a Phoenix táblákba kétféle módszert biztosít: egy ügyfél nevű eszközt betöltése `psql`, és a egy MapReduce-alapú tömeges betöltési eszközt.
+Több módon is beszerezhetők az adatok a HBase-be, például az ügyféloldali API-k, a MapReduce-feladatok és a TableOutputFormat használatával, illetve az adatok manuális bevitele a HBase-rendszerhéj használatával. A Phoenix két módszert biztosít a CSV-táblázatok Phoenix `psql`-táblákba való betöltéséhez: egy ügyfél-betöltési eszközt és egy MapReduce-alapú tömeges betöltési eszközt.
 
-A `psql` eszköz egyszálas és leginkább megabájtban vagy gigabájtban, az adatok betöltésekor. Az összes CSV-fájlok, nem tölthető be kell rendelkeznie a kiterjesztése ".csv".  Az SQL-parancsfájlok is megadhat a `psql` ".sql" kiterjesztésű parancssor.
+Az `psql` eszköz egyszálas, és a legmegfelelőbb a megabájt vagy gigabájt adat betöltéséhez. A betöltendő CSV-fájloknak a ". csv" kiterjesztéssel kell rendelkezniük.  Az SQL- `psql` parancsfájlokat a parancssorban is megadhatja az ". SQL" fájlkiterjesztés használatával.
 
-Tömeges betöltése a MapReduce sokkal nagyobb mennyiségű adat, általában a termelési forgatókönyvekhez használható, a MapReduce használ több szálon.
+A tömeges betöltés a MapReduce használatával sokkal nagyobb adatmennyiségekhez használatos, jellemzően éles környezetben, mivel a MapReduce több szálat használ.
 
-Adatok betöltése előtt győződjön meg arról, hogy engedélyezve van-e a Phoenix és az, hogy lekérdezés időkorlátja beállításai vannak-e a várt módon.  A HDInsight-fürt eléréséhez [Apache Ambari](https://ambari.apache.org/) irányítópulton, válassza ki a HBase, majd a konfiguráció lapon.  Görgessen lefelé, ellenőrizze, hogy az Apache Phoenix `enabled` látható módon:
+Az adattöltés megkezdése előtt ellenőrizze, hogy a Phoenix engedélyezve van-e, és hogy a lekérdezés időtúllépési beállításai a vártak.  Nyissa meg a HDInsight-fürt [Apache Ambari](https://ambari.apache.org/) irányítópultját, válassza a HBase, majd a konfiguráció lapot.  Görgessen lefelé, és ellenőrizze, hogy a `enabled` Apache Phoenix a következőre van-e beállítva:
 
-![Az Apache Phoenix HDInsight fürtbeállítások](./media/apache-hbase-phoenix-psql/ambari-phoenix.png)
+![Apache Phoenix HDInsight](./media/apache-hbase-phoenix-psql/apache-ambari-phoenix.png)
 
-### <a name="use-psql-to-bulk-load-tables"></a>Használat `psql` tömeges betöltési táblákhoz
+### <a name="use-psql-to-bulk-load-tables"></a>Táblázatok `psql` tömeges betöltésére használható
 
-1. Hozzon létre egy új táblát, majd mentse a lekérdezést filename `createCustomersTable.sql`.
+1. Hozzon létre egy új táblát, majd mentse a lekérdezést `createCustomersTable.sql`a filename paranccsal.
 
     ```sql
     CREATE TABLE Customers (
@@ -45,7 +44,7 @@ Adatok betöltése előtt győződjön meg arról, hogy engedélyezve van-e a Ph
         Country varchar);
     ```
 
-2. A CSV-fájl (például tartalma látható) kopírovat jako `customers.csv` be egy `/tmp/` címtárat betöltése az újonnan létrehozott táblába.  Használja a `hdfs` parancsot a CSV-fájl átmásolása a kívánt forráshelyet.
+2. Másolja a CSV-fájlt (például a látható tartalmakat `customers.csv` ) `/tmp/` egy könyvtárba az újonnan létrehozott táblázatba való betöltéshez.  `hdfs` A parancs használatával másolja a CSV-fájlt a kívánt forrás helyére.
 
     ```
     1,Samantha,260000.0,18,US
@@ -58,14 +57,14 @@ Adatok betöltése előtt győződjön meg arról, hogy engedélyezve van-e a Ph
     hdfs dfs -copyToLocal /example/data/customers.csv /tmp/
     ```
 
-3. Hozzon létre egy SQL SELECT lekérdezést, hogy ellenőrizze a bemeneti adatok megfelelően betöltve, majd mentse a lekérdezést filename `listCustomers.sql`. Bármely SQL-lekérdezést is használhatja.
+3. Hozzon létre egy SQL SELECT lekérdezést a bemeneti adatok megfelelő betöltésének ellenőrzéséhez, majd mentse `listCustomers.sql`a lekérdezést a fájlnévvel. Bármilyen SQL-lekérdezést használhat.
      ```sql
     SELECT Name, Income from Customers group by Country;
     ```
 
-4. Tömeges nyissa meg az adatokat betölteni egy *új* Hadoop parancssori ablakban. A végrehajtási könyvtár helyét a először módosítsa a `cd` parancsot, és használja a `psql` eszköz (Python `psql.py` parancsot). 
+4. Az *új* Hadoop-parancssorablak megnyitásával tömeges betöltéssel töltheti le az adatmennyiséget. Először váltson a végrehajtási könyvtár helyére `cd` a paranccsal, majd használja az `psql` eszközt (Python `psql.py` -parancs). 
 
-    Az alábbi példa vár, hogy másolja a `customers.csv` fájlt a storage-fiók a helyi átmeneti könyvtárba használatával `hdfs` hasonlóan a fenti 2. lépés.
+    A következő példa azt várja, hogy a `customers.csv` fájlt egy Storage-fiókból a helyi Temp `hdfs` könyvtárba másolta a fenti 2. lépésben leírtak szerint.
 
     ```bash
     cd /usr/hdp/current/phoenix-client/bin
@@ -74,40 +73,40 @@ Adatok betöltése előtt győződjön meg arról, hogy engedélyezve van-e a Ph
     ```
 
     > [!NOTE]   
-    > Meghatározni a `ZookeeperQuorum` név, keresse meg a [Apache ZooKeeper](https://zookeeper.apache.org/) kvórum karakterlánc fájlban `/etc/hbase/conf/hbase-site.xml` tulajdonságnévvel `hbase.zookeeper.quorum`.
+    > A `ZookeeperQuorum` név meghatározásához keresse meg a [Apache ZooKeeper](https://zookeeper.apache.org/) kvórum karakterláncot a tulajdonság `/etc/hbase/conf/hbase-site.xml` nevét `hbase.zookeeper.quorum`tartalmazó fájlban.
 
-5. Miután a `psql` művelet befejeződött, megjelenik egy üzenet a parancsablakban:
+5. A `psql` művelet befejezését követően a következő üzenet jelenik meg a parancsablakban:
 
     ```
     CSV Upsert complete. 5000 rows upserted
     Time: 4.548 sec(s)
     ```
 
-## <a name="use-mapreduce-to-bulk-load-tables"></a>A MapReduce eszközzel is tömeges betöltési táblák
+## <a name="use-mapreduce-to-bulk-load-tables"></a>MapReduce használata tömeges betöltési táblákhoz
 
-Nagyobb átviteli sebességet betöltése elosztva a fürtben, a MapReduce betöltési eszközt használni. Ez betöltő HFiles először konvertálja az összes adat, és biztosít majd a létrehozott HFiles HBase.
+A fürtön keresztül terjesztett nagyobb átviteli sebességű betöltéshez használja a MapReduce Load eszközt. Ez a betöltő először átalakítja az összes adatmennyiséget a HFiles, majd a létrehozott HFiles a HBase.
 
-1. Indítsa el a fürt megosztott kötetei szolgáltatás MapReduce betöltő használatával a `hadoop` a Phoenix ügyfél jar parancsot:
+1. Indítsa el a CSV-MapReduce betöltőjét `hadoop` a (z) paranccsal a Phoenix Client jar használatával:
 
     ```bash
     hadoop jar phoenix-<version>-client.jar org.apache.phoenix.mapreduce.CsvBulkLoadTool --table CUSTOMERS --input /data/customers.csv
     ```
 
-2. Hozzon létre egy új táblát egy SQL-utasítást a `CreateCustomersTable.sql` az előző 1. lépés.
+2. Hozzon létre egy új táblázatot egy SQL `CreateCustomersTable.sql` -utasítással, az előző 1. lépésben leírtak szerint.
 
-3. A tábla sémája ellenőrzéséhez futtassa `!describe inputTable`.
+3. A tábla sémájának ellenőrzéséhez futtassa a parancsot `!describe inputTable`.
 
-4. Határozza meg a bemeneti adatokat, például a hely elérési útja `customers.csv` fájlt. A bemeneti fájlokhoz lehet a WASB vagy ADLS-tárfiókot. Ebben a példában a forgatókönyvben a bemeneti fájlok vannak a `<storage account parent>/inputFolderBulkLoad` könyvtár.
+4. Határozza meg a bemeneti adatok helyének elérési útját, például `customers.csv` például a fájlt. Előfordulhat, hogy a bemeneti fájlok a WASB/ADLS Storage-fiókban találhatók. Ebben a példában a bemeneti fájlok a `<storage account parent>/inputFolderBulkLoad` könyvtárban vannak.
 
-5. Módosítsa a MapReduce tömeges betöltési parancs végrehajtási könyvtárba:
+5. Váltson a MapReduce tömeges betöltési parancs végrehajtási könyvtárába:
 
     ```bash
     cd /usr/hdp/current/phoenix-client/bin
     ```
 
-6. Keresse meg a `ZookeeperQuorum` értékét `/etc/hbase/conf/hbase-site.xml`, tulajdonságnévvel `hbase.zookeeper.quorum`.
+6. Keresse meg `ZookeeperQuorum` a `/etc/hbase/conf/hbase-site.xml`értékét a (z) `hbase.zookeeper.quorum`tulajdonság nevével.
 
-7. Állítsa be a osztályútvonal, és futtassa a `CsvBulkLoadTool` parancssori eszközzel:
+7. Állítsa be a osztályútvonal, és futtassa `CsvBulkLoadTool` az eszköz parancsot:
 
     ```bash
     /usr/hdp/current/phoenix-client$ HADOOP_CLASSPATH=/usr/hdp/current/hbase-client/lib/hbase-protocol.jar:/etc/hbase/conf hadoop jar /usr/hdp/2.4.2.0-258/phoenix/phoenix-4.4.0.2.4.2.0-258-client.jar
@@ -115,7 +114,7 @@ Nagyobb átviteli sebességet betöltése elosztva a fürtben, a MapReduce betö
     org.apache.phoenix.mapreduce.CsvBulkLoadTool --table Customers --input /inputFolderBulkLoad/customers.csv –zookeeper ZookeeperQuorum:2181:/hbase-unsecure
     ```
 
-8. A MapReduce használata Azure Data Lake Storage, keresse meg a Data Lake Storage gyökérkönyvtár, amely a `hbase.rootdir` értékét `hbase-site.xml`. A következő parancsot a Data Lake Storage gyökérkönyvtár nem `adl://hdinsightconf1.azuredatalakestore.net:443/hbase1`. Ebben a parancsban adja meg a Data Lake Storage bemeneti és kimeneti paraméterként mappák:
+8. Ha a MapReduce-t a Azure Data Lake Storage használatával szeretné használni, keresse meg a Data Lake Storage `hbase.rootdir` gyökérkönyvtárat `hbase-site.xml`, amely a értéke. A következő parancsban a Data Lake Storage gyökérkönyvtára `adl://hdinsightconf1.azuredatalakestore.net:443/hbase1`. Ebben a parancsban adja meg a bemeneti és kimeneti mappák Data Lake Storage paraméterként:
 
     ```bash
     cd /usr/hdp/current/phoenix-client
@@ -127,21 +126,21 @@ Nagyobb átviteli sebességet betöltése elosztva a fürtben, a MapReduce betö
 
 ## <a name="recommendations"></a>Javaslatok
 
-* Az azonos adattárolóra használja a bejövő és kimenő mappákban, vagy az Azure Storage (WASB), vagy az Azure Data Lake Storage (ADL). Adatok átviteléhez az Azure Storage-ból a Data Lake Storage, használhatja a `distcp` parancsot:
+* Ugyanazt a tárolóeszközt használja a bemeneti és a kimeneti mappákhoz, vagy az Azure Storage (WASB) vagy a Azure Data Lake Storage (ADL) számára. Az adatok Azure Storage-ból Data Lake Storageba való átviteléhez a `distcp` következő parancsot használhatja:
 
     ```bash
     hadoop distcp wasb://@.blob.core.windows.net/example/data/gutenberg adl://.azuredatalakestore.net:443/myfolder
     ```
 
-* Nagyobb méretű munkavégző csomópontok használhatók. A térkép folyamatok, a MapReduce tömeges másolás ideiglenes kimeneti nagy mennyiségű töltse fel a rendelkezésre álló, nem Elosztott helyet hozhat létre. A tömeges betöltés nagy mennyiségű több és nagyobb méretű feldolgozói-csomópontokat használjanak. Közvetlenül lefoglalni a fürt munkavégző csomópontok száma a feldolgozási sebesség hatással van.
+* Használjon nagyobb méretű munkavégző csomópontokat. A MapReduce tömeges másolásának leképezési folyamatai nagy mennyiségű ideiglenes kimenetet hoznak létre, amely kitölti az elérhető nem elosztott fájlrendszerbeli területet. Nagy mennyiségű tömeges betöltés esetén használjon több és nagyobb méretű munkavégző csomópontot. A fürthöz hozzárendelt munkavégző csomópontok száma közvetlenül befolyásolja a feldolgozási sebességet.
 
-* Bemeneti fájlok felosztása ~ 10 GB-os adattömböket. A tömeges betöltés egy storage-igényes művelet, így a bemeneti fájlok bontani jobb teljesítményt eredményez több adattömböket.
+* A bemeneti fájlok felosztása ~ 10 GB-os adattömbökbe. A tömeges betöltés egy nagy tárolási igényű művelet, így a bemeneti fájlok több adattömbbe való felosztása jobb teljesítményt eredményez.
 
-* Régió kiszolgáló kritikus pontok elkerülése. Ha a sorkulcs monoton növekvő, HBase szekvenciális írási műveletek régió kiszolgáló hotspotting idéznek elő. *Sózás* a sorkulcs csökkenti a szekvenciális írási műveleteket. A Phoenix lehetővé teszi a sorkulcs egy adott tábla, mint az alább hivatkozott sózás byte a transzparens módon sója.
+* Kerülje a régió-kiszolgálói hozzáférési pontok elérését. Ha a sor kulcsa monoton módon növekszik, a HBase szekvenciális írások a régió-kiszolgáló hotspotting okozhatják. A sor kulcsának *sói* csökkentik a szekvenciális írásokat. A Phoenix lehetővé teszi, hogy a sor kulcsát transzparens módon sózzuk egy adott tábla egy adott táblára vonatkozóan, az alábbi hivatkozással.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Adatok kötegelt betöltése az Apache Phoenixhez](https://phoenix.apache.org/bulk_dataload.html)
-* [Az Apache HBase Linux-alapú Apache Phoenix használata a HDInsight-fürtök](../hbase/apache-hbase-phoenix-squirrel-linux.md)
+* [Tömeges betöltés Apache Phoenix](https://phoenix.apache.org/bulk_dataload.html)
+* [Apache Phoenix használata Linux-alapú Apache HBase-fürtökkel a HDInsight-ben](../hbase/apache-hbase-phoenix-squirrel-linux.md)
 * [Sózott táblák](https://phoenix.apache.org/salted.html)
-* [Apache Phoenix Grammar](https://phoenix.apache.org/language/index.html)
+* [Apache Phoenix nyelvtan](https://phoenix.apache.org/language/index.html)

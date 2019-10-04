@@ -1,0 +1,157 @@
+---
+title: A helyszíni Hadoop-fürtökről az Azure Storage-ba történő Migrálás Azure Data Factory használata | Microsoft Docs
+description: Ismerje meg, hogyan telepítheti át a helyszíni Hadoop-fürtökről az Azure Storage-ba az Azure Data Factory használatával.
+services: data-factory
+documentationcenter: ''
+author: dearandyxu
+ms.author: yexu
+ms.reviewer: ''
+manager: ''
+ms.service: data-factory
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.topic: conceptual
+ms.date: 8/30/2019
+ms.openlocfilehash: a2e98e46b168ff2e1270c6512aa515278190350f
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677955"
+---
+# <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-hadoop-cluster-to-azure-storage"></a>A helyszíni Hadoop-fürtről az Azure Storage-ba történő Migrálás Azure Data Factory használata 
+
+A Azure Data Factory a helyszíni HDFS az Azure Blob Storage-ba vagy Azure Data Lake Storage Gen2-be történő áttelepítésére szolgáló, nagy teljesítményű, robusztus és költséghatékony mechanizmust biztosít. 
+
+A Data Factory két alapvető megközelítést biztosít az adatok helyszíni HDFS az Azure-ba történő áttelepítéséhez. A megközelítést a forgatókönyv alapján választhatja ki. 
+
+- **Data Factory DistCp mód** (ajánlott): A Data Factory a [DistCp](https://hadoop.apache.org/docs/current3/hadoop-distcp/DistCp.html) (elosztott másolat) használatával másolhatja a fájlokat az Azure Blob Storage-ba (beleértve a [szakaszos másolást](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#staged-copy)) vagy Azure Data Lake Store Gen2. A DistCp-mel integrált Data Factory használatával kihasználhatja a meglévő hatékony fürt előnyeit a legjobb másolási sebesség eléréséhez. A rugalmas ütemezést és az Data Factory-ból származó egységes monitorozási élményt is élvezheti. A Data Factory konfigurációjától függően a másolási tevékenység automatikusan létrehoz egy DistCp-parancsot, elküldi az adatait a Hadoop-fürtnek, majd figyeli a másolási állapotot. A helyszíni Hadoop-fürtökről az Azure-ba történő áttelepítéshez Data Factory DistCp módot ajánljuk.
+- **Data Factory natív integrációs futtatókörnyezet mód**: A DistCp nem minden esetben választható. Egy Azure-beli virtuális hálózati környezetben például a DistCp eszköz nem támogatja az Azure ExpressRoute Private-társítást egy Azure Storage virtuális hálózati végponttal. Emellett bizonyos esetekben nem kívánja használni a meglévő Hadoop-fürtöt az adatok áttelepítéséhez, hogy ne helyezzen el nagy terhelést a fürtön, ami hatással lehet a meglévő ETL-feladatok teljesítményére. Ehelyett a Data Factory Integration Runtime natív képességét használhatja olyan motorként, amely az adatok helyszíni HDFS az Azure-ba történő másolását végzi.
+
+Ez a cikk a következő információkat tartalmazza mindkét megközelítéssel kapcsolatban:
+> [!div class="checklist"]
+> * Teljesítmény 
+> * Rugalmasság másolása
+> * Hálózati biztonság
+> * Magas szintű megoldás-architektúra 
+> * Gyakorlati tanácsok a megvalósításhoz  
+
+## <a name="performance"></a>Teljesítmény
+
+Data Factory DistCp módban az átviteli sebesség ugyanaz, mint ha a DistCp eszközt egymástól függetlenül használja. Data Factory DistCp mód maximalizálja a meglévő Hadoop-fürt kapacitását. A DistCp nagyméretű fürtök közötti vagy fürtön belüli másoláshoz is használható. 
+
+A DistCp az MapReduce-t használja az eloszlás, a hibakezelés és a helyreállítás, valamint a jelentéskészítés hatására. Kibontja a fájlok és a könyvtárak listáját a tevékenységek leképezése bemenetbe. Mindegyik feladat egy, a forrás listában megadott partíciót másol. A DistCp-mel integrált Data Factory használatával olyan folyamatokat építhet ki, amelyekkel teljes mértékben kihasználhatja a hálózati sávszélességet, a tárolási IOPS és a sávszélességet, hogy maximalizálja a környezet adatáthelyezési sebességét.  
+
+Data Factory natív integrációs modul mód lehetővé teszi a párhuzamosságot a különböző szinteken. A párhuzamosságok segítségével teljes mértékben kihasználhatja a hálózati sávszélességet, a tárolási IOPS és a sávszélességet az adatátviteli teljesítmény maximalizálása érdekében:
+
+- Egyetlen másolási tevékenység kihasználhatja a méretezhető számítási erőforrások előnyeit. A saját üzemeltetésű integrációs modul segítségével manuálisan méretezheti a gépet, vagy akár több gépre is kibővítheti ([legfeljebb négy csomóponttal](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)). Egyetlen másolási tevékenység particionálja az összes csomóponton beállított fájlját. 
+- Egy másolási tevékenység több szál használatával olvas be és ír az adattárba. 
+- Data Factory a vezérlés folyamata egyszerre több másolási tevékenységet is elindíthat. Használhat például egy-t [minden hurokhoz](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity). 
+
+További információ: [másolási tevékenység teljesítményének útmutatója](https://docs.microsoft.com/azure/data-factory/copy-activity-performance).
+
+## <a name="resilience"></a>Rugalmasság
+
+Data Factory DistCp módban különböző DistCp parancssori paramétereket használhat (például `-i`, a hibák figyelmen kívül hagyása vagy `-update`, adatok írása, ha a forrásfájl és a célfájl mérete különbözik) a rugalmasság különböző szintjein.
+
+A Data Factory natív integrációs modulban egyetlen másolási tevékenység futtatásakor Data Factory beépített újrapróbálkozási mechanizmussal rendelkezik. Képes az adattárakban vagy a mögöttes hálózaton lévő átmeneti hibák bizonyos szintjének kezelésére. 
+
+Ha a helyszíni HDFS a blob Storage-ba, a helyszíni Data Lake Store HDFS pedig a Gen2-be végez bináris másolást, Data Factory automatikusan nagy mértékben végrehajtja az ellenőrzőpontot. Ha egy másolási tevékenység futása sikertelen vagy időtúllépés miatt megszakad, egy későbbi újrapróbálkozáskor (Győződjön meg róla, hogy az újrapróbálkozások száma > 1), a másolás az utolsó meghibásodási pontról folytatódik az elejétől kezdődően.
+
+## <a name="network-security"></a>Hálózati biztonság 
+
+Alapértelmezés szerint a Data Factory az adatok átvitelét a helyszíni HDFS a blob Storage-ba vagy Azure Data Lake Storage Gen2 a HTTPS protokollon keresztüli titkosított kapcsolat használatával. A HTTPS adattitkosítást biztosít az átvitel során, és megakadályozza a lehallgatást és a belső támadásokat. 
+
+Ha nem szeretné, hogy az adatok a nyilvános interneten keresztül legyenek áthelyezve, a magasabb szintű biztonság érdekében a ExpressRoute keresztül átviheti az adatátvitelt privát kapcsolaton keresztül. 
+
+## <a name="solution-architecture"></a>Megoldás architektúrája
+
+Ez a rendszerkép az adatok áttelepítését mutatja be a nyilvános interneten keresztül:
+
+![Az adatáttelepítés nyilvános hálózaton keresztüli áttelepítésére szolgáló megoldási architektúrát bemutató diagram](media/data-migration-guidance-hdfs-to-azure-storage/solution-architecture-public-network.png)
+
+- Ebben az architektúrában a rendszer biztonságosan továbbítja az adatátvitelt a HTTPS protokollal a nyilvános interneten keresztül. 
+- Azt javasoljuk, hogy Data Factory DistCp módot használjon nyilvános hálózati környezetben. Kihasználhatja egy hatékony meglévő fürt előnyeit a legjobb másolási sebesség eléréséhez. A Data Factory a rugalmas ütemezés és az egységes monitorozási élmény előnyeit is élvezheti.
+- Ehhez az architektúrához telepítenie kell a Data Factory saját üzemeltetésű integrációs modulját egy vállalati tűzfal mögötti Windows rendszerű gépre, hogy a DistCp-parancsot a Hadoop-fürtön küldje el, és figyelje a másolási állapotot. Mivel a gép nem az a motor, amely az adatok áthelyezését végzi (csak ellenőrzési célra), a gép kapacitása nem befolyásolja az adatátviteli sebességet.
+- A DistCp parancs meglévő paraméterei támogatottak.
+
+Ez a rendszerkép az adatok áttelepítését mutatja be privát kapcsolaton keresztül: 
+
+![A magánhálózati hálózaton keresztül áttelepítési megoldás architektúráját bemutató ábra](media/data-migration-guidance-hdfs-to-azure-storage/solution-architecture-private-network.png)
+
+- Ebben az architektúrában a rendszer az Azure ExpressRoute keresztül áttelepíti az adatátvitelt egy privát kapcsolaton keresztül. Az adat soha nem halad át a nyilvános interneten.
+- A DistCp eszköz nem támogatja az Azure Storage-beli virtuális hálózati végponttal rendelkező ExpressRoute privát társítását. Javasoljuk, hogy az adatáttelepítéshez az integrációs modulon keresztül használja a Data Factory natív képességeit.
+- Ebben az architektúrában telepítenie kell a Data Factory saját üzemeltetésű integrációs modult egy Windows rendszerű virtuális GÉPRE az Azure Virtual Networkben. Manuálisan is méretezheti a virtuális gépet, vagy akár több virtuális gépre is kibővítheti a hálózat és a tárhely IOPS vagy sávszélességének teljes kihasználását.
+- Az egyes Azure-beli virtuális gépekhez (a Data Factory saját üzemeltetésű integrációs modul telepítése esetén) ajánlott konfiguráció Standard_D32s_v3 32 vCPU és 128 GB memóriával rendelkezik. Az adatok áttelepítése során a virtuális gép processzor-és memóriahasználat figyelésével ellenőrizheti, hogy a virtuális gép vertikális felskálázása a jobb teljesítmény érdekében, vagy a virtuális gép skálázása a költség csökkentése érdekében.
+- Akár négy virtuálisgép-csomópont társításával is kibővítheti a saját üzemeltetésű integrációs modult. A saját üzemeltetésű integrációs modulon futó egyetlen másolási feladatot a rendszer automatikusan particionálja a készletet, és az összes virtuálisgép-csomópontot használja a fájlok párhuzamos másolásához. A magas rendelkezésre állás érdekében javasoljuk, hogy kezdjen el két virtuálisgép-csomóponttal, hogy elkerülje az egypontos meghibásodási forgatókönyvet az adatáttelepítés során.
+- Ha ezt az architektúrát használja, a kezdeti pillanatkép-adatok áttelepítése és a különbözeti adatok áttelepítése elérhetővé válik.
+
+## <a name="implementation-best-practices"></a>Gyakorlati tanácsok a megvalósításhoz
+
+Javasoljuk, hogy az adatáttelepítés megvalósításakor kövesse az ajánlott eljárásokat.
+
+### <a name="authentication-and-credential-management"></a>Hitelesítés és hitelesítőadat-kezelés 
+
+- A HDFS való hitelesítéshez használhatja a [Windows (Kerberos) vagy a névtelen](https://docs.microsoft.com/azure/data-factory/connector-hdfs#linked-service-properties)hitelesítést. 
+- Több hitelesítési típus is támogatott az Azure Blob Storage-hoz való csatlakozáshoz.  Kifejezetten ajánlott [felügyelt identitásokat használni az Azure-erőforrásokhoz](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#managed-identity). A Azure Active Directory (Azure AD) automatikusan felügyelt Data Factory identitására épülő felügyelt identitások lehetővé teszik a folyamatok konfigurálását anélkül, hogy hitelesítő adatokat kellene megadnia a társított szolgáltatás definíciójában. Azt is megteheti, hogy egy [egyszerű szolgáltatásnév](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#service-principal-authentication), egy [közös hozzáférési aláírás](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#shared-access-signature-authentication)vagy egy [Storage-fiók kulcsa](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#account-key-authentication)segítségével hitelesíti a blob Storage-tárolót. 
+- Több hitelesítési típus is támogatott a Data Lake Storage Gen2hoz való csatlakozáshoz.  Javasoljuk, hogy [felügyelt identitásokat használjon az Azure-erőforrásokhoz](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#managed-identity), de használhat egy [egyszerű szolgáltatásnevet](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication) vagy egy [Storage-fiókot](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#account-key-authentication)is. 
+- Ha nem használ felügyelt identitásokat az Azure-erőforrásokhoz, javasoljuk, hogy [a hitelesítő adatokat a Azure Key Vaultban tárolja](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) , hogy könnyebben lehessen központilag felügyelni és elforgatni a kulcsokat a Data Factory társított szolgáltatások módosítása nélkül. Ez a [CI/CD esetében is ajánlott eljárás](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd). 
+
+### <a name="initial-snapshot-data-migration"></a>Kezdeti pillanatkép-adatok áttelepítése 
+
+Data Factory DistCp módban létrehozhat egy másolási tevékenységet, amellyel elküldheti a DistCp parancsot, és különböző paramétereket használhat a kezdeti adatáttelepítési viselkedés szabályozására. 
+
+Data Factory natív integrációs modulban az adatpartíció használatát javasoljuk, különösen akkor, ha 10 TB-nál több adat áttelepítésére van szükség. Az adatparticionáláshoz használja a HDFS a mappák nevét. Ezután az egyes Data Factory másolási feladatok egyszerre csak egy mappát másolhatnak. Több Data Factory másolási feladatot is futtathat párhuzamosan a jobb teljesítmény érdekében.
+
+Ha a másolási feladatok hálózati vagy adattárbeli átmeneti problémák miatt meghibásodnak, a sikertelen másolási feladat újbóli futtatásával újratöltheti az adott partíciót a HDFS. Más partíciókat betöltő más másolási feladatok nem érintettek.
+
+### <a name="delta-data-migration"></a>Különbözeti adatáttelepítés 
+
+Data Factory DistCp módban a (z) `-update` DistCp parancssori paramétert használhatja, ha a forrásfájl és a célfájl mérete eltérő, a különbözeti adatáttelepítés során.
+
+Data Factory natív integrációs módban az új vagy módosított fájlok HDFS való azonosításának leghatékonyabb módja egy időpartíciós elnevezési konvenció használata. Ha a HDFS lévő adatok időszelet-információval vannak ellátva a fájl-vagy mappanév (például */yyyy/MM/DD/file.csv*) számára, a folyamat könnyen azonosítható, hogy mely fájlok és mappák legyenek növekményes másolásra.
+
+Ha a HDFS lévő adatai nem particionálják az időkorlátot, Data Factory az új vagy módosított fájlokat a **LastModifiedDate** érték használatával azonosíthatja. Data Factory megkeresi az összes fájlt a HDFS-ből, és csak az új és frissített fájlokat másolja, amelyeknek az utolsó módosítási időbélyege nagyobb, mint a megadott érték. 
+
+Ha nagy számú fájl található a HDFS-ben, a kezdeti fájl vizsgálata hosszú időt is igénybe vehet, függetlenül attól, hogy hány fájl felel meg a szűrési feltételnek. Ebben a forgatókönyvben azt javasoljuk, hogy először particionálja az adatokhoz ugyanazt a partíciót, amelyet a kezdeti pillanatkép-áttelepítéshez használ. Ezt követően a fájlok vizsgálata párhuzamosan is megtörténhet.
+
+### <a name="estimate-price"></a>Becsült ár 
+
+Vegye figyelembe a következő folyamatot az adatok HDFS-ről Azure Blob Storage-ba történő áttelepítéséhez: 
+
+![A díjszabási folyamatot bemutató diagram](media/data-migration-guidance-hdfs-to-azure-storage/pricing-pipeline.png)
+
+Tegyük fel a következő információkat: 
+
+- A teljes adatmennyiség 1 PB.
+- Az adatáttelepítés a Data Factory natív Integration Runtime Mode használatával történik.
+- 1 a PB 1 000 partícióra van osztva, és mindegyik másolat egy partíciót helyez át.
+- Minden másolási tevékenység egy olyan, saját üzemeltetésű integrációs modulval van konfigurálva, amely négy géphez van társítva, és amely 500 – MBps átviteli sebességet érhet el.
+- A ForEach Egyidejűség értéke **4** , az összesített átviteli sebesség pedig 2 GB/s.
+- Összesen 146 órát vesz igénybe az áttelepítés befejezéséhez.
+
+A feltételezéseken alapuló becsült ár: 
+
+![Árképzési számításokat megjelenítő táblázat](media/data-migration-guidance-hdfs-to-azure-storage/pricing-table.png)
+
+> [!NOTE]
+> Ez egy feltételezett árképzési példa. A tényleges díjszabás a környezet tényleges átviteli sebességével függ.
+> Az Azure Windows rendszerű virtuális gépek (saját üzemeltetésű integrációs modult tartalmazó) díja nem található.
+
+### <a name="additional-references"></a>További referenciák
+
+- [HDFS-összekötő](https://docs.microsoft.com/azure/data-factory/connector-hdfs)
+- [Azure Blob Storage-összekötő](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
+- [Azure Data Lake Storage Gen2-összekötő](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
+- [Másolási tevékenység teljesítményének hangolási útmutatója](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)
+- [Helyi integrációs modul létrehozása és konfigurálása](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)
+- [Saját üzemeltetésű integrációs modul magas rendelkezésre állása és méretezhetősége](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)
+- [Az adatáthelyezés biztonsági szempontjai](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations)
+- [Hitelesítő adatok tárolása Azure Key Vaultban](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)
+- [Fájl növekményes másolása egy időpartíciós fájlnév alapján](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-partitioned-file-name-copy-data-tool)
+- [Új és módosított fájlok másolása a LastModifiedDate alapján](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-lastmodified-copy-data-tool)
+- [Data Factory díjszabási oldala](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)
+
+## <a name="next-steps"></a>További lépések
+
+- [Több tárolóból származó fájlok másolása Azure Data Factory használatával](solution-template-copy-files-multiple-containers.md)

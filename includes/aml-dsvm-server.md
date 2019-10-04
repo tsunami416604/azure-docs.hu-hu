@@ -9,24 +9,31 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 01/25/2019
-ms.openlocfilehash: 12d1576c3bfbf96c0445fcd2a6f0bc37d6a68f11
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 09a3cc5a623be2ee5a9d50204f0902ca9f400a76
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55302209"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68857397"
 ---
-1. Végezze el a [Azure Machine Learning Python rövid](../articles/machine-learning/service/quickstart-create-workspace-with-python.md) munkaterület létrehozásához.  Nyugodtan hagyja ki a **a notebook használata** szakaszt, ha szeretné.
+1. [Hozzon létre egy Azure Machine learning szolgáltatás](../articles/machine-learning/service/how-to-manage-workspace.md)munkaterületet.
+
 1. Klónozza [a GitHub-adattárat](https://aka.ms/aml-notebooks).
 
-    ```
+    ```CLI
     git clone https://github.com/Azure/MachineLearningNotebooks.git
     ```
-1. Ezen módszerek bármelyikével munkaterület konfigurációs fájl hozzáadása:
-    * Másolás a **aml_config\config.json** a klónozott könyvtárba az előfeltételként szükséges rövid útmutató segítségével létrehozott fájlt.
-    * Hozzon létre egy új munkaterületet, a kód használatával a [configuration.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/configuration.ipynb) jegyzetfüzetet a klónozott könyvtárra.
+
+1. Vegyen fel egy munkaterület-konfigurációs fájlt a klónozott könyvtárba a következő módszerek bármelyikével:
+
+    * A [Azure Portal](https://ms.portal.azure.com)a munkaterület **Áttekintés** szakaszában válassza a **config. JSON letöltése** lehetőséget. 
+
+    ![A config. JSON fájl letöltése](./media/aml-dsvm-server/download-config.png)
+
+    * Hozzon létre egy új munkaterületet a Code ( [konfiguráció. ipynb)](https://github.com/Azure/MachineLearningNotebooks/blob/master/configuration.ipynb) jegyzetfüzetben a klónozott címtárban.
+
 1. Indítsa el a notebook-kiszolgálót a klónozott könyvtárból.
-    
+
     ```shell
     jupyter notebook
     ```

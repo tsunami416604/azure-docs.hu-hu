@@ -1,6 +1,6 @@
 ---
 title: A LUIS-alkalmazás tesztelése
-titleSuffix: Language Understanding - Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Tesztelés az a folyamat minta utterances biztosítva a LUIS, és a egy beérkező válasszal, LUIS elismert szándékokat és entitásokat.
 author: diberry
 manager: nitinme
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: c9f1cf80cd3a781e878daca2048f7c5dc9095a7c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 775b50c4735115dde8ae936c4d06b087d58683b1
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59789537"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619782"
 ---
 # <a name="testing-example-utterances-in-luis"></a>A LUIS példa utterances tesztelése
 
@@ -46,7 +46,7 @@ Az összes endpoint tesztelési számát a használati kvóta felé.
 Ha tesztelése egy végponton, és nem naplózza az utterance (kifejezés) kíván, ne felejtse el használni a `logging=false` lekérdezési karakterláncok konfigurálása.
 
 ## <a name="where-to-find-utterances"></a>Hol található a kimondott szöveg
-A LUIS tárolja az összes naplózott utterances a lekérdezési napló, letölthető a [LUIS](luis-reference-regions.md) webhely **alkalmazások** listáját tartalmazó lapon, valamint a LUIS [API-k készítése](https://aka.ms/luis-authoring-apis). 
+A LUIS tárolja az összes naplózott utterances a lekérdezési napló, letölthető a [LUIS](luis-reference-regions.md) webhely **alkalmazások** listáját tartalmazó lapon, valamint a LUIS [API-k készítése](https://go.microsoft.com/fwlink/?linkid=2092087). 
 
 LUIS párbeszédpaneléből megszólalásokat szerepelnek a **[tekintse át a végpont utterances](luis-how-to-review-endpoint-utterances.md)** lapján a [LUIS](luis-reference-regions.md) webhelyén. 
 

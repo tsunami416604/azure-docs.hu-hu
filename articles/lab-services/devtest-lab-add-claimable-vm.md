@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: spelluru
 ms.openlocfilehash: fdffa3862f45b99c2c3f2ed41934e09247808ca7
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
-ms.translationtype: HT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60150047"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60311780"
 ---
 # <a name="create-and-manage-claimable-vms-in-azure-devtest-labs"></a>Létrehozása és kezelése az Azure DevTest Labs szolgáltatásban igényelhető virtuális gépek
 Igényelhető virtuális gép egy laborhoz hasonló módon, hogy miként hozzáadása, [standard virtuális gép hozzáadása](devtest-lab-add-vm.md) – egy *alap* , amely vagy egy [egyéni rendszerkép](devtest-lab-create-template.md), [képlet](devtest-lab-manage-formulas.md) , vagy [Piactéri lemezképhez](devtest-lab-configure-marketplace-images.md). Ez az oktatóanyag végigvezeti a DevTest Labs szolgáltatásban létrehozott tesztkörnyezet igényelhető virtuális gép hozzáadása az Azure portal használatával, és bemutatja a folyamatok, a felhasználó követi, és a virtuális gép mintaszkript.

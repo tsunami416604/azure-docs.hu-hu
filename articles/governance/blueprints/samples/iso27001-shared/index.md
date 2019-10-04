@@ -7,12 +7,12 @@ ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: c54d8aedb9464364f93a087de4bdb00c693a96ae
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e723fab12c6ba88ec5698a697ba1ddd774eed7e2
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698911"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000515"
 ---
 # <a name="overview-of-the-iso-27001-shared-services-blueprint-sample"></a>Az ISO 27001 Azure Blueprints Megosztott szolgáltatások tervmintájának áttekintése
 
@@ -38,7 +38,7 @@ Ez a környezet több Azure-szolgáltatásból épül fel, és ISO 27001 szabvá
   - Felügyeleti célra használt jumpbox vagy bástyagazdagép, amely csak a bemeneti verem alhálózatán üzembe helyezett [Azure-tűzfalon](../../../../firewall/overview.md) keresztül érhető el
   - Az Active Directory Domain Servicest (ADDS) futtató két virtuális gép és a DNS csak a jumpboxon keresztül érhető el, és kizárólag úgy konfigurálható, hogy az AD-t VPN-en vagy [ExpressRoute-kapcsolaton](../../../../expressroute/expressroute-introduction.md) keresztül replikálja (a terv nem helyezi üzembe)
   - Az [Azure Net Watcher](../../../../network-watcher/network-watcher-monitoring-overview.md) és a standard DDoS Protection használata
-- Az [Azure Key Vault](../../../../key-vault/key-vault-whatis.md) egy példánya, amely a megosztott szolgáltatások környezetében üzembe helyezett virtuális gépek titkos kulcsainak tárolására szolgál
+- Az [Azure Key Vault](../../../../key-vault/key-vault-overview.md) egy példánya, amely a megosztott szolgáltatások környezetében üzembe helyezett virtuális gépek titkos kulcsainak tárolására szolgál
 
 A fentiek mindegyike teljesíti az [Azure Architecture Center referenciaarchitektúrákkal foglalkozó részében](/azure/architecture/reference-architectures/) közzétett, bevált módszerek követelményeit.
 

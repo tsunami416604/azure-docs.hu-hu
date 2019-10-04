@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 931865803328189d89c0fbae15caa801c3f7f7c6
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416921"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60455138"
 ---
 # <a name="troubleshoot-an-object-that-is-not-synchronizing-with-azure-active-directory"></a>Az Azure Active Directory nem szinkronizálódó objektumok hibaelhárítása
 
@@ -73,7 +73,7 @@ A felső részén a **műveletek** lapon látható minden Futtatás időrendi so
 
 A **állapot** oszlop a legfontosabb információt tartalmaz, és bemutatja a legsúlyosabb problémát egy Futtatás esetében. Íme a leggyakoribb állapotok vizsgálat fontossági sorrendben gyors összefoglalását (ahol * azt jelzi, hogy több lehetséges hiba karakterláncok).
 
-| status | Megjegyzés |
+| Állapot | Megjegyzés |
 | --- | --- |
 | stopped-* |A Futtatás nem sikerült befejezni. Ez akkor fordulhat, például, ha a távoli rendszer nem működik, és nem érhető el. |
 | stopped-error-limit |Több mint 5000 hibák vannak. A Futtatás hibák nagy száma miatt automatikusan le lett állítva. |
@@ -81,7 +81,7 @@ A **állapot** oszlop a legfontosabb információt tartalmaz, és bemutatja a le
 | Befejezett -\*– figyelmeztetés |A Futtatás befejeződött, de egyes adatokat nem a várt állapotban van. Ha hibákat észlel, ez az üzenet általában csak a jelenség a. Figyelmeztetések nem vizsgálja meg, amíg Ön foglalkoztak hibákat. |
 | sikeres |Nincs probléma. |
 
-Amikor kiválaszt egy sort, alsó részén a **műveletek** lap frissül, hogy a Futtatás részleteinek megjelenítéséhez. Bal szélső részén ezen a területen, lehetséges, hogy a listában **lépés #**. Ez a lista csak akkor, ha az erdő több tartományom van, és minden egyes tartományhoz képviseli egy lépést jelenik meg. A tartomány nevét a cím alatt található **partíció**. Alatt a **szinkronizálási statisztika** fejléc annak további információ a feldolgozott módosítások számát. Válassza ki a hivatkozásokra kattintva a módosított objektumok listája. Ha hibákkal objektummal rendelkezik, ezek a hibák jelennek meg a **szinkronizálási hibák** fejléc.
+Amikor kiválaszt egy sort, alsó részén a **műveletek** lap frissül, hogy a Futtatás részleteinek megjelenítéséhez. Bal szélső részén ezen a területen, lehetséges, hogy a listában **lépés #** . Ez a lista csak akkor, ha az erdő több tartományom van, és minden egyes tartományhoz képviseli egy lépést jelenik meg. A tartomány nevét a cím alatt található **partíció**. Alatt a **szinkronizálási statisztika** fejléc annak további információ a feldolgozott módosítások számát. Válassza ki a hivatkozásokra kattintva a módosított objektumok listája. Ha hibákkal objektummal rendelkezik, ezek a hibák jelennek meg a **szinkronizálási hibák** fejléc.
 
 ### <a name="errors-on-the-operations-tab"></a>A művelet lapon hibák
 Hibásak, Synchronization Service Managert jelenít meg a hiba az objektum és magát a hiba, amely több információt nyújt a hivatkozások formájában is.
@@ -91,7 +91,7 @@ Indítsa el a hiba karakterlánca kiválasztásával. (Az előző ábrán a hiba
 
 Kattintson a jobb gombbal a **hívás Stack információkat** kattintson **összes kijelölése**, majd válassza ki **másolási**. Ezután másolja a verem, és tekintse meg a hiba a kedvenc szerkesztőjében, például a Jegyzettömbben.
 
-Ha a hiba: a **SyncRulesEngine**, a hívási verem adatokat először az objektum összes attribútum sorolja fel. Görgessen lefelé, amíg meg nem látja a fejléc **InnerException = >**.  
+Ha a hiba: a **SyncRulesEngine**, a hívási verem adatokat először az objektum összes attribútum sorolja fel. Görgessen lefelé, amíg meg nem látja a fejléc **InnerException = >** .  
 
   ![Az a Synchronization Service Managert, hibaadatok InnerException fejléc alatt megjelenítő képernyőkép = >](./media/tshoot-connect-object-not-syncing/errorinnerexception.png)
   

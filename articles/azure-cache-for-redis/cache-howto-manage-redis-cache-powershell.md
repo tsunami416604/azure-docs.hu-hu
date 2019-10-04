@@ -1,25 +1,25 @@
 ---
 title: Kezelheti az Azure Cache a Redis az Azure PowerShell-lel |} A Microsoft Docs
 description: Ismerje meg, hogyan hajthat végre felügyeleti feladatokat az Azure Cache redis az Azure PowerShell-lel.
-services: azure-cache-for-redis
+services: cache
 documentationcenter: ''
 author: yegu-ms
-manager: cfowler
+manager: jhubbard
 editor: ''
 ms.assetid: 1136efe5-1e33-4d91-bb49-c8e2a6dca475
 ms.service: cache
 ms.workload: tbd
-ms.tgt_pltfrm: azure-cache-for-redis
+ms.tgt_pltfrm: cache
 ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: d4ed374f12b14d70dce6bfa77dd3b8185b912ba6
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: f7f4f9ae6a80052e06b2cafa68cb5c11dfa1333a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118156"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62097929"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Kezelheti az Azure Cache a Redis az Azure PowerShell használatával
 > [!div class="op_single_selector"]
@@ -127,35 +127,35 @@ Az alábbi táblázat a tulajdonságok és amikor létrehozásába és kezelés�
 
 | Paraméter | Leírás | Alapértelmezett |
 | --- | --- | --- |
-| Name (Név) |A gyorsítótár neve | |
-| Hely |A gyorsítótár helye | |
+| Name |A gyorsítótár neve | |
+| Location |A gyorsítótár helye | |
 | ResourceGroupName |Erőforráscsoport neve, amelyben a gyorsítótár létrehozása | |
-| Méret |A gyorsítótár méretét. Érvényes értékek a következők: P1, P2, P3, P4, C0 CSOMAG, C1, C2, C3, C4, C5 CSOMAG, C6 CSOMAG, 250 MB-OS, 1 GB-OS, 2,5 GB, 6 GB, 13 GB, 26 GB, 53 GB |1 GB |
+| Size |A gyorsítótár méretét. Érvényes értékek a következők: P1, P2, P3, P4, C0 CSOMAG, C1, C2, C3, C4, C5 CSOMAG, C6 CSOMAG, 250 MB-OS, 1 GB-OS, 2,5 GB, 6 GB, 13 GB, 26 GB, 53 GB |1 GB |
 | ShardCount |Hozzon létre egy prémium szintű gyorsítótár létrehozásakor a fürtözés engedélyezve van a szegmensek száma. Érvényes értékek a következők: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 | |
 | SKU |Adja meg a gyorsítótár-Termékváltozat. Érvényes értékek a következők: Alap, Normál, Prémium |Standard |
 | RedisConfiguration |Itt adhatja meg a Redis-konfigurációs beállításokat. További információ az egyes beállítások: a következő [RedisConfiguration tulajdonságok](#redisconfiguration-properties) tábla. | |
 | EnableNonSslPort |Azt jelzi, hogy engedélyezve van-e a nem SSL port. |False (Hamis) |
 | MaxMemoryPolicy |Ez a paraméter elavult, – használja helyette a RedisConfiguration. | |
 | StaticIP |Tárolásához a gyorsítótár egy virtuális hálózaton, adja meg egy egyedi IP-cím az alhálózat, a gyorsítótár. Ha nincs megadva, az egyik van kiválasztva, az alhálózatról. | |
-| Alhálózat |Üzemelteti a gyorsítótár egy virtuális hálózaton, amikor megadja az alhálózaton, melyben szeretné üzembe helyezni a gyorsítótár nevére. | |
+| Subnet |Üzemelteti a gyorsítótár egy virtuális hálózaton, amikor megadja az alhálózaton, melyben szeretné üzembe helyezni a gyorsítótár nevére. | |
 | VirtualNetwork |A gyorsítótár egy virtuális hálózaton tárolásához, a virtuális hálózat, melyben szeretné üzembe helyezni a gyorsítótár erőforrás Azonosítóját határozza meg. | |
 | KeyType |Itt adhatja meg, melyik hívóbetű újragenerálni a hozzáférési kulcsok megújításakor. Érvényes értékek a következők: Elsődleges, másodlagos | |
 
 ### <a name="redisconfiguration-properties"></a>RedisConfiguration tulajdonságai
 | Tulajdonság | Leírás | Árképzési szintek |
 | --- | --- | --- |
-| RDB-fájlba való biztonsági mentés engedélyezve |E [Redis-adatmegőrzés](cache-how-to-premium-persistence.md) engedélyezve van |Csak prémium szinten |
+| rdb-backup-enabled |E [Redis-adatmegőrzés](cache-how-to-premium-persistence.md) engedélyezve van |Csak prémium szinten |
 | rdb-storage-connection-string |A storage-fiókhoz tartozó kapcsolati karakterlánc [Redis-adatmegőrzés](cache-how-to-premium-persistence.md) |Csak prémium szinten |
 | backup – gyakori RDB-fájlba való |A biztonsági mentési gyakorisága [Redis-adatmegőrzés](cache-how-to-premium-persistence.md) |Csak prémium szinten |
 | maxmemory-reserved |Konfigurálja a [szolgáltatás számára fenntartott memória](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) nem gyorsítótárazási folyamatok |Standard és Prémium |
-| a maxmemory-házirend |Konfigurálja a [kiürítési szabályzatot](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) a gyorsítótár |Az összes tarifacsomag |
+| maxmemory-policy |Konfigurálja a [kiürítési szabályzatot](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) a gyorsítótár |Az összes tarifacsomag |
 | notify-keyspace-events |Konfigurálja a [kulcstérértesítések](cache-configure.md#keyspace-notifications-advanced-settings) |Standard és Prémium |
 | hash-max-ziplist-entries |Konfigurálja a [memóriaoptimalizálási](https://redis.io/topics/memory-optimization) kis összesített adatok esetében |Standard és Prémium |
 | hash-max-ziplist-value |Konfigurálja a [memóriaoptimalizálási](https://redis.io/topics/memory-optimization) kis összesített adatok esetében |Standard és Prémium |
 | set-max-intset-entries |Konfigurálja a [memóriaoptimalizálási](https://redis.io/topics/memory-optimization) kis összesített adatok esetében |Standard és Prémium |
 | zset-max-ziplist-entries |Konfigurálja a [memóriaoptimalizálási](https://redis.io/topics/memory-optimization) kis összesített adatok esetében |Standard és Prémium |
 | zset-max-ziplist-value |Konfigurálja a [memóriaoptimalizálási](https://redis.io/topics/memory-optimization) kis összesített adatok esetében |Standard és Prémium |
-| adatbázisok |Konfigurálja az adatbázisok száma. Ez a tulajdonság csak a cache létrehozásakor konfigurálható. |Standard és Prémium |
+| databases |Konfigurálja az adatbázisok száma. Ez a tulajdonság csak a cache létrehozásakor konfigurálható. |Standard és Prémium |
 
 ## <a name="to-create-an-azure-cache-for-redis"></a>A redis Azure Cache létrehozása
 Új Azure Cache a Redis-példány használatával jön létre a [New-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/new-azrediscache) parancsmagot.

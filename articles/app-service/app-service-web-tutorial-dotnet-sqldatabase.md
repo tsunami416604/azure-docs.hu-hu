@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 59b390776a5e23c08d8793125747742cee4e473e
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: f010e7564f097f28269070d85e2895e73f454054
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487023"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65415578"
 ---
 # <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>Oktatóanyag: ASP.NET-alkalmazás létrehozása az Azure-ban SQL Database használatával
 
@@ -44,7 +44,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Az oktatóanyag elvégzéséhez:
 
-<a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017</a> telepítése **ASP.NET és webfejlesztési** számítási feladattal.
+Telepítse <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> az a **ASP.NET és webfejlesztési** számítási feladatot.
 
 Ha már telepítette a Visual Studiót, adja hozzá a számítási feladatokat a Visual Studióban a **Tools** (Eszközök)  >  **Get Tools and Features** (Eszközök és funkciók beszerzése) elemre kattintva.
 
@@ -116,7 +116,7 @@ A **Configure App Service Plan** (App Service-csomag konfigurálása) párbeszé
 
 ![App Service-csomag létrehozása](./media/app-service-web-tutorial-dotnet-sqldatabase/configure-app-service-plan.png)
 
-| Beállítás  | Ajánlott érték | További tudnivalók |
+| Beállítás  | Ajánlott érték | További információ |
 | ----------------- | ------------ | ----|
 |**App Service-csomag**| myAppServicePlan | [App Service-csomagok](../app-service/overview-hosting-plans.md) |
 |**Hely**| Nyugat-Európa | [Azure-régiók](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) |
@@ -124,7 +124,7 @@ A **Configure App Service Plan** (App Service-csomag konfigurálása) párbeszé
 
 ### <a name="create-a-sql-server-instance"></a>SQL Server-példány létrehozása
 
-Adatbázis létrehozása előtt szüksége van egy [Azure SQL Database logikai kiszolgálóra](../sql-database/sql-database-features.md). A logikai kiszolgálók adatbázisok egy csoportját tartalmazzák, amelyeket a rendszer egy csoportként kezel.
+Adatbázis létrehozása előtt szüksége van egy [logikai Azure SQL-adatbáziskiszolgálóra](../sql-database/sql-database-features.md). A logikai kiszolgálók adatbázisok egy csoportját tartalmazzák, amelyeket a rendszer egy csoportként kezel.
 
 Kattintson az **SQL-adatbázis létrehozása** elemre.
 

@@ -1,120 +1,165 @@
 ---
-title: Red Hat Enterprise Linux-rendszerképeket az Azure-ban |} A Microsoft Docs
-description: További tudnivalók a Red Hat Enterprise Linux-rendszerképeket a Microsoft Azure
+title: Red Hat Enterprise Linux rendszerképek az Azure-ban | Microsoft Docs
+description: Ismerkedjen meg Red Hat Enterprise Linux rendszerképekkel Microsoft Azure
 services: virtual-machines-linux
 documentationcenter: ''
-author: BorisB2015
-manager: jeconnoc
+author: asinn826
+manager: BorisB2015
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 01/18/2019
+ms.date: 8/14/2019
 ms.author: borisb
-ms.openlocfilehash: fb3c0e46324a22bdd95bf7d93c28e69c195927e8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c11ce31913baa8c638e94bdf92ef622cd8899e03
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59786033"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70764304"
 ---
-# <a name="red-hat-enterprise-linux-images-in-azure"></a>Red Hat Enterprise Linux-rendszerképeket az Azure-ban
-Ez a cikk ismerteti az elérhető Red Hat Enterprise Linux (RHEL) rendszerképek mellett saját elnevezési és adatmegőrzési szabályzatok az Azure piactéren.
+# <a name="red-hat-enterprise-linux-images-in-azure"></a>Red Hat Enterprise Linux rendszerképek az Azure-ban
+Ez a cikk az Azure Marketplace-en elérhető Red Hat Enterprise Linux-(RHEL-) rendszerképeket ismerteti, valamint az elnevezési és adatmegőrzési szabályzatok körét.
 
-Red Hat támogatási irányelveik RHEL összes verziója információk találhatók a [Red Hat Enterprise Linux életciklusának](https://access.redhat.com/support/policy/updates/errata) lapot.
+A Red Hat-támogatási házirendekkel kapcsolatos információk a RHEL összes verziójára vonatkozóan a [Red Hat Enterprise Linux életciklus](https://access.redhat.com/support/policy/updates/errata) oldalon találhatók.
 
 >[!Important]
-> RHEL-lemezképekhez érhető el az Azure Marketplace-en Bring-Your-saját-előfizetés (saját) vagy a használatalapú fizetéssel szemben licencelési modellt támogatja. A [Azure Hybrid Use Benefit](../windows/hybrid-use-benefit-licensing.md) és dinamikus váltás saját és a Használatalapú között nem támogatott. Licencelési mód váltása szükséges újbóli üzembe helyezés a virtuális Gépet a megfelelő lemezképet.
+> Az Azure Marketplace-en jelenleg elérhető RHEL-lemezképek a saját előfizetéssel (BYOS) vagy az utólagos elszámolású (TB) licencelési modellekkel rendelkeznek. A BYOS és a TB közötti [Azure Hybrid use Benefit](../windows/hybrid-use-benefit-licensing.md) és dinamikus váltás nem támogatott. A licencelési mód váltásához újra kell telepíteni a virtuális gépet a megfelelő rendszerképből.
 
 >[!Note]
-> Az RHEL-lemezképek az Azure marketplace-katalógusában kapcsolatos nyújtson be támogatási jegyet a Microsoft.
+> Az Azure Marketplace katalógusban található RHEL-lemezképekkel kapcsolatos bármilyen probléma esetén küldjön egy támogatási jegyet a Microsofttal.
 
-## <a name="images-available-in-the-ui"></a>A felhasználói felületen hozzáférhető lemezképeket
-Keressen a "Red Hat" a Marketplace-en, vagy az Azure portal felhasználói felületén hozzon létre egy erőforrást, amikor látni fogja a rendelkezésre álló RHEL-lemezképek és a kapcsolódó Red Hat-termékek egy része. Mindig az elérhető Virtuálisgép-rendszerképek használata az Azure CLI és PowerShell vagy az API teljes körű szerezheti be.
+## <a name="images-available-in-the-ui"></a>A felhasználói felületen elérhető rendszerképek
+Ha a piactéren a "Red Hat" kifejezésre keres, vagy ha Azure Portal felhasználói felületen hoz létre erőforrást, akkor a rendelkezésre álló RHEL-lemezképek és a kapcsolódó Red Hat-termékek részhalmaza jelenik meg. Az Azure CLI/PowerShell/API használatával bármikor megszerezheti a rendelkezésre álló virtuálisgép-lemezképek teljes készletét.
 
-Az Azure-ban elérhető Red Hat-lemezképeit a teljes körű megtekintéséhez futtassa a következő parancsot
+Az Azure-ban elérhető Red Hat-lemezképek teljes készletének megtekintéséhez futtassa a következő parancsot:
 
 ```azurecli-interactive
 az vm image list --publisher RedHat --all
 ```
 
-## <a name="naming-convention"></a>Az elnevezési konvenciót
-Az Azure-beli Virtuálisgép-rendszerképek közzétevő, ajánlat, Termékváltozat és verzió szerint vannak rendszerezve. Közzétevő: az ajánlat: SKU:Version kombinációja a kép URN, amely egyedileg azonosítja a használni kívánt kép.
+## <a name="naming-convention"></a>Elnevezési konvenció
+Az Azure-beli virtuálisgép-rendszerképeket a kiadó, az ajánlat, az SKU és a verzió rendezi. A kiadó: ajánlat: SKU: Version a (z) a rendszerkép URN kombinációja, amely egyedileg azonosítja a használni kívánt rendszerképet.
 
-Ha például `RedHat:RHEL:7-RAW:7.6.2018103108` hivatkozik egy RHEL 7.6 nyers particionált lemezképen alapuló 2018. október 31-ig.
+Például egy RHEL `RedHat:RHEL:7-RAW:7.6.2018103108` 7,6 nyers particionálású rendszerképre hivatkozik, amely 2018 október 31-ig épült.
 
-Az alábbiakban látható egy minta bemutatja, hogyan hozzon létre egy RHEL 7.6 virtuális Gépet.
+Alább látható egy példa arra, hogyan hozhat létre RHEL 7,6 virtuális gépet.
 ```azurecli-interactive
 az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:7-RAW:7.6.2018103108 --no-wait
 ```
 
-### <a name="the-latest-moniker"></a>A "legutóbbi" kézjegy
-Az Azure REST API lehetővé teszi a "legutóbbi" helyett az adott verziót a kézjegy használatát. "Legújabb" fog üzembe helyezhető a legújabb elérhető lemezkép a megadott közzétevő, ajánlat és Termékváltozat.
+### <a name="the-latest-moniker"></a>A "legfrissebb" moniker
+Az Azure REST API lehetővé teszi a "legújabb" moniker használatát az adott verzió helyett. A "legfrissebb" használatával kiépítheti az adott közzétevő, ajánlat és SKU legújabb elérhető lemezképét.
 
-Ha például `RedHat:RHEL:7-RAW:latest` a legújabb RHEL 7 családba tartozó nyers particionált lemezkép hivatkozik.
+Például a legújabb `RedHat:RHEL:7-RAW:latest` RHEL 7 családhoz tartozó nyers particionálású lemezképre hivatkozik.
 
 ```azurecli-interactive
 az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:7-RAW:latest --no-wait
 ```
 
 >[!NOTE]
-> Általánosságban véve a meghatározásához a legújabb verziók összehasonlítása szabályainak követi a [compareto metódus végrehajtása metódus](https://msdn.microsoft.com/library/a5ts8tb6.aspx).
+> Általánosságban elmondható, hogy a verziók összehasonlítása a legújabbat követi a [compareto metódus végrehajtása metódus](https://msdn.microsoft.com/library/a5ts8tb6.aspx)szabályainak megfelelően.
 
-### <a name="current-naming-convention"></a>Aktuális elnevezési egyezmény
-Az összes jelenleg közzétett RHEL-lemezképek a használatalapú modellt használja, és csatlakozik [Red Hat frissítési infrastruktúrához (RHUI) az Azure-ban](https://aka.ms/rhui-update). RHUI tervezési korlátai miatt egy új elnevezési konvenciót RHEL 7 rendszerű rendszerképek elfogadott. Az RHEL-6 családba tartozó elnevezési jelenleg még nem változott.
+### <a name="current-naming-convention"></a>Aktuális elnevezési konvenció
+A jelenleg közzétett RHEL-lemezképek az utólagos elszámolású modellt használják, és a [Red Hat Update Infrastructure (RHUI)](https://aka.ms/rhui-update)szolgáltatáshoz csatlakoznak az Azure-ban. Új elnevezési konvenció lett elfogadva a RHEL 7 operációsrendszer-lemezképekben, amelyekben a lemez particionálási sémája (nyers, LVM) a verzió helyett a SKU-ban van megadva. A RHEL-rendszerkép verziója 7 nyers vagy 7-LVM lesz. A RHEL 6 családjának elnevezése jelenleg nem változott.
 
-A korlátozás van az a tény, hogy amikor egy nem szelektív `yum update` vonatkozóan egy virtuális gép fut RHUI csatlakozik, az RHEL-verzió frissül a legfrissebb a jelenlegi család. További információkért lásd: [ezt a hivatkozást](https://aka.ms/rhui-update). Előfordulhat, hogy emiatt a keveredési, amikor egy RHEL 7.2 üzembe helyezett rendszerképet RHEL 7.6 válik a frissítés után. Továbbra is telepíthet egy régebbi rendszerképből explicit módon adja meg a szükséges verzió a fenti példákban szemléltetett módon. Ha nincs megadva a szükséges verzió új RHEL 7 lemezkép kiépítése során, majd a legújabb rendszerképet lesznek üzembe helyezve.
-
->[!NOTE]
-> Az RHEL for SAP képkészlet az RHEL-verzió rögzített marad. Mint ilyen az elnevezési konvenciót termékváltozatban egy adott verziót is tartalmazza.
+Ebben az elnevezési konvencióban két RHEL 7 rendszerkép található: Olyan SKU-ket, amelyek nem a másodlagos verziót és a SKU-t listázza. Ha 7 vagy 7 – LVM SKU-t szeretne használni, megadhatja a verzióban telepíteni kívánt RHEL alverziót. Ha a "legújabb" verziót választja, a RHEL legújabb kiadását fogja kiépíteni.
 
 >[!NOTE]
-> RHEL 6 képkészlet nem lett áthelyezve, az új nevezéktannak.
+> A RHEL for SAP-készletben a RHEL verziója rögzített marad. Ilyen esetben az elnevezési konvenció egy adott verziót tartalmaz az SKU-ban.
 
-Az alábbi ajánlatok a következők általános felhasználású jelenleg rendelkezésre álló termékváltozatok a következők:
+>[!NOTE]
+> A RHEL 6 rendszerkép nem lett áthelyezve az új elnevezési konvencióba.
+
+## <a name="extended-update-support-eus"></a>Bővített frissítési támogatás (EUS)
+Április 2019-én a RHEL-lemezképek elérhetők, amelyek alapértelmezés szerint a kiterjesztett frissítési támogatási (EUS) adattárakhoz vannak csatolva. A RHEL EUS kapcsolatos további részletek a [Red Hat dokumentációjában](https://access.redhat.com/articles/rhel-eus)olvashatók.
+
+[Itt](https://aka.ms/rhui-update#rhel-eus-and-version-locking-rhel-vms)találhat útmutatást arról, hogyan válthat a virtuális gép EUs, és további részletekkel szolgálhat a EUs támogatásáról.
+
+>[!NOTE]
+> A EUS nem támogatott a RHEL-extrák esetében. Ez azt jelenti, hogy ha olyan csomagot telepít, amely általában az RHEL extrák csatornából érhető el, akkor a EUS-on nem fogja tudni elvégezni. [Itt](https://access.redhat.com/support/policy/updates/extras/)részletesen ismertetjük a Red Hat extrák termék életciklusát.
+
+### <a name="for-customers-that-want-to-use-eus-images"></a>EUS-lemezképeket használni kívánó ügyfelek esetén:
+Azok az ügyfelek, akik EUS-adattárakhoz csatolt képeket szeretnének használni, az SKU-ban található RHEL alverziószámot tartalmazó RHEL-lemezképet kell használniuk. Ezek a lemezképek nyers particionálva lesznek (azaz nem LVM).
+
+Előfordulhat például, hogy a következő 2 RHEL 7,4 lemezkép elérhető:
+```bash
+RedHat:RHEL:7-RAW:7.4.2018010506
+RedHat:RHEL:7.4:7.4.2019041718
+```
+Ebben az esetben `RedHat:RHEL:7.4:7.4.2019041718` alapértelmezés szerint a EUs-adattárakhoz lesz csatolva, `RedHat:RHEL:7-RAW:7.4.2018010506` és alapértelmezés szerint a nem EUs adattárakhoz lesz csatolva.
+
+### <a name="for-customers-that-dont-want-to-use-eus-images"></a>Azon ügyfelek esetében, akik nem szeretnék EUS-lemezképeket használni:
+Ha nem szeretne olyan rendszerképet használni, amely alapértelmezés szerint a EUS van csatlakoztatva, telepítsen olyan lemezképet, amely nem tartalmaz alverziószámot az SKU-ban.
+
+#### <a name="rhel-images-with-eus"></a>RHEL-lemezképek a EUS
+A következő táblázat a SKU-ban található alverziót tartalmazó RHEL-lemezképekre vonatkozik.
+
+>[!NOTE]
+> Az írás időpontjában csak a 7,4-es és újabb alverziók RHEL EUS-támogatással rendelkeznek. A EUS már nem támogatott a RHEL < = 7,3 esetében.
+>
+> A RHEL EUS rendelkezésre állásáról további részleteket [itt](https://access.redhat.com/support/policy/updates/errata)találhat.
+
+Másodlagos verzió |EUS-rendszerkép – példa              |EUS állapota                                                   |
+:-------------|:------------------------------|:------------------------------------------------------------|
+RHEL 7,4      |RedHat:RHEL:7.4:7.4.2019041718 | A 2019. április és újabb kiadású lemezképek alapértelmezés szerint EUS lesznek|
+RHEL 7.5      |RedHat:RHEL:7.5:7.5.2019060305 | A 2019-es és újabb kiadású lemezképek alapértelmezés szerint EUS lesznek. |
+RHEL 7,6      |RedHat:RHEL:7.6:7.6.2019052206 | Az 2019-es és újabb verziókon közzétett lemezképek alapértelmezés szerint EUS lesznek  |
+RHEL 8,0      |–                            | Nem érhető el EUS a Red hat-ból                               |
+
+
+## <a name="list-of-rhel-images-available"></a>Az elérhető RHEL-lemezképek listája
+A következő ajánlatok jelenleg általános használatra elérhetők:
 
 Ajánlat| SKU | Particionálás | Kiépítés | Megjegyzések
 :----|:----|:-------------|:-------------|:-----
-RHEL | 7 – NYERS | RAW | Linux-ügynök | RHEL 7 operációsrendszer-lemezképek
-| | 7-LVM | LVM | Linux-ügynök | RHEL 7 operációsrendszer-lemezképek
-| | 7-RAW-CI | RAW-CI | Cloud-init | RHEL 7 operációsrendszer-lemezképek
-| | 6.7 | RAW | Linux-ügynök | RHEL 6.7 lemezképek, a régi elnevezési egyezmény
-| | 6.8 | RAW | Linux-ügynök | Azonos RHEL 6.8, a fentiek szerint
-| | 6.9 | RAW | Linux-ügynök | Ugyanezt a fentiek szerint RHEL 6.9.
-| | 6.10 | RAW | Linux-ügynök | Azonos RHEL 6.10, a fentiek szerint
-| | 7.2 | RAW | Linux-ügynök | Ugyanezt a fentiek szerint RHEL 7.2
-| | 7.3 | RAW | Linux-ügynök | Ugyanezt a fentiek szerint RHEL 7.3.
-| | 7.4 | RAW | Linux-ügynök | Azonos RHEL 7.4, a fentiek szerint
-| | 7.5 | RAW | Linux-ügynök | Ugyanezt a fentiek szerint RHEL 7.5
-RHEL-SAP | 7.4 | LVM | Linux-ügynök | 7.4 RHEL for SAP HANA és az üzleti alkalmazások
-| | 7.5 | LVM | Linux-ügynök | 7.5 RHEL for SAP HANA és az üzleti alkalmazások
-RHEL-SAP-HANA | 6.7 | RAW | Linux-ügynök | RHEL 6.7 az SAP Hana-hoz
-| | 7.2 | LVM | Linux-ügynök | Az RHEL 7.2 az SAP Hana-hoz
-| | 7.3 | LVM | Linux-ügynök | RHEL for SAP HANA 7.3.
-RHEL-SAP-APPS | 6.8 | RAW | Linux-ügynök | 6.8 RHEL for SAP Business Applications
-| | 7.3 | LVM | Linux-ügynök | 7.3 RHEL for SAP Business Applications
+RHEL          | 7 – NYERS    | RAW    | Linux-ügynök | RHEL 7. x rendszerképekből álló család. <br> Alapértelmezés szerint nincs csatolva a EUS-adattárakhoz.
+|             | 7-LVM    | LVM    | Linux-ügynök | RHEL 7. x rendszerképekből álló család. <br> Alapértelmezés szerint nincs csatolva a EUS-adattárakhoz.
+|             | 7-RAW-CI | RAW-CI | Cloud-init  | RHEL 7. x rendszerképekből álló család. <br> Alapértelmezés szerint nincs csatolva a EUS-adattárakhoz.
+|             | 6.7      | RAW    | Linux-ügynök |
+|             | 6.8      | RAW    | Linux-ügynök |
+|             | 6.9      | RAW    | Linux-ügynök |
+|             | 6.10     | RAW    | Linux-ügynök |
+|             | 7.2      | RAW    | Linux-ügynök |
+|             | 7.3      | RAW    | Linux-ügynök |
+|             | 7.4      | RAW    | Linux-ügynök | A EUS-adattárakhoz van csatolva, alapértelmezés szerint április 2019.
+|             | 7.5      | RAW    | Linux-ügynök | A EUS-adattárakhoz a 2019-as számú alapértelmezett módon van csatolva.
+|             | 7,6      | RAW    | Linux-ügynök | A EUS-adattárakhoz a 2019-as számú alapértelmezett módon csatolva.
+|             | 7,7      | LVM    | Linux-ügynök | Alapértelmezés szerint csatolva van a EUS-adattárakhoz.
+RHEL-SAP      | 7.4      | LVM    | Linux-ügynök | RHEL 7,4 SAP HANA és üzleti alkalmazások számára
+|             | 7.5      | LVM    | Linux-ügynök | RHEL 7,5 SAP HANA és üzleti alkalmazások számára
+RHEL-SAP-HANA | 6.7      | RAW    | Linux-ügynök | RHEL 6,7 SAP HANA
+|             | 7.2      | LVM    | Linux-ügynök | RHEL 7,2 SAP HANA
+|             | 7.3      | LVM    | Linux-ügynök | RHEL 7,3 SAP HANA
+RHEL-SAP-APPS | 6.8      | RAW    | Linux-ügynök | RHEL 6,8 for SAP Business Applications
+|             | 7.3      | LVM    | Linux-ügynök | RHEL 7,3 for SAP Business Applications
+RHEL – HA       | 7.4      | LVM    | Linux-ügynök | RHEL 7,4 és HA bővítmény
+|             | 7.5      | LVM    | Linux-ügynök | RHEL 7,5 és HA bővítmény
+|             | 7,6      | LVM    | Linux-ügynök | RHEL 7,6 és HA bővítmény
+RHEL – SAP-HA   | 7.4      | LVM    | Linux-ügynök | RHEL 7,4 for SAP és HA bővítmény
+|             | 7.5      | LVM    | Linux-ügynök | RHEL 7,5 for SAP és HA bővítmény
+|             | 7,6      | LVM    | Linux-ügynök | RHEL 7,6 for SAP és HA bővítmény
 
-### <a name="old-naming-convention"></a>Régi elnevezési egyezmény
-A RHEL 7 operációsrendszer-lemezképeket és az RHEL 6 operációsrendszer-lemezképek pillanatáig az elnevezési konvenciót módosítása azt fent kifejtettük tartozó termékváltozatokat használt verzióját.
+### <a name="old-naming-convention"></a>Régi elnevezési konvenció
+A RHEL 7 rendszerképek és a RHEL 6 operációsrendszer-lemezképek az SKU-ban meghatározott verziókat használnak, egészen addig, amíg az elnevezési konvenció fentebb ismertetett változása nem következett be.
 
-Numerikus termékváltozatok megtalálja a teljes lemezkép-listában. A Microsoft és a Red Hat a új kisebb kiadás amikor létrehozza a numerikus új termékváltozatokra.
+A teljes rendszerkép listában található numerikus SKU-ket fogja megtalálni. A Microsoft és a Red hat új, numerikus SKU-t hoz létre, ha új másodlagos kiadás érkezik.
 
-### <a name="other-available-offers-and-skus"></a>Egyéb elérhető ajánlatok és termékváltozatok
-Elérhető ajánlatok és termékváltozatok teljes listáját tartalmazhat további rendszerképeket felsoroltakon kívül a fenti táblázatban, például `RedHat:rhel-ocp-marketplace:rhel74:7.4.1`. Ezeket az ajánlatokat használhatók, amelyek biztosítják az adott marketplace-megoldások támogatását, vagy azok előzetes verziók és tesztelési célokra lehetett közzétenni. Ezek módosítani vagy eltávolítani figyelmeztetés nélkül bármikor előfordulhat, hogy. Ne használja őket, ha ezek jelenléte nyilvánosan dokumentált Microsoft vagy a Red Hat.
+### <a name="other-available-offers-and-skus"></a>Egyéb elérhető ajánlatok és SKU-ket
+A rendelkezésre álló ajánlatok és SKU-elemek teljes listája tartalmazhat további rendszerképeket, mint például `RedHat:rhel-ocp-marketplace:rhel74:7.4.1`a fenti táblázatban láthatók. Ezek az ajánlatok bizonyos Piactéri megoldások támogatásához használhatók, vagy az előzetes verziójú és tesztelési célokra közzétehető. Előfordulhat, hogy a figyelmeztetés nélkül bármikor módosíthatók vagy eltávolíthatók. Ne használja őket, hacsak a Microsoft vagy a Red Hat nem nyilvánosan dokumentálta a jelenlétét.
 
-## <a name="publishing-policy"></a>A házirend közzététele
-A Microsoft és a Red Hat lemezképek frissítéséhez a új alverziót kiadott, adott CVEs megoldása érdekében szükség szerint, vagy alkalmi konfiguráció módosításainak/frissítéseinek. Adja meg a frissített rendszerképek, minél hamarabb – egy kiadott vagy CVE javítás a következő három munkanapon belül igyekeztünk.
+## <a name="publishing-policy"></a>Közzétételi szabályzat
+A Microsoft és a Red Hat frissíti a lemezképeket, mivel a rendszer új alverziókat szabadít fel, amelyek meghatározott CVEs, vagy esetenként konfigurációs változások/frissítések esetén szükségesek. Arra törekszünk, hogy a lehető legrövidebb időn belül elérhetővé váljon a frissített rendszerképek – egy adott CVE-javítás kiadása vagy rendelkezésre állása után három munkanapon belül.
 
-Frissítjük csak egy adott rendszerkép család jelenlegi kisebb kiadásban. Az egy kisebb újabb kiadással azt állítsa le a régebbi alverzió frissítése. Például az RHEL 7.6 kiadással RHEL 7.5-lemezképek már nem fog frissülni.
+Egy adott rendszerkép-családban csak az aktuális alverziót frissítjük. Egy újabb alverzió kiadásával a régebbi alverzió frissítése nem áll le. Például a RHEL 7,6 kiadásával a RHEL 7,5 lemezképek már nem lesznek frissítve.
 
 >[!NOTE]
-> Aktív Azure virtuális gépek üzembe a RHEL használatalapú fizetéses rendszerképek az Azure RHUI csatlakozik, és képes fogadni a frissítések és javítások, amint a Red Hat által kiadott, és replikálja az Azure RHUI (általában kevesebb, mint 24 órában a hivatalos kiadás alábbi by Red Hat) . Ezek a virtuális gépek nem szükséges új közzétett lemezkép lekérhesse a frissítéseket, és az ügyfél rendelkezik teljes hozzáféréssel a frissítés indításáról való.
+> Az RHEL-as elszámolású képekből kiépített aktív Azure-beli virtuális gépek az Azure-RHUI csatlakoznak, és a Red Hat által kiadott és az Azure RHUI-ba replikált (általában kevesebb, mint 24 órán belül), a Red Hat-os kiadást követő 24 óránál rövidebb idő alatt is kaphatnak frissítéseket és javításokat. . Ezeknek a virtuális gépeknek nincs szüksége új közzétett rendszerképre a frissítések beszerzéséhez, és az ügyfelek teljes körű vezérléssel rendelkeznek a frissítés elindításához.
 
-## <a name="image-retention-policy"></a>Kép adatmegőrzési szabályzat
-Az aktuális házirendet, hogy az összes korábban közzétett rendszerképek tartani. Fenntartjuk a jogot arra, hogy távolítsa el az ismert problémákhoz bármiféle lemezképek. Például ezt követő platform vagy összetevő-frissítései miatt nem megfelelő konfigurációkat tartalmazó lemezképeket is távolítható el. Eltávolíthatja a lemezképbe értesítéseket biztosít be a rendszerkép eltávolítása előtt 30 nappal az aktuális Marketplace házirend követi.
+## <a name="image-retention-policy"></a>Képmegőrzési szabályzat
+Aktuális szabályzatunk az összes korábban közzétett rendszerkép megőrzése. Fenntartjuk a jogot arra, hogy olyan rendszerképeket távolítson el, amelyek bármilyen típusú problémát okozhatnak. Előfordulhat például, hogy a rendszer a következő platform vagy összetevő frissítései miatt helytelen konfigurációval rendelkező lemezképeket távolít el. Az eltávolítható rendszerképeket az aktuális Piactéri szabályzat szerint kell megadni, hogy a kép eltávolítása előtt akár 30 napig is biztosítson értesítéseket.
 
 ## <a name="next-steps"></a>További lépések
-* További információ az Azure Red Hat frissítési infrastruktúrához [Itt](https://aka.ms/rhui-update).
-* Red Hat támogatási irányelveik RHEL összes verziója információk találhatók a [Red Hat Enterprise Linux életciklusának](https://access.redhat.com/support/policy/updates/errata) lapot.
+* További információ az Azure Red Hat [frissítési infrastruktúráról](https://aka.ms/rhui-update).
+* A Red Hat-támogatási házirendekkel kapcsolatos információk a RHEL összes verziójára vonatkozóan a [Red Hat Enterprise Linux életciklus](https://access.redhat.com/support/policy/updates/errata) oldalon találhatók.

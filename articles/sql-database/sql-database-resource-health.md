@@ -10,20 +10,19 @@ ms.topic: conceptual
 author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
-manager: craigg
 ms.date: 02/26/2019
-ms.openlocfilehash: c3b9fecd3ad404385732e55a9cf3aa65a6e388b8
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 1c2720d61c7b4ea918a3d0c1ff7f41984ea42c69
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889375"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566909"
 ---
 # <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database"></a>A Resource Health használata az Azure SQL Database-kapcsolatának hibaelhárítása
 
 ## <a name="overview"></a>Áttekintés
 
-[A Resource Health](../service-health/resource-health-overview.md#getting-started) az SQL Database segítségével diagnosztizálhatja és támogatást kérhet, ha egy Azure-beli probléma kihat az SQL-erőforrások. Tájékoztatja az erőforrásai aktuális és korábbi állapotáról, és segít a problémák kezelésében. A Resource Health műszaki támogatást nyújt, ha segítségre van szüksége az Azure szolgáltatásait érintő problémákkal kapcsolatban.
+[A Resource Health](../service-health/resource-health-overview.md#get-started) az SQL Database segítségével diagnosztizálhatja és támogatást kérhet, ha egy Azure-beli probléma kihat az SQL-erőforrások. Tájékoztatja az erőforrásai aktuális és korábbi állapotáról, és segít a problémák kezelésében. A Resource Health műszaki támogatást nyújt, ha segítségre van szüksége az Azure szolgáltatásait érintő problémákkal kapcsolatban.
 
 ![Áttekintés](./media/sql-database-resource-health/sql-resource-health-overview.jpg)
 

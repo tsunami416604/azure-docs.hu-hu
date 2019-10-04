@@ -1,9 +1,9 @@
 ---
-title: Az Azure Active Directory kockázati eseményeivel |} A Microsoft Docs
-description: Ez artice Mik azok a kockázati események részletes áttekintést nyújt.
+title: Azure Active Directory kockázati észlelések | Microsoft Docs
+description: Ez a artice részletes áttekintést nyújt a kockázatok észleléséről.
 services: active-directory
-keywords: az Azure active directory identity protection, biztonság, kockázati, kockázati szint, biztonsági rést, biztonsági házirend
-author: MarkusVi
+keywords: Azure Active Directory Identity Protection, biztonság, kockázat, kockázati szint, biztonsági rés, biztonsági házirend
+author: cawrites
 manager: daveba
 ms.assetid: fa2c8b51-d43d-4349-8308-97e87665400b
 ms.service: active-directory
@@ -13,167 +13,167 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02fc505c8f14f4cc0e486502060a16af47c68bbc
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 523ae8e1ba31a4fe2c9683007f717149dfdc3bc6
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439022"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127325"
 ---
-# <a name="azure-active-directory-risk-events"></a>Az Azure Active Directory kockázati eseményei
+# <a name="azure-active-directory-risk-detections"></a>Azure Active Directory kockázati észlelések
 
-Biztonsági rések túlnyomó többsége kerül sor, amikor a támadók próbál a jeggyel hozzáférést egy környezethez lopásának megjelölése a felhasználó identitását. Feltört identitásokat felderítése nem könnyű feladat. Az Azure Active Directory adaptív gépi tanulási algoritmusok és heurisztika segítségével észleli a felhasználói fiókokhoz kapcsolódó gyanús tevékenységeket. Minden észlelt gyanús művelet nevű rekordot tárolja egy **kockázati esemény**.
+A biztonsági rések túlnyomó többsége akkor kerül sor, amikor a támadók a felhasználó identitásának ellopásával hozzáférnek a környezetekhez. A feltört identitások feltárása nem egyszerű feladat. Azure Active Directory adaptív gépi tanulási algoritmusokat és heurisztikus műveleteket használ a felhasználói fiókokhoz kapcsolódó gyanús műveletek észlelésére. A rendszer minden észlelt gyanús műveletet egy **kockázati észlelésnek**nevezett rekordban tárol.
 
-Nincsenek két helyen, ahol áttekintheti a jelentett kockázati események:
+A jelentett kockázati észleléseket két helyen tekintheti át:
 
- - **Az Azure AD-jelentéskészítés** -kockázati események tartoznak az Azure AD biztonsági jelentések. További információkért lásd: a [felhasználókról szóló biztonsági jelentés](concept-user-at-risk.md) és a [kockázatos bejelentkezés biztonsági jelentés](concept-risky-sign-ins.md).
+ - Az **Azure ad** Reporting – a kockázati észlelések az Azure ad biztonsági jelentései részét képezik. További információkért tekintse meg a [veszélyeztetett felhasználók biztonsági jelentését](concept-user-at-risk.md) és a [kockázatos bejelentkezések biztonsági jelentését](concept-risky-sign-ins.md).
 
- - **Az Azure AD Identity Protection** -kockázati események is részei a jelentési képességeivel, [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
+ - **Azure ad Identity Protection** – a kockázati észlelések a [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)jelentéskészítési képességeinek is részét képezik.
 
-Emellett használhatja a [Identity Protection kockázati események API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) programozott hozzáférést a Microsoft Graph használatával biztonsági észlelések eléréséhez. További információkért lásd: [Ismerkedés az Azure Active Directory Identity Protection és Microsoft Graph](../identity-protection/graph-get-started.md). 
+Emellett az [Identity Protection kockázati észlelések API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) -val programozási hozzáférést nyerhet a biztonsági észlelésekhez Microsoft Graph használatával. További információ: Ismerkedés [a Azure Active Directory Identity Protection és Microsoft Graphával](../identity-protection/graph-get-started.md). 
 
-Jelenleg az Azure Active Directory észleli hat kockázati események típusai:
+Jelenleg a Azure Active Directory hat típusú kockázati észlelést észlel:
 
-- [Kiszivárogtatott hitelesítő adatokkal rendelkező felhasználók](#leaked-credentials) 
-- [Névtelen IP-címekről indított bejelentkezések](#sign-ins-from-anonymous-ip-addresses) 
-- [Bejelentkezés szokatlan helyekről](#impossible-travel-to-atypical-locations) 
+- [Kiszivárgott hitelesítő adatokkal rendelkező felhasználók](#leaked-credentials) 
+- [Névtelen IP-címekről érkező bejelentkezések](#sign-ins-from-anonymous-ip-addresses) 
+- [Nem lehet utazni atipikus helyszínekre](#impossible-travel-to-atypical-locations) 
 - [Bejelentkezések fertőzött eszközökről](#sign-ins-from-infected-devices) 
-- [Gyanús tevékenységeket mutató IP-címekről indított bejelentkezések](#sign-ins-from-ip-addresses-with-suspicious-activity) 
-- [Ismeretlen helyről történő bejelentkezések](#sign-in-from-unfamiliar-locations) 
+- [Gyanús tevékenységet folytató IP-címekről érkező bejelentkezések](#sign-ins-from-ip-addresses-with-suspicious-activity) 
+- [Ismeretlen helyekről érkező bejelentkezések](#sign-in-from-unfamiliar-locations) 
 
-![Kockázati esemény](./media/concept-risk-events/91.png)
+![Kockázati észlelés](./media/concept-risk-events/91.png)
 
 > [!IMPORTANT]
-> Egyes esetekben előfordulhat, anélkül, hogy a megfelelő bejelentkezési bejegyzés egy kockázati esemény a [bejelentkezésekre](concept-sign-ins.md). Ennek az az oka az Identity Protection kockázati kiértékeli mindkét **interaktív** és **nem interaktív** bejelentkezések, mivel a bejelentkezések jelentés azt mutatja, csak az interaktív bejelentkezések.
+> Időnként előfordulhat, hogy a rendszer a [bejelentkezési jelentés](concept-sign-ins.md)megfelelő bejelentkezési bejegyzése nélkül észleli a kockázatfelmérést. Ennek az az oka, hogy az Identity Protection az **interaktív** és a **nem interaktív** bejelentkezések kockázatát is kiértékeli, míg a bejelentkezési jelentés csak az interaktív bejelentkezéseket jeleníti meg.
 
-Az insight észlelt kockázati eseményekhez kap az Azure AD-előfizetéshez vannak kötve. 
+Az észlelt kockázatok észlelésével kapcsolatos betekintés az Azure AD-előfizetéshez van kötve. 
 
-* Az a **Azure AD Premium P2 kiadás**, a legrészletesebb információkat minden mögöttes észlelés kap. 
-* Az a **Azure AD Premium P1 edition**, a kockázati esemény jelenik meg, amelyek nem tartoznak a licenc **bejelentkezési további észlelt kockázattal rendelkező**.
+* A **prémium szintű Azure ad P2 kiadással**a legrészletesebb információkat kapja meg az összes mögöttes észlelésről. 
+* A **prémium szintű Azure ad P1 kiadással**a licencek nem fedik le a speciális észleléseket (például az ismeretlen bejelentkezési tulajdonságokat), és a név alatt jelennek meg, ha **további kockázat észlelhető**. Emellett a kockázati szint és a kockázat részleteit tartalmazó mezők rejtve maradnak.
 
-Kockázati események már észlelését jelöli, fontos szempont a védelmet nyújtanak a, miközben lehetősége is van manuálisan ismertetésére vagy megvalósítása az automatikus reakciók feltételes hozzáférési szabályzatok konfigurálásával. További információkért lásd: [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
+Noha a kockázati észlelések észlelése az identitások védelmének egyik fontos aspektusa, a feltételes hozzáférési szabályzatok konfigurálásával manuálisan is megadhatja őket, vagy az automatizált válaszokat is végrehajthatja. További információ: [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
 
-## <a name="risk-event-types"></a>Kockázati események típusai
+## <a name="risk-detection-types"></a>Kockázati észlelési típusok
 
-A **kockázati esemény típusa** tulajdonság egy kockázati esemény rekordot létre lett hozva a gyanús művelet azonosítója.
+A **kockázati észlelés Type** tulajdonsága a gyanús művelet azonosítóját adja meg a következőhöz: kockázati észlelési rekord.
 
-A Microsoft folyamatos beruházások kiterjeszthetők az észlelési folyamat vezet:
+A Microsoft folyamatos beruházásai az észlelési folyamatba a következőket eredményezik:
 
-- A létező kockázati események észlelési pontosságának fejlesztései 
-- A jövőben hozzáadni kívánt új kockázati események típusai
+- A meglévő kockázati észlelések észlelési pontosságának fejlesztése 
+- Új kockázati észlelési típusok, melyek a jövőben lesznek hozzáadva
 
 ### <a name="leaked-credentials"></a>Kiszivárgott hitelesítő adatok
 
-Amikor az internetes bűnözők veszélyeztetheti a jogosult felhasználók érvényes jelszavak, gyakran oszthatnak meg ezeket a hitelesítő adatokat. Ez általában történik közzétételével őket nyilvánosan a sötét webes vagy illessze be a webhelyek vagy kereskedelmi vagy a hitelesítő adatokat, a fekete piaci értékesítési. A Microsoft kiszivárgott hitelesítő adatok szolgáltatás beszerzi a felhasználónév / jelszó párosítja, nyilvános és a sötét webhelyek figyelése és a használata:
+Ha a kiberbűnözők veszélyezteti a legitim felhasználók érvényes jelszavait, gyakran megosztják ezeket a hitelesítő adatokat. Ezt általában a sötét web-vagy a webhelyeken, illetve a fekete piacon a hitelesítő adatok kereskedelmi vagy értékesítési útján történő közzétételével hajtják végre. A Microsoft által kiszivárgott hitelesítő adatok a Felhasználónév/jelszó párokat szerzik be a nyilvános és a sötét webhelyek figyelésével, valamint a következővel:
 
 - Kutatók
-- Rendészeti
-- A Microsoft biztonsági csoportokkal
-- Más megbízható forrásokból 
+- Bűnüldözés
+- Biztonsági csapatok a Microsoftnál
+- Egyéb megbízható források 
 
-Ha a szolgáltatás beszerzi a felhasználónév / jelszó párok, amelyek veti össze AAD-felhasználók aktuális érvényes hitelesítő adatokat. Ha van egyezés, az azt jelenti, hogy egy felhasználó jelszavát biztonsága sérült, és a egy **kiszivárgott hitelesítő adatok kockázati esemény** jön létre.
+Ha a szolgáltatás a Felhasználónév/jelszó párokat szerzi be, a rendszer a HRE-felhasználók aktuális érvényes hitelesítő adataival ellenőrzi azokat. Ha egyezést talál, az azt jelenti, hogy a felhasználó jelszava sérült, és a rendszer kiszivárgott **hitelesítő adatokat** hoz létre.
 
 ### <a name="sign-ins-from-anonymous-ip-addresses"></a>Bejelentkezések névtelen IP-címről
 
-A kockázati esemény típusa azonosítja a felhasználókat, akik sikeresen bejelentkezett egy névtelen proxy IP-címként azonosított IP-címről. Ezek proxyk, akik az eszköz IP-címének elrejtésére és rosszindulatú tevékenységek végrehajtására használhatók.
+Ez a kockázati észlelési típus azonosítja azokat a felhasználókat, akik sikeresen bejelentkezett olyan IP-címről, amelyet névtelen proxy IP-címként azonosítottak. Ezek proxyk, akik az eszköz IP-címének elrejtésére és rosszindulatú tevékenységek végrehajtására használhatók.
 
 ### <a name="impossible-travel-to-atypical-locations"></a>Bejelentkezés szokatlan helyekről
 
-A kockázati esemény típusa két bejelentkezések földrajzilag távoli helyekről, ahol a helyek közül legalább is lehet a felhasználó szokatlan, adott múltbeli viselkedés azonosítja. Számos más tényező befolyásolja, többek között a gépi tanulási algoritmus figyelembe veszi a két bejelentkezést és a vett volna igénybe a felhasználó számára az első helyen a második, amely azt jelzi, hogy egy másik felhasználó azonos használja az utazási idő között eltelt idő hitelesítő adatok.
+Ez a kockázati észlelési típus két, földrajzilag távoli helyről származó bejelentkezést azonosít, ahol a felhasználók legalább egyike atipikus lehet a felhasználó számára, a múltbeli viselkedés miatt. Ez a gépi tanulási algoritmus számos más tényezőt is figyelembe vesz, és azt, hogy a felhasználó hogyan utazott el az első helyről a másodikra, és azt jelzi, hogy egy másik felhasználó ugyanazokat a lépéseket használja hitelesítő adatok.
 
-Az algoritmus figyelmen kívül hagyja a nyilvánvaló "vakriasztásokat" a lehetetlen utazás feltételek, például a VPN-EK és a szervezet más felhasználói által rendszeresen használt helyek hozzájárul. A rendszer egy mely során egy új felhasználói bejelentkezési viselkedés megtanulja 14 napos betanulási időszakra van. 
+Az algoritmus figyelmen kívül hagyja a "hamis pozitív" állapotot, amely hozzájárul a lehetetlen utazási feltételekhez, például a VPN-hez és a szervezet más felhasználói által rendszeresen használt helyekhez. A rendszer 14 napos kezdeti tanulási időszakot tartalmaz, amely során egy új felhasználó bejelentkezési viselkedését tanulja meg. 
 
 ### <a name="sign-in-from-unfamiliar-locations"></a>Bejelentkezés ismeretlen helyekről
 
-A kockázati esemény típusa figyelembe veszi a korábbi bejelentkezési helyek (IP, szélesség / hosszúság és az ASN) új / ismeretlen helyek meghatározásához. A rendszer korábbi, felhasználó által használt helyek adatait tárolja, és figyelembe veszi az "ismerős" helyek. A kockázati esemény akkor aktiválódik, ha a bejelentkezés történik, amely még nem ismert helyeihez helyről. A rendszer egy 30 napos, amely során azt nem jelöli meg rendellenesként ismeretlen helyről, új helyekről betanulási időszakra van. A rendszer is figyelmen kívül hagyja a jól ismert eszközöket és helyeket, amelyek földrajzilag közel egy ismert helyre történő bejelentkezések. 
+Ez a kockázati észlelési típus a korábbi bejelentkezési helyszínek (IP-cím, szélesség/hosszúság és ASN) alapján határozza meg az új/ismeretlen helyet. A rendszer a felhasználó által használt korábbi helyszínekről tárol adatokat, és ezeket a "ismerős" helyet tekinti át. A kockázat észlelése akkor aktiválódik, ha a bejelentkezés olyan helyről történik, amely még nem szerepel az ismerős helyek listáján. A rendszer egy 30 napos kezdeti tanulási időszakot tartalmaz, amely során nem jelöli meg az új helyet ismeretlen tárolóhelyként. A rendszer emellett figyelmen kívül hagyja a jól ismert eszközökről érkező bejelentkezéseket és a jól ismert helyhez földrajzilag közel lévő helyeket. 
 
-Identity Protection észleli az egyszerű hitelesítést is ismeretlen helyről történő bejelentkezések / örökölt protokollok. Modern ismerős szolgáltatások, például az ügyfél-azonosító nem rendelkezik ezeket a protokollokat, mert nem szerepel elegendő telemetriai vakriasztások csökkentésének érdekében. Észlelt kockázati események mennyiségének csökkentése érdekében helyezze át a modern hitelesítést.   
+Az Identity Protection az alapszintű hitelesítéshez/örökölt protokollokhoz is észleli az ismeretlen helyekről érkező bejelentkezéseket. Mivel ezek a protokollok nem rendelkeznek olyan modern, ismerős funkciókkal, mint az ügyfél-azonosító, nincs elég telemetria a téves pozitív érték csökkentése érdekében. Az észlelt kockázati észlelések számának csökkentése érdekében váltson át a modern hitelesítésre.   
 
 ### <a name="sign-ins-from-infected-devices"></a>Bejelentkezések fertőzött eszközökről
 
-A kockázati esemény típusa azonosítja az ismert, hogy aktív a robot-kiszolgálóval való kommunikációhoz, kártevő szoftverrel fertőzött eszközökről származó bejelentkezéseket. Ez határozza meg a robot kiszolgáló összevetésén alapulnak, amelyek IP-címekkel a felhasználó-eszköz IP-címek használatával történik. 
+Ez a kockázati észlelési típus a kártevő szoftverrel fertőzött eszközökről azonosítja a bejelentkezéseket, amelyekről ismert, hogy aktívan kommunikálnak a robot-kiszolgálóval. Ezt a felhasználó eszközének IP-címeinek a bot-kiszolgálóval való érintkezésben lévő IP-címekkel való korrelációja határozza meg. 
 
 ### <a name="sign-ins-from-ip-addresses-with-suspicious-activity"></a>Bejelentkezések gyanús tevékenységeket mutató IP-címekkel
-A kockázati esemény típusa azonosítja az IP-címet, amelyről nagy számú sikertelen bejelentkezési kísérletek voltak különböző bérlőknél észlelt, több felhasználói fiókot, egy rövid időn át. Ez megegyezik a támadók által használt IP-címek adatforgalmi mintái, és egy erős jelzi, hogy a fiókok már, vagy olyan sérülhet. Ez a machine learning algoritmus, amely figyelmen kívül hagyja a nyilvánvaló vakriasztások, például a szervezet más felhasználói által rendszeresen használt IP-címek.  A rendszer egy 14 napos betanulási időszakra van, ahol, megtanulja a bejelentkezési viselkedését egy új felhasználót és egy új bérlőt.
+Ez a kockázati észlelési típus azonosítja azokat az IP-címeket, amelyekről rövid idő alatt több felhasználói fiók között több sikertelen bejelentkezési kísérletet észlelt a rendszer. Ez megfelel a támadók által használt IP-címek forgalmi mintáinak, és egy erős mutató, amely a fiókok vagy a biztonsági rések sérülésének veszélye. Ez egy gépi tanulási algoritmus, amely figyelmen kívül hagyja a nyilvánvaló hamis pozitív értéket, például a szervezet más felhasználói által rendszeresen használt IP-címeket.  A rendszer 14 napos kezdeti tanulási időszakot tartalmaz, ahol megtanulja egy új felhasználó és új bérlő bejelentkezési viselkedését.
 
 ## <a name="detection-type"></a>Észlelés típusa
 
-Észlelési tulajdonság egy jelző (**valós idejű** vagy **Offline**) számára egy kockázati esemény észlelési időkeretét. Jelenleg a legtöbb kockázati események észlelésének offline utófeldolgozási művelet után a kockázati esemény történt.
+Az észlelési típus tulajdonság a kockázatkezelés észlelési időpontjára mutató (**valós idejű** vagy **Offline**) jelzés. Jelenleg a kockázatok észlelése után a rendszer offline állapotba helyezi a legtöbb kockázati észlelést egy feldolgozás utáni művelet közben.
 
-A következő táblázat sorolja fel, hogy mennyi ideig tart észlelési írja be a következőt egy kapcsolódó jelentésre megjelennek:
+A következő táblázat felsorolja, hogy mennyi ideig tart az észlelési típus egy kapcsolódó jelentésben való megjelenítéshez:
 
-| Észlelés típusa | Jelentéskészítés késése |
+| Észlelés típusa | Jelentési késés |
 | --- | --- |
 | Valós idejű | 5 – 10 perc |
 | Offline | 2 – 4 óra |
 
 
-Az Azure Active Directory észleli a kockázati események típusai a fenyegetésészlelés típusai a következők:
+Az észlelt kockázati észlelési típusok Azure Active Directory észleli a következő észlelési típusokat:
 
-| Kockázati esemény típusa | Észlelés típusa |
+| Kockázat észlelésének típusa | Észlelés típusa |
 | :-- | --- | 
-| [Kiszivárogtatott hitelesítő adatokkal rendelkező felhasználók](#leaked-credentials) | Offline |
-| [Névtelen IP-címekről indított bejelentkezések](#sign-ins-from-anonymous-ip-addresses) | Valós idejű |
-| [Bejelentkezés szokatlan helyekről](#impossible-travel-to-atypical-locations) | Offline |
-| [Ismeretlen helyről történő bejelentkezések](#sign-in-from-unfamiliar-locations) | Valós idejű |
+| [Kiszivárgott hitelesítő adatokkal rendelkező felhasználók](#leaked-credentials) | Offline |
+| [Névtelen IP-címekről érkező bejelentkezések](#sign-ins-from-anonymous-ip-addresses) | Valós idejű |
+| [Nem lehet utazni atipikus helyszínekre](#impossible-travel-to-atypical-locations) | Offline |
+| [Ismeretlen helyekről érkező bejelentkezések](#sign-in-from-unfamiliar-locations) | Valós idejű |
 | [Bejelentkezések fertőzött eszközökről](#sign-ins-from-infected-devices) | Offline |
-| [Gyanús tevékenységeket mutató IP-címekről indított bejelentkezések](#sign-ins-from-ip-addresses-with-suspicious-activity) | Offline|
+| [Gyanús tevékenységet folytató IP-címekről érkező bejelentkezések](#sign-ins-from-ip-addresses-with-suspicious-activity) | Offline|
 
 
 ## <a name="risk-level"></a>Kockázati szint
 
-A kockázati szint tulajdonság egy kockázati esemény egy jelző (**magas**, **Közepes**, vagy **alacsony**) a súlyosság és a egy kockázati esemény bizalmát. Ez a tulajdonság segítségével rangsorolhatja a műveleteket kell végeznie. 
+A kockázatkezelés kockázati szintje tulajdonsága egy mutató (**magas**, **közepes**vagy **alacsony**), amely a kockázatok észlelésének súlyosságára és megbízhatóságára mutat. Ez a tulajdonság segít rangsorolni a végrehajtandó műveleteket. 
 
-A kockázati esemény súlyosságát az erőssége a jel, egy előjelző az identitás veszélyeztetése jelöli. A megbízhatóság: egy mutató a vakriasztások lehetőségét. 
+A kockázat észlelésének súlyossága a jel erősségét jelképezi a személyazonossági kompromisszum megjósolása alapján. A megbízhatóság a hamis pozitív állapotot jelző mutató. 
 
 Például: 
 
-* **Magas**: Magas megbízhatóság és magas súlyossági szintű kockázati esemény. Ezek az események olyan erős mutatók, amelyek a felhasználói identitás biztonsága sérült, és minden érintett felhasználói fiókok azonnal szervizelni kell.
+* **Magas**: Nagy megbízhatóság és magas súlyosságú kockázatkezelés. Ezek az események olyan erős mutatók, amelyekkel a felhasználó identitása sérült, és az érintett felhasználói fiókokat azonnal szervizelni kell.
 
-* **Közepes**: Súlyos, de alacsonyabb megbízhatósági kockázati esemény, vagy fordítva. Ezek az események potenciálisan veszélyes, és minden érintett felhasználói fiókok szervizelni kell.
+* **Közepes**: Magas súlyosság, de alacsonyabb megbízhatósági kockázat észlelése, vagy fordítva. Ezek az események valószínűleg kockázatos jellegűek, és az érintett felhasználói fiókokat is javítani kell.
 
-* **Alacsony**: Alacsony megbízhatósági és az alacsony súlyossági szintű kockázati esemény. Ez az esemény azonnali műveletet nem lehet szükség, de más kockázati események kombinálva rendelkezhetnek jelzi, hogy az identitás biztonsága sérült.
+* **Alacsony**: Alacsony megbízhatóság és alacsony súlyosságú kockázati észlelés. Előfordulhat, hogy ez az esemény nem igényel azonnali műveletet, de más kockázati észlelésekkel kombinálva erős jelzést ad arra, hogy az identitás biztonsága sérül.
 
 ![Kockázati szint](./media/concept-risk-events/01.png)
 
 ### <a name="leaked-credentials"></a>Kiszivárgott hitelesítő adatok
 
-Kiszivárgott hitelesítő adatok kockázati események besorolt egy **magas**, mert ezek biztosítanak egy egyértelmű jelzés, hogy a felhasználónév és jelszó egy támadó rendelkezésére állnak.
+A kiszivárgott hitelesítő adatok kockázati észlelése magasnakminősül, mivel egyértelmű jelzést adnak arról, hogy a Felhasználónév és a jelszó elérhető egy támadó számára.
 
 ### <a name="sign-ins-from-anonymous-ip-addresses"></a>Bejelentkezések névtelen IP-címről
 
-A kockázati szintje a kockázati esemény típus **Közepes** mert névtelen IP-cím nem egy erős arra utalhat, hogy egy fiók biztonsága sérült. Azt javasoljuk, hogy azonnal forduljon a felhasználó számára, győződjön meg arról, ha azokat használja névtelen IP-címeket.
+A kockázat észlelési típusának kockázati szintje **közepes** , mert a névtelen IP-címek nem jelentenek veszélyt a fiókok biztonsága szempontjából. Javasoljuk, hogy azonnal forduljon a felhasználóhoz annak ellenőrzéséhez, hogy névtelen IP-címeket használnak-e.
 
 
 ### <a name="impossible-travel-to-atypical-locations"></a>Bejelentkezés szokatlan helyekről
 
-Lehetetlen utazás az általában jól jelzi, hogy egy támadó sikeresen jelentkezhet be lett. Azonban a vakriasztások fordulhat elő, amikor egy felhasználó utazik, egy új eszköz vagy a szervezet más felhasználói által általában nem használt VPN használatával. Vakriasztások egy másik forrása az alkalmazásokat, amelyek helytelenül adja át a kiszolgáló IP-címeket, ügyfél IP-címek, amelyek megjelenését a bejelentkezések zajlik a az adatközpontban, ahol az alkalmazás a háttér-üzemel (gyakran ezek a Microsoft adatközpontjai, amely a látszatát bejelentkezéseket zajló a Microsoft tulajdonában lévő IP-címek). Ezek vakriasztások eredményeként a kockázati eseményhez tartozó kockázati szintje nem **Közepes**.
+A lehetetlen utazás általában jól jelzi, hogy a hacker sikeresen bejelentkezett. A hamis pozitív érték azonban akkor fordulhat elő, ha egy felhasználó új eszköz használatával utazik, vagy olyan VPN-t használ, amelyet a szervezet más felhasználói általában nem használnak. A hamis pozitívok egy másik forrása olyan alkalmazások, amelyek helytelenül adják át a kiszolgáló IP-címeit az ügyfél IP-címeiként, ami lehetővé teszi a bejelentkezések megjelenését azon adatközpontból, ahol az alkalmazás háttér-végpontja üzemel (ez gyakran a Microsoft-adatközpontok, amelyek a Microsoft tulajdonában lévő IP-címekről érkező bejelentkezések megjelenését is lehetővé teheti. A téves riasztások eredményeképpen a kockázatkezelés kockázati szintje **közepes**.
 
 > [!TIP]
-> A kockázati esemény típusa jelentett vakriasztások mennyisége csökkenthető konfigurálása [nevesített helyek](../active-directory-named-locations.md). 
+> Az [elnevezett helyszínek](../active-directory-named-locations.md)konfigurálásával csökkentheti a kockázat-észlelési típus jelentett hamis pozitív értékeit. 
 
 ### <a name="sign-in-from-unfamiliar-locations"></a>Bejelentkezés ismeretlen helyekről
 
-Ismeretlen helyről biztosíthatja, hogy egy támadó az ellopott identitás használatára képes jelzi. Vakriasztások akkor fordulhat elő, ha egy felhasználó utazik, próbálja ki az új eszközt, vagy egy új VPN használ. Ezek vakriasztások eredményeként kockázati esemény típus szintje **Közepes**.
+Az ismeretlen helyszínek erős jelzést adnak arról, hogy egy támadó ellopott identitást tud használni. Hamis – pozitív érték jelenhet meg, ha egy felhasználó utazik, egy új eszközt próbál meg vagy új VPN-t használ. A téves riasztások eredményeképpen az adott eseménytípus kockázati szintje **közepes**.
 
 ### <a name="sign-ins-from-infected-devices"></a>Bejelentkezések fertőzött eszközökről
 
-A kockázati esemény IP-címek, nem a felhasználói eszközök azonosítja. Ha több eszköz is egyetlen IP-cím mögött, és csak néhány azok által vezérelt bot hálózaton, más eszközökről bejelentkezések saját eseményindító ezt az eseményt feleslegesen, éppen ezért a rendszer kockázati esemény ajánlottként megjelölt frissítést **alacsony**.  
+Ez a kockázati észlelés azonosítja az IP-címeket, nem pedig a felhasználói eszközöket. Ha több eszköz egyetlen IP-cím mögött van, és csak néhányat egy bot-hálózat vezérel, a más eszközökről indított bejelentkezések nem feltétlenül okozták ezt az eseményt, ezért a kockázat észlelése alacsonynakminősül.  
 
-Azt javasoljuk, hogy kapcsolattartás a felhasználókkal, és a felhasználói eszközök vizsgálata. Lehetőség arra is, hogy a felhasználó személyes eszközén fertőzött, illetve, hogy valaki más használta az ugyanazon az IP-címről egy fertőzött eszköz felhasználóként. Fertőzött eszközökről gyakran fertőzöttek kártevőkkel, víruskereső szoftver még nem azonosított, és azt is jelezheti bármely felhasználó rossz szokások, amely az eszköz megfertőző okozott.
+Javasoljuk, hogy vegye fel a kapcsolatot a felhasználóval, és vizsgálja meg az összes felhasználó eszközét. Az is lehetséges, hogy a felhasználó személyes eszköze fertőzött, vagy ha valaki más egy fertőzött eszközt használ a felhasználótól megegyező IP-címről. A fertőzött eszközöket gyakran olyan kártevők fertőzik meg, amelyeket a víruskereső szoftver még nem azonosított, és olyan rossz felhasználói szokásokat is jelezhet, amelyek okozták az eszköz vírusfertőzését.
 
-Cím kártevőszoftver-fertőzések kapcsolatos további információkért lásd: a [Kártevőkezelési központ](https://www.microsoft.com/en-us/security/portal/definitions/adl.aspx/).
+A kártevők elleni fertőzések kezelésével kapcsolatos további információkért tekintse meg a [kártevők elleni védelem](https://www.microsoft.com/en-us/security/portal/definitions/adl.aspx/)központját.
 
 ### <a name="sign-ins-from-ip-addresses-with-suspicious-activity"></a>Bejelentkezések gyanús tevékenységeket mutató IP-címekkel
 
-Azt javasoljuk, hogy lépjen kapcsolatba a felhasználó számára, győződjön meg arról, ha azok ténylegesen bejelentkezett IP-címek, amelyek gyanúsként lett megjelölve. Kockázati esemény típus szintje "**Közepes**", mert több eszköz mögött az azonos IP-cím lehet, miközben csak néhány felelős a gyanús tevékenység lehet. 
+Javasoljuk, hogy vegye fel a kapcsolatot a felhasználóval annak ellenőrzéséhez, hogy ténylegesen bejelentkezett-e egy gyanúsként megjelölt IP-címről. Az Eseménytípus kockázati szintje "**közepes**", mert több eszköz is lehet ugyanazon az IP-címen, míg a gyanús tevékenységnek csak néhány feladata lehet. 
 
 
 ## <a name="next-steps"></a>További lépések
 
-* [Felhasználókról szóló biztonsági jelentés](concept-user-at-risk.md)
-* [Kockázatos bejelentkezések szóló biztonsági jelentés](concept-risky-sign-ins.md)
-* [Az Azure AD Identity Protection](../active-directory-identityprotection.md).
+* [Veszélyeztetett felhasználók biztonsági jelentés](concept-user-at-risk.md)
+* [Kockázatos bejelentkezések biztonsági jelentése](concept-risky-sign-ins.md)
+* [Azure ad Identity Protection](../active-directory-identityprotection.md).

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75c66a875dc3419e928da83811809bd0f6d5d054
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7271a1cf0520eef8aa9b64fab36349caf3c0ffcd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57852508"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67102644"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-filecloud"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező FileCloud
 
@@ -55,7 +55,7 @@ Az Azure AD integrálása a FileCloud konfigurálásához hozzá kell FileCloud 
 
 **FileCloud hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9f79a573eedba781c38facb63a2ab86b3897545
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3a2c584da34988e6512484586288e6d6f2599a40
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57876595"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67103414"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-eli-onboarding"></a>Oktatóanyag: Az Azure Active Directory-integráció Eli üzembe helyezésében
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a Eli bevezetési konfigurálásához hozzá kell Eli 
 
 **Eli bevezetési hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

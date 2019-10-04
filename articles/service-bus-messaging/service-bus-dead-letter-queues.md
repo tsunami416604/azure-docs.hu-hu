@@ -1,6 +1,6 @@
 ---
-title: A Service Bus kézbesíthetetlen levelek sorai |} A Microsoft Docs
-description: Azure Service Bus kézbesíthetetlen levelek sorai áttekintése
+title: Kézbesítetlen levelek várólistáinak Service Bus | Microsoft Docs
+description: A kézbesítetlen levelek várólistájának Azure Service Bus áttekintése
 services: service-bus-messaging
 documentationcenter: .net
 author: axisc
@@ -12,79 +12,79 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2019
+ms.date: 05/21/2019
 ms.author: aschhab
-ms.openlocfilehash: 0364304a203e03faf69868174a45cb41850ce112
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: afa2e6e46579d9ce2906e2686cf40adf4b65ab2b
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733314"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68516596"
 ---
-# <a name="overview-of-service-bus-dead-letter-queues"></a>A Service Bus kézbesíthetetlen levelek sorai áttekintése
+# <a name="overview-of-service-bus-dead-letter-queues"></a>A kézbesítetlen levelek várólistájának Service Bus áttekintése
 
-Az Azure Service Bus-üzenetsorok és üzenettémakör-előfizetéseket adjon meg egy másodlagos alárendelt üzenetsort, nevű egy *kézbesítetlen levelek várólistájára* (DLQ). A kézbesítetlen levelek várólistájára nem kell explicit módon hozhatók létre és nem törölhető és nem felügyelt, ellenkező esetben a fő entitás független.
+Azure Service Bus a várólisták és a témakör-előfizetések egy másodlagos alvárólistát biztosítanak, amelyet *kézbesítetlen levelek várólistájának* (DLQ) nevezünk. A kézbesítetlen levelek várólistáját nem kell explicit módon létrehozni, és nem törölhető vagy más módon felügyelhető a fő entitástól függetlenül.
 
-Ez a cikk ismerteti a Service Bus kézbesíthetetlen levelek sorai. A hozzászólás számos ezt a [kézbesíthetetlen levelek üzenetsorok minta](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/DeadletterQueue) a Githubon.
+Ez a cikk a Service Bus kézbesítetlen levelek várólistáit ismerteti. A megbeszélések nagy részét a GitHubon a [kézbesítetlen levelek várólistájára vonatkozó példa](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/DeadletterQueue) szemlélteti.
  
-## <a name="the-dead-letter-queue"></a>A kézbesítetlen levelek várólistájára vonatkozik
+## <a name="the-dead-letter-queue"></a>A kézbesítetlen levelek várólistája
 
-A kézbesítetlen levelek várólistájára célja az üzeneteket, amelyek nem lehet kézbesíteni címzettnek sem, vagy üzeneteket, amelyek nem dolgozható fel. Üzenetek majd eltávolítja a DLQ és megvizsgálni. Egy alkalmazás előfordulhat, az operátornak segítségével problémák orvoslása, és küldje el újra a message, jelentkezzen a tény, hogy hiba történt, és korrekciós műveletek. 
+A kézbesítetlen levelek várólistája olyan üzenetek tárolására szolgál, amelyeket nem lehet kézbesíteni bármely fogadónak vagy nem feldolgozható üzenetnek. Az üzenetek ezután eltávolíthatók a DLQ, és megtekinthetők a vizsgálatuk. Előfordulhat, hogy egy alkalmazás az operátorral, a probléma megoldásával és az üzenet újbóli elküldésével, a hiba elhárítása és a javítási művelet elvégzésével kapcsolatos hibát jelez. 
 
-API-t és a protokoll szempontból a DLQ csak a bármely más várólista hasonló azzal a különbséggel, hogy az üzenetek csak a kézbesíthetetlen levelek műveletet a fölérendelt entitás keresztül kell benyújtani. Time-to-live emellett nem teljesülnek, és nem lehet a kézbesíthetetlen levelek egy DLQ üzenetét. A kézbesítetlen levelek várólistájára teljes mértékben támogatja a betekintési zárolással való kézbesítést és a tranzakciós műveletek.
+Az API-k és a protokollok szempontjából a DLQ többnyire a többi várólistához hasonlít, kivéve, hogy az üzeneteket csak a szülő entitás kézbesítetlen levelek művelete küldheti el. Emellett a rendszer nem figyeli az élettartamot, és nem kézbesítheti az üzenetet egy DLQ. A kézbesítetlen levelek várólistája teljes mértékben támogatja a betekintés-zárolási kézbesítést és a tranzakciós műveleteket.
 
-Vegye figyelembe, hogy nincs-e a DLQ nincs automatikus tisztítására. Üzenetek a DLQ maradnak, amíg explicit módon kérheti le azokat a DLQ és hívás [Complete()](/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync) a kézbesíthetetlen levelek üzenethez.
+Vegye figyelembe, hogy a DLQ automatikus törlése nem történik meg. Az üzenetek addig maradnak a DLQ, amíg explicit módon le nem kéri őket a DLQ, és meghívja a [Complete ()](/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync) függvényt a kézbesítetlen levelek üzenetében.
 
 ## <a name="moving-messages-to-the-dlq"></a>Üzenetek áthelyezése a DLQ
 
-Nincsenek üzenetek beolvasása a DLQ belül az üzenetkezelési motor magát a leküldött okozó a Service Bus több tevékenységet. Egy alkalmazás a DLQ üzeneteket közvetlenül is helyezheti. 
+Számos olyan tevékenység van Service Bus, amely az üzenetek DLQ való leküldését eredményezi az üzenetküldési motoron belül. Az alkalmazások explicit módon is helyezhetnek üzeneteket a DLQ. 
 
-Az üzenet a közvetítő által lekérdezi áthelyezték, két tulajdonságokkal is bővül, az üzenet, a közvetítő meghívja a belső verzióját a [kézbesítetlen](/dotnet/api/microsoft.azure.servicebus.queueclient.deadletterasync) metódus az üzenet: `DeadLetterReason` és `DeadLetterErrorDescription`.
+Ahogy a közvetítő áthelyezi az üzenetet, két tulajdonságot adnak hozzá az üzenethez, mivel a közvetítő meghívja a [kézbesítetlen levelek](/dotnet/api/microsoft.azure.servicebus.queueclient.deadletterasync) metódus belső verzióját az üzenetre `DeadLetterReason` : `DeadLetterErrorDescription`és.
 
-Alkalmazások a saját kódokat adhat meg a `DeadLetterReason` tulajdonság, de a rendszer beállítja a következő értékeket.
+Az alkalmazások meghatározhatják a `DeadLetterReason` tulajdonsághoz tartozó saját kódokat, de a rendszer a következő értékeket állítja be.
 
 | Állapot | DeadLetterReason | DeadLetterErrorDescription |
 | --- | --- | --- |
-| Mindig |HeaderSizeExceeded |Ez az adatfolyam méretének kvótája túl lett lépve. |
+| Mindig |HeaderSizeExceeded |A stream méretkvótája túl lett lépve. |
 | ! TopicDescription.<br />EnableFilteringMessagesBeforePublishing és SubscriptionDescription.<br />EnableDeadLetteringOnFilterEvaluationExceptions |exception.GetType().Name |exception.Message |
-| EnableDeadLetteringOnMessageExpiration |TTLExpiredException |Az üzenet lejárt, és a kapcsolat megszakadásának lettered volt. |
-| SubscriptionDescription.RequiresSession |A munkamenet-azonosító null értékű. |A munkamenet engedélyezve entitás nem teszi lehetővé egy üzenet, amelynek a munkamenet-azonosító null értékű. |
-| ! kézbesítetlen levelek várólistája |MaxTransferHopCountExceeded |Null |
-| Explicit kapcsolat megszakadásának megnevezéséhez alkalmazás |Alkalmazás által megadott |Alkalmazás által megadott |
+| EnableDeadLetteringOnMessageExpiration |TTLExpiredException |Az üzenet lejárt, és a kézbesítetlenek üzenetek közé került. |
+| SubscriptionDescription.RequiresSession |A munkamenet-azonosító null értékű. |A munkamenet engedélyezett entitása nem engedélyezi az olyan üzeneteket, amelyek munkamenet-azonosítója null értékű. |
+| ! kézbesítetlen levelek várólistája | MaxTransferHopCountExceeded | A várólisták közötti továbbítás esetén engedélyezett ugrások maximális száma. Az érték értéke 4. |
+| Alkalmazás explicit kézbesítetlen betűjele |Alkalmazás által megadott |Alkalmazás által megadott |
 
 ## <a name="exceeding-maxdeliverycount"></a>MaxDeliveryCount túllépése
 
-Üzenetsorok és -előfizetések mindegyik rendelkezik egy [QueueDescription.MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount) és [SubscriptionDescription.MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.maxdeliverycount) tulajdonság alapértelmezett értéke 10. Minden alkalommal, amikor egy üzenet kézbesítése megtörtént egy zárolás alatt ([ReceiveMode.PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode)), de lett vagy explicit módon elhagyott vagy lejárt a zárolás, az üzenet [BrokeredMessage.DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) van növekszik. Amikor [DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) meghaladja [MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount), az üzenet átkerül a DLQ megadása a `MaxDeliveryCountExceeded` okkód.
+A várólisták és előfizetések mindegyike [QueueDescription. MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount) és [SubscriptionDescription. MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.maxdeliverycount) tulajdonsággal rendelkezik; az alapértelmezett érték 10. Ha a zárolás ([ReceiveMode. PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode)) alatt egy üzenet érkezik, de explicit módon elhagyták, vagy a zárolás lejárt, akkor a [BrokeredMessage. DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) üzenet növekszik. Ha a [DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) túllépi a [MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount), az üzenet átkerül a DLQ, és `MaxDeliveryCountExceeded` megadja az okkódot.
 
-Ez a viselkedés nem tiltható le, de beállíthatja [MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount) nagyon nagy számú.
+Ez a viselkedés nem tiltható le, de a [MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount) nagyon nagy számra lehet beállítani.
 
 ## <a name="exceeding-timetolive"></a>Exceeding TimeToLive
 
-Ha a [QueueDescription.EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription) vagy [SubscriptionDescription.EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription) tulajdonsága **Igaz** (az alapértelmezett érték **hamis**), minden lejáró üzenetek kerülnek a DLQ megadása a `TTLExpiredException` okkód.
+Ha a [QueueDescription. EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription) vagy a [SubscriptionDescription. EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription) tulajdonság értéke **true** (az alapértelmezett érték a **false**), az összes lejáró üzenet áthelyezve a DLQ, az `TTLExpiredException` okkód megadásával.
 
-Vegye figyelembe, hogy lejárt üzenetek csak üríti ki és átkerül a DLQ, ha legalább egy aktív fogadót, a fő üzenetsor vagy előfizetés; lehetőség van Ezt a viselkedést a rendszer kialakításából fakad.
+Vegye figyelembe, hogy a lejárt üzenetek csak akkor törlődnek, és átkerülnek a DLQ, ha van legalább egy aktív fogadó a fő sorból vagy előfizetésből. Ez a viselkedés a tervezés szerint történik.
 
-## <a name="errors-while-processing-subscription-rules"></a>Hiba történt az előfizetési szabályok feldolgozása
+## <a name="errors-while-processing-subscription-rules"></a>Hibák az előfizetési szabályok feldolgozásakor
 
-Ha a [SubscriptionDescription.EnableDeadLetteringOnFilterEvaluationExceptions](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription) tulajdonság engedélyezve van egy előfizetést, az előfizetéshez tartozó SQL-szűrési szabály végrehajtása közben jelentkező hibák a DLQ mentén rögzíti a rendszer a hibás üzenettel.
+Ha a [SubscriptionDescription. EnableDeadLetteringOnFilterEvaluationExceptions](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription) tulajdonság engedélyezve van egy előfizetéshez, az előfizetés SQL-szűrési szabályának végrehajtása során felmerülő hibák rögzítése a DLQ és a jogsértő szolgáltatással együtt történik. üzenetet.
 
-## <a name="application-level-dead-lettering"></a>Alkalmazásszintű kézbesítetlen levelek kezelése
+## <a name="application-level-dead-lettering"></a>Alkalmazás szintű kézbesítetlen levelek
 
-Kívül, a rendszer által biztosított kézbesítetlen levelek kezelése alkalmazások is használhatnak a DLQ kifejezetten elutasítás elfogadhatatlan üzeneteket. Ez magában foglalhatja üzeneteket, amelyek nem lehet megfelelően feldolgozni tetszőleges rendszerprobléma miatt, üzeneteket, amelyek rendelkeznek a helytelen formátumú hasznos adat található, vagy üzeneteket, amelyek bizonyos üzenet-szintű biztonsági rendszer használata esetén a hitelesítés sikertelen.
+A rendszerszintű kézbesítetlen levelek szolgáltatáson kívül az alkalmazások a DLQ is használhatják, hogy explicit módon visszautasítsák az elfogadhatatlan üzeneteket. Ebbe beletartozhatnak azok az üzenetek, amelyek nem dolgozhatók fel megfelelően a rendszerhibák, a helytelenül formázott adattartalom tárolására szolgáló üzenetek, illetve az egyes üzenet szintű biztonsági sémák használata esetén sikertelen hitelesítéssel rendelkező üzenetek.
 
-## <a name="dead-lettering-in-forwardto-or-sendvia-scenarios"></a>Dead-lettering in ForwardTo or SendVia scenarios
+## <a name="dead-lettering-in-forwardto-or-sendvia-scenarios"></a>Továbbítás-vagy küldés-forgatókönyvekben kézbesítetlen levelek
 
-Üzeneteket küld az átvitel kézbesítetlen levelek várólistájára vonatkozik az alábbi feltételek:
+Az üzeneteket a rendszer a következő feltételekkel küldi el a kézbesítetlen levelek várólistára történő átviteléhez:
 
-- Több mint 4 várólisták és témakörök, amelyek áthalad egy üzenet [összeláncolt](service-bus-auto-forwarding.md).
-- A cél-üzenetsor vagy témakör le van tiltva vagy törölve.
-- A cél-üzenetsor vagy témakör meghaladja a maximális entitás.
+- Egy üzenet több mint 4 várólistán vagy egymással összeláncolt [](service-bus-auto-forwarding.md)témakörön halad át.
+- A célvárólista vagy a témakör le van tiltva vagy törölve van.
+- A célvárólista vagy a témakör mérete meghaladja az entitások maximális méretét.
 
-Ezek az üzenetek kézbesíthetetlen levelek lettered lekéréséhez a fogadó használatával hozhat létre a [FormatTransferDeadletterPath](/dotnet/api/microsoft.azure.servicebus.entitynamehelper.formattransferdeadletterpath) segédprogram metódust.
+A kézbesítetlen üzenetek lekéréséhez létrehozhat egy fogadót a [FormatTransferDeadletterPath](/dotnet/api/microsoft.azure.servicebus.entitynamehelper.formattransferdeadletterpath) segédprogram használatával.
 
 ## <a name="example"></a>Példa
 
-Az alábbi kódrészlet létrehoz egy üzenetet fogadó. A fő üzenetsor receive hurokba került a kód lekéri az üzenet [Receive(TimeSpan.Zero)](/dotnet/api/microsoft.servicebus.messaging.messagereceiver), amely rákérdez, hogy a közvetítő azonnal vissza üzeneteié könnyen hozzáférhető, vagy nincs eredményt adja vissza. A kódot egy üzenetet kap, ha, közvetlenül felad azt, milyen lépésekben a `DeliveryCount`. Miután a rendszer áthelyezi az üzenetet a DLQ, a fő üzenetsor üres, és a hurok kilépjen-e, mint [ReceiveAsync](/dotnet/api/microsoft.servicebus.messaging.messagereceiver) adja vissza **null**.
+A következő kódrészlet létrehoz egy üzenetet fogadót. A fő üzenetsor fogadási ciklusában a kód lekéri az üzenetet a [Receive (TimeSpan. Zero)](/dotnet/api/microsoft.servicebus.messaging.messagereceiver)üzenettel, amely arra kéri a közvetítőt, hogy azonnal visszaadja az összes azonnal elérhető üzenetet, vagy ha eredmény nélkül szeretne visszatérni. Ha a kód üzenetet kap, azonnal elhagyja azt, ami növeli a `DeliveryCount`következőt:. Ha a rendszer áthelyezi az üzenetet a DLQ, a fő várólista üres, és a hurok kilép, mivel [](/dotnet/api/microsoft.servicebus.messaging.messagereceiver) a ReceiveAsync **Null**értéket ad vissza.
 
 ```csharp
 var receiver = await receiverFactory.CreateMessageReceiverAsync(queueName, ReceiveMode.PeekLock);
@@ -103,10 +103,21 @@ while(true)
 }
 ```
 
+## <a name="path-to-the-dead-letter-queue"></a>A kézbesítetlen levelek várólistájának elérési útja
+A kézbesítetlen levelek várólistáját a következő szintaxissal érheti el:
+
+```
+<queue path>/$deadletterqueue
+<topic path>/Subscriptions/<subscription path>/$deadletterqueue
+```
+
+Ha a .NET SDK-t használja, a kézbesítetlen levelek várólistájának elérési útját a SubscriptionClient. FormatDeadLetterPath () metódus használatával érheti el. Ez a metódus a következő témakört veszi fel: név/előfizetés neve és utótagja a **/$DeadLetterQueue**.
+
+
 ## <a name="next-steps"></a>További lépések
 
-További információ a Service Bus-üzenetsorok a következő cikkekben talál:
+Service Bus várólistákkal kapcsolatos további információkért tekintse meg a következő cikkeket:
 
 * [Bevezetés a Service Bus által kezelt üzenetsorok használatába](service-bus-dotnet-get-started-with-queues.md)
-* [Az Azure üzenetsorok és Service Bus üzenetsorok összehasonlítása](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
+* [Az Azure Queues és a Service Bus-várólisták összehasonlítása](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
 

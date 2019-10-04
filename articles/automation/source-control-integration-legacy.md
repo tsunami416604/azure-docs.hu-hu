@@ -4,17 +4,17 @@ description: Ez a cikk ismerteti a forráskezelés integrálása a GitHub az Azu
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 04/01/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c95af40c3fa3f9dad2bfb5ea4a1b9f585c636928
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 2567536cd81eb2339622868a731948b1380614ad
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58806895"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67478447"
 ---
 # <a name="source-control-integration-in-azure-automation---legacy"></a>Verziókövetés integrálása az Azure Automation – régi
 
@@ -30,7 +30,7 @@ Verziókövetés lehetővé teszi leküldéses üzenet küldése kódot az Azure
 
 Nincsenek két egyszerű lépést, az Automation-fiókját, és csak egy verziókövetési konfigurálásához, ha már rendelkezik egy GitHub-fiók szükséges. Ezek a következők:
 
-## <a name="step-1--create-a-github-repository"></a>1. lépés – a GitHub-adattár létrehozása
+## <a name="step-1--create-a-github-repository"></a>1\. lépés – a GitHub-adattár létrehozása
 
 Ha már rendelkezik egy GitHub-fiók és a egy Azure Automation mutató hivatkozás kívánt adattár, majd jelentkezzen be a meglévő fiókot, és indítsa el az alábbi 2. lépés. Ellenkező esetben lépjen [GitHub](https://github.com/), regisztrálhat egy új fiókot, és [hozzon létre egy új adattár](https://help.github.com/articles/create-a-repo/).
 
@@ -42,10 +42,10 @@ Ha már rendelkezik egy GitHub-fiók és a egy Azure Automation mutató hivatkoz
 
    | **A paraméter** | **Leírás** |
    |:--- |:--- |
-   | Forrás választása |Válassza ki a forrás. Jelenleg csak **GitHub** támogatott. |
+   | Forrás kiválasztása |Válassza ki a forrás. Jelenleg csak **GitHub** támogatott. |
    | Engedélyezés |Kattintson a **engedélyezés** gomb az Azure Automation hozzáférést a GitHub-tárban. Ha már jelentkezett, a GitHub-fiók egy másik ablakban a fiók hitelesítő adatait használja a rendszer. Sikeres engedélyezés után a lapon jelennek meg a GitHub-felhasználóneve alapján **engedélyezési tulajdonság**. |
    | Tárház kiválasztása |Válassza ki egy GitHub-tárházat a rendelkezésre álló tárházak listáját. |
-   | Fiókiroda választása |Ágat kiválasztani és az elérhető ágak listáját. Csak a **fő** Ha még nem hozott létre összes ág jelenik meg. |
+   | Ág kiválasztása |Ágat kiválasztani és az elérhető ágak listáját. Csak a **fő** Ha még nem hozott létre összes ág jelenik meg. |
    | Runbook-mappa elérési útja |A forgatókönyvek mappájának elérési útja az elérési utat a GitHub-tárházban, ahonnan leküldéses, vagy kérje le a kódot adja meg. A következő formátumban kell megadni **/mappanév/subfoldername**. Csak a forgatókönyvek mappájának elérési útja a forgatókönyvek az Automation-fiókjába lesznek szinkronizálva. A forgatókönyvek mappájának elérési útja almappáiban lévő Runbookok fog **nem** szinkronizálható. Használat **/** szinkronizálás alatt a tárház minden runbookot. |
 3. Például, ha rendelkezik a tárházhoz **PowerShellScripts** mappát tartalmazó **a gyökérmappa**, amely tartalmaz egy nevű mappát **almappa**. A következő karakterláncok használatával minden egyes mappaszinten szinkronizálása:
 

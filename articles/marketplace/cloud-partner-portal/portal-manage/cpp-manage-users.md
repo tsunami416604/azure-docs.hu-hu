@@ -1,25 +1,19 @@
 ---
-title: A cloud partner Portalon – Azure Marketplace-en felhasználók kezelése |} A Microsoft Docs
+title: A Cloud Partner Portalon felhasználók kezelése |} Az Azure Marketplace-en
 description: A cloud partner Portalon felhasználók kezelése
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
 manager: pbutlerm
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 04/01/2019
-ms.author: pbutlerm
-ms.openlocfilehash: 6ab010a5fb8399fb14d3f45c8bb3b4571657d883
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: pabutler
+ms.openlocfilehash: 21c49ad0d73721dd204a7a3899d11cf10d43521b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59784419"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64942080"
 ---
 # <a name="managing-users-on-the-cloud-partner-portal"></a>A Cloud Partner portálra a felhasználók kezelése
 

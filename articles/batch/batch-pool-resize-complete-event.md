@@ -1,54 +1,57 @@
 ---
-title: Az Azure Batch-készlet átméretezése kész esemény |} A Microsoft Docs
-description: Referencia a Batch-készlet átméretezése kész esemény.
+title: Azure Batch készlet átméretezése kész esemény | Microsoft Docs
+description: A Batch-készlet átméretezésének befejezési eseménye.
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.assetid: ''
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: lahugh
-ms.openlocfilehash: 87c98b89a49adbad88841dccbd4ba47d370b2be7
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 8c0843db216ff99aabfda9074ee751597b43a2a2
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474309"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258405"
 ---
 # <a name="pool-resize-complete-event"></a>Készlet átméretezése kész esemény
 
- Ez az esemény bocsásson ki, ha a készlet átméretezése befejeződött vagy meghiúsult.
+ Ezt az eseményt akkor bocsátja ki a rendszer, ha a készlet átméretezése befejeződött vagy meghiúsult.
 
- Az alábbi példa bemutatja a törzse a készlet átméretezése kész esemény-készlet, amely nagyobb méretű, és sikeresen befejeződött.
+ A következő példa egy készlet-átméretezési esemény törzsét mutatja be egy olyan készlet esetében, amely megnövelte a méretet, és sikeresen befejeződött.
 
 ```
 {
-    "id": "p_1_0_01503750-252d-4e57-bd96-d6aa05601ad8",
+    "id": "myPool",
     "nodeDeallocationOption": "invalid",
-    "currentDedicated": 4,
-    "targetDedicated": 4,
+        "currentDedicatedNodes": 10,
+        "targetDedicatedNodes": 10,
+    "currentLowPriorityNodes": 5,
+        "targetLowPriorityNodes": 5,
     "enableAutoScale": false,
     "isAutoPool": false,
     "startTime": "2016-09-09T22:13:06.573Z",
     "endTime": "2016-09-09T22:14:01.727Z",
-    "result": "Success",
-    "resizeError": "The operation succeeded"
+    "resultCode": "Success",
+    "resultMessage": "The operation succeeded"
 }
 ```
 
-|Elem|Typo|Megjegyzések|
+|Elem|Type|Megjegyzések|
 |-------------|----------|-----------|
-|id|String|A készlet azonosítója.|
-|nodeDeallocationOption|String|Itt adható meg, amikor csomópontok lehet, hogy eltávolítja a készletből, ha a készlet méretének csökkenésekor.<br /><br /> Lehetséges értékek:<br /><br /> **újbóli várólistázás** – futó tevékenységek leállítása és újbóli várólistázása. A tevékenységek a feladat engedélyezésekor fognak újra futni. Távolítsa el a csomópontokat, amint a tevékenységek leállítása után.<br /><br /> **leállítja** – futó tevékenységek leállítása. A tevékenységek nem fognak újra futni. Távolítsa el a csomópontokat, amint a tevékenységek leállítása után.<br /><br /> **taskcompletion** – engedélyezése jelenleg futó feladatok végrehajtásához. Ne ütemezzen új feladatokat való várakozás során. Távolítsa el a csomópontok, feladatok befejezését.<br /><br /> **Retaineddata** – lehetővé teszi a futó tevékenységek befejeződését, majd megvárja, hogy minden tevékenység adatmegőrzési ideje leteljen lejár. Ne ütemezzen új feladatokat való várakozás során. Távolíthat el csomópontokat, amikor az összes feladat megőrzési időszak lejárt.<br /><br /> Az alapértelmezett érték: újbóli várólistázás.<br /><br /> Ha a készlet méretét növekszik, akkor a értéke **érvénytelen**.|
-|currentDedicated|Int32|A készlethez rendelt számítási csomópontok száma.|
-|targetDedicated|Int32|Számítási csomópontok a készlet kért száma.|
-|enableAutoScale|Bool|Itt adhatja meg, hogy a készlet mérete automatikusan alkalmazkodik a kijelző idővel.|
-|isAutoPool|Bool|Megadja, hogy a készlet hozták-e egy feladat AutoPool mechanizmus révén.|
-|startTime|DateTime|Az idő a készlet átméretezése elindult.|
-|endTime|DateTime|Az idő a készlet méretezése befejeződött.|
-|Eredménykód|String|Az átméretezés eredménye.|
-|resultMessage|String|Az átméretezési hibát jelez az eredmény részletezi.<br /><br /> Ha az átméretezés sikeresen befejeződött, hogy a művelet sikeresen befejeződött.|
+|`id`|Sztring|A készlet azonosítója.|
+|`nodeDeallocationOption`|Sztring|Megadja, hogy a rendszer mikor távolítsa el a csomópontokat a készletből, ha a készlet mérete csökken.<br /><br /> Lehetséges értékek a következők:<br /><br /> **újravárólista** – leállítja a futó feladatokat, és újravárólistára helyezi őket. A feladatok akkor futnak újra, amikor a feladat engedélyezve van. A csomópontokat a feladatok leállítása után távolítsa el.<br /><br /> **megszakítás** – futó feladatok leállítása. A feladatok nem futnak újra. A csomópontokat a feladatok leállítása után távolítsa el.<br /><br /> **taskcompletion** – a jelenleg futó feladatok befejezésének engedélyezése. A várakozás közben nem ütemezhet új feladatokat. Csomópontok eltávolítása, ha az összes feladat befejeződött.<br /><br /> **Retaineddata** – lehetővé teszi a jelenleg futó feladatok befejezését, majd várjon, amíg az összes feladat adatmegőrzési időszaka lejár. A várakozás közben nem ütemezhet új feladatokat. Csomópontok eltávolítása, ha az összes tevékenység megőrzési időszaka lejárt.<br /><br /> Az alapértelmezett érték az újraüzenetsor.<br /><br /> Ha a készlet mérete növekszik, az érték **érvénytelenre**van állítva.|
+|`currentDedicatedNodes`|Int32|A készlethez jelenleg hozzárendelt dedikált számítási csomópontok száma.|
+|`targetDedicatedNodes`|Int32|A készlethez igényelt dedikált számítási csomópontok száma.|
+|`currentLowPriorityNodes`|Int32|A készlethez jelenleg hozzárendelt alacsony prioritású számítási csomópontok száma.|
+|`targetLowPriorityNodes`|Int32|A készlethez igényelt alacsony prioritású számítási csomópontok száma.|
+|`enableAutoScale`|Bool|Meghatározza, hogy a készlet mérete automatikusan igazodik-e az idő múlásával.|
+|`isAutoPool`|Bool|Azt határozza meg, hogy a készlet a feladatok autopool mechanizmusán keresztül lett-e létrehozva.|
+|`startTime`|DateTime|A készlet átméretezésének időpontja.|
+|`endTime`|DateTime|A készlet átméretezésének időpontja.|
+|`resultCode`|Sztring|Az átméretezés eredménye.|
+|`resultMessage`|Sztring| Részletes üzenet az eredményről.<br /><br /> Ha az átméretezés sikeresen befejeződött, az azt jelzi, hogy a művelet sikeres volt.|

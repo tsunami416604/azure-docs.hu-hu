@@ -1,6 +1,6 @@
 ---
-title: Webes API-k és REST API-k létrehozása az Azure Logic Apps |} A Microsoft Docs
-description: Webes API-k és REST API-kat hívni az API-kat, szolgáltatásokat vagy rendszereket az Azure Logic Appsben rendszert Integrációk
+title: Webes API-k létrehozása & REST API-kkal Azure Logic Appshoz | Microsoft Docs
+description: Webes API-k & REST API-k segítségével az API-k, szolgáltatások vagy rendszerek meghívásához a rendszer-integrációhoz Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -10,29 +10,29 @@ ms.reviewer: klam, jehollan, LADocs
 ms.topic: article
 ms.assetid: bd229179-7199-4aab-bae0-1baf072c7659
 ms.date: 05/26/2017
-ms.openlocfilehash: 620ede672d71338abeff5198fd5f94e92dc193d0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: e5dc913d682088296f84fb6bd7595a09d9d3fe7b
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57895855"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68609868"
 ---
-# <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Az Azure Logic Apps segítségével meghívhatja, egyéni API-k létrehozása
+# <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Egyéni API-k létrehozása, melyeket hívhat Azure Logic Apps
 
-Bár az Azure Logic Apps biztosít [100 + beépített összekötők](../connectors/apis-list.md) , hogy a logikai alkalmazások munkafolyamataiba is használhatja, érdemes lehet hívni az API-k, rendszerek és szolgáltatások, amelyek nem érhetők el beépített összekötőkként. Létrehozhat saját API-k által biztosított műveleteket és eseményindítókat, a logic apps használatára. Az alábbiakban a valamilyen más okból, miért érdemes a saját API-k, amelyeket meghívhat a logikai alkalmazás munkafolyamatok létrehozása:
+Habár Azure Logic Apps [több száz összekötőt](../connectors/apis-list.md) kínál, amelyeket a Logic app-munkafolyamatokban használhat, előfordulhat, hogy olyan API-kat, rendszereket és szolgáltatásokat szeretne hívni, amelyek nem érhetők el összekötőként. Létrehozhat saját API-kat, amelyek a Logic Appsben használható műveleteket és eseményindítókat biztosítanak. Az alábbi egyéb okok miatt érdemes lehet saját API-kat létrehozni a Logic apps-munkafolyamatokból:
 
-* Bővítheti a jelenlegi rendszer integráció és a data-integrációs munkafolyamatokat.
-* Segíthet az ügyfeleknek használni a szolgáltatást, professional vagy személyes feladatait.
-* Bontsa ki az elérhetőséget, felfedezhetősége és a szolgáltatás használatát.
+* Terjessze ki a jelenlegi rendszerintegrációs és adatintegrációs munkafolyamatokat.
+* Segítheti az ügyfeleket a szolgáltatásban a szakmai vagy személyes feladatok kezelésében.
+* Bővítse a szolgáltatás elérhetőségét, a felderíthetőség és a használatot.
 
-Alapvetően az összekötők a webes API-kat használó REST csatlakoztatható adapterek [Swagger-metaadatok formátum](https://swagger.io/specification/) dokumentáció, és JSON-ban, az adatcsere-formátumot. Mivel az összekötők REST API-k HTTP-végpontokon keresztül kommunikáló, bármilyen nyelv, .NET, Java vagy node.js nyelven, például az összekötők készítéséhez is használhatja. Az API-k a is üzemeltethető [Azure App Service](../app-service/overview.md), a platform--szolgáltatásként (PaaS) kínál, amely biztosítja a legjobb, legegyszerűbb és leggyakrabban méretezhető módon API üzemeltetéséhez. 
+Az összekötők alapvetően olyan webes API-k, amelyek REST-t használnak a csatlakoztatott interfészekhez, a dokumentációhoz a [hencegő metaadatok formátumát](https://swagger.io/specification/) , valamint a JSON-t adatcsere-formátumként. Mivel az összekötők olyan REST API-k, amelyek HTTP-végpontokon keresztül kommunikálnak, bármilyen nyelvet használhat, például a .NET, a Java, a Python vagy a Node. js segítségével összekötők létrehozásához. Az API-kat [Azure app Service](../app-service/overview.md), egy szolgáltatásként nyújtott platformon is üzemeltetheti, amely az API-k egyik legjobb, legegyszerűbb és leginkább méretezhető módját kínálja. 
 
-Az egyéni API-k a logic apps szolgáltatással működik, az API-t biztosíthat [ *műveletek* ](./logic-apps-overview.md#logic-app-concepts) , amely adott feladatokat a logic app-munkafolyamatokba. Az API-t is működhet, egy [ *eseményindító* ](./logic-apps-overview.md#logic-app-concepts) , amely egy logikai alkalmazás munkafolyamatának elindul, amikor új adatokat és a egy esemény megfelel-e a megadott feltételnek. Ez a témakör ismerteti a gyakori minták, amelyekkel műveletek és eseményindítók az API-hoz, az API-t adja meg a kívánt viselkedés alapján.
+Ahhoz, hogy egyéni API-k működjenek a logikai alkalmazásokkal, az API olyan [*műveleteket*](./logic-apps-overview.md#logic-app-concepts) is biztosít, amelyek adott feladatokat hajtanak végre a Logic apps-munkafolyamatokban. Az API olyan eseményindítóként is működhet [](./logic-apps-overview.md#logic-app-concepts) , amely elindítja a Logic app-munkafolyamatot, amikor új vagy egy esemény megfelel egy megadott feltételnek. Ez a témakör azokat a gyakori mintákat ismerteti, amelyekkel az API-k által biztosított viselkedés alapján műveleteket és eseményindítókat hozhat létre az API-ban.
 
-Az API-k is üzemeltethet [Azure App Service](../app-service/overview.md), a platform--szolgáltatásként (PaaS) kínál, amely a nagy mértékben skálázható, egyszerű API-t üzemeltető biztosít.
+Az API-kat üzemeltetheti [Azure app Serviceon](../app-service/overview.md), egy szolgáltatásként nyújtott platformon (Pásti), amely kiválóan méretezhető, egyszerű API-üzemeltetést biztosít.
 
 > [!TIP] 
-> Bár az API-k webes alkalmazásokat telepíteni, érdemes megfontolni az API-k, az API apps, amely megkönnyítheti a feladat készítése, üzemeltetése és felhasználása a felhőben és helyszíni API-k. Nem kell minden olyan kódot az API-k – csupán telepítse kódját egy API-alkalmazásba. Ha például megtudhatja, hogyan ezeken a nyelveken a létrehozott API-alkalmazásokat hozhat létre: 
+> Habár az API-kat webalkalmazásként is üzembe helyezheti, érdemes lehet API-alkalmazásokként üzembe helyeznie az API-kat, amely megkönnyíti a feladatok elvégzését a felhőben és a helyszínen lévő API-k létrehozásakor, üzemeltetése és felhasználása során. Nem kell módosítania az API-kat, csak telepítse a kódot egy API-alkalmazásba. Például megtudhatja, hogyan hozhat létre az alábbi nyelvekkel létrehozott API-alkalmazásokat: 
 > 
 > * [ASP.NET](../app-service/app-service-web-get-started-dotnet.md). 
 > * [Java](../app-service/app-service-web-get-started-java.md)
@@ -41,192 +41,192 @@ Az API-k is üzemeltethet [Azure App Service](../app-service/overview.md), a pla
 > * [Python](../app-service/containers/quickstart-python.md)
 > * [Ruby](../app-service/containers/quickstart-ruby.md)
 >
-> A logic apps beépített API-alkalmazás minták, látogasson el a [Azure Logic Apps GitHub-adattár](https://github.com/logicappsio) vagy [blog](https://aka.ms/logicappsblog).
+> A Logic apps-hoz készült API-alkalmazások mintáinak megtekintéséhez látogasson el a [Azure Logic apps GitHub](https://github.com/logicappsio) -adattárba vagy [blogba](https://aka.ms/logicappsblog).
 
-## <a name="how-do-custom-apis-differ-from-custom-connectors"></a>Hogyan térnek el egyéni API-k az egyéni összekötők?
+## <a name="how-do-custom-apis-differ-from-custom-connectors"></a>Miben különböznek az egyéni API-k az egyéni összekötők?
 
-Egyéni API-k és [egyéni összekötők](../logic-apps/custom-connector-overview.md) vannak webes API-kat használó REST csatlakoztatható adapterek [Swagger-metaadatok formátum](https://swagger.io/specification/) dokumentáció, és JSON-ban, az adatcsere-formátumot. És mivel ezen API-k és összekötők REST API-k HTTP-végpontokon keresztül kommunikáló, bármilyen nyelv, .NET, Java vagy node.js nyelven, például az egyéni API-k és összekötők használhatja.
+Az egyéni API-k és az [Egyéni összekötők](../logic-apps/custom-connector-overview.md) olyan webes API-k, amelyek Rest-t használnak a csatlakoztatott felületek számára, a dokumentációhoz tartozó [hencegés metaadatainak formátuma](https://swagger.io/specification/) , valamint a JSON adatcsere formátuma Mivel ezek az API-k és összekötők olyan REST API-k, amelyek HTTP-végpontokon keresztül kommunikálnak, az egyéni API-k és összekötők létrehozásához bármilyen nyelvet használhat, például .NET, Java, Python vagy Node. js.
 
-Egyéni API-k lehetővé teszik az API-kat, amelyek nem összekötőket, és adja meg a végpontokat, amelyeket meghívhat HTTP + Swagger, Azure API Management vagy App Services. Egyéni összekötők működik, mint az egyéni API-kat, de ezek az attribútumok is rendelkezik:
+Az egyéni API-k segítségével olyan API-kat hívhat meg, amelyek nem összekötők, és olyan végpontokat biztosítanak, amelyek HTTP + hencegés, Azure API Management vagy App Services használatával hívhatók meg. Az egyéni összekötők úgy működnek, mint az egyéni API-k, de ezek az attribútumok is a következők:
 
-* Az Azure Logic Apps-összekötő-erőforrások regisztrálva.
-* Ikonok mellett a Microsoft által felügyelt összekötők a Logic Apps Designerben együtt jelennek meg.
-* Csak az összekötők szerzők és a régióban, ahol a logic Apps-alkalmazások üzembe vannak helyezve az azonos Azure Active Directory-bérlővel és Azure-előfizetéssel rendelkező logikai alkalmazás felhasználói számára elérhető.
+* Regisztrálva van Logic Apps-összekötő erőforrásként az Azure-ban.
+* Ikonokat jelenít meg a Microsoft által felügyelt összekötők mellett a Logic Apps Designerben.
+* Csak a szerzők és a logikai alkalmazások azon felhasználói számára érhető el, akik azonos Azure Active Directory Bérlővel és Azure-előfizetéssel rendelkeznek abban a régióban, ahol a logikai alkalmazásokat telepítették.
 
-Nevezheti regisztrált összekötő Microsoft általi hitelesítésre. Ez a folyamat ellenőrzi, hogy regisztrált összekötők nyilvánosan a feltételeknek, és ezek az összekötők elérhetővé teszi a felhasználók számára a Microsoft Flow és a Microsoft PowerApps.
+A Microsoft minősítéshez regisztrált összekötőket is kijelölheti. Ez a folyamat ellenőrzi, hogy a regisztrált összekötők megfelelnek-e a nyilvános használat feltételeinek, és elérhetővé teszik-e az összekötőket Microsoft Flow és Microsoft PowerApps felhasználók számára.
 
-Egyéni összekötőkkel kapcsolatos további információkért lásd: 
+További információ az egyéni összekötők használatáról: 
 
 * [Egyéni összekötők áttekintése](../logic-apps/custom-connector-overview.md)
-* [Egyéni összekötők létrehozása webes API-kon keresztül.](../logic-apps/custom-connector-build-web-api-app-tutorial.md)
-* [Egyéni összekötők regisztrálása az Azure Logic Appsben](../logic-apps/logic-apps-custom-connector-register.md)
+* [Egyéni összekötők létrehozása webes API-kkal](../logic-apps/custom-connector-build-web-api-app-tutorial.md)
+* [Egyéni összekötők regisztrálása Azure Logic Apps](../logic-apps/logic-apps-custom-connector-register.md)
 
 ## <a name="helpful-tools"></a>Hasznos eszközök
 
-Egyéni API-k optimális működéséhez a logic apps szolgáltatással is rendelkezik az API-t egy [Swagger-dokumentumok](https://swagger.io/specification/) , amely az API műveleteit és paramétereit írja le.
-Számos kódtár, például [Swashbuckle](https://github.com/domaindrivendev/Swashbuckle), automatikusan hozhat létre a Swagger-fájl az Ön számára. Jegyzettel láthatja el a Swagger-fájl a megjelenített neveket, tulajdonságtípus, és így tovább, akkor is használható [TRex](https://github.com/nihaue/TRex) úgy, hogy a Swagger-fájl is a logic apps szolgáltatással működik.
+Az egyéni API a Logic apps szolgáltatásban a legjobban működik, ha az [](https://swagger.io/specification/) API-nak van egy hencegő dokumentuma is, amely LEÍRJA az API műveleteit és paramétereit.
+Számos könyvtár, például a [swashbuckle](https://github.com/domaindrivendev/Swashbuckle), automatikusan létrehozhatja a hencegő fájlt. Ha meg szeretné adni a hencegő fájlt a megjelenítendő nevek, a tulajdonságok típusai és így tovább, akkor a [TRex](https://github.com/nihaue/TRex) is használhatja, hogy a hencegő fájl jól működjön a Logic apps szolgáltatással.
 
 <a name="actions"></a>
 
-## <a name="action-patterns"></a>A művelet minták
+## <a name="action-patterns"></a>Műveleti minták
 
-A logic apps feladatok végrehajtásához, biztosítania kell az egyéni API [ *műveletek*](./logic-apps-overview.md#logic-app-concepts). Egyes műveletek az API-művelet rendeli hozzá. Egy alapszintű művelet egy vezérlő, amely elfogadja a HTTP-kérelmek és HTTP-válaszok adja vissza. Így például a logikai alkalmazás HTTP-kérést küld a webalkalmazás vagy API-alkalmazás. Az alkalmazás ezután, együtt, amelyek a logikai alkalmazás tud feldolgozni egy HTTP-választ adja vissza.
+Ahhoz, hogy a Logic apps feladatokat végezzen, az egyéni API-nak [*műveleteket*](./logic-apps-overview.md#logic-app-concepts)kell megadnia. Az API minden művelete egy műveletre van leképezve. Az alapszintű művelet egy olyan vezérlő, amely fogadja a HTTP-kérelmeket, és HTTP-válaszokat ad vissza. Így például egy logikai alkalmazás HTTP-kérelmet küld a webalkalmazásnak vagy az API-alkalmazásnak. Az alkalmazás ezután egy HTTP-választ ad vissza, a logikai alkalmazás által feldolgozható tartalommal együtt.
 
-Standard szintű művelet írja be az API-t egy HTTP-kérési metódust, és ismertetik a módszer egy Swagger-fájl. Ezt követően meghívhatja az API-t közvetlenül egy [HTTP-művelet](../connectors/connectors-native-http.md) vagy egy [HTTP + Swagger](../connectors/connectors-native-http-swagger.md) művelet. Alapértelmezés szerint válaszok belül vissza kell a [kérelem időkorlátja](./logic-apps-limits-and-config.md). 
+Szabványos művelet esetén HTTP-kérési módszert írhat az API-ban, és leírhatja ezt a metódust egy hencegő fájlban. Ezután meghívhatja az API-t közvetlenül egy [http-művelet](../connectors/connectors-native-http.md) vagy egy [http + hencegés](../connectors/connectors-native-http-swagger.md) művelet használatával. Alapértelmezés szerint a válaszokat vissza kell adni a [kérelem időtúllépési korlátján](./logic-apps-limits-and-config.md)belül. 
 
-![Standard szintű művelet minta](./media/logic-apps-create-api-app/standard-action.png)
+![Szabványos műveleti minta](./media/logic-apps-create-api-app/standard-action.png)
 
-<a name="pattern-overview"></a> Ahhoz, hogy egy logikai alkalmazást, várjon, amíg az API-t befejezése hosszabb ideig futó feladatok, az API-t is követheti a [lekérdezési aszinkron minta](#async-pattern) vagy a [webhook aszinkron minta](#webhook-actions) a jelen témakörben. Ezek a minták másként egy hasonlóan, amelyek segítségével vizualizálhatja a Képzelje el, a folyamat egy webmatrixos az egyéni torta rendezéshez. A lekérdezési minta a viselkedését, ahol hívja a webmatrixos 20 percenként ellenőrzi, hogy a torta készen áll a tükrözi. A webhook-minta a viselkedését, ahol a webmatrixos kéri a telefonszámát, is hívják meg, amikor készen áll a torta tükrözi.
+<a name="pattern-overview"></a>Ahhoz, hogy egy logikai alkalmazás várjon, amíg az API befejezi a már futó feladatokat, az API követheti az [aszinkron lekérdezési mintát](#async-pattern) vagy a jelen témakörben ismertetett [aszinkron webhook-mintát](#webhook-actions) . Az olyan analógia esetében, amely segít a minták különböző viselkedésének megjelenítésében, Képzelje el, hogy az egyéni süteményeket egy pékségből rendeli el. A lekérdezési minta tükrözi azt a viselkedést, amelyben 20 percenként meghívja a pékséget, hogy meggyőződjön arról, hogy a torta készen áll-e. A webhook-minta tükrözi azt a viselkedést, amelyben a pékség megkéri a telefonszámát, hogy meghívja Önt, amikor elkészült a torta.
 
-Minták, látogasson el a [Logic Apps GitHub-adattár](https://github.com/logicappsio). Ezenfelül bővebben [műveletek esetében a használatmérés](logic-apps-pricing.md).
+Példákért látogasson el a [Logic apps GitHub](https://github.com/logicappsio)-tárházba. Emellett további információ a [műveletek használati méréséről](logic-apps-pricing.md).
 
 <a name="async-pattern"></a>
 
-### <a name="perform-long-running-tasks-with-the-polling-action-pattern"></a>A lekérdezési művelet mintával hosszú ideig futó feladatok végrehajtása
+### <a name="perform-long-running-tasks-with-the-polling-action-pattern"></a>Hosszan futó feladatok végrehajtása a lekérdezési műveleti mintával
 
-Szeretné, hogy az API-t, amely hosszabb futtathat feladatokat a [kérelem időkorlátja](./logic-apps-limits-and-config.md), a lekérdezés aszinkron minta is használhatja. Ez a minta az API-t tegye egy külön szál, de tartsa a Logic Apps-motor aktív kapcsolat a munkahelyi rendelkezik. Ezzel a módszerrel a a logikai alkalmazás nem nem időtúllépés, és folytassa a következő lépés a munkafolyamatban, az API-t működő befejezése előtt.
+Ahhoz, hogy az API olyan feladatokat végezzen el, amelyek a [kérelem időtúllépési korlátján](./logic-apps-limits-and-config.md)túl futnak, használhatja az aszinkron lekérdezési mintát. Ez a minta rendelkezik az API-val egy különálló szálon, de aktív kapcsolódást tart fenn a Logic Apps motorral. Így a logikai alkalmazás nem időtúllépést jelent, vagy folytathatja a munkafolyamat következő lépését, mielőtt az API befejezi a munkát.
 
-Az általános mintája a következő:
+Az általános minta:
 
-1. Győződjön meg arról, hogy a motor tudja, hogy az API-t elfogadta a kérést, és a munka megkezdése.
-2. A motor feladat állapotát a későbbi kérelmeket küld, amikor lehetővé teszik a motor értesíti, amikor az API-t a feladat befejeződik.
-3. A vonatkozó adatokat térjen vissza a motor, hogy a logikai alkalmazás munkafolyamatának továbbra is.
+1. Győződjön meg arról, hogy a motor tudja, hogy az API elfogadta a kérést, és megkezdte a munkát.
+2. Ha a motor a feladat állapotára vonatkozó további kérelmeket tesz elérhetővé, akkor a motornak tudnia kell, hogy az API befejezi-e a feladatot.
+3. A megfelelő adatokat visszaküldi a motornak, hogy a logikai alkalmazás munkafolyamata továbbra is folytatódjon.
 
-<a name="bakery-polling-action"></a> Mostantól a lekérdezés a minta az előző webmatrixos hasonlóan a alkalmazni, és tegyük fel, hogy hívja a webmatrixos és a sorrend egyéni torta történő továbbítását. A folyamat, hogy a torta időt vesz igénybe, és nem kívánja a webmatrixos működik a torta türelmet a telefonon. A webmatrixos megerősíti, hogy a rendelés, és rendelkezik a torta állapot 20 percenként hívja meg. Után 20 perc, a webmatrixos hívja, de értesítést kap, és a, hogy meg kell hívnia a másik 20 percet, hogy a torta nem fejeződött. A vissza oda-folyamat folytatódik, amíg nem hívja, és a webmatrixos jelzi, hogy a rendelés készen áll, és továbbítja a torta. 
+<a name="bakery-polling-action"></a>Most alkalmazza az előző pékség analógjét a lekérdezési mintára, és Képzelje el, hogy meghívja a pékséget, és rendeljen hozzá egy egyéni tortát a szállításhoz. A Cake elkészítésének folyamata időt vesz igénybe, és nem szeretné megvárni a telefont, miközben a pékség a tortán dolgozik. A pékség megerősíti a rendelését, és 20 percenként hívja meg a Cake állapotát. 20 perc elteltével meghívja a pékséget, de arról tájékoztat, hogy a Cake nem lett elvégezve, és egy másik 20 percen belül meg kell hívnia. Ez a folyamat addig folytatódik, amíg meg nem hívja a hívást, és a pékség azt jelzi, hogy a megrendelés készen áll, és elküldi a tortát. 
 
-Úgyhogy képezze le a lekérdezési minta vissza. A webmatrixos jelöli az egyéni API, amíg Ön, a torta ügyfél kijelenti, hogy a Logic Apps-motor. A motor az API-kérelem hív meg, ha az API megerősíti, hogy a kérelem, és reagáljon az az időintervallum, amikor a motor ellenőrizheti a feladat állapota. A motor továbbra is fennáll, addig, amíg az API-t válaszol, hogy történt-e a feladat állapotának ellenőrzését, és visszaadja az adatokat a logikai alkalmazást, amely majd a munkafolyamat folytatódik. 
+Tehát a lekérdezési mintát vissza kell képeznie. A pékség az egyéni API-t jelöli, a Cake-ügyfél pedig a Logic Apps motort képviseli. Amikor a motor meghívja az API-t egy kéréssel, az API megerősíti a kérést, és az időintervallummal válaszol, amikor a motor ellenőrzi a feladatok állapotát. A motor továbbra is ellenőrzi a feladatok állapotát, amíg az API nem válaszol a feladatokra, és visszaadja az adatait a logikai alkalmazásnak, amely ezután folytatja a munkafolyamatot. 
 
-![Lekérdezési művelet minta](./media/logic-apps-create-api-app/custom-api-async-action-pattern.png)
+![Lekérdezési művelet mintája](./media/logic-apps-create-api-app/custom-api-async-action-pattern.png)
 
-Az API-hoz, kövesse az adott lépéseket ismerteti az API-k szempontjából:
+Az alábbi lépésekben ismertetjük az API által követendő lépéseket az API szemszögéből:
 
-1. Az API-t indítsa el a munkát a HTTP-kérést kap, ha azonnal vissza egy olyan HTTP `202 ACCEPTED` válaszban a `location` ebben a lépésben ismertetett fejléc. Ez a válasz lehetővé teszi, hogy a Logic Apps-motor tudja, hogy az API-t a kérés érkezett, fogadja a kérelem hasznos adatai (a bemeneti adatokat), és feldolgozása már folyamatban van. 
+1. Ha az API HTTP-kérést kap a munka megkezdéséhez, azonnal `202 ACCEPTED` küldjön vissza egy `location` http-választ a lépés későbbi részében ismertetett fejléccel. Ez a válasz lehetővé teszi, hogy a Logic Apps motor tudja, hogy az API megkapta a kérést, elfogadta a kérelem hasznos adatait (adatbevitel), és most dolgozza fel a feldolgozást. 
    
-   A `202 ACCEPTED` válasz ezeket a fejléceket kell tartalmaznia:
+   A `202 ACCEPTED` válasznak tartalmaznia kell a következő fejléceket:
    
-   * *Szükséges*: A `location` fejlécet, amely abszolút elérési útját adja meg egy URL-címet, ahol a Logic Apps-motor ellenőrizheti az API-feladat állapota
+   * *Kötelező*: Egy `location` fejléc, amely megadja az URL-cím abszolút elérési útját, ahol a Logic apps motor megtekintheti az API-feladatok állapotát
 
-   * *Nem kötelező*: A `retry-after` fejlécet, amely a motor várnia kell, mielőtt ellenőrizné másodpercek számát adja meg a `location` feladatállapot URL-CÍMÉT. 
+   * Nem *kötelező*: Egy `retry-after` fejléc, amely meghatározza, hogy a motor hány másodpercig várjon a feladatok állapotának `location` URL-címének ellenőrzése előtt. 
 
-     Alapértelmezés szerint a motor 20 másodpercenként ellenőrzi. Adja meg egy másik intervallumot, például a `retry-after` fejlécére, és amíg a következő lekérdezési másodpercek számát.
+     Alapértelmezés szerint a motor 20 másodpercenként ellenőrzi. Eltérő intervallum megadásához adja meg a `retry-after` fejlécet és a másodpercek számát a következő lekérdezésig.
 
-2. A megadott idő letelte után a Logic Apps összetevő, amely lekérdezi a `location` URL-címet a feladat állapotának ellenőrzése. Az API-t kell ezen ellenőrzések elvégzéséhez, és ezek a válaszok adja vissza:
+2. A megadott idő elteltével a Logic apps motor lekérdezi az `location` URL-címet a feladatok állapotának vizsgálatához. Az API-nak ezeket az ellenőrzéseket kell végrehajtania, és vissza kell juttatnia a válaszokat:
    
-   * Ha a feladat elkészült, lépjen vissza a HTTP `200 OK` választ, a válasz-adattartalomra (a következő lépésben a bemeneti) együtt.
+   * Ha a feladatot elvégezte, adja vissza `200 OK` a http-választ, valamint a válasz adattartalmát (a következő lépés bemenete).
 
-   * Ha a feladat még dolgoz fel, adja vissza egy másik HTTP `202 ACCEPTED` válaszként, de ugyanazon a fejlécek, mint az eredeti válasz.
+   * Ha a feladatok feldolgozása még folyamatban van, egy másik `202 ACCEPTED` http-választ ad vissza, de az eredeti választal megegyező fejlécekkel.
 
-Ha ezt a mintát követi, az API-t, nem kell semmit a a logikai alkalmazás munkafolyamat-definíció folytatja a feladat állapotának ellenőrzése. Ha a motor beolvassa a HTTP `202 ACCEPTED` válasz és a egy érvényes `location` fejléc, a motor tiszteletben tartja az aszinkron minta, és ellenőrzi a `location` fejléc mindaddig, amíg az API-t nem 202 választ adja vissza.
+Ha az API ezt a mintát követi, semmit nem kell tennie a logikai alkalmazás munkafolyamatának definíciójában a feladatok állapotának ellenőrzésének folytatásához. Ha a motor http `202 ACCEPTED` -választ kap, és érvényes `location` fejlécet kap, a motor tiszteletben tartja az aszinkron mintát, és addig ellenőrzi a `location` fejlécet, amíg az API nem 202-es választ ad vissza.
 
 > [!TIP]
-> Egy példa aszinkron minta, tekintse át ezt [vezérlő aszinkron válasz minta a Githubon](https://github.com/logicappsio/LogicAppsAsyncResponseSample).
+> Példa aszinkron minta esetén tekintse át ezt az [aszinkron vezérlő-választ a githubon](https://github.com/logicappsio/LogicAppsAsyncResponseSample).
 
 <a name="webhook-actions"></a>
 
-### <a name="perform-long-running-tasks-with-the-webhook-action-pattern"></a>A webhook művelet mintával hosszú ideig futó feladatok végrehajtása
+### <a name="perform-long-running-tasks-with-the-webhook-action-pattern"></a>Hosszan futó feladatok végrehajtása a webhook műveleti mintázatával
 
-Alternatív megoldásként használhatja a webhook minta hosszú ideig futó feladatok és aszinkron feldolgozás céljából. Ehhez a mintához egy "visszahívást" Várjon a logikai alkalmazás munkafolyamat folytatása előtt feldolgozását az API-ból. A visszahívás egy HTTP POST, amely egy üzenetet küld egy esemény egy URL-címet. 
+Alternatív megoldásként használhatja a webhook mintát a hosszan futó feladatokhoz és az aszinkron feldolgozáshoz. Ennek a mintának a logikai alkalmazás szüneteltetése, és várnia kell a "visszahívás" lehetőséget az API-ról a munkafolyamat folytatásához a feldolgozás befejezéséhez. Ez a visszahívás egy olyan HTTP-bejegyzés, amely egy adott esemény bekövetkezésekor küld üzenetet egy URL-címre. 
 
-<a name="bakery-webhook-action"></a> Most a webhook minta az előző webmatrixos hasonlóan a alkalmazni, és tegyük fel, hogy hívja a webmatrixos és a sorrend egyéni torta történő továbbítását. A folyamat, hogy a torta időt vesz igénybe, és nem kívánja a webmatrixos működik a torta türelmet a telefonon. A webmatrixos megerősíti, hogy a rendelés, de ezúttal, tegye lehetővé számukra a telefonszámát, is hívják meg, amikor a torta történik. Ezúttal a webmatrixos kiderül, hogy amikor a rendelés készen áll, és a torta biztosít.
+<a name="bakery-webhook-action"></a>Most alkalmazza az előző sütőipari-típust a webhook-mintára, és Képzelje el, hogy meghívja a pékséget, és rendeljen hozzá egy egyéni tortát a szállításhoz. A Cake elkészítésének folyamata időt vesz igénybe, és nem szeretné megvárni a telefont, miközben a pékség a tortán dolgozik. A pékség megerősíti a rendelését, de ezúttal megadja a telefonszámát, hogy meghívja Önt, amikor elkészült a torta. Ezúttal a pékség azt jelzi, hogy mikor áll készen a megrendelés, és elküldi a tortáját.
 
-Vissza a webhook-minta azt leképezni, ha a webmatrixos jelöli az egyéni API, amíg Ön, a torta ügyfél kijelenti, hogy a Logic Apps-motor. A motor meghívja az API-kérés és a "visszahívási" URL-címet.
-A feladat végeztével az API URL-CÍMÉT a motor értesítést, és térjen vissza a logikai alkalmazást, majd folytatja a munkafolyamatot, amely adatokat használ. 
+Ha ezt a webhook-mintázatot visszaképezi, a pékség az egyéni API-t jelöli, a Cake-ügyfél pedig a Logic Apps motort jelképezi. A motor meghívja az API-t egy kéréssel, és tartalmazza a "visszahívás" URL-címet.
+A feladatok elvégzése után az API az URL-cím használatával értesíti a motort, és visszaadja az adatait a logikai alkalmazásnak, amely ezután folytatja a munkafolyamatot. 
 
-Az ebben a mintában a vezérlő két végpontok beállítása: `subscribe` és `unsubscribe`
+Ehhez a mintához állítson be két végpontot a vezérlőn `subscribe` : és`unsubscribe`
 
-*  `subscribe` Végpont: Amikor végrehajtási eléri az API-művelet a munkafolyamatban, a Logic Apps összetevő, amely meghívja a `subscribe` végpont. Ez a lépés a logikai alkalmazás létrehozása egy visszahívási URL-címet, amely az API-t tárolja, és ezután Várjon, amíg a visszahívás az API-t a munka befejeztével okoz. Az API-t, majd visszahívja az URL-címre egy HTTP POST-, és átadja a visszaadott tartalom és a fejlécek a logikai alkalmazás bemeneteként.
+*  `subscribe`végpont Ha a végrehajtás eléri az API műveletét a munkafolyamatban, a Logic apps motor `subscribe` meghívja a végpontot. Ez a lépés azt eredményezi, hogy a logikai alkalmazás létrehoz egy visszahívási URL-címet, amelyet az API tárol, majd megvárja, amíg az API visszahívást végez a munka befejezésekor. Az API ezután visszahívja a HTTP-BEJEGYZÉST az URL-címre, és továbbítja a visszaadott tartalmat és fejléceket a logikai alkalmazás bemenetének.
 
-* `unsubscribe` Végpont: Ha a logikai alkalmazás futtatásának meg lett szakítva, a Logic Apps összetevő, amely meghívja a `unsubscribe` végpont. Ezután regisztrációjának törlése a visszahívási URL-Címének és a folyamatokat, szükség szerint állítsa le az API-t.
+* `unsubscribe`végpont Ha a logikai alkalmazás futása meg lett szakítva, a Logic apps motor `unsubscribe` meghívja a végpontot. Az API ezután törölheti a visszahívási URL-címet, és szükség szerint leállíthatja a folyamatokat.
 
-![Webhook művelet minta](./media/logic-apps-create-api-app/custom-api-webhook-action-pattern.png)
+![Webhook műveleti minta](./media/logic-apps-create-api-app/custom-api-webhook-action-pattern.png)
 
 > [!NOTE]
-> Jelenleg a Logikaialkalmazás-tervező nem támogatja a Swagger felderítő webhook-végpontjait. Így az ebben a mintában fel kell vennie egy [ **Webhook** művelet](../connectors/connectors-native-webhook.md) , és adja meg az URL-címe, fejlécek és a kérés törzsében. Lásd még: [munkafolyamat-műveletek és eseményindítók](logic-apps-workflow-actions-triggers.md#apiconnection-webhook-action). A visszahívási URL-címet megadni, használhatja a `@listCallbackUrl()` szükség szerint az előző mezők munkafolyamat-funkció.
+> A Logic app Designer jelenleg nem támogatja a webhook-végpontok felfedését a hencegő használatával. Tehát ehhez a mintához hozzá kell adnia egy webhook- [ műveletet](../connectors/connectors-native-webhook.md) , és meg kell adnia a kérelem URL-címét, fejléceit és törzsét. Lásd még: [munkafolyamat-műveletek és eseményindítók](logic-apps-workflow-actions-triggers.md#apiconnection-webhook-action). A visszahívási URL-cím átadásához szükség `@listCallbackUrl()` szerint használhatja a munkafolyamat-függvényt az előző mezők bármelyikén.
 
 > [!TIP]
-> Egy példa webhook-minta, tekintse át ezt [webhook eseményindító minta a Githubon](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs).
+> Példa webhook-minta esetén tekintse át ezt a [webhook trigger-mintát a githubon](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs).
 
 <a name="triggers"></a>
 
-## <a name="trigger-patterns"></a>Eseményindító-minták
+## <a name="trigger-patterns"></a>Trigger mintázatai
 
-Az egyéni API működhet, egy [ *eseményindító* ](./logic-apps-overview.md#logic-app-concepts) egy logikai alkalmazást, amely elindul, amikor új adatokat és a egy esemény megfelel-e a megadott feltétel. Ez az eseményindító is vagy rendszeresen figyelni, vagy várjon és figyelésére, az új adatokat és eseményeket a szolgáltatási végpont. Ha új adatokat és a egy esemény megfelel a megadott feltételnek, akkor a akkor aktiválódik, majd elindítja a logikai alkalmazást, amely figyeli az adott eseményindító. A logic apps ezzel a módszerrel, az API-t is kövesse a [ *lekérdezési eseményindító* ](#polling-triggers) vagy a [ *webhooktrigger* ](#webhook-triggers) mintát. Ezek a minták hasonlóak a mint a [lekérdezési művelet](#async-pattern) és [webhook-műveletek](#webhook-actions). Ezenfelül bővebben [az eseményindítók a használatmérés](logic-apps-pricing.md).
+Az egyéni API olyan eseményindítóként működhet [](./logic-apps-overview.md#logic-app-concepts) , amely egy logikai alkalmazást indít el, ha új vagy egy esemény megfelel egy adott feltételnek. Ez az aktiválás vagy a szolgáltatás végpontján lévő új adatértékek vagy események esetében lehet rendszeresen, vagy megvárni és figyelni. Ha az új vagy az esemény megfelel a megadott feltételnek, az eseményindító elindítja és elindítja a logikai alkalmazást, amely figyeli az eseményindítót. A Logic apps ily módon történő elindításához az API a [*lekérdezési triggert*](#polling-triggers) vagy a [*webhook trigger*](#webhook-triggers) mintázatát követheti. Ezek a minták a lekérdezési műveletekhez és [](#async-pattern) a webhook- [műveletekhez](#webhook-actions)hasonlók. Emellett további információ a [triggerek használati méréséről](logic-apps-pricing.md).
 
 <a name="polling-triggers"></a>
 
-### <a name="check-for-new-data-or-events-regularly-with-the-polling-trigger-pattern"></a>Ellenőrizze, hogy az új adatok vagy események rendszeresen a lekérdezési eseményindító mintával
+### <a name="check-for-new-data-or-events-regularly-with-the-polling-trigger-pattern"></a>Új adatértékek vagy események keresése rendszeresen a lekérdezési trigger mintázatával
 
-A *lekérdezési eseményindító* lényegében ugyanúgy működik a [lekérdezési művelet](#async-pattern) ebben a témakörben korábban leírt. A Logic Apps-motor rendszeres időközönként meghívja, és ellenőrzi a trigger végpont az új adatokat és eseményeket. Ha a motor az új adatokat és a egy eseményt, amely megfelel a megadott feltételnek talál, az eseményindító aktiválódik. Ezt követően a motor létrehoz egy logikaialkalmazás-példányt, amely a bemeneti adatokat feldolgozó. 
+A *lekérdezési trigger* az ebben a témakörben korábban ismertetett [lekérdezési művelethez](#async-pattern) hasonlóan működik. A Logic Apps motor rendszeres időközönként meghívja és ellenőrzi az indító végpontot új adatként vagy eseményekhez. Ha a motor új adatait vagy a megadott feltételnek megfelelő eseményt talál, akkor az eseményindító tüzet vált. Ezután a motor létrehoz egy logikai alkalmazás-példányt, amely bemenetként dolgozza fel az adatokat. 
 
-![Ciklikus lekérdezés eseményindító minta](./media/logic-apps-create-api-app/custom-api-polling-trigger-pattern.png)
+![Lekérdezési trigger mintája](./media/logic-apps-create-api-app/custom-api-polling-trigger-pattern.png)
 
 > [!NOTE]
-> Egyes lekérdezési kérelmek egy művelet végrehajtási számít, még akkor is, ha nincs logikaialkalmazás-példányt jön létre. Hogy a feldolgozási ugyanazokat az adatokat többször is feldolgozza, az eseményindító már elolvasta és a logikai alkalmazás átadott adatokat kell törölni.
+> Minden lekérdezési kérelem művelet-végrehajtásnak számít, még akkor is, ha nem jön létre logikai alkalmazás példánya. Ha nem szeretné, hogy ugyanazokat az adatfeldolgozást többször is feldolgozza, az triggernek törölnie kell a logikai alkalmazásba már olvasott és továbbított adatait.
 
-Az alábbiakban egy lekérdezési eseményindító, az API-k szempontból leírt lépéseit:
+Az alábbi, az API perspektívájában ismertetett lekérdezési triggerek konkrét lépései:
 
-| Új adatokat és az esemény található?  | API-válasz | 
+| Új adathalmazt vagy eseményt talált?  | API-válasz | 
 | ------------------------- | ------------ |
-| Találat | Adja vissza egy olyan HTTP `200 OK` , ahol a válasz-adattartalomra (bemenet a következő lépésre) állapot. <br/>Ez a válasz létrehoz egy logikaialkalmazás-példányt, és elindítja a munkafolyamatot. | 
-| Nem található | Adja vissza egy olyan HTTP `202 ACCEPTED` állapot egy `location` fejlécet és a egy `retry-after` fejléc. <br/>Az eseményindítók a `location` fejlécnek is tartalmaznia kell egy `triggerState` lekérdezési paraméter, amely általában a "Timestamp"mezőt. Az API-t a Ez az azonosító segítségével nyomon követheti, hogy a logikai alkalmazás aktiválva lett utoljára. | 
+| Találat | HTTP `200 OK` -állapot visszaadása a válasz hasznos adatával (a következő lépés bemenete). <br/>Ez a válasz létrehoz egy Logic app-példányt, és elindítja a munkafolyamatot. | 
+| Nincs találat | Egy `location` fejlécet `202 ACCEPTED` és egy `retry-after` fejlécet tartalmazó http-állapotot ad vissza. <br/>Eseményindítók esetén a `location` fejlécnek tartalmaznia kell egy `triggerState` lekérdezési paramétert is, amely általában egy "Timestamp". Az API ezzel az azonosítóval nyomon követheti a logikai alkalmazás aktiválásának utolsó időpontját. | 
 ||| 
 
-Például a szolgáltatás új fájlok rendszeres időnként ellenőrzik, felépíthet egy lekérdezési eseményindítói viselkedést:
+Ha például rendszeresen szeretné ellenőrizni a szolgáltatást az új fájlokhoz, létrehozhat egy lekérdezési triggert, amely a következő viselkedésekkel rendelkezik:
 
-| Tartalmazza a kérés `triggerState`? | API-válasz | 
+| A kérelem `triggerState`tartalmazza? | API-válasz | 
 | -------------------------------- | -------------| 
-| Nem | Adja vissza egy olyan HTTP `202 ACCEPTED` állapota és a egy `location` fejléc `triggerState` állítsa be az aktuális idő és a `retry-after` időköz 15 másodperc. | 
-| Igen | Ellenőrizze a szolgáltatást, miután hozzáadott fájlok a `DateTime` a `triggerState`. | 
+| Nem | Egy http `202 ACCEPTED` -állapotot, `location` valamint egy fejlécet ad vissza, amely az `retry-after` aktuális időpontra, az intervallum pedig 15 másodpercre van `triggerState` állítva. | 
+| Igen | Győződjön meg arról, hogy a szolgáltatásban `DateTime` a `triggerState`for () után hozzáadott fájlok szerepelnek. | 
 ||| 
 
-| Található fájlok száma | API-válasz | 
+| Talált fájlok száma | API-válasz | 
 | --------------------- | -------------| 
-| Egyetlen fájl | Adja vissza egy olyan HTTP `200 OK` állapota és a tartalom tartalmat, a frissítés `triggerState` , a `DateTime` a visszaadott fájlt, és állítsa be a `retry-after` időköz 15 másodperc. | 
-| Több fájl | Adja vissza egy fájl egy időben és a egy olyan HTTP `200 OK` állapot, a frissítés `triggerState`, és állítsa be a `retry-after` intervallum 0 másodperc. </br>Ezeket a lépéseket, hogy több adat érhető el, és, hogy a motor kell azonnal kérhet az adatok az URL-címet a motor lehetővé teszik a `location` fejléc. | 
-| Nincsenek fájlok | Adja vissza egy olyan HTTP `202 ACCEPTED` állapota, nem módosítja a `triggerState`, és állítsa be a `retry-after` időköz 15 másodperc. | 
+| Egyetlen fájl | Adja vissza a `200 OK` http-állapotot és a tartalom `triggerState` hasznos adatait `DateTime` , frissítse a értéket a visszaadott `retry-after` fájlhoz, és állítsa be az intervallumot 15 másodpercre. | 
+| Több fájl | Egyszerre csak egy fájlt ad vissza, egy http `200 OK` -állapotot `triggerState`, a frissítést, `retry-after` és az intervallumot 0 másodpercre állítja be. </br>Ezek a lépések lehetővé teszik, hogy a motor tudja, hogy további adatok állnak rendelkezésre, és hogy a motornak azonnal el kell kérnie az adatok kérését a `location` fejléc URL-címéről. | 
+| Nincsenek fájlok | HTTP `202 ACCEPTED` -állapotot ad vissza, `triggerState`ne módosítsa, és `retry-after` állítsa be az intervallumot 15 másodpercre. | 
 ||| 
 
 > [!TIP]
-> Példa lekérdezési eseményindító minta, tekintse át ezt [lekérdezési eseményindító vezérlő minta a Githubon](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/PollTriggerController.cs).
+> A lekérdezési trigger mintájának vizsgálatához tekintse át ezt a [lekérdezés-indító vezérlő mintát a githubon](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/PollTriggerController.cs).
 
 <a name="webhook-triggers"></a>
 
-### <a name="wait-and-listen-for-new-data-or-events-with-the-webhook-trigger-pattern"></a>Várjon, és az új adatokat és eseményeket a webhook-eseményindító mintával figyelésére
+### <a name="wait-and-listen-for-new-data-or-events-with-the-webhook-trigger-pattern"></a>Várjon, és figyelje az új adattípusokat és eseményeket a webhook trigger-mintázatával
 
-A webhook eseményindítóhoz van egy *leküldéses trigger* , amely megvárja, és figyeli az új adatokat és eseményeket a szolgáltatási végpont. Ha új adatokat és a egy esemény megfelel a megadott feltételnek, akkor a trigger akkor aktiválódik, majd létrehoz egy logikaialkalmazás-példányt, amely majd dolgozza fel a bemeneti adatok.
-Webhook eseményindítók lényegében ugyanúgy működik a [webhook-műveletek](#webhook-actions) korábban ebben a témakörben leírt, és a beállítása `subscribe` és `unsubscribe` végpontok. 
+A webhook-trigger egy *leküldéses trigger* , amely a szolgáltatás végpontján megvárja és figyeli az új adatait vagy eseményeit. Ha az új adatok vagy az események megfelelnek a megadott feltételnek, az eseményindító elindít egy Logic app-példányt, majd bemenetként dolgozza fel az adatokat.
+A webhook-eseményindítók ugyanúgy [](#webhook-actions) működnek, mint az ebben a témakörben korábban ismertetett webhook- `subscribe` műveletek `unsubscribe` , és a és a végpontokkal vannak beállítva. 
 
-* `subscribe` Végpont: Ha ad hozzá, és mentse a logikai alkalmazás a webhook eseményindítóhoz, a Logic Apps összetevő, amely meghívja a `subscribe` végpont. Ebben a lépésben hatására a logikai alkalmazás létrehozása egy visszahívási URL-címet, amely az API-t tárolja. Ha új adatokat és a egy eseményt, amely megfelel a megadott feltételnek, az API-hívások vissza és a egy HTTP POST URL-címre. A tartalom hasznos és a fejléc adja át a logikai alkalmazás bemeneteként.
+* `subscribe`végpont Amikor webhook-triggert ad hozzá és ment a logikai alkalmazásban, a Logic apps motor meghívja a `subscribe` végpontot. Ez a lépés azt eredményezi, hogy a logikai alkalmazás létrehoz egy visszahívási URL-címet, amelyet az API tárol. Új vagy a megadott feltételnek megfelelő esemény esetén az API a HTTP-POSTával hívja vissza az URL-címet. A tartalom és a fejléc a logikai alkalmazás bemenetként adja át a tartalmat.
 
-* `unsubscribe` Végpont: Ha a webhook eseményindítóhoz vagy teljes logikai alkalmazás törlése a Logic Apps összetevő, amely meghívja a `unsubscribe` végpont. Ezután regisztrációjának törlése a visszahívási URL-Címének és a folyamatokat, szükség szerint állítsa le az API-t.
+* `unsubscribe`végpont Ha a webhook-trigger vagy a teljes logikai alkalmazás törölve lett, a Logic apps `unsubscribe` motor meghívja a végpontot. Az API ezután törölheti a visszahívási URL-címet, és szükség szerint leállíthatja a folyamatokat.
 
-![Webhook-eseményindító minta](./media/logic-apps-create-api-app/custom-api-webhook-trigger-pattern.png)
+![Webhook-trigger mintája](./media/logic-apps-create-api-app/custom-api-webhook-trigger-pattern.png)
 
 > [!NOTE]
-> Jelenleg a Logikaialkalmazás-tervező nem támogatja a Swagger felderítő webhook-végpontjait. Így az ebben a mintában fel kell vennie egy [ **Webhook** eseményindító](../connectors/connectors-native-webhook.md) , és adja meg az URL-címe, fejlécek és a kérés törzsében. Lásd még: [HTTPWebhook eseményindító](logic-apps-workflow-actions-triggers.md#httpwebhook-trigger). A visszahívási URL-címet megadni, használhatja a `@listCallbackUrl()` szükség szerint az előző mezők munkafolyamat-funkció.
+> A Logic app Designer jelenleg nem támogatja a webhook-végpontok felfedését a hencegő használatával. Tehát ehhez a mintához hozzá kell adnia egy [ **webhook** ](../connectors/connectors-native-webhook.md) -triggert, és meg kell adnia a kérelem URL-címét, fejléceit és törzsét. Lásd még: [HTTPWebhook trigger](logic-apps-workflow-actions-triggers.md#httpwebhook-trigger). A visszahívási URL-cím átadásához szükség `@listCallbackUrl()` szerint használhatja a munkafolyamat-függvényt az előző mezők bármelyikén.
 >
-> Hogy a feldolgozási ugyanazokat az adatokat többször is feldolgozza, az eseményindító már elolvasta és a logikai alkalmazás átadott adatokat kell törölni.
+> Ha nem szeretné, hogy ugyanazokat az adatfeldolgozást többször is feldolgozza, az triggernek törölnie kell a logikai alkalmazásba már olvasott és továbbított adatait.
 
 > [!TIP]
-> Egy példa webhook-minta, tekintse át ezt [webhook eseményindító vezérlő minta a Githubon](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs).
+> Egy példa webhook-minta esetén tekintse át ezt a [webhook-indító vezérlő mintát a githubon](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs).
 
-## <a name="secure-calls-to-your-apis-from-logic-apps"></a>Biztonságos API-k hívása a logikai alkalmazásokból
+## <a name="secure-calls-to-your-apis-from-logic-apps"></a>Az API-k biztonságos hívása a Logic appsből
 
-Miután létrehozta az egyéni API-k, hitelesítés beállítása API-k, hogy hívása azokat biztonságosan a logikai alkalmazásokból. Ismerje meg, [biztonságossá tétele a logic apps egyéni API-hívások](../logic-apps/logic-apps-custom-api-authentication.md).
+Az egyéni API-k létrehozása után állítsa be az API-k hitelesítését, hogy biztonságosan meghívja őket a Logic apps szolgáltatásból. Megtudhatja, [hogyan védheti meg az egyéni API-kat a Logic apps](../logic-apps/logic-apps-custom-api-authentication.md)használatával.
 
-## <a name="deploy-and-call-your-apis"></a>Üzembe helyezése és hívása az API-k
+## <a name="deploy-and-call-your-apis"></a>API-k üzembe helyezése és meghívása
 
-Miután beállította a hitelesítést, API-k üzembe helyezés beállítása. Ismerje meg, [hogyan helyezheti üzembe és egyéni API-k hívása a logic apps](../logic-apps/logic-apps-custom-api-host-deploy-call.md).
+A hitelesítés beállítása után állítsa be az API-k üzembe helyezését. Ismerje meg, [Hogyan helyezhet üzembe és hívhat meg egyéni API-kat a Logic apps szolgáltatásból](../logic-apps/logic-apps-custom-api-host-deploy-call.md).
 
-## <a name="publish-custom-apis-to-azure"></a>Egyéni API-k közzététele az Azure-bA
+## <a name="publish-custom-apis-to-azure"></a>Egyéni API-k közzététele az Azure-ban
 
-Egyéni API-k elérhetővé tétele az Azure Logic Apps más felhasználói számára, adja hozzá a biztonsági, és regisztrálja őket a logikai alkalmazás-összekötők. További információért lásd az [egyéni összekötők áttekintését](../logic-apps/custom-connector-overview.md). 
+Ahhoz, hogy az egyéni API-k elérhetők legyenek az Azure más Logic Apps felhasználói számára, hozzá kell adnia a biztonságot, és regisztrálnia kell őket Logic app-összekötőként. További információért lásd az [egyéni összekötők áttekintését](../logic-apps/custom-connector-overview.md). 
 
-Egyéni API-k elérhetővé tenni a Logic Apps, a Microsoft Flow és a Microsoft PowerApps összes felhasználójára, kell hozzáadni a biztonsági, az API-k regisztrálása a logikai alkalmazás-összekötők, és összekötők jelölje a [Microsoft Azure Certified program](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/). 
+Ahhoz, hogy az egyéni API-k elérhetők legyenek Logic Apps, Microsoft Flow és Microsoft PowerApps összes felhasználója számára, hozzá kell adnia a biztonságot, regisztrálnia kell az API-kat Logic app-összekötőként, és jelölnie kell az összekötőket az [Microsoft Azure Certified programhoz](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/). 
 
 ## <a name="get-support"></a>Támogatás kérése
 
-* Egyéni API-k az adott segítségért lépjen kapcsolatba [ customapishelp@microsoft.com ](mailto:customapishelp@microsoft.com).
+* Az egyéni API-kkal kapcsolatos speciális segítségért forduljon [customapishelp@microsoft.com](mailto:customapishelp@microsoft.com)a következőhöz:.
 
 * A kérdéseivel látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 
@@ -235,5 +235,5 @@ Egyéni API-k elérhetővé tenni a Logic Apps, a Microsoft Flow és a Microsoft
 ## <a name="next-steps"></a>További lépések
 
 * [Hibák és kivételek kezelése](../logic-apps/logic-apps-exception-handling.md)
-* [Hívása, eseményindító, vagy a HTTP-végponttal rendelkező logikai alkalmazások beágyazása](../logic-apps/logic-apps-http-endpoint.md)
-* [A használatmérés a műveletek és triggerek](../logic-apps/logic-apps-pricing.md)
+* [Logikai alkalmazások hívása, triggere vagy beágyazása HTTP-végpontokkal](../logic-apps/logic-apps-http-endpoint.md)
+* [Műveletek és eseményindítók használatának mérése](../logic-apps/logic-apps-pricing.md)

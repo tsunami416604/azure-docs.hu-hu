@@ -1,82 +1,82 @@
 ---
-title: Ismerje meg, az Apache Hadoop-tesztkörnyezet - emulátor – Azure HDInsight használatával
-description: 'Az Apache Hadoop-ökoszisztéma használatáról tanulási indításához állíthat be egy Hadoop-tesztkörnyezet a hortonworks által biztosított-beli virtuális gépen. '
-keywords: hadoop-emulátorban, a hadoop-tesztkörnyezet
+title: Ismerje meg, hogyan használhat egy Apache Hadoop homokozó-emulátort – Azure HDInsight
+description: 'Az Apache Hadoop ökoszisztéma használatának megismeréséhez beállíthatja, hogy egy Azure-beli virtuális gépen Hadoop-munkaterületet állítson be a Hortonworks-ben. '
+keywords: Hadoop Emulator, Hadoop homokozó
 ms.reviewer: jasonh
-services: hdinsight
 author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 12/11/2017
+ms.date: 05/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: 1da676787eeee1eb75095a5e3a6b3f40056567ad
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9515f0ecae92e6350924b3856aa6cbf20e608d51
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58005774"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066691"
 ---
-# <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Az Apache Hadoop-tesztkörnyezet, egy-egy virtuális gépen emulátoron használatának első lépései
+# <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Ismerkedjen meg egy Apache Hadoop homokozóval, amely egy virtuális gépen futó emulátor
 
-Ismerje meg, hogyan lehet telepíteni az Apache Hadoop-tesztkörnyezet Hortonworks megismerheti a Hadoop-ökoszisztéma virtuális gépen. A védőfal megismerheti a Hadoop, a Hadoop elosztott fájlrendszer (HDFS) és a feladat elküldése helyi fejlesztési környezetet biztosít. Ha már ismeri a Hadoop, elkezdheti az Azure-beli Hadoop használata egy HDInsight-fürtöt. Az első lépésekről további információkért lásd: [Hadoop on HDInsight használatának első lépései](apache-hadoop-linux-tutorial-get-started.md).
+Megtudhatja, hogyan telepítheti a virtuális gépeken futó Hortonworks Apache Hadoop-munkaterületét a Hadoop-ökoszisztéma megismerésére. A homokozó helyi fejlesztési környezetet biztosít a Hadoop, a Hadoop elosztott fájlrendszer (HDFS) és a feladatok beküldésének megismeréséhez. Ha már ismeri a Hadoop-t, megkezdheti a Hadoop használatát az Azure-ban egy HDInsight-fürt létrehozásával. További információ az első lépésekről: Ismerkedés [a Hadoop szolgáltatással a HDInsight-on](apache-hadoop-linux-tutorial-get-started.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
-* [Oracle VirtualBox](https://www.virtualbox.org/). Töltse le és telepítse azt a [Itt](https://www.virtualbox.org/wiki/Downloads).
 
+* [Oracle VirtualBox](https://www.virtualbox.org/). Töltse le és telepítse innen [.](https://www.virtualbox.org/wiki/Downloads)
 
+## <a name="download-and-install-the-virtual-machine"></a>A virtuális gép letöltése és telepítése
 
-## <a name="download-and-install-the-virtual-machine"></a>Töltse le és telepítse a virtuális gép
-1. Keresse meg a [Hortonworks letölti](https://hortonworks.com/downloads/#sandbox).
+1. Tallózással keresse meg a [Cloudera letöltéseit](https://www.cloudera.com/downloads/hortonworks-sandbox/hdp.html).
 
-2. Kattintson a **töltse le a VIRTUALBOX** töltheti le a legújabb hortonworks – tesztkörnyezet egy virtuális gépen. Azure a Hortonworks közreműködésével regisztrálni a letöltés megkezdése előtt kéri. Töltse le a hálózat sebességétől függően egy-két órát vesz igénybe.
+1. A virtuális gépen a legújabb Hortonworks-sandbox letöltéséhez kattintson a **VirtualBox** ( **telepítés** ) elemre. Jelentkezzen be, vagy fejezze be a termék érdeklődési formáját.
 
-    ![Hivatkozás képe, töltse le a VirtualBox hortonworks – tesztkörnyezet](./media/apache-hadoop-emulator-get-started/download-sandbox.png)
-3. Az azonos weblapon kattintson a **virtuális Box importálás** hivatkozásra a telepítési utasításokat a virtuális gépet tartalmazó PDF-fájl letöltéséhez.
+1. A letöltés megkezdéséhez kattintson a **HDP a SANDBOX (legújabb)** gombra.
 
-Töltse le egy régebbi HDP verzió védőfal, bontsa ki az archívum:
+A sandbox beállításával kapcsolatos útmutatásért lásd: a [homokozó üzembe helyezése és telepítési útmutatója](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/1/).
 
-![Archív hortonworks – tesztkörnyezet](./media/apache-hadoop-emulator-get-started/hortonworks-sandbox-archive.png)
-
+A régebbi verziójú HDP letöltéséhez tekintse meg a **régebbi verziók**alatt található hivatkozásokat.
 
 ## <a name="start-the-virtual-machine"></a>A virtuális gép elindítása
 
-1. Nyissa meg a virtuális gép VirtualBox Oracle.
-2. Az a **fájl** menüben kattintson a **importálás berendezés**, és adja meg a Hortonworks Sandbox kép.
-1. Válassza ki a Hortonworks Sandbox, kattintson **Start**, majd **indítsa el a normál**. Miután a virtuális gép a rendszerindítási folyamat befejeződött, bejelentkezési utasításokat jeleníti meg.
+1. Nyissa meg az Oracle VM VirtualBoxt.
+1. A **fájl** menüben kattintson a **berendezés importálása**elemre, majd adja meg a Hortonworks-homokozó rendszerképét.
+1. Válassza ki a Hortonworks Sandboxot, kattintson a **Start**gombra, majd a **normál indítás**elemre. Ha a virtuális gép befejezte a rendszerindítási folyamatot, a bejelentkezési utasításokat jeleníti meg.
 
-    ![Normál indítása](./media/apache-hadoop-emulator-get-started/normal-start.png)
-2. Nyisson meg egy webböngészőt, és keresse meg az URL-cím jelenik meg (általában `http://127.0.0.1:8888`).
+    ![a VirtualBox Manager normál indítása](./media/apache-hadoop-emulator-get-started/virtualbox-normal-start.png)
 
-## <a name="set-sandbox-passwords"></a>A védőfal jelszavak beállítása
+1. Nyisson meg egy webböngészőt, és navigáljon a megjelenő URL-címhez (általában `http://127.0.0.1:8888`).
 
-1. Az a **Ismerkedés** . lépés a Hortonworks Sandbox oldala, válassza a **nézet speciális beállítások**. Ezen az oldalon az információk segítségével jelentkezzen be az SSH-val tesztkörnyezetben. Használja a megadott felhasználónévvel és jelszóval.
+## <a name="set-sandbox-passwords"></a>A homokozó jelszavainak beállítása
+
+1. A Hortonworks-munkaterületének első **lépések** lépése lapon válassza a **Speciális beállítások megjelenítése**lehetőséget. Az oldalon található információk használatával jelentkezzen be a homokozóba az SSH használatával. Használja a megadott nevet és jelszót.
 
    > [!NOTE]
-   > Ha nem rendelkezik egy SSH-ügyfél telepítve van, a webes az SSH-val, a virtuális gép által megadott **http://localhost:4200/**.
+   > Ha nem telepített SSH-ügyfelet, használhatja a virtuális gép **http://localhost:4200/** által biztosított webalapú SSH-t.
 
-    Az első csatlakozáskor SSH,-val kéri a rendszergazdai fiók jelszavának módosítása. Adjon meg egy új jelszót, amelyet használhat az SSH-bejelentkezéskor.
+    Amikor először csatlakozik az SSH-val, a rendszer felszólítja a root fiók jelszavának módosítására. Adjon meg egy új jelszót, amelyet az SSH használatával történő bejelentkezéskor használ.
 
 2. Miután bejelentkezett, adja meg a következő parancsot:
 
         ambari-admin-password-reset
 
-    Amikor a rendszer kéri, adjon meg egy jelszót az Ambari rendszergazdai fiókkal. Ez használatos az Ambari webes Kezelőfelületen használatakor.
+    Ha a rendszer kéri, adjon meg egy jelszót a Ambari-rendszergazdai fiókhoz. Ez akkor használatos, amikor hozzáfér a Ambari webes felhasználói felületéhez.
 
-## <a name="use-hive-commands"></a>Hive-parancsokkal
+## <a name="use-hive-commands"></a>Struktúra-parancsok használata
 
-1. Az SSH-kapcsolatot a védőfal a következő parancs használatával indítsa el a Hive-rendszerhéj:
+1. A következő parancs használatával indítsa el a kaptár rendszerhéját egy, a homokozóhoz csatlakozó SSH-kapcsolatban:
 
         hive
-2. A rendszerhéj megkezdése után használja az alábbi a táblák a védőfal által biztosított:
+2. A rendszerhéj elindítása után a következő paranccsal tekintheti meg a homokozóban elérhető táblákat:
 
         show tables;
-3. Használja a következő 10 sorait beolvasni a `sample_07` tábla:
+3. A következő paranccsal kérhet le 10 sort a `sample_07` táblából:
 
         select * from sample_07 limit 10;
 
 ## <a name="next-steps"></a>További lépések
-* [Ismerje meg, hogyan használható a Visual Studio a hortonworks – tesztkörnyezet](../hdinsight-hadoop-emulator-visual-studio.md)
-* [Tanulási a köteleknek, a hortonworks – tesztkörnyezet](https://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
-* [Hadoop oktatóanyag – HDP – első lépések](https://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/)
 
+* [Ismerje meg, hogyan használhatja a Visual studiót a Hortonworks homokozóval](../hdinsight-hadoop-emulator-visual-studio.md)
+
+* [A Hortonworks-Homokozóhoz tartozó kötelek megismerése](https://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
+
+* [Hadoop-oktatóanyag – első lépések a HDP](https://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/)

@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
 ms.openlocfilehash: a544cdca1ef4be56fcf368a39040f4ee85076a9e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860134"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60815113"
 ---
 # <a name="structured-query-expression"></a>Strukturált lekérdezési kifejezés
 
@@ -29,7 +29,7 @@ Strukturált lekérdezési kifejezéssé szerezhetők be [ *értelmezése* ](int
 
 Attribútum lekérdezési kifejezés egy objektumokat a megfelelő szemben egy adott attribútum alapján azonosítja.  Különböző megfelelő műveletek támogatottak a attribútum típusától függően és indexelt művelet a megadott a [séma](SchemaFormat.md):
 
-| Typo | Művelet | Példák |
+| Típus | Művelet | Példák |
 |------|-------------|------------|
 | String | egyenlő | Title = "segít a rejtett szemantikai" (kanonikus + szinonimák) |
 | String | egyenlő | Author.Name=='susan t dumais (kanonikus csak)|

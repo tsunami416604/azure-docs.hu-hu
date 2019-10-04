@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: bb43a75b6a221c15c8724302797d04c22e04c8d2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 25cae58663f6fa7ef27995c10509eb33e49dd4c7
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58113639"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70012572"
 ---
 # <a name="create-a-netapp-account"></a>NetApp-fiók létrehozása
 A NetApp-fiókok létrehozásával lehetősége lesz kapacitáskészleteket beállítani, majd azt követően köteteket létrehozni. NetApp-fiókokat az Azure NetApp Files panelen hozhat létre.
 
 ## <a name="before-you-begin"></a>Előkészületek
-Az előfizetést a NetApp erőforrás-szolgáltató és a nyilvános előzetes verziójú funkció használatával van regisztrálva.
+Meg kell kapnia a Azure NetApp Files csapatának e-mail-címét, amely megerősíti, hogy hozzáférést kapott a szolgáltatáshoz. Lásd: [várólistára vonatkozó kérelem küldése a szolgáltatás eléréséhez](azure-netapp-files-register.md#waitlist).
 
-[Regisztráljon a Azure NetApp-fájlok](azure-netapp-files-register.md)
+A NetApp erőforrás-szolgáltató használatához regisztrálnia kell az előfizetését is. Lásd: [a NetApp erőforrás-szolgáltató regisztrálása](azure-netapp-files-register.md#resource-provider).
 
 ## <a name="steps"></a>Lépések 
 
@@ -48,7 +48,7 @@ Az előfizetést a NetApp erőforrás-szolgáltató és a nyilvános előzetes v
      Válasszon ki egyet a meglévő előfizetések közül.
    * **Erőforráscsoport**   
      Használjon egy meglévő erőforráscsoportot, vagy hozzon létre egy újat.
-   * **Hely**  
+   * **Location**  
      Válassza ki azt az Azure-régiót, ahol a fiókot és annak alárendelt erőforrásait létre szeretné hozni.  
 
      ![Új NetApp-fiók](../media/azure-netapp-files/azure-netapp-files-new-netapp-account.png)
@@ -56,6 +56,11 @@ Az előfizetést a NetApp erőforrás-szolgáltató és a nyilvános előzetes v
 
 5. Kattintson a **Create** (Létrehozás) gombra.     
    A létrehozott NetApp-fiók megjelenik az Azure NetApp Files panelen. 
+
+> [!NOTE] 
+> Ha nem kapott hozzáférést a Azure NetApp Files szolgáltatáshoz, a következő hibaüzenet jelenik meg az első NetApp-fiók létrehozásakor:  
+>
+> `{"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"NotFound","message":"{\r\n \"error\": {\r\n \"code\": \"InvalidResourceType\",\r\n \"message\": \"The resource type could not be found in the namespace 'Microsoft.NetApp' for api version '2017-08-15'.\"\r\n }\r\n}"}]}`
 
 ## <a name="next-steps"></a>További lépések  
 

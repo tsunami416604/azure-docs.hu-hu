@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e05f865f0fd76e93b92f3bb09f1babd780074065
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ccf3894daf71be0defe4271a08ec5e8d963e0d34
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57442579"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227487"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező AnswerHub
 
@@ -184,7 +184,7 @@ Ebben a szakaszban hozzon létre egy tesztfelhasználót Britta Simon nevű az A
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőbe írja be **brittasimon @< yourcompanydomain.extension >**.  
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@< yourcompanydomain.extension >** .  
     Például: BrittaSimon@contoso.com.
 
     c. Válassza ki a **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
@@ -193,7 +193,7 @@ Ebben a szakaszban hozzon létre egy tesztfelhasználót Britta Simon nevű az A
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban beállította Britta Simon számára a hozzáférés biztosításával AnswerHub az Azure AD egyszeri bejelentkezés használatára.
+Ebben a szakaszban, állítsa be a felhasználó Britta Simon által biztosított AnswerHub a felhasználói hozzáférés az Azure AD egyszeri bejelentkezés használatára.
 
 **Az Azure ad-ben tesztfelhasználó hozzárendelése:**
 

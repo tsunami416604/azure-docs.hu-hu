@@ -1,6 +1,6 @@
 ---
-title: Kódolási egység – Azure felvételével médiafeldolgozási skálázása |}  A Microsoft Docs
-description: Ismerje meg, hogyan lehet .NET-tel kódolási egység hozzáadása
+title: Adathordozó-feldolgozás skálázása kódolási egységek hozzáadásával – Azure |  Microsoft Docs
+description: Ismerje meg, hogyan adhat hozzá kódolási egységeket a .NET-tel
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: juliako;milangada;
-ms.openlocfilehash: 65b647a375ecbe70f7f29af5b09827f1c34dcd6f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: juliako
+ms.reviewer: milangada
+ms.openlocfilehash: 9d393e07008d981834d9deb48ded73995366d7e4
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58183033"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "69016573"
 ---
 # <a name="how-to-scale-encoding-with-net-sdk"></a>A kódolás méretezése a .NET SDK használatával
 > [!div class="op_single_selector"]
@@ -33,11 +34,11 @@ ms.locfileid: "58183033"
 
 ## <a name="overview"></a>Áttekintés
 > [!IMPORTANT]
-> Mindenképpen tekintse át a [áttekintése](media-services-scale-media-processing-overview.md) médiafeldolgozás méretezésével kapcsolatos további információért.
+> Tekintse át az [áttekintést](media-services-scale-media-processing-overview.md) , hogy további információkat kapjon a média-feldolgozás méretezéséről.
 > 
 > 
 
-A szolgáltatás számára fenntartott egység típusának és kódoláshoz fenntartott egység .NET SDK használatával számának módosításához tegye a következőket:
+A fenntartott egység típusának és a kódoláshoz fenntartott egységek számának a .NET SDK használatával történő módosításához tegye a következőket:
 
     IEncodingReservedUnit encodingS1ReservedUnit = _context.EncodingReservedUnits.FirstOrDefault();
     encodingS1ReservedUnit.ReservedUnitType = ReservedUnitType.Basic; // Corresponds to S1
@@ -51,7 +52,7 @@ A szolgáltatás számára fenntartott egység típusának és kódoláshoz fenn
 
 ## <a name="opening-a-support-ticket"></a>Támogatási jegy megnyitása
 
-Alapértelmezés szerint minden Media Services-fiók méretezheti legfeljebb 10 S2 vagy S3 szintű Media szolgáltatás számára fenntartott egységek (helyet) vagy 25 S1-helyet, és 5 igény szerinti, folyamatos átvitelre fenntartott egységek. Nagyobb Korlátértékre kérheti egy támogatási jegy megnyitásával.
+Alapértelmezés szerint minden Media Services fiók legfeljebb 10 S2 vagy S3 Media szolgáltatás számára fenntartott egységre (MRUs) vagy 25 S1 MRUs, valamint 5 igény szerinti folyamatos átvitelre fenntartott egységre méretezhető. A támogatási jegy megnyitásával magasabb korlátot kérhet.
 
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

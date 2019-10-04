@@ -3,7 +3,7 @@ title: Az Azure mikroszolgáltatások Windows fejlesztési környezetének kiala
 description: Telepítse a futtatókörnyezetet, az SDK-t és az eszközöket, majd hozzon létre egy helyi fejlesztési fürtöt. A beállítás befejezése után készen áll az alkalmazások létrehozására Windows rendszeren.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: peterpogorski
 manager: chackdan
 editor: ''
 ms.assetid: b94e2d2e-435c-474a-ae34-4adecd0e6f8f
@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/02/2019
-ms.author: aljo
-ms.openlocfilehash: 45d5d1b4e050d01b003b6321e1af44c0da762e19
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 08/22/2019
+ms.author: atsenthi
+ms.openlocfilehash: 0bc8a5bbecc4e7d58265e9c10c2c8a3351fcc312
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59275493"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036014"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>A fejlesztőkörnyezet előkészítése Windowson
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.locfileid: "59275493"
 > 
 > 
 
-Az [Azure Service Fabric-alkalmazásoknak][1] a Windows rendszerű fejlesztői gépen való létrehozásához és futtatásához telepítse a Service Fabric-futtatókörnyezetet, az SDK-t és az eszközöket. Továbbá [engedélyeznie kell az SDK-ban található Windows PowerShell-szkriptek](#enable-powershell-script-execution) végrehajtását.
+Az [Azure Service Fabric-alkalmazások][1] a Windows fejlesztői gépen való létrehozásához és futtatásához telepítse a Service Fabric futtatókörnyezetet, az SDK-t és az eszközöket. Továbbá [engedélyeznie kell az SDK-ban található Windows PowerShell-szkriptek](#enable-powershell-script-execution) végrehajtását.
 
 ## <a name="prerequisites"></a>Előfeltételek
 ### <a name="supported-operating-system-versions"></a>Támogatott operációsrendszer-verziók
@@ -43,21 +43,21 @@ A fejlesztéshez a következő operációsrendszer-verziók támogatottak:
 
 > [!NOTE]
 > Windows 7-támogatás:
-> - Alapértelmezés szerint a Windows 7 csak a Windows PowerShell 2.0-t tartalmazza. A Service Fabric PowerShell-parancsmagokhoz a PowerShell 3.0 vagy újabb verziója szükséges. A [Windows PowerShell 5.0-t letöltheti][powershell5-download] a Microsoft letöltőközpontból.
+> - Alapértelmezés szerint a Windows 7 csak a Windows PowerShell 2.0-t tartalmazza. A Service Fabric PowerShell-parancsmagokhoz a PowerShell 3.0 vagy újabb verziója szükséges. A [Windows PowerShell 5,0][powershell5-download] a Microsoft letöltőközpontból tölthető le.
 > - A Service Fabric fordított proxyja nem érhető el Windows 7 rendszeren.
 >
 
 ## <a name="install-the-sdk-and-tools"></a>Az SDK és az eszközök telepítése
-Webplatform-telepítő (WebPI) az SDK és eszközök telepítése a javasolt módja. Futásidejű hibák WebPI segítségével kap, ha is megtalálhatja a telepítőcsomagokat mutató közvetlen hivatkozásokat a kibocsátási megjegyzésekben egy adott Service Fabric-kiadásban. A kibocsátási megjegyzések találhatók a különböző kiadás megtalálható a [Service Fabric-csapat blogja](https://blogs.msdn.microsoft.com/azureservicefabric/).
+A webplatform-telepítő (WebPI) az SDK és az eszközök telepítésének ajánlott módja. Ha futásidejű hibákat kap a WebPI használatával, az adott Service Fabric kiadás kibocsátási megjegyzései között közvetlen hivatkozásokat is találhat a telepítőknek. A kibocsátási megjegyzések a [Service Fabric csapat blogjának](https://blogs.msdn.microsoft.com/azureservicefabric/)különböző kiadási hirdetményekben találhatók.
 
 > [!NOTE]
-> Helyi Service Fabric fejlesztési fürtöt frissítés nem támogatott.
+> A helyi Service Fabric fejlesztési fürtök frissítése nem támogatott.
 
-### <a name="to-use-visual-studio-2017"></a>A Visual Studio 2017 használata
-A Service Fabric-eszközök a Visual Studio 2017 Azure Development Workload munkafolyamatának részét képezik. A Visual Studio telepítésének részeként engedélyezze ezt a munkafolyamatot.
+### <a name="to-use-visual-studio-2017-or-2019"></a>A Visual Studio 2017 vagy a 2019 használata
+A Service Fabric-eszközök a Visual Studio 2017-es és 2019-es verziójának Azure-fejlesztési számítási feladatának részét képezik. A Visual Studio telepítésének részeként engedélyezze ezt a munkafolyamatot.
 Emellett telepítenie kell a Microsoft Azure Service Fabric SDK-t és futtatókörnyezetet is a webplatform-telepítővel.
 
-* [A Microsoft Azure Service Fabric SDK telepítése][core-sdk]
+* [Telepítse a Microsoft Azure Service Fabric SDK-t][core-sdk]
 
 ### <a name="to-use-visual-studio-2015-requires-visual-studio-2015-update-2-or-later"></a>A Visual Studio 2015 használata (Visual Studio 2015 2. frissítés vagy újabb szükséges)
 A Visual Studio 2015 esetében a Service Fabric-eszközök az SDK-val és a futtatókörnyezettel együtt települnek a webplatform-telepítő használatával:
@@ -66,18 +66,19 @@ A Visual Studio 2015 esetében a Service Fabric-eszközök az SDK-val és a futt
 
 ### <a name="sdk-installation-only"></a>Csak az SDK telepítése
 Ha csak az SDK-ra van szükség, telepítse a következő csomagot:
-* [A Microsoft Azure Service Fabric SDK telepítése][core-sdk]
+* [Telepítse a Microsoft Azure Service Fabric SDK-t][core-sdk]
 
 Az aktuális verziók a következők:
-* Service Fabric SDK és eszközök 3.3.654
-* Service Fabric-futtatókörnyezet 6.4.654
-* Service Fabric Tools Pro Visual Studio 2015 2.4.11116.1
-* Visual Studio 2017 15.9 tartalmazza a Service Fabric Tools for Visual Studio 2.4.11024.1 
+* Service Fabric SDK és eszközök 3.4.664
+* Service Fabric futtatókörnyezet 6.5.664
+* Service Fabric Tools for Visual Studio 2015 2.5.20615.1
+* A Visual Studio 2017 15,9 Service Fabric Tools for Visual Studio 2.4.11024.1 tartalmaz 
+* A Visual Studio 2019 16,1 Service Fabric Tools for Visual Studio 2.5.20423.3 tartalmaz
 
-Támogatott verziók listáját lásd: [Service Fabric-verziók](service-fabric-versions.md)
+A támogatott verziók listáját lásd: [Service Fabric verziók](service-fabric-versions.md)
 
 > [!NOTE]
-> Frissíti a fürtök (beépített) nem támogatottak az alkalmazás vagy a fürt egyetlen gépen; a beépített fürtöt törölje és hozza létre újra, ha szeretné hajtsa végre a fürt frissítése, vagy problémát tapasztal az alkalmazás frissítése. 
+> Az alkalmazás-vagy fürt frissítései nem támogatják az egyetlen gépi fürtöket (beépített); törölje a beépített-fürtöt, és hozza létre újra, ha a fürt frissítését kell végrehajtania, vagy ha problémába ütközik az alkalmazások frissítésével. 
 
 ## <a name="enable-powershell-script-execution"></a>A PowerShell-parancsfájl végrehajtásának engedélyezése
 A Service Fabric Windows PowerShell-parancsfájlokat használ a helyi fejlesztési fürtök létrehozásához és az alkalmazások Visual Studióból történő üzembe helyezéséhez. Alapértelmezés szerint a Windows blokkolja ezen szkriptek futását. Az engedélyezésükhöz módosítania kell a PowerShell végrehajtási házirendjét. Nyissa meg a PowerShellt rendszergazdaként, és írja be a következő parancsot:
@@ -85,21 +86,21 @@ A Service Fabric Windows PowerShell-parancsfájlokat használ a helyi fejleszté
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 ```
-## <a name="install-docker-optional"></a>Telepítheti a Dockert (nem kötelező)
-[Service Fabric, amely egy tárlóvezénylővel](service-fabric-containers-overview.md) üzembe helyezésének mikroszolgáltatásokat Vezényel számítógépfürtökön. A helyi fejlesztési fürt Windows tárolóalkalmazások futtatásához először telepítenie kell a Docker for Windows. Első [Docker CE for Windows (stable)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description). Miután telepítette és elindította a Dockert, kattintson a jobb gombbal a tálca ikonjára, és válassza a **Switch to Windows containers** (Váltás Windows-tárolókra) lehetőséget. Ez a lépés szükséges ahhoz, hogy Windows-alapú Docker-rendszerképeket tudjon futtatni.
+## <a name="install-docker-optional"></a>A Docker telepítése (nem kötelező)
+A [Service Fabric egy tároló Orchestrator](service-fabric-containers-overview.md) , amely a gépek egy fürtön való üzembe helyezését végzi. A Windows-tároló alkalmazások helyi fejlesztési fürtön való futtatásához először telepítenie kell a Docker for Windowst. Szerezze [be a Windows rendszerhez készült Docker CE-t (stable)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description). Miután telepítette és elindította a Dockert, kattintson a jobb gombbal a tálca ikonjára, és válassza a **Switch to Windows containers** (Váltás Windows-tárolókra) lehetőséget. Ez a lépés szükséges ahhoz, hogy Windows-alapú Docker-rendszerképeket tudjon futtatni.
 
 ## <a name="next-steps"></a>További lépések
 Most, hogy végzett a fejlesztőkörnyezet beállításával, belefoghat az alkalmazások létrehozásába és futtatásába.
 
-* [Ismerje meg, hogyan hozzon létre, telepíthetnek és alkalmazások kezelése](service-fabric-tutorial-create-dotnet-app.md)
-* [További tudnivalók a programozási modellekről: A Reliable Services és Reliable Actors](service-fabric-choose-framework.md)
+* [Ismerje meg, hogyan hozhat létre, helyezhet üzembe és kezelhet alkalmazásokat](service-fabric-tutorial-create-dotnet-app.md)
+* [További információ a programozási modellekről: Reliable Services és Reliable Actors](service-fabric-choose-framework.md)
 * [A Service Fabric mintakódjainak megtekintése a GitHubon](https://aka.ms/servicefabricsamples)
 * [A fürt megjelenítése a Service Fabric Explorer segítségével](service-fabric-visualizing-your-cluster.md)
 * A [Service Fabric támogatási lehetőségeinek](service-fabric-support.md) ismertetése
 
 [1]: https://azure.microsoft.com/campaigns/service-fabric/ "A Service Fabric kampányoldala"
 [2]: https://go.microsoft.com/fwlink/?LinkId=517106 "VS RC"
-[full-bundle-vs2015]:https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015 "VS 2015 WebPI-hivatkozás"
-[full-bundle-dev15]:https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-Dev15 "Dev15 WebPI-hivatkozás"
-[core-sdk]:https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK "Core SDK WebPI-hivatkozás"
+[full-bundle-vs2015]: https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015 "VS 2015 WebPI-hivatkozás"
+[full-bundle-dev15]: https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-Dev15 "Dev15 WebPI-hivatkozás"
+[core-sdk]: https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK "Core SDK WebPI-hivatkozás"
 [powershell5-download]:https://www.microsoft.com/en-us/download/details.aspx?id=50395

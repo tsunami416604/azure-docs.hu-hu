@@ -14,11 +14,11 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 4eb881992b7e40e0a9d67bd2cee94f1f09958e9e
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59524106"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60825988"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Adatok áthelyezése egy helyszíni forrásra, és a felhő között az adatkezelési átjáróval
 > [!NOTE]
@@ -62,7 +62,7 @@ Ebben a lépésben, az Azure portal használatával hozzon létre egy Azure Data
     ![Hozzáadás a Kezdőpulthoz](./media/data-factory-move-data-between-onprem-and-cloud/OnPremNewDataFactoryAddToStartboard.png)
 
    > [!IMPORTANT]
-   > Az Azure data factory nevének globálisan egyedinek kell lennie. Ha a hibaüzenetet kapja: **Nem érhető el a Data factory name "ADFTutorialOnPremDF"**, módosítsa a nevet az adat-előállító (például yournameADFTutorialOnPremDF), és próbálkozzon újra a létrehozással. Ez a név helyett ADFTutorialOnPremDF használja ez az oktatóanyag fennmaradó lépéseinek végrehajtása során.
+   > Az Azure data factory nevének globálisan egyedinek kell lennie. Ha a hibaüzenetet kapja: **Nem érhető el a Data factory name "ADFTutorialOnPremDF"** , módosítsa a nevet az adat-előállító (például yournameADFTutorialOnPremDF), és próbálkozzon újra a létrehozással. Ez a név helyett ADFTutorialOnPremDF használja ez az oktatóanyag fennmaradó lépéseinek végrehajtása során.
    >
    > Az adat-előállító nevét regisztrálható egy **DNS** nevét, a jövőben így nyilvánosan láthatóvá válhat.
    >

@@ -1,75 +1,72 @@
 ---
 title: Az Azure Backup használata a szalagos infrastruktúra lecseréléséhez
-description: Bemutatjuk, miként Azure Backup nyújt szalaghoz hasonló szemantikát, ami lehetővé teszi a biztonsági mentése és visszaállítása az adatokat az Azure-ban
-services: backup
-author: trinadhk
-manager: vijayts
+description: Ismerje meg, hogyan biztosíthatja az Azure-ban tárolt adatok biztonsági mentését és helyreállítását lehetővé tevő szalagos szemantikai Azure Backup?
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 1/10/2017
-ms.author: saurse
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 59236774f98af927082c78f4b75a1f5880a7cac4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 04/30/2017
+ms.author: dacurwin
+ms.openlocfilehash: 3be3a2e3355793a8d0b4fcaf0e7f62668f78f0c8
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259604"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954881"
 ---
-# <a name="move-your-long-term-storage-from-tape-to-the-azure-cloud"></a>Szalag a hosszú távú tárolás áthelyezése az Azure-felhőben
-Azure Backup és a System Center Data Protection Manager-ügyfelek a következőket teheti:
+# <a name="move-your-long-term-storage-from-tape-to-the-azure-cloud"></a>A hosszú távú tároló áthelyezése szalagról az Azure-felhőbe
+A Azure Backup és a System Center Data Protection Manager ügyfelei a következőket tehetik:
 
-* Ütemezések, amely a szervezet igényeinek leginkább az adatok biztonsági másolatát.
-* A biztonsági másolatok adatainak megőrzése hosszabb ideig
-* Győződjön meg róla, Azure, a hosszú távú megőrzés részét kielégítése (szalag).
+* A szervezeti igényeknek leginkább megfelelő ütemtervek adatairól biztonsági másolatot készíthet.
+* A biztonsági mentési adat hosszabb ideig tartása
+* Az Azure-t a hosszú távú adatmegőrzési igényeknek (szalag helyett) egy részévé teheti.
 
-Ez a cikk bemutatja, hogyan engedélyezheti a felhasználók a biztonsági mentési és adatmegőrzési szabályzatok. Ügyfeleink, akik szalagokat a hosszú-távú adatmegőrzés megoldása érdekében kell most már rendelkezik egy hatékony és működőképes alternatívája az Ez a szolgáltatás rendelkezésre állását. A szolgáltatás engedélyezve van a legújabb kiadása az Azure Backup (elérhető [Itt](https://aka.ms/azurebackup_agent)). A System Center DPM ügyfeleknek frissíteniük kell a, legalább, a DPM 2012 R2 – UR5 az Azure Backup szolgáltatással a DPM használata előtt.
+Ez a cikk azt ismerteti, hogy az ügyfelek hogyan engedélyezhetik a biztonsági mentési és adatmegőrzési házirendeket. Azok az ügyfelek, akik szalagokat használnak a hosszú távú adatmegőrzési igények kielégítésére, mostantól hatékony és életképes alternatívát biztosítanak a szolgáltatás rendelkezésre állásával. A szolgáltatás a Azure Backup legújabb kiadásában van engedélyezve (amely [itt](https://aka.ms/azurebackup_agent)érhető el). A System Center DPM ügyfeleinek legalább DPM 2012 R2 UR5 kell frissíteniük, mielőtt a DPM szolgáltatást használják a Azure Backup szolgáltatással.
 
-## <a name="what-is-the-backup-schedule"></a>Mi az a biztonsági mentés ütemezése?
-A biztonsági mentési ütemezés azt jelzi, hogy a biztonsági mentés gyakoriságát. Például a beállításokat az alábbi képernyőn azt jelzik, hogy biztonsági mentések menetrendjét naponta este 6 órára, és éjfél.
+## <a name="what-is-the-backup-schedule"></a>Mi a biztonsági mentési ütemterv?
+A biztonsági mentési ütemterv a biztonsági mentési művelet gyakoriságát jelzi. A következő képernyőn látható beállítások például azt jelzik, hogy a biztonsági mentések naponta, 18:00 és éjfélkor készülnek.
 
-![Napi ütemezés](./media/backup-azure-backup-cloud-as-tape/dailybackupschedule.png)
+![Napi ütemterv](./media/backup-azure-backup-cloud-as-tape/dailybackupschedule.png)
 
-Ügyfelek is ütemezheti a heti biztonsági másolatok. Például a beállításokat az alábbi képernyőn adja meg, hogy biztonsági másolatokat készít minden másodlagos vasárnap & szerda 9:30 -kor és 1:00 -kor.
+Az ügyfelek heti biztonsági mentést is ütemezhetnek. A következő képernyőn látható beállítások például azt jelzik, hogy a biztonsági másolatok minden alternatív vasárnap &, szerdánként, 9:00 és 1 órakor.
 
-![Heti ütemezés](./media/backup-azure-backup-cloud-as-tape/weeklybackupschedule.png)
+![Heti ütemterv](./media/backup-azure-backup-cloud-as-tape/weeklybackupschedule.png)
 
-## <a name="what-is-the-retention-policy"></a>Mi az a megtartási házirendben?
-A megőrzési házirend megadja az időtartamot, amelynek a biztonsági mentést kell tárolni. Helyett mindössze az összes biztonsági mentési ponthoz "lapos házirendet", az ügyfelek alapján, ha a biztonsági mentés készül a különböző megőrzési házirendeket adhat meg. Például a biztonsági mentési pontok napi, hozott műveleti helyreállítási pontjaként szolgál, amely 90 napig őrződnek meg. A biztonsági mentési pont minden negyedév naplózási célra időpontokban hosszabb ideig megőrzi.
+## <a name="what-is-the-retention-policy"></a>Mi az adatmegőrzési szabály?
+Az adatmegőrzési szabály meghatározza azt az időtartamot, ameddig a biztonsági másolatot tárolni kell. Ahelyett, hogy az összes biztonsági mentési ponthoz megadta a "lapos házirendet", az ügyfelek eltérő adatmegőrzési házirendeket adhatnak meg a biztonsági mentés során. Például a napi biztonsági mentési pont, amely operatív helyreállítási pontként szolgál, 90 napig megmarad. Az egyes negyedévek végén végrehajtott biztonsági mentési pont naplózási célokra hosszabb ideig megmarad.
 
 ![Adatmegőrzési szabályzat](./media/backup-azure-backup-cloud-as-tape/retentionpolicy.png)
 
-Ebben a házirendben megadott "adatmegőrzési pontokat" teljes száma a 90 (napi pontok) + 40 (egyet a 10 évig negyedév) = 130.
+Az ebben a házirendben megadott "adatmegőrzési pontok" teljes száma 90 (napi pont) + 40 (az egyik negyedév 10 évre) = 130.
 
-## <a name="example--putting-both-together"></a>Példa – bármik lehetnek, mindkettő
-![Mintaképernyő](./media/backup-azure-backup-cloud-as-tape/samplescreen.png)
+## <a name="example--putting-both-together"></a>Példa – a kettő együtt történő elhelyezés
+![Minta képernyő](./media/backup-azure-backup-cloud-as-tape/samplescreen.png)
 
-1. **Napi adatmegőrzési**: naponta készített biztonsági másolatok hét napig tárolja.
-2. **Zabály hetenkénti megőrzéshez**: négy hétig minden nap, éjfélkor és 18 Órakor szombat készített biztonsági másolatok megmaradnak
-3. **Y havonkénti megőrzéshez**: minden hónap utolsó szombat 6 óra és éjfél mentésekre megmaradnak, 12 hónapig
-4. **Abály évenkénti megőrzéshez**: 10 évig minden márciusának utolsó szombaton éjfélkor készített biztonsági másolatok megmaradnak
+1. **Napi adatmegőrzési szabály**: A naponta készített biztonsági mentéseket hét napig tároljuk.
+2. **Heti adatmegőrzési szabály**: A minden nap éjfélkor készített biztonsági másolatok és a 18:00 óra megőrzött négy hétig
+3. **Havi adatmegőrzési szabály**: Az egyes hónapok utolsó szombatján éjfélkor és 18:00 órakor készített biztonsági mentések 12 hónapig őrződnek meg
+4. **Éves adatmegőrzési szabály**: Minden március utolsó szombatján éjfélkor készített biztonsági másolatok 10 évig őrződnek meg
 
-"Adatmegőrzési pontokat" teljes száma (a pont, amelyről a vásárlói adatokat állíthatja) a fenti ábrán az kiszámítása a következőképpen:
+A "megőrzési pontok" (az ügyfelek által az adatok visszaállítására szolgáló pontok) teljes száma az előző ábrán a következőképpen számítható ki:
 
-* két hét nap = 14 napi pont helyreállítási pontok
-* két négy héttel = 8 hetente pont helyreállítási pontok
-* két havonta a 12 hónapos = 24 pont helyreállítási pontok
-* egy pont / év / 10 év = 10 helyreállítási pontok
+* napi két pont, hét napig = 14 helyreállítási pont
+* két pont hetente négy hétig = 8 helyreállítási pont
+* havonta két pont 12 hónapig = 24 helyreállítási pont
+* egy pont/év/10 év = 10 helyreállítási pont
 
-A helyreállítási pontok teljes száma: 56.
+A helyreállítási pontok teljes száma 56.
 
 > [!NOTE]
-> Az Azure backup nincs korlátozás a helyreállítási pontok száma.
->
+> A Azure Backup használatával a védett példányok esetében akár 9999 helyreállítási pontot is létrehozhat. A védett példányok olyan számítógépek, kiszolgálók (fizikai vagy virtuális) vagy munkaterhelések, amelyek az Azure-ba készülnek.
 >
 
 ## <a name="advanced-configuration"></a>Speciális konfiguráció
-Kattintva **módosítás** az előző képernyőn az ügyfél rendelkezik további rugalmasságot adatmegőrzési ütemterv meghatározása.
+Ha az előző képernyőn a **módosítás** gombra kattint, az ügyfelek továbbra is rugalmasságot biztosítanak az adatmegőrzési ütemtervek megadásával.
 
 ![Módosítás](./media/backup-azure-backup-cloud-as-tape/modify.png)
 
 ## <a name="next-steps"></a>További lépések
-Az Azure Backuppal kapcsolatos további információkért lásd:
+További információ a Azure Backupról:
 
 * [Az Azure Backup bemutatása](backup-introduction-to-azure-backup.md)
-* [Az Azure Backup kipróbálása](backup-try-azure-backup-in-10-mins.md)
+* [Azure Backup kipróbálása](backup-try-azure-backup-in-10-mins.md)

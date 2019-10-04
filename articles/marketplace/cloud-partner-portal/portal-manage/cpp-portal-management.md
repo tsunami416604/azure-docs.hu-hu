@@ -1,25 +1,18 @@
 ---
-title: Cloud Partner Portalon felügyelet – Azure Marketplace-en |} A Microsoft Docs
+title: Cloud Partner Portal felügyeleti |} Az Azure Marketplace-en
 description: A Cloud Partner Portal fiókok kezelése az Azure Marketplace-en elérhető műveleteket ismerteti.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 04/01/2019
-ms.author: pbutlerm
-ms.openlocfilehash: 539bc7861a487e6eb563f565d3475efdda99b093
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: 58451dd225a4f0625a6922bde672a6928ea50943
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59798179"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66257492"
 ---
 # <a name="cloud-partner-portal-management"></a>Cloud Partner Portalon kezelése
 
@@ -31,7 +24,7 @@ Ez a szakasz azt ismerteti, milyen műveleteket kell használnia a fiókok létr
 Használata előtt a Cloud Partner portálra, akkor érdemes megismerkednie az alábbi cikkeket:
 
 - [Az Azure piactér szabályzata és feltételeket](../../policies-terms.md) felsorolja a különböző jogi és technikai követelményeket és szabályokat, amelyek a alkalmazni a felhasználói és a kiadók a [Azure Marketplace-en](https://azuremarketplace.microsoft.com) és [AppSource](https://appsource.microsoft.com).
-- [Legyen a Felhőbeli piactér kiadói](../../become-publisher.md) válik egy hivatalos Microsoft-felhő közzétevő szükséges összes lépést áttekintést nyújt.
+- [Legyen a Felhőbeli piactér kiadói](https://docs.microsoft.com/azure/marketplace/become-publisher) válik egy hivatalos Microsoft-felhő közzétevő szükséges összes lépést áttekintést nyújt.
 
 
 ## <a name="account-creation-and-management"></a>A fiók létrehozása és kezelése

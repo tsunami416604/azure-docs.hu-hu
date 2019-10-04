@@ -1,65 +1,73 @@
 ---
-title: Oktatóanyag – alkalmazás regisztrálása – az Azure Active Directory B2C |} A Microsoft Docs
-description: Ismerje meg, hogyan regisztrálhat egy webalkalmazást az Azure Active Directory B2C az Azure portal használatával.
+title: Oktatóanyag – alkalmazás regisztrálása – Azure Active Directory B2C
+description: Megtudhatja, hogyan regisztrálhat egy webalkalmazást Azure Active Directory B2C a Azure Portal használatával.
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
-ms.date: 02/05/2019
-ms.author: davidmu
+ms.date: 08/23/2019
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 849bcfe2b5ee177d06b8e4cf62fd29459d2e59ce
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 06b2c273f41bfa74ee968b6fd6676e83767ce8b2
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59278394"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063255"
 ---
-# <a name="tutorial-register-an-application-in-azure-active-directory-b2c"></a>Oktatóanyag: Alkalmazás regisztrálása az Azure Active Directory B2C-vel
+# <a name="tutorial-register-an-application-in-azure-active-directory-b2c"></a>Oktatóanyag: Alkalmazás regisztrálása Azure Active Directory B2C
 
-Mielőtt a [alkalmazások](active-directory-b2c-apps.md) kezelheti az Azure Active Directory (Azure AD) B2C-vel, azokat egy felügyelt bérlőhöz kell regisztrálni. Ez az oktatóanyag bemutatja, hogyan regisztrálhat egy webalkalmazást az Azure portal használatával.
+Az [alkalmazások](active-directory-b2c-apps.md) Azure Active Directory B2C (Azure ad B2C) való interakció előtt regisztrálni kell őket egy Ön által kezelt bérlőben. Ez az oktatóanyag bemutatja, hogyan regisztrálhat egy webalkalmazást a Azure Portal használatával.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
 > * Webalkalmazás regisztrációja
-> * Ügyfél titkos kulcs létrehozása
+> * Ügyfél titkos kulcsának létrehozása
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha még nem hozott létre a saját [Azure AD B2C-bérlő](tutorial-create-tenant.md), hozzon létre egyet most. Használhat egy meglévő Azure AD B2C-bérlőben.
+Ha még nem hozott létre saját [Azure ad B2C bérlőt](tutorial-create-tenant.md), hozzon létre egyet most. Meglévő Azure AD B2C bérlőt is használhat.
 
 ## <a name="register-a-web-application"></a>Webalkalmazás regisztrációja
 
-1. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő kattintva tartalmazó könyvtárba a **címtár és előfizetés-szűrő** a felső menüben, és a könyvtár, amely tartalmazza a bérlő kiválasztása.
-2. Válasszon **minden szolgáltatás** az Azure Portalon, és majd keresse meg és válassza a bal felső sarkában lévő **Azure AD B2C-vel**.
-3. Válassza ki **alkalmazások**, majd válassza ki **Hozzáadás**.
-4. Adjon meg egy nevet az alkalmazásnak. Ha például *webapp1*.
-5. A **közé tartozik a webalkalmazás vagy webes API** és **implicit engedélyezési folyamat engedélyezése**válassza **Igen**.
-6. A **válasz URL-cím**, adja meg a végpont, ahol az Azure AD B2C-t adja vissza az alkalmazás által kért jogkivonatokat. Például beállíthatja, hogy helyileg naslouchání `https://localhost:44316` Ha még nem ismeri a portnak a számát, adjon meg egy helyőrző értéket, és később módosíthatja. Tesztelési célokra, beállíthatja a `https://jwt.ms`, megjeleníti a tartalmát egy ellenőrzési token. Ebben az oktatóanyagban beállíthatja azt a `https://jwt.ms`. 
+1. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki a bérlőt tartalmazó könyvtárat.
+1. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
+1. Válassza az **alkalmazások**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
+1. Adja meg az alkalmazás nevét. Például: *webapp1*.
+1. A **Web App/web API** belefoglalása és az **implicit folyamat engedélyezése**lehetőségnél válassza az **Igen**lehetőséget.
+1. A **Válasz URL-cím**mezőben adjon meg egy végpontot, amelyben Azure ad B2C vissza kell adnia az alkalmazás által kért jogkivonatokat. Beállíthatja például, hogy a helyi figyelést a következő `https://localhost:44316`időpontban:. Ha még nem ismeri a portszámot, megadhat egy helyőrző értéket, és később módosíthatja azt.
 
-    A válasz URL-címet a sémával kell kezdődnie `https`, és valamennyi válasz URL-címértékekre egyetlen DNS-tartományba kell megosztani. Például, ha az alkalmazás válasz URL-Címének `https://login.contoso.com`, adhat hozzá, mint például az URL-cím `https://login.contoso.com/new`. Vagy olvassa el, a DNS altartományában `login.contoso.com`, mint például `https://new.login.contoso.com`. Ha azt szeretné, hogy az alkalmazás `login-east.contoso.com` és `login-west.contoso.com` , válasz URL-címek, hozzá kell adnia ezeket a válasz-URL az itt látható sorrendben: `https://contoso.com`, `https://login-east.contoso.com`, `https://login-west.contoso.com`. Az utóbbi két adhat hozzá, mivel korábban már az első válasz URL-cím, altartományok `contoso.com`.
+    Az oktatóanyaghoz hasonló tesztelési célokra beállíthatja, hogy `https://jwt.ms` a rendszer megjelenítse a token tartalmát a vizsgálathoz. Ebben az oktatóanyagban állítsa be a **Válasz URL-címét** `https://jwt.ms`a következőre:.
 
-7. Kattintson a **Create** (Létrehozás) gombra.
+    A válasz URL-címekre a következő korlátozások vonatkoznak:
 
-## <a name="create-a-client-secret"></a>Ügyfél titkos kulcs létrehozása
+    * A válasz URL-címnek a sémával `https`kell kezdődnie.
+    * A válasz URL-címe megkülönbözteti a kis-és nagybetűket. Az esetnek egyeznie kell a futó alkalmazás URL-címének elérési útjával. Ha például az alkalmazás az elérési út `.../abc/response-oidc`részeként szerepel, ne adja meg `.../ABC/response-oidc` a válasz URL-címét. Mivel a webböngésző a kis-és nagybetűket megkülönböztető módon kezeli az `.../abc/response-oidc` elérési utakat, a hozzájuk társított cookie-k kizárható, `.../ABC/response-oidc` ha a rendszer átirányítja a kis-és nagybetűket.
 
-Ha az alkalmazás egy jogkivonat-kód cseréje, hozzon létre egy szeretné.
+1. Az alkalmazás regisztrációjának befejezéséhez kattintson a **Létrehozás** gombra.
 
-1. Válassza ki **kulcsok** majd **kulcs generálása**.
-2. Válassza ki **mentése** a kulcs megtekintéséhez. Jegyezze fel az **Alkalmazáskulcs** értékét. Ezt az értéket fogja használni az alkalmazás kódjában alkalmazáskulcsként.
+## <a name="create-a-client-secret"></a>Ügyfél titkos kulcsának létrehozása
+
+Ha az alkalmazás egy jogkivonathoz tartozó kódot cserél, létre kell hoznia egy alkalmazás-titkot.
+
+1. A **Azure ad B2C-alkalmazások** lapon válassza ki a létrehozott alkalmazást, például *webapp1*.
+1. Válassza a **kulcsok** lehetőséget, majd válassza a **kulcs generálása**elemet.
+1. Kattintson a **Save (Mentés** ) gombra a kulcs megtekintéséhez. Jegyezze fel az **Alkalmazáskulcs** értékét. Ezt az értéket használja az alkalmazás kódjában található alkalmazás-titokként.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben megtanulta, hogyan lehet:
+Ebben a cikkben megtanulta, hogyan végezheti el a következőket:
 
 > [!div class="checklist"]
 > * Webalkalmazás regisztrációja
-> * Ügyfél titkos kulcs létrehozása
+> * Ügyfél titkos kulcsának létrehozása
+
+Következő lépésként megtudhatja, hogyan hozhat létre felhasználói folyamatokat, hogy a felhasználók regisztrálhatják, bejelentkezhetnek és kezelhetik a profiljaikat.
 
 > [!div class="nextstepaction"]
-> [Felhasználói folyamatok létrehozása az Azure Active Directory B2C-vel](tutorial-create-user-flows.md)
+> [Felhasználói folyamatok létrehozása Azure Active Directory B2C >](tutorial-create-user-flows.md)

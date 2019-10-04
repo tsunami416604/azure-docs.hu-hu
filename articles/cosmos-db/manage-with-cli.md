@@ -1,21 +1,21 @@
 ---
-title: Azure CLI-vel az Azure Cosmos DB-erőforrások kezelése
-description: Az Azure Cosmos DB fiókot, adatbázist és tárolók kezelése az Azure CLI használatával.
+title: Azure Cosmos DB erőforrások kezelése az Azure CLI-vel
+description: Az Azure CLI használatával kezelheti Azure Cosmos DB-fiókját, adatbázisát és tárolóit.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 4/8/2019
+ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: 1d19e58b2d1381725de490b68d9e4d00a2ca4cb6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 59f1a678b7a2edc64a2079eff0e819e206c2e509
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59495481"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71811700"
 ---
-# <a name="manage-azure-cosmos-resources-using-azure-cli"></a>Azure CLI-vel az Azure Cosmos-erőforrások kezelése
+# <a name="manage-azure-cosmos-resources-using-azure-cli"></a>Azure Cosmos-erőforrások kezelése az Azure CLI-vel
 
-Ez az útmutató azt ismerteti, automatizált felügyelete az Azure Cosmos DB-fiókok, adatbázisok és tárolók az Azure CLI-vel a gyakori parancsok. Az Azure Cosmos DB CLI-parancsainak egyes referenciaoldalait az [Azure CLI referenciái](https://docs.microsoft.com/cli/azure/cosmosdb) között érheti el. A további példákat is talál [Azure CLI-minták az Azure Cosmos DB](cli-samples.md), beleértve, hogyan hozhat létre, és a MongoDB, a Gremlin, a Cassandra és a Table API Cosmos DB-fiókok, adatbázisok és tárolók kezelése.
+Az alábbi útmutató általános parancsokat tartalmaz a Azure Cosmos DB-fiókok,-adatbázisok és-tárolók Azure CLI-vel való felügyeletének automatizálásához. Az Azure Cosmos DB CLI-parancsainak egyes referenciaoldalait az [Azure CLI referenciái](https://docs.microsoft.com/cli/azure/cosmosdb) között érheti el. Az [Azure CLI-mintákban](cli-samples.md)további példákat is találhat Azure Cosmos DBhoz, beleértve Cosmos db fiókok, adatbázisok és tárolók létrehozását és kezelését a MongoDB, a Gremlin, a Cassandra és a Table APIhoz.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -23,99 +23,345 @@ Ha a parancssori felület helyi telepítése és használata mellett dönt, a t�
 
 ## <a name="create-an-azure-cosmos-db-account"></a>Azure Cosmos DB-fiók létrehozása
 
-SQL API és a munkamenet-konzisztencia az USA keleti RÉGIÓJA és USA nyugati régiójában, az Azure Cosmos DB-fiók létrehozásához futtassa a következő parancsot:
-
-```azurecli-interactive
-az cosmosdb create \
-   --name mycosmosdbaccount \
-   --resource-group myResourceGroup \
-   --kind GlobalDocumentDB \
-   --default-consistency-level Session \
-   --locations EastUS=0 WestUS=1 \
-   --enable-multiple-write-locations false
-```
+Hozzon létre egy Azure Cosmos DB fiókot SQL API-val, munkamenet-konzisztencia az USA 2. nyugati régiójában és az USA 2. keleti régiójában:
 
 > [!IMPORTANT]
-> Az Azure Cosmos-fiók neve csak kisbetűket tartalmazhatnak.
+> Az Azure Cosmos-fiók nevének kisbetűnek kell lennie, és 31 karakternél rövidebbnek kell lennie.
+
+```azurecli-interactive
+resourceGroupName='MyResourceGroup'
+accountName='mycosmosaccount' #needs to be lower case and less than 31 characters
+
+az cosmosdb create \
+    -n $accountName \
+    -g $resourceGroupName \
+    --default-consistency-level Session \
+    --locations regionName='West US 2' failoverPriority=0 isZoneRedundant=False \
+    --locations regionName='East US 2' failoverPriority=1 isZoneRedundant=False
+```
+
+## <a name="add-or-remove-regions"></a>Régiók hozzáadása vagy eltávolítása
+
+Hozzon létre egy Azure Cosmos-fiókot két régióval, adjon hozzá egy régiót, és távolítson el egy régiót.
+
+> [!NOTE]
+> Nem lehet egyszerre hozzáadni vagy eltávolítani a `locations` régiókat, és módosítani az Azure Cosmos-fiók egyéb tulajdonságait. A régiók módosításait külön műveletként kell végrehajtani, mint a fiók erőforrásának egyéb módosításait.
+> [!NOTE]
+> Ezzel a paranccsal hozzáadhat és eltávolíthat régiókat, de nem teszi lehetővé a feladatátvételi prioritások módosítását, illetve manuális feladatátvételt is indíthat. Lásd: a [feladatátvételi prioritás beállítása](#set-failover-priority) és a [manuális feladatátvétel elindítása](#trigger-manual-failover).
+
+```azurecli-interactive
+resourceGroupName = 'myResourceGroup'
+accountName = 'mycosmosaccount' # must be lower case and <31 characters
+
+# Create an account with 2 regions
+az cosmosdb create --name $accountName --resource-group $resourceGroupName \
+    --locations regionName= "West US 2" failoverPriority=0 isZoneRedundant=False \
+    --locations regionName= "East US 2" failoverPriority=1 isZoneRedundant=False
+
+# Add a region
+az cosmosdb update --name $accountName --resource-group $resourceGroupName \
+    --locations regionName= "West US 2" failoverPriority=0 isZoneRedundant=False \
+    --locations regionName= "East US 2" failoverPriority=1 isZoneRedundant=False \
+    --locations regionName= "South Central US" failoverPriority=2 isZoneRedundant=False
+
+# Remove a region
+az cosmosdb update --name $accountName --resource-group $resourceGroupName \
+    --locations regionName= "West US 2" failoverPriority=0 isZoneRedundant=False \
+    --locations regionName= "East US 2" failoverPriority=1 isZoneRedundant=False
+```
+
+## <a name="enable-multiple-write-regions"></a>Több írási régió engedélyezése
+
+Több főkiszolgáló engedélyezése Cosmos-fiókhoz
+
+```azurecli-interactive
+# Update an Azure Cosmos account from single to multi-master
+resourceGroupName = 'myResourceGroup'
+accountName = 'mycosmosaccount'
+
+# Get the account resource id for an existing account
+accountId=$(az cosmosdb show -g $resourceGroupName -n $accountName --query id -o tsv)
+
+az cosmosdb update --ids $accountId --enable-multiple-write-locations true
+```
+
+## <a name="set-failover-priority"></a>Feladatátvételi prioritás beállítása
+
+Az automatikus feladatátvételhez konfigurált Azure Cosmos-fiók feladatátvételi prioritásának beállítása
+
+```azurecli-interactive
+# Assume region order is initially 'West US 2'=0 'East US 2'=1 'South Central US'=2 for account
+resourceGroupName = 'myResourceGroup'
+accountName = 'mycosmosaccount'
+
+# Get the account resource id for an existing account
+accountId=$(az cosmosdb show -g $resourceGroupName -n $accountName --query id -o tsv)
+
+# Make South Central US the next region to fail over to instead of East US 2
+az cosmosdb failover-priority-change --ids $accountId \
+    --failover-policies 'West US 2'=0 'South Central US'=1 'East US 2'=2
+```
+
+## <a name="enable-automatic-failover"></a>Automatikus feladatátvétel engedélyezése
+
+```azurecli-interactive
+# Enable automatic failover on an existing account
+resourceGroupName = 'myResourceGroup'
+accountName = 'mycosmosaccount'
+
+# Get the account resource id for an existing account
+accountId=$(az cosmosdb show -g $resourceGroupName -n $accountName --query id -o tsv)
+
+az cosmosdb update --ids $accountId --enable-automatic-failover true
+```
+
+## <a name="trigger-manual-failover"></a>Manuális feladatátvétel indítása
+
+> [!CAUTION]
+> Ha a Priority = 0 prioritású régiót módosítja, manuális feladatátvételt indít egy Azure Cosmos-fiókhoz. A többi prioritási változás nem indít el feladatátvételt.
+
+```azurecli-interactive
+# Assume region order is initially 'West US 2'=0 'East US 2'=1 'South Central US'=2 for account
+resourceGroupName = 'myResourceGroup'
+accountName = 'mycosmosaccount'
+
+# Get the account resource id for an existing account
+accountId=$(az cosmosdb show -g $resourceGroupName -n $accountName --query id -o tsv)
+
+# Trigger a manual failover to promote East US 2 as new write region
+az cosmosdb failover-priority-change --ids $accountId \
+    --failover-policies 'East US 2'=0 'South Central US'=1 'West US 2'=2
+```
+
+## <a id="list-account-keys"></a>Az összes fiók kulcsainak listázása
+
+Egy Cosmos-fiókhoz tartozó összes kulcs beolvasása.
+
+```azurecli-interactive
+# List all account keys
+resourceGroupName='MyResourceGroup'
+accountName='mycosmosaccount'
+
+az cosmosdb keys list \
+   -n $accountName \
+   -g $resourceGroupName
+```
+
+## <a name="list-read-only-account-keys"></a>Csak olvasható fiókok kulcsainak listázása
+
+Egy Cosmos-fiók írásvédett kulcsainak beolvasása.
+
+```azurecli-interactive
+# List read-only account keys
+resourceGroupName='MyResourceGroup'
+accountName='mycosmosaccount'
+
+az cosmosdb list-read-only-keys \
+   -n $accountName \
+   -g $resourceGroupName
+```
+
+## <a name="list-connection-strings"></a>Kapcsolatok karakterláncok listázása
+
+A Cosmos-fiókhoz tartozó kapcsolatok karakterláncának beolvasása.
+
+```azurecli-interactive
+# List connection strings
+resourceGroupName='MyResourceGroup'
+accountName='mycosmosaccount'
+
+az cosmosdb list-connection-strings \
+    -n $accountName \
+    -g $resourceGroupName
+```
+
+## <a name="regenerate-account-key"></a>Fiók kulcsának újralétrehozása
+
+Új kulcs újralétrehozása Cosmos-fiókhoz.
+
+```azurecli-interactive
+# Regenerate secondary account keys
+# key-kind values: primary, primaryReadonly, secondary, secondaryReadonly
+az cosmosdb regenerate-key \
+    -n $accountName \
+    -g $resourceGroupName \
+    --key-kind secondary
+```
 
 ## <a name="create-a-database"></a>Adatbázis létrehozása
 
-Cosmos DB-adatbázis létrehozásához futtassa a következő parancsot:
+Hozzon létre egy Cosmos-adatbázist.
 
 ```azurecli-interactive
-az cosmosdb database create \
-   --name mycosmosdbaccount \
-   --db-name myDatabase \
-   --resource-group myResourceGroup
+resourceGroupName='MyResourceGroup'
+accountName='mycosmosaccount'
+databaseName='database1'
+
+az cosmosdb sql database create \
+    -a $accountName \
+    -g $resourceGroupName \
+    -n $databaseName
+```
+
+## <a name="create-a-database-with-shared-throughput"></a>Megosztott átviteli sebességgel rendelkező adatbázis létrehozása
+
+Hozzon létre egy Cosmos-adatbázist közös átviteli sebességgel.
+
+```azurecli-interactive
+resourceGroupName='MyResourceGroup'
+accountName='mycosmosaccount'
+databaseName='database1'
+throughput=400
+
+az cosmosdb sql database create \
+    -a $accountName \
+    -g $resourceGroupName \
+    -n $databaseName \
+    --throughput $throughput
+```
+
+## <a name="change-the-throughput-of-a-database"></a>Adatbázis átviteli sebességének módosítása
+
+Egy Cosmos-adatbázis átviteli sebességének növelése 1000 RU/s használatával.
+
+```azurecli-interactive
+resourceGroupName='MyResourceGroup'
+accountName='mycosmosaccount'
+databaseName='database1'
+increaseRU=1000
+
+originalRU=$(az cosmosdb sql database throughput show \
+    -g $resourceGroupName -a $accountName -n $databaseName \
+    --query throughput -o tsv)
+
+newRU=$((originalRU + increaseRU))
+
+az cosmosdb sql database throughput update \
+    -a $accountName \
+    -g $resourceGroupName \
+    -n $databaseName \
+    --throughput $newRU
 ```
 
 ## <a name="create-a-container"></a>Tároló létrehozása
 
-Hozzon létre egy Cosmos DB-tárolón az RU/s 400-as és a egy partíciókulcsot, futtassa a következő parancsot:
+Hozzon létre egy Cosmos-tárolót az alapértelmezett index-házirenddel, a partíciós kulccsal és a 400-es RU/s-val.
 
 ```azurecli-interactive
-# Create a container
-az cosmosdb collection create \
-   --collection-name myContainer \
-   --name mycosmosdbaccount \
-   --db-name myDatabase \
-   --resource-group myResourceGroup \
-   --partition-key-path /myPartitionKey \
-   --throughput 400
+# Create a SQL API container
+resourceGroupName='MyResourceGroup'
+accountName='mycosmosaccount'
+databaseName='database1'
+containerName='container1'
+partitionKey='/myPartitionKey'
+throughput=400
+
+az cosmosdb sql container create \
+    -a $accountName -g $resourceGroupName \
+    -d $databaseName -n $containerName \
+    -p $partitionKey --throughput $throughput
 ```
 
-## <a name="change-the-throughput-of-a-container"></a>Az átviteli sebességet egy adott tároló módosítása
+## <a name="create-a-container-with-ttl"></a>Hozzon létre egy tárolót az ÉLETTARTAMmal
 
-Az átviteli sebességet egy Cosmos DB-tárolón, 1000 RU/s módosításához futtassa a következő parancsot:
+Hozzon létre egy Cosmos-tárolót, amelyen engedélyezve van az élettartam.
 
 ```azurecli-interactive
-# Update container throughput
-az cosmosdb collection update \
-   --collection-name myContainer \
-   --name mycosmosdbaccount \
-   --db-name myDatabase \
-   --resource-group myResourceGroup \
-   --throughput 1000
+# Create an Azure Cosmos container with TTL of one day
+resourceGroupName = 'myResourceGroup'
+accountName = 'mycosmosaccount'
+databaseName = 'database1'
+containerName = 'container1'
+
+az cosmosdb sql container update \
+    -g $resourceGroupName \
+    -a $accountName \
+    -d $databaseName \
+    -n $containerName \
+    --ttl = 86400
 ```
 
-## <a name="list-account-keys"></a>Fiók kulcsainak listázása
+## <a name="create-a-container-with-a-custom-index-policy"></a>Egyéni index-házirenddel rendelkező tároló létrehozása
 
-Cosmos-fiókja a kulcsok lekéréséhez futtassa a következő parancsot:
+Hozzon létre egy Cosmos-tárolót egyéni index-házirenddel, térbeli indexszel, összetett indexszel, a 400-es partíciós kulccsal és RU/s-vel.
 
 ```azurecli-interactive
-# List account keys
-az cosmosdb list-keys \
-   --name  mycosmosdbaccount \
-   --resource-group myResourceGroup
+# Create a SQL API container
+resourceGroupName='MyResourceGroup'
+accountName='mycosmosaccount'
+databaseName='database1'
+containerName='container1'
+partitionKey='/myPartitionKey'
+throughput=400
+
+# Generate a unique 10 character alphanumeric string to ensure unique resource names
+uniqueId=$(env LC_CTYPE=C tr -dc 'a-z0-9' < /dev/urandom | fold -w 10 | head -n 1)
+
+# Define the index policy for the container, include spatial and composite indexes
+idxpolicy=$(cat << EOF
+{
+    "indexingMode": "consistent",
+    "includedPaths": [
+        {"path": "/*"}
+    ],
+    "excludedPaths": [
+        { "path": "/headquarters/employees/?"}
+    ],
+    "spatialIndexes": [
+        {"path": "/*", "types": ["Point"]}
+    ],
+    "compositeIndexes":[
+        [
+            { "path":"/name", "order":"ascending" },
+            { "path":"/age", "order":"descending" }
+        ]
+    ]
+}
+EOF
+)
+# Persist index policy to json file
+echo "$idxpolicy" > "idxpolicy-$uniqueId.json"
+
+
+az cosmosdb sql container create \
+    -a $accountName -g $resourceGroupName \
+    -d $databaseName -n $containerName \
+    -p $partitionKey --throughput $throughput \
+    --idx @idxpolicy-$uniqueId.json
+
+# Clean up temporary index policy file
+rm -f "idxpolicy-$uniqueId.json"
 ```
 
-## <a name="list-connection-strings"></a>Kapcsolati karakterláncok listája
+## <a name="change-the-throughput-of-a-container"></a>Tároló átviteli sebességének módosítása
 
-A kapcsolati karakterláncok Cosmos-fiókja lekéréséhez futtassa a következő parancsot:
-
-```azurecli-interactive
-# List connection strings
-az cosmosdb list-connection-strings \
-   --name mycosmosdbaccount \
-   --resource-group myResourceGroup
-```
-
-## <a name="regenerate-account-key"></a>Fiókkulcs újragenerálása
-
-Cosmos-fiókja egy új elsődleges kulcs újragenerálása, futtassa a következő parancsot:
+Növelje egy Cosmos-tároló átviteli sebességét 1000 RU/s használatával.
 
 ```azurecli-interactive
-# Regenerate account key
-az cosmosdb regenerate-key \
-   --name mycosmosdbaccount \
-   --resource-group myResourceGroup \
-   --key-kind primary
+resourceGroupName='MyResourceGroup'
+accountName='mycosmosaccount'
+databaseName='database1'
+containerName='container1'
+increaseRU=1000
+
+originalRU=$(az cosmosdb sql container throughput show \
+    -g $resourceGroupName -a $accountName -d $databaseName \
+    -n $containerName --query throughput -o tsv)
+
+newRU=$((originalRU + increaseRU))
+
+az cosmosdb sql container throughput update \
+    -a $accountName \
+    -g $resourceGroupName \
+    -d $databaseName \
+    -n $containerName \
+    --throughput $newRU
 ```
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure CLI-vel kapcsolatban lásd:
+Az Azure CLI-vel kapcsolatos további információkért lásd:
 
 - [Az Azure parancssori felület telepítése](/cli/azure/install-azure-cli)
 - [Azure parancssori felület referenciája](https://docs.microsoft.com/cli/azure/cosmosdb)
-- [További Azure CLI-minták az Azure Cosmos DB-hez](cli-samples.md)
+- [További Azure CLI-minták a Azure Cosmos DB](cli-samples.md)

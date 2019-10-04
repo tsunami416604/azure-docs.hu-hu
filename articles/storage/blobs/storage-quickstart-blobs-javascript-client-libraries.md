@@ -1,25 +1,23 @@
 ---
 title: Azure rövid útmutató – Blob létrehozása objektumtárban JavaScript és HTML böngészőben való használatával
 description: Megtudhatja, hogyan tölthet fel, listázhat és törölhet blobokat egy BlobService-példánnyal és JavaScripttel egy HTML-oldalon.
-services: storage
 keywords: tároló, javascript, html
-author: tamram
-ms.custom: mvc
+author: mhopkins-msft
+ms.author: mhopkins
+ms.date: 08/29/2019
 ms.service: storage
-ms.author: tamram
-ms.date: 11/14/2018
-ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: a5433284d9722ce907b962be7ba437ef32ad819c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.topic: quickstart
+ms.openlocfilehash: 3dbd78f9c233515c675cd511924b3d4600b72fbd
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245374"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173088"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
-# <a name="quickstart-upload-list-and-delete-blobs-using-javascripthtml-in-the-browser"></a>Gyors útmutató: Feltöltése, listázása és törlése a blobok a böngészőben JavaScript/HTML használatával
+# <a name="quickstart-upload-list-and-delete-blobs-using-javascripthtml-in-the-browser"></a>Gyors útmutató: Blobok feltöltése, listázása és törlése a böngészőben JavaScript/HTML használatával
 
 Ebből a rövid útmutatóból megtudhatja, hogy hogyan kezelheti a blobokat böngészőben futó kóddal. Az itt bemutatott megközelítés szemlélteti a megfelelő biztonsági eszközök használatát is a Blob Storage-fiók biztonságos elérése érdekében. A rövid útmutató elvégzéséhez szüksége lesz egy [Azure-előfizetésre](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -52,7 +50,7 @@ Ezután az Azure Cloud Shell-lel létrehoz egy biztonsági jogkivonatot.
 [!INCLUDE [Open the Azure cloud shell](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-shared-access-signature"></a>Közös hozzáférésű jogosultságkód létrehozása
-A böngészőben futó kód a közös hozzáférésű jogosultságkóddal (SAS) engedélyezteti a Blob Storage-ba érkező kéréseket. A SAS használatával az ügyfél a fiók hozzáférési kulcsa vagy kapcsolati sztringje nélkül is elvégezheti a tárolási erőforrásokhoz való hozzáférés engedélyeztetését. Az SAS-sel kapcsolatos további információkat a [közös hozzáférésű jogosultságkód (SAS) használatát ismertető](../common/storage-dotnet-shared-access-signature-part-1.md) cikkben olvashat.
+A böngészőben futó kód a közös hozzáférésű jogosultságkóddal (SAS) engedélyezteti a Blob Storage-ba érkező kéréseket. A SAS használatával az ügyfél a fiók hozzáférési kulcsa vagy kapcsolati sztringje nélkül is elvégezheti a tárolási erőforrásokhoz való hozzáférés engedélyeztetését. Az SAS-sel kapcsolatos további információkat a [közös hozzáférésű jogosultságkód (SAS) használatát ismertető](../common/storage-sas-overview.md) cikkben olvashat.
 
 Létrehozhat egy SAS-t az Azure CLI használatával az Azure Cloud Shellen keresztül vagy az Azure Storage Explorerrel. A következő tábla azon paramétereket sorolja fel, amelyek értékét meg kell adnia SAS CLI-vel való létrehozásakor.
 
@@ -78,7 +76,7 @@ az storage account generate-sas
 ```
 A paraméterek után szereplő értékek nehezen érthetőek lehetnek. Ezek a paraméterértékek a megfelelő engedélyek első betűiből vannak összeállítva. A következő táblázat az értékek eredetét írja le: 
 
-| Paraméter        | Érték   | Leírás  |
+| Paraméter        | Value   | Leírás  |
 |------------------|---------|---------|
 | *engedélyek*    | racwdl  | Ez az SAS *olvasási*, *hozzáfűzési*, *létrehozási*, *írási*, *törlési* és *listázási* képességeket engedélyez. |
 | *resource-types* | sco     | Az SAS a *szolgáltatás*, a *tároló* és az *objektum* erőforrásokra van hatással. |
@@ -251,7 +249,7 @@ document.getElementById('delete-button').addEventListener('click', () => {
 > Ahhoz, hogy a kódminta működjön, meg kell adnia egy sztringértéket a *blobName* számára.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-A rövid útmutató során létrehozott erőforrások törléséhez térjen vissza az [Azure Portalra](https://portal.azure.com), és válassza ki a tárfiókját. A kijelölt a törölheti a tárfiókot: **Áttekintés > tárfiók törlése**.
+A rövid útmutató során létrehozott erőforrások törléséhez térjen vissza az [Azure Portalra](https://portal.azure.com), és válassza ki a tárfiókját. A kiválasztást követően a következő lépésekkel törölheti a Storage-fiókot: **Áttekintés > Storage-fiók törlése**.
 
 ## <a name="next-steps"></a>További lépések
 A példákból megtudhatja, hogyan tölthet le blobokat és jelentheti az állapotot a fájlfeltöltések során.

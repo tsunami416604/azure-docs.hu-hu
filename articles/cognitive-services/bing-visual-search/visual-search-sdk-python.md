@@ -3,19 +3,19 @@ title: 'Gyors útmutató: A Bing Visual Search SDK-t és Python'
 titleSuffix: Azure Cognitive Services
 description: A Visual Search SDK Python konzolalkalmazás beállítása.
 services: cognitive-services
-author: mikedodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 06/11/2018
-ms.author: v-gedod
-ms.openlocfilehash: 970b3e7e8e45e5d5249fb5a45c966d9395b130a0
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 06/18/2019
+ms.author: aahi
+ms.openlocfilehash: eb0befe3b6f131559a86c121251a4b6194abc49c
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884154"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204020"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-python"></a>Gyors útmutató: A Bing Visual Search SDK a Pythonhoz készült használatával kép elemzések lekérése
 
@@ -24,7 +24,7 @@ Ez a rövid útmutató segítségével hasznos képadatok lekérése a Bing Visu
 ## <a name="prerequisites"></a>Előfeltételek
 
 * [Python](https://www.python.org/) 2.x vagy 3.x
-* Javasoljuk, hogy használjon egy [virtuális környezet](https://docs.python.org/3/tutorial/venv.html). Telepítse és inicializálja a virtuális környezetet az új [venv modullal](https://pypi.python.org/pypi/virtualenv). Telepítse a Python 2.7-hez készült virtualenv modult.
+* Javasoljuk, hogy használjon egy [virtuális környezet](https://docs.python.org/3/tutorial/venv.html). Telepítse és inicializálja a virtuális környezetet az új [venv modullal](https://pypi.python.org/pypi/virtualenv).
 * A Bing Visual Search SDK Pythonhoz készült. A következő parancsokkal telepítheti:
     1. `cd mytestenv`
     2. `python -m pip install azure-cognitiveservices-search-visualsearch`
@@ -50,6 +50,7 @@ Ez a rövid útmutató segítségével hasznos képadatok lekérése a Bing Visu
         Filters,
         KnowledgeRequest,
     )
+    from msrest.authentication import CognitiveServicesCredentials
     ```
 2. Változók létrehozása az előfizetési kulcs, egyéni konfigurációs Azonosítót, és a feltölteni kívánt kép. 
     
@@ -63,7 +64,7 @@ Ez a rövid útmutató segítségével hasznos képadatok lekérése a Bing Visu
 3. Az ügyfél példányosítása
 
     ```python
-    var client = new VisualSearchClient(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"))
+    client = VisualSearchClient(endpoint="https://api.cognitive.microsoft.com", credentials=CognitiveServicesCredentials(subscription_key))
     ```
 
 ## <a name="send-the-search-request"></a>A keresési kérelem küldése

@@ -1,45 +1,65 @@
 ---
 title: Alkalmazások kezelése az Azure Active Directoryban | Microsoft Docs
-description: Ez a cikk az Azure Active Directory helyszíni, felhőbeli és a SaaS-alkalmazásokba történő integrálásának előnyeit mutatja be.
+description: Ez a cikk a Azure Active Directory helyszíni, felhőalapú és SaaS-alkalmazásokkal való integrálásának előnyeit ismerteti.
 services: active-directory
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: overview
 ms.workload: identity
-ms.date: 10/30/2018
-ms.author: celested
+ms.date: 06/05/2019
+ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a65c42ff2d03946c021497e350836623a408ce7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5d1ebb4b094ab5c03343486e7af6624273288453
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56197521"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68421202"
 ---
 # <a name="application-management-with-azure-active-directory"></a>Alkalmazáskezelés az Azure Active Directory használatával
 
-Az Azure Active Directory (Azure AD) biztonságos és zökkenőmentes elérést biztosít a felhőbeli és helyszíni alkalmazásokhoz. A felhasználók egyszeri bejelentkezéssel elérhetik az Office 365-öt és az egyéb üzleti Microsoft-, SaaS-, helyszíni és üzletági alkalmazásokat. A felhasználó létrehozás automatizálásával csökkenti az adminisztratív költségeket. Használja a többtényezős hitelesítést és a feltételes hozzáférési szabályzatokat a biztonságos alkalmazás hozzáférés biztosításához.
+A Azure Active Directory (Azure AD) leegyszerűsíti az alkalmazások kezelését úgy, hogy egyetlen identitást biztosít a Felhőbeli és a helyszíni alkalmazások számára. A szolgáltatott szoftverek (SaaS), helyszíni alkalmazások és üzletági (LOB) alkalmazások is hozzáadhatók az Azure AD-hez. Ezután a felhasználók egyszer bejelentkeznek az alkalmazások biztonságos és zökkenőmentes eléréséhez, valamint az Office 365 és a Microsoft egyéb üzleti alkalmazásaihoz. A [felhasználók üzembe](user-provisioning.md)helyezésének automatizálásával csökkentheti az adminisztrációs költségeket. A többtényezős hitelesítést és a feltételes hozzáférési szabályzatokat is használhatja a biztonságos alkalmazás-hozzáférés biztosításához.
 
-![Az Azure AD-n keresztül összevont alkalmazások](media/what-is-application-management/app-management-overview.png)
+![Az Azure AD-n keresztül összevont alkalmazásokat bemutató diagram](media/what-is-application-management/app-management-overview.png)
 
 ## <a name="why-manage-applications-with-a-cloud-solution"></a>Miért jó az alkalmazásokat felhőalapú megoldással kezelni?
 
-A szervezetekben gyakran több száz alkalmazás is van, amitől a felhasználók munkavégzése függ. A felhasználók sokféle eszközről és helyről érik el ezeket az alkalmazásokat. Minden nap új alkalmazásokat adnak hozzá, fejlesztenek és selejteznek le. Ilyen sok alkalmazás és hozzáférési pont esetén minden eddiginél fontosabb a felhőalapú megoldás használata az összes alkalmazás felhasználói hozzáférésének kezelésére.
+A szervezetekben gyakran több száz alkalmazás is van, amitől a felhasználók munkavégzése függ. A felhasználók sokféle eszközről és helyről érik el ezeket az alkalmazásokat. Minden nap új alkalmazásokat adnak hozzá, fejlesztenek és selejteznek le. A sok alkalmazással és hozzáférési ponttal minden eddiginél nagyobb jelentőséggel bír a felhőalapú megoldás használata az összes alkalmazás felhasználói hozzáférésének kezeléséhez.
+
+## <a name="what-types-of-applications-can-i-integrate-with-azure-ad"></a>Milyen típusú alkalmazásokat lehet integrálni az Azure AD-vel?
+
+A nagyvállalati alkalmazásokhoz és az Azure AD-vel való  felügyelethez négy fő típusú alkalmazás adható meg:
+
+- **Azure ad Gallery-alkalmazások** – az Azure ad tartalmaz egy katalógust, amely az Azure ad-vel való egyszeri bejelentkezéshez előre integrált, több ezer alkalmazást tartalmaz. A vállalat által használt alkalmazások egy része valószínűleg megtalálható a katalógusban. [Ismerje meg](plan-an-application-integration.md)az alkalmazások integrálásának megtervezését, vagy a [SaaS-alkalmazás oktatóanyagokban](https://docs.microsoft.com/azure/active-directory/saas-apps/)részletes integrációs lépéseket kaphat az egyes alkalmazásokhoz.
+
+- Helyszíni **alkalmazások alkalmazásproxy** használatával – az Azure ad Application proxy segítségével a helyszíni webalkalmazásokat az Azure ad-vel integrálva támogathatja az egyszeri bejelentkezést. Ezután a végfelhasználók ugyanúgy férhetnek hozzá a helyszíni webalkalmazásokhoz, mint az Office 365 és más SaaS-alkalmazások. [Tudnivalók az alkalmazásproxy használatáról és működéséről](what-is-application-proxy.md).
+
+- **Testreszabott alkalmazások** – a saját üzletági alkalmazásai kiépítésekor az egyszeri bejelentkezés támogatásához integrálhatja őket az Azure ad-vel. Az alkalmazás Azure AD-vel való regisztrálásával szabályozhatja az alkalmazás hitelesítési házirendjét. További információ: [útmutató a fejlesztőknek](developer-guidance-for-integrating-applications.md).
+
+- **Galérián kívüli alkalmazások** – saját alkalmazások használata Az Azure AD-be való felvételsel más alkalmazásokhoz is támogathatja az egyszeri bejelentkezést. Integrálhat bármilyen kívánt webhivatkozást, vagy bármely olyan alkalmazást, amely a Felhasználónév és a jelszó mezőt jeleníti meg, támogatja az SAML vagy OpenID Connect protokollokat, vagy támogatja a SCIM. További információ: [az egyszeri bejelentkezés konfigurálása nem](configure-single-sign-on-non-gallery-applications.md)katalógusbeli alkalmazásokhoz.
 
 ## <a name="manage-risk-with-conditional-access-policies"></a>Kockázatkezelés feltételes hozzáférési szabályzatokkal
-A feltételes hozzáférési szabályzatok és az Azure AD egyszeri bejelentkezés (SSO) összekapcsolása az alkalmazások eléréséhez magas szintű biztonságot szavatol. A biztonsági funkciók közé tartozik a felhőméretű identitásvédelem, a kockázat-alapú hozzáférés-vezérlés, a natív többtényezős hitelesítés és a feltételes hozzáférési szabályzatok. E funkciókkal részletesen szabályozható szabályzatok állíthatók be alkalmazások vagy magasabb szintű biztonságot igénylő csoportok alapján.
+
+A [feltételes hozzáféréssel](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) rendelkező Azure ad egyszeri bejelentkezés (SSO) összekapcsolása magas szintű biztonságot nyújt az alkalmazások eléréséhez. A biztonsági képességek közé tartozik a felhőalapú Identitáskezelés, a kockázatalapú hozzáférés-vezérlés, a natív többtényezős hitelesítés és a feltételes hozzáférési szabályzatok. E funkciókkal részletesen szabályozható szabályzatok állíthatók be alkalmazások vagy magasabb szintű biztonságot igénylő csoportok alapján.
 
 ## <a name="improve-productivity-with-single-sign-on"></a>Termelékenység növelése egyszeri bejelentkezéssel
+
 Az egyszeri bejelentkezés (SSO) a bejelentkezési kérések számának csökkentésével vagy a kérések kiiktatásával kiváló bejelentkezési élményt biztosít a meglévő felhasználók számára a különböző alkalmazások és az Office 365 esetében. A felhasználó egységesebb környezetet érzékel és kevésbé zavarja a sok bejelentkezési kérés és a sokféle jelszó kezelésének szükségessége. Az üzleti csoport az önkiszolgálással és a dinamikus tagsággal kezelni és engedélyezni tudja a hozzáféréseket. Az alkalmazáshoz való hozzáférések kezelésének a vállalaton belül a megfelelő emberek számára történő lehetővé tétele javítja az azonosítási rendszer biztonságát.
 
-Az egyszeri bejelentkezés javítja a biztonságot. Az *egyszeri bejelentkezés nélkül* a rendszergazdáknak minden egyes alkalmazáshoz külön kell felhasználói fiókokat létrehozni és frissíteni, ami időbe kerül. A felhasználóknak is többféle hitelesítő adatot kell nyomon követniük az alkalmazásaik eléréséhez. Ennek eredményeképpen a felhasználók hajlanak arra, hogy leírják a jelszavaikat vagy másféle jelszókezelési megoldást használjanak, ami adatbiztonsági kockázatot jelent. 
+Az egyszeri bejelentkezés javítja a biztonságot. Az *egyszeri bejelentkezés nélkül* a rendszergazdáknak minden egyes alkalmazáshoz külön kell felhasználói fiókokat létrehozni és frissíteni, ami időbe kerül. A felhasználóknak is többféle hitelesítő adatot kell nyomon követniük az alkalmazásaik eléréséhez. Ennek eredményeképpen a felhasználók hajlanak arra, hogy leírják a jelszavaikat vagy másféle jelszókezelési megoldást használjanak, ami adatbiztonsági kockázatot jelent. [További információ az egyszeri bejelentkezésről](what-is-single-sign-on.md).
 
 ## <a name="address-governance-and-compliance"></a>Irányítás és megfelelőség
+
 Az Azure AD segítségével az alkalmazás bejelentkezéseket a biztonsági információk és események kezelésének (SIEM) eszközeit felhasználó jelentésekkel követheti nyomon. A jelentéseket a portálról vagy az API-kból érheti el. Programozott módon naplózza, ki fér hozzá az alkalmazásokhoz és megszünteti az inaktív felhasználók hozzáférését a hozzáférési felülvizsgálatokkal.
 
 ## <a name="manage-costs"></a>Költségek kezelése
+
 Az Azure AD-re történő átállással költségeket takarít meg és megszabadul a helyszíni infrastruktúra kezelésével járó gondoktól. Az Azure AD önkiszolgáló hozzáférést is nyújt az alkalmazásokhoz, amivel a rendszergazdák és felhasználók számára is időt takarít meg. Az egyszeri bejelentkezés használata esetén nincs szükség alkalmazásspecifikus jelszavakra. Az egyszeri bejelentkezéssel megtakaríthatók az új alkalmazásjelszavak kéréséhez és a jelszavak beszerzése közben kieső termelékenységhez kapcsolódó költségek.
 
+## <a name="next-steps"></a>További lépések
+
+- [Mi az alkalmazásproxy?](what-is-application-proxy.md)
+- [Rövid útmutató: Gyűjteménybeli alkalmazás hozzáadása az Azure AD-bérlőhöz](add-application-portal.md)

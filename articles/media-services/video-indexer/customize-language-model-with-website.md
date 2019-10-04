@@ -6,15 +6,16 @@ services: media-services
 author: anikaz
 manager: johndeu
 ms.service: media-services
+ms.subservice: video-indexer
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: 7b81b53c03104023823bef75beb4ac6077feede7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: f98cdcab2d108f8dd9d40e3770498ad17b2a8a88
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58918688"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65799615"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-website"></a>A Video Indexer webhelyet nyelvi modell testreszabása
 
@@ -60,10 +61,10 @@ A nyelvi modellt használ egy új videót, tegye a következők egyikét:
 
 * Kattintson a **feltöltése** gombra az oldal felső részén 
 
-    ![Feltöltés](./media/customize-language-model/upload.png)
+    ![Töltsön fel](./media/customize-language-model/upload.png)
 * A körre a dobja el a hang- vagy fájl, vagy a fájl keresése tallózással
 
-    ![Feltöltés](./media/customize-language-model/upload2.png)
+    ![Töltsön fel](./media/customize-language-model/upload2.png)
 
 Ekkor kap arra, hogy válassza ki a **videó Forrásnyelv**. Kattintson a legördülő, és válassza ki a nyelvi modell, amely létrehozta a listából. Üzenetnek kell megjelennie, a nyelvi modell és a nevét, amely rendelte hozzá zárójelben nyelvét.
 
@@ -143,7 +144,7 @@ A video Indexer nyelvi modelleket, a tényleges javításokat felhasználók ala
 
    Keresse meg a ", átirat módosításokat" fájlban az egyes nyelvi modelljeit, kattintson rá a megnyitásához. 
 
-    ![Átiratmódosításokból származó](./media/customize-language-model/from-transcript-edits.png)
+    ![Szerkessze a szövegben](./media/customize-language-model/from-transcript-edits.png)
 
 ## <a name="next-steps"></a>További lépések
 

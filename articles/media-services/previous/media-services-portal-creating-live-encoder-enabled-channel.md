@@ -1,5 +1,5 @@
 ---
-title: Élő adatfolyam továbbítása az Azure Media Services segítségével többszörös sávszélességű Streamek létrehozása az Azure portal |} A Microsoft Docs
+title: Élő közvetítés végrehajtása a Azure Media Services használatával többszörös sávszélességű streamek létrehozásához Azure Portal segítségével | Microsoft Docs
 description: Ez az oktatóanyag bemutatja, hogy az Azure Portal használatával hogyan hozhat létre egy egyszeres átviteli sebességű élő streamet fogadó csatornát, amely többszörös átviteli sebességű streammé kódolja a fogadott bemenetet.
 services: media-services
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 88a66cae00bcd1256f6c3ad76a04d1333d1db9db
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 3217a2d5ba3d45a069eacdb67a8d69e9abc674b8
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58917090"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "69015210"
 ---
-# <a name="perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-azure-portal"></a>Élő adatfolyam továbbítása többszörös átviteli sebességű Streamek létrehozása az Azure Portalon a Media Services használatával  
+# <a name="perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-azure-portal"></a>Élő adatfolyam-továbbítás Media Services használatával többszörös átviteli sebességű streameket hozhat létre a Azure Portal  
 > [!div class="op_single_selector"]
 > * [Portál](media-services-portal-creating-live-encoder-enabled-channel.md)
 > * [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
@@ -29,7 +29,7 @@ ms.locfileid: "58917090"
 > 
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még [v3 a v2 migrálási útmutató](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
 
 Ez az útmutató lépésről lépésre bemutatja, hogyan hozhat létre egy **csatornát**, amely a fogadott egyféle sávszélességű élő adatfolyamokat többféle sávszélességűvé kódolja.
 
@@ -39,12 +39,12 @@ További elméleti információk a valós idejű kódolásra képes csatornákr�
 A leggyakrabban használt streamelési alkalmazások kialakításához általában az alábbi lépések szükségesek.
 
 > [!NOTE]
-> Jelenleg az élő események maximálisan ajánlott időtartama 8 óra. Ha ennél tovább futó csatornára van szüksége, lépjen velünk kapcsolatba az amslived@microsoft.com e-mail-címen.
+> Jelenleg az élő események maximálisan ajánlott időtartama 8 óra. Ha ennél tovább futó csatornára van szüksége, lépjen velünk kapcsolatba az amshelp@microsoft.com e-mail-címen.
 
-1. Csatlakoztasson egy videokamerát a számítógéphez. <br/>A telepítő ötleteket, tekintse meg [egyszerű és hordozható esemény videó fogaskerék beállítása]( https://link.medium.com/KNTtiN6IeT).
+1. Csatlakoztasson egy videokamerát a számítógéphez. <br/>A beállítási ötletekért tekintse meg az [egyszerű és a hordozható eseményekre vonatkozó videós eszközöket]( https://link.medium.com/KNTtiN6IeT).
 
-    Ha nem rendelkezik a kamerához való hozzáférés, eszközök, mint például [Telestream Wirecast](http://www.telestream.net/wirecast/overview.htm) segítségével hozzon létre egy élő adás videót.
-1. Indítsa el, és adja meg, amely a következő protokollok egy egyféle sávszélességű adatfolyamot küldhetnek kimenetet a helyszíni élő kódoló: RTMP vagy Smooth Streaming. További tudnivalók: [Azure Media Services RMTP-támogatása és valós idejű kódolók](https://go.microsoft.com/fwlink/?LinkId=532824) <br/>Emellett tekintse meg ezt a blogot: [Élő streamelés az éles üzemre OBS](https://link.medium.com/ttuwHpaJeT).
+    Ha nem rendelkezik hozzáféréssel egy kamerához, az eszközök, például a [Wirecast](https://www.telestream.net/wirecast/overview.htm) használhatók élő hírcsatornák létrehozásához.
+1. Indítson el és konfiguráljon egy helyszíni élő kódolót, amely a következő protokollok egyikében képes egyetlen sávszélességű adatfolyamot kimenetként: RTMP vagy Smooth Streaming. További tudnivalók: [Azure Media Services RMTP-támogatása és valós idejű kódolók](https://go.microsoft.com/fwlink/?LinkId=532824) <br/>Továbbá tekintse meg ezt a blogot: [Élő streaming-termelés a OBS](https://link.medium.com/ttuwHpaJeT)-mel.
 
     Ezt a lépést a csatorna létrehozása után is elvégezheti.
 1. Hozzon létre és indítson el egy csatornát. 
@@ -149,7 +149,7 @@ Az esemény két különböző módon indítható el:
 
     Adja meg az esemény nevét, az objektum nevét, az archiválás időtartamát és a titkosítási beállítást.
 
-    ![Program létrehozása](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-program.png)
+    ![program létrehozása](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-program.png)
 
     Ha nem törli a jelet a **Publish this live event now** (Program azonnali közzététele) lehetőség mellől, a rendszer létrehozza az eseményt és a közzétételi URL-címeket.
 
@@ -186,7 +186,7 @@ Az objektumok kezeléséhez válassza a **Setting** (Beállítás) elemet, majd 
 ![Objektumok](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-assets.png)
 
 ## <a name="considerations"></a>Megfontolandó szempontok
-* Jelenleg az élő események maximálisan ajánlott időtartama 8 óra. Ha ennél tovább futó csatornára van szüksége, lépjen velünk kapcsolatba az amslived@microsoft.com e-mail-címen.
+* Jelenleg az élő események maximálisan ajánlott időtartama 8 óra. Ha ennél tovább futó csatornára van szüksége, lépjen velünk kapcsolatba az amshelp@microsoft.com e-mail-címen.
 * Győződjön meg arról, hogy a tartalomstreameléshez használt streamvégpont **Fut** állapotban van.
 
 ## <a name="next-step"></a>Következő lépés

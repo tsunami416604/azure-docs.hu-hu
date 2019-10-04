@@ -9,11 +9,11 @@ ms.author: tarcher
 ms.date: 05/15/2018
 ms.topic: article
 ms.openlocfilehash: cf7afb50006fb273b4d685f9e4259be1cb60fe4e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58084742"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60563841"
 ---
 # <a name="install-the-chef-client-from-the-azure-portal"></a>A Chef-ügyfél telepítése az Azure Portalról
 A Chef ügyféloldali bővítmény közvetlenül be egy Linux vagy Windows gépen is hozzáadhat az Azure Portalról. Ez a cikk végigvezeti a folyamatot egy új Linux rendszerű virtuális gép használatával.
@@ -74,7 +74,7 @@ Ebben a szakaszban először hozhat létre Linux rendszerű gépen fogja haszná
 
      ![Egy bővítmény hozzáadása egy virtuális gép hozzáadása bővítmény kiválasztása](./media/chef-extension-portal/add-vm-add-extension.png)
 
-1. Az a **új erőforrás** lapon jelölje be **Linux Chef bővítmény (1.2.3)**.
+1. Az a **új erőforrás** lapon jelölje be **Linux Chef bővítmény (1.2.3)** .
 
      ![Chef rendelkezik a virtuális gépek Linux és Windows-bővítmények](./media/chef-extension-portal/select-linux-chef-extension.png)
 
@@ -82,7 +82,7 @@ Ebben a szakaszban először hozhat létre Linux rendszerű gépen fogja haszná
 
 1. Az a **bővítmény telepítése** lapot, adja meg a következő értékeket, majd **OK**.
 
-    - **Chef-kiszolgáló URL-címe** – adja meg a Chef URL-címe, amely magában foglalja a szervezet nevét, például *https://api.chef.io/organization/mycompany*.
+    - **Chef-kiszolgáló URL-címe** – adja meg a Chef URL-címe, amely magában foglalja a szervezet nevét, például *https://api.chef.io/organization/mycompany* .
     - **Chef csomópontnév** – adja meg a Chef csomópont nevét. Ez bármilyen érték lehet.
     - **Futtatási listához** – adja meg, hogy a gép bekerül a Chef futtatása listáját. Ez lehet üresen hagyni.
     - **Érvényesítési Ügyfélnév** – adja meg a Chef érvényesítési ügyfél nevét. Ha például *tarcher-érvényesítő*.

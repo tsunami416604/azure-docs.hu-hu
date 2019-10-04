@@ -13,15 +13,15 @@ ms.date: 03/27/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 3a255b21e8bfd7d78954603e9aa6e5ca39cee95b
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321993"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60566066"
 ---
 # <a name="add-fault-tolerance-in-copy-activity-by-skipping-incompatible-rows"></a>Adja hozzá a hibatűrés a másolási tevékenység által inkompatibilis sorok kihagyása
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
 > * [1-es verzió](data-factory-copy-activity-fault-tolerance.md)
 > * [2-es verzió (aktuális verzió)](../copy-activity-fault-tolerance.md)
 
@@ -70,7 +70,7 @@ Az alábbi példában egy JSON-definíciót a másolási tevékenység az inkomp
 }
 ```
 
-| Tulajdonság | Leírás | Megengedett értékek | Szükséges |
+| Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
 | **enableSkipIncompatibleRow** | Vagy nem engedélyezi az inkompatibilis sorok kihagyása másolása során. | True (Igaz)<br/>FALSE (alapértelmezett) | Nem |
 | **redirectIncompatibleRowSettings** | Egy csoport tulajdonságok, amelyek a megadott való bejelentkezéshez az inkompatibilis sorok. | &nbsp; | Nem |

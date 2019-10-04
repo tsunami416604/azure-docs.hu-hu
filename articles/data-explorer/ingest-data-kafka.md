@@ -1,20 +1,20 @@
 ---
-title: 'Gyors útmutató: Betölteni az adatokat a Kafkából az Azure Data Explorer'
-description: Ez a rövid útmutatóban megismerheti, hogyan (betöltés) adatok betöltését az Azure Data Explorer kafka.
+title: Betölteni az adatokat a Kafkából az Azure Data Explorer
+description: Ebből a cikkből megismerheti, hogyan (betöltés) adatok betöltését az Azure Data Explorer kafka.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-ms.topic: quickstart
-ms.date: 11/19/2018
-ms.openlocfilehash: 180053aa2146d8ab80df832044ac3ee4d45970da
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.topic: conceptual
+ms.date: 06/03/2019
+ms.openlocfilehash: 03b46ff50683149a22c71ccb155480a0f08455bd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59047109"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66497280"
 ---
-# <a name="quickstart-ingest-data-from-kafka-into-azure-data-explorer"></a>Gyors útmutató: Betölteni az adatokat a Kafkából az Azure Data Explorer
+# <a name="ingest-data-from-kafka-into-azure-data-explorer"></a>Betölteni az adatokat a Kafkából az Azure Data Explorer
  
 Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Data Explorer Kafka Adatbetöltési (az adatok betöltése) kínál. A Kafka egy elosztott streamelési platform streamadatfolyamatok, amely megbízhatóan adatáthelyezést közötti rendszerek vagy alkalmazások kiépítését lehetővé teszi, hogy.
  
@@ -22,11 +22,11 @@ Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési s
  
 * Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt. 
  
-* [Egy tesztfürt és -adatbázis](create-cluster-database-portal.md)
+* [Egy teszt fürt és az adatbázis](create-cluster-database-portal.md).
  
-* [Egy mintaalkalmazás](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/kafka) , amely adatokat állít elő, és elküldi azokat a Kafka
+* [Egy mintaalkalmazás](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/kafka) , amely adatokat állít elő, és elküldi azokat a Kafka.
 
-* A [Visual Studio 2017 szoftver 15.3.2-es vagy újabb verziója](https://www.visualstudio.com/vs/) a mintaalkalmazás futtatásához
+* [A Visual Studio 2019](https://visualstudio.microsoft.com/vs/) , futtassa a mintaalkalmazást.
  
 ## <a name="kafka-connector-setup"></a>A Kafka-összekötő telepítése
 
@@ -162,5 +162,4 @@ cd ./azure-kusto-samples-dotnet/kafka/
  
 ## <a name="next-steps"></a>További lépések
  
-> [!div class="nextstepaction"]
-> [Rövid útmutató: Az Azure Data Explorer adatok lekérdezése](web-query-data.md)
+* [Az Azure Data Explorer adatok lekérdezése](web-query-data.md)

@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 03/19/2018
 ms.author: amanbha
 ms.openlocfilehash: e297a6f42774f29e2eca4a410b695d5bbb636300
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58666970"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60726604"
 ---
 # <a name="delete-reliable-actors-and-their-state"></a>Reliable Actors és állapotuk törlése
 Inaktív szereplők szemétgyűjtés csak megtisztítja a szereplő objektum, de nem távolítja el az aktor State Manager tárolt adatokat. Egy aktor újraaktiválásakor az adatok újra szeretné elérhetővé tenni azt a State Manager keresztül. Azokban az esetekben, ahol actors tárolja az adatokat az State Manager és az inaktiválása, de soha nem kapcsolta be újra azt lehet szükség az adatok törlése.

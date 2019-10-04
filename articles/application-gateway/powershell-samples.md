@@ -1,33 +1,26 @@
 ---
-title: Az Azure alkalmazás átjáró PowerShell-példák |} Microsoft Docs
-description: Az Azure alkalmazás átjáró PowerShell-példák
+title: Azure PowerShell példák az Azure Application Gateway
+description: Azure PowerShell példák az Azure Application Gateway
 services: application-gateway
-documentationcenter: networking
 author: vhorne
-manager: jpconnock
-editor: tysonn
-tags: azure-resource-manager
 ms.service: application-gateway
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure
-ms.date: 01/29/2018
+ms.topic: sample
+ms.date: 08/07/2019
 ms.author: victorh
-ms.custom: mvc
-ms.openlocfilehash: 54505f108757fc67b07e44ef3b603bc353b9aec5
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 2fb809026e8b604ddf25a8160774972eae99411a
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33200654"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68824342"
 ---
-# <a name="azure-application-gateway-powershell-samples"></a>Az Azure alkalmazás átjáró PowerShell-példák
+# <a name="azure-powershell-examples-for-azure-application-gateway"></a>Azure PowerShell példák az Azure Application Gateway
 
-A következő táblázat az Azure PowerShell parancsfájl minták által létrehozott alkalmazásátjárót mutató hivatkozásokat tartalmaz.
+Az alábbi táblázat az Azure Application Gateway Azure PowerShell parancsfájlokra mutató hivatkozásokat tartalmaz.
 
 | | |
 |---|---|
-| [Webes forgalom kezelése](./scripts/create-vmss-powershell.md) | Alkalmazásátjáró és minden kapcsolódó erőforrás hoz létre.|
-| [Webes forgalom korlátozása](./scripts/create-vmss-waf-powershell.md) | Alkalmazásátjáró forgalmát OWASP szabályok használatával hoz létre.|
+| [Webes forgalom kezelése](./scripts/create-vmss-powershell.md) | Létrehoz egy Application Gateway és az összes kapcsolódó erőforrást.|
+| [Webes forgalom korlátozása](./scripts/create-vmss-waf-powershell.md) | Olyan Application Gateway hoz létre, amely a OWASP-szabályok használatával korlátozza a forgalmat.|
+|[Egyéni WAF v2-szabályok](scripts/waf-custom-rules-powershell.md)|Létrehoz egy Application Gateway webalkalmazási tűzfal v2 egyéni szabályokkal.
 | | |
-

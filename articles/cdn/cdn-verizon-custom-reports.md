@@ -1,25 +1,25 @@
 ---
 title: Egyéni jelentések a Verizontól |} A Microsoft Docs
-description: 'Az alábbi jelentések használatával a CDN használati mintáinak is megtekintheti: a sávszélesség, átvitt adatok, a találatok, gyorsítótárak állapota, gyorsítótár találati aránya, IPV4/IPV6 átvitt adatok.'
+description: 'A CDN használati minták használatával a következő jelentéseket tekintheti meg: A sávszélesség, az adatátvitel, a találatok, gyorsítótárak állapota, a gyorsítótárbeli találatok arányát, IPV4/IPV6 adatátvitelre.'
 services: cdn
 documentationcenter: ''
 author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/11/2017
 ms.author: magattus
-ms.openlocfilehash: 75a1fb4beb4025dc3ec63d29944331d07be35d8a
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 15f17ac6556c4ff731372dc7f738d0f58bdc3e31
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092066"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593298"
 ---
 # <a name="custom-reports-from-verizon"></a>Egyéni jelentések a Verizontól
 
@@ -47,15 +47,15 @@ Egyéni jelentés létrehozása a következő jelentés beállítások megadás�
 
 - Metrikák: A következő beállítások támogatottak:
 
-   - Találatok: Azt jelzi, hogy az edge CNAME, amelyen engedélyezve van az egyéni jelentéskészítési képességet irányított kérelmek teljes száma. Ez a metrika nem tartalmazza az ügyfélnek visszaadott állapotkódot követi.
+   - Találatok száma: Azt jelzi, hogy az edge CNAME, amelyen engedélyezve van az egyéni jelentéskészítési képességet irányított kérelmek teljes száma. Ez a metrika nem tartalmazza az ügyfélnek visszaadott állapotkódot követi.
 
-   - Adatok átutalt: Azt jelzi, hogy a HTTP-ügyfelekre (például a webböngészők) a peremhálózati kiszolgálókról történő átvitt adatok teljes mennyisége a kéréseket, amely egy edge CNAME, amelyen az egyéni jelentéskészítési funkció engedélyezve van a rendszer átirányítja. Az átvitt adatok mennyisége HTTP-válaszfejlécek ad hozzá a válasz törzse számolható ki. Ennek eredményeképpen az egyes eszközök továbbított adatok mennyisége nagyobb, mint a fájl tényleges méretével.
+   - Átvitt adatok: Azt jelzi, hogy a HTTP-ügyfelekre (például a webböngészők) a peremhálózati kiszolgálókról történő átvitt adatok teljes mennyisége a kéréseket, amely egy edge CNAME, amelyen az egyéni jelentéskészítési funkció engedélyezve van a rendszer átirányítja. Az átvitt adatok mennyisége HTTP-válaszfejlécek ad hozzá a válasz törzse számolható ki. Ennek eredményeképpen az egyes eszközök továbbított adatok mennyisége nagyobb, mint a fájl tényleges méretével.
 
 - Csoportosítás: Határozza meg a statisztikát, amely a sávdiagram alább láthatók. A következő beállítások támogatottak:
 
    - HTTP-válaszkódot: HTTP-válaszkód szerint rendezi a statisztika (Ha például 200-as, 403, stb.), az ügyfél. 
 
-   - Gyorsítótár állapota: Statisztikák gyorsítótár állapot szerint rendezi.
+   - Gyorsítótár állapota: Gyorsítótár állapot szerint rendezi a statisztikákat.
 
 
 Hogy a jelentés a dátumtartományt, vagy egy előre definiált dátum tartományt választhat, például **Ma** vagy **ezen a héten**, a legördülő listából, vagy választhat **egyéni** és a naptár-ikonokat kattintva manuálisan adjon meg egy dátumtartományt. 
@@ -73,17 +73,17 @@ Az Excel szimbólum jobbra található gombra kattintva exportálhatja az adatok
 | 2xx                       | Azt jelzi, hogy a kérések vagy az átvitt adatok (MB) az Edge-hez, amely a 2xx HTTP-állapotkódot eredményez CNAME teljes száma (például 200 OK). |
 | 3xx                       | Azt jelzi, hogy a kérések vagy az átvitt adatok (MB) az Edge-hez, amely egy 3xx HTTP-állapotkódot eredményez CNAME teljes száma (például 302 található vagy a 304 nem módosulnak. |
 | 4xx                       | Azt jelzi, hogy a kérések vagy az átvitt adatok (MB) az Edge-hez, amely egy HTTP 4xx típusú állapotkódot eredményez CNAME teljes száma (például 400 Hibás kérés, 403 Tiltott vagy 404-es nem található). |
-| 5XX                       | Az Edge-hez, amelyek egy 5XX kódú HTTP-állapotkódot (például 500 belső kiszolgálóhiba vagy 502 Hibás átjáró) CNAME kérések vagy az átvitt adatok (MB) teljes számát jelzi. |
+| 5xx                       | Az Edge-hez, amelyek egy 5XX kódú HTTP-állapotkódot (például 500 belső kiszolgálóhiba vagy 502 Hibás átjáró) CNAME kérések vagy az átvitt adatok (MB) teljes számát jelzi. |
 | -Gyorsítótárának találati százaléka               | Azt jelzi, hogy közvetlenül a gyorsítótárból is rendereléséhez szükséges a kérelmező gyorsítótárazható kérelmek aránya. |
-| Gyorsítótárbeli találatok                | Azt jelzi, hogy a kérések vagy az átvitt adatok (MB) az Edge-hez, amelyek taggyorsítótárának találati aránya (például TCP_EXPIRED_HIT, TCP_HIT vagy TCP_PARTIAL_HIT) CNAME teljes száma. Egy taggyorsítótárának találati aránya akkor fordul elő, ha egy gyorsítótárazott verziója a lekért tartalom megtalálható. |
+| Gyorsítótár-találatok                | Azt jelzi, hogy a kérések vagy az átvitt adatok (MB) az Edge-hez, amelyek taggyorsítótárának találati aránya (például TCP_EXPIRED_HIT, TCP_HIT vagy TCP_PARTIAL_HIT) CNAME teljes száma. Egy taggyorsítótárának találati aránya akkor fordul elő, ha egy gyorsítótárazott verziója a lekért tartalom megtalálható. |
 | Átvitt adatok (MB)     | Azt jelzi, hogy az összes átvitt adatok mennyisége (MB) a peremhálózati kiszolgálókról történő az Edge CNAME (webböngésző) HTTP-ügyfelek. Az átvitt adatok mennyisége a válasz törzse ad hozzá a HTTP-válaszfejlécek számolható ki. Ennek eredményeképpen az egyes eszközök továbbított adatok mennyisége nagyobb, mint a fájl tényleges méretével. |
 | Leírás               | Azonosítja az CNAME beállításával a peremhálózaton |
-| Találatok                      | Azt jelzi, hogy az Edge-ben CNAME kérelmek teljes száma |
-| Tévesztések                    | Azt jelzi, hogy a kérések vagy az átvitt adatok (MB) az Edge-hez, amely a gyorsítótár-tévesztés (például TCP_CLIENT_REFRESH_MISS, TCP_EXPIRED_MISS vagy TCP_MISS) CNAME teljes száma. Gyorsítótár-tévesztés esetén az, hogy a kért tartalom nem gyorsítótárazva lett figyelembe véve a kérést a biztonsági kiszolgálón. | 
+| Találatok száma                      | Azt jelzi, hogy az Edge-ben CNAME kérelmek teljes száma |
+| Tévesztések száma                    | Azt jelzi, hogy a kérések vagy az átvitt adatok (MB) az Edge-hez, amely a gyorsítótár-tévesztés (például TCP_CLIENT_REFRESH_MISS, TCP_EXPIRED_MISS vagy TCP_MISS) CNAME teljes száma. Gyorsítótár-tévesztés esetén az, hogy a kért tartalom nem gyorsítótárazva lett figyelembe véve a kérést a biztonsági kiszolgálón. | 
 | Nincs gyorsítótárazás                  | Azt jelzi, hogy a kérések vagy az átvitt adatok (MB) az Edge-hez, amely CONFIG_NOCACHE gyorsítótár állapotkódot eredményez CNAME teljes száma.  |
 | Egyéb                     | Azt jelzi, hogy a kérések vagy adatok átvitt (MB) az Edge CNAME jelzi, amely a 2xx - 5xx tartományon kívül esik HTTP-állapotkód eredményez teljes száma. |
 | Platform                  | Azt jelzi, hogy azt a platformot, az edge CNAME forgalmat kezeli. |
-| Nincs hozzárendelés               | Azt jelzi, a peremhálózati CNAME melyik gyorsítótár állapotkód vagy a HTTP-állapotkód: nem naplózott információ a kérések vagy az átvitt adatok (MB) teljes száma.  |
+| Ki nem osztott               | Azt jelzi, a peremhálózati CNAME melyik gyorsítótár állapotkód vagy a HTTP-állapotkód: nem naplózott információ a kérések vagy az átvitt adatok (MB) teljes száma.  |
 | Uncacheable               | Azt jelzi, hogy a kérések vagy az átvitt adatok (MB) az Edge-hez, amely egy UNCACHEABLE gyorsítótár állapotkódot eredményez CNAME teljes száma.  |
 
 

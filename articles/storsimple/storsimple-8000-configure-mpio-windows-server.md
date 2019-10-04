@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 03/26/2018
 ms.author: alkohli
 ms.openlocfilehash: eda134257edb851eea076459b44e02fc59028f46
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58078142"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60363332"
 ---
 # <a name="configure-multipath-io-for-your-storsimple-device"></a>Többutas I/O konfigurálása a StorSimple-eszköz
 
@@ -35,14 +35,14 @@ Az MPIO egy opcionális funkció a Windows Server, és alapértelmezés szerint 
 
 Kövesse az alábbi lépéseket az MPIO konfigurálása a StorSimple-eszköz:
 
-* 1. lépés: A Windows Server-gazdagépen MPIO szolgáltatás telepítésének részletei
-* 2. lépés: Az MPIO konfigurálása a StorSimple-kötetek
-* 3. lépés: Csatlakoztatási StorSimple-köteteket a gazdagép
-* 4. lépés: Az MPIO konfigurálása a magas rendelkezésre álláshoz és terheléselosztási funkciók
+* 1\. lépés: A Windows Server-gazdagépen MPIO szolgáltatás telepítésének részletei
+* 2\. lépés: Az MPIO konfigurálása a StorSimple-kötetek
+* 3\. lépés: Csatlakoztatási StorSimple-köteteket a gazdagép
+* 4\. lépés: Az MPIO konfigurálása a magas rendelkezésre álláshoz és terheléselosztási funkciók
 
 Az előző lépések mindegyike a következő szakaszokban a következő cikkben.
 
-## <a name="step-1-install-mpio-on-the-windows-server-host"></a>1. lépés: A Windows Server-gazdagépen MPIO szolgáltatás telepítésének részletei
+## <a name="step-1-install-mpio-on-the-windows-server-host"></a>1\. lépés: A Windows Server-gazdagépen MPIO szolgáltatás telepítésének részletei
 
 Ez a funkció a Windows Server-gazdagépen telepítéséhez kövesse az alábbi lépéseket.
 
@@ -73,7 +73,7 @@ Ez a funkció a Windows Server-gazdagépen telepítéséhez kövesse az alábbi 
    
        ![Szerepkörök és szolgáltatások hozzáadása varázsló 9](./media/storsimple-configure-mpio-windows-server/IC741002.png)
 
-## <a name="step-2-configure-mpio-for-storsimple-volumes"></a>2. lépés: Az MPIO konfigurálása a StorSimple-kötetek
+## <a name="step-2-configure-mpio-for-storsimple-volumes"></a>2\. lépés: Az MPIO konfigurálása a StorSimple-kötetek
 
 A többutas I/O azonosítására a StorSimple-kötetek kell konfigurálni. StorSimple-kötetek felismerni az MPIO konfigurálása, hajtsa végre az alábbi lépéseket.
 
@@ -84,14 +84,14 @@ A többutas I/O azonosítására a StorSimple-kötetek kell konfigurálni. StorS
 3. Válassza ki **iSCSI-eszközök támogatása**, és kattintson a **Hozzáadás**.  
    ![Az MPIO tulajdonságainak felderítése több elérési utak](./media/storsimple-configure-mpio-windows-server/IC741003.png)
 4. Indítsa újra a kiszolgálót, amikor a rendszer kéri.
-5. Az a **MPIO tulajdonságok** párbeszédpanelen kattintson a **MPIO eszközök** fülre. Kattintson az **Hozzáadás** parancsra.
+5. Az a **MPIO tulajdonságok** párbeszédpanelen kattintson a **MPIO eszközök** fülre. Kattintson a **Hozzáadás**lehetőségre.
     </br>![Az MPIO tulajdonságok MPIO eszközök](./media/storsimple-configure-mpio-windows-server/IC741004.png)
 6. Az a **MPIO-támogatás hozzáadása** párbeszédpanel **eszközök Hardverazonosító**, adja meg az eszköz sorozatszámát. Az eszköz sorozatszámának, nyissa meg a StorSimple-Eszközkezelő szolgáltatásban. Navigáljon a **eszközök > irányítópult**. A jobb oldalon jelenik meg az eszköz sorozatszáma **Quick Glance** ablaktábláján az irányítópultját.
     </br>
     ![Az MPIO-támogatás hozzáadása](./media/storsimple-configure-mpio-windows-server/IC741005.png)
 7. Indítsa újra a kiszolgálót, amikor a rendszer kéri.
 
-## <a name="step-3-mount-storsimple-volumes-on-the-host"></a>3. lépés: Csatlakoztatási StorSimple-köteteket a gazdagép
+## <a name="step-3-mount-storsimple-volumes-on-the-host"></a>3\. lépés: Csatlakoztatási StorSimple-köteteket a gazdagép
 
 Az MPIO konfigurálása után a Windows Server, a StorSimple eszközön létrehozott (ek) is csatlakoztathatók, és majd kihasználhatja az MPIO a redundancia biztosítása érdekében. Kötet csatlakoztatása, hajtsa végre az alábbi lépéseket.
 
@@ -148,7 +148,7 @@ Az MPIO konfigurálása után a Windows Server, a StorSimple eszközön létreho
 > **Ne módosítsa az alapértelmezett paramétereket.**
 
 
-## <a name="step-4-configure-mpio-for-high-availability-and-load-balancing"></a>4. lépés: Az MPIO konfigurálása a magas rendelkezésre álláshoz és terheléselosztási funkciók
+## <a name="step-4-configure-mpio-for-high-availability-and-load-balancing"></a>4\. lépés: Az MPIO konfigurálása a magas rendelkezésre álláshoz és terheléselosztási funkciók
 
 Többutas alapuló, magas rendelkezésre állást és terheléselosztást, több munkamenetet kell manuálisan hozzá kell deklarálnia az elérhető különböző elérési utak. Például ha a gazdagép iSCSI hálózathoz csatlakozó két felület és az eszköz iSCSI-hálózathoz csatlakozó két adapterrel rendelkezik, majd kell konfigurálni megfelelő elérési út permutációk négy munkamenetek (csak két munkamenet lesz szükség, ha egyes adatillesztő és gazdagép felületet egy másik IP-alhálózat és nem irányítható).
 

@@ -4,14 +4,14 @@ description: Ez a cikk azt ismerteti, azt ismerteti, hogyan lehet Azure Cosmos D
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 05/21/2019
 ms.author: rimman
-ms.openlocfilehash: b6c5722d5e096300f76f60dfaf8bab1e07d0c61c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 13ce5ee8b0e2a5d9cc84ea1a408ebba152b46050
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55455667"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65967401"
 ---
 # <a name="optimize-reads-and-writes-cost-in-azure-cosmos-db"></a>Olvasási és írási, az Azure Cosmos DB költségek optimalizálása
 

@@ -1,122 +1,142 @@
 ---
-title: Csatlakozás az MQ-kiszolgálóhoz - Azure Logic Apps |} A Microsoft Docs
-description: Elküldhetők és beolvashatók az Azure Logic Apps és az Azure vagy a helyszíni MQ server üzenetek
+title: Csatlakozhat az IBM MQ server – Azure Logic Apps
+description: Elküldhetők és beolvashatók az Azure Logic Apps és az Azure-ban vagy a helyszíni IBM MQ server üzenetek
+services: logic-apps
+ms.service: logic-apps
+ms.suite: integration
 author: valrobb
 ms.author: valthom
-ms.date: 06/01/2017
+ms.reviewer: chrishou, LADocs
 ms.topic: article
-ms.service: logic-apps
-services: logic-apps
-ms.reviewer: klam, LADocs
-ms.suite: integration
+ms.date: 06/19/2019
 tags: connectors
-ms.openlocfilehash: 9e6ae5cb0afd75a1e87fe4d4d0cf307abab5a02a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a2894799946d069916b27a4f5bcc7bd3244705b2
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58167881"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273119"
 ---
-# <a name="connect-to-an-ibm-mq-server-from-logic-apps-using-the-mq-connector"></a>A logic apps az MQ-összekötővel csatlakozhat az IBM MQ server kiszolgálóhoz
+# <a name="connect-to-an-ibm-mq-server-from-azure-logic-apps"></a>Csatlakozhat az IBM MQ server kiszolgálóhoz, az Azure Logic Apps
 
-A Microsoft Connector MQ küld, és beolvassa a MQ Server helyszíni, vagy az Azure-ban tárolt. Ez az összekötő tartalmazza a Microsoft MQ-ügyfél, amely a TCP/IP-hálózaton keresztül egy távoli kiszolgálóval IBM MQ-val kommunikál. Ez a dokumentum egy alapszintű útmutató az MQ-összekötő használatára. Azt javasoljuk, hogy első lépésként böngészés üzenetsorba egy üzenet, és kipróbálja a más műveletek.
+Az IBM MQ-összekötő küld, és beolvassa a egy helyszíni IBM MQ Server vagy az Azure-ban tárolja. Ez az összekötő tartalmazza a Microsoft MQ-ügyfél, amely a TCP/IP-hálózaton keresztül egy távoli kiszolgálóval IBM MQ-val kommunikál. Ebben a cikkben egy alapszintű útmutató az MQ-összekötő használatára. Első lépésként keresse az üzenetsorba egy üzenet, és ismételje meg az egyéb műveleteket.
 
-Az MQ-összekötő az alábbi műveleteket tartalmazza. Nincsenek nincsenek eseményindítók.
+Az IBM MQ-összekötő ezeket a műveleteket tartalmaz, de nincsenek eseményindítók biztosít:
 
-- Keresse meg egy üzenet az IBM MQ kiszolgálóról az üzenet törlése nélkül
-- Keresse meg egy üzenetköteget az IBM MQ kiszolgálóról az üzenetek törlése nélkül
-- Egyetlen üzenetet kap, és törli az üzenetet az IBM MQ Server kiszolgálóhoz
-- Kötegelt üzenetek fogadásához, és törli az üzeneteket az IBM MQ Server kiszolgálóhoz
-- Egy üzenet küldéséhez az IBM MQ Server kiszolgálóhoz
+- Keresse meg egy üzenet az IBM MQ-kiszolgálóról az üzenet törlése nélkül
+- Keresse meg egy üzenetköteget az IBM MQ-kiszolgálóról az üzenetek törlése nélkül
+- Egyetlen üzenetet kap, és törli az üzenetet az IBM MQ server kiszolgálóhoz
+- Kötegelt üzenetek fogadásához, és törli az üzeneteket az IBM MQ server kiszolgálóhoz
+- Egy üzenet küldéséhez az IBM MQ server kiszolgálóhoz
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Ha a helyszíni MQ-kiszolgálót, [a helyszíni adatátjáró telepítése](../logic-apps/logic-apps-gateway-install.md) a hálózaton belüli kiszolgálón. Ha az MQ Server nyilvánosan elérhető, vagy Azure-ban érhető el, majd az átjáró nem használt vagy szükséges.
+* Ha egy helyszíni MQ server használ [a helyszíni adatátjáró telepítése](../logic-apps/logic-apps-gateway-install.md) a hálózaton belüli kiszolgálón. A kiszolgáló, ahol a helyszíni átjáró telepítve van a .NET Framework 4.6-os az MQ-összekötő működéséhez is rendelkeznie kell. Meg kell is erőforrás létrehozása az Azure-ban a helyszíni adatátjáróhoz. További információkért lásd: [a data gateway kapcsolat beállításához](../logic-apps/logic-apps-gateway-connection.md).
 
-    > [!NOTE]
-    > A kiszolgáló, az On-Premises Data Gateway telepítési helyéül is rendelkeznie kell a .NET Framework 4.6-os az MQ-összekötő működéséhez.
-
-* A helyszíni adatátjáró – Azure-erőforrás létrehozása [a data gateway kapcsolat beállításához](../logic-apps/logic-apps-gateway-connection.md).
+  Azonban ha az MQ server nyilvánosan elérhető vagy Azure-ban érhető el, nem kell az átjáró használatára.
 
 * Hivatalosan támogatott IBM WebSphere MQ-verziók:
-    * 7.5 MQ
-    * MQ 8.0
 
-## <a name="create-a-logic-app"></a>Logikai alkalmazás létrehozása
+  * 7\.5 MQ
+  * MQ 8.0
+  * MQ 9.0
 
-1. Az a **Azure indítsa el a tábla**válassza **+** (plusz) **Web + mobil**, majd **logikai alkalmazás**.
-2. Adja meg a **neve**, MQTestApp, például **előfizetés**, **erőforráscsoport**, és **hely** (használhatja azt a helyet, a helyszíni Data Gateway kapcsolat van konfigurálva). Válassza ki **rögzítés az irányítópulton**, és válassza ki **létrehozás**.  
-![Logikai alkalmazás létrehozása](media/connectors-create-api-mq/Create_Logic_App.png)
+* A logikai alkalmazást, amelyre az MQ-művelet hozzáadása. Ez a logikai alkalmazás ugyanazon a helyen kell használnia, mint a helyszíni data gateway-kapcsolat, és már rendelkeznie kell egy eseményindítót, amely elindítja a munkafolyamatot. 
 
-## <a name="add-a-trigger"></a>Adjon hozzá egy triggert
-
-> [!NOTE]
-> Az MQ-összekötő nem tartozhat eseményindító. Tehát egy másik eseményindító használatával indítsa el a logikai alkalmazást, mint például a **ismétlődési** eseményindító.
-
-1. A **Logic Apps Designerben** megnyílik, válassza ki **ismétlődési** közös eseményindítók listájában.
-2. Válassza ki **szerkesztése** ismétlődési Trigger belül.
-3. Állítsa be a **gyakorisága** való **nap**, és állítsa be a **időköz** való **7**.
+  Az MQ-összekötő nem tartozhat eseményindító, hogy hozzá kell adnia egy eseményindítót a logikai alkalmazás első. Ha például az ismétlődési eseményindító is használhatja. Ha most ismerkedik a logic apps, próbálkozzon a következővel [gyors útmutató: az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md). 
 
 ## <a name="browse-a-single-message"></a>Keresse meg egy adott üzenet
-1. Válassza ki **+ új lépés**, és válassza ki **művelet hozzáadása**.
-2. A Keresés mezőbe írja be a `mq`, majd válassza ki **MQ - Tallózás üzenet**.  
-![Keresse meg az üzenet](media/connectors-create-api-mq/Browse_message.png)
 
-3. Ha nincs meglévő MQ-kapcsolat, majd hozza létre a kapcsolatot:  
+1. A logikai alkalmazást, az eseményindító vagy egy másik művelet alatt válassza **új lépés**. 
 
-    1. Válassza ki **kapcsolódás helyszíni adatátjárón keresztül**, és adja meg az MQ-kiszolgáló tulajdonságait.  
-    A **kiszolgáló**, adja meg az MQ-kiszolgáló nevét, vagy adja meg az IP-cím egy kettőspontot és a port számát.
-    2. A **átjáró** legördülő menüben bármely meglévő gateway-kapcsolatok konfigurálása megtörtént. Válassza ki az átjáró.
-    3. Miután végzett, válassza a **Létrehozás** lehetőséget. A kapcsolat az alábbihoz hasonlóan néz ki:  
-    ![Kapcsolat tulajdonságai](media/connectors-create-api-mq/Connection_Properties.png)
+1. A Keresés mezőbe írja be a "mq", és válassza a következő műveletet: **Keresse meg az üzenet**
 
-4. A művelet tulajdonságait a következőket teheti:  
+   ![Keresse meg az üzenet](media/connectors-create-api-mq/Browse_message.png)
 
-    * Használja a **várólista** tulajdonság használatával hozzáfér egy másik üzenetsor neve, mint a beállítások határozzák meg a kapcsolat
-    * Használja a **üzenetazonosító**, **CorrelationId**, **GroupId**, és egyéb tulajdonságait, hogy keresse meg az üzenetet a különböző MQ-üzenet tulajdonságai alapján
-    * Állítsa be **IncludeInfo** való **igaz** újabb üzenetet információval a kimenetben. Vagy állítsa az értékét **hamis** nem újabb üzenetet információval a kimenetben.
-    * Adjon meg egy **időtúllépési** érték határozza meg, mennyi ideig kell várni egy üzenet érkezik egy üres üzenetsorhoz. Ha semmit nem adott meg, a rendszer lekéri a várólista első üzenetébe, és nincs várakozás egy hibaüzenet jelenik meg a fordított idő.  
-    ![Keresse meg az üzenet tulajdonságai](media/connectors-create-api-mq/Browse_message_Props.png)
+1. Ha nem rendelkezik meglévő MQ-kapcsolat, a kapcsolat létrehozása:  
 
-5. **Mentés** a kívánt módosításokat, majd **futtatása** a logikai alkalmazás:  
-![Mentés és Futtatás](media/connectors-create-api-mq/Save_Run.png)
+   1. A működés közben, válassza ki a **kapcsolódás helyszíni adatátjárón keresztül**.
+   
+   1. Adja meg a tulajdonságokat az MQ server kiszolgálóhoz.  
 
-6. Néhány másodperc elteltével jelennek meg a Futtatás a lépéseket, és tekintse meg a kimenetet. Kattintson ide a részletek minden egyes lépést zöld pipa. Válassza ki **tekintse meg a nyers kimenetek** a kimeneti adatokat további részletek megtekintéséhez.  
-![Keresse meg a kimeneti üzenet](media/connectors-create-api-mq/Browse_message_output.png)  
+      A **kiszolgáló**, adja meg az MQ-kiszolgáló nevét, vagy adja meg az IP-cím egy kettőspontot és a port számát.
+    
+   1. Nyissa meg a **átjáró** lista, amely megjeleníti a korábban beállított gateway-kapcsolatok. Válassza ki az átjáró.
+    
+   1. Ha elkészült, kattintson a **Létrehozás** gombra. 
+   
+      A kapcsolat a példához hasonlóan néz ki:
 
-    Nyers kimenet:  
-    ![Keresse meg az üzenet nyers kimenet](media/connectors-create-api-mq/Browse_message_raw_output.png)
+      ![Kapcsolat tulajdonságai](media/connectors-create-api-mq/Connection_Properties.png)
 
-7. Ha a **IncludeInfo** beállítás értéke igaz, a következő kimenet jelenik meg:  
-![Tallózás üzenet adatait tartalmazza](media/connectors-create-api-mq/Browse_message_Include_Info.png)
+1. A művelet tulajdonságainak beállítása:
+
+   * **várólista**: Adjon meg egy üzenetsorba, amely eltér a kapcsolatot.
+
+   * **Üzenetazonosító**, **CorrelationId**, **GroupId**, és egyéb tulajdonságok: Keresse meg a különböző MQ-üzenet tulajdonságai alapján üzenet
+
+   * **IncludeInfo**: Adja meg **igaz** újabb üzenetet információval a kimenetben. Vagy adjon meg **hamis** nem újabb üzenetet információval a kimenetben.
+
+   * **Időtúllépés**: Adjon meg egy értéket, mennyi ideig kell várni egy üzenet érkezik egy üres üzenetsorhoz meghatározásához. Ha semmit nem adott meg, a rendszer lekéri a várólista első üzenetébe, és nincs várakozás egy hibaüzenet jelenik meg a fordított idő.
+
+     ![Keresse meg az üzenet tulajdonságai](media/connectors-create-api-mq/Browse_message_Props.png)
+
+1. **Mentés** a módosításokat, majd **futtatása** a logikai alkalmazást.
+
+   ![Mentés és Futtatás](media/connectors-create-api-mq/Save_Run.png)
+
+   A Futtatás befejeződése után jelennek meg a lépéseket a futtatható, és áttekintheti a kimenetet.
+
+1. Tekintse át az egyes lépéseihez szükséges részleteket, válasszon zöld pipa. További információ a kimeneti adatok felülvizsgálatához válassza **nyers kimenetek megjelenítése**.
+
+   ![Keresse meg a kimeneti üzenet](media/connectors-create-api-mq/Browse_message_output.png)  
+
+   Íme néhány példa nyers kimenetét:
+
+   ![Keresse meg az üzenet nyers kimenet](media/connectors-create-api-mq/Browse_message_raw_output.png)
+
+1. Ha **IncludeInfo** TRUE értéket kap, a következő kimenet jelenik meg:
+
+   ![Tallózás üzenet adatait tartalmazza](media/connectors-create-api-mq/Browse_message_Include_Info.png)
 
 ## <a name="browse-multiple-messages"></a>Több üzenetek tallózása
+
 A **keresse meg az üzenetek** művelet tartalmaz egy **BatchSize** beállítás jelzi, hogy hány üzenetet a rendszer visszalépteti az üzenetsorból.  Ha **BatchSize** nem tartozik bejegyzés, minden üzenetet adja vissza. A visszaadott kimenete egy tömb, az üzenetek.
 
-1. Hozzáadásakor a **keresse meg az üzenetek** műveletet, az első kapcsolat, amely konfigurálva van alapértelmezés szerint ki van választva. Válassza ki **kapcsolat módosítása** hozzon létre egy új kapcsolatot, vagy válasszon egy másik kapcsolatra.
+1. Amikor hozzáadja a **keresse meg az üzenetek** művelet, az első korábban konfigurált kapcsolati alapértelmezés szerint ki van választva. Új kapcsolat létrehozásához válassza a **kapcsolat módosítása**. Vagy válasszon ki egy másik kapcsolatot.
 
-2. A kimenet képernyőképe üzeneteket jeleníti meg:  
-![Keresse meg a kimeneti üzenetek](media/connectors-create-api-mq/Browse_messages_output.png)
+1. A logikai alkalmazás futtatása befejeződik, után Íme néhány példa kimenetében a **keresse meg az üzenetek** művelet:
 
-## <a name="receive-a-single-message"></a>Egy üzenet fogadása
+   ![Keresse meg a kimeneti üzenetek](media/connectors-create-api-mq/Browse_messages_output.png)
+
+## <a name="receive-single-message"></a>Egyetlen üzenet fogadása
+
 A **Receive message** művelet van ugyanazon a forráson, és kiírja a **Tallózás üzenet** művelet. Használata esetén **Receive message**, az üzenet törlődik az üzenetsorból.
 
 ## <a name="receive-multiple-messages"></a>Több üzenetek fogadása
+
 A **üzenetek fogadása** művelet van ugyanazon a forráson, és kiírja a **keresse meg az üzenetek** művelet. Használata esetén **üzenetek fogadása**, az üzenetek törlése az üzenetsorból.
 
-Ha nincsenek üzenetek az üzenetsorban a Tallózás gombra, vagy a fogadó oldalon, a lépés sikertelen lesz, a következő eredménnyel:  
+Ha nincsenek üzenetek az üzenetsorban a Tallózás gombra, vagy a fogadó oldalon, a lépés sikertelen lesz, és ez a kimenet:  
+
 ![MQ nem jelenik meg hibaüzenet](media/connectors-create-api-mq/MQ_No_Msg_Error.png)
 
-## <a name="send-a-message"></a>Üzenet küldése
-1. Hozzáadásakor a **üzenetküldés** műveletet, az első kapcsolat, amely konfigurálva van alapértelmezés szerint ki van választva. Válassza ki **kapcsolat módosítása** hozzon létre egy új kapcsolatot, vagy válasszon egy másik kapcsolatra. Az érvényes **üzenettípusok** vannak **Datagram**, **válasz**, vagy **kérelem**.  
-![Msg Kellékek küldése](media/connectors-create-api-mq/Send_Msg_Props.png)
+## <a name="send-message"></a>Üzenet küldése
 
-2. Üzenet küldése a kimenet az alábbihoz hasonló:  
-![Msg kimenet](media/connectors-create-api-mq/Send_Msg_Output.png)
+Amikor hozzáadja a **üzenetküldés** művelet, az első korábban konfigurált kapcsolati alapértelmezés szerint ki van választva. Új kapcsolat létrehozásához válassza a **kapcsolat módosítása**. Vagy válasszon ki egy másik kapcsolatot.
 
-## <a name="connector-specific-details"></a>Összekötő-specifikus részletei
+1. Válasszon egy érvényes üzenet típusa: **Datagram**, **válasz**, vagy **kérése**  
 
-Megtekintheti a valamennyi eseményindítót és műveletet a swaggerben meghatározott, és emellett a korlátozott a [összekötő részletei](/connectors/mq/).
+   ![Msg Kellékek küldése](media/connectors-create-api-mq/Send_Msg_Props.png)
+
+1. A logikai alkalmazás futtatásának befejezését követően Íme néhány példa kimenetében a **üzenetküldés** művelet:
+
+   ![Msg kimenet](media/connectors-create-api-mq/Send_Msg_Output.png)
+
+## <a name="connector-reference"></a>Összekötő-referencia
+
+További technikai részletek műveleteket és korlátait, amely ismerteti az összekötő OpenAPI által (korábbi nevén Swagger) leírását, tekintse át az összekötő [referencialapja](/connectors/mq/).
 
 ## <a name="next-steps"></a>További lépések
-[Hozzon létre egy logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md). Ismerje meg az egyéb elérhető összekötők a Logic Apps, a [API-k listája](apis-list.md).
+
+* További információk egyéb [Logic Apps-összekötők](../connectors/apis-list.md)

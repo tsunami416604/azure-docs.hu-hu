@@ -1,27 +1,21 @@
 ---
-title: Az Azure Resource Manager kipróbálása |} A Microsoft Docs
+title: Az Azure Resource Manager kipróbálása |} Az Azure Marketplace-en
 description: Hozhat létre a Marketplace-en próbálja ki az Azure Resource Manager használatával
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: pbutlerm
 manager: Patrick .Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 2fe1a1fc1ff82415a5c2f88c72ae707b12cd5283
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.author: pabutler
+ms.openlocfilehash: 92c55c7f15b3f350ad802157bf401f3e75983789
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541162"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65606434"
 ---
-# <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager – Tesztverzió
+# <a name="azure-resource-manager-test-drive"></a>Az Azure Resource Manager kipróbálása
 
 Ez a cikk a kiadók, akik az ajánlatot az Azure piactéren, illetve akik az appsource-on rendelkezik, de létre szeretné hozni a Test Drive csak Azure-erőforrásokkal való szól.
 
@@ -368,7 +362,7 @@ Jelenleg számítja ki a teljes száma a lehetséges egyidejű Tesztverzió fog 
 
 **Test Drive Resource Manager-sablon –** *szükséges* Itt a Resource Manager-sablon feltöltése. Ez az a fenti az előző szakaszban létrehozott fájlt. A fő sablon fájl neve: "main-template.json", és győződjön meg arról, hogy a Resource Manager-sablon szükséges kulcs változókat kimeneti paramétereket tartalmaz. (.Zip kiterjesztésű fájlnak kell lennie)
 
-**Információ - hozzáférés** *szükséges* után az ügyfél lekéri a Test Drive, a hozzáférési információk jelennek-e meg a számukra. Ezeket az utasításokat úgy van kialakítva, hogy a hasznos a kimeneti paraméterek a Test Drive Resource Manager-sablon megosztása. Adja meg a kimeneti paraméterek, használja a kapcsos zárójelek (például **{{outputname}}**), és azok kerül beillesztésre megfelelően a helyen. (HTML karakterlánc-formátum ajánlott Itt jelennek meg az előtér).
+**Információ - hozzáférés** *szükséges* után az ügyfél lekéri a Test Drive, a hozzáférési információk jelennek-e meg a számukra. Ezeket az utasításokat úgy van kialakítva, hogy a hasznos a kimeneti paraméterek a Test Drive Resource Manager-sablon megosztása. Adja meg a kimeneti paraméterek, használja a kapcsos zárójelek (például **{{outputname}}** ), és azok kerül beillesztésre megfelelően a helyen. (HTML karakterlánc-formátum ajánlott Itt jelennek meg az előtér).
 
 ### <a name="test-drive-deployment-subscription-details"></a>Tesztelés üzembe helyezési előfizetés részletei
 
@@ -388,7 +382,7 @@ Máskülönben hozzon létre egy új bérlőt az Azure Active Directoryban.
 
 ![A lista az Azure Active Directory-bérlők](./media/azure-resource-manager-test-drive/subdetails4.png)
 
-![Az Azure AD-bérlő a szervezet, a tartomány és az ország megadása](./media/azure-resource-manager-test-drive/subdetails5.png)
+![Az Azure AD-bérlő a szervezet, a tartomány és az ország/régió megadása](./media/azure-resource-manager-test-drive/subdetails5.png)
 
 ![A kijelölés megerősítéséhez](./media/azure-resource-manager-test-drive/subdetails6.png)
 
@@ -409,7 +403,7 @@ Kattintson a Mentés gombra. Az utolsó lépés, hogy az Alkalmazásazonosítót
 Adott használjuk az alkalmazás üzembe helyezéséhez az előfizetéshez, hozzá kell adnunk a az alkalmazás az előfizetés közreműködője. A következő útmutatót: ezek a következők alatt:
 
 1. Az előfizetések panelen keresse meg, és válassza ki a megfelelő előfizetést, amely csak a Test Drive használja.
-1. Kattintson a **hozzáférés-vezérlés (IAM)**.
+1. Kattintson a **hozzáférés-vezérlés (IAM)** .
 1. Kattintson a **szerepkör-hozzárendelések** fülre.  ![Adjon hozzá egy új hozzáférés-vezérlés egyszerű](./media/azure-resource-manager-test-drive/SetupSub7_1.jpg)
 1. Kattintson a **szerepkör-hozzárendelés hozzáadása**.
 1. Állítsa be a szerepkört, **közreműködői**.

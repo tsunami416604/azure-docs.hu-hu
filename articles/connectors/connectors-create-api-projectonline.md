@@ -1,6 +1,6 @@
 ---
-title: Csatlakozás a Project Online az Azure Logic Apps |} A Microsoft Docs
-description: Figyelő, hozzon létre, és a Project Online-projektek, feladatok és erőforrások kezelése az Azure Logic Apps használatával munkafolyamatok automatizálása
+title: Kapcsolódás a Project online-hoz a Azure Logic Appsból | Microsoft Docs
+description: A Project online-projektek,-feladatok és-erőforrások figyelésére, létrehozására és kezelésére szolgáló munkafolyamatok automatizálása Azure Logic Apps használatával
 services: logic-apps
 ms.service: logic-apps
 author: ecfan
@@ -11,58 +11,58 @@ ms.topic: article
 ms.assetid: 40ce621e-4925-4653-93bb-71ab9abcbdf1
 tags: connectors
 ms.date: 08/24/2018
-ms.openlocfilehash: 663363d05c1875d22a0ecc0478abcf7e0ec89c99
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: fe571209d28fe098ce9b507cb67b0a9a5abd25a3
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230369"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050861"
 ---
-# <a name="manage-project-online-projects-tasks-and-resources-by-using-azure-logic-apps"></a>Project Online-ban projektek, feladatok és erőforrások kezelése az Azure Logic Apps használatával
+# <a name="manage-project-online-projects-tasks-and-resources-by-using-azure-logic-apps"></a>A Project online-projektek,-feladatok és-erőforrások kezelése Azure Logic Apps használatával
 
-Az Azure Logic Apps és a Project Online-összekötő hozhat létre automatizált feladatok és a munkafolyamatok a projektek, feladatok és erőforrások a Project Online Office 365-tel. A munkafolyamatok hajthatja végre ezeket a műveleteket és más, például:
+A Azure Logic Apps és a Project online-összekötővel automatizált feladatokat és munkafolyamatokat hozhat létre a projektekhez, feladatokhoz és erőforrásokhoz a Project online-ban az Office 365 használatával. A munkafolyamatok ezeket a műveleteket és másokat is elvégezhetik, például:
 
-* Ez a figyelő az új projektek, feladatok és erőforrások létrehozásakor. Vagy a figyelő észleli, ha az új projektek közzététele.
-* Az új projektek, feladatok és erőforrások létrehozásához.
-* Meglévő projektek vagy feladatok listája.
-* Tekintse meg, vagy ellenőrizze a projektek közzététele.
+* Új projektek, feladatok vagy erőforrások létrehozásakor történő figyelése. Vagy figyelje az új projektek közzétételekor.
+* Hozzon létre új projekteket, feladatokat vagy erőforrásokat.
+* Meglévő projektek vagy feladatok listázása.
+* Projektek kijelentkezése, beadása vagy közzététele.
 
-Project Online segítségével tervezze, rangsorolására és kezelhetik projektjeiket és a projektporfólió-befektetéseket szinte bárhonnan, szinte bármilyen eszközön azáltal, hogy projektvezetési funkciókat. Project Online-ban eseményindítók, amely választ kaphat a Project Online-hoz és más műveletek számára elérhetővé tenni a kimeneti is használhatja. Műveletek a logic Apps segítségével a Project Online-ban különböző feladatok elvégzésére. Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+A Project online lehetővé teszi, hogy a projektek és a projekt-portfólió beruházásait szinte bárhonnan, szinte bármilyen eszközről tervezze, rangsorolja és kezelje, hatékony projektmenedzsment-képességek biztosításával. A Project online-eseményindítók segítségével választ kaphat a Project online-ból, és más műveletek számára elérhetővé teheti a kimenetet. A logikai alkalmazásokban lévő műveletek használatával különféle feladatokat végezhet el a Project online-ban. Ha most ismerkedik a Logic apps szolgáltatással, tekintse át [a mi az Azure Logic apps?](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, <a href="https://azure.microsoft.com/free/" target="_blank">regisztráljon egy ingyenes Azure-fiókra</a>. 
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/). 
 
-* A Project Online, elérhető egy [Office 365-fiókja](https://www.office.com/), 
+* A Project online egy [Office 365](https://www.office.com/)-fiókon keresztül érhető el, 
 
-* Alapvető ismeretek szerezhetők [logikai alkalmazások létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Alapvető ismeretek a [logikai alkalmazások létrehozásáról](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* A logikai alkalmazás, ahová a Project Online-adatok eléréséhez. Project Online-ban eseményindítóval, elindításához [hozzon létre egy üres logikai alkalmazás](../logic-apps/quickstart-create-first-logic-app-workflow.md). Project Online-műveletek használata, indítsa el a logikai alkalmazás egy másik eseményindítóval, például a **ismétlődési** eseményindító.
+* Az a logikai alkalmazás, amelyhez el szeretné érni a Project online adatait. Ha egy Project online-triggerrel szeretne kezdeni, [hozzon létre egy üres logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md). A Project online-műveletek használatához indítsa el a logikai alkalmazást egy másik eseményindítóval, például az **ismétlődési** eseményindítóval.
 
-## <a name="connect-to-project-online"></a>Csatlakozhat a Project Online-hoz
+## <a name="connect-to-project-online"></a>Kapcsolódás a Project online-hoz
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com), és nyissa meg a logikai alkalmazás a Logikaialkalmazás-Tervező, ha nem, nyissa meg a már.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és nyissa meg a logikai alkalmazást a Logic app Designerben, ha már nincs megnyitva.
 
-1. Válassza ki az elérési utat: 
+1. Válasszon egy elérési utat: 
 
-   * Üres logic Apps, a keresési mezőbe írja be "Project Online-ban" szűrőként. 
-   Eseményindítók listája alatt válassza ki a kívánt az eseményindító. 
+   * Üres logikai alkalmazások esetén a keresőmezőbe írja be a "Project online" kifejezést a szűrőként. 
+   Válassza ki a kívánt eseményindítót az eseményindítók listából. 
 
      – vagy –
 
-   * Meglévő logic Apps alkalmazások, feladatütemezésekben adjon hozzá egy műveletet, amelyre a válasszon **új lépés**. A Keresés mezőbe írja be "Project Online" szűrőként. Műveletek listája alatt válassza ki a kívánt művelet.
+   * A meglévő Logic apps esetében azon a lépésben, amelyben hozzá szeretne adni egy műveletet, válassza az **új lépés**lehetőséget. A keresőmezőbe írja be a "Project online" kifejezést a szűrőként. A műveletek listában válassza ki a kívánt műveletet.
 
-1. Ha kéri, jelentkezzen be a Project Online-ban, jelentkezzen be most.
+1. Ha a rendszer felszólítja, hogy jelentkezzen be a Project online-ba, jelentkezzen be most.
 
-   A hitelesítő adatok engedélyezik a logikai alkalmazás, hozzon létre egy kapcsolatot a Project Online-hoz, és az adatok eléréséhez.
+   A hitelesítő adataival engedélyezheti a logikai alkalmazásnak, hogy kapcsolatot hozzon létre a Project online-ban, és hozzáférhessen az adataihoz.
 
-1. Adja meg a szükséges adatokat a kijelölt eseményindítót vagy műveletet, és továbbra is használhatja a logic app-munkafolyamatot.
+1. Adja meg a kiválasztott trigger vagy művelet szükséges adatait, és folytassa a logikai alkalmazás munkafolyamatának összeállítását.
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-További technikai részletek korlátok, eseményindítók és műveletek, amely ismerteti az összekötő OpenAPI által (korábbi nevén Swagger) leírását, tekintse át az összekötő [referencialapja](/connectors/projectonline/).
+Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos technikai részletekért lásd az összekötő OpenAPI (korábban: hencegés) leírását, tekintse át az összekötő [hivatkozási oldalát](/connectors/projectonline/).
 
 ## <a name="get-support"></a>Támogatás kérése
 
@@ -71,4 +71,4 @@ További technikai részletek korlátok, eseményindítók és műveletek, amely
 
 ## <a name="next-steps"></a>További lépések
 
-* További információk egyéb [Logic Apps-összekötők](../connectors/apis-list.md)
+* További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

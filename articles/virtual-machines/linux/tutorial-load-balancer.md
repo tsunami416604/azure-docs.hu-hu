@@ -4,7 +4,7 @@ description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre három
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 11/13/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1fce6292ffd7307ff0a294c6fa25412962acd1cc
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: b813a197266db37bde961e079f5d5d5e92353db1
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752840"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708515"
 ---
 # <a name="tutorial-load-balance-linux-virtual-machines-in-azure-to-create-a-highly-available-application-with-the-azure-cli"></a>Oktatóanyag: Terheléselosztó Linux rendszerű virtuális gépek az Azure-ban magas rendelkezésre állású alkalmazás létrehozása az Azure CLI-vel
 

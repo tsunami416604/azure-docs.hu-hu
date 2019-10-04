@@ -9,19 +9,19 @@ ms.date: 12/07/2018
 ms.author: raynew
 ms.custom: include file
 ms.openlocfilehash: 9e9c09c1825f5c8383a708e8bd343146396f878e
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553683"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "67179519"
 ---
 Az alábbi korlátok vonatkoznak az Azure Backup szolgáltatásban.
 
 | **Korlát** | **Alapértelmezett** |
 | --- | --- |
-| Kiszolgálók és gépek, a tárolókban regisztrálható. | Windows Server/Windows Client/System Center Data Protection Manager: 50. <br/><br/> IaaS virtuális gépek: 1,000.  |
-| Adatforrás méretét, egy tároló storage-ban. |54,400 GB-os maximális. IaaS VM biztonsági mentése a korlát nem vonatkozik. |
-| Mentési tárolók az Azure-előfizetéssel. |régiónként 500 tárolóra. |
-| Napi biztonsági mentés ütemezése. |A Windows-kiszolgáló vagy ügyfél: Három nap.<br/> System Center DPM: Két nap. <br/> IaaS virtuális gépek: Naponta egyszer.  |
-| A biztonsági mentéshez egy Azure virtuális Géphez csatolt adatlemezek. | 16 |
-| Biztonsági mentés az Azure virtuális Géphez csatlakoztatott adatlemez egyedi.| 4,095 GB|
+| A tárolóban regisztrálható kiszolgálók vagy gépek. | Windows Server/Windows ügyfél/System Center Data Protection Manager: 50. <br/><br/> IaaS virtuális gépek: 1 000.  |
+| Egy adatforrás mérete a tár tárolójában. |54 400 – legfeljebb GB. A korlát nem vonatkozik a IaaS virtuális gép biztonsági mentésére. |
+| Backup-tárolók egy Azure-előfizetésben. |500-tároló régiónként. |
+| Napi biztonsági mentések ütemezése. |Windows Server/Client: Három nap.<br/> System Center DPM: Két nap. <br/> IaaS virtuális gépek: Naponta egyszer.  |
+| Azure-beli virtuális géphez csatlakoztatott adatlemezek biztonsági mentéshez. | 16 |
+| Az Azure virtuális géphez a biztonsági mentéshez csatolt egyes adatlemezek.| 4,095 GB|

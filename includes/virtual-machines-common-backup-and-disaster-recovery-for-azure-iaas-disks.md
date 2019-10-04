@@ -2,18 +2,18 @@
 title: fájl belefoglalása
 description: fájl belefoglalása
 services: storage
-author: luywang
+author: roygara
 ms.service: storage
 ms.topic: include
 ms.date: 06/05/2018
-ms.author: luywang
+ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: efa43d7faf9d048ff963a74d8c69618ee535654c
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: d242b2815d59676432beb878bbc955a9f39de0f1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56443352"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179116"
 ---
 # <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Biztonsági mentési és vész-helyreállítási Azure IaaS-lemezek
 
@@ -71,7 +71,7 @@ A Vészhelyreállítás szempontjai a következők lehetnek a következő szempo
 
 Tekintsünk meg néhány jellemző példa az alkalmazás munkaterhelés-forgatókönyvek és a vész-helyreállítási tervezési szempontokat.
 
-### <a name="scenario-1-major-database-solutions"></a>1. forgatókönyv: Fő adatbázis-megoldások
+### <a name="scenario-1-major-database-solutions"></a>1\. forgatókönyv: Fő adatbázis-megoldások
 
 Fontolja meg egy éles adatbázis-kiszolgáló, mint például az SQL Server vagy az Oracle által támogatott magas rendelkezésre állású. Kritikus fontosságú éles alkalmazások és a felhasználók ehhez az adatbázishoz függenek. A Vészhelyreállítási terv esetében a rendszer támogatja az alábbiakat lehet szükség:
 
@@ -82,17 +82,17 @@ A vész-helyreállítási terv szükség lehet az adatbázis biztonsági mentés
 
 NoSQL-adatbázisok, például a mongodb-hez, emellett támogatja a [replikák](https://docs.mongodb.com/manual/replication/) a redundancia biztosítása érdekében. A magas rendelkezésre állást a replikák szolgálnak.
 
-### <a name="scenario-2-a-cluster-of-redundant-vms"></a>2. forgatókönyv: Redundáns virtuális gépek
+### <a name="scenario-2-a-cluster-of-redundant-vms"></a>2\. forgatókönyv: Redundáns virtuális gépek
 
 Érdemes lehet a munkaterhelés kezeli a virtuális gépek, amelyek a redundancia és a terheléselosztás. Egy példa, egy régióban üzembe helyezve, Cassandra-fürtjére. Az ilyen típusú architektúra már biztosít egy magas szintű redundancia a régión belül. Azonban a számítási feladatok védelmét a regionális szintű meghibásodása, érdemes szét a fürt két régióban, vagy egy másik régióba rendszeres biztonsági mentések készítése.
 
-### <a name="scenario-3-iaas-application-workload"></a>3. forgatókönyv: IaaS-alkalmazás számítási feladatait
+### <a name="scenario-3-iaas-application-workload"></a>3\. forgatókönyv: IaaS-alkalmazás számítási feladatait
 
 Tekintsük át az IaaS-alkalmazás számítási feladatait. Ez az alkalmazás Előfordulhat például, egy Azure-beli virtuális gépen egy jellemző éles üzemi számítási feladatot. A webalkalmazás-kiszolgáló vagy a fájlkiszolgáló a tartalom és más erőforrások, a hely lehet. A személyre szabott üzleti alkalmazások, a virtuális gépen, amely tárolja az adatokat, erőforrások és alkalmazásállapot a Virtuálisgép-lemezek is lehet. Ebben az esetben fontos, hogy rendszeresen a biztonsági mentések igénybe vehet. Biztonsági mentés gyakorisága a virtuális gép számítási jellege kell alapulnia. Például ha az alkalmazás naponta fut, és módosítja az adatokat, majd a biztonsági mentést kell fordítani óránként.
 
 Egy másik példa a jelentéskészítő kiszolgáló, amely más forrásokból származó adatokat kér le, és összesített jelentéseket hoz létre. A virtuális gép vagy lemez elvesztését elvesztését, a jelentések vezethet. Azonban esetleg futtassa újra a jelentéskészítési folyamat és a kimenet újbóli létrehozása. Ebben az esetben nem igazán rendelkezik adatvesztést, akkor is, ha a jelentéskészítő kiszolgáló elérte a vészhelyzet. Ennek eredményeképpen előfordulhat, hogy rendelkezik a magasabb szintű részét a jelentéskészítő kiszolgálón az adatok elvesztése. Ebben az esetben a kevésbé gyakori biztonsági mentései költségek csökkentése érdekében lehetőség.
 
-### <a name="scenario-4-iaas-application-data-issues"></a>4. forgatókönyv: IaaS-alkalmazás adatokkal kapcsolatos problémák
+### <a name="scenario-4-iaas-application-data-issues"></a>4\. forgatókönyv: IaaS-alkalmazás adatokkal kapcsolatos problémák
 
 IaaS alkalmazásproblémák adatokat egy másik lehetőség. Érdemes lehet olyan alkalmazás, amely kiszámítja, tárolja és szolgálja ki a kritikus fontosságú kereskedelmi forgalomban beszerezhető adatok, például a díjszabásról. Az alkalmazás új verziójának kellett egy szoftverfrissítési programhiba, amelynek helytelenül számított díjszabását, és a meglévő, a platform által kiszolgált kereskedelmi adatok sérültek. Itt a legjobb megoldás érdekében, hogy az alkalmazás- és a korábbi verziójának visszaállítása. Engedélyezéséhez hajtsa végre a rendszer rendszeres biztonsági mentést.
 
@@ -148,7 +148,7 @@ Kövesse az alábbi lépéseket a virtuális gépek biztonsági másolatainak en
 
     b. A a **Recovery Services-tárolók** menüben kattintson a **Hozzáadás** kövesse a lépéseket egy új tárolót ugyanabban a régióban, mint a virtuális gép létrehozásához. Például ha a virtuális gép az USA nyugati régiójában, válasszon USA nyugati RÉGIÓJA a tárolóhoz.
 
-1.  Ellenőrizze a tárreplikáció az újonnan létrehozott tároló. Hozzáférést a tárolóhoz a **Recovery Services-tárolók** , majd **beállítások** > **biztonsági mentés konfigurációja**. Győződjön meg, hogy a **georedundáns tárolás** beállítás alapértelmezés szerint. Ez a beállítás biztosítja, hogy a rendszer automatikusan replikálja a tároló egy másodlagos adatközpontba. A tárolót az USA nyugati RÉGIÓJA, USA keleti RÉGIÓJA például automatikusan replikálja.
+1.  Ellenőrizze a tárreplikáció az újonnan létrehozott tároló. Hozzáférést a tárolóhoz a **Recovery Services-tárolók** , majd **tulajdonságok** > **biztonsági mentés konfigurációja** > **Update** . Győződjön meg, hogy a **georedundáns tárolás** beállítás alapértelmezés szerint. Ez a beállítás biztosítja, hogy a rendszer automatikusan replikálja a tároló egy másodlagos adatközpontba. A tárolót az USA nyugati RÉGIÓJA, USA keleti RÉGIÓJA például automatikusan replikálja.
 
 1.  A biztonsági mentési szabályzat konfigurálása, és válassza ki a virtuális gép ugyanazon a felhasználói felületről.
 

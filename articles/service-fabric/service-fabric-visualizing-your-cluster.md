@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2019
 ms.author: mikhegn
-ms.openlocfilehash: 47b5e89164173869d6964e2c5e392bb99e0c8555
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 88fe73988f6a90fd5041445a561c0f77f25eddc1
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317391"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67060458"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>A fürt megjelenítése a Service Fabric Explorerrel
 
@@ -61,7 +61,7 @@ A Service Fabric-fürthöz csatlakozik, szüksége van a fürt felügyeleti vég
 ### <a name="connect-to-a-secure-cluster"></a>Csatlakozás biztonságos fürthöz
 A Service Fabric-fürthöz, tanúsítványok vagy Azure Active Directory (AAD) használatával való ügyfél-hozzáférési szabályozhatja.
 
-Ha megpróbálja egy biztonságos fürthöz való csatlakozáshoz, majd a fürt konfigurációjától függően kell adnia ügyféltanúsítvány jelen, vagy jelentkezzen be aad-ben való.
+Ha megpróbálja egy biztonságos fürthöz való csatlakozáshoz, majd függően a fürt konfigurációját kell adnia egy ügyfél állapottanúsítványt vagy jelentkezzen be AAD.
 
 ## <a name="understand-the-service-fabric-explorer-layout"></a>A Service Fabric Explorer elrendezésének ismertetése
 A fa használatával a bal oldali navigációs sávja a Service Fabric Explorer. A fa gyökérmappájában a fürt irányítópultja áttekintést a fürtről, beleértve az alkalmazás és a csomópontok állapotának összefoglalását.
@@ -123,16 +123,22 @@ Az EventStore a platform által biztosított Service Fabric platform eseményeke
 >[!NOTE]
 >Kezdődően a Service Fabric verziója 6.4. az EventStore API-k csak Azure-on futó Windows-fürtök csak érhetők el. Ez a funkció a Linux, valamint az önálló fürtök portolása dolgozunk.
 
+## <a name="image-store-viewer"></a>Store kép megjelenítő
+Tároló képmegtekintő egy funkció érhető el, ha használatával natív lemezkép Store, amely lehetővé teszi, hogy megtekinti a rendszerkép aktuális tartalmát tárolása és beolvasása a fájl- és információkért, valamint a fájlok és mappák eltávolítása.
+
+![A Service Fabric Explorer fürttérkép][sfx-imagestore]
+
 
 ## <a name="next-steps"></a>További lépések
 * [A Visual Studióban a Service Fabric-alkalmazások kezelése](service-fabric-manage-application-in-visual-studio.md)
 * [A Service Fabric-alkalmazás központi telepítésének PowerShell-lel](service-fabric-deploy-remove-applications.md)
 
 <!--Image references-->
-[sfx-cluster-dashboard]: ./media/service-fabric-visualizing-your-cluster/SfxClusterDashboard.png
-[sfx-cluster-map]: ./media/service-fabric-visualizing-your-cluster/SfxClusterMap.png
-[sfx-application-tree]: ./media/service-fabric-visualizing-your-cluster/SfxApplicationTree.png
-[sfx-service-essentials]: ./media/service-fabric-visualizing-your-cluster/SfxServiceEssentials.png
-[sfx-delete-application]: ./media/service-fabric-visualizing-your-cluster/SfxDeleteApplication.png
-[sfx-create-app-instance]: ./media/service-fabric-visualizing-your-cluster/SfxCreateAppInstance.png
+[sfx-cluster-dashboard]: ./media/service-fabric-visualizing-your-cluster/sfx-cluster-dashboard.png
+[sfx-cluster-map]: ./media/service-fabric-visualizing-your-cluster/sfx-cluster-map.png
+[sfx-application-tree]: ./media/service-fabric-visualizing-your-cluster/sfx-application-tree.png
+[sfx-service-essentials]: ./media/service-fabric-visualizing-your-cluster/sfx-service-essentials.png
+[sfx-delete-application]: ./media/service-fabric-visualizing-your-cluster/sfx-delete-application.png
+[sfx-create-app-instance]: ./media/service-fabric-visualizing-your-cluster/sfx-create-app-instance.png
 [sfx-eventstore]: ./media/service-fabric-diagnostics-eventstore/eventstore.png
+[sfx-imagestore]: ./media/service-fabric-visualizing-your-cluster/sfx-image-store.png

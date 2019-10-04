@@ -4,7 +4,7 @@ description: Ismerje meg, hogyan határozza meg, a közzétevő, ajánlat, Term�
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 7a858e38-4f17-4e8e-a28a-c7f801101721
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 01/25/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 453628dca04fbc3c48564f15b6cf61802165b0cf
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: bbe98c4ad3a1b737b9df0d2ea53d53875f26ba54
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58499692"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67668367"
 ---
 # <a name="find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>Az Azure CLI-vel az Azure Marketplace-rendszerképek keresése a Linux rendszerű virtuális gép
 
@@ -335,7 +335,7 @@ Kimenet:
 }
 ```
 
-### <a name="accept-the-terms"></a>Feltételek elfogadása
+### <a name="accept-the-terms"></a>A feltételek elfogadása
 
 Megtekintheti, és fogadja el a licencfeltételeket, használja a [az virtuális gép kép fogadja el – feltételek](/cli/azure/vm/image?) parancsot. Ha elfogadja a feltételeket, programozott üzembe helyezés engedélyezése az előfizetésében. Csak egyszer előfizetésenként elfogadására a lemezképhez kell. Példa:
 

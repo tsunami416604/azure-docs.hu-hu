@@ -1,18 +1,18 @@
 ---
 title: Megvalósítása az Azure Databricks egy Cosmos DB-végponttal
 description: Ez az oktatóanyag leírja, hogyan valósíthatók meg az Azure Databricks egy Cosmos DB-hez készült engedélyezett végpontot a virtuális hálózatban.
-services: azure-databricks
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
+ms.service: azure-databricks
 ms.topic: tutorial
 ms.date: 04/17/2019
-ms.openlocfilehash: 0d5442a63680227f3a6186330502666c92dc3129
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: d1268ea2cfc22e6350edb32230588a497be8bc79
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60013166"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67054467"
 ---
 # <a name="tutorial-implement-azure-databricks-with-a-cosmos-db-endpoint"></a>Oktatóanyag: Megvalósítása az Azure Databricks egy Cosmos DB-végponttal
 
@@ -55,21 +55,21 @@ Mielőtt elkezdené, tegye a következőket:
 
 2. Töltse ki a **példány részletei** a a **alapjai** lapon a következő beállításokkal:
 
-   |Beállítás|Value|
+   |Beállítás|Érték|
    |-------|-----|
    |Előfizetés|*az Ön előfizetése*|
    |Erőforráscsoport|*Az erőforráscsoport*|
    |Fiók neve|db-vnet-service-endpoint|
-   |API|Mag (SQL)|
+   |API|Core (SQL)|
    |Location egység|USA nyugati régiója|
-   |Georedundancia|Letiltás|
-   |Többrégiós írások|Bekapcsolás|
+   |Geo-Redundancy|Letiltás|
+   |Többrégiós írási műveletek|Engedélyezés|
 
    ![A Cosmos DB-szolgáltatásvégpont hozzáadása](./media/service-endpoint-cosmosdb/create-cosmosdb-account-basics.png)
 
 3. Válassza ki a **hálózati** fülre, és konfigurálja a virtuális hálózat. 
 
-   a. Válassza ki az előfeltételként létrehozott virtuális hálózatot, és válassza ki *nyilvános alhálózattal*. Figyelje meg, hogy *privát-alhálózat* rendelkezik a Megjegyzés *hiányzik a "Microsoft AzureCosmosDB" végpont "*. Ennek oka, hogy az csak engedélyezett a Cosmos DB-szolgáltatásvégpontot az *nyilvános alhálózattal*.
+   a. Válassza ki az előfeltételként létrehozott virtuális hálózatot, és válassza ki *nyilvános alhálózattal*. Figyelje meg, hogy *privát-alhálózat* rendelkezik a Megjegyzés *hiányzik a "Microsoft AzureCosmosDB" végpont "* . Ennek oka, hogy az csak engedélyezett a Cosmos DB-szolgáltatásvégpontot az *nyilvános alhálózattal*.
 
    b. Ellenőrizze, hogy **engedélyezze a hozzáférést az Azure portal** engedélyezve van. Ez a beállítás lehetővé teszi a Cosmos DB-fiókja elérését az Azure Portalról. Ha ez a beállítás értéke **Megtagadás**, hibákat fog kapni, amikor megpróbálja elérni a fiókját. 
 

@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 12/26/2018
-ms.openlocfilehash: 35159a1630c7f1268119cd55cc6e0ac99dfd7b5f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 07f213de3509ed16af627af5e0583cd985c278f6
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58119207"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65954656"
 ---
 # <a name="quickstart-build-a-python-app-using-azure-cosmos-dbs-api-for-mongodb"></a>Gyors útmutató: Azure Cosmos DB API használatával a mongodb-hez a Python-alkalmazás létrehozása
 
@@ -28,7 +28,7 @@ ms.locfileid: "58119207"
 
 Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. Gyors létrehozása és lekérdezése, a dokumentum, kulcs/érték és gráf típusú adatbázisokat, amelyek mindegyike globális elosztási és horizontális skálázhatósági képességeket Cosmos DB középpontjában.
 
-Ez a rövid útmutató használja a következő [Flask példát](https://github.com/Azure-Samples/CosmosDB-Flask-Mongo-Sample) és bemutatja, hogyan hozhat létre egy egyszerű teendőlista Flask alkalmazást a [Azure Cosmos DB Emulatort](local-emulator.md) és az Azure Cosmos DB API a mongodb-hez.
+A rövid útmutató használja a következő [Flask példát](https://github.com/Azure-Samples/CosmosDB-Flask-Mongo-Sample) és bemutatja, hogyan hozhat létre egy egyszerű teendőlista Flask alkalmazást a [Azure Cosmos DB Emulatort](local-emulator.md) és az Azure Cosmos DB API a mongodb-hez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -104,7 +104,7 @@ Az alábbi kódrészletek mind az app.py fájlból származnak, és a helyi Azur
 
 2. Nyisson meg egy terminálablakot és a `cd` paranccsal lépjen arra a könyvtárra, amelyben az alkalmazás mentve van.
 
-3. Ezután mentse a Flask alkalmazás környezeti változóját a `set FLASK_APP=app.py` vagy az `export FLASK_APP=app.py` paranccsal, ha Macet használ.
+3. Majd állítsa be a környezeti változót, a Flask alkalmazást a `set FLASK_APP=app.py`, `$env:FLASK_APP = app.py` a szerkesztőknek a PowerShell, vagy `export FLASK_APP=app.py` Mac használata 
 
 4. Futtassa az alkalmazást a `flask run` paranccsal és lépjen a [http://127.0.0.1:5000/](http://127.0.0.1:5000/) címre.
 
@@ -142,7 +142,7 @@ Amikor az Azure-ba végez üzembe helyezést, el kell távolítania az alkalmaz�
     db.authenticate(name=os.getenv("MONGO_USERNAME"),password=os.getenv("MONGO_PASSWORD"))
 ```
 
-Ezután hozzá kell adnia a MONGOURL, MONGO_PASSWORD és MONGO_USERNAME elemeket az alkalmazásbeállításokhoz. Ezt az [oktatóanyagot](https://docs.microsoft.com/azure/app-service-web/web-sites-configure#application-settings) követve további információkat tudhat meg az Azure-webalkalmazások alkalmazásbeállításairól.
+Ezután hozzá kell adnia a MONGOURL, MONGO_PASSWORD és MONGO_USERNAME elemeket az alkalmazásbeállításokhoz. Ezt az [oktatóanyagot](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings) követve további információkat tudhat meg az Azure-webalkalmazások alkalmazásbeállításairól.
 
 Ha nem szeretne létrehozni elágazást ehhez az adattárhoz, az alul található Üzembe helyezés az Azure-ban gombra is kattinthat. Ezután nyissa meg az Azure-t, és állítsa be az alkalmazásbeállításokat a Cosmos DB-fiókadatokkal.
 

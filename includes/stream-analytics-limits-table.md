@@ -1,19 +1,19 @@
 ---
-ms.openlocfilehash: 23263db780c62ab80f317ee64f14e854763cd728
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 1bf7f3c15b40590c400e8a730de20c199bb1b4c2
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553529"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "67179515"
 ---
 ---
 | Korlátazonosító | Korlát | Megjegyzések |
 | --- | --- | --- |
-| Előfizetésenként és régiónként streamelési egységek maximális száma |200 |Növelni szeretné a folyamatos átviteli egységek meghaladja a 200-előfizetéséhez tartozó, lépjen kapcsolatba a [Support](https://support.microsoft.com/en-us). |
-| A bemenetek maximális száma feladatonként |60 |Nincs Azure Stream Analytics-feladatonként 60 bemenetek rögzített korlátja. |
-| A kimenetek maximális száma feladatonként |60 |Nincs rögzített korlátja Stream Analytics-feladatonként 60 kimenetek. |
-| A függvények maximális száma feladatonként |60 |Nincs rögzített korlátja Stream Analytics-feladatonként 60 funkciók. |
-| Feladatonként streamelési egységek maximális száma |120 |Nincs rögzített korlátja Stream Analytics-feladatonként 120 folyamatos átviteli egység. |
-| A feladatok maximális száma régiónként |1,500 |Az egyes előfizetésekhez legfeljebb 1500 feladat lehet földrajzi régiónként. |
-| Referenciaadatok Blob MB-ban megadott mérete | 300 | A referenciaadat blobok nem lehet nagyobb, mint 300 MB. |
+| Folyamatos átviteli egységek maximális száma régiónként |500 |Ha az előfizetéshez az 500-nál magasabb átviteli egységeket kíván emelni, forduljon [Microsoft ügyfélszolgálatahoz](https://support.microsoft.com/en-us). |
+| A bemenetek maximális száma feladatonként |60 |Azure Stream Analytics-feladatban rögzített mennyiségű, 60 bemenetre van korlátozva. |
+| A kimenetek maximális száma feladatonként |60 |Stream Analytics-feladatokban rögzített mennyiségű, 60-es kimenet áll rendelkezésre. |
+| A függvények maximális száma feladatonként |60 |Stream Analytics-feladatban a 60 függvények száma rögzített. |
+| Folyamatos átviteli egységek maximális száma |192 |Stream Analytics feladatokban rögzített számú folyamatos átviteli egység (192). |
+| A feladatok maximális száma régiónként |1,500 |Minden előfizetés legfeljebb 1 500 feladatot tartalmazhat földrajzi régiónként. |
+| Referenciaadatok Blob MB-ban megadott mérete | 300 | A hivatkozási adatblobok nem lehetnek 300 MB-nál nagyobb méretűek. |
 

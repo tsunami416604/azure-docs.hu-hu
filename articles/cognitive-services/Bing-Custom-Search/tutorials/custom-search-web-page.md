@@ -1,21 +1,21 @@
 ---
-title: 'Oktatóanyag: Egy weblap egyéni keresés – Bing egyéni keresés'
-titlesuffix: Azure Cognitive Services
-description: Ez a cikk ismerteti, hogyan konfigurálható és integrálható egy weboldalba egy Custom Search-példány.
+title: 'Oktatóanyag: Egyéni keresési weblap létrehozása – Bing Custom Search'
+titleSuffix: Azure Cognitive Services
+description: Megtudhatja, hogyan konfigurálhat egyéni Bing Search-példányt, és hogyan integrálhatja azt egy weblapra.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: tutorial
-ms.date: 03/04/2019
+ms.date: 07/26/2019
 ms.author: aahi
-ms.openlocfilehash: 6f44d4e6e5a0ee940394e09ceff8a425700d34e1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: aee84a4d9203d80b81f773df30d68c3539e5ec7c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58100734"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564704"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>Oktatóanyag: Custom Search-webhely létrehozása
 
@@ -35,7 +35,7 @@ Az oktatóanyag az alábbi feladatokat tárgyalja:
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Ahhoz, hogy követni tudja az oktatóanyagot, szüksége lesz egy előfizetői azonosítóra a Bing Custom Search API-hoz.  Az előfizetői azonosító beszerzéséhez lásd [A Cognitive Services kipróbálása](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) témakört.
-- Ha nincs telepítve a Visual Studio 2017, letöltheti és használhatja az **ingyenes** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)t.
+- Ha még nem rendelkezik a Visual Studio 2017-es vagy újabb verziójával, letöltheti és használhatja az **ingyenes** [Visual Studio 2019 Community Edition verziót](https://www.visualstudio.com/downloads/).
 
 ## <a name="create-a-custom-search-instance"></a>Egyéni keresési példány létrehozása
 
@@ -127,10 +127,10 @@ A Custom Search üzemeltetett felhasználói felületet biztosít, amelyen megje
 
 Az üzemeltetett felhasználói felület kétféleképpen használható fel.  
 
-- Option 1: A megadott JavaScript-kódrészletet beágyazása az alkalmazásba.
-- Option 2: A megadott, használja a HTML-végpontot.
+- 1\. lehetőség: Integrálja a megadott JavaScript-kódrészletet az alkalmazásba.
+- 2\. lehetőség: Használja a megadott HTML-végpontot.
 
-Ez az oktatóanyag további részében látható **1. lehetőség: JavaScript-kódrészletet**.  
+Az oktatóanyag hátralévő része az 1. **lehetőséget mutatja be: JavaScript-** kódrészlet.  
 
 ## <a name="set-up-your-visual-studio-solution"></a>A Visual Studio-megoldás beállítása
 

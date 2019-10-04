@@ -6,22 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/26/2019
+ms.date: 05/20/2019
 ms.author: alkohli
-ms.openlocfilehash: 58c4f42859f735a81a3e3edc801daff5d26194a0
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: a9daf1d59b03d283be999aaab559c6d60f6405dd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59997648"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65953122"
 ---
 # <a name="manage-compute-on-your-azure-data-box-edge"></a>Az Azure Data Box Edge számítások kezelése
 
 Ez a cikk ismerteti az Azure Data Box Edge számítások kezelése. Az Azure Portalon a számítások kezelése, vagy keresztül a helyi webes felhasználói Felületét. Az Azure portal használata kezelheti a modulok, eseményindítók, és a számítási konfiguráció és a helyi webes felületén számítási beállítások kezelését.
-
-> [!IMPORTANT]
-> A Data Box Edge előzetes verzióban érhető el. A megoldás megrendelése és üzembe helyezése előtt tekintse át az [Azure előzetes verziókra vonatkozó szolgáltatási feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -38,7 +34,7 @@ Események akkor fordulhat elő, a felhőalapú környezetben, illetve az eszkö
 - **Ütemezett**: Nagyszerűek ezek az ütemezés szerint határozhatja meg a kezdő dátum, kezdési ideje és a gyakorisági adott válaszként.
 
 
-### <a name="add-a-trigger"></a>Adjon hozzá egy triggert
+### <a name="add-a-trigger"></a>Eseményindító hozzáadása
 
 A következő lépésekkel hozhat létre egy eseményindítót az Azure Portalon.
 
@@ -133,24 +129,6 @@ Az alábbi lépéseket az eszköz számára a hozzáférési kulcsok szinkroniz�
 
 3. A szinkronizálást követően zárja be a párbeszédpanelt.
 
-## <a name="enable-a-network-interface-for-compute"></a>Egy hálózati adapter számítási engedélyezése
-
-Szükség lehet a Data Box peremhálózati eszközön futó modul eléréséhez. A modul el kívülről, szüksége lesz egy IP-cím hozzárendelése egy hálózati adapter az eszközön. Ezek kezelheti számítási beállításokat a helyi webes felületén.
-
-Az alábbi lépéseket a helyi webes felületén számítási beállítások konfigurálása.
-
-1. A helyi webes felhasználói felületen váltson **Configuration > Számítási beállítások**.  
-
-2. **Engedélyezése** a hálózati adapter, amelyet szeretne csatlakozni a számítási modulokat az eszközön. 
-
-    - Ha statikus IP-címeket használ, adja meg a hálózati adapter IP-címet.
-    - Ha a DHCP használatával, majd az IP-címek lesz automatikusan hozzárendelve.
-
-3. Válassza ki **alkalmaz** a alkalmazni a beállításokat.
-
-    ![Compute-beállítások engedélyezése](media/data-box-edge-manage-compute/compute-settings-1.png)
-
-
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg, hogyan [kezelheti a felhasználókat az Azure Portalon keresztül](data-box-edge-manage-users.md).
+- Ismerje meg, hogyan [kezelése peremhálózati számítási Azure-portálon hálózati](data-box-edge-extend-compute-access-modules.md).

@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 03/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 871cca9fe2b3ff50202feb4925a267b93d432700
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 20cb5f65ed33bc3e737bbba902ed2d891eaf83be
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57842073"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65823358"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-c"></a>Gyors útmutató: Keresés a weben a Bing Web Search REST API használatával, ésC#
 
@@ -26,7 +26,7 @@ Ez a rövid útmutató segítségével a Bing Web Search API az első hívását
 
 Az alábbi dolgokra szüksége lesz a rövid útmutató futtatásához:
 
-* Windows: [Visual Studio 2017](https://www.visualstudio.com/downloads/)
+* Windows: [Visual Studio 2017-es vagy újabb](https://www.visualstudio.com/downloads/)
 * Linux/macOS: [Mono](https://www.mono-project.com/)  
 * Egy előfizetői azonosító
 

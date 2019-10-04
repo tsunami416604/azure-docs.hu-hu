@@ -1,20 +1,20 @@
 ---
-title: Biztonsági mentése és visszaállítása egy kiszolgálót az Azure Database for postgresql-hez
-description: 'Útmutató: biztonsági mentése és visszaállítása egy kiszolgálót az Azure Database for postgresql-hez az Azure parancssori felület használatával.'
+title: Biztonsági mentése és visszaállítása egy kiszolgálót az Azure Database for PostgreSQL – egyetlen kiszolgáló
+description: 'Útmutató: biztonsági mentése és visszaállítása egy kiszolgálót az Azure Database for PostgreSQL – egyetlen kiszolgáló az Azure parancssori felület használatával.'
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 04/01/2018
-ms.openlocfilehash: 3415910426d365ea2dc17e7515871c1bf4841fd3
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.date: 05/06/2019
+ms.openlocfilehash: 85fb00ad221ae982e4d3ddc9d2d5d20dd4f2793d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58349777"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65069097"
 ---
-# <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql-using-the-azure-cli"></a>Hogyan biztonsági mentése és visszaállítása egy kiszolgálót az Azure Database for postgresql-hez az Azure CLI használatával
+# <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>Hogyan biztonsági mentése és visszaállítása egy kiszolgálót az Azure Database for PostgreSQL – egyetlen kiszolgáló az Azure CLI használatával
 
 ## <a name="backup-happens-automatically"></a>Biztonsági mentés automatikusan történik
 Azure Database for PostgreSQL-kiszolgálók biztonsági mentése rendszeres visszaállítási szolgáltatások engedélyezése. Ezzel a funkcióval, előfordulhat, hogy állítsa vissza a kiszolgáló és az összes adatbázis egy korábbi-időponthoz, egy új kiszolgálón.
@@ -72,7 +72,7 @@ A `az postgres server restore` parancs paraméterei a következők:
 | Beállítás | Ajánlott érték | Leírás  |
 | --- | --- | --- |
 | resource-group |  myResourceGroup |  Az erőforráscsoport, amelyben a forráskiszolgáló található.  |
-| név | mydemoserver-restored | A visszaállítási paranccsal létrehozott új kiszolgáló neve. |
+| name | mydemoserver-restored | A visszaállítási paranccsal létrehozott új kiszolgáló neve. |
 | restore-point-in-time | 2018-03-13T13:59:00Z | Válasszon ki egy pontot időben való visszaállításához. Ennek a dátumnak és időnek a forráskiszolgáló biztonsági mentésének megőrzési időszakán belül kell lennie. ISO8601 dátum és idő formátumot használja. Például használhatja a saját időzónájára, mint például `2018-03-13T05:59:00-08:00`. Például az UTC Zulu formátumot is használható `2018-03-13T13:59:00Z`. |
 | source-server | mydemoserver | A forráskiszolgáló neve vagy azonosítója, amelyről a visszaállítást végzi. |
 
@@ -112,7 +112,7 @@ A `az postgres server georestore` parancs paraméterei a következők:
 | Beállítás | Ajánlott érték | Leírás  |
 | --- | --- | --- |
 |resource-group| myResourceGroup | Az erőforráscsoport nevét az új kiszolgáló fog tartozni.|
-|név | mydemoserver-georestored | Az új kiszolgáló neve. |
+|name | mydemoserver-georestored | Az új kiszolgáló neve. |
 |source-server | mydemoserver | A meglévő kiszolgáló, amelynek földrajzi redundáns biztonsági mentések használhatók neve. |
 |location | eastus | Az új kiszolgáló helyét. |
 |sku-name| GP_Gen4_8 | Ez a paraméter beállítása az árképzési szint, számítási generáció és az új kiszolgáló virtuális magok számát. Egy általános célú, 4. generációs kiszolgáló 8 virtuális maggal rendelkező GP_Gen4_8 rendeli hozzá.|

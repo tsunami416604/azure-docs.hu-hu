@@ -1,134 +1,136 @@
 ---
-title: Létrehozása és kezelése a Visual Studio Code – Azure Logic Apps használatával automatizált munkafolyamatok |} A Microsoft Docs
-description: 'Gyors útmutató: hogyan hozhat létre, és JSON-ban a Visual Studio Code (a VS Code) rendelkező logikai alkalmazások kezelése'
+title: Automatizált munkafolyamatok létrehozása és kezelése a Visual Studio Code-Azure Logic Apps
+description: Gyors útmutató logikai alkalmazások létrehozásához és kezeléséhez JSON használatával a Visual Studio Code-ban (VS Code)
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 ms.workload: azure-vs
 author: ecfan
 ms.author: estfan
-ms.topic: article
+ms.manager: carmonm
 ms.reviewer: klam, deli, LADocs
-ms.suite: integration
+ms.topic: quickstart
+ms.custom: mvc
 ms.date: 10/05/2018
-ms.openlocfilehash: 0fec590523fa130af2e5670a92914c056df289d1
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: b9f9a402ecde09dd00c2b070f784858a141e556b
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50229617"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309003"
 ---
-# <a name="quickstart-create-and-manage-automated-logic-app-workflows---visual-studio-code"></a>Rövid útmutató: Létrehozása és kezelése, automatikus logic app-munkafolyamatok – Visual Studio Code
+# <a name="quickstart-create-and-manage-automated-logic-app-workflows---visual-studio-code"></a>Gyors útmutató: Automatizált logikai alkalmazások munkafolyamatainak létrehozása és kezelése – Visual Studio Code
 
-A [Azure Logic Apps](../logic-apps/logic-apps-overview.md) és a Visual Studio Code-ban hozhat létre és kezelheti a logic apps, amelyek segítségével automatizálhatja a feladatokat, a munkafolyamatok és folyamatok, alkalmazások, adatok, rendszerek és szolgáltatások integrálásához a különböző szervezetek és vállalatok számára. A rövid útmutató bemutatja, hogyan hozhat létre, és használata a kód-alapú élményen keresztül a munkafolyamat-definíciós séma JavaScript Object Notation (JSON) logikaialkalmazás-munkafolyamat definíciók szerkesztéséhez. Emellett használhatja a már üzembe helyezte a meglévő logic apps <a href="https://docs.microsoft.com/azure/guides/developer/azure-developer-guide" target="_blank">Azure</a> a felhőben. 
+A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és a Visual Studio Code használatával olyan logikai alkalmazásokat hozhat létre és kezelhet, amelyek segítségével automatizálhatja a feladatokat, munkafolyamatokat és folyamatokat az alkalmazások, adatok, rendszerek és szolgáltatások integrálásához a szervezetek és a vállalatok között. Ez a rövid útmutató bemutatja, hogyan hozhat létre és szerkeszthet logikai alkalmazás-munkafolyamati definíciókat, ha a JavaScript Object Notation (JSON) munkafolyamat-definíciós sémájának használatával programkód-alapú felhasználói felületen keresztül dolgozik. Az Azure-ban már üzembe helyezett meglévő logikai alkalmazások is dolgozhatnak. 
 
-Bár az ugyanezen feladatokat is végezhet a <a href="https://portal.azure.com" target="_blank">az Azure portal</a> és a Visual Studióban, megkönnyítse az első lépéseket a Visual Studio Code, ha már ismeri az logikaialkalmazás-definíciókat, és közvetlenül a kódot szeretne. Például akkor is letiltása, engedélyezése, törlése és a frissítés már létrehozott logic apps. Ezenkívül használhatja a logic apps és az integrációs fiókok bármely fejlesztői platform, amelyen futtatja a Visual Studio Code, például a Linux, Windows és Mac rendszerre.
+Bár ugyanezeket a feladatokat a Azure Portal (https://portal.azure.com) és a Visual Studióban is elvégezheti, gyorsabban megkezdheti a Visual Studio Code-ot, ha már ismeri a Logic app-definíciókat, és közvetlenül a kódban kíván dolgozni. Például letilthatja, engedélyezheti, törölheti és frissítheti a már létrehozott Logic apps-alkalmazásokat. Emellett a Logic apps és az integrációs fiókok bármilyen fejlesztői platformon használhatók, ahol a Visual Studio Code fut, például a Linux, a Windows és a Mac.
 
-Ebben a cikkben az ugyanolyan logikai alkalmazást hozhat létre a [gyors útmutató: a logikai alkalmazás létrehozása az Azure Portalon](../logic-apps/quickstart-create-first-logic-app-workflow.md), amely több összpontosít az alapvető fogalmait. A logikai alkalmazás a Visual Studio Code-példához hasonlóan néz ki:
+Ehhez a cikkhez ugyanazt a logikai alkalmazást hozhatja létre, mint a [logikai alkalmazás létrehozásához a Azure Portalban](../logic-apps/quickstart-create-first-logic-app-workflow.md), amely az alapfogalmakra összpontosít. A Visual Studio Code-ban a logikai alkalmazás a következő példához hasonlóan néz ki:
 
 ![Befejezett logikai alkalmazás](./media/create-logic-apps-visual-studio-code/overview.png)
 
-Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik a következőkkel:
+Mielőtt elkezdené, győződjön meg róla, hogy rendelkezik az alábbi elemekkel:
 
-* Ha nem rendelkezik Azure-előfizetéssel, <a href="https://azure.microsoft.com/free/" target="_blank">regisztráljon egy ingyenes Azure-fiókra</a>.
+* Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
 
-* Alapvető ismeretek szerezhetők [logikai alkalmazás munkafolyamat-definíciókhoz](../logic-apps/logic-apps-workflow-definition-language.md) és azok szerkezetét, amely használja a JavaScript Object Notation (JSON) 
+* Alapszintű ismeretek a [Logic app-munkafolyamatok meghatározásáról](../logic-apps/logic-apps-workflow-definition-language.md) és azok struktúrájáról, amely JavaScript Object Notationt (JSON) használ 
 
-  Ha most ismerkedik a Logic Apps, próbálja ki a rövid útmutató bemutatja [az első logikai alkalmazás létrehozása az Azure Portalon](../logic-apps/quickstart-create-first-logic-app-workflow.md), amely több összpontosít az alapvető fogalmait. 
+  Ha még nem ismeri a Logic Appst, próbálja ki az [első logikai alkalmazás létrehozásával kapcsolatos útmutatót a Azure Portalban](../logic-apps/quickstart-create-first-logic-app-workflow.md), amely az alapfogalmakra összpontosít. 
 
-* A webes hozzáférés az Azure és az Azure-előfizetéshez való bejelentkezéshez
+* Hozzáférés a webhelyhez az Azure-ba való bejelentkezéshez és az Azure-előfizetéshez
 
 * Ha még nincsenek telepítve, töltse le és telepítse az alábbi eszközöket: 
 
-  * <a href="https://code.visualstudio.com/" target="_blank">A Visual Studio Code verzió 1.25.1 vagy újabb</a>, ingyenes
+  * A [Visual Studio Code 1.25.1 vagy újabb verziója](https://code.visualstudio.com/), amely ingyenes
 
-  * Azure Logic Apps Visual Studio Code-bővítmény
+  * Visual Studio Code-bővítmény a Azure Logic Appshoz
 
-    Letöltheti és telepítheti a bővítményt a a [Visual Studio-piactér](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-logicapps) vagy közvetlenül a Visual Studio Code belül. 
-    Ellenőrizze, hogy a Visual Studio Code telepítése után újra. 
+    Ezt a bővítményt letöltheti és telepítheti a [Visual Studio piactérről](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-logicapps) , vagy közvetlenül a Visual Studio Code-ból. 
+    A telepítés után ügyeljen rá, hogy a Visual Studio Code-ot töltse be újra. 
 
-    ![Keresse meg a "Visual Studio Code-bővítmény az Azure Logic Apps"](./media/create-logic-apps-visual-studio-code/find-install-logic-apps-extension.png)
+    ![A "Visual Studio Code-bővítmény Azure Logic Apps" keresése](./media/create-logic-apps-visual-studio-code/find-install-logic-apps-extension.png)
 
-    Ellenőrizze, hogy a bővítmény megfelelően telepítve az Azure a Visual Studio Code eszköztár ikon látható. 
+    Annak ellenőrzéséhez, hogy a bővítmény megfelelően van-e telepítve, az Azure ikon megjelenik a Visual Studio Code eszköztárában. 
 
-    ![Kiterjesztés telepítése](./media/create-logic-apps-visual-studio-code/installed-extension.png)
+    ![Bővítmény telepítve](./media/create-logic-apps-visual-studio-code/installed-extension.png)
 
-    További információkért lásd: <a href="https://code.visualstudio.com/docs/editor/extension-gallery" target="_blank">bővítmény Marketplace</a>. Is megtekintheti, és küldje el ezt a bővítményt nyílt forráskódú verzió hozzájárulások meglátogatják a [Azure Logic Apps-bővítmény a Visual Studio Code a Githubon](https://github.com/Microsoft/vscode-azurelogicapps). 
+    További információ: [bővítmény piactér](https://code.visualstudio.com/docs/editor/extension-gallery). Megtekintheti és elküldheti a bővítmény nyílt forráskódú verziójához való hozzájárulást a [Visual Studio Code Azure Logic apps-bővítményének a githubon](https://github.com/Microsoft/vscode-azurelogicapps)való megkeresésével. 
 
 <a name="sign-in-azure"></a>
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-1. Nyissa meg a Visual Studio Code-ot. A Visual Studio Code eszköztáron kattintson az Azure ikonra. 
+1. Nyissa meg a Visual Studio Code-ot. A Visual Studio Code eszköztáron válassza az Azure ikont. 
 
-   ![Válassza ki az Azure ikon](./media/create-logic-apps-visual-studio-code/open-extension.png)
+   ![Azure-ikon kiválasztása](./media/create-logic-apps-visual-studio-code/open-extension.png)
 
-1. Az Azure ablakban alatt **Logic Apps**válassza **jelentkezzen be Azure**. 
+1. Az Azure ablak **Logic apps**területén válassza a bejelentkezés az **Azure**-ba lehetőséget. 
 
-   ![Válassza a "Bejelentkezés az Azure-bA"](./media/create-logic-apps-visual-studio-code/sign-in-azure.png)
+   ![Válassza a "Bejelentkezés az Azure-ba" lehetőséget.](./media/create-logic-apps-visual-studio-code/sign-in-azure.png)
 
-   Most jelentkezzen be a megadott hitelesítési kód megadására kéri. 
+   Ekkor a rendszer felszólítja, hogy jelentkezzen be a megadott hitelesítési kód használatával. 
 
-1. Másolja a hitelesítési kódot, és válassza **másolja ki és nyissa meg a**, amely egy új böngészőablakban megnyitja.
+1. Másolja a hitelesítési kódot, majd válassza a **másolás & Megnyitás**lehetőséget, amely új böngészőablakot nyit meg.
 
-   ![Bejelentkezési kérések jelenhetnek](./media/create-logic-apps-visual-studio-code/sign-in-prompt.png)
+   ![Bejelentkezési kérés](./media/create-logic-apps-visual-studio-code/sign-in-prompt.png)
 
-1. Adja meg a hitelesítési kódot. Amikor a rendszer kéri, válassza ki a **Folytatás**.
+1. Adja meg a hitelesítési kódot. Ha a rendszer kéri, válassza a **Folytatás**lehetőséget.
 
    ![Írja be a kódot](./media/create-logic-apps-visual-studio-code/authentication-code.png)
 
-1. Válassza ki az Azure-fiókjával. Miután bejelentkezett, zárja be a böngészőt, és térjen vissza a Visual Studio Code-ot.
+1. Válassza ki az Azure-fiókját. A bejelentkezés után lezárhatja a böngészőt, és visszatérhet a Visual Studio Code-ba.
 
-   Az Azure ablakban a Logic Apps és integrációs fiókok ablaktábla most megjelenítése az Azure-előfizetést a fiókjában. 
+   Az Azure ablakban a Logic Apps és az integrációs fiókok panel most megjeleníti az Azure-előfizetéseket a fiókjában. 
 
    ![Előfizetés kiválasztása](./media/create-logic-apps-visual-studio-code/select-azure-subscription.png)
 
-   Ha nem látja az előfizetések várható, melletti **Logic Apps** felirat, válassza a **kiválasztása az előfizetések** (szűrő ikon). Keresse meg és válassza ki azt a kívánt előfizetést.
+   Ha nem látja a várt előfizetéseket, **Logic apps** címke mellett válassza az **előfizetések kiválasztása** (szűrő ikon) lehetőséget. Keresse meg és válassza ki a kívánt előfizetéseket.
 
-1. Bármely meglévő logic apps vagy az integrációs fiókok megtekintése az Azure-előfizetésében, bontsa ki az előfizetést.
+1. Az Azure-előfizetésében meglévő logikai alkalmazások vagy integrációs fiókok megtekintéséhez bontsa ki az előfizetését.
 
-   ![A logic apps és az integrációs fiókok megtekintése](./media/create-logic-apps-visual-studio-code/existing-logic-apps.png)
+   ![Logikai alkalmazások és integrációs fiókok megtekintése](./media/create-logic-apps-visual-studio-code/existing-logic-apps.png)
 
 <a name="create-logic-app"></a>
 
 ## <a name="create-logic-app"></a>Logikai alkalmazás létrehozása
 
-1. Ha még nem jelentkezett be az Azure-előfizetéshez a Visual Studio Code-ban található kövesse az ebben a cikkben [jelentkezzen be most](#sign-in-azure).
+1. Ha még nem jelentkezett be az Azure-előfizetésbe a Visual Studio code-on belül, kövesse a cikk lépéseit a [bejelentkezéshez](#sign-in-azure).
 
-1. Az előfizetés helyi menüből válassza ki a **létrehozás**.
+1. Az előfizetés helyi menüjében válassza a **Létrehozás**elemet.
 
-   ![Válassza a "Create"](./media/create-logic-apps-visual-studio-code/create-logic-app.png)
+   ![Válassza a létrehozás lehetőséget](./media/create-logic-apps-visual-studio-code/create-logic-app.png)
 
-1. Jeleníti meg az előfizetés Azure-erőforráscsoportot a listából válasszon ki egy meglévő erőforráscsoportot, vagy **hozzon létre egy új erőforráscsoportot**. 
+1. Válasszon ki egy meglévő erőforráscsoportot, vagy **hozzon létre egy új erőforráscsoportot**az előfizetésben lévő Azure-erőforráscsoportok megjelenítéséhez. 
 
-   Ez a példa létrehoz egy új erőforráscsoportot:
+   Ez a példa egy új erőforráscsoportot hoz létre:
 
    ![Új erőforráscsoport létrehozása](./media/create-logic-apps-visual-studio-code/select-or-create-azure-resource-group.png)
 
-1. Adja meg az Azure-erőforráscsoport nevét, és nyomja le az ENTER BILLENTYŰT.
+1. Adja meg az Azure-erőforráscsoport nevét, majd nyomja le az ENTER billentyűt.
 
-   ![Az erőforráscsoport neve](./media/create-logic-apps-visual-studio-code/enter-name-resource-group.png)
+   ![Adja meg az erőforráscsoport nevét](./media/create-logic-apps-visual-studio-code/enter-name-resource-group.png)
 
-1. Válassza ki az Adatközpont helyét a logikai alkalmazás metaadatainak mentésének helyét.
+1. Válassza ki az adatközpont helyét a logikai alkalmazás metaadatainak mentéséhez.
 
    ![Hely kiválasztása](./media/create-logic-apps-visual-studio-code/select-location.png)
 
-1. Adja meg a logikai alkalmazás nevét, és nyomja le az ENTER BILLENTYŰT.
+1. Adja meg a logikai alkalmazás nevét, majd nyomja le az ENTER billentyűt.
 
-   ![Nevezze el a logikai alkalmazás](./media/create-logic-apps-visual-studio-code/enter-name-logic-app.png)
+   ![Adjon nevet a logikai alkalmazásnak](./media/create-logic-apps-visual-studio-code/enter-name-logic-app.png)
 
-   Az új logikai alkalmazás most már megjelenik az Azure ablakában, az Azure-előfizetés. Most már megkezdheti a logikai alkalmazás munkafolyamat-definíció létrehozása.
+   Az új logikai alkalmazás most már megjelenik az Azure-előfizetéshez tartozó Azure-ablakban. Most elkezdheti létrehozni a logikai alkalmazás munkafolyamat-definícióját.
 
-1. Válassza ki a logikai alkalmazás menüjén **Megnyitás a szerkesztőben**. 
+1. A logikai alkalmazás helyi menüjében válassza **a Megnyitás a szerkesztőben**lehetőséget. 
 
-   ![A szerkesztőben megnyitott logikai alkalmazás](./media/create-logic-apps-visual-studio-code/open-new-logic-app.png)
+   ![Logikai alkalmazás megnyitása a szerkesztőben](./media/create-logic-apps-visual-studio-code/open-new-logic-app.png)
 
-   A Visual Studio Code megnyílik a logikaialkalmazás-munkafolyamat definition sablon (. logicapp.json fájlt) a logikai alkalmazás munkafolyamat létrehozásának megkezdéséhez.
+   A Visual Studio Code megnyit egy logikai alkalmazás munkafolyamat-definíciós sablonját (. logicapp. JSON fájl), így elkezdheti létrehozni a logikai alkalmazás munkafolyamatát.
 
-   ![Új logikai alkalmazás munkafolyamat-definíció](./media/create-logic-apps-visual-studio-code/blank-logic-app-workflow-definition.png)
+   ![Új logikai alkalmazás munkafolyamat-definíciója](./media/create-logic-apps-visual-studio-code/blank-logic-app-workflow-definition.png)
 
-1. A logikai alkalmazás munkafolyamat-definíciós sablon fájlt indítsa el a logikai alkalmazás munkafolyamat-definíció létrehozása. Ha technikai, olvassa el a [Azure Logic Apps munkafolyamat-definíciós nyelv sémáját](../logic-apps/logic-apps-workflow-definition-language.md).
+1. A Logic app munkafolyamat-definíciós sablon fájljában kezdje el felépíteni a logikai alkalmazás munkafolyamat-definícióját. Technikai útmutató: [Azure Logic apps munkafolyamat-definíció nyelvi sémája](../logic-apps/logic-apps-workflow-definition-language.md).
 
-   Íme egy példa logika definícióját. Általában a JSON-elemek betűrendbe jelennek meg minden egyes szakaszokon belül, de ez a példa bemutatja ezeket az elemeket nagyjából a logikai alkalmazás lépés jelenik meg a tervezőben a sorrendben.
+   Íme egy példa a logikai definícióra. A JSON-elemek általában betűrendben jelennek meg az egyes szakaszokon belül, de ez a példa nagyjából abban a sorrendben jeleníti meg ezeket az elemeket, ahogy a logikai alkalmazás lépései megjelennek a tervezőben.
 
    ```json
    {
@@ -186,42 +188,41 @@ Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik a következőkkel
    }   
    ```
 
-1. Ha elkészült, mentse a logikai alkalmazás csomagdefiníciós fájl. Amikor felszólítja, hogy erősítse meg a logikai alkalmazás definíciójának feltöltése az Azure-előfizetéshez, válassza a Visual Studio Code **feltöltése**.
+1. Ha elkészült, mentse a logikai alkalmazás definícióját tartalmazó fájlt. Ha a Visual Studio Code felszólítja, hogy erősítse meg a logikai alkalmazás definíciójának az Azure-előfizetéshez való feltöltését, válassza a **feltöltés**lehetőséget.
 
-   ![Töltse fel az új logikai alkalmazás](./media/create-logic-apps-visual-studio-code/upload-new-logic-app.png)
+   ![Új logikai alkalmazás feltöltése](./media/create-logic-apps-visual-studio-code/upload-new-logic-app.png)
 
-   Miután a Visual Studio Code közzéteszi a logikai alkalmazás az Azure-ba, annak az alkalmazás most élő és az Azure Portalon futó. 
+   Miután a Visual Studio Code közzétette a logikai alkalmazást az Azure-ban, megkeresheti az alkalmazást a Azure Portalban. 
 
-   ![Logikai alkalmazás közzététele az Azure Portalon](./media/create-logic-apps-visual-studio-code/published-logic-app.png)
+   ![Azure Portal közzétett logikai alkalmazás](./media/create-logic-apps-visual-studio-code/published-logic-app.png)
 
 <a name="edit-logic-app"></a>
 
 ## <a name="edit-logic-app"></a>Logikai alkalmazás szerkesztése
 
-Egy meglévő logikai alkalmazás, amely már üzembe helyezte az Azure-ban dolgozik, nyissa meg az alkalmazás a munkafolyamat-definíciós fájl Visual Studio Code-ban.
+Ha az Azure-ban már üzembe helyezett meglévő logikai alkalmazáson szeretne dolgozni, megnyithatja az alkalmazás munkafolyamat-definíciós fájlját a Visual Studio Code-ban.
 
-1. Ha még nem jelentkezett be az Azure-előfizetéshez a Visual Studio Code-ban található kövesse az ebben a cikkben [jelentkezzen be most](#sign-in-azure).
+1. Ha még nem jelentkezett be az Azure-előfizetésbe a Visual Studio code-on belül, kövesse a cikk lépéseit a [bejelentkezéshez](#sign-in-azure).
 
-1. Az Azure ablakban alatt **Logic Apps**, bontsa ki az Azure-előfizetéshez, és válassza ki a logikai alkalmazást. 
+1. Az Azure ablakban **Logic apps**alatt bontsa ki az Azure-előfizetését, és válassza ki a kívánt logikai alkalmazást. 
 
-1. A logikai alkalmazás menüjében válassza **Megnyitás a szerkesztőben**. Vagy a logikai alkalmazás neve, a Szerkesztés ikonra.
+1. A logikai alkalmazás menüjében válassza **a Megnyitás a szerkesztőben**lehetőséget. Vagy a logikai alkalmazás neve mellett kattintson a Szerkesztés ikonra.
 
-   ![Meglévő logikai alkalmazás szerkesztő megnyitása](./media/create-logic-apps-visual-studio-code/open-editor-existing-logic-app.png)
+   ![A meglévő logikai alkalmazás szerkesztőjének megnyitása](./media/create-logic-apps-visual-studio-code/open-editor-existing-logic-app.png)
 
-   Megnyílik a Visual Studio Code-ot a. a logikai alkalmazás munkafolyamat-definíció logicapp.json fájlt.
+   A Visual Studio Code megnyitja a logikai alkalmazás munkafolyamat-definíciójának. logicapp. JSON fájlját.
 
-   ![Megnyitott logikai alkalmazás munkafolyamat-definíció](./media/create-logic-apps-visual-studio-code/edit-logic-app-workflow-definition-file.png)
+   ![Logikai alkalmazás munkafolyamatának definíciója megnyitva](./media/create-logic-apps-visual-studio-code/edit-logic-app-workflow-definition-file.png)
 
 1. Hajtsa végre a módosításokat a logikai alkalmazás definíciójában.
 
 1. Miután végzett, mentse a módosításokat.
 
-1. Ha a Visual Studio Code kéri, hogy frissítse a logikai alkalmazás definíciójának az Azure-előfizetésében, válassza **feltöltése**. 
+1. Ha a Visual Studio Code felszólítja, hogy frissítse a logikai alkalmazás definícióját az Azure-előfizetésében, válassza a **feltöltés**lehetőséget. 
 
-   ![Töltse fel a módosítások](./media/create-logic-apps-visual-studio-code/upload-logic-app-changes.png)
+   ![A szerkesztések feltöltése](./media/create-logic-apps-visual-studio-code/upload-logic-app-changes.png)
 
-## <a name="get-support"></a>Támogatás kérése
+## <a name="next-steps"></a>További lépések
 
-* A kérdéseivel látogasson el az <a href="https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps" target="_blank">Azure Logic Apps fórumára</a>.
-* A funkciókkal kapcsolatos ötletek elküldéséhez vagy megszavazásához látogasson el a <a href="https://aka.ms/logicapps-wish" target="_blank">Logic Apps felhasználói visszajelzéseinek oldalára</a>.
-
+> [!div class="nextstepaction"]
+> * [Logikai alkalmazások létrehozása a Visual Studióval](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)

@@ -4,17 +4,18 @@ description: A cikk ismerteti az Azure Data Box Gateway virtuálisberendezés-t�
 services: databox
 author: alkohli
 ms.service: databox
+ms.subservice: gateway
 ms.topic: overview
-ms.date: 04/08/2019
+ms.date: 08/21/2019
 ms.author: alkohli
-ms.openlocfilehash: 340ff99aae9acff49ffdeaa43463521debb16a07
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: b8c6b4085f56bc12b67bf87177ba33b82c6a6db9
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59797584"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900590"
 ---
-# <a name="what-is-azure-data-box-gateway"></a>Mi az Azure Data Box átjáró?
+# <a name="what-is-azure-data-box-gateway"></a>Mi az Azure Data Box Gateway?
 
 Az Azure Data Box Gateway egy tárolási megoldás, amellyel zökkenőmentesen vihet át adatokat az Azure-ba. Ez a cikk áttekintést nyújt az Azure Data Box Gateway megoldásról, annak előnyeiről, főbb képességeiről és azokról a forgatókönyvekről, amelyekben üzembe helyezheti ezt az eszközt.
 
@@ -26,11 +27,11 @@ A Data Box Gatewayt használhatja felhőbe történő adatátvitelre, például 
 
 - **Felhőben történő archiválás** – A Data Box Gateway segítségével több száz TB-nyi adatot másolhat át biztonságosan és hatékonyan az Azure Storage-ba. Az archiválási forgatókönyvek keretében az adatokat betöltheti egy alkalommal vagy folyamatosan is.
 
-- **Folyamatos adatbetöltés** -folyamatosan betölteni az adatokat az az eszköz másolása a felhőbe, az adatok méretétől függetlenül. Mivel az adatok írása az átjáróeszközhöz, az eszköz feltölti az adatokat az Azure Storage.  
+- **Folyamatos adatfeldolgozás** – az adatmérettől függetlenül folyamatosan betöltenek adatot az eszközre a felhőbe való másoláshoz. Ahogy az adatok az átjáró eszközre íródnak, az eszköz feltölti az Azure Storage-ba.  
 
-- **A kezdeti növekményes átviteli követ tömeges adatátviteli** -Data Box használatát a tömeges egy kapcsolat nélküli módban (kezdeti kezdőérték) és a Data Box-átjáró a növekményes átvitelt (folyamatban lévő hírcsatorna) a hálózati átvitel.
+- A **kezdeti tömeges átvitelt a növekményes átvitel** , valamint az offline módban (kezdeti mag), valamint a növekményes átvitelek (folyamatos adatcsatorna) Data Box Gateway a hálózaton keresztül történő növekményes átvitelhez Data Box.
 
-További információért ugorjon [Azure Data Box Gateway használati esetek](data-box-gateway-use-cases.md).
+További információ: [Azure Data Box Gateway használati esetek](data-box-gateway-use-cases.md).
 
 ## <a name="benefits"></a>Előnyök
 
@@ -38,9 +39,9 @@ A Data Box Gateway az alábbi előnyökkel jár:
 
 - **Egyszerű adatátvitel** – Használatával olyan könnyedén helyezhet át adatokat az Azure Storage-ból vagy az Azure Storage-ba, mintha csak egy helyi hálózati megosztással dolgozna.  
 - **Nagy teljesítmény** – Nagy teljesítményű adatátvitelével problémamentessé válik a hálózati adatátvitel az Azure-ban.
-- **Gyors hozzáférés és a magas Adatbetöltési díjait számoljuk fel munkaidőben** -Box adatátjáró rendelkezik a helyi gyorsítótárat, Ön által meghatározott helyi kapacitás méretének van a virtuális eszköz üzembe helyezésekor. Az adatlemez mérete megfelelően meg kell adni a [virtuális eszköz minimális követelmények](data-box-gateway-system-requirements.md#specifications-for-the-virtual-device). A helyi gyorsítótár a következő előnyöket nyújtja:
-    - A helyi gyorsítótár adatbetöltés lehetővé teszi a nagy gyakorisággal. Nagy mennyiségű adatot betöltött csúcs munkaidő alatt, ha a gyorsítótárban tárolják az adatokat, és töltse fel a felhőbe.
-    - A helyi gyorsítótár gyors olvasási hozzáférést biztosít, amíg egy bizonyos küszöbértéket. Amíg az eszköz 50 – 60 %-os teljes, az eszközről az olvasások érhető el a gyorsítótárban, így gyorsabban elérhetővé. Miután a használatban lévő tárterület az eszközön túllépik ezt a küszöbértéket, majd az eszköz elindul, és távolítsa el a helyi fájlok.
+- **Gyors hozzáférés és magas adatfeldolgozási díjak** a munkaidő alatt – Data Box Gateway helyi gyorsítótárral rendelkezik, amelyet a virtuális eszköz kiépítésekor a helyi kapacitás méretében határozhat meg. A [virtuális eszköz minimális követelményeinek](data-box-gateway-system-requirements.md#specifications-for-the-virtual-device)megfelelően meg kell adni az adatlemez méretét. A helyi gyorsítótár a következő előnyöket biztosítja:
+    - A helyi gyorsítótár nagy arányban teszi lehetővé az adatfeldolgozást. Ha a munkaidőben nagy mennyiségű adatot töltenek be, a gyorsítótár az adatok tárolására és a felhőbe való feltöltésére szolgál.
+    - A helyi gyorsítótár lehetővé teszi a gyors olvasási hozzáférést egy bizonyos küszöbértékig. Amíg az eszköz 50-60%-ban megtelt, az eszközről beolvasott összes olvasás a gyorsítótárból gyorsabban elérhetővé válik. Miután az eszközön a felhasznált terület túllépi ezt a küszöbértéket, az eszköz elkezdi eltávolítani a helyi fájlokat.
  
 - **Korlátozott sávszélesség-használat** – Az Azure-ba akkor is lehet adatot írni, amikor a hálózat használata a csúcsidő során korlátozva van.  
 
@@ -52,11 +53,10 @@ A Data Box Gateway az alábbi képességekkel rendelkezik:
 |---------|---------|
 |Sebesség     | Teljesen automatizált és nagymértékben optimalizált adatátvitel és sávszélesség.|
 |Támogatott protokollok     | A standard SMB és NFS protokollok támogatása az adatbetöltéshez. <br> További információt a támogatott verziókkal kapcsolatban [a Data Box Gateway rendszerkövetelményeiben](data-box-gateway-system-requirements.md) találhat.|
-|Az adatok elérése     | Amint az eszköz által küldött adatok a felhőben, akkor további módosíthatók a felhőalapú API-k közvetlen elérésével.|
+|Az adatok elérése     | Ha az eszköz által elküldett adatok a felhőben vannak, akkor a Felhőbeli API-k közvetlen elérésével tovább módosítható.|
 |Gyors hozzáférés     | Az eszközön helyi gyorsítótár található, amellyel gyorsabban elérhetők a legutóbb használt fájlok.|
 |Offline feltöltés     | A kapcsolat nélküli mód támogatja az offline feltöltési forgatókönyveket.|
 |Adatfrissítés     | Lehetőség van a helyi fájlok legújabb változatra való frissítésére a felhőből.|
-|Titkosítás    | A BitLocker támogatja az adatok helyi titkosítását és biztonságos átvitelét a felhőbe *https*-en keresztül.       |
 |Rugalmasság     | Beépített hálózati rugalmasság        |
 
 
@@ -69,8 +69,8 @@ A Data Box Gateway virtuális eszköz az alábbi műszaki adatokkal rendelkezik:
 | Virtuális processzorok (magok)   | Minimum 4 |
 | Memory (Memória)  |Minimum 8 GB|
 | Rendelkezésre állás|Egyetlen csomópont|
-| Lemezek|Operációsrendszer-lemez: 250 GB <br> Adatlemez: 2 TB-os minimális, dinamikusan kiosztott és SSD-k által kell készíteni|
-| Hálózati illesztők |1 vagy több virtuális hálózati adapter|
+| Lemezek|OPERÁCIÓSRENDSZER-lemez: 250 GB <br> Adatlemez: 2 TB minimális, dinamikus kiosztású, és SSD-k által támogatottnak kell lennie|
+| Hálózati adapterek |1 vagy több virtuális hálózati adapter|
 | Natív fájlmegosztási protokollok|SMB és NFS  |
 | Biztonság|Hitelesítés az eszköz és az adatok hozzáférésének feloldásához <br> Átvitel alatt álló adatok titkosítása AES-256 bites titkosítás használatával|
 | Kezelés|Helyi webes felhasználói felület – kezdeti beállítás, diagnosztika és az eszköz energiagazdálkodása <br> Azure Portal – a Data Box Gateway-eszközök napi szintű felügyelete       |
@@ -81,20 +81,15 @@ A Data Box Gateway megoldás a Data Box Gateway-erőforrásból, a Data Box Gate
 
 - **Data Box Gateway virtuális eszköz** – Egy eszköz, amely egy, az Ön virtualizált környezetében vagy hipervizorán létrehozott virtuális gépen fut, és lehetővé teszi az adatok Azure-ba történő küldését.
     
-- **Data Box Gateway-erőforrás** – Az Azure Portal erőforrása, amely lehetővé teszi a Data Box Gateway-eszközök kezelését egy webes felületről, amelyet eltérő földrajzi helyekről is elérhet. Használja a Data Box-Gateway-erőforrás megtekintése és kezelése az eszköz, a megosztások, a felhasználók és a riasztásokat. További információkért lásd: hogyan [kezelése az Azure portal használatával](data-box-gateway-manage-shares.md).
+- **Data Box Gateway-erőforrás** – Az Azure Portal erőforrása, amely lehetővé teszi a Data Box Gateway-eszközök kezelését egy webes felületről, amelyet eltérő földrajzi helyekről is elérhet. Az Data Box Gateway erőforrás segítségével megtekintheti és kezelheti az eszközöket, a megosztásokat, a felhasználókat és a riasztásokat. További információ: a [Azure Portal használatának kezelése](data-box-gateway-manage-shares.md).
 
-- **Data Box helyi webes felületén** – a helyi webes felhasználói felületének használatával diagnosztika futtatása, állítsa le és indítsa újra az eszközt, hozzon létre egy támogatási csomagot, vagy forduljon a Microsoft Support, küldjön szolgáltatási kérelmet. További információkért lásd: hogyan [helyi webes felhasználói felület használata kezelheti](data-box-gateway-manage-access-power-connectivity-mode.md).
+- **Helyi webes felhasználói felület Data Box** – a helyi webes kezelőfelületen futtathatja a diagnosztikát, leállíthatja és újraindíthatja az eszközt, előállíthat egy támogatási csomagot, vagy megkérheti a Microsoft ügyfélszolgálatat a szolgáltatási kérelmek beküldéséhez. További információ: Hogyan [kezelhetők a helyi webes felhasználói felület használatával](data-box-gateway-manage-access-power-connectivity-mode.md).
 
 ## <a name="region-availability"></a>Régiónkénti elérhetőség
 
-Data Box-átjáró fizikai eszközt, az Azure erőforrás- és, amelyhez adatátvitel történik a célként megadott tárfiók nem az összes kell ugyanabban a régióban.
+Data Box Gateway fizikai eszközt, az Azure-erőforrást és a célként megadott Storage-fiókot, amelybe az adatok átvitele nem feltétlenül azonos régióban kell, hogy legyen.
 
-- **Erőforrás rendelkezésre állási** – ebben a kiadásban a Data Box-Gateway-erőforrás érhető el ezekben a régiókban, amely támogatja a nyilvános felhő:
-    - **Egyesült Államok** – USA keleti RÉGIÓJA
-    - **Európai Unió** – Nyugat-Európa
-    - **Ázsia Csendes-óceáni** – Délkelet-Ázsia
-
-    Az Azure Government cloud Data Box-átjáró is telepíthető. További információkért lásd: [Mi az Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome).
+- **Erőforrás rendelkezésre állása** – az összes olyan régió listájához, ahol a Data Box Edge erőforrás elérhető, keresse fel az [Azure-termékeket régiónként](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=databox). Data Box Gateway a Azure Government felhőben is üzembe helyezhető. További információ: [Mi az Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)
 
 - **Céloldali tárfiókok** – Az adatokat tároló tárfiókok minden Azure-régióban elérhetők.
 

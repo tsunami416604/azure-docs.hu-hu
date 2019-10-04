@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.author: asgang
 ms.openlocfilehash: b97bf56c23dfa96acf7cb5af5ac28b4270de117d
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56879781"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61281431"
 ---
 # <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>Állítsa be a Dynamics AX Többrétegű alkalmazások vészhelyreállítása   
 
@@ -109,7 +109,7 @@ A helyreállítási terv a Site Recovery segítségével automatizálja a felada
 
 4. Válassza ki az alkalmazáskiszolgáló objektum és az ügyfél virtuális gépeket a helyreállítási terv, és válassza ki a ✓.
 
-    ![Elemek kijelölése](./media/site-recovery-dynamics-ax/selectvms.png)
+    ![Elemek kiválasztása](./media/site-recovery-dynamics-ax/selectvms.png)
 
     Helyreállítási terv. példa:
 
@@ -180,7 +180,7 @@ További szempontokért adott SQL Server feladat-visszavétel során: [alkalmaz�
 
 Ez a feladat-visszavételhez további információkért lásd: [feladat-visszavétel VMware virtuális gépek az Azure-ból a helyszíni](site-recovery-failback-azure-to-vmware.md).
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 Site Recovery használatával egy teljes automatizált vészhelyreállítási tervet hozhat létre a Dynamics AX-alkalmazáshoz. Egy bekövetkező szolgáltatáskimaradás esetén kezdeményezze a feladatátvételt bárhonnan másodpercen belül, és megkezdheti az alkalmazások percek alatt.
 
 ## <a name="next-steps"></a>További lépések

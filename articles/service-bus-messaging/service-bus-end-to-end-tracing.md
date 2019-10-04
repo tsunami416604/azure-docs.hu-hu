@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: 6e5895392db1d75a985674bf2f878a84bc8dd926
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58107035"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60311012"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Elosztott nyomkövetést és korrelációs révén a Service Bus-üzenetkezelés
 
@@ -37,7 +37,7 @@ A protokoll alapján a [korrelációs HTTP protokoll](https://github.com/dotnet/
 
 ## <a name="service-bus-net-client-auto-tracing"></a>Service Bus .NET ügyféloldali auto-nyomkövetés
 
-3.0.0-s verziójával kezdődően [a Microsoft Azure Szolgáltatásbusz-ügyfél .NET](/dotnet/api/microsoft.azure.servicebus.queueclient) nyomkövetés rendszerállapot-figyelési pontjaihoz, amely a nyomkövetés rendszerek vagy ügyfél kódrészleteket is kell akadályoznia biztosít.
+3\.0.0-s verziójával kezdődően [a Microsoft Azure Szolgáltatásbusz-ügyfél .NET](/dotnet/api/microsoft.azure.servicebus.queueclient) nyomkövetés rendszerállapot-figyelési pontjaihoz, amely a nyomkövetés rendszerek vagy ügyfél kódrészleteket is kell akadályoznia biztosít.
 A rendszerállapot lehetővé teszi, hogy nyomon követése az összes híváshoz a Service Bus üzenetkezelési szolgáltatás az ügyfél oldaláról. Ha az üzenet feldolgozása történik a [üzenetet kezelő minta](/dotnet/api/microsoft.azure.servicebus.queueclient.registermessagehandler), üzenetfeldolgozás is van kialakítva.
 
 ### <a name="tracking-with-azure-application-insights"></a>Az Azure Application Insights nyomon követése
@@ -139,7 +139,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 
 Ebben a példában a figyelő naplózza időtartama, eredmény, egyedi azonosítója és minden egyes Service Bus-művelet kezdési idejét.
 
-#### <a name="events"></a>Események
+#### <a name="events"></a>Events
 
 Minden művelet esetén két események küldhetők: "Indítás" és "Stop". Valószínűleg érdekli csak a "Stop" eseményeket. Akkor adja meg a művelet eredményét, valamint időpontja és időtartama indítható el, mert egy tevékenység tulajdonságai.
 

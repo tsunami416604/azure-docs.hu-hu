@@ -1,9 +1,9 @@
 ---
-title: Hozzáférés biztosítása más rendszergazdák számára, miközben a PIM - kezelése Azure Active Directory |} A Microsoft Docs
-description: Megtudhatja, hogyan hozzáférést biztosítani más kezelése az Azure AD Privileged Identity Management (PIM) számára.
+title: Hozzáférés biztosítása más rendszergazdák számára a PIM felügyeletéhez – Azure Active Directory | Microsoft Docs
+description: Megtudhatja, hogyan biztosíthat hozzáférést más adminisztrációs szolgáltatásokhoz Azure AD Privileged Identity Management (PIM) kezeléséhez.
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -11,80 +11,80 @@ ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
 ms.date: 04/09/2019
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb22e3cc93baebac023c0148812c6a4c6c95be60
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: f3a0173108b6c884994ca25fd0495e9cb8d45186
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59489210"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804361"
 ---
-# <a name="grant-access-to-other-administrators-to-manage-pim"></a>Hozzáférés biztosítása más rendszergazdák számára, miközben a PIM kezelése
+# <a name="grant-access-to-other-administrators-to-manage-pim"></a>Hozzáférés biztosítása más rendszergazdák számára a PIM kezeléséhez
 
-Azure Active Directory (Azure AD) Privileged Identity Management (PIM) egy szervezet számára automatikusan lehetővé teszi, hogy a globális rendszergazda szerepkör-hozzárendelések és a PIM számára hozzáférést kaphat. Senki más nem írási hozzáférést kap alapértelmezés szerint, beleértve a más globális rendszergazdákat. Egyéb globális rendszergazdák, biztonsági rendszergazdák és biztonsági olvasók rendelkezik a PIM számára olvasási hozzáférést. A PIM számára hozzáférést, az első felhasználó rendelhet hozzá mások számára a **kiemelt szerepkörű rendszergazda** szerepkör.
+A szervezet Azure Active Directory (Azure AD) Privileged Identity Managementt (PIM) engedélyező globális rendszergazdája automatikusan szerepkör-hozzárendeléseket kap, és hozzáférést biztosít a PIM-hoz. Alapértelmezés szerint senki más nem kap írási hozzáférést, a többi globális rendszergazdát is beleértve. A többi globális rendszergazda, biztonsági rendszergazda és biztonsági olvasó csak olvasási hozzáféréssel rendelkezik a PIM-hez. Ahhoz, hogy hozzáférést biztosítson a PIM-hoz, az első felhasználó hozzárendelheti másokat a **Kiemelt szerepkörű rendszergazda** szerepkörhöz.
 
 > [!NOTE]
-> A PIM kezelése az Azure MFA van szükség. A Microsoft-fiókok Azure MFA-kiszolgáló nem lehet regisztrálni, mivel a felhasználó, aki a Microsoft-fiókkal jelentkezik be a PIM férhetnek hozzá.
+> A PIM felügyeletéhez az Azure MFA szükséges. Mivel a Microsoft-fiókok nem regisztrálhatnak az Azure MFA-ra, a Microsoft-fiókba bejelentkező felhasználók nem férhetnek hozzá a PIM szolgáltatáshoz.
 
-Ellenőrizze, hogy mindig legalább két felhasználót a kiemelt szerepkörű rendszergazda szerepkörrel, abban az esetben, ha egy felhasználó zárolva van, vagy a fiókot törölték.
+Győződjön meg arról, hogy mindig van legalább két felhasználó egy kiemelt szerepkörű rendszergazda szerepkörben, ha az egyik felhasználó ki van zárva, vagy a fiókja törölve lett.
 
-## <a name="grant-access-to-manage-pim"></a>Hozzáférést biztosít a PIM kezelése
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-
-1. Nyissa meg **az Azure AD Privileged Identity Management**.
-
-1. Kattintson a **Azure AD-szerepkörök**.
-
-1. Kattintson a **szerepkörök**.
-
-    ![A PIM az Azure AD-szerepkörök – szerepkör](./media/pim-how-to-give-access-to-pim/pim-directory-roles-roles.png)
-
-1. Kattintson a **kiemelt szerepkörű rendszergazda** szerepkör a tagok lap megnyitásához.
-
-    ![A kiemelt szerepkörű rendszergazda - tagok](./media/pim-how-to-give-access-to-pim/pim-pra-members.png)
-
-1. Kattintson a **tag hozzáadása** a felügyelt tagok hozzáadása panel megnyitásához.
-
-1. Kattintson a **tagok kiválasztása** a jelölje be a tagok panel megnyitásához.
-
-    ![A kiemelt szerepkörű rendszergazda – jelölje be a tagok](./media/pim-how-to-give-access-to-pim/pim-pra-select-members.png)
-
-1. Jelöljön ki egy tagot, és kattintson a **kiválasztása**.
-
-1. Kattintson a **OK** jogosult tagként a **kiemelt szerepkörű rendszergazda** szerepkör.
-
-    Ha valaki a PIM egy olyan új szerepkör rendeli, azokat automatikusan konfigurálják **jogosult** a szerepkör aktiválását.
-
-1. Adja hozzá az állandó, kattintson a felhasználó a kiemelt szerepkörű rendszergazda taglistára.
-
-1. Kattintson a **további** , majd **állandóvá** , a hozzárendelés véglegesítéséhez.
-
-    ![A kiemelt szerepkörű rendszergazda - állandóvá tétel](./media/pim-how-to-give-access-to-pim/pim-pra-make-permanent.png)
-
-1. A felhasználó mutató hivatkozást küld [használatához a PIM](pim-getting-started.md).
-
-## <a name="remove-access-to-manage-pim"></a>Távolítsa el a hozzáférést a PIM kezelése
-
-Valaki távolítja el a kiemelt szerepkörű rendszergazda szerepkört, előtt ügyeljen arra, hogy továbbra is lesznek rendelve legalább két felhasználót.
+## <a name="grant-access-to-manage-pim"></a>Hozzáférés biztosítása a PIM kezeléséhez
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-1. Nyissa meg **az Azure AD Privileged Identity Management**.
+1. Nyissa meg **Azure ad Privileged Identity Management**.
 
-1. Kattintson a **Azure AD-szerepkörök**.
+1. Kattintson az **Azure ad-szerepkörök**elemre.
 
-1. Kattintson a **szerepkörök**.
+1. Kattintson a **szerepkörök**elemre.
 
-1. Kattintson a **kiemelt szerepkörű rendszergazda** szerepkör a tagok lap megnyitásához.
+    ![PIM Azure AD-szerepkörök – szerepkörök](./media/pim-how-to-give-access-to-pim/pim-directory-roles-roles.png)
 
-1. El kívánja távolítani, majd kattintson a felhasználó melletti jelölőnégyzet bejelölésekor **tag eltávolítása**.
+1. Kattintson a **Kiemelt szerepkörű rendszergazda** szerepkörre a tagok lap megnyitásához.
 
-    ![A kiemelt szerepkörű rendszergazda - tag eltávolítása](./media/pim-how-to-give-access-to-pim/pim-pra-remove-member.png)
+    ![Kiemelt szerepkörű rendszergazda – tagok](./media/pim-how-to-give-access-to-pim/pim-pra-members.png)
 
-1. Jelenik meg, ha azt szeretné, a tag eltávolítása a szerepkörből, amely rákérdez, hogy az üzenetben kattintson **Igen**.
+1. Kattintson a **tag hozzáadása** gombra a felügyelt Tagok hozzáadása ablaktábla megnyitásához.
+
+1. Kattintson a **Tagok kiválasztása** lehetőségre a tagok kiválasztása panel megnyitásához.
+
+    ![Kiemelt szerepkörű rendszergazda – tagok kiválasztása](./media/pim-how-to-give-access-to-pim/pim-pra-select-members.png)
+
+1. Válasszon ki egy tagot, majd kattintson a **kiválasztás**elemre.
+
+1. Kattintson az **OK** gombra, hogy a tag jogosult legyen a **Kiemelt szerepkörű rendszergazda** szerepkörre.
+
+    Amikor új szerepkört rendel valakihez a PIM-ben, a rendszer automatikusan **jogosultként** konfigurálja őket a szerepkör aktiválásához.
+
+1. Ahhoz, hogy a tag állandó legyen, a Kiemelt szerepkörű rendszergazda tagok listájában kattintson a felhasználóra.
+
+1. Kattintson a **továbbiak** , majd a **végleges** lehetőségre a hozzárendelés véglegesvé tételéhez.
+
+    ![Kiemelt szerepkörű rendszergazda – állandó](./media/pim-how-to-give-access-to-pim/pim-pra-make-permanent.png)
+
+1. Küldje el a felhasználónak egy hivatkozást a [PIM használatának megkezdéséhez](pim-getting-started.md).
+
+## <a name="remove-access-to-manage-pim"></a>A PIM kezelése hozzáférésének eltávolítása
+
+Mielőtt eltávolít valakit a Kiemelt szerepkörű rendszergazda szerepkörből, mindig győződjön meg arról, hogy még legalább két felhasználó van hozzárendelve.
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+
+1. Nyissa meg **Azure ad Privileged Identity Management**.
+
+1. Kattintson az **Azure ad-szerepkörök**elemre.
+
+1. Kattintson a **szerepkörök**elemre.
+
+1. Kattintson a **Kiemelt szerepkörű rendszergazda** szerepkörre a tagok lap megnyitásához.
+
+1. Vegyen fel egy pipát az eltávolítani kívánt felhasználó mellett, majd kattintson a **tag eltávolítása**gombra.
+
+    ![Kiemelt szerepkörű rendszergazda – tag eltávolítása](./media/pim-how-to-give-access-to-pim/pim-pra-remove-member.png)
+
+1. A megjelenő üzenetben megkérdezheti, hogy szeretné-e eltávolítani a tagot a szerepkörből, kattintson az **Igen**gombra.
 
 ## <a name="next-steps"></a>További lépések
 

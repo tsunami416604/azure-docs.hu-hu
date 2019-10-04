@@ -1,85 +1,85 @@
 ---
-title: Az Azure digitális Twins gyakori lekérdezési minták |} A Microsoft Docs
-description: Ismerje meg a gyakori minták az Azure digitális Twins felügyeleti API-k lekérdezését.
-author: dsk-2015
+title: Azure digitális Twins – gyakori lekérdezési minták | Microsoft Docs
+description: Ismerje meg az Azure digitális Twins felügyeleti API-k lekérdezésének gyakori mintáit.
+author: kingdomofends
 manager: philmea
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 1/7/2019
-ms.author: dkshir
-ms.openlocfilehash: ff8638042fa10c939ff9c5fa7af99a660fcdc753
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.date: 08/29/2019
+ms.author: v-adgera
+ms.openlocfilehash: 55b0676ce0a0dc6d4347ddcadf43b7b650f0f9a1
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198643"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172793"
 ---
-# <a name="how-to-query-azure-digital-twins-apis-for-common-tasks"></a>A gyakori feladatokhoz az Azure digitális Twins API-k lekérdezése
+# <a name="how-to-query-azure-digital-twins-apis-for-common-tasks"></a>Azure digitális Twins API-k lekérdezése gyakori feladatokhoz
 
-Ez a cikk bemutatja a lekérdezési minták segítséget nyújtanak az Azure digitális Twins-példány általános forgatókönyvek végrehajtásához. A parancs feltételezi, hogy már fut a digitális Twins-példány. Bármely REST-ügyféllel, mint például a Postman is használhatja. 
+Ez a cikk a lekérdezési mintákat mutatja be, amelyekkel az Azure Digital Twins-példányhoz tartozó gyakori forgatókönyvek hajthatók végre. Ez azt feltételezi, hogy a digitális Twins-példány már fut. Használhatja a REST-ügyfelet, például a Poster-t. 
 
 [!INCLUDE [digital-twins-management-api](../../includes/digital-twins-management-api.md)]
 
 
-## <a name="queries-for-spaces-and-types"></a>A tárolóhelyek és típusok lekérdezések
+## <a name="queries-for-spaces-and-types"></a>Szóközök és típusok lekérdezése
 
-Ez a szakasz bemutatja a lekérdezés a kiépített tárolóhelyek további információt szeretne kapni. Győződjön meg a mintalekérdezések, és cserélje le a helyőrzőket a telepítő a értékekkel rendelkező hitelesített első HTTP-kérelmekre. 
+Ez a szakasz példákat mutat be a kiépített területekre vonatkozó további információk megjelenítéséhez. Győződjön meg arról, hogy hitelesített HTTP-kérelmeket kap a lekérdezésekben, és a helyőrzőket cserélje le a telepítőből származó értékekre. 
 
-- Tárolóhelyek, amelyek gyökércsomópontokat beolvasása.
+- A legfelső szintű csomópontokat tartalmazó szóközök beolvasása.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/spaces?$filter=ParentSpaceId eq null
     ```
 
-- Szóközzel első név alapján, és eszközök, érzékelők, számított értékek és érzékelő értékeket tartalmaznak. 
+- Adjon meg egy helyet név szerint, és vegyen fel eszközöket, érzékelőket, számított értékeket és érzékelő értékeket. 
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/spaces?name=Focus Room A1&includes=fullpath,devices,sensors,values,sensorsvalues
     ```
 
-- Tárolóhelyek és a saját eszköz/érzékelőitől, szülővel az adott hely azonosítója, és amely szinten 2 – 5 [képest az adott hely](how-to-navigate-apis.md#api-navigation). 
+- A szóközök és azok eszköz/érzékelő információinak lekérése, amelyek szülője a megadott terület azonosítója, és amelyek a megadott területhez [képest](how-to-navigate-apis.md#api-navigation)kettő és öt közötti szinten vannak. 
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/spaces?spaceId=YOUR_SPACE_ID&includes=fullpath,devices,sensors,values,sensorsvalues&traverse=Down&minLevel=1&minRelative=true&maxLevel=5&maxRelative=true
     ```
 
-- A megadott azonosítójú a hely, és a számított és érzékelő értékeket.
+- A megadott AZONOSÍTÓJÚ terület beolvasása, valamint a számított és az érzékelő értékének belefoglalása.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/spaces?ids=YOUR_SPACE_ID&includes=Values,sensors,SensorsValues
     ```
 
-- Egy adott terület tulajdonság kulcsok beolvasása.
+- Adott terület tulajdonságainak beolvasása.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/propertykeys?spaceId=YOUR_SPACE_ID
     ```
 
-- Tárolóhelyek első nevű tulajdonság kulccsal *AreaInSqMeters* , értéke pedig 30. Emellett karakterlánc-műveletek, például a get tulajdonság kulcsot tartalmazó tárolóhelyek `name = X contains Y`.
+- Szerezzen be szóközöket a *AreaInSqMeters* nevű tulajdonsággal, értéke pedig 30. Karakterlánc-műveleteket is végezhet, például lekérheti a tulajdonságot tartalmazó szóközöket `name = X contains Y`a következővel:.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/spaces?propertyKey=AreaInSqMeters&propertyValue=30
     ```
 
-- Névvel rendelkező összes név beolvasása *hőmérséklet* és a hozzá tartozó függőségek és ontológiákat.
+- Adja meg az összes nevet a name *hőmérséklet* és a társított függőségek és ontológiákat között.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/types?names=Temperature&includes=space,ontologies,description,fullpath
     ```
 
 
-## <a name="queries-for-roles-and-role-assignments"></a>Szerepkörök és szerepkör-hozzárendelések lekérdezések
+## <a name="queries-for-roles-and-role-assignments"></a>Szerepkörök és szerepkör-hozzárendelések lekérdezései
 
-Ez a szakasz bemutatja az egyes lekérdezések szerepkörök és hozzárendeléseik kapcsolatban további információért. 
+Ez a szakasz néhány lekérdezést mutat be, amelyekkel további információkhoz juthat a szerepkörökről és azok hozzárendeléseiről. 
 
-- Az Azure digitális Twins által támogatott összes szerepkör lekérése.
+- Az Azure digitális Twins által támogatott összes szerepkör beolvasása.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/system/roles
     ```
 
-- A digitális Twins-példány összes szerepkör-hozzárendelések beolvasása. 
+- Az összes szerepkör-hozzárendelés beolvasása a digitális Twins-példányban. 
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/roleassignments?path=/&traverse=down
@@ -91,9 +91,9 @@ Ez a szakasz bemutatja az egyes lekérdezések szerepkörök és hozzárendelés
     YOUR_MANAGEMENT_API_URL/roleassignments?path=/A_SPATIAL_PATH
     ```
 
-## <a name="queries-for-devices"></a>Lekérdezések eszközökhöz
+## <a name="queries-for-devices"></a>Eszközök lekérdezései
 
-Ez a szakasz bemutatja, hogyan használhatja a felügyeleti API-k információkat lehet lekérni az eszközökre vonatkozó példákat. Minden API-hívást kell hitelesített első HTTP-kérelmekre.
+Ez a szakasz néhány példát mutat be arra, hogyan használhatja a felügyeleti API-kat az eszközökre vonatkozó konkrét információk beszerzéséhez. Minden API-hívást hitelesíteni kell a HTTP-kérések beszerzése érdekében.
 
 - Minden eszköz beolvasása.
 
@@ -101,7 +101,7 @@ Ez a szakasz bemutatja, hogyan használhatja a felügyeleti API-k információka
     YOUR_MANAGEMENT_API_URL/devices
     ```
 
-- Keresse meg az összes eszköz állapota.
+- Az összes eszköz állapotának megkeresése.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/system/devices/statuses
@@ -113,116 +113,116 @@ Ez a szakasz bemutatja, hogyan használhatja a felügyeleti API-k információka
     YOUR_MANAGEMENT_API_URL/devices/YOUR_DEVICE_ID
     ```
 
-- Minden eszköz csatlakozik a legfelső szintű hely beolvasása.
+- A legfelső szintű helyhez csatlakoztatott összes eszköz beolvasása.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices?maxLevel=1
     ```
 
-- Az összes eszköz csatlakozik a tárolóhelyek 2 – 4. szintű beolvasása.
+- A 2 – 4. szinten lévő szóközökhöz csatolt összes eszköz beolvasása.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices?minLevel=2&maxLevel=4
     ```
 
-- Az összes eszközök közvetlenül csatlakozik egy adott helyet.
+- Minden olyan eszköz beolvasása, amely közvetlenül csatlakozik egy adott tárhely-AZONOSÍTÓhoz.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices?spaceId=YOUR_SPACE_ID
     ```
 
-- Minden csatlakozó eszközöket egy adott hely és a leszármazottai beolvasása.
+- Egy adott helyhez és annak leszármazottai csatlakoztatott összes eszköz beolvasása.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices?spaceId=YOUR_SPACE_ID&traverse=Down
     ```
 
-- Az összes eszköz csatlakozik a következő leszármazottai: egy szóközt, kivéve, hogy a hely beolvasása.
+- Az összes olyan eszköz beolvasása, amely egy terület leszármazottai számára van csatolva, kivéve a területet.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices?spaceId=YOUR_SPACE_ID&traverse=Down&minLevel=1&minRelative=true
     ```
 
-- Az összes eszköz csatlakozik a szóközt közvetlen gyermekeinek beolvasása.
+- Minden eszköz, amely egy szóköz közvetlen gyermekeihez csatlakozik.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices?spaceId=YOUR_SPACE_ID&traverse=Down&minLevel=1&minRelative=true&maxLevel=1&maxRelative=true
     ```
 
-- Egy terület szintű elődökből való listázásának egyik csatlakoztatott összes eszközök beszerzése.
+- Minden olyan eszköz beolvasása, amely egy szóköz egyik őse számára van csatlakoztatva.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices?spaceId=YOUR_SPACE_ID&traverse=Up&maxLevel=-1&maxRelative=true
     ```
 
-- Az összes eszköz csatlakozik a descendants egy helyet, amelyek kisebb vagy egyenlő 5 szint beolvasása.
+- Az összes olyan eszköz beolvasása, amely az 5 értéknél kisebb vagy azzal egyenlő terület leszármazottai számára van csatolva.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices?spaceId=YOUR_SPACE_ID&traverse=Down&maxLevel=5
     ```
 
-- Tárolóhelyek, amelyek azonos szinten, a hely azonosítójú csatolt összes eszközök *YOUR_SPACE_ID*.
+- Minden olyan eszköz beolvasása, amely a *YOUR_SPACE_ID*azonosítóval megegyező szinten lévő szóközökhöz van csatolva.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices?spaceId=YOUR_SPACE_ID&traverse=Span&minLevel=0&minRelative=true&maxLevel=0&maxRelative=true
     ```
 
-- Az eszközt az IoT Hub eszköz kapcsolati karakterláncának lekérése.
+- Az eszközhöz tartozó IoT Hub eszköz-kapcsolatok karakterláncának beolvasása.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices/YOUR_DEVICE_ID?includes=ConnectionString
     ```
 
-- A megadott Hardverazonosító, beleértve a csatlakoztatott érzékelőkről eszköz beolvasása.
+- Szerezze be az eszközt a megadott hardver-AZONOSÍTÓval, beleértve a csatlakoztatott érzékelőket is.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices?hardwareIds=YOUR_DEVICE_HARDWARE_ID&includes=sensors
     ```
 
-- Ebben az esetben lekérése érzékelők adott adattípusok, *mozgásban lévő adatoknak egyaránt* és *hőmérséklet*.
+- Adott adattípusok érzékelők beolvasása, ebben az esetben a *mozgás* és a *hőmérséklet*.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/sensors?dataTypes=Motion,Temperature
     ```
 
-## <a name="queries-for-matchers-and-user-defined-functions"></a>Lekérdezések matchers és felhasználó által definiált függvények 
+## <a name="queries-for-matchers-and-user-defined-functions"></a>Egyeztető és felhasználó által definiált függvények lekérdezései 
 
-- Az összes kiépített matchers és a hozzájuk tartozó azonosítóik kaphat.
+- Az összes kiosztott megfeleltetés és azok azonosítóinak beolvasása.
 
    ```plaintext
     YOUR_MANAGEMENT_API_URL/matchers
     ```
 
-- Egy adott megfeleltetőben megadott, beleértve a tárolóhelyek és a hozzá társított felhasználó által definiált függvény kaphasson.
+- Egy adott Matcher részleteinek beolvasása, beleértve az ahhoz társított szóközöket és felhasználó által definiált függvényeket.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/matchers/YOUR_MATCHER_ID?includes=description, conditions, fullpath, userdefinedfunctions, space
     ```
 
-- Egy megfeleltetőben megadott elleni érzékelő értékelje ki és hibakeresési célra naplózás engedélyezése. A visszatérési a HTTP GET üzenet közli, hogy e a megfeleltetőben megadott és az érzékelő tartozik az adattípus. 
+- Értékelje ki a Matcher egy érzékelővel, és engedélyezze a naplózást hibakeresési célból. Ennek a HTTP GET üzenetnek a visszaadásával megtudhatja, hogy a Matcher és az érzékelő az adattípushoz tartozik-e. 
 
    ```plaintext
     YOUR_MANAGEMENT_API_URL/matchers/YOUR_MATCHER_ID/evaluate/YOUR_SENSOR_ID?enableLogging=true
     ```
 
-- A felhasználó által definiált függvények Azonosítójának lekéréséhez. 
+- A felhasználó által definiált függvények AZONOSÍTÓjának beolvasása. 
 
    ```plaintext
     YOUR_MANAGEMENT_API_URL/userdefinedfunctions
     ```
 
-- Egy adott felhasználó által definiált függvény tartalmának lekérése 
+- Egy adott felhasználó által definiált függvény tartalmának beolvasása 
 
    ```plaintext
     YOUR_MANAGEMENT_API_URL/userdefinedfunctions/YOUR_USER_DEFINED_FUNCTION_ID/contents
     ```
 
 
-## <a name="queries-for-users"></a>A felhasználók számára a lekérdezések
+## <a name="queries-for-users"></a>Felhasználók lekérdezése
 
-Ez a szakasz bemutatja néhány mintalekérdezést API az Azure digitális Twins felhasználók kezeléséhez. Győződjön meg arról, egy HTTP GET kérést, és cserélje le a helyőrzőket a telepítő a megfelelő értékekkel. 
+Ez a szakasz néhány példa API-lekérdezést mutat be a felhasználók Azure digitális Ikrekben való kezeléséhez. Hajtson végre egy HTTP GET-kérést, és cserélje le a helyőrzőket a telepítőből származó értékekre. 
 
-- Minden felhasználó kaphat. 
+- Minden felhasználó beolvasása. 
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/users
@@ -236,6 +236,6 @@ Ez a szakasz bemutatja néhány mintalekérdezést API az Azure digitális Twins
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg, hogyan hitelesítheti a felügyeleti API-val, olvassa el [API-kkal való hitelesítés közben](./security-authenticating-apis.md).
+Ha szeretné megtudni, hogyan végezhet hitelesítést a felügyeleti API-val, olvassa el [a hitelesítés API](./security-authenticating-apis.md)-kkal című témakört.
 
-Tekintse meg az összes API-végpontokat, olvassa el [használata a digitális Twins Swagger](./how-to-use-swagger.md).
+Ha többet szeretne megtudni az API-végpontokról, olvassa el a [digitális Twins hencegés használatát](./how-to-use-swagger.md)ismertető témakört.

@@ -1,143 +1,142 @@
 ---
 title: Az Azure HDInsight kibocsátási megjegyzései
-description: Legújabb kibocsátási megjegyzések az Azure HDInsight. Hadoop, Spark, az R Server, Hive és további fejlesztési tippek és részletek szerezze be.
-services: hdinsight
+description: Az Azure HDInsight legújabb kibocsátási megjegyzései. A Hadoop, a Spark, a R Server, a kaptár és sok más fejlesztéssel kapcsolatos tippeket és információkat kaphat.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/15/2019
-ms.openlocfilehash: 5769f90ef69a82497194ff6de01b378acc84deec
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.date: 08/08/2019
+ms.openlocfilehash: 7c31520efd881e8e0b5ed309f62d273bac59c0e3
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678386"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945029"
 ---
-# <a name="release-notes-for-azure-hdinsight"></a>Az Azure HDInsight kibocsátási megjegyzései
+# <a name="release-notes"></a>Kibocsátási megjegyzések
 
-Ez a cikk a kapcsolatos információkat nyújt a **legutóbbi** Azure HDInsight kibocsátási frissítéseket. A korábbi operációs információkért lásd: [HDInsight kibocsátási megjegyzései archív](hdinsight-release-notes-archive.md).
+Ez a cikk az Azure HDInsight **legújabb** kiadási frissítéseivel kapcsolatos információkat tartalmaz. A korábbi kiadásokkal kapcsolatos információkért lásd: [HDInsight kibocsátási megjegyzések archívuma](hdinsight-release-notes-archive.md).
 
 > [!IMPORTANT]  
-> A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További információkért lásd: [HDInsight versioning cikk](hdinsight-component-versioning.md).
+> A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További információ: [HDInsight verziószámozási cikk](hdinsight-component-versioning.md).
 
 ## <a name="summary"></a>Összegzés
 
-Az Azure HDInsight a legnépszerűbb szolgáltatások nagyvállalati ügyfelek körében a nyílt forráskódú Apache Spark és Apache Hadoop analytics az Azure-ban egyike.
+Az Azure HDInsight az egyik legnépszerűbb szolgáltatás a nagyvállalati ügyfelek körében a nyílt forráskódú Apache Hadoop és az Azure-beli Apache Spark-elemzések terén.
 
 ## <a name="new-features"></a>Új funkciók
 
-További információ a HDInsight 4.0-s fontos változásokat., lásd: [HDI 4.0 újdonságai?](../hdinsight/hdinsight-version-release.md).
+A HDInsight 4,0-es verzióval kapcsolatos fontos változásokkal kapcsolatos további információkért lásd: a [HDI 4,0 újdonságai?](../hdinsight/hdinsight-version-release.md).
 
 ## <a name="component-versions"></a>Összetevő-verziók
 
-Az összes HDInsight 4.0 összetevők hivatalos Apache verzióját az alábbi táblázatban szerepelnek. A felsorolt összetevői kiadásaiban elérhető legújabb stabil verziója.
+Az összes HDInsight 4,0-összetevő hivatalos Apache-verziója alább található. A felsorolt összetevők a legújabb stabil verziók kiadásait tartalmazzák.
 
 - Apache Ambari 2.7.1
 - Apache Hadoop 3.1.1
-- Az Apache HBase 2.0.0-s
-- Az Apache Hive 3.1.0
-- Apache Kafka 1.1.1
-- Az Apache Mahout 0.9.0+
-- Az Apache Oozie 4.2.0
+- Apache HBase 2.0.0
+- Apache Hive 3.1.0
+- Apache Kafka 1.1.1, 2.1.0
+- Apache Mahout 0.9.0 +
+- Apache Oozie 4.2.0
 - Apache Phoenix 4.7.0
 - Apache Pig 0.16.0
-- Az Apache Ranger 0.7.0
-- Az Apache csúszka 0.92.0
-- Apache Spark 2.3.1
+- Apache Ranger 0.7.0
+- Apache Slider 0.92.0
+- Apache Spark 2.3.1, 2.4.0
 - Apache Sqoop 1.4.7
-- Az Apache TEZ 0.9.1
-- Az Apache Zeppelin 0.8.0
-- Az Apache ZooKeeper 3.4.6
+- Apache TEZ 0.9.1
+- Apache Zeppelin 0.8.0
+- Apache ZooKeeper 3.4.6
 
-Apache összetevők későbbi verziói néha mellett a fent felsorolt verziói HDP terjesztési vannak csoportosítva. Ebben az esetben ezen újabb verziói a Technical Preview kiadások táblázatban, és az Apache összetevő verziója, az éles környezetben a fenti lista nem helyettesítse.
+Az Apache-összetevők újabb verziói néha a HDP eloszlásba vannak csomagolva, a fent felsorolt verziók mellett. Ebben az esetben ezek a későbbi verziók a Technical Previews táblában vannak felsorolva, és nem helyettesíthetik a fenti lista Apache összetevő-verzióit éles környezetben.
 
-## <a name="apache-patch-information"></a>Az Apache javítás információk
+## <a name="apache-patch-information"></a>Apache-javítási információk
 
-Javítások a HDInsight 4.0 elérhető további információkért tekintse meg a javítás, az alábbi táblázat az egyes termékekhez tartozó listázása.
+A HDInsight 4,0-ben elérhető javításokról további információt az alábbi táblázatban talál az egyes termékekhez tartozó patch-lista.
 
-| Terméknév | Információ a javítás |
+| Terméknév | Javítási információk |
 |---|---|
-| Ambari | [Az Ambari javítás információk](https://docs.hortonworks.com/HDPDocuments/Ambari-2.7.1.0/bk_ambari-release-notes/content/ambari_relnotes-2.7.1.0-patch-information.html) |
-| Hadoop | [Információ a Hadoop-javítás](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_hadoop.html) |
-| HBase | [Információ a HBase-javítás](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_hbase.html) |
-| Hive  | Ebben a kiadásban a további Apache javítások 3.1.0 Hive biztosít.  |
-| Kafka | Ebben a kiadásban 1.1.1 további Apache javítások a Kafka. |
-| Oozie | [Információ az Oozie-javítások](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_oozie.html) |
-| Phoenix | [Információ a Phoenix-javítás](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_phoenix.html) |
-| Pig | [Információ a Pig-javítás](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_pig.html) |
-| Ranger | [Információ a ranger-javítás](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_ranger.html) |
-| Spark | [Információ a Spark-javítás](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_spark.html) |
-| Sqoop | Ebben a kiadásban a Sqoop, a további Apache javítások 1.4.7. |
-| Tez | Ebben a kiadásban további Apache javítások a 0.9.1 Tez biztosít. |
-| Zeppelin | Ebben a kiadásban a további Apache javítások 0.8.0 Zeppelin biztosít. |
-| Zookeeper | [Információ a zookeeper-javítás](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_zookeeper.html) |
+| Ambari | [Ambari-javítási információk](https://docs.hortonworks.com/HDPDocuments/Ambari-2.7.1.0/bk_ambari-release-notes/content/ambari_relnotes-2.7.1.0-patch-information.html) |
+| Hadoop | [Hadoop-javítási információk](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_hadoop.html) |
+| HBase | [HBase-javítási információk](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_hbase.html) |
+| Hive  | Ez a kiadás további Apache-javítások nélkül biztosít kaptár-3.1.0.  |
+| Kafka | Ebben a kiadásban a Kafka 1.1.1-es verziója további Apache-javítások nélkül elérhető. |
+| Oozie | [Oozie-javítási információk](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_oozie.html) |
+| Phoenix | [A Phoenix javításával kapcsolatos információk](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_phoenix.html) |
+| Pig | [Pig-javítási információk](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_pig.html) |
+| Ranger | [Ranger-javítási információk](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_ranger.html) |
+| Spark | [Spark-javítási információk](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_spark.html) |
+| Sqoop | Ez a kiadás további Apache-javítások nélkül biztosít Sqoop 1.4.7. |
+| Tez | Ez a kiadás további Apache-javítások nélkül biztosít TEZ 0.9.1. |
+| Zeppelin | Ez a kiadás a Zeppelin 0.8.0 további Apache-javítások nélkül nyújtja. |
+| Zookeeper | [Zookeeper-javítási információk](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_zookeeper.html) |
 
-## <a name="fixed-common-vulnerabilities-and-exposures"></a>Kijavítva a Common Vulnerabilities and Exposures
+## <a name="fixed-common-vulnerabilities-and-exposures"></a>Rögzített gyakori sebezhetőségek és kitettségek
 
-További információ a biztonsági problémák megoldása a jelen kiadás, tekintse meg a Hortonworks [rögzített Common Vulnerabilities and Exposures a HDP 3.0.1-es](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/cve.html).
+További információ az ebben a kiadásban megoldott biztonsági problémákról: Hortonworks ' a [HDP 3.0.1 rögzített gyakori biztonsági rései és a kitettségek](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/cve.html).
 
 ## <a name="known-issues"></a>Ismert problémák
 
-### <a name="replication-is-broken-for-secure-hbase-with-default-installation"></a>Replikációs megszakad a biztonságos hbase-hez az alapértelmezett telepítés
+### <a name="replication-is-broken-for-secure-hbase-with-default-installation"></a>A biztonságos HBase a replikáció alapértelmezett telepítéssel megszakadt
 
-HDInsight 4.0-s tegye a következőket:
+A HDInsight 4,0 esetében hajtsa végre a következő lépéseket:
 
-1. A fürt közötti kommunikáció engedélyezése.
-1. Jelentkezzen be az aktív átjárócsomópontjával.
-1. Töltse le egy parancsfájlt, hogy engedélyezze a replikációt a következő paranccsal:
+1. Fürt közötti kommunikáció engedélyezése.
+1. Jelentkezzen be az aktív átjárócsomóponthoz.
+1. Töltsön le egy parancsfájlt a replikáció engedélyezéséhez a következő paranccsal:
 
     ```
     sudo wget https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh
     ```
-1. Írja be a parancsot `sudo kinit <domainuser>`.
-1. Írja be a parancsfájl futtatásához az alábbi parancsot:
+1. Írja be a `sudo kinit <domainuser>`parancsot.
+1. A parancsfájl futtatásához írja be a következő parancsot:
 
     ```
     sudo bash hdi_enable_replication.sh -m <hn0> -s <srclusterdns> -d <dstclusterdns> -sp <srcclusterpasswd> -dp <dstclusterpasswd> -copydata
     ```
-A HDInsight 3.6-os tegye a következőket:
+A HDInsight 3,6 esetében tegye a következőket:
 
-1. Jelentkezzen be aktív HMaster ZK.
-1. Töltse le egy parancsfájlt, hogy engedélyezze a replikációt a következő paranccsal:
+1. Jelentkezzen be az aktív HMaster ZK.
+1. Töltsön le egy parancsfájlt a replikáció engedélyezéséhez a következő paranccsal:
     ```
     sudo wget https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh
     ```
-1. Írja be a parancsot `sudo kinit -k -t /etc/security/keytabs/hbase.service.keytab hbase/<FQDN>@<DOMAIN>`.
+1. Írja be a `sudo kinit -k -t /etc/security/keytabs/hbase.service.keytab hbase/<FQDN>@<DOMAIN>`parancsot.
 1. Írja be a következő parancsot:
 
     ```bash
     sudo bash hdi_enable_replication.sh -s <srclusterdns> -d <dstclusterdns> -sp <srcclusterpasswd> -dp <dstclusterpasswd> -copydata
     ```
 
-### <a name="phoenix-sqlline-stops-working-after-migrating-hbase-cluster-to-hdinsight-40"></a>A Phoenix az Sqlline való migrálása után leáll a 4.0-s HDInsight HBase-fürt
+### <a name="phoenix-sqlline-stops-working-after-migrating-hbase-cluster-to-hdinsight-40"></a>A Phoenix az sqlline használata a HBase-fürt HDInsight 4,0-re való áttelepítése után leáll
 
-Kövesse az alábbi lépéseket:
+Hajtsa végre a következő lépéseket:
 
-1. Dobja el a következő Phoenix táblák:
+1. Dobja el a következő Phoenix-táblákat:
     1. `SYSTEM.FUNCTION`
     1. `SYSTEM.SEQUENCE`
     1. `SYSTEM.STATS`
     1. `SYSTEM.MUTEX`
     1. `SYSTEM.CATALOG`
-1. Ha a tábla nem törölhető, indítsa újra a HBase törölni fennálló kapcsolatokat a táblák.
-1. Futtassa ismét az `sqlline.py` parancsot. Phoenix újra létrehozza az összes táblát, amely az 1. lépésben törölve lett.
-1. A Phoenix-táblák és nézetek, a HBase-adatok újbóli létrehozása.
+1. Ha nem tudja törölni a táblák bármelyikét, indítsa újra a HBase a táblák kapcsolatainak törléséhez.
+1. Futtassa ismét az `sqlline.py` parancsot. A Phoenix újra létrehozza az 1. lépésben törölt összes táblát.
+1. A HBase-adataihoz tartozó Phoenix-táblák és-nézetek újbóli előállítása.
 
-### <a name="phoenix-sqlline-stops-working-after-replicating-hbase-phoenix-metadata-from-hdinsight-36-to-40"></a>A Phoenix az Sqlline HBase Phoenix metaadatok replikálása a HDInsight 3.6-os 4.0-s után leáll
+### <a name="phoenix-sqlline-stops-working-after-replicating-hbase-phoenix-metadata-from-hdinsight-36-to-40"></a>A Phoenix az sqlline használata a HBase Phoenix metaadatainak replikálását követően leáll a HDInsight 3,6 – 4,0
 
-Kövesse az alábbi lépéseket:
+Hajtsa végre a következő lépéseket:
 
-1. Mielőtt végrehajtaná a replikálást, nyissa meg a célfürt 4.0-s verzióját, és hajtsa végre `sqlline.py`. Ez a parancs létrehozza a Phoenix táblákkal, mint `SYSTEM.MUTEX` és `SYSTEM.LOG` , amely csak a 4.0-s létezik.
-1. Dobja el az alábbi táblázatokban:
+1. A replikáció előtt lépjen a cél 4,0 fürtre, és hajtsa `sqlline.py`végre a műveletet. Ez a parancs olyan Phoenix- `SYSTEM.MUTEX` táblákat `SYSTEM.LOG` hoz majd, amelyek csak a 4,0-es verzióban léteznek.
+1. Dobja el a következő táblázatokat:
     1. `SYSTEM.FUNCTION`
     1. `SYSTEM.SEQUENCE`
     1. `SYSTEM.STATS`
     1. `SYSTEM.CATALOG`
-1. A HBase-replikáció
+1. A HBase-replikáció elindítása
 
 ## <a name="deprecation"></a>Elavulás
 
-Apache Storm és a Machine Learning-szolgáltatások nem érhetők el a HDInsight 4.0-s verzióját.
+A Apache Storm és a ML szolgáltatás nem érhető el a HDInsight 4,0-ben.

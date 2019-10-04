@@ -9,11 +9,11 @@ ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.openlocfilehash: 2db588a0cf67d7826408139e8facb43a2e897951
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60003445"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62126681"
 ---
 # <a name="deploy-azure-databricks-in-your-virtual-network-preview"></a>A virtuális hálózaton (előzetes verzió) üzembe helyezése az Azure Databricks
 
@@ -74,7 +74,7 @@ Rendelkeznie kell egy virtuális hálózatot, amelyre központilag telepíti az 
 
 1. Az Azure Portalon válassza ki a **+ erőforrás létrehozása > Analytics > az Azure Databricks** az Azure Databricks szolgáltatás párbeszédpanel megnyitásához.
 
-2. 2. lépésben ismertetett konfigurációs lépéseket követve: Az első lépések útmutató az Azure Databricks-munkaterület létrehozása és üzembe helyezése az Azure Databricks-munkaterületen válassza ki a virtuális hálózati beállítást.
+2. 2\. lépésben ismertetett konfigurációs lépéseket követve: Az első lépések útmutató az Azure Databricks-munkaterület létrehozása és üzembe helyezése az Azure Databricks-munkaterületen válassza ki a virtuális hálózati beállítást.
 
    ![Az Azure Databricks szolgáltatás létrehozása](./media/vnet-injection/create-databricks-service.png)
 
@@ -121,7 +121,7 @@ Ha ez a sablon a hálózati biztonsági csoportok sablon nélkül is használ, m
 
 Ha nem használja a [az Azure portal](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-portal) vagy [Azure Resource Manager-sablonok](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-advanced) szeretne létrehozni a hálózati biztonsági csoportok, manuálisan kell engedélyezett a következő forgalmat az alhálózatok.
 
-|Direction|Protokoll|Forrás|Forrásport|Cél|Célport|
+|Direction|Protocol|source|Forrásport|Cél|Célport|
 |---------|--------|------|-----------|-----------|----------------|
 |Bejövő|\*|VirtualNetwork|\*|\*|\*|
 |Bejövő|\*|Vezérlési sík NAT IP|\*|\*|22|
@@ -182,7 +182,7 @@ Lehetséges ok: a feldolgozó Azure Storage végpontokra érkező forgalom le va
 
 Lehetséges ok: a virtuális hálózat vagy alhálózatok már nem létezik. Győződjön meg arról, hogy a virtuális hálózat és alhálózat létezik.
 
-**Fürt leállítása. Indoklás: A Spark a sikertelen indítás: A Spark nem tudta időben elindítani. A probléma okozhatja egy hibás Hive-metaadattár, érvénytelen Spark-konfigurációk vagy nem megfelelően működő init parancsfájlok. A Spark-illesztőprogram naplókat a probléma elhárításához tekintse meg, és ha a probléma tartósan fennáll, forduljon a Databricks. Belső hiba jelenik meg: A Spark nem tudott elindulni: Illesztőprogram-kezelő nem tudta időben elindítani.**
+**Fürt leállítása. OK: A Spark a sikertelen indítás: A Spark nem tudta időben elindítani. A probléma okozhatja egy hibás Hive-metaadattár, érvénytelen Spark-konfigurációk vagy nem megfelelően működő init parancsfájlok. A Spark-illesztőprogram naplókat a probléma elhárításához tekintse meg, és ha a probléma tartósan fennáll, forduljon a Databricks. Belső hiba jelenik meg: A Spark nem tudott elindulni: Illesztőprogram-kezelő nem tudta időben elindítani.**
 
 Lehetséges ok: Tároló nem tud kommunikálni az üzemeltető példány vagy DBFS-tárfiókot. Javítsa ki az alhálózatok a DBFS tárfiók Internet folyamatban a következő ugrás egy egyéni útvonalon hozzá.
 

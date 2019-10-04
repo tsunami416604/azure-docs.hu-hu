@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: A Bing Web Search SDK használata Javához'
+title: 'Gyors útmutató: A Javához készült Bing Web Search SDK használata'
 titleSuffix: Azure Cognitive Services
 description: A Bing Web Search SDK megkönnyíti a Bing Web Search integrálását a Java-alkalmazásába. Ebben a rövid útmutatóban elsajátíthatja a kérésküldésnek, a JSON-válaszok fogadásának, valamint az eredmények szűrésének és elemzésének módját.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 07/25/2019
 ms.author: aahi
-ms.openlocfilehash: 7209df902f03a7055e142dcbbb7743b6832958b6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 64d1ce1aa6435d9d1716364cb16f8fee7ca09ebb
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57863780"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68597806"
 ---
-# <a name="quickstart-use-the-bing-web-search-sdk-for-java"></a>Gyors útmutató: A Bing Web Search SDK használata Javához
+# <a name="quickstart-use-the-bing-web-search-sdk-for-java"></a>Gyors útmutató: A Javához készült Bing Web Search SDK használata
 
 A Bing Web Search SDK megkönnyíti a Bing Web Search integrálását a Java-alkalmazásába. Ebben a rövid útmutatóban elsajátíthatja a kérésküldésnek, a JSON-válaszok fogadásának, valamint az eredmények szűrésének és elemzésének módját.
 
@@ -35,9 +35,9 @@ Az alábbi dolgokra szüksége lesz a rövid útmutató futtatásához:
 * Az [Apache Maven](https://maven.apache.org/download.cgi) vagy a kedvenc buildelést automatizáló eszköze
 * Egy előfizetői azonosító
 
-## <a name="create-a-project-and-set-up-your-pom-file"></a>Hozzon létre egy projektet, és állítsa be a POM-fájljába.
+## <a name="create-a-project-and-set-up-your-pom-file"></a>Projekt létrehozása és a POM-fájl beállítása
 
-Hozzon létre egy új Java-projektet a Mavennel vagy a kedvenc buildelést automatizáló eszközével. Feltételezve, hogy Mavent használ, adja hozzá a következő sorokat a [projekt Object Model (POM)](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html) fájlt. A `mainClass` összes példányát cserélje le az alkalmazására.
+Hozzon létre egy új Java-projektet a Mavennel vagy a kedvenc buildelést automatizáló eszközével. Feltételezve, hogy Mavent használ, adja hozzá a következő sorokat a [Project Object Model (POM)](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html) fájlhoz. A `mainClass` összes példányát cserélje le az alkalmazására.
 
 ```xml
 <build>
@@ -300,4 +300,4 @@ Ha végzett ezzel a projekttel, ne felejtse el eltávolítani az előfizetői az
 
 ## <a name="see-also"></a>Lásd még
 
-* [Azure Java SDK-referencia](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/websearch)
+* [Azure Java SDK-referencia](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingwebsearchapi?view=azure-java-stable)

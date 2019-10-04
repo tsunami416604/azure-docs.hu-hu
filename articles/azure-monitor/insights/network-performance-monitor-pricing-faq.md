@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/02/2018
-ms.author: ajaycode
-ms.openlocfilehash: 77cacd7f94d8ddd92fcd7383d2d0a7929734eaeb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: agummadi
+ms.openlocfilehash: 68e84d8ac82d5cdd52bf92df858730315514c17c
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59005928"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612852"
 ---
 # <a name="pricing-changes-for-azure-network-performance-monitor"></a>Az Azure Network Performance Monitor a tarifacsomag módosítása
 
@@ -80,7 +80,7 @@ Nem számítunk fel díjat a Kapcsolatcsoportok száma vagy a társviszony-léte
 
 Havonta, ha az ExpressRoute egy privát társviszony-létesítési kapcsolaton figyeli, generált adatmennyiséget a következőképpen történik:
 
-|Percentilis      |Adatok/hó (MB)|
+|PERCENTILIS      |Adatok/hó (MB)|
 | :---:          |           ---:|
 |50<sup>th</sup> |            192|
 |60<sup>th</sup> |            256|

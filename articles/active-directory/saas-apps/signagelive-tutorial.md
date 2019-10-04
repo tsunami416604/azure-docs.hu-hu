@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 1/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bff57635c87b77270e1bd20e04834dec132b2df6
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: c31f201179f9f0eb7077ed275aae927a2a4fe376
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678344"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67090718"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-signagelive"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Signagelive
 

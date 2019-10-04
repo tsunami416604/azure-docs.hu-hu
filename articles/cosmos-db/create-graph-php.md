@@ -1,21 +1,21 @@
 ---
-title: 'Gyors útmutató: Gremlin API a PHP – Azure Cosmos DB használatával'
+title: 'Gyors útmutató: Gremlin API a PHP-Azure Cosmos DB'
 description: Ez a rövid útmutató azt ismerteti, hogy miként használható az Azure Cosmos DB Gremlin API konzolalkalmazások az Azure Portal és a PHP használatával történő létrehozására.
 author: luisbosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.devlang: php
 ms.topic: quickstart
-ms.date: 01/05/2018
+ms.date: 01/05/2019
 ms.author: lbosq
-ms.openlocfilehash: aace9b61ae7625f1d3bbed5181fd88e367ea8f12
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: e38f3e2029bdc8dc8c13ce330e37053d491317f3
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58082755"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736650"
 ---
-# <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-php-and-the-azure-portal"></a>Gyors útmutató: Gráfadatbázis létrehozása a PHP és az Azure portal segítségével Azure Cosmos DB-ben
+# <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-php-and-the-azure-portal"></a>Gyors útmutató: Graph-adatbázis létrehozása Azure Cosmos DB a PHP és a Azure Portal használatával
 
 > [!div class="op_single_selector"]
 > * [Gremlin-konzol](create-graph-gremlin-console.md)
@@ -113,7 +113,7 @@ Lépjen vissza az Azure Portalra a kapcsolati adatokért, majd másolja be azoka
 
     ```php
     $db = new Connection([
-        'host' => 'testgraphacct.graphs.azure.com',
+        'host' => 'testgraphacct.gremlin.cosmosdb.azure.com',
         'username' => '/dbs/<db>/colls/<coll>',
         'password' => 'your_primary_key'
         ,'port' => '443'
@@ -123,9 +123,7 @@ Lépjen vissza az Azure Portalra a kapcsolati adatokért, majd másolja be azoka
     ]);
     ```
 
-3. Ha a gráfadatbázis-fiókot 2017. december 20-án vagy azután hozta létre, módosítsa a gazdagép nevében a `graphs.azure.com` karakterláncot a következőre: `gremlin.cosmosdb.azure.com`.
-
-4. Módosítsa a kapcsolat objektumban lévő `username` paramétert az adatbázis és a gráf nevével. Ha a `sample-database` és `sample-graph` javasolt értékeket használta, a következő kódhoz hasonlóan kell kinéznie:
+3. Módosítsa a kapcsolat objektumban lévő `username` paramétert az adatbázis és a gráf nevével. Ha a `sample-database` és `sample-graph` javasolt értékeket használta, a következő kódhoz hasonlóan kell kinéznie:
 
     `'username' => '/dbs/sample-database/colls/sample-graph'`
 
@@ -133,7 +131,7 @@ Lépjen vissza az Azure Portalra a kapcsolati adatokért, majd másolja be azoka
 
     ```php
     $db = new Connection([
-        'host' => 'testgraphacct.graphs.azure.com',
+        'host' => 'testgraphacct.gremlin.cosmosdb.azure.com',
         'username' => '/dbs/sample-database/colls/sample-graph',
         'password' => 'your_primary_key',
         'port' => '443'
@@ -143,7 +141,7 @@ Lépjen vissza az Azure Portalra a kapcsolati adatokért, majd másolja be azoka
     ]);
     ```
 
-5. Az Azure Portalon a másolás gombbal másolja az ELSŐDLEGES KULCSOT, és illessze a `your_primary_key` helyére a jelszóparaméterben.
+4. Az Azure Portalon a másolás gombbal másolja az ELSŐDLEGES KULCSOT, és illessze a `your_primary_key` helyére a jelszóparaméterben.
 
     A kapcsolatobjektum inicializálásának most a következő kódhoz hasonlóan kell kinéznie:
 
@@ -159,7 +157,7 @@ Lépjen vissza az Azure Portalra a kapcsolati adatokért, majd másolja be azoka
     ]);
     ```
 
-6. Mentse a `connect.php` fájlt.
+5. Mentse a `connect.php` fájlt.
 
 ## <a name="run-the-console-app"></a>A konzolalkalmazás futtatása
 
@@ -196,7 +194,7 @@ Ezután visszaléphet az Adatkezelőbe, és megtekintheti a gráfhoz hozzáadott
 
    ![Új dokumentumok létrehozása az Azure Portal Adatkezelőjében](./media/create-graph-php/azure-cosmosdb-data-explorer-expanded.png)
 
-2. A **Találatok** listában megjelennek a gráfhoz hozzáadott új felhasználók. Ha kiválasztja a **ben** elemet, láthatja, hogy a robin elemhez kapcsolódik. A csúcspontokat szabadon mozgathatja húzással, nagyíthat és kicsinyíthet az egérgörgő görgetésével, illetve megnövelheti a gráf méretét a duplaszárú nyíllal. 
+2. A **Találatok** listában megjelennek a gráfhoz hozzáadott új felhasználók. Válassza ki a **ben** , és figyelje meg, hogy csatlakozik a robinhoz. A csúcspontokat szabadon mozgathatja húzással, nagyíthat és kicsinyíthet az egérgörgő görgetésével, illetve megnövelheti a gráf méretét a duplaszárú nyíllal. 
 
    ![Új csúcspontok az Azure Portal Adatkezelőjében megjelenő gráfban](./media/create-graph-php/azure-cosmosdb-graph-explorer-new.png)
 
@@ -206,13 +204,13 @@ Ezután visszaléphet az Adatkezelőbe, és megtekintheti a gráfhoz hozzáadott
 
 4. Adja meg a *person* címkét.
 
-5. Kattintson a **Tulajdonság hozzáadása** lehetőségre a következő tulajdonságok hozzáadásához. Egyedi tulajdonságokat hozhat létre a gráfban található minden egyes személy számára. Csak az id kulcsot kötelező megadni.
+5. Kattintson a **Tulajdonság hozzáadása** lehetőségre a következő tulajdonságok hozzáadásához. Egyedi tulajdonságokat hozhat létre a gráfban található minden egyes személy számára. Csak az **azonosító** kulcs szükséges.
 
-    kulcs|érték|Megjegyzések
+    Kulcs | Value | Megjegyzések
     ----|----|----
-    id|ashley|A csúcspont egyedi azonosítója. Ha nem ad meg azonosítót, a rendszer létrehoz egyet.
-    gender|female| 
-    tech | java | 
+    **id** | ashley | A csúcspont egyedi azonosítója. Ha nem ad meg azonosítót, a rendszer létrehoz egyet.
+    **nemek** | female | 
+    **Tech** | java | 
 
     > [!NOTE]
     > Ebben a rövid útmutatóban egy nem particionált gyűjteményt fog létrehozni. Ha azonban a gyűjtemény létrehozásakor megad egy partíciókulcsot és particionált gyűjteményt hoz létre, minden új csúcspontban meg kell adnia kulcsként a partíciókulcsot. 
@@ -224,12 +222,12 @@ Ezután visszaléphet az Adatkezelőbe, és megtekintheti a gráfhoz hozzáadott
 8. Adja meg a *person* címkét.
 
 9. Kattintson a **Tulajdonság hozzáadása** lehetőségre a következő tulajdonságok hozzáadásához:
-
-    kulcs|érték|Megjegyzések
+    
+    Kulcs | Érték | Megjegyzések
     ----|----|----
-    id|rakesh|A csúcspont egyedi azonosítója. Ha nem ad meg azonosítót, a rendszer létrehoz egyet.
-    gender|male| 
-    school|MIT| 
+    **id** | rakesh | A csúcspont egyedi azonosítója. Ha nem ad meg azonosítót, a rendszer létrehoz egyet.
+    **nemek** | male | 
+    **iskolai** | MIT | 
 
 10. Kattintson az **OK** gombra. 
 

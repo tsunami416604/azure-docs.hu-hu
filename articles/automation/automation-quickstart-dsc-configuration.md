@@ -11,14 +11,14 @@ ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: a30f9c1a61044c0911a5afc27ad95fc758b4c83e
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 2c01172bf22fb286f790543b02a4c1e482b05fe7
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449098"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68850568"
 ---
-# <a name="configure-a-linux-virtual-machine-with-desired-state-configuration"></a>Konfigurálás Linux rendszerű virtuális gépen a Desired State Configurationnel
+# <a name="configure-a-virtual-machine-with-desired-state-configuration"></a>Virtuális gép konfigurálása a kívánt állapot-konfigurációval
 
 A Desired State Configuration (DSC) engedélyezésével kezelheti és monitorozhatja a Windows- és Linux-kiszolgálók konfigurációit. A kívánt konfigurációtól eltérő konfigurációk azonosíthatók vagy automatikusan kijavíthatók. Ez a rövid útmutató végigvezeti a Linux rendszerű virtuális gépek előkészítésén és a LAMP-vermek DSC-vel való üzembe helyezésén.
 
@@ -108,7 +108,7 @@ A konfiguráció importálása:
 
 ## <a name="compile-a-configuration"></a>Konfiguráció fordítása
 
-A DSC-konfigurációkat csomópont-konfigurációvá (MOF-dokumentummá) kell fordítani, mielőtt csomóponthoz lehetne rendelni azokat. A fordítás érvényesíti a konfigurációt, és lehetővé teszi a paraméterértékek bevitelét. Fordításáról kapcsolatos további információkért lásd: [Az Azure Automation DSC konfigurációk fordítása](https://docs.microsoft.com/azure/automation/automation-dsc-compile)
+A DSC-konfigurációkat csomópont-konfigurációvá (MOF-dokumentummá) kell fordítani, mielőtt csomóponthoz lehetne rendelni azokat. A fordítás érvényesíti a konfigurációt, és lehetővé teszi a paraméterértékek bevitelét. A konfigurációk fordításával kapcsolatos további tudnivalókért tekintse meg a következőt: [Konfigurációk fordítása Azure Automation DSC-ben](https://docs.microsoft.com/azure/automation/automation-dsc-compile)
 
 Konfiguráció fordítása:
 
@@ -144,5 +144,5 @@ Ebben a rövid útmutatóban előkészített egy Linux rendszerű virtuális gé
 
 * A PowerShell Desired State Configurationről további információkért lásd: [A PowerShell célállapot-konfiguráló áttekintése](https://docs.microsoft.com/powershell/dsc/overview).
 * Az Automation DSC PowerShellről való kezeléséről további információkért lásd: [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.automation/)
-* Ismerje meg, hogyan továbbítsa a DSC-jelentések az Azure Monitor naplóira, jelentéskészítési és riasztási, lásd: [naplózza a DSC jelentéskészítő-továbbítás az Azure monitornak](https://docs.microsoft.com/azure/automation/automation-dsc-diagnostics) 
+* Ha szeretné megtudni, hogyan továbbíthatja a DSC-jelentéseket a jelentések és a riasztások Azure Monitor naplófájljaiba, tekintse meg a [DSC-jelentéskészítés továbbítása Azure monitor naplókhoz](https://docs.microsoft.com/azure/automation/automation-dsc-diagnostics) 
 

@@ -9,11 +9,11 @@ ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
 ms.openlocfilehash: ee53cc3a639a79e1b29ac6cd537bfb04e05b1bca
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55692476"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61478623"
 ---
 # <a name="azure-importexport-service-manifest-file-format"></a>Az Azure Import/Export szolgáltatásjegyzékének fájlformátuma
 A meghajtó jegyzékfájl közötti az Azure Blob storage-blobok és a egy importálási vagy exportálási feladatot tartalmazó meghajtón lévő fájlok hozzárendelését ismerteti. Az importálási művelet az Alkalmazásjegyzék-fájl jön létre a meghajtó előkészítési folyamat részeként, és az eszközön tárolt, a meghajtó az Azure-adatközpontban való elküldése előtt. Az exportálási művelet során a jegyzékfájl létrehozása és az Azure Import/Export szolgáltatás által az eszközön tárolt.  
@@ -90,7 +90,7 @@ block-list ::=
 
 Az adatok elemek és attribútumok a meghajtó jegyzékfájl XML formátum a következő táblázatban vannak megadva.  
   
-|XML-elem|Typo|Leírás|  
+|XML-elem|Típus|Leírás|  
 |-----------------|----------|-----------------|  
 |`DriveManifest`|Legfelső szintű elem|A jegyzékfájl gyökérelem. A fájlban minden más elemeket is, ez az elem alatt.|  
 |`Version`|Attribútum, karakterlánc|Az Alkalmazásjegyzék-fájl verzióját.|  

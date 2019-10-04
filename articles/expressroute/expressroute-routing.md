@@ -2,18 +2,18 @@
 title: 'Útválasztási követelmények – ExpressRoute: Azure | Microsoft Docs'
 description: Ez az oldal ExpressRoute-kapcsolatcsoportok útválasztási konfigurálásának és kezelésének részletes követelményeit ismerteti.
 services: expressroute
-author: ganesr
+author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 01/11/2019
-ms.author: ganesr
+ms.date: 09/19/2019
+ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 9a4b99e311a65435595c9cb0455b0411b7c09324
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: 9bc0d1b31ebeaecce8b4be8699cf87811047b6f9
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617682"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123257"
 ---
 # <a name="expressroute-routing-requirements"></a>Az ExpressRoute útválasztási követelményei
 Ahhoz, hogy az ExpressRoute-tal tudjon csatlakozni a Microsoft-felhőszolgáltatásokhoz, be kell állítania és kezelnie kell az útválasztást. Egyes kapcsolatszolgáltatók az útválasztás beállítását és kezelését felügyelt szolgáltatásként kínálják. Ellenőrizze kapcsolatszolgáltatójánál, hogy kínálja-e ezt a szolgáltatást. Ha nem, akkor meg kell felelnie az alábbi követelményeknek:
@@ -84,7 +84,7 @@ A BGP-munkamenetek beállításához az Ön birtokában lévő nyilvános IP-cí
 Eldöntheti, hogy nyilvános vagy magánhálózati IPv4-címeket szeretne-e használni a magánhálózati társviszony-létesítéshez. Mi biztosítjuk a forgalom végpontok közötti elkülönítését, így elkerülhető, hogy a címek átfedésben legyenek más ügyfelekkel magánhálózati társviszony-létesítés esetén. Ezek a címek nincsenek meghirdetve az interneten. 
 
 ### <a name="microsoft-peering"></a>Microsoft társviszony-létesítés
-A Microsoft társviszony-létesítési útvonal lehetővé teszi a Microsoft-felhőszolgáltatáshoz történő csatlakozást. A szolgáltatások listájába beletartoznak az Office 365 szolgáltatásai, például az Exchange Online, a SharePoint Online, a Skype Vállalati verzió és a Dynamics 365. A Microsoft támogatja a kétirányú kapcsolatokat a Microsoft-társviszony-létesítésen keresztül. A Microsoft-felhőszolgáltatások felé irányuló forgalomnak érvényes nyilvános IPv4-címeket kell használnia, mielőtt belép a Microsoft hálózatába.
+A Microsoft társviszony-létesítési útvonal lehetővé teszi a Microsoft-felhőszolgáltatáshoz történő csatlakozást. A szolgáltatások listája magában foglalja az Office 365-szolgáltatásokat, például az Exchange Online, a SharePoint Online, a Skype vállalati verzió és a Microsoft Teams szolgáltatást. A Microsoft támogatja a kétirányú kapcsolatokat a Microsoft-társviszony-létesítésen keresztül. A Microsoft-felhőszolgáltatások felé irányuló forgalomnak érvényes nyilvános IPv4-címeket kell használnia, mielőtt belép a Microsoft hálózatába.
 
 Győződjön meg róla, hogy az IP-címek és AS-számok regisztrálva vannak az alábbi nyilvántartások egyikében:
 
@@ -101,7 +101,7 @@ Amennyiben a rendszer nem rendeli Önhöz az előtagokat és az AS-számot az el
 A saját AS-számok Microsoft társviszony-létesítés esetében engedélyezettek, de ebben az esetben is szükség van manuális érvényesítésre. Ezenkívül eltávolítjuk az AS PATH értékében lévő privát AS-számokat a fogadott előtagok esetében. Ennek eredményeképpen nem fűzhet privát AS-számokat az AS PATH értékéhez [a Microsoft társviszony-létesítés útválasztásának befolyásolásához](expressroute-optimize-routing.md). 
 
 > [!IMPORTANT]
-> Ne hirdesse meg az azonos nyilvános IP-útvonal az internethez csatlakozik, és expressroute-on keresztül. Helytelen konfiguráció miatt az aszimmetrikus útválasztás a kockázat csökkentése érdekében javasoljuk, hogy a [NAT IP-címek](expressroute-nat.md) a Microsoft számára hirdetett over ExpressRoute nincs hirdetménnyel telepítették az internethez minden tartomány lehet. Ha ez nem lehet elérni, elengedhetetlen, pontosabb széles expressroute-on keresztül, mint egy, az internetes kapcsolat hirdesse biztosításához. A NAT nyilvános útvonalat, mellett is meghirdethetők expressroute-on keresztül a nyilvános IP-cím a Microsoft Office 365-végponttal rendelkező kommunikáló kiszolgálókat a helyszíni hálózat által használt címek. 
+> Ne hirdesse meg az azonos nyilvános IP-útvonal az internethez csatlakozik, és expressroute-on keresztül. Az aszimmetrikus útválasztást okozó helytelen konfiguráció kockázatának csökkentése érdekében erősen ajánlott, hogy a Microsofton keresztül hirdetett [NAT IP-címek](expressroute-nat.md) olyan tartományból ExpressRoute legyenek, amely egyáltalán nem hirdeti meg az internetet. Ha ez nem érhető el, elengedhetetlen annak biztosítása, hogy a ExpressRoute több mint egy adott tartományt Hirdessen, mint az internetkapcsolaton. A NAT nyilvános útvonalat, mellett is meghirdethetők expressroute-on keresztül a nyilvános IP-cím a Microsoft Office 365-végponttal rendelkező kommunikáló kiszolgálókat a helyszíni hálózat által használt címek. 
 > 
 > 
 
@@ -120,7 +120,7 @@ Az útválasztás cseréje az eBGP protokollon keresztül történik. Az EBGP-mu
 ## <a name="autonomous-system-numbers"></a>Autonóm rendszerek számai
 A Microsoft az AS 12076 számot használja az Azure nyilvános, az Azure privát és a Microsoft társviszony-létesítéshez. Az 65515–65520 AS-számok belső használatra vannak fenntartva. A 16 és a 32 bites AS-számok is támogatottak.
 
-Az adatátvitel szimmetriájára nem vonatkoznak követelmények. Az előre és visszafelé haladó útvonalak különböző útválasztópárokon haladhatnak keresztül. Az azonos útvonalakat között több Önhöz tartozó kapcsolatcsoport-párok párokon mindkét oldalról kell hirdetni. Az útvonalmetrikáknak nem kell megegyezniük.
+Az adatátvitel szimmetriájára nem vonatkoznak követelmények. Az előre és visszafelé haladó útvonalak különböző útválasztópárokon haladhatnak keresztül. Az azonos útvonalakat az Ön tulajdonában lévő több áramköri pár oldaláról kell meghirdetni. Az útvonalmetrikáknak nem kell megegyezniük.
 
 ## <a name="route-aggregation-and-prefix-limits"></a>Útvonal-összevonások és előtagkorlátozások
 Legfeljebb 4000 előtag számunkra történő meghirdetését támogatjuk az Azure privát társviszony-létesítésen keresztül. Ez legfeljebb 10 000 előtagra növelhető, ha az ExpressRoute prémium bővítmény engedélyezve van. BGP-munkamenetenként legfeljebb 200 előtagot fogadunk el az Azure nyilvános és a Microsoft társviszony-létesítés esetében. 
@@ -135,7 +135,7 @@ Az alapértelmezett útvonalak használata csak az Azure privát társviszony-l�
 
  A más Azure-szolgáltatások és infrastruktúra-szolgáltatások csatlakozásának engedélyezéséhez biztosítania kell az alábbi elemek egyikének meglétét.
 
-* Az Azure nyilvános társviszony-létesítés engedélyezve van a forgalom nyilvános végpontokra való.
+* Az Azure nyilvános társításának engedélyezése lehetővé teszi a forgalom nyilvános végpontokra való irányítását.
 * Felhasználó által meghatározott útválasztást használ az internetkapcsolatot igénylő összes alhálózat internetkapcsolatának engedélyezéséhez.
 
 > [!NOTE]
@@ -154,47 +154,53 @@ A geopolitikai régiók, a hozzájuk rendelt Azure-régiók és a megfelelő Exp
 
 Geopolitikai régiónként több ExpressRoute-kapcsolatcsoportot is vásárolhat. Több kapcsolattal jelentős előnyöket szerezhet a magas rendelkezésre állás és a földrajzi alapú redundancia területén. Azokban az esetekben, ahol több ExpressRoute-kapcsolatcsoporttal rendelkezik ugyanazokat az előtagkészletet hirdeti meg a Microsoft a Microsoft társviszony-létesítés és a nyilvános társviszony-létesítési útvonalakon fog kapni. Ez azt jelenti, hogy a hálózatából több útvonal fog irányulni a Microsoft felé. Emiatt előfordulhat, hogy a hálózaton belüli útvonalválasztási döntések nem lesznek optimálisak. Ez az optimálisnál rosszabb csatlakozási teljesítményt okozhat a különböző szolgáltatások esetében. A közösségértékek alapján megfelelő útválasztási döntéseket hozhat, amelyekkel [optimális útválasztást kínálhat a felhasználóknak](expressroute-optimize-routing.md).
 
-| **Microsoft Azure-régió** | **Regionális BGP-Közösség** | **Tárolási BGP-Közösség** | **SQL BGP-Közösség** | 
-| --- | --- | --- | --- |
+| **Microsoft Azure-régió** | **Regionális BGP-Közösség** | **Storage BGP-Közösség** | **SQL BGP-Közösség** | **Cosmos DB BGP-Közösség** |
+| --- | --- | --- | --- | --- |
 | **Észak-Amerika** | |
-| USA keleti régiója | 12076:51004 | 12076:52004 | 12076:53004 |
-| USA 2. keleti régiója | 12076:51005 | 12076:52005 | 12076:53005 |
-| USA nyugati régiója | 12076:51006 | 12076:52006 | 12076:53006 |
-| USA nyugati régiója, 2. | 12076:51026 | 12076:52026 | 12076:53026 |
-| USA nyugati középső régiója | 12076:51027 | 12076:52027 | 12076:53027 |
-| USA északi középső régiója | 12076:51007 | 12076:52007 | 12076:53007 |
-| USA déli középső régiója | 12076:51008 | 12076:52008 | 12076:53008 |
-| USA középső régiója | 12076:51009 | 12076:52009 | 12076:53009 |
-| Közép-Kanada | 12076:51020 | 12076:52020 | 12076:53020 |
-| Kelet-Kanada | 12076:51021 | 12076:52021 | 12076:53021 |
+| USA keleti régiója | 12076:51004 | 12076:52004 | 12076:53004 | 12076:54004 |
+| USA 2. keleti régiója | 12076:51005 | 12076:52005 | 12076:53005 | 12076:54005 |
+| USA nyugati régiója | 12076:51006 | 12076:52006 | 12076:53006 | 12076:54006 |
+| USA nyugati régiója, 2. | 12076:51026 | 12076:52026 | 12076:53026 | 12076:54026 |
+| USA nyugati középső régiója | 12076:51027 | 12076:52027 | 12076:53027 | 12076:54027 |
+| USA északi középső régiója | 12076:51007 | 12076:52007 | 12076:53007 | 12076:54007 |
+| USA déli középső régiója | 12076:51008 | 12076:52008 | 12076:53008 | 12076:54008 |
+| USA középső régiója | 12076:51009 | 12076:52009 | 12076:53009 | 12076:54009 |
+| Közép-Kanada | 12076:51020 | 12076:52020 | 12076:53020 | 12076:54020 |
+| Kelet-Kanada | 12076:51021 | 12076:52021 | 12076:53021 | 12076:54021 |
 | **Dél-Amerika** | |
-| Dél-Brazília | 12076:51014 | 12076:52014 | 12076:53014 |
+| Dél-Brazília | 12076:51014 | 12076:52014 | 12076:53014 | 12076:54014 |
 | **Európa** | |
-| Észak-Európa | 12076:51003 | 12076:52003 | 12076:53003 |
-| Nyugat-Európa | 12076:51002 | 12076:52002 | 12076:53002 |
-| Az Egyesült Királyság déli régiója | 12076:51024 | 12076:52024 | 12076:53024 |
-| Az Egyesült Királyság nyugati régiója | 12076:51025 | 12076:52025 | 12076:53025 |
-| Közép-Franciaország | 12076:51030 | 12076:52030 | 12076:53030 |
-| Dél-Franciaország | 12076:51031 | 12076:52031 | 12076:53031 |
+| Észak-Európa | 12076:51003 | 12076:52003 | 12076:53003 | 12076:54003 |
+| Nyugat-Európa | 12076:51002 | 12076:52002 | 12076:53002 | 12076:54002 |
+| Az Egyesült Királyság déli régiója | 12076:51024 | 12076:52024 | 12076:53024 | 12076:54024 |
+| Az Egyesült Királyság nyugati régiója | 12076:51025 | 12076:52025 | 12076:53025 | 12076:54025 |
+| Közép-Franciaország | 12076:51030 | 12076:52030 | 12076:53030 | 12076:54030 |
+| Dél-Franciaország | 12076:51031 | 12076:52031 | 12076:53031 | 12076:54031 |
 | **Ázsia és a Csendes-óceáni térség** | |
-| Kelet-Ázsia | 12076:51010 | 12076:52010 | 12076:53010 |
-| Délkelet-Ázsia | 12076:51011 | 12076:52011 | 12076:53011 |
+| Kelet-Ázsia | 12076:51010 | 12076:52010 | 12076:53010 | 12076:54010 |
+| Délkelet-Ázsia | 12076:51011 | 12076:52011 | 12076:53011 | 12076:54011 |
 | **Japán** | |
-| Kelet-Japán | 12076:51012 | 12076:52012 | 12076:53012 |
-| Nyugat-Japán | 12076:51013 | 12076:52013 | 12076:53013 |
+| Kelet-Japán | 12076:51012 | 12076:52012 | 12076:53012 | 12076:54012 |
+| Nyugat-Japán | 12076:51013 | 12076:52013 | 12076:53013 | 12076:54013 |
 | **Ausztrália** | |
-| Kelet-Ausztrália | 12076:51015 | 12076:52015 | 12076:53015 |
-| Délkelet-Ausztrália | 12076:51016 | 12076:52016 | 12076:53016 |
+| Kelet-Ausztrália | 12076:51015 | 12076:52015 | 12076:53015 | 12076:54015 |
+| Délkelet-Ausztrália | 12076:51016 | 12076:52016 | 12076:53016 | 12076:54016 |
 | **Ausztrália kormánya** | |
-| Ausztrália középső régiója | 12076:51032 | 12076:52032 | 12076:53032 |
-| Ausztrália 2. középső régiója | 12076:51033 | 12076:52033 | 12076:53033 |
+| Ausztrália középső régiója | 12076:51032 | 12076:52032 | 12076:53032 | 12076:54032 |
+| Ausztrália 2. középső régiója | 12076:51033 | 12076:52033 | 12076:53033 | 12076:54033 |
 | **India** | |
-| Dél-India | 12076:51019 | 12076:52019 | 12076:53019 |
-| Nyugat-India | 12076:51018 | 12076:52018 | 12076:53018 |
-| Közép-India | 12076:51017 | 12076:52017 | 12076:53017 |
+| Dél-India | 12076:51019 | 12076:52019 | 12076:53019 | 12076:54019 |
+| Nyugat-India | 12076:51018 | 12076:52018 | 12076:53018 | 12076:54018 |
+| Közép-India | 12076:51017 | 12076:52017 | 12076:53017 | 12076:54017 |
 | **Korea** | |
-| Korea déli régiója | 12076:51028 | 12076:52028 | 12076:53028 |
-| Korea középső régiója | 12076:51029 | 12076:52029 | 12076:53029 |
+| Korea déli régiója | 12076:51028 | 12076:52028 | 12076:53028 | 12076:54028 |
+| Korea középső régiója | 12076:51029 | 12076:52029 | 12076:53029 | 12076:54029 |
+| **Dél-Afrika**| |
+| Dél-Afrika északi régiója | 12076:51034 | 12076:52034 | 12076:53034 | 12076:54034 |
+| Dél-Afrika nyugati régiója | 12076:51035 | 12076:52035 | 12076:53035 | 12076:54035 |
+| **EGYESÜLT ARAB EMÍRSÉGEK**| |
+| Egyesült Arab Emírségek északi régiója | 12076:51036 | 12076:52036 | 12076:53036 | 12076:54036 |
+| Egyesült Arab Emírségek középső régiója | 12076:51037 | 12076:52037 | 12076:53037 | 12076:54037 |
 
 
 A Microsoft által hirdetett összes útvonal a megfelelő közösségértéket tartalmazó címkével lesz ellátva. 
@@ -204,18 +210,18 @@ A Microsoft által hirdetett összes útvonal a megfelelő közösségértéket 
 > 
 > 
 
-A fentiek mellett a Microsoft a kapcsolódó szolgáltatások alapján is címkével látja el az előtagokat. Ez csak a Microsoft társviszony-létesítésre vonatkozik. Az alábbi táblázat a szolgáltatások BGP-közösségértékre való leképezéseit tartalmazza.
+### <a name="service-to-bgp-community-value"></a>Szolgáltatás a BGP közösségi értékre
+A fentiek mellett a Microsoft a kapcsolódó szolgáltatások alapján is címkével látja el az előtagokat. Ez csak a Microsoft társviszony-létesítésre vonatkozik. Az alábbi táblázat a szolgáltatások BGP-közösségértékre való leképezéseit tartalmazza. A "Get-AzBgpServiceCommunity" parancsmagot futtathatja a legfrissebb értékek teljes listájához.
 
 | **Szolgáltatás** | **BGP-közösségérték** |
 | --- | --- |
 | Exchange Online | 12076:5010 |
 | SharePoint Online | 12076:5020 |
 | Skype Vállalati online verzió | 12076:5030 |
-| Dynamics 365 | 12076:5040 |
 | Az Azure globális szolgáltatások * | 12076:5050 |
 | Egyéb Office 365-szolgáltatások | 12076:5100 |
 
-* Az azure globális szolgáltatások jelenleg csak az Azure DevOps tartalmazza.
+\* Az Azure globális szolgáltatásai jelenleg csak az Azure-DevOps tartalmazzák.
 
 
 > [!NOTE]
@@ -242,7 +248,6 @@ A fentiek mellett a Microsoft a kapcsolódó szolgáltatások alapján is címk�
 | Exchange Online |12076:5110 |
 | SharePoint Online |12076:5120 |
 | Skype Vállalati online verzió |12076:5130 |
-| Dynamics 365 |12076:5140 |
 | Egyéb Office 365-szolgáltatások |12076:5200 |
 
 ## <a name="next-steps"></a>További lépések

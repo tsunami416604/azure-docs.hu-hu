@@ -1,24 +1,17 @@
 ---
 title: Azure-erőforrás nem található a hibák |} A Microsoft Docs
 description: Ismerteti, hogyan lehet javítsa ki a hibákat, amikor egy erőforrás nem található.
-services: azure-resource-manager
-documentationcenter: ''
 author: tfitzmac
-manager: timlt
-editor: ''
 ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 06/06/2018
 ms.author: tomfitz
-ms.openlocfilehash: 176de6f19274dfd8a6cf0335bb4cf16a8baa874b
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 9c999a70ffdbed0c954cfc960b5febdaff06e4ae
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525344"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206189"
 ---
 # <a name="resolve-not-found-errors-for-azure-resources"></a>Nem található az Azure-erőforrások hibák megoldása
 
@@ -80,7 +73,7 @@ Függőségi problémák megjelenésekor kell betekintést nyerhet az erőforrá
 
    ![egymást követő üzembe helyezési](./media/resource-manager-not-found-errors/deployment-events-sequence.png)
 
-## <a name="solution-2---get-resource-from-different-resource-group"></a>2. megoldás erőforrás le másik erőforráscsoportba
+## <a name="solution-2---get-resource-from-different-resource-group"></a>2\. megoldás erőforrás le másik erőforráscsoportba
 
 Ha az erőforrás már létezik egy másik erőforráscsoportban található, mint a folyamatban való üzembe helyezése, használja a [resourceId függvény](resource-group-template-functions-resource.md#resourceid) beolvasni az erőforrás a teljes nevet.
 

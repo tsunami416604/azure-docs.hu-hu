@@ -1,56 +1,54 @@
 ---
-title: A kognitív keresés – Azure Search egyéni képesség illesztőjének definícióját
-description: Egyéni adatok kinyerése felület webes-API-t egyéni ismeretek a kognitív keresés folyamatban, az Azure Search szolgáltatásban.
-manager: pablocas
+title: A kognitív keresés egyéni képességeinek kezelőfelület-definíciója – Azure Search
+description: Egyéni adatkiemelési felület a webes API-k egyéni képességeihez a Azure Search kognitív keresési folyamatában.
+manager: nitinme
 author: luiscabrer
 services: search
 ms.service: search
-ms.devlang: NA
 ms.topic: conceptual
-ms.date: 03/12/2019
+ms.date: 05/02/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: 2c43a6b64f7b7f4f1adae78dca77fe71cf538e5e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b5529babfae37fa0d9f4de46018bb3b107ce4eae
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57870857"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265825"
 ---
-# <a name="how-to-add-a-custom-skill-to-a-cognitive-search-pipeline"></a>Egy egyéni ismeretek hozzáadása a cognitive search folyamat
+# <a name="how-to-add-a-custom-skill-to-a-cognitive-search-pipeline"></a>Egyéni szakértelem hozzáadása egy kognitív keresési folyamathoz
 
-A [kognitív Keresés indexelése folyamat](cognitive-search-concept-intro.md) az Azure Search szolgáltatásban is összeállítani a [képességek az előre meghatározott](cognitive-search-predefined-skills.md) , valamint [egyéni képesség](cognitive-search-custom-skill-web-api.md) , amelyek személyes létrehozása és hozzáadása a folyamat. Ebből a cikkből megtudhatja, hogyan hozhat létre egy egyéni ismeretek által elérhetővé tett egy felületet, így lehetővé teszi a kognitív keresés folyamat szerepelnek. 
+A Azure Searchban található [kognitív keresési folyamat](cognitive-search-concept-intro.md) az [előre definiált ismeretekből](cognitive-search-predefined-skills.md) , valamint a folyamathoz személyesen létrehozott és hozzáadott [Egyéni képességekkel](cognitive-search-custom-skill-web-api.md) is összeállítható. Ebből a cikkből megtudhatja, hogyan hozhat létre olyan egyéni képességet, amely lehetővé teszi, hogy egy olyan felületet biztosítson, amely egy kognitív keresési folyamat részét képezi. 
 
-Egy egyéni ismeretek létrehozása lehetőséget nyújt a átalakítások egyedi legyen a tartalom beszúrása. Egyéni műveleteket hajt végre egymástól függetlenül, bármilyen szükséges Adatbővítés lépés alkalmazása. Például, sikerült határozza meg az egyéni entitások mezőt-specifikus, üzleti és a pénzügyi szerződések és a dokumentumok megkülönböztetéséhez egyéni képbesorolási modellek létrehozása vagy hangfájlokat, a kapcsolódó tartalom mélyebb közvetítőn speech recognition szakértelem hozzáadása. Egy részletes példa: [példa: egyéni műveleteket létrehozása](cognitive-search-create-custom-skill-example.md).
+Az egyéni képességek létrehozása lehetővé teszi, hogy a tartalom egyedi átalakításokat helyezzen be. Az egyéni képességek egymástól függetlenül hajthatók végre, a szükséges alkoholtartalom-növelési lépés alkalmazásával. Meghatározhatja például a mezőkre vonatkozó egyéni entitásokat, egyéni besorolási modelleket hozhat létre az üzleti és pénzügyi szerződések és dokumentumok megkülönböztetéséhez, vagy hozzáadhat egy beszédfelismerési képességet a hangfájlok mélyebb eléréséhez a releváns tartalmakhoz. Lépésről lépésre példaként lásd [: példa: Egyéni képesség létrehozása a kognitív kereséshez](cognitive-search-create-custom-skill-example.md).
 
- Bármilyen egyéni képesség van szüksége, van egy egyéni ismeretek csatlakozik a többi felderítési bővítést folyamat egy egyszerű és egyértelműen felületet. Egyetlen követelménye, hogy egy [indexmezők](cognitive-search-defining-skillset.md) képessége, fogadja el a bemenetek és kimenetek, amelyek teljes készségeitől belül értelmezhető módon küldik. Ez a cikk célja a bemeneti és kimeneti formátumok a Adatbővítés folyamat szükséges a.
+ Bármilyen egyéni képességre van szükség, van egy egyszerű és egyértelmű felület, amellyel egy egyéni képességet csatlakoztathat a többi bővítési folyamathoz. A [készségkészlet](cognitive-search-defining-skillset.md) való felvétel egyetlen követelménye az, hogy képes legyen a bemenetek fogadására és kimenetek kibocsátására olyan módokon, amelyek a készségkészlet belül a teljes használatra készek. Ennek a cikknek a célja a dúsítási folyamat által igényelt bemeneti és kimeneti formátum.
 
-## <a name="web-api-custom-skill-interface"></a>Webes API-k egyéni ismeretek felület
+## <a name="web-api-custom-skill-interface"></a>Webes API egyéni ügyességi felülete
 
-Alapértelmezett időtúllépési értéket, ha azok nem adott vissza 30 második időtartamon belül választ egyéni WebAPI szakértelem végpontokat. Az indexelési folyamat szinkron és indexelő állítja elő időtúllépési hiba, ha a válasz nem érkezik meg ezt az ablakot.  Akár 90 másodperc alatt kell időtúllépési paramétert a-időtúllépést állítsa lehetőség:
+Egyéni WebAPI-képzettségi végpontok alapértelmezett időtúllépéssel, ha nem ad vissza választ egy 30 másodperces ablakban. Az indexelési folyamat szinkronban van, és az indexelés időtúllépési hibát eredményez, ha az adott ablakban nem érkezik válasz.  Az időtúllépési paraméter beállításával akár 230 másodperc is beállítható:
 
 ```json
         "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
-        "description": "This skill has a 90 second timeout",
+        "description": "This skill has a 230 second timeout",
         "uri": "https://[your custom skill uri goes here]",
-        "timeout": "PT90S",
+        "timeout": "PT230S",
 ```
 
-Az egyéni ismeretek folytatott interakcióra szolgáló csak mechanizmus jelenleg egy webes API-felületen keresztül. A webes API van szüksége az ebben a szakaszban leírt követelményeknek kell megfelelnie.
+Jelenleg az egyéni képességekkel való interakció egyetlen mechanizmusa egy webes API-felületen keresztül történik. A webes API-nak meg kell felelnie az ebben a részben ismertetett követelményeknek.
 
-### <a name="1--web-api-input-format"></a>1.  Webes API bemeneti formátum
+### <a name="1--web-api-input-format"></a>1.  Webes API bemeneti formátuma
 
-A webes API el kell fogadnia egy feldolgozandó rekordokból álló tömbbel. Minden rekord tartalmaznia kell egy "tulajdonságcsomagot", amely a megadott információ a webes API-nak. 
+A webes API-nak el kell fogadnia a feldolgozandó rekordok tömbjét. Minden rekordnak tartalmaznia kell egy "tulajdonság táska" karaktert, amely a webes API-hoz megadott bemenet. 
 
-Tegyük fel, hogy hozzon létre egy egyszerű enricher, amely azonosítja az első, a szerződés szövegét az említett dátum. Ebben a példában a szakértelem fogad egy egyetlen bemeneti *contractText* , mint a szerződés szöveg. A szakértelem is rendelkezik egy egyetlen kimeneti, amely a dátumot a szerződés. Ahhoz, hogy a enricher érdekesebb, vissza ez *contractDate* többrészes komplex típus alakú.
+Tegyük fel, hogy létre szeretne hozni egy egyszerű gazdagító, amely azonosítja a szerződés szövegében említett első dátumot. Ebben a példában a skill egyetlen bemeneti *contractText* fogad el a szerződés szövegeként. A szakértelem egyetlen kimenettel is rendelkezik, amely a szerződés dátuma. Ahhoz, hogy a gazdagodás még érdekesebb legyen, ezt a *contractDate* egy többrészes összetett típus alakjában adja vissza.
 
-Lehet, hogy a webes API készen állnak a kötegelt bemeneti rekordok fogadására. Minden egyes tagja a *értékek* tömb a bemenet egy adott rekord jelöli. Minden rekord kell rendelkeznie a következő elemeket:
+A webes API-nak készen kell állnia a bemeneti rekordok kötegének fogadására. Az Values tömb minden tagja az adott rekord bemenetét jelöli. Minden rekordhoz a következő elemek szükségesek:
 
-+ A *rekordazonosító* tag, amely egy adott rekord egyedi azonosítója. A enricher az eredményeket adja vissza, ha kell átadnia a *rekordazonosító* annak érdekében, hogy megfelelően a bemeneti rekord az eredményeket a hívónak.
++ Egy *recordId* -tag, amely egy adott rekord egyedi azonosítója. Ha a dúsítás visszaadja az eredményeket, meg kell adnia ezt a *recordId* ahhoz, hogy a hívó megegyezzen a rekord eredményével a bemeneten.
 
-+ A *adatok* tag, amely lényegében az egyes rekordok beviteli mezőket összessége.
++ Egy adattag, amely lényegében egy, az egyes rekordok beviteli mezőinek egy zacskója.
 
-Kell több konkrét, a fenti példa szerint a webes API kell látnia, hogy ilyen kéréseket:
+A fenti példa alapján a webes API-nak a következőhöz hasonló kérelmeket kell várnia:
 
 ```json
 {
@@ -81,11 +79,11 @@ Kell több konkrét, a fenti példa szerint a webes API kell látnia, hogy ilyen
     ]
 }
 ```
-A valóságban ez a szolgáltatás első nevű akár több száz vagy ezer helyett csak az itt látható három rekordot.
+A valóságban a szolgáltatás több száz vagy több ezer rekorddal is meghívható, és nem csak az itt látható háromat.
 
-### <a name="2-web-api-output-format"></a>2. Webes API kimeneti formátum
+### <a name="2-web-api-output-format"></a>2. Webes API kimeneti formátuma
 
-A kimenet formátuma a tartalmazó rekordok készlete egy *rekordazonosító*, és a egy tulajdonságcsomagot 
+A kimenet formátuma egy *recordId*tartalmazó rekordok halmaza, és egy tulajdonság táska 
 
 ```json
 {
@@ -116,15 +114,15 @@ A kimenet formátuma a tartalmazó rekordok készlete egy *rekordazonosító*, �
 }
 ```
 
-Ebben a példában csak egy kimeneti rendelkezik, de több tulajdonság kimeneti sikerült. 
+Ebben a példában csak egy kimenet szerepel, de egynél több tulajdonságot is ki lehet exportálni. 
 
-### <a name="errors-and-warning"></a>Hiba és figyelmeztetés
+### <a name="errors-and-warning"></a>Hibák és figyelmeztetés
 
-Mivel az előző példában is látható, előfordulhat, hogy a hibaüzenetek és figyelmeztető üzenetek az egyes rekordok visszaadása.
+Ahogy az előző példában is látható, hibaüzeneteket és figyelmeztető üzeneteket adhat vissza az egyes rekordokhoz.
 
-## <a name="consuming-custom-skills-from-skillset"></a>Képességcsoport a fogyasztó egyéni képesség
+## <a name="consuming-custom-skills-from-skillset"></a>A készségkészlet egyéni képességeinek felhasználása
 
-Amikor létrehoz egy webes API-t enricher, a kérelem részeként HTTP-fejlécek és paramétereket is ismerteti. Az alábbi kódrészlet bemutatja, hogyan kérelem paramétereit, és HTTP-fejlécek írhatók le a képességek alkalmazási lehetőségét definíciójának részeként.
+Webes API-gazdagító létrehozásakor a kérés részeként a HTTP-fejléceket és a paramétereket is leírhatja. Az alábbi kódrészlet azt mutatja be, hogyan lehet lekérdezni a kérelmek paramétereit és a HTTP-fejléceket a készségkészlet definíciójának részeként.
 
 ```json
 {
@@ -156,7 +154,7 @@ Amikor létrehoz egy webes API-t enricher, a kérelem részeként HTTP-fejlécek
 
 ## <a name="next-steps"></a>További lépések
 
-+ [Példa: A fordítás API hoz létre egy egyéni szakértelem](cognitive-search-create-custom-skill-example.md)
-+ [Hogyan képességcsoport megadása](cognitive-search-defining-skillset.md)
-+ [Képességcsoport (REST) létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
-+ [Hogyan hidaljuk mezők leképezése](cognitive-search-output-field-mapping.md)
++ [Példa: Egyéni képesség létrehozása a kognitív kereséshez](cognitive-search-create-custom-skill-example.md)
++ [Készségkészlet definiálása](cognitive-search-defining-skillset.md)
++ [Készségkészlet létrehozása (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [A dúsított mezők leképezése](cognitive-search-output-field-mapping.md)

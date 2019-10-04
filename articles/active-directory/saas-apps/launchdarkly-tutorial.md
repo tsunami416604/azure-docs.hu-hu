@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4ae2802c5f833f168385ef46d10b6a508fdf45a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: de59ce587facb94728e0652f47c7cdfce0ab4388
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57838663"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67098427"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-launchdarkly"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező LaunchDarkly
 
@@ -54,7 +54,7 @@ Az Azure AD integrálása a LaunchDarkly konfigurálásához hozzá kell LaunchD
 
 **LaunchDarkly hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -159,7 +159,7 @@ Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] konfigurálásához haj
 
     c. Nyissa meg a letöltött tanúsítvány az Azure Portalról a Jegyzettömbbe. másolja a tartalmat, majd illessze be azt a **X.509-tanúsítvány** mezőbe, vagy Ön is közvetlenül feltölthet a tanúsítványt a **töltsön fel**.
 
-    d. Kattintson a **Mentés** gombra.
+    d. Kattintson a **Save** (Mentés) gombra
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 

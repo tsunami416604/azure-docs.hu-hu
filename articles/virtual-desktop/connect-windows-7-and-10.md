@@ -1,50 +1,60 @@
 ---
-title: Csatlakozás Windows virtuális asztali Preview, Windows 7 és Windows 10 – Azure
-description: Hogyan lehet csatlakozni a Windows 7 vagy Windows 10-es Windows virtuális asztal előzetes szolgáltatást.
+title: Kapcsolódás Windowsos virtuális asztalhoz Windows 10 vagy Windows 7 rendszerről – Azure
+description: Kapcsolódás a Windows rendszerű virtuális asztalhoz a Windows asztali ügyfélprogram használatával.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: how-to
-ms.date: 03/27/2019
+ms.topic: conceptual
+ms.date: 09/24/2019
 ms.author: helohr
-ms.openlocfilehash: 8b5a649d767dae9ae9c0fb077f550451a7f83601
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: 561dad566d7f1caaf609c8013fa075062e4471ea
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630380"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676743"
 ---
-# <a name="connect-with-windows-7-and-windows-10"></a>Kapcsolódás Windows 7-en és Windows 10-en
+# <a name="connect-with-the-windows-desktop-client"></a>Kapcsolódás a Windows asztali ügyféllel
 
-> A következőre érvényes Windows 7 és Windows 10-es.
+> A következőkre érvényes: Windows 7 és Windows 10
 
-A letölthető ügyfél érhető el, amely hozzáférést biztosít a Windows virtuális asztal előzetes erőforrásokhoz Windows 7 és Windows 10 rendszerű eszközökön.
+Windows rendszerű virtuális asztali erőforrásokat a Windows 7 vagy Windows 10 rendszerű eszközökön a Windows asztali ügyfélprogram használatával érheti el.
 
 > [!IMPORTANT]
-> Ne használjon **RemoteApp- és asztali kapcsolat (RADC)** vagy **távoli asztali kapcsolat (MSTSC)** Windows virtuális asztal erőforrások eléréséhez, mivel a Windows virtuális asztal vagy ügyfél nem támogatja.
+> A Windows virtuális asztal nem támogatja a RemoteApp-és asztali kapcsolatok (RADC) ügyfelet vagy a Távoli asztali kapcsolat (MSTSC) ügyfelet.
 
-## <a name="install-the-client"></a>Az ügyfél telepítése
+## <a name="install-the-windows-desktop-client"></a>A Windows asztali ügyfél telepítése
 
-[Töltse le](https://go.microsoft.com/fwlink/?linkid=2068602) és az ügyfél telepítése a helyi számítógéphez. Ehhez rendszergazdai jogosultságokkal.
+A jelenleg letölthető ügyfelek:
 
-## <a name="subscribe-to-a-feed"></a>Előfizetés-hírcsatornára
+- [Windows 64 bites](https://go.microsoft.com/fwlink/?linkid=2068602)
 
-Listájának rendelkezésre álló erőforrások Önnek a helyi számítógépről feliratkozik a a rendszergazda által megadott hírcsatornán
+Frissíti a listát, mivel az ügyfél elérhetővé válik a Windows további verzióihoz.
 
-Előfizetés a riasztásoktól adatcsatornára:
+Telepítheti az aktuális felhasználóhoz tartozó ügyfelet, amely nem követeli meg a rendszergazdai jogosultságokat, vagy a rendszergazda telepítheti és konfigurálhatja az ügyfelet, hogy az eszköz összes felhasználója hozzáférhessen.
 
-1. Indítsa el az ügyfél az összes alkalmazások listájában keresse meg a **a távoli asztal**.
-1. Válassza ki **előfizetés** a főoldalon csatlakozni a szolgáltatáshoz, és az erőforrások lekéréséhez.
-1. **Jelentkezzen be a** a felhasználói fiókjával, ha a rendszer kéri.
+A telepítést követően a-ügyfél a Start menüből indítható el **Távoli asztal**keresésével.
 
-A sikeres hitelesítés után most már megjelenik az Ön számára elérhető erőforrások listáját.
+## <a name="subscribe-to-a-feed"></a>Előfizetés hírcsatornára
 
-Két módszer egyikével erőforrások el is indíthatja.
+Az Ön által elérhetővé tett felügyelt erőforrások listájának lekérése a rendszergazda által biztosított hírcsatornára való feliratkozással. A Feliratkozás az erőforrásokat a helyi számítógépen is elérhetővé teszi.
 
-- Az ügyfél fő lapján kattintson duplán az erőforrást, indítsa el az eszközt.
-- Indítsa el egy erőforrást, ahogy azt szokásosan tenné más alkalmazások a Start menüből.
-  - Az alkalmazások a keresősávba is kereshet.
+Előfizetés a hírcsatornára:
 
-## <a name="update-the-client"></a>Az ügyfél frissítése
+1. Nyissa meg a Windows asztali ügyfelet.
+2. Válassza a Főoldal **előfizetés** elemét a szolgáltatáshoz való kapcsolódáshoz és az erőforrások lekéréséhez.
+3. Ha a rendszer kéri, jelentkezzen be a felhasználói fiókjával.
 
-Ha az ügyfél egy új verziója érhető el, akkor az ügyfél és a Windows Műveletközpontban értesítést. Válassza ki a frissítési folyamat elindításához az értesítést.
+A sikeres bejelentkezést követően meg kell jelennie az elérni kívánt erőforrások listájának.
+
+Az erőforrásokat két módszer egyikével indíthatja el.
+
+- Az ügyfél főoldalán kattintson duplán egy erőforrásra az elindításához.
+- Indítson el egy erőforrást, ahogy a Start menü más alkalmazásaiban is.
+  - Az alkalmazásokat a keresősáv segítségével is megkeresheti.
+
+A hírcsatornára való előfizetést követően a rendszer rendszeresen frissíti a hírcsatorna tartalmát. A rendszergazda által végrehajtott módosítások alapján hozzáadhatók, módosíthatók vagy eltávolíthatók az erőforrások.
+
+## <a name="next-steps"></a>További lépések
+
+Ha többet szeretne megtudni a Windows asztali ügyfél használatáról, tekintse meg [a Windows asztali ügyfélprogram használatának első lépéseivel foglalkozó](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/windowsdesktop)témakört.

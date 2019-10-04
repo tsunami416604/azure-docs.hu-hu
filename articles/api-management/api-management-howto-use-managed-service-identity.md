@@ -11,18 +11,16 @@ ms.workload: integration
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: apimpm
-ms.openlocfilehash: ebded5d1d58baf501ee5106d622162edc62d46ec
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 49576b805e6c6d01340e663bfb5d8e9013917625
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57310556"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67461609"
 ---
 # <a name="use-managed-identities-in-azure-api-management"></a>Felügyelt identitások használata az Azure API Management
 
 Ez a cikk bemutatja, hogyan hozhat létre egy felügyelt identitás létre API Management szolgáltatáspéldányt, és hogyan egyéb erőforrásainak elérésére. Azure Active Directory (Azure AD) által létrehozott egy felügyelt identitás lehetővé teszi, hogy az API Management-példány egyszerűen és biztonságosan más Azure AD által védett erőforrások, például az Azure Key Vault eléréséhez. Ezt az identitást az Azure által felügyelt és nem igényli, üzembe helyezése és titkos kulcsok elforgatása. Felügyelt identitások kapcsolatos további információkért lásd: [Mi az Azure-erőforrások felügyelt identitások](../active-directory/managed-identities-azure-resources/overview.md).
-
-[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="create-a-managed-identity-for-an-api-management-instance"></a>Hozzon létre egy felügyelt identitás, az API Management-példány
 
@@ -53,28 +51,25 @@ Ha például egy teljes körű Azure Resource Manager-sablon előfordulhat, hogy
 ```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
-    "contentVersion": "0.9.0.0"
-    },
-    "resources": [
-        {
-            "apiVersion": "2017-03-01",
-            "name": "contoso",
-            "type": "Microsoft.ApiManagement/service",
-            "location": "[resourceGroup().location]",
-            "tags": {},
-            "sku": {
-                "name": "Developer",
-                "capacity": "1"
-            },
-            "properties": {
-                "publisherEmail": "admin@contoso.com",
-                "publisherName": "Contoso"
-            },
-            "identity": {
-                "type": "systemAssigned"
-            }
+    "contentVersion": "0.9.0.0",
+    "resources": [{
+        "apiVersion": "2017-03-01",
+        "name": "contoso",
+        "type": "Microsoft.ApiManagement/service",
+        "location": "[resourceGroup().location]",
+        "tags": {},
+        "sku": {
+            "name": "Developer",
+            "capacity": "1"
+        },
+        "properties": {
+            "publisherEmail": "admin@contoso.com",
+            "publisherName": "Contoso"
+        },
+        "identity": {
+            "type": "systemAssigned"
         }
-    ]
+    }]
 }
 ```
 ## <a name="use-the-managed-service-identity-to-access-other-resources"></a>Egyéb erőforrásainak elérésére a felügyeltszolgáltatás-identitás használata
@@ -242,3 +237,4 @@ További információ az Azure-erőforrások felügyelt identitások:
 
 * [Mi az Azure-erőforrások felügyelt identitások](../active-directory/managed-identities-azure-resources/overview.md)
 * [Az Azure Resource Manager-sablonok](https://github.com/Azure/azure-quickstart-templates)
+* [A házirend a felügyelt identitás a hitelesítéshez](./api-management-authentication-policies.md#ManagedIdentity)

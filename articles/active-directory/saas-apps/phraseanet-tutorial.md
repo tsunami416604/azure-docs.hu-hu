@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: c022dbb08146bbf8b16ccd9020fdffbc50166dd9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 3d8af8784d0fce78f77efdaddfec554fa1d648a5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59279261"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67094568"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-phraseanet"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Phraseanet
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a Phraseanet konfigurálásához hozzá kell Phraseane
 
 **Phraseanet hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

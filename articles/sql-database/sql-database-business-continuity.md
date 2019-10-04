@@ -11,144 +11,147 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-manager: craigg
-ms.date: 04/04/2019
-ms.openlocfilehash: dfa5d4cb2d782f1466329300157a64fd17765460
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.date: 06/25/2019
+ms.openlocfilehash: 5cc033787e1045926ff4fece6826e41f430d48fd
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59797693"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744467"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Az Azure SQL Database üzletmenet-folytonossági funkcióinak áttekintése
 
-**Üzletmenet-folytonossági** a mechanizmusok, szabályzatokat és eljárásokat, amelyek lehetővé teszik, hogy továbbra is fennállnak megszakadását, különösen a számítástechnikai infrastruktúra esetén hivatkozik az Azure SQL Database-ben. A legtöbb esetben az Azure SQL Database az azokat a káros eseményeket, amelyek a felhőalapú környezetben történik és tartsa az alkalmazások és üzleti folyamatok futtatása fogja kezelni. Vannak azonban bizonyos azokat a káros eseményeket, amelyek például nem kezeli az SQL Database:
+Az **üzletmenet folytonossága** Azure SQL Database olyan mechanizmusokra, szabályzatokra és eljárásokra utal, amelyek lehetővé teszik a vállalat számára, hogy a működés közben továbbra is működjenek, különösen a számítástechnikai infrastruktúrában. A legtöbb esetben a Azure SQL Database fogja kezelni a felhőalapú környezetben esetlegesen előforduló zavaró eseményeket, és megtartja az alkalmazásaikat és az üzleti folyamatokat. Vannak azonban olyan zavaró események, amelyeket a SQL Database automatikusan nem tud kezelni, például:
 
-- Felhasználó véletlenül törölt vagy frissített egy sort a táblában.
-- Rosszindulatú támadó sikeresen törli az adatokat, vagy töröl egy adatbázist.
-- Földrengés egy áramkimaradás és ideiglenes letiltott adatközpont-miatt.
+- A felhasználó véletlenül törölt vagy frissített egy sort egy táblában.
+- A rosszindulatú támadó sikeresen törölte az adattörlést, vagy elvetette az adatbázist.
+- A földrengés áramkimaradást okozott, és átmenetileg letiltotta az adatközpontot.
 
-Ezekben az esetekben nem határozza meg az Azure SQL Database, így az üzletmenet-folytonossági funkciókat használja, amely lehetővé teszi az adatok helyreállításához, és tartsa működésben alkalmazásait az SQL Database-ben kell.
-
-Az áttekintés az Azure SQL Database az üzletmenet-folytonosság és a vészhelyreállítás biztosítására szolgáló funkcióit írja le. Ismerje meg a lehetőségeket, javaslatokat és oktatóanyagokat, amelyek adatvesztéshez vezethetnek vagy az adatbázis és az alkalmazást elérhetetlenné zavaró események utáni helyreállításhoz. Ismerje meg, mi a teendő, ha egy felhasználó vagy alkalmazás hiba hatással van az adatok integritásának megőrzése, egy Azure-régióban van kimaradás vagy az alkalmazás karbantartásra szorul.
+Az áttekintés az Azure SQL Database az üzletmenet-folytonosság és a vészhelyreállítás biztosítására szolgáló funkcióit írja le. Ismerje meg az adatvesztést okozó, vagy az adatbázis és az alkalmazás nem elérhetővé tételéhez szükséges lehetőségeket, javaslatokat és oktatóanyagokat. Megtudhatja, mi a teendő, ha egy felhasználói vagy alkalmazáshiba hatással van az adatok integritására, egy Azure-régió leáll, vagy az alkalmazás karbantartást igényel.
 
 ## <a name="sql-database-features-that-you-can-use-to-provide-business-continuity"></a>Az SQL Database üzletmenet-folytonosságot biztosító funkciói
 
-Az adatbázist négyféleképpen fő lehetséges megszakítása:
+Adatbázis perspektívájában négy jelentős lehetséges megszakítási forgatókönyv létezik:
 
-- Lemezmeghajtó hiba például az adatbázis-csomópontot befolyásoló helyi hardveres vagy szoftveres hibák.
-- Adatsérülés vagy a törlés oka általában egy alkalmazás hibát vagy az emberi hibák. Az ilyen hibák belsőleg alkalmazásspecifikus, és nem, egy szabály észlelt vagy az infrastruktúra által automatikusan problémák elhárításáról.
-- Adatközpont-meghibásodás után, oka valószínűleg egy természeti katasztrófa esetére. Ehhez a forgatókönyvhöz szükséges bizonyos szintű georedundáns tárolás az alkalmazás feladatátvételt egy másodlagos adatközpontba.
-- Frissítés és karbantartás hibákat nem várt során felmerülő problémák tervezett frissítések, vagy egy alkalmazás vagy az adatbázis karbantartása szükség lehet a gyors visszaállítás egy korábbi adatbázis állapota.
+- Az adatbázis-csomópontot érintő helyi hardveres vagy szoftveres hibák, például a lemezmeghajtó meghibásodása.
+- Az adatsérülést vagy-törlést általában egy alkalmazás hibája vagy emberi hiba okozta. Az ilyen hibák alkalmazásspecifikusek, és általában nem észlelhetők az adatbázis-szolgáltatás.
+- Adatközpont-kimaradás, valószínűleg természeti katasztrófa okozta. Ehhez a forgatókönyvhöz az alkalmazások feladatátvételének egy másik adatközpontba való betöltésének bizonyos szintje szükséges.
+- Frissítési vagy karbantartási hibák, a tervezett infrastruktúra karbantartása vagy frissítése során felmerülő, nem várt problémák szükségessé tehetik a korábbi adatbázis állapotának gyors visszaállítását.
 
-Az SQL Database számos üzletmenet-folytonossági funkciókat, beleértve az automatikus biztonsági mentést és a választható adatbázis-replikációt, amely lehet mérséklésére ezekben a forgatókönyvekben biztosít. Először tudni, hogyan SQL Database [magas rendelkezésre állású architektúra](sql-database-high-availability.md) 99,99 %-os rendelkezésre állást és néhány azokat a káros eseményeket, amelyek hatással lehetnek az üzleti folyamat rugalmasságot biztosít.
-Ezt követően megismerheti a további mechanizmusok, amelyek segítségével helyreállíthatja a azokat a káros eseményeket, amelyek nem kell kezelnie az SQL Database magas rendelkezésre állású architektúra, például:
+A helyi hardverek és szoftverek meghibásodásának enyhítése érdekében SQL Database tartalmaz egy [magas rendelkezésre állású architektúrát](sql-database-high-availability.md), amely a hibák automatikus helyreállítását garantálja, akár 99,995%-os rendelkezésre ÁLLÁSi SLA-val.  
 
-- [Historikus táblák](sql-database-temporal-tables.md) lehetővé teszi sor verziók visszaállítása bármely pontról időben.
-- [Beépített automatikus biztonsági mentések](sql-database-automated-backups.md) és [időponthoz kötött visszaállítás](sql-database-recovery-using-backups.md#point-in-time-restore) lehetővé teszi a teljes adatbázis visszaállítását néhány pontra az elmúlt 35 napon belül.
-- Is [törölt adatbázis visszaállítása](sql-database-recovery-using-backups.md#deleted-database-restore) a pont, ahol azt törölték, ha a **SQL Database-kiszolgáló nem lett törölve**.
-- [Hosszú távú adatmegőrzés](sql-database-long-term-retention.md) lehetővé teszi, hogy a biztonsági mentések tartani 10 évre.
-- [Aktív georeplikáció](sql-database-active-geo-replication.md) hozhatók létre olvasható replikát, és manuális feladatátvétel esetén a data center kimaradás vagy alkalmazás frissítése bármely replika.
-- [Automatikus feladatátvételi csoport](sql-database-auto-failover-group.md#auto-failover-group-terminology-and-capabilities) lehetővé teszi, hogy az alkalmazás automatikusan Recovery esetén egy adatközpont-meghibásodás után.
+Az adatvesztés elleni védelem érdekében SQL Database automatikusan létrehozza a teljes adatbázis biztonsági mentését hetente, a különbözeti adatbázis biztonsági másolatait 12 óránként, a tranzakciónapló biztonsági mentése pedig 5-10 percenként történik. A biztonsági másolatok az RA-GRS tárolóban tárolódnak legalább 7 napig az összes szolgáltatási réteg esetében. Az összes szolgáltatási réteg, kivéve a alapszintű támogatás konfigurálható biztonsági mentés megőrzési időtartamát az időponthoz tartozó visszaállításhoz, legfeljebb 35 napig. 
 
-Minden egyes funkció más paraméterekkel rendelkezik a becsült helyreállítási idő (ERT) és a legutóbbi tranzakciók során előforduló esetleges adatvesztés tekintetében. Miután megismerkedett ezekkel a lehetőségekkel, szabadon válogathat közülük, és egyes forgatókönyvekben együtt is alkalmazhatja őket. Az üzletmenet folytonosságát biztosító terve kidolgozásakor kell tudni, mielőtt az alkalmazás a zavaró eseményeket követő teljes helyreállításának maximális elfogadható idő. Az alkalmazás teljes helyreállításához szükséges időt a helyreállítási időre vonatkozó célkitűzés (RTO) néven ismert. Emellett ismernie kell a leghosszabb Adatfrissítés (időintervallum) az alkalmazás működését elvesztése a zavaró eseményeket követő helyreállítása során. Az adott időszakban, előfordulhat, hogy elfogadható frissítések helyreállításipont-célkitűzés (RPO) néven ismert.
+A SQL Database számos üzletmenet-folytonossági funkciót is biztosít, amelyek segítségével csökkentheti a különböző nem tervezett forgatókönyveket. 
 
-Az alábbi táblázat a leggyakoribb forgatókönyvekben az egyes szolgáltatásszinteken a ERT és RPO hasonlítja össze.
+- A [historikus táblák](sql-database-temporal-tables.md) segítségével a sorverziókat bármely időpontra visszaállíthatja.
+- A [beépített automatizált biztonsági mentések](sql-database-automated-backups.md) és [időpontok visszaállítása](sql-database-recovery-using-backups.md#point-in-time-restore) lehetővé teszi a teljes adatbázis visszaállítását egy bizonyos időpontra a beállított megőrzési időtartamon belül, legfeljebb 35 napig.
+- [Visszaállíthat egy törölt adatbázist](sql-database-recovery-using-backups.md#deleted-database-restore) arra a pontra, amelyen törölve lett, ha a **SQL Database-kiszolgáló nem lett törölve**.
+- A [biztonsági másolatok hosszú távú megőrzése](sql-database-long-term-retention.md) lehetővé teszi, hogy a biztonsági mentések akár 10 évig is megmaradjanak.
+- Az [aktív geo-replikáció](sql-database-active-geo-replication.md) lehetővé teszi, hogy a rendszer olvasható replikákat hozzon létre, és manuálisan végezze el a feladatátvételt az adatközpont-kimaradás vagy az alkalmazások frissítése esetén bármelyik replikára.
+- Az [automatikus feladatátvételi csoport](sql-database-auto-failover-group.md#auto-failover-group-terminology-and-capabilities) lehetővé teszi, hogy az alkalmazás automatikusan helyreállítsa az adatközpont-kimaradás esetén.
 
-| Képesség | Alapszintű | Standard | Prémium | Általános rendeltetés | Üzletileg kritikus
-| --- | --- | --- | --- |--- |--- |
-| Időponthoz kötött visszaállítás biztonsági másolatból |Bármely visszaállítási pont 7 napon belül |Bármely visszaállítási pont 35 napon belül |Bármely visszaállítási pont 35 napon belül |Bármely visszaállítási pont (legfeljebb 35 napra) konfigurált időtartamon belül|Bármely visszaállítási pont (legfeljebb 35 napra) konfigurált időtartamon belül|
-| Georedundáns visszaállítás georeplikált biztonsági másolatokból |ERT < 12 óra<br> RPO < 1 óra |ERT < 12 óra<br>RPO < 1 óra |ERT < 12 óra<br>RPO < 1 óra |ERT < 12 óra<br>RPO < 1 óra|ERT < 12 óra<br>RPO < 1 óra|
-| Automatikus feladatátvételi csoportok |RTO = 1 h<br>RPO < 5 mp |RTO = 1 h<br>RPO < 5-s |RTO = 1 h<br>RPO < 5-s |RTO = 1 h<br>RPO < 5-s|RTO = 1 h<br>RPO < 5-s|
-| Manuális adatbázis-feladatátvétel |ERT = 30 s<br>RPO < 5 mp |ERT = 30 s<br>RPO < 5-s |ERT = 30 s<br>RPO < 5-s |ERT = 30 s<br>RPO < 5-s|ERT = 30 s<br>RPO < 5-s|
+## <a name="recover-a-database-within-the-same-azure-region"></a>Adatbázis helyreállítása ugyanazon az Azure-régión belül
 
-> [!NOTE]
-> *Manuális adatbázis feladatátvételi* hivatkozik a georeplikált másodlagos használatának egy önálló adatbázis feladatátvételét a [nem tervezett mód](sql-database-active-geo-replication.md#active-geo-replication-terminology-and-capabilities).
+Az adatbázis automatikus biztonsági mentései segítségével visszaállíthat egy adatbázist egy korábbi időpontra. Így helyreállíthatja az emberi hibák által okozott adatsérüléseket. Az időpontok közötti visszaállítás lehetővé teszi, hogy egy olyan új adatbázist hozzon létre ugyanabban a kiszolgálón, amely az adatállapotot jelöli a sérült esemény előtt. A legtöbb adatbázis esetében a visszaállítási műveletek kevesebb, mint 12 órát vesznek igénybe. Egy nagyon nagy vagy nagyon aktív adatbázis helyreállítása hosszabb időt is igénybe vehet. A helyreállítási időre vonatkozó további információkért lásd: [adatbázis-helyreállítás ideje](sql-database-recovery-using-backups.md#recovery-time). 
 
-## <a name="recover-a-database-to-the-existing-server"></a>A meglévő kiszolgáló adatbázis helyreállítása
+Ha az időponthoz kötött visszaállításhoz (PITR) tartozó maximálisan támogatott biztonsági mentési megőrzési időtartam nem elegendő az alkalmazáshoz, kiterjesztheti azt egy hosszú távú adatmegőrzési (LTR) házirend konfigurálásával az adatbázis (ok) hoz. További információ: a [biztonsági másolatok hosszú távú megőrzése](sql-database-long-term-retention.md).
 
-Az SQL Database automatikusan végrehajtja az adatbázis teljes biztonsági mentését hetente, különbözeti adatbázis mentésekre általában 12 óránként, és a tranzakciós jelentkezzen biztonsági mentések 5-10 percenként üzleti adatai védelméről adatvesztéssel szemben. A biztonsági mentések 35 napig az összes szolgáltatási szint DTU alapszintű szolgáltatási szintek a biztonsági mentések tárolására 7 napig kivételével az RA-GRS tároló vannak tárolva. További információkért lásd: [adatbázis automatikus biztonsági mentések](sql-database-automated-backups.md). Visszaállíthatja egy létező adatbázis űrlapot az automatikus biztonsági másolatokat egy korábbi időpontra az időben, mint egy új adatbázist ugyanazon a kiszolgálón az SQL Database az Azure portal, PowerShell vagy a REST API használatával. További információkért lásd: [-időponthoz visszaállítási](sql-database-recovery-using-backups.md#point-in-time-restore).
+## <a name="compare-geo-replication-with-failover-groups"></a>Geo-replikáció összehasonlítása a feladatátvételi csoportokkal
 
-Ha a maximális támogatott-időponthoz állítja vissza (PITR) megőrzési időszak nem elegendő az alkalmazáshoz, ezt végrehajthatja a az adatbázis(ok) hosszú távú adatmegőrzési (LTR) házirendjének konfigurálásával. További információkért lásd: [hosszú távú adatmegőrzés](sql-database-long-term-retention.md).
+Az [automatikus feladatátvételi csoportok](sql-database-auto-failover-group.md#auto-failover-group-terminology-and-capabilities) egyszerűbbé teszik a [geo-replikáció](sql-database-active-geo-replication.md) üzembe helyezését és használatát, valamint a további képességek hozzáadását az alábbi táblázatban leírtak szerint:
 
-Az adatbázis automatikus biztonsági másolataiból helyreállíthatja az adatbázist a különféle zavaró eseményeket követően, akár az adatközponton belül, akár egy másik adatközpontba. A helyreállítási idő általában a kevesebb mint 12 óra. Ez hosszabb időt vehet igénybe nagyon nagy méretű vagy aktív adatbázis helyreállítása. Az adatbázis automatikus biztonsági másolatai használatakor a becsült helyreállítási idő több tényezőtől függ, többek között attól, hogy hány adatbázis helyreállítása zajlik egyidejűleg a régióban, az adatbázis méretétől, a tranzakciós napló méretétől, és a hálózati sávszélességtől. Helyreállítási idő kapcsolatos további információkért lásd: [adatbázis-helyreállítás ideje](sql-database-recovery-using-backups.md#recovery-time). Állít helyre egy másik adatrégióba, az esetleges adatvesztés esetén legfeljebb 1 óra georedundáns biztonsági mentések használnak.
+|                                              | Georeplikáció | Feladatátvételi csoportok  |
+|:---------------------------------------------| :-------------- | :----------------|
+| Automatikus feladatátvétel                           |     Nem          |      Igen         |
+| Több adatbázis feladatátvétele egyszerre  |     Nem          |      Igen         |
+| A kapcsolatok karakterláncának frissítése a feladatátvétel után      |     Igen         |      Nem          |
+| Felügyelt példány támogatott                   |     Nem          |      Igen         |
+| Ugyanabban a régióban lehet, mint az elsődleges             |     Igen         |      Nem          |
+| Több replika                            |     Igen         |      Nem          |
+| Olvasási méretezés támogatása                          |     Igen         |      Igen         |
+| &nbsp; | &nbsp; | &nbsp; |
 
-Használja az automatikus biztonsági másolatokat és [időponthoz visszaállítási](sql-database-recovery-using-backups.md#point-in-time-restore) az üzleti folytonossági és helyreállítási mechanizmusként Ha alkalmazását:
 
-- Nem tekinthető az üzletmenet szempontjából kritikus fontosságúnak.
-- Nem rendelkezik egy kötés SLA - egy 24 órás állásidő, vagy már nem pénzügyi kötelezettséget eredményez.
-- Kis mértékű adatmódosításra lehet számítani (alacsony óránkénti tranzakciószám), és egy órányi adatmódosítás elvesztése elfogadható.
-- Költségérzékeny.
-
-Ha gyorsabb helyreállítás szükséges, használja a [aktív georeplikáció](sql-database-active-geo-replication.md) vagy [automatikus feladatátvételi csoportok](sql-database-auto-failover-group.md). Ha szeretné tudni 35 napot meghaladó időszakból másolatból szeretne adatokat helyreállítani, használja a [hosszú távú megőrzés](sql-database-long-term-retention.md).
-
-## <a name="recover-a-database-to-another-region"></a>Adatbázis helyreállítása egy másik régióba az
+## <a name="recover-a-database-to-the-existing-server"></a>Adatbázis helyreállítása a meglévő kiszolgálóra
 
 Bár ritka, mégis előfordulhat, hogy valamelyik Azure-adatközpont leáll. Leállás esetén az üzletmenet esetleg csak néhány percre, de akár több órára is megszakadhat.
 
-- Az egyik lehetőség, hogy megvárja, amíg az adatközpont leállását követően az adatbázis újra elérhető lesz. Ez az olyan alkalmazások esetében működik, amelyek esetében megengedhető, hogy az adatbázis offline állapotú legyen. Például egy fejlesztési projekt vagy egy ingyenes próbaverzió esetében, amelyeken nem kell folyamatosan dolgoznia. Amikor egy adatközpontban szolgáltatáskimaradás következik, nem tudja, mennyi ideig a szolgáltatáskimaradás elhárítása után előfordulhat, hogy a legutóbbi, így ez a beállítás csak akkor működik, ha már nincs szüksége az adatbázis egy ideig.
-- Egy másik lehetőség az, hogy egyetlen kiszolgálón, az minden olyan Azure-régió-adatbázis visszaállítása [georedundáns adatbázis biztonsági másolatait](sql-database-recovery-using-backups.md#geo-restore) (georedundáns visszaállítást). A GEO-visszaállítás georedundáns biztonsági másolat használja forrásként, és segítségével helyreállíthat egy adatbázist, akkor is, ha az adatbázis vagy az Adatközpont-leállás miatt elérhetetlenné.
-- Végül állíthatja helyre a kimaradás utáni Ha konfigurálta a geo-secondary segítségével [aktív georeplikáció](sql-database-active-geo-replication.md) vagy egy [automatikus feladatátvételi csoport](sql-database-auto-failover-group.md) az adatbázis vagy -adatbázisok számára. Ezek a technológiák válaszaitól függően manuális vagy automatikus feladatátvételt is használhat. Feladatátvételi magát csupán néhány másodpercet vesz igénybe, amíg a szolgáltatás legalább egy órával az aktiválás vesz igénybe. Ez azért szükséges, győződjön meg arról, hogy a feladatátvétel indokolt-e a skála, a szolgáltatáskiesés megszüntetése után. Is a feladatátvétel aszinkrón replikáció természete miatt kis adatvesztést eredményezhet. Lásd a táblázatot az Automatikus feladatátvétel RTO és RPO részleteket a cikk korábbi részében.
+- Az egyik lehetőség, hogy megvárja, amíg az adatközpont leállását követően az adatbázis újra elérhető lesz. Ez az olyan alkalmazások esetében működik, amelyek esetében megengedhető, hogy az adatbázis offline állapotú legyen. Például egy fejlesztési projekt vagy egy ingyenes próbaverzió esetében, amelyeken nem kell folyamatosan dolgoznia. Ha egy adatközpont leáll, nem tudja, hogy mennyi ideig tarthat a leállás, így ez a lehetőség csak akkor működik, ha egy ideig nincs szüksége az adatbázisra.
+- Egy másik lehetőség, hogy egy adatbázist bármely Azure-régióban lévő kiszolgálón visszaállítson a [geo-redundáns adatbázis-biztonsági mentések](sql-database-recovery-using-backups.md#geo-restore) (Geo-visszaállítás) használatával. A Geo-visszaállítás a forrásként egy geo-redundáns biztonsági mentést használ, amely akkor is használható az adatbázisok helyreállításához, ha az adatbázis vagy az adatközpont egy leállás miatt nem érhető el.
+- Végezetül gyorsan helyreállíthatja az adatkimaradást, ha az [aktív geo-replikációval](sql-database-active-geo-replication.md) vagy az adatbázis vagy adatbázisok [automatikus feladatátvételi csoportjából](sql-database-auto-failover-group.md) konfigurálta a Geo-másodlagos szolgáltatást. A technológiák közül választhat, vagy manuális vagy automatikus feladatátvételt is használhat. Míg maga a feladatátvétel csak néhány másodpercet vesz igénybe, a szolgáltatás legalább egy órát vesz igénybe az aktiváláshoz. Erre azért van szükség, hogy a feladatátvételt a leállás skálázása igazolja. Emellett a feladatátvétel az aszinkron replikáció jellegéből kifolyólag kisebb adatvesztést eredményezhet. 
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-protecting-important-DBs-from-regional-disasters-is-easy/player]
->
-> [!IMPORTANT]
-> Aktív georeplikáció és automatikus feladatátvételi csoportok szeretné használni, kell lennie az előfizetés tulajdonosa vagy az SQL Server rendszergazdai jogosultságok. Konfigurálhatja, és átadja a feladatokat az Azure portal, PowerShell vagy a REST API használatával az Azure-előfizetés engedélyek vagy a Transact-SQL használatával az SQL Server engedélyei.
+Az üzletmenet-folytonossági terv kidolgozása során meg kell állapítania az alkalmazás a zavaró eseményeket követő teljes helyreállításának maximális elfogadható időkorlátját. Az alkalmazás teljes helyreállításához szükséges idő a helyreállítási időre vonatkozó célkitűzés (RTO). Meg kell ismernie a legutóbbi adatfrissítések (időintervallum) maximális időtartamát is, ha az alkalmazás a nem tervezett zavaró eseményről történő helyreállítás során elveszíti az adatvesztést. A lehetséges adatvesztés a helyreállítási pont célkitűzése (RPO) néven ismert.
+
+A különböző helyreállítási módszerek különböző szintű RPO és RTO biztosítanak. Kiválaszthat egy adott helyreállítási módszert, vagy használhat metódusok kombinációját a teljes alkalmazás-helyreállítás eléréséhez. A következő táblázat összehasonlítja az egyes helyreállítási lehetőségek RPO és RTO. Az automatikus feladatátvételi csoportok egyszerűbbé teszik a Geo-replikáció üzembe helyezését és használatát, és hozzáadja a további képességeket az alábbi táblázatban leírtak szerint.
+
+| Helyreállítási módszer | RTO | RPO |
+| --- | --- | --- | 
+| Geo-visszaállítás földrajzilag replikált biztonsági másolatokból | 12 óra | 1 óra |
+| Automatikus feladatátvételi csoportok | 1 óra | 5 s |
+| Manuális adatbázis-feladatátvétel | 30 s | 5 s |
+
+> [!NOTE]
+> A *manuális adatbázis-feladatátvétel* arra utal, hogy a nem [tervezett móddal](sql-database-active-geo-replication.md#active-geo-replication-terminology-and-capabilities)egyetlen adatbázis feladatátvételét a földrajzilag replikált másodlagosra hajtja végre.
+A jelen cikk korábbi, az automatikus feladatátvétel RTO és RPO részletes ismertetését lásd a következő táblázatban.
+
 
 Automatikus feladatátvételi csoportok használata, ha az alkalmazás megfelel a következő feltételeknek:
 
 - Az üzletmenet szempontjából kritikus fontosságú.
-- Rendelkezik egy szolgáltatásiszint-szerződés (SLA), amely nem engedélyezi a 12 óra vagy több állásidőt.
-- Állásidő pénzügyi kötelezettséget eredményezhet.
-- Adatok nagy mértékű módosítása rendelkezik, és 1 órányi adat elvesztése nem fogadható el.
+- Olyan szolgáltatói szerződéssel (SLA) rendelkezik, amely 12 órát vagy több állásidőt nem engedélyez.
+- Az állásidő pénzügyi felelősséget eredményezhet.
+- Nagy adatváltozások és 1 órányi adatvesztés esetén nem fogadható el elfogadható érték.
 - Az aktív georeplikáció többletköltsége alacsonyabb, mint a potenciális pénzbeli kötelezettség és a kapcsolódó üzletvesztés összege.
 
-Amikor műveleteket végrehajtani, mennyi idő alatt helyreállíthatók, és mekkora adatvesztés díjak, attól függ, hogyan kívánja-e üzletmenet-folytonossági funkciókat használhatja az alkalmazásban. Sőt előfordulhat, hogy használni kívánja adatbázisok biztonsági mentése és az aktív georeplikáció attól függően, hogy az alkalmazás követelményeinek. Alkalmazások tervezési szempontjait önálló adatbázisok és ezek üzletmenet-folytonossági funkciókat használó rugalmas készletek számára, lásd: [tervezése felhőalapú vészhelyreállítással alkalmazás](sql-database-designing-cloud-solutions-for-disaster-recovery.md) és [rugalmas Vészhelyreállítási stratégiák tárolókészlet](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-protecting-important-DBs-from-regional-disasters-is-easy/player]
+>
 
+Az alkalmazás követelményeitől függően dönthet úgy, hogy az adatbázis biztonsági másolatait és az aktív geo-replikáció kombinációját használja. Az önálló adatbázisok és az ezekkel az üzletmenet-folytonossági funkciókkal rendelkező rugalmas készletek kialakításával kapcsolatos szempontokat a következő témakörben tekintheti meg: [Alkalmazások tervezése Felhőbeli](sql-database-designing-cloud-solutions-for-disaster-recovery.md) vész-helyreállítási és [rugalmas készlet vész-helyreállítási stratégiákhoz](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).
 
-A következő szakaszok az adatbázis biztonsági mentése vagy az aktív georeplikáció használatával végzett helyreállítás lépéseinek áttekintését. Beleértve a tervezési követelményeket, helyreállítás utáni lépések és információ a leállások szimulálását a vészhelyreállítási próba végrehajtása részletes lépéseiért lásd: [SQL-adatbázis helyreállítása a kimaradás utáni](sql-database-disaster-recovery.md).
+A következő szakaszokban áttekintheti az adatbázis-biztonsági másolatok vagy az aktív földrajzi replikálás használatával történő helyreállítás lépéseit. A részletes lépések, például a tervezési követelmények, a helyreállítási lépések után, valamint az kimaradás szimulálása a vész-helyreállítási gyakorlat elvégzéséhez című témakörben talál további információt: [SQL Database helyreállítása leállás](sql-database-disaster-recovery.md)miatt.
 
 ### <a name="prepare-for-an-outage"></a>Előkészületek leállás esetére
 
 A használt üzletmenet-folytonossági funkciótól függetlenül végre kell hajtania a következőket:
 
-- Azonosítsa és készítse elő a célkiszolgálót, beleértve a kiszolgálószintű IP-tűzfalszabályainak, a bejelentkezéseket és a főadatbázis szintű jogosultságokat.
+- Azonosítsa és készítse elő a célkiszolgáló, beleértve a kiszolgálói szintű IP-tűzfalszabályok, a bejelentkezések és a főadatbázis szintű engedélyeket.
 - Határozza meg, hogyan legyenek átirányítva az ügyfelek és az ügyfélalkalmazások az új kiszolgálóra.
 - Dokumentálja az egyéb függőségeket, mint a naplózási beállítások és a riasztások.
 
-Ha nem megfelelően, így az alkalmazások, online, miután a feladatátvétel, vagy egy adatbázis-helyreállítás további időt igényel, és valószínűleg hibaelhérítást is igényel a stressz – rossz kombináció egyszerre.
+Ha nem készít megfelelő előfizetést, a feladatátvétel vagy adatbázis-helyreállítás után online állapotba helyezi az alkalmazásokat, és valószínűleg szükség van a hibaelhárításra a stressz-rossz kombináció esetén is.
 
-### <a name="fail-over-to-a-geo-replicated-secondary-database"></a>Feladatátvételt egy georeplikált másodlagos adatbázisra
+### <a name="fail-over-to-a-geo-replicated-secondary-database"></a>Feladatátvétel egy földrajzilag replikált másodlagos adatbázisba
 
-Ha tárreplikációval helyreállítási mechanizmusként aktív georeplikációt, vagy automatikus feladatátvételi csoportok használ, automatikus feladatátvételi szabályzat konfigurálása, vagy használjon [manuális nem tervezett feladatátvétel](sql-database-active-geo-replication-portal.md#initiate-a-failover). Követően a feladatátvételt a másodlagos az új elsődleges válnak, és készen áll rögzíteni az új tranzakciókat és válaszolni a lekérdezésekre – az adatok nem replikálta minimális adatvesztéssel járó hatására a. A feladatátvételi folyamat tervezésével kapcsolatos további információkért lásd: [tervezése felhőalapú vészhelyreállítással alkalmazás](sql-database-designing-cloud-solutions-for-disaster-recovery.md).
-
-> [!NOTE]
-> Az Adatközpont ismét online elérhető a régi eredményezi automatikusan csatlakozzon újra az új elsődleges, és a másodlagos adatbázisok válnak. Helyezze át az elsődleges vissza az eredeti régió van szüksége, ha manuálisan is kezdeményezhető a tervezett feladatátvétel (feladat-visszavétel).
-
-### <a name="perform-a-geo-restore"></a>Georedundáns visszaállítás végrehajtása
-
-Ha az automatikus biztonsági másolatokat használ georedundáns tárolás (alapértelmezés szerint engedélyezve van), akkor helyreállíthatja az adatbázist a használatával [geo-visszaállítás](sql-database-disaster-recovery.md#recover-using-geo-restore). Helyreállítási általában 12 óra alatt – akár egy óráig határozza meg, amikor a legutóbbi naplók biztonsági mentése volt hozott, és a replikált adatok elvesztése akkor kerül sor. A helyreállítás befejezéséig az adatbázis nem tudja rögzíteni a tranzakciókat, illetve nem tud válaszolni a lekérdezésekre. Vegye figyelembe, hogy a geo-visszaállítás csak visszaállítja az adatbázist a legutóbbi elérhető pont időben.
+Ha aktív geo-replikációs vagy automatikus feladatátvételi csoportokat használ helyreállítási mechanizmusként, konfigurálhat egy automatikus feladatátvételi házirendet, vagy manuális, nem [tervezett feladatátvételt](sql-database-active-geo-replication-portal.md#initiate-a-failover)is használhat. A művelet megkezdése után a feladatátvétel az új elsődlegesvé válik, és készen áll az új tranzakciók rögzítésére és a lekérdezésekre való reagálásra – a még nem replikált adatok minimális adatvesztése miatt. A feladatátvételi folyamat megtervezésével kapcsolatos információkért lásd: [alkalmazás tervezése a Felhőbeli vész-helyreállításhoz](sql-database-designing-cloud-solutions-for-disaster-recovery.md).
 
 > [!NOTE]
-> Az Adatközpont ismét online elérhető, mielőtt az alkalmazás a helyreállított adatbázisra, megszakíthatja a helyreállítást.
+> Amikor az adatközpont ismét elérhetővé válik, a régi alapértékek automatikusan újra csatlakoznak az új elsődlegeshöz, és másodlagos adatbázisok lesznek. Ha át kell helyeznie az elsődlegest az eredeti régióba, manuálisan kezdeményezheti a tervezett feladatátvételt (feladat-visszavétel).
+
+### <a name="perform-a-geo-restore"></a>Geo-visszaállítás végrehajtása
+
+Ha az automatikus biztonsági mentést a Geo-redundáns tárolóval (alapértelmezés szerint engedélyezve) használja, az adatbázist a [geo-visszaállítás](sql-database-disaster-recovery.md#recover-using-geo-restore)használatával állíthatja helyre. A helyreállítás általában 12 órán belül zajlik – az adatvesztés akár egy óráig is, az utolsó napló biztonsági mentésének és replikálásának időpontjában. A helyreállítás befejezéséig az adatbázis nem tudja rögzíteni a tranzakciókat, illetve nem tud válaszolni a lekérdezésekre. Megjegyzés: a Geo-visszaállítás csak az utolsó elérhető időpontra állítja vissza az adatbázist.
+
+> [!NOTE]
+> Ha az adatközpont ismét online állapotba kerül, mielőtt átvált az alkalmazásra a helyreállított adatbázisra, megszakíthatja a helyreállítást.
 
 ### <a name="perform-post-failover--recovery-tasks"></a>Feladatátvétel/helyreállítás utáni feladatok végrehajtása
 
 A helyreállítási mechanizmusok végrehajtása után a következő további feladatokat kell végrehajtania a felhasználók és az alkalmazások újbóli üzembe helyezéséhez:
 
 - Irányítsa át az ügyfeleket és az ügyfélalkalmazásokat az új kiszolgálóra és a helyreállított adatbázisra.
-- Győződjön meg, hogy a megfelelő kiszolgálói szintű IP tűzfalszabályok vannak érvényben a felhasználók csatlakozni, vagy használjon [adatbázisszintű tűzfalak](sql-database-firewall-configure.md#manage-server-level-ip-firewall-rules-using-the-azure-portal) ahhoz, hogy megfelelő szabályokat.
+- Győződjön meg arról, hogy a megfelelő kiszolgálói szintű IP-tűzfalszabályok vannak érvényben a felhasználók számára a megfelelő szabályok engedélyezéséhez, illetve az [adatbázis-szintű tűzfalak](sql-database-firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules) használatával történő kapcsolódáshoz.
 - Biztosítsa a megfelelő bejelentkezési adatok és főadatbázis-szintű jogosultságok rendelkezésre állását (vagy használjon [tartalmazott felhasználókat](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable))
 - Konfigurálja a naplózást, ha szükséges.
 - Konfigurálja a riasztásokat, ha szükséges.
 
 > [!NOTE]
-> Ha egy feladatátvételi csoportot használ, és az adatbázisok, az olvasási és írási lstener használatával csatlakozhat, az átirányítás, a feladatátvételt követően történik meg automatikusan és transzparens módon az alkalmazáshoz.
+> Ha feladatátvételi csoportot használ, és az írható-olvasható lstener használatával csatlakozik az adatbázisokhoz, akkor az átirányítás a feladatátvételt követően automatikusan és transzparens módon történik az alkalmazásban.
 
 ## <a name="upgrade-an-application-with-minimal-downtime"></a>Alkalmazások frissítése minimális állásidővel
 
-Néha egy alkalmazást kell venni a kapcsolat nélküli tervezett karbantartások, például alkalmazásfrissítések miatt. [Alkalmazásfrissítések kezeléséről](sql-database-manage-application-rolling-upgrade.md) ismerteti, hogyan lehet aktív georeplikáció használatával engedélyezhető az frissítések közbeni állásidő minimálisra csökkentése, és adja meg a helyreállítási elérési út, ha valami probléma merül fel a felhőalapú alkalmazások működés közbeni frissítése.
+Időnként előfordulhat, hogy egy alkalmazást a tervezett karbantartás, például egy alkalmazás frissítése miatt offline állapotba kell helyezni. Az [alkalmazások frissítéseinek kezelése](sql-database-manage-application-rolling-upgrade.md) azt ismerteti, hogyan használható az aktív geo-replikálás a Felhőbeli alkalmazások működés közbeni frissítésének engedélyezéséhez, hogy a frissítés során csökkentse az állásidőt, és ha valamilyen hiba történik, helyreállítási útvonalat adjon meg.
 
 ## <a name="next-steps"></a>További lépések
 
-Alkalmazások tervezési szempontjait önálló adatbázisok és rugalmas készletekhez, lásd: [tervezése felhőalapú vészhelyreállítással alkalmazás](sql-database-designing-cloud-solutions-for-disaster-recovery.md) és [rugalmas készletek vészhelyreállítási stratégiái](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).
+Az önálló adatbázisok és a rugalmas készletek alkalmazás-kialakítási szempontjaival kapcsolatban lásd: [alkalmazás tervezése a Felhőbeli vész-helyreállításhoz](sql-database-designing-cloud-solutions-for-disaster-recovery.md) és a [rugalmas készlet vész-helyreállítási stratégiái](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).

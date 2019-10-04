@@ -7,12 +7,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: twooley
-ms.openlocfilehash: 518c129aedf3161ab761d09139e0c4d988dd2cbc
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 99384374226fd89cfd672c6b4f851a1743db0764
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59681828"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67118807"
 ---
 # <a name="what-is-azure-data-lake-storage-gen1"></a>Mi az Azure Data Lake Storage Gen1?
 
@@ -58,11 +58,11 @@ Data Lake Storage Gen1 tárolókból adatok olyan lényegében mappák és fájl
 
 Data Lake Storage Gen1 használja az Azure Active Directory (Azure AD-) hitelesítés és hozzáférés-listákat (ACL) való hozzáférés kezelése szabályozhatja az adatokhoz.
 
-| Szolgáltatás | Leírás |
+| Funkció | Leírás |
 | --- | --- |
-| Authentication |Data Lake Storage Gen1 integrálható az identitás és hozzáférés-kezelés az Azure AD-hez a Data Lake Storage Gen1 tárolt összes adatot. Az integráció miatt minden Azure AD-ből a Data Lake Storage Gen1 előnyei például a többtényezős hitelesítés, a feltételes hozzáférés, szerepköralapú hozzáférés-vezérlés, Alkalmazáshasználat monitorozását, biztonsági monitoringgal és riasztások szolgáltatás, és így tovább. Data Lake Storage Gen1 támogatja az OAuth 2.0 protokollt a REST-felületen belüli hitelesítéshez. Lásd: [hitelesítés a Data Lake Storage Gen1](data-lakes-store-authentication-using-azure-active-directory.md).|
+| Hitelesítés |Data Lake Storage Gen1 integrálható az identitás és hozzáférés-kezelés az Azure AD-hez a Data Lake Storage Gen1 tárolt összes adatot. Az integráció miatt minden Azure AD-ből a Data Lake Storage Gen1 előnyei például a többtényezős hitelesítés, a feltételes hozzáférés, szerepköralapú hozzáférés-vezérlés, Alkalmazáshasználat monitorozását, biztonsági monitoringgal és riasztások szolgáltatás, és így tovább. Data Lake Storage Gen1 támogatja az OAuth 2.0 protokollt a REST-felületen belüli hitelesítéshez. Lásd: [hitelesítés a Data Lake Storage Gen1](data-lakes-store-authentication-using-azure-active-directory.md).|
 | Hozzáférés-vezérlés |Data Lake Storage Gen1 hozzáférés-vezérlést biztosít a WebHDFS protokoll által elérhetővé tett POSIX-stílusú engedélyek támogatásával. Hozzáférés-vezérlési listák a gyökérkönyvtáron, az almappák és az egyes fájlokon is engedélyezheti. További információ a hozzáférés-vezérlési listák Data Lake Storage Gen1 kontextusában működése: [hozzáférés-vezérlés a Data Lake Storage Gen1](data-lake-store-access-control.md). |
-| Titkosítás |Data Lake Storage Gen1 is biztosít a fiókban tárolt adatok titkosítását. A Data Lake Storage Gen1 fiók létrehozásakor megadhatja a titkosítási beállításokat. Ha szeretné, hogy titkosítja az adatokat, vagy választhatja a titkosítás nélkül. További információkért lásd: [titkosítást a Data Lake Storage Gen1](data-lake-store-encryption.md). Útmutatás a titkosítással kapcsolatos konfigurációk megadására: [Data Lake Storage Gen1 használatának első lépései az Azure portal használatával](data-lake-store-get-started-portal.md). |
+| Encryption |Data Lake Storage Gen1 is biztosít a fiókban tárolt adatok titkosítását. A Data Lake Storage Gen1 fiók létrehozásakor megadhatja a titkosítási beállításokat. Ha szeretné, hogy titkosítja az adatokat, vagy választhatja a titkosítás nélkül. További információkért lásd: [titkosítást a Data Lake Storage Gen1](data-lake-store-encryption.md). Útmutatás a titkosítással kapcsolatos konfigurációk megadására: [Data Lake Storage Gen1 használatának első lépései az Azure portal használatával](data-lake-store-get-started-portal.md). |
 
 A Data Lake Storage Gen1 biztonságos adatainak kapcsolatos utasításokért lásd: [az adatok védelme az Azure Data Lake Storage Gen1](data-lake-store-secure-data.md).
 

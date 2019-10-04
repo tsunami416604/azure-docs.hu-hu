@@ -1,146 +1,146 @@
 ---
-title: Használatának első lépései a Microsoft Speech Recognition API-val a C#-szolgáltatási kódtára |} A Microsoft Docs
+title: Ismerkedés a Microsoft Speech Recognition API-val a C# Service Library használatával | Microsoft Docs
 titlesuffix: Azure Cognitive Services
-description: A Bing Speech recognition-szolgáltatási kódtára segítségével használja a beszélt nyelv szöveggé alakítani.
+description: A beszélt nyelv szöveggé alakításához használja a Bing Speech felismerési szolgáltatás könyvtárát.
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 0f445d1fff48ee7a04c0b1c1d64c808f87d824b7
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 71c3e471a8844eb6c6b70921e40c94338a084a8b
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673164"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965856"
 ---
-# <a name="quickstart-use-the-bing-speech-recognition-service-library-in-c35-for-net-windows"></a>Gyors útmutató: A Bing Speech recognition szolgáltatás kódtára c.&#35; a .NET Windows
+# <a name="quickstart-use-the-bing-speech-recognition-service-library-in-c35-for-net-windows"></a>Gyors útmutató: A C&#35; Bing Speech felismerési szolgáltatás könyvtárának használata a .net Windows rendszerben
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
-A szolgáltatási kódtár van fejlesztőknek szól, akik a saját felhőalapú szolgáltatás, és szeretnék beszédszolgáltatás meghívni a szolgáltatást. Ha szeretné, eszközhöz kötött alkalmazások hívja meg a speech recognition szolgáltatást, ne használja az SDK. (Használható egyéb ügyfélkódtárakat vagy a REST API-k, amelyek.)
+A szolgáltatás könyvtára olyan fejlesztők számára készült, akik saját felhőalapú szolgáltatással rendelkeznek, és a beszédfelismerési szolgáltatást szeretnék hívni a szolgáltatástól. Ha az eszközhöz kötött alkalmazásokból is meg szeretné hívni a beszédfelismerési szolgáltatást, ne használja ezt az SDK-t. (Használjon más ügyféloldali kódtárakat vagy REST API-kat.)
 
-A C#-szolgáltatási kódtára használatához telepítse a [NuGet-csomag Microsoft.Bing.Speech](https://www.nuget.org/packages/Microsoft.Bing.Speech/). A szalagtár API-referencia, tekintse meg a [Microsoft Speech C# szolgáltatási kódtár](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-ServiceLibrary/master/docs/index.html).
+A C# szolgáltatás könyvtárának használatához telepítse a [Microsoft. Bing. Speech NuGet-csomagot](https://www.nuget.org/packages/Microsoft.Bing.Speech/). A Library API-referenciát a [Microsoft Speech C# Service Library webhelyén](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-ServiceLibrary/master/docs/index.html)tekintheti meg.
 
-A következő szakaszok ismertetik, hogyan kell telepíteni, hozhat létre és futtassa a C# mintaalkalmazást a C# szolgáltatási kódtár használatával.
+A következő szakaszok azt ismertetik, hogyan telepítheti, építheti C# le és futtathatja a C# minta alkalmazást a Service Library használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 ### <a name="platform-requirements"></a>Platformkövetelmények
 
-Az alábbi példa a Windows 8 +, és a .NET 4.5-ös + kifejlesztett keretrendszer használatával [Visual Studio 2015, Community Edition](https://www.visualstudio.com/products/visual-studio-community-vs).
+A következő példa a Windows 8 + és a .NET 4.5 + keretrendszerhez készült a [Visual Studio 2015, a Community Edition](https://www.visualstudio.com/products/visual-studio-community-vs)használatával.
 
-### <a name="get-the-sample-application"></a>A mintaalkalmazás beolvasása
+### <a name="get-the-sample-application"></a>A minta alkalmazás beszerzése
 
-Klónozza a minta a [Speech C# service library minta](https://github.com/Microsoft/Cognitive-Speech-STT-ServiceLibrary) tárház.
+A minta klónozása a [Speech C# Service Library minta](https://github.com/Microsoft/Cognitive-Speech-STT-ServiceLibrary) adattárból.
 
-### <a name="subscribe-to-the-speech-recognition-api-and-get-a-free-trial-subscription-key"></a>Fizessen elő a Speech Recognition API és a egy ingyenes próba-előfizetését kulcs lekérése
+### <a name="subscribe-to-the-speech-recognition-api-and-get-a-free-trial-subscription-key"></a>Feliratkozás a Speech Recognition API-ra, és ingyenes próbaverziós előfizetési kulcs beszerzése
 
-A beszédfelismerő API a Cognitive Services-(korábban Project Oxford) részét képezi. Ingyenes próba-előfizetését helyenk beszerezheti a [Cognitive Services-előfizetés](https://azure.microsoft.com/try/cognitive-services/) lapot. Miután kiválasztotta a beszédfelismerő API, válassza ki a **API-kulcs lekérése** a kulcs beszerzése. Egy elsődleges és másodlagos kulcsát adja vissza. Mindkét kulcsot kvóta, így használhatja az egyiket sem vannak társítva.
+A Speech API Cognitive Services (korábban Project Oxford) része. A [Cognitive Services előfizetés](https://azure.microsoft.com/try/cognitive-services/) oldaláról ingyenes próbaverziós előfizetési kulcsokat szerezhet be. Miután kiválasztotta a Speech API-t, válassza az **API-kulcs beolvasása** elemet a kulcs lekéréséhez. Egy elsődleges és egy másodlagos kulcsot ad vissza. Mindkét kulcs ugyanahhoz a kvótához van kötve, így bármelyik kulcsot használhatja.
 
 > [!IMPORTANT]
-> * Előfizetési kulcs lekérése. A beszédfelismerés klienskódtárak használata előtt rendelkeznie kell egy [előfizetési kulcs](https://azure.microsoft.com/try/cognitive-services/).
+> * Előfizetési kulcs beszerzése. A Speech Client kódtárak használata előtt rendelkeznie kell egy [előfizetési kulccsal](https://azure.microsoft.com/try/cognitive-services/).
 >
-> * Az előfizetési kulcs használja. A megadott C# service library mintaalkalmazással meg kell adnia az előfizetési kulcs parancssori paraméterek egyikét. További információkért lásd: [futtassa a mintaalkalmazást](#step-3-run-the-sample-application).
+> * Használja az előfizetési kulcsot. A szolgáltatási függvénytár C# megadott alkalmazásával a parancssori paraméterek egyikének kell megadnia az előfizetési kulcsot. További információ: [a minta alkalmazás futtatása](#step-3-run-the-sample-application).
 
-## <a name="step-1-install-the-sample-application"></a>1. lépés: A mintaalkalmazás telepítése
+## <a name="step-1-install-the-sample-application"></a>1\. lépés: A minta alkalmazás telepítése
 
-1. Indítsa el a Visual Studio 2015-öt, és válassza ki **fájl** > **nyílt** > **projekt/megoldás**.
+1. Indítsa el a Visual Studio 2015 alkalmazást, és válassza a **fájl** > **nyitott** > **projekt/megoldás**elemet.
 
-2. Kattintson duplán a SpeechClient.sln nevű Visual Studio 2015-megoldás (.sln) fájl megnyitásához. A megoldás megnyílik a Visual Studióban.
+2. Kattintson duplán a SpeechClient. SLN nevű Visual Studio 2015 Solution (. SLN) fájl megnyitásához. A megoldás megnyílik a Visual Studióban.
 
-## <a name="step-2-build-the-sample-application"></a>2. lépés: A mintaalkalmazás létrehozása
+## <a name="step-2-build-the-sample-application"></a>2\. lépés: A minta alkalmazás összeállítása
 
-Nyomja le a Ctrl + Shift + B, vagy válassza ki **összeállítása** a menüszalag menü. Válassza ki **megoldás fordítása**.
+Nyomja le a CTRL + SHIFT + B billentyűkombinációt, vagy válassza a **Létrehozás** elemet a menüszalag menüben. Ezután válassza a **megoldás létrehozása**lehetőséget.
 
-## <a name="step-3-run-the-sample-application"></a>3. lépés: A mintaalkalmazás futtatása
+## <a name="step-3-run-the-sample-application"></a>3\. lépés: A mintaalkalmazás futtatása
 
-1. A létrehozás befejezése után nyomja le az F5 billentyűt, vagy válasszon **Start** a menüszalag menü a példa futtatásához.
+1. A létrehozás befejezése után nyomja le az F5 billentyűt, vagy válassza a menüszalag menü **Start** parancsát a példa futtatásához.
 
-2. Nyissa meg a minta, például SpeechClientSample\bin\Debug kimeneti könyvtárat. Nyomja le a Shift + jobb gombbal, és válassza ki **Itt a megnyitott parancssori ablakban**.
+2. Nyissa meg a minta kimeneti könyvtárát, például SpeechClientSample\bin\Debug. Nyomja le a SHIFT billentyűt, kattintson a jobb gombbal, majd válassza a **parancssorablak megnyitása**lehetőséget.
 
-3. Futtatás `SpeechClientSample.exe` a következő argumentumokkal:
+3. Futtassa `SpeechClientSample.exe` a következő argumentumokat:
 
-   * [0] arg: Adjon meg egy bemeneti audio WAV-fájlt.
-   * [1]. arg: Adja meg a hang területi beállítás.
-   * Arg: [2]: Adja meg a felismerés mód: *Rövid* számára a `ShortPhrase` mód és *hosszú* számára a `LongDictation` mód.
-   * [3]. arg: Adja meg az előfizetési kulcsot a speech recognition szolgáltatáshoz való hozzáféréshez.
+   * ARG [0]: Adja meg a bemeneti hang WAV-fájlját.
+   * ARG [1]: Határozza meg a hang területi beállítását.
+   * ARG [2]: A felismerési módok meghatározása: *Rövid* a `ShortPhrase` mód esetében, és *hosszú* a `LongDictation` mód.
+   * ARG [3]: Az előfizetési kulcs megadásával férhet hozzá a beszédfelismerési szolgáltatáshoz.
 
-## <a name="samples-explained"></a>A minták ismertetése
+## <a name="samples-explained"></a>Minták magyarázata
 
-### <a name="recognition-modes"></a>Elismerés módok
+### <a name="recognition-modes"></a>Felismerési módok
 
-* `ShortPhrase` mód: Az utterance (kifejezés), legfeljebb 15 másodperc hosszúságú. Adatokat küld a kiszolgálón, mert a az ügyfél több részleges és egy végső legjobb eredményt kap.
-* `LongDictation` mód: Az utterance (kifejezés), akár 10 perc hosszú. Adatokat küld a kiszolgálón, mert a az ügyfél több részleges és több végső eredményt is, ahol azt jelzi, a kiszolgáló mondaton belüli szünetet alapján kap.
+* `ShortPhrase`mód A teljes érték 15 másodperc. Ahogy a rendszer elküldi az adatküldés eredményeit a kiszolgálónak, az ügyfél több részleges eredményt kap, és egy utolsó legjobb eredményt kapja.
+* `LongDictation`mód Akár 10 percet is igénybe vehet. Az adatküldés során az ügyfél több részleges eredményt és több végső eredményt kap, attól függően, hogy a kiszolgáló hol jelzi a mondat szüneteltetését.
 
-### <a name="supported-audio-formats"></a>Hangformátumok támogatott
+### <a name="supported-audio-formats"></a>Támogatott hangformátumok
 
-A beszédfelismerő API a következő kodekek segítségével audio/WAV támogatja:
+A Speech API a következő kodekekkel támogatja a hang/WAV használatát:
 
-* A PCM egyetlen csatorna
-* Siren
+* PCM – egyetlen csatorna
+* Sziréna
 * SirenSR
 
 ### <a name="preferences"></a>Beállítások
 
-Hozzon létre egy SpeechClient, először hozzon létre egy beállítások objektumot kell. A beállítások objektum paraméterek készletével, amely a speech service viselkedését konfigurálja. A következő mezőket áll:
+SpeechClient létrehozásához először létre kell hoznia egy Preferences objektumot. A Preferences objektum olyan paraméterek összessége, amelyek a beszédfelismerési szolgáltatás viselkedését konfigurálja. A következő mezőkből áll:
 
-* `SpeechLanguage`: A hang, a beszéd szolgáltatásnak küldött területi beállítása szerint.
-* `ServiceUri`: A végpont hívja a speech service segítségével.
-* `AuthorizationProvider`: Jogkivonatok beolvasni a beszédfelismerési szolgáltatás eléréséhez használt IAuthorizationProvider megvalósítása. Bár a minta lehetővé teszi a Cognitive Services-engedélyezési szolgáltató, erősen ajánlott, hogy hoz létre a saját implementációjához token-gyorsítótárazási kezelésére.
-* `EnableAudioBuffering`: Egy speciális beállítás. Lásd: [kapcsolat kezelése](#connection-management).
+* `SpeechLanguage`: A beszédfelismerési szolgáltatásnak eljuttatott hang területi beállítása.
+* `ServiceUri`: A beszédfelismerési szolgáltatás meghívásához használt végpont.
+* `AuthorizationProvider`: Egy IAuthorizationProvider implementáció, amely a jogkivonatok beolvasására szolgál a beszédfelismerési szolgáltatás eléréséhez. Bár a minta Cognitive Services engedélyezési szolgáltatót biztosít, javasoljuk, hogy hozzon létre saját implementációt a jogkivonat-gyorsítótárazás kezeléséhez.
+* `EnableAudioBuffering`: Speciális beállítás. Lásd: a [kapcsolatok kezelése](#connection-management).
 
-### <a name="speech-input"></a>Bemeneti
+### <a name="speech-input"></a>Beszédfelismerési bemenet
 
-A SpeechInput objektumot két mezőt tartalmaz:
+A SpeechInput objektum két mezőből áll:
 
-* **Hang**: Egy Ön által választott, amelyről az SDK lekéri a hang stream megvalósítását. Ez lehet bármely [stream](https://msdn.microsoft.com/library/system.io.stream(v=vs.110).aspx) , amely támogatja az olvasó.
+* **Hang**: A kívánt stream-implementáció, amelyből az SDK lekéri a hangot. Az olvasást támogató bármely [adatfolyam](https://msdn.microsoft.com/library/system.io.stream(v=vs.110).aspx) lehet.
    > [!NOTE]
-   > Az SDK-t a konce datového proudu észlel, amikor visszatér a stream **0** olvasási.
+   > Az SDK észleli a stream végét, ha az adatfolyam **0** értéket ad vissza olvasáskor.
 
-* **RequestMetadata**: A beszédfelismerés kérelem metaadatait. További információkért lásd: a [referencia](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-ServiceLibrary/master/docs/index.html).
+* **RequestMetadata**: A beszédfelismerési kérelemmel kapcsolatos metaadatok. További információ: [hivatkozás](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-ServiceLibrary/master/docs/index.html).
 
-### <a name="speech-request"></a>Beszéd kérelem
+### <a name="speech-request"></a>Beszédfelismerési kérelem
 
-Miután egy SpeechClient és SpeechInput objektumokat kell példányosítani, RecognizeAsync használatával indítson egy beszédszolgáltatás.
+Miután létrehozta a SpeechClient és a SpeechInput objektumokat, a RecognizeAsync használatával kérheti a beszédfelismerési szolgáltatást.
 
 ```cs
     var task = speechClient.RecognizeAsync(speechInput);
 ```
 
-A kérelem befejezése után a RecognizeAsync által visszaadott feladat befejeződik. Az utolsó RecognitionResult elismerését vége. A feladat meghiúsulhat, ha a szolgáltatás vagy az SDK váratlanul meghibásodik.
+A kérés befejeződése után a RecognizeAsync által visszaadott feladat befejeződött. Az utolsó RecognitionResult az elismerés vége. A feladat sikertelen lehet, ha a szolgáltatás vagy az SDK váratlanul leáll.
 
-### <a name="speech-recognition-events"></a>Speech recognition események
+### <a name="speech-recognition-events"></a>Beszédfelismerési események
 
-#### <a name="partial-results-event"></a>Részleges eredményeket esemény
+#### <a name="partial-results-event"></a>Részleges eredmény esemény
 
-Ez az esemény meghívása megtörténik, minden alkalommal, amikor beszédszolgáltatás előrejelzi, előfordulhat, hogy el véleményét, beszéd befejezése előtt is (Ha `MicrophoneRecognitionClient`), vagy fejezze be az adatok küldésének (használatakor `DataRecognitionClient`). Az eseményre feliratkozhat használatával `SpeechClient.SubscribeToPartialResult()`. Vagy használhatja az általános események előfizetés módszert `SpeechClient.SubscribeTo<RecognitionPartialResult>()`.
+Ez az esemény minden alkalommal megjelenik, amikor a Speech Service előre jelzi, hogy mit mond, még mielőtt elvégezte a beszédet (ha használja `MicrophoneRecognitionClient`), vagy befejezi az adatok küldését (ha használja `DataRecognitionClient`). Előfizethet az eseményre a használatával `SpeechClient.SubscribeToPartialResult()`. Vagy használhatja az általános események előfizetési módszert `SpeechClient.SubscribeTo<RecognitionPartialResult>()`.
 
-**Visszaadott formátum** | Leírás |
+**Visszatérési formátum** | Leírás |
 ------|------
-**LexicalForm** | Ez a képernyő akkor nyers, feldolgozatlan speech recognition eredmények igénylő alkalmazások számára optimális.
-**Szöveg** | Más néven Inverz szöveg normalizálási, kis-és nagybetűk, írásjelek és cenzúrázása maszkolása a felismert kifejezést. Káromkodás csillagok karakterekkel van maszkolva után a kezdeti karakter, például "d x." Ez a képernyő akkor optimális alkalmazásokat, amelyek a speech recognition eredményeket megjeleníteni egy felhasználó általi használatra.
-**magabiztosan** | Megbízhatósági szintjét a felismert kifejezés jelenti a társított Audio a speech recognition kiszolgáló által meghatározott módon.
-**MediaTime** | Az aktuális idő (a 100 nanoszekundumos időegységben) audio-adatfolyam kezdetét viszonyítva.
-**MediaDuration** | Az aktuális kifejezés időtartama vagy hosszúság képest a hang szegmens (az idő 100 nanoszekundumos egység).
+**LexicalForm** | Ez az űrlap optimálisan használható olyan alkalmazások számára, amelyek nyers, feldolgozatlan beszédfelismerési eredményeket igényelnek.
+**Szöveg** | A felismert kifejezés az inverz szöveg normalizálása, a tőkésítés, a központozás és a káromkodás maszkolása. A káromkodás a kezdeti karakter után csillagokkal van ellátva, például: "d * * *". Ez az űrlap optimálisan használható olyan alkalmazások számára, amelyek a beszédfelismerés eredményeit egy felhasználó számára jelenítik meg.
+**Megbízhatósági** | A felismert kifejezés megbízhatósági szintje a beszédfelismerési kiszolgáló által meghatározott társított hangra vonatkozik.
+**MediaTime** | Az aktuális idő az audio stream elejéhez képest (100 ns egységben).
+**MediaDuration** | Az aktuális kifejezés időtartama/hossza a hangszegmenshez képest (100 – ns egységben).
 
-#### <a name="result-event"></a>Esemény eredménye
-Amikor befejezi a beszéd (a `ShortPhrase` módban), ez az esemény nevezzük. Az eredmény számára megadott van a legjobb n beállításokkal. A `LongDictation` módot, az esemény nem hívható meg többször is feldolgozza azt jelzi, ha a kiszolgáló mondaton belüli szünetet alapján. Az eseményre feliratkozhat használatával `SpeechClient.SubscribeToRecognitionResult()`. Vagy használhatja az általános események előfizetés módszert `SpeechClient.SubscribeTo<RecognitionResult>()`.
+#### <a name="result-event"></a>Eredmény esemény
+Ha befejezte a beszédet `ShortPhrase` (mód), ez az esemény a következő:. Az eredményhez az n-legjobb választási lehetőségek állnak rendelkezésre. A `LongDictation` módban az esemény többször is hívható, attól függően, hogy a kiszolgáló hol jelzi a mondat szüneteltetését. Előfizethet az eseményre a használatával `SpeechClient.SubscribeToRecognitionResult()`. Vagy használhatja az általános események előfizetési módszert `SpeechClient.SubscribeTo<RecognitionResult>()`.
 
-**Visszaadott formátum** | Leírás |
+**Visszatérési formátum** | Leírás |
 ------|------|
-**RecognitionStatus** | Hogyan állította elő a felismerés állapota. Például azt eredményeként sikeres felismerése vagy állították eredményeként megszakítása a kapcsolat stb.
-**Kifejezések** | Legjobb n felismert kifejezések a felismerés magabiztosan halmaza.
+**RecognitionStatus** | Az elismerés előállításának állapota. Például a sikeres felismerés vagy a kapcsolatok megszakítása eredményeként történt, stb.
+**Kifejezések** | Az n-legjobb felismert mondatok halmaza, az elismerési megbízhatósággal.
 
-Felismerési eredményeket további információkért lásd: [kimeneti formátum](../Concepts.md#output-format).
+Az eredmények felismerésével kapcsolatos további információkért lásd: [kimeneti formátum](../Concepts.md#output-format).
 
-### <a name="speech-recognition-response"></a>Speech recognition válasz
+### <a name="speech-recognition-response"></a>Beszédfelismerési válasz
 
-Beszéd válasz. példa:
+Beszéd-válasz példája:
 ```
 --- Partial result received by OnPartialResult  
 ---what  
@@ -155,17 +155,17 @@ Beszéd válasz. példa:
 What's the weather like? (Confidence:High)
 ```
 
-## <a name="connection-management"></a>Kapcsolat kezelése
+## <a name="connection-management"></a>Kapcsolatok kezelése
 
-Az API-t használja a kérelmenként egyetlen WebSocket kapcsolaton keresztül. Az optimális felhasználói élmény az SDK megpróbálja Speech-szolgáltatáshoz történő újracsatlakozás, és indítsa el a kapott utolsó RecognitionResult elismerését. Például a audiókérést két perc hosszúságú, az SDK-t egy egy perces befejeződnie RecognitionEvent kapott, és egy hálózati hiba történt a öt másodperc után, ha az SDK-t, amely elindítja a perces jelre az új kapcsolat elindul.
+Az API igény szerint egyetlen WebSocket-kapcsolattal rendelkezik. Az SDK az optimális felhasználói élmény érdekében megpróbál újracsatlakozni a beszédfelismerési szolgáltatáshoz, és elindítja az elismerést a kapott utolsó RecognitionResult. Ha például a hangkérelem két percet vesz igénybe, az SDK egy RecognitionEvent kapott, és egy hálózati hiba történt öt másodperc elteltével, az SDK egy új, az egyperces jellel kezdődő kapcsolatokat indít el.
 
 >[!NOTE]
->Az SDK nem keresik térjen vissza az egy perces be van jelölve, mivel előfordulhat, hogy az adatfolyam nem támogatja a keresést. Ehelyett az SDK-t biztosítja, hogy egy belső puffer, hogy a hanganyag meghajtóin használja, és törli a puffer, RecognitionResult eseményt kap.
+>Az SDK nem keresi vissza az egyperces jelölést, mert előfordulhat, hogy az adatfolyam nem támogatja a keresést. Ehelyett az SDK egy belső puffert tart fenn, amelyet a hang puffereléséhez használ, és törli a puffert, mivel RecognitionResult eseményeket fogad.
 
-## <a name="buffering-behavior"></a>Pufferelés viselkedés
+## <a name="buffering-behavior"></a>Pufferelési viselkedés
 
-Alapértelmezés szerint az SDK-t hang puffereli, így azt helyreállíthatja, ha egy hálózati megszakítás történik. Egy forgatókönyvben, ahol célszerű során hálózati kapcsolata megszakadt a hanganyag elvetéséhez, és indítsa újra a kapcsolat, ajánlott letiltani a hang pufferelés beállításával `EnableAudioBuffering` a kívánt beállítások objektum `false`.
+Alapértelmezés szerint az SDK-pufferek hang, hogy a rendszer képes legyen helyreállítani a hálózati megszakítások bekövetkezésekor. Olyan helyzetekben, ahol érdemes eldobni a hanganyagot a hálózat leválasztása közben, és újra kell indítani a kapcsolatot, a Preferences `EnableAudioBuffering` `false`objektum beállításával ajánlott letiltani a hangpufferelést.
 
 ## <a name="related-topics"></a>Kapcsolódó témakörök
 
-[Microsoft Speech C# szolgáltatási kódtár – referencia](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-ServiceLibrary/master/docs/index.html)
+[Microsoft Speech C# Service Library – dokumentáció](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-ServiceLibrary/master/docs/index.html)

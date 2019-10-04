@@ -1,21 +1,22 @@
 ---
-title: Azure Cosmos DB API használatával a MongoDB-hez és a Java SDK Konzolalkalmazás létrehozása
-description: Használatával csatlakoznak és kérnek az Azure Cosmos DB API használatával a mongodb-hez a Java-kódmintát mutat be.
+title: 'Gyors útmutató: Hozzon létre egy webalkalmazást az Azure API-val a Mongo DB és a Java SDK használatával – Azure Cosmos DB'
+description: Egy Java-mintakód, amely a Azure Cosmos DB API-MongoDB való kapcsolódáshoz és lekérdezéshez használható.
 author: rimman
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 12/26/2017
+ms.date: 12/26/2018
 ms.author: rimman
-ms.openlocfilehash: 2fcd5f9e68d7f8bfa15cd596407c78af7fc8976b
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.custom: seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: 7129819b6cec068420b0b265d878078622721812
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587259"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965392"
 ---
-# <a name="quickstart-build-a-web-app-using-azure-cosmos-dbs-api-for-mongodb-and-java-sdk"></a>Gyors útmutató: Azure Cosmos DB API használatával a MongoDB-hez és a Java SDK webes alkalmazás készítése
+# <a name="quickstart-create-a-console-app-with-java-and-the-mongodb-api-in-azure-cosmos-db"></a>Gyors útmutató: Hozzon létre egy, a Java és a MongoDB API-t használó Console-alkalmazást Azure Cosmos DB
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -26,14 +27,14 @@ ms.locfileid: "56587259"
 > * [Golang](create-mongodb-golang.md)
 >  
 
-Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. Gyors létrehozása és lekérdezése a dokumentum, kulcs/érték és gráf adatbázisokat, amelyek mindegyike globális elosztási és horizontális skálázhatósági képességeket Cosmos DB középpontjában. 
+Ebben a rövid útmutatóban a Mongo DB és a Java SDK Azure Cosmos DB API-ját fogja használni egy konzol-webalkalmazás létrehozásához. Azure Cosmos DB lehetővé teszi a dokumentum-, kulcs/érték-és Graph-adatbázisok gyors létrehozását és lekérdezését, amelyek mindegyike kihasználja a globális elosztási és horizontális méretezési képességeket Cosmos DB középpontjában.
 
-Ez a rövid útmutató azt ismerteti, hogyan hozzon létre egy Cosmos-fiókot [Azure Cosmos DB MongoDB API-](mongodb-introduction.md). Ezután hozhat létre és üzembe helyezése egy konzolalkalmazás használatával jönnek létre a [MongoDB Java Driver-re](https://docs.mongodb.com/ecosystem/drivers/java/). 
+Ez a rövid útmutató bemutatja, hogyan hozhat létre Cosmos-fiókot [Azure Cosmos db API-MongoDB](mongodb-introduction.md). Ezután létrehozhatja és üzembe helyezheti a [MongoDB Java-illesztőprogram](https://docs.mongodb.com/ecosystem/drivers/java/)használatával létrehozott konzolos alkalmazást. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Mielőtt futtathatná ezt a mintát, rendelkeznie kell a következő előfeltételekkel:
-* JDK 1.7+ (ha még nem rendelkezik a JDK-val, futtassa az `apt-get install default-jdk` parancsot)
+* [Az Azure-hoz készült JDK telepítése és a JDK 8-as verziójának Azure Stack](https://aka.ms/azure-jdks)
 * Maven (ha nem rendelkezik Maven-nel, futtassa az `apt-get install maven` parancsot)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -51,7 +52,7 @@ Az új adatbázis neve legyen **db**, az új gyűjteményé pedig **coll**.
 
 ## <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
 
-Most tekintsük klónozza az alkalmazást a Githubról, beállítjuk a kapcsolati karakterláncot, és futtassa azt. Látni fogja, milyen egyszerű az adatokkal programozott módon dolgozni. 
+Most hozzon létre egy alkalmazást a GitHubról, állítsa be a kapcsolatok karakterláncát, és futtassa. Látni fogja, milyen egyszerű az adatokkal programozott módon dolgozni. 
 
 1. Nyisson meg egy parancssort, hozzon létre egy git-samples nevű új mappát, majd zárja be a parancssort.
 
@@ -113,7 +114,7 @@ Az alábbi kódrészletek mind a Program.java fájlból származnak.
 
 Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja be azokat az alkalmazásba.
 
-1. A Fiók területen válassza ki az **Első lépések**, majd a Java lehetőséget, és másolja a kapcsolati sztringet a vágólapra
+1. A fiókban válassza a **gyorskonfigurálás**lehetőséget, válassza a **Java**lehetőséget, majd másolja a kapcsolódási karakterláncot a vágólapra.
 
 2. Nyissa meg a `Program.java` fájlt, cserélje le a MongoClientURI konstruktor argumentumát a kapcsolati sztringgel. Az alkalmazás frissítve lett minden olyan információval, amely az Azure Cosmos DB-vel való kommunikációhoz szükséges. 
     
@@ -135,7 +136,7 @@ Ezentúl a [Robomongo](mongodb-robomongo.md) / [Studio 3T](mongodb-mongochef.md)
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban bemutattuk hogyan hozzon létre egy Cosmos-fiókot, hozzon létre egy gyűjteményt, és futtathat egy konzolalkalmazást. További adatok már importálhat a Cosmos database.
+Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre Cosmos-fiókot, hogyan hozhat létre gyűjteményt, és hogyan futtathat egy konzolos alkalmazást. Mostantól további adatait is importálhatja a Cosmos-adatbázisba.
 
 > [!div class="nextstepaction"]
 > [MongoDB adatok importálása az Azure Cosmos DB-be](mongodb-migrate.md)

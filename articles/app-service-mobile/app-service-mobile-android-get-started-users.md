@@ -3,7 +3,7 @@ title: Hitelesítés hozzáadása az Android a Mobile Apps |} A Microsoft Docs
 description: Ismerje meg, hogyan használhatja az Azure App Service Mobile Apps funkciójával hitelesíti a felhasználókat az Androidos alkalmazás identitás-szolgáltatóktól, beleértve a Google, Facebook, Twitter és a Microsoft számos.
 services: app-service\mobile
 documentationcenter: android
-author: conceptdev
+author: elamalani
 manager: crdun
 editor: ''
 ms.assetid: 1fc8e7c1-6c3c-40f4-9967-9cf5e21fc4e1
@@ -12,19 +12,23 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
-ms.date: 11/16/2017
-ms.author: crdun
-ms.openlocfilehash: 4ee71e00807fcfe698a7e965979434f338f5b870
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: f138911510db4e6839ff96317fa6004e449e58be
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38595528"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443584"
 ---
 # <a name="add-authentication-to-your-android-app"></a>Hitelesítés hozzáadása az Android-alkalmazás
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
-## <a name="summary"></a>Összegzés
+> [!NOTE]
+> A Visual Studio App Center fektet a mobilalkalmazás-fejlesztés központi új, integrált szolgáltatások. A fejlesztők a **hozhat létre**, **teszt** és **terjesztése** állíthat be folyamatos integrációt és teljesítést folyamat szolgáltatások. Az alkalmazás telepítve van, a fejlesztők monitorozható az állapot és az alkalmazás használatával használatát a **Analytics** és **diagnosztikai** -szolgáltatásokat, és kapcsolatba léphet a felhasználókat a **leküldéses** a szolgáltatás. A fejlesztők is kihasználhatják a **Auth** azok a felhasználók hitelesítéséhez és **adatok** szolgáltatás és a felhőbeli alkalmazások adatainak szinkronizálása. Tekintse meg [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-android-get-started-users) még ma.
+>
+
+## <a name="summary"></a>Összefoglalás
 Ebben az oktatóanyagban, hitelesítés hozzáadása a todolist gyorsútmutató-projekt az Android által támogatott identitásszolgáltatóval. Ez az oktatóanyag alapján a [A Mobile Apps használatának első lépései] oktatóanyaggal, amely először el kell végeznie.
 
 ## <a name="register"></a>Regisztrálja az alkalmazást a hitelesítéshez, és az Azure App Service konfigurálása

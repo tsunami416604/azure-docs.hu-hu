@@ -1,29 +1,29 @@
 ---
-title: 'Példa: Többszintű aspektusok – Azure Search'
-description: Ismerje meg, hogyan hozhat létre több szintű besorolások létrehozását egy beágyazott navigációs szerkezetet, amelyeket megadhat az alkalmazáslapok jellemzőalapú szerkezetek.
-author: cstone
-manager: cgronlun
+title: 'Példa: Többszintű dimenziók – Azure Search'
+description: Ismerje meg, hogyan hozhat létre sokrétű struktúrákat többszintű besorolásokhoz, és hogyan hozhat létre egy beágyazott navigációs struktúrát, amelyet az alkalmazás lapjain is tartalmazhat.
+author: HeidiSteen
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 01/25/2019
-ms.author: chstone
-ms.openlocfilehash: 7fa17528931be40109d81edac0f15a6a6822ec01
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.date: 05/02/2019
+ms.author: heidist
+ms.openlocfilehash: 9a56bba55f9b3a59126168bc2bbbd50927c3fc78
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55194815"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274085"
 ---
 # <a name="example-multi-level-facets-in-azure-search"></a>Példa: Többszintű aspektusok az Azure Searchben
 
-Az Azure Search-sémák explicit módon nem támogatják a több szintű besorolás kategóriák, de megbecsülheti az azok által kezelésére szolgáló tartalom indexelése és néhány speciális kezelést majd az eredmények alkalmazása előtt. 
+Azure Search sémák nem támogatják explicit módon a többszintű besorolási kategóriákat, de a tartalom indexelés előtti módosításával, majd az eredményekre vonatkozó speciális kezelés alkalmazásával közelítheti meg őket. 
 
-## <a name="start-with-the-data"></a>Az adatokból
+## <a name="start-with-the-data"></a>Az adatkezelés megkezdése
 
-A példában ez a cikk az előző példában épül [modellezheti az AdventureWorks készlet adatbázis](search-example-adventureworks-modeling.md), többszintű jellemzőkezelés az Azure Search bemutatása.
+A cikkben szereplő példa egy korábbi példára épül, amely a [AdventureWorks-leltári adatbázis modellezésével](search-example-adventureworks-modeling.md)mutatja be Azure Search többszintű aspektusait.
 
-– Az AdventureWorks rendelkezik egy egyszerű két szinten besorolást és a egy szülő-gyermek típusú kapcsolat. Rögzített hosszúságú besorolás depths, ez a struktúra a besorolás csoportosításához használható egyszerű SQL illesztési lekérdezés:
+A AdventureWorks egyszerű, kétszintű besorolást tartalmaz egy szülő-gyermek kapcsolattal. A struktúra rögzített hosszúságú taxonómiai mélysége esetén egy egyszerű SQL JOIN-lekérdezést használhat a taxonómia csoportosításához:
 
 ```T-SQL
 SELECT 
@@ -35,27 +35,27 @@ LEFT JOIN
   ON category.ParentProductCategoryId=parent.ProductCategoryId
 ```
 
-  ![Lekérdezés eredményei](./media/search-example-adventureworks/prod-query-results.png "lekérdezés eredményei")
+  ![Lekérdezés eredményei](./media/search-example-adventureworks/prod-query-results.png "Lekérdezés eredményei")
 
-## <a name="indexing-to-a-collection-field"></a>Egy gyűjtemény mezőre indexelése
+## <a name="indexing-to-a-collection-field"></a>Indexelés egy gyűjtemény mezőjébe
 
-Ez a struktúra tartalmazó az indexben, hozzon létre egy **Collection(Edm.String)** tárolja ezeket az adatokat, megakadályozhatja, hogy a attribútumok mező kereshető, szűrhető, kategorizálható tartalmazzák az Azure Search-séma mezőbe, és lekérhető.
+A struktúrát tartalmazó indexben hozzon létre egy **gyűjteményt (EDM. String)** a Azure Search sémában az adatok tárolásához, és győződjön meg arról, hogy a mező attribútumai között kereshető, szűrhető, és lekérhető.
 
-Most tartalom, amelyre hivatkozik egy adott besorolást kategória indexelésekor küldje el a besorolás a besorolást az egyes fenyegetési szöveget tartalmazó tömb. Például, ha az entitás `ProductCategoryId = 5 (Mountain Bikes)`, küldje el a mezőt `[ "Bikes", "Bikes|Mountain Bikes"]`
+Most, amikor egy adott besorolási kategóriára hivatkozó tartalmat indexel, elküldheti a besorolást egy olyan tömbként, amely a taxonómia egyes szintjeiből szöveget tartalmaz. Például egy olyan entitás esetében, amely `ProductCategoryId = 5 (Mountain Bikes)`a esetében beküldi a mezőt`[ "Bikes", "Bikes|Mountain Bikes"]`
 
-Figyelje meg, hogy a gyermek kategória "Mountain Bike-OK" érték "Kerékpárok" szülőkategória felvételét. Minden alkategória kell ágyazza be a teljes elérési útvonalát a gyökérelem viszonyítva. A pipe karakterrel elválasztó tetszőleges, de ez konzisztensnek kell lennie, és nem szabad megjelennie a forrás szöveget. Az elválasztó karaktert helyreállítani a besorolás fa értékkorlátozás eredményeket az alkalmazás kódjában lesz használható.
+Figyelje meg, hogy a "bikes" szülő kategóriába belefoglalt "Mountain Bikes" érték szerepel a gyermek kategóriában. Minden alkategóriának a gyökér elemhez viszonyított teljes elérési útját kell beágyaznia. A cső karakter elválasztója nem megfelelő, de konzisztensnek kell lennie, és nem szerepelhet a forrás szövegében. A rendszer az alkalmazás kódjában az elválasztó karaktert fogja használni a taxonómia fájának a dimenziós eredményekből való újraépítéséhez.
 
-## <a name="construct-the-query"></a>A lekérdezési konstrukció
+## <a name="construct-the-query"></a>A lekérdezés kiépítése
 
-A lekérdezések kiadásakor a következő dimenzió specifikáció (ahol a besorolás az a kategorizálható osztályozási mezőt) a következők: `facet = taxonomy,count:50,sort:value`
+A lekérdezések kiállításakor adja meg a következő aspektusi meghatározást (ahol a taxonómia a saját aspektusú besorolási mező):`facet = taxonomy,count:50,sort:value`
 
-A hibaszám értéke elég nagy az összes lehetséges besorolás értékek visszaadásához kell lennie. Az AdventureWorks adatokat tartalmaznak, 41 eltérő besorolást, így `count:50` elegendő.
+A darabszám értékének elég magasnak kell lennie ahhoz, hogy visszaállítsa az összes lehetséges besorolási értéket. A AdventureWorks adatok 41 különböző besorolási értékeket tartalmaznak, ezért `count:50` elegendő.
 
-  ![Jellemzőalapú szűrő](./media/search-example-adventureworks/facet-filter.png "Jellemzőalapú szűrő")
+  ![Sokoldalú szűrő](./media/search-example-adventureworks/facet-filter.png "Sokoldalú szűrő")
 
-## <a name="build-the-structure-in-client-code"></a>Az ügyfélkód a struktúra létrehozása
+## <a name="build-the-structure-in-client-code"></a>A struktúra létrehozása az ügyfél kódjában
 
-Az ügyfél alkalmazáskódban hozza a besorolás fa minden értékkorlátozás értéke a pipe karakterrel felosztásával.
+Az ügyfélalkalmazás kódjában állítsa össze a taxonómia faszerkezetét úgy, hogy az egyes dimenziók értékét a cső karakterére bontja.
 
 ```javascript
 var sum = 0
@@ -82,21 +82,21 @@ results['@search.facets'][field].forEach(function(d) {
 categories.count = sum;
 ```
 
-A **kategóriák** objektum már használható pontos száma összecsukható besorolás fa megjelenítése:
+A **Categories (kategóriák** ) objektum mostantól lehetővé teszi egy összecsukható taxonómia-fa pontos számlálását:
 
-  ![Többszintű jellemzőalapú szűrő](./media/search-example-adventureworks/multi-level-facet.png "többszintű jellemzőalapú szűrő")
+  ![többszintű szűrő](./media/search-example-adventureworks/multi-level-facet.png "többszintű szűrő")
 
  
-Minden hivatkozás, a fanézetben a kapcsolódó szűrőt kell alkalmazni. Példa:
+A fában lévő összes hivatkozásnak alkalmaznia kell a kapcsolódó szűrőt. Példa:
 
-+ **besorolás bármely** `(x:x eq 'Accessories')` összes dokumentumot visszaadja a Kellékek ág
-+ **besorolás bármely** `(x:x eq 'Accessories|Bike Racks')` csak egy kerékpárt állványt alkategóriát a Kellékek ág a dokumentumokat ad vissza.
++ **Taxonómia/** `(x:x eq 'Accessories')` a kellékek ág összes dokumentumának visszaadása
++ **Taxonómia/minden olyan** `(x:x eq 'Accessories|Bike Racks')` dokumentumot ad vissza, amely a tartozékok ág alatti Bike-állványok alkategóriája.
 
-Ez a módszer részletesebb besorolás fák hasonlóan összetettebb forgatókönyveket fednek le lesz skálázva és alkategóriák, a másik szülő kategóriák előforduló ismétlődő (például `Bike Components|Forks` és `Camping Equipment|Forks`).
+Ez a módszer az összetettebb forgatókönyvek, például a mélyebb besorolású fák és a különböző szülő-kategóriákba tartozó duplikált alkategóriák (például `Bike Components|Forks` : és `Camping Equipment|Forks`) esetén is méretezhető.
 
 > [!TIP]
-> Lekérdezés sebesség visszaadott értékkorlátozással száma befolyásolja. Támogatja a nagyon nagy méretű besorolás csoportokat, érdemes lehet hozzáadni egy kategorizálható **Edm.String** mező a legfelső szintű besorolás értékét minden egyes dokumentum tárolásához. Ezután alkalmazza a fenti ugyanezen technika, de csak akkor hajtsa végre a gyűjtemény-értékkorlátozása lekérdezés (a gyökérmezőbe besorolás a szűrt) amikor a felhasználó kibővíti a legfelső szintű csomópontja. Vagy ha 100 %-os visszaírási nem szükséges, egyszerűen értékkorlátozás száma csökkentheti a indokolt, és győződjön meg arról, a dimenzió bejegyzések száma szerint vannak rendezve.
+> A lekérdezési sebességet a visszaadott dimenziók száma érinti. A nagyon nagy taxonómiai készletek támogatásához érdemes lehet egy sokrétű **EDM. String** mezőt hozzáadni az egyes dokumentumok legfelső szintű besorolási értékének tárolásához. Ezt követően alkalmazza ugyanezt a technikát, de csak a gyűjtemény-dimenziós lekérdezést hajtsa végre (szűrve a gyökérszintű taxonómia mezőben), amikor a felhasználó kibont egy legfelső szintű csomópontot. Ha azonban a 100%-os visszahívás nem szükséges, egyszerűen csökkentse a dimenziók számát egy ésszerű számra, és győződjön meg arról, hogy a dimenziók bejegyzéseinek száma szám szerint rendezve történik.
 
 ## <a name="see-also"></a>Lásd még
 
-[Példa: Az Azure Search az AdventureWorks készlet adatbázis minta](search-example-adventureworks-modeling.md)
+[Példa: A Azure Search AdventureWorks-leltározási adatbázisának modellezése](search-example-adventureworks-modeling.md)

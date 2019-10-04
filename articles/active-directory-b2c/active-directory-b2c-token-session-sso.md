@@ -2,20 +2,20 @@
 title: Munkamenet és egyszeri bejelentkezés beállításainak – Azure Active Directory B2C |} A Microsoft Docs
 description: Munkamenet és egyszeri bejelentkezés beállításainak az Azure Active Directory B2C-t.
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/16/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 674a20fc96cf5b86219222d746525a3559ae9d09
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 472e494d445ae4a22c988076994649543ec1f7f8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59681097"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66508115"
 ---
 # <a name="session-and-single-sign-on-configuration-in-azure-active-directory-b2c"></a>Munkamenet és egyszeri bejelentkezés beállításainak az Azure Active Directory B2C-vel
 
@@ -24,7 +24,7 @@ Ez a funkció lehetővé teszi részletesebb szabályozás érdekében az egy [f
 - Azure AD B2C által felügyelt webes alkalmazás munkamenetek élettartamát.
 - Egyszeri bejelentkezés (SSO) viselkedését több alkalmazást és az Azure AD B2C-bérlőben a felhasználói folyamatok.
 
-## <a name="session-behavior"></a>Munkamenet viselkedése
+## <a name="session-behavior"></a>Munkamenet-viselkedés
 
 Az Azure AD B2C támogatja a [OpenID Connect hitelesítési protokoll](active-directory-b2c-reference-oidc.md) biztonságos bejelentkezési webes alkalmazásokhoz való engedélyezéséhez szükséges. A következő tulajdonságok használatával webes alkalmazás munkameneteket kezelhessen:
 

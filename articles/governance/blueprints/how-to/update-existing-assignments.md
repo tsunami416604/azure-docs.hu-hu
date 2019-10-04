@@ -1,74 +1,73 @@
 ---
-title: A portálról a meglévő hozzárendelések frissítése
-description: További információ a mechanizmusa a portálról az Azure-tervek a meglévő hozzárendelések módosítása.
+title: Meglévő hozzárendelés frissítése a portálról
+description: Ismerje meg a meglévő hozzárendelések Azure-tervezetekben való frissítésének mechanizmusát.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 10/25/2018
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: c75bd8c3831bad0c8217f16315843cbe3824fe4d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e5697d00c2b0a869667d74e93c3ccae593bf200b
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792504"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231931"
 ---
-# <a name="how-to-update-an-existing-blueprint-assignment"></a>Egy meglévő tervezet-hozzárendelés frissítése
+# <a name="how-to-update-an-existing-blueprint-assignment"></a>Meglévő terv-hozzárendelés frissítése
 
-A tervezet hozzárendelésekor a hozzárendelés lehet frissíteni. A meglévő hozzárendelések módosítása több okból is beleértve:
+Tervezet hozzárendelésekor a hozzárendelés frissíthető. A meglévő hozzárendelések frissítése több okból is lehetséges, többek között:
 
-- Hozzáadása vagy eltávolítása [erőforrás zárolása](../concepts/resource-locking.md)
-- Módosítsa az értéket a [dinamikus paraméterek](../concepts/parameters.md#dynamic-parameters)
-- A hozzárendelés frissítsen egy újabb **közzétett** a tervezet verziója
+- [Erőforrás-zárolás](../concepts/resource-locking.md) hozzáadása vagy eltávolítása
+- [Dinamikus paraméterek](../concepts/parameters.md#dynamic-parameters) értékének módosítása
+- A hozzárendelés frissítése a terv újabb **közzétett** verziójára
 
 ## <a name="updating-assignments"></a>Hozzárendelések frissítése
 
-1. Válassza ki **minden szolgáltatás** a bal oldali panelen. Keresse meg és válassza **tervezetek**.
+1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali ablaktáblán. Keresse meg és válasszaki a tervrajzokat.
 
-1. Válassza ki **hozzárendelt tervezetek** a lap bal oldalán.
+1. Válassza ki a **kijelölt tervrajzokat** a bal oldali oldalról.
 
-1. Tervezetek listájában bal kattintással a tervezet-hozzárendelést. Kattintson a **hozzárendelés frissítése** gombra, vagy kattintson a jobb gombbal a tervezet-hozzárendelést, és válassza ki **hozzárendelés frissítése**.
+1. A tervrajzok listájában kattintson a jobb gombbal a terv-hozzárendelésre. Ezután kattintson a **hozzárendelés frissítése** gombra, vagy kattintson a jobb gombbal a terv-hozzárendelésre, és válassza a **hozzárendelés frissítése**lehetőséget.
 
-   ![Egy meglévő tervezet-hozzárendelés frissítése](../media/update-existing-assignments/update-assignment.png)
+   ![Meglévő terv-hozzárendelés frissítése](../media/update-existing-assignments/update-assignment.png)
 
-1. A **tervezet hozzárendelése** lap betöltése az eredeti hozzárendelés az összes értékeivel előre kitöltött lesz. Módosíthatja a **tervrajz-definíció verziója**, a **zárolási hozzárendelés** állapotot, és a tervezetdefiníciót a dinamikus paraméterek egyikét. Kattintson a **hozzárendelése** Amikor végzett a módosításokkal.
+1. A **terv hozzárendelése** lapon a rendszer az eredeti hozzárendelés összes értékével előre kitöltött értéket fogja betölteni. Megváltoztathatja a **terv definíciójának verzióját**, a **zárolás hozzárendelésének** állapotát, valamint a terv definíciójában létező dinamikus paramétereket. Kattintson a **hozzárendelés** gombra a módosítások végrehajtásakor.
 
-1. A frissített hozzárendelés részletei lapon tekintse meg az új állapot. Ebben a példában hozzáadtunk **zárolás** a hozzárendeléshez.
+1. A frissített hozzárendelés részletei lapon tekintse meg az új állapotot. Ebben a példában a hozzárendelést felvettük a zárolásra.
 
-   ![Frissíti egy meglévő tervezet-hozzárendelést - zárolási mód változása](../media/update-existing-assignments/updated-assignment.png)
+   ![Egy meglévő terv hozzárendelésének frissítése – a zárolási mód módosult](../media/update-existing-assignments/updated-assignment.png)
 
-1. Részletes adatait más **hozzárendelési műveletek** használatával a listából. A tábla, **felügyelt erőforrások** frissítések által választott hozzárendelési műveletet.
+1. A legördülő lista használatával megismerheti a többi **hozzárendelési művelet** részleteit. A felügyelt **erőforrások** a kijelölt hozzárendelési művelet által frissülő táblázata.
 
-   ![A tervezet-hozzárendelést a hozzárendelési műveletek](../media/update-existing-assignments/assignment-operations.png)
+   ![Tervrajz-hozzárendelés hozzárendelési műveletei](../media/update-existing-assignments/assignment-operations.png)
 
-## <a name="rules-for-updating-assignments"></a>Szabályok hozzárendeléseinek frissítése folyamatban van
+## <a name="rules-for-updating-assignments"></a>A hozzárendelések frissítésére vonatkozó szabályok
 
-A központi telepítés a frissített hozzárendelések néhány fontos szabályokat követi. Ezek a szabályok határozzák meg, mi történik, a már telepített erőforrásokhoz. A kért változtatás és a telepített vagy a frissített összetevő erőforrás típusa, határozza meg, hogy mely műveleteket hajtja végre.
+A frissített hozzárendelések telepítése néhány fontos szabályt követ. Ezek a szabályok határozzák meg, hogy mi történik a már üzembe helyezett erőforrásokkal. A kért módosítás és az összetevő-erőforrás üzembe helyezése vagy frissítése határozza meg, hogy mely műveleteket kell elvégezni.
 
 - Szerepkör-hozzárendelések
-  - Ha a szerepkör vagy a szerepkör assignee (felhasználó, csoport vagy alkalmazás) megváltozik, akkor egy új szerepkör-hozzárendelés jön létre. Szerepkör-hozzárendelések korábban már telepítette a helyükön maradnak.
+  - Ha a szerepkör vagy a hozzárendelt szerepkör (felhasználó, csoport vagy alkalmazás) megváltozik, a rendszer új szerepkör-hozzárendelést hoz létre. A korábban üzembe helyezett szerepkör-hozzárendelések továbbra is érvényben maradnak.
 - Szabályzat-hozzárendelések
-  - Ha módosítják a szabályzat-hozzárendelés paramétereit, a meglévő hozzárendelést frissül.
-  - Ha a szabályzat-hozzárendelés definíciója megváltozott, létrejön egy új szabályzat-hozzárendelés. Szabályzat-hozzárendelések korábban már telepítette a helyükön maradnak.
-  - Ha a házirend-hozzárendelési összetevője a tervezet eltávolítják, telepített szabályzat-hozzárendelések a helyükön maradnak.
+  - Ha a szabályzat-hozzárendelés paraméterei megváltoznak, a rendszer frissíti a meglévő hozzárendelést.
+  - Ha a szabályzat-hozzárendelés definíciója módosul, létrejön egy új szabályzat-hozzárendelés. A korábban üzembe helyezett szabályzat-hozzárendelések továbbra is érvényben maradnak.
+  - Ha a szabályzat-hozzárendelési összetevő el lett távolítva a tervből, a rendszer az üzembe helyezett szabályzat-hozzárendeléseket is megmarad.
 - Azure Resource Manager-sablonok
-  - A sablon Resource Managerrel, dolgoz fel egy **PUT**. Egyes erőforrástípusok másképp kezeli ezt a műveletet, mert tekintse át az egyes belefoglalt erőforrást annak megállapításához, mikor fusson a tervek szerint ez a művelet hatása a dokumentációban.
+  - A sablon a Resource Manageren keresztül lesz feldolgozva **put**-ként. Mivel minden erőforrástípus eltérően kezeli ezt a műveletet, tekintse át az egyes befoglalt erőforrások dokumentációját, hogy meghatározza a művelet hatását a tervrajzok futtatásakor.
 
-## <a name="possible-errors-on-updating-assignments"></a>Hozzárendeléseinek frissítése folyamatban van a lehetséges hibák
+## <a name="possible-errors-on-updating-assignments"></a>A hozzárendelések frissítésének lehetséges hibái
 
-Hozzárendelések frissítése esetén lehetséges szünet, ha a végrehajtott módosításokat. Példa már telepítése után megváltoztatja az erőforráscsoport helyét. Minden olyan változás által támogatott [Azure Resource Manager](../../../azure-resource-manager/resource-group-overview.md) arról is, de bármelyik módosíthatja, hogy lenne az Azure Resource Manager hibát eredményez is eredményez a hozzárendelés sikertelen.
+A hozzárendelések frissítésekor lehetséges, hogy a végrehajtott módosítások megszakadnak. Ilyen például a már üzembe helyezett erőforráscsoport helyének módosítása. A [Azure Resource Manager](../../../azure-resource-manager/resource-group-overview.md) által támogatott bármely módosítás elvégezhető, de előfordulhat, hogy a Azure Resource Manager által hibát eredményező változás a hozzárendelés hibáját is eredményezi.
 
-Nincs korlátozva a hozzárendelés egy hány alkalommal frissíthetők. Hiba esetén határozza meg a hiba, és győződjön meg arról, egy másik frissítés, a hozzárendeléshez.  Példaforgatókönyvek hiba:
+Korlátlan számú hozzárendelés frissíthető. Ha hiba történik, állapítsa meg a hibát, és készítsen egy másik frissítést a hozzárendeléshez.  Példa a hibákra:
 
-- Hibás paraméter
-- Egy már meglévő objektum
-- Nem támogatott az Azure Resource Manager által módosítása
+- Rossz paraméter
+- Már létező objektum
+- Azure Resource Manager által nem támogatott módosítás
 
 ## <a name="next-steps"></a>További lépések
 
-- Tudnivalók a [tervek életciklusáról](../concepts/lifecycle.md).
+- A [terv életciklusának](../concepts/lifecycle.md)megismerése.
 - A [statikus és dinamikus paraméterek](../concepts/parameters.md) használatának elsajátítása.
 - A [tervekkel kapcsolatos műveleti sorrend](../concepts/sequencing-order.md) testreszabásának elsajátítása.
 - A [tervek erőforrás-zárolásának](../concepts/resource-locking.md) alkalmazásával kapcsolatos részletek.

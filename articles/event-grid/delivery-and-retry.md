@@ -5,14 +5,14 @@ services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/01/2019
+ms.date: 05/15/2019
 ms.author: spelluru
-ms.openlocfilehash: 6dfa84eff8dcc104ae6f9c16262f3b1c697df6c1
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 0945b06f78ac34500f0b16a4a419cff12d1a4734
+ms.sourcegitcommit: af31deded9b5836057e29b688b994b6c2890aa79
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56991206"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67812924"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Event Grid az üzenetek kézbesítését, és próbálkozzon újra
 
@@ -24,22 +24,30 @@ Jelenleg Event Grid küld minden esemény külön-külön előfizetők számára
 
 ## <a name="retry-schedule-and-duration"></a>Ismételje meg az ütemezés és időtartama
 
-Event Grid egy exponenciális leállítási újrapróbálkozási házirend eseménykézbesítés használ. A végpont nem válaszol, vagy esetén hibakódot ad vissza, ha az Event Grid újrapróbálkozik kézbesítési az elérhető legjobb lehetőség alapján a következő ütemezés:
+Event Grid egy üzenet kézbesítése után választ 30 másodpercet vár. 30 másodperc Ha a végpont nem válaszolt, az üzenetet a rendszer sorba állítja próbálkozzon újra. Event Grid egy exponenciális leállítási újrapróbálkozási házirend eseménykézbesítés használ. Event Grid újrapróbálkozik kézbesítési az elérhető legjobb lehetőség alapján a következő ütemezés szerint:
 
-1. 10 másodperc
-1. 30 másodperc
-1. 1 perc
-1. 5 perc
-1. 10 perc
-1. 30 perc
-1. 1 óra
-1. Akár 24 órát a óránként
+- 10 másodperc
+- 30 másodperc
+- 1 perc
+- 5 perc
+- 10 perc
+- 30 perc
+- 1 óra
+- Akár 24 órát a óránként
+
+Ha a végpont 3 percen belül válaszol, Event Grid megkísérli az esemény eltávolítása az újrapróbálkozási várólista az elérhető legjobb lehetőség alapján, de ismétlődő továbbra is lehetséges, hogy kapott.
 
 Event Grid egy kis véletlenszerű ad hozzá minden újrapróbálkozási lépést, és kulcsmodulonként hagyhat bizonyos újrapróbálkozásokat, ha a végpont konzisztens módon sérült, le hosszabb ideig, vagy úgy tűnik, hogy kihasznált.
 
 Determinisztikus viselkedését, állítsa az élő esemény időpontját és a maximális kézbesítési kísérletek a [előfizetés újrapróbálkozási szabályzatok](manage-event-delivery.md).
 
 Alapértelmezés szerint az Event Grid összes eseményt, amely nem biztosított 24 órán belül lejár. Is [testre szabhatja az újrapróbálkozási szabályzat](manage-event-delivery.md) egy esemény-előfizetés létrehozásakor. Biztosítanak a maximális számát (alapértelmezés: 30) a kézbesítési kísérletek és az esemény élő idő (1440 perc az alapértelmezett érték).
+
+## <a name="delayed-delivery"></a>Késleltetett kézbesítés
+
+A végpont során kézbesítési hiba lép fel, mert Event Grid megkezdik a szállítási és az eseményeket, hogy a végpont újrapróbálkozási késleltetés. Például, ha meghibásodik egy végpontnak közzétett első tíz események, Event Grid feltételezi, hogy a végpont problémák, és minden későbbi próbálkozások késleltetni fogja *és az új* egy kis ideig – bizonyos esetekben akár néhány órát kézbesítések .
+
+Késleltetett kézbesítési működési célja, hogy nem megfelelő állapotú végpontok, valamint az Event Grid rendszer védelmét. Visszatartás, és nem megfelelő állapotú végpontok szállítási késedelem nélkül Event Grid újrapróbálkozási szabályzat és a kötet képességeket is könnyen túlterhelheti a rendszer.
 
 ## <a name="dead-letter-events"></a>Kézbesítetlen üzenetek esemény
 
@@ -61,25 +69,29 @@ Event Grid igazolhatom az események HTTP-válaszkódot használ.
 
 ### <a name="success-codes"></a>Sikeres kód
 
-A következő HTTP-válaszkódot adja meg, hogy az esemény rendelkezik lett sikeresen kézbesítve, a webhook. Event Grid úgy ítéli meg kézbesítési befejeződött.
+Event Grid tekinti **csak** a következő HTTP-válaszkódot, a sikeres kézbesítések. Minden más kódok sikertelen kézbesítések minősülnek, és megpróbálja állapota vagy deadlettered szükség szerint. Sikeres állapotkódot fogadásakor Event Grid tekinti kézbesítési befejeződött.
 
 - 200 OK
+- 201 Created
 - 202-es elfogadva
+- 203 nem mérvadó információ
+- 204 Nincs tartalom
 
 ### <a name="failure-codes"></a>Sikertelen kód
 
-A következő HTTP-válaszkódot adja meg, hogy az esemény kézbesítési kísérlet meghiúsult.
+A fenti halmazon (200-204) minden más kód tekinti a hibákat, és újból próbálkozunk. Néhány-e őket az alábbi kötött adott újrapróbálkozási szabályzatok, minden más hajtsa végre a szabványos exponenciális visszatartási modell. Fontos figyelembe kell venni, hogy Event Grid-architektúra nagymértékben párhuzamos jellege miatt az újrapróbálkozási viselkedés nem determinisztikus. 
 
-- 400 Hibás kérés
-- 401-es nem engedélyezett
-- 404 – Nem található
-- 408 kérés időtúllépése
-- 413 kérelem az entitás túl nagy
-- 414 URI túl hosszú
-- 429 túl sok kérelem
-- 500 Belső kiszolgálóhiba
-- 503 A szolgáltatás nem érhető el
-- 504 Időtúllépés az átjárón
+| Állapotkód | Újrapróbálkozási viselkedés |
+| ------------|----------------|
+| 400 Hibás kérés | Akár 5 percet újrapróbálkozás (kézbesítetlen Ha azonnal kézbesítetlen beállítása) |
+| 401-es nem engedélyezett | 5 perc múlva próbálkozzon újra, vagy több |
+| 403 Tiltott | 5 perc múlva próbálkozzon újra, vagy több |
+| 404 – Nem található | 5 perc múlva próbálkozzon újra, vagy több |
+| 408 Kérés időtúllépése | 2 perc múlva próbálkozzon újra, vagy több |
+| 413 kérelem az entitás túl nagy | Újrapróbálkozás 10 másodperc vagy annál (kézbesítetlen Ha azonnal kézbesítetlen beállítása) |
+| 503 A szolgáltatás nem érhető el | 30 másodperc múlva újra, vagy több |
+| Minden más | 10 másodperc után próbálja meg újból, vagy több |
+
 
 ## <a name="next-steps"></a>További lépések
 

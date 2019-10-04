@@ -5,16 +5,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: overview
-ms.date: 11/03/2017
+ms.date: 05/20/2019
 author: wmengmsft
 ms.author: wmeng
 ms.reviewer: sngun
-ms.openlocfilehash: 69d2eb1627d42c12a0af024bf1c80e787ed5eca7
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 37249d904343a4eddb0d1e82f451c3b9e95a479d
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044501"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65953500"
 ---
 # <a name="azure-table-storage-overview"></a>Az Azure Table Storage áttekintése
 
@@ -30,7 +30,7 @@ A Table Storage segítségével olyan rugalmas adatkészleteket tárolhat, mint 
 
 * A [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) egy ingyenes, önálló alkalmazás, amelynek segítségével vizuálisan dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszereken.
 
-* [Az Azure Table Storage használatának első lépései a .NET-keretrendszerrel](table-storage-how-to-use-dotnet.md)
+* [A .NET SDK használatával az Azure Cosmos DB Table API és az Azure Table storage használatának első lépései](table-storage-how-to-use-dotnet.md)
 
 * A Table Service elérhető API-kat részletesen ismertető referenciadokumentációjának megtekintése:
 

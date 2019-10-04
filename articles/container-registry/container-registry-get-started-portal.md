@@ -1,25 +1,26 @@
 ---
-title: Rövid útmutató – privát Docker-tárolójegyzék létrehozása az Azure-ban – Azure portal
+title: Rövid útmutató – privát Docker-beállításjegyzék létrehozása az Azure-ban – Azure Portal
 description: Gyorsan megismerheti egy privát Docker-tárolójegyzék az Azure Portallal való létrehozásának módját.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: quickstart
 ms.date: 01/22/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: f41d51981c4da9ee089282da8b8d4cc5f37a4aed
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: c9e8c7fe4d32a44e8c0831154f02eda1f82aaff3
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59682984"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68309469"
 ---
-# <a name="quickstart-create-a-private-container-registry-using-the-azure-portal"></a>Gyors útmutató: Hozzon létre egy privát tárolójegyzékben az Azure portal használatával
+# <a name="quickstart-create-a-private-container-registry-using-the-azure-portal"></a>Gyors útmutató: Privát tároló beállításjegyzékének létrehozása a Azure Portal használatával
 
-Az Azure-beli tároló-beállításjegyzék egy privát Docker-tárolójegyzék az Azure-ban, amelyben tárolhatja és kezelheti privát Docker-tárolóinak rendszerképeit. Ebben a rövid útmutatóban létrehozhat egy tároló-beállításjegyzéket az Azure Portallal. Ezután a Docker-parancsok segítségével továbbít egy rendszerképet a regisztrációs adatbázisba, és végül kérje le, és futtassa a rendszerképet a regisztrációs adatbázisból.
+Az Azure-beli tároló-beállításjegyzék egy privát Docker-tárolójegyzék az Azure-ban, amelyben tárolhatja és kezelheti privát Docker-tárolóinak rendszerképeit. Ebben a rövid útmutatóban létrehozhat egy tároló-beállításjegyzéket az Azure Portallal. Ezután a Docker-parancsokkal leküldheti a tárolók rendszerképét a beállításjegyzékbe, és végül lekérdezheti és futtathatja a rendszerképet a beállításjegyzékből.
 
-Jelentkezzen be a beállításjegyzék tárolórendszerképek dolgozhat, ehhez a rövid útmutatóhoz, hogy futnak-e az Azure parancssori felület (2.0.55 verzió vagy újabb ajánlott). A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli].
+Ahhoz, hogy bejelentkezzen a beállításjegyzékbe a tároló-lemezképek használatához, ehhez a rövid útmutatóhoz az Azure CLI-t (2.0.55 vagy újabb verzió ajánlott) kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli].
 
 A Dockert is telepítenie kell helyileg. A Docker csomagokat biztosít, amelyekkel a Docker egyszerűen konfigurálható bármely [Mac][docker-mac], [Windows][docker-windows] vagy [Linux][docker-linux] rendszeren.
 
@@ -35,19 +36,19 @@ Válassza az **Erőforrás létrehozása** > **Tárolók** > **Container Registr
 
 Adjon meg értékeket az **Adatbázis neve** és **Erőforráscsoport** mezőkben. A beállításjegyzék nevének egyedinek kell lennie az Azure rendszerben, és 5–50 alfanumerikus karaktert kell tartalmaznia. Ebben a rövid útmutatóban hozzon létre egy `myResourceGroup` nevű új erőforráscsoportot az `West US` nevű helyen, majd a **Termékváltozat** mezőben válassza az „Alapszintű” lehetőséget. Kattintson a **Létrehozás** elemre az ACR-példány üzembe helyezéséhez.
 
-![Tárolóregisztrációs adatbázis létrehozása az Azure Portalon][qs-portal-03]
+![Tároló-beállításjegyzék létrehozása a Azure Portal][qs-portal-03]
 
-Ebben a rövid útmutatóban létrehozott egy *alapszintű* beállításjegyzékbe, amely költségek optimalizált megoldás megismerése az Azure Container Registry-fejlesztőknek. További információ az elérhető szolgáltatáscsomagban: [tároló-beállításjegyzék Termékváltozatai][container-registry-skus].
+Ebben a rövid útmutatóban egy alapszintű beállításjegyzéket hozunk létre, amely egy költséghatékony megoldás a fejlesztők számára a Azure Container Registry megismeréséhez. A rendelkezésre álló szolgáltatási szintek részletes ismertetését lásd: [Container Registry SKU][container-registry-skus]-i.
 
-Ha a **üzembe helyezés sikeres** műveletről, válassza ki a tároló-beállításjegyzéket a portálon. 
+Amikor megjelenik az **üzembe helyezés sikeres** üzenet, válassza ki a tároló-beállításjegyzéket a portálon. 
 
-![Tárolóregisztrációs adatbázis áttekintése az Azure Portalon][qs-portal-05]
+![A Container Registry áttekintése a Azure Portal][qs-portal-05]
 
-Jegyezze fel az értékét a **bejelentkezési kiszolgáló**. Ezt az értéket használja a következő lépések során a beállításjegyzék, az Azure CLI-vel és a Docker használata.
+Jegyezze fel a **bejelentkezési kiszolgáló**értékét. Ezt az értéket a következő lépésekben használhatja, miközben az Azure CLI és a Docker használatával dolgozik a beállításjegyzékben.
 
 ## <a name="log-in-to-registry"></a>Bejelentkezés a beállításjegyzékbe
 
-A tárolórendszerképek mozgatásához először be kell jelentkeznie az ACR-példányba. Nyissa meg a parancs-rendszerhéj az operációs rendszer, és használja a [az acr bejelentkezési] [ az-acr-login] parancsot az Azure CLI-ben.
+A tárolórendszerképek mozgatásához először be kell jelentkeznie az ACR-példányba. Nyisson meg egy parancssori felületet az operációs rendszeren, és használja az az [ACR login][az-acr-login] parancsot az Azure CLI-ben.
 
 ```azurecli
 az acr login --name <acrName>
@@ -59,26 +60,26 @@ A parancs a `Login Succeeded` üzenetet adja vissza, ha befejeződött.
 
 ## <a name="list-container-images"></a>Tárolórendszerképek listázása
 
-A tárolójegyzékben található rendszerképek listázásához navigáljon a beállításjegyzékhez a portálon, válassza a **Tárházak**, majd válassza ki a segítségével létrehozott adattárat `docker push`.
+A beállításjegyzékben található rendszerképek listázásához navigáljon a beállításjegyzékhez a portálon,és válassza a Tárházak lehetőséget, majd válassza ki `docker push`a létrehozott tárházat.
 
-Ebben a példában kiválasztjuk a **hello-world** tárházat, és láthatja a `v1`-alatt címkézett rendszerképet **CÍMKÉK**.
+Ebben a példában a **Hello-World** tárházat választjuk, és a `v1` **címkék**alatt láthatjuk a-Tagged képet.
 
-![Tárolórendszerképek listázása az Azure Portalon][qs-portal-09]
+![Tároló lemezképek listázása a Azure Portal][qs-portal-09]
 
 [!INCLUDE [container-registry-quickstart-docker-pull](../../includes/container-registry-quickstart-docker-pull.md)]
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az erőforrások törléséhez keresse meg a **myResourceGroup** erőforráscsoportot a portálon. Az erőforráscsoport betöltése után kattintson a **erőforráscsoport törlése** eltávolítható az erőforráscsoport, a tároló-beállításjegyzék és a tárolórendszerképeket tárolja.
+Az erőforrások tisztításához navigáljon az **myResourceGroup** erőforráscsoporthoz a portálon. Az erőforráscsoport betöltését követően kattintson az **erőforráscsoport törlése** elemre az erőforráscsoport, a tároló-beállításjegyzék és az ott tárolt tároló-lemezképek eltávolításához.
 
 ![Erőforráscsoport törlése az Azure Portalon][qs-portal-08]
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban létrehozott egy Azure Container Registry és az Azure portal, leküldtünk bele egy tárolórendszerképet, és a lekért és futtatta a rendszerképet a beállításjegyzékből. Továbbra is az Azure Container Registry oktatóanyagok az ACR alaposabban.
+Ebben a rövid útmutatóban létrehozott egy Azure Container Registryt a Azure Portal, leküldte a tároló képét, és lehúzta és futtatta a rendszerképet a beállításjegyzékből. Folytassa a Azure Container Registry oktatóanyagokkal, és tekintse meg az ACR mélyebb megjelenését.
 
 > [!div class="nextstepaction"]
-> [Azure Container Registry-oktatóanyagok][container-registry-tutorial-quick-task]
+> [Oktatóanyagok Azure Container Registry][container-registry-tutorial-quick-task]
 
 <!-- IMAGES -->
 [qs-portal-01]: ./media/container-registry-get-started-portal/qs-portal-01.png

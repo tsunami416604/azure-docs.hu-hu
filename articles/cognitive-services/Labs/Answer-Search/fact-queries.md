@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Projekt válaszkeresés (tény) lekérdezés'
+title: 'Gyors útmutató: Project answer keresési egyedkapcsolat lekérdezése'
 titlesuffix: Azure Cognitive Services
 description: Tények lekérdezése a Válaszkeresés projekt használatával
 services: cognitive-services
@@ -10,14 +10,15 @@ ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/16/2018
 ms.author: rosh
-ms.openlocfilehash: fca459291fbf25c5404427fdcfc96947c52a1e74
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ROBOTS: NOINDEX
+ms.openlocfilehash: 05b870fb0d836a89be2a7212436c5c6f91982837
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544307"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705456"
 ---
-# <a name="quickstart-query-for-facts"></a>Gyors útmutató: A tények lekérdezés
+# <a name="quickstart-query-for-facts"></a>Gyors útmutató: Tények lekérdezése
 
 Ha a lekérdezés tényekre, például dátumokra vagy azonosítható ismeretanyagokra vonatkozik, a válasz `facts` (tény) válaszokat tartalmazhat. A tény válaszok webes dokumentumokból kivonatolt releváns eredményeket tartalmaznak.  Ezek a lekérdezések weblapokat minden esetben adnak vissza, [tényeket](fact-queries.md) és/vagy [entitásokat](entity-queries.md) pedig a lekérdezéstől függően.
 
@@ -31,7 +32,7 @@ https://labsportalppe.azure-api.net/answerSearch/v7.0/search?q=valentines+2016
 
 ```
 
-**Válasz:** A `subjectName` mező tartalmaz egy verzió megjelenítése a felhasználói lekérdezés, amely lehetővé teszi, az egy címkét a tény megjelenítésekor. Ha a lekérdezési sztring valentin+2016 volt, a Bing módosíthatja a Valentin-nap 2016 kifejezésre. A Leírás mező tartalmazza a tényt.
+**Válasz** A `subjectName` mező tartalmazza a felhasználó lekérdezésének megjelenítési verzióját, amelyet címkéként használhat a tény megjelenítésekor. Ha a lekérdezési sztring valentin+2016 volt, a Bing módosíthatja a Valentin-nap 2016 kifejezésre. A Leírás mező tartalmazza a tényt.
 
 ```
 {
@@ -69,7 +70,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=why+is+the+s
 
 ```
 
-**Válasz:** A `value/description` mező tartalmazza az ismeretcikk vagy a lekérdezés által kért információkat.
+**Válasz** A `value/description` mező a lekérdezés által kért ismereteket vagy információkat tartalmazza.
 
 ```
   "facts": {

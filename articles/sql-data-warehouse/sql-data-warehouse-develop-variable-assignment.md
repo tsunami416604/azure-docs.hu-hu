@@ -1,36 +1,36 @@
 ---
-title: Rendelje hozzá a változókat az Azure SQL Data Warehouse |} A Microsoft Docs
-description: Tippek az Azure SQL Data Warehouse a T-SQL-változók hozzárendeléséhez használható megoldások fejlesztéséhez.
+title: Változók kiosztása Azure SQL Data Warehouseban | Microsoft Docs
+description: Tippek a T-SQL-változók Azure SQL Data Warehouse való hozzárendeléséhez a megoldások fejlesztéséhez.
 services: sql-data-warehouse
-author: ckarst
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: implement
+ms.subservice: development
 ms.date: 04/17/2018
-ms.author: cakarst
+ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: ee97f7e5cda8b954fb697f73746e416d88d38c2d
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 6c943478f3904aac17a572f012f2b2b69ffa2223
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401694"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479562"
 ---
-# <a name="assigning-variables-in-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse változók hozzárendelése
+# <a name="assigning-variables-in-azure-sql-data-warehouse"></a>Változók hozzárendelésének Azure SQL Data Warehouse
 
-Tippek az Azure SQL Data Warehouse a T-SQL-változók hozzárendeléséhez használható megoldások fejlesztéséhez.
+Tippek a T-SQL-változók Azure SQL Data Warehouse való hozzárendeléséhez a megoldások fejlesztéséhez.
 
-## <a name="setting-variables-with-declare"></a>DECLARE a változók beállítása
+## <a name="setting-variables-with-declare"></a>Változók beállítása a DECLARE értékkel
 
-Az SQL Data Warehouse változók vannak beállítva, használja a `DECLARE` utasítást vagy a `SET` utasítást. A DECLARE változók inicializálása az egyik változó értékének beállítása az SQL Data Warehouse a legrugalmasabb módszer.
+A SQL Data Warehouse változók az `DECLARE` utasítással vagy az `SET` utasítással vannak beállítva. A változók és a bevallások inicializálása az egyik legrugalmasabb módszer a SQL Data Warehouse változó értékének megadására.
 
 ```sql
 DECLARE @v  int = 0
 ;
 ```
 
-DECLARE használatával egyszerre több változó beállítása. Válassza ki vagy a frissítés nem használható a következőket:
+A DECLARE paranccsal egyszerre több változót is beállíthat. A SELECT vagy a UPDATE művelettel nem végezheti el a következőket:
 
 ```sql
 DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 'Smith')
@@ -38,7 +38,7 @@ DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 
 ;
 ```
 
-Nem lehet inicializálni a, és nem használhat egy változót az azonos DECLARE utasítást. A pont mutatja be, a következő példában van **nem** hajtható végre, mert @p1 van inicializálva és az azonos DECLARE utasítást használja. A következő példa olyan hibaüzenetet ad.
+Nem inicializálható és nem használható változó ugyanabban a DEKLARÁLt utasításban. A pont szemléltetése érdekében a következő példa **nem** engedélyezett, mivel @p1 mindkettő inicializálva van, és ugyanabban a deklarált utasításban van használatban. A következő példa hibát jelez.
 
 ```sql
 DECLARE @p1 int = 0
@@ -46,11 +46,11 @@ DECLARE @p1 int = 0
 ;
 ```
 
-## <a name="setting-values-with-set"></a>A SET értékeinek beállítása
+## <a name="setting-values-with-set"></a>Értékek beállítása a SET értékkel
 
-SET a módszert gyakran egy változó beállításához.
+A SET egy általános módszer egyetlen változó beállítására.
 
-Az alábbi utasításokat az összes érvényes módon beállítva egy olyan változó megadásához:
+A következő utasítások minden érvényes módszert határoznak meg a KÉSZLETtel rendelkező változók beállításához:
 
 ```sql
 SET     @v = (Select max(database_id) from sys.databases);
@@ -59,12 +59,12 @@ SET     @v = @v+1;
 SET     @v +=1;
 ```
 
-Csak akkor állíthat egy változó egyszerre beállítva. Azonban az összetett kezelők megengedett is.
+Egyszerre csak egy változót lehet beállítani. Az összetett operátorok azonban megengedettek.
 
 ## <a name="limitations"></a>Korlátozások
 
-Változó-hozzárendelés frissítése nem használható.
+A változó hozzárendeléshez nem használható frissítés.
 
 ## <a name="next-steps"></a>További lépések
 
-További fejlesztési tippek: [fejlesztői áttekintés](sql-data-warehouse-overview-develop.md).
+További fejlesztési tippek: a [fejlesztés áttekintése](sql-data-warehouse-overview-develop.md).

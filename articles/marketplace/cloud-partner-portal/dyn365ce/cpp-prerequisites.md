@@ -1,25 +1,18 @@
 ---
-title: Dynamics 365 for Customer Engagement ajánlat Előfeltételek – Azure Marketplace-en |} A Microsoft Docs
+title: Dynamics 365 for Customer Engagement ajánlat Előfeltételek |} Az Azure Marketplace-en
 description: Az előfeltételek az Azure-alkalmazások közzététele az Azure Marketplace-en kínálnak.
 services: Dynamics 365 for Customer Engagement offer, Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.author: pbutlerm
-ms.openlocfilehash: b08312040f9702b8a9100886c198138431012e3f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: pabutler
+ms.openlocfilehash: 9cfec65843012e781c8a8dd06cbc4d1225b0dd36
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58007382"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67338896"
 ---
 # <a name="dynamics-365-for-customer-engagement-prerequisites"></a>Dynamics 365 for Customer Engagement Előfeltételek
 
@@ -47,7 +40,7 @@ A Dynamics 365 Customer Engagement-alkalmazás meg kell felelnie a [Microsoft Ap
 
 Az üzleti követelmények a következők a következő eljárási, és a jogi szerződéses kötelezettségek:
 
-* Regisztrálva kell lennie a a [Microsoft Partner Network (MPN)](https://partners.microsoft.com/PartnerProgram/simplifiedenrollment.aspx) regisztrált Felhőbeli piactér kiadói el. Ha nincs regisztrálva, kövesse a [válnak a Felhőbeli piactér kiadói](../../become-publisher.md).  (A harmadik lépés, használja inkább a [AppSource partner jelölési űrlapot](https://appsource.microsoft.com/partners/signup)). 
+* Regisztrálva kell lennie a a [Microsoft Partner Network (MPN)](https://partners.microsoft.com/PartnerProgram/simplifiedenrollment.aspx) regisztrált Felhőbeli piactér kiadói el. Ha nincs regisztrálva, kövesse a [válnak a Felhőbeli piactér kiadói](https://docs.microsoft.com/azure/marketplace/become-publisher).  (Akkor is kapcsolódhatnak a a [Dynamics 365 for Customer Engagement bevezetési csapata](https://experience.dynamics.com/isvengage/)).
 
     >[!NOTE]
     >A Cloud Partner portálra való bejelentkezéshez ugyanazt a Microsoft Developer Center regisztrációs fiókot kell használnia. Az Azure piactér-i ajánlatainak közzétételéhez egyetlen Microsoft-fiókkal kell rendelkeznie. Ez a fiók nem lehet adott egyes szolgáltatásokat vagy ajánlatokat.

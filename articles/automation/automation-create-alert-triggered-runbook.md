@@ -1,145 +1,139 @@
 ---
-title: Használjon olyan riasztást, egy Azure Automation-runbook elindítása
-description: Ismerje meg, hogyan kezdeményezi egy runbook futtatását, amikor az Azure riasztást hoz létre.
+title: Azure Automation runbook elindítására szolgáló riasztás használata
+description: Megtudhatja, hogyan indíthat el egy runbook az Azure-riasztások bevezetését követően.
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
-ms.date: 09/18/2018
+author: bobbytreed
+ms.author: robreed
+ms.date: 04/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 88fe7740170638e9e0d7398a02dcf83ab81f6ffc
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 6c818114df436dbbd3ac1a51b6eeec00b9eec4d3
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54421683"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915727"
 ---
-# <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Használjon olyan riasztást, egy Azure Automation-runbook elindítása
+# <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Azure Automation runbook elindítására szolgáló riasztás használata
 
-Használhat [Azure Monitor](../azure-monitor/overview.md?toc=%2fazure%2fautomation%2ftoc.json) figyelése base-szintű metrikákat és naplókat a legtöbb szolgáltatás az Azure-ban. Azure Automation-runbookok használatával meghívhatja [Műveletcsoportok](../azure-monitor/platform/action-groups.md?toc=%2fazure%2fautomation%2ftoc.json) vagy a klasszikus riasztások segítségével automatizálhatja a feladatokat a riasztások alapján. Ez a cikk bemutatja, hogyan konfigurálásához és a egy runbook futtatására riasztások használatával.
+A [Azure monitor](../azure-monitor/overview.md?toc=%2fazure%2fautomation%2ftoc.json) segítségével figyelheti az Azure-ban a legtöbb szolgáltatáshoz tartozó alapszintű mérőszámokat és naplókat. Azure Automation runbookok a [műveleti csoportok](../azure-monitor/platform/action-groups.md?toc=%2fazure%2fautomation%2ftoc.json) használatával vagy klasszikus riasztásokkal hívhatja a feladatok a riasztások alapján történő automatizálásához. Ebből a cikkből megtudhatja, hogyan konfigurálhat és futtathat egy runbook riasztások használatával.
 
 ## <a name="alert-types"></a>Riasztástípusok
 
-Automation-runbookok három riasztási típusokkal használható:
-* Klasszikus metrikariasztásokat
+Az Automation runbookok háromféle riasztási típust használhat:
+
+* Gyakori riasztások
 * Tevékenységnapló-riasztások
-* Közel valós idejű metrikákhoz kapcsolódó riasztások
+* Közel valós idejű metrikai riasztások
 
-Riasztás a runbookot hívja, a tényleges hívás esetén, a webhook HTTP POST-kérelmet. A POST-kérés törzse tartalmazza a JSON-formátumú objektum, amelynek hasznosak a riasztáshoz kapcsolódó tulajdonságok. Az alábbi táblázat az egyes riasztástípusok tartalom sémáját mutató hivatkozásokat:
+> [!NOTE]
+> A Common Alert séma szabványosítja a riasztási értesítések fogyasztási élményét az Azure-ban még ma. Az Azure-ban a három riasztási típust (metrikus, log és Activity log) a saját e-mail-sablonjai, webhook-sémái stb. is megkapta. További információ: [Common Alert Schema](../azure-monitor/platform/alerts-common-schema.md)
 
-|Riasztás  |Leírás|Adattartalom-séma  |
+Amikor egy riasztás meghívja a runbook, a tényleges hívás egy HTTP POST-kérelem a webhooknak. A POST kérelem törzse egy JSON-formátumú objektumot tartalmaz, amely a riasztáshoz kapcsolódó hasznos tulajdonságokkal rendelkezik. Az alábbi táblázat felsorolja az egyes riasztási típusok adatforgalmi sémájára mutató hivatkozásokat:
+
+|Riasztás  |Leírás|Hasznos adatok sémája  |
 |---------|---------|---------|
-|[Klasszikus metrikariasztás](../monitoring-and-diagnostics/insights-alerts-portal.md?toc=%2fazure%2fautomation%2ftoc.json)    |Értesítést küld, ha bármely platformszintű metrika megfelel egy adott feltételnek. Például, ha az érték **százalékos processzorhasználatról** a virtuális gép értéke nagyobb, mint **90** az elmúlt 5 percben.| [Metrikaalapú riasztás adattartalom-osztályséma](../azure-monitor/platform/alerts-webhooks.md?toc=%2fazure%2fautomation%2ftoc.json#payload-schema)         |
-|[Tevékenységnapló-riasztás](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |Értesítést küld minden olyan új esemény, az Azure tevékenységnaplójában megegyezik a megadott feltételeknek. Például, hogy amikor egy `Delete VM` művelethez az szükséges, **myProductionResourceGroup** , vagy ha egy új Azure Service Health-esemény az egy **aktív** állapot jelenik meg.| [Műveletnapló-adattartalom riasztási séma](../azure-monitor/platform/activity-log-alerts-webhook.md)        |
-|[Közel valós idejű metrikariasztás](../azure-monitor/platform/alerts-metric-near-real-time.md?toc=%2fazure%2fautomation%2ftoc.json)    |Értesítés gyorsabban metrikákhoz kapcsolódó riasztások küldése, ha egy vagy több platform-szintű metrikákat megfelel egy bizonyos feltételnek. Például, hogy amikor értéke **processzorhasználatról** a virtuális gép értéke nagyobb, mint **90**, és az értéke **bejövő** nagyobb, mint **500 MB-os** az elmúlt 5 perc.| [Közel valós idejű metrikaalapú riasztási adattartalom-séma](../azure-monitor/platform/alerts-webhooks.md?toc=%2fazure%2fautomation%2ftoc.json#payload-schema)          |
+|[Gyakori riasztás](../azure-monitor/platform/alerts-common-schema.md?toc=%2fazure%2fautomation%2ftoc.json)|A gyakori riasztási séma, amely szabványosítja a riasztási értesítések fogyasztási élményét az Azure-ban még ma.|Gyakori riasztási adattartalom sémája|
+|[Tevékenység naplójának riasztása](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |Értesítés küldése, ha az Azure-tevékenység naplójában minden új esemény megfelel bizonyos feltételeknek. Ha például egy `Delete VM` művelet a **myProductionResourceGroup** -ban vagy egy új, **aktív** állapotú Azure Service Health eseményt jelenít meg.| [Műveletnapló riasztási hasznos sémája](../azure-monitor/platform/activity-log-alerts-webhook.md)        |
+|[Közel valós idejű metrika riasztása](../azure-monitor/platform/alerts-metric-near-real-time.md?toc=%2fazure%2fautomation%2ftoc.json)    |A metrikus riasztások gyorsabban küld értesítést, ha egy vagy több platform szintű metrika megfelel a megadott feltételeknek. Ha például egy virtuális gépen a **CPU%** értéke nagyobb, mint **90**, és a **hálózat** értéke nagyobb, mint **500 MB** az elmúlt 5 percben.| [A közel valós idejű metrikus riasztás hasznos adattartalma sémája](../azure-monitor/platform/alerts-webhooks.md#payload-schema)          |
 
-Mivel az adatok különböző típusú riasztás által biztosított különböző, az egyes riasztástípusok eltérően kell kezelni. A következő szakaszban megismerheti, hogyan kezelje a különböző típusú riasztásokat runbook létrehozása.
+Mivel az egyes riasztási típusok által megadott információk eltérnek, az egyes riasztási típusokat a rendszer eltérően kezeli. A következő szakaszban megtudhatja, hogyan hozhat létre egy runbook a különböző típusú riasztások kezeléséhez.
 
-## <a name="create-a-runbook-to-handle-alerts"></a>Hozzon létre egy runbookot, hogy a riasztások kezelése
+## <a name="create-a-runbook-to-handle-alerts"></a>Riasztások kezelésére szolgáló runbook létrehozása
 
-Automation használata riasztásokkal, egy runbookot, amely rendelkezik a logika, amely kezeli a riasztási JSON-adattartalom van átadva a runbooknak szüksége. A következő példa runbook Azure riasztásból kell meghívni.
+Az Automation riasztásokkal való használatához olyan runbook van szüksége, amely a runbook továbbított riasztási JSON-adattartalmat kezeli. Az alábbi példában szereplő runbook egy Azure-riasztásból kell meghívni.
 
-Az előző szakaszban leírtak minden riasztás típusát különböző sémákkal rendelkeznek. A parancsfájlnak a webhook-adatokat a `WebhookData` forgatókönyv bemeneti paramétere a riasztást. A parancsfájl összeveti a JSON-adattartalom meghatározni, melyik riasztási típus lett megadva.
+Az előző szakaszban leírtaknak megfelelően a riasztások típusai eltérő sémával rendelkeznek. A parancsfájl a `WebhookData` runbook bemeneti paraméterében lévő webhook-adatokat egy riasztásból veszi át. Ezután a parancsfájl kiértékeli a JSON-adattartalmat annak meghatározására, hogy melyik riasztási típust használta.
 
-Ebben a példában egy virtuális gépről egy riasztást. Lekéri a virtuális gép adatait a hasznos-, és ezt az információt használja majd a virtuális gép leállítása. A kapcsolat kell beállítani az Automation-fiókban, a runbook futtatása. Riasztások runbookok való használatakor fontos a runbook, amely akkor aktiválódik a riasztás állapotának ellenőrzéséhez. A runbook minden alkalommal, amikor a riasztás állapota aktivál. Riasztások több állapota rendelkezzen, a két leggyakoribb állapotok `Activated` és `Resolved`. Ellenőrizze, hogy a runbook logikai győződjön meg arról, hogy a runbook nem futtatható többször, ebben az állapotban. Ebben a cikkben szereplő példa mutatja be a keresett `Activated` csak riasztást küld.
+Ez a példa egy virtuális gépről származó riasztást használ. Lekéri a virtuális gép adatait a hasznos adatokból, majd ezt az információt használja a virtuális gép leállításához. A kapcsolatokat a runbook futtató Automation-fiókban kell beállítani. Ha riasztásokat használ a runbookok elindításához, fontos a riasztás állapotának ellenőrzése az aktivált runbook. A runbook minden alkalommal aktiválódik, amikor a riasztás állapota megváltozik. A riasztások több állapottal rendelkeznek, a két leggyakoribb `Activated` állam `Resolved`a és a. Ellenőrizze ezt az állapotot a runbook-logikában annak biztosításához, hogy a runbook ne fusson többször. A cikkben szereplő példa azt mutatja be, hogyan kell `Activated` keresni a riasztásokat.
 
-A runbook használja a **AzureRunAsConnection** [Futtatás mint fiók](automation-create-runas-account.md) ellen a virtuális Gépet a felügyeleti művelet végrehajtásához Azure-hitelesítésre.
+A runbook a **azurerunasconnection elemet** [futtató fiók](automation-create-runas-account.md) használatával hitelesíti az Azure-t, hogy végrehajtsa a felügyeleti műveletet a virtuális gépen.
 
-Ez a példa használatával hozza létre a nevű runbook **Stop-AzureVmInResponsetoVMAlert**. Módosítása a PowerShell-parancsfájlt, és számos különböző erőforrásokat használhatja.
+Ez a példa egy **stop-AzureVmInResponsetoVMAlert**nevű runbook létrehozására használható. Módosíthatja a PowerShell-parancsfájlt, és számos különböző erőforrással használhatja azt.
 
-1. Nyissa meg az Azure Automation-fiók.
-1. A **FOLYAMATAUTOMATIZÁLÁS**válassza **Runbookok**.
-1. A runbookok listája tetején válassza **forgatókönyv hozzáadása**. 
-1. A **Runbook hozzáadása** oldalon válassza a **Gyors létrehozás** lehetőséget.
-1. A runbook nevét adja meg annak **Stop-AzureVmInResponsetoVMAlert**. A forgatókönyv típusának kiválasztása **PowerShell**. Ezután kattintson a **Létrehozás** elemre.  
-1. Másolja be a következő PowerShell-példa az **szerkesztése** ablaktáblán. 
+1. Nyissa meg Azure Automation-fiókját.
+2. A **folyamat automatizálása**területen válassza a **runbookok**lehetőséget.
+3. A runbookok listájának tetején válassza a **+ Runbook létrehozása**lehetőséget.
+4. A **Runbook hozzáadása** lapon adja meg a **stop-AzureVmInResponsetoVMAlert** értéket a Runbook nevéhez. A runbook típusnál válassza a **PowerShell**lehetőséget. Ezután kattintson a **Létrehozás** elemre.  
+5. Másolja a következő PowerShell-példát a **Szerkesztés** lapra.
 
     ```powershell-interactive
-    <#
-    .SYNOPSIS
-    This runbook stops a resource management VM in response to an Azure alert trigger.
-
-    .DESCRIPTION
-    This runbook stops a resource management VM in response to an Azure alert trigger.
-    The input is alert data that has the information required to identify which VM to stop.
-    
-    DEPENDENCIES
-    - The runbook must be called from an Azure alert via a webhook.
-    
-    REQUIRED AUTOMATION ASSETS
-    - An Automation connection asset called "AzureRunAsConnection" that is of type AzureRunAsConnection.
-    - An Automation certificate asset called "AzureRunAsCertificate".
-
-    .PARAMETER WebhookData
-    Optional. (The user doesn't need to enter anything, but the service always passes an object.)
-    This is the data that's sent in the webhook that's triggered from the alert.
-
-    .NOTES
-    AUTHOR: Azure Automation Team
-    LASTEDIT: 2017-11-22
-    #>
-
     [OutputType("PSAzureOperationResponse")]
-
     param
     (
         [Parameter (Mandatory=$false)]
         [object] $WebhookData
     )
-
     $ErrorActionPreference = "stop"
 
     if ($WebhookData)
     {
-        # Get the data object from WebhookData.
+        # Get the data object from WebhookData
         $WebhookBody = (ConvertFrom-Json -InputObject $WebhookData.RequestBody)
 
-        # Get the info needed to identify the VM (depends on the payload schema).
+        # Get the info needed to identify the VM (depends on the payload schema)
         $schemaId = $WebhookBody.schemaId
         Write-Verbose "schemaId: $schemaId" -Verbose
-        if ($schemaId -eq "AzureMonitorMetricAlert") {
+        if ($schemaId -eq "azureMonitorCommonAlertSchema") {
+            # This is the common Metric Alert schema (released March 2019)
+            $Essentials = [object] ($WebhookBody.data).essentials
+            # Get the first target only as this script doesn't handle multiple
+            $alertTargetIdArray = (($Essentials.alertTargetIds)[0]).Split("/")
+            $SubId = ($alertTargetIdArray)[2]
+            $ResourceGroupName = ($alertTargetIdArray)[4]
+            $ResourceType = ($alertTargetIdArray)[6] + "/" + ($alertTargetIdArray)[7]
+            $ResourceName = ($alertTargetIdArray)[-1]
+            $status = $Essentials.monitorCondition
+        }
+        elseif ($schemaId -eq "AzureMonitorMetricAlert") {
             # This is the near-real-time Metric Alert schema
             $AlertContext = [object] ($WebhookBody.data).context
+            $SubId = $AlertContext.subscriptionId
+            $ResourceGroupName = $AlertContext.resourceGroupName
+            $ResourceType = $AlertContext.resourceType
             $ResourceName = $AlertContext.resourceName
             $status = ($WebhookBody.data).status
         }
         elseif ($schemaId -eq "Microsoft.Insights/activityLogs") {
             # This is the Activity Log Alert schema
             $AlertContext = [object] (($WebhookBody.data).context).activityLog
+            $SubId = $AlertContext.subscriptionId
+            $ResourceGroupName = $AlertContext.resourceGroupName
+            $ResourceType = $AlertContext.resourceType
             $ResourceName = (($AlertContext.resourceId).Split("/"))[-1]
             $status = ($WebhookBody.data).status
         }
         elseif ($schemaId -eq $null) {
             # This is the original Metric Alert schema
             $AlertContext = [object] $WebhookBody.context
+            $SubId = $AlertContext.subscriptionId
+            $ResourceGroupName = $AlertContext.resourceGroupName
+            $ResourceType = $AlertContext.resourceType
             $ResourceName = $AlertContext.resourceName
             $status = $WebhookBody.status
         }
         else {
-            # The schema isn't supported.
+            # Schema not supported
             Write-Error "The alert data schema - $schemaId - is not supported."
         }
 
         Write-Verbose "status: $status" -Verbose
-        if ($status -eq "Activated")
+        if (($status -eq "Activated") -or ($status -eq "Fired"))
         {
-            $ResourceType = $AlertContext.resourceType
-            $ResourceGroupName = $AlertContext.resourceGroupName
-            $SubId = $AlertContext.subscriptionId
             Write-Verbose "resourceType: $ResourceType" -Verbose
             Write-Verbose "resourceName: $ResourceName" -Verbose
             Write-Verbose "resourceGroupName: $ResourceGroupName" -Verbose
             Write-Verbose "subscriptionId: $SubId" -Verbose
 
-            # Use this only if this is a resource management VM.
+            # Determine code path depending on the resourceType
             if ($ResourceType -eq "Microsoft.Compute/virtualMachines")
             {
-                # This is the VM.
-                Write-Verbose "This is a resource management VM." -Verbose
+                # This is an Resource Manager VM
+                Write-Verbose "This is an Resource Manager VM." -Verbose
 
-                # Authenticate to Azure by using the service principal and certificate. Then, set the subscription.
+                # Authenticate to Azure with service principal and certificate and set subscription
                 Write-Verbose "Authenticating to Azure with service principal and certificate" -Verbose
                 $ConnectionAssetName = "AzureRunAsConnection"
                 Write-Verbose "Get connection asset: $ConnectionAssetName" -Verbose
@@ -149,22 +143,22 @@ Ez a példa használatával hozza létre a nevű runbook **Stop-AzureVmInRespons
                     throw "Could not retrieve connection asset: $ConnectionAssetName. Check that this asset exists in the Automation account."
                 }
                 Write-Verbose "Authenticating to Azure with service principal." -Verbose
-                Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint | Write-Verbose
+                Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint | Write-Verbose
                 Write-Verbose "Setting subscription to work against: $SubId" -Verbose
                 Set-AzureRmContext -SubscriptionId $SubId -ErrorAction Stop | Write-Verbose
 
-                # Stop the VM.
+                # Stop the Resource Manager VM
                 Write-Verbose "Stopping the VM - $ResourceName - in resource group - $ResourceGroupName -" -Verbose
                 Stop-AzureRmVM -Name $ResourceName -ResourceGroupName $ResourceGroupName -Force
                 # [OutputType(PSAzureOperationResponse")]
             }
             else {
-                # ResourceType isn't supported.
+                # ResourceType not supported
                 Write-Error "$ResourceType is not a supported resource type for this runbook."
             }
         }
         else {
-            # The alert status was not 'Activated', so no action taken.
+            # The alert status was not 'Activated' or 'Fired' so no action taken
             Write-Verbose ("No action taken. Alert status: " + $status) -Verbose
         }
     }
@@ -173,63 +167,35 @@ Ez a példa használatával hozza létre a nevű runbook **Stop-AzureVmInRespons
         Write-Error "This runbook is meant to be started from an Azure alert webhook only."
     }
     ```
-1. Válassza ki **közzététel** menti és közzéteszi a runbookot.
 
-## <a name="create-an-action-group"></a>Műveletcsoport létrehozása
+6. Válassza a **Közzététel** lehetőséget a runbook mentéséhez és közzétételéhez.
 
-Műveletcsoport gyűjteménye, egy riasztás kiváltó műveletek. A forgatókönyvek olyan csak egyike a számos végrehajtandó művelet csoportokkal is használhatja.
+## <a name="create-the-alert"></a>A riasztás létrehozása
 
-1. Az Azure Portalon válassza ki a **figyelő** > **beállítások** > **Műveletcsoportok**.
-1. Válassza ki **műveleti csoport hozzáadása**, majd adja meg a szükséges adatokat:  
-    1. Az a **műveletcsoport neve** adjon meg egy nevet.
-    1. Az a **rövid, nevet** adjon meg egy nevet. Rövid nevét használja egy teljes műveletcsoport neve helyett a műveletcsoportban használatával elküldött értesítések.
-    1. A **előfizetés** mező automatikusan kitölti a jelenlegi előfizetésében. Ez az az előfizetést, amelyben a műveletcsoport mentve van.
-    1. Válassza ki az erőforráscsoportot, amelyben a rendszer menti a műveletcsoport.
+A riasztások olyan műveleti csoportokat használnak, amelyek a riasztás által aktivált műveletek gyűjteményei. A runbookok csak a műveletek csoportjaival használható számos művelet egyike.
 
-Ebben a példában két műveletet hoz létre: a runbook műveletet és a egy értesítési műveletet.
+1. Az Automation-fiókjában válassza a **figyelés**alatt a **riasztások** lehetőséget.
+1. Válassza az **+ új riasztási szabály**lehetőséget.
+1. Kattintson a **kiválasztás** az **erőforrás**alatt elemre. Az **erőforrás kiválasztása** lapon válassza ki a virtuális gépet a riasztáshoz, majd kattintson a **kész**gombra.
+1. Kattintson a feltétel hozzáadása **elemre**. Válassza ki a használni kívánt jelet, például a **százalékos CPU** -t, majd kattintson a **kész**gombra.
+1. A **jel logikai beállítása** lapon adja meg a **küszöbérték értékét** a **riasztási logika**területen, majd kattintson a **kész**gombra.
+1. A **műveleti csoportok**területen válassza az **új létrehozása**lehetőséget.
+1. A **műveleti csoport hozzáadása** lapon adjon meg egy nevet és egy rövid nevet a műveleti csoportnak.
+1. Adjon nevet a műveletnek. A Művelettípus mezőben válassza az **Automation Runbook**lehetőséget.
+1. Válassza a **részletek szerkesztése**lehetőséget. A **Runbook konfigurálása** lap **Runbook forrása**területén válassza a **felhasználó**lehetőséget.  
+1. Válassza ki az **előfizetést** és az **Automation-fiókot**, majd válassza a **stop-AzureVmInResponsetoVMAlert** runbook.  
+1. Válassza az **Igen** lehetőséget **az általános riasztási séma engedélyezéséhez**.
+1. A műveleti csoport létrehozásához kattintson **az OK gombra**.
 
-### <a name="runbook-action"></a>Runbook-művelet
+    ![Műveleti csoport hozzáadása lap](./media/automation-create-alert-triggered-runbook/add-action-group.png)
 
-A runbook műveletet a műveletcsoport létrehozása:
+    Ezt a műveleti csoportot a [tevékenység naplójának riasztásai](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json) és a létrehozott [valós idejű riasztások mellett](../azure-monitor/platform/alerts-overview.md?toc=%2fazure%2fautomation%2ftoc.json) is használhatja.
 
-1. A **műveletek**, a **MŰVELETNÉV**, adja meg a művelet nevét. A **MŰVELETTÍPUS**válassza **Automation-Runbook**.
-1. A **részletek**válassza **részleteinek szerkesztése**.  
-1. Az a **Runbook konfigurálása** lap **forgatókönyv forrása**válassza **felhasználói**.  
-1. Válassza ki a **előfizetés** és **Automation-fiók**, majd válassza ki a **Stop-AzureVmInResponsetoVMAlert** runbook.  
-1. Ha elkészült, válassza ki a **OK**.
-
-### <a name="notification-action"></a>Értesítési művelet
-
-A műveletcsoport létrehozása egy értesítési műveletet:
-
-1. A **műveletek**, a **MŰVELETNÉV**, adja meg a művelet nevét. A **MŰVELETTÍPUS**válassza **E-mail**.  
-1. A **részletek** választ ki, **részleteinek szerkesztése**.  
-1. Az a **E-mail** oldalon, írja be az értesítéshez, és válassza ki az e-mail címet **OK**. Hasznos lehet egy e-mail-cím mellett a runbook hozzáadása egy műveletet. Értesítést kap a runbook indítását.  
-
-    A műveleti csoport a következő képhez hasonlóan kell kinéznie:
-
-   ![Adja hozzá a műveleti csoport oldalán](./media/automation-create-alert-triggered-runbook/add-action-group.png)
-1. A műveletcsoport létrehozásához válassza **OK**.
-
-Ez a művelet a csoport is használhatja a [tevékenységnapló-riasztások](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json) és [közel valós idejű riasztások](../azure-monitor/platform/alerts-overview.md?toc=%2fazure%2fautomation%2ftoc.json) létrehozott.
-
-## <a name="classic-alert"></a>Klasszikus riasztás
-
-Klasszikus riasztások a metrikák alapulnak, és ne használja a Műveletcsoportok. Beállíthat viszont egy runbook műveletet a klasszikus riasztás alapján. 
-
-Egy klasszikus riasztás létrehozása:
-
-1. Válassza a **Metrikariasztás hozzáadása** lehetőséget.
-1. A metrikariasztás neve **myVMCPUAlert**. Adja meg a riasztás rövid leírását.
-1. Válassza ki a metrikaalapú riasztási feltétel **nagyobb, mint**. Az a **küszöbérték** értéket, válassza ki **10**. Az a **időszak** értéket, válassza ki **az elmúlt öt percben**.
-1. A **semmit**válassza **runbook futtatása ebből a riasztásból**.
-1. Az a **Runbook konfigurálása** lapon a **forgatókönyv forrása**válassza **felhasználói**. Válassza ki az automation-fiókját, és válassza ki a **Stop-AzureVmInResponsetoVMAlert** runbook. Kattintson az **OK** gombra.
-1. A riasztási szabály mentéséhez válassza **OK**.
+1. A **riasztás részletei**területen adja meg a riasztási szabály nevét és leírását, majd kattintson a **riasztási szabály létrehozása**elemre.
 
 ## <a name="next-steps"></a>További lépések
 
-* Automation-runbook indítása egy webhook használatával kapcsolatos további információkért lásd: [runbook indítása webhookból](automation-webhooks.md).
-* Módjai, indítson el egy runbookot, lásd: [runbook elindítása](automation-starting-a-runbook.md).
-* Tevékenységnapló-riasztás létrehozása kapcsolatban lásd: [tevékenységnapló-riasztások létrehozása](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json).
-* Riasztás létrehozása, közel valós idejű kezelésével kapcsolatos információkért lásd: [riasztási szabályt létrehozni az Azure Portalon](../azure-monitor/platform/alerts-metric.md?toc=/azure/azure-monitor/toc.json).
-
+* Az Automation-runbook webhook használatával történő elindításával kapcsolatos további információkért lásd: [Runbook indítása webhookból](automation-webhooks.md).
+* A runbook elindításának különböző módjaival kapcsolatos részletekért lásd: [Runbook elindítása](automation-starting-a-runbook.md).
+* A műveletnapló riasztásának létrehozásával kapcsolatos további információkért lásd: [műveletnapló riasztásai](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json).
+* A közel valós idejű riasztás létrehozásáról további információt [a riasztási szabály létrehozása a Azure Portalban](../azure-monitor/platform/alerts-metric.md?toc=/azure/azure-monitor/toc.json)című témakörben talál.

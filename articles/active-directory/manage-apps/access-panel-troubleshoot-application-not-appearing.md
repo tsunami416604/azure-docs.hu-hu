@@ -3,8 +3,8 @@ title: Egy hozzárendelt alkalmazás nem jelenik meg a hozzáférési panelen |}
 description: Egy alkalmazás nem jelenik meg a hozzáférési panelen okozó hibák elhárításához
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/09/2018
-ms.author: celested
+ms.author: mimart
 ms.reviwer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9bac0e78c53657cda1716dd8ab6ffd0e2453290f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 10dfcf337dc75a202e781e931f38783291a72fe7
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58117421"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272744"
 ---
 # <a name="an-assigned-application-is-not-appearing-on-the-access-panel"></a>Egy hozzárendelt alkalmazás nem jelenik meg a hozzáférési panelen
 
@@ -399,7 +399,7 @@ Az Azure AD katalógusából származó alkalmazás hozzáadásához kövesse az
 
 Egy rövid időszak után megtekintheti az alkalmazás konfigurációs panelen lehet.
 
-#### <a name="configure-the-application-for-password-single-sign-on"></a>Az alkalmazás a jelszavas egyszeri bejelentkezés konfigurálása
+#### <a name="configure-the-application-for-password-single-sign-on-1"></a> Az alkalmazás a jelszavas egyszeri bejelentkezés konfigurálása
 
 Egyszeri bejelentkezés az alkalmazás konfigurálásához kövesse az alábbi lépéseket:
 
@@ -421,7 +421,7 @@ Egyszeri bejelentkezés az alkalmazás konfigurálásához kövesse az alábbi l
 
 8.  Válassza ki a módot **jelszóalapú bejelentkezés.**
 
-9.  Adja meg a **bejelentkezési URL-**. Ez az az URL-címet, adja meg a felhasználók a felhasználónevével és jelszavával bejelentkezni. Győződjön meg arról, a bejelentkezési mezők láthatók az URL-címen.
+9.  Adja meg a **bejelentkezési URL-** . Ez az az URL-címet, adja meg a felhasználók a felhasználónevével és jelszavával bejelentkezni. Győződjön meg arról, a bejelentkezési mezők láthatók az URL-címen.
 
 10. [Felhasználók hozzárendelése az alkalmazás](#how-to-assign-a-user-to-an-application-directly).
 

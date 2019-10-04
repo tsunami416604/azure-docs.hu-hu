@@ -2,19 +2,23 @@
 author: sptramer
 ms.author: sttramer
 manager: carmonm
-ms.date: 12/11/2018
+ms.date: 06/05/2019
 ms.topic: include
-ms.openlocfilehash: a956cd1e029371fa7031d262206b0ce10aa8dbff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 550ace93479278df2a592a87ee34d10f8763d2f6
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60188281"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133651"
 ---
 > [!IMPORTANT]
 >
-> Ezzel a funkcióval az Azure PowerShell megköveteli, hogy Ön a `AzureRM` modul telepítve van. Ez csak egy régebbi modul Windows PowerShell 5.x, amely megkapja a kritikus frissítéseket, de már nem elérhető új szolgáltatások beolvasása. Ha rendelkezik a `Az` modul telepítve van, akkor telepítenie kell `AzureRM` is. A telepítendő `AzureRM`:
-> 
-> 1. Tiltsa le az AzureRM-aliasok `Az` (Ha engedélyezve van) való `Disable-AzAlias`. Ez a parancs nélkül futó `Az` telepítve vagy le van tiltva az aliasok az ártalmatlan.
-> 2. Kövesse a [legújabb telepítési utasításokat az AzureRM](/powershell/azure/install-az-ps). Ha már rendelkezik `AzureRM` telepítve van, frissítse a legújabb verzióra.
+> Ezzel a funkcióval az Azure PowerShell szükséges a `AzureRM` modul telepítve van. Ez az egy régebbi modul, amely már nem fogad új funkciók Windows PowerShell 5.1 csak érhető el.
+> A `Az` és `AzureRM` modulokra __nem__ kompatibilis PowerShell azonos verziók telepítésekor.
+> Ha mindkét lesz szüksége:
+>
+> 1. [Az moduljának eltávolítása](/powershell/azure/uninstall-az-ps) PowerShell 5.1-munkamenettel.
+> 2. [Az AzureRM-modul telepítése](/powershell/azure/azurerm/install-azurerm-ps) PowerShell 5.1-munkamenettel.
+> 3. [Töltse le és telepítse a PowerShell Core 6.x vagy újabb](/powershell/scripting/install/installing-powershell-core-on-windows).
+> 4. [Az-modul telepítéséhez](/powershell/azure/install-az-ps) a PowerShell Core-munkamenetben.
 

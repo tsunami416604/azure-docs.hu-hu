@@ -1,6 +1,6 @@
 ---
-title: Egy REST-forrásból származó adatok másolása az Azure Data Factory használatával |} A Microsoft Docs
-description: Megtudhatja, hogyan másolhat adatokat egy felhőbeli vagy helyszíni REST forrás támogatott fogadó adattárakba az Azure Data Factory-folyamatot egy másolási tevékenység használatával.
+title: Adatok másolása REST-forrásból Azure Data Factory használatával | Microsoft Docs
+description: Megtudhatja, hogyan másolhat adatok egy felhőből vagy helyszíni REST-forrásból a fogadó adattárakba egy Azure Data Factory folyamat másolási tevékenységének használatával.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -10,65 +10,69 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/28/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: ee47f464c59bd9deed98671f19cfcc6d2c3c1b39
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 0bd97a6b1636d4b540c616958e5531c86362f597
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58762480"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276626"
 ---
-# <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával REST-végponton
+# <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>Adatok másolása REST-végpontból Azure Data Factory használatával
 
-Ez a cikk ismerteti az Azure Data Factory másolási tevékenység adatokat másol egy REST-végpont használata. A cikk számos tekintetben [másolási tevékenységgel az Azure Data Factoryban](copy-activity-overview.md), amely megadja, hogy a másolási tevékenység általános áttekintést.
+Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok REST-végpontból történő másolásához. A cikk számos tekintetben [másolási tevékenységgel az Azure Data Factoryban](copy-activity-overview.md), amely megadja, hogy a másolási tevékenység általános áttekintést.
 
-A különbség a REST-összekötő között [HTTP-összekötő](connector-http.md) és a [webes táblázat összekötő](connector-web-table.md) vannak:
+A REST-összekötő, a [http-összekötő](connector-http.md) és a [webtábla-összekötő](connector-web-table.md) közötti különbség a következő:
 
-- **REST-összekötő** kifejezetten az adatok másolása a RESTful API-k; támogatása 
-- **HTTP-összekötő** általános adatokat lekérni bármilyen HTTP-végpontot, például fájl letöltéséhez. Előtt elérhetővé válik a REST-összekötőt, akkor fordulhat elő, HTTP-összekötő használatával adatait átmásolhatja RESTful API-t, amely akkor támogatott, de kisebb működési összehasonlítva és REST közötti összekötő.
-- **Webes tábla összekötő** kivonatok tábla egy HTML-weblap tartalmat.
+- A **Rest-összekötő** kifejezetten támogatja a REST API-k adatainak másolását; 
+- A **http-összekötő** általános az adatok bármely http-végpontból való lekéréséhez, például a fájl letöltéséhez. A REST-összekötő elérhetővé válása előtt előfordulhat, hogy a HTTP-összekötőt használja az adatok REST API-ból való másolásához, amely támogatott, de kevésbé működik a REST-összekötőhöz képest.
+- A **web Table Connector** kibontja a táblázat tartalmát egy HTML-weboldalról.
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
-Adatok bármely támogatott fogadó adattárba egy REST-forrásból másolhatja. Az adatok listáját tárolja, hogy a másolási tevékenység támogatja a forrásként és fogadóként, lásd: [támogatott adattárak és formátumok](copy-activity-overview.md#supported-data-stores-and-formats).
+A REST-forrásból származó adatok bármely támogatott fogadó adattárba másolhatók. Az adatok listáját tárolja, hogy a másolási tevékenység támogatja a forrásként és fogadóként, lásd: [támogatott adattárak és formátumok](copy-activity-overview.md#supported-data-stores-and-formats).
 
-Pontosabban az általános REST-összekötő támogatja:
+Ez az általános REST-összekötő a következőket támogatja:
 
-- Adatok lekérése a REST-végpont használatával a **első** vagy **POST** módszereket.
-- Adatok beolvasása a következő hitelesítések egyikének használatával: **Névtelen**, **alapszintű**, **AAD-szolgáltatásnév**, és **felügyelt identitások az Azure-erőforrások**.
-- **[Tördelés](#pagination-support)**  a REST API-k.
-- A REST-JSON-válasz másolása [,-van](#export-json-response-as-is) vagy elemezni a használatával [séma-hozzárendelés](copy-activity-schema-and-type-mapping.md#schema-mapping). A csak válasz tartalma **JSON** használata támogatott.
+- Adatok beolvasása egy REST-végpontból a **Get** vagy a **post** metódusok használatával.
+- Adatok beolvasása a következő hitelesítések egyikével: **Névtelen**, **alapszintű**, **HRE egyszerű szolgáltatásnév**és **felügyelt identitások az Azure-erőforrásokhoz**.
+- **[Tördelés](#pagination-support)** a REST API-kon.
+- Másolja a REST JSON-választ a [-ként](#export-json-response-as-is) , vagy elemezze azt a [séma-hozzárendelés](copy-activity-schema-and-type-mapping.md#schema-mapping)használatával. Csak a **JSON** -beli válasz-adattartalom támogatott.
 
 > [!TIP]
-> Az adatok beolvasásáért kérelem teszteléséhez a Data Factoryban a REST-összekötő konfigurálása előtt ismerje meg az API-specifikációnak, fejléc és a szervezet követelményeinek. Eszközök, mint például a Postman vagy egy webböngésző segítségével ellenőrzése.
+> Az adatok lekérésére vonatkozó kérelem teszteléséhez, mielőtt a REST-összekötőt a Data Factoryban konfigurálja, ismerkedjen meg a fejléc és a törzs követelményeivel kapcsolatos API-specifikációval. Az érvényesítéshez használhatja a Poster vagy a webböngésző eszközeit.
+
+## <a name="prerequisites"></a>Előfeltételek
+
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
 ## <a name="get-started"></a>Bevezetés
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-A következő szakaszok segítségével konkrétan a REST-összekötő a Data Factory-entitások definiálása-tulajdonságokkal kapcsolatos részletekért.
+A következő szakaszokban részletesen ismertetjük azokat a tulajdonságokat, amelyek segítségével meghatározható Data Factory a REST-összekötőre jellemző entitások.
 
 ## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 
-A társított REST-szolgáltatás a következő tulajdonságok támogatottak:
+A REST társított szolgáltatás a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A **típus** tulajdonságot állítsa **RestService**. | Igen |
-| url | Az alap URL-címét a REST-szolgáltatást. | Igen |
-| enableServerCertificateValidation | E érvényesíteni a kiszolgálói oldalon SSL-tanúsítvány a végponthoz való csatlakozáskor. | Nem<br /> (az alapértelmezett érték **igaz**) |
-| authenticationType | A REST-szolgáltatáshoz való kapcsolódáshoz használt hitelesítés típusa. Engedélyezett értékek a következők **névtelen**, **alapszintű**, **AadServicePrincipal** és **ManagedServiceIdentity**. Tekintse meg a további tulajdonságokat és példákat szakaszokban megfelelő jelölik. | Igen |
-| connectVia | A [Integration Runtime](concepts-integration-runtime.md) kapcsolódni az adattárhoz. Használhatja az Azure integrációs modul és a egy saját üzemeltetésű integrációs modult (ha az adattár egy magánhálózaton található). Ha nincs megadva, ezt a tulajdonságot használja az alapértelmezett Azure integrációs modul. |Nem |
+| type | A **Type** tulajdonságot **RestService**értékre kell beállítani. | Igen |
+| url | A REST-szolgáltatás alap URL-címe. | Igen |
+| enableServerCertificateValidation | Ellenőrzi, hogy a kiszolgálóoldali SSL-tanúsítvány érvényesíthető-e a végponthoz való csatlakozáskor. | Nem<br /> (az alapértelmezett érték **igaz**) |
+| authenticationType | A REST-szolgáltatáshoz való kapcsolódáshoz használt hitelesítés típusa. Az engedélyezett értékek: **Névtelen**, **alapszintű**, **AadServicePrincipal** és **ManagedServiceIdentity**. Tekintse meg az alábbi, a további tulajdonságok és példák című szakaszt. | Igen |
+| connectVia | A [Integration Runtime](concepts-integration-runtime.md) kapcsolódni az adattárhoz. További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, ez a tulajdonság az alapértelmezett Azure Integration Runtime használja. |Nem |
 
-### <a name="use-basic-authentication"></a>Alapszintű hitelesítés használata
+### <a name="use-basic-authentication"></a>Egyszerű hitelesítés használata
 
-Állítsa be a **authenticationType** tulajdonságot **alapszintű**. Az előző szakaszban leírt általános tulajdonságaihoz adja meg a következő tulajdonságokkal:
+Állítsa a **authenticationType** tulajdonságot **alapértékre.** Az előző szakaszban leírt általános tulajdonságok mellett a következő tulajdonságokat is meg kell adni:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| Felhasználónév | A felhasználónév, a REST-végpont elérésére használhat. | Igen |
-| jelszó | A felhasználó jelszava (a **felhasználónév** érték). Jelölje meg a mező egy **SecureString** típus tárolja biztonságos helyen a Data Factoryban. Emellett [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
+| userName | A REST-végpont eléréséhez használandó Felhasználónév. | Igen |
+| password | A felhasználó jelszava (a **userName** érték). Jelölje meg a mező egy **SecureString** típus tárolja biztonságos helyen a Data Factoryban. Emellett [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
 
 **Példa**
 
@@ -94,16 +98,16 @@ A társított REST-szolgáltatás a következő tulajdonságok támogatottak:
 }
 ```
 
-### <a name="use-aad-service-principal-authentication"></a>Használja az AAD egyszerű szolgáltatásnév hitelesítése
+### <a name="use-aad-service-principal-authentication"></a>HRE-szolgáltatás egyszerű hitelesítésének használata
 
-Állítsa be a **authenticationType** tulajdonságot **AadServicePrincipal**. Az előző szakaszban leírt általános tulajdonságaihoz adja meg a következő tulajdonságokkal:
+Állítsa a **authenticationType** tulajdonságot **AadServicePrincipal**értékre. Az előző szakaszban leírt általános tulajdonságok mellett a következő tulajdonságokat is meg kell adni:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| servicePrincipalId | Adja meg az Azure Active Directory-alkalmazás ügyfél-azonosítót. | Igen |
-| servicePrincipalKey | Adja meg az Azure Active Directory-alkalmazás kulcsa. Jelölje meg a mező egy **SecureString** tárolja biztonságos helyen a Data Factory áttekintése, vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
-| bérlő | Adja meg a bérlő információkat (tartomány neve vagy a bérlő azonosítója) alatt az alkalmazás található. Az Azure portal jobb felső sarkában az egér viszi, lekéréséhez. | Igen |
-| aadResourceId | Adja meg az AAD erőforrás kért használ a hitelesítéshez, pl. `https://management.core.windows.net`.| Igen |
+| servicePrincipalId | Azure Active Directory alkalmazás ügyfél-AZONOSÍTÓjának megadásához. | Igen |
+| servicePrincipalKey | A Azure Active Directory alkalmazás kulcsának megadásához. Jelölje meg a mező egy **SecureString** tárolja biztonságos helyen a Data Factory áttekintése, vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
+| tenant | Adja meg a bérlő információkat (tartomány neve vagy a bérlő azonosítója) alatt az alkalmazás található. Az Azure portal jobb felső sarkában az egér viszi, lekéréséhez. | Igen |
+| aadResourceId | Itt adhatja meg az engedélyezéshez HRE-erőforrást, például `https://management.core.windows.net`:.| Igen |
 
 **Példa**
 
@@ -131,13 +135,13 @@ A társított REST-szolgáltatás a következő tulajdonságok támogatottak:
 }
 ```
 
-### <a name="managed-identity"></a> Felügyelt identitások Azure-erőforrások hitelesítéshez használandó
+### <a name="managed-identity"></a>Felügyelt identitások használata az Azure-erőforrások hitelesítéséhez
 
-Állítsa be a **authenticationType** tulajdonságot **ManagedServiceIdentity**. Az előző szakaszban leírt általános tulajdonságaihoz adja meg a következő tulajdonságokkal:
+Állítsa a **authenticationType** tulajdonságot **ManagedServiceIdentity**értékre. Az előző szakaszban leírt általános tulajdonságok mellett a következő tulajdonságokat is meg kell adni:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| aadResourceId | Adja meg az AAD erőforrás kért használ a hitelesítéshez, pl. `https://management.core.windows.net`.| Igen |
+| aadResourceId | Itt adhatja meg az engedélyezéshez HRE-erőforrást, például `https://management.core.windows.net`:.| Igen |
 
 **Példa**
 
@@ -161,60 +165,33 @@ A társított REST-szolgáltatás a következő tulajdonságok támogatottak:
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Ez a szakasz felsorolja, amely támogatja a REST-adatkészlet tulajdonságai. 
+Ez a szakasz a REST-adatkészlet által támogatott tulajdonságok listáját tartalmazza. 
 
 Szakaszok és adatkészletek definiálását tulajdonságok teljes listáját lásd: [adatkészletek és társított szolgáltatásokat](concepts-datasets-linked-services.md). 
 
-Adatok másolása REST, a következő tulajdonságok támogatottak:
+Az adatok REST-ből való másolásához a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A **típus** értékre kell állítani a tulajdonságot az adatkészlet **RestResource**. | Igen |
-| relativeUrl | Az erőforrás, amely tartalmazza az adatok relatív URL-CÍMÉT. Ez a tulajdonság nincs megadva, csak az URL-cím a társított szolgáltatás definíciójában megadott használ. | Nem |
-| requestMethod | A HTTP-metódust. Engedélyezett értékek a következők **első** (alapértelmezett), és **Post**. | Nem |
-| additionalHeaders | További HTTP-kérelemfejlécek. | Nem |
-| RequestBody | A HTTP-kérelem törzsét. | Nem |
-| paginationRules | A következő lap kérelmek compose tördelés szabályok. Tekintse meg [tördelés támogatása](#pagination-support) szakaszban talál. | Nem |
+| type | Az adatkészlet **Type** tulajdonságát **RestResource**értékre kell állítani. | Igen |
+| relativeUrl | Az adatforrást tartalmazó erőforrás relatív URL-címe. Ha nincs megadva ez a tulajdonság, a rendszer csak a társított szolgáltatás definíciójában megadott URL-címet használja. | Nem |
 
-**1. példa: A Get metódussal a tördelés**
+Ha a, a `requestMethod` `requestBody` és `additionalHeaders` azadatkészletbenisabeállításthasználja,arendszertovábbraistámogatjaa-t,mígazújmodelltatevékenységforrásakéntfogjahasználni.`paginationRules`
+
+**Példa:**
 
 ```json
 {
     "name": "RESTDataset",
     "properties": {
         "type": "RestResource",
+        "typeProperties": {
+            "relativeUrl": "<relative url>"
+        },
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<REST linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "relativeUrl": "<relative url>",
-            "additionalHeaders": {
-                "x-user-defined": "helloworld"
-            },
-            "paginationRules": {
-                "AbsoluteUrl": "$.paging.next"
-            }
-        }
-    }
-}
-```
-
-**2. példa: A Post metódussal**
-
-```json
-{
-    "name": "RESTDataset",
-    "properties": {
-        "type": "RestResource",
-        "linkedServiceName": {
-            "referenceName": "<REST linked service name>",
-            "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "relativeUrl": "<relative url>",
-            "requestMethod": "Post",
-            "requestBody": "<body for POST REST request>"
         }
     }
 }
@@ -222,21 +199,25 @@ Adatok másolása REST, a következő tulajdonságok támogatottak:
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
-Ez a szakasz felsorolja, amely támogatja a REST-forrás tulajdonságai.
+Ez a szakasz a REST-forrás által támogatott tulajdonságok listáját tartalmazza.
 
 Szakaszok és a tevékenységek definiálását tulajdonságok teljes listáját lásd: [folyamatok](concepts-pipelines-activities.md). 
 
-### <a name="rest-as-source"></a>REST-forrásként
+### <a name="rest-as-source"></a>REST forrásként
 
-A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakaszban:
+A következő tulajdonságok támogatottak a másolási tevékenység **source** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A **típus** értékre kell állítani a másolási tevékenység forrása tulajdonságát **RestSource**. | Igen |
-| httpRequestTimeout | Az időtúllépés (a **TimeSpan** érték) válaszol a HTTP-kérelem. Az értéke az időkorlátot kapott választ, nem választ adatokat olvasni az időkorlátot. Az alapértelmezett érték **00:01:40**.  | Nem |
-| requestInterval | A következő oldalhoz tartozó kérelem elküldése előtt várakozási időt. Az alapértelmezett érték **00:00:01** |  Nem |
+| type | A másolási tevékenység forrásának **Type** tulajdonságát **RestSource**értékre kell állítani. | Igen |
+| requestMethod | A HTTP-metódus. Az engedélyezett értékek: **Get** (alapértelmezett) és **post**. | Nem |
+| additionalHeaders | További HTTP-kérelmek fejlécei. | Nem |
+| requestBody | A HTTP-kérelem törzse. | Nem |
+| paginationRules | A következő lapra irányuló kérelmek összeállításához szükséges tördelési szabályok. A részletekért tekintse meg a [tördelés támogatását](#pagination-support) ismertető szakaszt. | Nem |
+| httpRequestTimeout | A válasz kéréséhez szükséges HTTP-kérelem időkorlátja (a **TimeSpan** érték). Ez az érték a válasz lekérésének időtúllépése, nem pedig a válaszüzenetek olvasásának időtúllépése. Az alapértelmezett érték a **00:01:40**.  | Nem |
+| requestInterval | Az a várakozási idő, ameddig a következő lapra küldött kérelem elküldése előtt elküldve. Az alapértelmezett érték **00:00:01** |  Nem |
 
-**Példa**
+**1. példa: A Get metódus használata tördeléssel**
 
 ```json
 "activities":[
@@ -258,6 +239,12 @@ A következő tulajdonságok támogatottak a másolási tevékenység **forrás*
         "typeProperties": {
             "source": {
                 "type": "RestSource",
+                "additionalHeaders": {
+                    "x-user-defined": "helloworld"
+                },
+                "paginationRules": {
+                    "AbsoluteUrl": "$.paging.next"
+                },
                 "httpRequestTimeout": "00:01:00"
             },
             "sink": {
@@ -268,39 +255,73 @@ A következő tulajdonságok támogatottak a másolási tevékenység **forrás*
 ]
 ```
 
-## <a name="pagination-support"></a>Tördelés támogatása
+**2. példa: A post metódus használata**
 
-Általában a REST API-t egyetlen kérelem egy észszerű számú; a válasz hasznos adat mérete korlátozza ideje nagy mennyiségű adatot, vissza az eredményt felosztja a több oldalra, és a szükséges hívóit, az eredmény a következő oldal egymást követő kéréseket küldeni. Általában a kérelem egy oldal a dinamikus és az előző lapon, a válasz által visszaadott információ áll.
+```json
+"activities":[
+    {
+        "name": "CopyFromREST",
+        "type": "Copy",
+        "inputs": [
+            {
+                "referenceName": "<REST input dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "outputs": [
+            {
+                "referenceName": "<output dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "typeProperties": {
+            "source": {
+                "type": "RestSource",
+                "requestMethod": "Post",
+                "requestBody": "<body for POST REST request>",
+                "httpRequestTimeout": "00:01:00"
+            },
+            "sink": {
+                "type": "<sink type>"
+            }
+        }
+    }
+]
+```
 
-Az általános REST-összekötő a következő tördelés mintát támogat: 
+## <a name="pagination-support"></a>Tördelési támogatás
 
-* Következő kérelmet abszolút vagy relatív URL-címe = aktuális válasz törzsében tulajdonság értéke
-* Következő kérelmet abszolút vagy relatív URL-címe = fejléc értéke az aktuális válaszfejlécek
-* Következő kérés lekérdezési paraméter = aktuális válasz törzsében tulajdonság értéke
-* Következő kérés lekérdezési paraméter = fejléc értéke az aktuális válaszfejlécek
-* Tovább a kérelem fejlécében = aktuális válasz törzsében tulajdonság értéke
-* Tovább a kérelem fejlécében = fejléc értéke az aktuális válaszfejlécek
+A REST API általában egy ésszerű számú kérelemre korlátozza a válasz adattartalom-méretét. míg nagy mennyiségű adattal tér vissza, az eredmény több oldalra van bontva, és a hívóknak egymást követő kéréseket kell küldeniük az eredmény következő oldalának beolvasásához. Az egyik oldalra vonatkozó kérelem általában dinamikus, és az előző oldal válaszában visszaadott információkból áll.
 
-**Tördelés szabályok** egy szótárban az adatkészlet egy vagy több kis-és nagybetűket kulcs-érték párokat tartalmazó vannak meghatározva. A konfiguráció létrehozni a kérést, a második oldal kezdve használható. Az összekötő le fog állni, léptetés, amikor HTTP-állapotkód: 204 (nincs tartalom) kap, vagy a JSONPath kifejezés a "paginationRules" bármelyike null értéket ad vissza.
+Ez az általános REST-összekötő a következő tördelési mintákat támogatja: 
 
-**Támogatott kulcsok** tördelés szabályok:
+* A következő kérelem abszolút vagy relatív URL-címe = tulajdonság értéke az aktuális válasz törzsében
+* A következő kérelem abszolút vagy relatív URL-címe = fejléc értéke az aktuális válasz fejlécekben
+* A következő kérelem lekérdezési paramétere = tulajdonság értéke az aktuális válasz törzsében
+* Következő kérelem lekérdezési paramétere = fejléc értéke az aktuális válasz fejlécekben
+* Következő kérelem fejléce = tulajdonság értéke az aktuális válasz törzsében
+* Következő kérelem fejléce = fejléc értéke az aktuális válasz fejlécekben
+
+A **tördelési szabályok** az adatkészletben olyan szótárként vannak definiálva, amely egy vagy több kis-és nagybetűket megkülönböztető kulcs-érték párokat tartalmaz. A rendszer a konfigurációt fogja használni a második lapról kezdődő kérelem létrehozásához. Az összekötő leáll, ha az 204-as HTTP-állapotkód (nincs tartalom), vagy a "paginationRules" JSONPath egyik kifejezése null értéket ad vissza.
+
+A tördelési szabályokban **támogatott kulcsok** :
 
 | Kulcs | Leírás |
 |:--- |:--- |
-| AbsoluteUrl | Azt jelzi, hogy az URL-cím a következő kérés kiadása. Ez lehet **vagy abszolút vagy relatív URL-**. |
-| QueryParameters. *request_query_parameter* vagy QueryParameters [request_query_parameter] | "request_query_parameter" a felhasználó által definiált hivatkozik egy lekérdezési paraméter neve a következő HTTP-kérelem URL-címében. |
-| Fejlécek. *request_header* vagy fejlécek [request_header] | "request_header" a felhasználó által definiált egy fejléc neve a következő HTTP-kérelem hivatkozik. |
+| AbsoluteUrl | Azt az URL-címet adja meg, amely a következő kérést adja ki. **Abszolút URL-cím vagy relatív URL-cím**is lehet. |
+| QueryParameters. *request_query_parameter* VAGY QueryParameters [' request_query_parameter '] | a "request_query_parameter" felhasználó által definiált, amely egy lekérdezési paraméter nevére hivatkozik a következő HTTP-kérelem URL-címében. |
+| Fejlécek. *request_header* VAGY fejlécek [' request_header '] | a "request_header" felhasználó által definiált, amely egy fejléc nevére hivatkozik a következő HTTP-kérelemben. |
 
-**Támogatott értékek** tördelés szabályok:
+A tördelési szabályokban **támogatott értékek** :
 
-| Érték | Leírás |
+| Value | Leírás |
 |:--- |:--- |
-| Fejlécek. *response_header* vagy fejlécek [response_header] | "response_header" a felhasználó által definiált hivatkozik egy fejléc neve az a jelenlegi HTTP-válasz, a következő kérés kiadása, amely az érték használható. |
-| A "$" (a legfelső szintű a választörzs képviselő) kezdődő JSONPath kifejezés | A választörzs tartalmazhat csak egy JSON-objektum. A JSONPath kifejezés által visszaadott egyetlen egyszerű érték, a következő kérelmet használandó. |
+| Fejlécek. *response_header* VAGY fejlécek [' response_header '] | a "response_header" felhasználó által definiált, amely a jelenlegi HTTP-válaszban egy fejléc nevére hivatkozik, amelynek értéke a következő kérelem kibocsátására szolgál majd. |
+| A "$" kezdetű JSONPath kifejezés (amely a válasz törzsének gyökerét jelöli) | A válasz törzsének csak egy JSON-objektumot kell tartalmaznia. A JSONPath kifejezésnek egyetlen primitív értéket kell visszaadnia, amely a következő kérelem kibocsátására szolgál majd. |
 
-**Példa**
+**Példa:**
 
-A Facebook Graph API adja vissza választ az alábbi struktúrával, amely megkülönbözteti a kis tovább lap URL-címe jelenik meg az ***paging.next***:
+A Facebook Graph API a következő struktúra válaszát adja vissza, amely esetben a következő oldal URL-címe szerepel a ***lapozásban. tovább***:
 
 ```json
 {
@@ -332,34 +353,30 @@ A Facebook Graph API adja vissza választ az alábbi struktúrával, amely megk�
 }
 ```
 
-A megfelelő REST adatkészlet configuration a különösen `paginationRules` következő:
+A kapcsolódó Rest másolási tevékenység forrásának konfigurációja `paginationRules` , különösen a következők:
 
 ```json
-{
-    "name": "MyFacebookAlbums",
-    "properties": {
-            "type": "RestResource",
-            "typeProperties": {
-                "relativeUrl": "albums",
-                "paginationRules": {
-                    "AbsoluteUrl": "$.paging.next"
-                }
-            },
-            "linkedServiceName": {
-                "referenceName": "MyRestService",
-                "type": "LinkedServiceReference"
-            }
+"typeProperties": {
+    "source": {
+        "type": "RestSource",
+        "paginationRules": {
+            "AbsoluteUrl": "$.paging.next"
+        },
+        ...
+    },
+    "sink": {
+        "type": "<sink type>"
     }
 }
 ```
 
-## <a name="export-json-response-as-is"></a>JSON-válasz való exportálás-van
+## <a name="export-json-response-as-is"></a>JSON-válasz exportálása a következőképpen:
 
-A REST-összekötő segítségével REST API JSON-válasz való exportálása –, hogy különböző fájlalapú tárolók. Az ilyen sémafüggetlen másolási eléréséhez hagyja ki a "struktúra" (más néven *séma*) szakaszban az adatkészlet és a séma hozzárendelése a másolási tevékenység.
+Ezt a REST-összekötőt használhatja a REST API JSON-válasz exportálására a különböző file-alapú tárolók esetében. Az ilyen sémák és sémák közötti másoláshoz ugorjon a másolási tevékenységben a "Structure" (más néven *séma*) szakaszra.
 
 ## <a name="schema-mapping"></a>Séma-hozzárendelés
 
-Adatok másolása REST-végpont táblázatos fogadóba, tekintse meg [séma-hozzárendelés](copy-activity-schema-and-type-mapping.md#schema-mapping).
+Ha adatokat szeretne másolni a REST-végpontról a táblázatos fogadóba, tekintse meg a [séma-hozzárendelést](copy-activity-schema-and-type-mapping.md#schema-mapping).
 
 ## <a name="next-steps"></a>További lépések
 

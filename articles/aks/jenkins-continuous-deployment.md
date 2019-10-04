@@ -7,12 +7,12 @@ author: zr-msft
 ms.author: zarhoads
 ms.topic: article
 ms.date: 01/09/2019
-ms.openlocfilehash: 703aa081c8acf41f9206e2b0ccff45571367d2e8
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 7a81f26b4dad5f7257e5c3fd012dffaf06d573bb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756078"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65073782"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-kubernetes-service-aks-with-jenkins-continuous-integration-and-deployment"></a>Oktatóanyag: Üzembe helyezés a Githubról, az Azure Kubernetes Service (AKS) a Jenkins folyamatos integrációs és üzembe helyezés
 
@@ -48,6 +48,9 @@ Az oktatóanyag elvégzéséhez szüksége ezeket az elemeket:
 ## <a name="prepare-your-app"></a>Az alkalmazás előkészítése
 
 Ebben a cikkben egy minta Azure vote alkalmazást, amely tartalmazza az egy vagy több podok és a egy második pod Redis üzemeltető ideiglenes adattárolásra üzemeltetett webes felületet használhat. Mielőtt automatikus központi telepítés integrálása a Jenkins és az AKS először manuális előkészítése és központi telepítése az Azure vote alkalmazást, az AKS-fürt. A manuális üzembe helyezés az alkalmazás első verziója, és lehetővé teszi, hogy az alkalmazást működés közben láthatja.
+
+> [!NOTE]
+> Az Azure vote mintaalkalmazást használ, amely egy Linux-csomóponton ütemezett Linux podot. A következő cikkben ismertetett folyamatot is használható ütemezett egy Windows Server-csomóponton a Windows Server podot.
 
 A mintaalkalmazás - a következő GitHub-tárház elágaztatása [ https://github.com/Azure-Samples/azure-voting-app-redis ](https://github.com/Azure-Samples/azure-voting-app-redis). Ahhoz, hogy elágaztassa a példatárt a saját GitHub-fiókja felé, kattintson a **Fork** (Elágaztatás) gombra a jobb felső sarokban.
 

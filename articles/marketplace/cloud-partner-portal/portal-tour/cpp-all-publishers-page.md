@@ -1,27 +1,20 @@
 ---
-title: Minden gyártó lapon az Azure Marketplace-en |} A Microsoft Docs
-description: .
+title: Az összes közzétevők oldal az Azure Marketplace-en
+description: Az Azure Marketplace-en, a Cloud Partner portálra a minden gyártó áttekintése.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: e2c780992143ab753dad1ca89b22593d20fdedc4
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.author: pabutler
+ms.openlocfilehash: ab42757d91244c0661a6acd02e4e5ebe891929a0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52266933"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64942004"
 ---
-# <a name="all-publishers-page"></a>Az összes közzétevők lap
+# <a name="all-publishers-page"></a>Minden közzétevő oldal
 
 A [ **minden gyártó** ](https://cloudpartner.azure.com/#publishers) lap megjeleníti az összes regisztrált a Microsoft cloud közzétevők listájának, beleértve azok közzétevő egyedi nevét és megjelenítendő nevét. Az eredmények Rendezés oszlop, vagy adjon meg egy sztringet, az eredmények szűréséhez.  Ezen a lapon is megjelenít egy **hozzáadása közzétevő** gomb, de ez a gomb csak akkor engedélyezett portál rendszergazdák számára.  Közzétevő kiválasztása ebben a listában jelenik meg a profil a közzétevőhöz.  További információkért lásd: [közzétevő profil kezelése](./../../cloud-partner-portal-orig/cloud-partner-portal-manage-publisher-profile.md).
 
@@ -30,7 +23,7 @@ A [ **minden gyártó** ](https://cloudpartner.azure.com/#publishers) lap megjel
 
 Az alábbi képen látható, hogy a közzétevő, listázás, a karakterlánc contoso szűrve ".  
 
-![Az összes közzétevők lap](./media/all-publishers-page1.png)
+![Minden közzétevő oldal](./media/all-publishers-page1.png)
 
 Kattintson az első bejegyzés a Contoso jelenik meg a profil lapra.  Csak a saját közzétevő profil szerkesztheti.
 

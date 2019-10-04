@@ -1,10 +1,10 @@
 ---
-title: RequestDisallowedByPolicy hiba az Azure erőforrás-szabályzat |} A Microsoft Docs
-description: Ismerteti a RequestDisallowedByPolicy hiba okát.
+title: RequestDisallowedByPolicy hiba az Azure Resource Policy szolgáltatással | Microsoft Docs
+description: A RequestDisallowedByPolicy hibájának okát ismerteti.
 services: azure-resource-manager
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 ms.service: azure-resource-manager
 ms.workload: multiple
@@ -13,20 +13,20 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: c160fe39b02d8adf6c12e3736307cf7f9688b0c5
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: e862637c688fd473b112fdfc0ee197da0444d02f
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58483233"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71121239"
 ---
-# <a name="requestdisallowedbypolicy-error-with-azure-resource-policy"></a>Az Azure erőforrás-szabályzat RequestDisallowedByPolicy hiba
+# <a name="requestdisallowedbypolicy-error-with-azure-resource-policy"></a>RequestDisallowedByPolicy hiba az Azure erőforrás-házirendjével
 
-Ez a cikk ismerteti a RequestDisallowedByPolicy hiba okát, ez a hiba megoldás is biztosít.
+Ez a cikk a RequestDisallowedByPolicy hibájának okát mutatja be, továbbá megoldást nyújt erre a hibára.
 
 ## <a name="symptom"></a>Jelenség
 
-A telepítés során kaphat egy **RequestDisallowedByPolicy** hiba, amely megakadályozza az erőforrások létrehozását. Az alábbi példa bemutatja a hiba:
+Az üzembe helyezés során **RequestDisallowedByPolicy** hibaüzenet jelenhet meg, amely megakadályozza az erőforrások létrehozását. A következő példa a hibát mutatja be:
 
 ```json
 {
@@ -39,13 +39,13 @@ A telepítés során kaphat egy **RequestDisallowedByPolicy** hiba, amely megaka
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-A házirendet, amely blokkolja az üzembe helyezés részleteit lekéréséhez használja a következő módszerek egyikét:
+Az üzembe helyezést blokkoló házirend részleteinek lekéréséhez használja a következő módszerek egyikét:
 
 ### <a name="powershell"></a>PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-A PowerShellben adja meg, hogy a házirend azonosítója, mint a `Id` paraméter beolvasni a szabályzatot, amely blokkolja az üzembe helyezés részleteit.
+A PowerShellben adja meg a `Id` házirend-azonosítót paraméterként, hogy lekérje a központi telepítést blokkoló házirend részleteit.
 
 ```powershell
 (Get-AzPolicyDefinition -Id "/subscriptions/{guid}/providers/Microsoft.Authorization/policyDefinitions/regionPolicyDefinition").Properties.policyRule | ConvertTo-Json
@@ -53,7 +53,7 @@ A PowerShellben adja meg, hogy a házirend azonosítója, mint a `Id` paraméter
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Az Azure CLI-ben adja meg a szabályzat-definíció nevét:
+Az Azure CLI-ben adja meg a házirend-definíció nevét:
 
 ```azurecli
 az policy definition show --name regionPolicyAssignment
@@ -61,10 +61,10 @@ az policy definition show --name regionPolicyAssignment
 
 ## <a name="solution"></a>Megoldás
 
-Biztonság és megfelelőség az előfizetés adminisztrátorainak rendelné a házirendekben, amelyek korlátozzák az erőforrások telepítési módját. Például az előfizetés előfordulhat, hogy rendelkezik egy szabályzatot, amely megakadályozza, hogy a nyilvános IP-címek, hálózati biztonsági csoportok, felhasználó által megadott útvonalakat hoz létre, vagy útválasztási táblázatok. A megjelenő hibaüzenet a **tünetek** szakasz bemutatja a házirend nevét.
-A probléma megoldásához tekintse át az erőforrás-szabályzatok, és határozza meg, hogyan helyezhet üzembe erőforrásokat, amelyek megfelelnek a ezek szabályzatok.
+Biztonság vagy megfelelőség esetén az előfizetési rendszergazdák olyan házirendeket rendelhetnek, amelyek korlátozzák az erőforrások központi telepítését. Előfordulhat például, hogy az előfizetése olyan házirenddel rendelkezik, amely megakadályozza a nyilvános IP-címek, a hálózati biztonsági csoportok, a felhasználó által megadott útvonalak vagy az útválasztási táblák létrehozását. A jelenségek szakaszban található hibaüzenet a szabályzat nevét mutatja.
+A probléma megoldásához tekintse át az erőforrás-házirendeket, és határozza meg, hogyan telepítse a szabályzatoknak megfelelő erőforrásokat.
 
 További információkért tekintse át a következő cikkeket:
 
 - [Mi az Azure Policy?](../governance/policy/overview.md)
-- [Megfelelőség kikényszerítése céljából szabályzatok létrehozása és kezelése](../governance/policy/tutorials/create-and-manage.md)
+- [Szabályzatok létrehozása és kezelése a megfelelőség kikényszerítése céljából](../governance/policy/tutorials/create-and-manage.md)

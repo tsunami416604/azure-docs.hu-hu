@@ -2,19 +2,29 @@
 author: rothja
 ms.service: billing
 ms.topic: include
-ms.date: 11/09/2018
-ms.author: jroth
-ms.openlocfilehash: cab85410ec0cc0d63b27cd03daf6a398daeb4f68
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.date: 6/15/2019
+ms.author: victorh
+ms.openlocfilehash: e8e65c0c1302523af5aefab297ffbafe2a90d2b4
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553736"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "68589963"
 ---
-| Erőforrás | Alapértelmezett korlát |
-| --- | --- |
-| Zónák előfizetésenként |100 <sup>1</sup> |
-| Zónánként rekordhalmazok |5,000 <sup>1</sup> |
-| Rekordok száma rekordhalmaz |20 |
+**Nyilvános DNS-zónák**
 
-<sup>1</sup>Ha ezek a korlátok növeléséhez van szüksége, forduljon az Azure ügyfélszolgálatához.
+| Resource | Alapértelmezett korlát |
+| --- | --- |
+| Nyilvános DNS-zónák/előfizetés |250 <sup>1</sup> |
+| Rekordhalmazok nyilvános DNS-zónában |10 000 <sup>1</sup> |
+| Rekord/rekordhalmaz a nyilvános DNS-zónában |20 |
+| Egyetlen Azure-erőforráshoz tartozó alias-rekordok száma |20|
+| saját DNS zónák/előfizetés |1000|
+| Rekordhalmazok egy saját DNS-zónában |25000|
+| Rekord/rekordhalmaz a magánhálózati DNS-zónákhoz |20|
+| Privát DNS-zóna Virtual Network hivatkozásai |1000|
+| A virtuális hálózatok privát DNS-zónákon keresztül, automatikus regisztráció engedélyezve |100|
+| Azon privát DNS-zónák száma, amelyekhez a virtuális hálózat elérhetővé válik, és engedélyezve van az automatikus regisztráció |1|
+| Saját DNS-zónák száma, amelyekhez a virtuális hálózat kapcsolódhat |1000|
+
+<sup>1</sup> Ha meg kell emelnie ezeket a korlátokat, forduljon az Azure ügyfélszolgálatához.

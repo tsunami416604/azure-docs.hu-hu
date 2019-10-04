@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: d0dbcda886b3a44917548e19b69ced1b59df9e3e
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: 1cdc4420758b67dc3a578b9530fb7039ed53ee66
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565597"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67092800"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-reward-gateway"></a>Oktatóanyag: Az Azure Active Directory-integráció ellenszolgáltatás átjáróval
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a ellenszolgáltatás átjáró konfigurálásához sz
 
 **Ellenszolgáltatás átjáró hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

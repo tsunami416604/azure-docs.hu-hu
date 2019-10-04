@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/01/2018
 ms.author: spelluru
 ms.openlocfilehash: a9426c20ae23fd3dad4cdba25590ff2eac271896
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56727961"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60311419"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Tulajdonosok és felhasználók hozzáadása az Azure DevTest Labs szolgáltatásban
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
@@ -32,7 +32,7 @@ Az Azure DevTest Labs szolgáltatásban hozzáférést vezérlik [Azure szerepk�
 Az egy felhasználó hozzárendelheti három fő szerepkörök állnak rendelkezésre:
 
 * Tulajdonos
-* DevTest Labs-felhasználó
+* DevTest Labs User
 * Közreműködő
 
 Az alábbi táblázat mutatja be, hogy ezek a szerepkörök minden egyes felhasználók által végrehajtható műveleteket:

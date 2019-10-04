@@ -1,6 +1,6 @@
 ---
-title: Az Azure AD jelszóvédelem műveletek és jelentéskészítés – Azure Active Directory
-description: Az Azure AD jelszóvédelem üzembe helyezés utáni műveleteket, és jelentéskészítés
+title: Azure AD jelszavas védelmi műveletek és jelentéskészítés – Azure Active Directory
+description: Azure AD jelszavas védelem telepítés utáni műveletek és jelentéskészítés
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,54 +11,57 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca85007bb016cc98d1be61ce08865945e699ad4a
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: b5ff7f0bbf1bf474a611ae033165bca6dfaac676
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58312427"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097634"
 ---
-# <a name="azure-ad-password-protection-operational-procedures"></a>Az Azure AD jelszóvédelem eljárások
+# <a name="azure-ad-password-protection-operational-procedures"></a>Az Azure AD jelszavas védelem működési eljárásai
 
-Befejezése után a [telepítése az Azure AD jelszóvédelem](howto-password-ban-bad-on-premises-deploy.md) a helyszínen, van néhány elemet, amely az Azure Portalon kell konfigurálni.
+Az [Azure ad jelszavas védelem helyszíni telepítésének](howto-password-ban-bad-on-premises-deploy.md) befejezése után van néhány elem, amelyet be kell állítani a Azure Portal.
 
-## <a name="configure-the-custom-banned-password-list"></a>Az egyéni letiltott jelszavak listájának konfigurálása
+## <a name="configure-the-custom-banned-password-list"></a>Egyéni tiltott jelszavak listájának konfigurálása
 
-Kövesse a cikk útmutatást [konfigurálása a letiltott jelszavak egyéni lista](howto-password-ban-bad-configure.md) testreszabása a szervezet számára a letiltott jelszavak lista lépéseit.
+Kövesse az [Egyéni tiltott jelszavak konfigurálása](howto-password-ban-bad-configure.md) című cikkben ismertetett útmutatást, amelyekkel testre szabhatja a tiltott jelszavak listáját a szervezet számára.
 
 ## <a name="enable-password-protection"></a>Jelszavas védelem engedélyezése
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) és keresse meg a **Azure Active Directory**, **hitelesítési módszerek**, majd **jelszavas védelem**.
-1. Állítsa be **engedélyezése a Windows Server Active Directory jelszavas védelem** való **Igen**
-1. Említetteknek megfelelően az [üzembe helyezési útmutató](howto-password-ban-bad-on-premises-deploy.md#deployment-strategy), javasoljuk, hogy először állítsa a **mód** való **naplózási**
-   * Ha elégedett a szolgáltatással, válthat a **mód** való **kényszerített**
-1. Kattintson a **Mentés** gombra.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és keresse meg a **Azure Active Directory**, a **hitelesítési módszereket**, majd a **jelszavas védelmet**.
+1. **Engedélyezze a jelszavas védelem engedélyezése beállítást a Windows Server Active Directory** az **Igen** értékre
+1. Az [üzembe helyezési útmutatóban](howto-password-ban-bad-on-premises-deploy.md#deployment-strategy)említetteknek megfelelően javasolt a **mód** beállítása a **naplózásra** .
+   * A funkció használata után átválthat a mód **kényszerített** **állapotára**
+1. Kattintson a **Save** (Mentés) gombra
 
-![Az Azure Portalon az Azure AD jelszóvédelem összetevők engedélyezése](./media/howto-password-ban-bad-on-premises-operations/authentication-methods-password-protection-on-prem.png)
+![Az Azure AD jelszavas védelem összetevőinek engedélyezése a Azure Portalban](./media/howto-password-ban-bad-on-premises-operations/authentication-methods-password-protection-on-prem.png)
 
 ## <a name="audit-mode"></a>Vizsgálati üzemmód
 
-Vizsgálati üzemmód célja arra, hogy a szoftver egy "Mi történik, ha" módban fusson. Minden egyes tartományvezérlő agent szolgáltatást egy bejövő jelszót a jelenleg aktív szabályzat alapján értékeli ki. A jelenlegi házirend rendszervizsgálati módban kell van konfigurálva, ha a "rossz" jelszavak Eseménynapló-üzenetek eredményez, de fogadja. Ez az az egyetlen különbség, naplózási és kényszerítése módban; között minden egyéb művelet futtatása azonos.
+A vizsgálati mód célja, hogy a szoftvert "mi if" módban futtassa. Minden tartományvezérlő ügynök-szolgáltatás a jelenleg aktív házirendnek megfelelően kiértékel egy bejövő jelszót. Ha az aktuális házirend naplózási módban van konfigurálva, a "rossz" jelszavak az Eseménynapló-üzeneteket eredményezik, de elfogadják őket. Ez az egyetlen különbség a naplózás és a kikényszerítés mód között; minden más művelet ugyanazt a műveletet futtatja.
 
 > [!NOTE]
-> A Microsoft azt javasolja, hogy első üzembe helyezés és a tesztelés mindig kezd rendszervizsgálati módban. Eseményeket az eseménynaplóban, gondolja át, hogy bármely meglévő működési folyamatok kényszerítési módban engedélyezését követően elosztott, hogy majd ellenőrizni kell.
+> A Microsoft azt javasolja, hogy a kezdeti üzembe helyezés és a tesztelés mindig vizsgálati módban induljon el. Az Eseménynaplóban lévő eseményeket figyelni kell, hogy meg lehessen állapítani, hogy a meglévő működési folyamatok megzavarják-e a kényszerített mód engedélyezése után.
 
-## <a name="enforce-mode"></a>Kényszerítési módra
+## <a name="enforce-mode"></a>Érvényesítési mód
 
-Kényszerítése módban a végső konfiguráció jelent. Vizsgálati üzemmód újabb, mint minden tartományvezérlő ügynökszolgáltatás bejövő jelszavak a jelenleg aktív szabályzat alapján értékeli ki. Ha kényszerítési módban, ha engedélyezve van, a rendszer elutasítja számít, hogy a házirend szerint nem biztonságos jelszót.
+A kikényszerítés mód végső konfigurációként szolgál. Ahogy a fenti vizsgálati mód esetében, minden egyes tartományvezérlő ügynök szolgáltatás a jelenleg aktív szabályzatnak megfelelően kiértékeli a bejövő jelszavakat. Ha a kényszerített mód engedélyezve van, akkor a rendszer visszautasít egy, a szabályzatnak megfelelően biztonságosnak ítélt jelszót.
 
-Jelszó az Azure AD-jelszó DC védelmi ügynök elutasította a kényszerítési módban, amikor a végfelhasználó által látott látható hatást megegyezik a mi lenne láthatják Ha jelszavát a hagyományos helyszíni jelszó összetettségi kényszerítése elutasította. Például egy felhasználó lehet, hogy tekintse meg az alábbi hagyományos hibaüzenet jelenik meg a Windows logon\change jelszóképernyő:
+Ha az Azure AD jelszavas védelmet biztosító tartományvezérlő ügynöke visszautasítja a jelszót, a végfelhasználók által látott látható hatás megegyezik azzal, amit látni fognak, ha a hagyományos helyszíni jelszó-bonyolultsági kényszerítéssel elutasította a jelszavát. Előfordulhat például, hogy egy felhasználó a következő hagyományos hibaüzenetet jeleníti meg a Windows logon\change jelszavának képernyőjén:
 
 `Unable to update the password. The value provided for the new password does not meet the length, complexity, or history requirements of the domain.`
 
-Ez az üzenet csak egy példa a több lehetséges kimenetek. Az adott hibaüzenetet a tényleges szoftver vagy a forgatókönyv, amely egy nem biztonságos jelszót megpróbálja függően változhat.
+Ez az üzenet csak egy példát mutat be több lehetséges eredményre. Az adott hibaüzenet attól függően változhat, hogy milyen szoftvert vagy forgatókönyvet próbál meg beállítani egy nem biztonságos jelszó megadására.
 
-Érintett felhasználók kell előfordulhat, hogy az informatikai részleg az új követelményeinek megismeréséhez, és több tud biztonságos jelszó használata.
+Előfordulhat, hogy az érintett végfelhasználóknak az informatikai munkatársakkal kell dolgozniuk az új követelmények megismeréséhez és a biztonságos jelszavak kiválasztásához.
+
+> [!NOTE]
+> Az Azure AD jelszavas védelme nem szabályozza az ügyfélszámítógép által a gyenge jelszavak elutasításakor megjelenő hibaüzenetet.
 
 ## <a name="enable-mode"></a>Mód engedélyezése
 
-Ez a beállítás általában alapértelmezett engedélyezve (Igen) állapotban kell hagyni. Letiltva (nem), a beállítás konfigurálásával okoz az összes üzembe helyezett Azure AD-jelszó DC védelmi ügynökök, ahol az összes jelszavak ügyfélként fogad el egy videokártyának üzemmódba-van, ezért nem egyetlen ellenőrzési tevékenység fog végrehajtott ajánlattevőről (mert például még a naplózási események fog bocsátja ki).
+Ennek a beállításnak az alapértelmezett engedélyezett (igen) állapotban kell maradnia. Ha ezt a beállítást Letiltva (nem) állítja be, a rendszer az összes telepített Azure AD jelszavas védelmi TARTOMÁNYVEZÉRLŐi ügynököt egy olyan nyugalmi módba helyezi, amelyben az összes jelszó el van fogadva, és az érvényesítési tevékenységek nem lesznek végrehajtva (például még naplózási események nélkül is). lesz kibocsátva).
 
 ## <a name="next-steps"></a>További lépések
 
-[Az Azure AD jelszóvédelem figyelése](howto-password-ban-bad-on-premises-monitor.md)
+[Az Azure AD jelszavas védelem figyelése](howto-password-ban-bad-on-premises-monitor.md)

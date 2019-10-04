@@ -11,26 +11,26 @@ ms.topic: article
 ms.date: 06/05/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
-ms.openlocfilehash: b67028562a2c377e1dd99635bdf04cad14782341
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 16f13cd4ad580ea2f163fe87b5924c1462890972
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58793135"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "64926189"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>A Machine Learning Anomáliadetektálás API
 
 > [!NOTE]
-> Ez az elem karbantartás alatt áll. Javasoljuk, hogy használja a [Anomáliadetektálási detector használatával API szolgáltatás](https://azure.microsoft.com/en-us/services/cognitive-services/anomaly-detector/) működteti, a katalógusban, gépi tanulási algoritmusok Azure Cognitive Services segítségével észlelheti a rendellenességeket, az üzleti, üzemeltetési, és IoT-metrikák alapján.
+> Ez az elem karbantartás alatt áll. Javasoljuk, hogy az Azure Cognitive Services Machine Learning algoritmusait használó anomália- [érzékelő API-szolgáltatást](https://azure.microsoft.com/services/cognitive-services/anomaly-detector/) használja az üzleti, működési és IoT mérőszámokból származó rendellenességek észlelésére.
 
 ## <a name="overview"></a>Áttekintés
 [Anomáliadetektálás API](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2) a, amely észleli a rendellenességeket, amely időben egyenletesen elosztásban numerikus értékek idősorozat-adatokat az Azure Machine Learning használatával létrehozott példa.
 
 Az API felismeri a következő típusú rendellenes minták az időbeli:
 
-* **Pozitív és negatív trendek**: Például ha memóriahasználatát figyeli egy növekvő tendenciát számítástechnika lehet fontos lehet, hogy egy memóriavesztés behatolási kísérletre utaló
-* **Az értékek dinamikus tartományának változásai**: Például egy felhőalapú szolgáltatás által okozott kivételek figyelésekor minden az értékek dinamikus tartományának változásai utalhat a szolgáltatás állapotának licencszolgáltatás instabillá válásának és
-* **Csúcsok és Süllyedések**: Ha például a figyelő egy szolgáltatásban sikertelen bejelentkezések száma, vagy egy e-kereskedelmi webhely a véglegesítések számát, csúcsok és jelezheti rendellenes viselkedés.
+* **Pozitív és negatív trendek**: Például, ha a számítási feladatokban a memória használatának monitorozásakor a felfelé mutató tendencia hasznos lehet, mivel előfordulhat, hogy a memória szivárgását jelzi,
+* **Változások az értékek dinamikus tartományában**: Például a Cloud Service által okozott kivételek figyelése esetén az értékek dinamikus tartományának változásai a szolgáltatás állapotának instabilitását jelezhetik, és
+* **Tüskék és dips**: Ha például egy szolgáltatásban vagy egy e-kereskedelmi helyen található pénztárak számát figyeli, a tüskék vagy a dips rendellenes viselkedést jelezhet.
 
 A machine learning derítik fel ilyen értékek változásainak követése keresztül folyamatban lévő változásai idő- és azok értékeit, anomáliadetektálási pontszámok. Nincs szükségük ad hoc ad hoc küszöbérték finomhangolása és eredményeiket téves riasztási aránnyal vezérlésére használható. Az anomáliadetektálás API hasznos számos olyan szituációkra, mint a figyelést az idő múlásával nyomon követése a KPI-k révén a használat monitorozása keresztül metrikákra keresések száma, a számok kattintással, alkalmazásteljesítmény-figyelő például a memória, Processzor, a teljesítményszámlálók segítségével olvassa be a fájlt, stb. idővel.
 
@@ -46,7 +46,7 @@ Az Anomáliadetektálás ajánlat az első lépésekhez hasznos eszközöket tar
 -->
 
 ## <a name="api-deployment"></a>API üzembe helyezés
-Annak érdekében, hogy az API-t használ, azt telepítenie kell az Azure-előfizetéshez ahol tárolható az Azure Machine Learning-webszolgáltatásként.  Az ehhez a [Azure AI-katalógusban](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2).  Két Azure Machine Learning studio-webszolgáltatások (és az azokhoz kapcsolódó erőforrásokat) az Azure-előfizetéshez – ez telepíti, egy a szezonalitás észlelési anomáliadetektálás, és egy szezonalitás észlelési nélkül.  Az üzembe helyezés befejeztével lesz az API-k kezelése az [Azure Machine Learning studio-webszolgáltatások](https://services.azureml.net/webservices/) lapot.  Ezen az oldalon lesz a végpontok helyére, API-kulcsokat, valamint mintakód találhat az API-t hívná.  Részletes utasítások [Itt](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice).
+Annak érdekében, hogy az API-t használ, azt telepítenie kell az Azure-előfizetéshez ahol tárolható az Azure Machine Learning-webszolgáltatásként.  Az ehhez a [Azure AI-katalógusban](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2).  Ez két Azure Machine Learning Studio webszolgáltatást (és az azokhoz kapcsolódó erőforrásokat) helyez üzembe az Azure-előfizetésében – az egyiket a szezonális észlelés és a szezonális észlelés nélkül.  Az üzembe helyezés befejezése után az API-kat a [Azure Machine learning Studio](https://services.azureml.net/webservices/) webszolgáltatások oldaláról kezelheti.  Ezen az oldalon lesz a végpontok helyére, API-kulcsokat, valamint mintakód találhat az API-t hívná.  Részletes utasítások [Itt](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice).
 
 ## <a name="scaling-the-api"></a>Az API-t méretezése
 Alapértelmezés szerint a központi telepítés kap egy ingyenes fejlesztési-tesztelési számlázási csomagot 1000 tranzakció havonta, és 2 számítási óra/hó.  Az igényeinek megfelelően frissítheti egy másik csomagra.  A különböző csomagokról díjszabásáról érhetők el [Itt](https://azure.microsoft.com/pricing/details/machine-learning/) "Élő webes API díjszabása" alatt.
@@ -58,7 +58,7 @@ Kezelheti a számlázási csomag [Itt](https://services.azureml.net/plans/).  A 
 A webszolgáltatás REST-alapú API-t biztosít, amely képes használni a különféle módokon, például a webes vagy mobilalkalmazás, R, Python, az Excel, HTTPS-kapcsolaton keresztül stb.  Az idősoros adatokat küldeni a szolgáltatás REST API-hívás keresztül, és azt futtatja az alább ismertetett három anomáliadetektálási típusok kombinációját.
 
 ## <a name="calling-the-api"></a>Az API meghívása
-Az API meghívása kell tudni, hogy a végpont helye és API-kulcsot.  Mindkét, az API hívásakor a mintakód együtt érhetők el a [Azure Machine Learning studio-webszolgáltatások](https://services.azureml.net/webservices/) lapot.  Keresse meg a kívánt API-t, majd kattintson a "Felhasználás" lapon találja meg azokat.  Vegye figyelembe, hogy meghívhatja az API-t egy Swagger API-ként (azaz az URL-cím paraméterrel `format=swagger`), vagy mint egy nem Swagger API-(azaz nélkül a `format` URL paraméter).  A mintakód a Swagger-formátumot használja.  Az alábbiakban egy példa kérések és válaszok a a Swagger formátumban van.  Ezekben a példákban vannak a szezonalitás végpontnak.  A nem szezonalitás végpont hasonlít.
+Az API meghívása kell tudni, hogy a végpont helye és API-kulcsot.  Mindkettő, valamint az API meghívásához használható mintakód a [Azure Machine learning Studio](https://services.azureml.net/webservices/) webszolgáltatások oldaláról érhető el.  Keresse meg a kívánt API-t, majd kattintson a "Felhasználás" lapon találja meg azokat.  Vegye figyelembe, hogy meghívhatja az API-t egy Swagger API-ként (azaz az URL-cím paraméterrel `format=swagger`), vagy mint egy nem Swagger API-(azaz nélkül a `format` URL paraméter).  A mintakód a Swagger-formátumot használja.  Az alábbiakban egy példa kérések és válaszok a a Swagger formátumban van.  Ezekben a példákban vannak a szezonalitás végpontnak.  A nem szezonalitás végpont hasonlít.
 
 ### <a name="sample-request-body"></a>Minta-kérelem törzse
 A kérés tartalmaz két objektum: `Inputs` és `GlobalParameters`.  Az alábbi példa kérelem néhány paraméter kell küldeni explicit módon nem vannak (görgessen le a végpontok paraméterek teljes listája).  A kérelem nem küldött explicit módon paraméterek az alább megadott alapértelmezett értékeket fogja használni.
@@ -113,10 +113,10 @@ Az anomáliadetektálás API támogatja a derítik fel a 3 tág kategóriába. A
 
 | Kategória detector használatával | Detector használatával | Leírás | Bemeneti paraméterek | Kimenetek |
 | --- | --- | --- | --- | --- |
-| Megnövekedett érzékelők |TSpike detector használatával |Csúcsok és a DIP sokkal értékei alapján is az első és harmadik quartiles észlelése |*tspikedetector.Sensitivity:* egész értéket a tartomány 1 – 10., alapértelmezett vesz fel: 3. A magasabb értékek lesznek catch tehát így kevésbé érzékeny további rendkívüli értékek |TSpike: bináris értékek – "1", ha a megnövekedett/dip észlel, különben "0" |
-| Megnövekedett érzékelők | ZSpike detector használatával |Csúcsok és alapján illesztésnek a esetén a rendszer a középérték a DIP észlelése |*zspikedetector.Sensitivity:* egész szám, a tartomány 1 – 10., alapértelmezett igénybe: 3. A magasabb értékek lesznek catch így kevésbé érzékeny további rendkívüli értékek |ZSpike: bináris értékek – "1", ha a megnövekedett/dip észlel, különben "0" |
-| Lassú Trend detector használatával |Lassú Trend detector használatával |A set-érzékenysége alapján lassú pozitív trend észlelése |*trenddetector.Sensitivity:* detector használatával pontszám a küszöbérték (alapértelmezett: 3,25, 3,25 – 5, és válassza ki ezt a; elfogadható tartományban Minél nagyobb a less-és nagybetűkre) |tscore: a trend anomáliadetektálás pontszámot jelölő lebegőpontos szám |
-| Szint módosításának érzékelők | Kétirányú szint módosítása detector használatával |Felfelé és lefelé is megfelelően a beállított érzékenységi szint módosításának észlelése |*bileveldetector.Sensitivity:* detector használatával pontszám a küszöbérték (alapértelmezett: 3,25, 3,25 – 5, és válassza ki ezt a; elfogadható tartományban Minél nagyobb a less-és nagybetűkre) |rpscore: anomáliadetektálási pontszám a felfelé és lefelé szint módosításának jelölő lebegőpontos szám |
+| Megnövekedett érzékelők |TSpike detector használatával |Csúcsok és a DIP sokkal értékei alapján is az első és harmadik quartiles észlelése |*tspikedetector. érzékenység:* egész értéket vesz igénybe a 1-10 tartományba, alapértelmezés szerint: 3 A magasabb értékek több szélsőséges értéket kapnak, így kevésbé érzékenyek |TSpike: bináris értékek – "1", ha a megnövekedett/dip észlel, különben "0" |
+| Megnövekedett érzékelők | ZSpike detector használatával |Csúcsok és alapján illesztésnek a esetén a rendszer a középérték a DIP észlelése |*zspikedetector. érzékenység:* a 1-10 tartomány egész értékének megadása, alapértelmezett: 3 A magasabb értékek több szélsőséges értéket kapnak, ami kevésbé érzékeny |ZSpike: bináris értékek – "1", ha a megnövekedett/dip észlel, különben "0" |
+| Lassú Trend detector használatával |Lassú Trend detector használatával |A set-érzékenysége alapján lassú pozitív trend észlelése |*trenddetector. érzékenység:* a detektor pontszámának küszöbértéke (alapértelmezett: 3,25, 3,25 – 5 egy ésszerű tartomány, amelyből kiválaszthatja a következőt:; Minél nagyobb a kevésbé érzékeny) |tscore: a trend anomáliadetektálás pontszámot jelölő lebegőpontos szám |
+| Szint módosításának érzékelők | Kétirányú szint módosítása detector használatával |Felfelé és lefelé is megfelelően a beállított érzékenységi szint módosításának észlelése |*bileveldetector. érzékenység:* a detektor pontszámának küszöbértéke (alapértelmezett: 3,25, 3,25 – 5 egy ésszerű tartomány, amelyből kiválaszthatja a következőt:; Minél nagyobb a kevésbé érzékeny) |rpscore: anomáliadetektálási pontszám a felfelé és lefelé szint módosításának jelölő lebegőpontos szám |
 
 ### <a name="parameters"></a>Paraméterek
 Ezek a bemeneti paraméterek részletesebb információkat az alábbi táblázatban szerepel:

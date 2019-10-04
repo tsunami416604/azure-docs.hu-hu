@@ -1,10 +1,10 @@
 ---
-title: A Microsoft Identity Platformon regisztrált alkalmazás által támogatott fiókok módosítása | Azure
+title: A Microsoft IDENTIFY platform-alkalmazás fiókjainak módosítása | Azure
 description: A Microsoft Identity Platformon regisztrált alkalmazás konfigurálásával módosíthatja, hogy kik, illetve mely fiókok érhetik el az alkalmazást.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/25/2018
-ms.author: celested
+ms.date: 05/08/2019
+ms.author: ryanwi
 ms.custom: aaddev
-ms.reviewer: lenalepa, sureshja
+ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a2c68d607e7afc2e3eac675511734c8d054c427
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: be62dabc01e00465fa5227c5531fa18a16cf10a9
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56174197"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68380774"
 ---
-# <a name="quickstart-modify-the-accounts-supported-by-an-application-preview"></a>Gyors útmutató: Egy alkalmazás (előzetes verzió) támogatja a fiókok módosítása
+# <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>Gyors útmutató: Egy alkalmazás által támogatott fiókok módosítása
 
 Az alkalmazások Microsoft Identity Platformon való regisztrálásakor esetenként az a cél, hogy az alkalmazást csak a szervezethez tartozó felhasználók érhessék el. Előfordulhat az is, hogy az alkalmazást olyan felhasználók számára is szeretné elérhetővé tenni, akik külső szervezetekhez tartoznak, vagy nem feltétlenül tartoznak valamely szervezethez (a személyes fiókok).
 
@@ -37,7 +37,6 @@ Először is győződjön meg arról, hogy az alábbi előfeltételek teljesüln
 * Megismerte a támogatott [engedélyekkel és hozzájárulással](v2-permissions-and-consent.md) kapcsolatos tudnivalókat, mivel fontos szem előtt tartania őket olyan alkalmazások készítésekor, amelyeket más felhasználóknak vagy alkalmazásoknak is használniuk kell.
 * Rendelkezik olyan bérlővel, amelyhez regisztrált alkalmazások tartoznak.
   * Ha nincsenek regisztrált alkalmazásai, [ismerje meg, hogyan regisztrálhat alkalmazásokat a Microsoft Identity Platformon](quickstart-register-app.md).
-* Hagyja jóvá az előzetes verzió használatát az alkalmazások Azure Portalon való regisztrálására. E rövid útmutató lépései az új felhasználói felületen alapulnak, és csak akkor működnek, ha Ön jóváhagyta az előzetes verzió használatát.
 
 ## <a name="sign-in-to-the-azure-portal-and-select-the-app"></a>Bejelentkezés az Azure Portalra és az alkalmazás kiválasztása
 
@@ -45,7 +44,7 @@ Mielőtt konfigurálhatná az alkalmazást, végre kell hajtania az alábbi lép
 
 1. Jelentkezzen be [Azure Portalra](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, illetve személyes Microsoft-fiókjával.
 1. Ha a fiókja több bérlőhöz is biztosít hozzáférést, válassza ki a fiókot az oldal jobb felső sarkában, és állítsa a portálmunkamenetét a kívánt Azure AD-bérlőre.
-1. A bal oldali navigációs panelen válassza az **Azure Active Directory** szolgáltatást, majd az **Alkalmazásregisztrációk (előzetes verzió)** lehetőséget.
+1. A bal oldali navigációs ablaktáblán válassza ki a **Azure Active Directory** szolgáltatást, majd válassza a **Alkalmazásregisztrációk**lehetőséget.
 1. Keresse meg és jelölje ki a konfigurálni kívánt alkalmazást. Miután kijelölte az alkalmazást, az alkalmazás **Áttekintés** lapja vagy regisztrációs főoldala jelenik meg.
 1. A lépéseket követve [módosítsa az alkalmazásregisztrációt különböző fiókok támogatásának engedélyezéséhez](#change-the-application-registration-to-support-different-accounts).
 1. Ha egyoldalas alkalmazása van, [engedélyezze az OAuth 2.0 implicit engedély használatát](#enable-oauth-20-implicit-grant-for-single-page-applications).

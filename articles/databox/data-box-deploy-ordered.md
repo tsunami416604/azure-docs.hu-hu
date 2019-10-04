@@ -1,19 +1,19 @@
 ---
-title: A Microsoft Azure Data Box megrendelése | Microsoft Docs
+title: Oktatóanyag az Azure Data Box sorrend |} A Microsoft Docs
 description: Megismerheti az Azure Data Box üzembe helyezési követelményeit és a megrendelésének folyamatát
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 03/05/2019
+ms.date: 04/23/2019
 ms.author: alkohli
-ms.openlocfilehash: 07ccd2aaec6b2325d6eef09a466a5d0707836b4b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b0204673c0706403c8c5a7367be19e590d9cb134
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57834268"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604092"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Oktatóanyag: Az Azure Data Box sorrend
 
@@ -62,14 +62,14 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket az Azure Po
 
 4. Ellenőrizze, hogy a Data Box szolgáltatás elérhető-e a régióban. Adja meg, vagy jelölje ki a következő információkat, majd kattintson az **Alkalmaz** elemre. 
 
-    |Beállítás  |Érték  |
+    |Beállítás  |Value  |
     |---------|---------|
     |Előfizetés     | Válassza ki az EA, CSP vagy az Azure sponsorship-előfizetést a Data Box szolgáltatás. <br> Az előfizetés az Ön számlázási fiókjához lesz társítva.       |
     |Átvitel típusa     | Válassza az **Importálás az Azure-ba** lehetőséget.        |
-    |Forrásország     |   Válassza ki azt az országot, ahol az adatok jelenleg találhatók.         |
+    |Forrásország     |   Válassza ki az országot vagy régiót, ahol az adatokat jelenleg található.         |
     |Azure-beli célrégió     |     Válassza ki azt az Azure-régiót, ahova át szeretné vinni az adatokat.        |
 
-5. Válassza a Data **Box** lehetőséget. A megrendelésenkénti maximális felhasználható kapacitás esetében 786 TB. Nagyobb mennyiségű adat esetén több rendelést is létrehozhat.
+5. Válassza a Data **Box** lehetőséget. A megrendelésenkénti maximális felhasználható kapacitás 80 TB Hellyel. Nagyobb mennyiségű adat esetén több rendelést is létrehozhat.
 
       [![Az 1-es Data Box lehetőség kiválasztása](media/data-box-deploy-ordered/select-data-box-option1.png)](media/data-box-deploy-ordered/select-data-box-option1.png#lightbox)
 
@@ -88,7 +88,7 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket az Azure Po
 
     Data Box segítségével felügyelt lemez gyors létrehozásához a helyi VHD-ből, ha akkor is kell a következő információkat biztosítja:
 
-    |Beállítás  |Érték  |
+    |Beállítás  |Value  |
     |---------|---------|
     |Erőforráscsoportok     | Hozzon létre új erőforrás-csoportokat, ha szeretne felügyelt lemez gyors létrehozásához a helyi VHD-ből. Csak akkor, ha az erőforráscsoport korábban lett létrehozva a Data Box-rendelés felügyelt lemez létrehozásakor Data Box szolgáltatás által használható egy meglévő erőforráscsoportot. <br> Adja meg pontosvesszővel elválasztva több erőforráscsoporthoz. Legfeljebb 10 az erőforrás-csoportok támogatottak.|
 

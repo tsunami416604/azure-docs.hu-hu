@@ -7,7 +7,7 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: cbc2ff98-916d-4339-8959-622823c5b772
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 05/24/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: ea4134c486310592f1f0f344ae26a11276143faf
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: d8e1c3f845af6edf274aa95797523ace07cf820c
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193364"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594018"
 ---
 # <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>Gyors útmutató: Az Azure storage-fiók integrálása az Azure CDN-nel
 Ebben a rövid útmutatóban engedélyezni fogja az [Azure Content Delivery Network (CDN)](cdn-overview.md) számára az Azure Storage-ből származó tartalmak gyorsítótárazását. Az Azure CDN egy globális megoldást kínál a fejlesztők számára a tartalmak nagy sávszélességű kézbesítéséhez. Képes arra, hogy fizikai csomópontokon gyorsítótárazza a blobokat és a számítási példányok statikus tartalmát az Amerikai Egyesült Államok, Európa, Ázsia, Ausztrália és Dél-Amerika területén.
@@ -55,7 +55,7 @@ Többféle módon is létrehozhat tárfiókot, többek között az Azure Portal 
    
     Ez az érték lesz a gazdagépnév az URI-n belül, amellyel a rendszer az előfizetés blob-, üzenetsor- vagy táblaerőforrásainak címzéséhez használ. A Blob Storage-ban lévő tároló-erőforrások címzéséhez egy következő formátumú URI-t használjon:
    
-    http://*&lt;StorageAcountLabel&gt;*.blob.core.windows.net/*&lt;mycontainer&gt;*
+    http:// *&lt;StorageAcountLabel&gt;* .blob.core.windows.net/ *&lt;mycontainer&gt;*
 
     ahol a *&lt;StorageAccountLabel&gt;* a **Név** mezőben megadott értéken alapul.
    
@@ -66,11 +66,11 @@ Többféle módon is létrehozhat tárfiókot, többek között az Azure Portal 
     
 4. A többi beállításhoz használja a következő táblázatban megadott értékeket:
 
-    | Beállítás  | Érték |
+    | Beállítás  | Value |
     | -------- | ----- |
     | **Üzemi modell** | Használja az alapértelmezett értéket. |
     | **Fióktípus** | Használja az alapértelmezett értéket. |
-    | **Hely**    | Válassza az **USA középső régiója** értéket a legördülő listából. |
+    | **Location**    | Válassza az **USA középső régiója** értéket a legördülő listából. |
     | **Replikáció** | Használja az alapértelmezett értéket. |
     | **Teljesítmény** | Használja az alapértelmezett értéket. |
     | **Biztonságos átvitelre van szükség** | Használja az alapértelmezett értéket. |
@@ -94,11 +94,11 @@ Az Azure CDN-t a tárfiókhoz közvetlenül a tárfiókból is engedélyezheti. 
     
 2. Új végpontot a következő táblázatban ismertetett információk megadásával hozhat létre:
 
-    | Beállítás  | Érték |
+    | Beállítás  | Value |
     | -------- | ----- |
     | **CDN-profil** | Válassza ki **új létrehozása** , és adja meg a profil nevét, például *my-cdn-profile-123*. A névnek globálisan egyedinek kell lennie.  |
     | **Tarifacsomag** | Válassza a **Standard – Verizon** értéket a legördülő listából. |
-    | **CDN-végpont neve** | Adja meg a végpont gazdaneve, azaz *my-endpoint-123*. A névnek globálisan egyedinek kell lennie. A rendszer ezt a nevet használja a gyorsítótárazott erőforrások eléréséhez a _&lt;végpont neve&gt;_.azureedge.net tartományban. |
+    | **CDN-végpont neve** | Adja meg a végpont gazdaneve, azaz *my-endpoint-123*. A névnek globálisan egyedinek kell lennie. A rendszer ezt a nevet használja a gyorsítótárazott erőforrások eléréséhez a _&lt;végpont neve&gt;_ .azureedge.net tartományban. |
     | **Forrás gazdaneve** | Alapértelmezés szerint egy új CDN-végpont a tárfiók eszköznevét használja forráskiszolgálóként. |
 
 3. Kattintson a **Létrehozás** gombra. A létrejött végpont megjelenik a végpontok listájában.

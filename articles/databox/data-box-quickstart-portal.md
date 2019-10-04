@@ -6,21 +6,44 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: bd591ff30755fd68bb2dc673899d0ac993215e68
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.localizationpriority: high
+ms.openlocfilehash: 26578e277a9f6747063ee377e72845b599a0301b
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57834720"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772750"
 ---
-# <a name="quickstart-deploy-azure-data-box-using-the-azure-portal"></a>Gyors útmutató: Üzembe helyezése az Azure Data Box az Azure portal használatával
+::: zone target="docs"
+
+# <a name="quickstart-deploy-azure-data-box-using-the-azure-portal"></a>Gyorsútmutató: Az Azure Data Box üzembe helyezése az Azure Portal használatával
+
+::: zone-end
+
+::: zone target="chromeless"
+
+# <a name="get-started-with-azure-data-box"></a>Ismerkedés az Azure Data Boxszal 
+
+::: zone-end
+
+::: zone target="docs"
 
 A rövid útmutató az Azure Data Box az Azure Portal használatával való üzembe helyezését írja le. A lépések bemutatják, hogyan csatlakoztathatja a kábelekkel, és hogyan konfigurálhatja a Data Boxot, majd másolhatja rá az adatokat az Azure-ba való feltöltésükhöz. A rövid útmutató az Azure Portalon és az eszköz helyi webes felületén hajtható végre.
 
-Részletes részletes üzembe helyezés és a nyomkövetési utasításokat, keresse fel [oktatóanyag: Az Azure Data Box sorrend](data-box-deploy-ordered.md)
+Részletes üzembehelyezési és nyomkövetési utasítások: [Oktatóanyag: Az Azure Data Box megrendelése](data-box-deploy-ordered.md)
 
+::: zone-end 
+
+::: zone target="chromeless"
+
+Ez az útmutató az Azure Data Box Azure Portal használatával való üzembe helyezését ismerteti. A lépések bemutatják az előfeltételeket, valamint azt, hogyan kábelezheti és csatlakoztathatja az eszközt, és hogyan másolhatja az eszközre az adatokat az Azure-ba történő feltöltés céljából.
+
+::: zone-end
+
+::: zone target="docs"
+ 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Előkészületek:
@@ -41,6 +64,27 @@ Előkészületek:
     - Egy RJ-45 CAT 6 hálózati kábel (az MGMT hálózati adapterhez)
     - Egy RJ-45 CAT 6A VAGY egy RJ-45 CAT 6 hálózati kábel (a DATA 3 hálózati adapterhez 10 Gb/s vagy 1 Gb/s sebességre konfigurálva)
 
+::: zone-end 
+
+::: zone target="chromeless"
+
+## <a name="prerequisites"></a>Előfeltételek
+
+Mielőtt hozzákezd, győződjön meg az alábbiakról:
+
+1. Elvégezte az [Oktatóanyag: Az Azure Data Box megrendelése](data-box-deploy-ordered.md) című oktatóanyagot.
+2. Megkapta a Data Boxot, és a portálon a megrendelés **Kézbesítve** állapotú. 
+3. Áttekintette [a Data Box biztonsági útmutatásait](data-box-safety.md).
+4. Kapott egy földelt tápkábelt a 100 TB-os tárolóeszközhöz.
+5. Hozzáféréssel rendelkezik egy olyan gazdagéphez, amelyen a Data Boxra másolni kívánt adatok találhatók. A gazdaszámítógépen:
+    - egy [támogatott operációs rendszernek](data-box-system-requirements.md) kell futnia;
+    - egy nagy sebességű hálózathoz kell csatlakoznia. Határozottan javasoljuk, hogy legalább 10 GbE sebességű kapcsolattal rendelkezzen. Ha 10 GbE sebességű kapcsolat nem áll rendelkezésre, egy 1 GbE sebességű adatkapcsolat is használható, azonban ez csökkenti a másolási sebességet. 
+6. A Data Boxot vízszintes felületre tudja helyezni. Ha az eszközt egy standard kiszolgálószekrény-polcra szeretné fektetni vagy állítani, egy legalább 7U méretű helyre lesz szükség a szekrényben.
+
+::: zone-end
+
+::: zone target="docs"
+
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
 Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
@@ -55,6 +99,8 @@ Ez a lépés nagyjából 5 percet vesz igénybe.
 4. Adja meg a rendelés részleteit és a szállítási adatokat. Ha a szolgáltatás elérhető az Ön régiójában, adja meg az értesítési e-mail-címeket, tekintse át az összefoglalót, és hozza létre a rendelést.
 
 A rendelés létrehozását követően megtörténik az eszköz a szállításra való előkészítése.
+
+
 
 ## <a name="cable"></a>Kábel 
 
@@ -132,5 +178,7 @@ Ebben a rövid útmutatóban egy Azure Data Boxot helyezett üzembe az adatok az
 
 > [!div class="nextstepaction"]
 > [A Data Box az Azure Portal használatával történő kezelése](data-box-portal-admin.md)
+
+::: zone-end
 
 

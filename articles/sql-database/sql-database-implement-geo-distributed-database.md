@@ -1,6 +1,6 @@
 ---
-title: Földrajzilag elosztott Azure SQL adatbázis-megoldás implementálása |} A Microsoft Docs
-description: Megtanulhatja, hogyan konfigurálja az Azure SQL database és az alkalmazás feladatátvételét egy replikált adatbázisra, és a feladatátvételi teszt érdekében.
+title: Földrajzilag elosztott Azure SQL Database-megoldás implementálása | Microsoft Docs
+description: Ismerje meg, hogyan konfigurálhatja az Azure SQL-adatbázist és-alkalmazást a feladatátvételhez egy replikált adatbázison, és tesztelheti a feladatátvételt.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -10,23 +10,22 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 6022c016b83ffe1362db4d826a5ee4397afd4128
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4a21fe3ed15d1dc2550f6863611b27d2b36c5c51
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57844143"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568100"
 ---
 # <a name="tutorial-implement-a-geo-distributed-database"></a>Oktatóanyag: Földrajzilag elosztott adatbázis implementálása
 
-Konfigurálja egy Azure SQL database és az alkalmazás feladatátvételét egy távoli régióba, és tesztelheti a feladatátvételi tervet. Az alábbiak végrehajtásának módját ismerheti meg:
+Konfiguráljon egy Azure SQL Database-adatbázist és-alkalmazást a feladatátvételhez egy távoli régióba, és tesztelje a feladatátvételi tervet. Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
-> - Hozzon létre egy [feladatátvételi csoport](sql-database-auto-failover-group.md)
-> - Java-alkalmazások Azure SQL Database-adatbázis lekérdezéséhez
-> - Feladatátvétel tesztelése
+> - Feladatátvételi [csoport](sql-database-auto-failover-group.md) létrehozása
+> - Java-alkalmazás futtatása Azure SQL Database-adatbázis lekérdezéséhez
+> - Feladatátvételi teszt
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
@@ -34,34 +33,34 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> A PowerShell Azure Resource Manager-modul továbbra is támogatja az Azure SQL Database, de minden jövőbeli fejlesztés Az.Sql modul. Ezeket a parancsmagokat lásd: [azurerm.SQL-hez](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). A parancsok a Az modul, és az AzureRm-modulok argumentumainak lényegében megegyeznek.
+> Az Azure SQL Database továbbra is támogatja a PowerShell Azure Resource Manager modult, de a jövőbeli fejlesztés az az. SQL-modulhoz készült. Ezekhez a parancsmagokhoz lásd: [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak.
 
-Az oktatóanyag elvégzéséhez győződjön meg arról, hogy telepítette a következő elemek:
+Az oktatóanyag elvégzéséhez győződjön meg arról, hogy telepítette a következő elemeket:
 
 - [Azure PowerShell](/powershell/azureps-cmdlets-docs)
-- Azure SQL Database-adatbázis. Egy használati létrehozása
+- Egyetlen adatbázis a Azure SQL Databaseban. Egy használat létrehozásához
   - [Portál](sql-database-single-database-get-started.md)
   - [Parancssori felület](sql-database-cli-samples.md)
   - [PowerShell](sql-database-powershell-samples.md)
 
   > [!NOTE]
-  > Az oktatóanyag a *AdventureWorksLT* mintaadatbázissal.
+  > Az oktatóanyag a *AdventureWorksLT* -mintaadatbázis használatával működik.
 
-- A Java és Maven, lásd: [alkalmazás készítése az SQL Server használatával](https://www.microsoft.com/sql-server/developer-get-started/), jelöljön ki **Java** , és válassza ki azt a környezetet, majd kövesse a lépéseket.
+- A Java és a Maven esetében lásd: [alkalmazás létrehozása SQL Server használatával](https://www.microsoft.com/sql-server/developer-get-started/), a **Java** kiemelése és a környezet kiválasztása, majd kövesse a lépéseket.
 
 > [!IMPORTANT]
-> Győződjön meg arról, a tűzfalszabályok beállítása annak a számítógépnek, amelyre hajt végre a lépéseket ebben az oktatóanyagban a nyilvános IP-címet használja. Adatbázisszintű tűzfal-szabályok automatikusan replikálja a másodlagos kiszolgálóra.
+> Ügyeljen arra, hogy a tűzfalszabályok azon számítógép nyilvános IP-címének használatára legyenek beállítva, amelyen az oktatóanyag lépéseit végrehajtja. Az adatbázis-szintű tűzfalszabályok automatikusan replikálva lesznek a másodlagos kiszolgálóra.
 >
-> További információ: [hozzon létre egy adatbázisszintű tűzfalszabályt](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) meghatározásához lásd a kiszolgálószintű tűzfalszabályt a számítógép a használt IP-cím vagy [kiszolgálószintű tűzfal létrehozása](sql-database-server-level-firewall-rule.md).  
+> További információért lásd: [adatbázis-szintű tűzfalszabály létrehozása](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) vagy a kiszolgáló szintű tűzfalszabály által használt IP-cím meghatározása a számítógépen: [kiszolgáló szintű tűzfal létrehozása](sql-database-server-level-firewall-rule.md).  
 
-## <a name="create-a-failover-group"></a>Hozzon létre egy feladatátvételi csoportot
+## <a name="create-a-failover-group"></a>Feladatátvételi csoport létrehozása
 
-Azure PowerShell használatával hozzon létre [feladatátvételi csoportok](sql-database-auto-failover-group.md) között egy meglévő Azure SQL server és a egy új Azure SQL server egy másik régióban. Ezután adja hozzá a mintaadatbázist a feladatátvételi csoporthoz.
+A Azure PowerShell használatával hozzon létre [feladatátvételi csoportokat](sql-database-auto-failover-group.md) egy meglévő Azure SQL Server-kiszolgáló és egy másik régióban található új Azure SQL Server között. Ezután adja hozzá a mintaadatbázis a feladatátvételi csoporthoz.
 
 > [!IMPORTANT]
 > [!INCLUDE [sample-powershell-install](../../includes/sample-powershell-install-no-ssh.md)]
 
-Hozzon létre egy feladatátvételi csoportot, futtassa a következő parancsfájlt:
+Feladatátvételi csoport létrehozásához futtassa a következő parancsfájlt:
 
    ```powershell
     # Set variables for your server and database
@@ -102,29 +101,29 @@ Hozzon létre egy feladatátvételi csoportot, futtassa a következő parancsfá
        -FailoverGroupName $myfailovergroupname
    ```
 
-Georeplikáció beállításokat is módosítható az Azure Portalon, majd az adatbázis kiválasztásával **beállítások** > **Georeplikációs**.
+A Geo-replikálási beállítások a Azure Portalban is megváltoztathatók, ha kiválasztja az adatbázist, majd a **Beállítások** > **geo-replikálás**lehetőséget.
 
-![Georeplikáció – beállítások](./media/sql-database-implement-geo-distributed-database/geo-replication.png)
+![Geo-replikálási beállítások](./media/sql-database-implement-geo-distributed-database/geo-replication.png)
 
-## <a name="run-the-sample-project"></a>A minta-projekt futtatása
+## <a name="run-the-sample-project"></a>A minta projekt futtatása
 
-1. A konzolon hozzon létre egy Maven-projektet a következő parancsot:
+1. A-konzolon hozzon létre egy Maven-projektet a következő paranccsal:
 
    ```bash
    mvn archetype:generate "-DgroupId=com.sqldbsamples" "-DartifactId=SqlDbSample" "-DarchetypeArtifactId=maven-archetype-quickstart" "-Dversion=1.0.0"
    ```
 
-1. Típus **Y** nyomja le az ENTER **Enter**.
+1. Írja be az **Y** értéket, és nyomja le az **ENTER billentyűt**
 
-1. Módosítsa a könyvtárakat az új projektbe.
+1. Módosítsa a címtárakat az új projektre.
 
    ```bash
    cd SqlDbSample
    ```
 
-1. A kedvenc szerkesztőjében, nyissa meg a *pom.xml* fájlt a projektmappa fájllistájának.
+1. A kedvenc szerkesztője segítségével nyissa meg a *Pom. XML* fájlt a Project mappában.
 
-1. Az SQL Server-függőség Microsoft JDBC-illesztőprogram hozzáadása a következő `dependency` szakaszban. A függőség kell beilleszteni a nagyobb `dependencies` szakaszban.
+1. A következő `dependency` szakasz hozzáadásával adja hozzá a Microsoft JDBC-illesztőprogramot SQL Server-függőséghez. A függőséget a nagyobb `dependencies` szakaszba kell beilleszteni.
 
    ```xml
    <dependency>
@@ -134,7 +133,7 @@ Georeplikáció beállításokat is módosítható az Azure Portalon, majd az ad
    </dependency>
    ```
 
-1. Adja meg a Java-verzió hozzáadásával a `properties` szakasz után a `dependencies` szakaszban:
+1. Adja meg a Java verzióját a szakasz `properties` `dependencies` utáni szakasz hozzáadásával:
 
    ```xml
    <properties>
@@ -143,7 +142,7 @@ Georeplikáció beállításokat is módosítható az Azure Portalon, majd az ad
    </properties>
    ```
 
-1. Jegyzékfájlok támogatásához hozzáadásával a `build` szakasz után a `properties` szakaszban:
+1. A jegyzékfájlok támogatásához adja `build` hozzá a szakaszt `properties` a szakasz után:
 
    ```xml
    <build>
@@ -164,9 +163,9 @@ Georeplikáció beállításokat is módosítható az Azure Portalon, majd az ad
    </build>
    ```
 
-1. Mentse és zárja be a *pom.xml* fájlt.
+1. Mentse és zárjuk be a *Pom. XML* fájlt.
 
-1. Nyissa meg a *App.java* fájlt... \SqlDbSample\src\main\java\com\sqldbsamples, és cserélje ki annak tartalmát az alábbira:
+1. Nyissa meg a.. mappában található *app. Java* fájlt. \SqlDbSample\src\main\java\com\sqldbsamples és cserélje le a tartalmát a következő kódra:
 
    ```java
    package com.sqldbsamples;
@@ -272,15 +271,15 @@ Georeplikáció beállításokat is módosítható az Azure Portalon, majd az ad
    }
    ```
 
-1. Mentse és zárja be a *App.java* fájlt.
+1. Mentse és zárda be az *app. Java* fájlt.
 
-1. A parancskonzolban futtassa a következő parancsot:
+1. Futtassa a következő parancsot a parancssori konzolon:
 
    ```bash
    mvn package
    ```
 
-1. Indítsa el az alkalmazást, körülbelül egy órán leállításáig manuálisan, így időt a feladatátvételi teszt futtatása esetén.
+1. Indítsa el azt az alkalmazást, amely körülbelül 1 órára fog futni, amíg manuálisan le nem állítja, így a feladatátvételi teszt futtatásához szükséges idő.
 
    ```bash
    mvn -q -e exec:java "-Dexec.mainClass=com.sqldbsamples.App"
@@ -297,11 +296,11 @@ Georeplikáció beállításokat is módosítható az Azure Portalon, majd az ad
    ...
    ```
 
-## <a name="test-failover"></a>Feladatátvétel tesztelése
+## <a name="test-failover"></a>Feladatátvételi teszt
 
-Futtassa az alábbi parancsfájlok a feladatátvétel szimulálhat, és figyelje meg az alkalmazás eredményeit. Figyelje meg, hogyan néhány szúr be, és kiválasztja az adatbázis-migrálás során sikertelen lesz.
+Futtassa a következő parancsfájlokat a feladatátvétel szimulálásához, és figyelje meg az alkalmazás eredményét. Figyelje meg, hogy egyes lapkák és kiválasztások sikertelenek lesznek az adatbázis áttelepítése során.
 
-A vészhelyreállítási kiszolgáló szerepe a következő paranccsal a teszt során is keresheti:
+A következő paranccsal ellenőrizheti a vész-helyreállítási kiszolgáló szerepkörét is:
 
    ```powershell
    (Get-AzSqlDatabaseFailoverGroup `
@@ -310,9 +309,9 @@ A vészhelyreállítási kiszolgáló szerepe a következő paranccsal a teszt s
       -ServerName $mydrservername).ReplicationRole
    ```
 
-A feladatátvétel tesztelése:
+Feladatátvétel tesztelése:
 
-1. Indítsa el a feladatátvételi csoport manuális feladatátvételt:
+1. A feladatátvételi csoport manuális feladatátvételének elindítása:
 
    ```powershell
    Switch-AzSqlDatabaseFailoverGroup `
@@ -321,7 +320,7 @@ A feladatátvétel tesztelése:
       -FailoverGroupName $myfailovergroupname
    ```
 
-1. Térhet vissza az elsődleges kiszolgálón a feladatátvételi csoport:
+1. A feladatátvételi csoport visszaállítása az elsődleges kiszolgálóra:
 
    ```powershell
    Switch-AzSqlDatabaseFailoverGroup `
@@ -332,14 +331,14 @@ A feladatátvétel tesztelése:
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban konfigurálni egy Azure SQL database és az alkalmazás feladatátvételét egy távoli régióba, és tesztelni a feladatátvételi tervet. Megismerte, hogyan végezheti el az alábbi műveleteket:
+Ebben az oktatóanyagban egy Azure SQL Database-adatbázist és-alkalmazást konfigurált egy távoli régióba történő feladatátvételhez, és tesztelt egy feladatátvételi tervet. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > - Georeplikációs feladatátvételi csoport létrehozása
-> - Java-alkalmazások Azure SQL Database-adatbázis lekérdezéséhez
-> - Feladatátvétel tesztelése
+> - Java-alkalmazás futtatása Azure SQL Database-adatbázis lekérdezéséhez
+> - Feladatátvételi teszt
 
-Lépjen a következő oktatóanyagra a DMS használatával történő áttelepítés.
+Folytassa a következő oktatóanyaggal, amely bemutatja, hogyan migrálhat a DMS használatával.
 
 > [!div class="nextstepaction"]
-> [SQL Server migrálása az Azure SQL database felügyelt példány DMS használatával](../dms/tutorial-sql-server-to-managed-instance.md)
+> [SQL Server migrálása az Azure SQL Database felügyelt példányaira a DMS használatával](../dms/tutorial-sql-server-to-managed-instance.md)

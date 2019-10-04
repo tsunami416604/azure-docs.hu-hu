@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: e323a8d71bbffd1d29ad793dff7b5b4a072b6979
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 48377f981e4d2c9ab480a1a734e6207a0246712a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59046122"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60407911"
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>Konfigurálja a VNet – VNet kapcsolat (klasszikus)
 
@@ -80,7 +80,7 @@ Az alábbi táblázat a virtuális hálózatok definiálása egy példát mutat 
 
 **Példa**
 
-| Virtual Network | Címtartomány | Régió | Csatlakozik a helyi hálózati telephely |
+| Virtuális hálózat | Címtér | Régió | Csatlakozik a helyi hálózati telephely |
 |:--- |:--- |:--- |:--- |
 | A TestVNet1 |A TestVNet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |USA keleti régiója |VNet4Local<br>(10.41.0.0/16)<br>(10.42.0.0/16) |
 | A TestVNet4 |A TestVNet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |USA nyugati régiója |VNet1Local<br>(10.11.0.0/16)<br>(10.12.0.0/16) |
@@ -142,7 +142,7 @@ A TestVNet1 például egy helyi hálózati telephely létrehozott "VNet4Local" n
 
 Az egyes virtuális hálózatok helyi webhelyhez, a másik virtuális hálózat. A konfiguráció a következő példában szereplő értékeket használják:
 
-| Virtual Network | Címtartomány | Régió | Csatlakozik a helyi hálózati telephely |
+| Virtuális hálózat | Címtér | Régió | Csatlakozik a helyi hálózati telephely |
 |:--- |:--- |:--- |:--- |
 | A TestVNet1 |A TestVNet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |USA keleti régiója |VNet4Local<br>(10.41.0.0/16)<br>(10.42.0.0/16) |
 | A TestVNet4 |A TestVNet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |USA nyugati régiója |VNet1Local<br>(10.11.0.0/16)<br>(10.12.0.0/16) |
@@ -183,7 +183,7 @@ Miután a virtuális hálózati átjárók mindkét virtuális hálózaton lett 
 |A TestVNet1|VNet4Local|VPN-átjáró IP-cím a testvnet4-hez|
 |A TestVNet4|VNet1Local|VPN-átjáró IP-cím a testvnet1-hez|
 
-### <a name="part-1---get-the-virtual-network-gateway-public-ip-address"></a>1. rész – virtuális hálózati átjáró nyilvános IP-címének lekérése
+### <a name="part-1---get-the-virtual-network-gateway-public-ip-address"></a>1\. rész – virtuális hálózati átjáró nyilvános IP-címének lekérése
 
 1. Keresse meg a virtuális hálózat az Azure Portalon.
 2. Kattintással nyissa meg a virtuális hálózat **áttekintése** lapot. A lapon lévő **VPN-kapcsolatok**, megtekintheti az IP-címet a virtuális hálózati átjáró.
@@ -192,7 +192,7 @@ Miután a virtuális hálózati átjárók mindkét virtuális hálózaton lett 
 3. Másolja ki az IP-címet. A következő szakaszban be fogja használni.
 4. Ismételje meg ezeket a lépéseket a testvnet4-hez
 
-### <a name="part-2---modify-the-local-sites"></a>2. rész – a helyi hely módosítása
+### <a name="part-2---modify-the-local-sites"></a>2\. rész – a helyi hely módosítása
 
 1. Keresse meg a virtuális hálózat az Azure Portalon.
 2. A virtuális hálózaton **áttekintése** lap, kattintson a helyi webhelyhez.

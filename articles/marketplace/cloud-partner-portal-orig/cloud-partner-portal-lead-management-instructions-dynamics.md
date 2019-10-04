@@ -1,25 +1,18 @@
 ---
-title: A Dynamics CRM |} A Microsoft Docs
+title: A Dynamics CRM |} Az Azure Marketplace-en
 description: Állítsa be a Dynamics CRM lead felügyelet.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.author: pbutlerm
-ms.openlocfilehash: a1398d172a5c578ec3c0f16627eadd1da3fd1e45
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.author: pabutler
+ms.openlocfilehash: 6fdab26bb5a4da5402a3a0a895a7c8835ef22c2f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437611"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64935800"
 ---
 # <a name="configure-lead-management-for-dynamics-crm-online"></a>Konfigurálható a érdeklődő a Dynamics CRM online
 
@@ -148,5 +141,5 @@ Az utolsó lépés, hogy a felhasználó írhat az érdeklődők létrehozott.
 
 Fejezze be a Dynamics CRM lead felügyelet konfigurálása a Cloud Partner portálra ad hozzá a létrehozott fiók adatait. Példa:
 
--   **Az Azure Active Directory** - **alkalmazásazonosító** (Példa: *23456052-AAAA-bbbb-8662-1234df56788f*), **címtár-azonosító** (Példa: *12345678-8af1-4asf-1234-12234d01db47*), és **Alkalmazáskulcsot** (Példa: *1234ABCDEDFRZ/G/FdY0aUABCEDcqhbLn/ST122345nBc=*).
--   **Az Office 365** - **URL-cím** (Példa: *https://contoso.crm4.dynamics.com*), **felhasználónév** (Példa: *contoso\@ contoso.onmicrosoft.com*), és **jelszó** (Példa: *P\@ssw0rd*).
+-   **Az Azure Active Directory** - **alkalmazásazonosító** (Példa: *23456052-AAAA-bbbb-8662-1234df56788f*), **címtár-azonosító** (Példa: *12345678-8af1-4asf-1234-12234d01db47*), és **Alkalmazáskulcsot** (Példa: *1234ABCDEDFRZ/G/FdY0aUABCEDcqhbLn/ST122345nBc=* ).
+-   **Az Office 365** - **URL-cím** (Példa: *https://contoso.crm4.dynamics.com* ), **felhasználónév** (Példa: *contoso\@ contoso.onmicrosoft.com*), és **jelszó** (Példa: *P\@ ssw0rd*).

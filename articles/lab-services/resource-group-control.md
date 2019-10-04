@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2019
+ms.date: 06/03/2019
 ms.author: spelluru
-ms.openlocfilehash: 1001e6aec7ba2f6ce62eb267d218149296048bb9
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 574cc0c41ce645c71302178afcf6e7deaec69d8e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58485883"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66476084"
 ---
 # <a name="specify-a-resource-group-for-lab-virtual-machines-in-azure-devtest-labs"></a>Adjon meg egy erőforráscsoportot a virtuális gépeiről az Azure DevTest Labs szolgáltatásban
 
@@ -29,6 +29,9 @@ Labortulajdonosként konfigurálhatja a labor virtuális gépek egy adott erőfo
 - A egyszerűsítése érdekében ezeket az erőforrásokat követésének és alkalmazásának egyetlen erőforráscsoporton belül minden laborerőforrások konszolidálhatja [házirendek](../governance/policy/overview.md) az erőforráscsoport szintjén-erőforrások kezeléséhez.
 
 Ezzel a funkcióval egy parancsfájl segítségével adja meg egy új vagy meglévő erőforráscsoportot az Azure-előfizetésen belül a labor virtuális gépeken. Jelenleg az Azure DevTest Labs szolgáltatásban Ez a funkció egy API-n keresztül támogatja.
+
+> [!NOTE]
+> Az összes előfizetés korlátaival labs a DevTest Labs szolgáltatásban létrehozott vonatkoznak. Úgy labor, mint bármely más erőforrást az előfizetésében. Esetén az erőforráscsoportok, a határértéke [980 előfizetésenkénti erőforráscsoportok](../azure-subscription-service-limits.md#subscription-limits---azure-resource-manager). 
 
 ## <a name="use-azure-portal"></a>Az Azure Portal használata
 Adjon meg egy erőforráscsoportot a lab-ben létrehozott összes virtuális gép az alábbi lépéseket követve. 

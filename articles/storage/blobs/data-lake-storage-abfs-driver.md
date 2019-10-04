@@ -1,66 +1,66 @@
 ---
-title: Az Azure Data Lake Storage Gen2 Azure Blob fájlrendszer illesztőprogramja
-description: A Hadoop-fájlrendszer ABFS illesztőprogram
-services: storage
-author: jamesbak
+title: Az Azure Blob fájlrendszer-illesztőprogramja Azure Data Lake Storage Gen2
+description: A ABFS Hadoop fájlrendszer-illesztőprogramja
+author: normesta
 ms.topic: conceptual
-ms.author: jamesbak
+ms.author: normesta
+ms.reviewer: jamesbak
 ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 83e2f6f42de5c729667f366a6e068f1c8bd71f02
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ece85feff3c6eff9fc2348de70842204986952d5
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58011071"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855627"
 ---
-# <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Az Azure Blob fájlrendszer illesztőprogram (ABFS): Egy dedikált Azure Storage-illesztőprogram a Hadoophoz
+# <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Az Azure Blob fájlrendszer-illesztőprogramja (ABFS): Dedikált Azure Storage-illesztőprogram a Hadoop-hez
 
-Az egyik az adatok Azure Data Lake Storage Gen2 elsődleges hozzáférési metódusokat a [Hadoop-fájlrendszer](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/index.html). Data Lake Storage Gen2 révén az Azure Blob Storage hozzáférési az új illesztőprogram, az Azure Blob fájlrendszerének illesztőprogram vagy `ABFS`. ABFS részét képezi az Apache Hadoop, és számos, a Hadoop kereskedelmi disztribúciók tartalmazza. Használja az illesztőprogramot, számos alkalmazásokat és keretrendszereket adatelérésre alkalmas az Azure Blob Storage explicit módon hivatkozik a Data Lake Storage Gen2 kód nélkül.
+Azure Data Lake Storage Gen2ban lévő adatelérési módszerek egyike az [Hadoop fájlrendszeren](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/index.html)keresztül történik. Data Lake Storage Gen2 lehetővé teszi, hogy az Azure Blob Storage hozzáférjen egy új illesztőprogramhoz, az Azure Blob fájlrendszer- `ABFS`illesztőprogramhoz vagy. A ABFS Apache Hadoop része, és a Hadoop számos kereskedelmi disztribúciójában szerepel. Az illesztőprogram használatával számos alkalmazás és keretrendszer fér hozzá az Azure Blob Storage adataihoz anélkül, hogy a kód kifejezetten hivatkozik a Data Lake Storage Gen2ra.
 
-## <a name="prior-capability-the-windows-azure-storage-blob-driver"></a>Előzetes funkció: A Windows Azure Storage-Blob-illesztőprogram
+## <a name="prior-capability-the-windows-azure-storage-blob-driver"></a>Korábbi képesség: A Windows Azure Storage Blob illesztőprogramja
 
-A Windows Azure Storage-Blobba illesztőprogram vagy [WASB illesztőprogram](https://hadoop.apache.org/docs/current/hadoop-azure/index.html) megadott eredeti támogatást biztosít az Azure Blob Storage. Az illesztőprogram végre (mint a Hadoop-fájlrendszer felület által előírt) szemantikáját, hogy az objektum, amely tárolja a stílus felület az Azure Blob Storage által elérhetővé tett leképezés fájlrendszer összetett feladat. Az illesztőprogram továbbra is támogatja a nagy teljesítményű, blobokban tárolt adatokat villámgyors ebben a modellben, de jelentős részét a leképezést, így nehéz végrehajtása kódot tartalmaz. Emellett bizonyos műveleteket, mint például [FileSystem.rename()](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_renamePath_src_Path_d) és [FileSystem.delete()](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_deletePath_p_boolean_recursive) címtárakhoz alkalmazásakor hatalmas számos művelet (mert az objektum tárolók nem végrehajtásához az illesztőprogram megkövetelése könyvtárak támogatása), amely gyakran vezet a teljesítmény csökkenését. A ABFS illesztőprogram úgy lett kialakítva, hogy a WASB rejlő hiányosságait.
+A Windows Azure Storage Blob illesztőprogram vagy [WASB illesztőprogramja](https://hadoop.apache.org/docs/current/hadoop-azure/index.html) az Azure Blob Storage eredeti támogatását biztosította. Ez az illesztőprogram olyan összetett feladatot hajtott végre, amely az Azure Blob Storage által elérhető objektum-tárolási stílus felületének hozzárendelését (a Hadoop fájlrendszer felülete megköveteli). Ez az illesztőprogram továbbra is támogatja ezt a modellt, nagy teljesítményű hozzáférést biztosít a Blobokban tárolt adatokhoz, de jelentős mennyiségű kódot tartalmaz a leképezés végrehajtásához, ami megnehezíti a karbantartást. Emellett bizonyos műveletek, mint például a [filesystem. Rename ()](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_renamePath_src_Path_d) és a [filesystem. Delete ()](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_deletePath_p_boolean_recursive) a címtárakon való alkalmazásakor az illesztőprogramnak nagy mennyiségű műveletet kell végrehajtania (mivel az objektumok nem támogatják a címtárak támogatását), ami gyakran vezet csökkentheti a teljesítményt. A ABFS-illesztőprogram úgy lett kialakítva, hogy legyőzze a WASB rejlő hiányosságait.
 
-## <a name="the-azure-blob-file-system-driver"></a>Az Azure Blob fájlrendszer illesztőprogramja
+## <a name="the-azure-blob-file-system-driver"></a>Az Azure Blob fájlrendszer-illesztőprogramja
 
-A [Azure Data Lake Storage REST-felület](https://docs.microsoft.com/rest/api/storageservices/data-lake-storage-gen2) keresztül az Azure Blob Storage támogatja a fájlrendszer szemantikáját. Tekintve, hogy a Hadoop-fájlrendszer is célja, hogy támogatja az azonos esetében nem követelmény az illesztőprogram egy összetett leképezés. Így az Azure Blob fájlrendszerének illesztőprogram (vagy a ABFS) egy puszta ügyfél segédkód a REST API-hoz.
+A [Azure Data Lake Storage Rest-felületet](https://docs.microsoft.com/rest/api/storageservices/data-lake-storage-gen2) úgy tervezték, hogy támogassa a fájlrendszer szemantikai feladatait az Azure Blob Storageban. Mivel a Hadoop fájlrendszert úgy is tervezték, hogy támogassa ugyanazt a szemantikai feltételt, nincs szükség összetett leképezésre az illesztőprogramban. Így az Azure Blob fájlrendszer-illesztőprogram (vagy ABFS) a REST API egyszerű ügyfél-alátéte.
 
-Vannak azonban bizonyos funkciók, amely az illesztőprogram továbbra is el kell végeznie:
+Vannak azonban olyan függvények, amelyeknek az illesztőprogramnak továbbra is végre kell hajtania a következőket:
 
-### <a name="uri-scheme-to-reference-data"></a>Referenciaadatok URI-séma
+### <a name="uri-scheme-to-reference-data"></a>Az adathivatkozás URI-sémája
 
-Más fájlrendszer-implementációkban Hadoop belül konzisztensek az ABFS illesztőprogram határozza meg a saját URI-séma, hogy az erőforrások (fájlok és könyvtárak) jelszórészek címezhetők. Az URI-séma leírása itt található [használata az Azure Data Lake Storage Gen2 URI](./data-lake-storage-introduction-abfs-uri.md). Az URI-t struktúráját a következő: `abfs[s]://file_system@account_name.dfs.core.windows.net/<path>/<path>/<file_name>`
+A Hadoop-en belüli más fájlrendszer-implementációkkal összhangban a ABFS-illesztőprogram meghatározza a saját URI-sémáját, hogy az erőforrások (könyvtárak és fájlok) külön kezelhetők legyenek. Az URI-séma a [Azure Data Lake Storage GEN2 URI használatával](./data-lake-storage-introduction-abfs-uri.md)van dokumentálva. Az URI szerkezete:`abfs[s]://file_system@account_name.dfs.core.windows.net/<path>/<path>/<file_name>`
 
-A fenti URI-formátum használata esetén standard Hadoop-eszközök és keretrendszerek használhatók ezek erőforrásokra kell hivatkoznia:
+A fenti URI formátum használata esetén a standard Hadoop-eszközök és-keretrendszerek használhatók a következő erőforrásokra való hivatkozáshoz:
 
 ```bash
 hdfs dfs -mkdir -p abfs://fileanalysis@myanalytics.dfs.core.windows.net/tutorials/flightdelays/data 
 hdfs dfs -put flight_delays.csv abfs://fileanalysis@myanalytics.dfs.core.windows.net/tutorials/flightdelays/data/ 
 ```
 
-Belsőleg az ABFS illesztőprogram fordítja le a fájlokat és könyvtárakat az URI Azonosítóban megadott erőforrás(ok), és az Azure Data Lake Storage REST API ezeket a hivatkozásokat-hívást hajt végre.
+Belsőleg a ABFS-illesztőprogram az URI-ban megadott erőforrás (oka) t a fájlok és könyvtárak számára fordítja le, és hívásokat kezdeményez a Azure Data Lake Storage REST API ezekkel a hivatkozásokkal.
 
 ### <a name="authentication"></a>Authentication
 
-A ABFS illesztőprogram hitelesítési két formáját támogatja, így a Hadoop-alkalmazásokat lehet, hogy biztonságosan elérheti egy Data Lake Storage Gen2 képes a fiókban tárolt erőforrásoktól. A használható hitelesítési rendszerek összes részletét szerepelnek a [Azure Storage biztonsági útmutatóját](../common/storage-security-guide.md). Ezek a következők:
+A ABFS-illesztőprogram két hitelesítési módszert támogat, hogy a Hadoop alkalmazás biztonságosan hozzáférhessen egy Data Lake Storage Gen2-kompatibilis fiókban található erőforrásokhoz. Az elérhető hitelesítési sémák teljes részletességét az [Azure Storage biztonsági útmutatója](../common/storage-security-guide.md)tartalmazza. Ezek a következők:
 
-- **Megosztott kulcs:** Ez lehetővé teszi a felhasználók erőforrásokhoz való teljes hozzáférés a fiókban. A kulcs titkosítva, és a Hadoop konfigurációs tárolja.
+- **Megosztott kulcs:** Ez lehetővé teszi a felhasználók számára a fiókban lévő összes erőforrás elérését. A kulcs titkosítva van, és a Hadoop-konfigurációban tárolódik.
 
-- **Az Azure Active Directory OAuth tulajdonosi jogkivonat:** Az Azure AD-tulajdonosi jogkivonatokat szerezte be, és frissíteni az illesztőprogram, a felhasználó identitását, vagy egy konfigurált egyszerű szolgáltatás használatával. A hitelesítési modellt használ, minden hozzáférés engedélyezve van a megadott tokent kérelmező és ellen a hozzárendelt POSIX hozzáférés-vezérlési lista (ACL) értékeli ki az identitással hívás alapon.
+- **Azure Active Directory OAuth tulajdonosi jogkivonata:** Az Azure AD tulajdonosi jogkivonatait az illesztőprogram szerzi be és frissíti a végfelhasználó vagy egy konfigurált szolgáltatásnév identitásával. Ennek a hitelesítési modellnek a használatával minden hozzáférés a megadott jogkivonathoz társított identitással és a hozzárendelt POSIX Access Control listával (ACL) kiértékelt hívási alapon minden hozzáférésre engedélyezve van.
 
 ### <a name="configuration"></a>Konfiguráció
 
-Minden konfiguráció a ABFS illesztőprogram tárolja a <code>core-site.xml</code> konfigurációs fájlt. Hadoop-disztribúciókon keresőmotorját [Ambari](https://ambari.apache.org/), is felügyelheti a konfigurációt a webes portálon vagy az Ambari REST API használatával.
+A ABFS-illesztőprogram összes konfigurációja a <code>core-site.xml</code> konfigurációs fájlban van tárolva. A [Ambari](https://ambari.apache.org/)-t tartalmazó Hadoop-disztribúciók esetében a konfiguráció a webportál vagy a Ambari REST API használatával is kezelhető.
 
-Az összes támogatott konfigurációs részletek vannak megadva a [hivatalos Hadoop-dokumentáció](https://hadoop.apache.org/docs/current/hadoop-azure/index.html).
+Az összes támogatott konfigurációs bejegyzés részletei a [hivatalos Hadoop dokumentációjában](https://hadoop.apache.org/docs/r3.2.0/hadoop-azure/abfs.html)vannak megadva.
 
-### <a name="hadoop-documentation"></a>Hadoop-dokumentáció
+### <a name="hadoop-documentation"></a>A Hadoop dokumentációja
 
-A ABFS illesztőprogram teljes leírása itt található a [hivatalos Hadoop-dokumentáció](https://hadoop.apache.org/docs/current/hadoop-azure/index.html)
+A ABFS-illesztőprogram teljes mértékben dokumentálva van a [hivatalos Hadoop dokumentációjában](https://hadoop.apache.org/docs/r3.2.0/hadoop-azure/abfs.html)
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az Azure Databricks-fürt létrehozása](./data-lake-storage-quickstart-create-databricks-account.md)
-- [Használja az Azure Data Lake Storage Gen2 URI](./data-lake-storage-introduction-abfs-uri.md)
+- [Azure Databricks-fürt létrehozása](./data-lake-storage-quickstart-create-databricks-account.md)
+- [Az Azure Data Lake Storage Gen2 URI használata](./data-lake-storage-introduction-abfs-uri.md)

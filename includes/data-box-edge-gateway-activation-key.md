@@ -4,17 +4,17 @@ ms.service: databox
 ms.topic: include
 ms.date: 04/16/2019
 ms.author: alkohli
-ms.openlocfilehash: 2344b0673073613a880142089becddfaca88b3d5
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 4ff9aeaa7e1b6e7f3762db4e983b299a517df3da
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59684446"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179757"
 ---
 Az aktiválási kulcs, amelyet használhat:
 
-- Az Azure Active Directory (AAD) alapú hitelesítési kulcs.
+- Egy Azure Active Directory (Azure AD-) alapú hitelesítési kulcs.
 - Három nap után lejár.
 - Nem használt eszköz aktiválása után lépnek érvénybe.
 
-Eszköz aktiválása után jogkivonatok használatával kommunikálni a Microsoft Azure.
+Egy eszköz, az aktiválást követően jogkivonatok használ az Azure-ral kommunikációhoz.

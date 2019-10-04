@@ -9,19 +9,19 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: 0b68819ba032d7655433aadd30fe2852941096ce
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 5eba5601a50640261fa1b488d959f606d4514737
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54000546"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612222"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Használja ki az Azure Stream Analytics lekérdezési ezerszer
 Ez a cikk bemutatja, hogyan ezerszer kihasználásához az Azure Stream Analytics szolgáltatásban. Megismerheti a Stream Analytics-feladatok méretezése a bemeneti partíció konfigurálásával, valamint a elemzési lekérdezés definíciójának finomhangolásával.
 Előfeltételként ismertetett folyamatos átviteli egység fogalma ismernie kell a érdemes [megismerés és módosítsa a folyamatos átviteli egységek](stream-analytics-streaming-unit-consumption.md).
 
 ## <a name="what-are-the-parts-of-a-stream-analytics-job"></a>Mik azok a Stream Analytics-feladat részeit?
-A Stream Analytics-feladat definíciója bemenetei között, egy lekérdezés és a kimenet tartalmazza. Bemenetek, ahol a feladat beolvassa az adatokat a streamből. A lekérdezés szolgál átalakítja a bemeneti streamből, és a kimenete, ahol a feladat küld-e a feladat eredményeket.  
+A Stream Analytics-feladat definíciója bemenetei között, egy lekérdezés és a kimenet tartalmazza. Bemenetek, ahol a feladat beolvassa az adatokat a streamből. A lekérdezés szolgál átalakítja a bemeneti streamből, és a kimenete, ahol a feladat küld-e a feladat eredményeket.
 
 Egy feladathoz legalább egy bemeneti forrás a streamelési adatok. A stream bemeneti adatforrás tárolhatók az Azure event hub vagy az Azure blob storage-ban. További információkért lásd: [Azure Stream Analytics bemutatása](stream-analytics-introduction.md) és [első lépései az Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md).
 
@@ -60,7 +60,7 @@ Egy *zavaróan párhuzamos* feladat az Azure Stream Analytics a leginkább mére
 
 1. Ha a lekérdezés logikája attól függ, hogy ugyanazzal a kulccsal ugyanazon lekérdezés által feldolgozott, győződjön meg arról, hogy az események nyissa meg a bemeneti ugyanazon a partíción. Az Event Hubs vagy IoT hubot, ez azt jelenti, hogy az eseményadatokat kell rendelkeznie a **PartitionKey** set érték. A particionált feladók is használhatja. A blob Storage Ez azt jelenti, hogy az események küldhetők partíció ugyanabban a mappában. Ha a lekérdezés logikája nem igényel ugyanazon lekérdezés által feldolgozandó ugyanazzal a kulccsal, figyelmen kívül hagyhatja ezt a követelményt. Egy példa a logikai lenne egy egyszerű válassza project-szűrő lekérdezés.  
 
-2. Miután az adatokat a bemeneti oldalon van leírva, győződjön meg arról, hogy a lekérdezés particionálva van. Ez megköveteli, hogy használjon **PARTITION BY** az összes lépését. Több lépést engedélyezettek, de mindegyikük által ugyanazzal a kulccsal kell particionálni. Jelenleg a particionálókulcs értékre kell állítani **PartitionId** ahhoz, hogy a feladat teljes mértékben párhuzamosan.  
+2. Miután az adatokat a bemeneti oldalon van leírva, győződjön meg arról, hogy a lekérdezés particionálva van. Ez megköveteli, hogy használjon **PARTITION BY** az összes lépését. Több lépést engedélyezettek, de mindegyikük által ugyanazzal a kulccsal kell particionálni. 1\.0 és 1.1-es kompatibilitási szint alatt a particionálókulcs értékre kell állítani **PartitionId** ahhoz, hogy a feladat teljes mértékben párhuzamosan. Feladatok compatility szintű 1.2-es és újabb verziók esetében egyéni oszlopot adhat meg Partíciókulcsot az bemeneti között, és a feladat lesz paralellized automoatically PARTITION BY záradék nélkül is.
 
 3. A kimenet a legtöbb kihasználhatják a particionálás, azonban egy kimeneti típus használata, amely nem támogatja a particionálást a feladat nem lesz teljes mértékben párhuzamos. Tekintse meg a [kimeneti szakasz](#outputs) további részletekért.
 
@@ -87,7 +87,7 @@ Lekérdezés:
     WHERE TollBoothId > 100
 ```
 
-Ez a lekérdezés egy egyszerű szűrő. Ezért nem kell aggódnia a bemenet, amely küld az event hubs particionálási. Figyelje meg, hogy a lekérdezés tartalmaz **partíció által PartitionId**, így a #2. követelmény a korábban teljesít. A kimeneti kell konfigurálni az event hub kimeneti a feladat a partíciós kulcs értéke az **PartitionId**. Egy utolsó ellenőrzés, hogy ellenőrizze, hogy a bemeneti partíciók számának kimeneti partíciók száma egyenlő.
+Ez a lekérdezés egy egyszerű szűrő. Ezért nem kell aggódnia a bemenet, amely küld az event hubs particionálási. Figyelje meg, hogy mielőtt tartalmaznia kell 1.2-es kompatibilitási szintű feladatok **partíció által PartitionId** záradék, így #2. követelmény a korábban teljesít. A kimeneti kell konfigurálni az event hub kimeneti a feladat a partíciós kulcs értéke az **PartitionId**. Egy utolsó ellenőrzés, hogy ellenőrizze, hogy a bemeneti partíciók számának kimeneti partíciók száma egyenlő.
 
 ### <a name="query-with-a-grouping-key"></a>A csoportosítás kulccsal lekérdezése
 
@@ -141,6 +141,26 @@ Lekérdezés:
 Amint láthatja, a második lépésben használ **TollBoothId** particionálási kulcsként. Ez a lépés nem ugyanaz, mint az első lépés, és, ezért megköveteli tőlünk egy shuffle tennie. 
 
 Az előző példák azt mutatják néhány Stream Analytics-feladatokat, amelyeket egy zavaróan párhuzamos topológia felel meg (vagy nem). Ha azok megfelelnek, a lehetséges maximális méretezési rendelkeznek. Frissíti a feladatok, amelyek nem egyeznek meg ezeket a profilokat, útmutatást skálázás egyikét a jövőben elérhető lesz. Most használja az alábbi szakaszok az általános útmutatást.
+
+### <a name="compatibility-level-12---multi-step-query-with-different-partition-by-values"></a>1\.2 – több lépésből álló lekérdezés PARTITION BY értékei eltérőek a kompatibilitási szint 
+* Bemenet: 8 partícióval rendelkező eseményközpontot
+* Kimenet: 8 partícióval rendelkező eseményközpontot
+
+Lekérdezés:
+
+```SQL
+    WITH Step1 AS (
+    SELECT COUNT(*) AS Count, TollBoothId
+    FROM Input1
+    GROUP BY TumblingWindow(minute, 3), TollBoothId
+    )
+
+    SELECT SUM(Count) AS Count, TollBoothId
+    FROM Step1
+    GROUP BY TumblingWindow(minute, 3), TollBoothId
+```
+
+Kompatibilitási szint 1.2 alapértelmezés szerint lehetővé teszi a párhuzamos lekérdezés-végrehajtás. Például az előző szakaszban lekérdezés lesz parttioned, mindaddig, amíg a bemeneti partíciós kulcs "TollBoothId" oszlop van beállítva. PARTÍCIÓ által ParttionId záradék, nem szükséges.
 
 ## <a name="calculate-the-maximum-streaming-units-of-a-job"></a>A folyamatos átviteli egység egy feladat maximális kiszámítása
 Egy Stream Analytics-feladat által használt streamelési egységek teljes száma attól függ, hogy a lekérdezésben, a feladat, illetve az egyes lépések a partíciók számának megadott lépéseket.
@@ -228,17 +248,71 @@ Ez a lekérdezés 24 SUS-t is méretezhető.
 > 
 > 
 
+## <a name="achieving-higher-throughputs-at-scale"></a>Magasabb szintű termékváltozatot léptékű megvalósítása
 
+Egy [zavaróan párhuzamos](#embarrassingly-parallel-jobs) feladat szükség, de nem elegendő egy nagyobb átviteli sebességet, ipari méretekben átcsoportosítása. Minden tárolási rendszere és a megfelelő Stream Analytics-kimenetet rendelkezik változatok hogyan érhető el a lehető legjobb írási teljesítmény. Ahogy bármely ipari méretekben forgatókönyvvel nincsenek áttekinthet néhány problémát, amely megoldhatók a megfelelő konfigurációk használatával. Ez a szakasz ismerteti néhány gyakori kimenetek konfigurációi és minták a fenntartási másodpercenként 1 KB, 5 KB és 10 ezer, Adatbetöltési díjait számoljuk fel.
 
+A következő megfigyeléseken állapot nélküli (áteresztő) lekérdezés, egy alapszintű JavaScript UDF, amely az Event Hub, az Azure SQL Database vagy a Cosmos DB ír egy Stream Analytics-feladat használja.
 
+#### <a name="event-hub"></a>Eseményközpont
+
+|Betöltési arány (esemény / másodperc) | Folyamatos átviteli egységek | Kimeneti erőforrások  |
+|--------|---------|---------|
+| 1K     |    1    |  2 ÁTVITELI EGYSÉG   |
+| 5 KB     |    6    |  6 ÁTVITELI EGYSÉG   |
+| 10 ezer    |    12   |  10 ÁTVITELI EGYSÉG  |
+
+A [Eseményközpont](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-eventhubs) megoldás költségráfordításokkal egyenes arányban streamelési egységek (SU) és az átviteli sebesség, így a lehető leghatékonyabb és céladattárhoz elemzésére és a tartományon kívül a Stream Analytics-adatok streamelése az tekintetében. Feladatok 192 SU, nagyjából a rendszer lefordítja arra feldolgozási legfeljebb 200 MB/s, vagy a 19 trillió esemény naponta legfeljebb skálázhatók.
+
+#### <a name="azure-sql"></a>Azure SQL
+|Betöltési arány (esemény / másodperc) | Folyamatos átviteli egységek | Kimeneti erőforrások  |
+|---------|------|-------|
+|    1K   |   3  |  S3   |
+|    5 KB   |   18 |  P4   |
+|    10 ezer  |   36 |  P6   |
+
+[Az Azure SQL](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-azuresql) támogatja a párhuzamos írása, hívott öröklik a particionálás, de nem alapértelmezés szerint engedélyezve van. Azonban öröklik a particionálás engedélyezése együtt egy teljes körűen párhuzamos lekérdezést nem lehet magasabb szintű termékváltozatot eléréséhez elegendő. SQL-írási termékváltozatokat az SQL Azure adatbázis konfigurációs és a táblasémát jelentős mértékben függ. A [SQL kimeneti teljesítménye](./stream-analytics-sql-output-perf.md) cikk tartalmaz részletes információkat olvashat a paramétereket, és maximalizálhatják a lemezírás teljesítménye. Amint a [az Azure SQL Database az Azure Stream Analytics-kimenetet](./stream-analytics-sql-output-perf.md#azure-stream-analytics) cikk, ez a megoldás lineárisan egy teljes mértékben párhuzamos folyamat túl 8 partíció nem méretezhető és újraparticionálása SQL kimeneti előtt szükség lehet (lásd: [ AZ](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count)). Prémium szintű termékváltozatok szükségesek a naplóalapú biztonsági mentések minden néhány történik a terhelés mellett magas i/o-díjak fenntartásához perc.
+
+#### <a name="cosmos-db"></a>Cosmos DB
+|Betöltési arány (esemény / másodperc) | Folyamatos átviteli egységek | Kimeneti erőforrások  |
+|-------|-------|---------|
+|  1K   |  3    | 20K RU  |
+|  5 KB   |  24   | 60 EZER KÉRELEMEGYSÉG  |
+|  10 ezer  |  48   | 120 EZER KÉRELEMEGYSÉG |
+
+[A cosmos DB](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb) kimeneti Stream Analyticsből származó frissítve lett, hogy használja a natív integráció [1.2-es kompatibilitási szintű](./stream-analytics-documentdb-output.md#improved-throughput-with-compatibility-level-12). 1\.2-es kompatibilitási szintű lehetővé teszi a jelentősen nagyobb átviteli sebességet, és csökkenti a fogyasztott 1.1-es, amely az alapértelmezett kompatibilitási szint új feladatok képest. A megoldás az, cosmos DB-tárolók /deviceId a particionált, és a megoldás többi azonosan van konfigurálva.
+
+Az összes [azure skálázási minták: Streamelési](https://github.com/Azure-Samples/streaming-at-scale) táplált által terhelés szimulálására a tesztcélú ügyfelek bemenetként egy Eseményközpont használható. Minden bemeneti esemény egy 1 KB-os JSON-dokumentumok, egyszerűen felhőplatformot konfigurált Adatbetöltési díjait számoljuk fel (1MB/s, 5MB/s és 10MB/s) átviteli sebességre. Események (rövidített formátumban) a következő JSON-adatokat küld valamelyik IoT-eszköz szimulálása a legfeljebb 1 KB-eszközök esetén:
+
+```
+{
+    "eventId": "b81d241f-5187-40b0-ab2a-940faf9757c0",
+    "complexData": {
+        "moreData0": 51.3068118685458,
+        "moreData22": 45.34076957651598
+    },
+    "value": 49.02278128887753,
+    "deviceId": "contoso://device-id-1554",
+    "type": "CO2",
+    "createdAt": "2019-05-16T17:16:40.000003Z"
+}
+```
+
+> [!NOTE]
+> A konfigurációk a következők miatt a különböző összetevők a megoldásban használt változhat. A pontosabb becslést testre szabhatja a saját forgatókönyvéhez igazítva mintákat.
+
+### <a name="identifying-bottlenecks"></a>Szűk keresztmetszetek azonosítása
+
+Az Azure Stream Analytics-feladat a metrika panel használatával a folyamatban, szűk keresztmetszetek azonosítása. Felülvizsgálat **bemeneti/kimeneti események** átviteli sebességet és ["Vízjel késleltetés"](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/) vagy **várakozó események** megtekintheti, ha a feladat viselkedéssel a bemeneti arány. Az Event Hubs-metrikák, keressen **kérelmek szabályozva** , és ennek megfelelően módosítsa a küszöbérték egységek. Cosmos DB metrikákkal, tekintse át a **felhasznált max. RU/s partíciókulcs-tartományonként** alatt kulcstartományokkal biztosításához a partíció átviteli sebesség egyenletesen felhasznált. Azure SQL Database monitorozása **naplózási IO** és **CPU**.
 
 ## <a name="get-help"></a>Segítségkérés
+
 További segítségre van szüksége, próbálja meg [Azure Stream Analytics-fórumon](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>További lépések
 * [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
-* [Azure Stream Analytics Query Language Reference](https://msdn.microsoft.com/library/azure/dn834998.aspx) (Referencia az Azure Stream Analytics lekérdezési nyelvhez)
+* [Azure Stream Analytics Query Language Reference](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) (Referencia az Azure Stream Analytics lekérdezési nyelvhez)
 * [Az Azure Stream Analytics felügyeleti REST API referenciája](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
 <!--Image references-->

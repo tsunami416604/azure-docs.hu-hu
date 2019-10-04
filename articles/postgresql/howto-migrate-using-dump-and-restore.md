@@ -1,94 +1,94 @@
 ---
-title: Memóriakép és visszaállítása az Azure Database for postgresql-hez
-description: Bontsa ki a PostgreSQL-adatbázis egy memóriakép fájlba, és a egy PostgreSQL-hez készült Azure Database-ben pg_dump által létrehozott fájl visszaállítása ismerteti.
+title: Kiírás és visszaállítás Azure Database for PostgreSQL – egyetlen kiszolgálón
+description: Ismerteti, hogyan lehet kibontani a PostgreSQL-adatbázist egy memóriaképfájl-fájlba, és hogyan kell visszaállítani a pg_dump által létrehozott fájlból a Azure Database for PostgreSQL-Single Serverben.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/22/2018
-ms.openlocfilehash: d406132c4e359c78567ae47a3acba5b73aa39820
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.date: 09/24/2019
+ms.openlocfilehash: 55e802aa1f7bdf0d67d1a9c3f020d255afdc8130
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564204"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261909"
 ---
-# <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>Memóriakép és visszaállítás használatával a PostgreSQL-adatbázis migrálása
-Használhatja [pg_dump](https://www.postgresql.org/docs/9.3/static/app-pgdump.html) be memóriakép-fájl egy PostgreSQL-adatbázis kibontásához és [pg_restore](https://www.postgresql.org/docs/9.3/static/app-pgrestore.html) pg_dump által létrehozott archív fájl visszaállítása a PostgreSQL-adatbázishoz.
+# <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>A PostgreSQL-adatbázis migrálása a dump és a Restore használatával
+A [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) használatával kinyerheti a PostgreSQL-adatbázist egy memóriaképfájl-fájlba, és [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) visszaállíthatja a PostgreSQL-adatbázist egy pg_dump által létrehozott archív fájlból.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez az útmutató lépéseinek, az alábbiak szükségesek:
-- Egy [, Azure Database for PostgreSQL-kiszolgáló](quickstart-create-server-database-portal.md) , hogy a hozzáférés és az alatta database tűzfalszabályokkal.
-- [pg_dump](https://www.postgresql.org/docs/9.6/static/app-pgdump.html) és [pg_restore](https://www.postgresql.org/docs/9.6/static/app-pgrestore.html) parancssori segédprogramok telepítése
+A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
+- Egy [Azure Database for PostgreSQL-kiszolgáló](quickstart-create-server-database-portal.md) , amely tűzfalszabályok használatával engedélyezi a hozzáférést és az adatbázist.
+- telepített [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) és [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) parancssori segédprogramok
 
-Kövesse az alábbi lépéseket a dump és a PostgreSQL-adatbázis visszaállítása:
+A PostgreSQL-adatbázis kiírásához és visszaállításához kövesse az alábbi lépéseket:
 
-## <a name="create-a-dump-file-using-pgdump-that-contains-the-data-to-be-loaded"></a>Hozzon létre egy memóriakép pg_dump kell betölteni az adatokat tartalmazó fájlt
-Készítsen biztonsági másolatot egy meglévő PostgreSQL adatbázis helyi vagy egy virtuális Gépre, futtassa a következő parancsot:
+## <a name="create-a-dump-file-using-pg_dump-that-contains-the-data-to-be-loaded"></a>Memóriaképfájl létrehozása a betölteni kívánt pg_dump tartalmazó memóriakép használatával
+Ha egy meglévő PostgreSQL-adatbázist szeretne biztonsági másolatot készíteni a helyszínen vagy egy virtuális gépen, futtassa a következő parancsot:
 ```bash
-pg_dump -Fc -v --host=<host> --username=<name> --dbname=<database name> > <database>.dump
+pg_dump -Fc -v --host=<host> --username=<name> --dbname=<database name> -f <database>.dump
 ```
-Ha például van egy helyi kiszolgálón és a egy nevű adatbázist **testdb** benne
+Ha például van egy helyi kiszolgálója és egy **testdb** nevű adatbázis
 ```bash
-pg_dump -Fc -v --host=localhost --username=masterlogin --dbname=testdb > testdb.dump
+pg_dump -Fc -v --host=localhost --username=masterlogin --dbname=testdb -f testdb.dump
 ```
 
 
-## <a name="restore-the-data-into-the-target-azure-database-for-postrgesql-using-pgrestore"></a>Állítsa vissza az adatokat a cél Azure Database-be a PostrgeSQL pg_restore használatával
-Miután létrehozta a céladatbázis, a pg_restore parancsot és a -d,--dbname paraméter használatával állítsa vissza az adatokat a memóriakép-fájl a cél-adatbázisba.
+## <a name="restore-the-data-into-the-target-azure-database-for-postrgesql-using-pg_restore"></a>Az adatvisszaállítás a cél Azure-adatbázisba PostrgeSQL a pg_restore használatával
+A céladatbázis létrehozása után a pg_restore parancs és a-d,--dbname paraméter használatával visszaállíthatja az adatait a célként megadott adatbázisba a memóriakép fájlból.
 ```bash
-pg_restore -v --no-owner –-host=<server name> --port=<port> --username=<user@servername> --dbname=<target database name> <database>.dump
+pg_restore -v --no-owner --host=<server name> --port=<port> --username=<user@servername> --dbname=<target database name> <database>.dump
 ```
-Beleértve a--no-owner paraméter okok tulajdonosa a felhasználó megadja a--username és a visszaállítás során létrehozott összes objektumot. További információkért tekintse meg a hivatalos PostgreSQL dokumentációja [pg_restore](https://www.postgresql.org/docs/9.6/static/app-pgrestore.html).
+A--No-Owner paraméterrel együtt a visszaállítás során létrehozott összes objektum tulajdonosa lesz a--username értékkel megadott felhasználó tulajdonában. További információkért tekintse meg a [pg_restore](https://www.postgresql.org/docs/9.6/static/app-pgrestore.html)hivatalos PostgreSQL-dokumentációját.
 
 > [!NOTE]
-> Ha a PostgreSQL-kiszolgáló SSL-kapcsolatot igényel (az Azure Database for PostgreSQL-kiszolgálók alapértelmezés szerint), egy környezeti változót `PGSSLMODE=require` úgy, hogy SSL használatával kapcsolódik a pg_restore eszköz. SSL-t, anélkül a hiba lehetséges, hogy olvasása  `FATAL:  SSL connection is required. Please specify SSL options and retry.`
+> Ha a PostgreSQL-kiszolgáló SSL-kapcsolatokat igényel (alapértelmezés szerint Azure Database for PostgreSQL-kiszolgálókon), állítson `PGSSLMODE=require` be egy környezeti változót, hogy a pg_restore eszköz csatlakozzon az SSL-hez. SSL nélkül előfordulhat, hogy a hiba olvasható`FATAL:  SSL connection is required. Please specify SSL options and retry.`
 >
-> A Windows-parancssorban futtassa a parancsot `SET PGSSLMODE=require` a pg_restore parancs futtatása előtt. Linux vagy a Bash futtassa a parancsot `export PGSSLMODE=require` a pg_restore parancs futtatása előtt.
+> A Windows-parancssorban futtassa a parancsot `SET PGSSLMODE=require` a pg_restore parancs futtatása előtt. A Linux vagy a bash futtatása előtt `export PGSSLMODE=require` futtassa a parancsot a pg_restore parancs futtatása előtt.
 >
 
-Ebben a példában visszaállíthatja az adatokat a memóriakép-fájl **testdb.dump** az adatbázisba **mypgsqldb** célkiszolgálón **mydemoserver.postgres.database.azure.com**. 
+Ebben a példában a **testdb. dump** fájlból származó adatok visszaállítását a célkiszolgáló **mydemoserver.postgres.database.Azure.com**adatbázis- **mypgsqldb** . 
 ```bash
 pg_restore -v --no-owner --host=mydemoserver.postgres.database.azure.com --port=5432 --username=mylogin@mydemoserver --dbname=mypgsqldb testdb.dump
 ```
 
 ## <a name="optimizing-the-migration-process"></a>Az áttelepítési folyamat optimalizálása
 
-A meglévő PostgreSQL-adatbázis migrálása az Azure Database for PostgreSQL szolgáltatás egyik módja, hogy az adatbázis biztonsági mentése a forráson, és állítsa vissza az Azure-ban. Az áttelepítés végrehajtásához szükséges idő minimalizálása érdekében fontolja meg az alábbi paramétereket a biztonsági mentést, és állítsa vissza a parancsokat.
+A meglévő PostgreSQL-adatbázis Azure Database for PostgreSQL szolgáltatásba való áttelepítése az egyik módszer, ha biztonsági másolatot készít az adatbázisról a forrásról, és visszaállítja azt az Azure-ban. Az áttelepítés befejezéséhez szükséges idő minimalizálásához érdemes a következő paramétereket használni a biztonsági mentési és visszaállítási parancsokkal.
 
 > [!NOTE]
-> Szintaxis részletes információkért tekintse meg a cikkeket [pg_dump](https://www.postgresql.org/docs/9.6/static/app-pgdump.html) és [pg_restore](https://www.postgresql.org/docs/9.6/static/app-pgrestore.html).
+> A szintaxis részletes ismertetését lásd: [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) és [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html).
 >
 
-### <a name="for-the-backup"></a>A biztonsági mentés
-- A biztonsági mentés a szálcsatorna - kapcsoló igénybe, így a visszaállítást hajthat végre párhuzamosan, felgyorsítása érdekében. Példa:
+### <a name="for-the-backup"></a>A biztonsági mentéshez
+- A biztonsági mentést a-FC kapcsolóval hajtsa végre, így a visszaállítás párhuzamosan is elvégezhető. Példa:
 
     ```
-    pg_dump -h MySourceServerName -U MySourceUserName -Fc -d MySourceDatabaseName > Z:\Data\Backups\MyDatabaseBackup.dump
+    pg_dump -h MySourceServerName -U MySourceUserName -Fc -d MySourceDatabaseName -f Z:\Data\Backups\MyDatabaseBackup.dump
     ```
 
 ### <a name="for-the-restore"></a>A visszaállításhoz
-- Javasoljuk, hogy a biztonságimásolat-fájl áthelyezése egy Azure virtuális Gépen az Azure Database for PostgreSQL-kiszolgáló végzi az áttelepítést, és hajtsa végre a pg_restore a hálózati késés csökkentése érdekében a virtuális Gépeket ugyanabban a régióban. Azt javasoljuk, hogy a virtuális gép létrejött-e a [gyorsított hálózatkezelést](../virtual-network/create-vm-accelerated-networking-powershell.md) engedélyezve van.
+- Javasoljuk, hogy helyezze át a biztonságimásolat-fájlt egy olyan Azure-beli virtuális gépre, amelyben az a Azure Database for PostgreSQL-kiszolgáló, amelyre az áttelepítést végzi, és az adott virtuális gép pg_restore a hálózati késés csökkentése érdekében. Javasoljuk továbbá, hogy a virtuális gép a [gyorsított hálózatkezelés](../virtual-network/create-vm-accelerated-networking-powershell.md) engedélyezésével legyen létrehozva.
 
-- Alapértelmezés szerint már végezhető, de a memóriakép-fájl, és ellenőrizze, hogy a create index utasításokat az adatok a Beszúrás után nyissa meg. Ha nem, akkor a helyzet, a create index utasításokat áthelyezése után az adatok.
+- Alapértelmezés szerint már el kell végeznie, de meg kell nyitnia a memóriaképet annak ellenőrzéséhez, hogy a Create index utasítások az adatokat szúrják-e be. Ha nem ez a helyzet, helyezze át a Create index utasítást az adatbeszúrás után.
 
-- Állítsa vissza a kapcsolók a -Fc és -j *#* való párhuzamosíthatja a visszaállítást. *#* van a célkiszolgálón magok számát. Az is megpróbálhatja *#* kétszer a célkiszolgáló magok számát értékre van állítva,-azonosítókra gyakorolt hatást. Példa:
+- Restore with the switchs-FC és *#* -j kapcsolóval integrálással a visszaállítást. *#* a célkiszolgálón lévő magok száma. Azt is megteheti *#* , hogy a beállítás megadásával kétszer is megpróbálkozik a célkiszolgáló magok számával, hogy a hatás megjelenjen. Példa:
 
     ```
     pg_restore -h MyTargetServer.postgres.database.azure.com -U MyAzurePostgreSQLUserName -Fc -j 4 -d MyTargetDatabase Z:\Data\Backups\MyDatabaseBackup.dump
     ```
 
-- A parancs hozzáadásával a memóriakép-fájl is szerkesztheti *: synchronous_commit állítsa le; =* elején és a parancs *beállítása: synchronous_commit = on;* végén. Nem bekapcsolását, a végén az alkalmazásokat módosítani az adatokat, mielőtt az adatok későbbi adatvesztést eredményezhet.
+- A memóriaképet úgy is szerkesztheti, ha hozzáadja a *synchronous_commit = off;* parancsot az elején, és a *synchronous_commit = on; paranccsal beállítja* a végpontot. Ha nem kapcsolja be a végére, az alkalmazások megváltoznak az adatvesztés következtében.
 
-- A cél Azure Database for PostgreSQL-kiszolgáló vegye figyelembe az alábbiakat, mielőtt a visszaállítás során:
-    - Kapcsolja ki a lekérdezési teljesítmény nyomon követése, mivel ezek a statisztikák nem szükségesek a migrálás során. Ez pg_stat_statements.track pg_qs.query_capture_mode és pgms_wait_sampling.query_capture_mode NONE értékre állításával teheti meg.
+- A cél Azure Database for PostgreSQL kiszolgálón a visszaállítás előtt vegye figyelembe a következőket:
+    - A lekérdezési teljesítmény nyomon követésének kikapcsolása, mivel ezek a statisztikák nem szükségesek az áttelepítés során. Ezt úgy teheti meg, hogy a pg_stat_statements. Track, a pg_qs. query_capture_mode és a pgms_wait_sampling. query_capture_mode beállítást a NONE értékre állítja.
 
-    - A magas számítási és a magas memóriahasználat sku, például az optimalizált memóriájú, 32 virtuális mag használatával felgyorsíthatja az áttelepítés. Azt is könnyen pedig vissza az előnyben részesített termékváltozat a visszaállítás befejezése után. A magasabb a termékváltozat, a további párhuzamosság érhet el a megfelelő növelésével `-j` paramétert a pg_restore parancsba. 
+    - A Migrálás felgyorsításához használjon nagy számítási és magas memória-SKU-t, például 32 virtuális mag memóriát. A visszaállítás befejezése után egyszerűen méretezheti vissza az előnyben részesített SKU-ra. Minél nagyobb a SKU, annál több párhuzamosságot érhet el a pg_restore parancs megfelelő `-j` paraméterének növelésével. 
 
-    - A célkiszolgálón több IOPS javíthatja a visszaállítási teljesítménye. A kiszolgáló tárolómérete növelésével további IOPS építhető ki. Ez a beállítás nem vonható vissza, de vegye figyelembe, hogy egy magasabb iops-t a jövőben kiaknázhatják a valós számítási feladat.
+    - A célkiszolgáló további IOPS javíthatják a visszaállítási teljesítményt. A kiszolgáló tárolási méretének növelésével több IOPS is kiépítheti. Ez a beállítás nem vonható vissza, azonban érdemes megfontolni, hogy egy magasabb IOPS a jövőben is hasznát veheti-e a tényleges munkaterhelésnek.
 
-Ne felejtse el tesztelés és ellenőrzés ezeket a parancsokat egy tesztkörnyezetben, mielőtt éles környezetben használni.
+Az éles környezetben való használat előtt ne felejtse el tesztelni és érvényesíteni ezeket a parancsokat tesztkörnyezetben.
 
 ## <a name="next-steps"></a>További lépések
-- Az exportálás és importálás segítségével a PostgreSQL-adatbázis áttelepítéséhez lásd: [exportálási PostgreSQL adatbázis Migrálása és importálása](howto-migrate-using-export-and-import.md).
-- További információ az adatbázisok az Azure Database for postgresql-hez, lásd: a [adatbázis-Migrálási útmutató](https://aka.ms/datamigration).
+- A PostgreSQL-adatbázis exportálással és importálással történő áttelepítésével kapcsolatban lásd: [a PostgreSQL-adatbázis migrálása az Exportálás és az importálás használatával](howto-migrate-using-export-and-import.md).
+- Az adatbázisok Azure Database for PostgreSQLre való áttelepítésével kapcsolatos további információkért tekintse meg az [adatbázis-áttelepítési útmutatót](https://aka.ms/datamigration).

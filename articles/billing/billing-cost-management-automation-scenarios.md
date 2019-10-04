@@ -1,9 +1,9 @@
 ---
-title: Automation-forgatókönyvek az Azure-elszámolással és költségkezeléssel |} A Microsoft Docs
-description: Ismerje meg, hogyan közös számlázás, és optimalizálhatja a költségeket felügyeleti forgatókönyvek különböző leképezett API-kkal.
+title: Automatizálási forgatókönyvek az Azure-számlázáshoz és -költségkezeléshez | Microsoft Docs
+description: Megismerheti a különböző API-kra leképezett gyakori számlázási és költségkezelési forgatókönyveket.
 services: billing
 documentationcenter: ''
-author: Erikre
+author: bandersmsft
 manager: dougeby
 editor: ''
 tags: billing
@@ -13,38 +13,38 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: billing
-ms.date: 6/13/2018
-ms.author: erikre
-ms.openlocfilehash: 0d2b0f2d3fad318ac0152d92fe92614d8dadda1e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.date: 10/01/2019
+ms.author: banders
+ms.openlocfilehash: 54c4426fb8bdb1476b33defb5351b3fb0e6a0663
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792820"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718837"
 ---
-# <a name="automation-scenarios-for-billing-and-cost-management"></a>Számlázási és a cost Management Automation-forgatókönyvek
+# <a name="automation-scenarios-for-billing-and-cost-management"></a>Automatizálási forgatókönyvek a számlázáshoz és költségkezeléshez
 
-Ez a cikk gyakori helyzetek az Azure-elszámolással és költségkezeléssel sorolja fel. Ezekben az esetekben használható API-k vannak leképezve. Minden egyes forgatókönyv-API leképezési alatt az API-k és a szolgáltatásokat, és az eddigieknél is megtalálhatja.
+Ez a cikk az Azure-számlázás és költségkezelés gyakori forgatókönyveit tartalmazza. Ezeket a forgatókönyveket az Ön által használható API-kra képezi le. Az egyes forgatókönyvek API-kra való leképezéseiben megtalálja az API-k és az általuk kínált funkciók összegzését.
 
 ## <a name="common-scenarios"></a>Gyakori forgatókönyvek
 
-Felügyeleti API-k számos forgatókönyv kapcsolatos költségek és a használati kapcsolatos kérdések megválaszolása céljából a költségek és a számlázás használhatja. A következő gyakori helyzetek röviden ismerteti:
+A számlázási és költségkezelési API-kat számos forgatókönyvben használhatja a költségekkel és a használattal kapcsolatos kérdések megválaszolásához. Itt találja a gyakori forgatókönyvek vázlatát:
 
-- **Egyeztetés a számlához**: Adott Microsoft díja szerint számítjuk fel velem a megfelelő összeget?  Mi az a számlán, és szeretnék kiszámíthatja, saját magam?
+- **Számla egyeztetése**: A Microsoft a megfelelő összeget számította fel?  Mennyi a számlám, és ki tudom számítani magamnak?
 
-- **Kereszt-díjak**: Most, hogy ellenőrizhető, hogy mennyit vagyok éppen fizetnem, mely munkatársaim kell fizetnem kell?
+- **Keresztköltségek**: Most, hogy tudom, mennyit számítottak fel, kinek kell kifizetnie a számlát a szervezetben?
 
-- **Költségek optimalizálása**: Tudom, hogy mennyivel korábban lett számítanak fel díjat. Hogyan kaphatok további kívül az Azure-beli töltök pénzt?
+- **Költségoptimalizálás**: Tudom, hogy mennyit számítottak fel. Hogyan használhatom ki jobban az Azure-ra költött összeget?
 
-- **Költségek nyomon követése**: Tekintse meg, mennyit vagyok kiadások és az Azure idővel szeretnék. Mik azok a trendek? Hogyan tehetem jobban?
+- **Költségkövetés**: Szeretném látni, hogy az idő függvényében mennyit költök az Azure-ra, és mennyit használom. Mik a trendek? Hogyan használhatom jobban?
 
-- **Azure-költségkeretről a hónap során**: IP-címek fenntartási tölti dátum az aktuális hónap? Szükséges e bármilyen módosítás a költségkeret-beállítási és/vagy használat az Azure? Ha a hónap során vagyok I használó Azure a legtöbbet?
+- **Azure-költségek a hónap során**: Eddig mennyit költöttem az aktuális hónapban? Változtatnom kell azon, mennyit költök az Azure-ra és/vagy hogyan használom? A hónap során mikor használom a legtöbbet az Azure-t?
 
-- **Riasztások**: Hogyan állítható be a használatalapú erőforrás-alapú vagy pénzügyi alapuló riasztások?
+- **Riasztások**: Hogyan állíthatok be erőforrás-alapú használatot vagy pénzügyi alapú riasztásokat?
 
-## <a name="scenario-to-api-mapping"></a>A forgatókönyv-API-hozzárendelése
+## <a name="scenario-to-api-mapping"></a>Forgatókönyv–API leképezés
 
-|         API        | Számla egyeztetés    | Kereszt-díjak    | Költségoptimalizálás    | Költségek nyomon követése    | Midmonth kiadások    | Riasztások    |
+|         API        | Számla egyeztetése    | Keresztköltségek    | Költségoptimalizálás    | Költségkövetés    | Hónapközepi kiadások    | Riasztások    |
 |:---------------------------:|:-------------------------:|:----------------:|:--------------------:|:----------------:|:------------------:|:---------:|
 | Költségvetések                     |                           |                  |           X          |                  |                    |     X     |
 | A Marketplace díjai                |             X             |         X        |           X          |         X        |          X         |     X     |
@@ -53,94 +53,94 @@ Felügyeleti API-k számos forgatókönyv kapcsolatos költségek és a használ
 | Foglalási adatok         |                           |                  |           X          |         X        |                    |           |
 | Foglalási összegzések       |                           |                  |           X          |         X        |                    |           |
 | Használati adatok               |             X             |         X        |           X          |         X        |          X         |     X     |
-| Számlázási időszak             |             X             |         X        |           X          |         X        |                    |           |
+| Billing Periods             |             X             |         X        |           X          |         X        |                    |           |
 | Számlák                    |             X             |         X        |           X          |         X        |                    |           |
 | RateCard                    |             X             |                  |           X          |         X        |          X         |           |
-| Nem értékelt használat               |             X             |                  |           X          |                  |          X         |           |
+| Unrated Usage               |             X             |                  |           X          |                  |          X         |           |
 
 > [!NOTE]
-> A forgatókönyv-API leképezés nem tartalmazza a vállalati használati API-kat. Ahol lehetséges, használja az általános felhasználás API-k új fejlesztési célokra.
+> A forgatókönyv–API leképezés nem terjed ki a nagyvállalati használati API-kra. Ha lehetséges, az új fejlesztési forgatókönyvekhez használjon általános használati API-kat.
 
-## <a name="api-summaries"></a>API összefoglaló
+## <a name="api-summaries"></a>API-összegzések
 
 ### <a name="consumption"></a>Használat
-Web Direct- és nagyvállalati ügyfelek használhatják az összes a következő API-kat, nincs másként jelölve:
+A Web Direct- és a nagyvállalati ügyfelek a következő API-kat használhatják, kivéve, ahol máshogy van jelezve:
 
--   [API költségvetése](https://docs.microsoft.com/rest/api/consumption/budgets) (*csak vállalati ügyfelek*): Erőforrások, erőforráscsoportok vagy számlázási mérőszámok költség- és használati költségvetéseket létrehozni. Ha költségvetése létrehozott, konfigurálhatja úgy a riasztásokat, amelyek figyelmeztetik, ha meghaladta meghatározott költségvetés küszöbértékeket. Beállíthatja úgy is fordulhat elő, ha elérte a költségvetési összegek műveleteket.
+-   [Budgets API](https://docs.microsoft.com/rest/api/consumption/budgets) (*csak nagyvállalati ügyfelek számára*): Költségalapú vagy használati költségvetéseket hozhat létre erőforrások, erőforráscsoportok vagy számlázási mérőszámok részére. Ha létrehozta a költségvetéseket, riasztásokat konfigurálhat, amelyek értesítést küldenek, ha túllépte a költségvetés meghatározott küszöbeit. Műveleteket is konfigurálhat arra az esetre, ha túllépte a költségvetés összegeit.
 
--   [Piactér-díjak API](https://docs.microsoft.com/rest/api/consumption/marketplaces): Bevezetés a költség- és használati adatokat minden Azure Marketplace-erőforrások (Azure-partneri ajánlatait). Ezek az adatok között minden Marketplace-erőforrások költségeit összeadódhatnak vagy vizsgálja meg az adott erőforrásokra költségek/használati használható.
+-   [Marketplace Charges API](https://docs.microsoft.com/rest/api/consumption/marketplaces): Lekérheti az Azure Marketplace összes erőforrására (Azure-partnerajánlataira) vonatkozó díj- és használati adatokat. Ezekkel az adatokkal összeadhatja az összes piactéri erőforrás költségét, vagy megvizsgálhatja az adott erőforrások költségeit/használati adatait.
 
--   [Ár lap API](https://docs.microsoft.com/rest/api/consumption/pricesheet) (*csak vállalati ügyfelek*): Első egyéni díjszabás minden mérőszámok. Vállalatok segítségével ezeket az adatokat a használat részleteiről és a piactér használati adatokat kombinálva költségek kiszámítása a használati és a piactér használatával. 
+-   [Price Sheet API](https://docs.microsoft.com/rest/api/consumption/pricesheet) (*csak nagyvállalati ügyfelek számára*): Az összes mérőhöz egyéni díjszabást állíthat be. A nagyvállalatok ezekkel az adatokkal, valamint a használati adatokkal és a piactér használati adataival kiszámíthatják a költségeket. 
 
--   [Foglalás javaslatok API](https://docs.microsoft.com/rest/api/consumption/reservationrecommendations): Fenntartott VM-példányok megvásárlásával kapcsolatos javaslatokat kaphat. Javaslatok segítenek a várt költségmegtakarítást elemzése, és vásárolja meg összegek. További információkért lásd: [API-k a foglalást az Azure automation](billing-reservation-apis.md).
+-   [Reservation Recommendations API](https://docs.microsoft.com/rest/api/consumption/reservationrecommendations): Javaslatokat kaphat a Reserved VM Instances megvásárlásához. A javaslatokkal könnyebben elemezheti a várható költségmegtakarításokat és a vásárlási összegeket. További információkért lásd [az Azure-foglalás automatizálásához elérhető API-kat](billing-reservation-apis.md).
 
--   [Foglalás részletei API](https://docs.microsoft.com/rest/api/consumption/reservationsdetails): Korábban megvásárolt Virtuálisgép-foglalásokat, mennyi használatalapú van fenntartva, és mennyi szolgál például információinak megtekintéséhez. Egy Virtuálisgép-szintű részletes adatait tekintheti meg. További információkért lásd: [API-k a foglalást az Azure automation](billing-reservation-apis.md).
+-   [Reservation Details API](https://docs.microsoft.com/rest/api/consumption/reservationsdetails): Megtekintheti a korábban megvásárolt virtuális gépek foglalásával kapcsolatos információkat, például a lefoglalt felhasználás mértékét, illetve a felhasznált mennyiséget. Az adatokat virtuális gépenkénti részletességgel tekintheti meg. További információkért lásd [az Azure-foglalás automatizálásához elérhető API-kat](billing-reservation-apis.md).
 
--   [Foglalás összegzéseket API](https://docs.microsoft.com/rest/api/consumption/reservationssummaries): Tekintse meg, hogy a szervezete vásárolt, például mennyi felhasználási és mennyit használja az összesítésben foglalt VM-foglalások jelenít meg összesített adatokat. További információkért lásd: [API-k a foglalást az Azure automation](billing-reservation-apis.md).
+-   [Reservation Summaries API](https://docs.microsoft.com/rest/api/consumption/reservationssummaries): Megtekintheti a szervezet által megvásárolt virtuális gépek foglalásával kapcsolatos összesített információkat, például hogy mennyi használat van lefoglalva, és mennyi van használatban az összesítésben. További információkért lásd [az Azure-foglalás automatizálásához elérhető API-kat](billing-reservation-apis.md).
 
--   [Használat részletei API](https://docs.microsoft.com/rest/api/consumption/usagedetails): Az összes Azure-erőforrások díja és használati információk beolvasása a Microsoft. Információk a rendszer jelenleg a kibocsátott egyszer mérni / nap / használati részletes rekordok formájában van. Az információk segítségével a költségek összeadódhatnak összes erőforrás között, vagy vizsgálja meg a költségek/használati az adott erőforrásokra.
+-   [Usage Details API](https://docs.microsoft.com/rest/api/consumption/usagedetails): Lekérheti a Microsofttól származó összes Azure-erőforrás díj- és használati adatait. Az információk használati adatokra vonatkozó rekordok formájában jelennek meg, amelyek jelenleg naponta mérőnként egyszer vannak kibocsátva. Az adatokkal összeadhatja az összes erőforrás költségét, vagy megvizsgálhatja az adott erőforrások költségeit/használati adatait.
 
--   [RateCard API](/previous-versions/azure/reference/mt219005(v=azure.100)): Kedvezményekkel mérőszám veheti igénybe, ha Ön a Web Direct-ügyfél. Ezután használhatja a visszaadott információ az erőforrás-használati adatait a várt számla kiszámításának alapjául manuálisan. 
+-   [RateCard API](/previous-versions/azure/reference/mt219005(v=azure.100)): Web Direct-ügyfélként lekérheti a mérési díjakat. Ezután a visszaadott adatokat az erőforrás-használati adatokkal együtt használva manuálisan számíthatja ki a várt számlát. 
 
--   [Használati API nem minősített](/previous-versions/azure/reference/mt219003(v=azure.100)): Nyers használati adatai olvashatók be, mielőtt az Azure elvégzi az összes szoftverhasználat-mérő/díjszabási.
+-   [Unrated Usage API](/previous-versions/azure/reference/mt219003(v=azure.100)): Lekérheti a nyers használati adatokat, mielőtt az Azure bármilyen mérést/díjazást végezne.
 
 ### <a name="billing"></a>Számlázás
--   [Számlázási időszak API](https://docs.microsoft.com/rest/api/billing/billingperiods): Határozza meg, hogy egy számlázási időszak elemzése, a számla azonosítók az adott időszak együtt. A számlák API-val számla azonosítók is használhatja.
+-   [Billing Periods API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods): Meghatározhatja az elemezni kívánt számlázási időszakot, valamint az időszak számlaazonosítóját. Az Invoices API-val számlaazonosítókat használhat.
 
--   [A számlák API](https://docs.microsoft.com/rest/api/billing/invoices): Adresa URL Pro stahování beolvasása az adott számlához egy számlázási időszak csak PDF formátumban.
+-   [Invoices API](https://docs.microsoft.com/rest/api/billing/2018-11-01-preview/invoices): PDF formátumban kérheti le a számlázási időszakok számláinak letöltési URL-címét.
 
-### <a name="enterprise-consumption"></a>Vállalati fogyasztás
-A következő API-k csak a vállalati vannak:
+### <a name="enterprise-consumption"></a>Nagyvállalati használat
+A következő API-k csak nagyvállalatok számára érhetők el:
 
--   [API összefoglaló elosztása](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary): Egy-egy havi kaphat összefoglaló információkat a jóváírásokat összefoglaló balances, új vásárlások, Azure Marketplace szolgáltatási díjai, módosítását és kerettúllépési díjfizetést tesz szükségessé. Ez az aktuális elszámolási időszakban vagy bármelyik az elmúlt időszakban információkat szerezhet a. Vállalatok számára az adatok segítségével manuálisan számított összefoglaló díjak összehasonlítandó. Ez az API nem biztosít erőforrás-specifikus információt, vagy egy összesített nézetet a költségek.
+-   [Balance Summary API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary): Havi összefoglaló információkat kérhet le az egyenlegekről, az új vásárlásokról, az Azure Marketplace szolgáltatási díjairól, a kiigazításokról és a többletköltségekről. Ezeket az adatokat az aktuális számlázási időszakra vagy bármely múltbéli időszakra lekérheti. A nagyvállalatok ezeket az adatokat összehasonlíthatják a manuálisan kiszámított összesített díjakkal. Ez az API nem biztosít erőforrás-specifikus adatokat vagy a költségek összesített nézetét.
 
--   [Használat részletei API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail): Azure-használat (a Microsoft egyéb ajánlatai) információt kaphat az aktuális hónap, egy adott számlázási időszak és a egy egyéni dátum-idő. Vállalatok számára az adatok segítségével manuálisan ki kell számítani a számlák arányát és a használat alapján. Vállalatok szervezetek között is használható attribútum a költségek szervezeti egység/szervezeti adatokat. Az adatok a használat és költségek erőforrás-specifikus nézetét jeleníti meg.
+-   [Usage Details API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail): Lekérheti a Microsoft-ajánlatok Azure-használatának adatait az aktuális hónapra, egy adott számlázási időszakra vagy egy egyéni időszakra vonatkozóan. A nagyvállalatok ezekkel az adatokkal a díjak és a felhasználás alapján manuálisan kiszámíthatják a számlákat. A nagyvállalatok a részleg vagy szervezet információival különböző szervezetek közötti költségeket is feloszthatnak. Az adatok a használat/költségek erőforrás-specifikus nézetét biztosítják.
 
--   [Marketplace-en Store díj API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge): Az aktuális hónap, egy adott elszámolási időszakban vagy egy egyéni dátum-idő lekérése hatásával kapcsolatos Azure-használat (partneri ajánlatait). Vállalatok számára az adatok segítségével manuálisan ki kell számítani a számlák arányát és a használat alapján. Vállalatok szervezetek között is használható attribútum a költségek szervezeti egység/szervezeti adatokat. Az API-t a használat és költségek erőforrás-specifikus nézetét jeleníti meg.
+-   [Marketplace Store Charge API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge): Lekérheti a partnerajánlatok Azure-használatának adatait az aktuális hónapra, egy adott számlázási időszakra vagy egy egyéni időszakra vonatkozóan. A nagyvállalatok ezekkel az adatokkal a díjak és a felhasználás alapján manuálisan kiszámíthatják a számlákat. A nagyvállalatok a részleg vagy szervezet információival különböző szervezetek közötti költségeket is feloszthatnak. Ez az API a használat/költségek erőforrás-specifikus nézetét biztosítja.
 
--   [Árlista API díjszabása](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-pricesheet): Szerezze be a alkalmazni sebessége az egyes regisztrálási és a számlázási időszak felbontáson. Használhatja a forgalmi információk és a használat részleteiről és a piactér használati adatokat a várt számla kiszámításának alapjául manuálisan.
+-   [Price Sheet API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-pricesheet): A megadott regisztrációs és számlázási időszakra vonatkozó kérheti le az egyes mérők esetében érvényes díjszabást. Ezekkel a díjadatokkal, valamint a használati adatokkal és a piactér használati adataival manuálisan számíthatja ki a várt számlát.
 
--   [Számlázási időszak API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods): Elszámolási időszakok listájának beolvasása. Az API-t is biztosít olyan tulajdonságot, amely API útvonala a négy adatkészletek Enterprise API, amelyek a projektjükhöz az elszámolási időszakban mutat: BalanceSummary, UsageDetails, piactér-díjak és árlista.
+-   [Billing Periods API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods): Lekérheti a számlázási időszakok listáját. Az API egy olyan tulajdonságot is elérhetővé tesz, amely a számlázási időszakra vonatkozó nagyvállalati API-adatok négy következő halmazának API-útvonalára mutató tulajdonságot biztosít: BalanceSummary, UsageDetails, Marketplace Charges és PriceSheet.
 
--   [Fenntartott példány javaslatok API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation): 7 nap, 30 napig, vagy a virtuálisgép-használati elfogadása után 60 napon tekintse meg, és a egy és a megosztott vásárlási javaslatok. Az API segítségével elemezheti a várt költségmegtakarítást és ajánlott beszerzési összeg. További információkért lásd: [API-k a foglalást az Azure automation](billing-reservation-apis.md).
+-   [Reserved Instance Recommendations API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation): Megtekintheti az elmúlt 7 nap, 30 nap vagy 60 nap virtuálisgép-használati adatait, illetve önálló és közös vásárlásra vonatkozó javaslatokat kaphat. Ezzel az API-val elemezheti a várható költségmegtakarításokat és a javasolt vásárlási összegeket. További információkért lásd [az Azure-foglalás automatizálásához elérhető API-kat](billing-reservation-apis.md).
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-### <a name="whats-the-difference-between-the-enterprise-reporting-apis-and-the-consumption-apis-when-should-i-use-each"></a>Mi a különbség az Enterprise Reporting API-k és a felhasználás API-kat? Mikor érdemes használni az egyes?
-Ezekkel az API-hasonló funkciókat rendelkeznek, és a segítségével választ kaphat a széles körű ugyanazokat a kérdések a számlázási és a cost management területen. De a különböző célközönségek céloznak: 
+### <a name="whats-the-difference-between-the-enterprise-reporting-apis-and-the-consumption-apis-when-should-i-use-each"></a>Mi a különbség a nagyvállalati jelentéskészítő API-k és a használati API-k között? Mikor érdemes ezeket használni?
+Ezek az API-k hasonló funkciókkal rendelkeznek, és ugyanazokat a széles körű kérdéseket válaszolhatják meg a számlázással és a költségkezeléssel kapcsolatban. De különböző közönségeket céloznak meg: 
 
-- Az ügyfelek számára, akik, amely hozzáférést biztosít számukra egyeztetett pénzügyi kötelezettségvállalások és az egyéni díjszabás a Microsoft nagyvállalati szerződések Enterprise Reporting API-kkal érhetők el. Az API-k szükséges egy kulcsot, kérhet le a [Enterprise Portal](https://ea.azure.com). A következő API-k ismertetését lásd: [áttekintése a Reporting API-kkal a vállalati ügyfelek](billing-enterprise-api.md).
+- A nagyvállalati jelentéskészítő API-k olyan ügyfelek számára érhetők el, akik aláírtak egy Nagyvállalati Szerződést a Microsofttal, amely hozzáférést biztosít számukra az egyeztetett pénzügyi kötelezettségvállalásokhoz és az egyéni díjszabáshoz. Az API-khoz szükség van egy kulcsra, amelyet az [Enterprise Portalról](https://ea.azure.com) érhet el. Ezen API-k leírásáért lásd [a nagyvállalati ügyfeleknek készült jelentéskészítő API-k áttekintését](billing-enterprise-api.md).
 
-- Használatalapú API-k néhány kivételtől eltekintve minden ügyfelünk számára elérhető. További információkért lásd: [Azure-használati API – áttekintés](billing-consumption-api-overview.md) és a [Azure Consumption API-referencia](https://docs.microsoft.com/rest/api/consumption/). A megadott API-k javasoljuk a legújabb fejlesztési forgatókönyvre vonatkozó megoldásként. 
+- A használati API-k minden ügyfél számára elérhetők, néhány kivétellel. További információt az [Azure-használati API-k áttekintésében](billing-consumption-api-overview.md) és az [Azure-használati API-k referenciái](https://docs.microsoft.com/rest/api/consumption/) között talál. A megadott API-kat a legújabb fejlesztési forgatókönyvekhez ajánljuk. 
 
-### <a name="whats-the-difference-between-the-usage-details-api-and-the-usage-api"></a>Mi a különbség a használati részletek API és a Usage API-t?
-Ezen API-k alapvetően más adatokat adja meg:
+### <a name="whats-the-difference-between-the-usage-details-api-and-the-usage-api"></a>Mi a különbség a Usage Details API és a Usage API között?
+Ezek az API-k alapvetően eltérő adatokat biztosítanak:
 
-- A [használati részletek API](https://docs.microsoft.com/rest/api/consumption/usagedetails) biztosít Azure mérőszám példányonként használati és információkat. A megadott adatok már átadni a rendszer az Azure-ban mérési költség és volt alkalmazva mellett egyéb lehetséges változások költség:
+- A [Usage Details API](https://docs.microsoft.com/rest/api/consumption/usagedetails) Azure-használati és -költségadatokat nyújt mérőpéldányonként. A megadott adatok már áthaladtak az Azure-beli költségmérő rendszeren, és más lehetséges módosításokkal együtt lettek alkalmazva rájuk a költségek:
 
-   - Az előre fizetett pénzügyi kötelezettségvállalással használatáért fiók módosításai
-   - Használati fenntartásában derítette fel az Azure-fiók módosításai
+   - Az előre kifizetett pénzügyi kötelezettségek használata miatt szükséges módosítások
+   - Az Azure által felfedezett használati eltérések miatt szükséges módosítások
 
-- A [használati API](/previous-versions/azure/reference/mt219003(v=azure.100)) nyers Azure használati adatokat biztosít, mielőtt a rendszer az Azure-ban mérési költség keresztülhalad. Ezek az adatok esetleg nincs bármely korrelációs a használat vagy az akkumulátor lemerült összeget, amely után az Azure díjat a mérési rendszer látható.
+- A [Usage API](/previous-versions/azure/reference/mt219003(v=azure.100)) nyers Azure-használati adatokat nyújt, mielőtt azok áthaladnának az Azure-beli költségmérési rendszeren. Előfordulhat, hogy ezek az adatok nem feleltethetők meg az Azure költségmérő rendszerén áthaladt használati adatokkal vagy költségmennyiségekkel.
 
-### <a name="whats-the-difference-between-the-invoice-api-and-the-usage-details-api"></a>Mi a különbség a számlák API-t és a használati részletek API-t?
-Ezekkel az API-adja meg az adatokat egy másik nézet:
+### <a name="whats-the-difference-between-the-invoice-api-and-the-usage-details-api"></a>Mi a különbség az Invoice API és a Usage Details API között?
+Ezek az API-k ugyanazon adatok különböző nézeteit nyújtják:
 
-- A [számla API](https://docs.microsoft.com/rest/api/billing/invoices) a csak a Web Direct ügyfelei számára. A számla alapján az összesített díjak az egyes mérő havi összesített biztosít. 
+- Az [Invoice API](https://docs.microsoft.com/rest/api/billing/2018-11-01-preview/invoices)-t csak Web Direct-ügyfelek használhatják. A számla havi összesítését biztosítja az egyes mérőtípusok összesített díjai alapján. 
 
-- A [használati részletek API](https://docs.microsoft.com/rest/api/consumption/usagedetails) a használat és költségek rekordok részletes áttekintést nyújt a minden nap. A vállalati, és Web Direct ügyfelei is használható.
+- A [Usage Details API](https://docs.microsoft.com/rest/api/consumption/usagedetails) egyes napok használati/költségrekordjainak részletes nézetét nyújtja. A nagyvállalati és a Web Direct-ügyfelek is használhatják.
 
-### <a name="whats-the-difference-between-the-price-sheet-api-and-the-ratecard-api"></a>Mi a különbség az ár árlista API-t és a RateCard API-t?
-Ezen API-k biztosítanak a hasonló adatkészletek, de különböző célközönségek rendelkezik:
+### <a name="whats-the-difference-between-the-price-sheet-api-and-the-ratecard-api"></a>Mi a különbség a Price Sheet API és a RateCard API között?
+Ezek az API-k hasonló adatokat nyújtanak, de különböző közönségekkel rendelkeznek:
 
-- A [ár lap API](https://docs.microsoft.com/rest/api/consumption/pricesheet) biztosít az egyéni díjszabás, amely a nagyvállalati ügyfelek fiókazonosítóját volt egyeztetve.
+- A [Price Sheet API](https://docs.microsoft.com/rest/api/consumption/pricesheet) a nagyvállalati ügyfelek számára egyeztetett egyéni díjszabást nyújt.
 
-- A [RateCard API](/previous-versions/azure/reference/mt219005(v=azure.100)) biztosít a Web Direct ügyfelei számára, hogy nyilvános vonatkozik.
+- A [RateCard API](/previous-versions/azure/reference/mt219005(v=azure.100)) a Web Direct-ügyfelekre érvényes nyilvános díjszabást nyújtja.
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ az Azure API-k használatával programozott módon juthat az Azure-használat: [Azure Consumption API – áttekintés](billing-consumption-api-overview.md) és [Azure Billing API – áttekintés](billing-usage-rate-card-overview.md).
+- Az Azure használatára vonatkozó programozott elemzések beszerzéséhez szükséges Azure API-k használatával kapcsolatban lásd az [Azure Consumption API áttekintését](billing-consumption-api-overview.md) és [az Azure Billing API áttekintését](billing-usage-rate-card-overview.md).
 
-- Hasonlítsa össze a számla a részletes napi használatot részletező fájl és a költségkezelési jelentések az Azure Portalon, tekintse meg [Microsoft Azure-hoz kapcsolódó számlák magyarázata](billing-understand-your-bill.md).
+- Az Azure Portalon a számla és a részletes napi használati adatok fájljának, illetve a költségkezelési jelentések összehasonlításához lásd a [Microsoft Azure-elszámolások értelmezését](billing-understand-your-bill.md).
 
 - Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).

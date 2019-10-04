@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: e4d9aeb527461cc7292235fef1de0abdfa4242bd
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
-ms.translationtype: HT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60148917"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60311368"
 ---
 # <a name="add-tags-to-a-lab-in-azure-devtest-labs"></a>Címkék hozzáadása Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet
 

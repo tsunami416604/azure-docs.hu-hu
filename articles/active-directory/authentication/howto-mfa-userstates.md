@@ -1,6 +1,6 @@
 ---
-title: Az Azure multi-factor Authentication felhasználói állapotok – Azure Active Directory
-description: Ismerje meg a felhasználói állapotok az Azure multi-factor Authentication hitelesítéshez.
+title: Azure Multi-Factor Authentication felhasználói állapotok – Azure Active Directory
+description: Ismerkedjen meg az Azure Multi-Factor Authentication felhasználói állapotával.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,93 +11,93 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d5a196af8ee6a7d41833185136a76255be4082a
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: c0c941ec5010b6f9c35e81fdbcacd2093724eb21
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371747"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70162352"
 ---
-# <a name="how-to-require-two-step-verification-for-a-user"></a>Egy felhasználó kétlépéses ellenőrzést igénylése
+# <a name="how-to-require-two-step-verification-for-a-user"></a>Egy felhasználó kétlépéses ellenőrzésének megkövetelése
 
-Egy globális rendszergazdai fiók használata szükséges, amelyek a kétlépéses ellenőrzés, hogy a két módszer valamelyikét hajthatja végre. Az első lehetőség, hogy minden felhasználó számára az Azure multi-factor Authentication (MFA) engedélyezéséhez. Amikor a felhasználók külön-külön vannak engedélyezve, a kétlépéses ellenőrzés minden alkalommal, amikor bejelentkeznek az általuk (néhány kivételtől eltekintve, például amikor bejelentkeznek a megbízható IP-címek, vagy ha a _megjegyzett eszközök_ funkció be van kapcsolva). A második lehetőség, hogy bizonyos körülmények között a kétlépéses ellenőrzést igénylő feltételes hozzáférési szabályzat beállítása.
+A kétlépéses ellenőrzés megkövetelésének két módszere közül választhat: mindkettőt globális rendszergazdai fiókkal kell végrehajtania. Az első lehetőség az, hogy minden felhasználó számára engedélyezze az Azure Multi-Factor Authentication (MFA) használatát. Ha a felhasználók külön engedélyezve vannak, minden bejelentkezéskor kétlépéses ellenőrzést hajtanak végre (bizonyos kivételekkel, például amikor bejelentkeznek a megbízható IP-címekről, vagy ha a megjegyezett _eszközök_ funkció be van kapcsolva). A második lehetőség egy olyan feltételes hozzáférési szabályzat beállítása, amely bizonyos körülmények között kétlépéses ellenőrzést igényel.
 
 > [!TIP]
-> Válasszon egyet ezek a metódusok szükséges a kétlépéses ellenőrzést, nem mindkettőt. Bármely feltételes hozzáférési szabályzatokat az Azure multi-factor Authentication engedélyezése a felhasználó felülbírálja.
+> Az Azure-Multi-Factor Authentication feltételes hozzáférési szabályzatok használatával történő engedélyezése az ajánlott módszer. A felhasználói állapotok módosítása már nem ajánlott, kivéve, ha a licencek nem tartalmazzák a feltételes hozzáférést, mert a felhasználóknak minden bejelentkezéskor a többtényezős hitelesítést kell végezniük.
 
-## <a name="choose-how-to-enable"></a>Válassza ki a engedélyezése
+## <a name="choose-how-to-enable"></a>Az engedélyezés módjának kiválasztása
 
-**Engedélyezve van a felhasználói állapot módosításával** – Ez a hagyományos módszer a kétlépéses ellenőrzést igénylő, és a cikkben leírtak szerint. Mind a felhőbeli Azure MFA és az Azure MFA-kiszolgáló működik. Ezzel a módszerrel megköveteli a felhasználóktól a kétlépéses ellenőrzés végrehajtására **minden alkalommal, amikor** jelentkezzen be, és felülírja a feltételes hozzáférési szabályzatokat. Ez a feltételes hozzáférési funkciók nem tartoznak azok számára, vagy az Office 365-höz, vagy a Microsoft 365 vállalati licenccel rendelkező használt módszer.
+**Engedélyezve a felhasználói állapot módosításával** – ez a hagyományos módszer a kétlépéses ellenőrzés megköveteléséhez, és a jelen cikk tárgyalja. A felhőben és az Azure MFA-kiszolgálón egyaránt működik az Azure MFA-val. Ennek a módszernek a használatával a felhasználóknak kétlépéses ellenőrzést kell végezniük **minden alkalommal, amikor** bejelentkeznek, és felülbírálják a feltételes hozzáférési szabályzatokat.
 
-Engedélyezte a feltételes hozzáférési szabályzat – Ez a legrugalmasabb, hogy engedélyezze a kétlépéses ellenőrzést, a felhasználók számára. Engedélyezése csak a feltételes hozzáférési szabályzat segítségével az Azure multi-factor Authentication a felhőben működik, és az Azure AD prémium szintű szolgáltatása. Ez a módszer további információ található [üzembe helyezése a felhőalapú Azure multi-factor Authentication](howto-mfa-getstarted.md).
+A feltételes hozzáférési házirend által engedélyezett – ez a legrugalmasabb módszer a felhasználók kétlépéses ellenőrzésének engedélyezéséhez. A feltételes hozzáférési szabályzat használatának engedélyezése csak az Azure MFA-ban működik a felhőben, és az Azure AD prémium funkciója. Az ezzel a módszerrel kapcsolatos további információkért tekintse meg a [felhőalapú Azure-multi-Factor Authentication üzembe helyezése című](howto-mfa-getstarted.md)témakört.
 
-Engedélyezve van az Azure AD Identity Protection - ezt a módszert használja az Azure AD Identity Protection kockázati szabályzat minden felhőalapú alkalmazásra bejelentkezési kockázat alapján a kétlépéses ellenőrzés megkövetelése. Ez a metódus szükséges, Azure Active Directory P2 licencelési. Ez a módszer további információ található [Azure Active Directory Identity Protection](../identity-protection/howto-sign-in-risk-policy.md)
+Azure AD Identity Protection által engedélyezett – ez a módszer a Azure AD Identity Protection kockázati házirendet használja a kétlépéses ellenőrzés megkövetelésére, csak a bejelentkezési kockázat alapján minden felhőalapú alkalmazás esetében. Ehhez a módszerhez Azure Active Directory P2 licencelés szükséges. A módszerről további információ található [Azure Active Directory Identity Protection](../identity-protection/howto-sign-in-risk-policy.md)
 
 > [!Note]
-> További információ a licencekkel és a díjszabás találhatók a [Azure ad-ben](https://azure.microsoft.com/pricing/details/active-directory/
-) és [multi-factor Authentication](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) díjszabási lapjait.
+> A licencekkel és a díjszabással kapcsolatos további információkért tekintse meg](https://azure.microsoft.com/pricing/details/active-directory/
+) az Azure ad és a [ [multi-Factor Authentication](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) díjszabási oldalát.
 
-## <a name="enable-azure-mfa-by-changing-user-state"></a>Az Azure MFA engedélyezése a felhasználói állapot módosítása
+## <a name="enable-azure-mfa-by-changing-user-state"></a>Az Azure MFA engedélyezése a felhasználói állapot módosításával
 
-Felhasználói fiókok az Azure multi-factor Authentication az alábbi három jól elkülöníthető állapottal rendelkeznek:
+Az Azure Multi-Factor Authentication felhasználói fiókjai a következő három különböző állapottal rendelkeznek:
 
-| status | Leírás | A böngészőn kívüli alkalmazások érintett | Az érintett alkalmazások | Modern hitelesítés nélküli érintett |
+| State | Leírás | Érintett nem böngészőbeli alkalmazások | Érintett böngészőalapú alkalmazások | A modern hitelesítés érintett |
 |:---:|:---:|:---:|:--:|:--:|
 | Letiltva |Az Azure MFA-ban nem regisztrált új felhasználó alapértelmezett állapota. |Nem |Nem |Nem |
-| Engedélyezve |A felhasználó az Azure MFA-ban regisztrált, de nincs regisztrálva. Amikor legközelebb bejelentkeznek a regisztrációs kapnak. |Nem.  Ezek továbbra is használhatók, amíg a regisztrációs folyamat befejezése. | Igen. A munkamenet lejárata után az Azure MFA-regisztráció szükség.| Igen. A hozzáférési jogkivonat lejárata után az Azure MFA-regisztráció szükség. |
-| Kényszerítve |A felhasználó előfizetett, és az Azure MFA-hoz a regisztrációs folyamat befejeződött. |Igen. Alkalmazások alkalmazásjelszavakra. |Igen. Az Azure MFA szükség a bejelentkezéskor. | Igen. Az Azure MFA szükség a bejelentkezéskor. |
+| Enabled |A felhasználó regisztrálva lett az Azure MFA-ban, de nincs regisztrálva. A következő bejelentkezés alkalmával a rendszer felszólítja a regisztrálásra. |Nem.  Továbbra is működnek, amíg a regisztrációs folyamat be nem fejeződik. | Igen. A munkamenet lejárata után az Azure MFA-regisztrációra van szükség.| Igen. A hozzáférési jogkivonat lejárta után az Azure MFA-regisztrációra van szükség. |
+| Érvényben van |A felhasználó regisztrálva lett, és befejezte az Azure MFA regisztrációs folyamatát. |Igen. Az alkalmazásokhoz alkalmazások jelszava szükséges. |Igen. Bejelentkezéskor az Azure MFA szükséges. | Igen. Bejelentkezéskor az Azure MFA szükséges. |
 
-A felhasználói állapot tükrözi, hogy egy rendszergazda regisztrálta őket az Azure MFA-ban, és hogy azokat tölteni a regisztrációs folyamat.
+A felhasználó állapota azt jelzi, hogy egy rendszergazda regisztrálta-e őket az Azure MFA-ban, és hogy elvégezték-e a regisztrációs folyamatot.
 
-Minden felhasználó kezd *letiltott*. Ha regisztrálja az Azure MFA felhasználói, állapotuk változik *engedélyezve*. Ha az engedélyezett felhasználók jelentkezzen be, és a regisztráció befejezéséhez, állapotuk változik *kényszerített*.  
+Az összes felhasználó *le van tiltva*. Amikor felhasználókat regisztrál az Azure MFA-ban, az állapotuk *engedélyezve*értékre vált. Ha az engedélyezett felhasználók bejelentkeznek, és elvégzik a regisztrációs folyamatot, az állapotuk kényszerítve értékűre vált.  
 
-### <a name="view-the-status-for-a-user"></a>A felhasználó állapotának megtekintése
+### <a name="view-the-status-for-a-user"></a>Felhasználó állapotának megtekintése
 
-A következő lépéseket követve az oldalt, ahol megtekintheti és kezelheti a felhasználói állapotok:
+A következő lépésekkel érheti el az oldalt, amelyen megtekintheti és kezelheti a felhasználói állapotokat:
 
 1. Jelentkezzen be az [Azure Portal](https://portal.azure.com) felületére rendszergazdaként.
-2. Lépjen a **Azure Active Directory** > **felhasználók és csoportok** > **minden felhasználó**.
-3. Válassza ki **multi-factor Authentication**.
-   ![Válassza ki a multi-factor Authentication szolgáltatás](./media/howto-mfa-userstates/selectmfa.png)
-4. Megnyílik egy új lap, amely a felhasználói állapotok jeleníti meg.
-   ![a multi-factor authentication felhasználói állapot – képernyőkép](./media/howto-mfa-userstates/userstate1.png)
+2. Ugrás a **Azure Active Directory** > **felhasználók és csoportok** > **minden felhasználó**számára.
+3. Válassza a **multi-Factor Authentication**lehetőséget.
+   ![Multi-Factor Authentication kiválasztása](./media/howto-mfa-userstates/selectmfa.png)
+4. Megnyílik egy új oldal, amely megjeleníti a felhasználói állapotokat.
+   ![a multi-Factor Authentication felhasználói állapota – képernyőfelvétel](./media/howto-mfa-userstates/userstate1.png)
 
-### <a name="change-the-status-for-a-user"></a>A felhasználó állapotának módosítása
+### <a name="change-the-status-for-a-user"></a>Felhasználó állapotának módosítása
 
-1. A fenti lépések segítségével az Azure multi-factor Authentication beszerzése **felhasználók** lapot.
-2. Keresse meg a felhasználót, az Azure MFA számára engedélyezni kívánja. Előfordulhat, hogy módosítani szeretné a nézet tetején.
-   ![Válassza ki a felhasználót a felhasználók lapról állapotának módosítása](./media/howto-mfa-userstates/enable1.png)
-3. Ellenőrizze a név melletti mezőbe.
-4. A jobb oldali alatt **Gyorsműveletek**, válassza a **engedélyezése** vagy **letiltása**.
-   ![A gyors lépésben menü engedélyezése kattintva kijelölt felhasználó engedélyezése](./media/howto-mfa-userstates/user1.png)
+1. Az előző lépésekkel érheti el az Azure Multi-Factor Authentication- **felhasználók** lapot.
+2. Keresse meg azt a felhasználót, aki számára engedélyezni szeretné az Azure MFA-t. Előfordulhat, hogy felül kell változtatnia a nézetet.
+   ![Válassza ki a felhasználót az állapot módosításához a felhasználók lapon](./media/howto-mfa-userstates/enable1.png)
+3. Jelölje be a neve melletti jelölőnégyzetet.
+4. A jobb oldalon a **gyors lépések**területen válassza az **Engedélyezés** vagy a **Letiltás**lehetőséget.
+   ![A gyors lépések menüben az engedélyezés elemre kattintva engedélyezheti a kiválasztott felhasználót.](./media/howto-mfa-userstates/user1.png)
 
    > [!TIP]
-   > *Engedélyezett* felhasználók automatikusan át *kényszerített* amikor regisztrálja az Azure MFA-hoz. A felhasználói állapot módosítása nem manuálisan tegye *kényszerített*.
+   > Az *engedélyezett* felhasználók automatikusan *érvénybe* lettek állítva, amikor regisztrálják magukat az Azure MFA-ban. Ne módosítsa manuálisan a felhasználói állapotot *kényszerített*értékre.
 
-5. Erősítse meg választását a megjelenő előugró ablakban.
+5. Erősítse meg a kijelölést a megnyíló előugró ablakban.
 
-Miután engedélyezte a felhasználókat, értesítse őket e-mailen keresztül. Mondja el neki, hogy azok regisztrálása a következő bejelentkezéskor felkéri. Emellett a szervezet a böngészőn kívüli alkalmazásokat, amelyek nem támogatják a modern hitelesítést használja, ha szükségük alkalmazásjelszavakat. Mutató hivatkozást is belefoglalhatja a [végfelhasználói útmutató az Azure MFA](../user-help/multi-factor-authentication-end-user.md) , amelyekkel a kezdéshez.
+A felhasználók engedélyezése után értesítse őket e-mailben. Mondja el nekik, hogy a következő bejelentkezés alkalmával a rendszer kérni fogja a regisztrálást. Továbbá, ha a szervezete nem böngészőbeli alkalmazásokat használ, amelyek nem támogatják a modern hitelesítést, létre kell hozniuk az alkalmazáshoz tartozó jelszavakat. Emellett az [Azure MFA végfelhasználói útmutatójának](../user-help/multi-factor-authentication-end-user.md) hivatkozását is használhatja, amely megkönnyíti az első lépéseket.
 
 ### <a name="use-powershell"></a>A PowerShell használata
 
-A felhasználói állapot módosítása használatával [az Azure AD PowerShell](/powershell/azure/overview), módosítsa `$st.State`. Nincsenek három lehetséges állapota:
+Ha módosítani szeretné a felhasználói állapotot az [Azure ad PowerShell](/powershell/azure/overview)használatával `$st.State`, módosítsa a következőt:. Három lehetséges állapot létezik:
 
-* Engedélyezve
+* Enabled
 * Kényszerítve
 * Letiltva  
 
-Ne helyezze át máshová felhasználók közvetlenül a *kényszerített* állapota. Ha így tesz, nem böngészőalapú alkalmazások tovább működni, mert a felhasználó nem ment keresztül az Azure MFA-regisztráció, és kapott egy [alkalmazásjelszót](howto-mfa-mfasettings.md#app-passwords).
+Ne helyezze át a felhasználókat közvetlenül a kényszerített állapotba. Ha így tesz, a nem böngészőalapú alkalmazások nem működnek, mert a felhasználó nem ment át az Azure MFA-regisztrációval, és nem kapott meg egy [alkalmazás jelszavát](howto-mfa-mfasettings.md#app-passwords).
 
-A modul telepítéséhez először használatával:
+Először telepítse a modult a használatával:
 
    ```PowerShell
    Install-Module MSOnline
    ```
 
 > [!TIP]
-> Ne felejtse el először létesítsen **Connect-MsolService**
+> Ne felejtsen el először kapcsolódni a **MsolService**
 
-Ebben a példában PowerShell-parancsfájl lehetővé teszi, hogy az MFA az egyes felhasználók számára:
+Ebben a példában a PowerShell-parancsfájl lehetővé teszi az MFA használatát az egyes felhasználók számára:
 
    ```PowerShell
    Import-Module MSOnline
@@ -108,7 +108,7 @@ Ebben a példában PowerShell-parancsfájl lehetővé teszi, hogy az MFA az egye
    Set-MsolUser -UserPrincipalName bsimon@contoso.com -StrongAuthenticationRequirements $sta
    ```
 
-PowerShell használata a jó választás, ha tömeges feloldása szükséges engedélyezése a felhasználók. Tegyük fel a következő parancsfájl végighalad a felhasználók listáját, és lehetővé teszi, hogy a többtényezős hitelesítés a fiókjuk:
+A PowerShell használata jó megoldás, ha a felhasználók tömeges engedélyezésére van szükség. Például a következő szkript hurkokat mutat be a felhasználók listáján, és engedélyezi az MFA-t a fiókjaik számára:
 
    ```PowerShell
    $users = "bsimon@contoso.com","jsmith@contoso.com","ljacobson@contoso.com"
@@ -122,20 +122,83 @@ PowerShell használata a jó választás, ha tömeges feloldása szükséges eng
    }
    ```
 
-Többtényezős hitelesítés letiltása, használja ezt a parancsfájlt:
+Az MFA letiltásához használja a következő parancsfájlt:
 
    ```PowerShell
-   Get-MsolUser -UserPrincipalName user@domain.com | Set-MsolUser -StrongAuthenticationRequirements @()
+   Get-MsolUser -UserPrincipalName user@domain.com | Set-MsolUser -StrongAuthenticationMethods @()
    ```
 
-amely is is csonkolva:
+a következőket is lerövidítheti:
 
    ```PowerShell
    Set-MsolUser -UserPrincipalName user@domain.com -StrongAuthenticationRequirements @()
    ```
 
+### <a name="convert-users-from-per-user-mfa-to-conditional-access-based-mfa"></a>Felhasználók konvertálása felhasználónkénti MFA-ből feltételes hozzáférésen alapuló MFA-ra
+
+A következő PowerShell segítséget nyújt a feltételes hozzáférésű Azure-Multi-Factor Authentication átalakításához.
+
+Futtassa ezt a PowerShellt egy ISE-ablakban, vagy mentse a következőt:. PS1 fájl helyi futtatásához.
+
+```PowerShell
+# Sets the MFA requirement state
+function Set-MfaState {
+
+    [CmdletBinding()]
+    param(
+        [Parameter(ValueFromPipelineByPropertyName=$True)]
+        $ObjectId,
+        [Parameter(ValueFromPipelineByPropertyName=$True)]
+        $UserPrincipalName,
+        [ValidateSet("Disabled","Enabled","Enforced")]
+        $State
+    )
+
+    Process {
+        Write-Verbose ("Setting MFA state for user '{0}' to '{1}'." -f $ObjectId, $State)
+        $Requirements = @()
+        if ($State -ne "Disabled") {
+            $Requirement =
+                [Microsoft.Online.Administration.StrongAuthenticationRequirement]::new()
+            $Requirement.RelyingParty = "*"
+            $Requirement.State = $State
+            $Requirements += $Requirement
+        }
+
+        Set-MsolUser -ObjectId $ObjectId -UserPrincipalName $UserPrincipalName `
+                     -StrongAuthenticationRequirements $Requirements
+    }
+}
+
+# Wrapper to disable MFA with the option to keep the MFA methods (to avoid having to proof-up again later)
+function Disable-Mfa {
+
+    [CmdletBinding()]
+    param(
+        [Parameter(ValueFromPipeline=$True)]
+        $User,
+        [switch] $KeepMethods
+    )
+
+    Process {
+
+        Write-Verbose ("Disabling MFA for user '{0}'" -f $User.UserPrincipalName)
+        $User | Set-MfaState -State Disabled
+
+        if ($KeepMethods) {
+            # Restore the MFA methods which got cleared when disabling MFA
+            Set-MsolUser -ObjectId $User.ObjectId `
+                         -StrongAuthenticationMethods $User.StrongAuthenticationMethods
+        }
+    }
+}
+
+# Disable MFA for all users, keeping their MFA methods intact
+Get-MsolUser -All | Disable-MFA -KeepMethods
+```
+
 ## <a name="next-steps"></a>További lépések
 
-* Miért lett egy felhasználó kéri vagy a rendszer nem kéri hajthatok végre MFA? Című témakör [az Azure AD bejelentkezési jelentések a jelentések az Azure multi-factor Authentication dokumentum](howto-mfa-reporting.md#azure-ad-sign-ins-report).
-* További beállítások, például a megbízható IP-címek, egyedi Hangüzenetek és visszaélési riasztás küldésének, lásd: a cikk [konfigurálása az Azure multi-factor Authentication szolgáltatás beállításainak](howto-mfa-mfasettings.md)
-* Felhasználói beállítások kezelése az Azure multi-factor Authentication a cikkben található információ [az Azure multi-factor Authentication a felhőben a felhasználói beállítások kezelése](howto-mfa-userdevicesettings.md)
+* Miért volt a felhasználó, vagy a rendszer nem kéri az MFA elvégzésére? Tekintse [meg az Azure ad-beli bejelentkezések jelentését az Azure-multi-Factor Authentication dokumentum jelentéseiben](howto-mfa-reporting.md#azure-ad-sign-ins-report).
+* További beállítások, például a megbízható IP-címek, az egyéni hangüzenetek és a csalási riasztások konfigurálásához tekintse meg az [Azure multi-Factor Authentication beállításainak konfigurálása](howto-mfa-mfasettings.md) című cikket.
+* Az Azure Multi-Factor Authentication felhasználói beállításainak kezelésével kapcsolatos információkért tekintse meg a [felhasználói beállítások kezelése az azure multi-Factor Authentication](howto-mfa-userdevicesettings.md) a felhőben című cikket.

@@ -1,121 +1,120 @@
 ---
-title: Alkalmazások teljesítményének – gyakori kérdések – Azure App Service-ben |} A Microsoft Docs
-description: Az Azure App Service Web Apps funkcióját a rendelkezésre állási, teljesítmény és alkalmazásproblémák kapcsolatos gyakori kérdésekre választ kaphat.
+title: Alkalmazások teljesítményével kapcsolatos gyakori kérdések – Azure App Service | Microsoft Docs
+description: A Azure App Service Web Apps funkciójában a rendelkezésre állással, teljesítménnyel és alkalmazásokkal kapcsolatos problémákkal kapcsolatos gyakori kérdésekre kaphat válaszokat.
 services: app-service\web
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: ae59f54de9c02bfc4e538dd10c809ba398d599ee
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: 9cd529424a022edfa64f9053a53cbbe9f756637e
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565958"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122073"
 ---
+# <a name="application-performance-faqs-for-web-apps-in-azure"></a>Az Azure-Web Apps alkalmazások teljesítményével kapcsolatos gyakori kérdések
+
 > [!NOTE]
-> Néhány az alábbi irányelvek csak működnek a Windows vagy Linux App Services. Ha például Linux App Services alapértelmezés szerint 64 bites módban fusson.
+> Az alábbi irányelvek némelyike csak Windows vagy Linux App Services esetén működik. A Linux App Services például alapértelmezés szerint 64 bites módban fut.
 >
 
-# <a name="application-performance-faqs-for-web-apps-in-azure"></a>Alkalmazások teljesítményének – gyakori kérdések az Azure Web Apps esetében
-
-Ez a cikk rendelkezik adott válaszok a gyakori kérdések (GYIK) kapcsolatos alkalmazásteljesítménnyel kapcsolatos problémák esetében a [Azure App Service Web Apps funkciójával](https://azure.microsoft.com/services/app-service/web/).
+Ez a cikk válaszokat tartalmaz a [Azure App Service Web Apps funkciójának](https://azure.microsoft.com/services/app-service/web/)alkalmazás-teljesítménnyel kapcsolatos problémáira vonatkozó gyakori kérdésekre (GYIK).
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="why-is-my-app-slow"></a>Miért érdemes az alkalmazásom lassú?
+## <a name="why-is-my-app-slow"></a>Miért lassú az alkalmazásom?
 
-Számos tényező lehet, hogy hozzájárul a teljesítmény az alkalmazás. Részletes hibaelhárítási lépéseket: [hibaelhárítás lassú WebApp teljesítményének](troubleshoot-performance-degradation.md).
+Több tényező is hozzájárulhat a lassú alkalmazások teljesítményéhez. A részletes hibaelhárítási lépéseket lásd: [lassú webalkalmazások teljesítményének hibaelhárítása](troubleshoot-performance-degradation.md).
 
-## <a name="how-do-i-troubleshoot-a-high-cpu-consumption-scenario"></a>Hogyan háríthatom el a magas CPU-használat a forgatókönyv?
+## <a name="how-do-i-troubleshoot-a-high-cpu-consumption-scenario"></a>Hogyan a nagy CPU-fogyasztási forgatókönyvet?
 
-Az egyes magas CPU-használati forgatókönyvek az alkalmazás valóban szükség lehet több számítási erőforrást. Ebben az esetben érdemes lehet magasabb szolgáltatási szintre skálázást, így az alkalmazás megjeleníti az összes szükséges erőforrást. Más, magas CPU-használat oka lehet egy rossz hurkot, vagy egy kódolási gyakorlatot. Első kezdeményezi megnövekedett processzorhasználatot betekintést az egy kétlépéses folyamat. Először hozzon létre egy folyamatot memóriakép, és a folyamat memóriakép majd elemezni. További információkért lásd: [rögzítésével és elemzésével a magas CPU-használat, a Web Apps memóriaképfájl](https://blogs.msdn.microsoft.com/asiatech/2016/01/20/how-to-capture-dump-when-intermittent-high-cpu-happens-on-azure-web-app/).
+Bizonyos nagy CPU-fogyasztási helyzetekben előfordulhat, hogy az alkalmazásnak több számítási erőforrásra van szüksége. Ebben az esetben érdemes lehet magasabb szolgáltatási szintet méretezni, hogy az alkalmazás megkapja az összes szükséges erőforrást. Más időpontokban a nagy CPU-felhasználás oka lehet rossz hurok vagy kódolási gyakorlat. Betekintést nyerhet a megnövelt CPU-fogyasztás indítására. Ez egy kétrészes folyamat. Először hozzon létre egy folyamat-memóriaképet, majd elemezze a folyamat memóriaképét. További információ: [a memóriakép rögzítése és elemzése a nagy CPU-fogyasztáshoz Web Apps](https://blogs.msdn.microsoft.com/asiatech/2016/01/20/how-to-capture-dump-when-intermittent-high-cpu-happens-on-azure-web-app/).
 
-## <a name="how-do-i-troubleshoot-a-high-memory-consumption-scenario"></a>Hogyan háríthatom el a magas memória-felhasználás forgatókönyv?
+## <a name="how-do-i-troubleshoot-a-high-memory-consumption-scenario"></a>Hogyan a nagy memória-felhasználású forgatókönyvek hibakeresését?
 
-Magas memória-felhasználás bizonyos esetekben az alkalmazás valóban szükség lehet több számítási erőforrást. Ebben az esetben érdemes lehet magasabb szolgáltatási szintre skálázást, így az alkalmazás megjeleníti az összes szükséges erőforrást. A többi időszakban a kódot tartalmaz hibát okozhat memóriavesztés. A kódolási gyakorlatot is növelheti a memóriát. Első kezdeményezi használat egy kétlépéses folyamat: magas memória betekintést. Először hozzon létre egy folyamatot memóriakép, és a folyamat memóriakép majd elemezni. Az Azure Site bővítmény katalógus összeomlási diagnosztikai hatékonyan is el tudja végezni mind ezeket a lépéseket. További információkért lásd: [rögzítésével és elemzésével az időszakos nagy memória memóriaképfájlt a Web Apps](https://blogs.msdn.microsoft.com/asiatech/2016/02/02/how-to-capture-and-analyze-dump-for-intermittent-high-memory-on-azure-web-app/).
+Néhány nagy mennyiségű memóriát használó alkalmazás esetében előfordulhat, hogy alkalmazása valóban több számítási erőforrást igényel. Ebben az esetben érdemes lehet magasabb szolgáltatási szintet méretezni, hogy az alkalmazás megkapja az összes szükséges erőforrást. Máskor a kódban szereplő hiba okozhatja a memória szivárgását. A kódolási gyakorlat A memóriahasználat növelését is növelheti. Betekintést nyerhet a nagy memória-használat aktiválására. Ez egy kétrészes folyamat. Először hozzon létre egy folyamat-memóriaképet, majd elemezze a folyamat memóriaképét. Az Azure site Extension Gallery összeomlás-diagnosztizálása hatékonyan hajthatja végre ezeket a lépéseket. További információ: a [memóriakép rögzítése és elemzése a Web Apps időszakos nagy memóriához](https://blogs.msdn.microsoft.com/asiatech/2016/02/02/how-to-capture-and-analyze-dump-for-intermittent-high-memory-on-azure-web-app/).
 
-## <a name="how-do-i-automate-app-service-web-apps-by-using-powershell"></a>Hogyan automatizálható az App Service web apps PowerShell-lel?
+## <a name="how-do-i-automate-app-service-web-apps-by-using-powershell"></a>Hogyan automatizálja App Service webalkalmazásokat a PowerShell használatával?
 
-PowerShell-parancsmagok segítségével kezeli és tartja karban az App Service web apps szolgáltatásban. Az ebben a blogbejegyzésben [automatizálása a PowerShell-lel az Azure App Service-ben üzemeltetett webalkalmazások](https://blogs.msdn.microsoft.com/puneetgupta/2016/03/21/automating-webapps-hosted-in-azure-app-service-through-powershell-arm-way/), megtudhatja, hogyan automatizálhatja a gyakori feladatokat az Azure Resource Manager-alapú PowerShell-parancsmagok használatával. A blogbejegyzést a web apps különböző felügyeleti feladatainak mintakód is tartalmaz. Leírások és minden App Service web apps parancsmagjainak szintaxisa: [Az.Websites](/powershell/module/az.websites).
+A PowerShell-parancsmagok használatával felügyelheti és karbantarthatja App Service webalkalmazásait. A blogbejegyzésben a [PowerShell használatával automatizálható webalkalmazások automatizálása Azure app Service](https://blogs.msdn.microsoft.com/puneetgupta/2016/03/21/automating-webapps-hosted-in-azure-app-service-through-powershell-arm-way/)a Azure Resource Manager-alapú PowerShell-parancsmagok használata a gyakori feladatok automatizálásához. A blogbejegyzés a webalkalmazások különböző felügyeleti feladataihoz is tartalmaz mintakód-kódot. Az összes App Service Web Apps-parancsmag leírását és szintaxisát lásd: [az. websites](/powershell/module/az.websites).
 
-## <a name="how-do-i-view-my-web-apps-event-logs"></a>Hogyan tekinthetem meg a webes alkalmazás eseménynaplóit?
+## <a name="how-do-i-view-my-web-apps-event-logs"></a>Hogyan megtekintheti a webalkalmazásom eseménynaplóit?
 
-A webes alkalmazás eseménynaplóit megtekintése:
+A webalkalmazás eseménynaplóinak megtekintése:
 
-1. Jelentkezzen be a [Kudu-webhely](https://*yourwebsitename*.scm.azurewebsites.net).
-2. Válassza a menüben **hibakeresési konzolt** > **CMD**.
-3. Válassza ki a **LogFiles** mappát.
-4. Az eseménynaplók megtekintésére, kattintson a ceruza ikonra a **eventlog.xml**.
-5. A naplók letöltéséhez futtassa a PowerShell-parancsmag `Save-AzureWebSiteLog -Name webappname`.
+1. Jelentkezzen be a [kudu webhelyére](https://*yourwebsitename*.scm.azurewebsites.net).
+2. A menüben válassza a **Debug konzol** > **cmd**elemet.
+3. Válassza a **naplófájlok** mappát.
+4. Az eseménynaplók megtekintéséhez válassza az **Eseménynapló. XML**melletti ceruza ikont.
+5. A naplók letöltéséhez futtassa a PowerShell-parancsmagot `Save-AzureWebSiteLog -Name webappname`.
 
-## <a name="how-do-i-capture-a-user-mode-memory-dump-of-my-web-app"></a>Hogyan rögzítése a saját webes alkalmazás a felhasználói módú memóriakép?
+## <a name="how-do-i-capture-a-user-mode-memory-dump-of-my-web-app"></a>Hogyan a webalkalmazás felhasználói módú memóriaképének rögzítése?
 
-A webalkalmazás egy felhasználói módú memóriakép rögzítésére:
+A webalkalmazás felhasználói módú memóriaképének rögzítése:
 
-1. Jelentkezzen be a [Kudu-webhely](https://*yourwebsitename*.scm.azurewebsites.net).
-2. Válassza ki a **Process Explorer** menü.
-3. Kattintson a jobb gombbal a **w3wp.exe** vagy a webjobs-feladat folyamatban.
-4. Válassza ki **memóriakép letöltése** > **teljes memóriakép**.
+1. Jelentkezzen be a [kudu webhelyére](https://*yourwebsitename*.scm.azurewebsites.net).
+2. Válassza a **Process Explorer** menüt.
+3. Kattintson a jobb gombbal a **W3wp. exe** folyamatra vagy a webjobs folyamatra.
+4. Válassza a memóriakép **letöltése** > **teljes memóriakép**lehetőséget.
 
-## <a name="how-do-i-view-process-level-info-for-my-web-app"></a>Hogyan tudom megtekinteni az folyamatszintű adatait saját webalkalmazás?
+## <a name="how-do-i-view-process-level-info-for-my-web-app"></a>Hogyan megtekintheti a webalkalmazás folyamat-szintű adatait?
 
-A webalkalmazás folyamatszintű megtekintésére két lehetősége van:
+A webalkalmazáshoz tartozó folyamat-szintű információk megtekintésére két lehetőség áll rendelkezésre:
 
 *   Az Azure Portalon:
-    1. Nyissa meg a **Process Explorer** a webalkalmazás számára.
-    2. A részletek megtekintéséhez válassza ki a **w3wp.exe** folyamat.
-*   A Kudu konzol:
-    1. Jelentkezzen be a [Kudu-webhely](https://*yourwebsitename*.scm.azurewebsites.net).
-    2. Válassza ki a **Process Explorer** menü.
-    3. Az a **w3wp.exe** folyamat válassza **tulajdonságok**.
+    1. Nyissa meg a webalkalmazáshoz tartozó **Process Explorert** .
+    2. A részletek megtekintéséhez válassza ki a **W3wp. exe** folyamatot.
+*   A kudu-konzolon:
+    1. Jelentkezzen be a [kudu webhelyére](https://*yourwebsitename*.scm.azurewebsites.net).
+    2. Válassza a **Process Explorer** menüt.
+    3. A **W3wp. exe** folyamatnál válassza a **Tulajdonságok**lehetőséget.
 
-## <a name="when-i-browse-to-my-app-i-see-error-403---this-web-app-is-stopped-how-do-i-resolve-this"></a>Ha szeretnék saját alkalmazás megkeresése tallózással, látom "403-as hiba – Ez a webalkalmazás leállt." Hogyan oldhatom fel ez?
+## <a name="when-i-browse-to-my-app-i-see-error-403---this-web-app-is-stopped-how-do-i-resolve-this"></a>Amikor megkeresem az alkalmazást, "hiba 403 – ez a webalkalmazás leállt" hibaüzenet jelenik meg. Hogyan megoldja ezt?
 
-Három feltétel ezt a hibát okozhatják:
+A következő három feltétel okozhatja ezt a hibát:
 
 * A webalkalmazás elérte a számlázási korlátot, és a webhely le van tiltva.
 * A webalkalmazás le lett állítva a portálon.
-* A webalkalmazás elérte a alkalmazni lehet egy ingyenes, vagy megosztott scale service-csomag erőforráskvóta határát.
+* A webalkalmazás elérte az adott erőforrás-kvótára vonatkozó korlátot, amely az ingyenes vagy a megosztott méretezési szolgáltatási csomagra is érvényes lehet.
 
-Tekintse meg, mi okozza a hibát, és a probléma megoldásához, kövesse a lépéseket a [Web Apps: "403-as hiba – Ez a webalkalmazás leállt"](https://blogs.msdn.microsoft.com/waws/2016/01/05/azure-web-apps-error-403-this-web-app-is-stopped/).
+Ha szeretné megtekinteni, hogy mi okozza a hibát, és hogyan oldja meg a [problémát, kövesse a Web Apps alábbi lépéseit: "Hiba 403 – ez a webalkalmazás leáll"](https://blogs.msdn.microsoft.com/waws/2016/01/05/azure-web-apps-error-403-this-web-app-is-stopped/).
 
-## <a name="where-can-i-learn-more-about-quotas-and-limits-for-various-app-service-plans"></a>Hol találhatok további többet kvótái és korlátai a különféle App Service-csomagok?
+## <a name="where-can-i-learn-more-about-quotas-and-limits-for-various-app-service-plans"></a>Hol tudhatok meg többet a különböző App Service-csomagok kvótái és korlátairól?
 
-További információ a kvóták és korlátozások: [az App Service korlátai](../azure-subscription-service-limits.md#app-service-limits). 
+További információ a kvótákkal és a korlátozásokkal kapcsolatban: [app Service korlátok](../azure-subscription-service-limits.md#app-service-limits). 
 
-## <a name="how-do-i-decrease-the-response-time-for-the-first-request-after-idle-time"></a>Hogyan csökkentheti a az első kérelem válaszideje üresjárati idő után?
+## <a name="how-do-i-decrease-the-response-time-for-the-first-request-after-idle-time"></a>Hogyan csökkentse az első kérelem válaszideje az üresjárati idő után?
 
-Alapértelmezés szerint a webalkalmazások távolítva a memóriából ha azok egy megadott ideig inaktív. Ezzel a módszerrel a rendszer erőforrások is megőrzése. A hátránya, hogy az első kérelem után a webes alkalmazás memóriából adott válasz hosszabb, a web app, tölthet be és indítsa el a teljesítése engedélyezéséhez. Az alapszintű és standard szintű szolgáltatáscsomag, bekapcsolhatja a **Always On** a beállítást, hogy az alkalmazás mindig betöltve. Ezzel elkerülhető, miután az alkalmazás üresjárati hosszabb betöltési időt. Módosíthatja a **Always On** beállítást:
+Alapértelmezés szerint a webalkalmazások el lesznek távolítva, ha egy meghatározott időtartam alatt tétlenek. Így a rendszeren erőforrásokat takaríthat meg. A hátránya, hogy a webalkalmazás eltávolítását követően az első kérelemre adott válasz már nem érhető el, így a webalkalmazás betöltődik, és megkezdheti a válaszok kiszolgálását. Az alapszintű és a standard szintű szolgáltatási csomagokban a **mindig** bekapcsolva beállítás megadásával megtarthatja az alkalmazás folyamatos betöltését. Ez a várakozási idő elteltével nem töltődik be az alkalmazás üresjárata után. Az **Always On** beállítás módosítása:
 
-1. Az Azure Portalon lépjen a webalkalmazáshoz.
-2. Válassza ki **Alkalmazásbeállítások**.
-3. A **Always On**válassza **a**.
+1. A Azure Portal nyissa meg a webalkalmazást.
+2. Válassza az **Alkalmazásbeállítások**lehetőséget.
+3. Az **Always On**beállításnál válassza **a be**lehetőséget.
 
-## <a name="how-do-i-turn-on-failed-request-tracing"></a>Hogyan bekapcsolja a sikertelen kérelmek nyomkövetése?
+## <a name="how-do-i-turn-on-failed-request-tracing"></a>Hogyan bekapcsolni a sikertelen kérelmek nyomkövetését?
 
-Sikertelen kérelmek nyomkövetése bekapcsolása:
+A sikertelen kérelmek nyomkövetésének bekapcsolása:
 
-1. Az Azure Portalon lépjen a webalkalmazáshoz.
-3. Válassza ki **minden beállítás** > **diagnosztikai naplók**.
-4. A **sikertelen kérelmek nyomkövetését**válassza **a**.
+1. A Azure Portal nyissa meg a webalkalmazást.
+3. Válassza **a minden beállítás** > **diagnosztikai naplók**lehetőséget.
+4. A **Sikertelen kérelmek nyomkövetéséhez**válassza **a be**lehetőséget.
 5. Kattintson a **Mentés** gombra.
-6. Válassza ki a webalkalmazás panelére, **eszközök**.
-7. Válassza ki **Visual Studio Online**.
-8. Ha a beállítás nem **a**válassza **a**.
-9. Válassza ki **Go**.
-10. Válassza ki **Web.config**.
-11. System.webServer adja hozzá ezt a konfigurációt (a rögzítése egy adott URL-címe):
+6. A Web App (webalkalmazás) panelen válassza az **eszközök**lehetőséget.
+7. Válassza a **Visual Studio online**lehetőséget.
+8. Ha a beállítás nincs **bekapcsolva**, válassza **a be**lehetőséget.
+9. Válassza az **Indítás**lehetőséget.
+10. Válassza a **web. config**lehetőséget.
+11. A System. webserverben adja hozzá ezt a konfigurációt (egy adott URL-cím rögzítéséhez):
 
     ```xml
     <system.webServer>
@@ -132,7 +131,7 @@ Sikertelen kérelmek nyomkövetése bekapcsolása:
     </add> </traceFailedRequests>
     </tracing>
     ```
-12. Teljesítményével kapcsolatos problémák elhárításához, adja hozzá ezt a konfigurációt (Ha a rögzítés kérelem van véve a több mint 30 másodperc):
+12. A lassú teljesítménnyel kapcsolatos problémák elhárítása érdekében adja hozzá ezt a konfigurációt (ha a rögzítési kérelem 30 másodpercnél hosszabb időt vesz igénybe):
     ```xml
     <system.webServer>
     <tracing> <traceFailedRequests>
@@ -147,51 +146,51 @@ Sikertelen kérelmek nyomkövetése bekapcsolása:
     </add> </traceFailedRequests>
     </tracing>
     ```
-13. A sikertelen kérelmek nyomkövetési letöltését a [portál](https://portal.azure.com), nyissa meg a webhelyet.
-15. Válassza ki **eszközök** > **Kudu** > **Go**.
-18. Válassza a menüben **hibakeresési konzolt** > **CMD**.
-19. Válassza ki a **LogFiles** mappát, és válassza ki a mappát egy kezdetű névvel rendelkező **W3SVC**.
-20. Az XML-fájl megtekintéséhez válassza a ceruza ikonra.
+13. A sikertelen kérelmek nyomkövetésének letöltéséhez nyissa meg a webhelyet a [portálon](https://portal.azure.com).
+15. Válassza az **eszközök** > **kudu** > **Go**lehetőséget.
+18. A menüben válassza a **Debug konzol** > **cmd**elemet.
+19. Jelölje ki a **naplófájlok** mappát, majd válassza ki azt a mappát, amelynek a neve a **W3SVC**karakterlánccal kezdődik.
+20. Az XML-fájl megtekintéséhez válassza a ceruza ikont.
 
-## <a name="i-see-the-message-worker-process-requested-recycle-due-to-percent-memory-limit-how-do-i-address-this-issue"></a>"A munkavégző folyamat újraindítása miatt" Százalékos memóriakorlátját "kért." a következő üzenet jelenik meg Hogyan oldja meg a probléma?
+## <a name="i-see-the-message-worker-process-requested-recycle-due-to-percent-memory-limit-how-do-i-address-this-issue"></a>"A (z)" munkavégző folyamat újrahasznosítása a "memória százalékos korlátja miatt" üzenet jelenik meg. Hogyan a probléma megoldásához?
 
-A rendelkezésre álló memória maximális mérete 32 bites a folyamatot (akár a 64 bites operációs rendszeren) mérete 2 GB. Alapértelmezés szerint a munkavégző folyamat van beállítva, a 32 bites (a régi webes alkalmazásokkal való kompatibilitásáról) App Service-ben.
+Egy 32 bites folyamat számára rendelkezésre álló memória maximális mennyisége (akár 64 bites operációs rendszeren is) 2 GB. Alapértelmezés szerint a munkavégző folyamat 32 bites értékre van állítva App Service (az örökölt webalkalmazásokkal való kompatibilitás érdekében).
 
-Fontolja meg az áttérést a 64 bites folyamatokat, így kihasználhatja a webes feldolgozói szerepkörben további memória. Ez aktiválja újra kell indítani a webes alkalmazást, ezért ütemezze ennek megfelelően.
+Érdemes lehet a 64 bites folyamatokra váltani, hogy kihasználhassa a webes feldolgozói szerepkörben elérhető további memóriát. Ez elindítja a webalkalmazás újraindítását, ezért az ütemterv szerint kell ütemezni.
 
-Azt is vegye figyelembe, hogy egy 64 bites környezet egy alapszintű vagy standard szintű szolgáltatáscsomag szükséges. Az ingyenes és közös csomagok mindig 32-bit-es környezetben futnak.
+Azt is vegye figyelembe, hogy egy 64 bites környezethez alapszintű vagy standard szolgáltatási csomag szükséges. Az ingyenes és a közös csomagok mindig 32 bites környezetben futnak.
 
-További információkért lásd: [webalkalmazások konfigurálása az App Service-ben](web-sites-configure.md).
+További információkért lásd: [webalkalmazások konfigurálása app Serviceban](configure-common.md).
 
-## <a name="why-does-my-request-time-out-after-230-seconds"></a>Miért nem a kérelem időkorlátja 230 másodperc után?
+## <a name="why-does-my-request-time-out-after-230-seconds"></a>Miért van a kérésem időtúllépése 230 másodperc után?
 
-Az Azure Load Balancer rendelkezik a négy perces üresjárati időkorlát alapértelmezett beállítása. Ez általában a webes kérelem ésszerű válasz határidőt. Ha a webalkalmazás háttérben történő feldolgozás van szüksége, az Azure WebJobs használatát javasoljuk. Az Azure web Apps segítségével meghívhatja a webjobs-feladatok, és értesíti, ha a háttérben történő feldolgozása befejeződött. A WebJobs, beleértve az üzenetsorokat és eseményindítók használatával többféle módszer közül választhat.
+A Azure Load Balancer négy perc alapértelmezett üresjárati időtúllépési beállítással rendelkezik. Ez általában egy webes kérelem ésszerű válaszideje. Ha a webalkalmazásban háttér-feldolgozásra van szükség, javasoljuk, hogy használjon Azure WebJobs. Az Azure-webalkalmazás meghívhatja a webjobs-feladatokat, és értesítést kaphat a háttérben történő feldolgozás befejezésekor. Több módszert is választhat a webjobs-feladatok, például a várólisták és az eseményindítók használatához.
 
-Webjobs-feladatok háttérben történő feldolgozás van tervezve. Legtöbb háttérben történő feldolgozási webjobs-feladat a kívánt módon teheti meg. Webjobs-feladatok kapcsolatos további információkért lásd: [háttérfeladatok futtatása WebJobs-feladatokkal](webjobs-create.md).
+A webjobs a háttérben történő feldolgozásra szolgál. Annyi háttérbeli feldolgozást végezhet, amennyit csak szeretne egy Webjobs. A webjobs-feladatokkal kapcsolatos további információkért lásd: [háttérben futó feladatok futtatása webjobs](webjobs-create.md)-feladatokkal.
 
-## <a name="aspnet-core-applications-that-are-hosted-in-app-service-sometimes-stop-responding-how-do-i-fix-this-issue"></a>ASP.NET Core alkalmazásokhoz, amelyek az App Service-ben néha nem válaszol. Hogyan lehet kijavítani a hibát a probléma?
+## <a name="aspnet-core-applications-that-are-hosted-in-app-service-sometimes-stop-responding-how-do-i-fix-this-issue"></a>ASP.NET Core App Service futtatott alkalmazások néha nem válaszolnak. Hogyan kijavítani ezt a problémát?
 
-Egy ismert probléma, amely egy korábbi [Kestrel verzió](https://github.com/aspnet/KestrelHttpServer/issues/1182) időnként nem válaszol az App Service-ben futó ASP.NET Core 1.0-s alkalmazás vezethet. Emellett előfordulhat, hogy megjelenik ez az üzenet: "A megadott CGI-alkalmazás hibába ütközött, és a kiszolgáló leállt, a folyamat."
+A korábbi [vércse-verziók](https://github.com/aspnet/KestrelHttpServer/issues/1182) ismert problémái miatt előfordulhat, hogy egy ASP.net Core 1,0 alkalmazás, amely app Serviceben fut, időnként leállítja a válaszadást. Ezt az üzenetet is láthatja: "A megadott CGI-alkalmazás hibát észlelt, és a kiszolgáló megszakította a folyamatot."
 
-Ezt a problémát megoldottuk a Kestrel 1.0.2-es verzióját. Ez a verzió része az ASP.NET Core 1.0.3 frissítés. A probléma megoldásához ellenőrizze az alkalmazás függőségei a Kestrel 1.0.2-es használatához frissítenie. Azt is megteheti, hogy is két kerülő megoldások valamelyikével azt ebben a blogbejegyzésben leírt [ASP.NET Core 1.0-s lassú teljesítmény az App Service web apps problémák](https://blogs.msdn.microsoft.com/waws/2016/12/11/asp-net-core-slow-perf-issues-on-azure-websites).
+Ez a probléma a vércse 1.0.2-es verziójában van kijavítva. Ez a verzió a ASP.NET Core 1.0.3 frissítés részét képezi. A probléma megoldásához győződjön meg arról, hogy az alkalmazás függőségeit a vércse 1.0.2 használatára frissíti. Azt is megteheti, hogy a blogbejegyzésben ismertetett két megkerülő megoldás egyikét használja [app Service web apps 1,0 ASP.net Core lassú](https://blogs.msdn.microsoft.com/waws/2016/12/11/asp-net-core-slow-perf-issues-on-azure-websites)teljesítményű problémák megoldásához.
 
 
-## <a name="i-cant-find-my-log-files-in-the-file-structure-of-my-web-app-how-can-i-find-them"></a>A naplófájlok nem található webalkalmazás fájl szerkezete Honnan tudhatom meg őket?
+## <a name="i-cant-find-my-log-files-in-the-file-structure-of-my-web-app-how-can-i-find-them"></a>Nem találom a naplófájlokat a saját webalkalmazásom fájljának struktúrájában. Hogyan találhatom meg őket?
 
-Ha az App Service helyi gyorsítótára funkcióját használja, a mappastruktúra az App Service-példány LogFiles és az adatok mappa érinti. Helyi gyorsítótár használata esetén a naplófájlok tárolási és adatmappáinak almappák jönnek létre. Az almappák használja az elnevezési minta "egyedi azonosító" + időbélyeg. Minden almappa felel meg a webalkalmazás fut, vagy futott egy Virtuálisgép-példánnyal.
+Ha a App Service helyi gyorsítótár szolgáltatását használja, a rendszer a App Service-példányhoz tartozó LogFiles és adatmappák mappastruktúrát fogja érinteni. Helyi gyorsítótár használata esetén az almappák a Storage-naplófájlokban és az adatmappákban jönnek létre. Az almappákban az "egyedi azonosító" + időbélyegző szerepel. Minden almappa olyan virtuálisgép-példánynak felel meg, amelyben a webalkalmazás fut vagy fut.
 
-Annak megállapításához, hogy helyi gyorsítótárat használ-e, ellenőrizze az App Service **Alkalmazásbeállítások** fülre. Ha a helyi gyorsítótár használatban van, az Alkalmazásbeállítás `WEBSITE_LOCAL_CACHE_OPTION` értékre van állítva `Always`.
+Annak megállapításához, hogy a helyi gyorsítótárat használja-e, ellenőrizze az App Service **Alkalmazásbeállítások** lapot. Ha a helyi gyorsítótár használatban van, az alkalmazás `WEBSITE_LOCAL_CACHE_OPTION` beállítása a következőre van `Always`beállítva:.
 
-Ha nem használja a helyi gyorsítótárban, és ezzel a problémával találkozik, küldjön egy támogatási kérést.
+Ha nem helyi gyorsítótárat használ, és ezt a problémát tapasztalja, küldjön egy támogatási kérést.
 
-## <a name="i-see-the-message-an-attempt-was-made-to-access-a-socket-in-a-way-forbidden-by-its-access-permissions-how-do-i-resolve-this"></a>Hibaüzenet jelenik meg: "kísérlet történt olyan módon, a hozzáférési engedélyeket tiltott hozzáférés." Hogyan oldhatom fel ez?
+## <a name="i-see-the-message-an-attempt-was-made-to-access-a-socket-in-a-way-forbidden-by-its-access-permissions-how-do-i-resolve-this"></a>"Kísérlet történt egy szoftvercsatorna elérésére a hozzáférési engedélyeik által tiltott módon." üzenet jelenik meg. Hogyan megoldja ezt?
 
-Ez a hiba általában akkor fordul elő, ha elfogytak, a kimenő TCP-kapcsolatok Virtuálisgép-példányon. Az App Service-ben vannak korlátozva, hogy az egyes Virtuálisgép-példányok kimenő kapcsolatok maximális számát. További információkért lásd: [közötti-virtuális gép numerikus korlátok](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits).
+Ez a hiba általában akkor fordul elő, ha a virtuálisgép-példány kimenő TCP-kapcsolatai kimerültek. App Service a korlátozásokat az egyes virtuálisgép-példányok számára elérhető kimenő kapcsolatok maximális száma miatt kényszeríti a rendszer. További információ: a [virtuális gépek közötti numerikus korlátok](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits).
 
-Ezt a hibát is okozhat, ha megpróbálja elérni a helyi cím az alkalmazásból. További információkért lásd: [helyi cím kérelmek](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#local-address-requests).
+Ez a hiba akkor is előfordulhat, ha egy helyi IP-címről próbál hozzáférni az alkalmazásból. További információ: [helyi címekre vonatkozó kérelmek](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#local-address-requests).
 
-Kimenő kapcsolatok a webalkalmazásban kapcsolatos további információkért lásd a következő blogbejegyzésben: kapcsolatos [kimenő kapcsolatok az Azure-webhelyek](https://www.freekpaans.nl/2015/08/starving-outgoing-connections-on-windows-azure-web-sites/).
+A webalkalmazás kimenő kapcsolataival kapcsolatos további információkért tekintse meg az [Azure-webhelyekhez való kimenő kapcsolatokról](https://www.freekpaans.nl/2015/08/starving-outgoing-connections-on-windows-azure-web-sites/)szóló blogbejegyzést.
 
-## <a name="how-do-i-use-visual-studio-to-remote-debug-my-app-service-web-app"></a>Hogyan használhatom a Visual Studio távoli hibakeresési App Service webalkalmazás?
+## <a name="how-do-i-use-visual-studio-to-remote-debug-my-app-service-web-app"></a>Hogyan a Visual studiót a App Service webalkalmazásom távoli hibakereséséhez?
 
-Részletes útmutató, amely bemutatja, hogyan webes alkalmazás hibakeresése a Visual Studio használatával, lásd: [távoli hibakeresése az App Service webalkalmazás](https://blogs.msdn.microsoft.com/benjaminperkins/2016/09/22/remote-debug-your-azure-app-service-web-app/).
+A webalkalmazások Visual Studióval való hibakeresését bemutató részletes útmutató: [a app Service webalkalmazás távoli hibakeresése](https://blogs.msdn.microsoft.com/benjaminperkins/2016/09/22/remote-debug-your-azure-app-service-web-app/).

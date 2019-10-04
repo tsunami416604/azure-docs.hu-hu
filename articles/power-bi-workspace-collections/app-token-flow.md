@@ -2,18 +2,18 @@
 title: Hitelesítés és engedélyezés a Power BI-Munkaterületcsoportok |} A Microsoft Docs
 description: Hitelesítés és engedélyezés a Power BI munkaterületi gyűjtemények.
 services: power-bi-workspace-collections
-author: markingmyname
-ms.author: maghan
-ms.service: power-bi-workspace-collections
+author: rkarlin
+ms.author: rkarlin
+ms.service: power-bi-embedded
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.openlocfilehash: 5d7b5f2655fc94b9a060c30e11be66bd2eacdee8
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 713c56904769c133272db4fb65f8b596ab66804b
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520615"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672508"
 ---
 # <a name="authenticating-and-authorizing-with-power-bi-workspace-collections"></a>Hitelesítés és engedélyezés a Power BI munkaterületi gyűjteményekkel
 
@@ -92,7 +92,7 @@ Beágyazási token használatakor előfordulhat, hogy korlátozni szeretné a er
 
 Az alábbiakban a Power BI-Munkaterületcsoportok elérhető hatókörök.
 
-|Hatókör|Leírás|
+|Scope|Leírás|
 |---|---|
 |Dataset.Read|A megadott adatkészlet olvasási engedélyt biztosít.|
 |Dataset.Write|Itt a megadott adatkészlet írási engedéllyel.|

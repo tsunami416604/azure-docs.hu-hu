@@ -1,23 +1,17 @@
 ---
 title: Az Azure Active Directory-hitelesítés és a Resource Manager |} A Microsoft Docs
 description: Fejlesztői útmutató az alkalmazás integrálása más Azure-előfizetések az Azure Resource Manager API-hoz és az Azure Active Directory-hitelesítés.
-services: azure-resource-manager,active-directory
-documentationcenter: na
 author: dushyantgill
-ms.assetid: 17b2b40d-bf42-4c7d-9a88-9938409c5088
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: identity
 ms.date: 04/05/2019
 ms.author: dugill
-ms.openlocfilehash: ae405d5dd99a0e2acced924ccccab292b4489cde
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 3a8f9f1975530c846008b3b3def4f4d4a22716fd
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59791910"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205449"
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>Erőforrás-kezelő használata hitelesítési API az előfizetések hozzáféréséhez
 
@@ -287,13 +281,13 @@ A gyakran használt beépített szerepkör-azonosítók a következők:
 | --- | --- |
 | Olvasó |acdd72a7-3385-48ef-bd42-f606fba81ae7 |
 | Közreműködő |b24988ac-6180-42a0-ab88-20f7382dd24c |
-| Virtuális gépek közreműködője |d73bb868-a0df-4d4d-bd69-98a00b01fccb |
+| Virtuális gépek Közreműködője |d73bb868-a0df-4d4d-bd69-98a00b01fccb |
 | Virtuális hálózati közreműködő |b34d265f-36f7-4a0d-a4d4-e158ca92e90f |
 | Tárfiók-közreműködő |86e8f5dc-a6e9-4c67-9d15-de283e8eac25 |
-| Webhelyek közreműködője |de139f84-1756-47ae-9be6-808fbbe84772 |
-| Webes tarifacsomagok közreműködője |2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b |
-| SQL Server közreműködője |6d8ee4ec-f05a-4a1d-8b00-a9b17e38b437 |
-| SQL-adatbázisok közreműködője |9b7fa17d-e63e-47b0-bb0a-15c516ac86ec |
+| Webhelyek Közreműködője |de139f84-1756-47ae-9be6-808fbbe84772 |
+| Webes Tarifacsomagok Közreműködője |2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b |
+| Az SQL Server Közreműködője |6d8ee4ec-f05a-4a1d-8b00-a9b17e38b437 |
+| SQL-Adatbázisok Közreműködője |9b7fa17d-e63e-47b0-bb0a-15c516ac86ec |
 
 ### <a name="assign-rbac-role-to-application"></a>RBAC szerepkör hozzárendelése alkalmazáshoz
 Rendelkezik a megfelelő RBAC-szerepkörök hozzárendelése az egyszerű szolgáltatás használatával minden, amit a [erőforrás-kezelő szerepkör-hozzárendelés létrehozása](https://docs.microsoft.com/rest/api/authorization/roleassignments) API-t.

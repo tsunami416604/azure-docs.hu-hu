@@ -1,83 +1,83 @@
 ---
-title: Az Azure Cosmos DB csatlakoztatása a Qlik Sense és -adatok megjelenítése
-description: Ez a cikk az Azure Cosmos DB-hez csatlakozik a Qlik Sense, és az adatok megjelenítése a szükséges lépéseket ismerteti.
+title: Az Qlik-értelem összekapcsolásával Azure Cosmos DBhatja és megjelenítheti az adatait
+description: Ez a cikk azokat a lépéseket ismerteti, amelyek szükségesek ahhoz, hogy a Azure Cosmos DB összekapcsolásával Qlik az értelemben, és láthatóvá tegye az adatait.
 ms.service: cosmos-db
 author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
-ms.date: 10/22/2018
+ms.date: 05/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 4532962b6fd9f40fad625ab000116e5a617682e5
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 3a955060eb5f19544860c1c97abe1577084bef24
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258775"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67985545"
 ---
-# <a name="connect-qlik-sense-to-azure-cosmos-db-and-visualize-your-data"></a>Az Azure Cosmos DB csatlakoztatása a Qlik Sense és -adatok megjelenítése
+# <a name="connect-qlik-sense-to-azure-cosmos-db-and-visualize-your-data"></a>Az Qlik-értelem összekapcsolásával Azure Cosmos DBhatja és megjelenítheti az adatait
 
-Qlik Sense egy adatvizualizációs eszköz, amely a különböző forrásokból származó adatok egyesít egyetlen nézetben. Qlik Sense indexeli minden lehetséges kapcsolat az adatokban, úgy, hogy az adatok azonnali elemzéseket is kaphat. Azure Cosmos DB-adatai Qlik Sense használatával jelenítheti meg. Ez a cikk az Azure Cosmos DB-hez csatlakozik a Qlik Sense, és az adatok megjelenítése a szükséges lépéseket ismerteti. 
+A Qlik Sense egy adatvizualizációs eszköz, amely különböző forrásokból származó adatok egyetlen nézetbe való egyesítésére szolgál. A Qlik Sense indexeli az összes lehetséges kapcsolatot az adataiban, így azonnali elemzéseket nyerhet az adatairól. A Qlik értelem használatával megjelenítheti Azure Cosmos DBi adataikat. Ez a cikk azokat a lépéseket ismerteti, amelyek szükségesek ahhoz, hogy a Azure Cosmos DB összekapcsolásával Qlik az értelemben, és láthatóvá tegye az adatait. 
 
 > [!NOTE]
-> Qlik Sense csatlakozik az Azure Cosmos DB SQL API és az Azure Cosmos DB API a MongoDB-fiókok csak a jelenleg támogatott.
+> A Qlik-hez való csatlakozás Azure Cosmos DB jelenleg támogatott az SQL API és a Azure Cosmos DB API-k csak MongoDB-fiókokhoz.
 
-Az Azure Cosmos DB-hez való csatlakozás Qlik Sense a következőket teheti:
+A Qlik-hez kapcsolódó Azure Cosmos DB a következővel lehet csatlakozni:
 
-* Cosmos DB SQL API az ODBC-összekötő használatával.
+* Cosmos DB az SQL API-t az ODBC-összekötő használatával.
 
-* Az Azure Cosmos DB MongoDB API-összekötővel a Qlik Sense MongoDB (jelenleg előzetes verzióban érhető el).
+* Azure Cosmos DB API-MongoDB az Qlik Sense MongoDB-összekötő használatával (jelenleg előzetes verzióban érhető el).
 
-* Az Azure Cosmos DB API a MongoDB-hez és az SQL API REST API-összekötő használatával, a Qlik Sense.
+* Azure Cosmos DB API-t a MongoDB és az SQL API-hoz a Qlik-alapú REST API-összekötő használatával.
 
-* Cosmos DB Mongo DB API-összekötővel a gRPC a Qlik Core.
-Ez a cikk ismerteti az ODBC-összekötő használatával a Cosmos DB SQL API-t kapcsolódás részleteit.
+* Cosmos DB Mongo DB API-t a Qlik Core-hoz készült gRPC-összekötő használatával.
+Ez a cikk a Cosmos DB SQL API-hoz az ODBC-összekötő használatával történő kapcsolódás részleteit ismerteti.
 
-Ez a cikk ismerteti az ODBC-összekötő használatával a Cosmos DB SQL API-t kapcsolódás részleteit.
+Ez a cikk a Cosmos DB SQL API-hoz az ODBC-összekötő használatával történő kapcsolódás részleteit ismerteti.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt Ez a cikk utasításait követve ellenőrizze, hogy készen áll a következő erőforrások:
+A cikkben szereplő utasítások követése előtt győződjön meg arról, hogy a következő erőforrások állnak készen:
 
-* Töltse le a [Qlik Sense asztali](https://www.qlik.com/us/try-or-buy/download-qlik-sense) , vagy hozzon létre az Azure-ban, a Qlik Sense [telepítése a Qlik Sense Piactéri elem](https://azuremarketplace.microsoft.com/marketplace/apps/qlik.qlik-sense).
+* Töltse le a [Qlik Sense Desktopot](https://www.qlik.com/us/try-or-buy/download-qlik-sense) , vagy állítsa be a Qlik-érzékelést az Azure-ban [az Qlik Sense Marketplace-elemek telepítésével](https://azuremarketplace.microsoft.com/marketplace/apps/qlik.qlik-sense).
 
-* Töltse le a [videojátékok adatok](https://www.kaggle.com/gregorut/videogamesales), a CSV formátumban van ezekkel a mintaadatokkal. Ön az adatok tárolásához a Cosmos DB-fiókban, és Qlik Sense megjelenítheti.
+* A [videós játékhoz](https://www.kaggle.com/gregorut/videogamesales)tartozó adatfájlok letöltése CSV formátumú. Ezeket az adattárakat egy Cosmos DB-fiókban fogja tárolni, és a Qlik értelemben láthatóvá válik.
 
-* Hozzon létre egy Azure Cosmos DB SQL API-fiókot az ismertetett lépéseket követve [hozzon létre egy fiókot](create-sql-api-dotnet.md#create-account) a rövid útmutató című szakaszban.
+* Hozzon létre egy Azure Cosmos DB SQL API-fiókot a rövid útmutató című cikk [fiók létrehozása](create-sql-api-dotnet.md#create-account) című szakaszában ismertetett lépések végrehajtásával.
 
-* [Hozzon létre egy adatbázis és gyűjtemény](create-sql-api-dotnet.md#create-collection-database) –, használati érték között állítható be a gyűjtemény átviteli 1000 RU/s. 
+* [Adatbázis és gyűjtemény létrehozása](create-sql-api-java.md#add-a-container) – a gyűjtemény átviteli sebességének értékeként 1000 ru/s értéket adhat meg. 
 
-* A videó játék értékesítési mintaadatok betöltése a Cosmos DB-fiók. Azure Cosmos DB adatáttelepítési eszköz használatával importálhatja az adatokat, megteheti egy [szekvenciális](import-data.md#SQLSeqTarget) vagy egy [tömeges importálás](import-data.md#SQLBulkTarget) az adatok. Az adatok importálása a Cosmos DB-fiók körülbelül 3 – 5 percet vesz igénybe.
+* Töltse be a minta videójáték értékesítési adatait a Cosmos DB-fiókjába. Az adatimportálást Azure Cosmos DB adatáttelepítési eszköz használatával végezheti el, vagy egy [szekvenciális](import-data.md#SQLSeqTarget) vagy [tömeges](import-data.md#SQLBulkTarget) adatimportálást is végezhet. Az Cosmos DB-fiókba való importáláshoz körülbelül 3-5 percet vesz igénybe.
 
-* Letöltése, telepítése és konfigurálása az ODBC-illesztő a lépések használatával a [Cosmos DB kapcsolódhat ODBC-illesztő](odbc-driver.md) cikk. A videojátékok adatok egy egyszerű adatkészletet, és szerkessze a sémát, használja az alapértelmezett gyűjtési-leképezési sémában nem kell.
+* Töltse le, telepítse és konfigurálja az ODBC-illesztőt a [kapcsolódás Cosmos db ODBC-illesztővel](odbc-driver.md) című cikkben ismertetett lépések segítségével. A videojáték-alapú adatkészletek egyszerű adathalmazok, és nem kell szerkesztenie a sémát, csak az alapértelmezett gyűjtemény-leképezési sémát kell használnia.
 
-## <a name="connect-qlik-sense-to-cosmos-db"></a>Csatlakozás a Cosmos DB Qlik Sense
+## <a name="connect-qlik-sense-to-cosmos-db"></a>A Qlik Cosmos DB összekapcsolásának érzékelése
 
-1. Nyissa meg a Qlik Sense és **új alkalmazás létrehozása**. Nevezze el az alkalmazást, és válassza **létrehozás**.
+1. Nyissa meg a Qlik értelmet, és válassza az **új alkalmazás létrehozása**lehetőséget. Adja meg az alkalmazás nevét, majd válassza a **Létrehozás**lehetőséget.
 
    ![Új Qlik Sense-alkalmazás létrehozása](./media/visualize-qlik-sense/create-new-qlik-sense-app.png)
 
-2. Az új alkalmazás sikeres létrehozása után válassza ki a **alkalmazás megnyitása** válassza **fájlok és egyéb forrásokból származó adatok hozzáadása**. 
+2. Az új alkalmazás létrehozása után kattintson az **alkalmazás megnyitása** lehetőségre, és válassza az **adatok hozzáadása fájlokból és más forrásokból**lehetőséget. 
 
-3. Válassza ki az adatforrásokat, **ODBC** az új kapcsolat beállítása ablak megnyitásához. 
+3. Az adatforrások területen válassza az **ODBC** lehetőséget az új kapcsolódási beállítás ablak megnyitásához. 
 
-4. Váltson **felhasználói DSN** , és válassza ki a korábban létrehozott ODBC-kapcsolat. Adjon meg egy nevet a kapcsolatot, és válasszon **létrehozás**. 
+4. Váltson a **felhasználói DSN** -re, és válassza ki a korábban létrehozott ODBC-kapcsolatokat. Adja meg a kapcsolatok nevét, majd válassza a **Létrehozás**lehetőséget. 
 
    ![Új kapcsolat létrehozása](./media/visualize-qlik-sense/create-new-connection.png)
 
-5. Miután létrehozta a kapcsolatot, adja meg az adatbázis, gyűjtemény, ahol a videojátékok adatok, és ezután tekintse meg a lapot.
+5. A kapcsolatok létrehozása után kiválaszthatja az adatbázist, a gyűjtemény helyét, ahol a videojáték-adatforrások találhatók, majd megtekintheti azt.
 
-   ![Válassza ki az adatbázist és gyűjteményt](./media/visualize-qlik-sense/choose-database-and-collection.png) 
+   ![Az adatbázis és a gyűjtemény kiválasztása](./media/visualize-qlik-sense/choose-database-and-collection.png) 
 
-6. Ezután válassza ki **adatok hozzáadása** Qlik Sense, az adatok betöltéséhez. Miután tölt be adatokat, a Qlik Sense, elemzések generálásához, és az adatok elemzését. Elemzések segítségével, vagy videojátékokkal játszom értékesítési felfedezése saját alkalmazásának létrehozását. Az alábbi képen látható 
+6. Ezután válassza  az adathozzáadás lehetőséget az Qlik értelembe való betöltéséhez. Az adatok Qlik való betöltését követően elemzéseket készíthet, és elemzéseket végezhet az adatokon. Használhatja az elemzéseket, vagy létrehozhat egy saját alkalmazást, amely a videojátékok értékesítéseit vizsgálja. Az alábbi képen látható 
 
    ![Adatok vizualizációja](./media/visualize-qlik-sense/visualize-data.png)
 
-### <a name="limitations-when-connecting-with-odbc"></a>Az ODBC kapcsolódáskor korlátozások 
+### <a name="limitations-when-connecting-with-odbc"></a>Az ODBC-vel való csatlakozás korlátozásai 
 
-A cosmos DB modellezve körül fejlesztői igényeinek illesztőprogramok séma nélküli elosztott adatbázis. Az ODBC-illesztő oszlopokat, az adattípusok és egyéb tulajdonságok célszámítógéppel sémával adatbázis szükséges. A szokásos SQL-lekérdezés vagy a DML-szintaxis és relációs funkció nem alkalmazható Cosmos DB SQL API-hoz, mert az SQL API-t nem ANSI SQL. Ezen okból az ODBC-illesztő keresztül kiadott SQL-utasítások fordítja, amely nem rendelkezik az összes szerkezeteket megfelelőit Cosmos DB-specifikus SQL-szintaxis. A fordítási hibák megelőzése érdekében telepítenie kell egy sémát az ODBC-kapcsolat beállítása során. A [ODBC-illesztő összekapcsolása](odbc-driver.md) cikk biztosít vonatkozó javaslatokat és módszerek segítségével konfigurálhatja a sémát. Ellenőrizze, hogy ez a leképezés a Cosmos DB-fiókban lévő minden adatbázis és gyűjtemény létrehozása.
+Cosmos DB egy séma nélküli elosztott adatbázis, amely a fejlesztői igények alapján modellezhető illesztőprogramokkal rendelkezik. Az ODBC-illesztőhöz a sémával rendelkező adatbázis szükséges az oszlopok, az adattípusok és más tulajdonságok kikötéséhez. A hagyományos SQL-lekérdezés vagy a nem megfelelő DML-szintaxis Cosmos DB SQL API esetében nem alkalmazható, mert az SQL API nem ANSI SQL. Emiatt az ODBC-illesztőn keresztül kiadott SQL-utasítások fordítása Cosmos DB-specifikus SQL-szintaxisba történik, amely nem felel meg az összes szerkezetnek. A fordítási problémák megelőzése érdekében sémát kell alkalmaznia az ODBC-kapcsolatok beállításakor. A [Kapcsolódás ODBC](odbc-driver.md) -illesztővel című cikk javaslatokat és metódusokat biztosít a séma konfigurálásához. Hozza létre ezt a leképezést minden adatbázishoz/gyűjteményhez a Cosmos DB fiókon belül.
 
 ## <a name="next-steps"></a>További lépések
 
-Egy másik vizualizációs eszközeként, mint a Power BI használatakor is kapcsolódik hozzá a következő dokumentum utasításai szerint:
+Ha más vizualizációs eszközt (például Power BI) használ, az alábbi dokumentum utasításait követve csatlakozhat hozzá.
 
-* [Cosmos DB-adatok megjelenítése Power BI-összekötő használatával](powerbi-visualize.md)
+* [Cosmos DB-adatmegjelenítés az Power BI-összekötő használatával](powerbi-visualize.md)

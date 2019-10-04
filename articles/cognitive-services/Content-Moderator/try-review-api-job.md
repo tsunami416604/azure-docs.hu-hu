@@ -1,67 +1,67 @@
 ---
-title: A REST API-konzol – a Content Moderator moderálás feladatok használata
-titlesuffix: Azure Cognitive Services
-description: A felülvizsgálati API-feladat műveletei segítségével teljes körű tartalom-jóváhagyás feladatokat az Azure Content Moderator vagy szöveges tartalom.
+title: Moderálási feladatok használata a REST API-konzollal – Content Moderator
+titleSuffix: Azure Cognitive Services
+description: Az API-k áttekintése feladat műveleteivel teljes körű tartalom-moderálási feladatokat indíthat el a képekhez vagy szöveges tartalmakhoz az Azure Content Moderatorban.
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: sajagtap
-ms.openlocfilehash: 7827cee2af2dfc0c1fddc407c1d146dc9a66c514
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: af636deaafc05238c287d095e644588ed8c5f26d
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756095"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880050"
 ---
-# <a name="define-and-use-moderation-jobs-rest"></a>Definiálja és moderálás feladatok (REST)
+# <a name="define-and-use-moderation-jobs-rest"></a>Moderálási feladatok definiálása és használata (REST)
 
-A moderálás feladat egy burkoló a tartalom-jóváhagyás, munkafolyamatok és értékelések funkciójának típusú funkcionál. Ez az útmutató bemutatja, hogyan használható a REST API-k feladat kezdeményezni, és ellenőrizze a tartalom-jóváhagyás feladatok. Miután megismerkedett az API-k szerkezete, egyszerűen az bármely REST-kompatibilis platform hívásokat a portot is.
+A moderálási feladatok egyfajta burkolóként szolgálnak a tartalom moderálása, a munkafolyamatok és a felülvizsgálatok működéséhez. Ez az útmutató bemutatja, hogyan kezdeményezheti és tekintheti meg a tartalom moderálási feladatait a feladat REST API-jai segítségével. Miután megértette az API-k szerkezetét, könnyedén elvégezheti ezeket a hívásokat a REST-kompatibilis platformokra.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Jelentkezzen be, vagy hozzon létre egy fiókot a Content Moderator [vizsgálóeszköz](https://contentmoderator.cognitive.microsoft.com/) hely.
-- (Nem kötelező) [Egy egyéni munkafolyamatokat](./Review-Tool-User-Guide/Workflows.md) a feladatot; használata is használhatja az alapértelmezett munkafolyamat.
+- Jelentkezzen be, vagy hozzon létre egy fiókot a Content Moderator [felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com/) webhelyén.
+- Választható [Definiáljon egy egyéni](./Review-Tool-User-Guide/Workflows.md) munkafolyamatot a feladatokhoz való használatra; használhatja az alapértelmezett munkafolyamatot is.
 
 ## <a name="create-a-job"></a>Feladat létrehozása
 
-Moderálás feladat létrehozásához nyissa meg a [feladat – létrehozása](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5) API lapra hivatkozik, és válassza ki a gombot, a kulcs régiója (található ez a végpont URL-címe a a **hitelesítő adatok** lapján a [áttekintése eszköz](https://contentmoderator.cognitive.microsoft.com/)). Ezzel elindítja az API-konzol, ahol egyszerűen hozhat létre és futtassa a REST API-hívások.
+A moderálási feladatok létrehozásához nyissa meg a feladathoz tartozó API [-](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5) referenciát, és válassza ki a kulcs régiójához tartozó gombot (ezt a végpont URL-címében találja a [felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com/) **hitelesítő adatok** lapján). Ezzel elindítja az API-konzolt, ahol könnyedén hozhat létre és futtathat REST API hívásokat.
 
-![Feladat - létrehozása lap régió kiválasztása](images/test-drive-job-1.png)
+![Feladatok – oldal régiójának kiválasztása](images/test-drive-job-1.png)
 
-### <a name="enter-rest-call-parameters"></a>Adja meg REST-hívás paramétereit
+### <a name="enter-rest-call-parameters"></a>Adja meg a REST-hívás paramétereit
 
-Adja meg a REST-hívás létrehozásához a következő értékeket:
+A REST-hívás létrehozásához adja meg a következő értékeket:
 
-- **teamName**: A csoport azonosítója, amely beállításakor létrehozott a [vizsgálóeszköz](https://contentmoderator.cognitive.microsoft.com/) fiók (található a **azonosító** mezőt a vizsgálóeszköz hitelesítő adatok képernyőn).
-- **A ContentType**: Ez lehet "Image", "Szöveg" vagy "A videó".
-- **ContentId**: Egyéni azonosító karakterláncot. Ez a karakterlánc az API-nak átadott és a visszahívás keresztül visszaadott. Ez hasznos belső azonosítók vagy metaadat társít egy moderálás feladat eredményét.
-- **workflowname**: A korábban létrehozott munkafolyamat (vagy az "alapértelmezett" alapértelmezett munkafolyamat) neve.
-- **CallbackEndpoint**: (Nem kötelező) Visszahívás információk fogadását, a felülvizsgálat befejezésekor az URL-címe.
-- **Ocp-Apim-Subscription-Key**: A Content Moderator kulcs. A megtalálhatja a **beállítások** lapján a [vizsgálóeszköz](https://contentmoderator.cognitive.microsoft.com).
+- **csapatnév**: A [felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com/) fiókjának beállításakor létrehozott csoport azonosítója (a felülvizsgálati eszköz hitelesítő adatai képernyő **azonosító** mezőjében található).
+- **ContentType**: Ez lehet "rendszerkép", "text" vagy "Video".
+- **ContentId**: Egyéni azonosító sztring. Ezt a karakterláncot a rendszer átadja az API-nak, és visszaküldi a visszahívást. Hasznos lehet belső azonosítók vagy metaadatok társítására egy moderálási feladatok eredményeivel.
+- **Workflowname**: A korábban létrehozott munkafolyamat neve (vagy "default" az alapértelmezett munkafolyamathoz).
+- **CallbackEndpoint**: Választható A visszahívási információk fogadására szolgáló URL-cím a felülvizsgálat befejezésekor.
+- **Ocp-Apim-Subscription-Key**: Az Content Moderator kulcsa. Ez a [felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com) **Beállítások** lapján található.
 
-### <a name="fill-in-the-request-body"></a>Adja meg a kérelem törzse
+### <a name="fill-in-the-request-body"></a>Töltse ki a kérelem törzsét
 
-A REST-hívást törzse tartalmazza a egy mezőben **ContentValue**. Illessze be a a nyers szöveg tartalmat, ha meg van szöveg moderálása, vagy adja meg egy kép vagy videó URL-címe, ha Ön éppen moderálása képet vagy videót. Használhatja az alábbi minta URL-címe: [https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg](https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg)
+A REST-hívás törzse egy mezőt, **ContentValue**tartalmaz. Illessze be a RAW Text (szöveg) szöveget, ha moderálást használ, vagy adjon meg egy képet vagy videó URL-címet, ha a rendszer a képet vagy a videót is kihasználja. A következő minta képurl-címet használhatja:[https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg](https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg)
 
-![Feladat - konzol lekérdezési paramétereket, fejléceket és kérelem törzse mezőbe létrehozása](images/job-api-console-inputs.PNG)
+![Feladatok – konzol lekérdezési paramétereinek, fejléceknek és kérelem törzsének létrehozása](images/job-api-console-inputs.PNG)
 
-### <a name="submit-your-request"></a>A kérelem beküldése
+### <a name="submit-your-request"></a>Kérelem elküldése
 
-Kattintson a **Küldés** gombra. Ha a művelet sikeres, a **válasz állapota** van `200 OK`, és a **válasz tartalma** jelenít meg a feladat Azonosítóját. Másolja ezt az Azonosítót a következő lépésekben használni.
+Kattintson a **Küldés** gombra. Ha a művelet sikeres, a **Válasz állapota** `200 OK`, a **válasz tartalma** mező pedig a feladatokhoz tartozó azonosítót jeleníti meg. Másolja ezt az azonosítót a következő lépésekben való használatra.
 
-![Tekintse át,-konzol válasz content jelenít meg a felülvizsgálati azonosító létrehozása](images/test-drive-job-3.PNG)
+![Felülvizsgálat – a konzol válaszának létrehozása mező megjeleníti a felülvizsgálati azonosítót](images/test-drive-job-3.PNG)
 
-## <a name="get-job-status"></a>Feladat állapotának beolvasása
+## <a name="get-job-status"></a>Feladatok állapotának beolvasása
 
-Az állapot és a egy futó vagy befejezett feladat részleteit, keresse fel a [feladat – az első](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c3) API lapra hivatkozik, és válassza ki a gombot az Ön régiójában (a régiót, amelyben a kulcsát felügyelete).
+Egy futó vagy Befejezett feladatok állapotának és részleteinek beszerzéséhez nyissa meg a [feladatok beolvasása – API-](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c3) hivatkozás lapot, és válassza ki a régióhoz tartozó gombot (az a régió, amelyben a kulcsot felügyeli).
 
-![Feladat - Get-régió kiválasztása](images/test-drive-region.png)
+![Feladatokhoz tartozó régió kiválasztása](images/test-drive-region.png)
 
-Adja meg a REST-hívás paramétereket, mint a fenti szakaszban. Ehhez a lépéshez **JobId** a feladat létrehozásakor kapott egyedi azonosító karakterlánc. Kattintson a **Küldés** gombra. Ha a művelet sikeres, a **válasz állapota** van `200 OK`, és a **válasz tartalma** mező megjeleníti a feladat JSON formátumban, például a következőképpen:
+Adja meg a REST-hívás paramétereit a fenti szakaszban leírtak szerint. Ebben a lépésben a **JobId** a feladatokhoz kapott egyedi azonosító sztring. Kattintson a **Küldés** gombra. Ha a művelet sikeres, a **Válasz állapota** `200 OK`, a **válasz tartalma** pedig JSON formátumban jeleníti meg a feladatot, a következőhöz hasonlóan:
 
 ```json
 {  
@@ -111,12 +111,12 @@ Adja meg a REST-hívás paramétereket, mint a fenti szakaszban. Ehhez a lépés
 }
 ```
 
-![Feladat - Get REST hívást válasz](images/test-drive-job-5.png)
+![Feladatok – REST-hívási válasz](images/test-drive-job-5.png)
 
-### <a name="examine-the-new-reviews"></a>Vizsgálja meg az új review(s)
+### <a name="examine-the-new-reviews"></a>Vizsgálja meg az új felülvizsgálat (oka) t
 
-Ha a tartalom feladat eredményezett a felülvizsgálat létrehozása, megtekintheti a a [vizsgálóeszköz](https://contentmoderator.cognitive.microsoft.com). Válassza ki **felülvizsgálati** > **kép**/**szöveg**/**videó** (attól függően, hogy tartalmakat a használt). A tartalmat meg kell jelennie, készen áll az emberi ellenőrző. Miután egy emberi moderátor ellenőrzi a hozzárendelt címkék és előrejelzési adatokat, és elküldi a végső jóváhagyás döntés, a feladatok API küldi el összes ezt az információt a kijelölt visszahívási végpont végpont.
+Ha a tartalmi feladatokban felülvizsgálatot eredményezett, azt a [felülvizsgálati eszközben](https://contentmoderator.cognitive.microsoft.com)tekintheti meg. /Válassza > a képszövegVideójának áttekintése (a használt tartalomtól függően) lehetőséget./ A tartalomnak meg kell jelennie, és készen kell állnia az emberi felülvizsgálatra. Miután egy emberi moderátor áttekinti az automatikusan hozzárendelt címkéket és az előrejelzési adatokat, és elküld egy végső moderálási döntést, a feladatok API elküldi az összes információt a kijelölt visszahívási végpont végpontjának.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az útmutatóban útmutatóból megtudhatta, hogyan hozhat létre, és a REST API-val tartalom-jóváhagyás feladatok lekérdezése. Ezután integrálása feladatok egy teljes körű moderálás forgatókönyvben például a [E-kereskedelmi moderálás](./ecommerce-retail-catalog-moderation.md) oktatóanyag.
+Ebben az útmutatóban megtanulta, hogyan hozhat létre és kérhet le tartalom-moderálási feladatokat a REST API használatával. Ezután integrálja a feladatokat egy végpontok közötti moderálási forgatókönyvbe, például az [E-kereskedelmi moderálási](./ecommerce-retail-catalog-moderation.md) oktatóanyagba.

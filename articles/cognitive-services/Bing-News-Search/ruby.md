@@ -1,32 +1,32 @@
 ---
-title: 'Gyors útmutató: Hajtsa végre a hírkeresési Ruby-Bing News Search REST API használatával'
-titlesuffix: Azure Cognitive Services
-description: Ez a rövid útmutató segítségével egy kérelmet küld a Bing News Search REST API Ruby használatával, és a egy JSON-választ kap.
+title: 'Gyors útmutató: Hírek keresése a Ruby és a Bing News Search REST API'
+titleSuffix: Azure Cognitive Services
+description: Ezzel a rövid útmutatóval kérést küldhet a Bing News Search REST API Ruby használatával, és JSON-választ kap.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 1/10/2019
+ms.date: 6/19/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 9ed658c6613d270ab3de67a8800263d677d70bac
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: ab16a54269c2afe820d9d17d1400152d078186ed
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55867018"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423673"
 ---
-# <a name="quickstart-perform-a-news-search-using-ruby-and-the-bing-news-search-rest-api"></a>Gyors útmutató: Hajtsa végre a hírkeresési, Ruby és a Bing News Search REST API használatával
+# <a name="quickstart-perform-a-news-search-using-ruby-and-the-bing-news-search-rest-api"></a>Gyors útmutató: Hírek keresése a Ruby és a Bing News Search használatával REST API
 
-Ez a rövid útmutató segítségével a Bing News Search API az első hívását, és a egy JSON-választ kapnak. Ez az egyszerű JavaScript alkalmazás egy keresési lekérdezést küld az API-t, és feldolgozza az eredményeket.
+Ezzel a rövid útmutatóval megteheti az első hívását a Bing News Search API, és JSON-választ kap. Ez az egyszerű JavaScript-alkalmazás keresési lekérdezést küld az API-nak, és feldolgozza az eredményeket.
 
-Bár ez az alkalmazás pythonban írt, az API-t-e a webes RESTful szolgáltatás kompatibilis szinte bármelyik programozási nyelvével. A minta forráskódja a [GitHubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingNewsSearchv7.rb) érhető el.
+Habár ez az alkalmazás Pythonban íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel. A minta forráskódja a [GitHubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingNewsSearchv7.rb) érhető el.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Ruby [2.4-es vagy újabb](https://www.ruby-lang.org/en/downloads/)
+* Ruby [2,4 vagy újabb](https://www.ruby-lang.org/en/downloads/)
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
@@ -42,7 +42,7 @@ Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://az
     require 'json'
     ```
 
-2. Az API-végpont, News search URL-CÍMÉT, az előfizetési kulcs változók létrehozása és a keresési kifejezést.
+2. Hozzon létre változókat az API-végponthoz, a Hírek keresési URL-címéhez, az előfizetési kulcshoz és a keresési kifejezéshez.
 
     ```ruby
     accessKey = "enter key here"
@@ -64,9 +64,9 @@ response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https'
 end
 ```
 
-## <a name="process-and-print-the-json-response"></a>Dolgozza fel, és nyomtassa ki a JSON-válasz
+## <a name="process-and-print-the-json-response"></a>A JSON-válasz feldolgozása és nyomtatása
 
-A válasz fogadását követően a JSON elemzése, és nyomtassa ki a válasz törzse, mind a fejlécek:
+A válasz fogadása után elemezheti a JSON-t, és kinyomtathatja a válasz törzsét és fejléceit is:
 
 ```ruby
 puts "\nRelevant Headers:\n\n"
@@ -179,4 +179,4 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Alkalmazás signle-lap létrehozása](tutorial-bing-news-search-single-page-app.md)
+> [Egyszeri-alkalmazás létrehozása](tutorial-bing-news-search-single-page-app.md)

@@ -1,74 +1,76 @@
 ---
-title: Több művelet futtatása az Azure IoT Central szabályból |} A Microsoft Docs
-description: IoT-központ egyetlen szabályról több művelet futtatása, és futtathatja a több szabály műveletek újrafelhasználható csoportok létrehozása.
+title: Több művelet futtatása Azure IoT Central-szabályból | Microsoft Docs
+description: Futtasson több műveletet egyetlen IoT Central szabályból, és hozzon létre újrafelhasználható műveleteket, amelyek több szabályból is futtathatók.
 services: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 03/19/2019
+ms.date: 07/10/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: philmea
-ms.openlocfilehash: 857d747fa691d1ec2b386d5931a7edea08b7e609
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: ad5f660ff72eceecbb6db2e9557b023ed2c6ea99
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522938"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69875813"
 ---
-# <a name="group-multiple-actions-to-run-from-one-or-more-rules"></a>Több művelet futtatható egy vagy több szabályt a csoporthoz
+# <a name="group-multiple-actions-to-run-from-one-or-more-rules"></a>Több művelet csoportosítása egy vagy több szabályból való futtatáshoz
 
-*Ez a cikk létrehozói és a rendszergazdák vonatkozik.*
+*Ez a cikk az építők és a rendszergazdákra vonatkozik.*
 
-Az Azure IoT Central szabályokat kell létrehozni egy feltétel teljesülése esetén a műveletek futtatására. Szabályok eszköz telemetriai adatok vagy események alapulnak. Például az operátort értesíteni, amikor egy eszköz hőmérséklete meghaladja a küszöbértéket. Ez a cikk ismerteti, hogyan használható [Azure Monitor](../azure-monitor/overview.md) *Műveletcsoportok* több művelet csatlakoztatása az IoT-központ szabály. Műveletcsoport csatlakoztathat több szabály. Egy [műveletcsoport](../azure-monitor/platform/action-groups.md) az Azure-előfizetés tulajdonosa által megadott értesítési beállítások gyűjteménye.
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
+
+Az Azure IoT Centralban szabályokat hozhat létre a műveletek futtatásához, ha egy feltétel teljesül. A szabályok az eszköz telemetria vagy eseményein alapulnak. Értesítheti például az operátort, ha az eszköz hőmérséklete meghaladja a küszöbértéket. Ez a cikk azt ismerteti, hogyan használhatók [Azure monitor](../azure-monitor/overview.md) *műveleti csoportok* több művelet egy IoT Central-szabályhoz való csatolásához. A műveleti csoportokat több szabályhoz is csatolhatja. A [műveleti csoport](../azure-monitor/platform/action-groups.md) az Azure-előfizetés tulajdonosa által meghatározott értesítési beállítások gyűjteménye.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - A Pay-As-You-Go application
-- Azure-fiókkal és -előfizetés létrehozása és kezelése az Azure Monitor Műveletcsoportok
+- Azure-fiók és-előfizetés Azure Monitor műveleti csoportok létrehozásához és kezeléséhez
 
 ## <a name="create-action-groups"></a>Műveletcsoportok létrehozása
 
-Is [létrehozása és kezelése az Azure Portalon Műveletcsoportok](../azure-monitor/platform/action-groups.md) és a egy [Azure Resource Manager-sablon](../azure-monitor/platform/action-groups-create-resource-manager-template.md).
+[Létrehozhat és kezelhet műveleti csoportokat a Azure Portal](../azure-monitor/platform/action-groups.md) vagy egy [Azure Resource Manager sablonnal](../azure-monitor/platform/action-groups-create-resource-manager-template.md).
 
-Műveletcsoport a következőket teheti:
+Egy műveleti csoport a következőket teheti:
 
-- Például egy e-mailt, az SMS-értesítések küldése vagy hangos hívás.
-- Futtassa a művelet, például egy webhook hívása.
+- Értesítéseket küldhet, például e-mailben, SMS-ben vagy hanghívást készíthet.
+- Futtasson egy olyan műveletet, mint például egy webhook hívása.
 
-A következő képernyőképen látható, amely elküldi az e-mailek és SMS-értesítések és a egy webhookot hív műveletcsoport:
+Az alábbi képernyőfelvételen egy olyan műveleti csoport látható, amely e-mailben és SMS-értesítéseket küld, és egy webhookot hív meg:
 
 ![Műveletcsoport](media/howto-use-action-groups/actiongroup.png)
 
-Műveletcsoport egy IoT-központ szabályt használ, a műveletcsoport ugyanabban az előfizetésben az Azure IoT központi alkalmazás kell lennie.
+Ha IoT Central szabályban szeretne műveleti csoportot használni, a műveleti csoportnak ugyanabban az Azure-előfizetésben kell lennie, mint a IoT Central alkalmazásnak.
 
-## <a name="use-an-action-group"></a>Műveletcsoport használata
+## <a name="use-an-action-group"></a>Műveleti csoport használata
 
-Műveletcsoport használhatja az IoT-központ alkalmazásban, először létre kell hoznia egy telemetria- vagy event szabályt. Amikor a szabály hozzá egy műveletet, válassza ki a **Azure Monitor Műveletcsoportok**:
+Ha egy műveleti csoportot szeretne használni a IoT Central alkalmazásban, először hozzon létre egy telemetria vagy egy eseményvezérelt szabályt. Ha műveletet ad hozzá a szabályhoz, válassza ki **Azure monitor műveleti csoportokat**:
 
 ![Művelet kiválasztása](media/howto-use-action-groups/chooseaction.png)
 
-Műveletcsoport kiválasztása az Azure-előfizetésből:
+Válasszon egy műveleti csoportot az Azure-előfizetésből:
 
-![Műveletcsoport kiválasztása](media/howto-use-action-groups/chooseactiongroup.png)
+![Műveleti csoport kiválasztása](media/howto-use-action-groups/chooseactiongroup.png)
 
-Kattintson a **Mentés** gombra. A műveletcsoport most már a futtatását, amikor a szabály akkor lesz kiváltva műveletek listájában jelenik meg:
+Kattintson a **Mentés** gombra. A műveleti csoport most megjelenik a szabály indításakor futtatandó műveletek listájában:
 
-![Műveleti csoport mentése](media/howto-use-action-groups/savedactiongroup.png)
+![Mentett műveleti csoport](media/howto-use-action-groups/savedactiongroup.png)
 
-A következő táblázat összefoglalja a támogatott művelettípusok küldött adatok:
+A következő táblázat összefoglalja a támogatott tevékenységtípusok számára továbbított adatokat:
 
 | Művelettípus | Kimeneti formátum |
 | ----------- | -------------- |
-| E-mail       | Standard szintű IoT-központ e-mail-sablon |
-| SMS         | Azure IoT Central alert: ${applicationName} - "${ruleName}" triggered on "${deviceName}" at ${triggerDate} ${triggerTime} |
-| Hang       | Azure I.O.T Central alert: rule "${ruleName}" triggered on device "${deviceName}" at ${triggerDate} ${triggerTime}, in application ${applicationName} |
-| Webhook     | {"schemaId": "AzureIoTCentralRuleWebhook", "data": {[regular webhook payload](#payload)} } |
+| Email       | Standard IoT Central e-mail sablon |
+| SMS         | Azure IoT Central riasztás: $ {applicationName}-"$ {ruleName}" aktiválva: "$ {deviceName}" a $ {triggerDate} $ {triggerTime} |
+| Hang       | Azure I. O. T központi riasztás: a (z) "$ {ruleName}" szabály aktiválva lett a (z) "$ {deviceName}" eszközön a $ {triggerDate} $ {triggerTime} alkalmazásban a $ {applicationName} alkalmazásban. |
+| Webhook     | { "schemaId" : "AzureIoTCentralRuleWebhook", "adatok": {[normál webhook hasznos](#payload)adat}} |
 
-A következő szöveg egy példa a műveletcsoport SMS-üzenet:
+A következő szöveg egy példa SMS-üzenetet küld egy műveleti csoportból:
 
 `iotcentral: Azure IoT Central alert: Sample Contoso 22xu4spxjve - "Low pressure alert" triggered on "Refrigerator 2" at March 20, 2019 10:12 UTC`
 
-<a id="payload"></a> A következő JSON-példa webhook művelet hasznos adat látható:
+<a id="payload"></a>A következő JSON egy példát mutat be a webhook művelet hasznos adataira:
 
 ```json
 {
@@ -111,4 +113,4 @@ A következő szöveg egy példa a műveletcsoport SMS-üzenet:
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megismerte a Műveletcsoportok használata a szabályok, a javasolt következő lépésre megtudhatja, hogyan [az eszközök kezeléséhez](howto-manage-devices.md).
+Most, hogy megismerte, hogyan használhatók a műveleti csoportok szabályokkal, a javasolt következő lépés az [eszközök kezelésének](howto-manage-devices.md)megismerése.

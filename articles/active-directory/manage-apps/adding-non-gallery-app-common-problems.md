@@ -3,8 +3,8 @@ title: A katalógusban nem szereplő alkalmazás hozzáadása során |} A Micros
 description: Gyakori problémák személyek face megismerheti egyéni katalógusban nem szereplő alkalmazások hozzáadásakor
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
-ms.author: celested
+ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c53675c27276fdcf403ca5a6add5d86fc38e410a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 38a9ef04389318d3588649117c930ff6efa3fe4e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57842457"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65784478"
 ---
 # <a name="problem-adding-a-non-gallery-application"></a>A probléma nem katalógusból származó alkalmazás hozzáadása
 

@@ -32,8 +32,12 @@
       href: 'https://github.com/Azure/azure-relay/tree/master/samples/wcf-relay'
 - name: Alapelvek
   items:
-    - name: Hitelesítés és engedélyezés
-      href: relay-authentication-and-authorization.md
+    - name: Biztonság
+      items:
+        - name: Hitelesítés és engedélyezés
+          href: relay-authentication-and-authorization.md
+        - name: Beépített biztonsági vezérlők
+          href: service-bus-relay-security-controls.md
     - name: Hibrid kapcsolatok protokollja
       href: relay-hybrid-connections-protocol.md
 - name: Útmutató
@@ -46,8 +50,6 @@
       items:
         - name: Névtér létrehozása
           href: relay-create-namespace-portal.md
-        - name: 'A WCF Relay használata annak biztosításához, hogy a WCF-szolgáltatásokat külső ügyfelek is el tudják érni'
-          href: relay-wcf-dotnet-get-started.md
         - name: Elérhető API-k
           href: relay-api-overview.md
           items:

@@ -1,110 +1,123 @@
-items:
 - name: Azure-beli virtuális gépek hibaelhárítása
   href: index.md
 - name: Foglalási hibák
   items:
-  - name: Foglalási hibák
-    href: allocation-failure.md
-  - name: Klasszikus üzemi modellek foglalási hibái
-    href: allocation-failure-classic.md
+    - name: Foglalási hibák
+      href: allocation-failure.md
+    - name: Klasszikus üzemi modellek foglalási hibái
+      href: allocation-failure-classic.md
 - name: RDP
   href: rdp.md
   items:
-  - name: RDP alaphelyzetbe állítása
-    href: reset-rdp.md
-  - name: RDP hibaelhárítása
-    href: troubleshoot-rdp-connection.md
-  - name: RDP részletes hibaelhárítása
-    href: detailed-troubleshoot-rdp.md
-  - name: Letiltott DHCP miatti RDP-hiba hibaelhárítása
-    href: troubleshoot-rdp-dhcp-disabled.md
-  - name: Az NSG-beállítás miatti RDP-hiba hibaelhárítása
-    href: troubleshoot-rdp-nsg-problem.md
-  - name: Konkrét hibák elhárítása
-    href: troubleshoot-specific-rdp-errors.md
-  - name: Licenckiszolgáló hiányával kapcsolatos hibák elhárítása
-    href: troubleshoot-rdp-no-license-server.md
-  - name: Távoli asztali szolgáltatásokkal kapcsolatos hibák elhárítása
-    href: troubleshoot-remote-desktop-services-issues.md
-  - name: Belső hibák elhárítása
-    href: Troubleshoot-rdp-internal-error.md
-  - name: Gyakori kapcsolatmegszakadási hibák elhárítása
-    href: troubleshoot-rdp-intermittent-connectivity.md
-  - name: Általános hibák elhárítása
-    href: troubleshoot-rdp-general-error.md
-  - name: Hitelesítési hibák hibaelhárítása
-    href: troubleshoot-authentication-error-rdp-vm.md
-  - name: Az Azure-beli virtuális gépek kapcsolati hibáinak elhárítása eseményazonosító alapján
-    href: event-id-troubleshoot-vm-rdp-connecton.md
-  - name: Virtuális gép statikus IP-cím miatti RDP-hibájának hibaelhárítása
-    href: troubleshoot-rdp-static-ip.md
-  - name: A virtuális gép letiltott hálózati adapter miatti RDP-hibájának hibaelhárítása
-    href: troubleshoot-rdp-nic-disabled.md
-  - name: Csökkentett üzemmód által okozott RDP-hiba elhárítása
-    href: troubleshoot-rdp-safe-mode.md
-  - name: A vendég operációs rendszer tűzfalának letiltása az Azure-beli virtuális gépen
-    href: disable-guest-os-firewall-windows.md
-  - name: Tűzfalszabály engedélyezése vagy letiltása egy vendég operációs rendszeren
-    href: enable-disable-firewall-rule-guest-os.md
-  - name: A vendég operációs rendszer tűzfala blokkolja a bejövő forgalmat
-    href: guest-os-firewall-blocking-inbound-traffic.md
-  - name: A vendég operációs rendszer tűzfalának konfigurációja helytelen
-    href: guest-os-firewall-misconfigured.md
-  - name: netvsc.sys által okozott RDP-hiba elhárítása
-    href: troubleshoot-rdp-driver-netvsc.md
+    - name: RDP alaphelyzetbe állítása
+      href: reset-rdp.md
+    - name: RDP hibaelhárítása
+      href: troubleshoot-rdp-connection.md
+    - name: RDP részletes hibaelhárítása
+      href: detailed-troubleshoot-rdp.md
+    - name: Letiltott DHCP miatti RDP-hiba hibaelhárítása
+      href: troubleshoot-rdp-dhcp-disabled.md
+    - name: Az NSG-beállítás miatti RDP-hiba hibaelhárítása
+      href: troubleshoot-rdp-nsg-problem.md
+    - name: Konkrét hibák elhárítása
+      href: troubleshoot-specific-rdp-errors.md
+    - name: Licenckiszolgáló hiányával kapcsolatos hibák elhárítása
+      href: troubleshoot-rdp-no-license-server.md
+    - name: Távoli asztali szolgáltatásokkal kapcsolatos hibák elhárítása
+      href: troubleshoot-remote-desktop-services-issues.md
+    - name: Belső hibák elhárítása
+      href: Troubleshoot-rdp-internal-error.md
+    - name: Gyakori kapcsolatmegszakadási hibák elhárítása
+      href: troubleshoot-rdp-intermittent-connectivity.md
+    - name: Általános hibák elhárítása
+      href: troubleshoot-rdp-general-error.md
+    - name: Hitelesítési hibák hibaelhárítása
+      href: troubleshoot-authentication-error-rdp-vm.md
+    - name: Az Azure-beli virtuális gépek kapcsolati hibáinak elhárítása eseményazonosító alapján
+      href: event-id-troubleshoot-vm-rdp-connecton.md
+    - name: Virtuális gép statikus IP-cím miatti RDP-hibájának hibaelhárítása
+      href: troubleshoot-rdp-static-ip.md
+    - name: A virtuális gép letiltott hálózati adapter miatti RDP-hibájának hibaelhárítása
+      href: troubleshoot-rdp-nic-disabled.md
+    - name: Csökkentett üzemmód által okozott RDP-hiba elhárítása
+      href: troubleshoot-rdp-safe-mode.md
+    - name: A vendég operációs rendszer tűzfalának letiltása az Azure-beli virtuális gépen
+      href: disable-guest-os-firewall-windows.md
+    - name: Tűzfalszabály engedélyezése vagy letiltása egy vendég operációs rendszeren
+      href: enable-disable-firewall-rule-guest-os.md
+    - name: A vendég operációs rendszer tűzfala blokkolja a bejövő forgalmat
+      href: guest-os-firewall-blocking-inbound-traffic.md
+    - name: A vendég operációs rendszer tűzfalának konfigurációja helytelen
+      href: guest-os-firewall-misconfigured.md
+    - name: netvsc.sys által okozott RDP-hiba elhárítása
+      href: troubleshoot-rdp-driver-netvsc.md
 - name: SSH
   items:
-  - name: SSH hibaelhárítása
-    href: troubleshoot-ssh-connection.md
-  - name: Fájlrendszer hibáinak elhárítása
-    href: https://support.microsoft.com/help/3213321
-  - name: A kernellel kapcsolatos rendszerindítási problémák elhárítása
-    href: https://support.microsoft.com/help/4091524
-  - name: Fstab-hibák elhárítása
-    href: https://support.microsoft.com/help/3206699
-  - name: SSH részletes hibaelhárítása
-    href: detailed-troubleshoot-ssh-connection.md
+    - name: SSH hibaelhárítása
+      href: troubleshoot-ssh-connection.md
+    - name: Fájlrendszer hibáinak elhárítása
+      href: 'https://support.microsoft.com/help/3213321'
+    - name: A kernellel kapcsolatos rendszerindítási problémák elhárítása
+      href: 'https://support.microsoft.com/help/4091524'
+    - name: Fstab-hibák elhárítása
+      href: 'https://support.microsoft.com/help/3206699'
+    - name: SSH részletes hibaelhárítása
+      href: detailed-troubleshoot-ssh-connection.md
 - name: Gyakori hibaüzenetek
   href: error-messages.md
-- name: Windows rendszerű virtuális gépek teljesítményproblémái
+- name: Virtuális gépek teljesítményproblémái
   href: performance-diagnostics.md
   items:
-  - name: A PerfInsights használata
-    href: how-to-use-perfInsights.md
-  - name: Teljesítménydiagnosztikai bővítmény
-    href: performance-diagnostics-vm-extension.md
+    - name: Windows
+      items:
+        - name: A PerfInsights használata
+          href: how-to-use-perfinsights.md
+        - name: Teljesítménydiagnosztikai bővítmény
+          href: performance-diagnostics-vm-extension.md
+    - name: Linux
+      items:
+        - name: A PerfInsights használata
+          href: how-to-use-perfinsights-linux.md
 - name: A Windows rendszerű virtuálisgép-ügynök offline telepítése
   href: install-vm-agent-offline.md
 - name: Virtuális gép ismételt üzembe helyezése
   items:
-  - name: Linux
-    href: redeploy-to-new-node-linux.md
-  - name: Windows
-    href: redeploy-to-new-node-windows.md
+    - name: Linux
+      href: redeploy-to-new-node-linux.md
+    - name: Windows
+      href: redeploy-to-new-node-windows.md
 - name: Virtuális gép jelszavának alaphelyzetbe állítása
   items:
-  - name: Windows
-    href: reset-local-password-without-agent.md
-  - name: Linux
-    href: reset-password.md
+    - name: Windows
+      href: reset-local-password-without-agent.md
+    - name: Linux
+      href: reset-password.md
 - name: Hálózati adapter alaphelyzetbe állítása
   href: reset-network-interface.md
 - name: Virtuális gép újraindítása vagy átméretezése
   href: restart-resize-error-troubleshooting.md
-- name: A soros konzol használata
+- name: Soros konzol
   items:
-  - name: Linux rendszerű virtuális gép
-    href: serial-console-linux.md
-    items:
-    - name: Soros konzolos GRUB/egyfelhasználós mód
-      href: serial-console-grub-single-user-mode.md
-    - name: Soros konzolos NMI/SysRq
-      href: serial-console-nmi-sysrq.md
-  - name: Windows rendszerű virtuális gép
-    href: serial-console-windows.md
-    items:
-    - name: A CMD és a Powershell parancsai
-      href: serial-console-cmd-ps-commands.md
+    - name: Soros konzol – áttekintés
+      href: serial-console-overview.md
+    - name: Soros konzol Linuxhoz
+      href: serial-console-linux.md
+      items:
+        - name: Soros konzolos GRUB/egyfelhasználós mód
+          href: serial-console-grub-single-user-mode.md
+        - name: Soros konzolos NMI/SysRq
+          href: serial-console-nmi-sysrq.md
+    - name: Soros konzol Windowshoz
+      href: serial-console-windows.md
+      items:
+        - name: A CMD és a Powershell parancsai
+          href: serial-console-cmd-ps-commands.md
+    - name: Soros konzol engedélyezése és letiltása
+      href: serial-console-enable-disable.md
+    - name: A soros konzol energiagazdálkodási lehetőségei
+      href: serial-console-power-options.md
+    - name: A soros konzol gyakori hibái
+      href: serial-console-errors.md
 - name: Tárerőforrások törlésekor jelentkező hibák
   href: storage-resource-deletion-errors.md
 - name: Klasszikus tárerőforrások törlésekor jelentkező hibák
@@ -119,51 +132,53 @@ items:
   href: troubleshoot-app-connection.md
 - name: Új virtuális gépek üzembe helyezése
   items:
-  - name: Linux
-    href: troubleshoot-deployment-new-vm-linux.md
-  - name: Windows
-    href: troubleshoot-deployment-new-vm-windows.md
+    - name: Linux
+      href: troubleshoot-deployment-new-vm-linux.md
+    - name: Windows
+      href: troubleshoot-deployment-new-vm-windows.md
 - name: Üzemelő példányok hibaelhárítása
   items:
-  - name: Linux
-    href: troubleshoot-deploy-vm-linux.md
-  - name: Windows
-    href: troubleshoot-deploy-vm-windows.md
+    - name: Linux
+      href: troubleshoot-deploy-vm-linux.md
+    - name: Windows
+      href: troubleshoot-deploy-vm-windows.md
 - name: Az eszköznevek módosultak
   href: troubleshoot-device-names-problems.md
 - name: Virtuálisgép-helyreállítási hozzáférés
   items:
-  - name: Windows
-    items:
-    - name: PowerShell
-      href: troubleshoot-recovery-disks-windows.md
-    - name: Azure Portal
-      href: troubleshoot-recovery-disks-portal-windows.md
-  - name: Linux
-    items:
-    - name: parancssori felület
-      href: troubleshoot-recovery-disks-linux.md
-    - name: Azure Portal
-      href: troubleshoot-recovery-disks-portal-linux.md
+    - name: Windows
+      items:
+        - name: PowerShell
+          href: troubleshoot-recovery-disks-windows.md
+        - name: Azure Portal
+          href: troubleshoot-recovery-disks-portal-windows.md
+    - name: Linux
+      items:
+        - name: parancssori felület
+          href: troubleshoot-recovery-disks-linux.md
+        - name: Azure Portal
+          href: troubleshoot-recovery-disks-portal-linux.md
 - name: Rendszerindítási hibák
   href: boot-error-troubleshoot.md
   items:
-  - name: Rendszerindítási diagnosztika
-    href: boot-diagnostics.md
-  - name: BitLocker-hibák
-    href: troubleshoot-bitlocker-boot-error.md
-  - name: Fájlrendszer hibáinak keresése
-    href: troubleshoot-check-disk-boot-error.md
-  - name: Kék képernyős hibák
-    href: troubleshoot-common-blue-screen-error.md
-  - name: A virtuális gép indítása elakadt
-    href: troubleshoot-vm-boot-configure-update.md
-  - name: Egy kulcsfontosságú szolgáltatás meghiúsult
-    href: troubleshoot-critical-service-failed-boot-error.md
-  - name: Újraindítási hurok
-    href: troubleshoot-reboot-loop.md
-  - name: Windows Update-problémák
-    href: troubleshoot-stuck-updating-boot-error.md
+    - name: Az Azure Virtual Machine rendszerindítási hibája
+      href: troubleshoot-vm-boot-error.md
+    - name: Rendszerindítási diagnosztika
+      href: boot-diagnostics.md
+    - name: BitLocker-hibák
+      href: troubleshoot-bitlocker-boot-error.md
+    - name: Fájlrendszer hibáinak keresése
+      href: troubleshoot-check-disk-boot-error.md
+    - name: Kék képernyős hibák
+      href: troubleshoot-common-blue-screen-error.md
+    - name: A virtuális gép indítása elakadt
+      href: troubleshoot-vm-boot-configure-update.md
+    - name: Egy kulcsfontosságú szolgáltatás meghiúsult
+      href: troubleshoot-critical-service-failed-boot-error.md
+    - name: Újraindítási hurok
+      href: troubleshoot-reboot-loop.md
+    - name: Windows Update-problémák
+      href: troubleshoot-stuck-updating-boot-error.md
 - name: Szabályozási hibák
   href: troubleshooting-throttling-errors.md
 - name: Beágyazott virtualizálás használata
@@ -172,9 +187,9 @@ items:
   href: understand-vm-reboot.md
 - name: Távoli hibaelhárítási eszközök
   href: remote-tools-troubleshoot-azure-vm-issues.md
-ms.openlocfilehash: 7ba013c372eefcbf83bb141ba44fcea9b68064de
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382970"
+- name: Virtuális gép javítása
+  items:
+    - name: Windows rendszerű virtuális gép javítása az Azure-beli virtuális gép javítási parancsaival
+      href: repair-windows-vm-using-azure-virtual-machine-repair-commands.md
+    - name: Linux rendszerű virtuális gép javítása az Azure-beli virtuális gép javítási parancsaival
+      href: repair-linux-vm-using-azure-virtual-machine-repair-commands.md

@@ -9,11 +9,11 @@ ms.date: 8/17/2018
 ms.author: rambala
 ms.custom: seodec18
 ms.openlocfilehash: 14f65851e50ed25024524f6d988ba2b2f2b3aeba
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53083784"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60367667"
 ---
 # <a name="configure-bfd-over-expressroute"></a>BFD konfigurálása expressroute-on keresztül
 
@@ -21,7 +21,7 @@ Az ExpressRoute privát társviszony-létesítésen keresztül támogatja a két
 
 ## <a name="need-for-bfd"></a>BFD szükség
 
-Az alábbi ábra bemutatja az ExpressRoute-kapcsolatcsoporton keresztül BFD engedélyezése előnyeit: [ ![1]][1]
+Az alábbi ábrán az az előnye, hogy ExpressRoute-kapcsolatcsoporton keresztül BFD engedélyezése: [![1]][1]
 
 Engedélyezheti az ExpressRoute-kapcsolatcsoport vagy a 2. rétegbeli kapcsolatokat vagy felügyelt 3. rétegbeli kapcsolatokat. Mindkét esetben ha az ExpressRoute kapcsolati útvonal egy vagy több 2. rétegbeli eszközök felelőssége minden olyan hivatkozás hibák észlelése az elérési út rejlik a felsőbb szintű BGP-t.
 

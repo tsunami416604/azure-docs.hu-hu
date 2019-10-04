@@ -9,11 +9,11 @@ ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: f3e05f213821b053f8cf6abbbc50a14e9ea62295
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58125294"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179777"
 ---
 # <a name="internet-of-things-iot-security-architecture"></a>Eszközök internetes hálózata (IoT) biztonsági architektúra
 
@@ -171,13 +171,13 @@ Az egyes kategóriák leírt az Azure IoT-architektúra, az ebben a példában a
 
 **(S) hamisítást**: A támadó titkosítási kulcs adatai kinyerése előfordulhat, hogy egy eszközt, vagy a szoftver vagy hardver szintjén, és ezt követően a rendszer egy másik fizikai vagy virtuális eszköz identitása alatt az eszköz a megosztottkulcs-anyag foglalt a hozzáférés. Egy jó ábra, amely kapcsolhatja be minden TV és, hogy azok az eszközök népszerű prankster távvezérlés.
 
-**Szolgáltatásmegtagadás (D)**: Egy eszköz nem alkalmas működik vagy történő kommunikációhoz választógomb gyakoriságot vagy cutting fenyegetéseknek zavarása jeleníthetők meg. Például egy felügyeleti kamera, amely a teljesítmény vagy a hálózati kapcsolat szándékosan kiejtése rendelkezett nem készíthető jelentés az adatokat, minden.
+**Szolgáltatásmegtagadás (D)** : A rádiófrekvenciák zavarása vagy a vezetékek elvágása egy eszközt teljesen működésképtelenné tehet, vagy meggátolhat a kommunikációban. Például, egy olyan biztonsági kamera, amelynek áramellátását vagy hálózati kapcsolatát tönkretették, egyáltalán nem tud adatokat továbbítani.
 
-**Illetéktelen módosításának (T)**: A támadó előfordulhat, hogy részben vagy egészben cserélje le a szoftvert az eszközön futó potenciálisan lehetővé teszi a lecserélt szoftver kihasználhatja a valódi identitás, az eszköz a megosztottkulcs-anyag vagy a titkosítási funkciók anyagok legfontosabb rendelkezés voltak elérhetők, ha a a program tiltott. Például egy támadó kinyert megosztottkulcs-anyag elfogására és a le adatokat az eszközről, a kommunikáció elérési úttal, és cserélje le az ellopott megosztottkulcs-anyag adatokkal van hitelesítve hamis adatokat is használhatja.
+**Illetéktelen módosításának (T)** : A támadó részben vagy teljesen kicserélheti az eszközön futó szoftvert, lehetővé téve, hogy a kicserélt szoftver kihasználja az eszköz valódi azonosítóit, és hozzáférhessen a kulcshoz, vagy a kulcsot tároló létesítményhez, ha az elérhető az illegális szoftver számára. Például egy támadó kinyert megosztottkulcs-anyag elfogására és a le adatokat az eszközről, a kommunikáció elérési úttal, és cserélje le az ellopott megosztottkulcs-anyag adatokkal van hitelesítve hamis adatokat is használhatja.
 
 **(I) információk felfedése**: Ha az eszköz úgy szoftver fut, úgy szoftver vélhetően kockáztató adatok illetéktelen felek számára. Például egy támadó kinyert megosztottkulcs-anyag behelyezése maga az eszköz és a vezérlő nebo Pole átjáró vagy siphon ki információkat az átjáró közötti kommunikációs útvonal, előfordulhat, hogy használhatja.
 
-**(E) jogok kiterjesztése**: Egy eszköz, amely adott függvényt is mindenképpen foglalkozhat egyéb teendőivel. Például, hogy van programozva felénél megnyitásához szelepet is kell címeket ágyaznak, egészen a megnyitásához.
+**(E) jogok kiterjesztése**: Egy meghatározott funkcióra tervezett eszközt más funkció végzésére kényszerítenek. Például, hogy van programozva felénél megnyitásához szelepet is kell címeket ágyaznak, egészen a megnyitásához.
 
 | **Összetevő** | **Fenyegetés** | **Kockázatcsökkentés** | **Kockázat** | **Megvalósítása** |
 | --- | --- | --- | --- | --- |
@@ -192,9 +192,9 @@ Az egyes kategóriák leírt az Azure IoT-architektúra, az ebben a példában a
 
 **Hamisítást**: A támadó titkosítási kulcs adatai kinyerése előfordulhat, hogy egy eszközt, vagy a szoftver vagy hardver szintjén, és ezt követően a rendszer egy másik fizikai vagy virtuális eszköz identitása alatt az eszköz a megosztottkulcs-anyag foglalt a hozzáférés.
 
-**Szolgáltatásmegtagadás**: Egy eszköz nem alkalmas működik vagy történő kommunikációhoz választógomb gyakoriságot vagy cutting fenyegetéseknek zavarása jeleníthetők meg. Például egy felügyeleti kamera, amely a teljesítmény vagy a hálózati kapcsolat szándékosan kiejtése rendelkezett nem készíthető jelentés az adatokat, minden.
+**Szolgáltatásmegtagadás**: A rádiófrekvenciák zavarása vagy a vezetékek elvágása egy eszközt teljesen működésképtelenné tehet, vagy meggátolhat a kommunikációban. Például, egy olyan biztonsági kamera, amelynek áramellátását vagy hálózati kapcsolatát tönkretették, egyáltalán nem tud adatokat továbbítani.
 
-**Illetéktelen**: A támadó előfordulhat, hogy részben vagy egészben cserélje le a szoftvert az eszközön futó potenciálisan lehetővé teszi a lecserélt szoftver kihasználhatja a valódi identitás, az eszköz a megosztottkulcs-anyag vagy a titkosítási funkciók anyagok legfontosabb rendelkezés voltak elérhetők, ha a a program tiltott.
+**Illetéktelen**: A támadó részben vagy teljesen kicserélheti az eszközön futó szoftvert, lehetővé téve, hogy a kicserélt szoftver kihasználja az eszköz valódi azonosítóit, és hozzáférhessen a kulcshoz, vagy a kulcsot tároló létesítményhez, ha az elérhető az illegális szoftver számára.
 
 **Illetéktelen**: Egy ilyen előcsarnokbeli fényképe sikerült célja egy felügyeleti kamera, amely egy üres előcsarnokbeli látható spektrum képe látható. Füst vagy fire érzékelő sikerült készítőnek tekintene valaki rendelkezés egy világosabb, annak alapján. Mindkét esetben az eszköz lehet technikailag teljesen megbízható-e a rendszer felé, de azt jelenti, hogy úgy információkat.
 
@@ -210,7 +210,7 @@ Az egyes kategóriák leírt az Azure IoT-architektúra, az ebben a példában a
 
 **Illetéktelen**: Az eszköz újra tudja konfigurálni, hogy ismeretlen a rendszerbe (kívül ismert hitelesítési paraméterek) állapotban működjön, és így adja meg hibásan lesznek értelmezve adatok
 
-**Jogok kiterjesztése**: Egy eszköz, amely adott függvényt is mindenképpen foglalkozhat egyéb teendőivel. Például, hogy van programozva felénél megnyitásához szelepet is kell címeket ágyaznak, egészen a megnyitásához.
+**Jogok kiterjesztése**: Egy meghatározott funkcióra tervezett eszközt más funkció végzésére kényszerítenek. Például, hogy van programozva felénél megnyitásához szelepet is kell címeket ágyaznak, egészen a megnyitásához.
 
 **Szolgáltatásmegtagadás**: Az eszköz kapcsolható egy állapotba kerül, ahol a tájékoztató nem lehetséges.
 

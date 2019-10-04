@@ -1,56 +1,58 @@
 ---
-title: adatfájl (eszköz Streamek előzetes verzió)
-description: adatfájl (eszköz Streamek előzetes verzió)
-author: rezas
+title: fájl belefoglalása (eszköz-adatfolyamok előzetes verzió)
+description: fájl belefoglalása (eszköz-adatfolyamok előzetes verzió)
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: include
-ms.date: 03/14/2019
-ms.author: rezas
+ms.date: 08/20/2019
+ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: d1cfe3d998c08aef2b845315a16d881dea1cd1f6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 46f8e59713896cd94b96de62d982072119c32513
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58124354"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050169"
 ---
-Ez a szakasz ismerteti, hogyan hozhat létre egy IoT hub használata a [az Azure portal](https://portal.azure.com).
+Ez a szakasz azt ismerteti, hogyan hozható létre IoT hub a [Azure Portal](https://portal.azure.com)használatával.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. Válassza a +**erőforrás létrehozása**, majd válassza a **IOT-**.
+1. Válassza az **erőforrás létrehozása**lehetőséget, majd írja be a IoT hub **kifejezést a keresés a piactéren** mezőbe.
 
-3. Kattintson a **az Iot Hub** a jobb oldali listából. Az IoT hub létrehozása az első képernyőn láthatja.
+1. Válassza a **IoT hub** elemet a keresési eredmények közül, majd válassza a **Létrehozás**lehetőséget.
 
-   ![Képernyőfelvétel: a központ létrehozása az Azure Portalon](./media/iot-hub-include-create-hub-device-streams/iot-hub-creation-1.png)
+1. Az **alapvető beállítások** lapon végezze el a következő mezőket:
 
-   Töltse ki a mezőket:
+   - **Előfizetés**: Válassza ki a hubhoz használni kívánt előfizetést.
 
-   **Előfizetés**: Válassza ki a az IoT hub használni kívánt előfizetést.
+   - **Erőforráscsoport**: Válasszon egy erőforráscsoportot, vagy hozzon létre egy újat. Új létrehozásához válassza az **új létrehozása** elemet, és adja meg a használni kívánt nevet. Meglévő erőforráscsoport használatához válassza ki az erőforráscsoportot. További információ: [Azure Resource Manager erőforráscsoportok kezelése](../articles/azure-resource-manager/manage-resource-groups-portal.md).
 
-   **Erőforráscsoport**: Hozzon létre egy új erőforráscsoportot, vagy használjon egy meglévőt. Hozzon létre egy új, kattintson a **új létrehozása** , és töltse ki a használni kívánt nevét. Meglévő erőforráscsoport használatához kattintson **meglévő** és a legördülő listából válassza ki az erőforráscsoportot. További információkért lásd: [kezelése az Azure Resource Manager erőforráscsoportokat](../articles/azure-resource-manager/manage-resource-groups-portal.md).
+   - **Régió**: Válassza ki azt a régiót, amelyben el szeretné helyezni a hubot. Válasszon egy olyan régiót, amely támogatja a IoT Hub Device Streams Preview-t, az **USA középső** régióját vagy az **USA középső – euap**.
 
-   **Régió**: Ez az a régió, amelyben a hub található szeretné. Válassza ki a régiót, amely támogatja az IoT Hub eszköz Streamek előzetes, USA középső RÉGIÓJA vagy a központi USA régiója – EUAP.
+   - **IoT hub neve**: Adja meg a hub nevét. A névnek globálisan egyedinek kell lennie. Ha a megadott név elérhető, egy zöld pipa jelenik meg.
 
-   **Az IoT Hub nevét**: Helyezze el az IoT hub nevét. A névnek globálisan egyedinek kell lennie. Ha a megadott név elérhető, egy zöld pipa jelenik meg.
+   ![IoT hub létrehozása a Azure Portalban](./media/iot-hub-include-create-hub-device-streams/iot-hub-creation-device-streams.png)
 
    [!INCLUDE [iot-hub-pii-note-naming-hub](iot-hub-pii-note-naming-hub.md)]
 
-4. Kattintson a **tovább: Mérete és méretezése** az IoT hub létrehozása a folytatáshoz.
+1. Válassza **a Next (tovább) lehetőséget: Méret és méretezés** a központ létrehozásához.
 
-   ![Képernyőfelvétel: a beállítás mérete és méretezése egy új IoT hub, az Azure portal használatával](./media/iot-hub-include-create-hub-device-streams/iot-hub-creation-2-free.png)
+   ![Az új IoT hub méretének és méretezésének beállítása a Azure Portal használatával](./media/iot-hub-include-create-hub-device-streams/iot-hub-creation-02.png)
 
-   Ezen a képernyőn elvégezhető a szükséges az alapértelmezett beállításokat és egyszerűen kattintson **felülvizsgálat + létrehozása** alján.
+   A **méret és a skála**lehetőségnél fogadja el az alapértelmezett beállításokat, és válassza a lap alján található **Áttekintés + létrehozás** elemet. Vegye figyelembe a következő lehetőségeket:
 
-   **Tarifacsomag és méret**: Győződjön meg arról, válassza ki a standard (S1, S2, S3) vagy az ingyenes (F1) szinten. Ez a választás az Ön és a streamelési nem tervezett munkaterhelési típusoktól az hub (pl. telemetriai üzeneteket) méretét is vezérlik. Például az ingyenes szintjének célja, tesztelés és értékelés céljából használják. Lehetővé teszi a 500 eszközt az IoT hubhoz, és legfeljebb napi 8000 üzenet továbbítását kell csatlakoztatni. Minden Azure-előfizetés hozhat létre egy IoT Hub ingyenes szintjéhez. 
+   - **Díjszabási és skálázási szintek**: A kiválasztott szintet. Válassza ki az egyik standard szintet (**S1**, **S2**vagy **S3**) vagy **az F1: Ingyenes szintet**. Ezt a választást a flotta mérete és a központban várható nem streaming számítási feladatok, például a telemetria üzenetei is megadhatják. Az ingyenes szintet például tesztelésre és kiértékelésre tervezték. Lehetővé teszi, hogy a 500-es eszközök a IoT hubhoz és naponta legfeljebb 8 000 üzenetet csatlakoztassanak. Az egyes Azure-előfizetések az ingyenes szinten hozhatnak létre egy IoT hubot. 
 
-   **IoT Hub-egységek**: Ez a választás attól függ, számítási feladatok várt az eseményközpont-streaming - most kiválaszthatja az 1.
+   - **IoT hub egységek száma**: A napi egységenként engedélyezett üzenetek száma a központ díjszabási szintjétől függ. Ez a választás a központban várható nem streaming számítási feladatoktől függ. Most kiválaszthatja az 1 lehetőséget.
 
-   A többi szint lehetőség részleteiért lásd: [a megfelelő IoT Hub-csomag kiválasztása](../articles/iot-hub/iot-hub-scaling.md).
+   -  > **Az eszközről a felhőbe irányuló**speciális beállítások: Ez a tulajdonság az eszközről a felhőbe irányuló üzeneteket az üzenetek egyidejű olvasóinak számához kapcsolja. A legtöbb hubhoz csak négy partíció szükséges.
 
-5. Kattintson a **tekintse át + létrehozása** , ellenőrizze a beállításokat. Hasonló ezen a képernyőn láthatja.
+   További információ a rétegek beállításairól: [válassza a megfelelő IoT hub-szintet](../articles/iot-hub/iot-hub-scaling.md).
 
-   ![Képernyőfelvétel az új IoT hub létrehozásához információk áttekintése](./media/iot-hub-include-create-hub-device-streams/iot-hub-creation-3-free.png)
+1. A lehetőségek áttekintéséhez válassza a **felülvizsgálat + létrehozás**elemet. Az eredmények a következőhöz hasonlóak lesznek:
 
-6. Kattintson a **létrehozás** az új IoT hub létrehozása. A hub létrehozása eltarthat néhány percig.
+   ![Információk az új IoT hub létrehozásához](./media/iot-hub-include-create-hub-device-streams/iot-hub-creation-03.png)
+
+1. Az új IoT hub létrehozásához válassza a **Létrehozás**lehetőséget. A folyamat eltarthat néhány percig.

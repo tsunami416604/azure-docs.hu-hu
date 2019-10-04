@@ -11,11 +11,11 @@ ms.date: 04/19/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.openlocfilehash: fac33a01afc2efc1ab06c4783c11f7a089bb6208
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60014243"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62114154"
 ---
 # <a name="troubleshooting-source-anchor-issues-during-installation"></a>A telepítés során forrás Forráshorgony kapcsolatos hibák elhárítása
 Ez a cikk ismerteti a különböző forráshorgony kapcsolatos problémák megoldásához a telepítési és ajánlatok módon során esetlegesen felmerülő problémákat.

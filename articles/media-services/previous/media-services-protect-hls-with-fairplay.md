@@ -13,14 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 7763338a5c2d5ccb58fe912d9989ab5bb57d5932
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 8d5683cb060b63aebad7c68672c78f5b350a25d3
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258496"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67073580"
 ---
 # <a name="protect-your-hls-content-with-apple-fairplay-or-microsoft-playready"></a>HLS-tartalmak az Apple fairplay által vagy a Microsoft PlayReady védelme
+
+> [!NOTE]
+> Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).   > A Media Services v2 jelennek meg nincs új szolgáltatásokat és funkciókat. <br/>Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még [v3 a v2 migrálási útmutató](../latest/migrate-from-v2-to-v3.md)
+>
+
 Az Azure Media Services lehetővé teszi, hogy dinamikusan titkosítani a HTTP Live Streaming (HLS) használatával a következő formátumok:  
 
 * **A boríték AES-128 titkosítatlan kulcs**
@@ -54,7 +59,7 @@ A következőkre szükség, hogy a titkosított FairPlay HLS, és a FairPlay-lic
 
 A Media Services kulcskézbesítési oldalon be kell állítani a az alábbiakat:
 
-  * **Alkalmazás-tanúsítvány (AC)**: Ez az egy .pfx-fájlt, amely tartalmazza a titkos kulcsot. A fájl létrehozásához és a titkosítás, a jelszó.
+  * **Alkalmazás-tanúsítvány (AC)** : Ez az egy .pfx-fájlt, amely tartalmazza a titkos kulcsot. A fájl létrehozásához és a titkosítás, a jelszó.
 
        Egy kulcs objektumtovábbítási szabályzat konfigurálásakor meg kell adnia, hogy a jelszó és a .pfx-fájlt Base64 formátumban.
 
@@ -77,7 +82,7 @@ A Media Services kulcskézbesítési oldalon be kell állítani a az alábbiakat
 
 A következőkre FPS ügyféloldali be kell állítania:
 
-  * **Alkalmazás-tanúsítvány (AC)**: Ez az egy.cer/.der fájlt, amely tartalmazza a nyilvános kulcsot, amely az operációs rendszer néhány hasznos adat titkosítására használja. A Media Services kell ismernem, mert a a Windows Media Player. A kulcstovábbítást visszafejti a megfelelő titkos kulccsal.
+  * **Alkalmazás-tanúsítvány (AC)** : Ez az egy.cer/.der fájlt, amely tartalmazza a nyilvános kulcsot, amely az operációs rendszer néhány hasznos adat titkosítására használja. A Media Services kell ismernem, mert a a Windows Media Player. A kulcstovábbítást visszafejti a megfelelő titkos kulccsal.
 
 A FairPlay titkosított stream lejátszás, első beolvasása egy valódi kérje meg, és ezután hozza létre a tanúsítványnak valódi. A folyamat hoz létre minden három részből áll:
 
@@ -129,7 +134,7 @@ Az iOS SDK használatával is fejleszthet alkalmazásokat player. Hogy a FairPla
 >
 >
 
-## <a name="streaming-urls"></a>Streamelési URL-ek
+## <a name="streaming-urls"></a>Streamelési URL-címek
 Ha egynél több DRM-az eszköz titkosítva van, a streamelési URL-címben egy titkosítási címke használja: (formátum = "m3u8-aapl" titkosítási = "xxx").
 
 A következő szempontokat kell figyelembe venni:
@@ -508,7 +513,7 @@ namespace DynamicEncryptionWithFairPlay
             // Get a reference to the streaming manifest file from the  
             // collection of files in the asset.
 
-            var assetFile = asset.AssetFiles.Where(f => f.Name.ToLower().
+            var assetFile = asset.AssetFiles.LoList().Where(f => f.Name.ToLower().
                          EndsWith(".ism")).
                          FirstOrDefault();
 

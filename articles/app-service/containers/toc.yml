@@ -7,7 +7,7 @@
     - name: Tudnivalók a Linux rendszeren futó App Service-ről
       href: app-service-linux-intro.md
     - name: Az üzemeltetési lehetőségek összehasonlítása
-      href: ../overview-compare.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+      href: /azure/architecture/guide/technology-choices/compute-decision-tree
 - name: Gyors útmutatók
   expanded: true
   items:
@@ -24,7 +24,7 @@
     - name: Ruby-alkalmazás létrehozása
       href: quickstart-ruby.md
     - name: Egyéni tároló futtatása
-      href: quickstart-docker-go.md
+      href: quickstart-docker.md
     - name: Többtárolós alkalmazás létrehozása
       href: quickstart-multi-container.md
 - name: Oktatóanyagok
@@ -65,8 +65,6 @@
       href: ../samples-powershell.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
 - name: Alapelvek
   items:
-    - name: Az App Service működése
-      href: ../app-service-how-works-readme.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: App Service-csomagok
       href: ../overview-hosting-plans.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: App Service-környezet
@@ -83,8 +81,8 @@
   items:
     - name: Alkalmazás konfigurálása
       items:
-        - name: Alkalmazásbeállítások használata
-          href: ../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+        - name: Általános beállítások konfigurálása
+          href: ../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
         - name: Az ASP.NET Core konfigurálása
           href: configure-language-dotnetcore.md
         - name: A Node.js konfigurálása
@@ -152,7 +150,7 @@
     - name: Az alkalmazás méretezése
       items:
         - name: Kiszolgálókapacitás vertikális felskálázása
-          href: ../web-sites-scale.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+          href: ../manage-scale-up.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
         - name: Horizontális felskálázás több példányra
           href: ../../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
         - name: Nagy sűrűségű üzemeltetés
@@ -195,6 +193,8 @@
       href: '../../azure-subscription-service-limits.md#app-service-limits'
     - name: Szolgáltatási hírek
       href: 'https://azure.microsoft.com/updates/?product=app-service'
+    - name: Migration Assistant-útmutatók
+      href: 'https://github.com/Azure/App-Service-Migration-Assistant/tree/master/MigrationDocs'
     - name: Ajánlott eljárások
       href: ../app-service-best-practices.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: Példák
@@ -204,7 +204,7 @@
     - name: Részletes útmutatók
       items:
         - name: Referenciaarchitektúrák
-          href: /azure/architecture/reference-architectures/app-service-web-app/
+          href: /azure/architecture/reference-architectures/app-service-web-app/basic-web-app
         - name: Üzembehelyezési szkriptek
           href: 'https://azure.microsoft.com/documentation/scripts/'
     - name: Hibaelhárítás

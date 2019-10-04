@@ -1,65 +1,52 @@
-### YamlMime:YamlDocument
-ms.openlocfilehash: 6acffc5056f916f2e05c7a0fd3eb325fd89a9e4b
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117051"
-documentType: LandingData
-title: Azure Dedicated HSM – dokumentáció
+### YamlMime:Landing
+title: Az Azure Dedicated HSM dokumentációja
+summary: Ismerje meg, hogyan hozhatja létre és tarthatja karban az Azure Dedicated HSM használatával a kulcsokat, amelyekkel elérheti és titkosíthatja a felhőalapú erőforrásokat, alkalmazásokat és megoldásokat. Oktatóanyagok, API-referenciák és egyebek.
 metadata:
-  title: Az Azure Dedicated HSM dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
-  meta.description: Learn how to use Azure Dedicated HSM to create and maintain keys that access and encrypt your cloud resources, apps, and solutions. Tutorials, API references, and more.
+  title: Az Azure Dedicated HSM dokumentációja
+  description: Ismerje meg, hogyan hozhatja létre és tarthatja karban az Azure Dedicated HSM használatával a kulcsokat, amelyekkel elérheti és titkosíthatja a felhőalapú erőforrásokat, alkalmazásokat és megoldásokat. Oktatóanyagok, API-referenciák és egyebek.
   services: dedicated-hsm
-  author: barclayn
-  manager: barbkess
-  layout: LandingPage
-  ms.assetid: 
   ms.service: dedicated-hsm
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 11/21/2018
-  ms.author: barclayn
-abstract:
-  description: Ismerje meg a dedikált HSM működését, és hogy vajon érinti-e az Ön környezetét.
-sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
-    items:
-    - href: /azure/dedicated-hsm/overview
-      html: <p>Ismerje meg az Azure Dedicated HSM-et.</p>
-      image:
-        src: media/index/hsm.svg
-      title: Azure Dedicated HSM – áttekintés
-    - href: /azure/dedicated-hsm/faq
-      html: <p>A Dedicated HSM tervezésének szempontjai</p>
-      image:
-        src: media/index/guide.svg
-      title: Az üzembehelyezési architektúra kiválasztása
-- title: Részletes útmutatók
-  items:
-  - type: paragraph
-    text: ''
-  - type: list
-    style: icon48
-    items:
-    - image:
-        src: media/index/cli.svg
-      text: Azure CLI
-      href: /azure/dedicated-hsm/tutorial-deploy-hsm-cli
-    - image:
-        src: media/index/logo_powershell.svg
-      text: PowerShell
-      href: /azure/dedicated-hsm/tutorial-deploy-hsm-powershell
-- title: Referencia
-  items:
-  - type: list
-    style: cards
-    className: cardsD
-    items:
-    - title: GYIK
-      html: <p><a href="/azure/dedicated-hsm/faq/">Gyakori kérdések</a></p>
+  author: msmbaldwin
+  ms.author: mbaldwin
+  manager: rkarlin
+  ms.date: 09/19/2019
+  ms.openlocfilehash: 9e592fdb5fa87487f131bb0aca0c6176175e5385
+  ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 09/26/2019
+  ms.locfileid: "71300102"
+landingContent:
+- title: Információk a Dedicated HSM-ről
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az a Dedicated HSM?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Magas rendelkezésre állás
+      url: high-availability.md
+    - text: Fizikai biztonság
+      url: physical-security.md
+    - text: Hálózat
+      url: networking.md
+    - text: Támogatási lehetőségek
+      url: supportability.md
+    - text: Figyelés
+      url: monitoring.md
+- title: Bevezetés
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Telepítés virtuális hálózatra az Azure CLI-vel
+      url: tutorial-deploy-hsm-cli.md
+    - text: Telepítés virtuális hálózatra az Azure PowerShell-lel
+      url: tutorial-deploy-hsm-powershell.md
+- title: Forgatókönyvek
+  linkLists:
+  - linkListType: architecture
+    links:
+    - text: Az Azure Dedicated HSM üzembe helyezési architektúrája
+      url: deployment-architecture.md

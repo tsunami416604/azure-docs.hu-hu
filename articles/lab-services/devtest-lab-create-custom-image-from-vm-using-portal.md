@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
 ms.openlocfilehash: 07f3b60b9218f74bb3a778daa27f31687c4538b2
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550088"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60868452"
 ---
 # <a name="create-a-custom-image-from-a-vm"></a>Egyéni lemezkép készítése egy virtuális Gépről
 
@@ -39,7 +39,7 @@ Egy egyéni lemezkép készítése egy üzembe helyezett virtuális Gépet, és 
  
 1. Az a **a virtual machines** ablaktáblán válassza ki a virtuális Gépet, amelyről szeretné létrehozni az egyéni rendszerkép.
 
-1. Válassza ki a virtuális gép kezelése panelen **egyéni kép létrehozása (VHD)**.
+1. Válassza ki a virtuális gép kezelése panelen **egyéni kép létrehozása (VHD)** .
 
     ![Hozzon létre egyéni rendszerkép menüpont](./media/devtest-lab-create-template/create-custom-image.png)
 

@@ -1,7 +1,7 @@
 ---
-title: Diagnosztikai áttekintése – Azure App Service-ben |} A Microsoft Docs
-description: Ismerje meg, hogyan háríthatóak el a problémákat az App Service-diagnosztikával webalkalmazással együtt.
-keywords: App Service-ben, az azure app Service-ben, diagnosztika, támogatási, webalkalmazás, hibaelhárítás, önsegítő anyagok
+title: Azure App Service diagnosztika – áttekintés | Microsoft Docs
+description: Ismerje meg, hogy miként lehet elhárítani az alkalmazással kapcsolatos problémákat App Service diagnosztikát.
+keywords: App Service, Azure app Service, diagnosztika, támogatás, webalkalmazás, hibaelhárítás, önkiszolgáló Súgó
 services: app-service
 documentationcenter: ''
 author: jen7714
@@ -10,62 +10,108 @@ editor: ''
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/10/2017
 ms.author: jennile
 ms.custom: seodec18
-ms.openlocfilehash: a8b256f43d8e4103404ab4276431ceb06d9ed36a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: c9d6bc8802b54e970fe863ed6a7283f01c947916
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53731297"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066853"
 ---
-# <a name="azure-app-service-diagnostics-overview"></a>Az Azure App Service – diagnosztika áttekintése 
+# <a name="azure-app-service-diagnostics-overview"></a>Azure App Service diagnosztika áttekintése
 
-Amikor egy webalkalmazás rendszert használ, érdemes elő kell készíteni a 500-as hibák a felhasználók számára arról tájékoztat, hogy webhelye nem működik az esetleg felmerülő problémákat. Az App Service diagnosztikái egy intelligens és interaktív élmény szükséges konfiguráció nélkül a webalkalmazás háríthatja el. Ha problémákat tapasztal a webalkalmazással, az App Service diagnosztikái meg, mi okozza a végigvezeti Önt a megfelelő információk könnyen és gyorsan elhárítása és a probléma megoldásához fog mutatni. 
- 
-Bár ez a tapasztalat akkor hasznos, ha problémákat tapasztal a webalkalmazással az elmúlt 24 órában, a diagnosztikai grafikonok elemezhet, mindig elérhető lesz. További hibaelhárítási eszközei és hasznos dokumentáció és fórumok mutató hivatkozásokat tartalmaz a jobb oldali oszlopban található.
+Webalkalmazások futtatásakor elő kell készítenie az esetlegesen felmerülő problémákra, a 500-es hibáktól a felhasználóktól, hogy a webhely nem működik. A App Service Diagnostics egy intelligens és interaktív megoldás, amely segítséget nyújt az alkalmazás konfigurálásához, és nincs szükség konfigurációra. Ha az alkalmazással kapcsolatos problémákba ütközik, App Service a diagnosztika kimutatja, mi a baj, hogy a megfelelő információkhoz vezessen, hogy könnyebben és gyorsan javítsa a problémát.
 
-Nem csak a Windows-alkalmazás, de az is alkalmazások működik az App Service diagnosztikái [Linux-tárolók](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro), [App Service Environment-környezet](https://docs.microsoft.com/azure/app-service/environment/intro), és [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview). 
+Bár ez a funkció akkor hasznos, ha az alkalmazással kapcsolatos problémákat tapasztal az elmúlt 24 órában, az összes diagnosztikai gráf mindig elérhető az elemzéshez.
 
-## <a name="open-app-service-diagnostics"></a>Nyissa meg az App Service diagnosztikái
+App Service diagnosztika nem csak a Windows rendszeren futó alkalmazás, hanem [Linux/tárolók](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro), [app Service Environment](https://docs.microsoft.com/azure/app-service/environment/intro)és [Azure functions](https://docs.microsoft.com/azure/azure-functions/functions-overview)alkalmazások esetében is működik.
 
-Az App Service diagnosztikái eléréséhez keresse meg az App Service-alkalmazás vagy az App Service-környezet a [az Azure portal](https://portal.azure.com). A bal oldali navigációs sávján kattintson a **diagnosztizálása és a problémák megoldásához**. 
+## <a name="open-app-service-diagnostics"></a>App Service diagnosztika megnyitása
 
-Az Azure Functions, nyissa meg a függvényalkalmazást, és a felső navigációs, kattintson a **platformfunkciók** válassza **diagnosztizálása és a problémák megoldásában** a a **figyelés**szakaszban. 
+App Service diagnosztika eléréséhez navigáljon a App Service webalkalmazáshoz vagy App Service Environment a [Azure Portal](https://portal.azure.com). A bal oldali navigációs sávon kattintson a **problémák diagnosztizálása és megoldása**elemre.
 
-![Kezdőlap](./media/app-service-diagnostics/Homepage1.png)
+Azure Functions esetében navigáljon a Function alkalmazáshoz, és a felső navigációs sávon kattintson a **platform szolgáltatásai**lehetőségre, és válassza a **diagnosztizálás és megoldás** az **erőforrás** -kezelésről szakaszban.
 
-## <a name="health-checkup"></a>Állapotfelülvizsgálatot
+A App Service Diagnostics kezdőlapján kiválaszthatja azt a kategóriát, amely a legjobban leírja az alkalmazással kapcsolatos problémát az egyes homepage-csempék kulcsszavai segítségével. Ezen a lapon a Windows-alkalmazások **diagnosztikai eszközei** is megtalálhatók. Lásd: [diagnosztikai eszközök (csak Windows-alkalmazáshoz)](#diagnostic-tools-only-for-windows-app).
 
-Ha nem tudja, mi okozza a webalkalmazással, vagy nem tudja, hol kell elkezdeni az kapcsolatos hibák elhárítása, a állapotfelülvizsgálatot egy nagyszerű hely az induláshoz. A állapotfelülvizsgálatot elemzi a webes alkalmazások, hogy adjon egy rövid, interaktív áttekintésben, amely mutat meg, mi a kifogástalan állapotú, és mi okozza, amely közli, hova kell néznie a probléma kivizsgálására. Az intelligens és interaktív felületen keresztül a hibaelhárítási folyamat útmutatást biztosít.  
+![Kezdőlap](./media/app-service-diagnostics/app-service-diagnostics-homepage-1.png)
 
-![Állapotfelülvizsgálatot](./media/app-service-diagnostics/HealthCheckup2.png)
+## <a name="interactive-interface"></a>Interaktív felület
 
-Ha problémát észlel az egy adott probléma kategóriája az elmúlt 24 órában, megtekintheti a teljes diagnosztikai jelentés, és az App Service diagnosztikái késztethetik, további hibaelhárítási tanácsokat és lépések több interaktív folyamat megtekintéséhez.
+Miután kiválasztott egy Kezdőlap kategóriát, amely a legjobban megfelel az alkalmazás problémájának, App Service Diagnostics interaktív felülete, a Genie, végigvezeti Önt az alkalmazással kapcsolatos problémák diagnosztizálásán és megoldásán. A Genie által biztosított csempe-parancsikonok használatával megtekintheti az Önt érdeklő probléma kategóriájának teljes diagnosztikai jelentését. A csempék parancsikonjai közvetlen módot biztosítanak a diagnosztikai metrikák elérésére.
 
-![Hibaelhárítás és a következő lépések](./media/app-service-diagnostics/Troubleshooting3.png)
+![Csempe parancsikonjai](./media/app-service-diagnostics/tile-shortcuts-2.png)
 
-## <a name="tile-shortcuts"></a>Csempe parancsikonok
+A csempére való kattintás után megtekintheti a csempén bemutatott problémával kapcsolatos témakörök listáját. Ezek a témakörök a teljes jelentésből származó jelentős információk részleteit tartalmazzák. A témakörök bármelyikére kattintva megvizsgálhatja a problémákat. Emellett a **teljes jelentés megtekintése** lehetőségre kattintva megtekintheti az összes témakört egyetlen oldalon.
 
-Ha tudja, hogy pontosan milyen hibaelhárítási információkat keres, a csempe parancsikonok léphet közvetlenül a teljes diagnosztikai jelentés az Önt érdeklő probléma kategóriába tartozó. A állapotfelülvizsgálatot képest, a csempe parancsikonok közvetlenül a további, de kisebb interaktív módon férnek hozzá a diagnosztikai metrikák. Csempe parancsikonok részeként, ez történik akkor is talál a **diagnosztikai eszközök** amely több speciális eszközöket, amelyekkel az alkalmazás kódja hibák, lassúsága, kapcsolati karakterláncok és egyéb kapcsolódó problémák kivizsgálásában. 
+![Témakörök](./media/app-service-diagnostics/application-logs-insights-3.png)
 
-![Csempe parancsikonok](./media/app-service-diagnostics/TileShortcuts4.png)
+![Teljes jelentés megtekintése](./media/app-service-diagnostics/view-full-report-4.png)
 
 ## <a name="diagnostic-report"></a>Diagnosztikai jelentés
 
-E Futtatás után további információra van szüksége egy [állapotfelülvizsgálatot](#health-checkup) vagy az egyik lehetőséget választotta a [parancsikonok csempére](#tile-shortcuts), a teljes diagnosztikai jelentés megjelenik az elmúlt 24 órában megfelelő ábrázolt metrikáit. Ha az alkalmazás állásidő, azt egy narancssárga sáv alul az ütemterv képviseli. A leállás ideje, hogy az állásidő és a javasolt hibaelhárítási lépések kapcsolatos megfigyelések megtekintéséhez válassza a narancssárga sávok közül választhat. 
+Miután kiválasztotta, hogy a probléma továbbra is megvizsgálható egy témakörre kattintva, megtekintheti a témakörök további részleteit, amelyek a diagramokkal és a Markdowns együtt gyakran kiegészítik a témakört. A diagnosztikai jelentés hatékony eszköz lehet az alkalmazással kapcsolatos problémák azonosításához.
 
-![Diagnosztikai jelentés](./media/app-service-diagnostics/DiagnosticReport5.png)
+![Diagnosztikai jelentés](./media/app-service-diagnostics/full-diagnostic-report-5.png)
 
+## <a name="health-checkup"></a>Állapot-kivizsgálás
 
-## <a name="investigating-application-code-issues"></a>Alkalmazás kód kapcsolatos problémák kivizsgálása
+Ha nem tudja, mi a probléma az alkalmazással, vagy nem tudja, hol kezdje el elhárítani a problémákat, az állapot-kivizsgálás jó kiindulópont. Az állapot-kivizsgálás elemzi az alkalmazásokat, hogy egy gyors, interaktív áttekintést nyújtson, amely kimutatja, hogy mi az egészséges, és mi a baj, és hogy hol érdemes megvizsgálni a problémát. Intelligens és interaktív kezelőfelülete útmutatást nyújt a hibaelhárítási folyamaton keresztül. Az állapot-kivizsgálás integrálva van a Windows-alkalmazások és a webalkalmazások által használt Genie-diagnosztikai jelentéssel a Linux-alkalmazásokhoz.
 
-Számos alkalmazás probléma kapcsolatos problémákat, az alkalmazás kódjában, mert az App Service diagnosztikái integrálható [Application Insights](https://azure.microsoft.com/services/application-insights/) kivételeket és függőségi problémák korrelációját, ha a kiválasztott állásidővel. Az Application Insights külön-külön engedélyezni kell. 
+### <a name="health-checkup-graphs"></a>Állapot-szűrési diagramok
 
-Az Application Insights-kivételek és függőségek megtekintéséhez jelölje ki a **webalkalmazás nem érhető** vagy **webes alkalmazás lassú** parancsikonok csempére. 
+Az állapot-kivizsgálásnak négy különböző gráfja van.
 
-![Az Application insights](./media/app-service-diagnostics/AppInsights6.png)
+- **kérelmek és hibák:** Egy gráf, amely az elmúlt 24 órában küldött kérések számát jeleníti meg HTTP-kiszolgálói hibákkal együtt.
+- **alkalmazás teljesítménye:** Egy gráf, amely megjeleníti az elmúlt 24 órában fellépő válaszidőt a különböző percentilis csoportok esetében.
+- **CPU-használat:** Egy gráf, amely az elmúlt 24 órában az egyes példányok százalékos CPU-kihasználtságát mutatja.  
+- **memóriahasználat:** Egy gráf, amely az elmúlt 24 órában a teljes százalékos fizikai memóriahasználat megjelenítését mutatja.
 
+![Állapot-kivizsgálás](./media/app-service-diagnostics/health-checkup-6.png)
+
+### <a name="investigate-application-code-issues-only-for-windows-app"></a>Alkalmazás-programkódokkal kapcsolatos problémák vizsgálata (csak Windows-alkalmazás esetén)
+
+Mivel sok alkalmazási probléma kapcsolódik az alkalmazás kódjában felmerülő problémákhoz, App Service diagnosztika integrálva van [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) a kivételek és függőségi problémák kiemelésére a kiválasztott állásidővel való összefüggés érdekében. A Application Insights külön engedélyezni kell.
+
+![Application Insights](./media/app-service-diagnostics/application-insights-7.png)
+
+A Application Insights kivételek és függőségek megtekintéséhez válassza ki a webalkalmazást **le** vagy a **webalkalmazás lassú** csempe parancsikonjait.
+
+### <a name="troubleshooting-steps-only-for-windows-app"></a>Hibaelhárítási lépések (csak Windows-alkalmazás esetén)
+
+Ha az elmúlt 24 órában egy adott problémás kategóriával kapcsolatos problémát észlel, megtekintheti a teljes diagnosztikai jelentést, és App Service diagnosztika kérheti, hogy tekintse meg a további hibaelhárítási tanácsokat és a további lépéseket a további útmutatásért.
+
+![Application Insights és hibaelhárítás és további lépések](./media/app-service-diagnostics/troubleshooting-and-next-steps-8.png)
+
+## <a name="diagnostic-tools-only-for-windows-app"></a>Diagnosztikai eszközök (csak Windows-alkalmazásokhoz)
+
+A diagnosztikai eszközök több speciális diagnosztikai eszközt is tartalmaznak, amelyek segítségével megvizsgálhatja az alkalmazás kódjával kapcsolatos problémákat, a lassúságot, a kapcsolatok karakterláncait és egyebeket. és proaktív eszközöket, amelyek segítségével csökkentheti a CPU-használattal, a kérelmekkel és a memóriával kapcsolatos problémákat.
+
+### <a name="proactive-cpu-monitoring"></a>Proaktív CPU-figyelés
+
+A proaktív CPU-figyelés lehetővé teszi, hogy egyszerű, proaktív módon végezze el a műveletet, ha az alkalmazás vagy a gyermek folyamata magas CPU-erőforrásokat használ. Megadhatja a saját CPU-küszöbértékeit, hogy a rendszer átmenetileg csökkentse a PROCESSZORok nagy hányadát, amíg a nem várt probléma valódi okot nem talál.
+
+![Proaktív CPU-figyelés](./media/app-service-diagnostics/proactive-cpu-monitoring-9.png)
+
+### <a name="auto-healing-and-proactive-auto-healing"></a>Automatikus gyógyulás és proaktív automatikus javítás
+
+Az automatikus javítás olyan kockázatcsökkentő művelet, amelyet akkor használhat, ha az alkalmazás váratlan viselkedést tapasztal. A kockázatcsökkentő műveletek elindításához a kérelmek száma, a lassú kérés, a memória korlátja és a HTTP-állapotkód alapján állíthatja be a saját szabályait. Az eszköz használatával átmenetileg csökkentheti a váratlan viselkedést, amíg meg nem találja a kiváltó okot.
+
+![Automatikus javítás](./media/app-service-diagnostics/auto-healing-10.png)
+
+A proaktív CPU-figyeléshez hasonlóan az proaktív automatikus gyógyulás egy kulcsrakész megoldás, amely csökkenti az alkalmazás váratlan viselkedését. Az proaktív automatikus javítás újraindítja az alkalmazást, ha App Service megállapítja, hogy az alkalmazás helyreállíthatatlan állapotban van. További információ: [az App Service Diagnostics új automatikus gyógyulási élményének](https://azure.github.io/AppService/2018/09/10/Announcing-the-New-Auto-Healing-Experience-in-App-Service-Diagnostics.html)bejelentése.
+
+## <a name="navigator-and-change-analysis-only-for-windows-app"></a>Navigátor és változás elemzése (csak Windows-alkalmazás esetén)
+
+A folyamatos integrációval rendelkező nagyméretű csapatokban, ahol az alkalmazás számos függőséggel rendelkezik, nehéz lehet kijelölni a nem kifogástalan működést okozó változást. A navigátor az alkalmazás topológiájának megjelenítését segíti, és az adott előfizetésben található összes erőforrást automatikusan leképezi. A navigátor segítségével megtekintheti az alkalmazás és a függőségei által végrehajtott módosítások összevont listáját, és leszűkítheti a nem kifogástalan viselkedést okozó változást. A Kezdőlap csempe-Navigátoron keresztül érhető el , és az első használata előtt engedélyezni kell. További információ: betekintést [nyerhet az alkalmazás függőségeibe](https://azure.github.io/AppService/2019/08/06/Bring-visibility-to-your-app-and-its-dependencies-with-Navigator.html)a Navigátorban.
+
+![Navigátor alapértelmezett lapja](./media/app-service-diagnostics/navigator-default-page-11.png)
+
+![Diff nézet](./media/app-service-diagnostics/diff-view-12.png)
+
+Az alkalmazások változásainak elemzése a csempe parancsikonjain, az **alkalmazások változásain** és az **alkalmazások összeomlásán** keresztül érhető el a **rendelkezésre állás és a teljesítmény** terén, így egyidejűleg más metrikákkal is használható. A funkció használata előtt engedélyeznie kell azt. További információ: [az új Change Analysis Experience Bejelentése app Service diagnosztikát](https://azure.github.io/AppService/2019/05/07/Announcing-the-new-change-analysis-experience-in-App-Service-Diagnostics-Analysis.html).
+
+Tegye fel kérdéseit vagy visszajelzéseit a [UserVoice](https://feedback.azure.com/forums/169385-web-apps) címen a "[diag]" cím hozzáadásával.

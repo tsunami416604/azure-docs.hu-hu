@@ -14,22 +14,22 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: spelluru
-ms.openlocfilehash: 5c6ad222110081cd8f8838208da407e0e1d50f75
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 8be34a85cb1a1863ee8a78c7b97af66627612fea
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54851266"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444745"
 ---
 # <a name="create-a-service-bus-namespace-with-topic-subscription-and-rule-using-an-azure-resource-manager-template"></a>Service Bus-névtér létrehozása a témakör, előfizetés és a szabály egy Azure Resource Manager-sablon használatával
 
 Ez a cikk bemutatja, hogyan használható az Azure Resource Manager-sablon, amely egy Service Bus-névteret hoz létre egy témakört, előfizetéssel és szabállyal (szűrő). A cikk azt ismerteti, hogyan adja meg, hogy mely erőforrások vannak telepítve, és hogyan adhat meg a paramétereket, amelyek a megadott az üzembe helyezés végrehajtása esetén. Ezt a sablont saját üzembe helyezési műveleteihez is használhatja, vagy akár igényeinek megfelelően testre is szabhatja
 
-A sablonok létrehozásáról további információkat az [Authoring Azure Resource Manager templates][Authoring Azure Resource Manager templates] (Azure Resource Manager-sablonok készítése) című témakörben talál.
+Sablonok létrehozásával kapcsolatos további információkért lásd: [Azure Resource Manager-sablonok készítése][Authoring Azure Resource Manager templates].
 
 Azure-erőforrások elnevezési konvenciói eljárások és minták kapcsolatos további információkért lásd: [ajánlott az Azure-erőforrások elnevezési konvenciói][Recommended naming conventions for Azure resources].
 
-A teljes sablont, tekintse meg a [témakör, előfizetés és a szabály a Service Bus-névtér] [ Service Bus namespace with topic, subscription, and rule] sablont.
+A teljes sablont, tekintse meg a [témakör, előfizetés és a szabály a Service Bus-névtér][Service Bus namespace with topic, subscription, and rule] sablont.
 
 > [!NOTE]
 > Az alábbi Azure Resource Manager-sablonok letöltése és központi telepítési érhetők el.
@@ -39,7 +39,7 @@ A teljes sablont, tekintse meg a [témakör, előfizetés és a szabály a Servi
 > * [Service Bus-névtér létrehozása](service-bus-resource-manager-namespace.md)
 > * [Service Bus-névtér létrehozása témakörrel és előfizetéssel](service-bus-resource-manager-namespace-topic.md)
 > 
-> A legújabb sablonokat keressen, látogasson el a [Azure gyorsindítási sablonok] [ Azure Quickstart Templates] katalógusban, és keresse meg a Service Bus.
+> A legújabb sablonokat keressen, látogasson el a [Azure gyorsindítási sablonok][Azure Quickstart Templates] katalógusban, és keresse meg a Service Bus.
 > 
 > 
 
@@ -179,7 +179,9 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 ```
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy létrehozta és erőforrások Azure Resource Managerrel üzembe helyezett, megtudhatja, hogyan kezelhetők ezek a cikkek alapján:
+A következő témakör bemutatja, hogyan hozhat létre egy előfizetés-szűrő: [Service Bus-névtér létrehozása a témakör, előfizetés és a szabály egy Azure Resource Manager-sablon használatával](service-bus-resource-manager-namespace-topic-with-rule.md)
+
+Megtudhatja, hogyan kezelhetők ezek a cikkek alapján:
 
 * [Az Azure Service Bus kezelése](service-bus-management-libraries.md)
 * [A Service Bus kezelése a PowerShell használatával](service-bus-manage-with-ps.md)

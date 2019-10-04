@@ -1,27 +1,20 @@
 ---
-title: Az Azure és Dynamics 365 tanácsadási szolgáltatási ajánlat – adja meg a kirakat részletei |} A Microsoft Docs
-description: Útmutató a kirakat részleteket a Cloud Partner portálra az Azure-ban vagy a Dynamics 365 tanácsadási szolgáltatási ajánlat definiálása.
+title: Adja meg annak részleteit kirakat consulting ajánlatot |} Az Azure Marketplace-en
+description: Adja meg a Cloud Partner portálra az Azure-ban vagy a Dynamics 365 tanácsadási szolgáltatási ajánlat kirakat részleteit.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: qianw211
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
-ms.date: 11/30/2018
-ms.author: pbutlerm
-ms.openlocfilehash: ac383c85938f5cb7dfe4f711714f5bacd0c96b89
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.date: 04/23/2019
+ms.author: pabutler
+ms.openlocfilehash: 1b028fe016d6ae3df8c1dfce548fc0c11479d5a6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230951"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64942718"
 ---
-# <a name="storefront-details-tab"></a>Storefront részletei lapon
+# <a name="storefront-details-tab"></a>Áruház részletei lap
 
 Ez a cikk bemutatja, hogyan adja meg, hogy az áruház oldala. A **kirakat részletek** lapon áll, az alábbi szakaszokból áll:
 
@@ -32,14 +25,16 @@ Ez a cikk bemutatja, hogyan adja meg, hogy az áruház oldala. A **kirakat rész
 
 ![Új tanácsadási szolgáltatási ajánlat létrehozása – kirakat részletei lapon](media/consultingoffer-storefront-details.png)
 
-## <a name="offer-details"></a>Ajánlat részletei
+
+## <a name="offer-details"></a>Az ajánlat részletei
 
 A **ajánlat részletei** szakasz tartalmazza a következő mezőket:
 
--   **Ajánlat-összefoglaló**
--   **Az ajánlat leírása**
+-   **Ajánlat-összefoglaló\***
+-   **Az ajánlat leírása\***
 
-### <a name="offer-summary"></a>Ajánlat-összefoglaló
+
+### <a name="offer-summary"></a>Ajánlat-összefoglaló\*
 
 Az ajánlat összefoglalásának, amely alatt az ajánlat neve jelenik meg az ajánlat rövid leírása. Egyszerű szöveges használatával adja meg az ajánlat-összefoglaló, anélkül, hogy minden sortörést. A következő példák olyan jó ajánlat összegzéseket és azok megfelelő ajánlat nevét.
 
@@ -68,7 +63,8 @@ Az ajánlat összefoglalásának, amely alatt az ajánlat neve jelenik meg az aj
 -   **Ajánlat neve**: A Dynamics és projektek: Értékelés 3 napos
 -   **Összefoglalás ajánlat**: Adatgyűjtési követelmények és professzionális szolgáltatásokat nyújtó cégek és vállalatok projekt adatvezérelt ERP megoldás.
 
-### <a name="offer-description"></a>Az ajánlat leírása
+
+### <a name="offer-description"></a>Az ajánlat leírása\*
 
 Adja meg a tanácsadó ajánlat leírása a **ajánlat leírása** mezőbe. Egy jó ajánlat leírása az engagement néz ki és az ügyfél a termék teljes pontos részleteit ismerteti. Megismerheti, mit kapnak az ügyfélnek egyértelműen segítenie kell. Például hogyan viszonyul az ajánlat a Microsoft-terméket, amelyhez Ön által kínált tanácsadási szolgáltatásokat.
 
@@ -90,11 +86,11 @@ A következő példa bemutatja egy jól szintből ajánlat leírása és a kapcs
 
 Program
 
-1. napi
+1\. napi
 
 -   Biztonságos, méretezhető, és az Azure Data Lake, az Azure HDInsight vagy Azure SQL Data Warehouse használatával jellemzők szerint rendezik az adatokat a Microsoft cloud összpontosít.
 
-2. napon
+2\. napon
 
 -   Bemutatja, hogyan konfigurálhatja és telepítheti a Microsoft R és az Azure Machine Learning a fejlett elemzési megoldásokat.
 
@@ -144,6 +140,7 @@ Adja meg az új Partner Center-azonosító, ha rendelkezik ilyennel.
 Adjon meg egy titkos kulcsot az appsource-ban az ajánlat kipróbálásához, mielőtt élő kerül.
 Ez az azonosító nem egy jelszót.
 
+
 ## <a name="listing-details"></a>Lista részletei
 
 **Tanácsadási szolgáltatás típusa**
@@ -166,7 +163,7 @@ A következő öt típusú ajánlatok foglalja magában:
 Válassza ki a országban és régióban, ahol az tanácsadási szolgáltatási ajánlat érhető el. Egyetlen ajánlat több országban vagy régióban nem tehetők közzé. Minden ország vagy régió egy új ajánlatot kell létrehozni.
 
 >[!Note]
->AppSource tanácsadási szolgáltatásokat az Egyesült Államok, Egyesült Királyság és Kanadában jelenleg az élő rendszer. Egy országot, amely még nem élő vonatkozó ajánlatot küldhet, és a rendszer kell vizsgálni és az élő esemény indításra kész. Az élő esemény indításra kész ajánlatok minimális számú nyisson egy új ország, annak érdekében, hogy nem élő országában kínál javasolt van szükség.
+>AppSource tanácsadási szolgáltatásokat az Egyesült Államok, Egyesült Királyság és Kanadában jelenleg az élő rendszer. Egy adott ország/régió még nem élő vonatkozó ajánlatot küldhet, és a rendszer kell vizsgálni és az élő esemény indításra kész. Nyissa meg egy új országban vagy régióban, ezért javasolt, ajánlatok, amelyek nem élő országok és régiók az élő esemény indításra kész ajánlatok minimális számú van szükség.
 
 **Ágazatok**
 
@@ -207,6 +204,7 @@ Töltse fel a marketing ismertetőben, hogy a tanácsadási szolgáltatási ajá
 **Képernyőképek (legfeljebb ötöt)**
 
 Töltse fel az ajánlatot, termékei vagy a vállalat további információt adhat meg legfeljebb öt lemezképbe. -Kódrészlettel, amely a marketing ismertetőben, bemutató, vagy egy vállalati hír vagy szakértőnek bemutató kép megfelelő dia bemutatunk néhány példát.
+
 
 ## <a name="next-steps"></a>További lépések
 

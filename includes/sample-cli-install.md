@@ -1,16 +1,16 @@
 ---
 author: sptramer
-ms.service: virtual-machines
 ms.topic: include
-ms.date: 11/25/2018
+ms.date: 05/31/2019
 ms.author: sttramer
-ms.openlocfilehash: ebdfadcb70cc9788a3d18fa99261412506889764
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: c4bc5a6befaf684cd07fb3b6799ba00099627132
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54899346"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66814916"
 ---
-A minta futtatásához győződjön meg arról, hogy az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) legújabb verziója telepítve van. Első lépésként futtassa a `az login` parancsot, hogy kapcsolatot hozzon létre az Azure-ral.
+Ez a minta futtatásához telepítse a legújabb verzióját a [Azure CLI-vel](/cli/azure/install-azure-cli). Első lépésként futtassa a `az login` parancsot, hogy kapcsolatot hozzon létre az Azure-ral.
 
-A példa Bash-felületen működik. Az Azure CLI-szkriptek Windows-ügyfeleken való futtatásának lehetőségeiről az [Azure CLI Windows rendszeren való telepítésével](/cli/azure/install-azure-cli-windows) foglalkozó témakörben talál további információt.
+Az Azure CLI-minták készültek a `bash` rendszerhéjat. A minta futtatásához a Windows PowerShell vagy az parancssor, szükség lehet a parancsfájl elemeinek módosításához.
+

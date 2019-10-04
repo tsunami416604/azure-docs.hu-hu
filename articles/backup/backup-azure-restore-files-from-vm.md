@@ -1,272 +1,272 @@
 ---
-title: 'Azure Backup: Fájlok és mappák helyreállítása az Azure virtuális gép biztonsági másolatából'
-description: Fájlok helyreállítása az Azure virtuális gép helyreállítási pontot
-services: backup
-author: pvrk
-manager: shivamg
-keywords: elemszintű helyreállítás; az Azure virtuális gép biztonsági mentése; fájlok helyreállítása fájlok helyreállítása Azure virtuális gépből
+title: 'Azure Backup: Fájlok és mappák helyreállítása Azure virtuális gépek biztonsági másolatából'
+description: Fájlok helyreállítása Azure-beli virtuális gépek helyreállítási pontjából
+ms.reviewer: pullabhk
+author: dcurwin
+manager: carmonm
+keywords: elemszintű helyreállítás; fájl helyreállítása az Azure-beli virtuális gép biztonsági másolatából; fájlok visszaállítása az Azure-beli virtuális gépről
 ms.service: backup
 ms.topic: conceptual
-ms.date: 3/01/2019
-ms.author: pullabhk
-ms.openlocfilehash: 22ada6f9bb614bdc3698c58c6aa8ec3dd5def868
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.date: 03/01/2019
+ms.author: dacurwin
+ms.openlocfilehash: 5ff4f1ff8a3d6143285b2842c351e1d26bd356ea
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259540"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210367"
 ---
-# <a name="recover-files-from-azure-virtual-machine-backup"></a>Fájlok helyreállítása Azure virtuális gépek biztonsági mentése
+# <a name="recover-files-from-azure-virtual-machine-backup"></a>Fájlok helyreállítása az Azure-beli virtuális gépek biztonsági másolatából
 
-Az Azure Backup lehetővé teszi, hogy a visszaállítás [Azure-beli virtuális gépek (VM) és a lemezek](./backup-azure-arm-restore-vms.md) az Azure virtuális gép biztonsági mentése, más néven a helyreállítási pontokat. Ez a cikk ismerteti a fájlok és mappák helyreállítása az Azure virtuális gép biztonsági másolatából. Fájlok és mappák visszaállítása csak az Azure virtuális gépek, a Resource Manager modellel üzembe helyezett és a egy Recovery services-tárolót a védett érhető el.
+Azure Backup lehetővé teszi az Azure-beli [virtuális gépek (VM-EK) és lemezek](./backup-azure-arm-restore-vms.md) visszaállítását az Azure VM biztonsági másolatokból, más néven helyreállítási pontokból. Ez a cikk azt ismerteti, hogyan lehet helyreállítani a fájlokat és mappákat egy Azure-beli virtuális gép biztonsági másolatából. A fájlok és mappák visszaállítása csak a Resource Manager-modell használatával üzembe helyezett Azure-beli virtuális gépekhez és a Recovery Services-tárolóhoz való védelemhez érhető el.
 
 > [!Note]
-> Ez a funkció az Azure virtuális gépek a Resource Manager modellel üzembe helyezett és a egy Recovery Services-tárolót a védett érhető el.
-> Fájlhelyreállítás egy titkosított virtuális gép biztonsági mentése nem támogatott.
+> Ez a funkció a Resource Manager-modell használatával üzembe helyezett Azure-beli virtuális gépek számára érhető el, és Recovery Services-tárolóval védett.
+> A titkosított virtuális gépek biztonsági másolatból történő helyreállítása nem támogatott.
 >
 
-## <a name="mount-the-volume-and-copy-files"></a>Csatlakoztassa a kötet, és átmásolja a fájlokat
+## <a name="mount-the-volume-and-copy-files"></a>A kötet csatlakoztatása és a fájlok másolása
 
-A fájlok és mappák visszaállítása a helyreállítási pontot, nyissa meg a virtuális gép, és válassza ki a kívánt helyreállítási pontot.
+A fájlok vagy mappák helyreállítási pontról történő visszaállításához nyissa meg a virtuális gépet, és válassza ki a kívánt helyreállítási pontot.
 
-1. Jelentkezzen be a [az Azure portal](https://portal.Azure.com) , és kattintson a bal oldali ablaktáblában **virtuális gépek**. Virtuális gépek listájából válassza ki a virtuális gépet, hogy a virtuális gép irányítópultjának megnyitásához.
+1. Jelentkezzen be a [Azure Portalba](https://portal.Azure.com) , és a bal oldali ablaktáblán kattintson a **virtuális gépek**elemre. A virtuális gépek listájából válassza ki a virtuális gépet a virtuális gép irányítópultjának megnyitásához.
 
-2. A virtuális gép menüben kattintson **Backup** a biztonsági mentés irányítópultjának megnyitásához.
+2. A virtuális gép menüjében kattintson a **biztonsági mentés** elemre a biztonsági mentés irányítópultjának megnyitásához.
 
-    ![Nyissa meg a Recovery Services vault biztonsági másolati elem](./media/backup-azure-restore-files-from-vm/open-vault-for-vm.png)
+    ![Recovery Services tároló biztonsági másolati elemeinek megnyitása](./media/backup-azure-restore-files-from-vm/open-vault-for-vm.png)
 
-3. A biztonsági mentés irányítópultos menüjében kattintson **fájlhelyreállítás**.
+3. A biztonsági mentés irányítópult menüjében kattintson a **fájl-helyreállítás**elemre.
 
-    ![Helyreállítási szolgáló gomb](./media/backup-azure-restore-files-from-vm/vm-backup-menu-file-recovery-button.png)
+    ![Fájl helyreállítása gomb](./media/backup-azure-restore-files-from-vm/vm-backup-menu-file-recovery-button.png)
 
-    A **fájlhelyreállítás** menü megnyitása.
+    Megnyílik a **Fájl-helyreállítási** menü.
 
-    ![A fájl-helyreállítási menü](./media/backup-azure-restore-files-from-vm/file-recovery-blade.png)
+    ![Fájl-helyreállítási menü](./media/backup-azure-restore-files-from-vm/file-recovery-blade.png)
 
-4. Az a **válassza ki a helyreállítási pont** legördülő menüben válassza ki a kívánt fájlokat tárolja a helyreállítási pont. Alapértelmezés szerint már be van jelölve a legutóbbi helyreállítási pontot.
+4. A **helyreállítási pont kiválasztása** legördülő menüben válassza ki a kívánt fájlokat birtokló helyreállítási pontot. Alapértelmezés szerint a legújabb helyreállítási pont már ki van választva.
 
-5. Töltse le a szoftverfrissítési fájlokat másolhat a helyreállítási pontot, kattintson a **végrehajtható fájl letöltése** (a Windows Azure virtuális Gépen), vagy **szkript letöltése** (Linux rendszerű Azure virtuális gép, egy python-szkriptet jön létre).
+5. A fájlok helyreállítási pontról történő másolásához használt szoftver letöltéséhez kattintson a **végrehajtható fájl letöltése** (Windows Azure virtuális géphez) vagy a **letöltési parancsfájl** (a Linux Azure-beli virtuális gép, a Python-szkript létrehozása) lehetőségre.
 
     ![Generált jelszó](./media/backup-azure-restore-files-from-vm/download-executable.png)
 
-    Azure a végrehajtható fájl vagy parancsfájl letöltése a helyi számítógépen.
+    Az Azure letölti a végrehajtható fájlt vagy a parancsfájlt a helyi számítógépre.
 
-    ![Töltse le a végrehajtható fájl vagy parancsfájl üzenet](./media/backup-azure-restore-files-from-vm/run-the-script.png)
+    ![üzenet letöltése a végrehajtható fájlhoz vagy parancsfájlhoz](./media/backup-azure-restore-files-from-vm/run-the-script.png)
 
-    A rendszergazda a végrehajtható vagy parancsfájlokat futtat, javasolt a számítógépet, mentse a letöltést.
+    Ha a végrehajtható fájlt vagy a parancsfájlt rendszergazdaként szeretné futtatni, akkor azt javasoljuk, hogy mentse a letöltést a számítógépre.
 
-6. A végrehajtható fájl vagy parancsfájl jelszóval védett, és a jelszó szükséges. Az a **fájlhelyreállítás** menüben kattintson a Másolás gombra, hogy a jelszó betölti a memóriába.
+6. A végrehajtható fájl vagy a szkript jelszavas védelemmel van ellátva, és jelszót igényel. A **Fájl-helyreállítási** menüben kattintson a Másolás gombra a jelszó memóriába való betöltéséhez.
 
     ![Generált jelszó](./media/backup-azure-restore-files-from-vm/generated-pswd.png)
 
-7. A letöltési helyről (általában a letöltések mappában) kattintson a jobb gombbal a végrehajtható fájlt vagy parancsprogramot, és rendszergazdai hitelesítő adatokkal futtathatja. Amikor a rendszer kéri, adja meg a jelszót, vagy illessze be a jelszót a memóriából, és nyomja le az Enter billentyűt. Az érvényes jelszót is meg kell adni, miután a szkript csatlakozik a helyreállítási pont.
+7. A letöltési helyről (általában a letöltések mappából) kattintson a jobb gombbal a végrehajtható fájlra vagy a parancsfájlra, és futtassa a rendszergazdai hitelesítő adatokkal. Ha a rendszer kéri, írja be a jelszót, vagy illessze be a jelszót a memóriából, és nyomja le az ENTER billentyűt. Az érvényes jelszó megadása után a parancsfájl csatlakozik a helyreállítási ponthoz.
 
-    ![A fájl-helyreállítási menü](./media/backup-azure-restore-files-from-vm/executable-output.png)
+    ![Fájl-helyreállítási menü](./media/backup-azure-restore-files-from-vm/executable-output.png)
 
-    Ha korlátozott hozzáféréssel rendelkező számítógépen futtatja a szkriptet, győződjön meg arról, érhető el:
+    Ha korlátozott hozzáféréssel rendelkező számítógépen futtatja a parancsfájlt, ellenőrizze, hogy van-e hozzáférése a következőhöz:
 
     - download.microsoft.com
-    - A helyreállítási szolgáltatás URL-címek (geo-név a régióval, ahol a recovery Services-tároló található vonatkozik)
-        - https:\//pod01-rec2.geo-name.backup.windowsazure.com (az Azure nyilvános helyeken)
-        - https:\//pod01-rec2.geo-name.backup.windowsazure.cn (az Azure-Kína)
-        - https:\//pod01-rec2.geo-name.backup.windowsazure.us (az Azure US Government)
-        - https:\//pod01-rec2.geo-name.backup.windowsazure.de (az Azure-Németország)
-    - 3260-as kimenő portot
+    - Helyreállítási szolgáltatás URL-címei (a Geo-név arra a régióra utal, ahol a helyreállítási tár található)
+        - https:\//pod01-rec2.Geo-Name.backup.windowsazure.com (Azure nyilvános térségek)
+        - https:\//pod01-rec2.Geo-Name.backup.windowsazure.cn (Azure China 21Vianet)
+        - https:\//pod01-rec2.Geo-Name.backup.windowsazure.us (az USA kormányzati szervei számára)
+        - https:\//pod01-rec2.Geo-Name.backup.windowsazure.de (az Azure Germany esetében)
+    - 3260-es kimenő port
 
 > [!Note]
 > 
-> * A letöltött szkript fájlneve lesz a **geo-name** ki kell tölteni az URL-címben. A példa: A letöltött szkript neve kezdődik \'VMname\'\_\'geoname\'_\'GUID\', például a ContosoVM_wcus_12345678...<br><br>
-> * Az URL-cím "https:\//pod01-rec2.wcus.backup.windowsazure.com"
+> * A letöltött parancsfájl neve lesz az URL-címben kitöltendő **geo-név** . Például: A letöltött parancsfájl neve a következővel\'kezdődik\' \':\'VMname\_\'geoname _ GUID\', például ContosoVM_wcus_12345678....<br><br>
+> * Az URL-cím a következő:\/"https:/pod01-rec2.wcus.backup.windowsazure.com"
 
 
-   Linux esetén a szkripthez "nyílt-iscsi" és "lshw" összetevők a helyreállítási ponthoz való csatlakozáshoz. Ha az összetevők nem létezik a számítógépen, amelyen a szkript fut, akkor a parancsprogram kéri engedélyt összetevőinek telepítését. Hozzájárulás megadása a szükséges összetevők telepítéséhez.
+   Linux esetén a parancsfájl "Open-iSCSI" és "lshw" összetevőket igényel a helyreállítási ponthoz való kapcsolódáshoz. Ha az összetevők nem léteznek azon a számítógépen, amelyen a parancsfájl fut, a parancsfájl engedélyt kér az összetevők telepítésére. Adja meg a szükséges összetevők telepítésének jóváhagyását.
 
-   A jövőben a Microsoft a hozzáférést a gép, ahol a parancsfájl futtatása és az adatokat a helyreállítási pont közötti biztonságos csatorna létrehozásához használt összetevők letöltéséhez szükséges.
+   A download.microsoft.com-hez való hozzáférés szükséges a biztonságos csatorna létrehozásához használt összetevők letöltéséhez a parancsfájlt futtató gép és a helyreállítási pontban lévő adattárolók között.
 
-   A szkriptet minden olyan gépen, amelyen a biztonsági másolat virtuális géppel azonos (vagy kompatibilis) operációs rendszer futtathatja. Tekintse meg a [kompatibilis operációs rendszer tábla](backup-azure-restore-files-from-vm.md#system-requirements) kompatibilis operációs rendszerekhez. Ha a védett Azure virtuális gépen Windows tárolóhelyek (Windows Azure virtuális gépek esetén) vagy LVM/RAID-tömbök (a Linux rendszerű virtuális gépek) használ, a végrehajtható fájl vagy parancsfájl nem futtatható az azonos virtuális gépen. Ehelyett futtassa a végrehajtható fájl vagy parancsfájl bármely gépen más kompatibilis operációs rendszerrel.
+   A parancsfájlt bármely olyan gépen futtathatja, amely azonos (vagy kompatibilis) operációs rendszerrel rendelkezik, mint a biztonsági másolattal ellátható virtuális gép. Tekintse meg a kompatibilis operációs rendszerekhez használható operációsrendszer- [táblázatot](backup-azure-restore-files-from-vm.md#system-requirements) . Ha a védett Azure-beli virtuális gép Windows-tárolóhelyeket (Windows Azure-beli virtuális gépek esetén) vagy LVM/RAID-tömböket használ (linuxos virtuális gépek esetén), akkor nem futtathatja a végrehajtható fájlt vagy a parancsfájlt ugyanazon a virtuális gépen. Ehelyett futtassa a végrehajtható fájlt vagy a parancsfájlt bármely más, kompatibilis operációs rendszerrel rendelkező gépen.
 
 ### <a name="identifying-volumes"></a>Kötetek azonosítása
 
 #### <a name="for-windows"></a>Windows esetén
 
-Futtassa a végrehajtható fájlt, amikor az operációs rendszer az új kötetek csatlakoztatja, és rendeli hozzá meghajtóbetűjelet. Windows Intéző vagy a fájlkezelő segítségével keresse meg az adott meghajtókat. A kötetek hozzárendelt meghajtóbetűjelek nem lehet azonos betűk az eredeti virtuális gépként, azonban a kötet neve megőrződik. Például, ha a kötet az eredeti virtuális gép "adatlemez (E:`\`)", hogy a kötet, a helyi számítógépen csatolható "adatlemez (minden betűjének:`\`). Böngésszen a parancsfájl kimenetében már említettük, amíg meg nem találja a fájlok/mappa összes kötetet.  
+A végrehajtható fájl futtatásakor az operációs rendszer csatlakoztatja az új köteteket, és hozzárendeli a meghajtóbetűjeleket. A meghajtók tallózásához használhatja a Windows Intézőt vagy a fájlkezelőt is. Előfordulhat, hogy a kötetekhez rendelt meghajtóbetűjelek nem azonosak az eredeti virtuális géppel. a kötet neve azonban megmarad. Ha például az eredeti virtuális gép kötete "adatlemez (E:`\`)" volt, akkor a kötet a helyi számítógépen "adatlemezként" ("bármely levél":`\`) csatolható. Tallózással keresse meg a parancsfájl kimenetében említett összes kötetet, amíg meg nem találja a fájlokat vagy mappát.  
 
-   ![A fájl-helyreállítási menü](./media/backup-azure-restore-files-from-vm/volumes-attached.png)
+   ![Fájl-helyreállítási menü](./media/backup-azure-restore-files-from-vm/volumes-attached.png)
 
 #### <a name="for-linux"></a>Linux esetén
 
-A Linux a köteteket a helyreállítási pont csatlakoztatva vannak a mappára, ahol a szkript futása. Ennek megfelelően jelennek meg a csatlakoztatott lemezek, kötetek és a megfelelő csatlakoztatási elérési útjait. Ezek a csatlakoztatási elérési utak gyökér szintű hozzáféréssel rendelkező felhasználók számára látható. Böngésszen a köteteket, a parancsfájl kimenetében említett.
+A Linux rendszerben a helyreállítási pont kötetei ahhoz a mappához vannak csatlakoztatva, amelyben a parancsfájl fut. Ennek megfelelően megjelennek a csatolt lemezek, kötetek és a hozzájuk tartozó csatlakoztatási útvonalak. Ezek a csatlakoztatási útvonalak a root szintű hozzáféréssel rendelkező felhasználók számára láthatók. Tallózzon a szkript kimenetében említett kötetek között.
 
-  ![Linux-fájl-helyreállítási menü](./media/backup-azure-restore-files-from-vm/linux-mount-paths.png)
+  ![Linux-fájl helyreállítási menüje](./media/backup-azure-restore-files-from-vm/linux-mount-paths.png)
 
-## <a name="closing-the-connection"></a>A kapcsolat bezárása
+## <a name="closing-the-connection"></a>A kapcsolatok bezárása
 
-Fájlok azonosítása, és másolja őket egy helyi helyre, miután eltávolítása (vagy válassza le) a további meghajtók. Leválasztani a meghajtókat, az a **fájlhelyreállítás** menüjében az Azure Portalon kattintson **lemezek leválasztása**.
+A fájlok azonosítása és a helyi tárolóhelyre való másolása után távolítsa el (vagy válassza le) a további meghajtókat. A meghajtók leválasztásához a Azure Portal **Fájl-helyreállítási** menüjében kattintson a **lemezek leválasztása**elemre.
 
 ![Lemezek leválasztása](./media/backup-azure-restore-files-from-vm/unmount-disks3.png)
 
-Miután a lemezek le lett, kap egy üzenetet. A kapcsolat frissítéséhez, hogy a lemezek eltávolíthatja néhány percig is eltarthat.
+A lemezek leválasztása után üzenet jelenik meg. A kapcsolatok frissítése eltarthat néhány percig, hogy el lehessen távolítani a lemezeket.
 
-A Linux Miután a kapcsolat és a helyreállítási pont daraboltak van, az operációs rendszer nem távolítja el a megfelelő csatlakoztatási elérési utak automatikusan. A csatlakoztatási elérési út létezik, és "árva" kötetek és láthatók, de a hibaüzenetet küldjön, amikor Ön hozzáférési írható a fájlokat. Manuálisan távolíthatja el. A parancsfájl végrehajtásakor, minden korábbi helyreállítási pontjait a meglévő kötetek azonosítja, és törli azokat a jóváhagyás után.
+A Linux rendszerben a helyreállítási ponttal létesített csatlakozás letelte után az operációs rendszer nem távolítja el automatikusan a megfelelő csatlakoztatási útvonalakat. A csatlakoztatási útvonalak "árva" kötetekként léteznek, és láthatók, de hiba történt a fájlok elérése/írása közben. Ezeket manuálisan is el lehet távolítani. A parancsfájl futtatásakor a rendszer a korábbi helyreállítási pontokból származó összes ilyen kötetet azonosítja, és jóváhagyja őket.
 
 ## <a name="special-configurations"></a>Speciális konfigurációk
 
-### <a name="dynamic-disks"></a>A dinamikus lemezek
+### <a name="dynamic-disks"></a>Dinamikus lemezek
 
-Ha a védett Azure virtuális gépek egyike vagy a következő jellemzőkkel rendelkező, ugyanazon a virtuális gépen a végrehajtható parancsfájl nem futtatható.
+Ha a védett Azure-beli virtuális gép a következő jellemzők egyikével vagy mindkettővel rendelkezik kötetekkel, nem futtathatja ugyanazt a virtuális gépen a végrehajtható parancsfájlt.
 
-- Több lemezre (felölelt és csíkozott kötetek) kötetek
-- A dinamikus lemezeket és hibatűrő kötetek (tükrözött vagy RAID-5 köteteket)
+- Több lemezre kiterjedő kötetek (átfedő és csíkozott kötetek)
+- Hibatűrő kötetek (tükrözött és RAID-5 kötetek) dinamikus lemezeken
 
-Ehelyett futtassa a végrehajtható parancsfájlt kompatibilis operációs rendszerrel rendelkező más számítógépre.
+Ehelyett futtassa a végrehajtható parancsfájlt minden olyan számítógépen, amely kompatibilis operációs rendszerrel rendelkezik.
 
-### <a name="windows-storage-spaces"></a>A Windows tárolóhelyek
+### <a name="windows-storage-spaces"></a>Windows-tárolóhelyek
 
-A Windows tárolóhelyek egy Windows-technológia, amely lehetővé teszi, hogy csoportosításával. A Windows tárolóhelyek csoportosíthatja is az iparági szabványnak megfelelő lemezek tárolókészletbe. Majd a rendelkezésre álló területet a tárolókészleteket hozhat létre a virtuális lemezek, a tárolóhelyek.
+A Windows tárolóhelyek olyan Windows-technológia, amely lehetővé teszi a tárterület virtualizálása. A Windows tárolóhelyek szolgáltatással az iparági szabványnak megfelelő lemezeket csoportosíthatja a Storage-készletekbe. Ezután az ezekben a tárolóhelyeken elérhető tárterületet használja a tárolóhelyek nevű virtuális lemezek létrehozásához.
 
-A védett Azure VM a Windows tárolóhelyek szolgáltatást használja, ha a végrehajtható parancsfájlt az azonos virtuális gépen nem futtatható. Ehelyett futtassa a végrehajtható parancsfájlt bármely más gép kompatibilis operációs rendszerrel.
+Ha a védett Azure-beli virtuális gép a Windows Storage Spaces szolgáltatást használja, a végrehajtható parancsfájl nem futtatható ugyanarra a virtuális gépre. Ehelyett futtassa a végrehajtható parancsfájlt minden olyan gépen, amely kompatibilis operációs rendszerrel rendelkezik.
 
-### <a name="lvmraid-arrays"></a>LVM/RAID Arrays
+### <a name="lvmraid-arrays"></a>LVM/RAID-tömbök
 
-A Linux Logikaikötet-kezelő (LVM) és/vagy szoftver RAID-tömbök használhatók logikai kötetek kezelése több lemez keresztül. Ha a védett Linuxos virtuális gép LVM és/vagy RAID-tömbök használ, az azonos virtuális gépen a parancsfájl nem futtatható. Ehelyett futtassa a szkriptet egy kompatibilis operációs bármelyik olyan gépen, és amely támogatja a fájlrendszer, a védett virtuális gép.
+A Linuxban a logikai kötetek kezelője (LVM) és/vagy a szoftveres RAID tömbök használatával több lemezen is kezelhetők a logikai kötetek. Ha a védett linuxos virtuális gép LVM és/vagy RAID tömböket használ, nem futtathatja ugyanazon a virtuális gépen a parancsfájlt. Ehelyett futtassa a parancsfájlt bármely más olyan gépen, amely kompatibilis operációs rendszerrel rendelkezik, és amely támogatja a védett virtuális gép fájlrendszerét.
 
-A következő parancsprogram kimenete megjeleníti a LVM és/vagy RAID-tömbök lemezek és a köteteket, a partíció típusa.
+A következő parancsfájl kimenete az LVM és/vagy RAID tömbök lemezeit, valamint a partíció típusát tartalmazó köteteket jeleníti meg.
 
    ![Linux LVM kimeneti menü](./media/backup-azure-restore-files-from-vm/linux-LVMOutput.png)
 
-Ahhoz, hogy ezeket a partíciókat, futtassa a parancsokat az alábbi szakaszokban található.
+A partíciók online állapotba helyezéséhez futtassa a következő szakaszban található parancsokat.
 
-#### <a name="for-lvm-partitions"></a>LVM partíciók
+#### <a name="for-lvm-partitions"></a>LVM-partíciók esetén
 
-A fizikai kötetre csoport kötetnevek listáját.
+A kötetek csoportjának neveinek listázása fizikai kötet alatt.
 
 ```bash
 #!/bin/bash
 $ pvs <volume name as shown above in the script output>
 ```
 
-Minden logikai kötetet, a neveket és a egy kötet csoportban az elérési listázásához.
+Az összes logikai kötet, név és elérési út listázása egy kötet csoportban.
 
 ```bash
 #!/bin/bash
 $ lvdisplay <volume-group-name from the pvs command’s results>
 ```
 
-Csatlakoztassa a logikai elérési útját a kiválasztott kötetek.
+A logikai kötetek csatlakoztatása a választott elérési úthoz.
 
 ```bash
 #!/bin/bash
 $ mount <LV path> </mountpath>
 ```
 
-#### <a name="for-raid-arrays"></a>A RAID-tömbök
+#### <a name="for-raid-arrays"></a>RAID-tömbök esetén
 
-A következő parancsot az összes raid-lemez adatainak megjelenítése.
+A következő parancs az összes RAID-lemez részleteit jeleníti meg.
 
 ```bash
 #!/bin/bash
 $ mdadm –detail –scan
 ```
 
- Megjelent a megfelelő RAID-lemez `/dev/mdm/<RAID array name in the protected VM>`
+ A megfelelő RAID-lemez a következőképpen jelenik meg`/dev/mdm/<RAID array name in the protected VM>`
 
-Használja a csatlakoztatási parancsot, ha a RAID-lemez fizikai kötetekre.
+Ha a RAID-lemez fizikai kötetekkel rendelkezik, használja a csatlakoztatás parancsot.
 
 ```bash
 #!/bin/bash
 $ mount [RAID Disk Path] [/mountpath]
 ```
 
-Ha a RAID-lemez van konfigurálva, egy másik LVM, majd a fenti eljárással LVM-partíciók, de használata a kötet neve helyett a RAID-lemez neve
+Ha a RAID-lemezen van egy másik LVM konfigurálva, használja a fenti eljárást az LVM-partíciók számára, de használja a kötet nevét a RAID-lemez nevének helyén.
 
 ## <a name="system-requirements"></a>Rendszerkövetelmények
 
-### <a name="for-windows-os"></a>A Windows operációs rendszer
+### <a name="for-windows-os"></a>Windows operációs rendszer esetén
 
-Az alábbi táblázat bemutatja a kiszolgáló és a számítógép operációs rendszerek közötti kompatibilitást. Ha a fájlok visszaállítása egy korábbi vagy későbbi operációs rendszer verziója fájlok nem állítható vissza. Például nem állítható vissza egy fájlt a Windows Server 2016 virtuális gép Windows Server 2012 vagy Windows 8-as számítógépen. Fájlok visszaállíthatja egy virtuális Gépet azonos kiszolgálói operációs rendszer, vagy a kompatibilis ügyfél típusú operációs rendszer.
+A következő táblázat a kiszolgáló és a számítógép operációs rendszerének kompatibilitását mutatja be. A fájlok helyreállításakor nem állíthatja vissza a fájlokat egy korábbi vagy későbbi verziójú operációs rendszerre. Nem lehet például visszaállítani egy fájlt egy Windows Server 2016 rendszerű virtuális gépről a Windows Server 2012-re vagy egy Windows 8 rendszerű számítógépre. A virtuális gépek fájljait visszaállíthatja ugyanarra a kiszolgálói operációs rendszerre vagy a kompatibilis ügyfél operációs rendszerre.
 
-|Server OS | Kompatibilis ügyfél operációs rendszere  |
+|Server OS | Kompatibilis ügyfél operációs rendszer  |
 | --------------- | ---- |
 | Windows Server 2016    | Windows 10 |
 | Windows Server 2012 R2 | Windows 8.1 |
 | Windows Server 2012    | Windows 8  |
 | Windows Server 2008 R2 | Windows 7   |
 
-### <a name="for-linux-os"></a>A Linux operációs rendszer
+### <a name="for-linux-os"></a>Linux operációs rendszer esetén
 
-A Linux a fájlok visszaállítására használt számítógép operációs rendszerének támogatnia kell a fájlrendszer, a védett virtuális gép. A parancsfájl futtatására kiválasztásakor ellenőrizze, hogy a számítógép egy kompatibilis operációs rendszer, és az alábbi táblázatban szereplő verziók egyikét használja:
+A Linux rendszerben a fájlok visszaállítására használt számítógép operációs rendszerének támogatnia kell a védett virtuális gép fájlrendszerét. Amikor kijelöl egy számítógépet a parancsfájl futtatásához, győződjön meg arról, hogy a számítógép kompatibilis operációs rendszerrel rendelkezik, és az alábbi táblázatban felsorolt verziók egyikét használja:
 
 |Linux operációs rendszer | Verziók  |
 | --------------- | ---- |
-| Ubuntu | 12.04-es vagy újabb verzió |
-| CentOS | 6.5-ös vagy újabb verzió  |
-| RHEL | 6.7 vagy újabb verzió |
-| Debian | 7 vagy újabb verzió |
-| Oracle Linux | 6.4 vagy újabb verzió |
-| SLES | 12 vagy újabb verzió |
-| openSUSE | 42.2 vagy újabb verzió |
+| Ubuntu | 12,04 és újabb verziók |
+| CentOS | 6,5 és újabb verziók  |
+| RHEL | 6,7 és újabb verziók |
+| Debian | 7 és újabb verziók |
+| Oracle Linux | 6,4 és újabb verziók |
+| SLES | 12 és újabb |
+| openSUSE | 42,2 és újabb verziók |
 
 > [!Note]
-> Bizonyos problémák a szkript fut a gépek az SLES 12 SP4 operációs rendszer található. SLES csapatával kivizsgálásához.
-> Jelenleg, nem fut a szkript gépeken SLES 12 SP2 és az operációs rendszer SP3 verziókkal működik.
+> Találtunk néhány problémát a fájl-helyreállítási parancsfájl futtatásához a SLES 12 SP4 operációs rendszert futtató gépeken. A SLES csapatának vizsgálata.
+> Jelenleg a fájl-helyreállítási parancsfájl futtatása a SLES 12 SP2 és SP3 operációsrendszer-verzióval rendelkező gépeken működik.
 >
 
-A szkript végrehajtásához és a helyreállítási pont biztonságosan kapcsolódhat a Python és bash összetevőket is szükséges.
+A parancsfájlnak a Python és a bash összetevők futtatására is szükség van, és biztonságosan csatlakozhat a helyreállítási ponthoz.
 
-|Összetevő | Verzió  |
+|Összetevő | Version  |
 | --------------- | ---- |
-| A bash | 4 és újabb verziók |
-| python | 2.6.6 vagy újabb verzió  |
-| TLS | 1.2 támogatnia kell  |
+| bash | 4 és újabb verziók |
+| python | 2.6.6 és újabb verziók  |
+| TLS | a 1,2 támogatottnak kell lennie  |
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Ha problémába ütközik a virtuális gépekről származó fájlok helyreállítása során, ellenőrizze az alábbi táblázat további információkat.
+Ha problémák merülnek fel a virtuális gépek fájljainak helyreállítása közben, további információkért tekintse meg a következő táblázatot.
 
-| Chybová Zpráva / forgatókönyv | Lehetséges ok | Javasolt művelet |
+| Hibaüzenet/forgatókönyv | Lehetséges ok | Javasolt művelet |
 | ------------------------ | -------------- | ------------------ |
-| Exe-kimenetre: *Csatlakozás a cél kivétel* |Parancsfájl nem sikerül a helyreállítási pont eléréséhez    | Ellenőrizze, hogy a gép megfelel-e a fenti hozzáférési követelmények. |  
-| Exe-kimenetre: *A cél már naplózva lett iSCSI-munkamenet-n keresztül.* | A szkript már végre lett hajtva ugyanarra a gépre, és a meghajtók rendelkeznek-e csatlakoztatva | A kötetek a helyreállítási pont már csatlakoztatva van. Előfordulhat, hogy nem kell csatlakoztatni a ugyanolyan meghajtóbetűjellel rendelkező meghajtót az eredeti virtuális gép. Böngésszen az elérhető kötetek a Fájlkezelőben, a fájl |
-| Exe-kimenetre: *Ez a szkript érvénytelen, mert a lemezek korlát portal/túllépte a 12-hr-n keresztül is le lett választva. Töltsön le egy új parancsfájlt a portálról.* |    A lemezek rendelkezik le lett választva, a portálról vagy a 12-hr túllépte a korlátot | Az adott exe nem érvényes, és nem futtatható. Ha azt szeretné, hogy a helyreállítási pont kötött fájljainak eléréséhez, látogasson el a portál egy új exe-fájl|
-| A gépen, amelyen az exe fut: Az új kötetek nem leválasztása, miután a Leválasztás gombra kattint | Az iSCSI-kezdeményező a számítógépen nem válaszol vagy frissíteni a kapcsolatot a cél- és a gyorsítótár karbantartása. |  Kattintás után **leválasztani**, várjon néhány percet. Ha az új kötetek nem le vannak választva, böngésszen összes kötetet. Böngészés az összes kötet kényszeríti a kezdeményező frissíteni a kapcsolatot, és a kötet le van választva, egy hibaüzenet, hogy a lemez nem érhető el.|
-| Exe-kimenetre: Szkript sikeres futtatása, de az "Új kötetek csatlakoztatva" nem jelenik meg a parancsprogram kimenete |    Ez az átmeneti hiba    | Szeretné a kötetek már lett csatolva. Tallózással nyissa meg. Ha a parancsfájlok futtatásához minden alkalommal ugyanazt a gépet használ, fontolja meg a gép újraindítását, és az ezt követő exe fut megjelennie a listában. |
-| A Linux adott: Nem sikerült a kívánt kötetek megtekintése | A gép, ahol a parancsfájl futtatása az operációs rendszer nem ismeri fel az alapul szolgáló fájlrendszer, a védett virtuális gép | Ellenőrizze, hogy a helyreállítási pont összeomlás-konzisztens vagy fájlkonzisztens. Ha a fájl egységes, futtassa a szkriptet egy másik gép amelynek operációs rendszer felismeri a védett virtuális gép fájlrendszer |
-| A Windows adott: Nem sikerült a kívánt kötetek megtekintése | A lemezek csatolt, de a kötetek nem lettek konfigurálva. | A lemez felügyeleti képernyőről azonosítsa a további lemezek a helyreállítási ponttal kapcsolatos. Ha bármelyik ezeket a lemezeket a kapcsolat nélküli állapot próbálja ki, így azok online kattintson a jobb gombbal a lemezen, és kattintson az "Online"|
+| Exe-kimenet: *Kivétel a célhoz való csatlakozáshoz* |A parancsfájl nem fér hozzá a helyreállítási ponthoz    | Győződjön meg arról, hogy a gép megfelel-e az előző hozzáférési követelményeknek. |  
+| Exe-kimenet: *A cél már be van jelentkezve iSCSI-munkameneten keresztül.* | A parancsfájl már végre lett hajtva ugyanazon a gépen, és a meghajtók csatlakoztatva lettek | A helyreállítási pont kötetei már csatolva vannak. Előfordulhat, hogy a rendszer nem csatlakoztatja az eredeti virtuális gép ugyanazzal a meghajtóbetűjelével. Tallózással keresse meg a fájlhoz tartozó fájlkezelőben elérhető összes kötetet |
+| Exe-kimenet: *Ez a parancsfájl érvénytelen, mert a lemezek a portálon keresztül lettek leválasztva, vagy túllépte a 12 HR-korlátot. Töltsön le egy új parancsfájlt a portálról.* |    A lemezek le lettek választva a portálról, vagy a 12 órás HR-korlát túllépve | Ez az adott exe már érvénytelen, és nem futtatható. Ha szeretné elérni a helyreállítási pont fájljait, látogasson el az új exe-portálra|
+| Azon a gépen, amelyen az exe fut: Ha a Leválasztás gombra kattint, az új kötetek nem lesznek leválasztva | A gépen lévő iSCSI-kezdeményező nem válaszol, és nem frissíti a megcélzott kapcsolatát, és megtartja a gyorsítótárat. |  A **Leválasztás**gombra kattintva várjon néhány percet. Ha az új kötetek nincsenek leválasztva, böngésszen végig az összes köteten. Ha az összes kötetet megkeresi, a kezdeményező frissíti a csatlakozást, és a kötet le van választva, és a lemez nem érhető el.|
+| Exe-kimenet: A parancsfájl sikeresen fut, de az "új kötetek csatolva" elem nem jelenik meg a parancsfájl kimenetén. |    Ez egy átmeneti hiba    | A kötetek már csatlakoztatva lettek volna. Nyissa meg a Explorert a tallózáshoz. Ha ugyanazt a gépet használja a parancsfájlok futtatásához, érdemes megfontolni a gép újraindítását, és a listát a következő exe-futtatásokban kell megjeleníteni. |
+| Linux-specifikus: Nem sikerült megtekinteni a kívánt köteteket | Előfordulhat, hogy a parancsfájlt futtató gép operációs rendszere nem ismeri fel a védett virtuális gép mögöttes fájlrendszerét | Győződjön meg arról, hogy a helyreállítási pont összeomlása konzisztens vagy fájl-konzisztens. Ha a fájl konzisztens, futtassa a parancsfájlt egy másik gépen, amelynek operációs rendszere felismeri a védett virtuális gép fájlrendszerét |
+| Windows-specifikus: Nem sikerült megtekinteni a kívánt köteteket | Lehet, hogy a lemezek csatlakoztatva lettek, de a kötetek nincsenek konfigurálva | A Lemezkezelés képernyőn azonosítsa a helyreállítási ponthoz kapcsolódó további lemezeket. Ha a lemezek bármelyike offline állapotban van, próbálja meg őket online állapotba helyezni, ha a jobb gombbal a lemezre kattint, és az "online" gombra kattint.|
 
 ## <a name="security"></a>Biztonság
 
-Ez a szakasz ismerteti a különböző biztonsági intézkedéseket, az Azure virtuális gép biztonsági mentése, a fájlhelyreállítás végrehajtásához venni, hogy a felhasználók ismerjék a szolgáltatás biztonsági vonatkozásai.
+Ez a szakasz azokat a különböző biztonsági intézkedéseket ismerteti, amelyeket az Azure-beli virtuális gépekről származó fájlok helyreállításának megvalósítására tettek, például hogy a felhasználók tisztában legyenek a szolgáltatás biztonsági szempontjaival.
 
-### <a name="feature-flow"></a>A szolgáltatás a folyamat
+### <a name="feature-flow"></a>Szolgáltatás folyamata
 
-Ez a funkció eléréséhez a virtuális gép adatait a teljes virtuális Gépet vagy virtuális gép visszaállítása nélkül lett létrehozva lemez és a minimálisan szükséges lépések. VM-adatokhoz való hozzáférés biztosítja egy szkriptet (amely csatlakoztatja a helyreállítási kötetet, ha futtatja az alább látható módon), és ezért az összes biztonsági megvalósításokhoz alappillére képezi
+Ez a funkció úgy lett felépítve, hogy hozzáférjen a virtuális gépekhez, a teljes virtuális gép vagy a virtuálisgép-lemezek visszaállítása és a minimális lépések végrehajtása nélkül. A virtuális gépekhez való hozzáférést egy parancsfájl adja meg (amely az alább látható módon csatlakoztatja a helyreállítási kötetet), ezért az összes biztonsági implementáció sarokköveként szolgál.
 
-  ![Biztonsági funkció folyamat](./media/backup-azure-restore-files-from-vm/vm-security-feature-flow.png)
+  ![Biztonsági szolgáltatás folyamata](./media/backup-azure-restore-files-from-vm/vm-security-feature-flow.png)
 
-### <a name="security-implementations"></a>Biztonsági hitelesítés megvalósításához
+### <a name="security-implementations"></a>Biztonsági megvalósítások
 
-#### <a name="select-recovery-point-who-can-generate-script"></a>Válassza ki a helyreállítási pont (aki hozhat létre a parancsfájl)
+#### <a name="select-recovery-point-who-can-generate-script"></a>Válassza ki a helyreállítási pontot (ki tud parancsfájlt előállítani)
 
-A parancsfájl hozzáférést biztosít a virtuális gép adatait, fontos, hogy szabályozzák, akik generálhat, az elsőként. Az egyik be az Azure Portalon, és meg kell [jogosult RBAC](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) lehessen létrehozni a szkriptet.
+A parancsfájl hozzáférést biztosít a virtuális gépekhez, ezért fontos annak szabályozása, hogy ki hozhatja elő az első helyen. Be kell jelentkeznie Azure Portalba, és [RBAC jogosultnak](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) kell lennie ahhoz, hogy képes legyen a parancsfájl létrehozásához.
 
-Fájl-helyreállítási virtuális gép visszaállítása és a lemezek visszaállítása szükség szerint engedélyezési azonos szinten van szüksége. Más szóval csak jogosult felhasználók is nézet a virtuális gép adatait képes létrehozni a szkriptet.
+A fájl-helyreállításhoz a virtuális gépek visszaállításához és a lemezek visszaállításához azonos szintű engedélyezési szint szükséges. Más szóval csak a jogosultsággal rendelkező felhasználók tekinthetik meg a virtuális gépeket, és létrehozhatják a parancsfájlt.
 
-A létrehozott szkriptet az Azure Backup szolgáltatás hivatalos Microsoft tanúsítvánnyal van aláírva. Bármely illetéktelenül módosítsák a parancsfájl azt jelenti, hogy az aláírás megszakad, és futtassa a szkriptet tett bármilyen kísérlet kockázatot, kiemelve az operációs rendszer által.
+A generált parancsfájl a Microsoft Azure Backup Service-hez készült hivatalos tanúsítványával van aláírva. A szkripttel való illetéktelen módosítás azt jelenti, hogy az aláírás megszakadt, és a szkript futtatására tett kísérletek kiemelve potenciális kockázatot jelentenek az operációs rendszer számára.
 
-#### <a name="mount-recovery-volume-who-can-run-script"></a>Csatlakoztatási helyreállítási kötet (aki futtathatja a parancsfájl)
+#### <a name="mount-recovery-volume-who-can-run-script"></a>A helyreállítási kötet csatlakoztatása (ki futtathat parancsfájlt)
 
-Csak a rendszergazda tudja futtatni a parancsprogramot, és emelt jogosultságszintű módban fusson. A parancsfájl csak előre létrehozott lépések futtatja, és nem fogad bevitelt a bármely külső forrásból.
+Csak a rendszergazda futtathatja a szkriptet, és emelt szintű módban kell futtatnia. A parancsfájl csak előre létrehozott lépéseket futtat, és nem fogadja el a külső forrásból érkező adatokat.
 
-A szkript futtatásához egy csak látható a hitelesített felhasználó a parancsfájl létrehozásakor az Azure Portalon vagy a PowerShell vagy a parancssori felületen jelszó szükséges. Ez azért szükséges, hogy a jogosult felhasználó, aki letölti a szkriptet felelős is a szkript futtatása.
+A parancsfájl futtatásához egy olyan jelszót kell megadnia, amely a Azure Portal vagy a PowerShell/CLI parancsfájl generálásának időpontjában csak a jogosultsággal rendelkező felhasználó számára jelenik meg. Ezzel biztosíthatja, hogy a parancsfájlt letöltő jogosult felhasználó a parancsfájl futtatásához is felelős legyen.
 
 #### <a name="browse-files-and-folders"></a>Fájlok és mappák tallózása
 
-Keresse meg a fájlok és mappák, a parancsfájl az iSCSI-kezdeményező használja a gépen, és a helyreállítási pont, amely van konfigurálva, egy iSCSI célhoz csatlakozhat. Itt egy feltételezheti, hogy forgatókönyvek, ahol az egyik vagy/all components modellezheti, megszemélyesítés próbál.
+A fájlok és mappák tallózásához a parancsfájl az iSCSI-kezdeményezőt használja a gépen, és csatlakozik ahhoz a helyreállítási ponthoz, amely iSCSI-célként van konfigurálva. Itt olyan forgatókönyveket lehet feltételezni, amelyekben az egyik a/az összes összetevőt utánozza vagy hamisítja.
 
-Kölcsönös CHAP hitelesítési mechanizmust, hogy az egyes összetevők hitelesíti magát, a másik használjuk. Ez azt jelenti, hogy az iSCSI-tároló és a egy hamis cél csatlakoztatni kell a gép, a szkript futása csatlakozni egy hamis kezdeményező rendkívül nehéz.
+Kölcsönös CHAP-hitelesítési mechanizmust használunk, hogy minden összetevő hitelesítse a másikat. Ez azt jelenti, hogy a hamis kezdeményezők rendkívül nehéz csatlakozni az iSCSI-tárolóhoz, és egy hamis célt kell csatlakoztatni ahhoz a géphez, amelyen a parancsfájl fut.
 
-Az adatfolyam a helyreállítási szolgáltatás és a gép közötti biztonságos SSL-alagút létrehozásával TCP-n keresztül védett ([támogatnia kell a TLS 1.2](#system-requirements) a gépen, amelyen fut a parancsfájl)
+A helyreállítási szolgáltatás és a gép közötti adatforgalom védelme a biztonságos SSL-alagúton keresztül történik a TCP protokollon keresztül (a TLS 1,2-et a parancsfájl futtatására szolgáló gépen[kell támogatni](#system-requirements) )
 
-Bármely fájl hozzáférés-vezérlési lista (ACL) szerepel a szülő/biztonsági másolatba mentett virtuális gép is a csatlakoztatott fájlrendszer megmaradnak.
+A szülő/biztonsági mentés alatt lévő virtuális gépen található összes fájl Access Control lista (ACL) a csatlakoztatott fájlrendszerben is megmarad.
 
-A parancsfájl csak olvasható hozzáférést biztosít a helyreállítási pont, és csak 12 órán át érvényes. Ha a felhasználó által blokkolni korábban eltávolítani a hozzáférést, majd jelentkezzen be az Azure Portal/PowerShell/CLI, és hajtsa végre a **lemezek leválasztása** az adott helyreállítási pontban. Azonnal a szkript érvénytelenné válik.
+A parancsfájl csak olvasási hozzáférést biztosít egy helyreállítási ponthoz, és csak 12 órára érvényes. Ha a felhasználó korábban el szeretné távolítani a hozzáférést, jelentkezzen be az Azure Portalra, a PowerShellbe vagy a CLI-be, majd hajtsa végre az adott helyreállítási ponthoz tartozó **leválasztási lemezeket** . A parancsfájl azonnal érvénytelenítve lesz.

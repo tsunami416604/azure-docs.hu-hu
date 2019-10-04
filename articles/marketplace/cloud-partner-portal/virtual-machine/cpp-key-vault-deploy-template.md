@@ -1,27 +1,20 @@
 ---
-title: Az Azure Key Vault központi telepítési sablont |} A Microsoft Docs
+title: Az Azure Key Vault központi telepítési sablont |} Az Azure Marketplace-en
 description: Felsorolja az Azure Resource Manager-sablon egy új Azure Key Vault-példány üzembe helyezéséhez szükséges.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 11/29/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 01aedadfed1ce24b8b6ae75a9163dfe0629ac7c0
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.author: pabutler
+ms.openlocfilehash: 053a9f8ddfcc523532597d9e73aa095bf9110d72
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53197123"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64938628"
 ---
-# <a name="key-vault-deployment-template"></a>A Key vault központi telepítési sablon
+# <a name="key-vault-deployment-template"></a>Key Vault üzembehelyezési sablonja
 
 Az alábbi Azure Resource Manager-sablont egy új Azure Key Vault-példány határozza meg.  A cikk szerepel [a key vault-tanúsítvány létrehozása](cpp-create-key-vault-cert.md). 
 

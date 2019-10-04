@@ -1,6 +1,6 @@
 ---
-title: Az Azure SQL Database felügyelt példánya határozza meg a virtuális hálózat/alhálózat méretét |} A Microsoft Docs
-description: Ez a témakör ismerteti, hogyan számítja ki az alhálózatot, amelyen telepíteni fogja az Azure SQL Database felügyelt példányain a méretét.
+title: Azure SQL Database felügyelt példány határozza meg a VNet/alhálózat méretét | Microsoft Docs
+description: Ez a témakör azt ismerteti, hogyan számítható ki az alhálózat mérete, ahol a Azure SQL Database felügyelt példányok lesznek telepítve.
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -10,44 +10,43 @@ ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
-manager: craigg
 ms.date: 02/22/2019
-ms.openlocfilehash: 2a10876bc3c9558de29caf9fee2ae0b06ee87f28
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 167e243b1fe4ea5ba9403ac3ca1fcea42f02f59a
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59783849"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71273558"
 ---
-# <a name="determine-vnet-subnet-size-for-azure-sql-database-managed-instance"></a>Határozza meg a virtuális hálózat alhálózat méretét az Azure SQL Database felügyelt példánya
+# <a name="determine-vnet-subnet-size-for-azure-sql-database-managed-instance"></a>Azure SQL Database felügyelt példány VNet-alhálózati méretének meghatározása
 
-Az Azure SQL Database felügyelt példányain telepíteni kell egy Azure-ban [virtuális hálózat (VNet)](../virtual-network/virtual-networks-overview.md).
+Azure SQL Database felügyelt példányt egy Azure [-beli virtuális hálózaton (VNet)](../virtual-network/virtual-networks-overview.md)belül kell üzembe helyezni.
 
-A virtuális hálózat alhálózatában helyezhető felügyelt példányok száma attól függ, hogy az alhálózat (alhálózati címtartomány) méretét.
+A VNet alhálózatán üzembe helyezhető felügyelt példányok száma az alhálózat méretétől (alhálózat-tartomány) függ.
 
-Felügyelt példány létrehozásakor az Azure virtuális gépek kiépítésekor kiválasztott csomagtól függően számos foglal le. Mivel ezek a virtuális gépek társítva az alhálózat, IP-címek igényelnek. Magas rendelkezésre állásának biztosításához a normál működést és a szolgáltatás karbantartás alatt, az Azure további virtuális gépeket is kioszthat. Ennek eredményeképpen az alhálózat szükséges IP-címek száma, az alhálózat által felügyelt példányok száma nagyobb.
+Felügyelt példány létrehozásakor az Azure számos virtuális gépet foglal le a kiépítés során kiválasztott szintjétől függően. Mivel ezek a virtuális gépek az alhálózathoz vannak társítva, IP-címeket igényelnek. A normál működés és a szolgáltatás karbantartása során a magas rendelkezésre állás biztosítása érdekében az Azure további virtuális gépeket foglalhat le. Ennek eredményeképpen a szükséges IP-címek száma nagyobb, mint az alhálózaton lévő felügyelt példányok száma.
 
-A kialakításból fakadóan felügyelt példány legalább 16, az alhálózat IP-címet kell, és előfordulhat, hogy legfeljebb 256 IP-cím használata. Ennek eredményeképpen egy/28-as és /24 közötti alhálózati maszkok használhatja fel, az alhálózati IP-címtartományok meghatározásakor. Egy hálózati maszk bit/28-as (hálózati / 14 gazdagép) egy megfelelő méretű egyetlen általános célú vagy üzleti szempontból kritikus fontosságú központi telepítés. A maszk bit/27 (30 gazdagép hálózatonként) ideális ugyanazon a Vneten belül több felügyelt példány üzembe helyezés. Maszk bit beállításai/26-os (62 gazdagép) és a /24 (254 gazdagép) lehetővé teszi, hogy a virtuális hálózat támogatásához további felügyelt példányok horizontális felskálázása további.
-
-> [!IMPORTANT]
-> 16 IP-címet az alhálózat mérete korlátozott lehetséges a további felügyelt példány horizontális felskálázás az operációs rendszer nélküli helyreállításra minimális. Erősen ajánlott lehetőséget választva alhálózati előtagot/27-eset vagy alá.
-
-## <a name="determine-subnet-size"></a>Határozza meg az alhálózat mérete
-
-Ha azt tervezi, az alhálózaton belül több felügyelt példány üzembe helyezése és az alhálózat méretét optimalizálására, a számítás használni ezeket a paramétereket:
-
-- Az Azure az alhálózat öt IP-címet használ a saját igényei szerint
-- Egyes általános célú példányok van szüksége a két cím
-- Egyes üzletileg kritikus példányok kell négy címét
-
-**Példa**: Azt tervezi, hogy három általános célú és a két üzleti az kritikus fontosságú felügyelt példányok. That means you need 5 + 3 * 2 + 2 * 4 = 19 IP addresses. IP-címtartományok 2 hatványa határozzák meg, mint az IP-címtartományt 32 kell (2 ^ 5) IP-címeket. Ezért kell lefoglalni az alhálózat/27-eset a alhálózati maszkkal.
+Kialakítás szerint a felügyelt példányoknak legalább 16 IP-címnek kell lenniük egy alhálózatban, és akár 256 IP-címet is használhatnak. Ennek eredményeképpen az alhálózati IP-címtartományok definiálásakor a/28 és/24 alhálózati maszkok is használhatók. A hálózati maszk bit/28 (14 gazdagép/hálózat) jó méret egyetlen általános célú vagy üzleti szempontból kritikus fontosságú üzembe helyezéshez. A Mask bit of/27 (hálózatonként 30 gazdagép) ideális a több felügyelt példányok ugyanazon VNet belüli üzembe helyezéséhez. A/26 (62-es gazdagépek) és/24 (254 gazdagépek) bit-beállításai lehetővé teszik a további felügyelt példányok támogatását a VNet.
 
 > [!IMPORTANT]
-> További fejlesztések fog elavulnak számítási fent látható.
+> A 16 IP-címmel rendelkező alhálózati méret a minimálisan korlátozott, ha a skálázási művelet, például a virtuális mag-méret változása nem támogatott. A prefix/27 vagy leghosszabb előtaggal rendelkező alhálózat kiválasztása kifejezetten ajánlott.
+
+## <a name="determine-subnet-size"></a>Alhálózat méretének meghatározása
+
+Ha több felügyelt példányt kíván üzembe helyezni az alhálózaton belül, és az alhálózatok méretének optimalizálására van szükség, használja ezeket a paramétereket a számítások létrehozásához:
+
+- Az Azure öt IP-címet használ az alhálózaton a saját igényeinek megfelelően
+- Minden általános célú-példánynak két címnek kell lennie
+- Minden üzletileg kritikus-példányhoz négy cím szükséges
+
+**Példa**: Azt tervezi, hogy három általános célú és két üzletileg kritikus felügyelt példánya van. Ez azt jelenti, hogy 5 + 3 * 2 + 2 * 4 = 19 IP-címet kell használnia. Mivel az IP-címtartományok a 2. Powerben vannak meghatározva, a 32-es (2 ^ 5) IP-címekre vonatkozó IP-címtartomány szükséges. Ezért le kell foglalni az alhálózatot a/27 alhálózati maszkkal.
+
+> [!IMPORTANT]
+> A fent megjelenő számítás a további fejlesztésekkel elavulttá válik.
 
 ## <a name="next-steps"></a>További lépések
 
-- Áttekintéséhez lásd: [mit jelent a felügyelt példány](sql-database-managed-instance.md).
-- Tudjon meg többet [felügyelt példány kapcsolati architektúra](sql-database-managed-instance-connectivity-architecture.md).
-- Lásd: hogyan [hozzon létre virtuális hálózatot, amelyen telepíti a felügyelt példányok](sql-database-managed-instance-create-vnet-subnet.md)
-- DNS-problémák esetén lásd: [egy egyéni DNS konfigurálása](sql-database-managed-instance-custom-dns.md)
+- Az áttekintést lásd: [Mi az a felügyelt példány](sql-database-managed-instance.md).
+- További információ a [felügyelt példány kapcsolati architektúráról](sql-database-managed-instance-connectivity-architecture.md).
+- Tekintse meg, hogyan [hozhat létre VNet, ahol felügyelt példányokat fog telepíteni](sql-database-managed-instance-create-vnet-subnet.md)
+- DNS-problémák esetén tekintse meg az [Egyéni DNS konfigurálása](sql-database-managed-instance-custom-dns.md) című témakört.

@@ -13,15 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2018
-ms.author: alkohli;
-ms.openlocfilehash: fb8cfd4767f6bb9afe1b5731d3b4db1c68a73056
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: alkohli
+ms.openlocfilehash: 5394feff80c1df8b7a6cf7f6e6ea56678f575823
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58107127"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612508"
 ---
-# <a name="contact-microsoft-support"></a>Kapcsolatfelvétel a Microsoft ügyfélszolgálatával
+# <a name="contact-microsoft-support"></a>Forduljon a Microsoft ügyfélszolgálatához
 
 A StorSimple-Eszközkezelő lehetővé teszi, hogy **egy új támogatási jegyet** belül a szolgáltatásösszegző panel. Ha bármilyen problémába ütközik a StorSimple-megoldásokra, létrehozhat egy szolgáltatási kérelmet, ha technikai támogatást. Online-munkamenetben a támogatási szakértővel szükség lehet, indítson el egy támogatási munkamenetet a StorSimple eszközön. Ez a cikk végigvezeti:
 
@@ -31,7 +31,7 @@ A StorSimple-Eszközkezelő lehetővé teszi, hogy **egy új támogatási jegyet
 
 Tekintse át a [StorSimple 8000 sorozat támogatási SLA-k és információk](https://msdn.microsoft.com/library/mt433077.aspx) támogatási kérések létrehozása előtt.
 
-## <a name="create-a-support-request"></a>Támogatáskérés létrehozása
+## <a name="create-a-support-request"></a>Támogatási kérelem létrehozása
 
 Attól függően, hogy a [támogatási csomag](https://azure.microsoft.com/support/plans/), a StorSimple eszközön a StorSimple-Eszközkezelő szolgáltatás összefoglalás panelén közvetlenül a is létrehozhat támogatási jegyeket, egy adott probléma megoldásához. A következő lépésekkel hozzon létre egy támogatási kérést:
 
@@ -45,7 +45,7 @@ Attól függően, hogy a [támogatási csomag](https://azure.microsoft.com/suppo
    1. Az a **Problématípus** legördülő listában válassza **technikai**.
    2. Az aktuális **előfizetés**, **szolgáltatás** típusát, és a **erőforrás** (StorSimple-Eszközkezelő szolgáltatás) a rendszer automatikusan kiválasztja. 
    3. Válassza ki a **támogatási csomag** a legördülő listából, ha több csomagok az Ön előfizetéséhez rendelve van. Szüksége lesz egy fizetős támogatási csomag ahhoz, hogy technikai támogatást.
-   4. Kattintson a **tovább**.
+   4. Kattintson a **Tovább** gombra.
 
        ![Forduljon az MS támogatás az új portálon keresztül](./media/storsimple-8000-contact-microsoft-support/contactsupport2.png)
 
@@ -57,14 +57,14 @@ Attól függően, hogy a [támogatási csomag](https://azure.microsoft.com/suppo
     4. Adja meg a kezdő dátum és idő a probléma.
     5. Az a **fájlfeltöltés**, kattintson a mappa ikonra, tallózással keresse meg a támogatási csomagot.
     6. Ellenőrizze **diagnosztika adatok megosztása**.
-    7. Kattintson a **tovább**.
+    7. Kattintson a **Tovább** gombra.
 
        ![Forduljon az MS támogatás az új portálon keresztül](./media/storsimple-8000-contact-microsoft-support/contactsupport3.png) 
 
 4. Az a **új támogatási kérelem** panelen kattintson a **lépés 3 elérhetőségi adatok**. Az a **kapcsolattartási adatok** panelen tegye a következőket:
 
    1. Az a **kapcsolatfelvételi lehetőségek**, adja meg az elsődleges kapcsolattartási módszer (telefonon vagy e-mailben) és a nyelvet. A válaszidő automatikusan ki van jelölve, az előfizetési csomag alapján.
-   2. Adja meg a nevét, e-mail, ügyfél nem kötelező, ország az elérhetőségi adatok. Válassza ki a **kapcsolattartási adatok módosításainak mentése a későbbi támogatási kérelmekhez** jelölőnégyzetet.
+   2. Adja meg a nevét, e-mail, ügyfél nem kötelező, ország/régió az elérhetőségi adatok. Válassza ki a **kapcsolattartási adatok módosításainak mentése a későbbi támogatási kérelmekhez** jelölőnégyzetet.
    3. Kattintson a **Create** (Létrehozás) gombra.
    
        ![Forduljon az MS támogatás az új portálon keresztül](./media/storsimple-8000-contact-microsoft-support/contactsupport5.png)   

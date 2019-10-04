@@ -1,107 +1,107 @@
 ---
-title: Rendszer-teszt eredményeinek megtekintése és üzembe helyezés – egyéni a fordítót
+title: Rendszerteszt eredményeinek és üzembe helyezésének megtekintése – egyéni fordító
 titleSuffix: Azure Cognitive Services
-description: Ha a tanítási sikeres, tekintse át a rendszer tesztek a betanítási eredmények elemzéséhez. Ha elégedett a betanítási eredményekkel, helyezze el a betanított modell központi telepítési kérelmet.
-author: rajdeep-in
-manager: christw
+description: Ha a képzés sikeres, tekintse át a rendszerteszteket a betanítási eredmények elemzéséhez. Ha elégedett a betanítási eredményekkel, helyezzen üzembe egy központi telepítési kérelmet a betanított modellhez.
+author: swmachan
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-rada
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: ccd31a0e8b91bc95ac364fe5bc0ec0ecdfaa4618
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: f5e1a21f24fdd2458d4803d6ed1675455fa5037d
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438614"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595600"
 ---
 # <a name="view-system-test-results"></a>Rendszer teszteredményeinek megtekintése
 
-Ha a tanítási sikeres, tekintse át a rendszer tesztek a betanítási eredmények elemzéséhez. Ha elégedett a betanítási eredményekkel, helyezze el a betanított modell központi telepítési kérelmet.
+Ha a képzés sikeres, tekintse át a rendszerteszteket a betanítási eredmények elemzéséhez. Ha elégedett a betanítási eredményekkel, helyezzen üzembe egy központi telepítési kérelmet a betanított modellhez.
 
-## <a name="system-test-results-page"></a>Rendszer vizsgálati eredmények lap
+## <a name="system-test-results-page"></a>Rendszerteszt eredményei lap
 
-Válasszon ki egy projektet, majd válassza ki, hogy a projekt modellek lapján keresse meg, melyik modellhez szeretne használni, és végül válassza ki a tesztelési lapot.
+Válasszon ki egy projektet, majd válassza ki a projekt modellek lapját, keresse meg a használni kívánt modellt, és végül válassza a test (teszt) lapot.
 
-A tesztelési lapot láthatja:
+A teszt lapon a következőket láthatja:
 
-1.  **Rendszer teszteredmények:** A tesztelési folyamat az betanítások eredménye. A tesztelési folyamat hoz létre a BLEU pontszámot.
+1.  **RendszerA teszt eredményei:** A tesztelési folyamat eredménye a betanításokban. A tesztelési folyamat létrehozza a BLEU pontszámot.
 
-    **Mondat száma:** Hány párhuzamos mondatokat használták a vizsgálat beállítása.
+    **Mondatok száma:** A tesztelési készletben hány párhuzamos mondatot használt a rendszer.
 
-     **BLEU pontszám:** BLEU pontszám modell betanítási befejezése után jön létre.
+     **BLEU pontszáma:** A modell kiképzésének befejezése után létrehozott BLEU-pontszám.
 
-    **Állapot:** Azt jelzi, ha a teszt befejeződött, vagy folyamatban van.
+    **Állapota** Azt jelzi, hogy a tesztelési folyamat befejeződött vagy folyamatban van-e.
 
-    ![Rendszer terhelésiteszt-eredményei](media/how-to/how-to-system-test-results.png)
+    ![Rendszerteszt eredményei](media/how-to/how-to-system-test-results.png)
 
-2.  Kattintson a rendszer vizsgálati eredmények, és tesztelheti az eredmény részletei lap, amely vesz igénybe. Ezen a lapon látható a gépi fordítási, tesztelési adathalmazon részét képező a mondatok.
+2.  Kattintson a Rendszerteszt eredményeire, és ekkor megjelenik az eredmény részletei lap tesztelése. Ezen a lapon látható a tesztelési adatkészlet részét képező mondatok gépi fordítása.
 
-3.  A teszt eredménye részletező oldalon tábla két oszlopot – az egyes nyelvekhez a pár egyik. A Forrásnyelv az oszlop a mondat lehet látható. Az oszlop a Célnyelv tartalmazza az egyes sorokban szereplő két mondatokat.
+3.  A teszt eredményének részleteit tartalmazó oldalon található tábla két oszloppal rendelkezik – egyet a pár egyes nyelveihez. A forrás nyelvének oszlopa a lefordítani kívánt mondatot jeleníti meg. A célként megadott nyelv oszlopa két mondatot tartalmaz az egyes sorokban.
 
-    **REF:** Ezt a mondatot a forrás mondat a tesztelési adathalmazon referencia fordítása.
+    **Ref** Ez a mondat a forrásként szolgáló mondatnak a teszt adatkészletben megadott hivatkozási fordítása.
 
-    **MT:** Ezt a mondatot a forrás mondat után a képzés hardverjavaslatok a modell által elvégzett automatikus fordítását.
+    **MT** Ez a mondat a képzés elvégzése után a modell által elkészített, a forrásra vonatkozó mondat automatikus fordítása.
 
-    ![Rendszer vizsgálati eredmények összehasonlítása](media/how-to/how-to-system-test-results-2.png)
+    ![Rendszerteszt eredményeinek összehasonlítása](media/how-to/how-to-system-test-results-2.png)
 
-## <a name="download-test"></a>Töltse le a teszt
+## <a name="download-test"></a>Teszt letöltése
 
-A fordítások letöltése hivatkozásra egy zip-fájl letöltéséhez. A zip-fájl tartalmazza a gép fordításokat teszt adatkészlet forrása a mondatok.
+A zip-fájl letöltéséhez kattintson a fordítások letöltése hivatkozásra. A zip a tesztelési adatkészletben a forrás mondatok gépi fordítását tartalmazza.
 
-![Töltse le a teszt](media/how-to/how-to-system-test-download.png)
+![Teszt letöltése](media/how-to/how-to-system-test-download.png)
 
-A letöltött zip-archívumot három fájlokat tartalmazza.
+Ez a letöltött zip-archívum három fájlt tartalmaz.
 
-1.  **custom.mt.txt:** Ez a fájl tartalmazza a célként megadott nyelven, a felhasználó adatait a betanított modell által elvégzett Forrásnyelv a mondatok gép fordítások.
+1.  **custom.mt.txt:** Ez a fájl a forrás nyelvi mondatok gépi fordítását tartalmazza a felhasználói adatgyűjtési modell által megcélzott nyelven.
 
-2.  **ref.txt:** Ez a fájl tartalmazza a felhasználó által megadott cél nyelven Forrásnyelv a mondatok fordítása.
+2.  **ref. txt:** Ez a fájl a forrás nyelvi mondatok felhasználó által megadott fordításait tartalmazza a célnyelv nyelvén.
 
-3.  **source.txt:** Ez a fájl tartalmazza a forrás nyelven mondatokat.
+3.  **forrás. txt:** Ez a fájl mondatokat tartalmaz a forrás nyelvén.
 
-    ![A letöltött rendszer terhelésiteszt-eredményei](media/how-to/how-to-download-system-test.png)
+    ![A rendszertesztek letöltött eredményei](media/how-to/how-to-download-system-test.png)
 
 ## <a name="deploy-a-model"></a>Modell üzembe helyezése
 
-A kérjenek központi telepítést:
+Központi telepítés igénylése:
 
-1.  Válassza ki a projektet, nyissa meg modellek lapot.
+1.  Válasszon ki egy projektet, lépjen a modellek lapra.
 
-2. Egy sikeres betanított modell azt látható "Üzembe helyezés" gomb, ha nem telepített.
+2. A sikeresen betanított modell esetében az "üzembe helyezés" gomb jelenik meg, ha nincs telepítve.
 
     ![Modell üzembe helyezése](media/how-to/how-to-deploy-model.png)
 
-3.  A gombra kattintva helyezze üzembe.
-4.  Válassza ki **telepített** lehet hatályba léptetni, és kattintson a Mentés gombra a modell, ahová a régió(k) esetében. Választhat **telepített** több régióban.
+3.  Kattintson a telepítés elemre.
+4.  Válassza az **üzembe helyezett** lehetőséget azon régió (k) esetében, ahol szeretné telepíteni a modellt, majd kattintson a Save (Mentés) gombra. Több régió számára is kiválaszthatja az **üzembe helyezett** lehetőséget.
 
     ![Modell üzembe helyezése](media/how-to/how-to-deploy-model-regions.png)
 
-5.  A modell állapotának a "Status" oszlopban tekintheti meg.
+5.  A modell állapotát az "állapot" oszlopban tekintheti meg.
 
 >[!Note]
->Egyéni a fordítót belül bármikor munkaterület 10 üzembe helyezett modellnél időben támogatja.
+>Az egyéni Translator egy adott munkaterületen belül 10 telepített modellt támogat.
 
-## <a name="update-deployment-settings"></a>Frissítés központi telepítési beállítások
+## <a name="update-deployment-settings"></a>Központi telepítési beállítások frissítése
 
-Központi telepítési beállítások frissítése:
+A központi telepítési beállítások frissítése:
 
-1.  Válassza ki a projektet, és nyissa meg a **modellek** fülre.
+1.  Válasszon ki egy projektet, és lépjen a **modellek** lapra.
 
-2. Egy sikeresen üzembe helyezett modell bemutatja egy **frissítés** gombra.
+2. Egy sikeresen üzembe helyezett modell esetében megjelenik egy **frissítés** gomb.
 
     ![Modell üzembe helyezése](media/how-to/how-to-update-undeploy-model.png)
 
-3.  Válassza ki **frissítés**.
-4.  Válassza ki **telepített** vagy **Undeployed** a régió, ahol azt szeretné, hogy a modell üzembe helyezhető, illetve telepítését eltávolították, majd kattintson **mentése**.
+3.  Válassza a **frissítés**lehetőséget.
+4.  Válassza az **üzembe helyezett** vagy a nem **telepített** lehetőséget azon régió (k) esetében, ahol a modellt központilag telepíteni szeretné, majd kattintson a **Save (Mentés**) gombra.
 
     ![Modell üzembe helyezése](media/how-to/how-to-undeploy-model.png)
 
 >[!Note]
->Ha **Undeployed** díját minden régióhoz, a modell összes régiójából származó telepítését eltávolították, és nem telepített állapotba helyezi. Már nem használható.
+>Ha az összes régió esetében a nem **telepített** lehetőséget választja, a modell nem települ minden régióból, és nem telepített állapotba kerül. A szolgáltatás már nem érhető el.
 
 ## <a name="next-steps"></a>További lépések
 
 - Az üzembe helyezett egyéni fordítási modellben keresztül használatának megkezdéséhez [Microsoft Translator Text API v3-as](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl).
-- Ismerje meg, [beállítások kezelése](how-to-manage-settings.md) szeretne megosztani a munkaterülethez, kezelheti az előfizetési kulcsot.
-- Ismerje meg, [migrálása a munkaterület és a projekt](how-to-migrate.md) a [Microsoft Translator Hub](https://hub.microsofttranslator.com)
+- Megtudhatja, [Hogyan kezelhet beállításokat](how-to-manage-settings.md) a munkaterület megosztásához, az előfizetési kulcs kezeléséhez.
+- Ismerje meg [, hogyan telepítheti át munkaterületét és projektjét](how-to-migrate.md) a [Microsoft Translator hub](https://hub.microsofttranslator.com) használatával

@@ -5,25 +5,25 @@ services: digital-twins
 author: kingdomofends
 ms.service: digital-twins
 ms.topic: include
-ms.date: 12/20/2018
-ms.author: adgera
+ms.date: 09/30/2019
+ms.author: v-adgera
 ms.custom: include file
-ms.openlocfilehash: 40ab53c941a7ac619ebb09d381a4ae0450f26e8b
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
-ms.translationtype: MT
+ms.openlocfilehash: 1f4cdf45fb643499f7d6ab717c6f36395ad292c8
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53795885"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827710"
 ---
-A `objectIdType` (vagy **objektumtípus azonosítója**), amelyek szerepet kapnak identitást típusára utal. Kivéve a `DeviceId` és `UserDefinedFunctionId` típusai, objektumtípusok azonosító megfelelnek az Azure Active Directory-objektumok tulajdonságait.
+A `objectIdType` (vagy **objektumazonosító típusa**) a szerepkörhöz megadott identitás típusát jelöli. A `DeviceId` és a `UserDefinedFunctionId` típusokon kívül az objektumazonosítók típusai Azure Active Directory objektumok tulajdonságaihoz tartoznak.
 
-Az alábbi táblázat tartalmazza a támogatott azonosító különböző az Azure digitális Twins:
+A következő táblázat a támogatott objektumazonosító-típusokat tartalmazza az Azure Digital Ikrekben:
 
-| Típus | Leírás |
+| Type | Leírás |
 | --- | --- |
-| Felhasználói azonosító | Egy szerepkört rendel egy felhasználói. |
-| Eszközazonosító | Egy szerepkört rendel egy eszközt. |
-| Tartománynév | Egy szerepkört rendel egy tartomány nevét. Minden felhasználónak, a megadott tartomány nevét a hozzáférési jogosultságokat a megfelelő szerepkör van. |
-| TenantId | Egy szerepkört rendel egy bérlőt. Minden felhasználónak, aki tagja a megadott Azure AD-bérlő azonosítója a hozzáférési jogosultságokat a megfelelő szerepkör van. |
-| servicePrincipalId | Egy szerepkört rendel egy szolgáltatásnév-objektum-azonosítót. |
-| UserDefinedFunctionId | Egy szerepkört rendel egy felhasználói függvény (UDF). |
+| UserId | Szerepkört rendel egy felhasználóhoz. |
+| DeviceId | Szerepkört rendel egy eszközhöz. |
+| DomainName | Szerepkört rendel egy tartománynévhez. A megadott tartománynévvel rendelkező felhasználók hozzáférési jogosultsággal rendelkeznek a megfelelő szerepkörhöz. |
+| TenantId | Szerepkört rendel a bérlőhöz. Minden olyan felhasználó, aki a megadott Azure AD-bérlői AZONOSÍTÓhoz tartozik, hozzáférési jogosultságokkal rendelkezik a megfelelő szerepkörhöz. |
+| ServicePrincipalId | Szerepkört rendel egy egyszerű szolgáltatásnév-objektumhoz. |
+| UserDefinedFunctionId | Szerepkört rendel egy felhasználó által definiált függvényhez (UDF). |

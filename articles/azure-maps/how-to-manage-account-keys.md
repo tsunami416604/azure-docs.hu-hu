@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: d158e1869cb85752b9b24e76d5227a2f7167bfcf
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 2871a4a0efaa40d20148ede7f0402a0dd874126c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57569467"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65957310"
 ---
 # <a name="manage-your-azure-maps-account"></a>Az Azure Maps-fiók kezelése
 
@@ -43,10 +43,14 @@ Ekkor megjelenik egy megerősítő oldal. A fiók törlése a név beírásával
 
 ## <a name="next-steps"></a>További lépések
 
-* Ismerje meg, hogyan kezelheti az Azure Maps-fiók tarifacsomagját:
-    > [!div class="nextstepaction"] 
-    > [Tarifacsomag kezelése](./how-to-manage-pricing-tier.md)
+Hitelesítés az Azure Maps beállítása:
+> [!div class="nextstepaction"]
+> [Hitelesítés kezelésére szolgál](how-to-manage-authentication.md)
 
-* Megtudhatja, hogyan tekintheti meg az API-használati metrikák az Azure Maps-fiók:
-    > [!div class="nextstepaction"] 
-    > [Használati metrikák megtekintése](./how-to-view-api-usage.md)
+Ismerje meg, hogyan kezelheti az Azure Maps-fiók tarifacsomagját:
+> [!div class="nextstepaction"] 
+> [Tarifacsomag kezelése](how-to-manage-pricing-tier.md)
+
+Megtudhatja, hogyan tekintheti meg az API-használati metrikák az Azure Maps-fiók:
+> [!div class="nextstepaction"] 
+> [Használati metrikák megtekintése](how-to-view-api-usage.md)

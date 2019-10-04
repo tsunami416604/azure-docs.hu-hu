@@ -1,24 +1,23 @@
 ---
 title: Azure Stream Analytics az IoT Edge segítségével
 description: Edge-feladatok létrehozása az Azure Stream Analytics, és az Azure IoT Edge futtató eszközre telepítse őket.
-services: stream-analytics
+ms.service: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
-ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 4/2/2019
+ms.date: 07/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4ecea8864a565997b8df119d870e7efee8448143
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 8e3b6d0fbefb8e3d3437fd5e24f929e453c573df
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58892228"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621012"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>Azure Stream Analytics az IoT Edge segítségével
  
-Az Azure Stream Analytics (ASA) az IoT Edge-ben lehetővé teszi a fejlesztők számára, hogy IoT-eszközökre telepíti központilag közel valós idejű elemzési intelligenciát bárhol is tartózkodjanak, hogy azok oldhatja fel a teljes mértékben kihasználhatók a eszköz által létrehozott adatokat. Az Azure Stream Analytics kis késésre, rugalmasságra, a sávszélesség hatékony használatára és megfelelőségre lett tervezve. A vállalatok mostantól közel az ipari műveletek ellenőrzési logika üzembe, és kiegészíti a felhőben végzett Big Data-elemzés.  
+Az Azure Stream Analytics (ASA) az IoT Edge-ben lehetővé teszi a fejlesztők számára, hogy IoT-eszközökre telepíti központilag közel valós idejű elemzési intelligenciát bárhol is tartózkodjanak, hogy azok oldhatja fel a teljes mértékben kihasználhatók a eszköz által létrehozott adatokat. Az Azure Stream Analytics közel valós idejű, a rugalmasság, a sávszélesség- és megfelelőségi hatékony felhasználása lett tervezve. A vállalatok mostantól közel az ipari műveletek ellenőrzési logika üzembe, és kiegészíti a felhőben végzett Big Data-elemzés.  
 
 Az Azure Stream Analytics az IoT Edge-en belül futtatja a [Azure IoT Edge](https://azure.microsoft.com/campaigns/iot-edge/) keretrendszer. A feladat az ASA létrehozása után telepítheti és kezelheti az IoT Hub használatával.
 
@@ -74,15 +73,15 @@ Egy storage-tárolóba szükség ahhoz, hogy exportálja az ASA összeállított
 
    ![Stream Analytics-feladat létrehozása az Edge-ben](media/stream-analytics-edge/create-asa-edge-job.png)
 3. Feladat definíciója
-    1. **Adja meg a bemeneti Stream(s)**. Adja meg a feladat egy vagy több bemeneti streamekhez.
+    1. **Adja meg a bemeneti Stream(s)** . Adja meg a feladat egy vagy több bemeneti streamekhez.
     2. Adja meg a referenciaadatok (nem kötelező).
-    3. **Adja meg a kimeneti Stream(s)**. Adja meg a feladat egy vagy több kimeneti adatfolyamokat. 
+    3. **Adja meg a kimeneti Stream(s)** . Adja meg a feladat egy vagy több kimeneti adatfolyamokat. 
     4. **Lekérdezés meghatározása**. Adja meg az ASA-lekérdezést a felhőben, a beágyazott-szerkesztő használatával. A fordítóprogram automatikusan ellenőrzi a szintaxist, az ASA edge engedélyezve van. A lekérdezés teszteléséhez a mintaadatok feltöltése. 
 
 4. Állítsa be a storage-tároló információkat a **IoT Edge-beállítások** menü.
 
 5. Nem kötelező beállítások megadása
-    1. **Események rendezése**. A portálon konfigurálhatja a soron kívüli out házirend. Dokumentáció áll rendelkezésre [Itt](https://msdn.microsoft.com/library/azure/mt674682.aspx?f=255&MSPPError=-2147217396).
+    1. **Események rendezése**. A portálon konfigurálhatja a soron kívüli out házirend. Dokumentáció áll rendelkezésre [Itt](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics).
     2. **Területi beállítás**. Állítsa be a internalization formátumban.
 
 
@@ -111,7 +110,7 @@ Az IoT Edge dokumentációja ismerteti ezeket a lépéseket [Windows](https://do
 
 > [!Note]
 > Ezzel a lépéssel ASA mappát hoz létre a "EdgeJobs" a tároló neve (Ha még nem létezik már). Minden egyes üzemelő példányhoz egy új almappát a "EdgeJobs" mappában jön létre.
-> Annak érdekében, hogy a feladat üzembe a peremhálózati eszközökre, az ASA egy közös hozzáférésű jogosultságkód (SAS) a feladat definícióját fájlt hoz létre. A SAS-kulcsát biztonságosan átkerülnek a ikereszközök használata az IoT Edge-eszközökön. Ez a kulcs lejáratának napjától létrehozása a három év meghatározva.
+> Ha a feladat az IoT Edge-eszközökre telepíti központilag, ASA egy közös hozzáférésű jogosultságkód (SAS) a feladat definícióját fájlt hoz létre. A SAS-kulcsát biztonságosan átkerülnek a ikereszközök használata az IoT Edge-eszközökön. Ez a kulcs lejáratának napjától létrehozása a három év meghatározva. Amikor frissítette az IoT Edge-feladatok, SAS változik, de nem módosítja a rendszerkép verziószámát. Egyszer, **frissítése**, kövesse a telepítési munkafolyamat és a egy frissítési értesítés az eszköz be van jelentkezve.
 
 
 IoT Edge-telepítések kapcsolatos további információkért lásd: [ezt oldal](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring).
@@ -203,9 +202,31 @@ A referenciaadatok frissítése két módja van:
 * [Az Azure Stream Analytics az IoT Edge-ben licenc](https://go.microsoft.com/fwlink/?linkid=862827). 
 * [Harmadik felekre vonatkozó megjegyzés, az Azure Stream Analytics az IoT Edge-ben](https://go.microsoft.com/fwlink/?linkid=862828).
 
+## <a name="azure-stream-analytics-module-image-information"></a>Az Azure Stream Analytics modul képinformációk 
+
+A fájlverzió-információkat a 2019-06-27 volt utoljára frissítve:
+
+- Kép: `asaedge.azurecr.io/public/azure-stream-analytics/azureiotedge:1.0.3-linux-amd64`
+   - alaplemezkép: microsoft/dotnet:2.1.6-runtime-alpine3.7
+   - platform:
+      - architektúra: amd64
+      - az operációs rendszer: linux
+  
+- Kép: `asaedge.azurecr.io/public/azure-stream-analytics/azureiotedge:1.0.3-linux-arm32v7`
+   - alaplemezkép: microsoft/dotnet:2.1.6-runtime-bionic-arm32v7
+   - platform:
+      - architektúra: arm
+      - az operációs rendszer: linux
+  
+- Kép: `asaedge.azurecr.io/public/azure-stream-analytics/azureiotedge:1.0.3-windows-amd64`
+   - alaplemezkép: microsoft/dotnet:2.1.6-runtime-nanoserver-1809
+   - platform:
+      - architektúra: amd64
+      - az operációs rendszer: windows
+      
+      
 ## <a name="get-help"></a>Segítségkérés
 További segítségre van szüksége, próbálja meg a [Azure Stream Analytics-fórumon](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
-
 
 ## <a name="next-steps"></a>További lépések
 

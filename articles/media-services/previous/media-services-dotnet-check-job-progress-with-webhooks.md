@@ -14,14 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 36ef27dfb4a5d77ec2e595013a82f55cdf240c0b
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: a29381bded4bb2562227bd5f23ccb59bb5add028
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58312461"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059201"
 ---
 # <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Azure Webhookok használata a .NET-keretrendszerrel történő Media Services feladatértesítések figyelése 
+
+> [!NOTE]
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még [v3 a v2 migrálási útmutató](../latest/migrate-from-v2-to-v3.md)
 
 Feladatok futtatásakor gyakran igényelnek olyan módon, a feladat előrehaladásának nyomon követéséhez. Az Azure-Webhookok használatával figyelheti a Media Services feladatértesítések vagy [Azure Queue storage](media-services-dotnet-check-job-progress-with-queues.md). Ez a cikk bemutatja, hogyan használható a webhookok.
 
@@ -31,7 +34,7 @@ Ez a cikk bemutatja, hogyan lehet
     
     Ebben az esetben a webhook által aktivált Media Services a kódolási feladat állapotának változásakor. A függvény visszaküldi a Media Services-értesítések a webhook hívásához figyeli, és közzéteszi a kimeneti objektum, a feladat befejezése után. 
     
-    >[!NOTE]
+    >[!TIP]
     >A folytatás előtt győződjön meg arról, hogy hogyan [Azure Functions – HTTP- és webhookkötések](../../azure-functions/functions-bindings-http-webhook.md) működik.
     >
     
@@ -76,7 +79,7 @@ A függvényalkalmazás üzembe helyezése után található között **App Serv
 
 Az Azure-függvény kódja és egyéb fájlokat, az ebben a szakaszban leírt társítva. Alapértelmezés szerint a függvény társított **function.json** és **run.csx** (C#) fájlokat. Hozzá kell adnia egy **project.json** fájlt. Ez a szakasz a többi definícióit is tartalmazza ezeket a fájlokat jeleníti meg.
 
-![fájl megjelenítése](./media/media-services-azure-functions/media-services-azure-functions003.png)
+![files](./media/media-services-azure-functions/media-services-azure-functions003.png)
 
 #### <a name="functionjson"></a>function.json
 
@@ -242,7 +245,7 @@ private static string PublishAndBuildStreamingURLs(String jobID)
 
     // Get a reference to the streaming manifest file from the  
     // collection of files in the asset. 
-    var manifestFile = asset.AssetFiles.Where(f => f.Name.ToLower().
+    var manifestFile = asset.AssetFiles.ToList().Where(f => f.Name.ToLower().
                 EndsWith(".ism")).
                 FirstOrDefault();
 

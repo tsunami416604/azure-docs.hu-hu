@@ -1,82 +1,77 @@
 ---
-title: Az Azure Marketplace és AppSource tanácsadási szolgáltatások
-description: Ez a cikk ismerteti a megfelelőségi feltételeket és új tanácsadási szolgáltatás ajánlatok az Azure Marketplace közzétételi vonatkozó követelményeket.
+title: Azure Marketplace és AppSource Consulting Services
+description: Ez a cikk az Azure Marketplace-en elérhető új tanácsadási ajánlatok támogathatósági feltételeit és közzétételi követelményeit ismerteti.
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: yijenj
-manager: nuno costa
-editor: ''
-ms.assetid: e8d228c8-f9e8-4a80-9319-7b94d41c43a6
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 10/29/2018
-ms.author: yijenj
-ms.openlocfilehash: fbaa89140033ee3b07017370e31e69601aa298db
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: pabutler
+ms.openlocfilehash: bc2be73f85ebec7785b9aa06d6152447eee7e33e
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58078760"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147294"
 ---
-# <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Tanácsadási szolgáltatások az Azure Marketplace és appsource-ban
-Tanácsadási szolgáltatások az Azure Marketplace és AppSource biztosít a Microsoft-partnerek, a cél támogatja, és bővítheti használata során az Azure-szolgáltatásokkal csatlakozó ügyfelek és az üzleti céljainak megvalósítását. 
+# <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Az Azure Marketplace és a AppSource tanácsadói szolgáltatásai
+Az Azure Marketplace-en és a AppSource-ben elérhető tanácsadói szolgáltatások lehetővé teszi a Microsoft partnerei számára, hogy összekapcsolják az ügyfeleket a szolgáltatásokkal az Azure és az üzleti célok támogatásához és bővítéséhez 
 
-Az Azure Marketplace és AppSource támogatja a szolgáltatásajánlatok rendszert integráló (SI) partnerek – a cél minőségi tanácsadási szolgáltatásokat kínáló folyamatban engedélyezése az ügyfelek csatlakozhatnak az szakértői szolgáltatások szükségük van a Microsoft consulting listája. Így felmérheti, vizsgálja, és telepítse a megfelelő megoldásokat és üzleti célkitűzések és célok elérést segítő végrehajtására.  
+Az Azure Marketplace és a AppSource támogatja a Microsoft rendszerintegrátor (SI) partnerei által kínált tanácsadói szolgáltatások listáját. a cél az, hogy minőségi tanácsadói szolgáltatásokat nyújtson, amelyekkel az ügyfelek csatlakozhatnak a szükséges szakértői szolgáltatásokhoz. Segítheti az ügyfeleket a megfelelő megoldások és megvalósítások értékelésében, értékelésében és üzembe helyezésében, amelyek segítik az üzleti célokat és a célokat.  
 
-Ezeket az ajánlatokat tanácsadási szolgáltatás ügyfél-specifikus marketingmódszerek. A kiadók lehetősége a lista típusának meghatározása és a rögzített és időtartamától, rögzített ár vagy ingyenes, és egy meghatározott napirend az ügyfélnek le a. Az érdeklődők keresztül értesítést fogadott partner CRM-rendszerében, és a célja, hogy 48 órán belül válaszolnak az ügyfeleknek. 
+Ezek a tanácsadás – a szolgáltatási ajánlatok az ügyfél-specifikus bevonások. A kiadók meghatározhatják a tőzsdei típust, a rögzített hatókört és időtartamot, vagy rögzített árú vagy ingyenes, valamint az ügyfélhez tartozó, meghatározott napirendet. Az érdeklődők a partner CRM rendszerének értesítésén keresztül érkeznek, és 48 órán belül válaszolnak az ügyfelekre. 
 
-## <a name="consulting-services-in-azure-marketplace-vs-appsource-storefront"></a>Az Azure Marketplace és AppSource kirakat tanácsadási szolgáltatások
-A piactér kirakattípus célközönség és a Microsoft felhőalapú termékek segítenek az ügyfeleknek találja, amit összhangban legyenek. Minden egyes áruháznak speciális közzétételi beállítások közzétételi befektetéseit optimális kihasználása érdekében. Az alábbi táblázat foglalja össze, ezeket a beállításokat:
+## <a name="consulting-services-in-azure-marketplace-vs-appsource-storefront"></a>Tanácsadási szolgáltatások az Azure Marketplace-en és a AppSource kirakatban
+A piactér kirakatai a célközönségek és a Microsoft Cloud Products szolgáltatással vannak összehangolva, hogy az ügyfelek megtalálják a szükséges igényeket. Minden kirakat speciális közzétételi lehetőségeket kínál a közzétételi befektetések maximalizálása érdekében. A következő táblázat összefoglalja ezeket a lehetőségeket:
 
-|         |Azure Piactér  |AppSource |
+|         |Azure Marketplace  |Microsoft AppSource |
 |---------|---------|---------|
-|**Célközönség**   |**Informatikai szakemberek és fejlesztők számára**|**Az üzleti felhasználók, üzleti döntéshozók /**|
-|Megoldás relevancia alapján végzett     |Számára készült, vagy az Azure-on fejlesztett technikai alkalmazásokat|A Power BI, Office 365, Azure kihasználhatja / D365, bővítheti üzleti alkalmazásokat. (Beépülő modul vagy bővítmény kész alkalmazások)|
-|Közzétételi beállítások     |Nekem, próbaverzió, Transact vagy tanácsadási szolgáltatások|Lépjen kapcsolatba a velem megosztva, próba vagy tanácsadási szolgáltatások|
-|A termék élmény      |Azure felügyeleti portál|Dynamics 365, az Office 365, Office Kliensalkalmazások| 
-|Egyéb      |A helyszíni közzététele az Azure Stack-n keresztül|Tanácsadási szolgáltatások Dynamics és a Power bi-ban|
+|**Célközönség**   |**INFORMATIKAI szakemberek és felhőalapú fejlesztők**|**Üzleti felhasználók/üzletági döntéshozók**|
+|Megoldás relevanciája     |Az Azure-ra épülő vagy az Azure-ra épülő technikai alkalmazások|Üzleti alkalmazások, amelyek a D365, a Power BI, a O365 és az Azure-t használják/bővítik. (Bővítmény vagy bővítmény kész alkalmazások)|
+|Közzétételi beállítások     |Kapcsolatfelvétel az Azure-ba, próbaverzióra, Transact-re vagy szolgáltatásokra|Kapcsolatfelvétel, próbaverzió vagy szolgáltatások a Dynamics 365 és Power BI|
+|A termék tapasztalatai      |Azure felügyeleti portál|Dynamics 365, Office 365, Office ügyfélalkalmazások| 
+|Egyéb      |Helyszíni közzététel Azure Stack, Azure-beli tanácsadási szolgáltatások, Azure-beli felügyelt szolgáltatások révén|A Dynamics és a Power BI tanácsadói szolgáltatásai|
 
-Microsoft Dynamics 365, az Office 365 és a Power BI alapuló szolgáltatási ajánlatok jogosultak az appsource-ban szerepel. További információkért lásd: [Microsoft AppSource tanácsadási szolgáltatások listaelem irányelvei](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf). 
+A Microsoft Dynamics 365-es és Power BI-alapú tanácsadói szolgáltatásai jogosultak a Microsoft AppSource való listázásra. További információ: [Microsoft AppSource Consulting Services listázási irányelvei](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf). 
+
+A Microsoft Azureon alapuló tanácsadói szolgáltatások és felügyelt szolgáltatások az Azure Marketplace-en is szerepelhetnek. További információkért lásd: [Az Azure Consulting Service közzétételére](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer) és [a felügyelt szolgáltatások Azure Marketplace-re való közzétételére](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers)vonatkozó cikkek.
 
 > [!Note]
-> Tanácsadási szolgáltatások az Azure Marketplace-en körétől ajánlatok támaszkodjon a ** műszaki célközönségét a összpontosít *Azure technikai megoldásokat és szolgáltatásokat.* ** Tanácsadási szolgáltatásokat az appsource-ban támaszkodjon a Dynamics 365, Power bi-ban vagy a PowerApps az appsource-on tanácsadási szolgáltatások ajánlataikat listázásához minőségi megoldások kidolgozását szakértelmüket körétől ajánlatok
+> Az Azure Marketplace-en futó tanácsadói szolgáltatásoknak olyan ajánlatokat kell kihasználnia, amelyek a * * technikai közönség felé irányulnak, és az *Azure technikai megoldásaira és szolgáltatásaira* koncentrálnak. \* * A AppSource tanácsadó szolgálatának olyan ajánlatokat kell kihasználnia, amelyek a Dynamics 365-, Power BI-vagy PowerApps-alapú minőségi megoldások nyújtásával kapcsolatos ismereteiket használják a AppSource
 > 
 > 
 > [!TIP]
-> Közzététele az Azure Marketplace-en kirakat, fogja elérhetővé tenni ezt a választást az "Elsődleges termék" legördülő menüből a Cloud Partner portálra a "Azure" kiválasztásával. Közzététele az appsource-ban, fogja elérhetővé tenni ezt a választást "Dynamics 365," kiválasztásával "Power BI" vagy a "Elsődleges termék" legördülő menüből a Cloud Partner portálra a "kiemelt alkalmazások".
+> Ha közzé szeretné tenni az Azure piactéren a kirakatot, ezt a kijelölést a Cloud Partner Portal elsődleges termék legördülő menüjének "Azure" parancsával teheti meg. A AppSource való közzétételhez a "Dynamics 365", "Power BI" vagy "Power apps" lehetőséget kell választani a Cloud Partner Portal "elsődleges termék" legördülő menüjében.
 
-## <a name="eligible-partners-and-supported-countries"></a>Jogosult partnerek és a támogatott országok
+## <a name="eligible-partners-and-supported-countriesregions"></a>Jogosult partnerek és támogatott országok/régiók
 
-Partnerek van szüksége egy **silver vagy gold kompetencia** a szolgáltatásukhoz kapcsolódó területén. 
+A partnereknek **Silver vagy Gold kompetenciára** van szükségük a szolgáltatáshoz kapcsolódó területeken. 
 
-**Az Azure Marketplace-en jogosult kompetenciák az alábbi táblázatban láthatók:**
+**A jogosult kompetenciák az Azure Marketplace-en a következő táblázatban láthatók:**
 
-|Kompetencia  |Megoldásterület  |
+|Kompetencia  |Megoldási térség  |
 |---------|---------|
-|A felhőalapú Platform és infrastruktúra     |   Cloud Platform, Data Center      |
-|Az alkalmazások fejlesztése és ISV-k     |  Application Development, Application Integration, DevOps       |
-|Adatkezelési és -elemzés    |  A Data Analytics, Adatplatform       |
+|Felhőalapú platform és infrastruktúra     |   Cloud Platform, Data Center      |
+|Alkalmazásfejlesztés és ISV     |  Alkalmazásfejlesztés, alkalmazás-integráció, DevOps       |
+|adatkezelés és elemzés    |  Adatelemzés, adatplatform       |
 
 
-**Jogosult kompetenciák az appsource-ban az alábbi táblázatban láthatók:**
+**A jogosult kompetenciákat a következő táblázatban találja a AppSource:**
 
 |Elsődleges termék |Jogosultsági követelmény |
 |---------|---------|
-| Dynamics 365 for Customer Engagement    |   Silver vagy Gold [felhőalapú Ügyfélkapcsolat-kezelés](https://partner.microsoft.com/membership/cloud-customer-relationship-management-competency) kompetencia.    | 
-|Dynamics 365 for Finance and Operations, Enterprise edition  |  Silver vagy Gold [vállalati erőforrás-tervezés](https://partner.microsoft.com/membership/enterprise-resource-planning-competency) kompetencia, és a egy minimális bevétel, $25 K a Felhőbeli műveletek a záró 12 hónapon belül.       |
-|Dynamics 365 for Finance and Operations, Business edition  |  Átállás folyamatában [Felhőszolgáltató (CSP)](https://partner.microsoft.com/cloud-solution-provider) vagy [digitális partnert a rekord (DPOR)](https://partner.microsoft.com/membership/digital-partner-of-record) legalább egy ügyfél      |
-|A Power BI, Power BI egyéni Vizualizációk | Megfelel a [Felhőszolgáltatói Partner feltételek](https://www.microsoftpartnerserverandcloud.com/_layouts/download.aspx?SourceUrl=/Hosted%20Documents/BI%20Partner%20Program%20Overview%20%26%20Incentives.pdf).|
-|PowerApps | Rendelkezik egy közzétett [Partnerbemutatókhoz](https://appsource.microsoft.com/partners) megoldás
+| Dynamics 365 for Customer Engagement    |   Silver vagy Gold [Cloud Customer ügyfélkapcsolat-kezelési](https://partner.microsoft.com/membership/cloud-customer-relationship-management-competency) kompetencia.    | 
+|Dynamics 365 for Finance and Operations, Enterprise Edition  |  A Silver vagy Gold [Vállalati erőforrás-tervezési](https://partner.microsoft.com/membership/enterprise-resource-planning-competency) kompetencia, valamint a $25K minimális bevétele a Felhőbeli műveletekben a 12 hónapon belül.       |
+|Dynamics 365 for Finance and Operations, Business Edition  |  A szolgáltatás legalább egy ügyfél számára a DPOR [(CSP)](https://partner.microsoft.com/cloud-solution-provider) vagy a [digitális partner (Recording)](https://partner.microsoft.com/membership/digital-partner-of-record)      |
+|Power BI Power BI egyéni vizualizációk | Ismerje meg a [megoldás partneri](https://www.microsoftpartnerserverandcloud.com/_layouts/download.aspx?SourceUrl=/Hosted%20Documents/BI%20Partner%20Program%20Overview%20%26%20Incentives.pdf)feltételeit.|
+|PowerApps | Közzétett partneri [bemutató](https://appsource.microsoft.com/partners) megoldás
 
-<b> További információkért lásd: [kompetenciák keresztül a Microsoft Partner Network](https://partner.microsoft.com/membership/competencies). </b>
+<b>További információ: kompetenciák a [Microsoft partner Networkon keresztül](https://partner.microsoft.com/membership/competencies).</b>
  
 
-**SI-partnerek is elküldhetik a 18 országok consulting-service-ajánlatokról**
+**Az SI-partnerek tanácsadási ajánlatokat küldhetnek a következő 18 országra/régióra vonatkozóan**
 
-|Jogosult országok |   |   |   |
+|Jogosult országok/régiók |   |   |   |
 |---------|----------|----------|----------|
 |Ausztrália |Franciaország  |     Mexikó          |Spanyolország       |
 |Belgium   |Németország |     Hollandia     |Svédország       |
@@ -84,105 +79,105 @@ Partnerek van szüksége egy **silver vagy gold kompetencia** a szolgáltatásuk
 |Dánia   |Olaszország   |     Norvégia          |Egyesült Államok |
 |Finnország   |Japán   |     Lengyelország          
 
-Tanácsadási szolgáltatásokat vehet igénybe a bevezetésre kerül élő meghatározott földrajzi régióban. Az alkalmazás első indításakor a következő lesz: Egyesült Államok, Kanada, az Egyesült Királyságban és Ausztrália. A más országokban katalógusokat élesben elteltével egy jelentéssel bíró és lenyűgöző szolgáltatásajánlatok választott lett partnerek által küldött és a Microsoft által jóváhagyott.
+A tanácsadási szolgáltatások bevezetése bizonyos földrajzi régiókban is elérhetővé válik. Az első indítás a következőket eredményezi: Egyesült Államok, Kanada, az Egyesült Királyság és Ausztrália. A többi országra/régióra vonatkozó katalógusok a partnerek által küldött és a Microsoft által jóváhagyott, jelentős számú és meggyőző kiválasztást követően lépnek életbe.
 
-## <a name="how-to-register-for-consulting-services-in-azure-marketplace-and-appsource"></a>How To Register tanácsadási szolgáltatások az Azure Marketplace és appsource-ban a
-Első lépésként [regisztrálása](https://azuremarketplace.microsoft.com/sell/signup) a vállalati adatok a Marketplace-en. A kiadók is hivatkozhatnak [válhat Kiadóvá a piactéren](https://docs.microsoft.com/azure/marketplace/become-publisher), teljes ellenőrzés-listáját a eszközregisztráció követelményeinek. 
+## <a name="how-to-register-for-consulting-services-in-azure-marketplace-and-appsource"></a>Regisztráció a tanácsadási szolgáltatásokhoz az Azure Marketplace-en és a AppSource-ben
+Először [regisztrálja](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) a vállalati adatokat a piactéren. A kiadók [a piactéren](https://docs.microsoft.com/azure/marketplace/become-publisher)is hivatkozhatnak a közzétevőre, így a regisztrációs követelmények teljes listáját megtekintheti. 
 
-**Milyen a várható után regisztrációs** a bevezetési csapat felveszi Önnel 1-3 munkanapon egy üdvözlő e-mailt, amely magában foglalja a Cloud Partner Portal (CPP) bejelentkezési adatait. [Cloud Partner Portalon](https://cloudpartner.azure.com) a ajánlat listaelem portál, ahol a kiadók az ajánlati információk és jelentkezés küldje el. 
+**Mire számíthat a regisztráció után** A bevezetési csapat 1-3 munkanapon belül elérhetővé válik egy üdvözlő e-mailben, amely tartalmazza a Cloud Partner Portal (CPP) bejelentkezési adatait. [Cloud Partner Portal](https://cloudpartner.azure.com) az ajánlati lista portálon, ahol a kiadók bemutatják a tőzsdei adatokat és a beadványokat. 
 
 >[!Note]
->Partnerek csak közzétevő válik egyszer regisztrálnia kell. Miután megkapta az üdvözlő e-mailt és a Cloud Partner portálra való bejelentkezéskor, a kiadók nem, újra kell regisztrálnia különböző listaelem típusok közzétételhez. 
+>A partnereknek csak egyszer kell regisztrálniuk a közzétevővé váláshoz. Az üdvözlő e-mail-cím és a Cloud Partner Portal bejelentkezés után a kiadóknak nem kell újból regisztrálniuk a különböző típusú listaelemek közzétételéhez. 
 
-## <a name="prepare-your-publishing-artifacts"></a>Készítse elő a közzététel összetevők
-Regisztráció előtt gyűjtésének megkezdéséhez, és előkészíti a tartalmat, amely segítséget nyújt a tőzsdei szerepeltetésével a megoldást a célként megadott ügyfél és a szolgáltatás értékét. 
+## <a name="prepare-your-publishing-artifacts"></a>A közzétételi összetevők előkészítése
+A regisztráció előtt megkezdheti a tartalmak összegyűjtését és előkészítését, hogy a lista a szolgáltatás és a megoldás értékét kifejezzék a megcélzott ügyfél számára. 
 
 |Új közzétevők beállítása  |
 |---------|
 |MPN-azonosító     |
-|A vállalati emblémát (48 &#215; 48 óra, 216 &#215; 216)     |
-|Lead Destination     |
+|Vállalati emblémák ( &#215; 48 48, &#215; 216 216)     |
+|Érdeklődő célhelye     |
 
 
-|Állítsa be az új ajánlat  |
+|Új ajánlatok beállítása  |
 |---------|
-|Ajánlat (200 karakter) nevet és leírást (2000 karakter)    |
+|Ajánlat neve (200 karakter) és leírás (2000 karakter)    |
 |Kompetenciák     |
-|Elérhetőség ország/régió     |
-|Együttműködés időtartama     |
-|Alkalmazható iparágakban, kategóriák és a keresési kulcsszavak     |
-|A termék áttekintő videó    |
-|Képernyőképek (5, maximális 1280 &#215; 720)     |
+|Ország/régió elérhetősége     |
+|Az engagement időtartama     |
+|Alkalmazható iparágak, kategóriák és keresési kulcsszavak     |
+|A termék áttekintése – videó    |
+|Képernyőképek (legfeljebb 5, 1280 &#215; 720)     |
 |Marketing dokumentumok (legfeljebb 3)     |
 
 
 ## <a name="publishing-process"></a>Közzétételi folyamat
-A következő szakaszok a tanácsadási szolgáltatási ajánlat az Azure Marketplace és appsource-ban ajánlati foglalja magában:
+Az Azure Marketplace-en és a AppSource-on folytatott tanácsadási ajánlat listázásához a következő szakaszok szükségesek:
 
-1. **Listázás**: Indítsa el a jelentkezik be egy új ajánlati tervezése a [Cloud Partner Portalon](https://cloudpartner.azure.com) fiókot. Válassza ki az új ajánlat és a "Tanácsadási szolgáltatások" lehetőséget a legördülő menüből. Adja meg a tőzsdei összetevő, és tegye közzé.
-2. **Érvényesítési**: A kérelem felülvizsgálata, győződjön meg arról, hogy megfelel a jogosultsági feltételeknek. Ezután küldhetjük a tanácsadási szolgáltatásokat kínáló ajánlati vonatkozó utasításokat. 
-3. **Küldje el**: Adja meg a szükséges adatokat, amely szerepel az utasításokat. Az összes tartalom és kapcsolódó anyagokat angol nyelven kell benyújtani. 
-4. **Felülvizsgálat**: A marketing és szerkesztői csapat áttekinti a beküldött elemet, és optimalizálja őket az olvashatóság érdekében, nyelvtani és hatékonyságát. 
-5. **Átmeneti**: A beküldött előkészített áttekintésre. 
-6. **Közzétételi**: Ön és a Microsoft a manuálisan előkészített tartalommal teljesülése esetén a lista elkészült, válassza a marketplace-en. Az éles dátum, a listaelem ajánlata megadott ország függ. Ha a kiválasztott országban katalógusának már élő az Azure Marketplace-en vagy az appsource-ban, a listaelem néhány órán belül fog megjelenni. Ellenkező esetben az eredményablakban megjelenik, amint a katalógus élesíti.
+1. **Lista**: Az új ajánlatok listázásának megkezdéséhez jelentkezzen be a [Cloud Partner Portal](https://cloudpartner.azure.com) -fiókjába. Válassza az "új ajánlat" és a "tanácsadási szolgáltatások" lehetőséget a legördülő menüből. Adja meg a listázási összetevőt, és tegye közzé.
+2. **Ellenőrzés**: A rendszer felülvizsgálja a kérést, hogy megfeleljen a támogathatóság feltételeinek. Ezt követően útmutatást küldünk a tanácsadási szolgáltatások ajánlatának listázásához. 
+3. **Küldés**: Adja meg az utasításokban felsorolt szükséges információkat. Minden tartalmat és támogató anyagot angol nyelven kell elküldenie. 
+4. **Felülvizsgálat**: Marketing-és szerkesztői csapatunk áttekinti a beküldött adatokat, és optimalizálja az olvashatóságot, a nyelvtant és a hatékonyságot. 
+5. **Előkészítés**: A rendszer elküldte a beküldést az Ön felülvizsgálatára. 
+6. **Közzététel**: Ha Ön és a Microsoft elégedett az előkészített tartalommal, a lista azonnal elérhetővé teszi a piactéren. A lista Go-Live dátuma az ajánlatában megadott országtól/régiótól függ. Ha a kiválasztott ország/régió katalógusa már él az Azure Marketplace-en vagy a AppSource, a lista néhány órán belül meg fog jelenni. Ellenkező esetben a lista akkor jelenik meg, ha a katalógus azonnal elindul.
 
-## <a name="offer-listings-and-content-review-criteria"></a>Ajánlati információk és a tartalom felülvizsgálati feltételek
-Ajánlatok kell lennie a következő öt szolgáltatást típusú (listázhatja egynél több): 
+## <a name="offer-listings-and-content-review-criteria"></a>Ajánlatok listázása és tartalmi felülvizsgálati feltételei
+Az ajánlatoknak a következő öt szolgáltatás egyikének kell lennie (legfeljebb egy listát lehet listázni): 
 
-* **Értékelés**: Az ügyfél környezet határozza meg a megoldás alkalmazhatóságát és becsült költségek és az időzítési értékelését. 
-* **Tájékoztatásának**: A megoldás vagy a felhasználói érdeklődés megrajzolásához keretrendszereket, bemutatók és példák ügyfelektől tanácsadási szolgáltatás bemutatása. 
-* **Megvalósítás**: A telepítés befejezéséhez, amely egy teljes mértékben működő megoldást eredményez. Azt javasoljuk, hogy korlátozza, megoldásokat, amelyekkel megvalósított két héten belül vagy kevesebb is lehet. 
-* **A koncepció igazolása**: A korlátozott hatókörű megvalósítás meghatározni, hogy a megoldás megfelel-e az ügyfelek igényei. 
-* **Workshop**: Az ügyfél helyszíni végzett interaktív engagement. Képzés, tájékoztatói, értékelések vagy bemutatók a vásárlói adatok vagy környezet beépített is magában foglalhat. 
+* **Értékelés**: Az ügyfél környezetének kiértékelése a megoldás alkalmazhatóságának meghatározásához, valamint a költséghatékony és az időzítési becslés megadásához. 
+* **Tájékoztatás**: Egy megoldás vagy egy tanácsadói szolgáltatás bemutatása, amely az ügyfelek érdeklődését keretrendszerek, bemutatók és felhasználói példák használatával hívja meg. 
+* **Implementáció**: Teljes telepítés, amely teljesen működőképes megoldást eredményez. Javasoljuk, hogy korlátozza a két vagy kevesebb hét alatt megvalósítható megoldásokra. 
+* **A koncepció igazolása**: Korlátozott hatókörű implementáció annak megállapítására, hogy egy megoldás megfelel-e az ügyfél igényeinek. 
+* **Workshop**: Az ügyfél telephelyén végrehajtott interaktív részvétel. Olyan képzéseket, tájékoztatókat, értékeléseket és bemutatókat tartalmazhat, amelyek az ügyfél által használt adatszolgáltatásra vagy környezetre épülnek. 
 
-**Megjegyzés:** Az alábbiakat kivéve a *Briefing* szolgáltatástípus, tanácsadási szolgáltatások kínálhatók fel (vagyis egy ügyfél vagy egy partneri létesítményben helyszíni) személyesen vagy virtuálisan (azaz keresztül teleconferencing, webes konferencia, vagy a távoli megvalósítása). Tájékoztatói személyesen kell kínáljuk.
+**Megjegyzés:** A *tájékoztató* szolgáltatási típus kivételével a tanácsadási szolgáltatások olyan személyekben is elérhetők (azaz az ügyfél tartózkodási helye vagy a partner létesítménye), vagy gyakorlatilag (például telekonferencia, webes konferencia vagy távoli megvalósítás). A tájékoztatót személyesen kell biztosítani.
 
-Miután konfigurálta a fent felsorolt szükséges elemeket, a tartalom csapatától ellenőrzi, hogy az ajánlat leírása az informatív és befejeződött a célközönséget. 
+Miután konfigurálta a fentiekben felsorolt szükséges elemeket, a tartalmi felülvizsgálati csapat ellenőrzi, hogy az ajánlat leírása informatív-e, és készen áll-e a célközönségre. 
 
-#### <a name="listing-title"></a>Cím listázása
+#### <a name="listing-title"></a>Listaelem címe
 
-A cím mező esetében a 50 karakter hosszúságú, és szükség továbbítására keresés keresőmotor-optimalizálás maximalizálhatja az ajánlat időtartamát és a szolgáltatás típusa. A kötelező formátum a következőképpen történik: NÉV: IDŐTARTAM TÍPUSA
+A title mező 50 karakteres korlátot tartalmaz, és az ajánlat időtartamát és a szolgáltatás típusát kell továbbítania a keresőmotor optimalizálásának maximalizálásához. A szükséges formátum a következő: NÉV: IDŐTARTAM TÍPUSA
 
 Példák:
 
 
-|Mintául szolgáló cím  |Helyes formátumban  |
+|Minta címe  |Helyes formátum  |
 |---------|---------|
-|Ismerkedés az Azure IoT a gyártásban    |   IoT gyártási: Értékelés 2 nap      |
-|Az intelligens kenyérpirítók Workshop        |  Az intelligens kenyérpirítók: 1 – hét Workshop       |
-|  Az SQL Server Migrálási megvalósíthatósági vizsgálat    | SQL-áttelepítés: A koncepció igazolása 3 – hét        |
+|Első lépések az Azure IoT a gyártásban    |   Gyártási IoT: 2 napos Értékelés      |
+|Workshop az intelligens kenyérpirítók számára        |  Intelligens kenyérpirítók: 1 – hét workshop       |
+|  SQL Server áttelepítési PoC    | SQL-áttelepítés: 3 – hét – a koncepció igazolása        |
 
-#### <a name="listing-summaries-and-descriptions"></a>Összegzéseket és leírásokat listázása
+#### <a name="listing-summaries-and-descriptions"></a>Összegzések és leírások listázása
 
-Ajánlat leírása és összefoglalók ajánlat áttekintése, ha a csapat hatálya a következő feltételeknek:
+Az ajánlatok leírásának és az ajánlatok összegzésének áttekintésekor a csapat a következő feltételeket fogja alkalmazni:
 
 |Csomag típusa  |Szükséges |Ajánlott  |
 |---------|---------|---------|
-|**Értékelés**    |   Egy többnapos vagy több hét értékelések részletes napirend tartalmazzák, és mi adjuk a terméket az ügyfél várható      |    Az ajánlat a felső keresési keresőmotor-optimalizálás kulcsszavas összefoglaló optimalizálása     |
-|**Briefing**    |   Mi adjuk a terméket az ügyfél várható. Ne feledje, hogy Briefing személyesen kell kínáljuk. Ha meg van adva egy virtuális szolgáltatást, válasszon egy másik ajánlatra típusa    |  Az ajánlat a felső keresési keresőmotor-optimalizálás kulcsszavas összefoglaló optimalizálása       |
-|**Megvalósítása**    |  Több nap vagy több hét megvalósításokhoz részletes napirendjét között, valamint szövegbuborékokat mérnöki változások, technikai információk és más összetevőket egy ügyfél számíthatnak az engagement eredményeit       |    Az ajánlat a felső keresési keresőmotor-optimalizálás kulcsszavas összefoglaló optimalizálása     |
-|**A koncepció igazolása**    |    Milyen mérnöki módosításokat, technikai információk és más összetevőket egy ügyfél számíthatnak az engagement eredményeit, szövegbuborékokat     | Az ajánlat a felső keresési keresőmotor-optimalizálás kulcsszavas összefoglaló optimalizálása        |
-|**Workshop**    |   Például egy részletes napirend napi, heti vagy havi, a kiválasztott időtartama az Ön ajánlatának függően. A learning célokat vagy egyéb termékek esetében melyek az Műhely szövegbuborékokat     |   Az ajánlat a felső keresőmotor-optimalizálás kulcsszavas összefoglaló optimalizálása      |
+|**Értékelés**    |   Részletes menetrendet tartalmaz a többnapos vagy a többhetes értékelésekhez, és megfogalmazhatja, hogy az ügyfél milyen kihasználható      |    Az ajánlat összefoglalásának optimalizálása a legnépszerűbb keresőmotor-optimalizálási kulcsszavakkal     |
+|**Eligazítás**    |   Az ügyfél által várhatóan felhasználható adatok kihangsúlyozása. A tájékoztatót személyesen kell megadnia. Ha virtuális szolgáltatást biztosít, válasszon másik ajánlatot.    |  Az ajánlat összefoglalásának optimalizálása a legnépszerűbb keresőmotor-optimalizálási kulcsszavakkal       |
+|**Végrehajtása**    |  Részletes menetrendet tartalmaz a többnapos vagy a többhetes implementációk számára, és megfogalmazhatja, hogy milyen mérnöki változások, technikai összetevők vagy egyéb összetevők várhatók az ügyfelek számára       |    Az ajánlat összefoglalásának optimalizálása a legnépszerűbb keresőmotor-optimalizálási kulcsszavakkal     |
+|**A koncepció igazolása**    |    Megfogalmazhatja, hogy milyen mérnöki változások, technikai összetevők vagy egyéb összetevők várhatók az ügyfelek számára az engagement eredményeinek megfelelően     | Az ajánlat összefoglalásának optimalizálása a legnépszerűbb keresőmotor-optimalizálási kulcsszavakkal        |
+|**Workshop**    |   Az ajánlat kiválasztott időtartamától függően naponta, hetente vagy havonta részletes napirendet is felvehet. Megfogalmazhatja, hogy mi a tanulási célok vagy más termékek a workshopon     |   Az ajánlat összefoglalásának optimalizálása a legnépszerűbb keresőmotor-optimalizálási kulcsszavakkal      |
 
-Cloud Partner Portalon adhat hozzá a tőzsdei használatával formázás [Markdown](https://docs.microsoft.com/contribute/how-to-write-use-markdown). Ez az egy egyszerűsített tervezési nyelv, amely segítséget nyújt a tőzsdei lengyel hozzáadása. 
+Cloud Partner Portalon belül a [Markdown](https://docs.microsoft.com/contribute/how-to-write-use-markdown)használatával adhat hozzá formázást a listához. Ez egy egyszerű kialakítási nyelv, amely segítséget nyújt a lengyel hozzáadásához a listához. 
 
-**Példa Markdown-megjegyzések**
-* Adjon hozzá * másolási blokkot – nincs hely a dőlt létrehozásához, az elején és végén található (például: *tartalom*)
-* Sortörés után tartalmaznak ":" kettőspont
-* A lemezterület-után "*" a pontok megjelenítésében (például: *(space)Content)
-* ### <a name="space-for-heading-ex-spaceagendadeliverables"></a>Fejléc-terület (például: ###(space)Agenda/Deliverables)
-* Sortörés fejléc után
-* ** = félkövér 
-* * Dőltre állítása ajánlat-összefoglaló
+**Minta Markdown-megjegyzések**
+* A * Hozzáadás a másolási blokk elején és végén – szóközzel nem hozható létre dőlt érték (pl.: *tartalom*)
+* Sortörés belefoglalása a ":" kettőspont után
+* A felsorolásjelek "*" utáni területe (pl.: * (szóköz) tartalom)
+* ### <a name="space-for-heading-ex-spaceagendadeliverables"></a>fejléc területe (például: # # # (szóköz) napirend/végtermékek)
+* Sortörés a fejléc után
+* \* * = félkövér 
+* \* Dőlt betűssé tétele ajánlat összegzése
 
 
 ## <a name="next-steps"></a>További lépések
 
-Ha ezt még nem tette meg, 
+Ha még nem tette meg, 
 
-- [Regisztráljon](https://azuremarketplace.microsoft.com/sell) a Marketplace-en.
+- [Regisztráljon](https://azuremarketplace.microsoft.com/sell) a piactéren.
 
-Ha Ön regisztrálva van és működik-e a Cloud Partner portálra, 
+Ha regisztrálva van és dolgozik Cloud Partner Portalban, 
 
-- [Jelentkezzen be a Cloud Partner portálra](https://cloudpartner.azure.com) létrehozni, vagy végezze el az ajánlatot.
-- Lásd: [tanácsadási szolgáltatási ajánlat Azure-ban és a Dynamics 365](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer) további információt.
+- [](https://cloudpartner.azure.com) Az ajánlat létrehozásához vagy befejezéséhez jelentkezzen be a Cloud Partner Portalba.
+- További információt az [Azure és a Dynamics 365 Consulting Service ajánlatában](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer) talál.

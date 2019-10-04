@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 24b18a07a4581eadc556e358f6505345610927c9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: bab2cc378d6dd3c94e20e6d2a2bf950d8793e629
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59273709"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67100198"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-inkling"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Inkling
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a Inkling konfigurálásához hozzá kell Inkling a ka
 
 **Inkling hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

@@ -10,11 +10,11 @@ ms.assetid: 9de1bcf4-b15b-4d0b-9284-8889ecf0c438
 ms.topic: conceptual
 ms.date: 12/05/2016
 ms.openlocfilehash: 3b5b11b148910e9bd1348b20a25fa8383fc2ec9c
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974675"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60812749"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-sdk-for-nodejs"></a>Az Azure Data Lake Analytics kezelése az Azure SDK for Node.js használatával
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -23,8 +23,8 @@ Ebből a cikkből megtudhatja, hogyan kezelheti az Azure Data Lake Analytics-fi�
 
 Az alábbi verziók támogatottak:
 * **NODE.js-verzió: 0.10.0-s vagy újabb**
-* **Fiókhoz tartozó REST API-verzió: 2015-10-01-előzetes verzió**
-* **Katalógushoz tartozó REST API-verzió: 2015-10-01-előzetes verzió**
+* **Fiókhoz tartozó REST API-verzió: 2015-10-01-preview**
+* **Katalógushoz tartozó REST API-verzió: 2015-10-01-preview**
 * **Feladathoz tartozó REST API-verzió: 2016. 03. 20 – előzetes verzió**
 
 ## <a name="features"></a>Szolgáltatások

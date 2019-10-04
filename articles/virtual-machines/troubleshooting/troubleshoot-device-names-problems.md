@@ -1,10 +1,10 @@
 ---
-title: Hibaelhárítás a Linux rendszerű virtuális gép eszköznév módosítása az Azure-ban |} A Microsoft Docs
-description: Ismerteti, miért a Linux rendszerű virtuális gép eszköz módosítása neveket és hogyan lehet megoldani a problémát.
+title: A Linux rendszerű virtuális gép eszköz nevének változásai az Azure-ban – problémamegoldás | Microsoft Docs
+description: A cikk azt ismerteti, miért változnak a Linux rendszerű virtuális gépek eszközeinek nevei, és hogyan oldható meg a probléma.
 services: virtual-machines-linux
 documentationcenter: ''
 author: genlin
-manager: jeconnoc
+manager: dcscontentpm
 editor: ''
 tags: ''
 ms.service: virtual-machines-linux
@@ -14,43 +14,43 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: d636d5f31e78828a518882091af29b25f7219304
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 7d8a7e7e88837214042fb8f1c109c0b93bfe771b
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58443994"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058200"
 ---
-# <a name="troubleshoot-linux-vm-device-name-changes"></a>Hibaelhárítás a Linux rendszerű virtuális gép eszköznév módosítása
+# <a name="troubleshoot-linux-vm-device-name-changes"></a>A Linux rendszerű virtuális gép eszköz nevének módosításainak megoldása
 
-Ez a cikk azt ismerteti, miért eszköz nevének módosítása után csatlakoztassa újból az adatlemezek vagy Linux rendszerű virtuális gép újraindítása. A cikk megoldásokat is kínál a probléma.
+Ez a cikk azt ismerteti, hogy az eszközök nevei miért változnak a Linux rendszerű virtuális gépek újraindítása vagy az adatlemezek újracsatolása után. A cikk a probléma megoldásait is tartalmazza.
 
 ## <a name="symptoms"></a>Probléma
-A következő problémákat tapasztalhat, ha Linuxos virtuális gépek futtatása a Microsoft Azure-ban:
+A Linux rendszerű virtuális gépek Microsoft Azureban való futtatásakor a következő problémák merülhetnek fel:
 
-- A virtuális gép az újraindítás után rendszerindító sikertelen lesz.
-- Adatlemezek leválasztása és csatolni, ha a lemez eszköznevek módosultak.
-- Olyan alkalmazást vagy parancsfájlt, amely egy lemez hivatkozik az eszköznév használatával meghiúsul, mert az eszköz neve megváltozott.
+- A virtuális gép újraindítás után nem indul el.
+- Ha az adatlemezeket leválasztják és újra csatlakoztatják, a lemezes eszközök nevei módosulnak.
+- Egy olyan alkalmazás vagy parancsfájl, amely az eszköz nevével hivatkozik a lemezre, nem sikerül, mert az eszköz neve megváltozott.
 
 ## <a name="cause"></a>Ok
 
-Linux rendszerű eszköz útvonalakat nem garantáltan konzisztens újraindítások között. Eszköz nevének nagyobb számokat (betű) és a kisebb számokat állnak. Amikor a Linux-tároló eszközillesztő észleli az új eszköz, az illesztőprogram rendeli hozzá a fő- és alverzió számok melletti elérhető tartományon az eszközön. Egy eszköz eltávolításakor az eszköz számok felszabadítását ismételt felhasználásra.
+A Linux eszköz elérési útjai nem garantáltan konzisztensek az újraindítások között. Az eszközök nevei nagy számokból (betűkből) és kisebb számokból állnak. Ha a Linux Storage-eszköz illesztőprogramja új eszközt észlel, az illesztőprogram a rendelkezésre álló tartományból származó fő és másodlagos számokat rendeli hozzá az eszközhöz. Egy eszköz eltávolításakor az eszközök száma fel lesz szabadítva az újbóli használatra.
 
-A probléma oka, hogy vizsgálata a Linux rendszerű eszköz van ütemezve az SCSI-alrendszer aszinkron módon történik. Ennek eredményeképpen egy eszköz elérési utat újraindítások között változhat.
+A probléma akkor fordul elő, ha a Linux rendszerű eszközök vizsgálatát az SCSI alrendszer aszinkron módon ütemezi. Ennek eredményeképpen az eszköz elérési útjának neve eltérő lehet az újraindítások között.
 
 ## <a name="solution"></a>Megoldás
 
-A probléma megoldásához, állandó elnevezési használja. Állandó elnevezési használandó négy módja van: fájlrendszer címke, UUID azonosító, azonosítója vagy elérési út alapján. Az Azure Linux virtuális gépek a fájlrendszer címkét vagy UUID használatát javasoljuk.
+A probléma megoldásához használja az állandó elnevezést. Az állandó elnevezést négy módon lehet használni: a FileSystem Label, az UUID, az ID vagy az Path alapján. Javasoljuk, hogy az Azure Linux rendszerű virtuális gépekhez a fájlrendszer címkéjét vagy az UUID-t használja.
 
-A legtöbb disztribúciók adja meg a `fstab` **nofail** vagy **nobootwait** paramétereket. Ezek a paraméterek engedélyezze a rendszert a Ha a lemez indításkor csatlakoztatása nem sikerült. A telepítési dokumentációjából további információt ezekről a paraméterekről. Konfigurálása Linux rendszerű virtuális gép UUID használandó, adatlemez hozzáadásakor a további információkért lásd: [Connect segítségével csatlakoztassa az új lemezt a Linux rendszerű virtuális géphez](../linux/add-disk.md#connect-to-the-linux-vm-to-mount-the-new-disk).
+A legtöbb disztribúció a `fstab` **nem hibás** vagy a **nobootwait** paramétert adja meg. Ezek a paraméterek lehetővé teszik a rendszer rendszerindítását, ha a lemez nem csatlakoztatható indításkor. A paraméterekkel kapcsolatos további információkért olvassa el a terjesztési dokumentációt. Arról, hogy hogyan konfigurálhat Linux rendszerű virtuális gépet egy adatlemez hozzáadásakor UUID használatára, olvassa el a [Csatlakozás a Linux rendszerű virtuális géphez az új lemez csatlakoztatása](../linux/add-disk.md#connect-to-the-linux-vm-to-mount-the-new-disk)című témakört.
 
-Az Azure Linux-ügynök telepítve van egy virtuális Gépet, ha az ügynök Udev szabályok segítségével hozhatnak létre szimbolikus hivatkozásokat tartalmaz a /dev/disk/azure elérési úton. Alkalmazások és parancsfájlok Udev szabályok segítségével azonosíthatja a virtuális géphez, valamint a lemez típusát csatlakozó lemezek és a lemez LUN-ok.
+Ha az Azure Linux-ügynök egy virtuális gépre van telepítve, az ügynök udev-szabályokkal hozza létre a szimbolikus hivatkozásokat a/dev/disk/Azure elérési útja alatt. Az alkalmazások és a parancsfájlok udev szabályokat használnak a virtuális géphez csatolt lemezek azonosítására, valamint a lemez típusára és a lemez logikai egységére.
 
-Ha már befejezte az fstab oly módon, hogy a virtuális gép nem indítja, és a virtuális géphez SSH nem Ön, használhatja a [virtuális gép soros konzol](./serial-console-linux.md) meg [egyfelhasználós módban](./serial-console-grub-single-user-mode.md) és módosíthatja az fstab.
+Ha már szerkesztette az fstab-t úgy, hogy a virtuális gép nem indul el, és nem tud SSH-t használni a virtuális géphez, a [virtuális gép soros konzolján](./serial-console-linux.md) megadhatja az [egyfelhasználós üzemmódot](./serial-console-grub-single-user-mode.md) , és módosíthatja az fstab-t.
 
-### <a name="identify-disk-luns"></a>Lemez LUN-ok azonosítása
+### <a name="identify-disk-luns"></a>Lemezes LUN azonosítók azonosítása
 
-Alkalmazások keresése a csatlakoztatott lemezeket és hozhatnak létre szimbolikus hivatkozások a logikai egységeket. Az Azure Linux-ügynök beállítása a szimbolikus hivatkozásokat a LUN-t, az eszközök Udev szabályokat tartalmazza:
+Az alkalmazások a LUN-ot használják az összes csatlakoztatott lemez megtalálásához, és szimbolikus hivatkozások létrehozásához. Az Azure Linux-ügynök olyan udev-szabályokat tartalmaz, amelyek a LUN-ról az eszközökre mutató szimbolikus hivatkozásokat állítanak be:
 
     $ tree /dev/disk/azure
 
@@ -67,7 +67,7 @@ Alkalmazások keresése a csatlakoztatott lemezeket és hozhatnak létre szimbol
         ├── lun1-part2 -> ../../../sdd2
         └── lun1-part3 -> ../../../sdd3
 
-A Linux rendszerű Vendég fiókból Logikaiegység-adatok segítségével lekéri `lsscsi` vagy egy hasonló eszközt:
+A Linux vendég fiókból származó LUN-adatokat a vagy egy `lsscsi` hasonló eszköz használatával kéri le a rendszer:
 
       $ sudo lsscsi
 
@@ -81,7 +81,7 @@ A Linux rendszerű Vendég fiókból Logikaiegység-adatok segítségével leké
 
       [5:0:0:1] disk Msft Virtual Disk 1.0 /dev/sdd
 
-Vendég Logikaiegység-adatok segítségével az Azure-előfizetés metaadatait a partíció adatait tartalmazó Azure Storage-ban keresse meg a VHD-t. Használhatja például a `az` CLI:
+A vendég LUN adatait az Azure-előfizetési metaadatokkal együtt használva megkeresheti az Azure Storage-ban a partíciós adatokat tartalmazó virtuális merevlemezt. Használhatja például a `az` parancssori felületet:
 
     $ az vm show --resource-group testVM --name testVM | jq -r .storageProfile.dataDisks
     [
@@ -111,9 +111,9 @@ Vendég Logikaiegység-adatok segítségével az Azure-előfizetés metaadatait 
       }
     ]
 
-### <a name="discover-filesystem-uuids-by-using-blkid"></a>Fedezze fel a fájlrendszer az UUID azonosítók blkid használatával
+### <a name="discover-filesystem-uuids-by-using-blkid"></a>Fájlrendszerbeli UUID-azonosítók felderítése a blkid használatával
 
-Alkalmazások és parancsfájlok, olvassa el a kimenetét `blkid`, vagy hasonló információforrásokat, /dev elérési szimbolikus hivatkozások létrehozásához. A kimenet az UUID azonosítók, a virtuális gép és a társított eszköz fájl csatlakoztatott minden lemez látható:
+Az alkalmazások és a parancsfájlok beolvassák az adatok kimenetét `blkid`, vagy hasonló információforrásokat a szimbolikus hivatkozások létrehozásához a/dev elérési útjában. A kimenet megjeleníti a virtuális géphez csatlakoztatott összes lemez UUID-azonosítóját, valamint a hozzájuk tartozó eszköz fájlját:
 
     $ sudo blkid -s UUID
 
@@ -122,7 +122,7 @@ Alkalmazások és parancsfájlok, olvassa el a kimenetét `blkid`, vagy hasonló
     /dev/sdb1: UUID="176250df-9c7c-436f-94e4-d13f9bdea744"
     /dev/sdc1: UUID="b0048738-4ecc-4837-9793-49ce296d2692"
 
-Az Azure-beli Linuxos ügynök Udev szabályokat hozhat létre a szimbolikus hivatkozásokat tartalmaz a /dev/disk/azure elérési úton:
+Az Azure Linux-ügynök udev szabályai a/dev/disk/Azure elérési útja alatt a szimbolikus hivatkozások készletét határozzák meg:
 
     $ ls -l /dev/disk/azure
 
@@ -132,18 +132,18 @@ Az Azure-beli Linuxos ügynök Udev szabályokat hozhat létre a szimbolikus hiv
     lrwxrwxrwx 1 root root  9 Jun  2 23:17 root -> ../../sda
     lrwxrwxrwx 1 root root 10 Jun  2 23:17 root-part1 -> ../../sda1
 
-Alkalmazások hivatkozások segítségével azonosíthatja a rendszerindító lemez eszköz és az erőforrás (ideiglenes) lemez. Az Azure-ban az alkalmazások felderíteni ezeket a partíciókat /dev/disk/azure/root-part1 vagy /dev/disk/azure-resource-part1 elérési utakat kell kinéznie.
+Az alkalmazások a hivatkozásokkal azonosítják a rendszerindító lemez eszközét és az erőforrás-(ideiglenes) lemezt. Az Azure-ban az alkalmazásoknak a/dev/disk/Azure/root-part1 vagy a/dev/disk/Azure-Resource-part1 elérési utakon kell megkeresniük a partíciók felderítéséhez.
 
-A partíciókat a `blkid` egy adatlemezt tartalmazó lista. Alkalmazások karbantartása az érintett partíciók UUID és elérési utat használjon felderítéséhez futtatáskor az eszköz nevét:
+A `blkid` listából származó további partíciók egy adatlemezen találhatók. Az alkalmazások megőrzik az UUID-t ezekhez a partíciókhoz, és egy elérési utat használnak az eszköz nevének felderítéséhez futásidőben:
 
     $ ls -l /dev/disk/by-uuid/b0048738-4ecc-4837-9793-49ce296d2692
 
     lrwxrwxrwx 1 root root 10 Jun 19 15:57 /dev/disk/by-uuid/b0048738-4ecc-4837-9793-49ce296d2692 -> ../../sdc1
 
 
-### <a name="get-the-latest-azure-storage-rules"></a>A legújabb Azure Storage-szabályok beolvasása
+### <a name="get-the-latest-azure-storage-rules"></a>A legújabb Azure Storage-szabályok beszerzése
 
-A legújabb Azure Storage-szabályok lekéréséhez futtassa a következő parancsokat:
+Az Azure Storage legújabb szabályainak beszerzéséhez futtassa a következő parancsokat:
 
     # sudo curl -o /etc/udev/rules.d/66-azure-storage.rules https://raw.githubusercontent.com/Azure/WALinuxAgent/master/config/66-azure-storage.rules
     # sudo udevadm trigger --subsystem-match=block
@@ -152,8 +152,8 @@ A legújabb Azure Storage-szabályok lekéréséhez futtassa a következő paran
 
 További információkért tekintse át a következő cikkeket:
 
-- [Ubuntu: Használja az UUID](https://help.ubuntu.com/community/UsingUUID)
-- [Red Hat: Állandó elnevezése](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Storage_Administration_Guide/persistent_naming.html)
-- [Linux: Mi az UUID azonosítók tehet meg](https://www.linux.com/news/what-uuids-can-do-you)
-- [Udev: Bevezetés a kezelés a modern Linux rendszerben](https://www.linux.com/news/udev-introduction-device-management-modern-linux-system)
+- [Ubuntu UUID használata](https://help.ubuntu.com/community/UsingUUID)
+- [Red Hat: Állandó elnevezés](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Storage_Administration_Guide/persistent_naming.html)
+- [Linux: Milyen UUID-ket tehet Önnek](https://www.linux.com/news/what-uuids-can-do-you)
+- [Udev Bevezetés az Eszközkezelőbe egy modern Linux rendszerben](https://www.linux.com/news/udev-introduction-device-management-modern-linux-system)
 

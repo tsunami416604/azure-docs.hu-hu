@@ -9,11 +9,11 @@ ms.date: 04/06/2018
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: a7d0a899b4a2ef86153e82a4e3f04e7ec430a1bc
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58488042"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179711"
 ---
 1. Lépjen be a [Google Cloud Console](https://console.developers.google.com/cloud-resource-manager) (Google felhőkonzol) felületére, és jelentkezzen be Google-fiókja hitelesítő adataival. 
 2. Kattintson az eszköztár **Create Project** (Projekt létrehozása) gombjára. 

@@ -1,6 +1,6 @@
 ---
-title: Hajtsa végre az Azure multi-factor Authentication szolgáltatás üzembe helyezése – Azure Active Directory és megtervezése
-description: A Microsoft Azure multi-factor Authentication üzembe helyezésének tervezése
+title: Azure Multi-Factor Authentication üzembe helyezés tervezése és végrehajtása – Azure Active Directory
+description: Microsoft Azure Multi-Factor Authentication üzembe helyezés tervezése
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,155 +11,153 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c2c5006eb050b70b783ab8199724e0e98766381
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 62ea1761cef48ab7808a352789963ab55129d2f8
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59358107"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70162389"
 ---
-# <a name="planning-a-cloud-based-azure-multi-factor-authentication"></a>A felhőalapú Azure multi-factor Authentication tervezése
+# <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Felhőalapú Azure-beli Multi-Factor Authentication üzembe helyezés tervezése
 
-Emberek egyre összetettebb forgatókönyveket a szervezeti erőforrásokhoz csatlakozik. A vállalat által birtokolt személyes és nyilvános eszközökről, kapcsolja ki a vállalati hálózat okostelefonon, táblagépen, számítógépek és laptopok, több platformon gyakran használatával kapcsolódnak a felhasználók. Ez mindig csatlakoztatva, több eszközre és többplatformos világában a felhasználói fiókok biztonságát fontos több, mint valaha. A jelszavak, függetlenül attól, hogy a használt eszközök, hálózat és a platformok összetettségük már nem elegendőek a felhasználói fiók védelme érdekében, különösen akkor, ha a felhasználók általában a jelszavak újbóli fiókok között. Kifinomult adathalászati és más pszichológiai manipuláció támadások felhasználónevek és jelszavak közzétett és a sötét webes értékesített eredményezhet.
+A felhasználók egyre összetettebb helyzetekben csatlakoznak a szervezeti erőforrásokhoz. A felhasználók a vállalati hálózaton lévő, személyes és nyilvános eszközökről az intelligens telefonok, a tabletták, a számítógépek és a laptopok használatával, gyakran több platformon csatlakoznak. Ebben a mindig összekapcsolt, többeszközes és többplatformos világban a felhasználói fiókok biztonsága fontosabb, mint valaha. Az eszközökön, hálózatokon és platformokon használt jelszavak, függetlenül attól, hogy milyen összetettségük van, már nem elégségesek a felhasználói fiók biztonságának biztosításához, különösen akkor, ha a felhasználók gyakran használják a jelszavakat a fiókok között. A kifinomult adathalászat és más közösségi mérnöki támadások miatt a Felhasználónév és a jelszavak a sötét webes hálózaton való közzététel és értékesítés során is megadhatók.
 
-[Az Azure multi-factor Authentication (MFA)](concept-mfa-howitworks.md) megkönnyíti adatokhoz és alkalmazásokhoz való biztonságos hozzáférést. Egy további hitelesítési második űrlap segítségével biztonsági réteget biztosít. Szervezetek használhatják a [feltételes hozzáférési](../conditional-access/overview.md) , hogy a megoldás az egyedi igényeknek.
+Az [Azure multi-Factor Authentication (MFA)](concept-mfa-howitworks.md) segítségével biztosítható az adathozzáférés és az alkalmazások védelme. További biztonsági réteget biztosít a hitelesítés második formáját használva. A szervezetek [feltételes hozzáférést](../conditional-access/overview.md) használhatnak arra, hogy a megoldás illeszkedjen az adott igényeihez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure multi-factor Authentication szolgáltatás a telepítés megkezdése előtt nincsenek előfeltételként szükséges elemeknél tapasztalt kell figyelembe venni.
+Az Azure Multi-Factor Authentication üzembe helyezésének megkezdése előtt meg kell fontolnia az előfeltételként szükséges elemeket.
 
 | Forgatókönyv | Előfeltétel |
 | --- | --- |
-| **Kizárólag felhőalapú** identitás környezetben a modern hitelesítéssel | **Nincsenek további előkészületi teendők elvégzése** |
-| **Hibrid** identitás forgatókönyvek | [Az Azure AD Connect](../hybrid/whatis-hybrid-identity.md) üzemel, és a felhasználói identitások vannak szinkronizálva, vagy összevonva a helyszíni Active Directory Domain Services az Azure Active Directoryval. |
-| A helyi cloud-access-hez közzétett örökölt alkalmazások | Az Azure AD [alkalmazásproxy](../manage-apps/application-proxy.md) üzemel. |
-| Az Azure MFA RADIUS-hitelesítéssel | A [hálózati házirend-kiszolgáló (NPS)](howto-mfa-nps-extension.md) üzemel. |
-| Felhasználók rendelkeznek a Microsoft Office 2010 vagy korábbi, vagy az Apple Mail az iOS 11 vagy korábbi | Frissítés a [a Microsoft Office 2013 vagy újabb](https://support.microsoft.com/help/4041439/modern-authentication-configuration-requirements-for-transition-from-o) és az Apple mail 12. vagy újabb iOS-hez. Feltételes hozzáférés nem támogatja az örökölt hitelesítési protokollok. |
+| **Csak felhőalapú** identitás-környezet modern hitelesítéssel | **Nincsenek további előfeltétel-feladatok** |
+| **Hibrid** identitási forgatókönyvek | [Azure ad Connect](../hybrid/whatis-hybrid-identity.md) települ, és a felhasználói identitások szinkronizálása vagy összevonása a helyszíni Active Directory tartományi szolgáltatások a Azure Active Directory. |
+| Felhőbeli hozzáféréshez közzétett helyszíni örökölt alkalmazások | Az Azure [](../manage-apps/application-proxy.md) ad-alkalmazásproxy üzembe helyezése megtörténik. |
+| Az Azure MFA használata RADIUS-hitelesítéssel | A [hálózati házirend-kiszolgáló (NPS)](howto-mfa-nps-extension.md) telepítve van. |
+| A felhasználók Microsoft Office 2010-es vagy korábbi verzióját, vagy az Apple Mail for iOS 11 vagy korábbi verzióját. | Frissítsen [Microsoft Office 2013-es vagy újabb](https://support.microsoft.com/help/4041439/modern-authentication-configuration-requirements-for-transition-from-o) verzióra, valamint az Apple Mail for iOS 12 vagy újabb verzióra. A régi hitelesítési protokollok nem támogatják a feltételes hozzáférést. |
 
-## <a name="plan-user-rollout"></a>Felhasználói bevezetésének megtervezése
+## <a name="plan-user-rollout"></a>Felhasználói bevezetés megtervezése
 
-Az MFA-bevezetési terv telepítési regisztrálást, a támogatási kapacitás belüli követ próbatelepítések tartalmaznia kell. A bevezetés során először a feltételes hozzáférési szabályzatok alkalmazása a próbafelhasználók kis csoportja számára. Milyen hatása a próbaüzem felhasználóinak, a folyamat használt, valamint a regisztrációs viselkedés kiértékelését, miután további csoportok felvétele a szabályzatba, vagy további felhasználókat vehet fel a meglévő csoportokhoz.
+Az MFA bevezetési tervének tartalmaznia kell egy próba-telepítést, amelyet a támogatási kapacitáson belül üzembe helyezési hullámok követnek. Kezdje el a bevezetést úgy, hogy a feltételes hozzáférési szabályzatokat a kísérleti felhasználók egy kis csoportjára alkalmazza. A kísérleti felhasználókra gyakorolt hatás kiértékelése, a felhasznált folyamat és a regisztrálási viselkedés alapján további csoportokat adhat hozzá a Szabályzathoz, vagy hozzáadhat további felhasználókat a meglévő csoportokhoz.
 
-### <a name="user-communications"></a>Felhasználói kommunikáció során
+### <a name="user-communications"></a>Felhasználói kommunikáció
 
-Fontos, annak ellenére tájékoztassa a felhasználókat, a tervezett kommunikáció jövőbeni változtatásokról, az Azure MFA regisztrációs követelményeket és a szükséges felhasználói műveletek. Azt javasoljuk, hogy a szervezetben, mint például a kommunikációs, a változáskezelés vagy emberi erőforrások részleg képviselői-sel fejlesztett kommunikáció.
+Fontos, hogy tájékoztassa a felhasználókat a tervezett kommunikációról, a közelgő változásokról, az Azure MFA regisztrációs követelményeiről és a szükséges felhasználói műveletekről. Javasoljuk, hogy a kommunikációt a szervezeten belüli képviselőivel, például a kommunikációval, a változás-kezeléssel vagy az emberi erőforrásokkal foglalkozó szervezeti egységekkel együtt fejlesszék.
 
-A Microsoft biztosít [kommunikációs sablonok](https://aka.ms/mfatemplates) és [végfelhasználói dokumentációt](../user-help/security-info-setup-signin.md) vázlatszintű a kommunikáció érdekében. Elküldheti a felhasználók számára [ https://myprofile.microsoft.com ](https://myprofile.microsoft.com) kiválasztásával közvetlenül regisztrálni a **biztonsági adatok** erre az oldalra mutató hivatkozások.
+A Microsoft [kommunikációs sablonokat](https://aka.ms/mfatemplates) és [végfelhasználói dokumentációt](../user-help/security-info-setup-signin.md) biztosít a kommunikáció megtervezéséhez. Az oldalon található [https://myprofile.microsoft.com](https://myprofile.microsoft.com) **biztonsági információk** hivatkozásaira kattintva a felhasználók közvetlenül regisztrálhatnak.
 
 ## <a name="deployment-considerations"></a>Telepítési szempontok
 
-Az Azure multi-factor Authentication van üzembe helyezve, a feltételes hozzáférési házirendeket tartat be. A [feltételes hozzáférési szabályzat](../conditional-access/overview.md) megkövetelhetik a felhasználóktól többtényezős hitelesítés végrehajtására, például bizonyos feltételek teljesülése esetén:
+Az Azure multi-Factor Authentication üzembe helyezése a szabályzatok feltételes hozzáféréssel való kényszerítésével történik. A [feltételes hozzáférési szabályzatok](../conditional-access/overview.md) megkövetelhetik a felhasználóktól a többtényezős hitelesítés végrehajtását, ha bizonyos feltételek teljesülnek, például:
 
-* Minden felhasználó, egy adott felhasználó, egy csoporthoz, vagy a hozzárendelt szerepkör tagja
-* Egyes adott felhőalapú alkalmazás hozzáférésének
+* Minden felhasználó, egy adott felhasználó, egy csoport tagja vagy hozzárendelt szerepkör
+* Az adott felhőalapú alkalmazás elérése folyamatban van
 * Eszközplatform
 * Eszköz állapota
-* Hálózati hely vagy a geo-található IP-cím
+* Hálózati hely vagy földrajzi elhelyezkedésű IP-cím
 * Ügyfélalkalmazások
-* Bejelentkezési kockázati (Identity Protection igényel)
-* Megfelelő eszköz
-* Hibrid Azure AD-csatlakoztatott eszköz
+* Bejelentkezési kockázat (Identity Protection szükséges)
+* Szabályzatnak megfelelő eszköz
+* Hibrid Azure AD-hez csatlakoztatott eszköz
 * Jóváhagyott ügyfélalkalmazás
- 
 
-Használatával a testre szabható poszterek és e-mail sablonok [a multi-factor authentication szolgáltatás bevezetés anyagok] a többtényezős hitelesítés bevezetése a szervezet számára. (https://www.microsoft.com/en-us/download/details.aspx?id=57600&WT.mc_id=rss_alldownloads_all)
+A többtényezős hitelesítés bevezetési [anyagaiban](https://www.microsoft.com/download/details.aspx?id=57600&WT.mc_id=rss_alldownloads_all) a testreszabható plakátok és e-mail-sablonok segítségével hozhatja ki a szervezete többtényezős hitelesítését.
 
-## <a name="enable-multi-factor-authentication-with-conditional-access"></a>A feltételes hozzáférés többtényezős hitelesítés engedélyezése
+## <a name="enable-multi-factor-authentication-with-conditional-access"></a>Feltételes hozzáféréssel rendelkező Multi-Factor Authentication engedélyezése
 
-Feltételes hozzáférési szabályzatok kényszeríti a regisztrációt, a nem regisztrált pédául első bejelentkezés, egy fontos biztonsági teendő a regisztráció befejezéséhez.
+A feltételes hozzáférési szabályzatok betartják a regisztrációt, így a regisztrációt nem igénylő felhasználókat az első bejelentkezéskor, fontos biztonsági megfontolásokból kell végrehajtani.
 
-
-[Az Azure AD Identity Protection](../identity-protection/howto-configure-risk-policies.md) járul hozzá a regisztrációs házirendet és a kockázati észlelése és eltávolítása szabályzatokat az Azure multi-factor Authentication történetet. Szabályzatok kényszerítése a jelszó módosítására, feltört identitás fenyegetés esetén hozhatók létre, és többtényezős hitelesítés kérése, amikor egy bejelentkezési sikertelennek kockázatos az alábbiak szerint [események](../reports-monitoring/concept-risk-events.md):
+A [Azure ad Identity Protection](../identity-protection/howto-configure-risk-policies.md) a regisztrációs házirendet és az automatizált kockázatkezelési és szervizelési szabályzatokat is hozzájárul az Azure multi-Factor Authentication Story-hoz. A szabályzatok úgy hozhatók létre, hogy kényszerítsék a jelszó megváltoztatását, ha fennáll a veszélye a sérült identitásnak, vagy ha a bejelentkezés a következő [események](../reports-monitoring/concept-risk-events.md)kockázatának minősül:
 
 * Kiszivárgott hitelesítő adatok
 * Bejelentkezések névtelen IP-címről
 * Bejelentkezés szokatlan helyekről
 * Bejelentkezések ismeretlen helyekről
 * Bejelentkezések fertőzött eszközökről
-* Gyanús tevékenységek IP-címekről indított bejelentkezések
+* Gyanús tevékenységeket folytató IP-címekről érkező bejelentkezések
 
-Az Azure Active Directory Identity Protection által észlelt kockázati események némelyike valós időben történik, és a egy offline feldolgozást igényel. A rendszergazdák kiválaszthatják meggátolja a felhasználókat, akik mutatnak a kockázatos viselkedés, és manuálisan javítása, jelszómódosítás megkövetelése vagy a többtényezős hitelesítés megkövetelése a feltételes hozzáférési szabályzatok részeként.
+A Azure Active Directory Identity Protection által észlelt kockázati észlelések némelyike valós időben történik, és egyes esetekben offline feldolgozásra van szükség. A rendszergazdák dönthetnek úgy, hogy letiltják a kockázatos viselkedést kiállító felhasználókat, és manuálisan szervizelik, jelszó-módosítást igényelnek, vagy többtényezős hitelesítést igényelnek a feltételes hozzáférési szabályzatok részeként.
 
-## <a name="define-network-locations"></a>Hálózati helyek definiálása
+## <a name="define-network-locations"></a>Hálózati telephelyek definiálása
 
-Azt javasoljuk, hogy a szervezetek feltételes hozzáférés használata meghatározásához, hogy a hálózat használatával [nevesített helyek](../conditional-access/location-condition.md#named-locations). Ha a szervezet az Identity Protection, fontolja meg kockázatalapú szabályzatok nevesített helyek helyett.
+Azt javasoljuk, hogy a szervezetek a feltételes hozzáférés használatával definiálják a hálózatot a [nevesített helyekkel](../conditional-access/location-condition.md#named-locations). Ha a szervezete Identity Protectiont használ, érdemes lehet kockázati alapú házirendeket használni a nevesített helyszínek helyett.
 
-### <a name="configuring-a-named-location"></a>Egy elnevezett hely konfigurálása
+### <a name="configuring-a-named-location"></a>Elnevezett hely konfigurálása
 
-1. Nyissa meg **Azure Active Directory** az Azure Portalon
-2. Kattintson a **feltételes hozzáférés**
-3. Kattintson a **nevesített helyek**
-4. Kattintson a **új helye**
-5. Az a **neve** mezőbe, adjon meg egy kifejező nevet
-6. Válassza ki, hogy a hely, IP-címtartományok vagy országok/régiók definiálása
-   1. IP-címtartományok használatakor
-      1. Döntse el, jelölje meg megbízhatóként a hely-e. A megbízható helyről történő bejelentkezésnél kisebb a felhasználó bejelentkezési kockázata. Csak akkor jelölje meg megbízhatóként ezen a helyen, ha tudja, hogy a megadott IP-címtartományok használata megalapozott és hihető a szervezetben.
-      2. Adja meg az IP-címtartományok
-   2. Ha használja az országok/régiók
-      1. Bontsa ki a legördülő menüből, és válassza ki a országok vagy régiók ezen a helyen elnevezett meghatározni kívánt.
-      2. Ismeretlen területek belefoglalása döntsön. Az ismeretlen területek olyan IP-címek, melyeket nem lehet országhoz/régióhoz hozzárendelni.
-7. Kattintson a **Create** (Létrehozás) gombra
+1. **Azure Active Directory** megnyitása a Azure Portal
+2. Kattintson a **feltételes hozzáférés** lehetőségre.
+3. Kattintson a **nevesített helyszínek** elemre.
+4. Kattintson az **új hely** elemre.
+5. Adjon meg egy értelmes nevet a **név** mezőben.
+6. Válassza ki, hogy IP-címtartományok vagy országok/régiók használatával határozza meg a helyet
+   1. IP-címtartományok használata esetén
+      1. Döntse el, hogy megbízhatóként jelöli-e meg a helyet. A megbízható helyről történő bejelentkezésnél kisebb a felhasználó bejelentkezési kockázata. Csak akkor adja meg ezt a helyet megbízhatónak, ha ismeri a megadott IP-címtartományok létrehozását és hitelességét a szervezetben.
+      2. IP-címtartományok megadása
+   2. Országok/régiók használata esetén
+      1. Bontsa ki a legördülő menüt, és válassza ki azokat az országokat vagy régiókat, amelyeket meg szeretne határozni ehhez a megnevezett helyhez.
+      2. Döntse el, hogy az ismeretlen területeket is tartalmazza-e. Az ismeretlen területek olyan IP-címek, amelyek nem képezhetők le országra/régióra.
+7. Kattintson a **Létrehozás** gombra.
 
-## <a name="plan-authentication-methods"></a>Hitelesítési módszerek tervezése
+## <a name="plan-authentication-methods"></a>Hitelesítési módszerek megtervezése
 
-A rendszergazdák választhatják a [hitelesítési módszerek](../authentication/concept-authentication-methods.md) , hogy szeretné-e a felhasználók számára elérhetővé tenni. Fontos, hogy több mint egy egyetlen hitelesítési módszer, hogy a felhasználók egy biztonsági mentési módszer érhető el abban az esetben, ha az elsődleges módszer nem érhető el. Ahhoz, hogy a rendszergazdák az alábbi módszerek érhetők el:
+A rendszergazdák kiválaszthatják a felhasználók számára elérhetővé tenni kívánt [hitelesítési módszereket](../authentication/concept-authentication-methods.md) . Fontos, hogy egynél több hitelesítési módszert engedélyezzen, hogy a felhasználók számára elérhető legyen egy biztonsági mentési módszer, ha az elsődleges metódus nem érhető el. A rendszergazdák a következő módszerekkel engedélyezhetők:
 
 ### <a name="notification-through-mobile-app"></a>Értesítés mobilalkalmazáson keresztül
 
-Leküldéses értesítés érkezik a Microsoft Authenticator alkalmazást a mobileszközén. A felhasználó megtekinti az értesítést, és kiválasztja **jóváhagyás** ellenőrzés befejezéséhez. Leküldéses értesítések, a mobilalkalmazáson keresztül a felhasználók számára zavaró legalább lehetőséget nyújt. Szerepelnek a legtöbb megbízható és biztonságos beállítás mivel telefonos helyett egy adatkapcsolatot használ.
+A rendszer leküldéses értesítést küld a mobileszköz Microsoft Authenticator alkalmazásának. A felhasználó megtekinti az értesítést, és kiválasztja a **jóváhagyás** lehetőséget az ellenőrzés befejezéséhez. A mobil alkalmazások leküldéses értesítései biztosítják a legkevésbé zavaró lehetőséget a felhasználók számára. Emellett a legmegbízhatóbb és biztonságos megoldás is, mivel a telefonos szolgáltatás helyett adatkapcsolatokat használnak.
 
 > [!NOTE]
-> Ha a szervezete személyzet dolgozik vagy utazás, Kína, a **értesítés mobilalkalmazáson keresztül** metódust **Android-eszközök** nem működik az adott országban. Alternatív módszerek ezen felhasználók számára elérhetővé kell tenni.
+> Ha a szervezete Kínában dolgozik vagy Kínába utazik, az **Android** -eszközökön a **Mobile App metóduson keresztül küldött értesítés** nem működik az adott országban. Ezeket a felhasználókat alternatív módszereket kell elérhetővé tenni.
 
 ### <a name="verification-code-from-mobile-app"></a>Mobilalkalmazás ellenőrzőkódja
 
-Egy olyan mobilalkalmazás, például a Microsoft Authenticator alkalmazást hoz létre egy új OATH-Ellenőrzőkód 30 másodpercenként. A felhasználó a bejelentkezési felületen kerül, az ellenőrző kódot. A mobilalkalmazás beállítás is használható, a telefonos adatok vagy mobilhálózati jel rendelkezik-e.
+Egy mobil alkalmazás, például a Microsoft Authenticator alkalmazás, 30 másodpercenként létrehoz egy új eskü-ellenőrző kódot. A felhasználó beírja az ellenőrző kódot a bejelentkezési felületre. A Mobile App (mobil alkalmazás) beállítással megadható, hogy a telefon tartalmaz-e adattípust vagy mobil jelet.
 
 ### <a name="call-to-phone"></a>Megadott telefonszám hívása
 
-Automatikus hanghívást indít a felhasználó helyezkedik el. A felhasználó felveszi a hívás és identitásváltása **#** hitelesítésüket jóváhagyása lenyomja a telefon billentyűzetén meg. Telefonszámot a nagy biztonsági mentési módszer a mobilalkalmazásokból értesítési vagy ellenőrző kódot.
+A rendszer automatikusan hanghívást helyez el a felhasználó felé. A felhasználó megválaszolja a hívást, **#** és megnyomja a telefon billentyűzetén a hitelesítés jóváhagyásához. A telefon hívása nagyszerű biztonsági mentési módszer a mobil alkalmazások értesítési vagy ellenőrzési kódjához.
 
 ### <a name="text-message-to-phone"></a>SMS küldése megadott telefonszámra
 
-Egy ellenőrző kódot tartalmazó szöveges üzenetet küld a felhasználónak, kéri a felhasználót, hogy a bejelentkezési felületen meg kell adnia az ellenőrzőkódot.
+Egy ellenőrző kódot tartalmazó szöveges üzenetet küld a rendszer a felhasználónak, és megkéri a felhasználót, hogy adja meg az ellenőrző kódot a bejelentkezési felületen.
 
 ### <a name="choose-verification-options"></a>Ellenőrzési beállítások kiválasztása
 
-1. Keresse meg a **az Azure Active Directory**, **felhasználók**, **multi-factor Authentication**.
+1. Tallózással keresse meg **Azure Active Directory**, **felhasználók**, **multi-Factor Authentication**.
 
-   ![A multi-factor Authentication-portál elérése az Azure AD-felhasználók panel az Azure Portalon](media/howto-mfa-getstarted/users-mfa.png)
+   ![A Multi-Factor Authentication-portál elérése az Azure AD-felhasználók paneljén Azure Portal](media/howto-mfa-getstarted/users-mfa.png)
 
-1. Az új lapon megnyíló keresse meg a **Szolgáltatásbeállítások**.
-1. A **ellenőrzési lehetőségek**, jelölje be a felhasználók által választható módszerek mindegyike.
+1. Az új lapon a Tallózás gombra kattintva megnyithatja a **szolgáltatás beállításait**.
+1. Az **ellenőrzési beállítások**területen kattintson a felhasználók számára elérhető metódusok összes mezőjére.
 
-   ![Ellenőrzési módszerek konfigurálása a multi-factor Authentication szolgáltatás beállítások lap](media/howto-mfa-getstarted/mfa-servicesettings-verificationoptions.png)
+   ![Ellenőrzési módszerek konfigurálása a Multi-Factor Authentication szolgáltatás beállításai lapon](media/howto-mfa-getstarted/mfa-servicesettings-verificationoptions.png)
 
 1. Kattintson a **Mentés** gombra.
-1. Zárja be a **Szolgáltatásbeállítások** fülre.
+1. Lépjen be a **Szolgáltatásbeállítások** lapra.
 
 ## <a name="plan-registration-policy"></a>Regisztrációs házirend megtervezése
 
-A rendszergazdák meg kell határoznia, hogyan felhasználók regisztrálni fogja a módszereket. Szervezetek kell [engedélyezze az új kombinált regisztrációs felület](howto-registration-mfa-sspr-combined.md) az Azure MFA és az önkiszolgáló jelszó-visszaállítást (SSPR). SSPR lehetővé teszi a felhasználóknak jelszavuk ugyanazokat a módszereket használ a multi-factor authentication szolgáltatás használatával biztonságos módon. Javasoljuk, hogy ez a kombinált regisztrációs jelenleg nyilvános előzetes verzióban elérhető a felhasználók számára, és lehetővé teszi mindkét szolgáltatás esetében egyszer regisztrálni nagyszerű felhasználói élményt, mert. Ugyanazokat a módszereket az SSPR és az Azure MFA engedélyezése lehetővé teszi a felhasználók mindkét funkció használatához regisztrálni kell.
+A rendszergazdáknak meg kell határozniuk, hogy a felhasználók hogyan regisztrálják a módszereiket. A szervezeteknek lehetővé kell tenniük az Azure MFA és az önkiszolgáló jelszó-visszaállítás (SSPR) [új, együttes regisztrációját](howto-registration-mfa-sspr-combined.md) . A SSPR lehetővé teszi a felhasználók számára, hogy a többtényezős hitelesítéshez használt módszerek használatával biztonságos módon állítsa alaphelyzetbe a jelszavukat. Javasoljuk, hogy ez a közös regisztráció, amely jelenleg nyilvános előzetes verzióban érhető el, mivel ez nagyszerű felhasználói élményt nyújt a felhasználók számára, és mindkét szolgáltatásra egyszer regisztrálhat. A SSPR és az Azure MFA azonos módszereinek engedélyezése lehetővé teszi a felhasználók számára, hogy mindkét funkció használatára regisztráljanak.
 
-### <a name="registration-with-identity-protection"></a>Regisztráció az Identity Protection
+### <a name="registration-with-identity-protection"></a>Regisztrálás az Identity Protection szolgáltatással
 
-Ha a szervezet az Azure Active Directory Identity Protection, [az MFA regisztrációs szabályzatának konfigurálása](../identity-protection/howto-mfa-policy.md) regisztrálni, amikor legközelebb bejelentkeznek az interaktív módon a felhasználóknak.
+Ha a szervezete Azure Active Directory Identity Protectiont használ, [konfigurálja az MFA regisztrációs házirendjét](../identity-protection/howto-mfa-policy.md) , hogy a felhasználók a következő bejelentkezés alkalmával interaktívan regisztráljanak.
 
-### <a name="registration-without-identity-protection"></a>Regisztráció nélkül identity Protection
+### <a name="registration-without-identity-protection"></a>Regisztráció Identity Protection nélkül
 
-A szervezet nem rendelkezik licenccel, amely az Identity Protection engedélyezése, ha a MFA szükség, jelentkezzen be a következő futtatáskor regisztrálja a rendszer kéri a felhasználókat. Felhasználók nem regisztrálható a multi-factor Authentication, ha az MFA által védett alkalmazások nem használnak. Fontos hatékonyan végrehajtható a fiók összes felhasználók regisztrálni, hogy kártékony elemek nem lehet kitalálni a felhasználó jelszavát, és regisztrálja a multi-factor Authentication a felhasználók nevében.
+Ha a szervezet nem rendelkezik az Identity Protectiont engedélyező licenccel, a rendszer felszólítja a felhasználókat, hogy regisztrálják a következő alkalommal, amikor az MFA betöltésére van szükség a bejelentkezéskor. Előfordulhat, hogy a felhasználók nem regisztrálhatnak MFA-ra, ha nem használnak MFA-védelemmel ellátott alkalmazásokat. Fontos, hogy minden felhasználó regisztrálva legyen, hogy a hibás szereplők ne tudják kitalálni egy felhasználó jelszavát, és regisztrálják az MFA-t a nevükben, és így a fiók felügyeletét ténylegesen átveszik.
 
-#### <a name="enforcing-registration"></a>Regisztrációs kényszerítése
+#### <a name="enforcing-registration"></a>Regisztráció érvényesítése
 
-Az alábbi lépéseket követve feltételes hozzáférési szabályzattal kényszerítheti a felhasználók regisztráljanak a multi-factor Authentication
+A következő lépések végrehajtásával kényszerítheti a felhasználókat, hogy regisztráljanak Multi-Factor Authentication
 
-1. Hozzon létre egy csoportot, adja hozzá az összes felhasználó jelenleg nincs regisztrálva.
-2. A feltételes hozzáférés használatának kényszerítése a multi-factor authentication szolgáltatást a csoport az erőforrásokhoz való teljes hozzáférés.
-3. Rendszeres időközönként kiértékeli a csoport tagságát, és a regisztrált felhasználók eltávolítása a csoportból.
+1. Hozzon létre egy csoportot, és adja hozzá az összes jelenleg nem regisztrált felhasználót.
+2. A feltételes hozzáférés használatával kikényszerítheti a többtényezős hitelesítést a csoport számára az összes erőforráshoz való hozzáféréshez.
+3. Rendszeresen ellenőrizze a csoporttagság újraértékelését, és távolítsa el a csoportból regisztrált felhasználókat.
 
-PowerShell-parancsokkal által használt, előfordulhat, hogy azonosította a regisztrált és nem regisztrált az Azure MFA-felhasználók a [MSOnline PowerShell modul](https://docs.microsoft.com/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0).
+Azonosíthatja a regisztrált és nem regisztrált Azure MFA-felhasználókat olyan PowerShell-parancsokkal, amelyek a [MSOnline PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0)-modulra támaszkodnak.
 
-#### <a name="identify-registered-users"></a>A regisztrált felhasználók azonosítása
+#### <a name="identify-registered-users"></a>Regisztrált felhasználók azonosítása
 
 ```PowerShell
 Get-MsolUser -All | where {$_.StrongAuthenticationMethods -ne $null} | Select-Object -Property UserPrincipalName | Sort-Object userprincipalname 
@@ -171,149 +169,216 @@ Get-MsolUser -All | where {$_.StrongAuthenticationMethods -ne $null} | Select-Ob
 Get-MsolUser -All | where {$_.StrongAuthenticationMethods.Count -eq 0} | Select-Object -Property UserPrincipalName | Sort-Object userprincipalname 
 ```
 
-## <a name="plan-conditional-access-policies"></a>Tervezi feltételes hozzáférési szabályzatok
+### <a name="convert-users-from-per-user-mfa-to-conditional-access-based-mfa"></a>Felhasználók konvertálása felhasználónkénti MFA-ből feltételes hozzáférésen alapuló MFA-ra
 
-Tervezze meg a feltételes hozzáférési szabályzat stratégiáját, ez határozza meg, amikor az MFA- és más vezérlőket szükségesek, tekintse meg [Mi az az Azure Active Directory feltételes hozzáférés?](../conditional-access/overview.md).
+Ha a felhasználók engedélyezve lettek a felhasználónkénti engedélyezése és a kényszerített Azure Multi-Factor Authentication használatával, a következő PowerShell segítséget nyújthat a feltételes hozzáférés-alapú Azure-Multi-Factor Authentication való átalakításhoz.
 
-Fontos kívül az Azure AD-bérlő véletlenül zárolva megakadályozza. Csökkentheti a rendszergazdai hozzáférést a nem szándékos hiánya hatását [két vagy több vészelérési fiókok létrehozása a bérlőben](../users-groups-roles/directory-emergency-access.md) és kizárva őket a feltételes hozzáférési szabályzatot.
+Futtassa ezt a PowerShellt egy ISE-ablakban, vagy mentse a következőt:. PS1 fájl helyi futtatásához.
+
+```PowerShell
+# Disable MFA for all users, keeping their MFA methods intact
+Get-MsolUser -All | Disable-MFA -KeepMethods
+
+# Wrapper to disable MFA with the option to keep the MFA methods (to avoid having to proof-up again later)
+function Disable-MFA {
+
+    [CmdletBinding()]
+    param(
+        [Parameter(ValueFromPipeline=$True)]
+        $User,
+        [switch] $KeepMethods
+    )
+
+    Process {
+
+        Write-Verbose ("Disabling MFA for user '{0}'" -f $User.UserPrincipalName)
+        $User | Set-MfaState -State Disabled
+
+        if ($KeepMethods) {
+            # Restore the MFA methods which got cleared when disabling MFA
+            Set-MsolUser -ObjectId $User.ObjectId `
+                         -StrongAuthenticationMethods $User.StrongAuthenticationMethods
+        }
+    }
+}
+
+# Sets the MFA requirement state
+function Set-MfaState {
+
+    [CmdletBinding()]
+    param(
+        [Parameter(ValueFromPipelineByPropertyName=$True)]
+        $ObjectId,
+        [Parameter(ValueFromPipelineByPropertyName=$True)]
+        $UserPrincipalName,
+        [ValidateSet("Disabled","Enabled","Enforced")]
+        $State
+    )
+
+    Process {
+        Write-Verbose ("Setting MFA state for user '{0}' to '{1}'." -f $ObjectId, $State)
+        $Requirements = @()
+        if ($State -ne "Disabled") {
+            $Requirement =
+                [Microsoft.Online.Administration.StrongAuthenticationRequirement]::new()
+            $Requirement.RelyingParty = "*"
+            $Requirement.State = $State
+            $Requirements += $Requirement
+        }
+
+        Set-MsolUser -ObjectId $ObjectId -UserPrincipalName $UserPrincipalName `
+                     -StrongAuthenticationRequirements $Requirements
+    }
+}
+
+```
+
+## <a name="plan-conditional-access-policies"></a>Feltételes hozzáférési szabályzatok tervezése
+
+A feltételes hozzáférési házirend stratégiájának megtervezéséhez, amely meghatározza, hogy mikor szükséges az MFA és más vezérlők használata, tekintse meg a [Mi a feltételes hozzáférés a Azure Active Directory?](../conditional-access/overview.md)című témakört.
+
+Fontos, hogy megakadályozza, hogy véletlenül kizárja az Azure AD-bérlőt. A nem megfelelő rendszergazdai hozzáférés következményeinek enyhítése érdekében [hozzon létre két vagy több vészhelyzeti hozzáférési fiókot a bérlőn](../users-groups-roles/directory-emergency-access.md) , és zárja ki őket a feltételes hozzáférési szabályzatból.
 
 ### <a name="create-conditional-access-policy"></a>Feltételes hozzáférési szabályzat létrehozása
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) egy globális rendszergazdai fiókkal.
-1. Keresse meg a **az Azure Active Directory**, **feltételes hozzáférési**.
-1. Válassza ki **új szabályzat**.
-1. Adjon meg egy kifejező nevet a szabályzathoz.
-1. A **felhasználók és csoportok**:
-   * Az a **Belefoglalás** lapon jelölje be a **minden felhasználó** választógomb
-   * Az a **kizárása** lapra, jelölje be a **felhasználók és csoportok** , és válassza a vészelérési fiókok.
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) globális rendszergazdai fiók használatával.
+1. Tallózással keresse meg **Azure Active Directory**, **feltételes hozzáférést**.
+1. Válassza az **új szabályzat**lehetőséget.
+1. Adjon meg egy értelmes nevet a szabályzatnak.
+1. A **felhasználók és csoportok**területen:
+   * A **beágyazás** lapon jelölje be a **minden felhasználó** választógombot.
+   * A **kizárás** lapon jelölje be a **felhasználók és csoportok** jelölőnégyzetet, és válassza ki a vészhelyzeti hozzáférési fiókokat.
    * Kattintson a **Done** (Kész) gombra.
-1. A **Felhőalkalmazások**, jelölje be a **az összes felhőalapú alkalmazások** választógombot.
-   * IGÉNY SZERINT: Az a **kizárása** adja meg, hogy a szervezetnek nincs szüksége MFA felhőalapú alkalmazásokat.
+1. A **Cloud apps**alatt válassza a **minden Cloud apps** választógombot.
+   * OPCIONÁLISAN A **kizárás** lapon válassza ki azokat a felhőalapú alkalmazásokat, amelyekhez a szervezet nem igényel MFA-t a következőhöz:.
    * Kattintson a **Done** (Kész) gombra.
 1. A **feltételek** szakaszban:
-   * IGÉNY SZERINT: Ha engedélyezte az Azure Identity Protection, válassza ki a szabályzat részeként értékeli a bejelentkezési kockázat.
-   * IGÉNY SZERINT: Ha már konfigurálta a megbízható helyek vagy nevesített helyek, megadhat vagy kizárja a ezeken a helyeken a szabályzat alól.
-1. A **Grant**, győződjön meg arról, a **hozzáférést** választógomb van kiválasztva.
-    * Jelölje be a **többtényezős hitelesítés megkövetelése**.
+   * OPCIONÁLISAN Ha engedélyezte az Azure Identity Protection szolgáltatást, dönthet úgy, hogy a szabályzat részeként kiértékeli a bejelentkezési kockázatot.
+   * OPCIONÁLISAN Ha megbízható helyekkel vagy elnevezett helyekkel konfigurálta a beállításokat, megadhatja, hogy belefoglalja vagy kizárja ezeket a helyeket a szabályzatból.
+1. Győződjönmeg arról, hogy a **hozzáférés** engedélyezése választógomb be van jelölve.
+    * Jelölje be a többtényezős **hitelesítés**megkövetelése jelölőnégyzetet.
     * Kattintson a **Kiválasztás** gombra.
-1. Ugrás a **munkamenet** szakaszban.
-1. Állítsa be a **házirend engedélyezése** kapcsolót **a**.
+1. Ugorja át a **munkamenet** szakaszt.
+1. Állítsa be a **házirend engedélyezése** kapcsolót be értékre.
 1. Kattintson a **Create** (Létrehozás) gombra.
 
-![Az MFA engedélyezése az Azure portálon a felhasználóknak a próbaüzemi csoport feltételes hozzáférési szabályzat létrehozása](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
+![Feltételes hozzáférési szabályzat létrehozása a többtényezős hitelesítés engedélyezéséhez Azure Portal-felhasználók számára a kísérleti csoportban](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
 
 ## <a name="plan-integration-with-on-premises-systems"></a>A helyszíni rendszerekkel való integráció megtervezése
 
-Egyes örökölt és a helyszíni alkalmazások Azure AD-val közvetlenül nem hitelesítenek használata, beleértve a többtényezős hitelesítés további lépések szükségesek:
+Egyes örökölt és helyszíni alkalmazások, amelyek nem hitelesítik közvetlenül az Azure AD-t, további lépésekre van szükség az MFA használatához, beleértve a következőket:
 
-* Örökölt helyszíni alkalmazások pedig, amelyek kell Application proxy használatára.
-* A helyszíni RADIUS-alkalmazások, amelyek kell használnia az MFA-adapterrel az NPS-kiszolgálóval.
-* A helyszíni AD FS-alkalmazások, amelyek az AD FS 2016 MFA-adapterrel használniuk kell.
+* Örökölt helyszíni alkalmazások, amelyeknek az alkalmazásproxy használatát kell használniuk.
+* Helyszíni RADIUS-alkalmazások, amelyeknek az MFA-adaptert kell használniuk az NPS-kiszolgálóval.
+* Helyszíni AD FS alkalmazások, amelyeknek az MFA-adaptert AD FS 2016-as vagy újabb verzióval kell használniuk.
 
-Az alkalmazásokat, amelyek közvetlenül az Azure AD-hitelesítés és a modern hitelesítés nélküli (WS-Fed, SAML, OAuth, OpenID Connect) Győződjön meg arról is, a feltételes hozzáférési szabályzatot közvetlenül használni.
+Az Azure AD-vel közvetlenül hitelesítő alkalmazások, valamint a modern hitelesítés (WS-fed, SAML, OAuth, OpenID Connect) közvetlenül a feltételes hozzáférési házirendeket is használhatják.
 
-### <a name="use-azure-mfa-with-azure-ad-application-proxy"></a>Az Azure MFA használata az Azure AD-alkalmazásproxyval
+### <a name="use-azure-mfa-with-azure-ad-application-proxy"></a>Az Azure MFA használata az Azure AD Application Proxy
 
-Helyszíni adataihoz teheti közzé az Azure AD-alkalmazások bérlői keresztül [Azure AD-alkalmazásproxy](../manage-apps/application-proxy.md) , és kihasználhatja az Azure multi-factor Authentication, ha az Azure AD használatára vannak konfigurálva előhitelesítés során.
+A helyszínen található alkalmazások közzétehetők az Azure AD-bérlőn az Azure [ad Application Proxyon](../manage-apps/application-proxy.md) keresztül, és igénybe vehetik az Azure multi-Factor Authentication előnyeit, ha az Azure ad előhitelesítés használatára vannak konfigurálva.
 
-Ezeket az alkalmazásokat, amelyeket az Azure multi-factor Authentication, csakúgy, mint bármely más Azure AD-val integrált alkalmazás feltételes hozzáférési szabályzatok vonatkoznak.
+Ezek az alkalmazások olyan feltételes hozzáférési szabályzatok hatálya alá tartoznak, amelyek az Azure Multi-Factor Authenticationt kényszerítik, ugyanúgy, mint bármely más Azure AD-integrált alkalmazáshoz.
 
-Hasonlóképpen ha az összes felhasználói bejelentkezéseket az Azure multi-factor Authentication érvénybe léptetése a helyszíni fogja védeni az Azure AD-alkalmazásproxyval közzétett alkalmazások.
+Hasonlóképpen, ha az Azure Multi-Factor Authentication minden felhasználói bejelentkezéskor érvénybe lép, az Azure AD Application Proxy-ben közzétett helyszíni alkalmazások védelmét védeni fogjuk.
 
-### <a name="integrating-azure-multi-factor-authentication-with-network-policy-server"></a>Azure multi-factor Authentication szolgáltatás integrálása a hálózati házirend-kiszolgáló
+### <a name="integrating-azure-multi-factor-authentication-with-network-policy-server"></a>Az Azure Multi-Factor Authentication integrálása a hálózati házirend-kiszolgálóval
 
-A hálózati házirend-kiszolgáló (NPS) kiterjesztése az Azure MFA felhőalapú MFA képességek hozzáadása a meglévő kiszolgálók használatával hitelesítési infrastruktúráját. Az NPS-bővítményt a telefonhívás, szöveges üzenet vagy telefonos alkalmazás ellenőrzés adhat a meglévő hitelesítési folyamatot. Ez az integráció a következő korlátozások vonatkoznak:
+Az Azure MFA hálózati házirend-kiszolgáló (NPS) bővítménye felhőalapú MFA-képességeket biztosít a hitelesítési infrastruktúrához a meglévő kiszolgálók használatával. A hálózati házirend-kiszolgáló bővítmény használatával telefonhívást, szöveges üzenetet vagy telefonos alkalmazást adhat hozzá a meglévő hitelesítési folyamathoz. Ez az integráció a következő korlátozásokkal rendelkezik:
 
-* A CHAPv2 protokoll csak az authenticator alkalmazás leküldéses értesítéseket és hanghívások támogatottak.
-* Nem lehet alkalmazni a feltételes hozzáférési szabályzatokat.
+* A CHAPv2 protokollal csak a hitelesítő alkalmazások leküldéses értesítései és hanghívásai támogatottak.
+* A feltételes hozzáférési szabályzatok nem alkalmazhatók.
 
-Az NPS-bővítményének funkcionál, RADIUS és Azure MFA felhőalapú és a hitelesítés második tényezőjét, adja meg a védelme közötti csatoló [VPN](howto-mfa-nps-extension-vpn.md), [távoli asztali átjáró kapcsolatok](howto-mfa-nps-extension-rdg.md), vagy más RADIUS-kompatibilis az alkalmazások. A felhasználóknak, hogy ebben a környezetben az Azure MFA-kiszolgáló regisztrálása a minden hitelesítési kísérlet merül fel, a feltételes hozzáférési szabályzatok középérték MFA hiánya mindig szükség.
+A hálózati házirend-kiszolgáló bővítmény adapterként működik a RADIUS és a felhőalapú Azure MFA között, így biztosítva a hitelesítés második tényezőjét a [VPN](howto-mfa-nps-extension-vpn.md)-, [Távoli asztali átjáró-kapcsolatok](howto-mfa-nps-extension-rdg.md)vagy más RADIUS-kompatibilis alkalmazások számára. Azokat a felhasználókat, akik ezen a környezetben az Azure MFA-t regisztrálják, az összes hitelesítési kísérlet esetén a feltételes hozzáférési házirendek hiánya jelenti azt, hogy az MFA mindig szükséges.
 
-#### <a name="implementing-your-nps-server"></a>A hálózati házirend-kiszolgáló megvalósítása
+#### <a name="implementing-your-nps-server"></a>A hálózati házirend-kiszolgáló implementálása
 
-Ha egy hálózati házirend-kiszolgáló példány telepítve van, vagy használja már, referencia [a meglévő hálózati házirend-kiszolgáló infrastruktúra integrálása az Azure multi-factor Authentication](howto-mfa-nps-extension.md). Ha első alkalommal állítja be a hálózati házirend-kiszolgáló, [hálózati házirend-kiszolgáló (NPS)](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top) útmutatást. A cikkben található hibaelhárítási útmutatót [oldja meg a hibaüzeneteket az NPS-bővítményt az Azure multi-factor Authentication](howto-mfa-nps-extension-errors.md).
+Ha a hálózati házirend-kiszolgáló példánya már telepítve van, és már használatban van, hivatkozzon [a meglévő NPS-infrastruktúra integrálására az Azure multi-Factor Authentication](howto-mfa-nps-extension.md)használatával. Ha első alkalommal állítja be a hálózati házirend-kiszolgálót, akkor útmutatásért tekintse meg a [hálózati házirend-kiszolgáló (NPS)](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top) című témakört. A hibaelhárítási útmutató az [Azure multi-Factor Authentication hálózati házirend-kiszolgáló bővítményében](howto-mfa-nps-extension-errors.md)található hibaüzenetek feloldása című cikkben található.
 
-#### <a name="prepare-nps-for-users-that-arent-enrolled-for-mfa"></a>A felhasználók számára, amely nincs regisztrálva a multi-factor Authentication NPS előkészítése
+#### <a name="prepare-nps-for-users-that-arent-enrolled-for-mfa"></a>A hálózati házirend-kiszolgáló előkészítése az MFA-ban nem regisztrált felhasználók számára
 
-Válassza ki, mi történik, ha a felhasználók, amely nincs regisztrálva a többtényezős hitelesítéssel próbál hitelesítést. A beállításjegyzék-beállítással `REQUIRE_USER_MATCH` a beállításjegyzékbeli elérési út `HKLM\Software\Microsoft\AzureMFA` funkció viselkedését vezérlő. Ezzel a beállítással rendelkezik olyan egyetlen konfigurációs beállítással.
+Válassza ki, hogy mi történjen, ha az MFA-ban nem regisztrált felhasználók hitelesítése történik meg. A szolgáltatás működésének `REQUIRE_USER_MATCH` vezérléséhez használja a `HKLM\Software\Microsoft\AzureMFA` beállításjegyzékbeli elérési út beállításjegyzékbeli beállítását. Ez a beállítás egyetlen konfigurációs lehetőséggel rendelkezik.
 
-| Kulcs | Érték | Alapértelmezett |
+| Kulcs | Value | Alapértelmezett |
 | --- | --- | --- |
-| `REQUIRE_USER_MATCH` | TRUE / FALSE (HAMIS) | Nincs beállítva (egyenértékű, True) |
+| `REQUIRE_USER_MATCH` | IGAZ/HAMIS | Nincs beállítva (megegyezik az igaz értékkel) |
 
-Ez a beállítás célja határozza meg, mi a teendő, ha a felhasználó nincs regisztrálva az MFA-hoz. Ez a beállítás hatását az alábbi táblázatban láthatók.
+Ennek a beállításnak a célja annak meghatározása, hogy mi a teendő, ha egy felhasználó nincs regisztrálva az MFA-hoz. A beállítás módosításának hatásai az alábbi táblázatban láthatók.
 
-| Beállítások | Felhasználói MFA-állapota | Hatás |
+| Beállítások | Felhasználói MFA-állapot | Hatásait |
 | --- | --- | --- |
-| Kulcs nem létezik. | Nincs regisztrálva | MFA-hitelesítést nem sikerül |
-| Érték igaz értékre van állítva / nincs beállítva | Nincs regisztrálva | MFA-hitelesítést nem sikerül |
-| Kulcs "false" értékűre. | Nincs regisztrálva | Többtényezős hitelesítés nélküli hitelesítés |
-| Kulcs beállítva vagy True a False (hamis) | Regisztrált | Hitelesítést kell végeznie az MFA |
+| A kulcs nem létezik | Nincs regisztrálva | Az MFA-kérdés nem sikerült |
+| Az érték igaz/nincs beállítva | Nincs regisztrálva | Az MFA-kérdés nem sikerült |
+| A kulcs hamis értékre van állítva | Nincs regisztrálva | Hitelesítés MFA nélkül |
+| A kulcs hamis vagy igaz értékre van beállítva | Beiratkozott | Hitelesítést kell végezni MFA-val |
 
-### <a name="integrate-with-active-directory-federation-services"></a>Az Active Directory összevonási szolgáltatások integrálása
+### <a name="integrate-with-active-directory-federation-services"></a>Integrálás Active Directory összevonási szolgáltatások (AD FS)
 
-Ha a szervezet az Azure AD-összevonást használ, akkor használhatja [az AD FS-erőforrások védelme az Azure multi-factor Authentication](multi-factor-authentication-get-started-adfs.md), mind a helyszíni és a felhőben. Az Azure MFA segítségével is csökkenthető a jelszavak és biztonságosabb mód a hitelesítésre. Windows Server 2016-kezdődően konfigurálhat az Azure MFA az elsődleges hitelesítéshez.
+Ha a szervezete az Azure AD-vel összevont, az [azure multi-Factor Authentication](multi-factor-authentication-get-started-adfs.md)használatával biztosíthatja a helyszíni és a Felhőbeli erőforrások ad FSét is. Az Azure MFA lehetővé teszi a jelszavak csökkentését, és biztonságosabb hitelesítési módszert biztosít. A Windows Server 2016-től kezdődően mostantól konfigurálhatja az Azure MFA-t az elsődleges hitelesítéshez.
 
-Ellentétben az AD FS a Windows Server 2012 R2, az AD FS 2016 az Azure MFA-adapterrel közvetlenül integrálódik az Azure ad-ben, és nem szükséges egy helyszíni Azure MFA-kiszolgálón. Az Azure MFA-adapterrel Windows Server 2016 be van építve, és nem kell további telepítéséhez.
+A Windows Server 2012 R2 AD FSával ellentétben a AD FS 2016 Azure MFA-adapter közvetlenül az Azure AD-vel integrálódik, és nem igényel helyszíni Azure MFA-kiszolgálót. Az Azure MFA-adapter a Windows Server 2016-be van építve, és nincs szükség további telepítésre.
 
-Ha az Azure MFA és az AD FS 2016 és a célalkalmazás feltételes hozzáférési szabályzat hatálya alá tartozik, nincsenek további szempontok:
+Ha az Azure MFA-t AD FS 2016-es és a célalkalmazás használatára vonatkozó feltételes hozzáférési szabályzat hatálya alá tartozik, további szempontokat is figyelembe kell venni:
 
-* Ha az alkalmazás egy függő entitás az AD FS 2016 összevonva az Azure AD feltételes hozzáférési érhető el.
-* Ha az alkalmazás egy függő entitás az AD FS 2016 és a felügyelt vagy az AD FS 2016 összevont, a feltételes hozzáférés nem érhető el.
-* Feltételes hozzáférés esetén még nem érhető el az AD FS 2016 az Azure MFA használatát az elsődleges hitelesítési módszerként van konfigurálva.
+* A feltételes hozzáférés akkor érhető el, ha az alkalmazás egy függő entitás az Azure AD-hoz, összevont AD FS 2016-as vagy újabb verzióval.
+* A feltételes hozzáférés nem érhető el, ha az alkalmazás függő entitás AD FS 2016 vagy AD FS 2019, és felügyelt vagy összevont AD FS 2016 vagy AD FS 2019.
+* A feltételes hozzáférés akkor is nem érhető el, ha AD FS 2016 vagy AD FS 2019 úgy van konfigurálva, hogy az Azure MFA-t használja elsődleges hitelesítési módszerként.
 
-#### <a name="ad-fs-logging"></a>Az AD FS-naplózás
+#### <a name="ad-fs-logging"></a>AD FS naplózás
 
-Információ a hitelesítési kéréseket, és azok sikerességét vagy sikertelenségét standard AD FS 2016 bejelentkezés a Windows biztonsági napló és a az AD FS felügyeleti napló tartalmazza. Belül ezeket az eseményeket az Eseménynapló-adatokat lett-e használni az Azure MFA jelzi. Ha például egy AD FS naplózási eseményazonosító 1200-as tartalmazza:
+A standard AD FS 2016 és a 2019 naplózási szolgáltatás a Windows biztonsági naplóban és a AD FS felügyeleti naplóban is tartalmaz információkat a hitelesítési kérésekről, valamint azok sikerességéről vagy meghibásodásáról. Az események eseménynaplójának adatai jelzik, hogy az Azure MFA használatban van-e. Az 1200 AD FS-es naplózási eseményazonosító például a következőket tartalmazhatja:
 
 ```
 <MfaPerformed>true</MfaPerformed>
 <MfaMethod>MFA</MfaMethod>
 ```
 
-#### <a name="renew-and-manage-certificates"></a>Újítsa meg és tanúsítványok kezelése
+#### <a name="renew-and-manage-certificates"></a>Tanúsítványok megújítása és kezelése
 
-Az AD FS-kiszolgálókon, a helyi számítógép My Store, lesz egy önaláírt Azure MFA-tanúsítvány című OU = Microsoft AD FS az Azure MFA, amely tartalmazza a tanúsítvány lejárati dátuma. Az AD FS-kiszolgálókon a lejárati dátum meghatározásához a tanúsítvány érvényességi idejének ellenőrzéséhez.
+Az egyes AD FS-kiszolgálókon a helyi számítógép saját tárolójában egy önaláírt Azure MFA-tanúsítvány szerepel a OU = Microsoft AD FS Azure MFA-ban, amely tartalmazza a tanúsítvány lejárati dátumát. A lejárati dátum megállapításához ellenőrizze a tanúsítvány érvényességi időtartamát az egyes AD FS-kiszolgálókon.
 
-Ha a tanúsítvány érvényességi ideje hamarosan megszűnik, lejárati [hozza létre és ellenőrzi az AD FS-kiszolgálókon található új MFA tanúsítvány](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa#configure-the-ad-fs-servers).
+Ha a tanúsítványok érvényességi ideje közeledik a lejárathoz, [állítson elő és ellenőrizzen egy új MFA-tanúsítványt az egyes AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa#configure-the-ad-fs-servers)-kiszolgálókon.
 
-Az alábbi útmutatás részletesen kezelése az Azure MFA-tanúsítványokat az AD FS-kiszolgálókra. Az AD FS az Azure MFA konfigurálásakor a tanúsítványok használatával jön létre a `New-AdfsAzureMfaTenantCertificate` PowerShell-parancsmag 2 évig érvényesek. Újítsa meg, és a megújított tanúsítványokat a lejárat előtt telepítse az MFA szolgáltatás tojás alakúak zavarokat.
+Az alábbi útmutató ismerteti, hogyan kezelheti az Azure MFA-tanúsítványokat a AD FS-kiszolgálókon. Ha AD FS az Azure MFA-val konfigurálja, a `New-AdfsAzureMfaTenantCertificate` PowerShell-parancsmag használatával generált tanúsítványok 2 évig érvényesek. Megújíthatja és telepítheti a megújított tanúsítványokat, mielőtt lejár az MFA-szolgáltatásban előforduló tojások megszakadásának.
 
 ## <a name="implement-your-plan"></a>A terv megvalósítása
 
-Most, hogy a megoldás megtervezése, valósíthat meg az alábbi lépéseket követve:
+Most, hogy megtervezte a megoldást, az alábbi lépésekkel végezheti el a megvalósítást:
 
-1. Megfelel a szükséges előfeltételeket
-   1. Üzembe helyezése [az Azure AD Connect](../hybrid/whatis-hybrid-identity.md) bármely hibrid forgatókönyvek esetén
-   1. Üzembe helyezése [Azure AD-alkalmazásproxy](../manage-apps/application-proxy.md) a helyszíni alkalmazások a cloud-access-hez közzétett
-   1. Üzembe helyezése [NPS](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top) bármely RADIUS-hitelesítés
-   1. Győződjön meg, hogy a felhasználó frissítette a támogatott verziók a Microsoft Office modern hitelesítés engedélyezve
-1. Konfigurálja a kiválasztott [hitelesítési módszerek](#choose-verification-options)
-1. Adja meg a [nevű hálózati helyek](../conditional-access/location-condition.md#named-locations)
-1. Válassza ki a csoportokat a bevezetésüket MFA.
-1. Konfigurálja a [feltételes hozzáférési szabályzatok](#create-conditional-access-policy)
+1. Teljesítse a szükséges előfeltételeket
+   1. [Azure ad Connect](../hybrid/whatis-hybrid-identity.md) üzembe helyezése bármilyen hibrid forgatókönyv esetén
+   1. [Azure-ad Application proxy](../manage-apps/application-proxy.md) üzembe helyezése a Felhőbeli hozzáféréshez közzétett helyszíni alkalmazásokhoz
+   1. [Hálózati házirend-kiszolgáló](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top) üzembe helyezése bármely RADIUS-hitelesítéshez
+   1. Győződjön meg arról, hogy a felhasználók a modern hitelesítéssel rendelkező Microsoft Office támogatott verzióira frissítettek
+1. Kiválasztott [hitelesítési módszerek](#choose-verification-options) konfigurálása
+1. Megnevezett [hálózati telephelyek](../conditional-access/location-condition.md#named-locations) definiálása
+1. Válassza ki a csoportokat az MFA kivezetésének megkezdéséhez.
+1. [Feltételes hozzáférési szabályzatok](#create-conditional-access-policy) konfigurálása
 1. Az MFA regisztrációs szabályzatának konfigurálása
-   1. [Kombinált MFA és az SSPR](howto-registration-mfa-sspr-combined.md)
-   1. A [Identity Protection](../identity-protection/howto-mfa-policy.md)
-1. Felhasználói küldhessen és kattintva regisztrálhatnak a felhasználók beolvasása [https://aka.ms/mfasetup](https://aka.ms/mfasetup)
-1. [Nyomon követheti, aki regisztrálva van](#identify-non-registered-users)
+   1. [Kombinált MFA és SSPR](howto-registration-mfa-sspr-combined.md)
+   1. [Identitás-védelemmel](../identity-protection/howto-mfa-policy.md)
+1. Felhasználói kommunikáció küldése és a felhasználók beléptetése[https://aka.ms/mfasetup](https://aka.ms/mfasetup)
+1. [A regisztrált felhasználók nyomon követése](#identify-non-registered-users)
+
+> [!TIP]
+> A kormányzati felhő felhasználói regisztrálhatnak[https://aka.ms/GovtMFASetup](https://aka.ms/GovtMFASetup)
 
 ## <a name="manage-your-solution"></a>A megoldás kezelése
 
 Jelentések az Azure MFA-hoz
 
-Az Azure multi-factor Authentication az Azure Portalon keresztül jelentéseket biztosítja:
+Az Azure Multi-Factor Authentication jelentéseket biztosít a Azure Portalon keresztül:
 
-| Jelentés | Földrajzi egység | Leírás |
+| Jelentés | Location | Leírás |
 | --- | --- | --- |
-| Használat és a csalási riasztás | Az Azure AD > bejelentkezések | Információt nyújt az általános használat – felhasználói összefoglalás és felhasználói adatait; csakúgy, mint a megadott dátumtartományban küldött visszaélési riasztások előzményeit. |
+| Használati és csalási riasztások | Azure AD > bejelentkezések | Információt nyújt a teljes használatról, a felhasználói összesítésekről és a felhasználói adatokról; valamint a megadott dátumtartomány szerint elküldött csalási riasztások előzményei. |
 
-## <a name="troubleshoot-mfa-issues"></a>MFA-problémák hibaelhárítása
+## <a name="troubleshoot-mfa-issues"></a>MFA-problémák elhárítása
 
-Megoldások keresése a gyakori problémák az Azure MFA, az [Azure multi-factor Authentication hibaelhárítási cikk](https://support.microsoft.com/help/2937344/troubleshooting-azure-multi-factor-authentication-issues) a Microsoft Support Center.
+Az Azure MFA-val kapcsolatos gyakori problémák megoldásait az [azure multi-Factor Authentication hibaelhárítási cikkében](https://support.microsoft.com/help/2937344/troubleshooting-azure-multi-factor-authentication-issues) találja a Microsoft ügyfélszolgálata központban.
 
 ## <a name="next-steps"></a>További lépések
 
 * [Mik a hitelesítési módszerek?](concept-authentication-methods.md)
-* [A hiperkonvergens regisztráció az Azure multi-factor Authentication és az Azure AD önkiszolgáló jelszó-visszaállítás engedélyezése](concept-registration-mfa-sspr-converged.md)
-* Miért lett egy felhasználó kéri vagy a rendszer nem kéri hajthatok végre MFA? Című témakör [az Azure AD bejelentkezési jelentések a jelentések az Azure multi-factor Authentication dokumentum](howto-mfa-reporting.md#azure-ad-sign-ins-report).
+* [A konvergens regisztráció engedélyezése az Azure Multi-Factor Authentication és az Azure AD önkiszolgáló jelszó-visszaállításhoz](concept-registration-mfa-sspr-converged.md)
+* Miért volt a felhasználó, vagy a rendszer nem kéri az MFA elvégzésére? Tekintse [meg az Azure ad-beli bejelentkezések jelentését az Azure-multi-Factor Authentication dokumentum jelentéseiben](howto-mfa-reporting.md#azure-ad-sign-ins-report).

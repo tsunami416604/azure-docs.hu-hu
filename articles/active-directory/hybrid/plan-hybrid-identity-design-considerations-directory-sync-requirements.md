@@ -18,11 +18,11 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 21558c4eccf0cd1f4e9e1d630f0e89dbb6f01c51
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56201703"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60381161"
 ---
 # <a name="determine-directory-synchronization-requirements"></a>Határozza meg a címtár-szinkronizálás követelményei
 Szinkronizálási szól az identitás a felhőben, a helyszíni identitás alapján biztosítanak a felhasználók számára. E szinkronizált fiókot fogja használni, a hitelesítés és az összevont hitelesítés, a felhasználók továbbra is kell rendelkeznie az identitás a felhőben.  Ezt az identitást kell karbantartani, és rendszeresen frissülnek.  A frissítések számos formája, a cím módosításainak a jelszó módosítására.  

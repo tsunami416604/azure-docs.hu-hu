@@ -3,31 +3,31 @@ title: Nyelvi támogatás – Bing Custom Search API
 titleSuffix: Azure Cognitive Services
 description: Támogatott nyelvek és a Bing Custom Search API régiók listáját.
 services: cognitive-services
-author: mikedodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/25/2018
-ms.author: v-gedod
-ms.openlocfilehash: e395fc96c560c6c6c1671e472840ba0f2a316d98
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.author: aahi
+ms.openlocfilehash: 85326ae9166f7ea15ec2f45c01755b8f9ef03aff
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60006777"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66388563"
 ---
 # <a name="language-and-region-support-for-the-bing-custom-search-api"></a>A Bing Custom Search API nyelvéhez és régiójához támogatása
 
 A Bing Custom Search API több mint három tucat országok/régiók, számos, az egynél több nyelvet támogat.
 
-Bár nem kötelező, a kérésnek meg kell határoznia a [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#mkt) lekérdezési paraméter, amely azonosítja a piacon, ahol azt szeretné, hogy az eredményeket kell meghatároznia. Opcionális lekérdezési paraméterek listáját lásd: [lekérdezési paraméterek](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#query-parameters)
+Bár nem kötelező, a kérésnek meg kell határoznia a [mkt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#mkt) lekérdezési paraméter, amely azonosítja a piacon, ahol azt szeretné, hogy az eredményeket kell meghatároznia. Opcionális lekérdezési paraméterek listáját lásd: [lekérdezési paraméterek](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters)
 
 Megadhatja, hogy egy ország/régió használata a `cc` lekérdezési paraméter. Ha megad egy adott ország/régió, meg kell adnia egy vagy több nyelvi kódot használ a `Accept-Language` fejléc. Ország/régió; szerint változik a támogatott nyelvek minden ország/régió a generálnak számukra a **piacok** tábla.
 
-A `Accept-Language` fejlécet és a `setLang` lekérdezési paraméter, egymást kölcsönösen kizáró – ne adja meg mindkettőt. További információkért lásd: [Accept-nyelv](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#acceptlanguage).
+A `Accept-Language` fejlécet és a `setLang` lekérdezési paraméter, egymást kölcsönösen kizáró – ne adja meg mindkettőt. További információkért lásd: [Accept-nyelv](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#acceptlanguage).
 
-## <a name="countries"></a>Országok/régiók
+## <a name="countriesregions"></a>Országok/régiók
 
 |Ország/régió|Kód|
 |-------|----|
@@ -44,7 +44,7 @@ A `Accept-Language` fejlécet és a `setLang` lekérdezési paraméter, egymást
 |Németország|DE|
 |Hongkong (KKT)|HK|
 |India|IN|
-|Indonézia|ID (Azonosító)|
+|Indonézia|azonosító|
 |Olaszország|IT|
 |Japán|JP|
 |Korea|KR|

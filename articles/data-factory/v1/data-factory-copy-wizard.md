@@ -15,11 +15,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 90f78428601d7b039d00d39c1ca8339ab3ace9ba
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020353"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60487935"
 ---
 # <a name="copy-or-move-data-easily-with-azure-data-factory-copy-wizard"></a>Másolja, vagy az adatok áthelyezése egyszerűen az Azure Data Factory másolási varázslója
 > [!NOTE]
@@ -63,7 +63,7 @@ A példában az SQL-lekérdezést használja a `Text.Format` függvény és `Win
 ![Kifejezések ellenőrzése](./media/data-factory-copy-wizard/validate-expressions.png)
 
 ### <a name="filtering-of-data-in-an-azure-blob-folder"></a>Egy Azure blob-mappában lévő adatok szűrése
-Adatokat másol egy mappát, amely alapján futásidőben határozzák meg a mappa elérési útját a változók is használhat [rendszerváltozók](data-factory-functions-variables.md#data-factory-system-variables). A támogatott értékek: **{year}**, **{month}**, **{day}**, **{hour}**, **{minute}**, és **{egyéni}**. Példa: inputfolder / {year} / {month} / {day}.
+Adatokat másol egy mappát, amely alapján futásidőben határozzák meg a mappa elérési útját a változók is használhat [rendszerváltozók](data-factory-functions-variables.md#data-factory-system-variables). A támogatott értékek: **{year}** , **{month}** , **{day}** , **{hour}** , **{minute}** , és **{egyéni}** . Példa: inputfolder / {year} / {month} / {day}.
 
 Tegyük fel, hogy a bemeneti mappa a következő formátumban:
 
@@ -72,11 +72,11 @@ Tegyük fel, hogy a bemeneti mappa a következő formátumban:
     2016/03/01/03
     ...
 
-Kattintson a **Tallózás** gombot **fájl vagy mappa**, tallózással keresse meg az egyik mappát (például 2016 -> 03 -> 01-02 >), kattintson **válasszon**. Megtekintheti az `2016/03/01/02` a szövegmezőben. Most cserélje le **2016** a **{year}**, **03** a **{month}**, **01** a **{day}** , és **02** a **{hour}**, és lenyomja a Tab billentyűt. Válassza ki ezeket a változókat formátumát, legördülő listák kell megjelennie:
+Kattintson a **Tallózás** gombot **fájl vagy mappa**, tallózással keresse meg az egyik mappát (például 2016 -> 03 -> 01-02 >), kattintson **válasszon**. Megtekintheti az `2016/03/01/02` a szövegmezőben. Most cserélje le **2016** a **{year}** , **03** a **{month}** , **01** a **{day}** , és **02** a **{hour}** , és lenyomja a Tab billentyűt. Válassza ki ezeket a változókat formátumát, legördülő listák kell megjelennie:
 
 ![Rendszerváltozók használata](./media/data-factory-copy-wizard/blob-standard-variables-in-folder-path.png)   
 
-Ahogy az az alábbi képernyőfelvételen is látható, is használhatja a **egyéni** változót, és bármely [formázási karakterláncokat támogatott](https://msdn.microsoft.com/library/8kb3ddd4.aspx). Válasszon ki egy mappát, a struktúrával, használja a **Tallózás** először gombra. Ezután cserélje le az értéket **{egyéni}**, és nyomja le az lapján megtekintheti, a szövegmezőbe, ahol beírhatja a formázó karakterlánc.     
+Ahogy az az alábbi képernyőfelvételen is látható, is használhatja a **egyéni** változót, és bármely [formázási karakterláncokat támogatott](https://msdn.microsoft.com/library/8kb3ddd4.aspx). Válasszon ki egy mappát, a struktúrával, használja a **Tallózás** először gombra. Ezután cserélje le az értéket **{egyéni}** , és nyomja le az lapján megtekintheti, a szövegmezőbe, ahol beírhatja a formázó karakterlánc.     
 
 ![Egyéni változóval](./media/data-factory-copy-wizard/blob-custom-variables-in-folder-path.png)
 

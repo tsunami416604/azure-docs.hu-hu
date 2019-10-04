@@ -1,6 +1,6 @@
 ---
-title: Fájlok feltöltése eszközökről az Azure IoT hubba a .NET-tel |} A Microsoft Docs
-description: Hogyan tölthetők fel fájlok egy eszközről a felhőbe az Azure IoT eszközoldali SDK-val .NET-keretrendszerhez készült. Feltöltött fájlok vannak tárolva egy Azure storage blob-tárolóba.
+title: Fájlok feltöltése az eszközökről az Azure IoT Hub a .NET-tel | Microsoft Docs
+description: Fájlok feltöltése egy eszközről a felhőbe az Azure IoT Device SDK for .NET használatával. A feltöltött fájlok tárolása egy Azure Storage blob-tárolóban történik.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -9,59 +9,63 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 07/04/2017
 ms.author: robinsh
-ms.openlocfilehash: afa8a77a1c2eabce11af5730ffc5e7b768983589
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: db020092c076680eddd575f8e7e85a2060603dd8
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59046769"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147769"
 ---
-# <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-using-net"></a>Töltse fel a fájlokat az eszközről a felhőbe az IoT hubhoz .NET használatával
+# <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-net"></a>Fájlok feltöltése az eszközről a felhőbe IoT Hub (.NET)
 
 [!INCLUDE [iot-hub-file-upload-language-selector](../../includes/iot-hub-file-upload-language-selector.md)]
 
-Ebben az oktatóanyagban található kódot használja fel a [küldése a felhőből az eszközre irányuló üzenetek IoT hubbal való](iot-hub-csharp-csharp-c2d.md) oktatóanyag megmutatjuk, hogyan használhatja az IoT Hub fájl feltöltése képességeit. Azt mutatja, hogy:
+Ez az oktatóanyag a felhőből az eszközre küldött [üzenetek küldésére](iot-hub-csharp-csharp-c2d.md) szolgáló kódot a IoT hub oktatóanyag segítségével mutatja be, amellyel megtudhatja, hogyan használhatja a IoT hub fájlfeltöltés funkcióit. A következőket mutatja be:
 
-- Biztonságosan adja meg az eszköz egy Azure blob-URI-fájl feltöltése.
+* A fájlok feltöltéséhez biztonságosan biztosítson egy Azure Blob URI-t tartalmazó eszközt.
 
-- Az IoT Hub fájl feltöltése értesítések használatával elindíthatja a feldolgozása a fájlt az alkalmazás háttérrendszere.
+* A fájl feltöltésével kapcsolatos értesítéseket használva aktiválja a fájlt az alkalmazás hátterében lévő IoT Hub.
 
-A [telemetriát küldjön az eszközről az IoT hub](quickstart-send-telemetry-dotnet.md) és [küldése a felhőből az eszközre irányuló üzenetek IoT hubbal való](iot-hub-csharp-csharp-c2d.md) cikkek bemutatják az eszközről a felhőbe és a felhőből az eszközre irányuló üzenetküldési alapvető funkciót, az IoT Hub. A [üzenet útválasztás konfigurálása az IoT Hub](tutorial-routing.md) az oktatóanyag leírja, úgy az eszközt a felhőbe irányuló üzenetek meghízható tárolására az Azure blob storage-ban. Bizonyos esetekben azonban leképezése nem tudja az eszközöket az IoT Hub elfogad viszonylag kis eszköz – felhő üzenetek küldése az adatok egyszerűen. Példa:
+A [telemetria küldése az eszközről egy IoT hub](quickstart-send-telemetry-dotnet.md) gyors üzembe helyezése és a felhőből az eszközre irányuló [üzenetek küldése az IoT hub](iot-hub-csharp-csharp-c2d.md) oktatóanyaggal mutatja be a IoT hub alapszintű eszközről a felhőbe és a felhőből az eszközre való üzenetkezelés funkcióját. Az [üzenet-útválasztás konfigurálása IoT hub](tutorial-routing.md) oktatóanyagmal az eszközről a felhőbe irányuló üzenetek megbízható tárolásának módját ismerteti Microsoft Azure Blob Storage-ban. Bizonyos helyzetekben azonban nem lehet könnyedén leképezni az eszközök által a IoT Hub által elfogadott viszonylag kis eszközről a felhőbe küldött üzeneteket. Példa:
 
-* Nagy méretű képeket tartalmazó fájlok
+* Képeket tartalmazó nagyméretű fájlok
+
 * Videók
-* Rezgés adatok mintavételezése, nagyon gyakori
-* Valamilyen előre feldolgozott adatok
 
-Ezek a fájlok jellemzően a felhőben, mint például az eszközök használatával feldolgozott kötegelt [Azure Data Factory](../data-factory/introduction.md) vagy a [Hadoop](../hdinsight/index.yml) stack. Amikor szüksége van egy eszközön a fájlok feltöltéséhez, biztonságának és megbízhatóságának IoT-központ továbbra is használhatja.
+* Nagy gyakorisággal vett vibrációs adatelemzés
 
-Ez az oktatóanyag végén két .NET-konzolalkalmazással futtassa:
+* Az előfeldolgozott adatmennyiség valamilyen formája
 
-* **SimulatedDevice**, a létrehozott alkalmazás egy módosított verziója a [küldése a felhőből az eszközre irányuló üzenetek IoT hubbal való](iot-hub-csharp-csharp-c2d.md) oktatóanyag. Ez az alkalmazás feltölt egy fájlt az IoT hub által biztosított SAS URI használatával.
+Ezeket a fájlokat a rendszer általában a felhőben dolgozza fel a felhőben olyan eszközökkel, mint a [Azure Data Factory](../data-factory/introduction.md) vagy a [Hadoop](../hdinsight/index.yml) stack. Ha egy eszközről kell fájlokat feltölteni, továbbra is használhatja IoT Hub biztonságát és megbízhatóságát.
 
-* **ReadFileUploadNotification**, amely a fájl feltöltése értesítéseket fogad az IoT hubról.
+Az oktatóanyag végén két .NET konzolos alkalmazást futtat:
+
+* **SimulatedDevice**. Ez az alkalmazás feltölt egy fájlt a Storage-ba az IoT hub által biztosított SAS URI használatával. Ez az alkalmazás egy módosított verziója, amelyet a felhőből az eszközre küldött [üzenetek küldése IoT hub](iot-hub-csharp-csharp-c2d.md) oktatóanyaggal készített.
+
+* **ReadFileUploadNotification**. Ez az alkalmazás fogadja az IoT hub fájlfeltöltés-értesítéseit.
 
 > [!NOTE]
-> IoT Hub keresztül az Azure IoT eszközoldali SDK-k által támogatott számos eszközplatformok és nyelveken (például a C, Java és Javascript). Tekintse meg a [Azure IoT fejlesztői központ](https://azure.microsoft.com/develop/iot) részletesen ismerteti, hogy az eszköz csatlakoztatása Azure IoT Hub számára.
+> IoT Hub számos eszköz-platformot és nyelvet támogat, beleértve a C, a Java, a Python és a JavaScript használatát az Azure IoT Device SDK-k segítségével. Az eszköz Azure IoT Hubhoz való csatlakoztatásának részletes ismertetését az [Azure IoT fejlesztői központban](https://azure.microsoft.com/develop/iot) találja.
 
-Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
+## <a name="prerequisites"></a>Előfeltételek
 
-* Visual Studio 2017
-* Aktív Azure-fiók. (Ha nincs fiókja, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) mindössze néhány perc alatt.)
+* Visual Studio
+
+* Aktív Azure-fiók. Ha nem rendelkezik fiókkal, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) .
 
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
 
-## <a name="upload-a-file-from-a-device-app"></a>Töltsön fel egy fájlt egy eszköz alkalmazásból
+## <a name="upload-a-file-from-a-device-app"></a>Fájl feltöltése egy eszköz alkalmazásból
 
-Ebben a szakaszban módosítsa az eszköz alkalmazás létrehozott [küldése a felhőből az eszközre irányuló üzenetek IoT hubbal való](iot-hub-csharp-csharp-c2d.md) felhőből az eszközre irányuló üzenetek fogadása az IoT hubról.
+Ebben a szakaszban a felhőből az eszközre irányuló [üzenetek küldése](iot-hub-csharp-csharp-c2d.md) az IoT hub-ból című témakörben található, a felhőből az eszközre irányuló üzenetek fogadásához létrehozott IoT hub.
 
-1. A Visual Studióban kattintson a jobb gombbal a **SimulatedDevice** projektre, kattintson a **Hozzáadás**, és kattintson a **meglévő elem**. Lépjen egy képfájlt, és adja hozzá a projekthez. Ez az oktatóanyag feltételezi, hogy a lemezkép neve `image.jpg`.
+1. A Visual Studio Megoldáskezelőban kattintson a jobb gombbal a **SimulatedDevice** projektre, majd válassza a**meglévő elem** **hozzáadása** > elemet. Keressen egy képfájlt, és foglalja bele a projektbe. Ez az oktatóanyag feltételezi, hogy a `image.jpg`rendszerkép neve.
 
-1. Kattintson a jobb gombbal a lemezképet, és kattintson **tulajdonságok**. Győződjön meg arról, hogy **Copy to Output Directory** értékre van állítva **mindig Másolás**.
+1. Kattintson a jobb gombbal a képre, majd válassza a **Tulajdonságok parancsot**. Győződjön meg arról, hogy a **Másolás a kimeneti könyvtárba** beállítás a **mindig másolás**.
 
-    ![Hol frissítse az image tulajdonság a Copy to Output Directory megjelenítése](./media/iot-hub-csharp-csharp-file-upload/image-properties.png)
+    ![A rendszerkép tulajdonságának a másolás a kimeneti könyvtárba való frissítésének helye](./media/iot-hub-csharp-csharp-file-upload/image-properties.png)
 
-1. Az a **Program.cs** fájlt, adja hozzá a következő utasításokat a fájl elejéhez:
+1. A **program.cs** fájlban adja hozzá a következő utasításokat a fájl elejéhez:
 
     ```csharp
     using System.IO;
@@ -86,45 +90,53 @@ Ebben a szakaszban módosítsa az eszköz alkalmazás létrehozott [küldése a 
     }
     ```
 
-    A `UploadToBlobAsync` módszer vesz igénybe a fájl neve és a stream forrás fájl tölthető fel, és a feltöltés, a storage kezeli. A Konzolalkalmazás jeleníti meg a fájl feltöltéséhez szükséges idő.
+    A `UploadToBlobAsync` metódus a feltöltött fájl fájlnevét és stream-forrását veszi fel, és kezeli a feltöltést a tárolóba. A konzol alkalmazás megjeleníti a fájl feltöltéséhez szükséges időt.
 
-1. Adja hozzá a következő metódust a **fő** metódus, mielőtt a jobb oldalon a `Console.ReadLine()` sor:
+1. Adja hozzá a következő sort a **Main** metódushoz, közvetlenül `Console.ReadLine()`előtte:
 
     ```csharp
     SendToBlobAsync();
     ```
 
 > [!NOTE]
-> Az egyszerűség kedvéért a rizspálinkát Ez az oktatóanyag nem valósít meg semmilyen újrapróbálkozási házirendet. Az éles kódban újrapróbálkozási házirendeket (például egy exponenciális leállítást), a cikkben leírtak implementálandó [átmeneti hibák kezelésével](/azure/architecture/best-practices/transient-faults).
+> Az egyszerűség kedvéért ez az oktatóanyag nem valósít meg újrapróbálkozási házirendet. A termelési kódban az [átmeneti hibák kezelésére](/azure/architecture/best-practices/transient-faults)szolgáló újrapróbálkozási házirendeket (például exponenciális leállítási) kell végrehajtania.
 
-## <a name="receive-a-file-upload-notification"></a>Fájlfeltöltési üzenetet fogadni
+## <a name="get-the-iot-hub-connection-string"></a>Az IoT hub-beli kapcsolatok karakterláncának beolvasása
 
-Ebben a szakaszban egy .NET-konzolalkalmazást, amely a fájl feltöltése értesítési üzeneteket fogad a IoT Hub írhat.
+Ebben a cikkben egy háttér-szolgáltatást hoz létre, amely a fájlfeltöltés-értesítési üzeneteket fogadja a IoT hub-ból, amelyet a [telemetria küldése eszközről egy IoT hubhoz](quickstart-send-telemetry-dotnet.md)hozott létre. A fájlfeltöltés-értesítési üzenetek fogadásához a szolgáltatásnak szüksége van a **szolgáltatás csatlakozási** engedélyére. Alapértelmezés szerint minden IoT Hub a **szolgáltatás** nevű közös hozzáférési házirenddel jön létre, amely megadja ezt az engedélyt.
 
-1. A jelenlegi Visual Studio-megoldásban, hozzon létre egy Visual C# Windows projektet a **Konzolalkalmazás** projektsablonnal. Adja a projektnek **ReadFileUploadNotification**.
+[!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
-    ![A Visual Studio új projekt](./media/iot-hub-csharp-csharp-file-upload/file-upload-project-csharp1.png)
+## <a name="receive-a-file-upload-notification"></a>Fájlfeltöltés-értesítés fogadása
 
-2. A Megoldáskezelőben kattintson a jobb gombbal a **ReadFileUploadNotification** projektre, és kattintson a **NuGet-csomagok kezelése...** .
+Ebben a szakaszban olyan .NET-konzol alkalmazást ír, amely a IoT Hub címről érkező fájlfeltöltés-értesítési üzeneteket fogad.
 
-3. Az a **NuGet-Csomagkezelő** ablakban, keresse meg **Microsoft.Azure.Devices**, kattintson a **telepítése**, és fogadja el a használati feltételeket.
+1. Az aktuális Visual Studio-megoldásban válassza a **fájl** > **új** > **projekt**lehetőséget. Az **új projekt létrehozása**területen válassza a **konzol alkalmazás (.NET-keretrendszer)** lehetőséget, majd kattintson a **tovább**gombra.
 
-    Ez a művelet letölti, telepíti, és hozzáad egy hivatkozást a [Azure IoT szolgáltatás SDK NuGet-csomagot](https://www.nuget.org/packages/Microsoft.Azure.Devices/) a a **ReadFileUploadNotification** projekt.
+1. Nevezze el a projekt *ReadFileUploadNotification*. A **megoldás**területen válassza **a Hozzáadás a megoldáshoz**lehetőséget. A projekt létrehozásához válassza a **Létrehozás** lehetőséget.
 
-4. Az a **Program.cs** fájlt, adja hozzá a következő utasításokat a fájl elejéhez:
+    ![A ReadFileUploadNotification-projekt konfigurálása a Visual Studióban](./media/iot-hub-csharp-csharp-file-upload/read-file-upload-project-configure.png)
+
+1. Megoldáskezelő kattintson a jobb gombbal a **ReadFileUploadNotification** projektre, majd válassza a **NuGet-csomagok kezelése**lehetőséget.
+
+1. A **NuGet csomagkezelő**területén válassza a **Tallózás**lehetőséget. Keresse meg és válassza ki a **Microsoft. Azure. Devices**elemet, majd válassza a **telepítés**lehetőséget.
+
+    Ez a lépés letölti, telepíti és hozzáadja az [Azure IoT Service SDK NuGet csomagra](https://www.nuget.org/packages/Microsoft.Azure.Devices/) mutató hivatkozást a **ReadFileUploadNotification** projektben.
+
+1. A projekt **program.cs** -fájljában adja hozzá a következő utasítást a fájl elejéhez:
 
     ```csharp
     using Microsoft.Azure.Devices;
     ```
 
-5. Adja hozzá a **Program** osztályhoz a következő mezőket: Cserélje le a helyőrző értékét az IoT hub kapcsolati karakterláncra [telemetriát küldjön az eszközről az IoT hub](quickstart-send-telemetry-dotnet.md):
+1. Adja hozzá a **Program** osztályhoz a következő mezőket: A helyőrző értékét cserélje le a IoT hub-beli, a korábban a [IoT hub-kapcsolatok karakterláncának](#get-the-iot-hub-connection-string)lekérése során átmásolt karakterláncra: `{iot hub connection string}`
 
     ```csharp
     static ServiceClient serviceClient;
     static string connectionString = "{iot hub connection string}";
     ```
 
-6. Adja hozzá a **Program** osztályhoz a következő módszert:
+1. Adja hozzá a **Program** osztályhoz a következő módszert:
 
     ```csharp
     private async static void ReceiveFileUploadNotificationAsync()
@@ -144,12 +156,12 @@ Ebben a szakaszban egy .NET-konzolalkalmazást, amely a fájl feltöltése érte
 
             await notificationReceiver.CompleteAsync(fileUploadNotification);
         }
-    }   
+    }
     ```
 
-    Vegye figyelembe a receive minta a felhőből az eszközre irányuló üzenetek fogadása az eszközalkalmazástól érkező ugyanaz.
+    Megjegyzés: Ez a fogadási minta ugyanaz, mint a felhőből az eszközre irányuló üzenetek fogadása az eszköz alkalmazásból.
 
-7. Végül adja a következő sorokat a **Main** metódushoz:
+1. Végül adja a következő sorokat a **Main** metódushoz:
 
     ```csharp
     Console.WriteLine("Receive file upload notifications\n");
@@ -163,21 +175,24 @@ Ebben a szakaszban egy .NET-konzolalkalmazást, amely a fájl feltöltése érte
 
 Készen áll arra, hogy futtassa az alkalmazásokat.
 
-1. A Visual Studióban kattintson a jobb gombbal a megoldás, és válassza ki **állítsa be indítási projektek**. Válassza ki **több kezdőprojekt**, majd válassza ki a **Start** műveletet **ReadFileUploadNotification** és **SimulatedDevice**.
+1. A Solutions Explorerben kattintson a jobb gombbal a megoldásra, majd válassza az **indítási projektek beállítása**lehetőséget.
 
-2. Nyomja meg **F5**. Mindkét alkalmazás kell kezdenie. A feltöltés befejeződött egy konzolalkalmazást, és a konzol más alkalmazás által fogadott feltöltési értesítő üzenetet kell megjelennie. Használhatja a [az Azure portal](https://portal.azure.com/) vagy a Visual Studio Server Explorer az Azure Storage-fiókban a feltöltött fájl meglétének ellenőrzése.
+1. Az **Általános tulajdonságok** > **indítási projekt**területen válassza a **több indítási projekt**elemet, majd válassza a **ReadFileUploadNotification** és a **SimulatedDevice** **indítási** műveletét. Válassza ki **OK** a módosítások mentéséhez.
+
+1. Nyomja le az **F5**billentyűt. Mindkét alkalmazásnak el kell indulnia. Látnia kell a feltöltést egy adott konzol alkalmazásban, és a másik konzol alkalmazás által fogadott feltöltési értesítési üzenetet. A [Azure Portal](https://portal.azure.com/) vagy a Visual Studio Server Explorer segítségével megkeresheti a feltöltött fájl jelenlétét az Azure Storage-fiókban.
 
     ![A kimeneti képernyőt ábrázoló képernyőfelvétel](./media/iot-hub-csharp-csharp-file-upload/run-apps1.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtudhatta, hogyan egyszerűsítheti a fájlok feltöltése eszközökről a fájl feltöltése képességeit az IoT Hub használatával. Folytathatja az IoT hub szolgáltatásainak, és az ezekben a cikkekben forgatókönyvek megismerése:
+Ebben az oktatóanyagban megtanulta, hogyan használhatja a IoT Hub fájlfeltöltés funkcióit az eszközökről történő fájlfeltöltés egyszerűsítése érdekében. Továbbra is megismerheti IoT Hub funkcióit és forgatókönyveit a következő cikkekkel:
 
-* [IoT hub létrehozása programozott módon](iot-hub-rm-template-powershell.md)
-* [Bevezetés a C SDK-t](iot-hub-device-sdk-c-intro.md)
+* [IoT hub programozott módon történő létrehozása](iot-hub-rm-template-powershell.md)
+
+* [A C SDK bemutatása](iot-hub-device-sdk-c-intro.md)
+
 * [Azure IoT SDK-k](iot-hub-devguide-sdks.md)
 
-Részletesebb megismerése az IoT Hub képességeit, tekintse meg:
+A IoT Hub képességeinek további megismeréséhez lásd:
 
-* [Edge-eszközök mesterséges Intelligencia telepítése az Azure IoT Edge szolgáltatással](../iot-edge/tutorial-simulate-device-linux.md)
-
+* [AI üzembe helyezése az Edge-eszközökön Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)

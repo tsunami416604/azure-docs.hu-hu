@@ -4,7 +4,7 @@ description: A vészhelyreállítási megoldások az Azure DNS-ben és a Traffic
 services: dns
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/08/2018
 ms.author: kumud
-ms.openlocfilehash: ec252c1f45e5c27f17b725f6ab68cc94f67897c4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a560cc526e73f3ce7e851f2a545f9b16fa53b423
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58120737"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65501697"
 ---
 # <a name="disaster-recovery-using-azure-dns-and-traffic-manager"></a>Vészhelyreállítás az Azure DNS-sel és a Traffic Managerrel
 
@@ -79,14 +79,14 @@ A kalkulált aránnyal megoldáshoz a következők:
 - Create DNS zone records
 - Update CNAME record
 
-### <a name="step-1-create-a-dns"></a>1. lépés: Hozzon létre egy DNS
+### <a name="step-1-create-a-dns"></a>1\. lépés: Hozzon létre egy DNS
 DNS-zóna létrehozása (például: www\.contoso.com) alább látható módon:
 
 ![DNS-zóna létrehozása az Azure-ban](./media/disaster-recovery-dns-traffic-manager/create-dns-zone.png)
 
 *. Ábra – DNS-zóna létrehozása az Azure-ban*
 
-### <a name="step-2-create-dns-zone-records"></a>2. lépés: Create DNS zone records
+### <a name="step-2-create-dns-zone-records"></a>2\. lépés: Create DNS zone records
 
 Ebben a zónában lévő három rekordok létrehozása (például: www\.contoso.com, prod.contoso.com és dr.consoto.com), az alábbi megjelenítése.
 
@@ -96,7 +96,7 @@ Ebben a zónában lévő három rekordok létrehozása (például: www\.contoso.
 
 Ez a forgatókönyv, hely, www\.contoso.com 30 perc, amely a megadott RTO alatt, és az éles webhely prod.contoso.com mutató TTL rendelkezik. Ez a konfiguráció van a normál üzleti műveletek során. Az élettartam prod.contoso.com és dr.contoso.com 300 másodperc vagy 5 percre van beállítva. Használhatja az Azure monitoring, például az Azure Monitor vagy az Azure App service, vagy bármely partner figyelési megoldások, például a dynatrace-szel, is használható, amely figyelheti és észleli az alkalmazást vagy a virtuális infrastruktúra meghibásodások otthoni túlhaladottá megoldások.
 
-### <a name="step-3-update-the-cname-record"></a>3. lépés: A CNAME-rekord frissítése
+### <a name="step-3-update-the-cname-record"></a>3\. lépés: A CNAME-rekord frissítése
 
 Ha hibát észlel, módosítsa a rekord értéket dr.contoso.com mutasson az alább látható módon:
        
@@ -137,13 +137,14 @@ A feladatátvétel konfigurálása az Azure Traffic Managerrel tett lépések a 
 2. A Traffic Manager-profil belüli végpontok létrehozása
 3. Állapot ellenőrzése és a feladatátvételi konfiguráció beállítása
 
-### <a name="step-1-create-a-new-azure-traffic-manager-profile"></a>1. lépés: Új Azure Traffic Manager-profil létrehozása
+### <a name="step-1-create-a-new-azure-traffic-manager-profile"></a>1\. lépés: Új Azure Traffic Manager-profil létrehozása
 A név contoso123 hozzon létre egy új Azure Traffic manager-profilt, és válassza ki az útválasztási módszer prioritásúként. Ha rendelkezik egy meglévő erőforráscsoportot, amelyet szeretne társítani, majd egy meglévő erőforráscsoportot kiválaszthatja, ellenkező esetben hozzon létre egy új erőforráscsoportot.
 
 ![Traffic Manager-profil létrehozása](./media/disaster-recovery-dns-traffic-manager/create-traffic-manager-profile.png)
- *. ábra – Traffic Manager-profil létrehozása*
 
-### <a name="step-2-create-endpoints-within-the-traffic-manager-profile"></a>2. lépés: A Traffic Manager-profil belüli végpontok létrehozása
+*. Ábra – Traffic Manager-profil Létrehozása*
+
+### <a name="step-2-create-endpoints-within-the-traffic-manager-profile"></a>2\. lépés: A Traffic Manager-profil belüli végpontok létrehozása
 
 Ebben a lépésben hoz létre, amelyek az éles és a vész-helyreállítási hely végpontok. Itt válassza ki a **típus** külső végpontja, de ha az erőforrást az Azure-ban üzemel, akkor választhatja **Azure-végpont** is. Ha úgy dönt, **Azure-végpont**, majd válassza ki a **Célerőforrásnál** , amely vagy egy **App Service-ben** vagy egy **nyilvános IP-cím** is lefoglalta Azure-t. A prioritás van beállítva, **1** az elsődleges régió 1 szolgáltatást, mert.
 Ehhez hasonlóan hozzon létre a vész helyreállítási végpont a Traffic Manager belül is.
@@ -152,7 +153,7 @@ Ehhez hasonlóan hozzon létre a vész helyreállítási végpont a Traffic Mana
 
 *. Ábra – vész-helyreállítási végpontok létrehozása*
 
-### <a name="step-3-set-up-health-check-and-failover-configuration"></a>3. lépés: Állapot ellenőrzése és a feladatátvételi konfiguráció beállítása
+### <a name="step-3-set-up-health-check-and-failover-configuration"></a>3\. lépés: Állapot ellenőrzése és a feladatátvételi konfiguráció beállítása
 
 Ebben a lépésben beállíthat egy a DNS-Élettartamot 10 másodperc, amely a legtöbb internetkapcsolattal rendelkező rekurzív feloldók tartja. Ez a konfiguráció azt jelenti, hogy nincs DNS-feloldási gyorsítótárazzák az adatokat több mint 10 másodpercig. A Végpontfigyelő beállításai, az az elérési út jelenlegi beállított / vagy a legfelső szintű, de egy elérési utat, például prod.contoso.com/index kiértékelheti, hogy a végpont a beállítások testre. Az alábbi példában a **https** ellenőrzési protokollként. Választhatja azonban **http** vagy **tcp** is. A kiválasztott protokoll attól függ, hogy a teljes alkalmazás. Az ellenőrzési időköz értéke 10 másodperc, amely lehetővé teszi, hogy gyors tesztelés, és az újrapróbálkozási 3 értékre van állítva. A Traffic Manager ennek eredményeképpen a második végpontnak feladatátvételt hajt végre, ha három egymást követő időközök regisztrálása sikertelen. A következő képletet az automatikus feladatátvételre fordított időt határozza meg: A feladatátvételi idő = TTL + újra * Probing időköz és ebben az esetben az értéke 10 + 3 * 10 = 40 másodperc (Max).
 Ha az újrapróbálkozás értéke 1 és az élettartam szerepel majd a hozzá tartozó feladatátvételi 10 + 1 * 10 = 20 másodperc értéke 10 másodperc. Az újrapróbálkozás nagyobb értékre állítva **1** kiküszöbölése vakriasztások vagy bármely kisebb hálózati jelekből miatt folyamatban lévő feladatátvételi teszteket esélyét. 

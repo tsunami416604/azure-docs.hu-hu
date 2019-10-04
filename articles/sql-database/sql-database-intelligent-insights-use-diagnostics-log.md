@@ -1,6 +1,6 @@
 ---
-title: Intelligent Insights diagnosztikai teljesítménynaplóban – Azure SQL Database |} A Microsoft Docs
-description: Intelligent Insights biztosít egy diagnosztikai napló, az Azure SQL Database teljesítménnyel kapcsolatos problémák
+title: Intelligent Insights teljesítmény diagnosztikai naplója – Azure SQL Database | Microsoft Docs
+description: Intelligent Insights diagnosztikai naplót biztosít Azure SQL Database teljesítménnyel kapcsolatos problémákról
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -10,24 +10,23 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-manager: craigg
 ms.date: 12/19/2018
-ms.openlocfilehash: 264d4cfc6b09813f34501a0e51d3100f4d2bce78
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: c25d37a4d1695ab94cc0667a13e36e4da640e12a
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57217036"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262149"
 ---
-# <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Az Intelligent Insights az Azure SQL Database teljesítményét diagnosztikai napló használata
+# <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>A Intelligent Insights Azure SQL Database teljesítmény-diagnosztikai naplójának használata
 
-Ez az oldal nyújt információkat által létrehozott Azure SQL Database teljesítményét diagnosztikai napló használatával [Intelligent Insights](sql-database-intelligent-insights.md), annak formátum, és az adatok esetében az egyéni fejlesztői kell tartalmaz. Elküldheti a diagnosztikai naplót a [naplózza az Azure Monitor](../azure-monitor/insights/azure-sql.md), [Azure Event Hubs](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md), [Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage), vagy egy külső megoldás, riasztási és jelentéskészítési egyéni fejlesztők és üzemeltetők számára képességek.
+Ez az oldal arról nyújt tájékoztatást, hogyan használható a [Intelligent Insights](sql-database-intelligent-insights.md)által generált Azure SQL Database Performance Diagnostics-napló, annak formátuma és az egyéni fejlesztési igényekhez tartozó adatok. Ezt a diagnosztikai naplót elküldheti [Azure monitor naplókba](../azure-monitor/insights/azure-sql.md), az [Azure Event Hubsba](../azure-monitor/platform/resource-logs-stream-event-hubs.md), az [Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage)-ba vagy egy harmadik féltől származó megoldásra az egyéni DevOps-riasztási és jelentéskészítési funkciókhoz.
 
-## <a name="log-header"></a>Napló-fejléc
+## <a name="log-header"></a>Napló fejléce
 
-A diagnosztikai napló intelligens elemzési eredmények kimeneti JSON szabványos formátumot használja. Az Intelligent Insights napló eléréséhez pontos kategória tulajdonság a rögzített érték "SQLInsights".
+A diagnosztikai napló JSON szabványos formátumot használ a Intelligent Insights eredményeinek kimenetére. Egy Intelligent Insights napló elérésének pontos category tulajdonsága a "SQLInsights" rögzített érték.
 
-A napló a fejléc gyakori, és az időbélyeg (TimeGenerated), amely megjeleníti a bejegyzés létrehozásakor áll. Egy erőforrás-azonosítója (erőforrás-azonosító), amely az adott SQL-adatbázis vonatkozik, a bejegyzés vonatkozik is tartalmaz. A kategória (kategória), a szintet () és a művelet neve (OperationName) rögzítettek tulajdonságok, amelyek értékét ne módosítsa. Ezek azt jelzik, hogy a naplóbejegyzést tájékoztató és intelligens elemzési (SQLInsights) származnak.
+A napló fejléce gyakori, és a bejegyzés létrehozásakor megjelenő időbélyegző (TimeGenerated) áll. Ide tartozik egy erőforrás-azonosító (ResourceId) is, amely arra az adott SQL Database hivatkozik, amely a bejegyzésre vonatkozik. A kategória (kategória), a szint (szint) és a művelet neve (OperationName) olyan rögzített tulajdonságok, amelyek értékei nem változnak. Azt jelzik, hogy a naplóbejegyzés tájékoztatási és Intelligent Insights (SQLInsights) származik.
 
 ```json
 "TimeGenerated" : "2017-9-25 11:00:00", // time stamp of the log entry
@@ -37,13 +36,13 @@ A napló a fejléc gyakori, és az időbélyeg (TimeGenerated), amely megjelení
 "OperationName" : "Insight", // fixed property
 ```
 
-## <a name="issue-id-and-database-affected"></a>Probléma azonosítója és az érintett adatbázis
+## <a name="issue-id-and-database-affected"></a>A probléma azonosítója és az érintett adatbázis
 
-A probléma azonosítása tulajdonság (issueId_d) biztosít a teljesítménnyel kapcsolatos problémák megoldásáig egyedileg követésének. A naplóban, ugyanez a probléma állapotát reporting több eseményrekordok osztani, ugyanezzel az azonosítóval probléma.
+A probléma azonosítása tulajdonság (issueId_d) lehetővé teszi a teljesítménnyel kapcsolatos problémák egyedi nyomon követését a megoldásig. Ugyanannak a hibának a naplózási jelentéskészítési állapotában több esemény rekord is ugyanazzal a probléma-AZONOSÍTÓval fog osztozni.
 
-A probléma azonosítója, valamint a diagnosztikai napló a kezdő (intervalStartTime_t) és befejezési (intervalEndTme_t) időbélyegeket az adott esemény, a diagnosztikai naplóban jelentett probléma kapcsolatos jelentések.
+A probléma-AZONOSÍTÓval együtt a diagnosztikai napló a diagnosztikai naplóban jelentett problémával kapcsolatos indítási (intervalStartTime_t) és befejezési (intervalEndTme_t) időbélyegzőket jelenti.
 
-A rugalmas készlet (elasticPoolName_s) tulajdonság azt jelzi, hogy melyik rugalmas készlet tartozik az adatbázis egy problémához. Ha az adatbázis egy rugalmas készlet része nem, ez a tulajdonság nem tartozik érték. Az adatbázis, amelyben egy problémát észlelt az adatbázis nevét (databaseName_s) tulajdonságban felfedett.
+A rugalmas készlet (elasticPoolName_s) tulajdonság azt jelzi, hogy melyik rugalmas készlethez tartozik az adatbázis, amelynek a problémája van. Ha az adatbázis nem része egy rugalmas készletnek, ennek a tulajdonságnak nincs értéke. Az adatbázis neve (databaseName_s) tulajdonsága azt az adatbázist adja meg, amelyben a rendszer hibát észlelt.
 
 ```json
 "intervalStartTime_t": "2017-9-25 11:00", // start of the issue reported time stamp
@@ -56,9 +55,9 @@ A rugalmas készlet (elasticPoolName_s) tulajdonság azt jelzi, hogy melyik ruga
 
 ## <a name="detected-issues"></a>Észlelt problémák
 
-A következő szakaszban az Intelligent Insights teljesítménynaplóban, teljesítménnyel kapcsolatos problémák – beépített mesterséges intelligenciával észlelt tartalmazza. Észlelések közzéteszik a tulajdonságokat a JSON-diagnosztikai naplót. Ezek az észlelések kategóriát adta meg a problémát, a probléma, az érintett lekérdezések és a metrikák hatásának állnak. Az észlelések tulajdonságok tartalmazhatja több teljesítményproblémát, amelyekkel az észlelt.
+A Intelligent Insights Teljesítménynapló következő szakasza olyan teljesítménnyel kapcsolatos problémákat tartalmaz, amelyeket a rendszer a beépített mesterséges intelligenciával észlelt. Az észleléseket a rendszer a JSON diagnosztikai naplójában lévő tulajdonságok között adja meg. Ezek az észlelések a probléma kategóriáját, a probléma következményeit, az érintett lekérdezéseket és a metrikákat tartalmazzák. Az észlelési tulajdonságok több, észlelt teljesítménnyel kapcsolatos problémát is tartalmazhatnak.
 
-A következő észlelésekből tulajdonság struktúrával jelentett észlelt teljesítménnyel kapcsolatos problémák:
+A rendszer az észlelt teljesítménnyel kapcsolatos problémákat a következő észlelési tulajdonságok struktúrájával fogja jelenteni:
 
 ```json
 "detections_s" : [{
@@ -68,41 +67,41 @@ A következő észlelésekből tulajdonság struktúrával jelentett észlelt te
 }] 
 ```
 
-Cserélhető eszközként észlelhetőnek teljesítmény minták és a részletek, amelyek a rendszer használt kimeneti adattípus a diagnosztikai napló, az alábbi táblázatban szerepelnek.
+A észlelhető teljesítményi minták és a diagnosztikai naplóhoz tartozó részletek a következő táblázatban találhatók.
 
 ### <a name="detection-category"></a>Észlelési kategória
 
-A category (kategória) tulajdonság cserélhető eszközként észlelhetőnek teljesítmény minták kategóriáját ismerteti. Tekintse meg a következő táblázat tartalmazza az összes lehetséges kategóriák cserélhető eszközként észlelhetőnek teljesítmény minták. További információkért lásd: [adatbázis teljesítményproblémák megoldásában az Intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md).
+A category (kategória) tulajdonság a észlelhető teljesítményi minták kategóriáját írja le. A észlelhető teljesítményi minták összes lehetséges kategóriáját a következő táblázat tartalmazza. További információ: [az adatbázis teljesítményével kapcsolatos hibák elhárítása Intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md).
 
-Attól függően, a teljesítménybeli problémát észlel, a részletek a diagnosztika a használt kimeneti adattípus naplófájl ennek megfelelően eltérő.
+Az észlelt teljesítménnyel kapcsolatos probléma függvényében a diagnosztikai naplófájlban található részletek ennek megfelelően eltérnek.
 
-| Cserélhető eszközként észlelhetőnek teljesítmény minták | Használt kimeneti adattípus részletei |
+| Észlelhető teljesítményi minták | További részletek |
 | :------------------- | ------------------- |
-| Ért el erőforráskorlátok | <li>Érintett erőforrások</li><li>Lekérdezés kivonatok</li><li>Erőforrás-használat százalékos aránya</li> |
-| Számítási feladatok növekedése | <li>Amelyek végrehajtása nőtt-lekérdezések száma</li><li>Lekérdezés kivonatai a legnagyobb mértékben a számítási feladatok növekedése lekérdezéseket.</li> |
-| Rendelkezésre álló memória mennyisége | <li>Memóriakezelőt</li> |
-| Zárolás | <li>Érintett lekérdezés kivonatok</li><li>Lekérdezés kivonatok blokkolása</li> |
-| Increased MAXDOP | <li>Lekérdezés kivonatok</li><li>CXP várakozási időt</li><li>Várakozási idő</li> |
-| Pagelatch versengés | <li>A versengés okozó lekérdezések kivonatok lekérdezése</li> |
-| Hiányzó Index | <li>Lekérdezés kivonatok</li> |
-| Új lekérdezés | <li>Az új lekérdezések lekérdezés kivonata</li> |
-| Szokatlan várakozási statisztika | <li>Szokatlan várakozási típusok</li><li>Lekérdezés kivonatok</li><li>Lekérdezés várakozási időt</li> |
-| TempDB Contention | <li>A versengés okozó lekérdezések kivonatok lekérdezése</li><li>Lekérdezés megnevezése, az általános adatbázis pagelatch versengés várakozási idő: [%]</li> |
-| Rugalmas készlet dtu-k hiánya | <li>Rugalmas készlet</li><li>Felső DTU-igényes adatbázis</li><li>A felső fogyasztók által használt DTU készlet százaléka</li> |
-| Regresszió megtervezése | <li>Lekérdezés kivonatok</li><li>Jó terv azonosítók</li><li>Hibás terv azonosítók</li> |
-| Adatbázis-specifikus konfigurációs érték módosítása | <li>Az alapértelmezett értékeket képest adatbázishoz kötődő konfigurációs módosítások</li> |
-| Lassú ügyféloldali | <li>Lekérdezés kivonatok</li><li>Várakozási idő</li> |
-| Díjszabási szint alacsonyabb szintű | <li>Szöveges értesítés</li> |
+| Erőforrás-korlátok elérése | <li>Érintett erőforrások</li><li>Lekérdezések kivonatai</li><li>Erőforrás-felhasználási százalék</li> |
+| Munkaterhelés növekedése | <li>A végrehajtást megnövelő lekérdezések száma</li><li>Lekérdezési kivonatok lekérése a legnagyobb mértékben hozzájárul a munkaterhelés növeléséhez</li> |
+| Memória nyomása | <li>Memória-jegyző</li> |
+| Zárolás | <li>Érintett lekérdezési kivonatok</li><li>Lekérdezési kivonatok blokkolása</li> |
+| Megnövekedett MAXDOP | <li>Lekérdezések kivonatai</li><li>CXP várakozási ideje</li><li>Várakozási idő</li> |
+| Pagelatch-tartalom | <li>A lekérdezést kiváltó lekérdezések kivonatai</li> |
+| Hiányzó index | <li>Lekérdezések kivonatai</li> |
+| Új lekérdezés | <li>Az új lekérdezések lekérdezési kivonata</li> |
+| Szokatlan várakozási statisztika | <li>Szokatlan várakozási típusok</li><li>Lekérdezések kivonatai</li><li>Lekérdezési várakozási idő</li> |
+| TempDB-tartalom | <li>A lekérdezést kiváltó lekérdezések kivonatai</li><li>Lekérdezés a teljes adatbázis pagelatch-tartalmának várakozási ideje [%]</li> |
+| A rugalmas készlet DTU hiánya | <li>Rugalmas készlet</li><li>Leggyakoribb DTU adatbázis</li><li>A felső fogyasztó által használt készlet DTU százaléka</li> |
+| Regressziós terv | <li>Lekérdezések kivonatai</li><li>Helyes csomag azonosítói</li><li>Rossz terv azonosítói</li> |
+| Adatbázis hatókörű konfigurációs értékének változása | <li>Adatbázis-hatókörű konfiguráció módosításai az alapértelmezett értékekhez képest</li> |
+| Lassú ügyfél | <li>Lekérdezések kivonatai</li><li>Várakozási idő</li> |
+| Díjszabási szintek visszalépése | <li>Szöveges értesítés</li> |
 
 ### <a name="impact"></a>Hatás
 
-A hatás (gyakorolt hatás) a tulajdonság azt mutatja, hogy mekkora észlelt viselkedés járult hozzá, amelyek egy adatbázist tapasztalja a problémát. Hatással van az 1-3, 3, a legmagasabb hozzájárulást, közepes, mint 2 és 1 közé eső legalacsonyabb befizetendő. Az ütközési értéket az egyéni riasztási automation igényektől használhatók bemenetként. A tulajdonság-lekérdezéseket érintett (QueryHashes) Itt adhatja meg, a lekérdezés, amely egy adott észlelési érintette kivonatokat.
+A hatás (hatás) tulajdonság azt írja le, hogy az észlelt viselkedés mekkora mértékben járult hozzá az adatbázis által felmerülő problémákhoz. A hatások 1 és 3 közötti tartományba esnek, a legmagasabb hozzájárulással, 2 – közepes és 1 a legalacsonyabb hozzájárulással. A hatás értéke az egyéni riasztások automatizálásának bemenete lehet, az adott igényektől függően. Az érintett tulajdonság-lekérdezések (QueryHashes) megadják az adott észlelés által érintett lekérdezési kivonatok listáját.
 
 ### <a name="impacted-queries"></a>Érintett lekérdezések
 
-A következő szakaszban az Intelligent Insights napló adott lekérdezések érintette észlelt teljesítményével kapcsolatos problémákat ismerteti. Ezek az információk nyilvánosságra impact_s tulajdonság a beágyazott objektumok tömbjeként. A hatás tulajdonság entitások és a metrikák áll. Entitások hivatkozni egy adott lekérdezés (típusa: A lekérdezés). Az egyedi lekérdezési kivonat felfedett value (érték) tulajdonsága alapján. Emellett minden egyes közzétett lekérdezések követ egy metrika- és egy értéket, amely jelzi a észlelt teljesítménybeli problémát.
+A Intelligent Insights napló következő szakasza információt nyújt az észlelt teljesítménnyel kapcsolatos problémák által érintett lekérdezésekről. Ezeket az információkat a impact_s tulajdonságban beágyazott objektumok tömbje kell közzétenni. Az Impact tulajdonság entitásokból és mérőszámokból áll. Az entitások egy adott lekérdezésre vonatkoznak (típus: Lekérdezés). Az egyedi lekérdezési kivonatot az érték (érték) tulajdonság alatt kell közzétenni. Emellett a közzétett lekérdezések mindegyikét egy metrika és egy érték követi, amely egy észlelt teljesítménnyel kapcsolatos problémát jelez.
 
-A következő naplófájl-példában a lekérdezés a kivonat 0x9102EXZ4 észlelte, hogy-végrehajtás megnövekedett időtartama (metrika: DurationIncreaseSeconds). 110 másodperc értékét azt jelzi, hogy ez a lekérdezés végrehajtásához szükséges már 110 másodperc. Több lekérdezés észlelhető, mert az adott szakasz tartalmazhat több lekérdezés bejegyzést.
+A következő példában a rendszer a kivonat 0x9102EXZ4 rendelkező lekérdezést észlelte a végrehajtás megnövekedésének időtartamával (metrikus: DurationIncreaseSeconds). Az 110 másodperces érték azt jelzi, hogy az adott lekérdezés végrehajtása hosszabb volt, mint 110 másodperc. Mivel több lekérdezés is észlelhető, az adott napló szakasz több lekérdezési bejegyzést is tartalmazhat.
 
 ```json
 "impact" : [{
@@ -116,18 +115,18 @@ A következő naplófájl-példában a lekérdezés a kivonat 0x9102EXZ4 észlel
 
 ### <a name="metrics"></a>Mérőszámok
 
-A mértékegység meghatározásáért jelentett mindegyik metrikát a lehetséges értékek a másodpercek számát és százalékos példáira a metrika (metrikus) tulajdonság alapján. A value (érték) tulajdonság jelenti, egy mért mérőszám értéke.
+Az egyes jelentett mérőszámok mértékegysége a metrika (metrikus) tulajdonság alatt van megadva, a másodperc, a szám és a százalék lehetséges értékeivel. A mért metrika értékét a Value (Value) tulajdonságban kell jelenteni.
 
-A DurationIncreaseSeconds tulajdonság biztosítja a mértékegységet másodpercek alatt. CriticalErrorCount mértékegység meghatározásáért egy szám, amely egy hibák száma jelenti.
+A DurationIncreaseSeconds tulajdonság másodpercek alatt biztosítja a mértékegységet. A CriticalErrorCount mértékegysége egy szám, amely a hibák számát jelöli.
 
 ```json
 "metric" : "DurationIncreaseSeconds", // issue metric type – possible values: DurationIncreaseSeconds, CriticalErrorCount, WaitingSeconds
 "value" : 102 // value of the measured metric (in this case seconds)
 ```
 
-## <a name="root-cause-analysis-and-improvement-recommendations"></a>Legfelső szintű OK elemzési és javítására vonatkozó javaslatok
+## <a name="root-cause-analysis-and-improvement-recommendations"></a>Alapvető okok elemzése és tökéletesítésére vonatkozó javaslatok
 
-Az Intelligent Insights teljesítménynaplóban utolsó része az automatizált kiváltó okok elemzése, a teljesítménycsökkenés azonosított teljesítményprobléma vonatkozik. Az információ emberi mobilbarát szóhasználatára hasonlítanak a legfelső szintű okok elemzése (rootCauseAnalysis_s) tulajdonságban jelenik meg. Teljesítményjavítási javaslatokkal szerepelnek a napló, ahol csak lehetséges.
+A Intelligent Insights teljesítmény naplójának utolsó része az azonosított teljesítmény-romlási probléma automatizált kiváltó okának elemzésére vonatkozik. Az információk az alapvető okok elemzése (rootCauseAnalysis_s) tulajdonságban az emberi-barát szóhasználatát jelennek meg. A fejlesztéssel kapcsolatos javaslatok a naplóban találhatók, ahol lehetséges.
 
 ```json
 // example of reported root cause analysis of the detected performance issue, in a human-readable format
@@ -135,13 +134,13 @@ Az Intelligent Insights teljesítménynaplóban utolsó része az automatizált 
 "rootCauseAnalysis_s" : "High data IO caused performance to degrade. It seems that this database is missing some indexes that could help."
 ```
 
-Használhatja az Intelligent Insights teljesítménynaplóban a [naplózza az Azure Monitor]( https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql) vagy egy külső megoldás egyéni DevOps, riasztási és jelentéskészítési képességgel.
+A Intelligent Insights Teljesítménynapló [Azure monitor naplókkal]( https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql) vagy harmadik féltől származó megoldással az egyéni DevOps-riasztásokhoz és jelentéskészítési funkciókhoz.
 
 ## <a name="next-steps"></a>További lépések
-- Ismerje meg [Intelligent Insights](sql-database-intelligent-insights.md) fogalmakat.
-- Ismerje meg, hogyan [Intelligent Insights az Azure SQL Database teljesítménnyel kapcsolatos problémáinak elhárítása](sql-database-intelligent-insights-troubleshoot-performance.md).
-- Ismerje meg, hogyan [Azure SQL Database monitorozása az Azure SQL Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql).
-- Ismerje meg, hogyan [gyűjtése és felhasználása a naplófájlok adatait az Azure-erőforrások](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs).
+- Ismerkedjen meg [Intelligent Insights](sql-database-intelligent-insights.md) fogalmakkal.
+- Ismerje meg, hogyan lehet [elhárítani a Intelligent Insightsokkal kapcsolatos teljesítményproblémák Azure SQL Database](sql-database-intelligent-insights-troubleshoot-performance.md).
+- Megtudhatja, hogyan [figyelheti Azure SQL Database a Azure SQL Analytics használatával](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql).
+- Ismerje meg, hogyan [gyűjthet és használhat adatokat az Azure-erőforrásokból](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs).
 
 
 

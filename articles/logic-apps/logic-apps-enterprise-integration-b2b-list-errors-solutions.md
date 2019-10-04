@@ -9,12 +9,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 06/02/2017
-ms.openlocfilehash: 11fbec81e88eec6c7daa9136eb5421387b79d71c
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: f0591b47ce7ba6837f300088c856c0098fb66710
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124334"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60998834"
 ---
 # <a name="b2b-errors-and-solutions-for-azure-logic-apps"></a>B2B-hibák és megoldások az Azure Logic Apps
 
@@ -26,7 +26,7 @@ Ez a cikk segítséget nyújt a hibaelhárítás, amely akkor fordulhat elő a L
 
 |   |   |  
 |---|---|
-| Hiba leírása | Nem található a megállapodás feloldása paraméterekkel szerződés. | 
+| Hibaleírás | Nem található a megállapodás feloldása paraméterekkel szerződés. | 
 | Felhasználói művelet | A szerződés a megállapodás szerinti üzleti identitások rendelkező integrációs fiókban lehet hozzáadni. </br>Az üzleti identitások egyeznie kell a bemeneti üzenet azonosítók. |  
 |   |   |
 
@@ -34,7 +34,7 @@ Ez a cikk segítséget nyújt a hibaelhárítás, amely akkor fordulhat elő a L
 
 |   |   | 
 |---|---|
-| Hiba leírása | Nincs identitású egyezmény: "AS2Identity":: "Partner1" és 'AS2Identity':: "Partner3" | 
+| Hibaleírás | Nem található az identitások szerződés: 'AS2Identity':: "Partner1" és 'AS2Identity':: "Partner3" | 
 | Felhasználói művelet | Érvénytelen AS2-a vagy AS2-megállapodás a konfigurált. </br>Javítsa ki az AS2-üzenet "AS2-a" vagy "AS2-a" fejlécek vagy a szerződés az AS2-azonosítók az AS2 üzenetfejlécekben szerződés konfigurációval megfelelően. |
 |   |   |     
 
@@ -44,7 +44,7 @@ Ez a cikk segítséget nyújt a hibaelhárítás, amely akkor fordulhat elő a L
 
 |   |   |  
 |---|---|
-| Hiba leírása | Érvénytelen AS2-fejléceket. Egyik a "AS2-a" vagy "AS2-a" fejlécek az üres. | 
+| Hibaleírás | Érvénytelen AS2-fejléceket. Egyik a "AS2-a" vagy "AS2-a" fejlécek az üres. | 
 | Felhasználói művelet | Olyan AS2-üzenet érkezett, amely nem tartalmaz AS2-a vagy AS2-, vagy mindkét fejlécek. </br> Ellenőrizze az AS2-üzenet AS2-, és az AS2-fejlécek és helyes-e őket szerződés konfigurációja alapján. |
 |  |  | 
 
@@ -52,7 +52,7 @@ Ez a cikk segítséget nyújt a hibaelhárítás, amely akkor fordulhat elő a L
 
 |   |   |  
 |---|---|
-| Hiba leírása | A kérelem tartalma nullértékű vagy üres. | 
+| Hibaleírás | A kérelem tartalma null értékű vagy üres. | 
 | Felhasználói művelet | Olyan AS2-üzenet érkezett, amely az üzenet törzse nem tartalmaz. |
 |  |  | 
 
@@ -60,7 +60,7 @@ Ez a cikk segítséget nyújt a hibaelhárítás, amely akkor fordulhat elő a L
 
 |   |   | 
 |---|---|
-| Hiba leírása |  [feldolgozott/hiba: a visszafejtés sikertelen] | 
+| Hibaleírás |  [feldolgozott/hiba: a visszafejtés sikertelen] | 
 | Felhasználói művelet | Adjon hozzá @base64ToBinary AS2Message küldése előtt a partnernek. |
 |||
 
@@ -80,7 +80,7 @@ Példa:
 
 |   |   | 
 |---|---|
-| Hiba leírása |  [feldolgozott/hiba: a visszafejtés sikertelen] | 
+| Hibaleírás |  [feldolgozott/hiba: a visszafejtés sikertelen] | 
 | Felhasználói művelet | Adjon hozzá @base64ToBinary MDN küldése előtt a partnernek. | 
 |||
 
@@ -99,7 +99,7 @@ Példa:
 
 |   |   |  
 |---|---|
-| Hiba leírása| Az aláíró tanúsítvány nincs konfigurálva az AS2-fél. </br>AS2-származó: partner1 AS2-történő: partner2 | 
+| Hibaleírás| Az aláíró tanúsítvány nincs konfigurálva az AS2-fél. </br>AS2-származó: partner1 AS2-történő: partner2 | 
 | Felhasználói művelet | AS2-megállapodás beállításait konfigurálja aláírás megfelelő tanúsítványt. |
 |  |  | 
 
@@ -109,7 +109,7 @@ Példa:
     
 |   |   | 
 |---|---|
-| Hiba leírása | Hiba történt az elemzés közben. Az EDIFACT-tranzakciókészlet beállítása ID "123456"tartalmazott (csoport) nélküli adatcsere azonosítója "987654',"Partner1"feladó azonosítója, fogadó azonosítója"Partner2"jelenleg fel van függesztve a következő hibák miatt: <p>"Hátsó elválasztó található vezető" |
+| Hibaleírás | Hiba történt az elemzés közben. Az EDIFACT-tranzakciókészlet beállítása ID "123456"tartalmazott (csoport) nélküli adatcsere azonosítója "987654',"Partner1"feladó azonosítója, fogadó azonosítója"Partner2"jelenleg fel van függesztve a következő hibák miatt: <p>"Hátsó elválasztó található vezető" |
 | Felhasználói művelet | A szerződés beállításokat kell konfigurálni, hogy a kezdő és záró terület. </br>Szerződés beállításszerkesztési, hogy a kezdő és záró szóközzel. |
 |   |   |
 
@@ -119,7 +119,7 @@ Példa:
 
 |   |   | 
 |---|---| 
-| Hiba leírása | Ismétlődő ellenőrzőszám |
+| Hibaleírás | Ismétlődő ellenőrzőszám |
 | Felhasználói művelet | Ez a hiba azt jelzi, hogy a fogadott üzenethez ismétlődő ellenőrzőszámok rendelkezik. </br>Javítsa ki az ellenőrzőszám, és elküldeni az üzenetet. |
 |   |   |
 
@@ -127,7 +127,7 @@ Példa:
 
 |   |   | 
 |---|---| 
-| Hiba leírása | Hiba történt az elemzés közben. A tranzakciókészlet-azonosítójú "564220001' szereplő funkcionális csoport azonosítója '56422', '000056422', ' 12345678 feladóazonosító azonosítójú adatcsere', ' 87654321 Címzettazonosító" jelenleg fel van függesztve a következő hibák miatt X12: <p>"Az üzenet típusa ismeretlen dokumentum és nem tudta feloldani az egyezményben konfigurált meglévő sémák egyikével sem" |
+| Hibaleírás | Hiba történt az elemzés közben. A tranzakciókészlet-azonosítójú "564220001' szereplő funkcionális csoport azonosítója '56422', '000056422', ' 12345678 feladóazonosító azonosítójú adatcsere', ' 87654321 Címzettazonosító" jelenleg fel van függesztve a következő hibák miatt X12: <p>"Az üzenet típusa ismeretlen dokumentum és nem tudta feloldani az egyezményben konfigurált meglévő sémák egyikével sem" |
 | Felhasználói művelet | A szerződés beállításaiban-séma konfigurálásához.  |
 |   |   |
 
@@ -135,7 +135,7 @@ Példa:
 
 |   |   | 
 |---|---| 
-| Hiba leírása | Az üzenet dokumentumtípusa ismeretlen, és az egyezményben konfigurált meglévő sémák egyikével sem sikerült feloldani. |
+| Hibaleírás | Az üzenet típusa ismeretlen dokumentum, és nem tudta feloldani az egyezményben konfigurált meglévő sémák egyikével sem. |
 | Felhasználói művelet | Adja meg a szerződés beállítások megfelelő sémát. |
 |   |   |
 
@@ -145,7 +145,7 @@ Példa:
 
 |   |   | 
 |---|---|
-| Hiba leírása | InvalidTemplate. Folyamat Sablonnyelv-kifejezéseinek oszlopában "1" sor "1902" művelet "Flat_File_Decoding" bemenetei között nem lehet: "szükséges"content"tulajdonságot vár, hogy egy érték azonban van null értékű. Elérési út ''. ". |
+| Hibaleírás | InvalidTemplate. A "Flat_File_Decoding" művelet Sablonnyelv-kifejezéseinek feldolgozása nem sikerült a "1", oszlop: 1902"bemenete sor: "Szükséges"content"tulajdonságot vár, hogy egy érték azonban van null értékű. Elérési út ''. ". |
 | Felhasználói művelet | Ez a hiba azt jelzi, hogy a bemeneti üzenet nem tartalmazza a szervezet. |
 |   |   | 
 

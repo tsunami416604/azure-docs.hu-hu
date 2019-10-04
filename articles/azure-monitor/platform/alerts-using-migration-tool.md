@@ -1,99 +1,101 @@
 ---
-title: Az Azure monitorban az önkéntes áttelepítési eszköz használata a klasszikus riasztások áttelepítése
-description: Ismerje meg, hogyan önkéntes áttelepítési eszköz használata a klasszikus riasztási szabályok áttelepíteni.
+title: A klasszikus riasztások az Azure monitorban áttelepítése a önkéntes migrálást eszközzel
+description: Ismerje meg, hogyan kell áttelepíteni a klasszikus riasztási szabályok az önkéntes áttelepítési eszköz használata.
 author: snehithm
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: 58c664beee942fe7115c7fff38a039c23bed6ac3
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: 0c8aa00d069ae54584d8e828dab35c22048f1876
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58632263"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295543"
 ---
 # <a name="use-the-voluntary-migration-tool-to-migrate-your-classic-alert-rules"></a>Az önkéntes áttelepítési eszköz használata a klasszikus riasztási szabályok áttelepítése
 
-Mint [azt korábban bejelentettük](monitoring-classic-retirement.md), klasszikus riasztások az Azure monitorban vannak vezetve a július 2019. Az áttelepítési eszköz való áttelepítés önkéntesen érhető el az Azure Portalon, és ügyfeleink, akik klasszikus riasztási szabályok jelennek meg. Ez a cikk végigvezeti az áttelepítési eszköz használatával önkéntesen áttelepíteni a klasszikus riasztási szabályok, az automatikus áttelepítése a július 2019 megkezdése előtt.
+Mint [azt korábban bejelentettük](monitoring-classic-retirement.md), klasszikus riasztások az Azure monitorban vannak vezetve az szeptember 2019 (eredetileg július 2019 volt). A migrálási eszköz érhető el az ügyfelek számára, akik klasszikus riasztási szabályok és ki szeretne aktiválása áttelepítési magukat az Azure Portalon. Ez a cikk ismerteti az áttelepítési eszköz használata a klasszikus riasztási szabályok önkéntesen áttelepítéséhez, szeptember 2019 elindul az automatikus áttelepítése előtt.
+
+> [!NOTE]
+> Bevezetés az áttelepítési eszköz késéssel, klasszikus riasztások az áttelepítéshez a kivezetési dátum lett [2019. augusztus 31-edik terjeszteni](https://azure.microsoft.com/updates/azure-monitor-classic-alerts-retirement-date-extended-to-august-31st-2019/) eredetileg közzétett dátumától számítva 2019. június 30.
 
 ## <a name="benefits-of-new-alerts"></a>Új riasztások előnyei
 
-Klasszikus riasztások cserélik új egyesített riasztások kezelése az Azure monitorban. Az új riasztások platformra a következő előnyökkel jár:
+Klasszikus riasztások cserélik új, egyesített az Azure monitorban riasztásokat. Az új riasztások platformra a következő előnyökkel jár:
 
-- A többdimenziós metrikák a különböző riasztási [számos további Azure-szolgáltatások](alerts-metric-near-real-time.md#metrics-and-dimensions-supported)
-- Új metrika figyelmezteti az támogatási [több erőforrás riasztási szabályok](alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor) amely nagy mértékben csökkentheti számos szabályok kezelése járó többletterhelést.
-- Egységes értesítési mechanizmus
-  - [Műveletcsoportok](action-groups.md) moduláris értesítési mechanizmusok, amelyek minden tárolóhelytípussal működik új riasztás (mérőszám, a napló és a tevékenységnaplóhoz.)
-  - Akkor is képes kihasználni az új értesítési mechanizmusok, például SMS-, hang- és ITSM-összekötő
-- A [egységes riasztási kezelőfelület](alerts-overview.md) számos lehetőséget kínál az összes riasztás a különböző jel (metrika, tevékenység napló és a naplófájlok) adatait egy helyen
+- A többdimenziós metrikák különböző figyelmeztető [számos további Azure-szolgáltatások](alerts-metric-near-real-time.md#metrics-and-dimensions-supported).
+- Az új metrika figyelmezteti az támogatási [több erőforrás riasztási szabályok](alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor) , amely nagy mértékben csökkentheti számos szabályok kezelése járó többletterhelést.
+- Az egységes értesítési mechanizmust, amely támogatja:
+  - [Műveletcsoportok](action-groups.md), a moduláris értesítési mechanizmus, amely az összes új riasztástípusok (a mérőszám, a napló és a tevékenységnaplóhoz) együttműködve.
+  - Új értesítési mechanizmusok, például SMS, hang és ITSM-összekötő.
+- A [egységes riasztási kezelőfelület](alerts-overview.md) számos lehetőséget kínál az összes riasztás a különböző jel (a mérőszám, a napló és a tevékenységnaplóhoz) adatait egy helyen.
 
 ## <a name="before-you-migrate"></a>Az áttelepítés előtt
 
-A migrálás részeként a klasszikus riasztási szabályok egyenértékű új riasztási szabályok alakítja, és Műveletcsoportok jönnek létre.
+Az áttelepítési folyamat alakítja át klasszikus riasztási szabályok új, egyenértékű riasztási szabályok és művelet csoportokat hoz létre. Előkészítés vegye figyelembe a következőket:
 
-- Az értesítési adattartalom formátuma, valamint az API-k létrehozásához és kezeléséhez új riasztási szabályok eltér a klasszikus riasztási szabályok az módon támogatják a több funkciót. Ismerje meg, [az áttelepítés előkészítése](alerts-prepare-migration.md).
+- Az értesítési adattartalom formátuma és a az API-k létrehozásához és kezeléséhez új riasztási szabályok eltérnek a klasszikus riasztási szabályok mert támogatják a több funkciót. [Ismerje meg, hogyan készíti elő az áttelepítés](alerts-prepare-migration.md).
 
-- Néhány klasszikus riasztási szabályok nem telepíthetők át, hogy az eszköz használatával. [Ismerje meg, mely szabályok nem migrálható, és megtudhatja, hogyan telepítheti át őket a](alerts-understand-migration.md#which-classic-alert-rules-can-be-migrated).
+- Néhány klasszikus riasztási szabályok nem telepíthetők át, az eszköz használatával. [Ismerje meg, mely szabályok nem telepíthető át, és mi a teendő velük](alerts-understand-migration.md#classic-alert-rules-that-will-not-be-migrated).
 
     > [!NOTE]
-    > Áttelepítési folyamat nem befolyásolja a klasszikus riasztási szabályok értékelését. Továbbra is futtassa, és küldje a riasztásokat, amíg az áttelepítésük és megkezdtem az Új riasztási szabályok.
-
+    > Az áttelepítési folyamat nem érinti a klasszikus riasztási szabályok értékelését. Ezek továbbra is futtassa, és értesítés küldése, amíg ezek már át, és az Új riasztási szabályok érvénybe léptetéséhez.
 
 ## <a name="how-to-use-the-migration-tool"></a>Az áttelepítési eszköz használata
 
-Az alábbi eljárás ismerteti, hogyan lehet elindítani a migrálás a klasszikus riasztási szabályok az Azure Portalon:
+Az áttelepítés az Azure Portalon a klasszikus riasztási szabályok aktiválásához kövesse az alábbi lépéseket:
 
-1. A [az Azure portal](https://portal.azure.com), kattintson a **figyelő**.
+1. A [az Azure portal](https://portal.azure.com)válassza **figyelő**.
 
-2. Kattintson a **riasztások** majd kattintson a **riasztási szabályok kezelése** vagy **klasszikus riasztások**.
+1. Válassza ki **riasztások**, majd válassza ki **riasztási szabályok kezelése** vagy **klasszikus riasztások**.
 
-3. Kattintson a **áttelepítése új szabályok** , nyissa meg a migrálási kezdőlapját. Ezen a lapon látható az összes előfizetés és az áttelepítési azok állapotának listája.
+1. Válassza ki **áttelepítése új szabályok** , nyissa meg a migrálási kezdőlapját. Ezen a lapon látható az összes előfizetés és a migrálási állapot listáját:
 
     ![áttelepítési-alkotóelemeit](media/alerts-migration/migration-landing.png "szabályok áttelepítése")
 
-4. Összes olyan előfizetést, amely az eszköz használatával telepíthetők át lesznek megjelölve **migrálásra kész**.
+    Az eszköz használatával telepíthetők át minden előfizetés jelölt **migrálásra kész**.
 
     > [!NOTE]
-    > Az áttelepítési eszköz bevezetéséről szakaszában, az összes olyan előfizetést, amely a klasszikus riasztási szabályok használata. Bevezetés a korai szakaszában, az egyes előfizetéseket, nem áll készen a migrálásra jelenhet meg.
+    > Az áttelepítési eszköz bevezetéséről szakaszában, az összes olyan előfizetést, amely a klasszikus riasztási szabályok használata. A bevezetés korai szakaszaiban néhány előfizetés nem áll készen a migrálás megjelölve jelenhet meg.
 
-5. Válassza ki egy vagy több előfizetést, majd kattintson a **áttelepítési előzetes verzió**
+1. Egy vagy több előfizetést, majd válassza ki és **megtekintheti, migrálási**.
 
-6. Ezen a lapon láthatja a klasszikus riasztási szabályok egy előfizetéshez egyszerre áttelepített részleteit. Emellett **ennél az előfizetésnél az áttelepítés részleteinek letöltése** egy .csv formátumban.
+    Az eredményül kapott oldal a klasszikus riasztási szabályok egy előfizetéshez egyszerre áttelepített részleteit jeleníti meg. Lehetőség kiválasztásával **ennél az előfizetésnél az áttelepítés részleteinek letöltése** részletes információkkal szolgál egy CSV formátumú.
 
     ![migrálás – előzetes verzió](media/alerts-migration/migration-preview.png "áttelepítési előzetes verzió")
 
-7. Adjon meg egy vagy több **e-mail-címek** értesíti a migrálás állapota. E-mailt küldünk, amikor a migrálás befejezése vagy művelet van szükség.
+1. Adjon meg egy vagy több e-mail cím értesíti a migrálás állapota. E-mailt fog kapni, az áttelepítés befejezésekor, vagy ha minden művelet van szükség.
 
-8. Kattintson a **indítsa el áttelepítési**. Olvassa el a megerősítő párbeszédpanelen megjelenő információkat, és győződjön meg arról, ha készen áll az áttelepítési folyamat elindításához.
+1. Válassza ki **indítsa el áttelepítési**. Olvassa el a művelet megerősítését kérő párbeszédpanelen megjelenő információkat, és győződjön meg arról, hogy készen áll az áttelepítési folyamat elindítása.
 
-    >[!IMPORTANT]
-    > Miután elindította az áttelepítési folyamat-előfizetéssel, nem lesz az előfizetéshez tartozó klasszikus riasztási szabályok Szerkesztés/létrehozás. Azonban a klasszikus riasztási szabályok továbbra is fut, és a riasztással, amíg az áttelepítésük során. Ez a klasszikus riasztási szabályok és az áttelepítés során létrehozott új szabályok között a minőség biztosítása érdekében. Az áttelepítés befejezése után az előfizetéshez tartozó, többé nem használható klasszikus riasztási szabályok.
+    > [!IMPORTANT]
+    > Miután elindította egy előfizetés áttelepítése, nem tudja szerkeszteni vagy létrehozni az adott előfizetéshez tartozó klasszikus riasztási szabályok. Ez a korlátozás biztosítja, hogy a klasszikus riasztási szabályok módosítása nélkül elveszett új szabályainak migráláskor. Bár nem tudják módosítani a klasszikus riasztási szabályok, azok továbbra is továbbra is futtatni, és adja meg a riasztások mindaddig, amíg már migrálták. Az áttelepítés befejezése után az előfizetéshez tartozó, klasszikus riasztási szabályok többé nem használható.
 
     ![migrálás megerősítéséhez](media/alerts-migration/migration-confirm.png "megerősítése a migrálás megkezdése")
 
-9. Mint azt a migrálás befejezésének vagy van szükség, a művelet, kapni fog egy e-mailt a 8. lépésben megadott e-mail-címek. Rendszeres időközönként ellenőrizheti a migrálás kezdőlapja a portálon az állapot.
+1. Ha az áttelepítés akkor fejeződött be, vagy ha a teendője, kap egy e-mailt a korábban megadott címek. Ellenőrizheti az állapotát a portál kezdőlapjának alkotóelemeit áttelepítési rendszeres időközönként.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-### <a name="why-is-my-subscriptions-listed-as-not-ready-for-migration"></a>**Miért érdemes az előfizetés(ek) szerepel a listán nem áll készen a migrálás?**
+### <a name="why-is-my-subscription-listed-as-not-ready-for-migration"></a>Miért jelenik meg nem áll készen a migrálás előfizetésemet?
 
-Az áttelepítési eszköz bevezetéséről fázisban történik minden ügyfél számára. A korai szakaszában, a legtöbb vagy összes az előfizetések jelöléssel **nem áll készen a migrálás**. Azonban mid április, az összes előfizetés kell tenni, migrálásra kész.
+Az áttelepítési eszköz bevezetéséről ügyfeleknek fázisban történik. A korai szakaszában, a legtöbb vagy az összes előfizetés jelöléssel **nem áll készen a migrálás**. 
 
-Előfizetés válásakor készen áll az áttelepítéshez, előfizetés-tulajdonost az eszköz rendelkezésre állásának értesítése e-mailt fog kapni. Tartsa szemmel erre az értesítésre.
+Előfizetés válik, migrálásra kész, az előfizetés tulajdonosa kap egy e-mail üzenet szerint, hogy az eszköz érhető el. Tartsa szemmel ehhez az üzenethez.
 
-### <a name="who-can-trigger-the-migration"></a>**Ki is aktiválhatja a migrálás?**
+### <a name="who-can-trigger-the-migration"></a>Ki is aktiválhatja a migrálás?
 
-Az az előfizetés szintjén hozzájuk rendelt figyelési közreműködő szerepkörrel rendelkező felhasználók tudják az áttelepítés indításához. Tudjon meg többet [szerepköralapú hozzáférés-vezérlés az áttelepítési folyamat](alerts-understand-migration.md#who-can-trigger-the-migration).
+Az az előfizetés szintjén hozzájuk rendelt figyelési közreműködő szerepkörrel rendelkező felhasználók képesek az áttelepítés indításához. [További információ a szerepköralapú hozzáférés-vezérlés az áttelepítési folyamat](alerts-understand-migration.md#who-can-trigger-the-migration).
 
-### <a name="how-long-is-the-migration-going-to-take"></a>**Mennyi az áttelepítés lesz?**
+### <a name="how-long-will-the-migration-take"></a>Mennyi ideig az áttelepítés tart?
 
-A legtöbb előfizetésekhez áttelepítés általában befejezi egy óra alatt. Azt is nyomon követheti, az áttelepítési folyamat a migrálás kezdőlapja.  Ebben az időszakban meg kell biztosítani, hogy a riasztások továbbra is futnak a klasszikus riasztások rendszer vagy az újat.
+Áttelepítés a legtöbb előfizetések egy óra alatt nem fejeződik. Azt is nyomon követheti, az áttelepítés lefolyásának áttelepítési kezdőlapján. Az áttelepítés során biztos lehet abban, hogy a riasztások továbbra is futnak a klasszikus riasztások rendszer vagy az újat.
 
-### <a name="what-can-i-do-if-i-run-into-an-issue-during-migration"></a>**Mi a teendő, ha az áttelepítés során problémába futtatási?**
+### <a name="what-can-i-do-if-i-run-into-a-problem-during-migration"></a>Mi a teendő, ha a futtatási hiba az áttelepítés során?
 
-Kérjük, kövesse a [hibaelhárítási útmutató megtekintéséhez javítási lépések között előfordulhat, hogy migráláskor problémákkal](alerts-understand-migration.md#common-issues-and-remediations). Ha az áttelepítés elvégzéséhez, nincs szükség semmilyen műveletre, értesíteni fogjuk az áttelepítés során megadott e-mail-címeit.
+Tekintse meg a [hibaelhárítási útmutató](alerts-understand-migration.md#common-problems-and-remedies) kapcsolatos áttelepítés során előfordulhat, hogy között. Az áttelepítés elvégzéséhez, nincs szükség semmilyen műveletre, ha értesítést is küld az eszköz beállításakor megadott e-mail címre.
 
 ## <a name="next-steps"></a>További lépések
 

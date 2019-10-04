@@ -2,29 +2,21 @@
 title: Hibaelhárítás az Azure Active Directoryban Enterprise State Roaming beállítások |} A Microsoft Docs
 description: Biztosít a rendszergazdák feltett kérdésekre adott válaszokat beállításairól és az alkalmazás data Sync szolgáltatással rendelkezhet.
 services: active-directory
-keywords: Vállalati állapot barangolási beállításokat, a windows-felhő, vállalati állapothordozás kapcsolatos gyakori kérdésekre
-documentationcenter: ''
+ms.service: active-directory
+ms.subservice: devices
+ms.topic: troubleshooting
+ms.date: 06/28/2019
+ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-editor: ''
-ms.subservice: devices
-ms.assetid: f45d0515-99f7-42ad-94d8-307bc0d07be5
-ms.service: active-directory
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 10/25/2018
-ms.author: joflore
 ms.reviewer: tanning
-ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cce60769ffae399062a50e1b2c28c1cd6e49a47e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 4cceae17b06e8b631dd530b0408008a8222bccbf
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58904253"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67481852"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Az Azure Active Directoryban hibaelhárítási Enterprise State Roaming beállítások
 
@@ -70,12 +62,11 @@ Ez a szakasz hogyan Enterprise State Roaming kapcsolatos problémák diagnosztiz
 
 Az eszköz regisztrálása az Azure ad-vel Enterprise State Roaming igényel. Bár nem kifejezetten az Enterprise State Roaming, az alábbi utasításokat követve segítségével győződjön meg arról, hogy a Windows 10-es ügyfél regisztrálva van, és erősítse meg az ujjlenyomatát, az Azure AD-beállítások URL-CÍMÉT, NGC állapotát, és egyéb információkat.
 
-1.  Nyissa meg a megvont jogosultságú parancssort. Ehhez a Windows, nyissa meg a Futtatás indítója (Win + R), és írja be a "cmd" megnyitásához.
-2.  A parancssor megnyitása után írja be a "*dsregcmd.exe/status*".
-3.  Várt kimenet a **AzureAdJoined** mező értéke legyen "Igen" **WamDefaultSet** mező értéke legyen "Igen" és a **WamDefaultGUID** mező értékét egy GUID Azonosítót kell lennie. a "(Azure ad)" végén.
+1. Nyissa meg a megvont jogosultságú parancssort. Ehhez a Windows, nyissa meg a Futtatás indítója (Win + R), és írja be a "cmd" megnyitásához.
+1. A parancssor megnyitása után írja be a "*dsregcmd.exe/status*".
+1. Várt kimenet a **AzureAdJoined** mező értéke legyen "Igen" **WamDefaultSet** mező értéke legyen "Igen" és a **WamDefaultGUID** mező értékét egy GUID Azonosítót kell lennie. a "(Azure ad)" végén.
 
 **Lehetséges probléma**: **WamDefaultSet** és **AzureAdJoined** egyaránt mező értéke "Nem" rendelkeznek, az eszköz volt a tartományhoz csatlakoztatott és az Azure AD-ben regisztrált és nem szinkronizálja az eszköz. Ez látható, ha az eszköz is kell várnia a alkalmazni lehessen a házirend vagy az eszköz a hitelesítés sikertelen, amikor csatlakozik az Azure ad-ben. A felhasználó jogosult az a alkalmazni lehessen a szabályzat néhány óráig várnia. További hibaelhárítási lépéseket tartalmazhatnak automatikus regisztráció újrapróbálkozás kijelentkezés és a biztonsági, illetve a feladat a Feladatütemező indítása. Bizonyos esetekben futtatása "*dsregcmd.exe /leave*" egy rendszergazda jogú parancssori ablakban, a rendszer újraindítása, és próbálkozzon újra a regisztrációs segíthet a probléma megoldásához.
-
 
 **Lehetséges probléma**: A mező **SettingsUrl** üres és nem szinkronizálja az eszközt. A felhasználó előfordulhat, hogy utoljára bejelentkezett az eszközt ahhoz Enterprise State Roaming engedélyezve lett az Azure Active Directory portálon. Indítsa újra az eszközt, és a felhasználói bejelentkezési rendelkezik. Szükség esetén a portálon lépjen a rendszergazdának kellene próbálja **Azure Active Directory** > **eszközök** > **Enterprise State Roaming** letiltását és újraengedélyezését **felhasználók szinkronizálhatják a beállításokat és alkalmazásadatokat különböző eszközökön**. Ha újra engedélyezi, indítsa újra az eszközt, és a felhasználói bejelentkezési rendelkezik. Ha ez nem oldja meg a problémát, **SettingsUrl** hibás eszköz tanúsítvány esetén üres is lehet. Ebben az esetben fut "*dsregcmd.exe /leave*" egy rendszergazda jogú parancssori ablakban, a rendszer újraindítása, és próbálkozzon újra a regisztrációs segíthet a probléma megoldásához.
 
@@ -87,7 +78,7 @@ Bizonyos körülmények között az Enterprise State Roaming sikertelen lehet sz
 
 **Lehetséges probléma**: Szinkronizálás meghiúsulhat, ha a rendszergazda konfigurálja az Active Directory összevonási szolgáltatások multi-factor Authentication feltételes hozzáférési szabályzatot, és az eszközön a hozzáférési jogkivonat lejár. Győződjön meg arról, hogy jelentkezzen be, és jelentkezzen ki, használja a Microsoft Passport for Work PIN-kód, vagy fejezze be a multi-factor Authentication az Office 365-höz hasonló más Azure-szolgáltatások használata közben.
 
-### <a name="event-viewer"></a>Eseménynapló
+### <a name="event-viewer"></a>Az Eseménynapló
 
 Speciális hibaelhárításhoz, az Eseménynapló használható hibaüzenetek megkereséséhez. Ezek az alábbi táblázat ismerteti. Az eseményeket az Eseménynapló területen található > alkalmazások és szolgáltatásnaplók > **Microsoft** > **Windows** > **SettingSync Azure-beli** és identitással kapcsolatos problémáinak szinkronizálási **Microsoft** > **Windows** > **AAD**.
 

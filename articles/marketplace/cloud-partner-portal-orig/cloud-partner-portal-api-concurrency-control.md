@@ -1,28 +1,20 @@
 ---
-title: Egyidejűség-vezérlés |} A Microsoft Docs
+title: Egyidejűség-vezérlés |} Az Azure Marketplace-en
 description: Egyidejűségi vezérlő stratégiák közzé API-kat, a Cloud Partner portálra.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: ecf0bb6ac7fc77e804c9fc8d62aba52810de5640
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.author: pabutler
+ms.openlocfilehash: 8cdcfd84a2f3bd4f920b97392255237db173cbf9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810730"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64935597"
 ---
-<a name="concurrency-control"></a>Egyidejűség-vezérlés
-===================
+# <a name="concurrency-control"></a>Egyidejűség-vezérlés
 
 A Cloud Partner portálra közzététele az API-k minden meghívásához explicit módon meg kell adnia milyen egyidejűségi vezérlő stratégiát kíván használni. Adja meg a hiba a **If-Match** fejléc egy HTTP 400-as számú hibaüzenetet eredményez. Egyidejűség-vezérlés két stratégiák biztosítunk.
 

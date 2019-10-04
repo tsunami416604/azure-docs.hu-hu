@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 03/19/2018
 ms.author: vturecek
 ms.openlocfilehash: 7c10d00916ef65767c98616c7337bfa444c339a9
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58664726"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60725397"
 ---
 # <a name="access-save-and-remove-reliable-actors-state"></a>Elérése, mentése és eltávolítása a Reliable actors – állapot
 [A Reliable Actors](service-fabric-reliable-actors-introduction.md) egyszálas objektumok, amely magába foglalja a logikai és az állapot és megbízhatóan-állapot karbantartásához. Minden egyes színész példány rendelkezik a saját [állapotkezelője](service-fabric-reliable-actors-state-management.md): egy szótárt-szerű adatszerkezet, amely megbízhatóan tárolja az kulcs-érték pár. Az állapot-kezelő egy állapotszolgáltató burkolója. Függetlenül attól, amely adatok tárolására használható [adatmegőrzési beállítás](service-fabric-reliable-actors-state-management.md#state-persistence-and-replication) szolgál.

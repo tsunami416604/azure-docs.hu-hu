@@ -6,14 +6,14 @@ author: alkohli
 ms.service: storage
 ms.topic: article
 ms.date: 03/29/2018
-ms.author: alkohli;
+ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: b01c8a3fe9b0c0856dceb5c05f449504ce8c75d6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8361c32860d48b78c778ea5106ba04715fcc5f3c
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58120363"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621042"
 ---
 # <a name="open-a-support-ticket-for-an-importexport-job"></a>Nyisson egy támogatási jegyet az importálási/exportálási feladat
 
@@ -22,7 +22,7 @@ Ha problémát tapasztal az Import/Export szolgáltatással, létrehozhat egy sz
 * Hogyan hozzon létre egy támogatási kérést.
 * Hogyan lehet egy támogatási kérést az életciklusnak a kezelésében a portálon belül.
 
-## <a name="create-a-support-request"></a>Támogatáskérés létrehozása
+## <a name="create-a-support-request"></a>Támogatási kérelem létrehozása
 
 A következő lépésekkel hozzon létre egy támogatási kérést:
 
@@ -40,7 +40,7 @@ A következő lépésekkel hozzon létre egy támogatási kérést:
         - Ha úgy dönt, **Blob**válassza **erőforrás**, **a tároló nevének** (nem kötelező), és **támogatási csomag**.
             ![Válasszon blobot](./media/storage-import-export-contact-microsoft-support/import-export-support2.png)
         - Ha úgy dönt, **fájl**válassza **erőforrás**, **fájlmegosztásnevek** (nem kötelező), és **támogatási csomag** ![fájl kiválasztása](./media/storage-import-export-contact-microsoft-support/import-export-support4.png)
-    4. Kattintson a **tovább**.
+    4. Kattintson a **Tovább** gombra.
 
 3. A **új támogatási kérelem**válassza **. lépés 2 probléma**. A **probléma**, tegye a következőket:
     
@@ -51,14 +51,14 @@ A következő lépésekkel hozzon létre egy támogatási kérést:
     5. Adja meg a kezdő dátum és idő a probléma.
     6. Az a **fájlfeltöltés**, kattintson a mappa ikonra, keresse meg az egyéb fájlokat szeretne feltölteni.
     7. Ellenőrizze **diagnosztika adatok megosztása**.
-    8. Kattintson a **tovább**.
+    8. Kattintson a **Tovább** gombra.
 
        ![Probléma](./media/storage-import-export-contact-microsoft-support/import-export-support5.png)
 
 4. A **új támogatási kérelem**, kattintson a **lépés 3 elérhetőségi adatok**. A **kapcsolattartási adatok**, tegye a következőket:
 
    1. Az a **kapcsolatfelvételi lehetőségek**, adja meg az elsődleges kapcsolattartási módszer (telefonon vagy e-mailben) és a nyelvet. A válaszidő automatikusan ki van jelölve, az előfizetési csomag alapján.
-   2. Adja meg a nevét, e-mail, ügyfél nem kötelező, ország az elérhetőségi adatok. Válassza ki a **kapcsolattartási adatok módosításainak mentése a későbbi támogatási kérelmekhez** jelölőnégyzetet.
+   2. Adja meg a nevét, e-mail, ügyfél nem kötelező, ország/régió az elérhetőségi adatok. Válassza ki a **kapcsolattartási adatok módosításainak mentése a későbbi támogatási kérelmekhez** jelölőnégyzetet.
    3. Kattintson a **Create** (Létrehozás) gombra.
    
        ![Kapcsolattartási adatok](./media/storage-import-export-contact-microsoft-support/import-export-support7.png)   

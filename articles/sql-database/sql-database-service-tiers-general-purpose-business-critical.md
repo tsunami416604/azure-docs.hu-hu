@@ -1,6 +1,6 @@
 ---
-title: Az Azure SQL Database – általános célú és a kritikus fontosságú üzleti |} A Microsoft Docs
-description: A cikk ismerteti az általános célú és üzleti kritikus szolgáltatási szinten a vcore magok vásárlási modell a.
+title: Azure SQL Database – általános célú és üzleti szempontból kritikus fontosságú | Microsoft Docs
+description: A cikk a virtuális mag-alapú vásárlási modell általános célú és üzleti szempontból kritikus szolgáltatási rétegeit tárgyalja.
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -10,58 +10,87 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-manager: craigg
 ms.date: 02/23/2019
-ms.openlocfilehash: 067ea8eee297eb8572bd37e240b8d13afe458ca7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 41acef4ebe13ac6152d795db4adfae5a6ae1ad91
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59785119"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995434"
 ---
-# <a name="azure-sql-database-service-tiers"></a>Az Azure SQL Database szolgáltatási csomagjai
+# <a name="azure-sql-database-service-tiers"></a>Azure SQL Database szolgáltatási szintek
 
-Az Azure SQL Database az SQL Server adatbázismotor architektúra, amely 99,99 %-os rendelkezésre állását, még akkor is, az infrastruktúra-hibák esetekben biztosítása érdekében a felhőalapú környezet módosul alapul. Nincsenek az Azure SQL Database által használt három architekturális modellek:
+A Azure SQL Database SQL Server adatbázismotor-architektúrán alapul, amely a felhőalapú környezet számára lett kialakítva, hogy 99,99%-os rendelkezésre állást biztosítson, még akkor is, ha van infrastrukturális hiba. A Azure SQL Databaseban három szolgáltatási szintet használunk, amelyek mindegyike más építészeti modellel rendelkezik. A szolgáltatási szintek a következők:
 
-- [Általános célú](sql-database-service-tier-general-purpose.md) többsége az általános számítási feladatokhoz tervezték.
-- [Üzletileg kritikus](sql-database-service-tier-business-critical.md) rövid késleltetésű számítási feladatok és egy olvasható replika tervezve.
-- [Nagy kapacitású](sql-database-service-tier-hyperscale.md) nagyon nagy méretű adatbázisok számára hoztuk létre (akár 100 TB-os) rendelkező több olvasható replika.
+- [Általános célú](sql-database-service-tier-general-purpose.md), amely a legtöbb általános számítási feladathoz lett tervezve.
+- [Üzleti szempontból kritikus fontosságú](sql-database-service-tier-business-critical.md), amely kis késleltetésű számítási feladatokhoz készült, egyetlen olvasható replikával.
+- A [nagy kapacitású](sql-database-service-tier-hyperscale.md)nagy méretű adatbázisokhoz készült (akár 100 TB-ig) több olvasható replikával.
 
-Ez a cikk ismerteti az általános célú és az üzletileg kritikus szolgáltatási csomagokra a Virtuálismag-alapú vásárlási modell a storage és a biztonsági másolat szempontjai.
+Ebből a cikkből megtudhatja, hogy a különbségek a virtuális mag-alapú vásárlási modell általános célú és üzleti szempontból kritikus szolgáltatási szintjeinek a szolgáltatási szintek, a tárolási és a biztonsági mentési szempontok.
+
+## <a name="service-tier-comparison"></a>Szolgáltatási Rétegek összehasonlítása
+
+A következő táblázat ismerteti a legújabb generációs szolgáltatási szintek közötti fő különbségeket (Gen5). Vegye figyelembe, hogy a szolgáltatási szintek jellemzői a önálló adatbázis és a felügyelt példányban eltérőek lehetnek.
+
+| | Erőforrás típusa | Általános rendeltetés |  Rugalmas skálázás | Üzleti szempontból kulcsfontosságú |
+|:---:|:---:|:---:|:---:|:---:|
+| **Legjobb a következőhöz:** | |  A legtöbb üzleti számítási feladat. A költségvetés-orientált kiegyensúlyozott számítási és tárolási lehetőségeket kínál. | Nagy adatkapacitási követelményekkel rendelkező adatalkalmazások, a tárterület akár 100 TB-ig történő automatikus méretezése, valamint a számítási folyadékok skálázása. | OLTP alkalmazások nagy tranzakciós sebességgel és a legalacsonyabb késleltetésű IO-val. A maximális rugalmasságot nyújt a hibákhoz több, elkülönített replika használatával.|
+|  **Erőforrás-típusban elérhető:** ||Önálló adatbázis/rugalmas készlet/felügyelt példány | Önálló adatbázis | Önálló adatbázis/rugalmas készlet/felügyelt példány |
+| **Számítási méret**|Önálló adatbázis/rugalmas készlet | 1 – 80 virtuális mag | 1 – 80 virtuális mag | 1 – 80 virtuális mag |
+| | Felügyelt példány | 4, 8, 16, 24, 32, 40, 64, 80 virtuális mag | – | 4, 8, 16, 24, 32, 40, 64, 80 virtuális mag |
+| | Felügyelt példányok készletei | 2, 4, 8, 16, 24, 32, 40, 64, 80 virtuális mag | – | – |
+| **Tárolás típusa** | Összes | Prémium szintű távoli tárterület (/példány) | A leválasztott tárterület helyi SSD-gyorsítótárral (/példány) | Villámgyors helyi SSD-tároló (példány) |
+| **Adatbázis mérete** | Önálló adatbázis/rugalmas készlet | 5 GB – 4 TB | Akár 100 TB | 5 GB – 4 TB |
+| | Felügyelt példány  | 32 GB – 8 TB | – | 32 GB – 4 TB |
+| **Tárterület mérete** | Önálló adatbázis/rugalmas készlet | 5 GB – 4 TB | Akár 100 TB | 5 GB – 4 TB |
+| | Felügyelt példány  | 32 GB – 8 TB | – | 32 GB – 4 TB |
+| **TempDB mérete** | Önálló adatbázis/rugalmas készlet | [32 GB/virtuális mag](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-for-provisioned-compute) | [32 GB/virtuális mag](sql-database-vcore-resource-limits-single-databases.md#hyperscale-service-tier-for-provisioned-compute) | [32 GB/virtuális mag](sql-database-vcore-resource-limits-single-databases.md#business-critical-service-tier-for-provisioned-compute) |
+| | Felügyelt példány  | [24 GB/virtuális mag](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) | – | Legfeljebb 4 TB – [a tárterület mérete korlátozva](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) |
+| **Írási sebesség naplózása** | Önálló adatbázis | [1,875 MB/s/virtuális mag (max. 30 MB/s)](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-for-provisioned-compute) | 100 MB/s | [6 MB/s/s/virtuális mag (max. 96 MB/s)](sql-database-vcore-resource-limits-single-databases.md#business-critical-service-tier-for-provisioned-compute) |
+| | Felügyelt példány | [3 MB/s/s virtuális mag (max. 22 MB/s)](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) | – | [4 MB/s/s virtuális mag (max. 48 MB/s)](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) |
+|**Rendelkezésre állás**|Összes| 99.99% |  [99,95% egyetlen másodlagos replikával, 99,99%-kal több replikával](sql-database-service-tier-hyperscale-faq.md#what-slas-are-provided-for-a-hyperscale-database) | 99.99% <br/> [99,995% a zóna redundáns önálló adatbázisával](https://azure.microsoft.com/blog/understanding-and-leveraging-azure-sql-database-sla/) |
+|**Mentések**|Összes|RA-GRS, 7-35 nap (alapértelmezés szerint 7 nap)| RA-GRS, 7 nap, állandó időpontra történő helyreállítás (PITR) | RA-GRS, 7-35 nap (alapértelmezés szerint 7 nap) |
+|**Memóriában tárolt OLTP** | | – | – | Elérhető |
+|**Írásvédett replikák**| | 0  | 0 - 4 | 1 (beépített, árba belefoglalva) |
+|**Díjszabás/számlázás** | Önálló adatbázis | a [virtuális mag, a fenntartott tárterület és a biztonsági mentési tár](https://azure.microsoft.com/pricing/details/sql-database/single/) díja. <br/>A IOPS nem számítunk fel díjat. | [az egyes replikák és a felhasznált tárolók virtuális mag](https://azure.microsoft.com/pricing/details/sql-database/single/) számítunk fel díjat. <br/>A IOPS nem számítunk fel díjat.<br/>A biztonsági mentési tár még nincs felszámítva. | a [virtuális mag, a fenntartott tárterület és a biztonsági mentési tár](https://azure.microsoft.com/pricing/details/sql-database/single/) díja. <br/>A IOPS nem számítunk fel díjat. |
+|| Felügyelt példány | a [virtuális mag és a fenntartott tároló](https://azure.microsoft.com/pricing/details/sql-database/managed/) díja. <br/>A IOPS nem számítunk fel díjat.<br/>A biztonsági mentési tár még nincs felszámítva. | – | a [virtuális mag és a fenntartott tároló](https://azure.microsoft.com/pricing/details/sql-database/managed/) díja. <br/>A IOPS nem számítunk fel díjat.<br/>A biztonsági mentési tár még nincs felszámítva. | 
+|**Kedvezményes modellek**| | [Fenntartott példányok](sql-database-reserved-capacity.md)<br/>[Azure Hybrid Benefit](sql-database-service-tiers-vcore.md#azure-hybrid-benefit) (nem érhető el a fejlesztési és tesztelési előfizetéseken)<br/>[Nagyvállalati](https://azure.microsoft.com/offers/ms-azr-0148p/) és [utólagos](https://azure.microsoft.com/offers/ms-azr-0023p/) elszámolású fejlesztési és tesztelési előfizetések| [Azure Hybrid Benefit](sql-database-service-tiers-vcore.md#azure-hybrid-benefit) (nem érhető el a fejlesztési és tesztelési előfizetéseken)<br/>[Nagyvállalati](https://azure.microsoft.com/offers/ms-azr-0148p/) és [utólagos](https://azure.microsoft.com/offers/ms-azr-0023p/) elszámolású fejlesztési és tesztelési előfizetések| [Fenntartott példányok](sql-database-reserved-capacity.md)<br/>[Azure Hybrid Benefit](sql-database-service-tiers-vcore.md#azure-hybrid-benefit) (nem érhető el a fejlesztési és tesztelési előfizetéseken)<br/>[Nagyvállalati](https://azure.microsoft.com/offers/ms-azr-0148p/) és [utólagos](https://azure.microsoft.com/offers/ms-azr-0023p/) elszámolású fejlesztési és tesztelési előfizetések|
+
+További információkért tekintse meg az [önálló adatbázis (virtuális mag)](sql-database-vcore-resource-limits-single-databases.md), az [önálló adatbázis-készletek (virtuális mag)](sql-database-dtu-resource-limits-single-databases.md), az [önálló adatbázisok (DTU)](sql-database-dtu-resource-limits-single-databases.md), az [önálló adatbázis-készletek (DTU)](sql-database-dtu-resource-limits-single-databases.md)és a [felügyelt példányok](sql-database-managed-instance-resource-limits.md) közötti különbségeket. lapok.
 
 > [!NOTE]
-> A Virtuálismag-alapú vásárlási modell a nagy kapacitású szolgáltatásszintre vonatkozó részletekért lásd: [nagy kapacitású szolgáltatásszint](sql-database-service-tier-hyperscale.md). A Virtuálismag-alapú vásárlási modell a DTU-alapú vásárlási modell összehasonlításáért lásd: [vásárlási modellek és az erőforrások az Azure SQL Database](sql-database-purchase-models.md).
+> További információ a nagy kapacitású szolgáltatási szintjéről a virtuális mag-alapú vásárlási modellben: [nagy kapacitású szolgáltatási réteg](sql-database-service-tier-hyperscale.md). A virtuális mag-alapú vásárlási modellnek a DTU-alapú vásárlási modellel való összehasonlítását lásd: [Azure SQL Database vásárlási modellek és erőforrások](sql-database-purchase-models.md).
 
-## <a name="data-and-log-storage"></a>Adatok és a naplók tárolásához
+## <a name="data-and-log-storage"></a>Adatkezelési és naplózási tár
 
-A következőket ajánljuk figyelmébe:
+Az alábbi tényezők befolyásolják az adatokhoz és a naplófájlokhoz használt tárterület méretét:
 
-- A lefoglalt tárolót adatfájlok (MDF) és a naplófájlok fájlok (LDF) használja.
-- Minden önálló adatbázis az adatbázis maximális méretét, egy alapértelmezett 32 GB maximális mérettel számítási mérete támogatja.
-- Amikor konfigurálja a szükséges egyetlen adatbázis mérete (MDF mérete), 30 %-a további tárhely automatikusan hozzáadott LDF támogatása
-- A felügyelt példány tároló mérete 32 GB többszörösének kell adni.
-- Kiválaszthatja, hogy minden önálló adatbázis mérete 10 GB-os és a támogatott maximális érték között
-  - A standard vagy általános célú szolgáltatásszinten tároláshoz növelése, vagy mérete 10 GB-os lépésekben csökkentése
-  - A prémium szintű vagy üzletileg kritikus tárolás szolgáltatásszintek, növelje vagy csökkentse a 250-GB onként növelhető tárhelyet
-- Az általános célú szolgáltatásszinten lévő `tempdb` használ egy csatlakoztatott SSD és a tárolási költségek a virtuális mag díja tartalmazza.
-- Az üzletileg kritikus szolgáltatási rétegben található `tempdb` megosztások a csatlakoztatott SSD az MDF és az LDF-fájlok és a TempDB adatbázisban a tárolási költségek a virtuális mag díja tartalmazza.
+- A lefoglalt tárterületet az adatfájlok (MDF) és a naplófájlok (LDF) használják.
+- Minden egyes adatbázis számítási mérete támogatja a maximális adatbázis-méretet, amely az alapértelmezett maximális méret 32 GB.
+- A szükséges Egyadatbázisos méret (az MDF-fájl mérete) beállításakor a rendszer automatikusan hozzáadja a további tárterületet az LDF-fájlok támogatásához.
+- A SQL Database felügyelt példányok tárolási méretét a 32 GB-os többszörösében kell megadni.
+- Az egyes adatbázisok mérete 10 GB és a támogatott maximális érték között választható ki.
+  - A standard vagy általános célú szolgáltatási rétegekben történő tároláshoz a 10 GB-os növekmények méretének növelése vagy csökkentése.
+  - A prémium vagy üzleti szempontból kritikus szolgáltatási rétegekben a méret növeléséhez vagy csökkentéséhez növelje vagy csökkentse a 250 GB-os növekményeket.
+- Az általános célú szolgáltatási `tempdb` szinten egy csatolt SSD-t használ, és ez a tárolási költség a virtuális mag ár részét képezi.
+- Az üzleti szempontból kritikus szolgáltatási `tempdb` szinten megosztja a csatlakoztatott SSD-t az MDF-és az ldf-fájlokkal, és a `tempdb` tárolási költséget a virtuális mag ára tartalmazza.
 
 > [!IMPORTANT]
-> A teljes tárterület MDF és az LDF-lefoglalt díjkötelesek.
+> Az MDF-és az LDF-fájlokhoz lefoglalt teljes tárterületért kell fizetnie.
 
-A jelenlegi teljes mérete MDF és az LDF-monitorozásához használja [sp_spaceused](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-spaceused-transact-sql). Az egyes MDF és az LDF-fájlok aktuális mérete monitorozásához használja [sys.database_files](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-database-files-transact-sql).
+Az MDF-és az LDF-fájlok aktuális teljes méretének figyeléséhez használja a [sp_spaceused](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-spaceused-transact-sql). Az egyes MDF-és LDF-fájlok aktuális méretének figyeléséhez használja a [sys. database_files](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-database-files-transact-sql).
 
 > [!IMPORTANT]
 > Bizonyos körülmények között szükség lehet az adatbázis nem használt terület felszabadítását zsugorítani. További információkért lásd: [kezelése az Azure SQL Database területe](sql-database-file-space-management.md).
 
-## <a name="backups-and-storage"></a>Biztonsági mentés és tárolás
+## <a name="backups-and-storage"></a>Biztonsági másolatok és tárolás
 
-Az adatbázis biztonsági másolatait lefoglalta a pont támogatja az idő-visszaállítás (PITR) és [hosszú távú adatmegőrzést (LTR)](sql-database-long-term-retention.md) SQL Database képességeit. Ez a tároló lefoglalt külön-külön az egyes adatbázisok, és két külön adatbázis-díj terheli.
+Az adatbázis-biztonsági másolatok tárolását a rendszer lefoglalta a SQL Database időponthoz kötött visszaállításának (PITR) és [hosszú távú adatmegőrzési (ltr)](sql-database-long-term-retention.md) képességeinek támogatásához. Ezt a tárolót külön kell lefoglalni az egyes adatbázisokhoz, és a számlázást két külön adatbázis-díj alapján számoljuk el.
 
-- **PITR**: Másolja az egyes adatbázisok biztonsági mentése [RA-GRS tároló](../storage/common/storage-designing-ha-apps-with-ragrs.md) automatikusan. A tároló mérete dinamikusan növeli, amikor az új biztonsági mentéseket hoz létre.  A tárolót a heti teljes biztonsági mentésekhez, a napi differenciális biztonsági mentésekhez, illetve a tranzakciónaplók 5 percenként másolt biztonsági másolataihoz használja a rendszer. A tárhelyhasználat attól függ, hogy az adatbázis és a megőrzési időszak a változási gyakoriság. Beállíthatja, hogy minden egyes adatbázis 7 és 35 nap közötti, egy különálló megőrzési ideje. Egy minimális tárolókapacitás egyenlő 1 x-re az adatok méretének külön díjfizetés nélkül van megadva. A legtöbb adatbázisok esetében ez a mennyiség ez elegendő 7 nap a biztonsági mentések tárolásához.
-- **LTR**: Az SQL Database a teljes biztonsági mentések hosszú távú megőrzésének konfigurálása akár 10 évig lehetőséget kínál. Az LTR-szabályzat engedélyezve van, ha a következő biztonsági másolatai RA-GRS tároló automatikusan, de szabályozhatja, hogy milyen gyakran a biztonsági másolatok másolódnak. A különböző megfelelőségi követelménynek megfelel, heti, havi és/vagy éves biztonsági mentések különböző megőrzési időtartamú választhat. Ez a konfiguráció meghatározzuk, mennyi tárhelyre lesz az LTR biztonsági mentéseket. Használhatja az LTR-díjkalkulátor LTR tárolási költségek becsléséhez. További információkért lásd: [Hosszú távú megőrzés](sql-database-long-term-retention.md).
+- **PITR**: Az egyes adatbázisok biztonsági másolatait a rendszer automatikusan átmásolja az [olvasási hozzáférésű geo-redundáns (ra-GRS) tárolóba](../storage/common/storage-designing-ha-apps-with-ragrs.md) . A tárterület mérete dinamikusan növekszik, ahogy új biztonsági másolatok jönnek létre. A tárterületet hetente teljes biztonsági mentések, napi különbözeti biztonsági másolatok és tranzakciónapló-biztonsági másolatok használják, amelyek 5 percenként másolódnak át. A tárterület-felhasználás az adatbázis változásának és a biztonsági mentések megőrzési idejének a függvénye. Minden adatbázishoz külön megőrzési időtartamot állíthat be 7 és 35 nap között. Az adatbázis méretének 100 százalékkal (1x) megegyező minimális tárterülete külön díj nélkül elérhető. A legtöbb adatbázis esetében ez az érték elegendő a biztonsági másolatok 7 napos tárolására.
+- **LTR**: A SQL Database akár 10 évig is beállíthatja a teljes biztonsági másolatok hosszú távú megőrzésének lehetőségét. Ha LTR szabályzatot állít be, akkor ezeket a biztonsági másolatokat az RA-GRS tárolóban automatikusan tárolja a rendszer, de szabályozhatja, hogy a biztonsági másolatok milyen gyakran legyenek átmásolva. A különböző megfelelőségi követelmények kielégítése érdekében a heti, havi és/vagy éves biztonsági mentések esetében eltérő megőrzési időt választhat. A kiválasztott konfiguráció határozza meg, hogy mekkora tárterületet használ a rendszer a LTR biztonsági mentések esetén. A LTR-tároló költségének megbecsléséhez használhatja a LTR árképzési számológépet. További információ: [SQL Database hosszú távú adatmegőrzés](sql-database-long-term-retention.md).
 
 ## <a name="next-steps"></a>További lépések
 
-- Részletek az adott számítási méretek és a tároló mérete lehetőségek önálló adatbázis az általános célú és a kritikus fontosságú üzleti szolgáltatási szinten érhető el, lásd: [SQL Database Virtuálismag-alapú erőforráskorlátok az önálló adatbázisok](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-storage-sizes-and-compute-sizes)
-- Részletek az adott számítási méretek és a tároló mérete lehetőségek az általános célú és a kritikus fontosságú üzleti szolgáltatási szinten a rugalmas készletek számára elérhető, lásd: [SQL Database Virtuálismag-alapú erőforráskorlátok a rugalmas készletek](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose-service-tier-storage-sizes-and-compute-sizes).
+- Az általános célú és az üzleti szempontból kritikus szolgáltatási rétegekben elérhető egyedi számítási méretekről és tárolási méretekről az [önálló adatbázisok SQL Database virtuális mag-alapú erőforrás-korlátozásait](sql-database-vcore-resource-limits-single-databases.md)ismertető részben olvashat bővebben.
+- Az általános célú és az üzleti szempontból kritikus szolgáltatási rétegekben található rugalmas készletekhez rendelkezésre álló számítási méretekről és tárolási méretekről a [rugalmas készletek SQL Database virtuális mag-alapú erőforrás-korlátozásait](sql-database-vcore-resource-limits-elastic-pools.md)ismertető cikk nyújt tájékoztatást.

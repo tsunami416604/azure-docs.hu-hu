@@ -3,7 +3,7 @@ title: Leküldéses értesítések hozzáadása a Xamarin.Forms-alkalmazás |} A
 description: Ismerje meg, hogyan többplatformos leküldéses értesítések küldése a Xamarin.Forms-alkalmazások Azure-szolgáltatások használatával.
 services: app-service\mobile
 documentationcenter: xamarin
-author: conceptdev
+author: elamalani
 manager: crdun
 editor: ''
 ms.assetid: d9b1ba9a-b3f2-4d12-affc-2ee34311538b
@@ -12,18 +12,22 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/12/2016
-ms.author: crdun
-ms.openlocfilehash: 99f2d9fb7c9a74e57eff3cd0b007fcee459cab88
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: b7e2ff63211ec5891a48a585e4f69e18116cdeb3
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000199"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446573"
 ---
 # <a name="add-push-notifications-to-your-xamarinforms-app"></a>A Xamarin.Forms-alkalmazás leküldéses értesítések hozzáadása
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
+
+> [!NOTE]
+> A Visual Studio App Center fektet a mobilalkalmazás-fejlesztés központi új, integrált szolgáltatások. A fejlesztők a **hozhat létre**, **teszt** és **terjesztése** állíthat be folyamatos integrációt és teljesítést folyamat szolgáltatások. Az alkalmazás telepítve van, a fejlesztők monitorozható az állapot és az alkalmazás használatával használatát a **Analytics** és **diagnosztikai** -szolgáltatásokat, és kapcsolatba léphet a felhasználókat a **leküldéses** a szolgáltatás. A fejlesztők is kihasználhatják a **Auth** azok a felhasználók hitelesítéséhez és **adatok** szolgáltatás és a felhőbeli alkalmazások adatainak szinkronizálása. Tekintse meg [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-xamarin-forms-get-started-push) még ma.
+>
 
 ## <a name="overview"></a>Áttekintés
 
@@ -47,7 +51,7 @@ IOS-, szüksége lesz egy [Apple Fejlesztőprogrambeli tagság](https://develope
 
 Végezze el az ebben a szakaszban engedélyezze a leküldéses értesítések az Android a Xamarin.Forms Droid projektet.
 
-### <a name="enable-firebase-cloud-messaging-fcm"></a>Firebase Cloud Messaging (FCM) engedélyezése
+### <a name="enable-firebase-cloud-messaging-fcm"></a>Enable Firebase Cloud Messaging (FCM)
 
 [!INCLUDE [notification-hubs-enable-firebase-cloud-messaging](../../includes/notification-hubs-enable-firebase-cloud-messaging.md)]
 
@@ -232,7 +236,7 @@ Az első két lépés elengedhetetlen, csak akkor, amikor az emulátor tesztelt.
 2. Google-fiók hozzáadása az Android-eszközre kattintva **alkalmazások** > **beállítások** > **fiók hozzáadása**. Ezután kövesse az utasításokat, vegyen fel egy meglévő Google-fiókot az eszközön, vagy hozzon létre egy újat.
 3. A Visual Studióban vagy a Xamarin Studióban, kattintson a jobb gombbal a **Droid** projektre, és kattintson a **beállítás kezdőprojektként**.
 4. Kattintson a **futtatása** a projekt buildjének elkészítéséhez, és indítsa el az alkalmazást az Android-eszköz vagy az emulátoron.
-5. Az alkalmazásban írjon be egy feladatot, és kattintson a plusz (**+**) ikonra.
+5. Az alkalmazásban írjon be egy feladatot, és kattintson a plusz ( **+** ) ikonra.
 6. Győződjön meg arról, hogy értesítés érkezik, amikor új elem kerül.
 
 ## <a name="configure-and-run-the-ios-project-optional"></a>Konfigurálja és futtassa az iOS-projektre (nem kötelező)
@@ -326,7 +330,7 @@ Az alkalmazás most már frissül, és támogatja a leküldéses értesítéseke
    > [!NOTE]
    > Az alkalmazásból explicit módon el kell fogadnia a leküldéses értesítések. Ezt a kérelmet csak akkor történik meg, amely az alkalmazás első alkalommal.
 
-3. Az alkalmazásban írjon be egy feladatot, és kattintson a plusz (**+**) ikonra.
+3. Az alkalmazásban írjon be egy feladatot, és kattintson a plusz ( **+** ) ikonra.
 4. Győződjön meg arról, hogy értesítést kap, és kattintson **OK** az értesítés elvetéséhez.
 
 ## <a name="configure-and-run-windows-projects-optional"></a>Konfigurálja és futtassa a Windows-projektek (nem kötelező)
@@ -398,7 +402,7 @@ Ez a szakasz olyan fut a Xamarin.Forms WinApp és WinPhone81 projektek Windows-e
 
 1. A Visual Studióban kattintson a jobb gombbal egy Windows-projektet, és kattintson a **beállítás kezdőprojektként**.
 2. Nyomja le a **Run** (Futtatás) gombot a projekt felépítéséhez és az alkalmazás elindításához.
-3. Az alkalmazásban írjon be egy nevet az új beállíthatnánk, és kattintson a plusz (**+**) ikonra kattintva adja hozzá.
+3. Az alkalmazásban írjon be egy nevet az új beállíthatnánk, és kattintson a plusz ( **+** ) ikonra kattintva adja hozzá.
 4. Győződjön meg arról, hogy értesítés érkezik, az elem hozzáadásakor.
 
 ## <a name="next-steps"></a>További lépések

@@ -1,6 +1,6 @@
 ---
-title: Az Azure SQL-adatbázis hosszú távú megőrzésének kezelése |} A Microsoft Docs
-description: Ismerje meg, hogyan tárolhatja az automatikus biztonsági másolatokat az SQL Azure storage-ban, és hajtsa végre a visszaállítást
+title: A biztonsági másolatok hosszú távú megőrzésének kezelése Azure SQL Database | Microsoft Docs
+description: Ismerje meg, hogyan tárolhat automatizált biztonsági mentéseket a SQL Azure tárolóban, majd állítsa vissza őket
 services: sql-database
 ms.service: sql-database
 ms.subservice: backup-restore
@@ -11,98 +11,104 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 04/17/2019
-ms.openlocfilehash: 255f118d6dc6873364c2f8d4569e23c3e54ea83e
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.date: 08/21/2019
+ms.openlocfilehash: b90e364442e46269fc949ef4aecd9a756cff5595
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680519"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69904622"
 ---
-# <a name="manage-azure-sql-database-long-term-backup-retention"></a>Az Azure SQL-adatbázis hosszú távú megőrzésének kezelése
+# <a name="manage-azure-sql-database-long-term-backup-retention"></a>A biztonsági másolatok hosszú távú megőrzésének Azure SQL Database kezelése
 
-Egyetlen vagy készletezett adatbázis konfigurálhatja az Azure SQL Database, egy [hosszú távú adatmegőrzés](sql-database-long-term-retention.md) házirend (LTR) automatikusan az Azure Blob storage-biztonsági mentések megőrzési idejét, akár 10 évig. Ezt követően helyreállíthatja a segítségével ezeket a biztonsági másolatokat az Azure portal vagy a PowerShell használatával.
+Azure SQL Database egyetlen vagy készletezett adatbázist is beállíthat [hosszú távú biztonsági mentési](sql-database-long-term-retention.md) adatmegőrzési szabályzattal (ltr), hogy az adatbázis biztonsági másolatait külön Azure Blob Storage-tárolókban, akár 10 évig is megőrizze. Ezután a Azure Portal vagy a PowerShell használatával helyreállíthat egy adatbázist a biztonsági másolatokkal.
 
 > [!IMPORTANT]
-> [Az Azure SQL Database felügyelt példányain](sql-database-managed-instance.md) jelenleg nem támogatja a hosszú távú adatmegőrzés.
+> [Azure SQL Database felügyelt példány](sql-database-managed-instance.md) jelenleg nem támogatja a biztonsági másolatok hosszú távú megőrzését.
 
-## <a name="use-the-azure-portal-to-configure-long-term-retention-policies-and-restore-backups"></a>Az Azure portal használatával konfigurálhatja a hosszú távú adatmegőrzési házirendek, és biztonsági mentések visszaállítása
+## <a name="use-the-azure-portal-to-manage-long-term-backups"></a>A Azure Portal használata a hosszú távú biztonsági mentések kezeléséhez
 
-A következő szakaszok bemutatják, hogyan a hosszú távú megőrzésének konfigurálása, biztonsági másolatok megtekintése hosszú távú megőrzés alatt, és a hosszú távú megőrzéséből biztonsági másolatának visszaállítása az Azure portal használatával.
+A következő részben bemutatjuk, Azure Portal hogyan konfigurálhatja a hosszú távú adatmegőrzést, megtekintheti a biztonsági mentéseket hosszú távú adatmegőrzéssel, és visszaállíthatja a biztonsági mentést a hosszú távú adatmegőrzésből.
 
 ### <a name="configure-long-term-retention-policies"></a>Hosszú távú adatmegőrzési szabályzatok konfigurálása
 
-Konfigurálhatja az SQL Database [automatikus biztonsági másolatok megőrzésére](sql-database-long-term-retention.md) szolgáltatásszint megőrzési idejénél hosszabb időtartamra. 
+A SQL Database konfigurálhatja úgy, hogy az [automatizált biztonsági mentéseket](sql-database-long-term-retention.md) a szolgáltatási szinten megőrzött időtartamnál hosszabb ideig is megőrizze. 
 
-1. Az Azure Portalon válassza ki az SQL Servert, és kattintson a **biztonsági másolatok kezelése**. Az a **szabályzatok konfigurálása** lapon *jelölje be az adatbázist, amelyen szeretné, vagy módosíthatja a hosszú távú biztonsági mentés megőrzési házirendeket a*. Ha az adatbázis jelölőnégyzetét nincs bejelölve, a módosítások a házirend nem alkalmazandó, hogy az adatbázis.  
+1. A Azure Portal válassza ki az SQL Servert, majd kattintson a **biztonsági mentések kezelése**lehetőségre. A **házirendek konfigurálása** lapon *jelölje be annak az adatbázisnak a jelölőnégyzetét, amelyen a biztonsági másolatok hosszú távú megőrzési szabályzatait be szeretné állítani vagy módosítani*kívánja. Ha az adatbázis melletti jelölőnégyzet nincs bejelölve, a házirend módosításai nem lesznek érvényesek az adott adatbázisra.  
 
-   ![biztonsági másolatokat kapcsolat kezelése](./media/sql-database-long-term-retention/ltr-configure-ltr.png)
+   ![biztonsági másolatok kezelése hivatkozás](./media/sql-database-long-term-retention/ltr-configure-ltr.png)
 
-2. Az a **szabályzatok konfigurálása** ablaktábla, válassza ki, ha szeretné, heti, havi vagy éves biztonsági mentések megőrzési idejét, és adja meg a megőrzési időszak minden. 
+2. A **házirendek konfigurálása** panelen válassza ki, hogy meg kívánja-e őrizni a hetente, havonta vagy évenkénti biztonsági mentést, és adja meg a megőrzési időtartamot. 
 
-   ![szabályzatok konfigurálása](./media/sql-database-long-term-retention/ltr-configure-policies.png)
+   ![házirendek konfigurálása](./media/sql-database-long-term-retention/ltr-configure-policies.png)
 
-3. Amikor végzett, kattintson a **alkalmaz**.
+3. Ha elkészült, kattintson az **alkalmaz**gombra.
 
 > [!IMPORTANT]
-> Ha engedélyezi a hosszú távú adatmegőrzési házirend, az első biztonsági mentés számára láthatók és elérhetők a visszaállítandó válhat a legfeljebb 7 napig is eltarthat. Az LTR biztonsági mentési cadance részletekért lásd: [hosszú távú adatmegőrzés](sql-database-long-term-retention.md).
+> Ha engedélyezi a biztonsági másolatok hosszú távú megőrzési szabályát, akkor akár 7 napig is eltarthat, amíg az első biztonsági mentés láthatóvá válik, és visszaállítható. A LTR biztonsági mentési cadance kapcsolatos részletekért lásd a [biztonsági másolatok hosszú távú megőrzését](sql-database-long-term-retention.md)ismertető témakört.
 
-### <a name="view-backups-and-restore-from-a-backup-using-azure-portal"></a>Biztonsági másolatok megtekintéséhez, és állítsa vissza biztonsági másolatból az Azure portal használatával
+### <a name="view-backups-and-restore-from-a-backup-using-azure-portal"></a>Biztonsági mentések és visszaállítások megtekintése Azure Portal használatával
 
-Tekintse meg a biztonsági mentések, amelyek egy adott adatbázis egy LTR-szabályzat, és ezeket a biztonsági mentéseket való visszaállítása megmaradnak. 
+Megtekintheti az adott adatbázishoz LTR házirenddel megőrzött biztonsági másolatokat, és visszaállíthatja azokat a biztonsági másolatokból. 
 
-1. Az Azure Portalon válassza ki az SQL Servert, és kattintson a **biztonsági másolatok kezelése**. Az a **elérhető biztonsági másolatok** lapra, válassza ki az adatbázist, amelynek meg szeretné tekinteni az elérhető biztonsági másolatok.
+1. A Azure Portal válassza ki az SQL Servert, majd kattintson a **biztonsági mentések kezelése**lehetőségre. A **rendelkezésre álló biztonsági másolatok** lapon válassza ki azt az adatbázist, amelynek elérhető biztonsági másolatait szeretné megtekinteni.
 
    ![adatbázis kiválasztása](./media/sql-database-long-term-retention/ltr-available-backups-select-database.png)
 
-3. Az a **elérhető biztonsági másolatok** panelen tekintse át az elérhető biztonsági másolatok. 
+3. Az **elérhető biztonsági másolatok** panelen tekintse át az elérhető biztonsági másolatokat. 
 
    ![biztonsági másolatok megtekintése](./media/sql-database-long-term-retention/ltr-available-backups.png)
 
-4. Válassza ki a biztonsági mentés, amelyből szeretné visszaállítani, és adja meg az új adatbázis nevét.
+4. Válassza ki azt a biztonsági másolatot, amelyről vissza kívánja állítani, majd adja meg az új adatbázis nevét.
 
    ![visszaállítás](./media/sql-database-long-term-retention/ltr-restore.png)
 
-5. Kattintson a **OK** állíthatja vissza az adatbázist az Azure SQL-tároló biztonsági másolatból az új adatbázisba.
+5. Az **OK** gombra kattintva állítsa vissza az adatbázist az Azure SQL Storage-ban lévő biztonsági másolatból az új adatbázisba.
 
 6. Az eszköztáron kattintson az értesítési ikonra a visszaállítási feladat állapotának megtekintéséhez.
 
    ![visszaállítási feladat állapota](./media/sql-database-get-started-backup-recovery/restore-job-progress-long-term.png)
 
-5. Ha a visszaállítási feladat befejeződött, nyissa meg a **SQL-adatbázisok** lap használatával jeleníthetők meg az újonnan visszaállított adatbázis.
+5. A visszaállítási feladatok befejezése után nyissa meg az **SQL-adatbázisok** lapot az újonnan visszaállított adatbázis megtekintéséhez.
 
 > [!NOTE]
 > Innen az SQL Server Management Studióval csatlakozhat a visszaállított adatbázishoz a szükséges feladatok végrehajtásához, például [egy adatelem kinyeréséhez a visszaállított adatbázisból a meglévő adatbázisba való beillesztés érdekében, vagy a meglévő adatbázis törléséhez és a visszaállított adatbázis átnevezéséhez a meglévő adatbázis nevére](sql-database-recovery-using-backups.md#point-in-time-restore).
 >
 
-## <a name="use-powershell-to-configure-long-term-retention-policies-and-restore-backups"></a>Hosszú távú adatmegőrzési szabályzatok konfigurálása és a biztonsági másolatok visszaállításához PowerShell használatával
+## <a name="use-powershell-to-manage-long-term-backups"></a>A hosszú távú biztonsági mentések kezelése a PowerShell használatával
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> A PowerShell Azure Resource Manager-modul továbbra is támogatja az Azure SQL Database, de minden jövőbeli fejlesztés Az.Sql modul. Ezeket a parancsmagokat lásd: [azurerm.SQL-hez](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). A parancsok a Az modul, és az AzureRm-modulok argumentumainak lényegében megegyeznek.
+> Az Azure SQL Database továbbra is támogatja a PowerShell Azure Resource Manager modult, de a jövőbeli fejlesztés az az. SQL-modulhoz készült. Ezekhez a parancsmagokhoz lásd: [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak.
 
-A következő szakaszok bemutatják, hogyan konfigurálhatja a hosszú távú adatmegőrzés, a biztonsági másolatok megtekintéséhez az Azure SQL-tároló és az Azure SQL-tároló egy biztonsági másolatból való visszaállítása a PowerShell használatával.
+A következő részben bemutatjuk, hogyan használható a PowerShell a biztonsági másolatok hosszú távú megőrzésének konfigurálására, a biztonsági mentések megtekintésére az Azure SQL Storage szolgáltatásban, valamint az Azure SQL Storage biztonsági másolatából való visszaállítás.
 
 
-### <a name="rbac-roles-to-manage-long-term-retention"></a>A hosszú távú megőrzésének kezelése RBAC-szerepkörök
+### <a name="rbac-roles-to-manage-long-term-retention"></a>RBAC-szerepkörök a hosszú távú adatmegőrzés kezeléséhez
 
-Az LTR biztonsági másolatainak kezelése, kell lennie 
-- Előfizetés tulajdonosa vagy
-- Az SQL Server közreműködői szerepköre **előfizetés** hatókör vagy
-- Az SQL Database közreműködői szerepkörrel **előfizetés** hatókör
+A **Get-AzSqlDatabaseLongTermRetentionBackup** és a **Restore-AzSqlDatabase**esetében a következő szerepkörök egyikének kell lennie:
 
-Ha részletesebb vezérléshez szükséges, egyéni RBAC-szerepkörök létrehozása, és hozzárendelheti azokat a **előfizetés** hatókör. 
+- Előfizetés tulajdonosi szerepköre vagy
+- SQL Server közreműködő szerepkör vagy
+- Egyéni szerepkör a következő engedélyekkel:
 
-A **Get-AzSqlDatabaseLongTermRetentionBackup** és **Restore-AzSqlDatabase** a szerepkört kell rendelkeznie az alábbi engedélyek:
-
-Microsoft.Sql/locations/longTermRetentionBackups/read Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionBackups/read Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/ longTermRetentionBackups olvasása
+   Microsoft. SQL/Locations/longTermRetentionBackups/Read Microsoft. SQL/Locations/longTermRetentionServers/longTermRetentionBackups/Read Microsoft. SQL/Locations/longTermRetentionServers/longTermRetentionDatabases/ longTermRetentionBackups/olvasás
  
-A **Remove-AzSqlDatabaseLongTermRetentionBackup** kell a szerepkör az alábbi engedélyeket:
+A **Remove-AzSqlDatabaseLongTermRetentionBackup**esetében a következő szerepkörök egyikének kell lennie:
 
-Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups/delete
+- Előfizetés tulajdonosi szerepköre vagy
+- Egyéni szerepkör a következő engedélyekkel:
+
+   Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups/delete
 
 
-### <a name="create-an-ltr-policy"></a>Az LTR-szabályzat létrehozása
+> [!NOTE]
+> A SQL Server közreműködő szerepkör nem rendelkezik engedéllyel a LTR biztonsági mentések törléséhez.
+
+RBAC engedélyek is megadhatók az *előfizetés* vagy az *erőforráscsoport* hatókörében. Az eldobott kiszolgálóhoz tartozó LTR biztonsági mentések eléréséhez azonban az engedélyt az adott kiszolgáló *előfizetési* hatókörében kell megadni.
+
+
+### <a name="create-an-ltr-policy"></a>LTR szabályzat létrehozása
 
 ```powershell
 # Get the SQL server 
@@ -124,8 +130,8 @@ Set-AzSqlDatabaseBackupLongTermRetentionPolicy -ServerName $serverName -Database
 Set-AzSqlDatabaseBackupLongTermRetentionPolicy -ServerName $serverName -DatabaseName $dbName -ResourceGroupName $resourceGroup -WeeklyRetention P12W -YearlyRetention P5Y -WeekOfYear 16
 ```
 
-### <a name="view-ltr-policies"></a>Az LTR-szabályzatok megtekintése
-Ez a példa bemutatja, hogyan kell felsorolni az LTR házirendeket egy kiszolgálón belül
+### <a name="view-ltr-policies"></a>LTR szabályzatok megtekintése
+Ez a példa azt mutatja be, hogyan listázható a LTR szabályzatok a kiszolgálón belül
 
 ```powershell
 # Get all LTR policies within a server
@@ -134,61 +140,75 @@ $ltrPolicies = Get-AzSqlDatabase -ResourceGroupName Default-SQL-WestCentralUS -S
 # Get the LTR policy of a specific database 
 $ltrPolicies = Get-AzSqlDatabaseBackupLongTermRetentionPolicy -ServerName $serverName -DatabaseName $dbName  -ResourceGroupName $resourceGroup -Current
 ```
-### <a name="clear-an-ltr-policy"></a>Az LTR-szabályzat törlése
-Ez a példa bemutatja, hogyan az adatbázisból az LTR-házirend törlése
+### <a name="clear-an-ltr-policy"></a>LTR szabályzat törlése
+Ez a példa bemutatja, hogyan törölhet egy LTR-szabályzatot egy adatbázisból.
 
 ```powershell
 Set-AzSqlDatabaseBackupLongTermRetentionPolicy -ServerName $serverName -DatabaseName $dbName -ResourceGroupName $resourceGroup -RemovePolicy
 ```
 
-### <a name="view-ltr-backups"></a>Az LTR biztonsági másolatok megtekintése
+### <a name="view-ltr-backups"></a>LTR biztonsági mentések megtekintése
 
-Ez a példa bemutatja, hogyan kell felsorolni az LTR biztonsági mentések egy kiszolgálón belül. 
+Ez a példa azt mutatja be, hogyan listázható a LTR biztonsági mentése egy kiszolgálón belül. 
 
 ```powershell
-# Get the list of all LTR backups in a specific Azure region 
-# The backups are grouped by the logical database id.
-# Within each group they are ordered by the timestamp, the earliest
-# backup first.  
+# List all LTR backups under the current subscription in a specific Azure region 
+# The list includes backups for existing servers and dropped servers grouped by the logical database id.
+# Within each group they are ordered by the timestamp, the earliest backup first.
+# Requires Subscription scope permission
 $ltrBackups = Get-AzSqlDatabaseLongTermRetentionBackup -Location $server.Location 
 
-# Get the list of LTR backups from the Azure region under 
-# the named server. 
-$ltrBackups = Get-AzSqlDatabaseLongTermRetentionBackup -Location $server.Location -ServerName $serverName
+# List the LTR backups under a specific resource group in a specific Azure region 
+# The list includes backups from the existing servers only grouped by the logical database id.
+# Within each group they are ordered by the timestamp, the earliest backup first. 
+$ltrBackups = Get-AzSqlDatabaseLongTermRetentionBackup -Location $server.Location -ResourceGroupName $resourceGroup
 
-# Get the LTR backups for a specific database from the Azure region under the named server 
+# List the LTR backups under an existing server
+# The list includes backups from the existing servers only grouped by the logical database id.
+# Within each group they are ordered by the timestamp, the earliest backup first. 
+$ltrBackups = Get-AzSqlDatabaseLongTermRetentionBackup -Location $server.Location -ResourceGroupName $resourceGroup -ServerName $serverName
+
+# List the LTR backups for a specific database 
+# The backups are ordered by the timestamp, the earliest backup first. 
 $ltrBackups = Get-AzSqlDatabaseLongTermRetentionBackup -Location $server.Location -ServerName $serverName -DatabaseName $dbName
 
 # List LTR backups only from live databases (you have option to choose All/Live/Deleted)
+# The list includes backups for existing servers and dropped servers grouped by the logical database id.
+# Within each group they are ordered by the timestamp, the earliest backup first.  
+# Requires Subscription scope permission
 $ltrBackups = Get-AzSqlDatabaseLongTermRetentionBackup -Location $server.Location -DatabaseState Live
 
-# Only list the latest LTR backup for each database 
+# Only list the latest LTR backup for each database under a server
 $ltrBackups = Get-AzSqlDatabaseLongTermRetentionBackup -Location $server.Location -ServerName $serverName -OnlyLatestPerDatabase
 ```
 
-### <a name="delete-ltr-backups"></a>Az LTR biztonsági másolatainak törlése
+### <a name="delete-ltr-backups"></a>LTR biztonsági mentések törlése
 
-Ez a példa bemutatja a törlése az LTR biztonsági mentést a biztonsági másolatok listáját.
+Ebből a példából megtudhatja, hogyan törölhet egy LTR biztonsági másolatot a biztonsági mentések listájáról.
 
 ```powershell
-# remove the earliest backup 
+# Remove the earliest backup from the list of backups
 $ltrBackup = $ltrBackups[0]
 Remove-AzSqlDatabaseLongTermRetentionBackup -ResourceId $ltrBackup.ResourceId
 ```
 > [!IMPORTANT]
-> Biztonsági mentés nem visszafejthető LTR törlése. Értesítéseket állíthat be kapcsolatos minden törlése az Azure monitorban szűrésével művelethez "Töröl egy hosszú távú adatmegőrzés céljából készített biztonsági". A tevékenységnapló arról, hogy ki és a kérést leadó információkat tartalmaz. Lásd: [tevékenységnapló-riasztások létrehozása](../azure-monitor/platform/alerts-activity-log.md) részletes útmutatást.
+> A LTR biztonsági mentésének törlése nem fordítható vissza. Ha törölni szeretne egy LTR biztonsági mentést a kiszolgáló törlése után, rendelkeznie kell előfizetés-hatókör engedéllyel. Értesítéseket állíthat be az egyes törlésekről Azure Monitor a "hosszú távú adatmegőrzési biztonsági mentés törlése" művelet szűrésével. A tevékenység naplója információt tartalmaz arról, hogy ki és mikor kezdeményezte a kérést. Részletes utasításokért tekintse meg a [Tevékenységnaplók létrehozása](../azure-monitor/platform/alerts-activity-log.md) – riasztások című témakört.
 >
 
-### <a name="restore-from-ltr-backups"></a>Vissza az LTR biztonsági másolataiból
-Ez a példa bemutatja, hogyan az LTR biztonsági másolatból történő visszaállítását. Ne feledje, ez az interfész nem változott, de az erőforrás-azonosító paraméter mostantól csak az LTR biztonsági mentési erőforrás-azonosítója. 
+### <a name="restore-from-ltr-backups"></a>Visszaállítás a LTR biztonsági mentésből
+Ez a példa azt szemlélteti, hogyan lehet visszaállítani egy LTR biztonsági másolatból. Vegye figyelembe, hogy ez az illesztőfelület nem változott, de az erőforrás-azonosító paraméter most a LTR biztonsági mentési erőforrás-azonosítóját igényli. 
 
 ```powershell
-# Restore LTR backup as an S3 database
-Restore-AzSqlDatabase -FromLongTermRetentionBackup -ResourceId $ltrBackup.ResourceId -ServerName $serverName -ResourceGroupName $resourceGroup -TargetDatabaseName $dbName -ServiceObjectiveName S3
+# Restore a specific LTR backup as an P1 database on the server $serverName of the resource group $resourceGroup 
+Restore-AzSqlDatabase -FromLongTermRetentionBackup -ResourceId $ltrBackup.ResourceId -ServerName $serverName -ResourceGroupName $resourceGroup -TargetDatabaseName $dbName -ServiceObjectiveName P1
 ```
 
+> [!IMPORTANT]
+> A kiszolgáló törlése után a LTR biztonsági másolatból való visszaállításhoz a kiszolgáló előfizetéséhez tartozó engedélyekkel kell rendelkeznie, és az előfizetésnek aktívnak kell lennie. A nem kötelező-ResourceGroupName paramétert is el kell hagyni.  
+>
+
 > [!NOTE]
-> Itt a visszaállított adatbázis szükséges feladatok végrehajtásához az SQL Server Management Studio használatával csatlakozhat, például egy adatelem kinyeréséhez a visszaállított adatbázisból a meglévő adatbázisba történő másolásához, vagy törölje a meglévő adatbázis és a visszaállított átnevezése az adatbázis a meglévő adatbázis nevére. Lásd: [időponthoz kötött visszaállítás pont](sql-database-recovery-using-backups.md#point-in-time-restore).
+> Innen a SQL Server Management Studio használatával csatlakozhat a visszaállított adatbázishoz a szükséges feladatok elvégzéséhez, például a visszaállított adatbázisból a meglévő adatbázisba való másoláshoz, illetve a meglévő adatbázis törléséhez és a visszaállított adatok átnevezéséhez. adatbázist a meglévő adatbázis nevére. Lásd: időponthoz [való visszaállítás](sql-database-recovery-using-backups.md#point-in-time-restore).
 
 ## <a name="next-steps"></a>További lépések
 

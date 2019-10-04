@@ -1,0 +1,123 @@
+### YamlMime:Landing
+title: A Personalizer dokumentációja
+summary: Megismerheti, hogyan használhatja a Personalizert arra, hogy az alkalmazás a valós idejű viselkedésükből tanulva kiválassza a felhasználók számára megjelenítendő legjobb élményt.
+metadata:
+  ms.topic: landing-page
+  ms.date: 09/10/2019
+  ms.author: nitinme
+  author: nitinme
+  ms.service: cognitive-services
+  ms.subservice: personalizer
+  services: cognitive-services
+  title: A Personalizer dokumentációja
+  titleSuffix: Azure Cognitive Services
+  description: Az Azure Personalizer egy felhőalapú API-szolgáltatás, amellyel a valós idejű viselkedésükből tanulva kiválaszthatja a felhasználók számára megjelenítendő legjobb élményt.
+  ms.openlocfilehash: fd1b4a7c093beeb8d33579accee9178744b6fe50
+  ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 09/11/2019
+  ms.locfileid: "70882900"
+landingContent:
+- title: Információk a Personalizerről
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi a Personalizer?
+      url: what-is-personalizer.md
+  - linkListType: concept
+    links:
+    - text: A Personalizer működése
+      url: how-personalizer-works.md
+    - text: Hol használhatja a Personalizert?
+      url: where-can-you-use-personalizer.md
+    - text: Etika és felelős használat
+      url: ethics-responsible-use.md
+- title: Personalizer-ciklusok létrehozása és használata
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: A személyre szabható szolgáltatások és műveletek kiválasztása
+      url: concepts-features.md
+    - text: Jutalmak kiszámítása
+      url: concept-rewards.md
+  - linkListType: how-to-guide
+    links:
+    - text: A Personalizer létrehozása és konfigurálása
+      url: how-to-settings.md
+  - linkListType: quickstart
+    links:
+    - text: A .Net használata
+      url: csharp-quickstart-commandline-feedback-loop.md
+    - text: A Python használata
+      url: python-quickstart-commandline-feedback-loop.md
+    - text: Node.js
+      url: quickstart-command-line-feedback-loop-nodejs-sdk.md
+- title: Fejlesztés a Personalizer használatával
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Personalizer-ciklusok fejlesztése .Net-tel
+      url: csharp-quickstart-commandline-feedback-loop.md
+    - text: NuGet-csomag
+      url: https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/0.8.0-preview
+    - text: NuGet-referenciadokumentáció
+      url: https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.cognitiveservices.personalizer?view=azure-dotnet-preview&viewFallbackFrom=azure-dotnet
+  - linkListType: get-started
+    links:
+    - text: Personalizer-ciklus fejlesztése Node.js-sel
+      url: quickstart-command-line-feedback-loop-nodejs-sdk.md
+    - text: NPM-csomag
+      url: https://www.npmjs.com/package/@azure/cognitiveservices-personalizer/v/1.0.0
+  - linkListType: get-started
+    links:
+    - text: Personalizer-ciklus fejlesztése Pythonnal
+      url: python-quickstart-commandline-feedback-loop.md
+    - text: Pypi-csomag
+      url: https://pypi.org/project/azure-cognitiveservices-personalizer/
+  - linkListType: get-started
+    links:
+    - text: Kódminták
+      url: https://github.com/Azure-Samples/cognitive-services-personalizer-samples
+    - text: REST API-k
+      url: https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank
+- title: Információk a megerősítő tanulásról
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az a megerősítő tanulás?
+      url: concepts-reinforcement-learning.md
+  - linkListType: concept
+    links:
+    - text: Feltárás
+      url: concepts-exploration.md
+    - text: Funkciók, műveletek és környezet
+      url: concepts-features.md
+    - text: Aktív tanulás
+      url: concept-active-learning.md
+    - text: Jutalmak
+      url: concept-rewards.md
+- title: Szolgáltatás kiértékelése és továbbfejlesztése
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Ciklus továbbfejlesztése offline értékelésekkel
+      url: concepts-offline-evaluation.md
+    - text: Aktív tanulás
+      url: concept-active-learning.md
+    - text: Méretezhetőség és teljesítmény
+      url: concepts-scalability-performance.md
+  - linkListType: how-to-guide
+    links:
+    - text: Sikeresség elemzése offline értékeléssel
+      url: how-to-offline-evaluation.md
+- title: Súgó és visszajelzés
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Hibaelhárítás
+      url: troubleshooting.md
+    - text: Tegye fel kérdéseit a Stack Overflow-val kapcsolatban
+      url: https://stackoverflow.com/questions/tagged/personalizer
+    - text: Az Influence szolgáltatás és a UserVoice
+      url: https://cognitive.uservoice.com/forums/921562-personalizer

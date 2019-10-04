@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: glenga
 ms.openlocfilehash: 6988fb547b07f81891efea3caad8bf34f4c8a476
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58889753"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61036270"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Az Azure Functions runtime verziók áttekintése
 

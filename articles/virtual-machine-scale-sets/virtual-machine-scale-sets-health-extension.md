@@ -1,6 +1,6 @@
 ---
-title: Alkalmazásállapot-bővítmény használata az Azure-beli virtuálisgép-méretezési csoportokkal |} A Microsoft Docs
-description: Ismerje meg, hogyan az alkalmazások állapotának bővítmény használatával a virtual machine scale sets szolgáltatásban üzembe helyezett alkalmazások állapotának monitorozásához.
+title: Az Application Health bővítmény használata az Azure virtuálisgép-méretezési csoportokkal | Microsoft Docs
+description: Ismerje meg, hogyan használható az alkalmazás állapota a virtuálisgép-méretezési csoportokon telepített alkalmazásai állapotának figyelésére.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: mayanknayar
@@ -15,31 +15,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2019
 ms.author: manayar
-ms.openlocfilehash: d1cff1011e190e5fbb2874657cbdfbdc68bde0c0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: e074d76f9ed095725d99bddc9eb21925f4b3697c
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58084395"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114483"
 ---
-# <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>Bővítményt a virtuálisgép-méretezési csoportokat használ alkalmazásállapot
-Az alkalmazás állapotának monitorozása egy fontos jel, kezeléséhez és az üzemelő példány frissítése. Azure-beli virtuálisgép-méretezési csoportok biztosít támogatást [a működés közbeni frissítés](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) beleértve [automatikus operációsrendszer-lemezkép frissítéseinek](virtual-machine-scale-sets-automatic-upgrade.md), amely támaszkodjon szolgáltatásállapot-figyelést az egyes példányainak az üzemelő példány frissítése .
+# <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>Az Application Health bővítmény használata virtuálisgép-méretezési csoportokkal
+Az alkalmazás állapotának figyelése fontos jel az üzemelő példány kezeléséhez és frissítéséhez. Az Azure virtuálisgép-méretezési csoportok támogatást nyújtanak a [működés közbeni](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) frissítésekhez, beleértve az [automatikus operációsrendszer-képek](virtual-machine-scale-sets-automatic-upgrade.md)frissítéseit is, amelyek az egyes példányok állapotának figyelésére támaszkodnak az üzembe helyezés frissítéséhez.
 
-Ez a cikk bemutatja, hogyan használhatja az alkalmazás állapotának bővítmény állapotát, a virtual machine scale sets szolgáltatásban üzembe helyezett alkalmazások figyelésére.
+Ez a cikk azt ismerteti, hogyan használható az alkalmazás állapota bővítmény a virtuálisgép-méretezési csoportokon telepített alkalmazások állapotának figyelésére.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez a cikk azt feltételezi, hogy Ön ismeri a:
--   Az Azure virtuális gép [bővítmények](../virtual-machines/extensions/overview.md)
--   [Módosítása](virtual-machine-scale-sets-upgrade-scale-set.md) a virtual machine scale sets
+Ez a cikk azt feltételezi, hogy ismeri a következőket:
+-   Azure-beli [](../virtual-machines/extensions/overview.md) virtuálisgép-bővítmények
+-   Virtuálisgép-méretezési csoportok [módosítása](virtual-machine-scale-sets-upgrade-scale-set.md)
 
-## <a name="when-to-use-the-application-health-extension"></a>Mikor érdemes használni az alkalmazásállapot-bővítmény
-Az alkalmazás állapotának bővítmény virtuálisgép-méretezési készlet példány és a méretezési csoport példány belül a virtuális gép állapota a jelentések belül van telepítve. Beállíthatja, hogy a bővítmény alkalmazása a végpont mintavételi és azon a példányon az alkalmazás állapotának frissítése. A példány állapota be van jelölve, az Azure-példány jogosult a frissítési műveletek meghatározásához.
+## <a name="when-to-use-the-application-health-extension"></a>Mikor kell használni az alkalmazás állapota bővítményt
+Az alkalmazás állapotának kiterjesztése egy virtuálisgép-méretezési csoport példányain belül történik, és a virtuális gépek állapotáról szóló jelentések a méretezési csoport példányán belül vannak. A bővítményt beállíthatja a mintavételhez egy alkalmazás-végponton, és frissítheti az alkalmazás állapotát az adott példányon. A példány állapotát az Azure ellenőrzi, hogy a példány jogosult-e a frissítési műveletekre.
 
-A bővítmény jelentések összesíti a virtuális Gépen belül, mint a bővítmény használható helyzetekben, ahol a külső alkalmazás állapotadat-mintavételek például mintavételek (, amelyek használják az egyéni Azure Load Balancer [mintavételek](../load-balancer/load-balancer-custom-probe-overview.md)) nem használható.
+Mivel a bővítmény a virtuális gépen belülről jelenti az állapotot, a bővítmény olyan helyzetekben használható, ahol az olyan külső mintavételek, mint az alkalmazás-állapotú [](../load-balancer/load-balancer-custom-probe-overview.md)mintavételek (amelyek az egyéni Azure Load Balancer-mintavételeket használják) nem használhatók.
 
 ## <a name="extension-schema"></a>Bővítményséma
 
-A következő JSON az alkalmazásállapot bővítmény sémáját jeleníti meg. A bővítmény telepítéséhez a "http" vagy "tcp" kérést egy kapcsolódó portot vagy a kérés útvonala pedig minimális.
+A következő JSON az alkalmazás állapotára szolgáló bővítmény sémáját jeleníti meg. A bővítményhez legalább egy "TCP" vagy "http" kérelemnek kell tartoznia egy társított porttal vagy kérelem elérési úttal.
 
 ```json
 {
@@ -65,25 +65,25 @@ A következő JSON az alkalmazásállapot bővítmény sémáját jeleníti meg.
 
 | Name (Név) | Érték és példa | Adattípus
 | ---- | ---- | ---- 
-| apiVersion | `2018-10-01` | dátum |
-| publisher | `Microsoft.ManagedServices` | sztring |
-| type | `ApplicationHealthLinux` (Linux), `ApplicationHealthWindows` (Windows) | sztring |
+| apiVersion | `2018-10-01` | date |
+| publisher | `Microsoft.ManagedServices` | string |
+| type | `ApplicationHealthLinux`(Linux), `ApplicationHealthWindows` (Windows) | string |
 | typeHandlerVersion | `1.0` | int |
 
 ### <a name="settings"></a>Beállítások
 
 | Name (Név) | Érték és példa | Adattípus
 | ---- | ---- | ----
-| protokoll | `http` vagy `tcp` | sztring |
-| port | Nem kötelező, ha a protokoll `http`kötelező, ha a protokoll `tcp` | int |
-| requestPath | Kötelező, ha a protokoll `http`, nem engedélyezett, ha a protokoll `tcp` | sztring |
+| protocol | `http` vagy `tcp` | string |
+| port | A protokoll `http`megadása esetén kötelező megadni, ha a protokoll`tcp` | int |
+| requestPath | Kötelező, ha a `http`protokoll értéke nem engedélyezett, ha a protokoll`tcp` | string |
 
-## <a name="deploy-the-application-health-extension"></a>Az alkalmazás állapotának bővítmény telepítése
-Többféleképpen is üzembe helyezése a méretezési csoport bővítményének állítja be, ahogy az az alábbi példák az alkalmazás állapotát.
+## <a name="deploy-the-application-health-extension"></a>Az alkalmazás állapot-kiterjesztésének üzembe helyezése
+Az alábbi példákban több módon is üzembe helyezheti az alkalmazás állapotának kiterjesztését a méretezési csoportokban.
 
 ### <a name="rest-api"></a>REST API
 
-Az alábbi példa az alkalmazásállapot-bővítmény (a név myHealthExtension) ad hozzá a extensionprofile profilt a Windows-alapú méretezési a méretezési csoport modelljéből.
+A következő példa hozzáadja az Application Health-bővítményt (a name myHealthExtension) a Windows-alapú méretezési csoport méretezési csoport modelljében lévő extensionProfile.
 
 ```
 PUT on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/extensions/myHealthExtension?api-version=2018-10-01`
@@ -105,13 +105,13 @@ PUT on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/
   }
 }
 ```
-Használat `PATCH` egy már üzembe helyezett bővítmény szerkesztése.
+Egy `PATCH` már telepített bővítmény szerkesztésére használható.
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Használja a [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension) parancsmag használatával adja hozzá az alkalmazás állapotának bővítményt a méretezési csoport állítsa be a modell definícióját.
+Az [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension) parancsmaggal adja hozzá az alkalmazás-állapot bővítményt a méretezési csoport modellje definícióhoz.
 
-Az alábbi példa hozzáadja a alkalmazásállapot bővítményt a `extensionProfile` a méretezésicsoport-modellben Windows-alapú méretezési. A példa az új Az PowerShell-modult használja.
+Az alábbi példa hozzáadja az alkalmazás `extensionProfile` -állapot bővítményt a Windows-alapú méretezési csoport méretezési csoport modelljéhez. A példa az új az PowerShell-modult használja.
 
 ```azurepowershell-interactive
 # Define the scale set variables
@@ -147,23 +147,32 @@ Update-AzVmss -ResourceGroupName $vmScaleSetResourceGroup `
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 
-Használat [az vmss-bővítmény beállítása](/cli/azure/vmss/extension#az-vmss-extension-set) hozzáadása az alkalmazásállapot bővítményt a méretezési csoport modell definícióját.
+Az az [vmss Extension set](/cli/azure/vmss/extension#az-vmss-extension-set) paranccsal adja hozzá az alkalmazás állapota bővítményt a méretezési csoport modellje definícióhoz.
 
-Az alábbi példa az alkalmazásállapot-bővítmény hozzáadása egy Windows-alapú méretezési csoportot, a méretezési csoport modelljéből.
+Az alábbi példa hozzáadja az alkalmazás-állapot bővítményt egy Linux-alapú méretezési csoport méretezési csoport modelljéhez.
 
 ```azurecli-interactive
 az vmss extension set \
-  --name ApplicationHealthWindows \
+  --name ApplicationHealthLinux \
   --publisher Microsoft.ManagedServices \
   --version 1.0 \
   --resource-group <myVMScaleSetResourceGroup> \
   --vmss-name <myVMScaleSet> \
   --settings ./extension.json
 ```
+A. JSON kiterjesztésű fájl tartalma.
+
+```json
+{
+  "protocol": "<protocol>",
+  "port": "<port>",
+  "requestPath": "</requestPath>"
+}
+```
 
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
-Bővítmény végrehajtás kimenetének a rendszer naplózza a következő könyvtárban található fájlok:
+A bővítmény-végrehajtás kimenete a következő címtárakban található fájlokra van naplózva:
 
 ```Windows
 C:\WindowsAzure\Logs\Plugins\Microsoft.ManagedServices.ApplicationHealthWindows\<version>\
@@ -173,7 +182,7 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.ManagedServices.ApplicationHealthWindows\
 /var/lib/waagent/apphealth
 ```
 
-A naplók rendszeres időközönként rögzíti az alkalmazás állapot ellenőrzése.
+A naplók rendszeresen rögzítik az alkalmazás állapotának állapotát is.
 
 ## <a name="next-steps"></a>További lépések
-Ismerje meg, hogyan [az alkalmazás üzembe helyezéséhez](virtual-machine-scale-sets-deploy-app.md) a virtuálisgép-méretezési csoportok.
+Megtudhatja, hogyan [helyezheti üzembe az alkalmazást](virtual-machine-scale-sets-deploy-app.md) a virtuálisgép-méretezési csoportokban.

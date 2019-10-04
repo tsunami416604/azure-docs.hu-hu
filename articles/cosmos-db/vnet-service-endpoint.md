@@ -4,15 +4,15 @@ description: Ez a dokumentum ismerteti a virtuális hálózati és alhálózati 
 author: kanshiG
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/06/2018
+ms.date: 05/23/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 672c62c440708f8e949d67d545bee2179c6066b2
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: dfc3ebc0274c87466d6dc27c93880483df023085
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58894935"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66242472"
 ---
 # <a name="access-azure-cosmos-db-from-virtual-networks-vnet"></a>Hozzáférés az Azure Cosmos DB a virtuális hálózatok (VNet)
 

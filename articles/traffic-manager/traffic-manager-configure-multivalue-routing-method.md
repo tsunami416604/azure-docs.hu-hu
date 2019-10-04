@@ -3,20 +3,21 @@ title: Többértékű forgalom-útválasztási módszer konfigurálása az Azure
 description: Ez a cikk azt ismerteti, hogy A/AAAA-végpontokra irányuló forgalom irányítása a Traffic Manager konfigurálása.
 services: traffic-manager
 documentationcenter: ''
-author: KumudD
+author: asudbring
+manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: kumud
-ms.openlocfilehash: de7288e2062fdfab363c46749b34c7afcacbb6e1
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: allensu
+ms.openlocfilehash: 5db8e2932a43a2d6c6cb8a99c4f32b37a4a5a3f8
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58094803"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67050893"
 ---
 # <a name="configure-multivalue-routing-method-in-traffic-manager"></a>A Traffic Manager többértékű útválasztási mód konfigurálása
 
@@ -46,7 +47,7 @@ Hozzon létre egy Traffic Manager-profilt, amely irányítja a felhasználói ad
     | Útválasztási metódus          | Válassza ki a **típushoz** esetén használt útválasztási módszer.                                       |
     | Előfizetés            | Válassza ki előfizetését.                          |
     | Erőforráscsoport          | Select *myResourceGroupTM1*. |
-    | Hely                | Ez a beállítás az erőforráscsoport helyére vonatkozik, és nincs hatással a globálisan üzembe helyezendő Traffic Manager-profilra.                              |
+    | Location egység                | Ez a beállítás az erőforráscsoport helyére vonatkozik, és nincs hatással a globálisan üzembe helyezendő Traffic Manager-profilra.                              |
    |        |           | 
   
    ![Traffic Manager-profil létrehozása](./media/traffic-manager-multivalue-routing-method/create-traffic-manager-profile.png)
@@ -61,12 +62,12 @@ Két IP-címet, külső végpontok hozzáadása típushoz Traffic Manager-profil
 
     | Beállítás                 | Érték                                              |
     | ---                     | ---                                                |
-    | Typo                    | Külső végpont                                   |
+    | Típus                    | Külső végpont                                   |
     | Name (Név)           | myEndpoint1                                        |
     | Teljesen minősített tartománynevét (FQDN) vagy IP-           | Írja be a végpont a Traffic Manager-profil hozzá kívánt nyilvános IP-címe                         |
     |        |           |
 
-4. Ismételje meg a 2. és 3-nevű másik végpont hozzáadása *myEndpoint2*, a **teljesen minősített tartománynevét (FQDN) vagy IP-**, adja meg a nyilvános IP-címét a második végpontnak.
+4. Ismételje meg a 2. és 3-nevű másik végpont hozzáadása *myEndpoint2*, a **teljesen minősített tartománynevét (FQDN) vagy IP-** , adja meg a nyilvános IP-címét a második végpontnak.
 5. Miután mindkét végpontot hozzáadta, azok megjelennek a **Traffic Manager-profil** panelen, **Online** figyelési állapottal.
 
    ![Traffic Manager-végpont hozzáadása](./media/traffic-manager-multivalue-routing-method/add-endpoint.png)

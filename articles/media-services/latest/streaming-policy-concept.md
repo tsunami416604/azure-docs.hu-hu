@@ -9,59 +9,75 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/03/2019
+ms.date: 05/28/2019
 ms.author: juliako
-ms.openlocfilehash: 10600d8f3ff4e08b8d90f28ec15d3cb0c56bcae0
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: a813c77e81e51bfe13e75ed6c8d0e24b4d0fa645
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746744"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66392929"
 ---
 # <a name="streaming-policies"></a>Streamelési szabályok
 
-Az Azure Media Services v3 [szabályzatokat. adatfolyam](https://docs.microsoft.com/rest/api/media/streamingpolicies) lehetővé teszi az adatfolyam-továbbítási protokollok és a titkosítási beállítások megadása a [Streamelési Lokátorok](streaming-locators-concept.md). Használja az előre definiált adatfolyam-szabályzatokra, vagy egy egyéni szabályzatot hozott létre. Jelenleg elérhető előre definiált adatfolyam-szabályzatok a következők: 'Predefined_DownloadOnly', 'Predefined_ClearStreamingOnly', 'Predefined_DownloadAndClearStreaming', 'Predefined_ClearKey', 'Predefined_MultiDrmCencStreaming' and 'Predefined_MultiDrmStreaming'.
+Az Azure Media Services v3 [szabályzatokat. adatfolyam](https://docs.microsoft.com/rest/api/media/streamingpolicies) lehetővé teszi az adatfolyam-továbbítási protokollok és a titkosítási beállítások megadása a [Streamelési Lokátorok](streaming-locators-concept.md). A Media Services v3 tartalmaz néhány előre definiált adatfolyam-szabályzatok, így közvetlenül a próbaverzióra vagy éles környezetben is használhatja őket. 
+
+A jelenleg elérhető előre definiált adatfolyam-szabályzatokat:<br/>
+* "Predefined_DownloadOnly"
+* "Predefined_ClearStreamingOnly"
+* "Predefined_DownloadAndClearStreaming"
+* "Predefined_ClearKey"
+* 'Predefined_MultiDrmCencStreaming' 
+* 'Predefined_MultiDrmStreaming'
+
+Válasszon egy előre definiált adatfolyam-szabályzatot a forgatókönyvhöz a következő "döntési fa" segítségével.
 
 > [!IMPORTANT]
 > * Tulajdonságainak **szabályzatokat. adatfolyam** a DateTime típusú állandóan UTC formátumban vannak.
-> * Korlátozott számú házirendeket tervezzen a Media Services-fiók és újból felhasználja őket a Streamelési Lokátorok, amikor szükség van a beállítások. 
+> * Korlátozott számú házirendeket tervezzen a Media Services-fiók és újból felhasználja őket a Streamelési Lokátorok, amikor szükség van a beállítások. További információkért lásd: [kvóták és korlátozások](limits-quotas-constraints.md).
 
-## <a name="examples"></a>Példák
+## <a name="decision-tree"></a>Döntési fa
 
-### <a name="not-encrypted"></a>Nincs titkosítva
+Kattintson a képre a teljes méretű megjelenítéshez.  
 
-Adatfolyam a fájlt az-a-törlése (nem titkosított) szeretné, ha az előre meghatározott egyértelmű streamelési szabályzat beállítása: a "Predefined_ClearStreamingOnly" (a .NET, a használható PredefinedStreamingPolicy.ClearStreamingOnly).
+<a href="./media/streaming-policy/large.png" target="_blank"><img src="./media/streaming-policy/large.png"></a> 
 
-```csharp
-StreamingLocator locator = await client.StreamingLocators.CreateAsync(
-    resourceGroup,
-    accountName,
-    locatorName,
-    new StreamingLocator
-    {
-        AssetName = assetName,
-        StreamingPolicyName = PredefinedStreamingPolicy.ClearStreamingOnly
-    });
+Tartalom titkosítása, ha szeretne létrehozni egy [tartalom kulcs házirend](content-key-policy-concept.md), a **tartalom kulcs házirend** nem szükségesek a tiszta streamelési vagy letöltése. 
+
+Ha nincsenek különleges követelmények (például ha más protokollt adja meg, ezzel kell használnia egy egyéni kulcstovábbítást, vagy szeretné használni, törölje a jelet hangsávra), akkor az [létrehozása](https://docs.microsoft.com/rest/api/media/streamingpolicies/create) egyéni Streamelési házirendet. 
+
+## <a name="get-a-streaming-policy-definition"></a>Egy adatfolyam-definíció beolvasása  
+
+Ha meg szeretné tekinteni a egy adatfolyam-szabályzat definíciója, [első](https://docs.microsoft.com/rest/api/media/streamingpolicies/get) , és adja meg a szabályzat nevét. Példa:
+
+### <a name="rest"></a>REST
+
+Kérés:
+
+```
+GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Media/mediaServices/contosomedia/streamingPolicies/clearStreamingPolicy?api-version=2018-07-01
 ```
 
-### <a name="encrypted"></a>Titkosított 
+Válasz:
 
-A tartalmak borítékot és cenc titkosítási van szüksége, ha a "Predefined_MultiDrmCencStreaming" házirendjének beállítása. Ez a szabályzat jelzi, hogy két tartalomkulcsot (envelope és CENC) szeretne létrehozni és beállítani a lokátoron. Így az envelope, a PlayReady és a Widevine titkosítások lesznek alkalmazva (a kulcsot a konfigurált DRM-licencek alapján továbbítja a rendszer a lejátszást végző ügyfelének).
-
-```csharp
-StreamingLocator locator = await client.StreamingLocators.CreateAsync(
-    resourceGroup,
-    accountName,
-    locatorName,
-    new StreamingLocator
-    {
-        AssetName = assetName,
-        StreamingPolicyName = "Predefined_MultiDrmCencStreaming",
-        DefaultContentKeyPolicyName = contentPolicyName
-    });
 ```
-
-Ha is szeretné titkosítani a stream-CBCS (FairPlay), használja a "Predefined_MultiDrmStreaming".
+{
+  "name": "clearStreamingPolicy",
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Media/mediaservices/contosomedia/streamingPolicies/clearStreamingPolicy",
+  "type": "Microsoft.Media/mediaservices/streamingPolicies",
+  "properties": {
+    "created": "2018-08-08T18:29:30.8501486Z",
+    "noEncryption": {
+      "enabledProtocols": {
+        "download": true,
+        "dash": true,
+        "hls": true,
+        "smoothStreaming": true
+      }
+    }
+  }
+}
+```
 
 ## <a name="filtering-ordering-paging"></a>Szűrési, rendezési, stránkování
 

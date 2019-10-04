@@ -1,5 +1,5 @@
 ---
-title: SAP ASE az Azure Virtual Machines DBMS üzembe helyezési SAP számítási |} A Microsoft Docs
+title: SAP bevezetési Azure Virtual Machines adatbázis-kezelő üzembe helyezése SAP-munkaterheléshez | Microsoft Docs
 description: SAP ASE Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
@@ -9,64 +9,63 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/1/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3f50f013020c704ddc294a59f8c6c5dac24bbd5a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 51e97089b1de88ccf9f45b1a0f429abc0cfac9f3
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58850947"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101330"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP ASE Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz
 
 [767598]:https://launchpad.support.sap.com/#/notes/767598
-[773830]:https://launchpad.support.sap.com/#/notes/773830
+[773830]: https://launchpad.support.sap.com/#/notes/773830
 [826037]:https://launchpad.support.sap.com/#/notes/826037
 [965908]:https://launchpad.support.sap.com/#/notes/965908
 [1031096]:https://launchpad.support.sap.com/#/notes/1031096
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
 [1139904]:https://launchpad.support.sap.com/#/notes/1139904
 [1173395]:https://launchpad.support.sap.com/#/notes/1173395
-[1245200]:https://launchpad.support.sap.com/#/notes/1245200
+[1245200]: https://launchpad.support.sap.com/#/notes/1245200
 [1409604]:https://launchpad.support.sap.com/#/notes/1409604
-[1558958]:https://launchpad.support.sap.com/#/notes/1558958
-[1585981]:https://launchpad.support.sap.com/#/notes/1585981
-[1588316]:https://launchpad.support.sap.com/#/notes/1588316
-[1590719]:https://launchpad.support.sap.com/#/notes/1590719
+[1558958]: https://launchpad.support.sap.com/#/notes/1558958
+[1585981]: https://launchpad.support.sap.com/#/notes/1585981
+[1588316]: https://launchpad.support.sap.com/#/notes/1588316
+[1590719]: https://launchpad.support.sap.com/#/notes/1590719
 [1597355]:https://launchpad.support.sap.com/#/notes/1597355
-[1605680]:https://launchpad.support.sap.com/#/notes/1605680
+[1605680]: https://launchpad.support.sap.com/#/notes/1605680
 [1619720]:https://launchpad.support.sap.com/#/notes/1619720
 [1619726]:https://launchpad.support.sap.com/#/notes/1619726
-[1619967]:https://launchpad.support.sap.com/#/notes/1619967
-[1750510]:https://launchpad.support.sap.com/#/notes/1750510
-[1752266]:https://launchpad.support.sap.com/#/notes/1752266
-[1757924]:https://launchpad.support.sap.com/#/notes/1757924
-[1757928]:https://launchpad.support.sap.com/#/notes/1757928
-[1758182]:https://launchpad.support.sap.com/#/notes/1758182
-[1758496]:https://launchpad.support.sap.com/#/notes/1758496
+[1619967]: https://launchpad.support.sap.com/#/notes/1619967
+[1750510]: https://launchpad.support.sap.com/#/notes/1750510
+[1752266]: https://launchpad.support.sap.com/#/notes/1752266
+[1757924]: https://launchpad.support.sap.com/#/notes/1757924
+[1757928]: https://launchpad.support.sap.com/#/notes/1757928
+[1758182]: https://launchpad.support.sap.com/#/notes/1758182
+[1758496]: https://launchpad.support.sap.com/#/notes/1758496
 [1772688]:https://launchpad.support.sap.com/#/notes/1772688
-[1814258]:https://launchpad.support.sap.com/#/notes/1814258
-[1882376]:https://launchpad.support.sap.com/#/notes/1882376
+[1814258]: https://launchpad.support.sap.com/#/notes/1814258
+[1882376]: https://launchpad.support.sap.com/#/notes/1882376
 [1909114]:https://launchpad.support.sap.com/#/notes/1909114
-[1922555]:https://launchpad.support.sap.com/#/notes/1922555
-[1928533]:https://launchpad.support.sap.com/#/notes/1928533
-[1941500]:https://launchpad.support.sap.com/#/notes/1941500
-[1956005]:https://launchpad.support.sap.com/#/notes/1956005
-[1973241]:https://launchpad.support.sap.com/#/notes/1973241
+[1922555]: https://launchpad.support.sap.com/#/notes/1922555
+[1928533]: https://launchpad.support.sap.com/#/notes/1928533
+[1941500]: https://launchpad.support.sap.com/#/notes/1941500
+[1956005]: https://launchpad.support.sap.com/#/notes/1956005
+[1973241]: https://launchpad.support.sap.com/#/notes/1973241
 [1984787]:https://launchpad.support.sap.com/#/notes/1984787
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
 [2002167]:https://launchpad.support.sap.com/#/notes/2002167
 [2015553]:https://launchpad.support.sap.com/#/notes/2015553
 [2039619]:https://launchpad.support.sap.com/#/notes/2039619
 [2069760]:https://launchpad.support.sap.com/#/notes/2069760
-[2121797]:https://launchpad.support.sap.com/#/notes/2121797
-[2134316]:https://launchpad.support.sap.com/#/notes/2134316
+[2121797]: https://launchpad.support.sap.com/#/notes/2121797
+[2134316]: https://launchpad.support.sap.com/#/notes/2134316
 [2171857]:https://launchpad.support.sap.com/#/notes/2171857
 [2178632]:https://launchpad.support.sap.com/#/notes/2178632
 [2191498]:https://launchpad.support.sap.com/#/notes/2191498
@@ -309,67 +308,67 @@ ms.locfileid: "58850947"
 
 
 
-Ebben a dokumentumban a kell figyelembe venni az Azure IaaS SAP ASE üzembe helyezésekor számos különböző területeket fedi le. Ebben a dokumentumban előfeltételeként rendelkezik olvassa el a dokumentumot [SAP számítási feladatok Azure virtuális gépek DBMS üzembe szempontjai](dbms_guide_general.md) és egyéb útmutatók a a [SAP számítási feladatok az Azure-dokumentáció](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started). 
+Ebben a dokumentumban több különböző területre is kiterjed, amelyeket figyelembe kell venni az SAP bevezetésének az Azure IaaS történő telepítésekor. Ennek a dokumentumnak az előfeltétele, hogy olvassa el az [azure Virtual Machines adatbázis-kezelő üzembe helyezése az SAP](dbms_guide_general.md) -munkaterheléshez és egyéb útmutatók az Azure-beli SAP-munkaterheléshez című dokumentumban ismertetett szempontokat. [](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started) 
 
-## <a name="specifics-to-sap-ase-on-windows"></a>A Windows SAP ASE rögzítésen
-Kezdve a Microsoft Azure, áttelepítheti a meglévő SAP ASE-alkalmazások az Azure Virtual Machines. SAP ASE egy Azure virtuális gép segítségével csökkentheti a teljes tulajdonosi költség, a központi telepítési, felügyeleti és karbantartási vállalati szánt alkalmazások egyszerűen telepítse át ezeket az alkalmazásokat a Microsoft Azure-bA. Az SAP ASE egy Azure virtuális gépet a rendszergazdák és fejlesztők számára továbbra is használhatják az azonos fejlesztési és felügyeleti eszközöket, amelyek a rendelkezésre álló helyi.
+## <a name="specifics-to-sap-ase-on-windows"></a>A Windowson futó SAP-központhoz kapcsolódó részletek
+A Microsoft Azure-től kezdve a meglévő SAP-elősegítő alkalmazásai áttelepíthetők az Azure-Virtual Machinesba. Az Azure-beli virtuális gépeken futó SAP-bevezetéssel csökkentheti a vállalati szélességű alkalmazások üzembe helyezésének, kezelésének és karbantartásának teljes tulajdonlási költségeit azáltal, hogy egyszerűen áttelepíti ezeket az alkalmazásokat a Microsoft Azure. Az Azure-beli virtuális gépeken futó SAP bevezetéssel a rendszergazdák és a fejlesztők továbbra is használhatják a helyszínen elérhető fejlesztési és felügyeleti eszközöket.
 
-SLA-k az Azure Virtual Machines, itt található: <https://azure.microsoft.com/support/legal/sla/virtual-machines>
+Az Azure Virtual Machines SLA-kat itt találja:<https://azure.microsoft.com/support/legal/sla/virtual-machines>
 
-Az Azure számos különböző virtuálisgép-típusok, amelyek lehetővé teszik, hogy a legkisebb SAP-rendszereit és környezetünk akár nagyméretű SAP-rendszereit és környezetünk futtatása a felhasználók ezreit kínál. A különböző SAP SAP számú méretezési SAP tanúsítvánnyal rendelkező, virtuális gépek Termékváltozatait van megadva, a SAP-Jegyzetnek [1928533].
+A Microsoft Azure számos különböző virtuálisgép-típust kínál, amelyek lehetővé teszik a legkisebb SAP-rendszerek és-tájak használatát a nagy SAP-rendszerek és tájak több ezer felhasználóval való futtatásával. A különböző SAP-tanúsítvánnyal rendelkező virtuális gépek SAP-méretezési SAP-száma az [1928533]-as SAP-megjegyzésben található.
 
-Utasításokat és javaslatokat az Azure Storage, a SAP virtuális gépeket üzembe helyezés és a SAP figyelési végzett-használatra vonatkozó [SAP számítási feladatok Azure virtuális gépek DBMS üzembe szempontjai](dbms_guide_general.md) üzemelő példányok, SAP ASE túl vonatkoznak.
+Az Azure Storage, az SAP virtuális gépek vagy az SAP-figyelés használatára vonatkozó nyilatkozatok és javaslatok az [azure Virtual Machines adatbázis-kezelő rendszerekben történő üzembe helyezésével kapcsolatos megfontolások](dbms_guide_general.md) az SAP bevezetésére is vonatkoznak.
 
-### <a name="sap-ase-version-support"></a>SAP ASE verzió támogatása
-SAP jelenleg támogatja az SAP ASE verzió 16,0 SAP Business Suite való használatára. Kizárólag az SAP Service Marketplace-en keresztül, SAP ASE kiszolgáló, vagy a JDBC, és az ODBC illesztőprogramjai SAP Business Suite termékekkel használt minden frissítés biztosított: <https://support.sap.com/swdc>.
+### <a name="sap-ase-version-support"></a>SAP benyújtó verziójának támogatása
+Az SAP jelenleg a 16,0-es SAP-es verzióban támogatja az SAP Business Suite-termékekkel való használatot. Az SAP Business Suite-termékekkel való használatra szolgáló SAP bevezető kiszolgáló, illetve JDBC és ODBC illesztőprogramok összes frissítése kizárólag az SAP szolgáltatási Piactéren keresztül érhető <https://support.sap.com/swdc>el a következő címen:.
 
-Ne töltse le a SAP ASE-kiszolgáló, vagy a JDBC és az ODBC-illesztőprogramok frissítéseit közvetlenül a Sybase-webhelyeket. További információk a javítások, amely SAP termékekhez helyszíni használatát támogatja, és az Azure Virtual machines szolgáltatásban, tekintse meg az alábbi SAP-megjegyzések:
+Ne töltsön le frissítéseket az SAP bevezető kiszolgáló, illetve a JDBC-és ODBC-illesztőprogramok számára közvetlenül a Sybase-webhelyekről. A helyszíni és az Virtual Machines Azure-beli SAP-termékekkel használható javításokkal kapcsolatos részletes információkat a következő SAP-megjegyzésekben talál:
 
 * [1590719]
 * [1973241]
 
-Általános információk a futó SAP Business Suite az SAP ASE megtalálható a [Állapotváltozás](https://www.sap.com/community/topic/ase.html)
+Az SAP-t használó SAP Business Suite futtatásával kapcsolatos általános információk az [állapotváltozás](https://www.sap.com/community/topic/ase.html) szolgáltatásban találhatók
 
-### <a name="sap-ase-configuration-guidelines-for-sap-related-sap-ase-installations-in-azure-vms"></a>SAP ASE beállítási útmutatója az Azure-beli virtuális gépeken SAP kapcsolatos SAP ASE telepítések
-#### <a name="structure-of-the-sap-ase-deployment"></a>Az SAP ASE üzembe helyezés szerkezete
-SAP ASE végrehajtható fájlok található, vagy el kell telepíteni a virtuális gép operációsrendszer-lemez rendszermeghajtóján (c: meghajtó\). A legtöbb az SAP ASE rendszer és eszközök adatbázisok általában nem tapasztalt magas számítási feladatok. Ezért a rendszer és eszközök adatbázisok (master, model, saptools, sybmgmtdb, sybsystemdb) is marad, a C:\ meghajtón található. 
+### <a name="sap-ase-configuration-guidelines-for-sap-related-sap-ase-installations-in-azure-vms"></a>SAP-vel kapcsolatos konfigurációs irányelvek SAP-hez kapcsolódó SAP-alapú Azure-beli virtuális gépeken való telepítéséhez
+#### <a name="structure-of-the-sap-ase-deployment"></a>Az SAP bevezetési környezet szerkezete
+Az SAP-bevezetési végrehajtható fájlnak a virtuális gép operációsrendszer-lemezének rendszermeghajtóján kell lennie\), vagy telepítve kell lennie (c meghajtó:. Általában a legtöbb SAP beszállítói rendszer és eszköz adatbázisa nem tapasztal nagy terhelést. Ezért a rendszer és az eszközök adatbázisai (Master, Model, saptools, sybmgmtdb, sybsystemdb) továbbra is megmaradhatnak a C:\ meghajtó. 
 
-Kivétel az ideiglenes adatbázis, amely bizonyos SAP ERP, és minden BW számítási feladatok esetén lehet szükség, vagy nagyobb adatmennyiség vagy az i/o-műveletek kötet lehet. Kötetek vagy IOPS, amely szerint a virtuális gép operációsrendszer-lemez nem adható meg (C: meghajtó\).
+Kivétel lehet az ideiglenes adatbázis, amely bizonyos SAP ERP-ben és az összes BW-munkaterhelésnél nagyobb adatmennyiséget vagy I/O-műveletek mennyiségét igényli. A virtuális gép operációsrendszer-lemeze által nem biztosított kötetek vagy IOPS (C meghajtó:\).
 
-Függő SAPInst/SWPM telepítéséhez használt verziója, az SAP ASE példány konfigurációja nézhet:
+A telepítéshez használt SAPInst/SWPM-verziótól függ, hogy az SAP-beli betekintő példány konfigurációja így néz ki:
 
-* Egyetlen SAP ASE TempDB-adatbázisa, amely SAP ASE telepítésekor jött létre
-* Egy SAP ASE tempdb, SAP ASE és a egy további, a SAP telepítési eljárás által létrehozott saptempdb telepítése által létrehozott
-* Egy SAP ASE tempdb, SAP ASE és a egy további tempdb manuálisan létrehozott telepítése által létrehozott (például az SAP-Jegyzetnek következő [1752266]) ERP/BW adott tempdb követelményeinek
+* Egyetlen SAP-tempdb, amely az SAP beadásának telepítésekor jön létre
+* Az SAP beépítési folyamatának telepítésével létrehozott SAP-tempdb, valamint az SAP-telepítési rutin által létrehozott további saptempdb
+* Az SAP-bevezetés és a manuálisan létrehozott további tempdb (például az [1752266]-es SAP-megjegyzéssel) létrehozásával létrehozott SAP-TEMPDB az ERP/BW-specifikus tempdb-követelmények teljesítéséhez
 
-Vagy minden BW számítási teljesítmény érdekében adott ERP akkor is értelme szeretné tárolni a tempdb eszközök emellett létrehozott a TempDB nem a C:\ meghajtóra. Ha nincsenek további tempdb létezik, akkor javasoljuk, hogy hozzon létre egyet (SAP-Jegyzetnek [1752266]).
+Az adott ERP-vagy az összes BW-számítási feladat teljesítményének kihasználása miatt érdemes lehet a tempdb-eszközöket a C:\) rendelkező-től eltérő meghajtón tárolni a további tempdb Ha nem létezik további tempdb, ajánlott létrehozni egy (SAP-Megjegyzés [1752266]).
 
-Az ilyen rendszerek esetében a következő lépéseket a emellett létrehozott TempDB hajtható végre:
+Ilyen rendszerek esetén a következő lépéseket kell végrehajtani a további létrehozott tempdb:
 
-* Az első tempdb eszköz az első eszköz, az SAP adatbázis áthelyezése
-* A tempdb eszközök hozzáadása az egyes egy eszközt, az SAP-adatbázist tartalmazó VHD-k
+* Az első tempdb-eszköz áthelyezése az SAP-adatbázis első eszközére
+* Tempdb-eszközök hozzáadása az SAP-adatbázis eszközét tartalmazó virtuális merevlemezekhez
 
-A konfiguráció lehetővé teszi, hogy a tempdb használnak fel több helyet, mint a rendszermeghajtó tud biztosítani. Referenciaként egy ellenőrizheti a meglévő rendszerek esetében a helyszíni futtatásához, amelyek a tempdb eszköz méretek. Vagy az ilyen konfiguráció lehetővé teszi, hogy a TempDB-adatbázis, amely a rendszermeghajtó nem található, fogyasztóalapú ellen IOPS-számokkal. A helyszíni rendszerben használható i/o-számítási feladatok tempdb ellen.
+Ez a konfiguráció lehetővé teszi, hogy a tempdb több helyet fogyasszon el, mint a rendszermeghajtó. Az egyik hivatkozásként megtekintheti a tempdb-eszközök méretét a meglévő rendszereken, amelyek a helyszínen futnak. Vagy egy ilyen konfiguráció lehetővé teszi a IOPS-számok tempdb való használatát, amely nem adható meg a rendszermeghajtón. A helyszínen futó rendszerek az I/O-munkaterhelések figyelésére használhatók a tempdb.
 
-Soha ne helyezzen SAP ASE eszközök alakzatot a D:\ meghajtóra, a virtuális gép. SAP ASE ezt a Tanácsot is vonatkozik a TempDB adatbázist, akkor is, ha a TempDB adatbázisban tárolt objektumok csak átmeneti.
+Soha ne helyezzen semmilyen SAP-előállító eszközt a D:\ a virtuális gép meghajtója. Az SAP-elősegítő szolgáltatás esetében ez a Tanács a tempdb is vonatkozik, még akkor is, ha a tempdb tárolt objektumok csak átmenetiek.
 
-Adatok és a tranzakciós napló fájl központi telepítések, a utasítások és végzett javaslatok [SAP számítási feladatok Azure virtuális gépek DBMS üzembe szempontjai](dbms_guide_general.md). A központi Windows-alapú esetet használható stripe csoportok elegendő IOPS, átviteli sebesség és a kötet létrehozásához Windows tárolóhelyek használata ajánlott.  
+Az adatok és a tranzakciós naplófájlok központi telepítése esetén az [Azure Virtual Machines adatbázis-kezelői szolgáltatás az SAP-munkaterheléshez való üzembe helyezésével kapcsolatos megfontolások](dbms_guide_general.md)és javaslatok. Windows-alapú központi telepítések esetén a Windows tárolóhelyek használatát javasoljuk, hogy a megfelelő IOPS, átviteli sebességgel és kötettel rendelkező csíkkészleteket hozzon létre.  
 
-#### <a name="impact-of-database-compression"></a>Adatbázis tömörítése hatása
-A konfigurációk, ahol i/o-sávszélesség korlátozó válhat minden mérték, ami csökkenti az IOPS segíthet a munkaterhelés, mint például az Azure IaaS-forgatókönyveknél is futtatható egy többhelyes. Ezért ajánlott annak biztosításához, hogy egy meglévő SAP-adatbázist az Azure-ba való feltöltéséhez használ-e a SAP ASE tömörítést.
+#### <a name="impact-of-database-compression"></a>Az adatbázis-tömörítés hatása
+Azon konfigurációk esetében, amelyekben az I/O-sávszélesség korlátozási tényezővé válhat, minden mérték, amely csökkenti a IOPS, segíthet a számítási feladatok egy IaaS-forgatókönyvben, például az Azure-ban való futtatásában. Ezért azt javasoljuk, hogy a meglévő SAP-adatbázisok Azure-ba való feltöltése előtt győződjön meg arról, hogy az SAP-vel történő adattömörítés használatban van.
 
-Azt javasoljuk, hogy a alkalmazni az Azure-ba való feltöltéséhez tömörítési kívül számos oka van megadva:
+Az Azure-ba való feltöltés előtt a tömörítés alkalmazására vonatkozó javaslat több okból is fennáll:
 
-* Az Azure-bA feltölteni kívánt adatok mennyisége kisebb
-* A tömörítés végrehajtás időtartama rövidebb, feltéve, hogy az egyik használjon erősebb hardveres további processzorokat vagy magasabb i/o-sávszélességet vagy kisebb I/O várakozási ideje a helyszíni
-* Kisebb adatbázis maximális mérete kisebb költségek lemezfoglaláshoz vezethet
+* Az Azure-ba feltölteni kívánt adatmennyiség alacsonyabb
+* A tömörítés végrehajtásának időtartama rövidebb, feltételezve, hogy az egyik nagyobb CPU-igényű vagy magasabb I/O-sávszélességgel vagy kisebb I/O-késéssel rendelkező erősebb hardvert használhat.
+* A kisebb adatbázis-méretek kevesebb költséget okozhatnak a lemez kiosztása során
 
-Adatok és a LOB-tömörítés az üzemeltetett Azure Virtual Machines szolgáltatásban, mint a helyszíni virtuális gépek működnek. További részleteket a hogyan ellenőrizheti, ha a tömörítés elem már szerepel egy létező adatbázisban az SAP ASE használja, ellenőrizze az SAP-Jegyzetnek [1750510].
+Az adatés LOB-tömörítés az Azure Virtual Machines üzemeltetett virtuális gépeken működik, mivel a helyszínen működik. Ha további információt szeretne arról, hogyan ellenőrizze, hogy a tömörítés már használatban van-e egy meglévő SAP-adatbázison, tekintse meg a [1750510]-es SAP-megjegyzést.
 
-#### <a name="using-dbacockpit-to-monitor-database-instances"></a>Adatbázis-példányok figyelése céljából DBACockpit használatával
-Az SAP-rendszereit, amelyek használ adatbázis-platformot, SAP ASE, a DBACockpit érhető el tranzakcióban DBACockpit beágyazott böngészőablakot vagy Webdynpro. Figyelése és felügyelete az adatbázis összes funkcióját azonban csak a DBACockpit Webdynpro végrehajtásának érhető el.
+#### <a name="using-dbacockpit-to-monitor-database-instances"></a>Az DBACockpit használata az adatbázis-példányok figyelésére
+Az SAP-t adatbázis-platformként használó SAP-rendszerek esetén a DBACockpit a tranzakciós DBACockpit vagy WebDynpro a beágyazott böngészőablakként érhető el. Az adatbázis figyelésének és felügyeletének teljes funkcionalitása azonban csak a DBACockpit WebDynpro implementációjában érhető el.
 
-Mint a helyszíni rendszerekkel való több lépésre van szükség a DBACockpit Webdynpro végrehajtásának által használt minden SAP NetWeaver funkciók engedélyezéséhez. Hajtsa végre az SAP-Jegyzetnek [1245200] webdynpros használatának engedélyezése, és a szükséges kapcsolatok létrehozásához. Ha a fenti megjegyzések utasításait követve konfigurálnia is az internetes kommunikáció kezelése (icm) együtt használható a http és https-kapcsolatok a portokat. Az alapértelmezett beállítás a http-hez hasonlóan néz ki:
+Csakúgy, mint a helyszíni rendszerek esetében, több lépésre van szükség ahhoz, hogy a DBACockpit WebDynpro-implementációja által használt összes SAP NetWeaver funkció engedélyezve legyen. A webdynpros használatának engedélyezéséhez és a szükségesek létrehozásához kövesse az [1245200] -es SAP-megjegyzést. A fenti megjegyzésekben szereplő utasítások követése esetén az Internet Communication Manager (ICM) és a http-és HTTPS-kapcsolatokhoz használt portok is megadhatók. A http alapértelmezett beállítása a következőképpen néz ki:
 
 > icm/server_port_0 = PROT=HTTP,PORT=8000,PROCTIMEOUT=600,TIMEOUT=600
 > 
@@ -377,7 +376,7 @@ Mint a helyszíni rendszerekkel való több lépésre van szükség a DBACockpit
 > 
 > 
 
-és a tranzakciós DBACockpit hasonlóan néz ki a létrehozott hivatkozásokat:
+a tranzakciós DBACockpit létrehozott hivatkozások a következőhöz hasonlóan néz ki:
 
 > https:\//\<fullyqualifiedhostname>:44300/sap/bc/webdynpro/sap/dba_cockpit
 > 
@@ -385,34 +384,34 @@ Mint a helyszíni rendszerekkel való több lépésre van szükség a DBACockpit
 > 
 > 
 
-Attól függően, hogyan kapcsolódik az SAP-rendszert futtató Azure virtuális gép az AD- és DNS-beli kell győződjön meg arról, hogy az ICM a számítógépen, ahol a DBACockpit a megnyitni egy teljesen minősített állomásnév megoldható használ-e. Tekintse meg az SAP-Jegyzetnek [773830] megismerheti, hogyan ICM meghatározza, hogy a teljesen minősített állomásnév alapján a profil paramétereinek és a paraméter icm/host_name_full explicit módon beállítva, ha szükséges.
+Attól függően, hogy az SAP-szolgáltatást üzemeltető Azure-beli virtuális gép hogyan kapcsolódik az AD-hez és a DNS-hez, meg kell győződnie arról, hogy az ICM teljes állomásnevet használ, amely feloldható azon a gépen, amelyen a DBACockpit megnyitja. Tekintse meg az [773830] -es SAP-megjegyzést, hogy megtudja, hogyan határozza meg a teljes állomásnév a profil paramétereinek alapján, valamint az ICM/host_name_full megadása explicit módon, ha szükséges.
 
-Ha a virtuális gép egy kizárólag felhőalapú a forgatókönyvben a helyszíni és az Azure közötti létesítmények közötti kapcsolat nélkül telepítette, egy nyilvános IP-cím és a egy domainlabel megadása szeretne. A virtuális gép nyilvános DNS-név formátuma a következő:
+Ha a virtuális gépet csak felhőalapú, a helyszíni és az Azure közötti kapcsolat nélküli környezetben telepítette, meg kell adnia egy nyilvános IP-címet és egy domainlabel. A virtuális gép nyilvános DNS-nevének formátuma így néz ki:
 
 > `<custom domainlabel`>.`<azure region`>.cloudapp.azure.com
 > 
 > 
 
-A DNS-név kapcsolatos további információk találhatók [Itt][virtual-machines-azurerm-versus-azuresm].
+A DNS-névvel kapcsolatos további részletek [itt][virtual-machines-azurerm-versus-azuresm]találhatók.
 
-Az Azure virtuális Gépen a kapcsolat DNS-nevét állítja az SAP profil paraméter icm/host_name_full hasonlóan néznének ki:
+Ha az ICM/host_name_full SAP-profil paraméterét az Azure-beli virtuális gép DNS-nevére állítja be, a hivatkozás a következőhöz hasonló lehet:
 
 > https:\//mydomainlabel.westeurope.cloudapp.net:44300/sap/bc/webdynpro/sap/dba_cockpit
 > 
 > http:\//mydomainlabel.westeurope.cloudapp.net:8000/sap/bc/webdynpro/sap/dba_cockpit
 
-Ebben az esetben kell ügyeljen arra, hogy:
+Ebben az esetben a következőket kell tennie:
 
-* Bejövő szabályok hozzáadása a hálózati biztonsági csoport ICM folytatott kommunikációhoz használt portok számára az Azure Portalon
-* Bejövő szabályok a ICM folytatott kommunikációhoz használt portok számára a Windows tűzfal-konfiguráció hozzáadása
+* Bejövő szabályok hozzáadása a hálózati biztonsági csoporthoz az ICM-sel való kommunikációhoz használt TCP/IP-portok Azure Portaljában
+* Bejövő szabályok hozzáadása az ICM-sel való kommunikációhoz használt TCP/IP-portok Windows tűzfal konfigurációjához
 
-Az egy automatizált importálja az összes rendelkezésre álló javítások javasoljuk, hogy rendszeres időközönként a alkalmazni a javítás gyűjtemény SAP az SAP-verzióra vonatkozó Megjegyzés::
+Az összes rendelkezésre álló javítás automatikus importálása esetén ajánlott rendszeresen alkalmazni az SAP-verzióra vonatkozó korrekciós gyűjtemény SAP-megjegyzését:
 
 * [1558958]
 * [1619967]
 * [1882376]
 
-SAP ASE DBA vezérlőpultja további információ található a következő SAP-megjegyzések:
+A következő SAP-megjegyzésekben talál további információt az SAP-vel kapcsolatos DBA Pilótafülkéről:
 
 * [1605680]
 * [1757924]
@@ -423,106 +422,106 @@ SAP ASE DBA vezérlőpultja további információ található a következő SAP-
 * [1922555]
 * [1956005]
 
-#### <a name="backuprecovery-considerations-for-sap-ase"></a>SAP ASE biztonsági mentési/helyreállítási szempontjai
-Üzembe helyezésekor SAP ASE az Azure-ba, a biztonsági mentési módszerek át kell tekinteni. Még a nem éles rendszerek esetében az SAP adatbázis(ok) kell készíteni rendszeres időközönként. Mivel az Azure Storage három rendszerkép tartja, lehet, hogy egy biztonsági mentési kevésbé fontos tárolási összeomlás kompenzáló tekintetben. A legfőbb oka egy megfelelő biztonsági mentési és helyreállítási terv karbantartása sokkal többet lehet kompenzálni a logikai vagy manuális hibákat azáltal, hogy az idő helyreállítási lehetőségei a pont. Így az célja, hogy mindkét használata biztonsági mentések, állítsa vissza az adatbázist vissza egy bizonyos ponton az időben, vagy használhatja a biztonsági másolatokat az Azure használatával ültet be egy másik rendszer a meglévő adatbázis másolásával. 
+#### <a name="backuprecovery-considerations-for-sap-ase"></a>Az SAP-t érintő biztonsági mentési/helyreállítási megfontolások
+Az SAP bevezetésének az Azure-ba történő telepítésekor a biztonsági mentési módszert felül kell vizsgálni. A nem éles rendszerek esetében is az SAP-adatbázis (ok) ról rendszeresen biztonsági mentést kell készíteni. Mivel az Azure Storage három lemezképet tart fenn, előfordulhat, hogy a biztonsági mentés kevésbé fontos a tárolási összeomlás kompenzálása tekintetében. A megfelelő biztonsági mentési és visszaállítási terv fenntartásának elsődleges oka, hogy kompenzálni tudja a logikai/manuális hibákat az időponthoz kapcsolódó helyreállítási képességek biztosításával. A cél az, hogy a biztonsági mentések használatával visszaállítsa az adatbázist egy adott időpontra, vagy az Azure-beli biztonsági mentések használatával egy másik rendszert a meglévő adatbázis másolásával. 
 
-Biztonsági mentése és visszaállítása egy adatbázist az Azure-ban ugyanúgy működik, mint a helyszíni. Tekintse meg az SAP-megjegyzések:
+Az Azure-beli adatbázisok biztonsági mentése és visszaállítása ugyanúgy történik, mint a helyszínen. Lásd: SAP-megjegyzések:
 
 * [1588316]
 * [1585981]
 
-További információ memóriakép létrehozásakor konfigurációk és ütemezési biztonsági mentéseket. A stratégia és konfigurálható követelményektől függően adatbázis és naplófájlok lemezre be egyet a meglévő lemezek listázása, vagy adja hozzá a biztonsági másolat egy további lemezt. Csökkentse a hiba az adatvesztést, ahol nincs adatbázisfájlok találhatók lemez használata ajánlott.
+a memóriakép-konfigurációk létrehozásával és a biztonsági mentések ütemezésével kapcsolatos részletekért. A stratégiától és az igényektől függően konfigurálhatja az adatbázis-és a naplózási memóriaképeket az egyik meglévő lemezre, vagy hozzáadhat egy további lemezt a biztonsági mentéshez. A hiba esetén az adatvesztés veszélyének csökkentése érdekében ajánlott olyan lemezt használni, ahol nem találhatók adatbázisfájlok.
 
-Adat - és ÜZLETÁGI tömörítés SAP ASE biztonságimásolat-tömörítési funkciók is kínál. Kevesebb helyet és az adatbázis és naplófájlok memóriaképek felhasználásához biztonságimásolat-tömörítési funkciók használata ajánlott. További információkért tekintse meg az SAP-Jegyzetnek [1588316]. A biztonsági másolat tömörítése elengedhetetlen is át lehet adni, ha azt tervezi, hogy töltse le a biztonsági mentések és a VHD-fájlokat tartalmazó helyszíni az Azure virtuális gép biztonsági mentési memóriaképek adatmennyiség csökkentése érdekében.
+Az adatkezelés és a LOB-tömörítés mellett az SAP-előkészítő is a biztonsági másolatok tömörítését is biztosítja. Ha kevesebb helyet kíván használni az adatbázissal, és a naplózási memóriaképeket használja, ajánlott a biztonsági másolatok tömörítése. További információ: SAP Note [1588316]. A biztonsági mentés tömörítése szintén elengedhetetlen az átvinni kívánt adatok mennyiségének csökkentéséhez, ha az Azure-beli virtuális gépről a helyszíni rendszerre biztonsági másolatokat tartalmazó biztonsági másolatok vagy virtuális merevlemezek letöltését tervezi.
 
-Ne használja a D:\ meghajtóra adatbázist vagy naplófájlokat memóriakép célként.
+Ne használja a meghajtó D:\ az adatbázis vagy a napló memóriaképének célhelye.
 
-#### <a name="performance-considerations-for-backupsrestores"></a>Teljesítménnyel kapcsolatos megfontolások a biztonsági mentés/visszaállítás
-Operációs rendszer nélküli telepítések, mint a biztonsági mentési/visszaállítási teljesítménye szolgáltatás hány kötetek párhuzamosan olvasható, és az átviteli sebességet, a köteteket lehet függ. Ne feledje, hogy a biztonságimásolat-tömörítési funkciók Processzor-erőforrást használ fel. A CPU-felhasználását, a biztonságimásolat-tömörítési funkciók is jelentős szerepet játszik a szálak CPU kis számú virtuális gépeken. Ezért akkor feltételezheti, hogy:
+#### <a name="performance-considerations-for-backupsrestores"></a>A biztonsági másolatok/visszaállítások teljesítményével kapcsolatos megfontolások
+Az operációs rendszer nélküli telepítésekhez hasonlóan a biztonsági mentési/visszaállítási teljesítmény attól függ, hogy hány kötet olvasható párhuzamosan, és milyen átviteli sebesség lehet a köteten. Ne feledje, hogy a biztonsági másolatok tömörítése CPU-erőforrásokat használ. A biztonsági másolatok tömörítésének ezen CPU-használata jelentős szerepet játszhat a virtuális gépeken kis számú CPU-szál használatával. Ezért feltételezheti a következőket:
 
-* A kevesebb, a lemezek számát fogja tárolni, az adatbázis-eszközökre, annál kisebb a teljes átviteli sebesség beolvasás
-* Minél kisebb a virtuális gépen, a jogosultságeszkalálást szálak száma a biztonságimásolat-tömörítési funkciók hatását
-* A kevesebb céllal (lemezek Stripe könyvtárak) írni a biztonsági mentés, a kisebb az átviteli sebesség
+* Minél kevesebb az adatbázis-eszközök tárolására használt lemezek száma, annál kisebb a teljes teljesítmény az olvasás során
+* Minél kevesebb CPU-szál van a virtuális gépen, annál súlyosabb a biztonsági másolatok tömörítésének hatása
+* A kevesebb célpont (könyvtárak, lemezek) a biztonsági mentés megírásához, annál kisebb az átviteli sebesség
 
-Növelje a tárolók két módon, amely lehet igényeitől függően használt/kombinált írni:
+Ha szeretné megnövelni, hogy hány célpontot kell írnia, a rendszer két lehetőséget kínál, amelyek az igényeitől függően használhatók/kombinálhatók:
 
-* A biztonsági mentési célkötet szétosztott keresztül a köteten lévő csíkozott az IOPS-teljesítmény növelése érdekében több csatlakoztatott lemez
-* Memóriakép konfigurációt SAP ASE szintjén hoz létre, amely használatával egynél több céloldali könyvtár a memóriaképet való írása
+* A biztonsági mentési cél kötetének több csatlakoztatott lemezre történő csíkozása a IOPS átviteli sebességének növeléséhez a csíkozott köteten
+* A memóriakép konfigurációjának létrehozása az SAP-alapú bekapcsolási szinten, amely több célhelyet használ a memóriakép írásához
 
-Egy lemezkötetet szétosztott keresztül több csatlakoztatott lemez van már tárgyalt [SAP számítási feladatok Azure virtuális gépek DBMS üzembe szempontjai](dbms_guide_general.md). További információ a több címtár segítségével SAP ASE memóriakép konfigurációjában tárolt eljárás sp_config_dump, amelyet hozza létre a memóriakép konfigurációt a dokumentációban tájékozódhat a [Sybase az Adatközpont](http://infocenter.sybase.com/help/index.jsp).
+A lemez kötetének több csatlakoztatott lemezre történő csíkozása az [Azure Virtual Machines adatbázis-kezelői szolgáltatás SAP](dbms_guide_general.md)-munkaterheléshez való üzembe helyezésével kapcsolatos megfontolásokban található. Ha többet szeretne megtudni arról, hogyan lehet több címtárat használni az SAP betekintő memóriaképének konfigurációjában, tekintse meg a tárolt eljárás sp_config_dump kapcsolatos dokumentációt, amely a memóriakép konfigurációjának létrehozásához használatos a [Sybase-Infoközpont](http://infocenter.sybase.com/help/index.jsp).
 
-### <a name="disaster-recovery-with-azure-vms"></a>Vészhelyreállítás az Azure-alapú virtuális gépekhez
-#### <a name="data-replication-with-sap-sybase-replication-server"></a>Az Adatreplikációt a Sybase-replikálás SAP-kiszolgáló
-Az az SAP Sybase replikációs Server SRS-, SAP ASE megoldást kínál, amellyel meleg készenléti adatbázis-tranzakciók aszinkron átvitelét távoli helyre. 
+### <a name="disaster-recovery-with-azure-vms"></a>Vész-helyreállítás Azure-beli virtuális gépekkel
+#### <a name="data-replication-with-sap-sybase-replication-server"></a>Adatreplikáció az SAP Sybase replikációs kiszolgálójával
+Az SAP Sybase replikációs kiszolgálójának (SRS) köszönhetően az SAP-technológia meleg készenléti megoldást kínál az adatbázis-tranzakciók távoli helyre történő átviteléhez aszinkron módon. 
 
-A telepítés és a művelet az SRS működik, valamint funkcionálisan üzemeltetett virtuális gépek Azure-szolgáltatások, mint a helyszíni virtuális gépen.
+Az SRS telepítése és működése az Azure-beli virtuálisgép-szolgáltatásokban üzemeltetett virtuális gépeken is működik.
 
-SAP ASE HADR nem igényel Azure Internal Load Balancer és az operációs rendszer szintű fürtszolgáltatás nincsenek függőségei. Az Azure Windows és Linux rendszerű virtuális gépek működését. Az SAP ASE HADR részleteiért olvassa el a [SAP ASE HADR felhasználói útmutató](https://help.sap.com/viewer/efe56ad3cad0467d837c8ff1ac6ba75c/16.0.3.3/en-US/a6645e28bc2b1014b54b8815a64b87ba.html).
+Az SAP-beli HADR nem igényel Azure belső Load Balancer, és nincs függősége az operációs rendszer szintjének fürtözéséhez. Az Azure Windows-és Linux-alapú virtuális gépeken működik. Az SAP bevezető HADR kapcsolatos részletekért olvassa el az [SAP-HADR felhasználói útmutatóját](https://help.sap.com/viewer/efe56ad3cad0467d837c8ff1ac6ba75c/16.0.3.3/en-US/a6645e28bc2b1014b54b8815a64b87ba.html).
 
-## <a name="specifics-to-sap-ase-on-linux"></a>A linuxon futó SAP ASE rögzítésen
-Kezdve a Microsoft Azure, könnyedén áttelepítheti a meglévő SAP ASE-alkalmazások az Azure Virtual Machines. A virtuális gépeken SAP ASE segítségével csökkentheti a teljes tulajdonosi költség, a központi telepítési, felügyeleti és karbantartási vállalati szánt alkalmazások egyszerűen telepítse át ezeket az alkalmazásokat a Microsoft Azure-bA. Az SAP ASE egy Azure virtuális gépet a rendszergazdák és fejlesztők számára továbbra is használhatják az azonos fejlesztési és felügyeleti eszközöket, amelyek a rendelkezésre álló helyi.
+## <a name="specifics-to-sap-ase-on-linux"></a>A Linuxon futó SAP-központhoz kapcsolódó részletek
+A Microsoft Azuretól kezdve könnyedén áttelepítheti a meglévő SAP-előállítók alkalmazásait az Azure Virtual Machinesba. A virtuális gépeken futó SAP-bevezetéssel csökkentheti a vállalati szélességű alkalmazások üzembe helyezésének, kezelésének és karbantartásának teljes tulajdonlási költségeit azáltal, hogy egyszerűen áttelepíti ezeket az alkalmazásokat a Microsoft Azure. Az Azure-beli virtuális gépeken futó SAP bevezetéssel a rendszergazdák és a fejlesztők továbbra is használhatják a helyszínen elérhető fejlesztési és felügyeleti eszközöket.
 
-Azure virtuális gépek üzembe helyezéséhez fontos tudni, hogy a hivatalos SLA-k, amely itt található: <https://azure.microsoft.com/support/legal/sla>
+Az Azure-beli virtuális gépek üzembe helyezéséhez fontos, hogy megismerje a hivatalos SLA-kat, amelyek itt találhatók:<https://azure.microsoft.com/support/legal/sla>
 
-SAP méretezése információk és az SAP-minősítéssel rendelkező virtuális gépek Termékváltozatait listáját van megadva, a SAP-Jegyzetnek [1928533]. Dokumentumok méretezése az Azure-beli virtuális gépek itt található további SAP <https://blogs.msdn.com/b/saponsqlserver/archive/2015/06/19/how-to-size-sap-systems-running-on-azure-vms.aspx> és itt <https://blogs.msdn.com/b/saponsqlserver/archive/2015/12/01/new-white-paper-on-sizing-sap-solutions-on-azure-public-cloud.aspx>
+Az SAP-méretezési információk és az SAP-tanúsítvánnyal rendelkező virtuális gépek listája a [1928533]-es SAP-megjegyzésben található. Az Azure Virtual Machines szolgáltatáshoz elérhető további SAP-méretezési dokumentumok itt <https://blogs.msdn.com/b/saponsqlserver/archive/2015/06/19/how-to-size-sap-systems-running-on-azure-vms.aspx> és itt találhatók<https://blogs.msdn.com/b/saponsqlserver/archive/2015/12/01/new-white-paper-on-sizing-sap-solutions-on-azure-public-cloud.aspx>
 
-Utasításokat és javaslatokat a használatra vonatkozó Azure Storage, SAP virtuális gépek üzembe helyezési vagy az SAP-figyelés vonatkoznak SAP ASE használva az SAP-alkalmazások telepítései során az első négy fejezetek a dokumentum leírtaknak.
+Az Azure Storage, az SAP virtuális gépek üzembe helyezése és az SAP-figyelés használatára vonatkozó utasítások és javaslatok az SAP bevezetésének az SAP-alkalmazásokkal együtt történő üzembe helyezéséhez a jelen dokumentum első négy fejezetében leírtak szerint.
 
-A következő két SAP-megjegyzések közé tartozik a Linux-és ASE ASE kapcsolatos általános adatok a felhőben:
+A következő két SAP-Megjegyzés általános információt tartalmaz a Linuxon és a-ben a felhőben található központról:
 
 * [2134316]
 * [1941500]
 
-### <a name="sap-ase-version-support"></a>SAP ASE verzió támogatása
-SAP jelenleg támogatja az SAP ASE verzió 16,0 SAP Business Suite való használatára. Kizárólag az SAP Service Marketplace-en keresztül, SAP ASE kiszolgáló, vagy a JDBC, és az ODBC illesztőprogramjai SAP Business Suite termékekkel használt minden frissítés biztosított: <https://support.sap.com/swdc>.
+### <a name="sap-ase-version-support"></a>SAP benyújtó verziójának támogatása
+Az SAP jelenleg a 16,0-es SAP-es verzióban támogatja az SAP Business Suite-termékekkel való használatot. Az SAP Business Suite-termékekkel való használatra szolgáló SAP bevezető kiszolgáló, illetve JDBC és ODBC illesztőprogramok összes frissítése kizárólag az SAP szolgáltatási Piactéren keresztül érhető <https://support.sap.com/swdc>el a következő címen:.
 
-Telepítések meghajtóbetűjeleket a helyszínen, ne töltse le a SAP ASE-kiszolgáló, vagy a JDBC és az ODBC-illesztőprogramok frissítéseit közvetlenül a Sybase-webhelyeket. További információk a javítások, amely az SAP Business Suite termékek helyi használatát támogatja, és az Azure Virtual machines szolgáltatásban, tekintse meg az alábbi SAP-megjegyzések:
+A helyszíni telepítésekhez hasonlóan az SAP bevezetési kiszolgáló frissítései nem tölthetők le, vagy közvetlenül a Sybase-webhelyekről származó JDBC-és ODBC-illesztőprogramok esetén. Az SAP Business Suite-termékekkel a helyszínen és az Virtual Machines Azure-ban használható javításokkal kapcsolatos részletes információkért lásd a következő SAP-megjegyzéseket:
 
 * [1590719]
 * [1973241]
 
-Általános információk a futó SAP Business Suite az SAP ASE megtalálható a [Állapotváltozás](https://www.sap.com/community/topic/ase.html)
+Az SAP-t használó SAP Business Suite futtatásával kapcsolatos általános információk az [állapotváltozás](https://www.sap.com/community/topic/ase.html) szolgáltatásban találhatók
 
-### <a name="sap-ase-configuration-guidelines-for-sap-related-sap-ase-installations-in-azure-vms"></a>SAP ASE beállítási útmutatója az Azure-beli virtuális gépeken SAP kapcsolatos SAP ASE telepítések
-#### <a name="structure-of-the-sap-ase-deployment"></a>Az SAP ASE üzembe helyezés szerkezete
-SAP ASE végrehajtható fájlok legyen található vagy a legfelső szintű fájl rendszerbe a virtuális gép (/sybase) telepítve van. A legtöbb az SAP ASE rendszer és eszközök adatbázisok általában nem tapasztalt magas számítási feladatok. Ezért a rendszer és eszközök adatbázisok (master, model, saptools, sybmgmtdb, sybsystemdb) a legfelső szintű fájl rendszeren is tárolhatók. 
+### <a name="sap-ase-configuration-guidelines-for-sap-related-sap-ase-installations-in-azure-vms"></a>SAP-vel kapcsolatos konfigurációs irányelvek SAP-hez kapcsolódó SAP-alapú Azure-beli virtuális gépeken való telepítéséhez
+#### <a name="structure-of-the-sap-ase-deployment"></a>Az SAP bevezetési környezet szerkezete
+Az SAP-beépítés végrehajtható fájlját a virtuális gép (/Sybase) gyökérkönyvtárában kell elhelyezni vagy telepíteni. Általában a legtöbb SAP beszállítói rendszer és eszköz adatbázisa nem tapasztal nagy terhelést. Ezért a rendszer-és eszköz-adatbázisok (Master, Model, saptools, sybmgmtdb, sybsystemdb) a gyökérszintű fájlrendszerben tárolhatók. 
 
-Kivétel az ideiglenes adatbázis, amely bizonyos SAP ERP, és minden BW számítási feladatok esetén lehet szükség, vagy nagyobb adatmennyiség vagy az i/o-műveletek kötet lehet. Kötetek vagy IOPS, amely szerint a virtuális gép operációsrendszer-lemez nem adható meg 
+Kivétel lehet az ideiglenes adatbázis, amely bizonyos SAP ERP-ben és az összes BW-munkaterhelésnél nagyobb adatmennyiséget vagy I/O-műveletek mennyiségét igényli. A virtuális gép operációsrendszer-lemeze által nem biztosított kötetek vagy IOPS 
 
-A rendszer telepítéséhez használt SAPInst/SWPM verziójától függően az adatbázis tartalmazhatja:
+A rendszer telepítéséhez használt SAPInst/SWPM-verziótól függően az adatbázis a következőket tartalmazhatja:
 
-* Egy SAP ASE telepítésekor létrehozott egyetlen SAP ASE tempdb
-* Egy SAP ASE tempdb, SAP ASE és a egy további, a SAP telepítési eljárás által létrehozott saptempdb telepítése által létrehozott
-* Egy SAP ASE tempdb, SAP ASE és a egy további tempdb manuálisan létrehozott telepítése által létrehozott (például az SAP-Jegyzetnek következő [1752266]) ERP/BW adott tempdb követelményeinek
+* Az SAP-beadási szolgáltatás telepítésekor létrehozott egyszeri SAP-tempdb
+* Az SAP beépítési folyamatának telepítésével létrehozott SAP-tempdb, valamint az SAP-telepítési rutin által létrehozott további saptempdb
+* Az SAP-bevezetés és a manuálisan létrehozott további tempdb (például az [1752266]-es SAP-megjegyzéssel) létrehozásával létrehozott SAP-TEMPDB az ERP/BW-specifikus tempdb-követelmények teljesítéséhez
 
-Nem adott ERP, vagy minden BW számítási teljesítmény érdekében érdemes tárolni a tempdb-eszközök a emellett létrehozott TempDB (SWPM vagy manuálisan) egy különálló fájlrendszer, amely egyetlen Azure adatlemez vagy átfedés m Linux RAID jelölhető teheti Tö Azure-adatlemezek. Ha nincsenek további tempdb létezik, akkor javasoljuk, hogy hozzon létre egyet (SAP-Jegyzetnek [1752266]).
+Az adott ERP-vagy az összes BW-számítási feladat teljesítményének hiányában ésszerű lehet a további létrehozott tempdb (SWPM vagy manuálisan) tempdb-eszközeinek tárolása egy különálló fájlrendszeren, amelyet egyetlen Azure-adatlemez vagy egy Linux RAID-átívelő m képvisel. webhely az Azure-adatlemezeket. Ha nem létezik további tempdb, ajánlott létrehozni egy (SAP-Megjegyzés [1752266]).
 
-Az ilyen rendszerek esetében a következő lépéseket kell végrehajtani a emellett létrehozott TempDB:
+Ilyen rendszerek esetén a következő lépéseket kell végrehajtani a további létrehozott tempdb:
 
-* Az első tempdb könyvtár az első fájlrendszer az SAP adatbázis áthelyezése
-* Minden, az SAP-adatbázist egy fájlrendszer tartalmazó lemez hozzáadása a tempdb-könyvtárak
+* Helyezze át az első tempdb könyvtárat az SAP-adatbázis első fájlrendszerére
+* Tempdb-címtárak hozzáadása az SAP-adatbázis fájlrendszerét tartalmazó összes lemezhez
 
-A konfiguráció lehetővé teszi, hogy a tempdb használnak fel több helyet, mint a rendszermeghajtó tud biztosítani. Referenciaként egy ellenőrizheti a meglévő rendszerek esetében a helyszíni futtatásához, amelyek a tempdb eszköz méretek. Vagy az ilyen konfiguráció lehetővé teszi, hogy a TempDB-adatbázis, amely a rendszermeghajtó nem található, fogyasztóalapú ellen IOPS-számokkal. A helyszíni rendszerben használható i/o-számítási feladatok tempdb ellen.
+Ez a konfiguráció lehetővé teszi, hogy a tempdb több helyet fogyasszon el, mint a rendszermeghajtó. Az egyik hivatkozásként megtekintheti a tempdb-eszközök méretét a meglévő rendszereken, amelyek a helyszínen futnak. Vagy egy ilyen konfiguráció lehetővé teszi a IOPS-számok tempdb való használatát, amely nem adható meg a rendszermeghajtón. A helyszínen futó rendszerek az I/O-munkaterhelések figyelésére használhatók a tempdb.
 
-Soha ne helyezze az SAP ASE könyvtárak /mnt vagy a virtuális gép /mnt/resource. SAP ASE ezt a Tanácsot is vonatkozik a TempDB adatbázist, akkor is, ha a TempDB adatbázisban tárolt objektumok csak átmeneti. Mert /mnt vagy /mnt/resource alapértelmezett Azure virtuális gép ideiglenes adhatja, amely nem állandó. További információt az Azure virtuális gép ideiglenes terület található [Ez a cikk][virtual-machines-linux-how-to-attach-disk]
+Soha ne helyezzen semmilyen SAP-előfizetői könyvtárat a virtuális gép/mnt vagy/mnt/Resource. Az SAP-elősegítő szolgáltatás esetében ez a Tanács a tempdb is vonatkozik, még akkor is, ha a tempdb tárolt objektumok csak átmenetiek. Mivel a/mnt vagy a/mnt/Resource egy alapértelmezett Azure-beli virtuális gép ideiglenes területe, amely nem állandó. Az Azure-beli virtuális gépek ideiglenes területével kapcsolatos további részletek [ebben a cikkben találhatók.][virtual-machines-linux-how-to-attach-disk]
 
-Adatok és a tranzakciós napló fájl központi telepítések, a utasítások és végzett javaslatok [SAP számítási feladatok Azure virtuális gépek DBMS üzembe szempontjai](dbms_guide_general.md). Linux-alapú telepítések esetén az LVM vagy MDADM használatának ajánlott használható stripe csoportok elegendő IOPS, átviteli sebesség és a kötet létrehozásához. 
+Az adatok és a tranzakciós naplófájlok központi telepítése esetén az [Azure Virtual Machines adatbázis-kezelői szolgáltatás az SAP-munkaterheléshez való üzembe helyezésével kapcsolatos megfontolások](dbms_guide_general.md)és javaslatok. Linux-alapú telepítések esetén az LVM vagy a MDADM használatát javasoljuk, hogy a megfelelő IOPS, átviteli sebességgel és kötettel rendelkező csíkkészleteket hozza létre. 
 
-#### <a name="impact-of-database-compression"></a>Adatbázis tömörítése hatása
-A konfigurációk, ahol i/o-sávszélesség korlátozó válhat minden mérték, ami csökkenti az IOPS segíthet a munkaterhelés, mint például az Azure IaaS-forgatókönyveknél is futtatható egy többhelyes. Ezért ajánlott annak biztosításához, hogy egy meglévő SAP-adatbázist az Azure-ba való feltöltéséhez használ-e a SAP ASE tömörítést.
+#### <a name="impact-of-database-compression"></a>Az adatbázis-tömörítés hatása
+Azon konfigurációk esetében, amelyekben az I/O-sávszélesség korlátozási tényezővé válhat, minden mérték, amely csökkenti a IOPS, segíthet a számítási feladatok egy IaaS-forgatókönyvben, például az Azure-ban való futtatásában. Ezért azt javasoljuk, hogy a meglévő SAP-adatbázisok Azure-ba való feltöltése előtt győződjön meg arról, hogy az SAP-vel történő adattömörítés használatban van.
 
-Azt javasoljuk, hogy a alkalmazni az Azure-ba való feltöltéséhez tömörítési kívül számos oka van megadva:
+Az Azure-ba való feltöltés előtt a tömörítés alkalmazására vonatkozó javaslat több okból is fennáll:
 
-* Az Azure-bA feltölteni kívánt adatok mennyisége kisebb
-* A tömörítés végrehajtás időtartama rövidebb, feltéve, hogy az egyik használjon erősebb hardveres további processzorokat vagy magasabb i/o-sávszélességet vagy kisebb I/O várakozási ideje a helyszíni
-* Kisebb adatbázis maximális mérete kisebb költségek lemezfoglaláshoz vezethet
+* Az Azure-ba feltölteni kívánt adatmennyiség alacsonyabb
+* A tömörítés végrehajtásának időtartama rövidebb, feltételezve, hogy az egyik nagyobb CPU-igényű vagy magasabb I/O-sávszélességgel vagy kisebb I/O-késéssel rendelkező erősebb hardvert használhat.
+* A kisebb adatbázis-méretek kevesebb költséget okozhatnak a lemez kiosztása során
 
-Adatok és a LOB-tömörítés az üzemeltetett Azure Virtual Machines szolgáltatásban, mint a helyszíni virtuális gépek működnek. További részleteket a hogyan ellenőrizheti, ha a tömörítés elem már szerepel egy létező adatbázisban az SAP ASE használja, ellenőrizze az SAP-Jegyzetnek [1750510]. Adatbázis tömörítése kapcsolatos további információkért tekintse meg az SAP-Jegyzetnek [2121797].
+Az adatés LOB-tömörítés az Azure Virtual Machines üzemeltetett virtuális gépeken működik, mivel a helyszínen működik. Ha további információt szeretne arról, hogyan ellenőrizze, hogy a tömörítés már használatban van-e egy meglévő SAP-adatbázison, tekintse meg a [1750510]-es SAP-megjegyzést. Az adatbázis-tömörítéssel kapcsolatos további információkért lásd: SAP-Megjegyzés [2121797].
 
-#### <a name="using-dbacockpit-to-monitor-database-instances"></a>Adatbázis-példányok figyelése céljából DBACockpit használatával
-Az SAP-rendszereit, amelyek használ adatbázis-platformot, SAP ASE, a DBACockpit érhető el tranzakcióban DBACockpit beágyazott böngészőablakot vagy Webdynpro. Figyelése és felügyelete az adatbázis összes funkcióját azonban csak a DBACockpit Webdynpro végrehajtásának érhető el.
+#### <a name="using-dbacockpit-to-monitor-database-instances"></a>Az DBACockpit használata az adatbázis-példányok figyelésére
+Az SAP-t adatbázis-platformként használó SAP-rendszerek esetén a DBACockpit a tranzakciós DBACockpit vagy WebDynpro a beágyazott böngészőablakként érhető el. Az adatbázis figyelésének és felügyeletének teljes funkcionalitása azonban csak a DBACockpit WebDynpro implementációjában érhető el.
 
-Mint a helyszíni rendszerekkel való több lépésre van szükség a DBACockpit Webdynpro végrehajtásának által használt minden SAP NetWeaver funkciók engedélyezéséhez. Hajtsa végre az SAP-Jegyzetnek [1245200] webdynpros használatának engedélyezése, és a szükséges kapcsolatok létrehozásához. Ha a fenti megjegyzések utasításait követve konfigurálnia is az internetes kommunikáció kezelése (icm) együtt használható a http és https-kapcsolatok a portokat. A http alapértelmezés szerint a következőhöz hasonló:
+Csakúgy, mint a helyszíni rendszerek esetében, több lépésre van szükség ahhoz, hogy a DBACockpit WebDynpro-implementációja által használt összes SAP NetWeaver funkció engedélyezve legyen. A webdynpros használatának engedélyezéséhez és a szükségesek létrehozásához kövesse az [1245200] -es SAP-megjegyzést. A fenti megjegyzésekben szereplő utasítások követése esetén az Internet Communication Manager (ICM) és a http-és HTTPS-kapcsolatokhoz használt portok is megadhatók. A http alapértelmezett beállítása a következőképpen néz ki:
 
 > icm/server_port_0 = PROT=HTTP,PORT=8000,PROCTIMEOUT=600,TIMEOUT=600
 > 
@@ -530,7 +529,7 @@ Mint a helyszíni rendszerekkel való több lépésre van szükség a DBACockpit
 > 
 > 
 
-és a tranzakció jön létre hivatkozások DBACockpit hasonlóan néz ki ez:
+a tranzakció DBACockpit létrehozott hivatkozások a következőhöz hasonlóan fognak kinézni:
 
 > https:\//\<fullyqualifiedhostname>:44300/sap/bc/webdynpro/sap/dba_cockpit
 > 
@@ -538,34 +537,34 @@ Mint a helyszíni rendszerekkel való több lépésre van szükség a DBACockpit
 > 
 > 
 
-Attól függően, hogyan kapcsolódik az SAP-rendszert futtató Azure virtuális gép az AD- és DNS-beli kell győződjön meg arról, hogy az ICM a számítógépen, ahol a DBACockpit a megnyitni egy teljesen minősített állomásnév megoldható használ-e. Tekintse meg az SAP-Jegyzetnek [773830] megérteni, hogyan ICM határozza meg a profil paramétereinek és a set paraméter icm/host_name_full függően teljesen minősített állomásnév explicit módon szükség esetén.
+Attól függően, hogy az SAP-szolgáltatást üzemeltető Azure-beli virtuális gép hogyan kapcsolódik az AD-hez és a DNS-hez, meg kell győződnie arról, hogy az ICM teljes állomásnevet használ, amely feloldható azon a gépen, amelyen a DBACockpit megnyitja. Tekintse meg az [773830] -es SAP-megjegyzést, hogy megtudja, hogyan határozza meg az ICM a teljes állomásnevet a profil paramétereinek függvényében, és az ICM/host_name_full explicit módon adja meg, ha szükséges.
 
-Ha a virtuális gép egy kizárólag felhőalapú a forgatókönyvben a helyszíni és az Azure közötti létesítmények közötti kapcsolat nélkül telepítette, egy nyilvános IP-cím és a egy domainlabel megadása szeretne. A virtuális gép nyilvános DNS-név formátuma a következő:
+Ha a virtuális gépet csak felhőalapú, a helyszíni és az Azure közötti kapcsolat nélküli környezetben telepítette, meg kell adnia egy nyilvános IP-címet és egy domainlabel. A virtuális gép nyilvános DNS-nevének formátuma így néz ki:
 
 > `<custom domainlabel`>.`<azure region`>.cloudapp.azure.com
 > 
 > 
 
-A DNS-név kapcsolatos további információk találhatók [Itt][virtual-machines-azurerm-versus-azuresm].
+A DNS-névvel kapcsolatos további részletek [itt][virtual-machines-azurerm-versus-azuresm]találhatók.
 
-Az Azure virtuális Gépen a kapcsolat DNS-nevét állítja az SAP profil paraméter icm/host_name_full hasonlóan néznének ki:
+Ha az ICM/host_name_full SAP-profil paraméterét az Azure-beli virtuális gép DNS-nevére állítja be, a hivatkozás a következőhöz hasonló lehet:
 
 > https:\//mydomainlabel.westeurope.cloudapp.net:44300/sap/bc/webdynpro/sap/dba_cockpit
 > 
 > http:\//mydomainlabel.westeurope.cloudapp.net:8000/sap/bc/webdynpro/sap/dba_cockpit
 
-Ebben az esetben kell ügyeljen arra, hogy:
+Ebben az esetben a következőket kell tennie:
 
-* Bejövő szabályok hozzáadása a hálózati biztonsági csoport ICM folytatott kommunikációhoz használt portok számára az Azure Portalon
-* Bejövő szabályok a ICM folytatott kommunikációhoz használt portok számára a Windows tűzfal-konfiguráció hozzáadása
+* Bejövő szabályok hozzáadása a hálózati biztonsági csoporthoz az ICM-sel való kommunikációhoz használt TCP/IP-portok Azure Portaljában
+* Bejövő szabályok hozzáadása az ICM-sel való kommunikációhoz használt TCP/IP-portok Windows tűzfal konfigurációjához
 
-Az egy automatizált importálja az összes rendelkezésre álló javítások javasoljuk, hogy rendszeres időközönként a alkalmazni a javítás gyűjtemény SAP az SAP-verzióra vonatkozó Megjegyzés::
+Az összes rendelkezésre álló javítás automatikus importálása esetén ajánlott rendszeresen alkalmazni az SAP-verzióra vonatkozó korrekciós gyűjtemény SAP-megjegyzését:
 
 * [1558958]
 * [1619967]
 * [1882376]
 
-SAP ASE DBA vezérlőpultja további információ található a következő SAP-megjegyzések:
+A következő SAP-megjegyzésekben talál további információt az SAP-vel kapcsolatos DBA Pilótafülkéről:
 
 * [1605680]
 * [1757924]
@@ -576,38 +575,38 @@ SAP ASE DBA vezérlőpultja további információ található a következő SAP-
 * [1922555]
 * [1956005]
 
-#### <a name="backuprecovery-considerations-for-sap-ase"></a>SAP ASE biztonsági mentési/helyreállítási szempontjai
-Üzembe helyezésekor SAP ASE az Azure-ba, a biztonsági mentési módszerek át kell tekinteni. Még a nem éles rendszerek esetében az SAP adatbázis(ok) kell készíteni rendszeres időközönként. Mivel az Azure Storage három rendszerkép tartja, lehet, hogy egy biztonsági mentési kevésbé fontos tárolási összeomlás kompenzáló tekintetben. A legfőbb oka egy megfelelő biztonsági mentési és helyreállítási terv karbantartása sokkal többet lehet kompenzálni a logikai vagy manuális hibákat azáltal, hogy az idő helyreállítási lehetőségei a pont. Így az célja, hogy mindkét használata biztonsági mentések, állítsa vissza az adatbázist vissza egy bizonyos ponton az időben, vagy használhatja a biztonsági másolatokat az Azure használatával ültet be egy másik rendszer a meglévő adatbázis másolásával. 
+#### <a name="backuprecovery-considerations-for-sap-ase"></a>Az SAP-t érintő biztonsági mentési/helyreállítási megfontolások
+Az SAP bevezetésének az Azure-ba történő telepítésekor a biztonsági mentési módszert felül kell vizsgálni. A nem éles rendszerek esetében is az SAP-adatbázis (ok) ról rendszeresen biztonsági mentést kell készíteni. Mivel az Azure Storage három lemezképet tart fenn, előfordulhat, hogy a biztonsági mentés kevésbé fontos a tárolási összeomlás kompenzálása tekintetében. A megfelelő biztonsági mentési és visszaállítási terv fenntartásának elsődleges oka, hogy kompenzálni tudja a logikai/manuális hibákat az időponthoz kapcsolódó helyreállítási képességek biztosításával. A cél az, hogy a biztonsági mentések használatával visszaállítsa az adatbázist egy adott időpontra, vagy az Azure-beli biztonsági mentések használatával egy másik rendszert a meglévő adatbázis másolásával. 
 
-Biztonsági mentése és visszaállítása egy adatbázist az Azure-ban ugyanúgy működik, mint a helyszíni. Tekintse meg az SAP-megjegyzések:
+Az Azure-beli adatbázisok biztonsági mentése és visszaállítása ugyanúgy történik, mint a helyszínen. Lásd: SAP-megjegyzések:
 
 * [1588316]
 * [1585981]
 
-További információ memóriakép létrehozásakor konfigurációk és ütemezési biztonsági mentéseket. Az és követelményektől függően stratégia adatbázisok és naplófájlok memóriaképek lemez be egy meglévő lemezt, vagy adja hozzá a biztonsági másolat egy további lemezt is beállíthatja. Adatvesztés hiba esetén a veszély csökkentése érdekében ajánlott, ahol nincs adatbázis-directory/fájl nem található olyan lemez használatára.
+a memóriakép-konfigurációk létrehozásával és a biztonsági mentések ütemezésével kapcsolatos részletekért. A stratégiától és az igényektől függően konfigurálhatja az adatbázis-és a naplózási memóriaképeket a lemezre az egyik meglévő lemezre, vagy hozzáadhat egy további lemezt a biztonsági mentéshez. A hiba esetén az adatvesztés veszélyének csökkentése érdekében ajánlott olyan lemezt használni, amelyben nincs adatbázis-könyvtár vagy-fájl.
 
-Adat - és ÜZLETÁGI tömörítés SAP ASE biztonságimásolat-tömörítési funkciók is kínál. Kevesebb helyet és az adatbázis és naplófájlok memóriaképek felhasználásához biztonságimásolat-tömörítési funkciók használata ajánlott. További információkért tekintse meg az SAP-Jegyzetnek [1588316]. A biztonsági másolat tömörítése elengedhetetlen is át lehet adni, ha azt tervezi, hogy töltse le a biztonsági mentések és a VHD-fájlokat tartalmazó helyszíni az Azure virtuális gép biztonsági mentési memóriaképek adatmennyiség csökkentése érdekében.
+Az adatkezelés és a LOB-tömörítés mellett az SAP-előkészítő is a biztonsági másolatok tömörítését is biztosítja. Ha kevesebb helyet kíván használni az adatbázissal, és a naplózási memóriaképeket használja, ajánlott a biztonsági másolatok tömörítése. További információ: SAP Note [1588316]. A biztonsági mentés tömörítése szintén elengedhetetlen az átvinni kívánt adatok mennyiségének csökkentéséhez, ha az Azure-beli virtuális gépről a helyszíni rendszerre biztonsági másolatokat tartalmazó biztonsági másolatok vagy virtuális merevlemezek letöltését tervezi.
 
-Ne használja az Azure virtuális gép ideiglenes terület /mnt vagy /mnt/resource adatbázist vagy naplófájlokat memóriakép célként.
+Ne használja az Azure VM Temp Space/mnt vagy a/mnt/Resource adatbázist vagy a napló memóriaképének célhelyét.
 
-#### <a name="performance-considerations-for-backupsrestores"></a>Teljesítménnyel kapcsolatos megfontolások a biztonsági mentés/visszaállítás
-Operációs rendszer nélküli telepítések, mint a biztonsági mentési/visszaállítási teljesítménye szolgáltatás hány kötetek párhuzamosan olvasható, és az átviteli sebességet, a köteteket lehet függ. Ne feledje, hogy a biztonságimásolat-tömörítési funkciók Processzor-erőforrást használ fel. A CPU-felhasználását, a biztonságimásolat-tömörítési funkciók is jelentős szerepet játszik a szálak CPU kis számú virtuális gépeken.  Ezért akkor feltételezheti, hogy:
+#### <a name="performance-considerations-for-backupsrestores"></a>A biztonsági másolatok/visszaállítások teljesítményével kapcsolatos megfontolások
+Az operációs rendszer nélküli telepítésekhez hasonlóan a biztonsági mentési/visszaállítási teljesítmény attól függ, hogy hány kötet olvasható párhuzamosan, és milyen átviteli sebesség lehet a köteten. Ne feledje, hogy a biztonsági másolatok tömörítése CPU-erőforrásokat használ. A biztonsági másolatok tömörítésének ezen CPU-használata jelentős szerepet játszhat a virtuális gépeken kis számú CPU-szál használatával.  Ezért feltételezheti a következőket:
 
-* A kevesebb, a lemezek számát fogja tárolni, az adatbázis-eszközökre, annál kisebb a teljes átviteli sebesség beolvasás
-* Minél kisebb a virtuális gépen, a jogosultságeszkalálást szálak száma a biztonságimásolat-tömörítési funkciók hatását
-* A kevesebb céllal (Linux szoftveres RAID, a lemezek) írni a biztonsági mentés, a kisebb az átviteli sebesség
+* Minél kevesebb az adatbázis-eszközök tárolására használt lemezek száma, annál kisebb a teljes teljesítmény az olvasás során
+* Minél kevesebb CPU-szál van a virtuális gépen, annál súlyosabb a biztonsági másolatok tömörítésének hatása
+* A kevesebb cél (Linux szoftveres RAID, lemez) a biztonsági mentés megírásához, annál kisebb az átviteli sebesség
 
-Növelje a tárolók két módon, amely lehet igényeitől függően használt/kombinált írni:
+Ha szeretné megnövelni, hogy hány célpontot kell írnia, a rendszer két lehetőséget kínál, amelyek az igényeitől függően használhatók/kombinálhatók:
 
-* A biztonsági mentési célkötet szétosztott keresztül a köteten lévő csíkozott az IOPS-teljesítmény növelése érdekében több csatlakoztatott lemez
-* Memóriakép konfigurációt SAP ASE szintjén hoz létre, amely használatával egynél több céloldali könyvtár a memóriaképet való írása
+* A biztonsági mentési cél kötetének több csatlakoztatott lemezre történő csíkozása a IOPS átviteli sebességének növeléséhez a csíkozott köteten
+* A memóriakép konfigurációjának létrehozása az SAP-alapú bekapcsolási szinten, amely több célhelyet használ a memóriakép írásához
 
-Egy lemezkötetet szétosztott keresztül több csatlakoztatott lemez van már tárgyalt [SAP számítási feladatok Azure virtuális gépek DBMS üzembe szempontjai](dbms_guide_general.md). További információ a több címtár segítségével SAP ASE memóriakép konfigurációjában tárolt eljárás sp_config_dump, amelyet hozza létre a memóriakép konfigurációt a dokumentációban tájékozódhat a [Sybase az Adatközpont](http://infocenter.sybase.com/help/index.jsp).
+A lemez kötetének több csatlakoztatott lemezre történő csíkozása az [Azure Virtual Machines adatbázis-kezelői szolgáltatás SAP](dbms_guide_general.md)-munkaterheléshez való üzembe helyezésével kapcsolatos megfontolásokban található. Ha többet szeretne megtudni arról, hogyan lehet több címtárat használni az SAP betekintő memóriaképének konfigurációjában, tekintse meg a tárolt eljárás sp_config_dump kapcsolatos dokumentációt, amely a memóriakép konfigurációjának létrehozásához használatos a [Sybase-Infoközpont](http://infocenter.sybase.com/help/index.jsp).
 
-### <a name="disaster-recovery-with-azure-vms"></a>Vészhelyreállítás az Azure-alapú virtuális gépekhez
-#### <a name="data-replication-with-sap-sybase-replication-server"></a>Az Adatreplikációt a Sybase-replikálás SAP-kiszolgáló
-Az az SAP Sybase replikációs Server SRS-, SAP ASE megoldást kínál, amellyel meleg készenléti adatbázis-tranzakciók aszinkron átvitelét távoli helyre. 
+### <a name="disaster-recovery-with-azure-vms"></a>Vész-helyreállítás Azure-beli virtuális gépekkel
+#### <a name="data-replication-with-sap-sybase-replication-server"></a>Adatreplikáció az SAP Sybase replikációs kiszolgálójával
+Az SAP Sybase replikációs kiszolgálójának (SRS) köszönhetően az SAP-technológia meleg készenléti megoldást kínál az adatbázis-tranzakciók távoli helyre történő átviteléhez aszinkron módon. 
 
-A telepítés és a művelet az SRS működik, valamint funkcionálisan üzemeltetett virtuális gépek Azure-szolgáltatások, mint a helyszíni virtuális gépen.
+Az SRS telepítése és működése az Azure-beli virtuálisgép-szolgáltatásokban üzemeltetett virtuális gépeken is működik.
 
-ASE HADR SAP replikációs kiszolgálón keresztül támogatott. Erősen ajánlott, SAP ASE 16.03 használatával próbálja meg ilyen konfiguráció. Az ilyen konfigurációk telepítésének részletes útmutatója részletesen ebben található [blog](https://blogs.msdn.microsoft.com/saponsqlserver/2018/06/18/installation-procedure-for-sybase-16-3-patch-level-3-always-on-dr-on-suse-12-3-recent-customer-proof-of-concept/).
+Az SAP-replikációs kiszolgálón keresztüli HADR támogatott. Javasoljuk, hogy az SAP-t 16,03-et használja a konfiguráció kipróbálásához. Az ilyen konfigurációk telepítéséhez részletesebb utasítások találhatók ebben a [blogban](https://blogs.msdn.microsoft.com/saponsqlserver/2018/06/18/installation-procedure-for-sybase-16-3-patch-level-3-always-on-dr-on-suse-12-3-recent-customer-proof-of-concept/).

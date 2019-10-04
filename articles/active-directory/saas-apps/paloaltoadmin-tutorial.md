@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f45b0779693433f1b1fad3c5bfd4323eacb9a63b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: dd0ca3bb356319f4661e24b192a5f7e776d14cd0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57838646"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67095072"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---admin-ui"></a>Oktatóanyag: Az Azure Active Directory-integráció a Palo Alto Networks - felügyeleti felhasználói Felületéhez
 
@@ -54,7 +54,7 @@ A Palo Alto Networks - rendszergazdai felhasználói felület az Azure AD-be-int
 
 **Adja hozzá a Palo Alto Networks - felügyeleti felhasználói Felületéhez a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -127,7 +127,7 @@ A Palo Alto Networks - felügyeleti felhasználói Felületéhez, az Azure AD eg
 
     | Name (Név) |  Adatforrás-attribútum|
     | --- | --- |
-    | felhasználónév | user.userprincipalname |
+    | username | user.userprincipalname |
     | adminrole | customadmin |
     | | |
 

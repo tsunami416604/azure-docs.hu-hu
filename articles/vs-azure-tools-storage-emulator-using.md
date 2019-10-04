@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 8/17/2017
 ms.author: ghogen
-ms.openlocfilehash: 4b14fa44f484735f2a5efee4d631a6f48e6a8bf6
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: 39e2071a62d6a1f6ee050f862856815048e50430
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382636"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62128296"
 ---
 # <a name="configuring-and-using-the-storage-emulator-with-visual-studio"></a>A Storage Emulator használatával a Visual Studióval és konfigurálása
 [!INCLUDE [storage-try-azure-tools](../includes/storage-try-azure-tools.md)]

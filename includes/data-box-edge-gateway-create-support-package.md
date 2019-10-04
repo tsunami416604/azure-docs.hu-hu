@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: alkohli
 ms.openlocfilehash: b657ee32e76dd90671f7e91337ced01b925889a1
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57555167"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179578"
 ---
 Minden olyan eszközökkel kapcsolatos problémákat tapasztal, létrehozhat egy támogatási csomagot a rendszer naplókat. Support használja ezt a csomagot a problémák elhárításához. Kövesse az alábbi lépéseket egy támogatási csomag létrehozásához:
 

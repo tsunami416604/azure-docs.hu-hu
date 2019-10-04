@@ -8,13 +8,13 @@ author: kevinlam1
 ms.author: klam
 ms.reviewer: estfan, LADocs
 ms.topic: article
-ms.date: 03/18/2019
-ms.openlocfilehash: 0fbe56ceeeba71bcbb5ef358cd66de15e36508fc
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 05/13/2019
+ms.openlocfilehash: 45eeb20e5c572ddd98244b2e751322fcce1d4b76
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58165096"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65597196"
 ---
 # <a name="test-logic-apps-with-mock-data-by-setting-up-static-results"></a>Statikus eredmények beállításával próbaadatokat rendelkező logikai alkalmazások tesztelése
 
@@ -38,7 +38,7 @@ Például ha úgy állítja be az Outlook 365-höz készült statikus eredménye
 
 1. A művelet, ha szeretne statikus eredmények beállítása kövesse az alábbi lépéseket: 
 
-   1. A művelet jobb felső sarokban, válassza a három pontra (*...* ) gombra, és válassza **statikus eredmény**, például:
+   1. A művelet jobb felső sarokban, válassza a három pontra ( *...* ) gombra, és válassza **statikus eredmény**, például:
 
       ![Válassza ki a "Statikus eredménye" > "Statikus eredmény engedélyezése"](./media/test-logic-apps-mock-data-static-results/select-static-result.png)
 
@@ -137,11 +137,9 @@ Statikus eredmények kikapcsolása nem dobja az értékek az utolsó telepítőf
 
    ![Tiltsa le a statikus eredmények](./media/test-logic-apps-mock-data-static-results/disable-static-results-button.png)
 
-## <a name="get-support"></a>Támogatás kérése
+## <a name="reference"></a>Leírások
 
-* A kérdéseivel látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-
-* A funkciókkal kapcsolatos ötletek elküldéséhez vagy megszavazásához látogasson el a [Logic Apps felhasználói visszajelzéseinek oldalára](https://aka.ms/logicapps-wish).
+Ezt a beállítást az alapul szolgáló munkafolyamat-definíciókhoz kapcsolatos további információkért lásd: [statikus eredmények - adatbázisséma hivatkozása a munkafolyamat-definíciós nyelv](../logic-apps/logic-apps-workflow-definition-language.md#static-results) és [runtimeConfiguration.staticResult - modul konfigurációs beállítások](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-configuration-settings)
 
 ## <a name="next-steps"></a>További lépések
 

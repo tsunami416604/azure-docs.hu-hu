@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: fb00c09680c6a80bc093c6f02ccd8d7269b8748c
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
-ms.translationtype: HT
+ms.openlocfilehash: 42ee1dea8c9735592f6d6c9e0542ca094a6be383
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149478"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65962912"
 ---
 # <a name="caching-with-azure-front-door-service"></a>Az Azure bejárati ajtajának szolgáltatással gyorsítótárazás
 A következő dokumentumban az útválasztási szabályokat, amelyeken engedélyezve gyorsítótárazási viselkedés határozza bejárati ajtajának.
@@ -26,7 +26,7 @@ Azure bejárati ajtajának szolgáltatás egy korlát nélküli fájl mérete na
 
 </br>Után az adattömbök megérkezik a bejárati ajtajának környezet, a gyorsítótárba, és azonnal szolgálja ki a felhasználó számára. Bejárati ajtajának majd előre lekéri a következő adattömbök párhuzamosan. Az előzetes betöltési biztosítja, hogy a tartalom marad egy adattömb előre a felhasználót, ami csökkenti a késést. Ez a folyamat folytatódik, amíg a teljes fájl letöltése (ha szükséges), az összes bájttartományok érhetők el (ha szükséges), vagy az ügyfél megszakítja a kapcsolatot.
 
-</br>Bájttartomány-kéréssel kapcsolatos további információkért olvassa el [RFC 7233](https://web.archive.org/web/20171009165003/ http://www.rfc-base.org/rfc-7233.html).
+</br>Bájttartomány-kéréssel kapcsolatos további információkért olvassa el [RFC 7233](https://web.archive.org/web/20171009165003/http://www.rfc-base.org/rfc-7233.html).
 Bejárati ajtajának gyorsítótárazza a minden olyan adattömböket, fogadásuk, és így nem kell a teljes fájlt a bejárati ajtajának gyorsítótár a gyorsítótárban. A fájl vagy bájt címtartományok esetében későbbi kérelmeket a szolgáltatás a gyorsítótárból szolgálja ki. Ha nem összes adatrészletének lettek gyorsítótárazva, adattömbök kérhet a háttérrendszer lehívását használja. Az optimalizálás támaszkodik a háttérrendszer képességét bájttartomány-kérelmek; támogatásához Ha a háttérrendszer nem támogatja a bájttartomány-kérelmek, az optimalizálás nem elég hatékony.
 
 ## <a name="file-compression"></a>Fájltömörítés
@@ -101,7 +101,7 @@ Kezdettől fogva a gyorsítótár pon és nagybetűk nincsenek megkülönböztet
 ## <a name="cache-expiration"></a>Gyorsítótár elévülési ideje
 A következő sorrendben fejlécek használt érdekében, hogy mennyi ideig lesz egy elemet a gyorsítótárban tárolt:</br>
 1. Cache-Control: s-maxage=\<seconds>
-2. Cache-Control: maxage=\<seconds>
+2. Cache-Control: max-age=\<seconds>
 3. Lejárat: \<http-időpontja >
 
 A Cache-Control válaszfejlécek, amelyek jelzik, hogy a válasz nem gyorsítótárazható, például a Cache-Control: magán, Cache-Control: no-cache és a gyorsítótár-vezérlés: no-store összes régió megfelel. Ha több kérés átvitel közben a jelenléti pontra Irányíthatja az azonos URL-címen, azonban előfordulhat, hogy a válasz közös. Cache-Control nem található az alapértelmezett viselkedés-e, hogy AFD gyorsítótárazzák az erőforrás X idő ahol X véletlenszerűen ki 1 – 3 nap között.

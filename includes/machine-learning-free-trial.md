@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: cgronlun
 ms.openlocfilehash: a9ab5f1265b462d04f2f0eedfcf2948ee1acd42e
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56422863"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67178846"
 ---
 Próbálja ki [Azure Machine Learning Studio](https://studio.azureml.net/?selectAccess=true&o=2&target=_blank), fizetős vagy ingyenes lehetőségek az elérhető. 

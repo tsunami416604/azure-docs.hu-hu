@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: 50778ae742c1ec66857a6c2fa6250dc3d67e5601
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301570"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60531116"
 ---
 # <a name="asynchronous-messaging-patterns-and-high-availability"></a>Aszinkron üzenetkezelési minták és magas rendelkezésre állás
 
@@ -52,7 +52,7 @@ Többféleképpen is üzenet és jogi problémák kezeléséhez, és ezek a mego
 A Service Bus ezeket a problémákat a megoldások az számát tartalmazza. A következő részekben bemutatjuk az összes hiba és azok megfelelő.
 
 ### <a name="throttling"></a>Throttling
-A Service busszal szabályozás együttműködési üzenet arány kezelését teszi lehetővé. Minden egyes Service Bus-csomópont Kezelőkód számos entitás. A Processzor, memória, tárolási és más aspektusokat tekintetében a rendszer minden ilyen entitásnál teszi a növekvő igények szerint. Ha bármelyik ezek értékkorlátozással észlel, használati, amely meghaladja a meghatározott küszöbértékeket, Service Bus is megtagadása egy adott kérelem. A hívó kap egy [ServerBusyException] [ ServerBusyException] és újrapróbálkozás 10 másodperc múlva.
+A Service busszal szabályozás együttműködési üzenet arány kezelését teszi lehetővé. Minden egyes Service Bus-csomópont Kezelőkód számos entitás. A Processzor, memória, tárolási és más aspektusokat tekintetében a rendszer minden ilyen entitásnál teszi a növekvő igények szerint. Ha bármelyik ezek értékkorlátozással észlel, használati, amely meghaladja a meghatározott küszöbértékeket, Service Bus is megtagadása egy adott kérelem. A hívó kap egy [ServerBusyException][ServerBusyException] és újrapróbálkozás 10 másodperc múlva.
 
 A megoldás a kódot kell olvassa el a hibát, és az üzenet bármely újrapróbálkozások halt legalább 10 másodpercig. Mivel a hiba akkor fordulhat elő, megtalálhatja az ügyfél-alkalmazás között, várható, hogy minden darab egymástól függetlenül végrehajtja az újrapróbálkozási logika. A kód csökkentheti a valószínűsége annak, üzenetsor vagy témakör particionálása engedélyezésével szabályozás alatt áll.
 
@@ -62,7 +62,7 @@ Azure-on belüli más összetevők alkalmanként problémákba ütközhet szolg�
 ### <a name="service-bus-failure-on-a-single-subsystem"></a>A Service Bus hiba egyetlen alrendszerek
 Bármilyen alkalmazással esetekben okozhat egy Service Bus inkonzisztenciáját belső összetevője. A Service Bus észleli ezt, ha az alkalmazás diagnosztizálásakor, mi történt a támogatási adatokat gyűjti. Az adatok gyűjtése történik, ha az alkalmazás újraindítása a kísérlet azt vissza egy konzisztens állapotba. Ez a folyamat meglehetősen gyorsan történik, és egy tipikus alkalommal le, ha nem érhető el akár néhány perc tűnő entitásban eredmények sokkal rövidebb.
 
-Ebben az esetben az ügyfélalkalmazást hoz létre egy [System.TimeoutException] [ System.TimeoutException] vagy [Istransient] [ MessagingException] kivétel. A Service Bus egy megoldás erre a problémára formájában, automatizált ügyfél újrapróbálkozási logikát tartalmaz. Az újrapróbálkozási időszak kimerül, és az üzenet nem lesz kézbesítve, a cikkben említett egyéb használatával megvizsgálhatja [leállások és katasztrófák kezelése][handling outages and disasters].
+Ebben az esetben az ügyfélalkalmazást hoz létre egy [System.TimeoutException][System.TimeoutException] vagy [Istransient][MessagingException] kivétel. A Service Bus egy megoldás erre a problémára formájában, automatizált ügyfél újrapróbálkozási logikát tartalmaz. Az újrapróbálkozási időszak kimerül, és az üzenet nem lesz kézbesítve, a cikkben említett egyéb használatával megvizsgálhatja [leállások és katasztrófák kezelése][handling outages and disasters].
 
 ## <a name="next-steps"></a>További lépések
 Most, hogy megismerte az aszinkron üzenetkezelés a Service Bus alapjait, olvassa el további részletek [leállások és katasztrófák kezelése][handling outages and disasters].

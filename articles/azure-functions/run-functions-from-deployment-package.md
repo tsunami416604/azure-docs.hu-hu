@@ -1,69 +1,75 @@
 ---
-title: Egy csomag az Azure Functions futtatása |} A Microsoft Docs
-description: Az Azure Functions futtatókörnyezettel futtathatja a függvényeit csatlakoztatja a központi telepítési csomag fájl tartalmaz, a függvény alkalmazás soubory projektu rendelkezik.
+title: Azure Functions futtatása csomagból | Microsoft Docs
+description: A Azure Functions futtatókörnyezettel futtassa a függvényeket a Function app-projektfájlok fájljait tartalmazó központi telepítési csomagfájl csatlakoztatásával.
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 02/26/2019
+ms.date: 07/15/2019
 ms.author: glenga
-ms.openlocfilehash: 57126c87879da9f99d224457433bbbd5f95ef021
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: b6a2347ff79268cdaf54993952d59bd700b781bc
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336728"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095964"
 ---
-# <a name="run-your-azure-functions-from-a-package-file"></a>Az Azure Functions futtatása egy csomagfájlt
+# <a name="run-your-azure-functions-from-a-package-file"></a>Azure Functions futtatása csomagfájl
 
-> [!NOTE]
-> A jelen cikkben ismertetett funkció nem érhető el a linuxon futó alkalmazások esetében egy [App Service-csomag](functions-scale.md#app-service-plan).
+Az Azure-ban a függvényeket közvetlenül egy központi telepítési csomagból is futtathatja a Function alkalmazásban. A másik lehetőség, hogy a fájlokat `d:\home\site\wwwroot` a Function alkalmazás könyvtárába telepíti.
 
-Az Azure-ban a függvények futtathatja közvetlenül a központi telepítési csomag fájlból a függvényalkalmazásban. A másik lehetőség, hogy fájljait telepíti a `d:\home\site\wwwroot` könyvtárát a függvényalkalmazást.
+Ez a cikk a függvények csomagból való futtatásának előnyeit ismerteti. Azt is bemutatja, hogyan engedélyezheti ezt a funkciót a Function alkalmazásban.
 
-Ez a cikk ismerteti a csomagból a függvények futtatásának előnyeit. Azt is bemutatja, hogyan engedélyezi ezt a funkciót a függvényalkalmazásban.
+> [!IMPORTANT]
+> Ha egy [prémium](functions-scale.md#premium-plan)szintű csomagban telepíti a függvényeket egy Linux-függvény alkalmazásba, mindig a csomagfájl alapján kell futtatnia, és [az alkalmazást a Azure functions Core Tools használatával](functions-run-local.md#project-file-deployment)kell közzétennie.
 
-## <a name="benefits-of-running-from-a-package-file"></a>Az alkalmazáscsomag-fájl futtatásának előnyeit
+## <a name="benefits-of-running-from-a-package-file"></a>A csomagfájl futtatásának előnyei
   
-Az alkalmazáscsomag-fájl futtatásával több előnye is van:
+A csomagfájl számos előnnyel jár:
 
-+ Csökkenti a fájlmásolás zárolás problémák kockázatát.
-+ (Az újraindítás) éles alkalmazások telepíthetők.
-+ Bizonyos is lehet, hogy az alkalmazás fut fájlok.
-+ Növeli a teljesítményt [Azure Resource Manager üzembe helyezések](functions-infrastructure-as-code.md).
-+ Előfordulhat, hogy csökkentse a hidegindítási idejét, különösen nagyméretű npm-csomag fák a JavaScript-függvények.
++ Csökkenti a fájlmásolás-zárolási problémák kockázatát.
++ Üzembe helyezhető egy éles alkalmazásban (újraindítással).
++ Biztos lehet benne, hogy az alkalmazásban futó fájlok vannak.
++ Javítja Azure Resource Manager üzemelő [példányok](functions-infrastructure-as-code.md)teljesítményét.
++ Csökkentheti a hideg kezdési időpontokat, különösen a JavaScript-függvények esetében nagyméretű NPM-csomagokkal.
 
-További információkért lásd: [bejelentéssel](https://github.com/Azure/app-service-announcements/issues/84).
+További információkért tekintse meg [ezt](https://github.com/Azure/app-service-announcements/issues/84)a bejelentést.
 
-## <a name="enabling-functions-to-run-from-a-package"></a>Futtatható egy csomagot a funkciók engedélyezése
+## <a name="enabling-functions-to-run-from-a-package"></a>A függvények csomagból való futtatásának engedélyezése
 
-Ahhoz, hogy a függvényalkalmazás futtatásához egy csomagból, egyszerűen hozzáadhat egy `WEBSITE_RUN_FROM_PACKAGE` beállítása a függvényalkalmazás beállításait. A `WEBSITE_RUN_FROM_PACKAGE` beállítás a következő értékek egyike lehet:
+Ha engedélyezni szeretné, hogy a Function alkalmazás egy csomagból fusson, egyszerűen `WEBSITE_RUN_FROM_PACKAGE` adjon hozzá egy beállítást a Function app-beállításokhoz. A `WEBSITE_RUN_FROM_PACKAGE` beállítás a következő értékek egyike lehet:
 
-| Érték  | Leírás  |
+| Value  | Leírás  |
 |---------|---------|
-| **`1`**  | Windows rendszeren futó függvény alkalmazásokhoz ajánlott. Futtassa a csomag-fájlból a `d:\home\data\SitePackages` mappában található a függvényalkalmazást. Ha nem [üzembe helyezése a zip üzembe helyezésével](#integration-with-zip-deployment), ez utóbbi lehetőség megköveteli a mappát, rendelkeznie kell egy fájlt `packagename.txt`. Ez a fájl csak a mappában, anélkül, hogy minden szóközt az alkalmazáscsomag-fájl nevét tartalmazza. |
-|**`<url>`**  | Szeretne futtatni egy adott csomag-fájl helyét. A Blob storage használata esetén használjon egy privát tároló egy [közös hozzáférésű Jogosultságkód (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#attach-a-storage-account-by-using-a-shared-access-signature-sas) ahhoz, hogy a Functions futtatókörnyezete eléréséhez a csomaghoz. Használhatja a [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) csomag fájlok feltöltése a Blob storage-fiók.         |
+| **`1`**  | A Windows rendszeren futó Function apps esetében ajánlott. Futtasson egy Package fájlból a `d:\home\data\SitePackages` Function alkalmazás mappájából. Ha nem [telepíti a zip-telepítést](#integration-with-zip-deployment), ez a beállítás azt igényli, hogy a mappában is legyen `packagename.txt`egy nevű fájl. Ez a fájl csak a mappában lévő csomagfájl nevét tartalmazza szóköz nélkül. |
+|**`<url>`**  | A futtatni kívánt csomag adott fájljának helye. A blob Storage használatakor egy [megosztott hozzáférési aláírással (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) rendelkező privát tárolót kell használnia, hogy a functions futtatókörnyezet hozzáférhessen a csomaghoz. A [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) használatával tölthet fel csomagokat a blob Storage-fiókjába.         |
 
 > [!CAUTION]
-> Amikor fut egy függvényalkalmazást a Windows, a külső URL-cím lehetőséget poskytne rosszabb hidegindítási teljesítményét. Amikor Windows helyeznek üzembe a függvényalkalmazás, állítsa be `WEBSITE_RUN_FROM_PACKAGE` való `1` , és tegye közzé zip üzembe helyezéssel.
+> Ha Windows rendszeren futtat egy Function alkalmazást, a külső URL-cím beállításával rosszabb az indítási teljesítmény. Ha a Function alkalmazást a Windows rendszerre telepíti, be kell `WEBSITE_RUN_FROM_PACKAGE` állítania `1` és közzé kell tennie a zip-telepítéssel.
 
-Az alábbiakban látható egy függvényalkalmazást az Azure Blob storage-ban üzemeltetett .zip-fájlként való futtatásra konfigurálva:
+Az alábbi példa egy, az Azure Blob Storage-ban üzemeltetett. zip-fájlból való futtatásra konfigurált Function-alkalmazást mutat be:
 
-![WEBSITE_RUN_FROM_ZIP Alkalmazásbeállítás](./media/run-functions-from-deployment-package/run-from-zip-app-setting-portal.png)
+![WEBSITE_RUN_FROM_ZIP](./media/run-functions-from-deployment-package/run-from-zip-app-setting-portal.png)
 
 > [!NOTE]
-> Jelenleg csak a .zip csomag fájlok is támogatottak.
+> Jelenleg csak a. zip csomagfájl támogatottak.
 
-## <a name="integration-with-zip-deployment"></a>Integráció a zip-telepítés
+## <a name="integration-with-zip-deployment"></a>Integráció a zip-telepítéssel
 
-[Üzembe helyezés zip] [ Zip deployment for Azure Functions] Azure App Service-ben, amely lehetővé teszi a függvényalkalmazás projektjét, szolgáltatása a `wwwroot` könyvtár. A projekt üzembe helyezési .zip fájlként van csomagolva. Az API-kkal segítségével helyezze üzembe a csomagot, hogy a `d:\home\data\SitePackages` mappát. Az a `WEBSITE_RUN_FROM_PACKAGE` alkalmazás beállítás értékét `1`, a zip-üzembe helyezési API-k másolja a csomagot a `d:\home\data\SitePackages` ahelyett, hogy a fájlok kibontása `d:\home\site\wwwroot`. Azt is létrehoz a `packagename.txt` fájlt. A függvényalkalmazás van, majd futtassa a csomag egy újraindítás után, és `wwwroot` csak olvashatóvá válik. Zip fejlesztésével kapcsolatos további információkért lásd: [Azure Functions üzembe helyezés Zip](deployment-zip-push.md).
+A [zip-telepítés][Zip deployment for Azure Functions] a Azure app Service szolgáltatása, amely lehetővé teszi a Function app-projekt üzembe `wwwroot` helyezését a címtárban. A projekt. zip telepítési fájlként van csomagolva. Ugyanazokat az API-kat használhatja a csomag `d:\home\data\SitePackages` telepítéséhez a mappába. Az Alkalmazásbeállítások `d:\home\data\SitePackages` `d:\home\site\wwwroot`értékeként a zip -telepítésiAPI-kafájlokmappábamásoljákacsomagot.`1` `WEBSITE_RUN_FROM_PACKAGE` Létrehozza a `packagename.txt` fájlt is. A Function alkalmazás ezután a csomagból indul újra, és `wwwroot` csak olvasható lesz. További információ a zip-telepítésről: [a Azure functions zip központi telepítése](deployment-zip-push.md).
 
-## <a name="adding-the-websiterunfrompackage-setting"></a>A WEBSITE_RUN_FROM_PACKAGE beállítás hozzáadása
+## <a name="adding-the-website_run_from_package-setting"></a>A WEBSITE_RUN_FROM_PACKAGE-beállítás hozzáadása
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
+
+## <a name="troubleshooting"></a>Hibaelhárítás
+
+- A Futtatás a csomagból `wwwroot` csak olvasható, így hibaüzenetet kap, amikor fájlokat ír a könyvtárba.
+- A tar és a gzip formátum nem támogatott.
+- Ez a funkció nem a helyi gyorsítótárral együtt működik.
+- A jobb hidegindító teljesítmény érdekében használja a helyi zip-beállítást (`WEBSITE_RUN_FROM_PACKAGE`= 1).
 
 ## <a name="next-steps"></a>További lépések
 

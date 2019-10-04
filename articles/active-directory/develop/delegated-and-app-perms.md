@@ -1,34 +1,35 @@
 ---
-title: Hogyan ismerhetik fel a delegált és az engedélyek közötti különbségek |} A Microsoft Docs
-description: További információ a delegált és az engedélyek, hogyan használják az ügyfelek számára, és alkalmazásokat fejleszt, az Azure AD-erőforrások által elérhetővé tett
+title: A delegált és az alkalmazás engedélyei közötti különbségek felismerése | Microsoft Docs
+description: A delegált és az alkalmazás engedélyeinek megismerése, hogyan használják az ügyfelek az Azure AD-vel fejlesztett alkalmazások erőforrásai által elérhetővé tett alkalmazásokat
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
-ms.subservice: app-mgmt
+ms.subservice: develop
+ms.custom: aaddev
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/11/2018
-ms.author: celested
+ms.date: 06/28/2019
+ms.author: ryanwi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 90f24d787c09de99f076d1edffabb3dbbbe19a57
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 62a82fd71da5741b6ff7747f92dd38650f6a0fae
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56174146"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68324648"
 ---
-# <a name="how-to-recognize-differences-between-delegated-and-application-permissions"></a>Hogyan ismerhetik fel a delegált és az engedélyek közötti különbségek
+# <a name="how-to-recognize-differences-between-delegated-and-application-permissions"></a>A delegált és az alkalmazás engedélyei közötti különbségek felismerése
 
 ## <a name="recommended-documents"></a>Ajánlott dokumentumok
 
-- Ügyfél-alkalmazások használatával kapcsolatos további [delegált és az alkalmazásengedély-kérelmeket](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#permissions) erőforrások eléréséhez.
-- Részletes útmutatást lásd való [ügyfélalkalmazás alkalmazásengedély-kérelmeket konfigurálása](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)
-- A részletesebben olvashat róluk, megtudhatja, hogyan erőforrás alkalmazásokat közzé [hatókörök](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#scopes) és [alkalmazás-szerepkörök](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#roles) , meghatalmazott manifest ügyfélalkalmazások és Alkalmazásengedélyek, illetve az Azure-ban portál. 
+- További információ arról, hogyan használják az ügyfélalkalmazások a [delegált és az alkalmazásokra vonatkozó engedélyeket](developer-glossary.md#permissions) az erőforrásokhoz való hozzáféréshez.
+- Az [ügyfélalkalmazások engedélyeire vonatkozó kérelmek konfigurálásának](quickstart-configure-app-access-web-apis.md) részletes ismertetését lásd:.
+- További részletekért tekintse meg, hogy az [](developer-glossary.md#scopes) erőforrás-alkalmazások hogyan teszik elérhetővé a hatóköröket és az [alkalmazási szerepköröket](developer-glossary.md#roles) az ügyfélalkalmazások számára, amelyek a Azure Portal delegált és alkalmazási engedélyekkel rendelkeznek. 
 
 ## <a name="next-steps"></a>További lépések
-[Azure ad stackoverflow-n](https://stackoverflow.com/questions/tagged/azure-active-directory)
+[AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

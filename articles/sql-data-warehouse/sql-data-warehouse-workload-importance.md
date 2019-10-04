@@ -1,28 +1,25 @@
 ---
-title: Számítási feladatok fontossági |} A Microsoft Docs
+title: Az Azure SQL Data Warehouse számítási feladatok fontossági |} A Microsoft Docs
 description: Útmutató az Azure SQL Data Warehouse számára a lekérdezések beállításához.
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: workload management
-ms.date: 03/13/2019
+ms.subservice: workload-management
+ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 12e7d9bc22eff14bbf302aed50080412d04a40d3
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: 2a78f342d7e4b14700224bb63598f41ca95322a5
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59616628"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595407"
 ---
-# <a name="sql-data-warehouse-workload-importance-preview"></a>Az SQL Data Warehouse számítási feladatok fontossági (előzetes verzió)
+# <a name="azure-sql-data-warehouse-workload-importance"></a>Az Azure SQL Data Warehouse számítási feladatok fontossági
 
 Ez a cikk bemutatja, hogyan befolyásolhatja a számítási feladatok fontossági a SQL Data Warehouse-kérelmek esetén a végrehajtás sorrendje.
-
-> [!Note]
-> Számítási feladatok besorolás az SQL Data Warehouse Gen2 előzetes verzióban érhető el. Számítási feladat felügyeleti besorolást és a fontosság preview buildek 2019. április 9 vagy újabb kiadás dátummal rendelkező szól.  Felhasználók ne buildek ennél a dátumnál korábban munkaterhelés-kezelés teszteléshez.  Határozza meg, ha a build megadása nem képes a számítási feladatok kezeléséhez, futtassa a select @@version az SQL Data Warehouse-példányhoz való csatlakozáskor.
 
 ## <a name="importance"></a>Fontosság
 
@@ -45,10 +42,10 @@ Az alapvető fontosságú a forgatókönyvben az értékesítési és időjárá
 Vegye figyelembe az alábbi példában:
 
 V1 aktívan fut, és jelölje ki adatokat SalesFact.
-2. negyedévi várólistára végrehajtásához Q1 Várakozás van állítva.  Ez el lett küldve, 9-kor, és be SalesFact partíció kapcsoló új adatokat próbál.
-3. negyedévi 9-kor: 01 elküldésekor, és válassza az SalesFact adatok szeretné.
+2\. negyedévi várólistára végrehajtásához Q1 Várakozás van állítva.  Ez el lett küldve, 9-kor, és be SalesFact partíció kapcsoló új adatokat próbál.
+3\. negyedévi 9-kor: 01 elküldésekor, és válassza az SalesFact adatok szeretné.
 
-Ha v2 és a 3. negyedévi rendelkezik ugyanolyan fontosságúként kezeli, és továbbra is végrehajtja az 1., 3. negyedévi megkezdi a végrehajtása. 2. negyedévi továbbra is a SalesFact kizárólagos zárolást várja.  Ha 2. negyedévi, mint 3. negyedévi magasabb fontossági, 3. negyedévi megvárja, amíg a 2. negyedévi, végrehajtási megkezdése előtt befejeződött.
+Ha v2 és a 3. negyedévi rendelkezik ugyanolyan fontosságúként kezeli, és továbbra is végrehajtja az 1., 3. negyedévi megkezdi a végrehajtása. 2\. negyedévi továbbra is a SalesFact kizárólagos zárolást várja.  Ha 2. negyedévi, mint 3. negyedévi magasabb fontossági, 3. negyedévi megvárja, amíg a 2. negyedévi, végrehajtási megkezdése előtt befejeződött.
 
 ### <a name="non-uniform-requests"></a>Nem egységes kérelmek
 
@@ -56,12 +53,16 @@ Egy másik forgatókönyv, ahol fontos segíthet lekérdezési igények figyelem
   
 Vegye figyelembe az alábbi példa a DW500c:
 
-1., 2. negyedévi, 3. negyedévi és 4. kérdés smallrc lekérdezések futnak.
-5. kérdés a mediumrc erőforrásosztályhoz van elküldött 9-kor.
-6. kérdés smallrc erőforrásosztályhoz van elküldött 9-kor: 01.
+1\., 2. negyedévi, 3. negyedévi és 4. kérdés smallrc lekérdezések futnak.
+5\. kérdés a mediumrc erőforrásosztályhoz van elküldött 9-kor.
+6\. kérdés smallrc erőforrásosztályhoz van elküldött 9-kor: 01.
 
-Mivel az 5. kérdés mediumrc, két egyidejű helyet foglalnak le van szükség.  5. kérdés várnia kell, amíg a futó lekérdezések végrehajtásához két.  Azonban a futó lekérdezések (1., 4) egyik befejeződése után 6. kérdés van ütemezve, azonnal arra az esetre, mert az erőforrások végrehajtsák a lekérdezést.  Ha 5. kérdés magasabb fontossági, mint a 6. kérdés, a 6. kérdés megvárja, amíg a 5. kérdés megkezdheti végrehajtása előtt fut-e.
+Mivel az 5. kérdés mediumrc, két egyidejű helyet foglalnak le van szükség.  5\. kérdés várnia kell, amíg a futó lekérdezések végrehajtásához két.  Azonban a futó lekérdezések (1., 4) egyik befejeződése után 6. kérdés van ütemezve, azonnal arra az esetre, mert az erőforrások végrehajtsák a lekérdezést.  Ha 5. kérdés magasabb fontossági, mint a 6. kérdés, a 6. kérdés megvárja, amíg a 5. kérdés megkezdheti végrehajtása előtt fut-e.
 
 ## <a name="next-steps"></a>További lépések
 
-Az SQL Data Warehouse számítási feladatok besorolási kapcsolatos további információkért lásd: [SQL Warehouse számítási feladatok az Adatbesorolás](sql-data-warehouse-workload-classification.md) és [hozzon létre egy számítási feladat osztályozó](quickstart-create-a-workload-classifier-tsql.md). Lásd: [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) a lekérdezések és a hozzárendelt fontosságát.
+- Besorolás létrehozásával kapcsolatos további információkért lásd: a [MUNKATERHELÉS OSZTÁLYOZÓ létrehozása (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql).  
+- Az SQL Data Warehouse számítási feladatok besorolási kapcsolatos további információkért lásd: [munkaterhelés besorolási](sql-data-warehouse-workload-classification.md).  
+- Tekintse meg a rövid útmutatóban [munkaterhelés-osztályozó létrehozása](quickstart-create-a-workload-classifier-tsql.md) a számítási feladatok besorolás létrehozása.
+- Tekintse meg az útmutatók a [konfigurálása számítási feladatok fontossági](sql-data-warehouse-how-to-configure-workload-importance.md) és annak [kezelése és megfigyelése számítási feladatok kezeléséhez](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md).
+- Lásd: [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) a lekérdezések és a hozzárendelt fontosságát.

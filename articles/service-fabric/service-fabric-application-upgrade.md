@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
 ms.openlocfilehash: e2b407733bcab7bc854e8e3703e53eb474f3425b
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663689"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60615071"
 ---
 # <a name="service-fabric-application-upgrade"></a>Service Fabric-alkalmazás frissítése
 Az Azure Service Fabric-alkalmazás szolgáltatások gyűjteménye. A frissítés során a Service Fabric hasonlítja össze az új [alkalmazásjegyzék](service-fabric-application-and-service-manifests.md) korábbi verziójával, és meghatározza a szolgáltatások az alkalmazás igényelnek frissítést. A Service Fabric a számokat a szolgáltatásban a verziószámokat a korábbi verzióban az alkalmazásjegyzékeket verzióját hasonlítja össze. Ha a szolgáltatás nem változott, a szolgáltatás nincs frissítve.

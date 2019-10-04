@@ -9,11 +9,11 @@ ms.date: 09/15/2018
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: a7c696870e22e1692ca5ed778e47f8e4cc00615a
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59610135"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179020"
 ---
 ## <a name="set-up-the-development-environment"></a>A fejlesztési környezet kialakítása
 
@@ -25,7 +25,7 @@ Ez a szakasz végigvezeti a fejlesztési környezet beállítása. Ez magában f
 
 1. Válassza ki a főmenü **fájl** > **új** > **projekt**.
 
-1. Az a **új projekt** párbeszédpanelen jelölje ki **webes** > **ASP.NET Web Application (.NET Framework)**. Az a **neve** mezőben adja meg **StorageAspNet**. Kattintson az **OK** gombra.
+1. Az a **új projekt** párbeszédpanelen jelölje ki **webes** > **ASP.NET Web Application (.NET Framework)** . Az a **neve** mezőben adja meg **StorageAspNet**. Kattintson az **OK** gombra.
 
     ![Képernyőkép az Új projekt párbeszédpanelről](./media/vs-storage-aspnet-getting-started-setup-dev-env/vs-storage-aspnet-getting-started-setup-dev-env-1.png)
 

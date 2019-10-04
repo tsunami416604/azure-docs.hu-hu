@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 04/03/2017
 ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: 25ef2541dfa0b4cbd6e11d64381da645acfe653a
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: c1386f4058f9490bad0161b680005db6031bace1
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259295"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491531"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>Automatikus skálázási műveletek segítségével szeretne küldeni az e-mailt és webhookot riasztási értesítéseket az Azure monitorban
 Ez a cikk bemutatja, hogyan lehet beállítani eseményindítók, hogy hívás meghatározott webes URL-címek, vagy küldjön e-mailek automatikus skálázási műveletek az Azure-ban alapján.  
 
-## <a name="webhooks"></a>Webhookok
+## <a name="webhooks"></a>webhooks
 Webhookok lehetővé teszik az Azure-riasztási értesítések átirányítása utófeldolgozási vagy egyéni értesítések más rendszerekre. Például a riasztás útválasztást, amely képes kezelni egy bejövő webes kérelem küldése SMS-log-hibák, értesítse csevegés használatával, vagy üzenetküldés egy team services-szolgáltatások, és így tovább. A webhook URI érvényes HTTP vagy HTTPS-végpontot kell lennie.
 
 ## <a name="email"></a>E-mail
@@ -62,11 +62,11 @@ A REST API vagy a Resource Manager-sablon használatakor közé tartozik az ért
 
 | Mező | Kötelező? | Leírás |
 | --- | --- | --- |
-| művelet |igen |Az értéknek kell lennie a "Méretezés" |
+| operation |igen |Az értéknek kell lennie a "Méretezés" |
 | sendToSubscriptionAdministrator |igen |érték lehet "igaz" vagy "false" |
 | sendToSubscriptionCoAdministrators |igen |érték lehet "igaz" vagy "false" |
 | customEmails |igen |érték lehet null értékű [] vagy e-mailek karakterlánc tömbje |
-| Webhookok |igen |az érték lehet null értékű vagy érvénytelen Uri |
+| webhooks |igen |az érték lehet null értékű vagy érvénytelen Uri |
 | serviceUri |igen |egy érvényes https Uri |
 | properties |igen |értéknek üresnek kell lennie {} vagy kulcs-érték párok |
 
@@ -106,12 +106,12 @@ Ha az automatikus skálázási értesítés jön létre, a webhook hasznos adata
 | Mező | Kötelező? | Leírás |
 | --- | --- | --- |
 | status |igen |Az állapot, amely azt jelzi, hogy létrejött-e egy automatikus skálázási műveletet |
-| művelet |igen |Példányok tervezni "Horizontális Felskálázás" lesz, és példányok csökkenését, a "Méretezés a" |
-| Környezet |igen |Az automatikus skálázási művelet környezet |
-| időbélyeg |igen |Időbélyeg, ha az automatikus skálázási műveletet |
+| operation |igen |Példányok tervezni "Horizontális Felskálázás" lesz, és példányok csökkenését, a "Méretezés a" |
+| context |igen |Az automatikus skálázási művelet környezet |
+| timestamp |igen |Időbélyeg, ha az automatikus skálázási műveletet |
 | id |Igen |Automatikus skálázási beállítás erőforrás-kezelő azonosítója |
-| név |Igen |Az automatikus skálázási beállítás neve |
-| részletek |Igen |A művelet az autoscale szolgáltatás igénybe vett és a példányszám módosítása ismertetése |
+| name |Igen |Az automatikus skálázási beállítás neve |
+| details |Igen |A művelet az autoscale szolgáltatás igénybe vett és a példányszám módosítása ismertetése |
 | subscriptionId |Igen |A célként megadott erőforrás méretezése folyamatban van, előfizetés-azonosítója |
 | resourceGroupName |Igen |A célként megadott erőforrás méretezése folyamatban van, az erőforráscsoport neve |
 | resourceName |Igen |A célként megadott erőforrás folyamatban méretezett neve |
@@ -120,5 +120,5 @@ Ha az automatikus skálázási értesítés jön létre, a webhook hasznos adata
 | portalLink |Igen |A célként megadott erőforrás összefoglaló oldala az Azure portál hivatkozása |
 | oldCapacity |Igen |Az aktuális (régi) példányok száma, amikor az automatikus méretezés tartott egy skálázási műveletet |
 | newCapacity |Igen |Az új példányok száma, amelyek az automatikus méretezés az erőforrás méretezése |
-| Tulajdonságok |Nem |Választható. < Kulcs értéke > Set párok (például Dictionary < karakterlánc, karakterlánc >). A Tulajdonságok mező kitöltése nem kötelező. Egy egyéni felhasználói felület vagy a Logic app-alapú munkafolyamat, a kulcsok és értékek, amelyek használatával a hasznos átadhatók is megadhatja. Egyéni tulajdonságok vissza átadása a kimenő webhook hívása egy másik módja az, hogy a webhook URI-JÁT magát (lekérdezési paraméterek) használata |
+| properties |Nem |Választható. < Kulcs értéke > Set párok (például Dictionary < karakterlánc, karakterlánc >). A Tulajdonságok mező kitöltése nem kötelező. Egy egyéni felhasználói felület vagy a Logic app-alapú munkafolyamat, a kulcsok és értékek, amelyek használatával a hasznos átadhatók is megadhatja. Egyéni tulajdonságok vissza átadása a kimenő webhook hívása egy másik módja az, hogy a webhook URI-JÁT magát (lekérdezési paraméterek) használata |
 

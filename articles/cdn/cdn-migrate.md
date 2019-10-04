@@ -7,7 +7,7 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/21/2018
 ms.author: magattus
 ms.custom: ''
-ms.openlocfilehash: 7768dde424aedc295b53512db50c9dfc9db9ab8c
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: c11155223220c075c28769a19875691783cce3bd
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091470"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593625"
 ---
 # <a name="migrate-an-azure-cdn-profile-from-standard-verizon-to-premium-verizon"></a>Standard – Verizon Azure CDN-profil át prémium – Verizon
 
@@ -37,12 +37,12 @@ Frissítése az **Azure CDN Standard verizon** profil, a kapcsolattartási [Supp
 ## <a name="profile-comparison"></a>Profil összehasonlítása
 **Az Azure CDN Premiumhoz a Verizontól** profilok a következő különbségeket kell **Azure CDN Standard verizon** profilok:
 - Az egyes Azure CDN szolgáltatások, például a [tömörítési](cdn-improve-performance.md), [gyorsítótár-szabályokkal](cdn-caching-rules.md), és [geoszűrési](cdn-restrict-access-by-country.md), nem használhatja az Azure CDN-felület, a Verizon portálon keresztül kell használnia a **Kezelés** gombra.
-- API: Eltérően Standard – Verizon, az nem az API-t használhatja ezeket a Premium Verizon portálról elért szolgáltatások. Az API segítségével azonban más közös szolgáltatások, például a végpont létrehozása/törlése, a gyorsítótárazott eszközök végleges törlése, betöltése és a egy egyéni tartomány engedélyezése vagy letiltása.
-- Díjszabás: Prémium – Verizon adatforgalmi, mint a Standard – Verizon van egy másik árképzési struktúráját. További információkért lásd: [Content Delivery Network díjszabása](https://azure.microsoft.com/pricing/details/cdn/).
+- API: Ellentétben a Standard – Verizon, nem használható az API-t ezek a Funkciók, amelyekhez hozzáférnek a Premium Verizon portálról. Az API segítségével azonban más közös szolgáltatások, például a végpont létrehozása/törlése, a gyorsítótárazott eszközök végleges törlése, betöltése és a egy egyéni tartomány engedélyezése vagy letiltása.
+- Díjszabás: Prémium – Verizon adatátvitelt, mint a Standard – Verizon rendelkezik a különböző árképzési struktúráját. További információkért lásd: [Content Delivery Network díjszabása](https://azure.microsoft.com/pricing/details/cdn/).
 
 **Az Azure CDN Premiumhoz a Verizontól** profilok a következő további szolgáltatások rendelkezik:
-- [Jogkivonat-hitelesítés](cdn-token-auth.md): lehetővé teszi a felhasználóknak le és használható jogkivonatot beolvasni a biztonságos erőforrásokhoz.
-- [Szabálymotor](cdn-rules-engine.md): segítségével testre szabhatja a HTTP-kérések kezelésének módja.
+- [Jogkivonat-hitelesítés](cdn-token-auth.md): Lehetővé teszi a felhasználóknak le és használható jogkivonatot beolvasni a biztonságos erőforrásokhoz.
+- [Szabálymotor](cdn-rules-engine.md): Lehetővé teszi, hogy testre szabhatja a HTTP-kérések kezelésének módja.
 - Fejlett analitikai eszközöket:
    - [Részletes HTTP-elemzés](cdn-advanced-http-reports.md)
    - [Peremhálózati Teljesítményelemzés](cdn-edge-performance.md)

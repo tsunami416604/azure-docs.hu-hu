@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
-ms.openlocfilehash: 11d0648ee5090f02cb96c2d42a8d90cc3ea0ed28
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 279660d903b3b0e893c3ccddb89da7c6dc42fa09
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59551337"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205077"
 ---
 # <a name="configure-a-linux-php-app-for-azure-app-service"></a>Az Azure App Service Linux PHP-alkalmazás konfigurálása
 
@@ -105,7 +105,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 ## <a name="access-environment-variables"></a>Hozzáférés a környezeti változókhoz
 
-Az App Service-ben is [állítsa be az alkalmazásbeállításokat](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#app-settings) kívül a kódját. Ezután elérheti azokat a standard használatával [getenv()](https://secure.php.net/manual/function.getenv.php) mintát. Például egy alkalmazás-beállítás eléréséhez nevű `DB_HOST`, a következő kóddal:
+Az App Service-ben is [állítsa be az alkalmazásbeállításokat](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) kívül a kódját. Ezután elérheti azokat a standard használatával [getenv()](https://secure.php.net/manual/function.getenv.php) mintát. Például egy alkalmazás-beállítás eléréséhez nevű `DB_HOST`, a következő kóddal:
 
 ```php
 getenv("DB_HOST")
@@ -141,15 +141,15 @@ Népszerű webes keretrendszerek, hozzáférést biztosítanak a `X-Forwarded-*`
 
 ## <a name="customize-phpini-settings"></a>A php.ini fájl beállítások testre szabása
 
-Ha módosítania kell a PHP-telepítés, bármelyikét módosíthatja a [php.ini irányelvek](http://www.php.net/manual/ini.list.php) az alábbi lépéseket.
+Ha módosítania kell a PHP-telepítés, bármelyikét módosíthatja a [php.ini irányelvek](https://www.php.net/manual/ini.list.php) az alábbi lépéseket.
 
 > [!NOTE]
 > A legjobb módszer, a PHP-verzió és az aktuális *php.ini* konfigurálás az, hogy a hívás [phpinfo()](https://php.net/manual/function.phpinfo.php) az alkalmazásban.
 >
 
-### <a name="customize-non-phpinisystem-directives"></a>Nem PHP_INI_SYSTEM irányelvek testreszabása
+### <a name="Customize-non-PHP_INI_SYSTEM directives"></a>Testreszabása – nem-PHP_INI_SYSTEM irányelvek
 
-PHP_INI_USER PHP_INI_PERDIR és PHP_INI_ALL irányelvek testreszabása (lásd: [php.ini irányelvek](http://www.php.net/manual/ini.list.php)), adjon hozzá egy *.htaccess* fájlt az alkalmazás gyökérkönyvtárára.
+PHP_INI_USER PHP_INI_PERDIR és PHP_INI_ALL irányelvek testreszabása (lásd: [php.ini irányelvek](https://www.php.net/manual/ini.list.php)), adjon hozzá egy *.htaccess* fájlt az alkalmazás gyökérkönyvtárára.
 
 Az a *.htaccess* fájlt, adja hozzá a használatával irányelveket a `php_value <directive-name> <value>` szintaxist. Példa:
 
@@ -165,11 +165,11 @@ php_value upload_max_filesize 10M
 
 Telepítse újra az alkalmazást, az a módosításokat, és indítsa újra. Ha az üzembe helyezés a kudu használatával (például [Git](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)), üzembe helyezés után automatikusan újraindul.
 
-Az alternatív *.htaccess*, használható [ini_set()](http://www.php.net/manual/function.ini-set.php) ezeket az irányelveket nem PHP_INI_SYSTEM szabhatja testre az alkalmazásban.
+Az alternatív *.htaccess*, használható [ini_set()](https://www.php.net/manual/function.ini-set.php) ezeket az irányelveket nem PHP_INI_SYSTEM szabhatja testre az alkalmazásban.
 
-### <a name="customize-phpinisystem-directives"></a>PHP_INI_SYSTEM irányelvek testreszabása
+### <a name="customize-php_ini_system-directives"></a>PHP_INI_SYSTEM irányelvek testreszabása
 
-PHP_INI_SYSTEM irányelvek testreszabása (lásd: [php.ini irányelvek](http://www.php.net/manual/ini.list.php)), nem használhatja a *.htaccess* megközelítést. Az App Service biztosítja, hogy egy külön mechanizmus használatával a `PHP_INI_SCAN_DIR` alkalmazásbeállítást.
+PHP_INI_SYSTEM irányelvek testreszabása (lásd: [php.ini irányelvek](https://www.php.net/manual/ini.list.php)), nem használhatja a *.htaccess* megközelítést. Az App Service biztosítja, hogy egy külön mechanizmus használatával a `PHP_INI_SCAN_DIR` alkalmazásbeállítást.
 
 Először futtassa a következő parancsot a [Cloud Shell](https://shell.azure.com) nevű beállítása alkalmazás hozzáadása `PHP_INI_SCAN_DIR`:
 
@@ -187,7 +187,7 @@ Hozzon létre egy könyvtárat a `/home/site` nevű `ini`, majd hozzon létre eg
 > Az App Service-ben a beépített Linux-tárolókban lévő */home* megőrzött megosztott tárolóként szolgál. 
 >
 
-Módosítsa az értéket, például [expose_php](http://php.net/manual/ini.core.php#ini.expose-php) futtassa a következő parancsokat:
+Módosítsa az értéket, például [expose_php](https://php.net/manual/ini.core.php#ini.expose-php) futtassa a következő parancsokat:
 
 ```bash
 cd /home/site
@@ -237,7 +237,7 @@ Amikor működő PHP-alkalmazás működését eltérően az App Service-ben, va
     - Attól függően, a *composer.json*, különböző csomagokban megtalál mindent éles üzemmódhoz előfordulhat, hogy telepíteni (`require` és `require-dev`).
     - Bizonyos webes keretrendszerek statikus fájlok eltérően éles módban helyezheti üzembe.
     - Bizonyos webes keretrendszerek egyéni indítási parancsfájlok felhasználhatja az éles módban való futtatáskor.
-- Hibakeresési módban futtatja az alkalmazást az App Service-ben. Például a [Laravel](http://meanjs.org/), konfigurálhatja az alkalmazás hibakeresési üzeneteket által éles környezetben kimeneti [beállítás a `APP_DEBUG` Alkalmazásbeállítás `true` ](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
+- Hibakeresési módban futtatja az alkalmazást az App Service-ben. Például a [Laravel](https://meanjs.org/), konfigurálhatja az alkalmazás hibakeresési üzeneteket által éles környezetben kimeneti [beállítás a `APP_DEBUG` Alkalmazásbeállítás `true` ](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings).
 
 ### <a name="robots933456"></a>robots933456
 

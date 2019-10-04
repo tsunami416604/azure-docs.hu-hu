@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 9f738ab5022d1378925d920818e3f89fc2a1ee6d
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 6916eea26f03d7b9cd0b3792fa65354619f97f74
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670523"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828509"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>A fejlesztőkörnyezet előkészítése Linuxon
 > [!div class="op_single_selector"]
@@ -87,8 +87,7 @@ Az SDK és a kapcsolódó futtatókörnyezet-csomag apt-get parancssori eszköz 
 4. Adja hozzá az új Gnu Privacy Guard- (GnuPG- vagy GPG-) kulcsot az APT-kulcstárhoz.
 
     ```bash
-    sudo apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893
-    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 417A0893
+    curl -fsSL https://packages.microsoft.com/keys/msopentech.asc | sudo apt-key add -
     ```
 
 5. Adja hozzá a hivatalos Docker GPG-kulcsot az APT-kulcstárhoz.
@@ -104,10 +103,10 @@ Az SDK és a kapcsolódó futtatókörnyezet-csomag apt-get parancssori eszköz 
     sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
     ```
 
-7. Adja hozzá Azul JDK-kulcsot az APT-kulcstárhoz és beállítása a tárházához.
+7. Adja hozzá az Azul JDK-kulcsot az APT-kulcstartóhoz, és állítsa be az adattárát.
 
     ```bash
-    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0x219BD9C9
+    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0xB1998361219BD9C9
     sudo apt-add-repository "deb http://repos.azul.com/azure-only/zulu/apt stable main"
     ```
 
@@ -216,19 +215,20 @@ A Service Fabric olyan szerkezetkialakító eszközöket biztosít, amelyek seg�
 1. Telepítse a Node.js és az npm eszközt a gépre.
 
     ```bash
-    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
-    nvm install node
+    sudo add-apt-repository "deb https://deb.nodesource.com/node_8.x $(lsb_release -s -c) main"
+    sudo apt-get update
+    sudo apt-get install nodejs
     ```
 2. Telepítse a gépre a [Yeoman](https://yeoman.io/) sablongenerátort az npm-ből.
 
     ```bash
-    npm install -g yo
+    sudo npm install -g yo
     ```
 3. Telepítse a Service Fabric Yeo tárológenerátort és futtatható vendégalkalmazás-generátort az npm-ből.
 
     ```bash
-    npm install -g generator-azuresfcontainer  # for Service Fabric container application
-    npm install -g generator-azuresfguest      # for Service Fabric guest executable application
+    sudo npm install -g generator-azuresfcontainer  # for Service Fabric container application
+    sudo npm install -g generator-azuresfguest      # for Service Fabric guest executable application
     ```
 
 A generátorok telepítése után hozzon létre futtatható vendégalkalmazásokat vagy tárolószolgáltatásokat a `yo azuresfguest` vagy a `yo azuresfcontainer` futtatásával.
@@ -239,7 +239,7 @@ Telepítse az [Ubuntu rendszerre készült .NET Core 2.0 SDK-t](https://www.micr
 
 ## <a name="set-up-java-development"></a>Java fejlesztői környezet beállítása
 
-A Service Fabric-szolgáltatások Java használatával hozhat létre, telepítse a gradle-t az összeállítási feladatok futtatásához. Futtassa az alábbi paranccsal telepíthető a gradle-t. A Service Fabric Java-kódtárakat a Mavenből kéri le a rendszer.
+Ha a Java-t használó Service Fabric-szolgáltatásokat szeretne létrehozni, telepítse a Gradle-t a Build-feladatok futtatásához. Futtassa az alábbi parancsot a Gradle telepítéséhez. A Service Fabric Java-kódtárakat a Mavenből kéri le a rendszer.
 
 
 * Ubuntu
@@ -272,7 +272,7 @@ A Service Fabric Eclipse beépülő modulját a Java-fejlesztőknek vagy a Java 
 > 
 > Ubuntu rendszeren ajánlott közvetlenül az Eclipse webhelyéről elvégezni a telepítést csomagtelepítő helyett (`apt` vagy `apt-get`). Így biztosan az Eclipse legfrissebb verzióját fogja beszerezni. Telepítheti a Java-fejlesztőknek vagy a Java EE-fejlesztőknek készült Eclipse IDE-t.
 
-1. Az Eclipse-ben győződjön meg arról, hogy telepítve van az Eclipse Neon vagy egy újabb verzió, és a Buildship 2.2.1-es vagy újabb verziója. A telepített összetevők verzióját a **Help** > **About Eclipse** > **Installation Details** (Súgó > Az Eclipse névjegye > Telepítés részletei) lehetőség kiválasztásával ellenőrizheti. Webhelyen található utasításokat a Buildship frissítéséhez [Eclipse Buildship: Eclipse Plug-ins for Gradle][buildship-update].
+1. Az Eclipse-ben győződjön meg arról, hogy telepítve van az Eclipse Neon vagy egy újabb verzió, és a Buildship 2.2.1-es vagy újabb verziója. A telepített összetevők verzióját a **Help** > **About Eclipse** > **Installation Details** (Súgó > Az Eclipse névjegye > Telepítés részletei) lehetőség kiválasztásával ellenőrizheti. A kiépítés az [Eclipse-összeállítás utasításait követve frissíthető: Eclipse beépülő modulok a Gradle][buildship-update].
 
 2. A Service Fabric beépülő modul telepítéséhez válassza a **Help** > **Install New Software** (Súgó, Új szoftver telepítése) elemet.
 
@@ -333,7 +333,6 @@ A Service Fabric SDK-k eltávolításához futtassa a következő parancsokat.
 * [Linux fejlesztőkörnyezet előkészítése Windowson](service-fabric-local-linux-cluster-windows.md)
 * [Alkalmazások kezelése a Service Fabric parancssori felületével](service-fabric-application-lifecycle-sfctl.md)
 * [Service Fabric – Különbségek Windows és Linux rendszeren](service-fabric-linux-windows-differences.md)
-* [Az operációs rendszer javításának automatizálása a Linux-fürtön](service-fabric-patch-orchestration-application-linux.md)
 * [A Service Fabric parancssori felület használatának első lépései](service-fabric-cli.md)
 
 <!-- Links -->

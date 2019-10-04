@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c9d707d1a76b3b5913d66745767df8e84362a192
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 578f7a01c22bd5aafd4e4ac08c9f5ab78e340a34
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57890851"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65606514"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>A csoportos adatelemzési folyamat működés közben: az SQL Server használata
 Ebben az oktatóanyagban vezeti végig a folyamat létrehozásának és üzembe helyezésének egy gépi tanulási modellt az SQL Server és a egy nyilvánosan elérhető adatkészlet használatával – a [NYC Taxi lelassítja](https://www.andresmh.com/nyctaxitrips/) adatkészlet. Az eljárást követi a szokásos adatelemzési munkafolyamathoz: fogadni, és Fedezze fel az adatokat, Funkciók tervezése, tanulás egyszerűbbé tételével majd hozhat létre és helyezhet üzembe modelleket.
@@ -515,7 +515,7 @@ Ebben a példában egy folyamatos numerikus mező alakítja előre beállított 
     cursor.commit()
 
 #### <a name="feature-engineering-extract-location-features-from-decimal-latitudelongitude"></a>A szolgáltatás műszaki: Hely jellemzők kinyerése decimális szélességi és hosszúsági koordinátákkal
-Ebben a példában felszámolja szélességi és/vagy hosszúság mező decimális ábrázolása több régióban mezőibe eltérő a granularitási, mint például ország, város, város, letiltása, stb. Vegye figyelembe, hogy az új földrajzi mezők nincsenek leképezve a tényleges helyekre. A leképezés geocode helyeken további információkért lásd: [a Bing Maps REST szolgáltatások](https://msdn.microsoft.com/library/ff701710.aspx).
+Ebben a példában felszámolja szélességi és/vagy hosszúság mező decimális ábrázolása több régióban mezőibe eltérő a granularitási, mint például ország/régió, város, város, letiltása, stb. Vegye figyelembe, hogy az új földrajzi mezők nincsenek leképezve a tényleges helyekre. A leképezés geocode helyeken további információkért lásd: [a Bing Maps REST szolgáltatások](https://msdn.microsoft.com/library/ff701710.aspx).
 
     nyctaxi_one_percent_insert_col = '''
         ALTER TABLE nyctaxi_one_percent

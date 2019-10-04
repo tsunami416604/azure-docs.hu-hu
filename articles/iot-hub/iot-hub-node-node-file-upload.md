@@ -1,6 +1,6 @@
 ---
-title: Fájlok feltöltése eszközökről az Azure IoT hubhoz a Node |} A Microsoft Docs
-description: Hogyan tölthetők fel fájlok egy eszközről a felhőbe az Azure IoT eszközoldali SDK for node.js használatával. Feltöltött fájlok vannak tárolva egy Azure storage blob-tárolóba.
+title: Fájlok feltöltése az eszközökről az Azure IoT Hubba a Node használatával | Microsoft Docs
+description: Fájlok feltöltése egy eszközről a felhőbe a Node. js-hez készült Azure IoT Device SDK-val. A feltöltött fájlok tárolása egy Azure Storage blob-tárolóban történik.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -9,52 +9,52 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 06/28/2017
-ms.openlocfilehash: 7ad2c9dd89843a36a786eeefee8403d32027e11c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 8747111921df494b8d5618dc8d6ece99fa821e47
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59274518"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147637"
 ---
-# <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>Töltse fel a fájlokat az eszközről a felhőbe, az IoT hubbal
+# <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-nodejs"></a>Fájlok feltöltése az eszközről a felhőbe IoT Hub (node. js) használatával
 
 [!INCLUDE [iot-hub-file-upload-language-selector](../../includes/iot-hub-file-upload-language-selector.md)]
 
-Ebben az oktatóanyagban található kódot használja fel a [küldése a felhőből az eszközre irányuló üzenetek IoT hubbal való](iot-hub-node-node-c2d.md) megmutatjuk, hogyan használható az oktatóanyagban a [fájl feltöltése IoT Hub képességeiről](iot-hub-devguide-file-upload.md) feltölteni egy fájlt [az Azure blob tárolási](../storage/index.yml). Ez az oktatóanyag a következőket mutatja be:
+Ez az oktatóanyag a felhőből az eszközre küldött [üzenetek küldésére](iot-hub-node-node-c2d.md) szolgáló kódot a IoT hub oktatóanyag segítségével mutatja be, amelyből megtudhatja, hogyan tölthet fel fájlokat az [Azure Blob Storage](../storage/index.yml)-ba a [IoT hub](iot-hub-devguide-file-upload.md) fájlfeltöltés funkciójának használatával. Ez az oktatóanyag a következőket mutatja be:
 
-- Biztonságosan adja meg az eszköz egy Azure blob-URI-fájl feltöltése.
-- 
-- Az IoT Hub fájl feltöltése értesítések használatával elindíthatja a feldolgozása a fájlt az alkalmazás háttérrendszere.
+* A fájlok feltöltéséhez biztonságosan biztosítson egy Azure Blob URI-t tartalmazó eszközt.
 
-A [IoT Hub használatának első lépései](quickstart-send-telemetry-node.md) az oktatóanyag bemutatja az IoT Hub alapvető eszköz-felhő üzenetkezelési funkcióit. Bizonyos esetekben azonban leképezése nem tudja az eszközöket az IoT Hub elfogad viszonylag kis eszköz – felhő üzenetek küldése az adatok egyszerűen. Példa:
+* A fájl feltöltésével kapcsolatos értesítéseket használva aktiválja a fájlt az alkalmazás hátterében lévő IoT Hub.
 
-*  Nagy méretű képeket tartalmazó fájlok
-*  Videók
-*  Rezgés adatok mintavételezése, nagyon gyakori
-*  Valamilyen előre feldolgozott adatokat.
+Az [eszközről az IoT hub-ra való telemetria küldése](quickstart-send-telemetry-node.md) az eszközről a felhőbe irányuló alapszintű üzenetküldési funkciókat mutatja be IoT hub. Bizonyos helyzetekben azonban nem lehet könnyedén leképezni az eszközök által a IoT Hub által elfogadott viszonylag kis eszközről a felhőbe küldött üzeneteket. Példa:
 
-Ezek a fájlok jellemzően a felhőben, mint például az eszközök használatával feldolgozott kötegelt [Azure Data Factory](../data-factory/introduction.md) vagy a [Hadoop](../hdinsight/index.yml) stack. Ha egy eszközről kell felvidéki fájlok, biztonságának és megbízhatóságának IoT-központ továbbra is használhatja.
+* Képeket tartalmazó nagyméretű fájlok
+* Videók
+* Nagy gyakorisággal vett vibrációs adatelemzés
+* Az előre feldolgozott adatmennyiségek valamilyen formája.
 
-Ez az oktatóanyag végén két Node.js-konzolalkalmazással futtassa:
+Ezeket a fájlokat a rendszer általában a felhőben dolgozza fel a felhőben olyan eszközökkel, mint a [Azure Data Factory](../data-factory/introduction.md) vagy a [Hadoop](../hdinsight/index.yml) stack. Ha egy eszközről szeretne fájlokat felvenni, továbbra is használhatja IoT Hub biztonságát és megbízhatóságát.
 
-* **SimulatedDevice.js**, amely feltölt egy fájlt, a storage-bA az IoT hub által biztosított SAS URI használatával.
+Az oktatóanyag végén két Node. js-konzol alkalmazást futtat:
 
-* **ReadFileUploadNotification.js**, amely a fájl feltöltése értesítéseket fogad az IoT hubról.
+* **SimulatedDevice. js**, amely egy fájlt tölt fel a Storage-ba az IoT hub által biztosított sas URI használatával.
+
+* **ReadFileUploadNotification. js**, amely befogadja a fájlfeltöltés-értesítéseket az IoT hub-ból.
 
 > [!NOTE]
-> IoT Hub által támogatott számos eszközplatformok és nyelveken (például a C, .NET, Javascript, Python és Java) az Azure IoT eszközoldali SDK-k használatával. Tekintse meg az [Azure IoT fejlesztői központ] részletesen ismerteti, hogy az eszköz csatlakoztatása Azure IoT Hub számára.
+> IoT Hub számos eszköz-platformot és nyelvet támogat (beleértve a C, .NET, JavaScript, Python és Java rendszereket) az Azure IoT Device SDK-k használatával. Tekintse meg az [Azure IoT fejlesztői központ] című témakört, amely részletesen ismerteti, hogyan csatlakoztatható az eszköz az Azure IoT Hubhoz.
 
-Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
+## <a name="prerequisites"></a>Előfeltételek
 
-* A Node.js 4.0.x vagy újabb verziója.
+* Node. js 10.0. x vagy újabb verzió. [A fejlesztési környezet előkészítése](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) ismerteti, hogyan telepítheti a Node. js-t ehhez az oktatóanyaghoz Windows vagy Linux rendszeren.
 
-* Aktív Azure-fiók. (Ha nincs fiókja, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) mindössze néhány perc alatt.)
+* Aktív Azure-fiók. (Ha nincs fiókja, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) .)
 
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
 
-## <a name="upload-a-file-from-a-device-app"></a>Töltsön fel egy fájlt egy eszköz alkalmazásból
+## <a name="upload-a-file-from-a-device-app"></a>Fájl feltöltése egy eszköz alkalmazásból
 
-Ebben a szakaszban az eszközalkalmazás feltölthet egy fájlt az IoT hub létrehozása.
+Ebben a szakaszban létrehozza az eszköz alkalmazást, hogy feltöltse a fájlt az IoT hub-ba.
 
 1. Hozzon létre egy ```simulateddevice``` nevű üres mappát.  A(z) ```simulateddevice``` mappában hozzon létre egy package.json fájlt úgy, hogy beírja a következő parancsot a parancssorba.  Fogadja el az összes alapértelmezett beállítást:
 
@@ -80,7 +80,7 @@ Ebben a szakaszban az eszközalkalmazás feltölthet egy fájlt az IoT hub létr
     var clientFromConnectionString = require('azure-iot-device-mqtt').clientFromConnectionString;
     ```
 
-5. Adjon hozzá egy `deviceconnectionstring` változót, és ezzel hozzon létre egy **Ügyfél** példányt.  Cserélje le `{deviceconnectionstring}` létrehozott az eszköz nevére az *hozzon létre egy IoT hubot* szakaszban:
+5. Adjon hozzá egy `deviceconnectionstring` változót, és ezzel hozzon létre egy **Ügyfél** példányt.  A `{deviceconnectionstring}` helyére írja be az *IoT hub létrehozása* szakaszban létrehozott eszköz nevét:
 
     ```javascript
     var connectionString = '{deviceconnectionstring}';
@@ -88,16 +88,16 @@ Ebben a szakaszban az eszközalkalmazás feltölthet egy fájlt az IoT hub létr
     ```
 
     > [!NOTE]
-    > Az egyszerűség kedvéért a kapcsolati karakterláncot a kódban szerepel: Ez nem ajánlott gyakorlat, és a használati esetekre és architektúra függően érdemes figyelembe venni a titkos kulcs tárolása biztonságosabb módszert is.
+    > Az egyszerűség kedvéért a kód tartalmazza a kapcsolódási karakterláncot: ez nem ajánlott eljárás, és a használati esettől és az architektúrától függően érdemes lehet megfontolni a titok tárolásának biztonságosabb módjait.
 
-6. Adja hozzá az ügyfél kapcsolódni a következő kódot:
+6. Adja hozzá a következő kódot az ügyfél összekapcsolásához:
 
     ```javascript
     var client = clientFromConnectionString(connectionString);
     console.log('Client connected');
     ```
 
-7. Hozzon létre egy visszahívást, és használja a **uploadToBlob** meghívásával feltölti a fájlt.
+7. Hozzon létre egy visszahívást, és használja a **uploadToBlob** függvényt a fájl feltöltéséhez.
 
     ```javascript
     fs.stat(filename, function (err, stats) {
@@ -115,13 +115,19 @@ Ebben a szakaszban az eszközalkalmazás feltölthet egy fájlt az IoT hub létr
 
 8. Mentse és zárja be a **SimulatedDevice.js** fájlt.
 
-9. A képfájl másolja a `simulateddevice` mappát, és nevezze át `myimage.png`.
+9. Másolja a `simulateddevice` mappába egy lemezképfájlt, és `myimage.png`nevezze át.
 
-## <a name="receive-a-file-upload-notification"></a>Fájlfeltöltési üzenetet fogadni
+## <a name="get-the-iot-hub-connection-string"></a>Az IoT hub-beli kapcsolatok karakterláncának beolvasása
 
-Ebben a szakaszban egy Node.js-konzolalkalmazást, amely a fájl feltöltése értesítési üzeneteket fogad a IoT Hub létrehozása.
+Ebben a cikkben egy háttér-szolgáltatást hoz létre, amely a fájlfeltöltés-értesítési üzeneteket fogadja a IoT hub-ból, amelyet a [telemetria küldése eszközről egy IoT hubhoz](quickstart-send-telemetry-node.md)hozott létre. A fájlfeltöltés-értesítési üzenetek fogadásához a szolgáltatásnak szüksége van a **szolgáltatás csatlakozási** engedélyére. Alapértelmezés szerint minden IoT Hub a **szolgáltatás** nevű közös hozzáférési házirenddel jön létre, amely megadja ezt az engedélyt.
 
-Használhatja a **iothubowner** befejeződik ez a szakasz az IoT Hub kapcsolati karakterláncra. A kapcsolati karakterlánc található a [az Azure portal](https://portal.azure.com/) a a **megosztott hozzáférési szabályzat** panelen.
+[!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
+
+## <a name="receive-a-file-upload-notification"></a>Fájlfeltöltés-értesítés fogadása
+
+Ebben a szakaszban egy Node. js-konzol alkalmazást hoz létre, amely a IoT Hub címről érkező fájlfeltöltés-értesítési üzeneteket fogad.
+
+Ennek a szakasznak a végrehajtásához használhatja a IoT Hub **iothubowner** -kapcsolódási karakterláncát. A kapcsolati karakterláncot a [Azure Portal](https://portal.azure.com/) a **közös hozzáférési szabályzat** panelen találja.
 
 1. Hozzon létre egy ```fileuploadnotification``` nevű üres mappát.  A(z) ```fileuploadnotification``` mappában hozzon létre egy package.json fájlt úgy, hogy beírja a következő parancsot a parancssorba.  Fogadja el az összes alapértelmezett beállítást:
 
@@ -129,15 +135,15 @@ Használhatja a **iothubowner** befejeződik ez a szakasz az IoT Hub kapcsolati 
     npm init
     ```
 
-2. A parancssorban a ```fileuploadnotification``` mappában futtassa a következő paranccsal telepíthető a **azure-iothub** SDK-csomagot:
+2. Az **Azure-iothub** SDK- ```fileuploadnotification``` csomag telepítéséhez futtassa a következő parancsot a parancssorban a mappában:
 
     ```cmd/sh
     npm install azure-iothub --save
     ```
 
-3. Egy szövegszerkesztővel hozzon létre egy **FileUploadNotification.js** fájlt a `fileuploadnotification` mappát.
+3. Egy szövegszerkesztővel hozzon létre egy **FileUploadNotification. js** fájlt a `fileuploadnotification` mappában.
 
-4. Adja hozzá a következő `require` elején található utasításokat a **FileUploadNotification.js** fájlt:
+4. Adja hozzá a `require` következő utasításokat a **FileUploadNotification. js** fájl elejéhez:
 
     ```javascript
     'use strict';
@@ -145,22 +151,22 @@ Használhatja a **iothubowner** befejeződik ez a szakasz az IoT Hub kapcsolati 
     var Client = require('azure-iothub').Client;
     ```
 
-5. Adjon hozzá egy `iothubconnectionstring` változót, és ezzel hozzon létre egy **Ügyfél** példányt.  Cserélje le `{iothubconnectionstring}` az szakaszban létrehozott IoT hub kapcsolati karakterlánccal a _hozzon létre egy IoT hubot_ szakaszban:
+5. Adjon hozzá egy `iothubconnectionstring` változót, és ezzel hozzon létre egy **Ügyfél** példányt.  A helyőrző értékét cserélje le a IoT hub-beli, a korábban a [IoT hub-kapcsolatok karakterláncának](#get-the-iot-hub-connection-string)lekérése során átmásolt karakterláncra: `{iothubconnectionstring}`
 
     ```javascript
     var connectionString = '{iothubconnectionstring}';
     ```
 
     > [!NOTE]
-    > Az egyszerűség kedvéért a kapcsolati karakterláncot a kódban szerepel: Ez nem ajánlott gyakorlat, és a használati esetekre és architektúra függően érdemes figyelembe venni a titkos kulcs tárolása biztonságosabb módszert is.
+    > Az egyszerűség kedvéért a kód tartalmazza a kapcsolódási karakterláncot: ez nem ajánlott eljárás, és a használati esettől és az architektúrától függően érdemes lehet megfontolni a titok tárolásának biztonságosabb módjait.
 
-6. Adja hozzá az ügyfél kapcsolódni a következő kódot:
+6. Adja hozzá a következő kódot az ügyfél összekapcsolásához:
 
     ```javascript
     var serviceClient = Client.fromConnectionString(connectionString);
     ```
 
-7. Nyissa meg az ügyfél és az a **getFileNotificationReceiver** függvény ügyfélállapot-frissítés fogadásához.
+7. Nyissa meg az ügyfelet, és használja az **getFileNotificationReceiver** függvényt az állapot-frissítések fogadásához.
 
     ```javascript
     serviceClient.open(function (err) {
@@ -182,40 +188,42 @@ Használhatja a **iothubowner** befejeződik ez a szakasz az IoT Hub kapcsolati 
     });
     ```
 
-8. Mentse és zárja be a **FileUploadNotification.js** fájlt.
+8. Mentse és zárjuk be a **FileUploadNotification. js** fájlt.
 
 ## <a name="run-the-applications"></a>Az alkalmazások futtatása
 
 Készen áll arra, hogy futtassa az alkalmazásokat.
 
-A parancsot a parancssorba a `fileuploadnotification` mappában futtassa a következő parancsot:
+A `fileuploadnotification` mappában a parancssorban futtassa a következő parancsot:
 
 ```cmd/sh
 node FileUploadNotification.js
 ```
 
-A parancsot a parancssorba a `simulateddevice` mappában futtassa a következő parancsot:
+A `simulateddevice` mappában a parancssorban futtassa a következő parancsot:
 
 ```cmd/sh
 node SimulatedDevice.js
 ```
 
-Az alábbi képernyőfelvételen a kimenete a **SimulatedDevice** alkalmazás:
+Az alábbi képernyőképen a **SimulatedDevice** alkalmazás kimenete látható:
 
-![A szimulált eszközalkalmazás kimenete](./media/iot-hub-node-node-file-upload/simulated-device.png)
+![Szimulált eszköz alkalmazás kimenete](./media/iot-hub-node-node-file-upload/simulated-device.png)
 
-Az alábbi képernyőfelvételen a kimenete a **FileUploadNotification** alkalmazás:
+Az alábbi képernyőképen a **FileUploadNotification** alkalmazás kimenete látható:
 
-![Olvasási-fájl – feltöltés – értesítés alkalmazás kimenete](./media/iot-hub-node-node-file-upload/read-file-upload-notification.png)
+![A Read-file-upload-Notification alkalmazás kimenete](./media/iot-hub-node-node-file-upload/read-file-upload-notification.png)
 
-A portál használatával beállított storage-tárolót a feltöltött fájl megtekintése:
+A portál használatával megtekintheti a feltöltött fájlt a konfigurált tárolóban:
 
-![A feltöltött fájl](./media/iot-hub-node-node-file-upload/uploaded-file.png)
+![Feltöltött fájl](./media/iot-hub-node-node-file-upload/uploaded-file.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtudhatta, hogyan egyszerűsítheti a fájlok feltöltése eszközökről a fájl feltöltése képességeit az IoT Hub használatával. Folytathatja az IoT hub szolgáltatásainak, és az ezekben a cikkekben forgatókönyvek megismerése:
+Ebben az oktatóanyagban megtanulta, hogyan használhatja a IoT Hub fájlfeltöltés funkcióit az eszközökről történő fájlfeltöltés egyszerűsítése érdekében. A IoT hub funkcióit és forgatókönyveit továbbra is megismerheti a következő cikkekkel:
 
-*  [IoT hub létrehozása programozott módon](iot-hub-rm-template-powershell.md)
-*  [Bevezetés a C SDK-t](iot-hub-device-sdk-c-intro.md)
-*  [Azure IoT SDK-k](iot-hub-devguide-sdks.md)
+* [IoT hub programozott módon történő létrehozása](iot-hub-rm-template-powershell.md)
+
+* [A C SDK bemutatása](iot-hub-device-sdk-c-intro.md)
+
+* [Azure IoT SDK-k](iot-hub-devguide-sdks.md)

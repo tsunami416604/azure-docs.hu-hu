@@ -16,11 +16,11 @@ ms.reviewer: librown
 ms.custom: end-user, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1350b2d86e18f213d99f1c27d64e371451f5f9b7
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57840875"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60334443"
 ---
 # <a name="the-sign-in-experience-with-azure-multi-factor-authentication"></a>Az Azure multi-factor Authentication a bejelentkezési élmény
 > [!NOTE]
@@ -70,7 +70,7 @@ Ha a Microsoft Authenticator alkalmazás használatával ellenőrző kódok beol
 1. Jelentkezzen be egy alkalmazás vagy szolgáltatás, például az Office 365-be a felhasználónevét és jelszavát.
 2. A Microsoft egy ellenőrző kódot kér.
 
-   ![Ellenőrzőkód megadása](./media/multi-factor-authentication-end-user-signin/verify3.png)
+   ![Adja meg az ellenőrző kód](./media/multi-factor-authentication-end-user-signin/verify3.png)
 
 3. Nyissa meg a Microsoft Authenticator alkalmazást a telefonra, és írja be a kódot a mezőbe, ahol most jelentkezik be.
 

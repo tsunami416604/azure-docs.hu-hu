@@ -1,25 +1,18 @@
 ---
-title: Törölje a Marketplace-ajánlatok – az Azure Marketplace-en |} A Microsoft Docs
+title: Törölje a marketplace-ajánlat |} Az Azure Marketplace-en
 description: Az Azure és az AppSource-piactér használatával a Cloud Partner portálra szóló ajánlatok törlése
 services: Azure, AppSource, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/09/2019
-ms.author: pbutlerm
-ms.openlocfilehash: 1d5d02d65dd3dcf5978639818fba4ebe36ffaaff
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.author: pabutler
+ms.openlocfilehash: 542bc611ac8820385c3f749aa151afc1dcdf6db5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540006"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64942131"
 ---
 # <a name="delete-azure-marketplace-and-appsource-offers-or-skus"></a>Azure Marketplace és AppSource ajánlatok és termékváltozatok törlése
 
@@ -28,7 +21,7 @@ Különböző okok miatt dönthet úgy, hogy visszavonja az ajánlatot a Microso
 - *Ajánlat eltávolítása* biztosítja, hogy már nem lehet-e vásárolhat új ügyfeleket, vagy üzembe helyezni az ajánlatot, azonban nem érinti a meglévő ügyfelekre, akik támogatnia kell a licencszerződést, és a vonatkozó törvényeknek megfelelően. 
 - *Ajánlat megszüntetése* azt a folyamatot, a szolgáltatás és/vagy az Ön és ügyfelei közötti licencszerződés. 
 
-Útmutatás és ajánlatok eltávolítását és megszüntetését házirendek vonatkoznak rájuk [a Microsoft Marketplace kiadói szerződésében](https://go.microsoft.com/fwlink/?LinkID=699560) és a [részvételi szabályzatában](https://azure.microsoft.com/support/legal/marketplace/participation-policies/) (szakasz [ajánlat felfüggesztése és eltávolítása](https://docs.microsoft.com/en-us/legal/marketplace/participation-policy#offering-suspension-and-removal)). 
+Útmutatás és ajánlatok eltávolítását és megszüntetését házirendek vonatkoznak rájuk [a Microsoft Marketplace kiadói szerződésében](https://go.microsoft.com/fwlink/?LinkID=699560) és a [részvételi szabályzatában](https://azure.microsoft.com/support/legal/marketplace/participation-policies/) (szakasz [ajánlat felfüggesztése és eltávolítása](https://docs.microsoft.com/legal/marketplace/participation-policy#offering-suspension-and-removal)). 
 
 Ez a cikk előadások információ a különböző támogatott törlés forgatókönyvek és az egyes végrehajtásához szükséges lépéseket.  
 

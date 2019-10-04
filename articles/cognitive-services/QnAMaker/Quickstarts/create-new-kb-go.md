@@ -1,6 +1,6 @@
 ---
-title: 'Gyors útmutató: Hozzon létre a Tudásbázis - REST, a Go - QnA Maker'
-titlesuffix: Azure Cognitive Services
+title: 'Gyors útmutató: Tudásbázis létrehozása – REST, go-QnA Maker'
+titleSuffix: Azure Cognitive Services
 description: Ez a Go REST-alapú rövid útmutató végigvezeti egy olyan minta QnA Maker-tudásbázis programozott módon történő létrehozásán, amely a Cognitive Services API-fiók Azure-irányítópultján fog megjelenni.
 services: cognitive-services
 author: diberry
@@ -8,27 +8,31 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 02/04/2019
+ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: cfb8cb60a828220ea681ad06e86588d3453b8d1b
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 8c96bea6fc55d45a7e2d790f355f6fe19323029d
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874991"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803444"
 ---
-# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-go"></a>Gyors útmutató: Tudásbázis létrehozása a QnA Maker Go használatával
+# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-go"></a>Gyors útmutató: Tudásbázis létrehozása QnA Maker a go használatával
 
 Ez a rövid útmutató végigvezeti egy minta QnA Maker-tudásbázis programozott módon való létrehozásán. A QnA Maker automatikusan nyer ki kérdéseket és válaszokat a félig strukturált tartalmak, például a gyakori kérdések közül, az [adatforrásokból](../Concepts/data-sources-supported.md). A tudásbázis modelljét az API-kérés törzsében küldött JSON definiálja. 
 
 Ebben a rövid útmutatóban QnA Maker API-kat hívunk meg:
-* [Tudásbázis létrehozása](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
-* [Műveletek részleteinek lekérése](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails)
+* [Tudásbázis létrehozása](https://go.microsoft.com/fwlink/?linkid=2092179)
+* [Műveletek részleteinek lekérése](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)
+
+[!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * [Go 1.10.1](https://golang.org/dl/)
-* Rendelkeznie kell [QnA Maker-szolgáltatással](../How-To/set-up-qnamaker-service-azure.md) is. A kulcs lekéréséhez válassza az irányítópulton az **Erőforrás-kezelés** területen lévő **Kulcsok** lehetőséget. 
+* Rendelkeznie kell [QnA Maker-szolgáltatással](../How-To/set-up-qnamaker-service-azure.md) is. Ha le szeretné kérni a kulcsot és a végpontot (amely tartalmazza az erőforrás nevét), válassza az erőforráshoz tartozó **Gyorsindítás** lehetőséget a Azure Portal.
+
+A [mintakód](https://github.com/Azure-Samples/cognitive-services-qnamaker-go/blob/master/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go) a GitHub-tárházban érhető el, QnA Maker a go-val.
 
 ## <a name="create-a-knowledge-base-go-file"></a>Egy tudásbázis Go-fájljának létrehozása
 
@@ -131,4 +135,4 @@ A tudásbázis létrehozása után a QnA Maker portálján, a [My knowledge base
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [QnA Maker (V4) REST API-referencia](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
+> [QnA Maker (V4) REST API-referencia](https://go.microsoft.com/fwlink/?linkid=2092179)

@@ -10,12 +10,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/01/2019
 ms.author: kasparks
-ms.openlocfilehash: 1a72225ce29b7a94f2fc402488f6b998cde0a0fb
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 2ccac3bf9a882dc021c6c969946ad9d439a7cf5d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55494545"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67069688"
 ---
 # <a name="introduction-to-azure-advisor"></a>Bevezetés az Azure Advisor
 
@@ -31,12 +31,12 @@ Az Advisor szolgáltatással a következőket teheti:
 
 Az Advisor keresztül érheti el a [az Azure portal](https://aka.ms/azureadvisordashboard). Jelentkezzen be a [portál](https://portal.azure.com), keresse meg **Advisor** a navigációs menü, vagy keressen rá a a **minden szolgáltatás** menü.
 
-Az Advisor irányítópult személyre szabott ajánlatokat az összes előfizetés jeleníti meg.  Az adott előfizetésekre és -erőforrástípusok javaslatok megjelenítése szűrőket is alkalmazhat.  A javaslatok négy kategóriába oszthatók: 
+Az Advisor irányítópult személyre szabott ajánlatokat az összes előfizetés jeleníti meg.  Az adott előfizetésekre és -erőforrástípusok javaslatok megjelenítése szűrőket is alkalmazhat.  A javaslatok négy kategóriába tartoznak: 
 
 * **Magas rendelkezésre állású**: Győződjön meg arról, és javíthatja az üzleti szempontból kritikus fontosságú alkalmazások folytonosságát. További információkért lásd: [Advisor magas rendelkezésre állás – javaslatok](advisor-high-availability-recommendations.md).
-* **Biztonsági**: Fenyegetések és biztonsági rések vezethet biztonsági rések észlelése. További információkért lásd: [Advisor biztonsági javaslatok](advisor-security-recommendations.md).
-* **Teljesítmény**: Az alkalmazások a sebesség javításához. További információkért lásd: [Advisor teljesítményajánlásainak](advisor-performance-recommendations.md).
-* **Költség**: Optimalizálása, és csökkentheti a teljes Azure költségeit. További információkért lásd: [Advisor díjakkal kapcsolatos ajánlások](advisor-cost-recommendations.md).
+* **Biztonság**: Olyan fenyegetések és biztonsági rések észlelése érdekében, amelyek biztonsági problémákhoz vezethetnek. További információkért lásd: [Advisor biztonsági javaslatok](advisor-security-recommendations.md).
+* **Teljesítmény**: A cél az alkalmazások sebességének növelése. További információkért lásd: [Advisor teljesítményajánlásainak](advisor-performance-recommendations.md).
+* **Költségek**: A cél az Azure költségeinek optimalizálása és csökkentése. További információkért lásd: [Advisor díjakkal kapcsolatos ajánlások](advisor-cost-recommendations.md).
 
   ![Advisor-ajánlást típusok](./media/advisor-overview/advisor-dashboard.png)
 
@@ -61,7 +61,9 @@ Advisor-javaslatok, elérheti *tulajdonosa*, *közreműködői*, vagy *olvasó* 
 
 ### <a name="what-resources-does-advisor-provide-recommendations-for"></a>Milyen erőforrások Advisor nyújt ajánlásokat?
 
-Az Advisor javaslatokat tesz a virtuális gépek, a rendelkezésre állási csoportok, az application Gateway átjárók, alkalmazásszolgáltatások, SQL Server-kiszolgálók és Azure Cache redis.
+Az Advisor ajánlásokkal az Application Gateway, alkalmazásszolgáltatások, rendelkezésre állási csoportok az Azure nyilvános, Azure Cache, az Azure Data Factory áttekintése, Azure Database for MySQL, Azure Database for PostgreSQL, Azure Database for MariaDB, az Azure ExpressRoute, az Azure Cosmos dB-ben IP-címek, az SQL Data Warehouse, SQL Server-kiszolgálók, a storage-fiókok, Traffic Manager-profilok és a virtuális gépek.
+
+Az Azure Advisor is magában foglalja a javaslatainak [az Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-recommendations) előfordulhat, hogy többek között további erőforrástípusok vonatkozó javaslatokat.
 
 ### <a name="can-i-postpone-or-dismiss-a-recommendation"></a>Halassza el vagy elvetheti a javaslatot?
 

@@ -1,10 +1,10 @@
 ---
-title: Hálózati forgalom szűrésére - oktatóanyag – Azure Portal
+title: Hálózati forgalom szűrése – oktatóanyag – Azure Portal
 titlesuffix: Azure Virtual Network
-description: Ebben az oktatóanyagban megismerheti, hogyan szűrheti a hálózati forgalmat alhálózatokra egy hálózati biztonsági csoport és az Azure Portal használatával.
+description: Ebből az oktatóanyagból megtudhatja, hogyan szűrheti az alhálózatra irányuló hálózati forgalmat egy hálózati biztonsági csoporttal a Azure Portal használatával.
 services: virtual-network
 documentationcenter: virtual-network
-author: jimdial
+author: KumudD
 tags: azure-resource-manager
 Customer intent: I want to filter network traffic to virtual machines that perform similar functions, such as web servers.
 ms.service: virtual-network
@@ -13,15 +13,15 @@ ms.topic: tutorial
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/13/2018
-ms.author: jdial
-ms.openlocfilehash: caf9b91d5b98d028d7c9e971df30ad1f6ec448ad
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.author: kumud
+ms.openlocfilehash: 2d0519abdf25a6fc8373f9d1a3a7232a9783d316
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019027"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984908"
 ---
-# <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>Oktatóanyag: Hálózati forgalom szűrése hálózati biztonsági csoport az Azure Portal használatával
+# <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>Oktatóanyag: Hálózati forgalom szűrése hálózati biztonsági csoporttal a Azure Portal használatával
 
 A virtuális hálózatok alhálózatainak bejövő vagy kimenő hálózati forgalmát hálózati biztonsági csoport segítségével szűrheti. A hálózati biztonsági csoportok biztonsági szabályokat tartalmaznak, amelyek IP-cím, port és protokoll szerint szűrik a hálózati forgalmat. A biztonsági szabályok az egyes alhálózatokban üzembe helyezett erőforrásokra vonatkoznak. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -51,7 +51,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
     | Címtér           | 10.0.0.0/16                                        |
     | Előfizetés            | Válassza ki előfizetését.                          |
     | Erőforráscsoport          | Válassza az **Új létrehozása** elemet, és adja meg a *myResourceGroup* nevet. |
-    | Hely                | Válassza az **USA keleti régiója** lehetőséget.                                |
+    | Location                | Válassza az **USA keleti régiója** lehetőséget.                                |
     | Alhálózat – név            | mySubnet                                           |
     | Alhálózat – címtartomány  | 10.0.0.0/24                                        |
 
@@ -66,18 +66,18 @@ Az alkalmazásbiztonsági csoportok lehetővé teszik, hogy egy csoportba rendez
     | Beállítás        | Érték                                                         |
     | ---            | ---                                                           |
     | Name (Név)           | myAsgWebServers                                               |
-    | Előfizetés   | Válassza ki előfizetését.                                     |
-    | Erőforráscsoport | Válassza a **Meglévő használata**, majd a **myResourceGroup** lehetőséget. |
-    | Hely       | USA keleti régiója                                                       |
+    | Subscription   | Válassza ki előfizetését.                                     |
+    | Resource group | Válassza a **Meglévő használata**, majd a **myResourceGroup** lehetőséget. |
+    | Location       | East US                                                       |
 
 4. Végezze el ismét a 3. lépést az alábbi értékeket megadva:
 
     | Beállítás        | Érték                                                         |
     | ---            | ---                                                           |
     | Name (Név)           | myAsgMgmtServers                                              |
-    | Előfizetés   | Válassza ki előfizetését.                                     |
-    | Erőforráscsoport | Válassza a **Meglévő használata**, majd a **myResourceGroup** lehetőséget. |
-    | Hely       | USA keleti régiója                                                       |
+    | Subscription   | Válassza ki előfizetését.                                     |
+    | Resource group | Válassza a **Meglévő használata**, majd a **myResourceGroup** lehetőséget. |
+    | Location       | East US                                                       |
 
 ## <a name="create-a-network-security-group"></a>Hálózati biztonsági csoport létrehozása
 
@@ -88,9 +88,9 @@ Az alkalmazásbiztonsági csoportok lehetővé teszik, hogy egy csoportba rendez
     |Beállítás|Érték|
     |---|---|
     |Name (Név)|myNsg|
-    |Előfizetés| Válassza ki előfizetését.|
+    |Subscription| Válassza ki előfizetését.|
     |Erőforráscsoport | Válassza a **Meglévő használata**, majd a *myResourceGroup* lehetőséget.|
-    |Hely|USA keleti régiója|
+    |Location|East US|
 
 ## <a name="associate-network-security-group-to-subnet"></a>Hálózati biztonsági csoport társítása alhálózathoz
 
@@ -109,21 +109,21 @@ Az alkalmazásbiztonsági csoportok lehetővé teszik, hogy egy csoportba rendez
 
 2. Hozzon létre egy biztonsági szabályt, amely engedélyezi a 80-as és a 443-as portot a **myAsgWebServers** alkalmazásbiztonsági csoport számára. A **Bejövő biztonsági szabály felvétele** területen írja be vagy válassza ki a következő értékeket, fogadja el a fennmaradó alapértelmezett beállításokat, majd válassza a **Hozzáadás** elemet:
 
-    | Beállítás                 | Érték                                                                                                           |
+    | Beállítás                 | Value                                                                                                           |
     | ---------               | ---------                                                                                                       |
     | Cél             | Válassza az **Alkalmazásbiztonsági csoport** lehetőséget, majd válassza a **myAsgWebServers** elemet az **Alkalmazásbiztonsági csoport** számára.  |
     | Célporttartományok | Írja be a 80,443 értéket.                                                                                                    |
-    | Protokoll                | Válassza a TCP lehetőséget.                                                                                                      |
+    | Protocol                | Válassza a TCP lehetőséget.                                                                                                      |
     | Name (Név)                    | Allow-Web-All                                                                                                   |
 
 3. Hajtsa végre ismét a 2. lépést az alábbi értékeket használva:
 
-    | Beállítás                 | Érték                                                                                                           |
+    | Beállítás                 | Value                                                                                                           |
     | ---------               | ---------                                                                                                       |
     | Cél             | Válassza az **Alkalmazásbiztonsági csoport** lehetőséget, majd válassza a **myAsgMgmtServers** elemet az **Alkalmazásbiztonsági csoport** számára. |
     | Célporttartományok | Írja be a 3389 értéket.                                                                                                      |
-    | Protokoll                | Válassza a TCP lehetőséget.                                                                                                      |
-    | Prioritás                | Írja be a 110 értéket.                                                                                                       |
+    | Protocol                | Válassza a TCP lehetőséget.                                                                                                      |
+    | Priority                | Írja be a 110 értéket.                                                                                                       |
     | Name (Név)                    | Allow-RDP-All                                                                                                   |
 
     Ebben az oktatóanyagban az RDP (3389-es port) közvetlenül az internetre csatlakozik a *myAsgMgmtServers* alkalmazásbiztonsági csoporthoz rendelt virtuális gépen. Éles környezet esetében a 3389-es port közvetlenül az internetre való csatlakoztatása helyett javasolt VPN vagy privát hálózati kapcsolat használatával csatlakozni a kezelni kívánt Azure-erőforrásokhoz.
@@ -140,27 +140,29 @@ Hozzon létre két virtuális gépet a virtuális hálózaton.
 
 1. Az Azure Portal bal felső sarkában kattintson az **+ Erőforrás létrehozása** gombra.
 2. Válassza a **Számítás**, majd a **Windows Server 2016 Datacenter** elemet.
-3. Adja meg vagy válassza ki az alábbi adatokat, a többi beállítás esetében fogadja el az alapértelmezett értéket, majd válassza az **OK** elemet:
+3. Adja meg vagy válassza ki a következő információkat, és fogadja el a többi beállítás alapértelmezett beállításait:
 
-    |Beállítás|Érték|
+    |Beállítás|Value|
     |---|---|
+    |Subscription| Válassza ki előfizetését.|
+    |Resource group| Válassza a **Meglévő használata** lehetőséget, majd a **myResourceGroup** elemet.|
     |Name (Név)|myVmWeb|
+    |Location| Válassza az **USA keleti régiója** lehetőséget.|
     |Felhasználónév| Adjon meg egy tetszőleges felhasználónevet.|
     |Jelszó| Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
-    |Előfizetés| Válassza ki előfizetését.|
-    |Erőforráscsoport| Válassza a **Meglévő használata** lehetőséget, majd a **myResourceGroup** elemet.|
-    |Hely| Válassza az **USA keleti régiója** lehetőséget.|
+
+   
 
 4. Válassza ki a virtuális gép méretét, majd kattintson a **Kiválasztás** gombra.
-5. A **Beállítások** területen válassza ki a következő értékeket, fogadja el a fennmaradó alapértelmezett beállításokat, majd kattintson az **OK** gombra:
+5. A **hálózat**területen válassza ki a következő értékeket, és fogadja el a fennmaradó alapértékeket:
 
     |Beállítás|Érték|
     |---|---|
-    |Virtuális hálózat |Válassza a **myVirtualNetwork** lehetőséget.|
-    |Hálózati biztonsági csoport | Válassza az **Advanced** (Speciális) lehetőséget.|
-    |Hálózati biztonsági csoport (tűzfal)| Válassza az **(új) myVmWeb-nsg** lehetőséget, majd a **Hálózati biztonsági csoport választása** területen válassza a **Nincs** elemet. |
+    |Virtuális hálózat |Válassza a **myVirtualNetwork**lehetőséget.|
+    |NIC hálózati biztonsági csoport |Válassza az **Advanced** (Speciális) lehetőséget.|
+    |Nyilvános bejövő portok|Válassza a **nincs**lehetőséget. |
 
-6. Az **Összegzés** lap **Létrehozás** területén kattintson a **Létrehozás** elemre a virtuális gép üzembe helyezésének megkezdéséhez.
+6. Válassza a **felülvizsgálat + létrehozás** lehetőséget a bal oldali sarokban, majd a **Létrehozás** elemre kattintva indítsa el a virtuális gép üzembe helyezését.
 
 ### <a name="create-the-second-vm"></a>A második virtuális gép létrehozása
 

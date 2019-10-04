@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/18/2017
-ms.openlocfilehash: 320dd28ba22d7919e3f3afdcd8baa47780f363dd
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: e6a7eaa94e7196c830a66b2d77023bd562119c92
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57856115"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64699443"
 ---
 # <a name="analyze-customer-churn-using-azure-machine-learning-studio"></a>Az ügyfél az Azure Machine Learning Studio használatával változásainak elemzése
 ## <a name="overview"></a>Áttekintés
@@ -188,7 +188,7 @@ A modellek a végrehajtási, de a pontosság sebességének 15-25 %-kal outperfo
 A távközlési iparágban több eljárások kiderült rendelkezik, lemorzsolódásának elemzése a többek között:  
 
 * Származtasson négy alapvető kategória metrikái:
-  * **Entitás (például egy előfizetés)**. Alapvető információkat szeretne az előfizetés és/vagy a vásárlói lemorzsolódás tárgyát képező kiépítése.
+  * **Entitás (például egy előfizetés)** . Alapvető információkat szeretne az előfizetés és/vagy a vásárlói lemorzsolódás tárgyát képező kiépítése.
   * **Tevékenység** – Szerezze be a kapcsolódó entitás, például a bejelentkezések száma az összes lehetséges használati információkat.
   * **Ügyfél-támogatási**. Gyűjtsön információkat az ügyfél-támogatási naplók jelzi, hogy az előfizetés volt-e a problémákat és az ügyfél-támogatási interakciók.
   * **Versenyképes és üzleti adatokat**. Az ügyfél lehetséges minden olyan információt (például lehet érhető el vagy visszakövetését, hogy).
@@ -217,7 +217,7 @@ Ez a tanulmány azt ismerteti, hogy észszerű megközelítése problémájának
 
 [3] [CRISP-DM 1.0: Részletes adatok adatbányászati útmutatója](https://www.the-modeling-agency.com/crisp-dm.pdf)   
 
-[4] [big Data típusú adatok Marketing: Az ügyfelek hatékonyabb megszólítása és a meghajtó érték](http://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)
+[4] [big Data típusú adatok Marketing: Az ügyfelek hatékonyabb megszólítása és a meghajtó érték](https://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)
 
 [5] [telekommunikációs churn folyamatmodell-sablont](https://gallery.azure.ai/Experiment/Telco-Customer-Churn-5) a [Azure AI-katalógusban](https://gallery.azure.ai/) 
  

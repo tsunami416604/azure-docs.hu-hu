@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 04/13/2018
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: a91c42ca32fb356b418dcd412c0690b01ff85789
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 5743d785afb87aef6b3a89af6dc8eb18f66b164d
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57908136"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854655"
 ---
 Az Azure Portal Adatkezelő eszközét mostantól adatbázis és tábla létrehozására is használhatja. 
 
-1. Kattintson az **Adatkezelő** > **Új tábla** parancsra. 
+1. Válassza ki **adatkezelő** > **új táblát**. 
     
     A jobb szélen megjelenik a **Táblázat hozzáadása** terület. Esetenként jobbra kell görgetnie, hogy lássa.
 

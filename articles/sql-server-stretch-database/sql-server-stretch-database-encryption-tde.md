@@ -1,51 +1,52 @@
 ---
-title: A Stretch Database – Azure transzparens adattitkosítás engedélyezése |} A Microsoft Docs
-description: Az SQL Server Stretch Database az Azure-ban transzparens adattitkosításának (TDE) engedélyezése
+title: Transzparens adattitkosítás engedélyezése Stretch Database-Azure-hoz | Microsoft Docs
+description: Transzparens adattitkosítás (TDE) engedélyezése az Azure-beli SQL Server Stretch Databasehoz
 services: sql-server-stretch-database
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.assetid: a44ed8f5-b416-4c41-9b1e-b7271f10bdc3
 ms.service: sql-server-stretch-database
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/14/2016
-ms.author: douglasl
-ms.openlocfilehash: 1e40e3d9eb1231666acda89c752ebc8f517e8fc6
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+author: blazem-msft
+ms.author: blazem
+ms.reviewer: jroth
+manager: jroth
+ms.openlocfilehash: 61f556476958484b78b9c3dff2583eb6db043637
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53741538"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "66003037"
 ---
-# <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure"></a>Transzparens adattitkosítás (TDE) engedélyezze a Stretch Database az Azure-ban
+# <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure"></a>Transzparens adattitkosítás (TDE) engedélyezése az Azure-beli Stretch Databasehoz
 > [!div class="op_single_selector"]
 > * [Azure Portal](sql-server-stretch-database-encryption-tde.md)
 > * [TSQL](sql-server-stretch-database-tde-tsql.md)
 >
 >
 
-Transzparens adattitkosítás (TDE) segítségével elleni védelemhez kártevő szándékú tevékenységek valós idejű titkosítási és visszafejtési az adatbázis, azokhoz kapcsolódó biztonsági mentési és tranzakciós naplófájlokra inaktív elvégzésével az alkalmazás módosítása nélkül.
+A transzparens adattitkosítás (TDE) segít megvédeni a kártékony tevékenységek fenyegetését azáltal, hogy valós idejű titkosítást és visszafejtést végez az adatbázis, a társított biztonsági másolatok és a tranzakciós naplófájlok számára, anélkül, hogy módosítani kellene az alkalmazást.
 
-TDE titkosítja a tárolót a teljes adatbázisra az adatbázis-titkosítási kulcs nevű szimmetrikus kulcs használatával. Az adatbázis-titkosítási kulcs egy beépített kiszolgálói tanúsítvány védi. A beépített kiszolgálói tanúsítvány egy egyedülálló megoldás minden egyes Azure-kiszolgáló. A Microsoft legalább 90 naponként automatikusan elforgatja ezeket a tanúsítványokat. TDE általános ismertetését lásd: [Transzparens adattitkosítás (TDE)].
+A TDE titkosítja egy teljes adatbázis tárterületét az adatbázis-titkosítási kulcs nevű szimmetrikus kulcs használatával. Az adatbázis-titkosítási kulcsot egy beépített kiszolgálótanúsítvány védi. A beépített kiszolgáló tanúsítványa minden egyes Azure-kiszolgáló esetében egyedi. A Microsoft automatikusan elforgatja ezeket a tanúsítványokat legalább 90 naponta. A TDE általános ismertetését lásd: [transzparens adattitkosítás (TDE)].
 
 ## <a name="enabling-encryption"></a>Titkosítás engedélyezése
-TDE engedélyezése az Azure-adatbázis, amely tárolja az adatokat át a Stretch engedélyezve van az SQL Server-adatbázisból, tegye a következőket:
+Ha engedélyezni szeretné a TDE egy olyan Azure-adatbázishoz, amely a stretch-kompatibilis SQL Server-adatbázisból áttelepített adatok tárolására szolgál, tegye a következőket:
 
-1. Nyissa meg az adatbázishoz a [Azure Portalon](https://portal.azure.com)
-2. Az adatbázis paneljén kattintson a **beállítások** gomb
-3. Válassza ki a **transzparens adattitkosítás** lehetőség ![][1]
-4. Válassza ki a **a** beállítást, és válassza ki **mentése**
+1. Nyissa meg az adatbázist a [Azure Portal](https://portal.azure.com)
+2. Az adatbázis panelen kattintson a **Beállítások** gombra.
+3. Az **átlátszó adattitkosítási** lehetőség kiválasztása![][1]
+4. Válassza a be beállítást, majd kattintson a **Mentés** gombra.
    ![][2]
 
-## <a name="disabling-encryption"></a>Letiltja a titkosítást
-TDE letiltása az Azure-adatbázis, amely tárolja az adatokat át a Stretch engedélyezve van az SQL Server-adatbázisból, tegye a következőket:
+## <a name="disabling-encryption"></a>Titkosítás letiltása
+Ha le szeretné tiltani egy olyan Azure-adatbázis TDE, amely a stretch-kompatibilis SQL Server-adatbázisból áttelepített adatok tárolására szolgál, tegye a következőket:
 
-1. Nyissa meg az adatbázishoz a [Azure Portalon](https://portal.azure.com)
-2. Az adatbázis paneljén kattintson a **beállítások** gomb
-3. Válassza ki a **transzparens adattitkosítás** lehetőség
-4. Válassza ki a **ki** beállítást, és válassza ki **mentése**
+1. Nyissa meg az adatbázist a [Azure Portal](https://portal.azure.com)
+2. Az adatbázis panelen kattintson a **Beállítások** gombra.
+3. Az **átlátszó adattitkosítási** lehetőség kiválasztása
+4. Válassza ki a Kikapcsolva beállítást, majd kattintson a **Mentés** gombra.
 
 <!--Anchors-->
 [Transzparens adattitkosítás (TDE)]: https://msdn.microsoft.com/library/bb934049.aspx

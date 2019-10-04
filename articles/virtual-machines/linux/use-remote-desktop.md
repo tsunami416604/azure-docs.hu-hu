@@ -1,144 +1,143 @@
 ---
-title: Linux virtuális géphez a távoli asztal használata az Azure-ban |} A Microsoft Docs
-description: Ismerje meg, hogyan telepítheti és konfigurálhatja a Linux rendszerű virtuális gép az Azure-ban a grafikus eszközök használatával kapcsolódni a távoli asztal (xrdp)
+title: Távoli asztal használata Linux rendszerű virtuális gépen az Azure-ban | Microsoft Docs
+description: Megtudhatja, hogyan telepíthet és konfigurálhat Távoli asztal (xrdp) az Azure-beli Linux rendszerű virtuális gépekhez grafikus eszközök használatával való kapcsolódáshoz
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
-ms.date: 05/30/2018
+ms.date: 09/12/2019
 ms.author: cynthn
-ms.openlocfilehash: dec0b8bcd5a0e0d20ead5b149405e3716589ba53
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 96f1f98f95bb726864553c81245e250cf907fb05
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57995728"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70961542"
 ---
-# <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Telepítse és konfigurálja az Azure-beli Linuxos virtuális gép kapcsolódni a távoli asztal
-Linux rendszerű virtuális gépek (VM) az Azure-ban általában kezelhetők a parancssorból a secure shell-(SSH) kapcsolatot használ. Ha új, Linux, illetve gyors hibaelhárítási forgatókönyveket, a távoli asztal használata egyszerűbb lehet. Ez a cikk részletesen bemutatja egy asztali környezet telepítéséhez és konfigurálásához ([xfce](https://www.xfce.org)) és a távoli asztal ([xrdp](http://www.xrdp.org)) a Linux rendszerű virtuális gép a Resource Manager üzemi modell használatával.
+# <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>A Linux rendszerű virtuális gépekhez való kapcsolódás Távoli asztal telepítése és konfigurálása az Azure-ban
+Az Azure-ban a Linux rendszerű virtuális gépeket általában egy Secure Shell-(SSH-) kapcsolatok használatával kezelik a parancssorból. A Linux vagy a gyors hibaelhárítási forgatókönyvek esetében a távoli asztal használata egyszerűbb lehet. Ez a cikk részletesen ismerteti, hogyan telepíthet és konfigurálhat egy asztali környezetet ([Xfce](https://www.xfce.org)) és egy távoli asztalt ([Xrdp](https://www.xrdp.org)) a Linux rendszerű virtuális géphez a Resource Manager-alapú üzemi modell használatával.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez a cikk egy meglévő Ubuntu 16.04 LTS virtuális Gépet az Azure-ban van szükség. Ha szeretne létrehozni egy virtuális Gépet, használja a következő módszerek egyikét:
+Ez a cikk egy meglévő Ubuntu 18,04 LTS virtuális gépet igényel az Azure-ban. Ha létre kell hoznia egy virtuális gépet, használja a következő módszerek egyikét:
 
-- A [az Azure CLI](quick-create-cli.md)
+- Az [Azure CLI](quick-create-cli.md)
 - Az [Azure Portal](quick-create-portal.md)
 
 
-## <a name="install-a-desktop-environment-on-your-linux-vm"></a>Egy asztali környezet telepítése a Linux rendszerű virtuális gépen
-A legtöbb Linux rendszerű virtuális gépek az Azure-ban nem kell egy asztali környezet alapértelmezés szerint telepítve. Linux rendszerű virtuális gépek általában egy asztali környezet helyett az SSH-kapcsolatok használatával történik. Nincsenek a Linux, amelyek segítségével különböző asztali környezetekben. Asztali környezet válaszaitól függően előfordulhat, hogy egy – 2 GB szabad lemezterület használata, és telepítése és konfigurálása a szükséges csomagokat 5-10 percet is igénybe vehet.
+## <a name="install-a-desktop-environment-on-your-linux-vm"></a>Asztali környezet telepítése Linux rendszerű virtuális gépen
+Az Azure-ban a legtöbb Linux rendszerű virtuális gép nem rendelkezik alapértelmezés szerint telepített asztali környezettel. A Linux rendszerű virtuális gépeket általában SSH-kapcsolatokkal, és nem asztali környezettel kezeljük. A Linux különböző asztali környezeteket is választhat. Az asztali környezettől függően egy-két GB lemezterületet is felhasználhat, és 5 – 10 percet is igénybe vehet az összes szükséges csomag telepítéséhez és konfigurálásához.
 
-A következő példa telepíti az egyszerűsített [xfce4](https://www.xfce.org/) asztali környezet egy Ubuntu 16.04 LTS virtuális gép. Parancsok, a többi a disztribúciókat némileg eltérőek lehetnek (használata `yum` Red Hat Enterprise Linux-alapú telepítése és konfigurálása a megfelelő `selinux` szabályokat, vagy használja `zypper` SUSE, például telepíthető).
+Az alábbi példa telepíti a Lightweight [Xfce4](https://www.xfce.org/) asztali környezetet egy Ubuntu 18,04 LTS virtuális gépre. A más disztribúciók parancsai némileg eltérőek ( `yum` a Red Hat Enterprise Linux telepítésére és a megfelelő `selinux` szabályok konfigurálására, `zypper` vagy például a (z) rendszerre történő telepítésre használhatók a SUSE használatára).
 
-Első, a virtuális gép ssh-KAPCSOLATOT. Az alábbi példa csatlakozik a virtuális gép nevű *myvm.westus.cloudapp.azure.com* , amelynek *azureuser*. A saját értékeit használja:
+Először SSH-t a virtuális géphez. A következő példa a *myvm.westus.cloudapp.Azure.com* nevű virtuális géphez csatlakozik az *azureuser*felhasználónevével. Saját értékek használata:
 
 ```bash
 ssh azureuser@myvm.westus.cloudapp.azure.com
 ```
 
-Ha Windows használ, és az SSH-val további információra van szüksége, tekintse meg [az SSH használata a Windows-kulcsok](ssh-from-windows.md).
+Ha Windows rendszert használ, és további információkra van szüksége az SSH használatával kapcsolatban, tekintse meg az [ssh-kulcsok használata a Windowsban](ssh-from-windows.md)című témakört.
 
-Ezután telepítse a xfce használatával `apt` módon:
+Ezután telepítse az Xfce `apt` -t a következő módon:
 
 ```bash
 sudo apt-get update
 sudo apt-get install xfce4
 ```
 
-## <a name="install-and-configure-a-remote-desktop-server"></a>A távoli asztali kiszolgáló telepítése és konfigurálása
-Most, hogy telepítve van egy asztali környezetben, konfigurálja egy távoli asztali szolgáltatás figyelni a bejövő kapcsolatokat. [xrdp](http://xrdp.org) egy nyílt forráskódú Remote Desktop Protocol (RDP)-kiszolgáló, amely a legtöbb Linux-disztribúció elérhető, és jól működik a xfce. Xrdp a Ubuntu virtuális Gépen a következőképpen telepítheti:
+## <a name="install-and-configure-a-remote-desktop-server"></a>Távoli asztali kiszolgáló telepítése és konfigurálása
+Most, hogy telepítette az asztali környezetet, konfigurálja a távoli asztali szolgáltatást a bejövő kapcsolatok figyelésére. a [xrdp](http://xrdp.org) egy nyílt forráskódú RDP protokoll (RDP) kiszolgáló, amely a legtöbb Linux-disztribúción elérhető, és az Xfce-sel is jól működik. Telepítse a xrdp-t az Ubuntu-alapú virtuális gépre a következőképpen:
 
 ```bash
-sudo apt-get install xrdp
+sudo apt-get -y install xrdp
 sudo systemctl enable xrdp
 ```
 
-Mondja el xrdp milyen asztali környezet használata a munkamenet indításakor. Xrdp xfce módon az asztali környezet használatához konfigurálja:
+Adja meg, hogy a munkamenet indításakor milyen asztali környezetet kell használni a xrdp. Konfigurálja úgy a xrdp, hogy az Xfce-t az alábbiak szerint használja az asztali környezetként:
 
 ```bash
 echo xfce4-session >~/.xsession
 ```
 
-Indítsa újra a xrdp szolgáltatást, a módosítások érvénybe a következőképpen:
+A módosítások életbe léptetéséhez indítsa újra a xrdp szolgáltatást a következőképpen:
 
 ```bash
 sudo service xrdp restart
 ```
 
 
-## <a name="set-a-local-user-account-password"></a>Egy helyi felhasználói fiók jelszavának beállítása
-Ha létrehozott egy jelszót a felhasználói fiókjához a virtuális gép létrehozásakor, kihagyhatja ezt a lépést. Ha csak az SSH-kulcsos hitelesítést, és nem rendelkezik egy helyi fiók jelszavának beállítása, adjon meg egy jelszót, mielőtt xrdp jelentkezzen be a virtuális Gépre. xrdp nem fogadja el az SSH-kulcsokat a hitelesítéshez. Az alábbi példa meghatározza a felhasználói fiókhoz tartozó jelszó *azureuser*:
+## <a name="set-a-local-user-account-password"></a>Helyi felhasználói fiók jelszavának beállítása
+Ha a virtuális gép létrehozásakor létrehozott egy jelszót a felhasználói fiókhoz, hagyja ki ezt a lépést. Ha csak az SSH-kulcsos hitelesítést használja, és nem rendelkezik helyi fiók jelszavával, adja meg a jelszót, mielőtt a xrdp használatával bejelentkezik a virtuális gépre. a xrdp nem fogadhatnak SSH-kulcsokat a hitelesítéshez. A következő példa a *felhasználói fiókhoz*tartozó jelszó megadását adja meg:
 
 ```bash
 sudo passwd azureuser
 ```
 
 > [!NOTE]
-> Adja meg a jelszót nem lehet frissíteni az SSHD konfiguráció engedélyezze a jelszavas bejelentkezéseket, ha jelenleg nem létezik. Biztonsági szempontból előfordulhat, hogy szeretne csatlakozni a virtuális Géphez SSH-alagút-alapú hitelesítéssel rendelkező, és kapcsolódjon xrdp. Ha igen, hagyja ki a következő lépés egy hálózati biztonsági csoportra vonatkozó szabályt, hogy a távoli asztali forgalmat létrehozásával.
+> A jelszó megadása nem frissíti az SSHD konfigurációját a jelszó-bejelentkezések engedélyezéséhez, ha az jelenleg nem. Biztonsági szempontból előfordulhat, hogy a kulcs alapú hitelesítéssel szeretne csatlakozni a virtuális géphez egy SSH-alagút használatával, majd csatlakozzon a xrdp-hez. Ha igen, ugorja át a következő lépést a hálózati biztonsági csoport szabályának létrehozásához a távoli asztal forgalmának engedélyezéséhez.
 
 
-## <a name="create-a-network-security-group-rule-for-remote-desktop-traffic"></a>A távoli asztali forgalmat a hálózati biztonsági csoport szabály létrehozása
-Hogy a távoli asztal adatforgalom elérje a Linuxos virtuális gép, hálózati biztonsági csoport szabályt kell létrehozni, amely lehetővé teszi, hogy elérje a virtuális Gépét a 3389-es TCP. Hálózati biztonsági csoport szabályai kapcsolatos további információkért lásd: [Mi az a hálózati biztonsági csoport?](../../virtual-network/security-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Emellett [az Azure portal használatával hozzon létre egy hálózati biztonsági csoportra vonatkozó szabályt](../windows/nsg-quickstart-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+## <a name="create-a-network-security-group-rule-for-remote-desktop-traffic"></a>Hálózati biztonsági csoportra vonatkozó szabály létrehozása Távoli asztal forgalomhoz
+Annak engedélyezéséhez, hogy Távoli asztal forgalom elérje a linuxos virtuális gépet, létre kell hozni egy hálózati biztonsági csoportra vonatkozó szabályt, amely lehetővé teszi a TCP-t a 3389-as porton a virtuális gép eléréséhez. A hálózati biztonsági csoportokra vonatkozó szabályokkal kapcsolatos további információkért lásd: [Mi az a hálózati biztonsági csoport?](../../virtual-network/security-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) [A Azure Portal használatával létrehozhat egy hálózati biztonsági csoportra vonatkozó szabályt](../windows/nsg-quickstart-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)is.
 
-A következő példában létrehozunk egy hálózati biztonsági csoportra vonatkozó szabályt az [az vm open-port](/cli/azure/vm#az-vm-open-port) porton *3389-es*. Az Azure parancssori felületen nem az SSH-munkamenetből a virtuális géphez, nyissa meg a következő hálózati biztonsági csoportra vonatkozó szabályt:
+A következő példában létrehozunk egy hálózati biztonsági csoportra vonatkozó szabályt az [az VM Open-port](/cli/azure/vm#az-vm-open-port) on *3389*porton. Az Azure CLI-ből, ne a virtuális géphez tartozó SSH-munkamenetből nyissa meg a következő hálózati biztonsági csoport szabályt:
 
 ```azurecli
 az vm open-port --resource-group myResourceGroup --name myVM --port 3389
 ```
 
 
-## <a name="connect-your-linux-vm-with-a-remote-desktop-client"></a>A Linux rendszerű virtuális gép csatlakoztatása a távoli asztali ügyfél
-Nyissa meg a helyi távoli asztali ügyfél, és kapcsolódjon az IP-cím vagy a Linux rendszerű virtuális gép DNS-nevét. Adja meg a felhasználónevet és jelszót a felhasználói fiók a virtuális Gépen a következő:
+## <a name="connect-your-linux-vm-with-a-remote-desktop-client"></a>Linux rendszerű virtuális gép összekötése Távoli asztal ügyféllel
+Nyissa meg a helyi távoli asztali ügyfelet, és kapcsolódjon a Linux rendszerű virtuális gép IP-címéhez vagy DNS-nevéhez. Adja meg a felhasználói fiók felhasználónevét és jelszavát a virtuális gépen a következőképpen:
 
-![A távoli asztali ügyfél használatával xrdp csatlakozni](./media/use-remote-desktop/remote-desktop-client.png)
+![Kapcsolódás a xrdp a Távoli asztal ügyfél használatával](./media/use-remote-desktop/remote-desktop-client.png)
 
-Hitelesítés után a xfce asztali környezet betöltése, és a következő példához hasonlóan néz ki:
+A hitelesítés után az Xfce asztali környezet betöltődik, és az alábbi példához hasonlóan fog kinézni:
 
-![xfce asztali környezetben keresztül xrdp](./media/use-remote-desktop/xfce-desktop-environment.png)
+![Xfce asztali környezet a xrdp-n keresztül](./media/use-remote-desktop/xfce-desktop-environment.png)
 
-Ha a helyi RDP-ügyfél a hálózati szintű hitelesítés (NLA) használ, szükség lehet, hogy kapcsolati beállítás letiltása. XRDP jelenleg nem támogatja a NLA. Alternatív támogató NLA, mint például az RDP-megoldások is megtekintheti [FreeRDP](https://www.freerdp.com).
+Ha a helyi RDP-ügyfél hálózati szintű hitelesítést (NLA) használ, előfordulhat, hogy le kell tiltania ezt a kapcsolódási beállítást. A XRDP jelenleg nem támogatja a NLA. Megtekintheti a NLA támogató alternatív RDP-megoldásokat, például a [FreeRDP](https://www.freerdp.com)-t is.
 
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
-Ha a Linux virtuális Gépet egy távoli asztali ügyfél nem tud csatlakozni, használja a `netstat` a Linux rendszerű virtuális gépen, győződjön meg arról, hogy a virtuális gép figyel az RDP-kapcsolatok a következő:
+Ha távoli asztal-ügyféllel nem tud csatlakozni a linuxos virtuális géphez, használja `netstat` a-t a linuxos virtuális gépen annak ellenőrzéséhez, hogy a virtuális gép az alábbi módon figyeli-e az RDP-kapcsolatokat:
 
 ```bash
 sudo netstat -plnt | grep rdp
 ```
 
-Az alábbi példa bemutatja a virtuális gép a várt módon 3389-es TCP-portot figyeli:
+Az alábbi példa azt mutatja, hogy a virtuális gép a várt módon figyeli a 3389-as TCP-portot:
 
 ```bash
 tcp     0     0      127.0.0.1:3350     0.0.0.0:*     LISTEN     53192/xrdp-sesman
 tcp     0     0      0.0.0.0:3389       0.0.0.0:*     LISTEN     53188/xrdp
 ```
 
-Ha a *xrdp-sesman* szolgáltatás nem figyel, Ubuntu VM-en indítsa újra a szolgáltatást a következő:
+Ha az *xrdp-sesman* szolgáltatás nem figyel, az Ubuntu-alapú virtuális gép a következőképpen indítja újra a szolgáltatást:
 
 ```bash
 sudo service xrdp restart
 ```
 
-Tekintse át naplók */var/log* a helyet is, ezért az Ubuntu virtuális Gépen a szolgáltatás nem válaszol. A syslog is figyelheti a hibák megtekintéséhez távoli asztali kapcsolódási kísérlet során:
+Tekintse át az Ubuntu-alapú virtuális gépen található */var/log* -naplókat, hogy a szolgáltatás miért nem válaszol. A rendszernaplót a távoli asztali kapcsolati kísérlet során is figyelheti a hibák megtekintéséhez:
 
 ```bash
 tail -f /var/log/syslog
 ```
 
-Előfordulhat, hogy más Linux-disztribúciók, például a Red Hat Enterprise Linux és SUSE módjai, indítsa újra a szolgáltatásokat, és tekintse át a másik naplófájl helye.
+Más Linux-disztribúciók, például a Red Hat Enterprise Linux és a SUSE különböző módokon indíthatják újra a szolgáltatásokat és az alternatív naplófájlok helyét az ellenőrzés céljából.
 
-Ha nem kap választ a távoli asztali ügyfél, és nem jelenik meg a rendszernaplóba eseményeket, ez a viselkedés azt jelzi, hogy a távoli asztali forgalmat nem tudja elérni a virtuális gép. Tekintse át a hálózati biztonsági csoport szabályait, gondoskodjon arról, hogy egy szabályt a 3389-es porton a TCP engedélyezéséhez. További információkért lásd: [alkalmazások csatlakozási hibáinak elhárítása](../windows/troubleshoot-app-connection.md).
+Ha nem kap választ a távoli asztal ügyfelén, és nem lát eseményeket a rendszernaplóban, ez a viselkedés azt jelzi, hogy a távoli asztali forgalom nem tudja elérni a virtuális gépet. Tekintse át a hálózati biztonsági csoport szabályait, és győződjön meg arról, hogy rendelkezik olyan szabállyal, amely engedélyezi a TCP-t a 3389-es port További információ: az [alkalmazások kapcsolódási problémáinak elhárítása](../windows/troubleshoot-app-connection.md).
 
 
 ## <a name="next-steps"></a>További lépések
-Létrehozásával és SSH-kulcsok használata Linux rendszerű virtuális gépekkel kapcsolatos további információkért lásd: [hozzon létre SSH-kulcsok az Azure-beli Linux rendszerű virtuális gépek](mac-create-ssh-keys.md).
+Az SSH-kulcsok Linux virtuális gépekkel való létrehozásával és használatával kapcsolatos további információkért lásd: [ssh-kulcsok létrehozása Linux rendszerű virtuális gépekhez az Azure-ban](mac-create-ssh-keys.md).
 
-Az SSH együttes Windows információkért lásd: [az SSH használata a Windows-kulcsok](ssh-from-windows.md).
+További információ az SSH Windows rendszeren való használatáról: [ssh-kulcsok használata a Windowsban](ssh-from-windows.md).
 

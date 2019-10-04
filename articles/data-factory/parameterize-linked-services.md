@@ -1,6 +1,6 @@
 ---
-title: Az Azure Data Factory társított szolgáltatásokat paraméterezni |} A Microsoft Docs
-description: Ismerje meg, hogyan paraméterezni az Azure Data Factory társított szolgáltatásokat, és a dinamikus értékeket adja át a futási időben.
+title: Parametrizálja társított szolgáltatások a Azure Data Factoryban | Microsoft Docs
+description: Megtudhatja, hogyan parametrizálja a társított szolgáltatásokat a Azure Data Factoryban, és hogyan adhat át dinamikus értékeket a futási időben.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -8,32 +8,32 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/18/2018
-author: gauravmalhot
-ms.author: gamal
+author: djpmsft
+ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: 0239c53f98fba201b6d70e1e2212eea36134e30d
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: 285b7c182fc218a590b7a3980e43175c76555106
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57574627"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140953"
 ---
-# <a name="parameterize-linked-services-in-azure-data-factory"></a>Az Azure Data Factory társított szolgáltatásokat paraméterezése
+# <a name="parameterize-linked-services-in-azure-data-factory"></a>Parametrizálja társított szolgáltatások Azure Data Factory
 
-Mostantól paraméterezni egy társított szolgáltatást, és a dinamikus értékeket adja át a futási időben. Például szeretne csatlakozni a különböző adatbázisok Azure SQL Database ugyanarra a kiszolgálóra, ha akkor is most parametrizálja az adatbázis nevét, a társított szolgáltatás definíciójában. Ez megakadályozza, hogy meg kellene az egyes adatbázisokhoz társított szolgáltatás létrehozása az Azure SQL-kiszolgálón. Egyéb tulajdonságokat is – a társított szolgáltatás definíciójában például lehet paraméterezni *felhasználónevet.*
+Mostantól parametrizálja egy társított szolgáltatást, és átadhatja a dinamikus értékeket a futási időben. Ha például ugyanazon a Azure SQL Database-kiszolgálón lévő különböző adatbázisokhoz szeretne csatlakozni, most már parametrizálja az adatbázis nevét a társított szolgáltatás definíciójában. Ezzel megakadályozható, hogy az Azure SQL Database-kiszolgálón minden adatbázishoz hozzon létre egy társított szolgáltatást. A társított szolgáltatás definíciójában más tulajdonságokat is parametrizálja, például a *felhasználónevet.*
 
-A Data Factory felhasználói felületének az Azure Portal vagy egy alkalmazásprogramozási felületet használhatja a társított szolgáltatások paraméterezni.
+A társított szolgáltatások parametrizálja használhatja az Azure Portalon a Data Factory felhasználói felületet vagy egy programozási felületet.
 
 > [!TIP]
-> Jelszó vagy titkos kulcsok paraméterezni, nem ajánlott. Az összes kapcsolati karakterláncok inkább Store az Azure Key Vaultban, és paraméterezni a *titkos kód nevét*.
+> Azt javasoljuk, hogy ne parametrizálja jelszavakat vagy titkos kódokat. A Azure Key Vault az összes kapcsolódó karakterláncot tárolja, és parametrizálja a *titkos nevet*.
 
-A 7 perces bevezető és a funkció bemutatójáért tekintse meg a következő videót:
+A szolgáltatás hét perces bevezetéséhez és bemutatásához tekintse meg a következő videót:
 
 > [!VIDEO https://channel9.msdn.com/shows/azure-friday/Parameterize-connections-to-your-data-stores-in-Azure-Data-Factory/player]
 
 ## <a name="supported-data-stores"></a>Támogatott adattárak
 
-Jelenleg társított szolgáltatás paraméterezés a Data Factory felhasználói felülete az Azure Portalon a következő adattárakat támogatja. Minden más adattárakban kiválasztásával lehet paraméterezni a társított szolgáltatás a **kód** ikonra a **kapcsolatok** lapra, és a JSON-szerkesztő használatával.
+A társított szolgáltatás paraméterezés jelenleg a Azure Portal Data Factory felhasználói felületén, a következő adattárakban támogatott. Minden más adattár esetében a társított szolgáltatás parametrizálja a **kapcsolatok** lapon, a JSON-szerkesztővel pedig a **kód** ikonra kattintva.
 - Azure SQL Database
 - Azure SQL Data Warehouse
 - SQL Server
@@ -45,7 +45,7 @@ Jelenleg társított szolgáltatás paraméterezés a Data Factory felhasználó
 
 ## <a name="data-factory-ui"></a>A Data Factory felhasználói felülete
 
-![Dinamikus tartalom hozzáadása a társított szolgáltatás definíciójában](media/parameterize-linked-services/parameterize-linked-services-image1.png)
+![Dinamikus tartalom hozzáadása a társított szolgáltatás definíciója](media/parameterize-linked-services/parameterize-linked-services-image1.png)
 
 ![Új paraméter létrehozása](media/parameterize-linked-services/parameterize-linked-services-image2.png)
 

@@ -1,144 +1,142 @@
 ---
-title: Adatok másolása az Azure Data Lake Storage Gen1 és a Sqoop használata Azure SQL database között |} A Microsoft Docs
-description: Adatok másolása az Azure SQL Database és az Azure Data Lake Storage Gen1 között a Sqoop használatával
+title: Adatmásolás a Azure Data Lake Storage Gen1 és az Azure SQL Database között a Sqoop használatával | Microsoft Docs
+description: Az Sqoop használata Azure SQL Database és Azure Data Lake Storage Gen1 közötti adatmásoláshoz
 services: data-lake-store
-documentationcenter: ''
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: 3f914b2a-83cc-4950-b3f7-69c921851683
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/29/2018
+ms.date: 07/30/2019
 ms.author: twooley
-ms.openlocfilehash: 7d3283b03d15278d1f7fd42a72b154dab1a442b4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 22789deca0934a9d4e88d587cd24aacacc9b12c6
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58878527"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68620005"
 ---
-# <a name="copy-data-between-azure-data-lake-storage-gen1-and-azure-sql-database-using-sqoop"></a>Adatok másolása az Azure Data Lake Storage Gen1 és a Sqoop használata Azure SQL database között
-Ismerje meg, hogyan Apache Sqoop használatával Azure SQL Database és az Azure Data Lake Storage Gen1 közötti adatok importálása és exportálása.
+# <a name="copy-data-between-data-lake-storage-gen1-and-azure-sql-database-using-sqoop"></a>Adatmásolás Data Lake Storage Gen1 és Azure SQL Database között az Sqoop használatával
 
-## <a name="what-is-sqoop"></a>Mit jelent a sqoop használatával?
-Big data-alkalmazások használata természetes választás strukturálatlan és részben strukturált adatok, például naplók és a fájlok feldolgozására. Azonban előfordulhat, hogy is van szükség, amely a relációs adatbázisokban tárolt strukturált adatok feldolgozása.
+Ismerje meg, hogyan importálhat és exportálhat az Apache Sqoop Azure SQL Database és Azure Data Lake Storage Gen1 között.
 
-[Az Apache Sqoop](https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html) eszközt úgy tervezték, relációs adatbázisok és a egy big Data típusú adatok adattár, például a Data Lake Storage Gen1 közötti adatátvitelhez. Adatokat importálhat egy relációs adatbázis-kezelő rendszer (RDBMS) például az Azure SQL Database Data Lake Storage Gen1, használhatja azt. Majd átalakíthatja és elemezheti az adatokat, használja a big data számítási feladatok és majd exportálja az adatokat egy RDBMS be újra. Ebben az oktatóanyagban az Azure SQL Database mint segítségével a relációs adatbázis az importálási és exportálási.
+## <a name="what-is-sqoop"></a>Mi az a Sqoop?
+
+A Big Application típusú alkalmazások természetes választás a strukturálatlan és részben strukturált adatmennyiségek, például naplók és fájlok feldolgozásához. Azonban szükség lehet a kapcsolódó adatbázisokban tárolt strukturált adatfeldolgozásra is.
+
+Az [Apache Sqoop](https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html) egy olyan eszköz, amelynek célja az adatok átvitele a kapcsolati adatbázisok és egy Big Data adattár között, például Data Lake Storage Gen1. Felhasználhatja az adatok importálását egy kapcsolódó adatbázis-kezelő rendszerből (RDBMS), például a Azure SQL Databaset a Data Lake Storage Gen1ba. Ezután átalakíthatja és elemezheti az adatok big data munkaterhelések használatával, majd visszaexportálhatja az adatok egy RDBMS. Ebben a cikkben egy Azure SQL Database-adatbázist használ a (z) importálásához és exportálásához.
 
 ## <a name="prerequisites"></a>Előfeltételek
-A cikk elkezdéséhez az alábbiakkal kell rendelkeznie:
+
+Mielőtt elkezdené, a következőkkel kell rendelkeznie:
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
-* **Az Azure Data Lake Storage Gen1 fiók**. Létrehozásával kapcsolatos utasításokért lásd: [Ismerkedés az Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
-* **Az Azure HDInsight-fürt** hozzáférést egy Data Lake Storage Gen1 fiókot. Lásd: [egy HDInsight-fürt létrehozása a Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md). Ez a cikk feltételezi, hogy a Data Lake Storage Gen1 hozzáféréssel rendelkező HDInsight Linux-fürt.
-* **Azure SQL Database** Létrehozásával kapcsolatos utasításokért lásd: [hozzon létre egy Azure SQL database](../sql-database/sql-database-get-started.md)
+* **Egy Azure Data Lake Storage Gen1-fiók**. A fiók létrehozásával kapcsolatos útmutatásért tekintse meg a [Azure Data Lake Storage Gen1 első lépéseivel](data-lake-store-get-started-portal.md) foglalkozó témakört.
+* **Azure HDInsight-fürt** Data Lake Storage Gen1 fiókhoz való hozzáféréssel. Lásd: [HDInsight-fürt létrehozása Data Lake Storage Gen1sal](data-lake-store-hdinsight-hadoop-use-portal.md). Ez a cikk feltételezi, hogy rendelkezik egy Data Lake Storage Gen1 hozzáféréssel rendelkező HDInsight Linux-fürttel.
+* **Azure SQL Database** A létrehozásával kapcsolatos útmutatásért tekintse meg [Az Azure SQL Database létrehozása](../sql-database/sql-database-get-started.md) című témakört.
 
-## <a name="do-you-learn-fast-with-videos"></a>Gyorsan tanul videók segítségével?
-[Ebben a videóban](https://mix.office.com/watch/1butcdjxmu114) hogyan másolhat adatokat az Azure Storage-Blobok és a Data Lake Storage Gen1 között a DistCp használata.
+## <a name="create-sample-tables-in-the-azure-sql-database"></a>Minta táblák létrehozása az Azure SQL Database-ben
 
-## <a name="create-sample-tables-in-the-azure-sql-database"></a>Az Azure SQL Database mintául szolgáló tábla létrehozásához
-1. Első lépésként hozzon létre két minta táblák az Azure SQL Database-ben. Használat [SQL Server Management Studio](../sql-database/sql-database-connect-query-ssms.md) vagy a Visual Studio az Azure SQL Database-adatbázishoz csatlakozhat, és futtassa a következő lekérdezéseket.
+1. A kezdéshez hozzon létre két minta táblát az Azure SQL Database-ben. A [SQL Server Management Studio](../sql-database/sql-database-connect-query-ssms.md) vagy a Visual Studio használatával kapcsolódjon az adatbázishoz, majd futtassa a következő lekérdezéseket.
 
     **Tábla1 létrehozása**
 
-        CREATE TABLE [dbo].[Table1](
-        [ID] [int] NOT NULL,
-        [FName] [nvarchar](50) NOT NULL,
-        [LName] [nvarchar](50) NOT NULL,
-         CONSTRAINT [PK_Table_1] PRIMARY KEY CLUSTERED
-            (
-                   [ID] ASC
-            )
-        ) ON [PRIMARY]
-        GO
+       CREATE TABLE [dbo].[Table1](
+       [ID] [int] NOT NULL,
+       [FName] [nvarchar](50) NOT NULL,
+       [LName] [nvarchar](50) NOT NULL,
+        CONSTRAINT [PK_Table_1] PRIMARY KEY CLUSTERED
+           (
+                  [ID] ASC
+           )
+       ) ON [PRIMARY]
+       GO
 
     **Table2 létrehozása**
 
-        CREATE TABLE [dbo].[Table2](
-        [ID] [int] NOT NULL,
-        [FName] [nvarchar](50) NOT NULL,
-        [LName] [nvarchar](50) NOT NULL,
-         CONSTRAINT [PK_Table_2] PRIMARY KEY CLUSTERED
-            (
-                   [ID] ASC
-            )
-        ) ON [PRIMARY]
-        GO
-2. A **tábla1**, adjon hozzá néhány adatot. Hagyja **Table2** üres. Importáljuk az adatokat **tábla1** Data Lake Storage Gen1 be. Majd, hogy exportálja az adatokat a Data Lake Storage Gen1 be **Table2**. Futtassa az alábbi kódrészletet.
+       CREATE TABLE [dbo].[Table2](
+       [ID] [int] NOT NULL,
+       [FName] [nvarchar](50) NOT NULL,
+       [LName] [nvarchar](50) NOT NULL,
+        CONSTRAINT [PK_Table_2] PRIMARY KEY CLUSTERED
+           (
+                  [ID] ASC
+           )
+       ) ON [PRIMARY]
+       GO
 
-        INSERT INTO [dbo].[Table1] VALUES (1,'Neal','Kell'), (2,'Lila','Fulton'), (3, 'Erna','Myers'), (4,'Annette','Simpson');
+1. A következő parancs futtatásával vegyen fel néhány mintaadatok **tábla1**. Hagyja üresen a **Table2** . Később importálja a **tábla1** adatait a Data Lake Storage Gen1ba. Ezután exportálja Data Lake Storage Gen1 adatait a **Table2**.
 
+       INSERT INTO [dbo].[Table1] VALUES (1,'Neal','Kell'), (2,'Lila','Fulton'), (3, 'Erna','Myers'), (4,'Annette','Simpson');
 
-## <a name="use-sqoop-from-an-hdinsight-cluster-with-access-to-data-lake-storage-gen1"></a>Hozzáférés egy HDInsight-fürtöt a Sqoop használatával Data Lake Storage Gen1
-Egy HDInsight-fürt már elérhető a Sqoop-csomagokat. Ha konfigurálta a HDInsight-fürt használata a Data Lake Storage Gen1 egy kiegészítő tárolóként, segítségével Sqoop (nélkül végrehajtott bármilyen konfigurációs módosításokat) között (az ebben a példában az Azure SQL Database) a relációs adatok importálása és exportálása és a egy Data Lake Tárfiók Gen1.
+## <a name="use-sqoop-from-an-hdinsight-cluster-with-access-to-data-lake-storage-gen1"></a>Sqoop használata egy HDInsight-fürtről Data Lake Storage Gen1hoz való hozzáféréssel
 
-1. Ebben az oktatóanyagban azt feltételeztük, létrehozott egy Linux-fürt, úgy csatlakozhat a fürthöz SSH kell használnia. Lásd: [csatlakozás Linux-alapú HDInsight-fürthöz](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
-2. Győződjön meg arról, hogy a Data Lake Storage Gen1 fiók hozzáférhet a fürtből. Futtassa a következő parancsot a SSH használatával:
+An méretű HDInsight fürt már rendelkezik elérhető Sqoop-csomagokkal. Ha úgy konfigurálta a HDInsight-fürtöt, hogy a Data Lake Storage Gen1 további tárterületként használja, akkor a Sqoop (konfiguráció módosítása nélkül) a kapcsolati adatbázis, például a Azure SQL Database és egy Data Lake Storage Gen1 fiók közötti importáláshoz/exportáláshoz használhatja. .
 
-        hdfs dfs -ls adl://<data_lake_storage_gen1_account>.azuredatalakestore.net/
+1. Ebben a cikkben feltételezzük, hogy létrehozott egy Linux-fürtöt, hogy az SSH használatával csatlakozzon a fürthöz. Lásd: [Kapcsolódás Linux-alapú HDInsight-fürthöz](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
 
-    Ez a Data Lake Storage Gen1 fiókban lévő fájlok és mappák listáját kell biztosítania.
+1. Ellenőrizze, hogy elérhető-e a Data Lake Storage Gen1 fiók a fürtből. Futtassa az alábbi parancsot az SSH parancssorból:
 
-### <a name="import-data-from-azure-sql-database-into-data-lake-storage-gen1"></a>Adatokat importálhat az Azure SQL Database, Data Lake Storage Gen1
-1. Navigáljon ahhoz a könyvtárhoz, ahol a Sqoop csomagok érhetők el. Általában ez lesz a `/usr/hdp/<version>/sqoop/bin`.
-2. Az adatimportálás **tábla1** a Data Lake Storage Gen1 figyelembe. Az alábbi szintaxissal:
+       hdfs dfs -ls adl://<data_lake_storage_gen1_account>.azuredatalakestore.net/
 
-        sqoop-import --connect "jdbc:sqlserver://<sql-database-server-name>.database.windows.net:1433;username=<username>@<sql-database-server-name>;password=<password>;database=<sql-database-name>" --table Table1 --target-dir adl://<data-lake-storage-gen1-name>.azuredatalakestore.net/Sqoop/SqoopImportTable1
+   Ez a parancs a Data Lake Storage Gen1 fiókban található fájlok/mappák listáját tartalmazza.
 
-    Vegye figyelembe, hogy **sql-adatbázis – kiszolgálónév** helyőrző a hol futnak az Azure SQL database-kiszolgáló nevét jelenti. **SQL-adatbázis-name** helyőrző tényleges adatbázis nevét jelöli.
+### <a name="import-data-from-azure-sql-database-into-data-lake-storage-gen1"></a>Adatok importálása Azure SQL Databaseból a Data Lake Storage Gen1ba
 
-    Például:
+1. Navigáljon ahhoz a könyvtárhoz, ahol elérhetők a Sqoop-csomagok. Ez a hely `/usr/hdp/<version>/sqoop/bin`általában a következő:.
 
+1. Importálja a **tábla1** adatait a Data Lake Storage Gen1-fiókba. Használja a következő szintaxist:
 
-        sqoop-import --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=twooley@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table1 --target-dir adl://myadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1
+       sqoop-import --connect "jdbc:sqlserver://<sql-database-server-name>.database.windows.net:1433;username=<username>@<sql-database-server-name>;password=<password>;database=<sql-database-name>" --table Table1 --target-dir adl://<data-lake-storage-gen1-name>.azuredatalakestore.net/Sqoop/SqoopImportTable1
 
-1. Győződjön meg arról, hogy az adatokat a Data Lake Storage Gen1 fiók át lett adva. Futtassa az alábbi parancsot:
+   Az **SQL-Database-Server-Name** helyőrző annak a kiszolgálónak a nevét jelöli, amelyen az Azure SQL Database fut. az **SQL-Database-Name** helyőrző az adatbázis tényleges nevét jelöli.
 
-        hdfs dfs -ls adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/
+   Például:
 
-    A következő kimenetnek kell megjelennie.
+       sqoop-import --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=twooley@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table1 --target-dir adl://myadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1
 
+1. Győződjön meg arról, hogy az adatátvitelt a Data Lake Storage Gen1 fiókba. Futtassa a következő parancsot:
 
-        -rwxrwxrwx   0 sshuser hdfs          0 2016-02-26 21:09 adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/_SUCCESS
-        -rwxrwxrwx   0 sshuser hdfs         12 2016-02-26 21:09 adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/part-m-00000
-        -rwxrwxrwx   0 sshuser hdfs         14 2016-02-26 21:09 adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/part-m-00001
-        -rwxrwxrwx   0 sshuser hdfs         13 2016-02-26 21:09 adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/part-m-00002
-        -rwxrwxrwx   0 sshuser hdfs         18 2016-02-26 21:09 adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/part-m-00003
+       hdfs dfs -ls adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/
 
-    Minden egyes **. rész – m -*** fájl megfelel egy sort a forrástábla **Table1**. A rész - m - tartalmát is megtekintheti * fájlok ellenőrzése.
+   A következő kimenetnek kell megjelennie.
 
+       -rwxrwxrwx   0 sshuser hdfs          0 2016-02-26 21:09 adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/_SUCCESS
+       -rwxrwxrwx   0 sshuser hdfs         12 2016-02-26 21:09 adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/part-m-00000
+       -rwxrwxrwx   0 sshuser hdfs         14 2016-02-26 21:09 adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/part-m-00001
+       -rwxrwxrwx   0 sshuser hdfs         13 2016-02-26 21:09 adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/part-m-00002
+       -rwxrwxrwx   0 sshuser hdfs         18 2016-02-26 21:09 adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/part-m-00003
 
-### <a name="export-data-from-data-lake-storage-gen1-into-azure-sql-database"></a>Data Lake Storage Gen1 adatok exportálása az Azure SQL Database-be
-1. Exportálja az adatokat a Data Lake Storage Gen1 fiókból a üres tábla **Table2**, az Azure SQL Database-ben. Az alábbi szintaxissal.
+   Minden **rész-m-** * fájl a forrástábla egyik sorához tartozik, a **tábla1**. Megtekintheti az a rész-m-* fájlok tartalmát az ellenőrzéshez.
 
-        sqoop-export --connect "jdbc:sqlserver://<sql-database-server-name>.database.windows.net:1433;username=<username>@<sql-database-server-name>;password=<password>;database=<sql-database-name>" --table Table2 --export-dir adl://<data-lake-storage-gen1-name>.azuredatalakestore.net/Sqoop/SqoopImportTable1 --input-fields-terminated-by ","
+### <a name="export-data-from-data-lake-storage-gen1-into-azure-sql-database"></a>Adatok exportálása Data Lake Storage Gen1ból a Azure SQL Databaseba
 
-    Például:
+1. Exportálja a Data Lake Storage Gen1 fiók adatait a Azure SQL Database üres táblába, a **Table2**. Használja a következő szintaxist:
 
+       sqoop-export --connect "jdbc:sqlserver://<sql-database-server-name>.database.windows.net:1433;username=<username>@<sql-database-server-name>;password=<password>;database=<sql-database-name>" --table Table2 --export-dir adl://<data-lake-storage-gen1-name>.azuredatalakestore.net/Sqoop/SqoopImportTable1 --input-fields-terminated-by ","
 
-        sqoop-export --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=twooley@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table2 --export-dir adl://myadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1 --input-fields-terminated-by ","
+   Például:
 
-1. Győződjön meg arról, hogy az adatok feltöltése az SQL-adatbázistáblába. Használat [SQL Server Management Studio](../sql-database/sql-database-connect-query-ssms.md) vagy a Visual Studio az Azure SQL Database-adatbázishoz csatlakozhat, és a következő lekérdezés futtatásával.
+       sqoop-export --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=twooley@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table2 --export-dir adl://myadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1 --input-fields-terminated-by ","
 
-        SELECT * FROM TABLE2
+1. Ellenőrizze, hogy az adatSQL Databasei táblába lett-e feltöltve. A [SQL Server Management Studio](../sql-database/sql-database-connect-query-ssms.md) vagy a Visual Studio használatával kapcsolódjon a Azure SQL Databasehoz, majd futtassa a következő lekérdezést.
 
-    Ez a következő kimenetet kell rendelkeznie.
+       SELECT * FROM TABLE2
 
-         ID  FName   LName
-        ------------------
-        1    Neal    Kell
-        2    Lila    Fulton
-        3    Erna    Myers
-        4    Annette    Simpson
+   A parancsnak a következő kimenettel kell rendelkeznie.
 
-## <a name="performance-considerations-while-using-sqoop"></a>Teljesítménnyel kapcsolatos megfontolások a Sqoop használata közben
+        ID  FName    LName
+       -------------------
+       1    Neal     Kell
+       2    Lila     Fulton
+       3    Erna     Myers
+       4    Annette  Simpson
 
-Teljesítmény-finomhangolási Sqoop feladat másolja az adatokat a Data Lake Storage Gen1, lásd: [Sqoop teljesítmény dokumentum](https://blogs.msdn.microsoft.com/bigdatasupport/2015/02/17/sqoop-job-performance-tuning-in-hdinsight-hadoop/).
+## <a name="performance-considerations-while-using-sqoop"></a>Teljesítménnyel kapcsolatos megfontolások a Sqoop használata során
 
-## <a name="see-also"></a>Lásd még
-* [Adatok másolása az Azure Storage-Blobokból a Data Lake Storage Gen1](data-lake-store-copy-data-azure-storage-blob.md)
+A Sqoop-feladatnak a Data Lake Storage Gen1ba való másolásához szükséges teljesítmény hangolásával kapcsolatos információkért tekintse meg a [Sqoop Performance blogbejegyzését](https://blogs.msdn.microsoft.com/bigdatasupport/2015/02/17/sqoop-job-performance-tuning-in-hdinsight-hadoop/).
+
+## <a name="next-steps"></a>További lépések
+
+* [Adatok másolása az Azure Storage-Blobokból a Data Lake Storage Gen1ba](data-lake-store-copy-data-azure-storage-blob.md)
 * [Az adatok védelme az 1. generációs Data Lake Storage-ban](data-lake-store-secure-data.md)
-* [Az Azure Data Lake Analytics használata a Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-* [Az Azure HDInsight használata a Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Azure Data Lake Analytics használata a Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
+* [Az Azure HDInsight használata Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)

@@ -1,24 +1,24 @@
 ---
-title: 'Gyors útmutató: Képkeresés – Bing lemezkép keresése a Javához készült SDK'
-description: Ebből a rövid útmutatóból megtudhatja, hogyan hajthatja végre első képkeresését a Bing Image Search SDK használatával, amely az API burkolójaként szolgál, és ugyanazokkal a funkciókkal rendelkezik. Ez az egyszerű Java-alkalmazás elküld egy képkeresési lekérdezést, elemzi a JSON-választ, és megjeleníti az első visszaadott kép URL-címét.
+title: 'Gyors útmutató: Képek keresése – Bing Image Search Javához készült SDK'
 titleSuffix: Azure Cognitive Services
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hajthatja végre első képkeresését a Bing Image Search SDK használatával, amely az API burkolójaként szolgál, és ugyanazokkal a funkciókkal rendelkezik. Ez az egyszerű Java-alkalmazás elküld egy képkeresési lekérdezést, elemzi a JSON-választ, és megjeleníti az első visszaadott kép URL-címét.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 02/12/2019
+ms.date: 08/26/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: dd2bf11781a6dd013f033fc535b068d449dd04d4
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 0a9e9a4ee42d36e0ae6da3e92e12ae4144f7b670
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238130"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034459"
 ---
-# <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-java"></a>Gyors útmutató: A Bing kép Search SDK a Javához készült rendszerképek keresése
+# <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-java"></a>Gyors útmutató: Képek keresése a Javához készült Bing Image Search SDK-val
 
 Ebből a rövid útmutatóból megtudhatja, hogyan hajthatja végre első képkeresését a Bing Image Search SDK használatával, amely az API burkolójaként szolgál, és ugyanazokkal a funkciókkal rendelkezik. Ez az egyszerű Java-alkalmazás elküld egy képkeresési lekérdezést, elemzi a JSON-választ, és megjeleníti az első visszaadott kép URL-címét.
 
@@ -45,7 +45,7 @@ Telepítse a Bing Image Search SDK függőségeit a Maven, a Gradle vagy más f�
 
 ## <a name="create-and-initialize-the-application"></a>Az alkalmazás létrehozása és inicializálása
 
-1. Hozzon létre egy új Java-projektet a kedvenc integrált Fejlesztőkörnyezetével vagy szerkesztőjével, és az osztály implementációját ad hozzá az alábbi importálásokat:
+1. Hozzon létre egy új Java-projektet a kedvenc IDE vagy szerkesztőben, és adja hozzá a következő importálásokat az osztály implementációhoz:
 
     ```java
     import com.microsoft.azure.cognitiveservices.search.imagesearch.BingImageSearchAPI;
@@ -63,7 +63,7 @@ Telepítse a Bing Image Search SDK függőségeit a Maven, a Gradle vagy más f�
     BingImageSearchAPI client = BingImageSearchManager.authenticate(subscriptionKey);
     ```
 
-## <a name="send-a-search-request-to-the-api"></a>Egy keresési kérelmet küld az API-hoz
+## <a name="send-a-search-request-to-the-api"></a>Keresési kérelem küldése az API-nak
 
 1. A `bingImages().search()` használatával küldjön el egy HTTP-kérést a keresési lekérdezéssel. A választ mentse `ImagesModel` néven.
 
@@ -77,7 +77,7 @@ Telepítse a Bing Image Search SDK függőségeit a Maven, a Gradle vagy más f�
 ## <a name="parse-and-view-the-result"></a>Az eredmények elemzése és megjelenítése
 
 Elemezze a válaszban visszaadott képtalálatokat.
-A válasz tartalmazza a keresési eredmények, ha az első eredmény tárolja, és nyomtassa ki a részleteket, például a Miniatűr URL-cím, az eredeti URL-CÍMÉT, teljes számával együtt adja vissza a lemezképeket.  
+Ha a válasz keresési eredményeket tartalmaz, tárolja az első eredményt, és nyomtassa ki a részleteket, például egy miniatűr URL-címet, az eredeti URL-címet, valamint a visszaadott lemezképek teljes számát.  
 
 ```java
 if (imageResults != null && imageResults.value().size() > 0) {
@@ -106,4 +106,4 @@ else {
 * [Ingyenes Cognitive Services hozzáférési kulcs beszerzése](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)
 * [Java-minták az Azure Cognitive Services SDK-hoz](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
 * [Az Azure Cognitive Services dokumentációja](https://docs.microsoft.com/azure/cognitive-services)
-* [Bing Image Search API – referencia](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)
+* [Bing Image Search API – referencia](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

@@ -7,12 +7,12 @@ ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: b17b07124cf4491a6c58e9be2b10f958e29217ee
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: cee3867449aea1cb1c59ac5a7c3be57291d1aebc
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59783822"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000138"
 ---
 # <a name="overview-of-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Az ISO 27001 App Service Environment/SQL Database-számításifeladat tervmintájának áttekintése
 
@@ -36,7 +36,7 @@ Ez a környezet több Azure-szolgáltatásból épül fel, és ISO 27001 szabvá
 - [Azure-szabályzatok](../../../policy/overview.md), amelyekkel rögzíthető, hogy mely szolgáltatások helyezhetők üzembe a környezetben, illetve megtagadható a nyilvános IP-cím- (PIP-) erőforrások létrehozása
 - Egyetlen alhálózatot tartalmazó virtuális hálózat, amely egy már meglévő [megosztott szolgáltatási](../iso27001-shared/index.md)környezethez van társítva, és arra kényszeríti a teljes adatforgalmat, hogy a [megosztott szolgáltatások](../iso27001-shared/index.md) tűzfalán haladjon át. A virtuális hálózaton a következő erőforrások találhatók:
   - Egy vagy több webalkalmazás, webes API vagy funkció üzemeltetésére használható [Azure App Service Environment-környezet](../../../../app-service/environment/intro.md)
-  - Az [Azure Key Vault](../../../../key-vault/key-vault-whatis.md) VNet-szolgáltatásvégpontot használó példánya, amely a számítási feladat környezetében futó alkalmazások titkos kulcsainak tárolására szolgál
+  - Az [Azure Key Vault](../../../../key-vault/key-vault-overview.md) VNet-szolgáltatásvégpontot használó példánya, amely a számítási feladat környezetében futó alkalmazások titkos kulcsainak tárolására szolgál
   - Az [Azure SQL Database](../../../../sql-database/sql-database-technical-overview.md) VNet-szolgáltatásvégpontot használó kiszolgálópéldánya, amely a számítási feladat környezetében futó alkalmazásokhoz használt adatbázisok üzemeltetésére szolgál
 
 ## <a name="next-steps"></a>További lépések

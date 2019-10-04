@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/23/2019
 ms.author: shvija
-ms.openlocfilehash: 9cd7a207a76ddfbeeb3b2e6b46abbc6423825093
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 15b2b5863f5b78bd24ffd8cbd55b9914f52e32a1
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59681012"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67072795"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-portal"></a>Gyors útmutató: Létrehoz egy eseményközpontot, az Azure portal használatával
 Az Azure Event Hubs egy Big Data streamplatform és eseményfeldolgozó szolgáltatás, amely másodpercenként több millió esemény fogadására és feldolgozására képes. Az Event Hubs képes az elosztott szoftverek és eszközök által generált események, adatok vagy telemetria feldolgozására és tárolására. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. Az Event Hubs részletes áttekintéséért lásd az [Event Hubs áttekintését](event-hubs-about.md) és az [Event Hubs-szolgáltatásokat](event-hubs-features.md) ismertető cikket.
@@ -27,7 +27,7 @@ Ebben a rövid útmutatóban az [Azure Portal](https://portal.azure.com) haszná
 A rövid útmutató elvégzéséhez győződjön meg róla, hogy rendelkezik az alábbiakkal:
 
 - Egy Azure-előfizetés. Ha még nincs előfizetése, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
-- [Visual Studio 2017 3-as frissítés (verziószám: 15.3, 26730.01)](https://www.visualstudio.com/vs) vagy újabb.
+- [A Visual Studio 2019)](https://www.visualstudio.com/vs) vagy újabb.
 - A [.NET Standard SDK](https://www.microsoft.com/net/download/windows) 2.0-s vagy újabb verziója.
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
@@ -57,7 +57,7 @@ Egy Event Hubs-névtér egyedi hatókörkezelési tárolót biztosít, amelyre a
    ![Az Event Hubs keresése](./media/event-hubs-quickstart-portal/select-event-hubs-menu.png)
 3. Válassza ki **az Event Hubs** alatt **Kedvencek** a bal oldali navigációs menü, és válassza a **Hozzáadás** az eszköztáron.
 
-   ![Gomb hozzáadása](./media/event-hubs-quickstart-portal/event-hubs-add-toolbar.png)
+   ![Hozzáadás gomb](./media/event-hubs-quickstart-portal/event-hubs-add-toolbar.png)
 4. Az a **névtér létrehozása** lapon, tegye a következőket:
     1. Adja meg a névtér nevét. A rendszer azonnal ellenőrzi, hogy a név elérhető-e.
     2. Válassza ki a tarifacsomagot (Basic vagy Standard).

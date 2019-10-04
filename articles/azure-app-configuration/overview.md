@@ -1,6 +1,6 @@
 ---
-title: Mi az Azure-alkalmazások konfigurálása? | Microsoft Docs
-description: Az Azure App konfigurációs szolgáltatás áttekintése.
+title: Mi az Azure app Configuration? | Microsoft Docs
+description: Az Azure app Configuration szolgáltatás áttekintése.
 services: azure-app-configuration
 documentationcenter: ''
 author: yegu-ms
@@ -13,60 +13,66 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: a76eab5d51dd73fb6b38ebebaa8421e789274f84
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 1db46e8562006e1b60e4f51ca88220aeca5fb2a8
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59994792"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71687042"
 ---
-# <a name="what-is-azure-app-configuration"></a>Mi az Azure-alkalmazások konfigurálása?
+# <a name="what-is-azure-app-configuration"></a>Mi az Azure app Configuration?
 
-Az Azure App konfigurálása központilag kezelheti az alkalmazásbeállításokat szolgáltatást biztosít. A modern programok, különösen egy felhőben futó programok általában számos összetevőből jellegű elosztott rendelkezik. Konfigurációs beállítások terjedhetnek ezen összetevők között vezethet rögzített hibaelhárítása hibák az alkalmazások központi telepítése során. Használhatja az Alkalmazáskonfigurációt tárolja az alkalmazás a beállításait, és tegye biztonságossá a hozzáfér egy helyen.
+Az Azure app Configuration szolgáltatással központilag kezelhető az Alkalmazásbeállítások és a funkciók jelzői. A modern programok, különösen a felhőben futó programok általában számos, természetben terjesztett összetevővel rendelkeznek. A konfigurációs beállítások ezen összetevők között történő terjesztése a hibák elhárításához vezethet az alkalmazások központi telepítése során. Az alkalmazás konfigurációja segítségével tárolhatja az alkalmazás összes beállítását, és egy helyen biztonságossá teheti a hozzáférését.
 
-Alkalmazáskonfiguráció használata az előzetes verzió ideje alatt ingyenes. Ha szeretné kipróbálni, [regisztrálása](https://aka.ms/azconfig/register) az előzetes verzióra.
+Az alkalmazás konfigurációja jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verzió ideje alatt ingyenesen használható. A [Azure Portal](https://portal.azure.com)regisztrálhat.
 
-## <a name="why-use-app-configuration"></a>Miért használhatja az Alkalmazáskonfigurációt?
+## <a name="why-use-app-configuration"></a>Miért érdemes az alkalmazás konfigurációját használni?
 
-Felhőalapú alkalmazások gyakran több virtuális gépek és tárolók több régióban is futtathatja, és több külső szolgáltatások használata. Elosztott alkalmazás létrehozása, amely hatékony, és méretezhető kihívást jelent. 
+A felhőalapú alkalmazások gyakran több virtuális gépen vagy tárolón futnak több régióban, és több külső szolgáltatást használnak. A robusztus és skálázható elosztott alkalmazások létrehozása kihívást jelent.
 
-Különböző programozási módszerek segítségével a fejlesztők alkalmazásokat növekvő összetettsége foglalkozik. Például a 12 tényezős alkalmazásfejlesztési ismerteti számos tesztelt architektúramintákat és ajánlott eljárások a felhőbeli alkalmazásokhoz való használatra. Ez az útmutató egy kulcs ajánljuk, hogy külön konfigurációs code-ból. Ebben az esetben egy alkalmazás-konfigurációs beállítások tartani a végrehajtható fájl külső kell, és a futtatókörnyezet vagy külső forrásból olvas be.
+A különböző programozási módszerek segítenek a fejlesztőknek az alkalmazások készítésének egyre összetettebb bonyolultságával kapcsolatban. A 12 faktoros alkalmazás például számos jól tesztelt építészeti mintát és ajánlott eljárásokat ismertet a felhőalapú alkalmazásokkal való használathoz. Az útmutató egyik kulcsfontosságú javaslata, hogy elkülönítse a konfigurációt a kódból. Ebben az esetben az alkalmazás konfigurációs beállításait a végrehajtható fájlon kívül kell tartani, és az alkalmazást a futtató környezetből vagy egy külső forrásból kell beolvasni.
 
-Bármilyen alkalmazást is győződjön meg arról, az alkalmazás konfigurációját használja, az alábbi példák is használható a előnyeit kihasználó alkalmazástípusok:
+Habár bármely alkalmazás használhatja az alkalmazások konfigurációját, az alábbi példák az alkalmazás használatának előnyeit hasznosító alkalmazások típusai:
 
-* Mikroszolgáltatás-alapú Azure Kubernetes Service-ben, az Azure Service Fabric vagy egy vagy több földrajzi területeken telepített egyéb tárolóalapú alkalmazások
-* Kiszolgáló nélküli alkalmazások, többek között az Azure Functions vagy más állapot nélküli számítási eseményvezérelt alkalmazásokat
-* Folyamatos készregyártás
+* Az Azure Kubernetes szolgáltatáson, az Azure Service Fabricon vagy egy vagy több földrajzi régióban üzembe helyezett más, tárolóban lévő alkalmazásokon alapuló szolgáltatások
+* Kiszolgáló nélküli alkalmazások, amelyek Azure Functions vagy más eseményvezérelt állapot nélküli számítási alkalmazásokat tartalmaznak
+* Folyamatos üzembe helyezési folyamat
 
-Alkalmazások konfigurálása az alábbi előnyöket biztosítja:
+Az alkalmazás konfigurálása a következő előnyöket kínálja:
 
-* Egy teljes körűen felügyelt szolgáltatás, amely percek alatt beállíthatja
-* Rugalmas kulcs nyilatkozatok és leképezések
-* Címkézés, a címkék
-* Ismétlés időponthoz beállítások
-* Két készlet egyénileg definiált dimenziókra konfigurációk összehasonlítása
-* Fokozott biztonsági keresztül az Azure által felügyelt identitásokból
-* Teljes körű titkosítás, inaktív és átvitel közben
-* Natív integrációt olyan népszerű keretrendszerekkel
+* Egy teljes körűen felügyelt szolgáltatás, amely percek alatt beállítható
+* Rugalmas kulcsos ábrázolások és leképezések
+* Címkézés címkékkel
+* Beállítások időponthoz való ismétlése
+* Dedikált felhasználói felület a szolgáltatás-jelölők felügyeletéhez
+* Két konfiguráció összehasonlítása egyéni által definiált dimenziókra
+* Fokozott biztonság az Azure által felügyelt identitások révén
+* Adattitkosítások teljes egészében vagy az átvitel során
+* Natív integráció népszerű keretrendszerekkel
 
-Kiegészíti az Alkalmazáskonfigurációt [Azure Key Vault](https://azure.microsoft.com/services/key-vault/), amely a titkos alkalmazáskulcsok tárolására szolgál. Alkalmazások konfigurálása megkönnyíti a megvalósítása a következő esetekben:
+Az alkalmazás konfigurációja kiegészíti [Azure Key Vault](https://azure.microsoft.com/services/key-vault/), amely az alkalmazások titkos kulcsainak tárolására szolgál. Az alkalmazás konfigurálása megkönnyíti a következő forgatókönyvek megvalósítását:
 
-* Központi felügyeletet és a hierarchikus konfigurációs adatokat a különböző környezetekben és földrajzi eloszlása
-* A dinamikus konfigurációs módosítások újból üzembe helyeznie vagy egy alkalmazás újraindítása nélkül
-* A szolgáltatás kezelése
+* A különböző környezetek és földrajzi területek hierarchikus konfigurációs beállításainak központosított kezelése és elosztása
+* Az alkalmazás beállításainak dinamikus módosítása anélkül, hogy újra kellene telepíteni vagy újraindítani egy alkalmazást
+* A vezérlési funkció valós idejű rendelkezésre állása
 
-## <a name="use-app-configuration"></a>Használhatja az Alkalmazáskonfigurációt
+## <a name="use-app-configuration"></a>Alkalmazás konfigurációjának használata
 
-A legegyszerűbben úgy, hogy adjon hozzá egy ügyfélkódtáron egy alkalmazás a konfigurációs adattárolónál az alkalmazásnak, hogy a Microsoft biztosít. A programozási nyelv és keretrendszer alapul, az alábbi ajánlott módszerek lesznek elérhetők.
+Az alkalmazások konfigurációs tárolójának az alkalmazáshoz való hozzáadásának legegyszerűbb módja a Microsoft által biztosított ügyféloldali kódtár. A programozási nyelv és keretrendszer alapján a következő legjobb módszerek érhetők el Önnek.
 
 | Programozási nyelv és keretrendszer | Csatlakozás |
 |---|---|
-| .NET Core and ASP.NET Core | Alkalmazás konfigurációszolgáltatót a .NET Core |
-| .NET and ASP.NET | Alkalmazás konfigurációja builder a .NET-hez |
-| Java Spring | Alkalmazás-konfigurációs ügyfél Spring Cloud |
-| Egyéb | Alkalmazáskonfiguráció – REST API |
+| .NET Core and ASP.NET Core | Alkalmazás-konfigurációs szolgáltató a .NET Core-hoz |
+| .NET és ASP.NET | A .NET-hez készült app Configuration Builder |
+| Java Spring | Alkalmazás-konfigurációs ügyfél a Spring Cloud-hoz |
+| Továbbiak | Alkalmazás-konfiguráció REST API |
 
 ## <a name="next-steps"></a>További lépések
 
-> [!div class="nextstepaction"]
-> [Az ASP.NET Core-webalkalmazás létrehozása](./quickstart-aspnet-core-app.md)  
+* [ASP.NET Core rövid útmutató](./quickstart-aspnet-core-app.md)
+* [.NET Core gyors útmutató](./quickstart-dotnet-core-app.md)
+* [.NET-keretrendszer – gyors útmutató](./quickstart-dotnet-app.md)
+* [Azure-függvény rövid útmutatója](./quickstart-azure-function-csharp.md)
+* [Java Spring rövid útmutató](./quickstart-java-spring-app.md)
+* [ASP.NET Core funkció jelzője](./quickstart-feature-flag-aspnet-core.md)
+* [A Spring boot szolgáltatás jelölője](./quickstart-feature-flag-spring-boot.md)

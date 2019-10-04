@@ -73,10 +73,14 @@
           href: service-fabric-tutorial-upgrade-cluster.md
         - name: 5 – Fürt törlése
           href: service-fabric-tutorial-delete-cluster.md
-    - name: Önálló fürt létrehozása az AWS-en
+    - name: Önálló fürt létrehozása
       items:
-        - name: 1 – Infrastruktúra létrehozása az AWS-en
-          href: service-fabric-tutorial-standalone-create-infrastructure.md
+        - name: 1 – Infrastruktúra létrehozása
+          items:
+            - name: Az AWS használata
+              href: service-fabric-tutorial-standalone-create-infrastructure.md
+            - name: Az Azure használata
+              href: service-fabric-tutorial-standalone-azure-create-infrastructure.md
         - name: 2 – Service Fabric beállítása
           href: service-fabric-tutorial-standalone-create-service-fabric-cluster.md
         - name: 3 – Alkalmazás üzembe helyezése a fürtön
@@ -97,12 +101,14 @@
       href: service-fabric-best-practices-infrastructure-as-code.md
     - name: Monitorozás és diagnosztika
       href: service-fabric-best-practices-monitoring.md
+    - name: Az alkalmazás kialakítása
+      href: service-fabric-best-practices-applications.md
     - name: Termelési készenlét ellenőrzőlistája
       href: service-fabric-production-readiness-checklist.md
 - name: Példák
   items:
     - name: Kódminták
-      href: 'https://azure.microsoft.com/resources/samples/?service=service-fabric'
+      href: 'https://docs.microsoft.com/samples/browse/'
     - name: Azure PowerShell
       href: service-fabric-powershell-samples.md
     - name: Service Fabric parancssori felület
@@ -125,8 +131,8 @@
           href: service-fabric-application-and-service-security.md
         - name: Service Fabric-fürtök biztonsága
           href: service-fabric-cluster-security.md
-        - name: Gyakori Azure-beli biztonsági attribútumok
-          href: service-fabric-security-attributes.md
+        - name: Beépített biztonsági vezérlők
+          href: service-fabric-security-controls.md
     - name: Terminológia
       href: service-fabric-technical-overview.md
     - name: Alkalmazások létrehozása
@@ -191,6 +197,8 @@
       items:
         - name: Alkalmazásmodell
           href: service-fabric-application-model.md
+        - name: Alkalmazásmodell-sablonok létrehozása
+          href: service-fabric-concept-resource-model.md
         - name: Alkalmazás- és szolgáltatásjegyzékek
           href: service-fabric-application-and-service-manifests.md
         - name: Példák alkalmazások és szolgáltatások jegyzékeire
@@ -344,6 +352,12 @@
           href: service-fabric-diagnostics-partners.md
     - name: Integráció az API Management szolgáltatással
       href: service-fabric-api-management-overview.md
+    - name: Alkalmazáserőforrás-modell
+      href: service-fabric-concept-resource-model.md
+    - name: Felügyelt identitás (előzetes verzió)
+      href: concepts-managed-identity.md
+    - name: Tárolóadattár hitelesítő adatainak konfigurálása
+      href: configure-container-repository-credentials.md
 - name: Útmutatók
   items:
     - name: A fejlesztési környezet beállítása
@@ -515,6 +529,8 @@
               href: service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md
             - name: Linux-fürt beállítása Windowson
               href: service-fabric-local-linux-cluster-windows.md
+            - name: .NET Core-alkalmazás üzembe helyezése távoli Linux-fürtre VS-ről
+              href: service-fabric-how-to-publish-linux-app-vs.md
         - name: Munka a Linux/Eclipse fejlesztői környezetében
           items:
             - name: Az Eclipse beépülő modul használatának első lépései Java-fejlesztésekhez
@@ -539,8 +555,8 @@
           href: service-fabric-cloud-services-migration-worker-role-stateless-service.md
         - name: Ajánlott eljárások
           href: /azure/architecture/service-fabric/migrate-from-cloud-services
-        - name: Migrált alkalmazás újrabontása
-          href: /azure/architecture/service-fabric/refactor-migrated-app
+        - name: Az alkalmazás modernizálása
+          href: /azure/architecture/service-fabric/modernize-app-azure-service-fabric
     - name: Alkalmazások életciklus-kezelése
       items:
         - name: Alkalmazás becsomagolása
@@ -609,6 +625,8 @@
                   href: service-fabric-cluster-azure-deployment-preparation.md
                 - name: Létrehozás az Azure Portalon
                   href: service-fabric-cluster-creation-via-portal.md
+                - name: Azure Service Fabric-fürt üzembe helyezése rendelkezésreállási zónákban
+                  href: service-fabric-cross-availability-zones.md
                 - name: Azure Active Directory-alapú hitelesítés beállítása
                   href: service-fabric-cluster-creation-setup-aad.md
                 - name: Egyéni fürtsablon létrehozása
@@ -639,8 +657,6 @@
                   href: service-fabric-cluster-config-upgrade-azure.md
                 - name: Fürtcsomópontok javítása (Windows)
                   href: service-fabric-patch-orchestration-application.md
-                - name: Fürtcsomópontok javítása (Linux)
-                  href: service-fabric-patch-orchestration-application-linux.md
                 - name: Lemeztitkosítás engedélyezése (Windows)
                   href: service-fabric-enable-azure-disk-encryption-windows.md
                 - name: Lemeztitkosítás engedélyezése (Linux)
@@ -691,6 +707,8 @@
       items:
         - name: Gyakori forgatókönyvek diagnosztizálása
           href: service-fabric-diagnostics-common-scenarios.md
+        - name: Kódcsomaghibák diagnosztizálása
+          href: service-fabric-diagnostics-code-package-errors.md
         - name: Alkalmazások figyelése
           items:
             - name: Naplózás hozzáadása az alkalmazáshoz
@@ -731,6 +749,26 @@
           href: service-fabric-reverse-proxy-diagnostics.md
         - name: A helyi fürt hibaelhárítása
           href: service-fabric-troubleshoot-local-cluster-setup.md
+    - name: Felügyelt identitás használata a Service Fabric-alkalmazásokhoz (előzetes verzió)
+      items:
+        - name: Fürtbeállítás
+          items:
+            - name: Meglévő fürt konfigurálása felügyelt identitással
+              href: configure-existing-cluster-enable-managed-identity-token-service.md
+            - name: Új Azure Service Fabric-fürt konfigurálása felügyelt identitással
+              href: configure-new-azure-service-fabric-enable-managed-identity.md
+        - name: Alkalmazásbeállítás
+          items:
+            - name: Alkalmazás üzembe helyezése felügyelt identitással
+              items:
+                - name: Alkalmazás üzembe helyezése rendszer által hozzárendelt felügyelt identitással
+                  href: how-to-deploy-service-fabric-application-system-assigned-managed-identity.md
+                - name: Alkalmazás üzembe helyezése felhasználó által hozzárendelt felügyelt identitással
+                  href: how-to-deploy-service-fabric-application-user-assigned-managed-identity.md
+        - name: MITS használata Service Fabric-alkalmazáskóddal
+          href: how-to-managed-identity-service-fabric-app-code.md
+        - name: Hozzáférés biztosítása más Azure-erőforrásokhoz
+          href: how-to-grant-access-other-resources.md
 - name: Referencia
   items:
     - name: Azure PowerShell
@@ -840,8 +878,8 @@
       href: 'https://azure.microsoft.com/pricing/details/service-fabric/'
     - name: Díjkalkulátor
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Hibaelhárítási útmutatók
-      href: 'https://github.com/Azure/Service-Fabric-Troubleshooting-Guides'
+    - name: Kibocsátási megjegyzések
+      href: release-notes.md
     - name: Mintakód
       href: 'https://aka.ms/servicefabricsamples'
     - name: Támogatási lehetőségek
@@ -850,5 +888,7 @@
       href: service-fabric-versions.md
     - name: Szolgáltatási hírek
       href: 'https://azure.microsoft.com/updates/?product=service-fabric'
+    - name: Hibaelhárítási útmutatók
+      href: 'https://github.com/Azure/Service-Fabric-Troubleshooting-Guides'
     - name: Videók
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=service-fabric'

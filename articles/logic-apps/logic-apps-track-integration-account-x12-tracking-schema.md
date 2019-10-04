@@ -11,11 +11,11 @@ ms.topic: article
 ms.assetid: a5413f80-eaad-4bcf-b371-2ad0ef629c3d
 ms.date: 01/27/2017
 ms.openlocfilehash: 1db324006e1e6332b5fdd8afd28ebed8a32ac707
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195183"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60845766"
 ---
 # <a name="create-schemas-for-tracking-x12-messages-in-integration-accounts-for-azure-logic-apps"></a>Sémák nyomon követési X12 létrehozása az Azure Logic Apps integrációs fiókjainak üzenetek
 
@@ -66,17 +66,17 @@ Segítséget nyújtanak a figyelő sikeres, hibák és -vállalatközi (B2B) tra
 | receiverQualifier | String | Partner minősítő kapnak. (Kötelező) |
 | receiverIdentifier | String | Partner azonosítót kap. (Kötelező) |
 | agreementName | String | A X12 nevét, amelyhez az üzenetek elhárulnak szerződés. (Választható lehetőség) |
-| irány | Enum | Az üzenet folyamat iránya küld és fogad. (Kötelező) |
+| direction | Enum | Az üzenet folyamat iránya küld és fogad. (Kötelező) |
 | interchangeControlNumber | String | Adatcsere ellenőrzőszáma. (Választható lehetőség) |
 | functionalGroupControlNumber | String | Funkcionális ellenőrző szám. (Választható lehetőség) |
 | transactionSetControlNumber | String | A tranzakciókészlet ellenőrzőszáma. (Választható lehetőség) |
 | CorrelationMessageId | String | Korrelációs állapotüzenet-azonosító. {Agreementname tulajdonság} kombinációját {*GroupControlNumber*} {TransactionSetControlNumber}. (Választható lehetőség) |
 | messageType | String | Tranzakció állítsa be, vagy a dokumentum típusa. (Választható lehetőség) |
-| isMessageFailed | Logikai | -E a X12 üzenetet nem sikerült. (Kötelező) |
-| isTechnicalAcknowledgmentExpected | Logikai | A technikai nyugtázása a X12 beállított e szerződés. (Kötelező) |
-| isFunctionalAcknowledgmentExpected | Logikai | A működési nyugtázása a X12 beállított e szerződés. (Kötelező) |
-| needAk2LoopForValidMessages | Logikai | E a: AK2 hurok kötelező megadni egy érvényes üzenetet. (Kötelező) |
-| segmentsCount | Egész szám | A X12 a szegmensek száma tranzakciókészlet. (Választható lehetőség) |
+| isMessageFailed | Boolean | -E a X12 üzenetet nem sikerült. (Kötelező) |
+| isTechnicalAcknowledgmentExpected | Boolean | A technikai nyugtázása a X12 beállított e szerződés. (Kötelező) |
+| isFunctionalAcknowledgmentExpected | Boolean | A működési nyugtázása a X12 beállított e szerződés. (Kötelező) |
+| needAk2LoopForValidMessages | Boolean | E a: AK2 hurok kötelező megadni egy érvényes üzenetet. (Kötelező) |
+| segmentsCount | Integer | A X12 a szegmensek száma tranzakciókészlet. (Választható lehetőség) |
 ||||
 
 ## <a name="x12-transaction-set-acknowledgement-tracking-schema"></a>X12 tranzakciókészlet nyugtázása követési séma
@@ -122,7 +122,7 @@ Segítséget nyújtanak a figyelő sikeres, hibák és -vállalatközi (B2B) tra
 | receiverQualifier | String | Partner minősítő kapnak. (Kötelező) |
 | receiverIdentifier | String | Partner azonosítót kap. (Kötelező) |
 | agreementName | String | A X12 nevét, amelyhez az üzenetek elhárulnak szerződés. (Választható lehetőség) |
-| irány | Enum | Az üzenet folyamat iránya küld és fogad. (Kötelező) |
+| direction | Enum | Az üzenet folyamat iránya küld és fogad. (Kötelező) |
 | interchangeControlNumber | String | Adatcsere ellenőrzőszáma, a funkcionális nyugtázással leállt. Érték tölti fel a küldési oldalon, ahol érkezik, a funkcionális nyugtázási küldött üzenetek csak a partnernek. (Választható lehetőség) |
 | functionalGroupControlNumber | String | Funkcionális csoport-ellenőrzőszám az működési átvételi. Érték tölti fel a küldési oldalon, ahol érkezik, a funkcionális nyugtázási küldött üzenetek csak a partnernek. (Választható lehetőség) |
 | isaSegment | String | Az ISA-szegmens az üzenet. Érték tölti fel a küldési oldalon, ahol érkezik, a funkcionális nyugtázási küldött üzenetek csak a partnernek. (Választható lehetőség) |
@@ -131,11 +131,11 @@ Segítséget nyújtanak a figyelő sikeres, hibák és -vállalatközi (B2B) tra
 | respondingFunctionalGroupId | String | Funkcionális csoport azonosítója, amely AK101 a visszaigazolás válaszol. (Választható lehetőség) |
 | respondingtransactionSetControlNumber | String | Tranzakciókészlet ellenőrzőszáma válaszol-e. (Választható lehetőség) |
 | respondingTransactionSetId | String | Válaszol tranzakciókészlet-Azonosítót, amelynek a visszaigazolás AK201 rendeli. (Választható lehetőség) |
-| statusCode | Logikai | A tranzakciókészlet a nyugta állapotkódjának. (Kötelező) |
+| statusCode | Boolean | A tranzakciókészlet a nyugta állapotkódjának. (Kötelező) |
 | segmentsCount | Enum | A nyugta állapotkódjának. Engedélyezett értékek a következők **elfogadva**, **elutasítva**, és **AcceptedWithErrors**. (Kötelező) |
 | processingStatus | Enum | A nyugtázási feldolgozási állapotát. Engedélyezett értékek a következők **fogadott**, **Generated**, és **elküldött**. (Kötelező) |
 | CorrelationMessageId | String | Korrelációs állapotüzenet-azonosító. {Agreementname tulajdonság} kombinációját {*GroupControlNumber*} {TransactionSetControlNumber}. (Választható lehetőség) |
-| isMessageFailed | Logikai | -E a X12 üzenetet nem sikerült. (Kötelező) |
+| isMessageFailed | Boolean | -E a X12 üzenetet nem sikerült. (Kötelező) |
 | ak2Segment | String | Egy tranzakció, állítsa be a kapott funkcionális csoport nyugtázása. (Választható lehetőség) |
 | ak3Segment | String | Az adatok szegmens hibát jelez. (Választható lehetőség) |
 | ak5Segment | String | Jelentés-e a szegmensben: AK2 azonosított tranzakciókészlet van elfogad vagy elutasít, és hogy miért. (Választható lehetőség) |
@@ -180,11 +180,11 @@ Segítséget nyújtanak a figyelő sikeres, hibák és -vállalatközi (B2B) tra
 | receiverQualifier | String | Partner minősítő kapnak. (Kötelező) |
 | receiverIdentifier | String | Partner azonosítót kap. (Kötelező) |
 | agreementName | String | A X12 nevét, amelyhez az üzenetek elhárulnak szerződés. (Választható lehetőség) |
-| irány | Enum | Az üzenet folyamat iránya küld és fogad. (Kötelező) |
+| direction | Enum | Az üzenet folyamat iránya küld és fogad. (Kötelező) |
 | interchangeControlNumber | String | Adatcsere ellenőrzőszáma. (Választható lehetőség) |
 | isaSegment | String | Az ISA-szegmens üzenet. (Választható lehetőség) |
-| isTechnicalAcknowledgmentExpected | Logikai | A technikai nyugtázása a X12 beállított e szerződés. (Kötelező) |
-| isMessageFailed | Logikai | -E a X12 üzenetet nem sikerült. (Kötelező) |
+| isTechnicalAcknowledgmentExpected | Boolean | A technikai nyugtázása a X12 beállított e szerződés. (Kötelező) |
+| isMessageFailed | Boolean | -E a X12 üzenetet nem sikerült. (Kötelező) |
 | isa09 | String | A dokumentum adatcsere X12 dátum. (Választható lehetőség) |
 | isa10 | String | A dokumentum adatcsere idő X12. (Választható lehetőség) |
 | isa11 | String | X12 adatcsere vezérlési szabványok azonosítója. (Választható lehetőség) |
@@ -231,11 +231,11 @@ Segítséget nyújtanak a figyelő sikeres, hibák és -vállalatközi (B2B) tra
 | receiverQualifier | String | Partner minősítő kapnak. (Kötelező) |
 | receiverIdentifier | String | Partner azonosítót kap. (Kötelező) |
 | agreementName | String | A X12 nevét, amelyhez az üzenetek elhárulnak szerződés. (Választható lehetőség) |
-| irány | Enum | Az üzenet folyamat iránya küld és fogad. (Kötelező) |
+| direction | Enum | Az üzenet folyamat iránya küld és fogad. (Kötelező) |
 | interchangeControlNumber | String | Adatcsere ellenőrzőszáma az műszaki átvételi partnerek érkezett. (Választható lehetőség) |
 | isaSegment | String | Az ISA-szegmens a műszaki nyugtázási partnerek érkezett. (Választható lehetőség) |
 | respondingInterchangeControlNumber |String | Adatcsere ellenőrzőszáma a partnertől kapott a műszaki nyugtázás. (Választható lehetőség) |
-| isMessageFailed | Logikai | -E a X12 üzenetet nem sikerült. (Kötelező) |
+| isMessageFailed | Boolean | -E a X12 üzenetet nem sikerült. (Kötelező) |
 | statusCode | Enum | A nyugta állapotkódjának adatcsere. Engedélyezett értékek a következők **elfogadva**, **elutasítva**, és **AcceptedWithErrors**. (Kötelező) |
 | processingStatus | Enum | Nyugtázási állapot. Engedélyezett értékek a következők **fogadott**, **Generated**, és **elküldött**. (Kötelező) |
 | ta102 | String | Adatcsere dátum. (Választható lehetőség) |
@@ -284,13 +284,13 @@ Segítséget nyújtanak a figyelő sikeres, hibák és -vállalatközi (B2B) tra
 | receiverQualifier | String | Partner minősítő kapnak. (Kötelező) |
 | receiverIdentifier | String | Partner azonosítót kap. (Kötelező) |
 | agreementName | String | A X12 nevét, amelyhez az üzenetek elhárulnak szerződés. (Választható lehetőség) |
-| irány | Enum | Az üzenet folyamat iránya küld és fogad. (Kötelező) |
+| direction | Enum | Az üzenet folyamat iránya küld és fogad. (Kötelező) |
 | interchangeControlNumber | String | Adatcsere ellenőrzőszáma. (Választható lehetőség) |
 | functionalGroupControlNumber | String | Funkcionális ellenőrző szám. (Választható lehetőség) |
 | gsSegment | String | Üzenet GS szegmens. (Választható lehetőség) |
-| isTechnicalAcknowledgmentExpected | Logikai | A technikai nyugtázása a X12 beállított e szerződés. (Kötelező) |
-| isFunctionalAcknowledgmentExpected | Logikai | A működési nyugtázása a X12 beállított e szerződés. (Kötelező) |
-| isMessageFailed | Logikai | -E a X12 üzenetet nem sikerült. (Kötelező)|
+| isTechnicalAcknowledgmentExpected | Boolean | A technikai nyugtázása a X12 beállított e szerződés. (Kötelező) |
+| isFunctionalAcknowledgmentExpected | Boolean | A működési nyugtázása a X12 beállított e szerződés. (Kötelező) |
+| isMessageFailed | Boolean | -E a X12 üzenetet nem sikerült. (Kötelező)|
 | gs01 | String | Funkcionális azonosító kód. (Választható lehetőség) |
 | gs02 | String | Alkalmazás küldő kód. (Választható lehetőség) |
 | gs03 | String | Alkalmazás fogadó kódot. (Választható lehetőség) |
@@ -340,14 +340,14 @@ Segítséget nyújtanak a figyelő sikeres, hibák és -vállalatközi (B2B) tra
 | receiverQualifier | String | Partner minősítő kapnak. (Kötelező) |
 | receiverIdentifier | String | Partner azonosítót kap. (Kötelező) |
 | agreementName | String | A X12 nevét, amelyhez az üzenetek elhárulnak szerződés. (Választható lehetőség) |
-| irány | Enum | Az üzenet folyamat iránya küld és fogad. (Kötelező) |
+| direction | Enum | Az üzenet folyamat iránya küld és fogad. (Kötelező) |
 | interchangeControlNumber | String | Adatcsere ellenőrzőszáma, amely feltölti a küldési oldalon műszaki nyugtázási partnerek fogadásakor. (Választható lehetőség) |
 | functionalGroupControlNumber | String | Funkcionális csoport ellenőrzőszám az műszaki átvételi, amely feltölti a küldési oldalon műszaki nyugtázási partnerek fogadásakor. (Választható lehetőség) |
 | isaSegment | String | Ugyanaz, mint a adatcsere ellenőrzés száma, de csak bizonyos esetekben ki van töltve. (Választható lehetőség) |
 | gsSegment | String | Ugyanaz, mint a funkcionális csoport szabályozhatja a száma, de csak bizonyos esetekben ki van töltve. (Választható lehetőség) |
 | respondingfunctionalGroupControlNumber | String | Az eredeti funkcionális csoport-ellenőrzőszám. (Választható lehetőség) |
 | respondingFunctionalGroupId | String | Funkcionális csoport nyugtázása AK101 a Maps-azonosító. (Választható lehetőség) |
-| isMessageFailed | Logikai | -E a X12 üzenetet nem sikerült. (Kötelező) |
+| isMessageFailed | Boolean | -E a X12 üzenetet nem sikerült. (Kötelező) |
 | statusCode | Enum | A nyugta állapotkódjának. Engedélyezett értékek a következők **elfogadva**, **elutasítva**, és **AcceptedWithErrors**. (Kötelező) |
 | processingStatus | Enum | A nyugtázási feldolgozási állapotát. Engedélyezett értékek a következők **fogadott**, **Generated**, és **elküldött**. (Kötelező) |
 | ak903 | String | Fogadott tranzakciókészletek száma. (Választható lehetőség) |

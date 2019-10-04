@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: quickstart
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: 88a5a1bcff8542ac500bbb5e0da790f77c90a825
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 999d44e394d47e350187f9175389e04e68567d5e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57530790"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64724665"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>Gyors útmutató: Valós idejű üzenetek szórási konzol alkalmazásból
 
@@ -119,7 +119,7 @@ Az Azure SignalR szolgáltatás lehetővé teszi, hogy külső szolgáltatásoka
 
 Az alábbi táblázat ismerteti a jelenleg támogatott REST API-k összes verzióját. Az egyes verziók definíciófájlját is megtalálja
 
-Verzió | API-állapot | Ajtó | Specifikusság
+Version | API-állapot | Ajtó | Specifikusság
 --- | --- | --- | ---
 `1.0-preview` | Elérhető | 5002 | [Swagger](https://github.com/Azure/azure-signalr/tree/dev/docs/swagger/v1-preview.json)
 `1.0` | Elérhető | Standard | [Swagger](https://github.com/Azure/azure-signalr/tree/dev/docs/swagger/v1.json)
@@ -139,7 +139,7 @@ Küldés néhány felhasználónak | **&#x2713;**(Elavult) | `N / A`
 <a name="broadcast"> </a>
 ### <a name="broadcast-to-everyone"></a>Szétküldés mindenkinek
 
-Verzió | API HTTP-metódus | Kérés URL-címe | A kérés törzse
+Version | API HTTP-metódus | Kérés URL-címe | A kérés törzse
 --- | --- | --- | ---
 `1.0-preview` | `POST` | `https://<instance-name>.service.signalr.net:5002/api/v1-preview/hub/<hub-name>` | `{"target": "<method-name>", "arguments": [...]}`
 `1.0` | `POST` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>` | Lásd fent
@@ -147,7 +147,7 @@ Verzió | API HTTP-metódus | Kérés URL-címe | A kérés törzse
 <a name="broadcast-group"> </a>
 ### <a name="broadcast-to-a-group"></a>Szétküldés egy csoportnak
 
-Verzió | API HTTP-metódus | Kérés URL-címe | A kérés törzse
+Version | API HTTP-metódus | Kérés URL-címe | A kérés törzse
 --- | --- | --- | ---
 `1.0-preview` | `POST` | `https://<instance-name>.service.signalr.net:5002/api/v1-preview/hub/<hub-name>/group/<group-name>` | `{"target": "<method-name>", "arguments": [...]}`
 `1.0` | `POST` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>` | Lásd fent
@@ -155,7 +155,7 @@ Verzió | API HTTP-metódus | Kérés URL-címe | A kérés törzse
 <a name="send-user"> </a>
 ### <a name="sending-to-specific-users"></a>Küldés adott felhasználóknak
 
-Verzió | API HTTP-metódus | Kérés URL-címe | A kérés törzse
+Version | API HTTP-metódus | Kérés URL-címe | A kérés törzse
 --- | --- | --- | ---
 `1.0-preview` | `POST` | `https://<instance-name>.service.signalr.net:5002/api/v1-preview/hub/<hub-name>/user/<user-id>` | `{"target": "<method-name>", "arguments": [...]}`
 `1.0` | `POST` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/users/<user-id>` | Lásd fent
@@ -163,14 +163,14 @@ Verzió | API HTTP-metódus | Kérés URL-címe | A kérés törzse
 <a name="add-user-to-group"> </a>
 ### <a name="adding-a-user-to-a-group"></a>Felhasználó hozzáadása egy csoporthoz
 
-Verzió | API HTTP-metódus | Kérés URL-címe
+Version | API HTTP-metódus | Kérés URL-címe
 --- | --- | ---
 `1.0` | `PUT` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<userid>`
 
 <a name="remove-user-from-group"> </a>
 ### <a name="removing-a-user-from-a-group"></a>Felhasználó eltávolítása egy csoportból
 
-Verzió | API HTTP-metódus | Kérés URL-címe
+Version | API HTTP-metódus | Kérés URL-címe
 --- | --- | ---
 `1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<userid>`
 
@@ -181,4 +181,4 @@ Verzió | API HTTP-metódus | Kérés URL-címe
 Ebből a gyors útmutatóból megtudhatta, hogyan REST API használatával valós idejű üzenetek szórási SignalR Service az ügyfelek számára. Ezután megtudhatja, hogyan fejleszthet és helyezhet üzembe Azure Functions SignalR Service kötést, amely a REST API-val épül.
 
 > [!div class="nextstepaction"]
-> [Fejlesztés az Azure Functions Azure SignalR Service kötések használata](signalr-quickstart-azure-functions-csharp.md)
+> [Fejlesztés az Azure Functions az Azure SignalR Service kötések használata](signalr-quickstart-azure-functions-csharp.md)

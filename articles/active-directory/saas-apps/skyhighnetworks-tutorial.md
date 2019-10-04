@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 4836cdec546b7da7351d18d5217e4f87d749aa79
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 92f3f101807171e71d40171dfa2bd3f006363ae0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59274994"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67090391"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skyhigh-networks"></a>Oktatóanyag: Az Azure Active Directory-integráció Skyhigh hálózatokkal
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a Skyhigh hálózatok konfigurálásához, hozzá kell
 
 **Skyhigh hálózatok hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

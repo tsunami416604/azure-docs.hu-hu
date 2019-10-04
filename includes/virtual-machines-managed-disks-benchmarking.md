@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 9c59b98fb615266c193f997c01c83922c18d4408
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: e5148ff9e92a2e550a3117356a4e77cbac8fc6f4
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56890994"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673366"
 ---
 *A gyorsítótár Bemelegedés*  
 A lemezt a csak olvasható állomás-gyorsítótárazás is biztosítanak a lemez korlátnál magasabb iops-t. A maximális olvasási teljesítmény eléréséhez a gazdagép-gyorsítótárból, először meg kell ízelítőt kapott a gyorsítótár a lemezről. Ez biztosítja, hogy az, hogy a teljesítménymérési eszköz CacheReads köteten vonják olvasási IOs ténylegesen eléri a gyorsítótár, és nem a lemezt közvetlenül. Az egyetlen gyorsítótár további IOPS gyorsítótár-találatok eredményez engedélyezve van a lemez.
@@ -25,7 +25,7 @@ A lemezt a csak olvasható állomás-gyorsítótárazás is biztosítanak a leme
 
 ### <a name="iometer"></a>Iometer
 
-[Töltse le a Iometer eszközt](http://sourceforge.net/projects/iometer/files/iometer-stable/2006-07-27/iometer-2006.07.27.win32.i386-setup.exe/download) a virtuális gépen.
+[Töltse le a Iometer eszközt](https://sourceforge.net/projects/iometer/files/iometer-stable/2006-07-27/iometer-2006.07.27.win32.i386-setup.exe/download) a virtuális gépen.
 
 #### <a name="test-file"></a>Fájl tesztelése
 
@@ -68,12 +68,12 @@ Hajtsa végre a gyorsítótár ízelítőt az alábbi lépéseket
    | RandomReads\_1 MB |1 MB |100 |100 |
 1. Futtassa a következő paraméterekkel gyorsítótárlemez inicializálása Iometer tesztet. Három munkaszálak használata a célkötet és a egy várólistamélység 128. A teszt "Futási idő" időtartamának beállítása: 2 óra "Beállítás tesztelése" lapon.
 
-   | Forgatókönyv | Célkötet | Name (Név) | Időtartam |
+   | Forgatókönyv | Célkötet | Name (Név) | Duration |
    | --- | --- | --- | --- |
    | Gyorsítótárlemez inicializálása |CacheReads |RandomWrites\_1 MB |2 óra |
 1. Futtassa a következő paraméterekkel gyorsítótárlemez Bemelegedés Iometer tesztet. Három munkaszálak használata a célkötet és a egy várólistamélység 128. A teszt "Futási idő" időtartamának beállítása: 2 óra "Beállítás tesztelése" lapon.
 
-   | Forgatókönyv | Célkötet | Name (Név) | Időtartam |
+   | Forgatókönyv | Célkötet | Name (Név) | Duration |
    | --- | --- | --- | --- |
    | Meleg Gyorsítótárlemez mentése |CacheReads |RandomReads\_1 MB |2 óra |
 

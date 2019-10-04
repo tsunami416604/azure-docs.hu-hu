@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7ad328eec7e16b5368b78a0dfccbf5c09adb5c13
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 30a5bc9c5f0b7d1443e7ca2a16d9f0e0d1120dd8
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330007"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836630"
 ---
 # <a name="push-data-to-an-azure-search-index-by-using-azure-data-factory"></a>Adatok leküldése az Azure Search-index az Azure Data Factory használatával
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
 > * [1-es verzió](data-factory-azure-search-connector.md)
 > * [2-es verzió (aktuális verzió)](../connector-azure-search.md)
 
@@ -40,7 +40,7 @@ Létrehozhat egy folyamatot egy másolási tevékenységgel az, hogy az adatokat
 
 A folyamat létrehozásának legegyszerűbb módja az, hogy használja a **másolása varázsló**. Lásd: [oktatóanyag: Hozzon létre egy folyamatot a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md) gyors bemutató létrehozása egy folyamatot az adatok másolása varázsló használatával.
 
-A következő eszközök használatával hozzon létre egy folyamatot: **Az Azure portal**, **Visual Studio**, **Azure PowerShell-lel**, **Azure Resource Manager-sablon**, **.NET API**, és  **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját.
+A következő eszközök használatával hozzon létre egy folyamatot: **A Visual Studio**, **Azure PowerShell-lel**, **Azure Resource Manager-sablon**, **.NET API**, és **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját.
 
 Az eszközök vagy az API-kat használja, hogy létrehoz egy folyamatot, amely a helyez át adatokat egy forrásadattárból egy fogadó adattárba a következő lépéseket fogja végrehajtani:
 
@@ -60,7 +60,7 @@ Az alábbi táblázat ismerteti a társított Azure Search szolgáltatás adott 
 | -------- | ----------- | -------- |
 | type | A type tulajdonságot kell beállítani: **Az AzureSearch**. | Igen |
 | url | Az Azure Search szolgáltatás URL-címe. | Igen |
-| kulcs | Az Azure Search szolgáltatás rendszergazdai kulcsa. | Igen |
+| key | Az Azure Search szolgáltatás rendszergazdai kulcsa. | Igen |
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
@@ -103,10 +103,10 @@ Az alábbi tábla meghatározza, hogy egy Azure Search adattípus támogatott-e,
 | Karakterlánc | I |
 | Int32 | I |
 | Int64 | I |
-| Dupla | I |
-| Logikai | I |
+| Double | I |
+| Boolean | I |
 | DataTimeOffset | I |
-| Karakterlánc-tömbben | N |
+| String Array | N |
 | GeographyPoint | N |
 
 ## <a name="json-example-copy-data-from-on-premises-sql-server-to-azure-search-index"></a>JSON-példa: Adatok másolása helyszíni SQL Serverről az Azure Search-indexbe

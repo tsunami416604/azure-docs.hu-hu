@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/22/2017
+ms.date: 07/12/2019
 ms.author: apimpm
-ms.openlocfilehash: b1602af59cd46b4bbcefa6f1df3cd84c0d342b71
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b96cfe9813eef9caf1f1f21e43470a23c7032cb1
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959699"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072121"
 ---
 # <a name="import-an-openapi-specification"></a>OpenAPI-specifikáció importálása
 
@@ -36,7 +35,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Végezze el a következő rövid útmutatót: [Azure API Management-példány létrehozása](get-started-create-service-instance.md)
+Hajtsa végre a következő rövid útmutatót: [Azure API Management-példány létrehozása](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -53,13 +52,16 @@ Végezze el a következő rövid útmutatót: [Azure API Management-példány l�
     |---|---|---|
     |**OpenAPI-specifikáció**|https://conferenceapi.azurewebsites.net?format=json|Az API-t alkalmazó szolgáltatásra hivatkozik. Az API Management erre a címre továbbítja a kérelmeket.|
     |**Megjelenített név**|*Demo Conference API*|Ha a szolgáltatás URL-címének beírása után lenyomja a Tab billentyűt, az APIM kitölti ezt a mezőt a JSON-fájl tartalma alapján. <br/>Ez a név a fejlesztői portálon jelenik meg.|
-    |**Name (Név)**|*demo-conference-api*|Egyedi nevet ad meg az API-nak. <br/>Ha a szolgáltatás URL-címének beírása után lenyomja a Tab billentyűt, az APIM kitölti ezt a mezőt a JSON-fájl tartalma alapján.|
+    |**Name**|*demo-conference-api*|Egyedi nevet ad meg az API-nak. <br/>Ha a szolgáltatás URL-címének beírása után lenyomja a Tab billentyűt, az APIM kitölti ezt a mezőt a JSON-fájl tartalma alapján.|
     |**Leírás**|Adjon meg egy opcionális leírást az API-hoz.|Ha a szolgáltatás URL-címének beírása után lenyomja a Tab billentyűt, az APIM kitölti ezt a mezőt a JSON-fájl tartalma alapján.|
     |**API URL-címének utótagja**|*conference*|Az utótag az API Management szolgáltatás kiindulási URL-címéhez van hozzáfűzve. Az API Management az API-kat az utótag alapján különbözteti meg, ezért az utótagnak egy adott közzétevő minden API-ja esetében egyedinek kell lennie.|
     |**URL-séma**|*HTTPS*|Meghatározza, mely protokollok használatával lehet hozzáférni az API-hoz. |
-    |**Termékek**|*Korlátlan*| Az API egy termékkel való társítással tehető közzé. Ha hozzá kívánja adni az új API-t egy termékhez, írja be a termék nevét. Ez a lépés többször is megismételhető, így az az API több termékhez is hozzáadható.<br/>A termékek egy vagy több API társításai. Megadhatja az API-k számát, és a fejlesztői portálon elérhetővé teheti őket a fejlesztők számára. A fejlesztőknek elő kell fizetniük a termékre az API-k eléréséhez. Amikor előfizetnek, kapnak egy előfizetési kulcsot, amely a termék minden API-jához használható. Ha Ön hozta létre az APIM-példányt, akkor már eleve rendszergazdának számít, így alapértelmezés szerint minden termékre előfizetett.<br/> Alapértelmezés szerint az API Management minden példányához az alábbi két mintatermék jár: **Starter** és **Unlimited**. |
+    |**Termékek**|*Korlátlan*| Az API egy termékkel való társítással tehető közzé. Ha hozzá kívánja adni az új API-t egy termékhez, írja be a termék nevét. Ez a lépés többször is megismételhető, így az az API több termékhez is hozzáadható.<br/>A termékek egy vagy több API társításai. Megadhatja az API-k számát, és a fejlesztői portálon elérhetővé teheti őket a fejlesztők számára. A fejlesztőknek elő kell fizetniük a termékre az API-k eléréséhez. Amikor előfizetnek, kapnak egy előfizetési kulcsot, amely a termék minden API-jához használható. Ha Ön hozta létre az APIM-példányt, akkor már eleve rendszergazdának számít, így alapértelmezés szerint minden termékre előfizetett.<br/> Alapértelmezés szerint az API Management minden példányához az alábbi két mintatermék jár: **Kezdő** és **korlátlan**. |
 
 4. Kattintson a **Létrehozás** gombra.
+
+> [!NOTE]
+> Az API-importálási korlátozások [egy másik cikkben](api-management-api-import-restrictions.md)vannak dokumentálva.
 
 ## <a name="test-the-new-apim-api-in-the-azure-portal"></a>Az új APIM API tesztelése az Azure Portalon
 

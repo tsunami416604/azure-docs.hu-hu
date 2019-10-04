@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2018
 ms.author: pepogors
-ms.openlocfilehash: 680c141e32333c4747ee69919229bd9381f536a4
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 60b634b0b927804249148737ee7a99c0e86dd7d6
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58664242"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537774"
 ---
 # <a name="develop-c-service-fabric-applications-with-visual-studio-code"></a>Fejlesztés C# Service Fabric-alkalmazásokat a Visual Studio Code-dal
 
@@ -77,6 +77,17 @@ Az alkalmazás létrehozása után telepítheti a helyi fürthöz.
 4. Miután ellenőrizte az alkalmazás fut, elindít egy böngészőt, és nyissa meg a ezt oldal: http:\//localhost:31002. Ez az a webes előtér-alkalmazás. Frissítse az oldalt a számláló a jelenlegi érték megtekintéséhez, mert növeli.
 
    ![A számláló Service-alkalmazás a böngészőben](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-running.png)
+
+## <a name="publish-the-application-to-an-azure-service-fabric-cluster"></a>Alkalmazások közzétételével az Azure Service Fabric-fürt
+Üzembe az alkalmazást a helyi fürthöz, valamint az alkalmazás egy távoli Azure Service Fabric-fürtön is közzéteheti. 
+
+1. Győződjön meg arról, hogy az alkalmazás a fenti utasítások használatával létrehozott. A létrehozott konfigurációs fájljának frissítése `Cloud.json` a távoli fürtön a közzétenni kívánt részleteit.
+
+2. Az a **Parancskatalógus**, jelölje be a **Service Fabric: Alkalmazás közzététele**. A kimenet a telepítési folyamatot, az integrált terminálon küld.
+
+   ![Alkalmazás közzététele a VS Code-ban](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-publish-application.png)
+
+3. Az üzembe helyezés befejeződése után elindít egy böngészőt, és nyissa meg a Service Fabric Explorer: `https:<clusterurl>:19080/Explorer`. Megtekintheti, hogy az alkalmazás fut-e. Ez eltarthat némi ideig legyen a kis türelmet. 
 
 ## <a name="debug-the-application"></a>Az alkalmazás hibakeresése
 Hibakeresés a VS Code alkalmazást, ha az alkalmazás egy helyi fürtön kell futnia. Töréspontok majd lehet hozzáadni a kódot.

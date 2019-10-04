@@ -1,7 +1,6 @@
 ---
-title: 'Az Apache hadoop-keretrendszer hibakeresése: A naplók megtekintéséhez és a hibaüzenetek – Azure HDInsight értelmezése'
-description: További tudnivalók a hibaüzenetek kaphat, ha a PowerShell használatával HDInsight felügyelete és helyreállítása lépéseket.
-services: hdinsight
+title: 'Hibakeresési Apache Hadoop: Naplók megtekintése és a hibaüzenetek értelmezése – Azure HDInsight'
+description: Ismerje meg, hogy milyen hibaüzeneteket kaphat a HDInsight a PowerShell használatával történő felügyeletekor, valamint a helyreállításhoz szükséges lépéseket is.
 ms.reviewer: jasonh
 author: ashishthaps
 ms.service: hdinsight
@@ -9,22 +8,22 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: a035789af08aa4c0d877a06295d9bd6fdedf6844
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 8ad2bdd0f12abad08515f0314b9c03cc971127cb
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449488"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059213"
 ---
-# <a name="analyze-apache-hadoop-logs"></a>Apache Hadoop-naplók elemzése
+# <a name="analyze-apache-hadoop-logs-in-azure-hdinsight"></a>Apache Hadoop naplók elemzése az Azure HDInsight
 
-Minden egyes Azure HDInsight az Apache Hadoop-fürtöt az alapértelmezett fájlrendszerként használt Azure storage-fiókkal rendelkezik. A storage-fiókot az alapértelmezett tárfiók neve. Fürt használja az Azure Table storage és a Blob storage az alapértelmezett tárfiókot a naplók tárolásához.  Az alapértelmezett tárfiókot, a fürt számára, lásd: [kezelése az Apache Hadoop-fürtök a HDInsight](../hdinsight-administer-use-portal-linux.md#find-the-storage-accounts). A naplók megőrzése a tárfiókban, a fürt törlése után is.
+Az Azure HDInsight minden Apache Hadoop-fürtje rendelkezik alapértelmezett fájlrendszerként használt Azure Storage-fiókkal. A Storage-fiókot az alapértelmezett Storage-fióknak nevezzük. A fürt az Azure Table Storage-t és a blob Storage-ot használja az alapértelmezett Storage-fiókban a naplók tárolásához.  A fürt alapértelmezett Storage-fiókjának megkereséséhez lásd: [Apache Hadoop-fürtök kezelése a HDInsight-ben](../hdinsight-administer-use-portal-linux.md#find-the-storage-accounts). A naplók a fürt törlése után is megmaradnak a Storage-fiókban.
 
-## <a name="logs-written-to-azure-tables"></a>Azure-beli táblák írt naplók
+## <a name="logs-written-to-azure-tables"></a>Az Azure-táblákba írt naplók
 
-A naplók az Azure-beli táblák írt abba, mi történik egy HDInsight-fürtöt egy szintjének adja meg.
+Az Azure-táblákba írt naplók egy szintű betekintést biztosítanak a HDInsight-fürttel kapcsolatos eseményekbe.
 
-Amikor létrehoz egy HDInsight-fürtöt, hat táblára automatikusan létrejönnek az alapértelmezett Table storage-ban a Linux-alapú fürtök:
+HDInsight-fürt létrehozásakor a rendszer hat táblázatot hoz létre automatikusan a Linux-alapú fürtökhöz az alapértelmezett tábla-tárolóban:
 
 * hdinsightagentlog
 * syslog
@@ -33,287 +32,287 @@ Amikor létrehoz egy HDInsight-fürtöt, hat táblára automatikusan létrejönn
 * ambariserverlog
 * ambariagentlog
 
-A tábla fájlnevek **u<ClusterName>DDMonYYYYatHHMMSSsss<TableName>**.
+A táblázat fájlnevei: **u\<ClusterName > DDMonYYYYatHHMMSSsss\<táblanév >** .
 
 Ezek a táblák a következő mezőket tartalmazzák:
 
 * ClusterDnsName
 * ComponentName
-* eventTimestamp
+* EventTimestamp
 * Gazdagép
 * MALoggingHash
-* Üzenet
+* Message
 * N
 * PreciseTimeStamp
-* Szerepkör
+* Role
 * RowIndex
 * Bérlő
-* IDŐBÉLYEG
+* TIMESTAMP
 * TraceLevel
 
 ### <a name="tools-for-accessing-the-logs"></a>A naplók eléréséhez szükséges eszközök
-Számos eszköz áll rendelkezésre a táblák elérése:
+A táblákban lévő adatok eléréséhez számos eszköz érhető el:
 
 * Visual Studio
 * Azure Storage Explorer
-* A Power Query az Excel programhoz
+* Excel-Power Query
 
-#### <a name="use-power-query-for-excel"></a>Használja a Power Query az Excel programhoz
-A Power Query telepíthető [Excelhez készült Microsoft Power Query](https://www.microsoft.com/en-us/download/details.aspx?id=39379). Tekintse meg a letöltési oldalon a rendszerkövetelményeket.
+#### <a name="use-power-query-for-excel"></a>Az Excel Power Query használata
+Power Query telepíthető [Excelhez készült Microsoft Power Queryból](https://www.microsoft.com/en-us/download/details.aspx?id=39379). A rendszerkövetelményekért tekintse meg a letöltési oldalt.
 
-**Nyissa meg, és a napló elemzése a Power Query használatával**
+**A Power Query használata a szolgáltatás naplójának megnyitásához és elemzéséhez**
 
-1. Nyissa meg **Microsoft Excel**.
-2. Az a **Power Query** menüben kattintson a **az Azure**, és kattintson a **a Microsoft Azure Table storage**.
+1. Nyissa meg a **Microsoft Excelt**.
+2. A **Power Query** menüben kattintson az **Azure-ból**, majd a **Microsoft Azure Table Storage**elemre.
    
-    ![HDInsight Hadoop Excel PowerQuery nyissa meg az Azure Table storage](./media/apache-hadoop-debug-jobs/hdinsight-hadoop-analyze-logs-using-excel-power-query-open.png)
-3. Adja meg a tárfiók nevét, rövid nevét vagy teljes Tartománynevét.
-4. Adja meg a tárfiók-kulcsot. Táblák listáját kell jelenik meg:
+    ![HDInsight Hadoop Excel PowerQuery az Azure Table Storage megnyitása](./media/apache-hadoop-debug-jobs/hdinsight-hadoop-analyze-logs-using-excel-power-query-open.png)
+3. Adja meg a Storage-fiók nevét, vagy a rövid nevet vagy a teljes tartománynevet.
+4. Adja meg a Storage-fiók kulcsát. A táblák listáját a következő táblázat tartalmazza:
    
-    ![Az Azure Table storage szolgáltatásban tárolt HDInsight Hadoop-naplók](./media/apache-hadoop-debug-jobs/hdinsight-hadoop-analyze-logs-table-names.png)
-5. Kattintson a jobb gombbal a hadoopservicelog táblájában a **kezelő** ablaktáblán, és válassza ki **szerkesztése**. Négy oszlopot kell megjelennie. Szükség esetén törölje a **partíciókulcs**, **Sorkulcs**, és **időbélyeg** oszlopok őket, majd kattintson a **oszlopok eltávolítása** a a beállítások a menüszalagon.
-6. Kattintson a Kibontás ikonra a tartalom oszlopában az Excel-munkafüzetbe importálni kívánt oszlopok kiválasztásához. Ebben a bemutatóban a kiválasztott TraceLevel és ComponentName: Témakörébe me néhány alapvető információ, amelyre összetevők problémák rendelkezett.
+    ![Az Azure Table Storage-ban tárolt HDInsight Hadoop-naplók](./media/apache-hadoop-debug-jobs/hdinsight-hadoop-analyze-logs-table-names.png)
+5. Kattintson a jobb gombbal a hadoopservicelog táblára a **navigátor** ablaktáblán, és válassza a **Szerkesztés**lehetőséget. Négy oszlopot kell látnia. Ha kívánja, törölje a **partíció kulcsát**, a **sor kulcsát**és az **időbélyegző** oszlopokat úgy, hogy kiválasztja őket, majd az **oszlopok eltávolítása** lehetőségre kattint a menüszalagon.
+6. Kattintson a Kibontás ikonra a tartalom oszlopban, és válassza ki az Excel-számolótáblába importálni kívánt oszlopokat. Ebben a bemutatóban úgy döntöttem, TraceLevel, és ComponentName: Olyan alapszintű információkat adhat meg, amelyekkel az összetevőkkel kapcsolatban problémák léptek fel.
    
-    ![HDInsight Hadoop-naplók oszlopok kiválasztása](./media/apache-hadoop-debug-jobs/hdinsight-hadoop-analyze-logs-using-excel-power-query-filter.png)
-7. Kattintson a **OK** az adatok importálásához.
-8. Válassza ki a **TraceLevel**, szerepkör, és **ComponentName** oszlopokat, és kattintson **Group By** vezérlőelem a menüszalagon.
-9. Kattintson a **OK** a Group By párbeszédpanel
-10. Kattintson a ** a alkalmazni & Bezárás **.
+    ![HDInsight Hadoop-naplók az Oszlopok kiválasztása Excel](./media/apache-hadoop-debug-jobs/hdinsight-hadoop-analyze-logs-using-excel-power-query-filter.png "HDInsight Hadoop-naplók az Oszlopok kiválasztása Excel")
+7. Az adatimportáláshoz kattintson **az OK** gombra.
+8. Válassza ki a **TraceLevel**, a szerepkört és a **ComponentName** oszlopot, majd kattintson a menüszalagon a Group By Control ( **csoport szerinti csoportosítás** ) elemre.
+9. Kattintson az **OK** gombra a csoportosítási lista párbeszédpanelen
+10. Kattintson a * * alkalmazás & Bezárás * * elemre.
 
-Mostantól használhatja az Excel, a szűrési és rendezési szükség szerint. Érdemes felvenni a többi oszlop (mint például a hibaüzenet) annak érdekében, hogy részletesen megvizsgálhatja a problémákat úgy fordulnak elő, de kiválasztásával és az oszlopok a fent leírt csoportosítási vonalakban finomat, hogy mi történik, a Hadoop-szolgáltatásokhoz. Az azonos ötlet a setuplog és hadoopinstalllog táblákra alkalmazhatók.
+Mostantól szükség szerint szűrheti és rendezheti az Excel programot. Előfordulhat, hogy más oszlopokat (például üzenetet) is szeretne felvenni a problémákra, de a fent ismertetett oszlopok kiválasztásával és csoportosításával a Hadoop-szolgáltatásokkal kapcsolatos újdonságokról szóló információk láthatók. Ugyanez a gondolat alkalmazható a Setuplog és a hadoopinstalllog táblákra is.
 
 #### <a name="use-visual-studio"></a>A Visual Studio használata
 **A Visual Studio használata**
 
 1. Nyissa meg a Visual Studiót.
-2. Az a **nézet** menüben kattintson a **Cloud Explorer**. Vagy egyszerűen csak kattintson **CTRL +\, CTRL + X**.
-3. A **Cloud Explorer**válassza **erőforrástípusok**.  A másik elérhető lehetőség **erőforráscsoportok**.
-4. Bontsa ki a **Tárfiókok**, az alapértelmezett tárfiókot, a fürt számára, majd **táblák**.
-5. Kattintson duplán a **hadoopservicelog**.
+2. A **nézet** menüben kattintson a **Cloud Explorer**elemre. Vagy egyszerűen kattintson a **CTRL\, + CTRL + X billentyűkombinációra**.
+3. A **Cloud Explorerben**válassza az **erőforrástípusok**lehetőséget.  A másik lehetőség az **erőforráscsoportok**.
+4. Bontsa ki a **Storage-fiókok**, a fürt alapértelmezett Storage-fiókja, majd a **táblák**elemet.
+5. Kattintson duplán a **hadoopservicelog**elemre.
 6. Adjon hozzá egy szűrőt. Példa:
    
         TraceLevel eq 'ERROR'
    
-    ![HDInsight Hadoop-naplók oszlopok kiválasztása](./media/apache-hadoop-debug-jobs/hdinsight-hadoop-analyze-logs-visual-studio-filter.png)
+    ![HDInsight Hadoop-naplók az Oszlopok kiválasztása vs](./media/apache-hadoop-debug-jobs/hdinsight-hadoop-analyze-logs-visual-studio-filter.png "HDInsight Hadoop-naplók az Oszlopok kiválasztása vs")
    
-    Szűrők létrehozásával kapcsolatos további információkért lásd: [szűrő karakterláncok hozhatnak létre a tábla Designer](../../vs-azure-tools-table-designer-construct-filter-strings.md).
+    A szűrők létrehozásával kapcsolatos további információkért lásd: [szűrési karakterláncok létrehozása a Táblatervezőhoz](../../vs-azure-tools-table-designer-construct-filter-strings.md).
 
-## <a name="logs-written-to-azure-blob-storage"></a>Az Azure Blob Storage-írt naplók
-A naplók az Azure-beli táblák írt abba, mi történik egy HDInsight-fürtöt egy szintjének adja meg. Ezek a táblák azonban nem biztosítanak tevékenységszintű naplókat, amelyek akkor hasznosak, részletes elemzések kibontásáról további felmerülő problémákat. Adja meg a következő részletességi szintje, a HDInsight fürtök úgy vannak konfigurálva, a Blob Storage-fiók minden olyan feladat templeton eszközön keresztül végzett keresztül elküldött feladat naplók írni. Gyakorlatilag ez azt jelenti, hogy a Microsoft Azure PowerShell-parancsmagok vagy a .NET projekt beküldése API-k, nem az RDP/parancssori hozzáférést a fürthöz keresztül elküldött feladatok használatával elküldött feladatok. 
+## <a name="logs-written-to-azure-blob-storage"></a>Az Azure Blob Storageba írt naplók
+Az Azure-táblákba írt naplók egy szintű betekintést biztosítanak a HDInsight-fürttel kapcsolatos eseményekbe. Ezek a táblák azonban nem biztosítanak feladat-szintű naplókat, amelyek hasznosak lehetnek a problémák további befúrásakor. A következő részletességi szint megadásához a HDInsight-fürtök úgy vannak konfigurálva, hogy a Templeton-en keresztül küldött feladatokhoz minden feladathoz feljegyezzenek a Blob Storage fiókjába. Gyakorlatilag ez azt jelenti, hogy az Microsoft Azure PowerShell-parancsmagokkal vagy a .NET Job beküldési API-kkal elküldött feladatok nem a fürthöz RDP/parancssori hozzáférésen keresztül küldött feladatok. 
 
-A naplók megtekintéséhez lásd: [hozzáférés Apache Hadoop YARN-alkalmazásnaplók a Linux-alapú HDInsight](../hdinsight-hadoop-access-yarn-app-logs-linux.md).
-
-
-Protokoly aplikací kapcsolatos további információkért lásd: [leegyszerűsíti a felhasználó-naplók és az Apache Hadoop YARN hozzáférés](https://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/).
+A naplók megtekintéséhez tekintse meg a következő témakört: [hozzáférés Apache HADOOP fonalas alkalmazás naplófájljaihoz a Linux-alapú HDInsight](../hdinsight-hadoop-access-yarn-app-logs-linux.md).
 
 
-## <a name="view-cluster-health-and-job-logs"></a>Fürt állapotának és a feladat naplóinak megtekintése
-### <a name="access-the-ambari-ui"></a>Az Ambari felhasználói felületén eléréséhez
-Az Azure Portalon kattintson egy HDInsight-fürt nevét, a fürt panel megnyitásához. A fürt panelen kattintson a **irányítópult**.
-
-![Indítsa el a fürt irányítópultja](./media/apache-hadoop-debug-jobs/hdi-debug-launch-dashboard.png)
+Az alkalmazás naplóival kapcsolatos további információkért lásd: [a felhasználói naplók kezelésének és elérésének egyszerűsítése Apache Hadoop-fonalban](https://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/).
 
 
-### <a name="access-the-yarn-ui"></a>Hozzáférés a Yarn felhasználói felületén
-Az Azure Portalon kattintson egy HDInsight-fürt nevét, a fürt panel megnyitásához. A fürt panelen kattintson a **irányítópult**. Amikor a rendszer kéri, adja meg a fürt rendszergazdai hitelesítő adatait. Az Ambari, válassza ki a **YARN** a bal oldali szolgáltatások listájából. A megjelenő lapon válassza ki a **Gyorshivatkozások**, majd válassza ki az aktív átjárócsomópont be- és erőforrás-kezelő felhasználói felületén.
+## <a name="view-cluster-health-and-job-logs"></a>A fürt állapotának és a feladatok naplóinak megtekintése
+### <a name="access-the-ambari-ui"></a>Hozzáférés a Ambari felhasználói felületéhez
+A Azure Portal a fürt ablaktábla megnyitásához kattintson egy HDInsight-fürt nevére. A fürt ablaktáblán kattintson az **irányítópult**elemre.
 
-A YARN felhasználói felületén segítségével a következőket:
+![HDInsight-indító fürt irányítópultja](./media/apache-hadoop-debug-jobs/hdi-debug-launch-dashboard.png)
 
-* **A fürt állapotának lekérése**. A bal oldali ablaktáblán, bontsa ki a **fürt**, és kattintson a **kapcsolatos**. A jelen fürt állapot részletei, például a teljes kiosztott memória, a használt, mag állapotát a fürterőforrás-kezelő fürt verziója és így tovább.
+
+### <a name="access-the-yarn-ui"></a>A fonal felhasználói felületének elérése
+A Azure Portal a fürt ablaktábla megnyitásához kattintson egy HDInsight-fürt nevére. A fürt ablaktáblán kattintson az **irányítópult**elemre. Ha a rendszer kéri, adja meg a fürt rendszergazdai hitelesítő adatait. A Ambari-ben válassza a **fonal** lehetőséget a bal oldalon található szolgáltatások listájából. A megjelenő oldalon válassza a **gyors hivatkozások**lehetőséget, majd válassza ki az aktív fő csomópont-és erőforrás-kezelő felhasználói felületét.
+
+A fonal felhasználói felületét a következő műveletek elvégzésére használhatja:
+
+* **Fürt állapotának beolvasása**. A bal oldali ablaktáblán bontsa ki a **fürt**csomópontot, majd kattintson **a névjegy**elemre. Ez a fürt állapotának részleteit, például az összes lefoglalt memóriát, a felhasznált magokat, a fürterőforrás-kezelő állapotát, a fürt verzióját és így tovább.
   
-    ![Indítsa el a fürt irányítópultja](./media/apache-hadoop-debug-jobs/hdi-debug-yarn-cluster-state.png)
-* **Csomópont állapotának lekérése**. A bal oldali ablaktáblán, bontsa ki a **fürt**, és kattintson a **csomópontok**. Ez felsorolja az összes a csomópontok a fürtben, a HTTP-cím az egyes csomópontok osztja ki minden egyes csomópontot, és így tovább.
-* **Feladat állapotának figyelése**. A bal oldali ablaktáblán, bontsa ki a **fürt**, és kattintson a **alkalmazások** , a fürt összes feladat listázása. Ha azt szeretné, tekintse meg (például az új, elküldött, futó, stb.) meghatározott állapotban lévő feladatok, alapján a megfelelő hivatkozásra kattintva **alkalmazások**. További kattinthat a feladat nevét tudjon meg többet a feladat ilyen, beleértve a kimenetet, naplók, stb.
+    ![HDInsight indítása – fürt irányítópultjának fonala](./media/apache-hadoop-debug-jobs/hdi-debug-yarn-cluster-state.png "HDInsight indítása – fürt irányítópultjának fonala")
+* **Csomópont állapotának beolvasása**. A bal oldali ablaktáblán bontsa ki a **fürt**csomópontot, majd kattintson a **csomópontok**elemre. Ez felsorolja a fürt összes csomópontját, az egyes csomópontok HTTP-címeit, az egyes csomópontokhoz lefoglalt erőforrásokat stb.
+* A **feladatok állapotának figyelése**. A bal oldali ablaktáblán bontsa ki a **fürt**csomópontot, majd kattintson az **alkalmazások** elemre a fürt összes feladatának listázásához. Ha egy adott állapotban szeretné megtekinteni a feladatokat (például új, elküldött, futó stb.), kattintson a megfelelő hivatkozásra az **alkalmazások**területen. A feladatokra kattintva további információkat kaphat a feladatokról, például a kimenetről, a naplókról stb.
 
-### <a name="access-the-hbase-ui"></a>A HBase felhasználói felület eléréséhez
-Az Azure Portalon kattintson egy HDInsight HBase-fürt nevét, a fürt panel megnyitásához. A fürt panelen kattintson a **irányítópult**. Amikor a rendszer kéri, adja meg a fürt rendszergazdai hitelesítő adatait. Az Ambari válassza ki a HBase a szolgáltatások listájából. Válassza ki **Gyorshivatkozások** elemre a lap tetején mutasson az aktív Zookeeper-csomópont hivatkozására, és kattintson a HBase-Mesterfelület.
+### <a name="access-the-hbase-ui"></a>Hozzáférés a HBase felhasználói felületéhez
+A Azure Portal a fürt ablaktábla megnyitásához kattintson egy HDInsight HBase-fürt nevére. A fürt ablaktáblán kattintson az **irányítópult**elemre. Ha a rendszer kéri, adja meg a fürt rendszergazdai hitelesítő adatait. A Ambari területen válassza a HBase elemet a szolgáltatások listájából. Válassza a **gyors hivatkozások** lehetőséget az oldal tetején, mutasson az aktív Zookeeper csomópontra, majd kattintson HBase Master felhasználói felület elemre.
 
 ## <a name="hdinsight-error-codes"></a>HDInsight-hibakódok
-Az ebben a szakaszban részletezett hibaüzenetek segítségével a felhasználók az Azure HDInsight Hadoop lehetséges hibaállapotok, hogy azok merülhetnek fel, ha az Azure PowerShell-lel szolgáltatás felügyeletére megértéséhez, és azokat a lépéseket, amelyek elvégezhet tanácsokkal találhatók. a hiba helyreállítása.
+Az ebben a szakaszban részletezett hibaüzenetek segítséget nyújtanak az Azure HDInsight lévő Hadoop felhasználói számára a szolgáltatásnak a Azure PowerShell használatával történő felügyeletekor felmerülő lehetséges hibák megismeréséhez, valamint a szükséges lépésekkel kapcsolatos tanácsadáshoz a hiba miatti helyreállításhoz.
 
-Bizonyos hibaüzenetek sikerült is látható az Azure Portalon kezelheti a HDInsight-fürtök használatakor. Egyéb hibaüzeneteit, esetleg előforduló, de vannak kevésbé részletes lehetséges ebben a környezetben a helyreigazító műveletek korlátozásai miatt. Más hibaüzenetek a környezetekben, ahol a megoldás az nyilvánvaló vannak megadva. 
+Ezek a hibaüzenetek egy részét a Azure Portal is láthatják, amikor a HDInsight-fürtök kezelésére használják. Az esetlegesen előforduló egyéb hibaüzenetek azonban kevésbé részletesek, mert az ebben a kontextusban lehetséges javító műveletekre vonatkozó korlátozások is előfordulhatnak. Más hibaüzenetek a kontextusban vannak megadva, ahol a mérséklés nyilvánvaló. 
 
 ### <a id="AtLeastOneSqlMetastoreMustBeProvided"></a>AtLeastOneSqlMetastoreMustBeProvided
-* **Leírás**: Adja meg az Azure SQL database adatokat legalább egy összetevő annak érdekében, hogy az egyéni beállítások használatához az Oozie és a Hive-metaadattárak.
-* **Kockázatcsökkentési**: A felhasználónak van szüksége, adjon meg egy érvényes SQL Azure-metaadattár, és ismételje meg a kérelmet.  
+* **Leírás**: Adja meg legalább egy összetevő számára az Azure SQL Database adatait, hogy egyéni beállításokat lehessen használni a kaptár és a Oozie metaadattárak.
+* **Enyhítés**: A felhasználónak érvényes SQL Azure metaadattár kell megadnia, és újra kell próbálkoznia a kéréssel.  
 
 ### <a id="AzureRegionNotSupported"></a>AzureRegionNotSupported
-* **Leírás**: Nem sikerült létrehozni a fürtöt a régióban *nameOfYourRegion*. Egy érvényes HDInsight régiót használni, és próbálkozzon újra a kérelmet.
-* **Kockázatcsökkentési**: Ügyfél kell létrehozni az jelenleg támogatja az ilyen fürt régió: Délkelet-Ázsia, Nyugat-Európa, Észak-Európa, USA keleti RÉGIÓJA vagy USA nyugati RÉGIÓJA.  
+* **Leírás**: Nem lehetett létrehozni a fürtöt a *nameOfYourRegion*régióban. Érvényes HDInsight-régiót használjon, és próbálkozzon újra a kérelemmel.
+* **Enyhítés**: Az ügyfélnek létre kell hoznia a jelenleg támogatott fürt régióját: Délkelet-Ázsia, Nyugat-Európa, Észak-Európa, az USA keleti régiója vagy az USA nyugati régiója.  
 
 ### <a id="ClusterContainerRecordNotFound"></a>ClusterContainerRecordNotFound
-* **Leírás**: A kiszolgáló nem található a kért fürt rekord.  
-* **Kockázatcsökkentési**: Próbálja megismételni a műveletet.
+* **Leírás**: A kiszolgáló nem találta a kért fürtözött rekordot.  
+* **Enyhítés**: Próbálja meg újra a műveletet.
 
 ### <a id="ClusterDnsNameInvalidReservedWord"></a>ClusterDnsNameInvalidReservedWord
-* **Leírás**: Fürt DNS-név *yourDnsName* je neplatná. Ellenőrizze, hogy a neve kezdődik és végződik alfanumerikus, és csak "-" speciális karakter  
-* **Kockázatcsökkentési**: Ellenőrizze, hogy használja a egy érvényes DNS-nevet a fürt, amely elindítja és alfanumerikus végződik, és nincsenek különleges tartalmazza a kötőjelet más karaktereket az '-', és próbálkozzon újra a művelettel.
+* **Leírás**: A fürt DNS-neve *yourDnsName* érvénytelen. Győződjön meg arról, hogy a név elindul és alfanumerikus karakterrel végződik, és csak "-" speciális karaktert tartalmazhat  
+* **Enyhítés**: Győződjön meg arról, hogy a fürthöz érvényes DNS-nevet használt, amely alfanumerikus karakterrel kezdődik és végződik, és nem tartalmaz speciális karaktereket a kötőjeltől (-), majd próbálja megismételni a műveletet.
 
 ### <a id="ClusterNameUnavailable"></a>ClusterNameUnavailable
-* **Leírás**: Fürt neve *yourClusterName* nem érhető el. Válasszon egy másik nevet.  
-* **Kockázatcsökkentési**: A felhasználó kell adjon meg egy egyedi clustername és nem létezik, és ismételje meg. Ha a felhasználó nem használja a portálon, a felhasználói felület értesíteni fogjuk őket, ha a fürt neve már használatban a létrehozás lépések során.
+* **Leírás**: A fürt neve *yourClusterName* nem érhető el. Válasszon másik nevet.  
+* **Enyhítés**: A felhasználónak olyan clustername kell megadnia, amely egyedi, és nem létezik, és próbálkozzon újra. Ha a felhasználó a portált használja, akkor a felhasználói felület értesíti a felhasználót, ha a létrehozási lépések során már használatban van egy fürt neve.
 
 ### <a id="ClusterPasswordInvalid"></a>ClusterPasswordInvalid
-* **Leírás**: Fürt jelszó érvénytelen. Jelszó legalább 10 karakter hosszúságúnak kell lennie, és tartalmaznia kell legalább egy szám, nagybetű, kisbetű és speciális karaktert a szóközök nélküli, és nem tartalmazhatja a felhasználónevet, részeként.  
-* **Kockázatcsökkentési**: Adjon meg egy érvényes fürttel jelszót, és próbálja megismételni a műveletet.
+* **Leírás**: A fürt jelszava érvénytelen. A jelszónak legalább 10 karakterből kell állnia, és tartalmaznia kell legalább egy számot, nagybetűt, kisbetűt és egy szóközök nélküli speciális karaktert, és nem tartalmazhatja a felhasználónevet a részeként.  
+* **Enyhítés**: Adjon meg egy érvényes fürtöt, és ismételje meg a műveletet.
 
 ### <a id="ClusterUserNameInvalid"></a>ClusterUserNameInvalid
-* **Leírás**: Fürt felhasználónév érvénytelen. Ellenőrizze, hogy felhasználónév nem tartalmazhat különleges karaktereket.  
-* **Kockázatcsökkentési**: Adjon meg egy érvényes fürttel felhasználónévvel, és próbálja megismételni a műveletet.
+* **Leírás**: A fürt felhasználóneve érvénytelen. Győződjön meg arról, hogy a Felhasználónév nem tartalmaz speciális karaktereket vagy szóközöket.  
+* **Enyhítés**: Adja meg a fürt érvényes felhasználónevét, majd próbálja megismételni a műveletet.
 
 ### <a id="ClusterUserNameInvalidReservedWord"></a>ClusterUserNameInvalidReservedWord
-* **Leírás**: Fürt DNS-név *yourDnsClusterName* je neplatná. Ellenőrizze, hogy a neve kezdődik és végződik alfanumerikus, és csak "-" speciális karakter  
-* **Kockázatcsökkentési**: Adjon meg egy érvényes DNS-fürt felhasználónevet, és próbálja megismételni a műveletet.
+* **Leírás**: A fürt DNS-neve *yourDnsClusterName* érvénytelen. Győződjön meg arról, hogy a név elindul és alfanumerikus karakterrel végződik, és csak "-" speciális karaktert tartalmazhat  
+* **Enyhítés**: Adjon meg egy érvényes DNS-fürtöt, és ismételje meg a műveletet.
 
 ### <a id="ContainerNameMisMatchWithDnsName"></a>ContainerNameMisMatchWithDnsName
-* **Leírás**: URI-Tárolónév *yourcontainerURI* és DNS-név *yourDnsName* a kérelem törzsében meg kell egyeznie.  
-* **Kockázatcsökkentési**: Győződjön meg arról, hogy a tároló neve és a DNS-név azonos, és próbálja megismételni a műveletet.
+* **Leírás**: A *YOURDNSNAME* URI- *yourcontainerURI* és a kérelem törzsében szereplő DNS-névnek egyeznie kell a tároló nevével.  
+* **Enyhítés**: Győződjön meg arról, hogy a tároló neve és a DNS-neve azonos, majd próbálja megismételni a műveletet.
 
 ### <a id="DataNodeDefinitionNotFound"></a>DataNodeDefinitionNotFound
-* **Leírás**: Érvénytelen a fürt konfigurációját. Nem található minden adat csomópont definíciókat a csomópont méretét.  
-* **Kockázatcsökkentési**: Próbálja megismételni a műveletet.
+* **Leírás**: A fürtkonfiguráció érvénytelen. Nem található az adatcsomópont-definíciók a csomópontok méretében.  
+* **Enyhítés**: Próbálja meg újra a műveletet.
 
 ### <a id="DeploymentDeletionFailure"></a>DeploymentDeletionFailure
-* **Leírás**: Nem sikerült telepíteni a fürt törlése  
-* **Kockázatcsökkentési**: A törlési művelettel próbálkozhat újra.
+* **Leírás**: Sikertelen volt az üzemelő példány törlése a fürtön  
+* **Enyhítés**: Próbálja megismételni a törlési műveletet.
 
 ### <a id="DnsMappingNotFound"></a>DnsMappingNotFound
-* **Leírás**: Konfigurációs hiba. Szükséges DNS-hozzárendelést az információk nem találhatók.  
-* **Kockázatcsökkentési**: Fürt törlése, és hozzon létre egy új fürtöt.
+* **Leírás**: Szolgáltatás-konfigurációs hiba. A kötelező DNS-megfeleltetési információk nem találhatók.  
+* **Enyhítés**: Törölje a fürtöt, és hozzon létre egy új fürtöt.
 
 ### <a id="DuplicateClusterContainerRequest"></a>DuplicateClusterContainerRequest
-* **Leírás**: Ismétlődő fürt tároló létrehozási kísérlet. Bejegyzés létezik *nameOfYourContainer* , de az ETag nem egyezik.
-* **Kockázatcsökkentési**: Adjon meg egy egyedi nevet a tároló, és ismételje meg a létrehozási művelet.
+* **Leírás**: Duplikált fürt tároló-létrehozási kísérlet. A rekord létezik a *nameOfYourContainer* , de a etagek nem egyeznek.
+* **Enyhítés**: Adja meg a tároló egyedi nevét, majd próbálja megismételni a létrehozási műveletet.
 
 ### <a id="DuplicateClusterInHostedService"></a>DuplicateClusterInHostedService
-* **Leírás**: Üzemeltetett szolgáltatás *nameOfYourHostedService* már tartalmaz egy fürtöt. Üzemeltetett szolgáltatás nem tartalmazhat több fürt  
-* **Kockázatcsökkentési**: A gazdagép a fürt egy másik üzemeltetett szolgáltatásban.
+* **Leírás**: Az üzemeltetett szolgáltatás *nameOfYourHostedService* már tartalmaz fürtöt. Egy üzemeltetett szolgáltatás nem tartalmazhat több fürtöt  
+* **Enyhítés**: A fürt üzemeltetése egy másik üzemeltetett szolgáltatásban.
 
 ### <a id="FailureToUpdateDeploymentStatus"></a>FailureToUpdateDeploymentStatus
-* **Leírás**: A kiszolgáló nem tudta frissíteni a fürt központi telepítésének állapotát.  
-* **Kockázatcsökkentési**: Próbálja megismételni a műveletet. Ha ez történik, hogy többször is feldolgozza, lépjen kapcsolatba a CSS.
+* **Leírás**: A kiszolgáló nem tudja frissíteni a fürt központi telepítésének állapotát.  
+* **Enyhítés**: Próbálja meg újra a műveletet. Ha ez többször is előfordul, forduljon a CSS-hez.
 
 ### <a id="HdiRestoreClusterAltered"></a>HdiRestoreClusterAltered
-* **Leírás**: Fürt *yourClusterName* karbantartás részeként törölve lett. Hozza létre újra a fürtöt.
-* **Kockázatcsökkentési**: Hozza létre újra a fürtöt.
+* **Leírás**: A fürt *yourClusterName* a karbantartás részeként törölte. Hozza létre újra a fürtöt.
+* **Enyhítés**: Hozza létre újra a fürtöt.
 
 ### <a id="HeadNodeConfigNotFound"></a>HeadNodeConfigNotFound
-* **Leírás**: Érvénytelen a fürt konfigurációját. Nem található csomópontok méretét a fő csomópont-konfiguráció szükséges.
-* **Kockázatcsökkentési**: Próbálja megismételni a műveletet.
+* **Leírás**: A fürtkonfiguráció érvénytelen. A szükséges fő csomópont-konfiguráció nem található a csomópontok méreteiben.
+* **Enyhítés**: Próbálja meg újra a műveletet.
 
 ### <a id="HostedServiceCreationFailure"></a>HostedServiceCreationFailure
-* **Leírás**: Nem sikerült létrehozni az üzemeltetett szolgáltatás *nameOfYourHostedService*. Ismételje meg a kérelmet.  
-* **Kockázatcsökkentési**: Ismételje meg a kérelmet.
+* **Leírás**: Az üzemeltetett szolgáltatás *nameOfYourHostedService*nem hozható létre. Próbálkozzon újra a kérelemmel.  
+* **Enyhítés**: Próbálja megismételni a kérelmet.
 
 ### <a id="HostedServiceHasProductionDeployment"></a>HostedServiceHasProductionDeployment
-* **Leírás**: Üzemeltetett szolgáltatás *nameOfYourHostedService* már rendelkezik az éles környezet. Üzemeltetett szolgáltatás nem tartalmazhat több éles környezetekben üzemelő példányok. Próbálja megismételni a kérelmet egy másik fürtnevet.
-* **Kockázatcsökkentési**: Használjon egy másik fürtnevet, és ismételje meg a kérelmet.
+* **Leírás**: Az üzemeltetett szolgáltatás *nameOfYourHostedService* már rendelkezik éles üzembe helyezéssel. Egy üzemeltetett szolgáltatás nem tartalmazhat több éles környezetben üzemelő példányt. Próbálja megismételni a kérelmet egy másik fürt nevével.
+* **Enyhítés**: Használjon másik fürtöt, majd próbálja megismételni a kérelmet.
 
 ### <a id="HostedServiceNotFound"></a>HostedServiceNotFound
-* **Leírás**: Üzemeltetett szolgáltatás *nameOfYourHostedService* esetében a fürt nem található.  
-* **Kockázatcsökkentési**: Ha a fürt hibás állapotú, törölje azt, és próbálkozzon újra.
+* **Leírás**: Nem található a fürthöz tartozó üzemeltetett szolgáltatás *nameOfYourHostedService* .  
+* **Enyhítés**: Ha a fürt hibás állapotban van, törölje, majd próbálkozzon újra.
 
 ### <a id="HostedServiceWithNoDeployment"></a>HostedServiceWithNoDeployment
-* **Leírás**: Üzemeltetett szolgáltatás *nameOfYourHostedService* nincs társított központi telepítés nem.  
-* **Kockázatcsökkentési**: Ha a fürt hibás állapotú, törölje azt, és próbálkozzon újra.
+* **Leírás**: Az üzemeltetett szolgáltatás *nameOfYourHostedService* nincs társított központi telepítés.  
+* **Enyhítés**: Ha a fürt hibás állapotban van, törölje, majd próbálkozzon újra.
 
 ### <a id="InsufficientResourcesCores"></a>InsufficientResourcesCores
-* **Leírás**: A SubscriptionId *yourSubscriptionId* hozhat létre fürtöt nincs magok balra *yourClusterName*. Kötelező: *resourcesRequired*, elérhető: *resourcesAvailable*.  
-* **Kockázatcsökkentési**: Az előfizetésében erőforrásokat szabadíthat fel, vagy növelje az előfizetés számára elérhető erőforrások, és próbálja meg ismét létrehozni a fürtöt.
+* **Leírás**: A SubscriptionId *yourSubscriptionId* nem rendelkezik bal oldali maggal a fürt *yourClusterName*létrehozásához. Kötelező: *resourcesRequired*, elérhető: *resourcesAvailable*.  
+* **Enyhítés**: Szabadítson fel erőforrásokat az előfizetésben, vagy növelje az előfizetés számára elérhető erőforrásokat, és próbálja meg újból létrehozni a fürtöt.
 
 ### <a id="InsufficientResourcesHostedServices"></a>InsufficientResourcesHostedServices
-* **Leírás**: Előfizetés-azonosító *yourSubscriptionId* nem rendelkezik egy új üzemeltetett szolgáltatás létrehozása a fürt kvótával *yourClusterName*.  
-* **Kockázatcsökkentési**: Az előfizetésében erőforrásokat szabadíthat fel, vagy növelje az előfizetés számára elérhető erőforrások, és próbálja meg ismét létrehozni a fürtöt.
+* **Leírás**: Az előfizetés-azonosító *yourSubscriptionId* nem rendelkezik kvótával egy új üzemeltetett számára a fürt *yourClusterName*létrehozásához.  
+* **Enyhítés**: Szabadítson fel erőforrásokat az előfizetésben, vagy növelje az előfizetés számára elérhető erőforrásokat, és próbálja meg újból létrehozni a fürtöt.
 
 ### <a id="InternalErrorRetryRequest"></a>InternalErrorRetryRequest
-* **Leírás**: Belső kiszolgálóhiba történt. Ismételje meg a kérelmet.  
-* **Kockázatcsökkentési**: Ismételje meg a kérelmet.
+* **Leírás**: A kiszolgáló belső hibát észlelt. Próbálkozzon újra a kérelemmel.  
+* **Enyhítés**: Próbálja megismételni a kérelmet.
 
 ### <a id="InvalidAzureStorageLocation"></a>InvalidAzureStorageLocation
-* **Leírás**: Az Azure tárolási hely *dataRegionName* út nem egy érvényes hely. Ellenőrizze, hogy a régió megfelelő, és próbálkozzon újra a kérelmet.
-* **Kockázatcsökkentési**: Válasszon tárolási helyet, amely támogatja a HDInsight, ellenőrizze, hogy a fürt ugyanott, és próbálja megismételni a műveletet.
+* **Leírás**: Az Azure Storage helye *dataRegionName* nem érvényes hely. Győződjön meg arról, hogy a régió helyes, és próbálkozzon újra a kérelemmel.
+* **Enyhítés**: Válassza ki a HDInsight támogató tárolási helyet, győződjön meg arról, hogy a fürt közös helyen található, majd próbálja megismételni a műveletet.
 
 ### <a id="InvalidNodeSizeForDataNode"></a>InvalidNodeSizeForDataNode
-* **Leírás**: Érvénytelen a virtuális gép mérete adatcsomópontok számára. Csak a "Nagy virtuális gép" mérete adatok minden csomópont esetében támogatott.  
-* **Kockázatcsökkentési**: Adja meg a támogatott csomópont méretét, az adatok csomóponthoz, és próbálja megismételni a műveletet.
+* **Leírás**: Az adatcsomópontok virtuálisgép-mérete érvénytelen. Az összes adatcsomópont esetében csak a "nagyméretű virtuális gépek" méret támogatott.  
+* **Enyhítés**: Határozza meg az adatcsomópont támogatott csomópontjának méretét, majd próbálja megismételni a műveletet.
 
 ### <a id="InvalidNodeSizeForHeadNode"></a>InvalidNodeSizeForHeadNode
-* **Leírás**: Érvénytelen Virtuálisgép-méretét fő csomópontot. Csak a "ExtraLarge VM" mérete fő csomópontja esetében támogatott.  
-* **Kockázatcsökkentési**: Adja meg az átjárócsomópont támogatott csomópont méretét, és próbálja megismételni a műveletet
+* **Leírás**: A fő csomóponthoz tartozó virtuálisgép-méret érvénytelen. A fő csomópont csak a "ExtraLarge VM" méretet támogatja.  
+* **Enyhítés**: Határozza meg a csomópont csomópontjának támogatott méretét, majd ismételje meg a műveletet.
 
 ### <a id="InvalidRightsForDeploymentDeletion"></a>InvalidRightsForDeploymentDeletion
-* **Leírás**: Előfizetés-azonosító *yourSubscriptionId* használt nem rendelkezik megfelelő engedélyekkel a fürt delete műveletet végrehajtani *yourClusterName*.  
-* **Kockázatcsökkentési**: Ha a fürt hibás állapotú, akkor dobja el, és próbálkozzon újra.  
+* **Leírás**: A használt előfizetés-azonosító *yourSubscriptionId* nem rendelkezik megfelelő engedélyekkel a fürt *yourClusterName*tartozó törlési művelet végrehajtásához.  
+* **Enyhítés**: Ha a fürt hibás állapotban van, dobja el, majd próbálkozzon újra.  
 
 ### <a id="InvalidStorageAccountBlobContainerName"></a>InvalidStorageAccountBlobContainerName
-* **Leírás**: Külső tárfiók a blob tároló neve *yourContainerName* je neplatná. Ellenőrizze, hogy nevének betűvel kezdődik, és csak kisbetűket, számokat és kötőjelet tartalmaz.  
-* **Kockázatcsökkentési**: Adja meg a tárfiók érvényes blob tároló nevének, és próbálja megismételni a műveletet.
+* **Leírás**: A külső Storage-fiók blob-tárolójának neve *yourContainerName* érvénytelen. Győződjön meg arról, hogy a név betűvel kezdődik, és csak kisbetűket, számokat és kötőjelet tartalmaz.  
+* **Enyhítés**: Adjon meg egy érvényes tárolási fiók blob-tárolójának nevét, majd próbálja megismételni a műveletet.
 
 ### <a id="InvalidStorageAccountConfigurationSecretKey"></a>InvalidStorageAccountConfigurationSecretKey
-* **Leírás**: Külső tárfiók konfigurációja *yourStorageAccountName* kell rendelkeznie a titkos kulcs adatai kell beállítani.  
-* **Kockázatcsökkentési**: Adja meg a tárfiók érvényes titkos kulcsot, és próbálja megismételni a műveletet.
+* **Leírás**: A külső Storage-fiók *yourStorageAccountName* konfigurálása szükséges a titkos kulcs részleteinek beállításához.  
+* **Enyhítés**: Érvényes titkos kulcsot kell megadni a Storage-fiókhoz, majd újra kell próbálkoznia a művelettel.
 
 ### <a id="InvalidVersionHeaderFormat"></a>InvalidVersionHeaderFormat
-* **Leírás**: Verzió fejléce *yourVersionHeader* nem szerepel az érvényes formátum az éééé-hh-nn.  
-* **Kockázatcsökkentési**: Adja meg a verziófejléc érvényes formátumú, és ismételje meg a kérelmet.
+* **Leírás**: A verzió fejlécének *yourVersionHeader* formátuma nem érvényes éééé-hh-nn formátumban.  
+* **Enyhítés**: Érvényes formátumot kell megadnia a verzió fejlécéhez, és újra kell próbálkoznia a kéréssel.
 
 ### <a id="MoreThanOneHeadNode"></a>MoreThanOneHeadNode
-* **Leírás**: Érvénytelen a fürt konfigurációját. Egynél több fő csomópont-konfiguráció található.  
-* **Kockázatcsökkentési**: Upraví konfiguraci úgy, hogy csak egy fő csomópontja van megadva.
+* **Leírás**: A fürtkonfiguráció érvénytelen. Több fő csomópont-konfiguráció található.  
+* **Enyhítés**: Szerkessze a konfigurációt úgy, hogy csak egy fő csomópont legyen megadva.
 
 ### <a id="OperationTimedOutRetryRequest"></a>OperationTimedOutRetryRequest
-* **Leírás**: A művelet nem fejeződött be a rendelkezésre álló időn belül, vagy az újrapróbálkozási kísérletek maximális száma lehetséges. Ismételje meg a kérelmet.  
-* **Kockázatcsökkentési**: Ismételje meg a kérelmet.
+* **Leírás**: A művelet nem hajtható végre a megengedett időn belül, vagy a maximális újrapróbálkozási kísérletek lehetségesek. Próbálkozzon újra a kérelemmel.  
+* **Enyhítés**: Próbálja megismételni a kérelmet.
 
 ### <a id="ParameterNullOrEmpty"></a>ParameterNullOrEmpty
-* **Leírás**: A paraméter *yourParameterName* nem lehet null értékű vagy üres.  
-* **Kockázatcsökkentési**: Adjon meg egy érvényes értéket a paraméterhez.
+* **Leírás**: A *yourParameterName* paraméter nem lehet null értékű vagy üres.  
+* **Enyhítés**: Érvényes értéket kell megadnia a paraméterhez.
 
 ### <a id="PreClusterCreationValidationFailure"></a>PreClusterCreationValidationFailure
-* **Leírás**: Egy vagy több fürt létrehozási kérés bemenet érvénytelen. Győződjön meg arról, hogy a bemeneti értékek helyesek, és próbálkozzon újra a kérelmet.  
-* **Kockázatcsökkentési**: Győződjön meg arról, hogy a bemeneti értékek helyesek, és próbálkozzon újra a kérelmet.
+* **Leírás**: Egy vagy több fürt létrehozási kérelmének bemenete érvénytelen. Győződjön meg arról, hogy a bemeneti értékek helyesek, majd próbálja megismételni a kérelmet.  
+* **Enyhítés**: Győződjön meg arról, hogy a bemeneti értékek helyesek, majd próbálja megismételni a kérelmet.
 
 ### <a id="RegionCapabilityNotAvailable"></a>RegionCapabilityNotAvailable
-* **Leírás**: Régió funkció nem érhető el a régióban *yourRegionName* és előfizetés-azonosító *yourSubscriptionId*.  
-* **Kockázatcsökkentési**: Adjon meg egy régióban, amely a HDInsight-fürtöket támogatja. A nyilvánosan támogatott régiók a következők: Délkelet-Ázsia, Nyugat-Európa, Észak-Európa, USA keleti RÉGIÓJA vagy USA nyugati RÉGIÓJA.
+* **Leírás**: A régiós képesség nem érhető el a *yourRegionName* és az előfizetés-azonosító *yourSubscriptionId*.  
+* **Enyhítés**: Olyan régiót válasszon, amely támogatja a HDInsight-fürtöket. A nyilvánosan támogatott régiók a következők: Délkelet-Ázsia, Nyugat-Európa, Észak-Európa, az USA keleti régiója vagy az USA nyugati régiója.
 
 ### <a id="StorageAccountNotColocated"></a>StorageAccountNotColocated
-* **Leírás**: Storage-fiók *yourStorageAccountName* régióban található *currentRegionName*. Ugyanaz, mint a fürt a régióban kell lennie *yourClusterRegionName*.  
-* **Kockázatcsökkentési**: Adja meg a storage-fiók ugyanabban a régióban, amely a fürt, vagy ha az adatok már a storage-fiókban, új fürt létrehozása a meglévő tárfiókot ugyanabban a régióban. A portált használja, ha a felhasználói felület előzetes értesíteni fogjuk őket a problémát.
+* **Leírás**: A Storage-fiók *yourStorageAccountName* a *currentRegionName*régióban található. A fürt *yourClusterRegionName*azonosnak kell lennie.  
+* **Enyhítés**: Adjon meg egy olyan Storage-fiókot, amely ugyanabban a régióban található, mint a fürt, vagy ha az adatai már szerepelnek a Storage-fiókban, hozzon létre egy új fürtöt a meglévő Storage-fiókkal azonos régióban. Ha a portált használja, a felhasználói felületen előre értesítjük a problémát.
 
 ### <a id="SubscriptionIdNotActive"></a>SubscriptionIdNotActive
-* **Leírás**: A megadott előfizetés-azonosító *yourSubscriptionId* még nem aktív.  
-* **Kockázatcsökkentési**: Az előfizetés újraaktiválásához, vagy készítsen egy új, érvényes előfizetéssel.
+* **Leírás**: A megadott előfizetés-azonosító *yourSubscriptionId* nem aktív.  
+* **Enyhítés**: Aktiválja újra az előfizetést, vagy szerezzen be egy új érvényes előfizetést.
 
 ### <a id="SubscriptionIdNotFound"></a>SubscriptionIdNotFound
-* **Leírás**: Előfizetés-azonosító *yourSubscriptionId* nem található.  
-* **Kockázatcsökkentési**: Ellenőrizze, hogy az előfizetés-azonosító érvényes, és próbálja megismételni a műveletet.
+* **Leírás**: Nem található az előfizetés-azonosító *yourSubscriptionId* .  
+* **Enyhítés**: Győződjön meg arról, hogy az előfizetés-azonosító érvényes, majd próbálja megismételni a műveletet.
 
 ### <a id="UnableToResolveDNS"></a>UnableToResolveDNS
-* **Leírás**: Nem oldható fel DNS *yourDnsUrl*. Ellenőrizze, hogy a teljes URL-címet a blob-végpont.  
-* **Kockázatcsökkentési**: Adjon meg egy érvényes blob URL-címet. Teljesen érvényes, beleértve a kezdve az URL-címet kell lennie *http://* és a záró *.com*.
+* **Leírás**: Nem sikerült feloldani a DNS- *yourDnsUrl*. Győződjön meg arról, hogy a blob-végponthoz tartozó teljes URL-cím meg van-e biztosítva.  
+* **Enyhítés**: Adjon meg egy érvényes blob URL-címet. Az URL-címnek teljes mértékben érvényesnek kell lennie, beleértve a *http://* kezdődő és a *. com*végződést.
 
 ### <a id="UnableToVerifyLocationOfResource"></a>UnableToVerifyLocationOfResource
-* **Leírás**: Nem sikerült ellenőrizni az erőforráscsoport helyét *yourDnsUrl*. Ellenőrizze, hogy a teljes URL-címet a blob-végpont.  
-* **Kockázatcsökkentési**: Adjon meg egy érvényes blob URL-címet. Teljesen érvényes, beleértve a kezdve az URL-címet kell lennie *http://* és a záró *.com*.
+* **Leírás**: Nem sikerült ellenőrizni az erőforrás- *yourDnsUrl*helyét. Győződjön meg arról, hogy a blob-végponthoz tartozó teljes URL-cím meg van-e biztosítva.  
+* **Enyhítés**: Adjon meg egy érvényes blob URL-címet. Az URL-címnek teljes mértékben érvényesnek kell lennie, beleértve a *http://* kezdődő és a *. com*végződést.
 
 ### <a id="VersionCapabilityNotAvailable"></a>VersionCapabilityNotAvailable
-* **Leírás**: Verzió funkció nem érhető el a verzió *specifiedVersion* és előfizetés-azonosító *yourSubscriptionId*.  
-* **Kockázatcsökkentési**: Válasszon egy olyanra, amely érhető el, és próbálja megismételni a műveletet.
+* **Leírás**: A verzió *specifiedVersion* és az előfizetés-azonosító *yourSubscriptionId*nem érhető el.  
+* **Enyhítés**: Válasszon egy elérhető verziót, majd próbálja megismételni a műveletet.
 
 ### <a id="VersionNotSupported"></a>VersionNotSupported
-* **Leírás**: Verzió *specifiedVersion* nem támogatott.
-* **Kockázatcsökkentési**: Válasszon egy támogatott verzióra, és próbálja megismételni a műveletet.
+* **Leírás**: A verzió *specifiedVersion* nem támogatott.
+* **Enyhítés**: Válasszon egy támogatott verziót, majd próbálja megismételni a műveletet.
 
 ### <a id="VersionNotSupportedInRegion"></a>VersionNotSupportedInRegion
-* **Leírás**: Verzió *specifiedVersion* nem érhető el az Azure-régiókban *specifiedRegion*.  
-* **Kockázatcsökkentési**: Válasszon egy olyanra, amely a megadott régióban támogatott, és próbálja megismételni a műveletet.
+* **Leírás**: A *specifiedVersion* verziója nem érhető el az Azure region *specifiedRegion*.  
+* **Enyhítés**: Válassza ki a megadott régióban támogatott verziót, és ismételje meg a műveletet.
 
 ### <a id="WasbAccountConfigNotFound"></a>WasbAccountConfigNotFound
-* **Leírás**: Érvénytelen a fürt konfigurációját. Szükséges WASB fiók konfigurációja nem található a külső fiókokat.  
-* **Kockázatcsökkentési**: Ellenőrizze az, hogy a fiók létezik és megfelelően megadva a konfigurációban, és próbálja megismételni a műveletet.
+* **Leírás**: A fürtkonfiguráció érvénytelen. A szükséges WASB-fiók konfigurációja nem található a külső fiókokban.  
+* **Enyhítés**: Győződjön meg arról, hogy a fiók létezik, és megfelelően van megadva a konfigurációban, majd próbálja megismételni a műveletet.
 
 ## <a name="next-steps"></a>További lépések
 
-* [A Linux-alapú HDInsight az Apache Hadoop-szolgáltatásokhoz halomürítések engedélyezése](../hdinsight-hadoop-collect-debug-heap-dump-linux.md)
+* [Halom-memóriaképek engedélyezése Apache Hadoop-szolgáltatásokhoz Linux-alapú HDInsight](../hdinsight-hadoop-collect-debug-heap-dump-linux.md)
 * [HDInsight-fürtök kezelése az Apache Ambari webes felületével](../hdinsight-hadoop-manage-ambari.md)

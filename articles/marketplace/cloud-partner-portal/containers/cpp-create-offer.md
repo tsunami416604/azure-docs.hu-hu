@@ -1,25 +1,18 @@
 ---
-title: Hozzon létre egy Azure-tárolók ajánlatot |} A Microsoft Docs
+title: Hozzon létre egy Azure-tárolók ajánlatot |} Az Azure Marketplace-en
 description: A Marketplace-en egy új tárolót ajánlat közzétételének módját...
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/01/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 3b2a34a5ed2c6b57bfce0b9a4cf35cdf14cff9c9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: pabutler
+ms.openlocfilehash: 1a0a2bd9132ba5d018bc5d45699c052d10c30162
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57900080"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64942678"
 ---
 # <a name="create-a-new-container-offer-with-the-cloud-partner-portal"></a>Hozzon létre egy új tárolót ajánlatunk a Cloud Partner portálra
 
@@ -27,7 +20,7 @@ Ez a cikk azt ismerteti, hogyan hozhat létre, és a egy tároló-ajánlat bejeg
 
 |  **Eszközcsoport**   |  **Leírás**  |
 |  ---------------   |  ---------------  |
-|    Termékváltozatok            |  A legkisebb telepíthető egység az ajánlat. Egyetlen ajánlatba (termék osztály) az ajánlat társított több termékváltozatok is rendelkezhet. Termékváltozatok segítségével tesz különbséget a támogatott szolgáltatások és a számlázási modellek között. |
+|    SKU-k            |  A legkisebb telepíthető egység az ajánlat. Egyetlen ajánlatba (termék osztály) az ajánlat társított több termékváltozatok is rendelkezhet. Termékváltozatok segítségével tesz különbséget a támogatott szolgáltatások és a számlázási modellek között. |
 |  Piactér       | Marketing, jogi és elégtelen felügyeleti eszközök és előírásokat tartalmazza.  <ul><li> Marketing eszközök tartalmazzák az ajánlat nevét, leírását és emblémák</li> <li> Jogi eszközök közé tartozik egy adatvédelmi szabályzatát, használati feltételeit és egyéb jogi dokumentáció</li>  <li> Elégtelen felügyeleti házirend lehetővé teszi, hogy adja meg, hogyan kezelje az Azure Marketplace-en a végfelhasználói portálon vezet.</li> </ul> |
 | Támogatás            | Támogatási kapcsolattartó és házirend információkat tartalmaz |
 

@@ -7,17 +7,18 @@ author: ika-microsoft
 manager: femila
 editor: ''
 ms.service: media-services
+ms.subservice: video-indexer
 ms.workload: ''
 ms.topic: article
 ms.custom: ''
-ms.date: 02/10/2019
+ms.date: 05/15/2019
 ms.author: ikbarmen
-ms.openlocfilehash: e98cf44db01de1f99836e247066ba01006eac97b
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: a9b75c3454c67112b0e00c7ea4b4e8c676ebcc97
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56733299"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65949472"
 ---
 # <a name="manage-multiple-tenants"></a>Több bérlő kezelése
 
@@ -67,7 +68,7 @@ Amikor [megkezdené a videófeltöltést](https://api-portal.videoindexer.ai/doc
 
 ## <a name="azure-subscription-per-tenant"></a>Azure-előfizetés bérlőnként 
 
-Ez az architektúra használatakor az egyes bérlők lesz a saját Azure-előfizetést. Minden felhasználó számára egy új Video Indexer-fiókot hoz létre a bérlő előfizetés.
+Ez az architektúra használatakor az egyes bérlők lesz a saját Azure-előfizetés. Minden felhasználó számára egy új Video Indexer-fiókot hoz létre a bérlő előfizetés.
 
 ![Azure-előfizetés bérlőnként](./media/manage-multiple-tenants/azure-subscription-per-tenant.png)
 

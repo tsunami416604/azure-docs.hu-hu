@@ -1,7 +1,7 @@
 ---
-title: Kezelheti az App Service-csomag – Azure |} A Microsoft Docs
-description: Megtudhatja, hogyan kezelheti az App Service-csomag különböző feladatok végrehajtására.
-keywords: App Service-ben, az azure app Service-ben, méretezhető, app service-csomag módosítása, létrehozása, felügyelete, kezelése
+title: App Service terv kezelése – Azure | Microsoft Docs
+description: Megtudhatja, hogyan hajthat végre különböző feladatokat egy App Service-csomag kezeléséhez.
+keywords: App Service, Azure app Service, skálázás, app Service-csomag, módosítás, létrehozás, felügyelet, felügyelet
 services: app-service
 documentationcenter: ''
 author: cephalin
@@ -11,109 +11,108 @@ ms.assetid: 4859d0d5-3e3c-40cc-96eb-f318b2c51a3d
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 11/09/2017
+ms.date: 10/31/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 936abe80a66c1dbe99e7d8a255fe8995a2df0803
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: a5e69209c30eae816837ce8f00a065231a5fd821
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715659"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70067209"
 ---
-# <a name="manage-an-app-service-plan-in-azure"></a>Az Azure App Service-csomag kezelése
+# <a name="manage-an-app-service-plan-in-azure"></a>App Service-csomag kezelése az Azure-ban
 
-Egy [Azure App Service-csomag](overview-hosting-plans.md) biztosít az App Service-alkalmazások futtatásához szükséges erőforrásokat. Ez az útmutató bemutatja, hogyan kezelheti az App Service-csomag.
+Egy [Azure app Service csomag](overview-hosting-plans.md) biztosítja azokat az erőforrásokat, amelyeket egy app Service alkalmazásnak futtatnia kell. Ez az útmutató bemutatja, hogyan kezelhető egy App Service-csomag.
 
 ## <a name="create-an-app-service-plan"></a>App Service-csomag létrehozása
 
 > [!TIP]
-> Ha van egy App Service Environment-környezet, az [App Service-csomag létrehozása az App Service-környezet](environment/app-service-web-how-to-create-a-web-app-in-an-ase.md#createplan).
+> Ha App Service Environment rendelkezik, tekintse meg a [app Service terv létrehozása app Service Environment](environment/app-service-web-how-to-create-a-web-app-in-an-ase.md#createplan).
 
-Üres App Service-csomagot hozhat létre, vagy létrehozhat egy tervet az alkalmazások létrehozásának részeként.
+Létrehozhat egy üres App Service-csomagot, vagy létrehozhat egy csomagot az alkalmazások létrehozásának részeként.
 
-1. Az a [az Azure portal](https://portal.azure.com), jelölje be **új** > **Web + mobil**, majd válassza ki **webalkalmazás** vagy más típusú App Service-alkalmazás.
+1. A [Azure Portal](https://portal.azure.com)válassza az **új** > **web + mobil**lehetőséget, majd válassza a **webalkalmazás** vagy más típusú app Service alkalmazás lehetőséget.
 
-2. Válasszon ki egy meglévő App Service-csomag, vagy hozzon létre egy csomagot az új alkalmazás.
+2. Válasszon ki egy meglévő App Service csomagot, vagy hozzon létre egy csomagot az új alkalmazáshoz.
 
-   ![Alkalmazás létrehozása az Azure Portalon.][createWebApp]
+   ![Hozzon létre egy alkalmazást a Azure Portalban.][createWebApp]
 
-   A csomag létrehozásához:
+   Csomag létrehozása:
 
-   a. Válassza ki **[+] létrehozása új**.
+   a. Válassza a **[+] Create New (új létrehozása**) lehetőséget.
 
-      ![Hozzon létre egy App Service-csomagot.][createASP] 
+      ![Hozzon létre egy App Service tervet.][createASP] 
 
-   b. A **App Service-csomag**, adja meg a csomag nevét.
+   b. **App Service csomag**esetében adja meg a csomag nevét.
 
-   c. A **hely**, válassza ki a megfelelő helyére.
+   c. A **hely**mezőben válasszon ki egy megfelelő helyet.
 
-   d. A **tarifacsomag**, válasszon egy megfelelő tarifacsomagot a szolgáltatáshoz. Válassza ki **az összes megtekintése** több díjszabás a beállítások, például a **ingyenes** és **megosztott**. Miután kiválasztotta a tarifacsomagot, kattintson a **kiválasztása** gombra.
+   d. A **díjszabási**szinten válasszon ki egy megfelelő díjszabási szintet a szolgáltatáshoz. Az **összes megtekintése** elemre kattintva további díjszabási lehetőségeket jeleníthet meg, például az **ingyenes** és a **megosztott**lehetőséget. Miután kiválasztotta az árképzési szintet, kattintson a **kiválasztás** gombra.
 
 <a name="move"></a>
 
-## <a name="move-an-app-to-another-app-service-plan"></a>Alkalmazás áthelyezése egy másik App Service-csomag
+## <a name="move-an-app-to-another-app-service-plan"></a>Alkalmazás áthelyezése egy másik App Service tervbe
 
-Áthelyezheti egy alkalmazást egy másik App Service-csomag, mindaddig, amíg a forrás terv és a célelőfizetésbe a _ugyanazt az erőforráscsoportot és a földrajzi régió_.
+Az alkalmazások áthelyezhetők egy másik App Service csomagba, ha a forrás-és a megcélzott terv _ugyanabban az erőforráscsoport-és földrajzi régióban_található.
 
 > [!NOTE]
-> Az Azure minden egyes új App Service-csomag egy telepítési egység, belsőleg nevű egy webtárhely helyez üzembe. Minden egyes régió rendelkezhet számos webtárhelyének, de az alkalmazás csak helyezheti át ugyanazon webtárhelyen létrehozott tervek között. App Service-környezet egy elkülönített webtárhely, így a alkalmazások áthelyezhetők az azonos App Service-környezet a csomagok között, de nem terveket, a másik App Service Environment-környezetek között.
+> Az Azure minden új App Service tervet üzembe helyez egy üzembe helyezési egységben, amelyet egy webtárhelynek nevezünk. Az egyes régiók több webtárhelyet is tartalmazhatnak, de az alkalmazás csak az ugyanazon a webtérben létrehozott csomagok között tud mozogni. Az App Service Environment egy elkülönített webtárhely, így az alkalmazások áthelyezhetők a csomagok között ugyanazon a App Service Environment, de nem a különböző App Service környezetekben lévő csomagok között.
 >
-> A webtárhely azt szeretné, hogy a csomag létrehozásakor nem adható meg, de győződjön meg arról, hogy egy csomag jön létre egy meglévő csomagot, ugyanazon webtárhelyhez meg lehet. Röviden minden csomag létre ugyanabban az erőforráscsoportban, és a régió kombináció a rendszer üzembe helyezi az azonos webtárhely. Például egy csomagot az erőforráscsoportban A és B régióban létrehozta, majd bármely ezután létrehoz egy erőforráscsoportban és régióban B terv helyezünk üzembe az azonos webtárhely. Vegye figyelembe, hogy csomagok nem helyezhetők át webtárhelyének után jönnek létre, ezért nem helyezhető át a csomag be "az azonos webtárhely" egy másik séma szerint áthelyezi egy másik erőforráscsoportot.
+> A terv létrehozásakor nem adhatja meg a használni kívánt webtárhelyet, de lehetséges, hogy a terv ugyanabban a webtérben jön létre, mint egy meglévő csomag. Röviden, az azonos erőforráscsoport és régió kombinációval létrehozott összes csomag ugyanarra a webtárhelyre van telepítve. Ha például létrehozta az A és A B régióba tartozó csomagot, akkor az A és B régióba később létrehozott összes csomag ugyanarra a webtárhelyre lesz telepítve. Vegye figyelembe, hogy a csomagok létrehozása után nem helyezhetők át a webtárhelyek, így nem helyezhet át egy tervet "ugyanazon a webtárhelyre", mert egy másik erőforráscsoporthoz helyezi át.
 > 
 
-1. Az a [az Azure portal](https://portal.azure.com), tallózással az áthelyezni kívánt alkalmazást.
+1. A [Azure Portal](https://portal.azure.com)navigáljon az áthelyezni kívánt alkalmazáshoz.
 
-1. A menüben keresse meg a **App Service-csomag** szakaszban.
+1. A menüben keresse meg a **app Service Plan** szakaszt.
 
-1. Válassza ki **módosítása App Service-csomag** megnyitásához a **App Service-csomag** választó.
+1. Válassza a **módosítás app Service a terv** lehetőséget a **app Service tervezési** választó megnyitásához.
 
-   ![Az App Service-csomag választó.][change] 
+   ![App Service csomag kiválasztása.][change] 
 
-1. Az a **App Service-csomag** választó, válassza egy meglévő szeretne áthelyezni az alkalmazás be.   
+1. Az **app Service-csomag** kiválasztása lapon válasszon ki egy meglévő csomagot, amelybe át szeretné helyezni az alkalmazást.   
 
-A **válassza ki az App Service-csomag** lapon látható csak az ugyanabban az erőforráscsoportban és az aktuális alkalmazás App Service-csomag és a földrajzi régióban lévő terveket.
+A **app Service csomag kiválasztása** lapon csak azok a csomagok jelennek meg, amelyek ugyanabban az erőforráscsoporthoz és földrajzi régióban találhatók, mint az aktuális alkalmazás app Service terve.
 
-Minden csomag saját díjszabási szinttel rendelkezik. Egy webhely, például áthelyezése egy **ingyenes** a réteg egy **Standard** szint lehetővé teszi, hogy az a funkciók és erőforrások rendelt összes alkalmazás a **Standard** szint. Azonban egy alkalmazást áthelyezését egy magasabb többrétegű terv többrétegű alacsonyabb díjcsomagra azt jelenti, hogy már nem bizonyos szolgáltatások elérését. Ha az alkalmazás egy szolgáltatás, amely nem érhető el a célként megadott csomag használja, hibaüzenet, amely azt mutatja, melyik szolgáltatást használja, amely nem érhető el. 
+Minden csomag saját díjszabással rendelkezik. Például, ha egy helyet egy **ingyenes** szintről **standard** csomagra helyez át, akkor minden alkalmazás hozzá van rendelve a **standard** szint funkcióinak és erőforrásainak használatához. Ha azonban egy alkalmazást egy magasabb rétegű csomagból egy alacsonyabb rétegű csomagra helyez át, azt jelenti, hogy már nem fér hozzá bizonyos funkciókhoz. Ha az alkalmazás olyan funkciót használ, amely nem érhető el a célhelyen, akkor hibaüzenet jelenik meg, amely azt mutatja, hogy melyik szolgáltatás nem érhető el. 
 
-Például, ha SSL-tanúsítványok az alkalmazások egyikét használja, előfordulhat, hogy a hibaüzenetet látja:
+Ha például az egyik alkalmazás SSL-tanúsítványokat használ, a következő hibaüzenet jelenhet meg:
 
 `Cannot update the site with hostname '<app_name>' because its current SSL configuration 'SNI based SSL enabled' is not allowed in the target compute mode. Allowed SSL configuration is 'Disabled'.`
 
-Ebben az esetben az alkalmazás viheti át a célelőfizetésbe, mielőtt kell vagy:
-- Tarifacsomag kiválasztása a cél-csomag vertikális **alapszintű** vagy újabb verziója.
-- Távolítsa el az alkalmazás összes SSL-kapcsolatot.
+Ebben az esetben, mielőtt az alkalmazást áthelyezi a célként megadott csomagra, a következőkre lesz szüksége:
+- A célként megadott csomag díjszabási szintjét alapszintű vagy magasabbra méretezheti.
+- Távolítsa el az összes SSL-kapcsolatot az alkalmazással.
 
-## <a name="move-an-app-to-a-different-region"></a>Alkalmazás áthelyezése egy másik régióba
+## <a name="move-an-app-to-a-different-region"></a>Alkalmazás áthelyezése másik régióba
 
-A régió, amelyben az alkalmazás fut. az a régió van App Service-csomag. Az App Service-csomag régió azonban nem módosítható. Az alkalmazás futtatása egy másik régióban szeretné, ha egy másik alkalmazás-e a Klónozás. A Klónozás teszi az alkalmazás egy új vagy meglévő App Service-csomag bármelyik régióban.
+Az a régió, amelyben az alkalmazás fut, a App Service megtervezni. Azonban nem módosítható App Service csomag régiója. Ha az alkalmazást egy másik régióban szeretné futtatni, az egyik alternatíva az alkalmazások klónozása. A klónozás az alkalmazás egy példányát egy új vagy meglévő App Service tervbe hozza bármely régióban.
 
-Annak **Alkalmazásklónozási** a a **Fejlesztőeszközök** a menü részét.
+A klónozási **alkalmazást** a menü **fejlesztői eszközök** szakaszában találja.
 
 > [!IMPORTANT]
-> A Klónozás vannak bizonyos korlátai. Itt olvashat őket [Azure App Service-alkalmazás klónozását](app-service-web-app-cloning.md).
+> A klónozás bizonyos korlátozásokkal rendelkezik. Ezekről [Azure app Service alkalmazások klónozásával](app-service-web-app-cloning.md)kapcsolatos információkat olvashat.
 
-## <a name="scale-an-app-service-plan"></a>Méretezés App Service-csomag
+## <a name="scale-an-app-service-plan"></a>App Service terv méretezése
 
-Vertikális felskálázás akár egy App Service csomag a tarifacsomag, lásd: [az Azure-beli alkalmazás vertikális felskálázása](web-sites-scale.md).
+Az App Service csomag díjszabási szintjeinek vertikális felskálázásához tekintse meg az alkalmazás vertikális felskálázása [Az Azure-ban](manage-scale-up.md)című témakört.
 
-Horizontális felskálázási példányok száma egy alkalmazást, lásd: [példányszám manuális vagy automatikus méretezése](../monitoring-and-diagnostics/insights-how-to-scale.md).
+Az alkalmazások példányszámának felskálázásához tekintse meg a [Példányszám manuális vagy automatikus skálázása](../monitoring-and-diagnostics/insights-how-to-scale.md)című témakört.
 
 <a name="delete"></a>
 
-## <a name="delete-an-app-service-plan"></a>App Service-csomag törlése
+## <a name="delete-an-app-service-plan"></a>App Service csomag törlése
 
-Az utolsó alkalmazás az App Service-csomag törlésekor a váratlan költségek elkerülése az App Service is törli a terv alapértelmezés szerint. Ha ehelyett tartsa a terv választja, akkor kell megváltoztatnia a terv **ingyenes** szinten, ezért nem díjkötelesek.
+Ha el szeretné kerülni a nem várt díjakat, akkor a App Service csomag utolsó alkalmazásának törlésekor App Service a csomagot is alapértelmezés szerint törli. Ha úgy dönt, hogy megtartja a tervet, érdemes módosítania az **ingyenes** szintet, hogy ne kelljen fizetnie.
 
 > [!IMPORTANT]
-> App Service-csomagok, amelyek nem találhatók hozzájuk rendelt alkalmazások továbbra is költségekkel mivel folyamatosan fenntartjuk konfigurált Virtuálisgép-példányok.
+> Azok a App Service csomagok, amelyeknek nincsenek hozzárendelt alkalmazásai, díjkötelesek, mert továbbra is fenntartják a konfigurált virtuálisgép-példányokat.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Az Azure-beli alkalmazás vertikális felskálázása](web-sites-scale.md)
+> [Alkalmazások vertikális felskálázása az Azure-ban](manage-scale-up.md)
 
 [change]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/change-appserviceplan.png
 [createASP]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-appserviceplan.png

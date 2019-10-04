@@ -1,6 +1,6 @@
 ---
-title: Az Azure Service Fabric parancssori felület - sfctl-összeállítás |} A Microsoft Docs
-description: Ismerteti a Service Fabric parancssori felület sfctl-összeállítás parancsokat.
+title: Azure Service Fabric CLI – sfctl összeállítás | Microsoft Docs
+description: A CLI-sfctl összeállítási parancsainak Service Fabric ismerteti.
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
@@ -8,210 +8,209 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 4b5cbb4a24b61de7e64a52ef950deedab3eec263
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: dab844246d99b0ab80e1e86219c2064c79e74e4f
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667499"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035108"
 ---
 # <a name="sfctl-compose"></a>sfctl-összeállítás
-Létrehozása, törlése és a Docker Compose alkalmazások kezeléséhez.
+Docker-összeállítási alkalmazások létrehozása, törlése és kezelése.
 
 ## <a name="commands"></a>Parancsok
 
 |Parancs|Leírás|
 | --- | --- |
-| létrehozás | Létrehoz egy Service Fabric compose üzemelő példánya. |
-| lista | Lekérdezi listájának összeállítása a Service Fabric-fürtben létrehozott központi telepítések. |
-| eltávolítás | Törli a meglévő Service Fabric compose üzemelő példánya fürtből. |
-| status | A compose üzemelő példánya a Service Fabric információ beolvasása. |
-| frissítés | Elindítja a frissíti compose központi telepítés a Service Fabric-fürtben. |
-| frissítés-visszaállítás | Visszaállítása egy új üzembe helyezési útmutatók frissítése a Service Fabric-fürtben. |
-| frissítés – állapot | A compose üzemelő példánya a legújabb frissítés a Service Fabric végrehajtott részleteinek beolvasása. |
+| create | Létrehoz egy Service Fabric összeállítási központi telepítést. |
+| list | A Service Fabric-fürtben létrehozott összeállítási központi telepítések listájának beolvasása. |
+| eltávolítás | Töröl egy meglévő Service Fabric összeállítási telepítést a fürtből. |
+| status | Információ beolvasása egy Service Fabric összeállítási telepítésről. |
+| upgrade | Megkezdi az összeállítási központi telepítés frissítését a Service Fabric-fürtön. |
+| upgrade-rollback | Elindítja az összeállítási központi telepítés frissítését a Service Fabric-fürtön. |
+| upgrade-status | Beolvassa az ezen a Service Fabric-összeállításon végrehajtott legújabb frissítés részleteit. |
 
-## <a name="sfctl-compose-create"></a>sfctl-összeállítás létrehozása
-Létrehoz egy Service Fabric compose üzemelő példánya.
-
-### <a name="arguments"></a>Argumentumok
-
-|Argumentum|Leírás|
-| --- | --- |
-| – [kötelező] üzembe helyezés neve | Az üzemelő példány neve. |
-| --fájlútvonal [kötelező] | A cél a Docker Compose-fájl elérési útja. |
-| --encrypted-pass | Ahelyett, hogy a tárolójegyzék jelszavát kéri, használjon egy már a titkosított hozzáférési kódot. |
-| --has-pass | A tároló-beállításjegyzék jelszó fogja kérni. |
-| --időkorlát -t | Kiszolgálói időtúllépés másodpercben.  Alapértelmezett\: 60. |
-| --user | Felhasználónév a tárolóregisztrációs adatbázis csatlakozni. |
-
-### <a name="global-arguments"></a>Globális argumentumok
-
-|Argumentum|Leírás|
-| --- | --- |
-| --debug | Növelése a naplózás az összes hibakeresési naplók megjelenítése. |
-| --help -h | A súgóüzenetet és kilépési jelennek meg. |
-| --kimeneti -o | Kimeneti formátum.  Megengedett értékek\: JSON-t, jsonc, tábla, tsv.  Alapértelmezett\: json. |
-| – lekérdezés | JMESPath lekérdezési karakterláncot. Tekintse meg a http\://jmespath.org/ további információt és példákat. |
-| --verbose | Növelése a naplózást. Használja a--debug teljes hibakeresési naplók. |
-
-## <a name="sfctl-compose-list"></a>sfctl-összeállítás listája
-Lekérdezi listájának összeállítása a Service Fabric-fürtben létrehozott központi telepítések.
-
-Lekérdezi az állapot, a compose üzemelő példányok, amelyek lettek létrehozva, vagy a Service Fabric-fürt létrehozása folyamatban. A válasz tartalmazza a neve, állapota és a compose üzemelő példányok más részleteit. Ha telepítések listáját az oldal nem férnek el, valamint egy folytatási kód, amely a következő lap beolvasásához használható egy oldalnyi találatot ad vissza.
+## <a name="sfctl-compose-create"></a>sfctl összeállítás létrehozása
+Létrehoz egy Service Fabric összeállítási központi telepítést.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --continuation-token | A folytatási token paraméter eredmények következő készletét beszerzésére használatos. Az eredményeket a rendszer nem férnek el egyetlen válasz egy folytatási tokent egy nem üres értékkel szerepel az API-válasz. Ha ez az érték átadott, a következő API-hívás az API-t az eredmények tovább készletet ad vissza. Ha nincsenek további eredmények, a folytatási token neobsahuje értéket. Ez a paraméter értéke nem lehet URL-kódolású. |
-| --max-results | A lapozható lekérdezés részeként visszaadandó eredmények maximális száma. Ez a paraméter határozza meg, visszaadott eredmények számának felső határnál. Az eredmények vissza is lehet kisebb, mint a megadott maximális eredményeket, ha azok nem férnek el megfelelően az üzenetek maximális mérete korlátozások az üzenetben a konfigurációban meghatározott. Ha ez a paraméter értéke nulla, vagy nincs megadva, a lapozható lekérdezés annyi eredmények, amelyek illeszkednek az visszaadott üzenet a lehető tartalmazza. |
-| --időkorlát -t | Kiszolgálói időtúllépés másodpercben.  Alapértelmezett\: 60. |
+| – központi telepítés – név [kötelező] | Az üzemelő példány neve. |
+| --fájl elérési útja [kötelező] | A cél Docker-összeállítási fájl elérési útja. |
+| --encrypted-pass | A tároló beállításjegyzékbeli jelszavának megkérdezése helyett használjon egy már titkosított pass-kifejezést. |
+| --a-pass | A jelszó megadását kéri a tároló beállításjegyzékében. |
+| --időtúllépés-t | Kiszolgáló időtúllépése másodpercben.  Alapértelmezett\: 60. |
+| --user | A tároló-beállításjegyzékhez való kapcsolódáshoz használandó Felhasználónév. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --debug | Növelése a naplózás az összes hibakeresési naplók megjelenítése. |
-| --help -h | A súgóüzenetet és kilépési jelennek meg. |
-| --kimeneti -o | Kimeneti formátum.  Megengedett értékek\: JSON-t, jsonc, tábla, tsv.  Alapértelmezett\: json. |
-| – lekérdezés | JMESPath lekérdezési karakterláncot. Tekintse meg a http\://jmespath.org/ további információt és példákat. |
-| --verbose | Növelése a naplózást. Használja a--debug teljes hibakeresési naplók. |
+| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
+| --Help-h | A súgó üzenet megjelenítése és kilépés. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
+
+## <a name="sfctl-compose-list"></a>sfctl-összeállítási lista
+A Service Fabric-fürtben létrehozott összeállítási központi telepítések listájának beolvasása.
+
+Lekérdezi a létrehozott összeállítási központi telepítések állapotát vagy a Service Fabric-fürtben létrehozandó folyamat során. A válasz tartalmazza az összeállítási központi telepítések nevét, állapotát és egyéb részleteit. Ha a központi telepítések listája nem fér el egy oldalon, a rendszer az eredmények egyik oldalát adja vissza, valamint egy folytatási tokent, amely a következő oldal beolvasására használható.
+
+### <a name="arguments"></a>Argumentumok
+
+|Argumentum|Leírás|
+| --- | --- |
+| --Folytatás-token | A folytatási jogkivonat paraméter az eredmények következő készletének beszerzésére szolgál. Egy nem üres értékkel rendelkező folytatási token szerepel az API válaszában, ha a rendszer eredményei nem illeszkednek egyetlen válaszhoz. Ha ezt az értéket átadja a következő API-hívásnak, az API az eredmények következő készletét adja vissza. Ha nincs további eredmény, akkor a folytatási jogkivonat nem tartalmaz értéket. A paraméter értéke nem lehet URL-kódolású. |
+| --max-results | A lapozható lekérdezések részeként visszaadott eredmények maximális száma. Ez a paraméter a visszaadott eredmények számának felső határát határozza meg. A visszaadott eredmények a megadott maximális eredményeknél kisebbek lehetnek, ha nem férnek hozzá az üzenethez, mint a konfigurációban definiált maximális üzenet méretére vonatkozó korlátozások. Ha a paraméter értéke nulla vagy nincs megadva, a lapozható lekérdezés a visszaadott üzenetben szereplő lehető legtöbb eredményt tartalmazza. |
+| --időtúllépés-t | Kiszolgáló időtúllépése másodpercben.  Alapértelmezett\: 60. |
+
+### <a name="global-arguments"></a>Globális argumentumok
+
+|Argumentum|Leírás|
+| --- | --- |
+| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
+| --Help-h | A súgó üzenet megjelenítése és kilépés. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 ## <a name="sfctl-compose-remove"></a>sfctl-összeállítás eltávolítása
-Törli a meglévő Service Fabric compose üzemelő példánya fürtből.
+Töröl egy meglévő Service Fabric összeállítási telepítést a fürtből.
 
-Törli a meglévő Service Fabric compose üzemelő példánya.
+Töröl egy meglévő Service Fabric összeállítást.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| – [kötelező] üzembe helyezés neve | Az üzembe helyezés identitását. |
-| --időkorlát -t | Kiszolgálói időtúllépés másodpercben.  Alapértelmezett\: 60. |
+| – központi telepítés – név [kötelező] | Az üzemelő példány identitása. |
+| --időtúllépés-t | Kiszolgáló időtúllépése másodpercben.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --debug | Növelése a naplózás az összes hibakeresési naplók megjelenítése. |
-| --help -h | A súgóüzenetet és kilépési jelennek meg. |
-| --kimeneti -o | Kimeneti formátum.  Megengedett értékek\: JSON-t, jsonc, tábla, tsv.  Alapértelmezett\: json. |
-| – lekérdezés | JMESPath lekérdezési karakterláncot. Tekintse meg a http\://jmespath.org/ további információt és példákat. |
-| --verbose | Növelése a naplózást. Használja a--debug teljes hibakeresési naplók. |
+| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
+| --Help-h | A súgó üzenet megjelenítése és kilépés. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 ## <a name="sfctl-compose-status"></a>sfctl-összeállítás állapota
-A compose üzemelő példánya a Service Fabric információ beolvasása.
+Információ beolvasása egy Service Fabric összeállítási telepítésről.
 
-A compose üzemelő példány létrehozott, vagy éppen létrehozás alatt álló a Service Fabric-fürtöt, és amelynek a neve megegyezik a paraméterként megadott állapotát adja vissza. A válasz tartalmazza a neve, állapota és az üzembe helyezéssel kapcsolatos egyéb részleteket.
+A létrehozott, vagy a Service Fabric-fürtben létrehozott összeállítási telepítés állapotát adja vissza, amelynek a neve megegyezik a paraméterrel megadott névvel. A válasz tartalmazza az üzemelő példány nevét, állapotát és egyéb részleteit.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| – [kötelező] üzembe helyezés neve | Az üzembe helyezés identitását. |
-| --időkorlát -t | Kiszolgálói időtúllépés másodpercben.  Alapértelmezett\: 60. |
+| – központi telepítés – név [kötelező] | Az üzemelő példány identitása. |
+| --időtúllépés-t | Kiszolgáló időtúllépése másodpercben.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --debug | Növelése a naplózás az összes hibakeresési naplók megjelenítése. |
-| --help -h | A súgóüzenetet és kilépési jelennek meg. |
-| --kimeneti -o | Kimeneti formátum.  Megengedett értékek\: JSON-t, jsonc, tábla, tsv.  Alapértelmezett\: json. |
-| – lekérdezés | JMESPath lekérdezési karakterláncot. Tekintse meg a http\://jmespath.org/ további információt és példákat. |
-| --verbose | Növelése a naplózást. Használja a--debug teljes hibakeresési naplók. |
+| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
+| --Help-h | A súgó üzenet megjelenítése és kilépés. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 ## <a name="sfctl-compose-upgrade"></a>sfctl-összeállítás frissítése
-Elindítja a frissíti compose központi telepítés a Service Fabric-fürtben.
+Megkezdi az összeállítási központi telepítés frissítését a Service Fabric-fürtön.
 
-A megadott frissítési paraméterek érvényesíti, és elindítja az üzemelő példány verziófrissítése, ha a paraméterek érvényesek.
-
-### <a name="arguments"></a>Argumentumok
-
-|Argumentum|Leírás|
-| --- | --- |
-| – [kötelező] üzembe helyezés neve | Az üzemelő példány neve. |
-| --fájlútvonal [kötelező] | Elérési út a cél a Docker compose fájlt. |
-| --default-svc-type-health-map | JSON kódolású szolgáltatások állapotának értékeléséhez használt állapotházirend leíró szótárban. |
-| --encrypted-pass | Ahelyett, hogy a tárolójegyzék jelszavát kéri, használjon egy már a titkosított hozzáférési kódot. |
-| --failure-action | Lehetséges értékek a következők\: "Érvénytelen", "Visszaállítás" Manual (manuális). |
-| --kényszerített újraindítás | Folyamatok kényszerített újraindítása a frissítés során, akkor is, ha a kód verziója nem változott. <br><br> A frissítés csak akkor változik, a konfiguráció vagy. |
-| --has-pass | A tároló-beállításjegyzék jelszó fogja kérni. |
-| --health-check-retry | Mennyi ideig állapotellenőrzéseket hajthat végre, ha az alkalmazás vagy a fürt nem kifogástalan való próbálkozások között. |
-| --health-check-stable | Mennyi ideig, hogy az alkalmazás vagy a fürt kell megfelelő állapotú marad a következő frissítési tartományra abból a frissítés előtt. <br><br> Először kerül értelmezésre egy karakterlánc, amely az ISO 8601 időtartama. Ha ez nem sikerül, majd kerül értelmezésre egy számot jelölő ezredmásodperc teljes száma. |
-| --health-check-wait | Az eltelt idő eltelte után a frissítési tartomány befejezése előtt a folyamat kezdési állapotát ellenőrzi. |
-| --replica-set-check | A maximális mennyisége, és letiltja a frissítési tartomány feldolgozása és váratlan problémák esetén a rendelkezésre állás az adatvesztés elkerülése érdekében. <br><br> Ha ez az időkorlát lejár, a frissítési tartomány feldolgozása folytatódik a rendelkezésre állás elvesztése problémák függetlenül. Az időkorlát minden frissítési tartomány elején alaphelyzetbe áll. Érvényes értékek: 0 és 42949672925 között lehet. |
-| --svc-type-health-map | JSON kódolású objektumok, amelyek a különféle szolgáltatástípusokról állapotának értékeléséhez használt házirendek listáját. |
-| --időkorlát -t | Kiszolgálói időtúllépés másodpercben.  Alapértelmezett\: 60. |
-| --unhealthy-app | A maximálisan engedélyezett sérült alkalmazások százaléka előtt egy hibát jelez. <br><br> Ahhoz, hogy 10 %-a nem megfelelő állapotú, hogy az alkalmazások, például ez az érték lenne 10. A százalékos eltűrt maximális százalékos aránya, amely előtt a fürt hibás lehet nem megfelelő alkalmazások jelöli. Ha a százalékos tiszteletben tartják, de legalább egy sérült alkalmazás, az egészségügyi figyelmeztetés minősül. Ez kiszámítása a nem megfelelő állapotú alkalmazások száma keresztül alkalmazáspéldányok a fürt teljes száma. |
-| --upgrade-domain-timeout | Mennyi ideig mindegyik frissítési tartományon van befejezését, mielőtt FailureAction hajtja végre. <br><br> Először kerül értelmezésre egy karakterlánc, amely az ISO 8601 időtartama. Ha ez nem sikerül, majd kerül értelmezésre egy számot jelölő ezredmásodperc teljes száma. |
-| --egyedülálló frissítése | Alapértelmezett\: működés közbeni. |
-| --frissítés-mód | Lehetséges értékek a következők\: "Érvénytelen", 'UnmonitoredAuto', 'UnmonitoredManual', "Figyelt".  Alapértelmezett\: UnmonitoredAuto. |
-| --upgrade-timeout | Mennyi ideig a teljes frissítés rendelkezik befejezését, mielőtt FailureAction hajtja végre. <br><br> Először kerül értelmezésre egy karakterlánc, amely az ISO 8601 időtartama. Ha ez nem sikerül, majd kerül értelmezésre egy számot jelölő ezredmásodperc teljes száma. |
-| --user | Felhasználónév a tárolóregisztrációs adatbázis csatlakozni. |
-| --warning-as-error | Azt jelzi, hogy e figyelmeztetések az azonos súlyossági hibákként kell kezelni. |
-
-### <a name="global-arguments"></a>Globális argumentumok
-
-|Argumentum|Leírás|
-| --- | --- |
-| --debug | Növelése a naplózás az összes hibakeresési naplók megjelenítése. |
-| --help -h | A súgóüzenetet és kilépési jelennek meg. |
-| --kimeneti -o | Kimeneti formátum.  Megengedett értékek\: JSON-t, jsonc, tábla, tsv.  Alapértelmezett\: json. |
-| – lekérdezés | JMESPath lekérdezési karakterláncot. Tekintse meg a http\://jmespath.org/ további információt és példákat. |
-| --verbose | Növelése a naplózást. Használja a--debug teljes hibakeresési naplók. |
-
-## <a name="sfctl-compose-upgrade-rollback"></a>sfctl-összeállítás frissítés-visszaállítás
-Visszaállítása egy új üzembe helyezési útmutatók frissítése a Service Fabric-fürtben.
-
-Visszaállítás egy service fabric compose üzemelő példány frissítése.
+Ellenőrzi a megadott frissítési paramétereket, és megkezdi az üzemelő példány frissítését, ha a paraméterek érvényesek.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| – [kötelező] üzembe helyezés neve | Az üzembe helyezés identitását. |
-| --időkorlát -t | Kiszolgálói időtúllépés másodpercben.  Alapértelmezett\: 60. |
+| – központi telepítés – név [kötelező] | Az üzemelő példány neve. |
+| --fájl elérési útja [kötelező] | A cél Docker-összeállítási fájl elérési útja. |
+| --default-svc-type-health-map | JSON-kódolású szótár, amely leírja a szolgáltatások állapotának kiértékeléséhez használt állapotfigyelő házirendet. |
+| --encrypted-pass | A tároló beállításjegyzékbeli jelszavának megkérdezése helyett használjon egy már titkosított pass-kifejezést. |
+| --failure-action | A lehetséges értékek\: a következők lehetnek: "Érvénytelen", "visszaállítás", "Manual". |
+| --kényszerített újraindítás | A folyamatokat a rendszer a frissítés során kényszeríti újra, még akkor is, ha a kód verziószáma nem változott. <br><br> A frissítés csak a konfigurációt vagy az adatértéket módosítja. |
+| --a-pass | A jelszó megadását kéri a tároló beállításjegyzékében. |
+| --health-check-retry | Az állapot-ellenőrzések elvégzésére irányuló kísérletek közötti időtartam, ha az alkalmazás vagy a fürt állapota nem kifogástalan. |
+| --állapot-passzolás – stabil | Az az időtartam, ameddig az alkalmazásnak vagy a fürtnek kifogástalan állapotban kell maradnia, mielőtt a frissítés a következő frissítési tartományba kerül. <br><br> A rendszer először egy ISO 8601 időtartamot jelölő sztringként értelmezi. Ha ez nem sikerül, a rendszer az ezredmásodpercek teljes számát jelölő számként értelmezi. |
+| --health-check-wait | Az a várakozási idő, ameddig a frissítési tartomány befejezése után meg kell várni az állapot-ellenőrzési folyamat megkezdése előtt. |
+| --replica-set-check | A frissítési tartomány feldolgozásának letiltására és a rendelkezésre állás elvesztésének megelőzésére szolgáló maximális időtartam, ha váratlan problémák merülnek fel. <br><br> Ha ez az időkorlát lejár, a frissítési tartomány feldolgozása a rendelkezésre állás elvesztésével kapcsolatos problémáktól függetlenül folytatódni fog. Az időtúllépés az egyes frissítési tartományok elején alaphelyzetbe áll. Az érvényes értékek 0 és 42949672925 között vannak. |
+| --svc-type-health-map | A különböző típusú szolgáltatások állapotának kiértékeléséhez használt állapotfigyelő házirendeket leíró, JSON-kódolású objektumok listája. |
+| --időtúllépés-t | Kiszolgáló időtúllépése másodpercben.  Alapértelmezett\: 60. |
+| --unhealthy-app | A nem kifogástalan állapotú alkalmazások maximálisan megengedett százaléka a hiba jelentése előtt. <br><br> Ha például engedélyezni szeretné, hogy az alkalmazások 10%-a nem kifogástalan állapotú legyen, ez az érték 10. A százalékos érték azt jelenti, hogy az alkalmazások maximálisan tolerálható hányada sérült, mielőtt a fürt hibásnak minősül. Ha a százalékos arányt figyelembe veszi, de legalább egy nem kifogástalan állapotú alkalmazás van, az állapot figyelmeztetésként lesz kiértékelve. Ezt úgy számítjuk ki, hogy a nem kifogástalan állapotú alkalmazások számát a fürtben lévő alkalmazások teljes száma fölé osztja. |
+| – frissítés – tartomány – időtúllépés | Az egyes frissítési tartományok befejezésének időtartamát a FailureAction végrehajtása előtt kell végrehajtani. <br><br> A rendszer először egy ISO 8601 időtartamot jelölő sztringként értelmezi. Ha ez nem sikerül, a rendszer az ezredmásodpercek teljes számát jelölő számként értelmezi. |
+| --upgrade-Kind | Alapértelmezett\: működés. |
+| – frissítési mód | A lehetséges értékek\: a következők lehetnek: "Érvénytelen", "UnmonitoredAuto", "UnmonitoredManual", "figyelt".  Alapértelmezett\: UnmonitoredAuto. |
+| – frissítés – időtúllépés | Az a időtartam, ameddig a teljes frissítésnek a FailureAction végrehajtása előtt el kell végeznie. <br><br> A rendszer először egy ISO 8601 időtartamot jelölő sztringként értelmezi. Ha ez nem sikerül, a rendszer az ezredmásodpercek teljes számát jelölő számként értelmezi. |
+| --user | A tároló-beállításjegyzékhez való kapcsolódáshoz használandó Felhasználónév. |
+| --warning-as-error | Azt jelzi, hogy a figyelmeztetések a hibákkal azonos súlyossággal vannak-e kezelve. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --debug | Növelése a naplózás az összes hibakeresési naplók megjelenítése. |
-| --help -h | A súgóüzenetet és kilépési jelennek meg. |
-| --kimeneti -o | Kimeneti formátum.  Megengedett értékek\: JSON-t, jsonc, tábla, tsv.  Alapértelmezett\: json. |
-| – lekérdezés | JMESPath lekérdezési karakterláncot. Tekintse meg a http\://jmespath.org/ további információt és példákat. |
-| --verbose | Növelése a naplózást. Használja a--debug teljes hibakeresési naplók. |
+| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
+| --Help-h | A súgó üzenet megjelenítése és kilépés. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
-## <a name="sfctl-compose-upgrade-status"></a>sfctl-összeállítás frissítés – állapot
-A compose üzemelő példánya a legújabb frissítés a Service Fabric végrehajtott részleteinek beolvasása.
+## <a name="sfctl-compose-upgrade-rollback"></a>sfctl-összeállítás frissítése – visszaállítás
+Elindítja az összeállítási központi telepítés frissítését a Service Fabric-fürtön.
 
-A compose üzemelő példány frissítése is tartalmaz, ezzel elősegítve a hibakeresési alkalmazás állapotbeli problémák állapota információt ad vissza.
+Egy Service Fabric-összeállítási frissítés visszaállítása.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| – [kötelező] üzembe helyezés neve | Az üzembe helyezés identitását. |
-| --időkorlát -t | Kiszolgálói időtúllépés másodpercben.  Alapértelmezett\: 60. |
+| – központi telepítés – név [kötelező] | Az üzemelő példány identitása. |
+| --időtúllépés-t | Kiszolgáló időtúllépése másodpercben.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --debug | Növelése a naplózás az összes hibakeresési naplók megjelenítése. |
-| --help -h | A súgóüzenetet és kilépési jelennek meg. |
-| --kimeneti -o | Kimeneti formátum.  Megengedett értékek\: JSON-t, jsonc, tábla, tsv.  Alapértelmezett\: json. |
-| – lekérdezés | JMESPath lekérdezési karakterláncot. Tekintse meg a http\://jmespath.org/ további információt és példákat. |
-| --verbose | Növelése a naplózást. Használja a--debug teljes hibakeresési naplók. |
+| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
+| --Help-h | A súgó üzenet megjelenítése és kilépés. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
+
+## <a name="sfctl-compose-upgrade-status"></a>sfctl-összeállítás frissítése – állapot
+Beolvassa az ezen a Service Fabric-összeállításon végrehajtott legújabb frissítés részleteit.
+
+A összeállít telepítési frissítés állapotával kapcsolatos adatokat adja vissza, valamint az alkalmazás állapotával kapcsolatos hibák elhárításának támogatását.
+
+### <a name="arguments"></a>Argumentumok
+
+|Argumentum|Leírás|
+| --- | --- |
+| – központi telepítés – név [kötelező] | Az üzemelő példány identitása. |
+| --időtúllépés-t | Kiszolgáló időtúllépése másodpercben.  Alapértelmezett\: 60. |
+
+### <a name="global-arguments"></a>Globális argumentumok
+
+|Argumentum|Leírás|
+| --- | --- |
+| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
+| --Help-h | A súgó üzenet megjelenítése és kilépés. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 
 ## <a name="next-steps"></a>További lépések
-- [Állítsa be a](service-fabric-cli.md) a Service Fabric parancssori felület.
-- Ismerje meg, hogyan használható a Service Fabric parancssori felület használatával a [-szkript minták](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- [Állítsa be](service-fabric-cli.md) a Service Fabric CLI-t.
+- Megtudhatja, hogyan használhatja a Service Fabric CLI-t a [minta-parancsfájlok](/azure/service-fabric/scripts/sfctl-upgrade-application)használatával.

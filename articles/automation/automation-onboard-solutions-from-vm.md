@@ -2,19 +2,19 @@
 title: Az Azure virtuális előkészíteni az Update Management, Change Tracking and Inventory megoldások
 description: Ismerje meg, hogyan való előkészítése az Azure virtuális gép az Update Management, Change Tracking és Inventory megoldásainak részét képező Azure Automation.
 services: automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 03/20/2019
 ms.topic: conceptual
 ms.service: automation
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: bf81b862f978d4baab0907dc9002564062ec5228
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 6b8693768e08f7ed80765015efa5af1a73b850c7
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58619722"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476607"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>Az Azure virtuális gép felvétele az Update Management, Change Tracking and Inventory megoldásai
 
@@ -51,7 +51,7 @@ Ha a kiválasztott munkaterületen még nem rendelkezik a Frissítésfelügyelet
 
 Ha a kijelölt munkaterület a megoldás már tartozik, a megoldás nem újratelepítése, és a hatókör-konfiguráció nem adódik.
 
-Kattintson a három pontra (**...** ) a konfigurációkat, és válassza ki valamelyik **szerkesztése**. Az a **hatókör-konfiguráció szerkesztése** ablaktáblán válassza előbb **válassza ki a számítógépcsoportokat**. A **számítógépcsoportok** panelen látható a mentett kereséseket, a hatókör-konfiguráció létrehozásához használt.
+Kattintson a három pontra ( **...** ) a konfigurációkat, és válassza ki valamelyik **szerkesztése**. Az a **hatókör-konfiguráció szerkesztése** ablaktáblán válassza előbb **válassza ki a számítógépcsoportokat**. A **számítógépcsoportok** panelen látható a mentett kereséseket, a hatókör-konfiguráció létrehozásához használt.
 
 ## <a name="saved-searches"></a>Mentett keresések
 
@@ -59,7 +59,7 @@ Amikor számítógépet adnak az Update Management, a Change Tracking vagy a ké
 
 Lépjen a munkaterülethez. A **általános**válassza **mentett keresések**. A két mentett keresések, ezek a megoldások által használt az alábbi táblázatban láthatók:
 
-|Name (Név)     |Kategória  |Alias  |
+|Name (Név)     |Category  |Alias  |
 |---------|---------|---------|
 |MicrosoftDefaultComputerGroup     |  Change Tracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 |MicrosoftDefaultComputerGroup     | Frissítések        | Updates__MicrosoftDefaultComputerGroup         |
@@ -104,6 +104,8 @@ Virtuális gépek indítása/leállítása munkaidőn kívül megoldás használ
 * Elindíthatja és leállíthatja a virtuális gép runbook ütemezése
 * Virtuális gép runbookok elindítása és leállítása
 * Változók
+
+Másik megoldásként is megszüntetheti a munkaterület az Automation-fiókjából a Log Analytics-munkaterület. Válassza ki a munkaterület **Automation-fiók** alatt **kapcsolódó erőforrások**. Az Automation-fiók oldalon válassza ki a **fiók leválasztása a**.
 
 ## <a name="next-steps"></a>További lépések
 

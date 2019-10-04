@@ -1,29 +1,25 @@
 ---
 title: PowerShell – Azure HDInsight használata az Apache Hadoop-fürtök létrehozása
 description: Ismerje meg, hogyan hozhat létre Apache Hadoop, az Apache HBase, Apache Storm vagy az Apache Spark-fürtök Linux rendszeren a HDInsight az Azure PowerShell használatával.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/21/2018
+ms.date: 05/24/2019
 ms.author: hrasheed
-ms.openlocfilehash: 30154c55e60b7150257729c9bc90ee07a561e08e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 51270f1fd7a662cdfd747bd0bfaf9ff03dd438a2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59264539"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66257915"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-azure-powershell"></a>Linux-alapú fürtök létrehozása az Azure PowerShell használatával HDInsight
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
 Az Azure PowerShell az egy hatékony parancsfájl-kezelési környezet, amellyel szabályozhatja és automatizálhatja az üzembe helyezéséhez és felügyeletéhez a Microsoft Azure-ban a számítási feladatokat. Ez a dokumentum egy Linux-alapú HDInsight-fürt létrehozása az Azure PowerShell-lel kapcsolatos információkat nyújt. Példa parancsfájl is tartalmaz.
-
-> [!NOTE]  
-> Az Azure PowerShell csak Windows-ügyfelek számára érhető el. Ha a Linux, Unix vagy Mac OS X-ügyfelet használ, tekintse meg [hozzon létre egy Linux-alapú HDInsight-fürtöt klasszikus Azure CLI-vel](hdinsight-hadoop-create-linux-clusters-azure-cli.md) fürt létrehozása a klasszikus parancssori felület használatával kapcsolatos információkat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

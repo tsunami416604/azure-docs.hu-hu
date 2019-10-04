@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 57d6d63c55f8ad4da5d1905a1e209da454b0491c
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 5b48cbd1020cfd51fe989a9be33197f2735f21f4
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38630194"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60860517"
 ---
 # <a name="install-update-4-on-your-storsimple-device"></a>Telepítse a StorSimple-eszköz Update 4
 
@@ -27,7 +27,7 @@ ms.locfileid: "38630194"
 
 Ez az oktatóanyag azt ismerteti, hogyan telepítse a StorSimple eszköz egy korábbi verzióját szoftverek az Azure Portalon, és a gyorsjavítások metódussal Update 4. A gyorsjavítás módszert az átjáró konfigurálva van egy hálózati adapter nem a DATA 0 a StorSimple-eszköz és a frissítés előtti 1 szoftver verzióról frissíteni szeretne.
 
-4. frissítéssel eszköz szoftverének, USM belső vezérlőprogram, LSI-illesztőt és belső vezérlőprogramja, Storport és Spaceport, az operációs rendszer biztonsági frissítések és számos más operációs rendszer frissítéseit tartalmazza.  Az eszközhöz, USM belső vezérlőprogram, Spaceport, Storport és más operációs rendszer frissítése a zavart nem okozó frissítések. A frissítések zavart nem okozó vagy rendszeres alkalmazhatók, vagy a gyorsjavítás metódus az Azure Portalon keresztül. A lemezfirmware-frissítések zavart okozó frissítések, és csak a gyorsjavítás metódus az eszköz a Windows PowerShell felületén keresztül lehet alkalmazni.
+4\. frissítéssel eszköz szoftverének, USM belső vezérlőprogram, LSI-illesztőt és belső vezérlőprogramja, Storport és Spaceport, az operációs rendszer biztonsági frissítések és számos más operációs rendszer frissítéseit tartalmazza.  Az eszközhöz, USM belső vezérlőprogram, Spaceport, Storport és más operációs rendszer frissítése a zavart nem okozó frissítések. A frissítések zavart nem okozó vagy rendszeres alkalmazhatók, vagy a gyorsjavítás metódus az Azure Portalon keresztül. A lemezfirmware-frissítések zavart okozó frissítések, és csak a gyorsjavítás metódus az eszköz a Windows PowerShell felületén keresztül lehet alkalmazni.
 
 > [!IMPORTANT]
 > * Egy készletét manuális és automatikus előzetes ellenőrzések a telepítés során meghatározni az eszköz szempontjából a hardver állapotát, és a hálózati kapcsolat előtt kell elvégezni. Ezen előzetes ellenőrzések elvégzése csak akkor, ha az Azure Portalon alkalmazza a frissítéseket.
@@ -45,21 +45,21 @@ A következő lépésekkel, az eszköz frissítéséhez [4-es frissítést](stor
 
 [!INCLUDE [storsimple-8000-install-update4-via-portal](../../includes/storsimple-8000-install-update4-via-portal.md)]
 
-Ellenőrizze, hogy fut-e az eszköz **StorSimple 8000 Series Update 4 (6.3.9600.17820)**. A **utolsó frissítés dátuma** is módosítani kell.
+Ellenőrizze, hogy fut-e az eszköz **StorSimple 8000 Series Update 4 (6.3.9600.17820)** . A **utolsó frissítés dátuma** is módosítani kell.
 
 * Most láthatja, hogy a karbantartási módú frissítések érhetők el (Ez az üzenet előfordulhat, hogy továbbra is megjelennek a frissítések telepítése után legfeljebb 24 óránál). Karbantartási módú frissítések zavart okozó frissítések, amelyek eszköz állásidőt eredményez, és csak az eszköz a Windows PowerShell felületéről alkalmazható.
 
 * Töltse le a karbantartási módú frissítések szereplő lépések segítségével [gyorsjavítások letöltése](#to-download-hotfixes) keresse meg és töltse le a kb4011837 jelű csomagot, mely telepíti lemezfirmware-frissítések (a más frissítések már telepítve kell lennie már). Kövesse a felsorolt lépéseket [karbantartási módú gyorsjavítások telepítése és ellenőrzése](#to-install-and-verify-maintenance-mode-hotfixes) telepítése a karbantartási mód frissíti.
 
 ## <a name="install-update-4-as-a-hotfix"></a>Telepítse a Update 4-es gyorsjavítást
-4. frissítés telepítése az ajánlott módszer van, az Azure Portalon keresztül.
+4\. frissítés telepítése az ajánlott módszer van, az Azure Portalon keresztül.
 
 Ez az eljárás használható, ha az átjáró ellenőrzése sikertelen, amikor telepíti a frissítéseket az Azure Portalon keresztül. Az ellenőrzés sikertelen, az átjáró nem a DATA 0 hálózati adapter rendelt és az eszköz 1. frissítés előtti szoftvert verziót futtat.
 
 A szoftver verziójával, amely a gyorsjavítás metódussal lehet frissíteni a következők:
 
-* 0.1, 0.2-es, 0,3 frissítése
-* 1., 1.1-es, 1.2-es frissítés
+* 0\.1, 0.2-es, 0,3 frissítése
+* 1\., 1.1-es, 1.2-es frissítés
 * 2, 2.1-es, 2.2-es frissítés
 * Update 3, 3.1.
 
@@ -74,7 +74,7 @@ A gyorsjavítás módszer a következő három lépésből áll:
 
 Le kell töltenie és a gyorsjavítások telepítése által előírt sorrendben, és a javasolt mappák:
 
-| Sorrend | KB | Leírás | Frissítés típusa | Telepítés időpontja |Telepítési mappa|
+| Rendelés | KB | Leírás | Frissítés típusa | Telepítés időpontja |Telepítési mappa|
 | --- | --- | --- | --- | --- | --- |
 | 1. |KB4011839 |Szoftverfrissítés |Rendszeres <br></br>Zavart nem okozó |~ 25 perc |FirstOrderUpdate|
 | 2A. |KB4011841 <br> KB4011842 |LSI-illesztőt és a belső vezérlőprogram frissítése <br> USM belső vezérlőprogram frissítése (3.38 verzió) |Rendszeres <br></br>Zavart nem okozó |~ 3 óra <br> (2/a. tartalmazza. + 2B. + 2C.)|SecondOrderUpdate|
@@ -83,9 +83,9 @@ Le kell töltenie és a gyorsjavítások telepítése által előírt sorrendben
 
 Emellett szükség lehet a frissítések az előző táblázatban látható felett lemezfirmware-frissítések telepítéséhez. Ellenőrizheti, hogy szükséges-e a lemezfirmware-frissítések futtatásával a `Get-HcsFirmwareVersion` parancsmagot. Ezek belső vezérlőprogrammal futtatásakor: `XMGJ`, `XGEG`, `KZ50`, `F6C2`, `VR08`, `N002`, `0106`, akkor nem szükséges telepítenie ezeket a frissítéseket.
 
-| Sorrend | KB | Leírás | Frissítés típusa | Telepítés időpontja | Telepítési mappa|
+| Rendelés | KB | Leírás | Frissítés típusa | Telepítés időpontja | Telepítési mappa|
 | --- | --- | --- | --- | --- | --- |
-| 3. |KB3121899 |Lemezfirmware |Karbantartás <br></br>Azokat a káros |körülbelül 30 perc | ThirdOrderUpdate |
+| 3. |KB3121899 |Lemezfirmware |Karbantartás <br></br>Azokat a káros |~ 30 mins | ThirdOrderUpdate |
 
 <br></br>
 

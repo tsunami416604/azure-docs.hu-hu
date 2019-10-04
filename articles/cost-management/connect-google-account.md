@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/04/2019
+ms.date: 05/21/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 7f63293900e116fd3175b0ea6d704993a2dcf591
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 247d959abadc92d70bdd60555a090986743e9322
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59051393"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66002079"
 ---
 # <a name="connect-a-google-cloud-platform-account"></a>A Google Cloud Platform-fiók csatlakoztatása
 
@@ -63,7 +63,7 @@ Szoftverleltárazási és használati adatokat gyűjthet, a Cloudyn a következ�
 
 1. Nyissa meg a Cloudyn portált az Azure Portalról, vagy navigáljon arra [ https://azure.cloudyn.com ](https://azure.cloudyn.com/) , és jelentkezzen be.
 2. Kattintson a **beállítások** (fogaskerék szimbólum), majd **Felhőfiókok**.
-3. A **fiókkezelés**, jelölje be a **Google-fiókok** fülre, majd **új hozzáadása +**.
+3. A **fiókkezelés**, jelölje be a **Google-fiókok** fülre, majd **új hozzáadása +** .
 4. A **Google-fiók neve**, adja meg a számlázási fiók e-mail címét, majd kattintson a **tovább**.
 5. A Google-hitelesítési párbeszédpanelen válassza ki, vagy adjon meg egy Google-fiókot, majd **engedélyezése** cloudyn.com hozzáférést a fiókjához.
 6. Adja meg a kérelem projekt információkat, hogy Ön volt-e korábbi feljegyzett. Tartalmazzák **Projektazonosító**, **projekt** neve, **számlázási** gyűjtőbe nevét, és **számlázási fájl** előtag jelentést, majd kattintson a  **Mentés**.  

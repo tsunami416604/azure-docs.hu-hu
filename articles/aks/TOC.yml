@@ -7,24 +7,31 @@
 - name: Gyors útmutatók
   expanded: true
   items:
-    - name: AKS-fürt létrehozása – parancssori felület
-      href: kubernetes-walkthrough.md
-    - name: AKS-fürt létrehozása – portál
-      href: kubernetes-walkthrough-portal.md
+    - name: AKS-fürt létrehozása
+      expanded: true
+      items:
+        - name: Az Azure parancssori felületének használata
+          href: kubernetes-walkthrough.md
+        - name: Az Azure Portal használata
+          href: kubernetes-walkthrough-portal.md
+        - name: Resource Manager-sablon használata
+          href: kubernetes-walkthrough-rm-template.md
     - name: Alkalmazások fejlesztése
       expanded: true
       items:
-        - name: A Java használata (VS Code és CLI)
-          href: ../dev-spaces/quickstart-java.md
-          maintainContext: true
-        - name: A .NET Core használata (VS Code és CLI)
+        - name: Vázlat használata
+          href: kubernetes-draft.md
+        - name: A Visual Studio Code és az Azure Dev Spaces használata
           href: ../dev-spaces/quickstart-netcore.md
           maintainContext: true
-        - name: A .NET Core használata (Visual Studio 2017)
+        - name: A Visual Studio és az Azure Dev Spaces használata
           href: ../dev-spaces/quickstart-netcore-visualstudio.md
           maintainContext: true
-        - name: A Node.js használata (VS Code és CLI)
-          href: ../dev-spaces/quickstart-nodejs.md
+        - name: A parancssori felület és az Azure Dev Spaces használata
+          href: ../dev-spaces/quickstart-cli.md
+          maintainContext: true
+        - name: Az Azure Dev Spaces használata csoportos fejlesztéshez
+          href: ../dev-spaces/quickstart-team-development.md
           maintainContext: true
 - name: Oktatóanyagok
   items:
@@ -58,8 +65,9 @@
     - name: Méretezés
       href: concepts-scale.md
     - name: Ajánlott eljárások
-      href: best-practices.md
       items:
+        - name: Áttekintés
+          href: best-practices.md
         - name: Fürtüzemeltetőknek
           items:
             - name: Több-bérlős működés és fürtelkülönítés
@@ -87,11 +95,13 @@
             - name: Podbiztonság
               href: developer-best-practices-pod-security.md
     - name: Kvóták és regionális korlátok
-      href: container-service-quotas.md
+      href: quotas-skus-regions.md
     - name: Migrálás ACS-ről AKS rendszerre
       href: acs-aks-migration.md
     - name: Támogatott Kubernetes-verzió
       href: supported-kubernetes-versions.md
+    - name: A biztonság megerősítése a gazda operációs rendszeren
+      href: security-hardened-vm-host-image.md
 - name: Útmutatók
   items:
     - name: Fürtműveletek
@@ -108,21 +118,27 @@
         - name: AKS-fürt törlése
           href: '/cli/azure/aks#az-aks-delete'
           maintainContext: true
-        - name: Azure AD-kompatibilis AKS
-          href: aad-integration.md
-        - name: Virtuális csomópontok létrehozása (előzetes verzió)
+        - name: ACR integrálása AKS-fürttel
+          href: cluster-container-registry-integration.md
+        - name: Virtuális csomópontok létrehozása
           items:
-            - name: Azure CLI
+            - name: Az Azure parancssori felületének használata
               href: virtual-nodes-cli.md
-            - name: Azure Portal
+            - name: Az Azure Portal használata
               href: virtual-nodes-portal.md
         - name: A Virtual Kubelet használata
           href: virtual-kubelet.md
         - name: Automatikus fürtméretező használata (előzetes verzió)
           href: cluster-autoscaler.md
+        - name: Az Availability Zones (előzetes verzió) használata
+          href: availability-zones.md
+        - name: Több csomópontkészlet használata (előzetes verzió)
+          href: use-multiple-node-pools.md
         - name: Az AKS üzembe helyezése Terraform használatával
           href: ../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md
           maintainContext: true
+        - name: A Kubernetes-irányítópult használata
+          href: kubernetes-dashboard.md
     - name: Adatkötetek konfigurálása
       items:
         - name: Azure-lemez – Dinamikus
@@ -133,6 +149,10 @@
           href: azure-files-dynamic-pv.md
         - name: Azure Files – Statikus
           href: azure-files-volume.md
+        - name: NFS-kiszolgáló – Statikus
+          href: azure-nfs-volume.md
+        - name: Azure NetApp Files
+          href: azure-netapp-files.md
     - name: Hálózatkezelés konfigurálása
       items:
         - name: Meglévő virtuális hálózat létrehozása vagy használata
@@ -143,7 +163,9 @@
               href: configure-azure-cni.md
         - name: Hozzon létre egy belső terheléselosztót
           href: internal-lb.md
-        - name: Statikus IP-címek használata
+        - name: Standard terheléselosztó használata
+          href: load-balancer-standard.md
+        - name: Statikus IP-cím használata
           href: static-ip.md
         - name: Bejövő forgalom
           items:
@@ -156,8 +178,9 @@
             - name: TLS használata saját tanúsítványokkal
               href: ingress-own-tls.md
             - name: TLS használata Let's Encrypt szolgáltatással
-              href: ingress-tls.md
               items:
+                - name: Dinamikus nyilvános IP-cím használata
+                  href: ingress-tls.md
                 - name: Statikus nyilvános IP-cím használata
                   href: ingress-static-ip.md
         - name: Kimenő forgalom
@@ -170,10 +193,26 @@
           href: kubernetes-service-principal.md
         - name: A fürtkonfigurációs fájl elérésének korlátozása
           href: control-kubeconfig-access.md
-        - name: Podforgalom biztonságossá tétele hálózati szabályzatokkal (előzetes verzió)
+        - name: Podforgalom biztonságossá tétele hálózati szabályzatokkal
           href: use-network-policies.md
+        - name: Podbiztonsági szabályzatok használata
+          href: use-pod-security-policies.md
+        - name: Az API-kiszolgáló engedélyezett IP-címtartományainak megadása (előzetes verzió)
+          href: api-server-authorized-ip-ranges.md
+        - name: Központi telepítések ellenőrzése az Azure Policy használatával (előzetes verzió)
+          href: ../governance/policy/concepts/rego-for-aks.md?toc=/azure/aks/toc.json
         - name: A fürt szolgáltatásneve hitelesítő adatainak frissítése
           href: update-credentials.md
+        - name: Fürt kimenő forgalmának korlátozása és szabályozása
+          href: limit-egress-traffic.md
+        - name: Azure Active Directory-integráció engedélyezése
+          items:
+            - name: Az Azure parancssori felületének használata
+              href: azure-ad-integration-cli.md
+            - name: Az Azure Portal használata
+              href: azure-ad-integration.md
+        - name: Kubernetes RBAC használata Azure AD-integrációval
+          href: azure-ad-rbac.md
         - name: Hitelesítés az ACR segítségével
           href: ../container-registry/container-registry-auth-aks.md
           maintainContext: true
@@ -189,6 +228,20 @@
         - name: Valós idejű tárolónaplók megtekintése (előnézet)
           href: ../azure-monitor/insights/container-insights-live-logs.md
           maintainContext: true
+    - name: Windows Server-tárolók használata (előzetes verzió)
+      items:
+        - name: AKS-fürt létrehozása
+          href: windows-container-cli.md
+        - name: Távoli csatlakozás
+          href: rdp.md
+        - name: Ismert korlátozások
+          href: windows-node-limitations.md
+        - name: A Kubernetes-irányítópult használata
+          href: kubernetes-dashboard.md
+        - name: Docker-fájlok létrehozása Windows Server-tárolók számára
+          href: 'https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/manage-windows-dockerfile?context=/azure/aks/context/aks-context'
+        - name: Docker-fájlok optimalizálása Windows Server-tárolók számára
+          href: 'https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/optimize-windows-dockerfile?context=/azure/aks/context/aks-context'
     - name: Alkalmazások fejlesztése és futtatása
       items:
         - name: Fejlesztés a Dev Spaces használatával
@@ -241,8 +294,6 @@
                   maintainContext: true
         - name: Alkalmazások futtatása a Helm használatával
           href: kubernetes-helm.md
-        - name: Alkalmazások fejlesztése a Draft használatával
-          href: kubernetes-draft.md
         - name: Az Open Service Broker for Azure használata
           href: integrate-azure.md
         - name: A MongoDB-hez készült Cosmos DB API és az OSBA együttes használata
@@ -259,6 +310,10 @@
               href: istio-install.md
             - name: Intelligens útválasztás és tesztcsoportos kiadások
               href: istio-scenario-routing.md
+        - name: A Hashicorp Consul Connect használata
+          items:
+            - name: Telepítés és konfigurálás
+              href: consul-install.md
         - name: Az Azure Database for PostgreSQL használata
           href: ../postgresql/concepts-aks.md
           maintainContext: true
@@ -272,10 +327,8 @@
         - name: Azure DevOps Project
           href: ../devops-project/azure-devops-project-aks.md
           maintainContext: true
-    - name: A Kubernetes alapjai
-      items:
-        - name: A Kubernetes-irányítópult használata
-          href: kubernetes-dashboard.md
+        - name: Az üzembehelyezési központ indítója
+          href: deployment-center-launcher.md
     - name: Hibaelhárítás
       items:
         - name: Gyakori problémák

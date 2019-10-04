@@ -3,8 +3,8 @@ title: Hálózati kommunikáció monitorozása – oktatóanyag – Azure Portal
 description: Megismerheti, hogyan monitorozhatja a két virtuális gép közötti hálózati kommunikációt az Azure Network Watcher kapcsolatfigyelő funkciójával.
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 Customer intent: I need to monitor communication between a VM and another VM. If the communication fails, I need to know why, so that I can resolve the problem.
@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
-ms.author: jdial
+ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 1d8a9cf10bf9b4aab02dd5033ecdd4fdc1f9423e
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 5cac4a46fb35ef955903018028abbe7588c94dc7
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429247"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66233887"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Oktatóanyag: Az Azure portal használatával, két virtuális gép közötti hálózati kommunikáció monitorozása
 
@@ -56,7 +56,7 @@ Hozzon létre két virtuális gépet.
     |Jelszó| Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Előfizetés| Válassza ki előfizetését.|
     |Erőforráscsoport| Válassza az **Új létrehozása** elemet, és adja meg a **myResourceGroup** nevet.|
-    |Hely| Válassza az **USA keleti régiója** lehetőséget.|
+    |Location egység| Válassza az **USA keleti régiója** lehetőséget.|
 
 4. Válassza ki a virtuális gép méretét, majd kattintson a **Kiválasztás** gombra.
 5. A **BEÁLLÍTÁSOK** területen válassza a **Bővítmények** elemet. Válassza a **Bővítmény hozzáadása**, majd a **Windowshoz készült Network Watcher-ügynök** lehetőséget, ahogyan az az alábbi képen is látható:
@@ -73,11 +73,11 @@ Végezze el ismét [Az első virtuális gép létrehozása](#create-the-first-vm
 
 |Lépés|Beállítás|Érték|
 |---|---|---|
-| 1 | Válassza ki a verziót **Ubuntu Server** |                                                                         |
+| 1. | Válassza ki a verziót **Ubuntu Server** |                                                                         |
 | 3 | Name (Név)                                  | myVm2                                                                   |
 | 3 | Hitelesítés típusa                   | Illessze be SSH nyilvános kulcsát, vagy válassza a **Jelszó** lehetőséget és adjon meg egy jelszót. |
 | 3 | Erőforráscsoport                        | Válassza a **Meglévő használata** lehetőséget, majd a **myResourceGroup** elemet.                 |
-| 6 | Bővítmények                            | **Linuxhoz készült hálózati ügynök**                                             |
+| 6 | Kiterjesztések                            | **Network Watcher-ügynök Linux rendszeren**                                             |
 
 A virtuális gép üzembe helyezése néhány percet vesz igénybe. Várjon, amíg a virtuális gép üzembe helyezése befejeződik, mielőtt folytatná a további lépésekkel.
 
@@ -94,9 +94,9 @@ Hozzon létre egy kapcsolatfigyelőt a *myVm1* és a *myVm2* virtuális gép kö
     | Beállítás                  | Érték               |
     | ---------                | ---------           |
     | Name (Név)                     | myVm1-myVm2(22)     |
-    | Forrás                   |                     |
+    | Source                   |                     |
     | Virtuális gép          | myVm1               |
-    | Cél              |                     |
+    | Célhely              |                     |
     | Virtuális gép kiválasztása |                     |
     | Virtuális gép          | myVm2               |
     | Port                     | 22                  |
@@ -117,7 +117,7 @@ Hozzon létre egy kapcsolatfigyelőt a *myVm1* és a *myVm2* virtuális gép kö
 
     | Elem                     | Érték                      | Részletek                                                     |
     | ---------                | ---------                  |--------                                                     |
-    | status                   | Elérhető                  | Jelzi, hogy a végpont elérhető-e.|
+    | Állapot                   | Elérhető                  | Jelzi, hogy a végpont elérhető-e.|
     | ÁTL. ADATVÁLTÁS          | A kapcsolat adatváltási idejét jelzi ezredmásodpercben. A kapcsolatfigyelő 60 másodpercenként teszteli a kapcsolatot, így a késést az idő függvényében is monitorozhatja.                                         |
     | Ugrások                     | A kapcsolatfigyelő jelzi a két végpont közötti ugrásokat. Eben a példában a kapcsolat két, azonos virtuális hálózaton található virtuális gép között jött létre, ezért csak egy ugrásra van szükség a 10.0.0.5 IP-címre. Ha bármilyen meglévő rendszer vagy egyéni útvonal átirányítja a forgalmat a virtuális gépek között egy VPN-átjárón vagy egy hálózati virtuális berendezésen keresztül, további ugrásokra lesz szükség.                                                                                                                         |
     | ÁLLAPOT                   | A végpontok melletti zöld pipák jelzik, hogy a végpontok kifogástalan állapotúak.    ||

@@ -8,42 +8,42 @@ ms.topic: include
 ms.date: 08/16/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: db1af4f046bd8849fddee299e949d6edbdaae86a
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: a58e408feadd10e6dbc9d6878b82a4d045918ea6
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53609089"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68781459"
 ---
-## <a name="access-the-virtual-machine"></a>Hozzáférés a virtuális gép
+## <a name="access-the-virtual-machine"></a>A virtuális gép elérése
 
-Az alábbi lépések az a `az` parancsot az Azure Cloud Shellben. Igény szerint is [Azure CLI 2.0 telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli) a fejlesztést a gépet, és helyileg futtassa a parancsokat.
+A következő lépések a Azure Cloud Shell Azure CLI-t használják. Ha szeretné, [telepítheti az Azure CLI](/cli/azure/install-azure-cli) -t a fejlesztői gépre, és helyileg is futtathatja a parancsokat.
 
-A következő lépések bemutatják, hogyan konfigurálhatja az Azure virtuális gépen, hogy **SSH** hozzáférést. Látható lépései azt feltételezik a megoldásgyorsító a kiválasztott **contoso-szimuláció** – ezt az értéket cserélje le az üzemelő példány neve:
+Az alábbi lépések bemutatják, hogyan konfigurálhatja az Azure-beli virtuális gépet az **SSH** -hozzáférés engedélyezéséhez. A megjelenő lépések feltételezik, hogy a megoldás-gyorsító neve a **contoso-szimulációs** – ezt az értéket cserélje le az üzemelő példány nevére:
 
-1. A megoldás gyorsító erőforrásokat tartalmazó erőforráscsoportot tartalmának listázásához:
+1. A megoldás-gyorsító erőforrásokat tartalmazó erőforráscsoport tartalmának listázása:
 
     ```azurecli-interactive
     az resource list -g contoso-simulation -o table
     ```
 
-    Jegyezze fel a virtuális gépet, a nyilvános IP-cím és a hálózati biztonsági csoport neve – később szüksége lesz ezekre az értékekre.
+    Jegyezze fel a virtuális gép nevét, a nyilvános IP-címet és a hálózati biztonsági csoportot – később szüksége lesz ezekre az értékekre.
 
-1. Frissítse a hálózati biztonsági csoportot, hogy az SSH-hozzáférést. Az alábbi parancs feltételezi, hogy a hálózati biztonsági csoport neve **contoso-szimuláció-nsg** – ezt az értéket cserélje le a hálózati biztonsági csoport neve:
+1. Frissítse a hálózati biztonsági csoportot az SSH-hozzáférés engedélyezéséhez. A következő parancs feltételezi, hogy a hálózati biztonsági csoport neve **contoso-szimulációs-NSG** – ezt az értéket cserélje le a hálózati biztonsági csoport nevére:
 
     ```azurecli-interactive
     az network nsg rule update --name SSH --nsg-name contoso-simulation-nsg -g contoso-simulation --access Allow -o table
     ```
 
-    Fejlesztés és tesztelés során csak engedélyezze az SSH-hozzáférést. Ha engedélyezi az SSH- [újra minél hamarabb tiltsa le,](https://docs.microsoft.com/azure/security/azure-security-network-security-best-practices#disable-rdpssh-access-to-virtual-machines).
+    Csak a tesztelés és a fejlesztés során engedélyezze az SSH-hozzáférést. Ha engedélyezi az SSH- [t, a lehető leghamarabb le kell tiltania](https://docs.microsoft.com/azure/security/fundamentals/network-best-practices#disable-rdpssh-access-to-virtual-machines).
 
-1. Frissítse a jelszavát a **azureuser** tudja fiók egy jelszót a virtuális gépen. Válassza ki a saját jelszavát, a következő parancs futtatásakor:
+1. Frissítse az azureuser- fiók jelszavát a virtuális gépen, és Ismerje meg a jelszót. A következő parancs futtatásakor válassza ki a saját jelszavát:
 
     ```azurecli-interactive
     az vm user update --name vm-vikxv --username azureuser --password YOURSECRETPASSWORD  -g contoso-simulation
     ```
 
-1. Keresse meg a virtuális gép nyilvános IP-címét. Az alábbi parancs feltételezi, hogy a virtuális gép neve **vm-vikxv** – ezt az értéket cserélje le a korábban végrehajtott egy megjegyzés, virtuális gép neve:
+1. Keresse meg a virtuális gép nyilvános IP-címét. A következő parancs feltételezi, hogy a virtuális gép neve **VM-vikxv** – ezt az értéket cserélje le az előzőleg megjegyzett virtuális gép nevére:
 
     ```azurecli-interactive
     az vm list-ip-addresses --name vm-vikxv -g contoso-simulation -o table

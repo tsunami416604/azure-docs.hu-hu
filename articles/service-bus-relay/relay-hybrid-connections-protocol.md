@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: clemensv
-ms.openlocfilehash: 913e702cc72472e81937bfe3b0939695daadc011
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: e96d0103a03e841f39e8adb88215f6d6e24a305a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45543523"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64706079"
 ---
 # <a name="azure-relay-hybrid-connections-protocol"></a>Az Azure Relay hibrid kapcsolatai protokoll
 
@@ -144,7 +144,7 @@ A `namespace-address` a teljesen minősített tartományneve az Azure Relay-név
 
 A lekérdezési karakterlánc paraméter beállítások a következők.
 
-| Paraméter        | Szükséges | Leírás
+| Paraméter        | Kötelező | Leírás
 | ---------------- | -------- | -------------------------------------------
 | `sb-hc-action`   | Igen      | A figyelő szerepkör paraméternek kell lennie **sb-hibrid kapcsolat-action = figyelés**
 | `{path}`         | Igen      | Regisztrálni. Ez a figyelő az előre konfigurált hibrid kapcsolat URL-kódolású névtér elérési útja. Ez a kifejezés a rendszer hozzáfűzi a rögzített `$hc/` elérési út részével.
@@ -204,7 +204,7 @@ Ugyanez vonatkozik a `Sec-WebSocket-Extensions` fejléc. Ha a keretrendszer bőv
 
 Az URL-címet kell használható – az elfogadás szoftvercsatorna létrehozásához szükséges, de az alábbi paramétereket tartalmazza:
 
-| Paraméter      | Szükséges | Leírás
+| Paraméter      | Kötelező | Leírás
 | -------------- | -------- | -------------------------------------------------------------------
 | `sb-hc-action` | Igen      | A szoftvercsatorna fogadásához, a paraméternek kell lennie `sb-hc-action=accept`
 | `{path}`       | Igen      | (lásd a következő bekezdés)
@@ -243,8 +243,8 @@ Ha hiba történik, a szolgáltatás is válasz a következő:
 
 | Param                   | Szükséges | Leírás                              |
 | ----------------------- | -------- | ---------------------------------------- |
-| SB-hibrid kapcsolat-állapotkód        | Igen      | Numerikus HTTP-állapotkódot.                |
-| SB-hibrid kapcsolat-statusDescription | Igen      | Emberi olvasható ok az elutasítás. |
+| sb-hc-statusCode        | Igen      | Numerikus HTTP-állapotkódot.                |
+| sb-hc-statusDescription | Igen      | Emberi olvasható ok az elutasítás. |
 
 Az eredményül kapott URI szolgál majd WebSocket kapcsolatot létesíteni.
 
@@ -376,7 +376,7 @@ A 64 KB-os keretet túllépő válaszok a válasz megcélozva szoftvercsatornán
 
 A `address` URL-címet a `request` kell használni-létrehozásához szükséges a szinkronizálási szoftvercsatorna, de az alábbi paramétereket tartalmazza:
 
-| Paraméter      | Szükséges | Leírás
+| Paraméter      | Kötelező | Leírás
 | -------------- | -------- | -------------------------------------------------------------------
 | `sb-hc-action` | Igen      | A szoftvercsatorna fogadásához, a paraméternek kell lennie `sb-hc-action=request`
 
@@ -491,7 +491,7 @@ A jogkivonat is is kell végezni, akár a `ServiceBusAuthorization` vagy `Author
 Mivel a szolgáltatás hatékonyan proxyként működik, akkor is, ha igaz HTTP-proxyt, nem pedig vagy hozzáadja egy `Via` fejléc jelzi, hogy a meglévő vagy `Via` felelnek meg a fejléc [RFC7230, szakasz 5.7.1](https://tools.ietf.org/html/rfc7230#section-5.7.1).
 A szolgáltatás hozzáadja a Relay-névtér állomásnév való `Via`.
 
-| Kód | Üzenet  | Leírás                    |
+| Kód | Message  | Leírás                    |
 | ---- | -------- | ------------------------------ |
 | 200  | OK       | A kérelem legalább egy figyelő által kezelve van.  |
 | 202  | Elfogadva | A kérelmet elfogadta legalább egy figyelőt. |
@@ -505,7 +505,7 @@ Ha hiba történik, a szolgáltatás válaszolhatnak módon. Származik-e a vál
 | 403  | Tiltott       | A biztonsági token nem érvényes ehhez az elérési úthoz, és ez a művelet.
 | 500  | Belső hiba  | Probléma merült fel a szolgáltatásban.
 | 503  | Hibás átjáró     | A kérelem nem lesznek irányítva minden olyan figyelőt.
-| 504  | Időtúllépés az átjárón | A kérelem egy figyelő lett irányítva, de a figyelő nem nyugtázta fogadását a szükséges időt.
+| 504  | Átjáró időtúllépése | A kérelem egy figyelő lett irányítva, de a figyelő nem nyugtázta fogadását a szükséges időt.
 
 ## <a name="next-steps"></a>További lépések
 

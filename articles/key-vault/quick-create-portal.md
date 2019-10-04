@@ -2,25 +2,22 @@
 title: Rövid Azure-útmutató – Titkos kulcs beállítása és lekérése a Key Vaultból az Azure Portal használatával | Microsoft Docs
 description: Rövid útmutató, amely bemutatja a titkos kulcsok beállítását és lekérését az Azure Key Vaultból az Azure Portal használatával
 services: key-vault
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 tags: azure-resource-manager
-ms.assetid: 98cf8387-34de-468e-ac8f-5c02c9e83e68
 ms.service: key-vault
-ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 03/14/2019
-ms.author: barclayn
-ms.openlocfilehash: 0902e3fb64a73a095b457306aa561c13519e4066
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 09/03/2019
+ms.author: mbaldwin
+ms.openlocfilehash: 3c0b9ad774d336da9bc60d2ef9f7ff2645602b6c
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58000609"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259220"
 ---
-# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>Gyors útmutató: Beállítása és lekérése a titkos kulcs Azure Key vault az Azure portal használatával
+# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>Gyors útmutató: Azure Key Vault titkos kulcsának beállítása és beolvasása a Azure Portal használatával
 
 Az Azure Key Vault egy olyan felhőszolgáltatás, amely a titkos kulcsok biztonságos tárolására szolgál. Biztonságosan tárolhatja kulcsait, jelszavait, tanúsítványait és egyéb titkos adatait. Az Azure-kulcstartók létrehozhatók és kezelhetők az Azure Portal segítségével is. Ebben a rövid útmutatóban egy kulcstartót hoz létre, majd eltárol benne egy titkos kulcsot. A Key Vaulttal kapcsolatosan további információt az [Áttekintés](key-vault-overview.md) szakaszban talál.
 
@@ -39,8 +36,8 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 3. Az eredmények listájában válassza a **Key Vault** lehetőséget.
 4. A Key Vault szakaszban kattintson a **Létrehozás** gombra.
 5. A **Kulcstartó létrehozása** szakaszban adja meg a következő információkat:
-    - **Név**: Egy egyedi nevét kötelező megadni. Ehhez a rövid útmutatóhoz a **Contoso-vault2** nevet használjuk. 
-    - **Előfizetés**: Válasszon előfizetést.
+    - **Név**: Egyedi nevet kell megadni. Ehhez a rövid útmutatóhoz a **Contoso-vault2** nevet használjuk. 
+    - **Előfizetés**: Válasszon egy előfizetést.
     - Az **Erőforráscsoport** területen válassza az **Új létrehozása** lehetőséget, és írja be az erőforráscsoport nevét.
     - A **Hely** legördülő menüből válassza ki a helyet.
     - A többi beállítást hagyja az alapértelmezett értéken.
@@ -48,8 +45,8 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 Jegyezze fel az alábbi két tulajdonságot:
 
-* **Tároló neve**: A példában ez a **Contoso-Vault2**. Ezt a nevet fogja majd más lépésekben is használni.
-* **Tároló URI-ja**: A példában ez a https://contoso-vault2.vault.azure.net/. A tárolót a REST API-ján keresztül használó alkalmazásoknak ezt az URI-t kell használniuk.
+* Tár **neve**: A példában ez a **contoso-Vault2**. Ezt a nevet fogja majd más lépésekben is használni.
+* Tároló **URI-ja**: A példában ez a következő https://contoso-vault2.vault.azure.net/:. A tárolót a REST API-ján keresztül használó alkalmazásoknak ezt az URI-t kell használniuk.
 
 Jelenleg csak az Azure-fiókja jogosult arra, hogy műveleteket végezzen ezen az új kulcstartón.
 
@@ -57,12 +54,12 @@ Jelenleg csak az Azure-fiókja jogosult arra, hogy műveleteket végezzen ezen a
 
 ## <a name="add-a-secret-to-key-vault"></a>Titkos kulcs hozzáadása a Key Vaulthoz
 
-Titkos kód a tárolóhoz való hozzáadásához csak néhány további lépést kell végrehajtania. Ebben az esetben egy alkalmazás által használható jelszót fogunk megadni. A jelszó neve **ExamplePassword** és az értéket tároljuk **hVFkk965BuUv** benne.
+Titkos kód a tárolóhoz való hozzáadásához csak néhány további lépést kell végrehajtania. Ebben az esetben egy alkalmazás által használható jelszót fogunk megadni. A jelszó neve **ExamplePassword** , és a **hVFkk965BuUv** értékét tárolja.
 
 1. A Key Vault-tulajdonságok lapján válassza a **Titkos kódok** lehetőséget.
 2. Kattintson a **Létrehozás/Importálás** gombra.
 3. A **Titkos kód létrehozása** képernyőn válassza az alábbi értékeket:
-    - **Feltöltési beállítások**: Manuális.
+    - **Feltöltési beállítások**: Kézi.
     - **Név**: ExamplePassword.
     - **Érték**: hVFkk965BuUv
     - A többi értéket hagyja az alapértelmezett értéken. Kattintson a **Create** (Létrehozás) gombra.
@@ -71,9 +68,9 @@ Miután megérkezett az üzenet arról, hogy a titkos kulcs sikeresen létrejöt
 
 ![Titkos kulcs tulajdonságai](./media/quick-create-portal/current-version-hidden.png)
 
-A jobb oldali "Titkos érték megjelenítése" gombra kattintva megtekintheti a rejtett érték. 
+A jobb oldali ablaktáblán látható "titkos érték megjelenítése" gombra kattintva megtekintheti a rejtett értéket. 
 
-![A titkos értéket jelent meg.](./media/quick-create-portal/current-version-shown.png)
+![A titkos érték megjelent](./media/quick-create-portal/current-version-shown.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -87,7 +84,9 @@ Ha már nincs rá szükség, törölje az erőforráscsoportot. Ezzel törli a k
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban létrehozott egy kulcstartót, és elhelyezett benne egy titkos kulcsot. Ha bővebb információra van szüksége a Key Vaultról és arról, hogyan használhatja az alkalmazásaival, lépjen tovább a Key Vaulttal használható webalkalmazásokat bemutató oktatóanyagra.
+Ebben a rövid útmutatóban létrehozott egy Key Vault, és egy titkos kulcsot tárolt benne. Ha többet szeretne megtudni a Key Vaultről és az alkalmazásokkal való integrálásáról, folytassa az alábbi cikkekkel.
 
-> [!div class="nextstepaction"]
-> Ha meg szeretné tudni, hogyan olvashatja be a Key Vault titkos kulcsait egy, az Azure-erőforrások felügyelt identitásait használó webalkalmazásból, lépjen tovább a következő, az [Azure-webalkalmazások a Key Vault titkos kulcsainak olvasásához történő konfigurálását](quick-create-net.md) ismertető oktatóanyagra.
+- [A Azure Key Vault áttekintése](key-vault-overview.md)
+- Tekintse [meg a Azure Key Vault fejlesztői útmutatóját](key-vault-developers-guide.md)
+- Tudnivalók a [kulcsokról, a titkokról és a tanúsítványokról](about-keys-secrets-and-certificates.md)
+- [Azure Key Vault ajánlott eljárások](key-vault-best-practices.md) áttekintése

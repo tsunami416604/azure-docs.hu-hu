@@ -1,10 +1,10 @@
 ---
-title: DNS-beállítások megadása egy szolgáltatáskonfigurációs fájlban |} A Microsoft Docs
-description: virtual Network szolgáltatás konfigurációs fájl használatával egyéni DNS-beállítások megadása
+title: DNS-beállítások megadása egy szolgáltatás konfigurációs fájljában | Microsoft Docs
+description: Egyéni DNS-beállítások megadása a virtuális hálózat szolgáltatás-konfigurációs fájljának használatával
 services: virtual-network
 documentationcenter: na
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: tysonn
 ms.assetid: 467a4b99-8691-40b3-b640-e25e49675c71
 ms.service: virtual-network
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2016
 ms.author: genli
-ms.openlocfilehash: 0ac488a67d8b9debf6539d199395997cf44cf1e4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f27802d76a8b94a0d5f1eb0c35fd55c93712e557
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247177"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059071"
 ---
-# <a name="specifying-dns-settings-in-a-service-configuration-file"></a>DNS-beállítások megadása egy szolgáltatáskonfigurációs fájlban
+# <a name="specifying-dns-settings-in-a-service-configuration-file"></a>DNS-beállítások megadása egy szolgáltatás konfigurációs fájljában
 ## <a name="dns-elements"></a>DNS-elemek
-Szolgáltatáskonfigurációs fájlt tartalmazhat egy DnsServers elem a tartománynévrendszer (DNS) kiszolgálók, a szolgáltatás által használt IPv4-címek listája. Beállítások a konfigurációs fájlban felülbírálják a hálózati konfigurációs fájlt a beállításokat. További információkért lásd: [Azure szolgáltatás konfigurációs sémáját (.cscfg fájl)](https://msdn.microsoft.com/library/azure/ee758710.aspx).
+A szolgáltatás konfigurációs fájlja tartalmazhatja a szolgáltatás által használt DNS-kiszolgálók IPv4-címeinek listáját tartalmazó DnsServers elemet. A szolgáltatás konfigurációs fájljának beállításai elsőbbséget élveznek a hálózati konfigurációs fájlban lévő beállításokkal szemben. További információ: [Azure szolgáltatás konfigurációs sémája (. Cscfg fájl)](https://msdn.microsoft.com/library/azure/ee758710.aspx).
 
-**NetworkConfiguration elemet**
+**NetworkConfiguration elem**
 
       <DnsServers>
         <DnsServer name="ID1" IPAddress="IPAddress1" />
@@ -34,16 +34,16 @@ Szolgáltatáskonfigurációs fájlt tartalmazhat egy DnsServers elem a tartomá
       </DnsServers>
 
 > [!WARNING]
-> A **neve** az attribútum a **DNS-kiszolgáló** elem csak egy hivatkozás névként szolgál. Nem tartozik a DNS-kiszolgáló állomásnevét. Minden egyes **DNS-kiszolgáló** attribútum értékének egyedinek kell lennie a teljes Microsoft Azure-előfizetés.
+> A **DNS** elem **Name** attribútuma csak hivatkozási névként használható. A DNS-kiszolgáló állomásneve nem. Minden **DNS** attribútum értékének egyedinek kell lennie a teljes Microsoft Azure-előfizetésen belül.
 > 
 > 
 
 ## <a name="see-also"></a>Lásd még:
-[Az Azure szolgáltatás konfigurációs sémáját (.cscfg)](https://msdn.microsoft.com/library/windowsazure/ee758710)
+[Azure-szolgáltatás konfigurációs sémája (. cscfg)](https://msdn.microsoft.com/library/windowsazure/ee758710)
 
-[Az Azure Virtual Network konfigurációs séma](https://go.microsoft.com/fwlink/?LinkId=248093)
+[Azure Virtual Network konfigurációs séma](https://go.microsoft.com/fwlink/?LinkId=248093)
 
-[Hálózati konfigurációs fájlok használatával virtuális hálózat konfigurálása](https://go.microsoft.com/fwlink/?LinkId=248094)
+[Virtual Network konfigurálása hálózati konfigurációs fájlok használatával](https://go.microsoft.com/fwlink/?LinkId=248094)
 
-[Tudnivalók a virtuális hálózati beállításait a kezelési portálon](https://go.microsoft.com/fwlink/?LinkId=248092)
+[A felügyeleti portál Virtual Network beállításainak ismertetése](https://go.microsoft.com/fwlink/?LinkId=248092)
 

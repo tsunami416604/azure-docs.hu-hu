@@ -5,70 +5,70 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 01/22/2019
+ms.date: 08/15/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6eae536bd19a2c0e5707d8e0b379774b6eb2707a
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 87e130d3a4569971bffb9b1ac2e189babb900225
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58395599"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997632"
 ---
-# <a name="what-disk-types-are-available-in-azure"></a>Milyen lemeztípusok érhetők el az Azure-ban?
+# <a name="what-disk-types-are-available-in-azure"></a>Milyen típusú lemezek érhetők el az Azure-ban?
 
-Azure managed disksbe jelenleg négy lemeztípusok, amelyek közül három általánosan elérhető (GA), a másik szolgáltatás jelenleg előzetes verzióban érhetők el. Következő négy lemeztípusok minden saját cél megfelelő ügyfél-forgatókönyvekkel rendelkezik.
+Az Azure Managed Disks jelenleg négy lemez típust kínál, amelyek mindegyike konkrét felhasználói forgatókönyvek elérésére szolgál.
 
 ## <a name="disk-comparison"></a>Lemezek összehasonlítása
 
-Az alábbi táblázat összehasonlítja a ultranagy solid-állam-meghajtók (SSD) (előzetes verzió), prémium szintű SSD, standard SSD és szabványos merevlemez-meghajtókon (HDD) a felügyelt lemezek segítségével eldöntheti, melyiket érdemes használni.
+Az alábbi táblázat az ultra Disks, a prémium szintű SSD-meghajtók (SSD), a standard SSD és a standard merevlemez-meghajtók (HDD) összehasonlítását ismerteti a felügyelt lemezekhez, amelyek segítségével eldöntheti, hogy mi a használat.
 
-|   | Ultranagy SSD (előzetes verzió)   | Prémium SSD   | Standard SSD   | Standard HDD   |
+|   | Ultravékony lemez   | Prémium SSD   | Standard SSD   | Standard HDD   |
 |---------|---------|---------|---------|---------|
 |Lemez típusa   |SSD   |SSD   |SSD   |HDD   |
-|Forgatókönyv   |I/o-igényes számítási feladatokhoz például az SAP HANA, felső szintű adatbázisok (például SQL, Oracle) és egyéb tranzakció – (nagy erőforrásigényű) számítási feladatokat.   |Éles, teljesítményérzékeny számítási feladatok   |Webkiszolgálók, kisebb terhelésű vállalati alkalmazások és a fejlesztés + tesztelés   |Biztonsági mentés, nem kritikus fontosságú, alkalmi hozzáférést   |
-|Lemezméret   |65 536 gibibájtnak (GiB) (előzetes verzió)   |– 32 767 giB    |– 32 767 giB   |– 32 767 giB   |
-|Maximális átviteli sebesség   |2000 MiB/s (előzetes verzió)   |900 MiB/s   |750 MiB/s   |500 MiB/s   |
-|Maximális IOPS-érték   |160,000 (előzetes verzió)   |20,000   |6,000   |2,000   |
+|Forgatókönyv   |I/o-igényes számítási feladatok, mint például a SAP HANA, a legfelső szintű adatbázisok (például SQL, Oracle) és az egyéb tranzakció-nagy számítási feladatok.   |Éles, teljesítményérzékeny számítási feladatok   |Webkiszolgálók, enyhén használt Nagyvállalati alkalmazások és fejlesztés/tesztelés   |Biztonsági mentés, nem kritikus, ritka hozzáférés   |
+|Lemezméret   |65 536 gibibájtnak (GiB)    |32 767 GiB    |32 767 GiB   |32 767 GiB   |
+|Maximális átviteli sebesség   |2 000 MiB/s    |900 MiB/s   |750 MiB/s   |500 MiB/s   |
+|Maximális IOPS-érték   |160 000    |20,000   |6,000   |2,000   |
 
-## <a name="ultra-ssd-preview"></a>Ultranagy SSD (előzetes verzió)
+## <a name="ultra-disk"></a>Ultravékony lemez
 
-Azure ultranagy SSD (előzetes verzió) az Azure IaaS virtuális gépek nagy teljesítményű, magas iops-érték és egységes közel valós idejű lemezes tárolás biztosításához. Néhány ultranagy SSD további előnyei a következők dinamikusan megváltoztathatja a teljesítmény, a lemez és a számítási feladatok, a virtuális gépek újraindítása nélkül. Ultranagy SSD adatok-igényes számítási feladatokhoz, például az SAP HANA, a felső szintű adatbázisok és a tranzakciós adatokat használó munkaterhelések vannak kialakítva. Ultranagy SSD csak akkor használható, az adatlemezeket. Operációsrendszer-lemezek, prémium szintű SSD-k használatát javasoljuk.
+Az Azure Ultra Disks nagy teljesítményű, magas IOPS és konzisztens, alacsony késésű lemezes tárolást biztosít az Azure IaaS virtuális gépek számára. Az ultra-lemezek további előnyei közé tartozik a lemez teljesítményének dinamikus módosítása, valamint a számítási feladatok, anélkül, hogy újra kellene indítania a virtuális gépeket (VM). Az ultra-lemezek olyan adatigényes számítási feladatokhoz használhatók, mint a SAP HANA, a legfelső szintű adatbázisok és a tranzakció-nagy számítási feladatok. Az ultra lemezeket csak adatlemezként lehet használni. Javasoljuk, hogy a prémium SSD-ket operációsrendszer-lemezként használja.
 
 ### <a name="performance"></a>Teljesítmény
 
-Az ultranagy lemez üzembe helyezésekor, a kapacitás és a teljesítmény, a lemez egymástól függetlenül beállíthatja. Ultranagy SSD különféle rögzített méretű, és 4 GB, legfeljebb 64 Tib-ra, a következő, és rugalmas teljesítmény konfigurációs modell, amely lehetővé teszi, hogy külön konfigurálni az IOPS és átviteli sebesség funkciót.
+Ultra-lemez kiépítésekor egymástól függetlenül konfigurálhatja a lemez kapacitását és teljesítményét. Az ultra Disks számos rögzített méretben érhető el: 4 GiB-ig 64 TiB-ig, és egy rugalmas teljesítmény-konfigurációs modellt tartalmaz, amely lehetővé teszi a IOPS és az átviteli sebesség egymástól független konfigurálását.
 
-Az Ultranagy SSD néhány főbb funkciók a következők:
+Az ultra-lemezek főbb képességei a következők:
 
-- Lemez kapacitása: Ultranagy SSD kapacitása címtartományok 4 GiB akár 64 Tib-ra.
-- A lemez iops-érték: Ultranagy SSD támogatja a 300 IOPS/GIB-ra, egy 160 KB IOPS lemezenként maximum IOPS-korlátok. Elérése érdekében az Ön által üzembe helyezett iops-érték, győződjön meg arról, hogy a kiválasztott lemez iops-érték kisebb, mint a virtuális gépek iops-érték. A minimális IOPS lemez 100 IOPS.
-- Lemez átviteli sebesség: Ultranagy SSD, az átviteli sebesség egyetlen határérték 256 KiB/s minden egyes üzembe helyezett IOPS, legfeljebb 2000 MB/s lemezenként (ahol MBps = 10 ^ 6 bájt / másodperc). A minimális átviteli sebesség 1 MiB.
+- Lemez kapacitása: Az ultrakönnyű lemezek kapacitása 4 GiB-tól 64 TiB-ig terjed.
+- Lemez IOPS: Az ultra Disks támogatja a 300 IOPS/GiB IOPS korlátait, legfeljebb 160 K IOPS. A kiépített IOPS eléréséhez győződjön meg arról, hogy a kiválasztott lemez IOPS kisebbek, mint a virtuális gép IOPS korlátja. A lemezen lévő minimális IOPS 2 IOPS/GiB, amely a teljes alapkonfiguráció minimuma 100 IOPS. Ha például 4 GiB Ultra-lemezzel rendelkezett, akkor nyolc IOPS helyett legalább 100 IOPS kell lennie.
+- Lemez sebessége: Az ultrakönnyű lemezek esetében az egyes lemezek átviteli korlátja 256 KiB/s minden kiépített IOPS, legfeljebb 2000 MB/s-onként (ahol MBps = 10 ^ 6 bájt/másodperc). Minden egyes kiépített IOPS esetében a minimális átviteli sebesség 4KiB/s, a teljes alapértéknek legalább 1 MBps-nek kell lennie.
+- Az ultra Disks támogatja a lemez teljesítmény-attribútumainak (IOPS és átviteli sebesség) beállítását futásidőben, anélkül, hogy leválasztja a lemezt a virtuális gépről. Ha a lemez teljesítményének átméretezési művelete egy lemezen van kiadva, akár egy óráig is eltarthat, amíg a változás ténylegesen érvénybe lép. Egy 24 órás időszakban legfeljebb négy teljesítmény-átméretezési művelet lehet. A teljesítmény-átméretezési művelet sikertelen a teljesítmény-sávszélességi kapacitás hiánya miatt.
 
 ### <a name="disk-size"></a>Lemezméret
 
-|Lemezméret (GiB)  |IOPS Caps  |Átviteli sebesség korlát (MB/s)  |
+|Lemezméret (GiB)  |IOPS sapka  |Átviteli sebesség (MB/s)  |
 |---------|---------|---------|
 |4     |1,200         |300         |
 |8     |2,400         |600         |
 |16     |4,800         |1,200         |
-|32     |9,600         |2,000         |
-|64     |19,200         |2,000         |
-|128     |38,400         |2,000         |
-|256     |76,800         |2,000         |
+|32     |9 600         |2,000         |
+|64     |19 200         |2,000         |
+|128     |38 400         |2,000         |
+|256     |76 800         |2,000         |
 |512     |80,000         |2,000         |
-|1024-65,536 (ebben a tartományban, 1 Tib-ra egységnyi növekményekben növelése mérete)     |160,000         |2,000         |
+|1024 – 65536 (az ebben a tartományban lévő méretek 1 TiB-onként növekednek)     |160 000         |2,000         |
 
-### <a name="preview-scope-and-limitations"></a>Előzetes verzió hatókör és korlátozások
+### <a name="ga-scope-and-limitations"></a>A GA hatóköre és korlátai
 
-Előzetes verzióban az ultranagy SSD:
+Jelenleg az ultra-lemezek további korlátozásokkal rendelkeznek, ezek a következők:
 
-- Támogatottak az USA keleti RÉGIÓJA 2, egyetlen rendelkezésre állási zónában  
-- Csak akkor használható a rendelkezésre állási zónák (rendelkezésre állási csoportok és egyetlen virtuális gépek üzembe helyezése zónák lesz kívül nem tudnak egy ultra lemezt)
-- Csak a gen/DS v3-as virtuális gépek támogatottak
-- Az adatlemezeket és a csak 4k támogatási fizikai szektormérettel csak elérhetők  
+- Támogatottak az USA 2. keleti régiójában, Délkelet-Ázsiában és Észak-Európában, régiónként két rendelkezésre állási zónában  
+- Csak a rendelkezésre állási zónákkal használható (rendelkezésre állási csoportok és a zónákon kívüli önálló virtuálisgép-telepítések esetén nem lehet Ultra lemez csatlakoztatása)
+- Csak az ES/DS v3 virtuális gépeken támogatott
+- Csak adatlemezként érhetők el, és csak a 4k fizikai szektor méretének támogatása  
 - Csak üres lemezként hozható létre  
-- Jelenleg kizárólag telepíthető Azure Resource Manager-sablonok, CLI és a python SDK használatával.
-- Még nem támogatja pillanatképeit, virtuális gép lemezképek, a rendelkezésre állási csoportok, a virtual machine scale sets és az Azure disk encryption.
-- Még nem támogatja az Azure Backup vagy az Azure Site Recovery-integráció.
-- A [legtöbb előzetes verziók](https://azure.microsoft.com/support/legal/preview-supplemental-terms/), ez a funkció nem használható éles számítási feladatok esetében csak az általánosan (elérhetővé tétel GA).
+- Még nem támogatja a lemezes pillanatképeket, a virtuálisgép-lemezképeket, a rendelkezésre állási csoportokat, a virtuálisgép-méretezési csoportokat és az Azure Disk encryptiont
+- Még nem támogatja az integrációt Azure Backup vagy Azure Site Recovery
+- A GA virtuális gépek IOPS jelenlegi maximális korlátja 80 000.

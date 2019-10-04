@@ -7,19 +7,18 @@ author: MashaMSFT
 manager: craigg
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
-ms.date: 05/11/2018
+ms.date: 07/11/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: c9e62cf3dfc259d7064be9fd6b80cad0140336eb
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: bbf127f105f0ef22a23f00541396c2ac66b0e5f9
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549269"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828365"
 ---
 # <a name="quickstart-create-a-sql-server-2017-windows-virtual-machine-in-the-azure-portal"></a>Gyors útmutató: SQL Server 2017-et futtató, Windows rendszerű virtuális gép létrehozása az Azure Portalon
 
@@ -40,69 +39,69 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a id="select"></a> SQL Server virtuálisgép-rendszerkép kiválasztása
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) fiókjával.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) a fiók használatával.
 
-1. Az Azure Portalon válassza az **Erőforrás létrehozása** lehetőséget. 
+1. Válassza az **Azure SQL** lehetőséget a Azure Portal bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **minden szolgáltatás**lehetőséget, majd írja be az *Azure SQL* kifejezést a keresőmezőbe.
+1. Válassza a **+ Hozzáadás** lehetőséget az **SQL-telepítés kiválasztása** lap megnyitásához. További információkat az **SQL Virtual Machines** csempén a **Részletek megjelenítése** lehetőség kiválasztásával tekinthet meg.
+1. Válassza ki **az ingyenes SQL Server licencet: SQL Server 2017 fejlesztő a Windows Server 2016 @ no__t-0 képen a legördülő menüből.
 
-1. A keresőmezőbe írja be a `SQL Server 2017 Developer on Windows Server 2016`, és nyomja le az ENTER billentyűt.
-
-1. Válassza ki a **ingyenes SQL Server-licenc: Az SQL Server 2017 Developer Windows Server 2016 rendszeren** kép. Ez az oktatóanyag azért a Developer kiadást alkalmazza, mert az az SQL Server teljes körű verziója, amely fejlesztési-tesztelési célokra ingyenesen használható. Csak a virtuális gép futtatásával járó költségeket kell kifizetni. A díjszabással kapcsolatos teljes körű információkért tekintse meg [az SQL Server Azure virtuális gépek díjszabási útmutatóját](virtual-machines-windows-sql-server-pricing-guidance.md).
-
-   ![Új keresési ablak](./media/quickstart-sql-vm-create-portal/newsearch.png)
-
+   ![Új keresési ablak](./media/quickstart-sql-vm-create-portal/select-sql-2017-vm-image.png)
 
 1. Kattintson a **Létrehozás** gombra.
 
+   ![Új keresési ablak](./media/quickstart-sql-vm-create-portal/create-sql-2017-vm-image.png)
+
 ## <a id="configure"></a> Az alapvető adatok megadása
 
-Az a **alapjai** lapra, adja meg a következő információkat:
+Az **alapvető beállítások** lapon adja meg a következő információkat:
 
-1. Az a **Project Details** szakaszban, válassza ki az Azure-előfizetésében, majd válassza ki **új létrehozása** egy új erőforráscsoport létrehozásához. Típus _SQLVM-RG_ neve.
+1. A Project Details ( **projekt részletei** ) szakaszban válassza ki az Azure-előfizetését, majd válassza az **új létrehozása** lehetőséget egy új erőforráscsoport létrehozásához. A név mezőbe írja be a _SQLVM-RG_ nevet.
 
-   ![Előfizetés](media/quickstart-sql-vm-create-portal/basics-project-details.png)
+   ![Subscription](media/quickstart-sql-vm-create-portal/basics-project-details.png)
 
-1. A **példány részletei**:
-    1. Típus _SQLVM_ számára a **virtuális gép neve**. 
-    1. Válasszon egy helyet a **régió**. 
-    1. A rövid útmutató során hagyja **rendelkezésre állási beállítások** beállítása _szükséges infrastruktúra redundancia_. Rendelkezésre állási beállításokkal kapcsolatos további információkért, lásd: [Azure-régiók és rendelkezésre állási](../../windows/regions-and-availability.md). 
-    1. Az a **kép** listáról válassza ki _ingyenes SQL Server-licenc: SQL Server 2017 Developer Windows Server 2016 rendszeren_. 
-    1. Válassza ki a **méretének módosítása** a a **mérete** , a virtuális gépre, majd válassza a **a2-es alapszintű** ajánlat. Ügyeljen arra, hogy miután végzett az minden olyan váratlan költségek megelőzése érdekében az erőforrások törlése. 
+1. A **példány részletei**területen:
+    1. Írja be a SQLVM **nevet a virtuális gépnek**. 
+    1. Válasszon egy helyet a **régió**számára. 
+    1. Ebben a rövid útmutatóban hagyja, hogy a **rendelkezésre állási beállítások** ne legyenek _infrastruktúra_-redundancia megadása. További információ a rendelkezésre állási lehetőségekről: [rendelkezésre állás](../../windows/availability.md). 
+    1. A **rendszerkép** listában válassza _az ingyenes SQL Server licenc: SQL Server 2017 fejlesztői Windows Server 2016_rendszeren. 
+    1. A virtuális gép méretének **módosításához** válassza az **a2** alapszintű ajánlat lehetőséget. Ne felejtse el megtisztítani az erőforrásokat, ha elkészült velük, hogy elkerülje a váratlan költségeket. 
 
    ![Példány részletei](media/quickstart-sql-vm-create-portal/basics-instance-details.png)
 
-1. A **rendszergazdai fiók**, adjon meg egy felhasználónevet, pl. _azureuser_ és a egy jelszót. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../../windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).
+1. A **rendszergazdai fiók**területen adjon meg egy felhasználónevet, például az _Azureus_ és egy jelszót. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../../windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).
 
    ![Rendszergazdai fiók](media/quickstart-sql-vm-create-portal/basics-administrator-account.png)
 
-1. Alatt **bejövőport-szabályok**, válassza a **lehetővé teszi a kiválasztott portok** , majd **RDP (3389-es)** a legördülő listából. 
+1. A **bejövő portszabályok**területen válassza a **kijelölt portok engedélyezése** lehetőséget, majd válassza az **RDP (3389)** lehetőséget a legördülő menüből. 
 
    ![Bejövőport-szabályok](media/quickstart-sql-vm-create-portal/basics-inbound-port-rules.png)
 
 ## <a name="sql-server-settings"></a>SQL Server beállításai
 
-Az a **SQL Server-beállítások** lapra, konfigurálja a következő beállításokat:
+A **SQL Server beállítások** lapon adja meg a következő beállításokat:
 
-1. Alatt **biztonsági és hálózatkezelési**, jelölje be _nyilvános (Internet_) a **SQL-kapcsolat** , és módosítsa a portot, hogy `1401` elkerülése érdekében a jól ismert portszámot használ a nyilvános forgatókönyvben. 
-1. A **SQL-hitelesítés**válassza **engedélyezése**. Az SQL-bejelentkezés ugyanarra a felhasználónévre és jelszóra van állítva, amelyet a virtuális géphez konfigurált. Az alapértelmezett beállítások használata **Azure Key Vault-integráció** és **tárolási konfigurációt**.  
+1. A **Biztonság & hálózatkezelés**területen válassza a _nyilvános (Internet_) lehetőséget az **SQL** -kapcsolathoz, `1401` és módosítsa a portot úgy, hogy ne használjon jól ismert portszámot a nyilvános forgatókönyvben. 
+1. Az **SQL-hitelesítés**területen válassza az **Engedélyezés**lehetőséget. Az SQL-bejelentkezés ugyanarra a felhasználónévre és jelszóra van állítva, amelyet a virtuális géphez konfigurált. [**Azure Key Vault integrációhoz**](virtual-machines-windows-ps-sql-keyvault.md)használja az alapértelmezett beállítást. A **tárolási konfiguráció** nem érhető el az alapszintű SQL Server VM lemezképhez, de további információkat talál a [tárolási konfigurációban](virtual-machines-windows-sql-server-storage-configuration.md#new-vms)található egyéb rendszerképek elérhető lehetőségeiről.  
 
-   ![SQL server biztonsági beállításai](media/quickstart-sql-vm-create-portal/sql-server-settings.png)
+   ![Az SQL Server biztonsági beállításai](media/quickstart-sql-vm-create-portal/sql-server-settings.png)
 
-1. Módosítsa az egyéb beállításokat, ha szükséges, és válassza ki **felülvizsgálat + létrehozása**. 
 
-   ![Áttekintés + létrehozás](media/quickstart-sql-vm-create-portal/review-create.png)
+1. Szükség esetén módosítsa az egyéb beállításokat, majd válassza a **felülvizsgálat + létrehozás**elemet. 
+
+   ![Felülvizsgálat + létrehozás](media/quickstart-sql-vm-create-portal/review-create.png)
 
 
 ## <a name="create-the-sql-server-vm"></a>Az SQL Servert futtató virtuális gép létrehozása
 
-Az a **tekintse át + létrehozása** lapon tekintse át az összefoglalást, és válassza ki **létrehozás** hozhat létre SQL Server, erőforráscsoport és erőforrások virtuális Géphez megadott.
+A **felülvizsgálat + létrehozás** lapon tekintse át az összegzést, és válassza a **Létrehozás** lehetőséget a virtuális géphez megadott SQL Server, erőforráscsoport és erőforrások létrehozásához.
 
-Az üzemelő példány az Azure Portalról monitorozható. A képernyő felső részén látható **Értesítések** gomb megjeleníti az üzemelő példány állapotának alapvető információit. Üzembe helyezés több percet is igénybe vehet. 
+Az üzemelő példány az Azure Portalról monitorozható. A képernyő felső részén látható **Értesítések** gomb megjeleníti az üzemelő példány állapotának alapvető információit. Az üzembe helyezés több percet is igénybe vehet. 
 
 ## <a name="connect-to-sql-server"></a>Csatlakozás az SQL Serverhez
 
-1. A portálon keresse meg a **nyilvános IP-cím** az SQL Server virtuálisgép-a **áttekintése** a virtuális gép tulajdonságok szakaszában.
+1. A portálon keresse meg a SQL Server VM **nyilvános IP-címét** a virtuális gép tulajdonságainak **Áttekintés** szakaszában.
 
-1. Nyissa meg egy másik számítógépre, csatlakozik az internethez, [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms).
+1. Az internethez csatlakozó másik számítógépen nyissa meg [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms).
 
 
 1. A **Kapcsolódás a kiszolgálóhoz** vagy a **Kapcsolódás az adatbázismotorhoz** párbeszédpanelen szerkessze a **Kiszolgáló neve** értéket. Adja meg a virtuális gép nyilvános IP-címét. A név után írjon egy vesszőt, és adja meg az egyéni portot (**1401**), amelyet korábban az új virtuális gép konfigurálásakor beállítottunk. Például: `11.22.33.444,1401`.
@@ -134,7 +133,7 @@ Ha nem szükséges, hogy az SQL virtuális gép folyamatosan fusson, a szükség
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban létrehozott egy SQL Server 2017 virtuális gépet az Azure Portalon. Az adatok az új SQL Serverre való migrálásával kapcsolatos további információkért lásd a következő cikket.
+Ebben a rövid útmutatóban létrehozott egy SQL Server 2017 virtuális gépet a Azure Portalban. Az adatok az új SQL Serverre való migrálásával kapcsolatos további információkért lásd a következő cikket.
 
 > [!div class="nextstepaction"]
 > [Adatbázisok migrálása SQL virtuális gépekre](virtual-machines-windows-migrate-sql.md)

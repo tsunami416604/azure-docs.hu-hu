@@ -1,38 +1,38 @@
 ---
-title: 'Oktatóanyag: Csatlakozzon a Text Analytics szolgáltatáshoz a Visual Studio csatlakoztatott szolgáltatásai'
+title: 'Oktatóanyag: Csatlakozás a Text Analytics szolgáltatáshoz csatlakoztatott szolgáltatásokkal a Visual Studióban'
 titleSuffix: Azure Cognitive Services
-description: Learn how to connect to Text Analytics from an ASP.NET Core web application.
+description: Megtudhatja, hogyan csatlakozhat Text Analyticshoz egy ASP.NET Core webalkalmazásból.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: tutorial
-ms.date: 02/13/2019
+ms.date: 07/24/2019
 ms.author: aahi
-ms.openlocfilehash: 4e1c03085d6b1d0099ac66dd3d1dadd981a561aa
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: ff4c703070d6a7ebd545de3043e5f59b764fe4c9
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60004244"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68478463"
 ---
-# <a name="tutorial-connect-to-the-text-analytics-service-with-connected-services-in-visual-studio"></a>Oktatóanyag: Csatlakozzon a Text Analytics szolgáltatáshoz a Visual Studio csatlakoztatott szolgáltatásai
+# <a name="tutorial-connect-to-the-text-analytics-service-with-connected-services-in-visual-studio"></a>Oktatóanyag: Csatlakozás a Text Analytics szolgáltatáshoz csatlakoztatott szolgáltatásokkal a Visual Studióban
 
 A Text Analytics Service használatával részletes információkat nyerhet ki képekből a vizuális adatok kategorizálásához és feldolgozásához, a gépi támogatású képmoderálás segít őrködni a szolgáltatások felett.
 
-Ez a cikk és a kísérő cikkek részletesen ismertetik, hogyan lehet a Visual Studio csatlakoztatott szolgáltatási funkcióját a Text Analytics Service esetében felhasználni. Ez a funkció a Visual Studio 2017 15.7-es vagy újabb verzióiban érhető el, ha a Cognitive Services bővítmény telepítve van.
+Ez a cikk és a kísérő cikkek részletesen ismertetik, hogyan lehet a Visual Studio csatlakoztatott szolgáltatási funkcióját a Text Analytics Service esetében felhasználni. A funkció a Visual Studio 2019-es vagy újabb verziójában is elérhető, és a Cognitive Services bővítmény telepítve van.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Azure-előfizetés. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes fiókkal](https://azure.microsoft.com/pricing/free-trial/).
-- A Visual Studio 2017 15.7-es verziója telepített webfejlesztési tevékenységprofillal. [Töltse le most](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
+- A Visual Studio 2019 és a webfejlesztési számítási feladat telepítve van. [Ezt innen töltheti le](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
 
 [!INCLUDE [vs-install-cognitive-services-vsix](../../../includes/vs-install-cognitive-services-vsix.md)]
 
 ## <a name="add-support-to-your-project-for-the-text-analytics-service"></a>Támogatás hozzáadása a projekthez a Text Analytics Service számára
 
-1. Hozza létre a TextAnalyticsDemo nevű új ASP.NET Core web projektet. Használja a webalkalmazás (Model-View-Controller) projektsablont az összes alapértelmezett beállítással. Fontos, hogy a projektnek a MyWebApplication nevet adja, hogy a névtér egyezzen, amikor a kódot a projektbe másolja.  A példában ez a cikk az MVC-t használja, de a Text Analytics csatlakoztatott szolgáltatás bármely ASP.NET-projekttípussal használható.
+1. Hozza létre a TextAnalyticsDemo nevű új ASP.NET Core web projektet. Használja a webalkalmazás (Model-View-Controller) projektsablont az összes alapértelmezett beállítással. Fontos, hogy a projektnek a MyWebApplication nevet adja, hogy a névtér egyezzen, amikor kódot másol a projektbe.  A cikkben szereplő példa MVC-t használ, de a Text Analytics kapcsolódó szolgáltatás bármely ASP.NET-projekttípus használatával használható.
 
 1. A **Megoldáskezelőben** kattintson duplán a **csatlakoztatott szolgáltatás** elemen.
    Megjelenik a projekthez adható szolgáltatásokat mutató Csatlakoztatott szolgáltatás oldal.
@@ -54,7 +54,7 @@ Ez a cikk és a kísérő cikkek részletesen ismertetik, hogyan lehet a Visual 
    A tarifacsomagokkal kapcsolatban kövesse a hivatkozást.
 
 1. Válassza a **Hozzáadás** gombot a csatlakoztatott szolgáltatáshoz támogatás hozzáadásához.
-   A Visual Studio módosítja a projektet a NuGet-csomagok, a konfigurációs fájl bejegyzések és egyéb a Text Analytics Service projekthez adásához szükséges módosítások hozzáadásával. A **kimeneti ablak** naplózza, hogy mi történik a projekttel. Az alábbihoz hasonlót kell látnia:
+   A Visual Studio módosítja a projektet a NuGet-csomagok, a konfigurációs fájl bejegyzések és egyéb a Text Analytics Service projekthez adásához szükséges módosítások hozzáadásával. A **kimeneti ablak** naplózza, hogy mi történik a projekttel. A kimenetnek az alábbihoz hasonlóan kell kinéznie:
 
    ```output
     [6/1/2018 3:04:02.347 PM] Adding Text Analytics to the project.
@@ -90,7 +90,7 @@ Ez a cikk és a kísérő cikkek részletesen ismertetik, hogyan lehet a Visual 
       }
    ```
 
-1. Adjon hozzá egy DemoTextAnalyzeController nevű osztály fájlt a tartományvezérlők mappába, és cserélje le annak tartalmát az alábbira:
+1. Vegyen fel egy Class fájlt a *vezérlők* mappában `DemoTextAnalyzeController` , és cserélje le annak tartalmát a következő kódra:
 
     ```csharp
     using System;
@@ -153,7 +153,7 @@ Ez a cikk és a kísérő cikkek részletesen ismertetik, hogyan lehet a Visual 
     }
     ```
     
-    A kód tartalmazza a GetTextAnalyzeClient-et az ügyfél objektum lekérésére, amelyet a Text Analytics API meghívására használhat, és egy kérés kezelőt, ami egy adott szöveggel meghívja a DetectLanguage eljárást.
+    A kód tartalmazza `GetTextAnalyzeClient` az ügyfél-objektum meghívását a Text Analytics API számára, valamint egy kérelem kezelőjét, amely egy adott szöveg DetectLanguage hívja meg.
 
 1. Adja hozzá a MyHandler segédosztályt, amelyet a fenti kóddal használunk.
 
@@ -171,7 +171,7 @@ Ez a cikk és a kísérő cikkek részletesen ismertetik, hogyan lehet a Visual 
         }
     ```
 
-1. A Models mappába vegyen fel egy osztályt a modellnek.
+1. A *modellek* mappában adjon hozzá egy osztályt a modellhez.
 
     ```csharp
     using System;

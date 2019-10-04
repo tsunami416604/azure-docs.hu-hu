@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/01/2018
+ms.date: 2/01/2019
 ms.author: hrushib
-ms.openlocfilehash: 31c5feac577dc5e9e0eed9ced9ccfe25c12d3086
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: b1b36ed5197aeb056c70200a49e09cc777d66d0b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670489"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66237359"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Az Azure Service Fabric rendszeres biztonsági mentési konfiguráció ismertetése
 
@@ -137,9 +137,6 @@ Biztonsági mentési szabályzat az alábbi konfigurációk áll:
             "MinimumNumberOfBackups": 20
         }
         ```
-
-> [!IMPORTANT]
-> A futtatókörnyezet hibája miatt győződjön meg arról, hogy a megőrzési időtartamát a megtartási házirend van beállítva 24 napnál kisebb különbségnek kell, különben szolgáltatás biztonsági mentése és helyreállítása kvórum elvesztése replika feladatátvétel után lép eredményez.
 
 ## <a name="enable-periodic-backup"></a>Rendszeres biztonsági mentés engedélyezése
 Adatok biztonsági mentés követelményeinek teljesítéséhez biztonsági mentési házirend meghatározása, miután a biztonsági mentési szabályzat társítható megfelelően vagy egy _alkalmazás_, vagy _szolgáltatás_, vagy egy _partíció_.

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25540d1f26fa6021ef05108f9743e77a6184f3b3
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: f0730dd89a61b046f73e7e39c8226e66700b3494
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59426324"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67101643"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-github"></a>Oktatóanyag: Az Azure Active Directory-integráció a Githubon
 
@@ -55,7 +55,7 @@ Konfigurálhatja az Azure AD integrálása a GitHub, hozzá kell GitHub a galér
 
 **GitHub hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -162,7 +162,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés GitHub, hajtsa végr
 
     ![Beállítások](./media/github-tutorial/tutorial_github_config_github_06.png)
 
-6. Kattintson a **Mentés** gombra.
+6. Kattintson a **Save** (Mentés) gombra
 
 > [!NOTE]
 > Egyszeri bejelentkezés a GitHub egy adott szervezet számára, a GitHub hitelesíti, és nem helyettesíti a hitelesítés a GitHub magát. Ezért ha a felhasználó github.com munkamenete lejárt, előfordulhat, hogy megkérdezi, hogy az egyszeri bejelentkezési folyamat során a GitHub/jelszó-hitelesítést.

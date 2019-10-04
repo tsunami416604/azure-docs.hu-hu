@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6f0424cc744f1b6db0e4adaaf074ae72d94e9c8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 37597b010394ed6c0a3cfd75be85d58628fdbdfb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57844092"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67105242"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cloud-service-picco"></a>Oktatóanyag: Az Azure Active Directory-integráció a Cloud Service PICCO
 
@@ -54,7 +54,7 @@ Az Azure AD integrálása a Cloud Service PICCO konfigurálásához hozzá kell 
 
 **Cloud Service PICCO hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

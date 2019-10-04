@@ -1,7 +1,6 @@
 ---
-title: A Visual Studio és C# – Azure HDInsight az Apache Storm-topológiák
-description: Ismerje meg a C# Storm-topológiák létrehozása. Hozzon létre egy egyszerű szószámláló topológia a Visual Studio a Hadoop-eszközök a Visual Studio használatával.
-services: hdinsight
+title: Apache Storm-topológiák a Visual Studióval és C# az Azure HDInsight
+description: Megtudhatja, hogyan hozhat létre Storm C#-topológiákat a alkalmazásban. Hozzon létre egy egyszerű Word Count-topológiát a Visual Studióban a Hadoop Tools for Visual Studio használatával.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,61 +8,61 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 11/27/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1bcb50829dca59f8a467c2c1d2381b5463ef9471
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 828ec2b925535df3f925093466556447e703cd76
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437394"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003833"
 ---
-# <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Az Apache Storm C#-topológiák fejlesztése a Data Lake tools for Visual Studio használatával
+# <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Apache Storm C# -topológiák fejlesztése a Visual studióhoz készült Data Lake Tools használatával
 
-Ismerje meg, hogyan hozhat létre egy C# Apache Storm-topológia az Azure Data Lake (az Apache Hadoop) tools for Visual Studio használatával. Ez a dokumentum végigvezeti Önt a folyamat egy Storm-projekt létrehozása a Visual Studio, a helyszíni és a egy Apache Storm, az Azure HDInsight-fürtön való üzembe helyezése.
+Megtudhatja, hogyan C# hozhat létre Apache Storm topológiát a Visual studióhoz készült Azure Data Lake (Apache Hadoop) eszközökkel. Ez a dokumentum végigvezeti a Storm-projekt létrehozásának folyamatán a Visual Studióban, helyi tesztelésen és az Azure HDInsight-fürtön való üzembe helyezésen Apache Storm.
 
-Azt is megtudhatja, hogyan C# és Java-összetevők használó hibrid topológiák létrehozását.
+Azt is megtudhatja, hogyan hozhat létre és Java C# -összetevőket használó hibrid topológiákat.
 
 > [!NOTE]  
-> A jelen dokumentumban leírt lépések egy Windows fejlesztési környezetet a Visual Studióval támaszkodnak, amíg a lefordított projekt beküldhető egy Linux vagy Windows-alapú HDInsight-fürthöz. Csak a Linux-alapú fürtök 2016. október 28. után létrehozott SCP.NET topológiákat támogatja.
+> Habár a jelen dokumentumban szereplő lépések a Visual Studióval rendelkező Windows-fejlesztési környezetre támaszkodnak, a lefordított projekt elküldhető egy Linux-vagy Windows-alapú HDInsight-fürtre. Csak a 2016. október 28. után létrehozott Linux-alapú fürtök támogatják a SCP.NET-topológiákat.
 
-Egy Linux-alapú fürtök C#-topológiák használatához frissítenie kell a Microsoft.SCP.Net.SDK NuGet-csomagot a projekt által használt verzió 0.10.0.6 vagy újabb. A csomag verziójának a HDInsightban telepített Storm főverziójával is egyeznie kell.
+Ha Linux- C# alapú fürttel kíván topológiát használni, frissítenie kell a projekt által a 0.10.0.6 vagy újabb verzióra használt Microsoft. scp. net. SDK NuGet-csomagot. A csomag verziójának a HDInsightban telepített Storm főverziójával is egyeznie kell.
 
-| HDInsight-verzió | Az Apache Storm-verzió | SCP.NET-verzió | Monó alapértelmezett verzió |
+| HDInsight verziója | Apache Storm verziója | SCP.NET verziója | Alapértelmezett monó-verzió |
 |:-----------------:|:-------------:|:---------------:|:--------------------:|
-| 3.3 |0.10.x |0.10.x.x</br>(csak a Windows-alapú HDInsight) | NA |
-| 3.4 | 0.10.0.x | 0.10.0.x | 3.2.8 |
+| 3.3 |0,10. x |0.10.x.x</br>(csak Windows-alapú HDInsight) | NA |
+| 3.4 | 0.10.0. x | 0.10.0. x | 3.2.8 |
 | 3.5 | 1.0.2.x | 1.0.0.x | 4.2.1 |
 | 3.6 | 1.1.0.x | 1.0.0.x | 4.2.8 |
 
 > [!IMPORTANT]  
-> A Linux-alapú fürtök C#-topológiáinak a .NET 4.5-öt kell használnia, és a Mono segítségével futhatnak a HDInsight-fürtön. Ellenőrizze [monó kompatibilitási](https://www.mono-project.com/docs/about-mono/compatibility/) lehetséges inkompatibilitásokat.
+> A Linux-alapú fürtök C#-topológiáinak a .NET 4.5-öt kell használnia, és a Mono segítségével futhatnak a HDInsight-fürtön. A lehetséges inkompatibilitások esetében a [mono kompatibilitás](https://www.mono-project.com/docs/about-mono/compatibility/) ellenőrzése.
 
 ## <a name="install-visual-studio"></a>A Visual Studio telepítése
 
-C#-topológiák SCP.NET is fejleszthet a Visual Studio a következő verziók egyikével:
+A SCP.NET- C# ben a Visual Studio következő verzióival hozhat létre topológiákat:
 
-* A Visual Studio 2012 Update 4
+* Visual Studio 2012 a 4. frissítéssel
 
-* A Visual Studio 2013 Update 4 vagy [Visual Studio 2013 Community](https://go.microsoft.com/fwlink/?LinkId=517284)
+* Visual Studio 2013 a 4. frissítéssel vagy a [Visual studio 2013 Közösséggel](https://go.microsoft.com/fwlink/?LinkId=517284)
 
-* Visual Studio 2015 vagy [Visual Studio 2015 Community](https://go.microsoft.com/fwlink/?LinkId=532606)
+* Visual Studio 2015 vagy [Visual studio 2015 Közösség](https://go.microsoft.com/fwlink/?LinkId=532606)
 
-* Visual Studio 2017 (any edition)
+* Visual Studio 2017 (bármely kiadás)
 
-## <a name="install-data-lake-tools-for-visual-studio"></a>Install Data Lake tools for Visual Studio
+## <a name="install-data-lake-tools-for-visual-studio"></a>A Visual studióhoz készült Data Lake-eszközök telepítése
 
-A Data Lake tools for Visual Studio telepítése, kövesse a lépéseket a [Ismerkedés a Data Lake tools for Visual Studio használatával](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
+A Visual studióhoz készült Data Lake Tools telepítéséhez kövesse az Ismerkedés a [Visual studio Data Lake Tools használatával](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)című témakör lépéseit.
 
-## <a name="install-java"></a>Telepítheti a javát
+## <a name="install-java"></a>Java telepítése
 
-A Visual Studióból Storm-topológia elküldésekor SCP.NET állít elő, a topológia és a függőségeket tartalmazó zip-fájlt. Java ezek a zip-fájlok létrehozására szolgál, mert használja, amely több Linux-alapú fürtök kompatibilis formátumban.
+Ha a Visual studióból küld el egy Storm-topológiát, a SCP.NET létrehoz egy zip-fájlt, amely tartalmazza a topológiát és a függőségeket. A Java a zip-fájlok létrehozásához használatos, mert olyan formátumot használ, amely a Linux-alapú fürtökkel kompatibilis.
 
-1. Telepítse a Java fejlesztői készlet (JDK) 7 vagy annál újabb verzió a fejlesztési környezetet. Beszerezheti a az Oracle-JDK [Oracle](https://aka.ms/azure-jdks). Is [más Java felosztások](https://openjdk.java.net/).
+1. Telepítse a Java Developer Kit (JDK) 7-es vagy újabb verzióját a fejlesztői környezetbe. Az Oracle JDK-t az [Oracle](https://aka.ms/azure-jdks)-ből szerezheti be. [Más Java-disztribúciókat](https://openjdk.java.net/)is használhat.
 
-2. A `JAVA_HOME` környezeti változó Java tartalmazó könyvtárra kell mutatnia.
+2. A `JAVA_HOME` környezeti változónak a Java-t tartalmazó könyvtárra kell mutatnia.
 
-3. A `PATH` környezeti változó tartalmaznia kell a `%JAVA_HOME%\bin` könyvtár.
+3. A `PATH` környezeti változónak tartalmaznia kell `%JAVA_HOME%\bin` a könyvtárat.
 
-Az alábbi C# Konzolalkalmazás segítségével ellenőrizze, hogy a Java és a JDK megfelelően vannak-e telepítve:
+A következő C# konzol alkalmazással ellenőrizheti, hogy a Java és a JDK helyesen van-e telepítve:
 
 ```csharp
 using System;
@@ -97,70 +96,70 @@ namespace ConsoleApplication2
 }
 ```
 
-## <a name="apache-storm-templates"></a>Az Apache Storm-sablonok
+## <a name="apache-storm-templates"></a>Apache Storm sablonok
 
-A Data Lake tools for Visual Studio adja meg az alábbi sablonok:
+A Visual studióhoz készült Data Lake Tools a következő sablonokat biztosítja:
 
-| Projekt típusa | Azt ismerteti |
+| Projekttípus | Bemutatja |
 | --- | --- |
-| Storm-alkalmazás |Egy üres Storm-topológia projektet. |
-| A Storm az Azure SQL Writer minta |Hogyan írhat az Azure SQL Database. |
-| A Storm az Azure Cosmos DB-olvasó minta |Hogyan olvashatja be az Azure Cosmos DB-ből. |
-| A Storm az Azure Cosmos DB író minta |Hogyan írhat az Azure Cosmos DB-hez. |
-| A Storm EventHub olvasó minta |Hogyan olvashatja be az Azure Event hubs Eseményközpontokból. |
-| A Storm EventHub író minta |Hogyan írhat az Azure Event Hubsba. |
-| A Storm HBase olvasó minta |Hogyan lehet olvasni a HBase a HDInsight-fürtökön. |
-| A Storm HBase író minta |Hogyan lehet írni a HBase a HDInsight-fürtökön. |
-| A Storm hibrid minta |Hogyan használható a Java-összetevő. |
-| A Storm-minta |Egy alapszintű szószámlálási topológiában. |
+| Storm-alkalmazás |Üres Storm-topológiai projekt. |
+| Storm Azure SQL-író minta |Írás a Azure SQL Databaseba. |
+| Storm Azure Cosmos DB olvasó minta |Olvasás a Azure Cosmos DBról. |
+| Storm Azure Cosmos DB-író minta |Írás a Azure Cosmos DBba. |
+| Storm EventHub-olvasó minta |Az Azure Event Hubs beolvasása. |
+| Storm EventHub-író minta |Írás az Azure Event Hubsba. |
+| Storm HBase-olvasó minta |A HDInsight-fürtök HBase olvasása. |
+| Storm HBase-író minta |Írás a HBase a HDInsight-fürtökön. |
+| Storm Hybrid Sample |Java-összetevők használata. |
+| Storm-minta |Egy alapszintű szavas topológia. |
 
 > [!WARNING]  
-> Nem minden sablonok Linux-alapú HDInsight működnek. A sablonok által használt NuGet-csomagok nem lehet Mono kompatibilis. Ellenőrizze a [monó kompatibilitási](https://www.mono-project.com/docs/about-mono/compatibility/) dokumentum, és használja a [.NET hordozhatóságot Analyzer](../hdinsight-hadoop-migrate-dotnet-to-linux.md#automated-portability-analysis) azonosíthatja a potenciális problémákat.
+> Nem minden sablon működik a Linux-alapú HDInsight. Előfordulhat, hogy a sablonok által használt NuGet-csomagok nem kompatibilisek a Mono használatával. A lehetséges problémák azonosításához keresse meg a [mono-kompatibilitási](https://www.mono-project.com/docs/about-mono/compatibility/) dokumentumot, és használja a [.net-hordozhatósági elemzőt](../hdinsight-hadoop-migrate-dotnet-to-linux.md#automated-portability-analysis) .
 
-A jelen dokumentumban leírt lépések használatával az alapszintű Storm-alkalmazás projekt típusa olyan topológiák létrehozását.
+A jelen dokumentumban ismertetett lépések során az alapszintű Storm alkalmazás-projekttípus használatával hozzon létre egy topológiát.
 
-### <a name="apache-hbase-templates-notes"></a>Az Apache HBase sablonok megjegyzések
+### <a name="apache-hbase-templates-notes"></a>Apache HBase-sablonok megjegyzései
 
-A HBase írási és olvasási szerepkörökhöz sablonok nem a HBase Java API-t, a HBase REST API használatával kommunikálni egy HBase a HDInsight-fürtön.
+A HBase-olvasó és-író sablonok a HBase REST API, nem pedig a HBase Java API-t használják a HDInsight-fürtön lévő HBase való kommunikációhoz.
 
-### <a name="eventhub-templates-notes"></a>Az EventHub-sablonok megjegyzések
+### <a name="eventhub-templates-notes"></a>EventHub-sablonok megjegyzései
 
 > [!IMPORTANT]  
-> Az EventHub-olvasó sablon a Java-alapú EventHub spout összetevője nem működnek a Storm on HDInsight 3.5-ös vagy újabb verziója. Ez az összetevő egy frissített verziója érhető el: [GitHub](https://github.com/hdinsight/hdinsight-storm-examples/tree/master/HDI3.5/lib).
+> Előfordulhat, hogy a EventHub-olvasó sablonban található Java-alapú EventHub kiöntő összetevő nem működik a Storm on HDInsight 3,5-es vagy újabb verziójával. Az összetevő frissített verziója a [githubon](https://github.com/hdinsight/hdinsight-storm-examples/tree/master/HDI3.5/lib)érhető el.
 
-Ez használó példatopológia összetevő, és együttműködik a Storm on HDInsight 3.5-ös verzióját, lásd: [GitHub](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub).
+Az ezt az összetevőt használó, például a HDInsight 3,5-as Storm-vel működő topológiát itt tekintheti meg: [GitHub](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub).
 
-## <a name="create-a-c-topology"></a>C#-topológiák létrehozása
+## <a name="create-a-c-topology"></a>C# Topológia létrehozása
 
-1. Nyissa meg a Visual Studióban, válassza ki **fájl** > **új**, majd válassza ki **projekt**.
+1. Nyissa meg a Visual studiót, válassza a **fájl** > **új**, majd a **projekt**elemet.
 
-2. Az a **új projekt** ablakában bontsa ki a **telepített** > **sablonok**, és válassza ki **az Azure Data Lake**. A sablonok listájából válassza **Storm-alkalmazás**. A képernyő alján adja meg a **WordCount** az alkalmazás neveként.
+2. Az **új projekt** ablakban bontsa ki a **telepített** > **sablonok**csomópontot, és válassza a **Azure Data Lake**lehetőséget. A sablonok listájában válassza a **Storm Application**elemet. A képernyő alján adja meg a **WordCount** nevet az alkalmazás neveként.
 
-    ![Képernyőfelvétel az új projekt ablakról](./media/apache-storm-develop-csharp-visual-studio-topology/new-project.png)
+    ![Képernyőfelvétel az új projekt ablakról](./media/apache-storm-develop-csharp-visual-studio-topology/apache-storm-new-project.png)
 
-3. Miután létrehozta a projektet, rendelkeznie kell a következő fájlokat:
+3. A projekt létrehozása után a következő fájlokkal kell rendelkeznie:
 
-   * **Program.cs**: Ez a fájl határozza meg a topológia a projekthez. Alapértelmezés szerint egy alapértelmezett topológia egy spout és a egy bolthoz jön létre.
+   * **Program.cs**: Ez a fájl határozza meg a projekt topológiáját. Alapértelmezés szerint létrejön egy kiöntő és egy boltból álló alapértelmezett topológia.
 
-   * **Spout.cs**: Egy példa spout, amely véletlenszerű számok bocsát ki.
+   * **Spout.cs**: Egy példa kiöntő, amely véletlenszerű számokat bocsát ki.
 
-   * **Bolt.cs**: Egy példa bolthoz, amely különválasztja a spout által kibocsátott számok számát.
+   * **Bolt.cs**: Egy példa, amely a kiöntő által kibocsátott számok számát tárolja.
 
-     A projekt létrehozásakor NuGet letölti a legújabb [SCP.NET csomag](https://www.nuget.org/packages/Microsoft.SCP.Net.SDK/).
+     A projekt létrehozásakor a NuGet letölti a legújabb [SCP.NET-csomagot](https://www.nuget.org/packages/Microsoft.SCP.Net.SDK/).
 
      [!INCLUDE [scp.net version important](../../../includes/hdinsight-storm-scpdotnet-version.md)]
 
-### <a name="implement-the-spout"></a>A spout megvalósítása
+### <a name="implement-the-spout"></a>A kiöntő implementálása
 
-1. Nyissa meg **Spout.cs**. Spoutok külső forrásból érkező adatolvasási topológiában szolgálnak. A spout fő összetevői a következők:
+1. Nyissa meg a **Spout.cs**. A kiöntő használatával külső forrásból származó adatok olvashatók be a topológiában. A kiöntő fő összetevői a következők:
 
-   * **NextTuple**: A Storm hívja meg, amikor a spout engedélyezett gridre bocsáthatja ki az új rekordokat.
+   * **NextTuple**: Felhívta a Storm, amikor a kiöntő jogosult új rekordok kibocsátására.
 
-   * **Nyugtázási** (csak tranzakciós topológia): Nyugtázás a más összetevők a spout küldött rekordok topológiájának a kezdeményező kezeli. Egy rekord bosszankodnak lehetővé teszi, hogy tudja, hogy azt feldolgozása sikeres volt alsóbb rétegbeli összetevők a spout.
+   * **ACK** (csak tranzakciós topológia): Kezeli a többi összetevő által kezdeményezett, a kiöntőból elküldett rekordok topológiájában megjelenő nyugtákat. Egy rekord nyugtázása lehetővé teszi, hogy a kiöntő tudja, hogy az alsóbb rétegbeli összetevők sikeresen feldolgozták.
 
-   * **Sikertelen** (csak tranzakciós topológia): Kezeli a rekordokat, amelyek vannak sikertelen – a feldolgozás a topológia más összetevők. Sikertelen metódus végrehajtási lehetővé teszi a rekord újbóli kibocsátható, úgy, hogy újból feldolgozva.
+   * **Sikertelen** művelet (csak tranzakciós topológia): Azokat a rekordok kezeli, amelyek nem képesek a topológia más összetevőinek feldolgozására. A Fail metódus implementálása lehetővé teszi a rekord újbóli kibocsátását, hogy újra feldolgozhatók legyenek.
 
-2. Cserélje le a tartalmát a **Spout** osztályt a következő szöveggel: A spout be a topológia véletlenszerűen bocsát ki egy mondatot.
+2. Cserélje le a **kiöntő** osztály tartalmát a következő szövegre: Ez a kiöntő véletlenszerűen mondatot bocsát ki a topológiába.
 
     ```csharp
     private Context ctx;
@@ -220,22 +219,22 @@ Ez használó példatopológia összetevő, és együttműködik a Storm on HDIn
     }
     ```
 
-### <a name="implement-the-bolts"></a>A boltok megvalósítása
+### <a name="implement-the-bolts"></a>A csavarok implementálása
 
-1. Törölje a meglévő **Bolt.cs** fájlt a projektből.
+1. Törölje a meglévő **bolt.cs** -fájlt a projektből.
 
-2. A **Megoldáskezelőben**, kattintson a jobb gombbal a projektre, és válassza ki **Hozzáadás** > **új elem**. Válassza ki a listából **Storm Bolt**, és adja meg **Splitter.cs** neveként. Ismételje meg a folyamat hozhat létre egy második bolt nevű **Counter.cs**.
+2. **Megoldáskezelő**kattintson a jobb gombbal a projektre, és válassza az**új elem** **hozzáadása** > lehetőséget. A listából válassza a **Storm bolt**lehetőséget, majd adja meg a **Splitter.cs** nevet. Ismételje meg ezt a folyamatot egy **Counter.cs**nevű második bolt létrehozásához.
 
-   * **Splitter.cs**: Valósít meg olyan bolthoz, amely felosztja a mondatok egyes szavak és bocsát ki egy új adatfolyamot szó.
+   * **Splitter.cs**: Egy olyan csavart valósít meg, amely a mondatokat egyedi szavakkal osztja szét, és új szavakat bocsát ki.
 
-   * **Counter.cs**: Létrehoz egy bolthoz, amely minden szó számolja, és bocsát ki egy új adatfolyamot szavak és az egyes szavak számát.
+   * **Counter.cs**: Egy olyan csavart valósít meg, amely megszámolja az egyes szavakat, és kibocsátja a szavak új adatfolyamát, valamint az egyes szavak darabszámát.
 
      > [!NOTE]  
-     > Ezeket a boltok írási és olvasási adatfolyamok, de egy bolthoz források, például egy adatbázis vagy a szolgáltatás kommunikálni is használhatja.
+     > Ezek a csavarok a streamek olvasására és írására szolgálnak, de egy olyan adatforrást is használhat, amely egy adatbázissal vagy szolgáltatással kommunikál.
 
-3. Nyissa meg **Splitter.cs**. Alapértelmezés szerint csak egyik módja van: **Hajtsa végre**. Az Execute metódus nevezzük, amikor a bolt kap egy rekord feldolgozás céljából. Itt olvashat és dolgozza fel a bejövő rekordokat és gridre bocsáthatja ki az kimenő rekordokat.
+3. Nyissa meg a **Splitter.cs**. Alapértelmezés szerint csak egy metódussal rendelkezik: **Végrehajtás**. Az EXECUTE metódus akkor lesz meghívva, amikor a bolt egy rekordot kap a feldolgozáshoz. Itt elolvashatja és feldolgozhatja a bejövő rekordok, és kibocsáthatja a kimenő rekordok.
 
-4. Cserélje le a tartalmát a **felosztó** osztályban az alábbi kódra:
+4. Cserélje le az **osztó** osztály tartalmát a következő kódra:
 
     ```csharp
     private Context ctx;
@@ -281,7 +280,7 @@ Ez használó példatopológia összetevő, és együttműködik a Storm on HDIn
     }
     ```
 
-5. Nyissa meg **Counter.cs**, és cserélje le az osztály tartalmát az alábbira:
+5. Nyissa meg a **Counter.cs**, és cserélje le az osztály tartalmát a következő kódra:
 
     ```csharp
     private Context ctx;
@@ -335,17 +334,17 @@ Ez használó példatopológia összetevő, és együttműködik a Storm on HDIn
     }
     ```
 
-### <a name="define-the-topology"></a>A topológia meghatározása
+### <a name="define-the-topology"></a>A topológia definiálása
 
-Spoutok és boltok grafikon, amely meghatározza, hogy az összetevők közti adatfolyamok vannak elrendezve. Az ebben a topológiában a grafikon a következőképpen történik:
+A kiöntő és a csavarok egy gráfba vannak rendezve, amely meghatározza, hogy az adatáramlás Hogyan zajlik az összetevők között. Ehhez a topológiához a gráf a következő:
 
-![Összetevők elrendezésére ábrája](./media/apache-storm-develop-csharp-visual-studio-topology/wordcount-topology.png)
+![Az összetevők elrendezésének diagramja](./media/apache-storm-develop-csharp-visual-studio-topology/word-count-topology1.png)
 
-Mondatok a spout kibocsátása megtörténik, és oszlanak meg a felosztó bolt példányai. Az elválasztó bolt bontja szavakat, a számláló bolt terjesztettek a mondatok.
+A kiöntő kibocsátja a mondatokat, és az elosztó bolt példányaira terjeszti őket. Az osztó-csavar a mondatokat szavakba bontja, amelyek el vannak osztva a Counter-boltba.
 
-A word-count helyileg tárolt a teljesítményszámláló-példány, mert győződjön meg arról, hogy meghatározott szavakat flow ugyanarra a számláló bolt-példányra szeretné. Minden példány nyomon követi az adott szavakat. Az elválasztó bolt nem tart fenn, mert nagyon nem számít, hogy az elválasztó-példányok kap, mely mondat helyett szerepel.
+Mivel a rendszer a számláló példányában helyileg tartja a szavak darabszámát, meg kell győződnie arról, hogy az adott szavak ugyanarra a Counter bolt-példányra kerülnek. Minden példány nyomon követi az egyes szavakat. Mivel az elosztói bolt nem tart fenn állapotot, valójában nem számít, hogy az elválasztó melyik példánya fogadja ezt a mondatot.
 
-Nyissa meg **Program.cs**. A fontos módszer **GetTopologyBuilder**, amely a Storm, a topológia elküldött meghatározására szolgál. Cserélje le a tartalmát **GetTopologyBuilder** az előzőekben leírt topológia implementálása az alábbi kódra:
+Nyissa meg a **program.cs**. A fontos módszer a **GetTopologyBuilder**, amely a Storm számára elküldött topológia definiálására szolgál. Cserélje le a **GetTopologyBuilder** tartalmát a következő kódra a korábban ismertetett topológia megvalósításához:
 
 ```csharp
 // Create a new topology named 'WordCount'
@@ -404,94 +403,93 @@ topologyBuilder.SetTopologyConfig(new Dictionary<string, string>()
 return topologyBuilder;
 ```
 
-## <a name="submit-the-topology"></a>Küldje el a topológia
+## <a name="submit-the-topology"></a>A topológia elküldése
 
-1. A **Megoldáskezelőben**, kattintson a jobb gombbal a projektre, és válassza ki **Küldés a HDInsight alatt futó Stormmal**.
-
-   > [!NOTE]  
-   > Ha a rendszer kéri, adja meg a hitelesítő adatokat az Azure-előfizetésében. Ha egynél több előfizetéssel rendelkezik, jelentkezzen be a Storm on HDInsight-fürt tartalmazza.
-
-2. Válassza ki a Storm, a HDInsight-fürtön a **Storm-fürt** legördülő listából válassza ki, és válassza ki **küldés**. Ha a küldés sikeres használatával figyelheti a **kimeneti** ablak.
-
-3. A topológia sikeresen el lett küldve, amikor a **Storm-topológiák** meg kell jelennie a fürt számára. Válassza ki a **WordCount** topológia a listából a működő topológia kapcsolatos információk megtekintéséhez.
+1. **Megoldáskezelő**kattintson a jobb gombbal a projektre, és válassza a **Küldés a Storm on HDInsight**lehetőséget.
 
    > [!NOTE]  
-   > Megtekintheti továbbá **Storm-topológiák** a **Server Explorer**. Bontsa ki a **Azure** > **HDInsight**, kattintson a jobb gombbal a Storm on HDInsight-fürtöt, és válassza **Zobrazit Topologie Stormu**.
+   > Ha a rendszer kéri, adja meg az Azure-előfizetéséhez tartozó hitelesítő adatokat. Ha egynél több előfizetéssel rendelkezik, jelentkezzen be a HDInsight-fürtön található Stormot tartalmazóba.
 
-    A topológiában az összetevőivel kapcsolatos információk megtekintéséhez kattintson duplán az összetevő a diagramban.
+2. Válassza ki a Storm on HDInsight-fürtöt a **Storm-fürt** legördülő listából, majd válassza a **Küldés**lehetőséget. A **kimeneti** ablak segítségével figyelheti, hogy a Küldés sikeres volt-e.
 
-4. Az a **topológia összegzése** megtekinteni, kattintson a **Kill** a topológia leállítása.
+3. A topológia sikeres elküldését követően meg kell jelennie a fürt **Storm-topológiáinak** . Válassza ki a **WordCount** -topológiát a listából a futó topológiával kapcsolatos információk megtekintéséhez.
 
    > [!NOTE]  
-   > Storm-topológiák továbbra is futni, amíg azok az inaktiválása, vagy a fürt törlésekor.
+   > A **Storm-topológiákat** a **Server Explorerben**is megtekintheti. Bontsa ki az **Azure** > **HDInsight**csomópontot, kattintson a jobb gombbal a HDInsight-fürtön található Storm elemre, majd válassza a **Storm-topológiák megtekintése**lehetőséget.
+
+    A topológiában található összetevők adatainak megtekintéséhez kattintson duplán az összetevőre a diagramon.
+
+4. A topológia leállításához a **topológia összefoglaló** nézetében kattintson a **kill** (Törlés) elemre.
+
+   > [!NOTE]  
+   > A Storm-topológiák továbbra is futnak, amíg inaktiválják őket, vagy a fürtöt törölték.
 
 ## <a name="transactional-topology"></a>Tranzakciós topológia
 
-Az előző a topológia akkor nem tranzakciós. Az összetevők a topológia üzenetek visszajátszása funkció nem hajt végre. Például egy tranzakciós topológia, hozzon létre egy projektet, és válassza ki **Storm minta** a projekt típusaként.
+Az előző topológia nem tranzakciós. A topológiában található összetevők nem implementálják az üzenetek ismételt lejátszásának funkcióit. A tranzakciós topológiára példaként hozzon létre egy projektet, és válassza a **Storm Sample** lehetőséget a projekt típusaként.
 
-Tranzakciós topológiák megvalósítása visszajátszását az adatok támogatása a következőket:
+A tranzakciós topológiák a következő műveleteket hajtják végre az adatvisszajátszás támogatásához:
 
-* **Metaadatok gyorsítótárazása**: A spout bocsát ki, hogy az adatok lekérése, illetve bocsátja ki újra, ha hiba történik az adatok kapcsolatos metaadatokat kell tárolnia. Mivel az adatok a minta által kibocsátott kis méretű, a nyers adatok a rekordok egy szótárban a visszajátszás tárolódik.
+* **Metaadatok gyorsítótárazása**: A kifolyónak a kibocsátott adatokra vonatkozó metaadatokat kell tárolnia, hogy hiba esetén az adatok beolvasása és újbóli kibocsátása is megtörténjen. Mivel a minta által kibocsátott adat kicsi, az egyes rekordok nyers adatát egy szótárban tárolja a rendszer a lejátszáshoz.
 
-* **Nyugtázási**: A topológia összes bolt meghívhatja `this.ctx.Ack(tuple)` gombra annak megerősítéséhez, hogy sikeresen feldolgozta-e egy rekord. Ha az összes boltok vette az a rekord a `Ack` a spout-metódusa meghívásainak. A `Ack` módszer lehetővé teszi, hogy a spout a visszajátszás gyorsítótárazott adatokat.
+* **ACK**: A topológia minden egyes boltja meghívja `this.ctx.Ack(tuple)` a nyugtát, hogy sikeresen feldolgozta a rekordot. Amikor az összes bolt elismerte a rekordot, `Ack` meghívja a kiöntő metódusát. A `Ack` metódus lehetővé teszi a kiöntő számára, hogy eltávolítsa az újrajátszás céljából gyorsítótárazott adatfájlokat.
 
-* **Sikertelen**: Minden egyes bolt meghívhatja `this.ctx.Fail(tuple)` jelzi, hogy egy rekord feldolgozása nem sikerült. A hiba propagálás a a `Fail` a spout, ahol a rekord is megismétlését segítségével módszert gyorsítótárazott metaadatok.
+* **Sikertelen**: Minden egyes bolt meghívja `this.ctx.Fail(tuple)` azt a jelzést, hogy egy rekord feldolgozása meghiúsult. A hiba `Fail` a kiöntő metódusára kerül, ahol a rekordot gyorsítótárazott metaadatok használatával lehet lejátszani.
 
-* **Feladatütemezési azonosító**: Egy rekord kibocsátó, amikor egy egyedi Sorozatazonosító adható meg. Ez az érték a visszajátszás (Ack és feladatátvétel) feldolgozási rekord azonosítja. Ha például a spout a **Storm minta** projekt használja a következő, amikor a kibocsátó adatok:
+* **Sorozatszám azonosítója**: Egy rekord kibocsátásakor megadhat egy egyedi sorszám-azonosítót. Ez az érték azonosítja az Ismétlési (ACK és sikertelen) adatfeldolgozási rekordot. A **Storm Sample** projekt kiöntő például a következőt használja az adatkibocsátáskor:
 
         this.ctx.Emit(Constants.DEFAULT_STREAM_ID, new Values(sentence), lastSeqId);
 
-    Ez a kód bocsát ki egy rekord, amely tartalmazza a feladatütemezési azonosítóérték található egy mondatot az alapértelmezett Stream **lastSeqId**. Ebben a példában **lastSeqId** értéke akkor nő, a kibocsátott minden rekord esetében.
+    Ez a kód olyan rekordot bocsát ki, amely az alapértelmezett adatfolyamra vonatkozó mondatot tartalmaz, és tartalmazza a **lastSeqId**lévő Sequence ID értéket. Ebben a példában a **lastSeqId** minden kibocsátott rekordnál növekszik.
 
-Ahogyan az a **Storm minta** projektre, összetevő rendszer tranzakciós lehet futásidőben, a konfiguráció alapján állítsa be.
+Ahogy azt a **Storm Sample** projekt mutatja be, a konfiguráció alapján beállítható, hogy egy összetevő tranzakciós lehet-e futásidőben.
 
-## <a name="hybrid-topology-with-c-and-java"></a>A C# és Java hibrid topológia
+## <a name="hybrid-topology-with-c-and-java"></a>Hibrid topológia C# és Java
 
-A Data Lake tools for Visual Studio használatával hozzon létre hibrid topológiák, ahol egyes összetevők C# és mások Java.
+A Visual studióhoz Data Lake-eszközöket is használhat hibrid topológiák létrehozásához, ahol egyes összetevők C# és más a Java.
 
-Példa egy hibrid topológia, hozzon létre egy projektet, és válassza ki **Storm hibrid minta**. Ez a minta-típus a következő fogalmak mutat be:
+Hibrid topológia esetén például hozzon létre egy projektet, és válassza a **Storm Hybrid Sample**elemet. Ez a minta a következő fogalmakat mutatja be:
 
-* **Java spout** és  **C# bolt**: A meghatározott **HybridTopology_javaSpout_csharpBolt**.
+* **Java kiöntő** és  **C# bolt**: Definiálva a **HybridTopology_javaSpout_csharpBolt**.
 
-    * Egy tranzakciós verzió meghatározott **HybridTopologyTx_javaSpout_csharpBolt**.
+    * A tranzakciós verzió definiálva van a **HybridTopologyTx_javaSpout_csharpBolt**-ben.
 
-* **C#spout** és **Java bolt**: A meghatározott **HybridTopology_csharpSpout_javaBolt**.
+* kiöntő és **Java-bolt**: **C#** Definiálva a **HybridTopology_csharpSpout_javaBolt**.
 
-    * Egy tranzakciós verzió meghatározott **HybridTopologyTx_csharpSpout_javaBolt**.
+    * A tranzakciós verzió definiálva van a **HybridTopologyTx_csharpSpout_javaBolt**-ben.
 
   > [!NOTE]  
-  > Ebben a verzióban is bemutatja, hogyan használható Clojure code szöveges fájlból egy Java-összetevő.
+  > Ez a verzió azt is bemutatja, hogyan használható a Clojure-kód egy szövegfájlban Java-összetevőként.
 
-
-A topológia a projekt elküldésekor használt váltson át a `[Active(true)]` utasítással a topológia, mielőtt elküldené azokat a fürthöz használni kívánt.
+A projekt elküldésekor használt topológia átváltásához vigye `[Active(true)]` az utasítást a használni kívánt topológiára, mielőtt elküldené a fürtbe.
 
 > [!NOTE]  
-> Ez a projekt részeként biztosított összes a Java-fájlokat, amelyek szükségesek a **JavaDependency** mappát.
+> A szükséges Java-fájlok a projekt részét képezik a **JavaDependency** mappában.
 
-Létrehozása és elküldése egy hibrid topológia, vegye figyelembe a következőket:
+Hibrid topológia létrehozásakor és elküldésekor vegye figyelembe a következőket:
 
-* Használat **JavaComponentConstructor** hozzon létre egy példányt a Java-osztály számára egy adott spout vagy bolt.
+* A **JavaComponentConstructor** használatával hozzon létre egy Java-osztály egy példányát egy kiöntő vagy egy bolt számára.
 
-* Használat **microsoft.scp.storm.multilang.CustomizedInteropJSONSerializer** szerializálni az adatokat, vagy onnan máshová Java-összetevők Java-objektumok JSON-ná.
+* A **Microsoft. scp. Storm. multilang. CustomizedInteropJSONSerializer** használatával szerializálhatja az adatok Java-összetevőkből a JSON-be vagy onnan való bevezetését.
 
-* A kiszolgáló a topológia elküldésekor kell használnia a **további konfigurációs beállítások** beállítással azt adhatja meg a **Java Fájlelérési utak**. A megadott elérési út a JAR-fájlok, amelyek tartalmazzák a Java-osztályokat tartalmazó könyvtárra kell lennie.
+* Ha a topológiát a kiszolgálóra küldi, a **további konfigurációk** lehetőséget kell használnia a **Java-fájlok elérési útjának**megadásához. A megadott elérési útnak a Java-osztályokat tartalmazó JAR-fájlokat tartalmazó könyvtárnak kell lennie.
 
 ### <a name="azure-event-hubs"></a>Azure Event Hubs
 
-SCP.NET verzió 0.9.4.203 tartalmaz, egy új osztályt, és kifejezetten az Event Hub spout (egy Java spout, amely az Event Hubs olvas) használata a metódus. Ha Ön olyan topológiák létrehozását, amely egy Event Hub spout használja, az alábbi módszerekkel:
+A SCP.NET verziójának 0.9.4.203 egy új osztályt és metódust vezet be, amely kifejezetten az Event hub kiöntő (Event Hubs) által beolvasott Java-kiöntő használatát mutatja be. Ha olyan topológiát hoz létre, amely egy Event hub kiöntőt használ, használja a következő módszereket:
 
-* **EventHubSpoutConfig** osztály: Létrehoz egy objektumot, amely tartalmazza a spout-összetevő konfigurációját.
+* **EventHubSpoutConfig** osztály: Létrehoz egy objektumot, amely tartalmazza a kiöntő összetevő konfigurációját.
 
-* **TopologyBuilder.SetEventHubSpout** módszer: Az Event Hub spout-összetevők hozzáadása a topológia.
+* **TopologyBuilder. SetEventHubSpout** metódus: Hozzáadja az Event hub kiöntő összetevőjét a topológiához.
 
 > [!NOTE]  
-> Továbbra is kell használnia a **CustomizedInteropJSONSerializer** szerializálni a spout által előállított adatok.
+> A kiöntő által létrehozott adatszerializáláshoz továbbra is a **CustomizedInteropJSONSerializer** kell használnia.
 
 ## <a id="configurationmanager"></a>ConfigurationManager használata
 
-Ne használjon **ConfigurationManager** bolt konfigurációs értékek lekérését és a spout-összetevők. Ezt okozhatja egy NULL értékű mutató kivétel. Ehelyett a konfiguráció a projekt átad a Storm-topológia a topológia környezetében kulcs-érték párban. Minden egyes összetevő, amely támaszkodik a konfigurációs értékeket kell kérheti le azokat a környezetből az inicializálás során.
+Ne használja a **ConfigurationManager** , hogy lekérje a konfigurációs értékeket a bolt és a kiöntő összetevőkből. Ennek hatására a mutató nullára vált. Ehelyett a projekt konfigurációját a rendszer a Storm-topológiába helyezi át kulcs-érték párokként a topológia kontextusában. A konfigurációs értékekre támaszkodó összes összetevőnek az inicializálás során le kell kérnie azokat a környezetből.
 
-A következő kód bemutatja, hogyan kérhető le ezeket az értékeket:
+A következő kód bemutatja, hogyan kérheti le ezeket az értékeket:
 
 ```csharp
 public class MyComponent : ISCPBolt
@@ -515,7 +513,7 @@ public class MyComponent : ISCPBolt
 }
 ```
 
-Használatakor egy `Get` metódust ad vissza egy példányát az összetevőt, győződjön meg arról, hogy mindkét továbbítja a `Context` és `Dictionary<string, Object>` paraméterek a konstruktor. Az alábbi példa az alapszintű `Get` módszernek megfelelően továbbítja ezeket az értékeket:
+Ha az összetevő egy `Get` példányának visszaadására módszert használ, győződjön meg arról, hogy a és `Dictionary<string, Object>` a `Context` paramétereket is átadja a konstruktornak. A következő példa egy alapszintű `Get` módszer, amely megfelelő módon továbbítja ezeket az értékeket:
 
 ```csharp
 public static MyComponent Get(Context ctx, Dictionary<string, Object> parms)
@@ -524,63 +522,63 @@ public static MyComponent Get(Context ctx, Dictionary<string, Object> parms)
 }
 ```
 
-## <a name="how-to-update-scpnet"></a>SCP.NET frissítése
+## <a name="how-to-update-scpnet"></a>A SCP.NET frissítése
 
-SCP.NET legutóbbi kiadásai támogatják az Csomagfrissítés Nugeten keresztül. Új frissítés érhető el, ha egy frissítési értesítést kap. Frissítés manuálisan ellenőrizze, kövesse az alábbi lépéseket:
+A SCP.NET-támogatás legújabb kiadásai a NuGet-on keresztül frissültek. Ha új frissítés érhető el, frissítési értesítést kap. A frissítés manuális kereséséhez kövesse az alábbi lépéseket:
 
 1. A **Megoldáskezelőben** kattintson a jobb gombbal a projektre, és válassza a **NuGet-csomagok kezelése** lehetőséget.
 
-2. Válassza ki a package manager **frissítések**. Frissítés érhető el, ha szerepel. Kattintson a **frissítés** a csomag telepítéséhez.
+2. A Package Managerben válassza a **frissítések**lehetőséget. Ha van elérhető frissítés, a lista jelenik meg. A telepítéshez kattintson a **frissítés** elemre a csomag telepítéséhez.
 
 > [!IMPORTANT]  
-> Ha a projekt NuGet nem használó SCP.NET korábbi verziójával lett létrehozva, akkor végezze el egy újabb verzióra való frissítéséhez az alábbi lépéseket:
+> Ha a projekt olyan SCP.NET korábbi verziójával lett létrehozva, amely nem használta a NuGet-et, akkor a következő lépéseket kell végrehajtania egy újabb verzióra való frissítéshez:
 >
 > 1. A **Megoldáskezelőben** kattintson a jobb gombbal a projektre, és válassza a **NuGet-csomagok kezelése** lehetőséget.
-> 2. Használatával a **keresési** mezőt, keressen, és adja hozzá, **Microsoft.SCP.Net.SDK** a projekthez.
+> 2. A **Keresés** mezőben keressen rá, majd adja hozzá a **Microsoft. scp. net. SDK** -t a projekthez.
 
-## <a name="troubleshoot-common-issues-with-topologies"></a>Topológiák gyakori hibáinak elhárítása
+## <a name="troubleshoot-common-issues-with-topologies"></a>A topológiákkal kapcsolatos gyakori problémák elhárítása
 
-### <a name="null-pointer-exceptions"></a>NULL értékű mutató kivételek
+### <a name="null-pointer-exceptions"></a>NULL értékű mutató kivételei
 
-C#-topológiák egy Linux-alapú HDInsight-fürtöt használ, amikor bolt és a spout-összetevők által használt **ConfigurationManager** olvasásához a konfigurációs beállításokat futtatáskor adhat vissza null értékű mutató kivételek.
+Ha egy Linux-alapú C# HDInsight-fürttel rendelkező topológiát használ, a **ConfigurationManager** -t használó, a konfigurációs beállítások olvasására használt bolt és kiöntő összetevők null értékű kivételeket adhatnak vissza.
 
-A konfiguráció a projekt átad a Storm-topológia a topológia környezetében kulcs-érték párban. Az átadott-összetevők megfigyelésével, amikor azok inicializálása szótárobjektum visszakereshetők.
+A projekt konfigurációját a rendszer a Storm-topológiába helyezi át kulcs-érték párokként a topológia kontextusában. Lekérhető az összetevők számára az inicializáláskor átadott szótár objektumból.
 
-További információkért lásd: a [ConfigurationManager](#configurationmanager) szakasz ebben a dokumentumban.
+További információkért tekintse meg a jelen dokumentum [ConfigurationManager](#configurationmanager) című szakaszát.
 
 ### <a name="systemtypeloadexception"></a>System.TypeLoadException
 
-C#-topológiák egy Linux-alapú HDInsight-fürtöt használ, amikor a következő hibával találkozhat:
+Ha Linux-alapú HDInsight C# -fürttel rendelkező topológiát használ, a következő hibaüzenet jelenhet meg:
 
     System.TypeLoadException: Failure has occurred while loading a type.
 
-Ez a hiba akkor fordul elő, ha egy bináris, amely nem kompatibilis a .NET, amely támogatja a Mono verzióját használja.
+Ez a hiba akkor fordul elő, ha olyan bináris fájlt használ, amely nem kompatibilis a Mono által támogatott .NET-verzióval.
 
-Linux-alapú HDInsight-fürtök győződjön meg arról, hogy a projekt használja-e a bináris fájlokat, .NET 4.5-ös vagy későbbi verzióra.
+Linux-alapú HDInsight-fürtök esetén győződjön meg arról, hogy a projekt a .NET 4,5-hez lefordított bináris fájlokat használ.
 
-### <a name="test-a-topology-locally"></a>A topológia a helyi tesztelése
+### <a name="test-a-topology-locally"></a>Topológia helyi tesztelése
 
-Bár könnyen topológia üzembe helyezése egy fürtön, bizonyos esetekben az szükség lehet a topológia helyileg tesztelheti. A következő eljárással futtathatja és tesztelheti a példatopológiát ebben az oktatóanyagban helyileg a fejlesztési környezetben.
+Bár a topológia egyszerűen üzembe helyezhető egy fürtben, bizonyos esetekben előfordulhat, hogy helyileg kell tesztelni a topológiát. A következő lépésekkel futtathatja és tesztelheti a jelen cikkben található példa topológiát a fejlesztési környezetben.
 
 > [!WARNING]  
-> Helyi tesztelés csak akkor működik, a basic, a C#-topológiák csak. Hibrid topológiák vagy a topológiák több adatfolyam használó helyi tesztelése nem használható.
+> A helyi tesztelés csak az alapszintű, C#csak a-alapú topológiák esetében működik. Nem használhat helyi tesztelést olyan hibrid topológiák vagy topológiák esetében, amelyek több streamet használnak.
 
-1. A **Megoldáskezelőben**, kattintson a jobb gombbal a projektre, és válassza ki **tulajdonságok**. A projekt tulajdonságai között módosíthatja a **kimeneti típus** való **Konzolalkalmazás**.
+1. **Megoldáskezelő**kattintson a jobb gombbal a projektre, és válassza a **Tulajdonságok**lehetőséget. A projekt tulajdonságainál módosítsa a **kimeneti típust** a **Console alkalmazásba**.
 
-    ![Képernyőfelvétel a projekt tulajdonságai kiemelve kimeneti típus](./media/apache-storm-develop-csharp-visual-studio-topology/outputtype.png)
+    ![Képernyőkép a projekt tulajdonságairól, a kimenet típusa kiemelve](./media/apache-storm-develop-csharp-visual-studio-topology/hdi-output-type-window.png)
 
    > [!NOTE]
-   > Ne felejtse el módosítani a **kimeneti típus** vissza **osztálytár** a topológia a fürt üzembe helyezése előtt.
+   > Ne felejtse el módosítani a **kimeneti típust** az **osztály-tárba** , mielőtt telepítené a topológiát a fürtön.
 
-2. A **Megoldáskezelőben**, és kattintson a jobb gombbal a projektre, majd válassza ki **Hozzáadás** > **új elem**. Válassza ki **osztály**, és adja meg **LocalTest.cs** osztály neveként. Végül kattintson **Hozzáadás**.
+1. **Megoldáskezelő**kattintson a jobb gombbal a projektre, majd válassza az > **új elem hozzáadása elemet**. Válassza az **osztály**lehetőséget, majd adja meg az **LocalTest.cs** nevet. Végül kattintson a **Hozzáadás**gombra.
 
-3. Nyissa meg **LocalTest.cs**, és adja hozzá a következő **használatával** utasítást a:
+1. Nyissa meg a **LocalTest.cs**, és adja hozzá a következő **using** utasítást a felső részen:
 
     ```csharp
     using Microsoft.SCP;
     ```
 
-4. Használja a következő kódot a tartalmát a **LocalTest** osztály:
+1. Használja a következő kódot a **LocalTest** osztály tartalmáként:
 
     ```csharp
     // Drives the topology components
@@ -659,9 +657,9 @@ Bár könnyen topológia üzembe helyezése egy fürtön, bizonyos esetekben az 
     }
     ```
 
-    A kód megjegyzéseket elolvasandó néhány percet vesz igénybe. Ez a kód **LocalContext** futtatását az összetevőket a fejlesztési környezet, és továbbra is fennáll, szöveges fájlok a helyi meghajtón lévő összetevők közötti.
+    Szánjon egy kis időt a kód megjegyzésének beolvasására. Ez a kód a **LocalContext** használatával futtatja az összetevőket a fejlesztői környezetben, és megőrzi az összetevők közötti adatfolyamot a helyi meghajtón lévő szöveges fájlok számára.
 
-1. Nyissa meg **Program.cs**, és adja hozzá a következőt a **fő** módszer:
+1. Nyissa meg a **program.cs**, és adja hozzá a következőt a **Main** metódushoz:
 
     ```csharp
     Console.WriteLine("Starting tests");
@@ -682,86 +680,86 @@ Bár könnyen topológia üzembe helyezése egy fürtön, bizonyos esetekben az 
     Console.ReadKey();
     ```
 
-2. Mentse a módosításokat, és kattintson a **F5** , vagy válasszon **Debug** > **Start Debugging** a projekt indításához. A konzolablakban kell jelenik meg, és állapot naplózásához a tesztek állapotát. Amikor **tesztek befejeződött** jelenik meg, nyomja le bármelyik billentyűt az ablak bezárásához.
+1. Mentse a módosításokat, majd kattintson az **F5** gombra, **vagy válassza a hibakeresés** > **indítása** a projekt elindításához lehetőséget. A konzol ablakának meg kell jelennie, és a tesztek állapotaként kell megjelennie. Ha a **tesztek befejeződött** , nyomja le az egyik billentyűt az ablak bezárásához.
 
-3. Használat **Windows Explorer** keresse meg a projekt tartalmazó könyvtárra. Példa: **C:\Users\<your_user_name>\Documents\Visual Studio 2013\Projects\WordCount\WordCount**. Ebben a könyvtárban, nyissa meg a **Bin**, és kattintson a **Debug**. A szöveges fájlokat, amelyeket a vizsgálatok futtatásakor kell megjelennie: sentences.txt counter.txt és splitter.txt. Nyissa meg a szöveges fájlokat, és vizsgálja meg az adatokat.
+1. A **Windows Intéző** segítségével keresse meg a projektet tartalmazó könyvtárat. Példa: **C:\Users\<your_user_name>\Documents\Visual Studio 2013\Projects\WordCount\WordCount**. Ebben a könyvtárban nyissa meg a **bin**mappát, majd kattintson a **hibakeresés**elemre. A tesztek futtatásakor létrehozott szövegfájlokat a mondatok. txt, a Counter. txt és az Splitter. txt fájl tartalmazza. Nyissa meg az egyes szövegfájlokat, és vizsgálja meg az adatelemzést.
 
    > [!NOTE]  
-   > Ezeket a fájlokat a tizedes értékeket egy tömbként karakterláncadatokat továbbra is fennáll. Ha például \[[97,103,111]] az a **splitter.txt** fájl szó *és*.
+   > A karakterlánc-adatok az ezekben a fájlokban lévő decimális értékek tömbje is megmaradnak. Például \[: [97 103 111]] az **osztó. txt** fájlban a szó *és*a.
 
 > [!NOTE]  
-> Meg kell adni a **typ Projektu** vissza **osztálytár** egy Storm HDInsight-fürtön való üzembe helyezés előtt.
+> Ügyeljen arra, hogy a HDInsight-fürtön való üzembe helyezés előtt állítsa vissza a **projekt típusát** az **osztály-függvénytárba** .
 
-### <a name="log-information"></a>Naplóadatok
+### <a name="log-information"></a>Napló adatai
 
-Könnyedén bejelentkezhet információkat a topológia összetevőktől eredő használatával `Context.Logger`. Ha például a következő parancs létrehoz egy tájékoztató naplóbejegyzés:
+A használatával `Context.Logger`egyszerűen naplózhatja a topológiák összetevőinek adatait. A következő parancs például létrehoz egy tájékoztató naplóbejegyzést:
 
 ```csharp
 Context.Logger.Info("Component started");
 ```
 
-A naplózott információk is megtekinthetők a **Hadoop Szolgáltatásnaplót**, amely megtalálható **Server Explorer**. Bontsa ki a bejegyzést a a Storm on HDInsight-fürt, majd bontsa ki a **Hadoop Szolgáltatásnaplót**. Végül válassza ki a naplófájl megtekintéséhez.
+A naplózott adatok a **Hadoop szolgáltatás naplójából**tekinthetők meg, amely a **Server Explorerben**található. Bontsa ki a Storm on HDInsight-fürtön lévő bejegyzést, majd bontsa ki a **Hadoop-szolgáltatás naplóját**. Végül válassza ki a megtekinteni kívánt naplófájlt.
 
 > [!NOTE]  
-> A naplók a fürt által használt Azure storage-fiókban vannak tárolva. A naplók megtekintéséhez a Visual Studióban, jelentkezzen be az Azure-előfizetéshez, amely a tárfiók tulajdonosa.
+> A naplókat a fürt által használt Azure Storage-fiók tárolja. A naplók a Visual Studióban való megtekintéséhez be kell jelentkeznie a Storage-fiókot birtokló Azure-előfizetésbe.
 
-### <a name="view-error-information"></a>Hiba történt adatainak megtekintése
+### <a name="view-error-information"></a>Hiba információinak megtekintése
 
-A futó topológiák fellépő hibák megtekintéséhez használja az alábbi lépéseket:
+A futó topológiában történt hibák megtekintéséhez kövesse az alábbi lépéseket:
 
-1. A **Server Explorer**, kattintson a jobb gombbal a Storm on HDInsight-fürtöt, és válassza ki **nézet Storm-topológiák**.
+1. A **Server Explorerben**kattintson a jobb gombbal a Storm on HDInsight-fürtre, és válassza a **Storm-topológiák megtekintése**lehetőséget.
 
-2. Az a **Spout** és **boltok**, a **utolsó hiba** oszlop tartalmaz információt az utolsó hiba.
+2. A **kiöntő** és a **boltokban**az **utolsó hiba** oszlop az utolsó hibával kapcsolatos információkat tartalmazza.
 
-3. Válassza ki a **Spout azonosítója** vagy **Bolt azonosító** az a komponens, amely a felsorolt hibát tartalmaz. Hiba jelenik meg, további részleteit megjelenítő oldalon információ szerepel a **hibák** szakasz az oldal alján.
+3. Válassza ki azt az összetevő **kiöntő azonosítóját** vagy **azonosítóját** , amelynél a hiba szerepel. A megjelenő Részletek lapon további hibaüzenetek jelennek meg az oldal alján található **hibák** szakaszban.
 
-4. További információk beszerzéséhez válassza ki egy **Port** a a **végrehajtóval** szakasz az oldal, a Storm-feldolgozó napló megtekintéséhez az elmúlt néhány percig.
+4. Ha további információt szeretne kapni, válasszon ki egy **portot** az oldal **végrehajtók** szakaszából, hogy az elmúlt néhány percben megjelenjen a Storm Worker-napló.
 
-### <a name="errors-submitting-topologies"></a>Hibák elküldése a topológiák
+### <a name="errors-submitting-topologies"></a>Hibák a topológiák elküldésekor
 
-A HDInsight-topológia elküldése hibákat észlel, ha a naplók a kiszolgálóoldali összetevők, amelyek kezelik a topológia beküldése a HDInsight-fürtön is megtalálhatja. Ezek a naplók lekéréséhez használja a következő parancsot a parancssorból:
+Ha hibát tapasztal a topológia HDInsight való elküldésekor, megtalálhatja a HDInsight-fürtön a topológiai beküldést kezelő kiszolgálóoldali összetevők naplóit. A naplók beolvasásához használja a következő parancsot egy parancssorból:
 
     scp sshuser@clustername-ssh.azurehdinsight.net:/var/log/hdinsight-scpwebapi/hdinsight-scpwebapi.out .
 
-Cserélje le __sshuser__ a fürt SSH-felhasználói fiókkal. Cserélje le __clustername__ a HDInsight-fürt nevére. További tájékoztatást `scp` és `ssh` a HDInsight, lásd: [az SSH használata a HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
+Cserélje le a __sshuser__ -t a fürthöz tartozó SSH-felhasználói fiókra. Cserélje le a __clustername__ nevet a HDInsight-fürt nevére. A és `scp` `ssh` a HDInsight használatával kapcsolatos további információkért lásd: az [SSH használata a HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-A jelentkezés több okból meghiúsulhat:
+A beadványok több okból is meghiúsulnak:
 
-* JDK nincs telepítve vagy nem az elérési út.
-* A küldés nem szerepelnek a szükséges Java-függőségek.
-* Nem kompatibilis függőségek.
-* Ismétlődő topológia nevét.
+* A JDK nincs telepítve, vagy nem található az elérési úton.
+* A szükséges Java-függőségek nem szerepelnek a beadványban.
+* Inkompatibilis függőségek.
+* Ismétlődő topológia neve.
 
-Ha a `hdinsight-scpwebapi.out` a napló tartalmaz egy `FileNotFoundException`, ennek oka lehet az alábbi feltételek:
+Ha a `hdinsight-scpwebapi.out` napló tartalmaz egy `FileNotFoundException`, ezt a következő feltételek okozhatják:
 
-* A JDK-kiszolgálón, a fejlesztési környezet nem szerepel. Győződjön meg arról, hogy a JDK telepítve van-e a fejlesztői környezetben, és hogy `%JAVA_HOME%/bin` elérési útvonalán van.
-* Hiányzik egy Java-függőséget. Ellenőrizze, hogy a Küldés részeként beleértve a szükséges .jar fájlokat.
+* A JDK nem a fejlesztési környezet elérési útjában van. Ellenőrizze, hogy a JDK telepítve van-e a fejlesztői környezetben, `%JAVA_HOME%/bin` és az elérési úton van-e.
+* Hiányzik egy Java-függőség. Győződjön meg róla, hogy a beküldés részeként a szükséges. jar fájlokat is tartalmazza.
 
 ## <a name="next-steps"></a>További lépések
 
-Az adatok feldolgozása az Event Hubsból, találhat példát [dolgozza fel az Azure Event hubs Eseményközpontokból a HDInsight alatt futó Stormmal](apache-storm-develop-csharp-event-hub-topology.md).
+Az adatok Event Hubsból való feldolgozására példa: [események feldolgozása az Azure Event Hubs és a Storm on HDInsight](apache-storm-develop-csharp-event-hub-topology.md).
 
-C#-topológiák, amely felosztja a streamadatokat több adatfolyam-példa: [C# Storm-példa](https://github.com/Blackmist/csharp-storm-example).
+Példa egy C# olyan topológiára, amely több streambe osztja el a stream-adatforgalmat, lásd: [ C# Storm example](https://github.com/Blackmist/csharp-storm-example).
 
-C#-topológiák létrehozásával kapcsolatos további információk felderítésére, lásd: [GitHub](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/SCPNet-GettingStarted.md).
+A topológiák létrehozásával C# kapcsolatos további információkért lásd: [GitHub](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/SCPNet-GettingStarted.md).
 
-További részleteket a HDInsight használata és további Storm on HDInsight minták az alábbi dokumentumokban talál:
+Ha többet szeretne tudni a HDInsight és a HDInsight-mintákról, tekintse meg a következő dokumentumokat:
 
 **Microsoft SCP.NET**
 
-* [Szolgáltatáskapcsolódási pont programozási útmutató](apache-storm-scp-programming-guide.md)
+* [SCP programozási útmutató](apache-storm-scp-programming-guide.md)
 
 **Apache Storm on HDInsight**
 
-* [Telepítheti és figyelheti a HDInsight Apache Storm-topológiák](apache-storm-deploy-monitor-topology.md)
+* [Topológiák üzembe helyezése és figyelése Apache Storm a HDInsight-on](apache-storm-deploy-monitor-topology.md)
 * [HDInsight alatt futó Apache Storm példatopológiái](apache-storm-example-topology.md)
 
-**Apache Hadoop on HDInsight**
+**Apache Hadoop a HDInsight**
 
-* [Apache Hive használata a HDInsight Apache Hadoop-keretrendszerrel](../hadoop/hdinsight-use-hive.md)
-* [Az Apache Pig használata a HDInsight Apache Hadoop-keretrendszerrel](../hadoop/hdinsight-use-pig.md)
-* [Apache Hadoop MapReduce használata a HDInsight Apache Hadoop-keretrendszerrel](../hadoop/hdinsight-use-mapreduce.md)
+* [Apache Hive használata a HDInsight Apache Hadoop használatával](../hadoop/hdinsight-use-hive.md)
+* [Az Apache Pig használata a Apache Hadoop on HDInsight](../hadoop/hdinsight-use-pig.md)
+* [Apache Hadoop MapReduce használata a HDInsight Apache Hadoop használatával](../hadoop/hdinsight-use-mapreduce.md)
 
-**Apache HBase on HDInsight**
+**Apache HBase a HDInsight-on**
 
-* [Ismerkedés az Apache HBase on HDInsight](../hbase/apache-hbase-tutorial-get-started-linux.md)
+* [Első lépések az Apache HBase a HDInsight](../hbase/apache-hbase-tutorial-get-started-linux.md)

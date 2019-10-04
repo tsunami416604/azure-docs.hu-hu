@@ -1,36 +1,37 @@
 ---
-title: Egy adott API-ra vonatkozó engedélyek kiválasztása |} A Microsoft Docs
-description: További tudnivalók az engedélyek kérések ügyfél- és alkalmazások számára fejleszt alkalmazásokat működése
+title: Válasszon engedélyeket egy adott API-hoz | Microsoft Docs
+description: Ismerje meg, hogyan működnek az engedélyek kérelmek az ügyfél-és erőforrás-alkalmazások számára a fejleszthető alkalmazásokhoz
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
-ms.subservice: app-mgmt
+ms.subservice: develop
+ms.custom: aaddev
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/11/2018
-ms.author: celested
+ms.date: 07/15/2019
+ms.author: ryanwi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8af7206b94342a4844cf272784aff4e4dc5a35f1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: abae311057ac5cfadb72faa0df525fdbec17f757
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56169677"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68321054"
 ---
-# <a name="how-to-select-permissions-for-a-given-api"></a>Egy adott API-ra vonatkozó engedélyek kiválasztása 
+# <a name="how-to-select-permissions-for-a-given-api"></a>Engedélyek kiválasztása egy adott API-hoz 
 
 ## <a name="recommended-documents"></a>Ajánlott dokumentumok
 
-- Ügyfél-alkalmazások használatával kapcsolatos további [delegált és az alkalmazásengedély-kérelmeket](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#permissions) erőforrások eléréséhez.
-- Részletes útmutatást lásd való [ügyfélalkalmazás alkalmazásengedély-kérelmeket konfigurálása](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)
-- A részletesebben olvashat róluk, megtudhatja, hogyan erőforrás alkalmazásokat közzé [hatókörök](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#scopes) és [alkalmazás-szerepkörök](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#roles) , meghatalmazott manifest ügyfélalkalmazások és Alkalmazásengedélyek, illetve az Azure-ban portál. 
+- További információ arról, hogyan használják az ügyfélalkalmazások a [delegált és az alkalmazásokra vonatkozó engedélyeket](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#permissions) az erőforrásokhoz való hozzáféréshez.
+- Az [ügyfélalkalmazások engedélyeire vonatkozó kérelmek konfigurálásának](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications) részletes ismertetését lásd:.
+- További részletekért tekintse meg, hogy az [](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#scopes) erőforrás-alkalmazások hogyan teszik elérhetővé a hatóköröket és az [alkalmazási szerepköröket](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#roles) az ügyfélalkalmazások számára, amelyek a Azure Portal delegált és alkalmazási engedélyekkel rendelkeznek. 
 
 ## <a name="next-steps"></a>További lépések
 
-[Azure ad stackoverflow-n](https://stackoverflow.com/questions/tagged/azure-active-directory)
+[AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
 

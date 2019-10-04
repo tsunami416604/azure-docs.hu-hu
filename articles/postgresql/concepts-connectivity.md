@@ -1,20 +1,20 @@
 ---
-title: Átmeneti kapcsolati hibákat kezelése az Azure Database for postgresql-hez
-description: Ismerje meg, hogy átmeneti kapcsolati hibáinak kezelése az Azure Database for postgresql-hez.
+title: Átmeneti kapcsolati hibákat kezelése az Azure Database for PostgreSQL – egyetlen kiszolgáló
+description: Ismerje meg, hogy átmeneti kapcsolati hibáinak kezelése az Azure Database for PostgreSQL – egyetlen kiszolgáló.
 keywords: postgresql-kapcsolat, kapcsolati karakterlánc, kapcsolódási problémák, átmeneti hiba, kapcsolódási hiba
 author: jan-eng
 ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 11/09/2018
-ms.openlocfilehash: 264656da38608026e3f9e866e2184ff55ba102d8
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 5/6/2019
+ms.openlocfilehash: ea90de612dcfb2559b29fbffce8306278beb45b9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53536219"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65073515"
 ---
-# <a name="handling-of-transient-connectivity-errors-for-azure-database-for-postgresql"></a>Átmeneti kapcsolati hibákat kezelése az Azure Database for postgresql-hez
+# <a name="handling-transient-connectivity-errors-for-azure-database-for-postgresql---single-server"></a>Átmeneti kapcsolati hibák kezelése az Azure Database for PostgreSQL – egyetlen kiszolgáló
 
 Ez a cikk ismerteti a PostgreSQL-hez készült Azure-adatbázishoz csatlakozó átmeneti hibák kezelésére.
 

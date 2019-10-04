@@ -11,11 +11,11 @@ ms.custom: seodec18
 ms.date: 02/19/2019
 ms.author: spelluru
 ms.openlocfilehash: edd197fb6d578df064c67a422767e3e70a0c8142
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56445100"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66158926"
 ---
 # <a name="get-an-event-hubs-connection-string"></a>Az Event Hubs kapcsolati sztring lekérése
 

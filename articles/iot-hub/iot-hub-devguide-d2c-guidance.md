@@ -9,11 +9,11 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.openlocfilehash: fffa064b912a96b05feb901d1d2d44533c4681b7
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57007981"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60885516"
 ---
 # <a name="device-to-cloud-communications-guidance"></a>Eszköz a felhőbe irányuló kommunikáció útmutatóját
 
@@ -35,7 +35,7 @@ Itt látható a különböző eszköz-felhő kommunikációs lehetőségek rész
 | Tárolásához és lekéréséhez | Ideiglenesen tárol az IoT Hub, legfeljebb 7 napra. Csak a Szekvenciális olvasási. | Az IoT Hub az ikereszköz tárolja. Lekérhető használatával a [IoT Hub lekérdezési nyelv](iot-hub-devguide-query-language.md). | Felhasználó által megadott Azure Storage-fiók tárolva. |
 | Méret | Legfeljebb 256 KB-os üzenetet. | Maximális jelentett tulajdonságok 8 KB-os mérete. | Az Azure Blob Storage által támogatott maximális fájlméretet. |
 | Gyakoriság | Magas. További információkért lásd: [korlátozza az IoT Hub](iot-hub-devguide-quotas-throttling.md). | Közepes. További információkért lásd: [korlátozza az IoT Hub](iot-hub-devguide-quotas-throttling.md). | Alacsony. További információkért lásd: [korlátozza az IoT Hub](iot-hub-devguide-quotas-throttling.md). |
-| Protokoll | Elérhető az összes protokollon. | Mqtt-ről vagy AMQP használatával akkor érhető el. | Használata esetén érhető el minden olyan protokoll, de HTTPS van szüksége az eszközön. |
+| Protocol | Elérhető az összes protokollon. | Mqtt-ről vagy AMQP használatával akkor érhető el. | Használata esetén érhető el minden olyan protokoll, de HTTPS van szüksége az eszközön. |
 
 Egy alkalmazás információt mind a telemetriát a time series vagy riasztást küld, és lehetővé teszi az ikereszköz szükség lehet. Ebben a forgatókönyvben az alábbi lehetőségek közül választhat:
 

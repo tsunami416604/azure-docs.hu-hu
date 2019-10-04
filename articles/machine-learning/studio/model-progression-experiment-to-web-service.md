@@ -11,11 +11,11 @@ ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
 ms.openlocfilehash: 28bb96099acb800d9095325b8c7b46a6b5124b4e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57835122"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61066057"
 ---
 # <a name="how-a-machine-learning-studio-model-progresses-from-an-experiment-to-a-web-service"></a>Hogyan egy Machine Learning Studio modellek útja a kísérlettől kísérlet egy webszolgáltatáshoz
 Az Azure Machine Learning Studio biztosítja egy interaktív vászonra, amely lehetővé teszi a fejlesztést, futtassa, tesztelése és ismételt futtatásával egy ***kísérletezhet*** jelölő prediktív elemzési modellek. Nincsenek modulok érhető el, amelyek segítségével számos:
@@ -67,7 +67,7 @@ A konvertálási folyamat során nem a rendszer elveti a tanítási kísérlet. 
 >
 
 ### <a name="the-web-service"></a>A webszolgáltatás
-Ha már elégedett, hogy a prediktív kísérletté készen áll, a szolgáltatás vagy klasszikus webszolgáltatásként üzembe helyezhet, vagy egy új webszolgáltatás-alapú Azure Resource Manager. Való telepítésével, mint a modell üzembe helyezése egy *klasszikus Machine Learning Web service*, kattintson a **webszolgáltatás üzembe helyezése** válassza **Web Service telepítése [klasszikus]**. Szeretné üzembe helyezni, *új Machine Learning webszolgáltatás*, kattintson a **webszolgáltatás üzembe helyezése** válassza **[Új] Web Service telepítése**. Felhasználók mostantól adatokat küldeni a modellt, a Web service REST API használatával, és vissza az eredményeket kapni. További információ: [Az Azure Machine Learning webszolgáltatásainak használata](consume-web-services.md).
+Ha már elégedett, hogy a prediktív kísérletté készen áll, a szolgáltatás vagy klasszikus webszolgáltatásként üzembe helyezhet, vagy egy új webszolgáltatás-alapú Azure Resource Manager. Való telepítésével, mint a modell üzembe helyezése egy *klasszikus Machine Learning Web service*, kattintson a **webszolgáltatás üzembe helyezése** válassza **Web Service telepítése [klasszikus]** . Szeretné üzembe helyezni, *új Machine Learning webszolgáltatás*, kattintson a **webszolgáltatás üzembe helyezése** válassza **[Új] Web Service telepítése**. Felhasználók mostantól adatokat küldeni a modellt, a Web service REST API használatával, és vissza az eredményeket kapni. További információ: [Az Azure Machine Learning webszolgáltatásainak használata](consume-web-services.md).
 
 ## <a name="the-non-typical-case-creating-a-non-predictive-web-service"></a>A nem általában ez a helyzet: egy nem prediktív webszolgáltatás létrehozása
 Ha a kísérlet során nem betanítást prediktív elemzési modellek, akkor nem kell létrehoznia egy tanítási kísérletet és a egy pontozó kísérletet – csak egy kísérlet van, és webszolgáltatásként üzembe. A Machine Learning Studio észleli, hogy tartalmaz-e a kísérlet egy prediktív modellt a használt modulok elemzésével.

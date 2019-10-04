@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: yushwang
-ms.openlocfilehash: 3d8a3297fba43004db817e6b077f7b292fb917cb
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 9085d5ee21b1e955b7d9416a379ee730ba26ad3e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56454342"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66150137"
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>Csatlakozás az Azure VPN-átjárók több helyszíni házirendalapú VPN-eszköz PowerShell-lel
 
@@ -81,7 +81,7 @@ Győződjön meg arról, hogy rendelkezik Azure-előfizetéssel. Ha még nincs A
 
 Győződjön meg arról, hogy végrehajtotta [3. részben a konfigurálása IPsec/IKE-házirend cikk](vpn-gateway-ipsecikepolicy-rm-powershell.md) erre a szakaszra. Az alábbi példában paramétereket és a lépéseket:
 
-### <a name="step-1---create-the-virtual-network-vpn-gateway-and-local-network-gateway"></a>1. lépés – a virtuális hálózat, a VPN-átjáró és a helyi hálózati átjáró létrehozása
+### <a name="step-1---create-the-virtual-network-vpn-gateway-and-local-network-gateway"></a>1\. lépés – a virtuális hálózat, a VPN-átjáró és a helyi hálózati átjáró létrehozása
 
 #### <a name="1-connect-to-your-subscription-and-declare-your-variables"></a>1. Csatlakozás az előfizetéshez, és a változók deklarálása
 
@@ -141,7 +141,7 @@ New-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1 -Location $Lo
 New-AzLocalNetworkGateway -Name $LNGName6 -ResourceGroupName $RG1 -Location $Location1 -GatewayIpAddress $LNGIP6 -AddressPrefix $LNGPrefix61,$LNGPrefix62
 ```
 
-### <a name="step-2---create-a-s2s-vpn-connection-with-an-ipsecike-policy"></a>2. lépés – egy IPsec/IKE-szabályzat S2S VPN-kapcsolat létrehozása
+### <a name="step-2---create-a-s2s-vpn-connection-with-an-ipsecike-policy"></a>2\. lépés – egy IPsec/IKE-szabályzat S2S VPN-kapcsolat létrehozása
 
 #### <a name="1-create-an-ipsecike-policy"></a>1. Egy IPsec/IKE-szabályzat létrehozása
 

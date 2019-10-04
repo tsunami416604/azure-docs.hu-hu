@@ -1,33 +1,33 @@
 ---
-title: Az Azure-ban megosztott lemezképeket hibáinak elhárítása |} A Microsoft Docs
-description: Ismerje meg, hogyan megosztott kép katalógusokkal kapcsolatos hibaelhárítás.
+title: A megosztott rendszerképekkel kapcsolatos problémák elhárítása az Azure-ban | Microsoft Docs
+description: Ismerje meg, hogyan oldhatja meg a megosztott képtárakkal kapcsolatos problémákat.
 services: virtual-machine-windows
 documentationcenter: virtual-machine-scale-sets
 author: axayjo
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
-ms.date: 09/20/2018
-ms.author: akjosh; cynthn
+ms.date: 04/25/2019
+ms.author: akjosh
+ms.reviewer: cynthn
 ms.custom: ''
-ms.openlocfilehash: 97e31b1489753deb481801d0b6d265b0191c5e92
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 3a92cec9ba641137f1b40c4614658396c2c9e819
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56668415"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100748"
 ---
-# <a name="troubleshooting-shared-image-galleries"></a>Megosztott kép katalógusok problémáinak elhárítása
+# <a name="troubleshooting-shared-image-galleries"></a>Megosztott képtárak hibaelhárítása
 
 
 [!INCLUDE [virtual-machines-common-shared-image-troubleshooting](../../../includes/virtual-machines-common-shared-image-troubleshooting.md)]
 
 ## <a name="next-steps"></a>További lépések
 
-Tudjon meg többet [megosztott kép katalógusok](shared-image-galleries.md).
+További információ a [megosztott](shared-image-galleries.md)képtárakról.

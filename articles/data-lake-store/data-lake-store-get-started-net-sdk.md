@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 8ab051d49e7ed67e642ef656dfb382ed07763ed2
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 8da40aa04381542c8c750c8d7e33c9a29879371d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58879709"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65900877"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>Fiókkezelési műveletek az Azure Data Lake Storage Gen1 .NET SDK használatával
 > [!div class="op_single_selector"]
@@ -32,22 +32,16 @@ Ebben a cikkben megismerheti, hogyan hajthat végre a fiókkezelési műveletek 
 Adatok felügyeleti műveletek végrehajtása a Data Lake Storage Gen1 .NET SDK-val kapcsolatos utasításokért lásd: [fájlrendszerműveletek a Data Lake Storage Gen1 .NET SDK használatával](data-lake-store-data-operations-net-sdk.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
-* **Visual Studio 2013, 2015 vagy 2017** Az alábbi utasítások a Visual Studio 2017-et használják.
+* **A Visual Studio 2013 vagy újabb**. Az alábbi utasítások a Visual Studio 2019 használják.
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="create-a-net-application"></a>.NET-alkalmazás létrehozása
-1. Nyissa meg a Visual Studiót, és hozzon létre egy konzolalkalmazást.
-2. Kattintson a **File** (Fájl) menüben a **New** (Új), majd a **Project** (Projekt) elemre.
-3. Az **Új projekt** területen írja be vagy válassza ki az alábbi értékeket:
+1. A Visual Studióban válassza ki a **fájl** menüben **új**, majd **projekt**.
+2. Válasszon **Console App (.NET Framework)** , majd válassza ki **tovább**.
+3. A **projektnév**, adja meg `CreateADLApplication`, majd válassza ki **létrehozás**.
 
-   | Tulajdonság | Érték |
-   | --- | --- |
-   | Kategória |Sablonok/Visual C#/Windows |
-   | Sablon |Konzolalkalmazás |
-   | Name (Név) |CreateADLApplication |
-4. A projekt létrehozásához kattintson az **OK** gombra.
-5. Adja hozzá a NuGet-csomagokat a projekthez.
+4. Adja hozzá a NuGet-csomagokat a projekthez.
 
    1. Kattintson a jobb gombbal a projekt nevére a Megoldáskezelőben, majd kattintson a **Manage NuGet Packages** (NuGet-csomagok kezelése) elemre.
    2. Győződjön meg arról, hogy a **NuGet Package Manager** (NuGet-csomagkezelő) lapon a **Package source** (Csomag forrása) értéke **nuget.org**, és az **Include prerelease** (Előzetes verzió belefoglalása) jelölőnégyzet be van jelölve.
@@ -58,7 +52,7 @@ Adatok felügyeleti műveletek végrehajtása a Data Lake Storage Gen1 .NET SDK-
 
         ![NuGet-forrás hozzáadása](./media/data-lake-store-get-started-net-sdk/data-lake-store-install-nuget-package.png "Új Azure Data Lake-fiók létrehozása")
    4. Zárja be a **NuGet-csomagkezelőt**.
-6. Nyissa meg a **Program.cs** fájlt, törölje a meglévő kódot, majd illessze be az alábbi utasításokat, hogy hivatkozásokat a névterekre való hivatkozásokat tudjon felvenni.
+5. Nyissa meg a **Program.cs** fájlt, törölje a meglévő kódot, majd illessze be az alábbi utasításokat, hogy hivatkozásokat a névterekre való hivatkozásokat tudjon felvenni.
 
         using System;
         using System.IO;
@@ -74,7 +68,7 @@ Adatok felügyeleti műveletek végrehajtása a Data Lake Storage Gen1 .NET SDK-
         using Microsoft.Azure.Management.DataLake.Store.Models;
         using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
-7. Deklarálja a változókat, majd adja meg a helyőrzők értékét. Arról is győződjön meg, hogy a megadott helyi elérési út és fájlnév létezik a számítógépen.
+6. Deklarálja a változókat, majd adja meg a helyőrzők értékét. Arról is győződjön meg, hogy a megadott helyi elérési út és fájlnév létezik a számítógépen.
 
         namespace SdkSample
         {
@@ -99,7 +93,7 @@ Adatok felügyeleti műveletek végrehajtása a Data Lake Storage Gen1 .NET SDK-
 
 A cikk fennmaradó részéből megtudhatja, hogyan használhatja az elérhető .NET-metódusokat az olyan műveletek elvégzésére, mint a hitelesítés, a fájlok feltöltése stb.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Hitelesítés
 
 * Az alkalmazás végfelhasználói hitelesítésével kapcsolatban lásd: [végfelhasználói hitelesítés a Data Lake Storage Gen1 .NET SDK használatával](data-lake-store-end-user-authenticate-net-sdk.md).
 * Az alkalmazás szolgáltatások közötti hitelesítésével kapcsolatban lásd: [szolgáltatások közötti hitelesítés a Data Lake Storage Gen1 .NET SDK használatával](data-lake-store-service-to-service-authenticate-net-sdk.md).

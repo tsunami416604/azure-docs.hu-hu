@@ -1,6 +1,6 @@
 ---
-title: Az Application Insights Profiler az Azure-beli éles üzemi alkalmazások profil |} A Microsoft Docs
-description: A web server kódban a gyakori elérésű útvonal egy kis erőforrásigénnyel Profilkészítő meghatározásában.
+title: Profil éles alkalmazások az Azure-ban Application Insights Profiler | Microsoft Docs
+description: Azonosítsa a webkiszolgáló kódjában található gyors elérési utat egy alacsony helyigényű Profilerrel.
 services: application-insights
 documentationcenter: ''
 author: cweining
@@ -12,125 +12,125 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: c07b325f3de6cd2cf3aaa436736786d2cdc42881
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: debc30a368a0f9ef7be9b0cda0b1238f8e2bc2e3
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58498128"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338077"
 ---
-# <a name="profile-production-applications-in-azure-with-application-insights"></a>Profil éles üzemi alkalmazások az Azure-ban az Application insights segítségével
+# <a name="profile-production-applications-in-azure-with-application-insights"></a>Profil éles alkalmazások az Azure-ban Application Insights
 ## <a name="enable-application-insights-profiler-for-your-application"></a>Application Insights Profiler engedélyezése az alkalmazáshoz
 
-Az Azure Application Insights Profiler az Azure-beli éles környezetben futó alkalmazások teljesítmény-nyomkövetés biztosít. Profiler anélkül, hogy negatívan befolyásolná a felhasználók számára az adatok automatikusan méretezett rögzíti. Profiler segítségével azonosíthatja a "Forró" kód útvonal, amely a leghosszabb időt, amikor egy bizonyos webes kérés azt kezeli. 
+Az Azure Application Insights Profiler teljesítmény-nyomkövetést biztosít az Azure-ban éles környezetben futó alkalmazások számára. A Profiler automatikusan rögzíti az adatmennyiséget, anélkül, hogy negatívan befolyásolná a felhasználókat. A Profiler segítségével azonosíthatja a "forró" kód elérési útját, amely a leghosszabb időt veszi igénybe egy adott webes kérelem kezelése során. 
 
-Profiler együttműködik a telepített .NET-alkalmazások, a következő Azure-szolgáltatások. Az egyes service Profiler engedélyezése részletes útmutatást a következő hivatkozásokon találhatók.
+A Profiler a következő Azure-szolgáltatásokon üzembe helyezett .NET-alkalmazásokkal működik. A Profiler minden szolgáltatástípus engedélyezésére vonatkozó utasítások az alábbi hivatkozásokban találhatók.
 
 * [Azure App Service](profiler.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Cloud Services](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Service Fabric](profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
-* [Az Azure virtuális gépek és virtuálisgép-méretezési csoportokban](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
-* [**Előzetes verzió** ASP.NET Core Azure Linux-webalkalmazások](profiler-aspnetcore-linux.md?toc=/azure/azure-monitor/toc.json) 
+* [Azure-Virtual Machines és virtuálisgép-méretezési csoportok](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
+* [**Előzetes** verzió ASP.NET Core Azure Linux Web Apps](profiler-aspnetcore-linux.md?toc=/azure/azure-monitor/toc.json) 
 
-Ha engedélyezve van a Profiler, de nem kapta meg a nyomkövetéseket, ellenőrizze, hogy [hibaelhárítási útmutatója](profiler-troubleshooting.md?toc=/azure/azure-monitor/toc.json).
+Ha engedélyezte a Profilert, de nem lát nyomkövetést, tekintse meg a [hibaelhárítási útmutatót](profiler-troubleshooting.md?toc=/azure/azure-monitor/toc.json).
 
-## <a name="view-profiler-data"></a>Profiler-adatok megtekintése
+## <a name="view-profiler-data"></a>Profiler-adathalmazok megtekintése
 
-A Profiler nyomkövetések feltölteni az alkalmazás kell lennie aktívan kezelési kérelem. Ha egy kísérletet, létrehozhat kéréseket a webalkalmazáshoz használatával [Application Insights Teljesítménytesztelés](https://docs.microsoft.com/vsts/load-test/app-service-web-app-performance-test). Ha engedélyezte a Profiler újonnan, egy rövid terhelési teszt is futtathatja. A terhelési teszt futtatásakor válassza ki a **profil most** gombot a [ **Profiler beállítások** panelen](profiler-settings.md#profiler-settings-pane). Profiler futtatásakor profilokat véletlenszerűen körülbelül óránként egyszer, és a egy időtartama két perc. Ha az alkalmazás olyan kérelmeket kezel, Profiler nyomkövetések óránként tölt fel.
+A Profiler a Nyomkövetések feltöltéséhez az alkalmazásnak aktívan kell kezelnie a kérelmeket. Ha kísérletet hajt végre, [Application Insights teljesítményteszt](https://docs.microsoft.com/vsts/load-test/app-service-web-app-performance-test)használatával hozhatja elő a kérelmeket a webalkalmazáshoz. Ha újonnan engedélyezte a Profilert, rövid betöltési tesztet is futtathat. Amíg a terhelési teszt fut, kattintson a **profil most** gombra a [ **Profiler-beállítások** panelen](profiler-settings.md). Ha a Profiler fut, a rendszer óránként egyszer, és két percen belül véletlenszerűen készíti el a profilt. Ha az alkalmazás a kérelmek állandó streamjét kezeli, a Profiler óránként feltölti a nyomkövetéseket.
 
-Miután az alkalmazás fogad a forgalom egy része, és a Profiler időm van a nyomkövetések feltölteni, rendelkeznie kell a nyomkövetések megtekintéséhez. Ez a folyamat 5-10 percet is igénybe vehet. Megtekintéséhez a nyomokat, a a **teljesítmény** panelen válassza **igénybe műveletek**, majd válassza ki a **Profiler nyomkövetések** gomb.
+Miután az alkalmazás megkapta a forgalmat és a Profiler-nek van ideje a Nyomkövetések feltöltésére, a megtekintéshez nyomkövetést kell használnia. Ez a folyamat 5 – 10 percet is igénybe vehet. A Nyomkövetések megtekintéséhez a **teljesítmény** ablaktáblán válassza a **műveletek elvégzése**lehetőséget, majd válassza a **Profiler Nyomkövetések** gombot.
 
-![Application Insights teljesítmény panelen előzetes Profiler nyomkövetéseket][performance-blade]
+![Application Insights a teljesítmény ablaktábla előnézet Profiler nyomkövetései][performance-blade]
 
-Válassza ki a megjelenítendő kód szintű információkat töltött időt a kérelem végrehajtása a mintát.
+Válasszon ki egy mintát a kérelem végrehajtásához szükséges idő kód szintű részletezésének megjelenítéséhez.
 
-![Application Insights nyomkövetés explorer][trace-explorer]
+![Application Insights nyomkövetési tallózó][trace-explorer]
 
-A nyomkövetés-kezelő az alábbi információkat jeleníti meg:
+A nyomkövetési tallózó a következő információkat jeleníti meg:
 
-* **Legaktívabb ág megjelenítése**: Megnyílik a legnagyobb levél csomópont, vagy valami legalább bezárása. A legtöbb esetben ez a csomópont teljesítménybeli szűk keresztmetszetet közelében van.
-* **Címke**: A függvény vagy esemény neve. A fa jeleníti meg a kódot és az eseményeket, például az SQL és a HTTP-esemény. Az első esemény a kérés teljes időtartama jelöli.
-* **Eltelt idő**: A művelet megkezdése és a művelet közötti időintervallum.
-* **Amikor**: Az idő, ha a függvény vagy esemény futott relációban át más függvényeknek.
+* **Gyors elérési út megjelenítése**: Megnyitja a legnagyobb levél csomópontot, vagy legalább egy bezárást. A legtöbb esetben ez a csomópont a teljesítmény szűk keresztmetszete közelében van.
+* **Címke**: A függvény vagy esemény neve. A fa a kód és a bekövetkezett események, például az SQL-és a HTTP-események kombinációját jeleníti meg. A felső esemény a kérelem teljes időtartamát jelenti.
+* **Eltelt idő**: A művelet kezdete és a művelet vége közötti időtartam.
+* **Mikor**: Az az idő, amikor a függvény vagy esemény más függvényekhez képest futott.
 
-## <a name="how-to-read-performance-data"></a>Teljesítményadatok olvasása
+## <a name="how-to-read-performance-data"></a>Teljesítményadatok beolvasása
 
-A Microsoft service profiler az mintavételi és a rendszerállapot olyan kombinációját használja, az alkalmazás teljesítményének elemzését. Ha részletes gyűjtemény van folyamatban, a service profilerben minták a utasítás mutató minden gép CPU minden ezredmásodperces. Mindegyik minta a szál, amelyek végrehajtása folyamatban van a teljes verem rögzíti. Mivel foglalkoznak az adott hozzászóláslánccal kapcsolatban volt, a magas és alacsony szintű absztrakció egyaránt részletes információkat biztosít. A service profilerben eseményeit is más tevékenység összefüggések keresésére és okozati, beleértve a helyi események, a feladat párhuzamos könyvtár (TPL) események és a szál készlet események nyomon követéséhez.
+A Microsoft Service Profiler a mintavételi módszerek és a rendszerállapotok kombinációját használja az alkalmazás teljesítményének elemzéséhez. Ha a részletes gyűjtemény folyamatban van, a szolgáltatás Profiler minden egyes számítógép-CPU esetében ezredmásodpercben megkeresi az utasítás mutatóját. Mindegyik minta rögzíti a jelenleg végrehajtás alatt álló szál teljes hívási veremét. Részletes információkkal szolgál arról, hogy a szál mit csinált, és magas szinten és alacsony absztrakciós szinten. A szolgáltatás Profiler más eseményeket is gyűjt a tevékenységek korrelációjának és okozati viszonyának nyomon követéséhez, beleértve a környezet váltási eseményeit, a feladatok párhuzamos kódtára (TPL) eseményeit és a szál-készlet eseményeit.
 
-A hívási veremben megjelenő idősor nézetének a mintavétel és rendszerállapot eredményét. Mert valamennyi példa a teljes hívási verem, amely a szál rögzíti, és más keretrendszerekhez, amelyet a Microsoft .NET-keretrendszer származó kódot tartalmaz.
+Az idősor nézetben megjelenő hívási verem a mintavételezés és a kivezetés eredménye. Mivel mindegyik minta rögzíti a szál teljes hívási veremét, Microsoft .NET-keretrendszerből származó kódot, valamint az Ön által hivatkozott egyéb keretrendszereket is tartalmazza.
 
-### <a id="jitnewobj"></a>Objektum lefoglalása (CLR-beli! Igény szerinti\_új és a CLR-beli! Igény szerinti\_Newarr1)
+### <a id="jitnewobj"></a>Objektum kiosztása (CLR! JIT @ no__t-1New vagy CLR! JIT @ no__t-2Newarr1)
 
-**CLR-beli! Igény szerinti\_új** és **CLR-beli! Igény szerinti\_Newarr1** segédfüggvények .NET-keretrendszer, amely memóriát lefoglalni a kezelt halommemóriában vannak. **CLR-beli! Igény szerinti\_új** akkor aktiválódnak, ha az objektum le van foglalva. **CLR-beli! Igény szerinti\_Newarr1** akkor aktiválódnak, ha egy objektum tömb le van foglalva. Ezek a függvények két általában gyors és viszonylag kis mennyiségű időt igénybe. Ha **CLR-beli! Igény szerinti\_új** vagy **CLR-beli! Igény szerinti\_Newarr1** veszi a sok időt az idővonalon, a kód előfordulhat, hogy sok objektum lefoglalása és jelentős mennyiségű memóriát használ.
+**CLR! JIT @ no__t-1New** és **CLR! A JIT @ no__t-3Newarr1** olyan segítő függvények a .net-keretrendszerben, amelyek memóriát foglalnak le egy felügyelt halomból. **CLR! JIT @ no__t –** a rendszer meghívja a 1New egy objektum lefoglalásakor. **CLR! JIT @ no__t –** a rendszer meghívja a 1Newarr1, amikor egy objektum tömbje van lefoglalva. Ez a két függvény általában gyors, és viszonylag kis mennyiségű időt vesz igénybe. Ha **CLR! JIT @ no__t-1New** vagy **CLR! JIT @ no__t – a 3Newarr1** sok időt vesz igénybe az idővonalban, a kód több objektumot is lefoglalhat, és jelentős mennyiségű memóriát is igénybe vehet.
 
-### <a id="theprestub"></a>Kód (CLR-beli betöltése! ThePreStub)
+### <a id="theprestub"></a>Kód betöltése (CLR! ThePreStub)
 
-**CLR-beli! ThePreStub** a .NET-keretrendszer, amely előkészíti a kód végrehajtásához először segítő funkciója. A végrehajtási általában tartalmaz, de nem korlátozódik az – igény (szerinti JIT) fordítási. Az egyes C# metódus **CLR-beli! ThePreStub** kell egyszer hívhatók meg legfeljebb egy folyamat során.
+**CLR! A ThePreStub** a .NET-keretrendszer egyik segítő funkciója, amely előkészíti a kódot az első alkalommal történő végrehajtásra. Ez a végrehajtás általában magában foglalja az igény szerinti (JIT) fordítást, de nem kizárólagosan. Minden C# metódushoz **CLR! A ThePreStub** a folyamat során legfeljebb egyszer kell meghívni.
 
-Ha **CLR-beli! ThePreStub** kérelmek, a kérelem egy hosszú időt vesz igénybe az elsőt a metódus végrehajtásához. A .NET-keretrendszer futtatókörnyezete betölteni az első módszer ideje jelentős. Érdemes lehet egy melegítési folyamattal, amely végrehajtja a szerelvények a része, amely a kódot, mielőtt a felhasználók hozzáférése, illetve natív Image Generator (ngen.exe) érdemes használni.
+Ha **CLR! A ThePreStub** hosszú időt vesz igénybe, a kérelem az első, amely végrehajtja ezt a metódust. A .NET-keretrendszer futtatókörnyezetének az első módszer betöltéséhez szükséges ideje jelentős. Érdemes lehet olyan bemelegedési folyamatot használni, amely végrehajtja a kód azon részét, mielőtt a felhasználók hozzáférnek hozzá, vagy érdemes lehet natív rendszerkép-generátort (Ngen. exe) futtatni a szerelvényeken.
 
-### <a id="lockcontention"></a>Zárolási versenyt (CLR-beli! JITutil\_MonContention vagy CLR-beli! JITutil\_MonEnterWorker)
+### <a id="lockcontention"></a>Zárolás feloldása (CLR! JITutil @ no__t – 1MonContention vagy CLR! JITutil\_MonEnterWorker)
 
-**CLR-beli! JITutil\_MonContention** vagy **CLR-beli! JITutil\_MonEnterWorker** azt jelzi, hogy az aktuális szál várakozik a zárolás feloldására. Ezt a szöveget végrehajtásakor gyakran megjelenik egy C# **ZÁROLÁSI** utasítással, meghívása a **Monitor.Enter** metódus, vagy a metódus meghívása a **MethodImplOptions.Synchronized**attribútum. Zárolási versenyt általában akkor fordul elő amikor hozzászóláslánc _A_ egy zárolás és a szál beszerzi _B_ azonos zárolást beszerezni a hozzászóláslánc előtt megpróbálja _A_ szabadítja.
+**CLR! JITutil @ no__t – 1MonContention** vagy **CLR! JITutil @ no__t – a 3MonEnterWorker** azt jelzi, hogy az aktuális szál a zárolás felszabadítására vár. Ez a szöveg gyakran jelenik meg a C# **zárolási** utasítás végrehajtásakor, a figyelő meghívásával **. adja meg** a metódust, vagy hívja meg a metódust a **MethodImplOptions. szinkronizált** attribútummal. A zárolási tartalom általában akkor fordul elő, ha a szál egy zárolást szerez be, és a _B_ szál megpróbálja ugyanazt a zárolást megnyerni, mielőtt elkezdené a kiadást.
 
-### <a id="ngencold"></a>Betöltés kódot ([HIDEG])
+### <a id="ngencold"></a>Kód betöltése ([hideg])
 
-Ha a metódus nevét tartalmazza **[HIDEG]**, mint például **mscorlib.ni! [ COLD]System.Reflection.CustomAttribute.IsDefined**, .NET-keretrendszer futtatókörnyezete végrehajtása kód által nem optimalizált először [profil interaktív optimalizálási](/cpp/build/profile-guided-optimizations). Minden módszer esetén azt üzenet legfeljebb egyszer a folyamat során.
+Ha a metódus neve **[hideg]** nevet tartalmaz, például **Mscorlib.ni! [ HIDEG] System. Reflection. CustomAttribute. IsDefined**, a .NET Framework Runtime olyan kódot hajt végre, amely a [profil által vezérelt optimalizálás](/cpp/build/profile-guided-optimizations)által nem optimalizált első alkalommal fut. Az egyes módszerekhez a folyamat során legfeljebb egyszer kell megjeleníteni.
 
-Kérelem ideje jelentős mennyiségű kódot betöltése vesz igénybe, a kérelem-e az elsőt a nem optimalizált része a metódus végrehajtásához. Fontolja meg egy melegítési folyamat, amely végrehajtja a része, amely a kódot, mielőtt a felhasználók-e férni.
+Ha a betöltési kód nagy mennyiségű időt vesz igénybe, a kérelem az első, amely a metódus nem optimalizált részét hajtja végre. Érdemes lehet egy bemelegedési folyamatot használni, amely a kód azon részét futtatja, mielőtt a felhasználók hozzáférnek hozzá.
 
 ### <a id="httpclientsend"></a>HTTP-kérelem küldése
 
-Például módszerek **HttpClient.Send** azt jelzik, hogy a kód vár egy HTTP-kérelem hajtható végre.
+A **HttpClient. Send** metódusok például azt jelzik, hogy a kód a HTTP-kérelem befejeződésére vár.
 
 ### <a id="sqlcommand"></a>Adatbázis-művelet
 
-Például módszerek **SqlCommand.Execute** azt jelzik, hogy a kód vár egy adatbázis-művelet befejezéséhez.
+A **SqlCommand. Execute** metódusok például azt jelzik, hogy a kód arra vár, hogy egy adatbázis-művelet befejeződik.
 
-### <a id="await"></a>Waiting (AWAIT\_TIME)
+### <a id="await"></a>Várakozás (várja a @ no__t-1TIME)
 
-**AWAIT\_idő** azt jelzi, hogy a kód vár egy másik feladat befejeződik. Ez a késleltetés általában akkor fordul elő a a C# **AWAIT** utasítást. Ha a kódja egy C# **AWAIT**, a szál unwinds, és visszaadja az irányítást a szálkészlet, és nincs a nincs szál való várakozás blokkolja a **AWAIT** befejezéséhez. Azonban logikailag, a hozzászóláslánc, amely volt a **AWAIT** "zárolva van," és a művelet befejezésére vár. A **AWAIT\_idő** utasítás a feladat befejezésére való várakozás letiltott idejét jelzi.
+**Várja meg a @ no__t-1TIME** azt jelzi, hogy a kód egy másik feladat befejeződésére vár. Ez a késleltetés általában a C# **várakozási** utasítással történik. Ha a kód megvárja C# a **várakozást**, a szál felcsévélést végez, és visszaadja a vezérlést a szál készletnek, és nincs olyan szál , amely le van tiltva a várakozás befejezésére. Logikusan azonban a **várt** szál "Letiltva", és a művelet befejezésére vár. A wait **@ no__t-1TIME** utasítás azt a letiltott időt jelzi, amíg a feladat befejeződik.
 
 ### <a id="block"></a>Letiltott idő
 
-**BLOCKED_TIME** azt jelzi, hogy a kód vár egy másik erőforrás elérhető legyen. Például, előfordulhat, hogy lehet váró szinkronizálási objektumra, elérhető legyen egy adott hozzászóláslánccal kapcsolatban, vagy a kérés befejezéséhez.
+A **BLOCKED_TIME** azt jelzi, hogy a kód arra vár, hogy egy másik erőforrás elérhetővé válik. Előfordulhat például, hogy egy szinkronizálási objektumra várakozik egy elérhető szál vagy egy befejezési kérelem.
 
-### <a name="unmanaged-async"></a>Unmanaged Async
+### <a name="unmanaged-async"></a>Nem felügyelt aszinkron
 
-.NET-keretrendszer ETW eseményeket bocsát ki, és adja át a tevékenységazonosítók szálak között, hogy az aszinkron hívásokat szálakon követhető nyomon. Nem felügyelt kód (natív), és néhány régebbi stílusok aszinkron kód hiányoznak az ezen események és a tevékenységazonosítók, így a profiler nem állapítható meg, hogy milyen szál, és mi függvények futnak a szálon. "Nem felügyelt aszinkron" Ez van jelölve, a hívási veremben. Ha az ETW-fájl letöltéséhez, előfordulhat, hogy tudják használni [PerfView](https://github.com/Microsoft/perfview/blob/master/documentation/Downloading.md) a részletesebb elemzéseket kaphat, hogy mi történik.
+A .NET-keretrendszer ETW eseményeket bocsát ki, és a szálak között továbbítja a tevékenység-azonosítókat, hogy az aszinkron hívásokat nyomon lehessen követni a szálak között. A nem felügyelt kód (natív kód) és az aszinkron kódok néhány régebbi stílusa hiányzik ezekről az eseményekről és tevékenység-azonosítóról, így a Profiler nem tudja megállapítani, hogy milyen szálat és milyen funkciók futnak a szálon. Ez a hívási verem "nem felügyelt aszinkron" címkéje. Ha letölti a ETW fájlt, lehetséges, hogy a [perfview eszköz](https://github.com/Microsoft/perfview/blob/master/documentation/Downloading.md) segítségével részletesebben megismerheti a mi történik.
 
 ### <a id="cpu"></a>CPU-idő
 
-A Processzor elfoglalt végrehajtásakor az utasításokat.
+A CPU foglalt az utasítások végrehajtásával.
 
-### <a id="disk"></a>Lemezmeghajtó kihasználtsága
+### <a id="disk"></a>Lemez ideje
 
-Az alkalmazás által végzett lemezes műveletek.
+Az alkalmazás lemezes műveleteket végez.
 
 ### <a id="network"></a>Hálózati idő
 
-Az alkalmazás által végzett hálózati műveletekre.
+Az alkalmazás hálózati műveleteket végez.
 
-### <a id="when"></a>Amikor oszlop
+### <a id="when"></a>Oszlop
 
-A **amikor** oszlop egy vizualizációt, hogyan eltérőek lehetnek a határokat is beleértve mintákat egy csomópont gyűjtött idővel. A kérelem teljes skáláját 32 idő gyűjtők oszlik. A csomóponton a határokat is beleértve minták összegzi a rendszer az ezeket a gyűjtőket 32. Az egyes gyűjtők sáv jelzi. A sáv magassága méretezett értéket jelöli. Csomópontok megjelölt **CPU_TIME** vagy **BLOCKED_TIME**, vagy ahol való felhasználása erőforrás (például Processzor, lemez vagy szál) egy nyilvánvaló kapcsolat van, a sávon jelenti az egyik a használatalapú az erőforrások során a gyűjtőhöz. A következő metrikákhoz az értéke nagyobb, mint 100 %-os beszerezni a több erőforrást használ. Például ha használ, az átlagos során időközt, két processzor kap 200 %-os.
+A ha oszlopban látható, hogy a csomópontok számára összegyűjtött minták időbeli **változása** milyen módon változhat. A kérelem teljes tartománya 32 Time-gyűjtőre van osztva. Az adott csomóponthoz tartozó befogadó minták a 32 gyűjtőben vannak összesítve. Az egyes gyűjtők sávként jelennek meg. A sáv magassága a méretezett értéket jelöli. A **CPU_TIME** vagy **BLOCKED_TIME**jelölésű csomópontok esetén, vagy ha nyilvánvaló kapcsolat van egy erőforrás (például egy processzor, egy lemez vagy egy szál) felhasználásához, a sáv a gyűjtőben lévő erőforrások egyikét jelöli. Ezekben a mérőszámokban több erőforrás használata esetén lehetséges, hogy 100%-nál nagyobb értéket kapjon. Ha például átlagosan két processzort használ egy intervallumban, akkor 200%-ot kap.
 
 ## <a name="limitations"></a>Korlátozások
 
-Az alapértelmezett megőrzési időtartama pedig öt nap. Napi betöltött adatok maximális 10 GB-os.
+Az alapértelmezett adatmegőrzési időtartam öt nap. A naponta betöltött maximális mennyiség 10 GB.
 
-Nem számítunk fel díjat a Profiler szolgáltatás. Meg vele, a webes alkalmazásnak rendelkeznie kell legalább az alapszintű csomag, az Azure App Service Web Apps funkciójával üzemeltetett.
+A Profiler szolgáltatás használatáért nem számítunk fel díjat. Ahhoz, hogy használhassa, a webalkalmazást legalább a Azure App Service Web Apps funkciójának alapszintű szintjében kell üzemeltetni.
 
-## <a name="overhead-and-sampling-algorithm"></a>Terhelés és a mintavételezési algoritmus
+## <a name="overhead-and-sampling-algorithm"></a>Terhelési és mintavételezési algoritmus
 
-Profiler véletlenszerűen futtat minden virtuális gép, amelyen az alkalmazást, amely rendelkezik a Profiler engedélyezve nyomkövetés rögzítése a két perc minden órában. Profiler fut, amikor azt hozzáadja az 5. 15 %-os Processzor terhelését a kiszolgálóhoz.
+A Profiler véletlenszerűen két percen belül fut minden olyan virtuális gépen, amelyen a Profiler engedélyezve van a nyomkövetés rögzítéséhez. Ha a Profiler fut, az 5 – 15 százalékos CPU-terhelést tesz elérhetővé a kiszolgálóra.
 
 ## <a name="next-steps"></a>További lépések
-Application Insights Profiler engedélyezése az Azure-alkalmazásokat. Is látható:
+Application Insights Profiler engedélyezése az Azure-alkalmazáshoz. Lásd még:
 * [App Services](profiler.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Cloud Services](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Service Fabric](profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
-* [Az Azure virtuális gépek és virtuálisgép-méretezési csoportokban](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
+* [Azure-Virtual Machines és virtuálisgép-méretezési csoportok](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
 
 [performance-blade]: ./media/profiler-overview/performance-blade-v2-examples.png

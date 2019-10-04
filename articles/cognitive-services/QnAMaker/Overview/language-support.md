@@ -1,24 +1,24 @@
 ---
 title: Nyelvi támogatás – QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Tudásbázis nyelvének hatással van a QnA Maker válaszokat automatikusan kinyerni kérdések és válaszok forrásokból, valamint a QnA Maker felhasználói lekérdezések maximális kézbesítésszáma biztosít az eredmények relevancia alapján végzett. Kulturális környezet, a Tudásbázis támogatja a QnA Maker természetes nyelvek listáját. Ne keverje a nyelveket ugyanazon Tudásbázis.
+description: A Tudásbázis nyelve hatással van QnA Maker lehetőségére, hogy a forrásokból származó kérdéseket és válaszokat automatikusan kibontsa, valamint az eredmények QnA Maker a felhasználói lekérdezésekre adott válaszként. Kulturális környezet, a Tudásbázis támogatja a QnA Maker természetes nyelvek listáját. Ne keverje a nyelveket ugyanazon Tudásbázis.
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
 ms.date: 03/21/2019
-ms.author: tulasim
+ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: a6304a93b1409cff871ed1c4c1d7e66d6c8c6f53
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: bec09e5cd053774902083c6dd042c1ed4b293d20
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58497686"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066669"
 ---
-# <a name="language-support-for-qna-maker"></a>A QnA Maker nyelvi támogatás
+# <a name="language-support-for-qna-maker"></a>A QnA Maker nyelvi támogatása
 
 Tudásbázis nyelvének hatással van a QnA Maker válaszokat automatikusan kinyerni kérdések, valamint választ ad a [források](../Concepts/data-sources-supported.md), valamint az a felhasználói lekérdezések maximális kézbesítésszáma biztosít a QnA Maker eredmények.
 
@@ -33,28 +33,28 @@ A QnA Maker kérdés-válasz kinyerési támogatja a tetszőleges nyelven lapon,
 |német|Németország – *|
 |spanyol|es-*|
 
-## <a name="primary-language-detection"></a>Elsődleges nyelv észlelése
+## <a name="primary-language-detection"></a>Elsődleges nyelvi észlelés
 
-A QnA Maker erőforrás- és az első dokumentum vagy URL-cím hozzáadódik az első Tudásbázis létrehozásakor az erőforráson, az összes tudásbázisok észleléséhez használt elsődleges nyelv van beállítva. A nyelvet nem lehet módosítani. 
+Az észleléshez használt elsődleges nyelv a QnA Maker erőforráshoz, és az adott erőforráson létrehozott összes tudásbázishoz van beállítva, amikor az első dokumentumot vagy URL-címet hozzáadja az első tudásbázishoz. A nyelv nem módosítható. 
 
-Ha a felhasználó több nyelv támogatása tervek, kell rendelkezniük nekik a QnA Maker új erőforrást az egyes nyelvekhez. Ismerje meg, hogyan [nyelven alapuló QnA Maker Tudásbázis létrehozása](../how-to/language-knowledge-base.md).  
+Ha a felhasználó több nyelv támogatását tervezi, minden nyelvhez új QnA Maker erőforrást kell használnia. Megtudhatja, hogyan [hozhat létre nyelvi alapú QnA Maker tudásbázist](../how-to/language-knowledge-base.md).  
 
-Ellenőrizze az alábbi lépéseket követve elsődleges nyelve:
+Ellenőrizze az elsődleges nyelvet a következő lépésekkel:
 
-1. Jelentkezzen be az [Azure Portalra](http://portal.azure.com).  
-1. Keresse meg és válassza ki az Azure Search-erőforrást a QnA Maker erőforrás részeként létrehozott. Az Azure Search-erőforrás neve a neve megegyezik a QnA Maker erőforrás kezdődik, és a típus lesz **keresési szolgáltatás**. 
-1. Az a **áttekintése** lapon a keresési erőforrás, jelölje be **indexek**. 
-1. Válassza ki a **testkb** index.
-1. Válassza ki a **mezők** fülre. 
-1. Nézet a **Analyzer** oszlopában a **kérdések** és **válasz** mezőket. 
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).  
+1. Keresse meg és válassza ki a QnA Maker erőforrás részeként létrehozott Azure Search erőforrást. A Azure Search erőforrás neve megegyezik a QnA Maker erőforrás nevével, és a típus **keresési szolgáltatással**fog rendelkezni. Ne feledje, hogy csak egy QnA Maker erőforrás lehet egy Azure Search erőforráshoz csatolva.
+1. A keresési erőforrás **Áttekintés** lapján válassza az **indexek**lehetőséget. 
+1. Válassza ki a **testkb** indexet.
+1. Válassza a **mezők** lapot. 
+1. Tekintse meg a **kérdések** és **válaszok** mezők **Analyzer** oszlopát. 
 
 
 ## <a name="query-matching-and-relevance"></a>A lekérdezésnek megfelelő, és a relevancia alapján végzett
 A QnA Maker függ [nyelvi elemzők](https://docs.microsoft.com/rest/api/searchservice/language-support) az eredmények, amelyek biztosítják az Azure Search szolgáltatásban. Speciális újra rangsorértékét funkciók érhetők el az En-* nyelveket, amelyek lehetővé teszik a jobb relevancia alapján.
 
-Bár az Azure Search-funkciók által támogatott nyelvek egyenlő figyelembevétele, QnA Maker egy további rangsorolás, amely az Azure search eredmények felett van. Néhány speciális szemantikai és a word-alapú funkció, az en - használjuk a rangsorolás modell, *, amely még nem érhető el a többi nyelven. Nem vállalunk ezeket a funkciókat érhető el, azok a belső működéséhez a QnA Maker rangsorolás része. 
+Bár az Azure Search-funkciók által támogatott nyelvek egyenlő figyelembevétele, QnA Maker egy további rangsorolás, amely az Azure search eredmények felett van. Ebben a Ranger-modellben olyan speciális szemantikai és Word-alapú funkciókat használunk az EN-*-ben, amelyek még nem érhetők el más nyelveken. Ezeket a funkciókat nem tesszük elérhetővé, mivel azok a QnA Maker Ranger belső működésének részét képezik. 
 
-A QnA Maker [automatikusan észleli a Tudásbázis nyelvének](#primary-language-detection) létrehozása során, és ennek megfelelően beállítja az elemző. Az alábbi nyelveken tudásbázisok hozhat létre. 
+QnA Maker [automatikusan észleli a Tudásbázis nyelvét](#primary-language-detection) a létrehozás során, és ennek megfelelően állítja be az elemzőt. Az alábbi nyelveken tudásbázisok hozhat létre. 
 
 |Támogatott nyelvek|
 |-----|

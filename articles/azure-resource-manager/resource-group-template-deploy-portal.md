@@ -1,78 +1,78 @@
 ---
 title: Az Azure-erőforrások üzembe helyezése az Azure portal használatával |} A Microsoft Docs
 description: Az Azure portal és az Azure Resource Manager használatával helyezheti üzembe az erőforrásokat.
-services: azure-resource-manager,azure-portal
-documentationcenter: ''
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/03/2018
+ms.date: 06/27/2019
 ms.author: tomfitz
-ms.openlocfilehash: 7b28129a3afe9f78d0ef749fa0c7759082c5f758
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: a171d9b4f054c942eebb08e7e11dd1164545f408
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652450"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67460330"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-portal"></a>Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure Portallal
 
-Ez a cikk bemutatja, hogyan használhatja a [az Azure portal](https://portal.azure.com) a [Azure Resource Manager](resource-group-overview.md) az Azure-erőforrások üzembe helyezéséhez. Az erőforrások kezelésével kapcsolatos további információkért lásd: [Azure-erőforrások kezelése az Azure portal használatával](manage-resources-portal.md).
+Ismerje meg, hogyan használható a [az Azure portal](https://portal.azure.com) a [Azure Resource Manager](resource-group-overview.md) az Azure-erőforrások üzembe helyezéséhez. Az erőforrások kezelésével kapcsolatos további információkért lásd: [Azure-erőforrások kezelése az Azure portal használatával](manage-resources-portal.md).
 
-## <a name="create-resource-group"></a>Erőforráscsoport létrehozása
+Általában az Azure portal segítségével Azure-erőforrások telepítése két lépésből áll:
 
-1. Üres erőforráscsoport létrehozásához válassza **erőforráscsoportok**.
+- Hozzon létre egy erőforráscsoportot.
+- Erőforrások üzembe helyezése az erőforráscsoporthoz.
+
+Emellett az Azure Resource Manager-sablon létrehozása az Azure-erőforrások is telepítheti.
+
+Ez a cikk mindkét módszert bemutatja.
+
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+
+1. Hozzon létre egy új erőforráscsoportot, válassza a **erőforráscsoportok** származó a [az Azure portal](https://portal.azure.com).
 
    ![Erőforráscsoportok kijelölése](./media/resource-group-template-deploy-portal/select-resource-groups.png)
 
 1. Erőforráscsoportok, válassza a **Hozzáadás**.
 
-   ![Erőforráscsoport hozzáadása](./media/resource-group-template-deploy-portal/add-resource-group.png)
+   ![erőforráscsoport hozzáadása](./media/resource-group-template-deploy-portal/add-resource-group.png)
 
-1. Adjon meg egy nevet és egy helyet, és szükség esetén válasszon ki egy előfizetést. Meg kell adnia az erőforráscsoport helyét, mert az erőforráscsoport erőforrásokra vonatkozó metaadatokat tárol. Megfelelőségi okokból érdemes lehet, hogy ezekhez a metaadatokhoz helyének meghatározásához. Általában azt javasoljuk, hogy megad egy olyan helyre, ahol az erőforrások legnagyobb része helyezkednek el. Ugyanazon a helyen használatával egyszerűsítheti a sablon.
+1. Válassza ki vagy adja meg az alábbi tulajdonságértékeit:
+
+    - **Előfizetés**: Válasszon ki egy Azure-előfizetést.
+    - **Erőforráscsoport**: Nevezze el az erőforráscsoportot.
+    - **Régió**: Adja meg az Azure-helyen. Ez az, ahol az erőforráscsoport erőforrásokra vonatkozó metaadatokat tárol-e. Megfelelőségi okokból érdemes lehet, hogy ezekhez a metaadatokhoz helyének meghatározásához. Általában azt javasoljuk, hogy megad egy olyan helyre, ahol az erőforrások legnagyobb része helyezkednek el. Ugyanazon a helyen használatával egyszerűsítheti a sablon.
 
    ![Csoport értékek beállítása](./media/resource-group-template-deploy-portal/set-group-properties.png)
 
-   A tulajdonságok beállítása után, válassza ki a **létrehozás**.
+1. Válassza az **Áttekintés + létrehozás** lehetőséget.
+1. Tekintse át az értékeket, és válassza ki **létrehozás**.
+1. Válassza ki **frissítése** ahhoz, hogy az új erőforráscsoport, a listában.
 
-1. Az új erőforráscsoport megtekintéséhez válasszon **frissítése**.
+## <a name="deploy-resources-to-a-resource-group"></a>Erőforrások üzembe helyezése egy erőforráscsoportot
 
-   ![Erőforráscsoport frissítése](./media/resource-group-template-deploy-portal/refresh-resource-groups.png)
+Miután létrehozott egy erőforráscsoport, a Marketplace-ről telepítheti erőforrások a csoport. A Marketplace-en előre definiált megoldásokat kínál a gyakori forgatókönyvek.
 
-## <a name="deploy-resources-from-marketplace"></a>Piactéri erőforrások üzembe helyezése
-
-Miután létrehozott egy erőforráscsoport, a Marketplace-ről erőforrások telepítheti azt. A Marketplace-en előre definiált megoldásokat kínál a gyakori forgatókönyvek.
-
-1. Válassza ki a központi telepítés indításához **erőforrás létrehozása**.
+1. Válassza ki a központi telepítés indításához **erőforrás létrehozása** a a [az Azure portal](https://portal.azure.com).
 
    ![Új erőforrás](./media/resource-group-template-deploy-portal/new-resources.png)
 
-1. Keresse meg a telepíteni kívánt erőforrás típusát.
+1. Keresse meg a telepíteni kívánt erőforrás típusát. Az erőforrások kategóriákba vannak rendezve. Ha nem látja az adott megoldás, amelyet szeretne telepíteni, a Marketplace-en, kereshet. Az alábbi képernyőképen látható, hogy Ubuntu Server van kiválasztva.
 
    ![Erőforrás típusának kiválasztása](./media/resource-group-template-deploy-portal/select-resource-type.png)
 
-1. Ha nem látja az adott megoldás, amelyet szeretne telepíteni, a Marketplace-en, kereshet. Például Wordpress megoldást keres, kezdje a beírni **Wordpress** , és válassza ki a kívánt beállítást.
-
-   ![A piactéren](./media/resource-group-template-deploy-portal/search-resource.png)
-
-1. A kiválasztott erőforrás típusától függően, hogy a központi telepítés előtt állítsa be a releváns tulajdonságok gyűjteménye. Minden alkalmazástípus esetében jelöljön ki egy cél erőforráscsoport. A következő kép bemutatja, hogyan webes alkalmazás létrehozása és üzembe helyezése az Ön által létrehozott erőforráscsoportot.
+1. A kiválasztott erőforrás típusától függően, hogy a központi telepítés előtt állítsa be a releváns tulajdonságok gyűjteménye. Minden alkalmazástípus esetében jelöljön ki egy cél erőforráscsoport. Az alábbi képen egy Linux virtuális gép létrehozása és üzembe helyezése az Ön által létrehozott erőforráscsoportot.
 
    ![Erőforráscsoport létrehozása](./media/resource-group-template-deploy-portal/select-existing-group.png)
 
    Azt is megteheti Ha dönt, hogy az erőforrások üzembe helyezésekor, hozzon létre egy erőforráscsoportot. Válassza ki **új létrehozása** , és adja meg az erőforráscsoport nevét.
 
-   ![Új erőforráscsoport létrehozása](./media/resource-group-template-deploy-portal/select-new-group.png)
-
-1. A központi telepítés megkezdődik. Az üzembe helyezés eltarthat néhány percig. Ha a telepítés véget ért, megjelenik egy értesítés.
+1. A központi telepítés megkezdődik. Az üzembe helyezés több percet is igénybe vehet. Bizonyos erőforrásokhoz, mint az egyéb erőforrások hosszabb időt vesz igénybe. Ha a telepítés véget ért, megjelenik egy értesítés. Válassza ki **erőforrás megnyitása** megnyitása
 
    ![Értesítés megtekintése](./media/resource-group-template-deploy-portal/view-notification.png)
 
 1. Az erőforrások üzembe helyezése után is hozzáadhat további erőforrásokat az erőforráscsoport kiválasztásával **Hozzáadás**.
 
-   ![Erőforrás felvétele](./media/resource-group-template-deploy-portal/add-resource.png)
+   ![Erőforrás hozzáadása](./media/resource-group-template-deploy-portal/add-resource.png)
 
 ## <a name="deploy-resources-from-custom-template"></a>Egyéni sablon erőforrások üzembe helyezése
 
@@ -81,61 +81,53 @@ Ha azt szeretné, hajtsa végre a központi telepítés, de nem használja a sab
 > [!NOTE]
 > A portál felület nem támogatja a hivatkozó egy [a Key vault titkos](resource-manager-keyvault-parameter.md). Ehelyett használjon [PowerShell](resource-group-template-deploy.md) vagy [Azure CLI-vel](resource-group-template-deploy-cli.md) helyben vagy egy külső URI-ból a sablon üzembe helyezéséhez.
 
-1. A portálon keresztül testreszabott sablon üzembe helyezéséhez válassza **erőforrás létrehozása**, és keressen rá a **sablonalapú telepítés** mindaddig, amíg a lehetőségek választhatók ki.
+1. A portálon keresztül testreszabott sablon üzembe helyezéséhez válassza **erőforrás létrehozása**, keressen **sablon**. majd **sablonalapú telepítés**.
 
    ![Keresés sablon telepítése](./media/resource-group-template-deploy-portal/search-template.png)
 
 1. Kattintson a **Létrehozás** gombra.
+1. Megjelenik a sablonok létrehozásának számos lehetőség közül választhat:
 
-   ![Kattintás a Létrehozás gombra](./media/resource-group-template-deploy-portal/show-template-option.png)
-
-1. Megjelenik a sablonok létrehozásának számos lehetőség közül választhat. Válassza a **Saját sablon készítése a szerkesztőben** lehetőséget.
+    - **A szerkesztőben saját sablon készítése**: hozzon létre egy sablont, a portál sablonnal szerkesztő.  A szerkesztő meg adjon hozzá egy erőforrás sablonséma kezelésére képes.
+    - **Gyakran használt sablonok**: Nincsenek négy közös templatess Linux rendszerű virtuális gép, a Windows virtuális gép, a webalkalmazás és a egy Azure SQL database létrehozásához.
+    - **GitHub gyorsindítási sablon betöltése**: egy meglévő [gyorsindítási sablonok](https://azure.microsoft.com/resources/templates/).
 
    ![Beállítások megtekintése](./media/resource-group-template-deploy-portal/see-options.png)
 
-1. Üres sablon testreszabásához elérhető van.
+    Ez az oktatóanyag utasításait követve a gyorsindítási sablon betöltése biztosít.
 
-   ![Sablon létrehozása](./media/resource-group-template-deploy-portal/blank-template.png)
+1. A **GitHub gyorsindítási sablon betöltése**adja meg **101-storage-fiók – create**.
 
-1. Manuálisan szerkessze a JSON-szintaxist, vagy válasszon ki egy előre elkészített sablont a a [gyorsindítási sablon galéria](https://azure.microsoft.com/resources/templates/). Ebben a cikkben használhatja azonban a **erőforrás hozzáadása** lehetőséget.
+    Erre két lehetősége van:
 
-   ![Sablon szerkesztése](./media/resource-group-template-deploy-portal/select-add-resource.png)
+    - **Sablon kiválasztása**: helyezze üzembe a sablont.
+    - **Sablon szerkesztése**: a gyorsindítási sablon szerkesztése a telepítése előtt.
 
-1. Válassza ki **tárfiók** és adjon meg egy nevet. Amikor végzett az értékek megadásával, válassza ki a **OK**.
+1. Válassza ki **szerkesztési sablon** megismerheti a portál sablon szerkesztőben. A sablon betöltése a szerkesztőben. Figyelje meg, hogy van két paramétert: **Tárfióktípus** és **hely**.
 
-   ![Adattároló fiók kiválasztása](./media/resource-group-template-deploy-portal/add-storage-account.png)
+   ![Sablon létrehozása](./media/resource-group-template-deploy-portal/show-json.png)
 
-1. A szerkesztő JSON automatikusan hozzáadja az erőforrástípushoz. Figyelje meg, hogy az tartalmaz egy paraméter meghatározása a tárfiók típusát. Kattintson a **Mentés** gombra.
+1. Egy kis módosítást a sablonhoz. Ha például frissítése a **storageAccountName** változót:
 
-   ![Sablon megjelenítése](./media/resource-group-template-deploy-portal/show-json.png)
+    ```json
+    "storageAccountName": "[concat('azstore', uniquestring(resourceGroup().id))]"
+    ```
 
-1. Most már lehetősége van definiálva a sablonban az erőforrásokat üzembe kívánja. Telepíthet, fogadja el a feltételeket és kikötéseket, és válassza ki **beszerzési**.
+1. Kattintson a **Mentés** gombra. Most már megjelenik a portál sablon üzembe helyezési felület. Figyelje meg, hogy a két paramétert, amelyek definiálva a sablonban.
+1. Adja meg, vagy válassza ki az indexattribútumokat:
 
-   ![Sablon üzembe helyezése](./media/resource-group-template-deploy-portal/provide-custom-template-values.png)
+    - **Előfizetés**: Válasszon ki egy Azure-előfizetést.
+    - **Erőforráscsoport**: Válassza ki **új létrehozása** és adjon meg egy nevet.
+    - **Hely**: Válasszon egy Azure-beli helyet.
+    - **Tárfiók típusa**: Használja az alapértelmezett értéket.
+    - **Hely**: Használja az alapértelmezett értéket.
+    - **Elfogadom a fenti feltételeket és kikötéseket**: (kiválasztás)
 
-## <a name="deploy-resources-from-a-template-saved-to-your-account"></a>A sablon fiókjába erőforrások üzembe helyezése
-
-A portál lehetővé teszi, hogy a sablon mentése az Azure-fiókjába, és telepítse újra később. A sablonok további információkért lásd: [hozzon létre és helyezhet üzembe az első Azure Resource Manager-sablon](resource-manager-create-first-template.md).
-
-1. A mentett sablonok megkereséséhez válassza ki a **további szolgáltatások**.
-
-   ![További szolgáltatások](./media/resource-group-template-deploy-portal/more-services.png)
-
-1. Keresse meg **sablonok** , és válassza ezt a lehetőséget.
-
-   ![Sablonok keresése](./media/resource-group-template-deploy-portal/find-templates.png)
-
-1. Fiókjába sablonok listájából válassza ki a kívánt dolgozhat.
-
-   ![Mentett sablonok](./media/resource-group-template-deploy-portal/saved-templates.png)
-
-1. Válassza ki **telepítés** újbóli üzembe helyezéséhez a mentett sablonnak.
-
-   ![Mentett sablon üzembe helyezése](./media/resource-group-template-deploy-portal/deploy-saved-template.png)
+1. Válassza a **Beszerzés** lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 
 - Auditnaplók megtekintése: [auditálási műveletek a Resource Manager](./resource-group-audit.md).
 - Telepítési hibák elhárításához tekintse meg a [üzembehelyezési műveletek megtekintése](./resource-manager-deployment-operations.md).
 - Sablon exportálása egy üzembe helyezési vagy az erőforráscsoport, lásd: [exportálása az Azure Resource Manager-sablonok](./manage-resource-groups-portal.md#export-resource-groups-to-templates).
-- A szolgáltatás több régióban, tekintse meg biztonságosan bevezetési [Azure Deployment Manager](./deployment-manager-overview.md).
+- Biztonságosan számára, hogy a szolgáltatás több régióban, lásd: [Azure Deployment Manager](./deployment-manager-overview.md).

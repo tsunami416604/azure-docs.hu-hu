@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: A Bing Entity Search egyoldalas webalkalmazást'
-titlesuffix: Azure Cognitive Services
+title: 'Oktatóanyag: Egyoldalas webalkalmazás Bing Entity Search'
+titleSuffix: Azure Cognitive Services
 description: Útmutató a Bing Entity Search API egyoldalas webalkalmazásban való használatához.
 services: cognitive-services
 author: aahill
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: tutorial
-ms.date: 02/01/2019
+ms.date: 07/15/2019
 ms.author: aahi
-ms.openlocfilehash: fe1e56d2975c219a56d41102c728b7873f9f4f62
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 5a8276f06207eb69ffec0e21c6d92794973f3b83
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57538170"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423987"
 ---
 # <a name="tutorial-single-page-web-app"></a>Oktatóanyag: Egyoldalas webalkalmazás
 
@@ -382,7 +382,7 @@ Az előző két függvény kódjainak nagy része a hibakezelésért felel. A k�
 
 |Fázis|Lehetséges hiba vagy hibák|Kezelő|
 |-|-|-|
-|JavaScript-kérésobjektum létrehozása|Érvénytelen URL-cím|`try`/`catch` blokk|
+|JavaScript-kérésobjektum létrehozása|Érvénytelen URL|`try`/`catch` blokk|
 |Kérés végrehajtása|Hálózati hibák, megszakított kapcsolatok|`error` és `abort` eseménykezelők|
 |Keresés végrehajtása|Érvénytelen kérés, érvénytelen JSON, sebességkorlátok|tesztek a `load` eseménykezelőben|
 

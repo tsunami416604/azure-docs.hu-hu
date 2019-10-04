@@ -10,11 +10,11 @@ services: azure-maps
 manager: timlt
 ms.custom: mvc
 ms.openlocfilehash: a70011b934398ac4e7f74bb67013e93bb5e86e4e
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56008509"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60799177"
 ---
 # <a name="react-to-azure-maps-events-by-using-event-grid"></a>Az Azure Maps események reagálás az Event Grid használatával 
 

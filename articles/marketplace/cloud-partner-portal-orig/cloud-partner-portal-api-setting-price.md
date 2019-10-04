@@ -1,36 +1,29 @@
 ---
-title: A virtuálisgép-ajánlatok díjszabása |} A Microsoft Docs
-description: A három módszert a virtuális gép ajánlatok díjszabása ismerteti.
+title: A virtuális gépekkel kapcsolatos ajánlatok díjszabása | Azure piactér
+description: Ez a cikk a virtuális gépekkel kapcsolatos ajánlatok díjszabásának három módszerét ismerteti.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: a029477dfd8046863ebfe34cd839562a0b1f3d87
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.author: pabutler
+ms.openlocfilehash: e398b43e679fb6420c2256e77d34359ae537ac1c
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59607794"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868748"
 ---
 <a name="pricing-for-virtual-machine-offers"></a>Virtuálisgép-ajánlatok díjszabása
 ==================================
 
-Adja meg a virtuális gép ajánlatok díjszabásával kapcsolatos három módja van: testre szabott core díjszabás, magonként díjszabás és díjszabási táblázat.
+A virtuális gépekre vonatkozó ajánlatok díjszabása a következő három módon adható meg: testreszabott alapszintű díjszabás, alapszintű díjszabás és a számolótábla díjszabása.
 
 
-<a name="customized-core-pricing"></a>Testre szabott core díjszabása
+<a name="customized-core-pricing"></a>Testreszabott alapvető díjszabás
 -----------------------
 
-Díjszabása az egyes régió és alapvető kombinációjával. Minden régióhoz az értékesítési listában meg kell adni a **virtualMachinePricing**/**regionPrices** a definíció szakasza.  Használja a megfelelő Pénznemkód minden [régió](#regions) a kérelemből.  A következő példa bemutatja ezeket a követelményeket:
+A díjszabás az egyes régiók és a Core kombinációk esetében egyedi. Az értékesítési listán szereplő összes régiót meg kell adni a definíció **virtualMachinePricing**/**regionPrices** szakaszában.  A kérelemben szereplő minden egyes [régióhoz](#regions) használja a megfelelő pénznemkóddal.  A következő példa ezeket a követelményeket mutatja be:
 
 ``` json
     "virtualMachinePricing": 
@@ -41,21 +34,31 @@ Díjszabása az egyes régió és alapvető kombinációjával. Minden régióho
             "currency": "USD",
                 "individually": 
                 {
-                    "sharedcore": 2,
+                    "sharedcore": 1,
                     "1core": 2,
-                    "2core": 3,
-                    "4core": 4,
-                    "6core": 5,
+                    "2core": 2,
+                    "4core": 2,
+                    "6core": 2,
                     "8core": 2,
+                    "10core": 4,
                     "12core": 4,
                     "16core": 4,
                     "20core": 4,
                     "24core": 4,
-                    "32core": 4,
-                    "36core": 4,
-                    "40core": 4,
-                    "64core": 4,
-                    "128core": 4
+                    "32core": 6,
+                    "36core": 6,
+                    "40core": 6,
+                    "44core": 6,
+                    "48core": 10,
+                    "60core": 10,
+                    "64core": 10,
+                    "72core": 10,
+                    "80core": 12,
+                    "96core": 12,
+                    "120core": 15,
+                    "128core": 15,
+                    "208core": 20,
+                    "416core": 30
                 }
         }
         ...
@@ -63,10 +66,10 @@ Díjszabása az egyes régió és alapvető kombinációjával. Minden régióho
 ```
 
 
-<a name="per-core-pricing"></a>Magonként díjszabása
+<a name="per-core-pricing"></a>Alapszintű díjszabás
 ----------------
 
-Ebben az esetben a termékváltozat a kiadó meghatározhatja az USD-ben árú, és minden más díj automatikusan jönnek létre. A díj / processzormag megadott a **egyetlen** paraméter a kérésben.
+Ebben az esetben a közzétevők a SKU-ban egy árat határoznak meg USD értékben, és minden egyéb díj automatikusan létrejön. Az egységenkénti díj a kérelem **egyetlen** paraméterében van megadva.
 
 ``` json
      "virtualMachinePricing": 
@@ -84,7 +87,7 @@ Ebben az esetben a termékváltozat a kiadó meghatározhatja az USD-ben árú, 
 <a name="spreadsheet-pricing"></a>Táblázat díjszabása
 -------------------
 
-A közzétevő előfordulhat, hogy is töltse fel a díjszabási táblázatot egy ideiglenes tárolási helyet, majd az URI-t tartalmazza a többi fájl összetevők például a kérésben. A táblázat majd fel, a megadott ár ütemezés szerint értékelheti ki a lefordított, és végül frissíti az ajánlat az árképzési információkat. Az ajánlat GET-kérésekhez adja vissza a számolótábla URI-t és a kiértékelt árak a régió.
+A közzétevő a díjszabási táblázatot is feltöltheti egy ideiglenes tárolóhelyre, majd belefoglalja az URI-t a kérelembe, például a többi fájl összetevőt. A rendszer feltölti a táblázatot, és lefordítja a megadott árlista kiértékelésére, végül pedig a díjszabási információkkal frissíti az ajánlatot. Az ajánlatra vonatkozó későbbi GET-kérések a táblázat URI azonosítóját és a régió értékelt árát fogják visszaadni.
 
 ``` json
      "virtualMachinePricing": 
@@ -97,12 +100,18 @@ A közzétevő előfordulhat, hogy is töltse fel a díjszabási táblázatot eg
      }
 ```
 
-<a name="regions"></a>Régiók
+<a name="new-core-sizes-added-on-722019"></a>Új alapvető méretek hozzáadva a 7/2/2019
+---------------------------
+
+Az új Azure-beli virtuálisgép-méretek (a magok száma alapján) új díjszabást kapott a VM-közzétevők 2019. július 2-án.  Az új árak a következő alapméretekre vonatkoznak: 10, 44, 48, 60, 120, 208 és 416.  A meglévő virtuális gépek esetében a magok méretének új díjait a jelenlegi árak alapján automatikusan kiszámítjuk.  A kiadók 2019 augusztus 1-ig megtekintik a további árakat, és elvégzik a kívánt módosításokat.  Ezt a dátumot követően, ha a közzétevő még nem tette közzé újra, az új alapvető méretek automatikusan kiszámított árai érvénybe lépnek.
+
+
+<a name="regions"></a>Regions
 -------
 
-Az alábbi táblázat a különböző régiókban is megadható a testre szabott core díjszabás és a megfelelő pénznemkód.
+A következő táblázat azokat a különböző régiókat mutatja be, amelyeket megadhat a testreszabott alapdíjszabáshoz, valamint a hozzájuk tartozó pénznemkóddal.
 
-| **Régió** | **Name (Név)**             | **Pénznemkód** |
+| **Régió** | **Name**             | **Pénznemkód** |
 |------------|----------------------|-------------------|
 | DZ         | Algéria              | DZD               |
 | AR         | Argentína            | ARS               |
@@ -115,7 +124,7 @@ Az alábbi táblázat a különböző régiókban is megadható a testre szabott
 | BG         | Bulgária             | BGN               |
 | CA         | Kanada               | CAD               |
 | CL         | Chile                | CLP               |
-| CO         | Kolumbia             | COP               |
+| CO         | Kolumbia             | MÁSOLATTAL               |
 | CR         | Costa Rica           | CRC               |
 | HR         | Horvátország              | HRK               |
 | CY         | Ciprus               | EUR               |
@@ -132,10 +141,10 @@ Az alábbi táblázat a különböző régiókban is megadható a testre szabott
 | GR         | Görögország               | EUR               |
 | GT         | Guatemala            | GTQ               |
 | HK         | Hongkong (KKT)        | HKD               |
-| HU         | Magyarország              | FORINTBAN               |
-| IS         | Izland              | EMEZFOGLALÁS               |
+| HU         | Magyarország              | FT               |
+| IS         | Izland              | ISK               |
 | IN         | India                | INR               |
-| ID (Azonosító)         | Indonézia            | IDR               |
+| id         | Indonézia            | IDR               |
 | IE         | Írország              | EUR               |
 | IL         | Izrael               | ILS               |
 | IT         | Olaszország                | EUR               |
@@ -163,12 +172,12 @@ Az alábbi táblázat a különböző régiókban is megadható a testre szabott
 | PK         | Pakisztán             | PKR               |
 | PA         | Panama               | USD               |
 | PY         | Paraguay             | PYG               |
-| PE         | Peru                 | TOLLAL               |
+| PE         | Peru                 | TOLLAS               |
 | PH         | Fülöp-szigetek          | PHP               |
 | PL         | Lengyelország               | PLN               |
 | PT         | Portugália             | EUR               |
 | PR         | Puerto Rico          | USD               |
-| QA         | Katar                | KÁR               |
+| QA         | Katar                | QAR               |
 | RO         | Románia              | RON               |
 | RU         | Oroszország               | RUB               |
 | SA         | Szaúd-Arábia         | SAR               |

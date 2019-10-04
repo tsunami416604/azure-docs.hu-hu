@@ -2,20 +2,20 @@
 title: Használati jelentéskészítési API mintákat, és az Azure Active Directory B2C definíciók |} A Microsoft Docs
 description: Útmutató és a példák a jelentések az Azure AD B2C-bérlőben a felhasználók, hitelesítés és többtényezős hitelesítés.
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 08/04/2017
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5ccd9ea36fcf20c56684ac5892a7fa32e0345633
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: fe7dd90bdec816ee433310a803d85c57f4892f8c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55165999"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66508714"
 ---
 # <a name="accessing-usage-reports-in-azure-ad-b2c-via-the-reporting-api"></a>A jelentéskészítési API-n keresztül az Azure AD B2C-ben a használati jelentések elérése
 

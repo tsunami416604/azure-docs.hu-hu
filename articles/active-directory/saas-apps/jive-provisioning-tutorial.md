@@ -16,11 +16,11 @@ ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 607d538a2a2636e17265e95195000a777f162dc4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192336"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60263383"
 ---
 # <a name="tutorial-configure-jive-for-automatic-user-provisioning"></a>Oktatóanyag: Jive-beli konfigurálásához a felhasználók automatikus átadása
 
@@ -68,7 +68,7 @@ Ez az eljárás részeként a Ön a felhasználó biztonsági jogkivonat Jive.co
 
 1. Állítsa be a **Kiépítési mód** való **automatikus**. 
 
-    ![kiépítés folyamatban](./media/jive-provisioning-tutorial/provisioning.png)
+    ![Kiépítés](./media/jive-provisioning-tutorial/provisioning.png)
 
 1. Alatt a **rendszergazdai hitelesítő adataival** területén adja meg a következő beállításokat:
    

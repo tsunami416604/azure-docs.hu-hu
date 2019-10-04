@@ -1,9 +1,9 @@
 ---
-title: Ismerkedés a queue storage és a Visual Studio csatlakoztatott szolgáltatásainak (felhőszolgáltatások) |} A Microsoft Docs
-description: Ismerkedés az Azure Queue storage használatával egy felhőszolgáltatás-projektet a Visual Studióban egy tárfiókot, a Visual Studio használatával való csatlakozást követően kapcsolódó szolgáltatások
+title: Ismerkedés a üzenetsor-tárolással és a Visual Studio csatlakoztatott szolgáltatásaival (Cloud Services) | Microsoft Docs
+description: Az Azure üzenetsor-tárolás használatának első lépései a Visual Studióban lévő Cloud Service-projektekben a Visual Studio csatlakoztatott szolgáltatásainak használatával való csatlakozást követően
 services: storage
 author: ghogen
-manager: douge
+manager: jillfra
 ms.assetid: da587aac-5e64-4e9a-8405-44cc1924881d
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
@@ -12,63 +12,63 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 28a7de1b43d793641237197aea841022996b07e3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5ea0af23ef8cf41b20de033d38e4d8652f9f8310
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57994036"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69510690"
 ---
-# <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Ismerkedés az Azure Queue storage és a Visual Studio kapcsolódó szolgáltatásokkal (felhőszolgáltatás-projektek)
+# <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Ismerkedés az Azure üzenetsor-tárolóval és a Visual Studio csatlakoztatott szolgáltatásaival (Cloud Services-projektek)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
 ## <a name="overview"></a>Áttekintés
-Ez a cikk azt ismerteti, hogyan kezdheti el az Azure Queue storage használata a Visual Studióban, hivatkozott Azure storage-fiók egy felhőszolgáltatási projekt a Visual studióval vagy létrehozása után **csatlakoztatott szolgáltatás hozzáadása** párbeszédpanel.
+Ez a cikk azt ismerteti, hogyan kezdheti el az Azure üzenetsor-tárolás használatát a Visual Studióban, miután létrehozott vagy hivatkozott egy Azure Storage-fiókot a Cloud Services-projektben a Visual Studio **csatlakoztatott szolgáltatások hozzáadása** párbeszédpanel használatával.
 
-Bemutatjuk, hogyan várólista létrehozása a code-ban. Azt is megmutatjuk, hogyan hajthat végre alapszintű üzenetsor-műveletek, például hozzáadása, módosítása, olvasó és üzenetsorbeli üzenetek eltávolítása. A Kódminták C#-kódot, és használja a írt a [a Microsoft Azure Storage ügyféloldali kódtára a .NET-hez](https://msdn.microsoft.com/library/azure/dn261237.aspx).
+Bemutatjuk, hogyan hozhat létre egy várólistát a kódban. Azt is bemutatjuk, hogyan hajthat végre olyan alapszintű üzenetsor-műveleteket, mint például az üzenetsor-üzenetek hozzáadása, módosítása, olvasása és eltávolítása. A mintákat C# kódban kell megírni, és a [.net-hez készült Microsoft Azure Storage ügyféloldali kódtárat](https://msdn.microsoft.com/library/azure/dn261237.aspx)használjuk.
 
-A **csatlakoztatott szolgáltatás hozzáadása** művelet telepíti a megfelelő NuGet-csomagokat a projekthez az Azure storage eléréséhez, és a projekt konfigurációs fájlokat ad hozzá a tárfiók kapcsolati karakterláncát.
+A **csatlakoztatott szolgáltatások hozzáadása** művelet telepíti a megfelelő NuGet-csomagokat az Azure Storage-ba a projektben, és hozzáadja a Storage-fiókhoz tartozó kapcsolati karakterláncot a projekt konfigurációs fájljaihoz.
 
-* Lásd: [.NET használatával az Azure Queue storage használatának első lépései](../storage/queues/storage-dotnet-how-to-use-queues.md) üzenetsorok a kód módosítása további tájékoztatást.
-* Lásd: [Storage-dokumentáció](https://azure.microsoft.com/documentation/services/storage/) Azure Storage szolgáltatással kapcsolatos általános információkat.
-* Lásd: [Cloud Services – dokumentáció](https://azure.microsoft.com/documentation/services/cloud-services/) az Azure cloud services kapcsolatos általános információkat.
-* Lásd: [ASP.NET](https://www.asp.net) ASP.NET-alkalmazások programozása további információt.
+* Lásd: az [Azure Queue Storage használatának első lépései a .NET használatával](../storage/queues/storage-dotnet-how-to-use-queues.md) további információ a várólisták a kódban történő kezeléséről.
+* Az Azure Storage szolgáltatással kapcsolatos általános információkért lásd a [Storage dokumentációját](https://azure.microsoft.com/documentation/services/storage/) .
+* Az Azure Cloud Services általános információit [Cloud Services dokumentációban](https://azure.microsoft.com/documentation/services/cloud-services/) találja.
+* A ASP.NET-alkalmazások programozásával kapcsolatos további információkért lásd: [ASP.net](https://www.asp.net) .
 
 Az Azure Queue Storage szolgáltatás üzenetek nagy számban történő tárolására szolgál, amelyek HTTP- vagy HTTPS-kapcsolattal, hitelesített hívásokon keresztül a világon bárhonnan elérhetők. Egyetlen üzenetsor akár 64 KB méretű is lehet, és a tárfiók maximális kapacitásán belül több millió üzenetet tartalmazhat.
 
-## <a name="access-queues-in-code"></a>Hozzáférés üzenetsorok a code-ban
-A Visual Studio Felhőszolgáltatás-projektek várólisták elérése, foglalja bele a következő elemeket minden olyan C# forrásfájl elérhető az Azure Queue storage kell.
+## <a name="access-queues-in-code"></a>Hozzáférési sorok a kódban
+Ha a várólistákat a Visual Studióban Cloud Services projektekben szeretné elérni, a következő elemeket is C# fel kell vennie az Azure Queue Storage-hoz hozzáférő forrásfájlban.
 
-1. Ellenőrizze, hogy a névtér-deklarációk, a C# fájlban tetején az ezen **használatával** utasításokat.
+1. Győződjön meg arról, hogy a C# fájl tetején található névtér-deklarációk tartalmazzák a következő utasítások **használatát** .
    
         using Microsoft.Framework.Configuration;
         using Microsoft.WindowsAzure.Storage;
         using Microsoft.WindowsAzure.Storage.Queue;
-2. Get- **CloudStorageAccount** objektum, amely a storage-fiók adatait jelöli. Az alábbi kód használatával az a tárolási kapcsolati karakterlánccal és a tárfiók-információ az Azure-szolgáltatás konfigurációjából.
+2. Szerezzen be egy **CloudStorageAccount** -objektumot, amely a Storage-fiók adatait jelöli. A következő kód használatával kérheti le a Storage-beli kapcsolódási karakterláncot és a Storage-fiók adatait az Azure-szolgáltatás konfigurációjában.
    
          CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
            CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
-3. Get- **CloudQueueClient** objektum, melyet a storage-fiókban a várólista objektumokra hivatkozzanak.  
+3. Szerezzen be egy **CloudQueueClient** -objektumot, amely a Storage-fiókban található üzenetsor-objektumokra hivatkozik.  
    
         // Create the queue client.
         CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
-4. Get- **CloudQueue** való hivatkozáshoz egy konkrét várólistába objektum.
+4. Egy adott várólistára hivatkozó **CloudQueue** objektum beolvasása.
    
         // Get a reference to a queue named "messageQueue"
         CloudQueue messageQueue = queueClient.GetQueueReference("messageQueue");
 
-**MEGJEGYZÉS:** Használja a kód előtt a fenti kódja a következő minták.
+**MEGJEGYZÉS:** Használja a fenti kódot a kód elé a következő mintákban.
 
-## <a name="create-a-queue-in-code"></a>Várólista létrehozása a code-ban
-A várólista létrehozása a kódban, adja hozzá a hívás **CreateIfNotExists**.
+## <a name="create-a-queue-in-code"></a>Várólista létrehozása a kódban
+Ha a várólistát a kódban szeretné létrehozni, csak vegyen fel egy hívást a **createifnotexists metódust**.
 
     // Create the CloudQueue if it does not exist
     messageQueue.CreateIfNotExists();
 
-## <a name="add-a-message-to-a-queue"></a>Adjon meg egy üzenetet egy üzenetsorba
-Üzenet beszúrása egy létező üzenetsorba, hozzon létre egy új **CloudQueueMessage** objektumot, majd hívja a **AddMessage** metódust.
+## <a name="add-a-message-to-a-queue"></a>Üzenet hozzáadása egy várólistához
+Ha egy üzenetet egy meglévő várólistába szeretne beszúrni, hozzon létre egy új **CloudQueueMessage** -objektumot, majd hívja meg a **AddMessage** metódust.
 
-A **CloudQueueMessage** objektum vagy egy karakterláncból (UTF-8 formátumban), vagy egy bájttömböt hozható létre.
+**CloudQueueMessage** objektum hozható létre egy sztringből (UTF-8 formátumban) vagy egy bájtos tömbből.
 
 Íme egy példa, amely beszúrja a "Hello, World" üzenetet.
 
@@ -76,19 +76,19 @@ A **CloudQueueMessage** objektum vagy egy karakterláncból (UTF-8 formátumban)
     CloudQueueMessage message = new CloudQueueMessage("Hello, World");
     messageQueue.AddMessage(message);
 
-## <a name="read-a-message-in-a-queue"></a>Egy üzenetsorban lévő üzenet olvasása
+## <a name="read-a-message-in-a-queue"></a>Üzenet elolvasása egy várólistában
 Egy üzenetsor elején található üzenetbe anélkül is bepillanthat, hogy eltávolítaná az üzenetsorból. Ehhez hívja meg a **PeekMessage** módszert.
 
     // Peek at the next message
     CloudQueueMessage peekedMessage = messageQueue.PeekMessage();
 
-## <a name="read-and-remove-a-message-in-a-queue"></a>Olvassa el, és a egy üzenetsorban lévő üzenet eltávolítása
-A kód távolíthatja el (kivétele az üzenetsorból) egy üzenetet egy üzenetsorból két lépésben.
+## <a name="read-and-remove-a-message-in-a-queue"></a>Üzenetsor beolvasása és eltávolítása
+A kód képes eltávolítani (de-üzenetsor) egy üzenetet egy várólistából két lépésben.
 
-1. Hívás **GetMessage** , a következő üzenet jelenik meg egy üzenetsorban. A **GetMessage** módszerrel lekért üzenet láthatatlanná válik az adott üzenetsorban található üzeneteket olvasó többi kód számára. Alapértelmezés szerint az üzenet 30 másodpercig marad láthatatlan.
-2. Végzett az üzenet eltávolítása a sorból, hívja meg **DeleteMessage**.
+1. Hívja meg a **GetMessage** -t, hogy beolvassa a következő üzenetet egy várólistában. A **GetMessage** módszerrel lekért üzenet láthatatlanná válik az adott üzenetsorban található üzeneteket olvasó többi kód számára. Alapértelmezés szerint az üzenet 30 másodpercig marad láthatatlan.
+2. Az üzenetnek a sorból való eltávolításának befejezéséhez hívja meg a **DeleteMessage**.
 
-Az üzenetek kétlépéses eltávolítása lehetővé teszi, hogy ha a kód hardver- vagy szoftverhiba miatt nem tud feldolgozni egy üzenetet, a kód egy másik példánya megkaphassa ugyanazt az üzenetet, és újra megpróbálkozhasson a feldolgozásával. A következő kód hívások **DeleteMessage** jobb gombbal az üzenet feldolgozása után.
+Az üzenetek kétlépéses eltávolítása lehetővé teszi, hogy ha a kód hardver- vagy szoftverhiba miatt nem tud feldolgozni egy üzenetet, a kód egy másik példánya megkaphassa ugyanazt az üzenetet, és újra megpróbálkozhasson a feldolgozásával. Az alábbi kód a **DeleteMessage** közvetlenül az üzenet feldolgozását követően hívja meg.
 
     // Get the next message in the queue.
     CloudQueueMessage retrievedMessage = messageQueue.GetMessage();
@@ -99,11 +99,11 @@ Az üzenetek kétlépéses eltávolítása lehetővé teszi, hogy ha a kód hard
     await messageQueue.DeleteMessage(retrievedMessage);
 
 
-## <a name="use-additional-options-to-process-and-remove-queue-messages"></a>További beállítások segítségével dolgozza fel, és távolítsa el a üzenetsorbeli üzenetek esetén
+## <a name="use-additional-options-to-process-and-remove-queue-messages"></a>További beállítások használata üzenetsor-üzenetek feldolgozásához és eltávolításához
 Két módon szabhatja testre az üzenetek lekérését egy üzenetsorból.
 
-* Üzenetkötegek (legfeljebb 32) kérheti le.
-* Beállíthat egy hosszabb vagy rövidebb láthatatlansági időkorlátot hosszabb vagy rövidebb idő teljesen feldolgozni az egyes üzenet, amely lehetővé teszi, hogy a kód. Az alábbi példakód a **GetMessages** módszer segítségével egyszerre 20 üzenetet kér le. Ezután minden üzenetet feldolgoz egy **foreach** hurok segítségével. Mindemellett a láthatatlansági időkorlátot minden üzenethez öt percre állítja be. Vegye figyelembe, hogy az 5 perc minden üzenetnél ugyanakkor kezdődik, tehát 5 perccel a **GetMessages** hívása után a nem törölt üzenetek újra láthatóvá válnak.
+* Lekérheti az üzenetek kötegét (legfeljebb 32).
+* Megadhat egy hosszabb vagy rövidebb láthatósági időkorlátot, így a kód több vagy kevesebb időt vehet igénybe az egyes üzenetek teljes feldolgozásához. Az alábbi példakód a **GetMessages** módszer segítségével egyszerre 20 üzenetet kér le. Ezután minden üzenetet feldolgoz egy **foreach** hurok segítségével. Mindemellett a láthatatlansági időkorlátot minden üzenethez öt percre állítja be. Vegye figyelembe, hogy az 5 perc minden üzenetnél ugyanakkor kezdődik, tehát 5 perccel a **GetMessages** hívása után a nem törölt üzenetek újra láthatóvá válnak.
 
 Például:
 
@@ -117,7 +117,7 @@ Például:
     }
 
 ## <a name="get-the-queue-length"></a>Az üzenetsor hosszának lekérése
-Megbecsülheti egy üzenetsorban található üzenetek számát. A **FetchAttributes** módszer lekéri a Queue szolgáltatásból az üzenetsorra vonatkozó attribútumokat, amelyek között megtalálható az üzenetek száma is. A **ApproximateMethodCount** tulajdonság által lekért legutóbbi értéket adja vissza a **FetchAttributes** metódus, a Queue szolgáltatás hívása nélkül.
+Megbecsülheti egy üzenetsorban található üzenetek számát. A **FetchAttributes** módszer lekéri a Queue szolgáltatásból az üzenetsorra vonatkozó attribútumokat, amelyek között megtalálható az üzenetek száma is. A **ApproximateMethodCount** tulajdonság a **FetchAttributes** metódus által lekért utolsó értéket adja vissza a Queue szolgáltatás hívása nélkül.
 
     // Fetch the queue attributes.
     messageQueue.FetchAttributes();
@@ -128,8 +128,8 @@ Megbecsülheti egy üzenetsorban található üzenetek számát. A **FetchAttrib
     // Display number of messages.
     Console.WriteLine("Number of messages in queue: " + cachedMessageCount);
 
-## <a name="use-the-async-await-pattern-with-common-azure-queue-apis"></a>Az Async-Await mintázat használata közös Azure üzenetsor API-kkal
-Ez a példa bemutatja az Async-Await mintázat használata közös Azure-üzenetsor API-kkal. A minta meghívja az adott módszerek aszinkron verzióját, ez látható által a **aszinkron** utáni javítás az egyes módszerek. Ha async módszert használja az async-await mintázat felfüggeszti a helyi végrehajtást a hívás befejeződéséig. Ez a viselkedés lehetővé teszi, hogy az aktuális szál más munkát, amely segít a teljesítmény szűk keresztmetszetek elkerülése és az alkalmazás általános válaszkészsége növeli. További információk az Async-Await mintázat használatáról .NET-keretrendszerben: [Async and Await (C# and Visual Basic)](https://msdn.microsoft.com/library/hh191443.aspx) (Async és Await (C# és Visual Basic)).
+## <a name="use-the-async-await-pattern-with-common-azure-queue-apis"></a>Az aszinkron várakozási minta használata a közös Azure üzenetsor API-kkal
+Ez a példa azt szemlélteti, hogyan használható az aszinkron várakozási minta az általános Azure üzenetsor-API-kkal. A minta meghívja az egyes metódusok aszinkron verzióját, ezt az egyes módszerek **aszinkron** utólagos javításával is megtekintheti. Aszinkron módszer használata esetén az aszinkron várakozási minta a helyi végrehajtás felfüggesztését hajtja végre, amíg a hívás be nem fejeződik. Ez a viselkedés lehetővé teszi, hogy az aktuális szál más munkát végezzen, ami segít elkerülni a teljesítmény szűk keresztmetszetét, és javítja az alkalmazás általános reagálását. További információk az Async-Await mintázat használatáról .NET-keretrendszerben: [Async and Await (C# and Visual Basic)](https://msdn.microsoft.com/library/hh191443.aspx) (Async és Await (C# és Visual Basic)).
 
     // Create a message to put in the queue
     CloudQueueMessage cloudQueueMessage = new CloudQueueMessage("My message");

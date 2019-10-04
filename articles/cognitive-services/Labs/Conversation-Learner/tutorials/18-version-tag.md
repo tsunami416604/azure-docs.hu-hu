@@ -1,21 +1,21 @@
 ---
-title: Címkézés verzió használata a beszélgetés Learner modell – a Microsoft Cognitive Services |} A Microsoft Docs
+title: Címkézés verzió használata beszélgetés Learner modell – Azure Cognitive Services |} A Microsoft Docs
 titleSuffix: Azure
 description: Ismerje meg, hogyan használható a verziókezelés és a egy Beszélgetéstanuló modellel címkézés.
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: 5073d3ab967c4c4e1b90636c247839875a6aa0d7
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: nitinme
+ms.openlocfilehash: 4067c7fb43cc200b8f49dbc14151c69a188e4e8e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58086309"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66475705"
 ---
 # <a name="how-to-use-version-tagging"></a>Címkézés verzió használata
 
@@ -109,4 +109,4 @@ Most láthatta versioning működését, és hogyan használhatja a robot a Bot 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Bemutató – jelszó-visszaállítás](./demo-password-reset.md)
+> [Enum entitásokat és a Set-entitásokkal végezhető műveletek](./tutorial-enum-set-entity.md)

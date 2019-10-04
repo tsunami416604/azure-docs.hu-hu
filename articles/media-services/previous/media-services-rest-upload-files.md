@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: f63087d107b9db30e2af6273afde7f51f1c72404
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: b7583a0fda2fca0d8ff80879389b824a7b352a84
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295113"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66752887"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>Fájlok feltöltése Media Services-fiók REST használatával  
 > [!div class="op_single_selector"]
@@ -176,7 +176,7 @@ Most, hogy a feltöltése URL-címe van, írjon egy kódrészletet az Azure Blob
 
 - [Az Azure Storage REST API használatával](https://docs.microsoft.com/azure/storage/common/storage-rest-api-auth?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 - [Blob KIHELYEZÉSE](https://docs.microsoft.com/rest/api/storageservices/put-blob)
-- [Blobok feltöltése a Blob storage](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy#upload-blobs-to-blob-storage)
+- [Blobok feltöltése a Blob storage](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy#upload-blobs-to-blob-storage)
 
 ### <a name="upload-a-file-with-postman"></a>Töltsön fel egy fájlt a postman használatával
 
@@ -185,7 +185,7 @@ Tegyük fel a Postman feltölthet egy kis .mp4-fájlt használjuk. A Postman has
 A feltöltés kérelme, mert nem része a **AzureMedia** gyűjtemény. 
 
 Hozzon létre, és a egy új kérelmet beállítása:
-1. Nyomja meg **+**, hozhat létre egy új kérelmet lapon.
+1. Nyomja meg **+** , hozhat létre egy új kérelmet lapon.
 2. Válassza ki **PUT** művelet és a Beillesztés **{{UploadURL}}** URL-címét.
 2. Hagyja **engedélyezési** lapra, a rendszer (nincs beállítva, a **tulajdonosi jogkivonat**).
 3. Az a **fejlécek** lapra, adja meg: **Kulcs**: "x-ms-blob-type" és a **érték**: "BlockBlob".

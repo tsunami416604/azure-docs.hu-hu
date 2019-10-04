@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/21/2018
 ms.author: cynthn;davberg
 ms.custom: include file
-ms.openlocfilehash: 366dec6c687c0b9f40d61e0debb7c15910b9fa99
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ca0c45b5d74140e0398595070df71da669caab53
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60187758"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179118"
 ---
 Az Azure számítási egységek (ACU) fogalmát biztosítja az Azure-termékváltozatok számítási (CPU) teljesítmény összehasonlítása. Így könnyebben választhatja ki a teljesítményigényeinek leginkább megfelelő termékváltozatot.  Az ACU jelenlegi standard alapjaként a Kisméretű (Standard_A1) virtuális gép 100-as értéket képvisel, és a többi termékváltozat értéke ehhez képest jelöli, hogy mennyivel gyorsabban futtatja az adott termékváltozat a standard teljesítménytesztet. 
 
@@ -24,7 +24,7 @@ Az Azure számítási egységek (ACU) fogalmát biztosítja az Azure-termékvál
 
 <br>
 
-| Termékváltozat-család | ACU \ vCPU | vCPU: Mag |
+| Termékváltozat-család | ACU \ vCPU | vCPU: Core |
 | --- | --- |---|
 | [A0](../articles/virtual-machines/windows/sizes-general.md) |50 | 1:1 |
 | [A1 - A4](../articles/virtual-machines/windows/sizes-general.md) |100 | 1:1 |
@@ -46,11 +46,13 @@ Az Azure számítási egységek (ACU) fogalmát biztosítja az Azure-termékvál
 | [A G1 - G5](../articles/virtual-machines/virtual-machines-windows-sizes-memory.md) |180 - 240* | 1:1 |
 | [GS1 - GS5](../articles/virtual-machines/virtual-machines-windows-sizes-memory.md) |180 - 240* | 1:1 |
 | [H](../articles/virtual-machines/windows/sizes-hpc.md) |290 - 300* | 1:1 |
+| [HB](../articles/virtual-machines/windows/sizes-hpc.md) |199 - 216** | 1:1 |
+| [HC](../articles/virtual-machines/windows/sizes-hpc.md) |297 - 315* | 1:1 |
 | [L4s - L32s](../articles/virtual-machines/windows/sizes-storage.md) |180 - 240* | 1:1 |
 | [L8s_v2 - L80s_v2](../articles/virtual-machines/windows/sizes-storage.md) |150 - 175** | 2:1 |
 | [M](../articles/virtual-machines/virtual-machines-windows-sizes-memory.md) | 160 - 180 | 2:1\*\*\* |
 
-* ACUs Intel® Turbo technológia használatával növelik a Processzor, és adja meg a teljesítmény növelését.  A teljesítmény növelése mennyisége a Virtuálisgép-méretet, a számítási feladatok és az ugyanazon a gazdagépen futó számítási feladatoktól függően változhat.
+\* ACUs Intel® Turbo technológia használatával növelik a Processzor, és adja meg a teljesítmény növelését.  A teljesítmény növelése mennyisége a Virtuálisgép-méretet, a számítási feladatok és az ugyanazon a gazdagépen futó számítási feladatoktól függően változhat.
 
 ** ACUs AMD® Boost technology használatával növelik a Processzor, és adja meg a teljesítmény növelését.  A teljesítmény növelése mennyisége a Virtuálisgép-méretet, a számítási feladatok és az ugyanazon a gazdagépen futó számítási feladatoktól függően változhat.
 

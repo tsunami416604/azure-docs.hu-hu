@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 08/31/2018
+ms.date: 06/03/2019
 ms.author: mbullwin
-ms.openlocfilehash: 47c83e6bc700f972e6dff83e4d067e61218c04bd
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: d1823779f8a8070149811e2349fc9f4281072d38
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54035253"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66497152"
 ---
 # <a name="application-insights-overview-dashboard"></a>Application Insights áttekintő irányítópult
 
@@ -60,9 +60,12 @@ Nyissa meg újra az áttekintő tapasztalatok csak adja meg:
 
 ![Áttekintés gombra](./media/overview-dashboard/app-insights-overview-dashboard-07.png)
 
+## <a name="troubleshooting"></a>Hibaelhárítás
+
+Ha **csempe beállításainak konfigurálása** és biztosította az irányítópulton nem jelennek meg 31 napos időszak letelte után az adatok, akár 90 napos alapértelmezett adatmegőrzési-31 nap egyéni időtartomány beállítása. Jelenleg nem ez a viselkedés nincs megkerülő megoldás.
+
 ## <a name="next-steps"></a>További lépések
 
 - [Tölcsérek](../../azure-monitor/app/usage-funnels.md)
 - [Megőrzés](../../azure-monitor/app/usage-retention.md)
 - [Felhasználói folyamatok](../../azure-monitor/app/usage-flows.md)
-- [Irányítópultok](../../azure-monitor/app/app-insights-dashboards.md)

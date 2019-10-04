@@ -12,16 +12,16 @@ ms.topic: sample
 ms.date: 07/04/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 5299675656ea23b85f78b3dbfdc02814ab332a8b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 19fd73dff045d6d784dd70d1f3ad539a22faf413
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46979049"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075468"
 ---
 # <a name="map-a-custom-domain-to-a-function-app"></a>Egyéni tartomány leképezése egy függvényalkalmazásra
 
-Ez a példaszkript egy függvényalkalmazást hoz létre egy App Service-csomagban, majd leképezi a megadott egyéni tartományhoz. Ha a függvényalkalmazása egy [App Service-csomagban](../functions-scale.md#app-service-plan) üzemel, egy CNAME vagy A rekord segítségével képezhet le egy egyéni tartományt. [Használatalapú csomagban](../functions-scale.md#consumption-plan) lévő függvényalkalmazások esetében csak a CNAME lehetőség támogatott. Ez a példa létrehoz egy App Service-csomagot, és egy A rekordra van szüksége a tartomány leképezéséhez. 
+Ez a példaszkript egy függvényalkalmazást hoz létre egy App Service-csomagban, majd leképezi a megadott egyéni tartományhoz. Amikor a függvényalkalmazás szolgáltatásban üzemeltetett egy [prémium szintű csomag](../functions-scale.md#premium-plan) vagy egy [App Service-csomag](../functions-scale.md#app-service-plan), leképezhet egy egyéni tartományt egy olyan CNAME REKORDOT vagy egy A rekordot. [Használatalapú csomagban](../functions-scale.md#consumption-plan) lévő függvényalkalmazások esetében csak a CNAME lehetőség támogatott. Ez a példa létrehoz egy App Service-csomagot, és egy A rekordra van szüksége a tartomány leképezéséhez. 
 
 A példaszkript futtatásához előzetesen konfigurálnia kell egy olyan A rekordot az egyéni tartományban, amely a webalkalmazás alapértelmezett tartománynevére mutat. További információ: [Egyéni tartományutasítások leképezése az Azure App Service-ben](https://aka.ms/appservicecustomdns). 
 
@@ -40,7 +40,7 @@ Ha a parancssori felület helyi telepítését és használatát választja, az 
 
 ## <a name="script-explanation"></a>Szkript ismertetése
 
-A szkript a következő parancsokat használja: A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
+Ez a szkript a következő parancsokat használja: A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|

@@ -1,41 +1,42 @@
 ---
-title: 'Gyors útmutató: Rendellenességek észlelése az idősoros adatokat az Anomáliadetektálási detector használatával REST API-t és a Java használatával |} A Microsoft Docs'
-description: Az Anomáliadetektálási detector használatával API segítségével észlelheti a rendellenességeket az adatsorozat egy kötegelt vagy a streamelt adatokon.
+title: 'Gyors útmutató: Az idősorozat-adataiban észlelt rendellenességek észlelése a REST API és a Java anomália detektor használatával'
+titleSuffix: Azure Cognitive Services
+description: A rendellenesség-Kiderítő API használatával az adatsorozatban lévő rendellenességeket kötegként vagy adatfolyamként lehet érzékelni.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
-ms.topic: article
-ms.date: 03/26/2019
+ms.topic: quickstart
+ms.date: 07/26/2019
 ms.author: aahi
-ms.openlocfilehash: 1c8ce91a0fd8805b307e1e21bc08f9050b8a47d4
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 001d53cbd7e2a57615ea3da71d128bd210a79921
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59547039"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565861"
 ---
-# <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-java"></a>Gyors útmutató: Rendellenességek észlelése az idősoros adatokat az Anomáliadetektálási detector használatával REST API-t és a Java használatával
+# <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-java"></a>Gyors útmutató: Az idősorozat-adataiban észlelt rendellenességek észlelése a REST API és a Java anomália detektor használatával
 
-Ez a rövid útmutató segítségével indítsa el a rendellenességek észlelése az idősoros adatokat az Anomáliadetektálási detector használatával API két észlelési mód használatával. A Java-alkalmazás két API-kérések tartalmazó JSON-formátumú idősoros adatokat küld, és lekérdezi a válaszokat.
+Ezzel a rövid útmutatóval megkezdheti a anomáliák-Kiderítő API két észlelési módjának használatát az idősorozat-adataiban észlelt rendellenességek észlelésére. Ez a Java-alkalmazás két, JSON-formátumú idősorozat-adatokat tartalmazó API-kérelmet küld, és lekéri a válaszokat.
 
 | API-kérelem                                        | Alkalmazás kimenete                                                                                                                         |
 |----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
-| Kötegelt feladatként rendellenességek észlelése                        | Az idősorozat-adatokat, és minden észlelt rendellenességek igazítja adatpontok anomáliadetektálási állapota (és más adatok) tartalmazó JSON-választ. |
-| A legújabb adatpont anomáliadetektálási állapotának észlelése | Az anomáliadetektálási állapota (és egyéb adatokat) az idősorozat-adatok a legutóbbi adatok pontját tartalmazó JSON-választ.                                                                                                                                         |
+| Rendellenességek észlelése kötegként                        | Az idősorozat-adatpontokhoz tartozó anomália-állapotot (és az egyéb adatmennyiségeket) tartalmazó JSON-válasz, valamint az észlelt rendellenességek helyei. |
+| A legutóbbi adatpont anomália állapotának észlelése | Az idősorozat-adatként a legutóbbi adatponthoz tartozó anomália-állapotot (és egyéb adatértékeket) tartalmazó JSON-válasz.                                                                                                                                         |
 
- Ezt az alkalmazást a Java nyelven van megírva, míg a API-ját egy REST-alapú webszolgáltatás szinte bármelyik programozási nyelvével kompatibilis.
+ Habár ez az alkalmazás Java nyelven íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- A [Java&trade; fejlesztési Kit(JDK) 7](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) vagy újabb.
+- A [Java&trade; Development Kit (JDK) 7-es](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) vagy újabb verziója.
 
-- Ezek a kódtárak importálja a Maven tárházból
-    - [A Java JSON](https://mvnrepository.com/artifact/org.json/json) csomag
-    - [Az Apache HttpClient](https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient) csomag
+- A kódtárak importálása a Maven adattárból
+    - [JSON a Java-](https://mvnrepository.com/artifact/org.json/json) csomagban
+    - [Apache HttpClient](https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient) -csomag
 
-- A JSON fájlt tartalmazó idősorozat-adatok mutat. A példaadatokat ebben a rövid útmutatóban található [GitHub](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/request-data.json).
+- Idősorozat-adatpontokat tartalmazó JSON-fájl. A rövid útmutatóhoz tartozó példa a githubon érhető [](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/request-data.json)el.
 
 [!INCLUDE [cognitive-services-anomaly-detector-data-requirements](../../../../includes/cognitive-services-anomaly-detector-data-requirements.md)]
 
@@ -60,12 +61,12 @@ Ez a rövid útmutató segítségével indítsa el a rendellenességek észlelé
     import java.nio.file.Paths;
     ```
 
-2. Változók létrehozása az előfizetési kulcs és a végpontot. Az alábbiakban az URI-k rendellenességek észlelése is használhat. Ezek hozzá lesznek fűzve a később, hozhat létre az API-Szolgáltatásvégpont URL-címeket.
+2. Hozzon létre változókat az előfizetési kulcshoz és a végponthoz. Az alábbi URI-k használhatók a anomáliák észleléséhez. Az API-kérelmek URL-címeinek létrehozásához ezeket a rendszer később hozzáfűzi a szolgáltatási végponthoz.
 
     |Észlelési módszer  |URI  |
     |---------|---------|
-    |Batch-észlelés    | `/anomalydetector/v1.0/timeseries/entire/detect`        |
-    |A legújabb adatok ponton észlelése     | `/anomalydetector/v1.0/timeseries/last/detect`        |
+    |Kötegelt észlelés    | `/anomalydetector/v1.0/timeseries/entire/detect`        |
+    |Észlelés a legújabb adatponton     | `/anomalydetector/v1.0/timeseries/last/detect`        |
 
     ```java
     // Replace the subscriptionKey string value with your valid subscription key.
@@ -79,25 +80,25 @@ Ez a rövid útmutató segítségével indítsa el a rendellenességek észlelé
     static final String batchDetectionUrl = "/anomalydetector/v1.0/timeseries/entire/detect";
     ```
 
-3. Olvassa el a JSON-adatok fájlban
+3. Olvasás a JSON-adatfájlban
 
     ```java
     String requestData = new String(Files.readAllBytes(Paths.get(dataPath)), "utf-8");
     ```
 
-## <a name="create-a-function-to-send-requests"></a>Kérelmek küldése függvény létrehozása
+## <a name="create-a-function-to-send-requests"></a>Függvény létrehozása a kérelmek küldéséhez
 
-1. Hozzon létre egy új függvényt nevű `sendRequest()` átkerül a fent létrehozott változókat. Hajtsa végre az alábbi lépéseket.
+1. Hozzon létre egy nevű `sendRequest()` új függvényt, amely a fent létrehozott változókat veszi igénybe. Ezután hajtsa végre a következő lépéseket.
 
-2. Hozzon létre egy `CloseableHttpClient` objektum, amely kéréseket küldhetnek az API-t. A kérelem küldése egy `HttpPost` támogatásikérelem-objektum kombinálásával a végponthoz, és a egy Anomáliadetektálási detector használatával URL-CÍMÉT.
+2. Hozzon `CloseableHttpClient` létre egy objektumot, amely küldhet kérelmeket az API-nak. Küldje el a kérést `HttpPost` egy kérelem objektumnak a végpont és egy anomália-detektor URL-címének kombinálásával.
 
-3. Használja a kérelem `setHeader()` függvény beállítása a `Content-Type` fejlécet `application/json`, és adja hozzá az előfizetési kulcs, a `Ocp-Apim-Subscription-Key` fejléc.
+3. A kérelem `setHeader()` funkciójának használatával állítsa be a `Content-Type` fejlécet `application/json`, és adja hozzá az előfizetési kulcsot `Ocp-Apim-Subscription-Key` a fejléchez.
 
-4. A kérelem használata `setEntity()` függvényt, hogy az adatok küldésének.
+4. Használja a kérelem `setEntity()` függvényét az elküldeni kívánt adathoz.
 
-5. Az ügyfél használata `execute()` függvényt a kérelem elküldéséhez, és mentse azt egy `CloseableHttpResponse` objektum.
+5. A kérelem elküldéséhez használja az ügyfél `execute()` függvényét, és mentse egy `CloseableHttpResponse` objektumba.
 
-6. Hozzon létre egy `HttpEntity` objektum a válasz tartalom tárolásához. A tartalom lekérése `getEntity()`. Ha a válasz nem üres, adja vissza.
+6. Hozzon `HttpEntity` létre egy objektumot a válasz tartalmának tárolására. Szerezze be a tartalmat `getEntity()`a-val. Ha a válasz nem üres, küldje vissza.
 
 ```java
 static String sendRequest(String apiAddress, String endpoint, String subscriptionKey, String requestData) {
@@ -123,13 +124,13 @@ static String sendRequest(String apiAddress, String endpoint, String subscriptio
 }
 ```
 
-## <a name="detect-anomalies-as-a-batch"></a>Kötegelt feladatként rendellenességek észlelése
+## <a name="detect-anomalies-as-a-batch"></a>Rendellenességek észlelése kötegként
 
-1. Hozzon létre egy meghívott metódus `detectAnomaliesBatch()` során az adatokat egy kötegelt rendellenességek észlelése. Hívja a `sendRequest()` metódus a végpont URL-címe, előfizetési kulcs és json-adatok a fent létrehozott. Az eredményt kapja, és nyomtassa ki a konzolhoz.
+1. Hozzon létre egy `detectAnomaliesBatch()` metódust, amely egy kötegként észleli a rendellenességeket az összes adategységben. Hívja meg `sendRequest()` a fent létrehozott metódust a végponttal, az URL-lel, az előfizetési kulccsal és a JSON-adataival. Szerezze be az eredményt, és nyomtassa ki a-konzolra.
 
-2. Ha a válasz tartalmaz `code` mezőben nyomtassa ki a hibakódot és a hibaüzenet jelenik meg.
+2. Ha a válasz tartalmaz `code` mezőt, nyomtassa ki a hibakódot és a hibaüzenetet.
 
-3. Ellenkező esetben találja az adatkészlet a pozíciók a rendellenességek észlelését. A válasz `isAnomaly` mező arra, hogy egy adott adatpontot anomáliát vonatkozó logikai értéket tartalmaz. A JSON-tömböt beszerzése és végigléptetni, az index bármelyik nyomtatási `true` értékeket. Ha találhatók esetleges rendellenes adatpontok index ezeket az értékeket felelnek meg.
+3. Ellenkező esetben keresse meg a rendellenességek pozícióit az adatkészletben. A válasz `isAnomaly` mezője egy logikai értéket tartalmaz, amely arra vonatkozik, hogy egy adott adatpont rendellenesség-e. Szerezze be a JSON-tömböt, és ismételje meg az értékeket, és `true` nyomtassa ki bármelyik érték indexét. Ezek az értékek a rendellenes adatpontok indexének felelnek meg, ha vannak ilyenek.
 
 ```java
 static void detectAnomaliesBatch(String requestData) {
@@ -153,9 +154,9 @@ static void detectAnomaliesBatch(String requestData) {
 }
 ```
 
-## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>A legújabb adatpont anomáliadetektálási állapotának észlelése
+## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>A legutóbbi adatpont anomália állapotának észlelése
 
-* Hozzon létre egy meghívott metódus `detectAnomaliesLatest()` az adatkészlet az utolsó adatpont anomáliadetektálási állapotának észleléséhez. Hívja a `sendRequest()` metódus a végpont URL-címe, előfizetési kulcs és json-adatok a fent létrehozott. Az eredményt kapja, és nyomtassa ki a konzolhoz.
+* Hozzon létre egy `detectAnomaliesLatest()` nevű metódust az adathalmaz utolsó adatpontjának anomália állapotának észleléséhez. Hívja meg `sendRequest()` a fent létrehozott metódust a végponttal, az URL-lel, az előfizetési kulccsal és a JSON-adataival. Szerezze be az eredményt, és nyomtassa ki a-konzolra.
 
 ```java
 static void detectAnomaliesLatest(String requestData) {
@@ -165,11 +166,11 @@ static void detectAnomaliesLatest(String requestData) {
 }
 ```
 
-## <a name="load-your-time-series-data-and-send-the-request"></a>Az idősorozat-adatok betöltése, és a kérés küldése
+## <a name="load-your-time-series-data-and-send-the-request"></a>Töltse be az idősorozat adatait, és küldje el a kérést
 
-1. A fő metódus az alkalmazás olvassa el a kérelmeket a hozzáadni kívánt adatokat tartalmazó JSON-fájlt.
+1. Az alkalmazás fő metódusában olvassa el a kérelmekbe felvenni kívánt adatmennyiséget tartalmazó JSON-fájlt.
 
-2. Hívja meg a fent létrehozott két anomáliadetektálási észlelési funkciók.
+2. Hívja meg a fent létrehozott két anomália-észlelési függvényt.
 
 ```java
 public static void main(String[] args) throws Exception {
@@ -181,9 +182,9 @@ public static void main(String[] args) throws Exception {
 
 ### <a name="example-response"></a>Példaválasz
 
-A sikeres válasz JSON formátumban. A JSON-válasz megtekintése a Githubon, az alábbi hivatkozásokra kattintva:
-* [A batch észlelési példaválasz](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/batch-response.json)
-* [Legújabb pont észlelési példaválasz](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/latest-point-response.json)
+A sikeres válaszokat JSON formátumban adja vissza a rendszer. Az alábbi hivatkozásokra kattintva megtekintheti a JSON-választ a GitHubon:
+* [Példa a Batch észlelési válaszára](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/batch-response.json)
+* [Példa a legutóbbi pont észlelési válaszára](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/latest-point-response.json)
 
 ## <a name="next-steps"></a>További lépések
 

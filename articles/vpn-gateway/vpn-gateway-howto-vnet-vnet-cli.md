@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: cherylmc
 ms.openlocfilehash: e18f37b31b7f0a49717e174d8a20d56388ad4808
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526146"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60411831"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>Virtuális hálózatok közötti VPN Gateway-kapcsolat konfigurálása az Azure CLI használatával
 
@@ -338,7 +338,7 @@ Ezt a lépést az új előfizetés (5. előfizetés) környezetében kell elvég
 
 ### <a name="connections5"></a>8. lépés – A kapcsolatok létrehozása
 
-Ez a lépés két CLI-munkamenetre van felosztva, amelyek jelölése **[1. előfizetés]** és **[5. előfizetés]**, mivel az átjárók eltérő előfizetésekben találhatók. Között, használja a `az account list --all` szeretné, hogy a fiókban elérhető előfizetések listájának `az account set --subscription <subscriptionID>` váltson át az előfizetést, amelyet használni szeretne.
+Ez a lépés két CLI-munkamenetre van felosztva, amelyek jelölése **[1. előfizetés]** és **[5. előfizetés]** , mivel az átjárók eltérő előfizetésekben találhatók. Között, használja a `az account list --all` szeretné, hogy a fiókban elérhető előfizetések listájának `az account set --subscription <subscriptionID>` váltson át az előfizetést, amelyet használni szeretne.
 
 1. **[1. előfizetés]** Jelentkezzen be, és csatlakozzon az 1. előfizetéshez. Az alábbi parancs kimenetéből olvassa le az átjáró nevét és azonosítóját:
 

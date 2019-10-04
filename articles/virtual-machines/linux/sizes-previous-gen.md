@@ -1,38 +1,37 @@
 ---
-title: Az Azure Linux rendszerű virtuális gép mérete – előző generációs szoftvereknél jobban |} A Microsoft Docs
-description: Az előző generációs szoftvereknél jobban elérhető méretek az Azure-ban Linux rendszerű virtuális gépek listája. Tartalmazza a vcpu-k, az adatlemezeket és a hálózati adapterek, valamint tárolási átviteli sebesség és a hálózati sávszélesség-sorozat méretei száma.
+title: Azure Linux VM-méretek – előző generációk | Microsoft Docs
+description: Felsorolja az Azure-beli linuxos virtuális gépekhez elérhető méretek korábbi generációit. A vCPU, adatlemezek és hálózati adapterek számával, valamint az ebben a sorozatban lévő méretek sávszélességével kapcsolatos információkat sorolja fel.
 services: virtual-machines-linux
 documentationcenter: ''
 author: jonbeck7
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/11/2019
 ms.author: jonbeck
-ms.openlocfilehash: b5da253c699c895c61df14ff50062a99e82d6913
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: e56fb938ca8d45a148700a0a6b91e22a4f9034c3
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544670"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100850"
 ---
-# <a name="previous-generations-of-virtual-machine-sizes"></a>Előző generációs szoftvereknél jobban virtuálisgép-méretek
+# <a name="previous-generations-of-virtual-machine-sizes"></a>A virtuális gépek méreteinek korábbi generációi
 
 [!INCLUDE [virtual-machines-common-sizes-general](../../../includes/virtual-machines-common-sizes-previous-gen.md)]
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../../includes/virtual-machines-common-sizes-table-defs.md)]
 
-## <a name="older-generations-of-virtual-machine-sizes"></a>Régebbi generációs szoftvereknél jobban virtuálisgép-méretek
+## <a name="older-generations-of-virtual-machine-sizes"></a>A virtuális gépek méreteinek régebbi generációi
 
 [!INCLUDE [virtual-machines-common-sizes-older](../../../includes/virtual-machines-common-sizes-older.md)]
 
-## <a name="other-sizes"></a>További méretek
+## <a name="other-sizes"></a>Egyéb méretek
 
 - [Általános célú](sizes-general.md)
 - [Számításra optimalizált](sizes-compute.md)
@@ -43,4 +42,4 @@ ms.locfileid: "59544670"
 
 ## <a name="next-steps"></a>További lépések
 
-Tudjon meg többet [Azure számítási egységek (ACU)](acu.md) Azure-termékváltozatok hasonlítsa össze a számítási teljesítményt nyújt segítséget.
+További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

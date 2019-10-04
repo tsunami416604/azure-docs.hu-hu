@@ -15,13 +15,13 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: b-juche
 ms.openlocfilehash: 8cda5921a1aec86d28beabbd9cea5b07a203a0e8
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401489"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61086178"
 ---
-# <a name="configure-export-policy-for-an-nfs-volume"></a>Az NFS-kötet exportálási vonatkozó házirend konfigurálása
+# <a name="configure-export-policy-for-an-nfs-volume"></a>Exportálási szabályzat konfigurálása NFS-kötethez
 
 Konfigurálhat egy exportálási szabályzatot, amellyel szabályozhatja az Azure NetApp Files-kötethez való hozzáférést. Exportálás házirend a rendszer csak az NFS-kötetek esetében támogatja. 
 

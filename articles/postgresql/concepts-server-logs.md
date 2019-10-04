@@ -1,64 +1,76 @@
 ---
-title: Kiszolgálói naplók az Azure Database for postgresql-hez
-description: Ez a cikk bemutatja, hogyan Azure-adatbázis PostgreSQL állít elő, lekérdezés és a hiba naplókat, és hogyan jelentkezzen az adatmegőrzési van konfigurálva.
+title: Kiszolgáló-naplók Azure Database for PostgreSQL – egyetlen kiszolgáló
+description: Ez a cikk bemutatja, hogyan hozza létre a Azure Database for PostgreSQL-Single Server lekérdezési és hibanapló-naplókat, és hogyan konfigurálja a naplózási adatmegőrzést.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/28/2019
-ms.openlocfilehash: 99deef907818ffdb1ce858c8e988e26cbd53a1a1
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.date: 09/18/2019
+ms.openlocfilehash: b295ab442e70772a86d6699e1063c7a1c728f1a7
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195098"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091119"
 ---
-# <a name="server-logs-in-azure-database-for-postgresql"></a>Kiszolgálói naplók az Azure Database for postgresql-hez 
-Azure Database for PostgreSQL állít elő, lekérdezés és a hiba naplókat. Lekérdezés és a hiba a naplók segítségével azonosítása, elhárítása és konfigurációs hibák és az optimálisnál rosszabb teljesítmény javításához. (A tranzakciós naplókhoz való hozzáférést lehetőség nem része). 
+# <a name="server-logs-in-azure-database-for-postgresql---single-server"></a>Kiszolgáló-naplók Azure Database for PostgreSQL – egyetlen kiszolgáló
+Az Azure Database for PostgreSQL lekérdezési és hibanaplókat hoz létre. A lekérdezési és a hibanapló segítségével azonosíthatja, elháríthatja és kijavíthatja a konfigurációs hibákat és az optimális teljesítményt. (A tranzakciós naplókhoz való hozzáférés nincs belefoglalva). 
 
 ## <a name="configure-logging"></a>Naplózás konfigurálása 
-Konfigurálhatja a naplózás a kiszolgálón a naplózás kiszolgálói paraméterek használatával. Minden új kiszolgálón **log_checkpoints** és **log_connections** alapértelmezés szerint. Nincsenek további paraméterek, a naplózás igényeinek megfelelően módosíthatja: 
+A naplózást a kiszolgálón a naplózási kiszolgáló paramétereinek használatával konfigurálhatja. Az egyes új kiszolgálók **log_checkpoints** és **log_connections** alapértelmezés szerint be vannak kapcsolva. További paraméterek is megadhatók a naplózási igényeknek megfelelően: 
 
-![Azure Database for PostgreSQL – a naplózási paraméterek](./media/concepts-server-logs/log-parameters.png)
+![Azure Database for PostgreSQL – naplózási paraméterek](./media/concepts-server-logs/log-parameters.png)
 
-További információ ezekről a paraméterekről tekintse meg a PostgreSQL [hibajelentés és a naplózás](https://www.postgresql.org/docs/current/static/runtime-config-logging.html) dokumentációját. Azure-adatbázis PostgreSQL paraméterek konfigurálása, lásd: a [portál dokumentációja](howto-configure-server-parameters-using-portal.md) vagy a [CLI dokumentációját](howto-configure-server-parameters-using-cli.md).
+További információ ezekről a paraméterekről: PostgreSQL [hibajelentési és naplózási](https://www.postgresql.org/docs/current/static/runtime-config-logging.html) dokumentációja. A Azure Database for PostgreSQL paraméterek konfigurálásának megismeréséhez tekintse meg a [portál dokumentációját](howto-configure-server-parameters-using-portal.md) vagy a [CLI dokumentációját](howto-configure-server-parameters-using-cli.md).
 
-## <a name="access-server-logs-through-portal-or-cli"></a>Hozzáférés a kiszolgálói naplókhoz portálon vagy parancssori felületen keresztül
-Ha engedélyezte a naplókat, akkor érhetők el az Azure Database for PostgreSQL log storage használatával a [az Azure portal](howto-configure-server-logs-in-portal.md), [Azure CLI-vel](howto-configure-server-logs-using-cli.md), és az Azure REST API-k. A naplófájlok elforgatása minden 1 óra vagy 100MB méretű, amelyiket hamarabb. A megőrzési ideje a log storage segítségével beállíthatja a **log\_megőrzési\_időszak** a kiszolgálóhoz társított paraméter. Az alapértelmezett érték 3 nap; a maximális értéke 7 nap. A kiszolgáló elegendő kell rendelkeznie, amely tárolja a naplófájlokat tároló lefoglalva. (A megőrzési paraméter nem szabályozza az Azure diagnosztikai naplók.)
+## <a name="access-server-logs-through-portal-or-cli"></a>Hozzáférési kiszolgáló naplófájljai a portálon vagy a CLI-n keresztül
+Ha engedélyezte a naplókat, a [Azure Portal](howto-configure-server-logs-in-portal.md), az [Azure CLI](howto-configure-server-logs-using-cli.md)és az Azure REST API-k használatával érheti el azokat a Azure Database for PostgreSQL log Storage-ból. A naplófájlok 1 óránként vagy a 100 MB-os méret elérése után rotálódnak, attól függően, hogy melyik következik be először. A naplófájl megőrzési időtartamát a kiszolgálóhoz társított **napló\_megőrzési\_időtartam** paramétere alapján állíthatja be. Az alapértelmezett érték 3 nap; a maximális érték 7 nap. A kiszolgálónak elegendő lefoglalt tárterülettel kell rendelkeznie a naplófájlok tárolásához. (Ez a megőrzési paraméter nem szabályozza az Azure diagnosztikai naplókat.)
 
 
 ## <a name="diagnostic-logs"></a>Diagnosztikai naplók
-Azure Database for PostgreSQL integrálva van az Azure monitort, diagnosztikai naplók. Miután engedélyezte a naplók PostgreSQL-kiszolgálón, ha szeretné, azokat a kibocsátott [naplózza az Azure Monitor](../azure-monitor/log-query/log-query-overview.md), az Event Hubs vagy az Azure Storage. Diagnosztikai naplók engedélyezésével kapcsolatos további tudnivalókért lásd: útmutató szakasza a [diagnosztikai naplók dokumentáció](../azure-monitor/platform/diagnostic-logs-overview.md). 
+Azure Database for PostgreSQL integrálva van Azure Monitor diagnosztikai naplókba. Miután engedélyezte a naplókat a PostgreSQL-kiszolgálón, kiválaszthatja, hogy a [naplókat](../azure-monitor/log-query/log-query-overview.md), Event Hubsokat vagy az Azure Storage-t Azure monitor. 
 
 > [!IMPORTANT]
-> Ezt a diagnosztikai naplók funkciót csak érhető el az általános célú és memóriahasználatra optimalizált [tarifacsomagok](concepts-pricing-tiers.md).
+> A kiszolgálói naplókhoz tartozó diagnosztikai funkció csak a általános célú és a memória optimalizált [díjszabási szintjein](concepts-pricing-tiers.md)érhető el.
 
-A következő táblázat ismerteti, mi az egyes naplókhoz. Attól függően, a kimeneti végpont választja, a mezők és a sorrend, amelyben szerepelnek a eltérőek lehetnek. 
+Diagnosztikai naplók engedélyezése a Azure Portal használatával:
+
+   1. A portálon lépjen a *diagnosztikai beállítások* elemre a postgres-kiszolgáló navigációs menüjében.
+   2. Válassza a *diagnosztikai beállítás hozzáadása*lehetőséget.
+   3. Nevezze el ezt a beállítást. 
+   4. Válassza ki az előnyben részesített alsóbb szintű helyet (Storage-fiók, Event hub, log Analytics). 
+   5. Válassza ki a kívánt adattípusokat.
+   6. Mentse a beállítást.
+
+Az alábbi táblázat az egyes naplókban található tudnivalókat ismerteti. A kiválasztott kimeneti végponttól függően a befoglalt mezők és a megjelenő sorrend eltérő lehet. 
 
 |**Mező** | **Leírás** |
 |---|---|
 | TenantId | A bérlő azonosítója |
 | SourceSystem | `Azure` |
-| TimeGenerated [UTC] | Időbélyeg mikor lett rögzítve a napló (UTC) |
-| Typo | A napló típusa. Mindig `AzureDiagnostics` |
-| SubscriptionId | GUID Azonosítóját az előfizetést, amelyhez a kiszolgáló tartozik. |
-| ResourceGroup | A kiszolgáló tartozik az erőforráscsoport neve |
+| TimeGenerated [UTC] | A napló UTC-ben való rögzítésének időbélyegzője |
+| Type | A napló típusa. Mindig `AzureDiagnostics` |
+| SubscriptionId | Annak az előfizetésnek a GUID azonosítója, amelyhez a kiszolgáló tartozik |
+| ResourceGroup | Azon erőforráscsoport neve, amelyhez a kiszolgáló tartozik |
 | ResourceProvider | Az erőforrás-szolgáltató neve. Mindig `MICROSOFT.DBFORPOSTGRESQL` |
 | ResourceType | `Servers` |
-| ResourceId | Erőforrás-URI |
-| Erőforrás | A kiszolgáló neve |
-| Kategória | `PostgreSQLLogs` |
+| ResourceId | Erőforrás URI-ja |
+| Resource | A kiszolgáló neve |
+| Category | `PostgreSQLLogs` |
 | OperationName | `LogEvent` |
-| errorLevel | Naplózási szint, például: LOG, ERROR, NOTICE |
-| Üzenet | Elsődleges naplófájlüzenetre | 
-| Domain | Kiszolgáló verziója, például: postgres-10-es |
-| Részlet | Másodlagos naplófájlüzenetre (ha van) |
-| Oszlopnév | (Ha alkalmazható) oszlop neve |
-| %{Schemaname/ | (Ha van ilyen) a séma neve |
-| DatatypeName | Az adattípus (ha alkalmazható) neve |
+| errorLevel | Naplózási szint, példa: NAPLÓ, HIBA, FIGYELMEZTETÉS |
+| Message | Elsődleges napló üzenete | 
+| Domain | Kiszolgáló verziója, példa: postgres-10 |
+| Részletek | Másodlagos napló üzenete (ha van ilyen) |
+| ColumnName | Az oszlop neve (ha van ilyen) |
+| SchemaName | A séma neve (ha van ilyen) |
+| DatatypeName | Az adattípus neve (ha van ilyen) |
 | LogicalServerName | A kiszolgáló neve | 
-| _ResourceId | Erőforrás-URI |
+| _ResourceId | Erőforrás URI-ja |
+| Előtag | A naplózási sor előtagja |
+
+
 
 ## <a name="next-steps"></a>További lépések
-- További információ a naplóinak elérése a [az Azure portal](howto-configure-server-logs-in-portal.md) vagy [Azure CLI-vel](howto-configure-server-logs-using-cli.md).
-- Tudjon meg többet [díjszabás az Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/).
+- További információ a naplók [Azure Portal](howto-configure-server-logs-in-portal.md) vagy az [Azure CLI](howto-configure-server-logs-using-cli.md)-ből való eléréséről.
+- További információ a [Azure monitor díjszabásáról](https://azure.microsoft.com/pricing/details/monitor/).

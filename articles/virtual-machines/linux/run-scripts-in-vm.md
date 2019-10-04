@@ -3,17 +3,17 @@ title: Szkriptek futtatása az Azure Linux VM
 description: Ez a témakör ismerteti, hogyan lehet virtuális gépen parancsfájlok futtatása
 services: automation
 ms.service: automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 05/02/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 3881a6d0ee1139fa481908f09b6e96efda24a5cd
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 6175ae4263aee0ecdca5b1d768438ad20352375c
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55979003"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477036"
 ---
 # <a name="run-scripts-in-your-linux-vm"></a>Szkriptek futtatása a Linux rendszerű virtuális gép
 
@@ -29,7 +29,7 @@ A [egyéni szkriptek futtatására szolgáló bővítmény](../extensions/custom
 * PowerShell-parancsprogram futtatásával a Windows-gépeken, és a Bash-szkript a Linux rendszerű gépeken.
 * Hasznos üzembe helyezést követő konfiguráció, Szoftvertelepítés, és egyéb konfigurációs vagy a felügyeleti feladatokat.
 
-## <a name="run-command"></a>Parancs futtatása
+## <a name="run-command"></a>A parancs futtatása
 
 A [futtatása paranccsal](run-command.md) funkció lehetővé teszi, hogy a virtuális gép és a felügyelet és a hibaelhárítás parancsfájlok segítségével, és elérhető még ha a gép nem érhető el, például ha a Vendég tűzfala nem rendelkezik az RDP vagy SSH-port Nyissa meg.
 

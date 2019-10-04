@@ -1,5 +1,5 @@
 ---
-title: Az entitások szerepkörök
+title: Entitások szerepkörei – LUIS
 titleSuffix: Azure Cognitive Services
 description: Ezek a megnevezett, környezetfüggő altípus egy entitás csak a mintákat használják. Ha például az utterance (kifejezés) a `buy a ticket from New York to London`, New York-i és a londoni városok, de mindegyik eltérő jelentéssel rendelkezik a mondat helyett szerepel. New York-i a forrás város, London pedig a cél város.
 services: cognitive-services
@@ -9,25 +9,25 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: 5fa922cb91d34483256faf4dcf70569aa2f17b97
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: eead9e0fec8ac4322bc7816de4a4774f8be8129c
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59522486"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70257956"
 ---
-# <a name="entity-roles-for-contextual-subtypes"></a>Környezetfüggő altípus entitás szerepkörei
+# <a name="entity-roles-for-contextual-subtypes"></a>Környezetfüggő altípusok entitás-szerepkörei
 
-Szerepkörök altípus elnevezett entitások lehetővé teszik. A szerepkör minden olyan előre összeállított vagy egyéni entitás típushoz használt, és használni például kimondott szöveg és a minták. 
+A szerepkörök lehetővé teszik az entitások számára a névvel ellátott altípusok használatát. A szerepkörök bármely előre elkészített vagy egyéni entitás típussal használhatók, és a példaként használt hosszúságú kimondott szöveg és mintákban is használhatók. 
 
 <a name="example-role-for-entities"></a>
 <a name="roles-with-prebuilt-entities"></a>
 
-## <a name="machine-learned-entity-example-of-roles"></a>Szerepkörök gép megismert entitások – példa
+## <a name="machine-learned-entity-example-of-roles"></a>Gépi megtanult entitás – példa szerepkörökre
 
-Az utterance (kifejezés) a "vásárol egy jegyet az **New York-i** való **London**, New York-i és a londoni városok, de mindegyik eltérő jelentéssel rendelkezik a mondat helyett szerepel. New York-i a forrás város, London pedig a cél város. 
+A teljes "Buy a **New York** -ról **Londonba**-be, a New York-i és London városa is, de a mondatnak más jelentése van. New York-i a forrás város, London pedig a cél város. 
 
 ```
 buy a ticket from New York to London
@@ -35,56 +35,50 @@ buy a ticket from New York to London
 
 Szerepkörök e különbségek adjon meg egy nevet:
 
-|Entitástípus|Entitás neve|Szerepkör|Cél|
+|Entitástípus|Entitás neve|Role|Cél|
 |--|--|--|--|
-|Egyszerű|Földrajzi egység|forrás|Ha az adatsík elhagyja a|
-|Egyszerű|Földrajzi egység|cél|Ha az adatsík hajtanak végre|
+|Egyszerű|Location|forrás|Ha az adatsík elhagyja a|
+|Egyszerű|Location|cél|Ha az adatsík hajtanak végre|
 
-## <a name="non-machine-learned-entity-example-of-roles"></a>Szerepkörök nem gép megismert entitások – példa
+## <a name="non-machine-learned-entity-example-of-roles"></a>Nem gépi megtanult entitások – példa a szerepkörökre
 
-Az utterance (kifejezés) az "Ütemezés az értekezlet 8-9", mind a számok jelölik egyszerre, de minden alkalommal eltérő jelentéssel rendelkezik az utterance (kifejezés). Szerepkörök a különbségek nevet kell adnia. 
+A kiírásban "a találkozó 8 és 9 között történő megjelölése" esetén a számok egyszerre jelzik az időpontot, de minden alkalommal eltérő jelentéssel rendelkeznek a teljes leírásban. A szerepkörök nevet adnak a különbségeknek. 
 
 ```
 Schedule the meeting from 8 to 9
 ```
 
-|Entitástípus|Szerepkörnév|Érték|
+|Entitástípus|Szerepkörnév|Value|
 |--|--|--|
-|Előre összeállított datetimeV2|Kezdés időpontja|8|
-|Előre összeállított datetimeV2|Befejezés időpontja:|9|
+|Előre összeállított datetimeV2|StartTime|8|
+|Előre összeállított datetimeV2|EndTime|9|
 
-## <a name="are-multiple-entities-in-an-utterance-the-same-thing-as-roles"></a>Azok az utterance (kifejezés) több entitások ugyanaz, mint a szerepkörök? 
+## <a name="are-multiple-entities-in-an-utterance-the-same-thing-as-roles"></a>Több entitás szerepel a teljes műveletben, mint a szerepkörök? 
 
-Több entitás is szerepelnek az utterance (kifejezés), és kinyerhetők a szerepkörök használata nélkül. A mondat kontextusában az azt jelzi, hogy az entitás verziójának értéke, akkor a szerepkör kell használni. 
+A rendszer több entitást is használhat, és szerepkörök használata nélkül is kinyerhető. Ha a mondat kontextusa azt jelzi, hogy az entitás melyik verzióját tartalmazza egy érték, akkor a szerepkört kell használni. 
 
-### <a name="dont-use-roles-for-duplicates-without-meaning"></a>Ne használja a szerepkörök az ismétlődések nélkül jelentése
+### <a name="dont-use-roles-for-duplicates-without-meaning"></a>Ne használja a szerepköröket az ismétlődésekhez jelentés nélkül
 
-Ha az utterance (kifejezés) tartalmaz, helyek listáját `I want to travel to Seattle, Cairo, and London.`, ez a lista ahol egyes elemek nincs-e egy további jelentése. 
+Ha a Kimondás tartalmazza a helyszínek `I want to travel to Seattle, Cairo, and London.`listáját, akkor ez egy lista, amelyben az egyes elemek nem rendelkeznek további jelentéssel. 
 
-### <a name="use-roles-if-duplicates-indicate-meaning"></a>Használjon szerepköröket, ha ismétlődő jelentése alapján
+### <a name="use-roles-if-duplicates-indicate-meaning"></a>Szerepkörök használata, ha a duplikált kifejezés azt jelzi
 
-Ha az utterance (kifejezés) azt jelenti, hogy a helyek listáját tartalmazza `I want to travel from Seattle, with a layover in Londen, landing in Cairo.`, ezt vezérlőtől forrás layover és cél szerepköröket kell rögzíteni.
+Ha a Kimondás tartalmazza a jelentéssel `I want to travel from Seattle, with a layover in Londen, landing in Cairo.`rendelkező helyekről szóló listát, a forrás, a elnapolás és a cél fogalmát szerepkörökkel kell rögzíteni.
 
-### <a name="roles-can-indicate-order"></a>Szerepkörök sorrendben adhatja meg.
+### <a name="roles-can-indicate-order"></a>A szerepkörök jelezhetik a sorrendet
 
-Szeretne kinyerni, rendelés jelzi az utterance (kifejezés) megváltozásakor `I want to first start with Seattle, second London, then third Cairo`, a többféleképpen is kibonthat egy. Megjelölheti a jogkivonatokat, amelyek jelzik a szerepkör `first start with`, `second`, `third`. Is használhatja az előre összeállított entitások **sorszámát** és a **GeographyV2** előre összeállított entitás rögzítheti az elgondolásra épül, sorrend és a hely egy összetett entitásban. 
+Ha a Kimondás úgy módosult, hogy a kinyerni `I want to first start with Seattle, second London, then third Cairo`kívánt sorrendet jelzi, több módon is kinyerheti azt. Megcímkézheti a jogkivonatokat, amelyek jelzik `first start with`a `second`szerepkört `third`,,,. Az előre elkészített entitások **sorszámát** és az **GeographyV2** előre összeépített entitását is használhatja egy összetett entitásban a megrendelés és a hely gondolatának rögzítéséhez. 
 
-## <a name="how-are-roles-used-in-example-utterances"></a>Hogyan használja a példa utterances szerepkörök?
+## <a name="how-are-roles-used-in-example-utterances"></a>Hogyan használják például a hosszúságú kimondott szöveg a szerepköröket?
 
-Ha egy entitás rendelkezik egy szerepkört, és az entitás egy példa utterance (kifejezés) meg van jelölve, választhat, hogy csak az entitás kiválasztásával, vagy az entitás- és szerepkör kiválasztása. 
+Ha egy entitás rendelkezik szerepkörrel, és az entitás egy Kimondás szerint van megjelölve, választhat, hogy csak az entitást jelöli ki, vagy kiválasztja az entitást és a szerepkört. 
 
-A következő példa utterances entitásokat és szerepköröket használja:
+Az alábbi példa hosszúságú kimondott szöveg használ entitásokat és szerepköröket:
 
-|Jogkivonat megjelenítése|Entitás megtekintése|
+|Jogkivonat-nézet|Entitás nézet|
 |--|--|
-|Tanulási további információ az érdekes vagyok **Seattle**|A(z) {Location} helyre vonatkozó többet vagyok|
-|Egy a jegy vásárolnak, New York, Seattle|{Helye: Destination} forrásból {helye:} egy jegyet vásárolni|
-
-## <a name="how-are-roles-related-to-hierarchical-entities"></a>Hogyan kapcsolódnak a szerepkörök hierarchikus entitásokhoz?
-
-Szerepkörök számára érhető el összes entitásának példa utterances, valamint a korábbi minták használatát. Mert elérhetők mindenhol, azok szükségtelenné az hierarchikus entitásokat. Új entitások szerepkörök helyett hierarchikus entitások használatával kell létrehozni. 
-
-Hierarchikus entitások idővel elavulttá válik.
+|Érdekes vagyok a **Seattle** -vel kapcsolatos további információk megismeréséhez|Többet szeretne megtudni a (hely) {Location} szolgáltatásról|
+|Jegy vásárlása Seattle-ből New Yorkba|Jegy vásárlása a (z) {Location: Origin} helyről {Location: Destination}|
 
 ## <a name="how-are-roles-used-in-patterns"></a>Hogyan használhatók a szerepkörök a minták?
 A minta sablon utterance (kifejezés), a szerepkörök az utterance (kifejezés) használunk: 
@@ -97,13 +91,13 @@ A minta sablon utterance (kifejezés), a szerepkörök az utterance (kifejezés)
 ## <a name="role-syntax-in-patterns"></a>Szerepkör-szintaxis a minták
 Az entitás- és szerepkör csúcsos zárójelek között, között `{}`. Az entitás- és a szerepkör egymástól kettősponttal elválasztva. 
 
-## <a name="entity-roles-versus-collaborator-roles"></a>Entitás szerepkörök és a közreműködő szerepkört
+## <a name="entity-roles-versus-collaborator-roles"></a>Entitás-szerepkörök és közreműködő szerepkörök
 
-Az adatmodell a LUIS alkalmazás entitás szerepkörök vonatkoznak. [Közreműködő](luis-concept-collaborator.md) szerepkörök authoring hozzáférés szintjei érvényesek. 
+Az entitás szerepkörei a LUIS alkalmazás adatmodelljére vonatkoznak. A közreműködő [vagy közreműködő](luis-concept-keys.md#contributions-from-other-authors) szerepkörök a szerzői hozzáférés szintjére vonatkoznak. 
 
 [!INCLUDE [Entity roles in batch testing - currently not supported](../../../includes/cognitive-services-luis-roles-not-supported-in-batch-testing.md)]
 
 ## <a name="next-steps"></a>További lépések
 
-* Használja a [gyakorlati oktatóanyagban](tutorial-entity-roles.md) entitás szerepkörök használata nem gép megismert entitások
+* [Gyakorlati oktatóanyag](tutorial-entity-roles.md) használata nem gépi megtanult entitásokkal rendelkező entitás-szerepkörök használatával
 * Ismerje meg, hogyan adhat hozzá [szerepkörök](luis-how-to-add-entities.md#add-a-role-to-pattern-based-entity)

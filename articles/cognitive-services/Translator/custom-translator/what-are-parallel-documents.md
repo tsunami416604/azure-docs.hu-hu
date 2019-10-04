@@ -1,49 +1,49 @@
 ---
-title: Mik a párhuzamos dokumentumokat? -Egyéni a fordítót
+title: Mik azok a párhuzamos dokumentumok? -Egyéni a fordítót
 titleSuffix: Azure Cognitive Services
-description: Párhuzamos dokumentumok párjai dokumentumok ahol egyik, a másik a fordítás. A pár egyik dokumentum tartalmaz a Forrásnyelv mondatok és a többi dokumentum tartalmazza ezeket a Célnyelv fordítja mondatokat.
-author: rajdeep-in
-manager: christw
+description: A párhuzamos dokumentumok olyan dokumentumok, amelyekben az egyik a másik fordítása. A pár egyik dokumentuma mondatokat tartalmaz a forrás nyelvén, a másik dokumentum pedig ezeket a mondatokat a célként megadott nyelvre lefordítva tartalmazza.
+author: swmachan
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-rada
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: fa3abb9fc7b899fa5c74d6f1cd73ebbbb72b6047
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: fb54df2e1eb89d30e62ae80355635356343994ee
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57776631"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595450"
 ---
-# <a name="what-are-parallel-documents"></a>Mik a párhuzamos dokumentumokat?
+# <a name="what-are-parallel-documents"></a>Mik azok a párhuzamos dokumentumok?
 
-Párhuzamos dokumentumok párjai dokumentumok ahol egyik, a másik a fordítás. A pár egyik dokumentum tartalmaz a Forrásnyelv mondatok és a többi dokumentum tartalmazza ezeket a Célnyelv fordítja mondatokat.
-Nem számít, hogy milyen nyelvű "forrás" van megjelölve, és milyen nyelvű "cél" van megjelölve, – bármelyik irányba fordítási rendszerüket párhuzamos dokumentum használható.
+A párhuzamos dokumentumok olyan dokumentumok, amelyekben az egyik a másik fordítása. A pár egyik dokumentuma mondatokat tartalmaz a forrás nyelvén, a másik dokumentum pedig ezeket a mondatokat a célként megadott nyelvre lefordítva tartalmazza.
+Nem számít, hogy melyik nyelven van megjelölve a "forrás", és hogy melyik nyelven van megjelölve "Target" – párhuzamos dokumentum, amely mindkét irányban betanítható a fordítási rendszerek.
 
 ## <a name="requirements"></a>Követelmények
 
-Szüksége lesz legalább egy rendszer betanítására 10 000 egyedi párhuzamos mondatokat. Ajánlott eljárásként, folyamatosan hozzáadhat több párhuzamos tartalmat és teljesített kapcsolat-újraépítési, a fordítási rendszer minőségének javítása érdekében.
+A rendszer betanításához legalább 10 000 egyedi párhuzamos mondatra lesz szükség. Az ajánlott eljárás az, hogy a fordítási rendszer minőségének javítása érdekében folyamatosan bővítse a párhuzamos tartalmakat és az újraképzést.
 
-A Microsoft megköveteli, hogy az egyéni a fordítót feltöltött dokumentumok sérti egy harmadik fél szerzői és szellemi tulajdonságai. További információkért tekintse meg a [használati](https://azure.microsoft.com/support/legal/cognitive-services-terms/).
-A portál használatával dokumentum feltöltése nem változtatja meg a dokumentum maga a szellemi tulajdonjogát.
+A Microsoft megköveteli, hogy az egyéni fordítónak feltöltött dokumentumok ne sértsék harmadik fél szerzői jogi vagy szellemi tulajdonságait. További információkért tekintse meg a használati [feltételeket](https://azure.microsoft.com/support/legal/cognitive-services-terms/).
+A dokumentum a portál használatával történő feltöltése nem módosítja a szellemi tulajdon tulajdonjogát a dokumentumban.
 
-## <a name="use-of-parallel-documents"></a>Párhuzamos dokumentumok használatát
+## <a name="use-of-parallel-documents"></a>Párhuzamos dokumentumok használata
 
-A rendszer által használt párhuzamos dokumentumokat:
+A párhuzamos dokumentumokat a rendszer használja:
 
-1.  Megtudhatja, hogyan szavak, a mondatok és a mondatok gyakran leképezve a két nyelvek között.
+1.  Ha szeretné megtudni, hogy a szavak, kifejezések és mondatok milyen gyakran vannak leképezve a két nyelv között.
 
-2.  További információt a megfelelő környezet függően a feldolgozóiszerepkör-kifejezések feldolgozása. Egy szó előfordulhat, hogy nem mindig fordíthatók le a más nyelven pontos ugyanazon szó.
+2.  Megtudhatja, hogyan dolgozza fel a megfelelő környezetet a környező kifejezésektől függően. Előfordulhat, hogy a szó nem mindig ugyanaz a szó a másik nyelven.
 
-Ajánlott eljárásként győződjön meg arról, hogy a forrás- és a dokumentumok verzióit Célnyelv 1:1 mondat eredménnyel.
+Ajánlott eljárásként ellenőrizze, hogy van-e 1:1-mondat a dokumentumok forrás és cél nyelvi verziói között.
 
-Ha a projekthez adott tartomány (kategória), a dokumentumok konzisztens az adott kategórián belül terminológiája kell lennie. Az eredményül kapott fordítási rendszer minőségének a mondatok minőségét és a dokumentum beállítása a mondatok száma függ. További példák a kategóriára jellemző egy szó különböző eseténél tartalmazhatnak a dokumentumok, a jobb feladatot a rendszer teheti a fordítás során.
+Ha a projekt tartományi (kategória-) specifikus, a dokumentumoknak konzisztensnek kell lenniük a kategórián belüli terminológiában. Az eredményül kapott fordítási rendszer minősége a dokumentumok készletében lévő mondatok számától és a mondatok minőségétől függ. Minél több példát tartalmaz a dokumentumok különböző, a kategóriára jellemző kifejezésekkel való használatra, annál jobb feladat lehet a rendszer a fordítás során.
 
-Dokumentumok feltöltése az egyes munkaterületeken a saját, és tetszés szerinti számú projektek vagy betanítások használt. A dokumentumok kinyert mondatokat külön a tárházban fájlként tárolt egyszerű Unicode szöveg, és érhetők el, törölje. Ne használja az egyéni a fordítót vagy a dokumentumot, nem tudják töltse le a dokumentumokat, a következő formátumban feltöltött feltöltött őket.
+A feltöltött dokumentumok magánjellegűek az egyes munkaterületeken, és tetszőleges számú projektben vagy képzésben használhatók. A dokumentumokból kinyert mondatokat a tárházban külön tároljuk egyszerű Unicode szövegfájlként, és elérhetők a törléshez. Ne használja az egyéni fordítót dokumentum-adattárként, nem fogja tudni letölteni a feltöltött dokumentumokat a feltöltött formátumban.
 
 
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg, hogyan használható egy [szótár](what-is-dictionary.md) az egyéni a fordítót.
+- Megtudhatja, hogyan [](what-is-dictionary.md) használhat szótárt az egyéni fordítóban.

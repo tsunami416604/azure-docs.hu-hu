@@ -2,18 +2,18 @@
 title: Sorszintű biztonság a Power BI munkaterületi gyűjteményekkel
 description: Sorszintű biztonság a Power BI-Munkaterületcsoportok részleteit
 services: power-bi-workspace-collections
-ms.service: power-bi-workspace-collections
-author: markingmyname
-ms.author: maghan
+ms.service: power-bi-embedded
+author: rkarlin
+ms.author: rkarlin
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.openlocfilehash: ae9819cd5b27d794f26227f342cb0fdf1b0ab644
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 2a26cc7573abb970dc58c6f7c327dfbc659cb646
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518388"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672485"
 ---
 # <a name="row-level-security-with-power-bi-workspace-collections"></a>Sorszintű biztonság a Power BI munkaterületi gyűjteményekkel
 
@@ -48,7 +48,7 @@ Az alábbiakban néhány szempont, figyelje meg, hogy ebben a sémában:
 
 * Az összes mértékre, például **Total Sales**, vannak tárolva a **értékesítési** ténytáblában.
 * Nincsenek négy további kapcsolódó dimenziótábla: **Elem**, **idő**, **Store**, és **kerület**.
-* A kapcsolatvonalakon lévő azt jelzik, hogy milyen módon szűrőket is flow egyik táblából egy másikba. Ha például egy szűrő el van helyezve **Time [Date]**, az aktuális sémában, akkor csak szűrése lefelé értékeket a **értékesítési** tábla. Más táblák a szűrőt, mert a kapcsolatvonalakon lévő összes mutasson a sales táblába, és azonnal nem befolyásolhat.
+* A kapcsolatvonalakon lévő azt jelzik, hogy milyen módon szűrőket is flow egyik táblából egy másikba. Ha például egy szűrő el van helyezve **Time [Date]** , az aktuális sémában, akkor csak szűrése lefelé értékeket a **értékesítési** tábla. Más táblák a szűrőt, mert a kapcsolatvonalakon lévő összes mutasson a sales táblába, és azonnal nem befolyásolhat.
 * A **kerület** mérőszámának táblájában, aki a kezelő az egyes kerületek:
   
   ![Táblázatsorok körzet](media/row-level-security/district-table-4.png)

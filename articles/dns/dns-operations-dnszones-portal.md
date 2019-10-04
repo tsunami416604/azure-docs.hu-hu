@@ -13,18 +13,18 @@ ms.workload: infrastructure-services
 ms.date: 05/18/2017
 ms.author: victorh
 ms.openlocfilehash: d0a20de8738e8c7b2719a9de85d5fd16aa5778cf
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48829682"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60926319"
 ---
 # <a name="how-to-manage-dns-zones-in-the-azure-portal"></a>DNS-zónák kezelése az Azure Portalon
 
 > [!div class="op_single_selector"]
 > * [Portál](dns-operations-dnszones-portal.md)
 > * [PowerShell](dns-operations-dnszones.md)
-> * [Az Azure klasszikus parancssori felület](dns-operations-dnszones-cli-nodejs.md)
+> * [Azure klasszikus parancssori felület](dns-operations-dnszones-cli-nodejs.md)
 > * [Azure CLI](dns-operations-dnszones-cli.md)
 
 Ez a cikk bemutatja, hogyan kezelheti a DNS-zónák az Azure portal használatával. Emellett kezelheti a DNS-zónák használata a platformfüggetlen [Azure CLI-vel](dns-operations-dnszones-cli.md) vagy az Azure [PowerShell](dns-operations-dnszones.md).

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 61be963f4edc2dc50f176087f2c817c5f485588b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 01bdd54ce0f661502ba0db902b150d76092ec03a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59276558"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67094870"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-patentsquare"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező PatentSQUARE
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a PatentSQUARE konfigurálásához hozzá kell PatentS
 
 **PatentSQUARE hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

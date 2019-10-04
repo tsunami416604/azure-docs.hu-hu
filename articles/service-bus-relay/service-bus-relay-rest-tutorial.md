@@ -1,6 +1,6 @@
 ---
-title: Használja az Azure Relay REST-oktatóanyaga |} A Microsoft Docs
-description: Hozzon létre egy egyszerű Azure Service Bus Relay gazdaalkalmazást REST-alapú felületet.
+title: REST-oktatóanyag a Azure Relay használatával | Microsoft Docs
+description: Hozzon létre egy Azure Service Bus Relay Host-alkalmazást, amely egy REST-alapú felületet tesz elérhetővé.
 services: service-bus-relay
 documentationcenter: na
 author: spelluru
@@ -12,85 +12,106 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/06/2018
+ms.date: 09/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 4ed45e1ed18ad630831772997b1fc150882731bd
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a3daa7847ef037f0276792bf8173ad55aba0a944
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57847966"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212922"
 ---
-# <a name="azure-wcf-relay-rest-tutorial"></a>Az Azure WCF Relay REST oktatóanyag
-Ez az oktatóanyag azt ismerteti, hogyan hozhat létre egy egyszerű Azure Relay gazdaalkalmazást REST-alapú felületet. A REST lehetővé teszi egy webes ügyfél, például egy webes böngésző számára, hogy hozzáférjen a HTTP-kérelmeken keresztül a Service Bus alkalmazásprogramozási felületekhez.
+# <a name="azure-wcf-relay-rest-tutorial"></a>Azure WCF Relay REST-oktatóanyag
 
-Az oktatóanyagban a Windows Communication Foundation (WCF) REST programozási modell segítségével az Azure Relay REST-szolgáltatás létrehozásához. További információt a WCF-dokumentáció [WCF REST Programming Model](/dotnet/framework/wcf/feature-details/wcf-web-http-programming-model) (WCF REST programozási modell) és [Designing and Implementing Services](/dotnet/framework/wcf/designing-and-implementing-services) (Szolgáltatások tervezése és megvalósítása) témakörében találhat.
+Ez az oktatóanyag azt ismerteti, hogyan hozhat létre olyan Azure Relay gazda alkalmazást, amely egy REST-alapú felületet tesz elérhetővé. A REST lehetővé teszi egy webes ügyfél, például egy webes böngésző számára, hogy hozzáférjen a HTTP-kérelmeken keresztül a Service Bus alkalmazásprogramozási felületekhez.
 
-Ebben az oktatóanyagban tegye a következőket:
+Az oktatóanyag a Windows Communication Foundation (WCF) REST programozási modellt használja a REST-szolgáltatás Azure Relayn való létrehozásához. További információ: [WCF Rest programozási modell](/dotnet/framework/wcf/feature-details/wcf-web-http-programming-model) és [szolgáltatások tervezése és implementálása](/dotnet/framework/wcf/designing-and-implementing-services).
+
+Ebben az oktatóanyagban a következő feladatokat hajtja végre:
 
 > [!div class="checklist"]
-> * Relay-névtér létrehozása.
-> * REST-alapú WCF szolgáltatási szerződés megadása
-> * A REST-alapú WCF szerződés megvalósítása
-> * A REST-alapú WCF szolgáltatás futtatására
-> * Futtassa, és tesztelheti a szolgáltatást
+>
+> * Az oktatóanyag előfeltételeinek telepítése.
+> * Hozzon létre egy Relay-névteret.
+> * Hozzon létre egy REST-alapú WCF szolgáltatási szerződést.
+> * A REST-alapú WCF-szerződés implementálása.
+> * A REST-alapú WCF szolgáltatás üzemeltetése és futtatása.
+> * A szolgáltatás futtatása és tesztelése.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag teljesítéséhez a következő előfeltételekre lesz szüksége:
 
-- Azure-előfizetés. Ha még nincs előfizetése, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
-- [Visual Studio 2015 vagy újabb](https://www.visualstudio.com). A jelen oktatóanyag példái a Visual Studio 2017-et használják.
-- Az Azure SDK for .NET csomaggal. Telepítse a [SDK letöltési oldaláról](https://azure.microsoft.com/downloads/).
+* Azure-előfizetés. Ha még nincs előfizetése, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
+* [Visual Studio 2015 vagy újabb](https://www.visualstudio.com). Az oktatóanyagban szereplő példák a Visual Studio 2019-et használják.
+* Azure SDK a .NET-hez. Telepítse az [SDK letöltési oldaláról](https://azure.microsoft.com/downloads/).
 
 ## <a name="create-a-relay-namespace"></a>Relay-névtér létrehozása
 
 A Relay-funkciók Azure-ban való használatához először létre kell hoznia egy szolgáltatásnévteret. A névtér egy hatókörkezelési tárolót biztosít az Azure erőforrásainak címzéséhez az alkalmazáson belül. Relay-névtér létrehozásához kövesse az [itt leírt utasításokat](relay-create-namespace-portal.md).
 
-## <a name="define-a-rest-based-wcf-service-contract-to-use-with-azure-relay"></a>Az Azure Relay használata REST-alapú WCF szolgáltatási szerződés megadása
+## <a name="define-a-rest-based-wcf-service-contract-to-use-with-azure-relay"></a>A Azure Relayhoz használni kívánt REST-alapú WCF szolgáltatási szerződés megadása
 
-Egy WCF REST-stílusú szolgáltatás létrehozásakor meg kell adni a szerződést. A szerződés megadja a gazdagép által támogatott műveleteket. A szolgáltatási művelet tekinthető webszolgáltatási módszernek. A szerződések a C++, a C# vagy a Visual Basic felület meghatározásával jönnek létre. A felület minden metódusa egy konkrét szolgáltatási műveletnek felel meg. A [ServiceContractAttriibute](/dotnet/api/system.servicemodel.servicecontractattribute) attribútumot minden felületre, az [OperationContractAttribaute](/dotnet/api/system.servicemodel.operationcontractattribute) attribútumot pedig minden műveletre alkalmazni kell. Ha egy felület egy metódusa rendelkezik a [ServiceContractAttribute](/dotnet/api/system.servicemodel.servicecontractattribute) attribútummal, de nem rendelkezik az [OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute) attribútummal, nem lesz közzétéve. A feladatokhoz használt kód megtalálható az eljárást követő példában.
+WCF REST-stílusú szolgáltatás létrehozásakor meg kell határoznia a szerződést. A szerződés megadja a gazdagép által támogatott műveleteket. Egy szolgáltatási művelet egy webszolgáltatás-metódushoz hasonlít. Adjon meg egy C++, C#vagy Visual Basic illesztőfelületű szerződést. A felület minden metódusa egy konkrét szolgáltatási műveletnek felel meg. Alkalmazza a [ServiceContractAttribute](/dotnet/api/system.servicemodel.servicecontractattribute) attribútumot az egyes adapterekre, és alkalmazza a [OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute) attribútumot az egyes műveletekre. 
 
-Az elsődleges különbség egy WCF-szerződés és a egy REST-stílusú szerződés között egy tulajdonsághoz való hozzáadásával a [OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute): [WebGetAttribute](/dotnet/api/system.servicemodel.web.webgetattribute). Ez a tulajdonság lehetővé teszi a felület egy metódusának leképezését egy, a felület másik oldalán levő metódussá. Ez a példa a [WebGetAttribute](/dotnet/api/system.servicemodel.web.webgetattribute) attribútum segítségével csatolunk egy metódust a HTTP GET. Ez lehetővé teszi a Service Bus – pontosan lekérje és értelmezze a felületre küldött parancsokat.
+> [!TIP]
+> Ha a [ServiceContractAttribute](/dotnet/api/system.servicemodel.servicecontractattribute) rendelkező illesztőfelület egyik metódusa nem rendelkezik [OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute), akkor ez a metódus nincs kitéve. A feladatokhoz használt kód az eljárást követő példában látható.
 
-### <a name="to-create-a-contract-with-an-interface"></a>A szerződés létrehozása felülettel
+A WCF-szerződések és a REST-stílusú szerződések közötti elsődleges különbség egy tulajdonság hozzáadása a [OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute): [WebGetAttribute](/dotnet/api/system.servicemodel.web.webgetattribute). Ez a tulajdonság lehetővé teszi a felület egy metódusának leképezését egy, a felület másik oldalán levő metódussá. Ez a példa a [WebGetAttribute](/dotnet/api/system.servicemodel.web.webgetattribute) attribútum használatával kapcsolja össze a metódust `HTTP GET`. Ez a megközelítés lehetővé teszi, hogy Service Bus az interfésznek eljuttatott parancsok pontos lekérését és értelmezését.
 
-1. Nyissa meg a Visual Studiót rendszergazdaként: ehhez a **Start** menüben kattintson a jobb gombbal a programra, majd kattintson a **Futtatás rendszergazdaként** parancsra.
-2. Hozzon létre új egy új konzolalkalmazás-projektet. Kattintson a **File** (Fájl) menüre, és válassza a **New** (Új), majd a **Project** (Projekt) elemet. A **New Project** (Új projekt) párbeszédpanelen kattintson a **Visual C#** elemre, válassza ki a **Console Application** (Konzolalkalmazás) sablont, és nevezze el **ImageListener** néven. Használja az alapértelmezett **Location** (Hely) értéket. A projekt létrehozásához kattintson az **OK** gombra.
-3. C# projekt esetében a Visual Studio létrehoz egy `Program.cs` fájlt. Ez az osztály tartalmaz egy üres `Main()` metódust, amely szükséges a konzolalkalmazás projektek helyes létrejöttéhez.
-4. Adjon hozzá Service Bus- és **System.ServiceModel.dll**-hivatkozásokat a projekthez a Service Bus NuGet csomag telepítésével. Ez a csomag automatikusan hivatkozásokat ad a Service Bus-könyvtárakhoz, valamint a WCF **System.ServiceModel** névtérhez. A Solution Explorerben (Megoldáskezelőben) kattintson a jobb gombbal az **ImageListener** projektre, majd kattintson a **Manage NuGet Packages** (NuGet-csomagok kezelése) parancsra. Kattintson a **Browse** (Tallózás) lapra, és keressen a következőre: `Microsoft Azure Service Bus`. Kattintson az **Install** (Telepítés) gombra, és fogadja el a használati feltételeket.
-5. Expliciten hozzá kell adnia egy hivatkozást a projekt **System.ServiceModel.Web.dll** fájljához:
-   
-    a. A Solution Explorerben (Megoldáskezelőben) kattintson a jobb gombbal a **References** (Hivatkozások) mappára a projektmappa területén, majd kattintson az **Add Reference** (Hivatkozás hozzáadása) lehetőségre.
-   
-    b. Az **Add Reference** (Hivatkozás hozzáadása) párbeszédablakban kattintson a bal oldalon a **Framework** (Keretrendszer) lapra, majd a **Search** (Keresés) mezőben írja be a **System.ServiceModel.Web** kifejezést. Jelölje be a **System.ServiceModel.Web** jelölőnégyzetet, majd kattintson az **OK** lehetőségre.
-6. Adja hozzá a következő `using` utasításokat a Program.cs fájl elejéhez:
-   
+### <a name="to-create-a-contract-with-an-interface"></a>Szerződés létrehozása illesztőfelülettel
+
+1. Indítsa el a Microsoft Visual studiót rendszergazdaként. Ehhez kattintson a jobb gombbal a Visual Studio program ikonjára, majd válassza a **Futtatás rendszergazdaként**lehetőséget.
+1. A Visual Studióban válassza az **új projekt létrehozása**lehetőséget.
+1. A **create a New Project (új projekt létrehozása**) területen válassza a **konzol alkalmazás (.NET-keretrendszer)** lehetőséget, és kattintson a C# **Tovább gombra**.
+1. Nevezze el a projekt *ImageListener*. Használja az alapértelmezett **helyet**, majd válassza a **Létrehozás**lehetőséget.
+
+   Egy C# projekt esetében a Visual Studio létrehoz egy *program.cs* -fájlt. Ez az osztály tartalmaz egy üres `Main()` metódust, amely szükséges a konzolalkalmazás projektek helyes létrejöttéhez.
+
+1. **Megoldáskezelő**kattintson a jobb gombbal a **ImageListener** projektre, majd válassza a **NuGet-csomagok kezelése**lehetőséget.
+1. Válassza a **Tallózás**elemet, majd keresse meg és válassza a **WindowsAzure. ServiceBus**elemet. Válassza a **telepítés**lehetőséget, és fogadja el a használati feltételeket.
+
+    Ez a lépés a Service Bus és a *System. ServiceModel. dll*fájlokra mutató hivatkozásokat is hozzáadja. Ez a csomag automatikusan hozzáadja a Service Bus-könyvtárakra és a `System.ServiceModel`WCF-re mutató hivatkozásokat.
+
+1. Explicit módon adjon hozzá egy hivatkozást `System.ServiceModel.Web.dll` a projekthez. A **megoldáskezelő**kattintson a jobb gombbal a Project mappában található **referenciák** elemre, majd válassza a **hivatkozás hozzáadása**elemet.
+1. A **hivatkozás hozzáadása**lapon válassza a **keretrendszer** lehetőséget, majd írja be a *System. ServiceModel. Web* **kifejezést a keresés**mezőbe. Jelölje be a **System.ServiceModel.Web** jelölőnégyzetet, majd kattintson az **OK** lehetőségre.
+
+Ezután végezze el a következő kód módosítását a projektben:
+
+1. Adja hozzá a `using` következő utasításokat a *program.cs* fájl elejéhez.
+
     ```csharp
     using System.ServiceModel;
     using System.ServiceModel.Channels;
     using System.ServiceModel.Web;
     using System.IO;
     ```
-   
-    A [System.ServiceModel](/dotnet/api/system.servicemodel) az a névtér, amely lehetővé teszi a programozott hozzáférést a WCF alapszintű szolgáltatásaihoz. A WCF-továbbító a számos, az objektumok és attribútumok WCF szolgáltatási szerződések meghatározására használja. Ez a névtér a továbbítási alkalmazások többsége fogja használni. Ehhez hasonlóan [System.ServiceModel.Channels](/dotnet/api/system.servicemodel.channels) segítségével meghatározhatja a csatornát, amely az objektum, amelyen keresztül kommunikáljon az Azure Relay és az ügyfél webböngészőjével. Végül a [System.ServiceModel.Web](/dotnet/api/system.servicemodel.web) tartalmazza a webalapú alkalmazások létrehozását engedélyező típusokat.
-7. Nevezze át az `ImageListener` névteret **Microsoft.ServiceBus.Samples** névre.
-   
+
+    * A [System.ServiceModel](/dotnet/api/system.servicemodel) az a névtér, amely lehetővé teszi a programozott hozzáférést a WCF alapszintű szolgáltatásaihoz. WCF Relay a WCF számos objektumát és attribútumát használja a szolgáltatási szerződések definiálásához. Ezt a névteret a továbbító alkalmazásai többségében használhatja.
+    * A [System. ServiceModel. Channels](/dotnet/api/system.servicemodel.channels) segít meghatározni a csatornát, amely a Azure Relay és az ügyfél webböngészőjével kommunikáló objektum.
+    * A [System. ServiceModel. Web](/dotnet/api/system.servicemodel.web) olyan típusokat tartalmaz, amelyek lehetővé teszik webalapú alkalmazások létrehozását.
+
+1. Nevezze át `ImageListener` a `Microsoft.ServiceBus.Samples`névteret a következőre:.
+
     ```csharp
     namespace Microsoft.ServiceBus.Samples
     {
         ...
     ```
-8. Közvetlenül a névtér-deklaráció nyitó zárójele után adjon meg egy új, **IImageContract** nevű felületet, és alkalmazza a **ServiceContractAttribute** attribútumot a felületen `https://samples.microsoft.com/ServiceModel/Relay/` értékkel. A névtér értéke különbözik a kód tartományában használt névtértől. A névtér értéke egyedi azonosítóként van használatban ehhez a szerződéshez, és rendelkeznie kell a verzióinformációkkal. További információ: [Service Versioning](https://go.microsoft.com/fwlink/?LinkID=180498) (Szolgáltatás verziószámozása). A névtér explicit meghatározásával megelőzhető az alapértelmezett névtér hozzáadása a szerződésnévhez.
-   
+
+1. Közvetlenül a névtér deklarációjának nyitó kapcsos zárójele után adjon meg egy nevű `IImageContract` új felületet, és alkalmazza az `ServiceContractAttribute` attribútumot az `https://samples.microsoft.com/ServiceModel/Relay/RESTTutorial1`illesztőfelületre a értékkel. 
+
     ```csharp
     [ServiceContract(Name = "ImageContract", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/RESTTutorial1")]
     public interface IImageContract
     {
     }
     ```
-9. Az `IImageContract` felületen belül deklaráljon egy metódust az `IImageContract` szerződés által a felületen közzétett egyetlen művelethez, valamint alkalmazza az `OperationContractAttribute` attribútumot a nyilvános Service Bus szerződés részeként közzétenni kívánt metódusra.
-   
+
+    A névtér értéke különbözik a kód tartományában használt névtértől. A névtér értéke a szerződés egyedi azonosítója, és verziószám-információval kell rendelkeznie. További információ: [Service Versioning](/dotnet/framework/wcf/service-versioning) (Szolgáltatás verziószámozása). A névtér explicit meghatározásával megelőzhető az alapértelmezett névtér hozzáadása a szerződésnévhez.
+
+1. Az `IImageContract` illesztőfelületen belül deklaráljon egy metódust az egyetlen művelethez, `IImageContract` amelyet a szerződés közzétesz a felületen, és alkalmazza `OperationContract` az attribútumot arra a metódusra, amelyet közzé szeretne tenni a nyilvános Service Bus szerződés részeként.
+
     ```csharp
     public interface IImageContract
     {
@@ -98,8 +119,9 @@ Az elsődleges különbség egy WCF-szerződés és a egy REST-stílusú szerző
         Stream GetImage();
     }
     ```
-10. Az **OperationContract** attribútumban adja hozzá a **WebGet** értéket.
-    
+
+1. Az attribútumban adja hozzá az `WebGet` értéket. `OperationContract`
+
     ```csharp
     public interface IImageContract
     {
@@ -107,19 +129,22 @@ Az elsődleges különbség egy WCF-szerződés és a egy REST-stílusú szerző
         Stream GetImage();
     }
     ```
-    
-    Ennek során tehát lehetővé teszi, hogy a HTTP GET kérelmeket a továbbítási szolgáltatás `GetImage`, valamint a visszaadott értékeinek `GetImage` egy HTTP GETRESPONSE válaszba. Az oktatóanyagban később egy webböngészőt használhat majd a metódus eléréséhez és a kép megjelenítéséhez böngészőben.
-11. Közvetlenül az `IImageContract` definíciója után deklaráljon egy csatornát, amely örökli az `IImageContract` és az `IClientChannel` felületek tulajdonságait is.
-    
+
+   Az `WebGet` érték hozzáadásával a Relay szolgáltatás átirányítja a HTTP Get `GetImage`kéréseket a-re, és `GetImage` lefordítja `HTTP GETRESPONSE` a visszatérési értékeit a válaszba. Az oktatóanyag későbbi részében egy webböngésző segítségével érheti el ezt a metódust, és megjelenítheti a rendszerképet a böngészőben.
+
+1. Közvetlenül az `IImageContract` definíciója után deklaráljon egy csatornát, amely örökli az `IImageContract` és az `IClientChannel` felületek tulajdonságait is.
+
     ```csharp
     public interface IImageChannel : IImageContract, IClientChannel { }
     ```
-    
-    A csatorna egy olyan WCF-objektum, amelyen keresztül a szolgáltatás és az ügyfél információkat adnak át egymásnak. Később létrehozhatja a csatornát a gazdaalkalmazásban. Az Azure Relay ezután ezt a csatornát használja továbbítja a HTTP GET kérelmeket a böngészőből a **GetImage** végrehajtására. A relay is használ a csatorna érvénybe a **GetImage** ad vissza értéket, és azt egy az ügyfélböngészőhöz a HTTP GETRESPONSE lefordítása.
-12. A **Build** (Létrehozás) menüben kattintson a **Build Solution** (Megoldás létrehozása) elemre az eddigi munkája pontosságának ellenőrzéséhez.
 
-### <a name="example"></a>Példa
-A következő kód bemutatja egy WCF-továbbító szerződést meghatározó alapszintű felületet.
+   A csatorna egy olyan WCF-objektum, amelyen keresztül a szolgáltatás és az ügyfél információkat adnak át egymásnak. Később létrehozza a csatornát a gazda alkalmazásban. Azure Relay ezután ezzel a csatornával továbbítja a HTTP Get kéréseket a böngészőből `GetImage` a megvalósításba. A továbbító a csatornát is használja a visszaadott `GetImage` érték kiszámításához és az ügyfél `HTTP GETRESPONSE` böngészőbe való lefordításához.
+
+1. Válassza a **Build** > **Build megoldás** lehetőséget, hogy az eddigi munkája pontosságát erősítse.
+
+### <a name="example-that-defines-a-wcf-relay-contract"></a>WCF Relay szerződést definiáló példa
+
+A következő kód egy alapszintű felületet mutat be, amely meghatározza a WCF Relay szerződést.
 
 ```csharp
 using System;
@@ -152,46 +177,58 @@ namespace Microsoft.ServiceBus.Samples
 }
 ```
 
-## <a name="implement-the-rest-based-wcf-service-contract"></a>A REST-alapú WCF szolgáltatási szerződés megvalósítása
-WCF Relay REST-stílusú szolgáltatás létrehozásához először létre kell, hogy hoznia a szerződést, amelyet egy felület használatával. A következő lépés a felület megvalósítása. Ebbe beletartozik egy **ImageService** nevű osztály létrehozása, amely megvalósítja a felhasználó által megadott **IImageContract** felületet. A szerződés megvalósítása után egy App.config fájl segítségével konfigurálhatja a felületet. A konfigurációs fájl tartalmazza a szükséges információkat az alkalmazás, például a szolgáltatás nevét, a neve, a szerződés és a relay szolgáltatással folytatott kommunikációhoz használt protokoll típusát. A feladatokhoz használt kód megtalálható az eljárást követő példában.
+## <a name="implement-the-rest-based-wcf-service-contract"></a>A REST-alapú WCF szolgáltatási szerződés implementálása
 
-Csakúgy, mint az előző lépések során nagyon kicsi a különbség a REST-stílusú szerződés és a egy WCF-továbbító szerződés megvalósítása között van.
+REST-stílusú WCF Relay szolgáltatás létrehozásához először hozzon létre egy kapcsolatot egy felület használatával. A következő lépés a felület megvalósítása. Ez az eljárás magában foglalja egy nevű `ImageService` osztály létrehozását, amely megvalósítja a `IImageContract` felhasználó által definiált felületet. A szerződés megvalósítása után egy *app. config* fájl segítségével konfigurálhatja a felületet. A konfigurációs fájl az alkalmazáshoz szükséges információkat tartalmazza. Ez az információ tartalmazza a szolgáltatás nevét, a szerződés nevét, valamint a továbbítási szolgáltatással való kommunikációhoz használt protokoll típusát. A feladatokhoz használt kód az eljárást követő példában látható.
+
+Ahogy az előző lépések is, a REST-stílusú szerződések és a WCF Relay szerződések megvalósítása között kis különbség van.
 
 ### <a name="to-implement-a-rest-style-service-bus-contract"></a>REST-stílusú Service Bus szerződés megvalósítása
-1. Hozzon létre egy új, **ImageService** nevű osztályt közvetlenül az **IImageContract** felület meghatározása után. Az **ImageService** osztály az **IImageContract** felületet valósítja meg.
-   
+
+1. Hozzon létre egy új, `ImageService` nevű osztályt közvetlenül az `IImageContract` felület meghatározása után. Az `ImageService` osztály megvalósítja az `IImageContract` felületet.
+
     ```csharp
     class ImageService : IImageContract
     {
     }
     ```
+
     Hasonlóan az egyéb felületi megvalósításokhoz, a definíciót megvalósíthatja egy másik fájlban. Ebben az oktatóanyagban azonban a megvalósítás ugyanabban a fájlban jelenik meg, mint a felületdefiníció és a `Main()` metódus.
-2. Alkalmazza a [ServiceBehaviorAttribute](/dotnet/api/system.servicemodel.servicebehaviorattribute) attribútumot az **IImageService** osztályra, így jelezheti, hogy az osztály egy WCF-szerződés megvalósítása.
-   
+
+1. Alkalmazza a [ServiceBehaviorAttribute attribútum](/dotnet/api/system.servicemodel.servicebehaviorattribute) attribútumot az `IImageService` osztályra, hogy jelezze, hogy az osztály egy WCF-szerződés megvalósítását jelenti.
+
     ```csharp
     [ServiceBehavior(Name = "ImageService", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/")]
     class ImageService : IImageContract
     {
     }
     ```
-   
-    Amint azt korábban említettük, ez a névtér nem egy hagyományos névtér. Ehelyett ez a szerződést azonosító WCF-architektúra része. További információkért lásd: a [az szerződés nevének](https://msdn.microsoft.com/library/ms731045.aspx) a cikk a WCF-dokumentáció.
-3. Adjon hozzá egy .jpg képet a projekthez.  
-   
-    Ez egy kép, amelyet a szolgáltatás megjelenít a fogadó böngészőben. Kattintson a jobb gombbal a projektre, majd kattintson az **Add** (Hozzáadás) lehetőségre.  Ezután kattintson az **Existing Item** (Meglévő elem) elemre. Az **Add Existing Item** (Meglévő elem hozzáadása) párbeszédablak segítségével keressen egy megfelelő .jpg fájlt, és kattintson az **Add** (Hozzáadás) lehetőségre.
-   
-    Egy fájl hozzáadásakor győződjön meg arról, hogy a legördülő menüben kiválasztotta az **All Files** (Minden fájl) lehetőséget a **File nane:** (Fájlnév:) mező mellett. Az oktatóanyag hátralevő része feltételezi, hogy a kép neve image.jpg. Ha egy másik fájlba, nevezze át a képet, vagy az módosítania kell a kódot a helyesbítéshez.
-4. Annak biztosításához, hogy a futó szolgáltatás megtalálja a képfájlt, a **Solution Explorerben** (Megoldáskezelőben) kattintson a jobb gombbal képfájlra, majd kattintson a **Properties** (Tulajdonságok) lehetőségre. A **Properties** (Tulajdonságok) panelen állítsa a **Copy to Output Directory** (Másolás a kimeneti könyvtárba) beállítást **Copy if newer** (Másolás, ha újabb) értékre.
-5. Adjon egy hivatkozást a projekt **System.Drawing.dll** szerelvényéhez, és adja hozzá az alábbi társított `using` utasításokat is.  
-   
+
+    Ahogy korábban említettük, ez a névtér nem egy hagyományos névtér. Részét képezi a szerződést azonosító WCF-architektúra. További információkért tekintse meg az [adategyezmények nevét](/dotnet/framework/wcf/feature-details/data-contract-names/).
+
+1. Adjon hozzá egy *. jpg* rendszerképet a projekthez. Ez a fájl egy olyan kép, amelyet a szolgáltatás a fogadó böngészőben megjelenít.
+
+   1. Kattintson a jobb gombbal a projektre, és válassza a **Hozzáadás**lehetőséget.
+   1. Ezután válassza a **meglévő elemet**.
+   1. A **meglévő elem hozzáadása** lehetőséggel tallózással keresse meg a megfelelő. jpg-et, majd válassza a **Hozzáadás**lehetőséget. A fájl hozzáadásakor a **fájl neve**melletti legördülő listából válassza a **minden fájl** elemet.
+
+   Az oktatóanyag további része azt feltételezi, hogy a rendszerkép neve. *jpg*. Ha más fájllal rendelkezik, át kell neveznie a képet, vagy módosítania kell a kódot a kompenzálására.
+
+1. Győződjön meg arról, hogy a futó szolgáltatás megtalálja a képfájlt, **megoldáskezelő** kattintson a jobb gombbal a képfájlra, majd válassza a **Tulajdonságok parancsot**. A **Tulajdonságok**területen állítsa a **Másolás a kimeneti könyvtárba** a másolás, **Ha újabb**lehetőséget.
+
+1. A alkalmazással [hozzon létre egy szerződést egy felülettel](#to-create-a-contract-with-an-interface) , és adjon hozzá egy hivatkozást a *System. Drawing. dll* szerelvényhez a projekthez.
+
+1. Adja hozzá a következő `using` társított utasításokat:
+
     ```csharp
     using System.Drawing;
     using System.Drawing.Imaging;
     using Microsoft.ServiceBus;
     using Microsoft.ServiceBus.Web;
     ```
-6. Az **ImageService** osztályban adja hozzá az alábbi konstruktort, amely betölti a bitképet, és előkészíti az ügyfél böngészőjébe való küldéshez.
-   
+
+1. A `ImageService` osztályban adja hozzá a következő konstruktort, amely betölti a bitképet, és előkészíti, hogy küldje el az ügyfél böngészőjébe:
+
     ```csharp
     class ImageService : IImageContract
     {
@@ -205,8 +242,9 @@ Csakúgy, mint az előző lépések során nagyon kicsi a különbség a REST-st
         }
     }
     ```
-7. Közvetlenül az előző kód után adja hozzá az alábbi **GetImage** metódust az **ImageService** osztályban egy, a képet tartalmazó HTTP-üzenet visszaadásához.
-   
+
+1. Közvetlenül az előző kód után adja hozzá a következő `GetImage` metódust a `ImageService` osztályban a képet tartalmazó HTTP-üzenet visszaadásához.
+
     ```csharp
     public Stream GetImage()
     {
@@ -219,16 +257,19 @@ Csakúgy, mint az előző lépések során nagyon kicsi a különbség a REST-st
         return stream;
     }
     ```
-   
-    Ez a megvalósítás a **MemoryStream** segítségével kéri le a képet, és előkészíti a böngészőbe történő streameléshez. Nullánál indítja el a streamelési pozíciót, jpeg-ként deklarálja a stream tartalmát, valamint streameli az információt.
-8. A **Build** (Létrehozás) menüben kattintson a **Build Solution** (Megoldás létrehozása) elemre.
+
+    Ez a megvalósítás `MemoryStream` a rendszerkép lekérésére és a böngészőbe való továbbításra való előkészítésére használja. Az adatfolyam-pozíciót nulla értékre állítja, az adatfolyam tartalmát *. jpg*néven deklarálja, és továbbítja az információt.
+
+1. Válassza a **Build** > **Build megoldás**lehetőséget.
 
 ### <a name="to-define-the-configuration-for-running-the-web-service-on-service-bus"></a>A konfiguráció meghatározása a webszolgáltatás Service Buson való futtatásához
-1. A **Solution Explorerben** (Megoldáskezelőben) kattintson duplán az **App.config** fájlra a Visual Studio-szerkesztőben való megnyitásához.
-   
-    A **App.config** fájl tartalmazza a szolgáltatás nevét, végpontját (azaz a helyet Azure Relay közzétesz az ügyfeleknek és a gazdagép kommunikálni egymással), és kötést (a kommunikációhoz használt protokoll típusát). A fő különbség az, hogy a konfigurált szolgáltatásvégpont hivatkozik, egy [WebHttpRelayBinding](/dotnet/api/microsoft.servicebus.webhttprelaybinding) kötést.
-2. A `<system.serviceModel>` XML-elem egy WCF-elem, amely egy vagy több szolgáltatást határoz meg. Itt a szolgáltatás nevének és végpontjának meghatározására szolgál. A `<system.serviceModel>` elem aljánál (de még a `<bindings>` elemen belül), adjon hozzá egy, az alábbi tartalommal rendelkező `<system.serviceModel>` elemet. Ez határozza meg az alkalmazásban használt kötéseket. Meghatározhat több kötést, de ez az oktatóanyag csak egyet határoz meg.
-   
+
+1. A **megoldáskezelő**kattintson duplán az **app. config** fájlra, és nyissa meg a fájlt a Visual Studio szerkesztőjében.
+
+    Az *app. config* fájl tartalmazza a szolgáltatás nevét, végpontját és kötését. A végpont az a hely, Azure Relay az ügyfelek és a gazdagépek számára lehetővé teszi az egymással való kommunikációt. A kötés a kommunikációhoz használt protokoll típusa. A fő különbség az, hogy a konfigurált szolgáltatási végpont egy [WebHttpRelayBinding](/dotnet/api/microsoft.servicebus.webhttprelaybinding) kötésre hivatkozik.
+
+1. A `<system.serviceModel>` XML-elem egy WCF-elem, amely egy vagy több szolgáltatást határoz meg. Itt a szolgáltatás nevének és végpontjának definiálására szolgál. A `<system.serviceModel>` elem alján, de `<system.serviceModel>`továbbra is a következő tartalommal `<bindings>` rendelkező elemet vegyen fel:
+
     ```xml
     <bindings>
         <!-- Application Binding -->
@@ -239,10 +280,13 @@ Csakúgy, mint az előző lépések során nagyon kicsi a különbség a REST-st
         </webHttpRelayBinding>
     </bindings>
     ```
-   
-    Az előző kód meghatározása egy WCF-továbbító [WebHttpRelayBinding](/dotnet/api/microsoft.servicebus.webhttprelaybinding) a kötés **relayClientAuthenticationType** beállítása **None**. Ez a beállítás jelöli, ha egy, a kötést használó végpont nem igényel ügyfél-hitelesítőt.
-3. A `<bindings>` elem után adjon hozzá egy `<services>` elemet. A kötésekhez hasonlóan megadhat több szolgáltatást is egyetlen konfigurációs fájlon belül. Ez az oktatóanyag azonban csak egyet ad meg.
-   
+
+    Ez a tartalom határozza meg az alkalmazásban használt kötéseket. Több kötést is megadhat, de ebben az oktatóanyagban csak egyet határozhat meg.
+
+    Az előző kód egy WCF Relay [WebHttpRelayBinding](/dotnet/api/microsoft.servicebus.webhttprelaybinding) kötést `relayClientAuthenticationType` `None`határoz meg a következőhöz:. Ez a beállítás azt jelzi, hogy a kötést használó végpontoknak nincs szükségük ügyfél-hitelesítő adatokra.
+
+1. A `<bindings>` elem után adjon hozzá egy `<services>` elemet. A kötésekhez hasonlóan megadhat több szolgáltatást is egyetlen konfigurációs fájlon belül. Ez az oktatóanyag azonban csak egyet ad meg.
+
     ```xml
     <services>
         <!-- Application Service -->
@@ -257,10 +301,11 @@ Csakúgy, mint az előző lépések során nagyon kicsi a különbség a REST-st
         </service>
     </services>
     ```
-   
-    Ez a lépés konfigurál egy szolgáltatást, amely a korábban meghatározott alapértelmezett **webHttpRelayBinding** elemet használja. Használja az alapértelmezett **sbTokenProvider** elemet is, amely a következő lépésben lesz meghatározva.
-4. Után a `<services>` elem, hozzon létre egy `<behaviors>` elem a következő tartalommal, a "SAS_KEY" cserélje le a *közös hozzáférésű Jogosultságkód* (SAS) kulcsára korábban beszerzett a [AzurePortalon] [Azure portal].
-   
+
+    Ez a tartalom olyan szolgáltatást konfigurál, amely a korábban definiált `webHttpRelayBinding`alapértelmezett értéket használja. Az alapértelmezett értéket `sbTokenProvider`is használja, amely a következő lépésben van meghatározva.
+
+1. Az `<services>` elem után hozzon létre `<behaviors>` egy elemet a következő tartalommal, `SAS_KEY` és cserélje le a kifejezést a Shared Access Signature (SAS) kulcsra. A [Azure Portal][Azure portal]sas-kulcsának beszerzéséhez tekintse meg a [felügyeleti hitelesítő adatok beolvasása](service-bus-relay-tutorial.md#get-management-credentials)című témakört.
+
     ```xml
     <behaviors>
         <endpointBehaviors>
@@ -279,8 +324,9 @@ Csakúgy, mint az előző lépések során nagyon kicsi a különbség a REST-st
             </serviceBehaviors>
     </behaviors>
     ```
-5. Még mindig az App.config fájlban, az `<appSettings>` elemben cserélje le a teljes kapcsolati sztring értékét a korábban a portálról beszerzett kapcsolati sztringre. 
-   
+
+1. Még mindig az *app. config fájlban*, `<appSettings>` az elemben cserélje le a teljes kapcsolattípus értéket a portálról korábban beszerzett kapcsolatok karakterláncára.
+
     ```xml
     <appSettings>
        <!-- Service Bus specific app settings for messaging connections -->
@@ -288,10 +334,12 @@ Csakúgy, mint az előző lépések során nagyon kicsi a különbség a REST-st
            value="Endpoint=sb://yourNamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=YOUR_SAS_KEY"/>
     </appSettings>
     ```
-6. A teljes megoldás létrehozásához a **Build** (Létrehozás) menüben kattintson a **Build Solution** (Megoldás létrehozása) elemre.
 
-### <a name="example"></a>Példa
-Az alábbi kód bemutatja a szerződés és a szolgáltatás megvalósítását egy REST-alapú szolgáltatáshoz, amely a **WebHttpRelayBinding** kötés használatával fut a Service Buson.
+1. A teljes megoldás létrehozásához **válassza a Build**Build-megoldás lehetőséget.  > 
+
+### <a name="example-that-implements-the-rest-based-wcf-service-contract"></a>Példa a REST-alapú WCF szolgáltatási szerződés megvalósítására
+
+A következő kód a szerződés és a szolgáltatás megvalósítását mutatja be egy REST-alapú szolgáltatás esetében, amely Service Bus fut `WebHttpRelayBinding` a kötés használatával.
 
 ```csharp
 using System;
@@ -353,7 +401,7 @@ namespace Microsoft.ServiceBus.Samples
 }
 ```
 
-A következő példa a szolgáltatáshoz társított App.config fájlt mutatja be.
+A következő példában a szolgáltatáshoz társított *app. config* fájl látható.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -446,39 +494,48 @@ A következő példa a szolgáltatáshoz társított App.config fájlt mutatja b
 </configuration>
 ```
 
-## <a name="host-the-rest-based-wcf-service-to-use-azure-relay"></a>Az Azure Relay használata REST-alapú WCF szolgáltatás üzemeltetéséhez
-Ebben a lépésben egy konzolalkalmazás használatával a WCF Relay egy webszolgáltatás futtatását ismerteti. Az ebben a lépésben írt kód teljes listája megtalálható az eljárást követő példában.
+## <a name="host-the-rest-based-wcf-service-to-use-azure-relay"></a>A REST-alapú WCF szolgáltatás üzemeltetése Azure Relay
+
+Ez a szakasz azt ismerteti, hogyan futtathat webszolgáltatásokat egy WCF Relay használatával rendelkező Console-alkalmazással. Az ebben a szakaszban írt kód teljes listája megjelenik az eljárást követő példában.
 
 ### <a name="to-create-a-base-address-for-the-service"></a>Alapszintű cím létrehozása a szolgáltatáshoz
-1. Az a `Main()` függvény deklarációjában, hozzon létre egy változót a projekt névterének tárolásához. Cserélje le `yourNamespace` korábban létrehozta a Relay-névtér nevét.
-   
+
+1. `Main()` A Function deklarációban hozzon létre egy változót a projekt névterének tárolásához. Ügyeljen arra, hogy `yourNamespace` a helyére a korábban létrehozott Relay-névtér nevét írja.
+
     ```csharp
     string serviceNamespace = "yourNamespace";
     ```
+
     A Service Bus a névtér nevét használva létrehoz egy egyedi URI-t.
-2. Hozzon létre egy `Uri`-példányt a névtéren alapuló szolgáltatás alapszintű címéhez.
-   
+
+1. Hozzon létre egy `Uri`-példányt a névtéren alapuló szolgáltatás alapszintű címéhez.
+
     ```csharp
     Uri address = ServiceBusEnvironment.CreateServiceUri("https", serviceNamespace, "Image");
     ```
 
 ### <a name="to-create-and-configure-the-web-service-host"></a>A webszolgáltatásgazda létrehozása és konfigurálása
-* Hozza létre a webszolgáltatás gazdáját a szakaszban korábban létrehozott URI-cím használatával.
+
+Még mindig `Main()`a-ben hozza létre a webszolgáltatási gazdagépet a szakasz korábbi részében létrehozott URI-címhez.
   
-    ```csharp
-    WebServiceHost host = new WebServiceHost(typeof(ImageService), address);
-    ```
-    A szolgáltatásgazda az a WCF-objektum, amely a gazdaalkalmazást példányosítja. Ez a példa továbbítja a létrehozni kívánt gazda típusát (**ImageService**), valamint a címet, ahol közzé kívánja tenni a gazdaalkalmazást.
+```csharp
+WebServiceHost host = new WebServiceHost(typeof(ImageService), address);
+```
+
+A szolgáltatásgazda az a WCF-objektum, amely a gazdaalkalmazást példányosítja. Ez a példa átadja a létrehozni kívánt gazdagép típusát, amely egy `ImageService`, valamint azt a helyet is, amelyen a gazda alkalmazást el szeretné tenni.
 
 ### <a name="to-run-the-web-service-host"></a>A webszolgáltatásgazda futtatása
-1. Nyissa meg a szolgáltatást.
-   
+
+1. Még mindig `Main()`a-ben adja hozzá a következő sort a szolgáltatás megnyitásához.
+
     ```csharp
     host.Open();
     ```
+
     A szolgáltatás jelenleg fut.
-2. Megjelenít egy üzenetet, amely jelzi, hogy a szolgáltatás fut, valamint a szolgáltatás leállításának módját.
-   
+
+1. Megjelenít egy üzenetet, amely jelzi, hogy a szolgáltatás fut, valamint a szolgáltatás leállításának módját.
+
     ```csharp
     Console.WriteLine("Copy the following address into a browser to see the image: ");
     Console.WriteLine(address + "GetImage");
@@ -486,14 +543,16 @@ Ebben a lépésben egy konzolalkalmazás használatával a WCF Relay egy webszol
     Console.WriteLine("Press [Enter] to exit");
     Console.ReadLine();
     ```
-3. Ha kész, zárja be a szolgáltatásgazdát.
-   
+
+1. Ha kész, zárja be a szolgáltatásgazdát.
+
     ```csharp
     host.Close();
     ```
 
-### <a name="example"></a>Példa
-Az alábbi példa tartalmazza a szolgáltatási szerződést és a megvalósítását az oktatóanyag előző lépéseiből, és egy konzolalkalmazásban működteti a szolgáltatást. Fordítsa le az alábbi kódot egy ImageListener.exe nevű végrehajtható fájlba.
+### <a name="example-of-the-service-contract-and-implementation"></a>A szolgáltatási szerződés és a megvalósítás példája
+
+Az alábbi példa tartalmazza a szolgáltatási szerződést és a megvalósítását az oktatóanyag előző lépéseiből, és egy konzolalkalmazásban működteti a szolgáltatást. Fordítsa le a következő kódot egy *ImageListener. exe*nevű végrehajtható fájlba.
 
 ```csharp
 using System;
@@ -567,17 +626,19 @@ namespace Microsoft.ServiceBus.Samples
 }
 ```
 
-## <a name="run-and-test-the-service"></a>Futtassa, és tesztelheti a szolgáltatást
+## <a name="run-and-test-the-service"></a>A szolgáltatás futtatása és tesztelése
+
 A megoldás létrehozása után az alábbi lépéseket követve futtathatja az alkalmazást:
 
-1. A szolgáltatás futtatásához nyomja le az **F5** billentyűt, vagy lépjen a végrehajtható fájlhoz (ImageListener\bin\Debug\ImageListener.exe). Nem állítsa le az alkalmazás futását, mert szükség van rá a következő lépés elvégzéséhez.
-2. A kép megtekintéséhez másolja és illessze be a címet a parancssorból egy böngészőbe.
-3. Ha kész van, a parancssori ablakban az **Enter** billentyűt lenyomva zárja be az alkalmazást.
+1. Válassza az F5 lehetőséget, vagy tallózással keresse meg a végrehajtható fájl helyét ( *ImageListener\bin\Debug\ImageListener.exe*) a szolgáltatás futtatásához. Tartsa meg az alkalmazás futását, mert a következő lépéshez szükséges.
+1. A kép megtekintéséhez másolja és illessze be a címet a parancssorból egy böngészőbe.
+1. Ha elkészült, az alkalmazás bezárásához válassza az ENTER billentyűt a Parancssor ablakban.
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy létrehozott egy alkalmazást, amely az Azure Relay szolgáltatás használja, tekintse meg az alábbi cikkekből tudhat meg:
 
-* [Az Azure Relay áttekintése](relay-what-is-it.md)
-* [A WCF relay szolgáltatás használata .NET-tel](relay-wcf-dotnet-get-started.md)
+Most, hogy létrehozott egy alkalmazást, amely a Azure Relay szolgáltatást használja, további információt a következő cikkekben talál:
+
+* [Mi az az Azure Relay?](relay-what-is-it.md)
+* [Helyszíni WCF REST-szolgáltatás közzététele külső ügyfél számára az Azure WCF Relay használatával](service-bus-relay-tutorial.md)
 
 [Azure portal]: https://portal.azure.com

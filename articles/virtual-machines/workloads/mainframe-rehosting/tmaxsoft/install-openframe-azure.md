@@ -8,12 +8,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
-ms.openlocfilehash: 78a8b5e7a1c5512f81315519210bc7759dd15342
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: b69ded2591478a477cd142decb39218841c9ac62
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578475"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65410113"
 ---
 # <a name="install-tmaxsoft-openframe-on-azure"></a>TmaxSoft OpenFrame telepítése Azure-ban
 
@@ -102,7 +102,7 @@ Tervezze meg a kiadások néhány napig az összes szükséges szoftver össze, 
 
 Az első lépések előtt tegye a következőket:
 
-- A OpenFrame telepítési adathordozó beszerzése TmaxSoft. Ha Ön már TmaxSoft ügyfél, a képviselőjétől TmaxSoft licencelt másolatot. Ellenkező esetben a rendszer próbaverzióját az kérelem [TmaxSoft](http://www.tmaxsoft.com/contact/).
+- A OpenFrame telepítési adathordozó beszerzése TmaxSoft. Ha Ön már TmaxSoft ügyfél, a képviselőjétől TmaxSoft licencelt másolatot. Ellenkező esetben a rendszer próbaverzióját az kérelem [TmaxSoft](https://www.tmaxsoft.com/contact/).
 
 - E-mailek küldése a OpenFrame dokumentáció kérni <support@tmaxsoft.com>.
 
@@ -116,13 +116,13 @@ Beállíthatja a OpenFrame-környezet különböző üzembe helyezési minták, 
 
 **Virtuális gép létrehozása**
 
-1. Nyissa meg az Azure Portalra a <http://portal.azure.com> , és jelentkezzen be a fiókjába.
+1. Nyissa meg az Azure Portalra a <https://portal.azure.com> , és jelentkezzen be a fiókjába.
 
 2. Kattintson a **virtuális gépek**.
 
     ![Az Azure portal Resource list](media/vm-01.png)
 
-3. Kattintson a **Hozzáadás** parancsra.
+3. Kattintson a **Hozzáadás**lehetőségre.
 
     ![A beállítás hozzáadása az Azure Portalon](media/vm-02.png)
 

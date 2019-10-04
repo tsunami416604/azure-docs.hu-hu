@@ -5,17 +5,17 @@ author: yanivlavi
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 11/29/2018
+ms.date: 04/26/2019
 ms.author: yalavi
 ms.reviewer: mbullwin
-ms.openlocfilehash: 772401c286a50774d201703cefcbbc12f0fcf88f
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 0d6c578186dab9622ce650f535e11d505efcecb3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678887"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65067618"
 ---
-# <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor-public-preview"></a>Metrikákhoz kapcsolódó riasztások dinamikus küszöbértékekkel az Azure monitorban (nyilvános előzetes verzió)
+# <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Metrikákhoz kapcsolódó riasztások dinamikus küszöbértékekkel az Azure monitorban
 
 Metrikariasztás dinamikus küszöbértékek észlelése a fejlett gépi tanulási (ML) további metrikák általi korábbi viselkedés, mintákat és rendellenességeket, amelyek jelzik a lehetséges szolgáltatással kapcsolatos problémák azonosítására használ. Egy egyszerű felhasználói felület és a méretezett operations támogatást biztosít a felhasználók olyan teljesen automatizált módon konfigurálhatja a riasztási szabályok az Azure Resource Manager API-n keresztül.
 
@@ -42,16 +42,16 @@ Dinamikus küszöbérték folyamatosan tanul az adatokat a metrika sorozat harma
 A küszöbértékek oly módon, hogy ezeket a küszöbértékeket eltérést jelöli a metrikákkal kapcsolatos viselkedést anomáliát ki van jelölve.
 
 > [!NOTE]
-> Szezonális észlelési óra, napi vagy heti időköz beállítása. Ez azt jelenti, hogy más bihourly mintája hasonló minták vagy semiweekly előfordulhat, hogy nem észlelhető.
+> Egy óra, napi vagy heti időköz szezonális észlelési van beállítva. Ez azt jelenti, hogy más bihourly mintája hasonló minták vagy semiweekly előfordulhat, hogy nem észlelhető.
 
 ## <a name="what-does-sensitivity-setting-in-dynamic-thresholds-mean"></a>Dinamikus küszöbérték középérték "Érzékenysége" beállítás mire?
 
 Riasztási küszöbérték érzékenységét egy magas szintű fogalom, amely szabályozza a metrikákkal kapcsolatos viselkedés riasztást kiváltó szükséges eltérés.
 Ezt a beállítást nem szükséges a mérőszám, például a statikus küszöbérték kapcsolatos adatait. Az elérhető lehetőségek:
 
-- Magas – a küszöbértékeket a rövid és a metrika sorozat minta közeli lesz. Riasztási szabály akkor aktiválódik, a legkisebb értékét, a további riasztások eredményez.
+- Magas – a küszöbértékeket a rövid és a metrika sorozat minta közeli lesz. A legkisebb eltérés, így további riasztások egy riasztási szabályt aktiválódik.
 - Közepes – kevesebb szoros és több elosztott terhelésű küszöbértékek, kevesebb riasztást, mint a magas érzékenységi (alapértelmezett).
-- Alacsony – a küszöbértékek lesz metrika sorozat minta további távolsága a laza. Riasztási szabály csak aktiválják a nagy eltérés, kevesebb riasztást eredményez.
+- Alacsony – a küszöbértékek lesz metrika sorozat minta további távolsága a laza. Riasztási szabály csak aktiválják a nagy eltéréseket, kevesebb riasztást eredményez.
 
 ## <a name="what-are-the-operator-setting-options-in-dynamic-thresholds"></a>Mik a dinamikus küszöbértékek "Kezelő" beállítás lehetőségei?
 
@@ -83,7 +83,7 @@ Megismerheti a riasztások nézetben aktivált riasztás példányok vagy kattin
 A riasztás nézetet jelenít meg:
 
 - Jelenleg minden metrika részletei a dinamikus küszöbértékek riasztás aktiválva.
-- Az időszak, amelyben a riasztás-trigger, amely magában foglalja a dinamikus küszöbértékeket, abban az időpontban használt, egy diagram.
+- Az időszak, amelyben a riasztás aktiválódott, amely tartalmazza a dinamikus küszöbértékeket, abban az időpontban használt diagram.
 - Szeretne visszajelzést adni dinamikus küszöbértékek riasztás és a riasztások nézet élményt, amely javíthatja a jövőbeli észlelések képessége.
 
 ## <a name="will-slow-behavior-change-in-the-metric-trigger-an-alert"></a>Lassú viselkedés módosítani fogja a metrikaindító metrikanevét riasztást?
@@ -92,7 +92,7 @@ Valószínűleg nem. Dinamikus küszöbérték jók jelentős eltérések észle
 
 ## <a name="how-much-data-is-used-to-preview-and-then-calculate-thresholds"></a>Mennyi adatot szolgál, és ezután kiszámíthatja a küszöbértékeket?
 
-A küszöbértékeket a diagramon megjelenő előtt egy riasztási szabályt a rendszer létrehozza a mérőszám a rendszer kiszámolta elég előzményadatok alapján számítja ki órás vagy napi szezonális minták (10 nap) alapján. Riasztási szabály létrehozása után a dinamikus küszöbértékeket és fogja használni, amely érhető el, és folyamatosan ismerje meg valamennyi szükséges előzményadatok adept új adatok alapján, hogy a küszöbértékek pontosabb. Ez azt jelenti, hogy miután a számítási diagram megjeleníti heti mintákat is.
+A küszöbértékeket a diagramon jelennek meg a mérőszám a riasztási szabály létrehozása előtt elég előzményadatok alapján számítja ki órás vagy napi szezonális minták (10 nap) alapján számítjuk. Riasztási szabály létrehozása után a dinamikus küszöbértékek minden szükséges előzményadatok, elérhető és a rendszer folyamatosan tanulhasson belőlük és idomulhasson új adatok alapján, hogy a küszöbértékek pontosabb fogja használni. Ez azt jelenti, hogy ehhez a számításhoz után a diagram is látható heti mintákat.
 
 ## <a name="how-much-data-is-needed-to-trigger-an-alert"></a>Mennyi adatot a riasztást kiváltó van szükség?
 
@@ -116,7 +116,7 @@ A következő elemeket a gyakorlati tanácsok a riasztások konfigurálása az e
 
 4. Miután kiválasztotta a célként megadott erőforrás, kattintson a **feltétel hozzáadása**.
 
-5. Válassza ki a **"CPU Percentage"**.
+5. Válassza ki a **"CPU Percentage"** .
 
 6. Szükség esetén pontosíthatja a metrika módosításával **időszak** és **összesítési**. Metrikus típus használata "Maximum" összesítés típusa, kevésbé tükrözik a működését, mert nem ajánlott. Az "Maximális" összesítési típus statikus küszöbérték esetleg több megfelelő.
 
@@ -153,7 +153,7 @@ A következő elemeket a gyakorlati tanácsok a riasztások konfigurálása az e
 
 4. Miután kiválasztotta a célként megadott erőforrás, kattintson a **feltétel hozzáadása**.
 
-5. Válassza ki a **"HTTP kérelem végrehajtási idő"**.
+5. Válassza ki a **"HTTP kérelem végrehajtási idő"** .
 
 6. Szükség esetén pontosíthatja a metrika módosításával **időszak** és **összesítési**. Metrikus típus használata "Maximum" összesítés típusa, kevésbé tükrözik a működését, mert nem ajánlott. Az "Maximális" összesítési típus statikus küszöbérték esetleg több megfelelő.
 

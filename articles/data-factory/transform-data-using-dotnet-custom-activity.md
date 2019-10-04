@@ -11,16 +11,16 @@ ms.date: 11/26/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: ea409d6705d0146e9cb32ba11e6b785cf527739c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 8076ae81b111aa6b524b7e286ed15ca0661d748b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58904576"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67062111"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Egyéni tevékenységek használata Azure Data Factory-folyamatban
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
 > * [1-es verzió](v1/data-factory-use-custom-activities.md)
 > * [Aktuális verzió](transform-data-using-dotnet-custom-activity.md)
 
@@ -102,11 +102,11 @@ A következő táblázat ismerteti a neveket és leírásokat erre a tevékenys�
 
 | Tulajdonság              | Leírás                              | Szükséges |
 | :-------------------- | :--------------------------------------- | :------- |
-| név                  | A folyamat a tevékenység neve     | Igen      |
-| leírás           | A tevékenység leírása leíró szöveg.  | Nem       |
+| name                  | A folyamat a tevékenység neve     | Igen      |
+| description           | A tevékenység leírása leíró szöveg.  | Nem       |
 | type                  | Egyéni tevékenység, a tevékenység típusa van **egyéni**. | Igen      |
 | linkedServiceName     | Társított szolgáltatás az Azure Batch szolgáltatásban. Ezt a társított szolgáltatást kapcsolatos további információkért lásd: [társított szolgáltatások számítása](compute-linked-services.md) cikk.  | Igen      |
-| command               | Az egyéni alkalmazás futtatandó parancsot. Ha az alkalmazás már az Azure Batch-készlet csomópont elérhető, a resourceLinkedService és a folderPath lehet hagyni. Például megadhatja a parancsot kell `cmd /c dir`, amelyeket a Batch-készlet Windows csomópont natív módon támogat. | Igen      |
+| A parancs               | Az egyéni alkalmazás futtatandó parancsot. Ha az alkalmazás már az Azure Batch-készlet csomópont elérhető, a resourceLinkedService és a folderPath lehet hagyni. Például megadhatja a parancsot kell `cmd /c dir`, amelyeket a Batch-készlet Windows csomópont natív módon támogat. | Igen      |
 | resourceLinkedService | Az Azure Storage társított szolgáltatás az egyéni alkalmazást tároló Storage-fiókhoz | nem&#42;       |
 | folderPath            | Az egyéni alkalmazást és annak összes függőségét a mappa elérési útja<br/><br/>Ha rendelkezik egy hierarchikus mapparendszert almappák – azaz tárolt függőségek *folderPath* – a gyökérmappa-szerkezetében jelenleg lett simítva, amikor a rendszer átmásolja a fájlokat az Azure Batch. Azt jelenti minden fájl átkerülnek egy mappát az almappák nélkül. Ez a probléma megkerüléséhez, fontolja meg a fájlok tömörítése, a tömörített fájl másolása és majd kicsomagolta egyéni kódot a kívánt helyre. | nem&#42;       |
 | referenceObjects      | Meglévő társított szolgáltatásokat és adatkészleteket tömbje. A hivatkozott társított szolgáltatásokat és adatkészleteket lesznek átadva a egyéni alkalmazás JSON formátumban, az egyéni kódot is lehet hivatkozni az adat-előállító erőforrások | Nem       |
@@ -301,7 +301,7 @@ Activity Error section:
 Ha szeretné az alsóbb rétegbeli tevékenység stdout.txt tartalmának felhasználására, beszerezheti a fájl elérési útját a stdout.txt kifejezésben "\@activity('MyCustomActivity').output.outputs [0]".
 
 > [!IMPORTANT]
-> - A activity.json linkedServices.json és datasets.json a Batch-feladat a futtatókörnyezet mappában vannak tárolva. Ebben a példában a activity.json linkedServices.json és datasets.json vannak tárolva "https://adfv2storage.blob.core.windows.net/adfjobs/\<GUID>/runtime/" elérési út. Szükség esetén meg kell törölnie őket külön.
+> - A activity.json linkedServices.json és datasets.json a Batch-feladat a futtatókörnyezet mappában vannak tárolva. Ebben a példában a activity.json linkedServices.json és datasets.json vannak tárolva `"https://adfv2storage.blob.core.windows.net/adfjobs/\<GUID>/runtime/"` elérési útja. Szükség esetén meg kell törölnie őket külön.
 > - A társított szolgáltatások, amelyek a helyi Integration Runtime a bizalmas adatokat, például kulcsokat vagy jelszavakat titkosítja a helyi Integration Runtime annak biztosítása érdekében a hitelesítő adatok marad az ügyfél határozza meg magánhálózati környezetben. Néhány időérzékeny mezőinek hiányzó lehet, amikor ezzel a módszerrel az egyéni alkalmazás kódjában hivatkozik. Használja a SecureString a extendedProperties helyett társított szolgáltatásra mutató hivatkozást, ha szükséges.
 
 ## <a name="pass-outputs-to-another-activity"></a>Pass egy másik tevékenység kimenete

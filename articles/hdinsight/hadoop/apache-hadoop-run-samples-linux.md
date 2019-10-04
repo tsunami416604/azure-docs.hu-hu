@@ -2,20 +2,19 @@
 title: Az Apache Hadoop MapReduce-példák futhatnak a HDInsight – Azure
 description: Ismerkedés a jar-fájlt is tartalmaz HDInsight MapReduce-minták használatával. Csatlakozzon a fürthöz SSH használatával, és a Hadoop paranccsal minta feladatok futtatásához.
 keywords: Példa jar hadoop, hadoop példák jar, hadoop mapreduce-példák, mapreduce-példák
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 05/16/2018
+ms.date: 04/25/2019
 ms.author: hrasheed
-ms.openlocfilehash: 7ff91a4fdc4bf0118c231a1ac18ebb521530a980
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: f0251e3926c569b45ebebcd18b98df5af4564443
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58447016"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64706663"
 ---
 # <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>Futtassa a szerepel a HDInsight MapReduce-példák
 
@@ -25,12 +24,9 @@ Ismerje meg, hogyan futtathat a mellékelt HDInsight az Apache Hadoop MapReduce 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Egy HDInsight-fürt**: Lásd: [Apache Hive a HDInsight Linux rendszeren az Apache Hadoop használatának első lépései](apache-hadoop-linux-tutorial-get-started.md)
+* Egy HDInsight az Apache Hadoop-fürtöt. Lásd: [HDInsight Linux első lépések](./apache-hadoop-linux-tutorial-get-started.md).
 
-    > [!IMPORTANT]  
-    > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
-
-* **Egy SSH-ügyfél**: További információ: [Az SSH használata HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Egy SSH-ügyfél. További információkért lásd: [HDInsight (az Apache Hadoop) SSH-val csatlakozhat](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="the-mapreduce-examples"></a>A MapReduce-példák
 
@@ -65,7 +61,11 @@ Ismerje meg, hogyan futtathat a mellékelt HDInsight az Apache Hadoop MapReduce 
 
 ## <a name="run-the-wordcount-example"></a>A wordcount-példa futtatása
 
-1. A HDInsight SSH használatával csatlakozhat. További információ: [Az SSH használata HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
+1. A HDInsight SSH használatával csatlakozhat. Cserélje le `CLUSTER` a fürt nevére, és adja meg a következő parancsot:
+
+    ```cmd
+    ssh sshuser@CLUSTER-ssh.azurehdinsight.net
+    ```
 
 2. Az a `username@#######:~$` kérdés, a következő paranccsal listázhatja a mintákat:
 
@@ -87,7 +87,7 @@ Ismerje meg, hogyan futtathat a mellékelt HDInsight az Apache Hadoop MapReduce 
 
     Ez az üzenet azt jelzi, hogy a forrás dokumentumok megadhat több bemeneti elérési utak. A végső elérési út, a kimenet (szavakat a forrás dokumentumok száma) tárolására.
 
-4. Használja az alábbi a notebookok, Leonardo Da Vinci, mintaadatokat is tartalmaz a fürt összes szavak számát:
+4. Használja az alábbi a notebookok, Leonardo da Vinci, mintaadatokat is tartalmaz a fürt összes szavak számát:
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/davinciwordcount
@@ -163,11 +163,11 @@ yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar 
 
 Ez a parancs által visszaadott érték hasonlít a **3.14159155000000000000**. Hivatkozások az első 10 tizedesjegyek pi 3.1415926535.
 
-## <a name="10-gb-greysort-example"></a>10 GB-os Greysort példa
+## <a name="10-gb-graysort-example"></a>10 GB-os GraySort-példa
 
 GraySort a teljesítményteszt rendezés. A metrika az a rendezési gyakoriság (TB/perc), amelyek során nagy mennyiségű adatot, általában egy 100 TB-os minimális rendezés érhető el.
 
-Ez a minta egy szerény 10 GB adatot használja, így viszonylag gyorsan futtatható. A MapReduce alkalmazások Owen O'Malley és Arun Murthy által fejlesztett használ. Ezeket az alkalmazásokat az általános célú ("daytona") terabájt éves rendezési teljesítményteszt megnyert 2009-arány 0.578 TB/perc (100 TB-os 173 percek alatt). Erről és más rendezési referenciaalapokhoz képest történő további információkért lásd: a [Sortbenchmark](https://sortbenchmark.org/) hely.
+Ez a minta egy szerény 10 GB adatot használja, így viszonylag gyorsan futtatható. A MapReduce alkalmazások Owen O'Malley és Arun Murthy által fejlesztett használ. Ezeket az alkalmazásokat az éves általános célú ("Daytona") terabájt rendezési referenciaalap megnyert 2009-arány 0.578 TB/perc (100 TB-os 173 percek alatt). Erről és más rendezési referenciaalapokhoz képest történő további információkért lásd: a [rendezési Referenciaalap](https://sortbenchmark.org/) hely.
 
 Ebben a példában három különböző MapReduce-programok:
 
@@ -212,7 +212,3 @@ Az ebben a cikkben megismerkedett a Linux-alapú HDInsight-fürtökkel a minta f
 * [Az Apache Pig használata a HDInsight Apache Hadoop-keretrendszerrel](hdinsight-use-pig.md)
 * [Apache Hive használata a HDInsight Apache Hadoop-keretrendszerrel](hdinsight-use-hive.md)
 * [A HDInsight az Apache Hadoop MapReduce használata](hdinsight-use-mapreduce.md)
-
-[hdinsight-submit-jobs]:submit-apache-hadoop-jobs-programmatically.md
-[hdinsight-introduction]:apache-hadoop-introduction.md
-

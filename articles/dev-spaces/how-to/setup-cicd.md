@@ -1,5 +1,5 @@
 ---
-title: Az Azure fejlesztői, szóközök CI/CD használatával
+title: A CI/CD és az Azure Dev Spaces használata
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
@@ -7,15 +7,15 @@ author: DrEsteban
 ms.author: stevenry
 ms.date: 12/17/2018
 ms.topic: conceptual
-manager: yuvalm
+manager: gwallace
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, az AKS, az Azure Container Service, tárolók
-ms.openlocfilehash: 983af0dd75e6ae62630c85d04ac3819c7e260439
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 01e1401c5054eb56d4e2313b5e03ce5a36d1b301
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57768280"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704062"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>CI/CD használata az Azure fejlesztői, szóközök
 
@@ -43,7 +43,7 @@ Hozzon létre egy új tárolóhelyet nevű _fejlesztési_ használatával a `azd
 azds space select -n dev
 ```
 
-Amikor a rendszer kéri, válassza ki a szülő fejlesztési szóközzel, válassza ki a  _\<nincs\>_.
+Amikor a rendszer kéri, válassza ki a szülő fejlesztési szóközzel, válassza ki a  _\<nincs\>_ .
 
 A fejlesztési tárhely létrehozása után meg kell határoznia az állomásnév-utótagja. Használja a `azds show-context` parancsot az Azure fejlesztési tárolóhelyek Bejövőforgalom-vezérlőt az állomásnév-utótagja megjelenítéséhez.
 
@@ -101,7 +101,7 @@ Most már a CI-megoldás, amely automatikusan hozhat létre *mywebapi* és *webf
 1. Az a **alapértelmezett verzió**, válassza a **legújabb ágból a buildelési folyamat alapértelmezett címkékkel**.
 1. Hagyja **címkék** üres.
 1. Állítsa be a **forrás alias** való `drop`. A **forrás alias** érték előre meghatározott kiadási tevékenységek által használt, úgy kell beállítani.
-1. Kattintson a **Hozzáadás** parancsra.
+1. Kattintson a **Hozzáadás**lehetőségre.
 1. Most kattintson az újonnan létrehozott villámgyors bolt ikonjára `drop` összetevő forrás, az alább látható módon:
 
     ![Kiadási összetevő folyamatos üzembe helyezés beállítása](../media/common/release-artifact-cd-setup.png)

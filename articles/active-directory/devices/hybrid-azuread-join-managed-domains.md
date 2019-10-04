@@ -1,224 +1,184 @@
 ---
-title: Hibrid Azure Active Directory-csatlakozás a felügyelt tartományok konfigurálása |} A Microsoft Docs
-description: További tudnivalók a hibrid Azure Active Directory-csatlakozás a felügyelt tartományok konfigurálása.
+title: Hibrid Azure Active Directory csatlakozás konfigurálása a felügyelt tartományokhoz | Microsoft Docs
+description: Megtudhatja, hogyan konfigurálhat hibrid Azure Active Directory illesztést a felügyelt tartományokhoz.
 services: active-directory
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-editor: ''
-ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
 ms.subservice: devices
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/20/2019
+ms.date: 05/14/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81a9726b73226cd940a55e316ae434aeaad6ff4d
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 787900918035dc8b14d3a173496ab1a23b0f93bb
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58519085"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68813089"
 ---
-# <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Oktatóanyag: Hibrid Azure Active Directory-csatlakozás a felügyelt tartományok konfigurálása
+# <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Oktatóanyag: Hibrid Azure Active Directory csatlakozás konfigurálása felügyelt tartományokhoz
 
-A felhasználókhoz hasonlóan az eszközök is olyan identitásokká válnak, amelyeket mindig, mindenhol védelem alatt tartunk, illetve felhasználunk az erőforrásaink védelméhez. Ezt úgy tehetjük meg, ha az eszközök identitásait bevonjuk az Azure AD-be, a következő módszerek egyikével:
+A szervezetben lévő felhasználóhoz hasonlóan az eszköz a védelemmel ellátni kívánt alapvető identitás. Az eszközök identitásával bármikor és bárhonnan biztosíthatja erőforrásait. Ezt a célt úgy hajthatja végre, hogy az eszköz identitásait és a Azure Active Directory (Azure AD) felügyeletét az alábbi módszerek egyikével látja el:
 
 - Azure AD-csatlakozás
 - Hibrid Azure AD-csatlakozás
 - Azure AD-regisztráció
 
-Az Azure AD-be való bevonással maximalizálható a felhasználók munkahatékonysága, köszönhetően az egyszeri bejelentkezésnek (SSO), amely a felhőbeli és a helyszíni erőforrásokhoz is hozzáférést nyújt. Ugyanakkor a felhőbeli és a helyszíni erőforrások hozzáférése külön [feltételes hozzáférésekkel](../active-directory-conditional-access-azure-portal.md) is biztosítható.
+Ha az eszközöket az Azure AD-be szeretné állítani, az egyszeri bejelentkezés (SSO) révén maximalizálja a felhasználók hatékonyságát a felhőben és a helyszíni erőforrásokban. A [feltételes hozzáféréssel](../active-directory-conditional-access-azure-portal.md) a felhőben és a helyszíni erőforrásokhoz is biztonságossá teheti a hozzáférést.
 
-Ezen oktatóanyagból megtudhatja, hogyan konfigurálhatja az eszközök hibrid Azure AD-csatlakozását a felügyelt tartományokban.
+Ebből az oktatóanyagból megtudhatja, hogyan konfigurálhat hibrid Azure AD-csatlakozást Active Directory tartományhoz csatlakoztatott számítógépek eszközeihez felügyelt környezetben. 
+
+A felügyelt környezetek a [jelszó-kivonatolási szinkronizálással (PHS)](../hybrid/whatis-phs.md) vagy az átmenő [HITELESÍTÉSSEL (PTA ESP)](../hybrid/how-to-connect-pta.md) is üzembe helyezhetők, [zökkenőmentes egyszeri bejelentkezéssel](../hybrid/how-to-connect-sso.md). Ezekhez a forgatókönyvekhez nem szükséges összevonási kiszolgálót konfigurálni a hitelesítéshez.
+
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * A hibrid Azure AD-csatlakozás konfigurálása
 > * A korábbi verziójú Windows-eszközök engedélyezése
-> * Csatlakoztatott eszközök ellenőrzése 
-> * Hibaelhárítás 
-
+> * Csatlakoztatott eszközök ellenőrzése
+> * Hibaelhárítás
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag feltételezi, hogy Ön járatos az alábbi témakörökben:
-    
--  [Az Azure Active Directory eszközkezelésének alapjai](../device-management-introduction.md)
-    
--  [A hibrid Azure Active Directory-csatlakozás megvalósításának tervezése](hybrid-azuread-join-plan.md)
+Ez az oktatóanyag feltételezi, hogy már ismeri a következő cikkeket:
 
--  [Az eszközök hibrid Azure AD-csatlakozásának vezérlése](hybrid-azuread-join-control.md)
-  
+- [Mi az az eszköz identitása?](overview.md)
+- [Hibrid Azure AD JOIN megvalósításának megtervezése](hybrid-azuread-join-plan.md)
+- [Hibrid Azure AD-csatlakozás vezérelt ellenőrzése](hybrid-azuread-join-control.md)
 
-Ez a cikk a forgatókönyv konfigurálásához lesz szüksége:
+> [!NOTE]
+> Az Azure AD nem támogatja a felügyelt tartományokban található intelligens kártyák vagy tanúsítványok használatát.
 
-- A [az Azure AD Connect legújabb verziójának](https://www.microsoft.com/download/details.aspx?id=47594) (1.1.819.0 vagy újabb) kell telepíteni. 
+A jelen cikkben szereplő forgatókönyv konfigurálásához a Azure AD Connect (1.1.819.0 vagy újabb) [legújabb verziójára](https://www.microsoft.com/download/details.aspx?id=47594) van szükség.
 
-Ellenőrizze, hogy az Azure AD Connect szinkronizálta-e a számítógép-objektumokat az Azure AD-hez hibrid módon csatlakoztatni kívánt eszközök közül. Ha a számítógép-objektumok bizonyos szervezeti egységekhez (OU) tartoznak, akkor az OU-k szinkronizálását is konfigurálni kell az Azure AD Connectben.
+Ellenőrizze, hogy a Azure AD Connect szinkronizálta-e azon eszközök számítógép-objektumait, amelyeket hibrid Azure AD-hez csatlakoztatni szeretne az Azure AD-hez. Ha a számítógép-objektumok meghatározott szervezeti egységekhez (OU-hoz) tartoznak, akkor a szervezeti egységeket is konfigurálnia kell Azure AD Connectban való szinkronizáláshoz. Ha többet szeretne megtudni a számítógép-objektumok Azure AD Connect használatával történő szinkronizálásáról, tekintse meg a [szűrés konfigurálása Azure ad Connect használatával](../hybrid/how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering)című témakört.
 
-Az 1.1.819.0-s verziótól kezdve az Azure AD Connectben egy varázsló segíti a hibrid Azure AD-csatlakozások konfigurálását. Ez a varázsló jelentősen leegyszerűsíti a konfigurálási folyamatot. A kapcsolódó varázsló konfigurálja a szolgáltatáskapcsolódási pontokat (SCP) az eszközregisztrációhoz.
+A 1.1.819.0 verziótól kezdődően a Azure AD Connect tartalmaz egy varázslót, amely használatával konfigurálhatja a hibrid Azure AD Joint. A varázsló jelentősen leegyszerűsíti a konfigurációs folyamatot. A varázsló konfigurálja az eszközök regisztrálásához szükséges szolgáltatáskapcsolódási pontokat.
 
-Az ebben a cikkben szereplő konfigurációs lépések ezen a varázslón alapulnak. 
+A jelen cikkben szereplő konfigurációs lépések a varázsló Azure AD Connect-ben való használatán alapulnak.
 
-A hibrid Azure AD-csatlakozáshoz szükséges, hogy az eszközök hozzáférjenek a következő Microsoft-erőforrásokhoz a szervezeti hálózaton:  
+A hibrid Azure AD-csatlakozáshoz az eszközöknek a szervezet hálózatán belüli alábbi Microsoft-erőforrásokhoz való hozzáférésre van szükségük:  
 
-- https://enterpriseregistration.windows.net
-- https://login.microsoftonline.com
-- https://device.login.microsoftonline.com
-- https://autologon.microsoftazuread-sso.com (Ha közvetlen egyszeri bejelentkezést használ, vagy tervezi annak használatát)
+- `https://enterpriseregistration.windows.net`
+- `https://login.microsoftonline.com`
+- `https://device.login.microsoftonline.com`
+- `https://autologon.microsoftazuread-sso.com`(Ha a vagy a-t használja, és nem szeretné használni a zökkenőmentes SSO-t)
 
-Ha a szervezet egy kimenő proxy használatát írja elő az internethez való csatlakozáshoz, a Windows 10 1709-es verziójától kezdve [a számítógép proxybeállításai egy csoportszabályzat-objektummal (GPO) konfigurálhatók](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/). Ha a számítógépen a Windows 10 1709-es verziójánál régebbi operációs rendszer fut, az Automatikus webproxykereső (WPA) protokoll használatával lehet engedélyezni, hogy a Windows 10 rendszerű számítógépek eszközregisztrációt végezzenek az Azure AD-ben. 
+Ha a szervezete egy kimenő proxyn keresztül fér hozzá az internethez, a Microsoft a [webproxy automatikus felderítésének (WPAD) megvalósítását](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10)) javasolja a Windows 10-es számítógépek Azure ad-vel való regisztrációjának engedélyezéséhez. Ha a WPAD konfigurálásával és kezelésével kapcsolatos problémákat tapasztal, tekintse meg az [automatikus észlelés hibaelhárítása](https://docs.microsoft.com/previous-versions/tn-archive/cc302643(v=technet.10))című témakört. 
 
-Ha a szervezet egy hitelesített kimenő proxy használatát írja elő az internethez való csatlakozáshoz, gondoskodni kell arról, hogy a Windows 10 rendszerű számítógépek sikeres hitelesítést tudjanak végezni a kimenő proxyval. Mivel a Windows 10-es számítógépek az eszközregisztrációt gépi kontextusban futtatják, a kimenő proxy hitelesítését is gépi kontextus használatával kell konfigurálni. A konfiguráció követelményeivel kapcsolatban forduljon a kimenő proxy szolgáltatójához. 
+Ha nem használja a WPAD-t, és konfigurálnia kell a proxybeállításokat a számítógépen, a Windows 10 1709-es verziójától kezdve is megteheti. További információ: [WinHTTP-beállítások konfigurálása csoportházirend-objektummal (GPO)](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/).
 
+> [!NOTE]
+> Ha a proxybeállításokat a WinHTTP-beállítások használatával konfigurálja a számítógépen, a konfigurált proxyhoz nem csatlakoztatható számítógépek nem fognak csatlakozni az internethez.
 
+Ha a szervezete hitelesített kimenő proxyn keresztül fér hozzá az internethez, meg kell győződnie arról, hogy a Windows 10 rendszerű számítógépek sikeresen hitelesíteni tudják a kimenő proxyt. Mivel a Windows 10 rendszerű számítógépek gépi környezettel futtatják az eszközök regisztrációját, a kimenő proxy hitelesítését a gépi környezet használatával kell konfigurálni. A konfiguráció követelményeivel kapcsolatban forduljon a kimenő proxy szolgáltatójához.
+
+Annak ellenőrzéséhez, hogy az eszköz képes-e hozzáférni a fenti Microsoft-erőforrásokhoz a rendszerfiókban, használhatja a [teszt eszköz regisztrációjának kapcsolati](https://gallery.technet.microsoft.com/Test-Device-Registration-3dc944c0) parancsfájlját.
 
 ## <a name="configure-hybrid-azure-ad-join"></a>A hibrid Azure AD-csatlakozás konfigurálása
 
 A hibrid Azure AD-csatlakozások Azure AD Connecttel való konfigurálásához a következők szükségesek:
 
-- Globális rendszergazdai hitelesítő adatok az Azure AD-bérlőhöz.  
+- Az Azure AD-bérlő globális rendszergazdájának hitelesítő adatai
+- Az egyes erdők vállalati rendszergazdai hitelesítő adatai
 
-- Az egyes erdőkre vonatkozó vállalati rendszergazdai hitelesítő adatok.
+**Hibrid Azure AD-csatlakozás konfigurálása Azure AD Connect használatával:**
 
+1. Indítsa el Azure AD Connect, majd válassza a **Konfigurálás**lehetőséget.
 
-**Hibrid Azure AD-csatlakozás konfigurálása az Azure AD Connect használatával:**
+   ![Üdvözöljük!](./media/hybrid-azuread-join-managed-domains/11.png)
 
-1. Indítsa el az Azure AD Connectet és kattintson a **Konfigurálás** elemre.
+1. A **További feladatok** lapon válassza az **eszközbeállítások konfigurálása**lehetőséget, majd kattintson a **tovább**gombra.
 
-    ![Üdvözlőképernyő](./media/hybrid-azuread-join-managed-domains/11.png)
+   ![További feladatok](./media/hybrid-azuread-join-managed-domains/12.png)
 
-2. A **További feladatok** oldalon válassza az **Eszközbeállítások konfigurálása** elemet, majd kattintson a **Tovább** gombra. 
+1. Az **Áttekintés** lapon válassza a **tovább**lehetőséget.
 
-    ![További feladatok](./media/hybrid-azuread-join-managed-domains/12.png)
+   ![Áttekintés](./media/hybrid-azuread-join-managed-domains/13.png)
 
-3. Az **Áttekintés** oldalon kattintson a **Tovább** gombra. 
+1. A **Csatlakozás az Azure AD szolgáltatáshoz** oldalon adja meg az Azure AD-bérlőhöz tartozó globális rendszergazdai hitelesítő adatokat.  
 
-    ![Áttekintés](./media/hybrid-azuread-join-managed-domains/13.png)
+   ![Összekapcsolás az Azure AD-vel](./media/hybrid-azuread-join-managed-domains/14.png)
 
-4. A **Csatlakozás az Azure AD szolgáltatáshoz** oldalon adja meg az Azure AD-bérlőhöz tartozó globális rendszergazdai hitelesítő adatokat.  
+1. Az **eszközbeállítások** lapon válassza a **hibrid Azure ad-csatlakozás konfigurálása**lehetőséget, majd kattintson a **tovább**gombra.
 
-    ![Csatlakozás az Azure AD szolgáltatáshoz](./media/hybrid-azuread-join-managed-domains/14.png)
+   ![Eszközbeállítások](./media/hybrid-azuread-join-managed-domains/15.png)
 
-5. Az **Eszközbeállítások** oldalon válassza a **Hibrid Azure AD-csatlakozás konfigurálása** lehetőséget, és kattintson a **Tovább** gombra. 
+1. Az **SCP** lapon minden olyan erdőhöz, ahol Azure ad Connect szeretné KONFIGURÁLNI az scp-t, hajtsa végre az alábbi lépéseket, majd kattintson a **tovább**gombra:
 
-    ![Eszközbeállítások](./media/hybrid-azuread-join-managed-domains/15.png)
+   ![SCP](./media/hybrid-azuread-join-managed-domains/16.png)
 
-6. Az **SCP** oldalon végezze el az alábbi lépéseket az összes konfigurálni kívánt erdőre vonatkozóan, majd kattintson a **Tovább** gombra: 
+   1. Válassza ki az erdőt.
+   1. Válassza ki a hitelesítési szolgáltatást.
+   1. Válassza a **Hozzáadás** lehetőséget a vállalati rendszergazda hitelesítő adatainak megadásához.
 
-    ![SCP](./media/hybrid-azuread-join-managed-domains/16.png)
+1. Az **eszköz operációs rendszerek** lapján válassza ki azokat az operációs rendszereket, amelyeket az Active Directory környezetében lévő eszközök használnak, majd válassza a **tovább**lehetőséget.
 
-    a. Válassza ki az erdőt.
+   ![Eszköz operációs rendszere](./media/hybrid-azuread-join-managed-domains/17.png)
 
-    b. Válassza ki a hitelesítési szolgáltatást.
+1. A **konfigurálásra kész** lapon válassza a **Konfigurálás**lehetőséget.
 
-    c. Kattintson a **Hozzáadás** gombra a vállalati rendszergazdai hitelesítő adatok megadásához.
+   ![Konfigurálásra kész](./media/hybrid-azuread-join-managed-domains/19.png)
 
+1. A **konfiguráció kész** lapon válassza a **Kilépés**lehetőséget.
 
-7. Az **Eszközök operációs rendszerei** oldalon jelölje ki az Active Directory-környezethez tartozó eszközökön használt operációs rendszereket, majd kattintson a **Tovább** gombra. 
+   ![A konfigurálás befejeződött](./media/hybrid-azuread-join-managed-domains/20.png)
 
-    ![Eszköz operációs rendszere](./media/hybrid-azuread-join-managed-domains/17.png)
+## <a name="enable-windows-downlevel-devices"></a>Régebbi Windows-eszközök engedélyezése
 
+Ha a tartományhoz csatlakoztatott eszközök némelyike Windows régebbi verziójú eszközök, a következőket kell tennie:
 
-8. A **Konfigurálásra kész** oldalon kattintson a **Konfigurálás** gombra. 
-
-    ![Ready to configure (Konfigurálásra kész)](./media/hybrid-azuread-join-managed-domains/19.png)
-
-9. **A konfigurálás befejeződött** oldalon kattintson a **Kilépés** gombra. 
-
-    ![A konfigurálás befejeződött](./media/hybrid-azuread-join-managed-domains/20.png)
-
-
-
-
-## <a name="enable-windows-down-level-devices"></a>A korábbi verziójú Windows-eszközök engedélyezése
-
-Ha a tartományhoz csatlakoztatott eszközök között korábbi verziójú Windows-eszközök is vannak, végezze el a következőket:
-
-- Eszközbeállítások frissítése
- 
 - A helyi intranet-beállítások konfigurálása az eszközregisztrációhoz
-
-- Közvetlen egyszeri bejelentkezés (SSO) konfigurálása
-
-- A korábbi verziójú Windows-eszközök vezérlése 
-
-
-### <a name="update-device-settings"></a>Eszközbeállítások frissítése 
-
-A korábbi verziójú Windows-eszközök regisztrálásának feltétele, hogy az eszközbeállításokban be legyen állítva, hogy a felhasználók regisztrálhassák az eszközöket az Azure AD-ben. Ez a beállítás az Azure Portalon a következő helyen található:
-
-`Home > [Name of your tenant] > Devices - Device settings`  
-
-
-    
-A következő szabályzatot kell beállítani **összes**: **A felhasználók regisztrálhatják eszközeiket az Azure ad-vel**
-
-![Eszközök regisztrálása](media/hybrid-azuread-join-managed-domains/23.png)
-
-
+- Zökkenőmentes SSO konfigurálása
+- A Microsoft Workplace Join telepítése régebbi Windows rendszerű számítógépekhez
 
 ### <a name="configure-the-local-intranet-settings-for-device-registration"></a>A helyi intranet-beállítások konfigurálása az eszközregisztrációhoz
 
-A korábbi verziójú Windows-eszközök sikeres hibrid Azure AD-csatlakoztatásához, valamint az eszközök Azure AD-hitelesítésekor megjelenő tanúsítványkérések elkerüléséhez leküldhet egy szabályzatot a tartományhoz csatlakozó eszközökre, amely hozzáadja az alábbi URL-címeket a helyi intranet zónához az Internet Explorerben:
+A Windows régebbi verziójú eszközök hibrid Azure AD-csatlakozásának sikeres elvégzéséhez, valamint a tanúsítványok az Azure AD-be való hitelesítésének elkerülése érdekében leküldheti a szabályzatot a tartományhoz csatlakoztatott eszközökre, hogy hozzáadja a következő URL-címeket a helyi intranetes zónához az interneten Explorer
 
 - `https://device.login.microsoftonline.com`
+- `https://autologon.microsoftazuread-sso.com`
 
-- `https://autologon.microsoftazuread-sso.com`.
+Emellett engedélyeznie kell a **frissítések állapotát** az állapotsoron a felhasználó helyi intranet zónájában lévő parancsfájl használatával.
 
-Emellett engedélyezni kell **az állapotsor szkriptekkel való frissítését** a felhasználó helyi intranetes zónájában.
+### <a name="configure-seamless-sso"></a>Zökkenőmentes SSO konfigurálása
 
+Ha az Azure AD felhőalapú hitelesítési módszerként [PHS](../hybrid/whatis-phs.md) vagy [PTA](../hybrid/how-to-connect-pta.md) -t használó felügyelt tartományban a Windows régebbi VERZIÓJÚ eszközök hibrid Azure ad-csatlakozását szeretné sikeresen befejezni, akkor a [zökkenőmentes egyszeri bejelentkezést](../hybrid/how-to-connect-sso-quick-start.md#step-2-enable-the-feature)is konfigurálnia kell.
 
-### <a name="configure-seamless-sso"></a>Közvetlen egyszeri bejelentkezés konfigurálása
+### <a name="install-microsoft-workplace-join-for-windows-downlevel-computers"></a>A Microsoft Workplace Join telepítése régebbi Windows rendszerű számítógépekhez
 
-Sikeresen befejeződött a hibrid Azure AD join a Windows, a régebbi verziójú eszközök, az Azure AD átmenő hitelesítés (ESP) vagy a jelszó Jelszókivonat szinkronizálása (nál) segítségével felügyelt tartományban felhőalapú hitelesítési mód, ezenkívül meg kell adnia [konfigurálása Közvetlen egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso-quick-start#step-2-enable-the-feature). 
+A Windows régebbi verziójú eszközök regisztrálásához a szervezeteknek telepíteniük kell [a Microsoft Workplace Joint a nem Windows 10](https://www.microsoft.com/download/details.aspx?id=53554)rendszerű számítógépekre. A nem Windows 10 rendszerű számítógépekhez készült Microsoft Workplace Join a Microsoft letöltőközpontban érhető el.
 
+A csomagot központilag telepítheti egy szoftverterjesztési rendszer, például a [System Center Configuration Manager](https://www.microsoft.com/cloud-platform/system-center-configuration-manager)használatával. A csomag támogatja a standard csendes telepítési beállításokat a `quiet` paraméterrel. A Configuration Manager aktuális ága a korábbi verziók előnyeit kínálja, mint például a befejezett regisztrációk nyomon követésének lehetősége.
 
-### <a name="control-windows-down-level-devices"></a>A korábbi verziójú Windows-eszközök vezérlése 
-
-A korábbi verziójú Windows-eszközök regisztrálásához a Letöltőközpontból le kell töltenie, majd telepítenie kell egy Windows Installer-csomagot (.msi). További információért kattintson [ide](hybrid-azuread-join-control.md#control-windows-down-level-devices). 
-
+A telepítő létrehoz egy ütemezett feladatot a felhasználói környezetben futó rendszeren. A feladat akkor aktiválódik, amikor a felhasználó bejelentkezik a Windowsba. A feladat csendesen csatlakoztatja az eszközt az Azure AD-vel az Azure AD-vel végzett hitelesítés után a felhasználói hitelesítő adatok használatával.
 
 ## <a name="verify-the-registration"></a>A regisztráció ellenőrzése
 
-Az eszköznek az Azure-bérlőbeli regisztrációs állapotát a **[Get-MsolDevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice)** parancsmaggal lehet ellenőrizni az **[Azure Active Directory PowerShell-modulban](/powershell/azure/install-msonlinev1?view=azureadps-2.0)**.
+Az Azure-bérlő eszköz-regisztrációs állapotának ellenőrzéséhez használhatja a **[Get-MsolDevice](/powershell/msonline/v1/get-msoldevice)** parancsmagot a [Azure Active Directory PowerShell](/powershell/azure/install-msonlinev1?view=azureadps-2.0)-modulban.
 
-A **Get-MSolDevice** parancsmag használatához a következők szükségesek:
+Ha a **Get-MSolDevice** parancsmagot használja a szolgáltatás részleteinek megtekintéséhez:
 
-- Léteznie kell egy objektumnak, amelynek az **eszközazonosítója** megegyezik a Windows-ügyfél azonosítójával.
-- A **DeviceTrustType** beállítás értékének **tartományhoz csatlakoztatottnak** kell lennie. Ez egyenértékű az Azure AD-portál Eszközök oldalán található **Hibrid Azure AD-hez csatlakoztatott** értékkel.
-- A feltételes hozzáférésű eszközöknél az **Engedélyezve** beállításhoz az **Igaz** értéket kell megadni, a **DeviceTrustLevel** beállításhoz pedig a **Felügyelt** értéket. 
+- Léteznie kell egy olyan objektumnak, amely megfelel a Windows-ügyfél azonosítójának.
+- A **DeviceTrustType** beállítás értékének **tartományhoz csatlakoztatottnak** kell lennie. Ez a beállítás megegyezik a **hibrid Azure ad-hez csatlakoztatott** állapottal az Azure ad-portál **eszközök** lapján.
+- A feltételes hozzáférésben használt eszközök esetében az **engedélyezett** értéknek **igaznak** kell lennie, és a **DeviceTrustLevel** kell **kezelnie**.
 
+**A szolgáltatás részleteinek ellenõrzése**:
 
-**A szolgáltatás részleteinek ellenőrzése:**
-
-1. Nyissa meg a **Windows PowerShellt** rendszergazdaként.
-
-2. Írja be a `Connect-MsolService` parancsot az Azure-bérlőhöz való csatlakozáshoz.  
-
-3. Gépelje be: `get-msoldevice -deviceId <deviceId>`.
-
-6. Ellenőrizze, hogy az **Engedélyezve** beállításhoz az **Igaz** érték van-e megadva.
-
-
-
-
+1. Nyissa meg a Windows PowerShellt rendszergazdaként.
+1. Az `Connect-MsolService` Azure-bérlőhöz való kapcsolódáshoz adja meg a következőt:.  
+1. Írja be a `get-msoldevice -deviceId <deviceId>` (igen) kifejezést.
+1. Ellenőrizze, hogy az **Engedélyezve** beállításhoz az **Igaz** érték van-e megadva.
 
 ## <a name="troubleshoot-your-implementation"></a>A megvalósítás hibaelhárítása
 
-Ha problémákat tapasztal a tartományhoz csatlakoztatott Windows-eszközök hibrid Azure AD-csatlakozásával kapcsolatban, tekintse át a következő cikkeket:
+Ha a tartományhoz csatlakoztatott Windows-eszközök hibrid Azure AD-csatlakozásának befejezésével kapcsolatos problémákat tapasztal, tekintse meg a következőt:
 
-- [Jelenlegi Windows-eszközök hibrid Azure AD-csatlakozásának hibaelhárítása](troubleshoot-hybrid-join-windows-current.md)
-- [Korábbi verziójú Windows-eszközök hibrid Azure AD-csatlakozásának hibaelhárítása](troubleshoot-hybrid-join-windows-legacy.md)
-
+- [Hibrid Azure AD-csatlakozás a Windows aktuális eszközeihez – problémamegoldás](troubleshoot-hybrid-join-windows-current.md)
+- [A hibrid Azure AD JOIN használata a Windows régebbi verziójú eszközökhöz](troubleshoot-hybrid-join-windows-legacy.md)
 
 ## <a name="next-steps"></a>További lépések
 
-> [!div class="nextstepaction"]
-> [A hibrid Azure Active Directory-csatlakozás konfigurálása összevont tartományokhoz](hybrid-azuread-join-federated-domains.md)
-> [A hibrid Azure Active Directory-csatlakozás manuális konfigurálása](hybrid-azuread-join-manual.md)
-
+Ismerje meg, hogyan [kezelheti az eszközök identitásait a Azure Portal használatával](device-management-azure-portal.md).

@@ -1,43 +1,42 @@
 ---
-title: Az Azure Functions SignalR Service kötések
-description: Megtudhatja, hogyan használhatja a SignalR Service kötések az Azure Functions használatával.
+title: Azure Functions szignáló szolgáltatás kötései
+description: Megtudhatja, hogyan használhatja a Signaler szolgáltatás kötéseit Azure Functions.
 services: functions
 documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: ''
 keywords: az Azure functions, függvények, eseményfeldolgozás, dinamikus számítás, kiszolgáló nélküli architektúra
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/28/2019
 ms.author: cshoe
-ms.openlocfilehash: f0d4a607676285ed4f0f91d8ce8c83ddf1313b89
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 82bbd728bfd51595f0b6eacf344bc95ea5db1ea8
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437798"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70086161"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>SignalR-szolgáltatáskötések az Azure Functionshöz
 
-Ez a cikk azt ismerteti, hogyan és valós idejű üzeneteket küldeni a kapcsolódó ügyfelek hitelesítéséhez [Azure SignalR Service](https://azure.microsoft.com/services/signalr-service/) SignalR Service kötések az Azure Functions használatával. Az Azure Functions támogatja a bemeneti és kimeneti kötései SignalR Service.
+Ez a cikk bemutatja, hogyan hitelesítheti és küldheti el a valós idejű üzeneteket az [Azure signaler szolgáltatáshoz](https://azure.microsoft.com/services/signalr-service/) csatlakozó ügyfeleknek a Azure functions-ben a Signal Service-kötések használatával. Azure Functions támogatja a jelző szolgáltatás bemeneti és kimeneti kötéseit.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 ## <a name="packages---functions-2x"></a>Csomagok – 2.x függvények
 
-A SignalR Service kötéseket szerepelnek a [Microsoft.Azure.WebJobs.Extensions.SignalRService](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SignalRService) NuGet-csomag verziója 1.*. A csomag forráskódja a [azure-functions-signalrservice-bővítmény](https://github.com/Azure/azure-functions-signalrservice-extension) GitHub-adattárban.
+A Signaler szolgáltatás kötései a [Microsoft. Azure. webjobs. Extensions. SignalRService](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SignalRService) NuGet csomagban találhatók, 1. verzió. *. A csomag forráskódja az [Azure-functions-signalrservice-Extension](https://github.com/Azure/azure-functions-signalrservice-extension) GitHub-tárházban található.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2-manual-portal.md)]
 
 
 ### <a name="java-annotations"></a>Java-jegyzetek
 
-Java-függvények a SignalR Service jegyzetek használ, adja hozzá egy függőséget kell a *azure-functions-java-kódtár – signalr* a pom.xml lehívandó összetevő (1.0-s vagy újabb verzió).
+Ahhoz, hogy használni lehessen a Signaler szolgáltatás megjegyzéseit a Java-függvényekben, hozzá kell adnia egy függőséget az *Azure-functions-Java-Library-signaler* összetevőhöz (1,0-es vagy újabb verzió) a Pom. xml fájlhoz.
 
 ```xml
 <dependency>
@@ -48,27 +47,27 @@ Java-függvények a SignalR Service jegyzetek használ, adja hozzá egy függős
 ```
 
 > [!NOTE]
-> A SignalR Service kötéseket Java-környezetben, győződjön meg arról, hogy 2.4.419 verzióját használja, vagy újabb verzióját az Azure Functions Core Tools (gazdagép verziója 2.0.12332) használatára.
+> Ha a Signaler szolgáltatáshoz tartozó kötéseket a javában szeretné használni, győződjön meg róla, hogy a Azure Functions Core Tools (2.4.419) vagy újabb verzióját használja (a gazdagép verziója 2.0.12332).
 
-## <a name="using-signalr-service-with-azure-functions"></a>SignalR Service használata az Azure Functions használatával
+## <a name="using-signalr-service-with-azure-functions"></a>A Signaler szolgáltatás használata Azure Functions
 
-Megtudhatja, hogyan konfigurálhatja és használhatja a SignalR Service és az Azure Functions együtt, tekintse meg a [Azure Functions fejlesztői és az Azure SignalR Service configuration](../azure-signalr/signalr-concept-serverless-development-config.md).
+A Signaler Azure Functions szolgáltatás konfigurálásával és használatával kapcsolatos további részletekért tekintse meg a [Azure functions fejlesztés és konfigurálás az Azure signaler szolgáltatással](../azure-signalr/signalr-concept-serverless-development-config.md)című témakört.
 
-## <a name="signalr-connection-info-input-binding"></a>A SignalR kapcsolati adatok bemeneti kötéssel
+## <a name="signalr-connection-info-input-binding"></a>A jelző kapcsolódási adatainak bemeneti kötése
 
-Egy ügyfél csak akkor csatlakozhatnak az Azure SignalR Service, a végpont URL-címe és a egy érvényes hozzáférési jogkivonatot kell lekérnie. A *SignalRConnectionInfo* bemeneti kötésnek a SignalR Service-végpont URL-címe és a egy érvényes tokent a szolgáltatáshoz való csatlakozáshoz használt hoz létre. A jogkivonat időben korlátozott, és a egy kapcsolat egy adott felhasználót hitelesítésre használható, mert ne gyorsítótárazza a jogkivonat és ossza meg az ügyfelek között. Ez a kötés használatával a HTTP-trigger segítségével az ügyfelek által a kapcsolati adatok lekéréséhez.
+Ahhoz, hogy az ügyfél csatlakozni tudjanak az Azure Signaler szolgáltatáshoz, le kell kérnie a szolgáltatási végpont URL-címét és egy érvényes hozzáférési tokent. A *SignalRConnectionInfo* bemeneti kötése létrehozza a signaler szolgáltatás végpontjának URL-címét és a szolgáltatáshoz való kapcsolódáshoz használt érvényes jogkivonatot. Mivel a jogkivonat időkorlátja korlátozott, és egy adott felhasználó egy kapcsolathoz való hitelesítésére használható, ne gyorsítótárazza a tokent, vagy ossza meg az ügyfelek között. A kötést használó HTTP-triggereket az ügyfelek használhatják a kapcsolati adatok lekérésére.
 
 Tekintse meg az adott nyelvű példa:
 
-* [2.x C#](#2x-c-input-examples)
-* [2.x JavaScript](#2x-javascript-input-examples)
+* [2. xC#](#2x-c-input-examples)
+* [2. x JavaScript](#2x-javascript-input-examples)
 * [2.x Java](#2x-java-input-examples)
 
-Hogyan ezt a kötést "egyeztetni" függvény, amely egy SignalR ügyfél-SDK által felhasználható létrehozásához használt további információkért lásd: a [Azure Functions fejlesztői és konfigurációs cikk](../azure-signalr/signalr-concept-serverless-development-config.md) a a SignalR-szolgáltatással kapcsolatos fogalmak dokumentáció.
+Ha további információra van szükség arról, hogy ez a kötés hogyan használható a Signaler ügyféloldali SDK által felhasználható "egyeztetés" függvény létrehozásához, tekintse meg a következő témakört: [Azure functions fejlesztés és konfiguráció cikk](../azure-signalr/signalr-concept-serverless-development-config.md) a Signaler szolgáltatással kapcsolatos fogalmak dokumentációjában.
 
-### <a name="2x-c-input-examples"></a>2.x C# bemeneti példák
+### <a name="2x-c-input-examples"></a>2. x C# bemeneti példák
 
-A következő példa bemutatja egy [C#-függvény](functions-dotnet-class-library.md) , amely beszerzi a SignalR kapcsolati adatokat, használja a bemeneti kötést, és adja vissza, HTTP protokollon keresztül.
+Az alábbi példa egy olyan [ C# függvényt](functions-dotnet-class-library.md) mutat be, amely a bemeneti kötés használatával beolvassa a Signal-kapcsolati adatokat, és visszaadja a HTTP-n keresztül.
 
 ```cs
 [FunctionName("negotiate")]
@@ -80,11 +79,11 @@ public static SignalRConnectionInfo Negotiate(
 }
 ```
 
-#### <a name="authenticated-tokens"></a>Hitelesített jogkivonatok
+#### <a name="authenticated-tokens"></a>Hitelesített tokenek
 
-A függvény egy hitelesített ügyfél akkor aktiválódik, ha egy felhasználói azonosító jogcím a generált token is hozzáadhat. Egyszerűen hozzáadhat hitelesítési egy függvény használatával [App Service-hitelesítés](../app-service/overview-authentication-authorization.md).
+Ha a függvényt egy hitelesített ügyfél indítja el, felhasználói azonosító jogcímet adhat hozzá a generált jogkivonathoz. [App Service hitelesítés](../app-service/overview-authentication-authorization.md)használatával egyszerűen adhat hozzá hitelesítést egy Function alkalmazáshoz.
 
-App Service-hitelesítés beállítása nevű HTTP-fejlécek `x-ms-client-principal-id` és `x-ms-client-principal-name` tartalmaznak, a hitelesített felhasználó egyszerű ügyfél-Azonosítóját és nevét, illetve. Beállíthatja a `UserId` tulajdonság értéke kötésének vagy fejléc használatával egy [kifejezés kötés](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` vagy `{headers.x-ms-client-principal-name}`. 
+App Service hitelesítés beállítja a nevű `x-ms-client-principal-id` http- `x-ms-client-principal-name` fejléceket, amelyek tartalmazzák a hitelesített felhasználó ügyfél-azonosítóját és nevét. Megadhatja a kötés `{headers.x-ms-client-principal-id}` `{headers.x-ms-client-principal-name}` [](./functions-bindings-expressions-patterns.md) tulajdonságátbármelyikfejlécértékéreegy`UserId` kötési kifejezés használatával: vagy. 
 
 ```cs
 [FunctionName("negotiate")]
@@ -99,13 +98,13 @@ public static SignalRConnectionInfo Negotiate(
 }
 ```
 
-### <a name="2x-javascript-input-examples"></a>2.x JavaScript bemeneti példák
+### <a name="2x-javascript-input-examples"></a>2. x JavaScript bemeneti példák
 
-Az alábbi példa bemutatja a SignalR kapcsolati adatok bemeneti kötést egy *function.json* fájl és a egy [JavaScript-függvény](functions-reference-node.md) , amely a kötés használja, a kapcsolati információkat ad vissza.
+Az alábbi példa egy Signal-kapcsolati adatokat tartalmazó bemeneti kötést mutat be egy *function. JSON* fájlban, valamint egy [JavaScript](functions-reference-node.md) -függvényt, amely a kötést használja a kapcsolati adatok visszaadásához.
 
-Íme kötési adatait a *function.json* fájlt:
+Itt a *function. JSON* fájlban található kötési adat:
 
-Példa function.json:
+Példa a function. JSON fájlra:
 
 ```json
 {
@@ -125,13 +124,13 @@ module.exports = async function (context, req, connectionInfo) {
 };
 ```
 
-#### <a name="authenticated-tokens"></a>Hitelesített jogkivonatok
+#### <a name="authenticated-tokens"></a>Hitelesített tokenek
 
-A függvény egy hitelesített ügyfél akkor aktiválódik, ha egy felhasználói azonosító jogcím a generált token is hozzáadhat. Egyszerűen hozzáadhat hitelesítési egy függvény használatával [App Service-hitelesítés](../app-service/overview-authentication-authorization.md).
+Ha a függvényt egy hitelesített ügyfél indítja el, felhasználói azonosító jogcímet adhat hozzá a generált jogkivonathoz. [App Service hitelesítés](../app-service/overview-authentication-authorization.md)használatával egyszerűen adhat hozzá hitelesítést egy Function alkalmazáshoz.
 
-App Service-hitelesítés beállítása nevű HTTP-fejlécek `x-ms-client-principal-id` és `x-ms-client-principal-name` tartalmaznak, a hitelesített felhasználó egyszerű ügyfél-Azonosítóját és nevét, illetve. Beállíthatja a `userId` tulajdonság értéke kötésének vagy fejléc használatával egy [kifejezés kötés](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` vagy `{headers.x-ms-client-principal-name}`. 
+App Service hitelesítés beállítja a nevű `x-ms-client-principal-id` http- `x-ms-client-principal-name` fejléceket, amelyek tartalmazzák a hitelesített felhasználó ügyfél-azonosítóját és nevét. Megadhatja a kötés `{headers.x-ms-client-principal-id}` `{headers.x-ms-client-principal-name}` [](./functions-bindings-expressions-patterns.md) tulajdonságátbármelyikfejlécértékéreegy`userId` kötési kifejezés használatával: vagy. 
 
-Példa function.json:
+Példa a function. JSON fájlra:
 
 ```json
 {
@@ -154,9 +153,9 @@ module.exports = async function (context, req, connectionInfo) {
 };
 ```
 
-### <a name="2x-java-input-examples"></a>2.x Java-alapú bemeneti példa
+### <a name="2x-java-input-examples"></a>2. x Java-bemeneti példák
 
-A következő példa bemutatja egy [Java függvény](functions-reference-java.md) , amely beszerzi a SignalR kapcsolati adatokat, használja a bemeneti kötést, és adja vissza, HTTP protokollon keresztül.
+Az alábbi példa egy [Java](functions-reference-java.md) -függvényt mutat be, amely a bemeneti kötés használatával szerzi be a jelző kapcsolati adatait, és visszaadja a HTTP protokollon keresztül.
 
 ```java
 @FunctionName("negotiate")
@@ -172,11 +171,11 @@ public SignalRConnectionInfo negotiate(
 }
 ```
 
-#### <a name="authenticated-tokens"></a>Hitelesített jogkivonatok
+#### <a name="authenticated-tokens"></a>Hitelesített tokenek
 
-A függvény egy hitelesített ügyfél akkor aktiválódik, ha egy felhasználói azonosító jogcím a generált token is hozzáadhat. Egyszerűen hozzáadhat hitelesítési egy függvény használatával [App Service-hitelesítés](../app-service/overview-authentication-authorization.md).
+Ha a függvényt egy hitelesített ügyfél indítja el, felhasználói azonosító jogcímet adhat hozzá a generált jogkivonathoz. [App Service hitelesítés](../app-service/overview-authentication-authorization.md)használatával egyszerűen adhat hozzá hitelesítést egy Function alkalmazáshoz.
 
-App Service-hitelesítés beállítása nevű HTTP-fejlécek `x-ms-client-principal-id` és `x-ms-client-principal-name` tartalmaznak, a hitelesített felhasználó egyszerű ügyfél-Azonosítóját és nevét, illetve. Beállíthatja a `UserId` tulajdonság értéke kötésének vagy fejléc használatával egy [kifejezés kötés](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` vagy `{headers.x-ms-client-principal-name}`.
+App Service hitelesítés beállítja a nevű `x-ms-client-principal-id` http- `x-ms-client-principal-name` fejléceket, amelyek tartalmazzák a hitelesített felhasználó ügyfél-azonosítóját és nevét. Megadhatja a kötés `{headers.x-ms-client-principal-id}` `{headers.x-ms-client-principal-name}` [](./functions-bindings-expressions-patterns.md) tulajdonságátbármelyikfejlécértékéreegy`UserId` kötési kifejezés használatával: vagy.
 
 ```java
 @FunctionName("negotiate")
@@ -193,23 +192,23 @@ public SignalRConnectionInfo negotiate(
 }
 ```
 
-## <a name="signalr-output-binding"></a>A SignalR kimeneti kötése
+## <a name="signalr-output-binding"></a>Jelző kimeneti kötése
 
-Használja a *SignalR* kimeneti kötése az Azure SignalR Service segítségével egy vagy több üzenet küldése. Üzenetet elküldheti az összes csatlakoztatott ügyfelek, vagy csak a csatlakoztatott ügyfelek, amelyek egy adott felhasználó hitelesített szórási.
+A *signaler* kimeneti kötés használatával küldjön egy vagy több üzenetet az Azure Signaler szolgáltatással. Küldhet üzenetet az összes csatlakoztatott ügyfélnek, vagy csak az adott felhasználó számára hitelesített csatlakoztatott ügyfelek számára is közvetítheti.
 
-Is használhatja azt, hogy egy felhasználó tartozik a csoportok kezelése.
+Azt is megteheti, hogy felügyeli azokat a csoportokat, amelyekhez a felhasználó tartozik.
 
 Tekintse meg az adott nyelvű példa:
 
-* [2.x C#](#2x-c-send-message-output-examples)
-* [2.x JavaScript](#2x-javascript-send-message-output-examples)
+* [2. xC#](#2x-c-send-message-output-examples)
+* [2. x JavaScript](#2x-javascript-send-message-output-examples)
 * [2.x Java](#2x-java-send-message-output-examples)
 
-### <a name="2x-c-send-message-output-examples"></a>2.x C# kimeneti példa üzenet küldése
+### <a name="2x-c-send-message-output-examples"></a>2. x C# üzenet küldése kimeneti példák
 
-#### <a name="broadcast-to-all-clients"></a>Összes ügyfél a közvetítést
+#### <a name="broadcast-to-all-clients"></a>Közvetítés az összes ügyfél számára
 
-A következő példa bemutatja egy [C#-függvény](functions-dotnet-class-library.md) , amely egy csatlakoztatott ügyfelek összes kimeneti kötés használatával üzeneteket küld. A `Target` minden egyes ügyfélnek meg kell hívni a metódus neve. A `Arguments` tulajdonság értéke nulla vagy több, az ügyfél módszer átadandó objektumok egy tömbjét.
+Az alábbi példa egy olyan [ C# függvényt](functions-dotnet-class-library.md) mutat be, amely az összes csatlakoztatott ügyfél kimeneti kötését használva üzenetet küld. A `Target` az egyes ügyfeleken meghívott metódus neve. A `Arguments` tulajdonság az ügyfél metódusának átadandó nulla vagy több objektum tömbje.
 
 ```cs
 [FunctionName("SendMessage")]
@@ -226,9 +225,9 @@ public static Task SendMessage(
 }
 ```
 
-#### <a name="send-to-a-user"></a>Küldhet a felhasználónak
+#### <a name="send-to-a-user"></a>Küldés felhasználó számára
 
-Küldhet üzenetet csak egy felhasználónak beállításával hitelesített kapcsolatokhoz a `UserId` tulajdonság a SignalR-üzenet.
+A jelző üzenet `UserId` tulajdonságának beállításával csak a felhasználó számára hitelesített kapcsolatokra küldhet üzenetet.
 
 ```cs
 [FunctionName("SendMessage")]
@@ -247,9 +246,9 @@ public static Task SendMessage(
 }
 ```
 
-#### <a name="send-to-a-group"></a>Küldése egy csoportot
+#### <a name="send-to-a-group"></a>Küldés egy csoportba
 
-Csak a kapcsolatok beállításával csoporthoz hozzáadott küldhet üzenetet a `GroupName` tulajdonság a SignalR-üzenet.
+A jelző üzenet `GroupName` tulajdonságának beállításával csak a csoportba felvett kapcsolatokhoz küldhet üzenetet.
 
 ```cs
 [FunctionName("SendMessage")]
@@ -268,26 +267,27 @@ public static Task SendMessage(
 }
 ```
 
-### <a name="2x-c-group-management-output-examples"></a>2.x C# eszközcsoport-kezelés kimeneti példa
+### <a name="2x-c-group-management-output-examples"></a>2. x C# csoport-felügyeleti kimeneti példák
 
-SignalR Service lehetővé teszi a felhasználóknak adni csoportokhoz. Egy csoport ezután képes üzeneteket küldeni. Használhatja a `SignalRGroupAction` osztály használatával a `SignalR` kimeneti kötést egy felhasználói csoport tagságának kezeléséhez.
+A signaler szolgáltatás lehetővé teszi a felhasználóknak a csoportokba való felvételét. Ezután üzeneteket küldhetnek egy csoportnak. A `SignalRGroupAction` osztály és a `SignalR` kimeneti kötés használatával kezelheti a felhasználók csoportjának tagságát.
 
-#### <a name="add-user-to-a-group"></a>Felhasználó hozzáadása csoporthoz
+#### <a name="add-user-to-a-group"></a>Felhasználó felvétele egy csoportba
 
-Az alábbi példa hozzáad egy felhasználót egy csoporthoz.
+A következő példa egy felhasználót egy csoportba helyez.
 
 ```csharp
 [FunctionName("addToGroup")]
 public static Task AddToGroup(
     [HttpTrigger(AuthorizationLevel.Anonymous, "post")]HttpRequest req,
-    string userId,
+    ClaimsPrincipal claimsPrincipal,
     [SignalR(HubName = "chat")]
         IAsyncCollector<SignalRGroupAction> signalRGroupActions)
 {
+    var userIdClaim = claimsPrincipal.FindFirst(ClaimTypes.NameIdentifier);
     return signalRGroupActions.AddAsync(
         new SignalRGroupAction
         {
-            UserId = userId,
+            UserId = userIdClaim.Value,
             GroupName = "myGroup",
             Action = GroupAction.Add
         });
@@ -296,35 +296,39 @@ public static Task AddToGroup(
 
 #### <a name="remove-user-from-a-group"></a>Felhasználó eltávolítása egy csoportból
 
-A következő példa eltávolítja a felhasználó a csoportból.
+A következő példa egy felhasználót távolít el egy csoportból.
 
 ```csharp
 [FunctionName("removeFromGroup")]
 public static Task RemoveFromGroup(
     [HttpTrigger(AuthorizationLevel.Anonymous, "post")]HttpRequest req,
-    string userId,
+    ClaimsPrincipal claimsPrincipal,
     [SignalR(HubName = "chat")]
         IAsyncCollector<SignalRGroupAction> signalRGroupActions)
 {
+    var userIdClaim = claimsPrincipal.FindFirst(ClaimTypes.NameIdentifier);
     return signalRGroupActions.AddAsync(
         new SignalRGroupAction
         {
-            UserId = userId,
+            UserId = userIdClaim.Value,
             GroupName = "myGroup",
             Action = GroupAction.Remove
         });
 }
 ```
 
-### <a name="2x-javascript-send-message-output-examples"></a>JavaScript-üzenetküldés 2.x-es kimeneti példák
+> [!NOTE]
+> `ClaimsPrincipal` A megfelelő kötés eléréséhez konfigurálnia kell a hitelesítési beállításokat a Azure Functionsban.
 
-#### <a name="broadcast-to-all-clients"></a>Összes ügyfél a közvetítést
+### <a name="2x-javascript-send-message-output-examples"></a>2. x JavaScript-üzenetek küldésére vonatkozó példák
 
-Az alábbi példa bemutatja egy kötelező a SignalR-kimenet egy *function.json* fájl és a egy [JavaScript-függvény](functions-reference-node.md) , amely a kötés használja az Azure SignalR Service egy üzenetet kíván küldeni. Állítsa a kimeneti kötést egy vagy több SignalR üzenetet tömbjét. A SignalR üzenet áll egy `target` tulajdonságot, amely a meghívni kívánt metódus nevét adja meg az egyes ügyfelekre és a egy `arguments` tulajdonságot, amely az ügyfél módszer átadása argumentumként objektumok tömbje.
+#### <a name="broadcast-to-all-clients"></a>Közvetítés az összes ügyfél számára
 
-Íme kötési adatait a *function.json* fájlt:
+Az alábbi példa egy Signaler kimeneti kötést mutat be egy *function. JSON* fájlban, valamint egy [JavaScript](functions-reference-node.md) -függvényt, amely a kötés használatával küld egy üzenetet az Azure signaler szolgáltatással. Adja meg a kimeneti kötést egy vagy több jelző üzenet tömbje számára. A jelző üzenet egy olyan `target` tulajdonságból áll, amely megadja az egyes ügyfeleken meghívott metódus nevét, valamint egy olyan `arguments` tulajdonságot, amely az ügyfél metódusának argumentumként való továbbítására szolgáló objektumok tömbje.
 
-Példa function.json:
+Itt a *function. JSON* fájlban található kötési adat:
+
+Példa a function. JSON fájlra:
 
 ```json
 {
@@ -347,11 +351,11 @@ module.exports = async function (context, req) {
 };
 ```
 
-#### <a name="send-to-a-user"></a>Küldhet a felhasználónak
+#### <a name="send-to-a-user"></a>Küldés felhasználó számára
 
-Küldhet üzenetet csak egy felhasználónak beállításával hitelesített kapcsolatokhoz a `userId` tulajdonság a SignalR-üzenet.
+A jelző üzenet `userId` tulajdonságának beállításával csak a felhasználó számára hitelesített kapcsolatokra küldhet üzenetet.
 
-*Function.JSON* változatlan marad. A következő JavaScript-kódot:
+a *function. JSON* ugyanaz marad. A következő JavaScript-kódot:
 
 ```javascript
 module.exports = async function (context, req) {
@@ -364,11 +368,11 @@ module.exports = async function (context, req) {
 };
 ```
 
-#### <a name="send-to-a-group"></a>Küldése egy csoportot
+#### <a name="send-to-a-group"></a>Küldés egy csoportba
 
-Csak a kapcsolatok beállításával csoporthoz hozzáadott küldhet üzenetet a `groupName` tulajdonság a SignalR-üzenet.
+A jelző üzenet `groupName` tulajdonságának beállításával csak a csoportba felvett kapcsolatokhoz küldhet üzenetet.
 
-*Function.JSON* változatlan marad. A következő JavaScript-kódot:
+a *function. JSON* ugyanaz marad. A következő JavaScript-kódot:
 
 ```javascript
 module.exports = async function (context, req) {
@@ -381,13 +385,13 @@ module.exports = async function (context, req) {
 };
 ```
 
-### <a name="2x-javascript-group-management-output-examples"></a>JavaScript eszközcsoport-kezelés 2.x kimeneti példa
+### <a name="2x-javascript-group-management-output-examples"></a>2. x JavaScript csoport-felügyeleti kimeneti példák
 
-SignalR Service lehetővé teszi a felhasználóknak adni csoportokhoz. Egy csoport ezután képes üzeneteket küldeni. Használhatja a `SignalR` kimeneti kötést egy felhasználói csoport tagságának kezeléséhez.
+A signaler szolgáltatás lehetővé teszi a felhasználóknak a csoportokba való felvételét. Ezután üzeneteket küldhetnek egy csoportnak. A `SignalR` kimeneti kötés használatával kezelheti a felhasználók csoportjának tagságát.
 
-#### <a name="add-user-to-a-group"></a>Felhasználó hozzáadása csoporthoz
+#### <a name="add-user-to-a-group"></a>Felhasználó felvétele egy csoportba
 
-Az alábbi példa hozzáad egy felhasználót egy csoporthoz.
+A következő példa egy felhasználót egy csoportba helyez.
 
 *function.json*
 
@@ -434,7 +438,7 @@ module.exports = async function (context, req) {
 
 #### <a name="remove-user-from-a-group"></a>Felhasználó eltávolítása egy csoportból
 
-A következő példa eltávolítja a felhasználó a csoportból.
+A következő példa egy felhasználót távolít el egy csoportból.
 
 *function.json*
 
@@ -479,11 +483,11 @@ module.exports = async function (context, req) {
 };
 ```
 
-### <a name="2x-java-send-message-output-examples"></a>Java-üzenetküldés 2.x-es kimeneti példák
+### <a name="2x-java-send-message-output-examples"></a>2. x Java-üzenet küldése kimeneti példák
 
-#### <a name="broadcast-to-all-clients"></a>Összes ügyfél a közvetítést
+#### <a name="broadcast-to-all-clients"></a>Közvetítés az összes ügyfél számára
 
-A következő példa bemutatja egy [Java függvény](functions-reference-java.md) , amely egy csatlakoztatott ügyfelek összes kimeneti kötés használatával üzeneteket küld. A `target` minden egyes ügyfélnek meg kell hívni a metódus neve. A `arguments` tulajdonság értéke nulla vagy több, az ügyfél módszer átadandó objektumok egy tömbjét.
+Az alábbi példa egy [Java](functions-reference-java.md) -függvényt mutat be, amely az összes csatlakoztatott ügyfél kimeneti kötését használva üzenetet küld. A `target` az egyes ügyfeleken meghívott metódus neve. A `arguments` tulajdonság az ügyfél metódusának átadandó nulla vagy több objektum tömbje.
 
 ```java
 @FunctionName("sendMessage")
@@ -501,9 +505,9 @@ public SignalRMessage sendMessage(
 }
 ```
 
-#### <a name="send-to-a-user"></a>Küldhet a felhasználónak
+#### <a name="send-to-a-user"></a>Küldés felhasználó számára
 
-Küldhet üzenetet csak egy felhasználónak beállításával hitelesített kapcsolatokhoz a `userId` tulajdonság a SignalR-üzenet.
+A jelző üzenet `userId` tulajdonságának beállításával csak a felhasználó számára hitelesített kapcsolatokra küldhet üzenetet.
 
 ```java
 @FunctionName("sendMessage")
@@ -522,9 +526,9 @@ public SignalRMessage sendMessage(
 }
 ```
 
-#### <a name="send-to-a-group"></a>Küldése egy csoportot
+#### <a name="send-to-a-group"></a>Küldés egy csoportba
 
-Csak a kapcsolatok beállításával csoporthoz hozzáadott küldhet üzenetet a `groupName` tulajdonság a SignalR-üzenet.
+A jelző üzenet `groupName` tulajdonságának beállításával csak a csoportba felvett kapcsolatokhoz küldhet üzenetet.
 
 ```java
 @FunctionName("sendMessage")
@@ -543,13 +547,13 @@ public SignalRMessage sendMessage(
 }
 ```
 
-### <a name="2x-java-group-management-output-examples"></a>Java-csoportkezelés 2.x kimeneti példák
+### <a name="2x-java-group-management-output-examples"></a>2. x Java csoport-felügyeleti kimeneti példák
 
-SignalR Service lehetővé teszi a felhasználóknak adni csoportokhoz. Egy csoport ezután képes üzeneteket küldeni. Használhatja a `SignalRGroupAction` osztály használatával a `SignalROutput` kimeneti kötést egy felhasználói csoport tagságának kezeléséhez.
+A signaler szolgáltatás lehetővé teszi a felhasználóknak a csoportokba való felvételét. Ezután üzeneteket küldhetnek egy csoportnak. A `SignalRGroupAction` osztály és a `SignalROutput` kimeneti kötés használatával kezelheti a felhasználók csoportjának tagságát.
 
-#### <a name="add-user-to-a-group"></a>Felhasználó hozzáadása csoporthoz
+#### <a name="add-user-to-a-group"></a>Felhasználó felvétele egy csoportba
 
-Az alábbi példa hozzáad egy felhasználót egy csoporthoz.
+A következő példa egy felhasználót egy csoportba helyez.
 
 ```java
 @FunctionName("addToGroup")
@@ -571,7 +575,7 @@ public SignalRGroupAction addToGroup(
 
 #### <a name="remove-user-from-a-group"></a>Felhasználó eltávolítása egy csoportból
 
-A következő példa eltávolítja a felhasználó a csoportból.
+A következő példa egy felhasználót távolít el egy csoportból.
 
 ```java
 @FunctionName("removeFromGroup")
@@ -601,10 +605,10 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 |---------|---------|----------------------|
 |**type**|| Meg kell `signalRConnectionInfo`.|
 |**direction**|| Meg kell `in`.|
-|**name**|| Kapcsolatobjektum-adatait a függvény kódját a használt változó neve. |
-|**hubName**|**HubName**| Ez az érték, amelynek jön létre a kapcsolati adatok SignalR-központon nevére kell állítani.|
-|**userId**|**UserId**| Nem kötelező: A felhasználói azonosító értékét kell beállítani a kulcs hozzáférési jogkivonatot az igényt. |
-|**connectionStringSetting**|**ConnectionStringSetting**| A SignalR Service kapcsolati karakterlánc (az alapértelmezett "AzureSignalRConnectionString") tartalmazó alkalmazásbeállítás neve |
+|**name**|| A kapcsolatkérelem-objektumhoz tartozó függvény kódjában használt változó neve. |
+|**hubName**|**HubName**| Ezt az értéket annak a jelző-hubhoz a nevére kell beállítani, amelyhez a kapcsolódási adatok létrejöttek.|
+|**userId**|**UserId**| Nem kötelező: A hozzáférési kulcs jogkivonatában beállítani kívánt felhasználói azonosító jogcím értéke. |
+|**connectionStringSetting**|**ConnectionStringSetting**| A jelző szolgáltatás kapcsolódási sztringjét tartalmazó Alkalmazásbeállítás neve (alapértelmezett érték: "AzureSignalRConnectionString") |
 
 ### <a name="signalr"></a>SignalR
 
@@ -614,9 +618,9 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 |---------|---------|----------------------|
 |**type**|| Meg kell `signalR`.|
 |**direction**|| Meg kell `out`.|
-|**name**|| Kapcsolatobjektum-adatait a függvény kódját a használt változó neve. |
-|**hubName**|**HubName**| Ez az érték, amelynek jön létre a kapcsolati adatok SignalR-központon nevére kell állítani.|
-|**connectionStringSetting**|**ConnectionStringSetting**| A SignalR Service kapcsolati karakterlánc (az alapértelmezett "AzureSignalRConnectionString") tartalmazó alkalmazásbeállítás neve |
+|**name**|| A kapcsolatkérelem-objektumhoz tartozó függvény kódjában használt változó neve. |
+|**hubName**|**HubName**| Ezt az értéket annak a jelző-hubhoz a nevére kell beállítani, amelyhez a kapcsolódási adatok létrejöttek.|
+|**connectionStringSetting**|**ConnectionStringSetting**| A jelző szolgáltatás kapcsolódási sztringjét tartalmazó Alkalmazásbeállítás neve (alapértelmezett érték: "AzureSignalRConnectionString") |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -626,4 +630,4 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 > [Tudjon meg többet az Azure functions eseményindítók és kötések](functions-triggers-bindings.md)
 
 > [!div class="nextstepaction"]
-> [Az Azure Functions fejlesztői és az Azure SignalR Service configuration](../azure-signalr/signalr-concept-serverless-development-config.md)
+> [Az Azure Functions fejlesztése és konfigurálása az Azure SignalR szolgáltatással](../azure-signalr/signalr-concept-serverless-development-config.md)

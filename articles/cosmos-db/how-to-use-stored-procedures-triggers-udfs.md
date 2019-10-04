@@ -1,34 +1,34 @@
 ---
-title: Tárolt eljárások, eseményindítók és felhasználó által definiált függvények használata az Azure Cosmos DB SDK-k meghívása
-description: Ismerje meg, hogyan kell regisztrálni, és tárolt eljárások, eseményindítók és felhasználó által definiált függvények használata az Azure Cosmos DB SDK-k hívása
+title: Tárolt eljárások, eseményindítók és felhasználó által definiált függvények hívása Azure Cosmos DB SDK-k használatával
+description: Megtudhatja, hogyan regisztrálhat és hívhat meg tárolt eljárásokat, eseményindítókat és felhasználó által definiált függvényeket a Azure Cosmos DB SDK-k használatával
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: sample
-ms.date: 12/08/2018
+ms.topic: conceptual
+ms.date: 09/17/2019
 ms.author: mjbrown
-ms.openlocfilehash: d3ab0f78cc59c94a95aac6c067ad185476502f6c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3cc144c1b8748710f0500b6ca2a418cd8bf5a2b7
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57998614"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104835"
 ---
-# <a name="how-to-register-and-use-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Regisztrálása és használata tárolt eljárások, eseményindítók és felhasználó által definiált függvények az Azure Cosmos DB-ben
+# <a name="how-to-register-and-use-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Tárolt eljárások, eseményindítók és felhasználó által definiált függvények regisztrálása és használata Azure Cosmos DB
 
-Az Azure Cosmos DB SQL API támogatja a regisztráció és a tárolt eljárások, eseményindítók és felhasználó által definiált függvények (UDF) javascriptben írt meghívása. Használhatja az SQL API [.NET](sql-api-sdk-dotnet.md), [.NET Core](sql-api-sdk-dotnet-core.md), [Java](sql-api-sdk-java.md), [JavaScript](sql-api-sdk-node.md), [Node.js](sql-api-sdk-node.md), vagy [Python](sql-api-sdk-python.md) SDK-k regisztrálása és a tárolt eljárások hívása. Miután beállított egy vagy több tárolt eljárások, eseményindítók és felhasználó által definiált függvények, betölteni, és megtekintheti azokat a [az Azure portal](https://portal.azure.com/) az adatkezelő használatával.
+A Azure Cosmos DBban található SQL API támogatja a JavaScriptben írt tárolt eljárások, eseményindítók és felhasználó által definiált függvények (UDF) regisztrálását és meghívását. Használhatja az SQL API [.net](sql-api-sdk-dotnet.md), [.net Core](sql-api-sdk-dotnet-core.md), [Java](sql-api-sdk-java.md), [JavaScript](sql-api-sdk-node.md), [Node. js](sql-api-sdk-node.md)vagy [Python](sql-api-sdk-python.md) SDK-kat a tárolt eljárások regisztrálásához és meghívásához. Miután meghatározta egy vagy több tárolt eljárást, eseményindítót és felhasználó által definiált függvényt, betöltheti és megtekintheti őket a [Azure Portal](https://portal.azure.com/) adatkezelő használatával.
 
 ## <a id="stored-procedures"></a>Tárolt eljárások futtatása
 
-Tárolt eljárások a JavaScript használatával írt. Azok, frissíteni, olvassa el a lekérdezést, törölhetnek és hozhatnak létre egy Azure Cosmos-tárolóban lévő elemek. Az Azure Cosmos DB-ben tárolt eljárások írásával további információkért lásd: [írásával tárolt eljárások az Azure Cosmos DB](how-to-write-stored-procedures-triggers-udfs.md#stored-procedures) cikk.
+A tárolt eljárások JavaScript használatával íródnak. Létrehozhatják, frissíthetik, olvashatják, lekérhetik és törölhetik az Azure Cosmos-tárolóban lévő elemeket. A tárolt eljárások Azure Cosmos DBban való írásával kapcsolatos további információkért lásd: [tárolt eljárások írása Azure Cosmos db](how-to-write-stored-procedures-triggers-udfs.md#stored-procedures) cikkben.
 
-Az alábbi példák bemutatják, hogyan regisztrálja, és a egy tárolt eljárást hívja az Azure Cosmos DB SDK-k használatával. Tekintse meg [hozzon létre egy dokumentumot](how-to-write-stored-procedures-triggers-udfs.md#create-an-item) tárolt eljárás végrehajtásához a forrás mentésekor `spCreateToDoItem.js`.
+Az alábbi példák bemutatják, hogyan regisztrálhat és hívhat meg egy tárolt eljárást a Azure Cosmos DB SDK-k használatával. A tárolt eljárás forrásaként való mentésekor `spCreateToDoItem.js`tekintse meg a [dokumentum létrehozása](how-to-write-stored-procedures-triggers-udfs.md#create-an-item) című témakört.
 
 > [!NOTE]
-> A particionált tárolók, a tárolt eljárás végrehajtása közben partíciókulcs-értékkel kell adni a kérés beállításokat. Tárolt eljárások mindig hatóköre egy partíciókulcsot. Egy másik partíciókulcs-értékkel rendelkező elemek nem lesznek láthatók a tárolt eljárás. Ez is alkalmazandó, valamint eseményindítók.
+> Particionált tárolók esetén a tárolt eljárás végrehajtásakor meg kell adni egy partíciós kulcs értékét a kérés beállításai között. A tárolt eljárásokat a rendszer mindig a partíciós kulcsra szűkíti. A másik partíciós kulcs értékkel rendelkező elemek nem lesznek láthatók a tárolt eljárásban. Ez is a triggerekre is vonatkozik.
 
-### <a name="stored-procedures---net-sdk"></a>Tárolt eljárások – .NET SDK-val
+### <a name="stored-procedures---net-sdk-v2"></a>Tárolt eljárások – .NET SDK v2
 
-Az alábbi példa bemutatja, hogyan regisztrálhat egy tárolt eljárást a .NET SDK-val:
+Az alábbi példa bemutatja, hogyan regisztrálhat egy tárolt eljárást a .NET SDK V2 használatával:
 
 ```csharp
 string storedProcedureId = "spCreateToDoItem";
@@ -42,7 +42,7 @@ var response = await client.CreateStoredProcedureAsync(containerUri, newStoredPr
 StoredProcedure createdStoredProcedure = response.Resource;
 ```
 
-A következő kód bemutatja, hogyan hívhat meg egy tárolt eljárást a .NET SDK-val:
+A következő kód bemutatja, hogyan hívhat meg egy tárolt eljárást a .NET SDK V2 használatával:
 
 ```csharp
 dynamic newItem = new
@@ -56,12 +56,37 @@ dynamic newItem = new
 Uri uri = UriFactory.CreateStoredProcedureUri("myDatabase", "myContainer", "spCreateToDoItem");
 RequestOptions options = new RequestOptions { PartitionKey = new PartitionKey("Personal") };
 var result = await client.ExecuteStoredProcedureAsync<string>(uri, options, newItem);
-var id = result.Response;
 ```
 
-### <a name="stored-procedures---java-sdk"></a>Tárolt eljárások – Java SDK-val
+### <a name="stored-procedures---net-sdk-v3"></a>Tárolt eljárások – .NET SDK v3
 
-Az alábbi példa bemutatja, hogyan regisztrálhat egy tárolt eljárást a Java SDK-val:
+Az alábbi példa bemutatja, hogyan regisztrálhat egy tárolt eljárást a .NET SDK v3 használatával:
+
+```csharp
+StoredProcedureResponse storedProcedureResponse = await client.GetContainer("database", "container").Scripts.CreateStoredProcedureAsync(new StoredProcedureProperties
+{
+    Id = "spCreateToDoItem",
+    Body = File.ReadAllText(@"..\js\spCreateToDoItem.js")
+});
+```
+
+A következő kód bemutatja, hogyan hívhat meg egy tárolt eljárást a .NET SDK v3 használatával:
+
+```csharp
+dynamic newItem = new
+{
+    category = "Personal",
+    name = "Groceries",
+    description = "Pick up strawberries",
+    isComplete = false
+};
+
+var result = await client.GetContainer("database", "container").Scripts.ExecuteStoredProcedureAsync<string>("spCreateToDoItem", new PartitionKey("Personal"), newItem);
+```
+
+### <a name="stored-procedures---java-sdk"></a>Tárolt eljárások – Java SDK
+
+Az alábbi példa bemutatja, hogyan regisztrálhat egy tárolt eljárást a Java SDK használatával:
 
 ```java
 String containerLink = String.format("/dbs/%s/colls/%s", "myDatabase", "myContainer");
@@ -75,7 +100,7 @@ StoredProcedure createdStoredProcedure = asyncClient.createStoredProcedure(conta
     .toBlocking().single().getResource();
 ```
 
-A következő kód bemutatja, hogyan hívhat meg egy tárolt eljárást a Java SDK-val:
+A következő kód bemutatja, hogyan hívhat meg egy tárolt eljárást a Java SDK használatával:
 
 ```java
 String containerLink = String.format("/dbs/%s/colls/%s", "myDatabase", "myContainer");
@@ -114,7 +139,7 @@ successfulCompletionLatch.await();
 
 ### <a name="stored-procedures---javascript-sdk"></a>Tárolt eljárások – JavaScript SDK
 
-Az alábbi példa bemutatja, hogyan regisztrálhat egy tárolt eljárást a JavaScript SDK-val
+Az alábbi példa bemutatja, hogyan regisztrálhat egy tárolt eljárást a JavaScript SDK használatával
 
 ```javascript
 const container = client.database("myDatabase").container("myContainer");
@@ -125,7 +150,7 @@ await container.storedProcedures.create({
 });
 ```
 
-A következő kód bemutatja, hogyan hívhat meg egy tárolt eljárást a JavaScript SDK-val:
+A következő kód bemutatja, hogyan hívhat meg egy tárolt eljárást a JavaScript SDK használatával:
 
 ```javascript
 const newItem = [{
@@ -139,22 +164,22 @@ const sprocId = "spCreateToDoItem";
 const {body: result} = await container.storedProcedure(sprocId).execute(newItem, {partitionKey: newItem[0].category});
 ```
 
-### <a name="stored-procedures---python-sdk"></a>Tárolt eljárások – Python SDK-t
+### <a name="stored-procedures---python-sdk"></a>Tárolt eljárások – Python SDK
 
-Az alábbi példa bemutatja, hogyan regisztrálhat egy tárolt eljárást a Python SDK-val
+Az alábbi példa bemutatja, hogyan regisztrálhat egy tárolt eljárást a Python SDK használatával
 
 ```python
 with open('../js/spCreateToDoItem.js') as file:
     file_contents = file.read()
 container_link = 'dbs/myDatabase/colls/myContainer'
 sproc_definition = {
-            'id': 'spCreateToDoItem',
-            'serverScript': file_contents,
-        }
+    'id': 'spCreateToDoItem',
+    'serverScript': file_contents,
+}
 sproc = client.CreateStoredProcedure(container_link, sproc_definition)
 ```
 
-A következő kód bemutatja, hogyan hívhat meg egy tárolt eljárást a Python SDK-val
+A következő kód bemutatja, hogyan hívhat meg egy tárolt eljárást a Python SDK használatával
 
 ```python
 sproc_link = 'dbs/myDatabase/colls/myContainer/sprocs/spCreateToDoItem'
@@ -167,18 +192,18 @@ new_item = [{
 client.ExecuteStoredProcedure(sproc_link, new_item, {'partitionKey': 'Personal'}
 ```
 
-## <a id="pre-triggers"></a>Futtatása előtti eseményindítók
+## <a id="pre-triggers"></a>Az eseményindítók futtatása
 
-Az alábbi példák bemutatják, hogyan regisztrálja és előtti trigger meghívása az Azure Cosmos DB SDK-k használatával. Tekintse meg a [előtti eseményindító példa](how-to-write-stored-procedures-triggers-udfs.md#pre-triggers) a forrás az üzem előtti eseményindító mentésekor `trgPreValidateToDoItemTimestamp.js`.
+Az alábbi példák bemutatják, hogyan regisztrálhat és hívhat meg egy előindítást az Azure Cosmos DB SDK-k használatával. Tekintse meg az [Indítás előtti példát](how-to-write-stored-procedures-triggers-udfs.md#pre-triggers) , mivel az előtrigger forrásaként a rendszer menti `trgPreValidateToDoItemTimestamp.js`a következőt:.
 
-Végrehajtásakor, előtti eseményindítók adja át a rendszer a RequestOptions objektum megadásával `PreTriggerInclude` , az eseményindító nevét majd egy lista objektumban.
+A végrehajtásakor az eseményindítók átadása a RequestOptions objektumba az eseményindító nevének `PreTriggerInclude` megadásával, majd a lista objektumban való átadásával történik.
 
 > [!NOTE]
-> Annak ellenére, hogy az eseményindító neve átadott listaként, műveletenként csak egy eseményindító továbbra is hajthat végre.
+> Annak ellenére, hogy az trigger neve listaként van átadva, a művelet végrehajtása csak egy triggert tud végrehajtani.
 
-### <a name="pre-triggers---net-sdk"></a>Üzem előtti triggerek – a .NET SDK-val
+### <a name="pre-triggers---net-sdk-v2"></a>Előzetes eseményindítók – .NET SDK v2
 
-A következő kód bemutatja, hogyan regisztrálhat egy üzem előtti eseményindítót, a .NET SDK használatával:
+A következő kód bemutatja, hogyan regisztrálhat egy pre-triggert a .NET SDK V2 használatával:
 
 ```csharp
 string triggerId = "trgPreValidateToDoItemTimestamp";
@@ -189,11 +214,11 @@ Trigger trigger = new Trigger
     TriggerOperation = TriggerOperation.Create,
     TriggerType = TriggerType.Pre
 };
-containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myContainer");
+Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myContainer");
 await client.CreateTriggerAsync(containerUri, trigger);
 ```
 
-A következő kód bemutatja, hogyan hívhat meg egy üzem előtti eseményindítót, a .NET SDK használatával:
+A következő kód bemutatja, hogyan hívhat meg egy előzetes triggert a .NET SDK V2 használatával:
 
 ```csharp
 dynamic newItem = new
@@ -204,14 +229,42 @@ dynamic newItem = new
     isComplete = false
 };
 
-containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myContainer");
+Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myContainer");
 RequestOptions requestOptions = new RequestOptions { PreTriggerInclude = new List<string> { "trgPreValidateToDoItemTimestamp" } };
 await client.CreateDocumentAsync(containerUri, newItem, requestOptions);
 ```
 
-### <a name="pre-triggers---java-sdk"></a>Pre-triggers - Java SDK
+### <a name="pre-triggers---net-sdk-v3"></a>Előzetes eseményindítók – .NET SDK v3
 
-A következő kód bemutatja, hogyan regisztrálhat egy üzem előtti eseményindítót, a Java SDK használatával:
+A következő kód bemutatja, hogyan regisztrálhat egy előzetes triggert a .NET SDK v3 használatával:
+
+```csharp
+await client.GetContainer("database", "container").Scripts.CreateTriggerAsync(new TriggerProperties
+{
+    Id = "trgPreValidateToDoItemTimestamp",
+    Body = File.ReadAllText("@..\js\trgPreValidateToDoItemTimestamp.js"),
+    TriggerOperation = TriggerOperation.Create,
+    TriggerType = TriggerType.Pre
+});
+```
+
+A következő kód bemutatja, hogyan hívhat meg egy előzetes triggert a .NET SDK v3 használatával:
+
+```csharp
+dynamic newItem = new
+{
+    category = "Personal",
+    name = "Groceries",
+    description = "Pick up strawberries",
+    isComplete = false
+};
+
+await client.GetContainer("database", "container").CreateItemAsync(newItem, null, new ItemRequestOptions { PreTriggers = new List<string> { "trgPreValidateToDoItemTimestamp" } });
+```
+
+### <a name="pre-triggers---java-sdk"></a>Előzetes eseményindítók – Java SDK
+
+A következő kód bemutatja, hogyan regisztrálhat egy pre-triggert a Java SDK használatával:
 
 ```java
 String containerLink = String.format("/dbs/%s/colls/%s", "myDatabase", "myContainer");
@@ -225,7 +278,7 @@ trigger.setTriggerType(TriggerType.Pre);
 Trigger createdTrigger = asyncClient.createTrigger(containerLink, trigger, new RequestOptions()).toBlocking().single().getResource();
 ```
 
-A következő kód bemutatja, hogyan hívhat meg egy üzem előtti eseményindítót, a Java SDK használatával:
+A következő kód bemutatja, hogyan hívhat meg egy pre-triggert a Java SDK használatával:
 
 ```java
 String containerLink = String.format("/dbs/%s/colls/%s", "myDatabase", "myContainer");
@@ -242,9 +295,9 @@ requestOptions.setPreTriggerInclude(Arrays.asList("trgPreValidateToDoItemTimesta
 asyncClient.createDocument(containerLink, item, requestOptions, false).toBlocking();
 ```
 
-### <a name="pre-triggers---javascript-sdk"></a>Üzem előtti triggerek – JavaScript SDK
+### <a name="pre-triggers---javascript-sdk"></a>Előzetes eseményindítók – JavaScript SDK
 
-A következő kód bemutatja, hogyan regisztrálhat egy üzem előtti eseményindítót a JavaScript SDK-val:
+A következő kód bemutatja, hogyan regisztrálhat egy pre-triggert a JavaScript SDK használatával:
 
 ```javascript
 const container = client.database("myDatabase").container("myContainer");
@@ -257,7 +310,7 @@ await container.triggers.create({
 });
 ```
 
-A következő kód bemutatja, hogyan hívhat meg egy üzem előtti eseményindítót a JavaScript SDK-val:
+A következő kód bemutatja, hogyan hívhat meg egy előzetes triggert a JavaScript SDK használatával:
 
 ```javascript
 const container = client.database("myDatabase").container("myContainer");
@@ -270,45 +323,47 @@ await container.items.create({
 }, {preTriggerInclude: [triggerId]});
 ```
 
-### <a name="pre-triggers---python-sdk"></a>Üzem előtti triggerek – Python SDK-t
+### <a name="pre-triggers---python-sdk"></a>Előzetes eseményindítók – Python SDK
 
-A következő kód bemutatja, hogyan regisztrálhat egy üzem előtti eseményindítót, a Python SDK-val:
+A következő kód bemutatja, hogyan regisztrálhat egy előzetes triggert a Python SDK használatával:
 
 ```python
 with open('../js/trgPreValidateToDoItemTimestamp.js') as file:
     file_contents = file.read()
 container_link = 'dbs/myDatabase/colls/myContainer'
 trigger_definition = {
-            'id': 'trgPreValidateToDoItemTimestamp',
-            'serverScript': file_contents,
-            'triggerType': documents.TriggerType.Pre,
-            'triggerOperation': documents.TriggerOperation.Create
-        }
+    'id': 'trgPreValidateToDoItemTimestamp',
+    'serverScript': file_contents,
+    'triggerType': documents.TriggerType.Pre,
+    'triggerOperation': documents.TriggerOperation.Create
+}
 trigger = client.CreateTrigger(container_link, trigger_definition)
 ```
 
-A következő kód bemutatja, hogyan hívhat meg egy üzem előtti eseményindítót, a Python SDK-val:
+A következő kód bemutatja, hogyan hívhat meg egy előzetes triggert a Python SDK használatával:
 
 ```python
 container_link = 'dbs/myDatabase/colls/myContainer'
-item = { 'category': 'Personal', 'name': 'Groceries', 'description':'Pick up strawberries', 'isComplete': False}
-client.CreateItem(container_link, item, { 'preTriggerInclude': 'trgPreValidateToDoItemTimestamp'})
+item = {'category': 'Personal', 'name': 'Groceries',
+        'description': 'Pick up strawberries', 'isComplete': False}
+client.CreateItem(container_link, item, {
+                  'preTriggerInclude': 'trgPreValidateToDoItemTimestamp'})
 ```
 
-## <a id="post-triggers"></a>Futtatása utáni eseményindítók
+## <a id="post-triggers"></a>Az eseményindítók futtatása
 
-Az alábbi példák bemutatják, hogyan utáni eseményindító regisztrálása az Azure Cosmos DB SDK-k használatával. Tekintse meg a [utáni eseményindító példa](how-to-write-stored-procedures-triggers-udfs.md#post-triggers) a forrás, az alkalmazásnak eseményindító mentésekor `trgPostUpdateMetadata.js`.
+Az alábbi példák bemutatják, hogyan regisztrálhat egy post-triggert a Azure Cosmos DB SDK-k használatával. Tekintse meg a [trigger utáni példát](how-to-write-stored-procedures-triggers-udfs.md#post-triggers) , mivel a rendszer a post-trigger forrását menti `trgPostUpdateMetadata.js`.
 
-### <a name="post-triggers---net-sdk"></a>Utáni és eseményindítók – .NET SDK-val
+### <a name="post-triggers---net-sdk-v2"></a>Eseményindítók utáni .NET SDK v2
 
-A következő kód bemutatja, hogyan regisztrálhat egy utáni eseményindítót, a .NET SDK használatával:
+A következő kód bemutatja, hogyan regisztrálhat egy triggert a .NET SDK V2 használatával:
 
 ```csharp
 string triggerId = "trgPostUpdateMetadata";
 Trigger trigger = new Trigger
 {
     Id = triggerId,
-    Body = File.ReadAllText($@"..\js\{triggerId}.js");,
+    Body = File.ReadAllText($@"..\js\{triggerId}.js"),
     TriggerOperation = TriggerOperation.Create,
     TriggerType = TriggerType.Post
 };
@@ -316,7 +371,7 @@ Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myConta
 await client.CreateTriggerAsync(containerUri, trigger);
 ```
 
-A következő kód bemutatja, hogyan hívhat meg egy utáni eseményindítót, a .NET SDK használatával:
+A következő kód bemutatja, hogyan hívhat meg egy triggert a .NET SDK V2 használatával:
 
 ```csharp
 var newItem = { 
@@ -325,14 +380,40 @@ var newItem = {
     albums: ["Hellujah", "Rotators", "Spinning Top"]
 };
 
-var options = { postTriggerInclude: "trgPostUpdateMetadata" };
+RequestOptions options = new RequestOptions { PostTriggerInclude = new List<string> { "trgPostUpdateMetadata" } };
 Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myContainer");
 await client.createDocumentAsync(containerUri, newItem, options);
 ```
 
-### <a name="post-triggers---java-sdk"></a>Post-triggers - Java SDK
+### <a name="post-triggers---net-sdk-v3"></a>Eseményindítók után – .NET SDK v3
 
-A következő kód bemutatja, hogyan regisztrálhat egy utáni eseményindítót, a Java SDK használatával:
+A következő kód bemutatja, hogyan regisztrálhat egy post-triggert a .NET SDK v3 használatával:
+
+```csharp
+await client.GetContainer("database", "container").Scripts.CreateTriggerAsync(new TriggerProperties
+{
+    Id = "trgPostUpdateMetadata",
+    Body = File.ReadAllText(@"..\js\trgPostUpdateMetadata.js"),
+    TriggerOperation = TriggerOperation.Create,
+    TriggerType = TriggerType.Post
+});
+```
+
+A következő kód bemutatja, hogyan hívhat meg egy triggert a .NET SDK v3 használatával:
+
+```csharp
+var newItem = { 
+    name: "artist_profile_1023",
+    artist: "The Band",
+    albums: ["Hellujah", "Rotators", "Spinning Top"]
+};
+
+await client.GetContainer("database", "container").CreateItemAsync(newItem, null, new ItemRequestOptions { PostTriggers = new List<string> { "trgPostUpdateMetadata" } });
+```
+
+### <a name="post-triggers---java-sdk"></a>Triggerek utáni – Java SDK
+
+A következő kód bemutatja, hogyan regisztrálhat egy post-triggert a Java SDK használatával:
 
 ```java
 String containerLink = String.format("/dbs/%s/colls/%s", "myDatabase", "myContainer");
@@ -345,7 +426,7 @@ trigger.setTriggerType(TriggerType.Post);
 Trigger createdTrigger = asyncClient.createTrigger(containerLink, trigger, new RequestOptions()).toBlocking().single().getResource();
 ```
 
-A következő kód bemutatja, hogyan hívhat meg egy utáni eseményindítót, a Java SDK használatával:
+A következő kód bemutatja, hogyan hívhat meg egy triggert a Java SDK használatával:
 
 ```java
 String containerLink = String.format("/dbs/%s/colls/%s", "myDatabase", "myContainer");
@@ -361,9 +442,9 @@ requestOptions.setPostTriggerInclude(Arrays.asList("trgPostUpdateMetadata"));
 asyncClient.createDocument(containerLink, item, requestOptions, false).toBlocking();
 ```
 
-### <a name="post-triggers---javascript-sdk"></a>Post-triggers - JavaScript SDK
+### <a name="post-triggers---javascript-sdk"></a>Triggerek – JavaScript SDK
 
-A következő kód bemutatja, hogyan regisztrálhat a JavaScript SDK-val utáni eseményindító:
+A következő kód bemutatja, hogyan regisztrálhat egy triggert a JavaScript SDK használatával:
 
 ```javascript
 const container = client.database("myDatabase").container("myContainer");
@@ -376,7 +457,7 @@ await container.triggers.create({
 });
 ```
 
-A következő kód bemutatja, hogyan hívhat meg egy utáni eseményindítót a JavaScript SDK-val:
+A következő kód bemutatja, hogyan hívhat meg egy triggert a JavaScript SDK használatával:
 
 ```javascript
 const item = {
@@ -389,53 +470,55 @@ const triggerId = "trgPostUpdateMetadata";
 await container.items.create(item, {postTriggerInclude: [triggerId]});
 ```
 
-### <a name="post-triggers---python-sdk"></a>Post-triggers - Python SDK
+### <a name="post-triggers---python-sdk"></a>Triggerek utáni – Python SDK
 
-A következő kód bemutatja, hogyan kell regisztrálni egy utáni eseményindítót, a Python SDK-val:
+A következő kód bemutatja, hogyan regisztrálhat egy triggert a Python SDK használatával:
 
 ```python
 with open('../js/trgPostUpdateMetadata.js') as file:
     file_contents = file.read()
 container_link = 'dbs/myDatabase/colls/myContainer'
 trigger_definition = {
-            'id': 'trgPostUpdateMetadata',
-            'serverScript': file_contents,
-            'triggerType': documents.TriggerType.Post,
-            'triggerOperation': documents.TriggerOperation.Create
-        }
+    'id': 'trgPostUpdateMetadata',
+    'serverScript': file_contents,
+    'triggerType': documents.TriggerType.Post,
+    'triggerOperation': documents.TriggerOperation.Create
+}
 trigger = client.CreateTrigger(container_link, trigger_definition)
 ```
 
-A következő kód bemutatja, hogyan hívhat meg egy utáni eseményindítót, a Python SDK-val:
+A következő kód bemutatja, hogyan hívhat meg egy triggert a Python SDK használatával:
 
 ```python
 container_link = 'dbs/myDatabase/colls/myContainer'
-item = { 'name': 'artist_profile_1023', 'artist': 'The Band', 'albums': ['Hellujah', 'Rotators', 'Spinning Top']}
-client.CreateItem(container_link, item, { 'postTriggerInclude': 'trgPostUpdateMetadata'})
+item = {'name': 'artist_profile_1023', 'artist': 'The Band',
+        'albums': ['Hellujah', 'Rotators', 'Spinning Top']}
+client.CreateItem(container_link, item, {
+                  'postTriggerInclude': 'trgPostUpdateMetadata'})
 ```
 
 ## <a id="udfs"></a>Felhasználó által definiált függvények használata
 
-Az alábbi példák bemutatják, hogyan regisztrálja a felhasználó által definiált függvény az Azure Cosmos DB SDK-k használatával. Ebben [felhasználó által definiált függvény példa](how-to-write-stored-procedures-triggers-udfs.md#udfs) a forrás, az alkalmazásnak eseményindító mentésekor `udfTax.js`.
+Az alábbi példák bemutatják, hogyan regisztrálhat egy felhasználó által definiált függvényt a Azure Cosmos DB SDK-k használatával. Tekintse meg ezt a [felhasználó által definiált függvényt, például](how-to-write-stored-procedures-triggers-udfs.md#udfs) az utólagos trigger `udfTax.js`forrását.
 
-### <a name="user-defined-functions---net-sdk"></a>Felhasználó által definiált függvények – .NET SDK-val
+### <a name="user-defined-functions---net-sdk-v2"></a>Felhasználó által definiált függvények – .NET SDK v2
 
-A következő kód bemutatja, hogyan regisztrálhat egy felhasználó által definiált függvény a .NET SDK használatával:
+A következő kód bemutatja, hogyan regisztrálhat egy felhasználó által definiált függvényt a .NET SDK V2 használatával:
 
 ```csharp
 string udfId = "Tax";
 var udfTax = new UserDefinedFunction
 {
     Id = udfId,
-    Body = File.ReadAllText($@"..\js\{udfId}.js"),
+    Body = File.ReadAllText($@"..\js\{udfId}.js")
 };
 
-containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myContainer");
+Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myContainer");
 await client.CreateUserDefinedFunctionAsync(containerUri, udfTax);
 
 ```
 
-A következő kód bemutatja, hogyan hívhat meg egy felhasználó által definiált függvény a .NET SDK használatával:
+A következő kód bemutatja, hogyan hívhat meg egy felhasználó által definiált függvényt a .NET SDK V2 használatával:
 
 ```csharp
 Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myContainer");
@@ -447,9 +530,35 @@ foreach (var result in results)
 }
 ```
 
-### <a name="user-defined-functions---java-sdk"></a>Felhasználó által definiált függvények – Java SDK-val
+### <a name="user-defined-functions---net-sdk-v3"></a>Felhasználó által definiált függvények – .NET SDK v3
 
-A következő kód bemutatja, hogyan regisztrálhat egy felhasználó által definiált függvény a Java SDK használatával:
+A következő kód bemutatja, hogyan regisztrálhat egy felhasználó által definiált függvényt a .NET SDK v3 használatával:
+
+```csharp
+await client.GetContainer("database", "container").Scripts.CreateUserDefinedFunctionAsync(new UserDefinedFunctionProperties
+{
+    Id = "Tax",
+    Body = File.ReadAllText(@"..\js\Tax.js")
+});
+```
+
+A következő kód bemutatja, hogyan hívhat meg egy felhasználó által definiált függvényt a .NET SDK v3 használatával:
+
+```csharp
+var iterator = client.GetContainer("database", "container").GetItemQueryIterator<dynamic>("SELECT * FROM Incomes t WHERE udf.Tax(t.income) > 20000");
+while (iterator.HasMoreResults)
+{
+    var results = await iterator.ReadNextAsync();
+    foreach (var result in results)
+    {
+        //iterate over results
+    }
+}
+```
+
+### <a name="user-defined-functions---java-sdk"></a>Felhasználó által definiált függvények – Java SDK
+
+A következő kód bemutatja, hogyan regisztrálhat egy felhasználó által definiált függvényt a Java SDK használatával:
 
 ```java
 String containerLink = String.format("/dbs/%s/colls/%s", "myDatabase", "myContainer");
@@ -461,7 +570,7 @@ udf.setBody(new String(Files.readAllBytes(Paths.get(String.format("..\\js\\%s.js
 UserDefinedFunction createdUDF = client.createUserDefinedFunction(containerLink, udf, new RequestOptions()).toBlocking().single().getResource();
 ```
 
-A következő kód bemutatja, hogyan hívhat meg egy felhasználó által definiált függvény a Java SDK használatával:
+A következő kód bemutatja, hogyan hívhat meg egy felhasználó által definiált függvényt a Java SDK használatával:
 
 ```java
 String containerLink = String.format("/dbs/%s/colls/%s", "myDatabase", "myContainer");
@@ -487,7 +596,7 @@ completionLatch.await();
 
 ### <a name="user-defined-functions---javascript-sdk"></a>Felhasználó által definiált függvények – JavaScript SDK
 
-A következő kód bemutatja, hogyan regisztrálhat egy felhasználó által definiált függvény JavaScript SDK-val:
+A következő kód bemutatja, hogyan regisztrálhat egy felhasználó által definiált függvényt a JavaScript SDK használatával:
 
 ```javascript
 const container = client.database("myDatabase").container("myContainer");
@@ -497,7 +606,7 @@ await container.userDefinedFunctions.create({
     body: require(`../js/${udfId}`)
 ```
 
-A következő kód bemutatja, hogyan hívhat meg egy felhasználó által definiált függvény JavaScript SDK-val:
+A következő kód bemutatja, hogyan hívhat meg egy felhasználó által definiált függvényt a JavaScript SDK használatával:
 
 ```javascript
 const container = client.database("myDatabase").container("myContainer");
@@ -505,33 +614,34 @@ const sql = "SELECT * FROM Incomes t WHERE udf.Tax(t.income) > 20000";
 const {result} = await container.items.query(sql).toArray();
 ```
 
-### <a name="user-defined-functions---python-sdk"></a>Felhasználó által definiált függvények – Python SDK-t
+### <a name="user-defined-functions---python-sdk"></a>Felhasználó által definiált függvények – Python SDK
 
-A következő kód bemutatja, hogyan regisztrálhat egy felhasználó által definiált függvény a Python SDK-val:
+A következő kód bemutatja, hogyan regisztrálhat egy felhasználó által definiált függvényt a Python SDK használatával:
 
 ```python
 with open('../js/udfTax.js') as file:
     file_contents = file.read()
 container_link = 'dbs/myDatabase/colls/myContainer'
 udf_definition = {
-            'id': 'Tax',
-            'serverScript': file_contents,
-        }
+    'id': 'Tax',
+    'serverScript': file_contents,
+}
 udf = client.CreateUserDefinedFunction(container_link, udf_definition)
 ```
 
-A következő kód bemutatja, hogyan hívhat meg egy felhasználó által definiált függvény a Python SDK-val:
+A következő kód bemutatja, hogyan hívhat meg egy felhasználó által definiált függvényt a Python SDK használatával:
 
 ```python
 container_link = 'dbs/myDatabase/colls/myContainer'
-results = list(client.QueryItems(container_link, 'SELECT * FROM Incomes t WHERE udf.Tax(t.income) > 20000'))
+results = list(client.QueryItems(
+    container_link, 'SELECT * FROM Incomes t WHERE udf.Tax(t.income) > 20000'))
 ```
 
 ## <a name="next-steps"></a>További lépések
 
-További fogalmakat és útmutató írási vagy tárolt eljárások, eseményindítók és felhasználó által definiált függvények használata az Azure Cosmos DB:
+További fogalmak és útmutató: tárolt eljárások, eseményindítók és felhasználó által definiált függvények írása vagy használata Azure Cosmos DBban:
 
-- [Azure Cosmos DB-vel működő tárolt eljárások, eseményindítók és felhasználó által definiált függvények az Azure Cosmos DB-ben](stored-procedures-triggers-udfs.md)
-- [Működő JavaScript nyelvvel integrált lekérdezési API-t az Azure Cosmos DB-ben](javascript-query-api.md)
-- [Az Azure Cosmos DB-ben tárolt eljárások, eseményindítók és felhasználó által definiált függvények írása](how-to-write-stored-procedures-triggers-udfs.md)
-- [Hogyan írhat a tárolt eljárások és eseményindítók az Azure Cosmos DB a Javascript Query API használatával](how-to-write-javascript-query-api.md)
+- [Azure Cosmos DB tárolt eljárások, eseményindítók és felhasználó által definiált függvények használata Azure Cosmos DB](stored-procedures-triggers-udfs.md)
+- [A JavaScript nyelvi integrált lekérdezési API használata a Azure Cosmos DBban](javascript-query-api.md)
+- [Tárolt eljárások, eseményindítók és felhasználó által definiált függvények írása Azure Cosmos DB](how-to-write-stored-procedures-triggers-udfs.md)
+- [Tárolt eljárások és eseményindítók írása a JavaScript lekérdezési API használatával Azure Cosmos DB](how-to-write-javascript-query-api.md)

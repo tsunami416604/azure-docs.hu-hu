@@ -13,11 +13,11 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: b5ba5fadd229fa7119f9af791f7eaedbc984c92a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55457190"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60584947"
 ---
 # <a name="elastic-database-tools-frequently-asked-questions-faq"></a>Elastic database-eszközök – gyakori kérdések (GYIK)
 

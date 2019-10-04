@@ -1,111 +1,180 @@
 ---
-title: Privát SKU-k és a tervek |} A Microsoft Docs
-description: Hogyan kezelheti az ajánlatok elérhetőségéről privát SKU-k használatával.
+title: Privát SKU-i és csomagok | Azure piactér
+description: Saját SKU-ket használhat az ajánlat rendelkezésre állásának kezeléséhez.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: dcc8b9fef75ba13b607d7fdda5bd55cc710165b9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 08/15/2019
+ms.author: pabutler
+ms.openlocfilehash: 940b50cf4a04abacd4d7be2104dd97fb8b3db736
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57837014"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883119"
 ---
-<a name="private-skus-and-plans"></a>Privát termékváltozatok és csomagok
+<a name="private-skus-and-plans"></a>Privát SKU-i és csomagok
 ============
 
-Privát SKU-k lehetővé teszik a termékváltozatok rendelkezésre állásának korlátozása egy adott ügyfélnek. A Termékváltozat privát van megjelölve, ha nem érhető el a bármely nyilvános katalógus, amely a [Azure Marketplace-en](https://azuremarketplace.microsoft.com) és a [az Azure portal](https://portal.azure.com). Az Azure Portalon csak a Termékváltozat-hozzáféréssel rendelkező felhasználók láthatják őket. Ezenkívül, akkor is lehet felszólítja a felhasználót szóló ajánlatok hozzáféréssel rendelkeznek.
+A privát SKU-kal korlátozható a SKU-i rendelkezésre állása adott ügyfelek számára. Ha egy SKU privátként van megjelölve, nem érhető el semmilyen nyilvános katalógusban, beleértve az [Azure piactéren](https://azuremarketplace.microsoft.com) és a [Azure Portal](https://portal.azure.com). A Azure Portalon csak az SKU-hoz hozzáférő ügyfelek láthatják. Emellett a rendszer arra is kéri, hogy hozzáférjenek a privát ajánlatokhoz.
 
 >[!NOTE]
->Privát termékváltozatok rendelkeznie kell új egyedi Termékváltozata vagy előfizetése azonosító bármelyik a nyilvános termékváltozatok való ütközés elkerülése érdekében.
+>A privát SKU-nak új egyedi SKU-/csomag-azonosítóval kell rendelkeznie, hogy elkerülje az ütközést a nyilvános SKU-kal.
 
-Privát SKU-k segítségével kezeli a következő esetekben:
+A következő forgatókönyvek kezelésére használhat privát SKU-ket:
 
-1.  Tegye közzé a szoftver csak adott felhasználók számára a nyilvánosan elérhető, és nyilvánosan elérhető.
-2.  Tegye közzé az adott ügyfélnek a testre szabott áron nyilvános szoftver változata létezik.
-3.  Tegye közzé a testre szabott leírását és a feltételek (keresztül új ajánlat) nyilvános szoftver változata.
+1.  Közzéteheti azokat a szoftvereket, amelyeket csak az adott ügyfelek számára, nyilvánosan elérhetővé szeretne tenni.
+2.  A nyilvános szoftverek variációit egyedi díjszabással teheti közzé adott ügyfelek számára.
+3.  A nyilvános szoftverek variációinak közzététele testreszabott leírással és kifejezésekkel (új ajánlaton keresztül).
 
-Ha szeretné módosítani az árat, felhasználhatja ugyanazt az ajánlatban Termékváltozatáról egy másikra a lemezeket. A privát SKU-k nem kell küldje el újra a lemezeket termékváltozatok között.
+Ha csak az árat szeretné módosítani, egy másik SKU lemezeit is felhasználhatja ugyanazon az ajánlaton belül. A privát SKU-kal nem kell újraküldenie a lemezeket az SKU-ban.
 
-<a name="mark-a-sku-private"></a>A Termékváltozat privát megjelölése
+<a name="mark-a-sku-private"></a>SKU megjelölése privátként
 ---------------------
 
-Egy privát Termékváltozatot megjelöléséhez váltsa át a beállítást, a Termékváltozat-e privát kéri:
+Ha magánjellegűként kívánja megjelölni az SKU-t, kapcsolja be azt a lehetőséget, hogy az SKU magán:
 
-![A Termékváltozat megjelölése privát](./media/cloud-partner-portal-publish-virtual-machine/markingskuprivate.png)
+![SKU megjelölése privátként](./media/cloud-partner-portal-publish-virtual-machine/markingskuprivate.png)
 
-Újból felhasználhatja a lemezek Termékváltozatáról egy másikra, és módosítani a díjszabási vagy leírása. Újból felhasználhatja a lemezeket, jelölje be **Igen** a "nem a Termékváltozat újra felhasználhatja a Termékváltozat nyilvános lemezképeket" válaszul kérni.
+Újra felhasználhatja a lemezeket egy másik SKU-ban, és módosíthatja a díjszabást vagy a leírást. Ha újra szeretné használni a lemezeket, válassza az **Igen** lehetőséget az "ezt az SKU-t használó lemezképek újrafelhasználása nyilvános SKU-ból" üzenetre válaszként.
 
-Ha a Termékváltozat személyesként van megjelölve, és az ajánlat a többi termékváltozat reuseable lemezekkel rendelkezik, is jelzi, hogy a Termékváltozat újból felhasználja a lemezeket egy másik Termékváltozat szükséges. Ön egyúttal a célközönség privát termékváltozat megadása kötelező.
+Ha az SKU privátként van megjelölve, és az ajánlat más SKU-ket tartalmaz újrahasználható lemezekkel, akkor meg kell jelölnie, hogy az SKU újrahasználja a lemezeket egy másik SKU-ból. A magánhálózati SKU számára is meg kell adnia a célközönséget.
 
 >[!NOTE]
->Miután közzé van téve, nem hajtható végre saját nyilvános Termékváltozat.
+>Közzététel után a nyilvános SKU-t nem lehet magánjellegűvé tenni.
 
 <a name="select-an-image"></a>Kép kiválasztása
 ------------------
 
-Adja meg az új lemezeket privát termékváltozat vagy újból felhasználhatja a megadott már egy másik SKU, csak a díjszabás módosítása vagy leírás azonos lemezek is. Újból felhasználhatja a lemezeket, jelölje be **Igen** az "Ez a Termékváltozat újra felhasználhatja kép Does egy nyilvános termékváltozatból" kérdésre adott válaszként.
+Megadhat új lemezeket a privát SKU-hoz, vagy felhasználhatja a másik SKU-ban már megadott lemezeket, csak a díjszabást vagy a leírást. Ha újra szeretné használni a lemezeket, válassza az **Igen** lehetőséget válaszként a következőre: "ezt az SKU-t használja fel egy nyilvános SKU-ból".
 
-![Jelzi a rendszerkép újból használni.](./media/cloud-partner-portal-publish-virtual-machine/selectimage1.png)
+![Képek újrafelhasználásának jelzése](./media/cloud-partner-portal-publish-virtual-machine/selectimage1.png)
 
-Követően, győződjön meg arról, hogy a Termékváltozat újból felhasználja az Termékváltozatáról egy másikra képeit, meg kell határoznia a Termékváltozat, amely a képek forrását.
-
-A következő képernyőn megjelenő utasításokat a privát Termékváltozat azonosítása lenne újra felhasználhatja a képeket a kiválasztott Termékváltozat show rögzítése:
+Miután megerősítette, hogy az SKU újra felhasználja a rendszerképeket, válassza ki a lemezkép forrását vagy *Alap* SKU-jának a következőt:
 
 ![Kép kiválasztása](./media/cloud-partner-portal-publish-virtual-machine/selectimage2.png)
 
-Az ajánlat közzétételekor a képeket a kiválasztott Termékváltozat érhető el az egyéni díjszabás és használati privát SKU-azonosítója alapján kerül sor. A privát Termékváltozat csak akkor látható a célközönséghez.
+Amikor közzéteszi az ajánlatot, a kiválasztott SKU-ról származó lemezképek elérhetővé válnak a privát SKU-AZONOSÍTÓban az egyéni díjak/feltételek alapján. A privát SKU csak a célközönség számára látható.
 
-Lemezkép frissítéseinek, csak szükségesek, ha az alapul szolgáló Termékváltozat-lemezképét. A színfalak mögött privát termékváltozat a képet fogja is automatikusan frissülnek. Ehhez hasonlóan az alapul szolgáló Termékváltozat törli a lemezképet, ha a kép lenne is távolítható el a privát Termékváltozat.
+A képfrissítések esetében csak az alapul szolgáló SKU rendszerképének frissítésére van szükség. A háttérben a privát SKU-hoz tartozó rendszerkép is automatikusan frissül. Hasonlóképpen, ha törli a rendszerképet a mögöttes SKU-ból, akkor a rendszerkép is el lesz távolítva a privát SKU-ból.
 
 <a name="restricting-the-audience"></a>A célközönség korlátozása
 ------------------------
 
-Saját ajánlatok is található, és csak a megcélzott felhasználók által telepített.
-Előfizetés azonosítókat használó felhasználók jelenleg.
+A privát ajánlatokat csak a megcélzó felhasználók tudják megtalálni és üzembe helyezni.
+Jelenleg az előfizetés-azonosítókat használó felhasználók célzása támogatott.
 
-Ezeket az előfizetéseket lehet megadni egy manuális nevezési űrlapot **legfeljebb 10 előfizetések**, vagy egy CSV-fájl feltöltésével, amely lehetővé teszi, hogy **legfeljebb 20 000 előfizetések**.
+Ezeket az előfizetéseket manuálisan, **legfeljebb 10 előfizetésre**vagy egy CSV-fájl feltöltésével lehet megadni, amely **legfeljebb 20 000 előfizetést**tesz lehetővé.
 
-Manuális bejegyzés korlátozott közönség számára:
+A korlátozott célközönség manuális bejegyzése:
 
-![Manuálisan a célközönség korlátozása](./media/cloud-partner-portal-publish-virtual-machine/restrictaudience1.png)
+![Célközönség manuális korlátozása](./media/cloud-partner-portal-publish-virtual-machine/restrictaudience1.png)
 
-Fürt megosztott kötetei szolgáltatás feltöltés korlátozott közönség számára:
+CSV-feltöltés a korlátozott célközönség számára:
 
-![Fürt megosztott kötetei szolgáltatás használatával korlátozhatja a célközönség](./media/cloud-partner-portal-publish-virtual-machine/restrictaudience2.png)
+![A célközönség korlátozása CSV használatával](./media/cloud-partner-portal-publish-virtual-machine/restrictaudience2.png)
 
 Minta CSV-fájl tartalma:
 
             Type,Id,Description
             SubscriptionId,7738d703-3135-4e8d-8b81-1e70379abd9d,Private Customer
 
-Váltson át manuális bejegyzés csv-fájlba, töltse fel a nézet vagy fürtkötetről való manuális bejegyzés előfizetés azonosítókat a Termékváltozat-hozzáféréssel rendelkező régi listája nem őrződnek meg. A figyelmeztetés akkor jelenik meg, és a listában csak a rendszer felülírja az ajánlat mentése után.
+Ha a manuális bejegyzésről CSV-feltöltés nézetre vagy CSV-ről manuálisra vált, a rendszer nem őrzi meg az SKU-hoz hozzáférő előfizetési azonosítók régi listáját. A rendszer figyelmeztetést jelenít meg, és a lista csak az ajánlat mentésekor kerül felülírásra.
 
-<a name="sync-private-subscriptions"></a>Szinkronizálási saját előfizetések
+<a name="managing-private-audiences"></a>Privát célközönségek kezelése
 -------------------------
 
-Előfizetések hozzáadása egy privát Termékváltozat vagy a csomag közzétett ajánlatra, amikor nem kell újból közzéteszi a célközönség tudnivalókkal az ajánlatot. Egy Azure-előfizetés-azonosítója (a csomagok és az SKU-k) vagy a bérlő azonosítója (csak csomagok) egyszerűen használnak, célközönség hozzá.
+**Annak érdekében, hogy a teljes ajánlat újbóli közzététele nélkül frissítse a célközönséget, a célközönséget módosítani szeretné (a felhasználói felületen vagy az API-val), majd kezdeményezheti a "privát célközönségek szinkronizálása" műveletet.**
 
-<a name="previewing-private-offers"></a>Előnézet privát kínál
+Ha a célközönség 10 vagy kevesebb előfizetés, akkor teljes mértékben a CPP felhasználói felületének használatával kezelheti.
+
+Ha a célközönsége több mint 10 előfizetés, akkor kezelheti azt egy CSV-fájllal, amelyet feltöltheti a CPP felhasználói felületén vagy az API-val.
+
+Ha az API-t használja, és nem szeretne CSV-fájlt fenntartani, a célközönséget közvetlenül az API-val kezelheti az alábbi utasítások alapján.
+
+> [!NOTE]
+> Az Azure-előfizetési azonosító (csomagok és SKU-EK) vagy a bérlői azonosító (csak a csomagok) használatával adhat hozzá célközönséget a privát ajánlathoz.
+
+###  <a name="managing-subscriptions-with-the-api"></a>Előfizetések kezelése az API-val
+
+Az API-val feltölthet egy CSV-fájlt, vagy közvetlenül is kezelheti a célközönségét (CSV használata nélkül). Általánosságban elmondható, hogy egyszerűen le kell kérnie az ajánlatot `restrictedAudience` , frissítenie kell az objektumot, majd ezeket a módosításokat vissza kell küldenie az ajánlatba, hogy hozzá lehessen adni vagy el lehessen távolítani a célközönség tagjait.
+
+A célközönségek listájának programozott frissítése a következőképpen történik:
+
+1. [Ajánlati adatai lekérése](cloud-partner-portal-api-retrieve-specific-offer.md) :
+
+    ```
+    GET https://cloudpartner.azure.com/api/publishers//offers/?api-version=2017-10-31&includeAllPricing=true
+    ```
+
+2. A korlátozott célközönségű objektumok keresése az ajánlat minden SKU-jának használatával ezzel a JPath-lekérdezéssel:
+
+    ```
+    $.definition.plans[*].restrictedAudience
+    ```
+3. Frissítse az ajánlathoz tartozó korlátozott célközönség-objektum (oka) t.
+
+    **Ha eredetileg feltöltötte a CSV-fájlból származó privát ajánlat előfizetési listáját:**
+
+    A *restrictedAudience* -objektum (ok) ehhez hasonlóan fog kinézni.
+    ```
+    "restrictedAudience": {
+                  "uploadedCsvUri": "{SasUrl}"
+    }
+    ```
+
+    Minden korlátozott célközönség objektum esetében:
+
+    a. Töltse le a tartalmát `restrictedAudience.uploadedCsvUri`. A tartalom egyszerűen egy fejléceket tartalmazó CSV-fájl. Példa:
+
+        type,id,description
+        subscriptionId,541a269f-3df2-486e-8fe3-c8f9dcf28205,sub1
+        subscriptionId,c0da499c-25ec-4e4b-a42a-6e75635253b9,sub2
+
+    b. Szükség szerint vegyen fel vagy töröljön előfizetéseket a letöltött CSV-fájlban.
+
+    c. Töltse fel a frissített CSV-fájlt egy helyre, például az [Azure Blob Storage](../../storage/blobs/storage-blobs-overview.md) -ba vagy a [OneDrive](https://onedrive.live.com)-ra, és hozzon létre egy csak olvasható hivatkozást a fájlra. Ez lesz az új *sas URL*.
+
+    d. Frissítse a `restrictedAudience.uploadedCsvUri` kulcsot az új *sas URL*.
+
+    **Ha manuálisan adta meg a privát ajánlathoz tartozó előfizetések eredeti listáját a Cloud Partner Portalből:**
+
+    A *restrictedAudience* -objektum (ok) a következőhöz hasonló módon fog kinézni:
+
+    ```
+    "restrictedAudience": {
+        "manualEntries": [{
+            "type": "subscriptionId",
+            "id": "541a269f-3df2-486e-8fe3-c8f9dcf28205",
+            "description": "sub1"
+            }, {
+            "type": "subscriptionId",
+            "id": "c0da499c-25ec-4e4b-a42a-6e75635253b9",
+            "description": "sub2"
+            }
+        ]}
+    ```
+
+    a. Minden korlátozott célközönség objektum esetében szükség szerint adjon hozzá vagy töröljön bejegyzéseket `restrictedAudience.manualEntries` a listában.
+
+4. Ha befejezte a privát ajánlat egyes SKU- *restrictedAudience* összes objektumának frissítését, [frissítse az ajánlatot](cloud-partner-portal-api-creating-offer.md):
+
+    ```
+    PUT https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>?api-version=2017-10-31
+    ```
+    Ezzel a frissített célközönségek listája már érvényben van.
+
+<a name="previewing-private-offers"></a>Privát ajánlatok előzetes megtekintése
 -------------------------
 
-Az előnézet/előkészítés során lépést, csak az ajánlat szint előzetes előfizetések érhetik el a Termékváltozat. Ez a tesztelési fázisban ekkor ellenőrizheti, mely az ajánlat kellene kinéznie a megcélzott felhasználók, és minden típusú közzététel standard.
+Az előzetes/előkészítési lépés során csak az ajánlati szint előzetes verziójának előfizetései férhetnek hozzá az SKU-hoz. A tesztelési fázisban megtekintheti az ajánlatot, ahogy az a megcélzott ügyfeleknek is megjelenhet.
 
-Ajánlat szint előzetes előfizetések előkészített ajánlatok eléréséhez:
+Ajánlat szintű előzetes előfizetések a szakaszos ajánlatok eléréséhez:
 
-![Előfizetés azonosítókat előzetes verzió](./media/cloud-partner-portal-publish-virtual-machine/previewoffer1.png)
+![Előfizetési azonosítók előnézete](./media/cloud-partner-portal-publish-virtual-machine/previewoffer1.png)
 
-Miután az ajánlat élő, csak a korlátozott közönség előfizetések (Manuális bejegyzés vagy CSV-n keresztül megadott) tudja megnézni és üzembe helyezése a privát Termékváltozat lesz. Azt javasoljuk, hogy Ön **mindig tartalmazza a korlátozott közönség a saját előfizetések** ellenőrzési célból privát termékváltozat.
+Ha az ajánlat élőben működik, csak a korlátozott célközönségű előfizetések (manuálisan vagy CSV-n keresztül megadott) megtekinthetik és telepíthetik a privát SKU-t. Azt javasoljuk, hogy **mindig a saját előfizetéseit** a saját SKU-ban érvényesítse a korlátozott közönség számára.
 
 >[!NOTE]
->Hibakeresési célokra a Microsoft támogatási és mérnöki csapataival is megkapják ezeket szóló ajánlatok a hozzáférést.
+>Hibakeresési célból a Microsoft támogatási és mérnöki csapatai is hozzáférhetnek ezekhez a privát ajánlatokhoz.

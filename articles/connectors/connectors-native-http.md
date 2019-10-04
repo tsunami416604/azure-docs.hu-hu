@@ -1,91 +1,171 @@
 ---
-title: Csatlakozás az Azure Logic Apps bármely HTTP-végpont |} A Microsoft Docs
-description: Automatizálhatja a feladatokat és a munkafolyamatok, amelyek bármilyen HTTP végponttal kommunikálhat az Azure Logic Apps használatával
+title: HTTP-és HTTPS-végpontok hívása – Azure Logic Apps
+description: Kimenő kérelmek küldése HTTP-és HTTPS-végpontoknak Azure Logic Apps használatával
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
-ms.assetid: e11c6b4d-65a5-4d2d-8e13-38150db09c0b
-ms.topic: article
+ms.topic: conceptual
+ms.date: 07/05/2019
 tags: connectors
-ms.date: 08/25/2018
-ms.openlocfilehash: 01da06ca55199989a3a27012bec101580f5ef853
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: df856e0d76dbd5903964bc80aa01b97b7461128a
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57442205"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122699"
 ---
-# <a name="call-http-or-https-endpoints-with-azure-logic-apps"></a>Az Azure Logic Apps HTTP vagy HTTPS-végpontokat
+# <a name="send-outgoing-calls-to-http-or-https-endpoints-by-using-azure-logic-apps"></a>Kimenő hívások küldése HTTP-vagy HTTPS-végpontoknak Azure Logic Apps használatával
 
-Az Azure Logic Apps és a Hypertext Transfer Protocol (HTTP) összekötőt akkor automatizálhatja, amely minden HTTP vagy HTTPS-végpont kommunikálni a logikai alkalmazások létrehozásával. A szolgáltatásvégpont figyelheti például a webhely. Ha egy esemény történik, ha a webhely leáll, például, hogy a végpont az esemény elindítja a logikai alkalmazás munkafolyamat, és futtatja a megadott műveleteket. 
+A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és a beépített http-trigger vagy művelet használatával olyan automatizált feladatokat és munkafolyamatokat hozhat létre, amelyek rendszeresen küldenek kéréseket bármely http-vagy https-végpontnak. Ha ehelyett a bejövő HTTP-vagy HTTPS-hívásokat szeretné fogadni és válaszolni, használja a beépített [kérelem-triggert vagy a válasz műveletet](../connectors/connectors-native-reqres.md).
 
-Használhatja a HTTP-eseményindítóval első lépéseként a munkamenet-ellenőrzési vagy *lekérdezési* egy végpontot, rendszeres ütemezés szerint. Az eseményindító minden ellenőrzés hívást küld vagy *kérelem* a végponthoz. A végpont válasz határozza meg, hogy fut-e a logikai alkalmazás munkafolyamat. Az eseményindító a műveleteknek a logikai alkalmazásban a válaszból továbbítja a tartalmat. 
+A webhely szolgáltatási végpontját figyelheti például úgy, hogy ellenőrzi, hogy a végpont egy adott időpontban van-e megadva. Ha egy adott esemény történik a végponton, például a webhelyén, az esemény elindítja a logikai alkalmazás munkafolyamatát, és futtatja a megadott műveleteket.
 
-Használható a HTTP-művelet további lépésként a munkafolyamatban a végpontot hív, ha szeretne. Koncového bodu válasz határozza meg, hogyan fennmaradó a munkafolyamat-műveletek futtatása.
+Ha rendszeres időközönként szeretné megtekinteni vagy lekérdezni egy végpontot, használhatja a http-triggert a munkafolyamat első lépéseként. Az trigger minden egyes vizsgálatkor hívást vagy kérést küld a végpontnak. A végpont válasza határozza meg, hogy a logikai alkalmazás munkafolyamata fut-e. Az trigger a logikai alkalmazás műveleteire adott válasz tartalmával együtt halad át.
 
-Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+A HTTP-műveletet használhatja a munkafolyamat bármely más lépéseként a végpont meghívásához. A végpont válasza határozza meg, hogyan futnak a munkafolyamat hátralévő műveletei.
+
+A cél végpont képességei alapján a HTTP-összekötő támogatja a 1,0, 1,1 és 1,2 Transport Layer Security (TLS) verziókat. Logic Apps a lehető legmagasabb támogatott verzió használatával egyeztet a végponttal. Tehát ha például a végpont támogatja a 1,2-et, az összekötő először a 1,2-et használja. Ellenkező esetben az összekötő a következő legmagasabb támogatott verziót használja.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, <a href="https://azure.microsoft.com/free/" target="_blank">regisztráljon egy ingyenes Azure-fiókra</a>. 
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
 
-* A cél-végpont URL-CÍMÉT szeretné meghívni 
+* A hívni kívánt cél végpont URL-címe
 
-* Alapvető ismeretek szerezhetők [logikai alkalmazások létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Alapvető ismeretek a [logikai alkalmazások létrehozásáról](../logic-apps/quickstart-create-first-logic-app-workflow.md). Ha most ismerkedik a Logic apps szolgáltatással, tekintse át [a mi az Azure Logic apps?](../logic-apps/logic-apps-overview.md)
 
-* A logikai alkalmazás, ahonnan csak szeretné meghívni a cél-végpontot, hogy a HTTP-eseményindítóval kezdődnek [hozzon létre egy üres logikai alkalmazás](../logic-apps/quickstart-create-first-logic-app-workflow.md). A HTTP-művelet használatához indítsa el a logikai alkalmazás egy eseményindítóval.
+* Az a logikai alkalmazás, amelyről meg szeretné hívni a célként megadott végpontot. A HTTP-trigger elindításához [hozzon létre egy üres logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md). A HTTP-művelet használatához indítsa el a logikai alkalmazást a kívánt triggerrel. Ez a példa a HTTP-triggert használja első lépésként.
 
-## <a name="add-http-trigger"></a>HTTP-eseményindító hozzáadása
+## <a name="add-an-http-trigger"></a>HTTP-trigger hozzáadása
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com), és az üres logikai alkalmazás megnyitása a Logikaialkalmazás-tervezőben, ha nem, nyissa meg a már.
+Ez a beépített trigger egy HTTP-hívást kezdeményez a végpont megadott URL-címére, és választ ad vissza.
 
-1. A Keresés mezőbe írja be a "http" szűrőként. Az eseményindítók listájában válassza ki a **HTTP** eseményindító. 
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Nyissa meg az üres logikai alkalmazást a Logic app Designerben.
 
-   ![Válassza ki a HTTP-eseményindító](./media/connectors-native-http/select-http-trigger.png)
+1. A tervezőben a keresőmezőbe írja be szűrőként a "http" kifejezést. Az **Eseményindítók** listából válassza ki a **http** -eseményindítót.
 
-1. Adja meg a [HTTP-trigger paraméterek és értékek](../logic-apps/logic-apps-workflow-actions-triggers.md##http-trigger) fel szeretne venni a céloldali végpont hívásában. Ellenőrizze a cél-végpont számára, hogy milyen gyakran kívánja az eseményindító ismétlődési beállításával.
+   ![HTTP-trigger kiválasztása](./media/connectors-native-http/select-http-trigger.png)
 
-   ![Adja meg a HTTP-eseményindító paraméterei](./media/connectors-native-http/http-trigger-parameters.png)
+   Ez a példa átnevezi a triggert a "HTTP trigger" névre, hogy a lépésnek legyen egy leíró neve. A példa később egy HTTP-műveletet is felvesz, és mindkét névnek egyedinek kell lennie.
 
-   A HTTP-eseményindító, paraméterek és értékek kapcsolatos további információkért lásd: [eseményindító és művelet típusok hivatkozási](../logic-apps/logic-apps-workflow-actions-triggers.md##http-trigger).
+1. Adja meg a http- [trigger azon paramétereinek](../logic-apps/logic-apps-workflow-actions-triggers.md##http-trigger) értékeit, amelyeket a célként megadott végpont felé irányuló hívásba kíván foglalni. Állítsa be az ismétlődést, hogy milyen gyakran szeretné, hogy az eseményindító ellenőrizzék a célként megadott végpontot.
 
-1. Folytassa a logikai alkalmazás munkafolyamat-műveletek, amelyek futtatását, amikor az eseményindító aktiválódik.
+   ![HTTP-trigger paramétereinek megadása](./media/connectors-native-http/http-trigger-parameters.png)
 
-## <a name="add-http-action"></a>HTTP-művelet hozzáadása
+   A HTTP-n elérhető hitelesítési típusokkal kapcsolatos további információkért lásd: [http-eseményindítók és-műveletek hitelesítése](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication).
 
-[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
+1. Más elérhető paraméterek hozzáadásához nyissa meg az **új paraméter hozzáadása** listát, és válassza ki a kívánt paramétereket.
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com), és nyissa meg a logikai alkalmazás a Logikaialkalmazás-Tervező, ha nem, nyissa meg a már.
+1. Folytassa a logikai alkalmazás munkafolyamatának kialakítását olyan műveletekkel, amelyek az eseményindító indításakor futnak.
 
-1. Válassza ki az utolsó lépés, ha szeretné a HTTP-művelet hozzáadása, **új lépés**. 
+1. Ha elkészült, ne felejtse el menteni a logikai alkalmazást. A tervező eszköztárán válassza a **Mentés**lehetőséget.
 
-   Ebben a példában a logikai alkalmazás elindul a HTTP-eseményindítóval rendelkező első lépéseként.
+## <a name="add-an-http-action"></a>HTTP-művelet hozzáadása
 
-1. A Keresés mezőbe írja be a "http" szűrőként. Műveletek listája alatt válassza ki a **HTTP** művelet.
+Ez a beépített művelet HTTP-hívást kezdeményez egy végpont megadott URL-címére, és választ ad vissza.
 
-   ![Válassza ki a HTTP-művelet](./media/connectors-native-http/select-http-action.png)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Nyissa meg a logikai alkalmazást a Logic app Designerben.
 
-   Lépések közötti művelet hozzáadása, helyezze az egérmutatót a nyíl lépések között. 
-   Válassza a plusz jelre (**+**), amely akkor jelenik meg, és válassza ki **művelet hozzáadása**.
+   Ez a példa a HTTP-triggert használja első lépésként.
 
-1. Adja meg a [HTTP műveleti paraméterek és értékek](../logic-apps/logic-apps-workflow-actions-triggers.md##http-action) fel szeretne venni a céloldali végpont hívásában. 
+1. Válassza ki azt a lépést, ahol a HTTP-műveletet hozzá szeretné adni, majd kattintson az **új lépés**gombra.
 
-   ![Adja meg a HTTP műveleti paraméterek](./media/connectors-native-http/http-action-parameters.png)
+   A lépések közötti művelet hozzáadásához vigye a mutatót a lépések közötti nyíl fölé. Válassza ki a megjelenő pluszjelet ( **+** ), majd válassza a **művelet hozzáadása**lehetőséget.
 
-1. Ha elkészült, győződjön meg arról, hogy a logikai alkalmazás mentése. A tervező eszköztárán válassza a **Mentés** parancsot. 
+1. A tervezőben a keresőmezőbe írja be szűrőként a "http" kifejezést. A **műveletek** listából válassza ki a **http** -műveletet.
 
-## <a name="authentication"></a>Authentication
+   ![HTTP-művelet kiválasztása](./media/connectors-native-http/select-http-action.png)
 
-Hitelesítés beállításához válassza **speciális beállítások megjelenítése** művelettel vagy eseményindítóval belül. Az elérhető hitelesítési típusok HTTP-eseményindítók és műveletek kapcsolatos további információkért lásd: [eseményindító és művelet típusok hivatkozási](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication).
+   Ez a példa átnevezi a műveletet "HTTP-művelet" névre, hogy a lépésnek legyen egy leíró neve.
 
-## <a name="get-support"></a>Támogatás kérése
+1. Adja meg azoknak a [http-műveleti paramétereknek](../logic-apps/logic-apps-workflow-actions-triggers.md##http-action) az értékeit, amelyeket fel szeretne venni a célként megadott végpontba.
 
-* A kérdéseivel látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* A funkciókkal kapcsolatos ötletek elküldéséhez vagy megszavazásához látogasson el a [Logic Apps felhasználói visszajelzéseinek oldalára](https://aka.ms/logicapps-wish).
+   ![HTTP-műveleti paraméterek megadása](./media/connectors-native-http/http-action-parameters.png)
+
+   A HTTP-n elérhető hitelesítési típusokkal kapcsolatos további információkért lásd: [http-eseményindítók és-műveletek hitelesítése](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication).
+
+1. Más elérhető paraméterek hozzáadásához nyissa meg az **új paraméter hozzáadása** listát, és válassza ki a kívánt paramétereket.
+
+1. Ha elkészült, ne felejtse el menteni a logikai alkalmazást. A tervező eszköztárán válassza a **Mentés**lehetőséget.
+
+## <a name="content-with-multipartform-data-type"></a>Tartalom multipart/form-adattípus
+
+A http-kérelmekben `multipart/form-data` szereplő tartalom kezeléséhez hozzáadhat egy JSON-objektumot, amely tartalmazza a `$content-type` http- `$multipart` kérelem törzsének és attribútumainak a formátum használatával történő kezelését.
+
+```json
+"body": {
+   "$content-type": "multipart/form-data",
+   "$multipart": [
+      {
+         "body": "<output-from-trigger-or-previous-action>",
+         "headers": {
+            "Content-Disposition": "form-data; name=file; filename=<file-name>"
+         }
+      }
+   ]
+}
+```
+
+Tegyük fel például, hogy rendelkezik egy olyan logikai alkalmazással, amely egy, az adott hely API-ját támogató http post-kérelmet küld egy webhelyre `multipart/form-data` , amely támogatja a típust. A művelet a következő módon jelenhet meg:
+
+![Többrészes űrlapadatok](./media/connectors-native-http/http-action-multipart.png)
+
+Az alábbi példa a HTTP-művelet JSON-definícióját mutatja be az alapul szolgáló munkafolyamat-definícióban:
+
+```json
+{
+   "HTTP_action": {
+      "body": {
+         "$content-type": "multipart/form-data",
+         "$multipart": [
+            {
+               "body": "@trigger()",
+               "headers": {
+                  "Content-Disposition": "form-data; name=file; filename=myExcelFile.xlsx"
+               }
+            }
+         ]
+      },
+      "method": "POST",
+      "uri": "https://finance.contoso.com"
+   },
+   "runAfter": {},
+   "type": "Http"
+}
+```
+
+## <a name="connector-reference"></a>Összekötő-referencia
+
+Az trigger-és műveleti paraméterekkel kapcsolatos további információkért tekintse meg a következő részeket:
+
+* [HTTP-trigger paraméterei](../logic-apps/logic-apps-workflow-actions-triggers.md##http-trigger)
+* [HTTP-műveleti paraméterek](../logic-apps/logic-apps-workflow-actions-triggers.md##http-action)
+
+### <a name="output-details"></a>Kimenet részletei
+
+Itt talál további információt a HTTP-triggerből vagy-műveletből származó kimenetekről, ami visszaadja ezt az információt:
+
+| Tulajdonság neve | Type | Leírás |
+|---------------|------|-------------|
+| fejlécek | object | A kérelemben szereplő fejlécek |
+| törzs | object | JSON-objektum | A kérelem szövegtörzsét tartalmazó objektum |
+| Állapotkód | int | A kérelemben szereplő állapotkód |
+|||
+
+| Állapotkód | Leírás |
+|-------------|-------------|
+| 200 | OK |
+| 202 | Elfogadva |
+| 400 | Hibás kérés |
+| 401 | Nem engedélyezett |
+| 403 | Tiltott |
+| 404 | Nem található |
+| 500 | Belső kiszolgálóhiba. Ismeretlen hiba történt. |
+|||
 
 ## <a name="next-steps"></a>További lépések
 
-* További információk egyéb [Logic Apps-összekötők](../connectors/apis-list.md)
+* További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

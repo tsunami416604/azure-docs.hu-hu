@@ -1,60 +1,57 @@
 ---
 title: Az Azure Application Gateway HTTP-fejlécek újraírása
-description: Ez a cikk információt nyújt az Azure Application Gateway a HTTP-fejlécek újraírási Azure PowerShell-lel
+description: Ez a cikk információt nyújt az Azure PowerShell-lel az Azure Application Gateway HTTP-fejlécek újraírási
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
 ms.date: 04/12/2019
 ms.author: absha
-ms.openlocfilehash: 405bc9aed4605e9728e112595f33c879bf55ec7f
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 47fe6a5247622e3ad3b3720955068580e0329913
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60005621"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64947191"
 ---
 # <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-powershell"></a>Újraírási HTTP-kérelmek és válaszfejlécek Azure Application gatewayjel – Azure PowerShell-lel
 
-Ez a cikk bemutatja, hogyan konfigurálhatja az Azure PowerShell használatával egy [Application Gateway v2 szintű Termékváltozatot](<https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant>) újraírási a HTTP-fejléceket, a kérelmek és válaszok.
-
-> [!IMPORTANT]
-> Az Application Gateway automatikus skálázású és zónaredundáns termékváltozata jelenleg nyilvános előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Ez a cikk bemutatja, hogyan konfigurálhatja az Azure PowerShell használatával egy [Application Gateway v2 szintű Termékváltozatot](<https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant>) példány a HTTP-fejléceket, a kérelmek és válaszok újraírási.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="prerequisites"></a>Előfeltételek
+## <a name="before-you-begin"></a>Előkészületek
 
-- Ehhez az oktatóanyaghoz az Azure PowerShellt helyileg kell futtatnia. Rendelkeznie kell Az 1.0.0-s verziójának modul, vagy újabb verziója van telepítve. Futtatás `Import-Module Az` , majd`Get-Module Az` a verzió megkereséséhez. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](https://docs.microsoft.com/powershell/azure/install-az-ps) ismertető cikket. A PowerShell-verzió ellenőrzése után futtassa az `Login-AzAccount` parancsot az Azure-hoz való kapcsolódáshoz.
-- Szüksége lesz egy Application Gateway v2 a v1-Termékváltozat nem támogatott Termékváltozat, mivel a fejléc újraírási képessége. Ha nem rendelkezik a v2 szintű Termékváltozatot, hozzon létre egy [Application Gateway v2 szintű Termékváltozatot](https://docs.microsoft.com/azure/application-gateway/tutorial-autoscale-ps) megkezdése előtt.
+- Azure PowerShell, a jelen cikkben ismertetett lépések végrehajtásához helyileg futtatni szeretné. Emellett Az 1.0.0-s verziójának modul rendelkeznie kell, vagy újabb verziója szükséges. Futtatás `Import-Module Az` , majd `Get-Module Az` , amelyen telepítve van a verzió meghatározásához. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](https://docs.microsoft.com/powershell/azure/install-az-ps) ismertető cikket. A PowerShell-verzió ellenőrzése után futtassa az `Login-AzAccount` parancsot az Azure-hoz való kapcsolódáshoz.
+- Szüksége lesz egy Application Gateway v2 SKU példány. A fejlécek újraírását a v1-termékváltozat nem támogatott. Ha nem rendelkezik a v2 szintű Termékváltozatot, hozzon létre egy [Application Gateway v2 szintű Termékváltozatot](https://docs.microsoft.com/azure/application-gateway/tutorial-autoscale-ps) példány megkezdése előtt.
 
-## <a name="what-is-required-to-rewrite-a-header"></a>Mi szükséges egy fejléc újraírása
+## <a name="create-required-objects"></a>Szükséges objektumok létrehozása
 
-HTTP-fejléc újraírási konfigurálásához meg kell:
+HTTP-fejléc újraírási konfigurálásához hajtsa végre az alábbi lépéseket kell.
 
-1. A szükséges a http-fejlécek újraírási új objektumokat hozhat létre:
+1. A HTTP-fejléc újraírási szükséges objektumok létrehozása:
 
-   - **RequestHeaderConfiguration**: Ez az objektum az eredeti fejlécek kell írni az új érték pedig a kérés üzenetfejlécének mezői újraírási kívánt meghatározására szolgál.
+   - **RequestHeaderConfiguration**: A kérés üzenetfejlécének mezői újraírási kívánt és az új értéket a fejlécek meghatározására szolgál.
 
-   - **ResponseHeaderConfiguration**: Ez az objektum az eredeti fejlécek kell írni az új érték pedig a válasz üzenetfejlécének mezői újraírási kívánt meghatározására szolgál.
+   - **ResponseHeaderConfiguration**: A válasz üzenetfejlécének mezői újraírási kívánt és az új értéket a fejlécek meghatározására szolgál.
 
-   - **ActionSet**: Ez az objektum tartalmaz a kérelmek és válaszfejlécek, a fentiekben ismertetett konfigurációit.
+   - **ActionSet**: Tartalmazza a korábban megadott kérelmek és válaszfejlécek konfigurációit.
 
-   - **A feltétel**: Egy opcionális konfigurációs. újraírási feltétel kerül, ha a program a HTTP (S)-kérelmek és válaszok tartalmát értékeli. A újraírási feltétel társított újraírási művelet végrehajtásához a döntés-e a HTTP (S) kérelem vagy válasz párosítva a újraírási feltétel alapul. 
+   - **A feltétel**: Választható konfiguráció. Újraírási feltételek kiértékelése a HTTP (S)-kérelmek és válaszok tartalmát. Az újraírási művelet fordul elő, ha a HTTP (S) kérelem vagy válasz megegyezik a újraírási feltétel.
 
-     Ha egynél több feltételek társított egy műveletet, majd a művelet lesz végrehajtva csak akkor, ha a feltételek mindegyike teljesül, azaz, egy logikai és művelet történik.
+     Ha egynél több feltétel társítása egy műveletet, a művelet csak akkor, ha a feltételek mindegyike teljesül következik be. Más szóval a művelet egy logikai és műveletet.
 
-   - **RewriteRule**: több újraírási művelet – átírás feltétel kombinációk tartalmazza.
+   - **RewriteRule**: Több újraírási műveletet tartalmaz / újraírási feltétel kombinációi.
 
-   - **RuleSequence**: Ez a választható konfiguráció. Ez segít meghatározni a sorrendet, amelyben a különböző újraírási szabályok végrehajtásra kerülhetnek. Ez akkor hasznos, ha több újraírási szabályok újraírási készlet. A szabály feladatütemezési alacsonyabb értékkel rendelkező átírási szabály lekérdezi először hajtott végre. Ha megadja a ugyanaz a szabály során, az két újraírási szabályok a végrehajtás sorrendje nem determinisztikus lesz.
+   - **RuleSequence**: Választható konfiguráció, amely segít meghatározni a sorrendet, amely újraírási szabályokkal hajtható végre. Ez a konfiguráció akkor hasznos, ha több újraírási szabályok újraírási készlet rendelkezik. Egy szabály feladatütemezési alacsonyabb értékkel rendelkező átírási szabály első fut. Ha két újraírási szabályok szabály feladatütemezési ugyanazt az értéket rendel, akkor a végrehajtás sorrendje nem determinisztikus.
 
-     Ha a RuleSequence nem ad meg explicit módon, 100, az alapértelmezett érték lesz beállítva.
+     Ha a RuleSequence nem ad meg explicit módon, 100, az alapértelmezett érték van beállítva.
 
-   - **RewriteRuleSet**: Ez az objektum több újraírási szabályok, amely hozzá lesz rendelve egy kérelem-útválasztási szabályt tartalmaz.
+   - **RewriteRuleSet**: Több újraírási szabályt, amely hozzá lesz rendelve egy kérelem-útválasztási szabályt tartalmaz.
 
-2. Csatlakoztassa a rewriteRuleSet útválasztási szabályt kell adnia. Ennek az oka az átfogalmazás konfigurációs van csatolva a forrás figyelőt az útválasztási szabályt. Egy alapszintű útválasztási szabályt használatakor a fejléc újraírási konfigurációs társítva a forrás-figyelő és egy globális fejléce módosítsa úgy. -Alapú útválasztási szabály használata esetén a fejléc újraírási konfiguráció az URL-Címtérkép van definiálva. Ezért csak vonatkozik egy helyet a megadott elérési út területéhez.
+2. A RewriteRuleSet csatolása egy útválasztási szabályt. Az újraírási konfigurációs van csatolva, a forrás figyelőt az útválasztási szabályt. Ha egy alapszintű útválasztási szabályt használ, a fejléc újraírási konfigurációs társítva a forrás-figyelő és egy globális fejléce módosítsa úgy. -Alapú útválasztási szabály használatakor a fejléc újraírási konfiguráció az URL-Címtérkép van definiálva. Ebben az esetben csak vonatkozik egy helyet a megadott elérési út területéhez.
 
-Több http-fejléc újraírási csoportok hozhat létre, és minden egyes újraírási set több kérésfigyelőt is alkalmazható. Azonban csak az egyik értéke egy adott hallgató újraírási is alkalmazhat.
+Hozzon létre több HTTP-fejléc újraírási csoportokat, és minden egyes újraírási több kérésfigyelőt beállítása a alkalmazni. Azonban csak az egyik értéke egy adott hallgató újraírási alkalmazhat.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -63,9 +60,9 @@ Connect-AzAccount
 Select-AzSubscription -Subscription "<sub name>"
 ```
 
-## <a name="specify-your-http-header-rewrite-rule-configuration"></a>**Adja meg a http-fejléc újraírási szabálykonfiguráció**
+## <a name="specify-the-http-header-rewrite-rule-configuration"></a>Adja meg a HTTP-fejléc újraírási szabálykonfiguráció
 
-Ebben a példában az átirányítási URL-cím lesz módosítjuk, amikor a location fejlécet tartalmaz egy hivatkozást az "azurewebsites.net" újraírásával a http-válasz location fejlécébe. Ehhez hozzáadjuk kiértékelését, hogy a válasz location fejlécébe azurewebsites.net tartalmazza a minta használatával feltétel `(https?):\/\/.*azurewebsites\.net(.*)$`. Ezzel `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` a fejléc értékeként. Ez a művelet felülírja *azurewebsites.net* a *contoso.com* location fejlécébe.
+Ebben a példában egy átirányítási URL-cím, amikor a location fejlécet azurewebsites.net hivatkozást tartalmaz a HTTP-válasz location fejlécébe újraírásával módosítjuk. Ehhez hozzáadjuk a válasz location fejlécébe azurewebsites.net tartalmaz-e kiértékelendő feltétel. A mintát fogjuk használni `(https?):\/\/.*azurewebsites\.net(.*)$`. Fogjuk használni, és `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` a fejléc értékeként. Ezt az értéket lecseréli *azurewebsites.net* a *contoso.com* location fejlécébe.
 
 ```azurepowershell
 $responseHeaderConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "Location" -HeaderValue "{http_resp_Location_1}://contoso.com{http_resp_Location_2}"
@@ -75,19 +72,19 @@ $rewriteRule = New-AzApplicationGatewayRewriteRule -Name LocationHeader -ActionS
 $rewriteRuleSet = New-AzApplicationGatewayRewriteRuleSet -Name LocationHeaderRewrite -RewriteRule $rewriteRule
 ```
 
-## <a name="retrieve-configuration-of-your-existing-application-gateway"></a>A meglévő application Gateway konfigurációs beolvasása
+## <a name="retrieve-the-configuration-of-your-application-gateway"></a>Az application gateway konfigurációjának beolvasása
 
 ```azurepowershell
 $appgw = Get-AzApplicationGateway -Name "AutoscalingAppGw" -ResourceGroupName "<rg name>"
 ```
 
-## <a name="retrieve-configuration-of-your-existing-request-routing-rule"></a>A meglévő kérelem-útválasztási szabály konfigurációjának beolvasása
+## <a name="retrieve-the-configuration-of-your-request-routing-rule"></a>A kérelem-útválasztási szabály konfigurációjának beolvasása
 
 ```azurepowershell
 $reqRoutingRule = Get-AzApplicationGatewayRequestRoutingRule -Name rule1 -ApplicationGateway $appgw
 ```
 
-## <a name="update-the-application-gateway-with-the-configuration-for-rewriting-http-headers"></a>Frissítse az application gateway http-fejlécek újraírását konfigurációja
+## <a name="update-the-application-gateway-with-the-configuration-for-rewriting-http-headers"></a>Frissítse az application gateway HTTP-fejlécek újraírását konfigurációja
 
 ```azurepowershell
 Add-AzApplicationGatewayRewriteRuleSet -ApplicationGateway $appgw -Name LocationHeaderRewrite -RewriteRule $rewriteRuleSet.RewriteRules
@@ -107,4 +104,4 @@ set-AzApplicationGateway -ApplicationGateway $appgw
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a konfiguráció szükséges elvégeznie néhány gyakoribb felhasználási kapcsolatban lásd: [közös fejlécének újraírási forgatókönyvek](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers).
+Néhány gyakori alkalmazási helyzetek beállításával kapcsolatos további információkért lásd: [közös fejlécének újraírási forgatókönyvek](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers).

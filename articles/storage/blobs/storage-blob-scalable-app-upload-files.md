@@ -1,21 +1,18 @@
 ---
 title: Nagy mennyiségű véletlenszerű adat párhuzamos feltöltése az Azure Storage-ba | Microsoft Docs
 description: Ebből a cikkből megtudhatja, hogy az Azure SDK hogyan használható nagy mennyiségű véletlenszerű adat párhuzamos feltöltésére egy Azure Storage-fiókba
-services: storage
 author: roygara
 ms.service: storage
-ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
-ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: a1dba92a9e156c82f49b9f6f85faf227fc652029
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: e5c1a78bf2f482e99d8ff13590a8bb81f9601991
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240080"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698973"
 ---
 # <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>Nagy mennyiségű véletlenszerű adat párhuzamos feltöltése az Azure Storage-ba
 
@@ -31,11 +28,11 @@ A sorozat második részében az alábbiakkal fog megismerkedni:
 
 Az Azure Blob Storage skálázható szolgáltatást biztosít adatainak tárolásához. Ahhoz, hogy az alkalmazás a lehető legjobb teljesítménnyel működhessen, ajánlatos megismerkedni a Blob Storage működésével. Fontos ismerni az Azure blobok korlátait, amelyekről további információt a [Blob Storage skálázhatósági céljait](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-blob-storage-scale-targets) ismertető részben találhat.
 
-A [partíció elnevezése](../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#subheading47) is egy fontos szempont a nagy teljesítményű, blobokat használó alkalmazások tervezésekor. Az Azure Storage egy tartományalapú particionálási sémát használ a skálázáshoz és a terheléselosztáshoz. Ez a konfiguráció azt jelenti, hogy a hasonló elnevezési konvenciókkal vagy előtagokkal rendelkező fájlok ugyanarra a partícióra kerülnek. Ez a logika magában foglalja a tároló nevét, amelybe a fájlokat feltöltik. Ebben az oktatóanyagban olyan fájlokat használ, amelyek nevek helyett GUID-azonosítókkal, valamint véletlenszerűen létrehozott tartalmakkal rendelkeznek. Ezeket azután öt különböző, véletlenszerű nevű tárolóba töltjük fel.
+[](../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#subheading47) A partíciók elnevezése egy másik, potenciálisan fontos tényező, ha a Blobok használatával egy nagy teljesítményt nyújtó alkalmazást terveznek. A négy MiB-nél nagyobb vagy azzal egyenlő blokkos méretek esetén a [nagy átviteli sebességű blokk blobokat](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/) használja a rendszer, és a partíciók elnevezése nem befolyásolja a teljesítményt. A négy MiB-nél kevesebb blokk méretnél az Azure Storage egy tartományon alapuló particionálási sémát használ a méretezéshez és a terheléselosztáshoz. Ez a konfiguráció azt jelenti, hogy a hasonló elnevezési konvenciókkal vagy előtagokkal rendelkező fájlok ugyanarra a partícióra kerülnek. Ez a logika magában foglalja a tároló nevét, amelybe a fájlokat feltöltik. Ebben az oktatóanyagban olyan fájlokat használ, amelyek nevek helyett GUID-azonosítókkal, valamint véletlenszerűen létrehozott tartalmakkal rendelkeznek. Ezeket azután öt különböző, véletlenszerű nevű tárolóba töltjük fel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag teljesítéséhez el kell végeznie az előző tárolási oktatóanyagot: [Hozzon létre egy virtuális gép és a egy méretezhető alkalmazás számára a tárfiók][previous-tutorial].
+Az oktatóanyag elvégzéséhez el kell végeznie az előző tárolási oktatóanyagot: [Hozzon létre egy méretezhető alkalmazáshoz egy virtuális gépet és egy Storage-fiókot][previous-tutorial].
 
 ## <a name="remote-into-your-virtual-machine"></a>A virtuális gép távoli vezérlése
 
@@ -67,14 +64,14 @@ dotnet run
 
 Az alkalmazás öt, véletlenszerűen elnevezett tárolót hoz létre, és megkezdi az átmeneti könyvtárban lévő fájlok feltöltését a tárfiókba. Az alkalmazás a szálak minimális számát 100-ra állítja, a [DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit(v=vs.110).aspx) változó értékét pedig 100-ra annak érdekében, hogy az alkalmazás futtatása közben nagy számú párhuzamosan futó kapcsolat legyen futtatható.
 
-A szálkezelési és a kapcsolati korlátozások beállításán felül az [UploadFromStreamAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob.uploadfromstreamasync?view=azure-dotnet) metódus [BlobRequestOptions](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions?view=azure-dotnet) beállítása úgy van konfigurálva, hogy párhuzamosságot használjon és letiltsa az MD5-kivonat érvényesítését. A fájlok feltöltése 100 MB méretű blokkokban történik. Ez a konfiguráció jobb teljesítményt biztosít, a használata azonban gyengén teljesítő hálózaton nem ajánlott, mert hiba esetén a teljes 100 MB-os blokk feltöltését újra kell kezdeni.
+A szálkezelési és a kapcsolati korlátozások beállításán felül az [UploadFromStreamAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.uploadfromstreamasync) metódus [BlobRequestOptions](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions) beállítása úgy van konfigurálva, hogy párhuzamosságot használjon és letiltsa az MD5-kivonat érvényesítését. A fájlok feltöltése 100 MB méretű blokkokban történik. Ez a konfiguráció jobb teljesítményt biztosít, a használata azonban gyengén teljesítő hálózaton nem ajánlott, mert hiba esetén a teljes 100 MB-os blokk feltöltését újra kell kezdeni.
 
 |Tulajdonság|Érték|Leírás|
 |---|---|---|
-|[ParallelOperationThreadCount](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.paralleloperationthreadcount?view=azure-dotnet)| 8| A beállítás feltöltéskor blokkokra töri a blobot. A legjobb teljesítmény érdekében ennek az értéknek a magok számának 8-szorosának kell lennie. |
-|[DisableContentMD5Validation](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.disablecontentmd5validation?view=azure-dotnet)| true| Ez a tulajdonság letiltja a feltöltött tartalom MD5-kivonat ellenőrzését. A gyorsabb átvitel érdekében tiltsa le az MD5-ellenőrzést. Így azonban nem biztosított a folyamatban lévő átvitelben érintett fájlok érvényessége vagy integritása.   |
-|[StoreBlobContentMD5](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.storeblobcontentmd5?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_StoreBlobContentMD5)| false| Ez a tulajdonság határozza meg, hogy az MD5 kivonatoló kiszámítása és fájlban való tárolása megtörtént-e.   |
-| [RetryPolicy](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.retrypolicy?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_RetryPolicy)| 2-second backoff with 10 max retry |A kérések újrapróbálkozási szabályzatát határozza meg. Kapcsolódási hiba esetén a rendszer újra próbálkozik, ebben a példában az [ExponentialRetry](/dotnet/api/microsoft.windowsazure.storage.retrypolicies.exponentialretry?view=azure-dotnet) szabályzat 2 másodperces leállításra és legfeljebb 10 újrapróbálkozásra van konfigurálva. Ez a beállítás akkor fontos, ha az alkalmazás lassan eléri a [blob storage skálázhatósági célértékét](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-blob-storage-scale-targets).  |
+|[ParallelOperationThreadCount](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.paralleloperationthreadcount)| 8| A beállítás feltöltéskor blokkokra töri a blobot. A legnagyobb teljesítmény érdekében ennek az értéknek a magok számának nyolcszor kell lennie. |
+|[DisableContentMD5Validation](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.disablecontentmd5validation)| true| Ez a tulajdonság letiltja a feltöltött tartalom MD5-kivonat ellenőrzését. A gyorsabb átvitel érdekében tiltsa le az MD5-ellenőrzést. Így azonban nem biztosított a folyamatban lévő átvitelben érintett fájlok érvényessége vagy integritása.   |
+|[StoreBlobContentMD5](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.storeblobcontentmd5)| false| Ez a tulajdonság határozza meg, hogy az MD5 kivonatoló kiszámítása és fájlban való tárolása megtörtént-e.   |
+| [RetryPolicy](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.retrypolicy)| 2-second backoff with 10 max retry |A kérések újrapróbálkozási szabályzatát határozza meg. Kapcsolódási hiba esetén a rendszer újra próbálkozik, ebben a példában az [ExponentialRetry](/dotnet/api/microsoft.azure.batch.common.exponentialretry) szabályzat 2 másodperces leállításra és legfeljebb 10 újrapróbálkozásra van konfigurálva. Ez a beállítás akkor fontos, ha az alkalmazás lassan eléri a [blob storage skálázhatósági célértékét](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-blob-storage-scale-targets).  |
 
 A következő példában az `UploadFilesAsync` feladat látható:
 

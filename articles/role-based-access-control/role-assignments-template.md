@@ -1,6 +1,6 @@
 ---
-title: Rbac-RÓL és az Azure Resource Manager-sablonok használatával Azure-erőforrásokhoz való hozzáférés kezelése |} A Microsoft Docs
-description: Ismerje meg, hogyan kezelheti a felhasználók, csoportok és alkalmazások szerepköralapú hozzáférés-vezérlés (RBAC) és az Azure Resource Manager-sablonok használatával Azure-erőforrásokhoz való hozzáférését.
+title: Azure-erőforrásokhoz való hozzáférés kezelése RBAC és Azure Resource Manager sablonok használatával | Microsoft Docs
+description: Ismerje meg, hogyan kezelheti az Azure-erőforrásokhoz való hozzáférést a felhasználók, csoportok és alkalmazások számára szerepköralapú hozzáférés-vezérlés (RBAC) és Azure Resource Manager-sablonok használatával.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -10,247 +10,332 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/02/2019
+ms.date: 09/20/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 537ee35e96a41cd02605319e244d39c6567c3bf1
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: b7f701cd3ce07099d80bca40e506108bcc9a9da9
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56337203"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178112"
 ---
-# <a name="manage-access-to-azure-resources-using-rbac-and-azure-resource-manager-templates"></a>Rbac-RÓL és az Azure Resource Manager-sablonok használatával Azure-erőforrásokhoz való hozzáférés kezelése
+# <a name="manage-access-to-azure-resources-using-rbac-and-azure-resource-manager-templates"></a>Azure-erőforrásokhoz való hozzáférés kezelése RBAC és Azure Resource Manager sablonok használatával
 
-[Szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) van az Azure-erőforrásokhoz való hozzáférés kezelése ugyanúgy. Mellett az Azure PowerShell vagy az Azure parancssori felület használata esetén az RBAC használatával Azure-erőforrásokhoz való hozzáférést kezelheti és [Azure Resource Manager-sablonok](../azure-resource-manager/resource-group-authoring-templates.md). Sablonok akkor lehet hasznos, ha erőforrások telepítése konzisztens és ismétlődő van szüksége. Ez a cikk bemutatja, hogyan kezelheti a hozzáférés RBAC és sablonok használatával.
+A [szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) az Azure-erőforrásokhoz való hozzáférés kezelésének módja. A Azure PowerShell vagy az Azure CLI használata mellett az Azure-erőforrásokhoz való hozzáférést [Azure Resource Manager sablonok](../azure-resource-manager/resource-group-authoring-templates.md)használatával is kezelheti. A sablonok akkor lehetnek hasznosak, ha az erőforrásokat következetesen és ismételten kell telepíteni. Ez a cikk bemutatja, hogyan kezelheti a hozzáférést a RBAC és a sablonok használatával.
 
-## <a name="example-template-to-create-a-role-assignment"></a>Példasablon szerepkör-hozzárendelés létrehozása
+## <a name="create-a-role-assignment-at-a-resource-group-scope-without-parameters"></a>Szerepkör-hozzárendelés létrehozása erőforráscsoport-hatókörben (paraméterek nélkül)
 
-Az RBAC-ben a hozzáférés biztosítása egy szerepkör-hozzárendelés létrehozásával történik. Az alábbi sablont mutat be:
-- Egy felhasználó, csoport vagy alkalmazás erőforrás-csoportot a csoporthatókörben, a szerepkör hozzárendelése
-- A tulajdonos, közreműködő és olvasó szerepkörök megadása paraméterként
+Az RBAC-ben a hozzáférés biztosítása egy szerepkör-hozzárendelés létrehozásával történik. A következő sablon alapszintű módszert mutat a szerepkör-hozzárendelés létrehozásához. Néhány érték a sablonban van megadva. A következő sablon a következőket mutatja be:
 
-A sablon használatához meg kell adnia az alábbi ráfordítások:
-- Az erőforráscsoport nevét
-- Egy felhasználó, csoport vagy a szerepkör hozzárendelése alkalmazás egyedi azonosítója
-- A szerepkör hozzárendelése
-- A szerepkör-hozzárendelés esetében használt egyedi azonosító
+-  Az [olvasó](built-in-roles.md#reader) szerepkör társítása egy felhasználóhoz, csoporthoz vagy alkalmazáshoz erőforráscsoport-hatókörben
+
+A sablon használatához a következőket kell tennie:
+
+- Új JSON-fájl létrehozása és a sablon másolása
+- A `<your-principal-id>` helyére írja be annak a felhasználónak, csoportnak vagy alkalmazásnak az egyedi azonosítóját, amelyhez hozzá szeretné rendelni a szerepkört. Az azonosító formátuma:`11111111-1111-1111-1111-111111111111`
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "principalId": {
-      "type": "string",
-      "metadata": {
-        "description": "The principal to assign the role to"
-      }
-    },
-    "builtInRoleType": {
-      "type": "string",
-      "allowedValues": [
-        "Owner",
-        "Contributor",
-        "Reader"
-      ],
-      "metadata": {
-        "description": "Built-in role to assign"
-      }
-    },
-    "roleNameGuid": {
-      "type": "string",
-      "metadata": {
-        "description": "A new GUID used to identify the role assignment"
-      }
-    }
-  },
-  "variables": {
-    "Owner": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', '8e3af657-a8ff-443c-a75c-2fe8c4bcb635')]",
-    "Contributor": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'b24988ac-6180-42a0-ab88-20f7382dd24c')]",
-    "Reader": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'acdd72a7-3385-48ef-bd42-f606fba81ae7')]",
-    "scope": "[resourceGroup().id]"
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Authorization/roleAssignments",
-      "apiVersion": "2017-05-01",
-      "name": "[parameters('roleNameGuid')]",
-      "properties": {
-        "roleDefinitionId": "[variables(parameters('builtInRoleType'))]",
-        "principalId": "[parameters('principalId')]",
-        "scope": "[variables('scope')]"
-      }
-    }
-  ]
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [
+        {
+            "type": "Microsoft.Authorization/roleAssignments",
+            "apiVersion": "2018-09-01-preview",
+            "name": "[guid(resourceGroup().id)]",
+            "properties": {
+                "roleDefinitionId": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'acdd72a7-3385-48ef-bd42-f606fba81ae7')]",
+                "principalId": "<your-principal-id>"
+            }
+        }
+    ]
 }
 ```
 
-Az alábbiakban látható egy példa egy olvasó szerepkör-hozzárendelést egy felhasználóhoz a sablon üzembe helyezése után.
+Az alábbi példa a [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) és az [az Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create) parancsokat mutatja be a telepítés elindításához egy ExampleGroup nevű erőforráscsoporthoz.
 
-![Szerepkör-hozzárendelés egy sablon használatával](./media/role-assignments-template/role-assignment-template.png)
+```azurepowershell
+New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-test.json
+```
 
-## <a name="deploy-template-using-azure-powershell"></a>Azure PowerShell-lel sablon üzembe helyezése
+```azurecli
+az group deployment create --resource-group ExampleGroup --template-file rbac-test.json
+```
 
-[!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
+Az alábbi példa az olvasói szerepkör hozzárendelését mutatja be egy erőforráscsoport felhasználói számára a sablon telepítése után.
 
-Az Azure PowerShell-lel előző sablon üzembe helyezéséhez kövesse az alábbi lépéseket.
+![Szerepkör-hozzárendelés erőforrás-csoport hatókörében](./media/role-assignments-template/role-assignment-template.png)
 
-1. Hozzon létre egy új rbac-rg.json fájlt, és másolja ki az előző sablon.
+## <a name="create-a-role-assignment-at-a-resource-group-or-subscription-scope"></a>Szerepkör-hozzárendelés létrehozása erőforráscsoport vagy előfizetés hatókörében
 
-1. Jelentkezzen be az [Azure PowerShellbe](/powershell/azure/authenticate-azureps).
+Az előző sablon nem túl rugalmas. A következő sablon paramétereket használ, és különböző hatókörökben használható. A következő sablon a következőket mutatja be:
 
-1. Get-felhasználó, csoport vagy alkalmazás egyedi azonosítója. Használhatja például a [Get-AzADUser](/powershell/module/az.resources/get-azaduser) paranccsal listát készíthet az Azure AD-felhasználók.
+- Szerepkör társítása felhasználóhoz, csoporthoz vagy alkalmazáshoz erőforráscsoport vagy előfizetés hatókörében
+- Tulajdonos, közreműködő és olvasó szerepkörök meghatározása paraméterként
 
-    ```azurepowershell
-    Get-AzADUser
-    ```
+A sablon használatához a következő bemeneteket kell megadnia:
 
-1. Egy GUID eszköz segítségével hozza létre, amely jelzi a szerepkör-hozzárendelés egyedi azonosítója. Az azonosító formátuma: `11111111-1111-1111-1111-111111111111`
+- Annak a felhasználónak, csoportnak vagy alkalmazásnak az egyedi azonosítója, amelyhez hozzá szeretné rendelni a szerepkört
+- A hozzárendelni kívánt szerepkör
+- A szerepkör-hozzárendeléshez használt egyedi azonosító, vagy használhatja az alapértelmezett azonosítót is.
 
-1. Hozzon létre egy példa erőforráscsoportot.
-
-    ```azurepowershell
-    New-AzResourceGroup -Name ExampleGroup -Location "Central US"
-    ```
-
-1. Használja a [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) parancsot az üzembe helyezés elindításához.
-
-    ```azurepowershell
-    New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-rg.json
-    ```
-
-    A rendszer felkéri a szükséges paramétereket adja meg. Az alábbiakban látható egy példa a kimenetre.
-
-    ```Output
-    PS /home/user> New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-rg.json
-    
-    cmdlet New-AzResourceGroupDeployment at command pipeline position 1
-    Supply values for the following parameters:
-    (Type !? for Help.)
-    principalId: 22222222-2222-2222-2222-222222222222
-    builtInRoleType: Reader
-    roleNameGuid: 11111111-1111-1111-1111-111111111111
-    
-    DeploymentName          : rbac-rg
-    ResourceGroupName       : ExampleGroup
-    ProvisioningState       : Succeeded
-    Timestamp               : 7/17/2018 7:46:32 PM
-    Mode                    : Incremental
-    TemplateLink            :
-    Parameters              :
-                              Name             Type                       Value
-                              ===============  =========================  ==========
-                              principalId      String                     22222222-2222-2222-2222-222222222222
-                              builtInRoleType  String                     Reader
-                              roleNameGuid     String                     11111111-1111-1111-1111-111111111111
-    
-    Outputs                 :
-    DeploymentDebugLogLevel :
-    ```
-
-## <a name="deploy-template-using-the-azure-cli"></a>Helyezze üzembe a sablont az Azure CLI használatával
-
-Az Azure CLI használatával az előző sablon üzembe helyezéséhez kövesse az alábbi lépéseket.
-
-1. Hozzon létre egy új rbac-rg.json fájlt, és másolja ki az előző sablon.
-
-1. Jelentkezzen be a [az Azure CLI](/cli/azure/authenticate-azure-cli).
-
-1. Get-felhasználó, csoport vagy alkalmazás egyedi azonosítója. Használhatja például a [az ad felhasználó-lista](/cli/azure/ad/user#az-ad-user-list) paranccsal listát készíthet az Azure AD-felhasználók.
-
-    ```azurecli
-    az ad user list
-    ```
-
-1. Egy GUID eszköz segítségével hozza létre, amely jelzi a szerepkör-hozzárendelés egyedi azonosítója. Az azonosító formátuma: `11111111-1111-1111-1111-111111111111`
-
-1. Hozzon létre egy példa erőforráscsoportot.
-
-    ```azurecli
-    az group create --name ExampleGroup --location "Central US"
-    ```
-
-1. Használja a [az csoport központi telepítésének létrehozása](/cli/azure/group/deployment#az-group-deployment-create) parancsot az üzembe helyezés elindításához.
-
-    ```azurecli
-    az group deployment create --resource-group ExampleGroup --template-file rbac-rg.json
-    ```
-
-    A rendszer felkéri a szükséges paramétereket adja meg. Az alábbiakban látható egy példa a kimenetre.
-
-    ```Output
-    C:\Azure\Templates>az group deployment create --resource-group ExampleGroup --template-file rbac-rg.json
-    Please provide string value for 'principalId' (? for help): 22222222-2222-2222-2222-222222222222
-    Please provide string value for 'builtInRoleType' (? for help):
-     [1] Owner
-     [2] Contributor
-     [3] Reader
-    Please enter a choice [1]: 3
-    Please provide string value for 'roleNameGuid' (? for help): 11111111-1111-1111-1111-111111111111
-    {
-      "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ExampleGroup/providers/Microsoft.Resources/deployments/rbac-rg",
-      "name": "rbac-rg",
-      "properties": {
-        "additionalProperties": {
-          "duration": "PT9.5323924S",
-          "outputResources": [
-            {
-              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ExampleGroup/providers/Microsoft.Authorization/roleAssignments/11111111-1111-1111-1111-111111111111",
-              "resourceGroup": "ExampleGroup"
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "principalId": {
+            "type": "string",
+            "metadata": {
+                "description": "The principal to assign the role to"
             }
-          ],
-          "templateHash": "0000000000000000000"
         },
-        "correlationId": "33333333-3333-3333-3333-333333333333",
-        "debugSetting": null,
-        "dependencies": [],
-        "mode": "Incremental",
-        "outputs": null,
-        "parameters": {
-          "builtInRoleType": {
-            "type": "String",
-            "value": "Reader"
-          },
-          "principalId": {
-            "type": "String",
-            "value": "22222222-2222-2222-2222-222222222222"
-          },
-          "roleNameGuid": {
-            "type": "String",
-            "value": "11111111-1111-1111-1111-111111111111"
-          }
+        "builtInRoleType": {
+            "type": "string",
+            "allowedValues": [
+                "Owner",
+                "Contributor",
+                "Reader"
+            ],
+            "metadata": {
+                "description": "Built-in role to assign"
+            }
         },
-        "parametersLink": null,
-        "providers": [
-          {
-            "id": null,
-            "namespace": "Microsoft.Authorization",
-            "registrationState": null,
-            "resourceTypes": [
-              {
-                "aliases": null,
-                "apiVersions": null,
-                "locations": [
-                  null
-                ],
-                "properties": null,
-                "resourceType": "roleAssignments"
-              }
-            ]
-          }
-        ],
-        "provisioningState": "Succeeded",
-        "template": null,
-        "templateLink": null,
-        "timestamp": "2018-07-17T19:00:31.830904+00:00"
-      },
-      "resourceGroup": "ExampleGroup"
-    }
-    ```
-    
+        "roleNameGuid": {
+            "type": "string",
+            "defaultValue": "[newGuid()]",
+            "metadata": {
+                "description": "A new GUID used to identify the role assignment"
+            }
+        }
+    },
+    "variables": {
+        "Owner": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', '8e3af657-a8ff-443c-a75c-2fe8c4bcb635')]",
+        "Contributor": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'b24988ac-6180-42a0-ab88-20f7382dd24c')]",
+        "Reader": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'acdd72a7-3385-48ef-bd42-f606fba81ae7')]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Authorization/roleAssignments",
+            "apiVersion": "2018-09-01-preview",
+            "name": "[parameters('roleNameGuid')]",
+            "properties": {
+                "roleDefinitionId": "[variables(parameters('builtInRoleType'))]",
+                "principalId": "[parameters('principalId')]"
+            }
+        }
+    ]
+}
+```
+
+Ahhoz, hogy egy felhasználó egyedi azonosítója legyen hozzárendelve a szerepkörhöz, a [Get-AzADUser](/powershell/module/az.resources/get-azaduser) vagy [az ad User show](/cli/azure/ad/user#az-ad-user-show) parancsot használhatja.
+
+```azurepowershell
+$userid = (Get-AzADUser -DisplayName "{name}").id
+```
+
+```azurecli
+userid=$(az ad user show --upn-or-object-id "{email}" --query objectId --output tsv)
+```
+
+A szerepkör-hozzárendelés hatóköre a központi telepítés szintjétől függ. Az alábbi példa a [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) és az [az Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create) parancsokat mutatja be a telepítés elindításához egy erőforráscsoport-hatókörben.
+
+```azurepowershell
+New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-test.json -principalId $userid -builtInRoleType Reader
+```
+
+```azurecli
+az group deployment create --resource-group ExampleGroup --template-file rbac-test.json --parameters principalId=$userid builtInRoleType=Reader
+```
+
+Az alábbi példa a [New-AzDeployment](/powershell/module/az.resources/new-azdeployment) és az [Deployment Create](/cli/azure/deployment#az-deployment-create) parancsait mutatja be a központi telepítés előfizetési hatókörben való elindításához és a hely megadásához.
+
+```azurepowershell
+New-AzDeployment -Location centralus -TemplateFile rbac-test.json -principalId $userid -builtInRoleType Reader
+```
+
+```azurecli
+az deployment create --location centralus --template-file rbac-test.json --parameters principalId=$userid builtInRoleType=Reader
+```
+
+## <a name="create-a-role-assignment-at-a-resource-scope"></a>Szerepkör-hozzárendelés létrehozása erőforrás-hatókörben
+
+Ha egy erőforrás szintjén kell létrehoznia egy szerepkör-hozzárendelést, a szerepkör-hozzárendelés formátuma eltérő. Adja meg annak az erőforrás-szolgáltatónak a névterét és erőforrás-típusát, amelyhez hozzá szeretné rendelni a szerepkört. A szerepkör-hozzárendelés neve tartalmazza az erőforrás nevét is.
+
+A szerepkör-hozzárendelés típusát és nevét a következő formátumban kell megadni:
+
+```json
+"type": "{resource-provider-namespace}/{resource-type}/providers/roleAssignments",
+"name": "{resource-name}/Microsoft.Authorization/{role-assign-GUID}"
+```
+
+A következő sablon a következőket mutatja be:
+
+- Új tárfiók létrehozása
+- Szerepkör társítása felhasználóhoz, csoporthoz vagy alkalmazáshoz a Storage-fiók hatókörében
+- Tulajdonos, közreműködő és olvasó szerepkörök meghatározása paraméterként
+
+A sablon használatához a következő bemeneteket kell megadnia:
+
+- Annak a felhasználónak, csoportnak vagy alkalmazásnak az egyedi azonosítója, amelyhez hozzá szeretné rendelni a szerepkört
+- A hozzárendelni kívánt szerepkör
+- A szerepkör-hozzárendeléshez használt egyedi azonosító, vagy használhatja az alapértelmezett azonosítót is.
+
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "principalId": {
+            "type": "string",
+            "metadata": {
+                "description": "The principal to assign the role to"
+            }
+        },
+        "builtInRoleType": {
+            "type": "string",
+            "allowedValues": [
+                "Owner",
+                "Contributor",
+                "Reader"
+            ],
+            "metadata": {
+                "description": "Built-in role to assign"
+            }
+        },
+        "roleNameGuid": {
+            "type": "string",
+            "defaultValue": "[newGuid()]",
+            "metadata": {
+                "description": "A new GUID used to identify the role assignment"
+            }
+        },
+        "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]"
+        }
+    },
+    "variables": {
+        "Owner": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', '8e3af657-a8ff-443c-a75c-2fe8c4bcb635')]",
+        "Contributor": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'b24988ac-6180-42a0-ab88-20f7382dd24c')]",
+        "Reader": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'acdd72a7-3385-48ef-bd42-f606fba81ae7')]",
+        "storageName": "[concat('storage', uniqueString(resourceGroup().id))]"
+    },
+    "resources": [
+        {
+            "apiVersion": "2019-04-01",
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[variables('storageName')]",
+            "location": "[parameters('location')]",
+            "sku": {
+                "name": "Standard_LRS"
+            },
+            "kind": "Storage",
+            "properties": {}
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts/providers/roleAssignments",
+            "apiVersion": "2018-09-01-preview",
+            "name": "[concat(variables('storageName'), '/Microsoft.Authorization/', parameters('roleNameGuid'))]",
+            "dependsOn": [
+                "[variables('storageName')]"
+            ],
+            "properties": {
+                "roleDefinitionId": "[variables(parameters('builtInRoleType'))]",
+                "principalId": "[parameters('principalId')]"
+            }
+        }
+    ]
+}
+```
+
+Az előző sablon üzembe helyezéséhez használja az erőforráscsoport-parancsokat. Az alábbi példa a [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) és az [az Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create) parancsokat mutatja be a telepítés elindításához egy erőforrás-hatókörben.
+
+```azurepowershell
+New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-test.json -principalId $userid -builtInRoleType Contributor
+```
+
+```azurecli
+az group deployment create --resource-group ExampleGroup --template-file rbac-test.json --parameters principalId=$userid builtInRoleType=Contributor
+```
+
+A következő példa a közreműködői szerepkör hozzárendelését mutatja be egy felhasználónak egy Storage-fiókhoz a sablon telepítése után.
+
+![Szerepkör-hozzárendelés erőforrás-hatókörben](./media/role-assignments-template/role-assignment-template-resource.png)
+
+## <a name="create-a-role-assignment-for-a-new-service-principal"></a>Szerepkör-hozzárendelés létrehozása egy új egyszerű szolgáltatáshoz
+
+Ha létrehoz egy új szolgáltatásnevet, és azonnal megpróbál hozzárendelni egy szerepkört az egyszerű szolgáltatáshoz, a szerepkör-hozzárendelés bizonyos esetekben sikertelen lehet. Ha például létrehoz egy új felügyelt identitást, majd megpróbál hozzárendelni egy szerepkört az adott szolgáltatáshoz ugyanahhoz a Azure Resource Manager-sablonhoz, előfordulhat, hogy a szerepkör-hozzárendelés sikertelen lesz. A hiba oka valószínűleg a replikálás késése. Az egyszerű szolgáltatás egy régióban jön létre; a szerepkör-hozzárendelés azonban egy másik régióban is előfordulhat, amely még nem replikálta a szolgáltatásnevet. Ennek a forgatókönyvnek a megoldásához a `principalType` tulajdonságot a szerepkör- `ServicePrincipal` hozzárendelés létrehozásakor kell beállítania.
+
+A következő sablon a következőket mutatja be:
+
+- Új felügyelt identitási szolgáltatásnév létrehozása
+- A`principalType`
+- A közreműködői szerepkör társítása az adott egyszerű szolgáltatáshoz erőforráscsoport-hatókörben
+
+A sablon használatához a következő bemeneteket kell megadnia:
+
+- A felügyelt identitás alapneve, vagy használhatja az alapértelmezett karakterláncot is.
+
+```json
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "baseName": {
+            "type": "string",
+            "defaultValue": "msi-test"
+        }
+    },
+    "variables": {
+        "identityName": "[concat(parameters('baseName'), '-bootstrap')]",
+        "bootstrapRoleAssignmentId": "[guid(concat(resourceGroup().id, 'contributor'))]",
+        "contributorRoleDefinitionId": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'b24988ac-6180-42a0-ab88-20f7382dd24c')]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+            "name": "[variables('identityName')]",
+            "apiVersion": "2018-11-30",
+            "location": "[resourceGroup().location]"
+        },
+        {
+            "type": "Microsoft.Authorization/roleAssignments",
+            "apiVersion": "2018-09-01-preview",
+            "name": "[variables('bootstrapRoleAssignmentId')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('identityName'))]"
+            ],
+            "properties": {
+                "roleDefinitionId": "[variables('contributorRoleDefinitionId')]",
+                "principalId": "[reference(resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('identityName')), '2018-11-30').principalId]",
+                "scope": "[resourceGroup().id]",
+                "principalType": "ServicePrincipal"
+            }
+        }
+    ]
+}
+```
+
+Az alábbi példa a [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) és az [az Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create) parancsokat mutatja be a telepítés elindításához egy erőforráscsoport-hatókörben.
+
+```azurepowershell
+New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup2 -TemplateFile rbac-test.json
+```
+
+```azurecli
+az group deployment create --resource-group ExampleGroup2 --template-file rbac-test.json
+```
+
+Az alábbi példa a közreműködői szerepkör hozzárendelését mutatja be egy új felügyelt identitási szolgáltatásnév számára a sablon telepítése után.
+
+![Szerepkör-hozzárendelés egy új felügyelt identitás egyszerű szolgáltatásnév számára](./media/role-assignments-template/role-assignment-template-msi.png)
+
 ## <a name="next-steps"></a>További lépések
 
-- [Rövid útmutató: Létrehozása és üzembe helyezése Azure Resource Manager-sablonok az Azure portal használatával](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)
-- [Megismerheti a szerkezetének és szintaxisának az Azure Resource Manager-sablonok](../azure-resource-manager/resource-group-authoring-templates.md)
+- [Rövid útmutató: Azure Resource Manager-sablonok létrehozása és üzembe helyezése a Azure Portal használatával](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)
+- [Az Azure Resource Manager-sablonok struktúrája és szintaxisa](../azure-resource-manager/resource-group-authoring-templates.md)
+- [Erőforráscsoportok és erőforrások létrehozása az előfizetési szinten](../azure-resource-manager/deploy-to-subscription.md)
 - [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/?term=rbac)

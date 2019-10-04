@@ -1,67 +1,67 @@
 ---
-title: Java Android rendszeren a Microsoft Speech Recognition API használatának első lépései |} A Microsoft Docs
+title: Ismerkedés a Microsoft Speech Recognition API-val Java-on Androidon | Microsoft Docs
 titlesuffix: Azure Cognitive Services
-description: A Microsoft Speech API használatával hozhat létre Android-alkalmazásokat, amelyek a beszélt hangot képes szöveggé alakítani.
+description: A Microsoft Speech API-val olyan Android-alkalmazásokat fejleszthet, amelyek szöveggé alakítják ki a szóbeli hangot.
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 147042e300e629dd7e354d4e9079cc4855a8146c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 77fee2ecee9cfabe3fad9c1df2c41c7803c3367e
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57547017"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966833"
 ---
-# <a name="quickstart-use-the-bing-speech-recognition-api-in-java-on-android"></a>Gyors útmutató: A Bing Speech recognition API-t a Java használata Android rendszeren
+# <a name="quickstart-use-the-bing-speech-recognition-api-in-java-on-android"></a>Gyors útmutató: A Bing Speech felismerési API használata Java-on Android rendszeren
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
-A Bing Speech Recognition API-val Android-alkalmazások, amelyek a felhőalapú és a Bing Speech Service segítségével a beszélt hangot képes szöveggé alakítani fejleszthet. Az API-t támogatja, hogy valós idejű streamelési, így az alkalmazás egy időben, és aszinkron módon képes is részleges felismerési eredményeket hang, a szolgáltatás által küldött egy időben.
+A Bing Speech felismerési API-val olyan Android-alkalmazásokat fejleszthet, amelyek a felhőalapú Bing Speech szolgáltatást használják a beszélt hang szöveggé alakításához. Az API támogatja a valós idejű folyamatos átvitelt, így az alkalmazása egyidejűleg és aszinkron módon is megkaphatja a részleges felismerési eredményeket, miközben a hangot küldi a szolgáltatásnak.
 
-Ez a cikk egy mintaalkalmazás segítségével hogyan használható a beszédfelismerő ügyfélkódtárának Android az Android-eszközök hang-szöveg transzformációs Java alkalmazások fejlesztéséhez.
+Ez a cikk egy minta alkalmazást használ annak bemutatására, hogyan használhatók az Android rendszerhez készült beszédfelismerési ügyfélkódtár a Java for Android-eszközökhöz készült beszéd-szöveg alkalmazások fejlesztéséhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 ### <a name="platform-requirements"></a>Platformkövetelmények
 
-A minta a rendszer által fejlesztett [Android Studio](https://developer.android.com/sdk/index.html) Java-környezetben a Windows számára.
+A mintát [Android Studio](https://developer.android.com/sdk/index.html) a javában fejlesztettük ki.
 
-### <a name="get-the-client-library-and-sample-application"></a>Az ügyféloldali kódtár és mintaalkalmazás alkalmazás lekérése
+### <a name="get-the-client-library-and-sample-application"></a>Az ügyféloldali kódtár és a minta alkalmazás beszerzése
 
-A beszédfelismerő ügyfélkódtárának és az Android-minták elérhetők a [Speech ügyfél-SDK for Android](https://github.com/microsoft/cognitive-speech-stt-android). A minták/SpeechRecoExample könyvtárban buildable mintát talál. A két kódtárakat kell használnia a saját alkalmazások SpeechSDK/libs a armeabi alatt és a x86 mappát. A libandroid_platform.so fájl mérete 22 MB, de a 4 MB-ra üzembe helyezéskor csökken.
+Az Androidhoz készült beszédfelismerési ügyfélkódtár és minták az [androidos Speech Client SDK](https://github.com/microsoft/cognitive-speech-stt-android)-ban érhetők el. A minta/SpeechRecoExample könyvtár alatt megtalálhatja a felépíthető mintát. A saját alkalmazásaiban használt két kódtárat a armeabi és az x86 mappában található SpeechSDK/libs alatt találja. A libandroid_platform mérete. így a fájl 22 MB, de a telepítéskor 4 MB-ra csökken.
 
-#### <a name="subscribe-to-the-speech-api-and-get-a-free-trial-subscription-key"></a>Fizessen elő a beszédfelismerő API és a egy ingyenes próba-előfizetését kulcs lekérése
+#### <a name="subscribe-to-the-speech-api-and-get-a-free-trial-subscription-key"></a>Feliratkozás a Speech API-ra, és ingyenes próbaverziós előfizetési kulcs beszerzése
 
-A beszédfelismerő API a Cognitive Services-(korábban Project Oxford) részét képezi. Ingyenes próba-előfizetését helyenk beszerezheti a [Cognitive Services-előfizetés](https://azure.microsoft.com/try/cognitive-services/) lapot. Miután kiválasztotta a beszédfelismerő API, válassza ki a **API-kulcs lekérése** a kulcs beszerzése. Egy elsődleges és másodlagos kulcsát adja vissza. Mindkét kulcsot kvóta, így használhatja az egyiket sem vannak társítva.
+A Speech API Cognitive Services (korábban Project Oxford) része. A [Cognitive Services előfizetés](https://azure.microsoft.com/try/cognitive-services/) oldaláról ingyenes próbaverziós előfizetési kulcsokat szerezhet be. Miután kiválasztotta a Speech API-t, válassza az **API-kulcs beolvasása** elemet a kulcs lekéréséhez. Egy elsődleges és egy másodlagos kulcsot ad vissza. Mindkét kulcs ugyanahhoz a kvótához van kötve, így bármelyik kulcsot használhatja.
 
-Ha a használni kívánt *leképezés a felismerés*, is regisztrálni kell a [Language Understanding Intelligent Service (LUIS)](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/).
+Ha az *elismerést*kívánja használni szándékkal, regisztrálnia kell a [Language Understanding Intelligent Service (Luis)](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/)is.
 
 > [!IMPORTANT]
->* Előfizetési kulcs lekérése. Ügyfélkódtárak beszéd használata előtt rendelkeznie kell egy [előfizetési kulcs](https://azure.microsoft.com/try/cognitive-services/).
+>* Előfizetési kulcs beszerzése. A Speech Client kódtárak használata előtt rendelkeznie kell egy [előfizetési kulccsal](https://azure.microsoft.com/try/cognitive-services/).
 >
->* Az előfizetési kulcs használja. A megadott Android mintaalkalmazással frissítse a fájl samples/SpeechRecoExample/res/values/strings.xml az előfizetési kulcsok. További információkért lásd: [hozza létre és futtassa a mintát](#build-and-run-samples).
+>* Használja az előfizetési kulcsot. A megadott androidos minta alkalmazással frissítse a Samples/SpeechRecoExample/res/Values/Strings. xml fájlt az előfizetési kulcsaival. További információ: [minták készítése és futtatása](#build-and-run-samples).
 
-## <a name="use-the-speech-client-library"></a>A beszédfelismerő ügyfélkódtárának használata
+## <a name="use-the-speech-client-library"></a>A beszédfelismerési ügyfélkódtár használata
 
-Az ügyféloldali kódtár, az alkalmazás használatához hajtsa végre a [utasításokat](https://github.com/microsoft/cognitive-speech-stt-android#the-client-library).
+Az ügyfél függvénytárának az alkalmazásban való használatához kövesse az [utasításokat](https://github.com/microsoft/cognitive-speech-stt-android#the-client-library).
 
-Annak az ügyfél kódtár – referencia Android docs mappájában a [Speech ügyfél-SDK for Android](https://github.com/microsoft/cognitive-speech-stt-android).
+Az Androidhoz készült ügyféloldali kódtár-referenciát az [Androidhoz készült Speech Client SDK](https://github.com/microsoft/cognitive-speech-stt-android)docs mappában találja.
 
-## <a name="build-and-run-samples"></a>Hozhat létre és -minták futtatása
+## <a name="build-and-run-samples"></a>Minták készítése és futtatása
 
-Megtudhatja, hogyan hozhat létre és futtassa a mintát, ez látható [tájékoztató oldalon](https://github.com/microsoft/cognitive-speech-stt-android#the-sample).
+A minták létrehozásával és futtatásával kapcsolatos további információkért tekintse meg ezt a [readme oldalt](https://github.com/microsoft/cognitive-speech-stt-android#the-sample).
 
-## <a name="samples-explained"></a>A minták ismertetése
+## <a name="samples-explained"></a>Minták magyarázata
 
-### <a name="create-recognition-clients"></a>Elismerés ügyfelek létrehozása
+### <a name="create-recognition-clients"></a>Felismerő ügyfelek létrehozása
 
-A kód a következő minta bemutatja, hogyan hozhat létre a felismerés ügyfélosztályok felhasználói esetek alapján:
+Az alábbi példában szereplő kód azt mutatja be, hogyan hozhatók létre felismerési ügyfél-osztályok felhasználói forgatókönyvek alapján:
 
 ```java
 void initializeRecoClient()
@@ -115,39 +115,39 @@ void initializeRecoClient()
 
 ```
 
-Az ügyféloldali kódtár biztosít előre megvalósított felismerés ügyfélosztályok Beszédfelismerés a tipikus forgatókönyvek:
+Az ügyféloldali kódtár előre megvalósított felismerési ügyféloldali osztályokat biztosít a beszédfelismerés jellemző forgatókönyvei esetében:
 
-* `DataRecognitionClient`: A beszédfelismerés PCM adatokkal (például a fájl- vagy audióanyagot forrás). Az adatok pufferek van osztva, és minden egyes puffer Speech szolgáltatásnak továbbítja. Bármilyen módosítás nélkül történik a pufferek, így a felhasználó a saját csend észlelési alkalmazhatja, ha szükséges. Az adatok WAV-fájlokból áll rendelkezésre, ha a Speech Service a fájlt közvetlenül küldhet adatokat. Ha olyan nyers adat, például hang, a Bluetooth keresztül érkező először küld formátum fejléc beszédszolgáltatás követi az adatokat.
-* `MicrophoneRecognitionClient`: A beszédfelismerés együtt származik a mikrofon hang. Ellenőrizze, hogy a mikrofon be van kapcsolva, és a mikrofon származó adatokat a speech recognition szolgáltatásnak továbbítja. A beépített "csend detector használatával" mikrofon adatokra alkalmazza, a felismerés szolgáltatás továbbítás előtt.
-* `DataRecognitionClientWithIntent` és `MicrophoneRecognitionClientWithIntent`: Ezek az ügyfelek adja vissza, a célt strukturált információt, amely az alkalmazások által használható további műveletek alapjául a beszélő felismerése szöveg mellett. "Leképezés" használatához először betanítja a modellt használatával kell [LUIS](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/).
+* `DataRecognitionClient`: Beszédfelismerés PCM-adatokkal (például fájlból vagy Hangforrásból). Az adathalmazok a pufferekben vannak felosztva, és minden puffer elküldése a Speech Service-nek. A pufferek módosítása nem történt meg, így a felhasználó igény szerint saját csend-észlelést alkalmazhat. Ha az adatok WAV-fájlokból származnak, az adatok a fájlból a Speech Service-be való jogosultsággal küldhetők el. Ha a nyers adatok például a Bluetooth-kapcsolaton keresztül érkeznek, akkor először egy Format fejlécet kell küldenie a Speech Service-nek, amelyet az adatok követnek.
+* `MicrophoneRecognitionClient`: Beszédfelismerés a mikrofonból érkező hangokkal. Győződjön meg arról, hogy a mikrofon be van kapcsolva, és a rendszer a mikrofonból származó adatok elküldése a beszédfelismerési szolgáltatásba. A rendszer egy beépített "Silence detektor"-t alkalmaz a mikrofonba az adatfelismerési szolgáltatásba való elküldés előtt.
+* `DataRecognitionClientWithIntent`és `MicrophoneRecognitionClientWithIntent`: Ezek az ügyfelek az elismerés szövege mellett strukturált információkat adnak vissza a beszélő szándékáról, amely az alkalmazások további műveleteinek elvégzésére használható. A "szándék" használatához először a [Luis](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/)használatával kell betanítania a modellt.
 
-### <a name="recognition-language"></a>Nyelv felismerése
+### <a name="recognition-language"></a>Felismerési nyelv
 
-Ha használ `SpeechRecognitionServiceFactory` szeretne létrehozni az ügyfelet, ki kell választania egy nyelvet. Beszédfelismerési szolgáltatás által támogatott nyelvek teljes listáját lásd: [támogatott nyelvek](../API-Reference-REST/supportedlanguages.md).
+Amikor az- `SpeechRecognitionServiceFactory` ügyfél létrehozására használja, ki kell választania egy nyelvet. A Speech Service által támogatott nyelvek teljes listájáért lásd: [támogatott nyelvek](../API-Reference-REST/supportedlanguages.md).
 
 ### `SpeechRecognitionMode`
 
-Emellett meg kell adnia `SpeechRecognitionMode` létrehozásakor, az ügyfél és `SpeechRecognitionServiceFactory`:
+Azt is meg kell adnia `SpeechRecognitionMode` , hogy mikor hozza létre az `SpeechRecognitionServiceFactory`ügyfelet a következővel:
 
-* `ShortPhrase`: Az utterance (kifejezés), legfeljebb 15 másodperc hosszúságú. Mivel a szolgáltatás adatokat küld, az ügyfél megkapta a több részleges és több végső eredményt, több legjobb n választási lehetőség a.
-* `LongDictation`: Az utterance (kifejezés), akár két perc hosszú. Mivel a szolgáltatás adatokat küld, a az ügyfél több részleges és több végső eredményt is, ahol a szolgáltatás azonosítja a mondaton belüli szünetet alapján kap.
+* `ShortPhrase`: A teljes érték 15 másodperc. Ahogy a szolgáltatás elküldi az adattovábbítást, az ügyfél több részleges eredményt kap, és egy végeredményt több n-legjobb lehetőség közül.
+* `LongDictation`: Akár két percet is igénybe vehet. Ahogy a szolgáltatás elküldi az adatküldés eredményeit, az ügyfél több részleges eredményt kap, és több végső eredményt fog kapni, amely alapján a szolgáltatás azonosítja a mondatot.
 
 ### <a name="attach-event-handlers"></a>Eseménykezelők csatolása
 
-Az ügyfél különböző eseménykezelők csatolhat létrehozott:
+A létrehozott ügyfélhez különböző eseménykezelőket is csatolhat:
 
-* **Részleges eredményeket események**: Ez az esemény meghívása megtörténik, minden alkalommal, amikor beszédszolgáltatás előrejelzi, előfordulhat, hogy el véleményét, beszéd befejezése előtt is (Ha `MicrophoneRecognitionClient`), vagy fejezze be az adatok küldésének (használatakor `DataRecognitionClient`).
-* **Hibaesemények**: Meghívva, ha a szolgáltatás hibát észlel.
-* **Leképezési események**: Az ügyfeleken "WithIntent" nevű (kizárólag a `ShortPhrase` mód) után a végső felismerés eredményét egy strukturált JSON-leképezés van értelmezni.
-* **Események eredményeként**:
-  * A `ShortPhrase` mód, ez az esemény nevezik, és n legjobb eredményeket ad vissza, és beszéljen befejezése után.
-  * A `LongDictation` üzemmód, az eseménykezelő neve többször, ahol a szolgáltatás azonosítja a mondaton belüli szünetet alapján.
-  * **A legjobb n lehetőségek mindegyike**, egy megbízhatósági érték és néhány másik formája a felismert szöveget adja vissza. További információkért lásd: [kimeneti formátum](../Concepts.md#output-format).
+* **Részleges eredmények eseményei**: Ez az esemény minden alkalommal megjelenik, amikor a Speech Service előre jelzi, hogy mit mond, még mielőtt elvégezte a beszédet (ha használja `MicrophoneRecognitionClient`), vagy befejezi az adatok küldését (ha használja `DataRecognitionClient`).
+* **Hiba eseményei**: Hívása, ha a szolgáltatás hibát észlel.
+* **Leképezési események**: A rendszer a végső felismerési eredmény elemzése után `ShortPhrase` a "WithIntent" ügyfeleket (csak a módban) hívja meg egy strukturált JSON-szándékba.
+* **Eredmény eseményei**:
+  * `ShortPhrase` Ebben az esetben ez az esemény meghívásra kerül, és a beszéd befejezése után az n-legjobb eredményt adja vissza.
+  * A `LongDictation` módban az eseménykezelőt többször kell meghívni, attól függően, hogy a szolgáltatás hogyan azonosítja a mondatot.
+  * **Minden n-legjobb választás esetében**a rendszer egy megbízhatósági értéket és a felismert szöveg néhány különböző formáját adja vissza. További információ: [kimeneti formátum](../Concepts.md#output-format).
 
 ## <a name="related-topics"></a>Kapcsolódó témakörök
 
-* [Androidhoz készült ügyféloldali kódtár – referencia](https://github.com/Azure-Samples/Cognitive-Speech-STT-Android/tree/master/docs)
-* [A C#-ban, a Microsoft Speech API használatának első lépései a .NET-es Windows](GetStartedCSharpDesktop.md)
-* [IOS-eszközökön a Microsoft beszédfelismerési API, Objective-C nyelven használatának első lépései](Get-Started-ObjectiveC-iOS.md)
-* [A Microsoft Speech API a JavaScript használatának első lépései](GetStartedJSWebsockets.md)
-* [Ismerkedés a Microsoft Speech API REST-en keresztül](GetStartedREST.md)
+* [Ügyféloldali függvénytár-referenciák Android rendszerhez](https://github.com/Azure-Samples/Cognitive-Speech-STT-Android/tree/master/docs)
+* [Ismerkedés a Microsoft Speech API- C# val a Windows rendszerben a .net-ben](GetStartedCSharpDesktop.md)
+* [Ismerkedés a Microsoft Speech API-val a Objective-C-ben iOS rendszeren](Get-Started-ObjectiveC-iOS.md)
+* [Ismerkedés a Microsoft Speech API-val a JavaScriptben](GetStartedJSWebsockets.md)
+* [Ismerkedés a Microsoft Speech API-val REST használatával](GetStartedREST.md)

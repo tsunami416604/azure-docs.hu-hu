@@ -1,25 +1,18 @@
 ---
-title: Cloud Partner Portal API-referencia |} A Microsoft Docs
+title: Cloud Partner Portal API-referencia |} Az Azure Marketplace-en
 description: Leírása, használatának előfeltételei és marketplace API műveletek listája.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 116eb48330381c7560c55ea9535b3c1b7c6a6a70
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.author: pabutler
+ms.openlocfilehash: 9626fdb5dbdf720a65217421565fc559a0cee684
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809898"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64935473"
 ---
 <a name="cloud-partner-portal-api-reference"></a>Cloud Partner Portal API-referencia
 ==================================
@@ -51,16 +44,16 @@ Ez a hivatkozás API-k az alábbi gyakori feladatait ismerteti.
 -   [Egy adott ajánlat beolvasása](./cloud-partner-portal-api-retrieve-specific-offer.md)
 -   [Ajánlat állapotának lekérése](./cloud-partner-portal-api-retrieve-offer-status.md)
 -   [Ajánlat létrehozása](./cloud-partner-portal-api-creating-offer.md)
--   [Az ajánlat közzététele](./cloud-partner-portal-api-publish-offer.md)
+-   [Ajánlat közzététele](./cloud-partner-portal-api-publish-offer.md)
 
 ### <a name="operations"></a>Műveletek
 
--   [Műveletek beolvasása](./cloud-partner-portal-api-retrieve-operations.md)
--   [Művelet megszakítása](./cloud-partner-portal-api-cancel-operations.md)
+-   [Műveletek lekérése](./cloud-partner-portal-api-retrieve-operations.md)
+-   [Szalagműveletek megszakítása](./cloud-partner-portal-api-cancel-operations.md)
 
 ### <a name="publish-an-app"></a>Alkalmazások közzététele
 
--   [Az élő esemény indításra](./cloud-partner-portal-api-go-live.md)
+-   [Élesítés](./cloud-partner-portal-api-go-live.md)
 
 ### <a name="other-tasks"></a>Egyéb feladatok
 
@@ -68,4 +61,4 @@ Ez a hivatkozás API-k az alábbi gyakori feladatait ismerteti.
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
 
--   [Hitelesítési hibák elhárítása](./cloud-partner-portal-api-troubleshooting-authentication-errors.md)
+-   [Hitelesítési hibák hibaelhárítása](./cloud-partner-portal-api-troubleshooting-authentication-errors.md)

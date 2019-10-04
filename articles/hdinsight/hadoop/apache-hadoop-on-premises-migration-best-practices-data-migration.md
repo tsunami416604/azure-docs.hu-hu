@@ -1,7 +1,6 @@
 ---
-title: A helyszíni Apache Hadoop-fürtök áttelepítése az Azure HDInsight - adatok áttelepítése – ajánlott eljárások
-description: Ismerje meg az adatok áttelepítési ajánlott eljárások az áttelepítése a helyszíni Hadoop-fürtöket az Azure HDInsight.
-services: hdinsight
+title: Helyszíni Apache Hadoop-fürtök áttelepítése az Azure HDInsight-ba – az adatáttelepítés
+description: A helyszíni Hadoop-fürtök Azure HDInsight való áttelepítésére vonatkozó ajánlott eljárások ismertetése.
 author: hrasheed-msft
 ms.reviewer: ashishth
 ms.service: hdinsight
@@ -9,99 +8,99 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: hrasheed
-ms.openlocfilehash: 02c7f53c090559ca0ada46ec90de3a44b0518a29
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 567edca422237c71f0d69c862a17fbc0d2a72795
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59683576"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735914"
 ---
-# <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>A helyszíni Apache Hadoop-fürtök áttelepítése az Azure HDInsight - adatok áttelepítése – ajánlott eljárások
+# <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>Helyszíni Apache Hadoop-fürtök áttelepítése az Azure HDInsight – az adatáttelepítés ajánlott eljárásai
 
-Ez a cikk az Azure HDInsight az adatáttelepítés javaslatokat biztosít. Ez azt egy olyan sorozat részét, amely ajánlott eljárásokat, amelyek segítik az Azure HDInsight áttelepítése a helyszíni Apache Hadoop-rendszerekhez biztosít.
+Ez a cikk ajánlásokat nyújt az Azure HDInsight való adatáttelepítés során. Egy sorozat része, amely ajánlott eljárásokat biztosít a helyszíni Apache Hadoop rendszerek Azure HDInsight való áttelepítésének segítésére.
 
-## <a name="migrate-on-premises-data-to-azure"></a>A helyszíni adatok migrálása az Azure-bA
+## <a name="migrate-on-premises-data-to-azure"></a>Helyszíni adatbázis migrálása az Azure-ba
 
-Két fő lehetőség át a helyszíni adatok Azure-környezet van:
+Két fő lehetőség áll rendelkezésre a helyszíni adatok Azure-környezetbe történő átköltöztetésére:
 
-1.  Adatok átvitele a TLS-hálózaton keresztül
-    1. Interneten – keresztül adatokat lehet vinni az Azure storage használatával több eszközt például rendszeres internetkapcsolaton keresztül: Az Azure Storage Explorer, az AzCopy, az Azure Powershell és az Azure parancssori felület.  Lásd: [adatok áthelyezése az Azure Storage szolgáltatásba vagy onnan](../../storage/common/storage-moving-data.md) további információt.
-    2. Express Route - ExpressRoute egy Azure-szolgáltatás, amely lehetővé teszi, hogy között Microsoft-adatközpontok és infrastruktúra, amely a helyszínen vagy egy közös elhelyezési létesítményből csatlakozó privát kapcsolatok hozhatók létre. Az ExpressRoute-kapcsolatok nem a nyilvános interneten keresztül, és magasabb szintű biztonságra, megbízhatóságra és a kisebb a késésük, mint a szokásos internetkapcsolatoknál megbízhatóbbak kínálnak az interneten keresztül. További információkért lásd: [létrehozása és módosítása egy ExpressRoute-kapcsolatcsoport](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md).
-    1. Data Box online adatátvitel – Data Box Edge és a Data Box-átjáró proxyként tárolási átjárók kezelése a hely és az Azure közötti hálózati online adatok átvitel termékek. A Data Box Edge egy helyszíni hálózati eszköz, amely az adatokat az Azure és a helyszín között helyezi át, és az adatok feldolgozásához mesterséges intelligenciát használó peremhálózati számítási megoldást használ. A Data Box Gateway egy tárolóátjáró képességgel rendelkező virtuális berendezés. További információkért lásd: [Azure Data Box dokumentációja – Online átviteli](https://docs.microsoft.com/azure/databox-online/).
-1.  Szállítási adatok offline állapotban
-    1. Adatok offline adatátvitel – Data Box, Data Box-lemezek mezőbe, és a Data Box nehéz eszközök segítséget nagy mennyiségű adat átvitele az Azure-ba, amikor a hálózat nincs lehetőség. Ezeket az offline adatátviteli eszközöket az Ön cége és az Azure-adatközpontok között szállítjuk. Az eszközök AES-titkosítást használnak, amelyek a szállítás közben védik az adatait, a feltöltés után pedig alapos megtisztítási folyamaton esnek át, amelynek során minden adata törölve lesz az eszközről. További információ a Data Box adatátviteli kapcsolat nélküli eszközökön: [Azure Data Box dokumentációja – Offline átviteli](https://docs.microsoft.com/azure/databox/). A Hadoop-fürtök áttelepítése további információkért lásd: [használata Azure Data Box egy helyszíni HDFS-adattár migrálhat az Azure Storage-](../../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md).
+1.  Adatok átvitele hálózaton keresztül TLS használatával
+    1. Interneten keresztül – az adatok az Azure Storage-ba normál internetkapcsolaton keresztül, többek között a következők egyikével vihetők át: Azure Storage Explorer, AzCopy, Azure PowerShell és Azure CLI.  További információkért lásd: [adatok áthelyezése az Azure Storage szolgáltatásba és onnan](../../storage/common/storage-moving-data.md) .
+    2. Az Express Route-ExpressRoute egy Azure-szolgáltatás, amellyel privát kapcsolatokat hozhat létre a Microsoft-adatközpontok és a helyszíni vagy egy közös elhelyezési létesítményben lévő infrastruktúra között. Az ExpressRoute-kapcsolatok nem a nyilvános interneten keresztül, és magasabb szintű biztonságra, megbízhatóságra és a kisebb a késésük, mint a szokásos internetkapcsolatoknál megbízhatóbbak kínálnak az interneten keresztül. További információ: [ExpressRoute-kör létrehozása és módosítása](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md).
+    1. Data Box online adatátvitel – a Data Box Edge és a Data Box Gateway olyan online adatátviteli termékek, amelyek hálózati tároló átjáróként működnek a hely és az Azure közötti adatkezelés érdekében. A Data Box Edge egy helyszíni hálózati eszköz, amely az adatokat az Azure és a helyszín között helyezi át, és az adatok feldolgozásához mesterséges intelligenciát használó peremhálózati számítási megoldást használ. A Data Box Gateway egy tárolóátjáró képességgel rendelkező virtuális berendezés. További információ: [Azure Data Box dokumentáció – online átvitel](https://docs.microsoft.com/azure/databox-online/).
+1.  Adatszállítás kapcsolat nélküli üzemmódban
+    1. Data Box offline adatátvitel – a Data Box, a Data Box Disk és az Data Box Heavy eszközök segítségével nagy mennyiségű adatok vihetők át az Azure-ba, ha a hálózat nem választható. Ezeket az offline adatátviteli eszközöket az Ön cége és az Azure-adatközpontok között szállítjuk. Az eszközök AES-titkosítást használnak, amelyek a szállítás közben védik az adatait, a feltöltés után pedig alapos megtisztítási folyamaton esnek át, amelynek során minden adata törölve lesz az eszközről. További információ a Data Box offline átvitelű eszközökről: [Azure Data Box dokumentáció – offline átvitel](https://docs.microsoft.com/azure/databox/). A Hadoop-fürtök áttelepítésével kapcsolatos további információkért tekintse [meg a helyszíni HDFS-tárolóból az Azure Storage-ba való migrálás Azure Data Box használatát](../../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md)ismertető témakört.
 
-Az alábbi táblázat a hozzávetőleges adatok átvitel időtartama az adatok mennyisége és a hálózati sávszélesség alapján van. A Data box használja, ha az adatok migrálása várhatóan több mint három hetet igénybe vehet.
+Az alábbi táblázat az adatmennyiség és a hálózati sávszélesség alapján közelíti meg az adatátviteli időtartamot. Adatmező használata, ha az adatáttelepítés várhatóan három hétig is eltarthat.
 
-|**Adatok mennyisége**|**Network Bandwidth**||||
+|**Adatmennyiség**|**Hálózati sávszélesség**||||
 |---|---|---|---|---|
-|| **45 MB/s (T3)**|**100 Mbps**|**1 GB/s**|**10 GB/s**|
+|| **45 Mbps (T3)**|**100 Mbps**|**1 GB/s**|**10 GB/s**|
 |1 TB|2 nap|1 nap| 2 óra|14 perc|
 |10 TB|22 nap|10 nap|1 nap|2 óra|
 |35 TB|76 nap|34 nap|3 nap|8 óra|
-|80 TB|173 nap|78 nap|8 nap|19 órát|
+|80 TB|173 nap|78 nap|8 nap|19 óra|
 |100 TB|216 nap|97 nap|10 nap|1 nap|
 |200 TB|1 év|194 nap|19 nap|2 nap|
 |500 TB|3 év|1 év|49 nap|5 nap|
 |1 PB|6 év|3 év|97 nap|10 nap|
-|2 PB|12 éve|5 év|194 nap|19 nap|
+|2 PB|12 év|5 év|194 nap|19 nap|
 
-Az Azure-ba, például az Apache Hadoop DistCp, az Azure Data Factory és a AzureCp, natív eszközök segítségével adatokat átvitel a hálózaton keresztül. A külső eszköz, a WANDisco ugyanerre a célra is használható. Az Apache Kafka Mirrormakerrel és az Apache sqoop használatával folyamatos adatátvitel a helyszínről az Azure storage-rendszerekhez is használható.
-
-
-## <a name="performance-considerations-when-using-apache-hadoop-distcp"></a>Teljesítménnyel kapcsolatos szempontok, ha az Apache Hadoop a DistCp használata
+Az Azure-ba natív eszközök, például Apache Hadoop DistCp, Azure Data Factory és AzureCp, az adatok hálózaton keresztüli átvitelére használhatók. A harmadik féltől származó eszköz WANDisco is használható ugyanarra a célra. A helyszíni és az Azure Storage rendszerbe való folyamatos adatátvitelhez Apache Kafka MirrorMaker és Apache Sqoop használható.
 
 
-A DistCp egy Apache-projecttel, amely egy térkép MapReduce feladatot használ adatátvitelt, hibák kezelésére, és ezeket a hibákat helyreállítása. Forrásfájljainak listáját rendel térkép feladatokon. A térkép feladat majd átmásolja a hozzárendelt fájlok mindegyikét a célhelyre. Nincsenek a különböző módszereket vetnek javíthatja a DistCp teljesítményét.
+## <a name="performance-considerations-when-using-apache-hadoop-distcp"></a>Teljesítménnyel kapcsolatos megfontolások Apache Hadoop DistCp használatakor
 
-### <a name="increase-the-number-of-mappers"></a>Ha több leképező
 
-A DistCp megpróbálja létrehozni a térkép feladatokat, hogy mindegyik másolja nagyjából azonos számú bájt. Alapértelmezés szerint a DistCp feladatok 20 leképező használják. A Distcp használatával több leképező (az a vagyok "paraméter a parancssorban) párhuzamosság növeli az adatok átvitel során, és csökkenti az adatok átvitele a hosszát. Azonban két dolgot leképező számának növelése során érdemes figyelembe venni:
+A DistCp egy Apache-projekt, amely egy MapReduce térképi feladatot használ az adatok átviteléhez, a hibák kezeléséhez és a hibák helyreállításához. Hozzárendeli a forrásfájlok listáját az egyes térképi feladatokhoz. A Térkép feladat ezután az összes hozzárendelt fájlt átmásolja a célhelyre. Több módszer is javíthatja a DistCp teljesítményét.
 
-1. A DistCp a legalacsonyabb Granularitás egyetlen fájlt. Forrásfájljainak számánál több leképező számos megadásával nem segít, és lesz a rendelkezésre álló erőforrások pazarlom.
-1. Fontolja meg a rendelkezésre álló Yarn memória leképező számának meghatározásához a fürtön. Térkép feladatokon Yarn tárolójaként indították el. Feltételezve, hogy nincs más terhelés a fürtön futnak, leképező számát határozza meg a következő képletet: m = (munkavégző csomópontok száma \* egyes feldolgozó csomópontok YARN memória) / YARN-tároló mérete. Azonban ha más alkalmazásokat használ a memória, majd válassza a DistCp-feladatok YARN memória egy részét csak használandó.
+### <a name="increase-the-number-of-mappers"></a>A leképezések számának növelésével
 
-### <a name="use-more-than-one-distcp-job"></a>A DistCp egynél több feladat használja
+A DistCp megkísérli létrehozni a leképezési feladatokat, hogy mindegyik példány nagyjából azonos számú bájtot hozzon létre. Alapértelmezés szerint a DistCp-feladatok 20 leképezést használnak. Ha több leképezést használ a Distcp (a "m" paraméterrel a parancssorban), az adatátviteli folyamat során növeli a párhuzamosságot, és csökkenti az adatátvitel hosszát. Azonban két megfontolandó szempontot kell figyelembe vennie a leképezések számának növelésével kapcsolatban:
 
-Ha az adatkészlet áthelyezésének mérete nagyobb, mint 1 TB-os, a DistCp egynél több feladat használja. Több feladat használatával korlátozza a hibák. Ha minden olyan feladat sikertelen, csak indítsa újra az adott feladathoz helyett összes feladat kell.
+1. A DistCp legalacsonyabb részletessége egyetlen fájl. Több, a forrásfájlok számánál nagyobb számú Mapper meghatározása nem segít, és a rendelkezésre álló fürterőforrás-erőforrások pazarlását fogja tartalmazni.
+1. Vegye figyelembe a rendelkezésre álló szál memóriáját a fürtön a leképezések számának megállapításához. Minden leképezési feladat egy szál-tárolóként indul el. Feltételezve, hogy a fürtön nem futnak más nagy terhelésű feladatok, a leképezések számát a következő képlet határozza meg: m = (a feldolgozó csomópontok \* száma az egyes munkavégző csomópontok számára)/a fonalak tárolójának mérete. Ha azonban más alkalmazások is használják a memóriát, a DistCp feladatokhoz csak a FONALak memóriájának egy részét használják.
 
-### <a name="consider-splitting-files"></a>Fontolja meg a fájlok felosztása
+### <a name="use-more-than-one-distcp-job"></a>Egynél több DistCp-feladatot használjon
 
-Ha kevés a nagy méretű fájlok, megfontolása letárolni adattömbökbe beolvasni a több leképező több lehetséges egyidejűséget 256 MB-os fájlt.
+Ha az áthelyezni kívánt adatkészlet mérete nagyobb, mint 1 TB, használjon egynél több DistCp feladatot. Ha egynél több feladatot használ, korlátozza a hibák hatását. Ha bármelyik feladat meghiúsul, csak az összes feladat helyett újra kell indítania az adott feladatot.
 
-### <a name="use-the-strategy-command-line-parameter"></a>"Stratégia" parancssori paraméter
+### <a name="consider-splitting-files"></a>A fájlok felosztásának megfontolása
 
-Fontolja meg `strategy = dynamic` paraméter a parancssorban. Az alapértelmezett érték a `strategy` paraméter `uniform size`, ebben az esetben minden leképezés másolja nagyjából azonos számú bájt. Ha ez a paraméter módosul `dynamic`, a listaelem fájl van felosztva, amelyek több "adattömbök-fájlok". Adatrészlet-fájlok száma a maps számú többszöröse. Térkép feladatokon hozzá van rendelve egy adattömb-fájlt. Követően dolgozzák fel a rendszer az összes elérési utat, a aktuální Blok dat törlődik, és egy új adattömb igényelve. A folyamat folytatódik, amíg nincs több adattömbök nem érhető el. Ez a "dinamikus" megközelítés lehetővé teszi, hogy a gyorsabb térkép-feladatok, mint a lassabb is, így felgyorsítva a teljes feladat a DistCp további elérési utak felhasználásához.
+Ha kis számú nagyméretű fájl van, akkor érdemes megfontolnia, hogy 256 MB méretű fájlokba darabolja őket, hogy nagyobb potenciális párhuzamosságot kapjon a további leképezésekkel.
 
-### <a name="increase-the-number-of-threads"></a>Növelje a szálak száma
+### <a name="use-the-strategy-command-line-parameter"></a>A "stratégia" parancssori paraméter használata
 
-Ha növelése a `-numListstatusThreads` paraméter javítja a teljesítményt. Ezzel a paraméterrel állítható fájl listaelem létrehozásához használni kívánt szálak számát, és 40 a maximális értéket.
+Érdemes lehet `strategy = dynamic` paramétert használni a parancssorban. `strategy` A`uniform size`paraméter alapértelmezett értéke:, ebben az esetben az egyes leképezések nagyjából azonos számú bájtot másolnak. Ha ez a paraméter a értékre `dynamic`módosul, a listaelem több "darab-fájlra" oszlik. Az adathalmazok száma – a fájlok száma a térképek számának többszöröse. Minden Térkép feladathoz hozzá van rendelve egy adathalmaz-fájl. Az adathalmaz összes elérési útjának feldolgozását követően a rendszer törli az aktuális adatrészletet, és új adatrészletet szerez be. A folyamat addig folytatódik, amíg nem állnak rendelkezésre több adathalmaz. Ez a "dinamikus" megközelítés lehetővé teszi a gyorsabb Térkép-feladatok használatát, hogy több útvonalat használjanak, mint a lassabbak, így a DistCp-feladat teljes felgyorsítása.
+
+### <a name="increase-the-number-of-threads"></a>A szálak számának növelésével
+
+Ellenőrizze, hogy a `-numListstatusThreads` paraméter növelése növeli-e a teljesítményt. Ezzel a paraméterrel állítható be, hogy hány szálat kell használni a fájlok listázásához, a 40 pedig a maximális értéket.
 
 ### <a name="use-the-output-committer-algorithm"></a>A kimeneti committer algoritmus használata
 
-Ha a paraméter átadásával `-Dmapreduce.fileoutputcommitter.algorithm.version=2` növeli a DistCp teljesítményt. A kimeneti committer algoritmus rendelkezik optimalizálások körül kimeneti fájlok írása a célhelyre. A következő példa bemutatja a különböző paraméterek használatát a következő parancsot:
+Ellenőrizze, hogy a paraméter `-Dmapreduce.fileoutputcommitter.algorithm.version=2` átadása növeli-e a DistCp teljesítményét. Ez a kimeneti committer algoritmus optimalizációt tartalmaz a kimeneti fájlok célhelyre írásához. A következő parancs egy példát mutat be a különböző paraméterek használatára:
 
 ```bash
 hadoop distcp -Dmapreduce.fileoutputcommitter.algorithm.version=2 -numListstatusThreads 30 -m 100 -strategy dynamic hdfs://nn1:8020/foo/bar wasb://<container_name>@<storage_account_name>.blob.core.windows.net/foo/
 ```
 
-## <a name="metadata-migration"></a>Metaadatok migrálása
+## <a name="metadata-migration"></a>Metaadatok áttelepítése
 
 ### <a name="apache-hive"></a>Apache Hive
 
-A hive-metaadattár a parancsprogramok használatával vagy az adatbázis-replikálás használatával telepíthetők át.
+A struktúra metaadattár áttelepíthetők a parancsfájlok használatával vagy az adatbázis-replikáció használatával.
 
-#### <a name="hive-metastore-migration-using-scripts"></a>Hive-metaadattár áttelepítési parancsfájlok használata
+#### <a name="hive-metastore-migration-using-scripts"></a>Áttelepítés Hive-metaadattár parancsfájlok használatával
 
-1. A Hive-DDLs, a Hive-metaadattár helyi létrehozásához. Ebben a lépésben végezhető használatával egy [burkoló bash-szkript](https://github.com/hdinsight/hdinsight.github.io/blob/master/hive/hive-export-import-metastore.md).
-1. A létrehozott DDL HDFS URL-címet lecseréli a WASB vagy ADLS/ABFS URL-címek szerkesztése.
-1. Futtassa a frissített DDL a metaadattár a HDInsight-fürtből.
+1. Létrehozza a kaptár DDLs a helyszíni Hive-metaadattárból. Ezt a lépést [burkoló bash-parancsfájl](https://github.com/hdinsight/hdinsight.github.io/blob/master/hive/hive-export-import-metastore.md)használatával teheti meg.
+1. Szerkessze a generált DDL-t a HDFS URL-cím WASB/ADLS/ABFS URL-címekre való lecseréléséhez.
+1. Futtassa a frissített DDL-t a metaadattár a HDInsight-fürtből.
 1. Győződjön meg arról, hogy a Hive-metaadattár verziója kompatibilis a helyszíni és a felhő között.
 
-#### <a name="hive-metastore-migration-using-db-replication"></a>Hive-metaadattár migrálás, adatbázis-replikációval
+#### <a name="hive-metastore-migration-using-db-replication"></a>Áttelepítés Hive-metaadattár adatbázis-replikáció használatával
 
-- Adatbázis-replikáció beállítása a helyszíni Hive-metaadattár DB és a HDInsight-metaadattár DB között.
-- Használja a "Hive MetaTool" HDFS URL-címet lecseréli WASB vagy ADLS/ABFS URL-címek, például:
+- Adatbázis-replikáció beállítása a helyszíni Hive-metaadattár DB és a HDInsight metaadattár DB között.
+- Használja a "kaptár MetaTool" a HDFS URL-cím lecserélése a WASB/ADLS/ABFS URL-címekkel, például:
 
 ```bash
 ./hive --service metatool -updateLocation hdfs://nn1:8020/ wasb://<container_name>@<storage_account_name>.blob.core.windows.net/
@@ -109,12 +108,12 @@ A hive-metaadattár a parancsprogramok használatával vagy az adatbázis-replik
 
 ### <a name="apache-ranger"></a>Apache Ranger
 
-- Exportálja a helyi Ranger-házirendek xml-fájlok.
-- Alakítsa át a helyszíni egyedi HDFS-alapú elérési utak a WASB vagy ADLS XSLT hasonló eszköz használatával.
-- A HDInsight futó Ranger be házirendek importálása.
+- Helyszíni Ranger-házirendek exportálása XML-fájlokba.
+- Alakítsa át a helyszíni specifikus HDFS-alapú útvonalakat a WASB/ADLS-ra egy olyan eszközzel, mint az XSLT.
+- Importálja a szabályzatokat a HDInsight-on futó Rangerre.
 
 ## <a name="next-steps"></a>További lépések
 
-Olvassa el az oktatóanyag-sorozatban a következő cikkben:
+Olvassa el a következő cikket a sorozatban:
 
-- [Gyakorlati tanácsok az Azure HDInsight Hadoop-áttelepítési helyszíni biztonsági és DevOps](apache-hadoop-on-premises-migration-best-practices-security-devops.md)
+- [Biztonsági és DevOps ajánlott eljárások helyszíni Azure HDInsight Hadoop áttelepítéshez](apache-hadoop-on-premises-migration-best-practices-security-devops.md)

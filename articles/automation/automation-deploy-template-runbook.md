@@ -4,18 +4,18 @@ description: Az Azure Storage tárolja egy runbookból egy Azure Resource Manage
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
 keywords: PowerShell, a runbook, json, az azure automation
-ms.openlocfilehash: 2008ba697665baa0e8cf73564ec31d6267425404
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: d9fab97c8c42c7ff7993c3d7203deb8a58a10bc9
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58446968"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476712"
 ---
 # <a name="deploy-an-azure-resource-manager-template-in-an-azure-automation-powershell-runbook"></a>Azure Resource Manager-sablon üzembe helyezése Azure Automation PowerShell-runbookban
 
@@ -238,7 +238,7 @@ Láthatja, hogy az új storage-fiók létrejött-e a következő parancs futtat�
 Get-AzureRmStorageAccount
 ```
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Ennyi az egész! Most már az Azure Automation és az Azure Storage és a Resource Manager-sablonok segítségével az Azure-erőforrások üzembe helyezése.
 

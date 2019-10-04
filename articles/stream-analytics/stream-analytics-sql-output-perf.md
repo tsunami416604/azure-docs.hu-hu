@@ -1,59 +1,59 @@
 ---
-title: Az Azure SQL Database Azure Stream Analytics-kimenet
-description: Ismerje meg az Azure Stream Analytics ad ki adatokat az SQL Azure és a nagyobb írási teljesítmény arányt érhet el.
+title: Azure Stream Analytics kimenet Azure SQL Database
+description: Ismerkedjen meg az adatok SQL Azure Azure Stream Analytics és magasabb írási sebesség elérésével.
 services: stream-analytics
 author: chetanmsft
-ms.author: chetanmsft
+ms.author: chetang
 manager: katiiceva
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 3/18/2019
-ms.openlocfilehash: 4be73554df0b6bddaafe3910c80c855e127d79f1
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.date: 03/18/2019
+ms.openlocfilehash: 7845833a0269514c8fdbd093e18d4516ff9567d9
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527999"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173002"
 ---
-# <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Az Azure SQL Database Azure Stream Analytics-kimenet
+# <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Azure Stream Analytics kimenet Azure SQL Database
 
-Ez a cikk ismerteti a tippek jobb írási átviteli teljesítményt érhet el, amikor adatokat tölt be az Azure Stream Analytics SQL Azure Database-be.
+Ez a cikk azokat a tippeket ismerteti, amelyekkel jobb írási teljesítmény érhető el, ha az adatok betöltését SQL Azure adatbázisba Azure Stream Analytics használatával végezheti el.
 
-SQL-kimenet az Azure Stream Analytics támogatja a párhuzamos beállítás írása. Ez a beállítás lehetővé teszi, hogy a [teljes párhuzamos](stream-analytics-parallelization.md#embarrassingly-parallel-jobs) topológiákat, ahol több kimeneti partíció írása a céltáblába párhuzamos feladat. Ezzel a beállítással az Azure Stream Analytics azonban nem lehet magasabb szintű termékváltozatot jelentős mértékben függ az SQL Azure adatbázis-konfiguráció és a következő tábla sémáját, eléréséhez elegendő. A kiválasztott indexek, a fürtszolgáltatás key index kitöltési tényező és tömörítés hatással a táblák betöltéséhez szükséges időt. Lekérdezés és a teljesítményt biztosító belső referenciaalapokhoz képest történő betöltése az SQL Azure adatbázis optimalizálása kapcsolatos további információkért lásd: [útmutató az SQL database teljesítményének növeléséhez](../sql-database/sql-database-performance-guidance.md). Az írások rendezése nem garantált, párhuzamos SQL Azure adatbázis írásakor.
+A Azure Stream Analyticsban az SQL-kimenet támogatja az írást párhuzamosan, lehetőségként. Ez a beállítás lehetővé teszi a [teljes párhuzamos](stream-analytics-parallelization.md#embarrassingly-parallel-jobs) feladatok topológiáit, amelyekben egyszerre több kimeneti partíció is írásra kerül a célhely táblába. A beállítás engedélyezése Azure Stream Analytics azonban nem elegendő a magasabb átviteli sebességek eléréséhez, mivel ez jelentős mértékben függ a SQL Azure adatbázis-konfigurációtól és a tábla sémájától. Az indexek, a fürtözési kulcs, az indexek kitöltési tényezője és a tömörítés megválasztása hatással van a táblázatok betöltésének idejére. A SQL Azure-adatbázis optimalizálásával kapcsolatos további információkért tekintse meg az [SQL Database teljesítményének útmutatója](../sql-database/sql-database-performance-guidance.md)című témakört a lekérdezés és a teljesítmény javítása érdekében. Az írási sorrend nem garantált a SQL Azure adatbázissal párhuzamos íráskor.
 
-Az alábbiakban az egyes szolgáltatásban, amelyekkel javíthatja a megoldás teljes átviteli sebesség bizonyos konfigurációk.
+Íme néhány konfiguráció az egyes szolgáltatásokon belül, amelyek segíthetnek a megoldás általános teljesítményének javításában.
 
 ## <a name="azure-stream-analytics"></a>Azure Stream Analytics
 
-- **Particionálás öröklése** – Ez az SQL kimeneti konfigurációs beállítás lehetővé teszi, hogy örökli az előző lekérdezés lépés vagy a bemeneti particionálási sémát. A beállítás engedélyezve van, a lemezalapú táblák írása, és a egy [teljes párhuzamos](stream-analytics-parallelization.md#embarrassingly-parallel-jobs) a feladat, topológia várt jobb termékváltozatokat. A particionálás már automatikusan történik, számos más [kimenete](stream-analytics-parallelization.md#partitions-in-sources-and-sinks). Ezzel a beállítással végrehajtott tömeges Beszúrások a tábla zárolása (TABLOCK) is letiltja.
+- **Particionálás öröklése** – ez az SQL kimeneti konfigurációs beállítás lehetővé teszi az előző lekérdezési lépés vagy bemenet particionálási sémájának öröklését. Ezzel a beállítással egy lemezes táblára írhat, és [teljes mértékben párhuzamos](stream-analytics-parallelization.md#embarrassingly-parallel-jobs) topológiával rendelkezik a feladatokhoz, ezért várhatóan jobb teljesítmény érhető el. Ez a particionálás már automatikusan megtörténik számos más [kimenetnél](stream-analytics-parallelization.md#partitions-in-sources-and-sinks). A tábla zárolása (TABLOCK opció) le van tiltva az ezzel a kapcsolóval készített tömeges beszúrások esetében is.
 
 > [!NOTE] 
-> Ha több mint 8 bemeneti partíció, örökli a particionálási séma bemeneti adatok nem feltétlenül megfelelő választás. Ez a felső határ figyelhető meg egyetlen identitás oszlopa és a egy fürtözött indexet tartalmazó táblán. Ebben az esetben érdemes lehet [INTO](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count) 8 az lekérdezésekben, explicit módon adja meg a kimeneti írók számát. A séma- és az indexek választás alapján a megfigyelések eltérőek lehetnek.
+> Ha több mint 8 bemeneti partíció van, akkor előfordulhat, hogy a bemeneti particionálási séma öröklése nem megfelelő választás. Ez a felső korlát egyetlen azonosító oszlopot és egy fürtözött indexet tartalmazó táblában volt megfigyelve. Ebben az esetben érdemes a lekérdezésben 8-at használni, hogy explicit módon meg lehessen adni a kimeneti írók számát. [](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count) A séma és az indexek kiválasztása alapján a megfigyelések eltérőek lehetnek.
 
-- **Kötegméret** – SQL kimeneti konfiguráció lehetővé teszi, hogy adja meg a Köteg maximális mérete egy Azure Stream Analytics SQL kimeneti jellegét a céloldali tábla/számítási feladatok alapján. A köteg méretét kötelező minden tömeges küldött rekordok maximális száma helyezze be a tranzakciót. Fürtözött oszlopcentrikus indexek, a batch-méretek körül [100 ezer](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance) lehetővé teszik a további ezerszer minimális naplózás és optimalizálásokat zárolását. A lemezalapú táblák 10 ezer (alapértelmezett), vagy alacsonyabb lehet a megoldás optimális magasabb köteg méretek kezdeményezheti a zárolás eszkalációs tömeges Beszúrások során.
+- **Batch-méret** – az SQL kimeneti konfiguráció lehetővé teszi, hogy egy Azure stream Analytics SQL-kimenetben megadja a Batch maximális méretét a céltábla/munkaterhelések természetétől függően. A köteg mérete az összes tömegesen beszúrt tranzakcióval ellátott rekordok maximális száma. A fürtözött oszlopcentrikus indexekben a 100 000-es [](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance) köteg mérete nagyobb párhuzamos, minimális naplózást és zárolási optimalizálást tesz lehetővé. A lemezes táblákban a 10K (alapértelmezett) vagy az alacsonyabb érték lehet optimális a megoldáshoz, mivel a nagyobb méretű kötegek a tömeges beszúrások során is kiválthatják a zárolási eszkalációt.
 
-- **Bemeneti üzenet hangolása** – Ha Ön már optimalizált használatával particionálás és a batch méret öröklése, egy üzenet partíciónként bemeneti események számának növelésével segít a további leküldése másolatot az írható átviteli sebességet. Bemeneti üzenet hangolása lehetővé teszi, hogy a köteg méretek belül az Azure Stream Analytics, legfeljebb a megadott Batch-méret, ezáltal javul a teljesítmény. Ez használatával érhető el [tömörítési](stream-analytics-define-inputs.md) vagy az EventHub- vagy Blob bemeneti üzenet méretének növelését.
+- **Bemeneti üzenet finombeállítása** – ha optimalizálta a particionálás és a köteg méretének öröklését, az üzenetekben lévő bemeneti események számának növelésével az írási sebesség tovább fog megjelenni. A bemeneti üzenet finomhangolása lehetővé teszi, hogy a Azure Stream Analytics belül a Batch-méretek a megadott batch-méretig legyenek felhasználva, ami javítja a teljesítményt. Ez tömörítéssel vagy a bemeneti [](stream-analytics-define-inputs.md) üzenetek méretének növelésével érhető el a EventHub vagy a blobban.
 
 ## <a name="sql-azure"></a>SQL Azure
 
-- **Particionált tábla- és az indexek** – használatával egy [particionált](https://docs.microsoft.com/sql/relational-databases/partitions/partitioned-tables-and-indexes?view=sql-server-2017) SQL-táblát és az azonos a partíciókulccsal (például PartitionId) oszlopot az a tábla particionált indexei jelentősen csökkentheti a versenyt között a partíciók írási műveletek során. A particionált táblára vonatkozóan kell létrehozni egy [partíciós függvényei](https://docs.microsoft.com/sql/t-sql/statements/create-partition-function-transact-sql?view=sql-server-2017) és a egy [partícióséma](https://docs.microsoft.com/sql/t-sql/statements/create-partition-scheme-transact-sql?view=sql-server-2017) az elsődleges fájlcsoportban. Meglévő adatok rendelkezésre állását is ez megnöveli a új adatok betöltése közben. Előfordulhat, hogy eléri a napló i/o-korlát növelhető a Termékváltozat frissítésével partíciók száma alapján.
+- **Particionált tábla és indexek** – particionált [](https://docs.microsoft.com/sql/relational-databases/partitions/partitioned-tables-and-indexes?view=sql-server-2017) SQL-táblázat és particionált indexek használatával a táblán ugyanazzal az oszloppal, mint a partíciós kulccsal (például PartitionID) az írás során jelentősen csökkenthetik a partíciók közötti adattartalmakat. Particionált tábla esetén létre kell hoznia egy [Partition függvényt](https://docs.microsoft.com/sql/t-sql/statements/create-partition-function-transact-sql?view=sql-server-2017) és egy partíciós [sémát](https://docs.microsoft.com/sql/t-sql/statements/create-partition-scheme-transact-sql?view=sql-server-2017) az elsődleges fájlcsoportja. Ez a meglévő adatmennyiségek rendelkezésre állását is növeli az új adatbetöltések során. A log IO-korlát lehet a partíciók száma alapján, ami növelhető az SKU frissítésével.
 
-- **Egyedi kulcs hiba elkerülése érdekében** – Ha [több kulcsok protokollmegsértési figyelmeztető üzenetek](stream-analytics-common-troubleshooting-issues.md#handle-duplicate-records-in-azure-sql-database-output) Azure Stream Analytics tevékenységnaplóban győződjön meg, hogy a feladat egyedi korlátozás megsértése, valószínű, amelyek nem befolyásolják. során helyreállítási esetek. Ez elkerülhető az azzal a [figyelmen kívül HAGYÁSA\_Ismétlődő\_kulcs](stream-analytics-common-troubleshooting-issues.md#handle-duplicate-records-in-azure-sql-database-output) az indexek lehetőséget.
+- **Kerülje az egyedi kulcs megsértését** – ha [több kulcs megsértését jelző figyelmeztető üzenetet](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) kap a Azure stream Analyticsi tevékenység naplójában, ügyeljen arra, hogy a feladatot ne befolyásolja az egyedi korlátozás megsértése, amely valószínűleg a helyreállítási esetekben fog történni. Ennek elkerüléséhez állítsa be a [\_dup-\_kulcs mellőzése](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) beállítást az indexeken.
 
-## <a name="azure-data-factory-and-in-memory-tables"></a>Az Azure Data Factory és a táblák
+## <a name="azure-data-factory-and-in-memory-tables"></a>Azure Data Factory és memóriában tárolt táblák
 
-- **Memóriabeli ideiglenes tábla a táblázatban** – [memórián belüli táblák](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) lehetővé teszik a nagyon nagy sebességű adatbetöltést, de az adatokat a memóriában megfelelően kell. Referenciaalapokhoz képest történő megjelenítése tömeges betöltése egy memórián belüli táblából, a lemezalapú táblák 10-szer gyorsabb, mint a közvetlenül tömeges beszúrás, egyetlen író használata a lemezalapú táblához identity oszlopot és a egy fürtözött index. A tömeges beszúrás teljesítményét kihasználva, állítsa be a [használata Azure Data Factory másolási feladat](../data-factory/connector-azure-sql-database.md) , amely adatokat másol a memóriában lévő táblában a lemezalapú táblák.
+- Memóriában tárolt **tábla** – a memóriában lévő [táblák](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) , amelyek nagy sebességű adatterheléseket tesznek lehetővé, de az adatmennyiségnek a memóriában kell lennie. A Teljesítménytesztek egy memóriában tárolt táblázatból származó tömeges betöltést jelenítenek meg a lemezes táblákhoz képest, mint a közvetlen tömeges beszúrások egy azonosító oszlop és egy fürtözött index használatával történő, a lemezes táblába való közvetlen kihelyezése során. A tömeges beszúrási teljesítmény kihasználása érdekében állítson be egy [másolási feladatot olyan Azure Data Factory használatával](../data-factory/connector-azure-sql-database.md) , amely az adatok memóriából való másolása a lemez alapú táblába.
 
-## <a name="avoiding-performance-pitfalls"></a>Teljesítmény Alkalmazásmegoldásokra elkerülése
-Adatok beszúrása tömeges sokkal gyorsabb, mint az egyszeres beszúrást hajt végre az adatok betöltése, mert az ismétlődő elkerülhető az adatátvitel, az insert utasítás elemzés, az utasítás futtatása és kiállító tranzakció rekord járó többletterhelést. Ehelyett egy hatékonyabb elérési utat használjuk, a storage-motor az adatok továbbításához. Ezt az elérési utat a telepítő költsége azonban sokkal magasabb, mint a lemezalapú táblák egy insert utasítás. A megtérülési pont mérete általában körülbelül 100 sor, túli tömeges betöltési szinte mindig további hatékony. 
+## <a name="avoiding-performance-pitfalls"></a>A teljesítménybeli buktatók elkerülése
+Az adatok tömeges beszúrása sokkal gyorsabb, mint az adatok betöltése egyetlen beszúrással, mert az adatok átvitelének ismétlődő terhelése, az INSERT utasítás elemzése, az utasítás futtatása és a tranzakciós rekord kiállítása elkerülhető. Ehelyett a tárolási motor hatékonyabb elérési utat használ az adatstreamek továbbításához. Az elérési út telepítési díja azonban sokkal nagyobb, mint egy lemezes tábla egyetlen INSERT utasítása. A break-even pont általában körülbelül 100 sor, amelyeken a tömeges betöltés szinte mindig hatékonyabb. 
 
-Ha a bejövő események aránya alacsony, könnyedén létrehozható köteg méretek alacsonyabb, mint 100 sor, amely lehetővé teszi a tömeges beszúrás nem elég hatékony és túl sok lemezterületet használ. A probléma megoldásához, az alábbi műveletek egyikét teheti:
-* Hozzon létre egy INSTEAD OF [eseményindító](/sql/t-sql/statements/create-trigger-transact-sql) egyszerű insert használata minden egyes sorára.
-* Használjon egy memóriabeli ideiglenes táblára, az előző szakaszban leírtak szerint.
+Ha a bejövő események aránya alacsony, könnyedén létrehozhat 100-nál kisebb méretű kötegeket, így a tömeges Beszúrás nem hatékony, és túl sok lemezterületet használ. A korlátozás megkerüléséhez a következő műveletek közül választhat:
+* Az [trigger](/sql/t-sql/statements/create-trigger-transact-sql) helyett hozzon létre egyszerű beszúrást az összes sorhoz.
+* Használjon az előző szakaszban leírtak szerint memóriában lévő ideiglenes táblázatot.
 
-Egy másik ilyen forgatókönyv esetén a írása (NCCI), nem fürtözött oszlopcentrikus indexbe, kisebb tömeges Beszúrások hozható létre, amelyek az index lefagyhat túl sok szegmensek. Ebben az esetben a javaslatot, hogy a fürtözött Oszlopcentrikus index használja helyette.
+Egy másik ilyen forgatókönyv akkor fordul elő, ha nem fürtözött oszlopcentrikus indexbe (NCCI) ír, ahol a kisebb tömeges beszúrások túl sok szegmenst hozhatnak létre, ami összeomlhat az indexben. Ebben az esetben az ajánlott, hogy fürtözött Oszlopcentrikus indexet használjon.
 
 ## <a name="summary"></a>Összegzés
 
-Összefoglalva, az SQL-kimenet, az Azure Stream Analytics a particionált kimeneti szolgáltatásával a feladat egy particionált tábla az SQL Azure igazított ezerszer kell lehetővé teszik, jelentős átviteli fejlesztései. Azure Data Factory felhasználásával a lemezalapú táblák be egy memórián belüli táblából adatáthelyezés vezénylésre biztosíthat nagyságrendű átvitelisebesség-növekedések. Ha lehetséges, üzenet sűrűségű javítására is tényező teljes átviteli sebesség növelése.
+Összefoglalva, az SQL-kimenethez Azure Stream Analytics particionált kimeneti funkciójával, a feladatoknak a SQL Azure particionált táblájával való igazításával jelentős teljesítménybeli párhuzamos kell biztosítania. A memóriából származó táblázatokból a lemezes táblákba való adatáthelyezés előkészítésének Azure Data Factory kihasználása jelentős teljesítménybeli nyereségek sorrendjét eredményezheti. Ha lehetséges, az üzenetek sűrűségének javítása is jelentős tényező lehet a teljes átviteli sebesség javításában.

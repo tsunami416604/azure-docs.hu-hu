@@ -6,13 +6,13 @@ ms.author: raagyema
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 11/10/2018
-ms.openlocfilehash: 403f111882b1bd151b26af56fd614355e7ba88e3
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 06/12/2019
+ms.openlocfilehash: 9fff9f13e5ce6bf8a7805f7794d3e71eb4030104
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53539211"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67065685"
 ---
 # <a name="configure-and-access-server-logs-by-using-azure-cli"></a>Konfigurálja és kiszolgálói naplók elérése az Azure CLI-vel
 Az Azure Database for MariaDB naplók az Azure CLI, az Azure parancssori segédprogram használatával töltheti le.
@@ -38,7 +38,7 @@ az mariadb server configuration list --resource-group myresourcegroup --server m
 ```
 
 ## <a name="list-logs-for-azure-database-for-mariadb-server"></a>Lista naplók az Azure Database for MariaDB-kiszolgáló
-A kiszolgáló elérhető naplófájlok felsorolása, futtassa a [az mariadb-server-logs list](/cli/azure/mariadb/server-logs#az-mariadb-server-logs-list) parancsot.
+A kiszolgáló elérhető a lassú lekérdezések naplófájlok felsorolása, futtassa a [az mariadb-server-logs list](/cli/azure/mariadb/server-logs#az-mariadb-server-logs-list) parancsot.
 
 A naplófájlokban található kiszolgáló listázhatja **mydemoserver.mariadb.database.azure.com** az erőforráscsoportba tartozó **myresourcegroup**. A lista a naplófájlok nevű szövegfájlba majd közvetlen **log\_fájlok\_lista.txt**.
 ```azurecli-interactive
@@ -53,4 +53,4 @@ az mariadb server-logs download --name mysql-slow-mydemoserver-2018110800.log --
 ```
 
 ## <a name="next-steps"></a>További lépések
-- Ismerje meg [kiszolgálói naplók az Azure Database for MariaDB](concepts-server-logs.md).
+- Ismerje meg [lassú lekérdezések naplók az Azure Database for MariaDB](concepts-server-logs.md).

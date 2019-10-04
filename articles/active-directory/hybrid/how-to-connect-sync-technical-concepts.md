@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b8ec4a6100cfbb4419d7e30f4b97589113b88939
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56164328"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60347574"
 ---
 # <a name="azure-ad-connect-sync-technical-concepts"></a>Az Azure AD Connect szinkronizálása: Műszaki fogalmak
 Ebben a cikkben található egy összefoglaló az a témakör [ismertetése architektúra](how-to-connect-sync-technical-concepts.md).

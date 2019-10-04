@@ -13,14 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 15b986d4e7567be48c582e4a39b727ab110de2be
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ecb704253597bf4eb5672fe924a0dafc4c1b3fd1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58181503"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64726556"
 ---
 # <a name="use-azure-ad-authentication-to-access-azure-media-services-api-with-net"></a>Az Azure AD-hitelesítés használata az Azure Media Services API .NET-keretrendszerrel történő eléréséhez
+
+> [!NOTE]
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még [v3 a v2 migrálási útmutató](../latest/migrate-from-v2-to-v3.md)
 
 Windowsazure.mediaservices 4.0.0.4 verziótól kezdődően az Azure Media Services támogatja az Azure Active Directory (Azure AD-) alapú hitelesítést. Ez a témakör bemutatja, hogyan eléréséhez az Azure Media Services API a Microsoft .NET-tel az Azure AD-hitelesítés használható.
 

@@ -7,19 +7,19 @@ author: zhangmanling
 manager: zhangmanling
 editor: ''
 ms.assetid: 837018e3-03e6-4f9c-a23e-4b63d5707a64
-ms.service: cdn
+ms.service: azure-cdn
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/17/2017
 ms.author: mezha
-ms.openlocfilehash: 75d6fb063a6cb5336a4d9945bf6a79a65ed25d40
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: fa71f472294b91baebc2a6075ddb2b50123e545d
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58918892"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593397"
 ---
 # <a name="securing-azure-cdn-assets-with-token-authentication"></a>Az eszközjogkivonattal történő hitelesítés az Azure CDN-eszközök védelme
 
@@ -33,7 +33,7 @@ Jogkivonat-hitelesítés olyan mechanizmus, amely lehetővé teszi, hogy megakad
 
 Jogkivonat-hitelesítés ellenőrzi, hogy kérelmeket alapján jönnek létre a megbízható helyek úgy, hogy visszatartással kódolású a kérelmező információ token értéket tartalmazó kérelmek. Tartalomkézbesítés egy kérelmezőnek csak akkor, ha a kódolt információt kielégíti; Ellenkező esetben kérelmek elutasítva. A követelmények beállítása egy vagy több, a következő paraméterek közül:
 
-- Ország/régió: Engedélyezi vagy megtagadja a által meghatározott országokból kérelmekkel azok [országkód](/previous-versions/azure/mt761717(v=azure.100)).
+- Ország/régió: Engedélyezi vagy megtagadja a megadott országokból/régiókból származó kérelmekkel azok [országkód](/previous-versions/azure/mt761717(v=azure.100)).
 - URL-cím: Csak azok a kérelmek, amelyek megfelelnek a megadott eszköz vagy az elérési út engedélyezése.
 - Gazdagép: Engedélyezése vagy letiltása a kérelem fejlécében a megadott gazdagépek kérelmeket.
 - Hivatkozó: Engedélyezi vagy elutasítja a kérelmet, a megadott hivatkozó.
@@ -86,7 +86,7 @@ A következő folyamatábra szemlélteti azt ismerteti, hogyan Azure CDN érvén
 
       ![CDN jogkivonat hitelesítési telepítési kulcs](./media/cdn-token-auth/cdn-token-auth-setupkey.png)
     
-   4. A titkosítás eszközzel titkosítási paraméterek beállítása és a egy jogkivonatot. A titkosítás eszközzel engedélyezheti vagy megtagadja a kérelmet lejárati idő, az ország, a hivatkozó, a protokoll és a ügyfél IP-Címét (a tetszőleges kombinációjának) alapján. Bár nincs korlátozva a számát és kombinációja, amely az űrlap-token paraméterek, a teljes jogkivonat hossza legfeljebb 512 karakter hosszúságú lehet. 
+   4. A titkosítás eszközzel titkosítási paraméterek beállítása és a egy jogkivonatot. A titkosítás eszközzel engedélyezheti vagy megtagadhatja a kérések a lejárati időt, ország/régió, hivatkozó, protokoll és ügyfél IP-Címét (a tetszőleges kombinációjának) alapján. Bár nincs korlátozva a számát és kombinációja, amely az űrlap-token paraméterek, a teljes jogkivonat hossza legfeljebb 512 karakter hosszúságú lehet. 
 
       ![CDN eszköz titkosítása](./media/cdn-token-auth/cdn-token-auth-encrypttool.png)
 
@@ -120,11 +120,11 @@ A következő folyamatábra szemlélteti azt ismerteti, hogyan Azure CDN érvén
       > </tr>
       > <tr>
       >    <td><b>ec_country_allow</b></td> 
-      >    <td>Csak lehetővé teszi, hogy egy vagy több megadott országokból kérelmekkel. A rendszer megtagadta a más országokból kérelmekkel. Használja a kétbetűs [ISO 3166 országkód](/previous-versions/azure/mt761717(v=azure.100)) országokra, és mindegyiket egy-egy vesszővel tagolt külön; ne vegyen fel egy helyet. Ha azt szeretné, engedélyezze a hozzáférést csak az Egyesült Államokban és Franciaország, írja be például `US,FR`.</td>
+      >    <td>Csak lehetővé teszi, hogy egy vagy több megadott országokból/régiókból származó kérelmekkel. A rendszer megtagadta a minden más országokból/régiókból származó kérelmekkel. Használja a kétbetűs [ISO 3166 országkód](/previous-versions/azure/mt761717(v=azure.100)) országokra, és mindegyiket egy-egy vesszővel tagolt külön; ne vegyen fel egy helyet. Ha azt szeretné, engedélyezze a hozzáférést csak az Egyesült Államokban és Franciaország, írja be például `US,FR`.</td>
       > </tr>
       > <tr>
       >    <td><b>ec_country_deny</b></td> 
-      >    <td>Egy vagy több megadott országokból kérelmekkel megtagadja. Más országokból kérelmekkel engedélyezettek. A megvalósítás pedig ugyanaz, mint a <b>ec_country_allow</b> paraméter. Ha az országkódot is megtalálható a <b>ec_country_allow</b> és <b>ec_country_deny</b> paraméterek, a <b>ec_country_allow</b> paraméter élvez elsőbbséget.</td>
+      >    <td>Egy vagy több megadott országokból/régiókból származó kérelmekkel megtagadja. Minden más országokból/régiókból származó kérelmekkel engedélyezettek. A megvalósítás pedig ugyanaz, mint a <b>ec_country_allow</b> paraméter. Ha az országkódot is megtalálható a <b>ec_country_allow</b> és <b>ec_country_deny</b> paraméterek, a <b>ec_country_allow</b> paraméter élvez elsőbbséget.</td>
       > </tr>
       > <tr>
       >    <td><b>ec_ref_allow</b></td>
@@ -173,17 +173,17 @@ A következő folyamatábra szemlélteti azt ismerteti, hogyan Azure CDN érvén
 3. A **HTTP nagy**válassza **Szabálymotorral**. A rules engine használatával határozza meg az elérési utak a alkalmazni a funkció, a jogkivonat-hitelesítés engedélyezéséhez és további jogkivonat hitelesítési képességek engedélyezéséhez. További információkért lásd: [szabálymotor-referencia](cdn-rules-engine-reference.md).
 
    1. Jelöljön ki egy meglévő szabályt, vagy hozzon létre egy új szabályt, amelynek a tokent használó hitelesítés biztosítását a alkalmazni szeretné az eszközintelligencia vagy elérési útja. 
-   2. A szabályok jogkivonat-hitelesítés engedélyezéséhez jelölje be **[jogkivonat hitelesítési](cdn-rules-engine-reference-features.md#token-auth)** a a **funkciók** listában, majd válassza ki **engedélyezve**. Válassza ki **frissítés** szabály frissítésekor vagy **Hozzáadás** szabály létrehozásakor.
+   2. A szabályok jogkivonat-hitelesítés engedélyezéséhez jelölje be **[jogkivonat hitelesítési](cdn-verizon-premium-rules-engine-reference-features.md#token-auth)** a a **funkciók** listában, majd válassza ki **engedélyezve**. Válassza ki **frissítés** szabály frissítésekor vagy **Hozzáadás** szabály létrehozásakor.
         
       ![CDN szabálymotor eszközjogkivonattal történő hitelesítés engedélyezése példa](./media/cdn-token-auth/cdn-rules-engine-enable2.png)
 
 4. A rules engine további jogkivonat hitelesítési szolgáltatások is engedélyezheti. A következő funkciók engedélyezéséhez válassza ki a **funkciók** listában, majd válassza ki **engedélyezve**.
     
-   - **[Jogkivonat-hitelesítés megtagadása kód](cdn-rules-engine-reference-features.md#token-auth-denial-code)**: Amikor a rendszer megtagadja a kérelmet a felhasználó visszaadott válaszának típusa határozza meg. Itt beállított szabályok felülbírálják a válaszkód, állítsa be a **egyéni elutasítási kezelése** szakasz a hitelesítési jogkivonat-alapú lapon.
+   - **[Jogkivonat-hitelesítés megtagadása kód](cdn-verizon-premium-rules-engine-reference-features.md#token-auth-denial-code)** : Amikor a rendszer megtagadja a kérelmet a felhasználó visszaadott válaszának típusa határozza meg. Itt beállított szabályok felülbírálják a válaszkód, állítsa be a **egyéni elutasítási kezelése** szakasz a hitelesítési jogkivonat-alapú lapon.
 
-   - **[Jogkivonat hitelesítési URL-cím egyezőek](cdn-rules-engine-reference-features.md#token-auth-ignore-url-case)**: Meghatározza, hogy a jogkivonat érvényesítéséhez használt URL-cím kis-és nagybetűket.
+   - **[Jogkivonat hitelesítési URL-cím egyezőek](cdn-verizon-premium-rules-engine-reference-features.md#token-auth-ignore-url-case)** : Meghatározza, hogy a jogkivonat érvényesítéséhez használt URL-cím kis-és nagybetűket.
 
-   - **[Jogkivonat-hitelesítés paraméter](cdn-rules-engine-reference-features.md#token-auth-parameter)**: Átnevezi a hitelesítési jogkivonat lekérdezésisztring-paraméter, amely a kért URL-cím jelenik meg. 
+   - **[Jogkivonat-hitelesítés paraméter](cdn-verizon-premium-rules-engine-reference-features.md#token-auth-parameter)** : Átnevezi a hitelesítési jogkivonat lekérdezésisztring-paraméter, amely a kért URL-cím jelenik meg. 
         
      ![CDN szabálymotor jogkivonat-hitelesítés beállításai példa](./media/cdn-token-auth/cdn-rules-engine2.png)
 

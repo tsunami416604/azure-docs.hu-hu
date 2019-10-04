@@ -5,26 +5,26 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 17778b3edf1845d85302a0bcdf72a1ebc3919cea
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50227354"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "67179057"
 ---
-## <a name="viewing-your-tags-in-the-usage-details"></a>A használat részleteiről a címkék megtekintése
-A számítási, hálózati, elhelyezett címkék és a Resource Manager-alapú üzemi modellben tárerőforrások tölti fel a használattal kapcsolatos részletek az [számlázási portálon](https://account.windowsazure.com/).
+## <a name="viewing-your-tags-in-the-usage-details"></a>A címkék megtekintése a használati adatokban
+A Resource Manager-alapú üzemi modellben a számítási, hálózati és tárolási erőforrásokra helyezett címkéket a rendszer a [Számlázási portál](https://account.windowsazure.com/)használati adataiban tölti fel.
 
-Kattintson a **töltse le a használat részleteiről** az előfizetésében a használati adatok megtekintéséhez.
+A használati adatok **letöltése** elemre kattintva megtekintheti az előfizetésében található használati adatokat.
 
-![Használat részletei az Azure Portalon](./media/virtual-machines-common-tag-usage/azure-portal-tags-usage-details.png)
+![Használati adatok Azure Portal](./media/virtual-machines-common-tag-usage/azure-portal-tags-usage-details.png)
 
-Válassza ki a számlát, és a **2-es verzió** használatról:
+Válassza ki a számlázási utasítást és a **2-es verzió** használati részleteit:
 
-![2. verziója előzetes verzió használati részletei az Azure Portalon](./media/virtual-machines-common-tag-usage/azure-portal-version2-usage-details.png)
+![2\. verzió – előzetes használat részletei a Azure Portal](./media/virtual-machines-common-tag-usage/azure-portal-version2-usage-details.png)
 
-A használat részleteiről tekintheti meg a címkék a **címkék** oszlopban:
+A használati adatokból a **címkék** oszlopban láthatja az összes címkét:
 
-![A címkék oszlop az Azure Portalon](./media/virtual-machines-common-tag-usage/azure-portal-tags-column.png)
+![Címkék oszlop a Azure Portal](./media/virtual-machines-common-tag-usage/azure-portal-tags-column.png)
 
-Ezekkel a címkékkel, valamint a használati adatainak elemzésével, szervezetek fog tudni új információkhoz juthat a használati adatokat.
+Ha ezeket a címkéket a használattal együtt elemzi, a szervezetek új elemzéseket nyerhetnek az adatfelhasználási adatokból.
 

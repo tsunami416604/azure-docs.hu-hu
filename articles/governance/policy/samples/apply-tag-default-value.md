@@ -8,11 +8,11 @@ ms.topic: sample
 ms.date: 01/26/2019
 ms.author: dacoulte
 ms.openlocfilehash: a9ad211ac1ef9889fcff9646f30fe306458c3538
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59266647"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60549699"
 ---
 # <a name="sample---apply-tag-and-its-default-value"></a>Minta – címke és az alapértelmezett címkeérték alkalmazása
 
@@ -50,7 +50,7 @@ A szabályzat paramétereit Azure CLI és Azure PowerShell segítségével megha
 
 [!code-json[parameters](../../../../policy-templates/samples/built-in-policy/apply-default-tag-value/azurepolicy.parameters.json "Policy parameters (JSON)")]
 
-|Name (Név) |Typo |Mező |Leírás |
+|Name (Név) |Típus |Mező |Leírás |
 |---|---|---|---|
 |tagName |String |tags |A címke neve, például costCenter|
 |tagValue |String |tags |A címke értéke, például headquarter|

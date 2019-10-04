@@ -1,74 +1,139 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: A PostgreSQL-hez készült Azure Database dokumentációja
+### YamlMime:Landing
+title: Az Azure Database for PostgreSQL dokumentációja
+summary: 'A PostgreSQL-hez készült Azure Database egy relációsadatbázis-szolgáltatás, amely a nyílt forráskódú Postgres adatbázismotoron alapszik. A teljes körűen felügyelt adatbázis-szolgáltatás kiszámítható teljesítménnyel, biztonságosan, magas rendelkezésre állással és dinamikus skálázhatósággal kezeli az üzletmenet szempontjából kritikus fontosságú számítási feladatokat. Két üzembehelyezési lehetőség érhető el: egykiszolgálós és rugalmas skálázási (Citus) fürt (előzetes verzió). A Hyperscale (Citus) beállítás horizontálisan skálázza a lekérdezéseket több gépen egy horizontális skálázási módszer (sharding) segítségével, és nagyobb méretet és teljesítményt igénylő alkalmazásokat szolgál ki. Gyors útmutatóink, oktatóanyagaink és példáink segítségével megismerheti a PostgreSQL-hez készült Azure Database használatát.'
 metadata:
-  document_id: c0fe8cd3-35da-e3e5-718e-8f3cf2f87f34
-  title: Az Azure PostgreSQL dokumentációja – oktatóanyagok és API-referencia
-  description: 'Az Azure Database for PostgreSQL egy fejlesztőknek készült relációsadatbázis-szolgáltatás a Microsoft-felhőben, amely a nyílt forráskódú PostgreSQL adatbázismotoron alapul.'
+  description: Az Azure Database for PostgreSQL egy fejlesztőknek készült relációsadatbázis-szolgáltatás a Microsoft-felhőben, amely a nyílt forráskódú PostgreSQL adatbázismotoron alapul.
   author: rachel-msft
   ms.author: raagyema
+  ms.date: 08/30/2019
   ms.service: postgresql
   ms.topic: landing-page
-  ms.date: 02/25/2019
-abstract:
-  description: 'A PostgreSQL-hez készült Azure Database egy relációsadatbázis-szolgáltatás, amely a nyílt forráskódú Postgres adatbázismotoron alapszik.  A teljes körűen felügyelt adatbázis-szolgáltatás kiszámítható teljesítménnyel, biztonságosan, magas rendelkezésre állással és dinamikus skálázhatósággal kezeli az üzletmenet szempontjából kritikus fontosságú számítási feladatokat.  A PostgreSQL-hez készült Azure Database-ben végzett alkalmazásfejlesztéssel kihasználhatja a nyílt forráskódú eszközöket, Ön választhatja ki a kívánt platformot.  Gyors útmutatóink, oktatóanyagaink és példáink segítségével megismerheti a PostgreSQL-hez készült Azure Database használatát.'
-sections:
-  - title: 5 perces gyors útmutatók
-    items:
-      - type: paragraph
-        text: 'További információ a PostgreSQL-adatbázisok a következőkkel való létrehozásáról:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/sql-database/media/index/portal.svg'
-            text: Azure Portal
-            href: /azure/postgresql/quickstart-create-server-database-portal
-          - image:
-              src: 'https://docs.microsoft.com/azure/sql-database/media/index/cli.svg'
-            text: Azure CLI
-            href: /azure/postgresql/quickstart-create-server-database-azure-cli
-  - title: Részletes útmutatók
-    items:
-      - type: paragraph
-        text: 'Az alábbiak végrehajtásának módját ismerheti meg:'
-      - type: list
-        style: ordered
-        items:
-          - html: 'Adatbázis tervezése: <a href="/azure/postgresql/tutorial-design-database-using-azure-portal">Azure Portal</a> | <a href="/azure/postgresql/tutorial-design-database-using-azure-cli">Azure CLI</a>'
-          - html: <a href="/azure/app-service/containers/tutorial-python-postgresql-app?toc=%2fazure%2fpostgresql%2ftoc.json">Webalkalmazás készítése a Python és a CLI használatával</a>
-          - html: <a href="/azure/postgresql/tutorial-monitor-and-tune">A szolgáltatás monitorozása és hangolása</a>
-  - title: Fejlessze a készségeit a Microsoft Learnnel
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Azure-adatbázis létrehozása PostgreSQL-kiszolgálóhoz
-            href: /learn/modules/create-azure-db-for-postgresql-server/
-            image:
-              src: /learn/achievements/create-azure-db-for-postgresql-server.svg
-              href: /learn/modules/create-azure-db-for-postgresql-server/
-      - type: paragraph
-        text: <a href="/learn/browse/?products=azure">További interaktív oktatóanyagok...</a>
-  - title: Példák
-    items:
-      - type: paragraph
-        text: Szkriptek keresése a gyakori feladatok kezeléséhez.
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/postgresql/sample-scripts-azure-cli">Azure CLI</a>
-  - title: Referencia
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Parancssor
-            html: <p><a href="/cli/azure/postgres">Azure CLI</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/postgresql">REST API</a></p>
-          - title: Azure Resource Manager
-            html: <p><a href="/azure/templates/microsoft.dbforpostgresql/allversions">Resource Manager-sablonok</a></p>
+  ms.openlocfilehash: 6d35798d5e87945656acb298ec6fa06518487f3e
+  ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 09/04/2019
+  ms.locfileid: "70259163"
+landingContent:
+- title: Az Azure Database for PostgreSQL bemutatása
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az Azure Database for PostgreSQL?
+      url: overview.md
+  - linkListType: whats-new
+    links:
+    - text: Tekintse meg blogunkat
+      url: https://techcommunity.microsoft.com/t5/Azure-Database-for-PostgreSQL/bg-p/ADforPostgreSQL
+- title: Egyetlen kiszolgáló létrehozása
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Kiszolgáló létrehozása az Azure Portal használatával
+      url: quickstart-create-server-database-portal.md
+    - text: Kiszolgáló létrehozása az Azure CLI használatával
+      url: quickstart-create-server-database-azure-cli.md
+  - linkListType: learn
+    links:
+    - text: 'Képzési modul: Azure-adatbázis létrehozása PostgreSQL-kiszolgálóhoz'
+      url: /learn/modules/create-azure-db-for-postgresql-server/
+  - linkListType: concept
+    links:
+    - text: Árképzési szintek
+      url: concepts-pricing-tiers.md
+    - text: Korlátok
+      url: concepts-limits.md
+    - text: PostgreSQL-verziók
+      url: concepts-supported-versions.md
+    - text: PostgreSQL-bővítmények – egyetlen kiszolgáló
+      url: concepts-extensions.md
+  - linkListType: tutorial
+    links:
+    - text: Adatbázis tervezése az Azure Portal használatával
+      url: tutorial-design-database-using-azure-portal.md
+    - text: Adatbázis tervezése az Azure CLI használatával
+      url: tutorial-design-database-using-azure-cli.md
+    - text: Webalkalmazás készítése a Python és a CLI használatával
+      url: /azure/app-service/containers/tutorial-python-postgresql-app?toc=%2fazure%2fpostgresql%2ftoc.json
+    - text: A szolgáltatás monitorozása és hangolása
+      url: tutorial-monitor-and-tune.md
+- title: Rugalmas skálázási (Citus) fürt létrehozása (előzetes verzió)
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Rugalmas skálázási (Citus) fürt létrehozása (előzetes verzió) az Azure Portalon
+      url: quickstart-create-hyperscale-portal.md
+  - linkListType: tutorial
+    links:
+    - text: Több-bérlős adatbázis tervezése
+      url: tutorial-design-database-hyperscale-multi-tenant.md
+    - text: Valós idejű adatbázis tervezése
+      url: tutorial-design-database-hyperscale-realtime.md
+  - linkListType: concept
+    links:
+    - text: PostgreSQL-bővítmények – rugalmas skálázás
+      url: concepts-hyperscale-extensions.md
+    - text: A csomópontok ismertetése
+      url: concepts-hyperscale-nodes.md
+    - text: Az elosztott adatok ismertetése
+      url: concepts-hyperscale-distributed-data.md
+    - text: Teljesítménybeállítások konfigurálása
+      url: concepts-hyperscale-configuration-options.md
+- title: Csatlakozás egyetlen kiszolgálóhoz
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: A tűzfal ismertetése
+      url: concepts-firewall-rules.md
+    - text: Tűzfalszabályok létrehozása
+      url: howto-manage-firewall-using-portal.md
+    - text: Az SSL konfigurálása
+      url: concepts-ssl-connection-security.md
+  - linkListType: get-started
+    links:
+    - text: Csatlakozás Python használatával
+      url: connect-python.md
+    - text: Csatlakozás Node.js használatával
+      url: connect-nodejs.md
+    - text: Csatlakozás VPN használatával
+      url: connect-java.md
+    - text: Csatlakozás Ruby használatával
+      url: connect-ruby.md
+    - text: Csatlakozás PHP használatával
+      url: connect-php.md
+    - text: Csatlakozás .Net használatával
+      url: connect-csharp.md
+    - text: Csatlakozás Go használatával
+      url: connect-go.md
+- title: Kód írása programozási API-kkal
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Azure CLI-szkriptek gyakori műveletekhez
+      url: /azure/postgresql/sample-scripts-azure-cli
+  - linkListType: reference
+    links:
+    - text: Azure CLI – fejlesztői segédletek
+      url: /rest/api/postgresql/
+    - text: REST API – fejlesztői segédletek
+      url: /cli/azure/postgres
+    - text: Azure Resource Manager-sablonok
+      url: /azure/templates/microsoft.dbforpostgresql/allversions
+- title: Adatok biztonsági mentése és migrálása
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Biztonsági mentés és visszaállítás egyetlen kiszolgálón
+      url: concepts-backup.md
+  - linkListType: how-to-guide
+    links:
+    - text: Kiszolgáló visszaállítása az Azure Portal használatával
+      url: howto-restore-server-portal.md
+    - text: Kiszolgáló visszaállítása az Azure CLI használatával
+      url: howto-restore-server-cli.md
+    - text: Adatbázis migrálása biztonsági másolatból való visszaállítással
+      url: howto-migrate-using-dump-and-restore.md
+    - text: Adatbázis migrálása exportálással és importálással
+      url: howto-migrate-using-export-and-import.md
+    - text: Minimális állásidejű migrálások
+      url: howto-migrate-online.md

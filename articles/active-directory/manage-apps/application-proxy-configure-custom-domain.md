@@ -3,8 +3,8 @@ title: Egyéni tartományok az Azure AD-alkalmazásproxy |} A Microsoft Docs
 description: Egyéni tartományok az Azure AD-alkalmazásproxy kezelése, úgy, hogy az alkalmazás URL-címe ugyanaz, függetlenül attól, ahol a felhasználók-e férni.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/31/2018
-ms.author: celested
+ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59663346fce415d73609f09345048ff321f1a234
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 8a1914b7cf79287831e0e94c19c50107c2ac216d
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58359828"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390792"
 ---
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>Egyéni tartományok használata az Azure AD-alkalmazásproxy
 
@@ -40,7 +40,7 @@ Azt javasoljuk, hogy beállította az egyéni tartományokban az alkalmazásokho
 
 Mielőtt egy egyéni tartományt állít be, győződjön meg arról, hogy rendelkezik-e előkészítve az alábbi követelményeknek: 
 - A [ellenőrzött tartomány hozzáadása az Azure Active Directoryhoz](../fundamentals/add-custom-domain.md).
-- Egyéni-tanúsítványt a tartomány, a PFX-fájlok formájában. 
+- Egyéni-tanúsítványt a tartomány, a PFX-fájlok formájában.
 - A helyszíni alkalmazás [alkalmazásproxyn keresztül közzétett](application-proxy-add-on-premises-application.md).
 
 ### <a name="configure-your-custom-domain"></a>Az egyéni tartomány konfigurálása
@@ -61,7 +61,7 @@ Ha készen áll három követelményekről, kövesse az alábbi lépéseket az e
 6. A PFX-tanúsítvány feltöltése, és adja meg a jelszót a tanúsítványhoz. 
 7. Válassza ki **mentése** a módosítások mentéséhez. 
 8. Adjon hozzá egy [DNS-rekord](../../dns/dns-operations-recordsets-portal.md) az új külső URL-címet, amely átirányítja a msappproxy.net tartományt.
-9. Ellenőrizze, hogy a DNS-rekord helyesen van konfigurálva a [nslookup](https://social.technet.microsoft.com/wiki/contents/articles/29184.nslookup-for-beginners.aspx) paranccsal érhető el a külső URL-CÍMÉT, és a egy alias a msapproxy.net tartomány megjelenik-e.
+9. Ellenőrizze, hogy a DNS-rekord megfelelően van-e konfigurálva az [nslookup](https://social.technet.microsoft.com/wiki/contents/articles/29184.nslookup-for-beginners.aspx) paranccsal annak ellenőrzéséhez, hogy a külső URL-cím elérhető-e, és hogy a msapproxy.net tartomány aliasként jelenik-e meg.
 
 >[!TIP] 
 >Csak egy egyéni tartományt egy tanúsítvány feltöltéséhez kell. Miután a tanúsítvány feltöltése, kiválaszthatja az egyéni tartomány, amikor közzétesz egy új alkalmazást, és nem kell tennie, hogy a DNS-rekord kivételével további konfigurációs. 
@@ -71,7 +71,11 @@ Ha készen áll három követelményekről, kövesse az alábbi lépéseket az e
 ### <a name="certificate-format"></a>Tanúsítvány formátuma
 A tanúsítvány-aláírás módszerek korlátozva van. Elliptikus görbéjű titkosítási (ECC), a tulajdonos alternatív nevére (SAN) és egyéb gyakori tanúsítványtípusok egyaránt támogatottak. 
 
-Helyettesítő tanúsítvány mindaddig, amíg a helyettesítő karakteres megegyezik a kívánt külső URL-cím használható. 
+Helyettesítő tanúsítvány mindaddig, amíg a helyettesítő karakteres megegyezik a kívánt külső URL-cím használható.
+
+A tanúsítványnak tartalmaznia kell a titkos kulcsot.
+
+A saját nyilvános kulcsokra épülő infrastruktúrája (PKI) által kiadott tanúsítványok akkor használhatók, ha a tanúsítványlánc telepítve van az ügyféleszközök számára. Az Intune használatával ezeket a tanúsítványokat a felügyelt eszközökön is üzembe helyezheti. Nem felügyelt eszközök esetén ezeket a tanúsítványokat manuálisan kell telepíteni.
 
 ### <a name="changing-the-domain"></a>A tartomány módosítása
 Összes ellenőrzött tartományt az alkalmazás a külső URL-cím legördülő listában jelennek meg. Ha módosítani szeretné a tartományhoz, csak frissítse ezt a mezőt az alkalmazás. Ha azt szeretné, a tartomány nem szerepel a listán, [, egy ellenőrzött tartomány hozzáadása](../fundamentals/add-custom-domain.md). Ha olyan tartományhoz, amely rendelkezik egy társított tanúsítvány még nem, kövesse a lépéseket a tanúsítvány hozzáadása 5 – 7. Ezután ellenőrizze a DNS-rekord az új külső URL-átirányítás frissítenie. 
@@ -85,7 +89,7 @@ Minden tanúsítványkezelés jelenleg egyes webhelyei keresztül, a vonatkozó 
 
 ## <a name="next-steps"></a>További lépések
 * [Egyszeri bejelentkezés engedélyezése](application-proxy-configure-single-sign-on-with-kcd.md) a közzétett alkalmazásokba az Azure AD-hitelesítés.
-* [Feltételes hozzáférési házirend engedélyezése](application-proxy-integrate-with-sharepoint-server.md) a közzétett alkalmazásokhoz.
+* [Feltételes hozzáférés engedélyezése](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/technical-reference#cloud-apps-assignments) a közzétett alkalmazásokhoz.
 * [Az egyéni tartománynév hozzáadása az Azure ad-ben](../fundamentals/add-custom-domain.md)
 
 

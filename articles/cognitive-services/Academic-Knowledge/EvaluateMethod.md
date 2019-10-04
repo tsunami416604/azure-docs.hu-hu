@@ -1,7 +1,7 @@
 ---
-title: Módszer – Academic Knowledge API kiértékelése
+title: Módszer kiértékelése – Academic Knowledge API
 titlesuffix: Azure Cognitive Services
-description: Az Evaluate módszert a lekérdezés alapján tudományos entitások egy készletét adja vissza.
+description: A kiértékelési módszer használatával a lekérdezési kifejezés alapján tudományos entitások készletét adhatja vissza.
 services: cognitive-services
 author: alch-msft
 manager: nitinme
@@ -10,16 +10,17 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: d2e628fb7fc502ef9ba81d20680d66f24fd7d138
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ROBOTS: NOINDEX
+ms.openlocfilehash: 69e701d6727e5410b71e6cf8fbe20a1cd038ddb0
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58004929"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705009"
 ---
 # <a name="evaluate-method"></a>Módszer kiértékelése
 
-A **kiértékelése** REST API segítségével a lekérdezés alapján tudományos entitások egy készletét adja vissza.
+A **kiértékelés** REST API egy lekérdezési kifejezésen alapuló akadémiai entitások egy készletének visszaadására szolgál.
 <br>
 
 **REST-végpont:**  
@@ -30,14 +31,14 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/evaluate?
 
 ## <a name="request-parameters"></a>A kérés paraméterei  
 
-Name (Név)     | Érték | Kötelező?  | Leírás
+Name (Név)     | Value | Kötelező?  | Leírás
 -----------|-----------|---------|--------
-**kifejezés**       | Szöveges karakterlánc | Igen | A lekérdezési kifejezés, amely meghatározza, mely entitások vissza kell adni.
-**model**      | Szöveges karakterlánc | Nem  | A lekérdezni kívánt modell neve.  Jelenleg az alapértelmezett érték *legújabb*.        
-**Attribútumok** | Szöveges karakterlánc | Nem<br>alapértelmezett érték: Azonosító | Egy vesszővel tagolt listája, amely meghatározza az attribútum értékei, amelyek szerepelnek a választ. Attribútumnevek-és nagybetűk.
-**count**        | Szám | Nem<br>Alapértelmezett: 10 | Visszaadott eredmények száma.
-**eltolás**     | Szám |   Nem<br>Alapértelmezett: 0    | Az első eredmény index való visszatéréshez.
-**OrderBy** |   Szöveges karakterlánc | Nem<br>Alapértelmezés: csökkenő valószínűség szerint | Az entitások rendezéshez használt attribútum neve. Igény szerint növekvő vagy csökkenő adható meg. A formátum: *name: asc* vagy *name: desc*.
+**kifejezés**       | Szöveges karakterlánc | Igen | Egy lekérdezési kifejezés, amely megadja, hogy mely entitásokat adja vissza.
+**modell**      | Szöveges karakterlánc | Nem  | A lekérdezni kívánt modell neve.  Jelenleg az alapértelmezett érték a *legújabb*.        
+**attribútumok** | Szöveges karakterlánc | Nem<br>alapértelmezett Id | Vesszővel tagolt lista, amely meghatározza a válaszban szereplő attribútum-értékeket. Az attribútumok nevei megkülönböztetik a kis-és nagybetűket.
+**count**        | Number | Nem<br>Alapértelmezett: 10 | A visszaadni kívánt eredmények száma.
+**eltolás**     | Number |   Nem<br>Alapértelmezett: 0    | A visszatérés első eredményének indexe.
+**OrderBy** |   Szöveges karakterlánc | Nem<br>Alapértelmezett: a szonda csökkentésével | Az entitások rendezéséhez használt attribútum neve. Igény szerint növekvő/csökkenő értéket is megadhat. A formátum: *név: ASC* vagy *Name: desc*.
   
  <br>
 
@@ -45,9 +46,9 @@ Name (Név)     | Érték | Kötelező?  | Leírás
 
 Name (Név) | Leírás
 -------|-----   
-**kifejezés** |  A *expr* paraméter a kérelemből.
-**Entitások** |  0 vagy több entitás, amely megfelel a lekérdezési kifejezés tömbje. Minden entitás tartalmaz egy természetes logaritmusát valószínűségi érték és egyéb kért attribútumának értéke.
-**aborted** | IGAZ, ha a kérelem túllépte az időkorlátot.
+**kifejezés** |  A kérelemben szereplő *kifejezés* paraméter.
+**szervezetek** |  A lekérdezési kifejezésnek megfelelő 0 vagy több entitás tömbje. Minden entitás tartalmaz egy természetes naplóbeli valószínűségi értéket és a többi kért attribútum értékét.
+**megszakadt** | Értéke true, ha a kérelem időtúllépést adott meg.
 
 <br>
 
@@ -56,9 +57,9 @@ Name (Név) | Leírás
 https://westus.api.cognitive.microsoft.com/academic/v1.0/evaluate?expr=
 Composite(AA.AuN=='jaime teevan')&count=2&attributes=Ti,Y,CC,AA.AuN,AA.AuId
 ```
-<br>Általában egy kifejezés szerzi be a választ a **értelmezése** metódust.  De is létrehozhat lekérdezési kifejezések magát (lásd: [lekérdezési kifejezés szintaxisa](QueryExpressionSyntax.md)).  
+<br>Általában egy kifejezés fog megjelenni az értelmező metódusra adott válasz alapján.  Saját maga is létrehozhat lekérdezési kifejezéseket (lásd: [lekérdezési kifejezés szintaxisa](QueryExpressionSyntax.md)).  
   
-Használatával a *száma* és *eltolás* paramétereket, az eredmények nagy számú beszerezhetők egyetlen kérelem küldése a eredményeket egy hatalmas (és esetleg lassan) válaszban nélkül.  Ebben a példában a kérés az első értelmezése használt kifejezés a **értelmezése** API-válasz, a *expr* értéket. A *száma = 2* paraméter határozza meg, hogy 2 entitás eredmények kérnek. És a *attribútumok Ti, Y, CC, AA =. AuN, AA. AuId* paraméter azt jelzi, hogy a cím, év, idézet száma, Szerző neve és Szerző azonosító minden eredmény kérik.  Lásd: [tevékenységentitás-attribútumok](EntityAttributes.md) attribútumok listáját.
+A *darabszám* és az *eltolás* paraméterek használatával nagy mennyiségű eredményt lehet elérni anélkül, hogy egyetlen kérést kellene elküldeni, amely hatalmas (és potenciálisan lassú) választ eredményez.  Ebben a példában a kérelem a értelmező API-válasz első értelmezésének kifejezését használta *kifejezés értékeként* . A *Count = 2* paraméter azt adja meg, hogy a rendszer 2 entitási eredményt kér. És az *attribútumok = ti, Y, CC, AA. AuN, AA. A AuId* paraméter azt jelzi, hogy a címet, az évet, az idézetek darabszámát, a szerző nevét és a szerző azonosítóját a rendszer minden eredményre kéri.  Az attribútumok listáját az [entitás attribútumaiban](EntityAttributes.md) tekintheti meg.
   
 ```JSON
 {

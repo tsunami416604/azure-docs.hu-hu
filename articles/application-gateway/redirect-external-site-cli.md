@@ -1,6 +1,6 @@
 ---
-title: Hozzon létre egy application gateway a külső forgalom átirányítása – Azure CLI-vel |} A Microsoft Docs
-description: Ismerje meg, hogyan hozhat létre átjáróalkalmazást, amely átirányítja a belső webes forgalom a megfelelő készlet az Azure CLI használatával.
+title: Application Gateway létrehozása külső forgalom átirányításával – Azure CLI | Microsoft Docs
+description: Megtudhatja, hogyan hozhat létre olyan Application Gatewayt, amely az Azure CLI használatával átirányítja a belső webes forgalmat a megfelelő készletbe.
 services: application-gateway
 author: vhorne
 manager: jpconnock
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/24/2018
 ms.author: victorh
-ms.openlocfilehash: 1ddbc84004622c2a5fa9dc08d4396e1f300474f2
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: e1fb25a9d5bfe6538d081169d163d7b280733cc1
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55728384"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382015"
 ---
-# <a name="create-an-application-gateway-with-external-redirection-using-the-azure-cli"></a>Külső átirányítás, az Azure CLI használatával az application gateway létrehozása
+# <a name="create-an-application-gateway-with-external-redirection-using-the-azure-cli"></a>Application Gateway létrehozása külső átirányítással az Azure CLI használatával
 
-Az Azure CLI-vel való konfigurálásához használható [webes forgalom átirányítása](multiple-site-overview.md) létrehozásakor egy [az application gateway](overview.md). Ebben az oktatóanyagban konfigurál egy figyelőt és szabályt, amely átirányítja a felhasználókat az application gatewayben külső helyre érkező webes forgalmat.
+Az Azure CLI használatával konfigurálhatja a [webes forgalom](multiple-site-overview.md) átirányítását az [Application Gateway](overview.md)létrehozásakor. Ebben az oktatóanyagban egy figyelőt és egy szabályt konfigurál, amely átirányítja az Application Gateway-nek egy külső helyre érkező webes forgalmat.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -65,7 +65,7 @@ az network public-ip create \
 
 ## <a name="create-an-application-gateway"></a>Application Gateway létrehozása
 
-Az [az network application-gateway create](/cli/azure/network/application-gateway) paranccsal létrehozhatja a *myAppGateway* nevű alkalmazásátjárót. Amikor létrehoz egy alkalmazásátjárót az Azure CLI használatával, olyan konfigurációs információkat kell megadnia, mint a kapacitás, a termékváltozat és a HTTP-beállítások. Az application gateway hozzá van rendelve *myAGSubnet* és *myPublicIPAddress* , amelyet korábban hozott létre. 
+Az [az network application-gateway create](/cli/azure/network/application-gateway) paranccsal létrehozhatja a *myAppGateway* nevű alkalmazásátjárót. Amikor létrehoz egy alkalmazásátjárót az Azure CLI használatával, olyan konfigurációs információkat kell megadnia, mint a kapacitás, a termékváltozat és a HTTP-beállítások. Az Application Gateway hozzá van rendelve a korábban létrehozott *myAGSubnet* és *myPublicIPAddress* . 
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -91,9 +91,9 @@ Az alkalmazásátjáró létrehozása néhány percig is eltarthat. Az alkalmaz�
 - *appGatewayFrontendIP* – Hozzárendeli a *myAGPublicIPAddress* IP-címet az *appGatewayHttpListener* figyelőhöz.
 - *rule1* – Az *appGatewayHttpListener* figyelőhöz rendelt alapértelmezett útválasztási szabály.
 
-### <a name="add-the-redirection-configuration"></a>Az átirányítási konfiguráció hozzáadása
+### <a name="add-the-redirection-configuration"></a>Az átirányítás konfigurációjának hozzáadása
 
-Adja hozzá az átirányítási konfiguráció, amely érkező forgalmat küld *www.consoto.org* a figyelőhöz a *www.contoso.com* , az application gateway-t [az network application-gateway átirányítási konfiguráció létrehozása](/cli/azure/network/application-gateway/redirect-config).
+Adja hozzá az átirányítási konfigurációt, amely forgalmat küld a *www\.-consoto.org* az Application Gatewaynek a www *\.-contoso.com* a figyelőbe az az [Network Application-Gateway redirect-config Create paranccsal. ](/cli/azure/network/application-gateway/redirect-config).
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \
@@ -106,7 +106,7 @@ az network application-gateway redirect-config create \
 
 ### <a name="add-a-listener-and-routing-rule"></a>Figyelő és útválasztási szabály hozzáadása
 
-Egy figyelő szükséges ahhoz, hogy az application gateway megfelelően irányítja a forgalmat. Hozza létre a használatával [az network application-gateway http-listener létrehozása](/cli/azure/network/application-gateway) a frontend-port használatával létrehozott [az network application-gateway frontend-port létrehozása](/cli/azure/network/application-gateway). A szabály a figyelőt, hogy tudja, hova küldhetők a bejövő forgalom szükség. Hozzon létre egy egyszerű szabályt nevű *redirectRule* használatával [az network application-gateway-szabály létrehozása](/cli/azure/network/application-gateway).
+Egy figyelőre van szükség ahhoz, hogy az Application Gateway megfelelően irányítsa a forgalmat. Hozza létre a figyelőt az [az Network Application-Gateway http-Listener Create](/cli/azure/network/application-gateway) paranccsal az az [Network Application-Gateway frontend-port Create](/cli/azure/network/application-gateway)paranccsal létrehozott frontend-porttal. Egy szabály szükséges ahhoz, hogy a figyelő tudja, hová kell elküldeni a bejövő forgalmat. Hozzon létre egy *redirectRule* nevű alapszintű szabályt [az az Network Application-Gateway Rule Create](/cli/azure/network/application-gateway)paranccsal.
 
 ```azurecli-interactive
 az network application-gateway frontend-port create \
@@ -133,7 +133,7 @@ az network application-gateway rule create \
 
 Az alkalmazásátjáró nyilvános IP-címének lekéréséhez használhatja az [az network public-ip show](/cli/azure/network/public-ip) parancsot. Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába.
 
-Megtekintheti az *bing.com* jelennek meg a böngészőben.
+A böngészőben megjelenik a *Bing.com* .
 
 ## <a name="next-steps"></a>További lépések
 

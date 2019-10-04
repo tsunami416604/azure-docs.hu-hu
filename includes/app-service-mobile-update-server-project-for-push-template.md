@@ -4,21 +4,21 @@ ms.author: crdun
 ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
-ms.openlocfilehash: c664b089f316255fabc4c8dc36b291d7d63e6280
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: 675ad278cb8bdc0ced4eff3bd77572f44c9808fc
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59804155"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68857405"
 ---
-Ebben a szakaszban frissítse kód a meglévő Mobile Apps háttér-projekthez, hogy a leküldéses értesítés küldése, amikor új elem kerül. Ez a folyamat működteti a [sablon](../articles/notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) funkció lehetővé teszi a platformfüggetlen Azure Notification hubs leküldéses értesítések. A különböző ügyfelek részére regisztrálva van a leküldéses értesítéseket a sablonok használatával, és a egy egyetlen univerzális leküldéses minden ügyfél platformon is elérhető.
+Ebben a szakaszban a meglévő Mobile Apps háttér-projektben szereplő kódot frissíti egy leküldéses értesítés elküldéséhez minden alkalommal, amikor új elem kerül felvételre. Ezt a folyamatot az Azure Notification Hubs [sablon](../articles/notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) funkciója működteti, amely lehetővé teszi a platformok közötti leküldést. A különböző ügyfelek regisztrálva vannak a leküldéses értesítésekhez a sablonok használatával, és egyetlen univerzális leküldéses lehetőség az összes ügyfél-platformon elérhető.
 
-Válasszon egyet a következő eljárásokkal, amely megfelel a háttér-projekt típusa&mdash;vagy [.NET-háttéralkalmazás](#dotnet) vagy [Node.js háttérrendszer](#nodejs).
+Válassza ki az alábbi eljárások egyikét, amely megfelel a háttérben futó projektnek&mdash;, vagy a [.net back end](#dotnet) vagy a [Node. js háttérrendszer](#nodejs).
 
-### <a name="dotnet"></a>.NET-háttérrendszer projekt
+### <a name="dotnet"></a>.NET háttérrendszer-projekt
 
-1. A Visual Studióban kattintson a jobb gombbal a kiszolgálói projektet. Válassza ki **NuGet-csomagok kezelése**. Keresse meg `Microsoft.Azure.NotificationHubs`, majd válassza ki **telepítése**. Ez a folyamat a Notification Hubs kódtárat az értesítések küldése a háttérrendszerből telepíti.
-2. Nyissa meg a kiszolgálói projekt **tartományvezérlők** > **TodoItemController.cs**. Ezután adja hozzá a következő using utasításokat:
+1. A Visual Studióban kattintson a jobb gombbal a kiszolgálói projektre. Ezután válassza a **NuGet-csomagok kezelése**lehetőséget. Keresse meg `Microsoft.Azure.NotificationHubs`a elemet, majd válassza a **telepítés**lehetőséget. Ez a folyamat telepíti a Notification Hubs könyvtárat a háttérbeli értesítések küldéséhez.
+2. A kiszolgálói projektben nyissa meg a **vezérlők** > **TodoItemController.cs**. Ezután adja hozzá a következő using utasításokat:
 
     ```csharp
     using System.Collections.Generic;
@@ -26,7 +26,7 @@ Válasszon egyet a következő eljárásokkal, amely megfelel a háttér-projekt
     using Microsoft.Azure.Mobile.Server.Config;
     ```
 
-3. Az a **PostTodoItem** metódus hívása után a következő kód hozzáadása **InsertAsync**:  
+3. A **PostTodoItem** metódusban adja hozzá a következő kódot a **InsertAsync**hívása után:  
 
     ```csharp
     // Get the settings for the server project.
@@ -64,14 +64,14 @@ Válasszon egyet a következő eljárásokkal, amely megfelel a háttér-projekt
     }
     ```
 
-    Ez a folyamat, amelyik tartalmazza a sablon értesítést küld. Ha új elem szerepel szöveg.
+    Ez a folyamat az adott tételt tartalmazó sablon-értesítést küld. Új elemek beszúrásakor megjelenő szöveg
 
-4. Tegye közzé újra a kiszolgálói projektet.
+4. A kiszolgálói projekt ismételt közzététele.
 
-### <a name="nodejs"></a>NODE.js háttérrendszer projekt
+### <a name="nodejs"></a>Node. js háttérrendszer-projekt
 
-1. Ha ezt még nem tette meg, [a rövid útmutató háttér-projekt letöltése](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart), vagy más használatát a [az Azure Portalon online szerkesztő](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor).
-2. Cserélje le a meglévő kódot todoitem.js a következő kódot:
+1. Állítsa be a háttér-projektet.
+2. Cserélje le a todoitem. js fájl meglévő kódját a következő kódra:
 
     ```javascript
     var azureMobileApps = require('azure-mobile-apps'),
@@ -114,6 +114,6 @@ Válasszon egyet a következő eljárásokkal, amely megfelel a háttér-projekt
     module.exports = table;  
     ```
 
-    Ez a folyamat, amely tartalmazza a item.text, amikor új elem kerül beillesztésre oda a sablon értesítést küld.
+    Ez a folyamat olyan sablon-értesítést küld, amely tartalmazza az item. Text karakterláncot új elemek beszúrásakor.
 
-3. Ha szerkeszti a fájlt a helyi számítógépen, tegye közzé újra a kiszolgálói projektet.
+3. Amikor szerkeszti a fájlt a helyi számítógépen, tegye közzé újra a kiszolgálói projektet.

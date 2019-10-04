@@ -10,11 +10,11 @@ ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: a812155474b244682613b38b9b9379fa6cdcdcd8
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58166752"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66117511"
 ---
 # <a name="tutorial-detect-anomalies-at-the-edge-with-the-remote-monitoring-solution-accelerator"></a>Oktatóanyag: A távoli figyelési megoldásgyorsító anomáliadetektálásra a peremhálózaton
 
@@ -80,11 +80,11 @@ Hogy egyszerűbb legyen a megoldásban az IoT Edge-eszközök kezeléséhez, hoz
 
     | Beállítás | Érték |
     | ------- | ----- |
-    | Feladat     | Címkék  |
+    | Feladat     | Tags  |
     | Feladat neve | AddEdgeTag |
     | Kulcs     | IsOilPump |
     | Érték   | I     |
-    | Typo    | Szöveg  |
+    | Típus    | Text  |
 
     [![Címke hozzáadása](./media/iot-accelerators-remote-monitoring-edge/addtag-inline.png)](./media/iot-accelerators-remote-monitoring-edge/addtag-expanded.png#lightbox)
 
@@ -98,9 +98,9 @@ Hogy egyszerűbb legyen a megoldásban az IoT Edge-eszközök kezeléséhez, hoz
     | ------- | ----- |
     | Name (Név)    | OilPumps |
     | Mező   | Tags.IsOilPump |
-    | Művelet | = Egyenlő |
+    | Operátor | = Egyenlő |
     | Érték    | I |
-    | Typo     | Szöveg |
+    | Típus     | Text |
 
     [![Eszközcsoport létrehozása](./media/iot-accelerators-remote-monitoring-edge/createdevicegroup-inline.png)](./media/iot-accelerators-remote-monitoring-edge/createdevicegroup-expanded.png#lightbox)
 
@@ -163,9 +163,9 @@ A Stream Analytics-feladat a portálra csomagolására, mint az Edge-modul előt
     | Feladat neve | EdgeDeviceJob |
     | Előfizetés | Az Azure-előfizetése |
     | Erőforráscsoport | IoTEdgeDevices |
-    | Hely | USA keleti régiója |
+    | Location egység | USA keleti régiója |
     | Üzemeltetési környezet | Edge |
-    | Streamelési egységek | 1 |
+    | Streamelési egységek | 1\. |
 
 1. Nyissa meg a **EdgeDeviceJob** Stream Analytics feladat látható a portálon, majd bemenetei között, és adjon hozzá egy **Edge hubot** nevű bemeneti adatfolyam **telemetriai**.
 
@@ -314,12 +314,12 @@ Ha szeretne értesíteni operátorok, a küszöbérték elérésekor, a távoli 
 
     | Beállítás | Érték |
     | ------ | ----- |
-    | Szabály neve | Olaj szivattyú hőmérséklet |
+    | Szabálynév | Olaj szivattyú hőmérséklet |
     | Leírás | Olaj szivattyú hőmérséklet meghaladja a 300 |
     | Eszközcsoport | OilPumps |
     | Számítás | Azonnali |
     | Mező | hőmérséklet |
-    | Művelet | > |
+    | Operátor | > |
     | Érték | 300 |
     | Súlyossági szint | Információ |
 

@@ -16,11 +16,11 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ec88caafa9a6168860a8e9e2ff9e2abe0cfd0e77
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57852963"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62096119"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health – gyakori kérdések
 Ez a cikk az Azure Active Directory (Azure AD) Connect Health szolgáltatással kapcsolatos gyakori kérdések (GYIK) rájuk adott válaszokat tartalmazza. Ezek a gyakori kérdések a szolgáltatás, amely tartalmazza a számlázási modell, képességek, korlátozások és támogatás használatáról terjed ki.
@@ -37,7 +37,7 @@ Az alábbi táblázat tartalmazza azokat a szerepköröket, és a támogatott op
 |Szerepkör| Operációs rendszer / verzió|
 |--|--|
 |Active Directory összevonási szolgáltatások (AD FS)| <ul> <li> Windows Server 2008 R2 </li><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> </ul>|
-|Azure AD Connect | 1.0.9125 verzió vagy újabb|
+|Azure AD Connect | 1\.0.9125 verzió vagy újabb|
 |Active Directory Domain Services (AD DS)| <ul> <li> Windows Server 2008 R2 </li><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> </ul>|
 
 Vegye figyelembe, hogy a szolgáltatás által kínált szolgáltatásokkal a szerepkör és az operációs rendszer megfelelően változhatnak. Minden szolgáltatás más szóval nem lehet minden operációsrendszer-verzió érhető el. Tekintse meg a részleteket a szolgáltatások leírása.

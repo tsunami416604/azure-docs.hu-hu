@@ -14,12 +14,12 @@ ms.workload: identity
 services: active-directory
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 775a03a82c1fc432e65ce45309a5af3febb448a9
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: d2053ad07e555cc04cea714524141068f1404796
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428221"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67083891"
 ---
 # <a name="users-groups-licensing-and-roles-for-large-organizations"></a>Nagyobb szervezetek felhasználói, csoportjai, licenckezelése és szerepkörei
 
@@ -52,7 +52,7 @@ Számos nagyméretű szervezet szeretne a felhasználó számára megfelelő leh
 
  Szerepkörnév | Engedélyek összegzése
  --------- | -------------------
- **Alkalmazás-rendszergazda** | Hozzáadhatja és felügyelheti a vállalati alkalmazásokat és az alkalmazásregisztrációkat, és konfigurálhatja a proxyalkalmazás-beállításokat. Az alkalmazás-rendszergazda megtekintheti a feltételes hozzáférési szabályzatokat és az eszközöket, de nem kezelheti azokat.
+ **Alkalmazás-rendszergazda** | Hozzáadhatja és felügyelheti a vállalati alkalmazásokat és az alkalmazásregisztrációkat, és konfigurálhatja a proxyalkalmazás-beállításokat. Alkalmazás-rendszergazdák feltételes hozzáférési szabályzatok és az eszközök megtekintése, de nem kezelheti azokat.
  **Felhőalkalmazás-rendszergazda** | Hozzáadhatja és felügyelheti a vállalati alkalmazásokat és a vállalati alkalmazásregisztrációkat. Ez a szerepkör az alkalmazás-rendszergazda összes engedélyével rendelkezik, azzal a különbséggel, hogy nem tudja kezelni az alkalmazásproxy-beállításokat.
 **Alkalmazásfejlesztő** | Hozzáadhatja és frissítheti az alkalmazásregisztrációkat, de nem felügyelheti a vállalati alkalmazásokat és nem konfigurálhatja az alkalmazásproxykat.
 

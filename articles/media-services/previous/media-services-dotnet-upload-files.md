@@ -12,35 +12,32 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: d03a4081e0dcc164530e5ac0a0472edbddc3c727
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 03b9995eab503ac1fcd4615882419dde31d4f8bf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57845513"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64869459"
 ---
 # <a name="upload-files-into-a-media-services-account-using-net"></a>Fájlok feltöltése Media Services-fiókba a .NET használatával 
-> [!div class="op_single_selector"]
-> * [.NET](media-services-dotnet-upload-files.md)
-> * [REST](media-services-rest-upload-files.md)
-> * [Portál](media-services-portal-upload-files.md)
-> 
-> 
+
+> [!NOTE]
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még [v3 a v2 migrálási útmutató](../latest/migrate-from-v2-to-v3.md)
 
 A Media Services szolgáltatásban a digitális fájlok feltöltése vagy kimenete egy adategységbe történik. A **eszköz** entitás videókhoz, audiofájlokhoz, képeket, miniatűröket, szöveges nyomon követi és akadálymentes felirat fájlokat (és mindezen fájlok metaadatait.) tartalmazhat.  A fájlok feltöltése után a tartalom a felhőben lesz biztonságosan tárolva további feldolgozás és adatfolyam-továbbítás céljából.
 
 Az adategységben található fájlokat **adategység-fájloknak** nevezzük. A **AssetFile** -példány és a tényleges médiafájl két különböző objektumot. A AssetFile-példány a médiafájl kapcsolatos metaadatokat tartalmaz, amíg az adathordozó-fájl tartalmazza a tényleges médiatartalmakat.
 
-> [!NOTE]
-> A következő szempontokat kell figyelembe venni:
-> 
-> * A Media Services a IAssetFile.Name tulajdonság értékét használja, URL-címek létrehozását, a streamelési tartalom (például http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters.) Ebből kifolyólag százalék-kódolást nem engedélyezett. Értékét a **neve** tulajdonság nem lehet a következő [százalék-kódolás – fenntartott karakterek](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! *' ();: @& = + $, /? % # [] ". Emellett csak lehet egy "." a fájlnév kiterjesztésével.
-> * A név hossza nem lehet nagyobb, mint 260 karakter hosszúságú lehet.
-> * A Media Services által feldolgozható maximális támogatott fájlméret korlátozott. A fájlméretre vonatkozó korlátozással kapcsolatban további információt [ebben](media-services-quotas-and-limitations.md) a cikkben talál.
-> * A különböző AMS-szabályzatok (például a Locator vagy a ContentKeyAuthorizationPolicy) esetében a korlát 1 000 000 szabályzat. Ha mindig ugyanazokat a napokat/hozzáférési engedélyeket használja (például olyan keresők szabályzatait, amelyek hosszú ideig érvényben maradnak, vagyis nem feltöltött szabályzatokat), a szabályzatazonosítónak is ugyanannak kell lennie. További információkért tekintse meg [ezt](media-services-dotnet-manage-entities.md#limit-access-policies) a cikket.
-> 
+## <a name="considerations"></a>Megfontolandó szempontok
+
+A következő szempontokat kell figyelembe venni:
+ 
+ * A Media Services a IAssetFile.Name tulajdonság értékét használja, URL-címek létrehozását, a streamelési tartalom (például http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters.) Ebből kifolyólag százalék-kódolást nem engedélyezett. Értékét a **neve** tulajdonság nem lehet a következő [százalék-kódolás – fenntartott karakterek](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! *' ();: @& = + $, /? % # [] ". Emellett csak lehet egy "." a fájlnév kiterjesztésével.
+* A név hossza nem lehet nagyobb, mint 260 karakter hosszúságú lehet.
+* A Media Services által feldolgozható maximális támogatott fájlméret korlátozott. A fájlméretre vonatkozó korlátozással kapcsolatban további információt [ebben](media-services-quotas-and-limitations.md) a cikkben talál.
+* A különböző AMS-szabályzatok (például a Locator vagy a ContentKeyAuthorizationPolicy) esetében a korlát 1 000 000 szabályzat. Ha mindig ugyanazokat a napokat/hozzáférési engedélyeket használja (például olyan keresők szabályzatait, amelyek hosszú ideig érvényben maradnak, vagyis nem feltöltött szabályzatokat), a szabályzatazonosítónak is ugyanannak kell lennie. További információkért tekintse meg [ezt](media-services-dotnet-manage-entities.md#limit-access-policies) a cikket.
 
 Eszközök létrehozásakor a következő titkosítási beállításokat adhatja meg:
 
@@ -61,6 +58,7 @@ Ha adja meg az eszköz titkosítását a egy **StorageEncrypted** beállítás, 
 Ez a cikk bemutatja, hogyan használható a Media Services .NET SDK, valamint a Media Services .NET SDK-bővítmények a fájlok feltöltése a Media Services-eszköz.
 
 ## <a name="upload-a-single-file-with-media-services-net-sdk"></a>A Media Services .NET SDK-val egy fájl feltöltése
+
 A következő kód .NET egyetlen fájl feltöltéséhez használja. A AccessPolicy és lokátor létrehozása és megsemmisíteni a feltöltési funkció. 
 
 ```csharp
@@ -166,7 +164,7 @@ A kód a következőket teszi:
 Eszközök nagy mennyiségű feltöltését, vegye figyelembe a következőket:
 
 * Hozzon létre egy új **CloudMediaContext** szálanként objektum. A **CloudMediaContext** osztály nem szálbiztos.
-* 2. az alapértelmezett érték 5 például értéke NumberOfConcurrentTransfers növelése Ez a tulajdonság beállítása hatással van az összes példányát **CloudMediaContext**. 
+* 2\. az alapértelmezett érték 5 például értéke NumberOfConcurrentTransfers növelése Ez a tulajdonság beállítása hatással van az összes példányát **CloudMediaContext**. 
 * Az alapértelmezett érték 10 ParallelTransferThreadCount megőrizni.
 
 ## <a id="ingest_in_bulk"></a>Eszközök fürtjét egyszerre több Media Services .NET SDK használatával

@@ -26,7 +26,7 @@ sections:
           - title: Az alapvető fogalmak
             html: '<p><a href="https://docs.microsoft.com/azure/media-services/latest/storage-account-concept">Felhőbe történő feltöltés és tárolás</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/encoding-concept">Kódolás</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/reacting-to-media-services-events">Monitorozás</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/analyzing-video-audio-files-concept">Media analytics (Médiaelemzés)</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/dynamic-packaging-overview">Csomagolás</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/content-protection-overview">Védelem</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/live-streaming-overview">Live streaming (Élő adatfolyam)</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/use-azure-media-player">Lejátszóügyfelek</a></p>'
           - title: Fejlesztés a v3 API-val
-            html: '<p><a href="https://docs.microsoft.com/azure/media-services/latest/media-rest-apis-with-postman">Fejlesztés a REST használatával</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/developers-guide">Fejlesztés SDK-kkal</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/configure-connect-java-howto">Kapcsolódás Javával</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/configure-connect-dotnet-howto">Kapcsolódás .NET-tel</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/configure-connect-nodejs-howto">Kapcsolódás Node.js-sel</a></p>'
+            html: '<p><a href="https://docs.microsoft.com/azure/media-services/latest/media-services-apis-overview">Útmutatás</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/media-rest-apis-with-postman">Fejlesztés a REST használatával</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/configure-connect-java-howto">Kapcsolódás Javával</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/configure-connect-dotnet-howto">Kapcsolódás .NET-tel</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/configure-connect-nodejs-howto">Kapcsolódás Node.js-sel</a></p>'
   - title: 5 perces gyors útmutatók
     items:
       - type: paragraph
@@ -55,34 +55,22 @@ sections:
         className: cardsM
         columns: 1
         items:
-          - image:
-              src: media/index/dotnet.svg
-            html: '<p>Az oktatóanyag feltölt egy helyi videófájlt, majd kódolja és streameli a kódolt tartalmat.<p/>'
+          - html: '<p>Az oktatóanyag feltölt egy helyi videófájlt, majd kódolja és streameli a kódolt tartalmat.<p/>'
             href: /azure/media-services/latest/stream-files-tutorial-with-api
             title: Feltöltött fájl kódolása és videó streamelése
-          - image:
-              src: media/index/dotnet.svg
-            html: '<p>Az oktatóanyag ismerteti, hogyan kell beállítani egy élő eseményt. Ezután bemutatja, hogyan hozhat létre átmenő típusú élő eseményt a .NET használatával.</p>'
+          - html: '<p>Az oktatóanyag ismerteti, hogyan kell beállítani egy élő eseményt. Ezután bemutatja, hogyan hozhat létre átmenő típusú élő eseményt.</p>'
             href: /azure/media-services/latest/stream-live-tutorial-with-api
             title: Élő közvetítés
-          - image:
-              src: media/index/dotnet.svg
-            html: '<p>Az oktatóanyag bemutatja, hogyan elemezhet videókat az Azure Media Services API-val.</p>'
+          - html: '<p>Az oktatóanyag bemutatja, hogyan elemezhet videókat az Azure Media Services API-val.</p>'
             href: /azure/media-services/latest/analyze-videos-tutorial-with-api
             title: Videó elemzése
-          - image:
-              src: media/index/dotnet.svg
-            html: '<p>Ismerje meg, hogyan kell konfigurálni és használni a Media Services API-kat a tartalmak 128 bites AES-titkosítással történő dinamikus titkosítására.</p>'
+          - html: '<p>Ismerje meg, hogyan kell konfigurálni és használni a Media Services API-kat a tartalmak 128 bites AES-titkosítással történő dinamikus titkosítására.</p>'
             href: /azure/media-services/latest/protect-with-aes128
             title: Dinamikus titkosítás 128 bites AES-titkosítással
-          - image:
-              src: media/index/dotnet.svg
-            html: '<p>Ismerje meg, hogyan kell konfigurálni és használni a Media Services API-kat a tartalmak több DRM-mel (PlayReady, Widevine és FairPlay) történő dinamikus titkosítására.</p>'
+          - html: '<p>Ismerje meg, hogyan kell konfigurálni és használni a Media Services API-kat a tartalmak több DRM-mel (PlayReady, Widevine és FairPlay) történő dinamikus titkosítására.</p>'
             href: /azure/media-services/latest/protect-with-drm
             title: Dinamikus titkosítás több DRM-mel
-          - image:
-              src: media/index/rest.svg
-            html: '<p>Az oktatóanyag bemutatja, hogyan kell kódolni egy távoli fájlt URL-cím alapján, majd streamelni a videót.</p>'
+          - html: '<p>Az oktatóanyag bemutatja, hogyan kell kódolni egy távoli fájlt URL-cím alapján, majd streamelni a videót.</p>'
             href: /azure/media-services/latest/stream-files-tutorial-with-rest
             title: Távoli fájl kódolása és videó streamelése
   - title: Példák

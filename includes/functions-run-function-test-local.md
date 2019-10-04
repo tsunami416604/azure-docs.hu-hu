@@ -9,24 +9,37 @@ ms.topic: include
 ms.date: 10/20/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 74e14e36b1ac0979da31203a2d16e2396ed821d0
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
-ms.translationtype: HT
+ms.openlocfilehash: dcfa65c655d1508510282fe66e90e4076278b29b
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987988"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68949964"
 ---
 ## <a name="run-the-function-locally"></a>Függvény helyi futtatása
 
-A következő parancs elindítja a függvényalkalmazást. Az alkalmazás ugyanazt az Azure Functions-futtatókörnyezetet használja a futáshoz, amelyik az Azure-ban van.
+A következő parancs elindítja a függvényalkalmazást. Az alkalmazás ugyanazt az Azure Functions-futtatókörnyezetet használja a futáshoz, amelyik az Azure-ban van. A Start parancs a projekt nyelvétől függően változhat.
 
-```bash
-func host start --build
+### <a name="c"></a>C\#
+
+```command
+func start --build
 ```
 
-A `--build` beállítás a C#-projektek fordításához szükséges. A JavaScript-projekteknél ez a beállítás nem szükséges.
+### <a name="javascript"></a>JavaScript
 
-A Functions-gazdagép az indulásakor a következőhöz hasonló kimenetet írja ki, amelyet a könnyebb olvashatóság érdekében lerövidítettünk:
+```command
+func start
+```
+
+### <a name="typescript"></a>TypeScript
+
+```command
+npm install
+npm start     
+```
+
+A functions gazdagép indításakor a következő kimenetnek kell megadnia, amelyet az olvashatóság érdekében csonkolt:
 
 ```output
 

@@ -1,190 +1,205 @@
 ---
-title: 'Gyors útmutató: Beállítása és lekérése egy titkos kulcsot az Azure Key vaultból egy csomópont webalkalmazás – az Azure Key Vault használatával |} A Microsoft Docs'
-description: Ezt a gyorsútmutatót követve állítsa be, és titkos kulcs lekérése az Azure Key Vault használatával a .NET-webalkalmazás
-services: key-vault
-author: prashanthyv
-manager: sumedhb
+title: Gyors útmutató – a .NET-hez készült ügyféloldali kódtár Azure Key Vault
+description: Az Azure SDK-ügyfél kódtárainak írására szolgáló formátum-és tartalmi feltételeket biztosít.
+author: msmbaldwin
+ms.author: mbaldwin
+ms.date: 05/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.date: 01/02/2019
-ms.author: barclayn
-ms.custom: mvc
-ms.openlocfilehash: 346d97e6e3dad6ebacaae6c789137df4f33e2e72
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 3ccc5c7c0def7ec1d8d2f8927dc8f8e5d3678a52
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57316387"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718979"
 ---
-# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-net-web-app"></a>Gyors útmutató: Beállítása és lekérése a titkos kulcs Azure Key vault használatával a .NET-webalkalmazás
+# <a name="quickstart-azure-key-vault-client-library-for-net"></a>Gyors útmutató: A .NET-hez készült ügyféloldali kódtár Azure Key Vault
 
-Ez a rövid útmutatóban követheti az Azure-webalkalmazások Azure-Kulcstartóból származó információk olvasásához által felügyelt identitások használatával az Azure-erőforrások szükséges lépések. A Key vault segítségével biztosíthatja az adatok biztonságos. Az alábbiak végrehajtásának módját ismerheti meg:
+Ismerkedjen meg a .NET-hez készült Azure Key Vault ügyféloldali kódtáraval. Az alábbi lépéseket követve telepítse a csomagot, és próbálja ki az alapszintű feladatokhoz tartozó kódot.
 
-* Kulcstartó létrehozása.
-* Titkos kulcs tárolása a kulcstartóban.
-* Titkos kulcs lekérése a kulcstartóból.
-* Azure-webalkalmazás létrehozása.
-* [Felügyeltszolgáltatás-identitás](../active-directory/managed-identities-azure-resources/overview.md) engedélyezése a webalkalmazáshoz.
-* A szükséges engedélyek megadása a webalkalmazás számára az adatoknak a kulcstartóból való olvasásához.
+Az Azure Key Vault segít a felhőalapú alkalmazások és szolgáltatások által használt titkosítási kulcsok és titkos kulcsok védelmében. A .NET-hez készült Key Vault ügyféloldali kódtára a következőre használható:
 
-Mielőtt továbbmennénk, kérjük, olvassa el a [alapvető fogalmait a Key vault](key-vault-whatis.md#basic-concepts).
+- Fokozza a biztonságot, és szabályozhatja a kulcsokat és a jelszavakat.
+- Percek alatt létrehozhatja és importálhatja a titkosítási kulcsokat.
+- Csökkentse a késést a felhő méretezésével és a globális redundanciával.
+- Leegyszerűsítheti és automatizálhatja az SSL/TLS-tanúsítványok feladatait.
+- Használja az FIPS 140-2 2-es szintű hitelesített HSM.
 
->[!NOTE]
->A Key Vault egy központi adattár a titkos kulcsok programozott módon való tárolásához. A használatához azonban az alkalmazásoknak és a felhasználóknak először hitelesíteniük kell magukat a Key Vaultban, azaz be kell mutatniuk egy titkos kulcsot. Ajánlott biztonsági eljárások megfelelnek az első titkos kulcsnak kell rendszeres időközönként kell-e forgatni. 
->
->A [felügyelt az Azure-erőforrásokat szolgáltatásidentitások](../active-directory/managed-identities-azure-resources/overview.md), az Azure-ban futó alkalmazások lekérése az identitás, amely az Azure automatikusan kezeli. Ez segít megoldani a *titkos kulcsok bemutatásának problémáját*, így a felhasználók és az alkalmazások az ajánlott eljárásokat követhetik, és nem kell aggódniuk az első titkos kulcs leváltása miatt.
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[API](/dotnet/api/overview/azure/key-vault?view=azure-dotnet) | -referenciák dokumentációs[könyvtárának forráskód](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest/src/KeyVault) | [-csomagja (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.KeyVault/)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Windows rendszeren:
-  * A [Visual Studio 2017 szoftver 15.7.3-as vagy újabb verziója](https://www.microsoft.com/net/download/windows) a következő számítási feladatokkal:
-    * ASP.NET és webfejlesztés
-    * .NET Core platformfüggetlen fejlesztés
-  * [.NET Core 2.1 SDK vagy újabb](https://www.microsoft.com/net/download/windows)
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* A [.net Core 2,1 SDK vagy újabb verzió](https://dotnet.microsoft.com/download/dotnet-core/2.1).
+* [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) vagy [Azure PowerShell](/powershell/azure/overview)
 
-* Mac gépen:
-  * Lásd a [Visual Studio for Mac újdonságait](https://visualstudio.microsoft.com/vs/mac/) bemutató cikket.
+Ez a rövid útmutató feltételezi, `dotnet`hogy futtatja, az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)-t és a Windows-parancsokat egy Windows-terminálon (például a [PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-6), a [Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-6)vagy a [Azure Cloud Shell](https://shell.azure.com/)).
 
-* Összes platform:
-  * Git ([letöltés](https://git-scm.com/downloads)).
-  * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
-  * Az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 2.0.4-es vagy újabb verziója. Ez elérhető Windows, Mac és Linux rendszerekhez.
+## <a name="setting-up"></a>Beállítás
 
-## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
+### <a name="create-new-net-console-app"></a>Új .NET Console-alkalmazás létrehozása
 
-Ha az Azure-ba az Azure CLI használatával szeretne bejelentkezni, írja be a következőt:
+Hozzon létre egy új .NET Core-alkalmazást az előnyben részesített szerkesztőben vagy az IDE-ben.
+
+A konzol ablakban a `dotnet new` parancs használatával hozzon létre egy új, a nevű `akv-dotnet`Console-alkalmazást.
+
+
+```console
+dotnet new console -n akvdotnet
+```
+
+Módosítsa a könyvtárat az újonnan létrehozott alkalmazás mappájába. Az alkalmazást az alábbiakkal hozhatja létre:
+
+```console
+dotnet build
+```
+
+A Build kimenete nem tartalmazhat figyelmeztetést vagy hibát.
+
+```console
+Build succeeded.
+ 0 Warning(s)
+ 0 Error(s)
+```
+
+### <a name="install-the-package"></a>A csomag telepítése
+
+A konzol ablakban telepítse a Azure Key Vault .NET-hez készült ügyféloldali kódtárat:
+
+```console
+dotnet add package Microsoft.Azure.KeyVault
+```
+
+Ebben a rövid útmutatóban a következő csomagokat is telepítenie kell:
+
+```console
+dotnet add package System.Threading.Tasks
+dotnet add package Microsoft.IdentityModel.Clients.ActiveDirectory
+dotnet add package Microsoft.Azure.Management.ResourceManager.Fluent
+```
+
+### <a name="create-a-resource-group-and-key-vault"></a>Erőforráscsoport és kulcstartó létrehozása
+
+Ez a rövid útmutató egy előre létrehozott Azure Key vaultot használ. Kulcstartó létrehozásához kövesse az [Azure CLI](quick-create-cli.md)gyors üzembe helyezésének lépéseit, [Azure PowerShell](quick-create-powershell.md)a gyors üzembe helyezést, vagy [Azure Portal](quick-create-portal.md)a gyors üzembe helyezést. Azt is megteheti, hogy az alábbi Azure CLI-parancsokat egyszerűen futtatja.
+
+> [!Important]
+> Minden kulcstartónak egyedi névvel kell rendelkeznie. A következő példákban cserélje le a < az egyedi-kulcstartó-Name > a Key Vault nevét.
 
 ```azurecli
-az login
+az group create --name "myResourceGroup" -l "EastUS"
+
+az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
 ```
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+### <a name="create-a-service-principal"></a>Egyszerű szolgáltatás létrehozása
 
-Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az-group-create) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
+A felhőalapú .NET-alkalmazások hitelesítésének legegyszerűbb módja a felügyelt identitás; a részletekért tekintse meg a [app Service felügyelt identitás használata a Azure Key Vault eléréséhez](managed-identity.md) című témakört. Az egyszerűség kedvéért azonban ez a rövid útmutató egy .NET-konzolos alkalmazást hoz létre. Egy asztali alkalmazás Azure-beli hitelesítéséhez egy egyszerű szolgáltatásnevet és egy hozzáférés-vezérlési szabályzatot kell használni.
 
-Válasszon egy erőforráscsoport-nevet, és töltse ki a helyőrzőt.
-A következő példa létrehoz egy erőforráscsoportot az USA keleti régiójában:
+Hozzon létre egy szolgáltatási elvet az Azure CLI az [ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) parancs használatával:
 
 ```azurecli
-# To list locations: az account list-locations --output table
-az group create --name "<YourResourceGroupName>" --location "East US"
+az ad sp create-for-rbac -n "http://mySP" --sdk-auth
 ```
 
-A cikkben végig az imént létrehozott erőforráscsoportot használjuk majd.
+A művelet a kulcs/érték párok sorozatát fogja visszaadni. 
 
-## <a name="create-a-key-vault"></a>Kulcstartó létrehozása
+```console
+{
+  "clientId": "7da18cae-779c-41fc-992e-0527854c6583",
+  "clientSecret": "b421b443-1669-4cd7-b5b1-394d5c945002",
+  "subscriptionId": "443e30da-feca-47c4-b68f-1636b75e16b3",
+  "tenantId": "35ad10f1-7799-4766-9acf-f2d946161b77",
+  "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
+  "resourceManagerEndpointUrl": "https://management.azure.com/",
+  "activeDirectoryGraphResourceId": "https://graph.windows.net/",
+  "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
+  "galleryEndpointUrl": "https://gallery.azure.com/",
+  "managementEndpointUrl": "https://management.core.windows.net/"
+}
+```
 
-A következő lépésben létre fogunk hozni egy kulcstartót az előző lépésben létrehozott erőforráscsoportban. Adja meg az alábbi információkat:
+Jegyezze fel a clientId és a clientSecret, ahogy azokat a [hitelesítés a Key vaultban](#authenticate-to-your-key-vault) című lépésében fogjuk használni.
 
-* A Key vault neve: A név 3 – 24 karakter karakterláncnak kell lennie, és csak a 0-9, tartalmaznia kell a – z A – Z és kötőjelet (-).
-* Az erőforráscsoport neve.
-* Hely: **USA keleti Régiójában**.
+#### <a name="give-the-service-principal-access-to-your-key-vault"></a>A szolgáltatás egyszerű hozzáférésének biztosítása a kulcstartóhoz
+
+Hozzon létre egy olyan hozzáférési szabályzatot a kulcstartó számára, amely engedélyt ad a szolgáltatásnak a clientId az az a Key Vault [set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) paranccsal. Adja meg a szolgáltatás egyszerű lekérését, listáját, és állítsa be mindkét kulcs és titok engedélyeit.
 
 ```azurecli
-az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGroupName>" --location "East US"
+az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
 ```
 
-Jelenleg az Ön Azure-fiókja az egyetlen fiók, amelyik jogosult műveleteket végrehajtani ezen az új tárolón.
+## <a name="object-model"></a>Objektummodell
 
-## <a name="add-a-secret-to-the-key-vault"></a>Titkos kulcs hozzáadása a kulcstartóhoz
+A .NET-hez készült Azure Key Vault ügyféloldali kódtára lehetővé teszi a kulcsok és a kapcsolódó eszközök, például tanúsítványok és titkos kódok kezelését. Az alábbi mintakód bemutatja, hogyan állíthat be titkos kulcsot, és hogyan kérhet le titkos kulcsot.
 
-Egy titkos kulcs hozzáadásával mutatjuk be ennek működését. Tárolhat SQL-kapcsolati sztringeket vagy bármely olyan adatot, amelyet biztonságosan kell tárolni, azonban az alkalmazás számára elérhetővé kell tenni.
+A teljes konzol alkalmazás a következő címen https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/akvdotnet érhető el:.
 
-Írja be az alábbi parancsokat, amelyek egy titkos kulcsot hoznak létre az **AppSecret** nevű kulcstartóban. A titkos kulcs értéke **MySecret** lesz.
+## <a name="code-examples"></a>Példák a kódokra
+
+### <a name="add-directives"></a>Irányelvek hozzáadása
+
+Adja hozzá a következő irányelveket a kód elejéhez:
+
+[!code-csharp[Directives](~/samples-key-vault-dotnet-quickstart/akvdotnet/Program.cs?name=directives)]
+
+### <a name="authenticate-to-your-key-vault"></a>Hitelesítés a Key vaultban
+
+Ez a .NET gyors útmutató környezeti változók alapján tárolja azokat a hitelesítő adatokat, amelyeket nem szabad programkódba helyezni. 
+
+Az alkalmazás létrehozása `setx` és futtatása előtt a parancs használatával állítsa be a `akvClientId`, `akvClientSecret` `akvTenantId`, és `akvSubscriptionId` környezeti változókat a fent említett értékekre.
+
+```console
+setx akvClientId <your-clientID>
+
+setx akvClientSecret <your-clientSecret>
+````
+
+Minden alkalommal, amikor `setx`meghívja a (z) "sikeres" választ: A megadott érték mentése megtörtént. "
+
+Rendelje hozzá ezeket a környezeti változókat a kódban szereplő karakterláncokhoz, majd hitelesítse az alkalmazást a [KeyVaultClient osztályba](/dotnet/api/microsoft.azure.keyvault.keyvaultclient)való átadásával:
+
+[!code-csharp[Authentication](~/samples-key-vault-dotnet-quickstart/akvdotnet/Program.cs?name=authentication)]
+
+### <a name="save-a-secret"></a>Titkos kód mentése
+
+Most, hogy az alkalmazás hitelesítése megtörtént, a [SetSecretAsync metódussal](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.setsecretasync) a kulcstartóba helyezheti a titkos kulcsot, amely az űrlapon `https://<your-unique-keyvault-name>.vault.azure.net/secrets/`található Key Vault URL-címét igényli. Emellett a titkos kulcs nevét is megköveteli – "keresési kifejezésként"-t használunk.  Előfordulhat, hogy ezeket a karakterláncokat újra kell rendelni egy változóhoz.
+
+[!code-csharp[Set secret](~/samples-key-vault-dotnet-quickstart/akvdotnet/Program.cs?name=setsecret)]
+
+Ellenőrizze, hogy a titkos kulcs be van-e állítva az az kulcstartó [Secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) paranccsal:
 
 ```azurecli
-az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --value "MySecret"
+az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 ```
 
-A titkos kódban tárolt érték megtekintése egyszerű szövegként:
+### <a name="retrieve-a-secret"></a>Titkos kód beolvasása
 
-```azurecli
-az keyvault secret show --name "AppSecret" --vault-name "<YourKeyVaultName>"
-```
+Most már lekérheti a korábban beállított értéket a [GetSecretAsync metódussal](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.getsecretasync) .
 
-Ez a parancs megjeleníti a titkos információkat, beleértve az URI-t is. A fenti lépések végrehajtása után rendelkeznie kell egy, a kulcstartóban tárolt titkos kulcshoz tartozó URI-val. Jegyezze fel ezt az információt. Egy későbbi lépésben szüksége lesz rá.
+[!code-csharp[Get secret](~/samples-key-vault-dotnet-quickstart/akvdotnet/Program.cs?name=getsecret)]
 
-## <a name="clone-the-repo"></a>Az adattár klónozása
-
-A forrás szerkesztéséhez szükséges helyi másolat létrehozásához klónozza az adattárat. Futtassa az alábbi parancsot:
-
-```
-git clone https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart.git
-```
-
-## <a name="open-and-edit-the-solution"></a>Nyissa meg és szerkessze a megoldást
-
-Módosítsa a program.cs fájlt, hogy a minta az adott kulcstartó nevével fusson:
-
-1. Lépjen a key-vault-dotnet-core-quickstart mappára.
-2. Nyissa meg a key-vault-dotnet-core-quickstart.sln fájlt a Visual Studio 2017-ben.
-3. Nyissa meg a Program.cs fájlt, és frissítse a helyőrző *YourKeyVaultName* a kulcstartóhoz, amely a korábban létrehozott nevét.
-
-Ez a megoldás [AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) és [KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet-kódtárakat használ.
-
-## <a name="run-the-app"></a>Az alkalmazás futtatása
-
-A Visual Studio 2017 főmenüjében válassza a **Debug** > **Start** without Debugging (Hibakeresés > Indítás hibakeresés nélkül) elemet. Amikor megjelenik a böngésző, lépjen az **About** (Névjegy) oldalra. Megjelenik az **AppSecret** értéke.
-
-## <a name="publish-the-web-application-to-azure"></a>A webalkalmazás közzététele az Azure-ban
-
-Tegye közzé ezt az alkalmazást az Azure-ban, hogy élő webalkalmazásként megtekinthető legyen, illetve hogy látható legyen, hogy a titkos érték lekérhető-e:
-
-1. A Visual Studióban válassza a **key-vault-dotnet-core-quickstart** projektet.
-2. Válassza a **Publish** > **Start** (Közzététel > Indítás) lehetőséget.
-3. Hozzon létre egy új **App Service-t**, majd kattintson a **Publish** (Közzététel) parancsra.
-4. Módosítsa az alkalmazás nevét a következőre: **keyvaultdotnetcorequickstart**.
-5. Kattintson a **Létrehozás** gombra.
-
->[!VIDEO https://sec.ch9.ms/ch9/e93d/a6ac417f-2e63-4125-a37a-8f34bf0fe93d/KeyVault_high.mp4]
-
-## <a name="enable-a-managed-identity-for-the-web-app"></a>Felügyelt identitás engedélyezése a webalkalmazáshoz
-
-Az Azure Key Vault módot kínál a hitelesítő adatok, valamint egyéb kulcsok és titkos kódok biztonságos tárolására, azonban a kódnak hitelesítenie kell magát a Key Vaultban az adatok lekéréséhez. [Az Azure-erőforrások felügyelt identitásainak áttekintése](../active-directory/managed-identities-azure-resources/overview.md) leegyszerűsíti ezt a problémát, mivel az Azure-szolgáltatások számára egy automatikusan felügyelt identitást biztosít az Azure Active Directoryban (Azure AD-ben). Ezzel az identitással bármely, az Azure AD-hitelesítést támogató szolgáltatásban, többek között a Key Vaultban is elvégezheti a hitelesítést anélkül, hogy a hitelesítő adatokat a kódban kellene tárolnia.
-
-Az Azure CLI, a hozzárendelés-azonosító parancs futtatásával hozzon létre a az alkalmazás identitását:
-
-   ```azurecli
-   az webapp identity assign --name "keyvaultdotnetcorequickstart" --resource-group "<YourResourceGroupName>"
-   ```
-
->[!NOTE]
->Ez a parancs ebben az eljárásban egyenértékű azzal, mintha megnyitná a portált, és a webalkalmazás tulajdonságai között átállítaná az **Identitás/Rendszer által hozzárendelt** beállítást **Be** értékűre.
-
-## <a name="assign-permissions-to-your-application-to-read-secrets-from-key-vault"></a>Engedélyek kiosztása az alkalmazásnak a Key Vault titkos kulcsainak olvasásához
-
-Jegyezze fel a kimenetből származó adatokat, amikor az Azure-ban közzéteszi az alkalmazást. Az adatok a következő formátumban jelennek meg:
-        
-        {
-          "principalId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-          "tenantId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-          "type": "SystemAssigned"
-        }
-        
-Ezután futtassa ezt a parancsot a kulcstartó neve és a **PrincipalId** értéke használatával:
-
-```azurecli
-
-az keyvault set-policy --name '<YourKeyVaultName>' --object-id <PrincipalId> --secret-permissions get list
-
-```
-
-Az alkalmazás futtatásakor meg kell jelennie a titkos kulcs lekért értékének. Az előző parancsban szereplő, még az alkalmazás identitását szolgáltatás engedélyeket ad ehhez **első** és **lista** a kulcstartóra vonatkozó műveleteket.
+A titkos kód most már mentve `keyvaultSecret.Value;`van.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha már nincs szüksége, törölje az erőforráscsoportot, virtuális gép és minden kapcsolódó erőforrás. Ehhez válassza ki az erőforráscsoportot a virtuális Gépet, majd válassza a **törlése**.
 
-Törölje a key vault használatával a [az keyvault törlése](https://docs.microsoft.com/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-delete) parancsot:
+Ha már nincs rá szükség, használhatja az Azure CLI-t vagy Azure PowerShell a kulcstartó és a hozzá tartozó erőforráscsoport eltávolításához.
 
 ```azurecli
-az keyvault delete --name
-                   [--resource-group]
-                   [--subscription]
+az group delete -g "myResourceGroup" -l "EastUS" 
+```
+
+```azurepowershell
+Remove-AzResourceGroup -Name "myResourceGroup"
 ```
 
 ## <a name="next-steps"></a>További lépések
 
-> [!div class="nextstepaction"]
-> [További tudnivalók a Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis)
+Ebben a rövid útmutatóban létrehozott egy titkos kulcsot, és lekérte a titkos kulcsot. Tekintse [meg a teljes konzol alkalmazást a githubon](https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/akvdotnet).
+
+Ha többet szeretne megtudni a Key Vaultről és az alkalmazásokkal való integrálásáról, folytassa az alábbi cikkekkel.
+
+- [Szolgáltatások közötti hitelesítés megvalósítása Azure Key Vault .NET használatával](service-to-service-authentication.md)
+- [A Azure Key Vault áttekintése](key-vault-overview.md)
+- Tekintse [meg a Azure Key Vault fejlesztői útmutatóját](key-vault-developers-guide.md)
+- Tudnivalók a [kulcsokról, a titkokról és a tanúsítványokról](about-keys-secrets-and-certificates.md)
+- [Azure Key Vault ajánlott eljárások](key-vault-best-practices.md) áttekintése

@@ -6,15 +6,16 @@ services: media-services
 author: Juliako
 manager: femila
 ms.service: media-services
+ms.subservice: video-indexer
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: e85beea4250b5ac5f4defd0b918786079d3dbe3e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f20d718d0b1d3bbdf117e502a380897c79a7905f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57892659"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65799498"
 ---
 # <a name="frequently-asked-questions"></a>Gyakori kérdések
 
@@ -160,7 +161,7 @@ A video Indexer használ egy egyszerű használatalapú díjszabási modell, a t
 
 ### <a name="when-am-i-billed-for-using-video-indexer"></a>Amikor fizetnem a Video Indexer használatát?
 
-Egy videó indexelendő küldésekor a felhasználó határozza meg, az indexelést videóelemzés hangelemzés vagy mindkettőt. Ez határozza meg, amely kell díjat a SKU-k. Ha a feldolgozás során egy kritikus szintű hiba hibakódot adott válaszként lesz visszaadva. Ebben az esetben nincs számlázási akkor fordul elő.  Kritikus hiba okozhatja a hibát a kódban, vagy egy belső függőség a szolgáltatás kritikus hiba van. Hibákat, például a nem megfelelő azonosító vagy insight kinyerése nem számít, kritikus fontosságú, és a válasz. Minden esetben érvényes (nem hibás kód) választ ad vissza, ha számlázás következik be.
+Videó indexelésre való elküldésénél a felhasználó eldöntheti, hogy az indexelés videóelemzés, hangelemzés vagy mindkettő legyen-e. Ez határozza meg, hogy mely termékváltozatban történjen a díjak felszámítása. Ha a feldolgozás során kritikus hiba lép fel, válaszként egy hibakód lesz visszaküldve. Ilyen esetben nem számítunk fel díjat.  Kritikus hibát okozhat egy kódbeli hiba vagy a szolgáltatás egyik belső függőségének kritikus meghibásodása. A hibás azonosítás vagy hibás információkinyerés nem számít kritikus hibának, és ilyen esetben választ is küld a rendszer. Díjat számolunk fel minden olyan esetben, amikor egy érvényes (nem hibakódot tartalmazó) választ ad vissza a rendszer.
  
 ### <a name="does-video-indexer-offer-a-free-trial"></a>A Video Indexer kínál egy ingyenes próbaverzióra?
 

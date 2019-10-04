@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/12/2017
+ms.date: 04/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 291b3d506993cfea89be072684835c0d4efe75f6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c204029557a73dc3f02015afb92c0fdbf0d4d50e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58095449"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64571320"
 ---
 # <a name="next-steps-and-how-to-manage-azure-ad-connect"></a>Következő lépések és az Azure AD Connect kezelése
 Ez a cikk az operatív eljárások használatával testre szabhatja az Azure Active Directory (Azure AD) Connect a szervezet igényeinek megfelelően, és a követelmények teljesítéséhez.  
@@ -47,20 +47,21 @@ Az Azure portal segítségével egy szinkronizálási állapotának ellenőrzés
 ### <a name="to-verify-the-scheduled-synchronization-task"></a>Az ütemezett szinkronizálás task ellenőrzése
 1. Jelentkezzen be az Azure Portalra rendszergazdaként.
 2. A bal oldalon válassza az **Active Directory** elemet.
-3. Az a **Active Directory** lapon, kattintson duplán a könyvtárra, amelyben a felhasználók be szeretne állítani.
-4. A könyvtárlap tetején válassza **címtár-integráció**.
-5. A **helyi active directory-integráció**, vegye figyelembe a legutóbbi szinkronizálás időpontja.
+3. A bal oldalon válassza ki a **az Azure AD Connect**
+4. A lap tetején vegye figyelembe a legutóbbi szinkronizálás.
 
-<center>
-
-![Címtár-szinkronizálás ideje](./media/how-to-connect-post-installation/verify.png)</center>
+![Címtár-szinkronizálás ideje](./media/how-to-connect-post-installation/verify2.png)
 
 ## <a name="start-a-scheduled-synchronization-task"></a>Egy beütemezett szinkronizálási feladat indítása
-A szinkronizálási feladat futtatásához szükséges, ha az Azure AD Connect varázsló ismételt futtatásával is ehhez.  Meg kell adnia az Azure AD hitelesítő adatait.  A varázslóban válassza ki a **szinkronizálási beállítások testreszabása** feladat, és kattintson az **tovább** áthelyezése a varázsló lépéseit. Ellenőrizze, hogy a végén a **, amint a kezdeti konfiguráció befejeződött, indítsa el a szinkronizálási folyamat** be van jelölve.
+Ha a szinkronizálási feladat futtatása van szüksége, akkor ehhez:
 
-<center>
-
-![Szinkronizálás indítása](./media/how-to-connect-post-installation/startsynch.png)</center>
+1. Kattintson duplán az Azure AD Connect asztali varázsló elindításához.
+2. Kattintson a **Konfigurálás** elemre.
+3. A feladatok képernyőn válassza ki a **szinkronizálási beállítások testreszabása** kattintson **tovább**
+4. Adja meg Azure AD hitelesítő adatait
+5. Kattintson a **tovább**. Kattintson a **tovább**.  Kattintson a **tovább**.
+5.  Az a **készen áll a konfigurálás** képernyőn, ügyeljen arra, hogy a **indítsa el a szinkronizálást, amint a konfigurálás befejeződik** be van jelölve.
+6.  Kattintson a **Konfigurálás** elemre.
 
 Az Azure AD Connect szinkronizálása: ütemező további információkért lásd: [az Azure AD Connect Scheduler](how-to-connect-sync-feature-scheduler.md).
 
@@ -69,13 +70,19 @@ Az Azure AD Connect a kezdeti telepítés után mindig indíthatja a varázsló 
 
 A következő táblázat ezeket a feladatokat összegzését, és minden tevékenység rövid leírását.
 
-![További feladatok listája](./media/how-to-connect-post-installation/addtasks.png)
+![További feladatok listája](./media/how-to-connect-post-installation/addtasks2.png)
 
 | További tevékenység | Leírás |
 | --- | --- |
-| **A választott forgatókönyv megtekintése** |Tekintse meg az aktuális Azure AD Connect-megoldással.  Ez magában foglalja az általános beállítások, a szinkronizált címtárak, és a szinkronizálási beállítások. |
+|**Adatvédelmi beállítások**|Tekintse meg a Microsofttal megosztott milyen telemetriai adatokat.|
+|**Aktuális konfiguráció megtekintése**|Tekintse meg az aktuális Azure AD Connect-megoldással.  Ez magában foglalja az általános beállítások, a szinkronizált címtárak, és a szinkronizálási beállítások. |
 | **Szinkronizálási beállítások testreszabása** |Módosítsa például további Active Directory-erdők hozzáadása a konfigurációt, vagy a szinkronizálási beállítások, például a felhasználó, csoport, eszköz vagy a jelszóvisszaírás engedélyezése az aktuális konfigurációt. |
-| **Átmeneti környezetű üzemmód engedélyezése** |Szakasz információkat, amelyek nem azonnal szinkronizálja, és nem exportálva az Azure AD vagy a helyszíni Active Directoryval.  Ezzel a funkcióval megtekintheti a szinkronizálást, mielőtt bekövetkeznének. |
+|**Eszközbeállítások konfigurálása**|Szinkronizálási eszköz lehetőségeit|
+|**Címtárséma frissítése**|Lehetővé teszi, hogy új helyszíni címtárobjektumok szinkronizáláshoz|
+|**Átmeneti környezetű üzemmód konfigurálása** |Szakasz információkat, amelyek nem azonnal szinkronizálja, és nem exportálva az Azure AD vagy a helyszíni Active Directoryval.  Ezzel a funkcióval megtekintheti a szinkronizálást, mielőtt bekövetkeznének. |
+|**Felhasználói bejelentkezés módosítása**|A felhasználók miként használják a bejelentkezési hitelesítési módszert|
+|**Összevonási kezelése**|Az AD FS-infrastruktúra kezeléséhez, megújítja a tanúsítványokat és AD FS-kiszolgálók hozzáadása|
+|**Hibaelhárítás**|Segítség az Azure AD Connect kapcsolatos hibák elhárítása|
 
 ## <a name="next-steps"></a>További lépések
 Tudjon meg többet [a helyszíni identitások integrálása az Azure Active Directory](whatis-hybrid-identity.md).

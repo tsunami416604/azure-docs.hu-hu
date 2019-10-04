@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: a7fdcf396f586a65efa17e489d002f1c8847a193
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 3fbf2f2540e8f1ca84aad2759b9a1fc790e4065d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58884992"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66241372"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Szolgáltatások közötti hitelesítés az Azure Data Lake Storage Gen1 Azure Active Directory használatával
 > [!div class="op_single_selector"]
@@ -37,7 +37,7 @@ Ez a cikk ismerteti hogyan hozhat létre egy **szolgáltatások közötti hitele
 ## <a name="prerequisites"></a>Előfeltételek
 * Azure-előfizetés. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 
-## <a name="step-1-create-an-active-directory-web-application"></a>1. lépés: Az Active Directory-webalkalmazás létrehozása
+## <a name="step-1-create-an-active-directory-web-application"></a>1\. lépés: Az Active Directory-webalkalmazás létrehozása
 
 Létrehozhat és konfigurálhat egy Azure AD webes alkalmazás szolgáltatások közötti hitelesítés az Azure Data Lake Storage Gen1 Azure Active Directory használatával. Útmutatásért lásd: [hozzon létre egy Azure AD-alkalmazást](../active-directory/develop/howto-create-service-principal-portal.md).
 
@@ -45,14 +45,14 @@ Során megadott utasítások a fenti hivatkozással, győződjön meg arról, ho
 
 ![Webalkalmazás létrehozása](./media/data-lake-store-authenticate-using-active-directory/azure-active-directory-create-web-app.png "webes alkalmazás létrehozása")
 
-## <a name="step-2-get-application-id-authentication-key-and-tenant-id"></a>2. lépés: Alkalmazás azonosítója, a hitelesítési kulcsot és a bérlői azonosító beszerzése
+## <a name="step-2-get-application-id-authentication-key-and-tenant-id"></a>2\. lépés: Alkalmazás azonosítója, a hitelesítési kulcsot és a bérlői azonosító beszerzése
 Ha programozott módon jelentkezik be, az alkalmazás szükség van az azonosító. Ha az alkalmazás fut, a saját hitelesítő adatait, hitelesítési kulcs is szükséges.
 
-* Az alkalmazás az Alkalmazásazonosító és hitelesítési kulcs (más néven az ügyfél titkos kulcsát) lekérésével útmutatásért lásd: [Get Alkalmazásazonosító és hitelesítési kulcs](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key).
+* Az alkalmazás az Alkalmazásazonosító és hitelesítési kulcs (más néven az ügyfél titkos kulcsát) lekérésével útmutatásért lásd: [Get Alkalmazásazonosító és hitelesítési kulcs](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
 
-* A Bérlőazonosító lekéréséhez kapcsolatos utasításokért lásd: [Bérlőazonosító beszerzése](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id).
+* A Bérlőazonosító lekéréséhez kapcsolatos utasításokért lásd: [Bérlőazonosító beszerzése](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
 
-## <a name="step-3-assign-the-azure-ad-application-to-the-azure-data-lake-storage-gen1-account-file-or-folder"></a>3. lépés: Rendelje hozzá az Azure AD-alkalmazást az Azure Data Lake Storage Gen1 fiók fájl vagy mappa
+## <a name="step-3-assign-the-azure-ad-application-to-the-azure-data-lake-storage-gen1-account-file-or-folder"></a>3\. lépés: Rendelje hozzá az Azure AD-alkalmazást az Azure Data Lake Storage Gen1 fiók fájl vagy mappa
 
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Nyissa meg a Data Lake Storage Gen1 fiókot, amely a korábban létrehozott Azure Active Directory-alkalmazással társítaná.
@@ -85,7 +85,7 @@ Ha programozott módon jelentkezik be, az alkalmazás szükség van az azonosít
 > 
 >
 
-## <a name="step-4-get-the-oauth-20-token-endpoint-only-for-java-based-applications"></a>4. lépés: Az OAuth 2.0 jogkivonat-végpont beolvasása (csak a Java-alapú alkalmazások esetén)
+## <a name="step-4-get-the-oauth-20-token-endpoint-only-for-java-based-applications"></a>4\. lépés: Az OAuth 2.0 jogkivonat-végpont beolvasása (csak a Java-alapú alkalmazások esetén)
 
 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) Active Directory kattintson a bal oldali ablaktáblán.
 

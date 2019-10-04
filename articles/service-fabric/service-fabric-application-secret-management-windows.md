@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 01/04/2019
 ms.author: vturecek
 ms.openlocfilehash: 3d324c54d10433520a73f2bd836c26bd79f1b3bb
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662312"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60615255"
 ---
 # <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-windows-clusters"></a>Állítsa be a titkosítási tanúsítványt, és a kulcsok a Windows-fürtök titkosítása
 Ez a cikk bemutatja, hogyan állítsa be a titkosítási tanúsítványt, és a kulcsok a Windows-fürtök titkosíthatja. Linux-fürtöket, lásd: [beállítása beállítása egy titkosítási tanúsítványt, és titkosítani a titkos kulcsokat a Linux-fürtökön.][secret-management-linux-specific-link]

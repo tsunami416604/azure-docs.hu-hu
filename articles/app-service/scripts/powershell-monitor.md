@@ -1,6 +1,6 @@
 ---
-title: Az Azure PowerShell-Példaszkript – webalkalmazás webkiszolgáló-naplókkal monitorozása |} A Microsoft Docs
-description: Az Azure PowerShell-Példaszkript – webalkalmazás webkiszolgáló-naplókkal monitorozása
+title: Azure PowerShell szkript minta-webalkalmazások figyelése webkiszolgáló-naplókkal | Microsoft Docs
+description: Azure PowerShell parancsfájl-minta – webalkalmazás figyelése webkiszolgáló-naplókkal
 services: app-service\web
 documentationcenter: ''
 author: syntaxc4
@@ -9,21 +9,20 @@ editor: ''
 tags: azure-service-management
 ms.assetid: 5805d7cd-9e56-4eba-bd85-75b013690ff5
 ms.service: app-service
-ms.devlang: multiple
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: web
 ms.date: 03/20/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: becec6881ccc5c061a0f0e93e697852645f9388f
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: e9e376de3356a23df648f77738fd2c84cb26d97f
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115963"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098300"
 ---
-# <a name="monitor-a-web-appwith-web-server-logs"></a>Webkiszolgáló-naplókkal-WebApp figyelése
+# <a name="monitor-a-web-appwith-web-server-logs"></a>Webalkalmazás figyelése webkiszolgáló-naplókkal
 
 Ebben a forgatókönyvben létrehoz egy erőforráscsoportot, egy App Service-csomagot és egy webalkalmazást, továbbá a webalkalmazást a webkiszolgáló-naplók engedélyezésére konfigurálja. Ezután letölti a naplófájlokat áttekintésre.
 
@@ -53,7 +52,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | Létrehoz egy App Service-csomagot. |
 | [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Webalkalmazást hoz létre. |
 | [Set-AzWebApp](/powershell/module/az.websites/set-azwebapp) | Módosítja egy webalkalmazás konfigurációját. |
-| [Get-AzWebAppMetrics](/powershell/module/az.websites/get-azwebappmetrics) | Lekéri egy webalkalmazás metrikáit. |
+| [Get-AzWebAppMetric](/powershell/module/az.websites/get-azwebappmetric) | Lekéri egy webalkalmazás metrikáit. |
 
 ## <a name="next-steps"></a>További lépések
 

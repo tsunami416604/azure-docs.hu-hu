@@ -15,11 +15,11 @@ ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 041c8bb6b4de2bbe2cbeb4c1a89e452239ae57bd
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57439740"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60473679"
 ---
 # <a name="register-your-personal-device-on-your-organizations-network"></a>Regisztrálja a személyes eszköz a vállalati hálózaton
 Regisztrálja a személyes eszköz (általában egy telefonon vagy táblagépen) a vállalati hálózaton. Az eszköz regisztrálása után, akkor fog hozzáférni a szervezet korlátozott erőforrások eléréséhez.

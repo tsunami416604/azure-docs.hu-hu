@@ -1,6 +1,6 @@
 ---
-title: Áttelepítés az Azure Container Service (ACS) az Azure Kubernetes Service (AKS)
-description: Áttelepítés az Azure Container Service (ACS) az Azure Kubernetes Service (AKS)
+title: Áttelepítés Azure Container Serviceról (ACS) az Azure Kubernetes szolgáltatásba (ak)
+description: Migrálás Azure Container Serviceról (ACS) az Azure Kubernetes szolgáltatásba (ak).
 services: container-service
 author: noelbundick
 manager: jeconnoc
@@ -9,155 +9,142 @@ ms.topic: article
 ms.date: 06/13/2018
 ms.author: nobun
 ms.custom: mvc
-ms.openlocfilehash: 910c96988ec0a8b8aa7b6ac8ce287c4fdc59e177
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 66f76a8a706f60df786786cbd1ce00b7eafd8d7e
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649968"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097882"
 ---
-# <a name="migrating-from-azure-container-service-acs-to-azure-kubernetes-service-aks"></a>Áttelepítés az Azure Container Service (ACS) az Azure Kubernetes Service (AKS)
+# <a name="migrate-from-azure-container-service-acs-to-azure-kubernetes-service-aks"></a>Áttelepítés Azure Container Serviceról (ACS) az Azure Kubernetes szolgáltatásba (ak)
 
-A jelen dokumentum célja, hogy megtervezése és végrehajtása sikeres migráláshoz kell az Azure Container Service Kubernetes-(ACS) és az Azure Kubernetes Service (AKS) között. Ez az útmutató részletesen ACS és az AKS közötti különbségeket, az áttelepítési folyamat áttekintést nyújt és segít fontos döntéseket.
+Ez a cikk segítséget nyújt a Azure Container Service (ACS) és a Kubernetes és az Azure Kubernetes Service (ak) közötti sikeres áttelepítés megtervezéséhez és végrehajtásához. A legfontosabb döntések elvégzéséhez ez az útmutató ismerteti az ACS és az AK közötti különbségeket, és áttekintést nyújt az áttelepítési folyamatról.
 
-## <a name="differences-between-acs-and-aks"></a>ACS és az AKS közötti különbségek
+## <a name="differences-between-acs-and-aks"></a>Az ACS és az AK közötti különbségek
 
-ACS és az AKS különböző néhány fő területe, amely hatással van a migrálás. Ekkor a felülvizsgálandó és tervezi, hogy az alábbi eltérések bármilyen migrálás előtt oldja meg.
+Az ACS és az AK különbözik az áttelepítést befolyásoló kulcsfontosságú területeken. A Migrálás előtt tekintse át és tervezze meg a következő eltéréseket:
 
-* AKS-csomópontok használata [Managed Disks](../virtual-machines/windows/managed-disks-overview.md)
-    * Nem felügyelt lemezeket kell konvertálni kell, mielőtt azok csatolható AKS-csomópontok
-    * Egyéni `StorageClass` objektumokat az Azure-lemezek kell módosítható `unmanaged` , `managed`
-    * Bármely `PersistentVolumes` kell használnia `kind: Managed`
-* Az AKS jelenleg csak egy ügynökkészlet támogatja
-* A Windows Server-alapú csomópontokon jelenleg [privát előzetes verzió](https://azure.microsoft.com/blog/kubernetes-on-azure/)
-* Az AKS listáját [támogatott régiók](https://docs.microsoft.com/azure/aks/container-service-quotas)
-* Az AKS felügyelt szolgáltatás, amely egy üzemeltetett Kubernetes-vezérlősík. Szükség lehet az alkalmazások módosítását, ha korábban már módosította a konfigurációt az ACS főkiszolgálók
+* Az AK-csomópontok [felügyelt lemezeket](../virtual-machines/windows/managed-disks-overview.md)használnak.
+    * A nem felügyelt lemezeket át kell alakítani az AK-csomópontokhoz való csatolás előtt.
+    * Az `StorageClass` Azure- `unmanaged` lemezekhez tartozó egyéni objektumokat a verzióról a `managed`verzióra kell módosítani.
+    * Mindenképpen `PersistentVolumes` használjon `kind: Managed`.
+* Az AK [több Node-készletet](https://docs.microsoft.com/azure/aks/use-multiple-node-pools) támogat (jelenleg előzetes verzióban érhető el).
+* A Windows Serveren alapuló csomópontok jelenleg előzetes verzióban érhetők [el az AK-ban](https://azure.microsoft.com/blog/kubernetes-on-azure/).
+* Az AK támogatja a [régiók](https://docs.microsoft.com/azure/aks/quotas-skus-regions)korlátozott készletét.
+* Az AK felügyelt szolgáltatás egy üzemeltetett Kubernetes-vezérlési síkon. Előfordulhat, hogy módosítania kell az alkalmazásait, ha korábban már módosította az ACS-főkiszolgálók konfigurációját.
 
-### <a name="differences-between-kubernetes-versions"></a>Kubernetes-verzió közötti különbségek
+## <a name="differences-between-kubernetes-versions"></a>Kubernetes-verziók közötti különbségek
 
-Ha a migráláshoz Kubernetes újabb verziójára (például: 1.7.x 1.9.x,), a k8s API-nak a figyelmet igénylő néhány változás.
+Ha a Kubernetes egy újabb verziójára végez áttelepítést, tekintse át a következő forrásokat a Kubernetes verziószámozási stratégiáinak megismeréséhez:
 
-* [Egy ThirdPartyResource CustomResourceDefinition áttelepítése](https://kubernetes.io/docs/tasks/access-kubernetes-api/migrate-third-party-resource/)
-* [API-számítási feladatok módosítások verziókban 1.8-as és 1.9](https://kubernetes.io/docs/reference/workloads-18-19/).
+* [Kubernetes-verzió és-verzió – támogatási szabályzat](https://kubernetes.io/docs/setup/release/version-skew-policy/#supported-versions)
 
-## <a name="migration-considerations"></a>Az áttelepítés szempontjai
+## <a name="migration-considerations"></a>Migrálási szempontok
 
 ### <a name="agent-pools"></a>Ügynökkészletek
 
-Az AKS kezeli a Kubernetes vezérlősík, miközben továbbra is megadhat méretét és az új fürtbe felvenni kívánt csomópontok száma. Ha azt szeretné, hogy az aks-ben az ACS-ből egy 1:1 megfeleltetését, szeretné rögzíteni a meglévő ACS csomópont adatait. Ezeket az adatokat az új AKS-fürt létrehozásakor fogja használni.
+Bár az AK kezeli a Kubernetes-vezérlő síkot, az új fürtben található csomópontok méretét és számát is meghatározza. Feltételezve, hogy a 1:1-es ACS-ről az AK-ra szeretne leképezést készíteni, rögzítenie kell a meglévő ACS-csomópont adatait. Használja ezeket az adatait az új AK-fürt létrehozásakor.
 
 Példa:
 
-| Name (Név) | Darabszám | Virtuális gép mérete | Operációs rendszer |
+| Name (Név) | Count | Virtuális gép mérete | Operációs rendszer |
 | --- | --- | --- | --- |
 | agentpool0 | 3 | Standard_D8_v2 | Linux |
 | agentpool1 | 1 | Standard_D2_v2 | Windows |
 
-Mivel további virtuális gépek lesznek üzembe helyezve az előfizetés az áttelepítés során, ellenőrizze, hogy a kvóták és korlátozások elegendőek ezekhez az erőforrásokhoz. További áttekintésével [Azure-előfizetés- és Szolgáltatáskorlátok](https://docs.microsoft.com/azure/azure-subscription-service-limits). Az aktuális kvótái ellenőrzéséhez nyissa meg a [előfizetések paneljén](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) az Azure Portalon válassza ki az előfizetését, majd válassza ki `Usage + quotas`.
+Mivel az áttelepítés során további virtuális gépek lesznek telepítve az előfizetésben, ellenőriznie kell, hogy a kvóták és a korlátozások elegendőek-e az adott erőforrásokhoz. 
+
+További információ: Azure- [előfizetés és-szolgáltatási korlátok](https://docs.microsoft.com/azure/azure-subscription-service-limits). Az aktuális kvóták megtekintéséhez a Azure Portal lépjen az [előfizetések](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)panelre, válassza ki az előfizetését, majd válassza a **használat + kvóták**lehetőséget.
 
 ### <a name="networking"></a>Hálózat
 
-Összetett alkalmazások idővel helyett egyszerre általában kell áttelepíteni. Ez azt jelenti, hogy a régi és új környezetben kell előfordulhat, hogy a hálózaton keresztül kommunikálnak. Az alkalmazásokat, amelyek korábban tudtak használandó `ClusterIP` szolgáltatások való kommunikációhoz kell típus elérhetővé tehető `LoadBalancer` és a megfelelő biztonságáról gondoskodni.
+Összetett alkalmazások esetében általában az idő múlásával, nem pedig egyszerre kell áttérnie. Ez azt jelenti, hogy a régi és az új környezetnek kommunikálnia kell a hálózaton keresztül. Előfordulhat, hogy a `ClusterIP` korábban a kommunikációhoz használt szolgáltatásokat be `LoadBalancer` kell állítani, és megfelelő védelemmel kell elvégezniük.
 
-Az áttelepítéshez, érdemes-ügyfelek irányítása az új szolgáltatások, az aks-en futó. Az ajánlott módszer a forgalom átirányítása van DNS-t, mutasson a terheléselosztóhoz, amely helyezkedik el az AKS-fürt frissítésével.
+Az áttelepítés befejezéséhez az ügyfeleket az AK-on futó új szolgáltatásokra kell irányítani. Javasoljuk, hogy a forgalom átirányításához frissítse a DNS-t úgy, hogy az AK-fürt előtt található Load Balancer mutasson.
 
 ### <a name="stateless-applications"></a>Állapot nélküli alkalmazások
 
-Állapot nélküli alkalmazások áttelepítése a legegyszerűbb eset áll fenn. Fogja a YAML-definíciók alkalmazza az új fürtre, ellenőrizze, hogy minden a várt módon működik és az új fürt aktívvá forgalom átirányítása.
+Az állapot nélküli alkalmazások migrálása a legegyszerűbb eset. Alkalmazza a YAML-definíciókat az új fürtre, győződjön meg róla, hogy minden a várt módon működik-e, és irányítsa át a forgalmat az új fürt aktiválásához.
 
-### <a name="stateful-applications"></a>Állapotalapú alkalmazások
+### <a name="stateful-applications"></a>Állapot-nyilvántartó alkalmazások
 
-Áttelepítése állapotalapú alkalmazások is adatvesztés vagy váratlan állásidő elkerülése érdekében alapos tervezést igényel.
+Gondosan tervezze meg az állapot-nyilvántartó alkalmazások áttelepítését, hogy elkerülje az adatvesztést vagy a váratlan állásidőt.
 
-#### <a name="highly-available-applications"></a>Magas rendelkezésre állású alkalmazások
+#### <a name="highly-available-applications"></a>Magasan elérhető alkalmazások
 
-Egyes állapotalapú alkalmazások magas rendelkezésre állású konfigurációban telepíthető, és a replikák közötti adatokat másolja. Ha ez igaz a jelenlegi üzemelő példány, lehetséges, hozzon létre egy új tag az új AKS-fürtön, és csak minimális hatással van a alsóbb rétegbeli hívókhoz áttelepítésére lehet. Az áttelepítési lépéseket ebben a forgatókönyvben általában a következők:
+Egy magas rendelkezésre állású konfigurációban üzembe helyezhet néhány állapot-nyilvántartó alkalmazást. Ezek az alkalmazások az adatmásolt replikák között másolhatók. Ha jelenleg ezt a fajta központi telepítést használja, lehet, hogy létre tud hozni egy új tagot az új AK-fürtön, majd az áttelepítést minimális hatással kell lennie az alsóbb rétegbeli hívókra. A forgatókönyv áttelepítési lépései általában a következők:
 
-1. Hozzon létre egy új másodlagos replikára az aks-en
-2. Várjon, amíg az adatok replikálásához
-3. Nem tud több mint másodlagos replikát az új elsődleges
-4. Forgalom átirányítása az AKS-fürtöt
+1. Hozzon létre egy új másodlagos replikát az AK-on.
+2. Várjon, amíg a rendszer replikálja az adatforrást.
+3. Feladatátvétel az új elsődleges replika másodlagos replikájának létrehozásához.
+4. Mutasson forgalmat az AK-fürtre.
 
 #### <a name="migrating-persistent-volumes"></a>Állandó kötetek áttelepítése
 
-Nincsenek számos tényező figyelembe venni, ha a meglévő állandó kötetek migráláshoz az aks-ben. A folyamat lépései általában a következők:
+Ha a meglévő állandó köteteket AK-ra telepíti át, akkor általában az alábbi lépéseket kell követnie:
 
-1. (Nem kötelező) Fokozatos leválasztási műveletének ír az alkalmazás (állásidő szükséges)
-2. Pillanatkép-lemezek
-3. Hozzon létre új felügyelt lemezek pillanatképekből
-4. Állandó kötetek létrehozására az aks-ben
-5. Frissítse a Pod-specifikációk [a meglévő kötetek](https://docs.microsoft.com/azure/aks/azure-disk-volume) helyett PersistentVolumeClaims (statikus kiépítés)
-6. Az aks üzembe helyezése
-7. Érvényesítés
-8. Forgalom átirányítása az AKS-fürtöt
+1. A fokozatos leválasztása az alkalmazásba ír. (Ez a lépés nem kötelező, és leállást igényel.)
+2. Pillanatképek készítése a lemezekről.
+3. Hozzon létre új felügyelt lemezeket a pillanatképek közül.
+4. Állandó kötetek létrehozása az AK-ban.
+5. A pod-specifikációk frissítése a [meglévő kötetek használatára](https://docs.microsoft.com/azure/aks/azure-disk-volume) a PersistentVolumeClaims helyett (statikus kiépítés).
+6. Telepítse az alkalmazást az AK-ra.
+7. Érvényesít.
+8. Mutasson forgalmat az AK-fürtre.
 
-> **Fontos**: Ha nem kíván fokozatos leválasztási műveletének írások, kell replikálja az adatokat az új központi telepítés, nem állnak majd rendelkezésre adatokat arról, hogy a lemez-pillanatképből óta
+> [!IMPORTANT]
+> Ha úgy dönt, hogy nem fokozatos leválasztása az írásokat, replikálnia kell az új központi telepítésre. Ellenkező esetben kihagyhatja a lemez-Pillanatképek elkészítése után írt adatfájlokat.
 
-Nyílt forráskódú eszközök állnak fenn, amelyek segítségével hozzon létre felügyelt lemezek és kötetek Kubernetes-fürtök közötti áttelepítése.
+Egyes nyílt forráskódú eszközök segítségével felügyelt lemezeket hozhat létre és telepíthet át köteteket a Kubernetes-fürtök között:
 
-* [noelbundick/azure-cli-lemez-bővítmény](https://github.com/noelbundick/azure-cli-disk-copy-extension) – másolás és a lemezek konvertálása erőforrás-csoportokat és az Azure-régiók között
-* [yaron2/azure-kube-cli](https://github.com/yaron2/azure-kube-cli) - számba venni az ACS Kubernetes-kötet, és telepítheti át őket egy AKS-fürt
+* Az [Azure CLI lemez másolási bővítménye](https://github.com/noelbundick/azure-cli-disk-copy-extension) lemásolja és átalakítja a lemezeket az erőforráscsoportok és az Azure-régiók között.
+* Az [Azure KUBE CLI-bővítménye](https://github.com/yaron2/azure-kube-cli) az ACS-Kubernetes köteteket sorolja fel, és egy AK-fürtbe telepíti őket.
 
 #### <a name="azure-files"></a>Azure Files
 
-Lemezek, ellentétben az Azure Files csatlakoztathatók a több gazdagépen. Azure ANI Kubernetes megakadályozza hoz létre az AKS-fürt továbbra is az ACS-fürt által használt Podot. Megakadályozzák az adatvesztést, és nem várt viselkedést, biztosítania kell, hogy mindkét fürt nem adatraktárba történő írás során ugyanazokat a fájlokat egy időben.
+A lemezekkel ellentétben Azure Files egyidejűleg több gazdagéphez is csatlakoztatható. Az AK-fürtben az Azure és a Kubernetes nem akadályozza meg, hogy olyan Pod-t hozzon létre, amelyet az ACS-fürt továbbra is használ. Az adatvesztés és a nem várt viselkedés elkerülése érdekében győződjön meg arról, hogy a fürtök nem írnak egyszerre ugyanarra a fájlra.
 
-Az alkalmazás üzemeltethető mutat a ugyanabban fájlmegosztásba több replikát, ha az állapot nélküli áttelepítés lépésekkel, és üzembe helyezése a YAML-definíciók az új fürtön.
+Ha az alkalmazás több replikát is képes tárolni, amelyek ugyanarra a megosztásra mutatnak, kövesse az állapot nélküli áttelepítési lépéseket, és telepítse a YAML-definíciókat az új fürtre. Ha nem, az egyik lehetséges áttelepítési módszer a következő lépéseket foglalja magában:
 
-Ha nem, egy lehetséges migrálási megközelítés az alábbi lépésekből áll:
+1. Az alkalmazás üzembe helyezése az AK-ban 0 értékű replika-számmal.
+2. Az alkalmazás méretezése az ACS-ben 0-ra. (Ehhez a lépéshez leállás szükséges.)
+3. Az alkalmazás méretezése az AK-ra legfeljebb 1.
+4. Érvényesít.
+5. Mutasson forgalmat az AK-fürtre.
 
-1. Az alkalmazás telepítése az AKS-replika számot 0
-2. Az alkalmazás méretezése az ACS 0 (állásidő szükséges)
-3. Az alkalmazás méretezése az aks-en legfeljebb 1
-4. Érvényesítés
-5. Forgalom átirányítása az AKS-fürtöt
+Ha üres megosztással szeretne kezdeni, és másolatot készít a forrásadatokről, a [`az storage file copy`](https://docs.microsoft.com/cli/azure/storage/file/copy?view=azure-cli-latest) parancsok segítségével áttelepítheti az adatait.
 
-Kezdje egy üres megosztáshoz, majd készítsen másolatot a forrásadatok hova esetekben használhatja a [ `az storage file copy` ](https://docs.microsoft.com/cli/azure/storage/file/copy?view=azure-cli-latest) parancsokat az adatok áttelepítéséhez.
+### <a name="deployment-strategy"></a>Központi telepítési stratégia
 
-### <a name="deployment-strategy"></a>Üzembe helyezési stratégiához
+Javasoljuk, hogy a meglévő CI/CD-folyamat használatával helyezzen üzembe egy jól ismert konfigurációt az AK-ban. A meglévő üzembe helyezési feladatok klónozásával `kubeconfig` ellenőrizze, hogy az új AK-fürtre mutat-e.
 
-Az ajánlott módszer, hogy a meglévő CI/CD-folyamat az aks-ben a helyes konfiguráció üzembe helyezése. Fogja klónozni a meglévő telepítés feladatok, és ellenőrizze, hogy a `kubeconfig` az új AKS-fürtöt mutat.
-
-Olyan esetekben, ahol a nem lehetséges kell az erőforrás-definíció exportálása az ACS-ből, és alkalmazhatja őket az aks-ben. Használhat `kubectl` objektumok exportálása.
+Ha ez nem lehetséges, exportálja az erőforrás-definíciókat az ACS-ből, majd alkalmazza őket az AK-ra. Az objektumok exportálására használható `kubectl` .
 
 ```console
 kubectl get deployment -o=yaml --export > deployments.yaml
 ```
 
-Számos nyílt forráskódú eszközök, amelyek segítségével igényeitől függően is van:
+Számos nyílt forráskódú eszköz segíthet a telepítési igényektől függően:
 
-* [heptio/ark](https://github.com/heptio/ark) -k8s igényel 1.7-es
-* [yaron2/azure-kube-cli](https://github.com/yaron2/azure-kube-cli)
-* [mhausenblas/reshifter](https://github.com/mhausenblas/reshifter)
+* [Velero](https://github.com/heptio/ark) (Ehhez az eszközhöz Kubernetes 1,7 szükséges.)
+* [Azure Kube CLI-bővítmény](https://github.com/yaron2/azure-kube-cli)
+* [ReShifter](https://github.com/mhausenblas/reshifter)
 
-## <a name="migration-steps"></a>Migrálási lépések
+## <a name="migration-steps"></a>A migrálás lépései
 
-### <a name="1-create-an-aks-cluster"></a>1. AKS-fürt létrehozása
+1. [Hozzon létre egy AK-fürtöt](https://docs.microsoft.com/azure/aks/create-cluster) az Azure Portal, az Azure CLI vagy a Azure Resource Manager sablonnal.
 
-Kövesse a dokumentációt annak [AKS-fürt létrehozása](https://docs.microsoft.com/azure/aks/create-cluster) az Azure Portalon, az Azure CLI vagy a Resource Manager-sablon használatával.
+   > [!NOTE]
+   > A GitHubon található [Azure/AK-](https://github.com/Azure/AKS/tree/master/examples/vnet) tárházban talál minta Azure Resource Manager sablonokat.
 
-> Minta Azure Resource Manager-sablonok, az AKS megtalálja a [Azure/AKS](https://github.com/Azure/AKS/tree/master/examples/vnet) tárházban a Githubon
+2. Végezze el a szükséges módosításokat a YAML-definíciókban. Például cserélje le `apps/v1beta1` `apps/v1` a következőre `Deployments`:.
 
-### <a name="2-modify-applications"></a>2. Alkalmazások módosítása
+3. [Kötetek migrálása](#migrating-persistent-volumes) (nem kötelező) az ACS-fürtről az AK-fürtre.
 
-Hajtsa végre a YAML-definíciók bármely szükséges módosításokat. Példa: cseréje `apps/v1beta1` a `apps/v1` számára `Deployments`
+4. A CI/CD rendszer használatával alkalmazásokat telepíthet az AK-ba. Vagy használja a kubectl-t a YAML-definíciók alkalmazásához.
 
-### <a name="3-optional-migrate-volumes"></a>3. (Nem kötelező) Kötetek áttelepítése
+5. Érvényesít. Győződjön meg arról, hogy az alkalmazások a várt módon működnek, és hogy az áttelepített összes adat át lett másolva.
 
-Kötetek át az ACS-fürtben az AKS-fürt. További részletek találhatók a [állandó kötetek áttelepítése](#migrating-persistent-volumes) szakaszban.
+6. A forgalom átirányítása. Frissítse a DNS-t arra, hogy az ügyfelek az AK-beli üzemelő példányra
 
-### <a name="4-deploy-applications"></a>4. Alkalmazások üzembe helyezése
-
-A CI/CD-rendszer használatával telepíthet központilag alkalmazásokat AKS vagy a YAML meghatározásokat a kubectl használatával.
-
-### <a name="5-validate"></a>5. Érvényesítés
-
-Ellenőrizze, hogy az alkalmazások várt módon működnek-e, és, hogy az áttelepített adatokat a rendszer átmásolt keresztül.
-
-### <a name="6-redirect-traffic"></a>6. Forgalom átirányítása
-
-Frissítse a DNS-ügyfelek irányítása az AKS üzembe helyezés.
-
-### <a name="7-post-migration-tasks"></a>7. Áttelepítés utáni feladatok
-
-Ha át a köteteket, és úgy döntött, nem fokozatos leválasztási műveletének írások, szüksége lesz az adatokat másolni az új fürtre.
+7. Az áttelepítés utáni feladatok befejezése. Ha áttelepítette a köteteket, és úgy döntött, hogy nem fokozatos leválasztása az írásokat, másolja az adatot az új fürtre.

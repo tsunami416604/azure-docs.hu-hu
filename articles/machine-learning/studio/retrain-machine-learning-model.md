@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/14/2019
-ms.openlocfilehash: 903f2700ad127c9bcc69e69ee125ba62fccf52e0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a3f441a0dd7f7b9f402390e853bd1c28f282f653
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59051631"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66245091"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>Újratanítás PowerShell és a egy gépi tanulási modell üzembe helyezése
 
@@ -59,7 +59,7 @@ Ebben a példában használunk a C# megőrzési-alkalmazás létrehozása. Haszn
 
 Használja az alábbi lépéseket a megőrzési API-k meghívásához:
 
-1. Hozzon létre egy C# a Visual Studio-Konzolalkalmazás: **Új** > **projekt** > **Visual C#**   >  **Windows klasszikus Asztalialkalmazás**  >   **Console App (.NET Framework)**.
+1. Hozzon létre egy C# a Visual Studio-Konzolalkalmazás: **Új** > **projekt** > **Visual C#**   >  **Windows klasszikus Asztalialkalmazás**  >   **Console App (.NET Framework)** .
 1. Jelentkezzen be a Machine Learning webszolgáltatások portálján.
 1. Kattintson a webszolgáltatás, amelyet dolgozik.
 1. Kattintson a **felhasználása**.
@@ -89,7 +89,7 @@ A BES-mintakód feltölt egy fájlt egy helyi meghajtóról (például "C:\temp\
 1. Storage-fiókok listájából válassza ki a retrained modell tárolásához.
 1. A bal oldali navigációs oszlopban kattintson **hozzáférési kulcsok**.
 1. Másolja ki és mentse a **elsődleges elérési kulcs**.
-1. A bal oldali navigációs oszlopban kattintson **tárolók**.
+1. A bal oldali navigációs oszlopban kattintson **Blobok**.
 1. Válassza ki egy meglévő tárolót, vagy hozzon létre egy új, és mentse a nevét.
 
 Keresse meg a *StorageAccountName*, *StorageAccountKey*, és *StorageContainerName* nyilatkozatok, és frissítse az értékeket a Portalról mentett.
@@ -132,7 +132,7 @@ Mentse a *BaseLocation*, *RelativeLocation*, és *SasBlobToken* a kimeneti eredm
 
 ### <a name="sign-in-to-azure-resource-manager"></a>Jelentkezzen be az Azure Resource Manager
 
-Első lépésként jelentkezzen be Azure-fiókjába, a PowerShell környezetben a [Connect-AzAccount](/powershell/module/az.profile/connect-azaccount) parancsmagot.
+Első lépésként jelentkezzen be Azure-fiókjába, a PowerShell környezetben a [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) parancsmagot.
 
 ### <a name="get-the-web-service-definition-object"></a>A webszolgáltatás-definíciójának objektum lekérése
 

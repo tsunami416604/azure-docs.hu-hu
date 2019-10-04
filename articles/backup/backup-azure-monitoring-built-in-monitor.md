@@ -1,101 +1,112 @@
 ---
-title: 'Azure Backup: A figyelő az Azure Backup védett munkaterhelések'
-description: Az Azure Backup-alapú számítási feladatokat az Azure portal figyelése
-services: backup
-author: pvrk
-manager: shivamg
-keywords: Az Azure Backup; Riasztások;
+title: 'Azure Backup: Azure Backup védett munkaterhelések figyelése'
+description: Azure Backup munkaterhelések figyelése Azure Portal használatával
+ms.reviewer: pullabhk
+author: dcurwin
+manager: carmonm
+keywords: Azure Backup; Riasztások
 ms.service: backup
 ms.topic: conceptual
 ms.date: 03/05/2019
-ms.author: pullabhk
+ms.author: dacurwin
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 8d3e3257f16fe4e0f846c2268bfefc2771387de6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: bae05e890ef76ada9f775293c673cb8baa82c8bf
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58112500"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954588"
 ---
-# <a name="monitoring-azure-backup-workloads"></a>Az Azure Backup figyelési feladatok
+# <a name="monitoring-azure-backup-workloads"></a>Azure Backup munkaterhelések figyelése
 
-Az Azure Backup a biztonsági mentési követelmény és az infrastruktúra topológia (helyszíni vagy Azure) alapján több biztonsági mentési megoldást kínál. Minden olyan biztonsági mentési felhasználó vagy rendszergazda kell látnia, hogy mi történik összes megoldás között, és értesülhet a fontos forgatókönyvet lehetővé tesz a várható. Ez a cikk részletesen a figyelési és értesítési funkciók, az Azure Backup szolgáltatás által biztosított.
+Azure Backup több biztonsági mentési megoldást biztosít a biztonsági mentési követelmények és az infrastruktúra-topológia (helyszíni vagy Azure) alapján. Minden biztonsági mentési felhasználónak vagy rendszergazdának látnia kell, hogy mi történik az összes megoldásban, és a várhatóan fontos helyzetekben kapjon értesítést. Ez a cikk a Azure Backup szolgáltatás által biztosított figyelési és értesítési képességeket részletezi.
 
-## <a name="backup-jobs-in-recovery-services-vault"></a>A helyreállítási tárban lévő biztonsági mentési feladatok
+## <a name="backup-jobs-in-recovery-services-vault"></a>Biztonsági mentési feladatok a Recovery Services-tárolóban
 
-Az Azure Backup beépített figyelési és riasztási funkciókat az Azure Backup által védett munkaterhelések biztosít. A Recovery Services-tároló beállításait, a **figyelés** a témakör a beépített feladatok és riasztások.
+A Azure Backup a Azure Backup által védett munkaterhelések számára beépített figyelési és riasztási képességeket biztosít. A Recovery Services-tároló beállításaiban a **figyelés** szakasz beépített feladatokat és riasztásokat tartalmaz.
 
-![A beépített figyelés RS-tároló](media/backup-azure-monitoring-laworkspace/rs-vault-inbuiltmonitoring.png)
+![RS-tár beépített figyelése](media/backup-azure-monitoring-laworkspace/rs-vault-inbuiltmonitoring.png)
 
-A feladatok jönnek létre, amikor elvégzett műveletek, például a konfigurálása a biztonsági mentés, biztonsági mentés, visszaállítás, Törlés biztonsági mentés és stb.
+A feladatok akkor jönnek létre, ha olyan műveleteket végeznek, mint például a biztonsági mentés, a biztonsági mentés, a visszaállítás, a biztonsági mentés törlése és így tovább.
 
-A következő Azure Backup megoldásai feladatok itt látható:
+Az alábbi Azure Backup-megoldásokból származó feladatok itt láthatók:
 
   - Azure-beli virtuális gép biztonsági mentése
-  - Az Azure biztonsági mentés
-  - Az Azure rendszeren futó munkaterhelés biztonsági például SQL
-  - Az Azure Backup ügynöke (MAB)
+  - Azure-fájlok biztonsági mentése
+  - Azure munkaterhelés biztonsági mentés, például SQL
+  - Azure Backup ügynök (MAB)
 
-A System Center Data Protection Manager (SC-DPM), a Microsoft Azure Backup Server (MABS) feladatok nem jelennek meg.
+A System Center Data Protection Manager (SC-DPM), Microsoft Azure Backup Server (MABS) feladatok nem jelennek meg.
 
 > [!NOTE]
-> Az Azure számítási feladatok, például az SQL biztonsági másolatainak Azure virtuális gépeken belül rendelkezik hatalmas biztonsági mentési feladatok számát. Ha például a naplóalapú biztonsági mentések futtathatja, 15 percenként. Ezért az ilyen DB számítási feladatokhoz, kizárólag egyetlen felhasználó által aktivált műveletek jelennek meg. Ütemezett biztonsági mentési műveletek nem jelennek meg.
+> Az Azure-beli virtuális gépeken belüli SQL-alapú biztonsági mentések nagy számú biztonsági mentési feladattal rendelkeznek. A naplók biztonsági mentései például 15 percenként is futtathatók. Ezért az adatbázis-munkaterhelések esetében csak a felhasználó által aktivált műveletek jelennek meg. Az ütemezett biztonsági mentési műveletek nem jelennek meg.
 
-## <a name="backup-alerts-in-recovery-services-vault"></a>Biztonsági mentési riasztások a Recovery Services-tárolóban
+## <a name="backup-alerts-in-recovery-services-vault"></a>Biztonsági mentési riasztások Recovery Services-tárolóban
 
-Riasztások olyan elsősorban olyan forgatókönyvek, ahol felhasználó értesítést kap, hogy azok a megfelelő műveleteket végezheti el. A **biztonsági mentési riasztások** szakasz bemutatja az Azure Backup szolgáltatás által létrehozott riasztásokat. Ezek a riasztások a szolgáltatás által definiált és felhasználó egyéni nem minden olyan riasztásokat hozhat létre.
+A riasztások elsődlegesen olyan helyzetek, amikor a felhasználók értesítést kapnak, hogy el tudják végezni a megfelelő lépéseket. A **biztonsági mentési riasztások** szakasz a Azure Backup szolgáltatás által generált riasztásokat jeleníti meg. Ezeket a riasztásokat a szolgáltatás definiálja, és a felhasználó nem tud egyéni riasztást létrehozni.
 
 ### <a name="alert-scenarios"></a>Riasztási forgatókönyvek
-A következő esetekben alertable forgatókönyvek szolgáltatás vannak meghatározva.
+A szolgáltatás a következő forgatókönyveket figyelmeztethető forgatókönyvként határozza meg.
 
-  - Biztonsági mentési és visszaállítási hibák
-  - Biztonsági mentés sikeres volt, de figyelmeztetésekkel
-  - Védelem leállítása és megőrizni az adatokat és leállítása a védelmi adatok törlésével
+  - Biztonsági mentési/visszaállítási hibák
+  - A biztonsági mentés sikeresen befejeződött az Azure Backup ügynök (MAB) esetében, de figyelmeztetésekkel
+  - A védelem leállítása és a védelem leállítása az adattörlési szolgáltatással
 
-### <a name="exceptions-when-an-alert-is-not-raised"></a>Ha a riasztás nem jelenik meg, kivételek
-Nincsenek néhány kivételtől eltekintve, ha a riasztást a hiba nem hoz létre, azok:
+### <a name="exceptions-when-an-alert-is-not-raised"></a>Kivételek, ha a riasztás nem merült fel
+A riasztások nem jelennek meg a hibák miatt, ezért a következő kivételek állnak fenn:
 
-  - A felhasználó által megszakítva explicit módon a futó feladat
-  - A feladat sikertelen lesz, mivel egy másik biztonsági mentési feladat van folyamatban (ahhoz itt, mivel csak rá kell Várjon, amíg befejeződik az előző feladat tegyen semmit)
-  - A virtuális gép biztonsági mentési feladat sikertelen lesz, mivel a biztonsági másolat az Azure virtuális gép már nem létezik.
+  - A felhasználó explicit módon megszakította a futó feladatot.
+  - A feladatot nem sikerült végrehajtani, mert folyamatban van egy másik biztonsági mentési művelet (semmi köze itt, mert csak meg kell várni, amíg az előző feladatnak befejeződik)
+  - A virtuális gép biztonsági mentési feladata meghiúsul, mert a biztonsági másolattal rendelkező Azure-beli virtuális gép már nem létezik
 
-A fenti kivételek, a feltétellel, hogy ezeket a műveleteket (elsősorban a felhasználó által aktivált) eredménye megjelenik-e azonnal portal/PS/CLI ügyfeleken lettek kialakítva. A felhasználó, ezért azonnal észleli, és nem kell egy értesítést.
+A fenti kivételek úgy lettek kialakítva, hogy a műveletek eredménye (elsősorban a felhasználó által aktivált) azonnal megjelenik a portálon/PS/CLI-ügyfeleken. Ezért a felhasználó azonnal tisztában van, és nem igényel értesítést.
 
-### <a name="alerts-from-the-following-azure-backup-solutions-are-shown-here"></a>A következő Azure biztonsági mentési megoldások riasztásai itt látható:
+### <a name="alerts-from-the-following-azure-backup-solutions-are-shown-here"></a>Az alábbi Azure Backup-megoldások riasztásai itt láthatók:
 
-  - Az Azure virtuális gép biztonsági mentéseinek
-  - Az Azure biztonsági másolatainak
-  - Például az SQL Azure-beli számítási biztonsági
-  - Az Azure Backup ügynöke (MAB)
+  - Azure-beli virtuális gép biztonsági mentései
+  - Azure File biztonsági mentései
+  - Azure számítási feladatok biztonsági mentései, például SQL
+  - Azure Backup ügynök (MAB)
 
 > [!NOTE]
-> A System Center Data Protection Manager (SC-DPM), a Microsoft Azure Backup Server (MABS) riasztások nem jelennek meg itt.
+> A System Center Data Protection Manager (SC-DPM), Microsoft Azure Backup Server (MABS) riasztásai itt nem jelennek meg.
 
 ### <a name="alert-types"></a>Riasztástípusok
-Riasztás súlyossága alapján a riasztások háromféle lehet definiálni:
+A riasztás súlyossága alapján a riasztásokat háromféle típusban lehet meghatározni:
 
-  - **Kritikus fontosságú**: Alapelvet, bármely biztonsági mentési vagy helyreállítási hiba (ütemezett vagy felhasználó által aktivált) a riasztások generálása vezetne, és akkor jelennek meg a kritikus riasztás, és ártalmas műveletek, például a Törlés biztonsági mentési.
-  - **Figyelmeztetés**: Ha a biztonsági mentési művelet sikeres, de néhány figyelmeztetésekkel fejeződött be, hogy szerepelnek figyelmeztető riasztások.
-  - **Tájékoztató**: Mai nem tájékoztató generál riasztást az Azure Backup szolgáltatás.
+  - **Kritikus**: Elvileg a biztonsági mentési vagy helyreállítási hibák (ütemezett vagy felhasználó által aktivált) a riasztások generálásához vezethetnek, és kritikus riasztásként, valamint olyan romboló műveletekkel is megjelenhetnek, mint például a biztonsági mentés törlése.
+  - **Figyelmeztetés**: Ha a biztonsági mentési művelet sikeres, de néhány figyelmeztetéssel rendelkezik, a rendszer figyelmeztető riasztásként sorolja fel őket.
+  - **Tájékoztatás**: A mai naptól kezdve a Azure Backup szolgáltatás nem hoz létre tájékoztató riasztást.
 
-## <a name="notification-for-backup-alerts"></a>Értesítés biztonsági mentésekkel kapcsolatos riasztások
-
-> [!NOTE]
-> Értesítési konfigurációja csak az Azure Portalon végezhető el. PS/CLI vagy REST API-t vagy az Azure Resource Manager-sablon támogatási nem támogatott.
-
-Riasztás történik, ha felhasználó értesítést kap. Az Azure Backup egy e-mailben a beépített értesítési mechanizmust biztosít. Egyéni e-mail-címeket vagy terjesztési listák értesítést a rendszer riasztást állít elő egy is megadhat. Azt is beállíthatja az egyes egyedi riasztások értesülni szeretne, vagy hogy szeretne-e csoportosíthatja őket egy óránkénti összefoglaló majd értesítést kaphat.
-
-![R-tároló beépített e-mail-értesítések](media/backup-azure-monitoring-laworkspace/rs-vault-inbuiltnotification.png)
-
-Amikor értesítés van konfigurálva, egy üdvözlő vagy bevezető e-mailt fog kapni. Ezzel megerősíti, hogy az Azure Backup e-maileket küldhet ezeket a címeket, ha egy riasztás akkor jön létre.<br>
-
-Ha gyakoriságát az óránkénti összefoglaló értékre lett beállítva, és riasztást kiváltott és a egy órán belül fog állni, nem lesz a közelgő óránkénti összefoglaló része.
+## <a name="notification-for-backup-alerts"></a>Értesítés a biztonsági mentési riasztásokról
 
 > [!NOTE]
-> 
-> * Ha például egy destruktív művelet **állítsa le a védelmi adatok törlésével** van hajtja végre, riasztást hoz létre, és a egy e-mailt küld az előfizetés-tulajdonosokat, rendszergazdák és társrendszergazdák akkor is, ha a helyreállítás szolgáltatáshoz nem állíthatók be értesítéseket tároló.
-> * A sikeres feladatokra használja az értesítések konfigurálásával [Log Analytics](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-workspace).
+> Az értesítések konfigurálása csak az Azure Portalon végezhető el. A PS/CLI/REST API/Azure Resource Manager sablon támogatása nem támogatott.
+
+A riasztások kiemelése után a rendszer értesíti a felhasználókat. A Azure Backup e-mailben egy beépített értesítési mechanizmust biztosít. Megadhat egyéni e-mail-címeket vagy terjesztési listát, amelyekről értesítést kaphat, ha riasztás jön létre. Azt is megadhatja, hogy az egyes riasztások értesítést kapjanak-e, vagy egy óránkénti kivonatban csoportosítsa őket, majd értesítést kap.
+
+![RS-tároló beépített e-mail-értesítése](media/backup-azure-monitoring-laworkspace/rs-vault-inbuiltnotification.png)
+
+> [!NOTE]
+> Az SQL biztonsági mentések riasztásai konszolidálva lesznek, és az e-mailt csak az első alkalommal küldi el a rendszer. Ha azonban a felhasználó inaktiválja a riasztást, akkor a következő esemény egy másik e-mailt indít el.
+
+Ha az értesítés konfigurálva van, egy üdvözlő vagy bevezető e-mailt fog kapni. Ezzel erősíti meg, hogy Azure Backup e-maileket küldhet ezekre a címekre riasztás esetén.<br>
+
+Ha a gyakoriság egy óránkénti kivonatoló értékre lett beállítva, és egy órán belül megoldották a riasztást, akkor nem lesz része a közelgő óránkénti kivonatnak.
+
+> [!NOTE]
+>
+> * Ha olyan roncsolásos műveletet végez, mint például a **védelem leállítása a törlési adatokkal** , akkor a rendszer riasztást küld, és e-mailt küld az előfizetés-tulajdonosoknak, a rendszergazdáknak és a társ-rendszergazdáknak akkor is, ha az értesítések nincsenek konfigurálva a helyreállítási tárolóhoz.
+> * A sikeres feladatok értesítésének konfigurálásához használja a [log Analytics](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-workspace).
+
+## <a name="inactivating-alerts"></a>Riasztások inaktiválása
+
+Aktív riasztás inaktiválásához/feloldásához kattintson az inaktiválni kívánt riasztáshoz tartozó listaelemre. Ekkor megnyílik egy képernyő, amely részletes információkat jelenít meg a riasztásról, és a felül található "inaktiválás" gombra kattint. Erre a gombra kattintva megváltoztathatja a riasztás állapotát az "inaktív" értékre. Inaktiválhat egy riasztást, ha egyszerűen rákattint a jobb gombbal az adott riasztáshoz tartozó listaelemre, és kiválasztja az inactivate (inaktiválás) elemet.
+
+![RS Vault-riasztás inaktiválása](media/backup-azure-monitoring-laworkspace/vault-alert-inactivation.png)
+
+
 
 ## <a name="next-steps"></a>További lépések
 
-[Az Azure Monitor használatával az Azure biztonsági mentési számítási feladatok monitorozása](backup-azure-monitoring-use-azuremonitor.md)
+[Azure Backup-munkaterhelések figyelése Azure Monitor használatával](backup-azure-monitoring-use-azuremonitor.md)

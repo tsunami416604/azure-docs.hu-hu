@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: yushwang
-ms.openlocfilehash: 72c597a6258fbe43e718714ab346d3e10cb97463
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: d04d62d66b4ba22437e6d854566f8bbf5536a6fc
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417261"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66121139"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>IPsec/IKE-szabályzat S2S VPN- és VNet – VNet kapcsolatokhoz konfigurálása
 
@@ -276,7 +276,7 @@ $gw2ipconf1 = New-AzVirtualNetworkGatewayIpConfig -Name $GW2IPconf1 -Subnet $sub
 New-AzVirtualNetworkGateway -Name $GWName2 -ResourceGroupName $RG2 -Location $Location2 -IpConfigurations $gw2ipconf1 -GatewayType Vpn -VpnType RouteBased -GatewaySku HighPerformance
 ```
 
-### <a name="step-2---create-a-vnet-tovnet-connection-with-the-ipsecike-policy"></a>2. lépés: hozzon létre egy VNet-toVNet-kapcsolatot az IPsec/IKE-házirend
+### <a name="step-2---create-a-vnet-tovnet-connection-with-the-ipsecike-policy"></a>2\. lépés: hozzon létre egy VNet-toVNet-kapcsolatot az IPsec/IKE-házirend
 
 Hasonló a S2S VPN-kapcsolatot egy IPsec/IKE-szabályzat létrehozása, majd a alkalmazni a szabályzatot az új kapcsolat.
 

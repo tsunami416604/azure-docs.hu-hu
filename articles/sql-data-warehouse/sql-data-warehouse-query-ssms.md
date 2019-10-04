@@ -1,23 +1,23 @@
 ---
-title: Az Azure SQL Data Warehouse – ssms-t kapcsolódás |} A Microsoft Docs
-description: Az SQL Server Management Studio (SSMS) használatával csatlakozik, és az Azure SQL Data Warehouse lekérdezéséhez.
+title: Kapcsolódás a Azure SQL Data Warehousehoz – SSMS | Microsoft Docs
+description: SQL Server Management Studio (SSMS) használata a Azure SQL Data Warehousehoz való kapcsolódáshoz és a lekérdezéshez.
 services: sql-data-warehouse
-author: KavithaJonnakuti
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: consume
+ms.subservice: development
 ms.date: 04/17/2018
-ms.author: kavithaj
+ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 809802bc34a6cdc45f4b018d35895939e4b8f667
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: b96896c0366c6fba2548480b166bdb9cf6ca692c
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471946"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575342"
 ---
-# <a name="connect-to-sql-data-warehouse-with-sql-server-management-studio-ssms"></a>Csatlakozás az SQL Data Warehouse az SQL Server Management Studio (SSMS)
+# <a name="connect-to-sql-data-warehouse-with-sql-server-management-studio-ssms"></a>Kapcsolódás SQL Data Warehousehoz SQL Server Management Studio (SSMS) használatával
 > [!div class="op_single_selector"]
 > * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
 > * [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
@@ -27,18 +27,18 @@ ms.locfileid: "55471946"
 > 
 > 
 
-Az SQL Server Management Studio (SSMS) használatával csatlakozik, és az Azure SQL Data Warehouse lekérdezéséhez. 
+SQL Server Management Studio (SSMS) használata a Azure SQL Data Warehousehoz való kapcsolódáshoz és a lekérdezéshez. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ehhez az oktatóanyaghoz a következőkre lesz szüksége:
 
-* Egy létező SQL Data Warehouse. A létrehozás menetét az [SQL Data Warehouse létrehozását][Create a SQL Data Warehouse] ismertető cikkben találja.
-* SQL Server Management Studio (SSMS) installed. [Az SSMS telepítése] [ Install SSMS] ingyenesen, ha már nincs.
-* Az Azure SQL-kiszolgáló teljes neve. Ennek megkeresésével kapcsolatban olvassa el [az SQL Data Warehouse-hoz történő csatlakozást][Connect to SQL Data Warehouse] ismertető cikket.
+* Egy meglévő SQL Data Warehouse. A létrehozás menetét az [SQL Data Warehouse létrehozása][Create a SQL Data Warehouse] című cikkben találja.
+* SQL Server Management Studio (SSMS) telepítve. [Telepítse a SSMS][Install SSMS] -t ingyenesen, ha még nem tette meg.
+* Az Azure SQL-kiszolgáló teljes neve. Ennek megkeresésével kapcsolatban olvassa el a [Connect to SQL Data Warehouse][Connect to SQL Data Warehouse] (Csatlakozás az SQL Data Warehouse-hoz) című cikket.
 
 ## <a name="1-connect-to-your-sql-data-warehouse"></a>1. Csatlakozás az SQL Data Warehouse-hoz
 1. Nyissa meg az SSMS-t.
-2. Nyissa meg az Object Explorerben. Ehhez válassza ki a **fájl** > **Object Explorer csatlakoztatása**.
+2. Nyissa meg Object Explorer. Ehhez válassza a **fájl** > **Kapcsolódás Object Explorer**elemet.
    
     ![SQL Server Object Explorer][1]
 3. Töltse ki az összes mezőt a Connect to Server (Csatlakozás a kiszolgálóhoz) ablakban.
@@ -67,7 +67,7 @@ Most, hogy létrejött a kapcsolat az adatbázissal, ideje lefuttatni egy lekér
     ```
 4. Futtassa a lekérdezést. Ehhez kattintson `Execute` vagy használja a következő billentyűparancsot: `F5`.
    
-    ![A lekérdezés futtatása][5]
+    ![Lekérdezés futtatása][5]
 5. Tekintse meg a lekérdezés eredményeit. Ebben a példában a FactInternetSales táblának 60 398 sora van.
    
     ![Lekérdezés eredményei][6]
@@ -75,7 +75,7 @@ Most, hogy létrejött a kapcsolat az adatbázissal, ideje lefuttatni egy lekér
 ## <a name="next-steps"></a>További lépések
 Most, hogy képes csatlakozni és elvégezni a lekérdezéseket, próbálja [megjeleníteni az adatokat a PowerBI használatával][visualizing the data with PowerBI].
 
-A környezet Azure Active Directory-hitelesítésre történő konfigurálásával kapcsolatban tekintse meg az [SQL Data Warehouse-zal történő hitelesítést][Authenticate to SQL Data Warehouse] ismertető cikket.
+A környezet Azure Active Directory-hitelesítésre történő konfigurálásával kapcsolatban tekintse meg az [Authenticate to SQL Data Warehouse][Authenticate to SQL Data Warehouse] (Hitelesítés az SQL Data Warehouse-ban) című cikket.
 
 <!--Arcticles-->
 [Connect to SQL Data Warehouse]: sql-data-warehouse-connect-overview.md

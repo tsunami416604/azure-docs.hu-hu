@@ -1,6 +1,6 @@
 ---
-title: Használja az Azure Lab Services egy megosztott képkatalógus |} A Microsoft Docs
-description: Ismerje meg, hogy egy felhasználói lemezkép megoszthatja más, és a egy másik felhasználó rendszerképét is használhatják a virtuális gép sablon létrehozása a lab-ben használandó megosztott képkatalógus tesztkörnyezetfiók beállítása.
+title: Közös rendszerkép-katalógus használata Azure Lab Servicesban | Microsoft Docs
+description: Megtudhatja, hogyan konfigurálhat egy Lab-fiókot megosztott képkatalógus használatára úgy, hogy egy felhasználó megoszthat egy képet a másikkal, és egy másik felhasználó is használhatja a rendszerképet a sablon létrehozásához a laborban.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -11,57 +11,45 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/28/2019
+ms.date: 09/05/2019
 ms.author: spelluru
-ms.openlocfilehash: 93136c7d685bd9fc8ec4bcdea3a900b28029059b
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 65cc2d9ac2b96822f2c1b740f3180ba1d9eaf98c
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58653067"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70389978"
 ---
-# <a name="use-a-shared-image-gallery-in-azure-lab-services"></a>Egy megosztott kép katalógus az Azure Lab Services használatával
-Ez a cikk bemutatja, hogyan tanárok/lab rendszergazdai takaríthat meg, hogy a mások által felhasználható sablonnal virtuálisgép-lemezkép. Ezek a lemezképek lesznek mentve az Azure-ban [megosztott lemezkép-katalógusában](../../virtual-machines/windows/shared-image-galleries.md). Első lépésként a labor rendszergazda csatolja egy meglévő megosztott lemezkép-katalógusában a labor-fiók. A csatolást a megosztott lemezkép-katalógusában labs labor-fiókban létrehozott megosztott lemezkép-katalógus rendszerképek mentse. Más tanárok ezt a képet, létrehozhat egy sablont a saját osztályok megosztott lemezkép-katalógus választhatók ki. 
+# <a name="use-a-shared-image-gallery-in-azure-lab-services"></a>Megosztott képgyűjtemény használata Azure Lab Services
+Ebből a cikkből megtudhatja, hogy a tanárok/labor-rendszergazdák hogyan menthetik a sablonhoz tartozó virtuálisgép-rendszerképeket, hogy azok újra felhasználhatók legyenek Ezeket a lemezképeket egy Azure-beli [megosztott rendszerkép](../../virtual-machines/windows/shared-image-galleries.md)-katalógusba menti a rendszer. Első lépésként a tesztkörnyezet rendszergazdája csatol egy meglévő megosztott képtárat a labor-fiókhoz. Miután csatolta a megosztott képtárat, a labor fiókban létrehozott laborok menthetik a lemezképeket a megosztott képkatalógusba. Más oktatók is kiválaszthatják ezt a rendszerképet a megosztott képkatalógusból, hogy sablont hozzanak létre az osztályaik számára. 
 
 ## <a name="prerequisites"></a>Előfeltételek
-Hozzon létre egy megosztott lemezkép-katalógus használatával [Azure PowerShell-lel](../../virtual-machines/windows/shared-images.md) vagy [Azure CLI-vel](../../virtual-machines/linux/shared-images.md).
+- Hozzon létre egy megosztott képtárat [Azure PowerShell](../../virtual-machines/windows/shared-images.md) vagy az [Azure CLI](../../virtual-machines/linux/shared-images.md)használatával.
+- Csatlakoztatta a megosztott képtárat a labor-fiókhoz. Részletes útmutatásért lásd: [megosztott képgyűjtemény csatolása vagy leválasztása](how-to-attach-detach-shared-image-gallery.md).
 
-## <a name="attach-a-shared-image-gallery-to-a-lab-account"></a>Tesztkörnyezetfiók egy megosztott lemezkép-katalógus csatolása
-Az alábbi eljárás bemutatja, hogyan tesztkörnyezetfiók csatlakoztassa egy megosztott lemezkép-katalógusában. 
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Válassza ki **minden szolgáltatás** a bal oldali menüben. Válassza ki **Lab Services** a a **fejlesztési és üzemeltetési** szakaszban. Ha bejelöli a csillag (`*`) melletti **Lab Services**, megjelenik a **Kedvencek** szakaszban a bal oldali menüben. És újabb verziók esetében a következő időpont választja **Lab Services** alatt **Kedvencek**.
+## <a name="save-an-image-to-the-shared-image-gallery"></a>Rendszerkép mentése a megosztott képtárba
+Egy megosztott képkatalógus csatolása után egy labor-fiók rendszergazdája vagy egy oktató mentheti a képeket a megosztott képkatalógusba, hogy más tanárok is felhasználhatják őket. 
 
-    ![A Lab Services összes szolgáltatások ->](../media/tutorial-setup-lab-account/select-lab-accounts-service.png)
-3. Válassza ki a labor fiókját megtekintéséhez a **labor fiók** lapot. 
-4. Válassza ki **megosztott képgyűjtemény** a bal oldali menüben, és válassza a **Attach** az eszköztáron. 
+1. A labor kezdőlapján kattintson a **rendszerkép mentése** gombra a **sablon** szakaszban található csempén.
 
-    ![Megosztott kép gyűjteménye – gomb hozzáadása](../media/how-to-use-shared-image-gallery/sig-attach-button.png)
-5. Az a **csatolja egy meglévő megosztott lemezkép-katalógusában** lapon válassza ki a megosztott lemezkép-katalógusában, és válassza ki **OK**.
+    ![Rendszerkép mentése gomb](../media/how-to-use-shared-image-gallery/save-image-button.png)
+2.  A **virtuális gép rendszerképének mentése** ablakban adja meg a rendszerkép nevét, majd kattintson a **Mentés**gombra. 
 
-    ![Egy meglévő katalógus kiválasztása](../media/how-to-use-shared-image-gallery/select-image-gallery.png)
-6. A következő képernyő jelenik meg: 
+    ![Virtuális gép rendszerképének mentése ablak](../media/how-to-use-shared-image-gallery/save-virtual-machine-image.png)
+3. Keresse meg az állapotot a labor csempén. 
 
-    ![A listában a katalógusban](../media/how-to-use-shared-image-gallery/my-gallery-in-list.png)
-    
-    Ebben a példában nincsenek kép nem megosztott lemezkép-katalógus még.
+    ![A rendszerkép mentése művelet állapota](../media/how-to-use-shared-image-gallery/save-image-status.png)
+4. Győződjön meg arról, hogy a művelet sikeres.
 
-Az Azure Lab Services identity közreműködője hozzáadódik a megosztott lemezkép-katalógus, amely csatolva van a tesztkörnyezetben. Ez lehetővé teszi az oktatók / menteni a virtuális gép rendszergazdai lemezképek, a megosztott lemezkép-katalógusba. A lab-fiókban létrehozott összes labs rendelkezik hozzáféréssel a csatlakoztatott megosztott lemezkép-katalógusában. 
+    ![A rendszerkép mentése művelet sikeresen befejeződött.](../media/how-to-use-shared-image-gallery/save-image-successful.png)
 
-A csatolt megosztott lemezkép-katalógusban található összes rendszerkép alapértelmezés szerint engedélyezve vannak. Engedélyezheti vagy letilthatja a megadott lemezképek válassza ki azokat a listában, és használatával a **engedélyezése a megadott lemezképek** vagy **tiltsa le a megadott lemezképek** gombra. 
+Képeket is feltölthet a megosztott rendszerkép-katalógusba egy labor kontextusán kívül. További információ: [megosztott képgyűjtemény – áttekintés](../../virtual-machines/windows/shared-images.md). 
 
-## <a name="detach-a-shared-image-gallery"></a>Egy megosztott képkatalógus leválasztása
-Csak egy megosztott lemezkép-katalógusában a laborokhoz csatolható. Ha szeretné, hogy egy másik megosztott lemezkép-katalógus csatolása, leválasztása a jelenlegivel, mielőtt újat csatolása. Leválasztja a tesztkörnyezetben egy megosztott lemezkép-katalógus, válassza ki a **leválasztási** az eszköztáron, majd erősítse meg a leválasztás művelet. 
-
-## <a name="save-an-image-to-the-shared-image-gallery"></a>Menti egy képet a megosztott lemezkép-katalógus
-Miután egy megosztott lemezkép-katalógus csatolva van, egy oktató mentheti egy sablon rendszerképet megosztott lemezkép-katalógus, a többi tanároknak újrafelhasználása.
-
-![Virtuálisgép-lemezkép mentéséhez a katalógusban](../media/how-to-use-shared-image-gallery/save-virtual-machine.png)
-
-## <a name="use-an-image-from-the-shared-image-gallery"></a>Rendszerkép használatához a megosztott lemezkép-katalógusban
-Oktató/professzor is egyéni lemezkép kiválasztása érhető el a megosztott rendszerkép-katalógusában a sablon új labor létrehozása során.
+## <a name="use-an-image-from-the-shared-image-gallery"></a>Rendszerkép használata a megosztott rendszerkép-gyűjteményből
+Egy tanár/professzor kiválaszthat egy egyéni rendszerképet, amely a sablon megosztott képgalériájában elérhető az új tesztkörnyezet létrehozása során.
 
 ![Virtuálisgép-rendszerkép használata a katalógusból](../media/how-to-use-shared-image-gallery/use-shared-image.png)
 
 ## <a name="next-steps"></a>További lépések
-Megosztott kép katalógusokkal kapcsolatos további információkért lásd: [megosztott lemezkép-katalógusában](../../virtual-machines/windows/shared-image-galleries.md).
+A megosztott képtárakkal kapcsolatos további információkért lásd a [megosztott képtárat](../../virtual-machines/windows/shared-image-galleries.md).

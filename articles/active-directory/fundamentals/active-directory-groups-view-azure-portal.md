@@ -1,28 +1,28 @@
 ---
-title: Rövid útmutató megtekintéséhez a csoportok és tagok – Azure Active Directory |} A Microsoft Docs
+title: Gyors útmutató a csoportok és a tagok megtekintéséhez – Azure Active Directory | Microsoft Docs
 description: Keresse meg, és megtekintheti a szervezet és a hozzárendelt tagjaik kapcsolatos utasításokat.
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.author: lizross
+ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8eef6f7a363fe7b020a3ef18ae26799d7d5452ed
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9b4f2f6e86ce076e7c0464609252b027499a8307
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57881010"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68942885"
 ---
 <!--As a brand-new Azure AD administrator, I need to view my organization’s groups along with the assigned members, so I can manage permissions to apps and services for people in my organization-->
 
-# <a name="quickstart-view-your-organizations-groups-and-members-in-azure-active-directory"></a>Gyors útmutató: A munkahelyi csoportok és tagok megtekintése az Azure Active Directoryban
+# <a name="quickstart-view-your-organizations-groups-and-members-in-azure-active-directory"></a>Gyors útmutató: Megtekintheti a szervezete csoportait és tagjait Azure Active Directory
 Megtekintheti a vállalat meglévő csoportjait és csoporttagjait az Azure Portalon. A csoportok az olyan felhasználók (tagok) kezelésére szolgálnak, akiknek azonos hozzáférés és azonos engedélyek szükségesek potenciálisan korlátozott alkalmazásokhoz és szolgáltatásokhoz.
 
 Ebben a rövid útmutatóban megtekinti a vállalat összes meglévő csoportját és az azokhoz rendelt tagokat.
@@ -44,24 +44,24 @@ Hozzon létre egy _MDM policy – West_ nevű új csoportot. Csoportok létrehoz
 
 2. Töltse ki a **Csoport** lapot:
     
-    - **Csoport típusa:** Válassza ki **biztonsági**
+    - **Csoport típusa:** **Biztonság** kiválasztása
     
-    - **Csoport neve:** Típus _mobileszköz-kezelési szabályzat – Nyugat-India_
+    - **Csoport neve:** Írja be a _Mdm Policy-West_
     
-    - **Tagság típusa:** Válassza ki **hozzárendelt**.
+    - **Tagság típusa:** Válassza a **hozzárendelés**lehetőséget.
 
 3. Kattintson a **Létrehozás** gombra.
 
 ## <a name="create-a-new-user"></a>Új felhasználó létrehozása
-Hozzon létre egy _Alain Charon_ nevű új felhasználót. A felhasználóknak már létezniük kell, hogy hozzáadhatóak legyenek csoporttagként. Felhasználók létrehozásával kapcsolatos további információkért tekintse meg a [felhasználók hozzáadását és törlését](add-users-azure-active-directory.md) ismertető cikket.
+Hozzon létre egy _Alain Charon_ nevű új felhasználót. A felhasználóknak már létezniük kell, hogy hozzáadhatóak legyenek csoporttagként. Az "egyéni tartománynevek" lapon először tekintse meg a hitelesített tartománynevet, amelyben a felhasználókat létre szeretné hozni. Felhasználók létrehozásával kapcsolatos további információkért tekintse meg a [felhasználók hozzáadását és törlését](add-users-azure-active-directory.md) ismertető cikket.
 
 1. Válassza az **Azure Active Directory**, a **Felhasználók**, majd az **Új felhasználó** lehetőséget.
 
 2. Töltse ki a **Felhasználó** lapot:
 
-    - **név:** Típus _Alain Charon_.
+    - **név:** Írja be az _Alain Charon_ .
 
-    - **Felhasználónév:** Típus *alain\@contoso.com*.
+    - **Felhasználónév:** Írja be az *Alain\@contoso.com*.
 
 3. Másolja a **Jelszó** mezőben szereplő, automatikusan előállított jelszót, majd válassza a **Létrehozás** lehetőséget.
 
@@ -105,7 +105,7 @@ A **Csoportok – Minden csoport** lapon keresse meg az **MDM policy – West** 
 ## <a name="view-group-members"></a>Csoporttagok megtekintése
 Most, hogy megtalálta a csoportot, megtekintheti a csoporthoz rendelt tagokat.
 
-- Válassza a **Tagok** elemet a **Kezelés** területen, majd tekintse át az adott csoporthoz rendelt tagok neveinek teljes listáját, köztük _Alain Charont_.
+- Válassza a **Tagok** elemet a **Kezelés** területen, majd tekintse át az adott csoporthoz rendelt tagok neveinek teljes listáját, köztük _Alain Charont_ .
 
     ![Az MDM policy – West csoporthoz hozzárendelt tagok listája](media/active-directory-groups-view-azure-portal/groups-all-members.png)
 

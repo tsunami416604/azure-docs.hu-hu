@@ -1,52 +1,23 @@
 ---
-title: Az ajánlat beállításainak űrlap kitöltésére |} A Microsoft Docs
-description: Ismerteti a különböző mezők, amelyek az ajánlat beállítások képernyő értékekre van szükség, egy új Dynamics 365 Business Central alkalmazáshoz.
-services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
-author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
+title: Az ajánlat-beállítási űrlap kitöltése | Azure piactér
+description: Elavult cikk a PC-cikkekre mutató hivatkozásokkal; a "ismerteti azokat a különböző mezőket, amelyek az új Dynamics 365 Business Central alkalmazás ajánlati beállítások űrlapján értékeket igényelnek."
+services: Azure, Marketplace, Cloud Partner Portal
+author: ChJenk
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/17/2018
-ms.author: pbutlerm
-ms.openlocfilehash: a050a8cfdd67f662786fc0b9b7ed5451c88dccb1
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.date: 09/18/2019
+ms.author: pabutler
+ms.openlocfilehash: 84932d693c9c74c74095eb78e750f8d3b1452068
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810874"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105549"
 ---
-<a name="how-to-fill-out-the-offer-settings-form"></a>Az ajánlat beállításainak űrlap kitöltésére.
-=======================================
+# <a name="how-to-fill-out-the-offer-settings-form"></a>Az ajánlati beállítások űrlap kitöltése
 
-Az ajánlat beállítások képernyő művelet egy alapszintű az ajánlat beállításainak megadásához.
-A kötelező mezőket az alábbiakban tekintheti át.
+A [Cloud Partner Portal](https://cloudpartner.azure.com/) már nem támogatja a Dynamics 365 Business Central-ajánlatok létrehozását és felügyeletét. Ehelyett ez a funkció át lett helyezve a Microsoft [partner Center portálra](https://partner.microsoft.com/). További információkért lásd: [új Dynamics 365 Business Central-ajánlat létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-business-central-offer).
 
-### <a name="offer-id"></a>Ajánlat azonosítója
+## <a name="next-steps"></a>További lépések
 
-`OfferId` a közzétevő-profilon belül az ajánlat egyedi azonosítója.
-Ezt az Azonosítót meg fognak jelenni a termék URL-címeket. Csak kisbetűs alfanumerikus karakterekből és kötőjelekből (-) állhat. Az azonosító nem végződhet kötőjellel, és legfeljebb 50 karakter hosszú lehet. Ez a mező után egy ajánlatot élesíti zárolva van.
-
-Ha például a "Contoso" partner "minta-webalkalmazás App" ajánlat Azonosítóját hoz létre, az appsource-ban, ez fog megjelenni:
-
-&emsp; `https://appsource.microsoft.com/marketplace/apps/contoso.sample-Web App?tab=Overview`
-
-
-### <a name="publisher-id"></a>Közzétevő azonosítója
-
-A legördülő listából válassza ki ezt az ajánlatot a közzétenni kívánt közzétevő profilt teszi lehetővé. Ez a mező után egy ajánlatot élesíti zárolva van.
-
-
-### <a name="name"></a>Name (Név)
-
-Ez az alkalmazás/ajánlatot, a Microsoft jelenik meg a megjelenítendő nevét az [AppSource](https://appsource.microsoft.com/). Legfeljebb 50 karakterből állhat.
-
-> [!NOTE]
-> A rövid neve ugyanaz, mint a közzétevő neve, az alkalmazásjegyzékben megadott kell lennie.
-
-Kattintson a **mentése** a folyamat mentéséhez. Következő lépés az ajánlatban technikai tudnivalókkal lenne.
+Új Dynamics 365 Business Central-ajánlat létrehozása előtt olvassa el a [partner Center-fiók létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) elemet, majd nyissa meg a [kereskedelmi piactér irányítópultját](https://partner.microsoft.com/dashboard/directory) a kiválasztott **Áttekintés** oldalon. Az ajánlat létrehozásához kövesse az [új Dynamics 365 Business Central-ajánlat létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-business-central-offer) című témakör utasításait.

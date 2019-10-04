@@ -1,99 +1,98 @@
 ---
-title: Hajtsa végre a karbantartási feladat egy adatbázist az Azure Functions használatával |} A Microsoft Docs
-description: Az Azure Functions használatával, amely csatlakozik az Azure SQL Database rendszeres időközönként sorait Tisztítja a feladat ütemezését.
+title: Adatbázis-tisztítási feladat végrehajtása a Azure Functions használatával | Microsoft Docs
+description: A Azure Functions használatával ütemezhet egy olyan feladatot, amely a Azure SQL Databasehoz kapcsolódik a sorok rendszeres tisztításához.
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: jeconnoc
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 10/28/2018
+ms.date: 10/02/2019
 ms.author: glenga
-ms.openlocfilehash: 4ec2e9b931e6405aca5b4237bc044647af3b8bb3
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 469e0149a3b9dce22f0590240a053ee3b183c7b9
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608579"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71815981"
 ---
-# <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Csatlakozás az Azure SQL Database az Azure Functions használatával
+# <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Azure Functions használata Azure SQL Databasehoz való kapcsolódáshoz
 
-Ez a cikk bemutatja, hogyan hozzon létre egy ütemezett feladatot, amely egy Azure SQL Database-példányhoz csatlakozik az Azure Functions használatával. A függvénykód törli azokat a sorokat egy táblában az adatbázisban. Az új C# függvény egy előre meghatározott időzítő eseményindító sablonjához a Visual Studio 2017 alapján jön létre. Ennek támogatásához is meg kell adni egy adatbázis-kapcsolati karakterlánc, a függvényalkalmazáshoz egy alkalmazásbeállításhoz. Ebben a forgatókönyvben az adatbázison tömeges műveletet használja. 
+Ez a cikk bemutatja, hogyan használható a Azure Functions egy Azure SQL Database vagy Azure SQL felügyelt példányhoz csatlakozó ütemezett feladatok létrehozásához. A függvény kódja megtisztítja a sorokat egy táblában az adatbázisban. Az új C# függvény egy előre definiált időzítő-trigger sablon alapján jön létre a Visual Studio 2019-ben. Ennek a forgatókönyvnek a támogatásához egy adatbázis-kapcsolódási karakterláncot kell beállítania egy alkalmazás-beállításként a Function alkalmazásban. Az Azure SQL felügyelt példányához engedélyeznie kell a [nyilvános végpontot](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure) , hogy csatlakozni tudjon a Azure functions. Ez a forgatókönyv egy tömeges műveletet használ az adatbázison. 
 
-Ha ez az első élményre C# funkciók, olvassa el a [Azure Functions C# – fejlesztői referencia](functions-dotnet-class-library.md).
+Ha első alkalommal dolgozik a functions szolgáltatással C# , olvassa el a [Azure functions C# fejlesztői referenciát](functions-dotnet-class-library.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-+ A cikkben leírtak elvégzése [Visual Studio használatával az első függvény létrehozása](functions-create-your-first-function-visual-studio.md) a verzió 2.x verziójú futtatókörnyezet célzó helyi függvényalkalmazás létrehozásához. Meg kell is közzétette a projekthez egy függvényalkalmazáshoz az Azure-ban.
++ Az [első függvény létrehozása a Visual Studióval](functions-create-your-first-function-visual-studio.md) című cikkben ismertetett lépéseket követve hozzon létre egy helyi function alkalmazást, amely a 2. x verziójú futtatókörnyezetet célozza meg. Emellett közzé kell tennie a projektet egy Azure-beli Function alkalmazásban.
 
-+ Ez a cikk bemutatja a Transact-SQL parancsot, amely végrehajtja a műveletcsoport törlése a **SalesOrderHeader** az AdventureWorksLT mintaadatbázis táblájában. Az AdventureWorksLT mintaadatbázis létrehozása, hajtsa végre a cikk lépéseit [egy Azure SQL database létrehozása az Azure Portalon](../sql-database/sql-database-get-started-portal.md).
++ Ez a cikk egy Transact-SQL-parancsot mutat be, amely egy tömeges karbantartási műveletet hajt végre a AdventureWorksLT-mintaadatbázis **SalesOrderHeader** táblájában. A AdventureWorksLT-mintaadatbázis létrehozásához hajtsa végre a [Azure Portal Azure SQL Database-adatbázis létrehozása](../sql-database/sql-database-get-started-portal.md)című cikkben ismertetett lépéseket.
 
-+ Hozzá kell adnia egy [kiszolgálószintű tűzfalszabály](../sql-database/sql-database-get-started-portal-firewall.md) az útmutatóhoz használt számítógép nyilvános IP-címét. Ez a szabály szükséges az SQL database példányát a helyi számítógépről érhet el.  
++ A rövid útmutatóhoz használt számítógép nyilvános IP-címéhez hozzá kell adnia egy [kiszolgálói szintű tűzfalszabály-szabályt](../sql-database/sql-database-get-started-portal-firewall.md) . Ez a szabály szükséges ahhoz, hogy hozzáférhessen az SQL Database-példányhoz a helyi számítógépről.  
 
 ## <a name="get-connection-information"></a>Kapcsolatadatok lekérése
 
-A kapcsolati sztring lekérése befejezésekor létrehozott adatbázis kell [egy Azure SQL database létrehozása az Azure Portalon](../sql-database/sql-database-get-started-portal.md).
+Az [Azure SQL Database-adatbázis létrehozásakor](../sql-database/sql-database-get-started-portal.md)létrehozott adatbázishoz tartozó kapcsolódási karakterláncot le kell kérni a Azure Portal.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-1. Válassza ki **SQL-adatbázisok** elemet a bal oldali menüben válassza ki az adatbázist a a **SQL-adatbázisok** lapot.
+1. Válassza ki az **SQL-adatbázisok** elemet a bal oldali menüben, és válassza ki az adatbázist az **SQL-adatbázisok** lapon.
 
-1. Válassza ki **kapcsolati karakterláncok** alatt **beállítások** , és másolja a teljes **ADO.NET** kapcsolati karakterláncot.
+1. Válassza a **kapcsolatok karakterláncok** lehetőséget a **Beállítások** területen, és másolja a teljes **ADO.net** -kapcsolatok karakterláncát. Az Azure SQL felügyelt példánya esetében a nyilvános végponthoz tartozó kapcsolatok karakterláncának másolása.
 
-    ![Másolja az ADO.NET kapcsolati karakterláncot.](./media/functions-scenario-database-table-cleanup/adonet-connection-string.png)
+    ![Másolja a ADO.NET-kapcsolatok karakterláncát.](./media/functions-scenario-database-table-cleanup/adonet-connection-string.png)
 
 ## <a name="set-the-connection-string"></a>A kapcsolati sztring beállítása
 
-A függvények végrehajtásához szükséges gazdaszolgáltatást az Azure-ban egy függvényalkalmazás biztosítja. Ajánlott biztonsági eljárásként a függvényalkalmazás-beállításokat kapcsolati karakterláncok és egyéb titkos adatait tárolja. Alkalmazásbeállítások használatával megakadályozza a véletlen közzétételét a kód a kapcsolati karakterláncot. Alkalmazásbeállítások a függvényalkalmazás közvetlenül a Visual Studióból is elérheti.
+A függvények végrehajtásához szükséges gazdaszolgáltatást az Azure-ban egy függvényalkalmazás biztosítja. Ajánlott biztonsági eljárásként a Function app-beállításokban tárolja a kapcsolatok karakterláncait és egyéb titkait. Az Alkalmazásbeállítások használata megakadályozza a kapcsolatok karakterláncának véletlen közzétételét a kóddal. A Function alkalmazáshoz közvetlenül a Visual studióból férhet hozzá.
 
-Meg kell korábban feltöltötte az alkalmazást az Azure-bA. Ha ezt még nem tette meg, [a függvényalkalmazás közzététele az Azure-bA](functions-develop-vs.md#publish-to-azure).
+Előzőleg közzé kell tennie az alkalmazást az Azure-ban. Ha még nem tette meg, [tegye közzé a Function alkalmazást az Azure](functions-develop-vs.md#publish-to-azure)-ban.
 
-1. A Megoldáskezelőben kattintson a jobb gombbal a függvényalkalmazás projektjét, és válassza a **közzététel** > **Alkalmazásbeállítások kezelése...** . Válassza ki **beállítás hozzáadása**, a **új alkalmazásbeállítás neve**, típus `sqldb_connection`, és válassza ki **OK**.
+1. Megoldáskezelő kattintson a jobb gombbal a Function app projektre, és > válassza az**Alkalmazásbeállítások kezelése...** lehetőséget. Válassza a **beállítás hozzáadása**lehetőséget, az **új Alkalmazásbeállítás neve**mezőbe `sqldb_connection`írja be a nevet, majd kattintson **az OK gombra**.
 
-    ![Alkalmazásbeállítások a függvényalkalmazáshoz.](./media/functions-scenario-database-table-cleanup/functions-app-service-add-setting.png)
+    ![A Function alkalmazás Alkalmazásbeállítások.](./media/functions-scenario-database-table-cleanup/functions-app-service-add-setting.png)
 
-1. Az új **sqldb_connection** beállítást, illessze be az előző szakaszban kimásolt kapcsolati karakterláncot a **helyi** mezőt, és cserélje le `{your_username}` és `{your_password}` valós helyőrzőt értékek. Válassza ki **érték beszúrása helyi** másolja a frissített értéket, hogy a **távoli** mezőben, majd válassza ki **OK**.
+1. Az új **sqldb_connection** -beállításban illessze be az előző szakaszban a **helyi** mezőbe másolt, majd a `{your_username}` és `{your_password}` helyőrzőket valós értékekkel cserélje le. Válassza a **helyi érték beszúrása** lehetőséget, hogy a frissített értéket a **távoli** mezőbe másolja, majd válassza az **OK**gombot.
 
-    ![Adja hozzá az SQL-kapcsolati sztring beállítása.](./media/functions-scenario-database-table-cleanup/functions-app-service-settings-connection-string.png)
+    ![Adja meg az SQL-kapcsolatok karakterláncának beállítását.](./media/functions-scenario-database-table-cleanup/functions-app-service-settings-connection-string.png)
 
-    A kapcsolati karakterláncokat tárolja titkosított formában az Azure-ban (**távoli**). Titkos kulcsok kiszivárgását a local.settings.json projektfájl elkerülése érdekében (**helyi**) ki kell zárni a forráskezelőből, mint például egy .gitignore fájlt használatával.
+    A rendszer az Azure-ban (**távoli**) tárolja a kapcsolatok karakterláncait. A titkok kiszivárgásának megelőzése érdekében a local. Settings. JSON projektfájlt (**Local**) ki kell zárni a forrás-vezérlőelemből, például egy. gitignore-fájl használatával.
 
-## <a name="add-the-sqlclient-package-to-the-project"></a>Adja hozzá a SqlClient csomagot a projekthez
+## <a name="add-the-sqlclient-package-to-the-project"></a>A SqlClient-csomag hozzáadása a projekthez
 
-Adja hozzá a NuGet-csomagot, amely már tartalmaz az SqlClient kell. A data access könyvtár egy SQL-adatbázishoz való kapcsolódáshoz van szükség.
+Hozzá kell adnia a SqlClient könyvtárat tartalmazó NuGet-csomagot. Ez az adatelérési függvénytár egy SQL Database-adatbázishoz való kapcsolódáshoz szükséges.
 
-1. Nyissa meg a helyi függvényalkalmazás projektjét a Visual Studio 2017-ben.
+1. Nyissa meg a helyi function alkalmazás projektjét a Visual Studio 2019-ben.
 
-1. A Megoldáskezelőben kattintson a jobb gombbal a függvényalkalmazás projektjét, és válassza a **NuGet-csomagok kezelése**.
+1. Megoldáskezelő kattintson a jobb gombbal a Function app projektre, és válassza a **NuGet-csomagok kezelése**lehetőséget.
 
 1. A **Tallózás** fülön keresse meg a(z) ```System.Data.SqlClient``` elemet, majd válassza ki.
 
-1. Az a **System.Data.SqlClient** lapra, jelölje be verzió `4.5.1` majd **telepítése**.
+1. A **System. SqlClient** lapon válassza ki az `4.5.1` verziót, majd kattintson a **telepítés**gombra.
 
 1. A telepítés befejezése után tekintse át a módosításokat, majd kattintson az **OK** gombra az **Előnézet** ablak bezárásához.
 
 1. Ha megjelenik egy **License Acceptance** (Licenc elfogadása) ablak, kattintson az **I Accept** (Elfogadom) gombra.
 
-Most a C#-függvénykódot, amely csatlakozik az SQL-adatbázis is hozzáadhat.
+Most hozzáadhatja a C# SQL Databasehoz csatlakozó függvény kódját is.
 
 ## <a name="add-a-timer-triggered-function"></a>Időzítő által aktivált hozzáadása
 
-1. A Megoldáskezelőben kattintson a jobb gombbal a függvényalkalmazás projektjét, és válassza a **Hozzáadás** > **új Azure-függvény**.
+1. Megoldáskezelő kattintson a jobb gombbal a Function app projektre, és válassza az **Add** > **új Azure-függvény**lehetőséget.
 
-1. Az a **Azure Functions** , a kiválasztott sablonhoz adja az új elem hasonló `DatabaseCleanup.cs` válassza **Hozzáadás**.
+1. A kiválasztott **Azure functions** sablonnal adja meg az új elemet, például `DatabaseCleanup.cs`, majd válassza a **Hozzáadás**lehetőséget.
 
-1. Az a **új Azure-függvény** párbeszédpanelen válassza ki **időzítő eseményindító** , majd **OK**. Ezen a párbeszédpanelen az időzítő által aktivált függvény kódfájlra hoz létre.
+1. Az **új Azure-függvény** párbeszédpanelen válassza az **időzítő trigger** lehetőséget, majd **az OK gombot**. Ez a párbeszédablak létrehoz egy programkódot az időzítő által aktivált függvényhez.
 
-1. Nyissa meg az új kód fájlt, és adja hozzá a következő using utasításokat a fájl elején:
+1. Nyissa meg az új kódot, és adja hozzá a következő using utasításokat a fájl elejéhez:
 
     ```cs
     using System.Data.SqlClient;
     using System.Threading.Tasks;
     ```
 
-1. Cserélje le a meglévő `Run` függvény a következő kóddal:
+1. Cserélje le a meglévő `Run` függvényt a következő kódra:
 
     ```cs
     [FunctionName("DatabaseCleanup")]
@@ -117,26 +116,26 @@ Most a C#-függvénykódot, amely csatlakozik az SQL-adatbázis is hozzáadhat.
     }
     ```
 
-    Ez a függvény akkor fut, 15 másodpercenként frissíteni a `Status` oszlop a szállítási dátum alapján. Az időzítő eseményindító kapcsolatos további információkért lásd: [Azure Functions időzítő eseményindító](functions-bindings-timer.md).
+    Ez a függvény 15 másodpercenként fut a `Status` oszlopnak a szállítási dátum alapján történő frissítéséhez. További információ az időzítő triggerről: [időzítő trigger Azure Functionshoz](functions-bindings-timer.md).
 
-1. Nyomja meg **F5** elindításához a függvényalkalmazást. A [Azure Functions Core Tools](functions-develop-local.md) végrehajtási ablak nyílik meg a Visual Studio mögött.
+1. Nyomja le az **F5** billentyűt a Function alkalmazás elindításához. Megnyílik a [Azure functions Core Tools](functions-develop-local.md) végrehajtási ablak a Visual Studio mögött.
 
-1. Indítás után 15 másodperc, a függvény futásakor. Tekintse meg a kimenetet, és jegyezze fel a frissített sorok száma a **SalesOrderHeader** tábla.
+1. Az indítás után 15 másodperccel a függvény fut. Tekintse meg a kimenetet, és jegyezze fel, hogy hány sor frissült a **SalesOrderHeader** táblában.
 
-    ![A függvény naplóinak megtekintése.](./media/functions-scenario-database-table-cleanup/function-execution-results-log.png)
+    ![Tekintse meg a függvények naplóit.](./media/functions-scenario-database-table-cleanup/function-execution-results-log.png)
 
-    Az első végrehajtás a frissítenie kell a 32 sornyi adatot. Következő futtatások nincsenek adatok sorok frissítése, kivéve, ha módosítja a SalesOrderHeader tábla adatait, hogy több sor kiválasztásakor a rendszer által a `UPDATE` utasítást.
+    Az első végrehajtáskor frissítenie kell az 32-es adatsorokat. A következő futtatások nem frissítik az adatsorokat, hacsak nem módosítja a SalesOrderHeader, hogy a `UPDATE` utasítás több sort is kiválasszan.
 
-Ha azt tervezi, hogy [közzétenni ezt a funkciót](functions-develop-vs.md#publish-to-azure), ne felejtse el módosítani a `TimerTrigger` további ésszerű attribútumot [cron-ütemezését](functions-bindings-timer.md#cron-expressions) , mint 15 másodpercenként.
+Ha azt tervezi, hogy [közzéteszi ezt a függvényt](functions-develop-vs.md#publish-to-azure), ne felejtse el módosítani a `TimerTrigger` attribútumot egy ésszerű [cron-ütemtervre](functions-bindings-timer.md#ncrontab-expressions) , mint 15 másodpercenként.
 
 ## <a name="next-steps"></a>További lépések
 
-Ezután megtudhatja, hogyan használható. Más szolgáltatások integrálása a Logic Apps együttműködik.
+A következő lépésben megtudhatja, hogyan használható. A más szolgáltatásokkal való integrációhoz Logic Apps függvényekkel.
 
 > [!div class="nextstepaction"]
-> [A Logic Apps szolgáltatással integrálható függvények létrehozása](functions-twitter-email.md)
+> [Logic Apps-sel integrált függvény létrehozása](functions-twitter-email.md)
 
-Függvények kapcsolatos további információkért lásd a következő cikkeket:
+A functions szolgáltatással kapcsolatos további információkért tekintse meg a következő cikkeket:
 
 + [Az Azure Functions fejlesztői segédanyagai](functions-reference.md)  
   Programozói segédanyagok függvények kódolásához, valamint eseményindítók és kötések meghatározásához.

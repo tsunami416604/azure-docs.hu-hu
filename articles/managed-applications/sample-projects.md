@@ -1,6 +1,6 @@
 ---
-title: Azure által felügyelt alkalmazás mintaprojektekkel |} A Microsoft Docs
-description: Rendelkezésre álló mintaprojektekkel összefoglalja az Azure által felügyelt alkalmazások
+title: Azure felügyelt alkalmazások – minta projektjei | Microsoft Docs
+description: Az Azure által felügyelt alkalmazások számára elérhető minta projektek összegzése
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -9,24 +9,24 @@ ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/02/2019
+ms.date: 09/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: c0e2ab5cbf45aa2b3836be760ca256bd28e7459a
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 4b046b25e81e7b90e71ce57aea17fab3e80e52f9
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993229"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309155"
 ---
-# <a name="sample-projects-for-azure-managed-applications"></a>Minta-projektek az Azure által felügyelt alkalmazások
+# <a name="sample-projects-for-azure-managed-applications"></a>Az Azure által felügyelt alkalmazások mintáinak projektjei
 
-Az alábbi táblázatban szereplő hivatkozások minta Azure felügyelt alkalmazások a Githubon.
+A következő táblázat az Azure által felügyelt alkalmazásokra mutató hivatkozásokat tartalmaz a GitHubon.
 
 |  |  |
 | --- | --- |
 | **Példák** | |
-| [Felügyelt alkalmazás (próba vagy éles) egy új vagy meglévő virtuális hálózatban](https://github.com/Azure/azure-managedapp-samples/tree/master/samples/201-managed-app-using-existing-vnet) | Bemutatja, hogyan hozhat létre rugalmas telepítési lehetőségek, ügyfelek számára. A felügyelt alkalmazáshoz is telepíthető egy új virtuális hálózat vagy egy meglévő virtuális hálózatot. Ügyfelek adhatja meg a felügyelt alkalmazások próbaverzió vagy éles verzióját. |
-| [Az Azure Storage-fiók kezelése](https://github.com/Azure/azure-managedapp-samples/tree/master/samples/201-managed-storage-account) | Üzembe helyez egy tárfiókban. Használja a mintaprojekt létrehozása felügyelt alkalmazások bemutatása. |
-| [Felügyelt Service Fabric és az Azure felügyeleti szolgáltatások](https://github.com/Azure/azure-managedapp-samples/tree/master/samples/201-managed-service-fabric) | Üzembe helyez egy service fabric-fürt és a virtuálisgép-méretezési csoportokban. Naplózási és diagnosztikai funkciók storage-fiókot tartalmazza. |
-| [Felügyelt webalkalmazás (IaaS) az Azure felügyeleti szolgáltatásaival](https://github.com/Azure/azure-managedapp-samples/tree/master/samples/201-managed-web-app) | Üzembe helyez egy virtuális gépet, amely egy webes alkalmazást. |
-| [Automatikus javítás és a biztonsági mentés SQL 2017 IaaS által felügyelt](https://github.com/Azure/azure-managedapp-samples/tree/master/samples/201-managed-sql-iaas) | Üzembe helyez egy virtuális gépet, amelyen SQL 2017-ben. |
+| [Felügyelt alkalmazás (próbaverzió vagy termelés) egy új vagy meglévő virtuális hálózatba](https://github.com/Azure/azure-managedapp-samples/tree/master/Managed%20Application%20Sample%20Packages/201-managed-app-using-existing-vnet) | Bemutatja, hogyan hozhat létre rugalmas telepítési lehetőségeket az ügyfelek számára. Ezt a felügyelt alkalmazást új virtuális hálózatra vagy meglévő virtuális hálózatra lehet telepíteni. Az ügyfelek a felügyelt alkalmazások próbaverzióját vagy üzemi verzióját is megadhatják. |
+| [Felügyelt Azure Storage-fiók](https://github.com/Azure/azure-managedapp-samples/tree/master/Managed%20Application%20Sample%20Packages/201-managed-storage-account) | Egyetlen Storage-fiók üzembe helyezése. Ezt a minta projektet a felügyelt alkalmazások létrehozásának bevezetésként használhatja. |
+| [Felügyelt Service Fabric az Azure felügyeleti szolgáltatásaival](https://github.com/Azure/azure-managedapp-samples/tree/master/Managed%20Application%20Sample%20Packages/201-managed-service-fabric) | Üzembe helyez egy Service Fabric-fürtöt és a virtuálisgép-méretezési csoportokat. A naplózási és diagnosztikai tárolási fiókokat tartalmaz. |
+| [Felügyelt webalkalmazás (IaaS) az Azure felügyeleti szolgáltatásaival](https://github.com/Azure/azure-managedapp-samples/tree/master/Managed%20Application%20Sample%20Packages/201-managed-web-app) | Üzembe helyez egy webalkalmazást futtató virtuális gépet. |
+| [Felügyelt SQL 2017 IaaS automatikus javítással és biztonsági mentéssel](https://github.com/Azure/azure-managedapp-samples/tree/master/Managed%20Application%20Sample%20Packages/201-managed-sql-iaas) | Üzembe helyez egy SQL 2017-et futtató virtuális gépet. |

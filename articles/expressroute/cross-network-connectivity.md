@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 04/03/2019
 ms.author: rambala
-ms.openlocfilehash: 4923c7f2048b7368af6314d5e2288216115bc3bc
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 3bc189cf269084fdb26f141a36755c96554cad7b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59784739"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64866002"
 ---
 # <a name="cross-network-connectivity"></a>Hálózatok közötti kapcsolatok
 
@@ -119,7 +119,7 @@ Az alábbi táblázat az útválasztási táblázatot, a privát társviszony-l�
 
 Lásd: [virtuális hálózat – gyakori kérdések][VNet-FAQ], bármilyen további virtuális hálózatok és virtuális hálózatok közötti társviszony kérdés esetén. Lásd: [ExpressRoute – gyakori kérdések] [ ER-FAQ] minden olyan további kérdésekre, az expressroute-on és a virtuális hálózati kapcsolat.
 
-Globális elérhetőség ország szerint ország alapján jelennek meg. Ha a globális elérhetőségű országban érhető el a kívánt megtekintéséhez lásd: [ExpressRoute globális elérhetőségű][Global Reach].
+Globális elérhetőség ország/régió szerint ország/régió alapján jelennek meg. Ha a globális elérhetőségű érhető el ezekben az országokban vagy régiókban, amelyeket szeretne, olvassa el [ExpressRoute globális elérhetőségű][Global Reach].
 
 <!--Image References-->
 [1]: ./media/cross-network-connectivity/premergerscenario.png "az alkalmazási forgatókönyv"

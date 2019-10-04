@@ -1,117 +1,117 @@
 ---
-title: Vészhelyreállítás az Azure Site Recovery feladatátvételi |} A Microsoft Docs
-description: Ismerje meg, feladat-visszavétel során a virtuális gépek és fizikai kiszolgálók az Azure Site Recovery szolgáltatással vészhelyreállítás során.
+title: Feladatátvétel a vész-helyreállítás során a Azure Site Recovery | Microsoft Docs
+description: A virtuális gépek és a fizikai kiszolgálók feladatátvételének megismerése a Azure Site Recovery szolgáltatással való vész-helyreállítás során.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 1/18/2019
-ms.author: mayg
-ms.openlocfilehash: 8f76d4e54133e4e899e707e666703a67310e8702
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 06/30/2019
+ms.author: raynew
+ms.openlocfilehash: da55d83665792f6ea2f4c78aa2a6c3ca26c39233
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58082092"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383182"
 ---
-# <a name="fail-over-vms-and-physical-servers"></a>Virtuális gépek és fizikai kiszolgálók feladatátvételét 
+# <a name="fail-over-vms-and-physical-servers"></a>Virtuális gépek és fizikai kiszolgálók feladatátvétele 
 
-Ez a cikk bemutatja, hogyan a feladatátvételi virtuális gépekhez és fizikai kiszolgálók Site Recovery által védett.
+Ez a cikk a Site Recovery által védett virtuális gépek és fizikai kiszolgálók feladatátvételét ismerteti.
 
 ## <a name="prerequisites"></a>Előfeltételek
-1. Mielőtt egy feladatátvételt hajt végre, hajtsa végre egy [feladatátvételi teszt](site-recovery-test-failover-to-azure.md) annak érdekében, hogy minden a várt módon működik.
-1. [Előkészíti a hálózatot](site-recovery-network-design.md) célhelyen a feladatátvétel előtt.  
+1. A feladatátvétel előtt végezzen [feladatátvételi tesztet](site-recovery-test-failover-to-azure.md) , és győződjön meg róla, hogy minden a várt módon működik-e.
+1. [Készítse elő a hálózatot](site-recovery-network-design.md) a célhelyen a feladatátvétel előtt.  
 
-Az alábbi táblázat segítségével az Azure Site Recovery által biztosított feladatátvételi beállításokat ismertek. Ezek a beállítások a különböző feladatátvételi funkciók is megtalálhatók.
+A következő táblázat segítségével megismerheti a Azure Site Recovery által biztosított feladatátvételi beállításokat. Ezek a beállítások a különböző feladatátvételi forgatókönyvekhez is szerepelnek.
 
-| Forgatókönyv | Alkalmazás recovery követelményeinek | A Hyper-V munkafolyamata | Munkafolyamat: VMware-ről
+| Forgatókönyv | Alkalmazás-helyreállítási követelmény | Hyper-V munkafolyamata | VMware-munkafolyamat
 |---|--|--|--|
-|Tervezett feladatátvétel miatt egy közelgő adatközpont állásidő| Az alkalmazás, amikor egy tervezett tevékenység történik adatvesztés| A Hyper-V az ASR replikálja az adatokat a felhasználó által megadott másolási gyakorisággal. Tervezett feladatátvétel a gyakoriság felülbírálása, és replikálja a végleges módosítások előtt a feladatátvétel indításáig szolgál. <br/> <br/> 1.    Tervezze meg a karbantartási időszak alapján az üzleti változáskezelési folyamatot. <br/><br/> 2. értesítse a felhasználókat a közelgő állásidőt. <br/><br/> 3. A felhasználó által használt alkalmazás a hálózatról.<br/><br/>4 az ASR portálról tervezett feladatátvételt kezdeményezzen. A helyszíni virtuális gép automatikus leállítási.<br/><br/>A hatékony adatvesztés = 0 <br/><br/>A napló a helyreállítási pontokat is tartalmaz a megőrzési időtartamon egy felhasználóhoz, aki szeretné használni egy régebbi helyreállítási pontra. (24 órás megőrzést Hyper-V). Replikáció, a megőrzési időtartamon belül túl le lett állítva, ha ügyfeleink továbbra is lehetnek a legújabb elérhető helyreállítási pontok használatával átvehet. | VMware-ről az ASR replikálja az adatokat folyamatosan a CDP használatával. Feladatátvételi teszi a felhasználói feladatátvételi a legfrissebb adatok (beleértve a post kérelem leállított)<br/><br/> 1. A változáskezelési folyamatot megfelelően karbantartási időszak tervezése <br/><br/>2. értesítse a felhasználókat várható állásidő <br/><br/>3.    A felhasználó által használt alkalmazás a hálózatról. <br/><br/>4.  Kezdeményezzen egy tervezett feladatátvétel, a legutóbbi időpontra történő ASR-portál használatával, miután az alkalmazás offline állapotban. Használja az "A nem tervezett feladatátvétel" lehetőséget a portálon, és válassza ki a legutóbbi időpontra történő feladatátvételt. A helyszíni virtuális gép automatikus leállítási.<br/><br/>A hatékony adatvesztés = 0 <br/><br/>A helyreállítási pontok megőrzési időtartamon a napló egy régebbi helyreállítási pontra használni kívánó ügyfél biztosítunk. (72 órás megőrzést VMware-ről). Replikáció, a megőrzési időtartamon belül túl le lett állítva, ha ügyfeleink továbbra is lehetnek a legújabb elérhető helyreállítási pontok használatával átvehet.
-|Feladatátvétel miatt egy nem tervezett adatközpont állásidő (természetes vagy informatikai katasztrófa) | Az alkalmazás minimális adatvesztéssel | 1. a szervezet BCP terv kezdeményezése <br/><br/>2. A megőrzési időtartamon (napló) a legújabb vagy egy pontot az ASR-portál használatával nem tervezett feladatátvételt kezdeményezzen.| 1. Indítsa el a szervezet BCP tervet. <br/><br/>2.  A megőrzési időtartamon (napló) a legújabb vagy egy pontot az ASR-portál használatával nem tervezett feladatátvételt kezdeményezzen.
+|Tervezett feladatátvétel egy közelgő adatközpont leállása miatt| Az alkalmazás nulla adatvesztést okoz a tervezett tevékenységek végrehajtásakor| A Hyper-V esetében az ASR a felhasználó által megadott másolási gyakorisággal replikálja az adatforrásokat. A tervezett feladatátvétel felülbírálja a gyakoriságot, és replikálja a végső módosításokat a feladatátvétel megkezdése előtt. <br/> <br/> 1. Tervezze meg a karbantartási időszakot a vállalata változás-kezelési folyamata alapján. <br/><br/> 2. Értesítse a felhasználókat a közelgő állásidőről. <br/><br/> 3. A felhasználó felé irányuló alkalmazás offline állapotba helyezése.<br/><br/>4. Tervezett feladatátvétel kezdeményezése az ASR-portál használatával. A helyszíni virtuális gép automatikusan leáll.<br/><br/>Az alkalmazás tényleges adatvesztése = 0 <br/><br/>A helyreállítási pontok egy naplója is meg van határozva egy adatmegőrzési ablakban egy olyan felhasználó számára, aki régebbi helyreállítási pontot szeretne használni. (24 órás megőrzés a Hyper-V-ben). Ha a replikálás az adatmegőrzési időszak időkeretén túl leáll, az ügyfelek továbbra is képesek lesznek a feladatátvételre a legújabb elérhető helyreállítási pontok használatával. | A VMware esetében az ASR folyamatosan replikálja az adatforrást a CDP használatával. A feladatátvétel lehetővé teszi a felhasználó számára a legutóbbi adatfeladatátvételt (beleértve az alkalmazás utáni leállítás funkciót is)<br/><br/> 1. Karbantartási időszak megtervezése a módosítási felügyeleti folyamat alapján <br/><br/>2. értesítse a felhasználókat a közelgő állásidőről <br/><br/>3. A felhasználó felé irányuló alkalmazás offline állapotba helyezése.<br/><br/>4. Tervezett feladatátvétel kezdeményezése az ASR-portál használatával a legújabb pontra, miután az alkalmazás offline állapotú. Használja a "tervezett feladatátvétel" lehetőséget a portálon, és válassza ki a legkésőbbi feladatátvételi pontot. A helyszíni virtuális gép automatikusan leáll.<br/><br/>Az alkalmazás tényleges adatvesztése = 0 <br/><br/>Az adatmegőrzési időszak helyreállítási pontjainak naplóját olyan ügyfelek számára biztosítjuk, akik régebbi helyreállítási pontot kívánnak használni. (72 óra megőrzés a VMware esetében). Ha a replikálás az adatmegőrzési időszak időkeretén túl leáll, az ügyfelek továbbra is képesek lesznek a feladatátvételre a legújabb elérhető helyreállítási pontok használatával.
+|Feladatátvétel egy nem tervezett adatközpont leállása miatt (természetes vagy informatikai katasztrófa) | Az alkalmazás minimális adatvesztése | 1. A szervezet BCP-tervének kezdeményezése <br/><br/>2. Indítsa el a nem tervezett feladatátvételt az ASR-portál használatával a legutóbbi vagy az adatmegőrzési időszak (napló) egy pontjára.| 1. Kezdeményezzen a szervezet BCP-tervét. <br/><br/>2. Indítsa el a nem tervezett feladatátvételt az ASR-portál használatával a legutóbbi vagy az adatmegőrzési időszak (napló) egy pontjára.
 
 
 ## <a name="run-a-failover"></a>Feladatátvétel futtatása
-Az eljárás ismerteti, hogy futtasson egy feladatátvételt a egy [helyreállítási terv](site-recovery-create-recovery-plans.md). Alternatív megoldásként futtathatja a feladatátvételt egyetlen virtuális gép vagy fizikai kiszolgálót a **replikált elemek** oldalon leírt módon [Itt](vmware-azure-tutorial-failover-failback.md#run-a-failover-to-azure).
+Ez az eljárás azt ismerteti, hogyan futtatható feladatátvétel egy [helyreállítási tervhez](site-recovery-create-recovery-plans.md). Azt is megteheti, hogy a feladatátvételt egyetlen virtuális géphez vagy fizikai kiszolgálóhoz futtatja a **replikált elemek** lapról az [itt](vmware-azure-tutorial-failover-failback.md#run-a-failover-to-azure)leírtak szerint.
 
 
 ![Feladatátvétel](./media/site-recovery-failover/Failover.png)
 
-1. Válassza ki **helyreállítási tervek** > *recoveryplan_name*. Kattintson a **feladatátvétel**
-2. Az a **feladatátvételi** képernyőn válassza ki a **helyreállítási pont** irányuló feladatátvételt. Az alábbi lehetőségek egyikét használhatja:
-   1. **Legújabb**: Ez a beállítás szerint a Site Recovery szolgáltatásba küldött összes adat feldolgozása elindítja a feladatot. Az adatok feldolgozását az egyes virtuális gépek helyreállítási pont létrehozása. A helyreállítási pontot használják a virtuális gép feladatátvétel során. Ez a beállítás a feladatátvételi minden adat, amelyet követően létrehozott virtuális gép, amely a feladatátvétel elindításakor a Site Recovery szolgáltatásba replikálása a legkisebb helyreállítási Időkorlát (Helyreállításipont-célkitűzés) biztosít.
-   1. **Legutóbb feldolgozott**: Ez a beállítás átadja a feladatokat a helyreállítási terv, amely a Site Recovery szolgáltatás által feldolgozott legutóbbi helyreállítási pontot az összes virtuális gépet. A virtuális gép feladatátvételi teszt során, a legutóbbi feldolgozott helyreállítási pontot időbélyegzőjét is látható. Ha a helyreállítási terv feladatátvétele, nyissa meg az egyes virtuális géphez, és nézze **legutóbbi helyreállítási pontok** csempére, hogy ezt az információt. Rendszer nem tölt időt a feldolgozatlan adatok feldolgozásához, ezt a lehetőséget egy alacsony RTO (helyreállítási időre vonatkozó célkitűzés) feladatátvételi lehetőséget biztosít.
-   1. **Legutóbbi alkalmazáskonzisztens**: Ez a beállítás az összes virtuális gép a legutóbbi alkalmazáskonzisztens helyreállítási pont, amely a Site Recovery szolgáltatás által feldolgozott, a helyreállítási terv feladatait. A virtuális gép feladatátvételi teszt során, a legutóbbi alkalmazáskonzisztens helyreállítási pont időbélyeg is látható. Ha a helyreállítási terv feladatátvétele, nyissa meg az egyes virtuális géphez, és nézze **legutóbbi helyreállítási pontok** csempére, hogy ezt az információt.
-   1. **Legújabb több virtuális gépre kiterjedő feldolgozott**: Ezt a beállítást csak a helyreállítási terveket, amelyek rendelkeznek legalább egy virtuális gép több virtuális gépre kiterjedő konzisztencia ON érhető el. Virtuális gépek, amelyek részei egy replikációs csoport feladatátvételt a legutóbbi közös virtuális gépre kiterjedő konzisztens helyreállítási pont. Más virtuális gépek feladatátvételt a legutóbbi feldolgozott helyreállítási pontot.  
-   1. **Legújabb több virtuális gépre kiterjedően alkalmazáskonzisztens**: Ezt a beállítást csak a helyreállítási terveket, amelyek rendelkeznek legalább egy virtuális gép több virtuális gépre kiterjedő konzisztencia ON érhető el. Virtuális gépek, amelyek részei egy replikációs csoport feladatátvételt a legutóbbi közös virtuális gépre kiterjedően alkalmazáskonzisztens helyreállítási pont. Más virtuális gépek feladatátvételt a legutóbbi alkalmazáskonzisztens helyreállítási pontot.
-   1. **Egyéni**: Ha a virtuális gép feladatátvételi tesztet, majd használhatja ezt a beállítást egy adott helyreállítási pontra történő feladatátvételt.
+1. Válassza a **helyreállítási tervek** > *recoveryplan_name*lehetőséget. Kattintson a **feladatátvétel** elemre.
+2. A **feladatátvételi** képernyőn válasszon ki egy **helyreállítási pontot** a feladatátvételhez. Az alábbi lehetőségek egyikét használhatja:
+   1. **Legutóbbi**: Ez a beállítás elindítja a feladatot úgy, hogy először dolgozza fel a Site Recovery szolgáltatásnak elküldett összes adatfeldolgozást. Az adatfeldolgozás minden virtuális géphez létrehoz egy helyreállítási pontot. Ezt a helyreállítási pontot a virtuális gép használja a feladatátvétel során. Ez a beállítás a legalacsonyabb RPO (helyreállítási pont célkitűzés) adja meg, mivel a feladatátvételt követően létrehozott virtuális gép minden olyan adattal rendelkezik, amelyet a rendszer Site Recovery szolgáltatásba replikált a feladatátvétel elindítása után.
+   1. **Legutóbb feldolgozott**: Ez a beállítás a helyreállítási terv összes virtuális gépe számára a Site Recovery szolgáltatás által már feldolgozott legújabb helyreállítási pontra hajtja végre a feladatátvételt. Ha a virtuális gép feladatátvételi tesztjét végzi, a rendszer a legutóbb feldolgozott helyreállítási pont időbélyegzőjét is megjeleníti. Ha feladatátvételt hajt végre egy helyreállítási tervben, az egyes virtuális gépekre kattintva megtekintheti a **helyreállítási pontok legújabb** csempéjét az információk lekéréséhez. Mivel a feldolgozatlan adatmennyiség feldolgozása nem történik meg, ez a beállítás alacsony RTO (helyreállítási idő célkitűzés) feladatátvételi lehetőséget biztosít.
+   1. **Legújabb alkalmazás – konzisztens**: Ez a beállítás a helyreállítási terv összes virtuális gépe számára meghiúsul a legújabb, az alkalmazás konzisztens helyreállítási pontjára, amelyet Site Recovery szolgáltatás már feldolgozott. Ha a virtuális gép feladatátvételi tesztjét végzi, a rendszer a legújabb, alkalmazás-konzisztens helyreállítási pont időbélyegzőjét is megjeleníti. Ha feladatátvételt hajt végre egy helyreállítási tervben, az egyes virtuális gépekre kattintva megtekintheti a **helyreállítási pontok legújabb** csempéjét az információk lekéréséhez.
+   1. A **legújabb több virtuális gépre feldolgozva**: Ez a beállítás csak olyan helyreállítási tervekhez érhető el, amelyek legalább egy virtuális géppel rendelkeznek, és több virtuális gépre kiterjedő konzisztencia van. A replikációs csoport részét képező virtuális gépek a legújabb közös, több virtuális gépre kiterjedő konzisztens helyreállítási pontra lesznek átirányítva. Más virtuális gépek feladatátvétele a legújabb feldolgozott helyreállítási pontra.  
+   1. A **legújabb több virtuális gépre kiterjedő alkalmazás – konzisztens**: Ez a beállítás csak olyan helyreállítási tervekhez érhető el, amelyek legalább egy virtuális géppel rendelkeznek, és több virtuális gépre kiterjedő konzisztencia van. A replikációs csoport részét képező virtuális gépek a legújabb közös, több virtuális gépre kiterjedő, alkalmazás-konzisztens helyreállítási pontot használják. Más virtuális gépek feladatátvétele a legújabb alkalmazás-konzisztens helyreállítási pontra.
+   1. **Egyéni**: Ha feladatátvételi tesztet végez egy virtuális gépen, akkor ezt a lehetőséget használhatja a feladatátvételre egy adott helyreállítási pontra.
 
       > [!NOTE]
-      > Egy helyreállítási pontot választhatja ki csak érhető el, ha az Azure-bA feladatátvétele.
+      > A helyreállítási pont kiválasztásának lehetősége csak akkor érhető el, ha feladatátvételt végez az Azure-ba.
       >
       >
 
 
-1. Ha a helyreállítási tervben szereplő virtuális gépek némelyike feladatátvételt is korábbi futtatása és a virtuális gépek aktívak a forrás- és cél helye határozza meg, most is használhat **irányának módosítása** dönthet arról, hogy az irány, amelyben a beállítás a feladatátvétel történjen.
-1. Ha Ön feladatátvétele már az Azure-ba, és a felhőben (csak akkor, ha a védett Hyper-v virtuális gépek VMM-kiszolgálóról vonatkozik) engedélyezett az adattitkosítás a **titkosítási kulcs** válassza ki a tanúsítványt, ha engedélyezte a korábban kiadott Adattitkosítás során a VMM-kiszolgáló a telepítést.
-1. Válassza ki **leállított gép feladatátvétel megkezdése előtt** Ha azt szeretné, hogy a Site Recovery megkísérelje leállítani a forrás virtuális gépeket a feladatátvétel indítása előtt. Feladatátvételi továbbra is fennáll, akkor is, ha a leállított sikertelen lesz.  
+1. Ha a helyreállítási tervben szereplő virtuális gépek némelyike egy korábbi futtatás során feladatátvételt hajt végre, és most a virtuális gépek mind a forrás-, mind a célhelyen aktívak voltak, a **váltás iránya** beállítással határozhatja meg, hogy milyen irányba történjen a feladatátvétel.
+1. Ha feladatátvételt végez az Azure-ba, és az adattitkosítás engedélyezve van a felhőben (csak akkor érvényes, ha VMM-kiszolgálóról védett Hyper-v virtuális gépeket használ), a **titkosítási kulcsban** válassza ki azt a tanúsítványt, amelyet a rendszer az adattitkosítás engedélyezésekor adott meg. a telepítőt a VMM-kiszolgálón.
+1. Ha azt szeretné, hogy a feladatátvétel elindítása előtt a Site Recovery megkísérelje leállítani a forrás virtuális gépek leállítását, válassza a **leállított gép lehetőséget a feladatátvétel megkezdése előtt** . A feladatátvétel akkor is folytatódik, ha a Leállítás nem sikerül.  
 
     > [!NOTE]
-    > Védett Hyper-v virtuális gépek, ha megpróbálja leállított is lehetősége van még nem lettek elküldve a szolgáltatásnak a feladatátvétel indítása előtt a helyszíni adatok szinkronizálása.
+    > Ha a Hyper-v virtuális gépek védettek, a leállítási lehetőség is megkísérli a szolgáltatásnak még el nem küldött helyszíni adatokat szinkronizálni a feladatátvétel elindítása előtt.
     >
     >
 
-1. A feladatátvételi folyamatot a **Feladatok** lapon követheti nyomon. Akkor is, ha nem tervezett feladatátvétel során fordult elő hiba, a helyreállítási terv fut, mindaddig, amíg nem fejeződik be.
-1. A feladatátvétel után ellenőrizze a naplózás be azt a virtuális gépet. Ha szeretne a virtuális gép egy másik helyreállítási pontra váltani, akkor használhatja **helyreállítási pont módosítása** lehetőséget.
-1. Ha elégedett a feladatátviteli virtuális géppel, **véglegesítheti** a feladatátvételt. **Véglegesítés törli a szolgáltatással elérhető összes helyreállítási pont** és **helyreállítási pont módosítása** beállítás már nem érhető el.
+1. A feladatátvételi folyamatot a **Feladatok** lapon követheti nyomon. Ha hiba történik egy nem tervezett feladatátvétel során, a helyreállítási terv addig fut, amíg be nem fejeződik.
+1. A feladatátvétel után ellenőrizze a virtuális gépet, ha bejelentkezik a szolgáltatásba. Ha másik helyreállítási pontra szeretne váltani a virtuális gépen, akkor használhatja a **helyreállítási pont módosítása** lehetőséget.
+1. Ha elégedett a feladatátviteli virtuális géppel, **véglegesítheti** a feladatátvételt. **A commit parancs törli a szolgáltatásban elérhető összes helyreállítási pontot** , és a **helyreállítási pont módosítása** lehetőség már nem érhető el.
 
 ## <a name="planned-failover"></a>Tervezett feladatátvétel
-Virtuális gépek/fizikai kiszolgálók is támogatja a Site Recovery használatával védett **tervezett feladatátvételt**. Tervezett feladatátvétel beállítás nulla adatok elvesztése feladatátvétel. Egy tervezett feladatátvételt akkor aktiválódik, amikor először a forrás virtuális gépek leállítására, a legfrissebb adatok szinkronizálása és majd akkor aktiválódik, a feladatátvételt.
+A Site Recovery által védett virtuális gépek/fizikai kiszolgálók támogatják a **tervezett feladatátvételt**is. A tervezett feladatátvétel egy nulla adatvesztési feladatátvételi lehetőség. Tervezett feladatátvétel indításakor először a forrásként szolgáló virtuális gépek leállnak, a legfrissebb adatokat szinkronizálja a rendszer, majd elindítja a feladatátvételt.
 
 > [!NOTE]
-> A Hyper-v virtuális gépek egy a helyszíni helyről egy másik helyszíni helyre feladatátvételkor térjen vissza a helyszíni elsődleges helyhez kell első **fordított-replikálás** a virtuális gép biztonsági elsődleges helyhez, majd a feladatátvétel indítása. Ha az elsődleges virtuális gép nem áll rendelkezésre, majd elindítása előtt, hogy **fordított-replikálás** kell a virtuális gép visszaállítása biztonsági másolatból.   
-> 
-> 
-> ## <a name="failover-job"></a>Feladatátvételi feladat
+> A Hyper-v virtuális gépek egyik helyszíni helyről egy másikra történő feladatátvétele során vissza kell térnie az elsődleges helyszíni helyhez **, először vissza** kell térnie a virtuális gépre az elsődleges helyre, majd el kell indítania a feladatátvételt. Ha az elsődleges virtuális gép nem érhető el, akkor a **fordított replikálás** megkezdése előtt vissza kell állítania a virtuális gépet egy biztonsági másolatból.   
+ 
+ 
+## <a name="failover-job"></a>Feladatátvételi feladatok
 
 ![Feladatátvétel](./media/site-recovery-failover/FailoverJob.png)
 
-A feladatátvétel elindításakor, magában foglalja a következő lépéseket:
+Feladatátvétel indításakor a következő lépések szükségesek:
 
-1. Előfeltételek ellenőrzése: Ez a lépés biztosítja, hogy a feladatátvételhez szükséges feltételek közül mind teljesül-e
-1. Feladatátvétel: Ebben a lépésben feldolgozza az adatokat, így készen áll, hogy kihozni az Azure virtuális gépek hozhatók létre. Ha úgy döntött, **legújabb** a helyreállítási ponttal, ebben a lépésben létrehoz egy helyreállítási pontot a szolgáltatásnak küldött adatokból.
-1. Kezdés: Ez a lépés létrehoz egy Azure virtuális gépen az előző lépésben feldolgozott adatok használatával.
+1. Előfeltételek ellenőrzése: Ez a lépés biztosítja, hogy a feladatátvételhez szükséges összes feltétel teljesül
+1. Feladatátvételi Ez a lépés dolgozza fel az adatmennyiséget, és készen áll az Azure-beli virtuális gépek létrehozásához. Ha a **legutóbbi** helyreállítási pontot választotta, ez a lépés egy helyreállítási pontot hoz létre a szolgáltatásnak eljuttatott adatokból.
+1. Indítás: Ez a lépés egy Azure-beli virtuális gépet hoz létre az előző lépésben feldolgozott adatkezelési művelettel.
 
 > [!WARNING]
-> **Ne szakítsa egy folyamatban lévő feladatátvételi**: Feladatátvétel indítása előtt a virtuális gép replikációja le van állítva. Ha Ön **Mégse** egy feladat a folyamatban, a feladatátvételt, az leáll, de a virtuális gép nem indul el replikálni. Nem lehet újból elindítani a replikációt.
+> **Ne szakítsa meg a folyamatban lévő feladatátvételt**: A feladatátvétel elindítása előtt a virtuális gép replikációja leáll. Ha **megszakít** egy folyamatban lévő feladatot, a feladatátvétel leáll, de a virtuális gép nem fog elindulni a replikáláshoz. A replikáció nem indítható újra.
 >
 >
 
-## <a name="time-taken-for-failover-to-azure"></a>Az Azure-bA a feladatátvételhez szükséges idő
+## <a name="time-taken-for-failover-to-azure"></a>Az Azure-ba történő feladatátvételhez szükséges idő
 
-Bizonyos esetekben a virtuális gépek feladatátvétele egy extra közbenső lépés, amely általában eltart befejezéséhez körülbelül 8 – 10 percet igényel. A következő esetekben a szokásosnál magasabb lesz a feladatátvételi idő:
+Bizonyos esetekben a virtuális gépek feladatátvétele egy további közbenső lépést igényel, amely általában körülbelül 8 – 10 percet vesz igénybe. A következő esetekben a feladatátvételhez szükséges idő a szokásosnál magasabb lesz:
 
-* VMware virtuális gépek használata a mobilitási szolgáltatás régebbi, mint 9.8 verzió
+* A 9,8-nál régebbi verziójú mobilitási szolgáltatást használó VMware virtuális gépek
 * Fizikai kiszolgálók
-* A VMware Linux rendszerű virtuális gépek
+* VMware Linux rendszerű virtuális gépek
 * Fizikai kiszolgálóként védett Hyper-V virtuális gépek
-* Ahol következő illesztőprogramok nem találhatók, a VMware virtuális gépek rendszerindítási illesztőprogram
+* VMware virtuális gépek, amelyeknél a következő illesztőprogramok nem találhatók rendszerindító illesztőprogramként
     * storvsc
     * VMBus
     * storflt
-    * intelide
+    * Intelide
     * ATAPI
-* VMware virtuális gépek, amelyek nem rendelkeznek a DHCP-szolgáltatás engedélyezve van, függetlenül attól, hogy használják a DHCP vagy statikus IP-címek
+* Azok a VMware virtuális gépek, amelyeken nincs engedélyezve a DHCP szolgáltatás, függetlenül attól, hogy DHCP-vagy statikus IP-címeket használnak-e
 
-Minden más esetben ez a köztes lépés nem kötelező, és a feladatátvétel végrehajtásához szükséges idő kisebb.
+Az összes többi esetben ez a közbenső lépés nem szükséges, és a feladatátvételhez szükséges idő alacsonyabb.
 
-## <a name="using-scripts-in-failover"></a>A feladatátvevő szkriptek használatával
-Előfordulhat, hogy automatizálni szeretné bizonyos műveleteket feladatátvétel végrehajtása közben. Parancsprogramokkal vagy [az Azure automation-runbookok](site-recovery-runbook-automation.md) a [helyreállítási tervek](site-recovery-create-recovery-plans.md) valósítható meg.
+## <a name="using-scripts-in-failover"></a>Parancsfájlok használata a Feladatátvételben
+Előfordulhat, hogy a feladatátvétel során bizonyos műveleteket szeretne automatizálni. Ehhez a [helyreállítási tervekben](site-recovery-create-recovery-plans.md) parancsfájlokat vagy [Azure Automation-runbookok](site-recovery-runbook-automation.md) használhat.
 
-## <a name="post-failover-considerations"></a>Feladatátvételi szempontokat részletező cikkben közzététele
-Vegye figyelembe a következőket érdemes feladatátvétel után:
-### <a name="retaining-drive-letter-after-failover"></a>Meghajtóbetűjel megőrzése feladatátvétel után
-A meghajtó betűjelét, a virtuális gépek a feladatátvételt követően megőrzéséhez beállíthatja a **TÁROLÓHÁLÓZATI szabályzata** a virtuális gép **OnlineAll**. [További információ](https://support.microsoft.com/help/3031135/how-to-preserve-the-drive-letter-for-protected-virtual-machines-that-are-failed-over-or-migrated-to-azure).
+## <a name="post-failover-considerations"></a>Feladatátvételi megfontolások közzététele
+Feladatátvétel után érdemes megfontolni a következő javaslatokat:
+### <a name="retaining-drive-letter-after-failover"></a>Meghajtóbetűjel megőrzése a feladatátvétel után
+A Azure Site Recovery kezeli a meghajtóbetűjelek megőrzését. [További információ](vmware-azure-exclude-disk.md#example-1-exclude-the-sql-server-tempdb-disk) arról, hogy hogyan történik, ha egyes lemezek kizárását választja.
 
 ## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>Felkészülés az Azure virtuális gépekhez való kapcsolódásra a feladatátvételt követően
 
@@ -123,8 +123,8 @@ Kövesse az [itt](site-recovery-failover-to-azure-troubleshoot.md) leírt lépé
 ## <a name="next-steps"></a>További lépések
 
 > [!WARNING]
-> Miután a virtuális gépek feladatátadása, és a helyszíni adatközpont érhető el, akkor [ **ismételt védelme** ](vmware-azure-reprotect.md) VMware virtuális gépek biztonsági másolatot a helyszíni adatközponthoz.
+> Ha a feladatátvételt követően a virtuális gépek és a helyszíni adatközpont elérhetővé válik, a VMware-alapú virtuális gépeket a helyszíni adatközpontba újra kell [**védetté**](vmware-azure-reprotect.md) tenni.
 
-Használat [ **tervezett feladatátvételt** ](hyper-v-azure-failback.md) beállítást **feladat-visszavétel** Hyper-v virtuális gépek vissza a helyszíni az Azure-ból.
+A [**tervezett feladatátvételi**](hyper-v-azure-failback.md) beállítással visszatérhet **a Hyper-** v rendszerű virtuális gépekről az Azure-ból a helyszínen.
 
-Ha nem sikerült egy Hyper-v feletti virtuális gép egy másik helyszíni adatközpontot egy a VMM-kiszolgáló által kezelt és az elsődleges adatközpont érhető el, majd **a visszirányú replikálás** elindíthatja a replikációval vissza az elsődleges adatok központ.
+Ha feladatátvételt végez egy Hyper-v virtuális gépen egy VMM-kiszolgáló által felügyelt helyszíni adatközpontban, és az elsődleges adatközpont elérhető, akkor a **visszirányú replikálás** beállítás használatával indítsa el a replikálást az elsődleges adatközpontba.

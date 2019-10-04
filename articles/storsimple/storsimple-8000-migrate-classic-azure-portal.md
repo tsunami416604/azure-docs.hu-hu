@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 03/14/2019
 ms.author: alkohli
 ms.openlocfilehash: 3cce18fa1890fc9e518294e294cc43e0e55065aa
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58002496"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60631532"
 ---
 # <a name="migrate-subscriptions-and-storage-accounts-associated-with-storsimple-device-manager-service"></a>Előfizetések és tárfiókok a StorSimple-Eszközkezelő szolgáltatással kapcsolatos áttelepítése
 

@@ -1,37 +1,46 @@
 ---
-title: Integrált megoldásokat |} Az Azure
-description: Az Azure Marketplace és AppSource által szállított integrált megoldások
+title: Integrált megoldások | Azure
+description: Integrált megoldások az Azure Marketplace-en és a AppSource-ben
 services: Azure, Marketplace, Compute, Storage, Networking
-documentationcenter: ''
 author: qianw211
-manager: Patrick.Butler
 ms.service: marketplace
 ms.topic: article
 ms.date: 02/27/2019
 ms.author: ellacroi
-ms.openlocfilehash: f0bda0e0d70d325afd84dc64ddacfa4c0f18a4df
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: b6015ce2d52c140a966636b887d021e76e92990d
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57220619"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993623"
 ---
-# <a name="integrated-solutions-in-azure-marketplace-and-appsource"></a>Az Azure Marketplace és AppSource által szállított integrált megoldások
+# <a name="integrated-solutions-in-azure-marketplace-and-appsource"></a>Integrált megoldások az Azure Marketplace-en és a AppSource-ben
 
-Integrált megoldást foglal lehető legjobb videóterjesztési technológiát a Microsoft-partnerektől, konzultáció, üzembe helyezési és szakértői rendszereket rendszerintegrátorok (SI) által biztosított támogatja.
+Az integrált megoldás a Microsoft-partnerektől származó legjobb technológiákat kombinálja, valamint a szakértői rendszerintegrátorok (SI) által biztosított tanácsadással, üzembe helyezéssel és támogatással együtt.
 
-Ezek a megoldások beépített kell egy adott ügyfél-és a forgatókönyv, amely az iparági challenge vagy problémás pontok megismerése kezdődik. Két vagy több legjobb videóterjesztési technológiák által egy SI egységes és megismételhető üzembe helyezési környezetet biztosít az ügyfelek, szolgáltatásszintje őket, és gyorsan fut majd integrált részei. A rendszerek integráló is biztosít a hibaérzékeny pont az ügyfél megfelelő testreszabási kezeléséről és tanácsadás, forduljon, és támogatja a középpontjába a megoldást.  Az eredmény az integrált megoldást, beleértve a technológiákat és szolgáltatásokat.
+Ezek a megoldások egy adott ügyfél-szükséglet vagy-forgatókönyv megoldására készültek, amely az iparági kihívások vagy a fájdalom pontok megismerésével kezdődik. Ezt követően két vagy több, a legjobbat alkalmazó technológia integrálható egy egységes és megismételhető üzembe helyezési környezettel az ügyfelek számára, így gyorsan felhasználhatja őket. A rendszerintegrátor emellett egyetlen kapcsolódási pontot biztosít az ügyfél számára, biztosítva a megfelelő testreszabást és tanácsadást, és támogatja a megoldás körét.  Az eredmény egy integrált megoldás, beleértve a technológiát és a szolgáltatásokat.
 
 ## <a name="advantages"></a>Előnyök
 
-Integrált megközelítést előnyei a következők:
+Az integrált megközelítés előnyei a következők:
 
-* *Iparági szakértői*: Iparág-specifikus megoldások és az ismeretek rendszerintegrátoroktól
-* *Értékteremtés*: Vegye figyelembe az azonnali előnyöket nyújt segítséget az integrált központi telepítési módszer
-* *Legjobb videóterjesztési megoldások*: Az integrált vásárlása és megvalósítási megoldást könnyű felderítése
+* *Iparági szakértelem*: Az iparági megoldások és a tudást biztosító rendszerintegrátorok
+* *Érték*: Integrált üzembe helyezési megközelítés, amely segítséget nyújt az azonnali előnyök megvalósításában
+* *Legjobb megoldás*: Fedezze fel a könnyű, integrált vásárlási és megvalósítási élményt
 
 ## <a name="next-steps"></a>További lépések
 
-Fedezze fel az integrált megoldásokat, és tanácsadási szolgáltatások szakaszának felkeresésével ezek értékes partnerekkel való csatlakozás [Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/consulting-services).
+Fedezze fel az integrált megoldásokat, és kapcsolódjon ezekkel az értékes partnerekkel, ha az alábbi adatokat szeretné megtekinteni:
+
+* [Ügyfél 360-alapú Zero2Hero](https://azuremarketplace.microsoft.com/marketplace/consulting-services/bardess.customer-360-powered-by-zero2hero)
+* [Gyors kereskedelem](https://azuremarketplace.microsoft.com/marketplace/consulting-services/publicis-sapient.rapid_commerce)
+* [Credit Analytics](https://azuremarketplace.microsoft.com/marketplace/consulting-services/rcg-us.rcg-enable-credit-analytics)
+* [Egészségügyi Felhőbeli biztonsági verem](https://azuremarketplace.microsoft.com/marketplace/consulting-services/xentit.azure-xentit-trendmicro-qualys-hcss-12months)
+* [DevOps gyorsítási motor](https://azuremarketplace.microsoft.com/marketplace/consulting-services/sirrus7.sirrus7-devops-acceleration-engine?search=devops%20acceleration%20engine&page=1)
+* [A Windows Server támogatásának vége](https://azuremarketplace.microsoft.com/marketplace/consulting-services/new-signature.eos_appfactory)
+
+továbbá az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/consulting-services)tanácsadói szolgáltatások szakaszának meglátogatásával.
+
+További információért lásd az [integrált megoldások közzétételét](https://docs.microsoft.com/azure/marketplace/integrated-solutions-for-publishers) ismertető témakört.
 
 ---

@@ -4,17 +4,15 @@ description: Bemutatja, hogyan hozható létre egy, a szervezete tagjainak szán
 services: managed-applications
 author: tfitzmac
 ms.service: managed-applications
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
-ms.date: 10/04/2018
+ms.date: 09/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: 1f80d7e63d994f0e3eb3733b99afaa1b056f4686
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
-ms.translationtype: HT
+ms.openlocfilehash: b8c5a99a74446fcd126606b34135bba315ca1473
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48804912"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995413"
 ---
 # <a name="publish-an-azure-managed-application-definition"></a>Azure-beli felügyelt alkalmazásdefiníció közzététele
 
@@ -41,7 +39,7 @@ Egy felügyelt alkalmazás meghatározásakor ki kell választani egy a fogyaszt
 Az identitás objektumazonosítójának lekéréséhez adja meg az egyszerű felhasználónevét a következő parancsban:
 
 ```azurecli-interactive
-userid=$(az ad user show --upn-or-object-id example@contoso.org --query objectId --output tsv)
+userid=$(az ad user show --id example@contoso.org --query objectId --output tsv)
 ```
 
 Ezután annak a beépített RBAC-szerepkörnek a szerepkördefiníció-azonosítójára van szükség, amelyhez hozzáférést szeretne biztosítani a felhasználó számára. Az alábbi parancs bemutatja, hogyan kérheti le a tulajdonos szerepkör szerepkördefiníció-azonosítóját:
@@ -61,21 +59,21 @@ az managedapp definition create \
   --display-name "Managed Storage Account" \
   --description "Managed Azure Storage Account" \
   --authorizations "$userid:$roleid" \
-  --package-file-uri "https://raw.githubusercontent.com/Azure/azure-managedapp-samples/master/samples/201-managed-storage-account/managedstorage.zip"
+  --package-file-uri "https://github.com/Azure/azure-managedapp-samples/raw/master/Managed%20Application%20Sample%20Packages/201-managed-storage-account/managedstorage.zip"
 ```
 
 A parancs befejeződésekor egy felügyeltalkalmazás-definíció található az erőforráscsoportban. 
 
 Íme néhány az előző példában használt paraméterek közül:
 
-* **resource-group**: Annak az erőforráscsoportnak a neve, ahol létrejött a felügyelt alkalmazás definíciója.
-* **lock-level**: A felügyelt erőforráscsoporton elhelyezett zárolás típusa. Megakadályozza, hogy az ügyfél nemkívánatos műveleteket hajtson végre ezen az erőforráscsoporton. Jelenleg a ReadOnly az egyetlen támogatott zárolási szint. Amikor a ReadOnly van megadva, az ügyfél csak olvashatja a felügyelt erőforráscsoportban lévő erőforrásokat. A kezelt erőforráscsoporthoz hozzáféréssel rendelkező közzétevői identitások mentesítve vannak a zárolás alól.
-* **authorizations**: A felügyelt erőforráscsoporthoz való engedély biztosításához használt résztvevő-azonosítót és szerepkördefiníció-azonosítót ismerteti. `<principalId>:<roleDefinitionId>` formátumban van megadva. Ha egynél több érték szükséges, adja meg azokat a következő formátumban: `<principalId1>:<roleDefinitionId1> <principalId2>:<roleDefinitionId2>`. Az értékeket szóközzel kell elválasztani egymástól.
-* **package-file-uri**: A szükséges fájlokat tartalmazó .zip csomag helye. A csomagnak tartalmaznia kell a **mainTemplate.json** és a **createUiDefinition.json** fájlt. A **mainTemplate.json** határozza meg a felügyelt alkalmazás részeként létrehozott Azure-erőforrásokat. A sablon pont olyan, mint egy átlagos Resource Manager-sablon. A **createUiDefinition.json** hozza létre a felhasználói felületet a felügyelt alkalmazást a portálon keresztül létrehozó felhasználók számára.
+* **resource-group**: Azon erőforráscsoport neve, ahol a felügyelt alkalmazás definíciója létrejött.
+* **zárolási szint**: A felügyelt erőforráscsoporthoz helyezett zárolás típusa. Megakadályozza, hogy az ügyfél nemkívánatos műveleteket hajtson végre ezen az erőforráscsoporton. Jelenleg a ReadOnly az egyetlen támogatott zárolási szint. Amikor a ReadOnly van megadva, az ügyfél csak olvashatja a felügyelt erőforráscsoportban lévő erőforrásokat. A kezelt erőforráscsoporthoz hozzáféréssel rendelkező közzétevői identitások mentesítve vannak a zárolás alól.
+* **engedélyek**: Ismerteti a résztvevő AZONOSÍTÓját és a szerepkör-definíció AZONOSÍTÓját, amely a felügyelt erőforráscsoporthoz való engedélyek megadására szolgál. `<principalId>:<roleDefinitionId>` formátumban van megadva. Ha egynél több érték szükséges, adja meg azokat a következő formátumban: `<principalId1>:<roleDefinitionId1> <principalId2>:<roleDefinitionId2>`. Az értékeket szóközzel kell elválasztani egymástól.
+* **Package-file-URI**: A szükséges fájlokat tartalmazó. zip-csomag helye. A csomagnak tartalmaznia kell a **mainTemplate.json** és a **createUiDefinition.json** fájlt. A **mainTemplate.json** határozza meg a felügyelt alkalmazás részeként létrehozott Azure-erőforrásokat. A sablon pont olyan, mint egy átlagos Resource Manager-sablon. A **createUiDefinition.json** hozza létre a felhasználói felületet a felügyelt alkalmazást a portálon keresztül létrehozó felhasználók számára.
 
 ## <a name="next-steps"></a>További lépések
 
 Sikeresen közzétette a felügyelt alkalmazás definícióját. Most megismerheti, hogyan helyezheti üzembe a definíció egyik példányát.
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: Szolgáltatáskatalógusban elérhető alkalmazás telepítése](deploy-service-catalog-quickstart.md)
+> [Rövid útmutató: A Service Catalog alkalmazás üzembe helyezése](deploy-service-catalog-quickstart.md)

@@ -1,52 +1,53 @@
 ---
-title: Az Azure Resource Manager-sablonminták – Azure Container Instances szolgáltatásban
-description: Az Azure Resource Manager-sablonminták az Azure Container Instances szolgáltatásban
+title: Azure Resource Manager sablon minták – Azure Container Instances
+description: Azure Resource Manager sablon minták a Azure Container Instances
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 03/07/2019
 ms.author: danlep
-ms.openlocfilehash: 3d73d05c64f4b4867c69a15089c19ab8c320b9a8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 2089f024e1de2e92f6e401549c5876e26db17ebb
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59006476"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325695"
 ---
-# <a name="azure-resource-manager-templates-for-azure-container-instances"></a>Azure Container Instances szolgáltatásban az Azure Resource Manager-sablonokkal
+# <a name="azure-resource-manager-templates-for-azure-container-instances"></a>Azure Container Instances Azure Resource Manager sablonjai
 
-Az alábbi mintasablonok üzembe különböző konfigurációkban a container Instances szolgáltatásban.
+A következő sablonfájlok különböző konfigurációkban helyezik üzembe a Container instances-példányokat.
 
-A központi telepítési lehetőségekről a [üzembe helyezési](#deployment) szakaszban. Ha szeretné-e a saját sablonok, az Azure Container Instances létrehozása [Resource Manager sablonreferenciája] [ ref] részletesen sablon formátuma és a rendelkezésre álló tulajdonságok.
+Az üzembe helyezési lehetőségekért tekintse meg a [központi telepítés](#deployment) című szakaszt. Ha saját sablonokat szeretne létrehozni, a Azure Container Instances [Resource Manager-sablon dokumentációja][ref] és a rendelkezésre álló tulajdonságok.
 
 ## <a name="sample-templates"></a>Példasablonok
 
 | | |
 |-|-|
 | **Alkalmazások** ||
-| [WordPress][app-wp] | WordPress-webhelyek és a MySQL-adatbázis egy tárolócsoportot hoz létre. A WordPress-webhely tartalmát és a MySQL-adatbázis tárolja az Azure-fájlok megosztása. Is létrehoz egy application gateway nyilvános hálózati hozzáférés WordPress elérhetővé. |
-| [Az SQL Server- és IIS MS NAV][app-nav] | Üzembe helyez egy egyetlen Windows-tárolóban egy teljes körű önálló Dynamics NAV vagy Dynamics 365 Business Central-környezetben. |
+| [WordPress][app-wp] | Létrehoz egy WordPress-webhelyet és a MySQL-adatbázisát egy tároló csoportban. A WordPress-webhely tartalma és a MySQL-adatbázis egy Azure Files megosztásban marad. Létrehoz egy Application Gateway-t is, amely nyilvános hálózati hozzáférést tesz elérhetővé a WordPress számára. |
+| [MS NAV SQL Server és IIS][app-nav] | Egyetlen Windows-tárolót helyez üzembe a teljes funkcionalitású, önálló Dynamics NAV/Dynamics 365 üzleti központi környezettel. |
 | **Kötetek** ||
-| [az emptyDir][vol-emptydir] | Az emptyDir köteten osztozó két Linux-tárolók üzembe helyezése. |
-| [gitRepo][vol-gitrepo] | Üzembe helyez egy Linux-tároló, amely klónozza a GitHub-tárházba, és csatlakoztatja, kötetként. |
-| [Titkos kulcs][vol-secret] | Üzembe helyezett egy Linux-tárolót egy PFX-tanúsítványt, mint titkos kötet csatlakoztatva van. |
+| [emptyDir][vol-emptydir] | Két Linux-tárolót telepít, amelyek osztoznak egy emptyDir-köteten. |
+| [Gitrepo típusú][vol-gitrepo] | Üzembe helyez egy GitHub-tárházat klónozott Linux-tárolót, és kötetként csatlakoztatja azt. |
+| [titkos][vol-secret] | Egy Linux-tárolót helyez üzembe egy titkos kötetként csatlakoztatott PFX-tanúsítványsal. |
 | **Hálózat** ||
-| [UDP-elérhetővé tett tárolók][net-udp] | Üzembe helyez egy Windows vagy Linux-alapú tárolót, amely közzéteszi az UDP-port. |
-| [Nyilvános IP-Címmel rendelkező Linux-tárolóban][net-publicip] | Üzembe helyez egy egyetlen nyilvános IP-cím-en keresztül elérhető Linux-tárolót. |
-| [Egy tárolócsoport és a virtuális hálózat (előzetes verzió) üzembe helyezése][net-vnet] | Üzembe helyez egy új virtuális hálózat, alhálózat, a hálózati profil és a tárolócsoport. |
+| [UDP-vel feltett tároló][net-udp] | Egy olyan Windows vagy Linux rendszerű tároló üzembe helyezése, amely egy UDP-portot tesz elérhetővé. |
+| [Linux-tároló nyilvános IP-címmel][net-publicip] | Egyetlen linuxos tárolót helyez üzembe egy nyilvános IP-címen keresztül. |
+| [Tároló-csoport üzembe helyezése virtuális hálózattal (előzetes verzió)][net-vnet] | Üzembe helyez egy új virtuális hálózatot, alhálózatot, hálózati profilt és tároló csoportot. |
 | **Azure-erőforrások** ||
-| [Azure Storage-fiók létrehozása és fájlok megosztása][az-files] | Tárolópéldány az Azure CLI használatával hozzon létre egy tárfiókot és egy Azure-fájlmegosztást.
+| [Azure Storage-fiók és-fájlmegosztás létrehozása][az-files] | Az Azure CLI-t használja egy tároló példányban egy Storage-fiók és egy Azure Files-megosztás létrehozásához.
 
 ## <a name="deployment"></a>Környezet
 
-Resource Manager-sablonok az erőforrások üzembe helyezésének számos lehetősége van:
+Az erőforrások Resource Manager-sablonokkal való üzembe helyezésének számos lehetősége van:
 
-[Az Azure CLI][deploy-cli]
+[Azure CLI][deploy-cli]
 
 [Azure PowerShell][deploy-powershell]
 
-[Az Azure Portalon][deploy-portal]
+[Azure Portal][deploy-portal]
 
 [REST API][deploy-rest]
 

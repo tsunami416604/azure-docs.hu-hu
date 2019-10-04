@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 8259b58c7f30b63084e970bd9aed99642a43226f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58805737"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61216169"
 ---
 # <a name="content-protection-overview"></a>A Content protection áttekintése 
 
@@ -75,7 +75,7 @@ A jogkivonattal korlátozott engedélyezési házirend a tartalomkulcs küldend�
 
 A tokennel korlátozott szabályzatokhoz konfigurálásakor adjon meg, hogy az elsődleges ellenőrzőkulcs, a kibocsátó és a célközönség paramétereket. Az elsődleges ellenőrzőkulcs tartalmazza a kulcsot, a jogkivonat írták-e. A kibocsátó a biztonságos jogkivonat-szolgáltatás, amely a jogkivonatot. A célközönség, más néven a hatókör, ismerteti a token szándéka, vagy az erőforrás a token engedélyezi a hozzáférést. A Media Services kulcstovábbítást ellenőrzi, hogy ezeket az értékeket a jogkivonat egyezik a sablonban szereplő értékeket.
 
-## <a name="streaming-urls"></a>Streamelési URL-ek
+## <a name="streaming-urls"></a>Streamelési URL-címek
 Az eszköz titkosítva van az egynél több DRM, használjon egy titkosítási címke a streamelési URL-cím: (formátum = "m3u8-aapl" titkosítási = "xxx").
 
 A következő szempontokat kell figyelembe venni:

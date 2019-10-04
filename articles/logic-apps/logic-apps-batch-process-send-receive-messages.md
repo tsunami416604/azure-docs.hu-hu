@@ -10,11 +10,11 @@ ms.reviewer: estfan, jonfan, LADocs
 ms.topic: article
 ms.date: 01/16/2019
 ms.openlocfilehash: c33b1d46ecf710f050fc998ce27f6448337c6b78
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352512"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60683704"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>Küldés, fogadhatja és kötegelt feldolgozási üzenetek az Azure Logic Appsben
 

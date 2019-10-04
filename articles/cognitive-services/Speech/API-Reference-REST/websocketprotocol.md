@@ -1,34 +1,34 @@
 ---
-title: A Bing Speech WebSocket protokoll |} A Microsoft Docs
+title: Bing Speech WebSocket protokoll | Microsoft Docs
 titlesuffix: Azure Cognitive Services
-description: Bing Speech protokoll dokumentációját a websockets protokoll alapján.
+description: A Bing Speech a WebSockets-alapú protokoll dokumentációja
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: d6601f57d87b518b2061df64174818432b822755
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: e7f51d49624d5019bec058a2d12f6ca2f1366938
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58076190"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966889"
 ---
-# <a name="bing-speech-websocket-protocol"></a>A Bing Speech WebSocket protokoll
+# <a name="bing-speech-websocket-protocol"></a>Bing Speech WebSocket protokoll
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
-Bing Speech az felhőalapú platform, amelynek funkciói közül a legtöbb haladó algoritmusok átalakítását beszélt hangot képes szöveggé érhető el. A Bing Speech protokoll határozza meg a [kapcsolat beállítása](#connection-establishment) ügyfélalkalmazások számára, és a szolgáltatás és a speech recognition üzenetek között igényló kicserélt között ([üzenetek ügyfél által kezdeményezett](#client-originated-messages) és [szolgáltatás által kezdeményezett üzenetek](#service-originated-messages)). Emellett [telemetriai üzeneteket](#telemetry-schema) és [hibakezelés](#error-handling) ismerteti.
+A Bing Speech egy felhőalapú platform, amely a beszélt hang szöveggé alakításához elérhető legfejlettebb algoritmusokat tartalmazza. A Bing Speech protokoll határozza meg a [kapcsolat beállítását](#connection-establishment) az ügyfélalkalmazások és a szolgáltatás között, valamint az ügyfelek közötti Exchange-alapú beszédfelismerési üzeneteket (az[ügyfél által kezdeményezett üzenetek](#client-originated-messages) és a [szolgáltatás által kezdeményezett](#service-originated-messages) üzenetek). ). Emellett a [telemetria-üzenetek](#telemetry-schema) és a [hibakezelés](#error-handling) is szerepel.
 
-## <a name="connection-establishment"></a>Kapcsolat létrehozása
+## <a name="connection-establishment"></a>Kapcsolatok létrehozása
 
-A Speech Service protokoll követi WebSocket standard [IETF RFC 6455](https://tools.ietf.org/html/rfc6455). A WebSocket-kapcsolat elindításakor, HTTP-kérést, amely tartalmazza az ügyfél el kívánja frissíteni a kapcsolat HTTP szemantika használata helyett a WebSocket jelző HTTP-fejléceket. A kiszolgáló azt jelzi, hogy részt venni a WebSocket kapcsolaton visszaadó HTTP hajlandóságát `101 Switching Protocols` választ. A kézfogás adatcsere, követően ügyfél és a szolgáltatás ne zárja be a szoftvercsatorna, és megkezdheti a küldhet és fogadhat adatokat egy üzenet-alapú protokoll használatával.
+A Speech Service protokoll a WebSocket standard Specification [IETF RFC 6455-es](https://tools.ietf.org/html/rfc6455)verzióját követi. A WebSocket-kapcsolat egy HTTP-fejléceket tartalmazó HTTP-kérelemként indul el, amely arra utal, hogy az ügyfél a HTTP-szemantika használata helyett WebSocket-kapcsolatra kíván frissíteni. A kiszolgáló azt jelzi, hogy a WebSocket-kapcsolaton belüli részvételre való hajlandóság `101 Switching Protocols` http-válasz visszaadásával. A kézfogás cseréje után az ügyfél és a szolgáltatás is megnyithatja a szoftvercsatornát, és megkezdheti az üzenetküldést és a fogadást egy Message-alapú protokoll használatával.
 
-A WebSocket-kézfogás megkezdéséhez az ügyfélalkalmazás egy HTTPS GET kérést küld a szolgáltatásnak. Ez magában foglalja a standard WebSocket frissítési fejlécek együtt más fejlécek, konkrétan a speech.
+A WebSocket-kézfogás elindításához az ügyfélalkalmazás egy HTTPS GET kérelmet küld a szolgáltatásnak. A szolgáltatás szabványos WebSocket-frissítési fejléceket tartalmaz, valamint más, a beszédre jellemző fejléceket is tartalmaz.
 
 ```HTTP
 GET /speech/recognition/interactive/cognitiveservices/v1 HTTP/1.1
@@ -42,7 +42,7 @@ X-ConnectionId: A140CAF92F71469FA41C72C7B5849253
 Origin: https://speech.platform.bing.com
 ```
 
-A szolgáltatás fűzi hozzá:
+A szolgáltatás a következőket válaszolja:
 
 ```HTTP
 HTTP/1.1 101 Switching Protocols
@@ -53,142 +53,142 @@ Set-Cookie: SpeechServiceToken=AAAAABAAWTC8ncb8COL; expires=Wed, 17 Aug 2016 15:
 Date: Wed, 17 Aug 2016 15:03:52 GMT
 ```
 
-Szükséges összes beszédalapú kéréseket a [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security) titkosítást. Titkosítatlan beszédalapú kéréseket használata nem támogatott. A következő TLS-verziót támogatja:
+Minden beszédfelismerési kérelemhez [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security) -titkosítás szükséges. A titkosítatlan beszédfelismerési kérelmek használata nem támogatott. A következő TLS-verzió támogatott:
 
-* TLS 1.2
+* TLS 1,2
 
-### <a name="connection-identifier"></a>Kapcsolat azonosítója
+### <a name="connection-identifier"></a>Kapcsolatazonosító
 
-Beszédszolgáltatás megköveteli, hogy minden ügyfél egyedi azonosító a kapcsolat azonosítására. Az ügyfelek *kell* közé tartozik a *X-ConnectionId* fejléc, amikor elindítja a WebSocket-kézfogás. A *X-ConnectionId* fejléc lehet egy [univerzálisan egyedi azonosítót](https://en.wikipedia.org/wiki/Universally_unique_identifier) (UUID) értéket. WebSocket frissítési kéréseket, amelyek nem tartalmaznak a *X-ConnectionId*, ne adjon meg egy értéket a *X-ConnectionId* fejléc, vagy nem tartalmaznak egy érvényes UUID értéknek utasítja el a szolgáltatást egy HTTP-`400 Bad Request` választ.
+A beszédfelismerési szolgáltatás megköveteli, hogy minden ügyfél tartalmazzon egy egyedi azonosítót a kapcsolat azonosításához. A WebSocket-kézfogás indításakor az ügyfeleknek tartalmazniuk *kell* az *X-ConnectionId* fejlécet. Az *X-ConnectionId* fejlécének [univerzálisan egyedi azonosító](https://en.wikipedia.org/wiki/Universally_unique_identifier) (UUID) értéknek kell lennie. A WebSocket olyan frissítési kéréseket tartalmaz, amelyek nem tartalmazzák az *x-ConnectionId*, ne adjon meg értéket az *x-ConnectionId* fejléchez, vagy ne tartalmazzon érvényes UUID értéket a szolgáltatás a http `400 Bad Request` -választal együtt.
 
-### <a name="authorization"></a>Engedélyezés
+### <a name="authorization"></a>Authorization
 
-A standard szintű WebSocket kézfogás fejlécek kívül a beszédalapú kéréseket igényelnek egy *engedélyezési* fejléc. Kapcsolat nélküli ezt a fejlécet a rendszer elutasítja a szolgáltatás egy HTTP-kérések `403 Forbidden` választ.
+A normál WebSocket-kézfogási fejléceken kívül a beszédfelismerési kérelmekhez *engedélyezési* fejléc szükséges. A szolgáltatás a fejléc nélkül nem fogadja el a kapcsolatkérelmeket a http `403 Forbidden` -választal.
 
-A *engedélyezési* fejléc tartalmaznia kell egy JSON webes jogkivonat (JWT) hozzáférési jogkivonatot.
+Az *engedélyezési* fejlécnek tartalmaznia kell egy JSON web token (JWT) hozzáférési tokent.
 
-Fizessen elő, és szerezze be API-kulcsokat, JWT-hozzáférési jogkivonatok érvényes használt kapcsolatos információkért lásd: a [Cognitive Services-előfizetés](https://azure.microsoft.com/try/cognitive-services/) lapot.
+Az érvényes JWT-hozzáférési tokenek lekéréséhez használt API-kulcsok előfizetésével és beszerzésével kapcsolatos további információkért tekintse meg a [Cognitive Services előfizetés](https://azure.microsoft.com/try/cognitive-services/) oldalát.
 
-Az API-kulcsot a jogkivonat-szolgáltatás kerülnek. Példa:
+Az API-kulcsot a rendszer átadja a jogkivonat-szolgáltatásnak. Példa:
 
 ``` HTTP
 POST https://api.cognitive.microsoft.com/sts/v1.0/issueToken
 Content-Length: 0
 ```
 
-A következő fejléc-információkat hozzáférés a jogkivonatokhoz szükség.
+A jogkivonat-hozzáféréshez a következő fejléc-információk szükségesek.
 
 | Name (Név) | Formátum | Leírás |
 |----|----|----|
 | OCP-Apim-Subscription-Key | ASCII | Előfizetési kulcs |
 
-A jogkivonat-szolgáltatás adja vissza, mint a JWT jogkivonat `text/plain`. A JWT átadott majd egy `Base64 access_token` , mint a kézfogás- *engedélyezési* előtaggal van ellátva a sztring fejlécet `Bearer`. Példa:
+A jogkivonat-szolgáltatás a JWT hozzáférési tokent `text/plain`adja vissza. Ezt követően a rendszer `Base64 access_token` átadja a JWT a kézfogásként a sztringként `Bearer`megadott *engedélyezési* fejlécként. Példa:
 
 `Authorization: Bearer [Base64 access_token]`
 
 ### <a name="cookies"></a>Cookie-k
 
-Az ügyfelek *kell* támogatja a HTTP-cookie-k a megadott [RFC 6265](https://tools.ietf.org/html/rfc6265).
+Az ügyfeleknek támogatniuk *kell* a HTTP-cookie-kat az [RFC 6265](https://tools.ietf.org/html/rfc6265)-ben megadott módon.
 
 ### <a name="http-redirection"></a>HTTP-átirányítás
 
-Az ügyfelek *kell* támogatja a standard átirányítási módszerek által megadott a [HTTP-protokoll specifikációinak](https://www.w3.org/Protocols/rfc2616/rfc2616.html).
+Az ügyfeleknek támogatniuk *kell* a [http protokoll specifikációjában](https://www.w3.org/Protocols/rfc2616/rfc2616.html)megadott szabványos átirányítási mechanizmusokat.
 
-### <a name="speech-endpoints"></a>Beszédfelismerési végpontokat
+### <a name="speech-endpoints"></a>Beszédfelismerési végpontok
 
-Az ügyfelek *kell* beszédszolgáltatás megfelelő végpont használata. A végpont mód és a nyelvi alapul. A táblázatban néhány példa látható.
+Az ügyfeleknek a beszédfelismerési szolgáltatás megfelelő végpontját *kell* használniuk. A végpont felismerési mód és nyelv alapján történik. A táblázat néhány példát mutat be.
 
-| Mód | Útvonal | Szolgáltatás URI-ja |
+| Mód | Path | Szolgáltatás URI-ja |
 | -----|-----|-----|
 | Interaktív | /speech/recognition/interactive/cognitiveservices/v1 | https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=pt-BR |
 | Beszélgetés | /speech/recognition/conversation/cognitiveservices/v1 | https://speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US |
 | Diktálás | /speech/recognition/dictation/cognitiveservices/v1 | https://speech.platform.bing.com/speech/recognition/dictation/cognitiveservices/v1?language=fr-FR |
 
-További információkért lásd: a [szolgáltatás URI](../GetStarted/GetStartedREST.md#service-uri) lapot.
+További információ: [szolgáltatás URI-ja](../GetStarted/GetStartedREST.md#service-uri) .
 
-### <a name="report-connection-problems"></a>A jelentés kapcsolati problémák
+### <a name="report-connection-problems"></a>Kapcsolódási problémák jelentése
 
-Az ügyfelek azonnal jelentse az összes probléma történt a kapcsolat létrehozásakor. A jelentéskészítési sikertelen kapcsolatok üzenet protokollja leírt [kapcsolati hibák telemetriai adatainak](#connection-failure-telemetry).
+Az ügyfeleknek azonnal jelenteniük kell a kapcsolódás során észlelt problémákat. A sikertelen kapcsolatok jelentéskészítéséhez szükséges telemetria a következő témakörben található: [kapcsolódási hiba](#connection-failure-telemetry).
 
-### <a name="connection-duration-limitations"></a>Kapcsolat időtartama korlátozások
+### <a name="connection-duration-limitations"></a>A kapcsolatok időtartamára vonatkozó korlátozások
 
-Tipikus web service HTTP-kapcsolatok összehasonlítva WebSocket-kapcsolatok az elmúlt egy *hosszú* idő. Beszédszolgáltatás helyez a WebSocket-kapcsolatok a szolgáltatás időtartamára korlátozások:
+A szokásos webszolgáltatás HTTP-kapcsolataival összehasonlítva a WebSocket-kapcsolatok *sokáig* tartanak. A Speech Service a szolgáltatáshoz való WebSocket-kapcsolatok időtartamára vonatkozó korlátozásokat helyez el:
 
- * Minden aktív WebSocket kapcsolaton maximális időtartamának ez 10 perc. A kapcsolat akkor aktív, ha a szolgáltatás vagy az ügyfél WebSocket üzeneteket küld a kapcsolaton keresztül. A szolgáltatás megszakítja a kapcsolatot, figyelmeztetés nélkül, ha eléri a korlátot. Az ügyfelek kell kidolgozni a felhasználói esetek nem igénylik a kapcsolatot, vagy a maximális kapcsolódási élettartamának aktív marad.
+ * Az aktív WebSocket-kapcsolatok maximális időtartama 10 perc. A kapcsolat akkor aktív, ha a szolgáltatás vagy az ügyfél WebSocket-üzeneteket küld a kapcsolaton keresztül. A szolgáltatás figyelmeztetés nélkül leállítja a kapcsolódást a korlát elérésekor. Az ügyfeleknek olyan felhasználói forgatókönyvek kidolgozására van szükségük, amelyek nem igénylik, hogy a kapcsolatok a maximális kapcsolódási időtartamon vagy annak közelében maradjanak aktívak.
 
- * Minden olyan inaktív WebSocket-kapcsolat által felhasználható maximális időtartam: 180 másodperc. A kapcsolat nem aktív, ha a szolgáltatás és az ügyfél nem WebSocket üzenetet küldött a kapcsolaton keresztül. A maximális inaktív élettartam elérése után a szolgáltatás leállítja az inaktív WebSocket kapcsolaton.
+ * Az inaktív WebSocket-kapcsolatok maximális időtartama 180 másodperc. A kapcsolat inaktív, ha sem a szolgáltatás, sem az ügyfél nem küldött WebSocket-üzenetet a kapcsolaton keresztül. A maximális inaktív élettartam elérésekor a szolgáltatás leállítja az inaktív WebSocket-kapcsolatát.
 
-## <a name="message-types"></a>Üzenettípus
+## <a name="message-types"></a>Üzenetek típusai
 
-Az ügyfél és a szolgáltatás között a WebSocket-kapcsolat létrejötte után az ügyfél és a szolgáltatás küldhet üzeneteket. Ez a szakasz ismerteti ezen WebSocket üzenetek formátumát.
+Miután létrejött a WebSocket-kapcsolat az ügyfél és a szolgáltatás között, az ügyfél és a szolgáltatás egyaránt képes üzeneteket küldeni. Ez a szakasz a WebSocket-üzenetek formátumát ismerteti.
 
-[IETF RFC 6455](https://tools.ietf.org/html/rfc6455) Megadja, hogy WebSocket üzeneteket küldhetnek adatokat szöveges vagy bináris kódolás. A két kódolásokat eltérő az átvitel közbeni formátumot használ. Minden egyes formátum hatékony kódolást, továbbítására és az üzenet hasznos adattartalmából dekódolása van optimalizálva.
+Az [IETF RFC 6455](https://tools.ietf.org/html/rfc6455) azt adja meg, hogy a WebSocket-üzenetek szöveges vagy bináris kódolás használatával továbbítják az adatokat. A két kódolás eltérő formátumokat használ. Minden formátum az üzenet tartalmának hatékony kódolására, továbbítására és visszafejtésére van optimalizálva.
 
-### <a name="text-websocket-messages"></a>SMS-EK WebSocket
+### <a name="text-websocket-messages"></a>Szöveges WebSocket-üzenetek
 
-WebSocket üzenetet biztosítunk egy hasznos, amely egy szakaszt, fejlécek és a egy szervezet a jól ismert dupla kocsivissza soremelés pár használt HTTP-üzenetek elválasztva áll szöveges adatokat. És a HTTP-üzenetek, például szöveg WebSocket üzeneteket adja meg a fejlécek *name: érték* formátum egy egyetlen kocsivissza soremelés pár elválasztva. WebSocket szöveges üzenetben szöveg *kell* használata [UTF-8](https://tools.ietf.org/html/rfc3629) kódolást.
+A Text WebSocket-üzenetek a fejlécek egy szakaszát és egy, a HTTP-üzenetekhez használt, ismerős Double-Hinte-Return sortöréssel elválasztott szöveges adatokat tartalmaznak. És – például a HTTP-üzenetek esetében – a Text WebSocket-üzenetek a *Name: Value* formátumban elválasztott fejléceket adják meg. Egy szöveges WebSocket-üzenetben szereplő szövegnek [UTF-8](https://tools.ietf.org/html/rfc3629) kódolást *kell* használnia.
 
-WebSocket üzenetet meg kell adnia egy üzenet elérési utat a fejléc *elérési út*. A fejléc értéke a speech protokoll üzenettípus, ez a dokumentum későbbi szakaszában meghatározott egyikének kell lennie.
+A szöveges WebSocket-üzenetekben meg kell adni egy üzenet elérési útját a fejléc *elérési útjában*. Ennek a fejlécnek az értékének a dokumentumban később definiált Speech Protocol típusú üzenetek egyikének kell lennie.
 
 ### <a name="binary-websocket-messages"></a>Bináris WebSocket-üzenetek
 
-Bináris WebSocket-üzeneteket egy bináris tartalom biztosítunk. A Speech Service protokoll hang továbbított és bináris WebSocket üzenetek használatával kapott a szolgáltatástól. Minden más üzenetet, ha szöveget WebSocket üzeneteket.
+A bináris WebSocket-üzenetek bináris adattartalmat hordoznak. A Speech Service protokollban a hangátvitelt a szolgáltatás a bináris WebSocket-üzenetek használatával továbbítja és fogadja. Minden más üzenet szöveges WebSocket-üzenet.
 
-WebSocket-üzenetet, például bináris WebSocket üzenetek állnak a fejléc és a egy szervezet szakaszt. Az első 2 bájt bináris WebSocket üzenet megadása a [big endian](https://en.wikipedia.org/wiki/Endianness) sorrendben fejrészében 16 bites egész szám méretét. A minimális fejléc szakasz mérete 0 bájt. A maximális mérete 8192 bájt. A fejlécek bináris WebSocket üzenet szövegének *kell* használata [US-ASCII](https://tools.ietf.org/html/rfc20) kódolást.
+Hasonló szövegű WebSocket-üzenetek, a bináris WebSocket-üzenetek fejlécből és szövegtörzsből állnak. A bináris WebSocket-üzenet első 2 bájtja a [endian](https://en.wikipedia.org/wiki/Endianness) sorrendben határozza meg a fejléc szakasz 16 bites egész méretét. A fejléc minimális mérete 0 bájt. A maximális méret 8 192 bájt. A bináris WebSocket-üzenetek fejlécében szereplő szövegnek [US-ASCII](https://tools.ietf.org/html/rfc20) kódolást *kell* használnia.
 
-Egy bináris WebSocket-üzenetet a fejlécek hasonlóan WebSocket üzenetet ugyanebben a formátumban van kódolva. A *név-érték:* formátum egy egyetlen kocsivissza soremelés pár választja el egymástól. Bináris WebSocket üzenetek meg kell adnia egy üzenet elérési utat a fejléc *elérési út*. A fejléc értéke a speech protokoll üzenettípus, ez a dokumentum későbbi szakaszában meghatározott egyikének kell lennie.
+A bináris WebSocket-üzenetekben lévő fejlécek formátuma ugyanúgy történik, mint a Text WebSocket-üzenetekben. A *név: az érték* formátuma a single-Hinte-Return sortörés pár. A bináris WebSocket-üzeneteknek meg kell adniuk egy üzenet elérési útját a fejléc *elérési útjában*. Ennek a fejlécnek az értékének a dokumentumban később definiált Speech Protocol típusú üzenetek egyikének kell lennie.
 
-Szöveg és a bináris WebSocket-üzenetek a Speech Service protokoll használatban vannak.
+A Speech Service protokoll mind a Text, mind a bináris WebSocket-üzeneteket használja.
 
 ## <a name="client-originated-messages"></a>Ügyfél által kezdeményezett üzenetek
 
-A kapcsolat létrejötte után az ügyfél és a szolgáltatás megkezdheti a üzeneteket küldeni. Ez a szakasz ismerteti a formátum és hasznos, amelyek az ügyfélalkalmazások beszédszolgáltatás küldenek üzeneteket. A szakasz [szolgáltatás által kezdeményezett üzenetek](#service-originated-messages) mutat be, amely beszédszolgáltatás származnak, és az ügyfélalkalmazások számára küldött üzeneteket.
+A kapcsolódás után az ügyfél és a szolgáltatás is megkezdheti az üzenetek küldését. Ez a szakasz az ügyfélalkalmazások által a beszédfelismerési szolgáltatásnak küldött üzenetek formátumát és hasznos adatait ismerteti. A [Service-ből származó üzenetek](#service-originated-messages) szakasz a Speech Service-ből származó és az ügyfélalkalmazások számára küldött üzeneteket jeleníti meg.
 
-A fő, a szolgáltatásoknak az ügyfél által küldött üzenetek `speech.config`, `audio`, és `telemetry` üzeneteket. Javasolt minden üzenetet részletesen, mielőtt a közös szükséges, üzenetfejlécekben ezeket az üzeneteket ismerteti.
+Az ügyfél által a szolgáltatásoknak `speech.config`küldött fő üzenetek, `audio`és `telemetry` üzenetek. Az üzenetek részletes megvizsgálása előtt az összes ilyen üzenethez meg kell adni az általános szükséges fejléceket.
 
-### <a name="required-message-headers"></a>Szükséges fejlécek
+### <a name="required-message-headers"></a>Szükséges üzenetek fejlécei
 
-A következő fejlécek az összes ügyfél által kezdeményezett szükségesek.
+Az összes ügyfél által kezdeményezett üzenethez a következő fejlécek szükségesek.
 
-| Fejléc | Érték |
+| Fejléc | Value |
 |----|----|
-| Útvonal | Ebben a dokumentumban meghatározottak szerint az üzenet elérési út |
-| X-RequestId | A "no-dash" formátumban UUID |
-| X-időbélyeg | Ügyfél UTC óra ISO 8601 formátumú időbélyeg |
+| Path | A dokumentumban megadott üzenet elérési útja |
+| X-RequestId | UUID "No-Dash" formátumban |
+| X-Timestamp | Ügyfél UTC órajelének időbélyege ISO 8601 formátumban |
 
-#### <a name="x-requestid-header"></a>X-RequestId: fejléc
+#### <a name="x-requestid-header"></a>X – kérelemazonosító fejléc
 
-Ügyfél által kezdeményezett kérelem egyedileg azonosítja a *X-RequestId:* üzenetfejléchez. Ezt a fejlécet minden ügyfél által kezdeményezett üzenet megadása kötelező. A *X-RequestId:* fejléc értéknek kell lennie egy UUID "no-dash" formában, például *123e4567e89b12d3a456426655440000*. Ez *nem* kanonikus formájában kell *123e4567-e89b-12d3-a456-426655440000*. Kérelmek nélkül egy *X-RequestId:* fejléc formátuma nem megfelelő az UUID azonosítók oka a szolgáltatás leáll a WebSocket-kapcsolatot használó fejléc értéket.
+Az ügyfél által létrehozott kérelmeket az *X-kérelemazonosító* üzenet fejléce egyedileg azonosítja. Ez a fejléc szükséges az összes ügyfél által kezdeményezett üzenethez. Az *X-kérelemazonosító* fejléc ÉRTÉKének UUID-nek kell lennie a "No-Dash" formában, például *123e4567e89b12d3a456426655440000*. *Nem* lehet a Canonical Form *123e4567-e89b-12d3-A456-426655440000*. Olyan kérelemazonosító-fejléc nélküli kérelmek, amelyek nem megfelelő formátumú UUID-ket használnak, mert a szolgáltatás leállítja a WebSocket *-* kapcsolatokat.
 
-#### <a name="x-timestamp-header"></a>X-időbélyeg fejléc
+#### <a name="x-timestamp-header"></a>X-timestamp fejléc
 
-Beszédszolgáltatás egy ügyfélalkalmazás által küldött minden üzenet *kell* tartalmaznak egy *X-időbélyeg* fejléc. Ez a fejléc értéke az idő, amikor az az ügyfél elküldi az üzenetet. Kérelmek nélkül egy *X-időbélyeg* fejléc vagy a fejléc érték formátuma nem megfelelő használó okozhat a szolgáltatást, hogy állítsa le a WebSocket-kapcsolatot.
+A beszédfelismerési szolgáltatásnak egy ügyfélalkalmazás által küldött minden üzenetnek tartalmaznia *kell* egy *X-timestamp* fejlécet. A fejléc értéke az az idő, amikor az ügyfél elküldi az üzenetet. Az *X-timestamp* fejléc nélküli és a helytelen formátumot használó fejléc-értékkel rendelkező kérelmek miatt a szolgáltatás leállítja a WebSocket-kapcsolatot.
 
-A *X-időbélyeg* Fejlécérték formátumúnak kell lennie, az "yyyy"-"hh"-"dd'T' HH": "hh": "ss". " fffffffZ "hol található az"fffffff"a másodperc tört. Például "12,5" azt jelenti, hogy "12 + 5/10 másodpercen és"12.526"azt jelenti, hogy" 12 plusz 526/1000 másodperc". Ebben a formátumban megfelel-e az [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) és, szemben a szabványos HTTP *dátum* fejléc ezredmásodperces feloldási nyújthat. Az ügyfélalkalmazások a legközelebbi ezredmásodperces az időbélyegek előfordulhat, hogy kerekíteni. Annak érdekében, hogy az eszköz óra pontosan nyomon követi az idő az ügyfélalkalmazások számára szükséges egy [Network Time Protocol (NTP) kiszolgáló](https://en.wikipedia.org/wiki/Network_Time_Protocol).
+Az *X-timestamp* fejléc értékének "YYYY'-'MM'-'dd'T'HH": "PP": "ss" formátumúnak kell lennie. a "fffffff" fffffffZ egy másodperc töredéke. Például "12,5": "12 + 5/10 másodperc" és "12,526": "12 plusz 526/1000 másodperc". Ez a formátum megfelel az [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) -nek, a szabványos *http-* fejléctől eltérően pedig ezredmásodperces felbontást adhat meg. Az ügyfélalkalmazások az időbélyegzőket a legközelebbi ezredmásodpercig kerekítik. Az ügyfélalkalmazások számára biztosítani kell, hogy az eszköz órája pontosan nyomon követi az időt egy [Network Time Protocol (NTP) kiszolgáló](https://en.wikipedia.org/wiki/Network_Time_Protocol)használatával.
 
-### <a name="message-speechconfig"></a>üzenet `speech.config`
+### <a name="message-speechconfig"></a>Üzenetet`speech.config`
 
-Beszédszolgáltatás tudnia kell, az alkalmazás biztosít a lehetséges legjobb beszédfelismerés jellemzőit. A szükséges jellemzőket adatokat az eszköz és az operációs rendszer, az alkalmazás használja, amelyen a vonatkozó információkat tartalmaz. Azt adja meg ezt az információt a `speech.config` üzenet.
+A beszédfelismerési szolgáltatásnak ismernie kell az alkalmazás jellemzőit a lehető legjobb beszédfelismerés biztosításához. A szükséges jellemzők adatai az eszközre és az alkalmazásra vonatkozó operációs rendszerre vonatkozó információkat tartalmaznak. Ezt az információt az `speech.config` üzenetben adja meg.
 
-Az ügyfelek *kell* küldése egy `speech.config` azokat a csatlakozást beszédszolgáltatás, és mielőtt bármelyik küldenek után azonnal üzenet `audio` üzeneteket. Kell küldenie egy `speech.config` kapcsolatonként csak egyszer jelenik meg.
+Az ügyfeleknek azonnal el `speech.config` kell küldeniük egy üzenetet, miután meghozták a kapcsolatot a beszédfelismerési szolgáltatással, és nem küldenek `audio` üzeneteket. Csak egyszer kell `speech.config` üzenetet küldenie kapcsolatonként.
 
 | Mező | Leírás |
 |----|----|
-| WebSocket-üzenetek kódolása | Szöveg |
-| Törzs | A tartalom egy JSON-struktúrát |
+| WebSocket-üzenetek kódolása | Text |
+| Body | A hasznos adatok JSON-struktúraként |
 
-#### <a name="required-message-headers"></a>Szükséges fejlécek
+#### <a name="required-message-headers"></a>Szükséges üzenetek fejlécei
 
-| Fejléc neve | Érték |
+| Fejléc neve | Value |
 |----|----|
-| Útvonal | `speech.config` |
-| X-időbélyeg | Ügyfél UTC óra ISO 8601 formátumú időbélyeg |
-| Content-Type | az Application/json; charset = utf-8 |
+| Path | `speech.config` |
+| X-Timestamp | Ügyfél UTC órajelének időbélyege ISO 8601 formátumban |
+| Content-Type | alkalmazás/JSON; charset = UTF-8 |
 
-Csakúgy, mint a Speech Service protokoll ügyfél által kezdeményezett összes üzenet a `speech.config` üzenet *kell* tartalmaznak egy *X-időbélyeg* fejlécet, amely rögzíti, amikor az üzenet el lett küldve az ügyfél UTC idő a szolgáltatásnak. A `speech.config` üzenet *nem* szükséges egy *X-RequestId:* fejléc, mert ez az üzenet nincs hozzárendelve egy adott speech kérelmet.
+Ahogy az összes ügyfél által létrehozott üzenet a Speech Service protokollban, az `speech.config` üzenetnek tartalmaznia *kell* egy *X-timestamp* fejlécet, amely az ügyfél UTC-órájának időpontját rögzíti, amikor az üzenetet elküldték a szolgáltatásnak. Az `speech.config` üzenet *nem igényel* *X-kérelemazonosító* fejlécet, mert ez az üzenet nincs társítva egy adott beszédfelismerési kérelemhez.
 
-#### <a name="message-payload"></a>Üzenet adattartalma
-A hasznos a `speech.config` üzenet egy JSON-struktúrát, amely tartalmazza az alkalmazás adatait. Az alábbi példa bemutatja ezeket az információkat. Ügyfél és eszköz környezeti információkat tartalmaznak a *környezet* eleme a JSON-struktúrát.
+#### <a name="message-payload"></a>Üzenet tartalma
+Az `speech.config` üzenet tartalma egy JSON-struktúra, amely az alkalmazással kapcsolatos információkat tartalmaz. A következő példa ezeket az információkat jeleníti meg. Az ügyfél és az eszköz környezeti információi a JSON-struktúra *környezeti* eleme részét képezik.
 
 ```JSON
 {
@@ -211,67 +211,67 @@ A hasznos a `speech.config` üzenet egy JSON-struktúrát, amely tartalmazza az 
 }
 ```
 
-##### <a name="system-element"></a>Rendszer-elem
+##### <a name="system-element"></a>Rendszerelem
 
-A system.version eleme a `speech.config` üzenet a beszéd, az ügyfélalkalmazás vagy az eszköz által használt SDK szoftverek változatát tartalmazza. Az érték szerepel-e az űrlap *major.minor.build.branch*. Kihagyhatja a *ág* összetevő, ha nem alkalmazható.
+Az `speech.config` üzenet System. Version eleme tartalmazza az ügyfélalkalmazás vagy az eszköz által használt Speech SDK szoftver verzióját. Az érték a főverzió. *alverzió. Build. ág*formában van. Ha nem alkalmazható, kihagyhatja az *ág* összetevőt.
 
-##### <a name="os-element"></a>Az operációs rendszer elem
-
-| Mező | Leírás | Használat |
-|-|-|-|
-| os.platform | Az operációs rendszer platform, amely az alkalmazást, például, a Windows, Android, iOS vagy Linux |Szükséges |
-| os.name | Az operációs rendszer termék nevében, például a Debian vagy a Windows 10-es | Szükséges |
-| os.Version | A képernyőn az operációs rendszer verziójának *major.minor.build.branch* | Szükséges |
-
-##### <a name="device-element"></a>Eszköz elem
+##### <a name="os-element"></a>Operációs rendszer eleme
 
 | Mező | Leírás | Használat |
 |-|-|-|
-| Device.Manufacturer | Az eszköz hardver gyártója | Szükséges |
-| device.model | Az eszköz modellje | Szükséges |
-| Device.Version | Az eszköz szoftverének verziója, eszköz gyártója által biztosított. Ezt az értéket megadja az eszközt, hogy a gyártó által nyomon követhetők egy verziója. | Szükséges |
+| os.platform | Az alkalmazást futtató operációsrendszer-platform, például Windows, Android, iOS vagy Linux |Szükséges |
+| os.name | Az operációs rendszer termékének neve, például Debian vagy Windows 10 | Szükséges |
+| operációs rendszer verziója | Az operációs rendszer verziója a főverzió. *alverzió. Build. ág* formátumban | Szükséges |
 
-### <a name="message-audio"></a>üzenet `audio`
+##### <a name="device-element"></a>Eszköz eleme
 
-Ügyfél beszédfeldolgozó alkalmazásokat küldje el hang beszédszolgáltatás az audio-adatfolyam átalakítása hang adattömbök sorozata. Hang az egyes adattömbök a beszélt hangot képes, amely lehet a a szolgáltatás által megjelenített érzéseket szegmense végzi. Egy olyan hang adattömb maximális mérete 8192 bájt. Audio-adatfolyam üzenetek *bináris WebSocket üzenetek*.
+| Mező | Leírás | Használat |
+|-|-|-|
+| device.manufacturer | Az eszköz hardverének gyártója | Szükséges |
+| Device. Model | Az eszköz modellje | Szükséges |
+| device.version | Az eszköz gyártója által biztosított szoftververzió. Ez az érték határozza meg az eszköz gyártó által nyomon követhető verzióját. | Szükséges |
 
-Az ügyfelek használják a `audio` a szolgáltatás egy hang adattömbök küldendő üzenet. Ügyfelek olvassa el a tömbökben a mikrofon hang, és ezek adattömbök beszédszolgáltatás beszédátírási küldése. Az első `audio` üzenetet egy megfelelően formázott fejlécet, amely megfelelően megadja, hogy a hanganyag megfelel-e a szolgáltatás által támogatott formátumok egyikét kell tartalmaznia. További `audio` üzeneteket tartalmaznak, csak a bináris hang adatfolyam a mikrofon adatsorból beolvasott adatok.
+### <a name="message-audio"></a>Üzenetet`audio`
 
-Az ügyfelek igény szerint küldhet egy `audio` nulla hosszúságú szervezethez üzenet. Ez az üzenet arról tájékoztatja a szolgáltatást, amely az ügyfél tudni fogja, hogy a felhasználó leállította a beszéd, az utterance (kifejezés) befejeződött, és a mikrofon ki van kapcsolva.
+A beszédfelismerést támogató ügyfélalkalmazások hangtömbökbe konvertálják a hangadatfolyamot. A hangmennyiségek mindegyike a szolgáltatás által átmásolt, a beszélt hang egy szegmensét hordozza. Egy adott hangtömb maximális mérete 8 192 bájt. A hangadatfolyam-üzenetek *bináris WebSocket-üzenetek*.
 
-Beszédszolgáltatás használja az első `audio` üzenet, amely tartalmaz egy egyedi azonosítóját, hogy jelezze a egy új kérés/válasz ciklus kezdete vagy *kapcsolja*. Miután megkapta a szolgáltatás egy `audio` üzenet új kérelem azonosító bármelyik előző kapcsolja társított várólistán lévő vagy el nem küldött üzeneteket elveti.
+Az ügyfelek az `audio` üzenettel hangköteget küldenek a szolgáltatásnak. Az ügyfelek a mikrofonban lévő hanganyagokból olvasanak hangokat, és elküldik ezeket a tömböket a beszédfelismerési szolgáltatásnak. Az első `audio` üzenetnek tartalmaznia kell egy jól formázott fejlécet, amely megfelelően meghatározza, hogy a hang megfelel-e a szolgáltatás által támogatott kódolási formátumok egyikének. A `audio` további üzenetekben csak a mikrofonból beolvasott bináris hangadatfolyam-adatok szerepelnek.
+
+Előfordulhat, hogy az `audio` ügyfelek egy nulla hosszúságú törzsű üzenetet küldenek. Ez az üzenet közli a szolgáltatással, hogy az ügyfél tudja, hogy a felhasználó megszakította a beszédet, a teljes beállítás befejeződött, és a mikrofon ki van kapcsolva.
+
+A beszédfelismerési szolgáltatás az `audio` első olyan üzenetet használja, amely egy egyedi kérelem-azonosítót tartalmaz az új kérés/válasz ciklus vagy a *turn*kezdetének jelzéséhez. Miután a szolgáltatás egy új `audio` kérelem-azonosítóval rendelkező üzenetet kap, a rendszer elveti az összes olyan várólistán lévő vagy el nem küldött üzenetet, amely az előző bekapcsoláshoz van társítva.
 
 | Mező | Leírás |
 |-------------|----------------|
-| WebSocket-üzenetek kódolása | Bináris |
-| Törzs | A hang adattömbök bináris adatait. Maximális mérete 8192 bájt. |
+| WebSocket-üzenetek kódolása | Binary |
+| Body | A hanganyag bináris adathalmaza. A maximális méret 8 192 bájt. |
 
-#### <a name="required-message-headers"></a>Szükséges fejlécek
+#### <a name="required-message-headers"></a>Szükséges üzenetek fejlécei
 
-A következő fejléceket szükség az összes `audio` üzeneteket.
+Az összes `audio` üzenethez a következő fejlécek szükségesek.
 
-| Fejléc         |  Érték     |
+| Fejléc         |  Value     |
 | ------------- | ---------------- |
-| Útvonal | `audio` |
-| X-RequestId | A "no-dash" formátumban UUID |
-| X-időbélyeg | Ügyfél UTC óra ISO 8601 formátumú időbélyeg |
-| Content-Type | A hang tartalomtípus. A típusnak kell lennie, vagy *audio/x-wav* (PCM) vagy *audio/szintetikus* (szintetikus). |
+| Path | `audio` |
+| X-RequestId | UUID "No-Dash" formátumban |
+| X-Timestamp | Ügyfél UTC órajelének időbélyege ISO 8601 formátumban |
+| Content-Type | A hangtartalom típusa A típusnak *hang/x-WAV* (PCM) vagy *audio/selyem* (selyem) típusúnak kell lennie. |
 
-#### <a name="supported-audio-encodings"></a>Hang kódolást támogatja
+#### <a name="supported-audio-encodings"></a>Támogatott hangkódolások
 
-Ez a szakasz ismerteti a hangkodekek Speech Service által támogatott.
+Ez a szakasz a Speech Service által támogatott hangkodekeket ismerteti.
 
 ##### <a name="pcm"></a>A PCM
 
-Beszédszolgáltatás tömörítetlen pulse kód modulációs hang fogad el. Hang a szolgáltatás a küldendő [WAV](https://en.wikipedia.org/wiki/WAV) formátumú, ezért az első hang bontják részekre *kell* tartalmaznak egy érvényes [erőforrás adatcsere fájlformátum](https://en.wikipedia.org/wiki/Resource_Interchange_File_Format) (RIFF) fejléc. Ha az ügyfél és a egy hang adattömbök, amely egy kapcsolja kezdeményez *nem* egy érvényes RIFF fejléc, a szolgáltatás elutasítja a kérelmet, és megszakítja a WebSocket-kapcsolatot.
+A beszédfelismerési szolgáltatás fogadja a nem tömörített Pulse Code (PCM) hanganyagot. A rendszer [WAV](https://en.wikipedia.org/wiki/WAV) formátumban továbbítja a hangot a szolgáltatásnak, ezért az első hangdarabnak érvényes [Resource Interchange File Format](https://en.wikipedia.org/wiki/Resource_Interchange_File_Format) (RIFF) fejlécet *kell* tartalmaznia. Ha az ügyfél egy olyan hangblokkot kezdeményez, amely *nem* tartalmaz érvényes riff-fejlécet, a szolgáltatás elutasítja a kérést, és leállítja a WebSocket-kapcsolatát.
 
-A PCM hang *kell* a 16 bit / minta és a egy csatornát, 16 kHz mintát venni (*riff – 16khz – 16 bites-mono-pcm*). Beszédszolgáltatás nem támogatja a sztereó audiostreamek lejátszásával, és audiostreamek lejátszásával, a megadott átviteli sebesség, mintavételi gyakoriság vagy csatornák száma nem használó elutasítja.
+A PCM *hanganyagot* 16 kHz-nél 16 bites mintavételezéssel és egy csatornával (*riff-16khz-16bit-mono-PCM*) kell mintát venni. A beszédfelismerési szolgáltatás nem támogatja a sztereó hangstreameket, és elutasítja azokat a hangstreameket, amelyek nem a megadott átviteli sebességet, mintavételi sebességet vagy csatornák számát használják.
 
 ##### <a name="opus"></a>Opus
 
-Opus nyitva, jogdíjmentes, rendkívül sokoldalú hang kodek. Beszédszolgáltatás Opus támogatja az állandó átviteli sebességgel `32000` vagy `16000`. Csak a `OGG` Opus tárolója jelenleg támogatott által meghatározott a `audio/ogg` MIME-típus.
+Az Opus egy nyílt, jogdíj nélküli, sokoldalú hangkodek. A beszédfelismerési szolgáltatás az Opus `32000` -et a vagy `16000`a állandó átviteli sebességgel támogatja. Jelenleg csak `OGG` az opusz tárolója támogatott, amelyet a `audio/ogg` MIME-típus ad meg.
 
-Opus használatához módosítsa a [JavaScript minta](https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript/blob/master/samples/browser/Sample.html#L101) , és módosítsa a `RecognizerSetup` metódus való visszatéréshez.
+Az Opus használatához módosítsa a [JavaScript-mintát](https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript/blob/master/samples/browser/Sample.html#L101) , és változtassa meg a `RecognizerSetup` metódust a visszatéréshez.
 
 ```javascript
 return SDK.CreateRecognizerWithCustomAudioSource(
@@ -287,52 +287,52 @@ return SDK.CreateRecognizerWithCustomAudioSource(
           ));
 ```
 
-#### <a name="detect-end-of-speech"></a>Beszéd végén észlelése
+#### <a name="detect-end-of-speech"></a>A beszédfelismerés végének észlelése
 
-Az emberek nem explicit módon jelezni Amikor végzett, és beszéljen. Minden bemeneti a audio-adatfolyamokat a speech végén kezelésére két lehetősége van a speech elfogadó alkalmazás: szolgáltatás end-, beszéd észlelési és az ügyfél end-, beszéd észlelése. E két választási szolgáltatás end-, beszéd észlelési általában jobb felhasználói élményt nyújt.
+Az emberek nem jelzik explicit módon, hogy mikor állnak készen. Minden olyan alkalmazás, amelyik bemenetként fogadja a beszédet, két lehetőség áll rendelkezésére a beszéd végének egy hangfolyamban való kezelésére: a beszédfelismerés és az ügyfél-beszédfelismerés észlelése. E két lehetőség közül a szolgáltatás-beszédfelismerési funkció általában jobb felhasználói élményt nyújt.
 
-##### <a name="service-end-of-speech-detection"></a>Szolgáltatás end-, beszéd észlelése
+##### <a name="service-end-of-speech-detection"></a>Szolgáltatás-beszédfelismerési funkció észlelése
 
-Az automatikus beszédfelismerés ideális megoldást készíthet, az alkalmazások lehetővé teszik a szolgáltatás észleli, ha a felhasználó befejezte, és beszéljen. Az ügyfelek küldött hang, mikrofon *hang* adattömböket, amíg a szolgáltatás észleli a csend és küld vissza a `speech.endDetected` üzenet.
+Az ideális ingyenes beszédfelismerési élmény kiépítéséhez az alkalmazások lehetővé teszik a szolgáltatás számára, hogy észlelje, amikor a felhasználó elvégezte a beszédet. Az ügyfelek hangtömbökként küldenek hangot a mikrofonból, amíg a szolgáltatás nem észleli a csendet, `speech.endDetected` és egy üzenettel válaszol vissza.
 
-##### <a name="client-end-of-speech-detection"></a>Ügyfél end-, beszéd észlelése
+##### <a name="client-end-of-speech-detection"></a>Ügyfél-beszédfelismerési észlelés
 
-Ügyfélalkalmazások, amelyek lehetővé teszik a felhasználónak, hogy jelezze a speech valamilyen módon végén is adhat a szolgáltatás, amely jel. Egy ügyfélalkalmazás Előfordulhat például, a "Stop" vagy "Vypnutí" gombra, hogy a felhasználó lenyomja az. Hogy jelezze a teljes, beszéd, az ügyfélalkalmazások küldése egy *hang* adattömbök üzenet nulla hosszúságú szervezethez. Beszédszolgáltatás ezt az üzenetet, a bejövő audio-adatfolyam végén értelmezi.
+Azok az ügyfélalkalmazások, amelyek lehetővé teszik, hogy a felhasználó valamilyen módon jelezze a beszéd végét, így a szolgáltatást is megadhatja. Előfordulhat például, hogy egy ügyfélalkalmazás "Leállítás" vagy "némítás" gombra kattint, amelyet a felhasználó megnyomhat. A beszédfelismerés befejezéséhez az ügyfélalkalmazások nulla hosszúságú szövegtörzset tartalmazó *hangdarab üzenetet* küldenek. A beszédfelismerési szolgáltatás a bejövő hangadatfolyam végére értelmezi ezt az üzenetet.
 
-### <a name="message-telemetry"></a>üzenet `telemetry`
+### <a name="message-telemetry"></a>Üzenetet`telemetry`
 
-Ügyfélalkalmazások *kell* egyes kapcsolja végén elismeri Speech Service telemetriai adatokat gyűjthessen az kapcsolja elküldésével. Kapcsolja be teljes nyugtázása lehetővé teszi, hogy a Speech Service annak érdekében, hogy megfelelően a kérés- és az elvégzéséhez szükséges összes üzenet érkezett az ügyfél által. Kapcsolja be teljes nyugtázása is lehetővé teszi, hogy ellenőrizze, hogy az ügyfélalkalmazások elvárt beszédszolgáltatás. Ez az információ felbecsülhetetlen segítséget a speech-kompatibilis alkalmazás hibaelhárítása.
+Az ügyfélalkalmazások *kötelesek* az egyes körök végét visszaigazolni úgy, hogy telemetria küldenek a turn to speech szolgáltatásnak. A végponti visszaigazolás lehetővé teszi a beszédfelismerési szolgáltatás számára, hogy a kérés befejezéséhez szükséges összes üzenetet és a válaszát az ügyfél megfelelően fogadja. A kulcsrakész visszaigazolás azt is lehetővé teszi, hogy a beszédfelismerési szolgáltatás ellenőrizze, hogy az ügyfélalkalmazások a várt módon működnek-e. Ez az információ nem hasznos, ha segítségre van szüksége a beszédfelismerést támogató alkalmazás hibaelhárításához.
 
-Ügyfelek küldésével kell fogadnia egy kapcsolja végén egy `telemetry` üzenet fogadását követően a `turn.end` üzenet. Az ügyfelek megpróbáljon-tudomásul veszi a `turn.end` minél hamarabb. Ha egy ügyfélalkalmazás nem kapcsolja vége tudomásul veszi, a Speech Service előfordulhat, hogy megszakítja a kapcsolatot hiba. Az ügyfelek csak egyet kell küldenie `telemetry` üzenet az egyes kérések és válaszok azonosítja a *X-RequestId:* értéket.
+Az ügyfeleknek el kell ismerniük egy sor végét, ha `telemetry` az `turn.end` üzenet fogadása után hamarosan üzenetet küldenek. Az ügyfeleknek a lehető leghamarabb meg `turn.end` kell erősíteniük a nyugtát. Ha egy ügyfélalkalmazás nem tudja nyugtázni a turn End-t, a beszédfelismerési szolgáltatás hibát jelez a kapcsolaton. Az ügyfeleknek csak egy `telemetry` üzenetet kell küldeniük az *X-kérelemazonosító* érték által azonosított kérésekhez és válaszokhoz.
 
 | Mező | Leírás |
 | ------------- | ---------------- |
-| WebSocket-üzenetek kódolása | Szöveg |
-| Útvonal | `telemetry` |
-| X-időbélyeg | Ügyfél UTC óra ISO 8601 formátumú időbélyeg |
+| WebSocket-üzenetek kódolása | Text |
+| Path | `telemetry` |
+| X-Timestamp | Ügyfél UTC órajelének időbélyege ISO 8601 formátumban |
 | Content-Type | `application/json` |
-| Törzs | Egy JSON-struktúrát, amely a kapcsolja ügyfél-információkat tartalmaz |
+| Body | Egy JSON-struktúra, amely a turnre vonatkozó ügyféladatokat tartalmaz |
 
-A séma törzséhez tartozó a `telemetry` üzenet van definiálva a [Telemetriai séma](#telemetry-schema) szakaszban.
+Az `telemetry` üzenet törzsének sémája a [telemetria séma](#telemetry-schema) szakaszban van meghatározva.
 
-#### <a name="telemetry-for-interrupted-connections"></a>Megszakított kapcsolatokat telemetriája
+#### <a name="telemetry-for-interrupted-connections"></a>Telemetria a megszakított kapcsolatok esetében
 
-Ha a hálózati kapcsolat egy bekapcsolása során bármilyen okból meghiúsul, és az ügyfél nem *nem* kap egy `turn.end` üzenetet a szolgáltatást, az ügyfél elküld egy `telemetry` üzenet. Ez az üzenet ismerteti a sikertelen kérelmek, a következő alkalommal, amikor az ügyfél kapcsolódott a szolgáltatáshoz. Az ügyfelek nem rendelkeznek egy kapcsolat küldése azonnal megpróbálja a `telemetry` üzenet. Az üzenet előfordulhat, hogy az ügyfélen pufferelt és jövőbeli felhasználó által kért kapcsolaton keresztül. A `telemetry` a sikertelen kérelmek üzenet *kell* használja a *X-RequestId:* a sikertelen kérelmek értéket. Azt lehet küldeni a szolgáltatáshoz, amint létrejön a kapcsolat, fogadásra további üzenetek nélkül.
+Ha a hálózati kapcsolat bármely okból meghiúsul, és az ügyfél *nem* kap `turn.end` üzenetet a szolgáltatástól, `telemetry` az ügyfél üzenetet küld. Ez az üzenet azt a sikertelen kérést írja le, amikor az ügyfél a következő alkalommal létesít kapcsolódást a szolgáltatáshoz. Az ügyfeleknek nem kell azonnal megkísérelni a kapcsolódást az `telemetry` üzenet elküldéséhez. Lehet, hogy az üzenet pufferelt az ügyfélen, és egy jövőbeli, felhasználó által kért kapcsolaton keresztül küldi el. A sikertelen kérelemhez tartozó üzenetnekasikertelenkérelemX-kérelemazonosítóértékétkellhasználnia`telemetry` . Előfordulhat, hogy a rendszer azonnal elküldi a szolgáltatást, amint a csatlakozás létrejött, és nem vár más üzenetek küldésére és fogadására.
 
-## <a name="service-originated-messages"></a>Szolgáltatás által kezdeményezett üzenetek
+## <a name="service-originated-messages"></a>Szolgáltatásból származó üzenetek
 
-Ez a szakasz ismerteti a Speech Service származnak, és az ügyfél küld üzeneteket. Beszédszolgáltatás tartja karban a beállításjegyzék ügyfél képességeit, és állít elő, az üzenetek által igényelt minden egyes ügyfél számára, ezért nem minden ügyfél, amely az itt ismertetett összes üzenetek fogadásához. Üzenetek kivonatosan értéke által hivatkozott a *elérési út* fejléc. Ha például egy WebSocket szöveges üzenetet nevezzük a *elérési* érték `speech.hypothesis` speech.hypothesis üzenetnek számít.
+Ez a szakasz a Speech Service-ből származó és az ügyfélnek küldött üzeneteket ismerteti. A beszédfelismerési szolgáltatás megtartja az ügyfél képességeinek beállításjegyzékét, és létrehozza az egyes ügyfelek által igényelt üzeneteket, így nem minden ügyfél kapja meg az itt ismertetett összes üzenetet. A rövidség kedvéért az üzenetekre az *elérési út* fejlécének értéke hivatkozik. Például egy WebSocket szöveges üzenetre hivatkozunk, amelynek a *path* értéke `speech.hypothesis` Speech. hipotézisi üzenet.
 
-### <a name="message-speechstartdetected"></a>üzenet `speech.startDetected`
+### <a name="message-speechstartdetected"></a>Üzenetet`speech.startDetected`
 
-A `speech.startDetected` az üzenet azt jelzi, hogy beszédszolgáltatás az audio-adatfolyam észlelt speech.
+Az `speech.startDetected` üzenet azt jelzi, hogy a beszédfelismerési szolgáltatás beszédet észlelt az audio streamben.
 
 | Mező | Leírás |
 | ------------- | ---------------- |
-| WebSocket-üzenetek kódolása | Szöveg |
-| Útvonal | `speech.startDetected` |
-| Content-Type | az Application/json; charset = utf-8 |
-| Törzs | A JSON-szerkezet speech kezdetét észlelésekor a feltételek kapcsolatos információkat tartalmazó. A *eltolás* ebben a struktúrában mező eltolását (100 nanoszekundumos egységekben) Ha speech észlelt az audio-adatfolyamot, a stream elején viszonyítva. |
+| WebSocket-üzenetek kódolása | Text |
+| Path | `speech.startDetected` |
+| Content-Type | alkalmazás/JSON; charset = UTF-8 |
+| Body | A beszédfelismerés kezdetének észlelésére vonatkozó feltételekkel kapcsolatos információkat tartalmazó JSON-struktúra. A struktúra *eltolási* mezője meghatározza az eltolást (100 ns egységben), amikor a hangadatfolyamban a rendszer beszédet észlelt az adatfolyam elejéhez képest. |
 
 #### <a name="sample-message"></a>Mintaüzenet
 
@@ -346,19 +346,19 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 }
 ```
 
-### <a name="message-speechhypothesis"></a>üzenet `speech.hypothesis`
+### <a name="message-speechhypothesis"></a>Üzenetet`speech.hypothesis`
 
-Beszédfelismerés, során beszédszolgáltatás rendszeres időközönként állít elő, feltételezéseket szavakkal kapcsolatos ismeri fel a szolgáltatás. Beszédszolgáltatás elküldi ezeket feltételezéseket az ügyfél körülbelül minden 300 ezredmásodperc. A `speech.hypothesis` megfelelő *csak* a speech felhasználói élmény fokozása számára. Minden olyan függőséget, a tartalom vagy a szöveg pontosságát az üzeneteknek nem szükségesek.
+A beszédfelismerés során a beszédfelismerési szolgáltatás rendszeres időközönként hipotéziseket hoz létre a szolgáltatás által felismert szavakról. A beszédfelismerési szolgáltatás körülbelül 300 ezredmásodpercen belül elküldi ezeket a hipotéziseket az ügyfélnek. A `speech.hypothesis` *csak* a felhasználói beszéd élményének javítására alkalmas. Az üzenetekben lévő szöveg tartalmának vagy pontosságának semmilyen függősége nem szükséges.
 
- A `speech.hypothesis` üzenet ezekre az ügyfelekre, amely rendelkezik néhány szöveges renderelési képesség, és visszajelzést küldene közel valós idejű, a folyamatban lévő felismerés, a személy, aki elnököt alkalmazható.
+ Az `speech.hypothesis` üzenet azokra az ügyfelekre vonatkozik, amelyek valamilyen szöveges megjelenítési képességgel rendelkeznek, és közel valós időben visszajelzést kívánnak adni a folyamatban lévő felismerésről a beszélő személy számára.
 
 | Mező | Leírás |
 | ------------- | ---------------- |
-| WebSocket-üzenetek kódolása | Szöveg |
-| Útvonal | `speech.hypothesis` |
-| X-RequestId | A "no-dash" formátumban UUID |
+| WebSocket-üzenetek kódolása | Text |
+| Path | `speech.hypothesis` |
+| X-RequestId | UUID "No-Dash" formátumban |
 | Content-Type | application/json |
-| Törzs | A beszédfelismerés elmélet JSON struktúrában |
+| Body | A Speech hipotézis JSON-szerkezete |
 
 #### <a name="sample-message"></a>Mintaüzenet
 
@@ -374,24 +374,24 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 }
 ```
 
-A *eltolás* elem eltolását (100 nanoszekundumos egységekben) Ha a kifejezés ismerhető, képest az audio-adatfolyamot kezdete.
+Az *eltolás* elem megadja az eltolást (100 – ns egységekben), amikor a kifejezés felismerhető, a hangadatfolyam elejéhez képest.
 
-A *időtartama* elem azt határozza meg, az időtartam (100 nanoszekundumos egység), a beszéd kifejezés helyett szerepel.
+Az *időtartam* elem megadja a Speech kifejezés időtartamát (100 ns egységben).
 
-Az ügyfelek nem kell hagyatkozzon feltételezésekre a gyakoriságát, időzítési vagy egy beszéd elmélet vagy a konzisztencia, a szöveg bármilyen két speech feltételezéseket található szöveget. A feltételezéseket csak pillanatképei a szolgáltatásban az átírási folyamatba. Egy stabil felhalmozódásához beszédátírási nem jelentik. Például egy első speech változat tartalmazhat "finom szórakoztató" szavakat, és a második elmélet tartalmazhat szavak "vicces található." Beszédszolgáltatás nem hajtsa végre (például a kis-és nagybetűk, az írásjelek) utáni feldolgozási a speech elmélet a szöveget.
+Az ügyfeleknek nem kell feltételezni a beszédfelismerési hipotézisben szereplő gyakoriságot, időzítést vagy szöveget, vagy a szöveg egységességét két beszédes hipotézisben. A hipotézisek csak Pillanatképek a szolgáltatás átírási folyamata során. Nem az átírások állandó összegyűjtését jelentik. Például az első Speech hipotézis tartalmazhatja a "remek szórakozást", a második hipotézis pedig a "Funny" szót is tartalmazhatja. A beszédfelismerési szolgáltatás nem végez utólagos feldolgozást (például a nagybetűket és a központozást) a Speech hipotézis szövegében.
 
-### <a name="message-speechphrase"></a>üzenet `speech.phrase`
+### <a name="message-speechphrase"></a>Üzenetet`speech.phrase`
 
-Amikor beszédszolgáltatás határozza meg, hogy arról, hogy vannak-e elegendő információt, amelyek nem változnak, a szolgáltatás észszerűek felismerés eredmény egy `speech.phrase` üzenet. Beszédszolgáltatás ezek eredményt ad, miután észlelte, hogy a felhasználó befejezte a mondat vagy kifejezést.
+Ha a beszédfelismerési szolgáltatás megállapítja, hogy elegendő információval rendelkezik egy olyan felismerési eredmény létrehozásához, amely nem `speech.phrase` változik, a szolgáltatás üzenetet hoz létre. A beszédfelismerési szolgáltatás ezeket az eredményeket akkor állítja elő, amikor azt észleli, hogy a felhasználó befejezte a mondatot vagy a kifejezést.
 
 | Mező | Leírás |
 | ------------- | ---------------- |
-| WebSocket-üzenetek kódolása | Szöveg |
-| Útvonal | `speech.phrase` |
+| WebSocket-üzenetek kódolása | Text |
+| Path | `speech.phrase` |
 | Content-Type | application/json |
-| Törzs | A beszédfelismerés kifejezés JSON-struktúra |
+| Body | A Speech kifejezés JSON-szerkezete |
 
-A beszédfelismerés kifejezés JSON-sémája a következő mezőket tartalmazzák: `RecognitionStatus`, `DisplayText`, `Offset`, és `Duration`. Ezek a mezők kapcsolatos további információkért lásd: [Beszédátírási válaszok](../concepts.md#transcription-responses).
+A JSON-séma a `RecognitionStatus`következő mezőket tartalmazza: `DisplayText` `Offset`,, és `Duration`. További információ ezekről a mezőkről: [átírási válaszok](../concepts.md#transcription-responses).
 
 #### <a name="sample-message"></a>Mintaüzenet
 
@@ -408,16 +408,16 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 }
 ```
 
-### <a name="message-speechenddetected"></a>üzenet `speech.endDetected`
+### <a name="message-speechenddetected"></a>Üzenetet`speech.endDetected`
 
-A `speech.endDetected` üzenet Megadja, hogy az ügyfélalkalmazás álljon le, a szolgáltatás az audio streamelési.
+Az `speech.endDetected` üzenet azt adja meg, hogy az ügyfélalkalmazás le kell állítania a hang folyamatos átvitelét a szolgáltatásba.
 
 | Mező | Leírás |
 | ------------- | ---------------- |
-| WebSocket-üzenetek kódolása | Szöveg |
-| Útvonal | `speech.endDetected` |
-| Törzs | A JSON-szerkezet, amely tartalmazza az eltolást, beszéd végén észlelésekor. Az eltolás jelenik meg az 100 nanoszekundumos egységek eltolás kezdete és hang felismerés szolgálja ki. |
-| Content-Type | az Application/json; charset = utf-8 |
+| WebSocket-üzenetek kódolása | Text |
+| Path | `speech.endDetected` |
+| Body | A rendszer a beszédfelismerés végén észlelt eltolást tartalmazó JSON-struktúrát. Az eltolás a NS egységek eltolása az elismeréshez használt hang elejétől számítva 100. |
+| Content-Type | alkalmazás/JSON; charset = UTF-8 |
 
 #### <a name="sample-message"></a>Mintaüzenet
 
@@ -431,18 +431,18 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 }
 ```
 
-A *eltolás* elem eltolását (100 nanoszekundumos egységekben) Ha a kifejezés ismerhető, képest az audio-adatfolyamot kezdete.
+Az *eltolás* elem megadja az eltolást (100 – ns egységekben), amikor a kifejezés felismerhető, a hangadatfolyam elejéhez képest.
 
-### <a name="message-turnstart"></a>üzenet `turn.start`
+### <a name="message-turnstart"></a>Üzenetet`turn.start`
 
-A `turn.start` jelzi a egy kapcsolja be a szolgáltatás szempontjából. A `turn.start` üzenet mindig az első válasz üzenet bármilyen kérést kap. Ha nem kapja meg a `turn.start` üzenet, azt feltételezik, hogy a szolgáltatás kapcsolati állapota érvénytelen.
+A `turn.start` a szolgáltatás szemszögéből jelzi a bekapcsolás kezdetét. Az `turn.start` üzenet mindig az első válaszüzenet, amelyet minden kérelemhez megkap. Ha nem kap `turn.start` üzenetet, tegyük fel, hogy a szolgáltatás kapcsolatainak állapota érvénytelen.
 
 | Mező | Leírás |
 | ------------- | ---------------- |
-| WebSocket-üzenetek kódolása | Szöveg |
-| Útvonal | `turn.start` |
-| Content-Type | az Application/json; charset = utf-8 |
-| Törzs | JSON-struktúra |
+| WebSocket-üzenetek kódolása | Text |
+| Path | `turn.start` |
+| Content-Type | alkalmazás/JSON; charset = UTF-8 |
+| Body | JSON-struktúra |
 
 #### <a name="sample-message"></a>Mintaüzenet
 
@@ -458,17 +458,17 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 }
 ```
 
-A törzse a `turn.start` üzenet egy JSON-struktúrát, amely tartalmazza a kapcsolja elején környezet. A *környezet* elem tartalmaz egy *serviceTag* tulajdonság. A tulajdonság határozza meg, hogy a szolgáltatáshoz társított a kapcsolja be a címke értéke. Ezt az értéket a Microsoft által használható, ha az alkalmazás kapcsolatos hibák elhárítása segítségre van szüksége.
+Az `turn.start` üzenet törzse egy JSON-struktúra, amely a turn kezdetének kontextusát tartalmazza. A *környezeti* elem *serviceTag* tulajdonságot tartalmaz. Ez a tulajdonság határozza meg azt a címke-értéket, amelyet a szolgáltatás a turnhöz társított. Ezt az értéket a Microsoft is használhatja, ha segítségre van szüksége az alkalmazás hibáinak elhárításához.
 
-### <a name="message-turnend"></a>üzenet `turn.end`
+### <a name="message-turnend"></a>Üzenetet`turn.end`
 
-A `turn.end` szempontjából a szolgáltatás egy kapcsolja végén jelzi. A `turn.end` üzenet mindig az utolsó válaszüzenet bármilyen kérést kap. Ügyfelek használhatják az üzenet fogadását, karbantartási tevékenységek és az inaktív állapotból való jel. Ha nem kapja meg a `turn.end` üzenet, azt feltételezik, hogy a szolgáltatás kapcsolati állapota érvénytelen. Ezekben az esetekben zárja be a meglévő kapcsolatot a szolgáltatással, és csatlakoztassa újra.
+A `turn.end` jel végén a szolgáltatás szemszögéből kerül sor. Az `turn.end` üzenet mindig az utolsó válaszüzenet, amelyet bármelyik kérelemhez megkap. Az ügyfelek a törlési tevékenységek jeleként használhatják az üzenet fogadását, és inaktív állapotra válthatnak. Ha nem kap `turn.end` üzenetet, tegyük fel, hogy a szolgáltatás kapcsolatainak állapota érvénytelen. Ezekben az esetekben zárjuk le a szolgáltatáshoz való meglévő kapcsolatot, és kapcsolódjon újra.
 
 | Mező | Leírás |
 | ------------- | ---------------- |
-| WebSocket-üzenetek kódolása | Szöveg |
-| Útvonal | `turn.end` |
-| Törzs | None |
+| WebSocket-üzenetek kódolása | Text |
+| Path | `turn.end` |
+| Body | Nincsenek |
 
 #### <a name="sample-message"></a>Mintaüzenet
 
@@ -479,13 +479,13 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 
 ## <a name="telemetry-schema"></a>Telemetria séma
 
-A törzse a *telemetriai* üzenet egy JSON-struktúrát, amely tartalmazza az ügyfél-információt egy kapcsolja be vagy kapcsolódási kísérlet. A struktúra, amely rögzíti, amikor az ügyfél események következnek be ügyfél időbélyegeket tevődik össze. Minden egyes időbélyeg az "X-időbélyeg fejléc." című szakaszban leírtak szerint ISO 8601 formátumban kell lennie. *Telemetria* , amely nem ad meg minden kötelező mezőt a JSON-szerkezetében lévő vagy a megfelelő időbélyegző-formátum nem használó üzenetek előfordulhat, hogy a szolgáltatást, hogy állítsa le a kapcsolatot az ügyfélnek. Az ügyfelek *kell* adjon érvényes értéket minden kötelező mezők. Az ügyfelek *kell* opcionális mezőket, amikor megfelelő értéket ad meg. A minták ebben a szakaszban látható értékek csak.
+A *telemetria* üzenet törzse egy JSON-struktúra, amely a turn vagy a megkísérelt kapcsolatok ügyfél-információit tartalmazza. A struktúra olyan ügyfél-időbélyegek áll, amelyek az ügyfél eseményeinek rögzítésekor történnek. Minden időbélyegző ISO 8601 formátumúnak kell lennie, az "X-timestamp header" című szakaszban leírtak szerint. Azon *telemetria* , amelyek nem határozzák meg a JSON-struktúra összes kötelező mezőjét, vagy amelyek nem használják a helyes időbélyegző-formátumot, a szolgáltatás megszakítja a kapcsolódást az ügyfélhez. Az ügyfeleknek érvényes értékeket *kell* megadniuk az összes kötelező mezőhöz. Ha szükséges, az ügyfeleknek *meg kell* adni a választható mezők értékét. Az ebben a szakaszban szereplő mintákban látható értékek csak illusztrációk.
 
-Telemetria séma a következő részre oszlik: érkezett üzenet időbélyegzőket és a metrikákat. A formátum és az egyes részek használatát a következő szakaszban van megadva.
+A telemetria séma a következő részekre oszlik: üzenet időbélyegek és mérőszámok. Az egyes részek formátuma és használata a következő szakaszokban van meghatározva.
 
-### <a name="received-message-time-stamps"></a>Fogadott üzenethez időbélyegek
+### <a name="received-message-time-stamps"></a>Fogadott üzenet időbélyegei
 
-Az ügyfelek kapnak, miután a szolgáltatás sikeresen csatlakozott összes üzenetek esetében idő a nyugta az értékek tartalmaznia kell. Ezeket az értékeket kell rögzítenie az idő során az ügyfél *kapott* minden üzenetet a hálózatról. Az érték nem kell rögzíteni időszakban. Például az ügyfél kell rögzíti az idő során azt *megtudjuk* üzenetet. A fogadott üzenethez időbélyegeket megadott tömbjét *név-érték:* párokat. A pár nevét adja meg a *elérési út* az üzenet értékét. A pár értékét megadja az üzenet érkezésekor ügyfél időpontját. Vagy, a megadott névvel egynél több üzenet érkezett, ha a pár értéke azt jelzi, ha ezeket az üzeneteket érkeztek időbélyegeket tömbjét.
+Az ügyfeleknek tartalmazniuk kell a szolgáltatáshoz való sikeres csatlakozás után kapott összes üzenet kézhezvételi időpontját. Ezeknek az értékeknek rögzíteniük kell az időpontot, amikor az ügyfél az egyes üzeneteket a hálózatról *fogadta* . Az érték nem rögzíthet semmilyen más időpontot. Az ügyfélnek például nem szabad rögzítenie az üzenetben szereplő időpontot. A fogadott üzenet időbélyegei *név: érték* párok tömbben vannak megadva. A pár neve megadja az üzenet *elérési útjának* értékét. A pár értéke határozza meg az ügyfél időpontját az üzenet fogadásakor. Vagy ha a megadott névvel egynél több üzenet érkezett, a pair értéke az időbélyegek tömbje, amely jelzi, hogy mikor érkeztek meg az üzenetek.
 
 ```JSON
   "ReceivedMessages": [
@@ -496,86 +496,86 @@ Az ügyfelek kapnak, miután a szolgáltatás sikeresen csatlakozott összes üz
   ]
 ```
 
-Az ügyfelek *kell* fel ezeket az üzeneteket az időbélyegek JSON-törzse a szolgáltatás által küldött összes üzenet átvételét. Ha egy ügyfél nem tud üzenetet igazolhatom, a szolgáltatás előfordulhat, hogy állítsa le a kapcsolatot.
+Az ügyfeleknek *meg kell* ismerniük a szolgáltatás által küldött összes üzenet fogadását, beleértve a JSON-törzsben lévő üzenetek időbélyegét. Ha az ügyfél nem tudja nyugtázni az üzenet fogadását, előfordulhat, hogy a szolgáltatás megszakítja a kapcsolódást.
 
 ### <a name="metrics"></a>Mérőszámok
 
-Az ügyfelek tartalmaznia kell egy kérés élettartama során fellépő eseményekkel kapcsolatos információkat. A következő metrikák támogatottak: `Connection`, `Microphone`, és `ListeningTrigger`.
+Az ügyfeleknek tartalmazniuk kell a kérelem élettartama során bekövetkezett eseményekkel kapcsolatos információkat. A következő metrikák támogatottak: `Connection`, `Microphone`és `ListeningTrigger`.
 
-### <a name="metric-connection"></a>A metrika `Connection`
+### <a name="metric-connection"></a>Metrika`Connection`
 
-A `Connection` metrika megadja az ügyfél kapcsolódási kísérleteit részleteit. A metrika időbélyeggel tartalmaznia kell, amikor a WebSocket-kapcsolat volt elindult és befejeződött. A `Connection` metrika kötelező *csak az első kapcsolja be a kapcsolat a*. Ennek a későbbi tartalmazza ezt az információt nem szükségesek. Ha egy ügyfél több kapcsolódási kísérletek előtt létrejön a kapcsolat, információt *összes* a kapcsolódási kísérletek tartalmaznia kell. További információkért lásd: [kapcsolati hibák telemetriai adatainak](#connection-failure-telemetry).
+A `Connection` metrika az ügyfél csatlakozási kísérleteinek adatait adja meg. A metrikanak tartalmaznia kell a WebSocket-kapcsolat elindítása és befejeződése időbélyegét. A `Connection` metrika *csak a kapcsolatok első bekapcsolásához*szükséges. Ezt az információt nem kötelező további bekapcsolni. Ha egy ügyfél több csatlakozási kísérletet tesz elérhetővé a kapcsolatok létrehozása előtt, a rendszer az *összes* csatlakozási kísérletről információt tartalmaz. További információ: a [sikertelen telemetria](#connection-failure-telemetry).
 
 | Mező | Leírás | Használat |
 | ----- | ----------- | ----- |
 | Name (Név) | `Connection` | Szükséges |
-| Azonosító | A kapcsolat-értéket, amely használták a *X-ConnectionId* a kapcsolódási kérelem fejléce | Szükséges |
-| Indítás | Az idő, amikor az ügyfél küldött-e a kapcsolódási kérelem | Szükséges |
-| Vége | Az idő, amikor az ügyfelet, hogy a kapcsolat sikeresen létrejött-e értesítést kapott, vagy hiba esetekben, el lett utasítva, elutasítva, vagy nem sikerült | Szükséges |
-| Hiba | A következő hiba történt, ha van ilyen leírása. A kapcsolat nem volt sikeres, ha az ügyfelek kell hagyja ki ezt a mezőt. Ez a mező hossza legfeljebb 50 karakter hosszú lehet. | Hiba történt az esetekben nincs egyéb megadva szükséges |
+| Id | A kapcsolatkérelem *X-ConnectionId* fejlécében használt kapcsolatazonosító értéke | Szükséges |
+| Start | Az az idő, amikor az ügyfél elküldte a kapcsolódási kérelmet | Szükséges |
+| vége | Az az idő, amikor az ügyfél értesítést kapott arról, hogy a kapcsolódás sikeresen megtörtént, vagy hiba esetén a visszautasítva, visszautasítva vagy sikertelen | Szükséges |
+| Hiba | Az észlelt hiba leírása, ha van ilyen. Ha a kapcsolatok sikeresek voltak, az ügyfeleknek ki kell hagyniuk ezt a mezőt. A mező maximális hossza 50 karakter. | A hibák esetében szükséges, ellenkező esetben kihagyva |
 
-A hiba leírása legfeljebb 50 karakter hosszú lehet kell lennie, és ideális egyikének kell lennie a következő táblázatban felsorolt értékeket. Ha a hibajelzést kiváltó körülmény nem egyezik az alábbi értékek egyikére, ügyfelek használhatják-e a hibajelzést kiváltó körülmény tömör leírása használatával [CamelCasing](https://en.wikipedia.org/wiki/Camel_case) szóköz nélkül. A képes titkosítottan küldeni egy *telemetriai* üzenet a szolgáltatásban, így csak átmeneti kapcsolatot igényel, vagy ideiglenes hibaállapotok jelenteni lehet a a *telemetriai* üzenet. A hibák *véglegesen* ügyfelet kapcsolatot a szolgáltatás letiltása megakadályozza, hogy a az ügyfél bármilyen üzenetet küld a szolgáltatást, beleértve a *telemetriai* üzenetek.
+A hiba leírásának legfeljebb 50 karakterből kell állnia, és ideális esetben az alábbi táblázatban felsorolt értékek egyikének kell lennie. Ha a hiba feltétele nem felel meg ezeknek az értékeknek, a [CamelCasing](https://en.wikipedia.org/wiki/Camel_case) szóköz nélkül használhatja a hiba feltételének tömör leírását. A *telemetria* -üzenetek küldésének lehetősége a szolgáltatáshoz való kapcsolódást igényel, így csak átmeneti vagy ideiglenes hibák jelentkezhetnek be a *telemetria* üzenetben. Azok a hibák, amelyek *végleg* blokkolják az ügyfelet a szolgáltatással létesített kapcsolatok létrehozásában, megakadályozzák, hogy az ügyfél bármilyen üzenetet küldjön a szolgáltatásnak, beleértve a *telemetria* üzeneteket is.
 
 | Hiba | Használat |
 | ----- | ----- |
-| DNSfailure | Az ügyfél nem tudott csatlakozni a szolgáltatáshoz, a hálózati verem DNS hiba miatt. |
-| NoNetwork | Az ügyfél próbált kapcsolatot, de a hálózati protokollkészlet jelentette, hogy nincsenek fizikai hálózati nem érhető el. |
-| NoAuthorization | Az Ügyfélkapcsolat-engedélyezési jogkivonat a kapcsolat tett kísérlet során nem sikerült. |
-| NoResources | Az ügyfél a kapcsolat tett kísérlet során elfogyott a néhány helyi erőforrás (például memóriája). |
-| Tiltott | Az ügyfél nem tudott kapcsolódni a szolgáltatáshoz, mivel a szolgáltatás által visszaadott HTTP `403 Forbidden` a WebSocket frissítésére irányuló kérelem az állapotkódot. |
-| Nem engedélyezett | Az ügyfél nem tudott kapcsolódni a szolgáltatáshoz, mivel a szolgáltatás által visszaadott HTTP `401 Unauthorized` a WebSocket frissítésére irányuló kérelem az állapotkódot. |
-| Hibás kérés | Az ügyfél nem tudott kapcsolódni a szolgáltatáshoz, mivel a szolgáltatás által visszaadott HTTP `400 Bad Request` a WebSocket frissítésére irányuló kérelem az állapotkódot. |
-| ServerUnavailable | Az ügyfél nem tudott kapcsolódni a szolgáltatáshoz, mivel a szolgáltatás által visszaadott HTTP `503 Server Unavailable` a WebSocket frissítésére irányuló kérelem az állapotkódot. |
-| Kiszolgálóhibái | Az ügyfél nem tudott kapcsolódni a szolgáltatáshoz, mivel a szolgáltatás által visszaadott egy `HTTP 500` állapotkód belső hiba történt a frissítési WebSocket-kérés. |
-| Időtúllépés | Az ügyfél-kapcsolódási kérelem túllépte az időkorlátot a szolgáltatás válaszára nélkül. A *záró* mező tartalmazza az idő, amikor az ügyfél túllépte az időkorlátot, és várakozik a kapcsolatot. |
-| Ügyfélhibái | Az ügyfél egy belső ügyfélhiba miatt megszakította a kapcsolatot. |
+| DNSfailure | Az ügyfél nem tudott kapcsolódni a szolgáltatáshoz, mert a hálózati veremben DNS-hiba történt. |
+| Nem hálózat | Az ügyfél megkísérelt csatlakozni, de a hálózati verem azt jelezte, hogy nem volt elérhető fizikai hálózat. |
+| Nincs hitelesítés | Az ügyfél kapcsolódása meghiúsult a kapcsolathoz tartozó engedélyezési jogkivonat beszerzésére tett kísérlet során. |
+| Nem erőforrások | Az ügyfél bizonyos helyi erőforrásokból (például a memóriából) kifogyott a kapcsolódási kísérlet során. |
+| Tiltott | Az ügyfél nem tudott kapcsolódni a szolgáltatáshoz, mert a szolgáltatás http `403 Forbidden` -állapotkódot adott vissza a WebSocket-frissítési kérelemben. |
+| Nem engedélyezett | Az ügyfél nem tudott kapcsolódni a szolgáltatáshoz, mert a szolgáltatás http `401 Unauthorized` -állapotkódot adott vissza a WebSocket-frissítési kérelemben. |
+| Hibás kérés | Az ügyfél nem tudott kapcsolódni a szolgáltatáshoz, mert a szolgáltatás http `400 Bad Request` -állapotkódot adott vissza a WebSocket-frissítési kérelemben. |
+| ServerUnavailable | Az ügyfél nem tudott kapcsolódni a szolgáltatáshoz, mert a szolgáltatás http `503 Server Unavailable` -állapotkódot adott vissza a WebSocket-frissítési kérelemben. |
+| ServerError | Az ügyfél nem tudott kapcsolódni a szolgáltatáshoz, mert a szolgáltatás `HTTP 500` belső hibakódot adott vissza a WebSocket-frissítési kérelemben. |
+| Időtúllépés | Az ügyfél csatlakoztatási kérelme időtúllépés nélkül megszakadt a szolgáltatástól kapott válasz hiányában. A *befejezési* mező azt az időpontot tartalmazza, amikor az ügyfél időkorlátja lejárt, és a csatlakozásra várakozik. |
+| Vonatkozó ügyfélhibái | Az ügyfél egy belső ügyfél hibája miatt megszakította a kapcsolatokat. |
 
-### <a name="metric-microphone"></a>A metrika `Microphone`
+### <a name="metric-microphone"></a>Metrika`Microphone`
 
-A `Microphone` metrika szükség az összes speech bekapcsolja. Ez a metrika az óraszáma hangbemenet aktívan használatos beszéd kérés ügyfél időt méri.
+Az `Microphone` összes Speech bekapcsolás mérőszáma szükséges. Ez a mérőszám azt az időtartamot méri az ügyfélen, amely során a hangbemenet aktívan használatban van egy beszédfelismerési kérelemhez.
 
-Használja az alábbi példák útmutatóul a rögzítés *Start* idő értékei a `Microphone` metrika az ügyfélalkalmazásban található:
+Az alábbi példák útmutatásul szolgálnak a `Microphone` metrika kezdő időértékeinek rögzítéséhez az ügyfélalkalmazás esetében:
 
-* Egy ügyfélalkalmazás megköveteli, hogy egy felhasználó kell nyomnia a fizikai gombra kattintva indítsa el a mikrofon. A gomb megnyomása után az ügyfélalkalmazás a bemeneti olvas be a mikrofon, és elküldi beszédszolgáltatás. A *Start* értékét a `Microphone` metrika gomb megnyomása után a idejét rögzíti, amikor a mikrofon inicializálva, és készen áll a információk megadása. A *záró* értékét a `Microphone` metrika rögzíti az idő, amikor az ügyfélalkalmazás leállt, a szolgáltatás az audio streamelési után kapott a `speech.endDetected` üzenet a szolgáltatásból.
+* Az ügyfélalkalmazás megköveteli, hogy a felhasználónak egy fizikai gombot kell megnyomnia a mikrofon elindításához. A gomb megnyomása után az ügyfélalkalmazás beolvassa a bemenetet a mikrofonból, és elküldi a beszédfelismerési szolgáltatásnak. A `Microphone` metrika indítási értéke a gomb lenyomása után, amikor a mikrofon inicializálása megtörtént, és készen áll a bevitel megadására. A `Microphone` metrika záró értéke azt az időpontot rögzíti, amikor az ügyfélalkalmazás leállította a hangot a szolgáltatásnak, `speech.endDetected` miután megkapta az üzenetet a szolgáltatástól.
 
-* Egy ügyfélalkalmazás egy kulcsszót spotter, amely a "mindig" figyel. Csak azt követően a kulcsszó spotter észleli a kimondott eseményindító kifejezés nem az ügyfélalkalmazás a bemeneti adatok gyűjtése a mikrofon majd azokat elküldi a Speech Service. A *Start* értékét a `Microphone` metrika rögzíti az idő, amikor a kulcsszó spotter értesítést kap az ügyfél a bemenetet a mikrofon használatának megkezdéséhez. A *záró* értékét a `Microphone` metrika rögzíti az idő, amikor az ügyfélalkalmazás leállt, a szolgáltatás az audio streamelési után kapott a `speech.endDetected` üzenet a szolgáltatásból.
+* Az ügyfélalkalmazás olyan kulcsszó-megfigyelőt használ, amely "mindig" figyel. Csak azt követően, hogy a felderítő kifejezés észlelt egy szóbeli triggert, az ügyfélalkalmazás begyűjti a bemenetet a mikrofonból, és elküldi a Speech Service-nek. A `Microphone` metrika indítási értéke azt az időpontot adja meg, amikor a felderítő kulcsszó értesíti az ügyfelet, hogy elkezdi használni a bemenetet a mikrofonból. A `Microphone` metrika záró értéke azt az időpontot rögzíti, amikor az ügyfélalkalmazás leállította a hangot a szolgáltatásnak, `speech.endDetected` miután megkapta az üzenetet a szolgáltatástól.
 
-* Egy ügyfélalkalmazás hozzáféréssel rendelkezik az állandó hang adatfolyamba és a csend/speech észlelési hajt végre az adott hang stream egy *speech feltételészlelési modul*. A *Start* értékét a `Microphone` metrika a idejét rögzíti, amikor a *speech feltételészlelési modul* az audio-adatfolyamot bemeneti használatához az ügyfél értesítést kap. A *záró* értékét a `Microphone` metrika rögzíti az idő, amikor az ügyfélalkalmazás leállt, a szolgáltatás az audio streamelési után kapott a `speech.endDetected` üzenet a szolgáltatásból.
+* Az ügyfélalkalmazás egy állandó hangadatfolyamhoz fér hozzá, és a *beszédfelismerési modulban*az adott hangadatfolyamon a csend/beszéd észlelését hajtja végre. A `Microphone` metrika indítási értéke azt az időpontot adja meg, amikor a *beszédfelismerési modul* értesítette az ügyfelet, hogy kezdjen el bemenetet használni az audio streamből. A `Microphone` metrika záró értéke azt az időpontot rögzíti, amikor az ügyfélalkalmazás leállította a hangot a szolgáltatásnak, `speech.endDetected` miután megkapta az üzenetet a szolgáltatástól.
 
-* Egy ügyfélalkalmazás a második kapcsolja több kapcsolja kérés feldolgozása folyamatban van, és a egy szolgáltatás válaszüzenetet, kapcsolja be a második kapcsolja a bemeneti gyűjtéséhez a mikrofon arról tájékoztatja. A *Start* értékét a `Microphone` metrika rögzíti az idő, amikor az ügyfélalkalmazás lehetővé teszi, hogy a mikrofon, és elkezdte használni a bemeneti audio adatforrásból. A *záró* értékét a `Microphone` metrika rögzíti az idő, amikor az ügyfélalkalmazás leállt, a szolgáltatás az audio streamelési után kapott a `speech.endDetected` üzenet a szolgáltatásból.
+* Egy ügyfélalkalmazás dolgozza fel a többfordulatos kérelmek második bekapcsolását, és egy szolgáltatás válaszüzenete értesíti a mikrofont a második turn bemenetének bekapcsolásához. A `Microphone` metrika indítási értéke rögzíti azt az időpontot, amikor az ügyfélalkalmazás engedélyezi a mikrofont, és megkezdi az adott Hangforrásból érkező bemenet használatát. A `Microphone` metrika záró értéke azt az időpontot rögzíti, amikor az ügyfélalkalmazás leállította a hangot a szolgáltatásnak, `speech.endDetected` miután megkapta az üzenetet a szolgáltatástól.
 
-A *záró* idő értékét a `Microphone` metrika rögzíti az idő, amikor az ügyfélalkalmazás hangbemenet streamelési leállt-e. A legtöbb esetben ez az esemény akkor fordul elő, röviddel utána a kapott az ügyfél a `speech.endDetected` üzenet a szolgáltatásból. Ügyfélalkalmazások előfordulhat, hogy ellenőrizze, hogy azok még megfelelően felelnek meg a protokoll biztosításával, hogy a *záró* idő értékét a `Microphone` metrika később, mint a nyugta idő értéke akkor fordul elő a `speech.endDetected` üzenet. És a egy kapcsolja vége és a egy másik kapcsolja kezdetét késleltetés általában van, mert az ügyfelek ellenőrzik előfordulhat, hogy protokoll irányítópultja, biztosítva, hogy a *Start* idejével a `Microphone` bármely ezt követő kapcsolja be a metrika megfelelően a idejét rögzíti, amikor az ügyfél *lépések* a mikrofon hang bemeneti stream a szolgáltatás használatával.
+A `Microphone` metrika záró időértéke azt az időpontot rögzíti, amikor az ügyfélalkalmazás leállította a hangbemenetet. A legtöbb esetben ez az esemény röviddel azután fordul elő, hogy az ügyfél `speech.endDetected` megkapta az üzenetet a szolgáltatástól. Az ügyfélalkalmazások ellenőrizhetik, hogy megfelelően megfelelnek-e a protokollnak azáltal, hogy a `Microphone` metrika *befejezési* időértéke későbbi, mint az `speech.endDetected` üzenet bevételezési ideje. És mivel általában az egyik fordulat vége és egy másik sor kezdete között késés van, az ügyfelek ellenőrizhetik a protokollok megfelelőségét annak biztosításával, hogy a `Microphone` metrika *kezdési* időpontja minden későbbi alkalommal helyesen rögzítse azt az időpontot, amikor a az ügyfél a mikrofon használatával *megkezdte* a hangbemenet továbbítását a szolgáltatásba.
 
 | Mező | Leírás | Használat |
 | ----- | ----------- | ----- |
 | Name (Név) | Mikrofon | Szükséges |
-| Indítás | Az idő, amikor az ügyfél a mikrofon vagy más hang stream hangbemenet első lépéseiben vagy eseményindító kapott a kulcsszó spotter | Szükséges |
-| Vége | Az idő, amikor az ügyfél leállt, a mikrofon- vagy audióanyagot stream használatára | Szükséges |
-| Hiba | A következő hiba történt, ha van ilyen leírása. A mikrofon műveletek sikeres volt, ha az ügyfelek kell hagyja ki ezt a mezőt. Ez a mező hossza legfeljebb 50 karakter hosszú lehet. | Hiba történt az esetekben nincs egyéb megadva szükséges |
+| Start | Az az idő, amikor az ügyfél megkezdte a hangbemenet használatát a mikrofonból vagy más hangadatfolyamból, vagy triggert kapott a kulcsszó-felderítőből | Szükséges |
+| vége | Az az idő, amikor az ügyfél leállt a mikrofon vagy a hangadatfolyam használatával | Szükséges |
+| Hiba | Az észlelt hiba leírása, ha van ilyen. Ha a mikrofon műveletei sikeresek voltak, az ügyfeleknek ki kell hagyniuk ezt a mezőt. A mező maximális hossza 50 karakter. | A hibák esetében szükséges, ellenkező esetben kihagyva |
 
-### <a name="metric-listeningtrigger"></a>A metrika `ListeningTrigger`
-A `ListeningTrigger` metrika méri az idő, amikor a felhasználó hajt végre a műveletet, amely a bemeneti kezdeményezi. A `ListeningTrigger` metrika nem kötelező, de az ügyfelek által biztosított Ez a mérőszám a kivezetésre ehhez.
+### <a name="metric-listeningtrigger"></a>Metrika`ListeningTrigger`
+A `ListeningTrigger` metrika azt az időpontot méri, amikor a felhasználó végrehajtja a beszédfelismerési bemenetet kezdeményező műveletet. A `ListeningTrigger` metrika nem kötelező, de a mérőszámot megadható ügyfelek számára ajánlott.
 
-Használja az alábbi példák útmutatóul a rögzítés *Start* és *záró* idő értékei a `ListeningTrigger` metrika az ügyfélalkalmazásban.
+Az alábbi példák útmutatásul szolgálnak a `ListeningTrigger` metrika *indítási* és *befejezési* időértékeinek rögzítéséhez az ügyfélalkalmazás számára.
 
-* Egy ügyfélalkalmazás megköveteli, hogy egy felhasználó kell nyomnia a fizikai gombra kattintva indítsa el a mikrofon. A *Start* érték, ez a mérőszám a gomb leküldéses rögzíti. A *záró* érték a gomb leküldéses végeztével rögzíti.
+* Az ügyfélalkalmazás megköveteli, hogy a felhasználónak egy fizikai gombot kell megnyomnia a mikrofon elindításához. A metrika *indítási* értéke a gomb leküldésének időpontját rögzíti. A *befejezési* érték a gomb lenyomásának időpontját rögzíti.
 
-* Egy ügyfélalkalmazás egy kulcsszót spotter, amely a "mindig" figyel. A kulcsszó után spotter észleli a kimondott eseményindító kifejezést, az ügyfélalkalmazás a bemeneti olvas be a mikrofon, és elküldi beszédszolgáltatás. A *Start* a hang, a trigger kifejezést, majd észlelt a kulcsszó spotter érkezésekor idejét rögzíti, ez a mérőszám értéke. A *záró* érték rögzíti az idő, amikor az utolsó szót az eseményindító kifejezés volt beszélt, a felhasználó által.
+* Az ügyfélalkalmazás olyan kulcsszó-megfigyelőt használ, amely "mindig" figyel. Miután a "felderítő" kulcsszó észleli a kimondott trigger kifejezését, az ügyfélalkalmazás beolvassa a bemenetet a mikrofonból, és elküldi azt a Speech Service-nek. A metrika *kezdő* értéke azt az időpontot adja meg, amikor a "felderítő" kulcsszót a rendszer az trigger kifejezésként észlelt hangként kapott. A *záró* érték azt az időpontot rögzíti, amikor a felhasználó elmondta az trigger kifejezés utolsó szavát.
 
-* Egy ügyfélalkalmazás hozzáféréssel rendelkezik az állandó hang adatfolyamba és a csend/speech észlelési hajt végre az adott hang stream egy *speech feltételészlelési modul*. A *Start* a idejét rögzíti, ez a mérőszám értéke, amely a *speech feltételészlelési modul* hang, majd észlelt nevén speech kapott. A *záró* érték a idejét rögzíti, amikor a *speech feltételészlelési modul* speech észlelt.
+* Az ügyfélalkalmazás egy állandó hangadatfolyamhoz fér hozzá, és a *beszédfelismerési modulban*az adott hangadatfolyamon a csend/beszéd észlelését hajtja végre. A metrika *indítási* értéke rögzíti azt az időpontot, ameddig a *beszédfelismerési modul* olyan hangot kapott, amelyet a rendszer beszédként észlelt. A *záró* érték azt az időpontot rögzíti, amikor a *beszédfelismerési modul* beszédet észlelt.
 
-* Egy ügyfélalkalmazás a második kapcsolja több kapcsolja kérés feldolgozása folyamatban van, és a egy szolgáltatás válaszüzenetet, kapcsolja be a második kapcsolja a bemeneti gyűjtéséhez a mikrofon arról tájékoztatja. Az ügyfélalkalmazás kell *nem* tartalmaznak egy `ListeningTrigger` ez kapcsolja be a metrika.
+* Egy ügyfélalkalmazás dolgozza fel a többfordulatos kérelmek második bekapcsolását, és egy szolgáltatás válaszüzenete értesíti a mikrofont a második turn bemenetének bekapcsolásához. Az ügyfélalkalmazás *nem* tartalmazhat `ListeningTrigger` metrikát ehhez a bekapcsoláshoz.
 
 | Mező | Leírás | Használat |
 | ----- | ----------- | ----- |
-| Name (Név) | ListeningTrigger | Optional |
-| Indítás | Az idő, amikor az ügyfél figyel-e eseményindító elindítása | Szükséges |
-| Vége | Az idő, amikor az ügyfél figyel-e eseményindító befejeződött | Szükséges |
-| Hiba | A következő hiba történt, ha van ilyen leírása. Ha a trigger művelet sikeres volt, az ügyfelek kell hagyja ki ezt a mezőt. Ez a mező hossza legfeljebb 50 karakter hosszú lehet. | Hiba történt az esetekben nincs egyéb megadva szükséges |
+| Name (Név) | ListeningTrigger | Választható |
+| Start | Az az idő, amikor az ügyfél-figyelő trigger elindult | Szükséges |
+| vége | Az az idő, amikor az ügyfél figyelésének befejezése befejeződött | Szükséges |
+| Hiba | Az észlelt hiba leírása, ha van ilyen. Ha az aktiválási művelet sikeres volt, az ügyfeleknek ki kell hagyniuk ezt a mezőt. A mező maximális hossza 50 karakter. | A hibák esetében szükséges, ellenkező esetben kihagyva |
 
 #### <a name="sample-message"></a>Mintaüzenet
 
-Az alábbi minta ReceivedMessages és a metrikák kijelzőkkel telemetriai üzenetet jeleníti meg:
+Az alábbi minta egy telemetria üzenetet mutat be, amely a ReceivedMessages és a metrikák részeit is tartalmazza:
 
 ```HTML
 Path: telemetry
@@ -613,15 +613,15 @@ X-Timestamp: 2016-08-16T15:03:54.183Z
 
 ## <a name="error-handling"></a>Hibakezelés
 
-Ez a szakasz ismerteti a hibaüzenetek és a feltételeket, amelyek az alkalmazás kell kezelje típusú.
+Ez a szakasz azokat a hibaüzeneteket és feltételeket ismerteti, amelyeket az alkalmazásnak kezelnie kell.
 
 ### <a name="http-status-codes"></a>HTTP-állapotkódok
 
-A WebSocket-frissítési kérés során beszédszolgáltatás lehet visszaadni a szabványos HTTP-állapotkódok, mint például `400 Bad Request`stb. Az alkalmazásnak megfelelően kell kezelnie a hibaállapotok.
+A WebSocket frissítési kérelme során a beszédfelismerési szolgáltatás a szabványos HTTP-állapotkódok bármelyikét visszaküldheti `400 Bad Request`, például: stb. Az alkalmazásnak megfelelően kell kezelnie ezeket a hibákra vonatkozó feltételeket.
 
 #### <a name="authorization-errors"></a>Engedélyezési hibák
 
-Ha a nem megfelelő engedély a WebSocket frissítés során beszédszolgáltatás adja vissza egy olyan HTTP `403 Forbidden` állapotkódot. Erről a hibakódról is beindító eseményeket, többek között a következők:
+Ha a WebSocket frissítése során helytelen engedély van megadva, a Speech szolgáltatás http `403 Forbidden` -állapotkódot ad vissza. A hibakódot kiváltó feltételek közé a következők tartoznak:
 
 * Hiányzó *engedélyezési* fejléc
 
@@ -629,82 +629,82 @@ Ha a nem megfelelő engedély a WebSocket frissítés során beszédszolgáltat�
 
 * Lejárt engedélyezési jogkivonat
 
-A `403 Forbidden` hibaüzenet nem beszédszolgáltatás problémára utalhat. Ez a hibaüzenet azt jelzi, hogy az ügyfélalkalmazás probléma.
+A `403 Forbidden` hibaüzenet nem jelez problémát a beszédfelismerési szolgáltatással kapcsolatban. Ez a hibaüzenet az ügyfélalkalmazás problémáját jelzi.
 
-### <a name="protocol-violation-errors"></a>Protokollmegsértési hibák
+### <a name="protocol-violation-errors"></a>Protokollok megsértésével kapcsolatos hibák
 
-Beszédszolgáltatás kliensből protokoll szabálysértések észleli, ha a szolgáltatás leállítja a WebSocket kapcsolatot, miután egy *állapotkód* és *OK* befejezésére. Ügyfélalkalmazások ezek az információk segítségével elháríthatja és kijavíthatja a szabálysértések.
+Ha a beszédfelismerési szolgáltatás bármely protokoll megsértését észleli egy ügyfélről, a szolgáltatás leállítja a WebSocket-kapcsolat *állapotát* , miután visszatért egy állapotkódot, és a lezárás *oka* . Az ügyfélalkalmazások ezeket az információkat használhatják a szabálysértések elhárításához és javításához.
 
-#### <a name="incorrect-message-format"></a>Helytelen üzenet formátuma
+#### <a name="incorrect-message-format"></a>Helytelen formátumú üzenet
 
-Ha egy ügyfél egy szöveges vagy bináris üzenetet küld a szolgáltatásnak, hogy a megfelelő formátumban megadott Ez az meghatározás kódolása nem, a szolgáltatás lezárja a kapcsolatot egy *1007 érvénytelen hasznos adatok* állapotkódot.
+Ha az ügyfél szöveges vagy bináris üzenetet küld a szolgáltatásnak, amely nem az ebben a specifikációban megadott megfelelő formátumban van kódolva, a szolgáltatás lezárja a kapcsolódást egy *1007 érvénytelen adattartalom* -adatállapot-kóddal.
 
-A szolgáltatás ezzel az állapotkóddal különböző okok miatt, adja vissza, a következő példákban szemléltetett módon:
+A szolgáltatás számos okból visszaadja ezt az állapotkódot, ahogy az alábbi példákban is látható:
 
-* "Hibás üzenetek formátuma. Bináris üzenetnek érvénytelen fejléc mérete előtagot." Az ügyfél küldött bináris, amely egy érvénytelen fejléc mérete előtaggal rendelkezik.
+* "Helytelen az üzenet formátuma. A bináris üzenet fejlécének mérete érvénytelen. " Az ügyfél olyan bináris üzenetet küldött, amelyben érvénytelen a fejléc méretének előtagja.
 
-* "Hibás üzenetek formátuma. Üzenet bináris mérete4 fejléc érvénytelen." Az ügyfél küldött bináris, amely a megadott egy érvénytelen fejléc mérete.
+* "Helytelen az üzenet formátuma. A bináris üzenet fejlécének mérete érvénytelen. " Az ügyfél olyan bináris üzenetet küldött, amely érvénytelen fejléc-méretet adott meg.
 
-* "Hibás üzenetek formátuma. Bináris üzenetfejlécekben az UTF-8 dekódolás sikertelen." Az ügyfél egy bináris UTF-8 nem megfelelően kódolt fejlécek tartalmazó üzenetet küldött.
+* "Helytelen az üzenet formátuma. A bináris üzenetek fejlécének kódolása UTF-8-ra meghiúsult. " Az ügyfél olyan bináris üzenetet küldött, amely az UTF-8-ban helytelenül kódolt fejléceket tartalmaz.
 
-* "Hibás üzenetek formátuma. Szöveges üzenet nem tartalmaz adatot." Az ügyfél küldött szöveges üzenetet, amely nem tartalmaz törzs adatokat.
+* "Helytelen az üzenet formátuma. A szöveges üzenet nem tartalmaz adatelemet. " Az ügyfél olyan szöveges üzenetet küldött, amely nem tartalmaz szövegtörzset.
 
-* "Hibás üzenetek formátuma. Szöveges üzenet az UTF-8 dekódolás sikertelen." Az ügyfél, amely nem megfelelően kódolt szöveges üzenetet küldi az UTF-8.
+* "Helytelen az üzenet formátuma. A szöveges üzenet dekódolása UTF-8-ra meghiúsult. " Az ügyfél olyan szöveges üzenetet küldött, amely nem volt megfelelően kódolva UTF-8-ban.
 
-* "Hibás üzenetek formátuma. Szöveges üzenet tartalmazza nincs fejléc-elválasztó." Az ügyfél küldött szöveges üzenetet, amely nem tartalmazó fejléc elválasztó, vagy használja a helytelen fejléc-elválasztó.
+* "Helytelen az üzenet formátuma. A szöveges üzenet nem tartalmaz fejléc-elválasztó karaktert. " Az ügyfél olyan szöveges üzenetet küldött, amely nem tartalmaz fejléc-elválasztó karaktert, vagy nem használta a helytelen fejléc-elválasztó karaktert.
 
-#### <a name="missing-or-empty-headers"></a>Hiányzik vagy üres fejlécek
+#### <a name="missing-or-empty-headers"></a>Hiányzó vagy üres fejlécek
 
-Ha egy ügyfél küld egy üzenet, amely nem rendelkezik a szükséges fejlécek *X-RequestId:* vagy *elérési*, a szolgáltatás lezárja a kapcsolatot egy *1002 protokollhiba* állapotkódot. Az üzenet "fejléc hiányzik vagy üres. Fejléc a(z) {name}.
+Ha az ügyfél olyan üzenetet küld, amely nem rendelkezik a szükséges fejlécek *X-kérelemazonosító* vagy *elérési úttal*, a szolgáltatás *1002 protokollhiba miatt* bezárja a kapcsolatát. Az üzenet "hiányzik/üres" fejléc. {Fejléc neve}. "
 
-#### <a name="requestid-values"></a>Kérelemazonosító: értékek
+#### <a name="requestid-values"></a>Kérelemazonosító-értékek
 
-Ha egy ügyfél üzenetet küld, amely meghatározza egy *X-RequestId:* fejléc formátuma nem megfelelő, a szolgáltatás megszünteti a kapcsolatot, és adja vissza egy *1002 protokollhiba* állapotát. Az üzenet az "érvénytelen kérés. X-RequestId: fejléc értéke nincs megadva a no-dash UUID formátumban."
+Ha az ügyfél olyan üzenetet küld, amely helytelen formátumú *X-kérelemazonosító* fejlécet ad meg, a szolgáltatás bezárja a kapcsolatokat, és *1002 protokollhiba* állapotot ad vissza. Az üzenet "érvénytelen kérés. Az X-kérelemazonosító fejléc értéke nem kötőjeles UUID formátumban lett megadva. "
 
-#### <a name="audio-encoding-errors"></a>Hang kódolási hibák
+#### <a name="audio-encoding-errors"></a>Audió kódolási hibák
 
-Ha egy ügyfél küld egy hang adatrészlet hangformátum és a egy kapcsolja kezdeményezi, vagy a kódolás nem felelnek meg a kötelező specifikációnak, a szolgáltatás megszünteti a kapcsolatot, és adja vissza egy *1007 érvénytelen hasznos adatok* állapotkódot. Az üzenet azt jelzi, hogy a hiba a forrás kódolási formátum.
+Ha az ügyfél olyan hangrészletet küld, amely egy bekapcsolást kezdeményez, és a hangformátum vagy a kódolás nem felel meg a kötelező specifikációnak, a szolgáltatás bezárja a kapcsolódást, és egy *1007 érvénytelen adattartalom* -állapotkódot ad vissza. Az üzenet a kódolási hiba forrásának formátumát jelzi.
 
-#### <a name="requestid-reuse"></a>Kérelemazonosító: % újrafelhasználása
+#### <a name="requestid-reuse"></a>Kérelemazonosító újrafelhasználása
 
-Miután egy bekapcsolása befejeződik, ha egy ügyfél elküld egy üzenet, amely újból felhasználja az, hogy kapcsolja be a kérés azonosítóját, a szolgáltatás lezárja a kapcsolatot, és adja vissza egy *1002 protokollhiba* állapotkódot. Az üzenet az "érvénytelen kérés. Ismételt kérés azonosítók nem engedélyezett."
+Ha egy bekapcsolás után az ügyfél olyan üzenetet küld, amely a kérés azonosítóját újrahasználja, a szolgáltatás bezárja a kapcsolatát, és egy *1002 protokollhiba* -állapotkódot ad vissza. Az üzenet "érvénytelen kérés. A kérés-azonosítók újrafelhasználása nem engedélyezett. "
 
-## <a name="connection-failure-telemetry"></a>Kapcsolódási hibák telemetriai adatainak
+## <a name="connection-failure-telemetry"></a>Sikertelen telemetria
 
-A legjobb lehetséges felhasználói élmény biztosítása érdekében az ügyfelek tájékoztatnia kell az időbélyegek egy adott kapcsolattal fontos ellenőrzőpontokat a Speech Service használatával a *telemetriai* üzenet. Ugyanilyen fontos, hogy az ügyfelek tájékoztatja a szolgáltatást a kapcsolatok is próbált, de nem sikerült.
+A lehető legjobb felhasználói élmény biztosítása érdekében az ügyfeleknek tájékoztatnia kell a Speech Service-t a kapcsolatok fontos ellenőrzőpontokról a *telemetria* üzenet használatával. Ugyanilyen fontos, hogy az ügyfelek tájékoztassák a megkísérelt kapcsolódási szolgáltatásokat, de nem sikerült.
 
-Minden kapcsolódási kísérlet sikertelen, az ügyfelek számára hozzon létre egy *telemetriai* üzenet egyedi *X-RequestId:* fejléc értéke. Az ügyfél nem tudott kapcsolatot, mert a *ReceivedMessages* JSON-törzse a mező nem hagyható. Csak a `Connection` bejegyzést a *metrikák* mező részét képezi. Ez a bejegyzés tartalmazza a kezdő és záró időbélyegeket, valamint a hibajelzést kiváltó körülmény történt.
+Minden sikertelen kapcsolódási kísérlet esetén az ügyfelek egyedi *X-kérelemazonosító fejléc-* értékkel hoznak létre egy *telemetria* üzenetet. Mivel az ügyfél nem tudott kapcsolatot létesíteni, a JSON-törzsben lévő *ReceivedMessages* mező kihagyható. Csak a `Connection` *metrikák* mezőben szereplő bejegyzés szerepel. Ez a bejegyzés tartalmazza a kezdő és a záró időbélyeget, valamint az észlelt hiba feltételét.
 
-### <a name="connection-retries-in-telemetry"></a>Kapcsolat létrehozásával a telemetriában
+### <a name="connection-retries-in-telemetry"></a>Kapcsolódási kísérletek a telemetria-ben
 
-Az ügyfelek különbséget kell tenni *újrapróbálkozások* a *több kapcsolódási kísérletek* által a csatlakozási kísérlet kiváltó eseményt. Csatlakozási kísérletek végeznek programozott módon bármely felhasználói beavatkozás nélkül újrapróbálkozások. Több kapcsolódási kísérletek, amely a felhasználói adatbevitelre válasz hajtsák végre több kapcsolódási kísérletek. Az ügyfelek adjon az egyes felhasználói indított csatlakozási kísérletek egy egyedi *X-RequestId:* és *telemetriai* üzenet. Az ügyfelek újból felhasználhatja a *X-RequestId:* programozott újrapróbálkozások. Ha több próbálkozás történtek az egyetlen kapcsolódási kísérlet, minden egyes újrapróbálkozási kísérlet alkalmazás része egy `Connection` bejegyzést a *telemetriai* üzenet.
+Az ügyfeleknek meg kell különböztetniük az *újrapróbálkozásokat* *több kapcsolódási kísérlettől* a kapcsolódási kísérletet kiváltó eseménytől. A programozott módon végrehajtott kapcsolódási kísérletek felhasználói bevitel nélkül újrapróbálkoznak. A felhasználói bevitelre adott válaszként végrehajtott több kapcsolódási kísérlet több kapcsolódási kísérletet tesz elérhetővé. Az ügyfelek egyedi *X-kérelemazonosító* és *telemetria* -üzenetet adnak az egyes felhasználók által aktivált kapcsolatok számára. Az ügyfelek újrahasznosítják az *X-kérelemazonosító* a programozott újrapróbálkozásokhoz. Ha egyetlen kapcsolódási kísérlethez több újrapróbálkozás is megtörtént, a rendszer minden újrapróbálkozási kísérletet belefoglal `Connection` a *telemetria* üzenetbe.
 
-Tegyük fel például, egy felhasználó beszél a kulcsszó trigger kapcsolat elindításához és az első kapcsolódási kísérletre DNS-hibák miatt meghiúsul. Azonban, hogy programozott módon történik az ügyfél által próbálkozik sikeres lesz. Mivel az ügyfél a kapcsolat további, felhasználói beavatkozást nem igénylő újra próbálkozik, az ügyfél használja-e egyetlen *telemetriai* több üzenet `Connection` írja le a kapcsolati bejegyzések.
+Tegyük fel például, hogy egy felhasználó a kulcsszó triggert adja meg egy kapcsolat indításához, és az első kapcsolódási kísérlet DNS-hibák miatt meghiúsul. Az ügyfél által programozott módon végrehajtott második kísérlet azonban sikeres lesz. Mivel az ügyfél újrapróbálkozott a kapcsolódással anélkül, hogy további adatokat kellene megadnia a felhasználótól, az ügyfél `Connection` egyetlen, több bejegyzést tartalmazó *telemetria* üzenetet használ a kapcsolatok leírásához.
 
-Másik példaként tegyük fel, hogy egy felhasználó beszél a kulcsszó trigger kapcsolat elindításához és a csatlakozási kísérlet meghiúsul három próbálkozás után. Az ügyfél ezután biztosít, megpróbál kapcsolódni a szolgáltatás leáll, és tájékoztatja a felhasználót, hogy probléma merült fel. A felhasználó ezután beszél a kulcsszó eseményindító újra. Ennek során tegyük fel, hogy az ügyfél csatlakozik a szolgáltatáshoz. Miután csatlakozott, az ügyfél azonnal elküldi egy *telemetriai* az üzenethez, és a szolgáltatás, amely tartalmazza a három `Connection` bejegyzéseket, amelyek ismertetik a kapcsolati hibák. Fogadás után a `turn.end` üzenetet, az ügyfél elküld egy másik *telemetriai* a sikeres kapcsolat leíró üzenetet.
+Egy másik Példaként tegyük fel, hogy egy felhasználó a kulcsszó triggert a kapcsolat elindításához, és a kapcsolódási kísérlet három újrapróbálkozás után meghiúsul. Az ügyfél ezután megszakítja a kapcsolódást a szolgáltatáshoz, és tájékoztatja a felhasználót, hogy hiba történt. A felhasználó ezután újra megbeszéli a kulcsszó-triggert. Ezúttal tegyük fel, hogy az ügyfél csatlakozik a szolgáltatáshoz. A csatlakozás után az ügyfél azonnal *telemetria* üzenetet küld a szolgáltatásnak, amely a kapcsolódási hibákat leíró három `Connection` bejegyzést tartalmaz. Az `turn.end` üzenet fogadása után az ügyfél egy másik *telemetria* üzenetet küld, amely leírja a sikeres kapcsolatokat.
 
-## <a name="error-message-reference"></a>Hibaüzenet-dokumentáció
+## <a name="error-message-reference"></a>Hibaüzenet-hivatkozás
 
 ### <a name="http-status-codes"></a>HTTP-állapotkódok
 
 | HTTP-állapotkód | Leírás | Hibaelhárítás |
 | - | - | - |
-| 400 Hibás kérés | Az ügyfél, amely helytelen volt WebSocket kapcsolaton kérést küldött. | Ellenőrizze, hogy a szükséges paramétereket és a HTTP-fejlécek adott-e meg, és, hogy helyesek-e az értékeket. |
-| 401-es nem engedélyezett | Az ügyfél nem tartalmazza a szükséges engedélyezési információkat. | Ellenőrizze, hogy küld a *engedélyezési* fejléc a WebSocket kapcsolaton. |
-| 403 Tiltott | Az ügyfél engedélyezési adatokat küldött, de érvénytelen volt. | Ellenőrizze, hogy nem küld egy lejárt vagy érvénytelen érték a *engedélyezési* fejléc. |
-| 404 – Nem található | Az ügyfél egy nem támogatott URL-cím elérési út elérésére történt kísérlet. | Ellenőrizze, hogy a helyes URL-címet használ a WebSocket-kapcsolat. |
-| 500 kiszolgáló hiba | A szolgáltatás belső hibába ütközött, és nem sikerült teljesíteni a kérést. | A legtöbb esetben ez a hiba nem átmeneti. Ismételje meg a kérelmet. |
-| 503 A szolgáltatás nem érhető el | A szolgáltatás nem érhető el kezelni a kérést. | A legtöbb esetben ez a hiba nem átmeneti. Ismételje meg a kérelmet. |
+| 400 hibás kérelem | Az ügyfél nem megfelelő WebSocket-kapcsolati kérelmet küld. | Győződjön meg arról, hogy az összes szükséges paramétert és HTTP-fejlécet adta meg, és hogy az értékek helyesek. |
+| 401 jogosulatlan | Az ügyfél nem tartalmazta a szükséges hitelesítési adatokat. | Győződjön meg arról, hogy az *engedélyezési* fejlécet a WebSocket-kapcsolaton keresztül küldi el. |
+| 403 Tiltott | Az ügyfél elküldötte az engedélyezési adatokat, de érvénytelen volt. | Győződjön meg arról, hogy nem küld lejárt vagy érvénytelen értéket az *engedélyezési* fejlécben. |
+| 404 – Nem található | Az ügyfél megpróbált elérni egy nem támogatott URL-elérési utat. | Győződjön meg arról, hogy a megfelelő URL-címet használja a WebSocket-kapcsolathoz. |
+| 500 kiszolgálóhiba | A szolgáltatás belső hibát észlelt, és nem tudja kielégíteni a kérelmet. | A legtöbb esetben ez a hiba átmeneti. Próbálja megismételni a kérelmet. |
+| 503 A szolgáltatás nem érhető el | A szolgáltatás nem volt elérhető a kérelem kezelésére. | A legtöbb esetben ez a hiba átmeneti. Próbálja megismételni a kérelmet. |
 
 ### <a name="websocket-error-codes"></a>WebSocket-hibakódok
 
-| WebSocketsStatus kódot | Leírás | Hibaelhárítás |
+| WebSocketsStatus-kód | Leírás | Hibaelhárítás |
 | - | - | - |
-| 1000 normál megszüntetésre | A szolgáltatás hiba nélkül a WebSocket-kapcsolat zárva. | Ha a WebSocket megszüntetés nem várt, újraolvasásához megértse, hogyan és mikor a szolgáltatás leállíthatja a WebSocket-kapcsolatot a dokumentációban. |
-| 1002 protokollhiba történt | Az ügyfél nem tudott protokoll előírásokat. | Győződjön meg arról, hogy ismerje a protokoll dokumentációját, és egyértelmű követelményeivel kapcsolatos. Olvassa el a hiba lehetséges okai tekintse meg, ha van-e megsértése protokolljának követelményei előző dokumentációjában az. |
-| 1007 érvénytelen hasznos adatok | Az ügyfél egy protokoll üzenetben küldött adatok érvénytelenek. | Ellenőrizze az utolsó üzenet a hibákat a szolgáltatásba küldött. Olvassa el a terhelési hibák előző dokumentációjában az. |
-| 1011 kiszolgálóhiba | A szolgáltatás belső hibába ütközött, és nem sikerült teljesíteni a kérést. | A legtöbb esetben ez a hiba nem átmeneti. Ismételje meg a kérelmet. |
+| 1000 normál lezárás | A szolgáltatás hiba nélkül lezárta a WebSocket-kapcsolatát. | Ha a WebSocket bezárása váratlan volt, olvassa el újra a dokumentációt, és győződjön meg arról, hogy a szolgáltatás hogyan és mikor vonhatja le a WebSocket-kapcsolatokat. |
+| 1002 protokollhiba | Az ügyfél nem tudta betartani a protokollok követelményeit. | Győződjön meg arról, hogy megértette a protokoll dokumentációját, és egyértelművé teszi a követelményeket. A hibák okairól a korábbi dokumentációban tájékozódhat, ha megsérti a protokollok követelményeit. |
+| 1007 érvénytelen adattartalom-adatok | Az ügyfél érvénytelen adattartalmat küldött egy protokoll-üzenetben. | A szolgáltatásnak küldött utolsó üzenetben keresse meg a hibákat. A hasznos adatokkal kapcsolatos hibákról a korábbi dokumentációban olvashat. |
+| 1011 kiszolgálóhiba | A szolgáltatás belső hibát észlelt, és nem tudja kielégíteni a kérelmet. | A legtöbb esetben ez a hiba átmeneti. Próbálja megismételni a kérelmet. |
 
 ## <a name="related-topics"></a>Kapcsolódó témakörök
 
-Tekintse meg a [JavaScript SDK](https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript) , amely a WebSocket-alapú beszédfelismerési szolgáltatás protokoll megvalósítását.
+Tekintse meg a WebSocket-alapú Speech Service protokoll megvalósítását szolgáló [JavaScript SDK](https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript) -t.

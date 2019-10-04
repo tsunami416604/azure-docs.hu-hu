@@ -1,0 +1,38 @@
+- name: Bastion-dokumentáció
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Az Azure Bastion ismertetése
+      href: bastion-overview.md
+- name: Útmutatók
+  items:
+    - name: Bastion-gazdagép létrehozása
+      href: bastion-create-host-portal.md
+    - name: Csatlakozás virtuális géphez
+      items:
+        - name: SSH (Linux)
+          href: bastion-connect-vm-ssh.md
+        - name: RDP (Windows)
+          href: bastion-connect-vm-rdp.md
+    - name: Virtuálisgép-alapú munkamenet használata
+      items:
+        - name: Másolás és beillesztés
+          href: bastion-vm-copy-paste.md
+        - name: Teljes képernyős nézet
+          href: bastion-vm-full-screen.md
+    - name: Hálózati biztonsági csoportok használata
+      href: bastion-nsg.md
+- name: További források
+  items:
+    - name: Bastion – GYIK
+      href: bastion-faq.md
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/?category=networking'
+    - name: Blog
+      href: 'https://azure.microsoft.com/blog/topics/networking'
+    - name: Fórum
+      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork'
+    - name: Előzetes verzió – SLA
+      href: 'https://azure.microsoft.com/support/legal/preview-supplemental-terms'
+    - name: SLA
+      href: 'https://azure.microsoft.com/support/legal/sla'

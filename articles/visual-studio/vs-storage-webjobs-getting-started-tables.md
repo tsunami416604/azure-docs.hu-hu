@@ -1,9 +1,9 @@
 ---
-title: Ismerkedés az Azure storage és a Visual Studio csatlakoztatott szolgáltatásainak (webjobs-feladat projektek)
-description: Ismerkedés az Azure Table storage használata az Azure WebJobs-projektben a Visual Studióban egy tárfiókot, a Visual Studio használatával való csatlakozást követően kapcsolódó szolgáltatások
+title: Első lépések az Azure Storage és a Visual Studio csatlakoztatott szolgáltatásaival (Webjobs-projektek)
+description: Az Azure Table Storage használatának első lépései egy Azure WebJobs-projektben a Visual Studióban, miután kapcsolódott egy Storage-fiókhoz a Visual Studio Connected Services használatával
 services: storage
 author: ghogen
-manager: douge
+manager: jillfra
 ms.assetid: 061a6c46-0592-4e5d-aced-ab7498481cde
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
@@ -12,27 +12,27 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: a9a4475465fefb01ec53e6e0eb814f9b8f192a1b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: 8875f680c8bb83c2375d6fe767f376cbb35d5a0a
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59799326"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69510663"
 ---
-# <a name="getting-started-with-azure-storage-azure-webjob-projects"></a>Ismerkedés az Azure Storage (az Azure webjobs-feladat projektek)
+# <a name="getting-started-with-azure-storage-azure-webjob-projects"></a>Első lépések Azure Storage-ban (Azure Webjobs-projektek)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
 
 ## <a name="overview"></a>Áttekintés
-Ez a cikk a C#-mintakódot biztosít, amelyek bemutatják az Azure WebJobs SDK-verzió használatához az Azure table storage szolgáltatással 1.x. A Kódminták használja a [WebJobs SDK-val](https://github.com/Azure/azure-webjobs-sdk/wiki) verzió 1.x.
+Ez a cikk C# a Azure WebJobs SDK 1. x verziójának az Azure Table Storage szolgáltatással való használatát bemutató példákat tartalmaz. A kód minták a [Webjobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) 1. x verzióját használják.
 
-Az Azure Table storage szolgáltatás lehetővé teszi nagy mennyiségű strukturált adat tárolására. A szolgáltatás egy NoSQL-adattár, amely elfogadja az érkező hitelesített hívásokat belül és kívül az Azure-felhőben. Az Azure-táblák strukturált, nem relációs adatok tárolására alkalmasak.  Lásd: [.NET használatával az Azure Table storage használatának első lépései](../cosmos-db/tutorial-develop-table-dotnet.md#create-a-table) további információt.
+Az Azure Table Storage szolgáltatás lehetővé teszi nagy mennyiségű strukturált adattárolás tárolását. A szolgáltatás egy NoSQL-adattár, amely az Azure-felhőn belüli és kívüli hitelesített hívásokat fogadja el. Az Azure-táblák strukturált, nem relációs adatok tárolására alkalmasak.  További információkért lásd: az [Azure Table Storage használatának első lépései a .NET használatával](../cosmos-db/tutorial-develop-table-dotnet.md#create-a-table) .
 
-A kód a kódrészletek megjelenítése némelyike a **tábla** függvények, melynek neve manuálisan, vagyis nem használatával az eseményindító-attribútumok közül a használt attribútum.
+A kódrészletek némelyike a manuálisan létrehozott függvények **táblázatban** szereplő attribútumot jeleníti meg, azaz nem az egyik trigger attribútum használatával.
 
-## <a name="how-to-add-entities-to-a-table"></a>Entitások hozzáadása a táblához
-Entitások hozzáadása táblázathoz, használja a **tábla** az attribútum egy **ICollector<T>**  vagy **IAsyncCollector<T>**  paraméter ahol **T** adja meg a hozzáadni kívánt entitásokat sémája. Az attribútum konstruktorának paramétereként egy karakterlánc-paramétert, amely meghatározza a tábla neve.
+## <a name="how-to-add-entities-to-a-table"></a>Entitások hozzáadása táblához
+Ha entitásokat szeretne felvenni egy táblába, használja a **Table** attribútumot egy **ICollector\<t >** vagy **IAsyncCollector\<t >** paraméterrel, ahol a **t** meghatározza a felvenni kívánt entitások sémáját. Az attribútum konstruktora egy olyan karakterlánc-paramétert hoz létre, amely megadja a tábla nevét.
 
-A következő példakód hozzáadja **személy** nevű tábla az entitások *bejövő*.
+A következő mintakód hozzáadja a **személy** entitásokat egy *bejövő*elemek nevű táblához.
 
         [NoAutomaticTrigger]
         public static void IngressDemo(
@@ -49,7 +49,7 @@ A következő példakód hozzáadja **személy** nevű tábla az entitások *bej
             }
         }
 
-Általában a típust használja **ICollector** származó **TableEntity** vagy valósít meg **ITableEntity**, azonban nem kell. A következők egyikét **személy** látható az előző kód a munkahelyi osztályokat **bejövő** metódust.
+A **ICollector** -ben használt típus általában **TableEntity** -ből származik, vagy a **ITableEntity**implementálja, de nem szükséges. A következő osztályok egyike az előző bemenő eljárásban látható kóddal működik együtt.
 
         public class Person : TableEntity
         {
@@ -63,25 +63,25 @@ A következő példakód hozzáadja **személy** nevű tábla az entitások *bej
             public string Name { get; set; }
         }
 
-Ha az ügyfelek közvetlenül az Azure storage API-t szeretne, hozzáadhat egy **CloudStorageAccount** paramétert a metódus aláírásához.
+Ha közvetlenül az Azure Storage API-val szeretne dolgozni, **CloudStorageAccount** paramétert adhat hozzá a metódus aláírásához.
 
 ## <a name="real-time-monitoring"></a>Valós idejű figyelés
-Bejövő forgalom adatfüggvény gyakran feldolgozásához nagy mennyiségű adatot, mert a WebJobs SDK-val irányítópult biztosít valós idejű monitorozási adatok. A **Hívásnapló** szakasz bemutatja, hogy a funkció továbbra is fut-e.
+Mivel a beáramlási funkciók gyakran nagy mennyiségű adat feldolgozását dolgozzák fel, a webjobs SDK-irányítópult valós idejű figyelési adatokkal szolgál. A **hívási napló** szakasz azt jelzi, hogy a függvény még fut-e.
 
-![Bejövő függvény](./media/vs-storage-webjobs-getting-started-tables/ingressrunning.png)
+![A bejövő forgalom funkció fut](./media/vs-storage-webjobs-getting-started-tables/ingressrunning.png)
 
-A **hívás részletei** lap (írt entitások száma). a függvény végrehajtási jelentések közben fut, és elveti azt lehetőséget biztosít.
+A **Meghívási részletek** lap jelentést készít a függvény előrehaladásáról (az írt entitások száma), miközben futtatja, és lehetőséget ad a megszakításra.
 
-![Bejövő függvény](./media/vs-storage-webjobs-getting-started-tables/ingressprogress.png)
+![A bejövő forgalom funkció fut](./media/vs-storage-webjobs-getting-started-tables/ingressprogress.png)
 
-A függvény befejeztével a **hívás részletei** lap írt sorok számát jelenti.
+A függvény befejeződése után a Meghívási **részletek** lap az írt sorok számát jelenti.
 
-![Bejövő függvény befejeződött](./media/vs-storage-webjobs-getting-started-tables/ingresssuccess.png)
+![A bejövő forgalom funkció befejeződött](./media/vs-storage-webjobs-getting-started-tables/ingresssuccess.png)
 
-## <a name="how-to-read-multiple-entities-from-a-table"></a>Egy tábla több entitás olvasása
-Olvassa el a táblát, használja a **tábla** az attribútum egy **IQueryable<T>**  paraméter ahol **T** származó **TableEntity**vagy valósít meg **ITableEntity**.
+## <a name="how-to-read-multiple-entities-from-a-table"></a>Több entitás beolvasása egy táblából
+Egy tábla olvasásához használja a **Table** attribútumot egy **IQueryable\<T >** paraméterrel, ahol a **t** típus a **TableEntity** -ből származik, vagy **ITableEntity**valósít meg.
 
-A következő mintakód beolvassa és naplózza az összes sort a **bejövő** tábla:
+A következő mintakód beolvassa és naplózza az összes sort a **bejövő** forgalom táblából:
 
         public static void ReadTable(
             [Table("Ingress")] IQueryable<Person> tableBinding,
@@ -95,10 +95,10 @@ A következő mintakód beolvassa és naplózza az összes sort a **bejövő** t
             }
         }
 
-### <a name="how-to-read-a-single-entity-from-a-table"></a>Egy tábla egyetlen entitás olvasása
-Van egy **tábla** két további paraméterek, amelyek segítségével megadhatja a partíciókulccsal és sorkulccsal, ha egyetlen tábla entitáshoz kötni kívánt, hogy az attribútumok konstruktorában.
+### <a name="how-to-read-a-single-entity-from-a-table"></a>Egyetlen entitás beolvasása egy táblából
+A **Table** Attribute konstruktor két további paraméterrel rendelkezik, amelyek lehetővé teszik a partíciós kulcs és a sor kulcs megadását, ha egyetlen tábla entitáshoz kíván kötni.
 
-A következő mintakód beolvassa egy tábla sort egy **személy** entitás alapján partíciós kulcs és a sor kulcs értékeit az üzenetsori üzenet érkezett:  
+A következő mintakód beolvas egy **személy** entitáshoz tartozó táblázat sort egy üzenetsor-üzenetben kapott partíciós kulcs és sor kulcs értéke alapján:  
 
         public static void ReadTableEntity(
             [QueueTrigger("inputqueue")] Person personInQueue,
@@ -118,12 +118,12 @@ A következő mintakód beolvassa egy tábla sort egy **személy** entitás alap
         }
 
 
-A **személy** ebben a példában az osztály nem rendelkezik megvalósításához **ITableEntity**.
+Ebben a példában a **person** osztálynak nem kell implementálnia a **ITableEntity**.
 
-## <a name="how-to-use-the-net-storage-api-directly-to-work-with-a-table"></a>Közvetlenül a tábla használata a Storage .NET API használata
-Is használhatja a **tábla** az attribútum egy **CloudTable** objektum a egy tábla használatát a nagyobb rugalmasság biztosítására.
+## <a name="how-to-use-the-net-storage-api-directly-to-work-with-a-table"></a>A .NET Storage API közvetlen használata egy táblázattal való együttműködéshez
+A **Table** attribútumot egy **CloudTable** objektummal is használhatja, hogy rugalmasabb legyen a tábla használata.
 
-A következő kódban minta egy **CloudTable** objektum az egyetlen entitás hozzáadása a *bejövő* tábla.
+A következő mintakód egy **CloudTable** objektumot használ, amely egyetlen entitást ad hozzá a *bejövő* táblákhoz.
 
         public static void UseStorageAPI(
             [Table("Ingress")] CloudTable tableBinding,
@@ -139,11 +139,11 @@ A következő kódban minta egy **CloudTable** objektum az egyetlen entitás hoz
             tableBinding.Execute(insertOperation);
         }
 
-Használatáról további információt a **CloudTable** objektumazonosító, lásd: [.NET használatával az Azure Table storage használatának első lépései](../storage/storage-dotnet-how-to-use-tables.md).
+További információ a **CloudTable** objektum használatáról: az [Azure Table Storage használatának első lépései a .NET használatával](../storage/storage-dotnet-how-to-use-tables.md).
 
-## <a name="related-topics-covered-by-the-queues-how-to-article"></a>Az üzenetsorok útmutató cikkben foglalt Kapcsolódó témakörök
-Egy üzenetsor által aktivált tábla feldolgozása kezelése kapcsolatos információkat, vagy a WebJobs SDK-val forgatókönyveket nem tábla feldolgozása, lásd: [Ismerkedés az Azure Queue storage és a Visual Studio csatlakoztatott szolgáltatásainak (webjobs-feladat projektek) ](../storage/vs-storage-webjobs-getting-started-queues.md).
+## <a name="related-topics-covered-by-the-queues-how-to-article"></a>A várólisták útmutató cikke által tárgyalt kapcsolódó témakörök
+További információ a várólista-üzenet által aktivált táblázatos feldolgozás kezeléséről, illetve a táblázatos feldolgozásra nem jellemző webjobs SDK-forgatókönyvekről: [Ismerkedés az Azure üzenetsor-tárolóval és a Visual Studio csatlakoztatott szolgáltatásaival (webjobs-projektek)](../storage/vs-storage-webjobs-getting-started-queues.md).
 
 ## <a name="next-steps"></a>További lépések
-Ebben a cikkben nyújtott kódmintákkal, amelyek bemutatják, hogyan kezelje az Azure-táblák használata gyakori forgatókönyvei. Azure WebJobs és WebJobs SDK használatával kapcsolatos további információkért lásd: [Azure WebJobs-dokumentáció erőforrások](https://go.microsoft.com/fwlink/?linkid=390226).
+Ez a cikk az Azure Tables használatának gyakori forgatókönyveit bemutató példákat tartalmaz. További információ a Azure WebJobs és a webjobs SDK használatáról: [Azure WebJobs dokumentációs erőforrások](https://go.microsoft.com/fwlink/?linkid=390226).
 

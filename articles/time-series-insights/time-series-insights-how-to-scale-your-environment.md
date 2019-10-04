@@ -1,64 +1,64 @@
 ---
-title: Az Azure Time Series Insights-környezet skálázása |} A Microsoft Docs
-description: Ez a cikk ismerteti, hogyan skálázható az Azure Time Series Insights-környezetet. Az Azure portal segítségével hozzáadhatók vagy kivonhatók díjszabási Termékváltozat kapacitásokat.
+title: A Azure Time Series Insights-környezet skálázása | Microsoft Docs
+description: Ez a cikk a Azure Time Series Insights környezetének méretezését ismerteti. Használja a Azure Portal a kapacitás hozzáadásához vagy kivonásához egy árképzési SKU-n belül.
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
-ms.reviewer: v-mamcge, jasonh, kfile, anshan
+ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 11/15/2017
+ms.date: 08/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: f6c2c8c49f34c707c7b0fb4d525337fbfa169a3e
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 13fa2b892013cf4a3fb96220c901030c6b0aee0b
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55692425"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129114"
 ---
-# <a name="how-to-scale-your-time-series-insights-environment"></a>A Time Series Insights-környezet méretezése
+# <a name="how-to-scale-your-time-series-insights-environment"></a>A Time Series Insights-környezet skálázása
 
-Ez a cikk bemutatja, hogyan módosíthatja a környezet kapacitása a Time Series Insights-környezet az Azure portal használatával. A kapacitása a alkalmazni a bejövő forgalom, a tárolási kapacitás és a kiválasztott Termékváltozat kapcsolódó költségek szorzó. 
+Ez a cikk azt ismerteti, hogyan változtathatja meg a környezete kapacitását Time Series Insights környezetében a Azure Portal használatával. A kapacitás a beáramlási sebességre, a tárolási kapacitásra és a kiválasztott SKU-ra vonatkozó díjakra érvényes szorzó.
 
-Az Azure portal használatával növelheti vagy csökkentheti a belül egy adott díjszabási Termékváltozat kapacitása. 
+A Azure Portal használatával növelheti vagy csökkentheti a kapacitást egy adott árképzési SKU-n belül.
 
-Azonban a tarifacsomag módosítása Termékváltozat nem engedélyezett. Például egy S1 Termékváltozat díjszabása környezet nem lehet konvertálni az S2 szintű, vagy fordítva. 
+Azonban a díjszabási csomag módosítása nem engedélyezett. Egy S1 árképzési SKU-val rendelkező környezet például nem konvertálható S2-re, vagy fordítva.
 
+## <a name="s1-sku-ingress-rates-and-capacities"></a>S1 SKU – bejövő forgalom aránya és kapacitása
 
-## <a name="s1-sku-ingress-rates-and-capacities"></a>S1 Termékváltozat telemetriabevitelt régiójának és kapacitás
-
-| S1 Termékváltozat kapacitása | Bejövő forgalom | Maximális tárolási kapacitás
+| S1 SKU kapacitása | Bejövő forgalom aránya | Maximális tárolókapacitás
 | --- | --- | --- |
-| 1 | 1 GB (1 millió esemény) | 30 GB (30 millió esemény) / hó |
-| 10 | 10 GB-os (10 millió esemény) | 300 GB (300 millió esemény) / hó |
+| 1 | 1 GB (1 000 000 esemény) | 30 GB (30 000 000 esemény) havonta |
+| 10 | 10 GB (10 000 000 esemény) | 300 GB (300 000 000 esemény)/hó |
 
-## <a name="s2-sku-ingress-rates-and-capacities"></a>S2 Termékváltozat telemetriabevitelt régiójának és kapacitás
+## <a name="s2-sku-ingress-rates-and-capacities"></a>S2 SKU – bejövő forgalom aránya és kapacitása
 
-| S2 Termékváltozat kapacitása | Bejövő forgalom | Maximális tárolási kapacitás
+| S2 SKU kapacitás | Bejövő forgalom aránya | Maximális tárolókapacitás
 | --- | --- | --- |
-| 1 | 10 GB-os (10 millió esemény) | 300 GB (300 millió esemény) / hó |
-| 10 | 100 GB (100 millió esemény) | 3 TB (3 milliárd eseményig) / hó |
+| 1 | 10 GB (10 000 000 esemény) | 300 GB (300 000 000 esemény)/hó |
+| 10 | 100 GB (100 000 000 esemény) | 3 TB (3 000 000 000 esemény) havonta |
 
-Kapacitások költségráfordításokkal egyenes arányban, méretezhető, így egy S1 Termékváltozat kapacitása 2 támogatja a 2 GB (2 millió) esemény napi bejövő forgalom és 60 GB (60 millió esemény) / hó.
+A kapacitások lineárisan méretezhetők, ezért a 2. kapacitású S1 SKU 2 GB-ot (2 000 000), napi beléptetési arányt és 60 GB-ot (60 000 000 eseményt) támogat.
 
-## <a name="change-the-capacity-of-your-environment"></a>A környezet a kapacitás módosításához
-1. Az Azure Portalon keresse meg és válassza ki a Time Series Insights-környezetet. 
+## <a name="change-the-capacity-of-your-environment"></a>A környezet kapacitásának módosítása
 
-2. A Time Series Insights-környezethez a menüben válassza ki a **konfigurálása**.
+1. A Azure Portalban keresse meg és válassza ki Time Series Insights-környezetét.
 
-   ![configure.png](media/scale-your-environment/configure.png)
+1. A Time Series Insights-környezet menüjében válassza a **Konfigurálás**lehetőséget.
 
-3. Módosítsa a **kapacitás** csúszkával válassza ki a kapacitás, amely megfelel a követelményeknek, a bejövő forgalom arányát és a tárolási kapacitást. Figyelje meg a **bejövő forgalom**, **tárolókapacitás**, és **becsült költség** dinamikusan frissülnek a megjelenítése, milyen hatású a változtatás. 
+   [![configure.png](media/scale-your-environment/configure.png)](media/scale-your-environment/configure.png#lightbox)
 
-   ![Csúszka](media/scale-your-environment/slider.png)
+1. Állítsa be a **kapacitás** csúszkát, és válassza ki azt a kapacitást, amely megfelel a bejövő és a tárolási kapacitás követelményeinek. Figyelje meg, hogy a **Bejövő forgalom sebessége**, a **tárolókapacitás**és a **becsült költségek** dinamikusan frissülnek a változás hatásának megjelenítéséhez.
 
-   A kapacitás szorzó száma beírhatja azt is megteheti, a csúszka jobbra a szövegmezőben. 
+   [![Csúszka](media/scale-your-environment/slider.png)](media/scale-your-environment/slider.png#lightbox)
 
-4. Válassza ki **mentése** a környezet méretezése. A folyamatjelző jelenik meg, amíg a módosítás véglegesítve lesz, rövid ideig. 
+   Másik lehetőségként beírhatja a kapacitás szorzójának számát a csúszka jobb oldalán található szövegmezőbe.
+
+1. A környezet méretezéséhez válassza a **Mentés** lehetőséget. A folyamatjelző addig jelenik meg, amíg a módosítás véglegesítése nem történik meg.
 
 ## <a name="next-steps"></a>További lépések
-> [!div class="nextstepaction"]
-> [Győződjön meg arról, hogy az új kapacitást elegendő szabályozás elkerülése érdekében](time-series-insights-diagnose-and-solve-problems.md).
+
+- Győződjön meg arról, hogy az új kapacitás [elegendő a szabályozás megakadályozásához](time-series-insights-diagnose-and-solve-problems.md).

@@ -8,21 +8,21 @@ ms.topic: include
 ms.date: 05/21/2018
 ms.author: estfan
 ms.custom: include file
-ms.openlocfilehash: 6e95d456c5eb981a29400057cfd58faa419060fc
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 4d9d0f132a2cc754cd9f69bb54ef4dbb78a2c493
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "34677916"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179384"
 ---
 1. Amikor a kapcsolati adatokat kér, adja meg ezeket az adatokat:
 
-   *Szükséges*
+   *Kötelező*
 
    | Tulajdonság | Érték | Leírás | 
    |----------|-------|-------------| 
    | Kapcsolat neve | <*kapcsolat neve*> | A neve, a kapcsolat létrehozása | 
-   | Tárfiók | <*Storage-fiók*> | A listáról válassza ki a tárfiókját. | 
+   | Tárfiók | <*storage-account*> | A listáról válassza ki a tárfiókját. | 
    ||| 
 
    Példa:

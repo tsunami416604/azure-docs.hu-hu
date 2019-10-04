@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 01/17/2019
 ms.author: bwren
 ms.openlocfilehash: 25d6b582ed4d4e24df3841f4191471296e25abd8
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54436332"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60519373"
 ---
 # <a name="writing-efficient-log-queries-in-azure-monitor"></a>Az Azure monitorban hatékony log-lekérdezések írása
 Ez a cikk az Azure monitorban hatékony log lekérdezések írására vonatkozó javaslatokat nyújt. Ezek a stratégiák használ, biztosíthatja, hogy gyorsan fog futni, a lekérdezések, illetve a minimális overheard.

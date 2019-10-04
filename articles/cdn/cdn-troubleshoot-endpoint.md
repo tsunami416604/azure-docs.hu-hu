@@ -7,19 +7,19 @@ author: zhangmanling
 manager: erikre
 editor: ''
 ms.assetid: b588a1eb-ab69-4fc7-ae4d-157c3e46f4a8
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 66ee211856bb451caad7af02103aa306d76e8f97
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: b665c2f72f50b2d72fd625b49c4212785ab3301d
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59799235"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593276"
 ---
 # <a name="troubleshooting-azure-cdn-endpoints-that-return-a-404-status-code"></a>404-es állapotkódot adja vissza az Azure CDN-végpontok hibaelhárítása
 Ez a cikk lehetővé teszi az Azure Content Delivery Network (CDN) végpontok, amelyek 404-es HTTP-állapotkódok vissza kapcsolatos hibaelhárítás.
@@ -97,7 +97,7 @@ Http-képzeletbeli példában térjen:\//www.contoso.com:8080/file.txt.  Felejts
 #### <a name="origin-host-header"></a>Forrás állomásfejléce
 A **forrás állomásfejléce** minden egyes kérelemmel a forrásnak küldött állomásfejléc-érték.  A legtöbb esetben ez legyen ugyanaz, mint a **forrás gazdaneve** azt korábban ellenőrizte.  Ebben a mezőben helytelen értéket általában nem okoznak a 404-es állapotot, de nagy eséllyel eredményez a többi 4xx állapot, attól függően, a forrás vár.
 
-#### <a name="origin-path"></a>Forrás elérési útvonala
+#### <a name="origin-path"></a>Forrás elérési útja
 Végül, hogy ellenőrizze a **forrás elérési útja**.  Alapértelmezés szerint ez üres a.  Ez a mező csak akkor ajánlott, ha a forrás-ban üzemeltetett erőforrások a CDN-en elérhetővé tenni kívánt a hatókörét leszűkítheti szeretné.  
 
 Példa végpontját szerettünk volna összes erőforrást a tárfiókban elérhető, így **forrás elérési útja** üres.  Ez azt jelenti, hogy HTTPS-kérelem:\//cdndocdemo.azureedge.net/publicblob/lorem.txt eredményez a végpontról kapcsolatot kérő cdndocdemo.core.windows.net */publicblob/lorem.txt*.  Hasonlóképpen, egy HTTPS-kérelem:\//cdndocdemo.azureedge.net/donotcache/status.png eredményez a kérelmező végpont */donotcache/status.png* a forrásból.

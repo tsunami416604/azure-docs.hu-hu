@@ -1,34 +1,34 @@
 ---
-title: VMware – Azure vészhelyreállítási helyreállítási architektúra az Azure Site Recovery |} A Microsoft Docs
-description: Ez a cikk áttekintést az Azure-bA az Azure Site Recovery a helyszíni VMware virtuális gépek vész-helyreállítási beállításakor használt összetevőkről és architektúráról
+title: VMware – Azure vész-helyreállítási architektúra Azure Site Recovery
+description: Ez a cikk áttekintést nyújt azokról az összetevőkről és architektúráról, amelyeket a helyszíni VMware virtuális gépek vész-helyreállításának beállításakor használ az Azure-ba Azure Site Recovery
 author: rayne-wiselman
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: d9fdd6f42e1443c0515c2c38496e9d474c87715c
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 7c21b8d7a4a2723ddf10c4ac88f8b1ce4a5d6b47
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58310761"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814585"
 ---
-# <a name="vmware-to-azure-disaster-recovery-architecture"></a>VMware – Azure vészhelyreállítási recovery architektúrájáról
+# <a name="vmware-to-azure-disaster-recovery-architecture"></a>VMware – Azure vész-helyreállítási architektúra
 
-Ez a cikk ismerteti az architektúra és a vész-helyreállítási replikáció, feladatátvétel és helyreállítás VMware virtuális gépek (VM) telepítéséhez használt folyamatok között egy helyszíni VMware-hely és az Azure-ban a [Azure Site Recovery](site-recovery-overview.md) szolgáltatás.
+Ez a cikk azokat az architektúrákat és folyamatokat ismerteti, amelyeket a rendszer a helyszíni VMware-hely és az Azure között a [Azure site Recovery](site-recovery-overview.md) szolgáltatás használatával végez a helyreállítási replikáció, a feladatátvétel és a VMWare virtuális gépek (VM-EK) helyreállítási folyamatainak telepítésekor.
 
 
 ## <a name="architectural-components"></a>Az architektúra összetevői
 
-A következő táblázat és grafikus adja meg a VMware-vészhelyreállításhoz az Azure-ban használt összetevők magas szintű nézetét.
+Az alábbi táblázat és ábra áttekintést nyújt az Azure-ba irányuló VMware vész-helyreállításhoz használt összetevőkről.
 
 **Összetevő** | **Követelmény** | **Részletek**
 --- | --- | ---
-**Azure** | Azure-előfizetéssel, Azure Storage-fiók gyorsítótár, a felügyelt lemez és az Azure-hálózatra. | Az Azure storage-ban tárolt replikált adatokat a helyszíni virtuális gépekről. Ha feladatátvételt végez a helyszínről az Azure-bA az Azure virtuális gépek a replikált adatokkal jönnek létre. Az Azure virtuális gépek a létrejöttükkor csatlakoznak az Azure virtuális hálózathoz.
-**Konfigurációs kiszolgáló gép** | Egy a helyszíni gépen. Azt javasoljuk, hogy kell futtatnia, VMware virtuális gépként helyezhető a letöltött OVF-sablon.<br/><br/> A gép fut, a helyszíni Site Recovery minden összetevőjét, többek között a konfigurációs kiszolgáló, folyamatkiszolgáló és fő célkiszolgáló. | **Konfigurációs kiszolgáló**: A helyszíni és Azure közötti kommunikáció koordinálását, valamint felügyeli az adatreplikációt.<br/><br/> **Folyamatkiszolgáló**: Alapértelmezés szerint telepítve van a konfigurációs kiszolgálón. Ez fogadja a replikált adatokat; gyorsítótárazás, tömörítés és titkosítással optimalizálja őket és elküldi azt az Azure Storage. A folyamatkiszolgáló Ezenfelül telepíti az Azure Site Recovery mobilitási szolgáltatást a virtuális gépeket szeretne replikálni, és elvégzi a helyszíni gépek automatikus felderítését. Az üzembe helyezés növekedésével további, külön folyamatkiszolgálók nagyobb mértékű replikációs forgalom kezelésére is hozzáadhat.<br/><br/> **Fő célkiszolgáló**: Alapértelmezés szerint telepítve van a konfigurációs kiszolgálón. Az Azure-ból a feladat-visszavétel során kezeli azt a replikációs adatokat. Nagyméretű környezetekben hozzáadhat egy további, különálló fő célkiszolgálót a feladat-visszavételhez.
-**VMware-kiszolgálók** | VMware virtuális gépek helyszíni vSphere ESXi-kiszolgálókon lévő üzemeltetett. Azt javasoljuk, hogy a gazdagépek felügyeletéhez egy vCenter-kiszolgálóra. | Site Recovery üzembe helyezése során a Recovery Services-tároló vegyen fel VMware-kiszolgálókat.
-**Replikált gépek** | A mobilitási szolgáltatás telepítve van az egyes replikált VMware virtuális Gépeken. | Azt javasoljuk, hogy lehetővé tegye az automatikus telepítési adatok a folyamatkiszolgálótól. Azt is megteheti a szolgáltatás manuális telepítése vagy egy automatikus központi telepítési módszer, például a System Center Configuration Managerrel használja.
+**Azure** | Azure-előfizetés, Azure Storage-fiók a gyorsítótárhoz, a felügyelt lemezekhez és az Azure-hálózathoz. | A helyszíni virtuális gépekről replikált adatok tárolása az Azure Storage-ban történik. Az Azure-beli virtuális gépek a replikált adatokkal jönnek létre, amikor feladatátvételt hajt végre a helyszínen az Azure-ba. Az Azure virtuális gépek a létrejöttükkor csatlakoznak az Azure virtuális hálózathoz.
+**Konfigurációs kiszolgáló számítógépe** | Egyetlen helyszíni gép. Azt javasoljuk, hogy egy letöltött OVF-sablonból üzembe helyezhető VMware virtuális gépként futtassa.<br/><br/> A gép az összes helyszíni Site Recovery-összetevőt futtatja, amely tartalmazza a konfigurációs kiszolgálót, a Process Servert és a fő célkiszolgáló kiszolgálót. | **Konfigurációs kiszolgáló**: Koordinálja a helyszíni és az Azure közötti kommunikációt, és felügyeli az adatreplikációt.<br/><br/> **Folyamatkiszolgáló**: Alapértelmezés szerint telepítve van a konfigurációs kiszolgálón. Replikációs adatkérést kap; a gyorsítótárazással, tömörítéssel és titkosítással optimalizálja azt. és elküldi az Azure Storage-nak. A folyamatkiszolgáló ezenfelül telepíti az Azure Site Recovery mobilitási szolgáltatást a replikálni kívánt virtuális gépekre, és elvégzi a helyszíni gépek automatikus felderítését. Az üzembe helyezés során további, különálló folyamat-kiszolgálókat adhat hozzá a replikációs forgalom nagyobb mennyiségének kezeléséhez.<br/><br/> **Fő célkiszolgáló**: Alapértelmezés szerint telepítve van a konfigurációs kiszolgálón. Az Azure-beli feladat-visszavétel során kezeli a replikációs adatok kezelését. Nagyméretű központi telepítések esetén további, különálló fő célkiszolgáló adható hozzá a feladat-visszavételhez.
+**VMware-kiszolgálók** | A VMware virtuális gépek helyszíni vSphere ESXi-kiszolgálókon futnak. A gazdagépek felügyeletéhez vCenter-kiszolgálót ajánlunk. | Site Recovery telepítése során VMware-kiszolgálókat ad hozzá a Recovery Services-tárolóhoz.
+**Replikált gépek** | A mobilitási szolgáltatás minden replikált VMware virtuális gépen telepítve van. | Javasoljuk, hogy engedélyezze az automatikus telepítést a Process Serverről. Azt is megteheti, hogy manuálisan telepíti a szolgáltatást, vagy automatikus telepítési módszert használ, például System Center Configuration Manager.
 
 **VMware-ről Azure-ra architektúra**
 
@@ -38,48 +38,49 @@ A következő táblázat és grafikus adja meg a VMware-vészhelyreállításhoz
 
 ## <a name="replication-process"></a>Replikációs folyamat
 
-1. Amikor engedélyezi egy virtuális gép replikációját, megkezdődik a kezdeti replikálás az Azure storage, a megadott replikációs házirenddel. Vegye figyelembe a következőket:
-    - A VMware virtuális gépekhez a replikálás blokkszintű, közel-folyamatos, a virtuális gépen futó mobilitási szolgáltatás használatával történik.
-    - Minden replikációs házirend-beállítások érvényesek:
-        - **Helyreállítási Időkorlát küszöbértéke**. Ez a beállítás nem befolyásolja a replikáció. Ez segít a megfigyeléshez. Egy esemény jelenik meg, és szükség esetén e-mailt küldeni, ha az aktuális helyreállítási Időkorlát meghaladja a küszöbértéket, amely azt adja meg.
-        - **Helyreállítási pont megőrzése**. Ezzel a beállítással illesztésnek vissza szeretne lépni egy bekövetkező szolgáltatáskimaradás esetén időben. A premium storage maximális megőrzési ideje 24 órán keresztül. Standard szintű tárolóban működő érték 72 óra. 
-        - **Alkalmazáskonzisztens pillanatképek**. Alkalmazáskonzisztens pillanatkép is kell minden 1 12 órát vehet attól függően, az alkalmazás igényeinek megfelelően. Standard szintű Azure blob-pillanatfelvételek a pillanatképeket. A mobilitási ügynök, a virtuális gépeken futó kérelmek megfelelően ezt a beállítást, és a könyvjelzők, amelyek a replikáció Stream-időponthoz egy konzisztens alkalmazás VSS-pillanatkép.
+1. Amikor engedélyezi a replikációt egy virtuális géphez, a kezdeti replikáció az Azure Storage-ba megkezdődik a megadott replikációs házirend használatával. Vegye figyelembe a következőket:
+    - A VMware virtuális gépek esetében a replikáció a virtuális gépen futó mobilitási szolgáltatás ügynökének szinte folyamatos, közel folyamatos, a replikáláshoz.
+    - A rendszer alkalmazza a replikációs házirend beállításait:
+        - **RPO küszöbértéke**. Ez a beállítás nincs hatással a replikálásra. Segít a figyelésben. Egy esemény jön létre, és opcionálisan egy e-mailt küld, ha az aktuális RPO meghaladja a megadott küszöbértéket.
+        - **Helyreállítási pont megőrzése**. Ezzel a beállítással megadható, hogy mennyi idő elteltével kell megszakítani a megszakítást. A Premium Storage maximális megőrzése 24 óra. Standard szintű tárolás esetén 72 óra. 
+        - **Alkalmazás-konzisztens Pillanatképek**. Az alkalmazással konzisztens pillanatkép az alkalmazás igényeitől függően 1 – 12 óra lehet. A pillanatképek standard Azure Blob-Pillanatképek. A virtuális gépen futó mobilitási ügynök egy VSS-pillanatképet kér ennek a beállításnak megfelelően, és a könyvjelzőket, amelyek a replikálási adatfolyamban lévő alkalmazás-konzisztens pontként jelennek meg.
 
-2. Forgalom replikálja az Azure storage nyilvános végpontokat az interneten keresztül. Másik lehetőségként használhatja az Azure ExpressRoute [nyilvános társviszony-létesítés](../expressroute/expressroute-circuit-peerings.md#publicpeering). Forgalom a helyek közötti virtuális magánhálózati (VPN) keresztül egy helyszíni hely Azure-ba történő nem támogatott.
-3. Kezdeti replikálás befejezése után kezdődik replikációja az Azure-bA. A gépek nyomon követett módosításait a folyamatkiszolgálónak érkeznek.
-4. Kommunikáció a következőképpen történik:
+2. A forgalom az Azure Storage nyilvános végpontjait az interneten keresztül replikálja. Másik lehetőségként használhatja az Azure ExpressRoute-t a [Microsoft-partnerekkel](../expressroute/expressroute-circuit-peerings.md#microsoftpeering). A helyek közötti virtuális magánhálózati (VPN) kapcsolaton keresztüli replikálása nem támogatott a helyszíni helyről az Azure-ba.
+3. A kezdeti replikálás befejeződése után a változásokat az Azure-ba replikálva megkezdődik. A rendszer a gépek nyomon követését a folyamat kiszolgálójára továbbítja.
+4. A kommunikáció a következőképpen történik:
 
-    - Virtuális gépek a helyszíni konfigurációs kiszolgálóval HTTPS a 443-as porton bejövő kommunikációt, a replikáció kezelését.
-    - A konfigurációs kiszolgáló koordinálja a replikációt az Azure-ral HTTPS 443-as kimenő porton keresztül.
-    - Virtuális gépek a replikációs adatokat a folyamatkiszolgálónak (a konfigurációs kiszolgáló gépen futó) HTTPS 9443-as porton bejövő küldése. Ez a port módosítható.
-    - A folyamatkiszolgáló fogadja a replikált adatokat, optimalizálja a és titkosítja azokat, és elküldi azt az Azure storage 443-as porton keresztüli kimenő.
+    - A virtuális gépek a replikációs felügyelet érdekében a HTTPS 443 bejövő porton kommunikálnak a helyszíni konfigurációs kiszolgálóval.
+    - A konfigurációs kiszolgáló az Azure-ba irányuló replikációt a HTTPS 443 kimenő porton keresztül hangolja össze.
+    - A virtuális gépek replikációs adatküldést küldenek a folyamat-kiszolgálónak (amely a konfigurációs kiszolgáló gépen fut) a HTTPS 9443 bejövő porton. Ez a port módosítható.
+    - A Process Server replikációs adatokat fogad, optimalizálja és titkosítja, majd az Azure Storage-ba küldi az 443-as porton keresztül.
+5. A replikációs adatnaplók először egy gyorsítótárbeli Storage-fiókba helyezik az Azure-ban. A rendszer feldolgozza ezeket a naplókat, és az adattárolást egy Azure-beli felügyelt lemez (ún. ASR-lemez) tárolja. A helyreállítási pontok ezen a lemezen jönnek létre.
 
 
 
 
-**VMware – Azure replikációs folyamat**
+**VMware – Azure replikálási folyamat**
 
 ![Replikációs folyamat](./media/vmware-azure-architecture/v2a-architecture-henry.png)
 
 ## <a name="failover-and-failback-process"></a>Feladatátvételi és feladat-visszavételi folyamat
 
-Miután replikáció be van állítva, és futtat egy vészhelyreállítási próba végrehajtása (teszt feladatátvétel) ellenőrizze, hogy minden a várt módon működik, futtathatja feladatátvétel és feladat-visszavétel szükség szerint.
+Miután beállította a replikálást, és elvégezte a vész-helyreállítási részletezést (feladatátvételi teszt) annak ellenőrzéséhez, hogy minden a vártnak megfelelően működik-e, futtathatja a feladatátvételt és a feladat-visszavételt.
 
-1. Egyetlen gép feladatátvétel futtatása, vagy hozzon létre egy helyreállítási tervek egyszerre több virtuális gép feladatátvételét. Egyetlen gép feladatátvételi helyett egy helyreállítási terv előnye többek között:
-    - Alkalmazás-függőségek modellezheti fel a virtuális gépek között az alkalmazás egy helyreállítási tervben.
-    - Parancsfájlok, Azure runbookok hozzáadása, és manuális műveletek esetén.
-2. A kezdeti feladatátvitel után véglegesítheti a számítási feladatok elérése az Azure virtuális gép elindításához.
-3. Ha az elsődleges helyszíni hely megint elérhetővé válik, előkészítheti a feladat-visszavételhez. Annak érdekében, hogy a feladat-visszavételt, akkor be kell állítania egy feladat-visszavételi infrastruktúrát, beleértve:
+1. A művelet végrehajtása egyetlen gépen meghiúsul, vagy létrehozhat egy helyreállítási tervet, amely egyszerre több virtuális gép feladatátvételét hajtja végre. Egy helyreállítási terv előnye, hogy az egyetlen gép feladatátvétele helyett a következőket használja:
+    - Az alkalmazás-függőségek modellezéséhez az összes virtuális gépet egyetlen helyreállítási tervbe kell belefoglalni az alkalmazáson belül.
+    - A manuális műveletekhez parancsfájlokat, Azure-runbookok és szüneteltetést is hozzáadhat.
+2. A kezdeti feladatátvétel elindítása után véglegesíti azt az Azure-beli virtuális gép munkaterhelésének megkezdéséhez.
+3. Ha az elsődleges helyszíni hely ismét elérhetővé válik, előkészítheti a feladat-visszavétel feladatait. A feladat-visszavétel érdekében be kell állítania egy feladat-visszavételi infrastruktúrát, beleértve a következőket:
 
-    * **Ideiglenes folyamatkiszolgáló az Azure-ban**: Sikertelen az Azure-ból, beállította egy Azure virtuális gép kezelése az Azure-ból replikációs folyamat kiszolgálója. Ez a virtuális gép a feladatok visszaadását követően törölhető.
-    * **VPN-kapcsolat**: Feladat-visszavételt, kell egy VPN-kapcsolat (vagy ExpressRoute), az Azure-hálózatot a helyszíni helyre.
-    * **Különálló fő célkiszolgálót**: Alapértelmezés szerint a fő célkiszolgáló, hogy telepítette a helyszíni VMware virtuális gép található a konfigurációs kiszolgáló kezeli a feladat-visszavétel. Ha sikertelen biztonsági nagy mértékű forgalom van szüksége, állítsa be egy önálló helyszíni fő célkiszolgálót erre a célra.
-    * **Feladat-visszavételi szabályzat**: A helyszíni helyre történő újbóli replikáláshoz, egy feladat-visszavételi szabályzatra van szükség. Ez a szabályzat létrehozásakor egy replikációs házirendet a helyszínről az Azure-ban automatikusan létrejön.
-4. Miután az összetevő a következő helyen, feladat-visszavétel három művelet történik:
+    * **Ideiglenes Process Server az Azure-ban**: Az Azure-ból való visszalépéshez állítson be egy Azure-beli virtuális gépet úgy, hogy az az Azure-ból történő replikáció kezelésére szolgáló folyamat-kiszolgálóként működjön. Ez a virtuális gép a feladatok visszaadását követően törölhető.
+    * **VPN-kapcsolat**: A feladat-visszavétel érdekében VPN-kapcsolatra (vagy ExpressRoute) van szükség az Azure-hálózatról a helyszíni helyre.
+    * **Különálló fő célkiszolgáló**: Alapértelmezés szerint a helyszíni VMware virtuális gépen a konfigurációs kiszolgálóval telepített fő célkiszolgáló kezeli a feladat-visszavételt. Ha nagy mennyiségű forgalmat kell visszaadnia, hozzon létre egy külön helyszíni fő célkiszolgáló erre a célra.
+    * Feladat- **visszavételi szabályzat**: A helyszíni helyre történő replikáláshoz feladat-visszavételi szabályzatra van szükség. A rendszer automatikusan létrehozza ezt a házirendet, amikor létrehoz egy replikációs házirendet a helyszínről az Azure-ba.
+4. Az összetevők érvénybe lépése után a feladat-visszavétel három műveletben fordul elő:
 
-    - 1. fázis: Az Azure virtuális gépek ismételt védelme, így azok replikálása az Azure-ból a helyszíni VMware virtuális gépek vissza a.
-    -  2. fázis: Feladatátvétel futtatása a helyszíni helyre.
-    - 3. fázis: Számítási feladatok sikertelenek voltak vissza, miután újból engedélyezi a helyszíni virtuális gépek replikációját.
+    - 1\. fázis: Állítsa be újra az Azure-beli virtuális gépeket az Azure-ból a helyszíni VMware virtuális gépekre való replikáláshoz.
+    -  2\. fázis: Futtasson feladatátvételt a helyszíni helyre.
+    - 3\. fázis: A munkaterhelések visszaállítása után engedélyezze újra a helyszíni virtuális gépek replikálását.
     
  
 **VMware-feladat-visszavétel az Azure-ból**
@@ -89,4 +90,4 @@ Miután replikáció be van állítva, és futtat egy vészhelyreállítási pr�
 
 ## <a name="next-steps"></a>További lépések
 
-Hajtsa végre a [ebben az oktatóanyagban](vmware-azure-tutorial.md) VMware engedélyezése az Azure-bA.
+[Ezt az oktatóanyagot](vmware-azure-tutorial.md) követve engedélyezheti a VMware – Azure replikálást.

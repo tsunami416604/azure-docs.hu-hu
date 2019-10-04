@@ -1,71 +1,71 @@
 ---
-title: Készítse elő a forrásgépek telepíteni a mobilitási szolgáltatás leküldéses telepítése vész-helyreállítási VMware virtuális gépek és fizikai kiszolgálókon keresztül az Azure-bA |} A Microsoft Docs
-description: Ismerje meg, hogyan készíti elő a kiszolgálót, hogy telepíteni a mobilitási ügynök leküldéses telepítése a VMware virtuális gépek vészhelyreállítása és fizikai kiszolgálók az Azure-bA az Azure Site Recovery szolgáltatással.
+title: Forrásoldali gépek előkészítése a mobilitási szolgáltatás a VMware virtuális gépek és fizikai kiszolgálók Azure-ba való vész-helyreállítására szolgáló leküldéses telepítéssel történő telepítésére | Microsoft Docs
+description: Megtudhatja, hogyan készítheti elő a kiszolgálót a mobilitási ügynök telepítésére a VMware virtuális gépek és a fizikai kiszolgálók Azure-beli vész-helyreállítására a Azure Site Recovery szolgáltatás használatával történő leküldéses telepítéssel.
 author: Rajeswari-Mamilla
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: 628be573d03d42ec62a358071074facfe228852d
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: f1a96302d180f3b4b179f42013232f3b48d4e2b0
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58418669"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016370"
 ---
-# <a name="prepare-source-machine-for-push-installation-of-mobility-agent"></a>Készítse elő a forrásgép mobilitási ügynökök leküldéses telepítés
+# <a name="prepare-source-machine-for-push-installation-of-mobility-agent"></a>A forrásoldali gép előkészítése a mobilitási ügynök leküldéses telepítéséhez
 
-Amikor, vészhelyreállítás beállítása VMware virtuális gépek és fizikai kiszolgálók [Azure Site Recovery](site-recovery-overview.md), telepíti a [Site Recovery mobilitási szolgáltatás](vmware-physical-mobility-service-overview.md) minden helyszíni VMware virtuális gépek és fizikai kiszolgálón.  A mobilitási szolgáltatást kell-e a gépen adatírásokat, és továbbítja őket a Site Recovery is folyamatkiszolgálón.
+Ha a [Azure site Recovery](site-recovery-overview.md)használatával állítja be a VMWare virtuális gépek és a fizikai kiszolgálók vész-helyreállítását, akkor a [site Recovery mobilitási szolgáltatást](vmware-physical-mobility-service-overview.md) minden helyszíni VMWare virtuális gépen és fizikai kiszolgálón telepítenie kell.  A mobilitási szolgáltatás rögzíti az adatírásokat a gépen, és továbbítja azokat a Site Recovery Process Servernek.
 
-## <a name="install-on-windows-machine"></a>Telepítse a Windows-számítógép
+## <a name="install-on-windows-machine"></a>Telepítés Windows rendszerű gépen
 
-Az összes Windows szeretné a védelmét tegye a következőket:
+Minden olyan Windows-gépen, amelyet védelemmel szeretne ellátni, tegye a következőket:
 
-1. Győződjön meg arról, hogy nincs-e a gép és a folyamatkiszolgáló közötti hálózati kapcsolatot. Ha nem állított be különálló folyamatkiszolgálót, majd alapértelmezés szerint azt fut a konfigurációs kiszolgálón.
-1. Hozzon létre egy fiókot, amelyen keresztül a folyamatkiszolgáló hozzáférhet a számítógéphez. A fiók vagy helyi vagy tartományi rendszergazdai jogosultsággal kell rendelkeznie. Használja ezt a fiókot, csak a leküldéses telepítéshez és az ügynökök frissítésével.
-2. Ha nem használ tartományi fiókot, tiltsa le a következő távoli felhasználói hozzáférés-vezérlés a helyi számítógépen:
-    - Adja hozzá egy új DWORD localaccounttokenfilterpolicy beállításjegyzékbeli kulcs: **LocalAccountTokenFilterPolicy**. Állítsa az értékét **1**.
-    -  Ehhez egy parancssorban futtassa a következő parancsot:  
-   `REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d
-3. A Windows tűzfal a védeni kívánt számítógépen, válassza ki a **lehetővé teszik az alkalmazás vagy szolgáltatás tűzfalán keresztül**. Engedélyezése **fájl- és nyomtatómegosztás** és **Windows Management Instrumentation (WMI)**. Tartományi számítógépek esetében konfigurálhatja a tűzfal beállításai csoportházirend-objektum (GPO) használatával.
+1. Ellenőrizze, hogy van-e hálózati kapcsolat a számítógép és a folyamat-kiszolgáló között. Ha nem állított be külön folyamat-kiszolgálót, akkor alapértelmezés szerint a konfigurációs kiszolgálón fut.
+1. Hozzon létre egy fiókot, amelyen keresztül a folyamatkiszolgáló hozzáférhet a számítógéphez. A fióknak rendszergazdai jogosultságokkal kell rendelkeznie a helyi vagy a tartományhoz. Ezt a fiókot csak a leküldéses telepítéshez és az ügynök frissítéseihez használhatja.
+2. Ha nem használ tartományi fiókot, tiltsa le a távoli felhasználói hozzáférés-vezérlést a helyi számítógépen a következő módon:
+    - A HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System beállításkulcs területen adjon hozzá egy új DWORD-t: **LocalAccountTokenFilterPolicy**. Állítsa az értéket **1-re**.
+    -  Ehhez futtassa a következő parancsot a parancssorban:  
+   ' REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System/v LocalAccountTokenFilterPolicy/t REG_DWORD/d
+3. A védelemmel ellátni kívánt gépen a Windows tűzfalon válassza az **alkalmazás vagy szolgáltatás engedélyezése a tűzfalon keresztül**lehetőséget. Engedélyezze a **fájl-és nyomtatómegosztás** , valamint a **Windows Management Instrumentation (WMI)** szolgáltatást. Tartományhoz tartozó számítógépek esetén Csoportházirend objektum (GPO) használatával konfigurálhatja a tűzfalbeállítások beállításait.
 
    ![Tűzfalbeállítások](./media/vmware-azure-install-mobility-service/mobility1.png)
 
 4. Adja hozzá a CSPSConfigtool eszközben létrehozott fiókot. Ehhez jelentkezzen be a konfigurációs kiszolgálóra.
-5. Nyissa meg a következőt: **cspsconfigtool.exe**. Parancsikonja az asztalon, és a %ProgramData%\home\svsystems\bin mappában érhető el.
-6. Az a **fiókok kezelése** lapon jelölje be **fiók hozzáadása**.
+5. Nyissa meg a következőt: **cspsconfigtool.exe**. Parancsikonként érhető el az asztalon és a%ProgramData%\home\svsystems\bin mappában.
+6. A **fiókok kezelése** lapon válassza a **fiók hozzáadása**lehetőséget.
 7. Adja hozzá a létrehozott fiókot.
 8. Adja meg a számítógépek replikációjának engedélyezése során használt hitelesítő adatokat.
 
-## <a name="install-on-linux-machine"></a>Linux rendszerű gépen telepítse
+## <a name="install-on-linux-machine"></a>Telepítés Linux rendszerű gépen
 
-Az összes Linux, amely számára védelmet kíván tegye a következőket:
+Minden védelemmel ellátni kívánt Linux-gépen tegye a következőket:
 
-1. Győződjön meg arról, hogy nincs-e hálózati kapcsolat a Linux-gép és a folyamatkiszolgáló között.
-2. Hozzon létre egy fiókot, amelyen keresztül a folyamatkiszolgáló hozzáférhet a számítógéphez. A fióknak **gyökér** szintű felhasználónak kell lennie a forrás Linux-kiszolgálón. Használja ezt a fiókot, csak a leküldéses telepítéshez és frissítésekhez.
+1. Győződjön meg arról, hogy van hálózati kapcsolat a Linux-gép és a folyamat-kiszolgáló között.
+2. Hozzon létre egy fiókot, amelyen keresztül a folyamatkiszolgáló hozzáférhet a számítógéphez. A fióknak **gyökér** szintű felhasználónak kell lennie a forrás Linux-kiszolgálón. Ezt a fiókot csak a leküldéses telepítéshez és a frissítésekhez használhatja.
 3. Ellenőrizze, hogy a forrás Linux-kiszolgálón található /etc/hosts fájl tartalmaz-e olyan bejegyzéseket, amelyek a helyi gazdanevet az összes hálózati adapterhez társított IP-címekké képezik le.
 4. Telepítse a legfrissebb openssh, openssh-server és openssl csomagokat a replikálni kívánt számítógépen.
 5. Ügyeljen arra, hogy a Secure Shell (SSH) engedélyezve legyen, és a 22-es porton fusson.
-4. Engedélyezze az SFTP alrendszer és a jelszó hitelesítését az sshd_config fájlban. Ehhez jelentkezzen be felhasználóként **legfelső szintű**.
-5. Az a **/etc/ssh/sshd_config** fájlt és keresse meg azt a sort, kezdődik **PasswordAuthentication**.
-6. Állítsa vissza a sort, és módosítsa az értéket **Igen**.
-7. Keresse meg a sort, amely a következővel kezdődik: **alrendszer**, és állítsa vissza a sort.
+4. Engedélyezze az SFTP alrendszer és a jelszó-hitelesítés használatát a sshd_config fájlban. Ehhez jelentkezzen be **root**-ként.
+5. A **/etc/ssh/sshd_config** fájlban keresse meg a **PasswordAuthentication**kezdetű sort.
+6. Állítsa vissza a sort, és módosítsa az értéket **Igen**értékre.
+7. Keresse meg az **alrendszer**kezdetű sorát, és a sor megjegyzését.
 
       ![Linux](./media/vmware-azure-install-mobility-service/mobility2.png)
 
 8. Indítsa újra az **sshd** szolgáltatást.
 9. Adja hozzá a CSPSConfigtool eszközben létrehozott fiókot. Ehhez jelentkezzen be a konfigurációs kiszolgálóra.
-10. Nyissa meg a következőt: **cspsconfigtool.exe**. Parancsikonja az asztalon, és a %ProgramData%\home\svsystems\bin mappában érhető el.
-11. Az a **fiókok kezelése** lapon jelölje be **fiók hozzáadása**.
+10. Nyissa meg a következőt: **cspsconfigtool.exe**. Parancsikonként érhető el az asztalon és a%ProgramData%\home\svsystems\bin mappában.
+11. A **fiókok kezelése** lapon válassza a **fiók hozzáadása**lehetőséget.
 12. Adja hozzá a létrehozott fiókot.
 13. Adja meg a számítógépek replikációjának engedélyezése során használt hitelesítő adatokat.
 
-## <a name="anti-virus-on-replicated-machines"></a>A replikált gépek víruskereső
+## <a name="anti-virus-on-replicated-machines"></a>Vírusirtó a replikált gépeken
 
-Ha replikálni kívánt gépek aktív víruskereső szoftvert, ellenőrizze, hogy a mobilitási szolgáltatás telepítési mappa kizárása víruskereső operations (*C:\ProgramData\ASR\agent*). Ez biztosítja, hogy a replikáció megfelelően működik-e.
+Ha a replikálni kívánt gépeken aktív víruskereső szoftver fut, akkor győződjön meg róla, hogy kizárja a mobilitási szolgáltatás telepítési mappáját a víruskereső műveleteiből (*C:\ProgramData\ASR\agent*). Ez biztosítja, hogy a replikáció a várt módon működjön.
 
 ## <a name="next-steps"></a>További lépések
 
-A mobilitási szolgáltatás telepítése után, az Azure Portalon válassza ki a **+ replikálás** ezek a virtuális gépek védelmének megkezdéséhez. További információ a replikáció engedélyezése [VMware VMs(vmware-azure-enable-replication.md) és [fizikai kiszolgálók](physical-azure-disaster-recovery.md#enable-replication).
+A mobilitási szolgáltatás telepítése után a Azure Portal válassza a **+ replikálás** lehetőséget a virtuális gépek védelmének megkezdéséhez. További információ a [VMWare virtuális gépek](vmware-azure-enable-replication.md) és [fizikai kiszolgálók](physical-azure-disaster-recovery.md#enable-replication)replikálásának engedélyezéséről.
 
 

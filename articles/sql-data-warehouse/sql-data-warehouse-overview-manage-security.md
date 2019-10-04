@@ -11,11 +11,11 @@ ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
 ms.openlocfilehash: 179925fc7411a1ccf3de02d7b6298cc66f93bc66
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58175717"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61126940"
 ---
 # <a name="secure-a-database-in-sql-data-warehouse"></a>Egy SQL Data warehouse-adatbázis védelme
 > [!div class="op_single_selector"]
@@ -37,7 +37,7 @@ Az SQL Data Warehouse használ a kiszolgálószintű tűzfalszabályokat. Adatb�
 
 Az SQL Data Warehouse kapcsolatokat a rendszer alapértelmezés szerint titkosítja.  Kapcsolati beállítások módosítása letiltja a titkosítást a rendszer figyelmen kívül hagyja.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Hitelesítés
 A hitelesítés azt jelenti, hogy hogyan igazolja az identitását az adatbázishoz való kapcsolódáskor. Az SQL Data Warehouse jelenleg támogatja az SQL Server-hitelesítést a felhasználónévvel és jelszóval, és az Azure Active Directoryval. 
 
 Az adatbázis logikai kiszolgálójának létrehozásakor megadta a „kiszolgálói rendszergazda” bejelentkezés felhasználónevét és jelszavát. Ezen hitelesítő adatokkal hitelesítheti magát az adatbázis tulajdonosa vagy a "dbo" SQL Server-hitelesítés segítségével a kiszolgáló bármely olyan adatbázisába.
@@ -85,7 +85,7 @@ GRANT SELECT ON SCHEMA::Test to ApplicationUser
 
 Adatbázisok és logikai kiszolgálók kezelése az Azure Portalról, vagy az Azure Resource Manager API-val a portál felhasználói fiókjának szerepkör-hozzárendelések vezérli. További információkért lásd: [szerepköralapú hozzáférés-vezérlés az Azure Portalon][Role-based access control in Azure portal].
 
-## <a name="encryption"></a>Titkosítás
+## <a name="encryption"></a>Encryption
 Az Azure SQL Data Warehouse transzparens adattitkosítási (TDE) segítségével elleni védelemhez kártevő szándékú tevékenységek által az inaktív adatok titkosítása és visszafejtése.  Ha az adatbázis titkosításához azokhoz kapcsolódó biztonsági mentési és tranzakciós naplófájlokra titkosítottak az alkalmazások módosítása nélkül. TDE titkosítja a tárolót a teljes adatbázisra az adatbázis-titkosítási kulcs nevű szimmetrikus kulcs használatával. 
 
 Az SQL Database az adatbázis-titkosítási kulcs védi egy beépített kiszolgálói tanúsítványt. A beépített kiszolgálói tanúsítvány egy egyedülálló megoldás minden egyes SQL Database-kiszolgáló. A Microsoft legalább 90 naponként automatikusan elforgatja ezeket a tanúsítványokat. Az SQL Data Warehouse által használt titkosítási algoritmus az AES-256. TDE általános ismertetését lásd: [transzparens adattitkosítás][Transparent Data Encryption].

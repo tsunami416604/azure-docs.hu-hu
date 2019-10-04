@@ -13,20 +13,20 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2018
-ms.author: kumud
-ms.openlocfilehash: ec43b79109181457f8ef8e214e296969db5dcb26
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.author: allensu
+ms.openlocfilehash: c0cf1eb62c8e01988c9014478ff72816e45ea64c
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593403"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68275620"
 ---
 # <a name="configure-high-availability-ports-for-an-internal-load-balancer"></a>Magas rendelkezésre állású portok konfigurálása belső terheléselosztó
 
 Ez a cikk magas rendelkezésre állású portok telepítését bemutató példát biztosít egy belső terheléselosztón. Konfigurációk hálózati virtuális berendezések (nva-k) vonatkozó további információkért tekintse meg a megfelelő szolgáltató webhelyeket.
 
 >[!NOTE]
->Az Azure Load Balancer két különböző típust támogat: alap- és standard szinten. Ez a cikk ismerteti a Standard Load Balancer. Alapszintű Load Balancer kapcsolatos további információkért lásd: [Load Balancer áttekintése](load-balancer-overview.md).
+>Azure Load Balancer két különböző típust támogat: alap- és standard szinten. Ez a cikk ismerteti a Standard Load Balancer. Alapszintű Load Balancer kapcsolatos további információkért lásd: [Load Balancer áttekintése](load-balancer-overview.md).
 
 Az ábrán látható az ebben a cikkben leírt üzembe helyezési példában a következő konfigurációt:
 

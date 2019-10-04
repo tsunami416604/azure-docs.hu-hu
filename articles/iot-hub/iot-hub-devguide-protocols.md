@@ -9,11 +9,11 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.openlocfilehash: 7082ebc4ca3066f84ca9790797cfa04e437f78a3
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59051055"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60626179"
 ---
 # <a name="reference---choose-a-communication-protocol"></a>Hivatkozás - kommunikációs protokoll kiválasztása
 
@@ -29,7 +29,7 @@ Ezeket a protokollokat hogyan támogatják a különböző funkciók az IoT Hub 
 
 A következő táblázat tartalmazza az Ön által választott magas szintű javaslatok protokoll:
 
-| Protokoll | Ha ezt a protokollt kell kiválasztani |
+| Protocol | Ha ezt a protokollt kell kiválasztani |
 | --- | --- |
 | MQTT <br> MQTT websocketen |Használja a minden eszközön, amelyre nincs szükség több eszközön (mindegyik saját eszközönkénti hitelesítő adatait) az ugyanazon a TLS-kapcsolaton keresztül csatlakozni. |
 | AMQP <br> Az AMQP websocketen |A mező és a felhő-átjárókon használatával előnyeit multiplexálási eszközök közötti kapcsolat. |
@@ -54,7 +54,7 @@ Ha úgy dönt, hogy az eszköz ügyféloldali kommunikációhoz protokollt, vegy
 
 Eszközök IoT Hub, az Azure-ban különböző protokollok használatával kommunikálhat. Általában a kiválasztott protokoll határozzák meg a megoldás egyéni követelményei. Az alábbi táblázat az eszközöket, hogy egy adott protokollt használhatják nyitva kell lennie kimenő portokat sorolja fel:
 
-| Protokoll | Port |
+| Protocol | Port |
 | --- | --- |
 | MQTT |8883 |
 | MQTT WebSocketen keresztül |443 |

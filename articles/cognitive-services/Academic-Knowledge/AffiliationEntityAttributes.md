@@ -1,7 +1,7 @@
 ---
-title: Az Academic Knowledge API a tagságot tevékenységentitás-attribútumok
+title: Kapcsolati entitás attribútumai a Academic Knowledge API
 titlesuffix: Azure Cognitive Services
-description: Ismerje meg, az attribútumokat, a tagságot entitás az Academic Knowledge API használható.
+description: Megtudhatja, hogy mely attribútumok használhatók a Academic Knowledge API a kapcsolati entitással.
 services: cognitive-services
 author: alch-msft
 manager: nitinme
@@ -10,27 +10,28 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: 82e6a5b66342e58e62da029d617cbd1d74c28149
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ROBOTS: NOINDEX
+ms.openlocfilehash: 333875472d9b859196c4d828061301b9d32c4d5a
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864366"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705116"
 ---
-# <a name="affiliation-entity"></a>A tagságot entitás
+# <a name="affiliation-entity"></a>Kapcsolati entitás
 
-<sub> * A következő attribútumokat a tagságot entitás jellemzőek. (Folyó évi = "5") </sub>
+<sub>* A következő attribútumok a kapcsolati entitásra vonatkoznak. (Ty = "5")</sub>
 
-Name (Név)    |Leírás                            |Typo       | Műveletek
+Name (Név)    |Leírás                            |Type       | Műveletek
 ------- | ------------------------------------- | --------- | ----------------------------
-Azonosító      |Entitásazonosító                              |Int64      |Egyenlő
-AfN     |A tagságot normalizált neve        |String     |Egyenlő
-DAfN    |A tagságot megjelenített neve       |String     |nincs
-Másolat      |A tagságot idézetet teljes száma           |Int32      |nincs  
-ECC     |A tagságot becsült idézetet teljes száma |Int32      |nincs
+Id      |Entitásazonosító                              |Int64      |Egyenlő
+AfN     |Kapcsolat normalizált neve        |Sztring     |Egyenlő
+DAfN    |Kapcsolat megjelenített neve       |Sztring     |nincs
+Másolat      |Kapcsolatok teljes bibliográfiai száma           |Int32      |nincs  
+ECC     |Kapcsolat teljes becsült idézetek száma |Int32      |nincs
 
-## <a name="extended-metadata-attributes"></a>Kiterjesztett attribútumok metaadatok ##
+## <a name="extended-metadata-attributes"></a>Bővített metaadatok attribútumai ##
 
 Name (Név)    | Leírás               
 --------|---------------------------    
-PC      |A tagságot a papír száma
+PC      |Kapcsolat papírjának száma

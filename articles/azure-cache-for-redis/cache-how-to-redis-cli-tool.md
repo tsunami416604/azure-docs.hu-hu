@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/22/2018
 ms.author: yegu
 ms.openlocfilehash: 318d02f5da816ae8fe2fe199b9c87b3748d5d1fc
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237569"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66133014"
 ---
 # <a name="how-to-use-the-redis-command-line-tool-with-azure-cache-for-redis"></a>A Redis parancssori eszköz használata az Azure Cache redis
 
@@ -55,7 +55,7 @@ Az Azure redis Cache csak az SSL-portot (6380) alapértelmezés szerint engedél
 
     Kattintson a jobb gombbal a tálca ikonjára a stunnel-kiszolgáló, és kattintson a **napló ablak megjelenítése**.
 
-    Kattintson a stunnel napló ablak menü **konfigurációs** > **-konfiguráció szerkesztése** az aktuális konfigurációs fájl megnyitása.
+    Kattintson a stunnel napló ablak menü **konfigurációs** >  **-konfiguráció szerkesztése** az aktuális konfigurációs fájl megnyitása.
 
     Adja hozzá a következő bejegyzés *a redis-cli.exe* alatt a **definíciók szolgáltatás** szakaszban. Helyezze be a tényleges gyorsítótár neve helyére `yourcachename`. 
 

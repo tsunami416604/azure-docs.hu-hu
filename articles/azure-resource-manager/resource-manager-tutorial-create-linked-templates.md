@@ -13,18 +13,18 @@ ms.devlang: na
 ms.date: 03/18/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 25dda12ca33165cfc64ffd949a2068acb5150b84
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c5399f46106d94d593a15530ee0c223a3f5f3eaf
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58097149"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802048"
 ---
-# <a name="tutorial-create-linked-azure-resource-manager-templates"></a>Oktatóanyag: A csatolt Azure Resource Manager-sablonok létrehozása
+# <a name="tutorial-create-linked-azure-resource-manager-templates"></a>Oktatóanyag: Csatolt Azure Resource Manager-sablonok létrehozása
 
-Ismerje meg, hogyan hozhat létre összekapcsolt Azure Resource Manager-sablonokat. Összekapcsolt sablonok használatával az egyik sablonja meghívhat egy másikat. Ez nagyszerűen használható a sablonok modularizálásához. Ebben az oktatóanyagban használja ugyanazt a sablont a használt [oktatóanyag: Az Azure Resource Manager-sablonok létrehozása a tőle függő erőforrások](./resource-manager-tutorial-create-templates-with-dependent-resources.md), ami létrehoz egy virtuális gép, egy virtuális hálózatot és más függő erőforrást, beleértve a storage-fiók. Szétválasztja a tárfiók egy hivatkozott sablonnak az erőforrás létrehozása.
+Ismerje meg, hogyan hozhat létre összekapcsolt Azure Resource Manager-sablonokat. Összekapcsolt sablonok használatával az egyik sablonja meghívhat egy másikat. Ez nagyszerűen használható a sablonok modularizálásához. Ebben az oktatóanyagban ugyanazt a sablont [fogja használni, mint az oktatóanyagban: Hozzon létre Azure Resource Manager sablonokat függő](./resource-manager-tutorial-create-templates-with-dependent-resources.md)erőforrásokkal, amelyek egy virtuális gépet, egy virtuális hálózatot és egy más, a Storage-fiókot is tartalmazó, függő erőforrást hoznak létre. Szétválasztja a tárfiók egy hivatkozott sablonnak az erőforrás létrehozása.
 
-Hívása egy hivatkozott sablonnak olyan, mint hogy egy függvény hívásához szükséges.  Emellett megismerjük, hogyan adhatók át a paraméterértékeket a társított sablont, és a "visszatérési értékek" beszerzése a társított sablonból.
+A csatolt sablon meghívása hasonló a függvények meghívásához.  Azt is megtudhatja, hogyan adhat hozzá paramétereket a csatolt sablonhoz, és hogyan kérheti le a "Return Values" értéket a csatolt sablonból.
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
@@ -37,7 +37,7 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 > * A sablon üzembe helyezése
 > * További eljárások
 
-További információkért lásd: [kapcsolt és beágyazott sablonok, az Azure-erőforrások üzembe helyezésekor](./resource-group-linked-templates.md).
+További információ: [csatolt és beágyazott sablonok használata Azure-erőforrások telepítésekor](./resource-group-linked-templates.md).
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
@@ -53,11 +53,11 @@ Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
     ```azurecli-interactive
     openssl rand -base64 32
     ```
-    Az Azure Key Vault funkciója a titkosítási kulcsok és egyéb titkos kulcsok biztonságos megőrzése. További információkért lásd: [oktatóanyag: Integrálhatja az Azure Key Vault Resource Manager-sablon üzembe helyezési](./resource-manager-tutorial-use-key-vault.md). Javasoljuk továbbá, hogy a jelszót három havonta frissítse.
+    Az Azure Key Vault funkciója a titkosítási kulcsok és egyéb titkos kulcsok biztonságos megőrzése. További információ [: oktatóanyag: Azure Key Vault integrálása a Resource Manager](./resource-manager-tutorial-use-key-vault.md)template deploymentban. Javasoljuk továbbá, hogy a jelszót három havonta frissítse.
 
 ## <a name="open-a-quickstart-template"></a>Gyorsindítási sablon megnyitása
 
-Az Azure-beli gyorsindítási sablonok a Resource Manager-sablonok adattáraként szolgálnak. Teljesen új sablon létrehozása helyett kereshet egy mintasablont, és testre szabhatja azt. A jelen oktatóanyagban használt sablon [egyszerű, windowsos virtuális gép üzembe helyezése](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) néven található meg. Ez az, hogy ugyanazt a sablont a használt [oktatóanyag: Az Azure Resource Manager-sablonok létrehozása a tőle függő erőforrások](./resource-manager-tutorial-create-templates-with-dependent-resources.md). Mentse a sablont két példányban a következő felhasználásra:
+Az Azure-beli gyorsindítási sablonok a Resource Manager-sablonok adattáraként szolgálnak. Teljesen új sablon létrehozása helyett kereshet egy mintasablont, és testre szabhatja azt. A jelen oktatóanyagban használt sablon [egyszerű, windowsos virtuális gép üzembe helyezése](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) néven található meg. Ez az [oktatóanyagban használt sablon: Hozzon létre Azure Resource Manager sablonokat függő](./resource-manager-tutorial-create-templates-with-dependent-resources.md)erőforrásokkal. Mentse a sablont két példányban a következő felhasználásra:
 
 * **A fő sablon**: ez hozza létre a tárfiók kivételével az összes erőforrást.
 * **Az összekapcsolt sablon**: ez hozza létre a tárfiókot.
@@ -77,19 +77,19 @@ Az Azure-beli gyorsindítási sablonok a Resource Manager-sablonok adattárakén
    * [`Microsoft.Network/networkInterfaces`](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces)
    * [`Microsoft.Compute/virtualMachines`](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines)
 
-     Hasznos lehet néhány alapvető ismeretekkel a sablonséma a sablon testreszabása előtt beolvasásához.
+     A sablon testreszabása előtt hasznos lehet a sablon sémájának alapvető megismerése.
 5. A **File** (Fájl) > **Save As** (Mentés másként) kiválasztásával mentheti a fájl egy másolati példányát a helyi számítógépre, **azuredeploy.json** néven.
 6. A **File** (Fájl) > **Save As** (Mentés másként) kiválasztásával hozza létre a fájl egy újabb másolatát **linkedTemplate.json** néven.
 
 ## <a name="create-the-linked-template"></a>Az összekapcsolt sablon létrehozása
 
-Az összekapcsolt sablon létrehoz egy tárfiókot. Hozzon létre egy tárfiókot a társított sablon használható önálló sablonként. Ebben az oktatóanyagban a hivatkozott sablonnak két paraméter szükséges, és továbbítja a egy értéke a fő sablont. Ez az "visszatérési" érték van megadva a `outputs` elemet.
+Az összekapcsolt sablon létrehoz egy tárfiókot. A csatolt sablon önálló sablonként is használható a Storage-fiók létrehozásához. Ebben az oktatóanyagban a csatolt sablon két paramétert fogad, és visszaadja az értéket a fő sablonnak. Ez a "Return" érték van definiálva `outputs` a elemben.
 
-1. Nyissa meg **linkedTemplate.json** a Visual Studio Code, ha a fájl nincs megnyitva.
+1. Ha a fájl nincs megnyitva, nyissa meg a **linkedTemplate. JSON** fájlt a Visual Studio Code-ban.
 2. Hajtsa végre a következő módosításokat:
 
-    * Más, távolítsa el az összes paramétert **hely**.
-    * Vegyen fel egy **storageAccountName** (tárFiókNeve) nevű paramétert. 
+    * Távolítsa el az összes paramétert, kivéve a **helyet**.
+    * Vegyen fel egy **storageAccountName** (tárFiókNeve) nevű paramétert.
         ```json
         "storageAccountName":{
           "type": "string",
@@ -98,10 +98,10 @@ Az összekapcsolt sablon létrehoz egy tárfiókot. Hozzon létre egy tárfióko
           }
         },
         ```
-        A tárfiók nevét és helyét paraméterként a fő sablonból a társított sablont.
-        
+        A Storage-fiók neve és helye a fősablonból a társított sablonba paraméterként lesz átadva.
+
     * Távolítsa el a **változók** elemet, és a változó definíciókat.
-    * Távolítsa el a storage-fiókon kívül az összes erőforrást. Összesen négy erőforrást fog eltávolítani.
+    * Távolítsa el a Storage-fióktól eltérő összes erőforrást. Összesen négy erőforrást fog eltávolítani.
     * Frissítse az értéket, a **neve** elem, hogy a tárfiók típusú erőforrást:
 
         ```json
@@ -109,7 +109,7 @@ Az összekapcsolt sablon létrehoz egy tárfiókot. Hozzon létre egy tárfióko
         ```
 
     * Módosítsa az **outputs** (kimenetek) elemet, hogy a következőképpen nézzen ki:
-    
+
         ```json
         "outputs": {
           "storageUri": {
@@ -166,7 +166,7 @@ Az összekapcsolt sablon létrehoz egy tárfiókot. Hozzon létre egy tárfióko
 
 ## <a name="upload-the-linked-template"></a>Az összekapcsolt sablon feltöltése
 
-A fő sablont és a hivatkozott sablonnak kell érhető el a telepítés futtatásához. Ebben az oktatóanyagban használt, használhatja a Cloud shell üzembe helyezési módszer [oktatóanyag: Az Azure Resource Manager-sablonok létrehozása a tőle függő erőforrások](./resource-manager-tutorial-create-templates-with-dependent-resources.md). A fő sablon (azuredeploy.json) a felületre lesz feltöltve. A hivatkozott sablonnak (linkedTemplate.json) kell lennie biztonságosan megosztott valahol. A következő PowerShell-szkript létrehoz egy Azure Storage-fiókot, feltölti a sablon a tárfiókba és majd létrehozza az SAS-jogkivonatát a sablonfájl csak korlátozott hozzáférést. Az oktatóanyag leegyszerűsítése a parancsfájl tölt le egy befejezett hivatkozott sablonnak olyan megosztott helyre. Ha szeretné a csatolt sablonnal létrehozott, használja a [Cloud shell](https://shell.azure.com) töltse fel a társított sablont, és módosítsa a parancsfájl használata a saját hivatkozott sablonnak.
+A fő sablont és a hivatkozott sablonnak kell érhető el a telepítés futtatásához. Ebben az oktatóanyagban a Cloud Shell üzembe helyezési módszerét [fogja használni az oktatóanyagban: Hozzon létre Azure Resource Manager sablonokat függő](./resource-manager-tutorial-create-templates-with-dependent-resources.md)erőforrásokkal. A fő sablon (azuredeploy.json) a felületre lesz feltöltve. A hivatkozott sablonnak (linkedTemplate.json) kell lennie biztonságosan megosztott valahol. A következő PowerShell-szkript létrehoz egy Azure Storage-fiókot, feltölti a sablont a Storage-fiókba, majd létrehoz egy SAS-jogkivonatot, amely korlátozott hozzáférést biztosít a sablon fájljához. Az oktatóanyag leegyszerűsítése érdekében a parancsfájl egy befejezett csatolt sablont tölt le egy megosztott helyről. Ha szeretné a csatolt sablonnal létrehozott, használja a [Cloud shell](https://shell.azure.com) töltse fel a társított sablont, és módosítsa a parancsfájl használata a saját hivatkozott sablonnak.
 
 > [!NOTE]
 > A parancsfájl korlátozza a SAS-jogkivonat nyolc órán belül használható. Ha ez az oktatóanyag további időre van szüksége, növelje a lejárati időpont.
@@ -227,13 +227,13 @@ echo "Linked template URI with SAS token: $templateURI"
 4. Jegyezze fel a két érték (erőforráscsoport neve, és a társított sablon URI-t) a rendszerhéj panel alján. Az oktatóanyag későbbi részében szüksége lesz rájuk.
 5. Válassza ki **Kilépés a fókusz módból** a rendszerhéj panel bezárásához.
 
-A gyakorlatban, generáljon egy SAS-token, a fő sablon üzembe helyezéséhez, és a SAS-jogkivonat lejárati adjon meg egy kisebb ablakban teheti biztonságosabbá. További információkért lásd: [üzembe helyezés során adja meg a SAS jogkivonat](./resource-manager-powershell-sas-token.md#provide-sas-token-during-deployment).
+A gyakorlatban, generáljon egy SAS-token, a fő sablon üzembe helyezéséhez, és a SAS-jogkivonat lejárati adjon meg egy kisebb ablakban teheti biztonságosabbá. További információkért lásd: [üzembe helyezés során adja meg a SAS jogkivonat](./secure-template-with-sas-token.md#provide-sas-token-during-deployment).
 
 ## <a name="call-the-linked-template"></a>Az összekapcsolt sablon meghívása
 
 A fő sablon egy azuredeploy.json nevű fájl.
 
-1. Nyissa meg **azuredeploy.json** a Visual Studio Code, ha nincs megnyitva.
+1. Ha nincs megnyitva, nyissa meg a **azuredeploy. JSON** fájlt a Visual Studio Code-ban.
 2. A tárolási fiók erőforrás-definíció törlése a sablonból:
 
     ```json
@@ -272,7 +272,7 @@ A fő sablon egy azuredeploy.json nevű fájl.
     Ügyeljen ezekre a részletekre:
 
     * A fő sablon `Microsoft.Resources/deployments` erőforrása kapcsolja őt össze egy másik sablonnal.
-    * A `deployments` erőforrásban található egy `linkedTemplate` név. Ezzel a névvel történik a [függőség konfigurálása](#configure-dependency).  
+    * A `deployments` erőforrásban található egy `linkedTemplate` név. Ezzel a névvel történik a [függőség konfigurálása](#configure-dependency).
     * Összekapcsolt sablonok meghívásakor csak [Incremental](./deployment-modes.md) (Növekményes) üzembe helyezési mód használható.
     * A `templateLink/uri` tartalmazza az összekapcsolt sablon URI-azonosítóját. Frissítse az értéket, ha a hivatkozott sablonnak (a SAS-jogkivonat használatával egyet) feltölti az URI-t.
     * A `parameters` használatával adhat át értékeket a fő sablonból az összekapcsolt sablonba.
@@ -281,13 +281,13 @@ A fő sablon egy azuredeploy.json nevű fájl.
 
 ## <a name="configure-dependency"></a>Függőség konfigurációja
 
-A visszahívás [oktatóanyag: Az Azure Resource Manager-sablonok létrehozása a tőle függő erőforrások](./resource-manager-tutorial-create-templates-with-dependent-resources.md), a virtuális gép típusú erőforrást attól függ, a storage-fiók:
+Az oktatóanyagból való [visszahívás: A függő erőforrásokkal](./resource-manager-tutorial-create-templates-with-dependent-resources.md)rendelkező Azure Resource Manager-sablonok létrehozása a virtuális gép erőforrása a Storage-fióktól függ:
 
 ![Az Azure Resource Manager-sablonok függőségi diagramja](./media/resource-manager-tutorial-create-linked-templates/resource-manager-template-visual-studio-code-dependency-diagram.png)
 
 Mivel a tárfiók jelenleg az összekapcsolt sablonban van definiálva, módosítania kell a `Microsoft.Compute/virtualMachines` erőforrás következő két elemét.
 
-* Konfigurálja újra a `dependOn` elemet. A tárfiók definíciója az összekapcsolt sablonba lett áthelyezve.
+* Konfigurálja újra a `dependsOn` elemet. A tárfiók definíciója az összekapcsolt sablonba lett áthelyezve.
 * Konfigurálja újra a `properties/diagnosticsProfile/bootDiagnostics/storageUri` elemet. [Az összekapcsolt sablon létrehozása](#create-the-linked-template) című szakaszban hozzáadott egy kimeneti értéket:
 
     ```json
@@ -305,7 +305,7 @@ Mivel a tárfiók jelenleg az összekapcsolt sablonban van definiálva, módosí
 
     ![Az összekapcsolt Azure Resource Manager-sablonok függőségi konfigurációja](./media/resource-manager-tutorial-create-linked-templates/resource-manager-template-linked-templates-configure-dependency.png)
 
-    A *linkedTemplate* az üzembehelyezési erőforrás neve.  
+    A *linkedTemplate* az üzembehelyezési erőforrás neve.
 3. frissítés **storageUri tulajdonságok/diagnosticsProfile/bootDiagnostics** az előző képernyőképen látható módon.
 4. A módosított sablon mentéséhez.
 
@@ -327,11 +327,11 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
 A projekt javítása érdekében hajtsa végre a következő további módosításokat a befejezett projekt:
 
 1. Módosítsa a fő sablont (azuredeploy.json), hogy a hivatkozott sablonnak URI értékét egy paraméteren keresztül tart.
-2. SAS-token generálása, amikor feltölti a hivatkozott sablonnak, helyett hozza létre a jogkivonatot, amikor telepíti a fő sablont. További információkért lásd: [üzembe helyezés során adja meg a SAS jogkivonat](./resource-manager-powershell-sas-token.md#provide-sas-token-during-deployment).
+2. SAS-token generálása, amikor feltölti a hivatkozott sablonnak, helyett hozza létre a jogkivonatot, amikor telepíti a fő sablont. További információkért lásd: [üzembe helyezés során adja meg a SAS jogkivonat](./secure-template-with-sas-token.md#provide-sas-token-during-deployment).
 
 ## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban, modularized egy sablont egy fő sablont és a egy hivatkozott sablonnak. További virtuálisgép-bővítmények használata utáni telepítési feladatok végrehajtásához, tekintse meg:
 
 > [!div class="nextstepaction"]
-> [Virtuális gépi bővítmények üzembe helyezése](./deployment-manager-tutorial.md)
+> [Virtuális gépi bővítmények üzembe helyezése](./resource-manager-tutorial-deploy-vm-extensions.md)

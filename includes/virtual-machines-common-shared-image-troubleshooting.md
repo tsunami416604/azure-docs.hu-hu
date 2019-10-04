@@ -5,15 +5,15 @@ services: virtual-machines
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 09/20/2018
+ms.date: 04/25/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 0eb47c8ec470ef05f3c6ae37bdc75e5bb1043eb0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1476830313296615591a69a2cadd04bcc56b22bc
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60187675"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179056"
 ---
 Ha problémát észlel a megosztott rendszerkép-katalógusokon, rendszerkép-definíciókon vagy rendszerképverziókon végzett műveletek végrehajtásakor, futtassa újból a sikertelen parancsot hibakeresési módban. Hibakeresési mód aktiválása átadásával a **-debug** CLI felülettel és a **-Debug** váltson a PowerShell használatával. Megtaláltuk a hiba, miután kövesse ezt a dokumentumot, a hibák elhárítása.
 
@@ -24,7 +24,7 @@ Lehetséges okok:
 
 *A katalógus neve érvénytelen.*
 
-Katalógus neveként engedélyezett karakterek:, kis-és nagybetűket, számokat, pontokat és időszakok. A katalógus neve nem lehet a kötőjelek szerepelhetnek benne. Módosítsa a gyűjtemény nevét, és próbálkozzon újra. 
+Katalógus neveként engedélyezett karakterek:, kis-és nagybetűket, számokat, pontokat és időszakok. A katalógus neve nem tartalmazhat kötőjeleket. Módosítsa a gyűjtemény nevét, és próbálkozzon újra. 
 
 *A katalógus név nem egyedi az előfizetésen belül.*
 
@@ -37,7 +37,7 @@ Lehetséges okok:
 
 *lemezkép-definíció neve érvénytelen.*
 
-A rendszerkép definíciójában engedélyezett karakterek:, kis-és nagybetűket, számokat, pontokat, kötőjeleket és időszakok. Módosítsa a lemezkép neve, majd próbálkozzon újra.
+A rendszerkép definíciójában engedélyezett karakterek:, kis- és nagybetűket betűket, számokat, pontokat, kötőjeleket, és időszakokra. Módosítsa a lemezkép neve, majd próbálkozzon újra.
 
 *Egy rendszerkép definíciójában létrehozása kötelező tulajdonságai nincsenek feltöltve adattal.*
 
@@ -62,20 +62,7 @@ Ellenőrizze, hogy a forrás lemezkép létezik-e, és a rendszerkép verziósz�
 
 Ellenőrizze, hogy a felügyelt forráslemezkép kiépítési állapota **sikeres**.
 
-*A forrásrégióban még nem támogatott.*
-
-Az alábbi táblázat segítségével a kívánt forrásrégióban támogatott:
-<br>
-
-| A katalógus vagy a "forrás régió" létrehozása   | A verzió vagy "célrégió" replikálása |
-|----------------------------------------|-------------------------------------------|
-| USA nyugati középső régiója                        | Az összes Azure nyilvános felhő-régiók            |
-| USA déli középső régiója                       |                                           |
-| USA 2. keleti régiója                              |                                           |
-| Délkelet-Ázsia                         |                                           |
-| Nyugat-Európa                            |                                           |
-
-<br>
+*A célként megadott régióban listája nem tartalmazza a forrásrégióban.*
 
 A célként megadott régióban szerepelnie kell a lemezkép-verzió a forrásrégióban. Ellenőrizze, hogy az Azure-bA replikálni a lemezkép verziója, amelyre célrégiók listájában is szerepelnek a forrásrégióban.
 

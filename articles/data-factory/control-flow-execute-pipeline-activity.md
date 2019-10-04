@@ -1,26 +1,25 @@
 ---
-title: Folyamat végrehajtása tevékenység az Azure Data Factoryban |} A Microsoft Docs
-description: Ismerje meg, hogyan használhatja a folyamat végrehajtása tevékenység a Data Factory-folyamatot egy Data Factory-folyamatok meghívásához.
+title: Folyamat végrehajtása tevékenység a Azure Data Factoryban | Microsoft Docs
+description: Ebből a témakörből megtudhatja, hogy a folyamat végrehajtása tevékenység használatával hogyan hívhat meg egy Data Factory folyamatot egy másik Data Factory folyamatból.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-editor: ''
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-ms.openlocfilehash: a0ece499262464bc28f55c37188698a3313e2c04
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1611f740f6b55ecf9f15ecd234d63b5e95baeba1
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57998722"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141707"
 ---
-# <a name="execute-pipeline-activity-in-azure-data-factory"></a>Folyamat végrehajtása tevékenység az Azure Data Factoryban
-A folyamat végrehajtása tevékenység lehetővé teszi egy Data Factory-folyamatot egy másik folyamat meghívását.
+# <a name="execute-pipeline-activity-in-azure-data-factory"></a>Folyamat végrehajtása tevékenység Azure Data Factory
+A folyamat végrehajtása tevékenység lehetővé teszi egy Data Factory folyamat számára egy másik folyamat meghívását.
 
 ## <a name="syntax"></a>Szintaxis
 
@@ -58,23 +57,23 @@ A folyamat végrehajtása tevékenység lehetővé teszi egy Data Factory-folyam
 }
 ```
 
-## <a name="type-properties"></a>Tulajdonságok
+## <a name="type-properties"></a>Típus tulajdonságai
 
-Tulajdonság | Leírás | Megengedett értékek | Szükséges
+Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
-név | A folyamat végrehajtása tevékenység neve. | String | Igen
-type | Értékre kell állítani: **ExecutePipeline**. | String | Igen
-adatcsatorna | Folyamat-hivatkozás a függő folyamat, amely ebben az adatcsatornában hív meg. Egy folyamat hivatkozási objektumot két tulajdonságokkal rendelkezik: **hivatkozásnév** és **típus**. A hivatkozásnév tulajdonság határozza meg, hogy az a folyamat nevét a hivatkozást. A type tulajdonság PipelineReference kell állítani. | PipelineReference | Igen
-paraméterek | A meghívott folyamatnak átadandó paramétereket | JSON-objektum, amely leképezi a paraméter nevének argumentumértékként | Nem
-waitOnCompletion | Meghatározza, hogy tevékenység-végrehajtási megvárja, amíg befejeződik a függő folyamat-végrehajtást. Az alapértelmezett érték a false (hamis). | Logikai | Nem
+name | A folyamat végrehajtása tevékenység neve. | Sztring | Igen
+type | A következőre kell beállítani: **ExecutePipeline**. | Sztring | Igen
+adatcsatorna | A folyamat által meghívott függő folyamathoz tartozó folyamatra mutató hivatkozás. A folyamat hivatkozási objektumának két tulajdonsága van: **hivatkozásnév** és **Type**. A hivatkozásnév tulajdonság a hivatkozási folyamat nevét adja meg. A Type tulajdonságot PipelineReference értékre kell beállítani. | PipelineReference | Igen
+parameters | A meghívott folyamatnak átadandó paraméterek | Egy JSON-objektum, amely a paraméterek nevét az argumentum értékére képezi. | Nem
+waitOnCompletion | Meghatározza, hogy a tevékenység-végrehajtás megvárja-e a függő folyamat végrehajtásának befejeződését. Az alapértelmezett érték a false (hamis). | Logikai | Nem
 
-## <a name="sample"></a>Sample
-Ebben a forgatókönyvben két folyamatot rendelkezik:
+## <a name="sample"></a>Minta
+Ennek a forgatókönyvnek két folyamata van:
 
-- **Fő folyamat** – Ez a folyamat rendelkezik egy folyamat végrehajtása tevékenység, amely meghívja a meghívott folyamat. A fő folyamathoz két paraméter szükséges: `masterSourceBlobContainer`, `masterSinkBlobContainer`.
-- **Meghívott folyamat** – Ez a folyamat egy másolási tevékenység, amely adatokat másol egy Azure Blob-forrás, fogadó Azure Blob rendelkezik. A meghívott folyamathoz két paraméter szükséges: `sourceBlobContainer`, `sinkBlobContainer`.
+- **Főfolyamat** – ez a folyamat egyetlen végrehajtási folyamattal rendelkezik, amely meghívja a meghívott folyamatot. A fő folyamat két paramétert vesz `masterSourceBlobContainer`igénybe:, `masterSinkBlobContainer`.
+- **Meghívott folyamat** – ez a folyamat egy másolási tevékenységgel rendelkezik, amely egy Azure Blob-forrásból származó adatok másolását végzi az Azure Blob fogadóba. A meghívott folyamat két paramétert vesz `sourceBlobContainer`igénybe:, `sinkBlobContainer`.
 
-### <a name="master-pipeline-definition"></a>Fő folyamatdefiníció
+### <a name="master-pipeline-definition"></a>Fő folyamat definíciója
 
 ```json
 {
@@ -116,7 +115,7 @@ Ebben a forgatókönyvben két folyamatot rendelkezik:
 
 ```
 
-### <a name="invoked-pipeline-definition"></a>Meghívott folyamat meghatározása
+### <a name="invoked-pipeline-definition"></a>Meghívott folyamat definíciója
 
 ```json
 {
@@ -178,7 +177,7 @@ Ebben a forgatókönyvben két folyamatot rendelkezik:
 }
 ```
 
-**Forrásadatkészlet**
+**Forrás adatkészlete**
 ```json
 {
     "name": "SourceBlobDataset",
@@ -221,7 +220,7 @@ Ebben a forgatókönyvben két folyamatot rendelkezik:
 
 ### <a name="running-the-pipeline"></a>A folyamat futtatása
 
-Ebben a példában a fő folyamat elindításához a következő érték lett átadva a masterSourceBlobContainer és masterSinkBlobContainer paraméterek: 
+A fő folyamat ebben a példában való futtatásához a masterSourceBlobContainer és a masterSinkBlobContainer paraméterek a következő értékeket adja át: 
 
 ```json
 {
@@ -230,7 +229,7 @@ Ebben a példában a fő folyamat elindításához a következő érték lett á
 }
 ```
 
-A fő folyamat továbbítja ezeket az értékeket a meghívott folyamat, az alábbi példában látható módon: 
+A fő folyamat továbbítja ezeket az értékeket a meghívott folyamatnak az alábbi példában látható módon: 
 
 ```json
 {
@@ -256,9 +255,9 @@ A fő folyamat továbbítja ezeket az értékeket a meghívott folyamat, az alá
 
 ```
 ## <a name="next-steps"></a>További lépések
-Tekintse meg a többi Data Factory által támogatott átvitelvezérlési tevékenységek: 
+Tekintse meg a Data Factory által támogatott egyéb vezérlési folyamatokat: 
 
-- [Minden egyes tevékenységhez](control-flow-for-each-activity.md)
+- [Minden tevékenységhez](control-flow-for-each-activity.md)
 - [Metaadatok beolvasása tevékenység](control-flow-get-metadata-activity.md)
 - [Keresési tevékenység](control-flow-lookup-activity.md)
 - [Webes tevékenység](control-flow-web-activity.md)

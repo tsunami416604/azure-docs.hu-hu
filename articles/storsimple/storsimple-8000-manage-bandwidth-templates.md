@@ -1,6 +1,6 @@
 ---
-title: A StorSimple 8000 series sávszélesség sablonok kezelése |} Microsoft Docs
-description: Ismerteti a StorSimple sávszélesség sablonokat, amelyek lehetővé teszik a sávszélesség-használat szabályozása.
+title: A StorSimple 8000 sorozat sávszélességsablonok kezelése |} A Microsoft Docs
+description: A StorSimple sávszélesség sablonokat, amelyek segítségével szabályozhatja a sávszélesség-használat kezelését ismerteti.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,40 +14,40 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: 50d0a920bef097013feddc828d2c37133b9057b0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 13a3e57bb27c075fc045e87790dbe13369ed9f8e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23875073"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60699471"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-manage-storsimple-bandwidth-templates"></a>A StorSimple Device Manager szolgáltatással a StorSimple sávszélesség sablonok kezelése
+# <a name="use-the-storsimple-device-manager-service-to-manage-storsimple-bandwidth-templates"></a>A StorSimple-Eszközkezelő szolgáltatás segítségével a StorSimple sávszélességsablonok kezelése
 
 ## <a name="overview"></a>Áttekintés
 
-Sávszélesség-sablonok lehetővé teszik a réteg a StorSimple eszköz a felhőre adatait több idő napi ütemezés konfigurálja a hálózati sávszélesség-használat.
+Sávszélességsablonok lehetővé teszik több idő napi ütemezés az adatok a StorSimple-eszközről a felhőbe, a hálózati sávszélesség használatának konfigurálhatók.
 
 A sávszélesség-szabályozási ütemezések segítségével:
 
-* Adja meg a testreszabott sávszélesség ütemezést attól függően, hogy a munkaterhelés hálózati módjait.
-* Kezelésének központosítása és az ütemezések több eszközön könnyen és zökkenőmentes módon használja fel.
+* Adja meg a testre szabott sávszélesség ütemezések attól függően, a számítási feladatok hálózati használatokban.
+* Felügyeleti központosítása, és újra felhasználhatja az ütemezések több eszközön egy egyszerű és zökkenőmentes módon.
 
 > [!NOTE]
-> Ez a funkció csak a StorSimple fizikai eszközök (modellek 8100 és 8600) és a StorSimple felhő készülékek (modellek 8010-es és a 8020-as modell) nem érhető el.
+> Ez a funkció csak a StorSimple fizikai eszköz (8100-as és 8600-as modellek) és a StorSimple Cloud Appliance (8010 és 8020-as modellek) nem érhető el.
 
 
 ## <a name="the-bandwidth-templates-blade"></a>A sávszélesség-sablonok panel
 
-A **sávszélesség sablonok** panelen táblázatos formában a szolgáltatás sávszélesség-sablonok rendelkezik, és a következő információkat tartalmazza:
+A **sávszélességsablonok** panelen táblázatos formában a szolgáltatás sávszélességsablonok rendelkezik, és a következő információkat tartalmazza:
 
-* **Név** – egy egyedi nevet hozzárendelni a sávszélesség-sablon létrehozásakor.
-* **Ütemezés** – egy adott sávszélesség sablonban található ütemezések száma.
-* **Által használt** – a sávszélesség-sablonokkal kötetek számát.
+* **Név** – a sávszélesség-sablon létrehozásakor hozzárendelt egyedi nevet.
+* **Ütemezés** – a megadott sávszélességsablon lévő ütemezések száma.
+* **Által használt** – a sávszélesség-sablonok használatával kötetek számát.
 
-További információt talál a sávszélesség-sablonok konfigurálása is található:
+További információt talál a sávszélesség-sablonok konfigurálására is talál:
 
-* [Sávszélesség-sablonokkal kapcsolatos kérdések és válaszok](#questions-and-answers-about-bandwidth-templates)
-* [Gyakorlati tanácsok a sávszélesség-sablonok](#best-practices-for-bandwidth-templates)
+* [Sávszélességsablonok kapcsolatos kérdések és válaszok](#questions-and-answers-about-bandwidth-templates)
+* [Sávszélességsablonok ajánlott eljárásai](#best-practices-for-bandwidth-templates)
 
 ## <a name="add-a-bandwidth-template"></a>Sávszélességsablon hozzáadása
 
@@ -55,121 +55,121 @@ A következő lépésekkel hozzon létre egy új sávszélesség-sablont.
 
 #### <a name="to-add-a-bandwidth-template"></a>Sávszélességsablon hozzáadása
 
-1. Nyissa meg a StorSimple eszköz Manager szolgáltatáshoz, kattintson a **sávszélesség sablonok** majd **+ Hozzáadás sávszélességsablon**.
+1. Keresse meg a StorSimple-Eszközkezelő szolgáltatást, kattintson a **sávszélességsablonok** majd **+ Hozzáadás sávszélességsablon**.
 
     ![Kattintson a + sávszélességsablon hozzáadása](./media/storsimple-8000-manage-bandwidth-templates/addbwtemp1.png)
 
 2. Az a **sávszélességsablon hozzáadása** panelen tegye a következőket:
    
-    1. Adja meg a sávszélesség-sablon egyedi nevét.
-    2. Sávszélesség ütemezés meghatározása. Ütemezés létrehozása:
+    1. Adjon meg egy egyedi nevet a sávszélesség-sablont.
+    2. A sávszélesség ütemezés meghatározása. Ütemezés létrehozása:
    
-        1. A legördülő listából válassza ki a **nap** a héten az ütemezés beállítása. Kiválaszthatja, hogy több nap.        
+        1. A legördülő listából válassza ki a **nap** a héten az ütemezés van konfigurálva. Több napig is választhat.        
         
-        2. Adjon meg egy **kezdete** a _óó: pp_ formátumban. Ez akkor, ha az ütemezés megkezdődik.
+        2. Adjon meg egy **kezdő időpont** a _óó: pp_ formátumban. Ez akkor, ha az ütemezés megkezdődik.
 
-        3. Adjon meg egy **befejezésének** a _óó: pp_ formátumban. Ez akkor, ha az ütemezés leáll.
+        3. Adjon meg egy **befejezésének** a _óó: pp_ formátumban. Ez akkor, ha az ütemezés le fog állni.
       
            > [!NOTE]
-           > Átfedő ütemezések nem engedélyezettek. A kezdő és záró időpontjának az átfedő ütemezés eredményez, ha látni fogja a figyelmet egy hibaüzenetet.
+           > Átfedésben lévő ütemezések nem engedélyezettek. Ha a kezdési és befejezési idejének az átfedő ütemezés azt eredményezi, látni fogja értelmű egy hibaüzenet.
 
-        4. Adja meg a **sávszélesség mértékének**. Ez a megabit / másodperc (Mbps) használata esetén a felhőben (feltöltések és letöltések) műveletek során a StorSimple eszköz által használt sávszélességet. Adjon meg egy 1 és 1000 ennél a mezőnél közötti számot.
+        4. Adja meg a **sávszélesség**. Ez az a sávszélesség megadása megabit / másodperc (Mbps) a StorSimple eszköz (feltöltések és letöltések) a felhő érintő műveletek által használt. Ebben a mezőben 1–1000 közötti értéket adjon meg.
 
-            ![Sávszélesség ütemezés megadása](./media/storsimple-8000-manage-bandwidth-templates/addbwtemp2.png)
+            ![A sávszélesség ütemezés definiálása](./media/storsimple-8000-manage-bandwidth-templates/addbwtemp2.png)
          
-            Ismételje meg a sablon egyszerre több ütemezés definiálásához, amíg végzett a fenti lépéseket.
+            Ismételje meg a sablon több ütemezés definiálásához, amíg végzett a fenti lépéseket.
 
-        5. Kattintson a **Hozzáadás** sávszélességsablon létrehozásához. A létrehozott sablon sávszélesség-sablonok listájának kerül.
+        5. Kattintson a **Hozzáadás** sávszélességsablon létrehozásának megkezdéséhez. A létrehozott sablon hozzáadódik a sávszélesség-sablonok listáját.
       
 
-## <a name="edit-a-bandwidth-template"></a>A sávszélesség-sablon szerkesztése
+## <a name="edit-a-bandwidth-template"></a>Sávszélességsablon szerkesztése
 
-A következő lépésekkel sávszélességsablon szerkesztése.
+A következő lépésekkel sávszélességsablon szerkesztéséhez.
 
-### <a name="to-edit-a-bandwidth-template"></a>A sávszélesség-sablon szerkesztése
+### <a name="to-edit-a-bandwidth-template"></a>Sávszélességsablon szerkesztése
 
-1. Nyissa meg a StorSimple Device Manager szolgáltatást, és kattintson a **sávszélesség sablonok**.
-2. A sávszélesség-sablonok listájának megtekintéséhez válassza ki a törölni kívánt sablont. Kattintson a jobb gombbal, és válassza ki a helyi menüből **törlése**.
-3. Amikor felszólítja a megerősítésre, kattintson **OK**. Ez a sávszélességsablon törölje. 
+1. Nyissa meg az a StorSimple-Eszközkezelő szolgáltatás, majd kattintson a **sávszélességsablonok**.
+2. Sávszélességsablonok listája válassza ki a törölni kívánt sablont. Kattintson a jobb gombbal, és a helyi menüből válassza ki a **törlése**.
+3. Amikor a rendszer megerősítést kér, kattintson a **OK**. Ezt érdemes törölni a sávszélességsablont. 
 4. A törlés sávszélesség sablonok frissítések listája.
 
 > [!NOTE]
-> A módosítások nem menthetők, ha a szerkesztett ütemezés átfedésben van a sávszélesség-sablont, amely módosítja a meglévő ütemezés.
+> A módosítások nem menthetők, ha a szerkesztett ütemezés átfedésben van a sávszélességsablont, amely módosítja a meglévőket.
 
-## <a name="delete-a-bandwidth-template"></a>Sávszélesség sablon törlése
+## <a name="delete-a-bandwidth-template"></a>Sávszélességsablon törlése
 
-A következő lépésekkel sávszélesség sablon törlése.
+A következő lépésekkel sávszélességsablon törlése.
 
-#### <a name="to-delete-a-bandwidth-template"></a>Sávszélesség sablon törlése
+#### <a name="to-delete-a-bandwidth-template"></a>Sávszélességsablon törlése
 
-1. Nyissa meg a StorSimple Device Manager szolgáltatást, és kattintson a **sávszélesség sablonok**.
-2. A sávszélesség-sablonok listájának megtekintéséhez válassza ki a törölni kívánt sablont. Kattintson a jobb gombbal, és a helyi menüből válassza a törlés.
-3. Amikor felszólítja a megerősítésre, kattintson **OK**. Ez a sávszélességsablon törölje.
+1. Nyissa meg az a StorSimple-Eszközkezelő szolgáltatás, majd kattintson a **sávszélességsablonok**.
+2. Sávszélességsablonok listája válassza ki a törölni kívánt sablont. Kattintson a jobb gombbal, és a helyi menüből válassza a törlés.
+3. Amikor a rendszer megerősítést kér, kattintson a **OK**. Ezt érdemes törölni a sávszélességsablont.
 4. A törlés sávszélesség sablonok frissítések listája.
 
-Ha a sablon bármely kötet(ek) használja, akkor nem kapnak törli-e. Egy hiba üzent arról, hogy a sablon használatban jelenik meg. Egy hibaüzenet párbeszédpanelén megjelenik, hogy tanácsadást meg, hogy a sablon minden hivatkozást el kell távolítani.
+Ha a sablon bármely (ek) használja, meg fog nem engedélyezi a törlést. Megjelenik egy üzenet, miszerint, hogy a sablon használatban van. Egy hibaüzenet párbeszédpanelén jelenik meg beküldte, hogy a sablon minden hivatkozást el kell távolítani.
 
-A sablont a hivatkozások törléséhez fér hozzá a **Kötettárolók** lap és, hogy használjon egy másik sablont, vagy használjon egy egyéni vagy korlátlan sávszélesség-beállítása ezt a sablont használó kötettárolók módosítása. Minden hivatkozást el lettek távolítva, törölheti a sablont.
+A sablonhoz a hivatkozások elérésével törölheti a **Kötettárolók** oldal és, hogy azok egy másik sablonnal, vagy egy egyéni vagy korlátlan sávszélesség-beállítást használja ezt a sablont használó kötettároló módosítása. Ha minden hivatkozást el lettek távolítva, törölheti a sablont.
 
-## <a name="use-a-default-bandwidth-template"></a>Sávszélesség alapértelmezett sablon használata
+## <a name="use-a-default-bandwidth-template"></a>A sávszélesség alapértelmezett sablon használata
 
-Alapértelmezett sávszélességsablon valósul meg, és segítségével kötettárolók alapértelmezés szerint kényszerítése a sávszélesség szabályozását a felhőben való hozzáféréskor. Az alapértelmezett sablont is szolgál a felhasználók számára, akik a saját sablonok létrehozása készen áll a hivatkozást. Az alapértelmezett sablon részleteit a következők:
+Alapértelmezett sávszélességsablon van megadva, és alapértelmezés szerint használt által kötettárolók, sávszélesség-vezérlés kikényszerítésére a felhő elérése. Az alapértelmezett sablont is, a felhasználók számára, akik a saját sablonok létrehozása kész referenciaként szolgál. Ez a sablon részletei a következők:
 
-* **Név** – a korlátlan éjszakák, és a hétvégéket
-* **Ütemezés** – egy ütemezéssel hétfőtől péntekig, amely egy 8 óra és délután 5 óra eszköz idő közötti 1 MB/s sávszélesség mértékét vonatkozik. A sávszélesség nincs korlátozás van megadva a fennmaradó része a hét.
+* **Név** – korlátlan számú éjszaka és Hétvége
+* **Ütemezés** – egyetlen ütemezés hétfőtől péntekig, amely a sávszélesség 8-kor és 17: 00 eszköz idő közötti 1 MB/s vonatkozik. A sávszélesség a hét további részében korlátlan értékre van állítva.
 
-Az alapértelmezett sablon szerkeszthető. Ez a sablon (beleértve a szerkesztett verzióit) használatát a rendszer nyomon követi.
+Szerkesztheti az alapértelmezett sablont. Ez a sablon (beleértve a szerkesztett verzió) használatát a rendszer nyomon követi.
 
-## <a name="create-an-all-day-bandwidth-template-that-starts-at-a-specified-time"></a>Egy megadott időpontban elinduló napos sávszélesség sablon létrehozása
+## <a name="create-an-all-day-bandwidth-template-that-starts-at-a-specified-time"></a>Hozzon létre egy egész napos sávszélességsablont, amely egy megadott időpontban kezdődik
 
-Az alábbi eljárás segítségével hozzon létre egy ütemezést, amely elindítja a megadott időpontban, és minden nap futtatja. A példában az ütemezés reggel 9 óra kezdődik, és csak 9 óra a következő reggel futtat. Fontos megjegyezni, hogy a megadott ütemezés kezdési és befejezési idejének egyaránt tartalmaznia kell a 24 órás azonos ütemezéssel, és nem terjedhetnek ki több nap. Ha kell, amelyek több nap több sávszélesség-sablonok, szüksége lesz ahhoz, hogy használható egyszerre több ütemezés (a példában látható módon).
+Az alábbi eljárás segítségével hozzon létre egy ütemezést, amely egy megadott időpontban elindítja és futtatja a minden nap. A példában az ütemezés a reggel 9-kor kezdődik, és a következő reggel 9 Órakor-ig. Fontos megjegyezni, hogy adott ütemezés kezdő és befejező időpontok egyaránt tartalmaznia kell a ugyanolyan 24 órás ütemezés szerint, és nem esetleg több napon. Ha sávszélesség-sablonok, amelyek esetleg több napon van szüksége, szüksége lesz a több ütemezés használata (a példa szerint).
 
-#### <a name="to-create-an-all-day-bandwidth-template"></a>Egy napos sávszélesség-sablon létrehozása
+#### <a name="to-create-an-all-day-bandwidth-template"></a>Egy egész napos sávszélesség-sablon létrehozása
 
-1. Hozzon létre egy ütemezést, reggel Reggel 9 és éjfél futtatja.
-2. Adjon hozzá egy másik ütemezést. Konfigurálja a második ütemezik arra az éjfél csak reggel 9 óra.
-3. A sávszélesség-sablon mentéséhez.
+1. Hozzon létre egy ütemezést, amely elindítja a reggel 9 órakor, és éjfél-ig.
+2. Adjon hozzá egy másik ütemezést. Állítsa be a második ütemezés csak reggel 9 óra az éjfél futtatásához.
+3. Mentse a sávszélesség-sablont.
 
-Az összetett ütemezés majd indítsa el a egyszerre, és futtassa napos.
+Összetett ütemezés majd Ön egyszerre elindul és egész napos fut.
 
-## <a name="questions-and-answers-about-bandwidth-templates"></a>Sávszélesség-sablonokkal kapcsolatos kérdések és válaszok
+## <a name="questions-and-answers-about-bandwidth-templates"></a>Sávszélességsablonok kapcsolatos kérdések és válaszok
 
-**A Q**. Mi történik a sávszélesség szabályozását, amikor Between az ütemezéseket? (Ütemezés befejeződött, és egy másikat még nem kezdődött meg.)
+**Q**. Mi történik a sávszélesség-vezérlés, amikor az ütemezések között áll? (Egy ütemezés véget ért, és egy másik még nem kezdődött meg.)
 
-**A**. Ilyen esetekben nem sávszélesség-vezérlés alkalmazzák. Ez azt jelenti, hogy az eszköz használhatja a adatok összekapcsolása a felhővel rétegezéséhez korlátlan sávszélesség.
+**A**. Ezekben az esetekben nem sávszélesség-vezérlés alkalmazzák. Ez azt jelenti, hogy az eszköz használhatja-e korlátlan sávszélesség, amikor az adatok felhőbeli rétegezés.
 
-**A Q**. Módosíthatja a sávszélesség-sablonok offline-eszközön?
+**Q**. Módosíthatja a sávszélességsablonok egy offline eszközön?
 
-**A**. Csak akkor tudja módosítani a sávszélesség-sablonok a kötetek tárolók, ha a megfelelő eszköz offline állapotban.
+**A**. Nem tudja módosítani a kötetek tárolók a sávszélességsablonok, ha a megfelelő eszköz offline állapotban.
 
-**A Q**. Szerkesztheti társított kötettároló, ha a társított kötetek offline sávszélességsablon?
+**Q**. Szerkeszthet egy sávszélességsablont társított kötettároló, ha a társított kötetek offline állapotban?
 
-**A**. A kötettároló, amelynek a kötetek offline módban társított sávszélességsablon módosíthatja. Vegye figyelembe, hogy kötetek offline módban, amikor nincsenek adatok fog helyezhető el az eszközről a felhőbe.
+**A**. Módosíthatja egy sávszélességsablont, egy kötettárolót, amelynek a kötetek offline állapotban társítva. Vegye figyelembe, hogy kötetek offline állapotban, amikor nincsenek adatok rétegezettek lesznek az eszközről a felhőbe.
 
-**A Q**. Törölheti alapértelmezett sablont?
+**Q**. Alapértelmezett sablon is törli?
 
-**A**. Bár az alapértelmezett sablon törléséhez nincs ehhez jó ötlet. Az alapértelmezett sablont, többek között a szerkesztett verziók használatát a rendszer nyomon követi. A nyomon követési adatok elemzése és az idő folyamán fejlesztésére szolgálnak az alapértelmezett sablont.
+**A**. Alapértelmezett sablon törölheti, bár nincs ehhez célszerű. Az alapértelmezett sablon, többek között a szerkesztett verziók,-használatát, a rendszer nyomon követi. A nyomon követési adatok elemzett és az idő folyamán, javításához használja fel az alapértelmezett sablont.
 
-**A Q**. Hogyan meg, meg, hogy a sávszélesség-sablonokat kell módosítani?
+**Q**. Hogyan meg, hogy, hogy a sávszélességsablonok módosítani kell-e?
 
-**A**. A jelek, hogy módosítania kell a sávszélesség-sablonok egyik jelent meg, a hálózati lelassul, vagy egy napon belül több alkalommal fogyasztja indításakor. Ez akkor fordul elő, ha figyelni a tárolás és a használati hálózati i/o-teljesítmény- és hálózati átviteli diagramok megtekintésével.
+**A**. A jelentkezik, hogy módosítania a sávszélességsablonok egyik jelennek meg a hálózat lelassul, vagy egy nap alatt több alkalommal fogyasztja indításakor. Ha ez történik, figyelheti a storage és a használati hálózati megnézzük az i/o-teljesítmény- és hálózati átviteli sebesség diagramok.
 
-A hálózati átviteli adatokból azonosítsa a nap és a kötet-tárolókban, a hálózati szűk következik be. Ha ez történik, ha az adatokat a felhőbe alatt többszintű (Ez az információ lekérése az összes kötet tárolókat felhőbe eszköz i/o műveleteinek teljesítménye), akkor a sávszélesség-sablonokat a kötettárolók társított módosítani kell.
+A hálózati átviteli sebesség adatokból azonosítsa a nap és a hálózati szűk keresztmetszetet következik be kötettárolók idején. Ha ez történik, ha van folyamatban rétegzett adatok a felhőben (ezeket az információkat kérhet az eszköz – felhő minden kötettároló i/o-teljesítmény), majd a sávszélességsablonok a kötettárolók társított módosítani kell.
 
-Miután a módosított sablonok használatban van, szüksége lesz a hálózat újra az jelentős késések fordulnak elő. Ha ezek továbbra is létezik, majd szüksége lesz a sávszélesség-sablonok le újra.
+Miután a módosított sablonok használatban vannak, szüksége lesz a hálózat újra az jelentős késés érdekében. Ha ezek továbbra is létezik, majd kell gondolnia a sávszélességsablonok.
 
-**A Q**. Mi történik, ha az eszközön több kötettárolók ütemezi, hogy hozzon létre, de különböző korlátok alkalmazása az egyes?
+**Q**. Mi történik, ha az eszköz több kötettárolóba ütemezi, átfedés, de különböző korlátok vonatkoznak az egyes?
 
-**A**. Tegyük fel, hogy rendelkezik-e egy eszközön keresztül a 3 kötettárolók. Az ezekhez a tárolókhoz teljesen társított ütemezések átfedésben vannak. Az egyes tárolókban a használt sávszélesség korlátja esnek 15 MB/s, 5, 10 kulcsattribútumokkal. I/o előforduló összes ezekhez a tárolókhoz egyszerre, ha a 3 sávszélességkorlátok minimális alkalmazható: Ebben az esetben 5 MB/s, ezek i/o-kérelmek kimenő megosztás ugyanazon a várólistán.
+**A**. Tegyük fel, hogy a 3 olyan kötettárolókat eszközzel rendelkezik. Ezek a tárolók teljes mértékben társított ütemezéseket átfedik egymást. Az egyes tárolók a használt sávszélesség korlátja: 5, 10, és 15 MB/s jelölik. I/o az összes tárolók egy időben történnek, ha a minimális sávszélességi korlátozásait 3 lehet alkalmazni: Ebben az esetben az 5 MB/s, ezek kimenő i/o-kérelmek megosztása ugyanazt az üzenetsort.
 
-## <a name="best-practices-for-bandwidth-templates"></a>Gyakorlati tanácsok a sávszélesség-sablonok
+## <a name="best-practices-for-bandwidth-templates"></a>Sávszélességsablonok ajánlott eljárásai
 
-Kövesse az alábbi gyakorlati tanácsok a StorSimple eszközhöz:
+Kövesse az ajánlott eljárások a StorSimple eszközhöz:
 
-* Sávszélesség-sablonok konfigurálása az eszközön a változó szabályozásának engedélyezése a hálózati átviteli az eszköz által a különböző napszakokban. A mentési ütemezések használata esetén a sávszélesség sablonok csúcsidőn hatékonyan használhatják fel a felhőműveletek további hálózati sávszélességet.
-* A központi telepítés és a szükséges helyreállítási idő célkitűzése (RTO) alapján adott üzembe helyezéséhez szükséges tényleges sávszélességet is kiszámíthatja.
+* A sávszélesség-sablonok konfigurálása az eszközön a változó szabályozásának engedélyezése a hálózati átviteli által az eszközt különböző időpontokban, a nap. A sávszélességsablonok mentési ütemezések együtt használva csúcsidőn hatékonyan használhatják a felhőbeli műveletek további hálózati sávszélességet.
+* Az üzembe helyezés és a szükséges helyreállítási időre vonatkozó célkitűzés (RTO) alapján adott telepítéshez szükséges tényleges sávszélesség kiszámításához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ [felügyelete a StorSimple eszközt a StorSimple Device Manager szolgáltatással](storsimple-8000-manager-service-administration.md).
+Tudjon meg többet [a StorSimple-Eszközkezelő szolgáltatás használata a StorSimple-eszköz felügyeletéhez](storsimple-8000-manager-service-administration.md).
 

@@ -1,18 +1,19 @@
 ---
 title: A MongoDB dokumentumra vonatkozó TTL-funkciók az Azure Cosmos DB-ben
 description: Ismerje meg, az élő értékét az Azure Cosmos DB MongoDB API használatával automatikusan kiürítése őket a rendszer bizonyos idő után dokumentumok idő beállítása.
-author: sivethe
-ms.author: sivethe
+author: rockboyfor
+ms.author: v-yeche
 ms.service: cosmos-db
 ms.devlang: javascript
 ms.topic: quickstart
-ms.date: 12/26/2018
+origin.date: 12/26/2018
+ms.date: 03/18/2019
 ms.openlocfilehash: cd6cb68014eea00077328f39c2c9bf0a1f7fb679
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57436289"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61330681"
 ---
 # <a name="expire-data-with-azure-cosmos-dbs-api-for-mongodb"></a>Hamarosan lejár az adatokat az Azure Cosmos DB API a mongodb-hez
 
@@ -38,7 +39,7 @@ A fenti példában lévő parancs létrehoz egy TTL-funkcióval rendelkező inde
 > [!NOTE]
 > A **_ts** egy Cosmos DB-specifikus mező, amely nem érhető el a MongoDB-ügyfelekből. Ez egy fenntartott (rendszer-) tulajdonság, amely tartalmazza a dokumentum utolsó módosításának időbélyegét.
 >
-    
+
 Egy további C#-példa: 
 
 ```csharp
@@ -72,6 +73,7 @@ globaldb:PRIMARY> db.coll.insert({id:1, location: "Paris", ttl: NumberLong(21474
 
 ## <a name="how-to-activate-the-per-document-ttl-feature"></a>A dokumentumonkénti TTL-funkció aktiválása
 
+<!-- Verify successfully on mongodb TTL-->
 A dokumentumra vonatkozó TTL szolgáltatás is aktiválni az Azure Cosmos DB API a mongodb-hez.
 
 ![Képernyőkép a portálon a Per-dokumentum TTL szolgáltatás aktiválása](./media/mongodb-ttl/mongodb_portal_ttl.png) 
@@ -79,3 +81,5 @@ A dokumentumra vonatkozó TTL szolgáltatás is aktiválni az Azure Cosmos DB AP
 ## <a name="next-steps"></a>További lépések
 * [Adatok az Azure Cosmos DB automatikusan az élettartam elévülése](../cosmos-db/time-to-live.md)
 * [A mongodb-hez készült Azure Cosmos DB API-val konfigurált Cosmos database indexelése](../cosmos-db/mongodb-indexing.md)
+
+<!-- Update_Description: update meta properties, wording update -->

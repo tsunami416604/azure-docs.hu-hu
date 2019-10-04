@@ -1,26 +1,26 @@
 ---
-title: A Bing Web Search API válasz struktúra és válasz típusa
+title: Bing Web Search API a válasz szerkezete és a válaszok típusai
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg a válasz típusát és a Bing Web Search API által használt válaszokat.
+description: További információ a Bing Web Search API által használt válasz típusokról és válaszokról.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: conceptual
-ms.date: 02/12/2019
+ms.date: 06/25/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 07fb655af25fe590effcb885e7b366346724b50a
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: f19454868ad7be21777d725f61e09a84f6c7a313
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56232892"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854726"
 ---
-# <a name="bing-web-search-api-response-structure-and-answer-types"></a>A Bing Web Search API válasz struktúra és válasz típusa  
+# <a name="bing-web-search-api-response-structure-and-answer-types"></a>Bing Web Search API a válasz szerkezete és a válaszok típusai  
 
-Ha egy keresési kérelmet küld a Bing Web Search, akkor adja vissza egy [ `SearchResponse` ](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#searchresponse) objektum a válasz törzsében. Az objektum, a Bing volt a lekérdezés minden válasz mező tartalmazza. Ebben a példában egy Válaszobjektum mutatja be, ha a Bing minden választ ad vissza:
+Amikor keresési kérelmet küld Bing Web Search, a válasz törzsében egy [`SearchResponse`](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse) objektumot ad vissza. Az objektum tartalmaz egy mezőt minden olyan válaszhoz, amelyet a Bing meghatározott a lekérdezés szempontjából. Ez a példa egy Response objektumot mutat be, ha a Bing az összes választ adta vissza:
 
 ```json
 {
@@ -38,11 +38,13 @@ Ha egy keresési kérelmet küld a Bing Web Search, akkor adja vissza egy [ `Sea
 }, ...
 ```
 
-Általában a Bing webes keresés a válaszok egy részhalmazát adja vissza. Például, ha a lekérdezési kifejezés volt *hajózási dinghies*, a válasz tartalmazhat `webPages`, `images`, és `rankingResponse`. Kivéve, ha használt már [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#responsefilter) weblapok kiszűréséhez, a válasz mindig tartalmazza a `webpages` és `rankingResponse` válaszokat.
+A Bing Web Search általában a válaszok egy részhalmazát adja vissza. Ha például a lekérdezési kifejezés a *vitorlázás mentőcsónakokra*, a válasz a, a `webPages`és `images` `rankingResponse`a is lehet. Hacsak nem használta a [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) a weblapok kiszűrésére, a válasz mindig tartalmazza a és `webpages` `rankingResponse` a válaszokat.
 
-## <a name="webpages-answer"></a>Weblapok válasz
+[!INCLUDE [cognitive-services-bing-url-note](../../../includes/cognitive-services-bing-url-note.md)]
 
-A [weblapok](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#webanswer) választ, amelyek a Bing webes keresés határozza meg, voltak-e a lekérdezés a mutató hivatkozások listáját tartalmazza. Minden egyes [weblap](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#webpage) a lista tartalmazza: a lap neve, URL-címét, meg az URL-CÍMÉT, a tartalmat, és a Bing a tartalom található dátum rövid leírását.
+## <a name="webpages-answer"></a>A weblapok válasza
+
+A [](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webanswer) weboldalok válasza tartalmazza a lekérdezéssel kapcsolatban Bing Web Search weblapokra mutató hivatkozások listáját. A [](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webpage) lista minden weboldala tartalmazni fogja a következőt: az oldal neve, URL-címe, MEGJELENÍTett URL-címe, a tartalom rövid leírása, valamint a Bing megtalálta a tartalmat.
 
 ```json
 {
@@ -55,7 +57,7 @@ A [weblapok](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-
 }, ...
 ```
 
-Használat `name` és `url` egy hivatkozás, amely végigvezeti a felhasználót a képernyőn látható weblapon létrehozásához.
+A `name` és`url` a használatával hozzon létre egy hiperhivatkozást, amely a felhasználót a weblapra viszi.
 
 <!-- Remove until this can be replaced with a sanitized version.
 The following shows an example of how you might display the webpage in a search results page.
@@ -63,9 +65,9 @@ The following shows an example of how you might display the webpage in a search 
 ![Rendered webpage example](./media/cognitive-services-bing-web-api/bing-rendered-webpage-example.PNG)
 -->
 
-## <a name="images-answer"></a>Képek válasz
+## <a name="images-answer"></a>A képek válasza
 
-A [lemezképek](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#images) válasz Bing úgy Gondoltuk, is a lekérdezést a rendszerképek listáját tartalmazza. Minden egyes [kép](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#image) a lista tartalmazza az URL-címét a lemezképet, annak méretét, a dimenziók és a kódolási formátum. A képobjektum a kép miniatűrjének URL-címét, illetve a miniatűr méreteit is tartalmazza.
+A [lemezképek](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) válasza tartalmazza azoknak a lemezképeknek a listáját, amelyeket a Bing gondolt a lekérdezés szempontjából. A listában szereplő összes [rendszerkép](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#image) tartalmazza a rendszerkép URL-címét, a méretét, a hozzá tartozó dimenziókat és a kódolási formátumát. A képobjektum a kép miniatűrjének URL-címét, illetve a miniatűr méreteit is tartalmazza.
 
 ```json
 {
@@ -91,25 +93,25 @@ A [lemezképek](https://docs.microsoft.com/rest/api/cognitiveservices/bing-image
 }, ...
 ```
 
-A felhasználó eszközén, attól függően, általában jeleníti meg, a miniatűrök, melyre a felhasználó számára egy részhalmazát [oldalon keresztül](paging-webpages.md) a fennmaradó lemezképeket.
+A felhasználó eszközének függvényében általában a miniatűrök egy részhalmazát jeleníti meg, amely a felhasználó számára a többi rendszerképen [keresztüli lapra](paging-webpages.md) mutat.
 
 <!-- Remove until this can be replaced with a sanitized version.
 ![List of thumbnail images](./media/cognitive-services-bing-web-api/bing-web-image-thumbnails.PNG)
 -->
 
-A miniatűrt ki is bonthatja, ha a felhasználó fölé viszi az egérmutatót. Ügyeljen arra, hogy kibontáskor megjelenítse a kép forrását. Például oly módon, a tároló `hostPageDisplayUrl` és türközve legyen az kép alatt. A miniatűrök átméretezésével kapcsolatos információkért lásd a [miniatűrök átméretezésével és körülvágásával](./resize-and-crop-thumbnails.md) foglalkozó szakaszt.
+A miniatűrt ki is bonthatja, ha a felhasználó fölé viszi az egérmutatót. Ügyeljen arra, hogy kibontáskor megjelenítse a kép forrását. Ha például Kinyeri a gazdagépet a `hostPageDisplayUrl` -ból, és megjeleníti azt a rendszerkép alatt. A miniatűrök átméretezésével kapcsolatos információkért lásd a [miniatűrök átméretezésével és körülvágásával](./resize-and-crop-thumbnails.md) foglalkozó szakaszt.
 
 <!-- Remove until this can be replaced with a sanitized version.
 ![Expanded view of thumbnail image](./media/cognitive-services-bing-web-api/bing-web-image-thumbnail-expansion.PNG)
 -->
 
-Ha a felhasználó rákattint a miniatűr, `webSearchUrl` a felhasználót, hogy a Bing keresési eredményeket megjelenítő lap lemezképek, a képek egy kollázsra tartalmazó érvénybe.
+Ha a felhasználó a miniatűrre kattint, `webSearchUrl` a használatával felveheti a felhasználót a rendszerképek keresésének eredményei lapra, amely a képek kollázsát tartalmazza.
 
-A kép válasz és képek részleteiért lásd: [Image Search API](../bing-image-search/search-the-web.md).
+A képválasztó és a lemezképek részleteiért lásd: [Image Search API](../bing-image-search/search-the-web.md).
 
-## <a name="related-searches-answer"></a>Kapcsolódó keresések válasz
+## <a name="related-searches-answer"></a>Kapcsolódó keresések válasza
 
-A [relatedSearches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#searchresponse-relatedsearches) válasz más felhasználók által végzett a legnépszerűbb kapcsolódó lekérdezések listáját tartalmazza. Minden egyes [lekérdezés](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#query_obj) a lista tartalmazza a lekérdezési karakterlánc (`text`), egy lekérdezési karakterláncot a találatok kiemelése karakter (`displayText`), és a egy URL-címet (`webSearchUrl`) a Bing keresési eredmények oldalát az adott lekérdezés.
+A [relatedSearches](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse-relatedsearches) válasz tartalmazza a más felhasználók által készített legnépszerűbb kapcsolódó lekérdezések listáját. A listában szereplő összes [lekérdezés](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query_obj) tartalmaz egy lekérdezési karakterláncot (`text`), egy lekérdezési karakterláncot a találatok kiemelésével (`displayText`)`webSearchUrl`, valamint egy URL-címet () a Bing keresési eredmények oldalához a lekérdezéshez.
 
 ```json
 {
@@ -119,17 +121,17 @@ A [relatedSearches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-w
 }, ...
 ```
 
-Használja a `displayText` lekérdezési karakterlánc és a `webSearchUrl` URL-címet, amely a felhasználót, hogy a Bing search hivatkozás létrehozása oldal, a kapcsolódó lekérdezés eredménye. Is használhatja a `text` lekérdezési karakterlánc a saját webes keresési API-lekérdezés, és megjeleníti az eredményeket.
+A lekérdezési karakterlánc és az `webSearchUrl` URL-cím használatával hozzon létre egy hiperhivatkozást, amely a felhasználót a kapcsolódó lekérdezés Bing Search Results lapjára viszi. `displayText` Használhatja a `text` lekérdezési karakterláncot a saját Web Search API-lekérdezésében is, és saját maga is megjelenítheti az eredményeket.
 
-További információ a kiemelését jelölők kezelése `displayText`, lásd: [találatok kiemelése](./hit-highlighting.md).
+További információ a kiemelési jelölők `displayText`kezeléséről: találatok kiemelése. [](../bing-web-search/hit-highlighting.md)
 
-Az alábbiakban látható egy példa a kapcsolódó lekérdezések használatát a Bing.com.
+Az alábbi példa a Bing.com-ben kapcsolódó lekérdezések használatát mutatja be.
 
-![Kapcsolódó keresések erre példa a Bingen](./media/cognitive-services-bing-web-api/bing-web-rendered-relatedsearches.GIF)
+![Kapcsolódó keresések – példa a Bingre](./media/cognitive-services-bing-web-api/bing-web-rendered-relatedsearches.GIF)
 
-## <a name="videos-answer"></a>Videók válasz
+## <a name="videos-answer"></a>Videók válasza
 
-A [videók](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videos) válasz videókat a Bing úgy Gondoltuk, is a lekérdezést a listáját tartalmazza. Minden egyes [videó](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#video) a lista tartalmazza az URL-címét a videót, az időtartam, a dimenziók és a kódolási formátum. A videóobjektum a videó miniatűrjének URL-címét, illetve a miniatűr méreteit is tartalmazza.
+A [videók](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) válasza azon videók listáját tartalmazza, amelyeket a Bing gondolt a lekérdezés szempontjából. A [](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video) lista minden videója tartalmazza a videó URL-címét, annak időtartamát, a hozzá tartozó dimenziókat és a kódolási formátumát. A videóobjektum a videó miniatűrjének URL-címét, illetve a miniatűr méreteit is tartalmazza.
 
 ```json
 {
@@ -161,13 +163,13 @@ A [videók](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api
 }, ...
 ```
 
-A felhasználó eszközén, attól függően, általában jeleníti meg, a videókat, melyre a felhasználó számára a fennmaradó videók egy részét. A videó hossza, a videó miniatűrjét jeleníthető meg a leírást (név) és tesznek elérhetővé; ilyenek (közzétevő).
+A felhasználó eszközének függvényében általában a videók egy részhalmazát jeleníti meg egy olyan lehetőséggel, amellyel a felhasználó megtekintheti a többi videót. Megjelenítheti a videó miniatűrjét a videó hosszával, a leírással (név) és a hozzárendeléssel (kiadó).
 
 <!-- Remove until this can be replaced with a sanitized version.
 ![List of video thumbnails](./media/cognitive-services-bing-web-api/bing-web-video-thumbnails.PNG)
 -->
 
-Ahogy a felhasználó rámutat a miniatűr használhatja `motionThumbnailUrl` lejátszani a videót egy miniatűr verzióját. Ügyeljen arra, hogy megjelenítse a mozgó miniatűr forrását.
+Ahogy a felhasználó a miniatűr fölé viszi, a videó miniatűr `motionThumbnailUrl` verzióját is használhatja. Ügyeljen arra, hogy megjelenítse a mozgó miniatűr forrását.
 
 <!-- Remove until this can be replaced with a sanitized version.
 ![Motion thumbnail of a video](./media/cognitive-services-bing-web-api/bing-web-video-motion-thumbnail.PNG)
@@ -175,15 +177,15 @@ Ahogy a felhasználó rámutat a miniatűr használhatja `motionThumbnailUrl` le
 
 Ha a felhasználó a miniatűrre kattint, a következő videómegtekintési lehetőségek állnak rendelkezésre:
 
-- Használat `hostPageUrl` a videó megtekintéséhez a gazdagép-webhelyen (például YouTube-on)
-- Használat `webSearchUrl` a videó megtekintéséhez a Bing video böngészőben
-- Használat `embedHtml` a videó beágyazása a saját felhasználói élmény
+- A `hostPageUrl` (z) használatával megtekintheti a gazdagép webhelyén található videót (például YouTube)
+- A `webSearchUrl` használatával megtekintheti a videót a Bing videó böngészőben
+- A `embedHtml` videó saját felhasználói élményben való beágyazására használható
 
-A videó válasz és videók kapcsolatos részletekért lásd: [Video Search API](../bing-video-search/search-the-web.md).
+A videó válaszával és a videókkal kapcsolatos részletekért lásd: [Video Search API](../bing-video-search/search-the-web.md).
 
-## <a name="news-answer"></a>Hírek válasz
+## <a name="news-answer"></a>Hírek válasza
 
-A [hírek](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#news) választ, amely a Bing úgy Gondoltuk, is a lekérdezést a hírek listáját tartalmazza. A lista minden [cikke](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#newsarticle) tartalmazza a cikk nevét, leírását és a cikket tartalmazó eredeti webhely URL-címét. Ha a cikk tartalmaz képet, az objektum tartalmazza a kép miniatűrjét.
+A [Hírek](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#news) válasza tartalmazza azon Hírek listáját, amelyeket a Bing gondolt a lekérdezésre. A lista minden [cikke](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) tartalmazza a cikk nevét, leírását és a cikket tartalmazó eredeti webhely URL-címét. Ha a cikk tartalmaz képet, az objektum tartalmazza a kép miniatűrjét.
 
 ```json
 {
@@ -206,7 +208,7 @@ A [hírek](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v
 }, ...
 ```
 
-Attól függően, a felhasználó eszközén egy részét a hírek, melyre a felhasználó a fennmaradó cikkek jeleníthető meg. Használja a `name` és az `url` mezőket egy hivatkozás létrehozásához, amely átirányítja a felhasználót a cikkhez az eredeti webhelyen. Ha a cikk tartalmaz egy képet, ellenőrizze a kattintható rendszerképpel `url`. Ügyeljen arra, hogy megjelenítse a cikk forrását a `provider` használatával.
+A felhasználó eszköztől függően megtekintheti a cikkek egy részhalmazát, amely lehetőséget biztosít a felhasználó számára a fennmaradó cikkek megtekintésére. Használja a `name` és az `url` mezőket egy hivatkozás létrehozásához, amely átirányítja a felhasználót a cikkhez az eredeti webhelyen. Ha a cikk tartalmaz egy rendszerképet, a képfájlt a `url`használatával lehet kijelölni. Ügyeljen arra, hogy megjelenítse a cikk forrását a `provider` használatával.
 
 <!-- Remove until this can be replaced with a sanitized version.
 The following shows an example of how you might display articles in a search results page.
@@ -214,15 +216,15 @@ The following shows an example of how you might display articles in a search res
 ![List of news articles](./media/cognitive-services-bing-web-api/bing-web-news-list.PNG)
 -->
 
-További hírek válasz és hírek kapcsolatos információkért lásd: [News Search API](../bing-news-search/search-the-web.md).
+A hírek megválaszolásával és cikkeivel kapcsolatos részletekért lásd: [News Search API](../bing-news-search/search-the-web.md).
 
 ## <a name="computation-answer"></a>Számítási válasz
 
-Ha a felhasználó egy kifejezésnek vagy egység átalakítás lekérdezést ad, a válasz tartalmazhat egy [számítási](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#computation) választ. A `computation` válasz tartalmazza a normalizált kifejezés és az eredményt.
+Ha a felhasználó egy matematikai kifejezést vagy egy egység átalakítási lekérdezést ír be, a válasz [számítási](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#computation) választ tartalmazhat. A `computation` válasz a normalizált kifejezést és annak eredményét tartalmazza.
 
-Egység átalakítás lekérdezés egy lekérdezést, amely egy egység alakítja át egy másik. Például *10 méterben hány feet?* vagy *hány evőkanállá egy 1 és 4 Cup?*
+Az egység-átalakítási lekérdezés egy olyan lekérdezés, amely átalakítja az egyik egységet egy másikra. Például hány *láb van 10 méterben?* vagy hány *evőkanál egy 1/4-kupában?*
 
-Az alábbi látható a `computation` így *10 méterben hány feet?*
+Az alábbiakban a `computation` *10 méteres számú láb közül* a válasz látható?
 
 ```json
 "computation": {
@@ -232,7 +234,7 @@ Az alábbi látható a `computation` így *10 méterben hány feet?*
 }, ...
 ```
 
-A következő példát matematikai lekérdezéseket és a kapcsolódó `computation` válaszokat.
+Az alábbiakban a matematikai lekérdezésekre és a hozzájuk `computation` kapcsolódó kérdésekre mutatunk példákat.
 
 ```
 Query: (5+3)(10/2)+8
@@ -286,53 +288,53 @@ Encoded query: 8^2%2B11^2-2*8*11*cos%2837%29
 }
 ```
 
-A kifejezésnek a következő szimbólumokat tartalmazhatja:
+A matematikai kifejezések a következő szimbólumokat tartalmazhatják:
 
 |Szimbólum|Leírás|
 |------------|-----------------|
 |+|Hozzáadás|
-|-|Kivonás|
-|/|körzet|
+|-|Kivonási|
+|/|Osztály|
 |*|Szorzás|
-|^|Energiagazdálkodási|
-|!|Faktoriális|
+|^|Power|
+|!|Faktoriálisát|
 |.|Decimal|
-|()|Sorrend-csoportosítás|
+|()|Sorrend csoportosítása|
 |[]|Függvény|
 
-A kifejezésnek a következő állandókat tartalmazhatnak:
+A matematikai kifejezések a következő állandókat tartalmazhatják:
 
 |Szimbólum|Leírás|
 |------------|-----------------|
-|Pi|3.14159...|
-|Párhuzamossági|Párhuzamossági|
-|I|Képzeletbeli száma|
-|e|e, 2.71828...|
-|GoldenRatio|Hamisított Kerberos arány, 1.61803...|
+|PI|3.14159...|
+|Fokú|Fokú|
+|I|Képzeletbeli szám|
+|e|e, 2,71828...|
+|GoldenRatio|Arany arány, 1,61803...|
 
-Matematikai kifejezés tartalmazhatja a következő funkciókat:
+A matematikai kifejezések a következő függvényeket tartalmazhatják:
 
 |Szimbólum|Leírás|
 |------------|-----------------|
-|Rendezés|Négyzetgyök|
-|Sin[x], Cos[x], Tan[x]<br />CSC [x], [x], mp Cot [x]|Trigonometriai függvények (argumentumokkal kifejezve)|
-|ArcSin[x], ArcCos[x], ArcTan[x]<br />ArcCsc [x], [x], ArcSec ArcCot [x]|Más néven inverz trigonometriai függvények (eredményt adó kifejezve)|
+|Rendezés|Szögletes gyökér|
+|Sin [x], cos [x], Tan [x]<br />CSC [x], MP [x], gyermekágy [x]|Trigonometriai függvények (radiánban megadott argumentumokkal)|
+|ArcSin [x], ArcCos [x], ArcTan [x]<br />ArcCsc [x], ArcSec [x], ArcCot [x]|Inverz trigonometriai függvények (radiánban adja meg az eredményt)|
 |Exp [x], E ^ x|Exponenciális függvény|
-|Log[x]|Természetes alapú logaritmus|
-|Sinh[x], Cosh[x], Tanh[x]<br />Csch [x], [x], Sech Coth [x]|Hiperbolikus függvények|
-|ArcSinh [x], [x], ArcCosh ArcTanh [x]<br />ArcCsch [x], [x], ArcSech ArcCoth [x]|Más néven Inverz hiperbolikus függvények|
+|Napló [x]|Természetes alapú logaritmus|
+|Sinh [x], COSH [x], TANH [x]<br />Csch [x], Sech [x], Coth [x]|Hiperbolikus függvények|
+|ArcSinh [x], ArcCosh [x], ArcTanh [x]<br />ArcCsch [x], ArcSech [x], ArcCoth [x]|Inverz hiperbolikus függvények|
 
-(A példában, 4 x + 6 = 18., ahol az x funkciófrissítés változó) változókat tartalmazó matematikai kifejezések használata nem támogatott.
+A változókat tartalmazó matematikai kifejezések (például 4x + 6 = 18, ahol az x változó) nem támogatottak.
 
 ## <a name="timezone-answer"></a>Időzóna-válasz
 
-Ha a felhasználó sikeresen megadja egy idő- vagy lekérdezést, a válasz tartalmazhat egy [időzóna](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#timezone) választ. Ez a válasz explicit vagy implicit lekérdezéseket támogatja. Az implicit lekérdezést például *eldöntve is ez?*, adja vissza a helyi idő a felhasználó földrajzi helye alapján. Egy explicit lekérdezés például *eldöntve budapesti?*, Seattle, WA adja vissza a helyi idő.
+Ha a felhasználó időpontra vagy dátumra vonatkozó lekérdezést ad meg, a [](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#timezone) válasz időzóna-választ is tartalmazhat. Ez a válasz implicit vagy explicit lekérdezéseket támogat. Egy implicit lekérdezés, például *mennyi idő van?* , a felhasználó tartózkodási helye alapján adja vissza a helyi időt. Egy explicit lekérdezés, például hogy *milyen idő van Seattle-ben?* , a helyi időt adja vissza Seattle, WA esetében.
 
-A `timeZone` választ biztosít a megadott helyen a helyen, a jelenlegi UTC szerinti dátuma és ideje nevét, és az UTC eltolás. Ha a hely határain belül több időzónában van, a válasz tartalmazza az aktuális UTC szerinti dátuma és időpontja belül az összes időzóna. Például két időzóna Florida állapot alá tartozik, mert a válasz tartalmazza a helyi dátum és idő mindkét időzónákat.  
+A `timeZone` válasz megadja a hely nevét, a jelenlegi UTC dátumot és időt a megadott helyen, valamint az UTC eltolását. Ha a hely határa több időzónán belül van, a válasz a határon belüli összes időzóna aktuális UTC-dátumát és időpontját tartalmazza. Például, mivel a floridai állam két időzónán belül esik, a válasz a helyi dátumot és időpontot tartalmazza mindkét időzónában.  
 
-A lekérdezési kérelmek az idő, egy állam vagy ország, ha a Bing meghatározza, hogy a hely földrajzi határ elsődleges város, és visszaadja a a `primaryCityTime` mező. Ha a határt több időzónákat tartalmaz, a fennmaradó időzónák rendszer adja vissza a `otherCityTimes` mező.
+Ha a lekérdezés egy állam vagy ország/régió időpontját kéri, a Bing meghatározza az elsődleges várost a hely földrajzi határán belül, és visszaadja azt `primaryCityTime` a mezőben. Ha a határ több időzónát tartalmaz, a rendszer a hátralévő időzónákat adja `otherCityTimes` vissza a mezőben.
 
-Ez a példa bemutatja, hogy a visszaadandó lekérdezi a `timeZone` választ.
+Az alábbi példákban a `timeZone` választ visszaadó lekérdezések láthatók.
 
 ```
 Query: What time is it?
@@ -417,7 +419,7 @@ Query: What time is it in the U.S.
 
 ## <a name="spellsuggestion-answer"></a>SpellSuggestion válasz
 
-Ha a Bing határozza meg, hogy a felhasználó lehet, hogy rendelkezik szánt más kereséséhez, a válasz tartalmazza a [SpellSuggestions](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#spellsuggestions) objektum. Például, ha a felhasználó keres *carlos toll*, a Bing határozhatja meg, hogy a felhasználó nagy valószínűséggel célja ehelyett Carlos Pena keresése (a mások által az elmúlt keresések alapján *carlos toll*). Az alábbiakban látható egy példa helyesírás választ.
+Ha a Bing azt állapítja meg, hogy a felhasználó nem keres valami mást, a válasz tartalmaz egy [SpellSuggestions](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#spellsuggestions) objektumot. Ha például a felhasználó *Carlos*-tollat keres, a Bing azt is meghatározhatja, hogy a felhasználó valószínűleg a Carlos Pena keresését tervezi (a korábbi, *Carlos Pen*-beli keresések alapján). A következő példa egy helyesírási választ mutat be.
 
 ```json
 "spellSuggestions": {
@@ -429,31 +431,27 @@ Ha a Bing határozza meg, hogy a felhasználó lehet, hogy rendelkezik szánt m�
 }, ...
 ```
 
-A következő bemutatja, hogyan Bing használja-e a helyesírási javaslatot.
-
-![A Bing helyesírás-ellenőrzés javaslat példa](./media/cognitive-services-bing-web-api/bing-web-spellingsuggestion.GIF)  
-
 ## <a name="response-headers"></a>Válaszfejlécek
 
-A Bing Web Search API érkező válaszokat a következő fejléceket tartalmazza:
+A Bing Web Search API által küldött válaszok a következő fejléceket tartalmazhatják:
 
 |||
 |-|-|
-|`X-MSEdge-ClientID`|A Bing a felhasználó rendelkezik hozzárendelt egyedi azonosítója|
-|`BingAPIs-Market`|A piacon, amellyel a kérés teljesítéséhez|
-|`BingAPIs-TraceId`|A Bing API-kiszolgálón (a támogatási) a kérés a naplóbejegyzés|
+|`X-MSEdge-ClientID`|A Bing által a felhasználóhoz hozzárendelt egyedi azonosító|
+|`BingAPIs-Market`|A kérelem teljesítéséhez használt piac|
+|`BingAPIs-TraceId`|A kéréshez tartozó Bing API-kiszolgálón található naplóbejegyzés (támogatáshoz)|
 
-Különösen fontos megőrizni az ügyfél-Azonosítót, és küldje vissza a későbbi kérelmeket. Ha így tesz, a Keresés a környezetben, a keresési eredmények rangsorolása korábbi, és egységes felhasználói élmény is biztosítanak.
+Különösen fontos az ügyfél-azonosító megőrzése, és a későbbi kérelmekkel való visszaküldése. Ha ezt teszi, a keresés a rangsorolás keresési eredményei között a múltbeli kontextust fogja használni, és egységes felhasználói élményt nyújt.
 
-Azonban amikor a Bing Web Search API hívása JavaScript, a böngésző beépített biztonsági funkciókat (CORS) előfordulhat, hogy megakadályozzák a fér hozzá a következő fejlécek értékeit.
+Ha azonban a Bing Web Search API a JavaScriptből hívja meg, a böngésző beépített biztonsági funkciói (CORS) megakadályozhatják a fejlécek értékének elérését.
 
-A fejlécek eléréséhez, hogy a Bing Web Search API-kérelem CORS proxyn keresztül. Az ilyen proxyk válasza rendelkezik egy `Access-Control-Expose-Headers` fejléccel, amely engedélyezési listára teszi a válaszfejléceket, és elérhetővé teszi őket a JavaScript számára.
+A fejlécek eléréséhez a Bing Web Search API kérelmet CORS-proxyn keresztül teheti meg. Az ilyen proxyk válasza rendelkezik egy `Access-Control-Expose-Headers` fejléccel, amely engedélyezési listára teszi a válaszfejléceket, és elérhetővé teszi őket a JavaScript számára.
 
-Egyszerű, hogy a CORS-proxy telepítéséhez a [oktatóanyag alkalmazása](tutorial-bing-web-search-single-page-app.md) eléréséhez a választható ügyféltanúsítvány-fejléceket. Első lépésként [telepítse a Node.js-t](https://nodejs.org/en/download/), ha még nem tette meg. Majd adja meg a következő parancsot a parancssorba.
+Egyszerűen telepíthet CORS-proxyt, hogy az oktatóanyag- [alkalmazás](tutorial-bing-web-search-single-page-app.md) hozzáférhessen a választható ügyfél-fejlécekhez. Első lépésként [telepítse a Node.js-t](https://nodejs.org/en/download/), ha még nem tette meg. Ezután írja be a következő parancsot a parancssorba.
 
     npm install -g cors-proxy-server
 
-Ezután módosítsa a Bing Web Search API-végpont lévő a HTML-fájl:
+Ezután módosítsa a HTML-fájlban lévő Bing Web Search API végpontot a következőre:
 
     http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
 
@@ -463,22 +461,22 @@ Végül indítsa el a CORS-proxyt a következő paranccsal:
 
 Ne zárja be a parancsablakot, amíg használja az oktatóalkalmazást; az ablak bezárása leállítja a proxyt. A bővíthető HTTP-fejlécek szakaszában, a keresési eredmények alatt, most már az `X-MSEdge-ClientID` fejléc is megjelenik, és ellenőrizheti, hogy ugyanaz a fejléc szerepel-e minden kérésnél.
 
-## <a name="response-headers-in-production"></a>Éles környezetben válaszfejlécek
+## <a name="response-headers-in-production"></a>Válasz fejlécei éles környezetben
 
-Az előző válasz leírt CORS proxy megközelítés a fejlesztés, tesztelés és tanulás a megfelelő.
+Az előző válaszban leírt CORS-proxy módszer a fejlesztés, a tesztelés és a tanulás számára megfelelő.
 
-Éles környezetben egy kiszolgálóoldali parancsfájl ugyanabban a tartományban, mint a weblapot, a Bing Web Search API használó kell üzemelteti. Ez a szkript kell a weblap JavaScript-alapú kérésre API-hívásokat, és adja át az összes eredmény, beleértve a fejléceket, az ügyfélnek. A két erőforrás (oldal és parancsfájl) oszt meg egy eredeti adatforrást, mert a CORS nincs használatban, és a speciális fejlécek elérhetők a JavaScript a weblapon.
+Éles környezetben olyan kiszolgálóoldali parancsfájlt kell üzemeltetni, amely a Bing Web Search APIt használó weboldallal azonos tartományban található. A szkriptnek API-hívásokat kell tennie a weblap JavaScript-kérelme alapján, és át kell adnia az összes találatot, beleértve a fejléceket, vissza kell térnie az ügyfélhez. Mivel a két erőforrás (lap és parancsfájl) megoszt egy forrást, a rendszer nem használja a CORS, és a speciális fejlécek elérhetők a JavaScript számára a weblapon.
 
-Ez a megközelítés is védelmet nyújt az API-kulcsot a nyilvános való kitettség mivel csak a kiszolgálóoldali parancsprogram szükség van. A szkript egy másik módszer segítségével ellenőrizze, hogy a kérés engedélyezett.
+Ez a megközelítés az API-kulcs védelmét is védi a nyilvánosság számára, mivel csak a kiszolgálóoldali parancsfájlra van szükség. A parancsfájl egy másik módszert is használhat, hogy a kérelem engedélyezve legyen.
 
-A következő bemutatja, hogyan Bing használja-e a helyesírási javaslatot.
+Az alábbi ábrán látható, hogyan használja a Bing a helyesírási javaslatot.
 
-![A Bing helyesírás-ellenőrzés javaslat példa](./media/cognitive-services-bing-web-api/bing-web-spellingsuggestion.GIF)  
+![Bing – helyesírási javaslat – példa](./media/cognitive-services-bing-web-api/bing-web-spellingsuggestion.GIF)  
 
 ## <a name="next-steps"></a>További lépések  
 
-* Felülvizsgálat [kérelemszabályozás](throttling-requests.md) dokumentációját.  
+* Felülvizsgálati [kérelem szabályozási](throttling-requests.md) dokumentációja.  
 
 ## <a name="see-also"></a>Lásd még  
 
-* [A Bing Web Search API-referencia](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference)
+* [Bing Web Search API referenciája](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)

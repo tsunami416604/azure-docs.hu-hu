@@ -1,7 +1,7 @@
 ---
 title: A példában Jupyter notebookok
-titleSuffix: Azure Machine Learning service
-description: Keresse meg és Fedezze fel az Azure Machine Learning szolgáltatás a Pythonban példában Jupyter notebookok használatával.
+titleSuffix: Azure Machine Learning
+description: Megkeresheti és használhatja például a Jupyter jegyzetfüzeteket a Azure Machine Learning Python for SDK megismeréséhez.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,53 +9,54 @@ ms.topic: sample
 author: sdgilley
 ms.author: sgilley
 ms.reviewer: sgilley
-ms.date: 12/04/2018
+ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: b597d6efa87aa2811ce42f3315698acfa17426b2
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: dd93e4e621a4fd474283f788e2cf67b305a1be3d
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59548588"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997064"
 ---
-# <a name="use-jupyter-notebooks-to-explore-azure-machine-learning-service"></a>A Jupyter notebookok használata az Azure Machine Learning szolgáltatás megismeréséhez
+# <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>A Azure Machine Learning megismerése Jupyter notebookokkal
 
-Az Ön kényelme érdekében kialakította Jupyter Python notebookok segítségével ismerje meg az Azure Machine Learning szolgáltatás egy sorozatát. 
+A [Azure Machine learning jegyzetfüzetek tárháza](https://github.com/azure/machinelearningnotebooks) tartalmazza a legújabb Azure Machine learning Python SDK-mintákat. Ezek a Juypter-jegyzetfüzetek úgy vannak kialakítva, hogy segítsenek az SDK megismerésében, és modellként szolgálni a saját gépi tanulási projektekhez.
 
-Ismerje meg, hogyan lehet a szolgáltatás az a dokumentáció ezen a helyen, majd ezeket a notebookokat segítségével testre szabhatja őket az adott helyzethez. 
+Ez a cikk bemutatja, hogyan érheti el a tárházat az alábbi környezetekben:
 
-Az alábbi elérési utak egyik használhatja ezeket a notebookokat minta egy notebook server futtatásához.  Ha a kiszolgáló már fut, keresse meg az oktatóanyag-notebookjait **oktatóanyagok** mappát, vagy böngészhet a különböző szolgáltatásai **útmutatóval-to-használat – azureml** mappát.
+- [Azure Machine Learning notebook VM](#notebookvm)
+- [Saját notebook-kiszolgáló használata](#byo)
+- [Data Science Virtual Machine](#dsvm)
 
+> [!NOTE]
+> Miután klónozotta a tárházat, az **oktatóanyagok** mappában és a szolgáltatás-specifikus jegyzetfüzetekben találja a **használati útmutatóban** szereplő jegyzetfüzeteket a azureml mappában.
 
-## <a name="try-azure-notebooks-free-jupyter-notebooks-in-the-cloud"></a>Próbálja ki az Azure notebookok: Ingyenes Jupyter notebookok a felhőben
+<a name="notebookvm"></a>
+## <a name="get-samples-on-azure-machine-learning-notebook-vm"></a>Minták beolvasása Azure Machine Learning notebook virtuális gépen
 
-Nem kell mást Azure notebookok használatának megkezdéséhez. A [Azure Machine Learning SDK Pythonhoz készült](https://aka.ms/aml-sdk) már telepítve és konfigurálva van az Ön számára [Azure notebookok](https://notebooks.azure.com/). A telepítés és a jövőbeli frissítések automatikusan felügyelt Azure-szolgáltatások használatával.
-  
-[!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
+A minták megkezdésének legegyszerűbb módja az [oktatóanyag befejezése: Környezet és munkaterület](tutorial-1st-experiment-sdk-setup.md)beállítása. Ha elkészült, az SDK-val és a minta adattárral előre be kell töltenie egy dedikált jegyzetfüzet-kiszolgálót. Nincs szükség letöltésre vagy telepítésre.
 
+<a name="byo"></a>
 
-## <a name="use-a-data-science-virtual-machine-dsvm"></a>A Data Science virtuális gép (DSVM) használata
+## <a name="get-samples-on-your-notebook-server"></a>Minták beolvasása a notebook-kiszolgálón
 
-A [Azure Machine Learning SDK Pythonhoz készült](https://aka.ms/aml-sdk) és notebook server már telepítve és konfigurálva, a dsvm-hez. 
-
-Miután [hozzon létre egy DSVM](how-to-configure-environment.md#dsvm), ezeket a lépéseket használhatja a dsvm-hez a jegyzetfüzet futtatásához.
-
-[!INCLUDE [aml-dsvm-server](../../../includes/aml-dsvm-server.md)]
-
-
-## <a name="use-your-own-jupyter-notebook-server"></a>A saját Jupyter notebook server használata
-
-Ezek a lépések használatával hozzon létre egy helyi Jupyter Notebook kiszolgálót a számítógépen.
+Ha saját notebook-kiszolgálót szeretne a helyi fejlesztéshez, kövesse az alábbi lépéseket:
 
 [!INCLUDE [aml-your-server](../../../includes/aml-your-server.md)]
 
-A rövid útmutató a rövid útmutató és oktatóanyag jegyzetfüzetek futtatásához szükséges csomagokat telepíti.  Más mintafüzetek további összetevők lehet szükség.  Ezek az összetevők kapcsolatos további információkért lásd: [telepítse az Azure Machine Learning SDK Pythonhoz készült](https://docs.microsoft.com/python/api/overview/azure/ml/install).
+Ezek az utasítások a gyors üzembe helyezési és oktatóanyag-jegyzetfüzetekhez szükséges alap SDK-csomagokat telepítik. Más minta-jegyzetfüzetek esetében előfordulhat, hogy további összetevőket kell telepítenie. További információ: [install the Azure Machine learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/install).
+
+<a name="dsvm"></a>
+## <a name="get-samples-on-dsvm"></a>Minták beolvasása a DSVM
+
+A Data Science Virtual Machine (DSVM) egy testreszabott virtuálisgép-rendszerkép, amely kifejezetten az adatelemzéshez készült. Ha [létrehoz egy DSVM](how-to-configure-environment.md#dsvm), az SDK és a notebook-kiszolgáló telepítve van és konfigurálva van. Azonban továbbra is létre kell hoznia egy munkaterületet, és el kell végeznie a minta tárház klónozását.
+
+[!INCLUDE [aml-dsvm-server](../../../includes/aml-dsvm-server.md)]
 
 ## <a name="next-steps"></a>További lépések
 
-Fedezze fel a [GitHub-jegyzetfüzetek tárházat az Azure Machine Learning szolgáltatás](https://aka.ms/aml-notebooks)
+Ismerkedjen meg a [minta jegyzetfüzetekkel](https://aka.ms/aml-notebooks) , hogy megismerje, milyen Azure Machine learning teheti, vagy próbálja ki a következő oktatóanyagokat:
 
-Próbálja meg ezekben az oktatóanyagokban:
-+ [Betanítása és a egy kép osztályozási modell a MNIST üzembe helyezése](tutorial-train-models-with-aml.md)
+- [Betanítása és a egy kép osztályozási modell a MNIST üzembe helyezése](tutorial-train-models-with-aml.md)
 
-+ [Adatok előkészítése, és automatizált gépi tanulás a NYC taxi adatkészlet regressziós modell betanítása](tutorial-data-prep.md)
+- [Adatok előkészítése, és automatizált gépi tanulás a NYC taxi adatkészlet regressziós modell betanítása](tutorial-auto-train-models.md)

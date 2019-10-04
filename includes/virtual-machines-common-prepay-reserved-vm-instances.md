@@ -3,112 +3,138 @@ author: yashesvi
 ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
-ms.date: 04/13/2019
-ms.openlocfilehash: d9b9aae8bea323e5aac74a2e317b82d4cb43568f
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.date: 08/29/2019
+ms.openlocfilehash: 99263b7c7efee54381c9a7f624429b343dba49d0
+ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60118602"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70806096"
 ---
-# <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances"></a>Fizessen elő az Azure fenntartott VM-példányok a virtuális gépekkel
+# <a name="save-costs-with-azure-reserved-vm-instances"></a>Költségek megtakarítása Azure Reserved VM Instances
 
-Fizessen elő a virtuális gépekhez, és pénzt takaríthat meg az Azure Reserved Virtual Machine (VM) Instances. További információkért lásd: [Azure Reserved VM Instances ajánlat](https://azure.microsoft.com/pricing/reserved-vm-instances/).
+Ha egy Azure-beli fenntartott VM-példányra véglegesít, pénzt takaríthat meg. A foglalási kedvezményt a rendszer automatikusan alkalmazza a foglalási hatókörnek és attribútumoknak megfelelő futó virtuális gépek számára. A kedvezmények beszerzéséhez nincs szükség foglalások hozzárendelésére egy virtuális géphez. A fenntartott példányok vásárlása csak a virtuális gépek használatának számítási részét fedi le. Windows rendszerű virtuális gépek esetén a használati mérőszám két külön méterre oszlik. Van egy számítási mérőszám, amely ugyanaz, mint a Linux-mérő, és egy Windows IP-mérő. A vásárláskor megjelenő díjak csak a számítási költségekre vonatkoznak. A díjak nem tartalmazzák a Windows-szoftverek költségeit. További információ a szoftverekkel kapcsolatos költségekről: [a Azure Reserved VM instances nem tartalmazott szoftveres költségek](../articles/billing/billing-reserved-instance-windows-software-costs.md).
 
-Megvásárolhatja a fenntartott VM-példány a [az Azure portal](https://portal.azure.com). Egy példány vásárlása:
+## <a name="determine-the-right-vm-size-before-you-buy"></a>A virtuális gép megfelelő méretének meghatározása a vásárlás előtt
 
-- Meg kell egy tulajdonosi szerepkör legalább egy vállalati vagy használatalapú fizetéses előfizetésre.
-- Vállalati előfizetés esetén **fenntartott példányok hozzáadása** engedélyezve kell lennie a [a nagyvállalati szerződések portáljának](https://ea.azure.com). Vagy, ha ez a beállítás le van tiltva, az előfizetés egy nagyvállalati szerződés rendszergazdájának kell lennie.
-- A Cloud Solution Provider (CSP) program csak a felügyeleti ügynökök vagy értékesítési ügynökök is vásárolhatnak foglalást.
+A foglalás megvásárlása előtt meg kell határoznia a szükséges virtuális gép méretét. A következő szakaszban a virtuális gép megfelelő méretének meghatározásához talál segítséget.
 
-Rendszer automatikusan alkalmazza a foglalási kedvezményt a futó virtuális gépek, amelyek megfelelnek a Foglalás hatóköre és attribútumok számát. Frissítheti a keresztül a foglalási hatókört [az Azure portal](https://portal.azure.com), PowerShell, CLI, vagy az API-n keresztül.
+### <a name="use-reservation-recommendations"></a>Foglalási javaslatok használata
 
-## <a name="determine-the-right-vm-size-before-you-buy"></a>Határozza meg a megfelelő Virtuálisgép-méret, vásárlás előtt
+A foglalási javaslatok segítségével megadhatja a megvásárolni kívánt foglalásokat.
 
-Mielőtt vásárol egy foglalást, meg kell határoznia a szükséges virtuális gép méretét. Az alábbi szakaszok segítségével meghatározhatja, hogy a megfelelő Virtuálisgép-méretet.
+- A vásárlási javaslatok és a javasolt mennyiség akkor jelenik meg, ha egy virtuális gép számára fenntartott példányt vásárol a Azure Portal.
+- Azure Advisor az egyes előfizetésekre vonatkozó vásárlási javaslatokat tartalmaz.  
+- Az API-k használatával vásárlási javaslatokat kaphat a megosztott hatókörhöz és az egyszeri előfizetések hatóköréhez is. További információ: [fenntartott példányok vásárlására vonatkozó ajánlás API-k nagyvállalati ügyfelek](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation)számára.
+- Nagyvállalati Szerződés (EA) ügyfelek esetében a megosztott és az egyszeri előfizetési hatókörökkel kapcsolatos vásárlási javaslatok a [Azure Consumption Insights Power bi a csomagban](/power-bi/service-connect-to-azure-consumption-insights)érhetők el.
 
-### <a name="use-reservation-recommendations"></a>Foglalás javaslatok használata
+### <a name="services-that-get-vm-reservation-discounts"></a>A virtuális gépek foglalási kedvezményeit lekérdező szolgáltatások
 
-Foglalás javaslatok használhatja annak meghatározásához, a foglalásokat, meg kell vásárolnia.
+A VM-foglalások a több szolgáltatásból kibocsátott virtuálisgép-használatra vonatkozhatnak, nem csupán a virtuális gépek üzembe helyezésére. A foglalási kedvezményeket lefoglaló erőforrások a példány méretének rugalmassági beállításától függően változnak.
 
-- Vásárlási javaslatok és ajánlott mennyiség megjelenítése vannak megvásárlásakor a fenntartott Virtuálisgép-példány az Azure Portalon.
-- Az Azure Advisor biztosít az egyes előfizetések vásárlási javaslatok.  
-- Az API-k segítségével vásárlási javaslatok megosztott hatókörrel és a egy előfizetési hatókört. További információkért lásd: [fenntartott példány vásárlási javaslatok API-k a vállalati ügyfelek](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation).
-- A nagyvállalati szerződéssel rendelkező ügyfelek a beszerzési javaslatok megosztott, és a egy előfizetési hatókört érhetők el, a [Azure Consumption Insights Power BI-tartalomcsomag](/power-bi/service-connect-to-azure-consumption-insights).
+#### <a name="instance-size-flexibility-setting"></a>Példány méretének rugalmassági beállítása
 
-### <a name="classic-vms-and-cloud-services"></a>Klasszikus virtuális gépek és felhőszolgáltatások
+A példány méretének rugalmassága beállítás határozza meg, hogy mely szolgáltatások kapják meg a fenntartott példányok kedvezményeit.
 
-Fenntartott virtuálisgép-példányok automatikusan mindkét klasszikus virtuális gépekre vonatkozik, és a felhőszolgáltatások, ha a példány mérete rugalmasan engedélyezve van. Nincs semmilyen különleges termékváltozatok klasszikus virtuális gépeket vagy felhőszolgáltatásokat. Azonos virtuális gépek Termékváltozatait vonatkoznak rájuk.
+Azt jelzi, hogy be van-e kapcsolva a beállítás, és a foglalási kedvezmények automatikusan érvényesek- `Microsoft.Compute`e a *ConsumedService* a megfelelő virtuális gépek használatára. Ezért a *ConsumedService* értéknél keresse meg a használati adatokat. Néhány példa:
 
-Például előfordulhat, hogy alakíthatja a klasszikus virtuális gépeket és a cloud services az Azure Resource Manager-alapú virtuális gépeket. Ebben a példában a foglalási kedvezményt automatikusan alkalmazza a megfelelő virtuális gépek. Nem kell a *exchange* meglévő fenntartott példány – automatikusan vonatkozik.
+- Virtual machines (Virtuális gépek)
+- Virtuálisgép-méretezési csoportok
+- Tárolószolgáltatás
+- Azure Batch üzemelő példányok (felhasználói előfizetési módban)
+- Azure Kubernetes Service (AKS)
+- Service Fabric
+
+Ha a beállítás be van kapcsolva, a foglalási kedvezmények automatikusan érvényesek a virtuális gépek használatára, ha a *ConsumedService* a következő elemek bármelyike:
+
+- Microsoft.Compute
+- Microsoft.ClassicCompute
+- Microsoft.Batch
+- Microsoft.MachineLearningServices
+- Microsoft.Kusto
+
+Ellenőrizze a használati adatok *ConsumedService* értékét annak megállapításához, hogy a használat jogosult-e a foglalási kedvezményekre.
+
+A példányok méretének rugalmasságával kapcsolatos további információkért lásd: [virtuális gépek méretének rugalmassága fenntartott VM-példányokkal](../articles/virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
 
 ### <a name="analyze-your-usage-information"></a>A használati adatok elemzése
-A használati adatok meghatározásához, hogy melyik foglalásokat, meg kell vásárolnia kell elemezni.
+A használati adatok elemzésével megállapíthatja, hogy mely foglalásokat kell megvásárolnia.
 
-Használati adatok a használati fájlban és API-k érhető el. Ezek segítségével együtt határozza meg, melyik foglalás megvásárlásához. Ellenőrizze a Virtuálisgép-példányok, amelyek magas kihasználtsága alapján napokra lebontva megvásárolni a foglalást mennyiségének meghatározásához.
+A használati adatok a használati fájlban és az API-kon érhetők el. Ezeket együtt használva meghatározhatja, hogy melyik foglalást szeretné megvásárolni. Ellenőrizze, hogy vannak-e napi szinten magas kihasználtságú virtuálisgép-példányok a megvásárolni kívánt foglalások mennyiségének meghatározásához.
 
-Kerülje a `Meter` alkategória és `Product` mezők a használati adatok. Ezek nincs megkülönböztetni a premium storage használata Virtuálisgép-méretek. Ha ezek a mezők segítségével állapítja meg, a virtuális gép méretét a foglalásvásárlást, előfordulhat, hogy a megfelelő méretű vásárolhat. Ezután a foglalási kedvezményt várhatóan nem kap. Helyette tekintse meg a `AdditionalInfo` mezőt a használati fájlban vagy a usage API-t a megfelelő virtuális gép méretének meghatározásához.
+Kerülje a `Meter` használati adatok alkategóriáját és `Product` mezőit. Nem tesznek különbséget a Premium Storage-t használó virtuális gépek méretei között. Ha ezeket a mezőket használja a foglalás megvásárlásához szükséges virtuális gép méretének meghatározásához, akkor a mérete nem megfelelő. Ezután nem fogja megkapni a várt foglalási kedvezményt. Ehelyett tekintse `AdditionalInfo` meg a használati fájl vagy a használati API mezőjét a virtuális gép megfelelő méretének meghatározásához.
 
-### <a name="purchase-restriction-considerations"></a>Vásárlás eszközkorlátozásokra vonatkozó szempontok
+### <a name="purchase-restriction-considerations"></a>Vásárlási korlátozási megfontolások
 
-Fenntartott VM-példányok néhány kivétellel a legtöbb Virtuálisgép-méretek érhetők el. Foglalás kedvezmények a következő virtuális gépek nem érvényesek:
+A fenntartott VM-példányok a legtöbb virtuálisgép-mérethez érhetők el, néhány kivétellel. A foglalási kedvezmények nem vonatkoznak a következő virtuális gépekre:
 
-- **Virtuálisgép-sorozatok** -A-sorozatú, az Av2 sorozat vagy G-sorozat.
+- **VM-sorozat** – sorozat, Av2 sorozat vagy G sorozat.
 
-- **Előzetes verzióban érhető el virtuális gépek** – bármely Virtuálisgép-sorozat vagy -méretet, előzetes verzióként érhető el.
+- **Előzetes vagy promóciós virtuális gépek** – az előzetes verzióban vagy a promóciós fogyasztásmérőt használó VM-sorozatok vagy méretek.
 
-- **Felhők** -foglalások nem érhetők el, német és kínai régiókban vásárolható.
+- **Felhők** – a foglalások nem vásárolhatók meg németországi vagy kínai régiókban.
 
-- **A kvóta nem elegendő** – egy foglalást, ami egy előfizetéshez rendelkeznie kell az új fenntartott példány esetében az előfizetés vCPU-kvóta. Például ha a célként megadott előfizetés kvótája 10 vcpu-k számára a D-sorozat, majd, nem vásárolhat egy foglalást, 11 Standard_D1-példányok. A kvóta ellenőrzése lefoglalási a már üzembe helyezte az előfizetésben található virtuális gépeket tartalmaz. Például ha az előfizetés 10 vcpu-k kvótával rendelkezik a D-sorozat esetében, és üzembe helyezett két standard_D1 példánnyal rendelkezik, majd vásárolhat egy foglalást, ebben az előfizetésben 10 standard_D1-példányokhoz. Is [ajánlat növelése kérelem létrehozása](../articles/azure-supportability/resource-manager-core-quotas-request.md) a probléma megoldásához.
+- Nem **elegendő kvóta** – egy adott előfizetésre vonatkozó foglalásnak az új ri-előfizetésben elérhető vCPU-kvótával kell rendelkeznie. Ha például a célként megadott előfizetés 10 vCPU a D sorozathoz, akkor nem vásárolhat le 11 Standard_D1-példányra vonatkozó foglalást. A foglalások kvótájának keresése magában foglalja az előfizetésben már üzembe helyezett virtuális gépeket. Ha például az előfizetés 10 vCPU rendelkezik a D sorozathoz, és két standard_D1 példánya van telepítve, akkor az előfizetésben 10 standard_D1-példány foglalását is megvásárolhatja. A probléma megoldásához [létrehozhat árajánlat-növelési kérést](../articles/azure-supportability/resource-manager-core-quotas-request.md) .
 
-- **Kapacitás korlátozások** – a ritka esetekben, az Azure korlátai részére a virtuális gép új foglalások vásárlásának úgy méretezi, egy régióban alacsony kapacitás miatt.
+- **Kapacitás korlátozásai** – ritka körülmények között az Azure korlátozza a virtuálisgép-méretek részhalmazára vonatkozó új foglalások megvásárlását a régió alacsony kapacitása miatt.
 
-## <a name="buy-a-reserved-vm-instance"></a>A fenntartott VM-példány vásárlása
+## <a name="buy-a-reserved-vm-instance"></a>Fenntartott VM-példány vásárlása
+
+Egy fenntartott VM-példányt vásárolhat a [Azure Portalban](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D). A foglalást [elöl vagy havi fizetéssel](../articles/billing/billing-monthly-payments-reservations.md)kell fizetni.
+
+Ezek a követelmények a fenntartott VM-példányok vásárlására vonatkoznak:
+
+- Legalább egy EA-előfizetéshez vagy egy utólagos elszámolású előfizetéshez tartozó tulajdonosi szerepkörrel kell rendelkeznie.
+- Az EA-előfizetések esetében engedélyezni kell a **fenntartott példányok hozzáadása** beállítást az [EA portálon](https://ea.azure.com/). Ha ez a beállítás le van tiltva, akkor az előfizetés EA-rendszergazdájának kell lennie.
+- A Cloud Solution Provider (CSP) program esetében csak a rendszergazdai ügynökök vagy értékesítési ügynökök vásárolhatnak foglalásokat.
+
+Példány vásárlása:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Válassza ki **minden szolgáltatás** > **foglalások**.
-3. Válassza ki **Hozzáadás** , egy új foglalást vásárolhat.
-4. Adja meg a kötelező mezőket. Futó virtuális Gépre, válassza ki az attribútumok minősítéséhez lekérése a foglalási kedvezményt a megfelelő példányok. A Virtuálisgép-példányok, amely a kedvezmény a tényleges száma attól függ, a hatókör és a kiválasztott mennyiség.
+1. Válassza **a minden szolgáltatás** > **foglalás**lehetőséget.
+1. Új foglalás megvásárlásához válassza a **Hozzáadás** lehetőséget, majd kattintson a **virtuális gép**elemre.
+1. Adja meg a kötelező mezőket. A kiválasztott attribútumoknak megfelelő virtuálisgép-példányok futtatása a foglalási kedvezmény beszerzéséhez. A kedvezményt megkapó virtuálisgép-példányok tényleges száma a kiválasztott hatókörtől és mennyiségtől függ.
 
-    | Mező      | Leírás|
-    |------------|--------------|
-    |Name (Név)        |A Foglalás neve.|
-    |Előfizetés|Kell fizetnem a Foglalás használt előfizetés. A fizetési módot, az előfizetés fel van töltve a Foglalás az előzetes költségek. Az előfizetés típusúnak kell lennie a nagyvállalati szerződés (számok kínálnak: MS-AZR-0017P vagy MS-AZR - 0148 P) vagy a használatalapú fizetés (számok kínálnak: MS-AZR-0003P vagy MS-AZR - 0023 P). Nagyvállalati előfizetésnél a díjak a regisztrációhoz tartozó keretek egyenlegeiből lesznek levonva, illetve túlhasználatként lesznek számlázva. Használatalapú fizetéses előfizetéseknél a díjakat az előfizetéshez tartozó hitelkártyára terheljük vagy a számlafizetési módnak megfelelően számlázzuk.|    
-    |Hatókör       |A Foglalás hatóköre egy előfizetés vagy több előfizetés (megosztott hatókör) is foglalkozik. Ha ki: <ul><li>Ebben az előfizetésben virtuális gépek egyetlen előfizetés – a foglalási kedvezményt alkalmazza. </li><li>Közös – a foglalási kedvezményt alkalmazza a rendszer olyan előfizetéseket, a számlázási környezetben futó virtuális gépek. A vállalati ügyfelek a megosztott hatókörrel a regisztráció és a regisztráció belüli összes előfizetésre tartalmazza. Használatalapú fizetéses ügyfelek számára a megosztott hatókörrel a fiók rendszergazdája által létrehozott összes utólagos elszámolású előfizetések.</li></ul>|
-    |Régió    |Az Azure-régió, amelyet a Foglalás jelez.|    
-    |Virtuális gép mérete     |A Virtuálisgép-példányok méretétől.|
-    |Optimalizálás:     |Virtuálisgép-példányok rugalmassága mérete alkalmazza a foglalási kedvezményt többi virtuális géphez ugyanazon [VM-méret csoport](https://aka.ms/RIVMGroups). Kapacitás prioritása priorizálja az Adatközpont-kapacitás az üzemelő példányok. Ez kínál a további megbízhatósági arra, hogy indítsa el a Virtuálisgép-példányok, amikor szüksége van rájuk. Kapacitás prioritása csak akkor használható, ha a Foglalás hatóköre egy előfizetés. |
-    |Időtartam        |Egy vagy három év.|
-    |Mennyiség    |A Foglalás belül megvásárolt példányok száma. A mennyiség a futó kérheti le a számlázási kedvezményt Virtuálisgép-példányok számát. Például ha 10 Standard_D2 virtuális gépeket futtat az USA keleti régiójában, majd kell megadni mennyiség 10 az összes futó gépek juttatása maximalizálása érdekében. |
+| Mező      | Leírás|
+|------------|--------------|
+|Subscription|A foglalás kifizetéséhez használt előfizetés. Az előfizetéshez tartozó fizetési mód díja a foglalás díja. Az előfizetés típusának nagyvállalati szerződésnek kell lennie (ajánlati számok: MS-AZR-0017P vagy MS-AZR-0148P) vagy egyéni előfizetés utólagos elszámolású díjszabással (ajánlati számok: MS-AZR-0003P vagy MS-AZR-0023P). Nagyvállalati előfizetésnél a díjak a regisztrációhoz tartozó keretek egyenlegeiből lesznek levonva, illetve túlhasználatként lesznek számlázva. Az utólagos elszámolású előfizetések díjait a hitelkártyára vagy a számla fizetési módjára kell fizetni az előfizetésben.|    
+|Scope       |A foglalás hatóköre egyetlen előfizetésre vagy több előfizetésre (megosztott hatókörre) is vonatkozhat. Ha a következőket választja: <ul><li>**Egy erőforráscsoport hatóköre** – a foglalási kedvezményt a kiválasztott erőforráscsoport megfelelő erőforrásaira alkalmazza.</li><li>**Egyszeri előfizetés hatóköre** – a foglalási kedvezményt a kiválasztott előfizetésben lévő megfelelő erőforrásokra alkalmazza.</li><li>**Megosztott hatókör** – a foglalási kedvezményt a számlázási környezetben található jogosult előfizetésekben lévő erőforrások egyeztetésére alkalmazza. Az EA-ügyfelek esetében a számlázási környezet a beléptetés. Az utólagos elszámolású előfizetések esetében a számlázási hatókör a fiók rendszergazdája által létrehozott összes jogosult előfizetés.</li></ul>|
+|Régió    |A foglalás által érintett Azure-régió.|    
+|VM mérete     |A virtuálisgép-példányok mérete.|
+|Optimalizálás:     |A VM-példány méretének rugalmassága alapértelmezés szerint ki van választva. Kattintson a **Speciális beállítások** lehetőségre a példány méretének rugalmassági értékének módosításához, hogy a foglalási kedvezményt más virtuális gépekre alkalmazza ugyanabban a virtuálisgép- [méretezési csoportban](../articles/virtual-machines/windows/reserved-vm-instance-size-flexibility.md). A kapacitás prioritása az üzemelő példányok adatközpont-kapacitását rangsorolja. További megbízhatóságot biztosít a virtuálisgép-példányok elindításához, amikor szüksége van rájuk. A kapacitás prioritása csak akkor érhető el, ha a foglalási hatókör egyetlen előfizetés. |
+|Kifejezés        |Egy vagy három év.|
+|Mennyiség    |A foglalás keretében megvásárolt példányok száma. A mennyiség azon futó virtuálisgép-példányok száma, amelyek megkapják a számlázási kedvezményt. Ha például 10 Standard_D2 virtuális gépet futtat az USA keleti régiójában, akkor a mennyiséget 10-re kell állítani, hogy maximalizálja az összes futó virtuális gép előnyeit. |
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2PjmT]
 
-## <a name="change-a-reservation-after-purchase"></a>Egy foglalás megvásárlása után módosítása
+## <a name="usage-data-and-reservation-utilization"></a>Használati adatok és foglalás kihasználtsága
 
-Egy foglalás megvásárlása után a következő típusú módosításokat végezhet:
+A használati adatok a foglalási kedvezményt lefoglaló használati díj nulla értékeként érvényesek. Láthatja, hogy melyik virtuálisgép-példány fogadta el a foglalási kedvezményt az egyes foglalásokhoz.
 
-- Frissítse a Foglalás hatóköre
-- Példány mérete rugalmasan (ha van)
-- Tulajdonjog
+További információ arról, hogyan jelennek meg a foglalási kedvezmények a használati adatok között: az [Azure foglalási szolgáltatás használatának ismertetése a nagyvállalati beléptetéshez](../articles/billing/billing-understand-reserved-instance-usage-ea.md) , ha Ön EA-ügyfél. Ha egyéni előfizetéssel rendelkezik, tekintse meg [Az Azure foglalás használatának megismerése](../articles/billing/billing-understand-reserved-instance-usage.md)az utólagos elszámolású előfizetéshez című témakört.
 
-Is oszthatja a kisebb méretű adattömböket és foglalások már fel egyesítéses foglalást. A módosítások egyike miatt egy új kereskedelmi ügylet, vagy módosítsa a foglalási záró dátumát.
+## <a name="change-a-reservation-after-purchase"></a>Foglalás módosítása a vásárlás után
 
-Miután megvásárolta, közvetlenül a következő típusú módosításokat nem teheti:
+A vásárlás után a következő típusú módosításokat végezheti el a foglalásban:
 
-- Egy meglévő foglalás régió
+- Foglalási hatókör frissítése
+- Példány méretének rugalmassága (ha van ilyen)
+- Tulajdon
+
+A foglalásokat feloszthatja kisebb adattömbökre, és összevonhatja a már felosztott foglalásokat is. A módosítások egyike sem eredményez új kereskedelmi tranzakciót, vagy nem módosítja a foglalás befejezési dátumát.
+
+A vásárlás után a következő típusú módosításokat nem végezheti el közvetlenül:
+
+- Egy meglévő foglalás régiója
 - SKU
 - Mennyiség
-- Időtartam
+- Duration
 
-Azonban továbbra is *exchange* egy foglalást, ha módosítani szeretné.
+Ha szeretné módosítani a módosításokat, lehetősége van a foglalások *cseréjére* .
 
-## <a name="cancellations-and-exchanges"></a>Lemondás és cseréje
+## <a name="cancel-exchange-or-refund-reservations"></a>Megszakítási, Exchange-vagy visszatérítési foglalások
 
-A foglalás lemondásáért 12%-os korai felmondási díj számítható fel. A visszatérítést a rendszer a vételár vagy a foglalás jelenlegi ára közül az alacsonyabb összeg alapján számolja. A visszatérítések felső korlátja évi 50 000 dollár. A kapott visszatérítés tehát a fennmaradó, arányosított egyenleg és a 12%-os korai felmondási díj különbsége lesz. Visszavonást, nyissa meg az Azure Portalon, és válassza a Foglalás **visszatérítés** támogatási kérelmet szeretne létrehozni.
-
-Ha a fenntartott virtuálisgép-példányok foglalása kapcsán módosítania kell a régiót, a virtuális gép méretcsoportját vagy az időszakot, akkor kicserélheti a foglalást egy azonos vagy magasabb értékűre. Az új foglalási időszak kezdő dátuma nem kerül át a lecserélt foglalásból. Az 1 vagy 3 éves távon elindítja az új Foglalás létrehozásakor. Egy exchange kérést, nyissa meg a foglalást az Azure Portalon, és válassza **Exchange** támogatási kérelmet szeretne létrehozni.
-
-Exchange-hez vagy a visszatérítés foglalások kapcsolatos további információkért lásd: [foglalás cseréje és a visszatérítéseket](../articles/billing/billing-azure-reservations-self-service-exchange-and-refund.md).
+Bizonyos korlátozásokkal megszakíthatja, átválthatja vagy visszaállíthatja a foglalásokat. További információ: [önkiszolgáló cserék és visszatérítések Azure Reservations számára](../articles/billing/billing-azure-reservations-self-service-exchange-and-refund.md).
 
 ## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
 
@@ -116,12 +142,12 @@ Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatá
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg, hogyan kezelheti a foglalást, lásd: [kezelése az Azure-foglalások](../articles/billing/billing-manage-reserved-vm-instance.md).
-- Azure-foglalások kapcsolatos további információkért tekintse meg a következő cikkeket:
-    - [Mik az Azure-foglalásokat?](../articles/billing/billing-save-compute-costs-reservations.md)
-    - [Az Azure-ban foglalások kezelése](../articles/billing/billing-manage-reserved-vm-instance.md)
-    - [Megismerheti, hogyan kell alkalmazni a foglalási kedvezményt](../articles/billing/billing-understand-vm-reservation-charges.md)
-    - [A használatalapú fizetéses előfizetést foglalás használati adatai](../articles/billing/billing-understand-reserved-instance-usage.md)
-    - [A nagyvállalati beléptetés foglalás használati adatai](../articles/billing/billing-understand-reserved-instance-usage-ea.md)
-    - [Windows szoftverek díjait nem tartalmazza a foglalások](../articles/billing/billing-reserved-instance-windows-software-costs.md)
-    - [A Partner Center Felhőszolgáltató (CSP) program Azure foglalások](https://docs.microsoft.com/partner-center/azure-reservations)
+- A foglalások kezeléséről a [Azure Reservations kezelése](../articles/billing/billing-manage-reserved-vm-instance.md)című témakörben olvashat bővebben.
+- Ha többet szeretne megtudni a Azure Reservationsről, tekintse meg a következő cikkeket:
+    - [Mi a Azure Reservations?](../articles/billing/billing-save-compute-costs-reservations.md)
+    - [Fenntartások kezelése az Azure-ban](../articles/billing/billing-manage-reserved-vm-instance.md)
+    - [A foglalási kedvezmény alkalmazási módjának megismerése](../articles/billing/billing-understand-vm-reservation-charges.md)
+    - [Az előfizetések foglalási használatának ismertetése az utólagos elszámolású díjszabással](../articles/billing/billing-understand-reserved-instance-usage.md)
+    - [A foglalási kihasználtság ismertetése vállalati regisztrációnál](../articles/billing/billing-understand-reserved-instance-usage-ea.md)
+    - [A Windows-szoftverek nem tartalmazzák a foglalásokat](../articles/billing/billing-reserved-instance-windows-software-costs.md)
+    - [Azure Reservations a partner Center Cloud Solution Provider (CSP) programban](https://docs.microsoft.com/partner-center/azure-reservations)

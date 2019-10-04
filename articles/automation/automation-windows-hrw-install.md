@@ -4,17 +4,17 @@ description: Ez a cikk egy Azure Automation hibrid Runbook-feldolgozó, amellyel
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
-ms.date: 09/17/2018
+author: bobbytreed
+ms.author: robreed
+ms.date: 05/21/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 7c6d8fbe54d89fc587c8841b8983d7fdcba29b7d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a8f6d46b8db6761204e39f14bbb51a493445ad26
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59787978"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477921"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Egy Windows hibrid Runbook-feldolgozó üzembe helyezése
 
@@ -60,8 +60,10 @@ A következő lépésekkel automatizálhatja a telepítés és konfigurálás Wi
    * *SubscriptionID* (mandatory): Az Azure-előfizetés azonosítója, amely az Automation-fiókot.
    * *WorkspaceName* (nem kötelező): A Log Analytics-munkaterület nevét. Ha nem rendelkezik a Log Analytics-munkaterületen, a parancsfájl létrehozza, és konfigurál egyet.
 
-     > [!NOTE]
-     > Az integráció az Azure Monitor naplóira támogatott csak Automation régiók jelenleg **Délkelet-Ausztrália**, **USA keleti RÉGIÓJA 2**, **Délkelet-Ázsia**, és **Nyugat-Európa**. Ha az Automation-fiók nem ezen régiók egyikében, a parancsfájl egy Log Analytics-munkaterületet hoz létre, de figyelmeztetést jelenít meg, hogy azt nem kapcsolja őket össze.
+   > [!NOTE]
+   > A megoldások engedélyezésekor csak bizonyos régiók esetén lehet összekapcsolni egy Log Analytics-munkaterületet és egy Automation-fiókot.
+   >
+   > A támogatott leképezés párok listáját lásd: [régió hozzárendelése Automation-fiók és a Log Analytics-munkaterület](how-to/region-mappings.md).
 
 2. Nyissa meg a számítógépen, **Windows PowerShell** származó a **Start** képernyő rendszergazdai módban.
 3. A PowerShell parancssori rendszerhéjból keresse meg a letöltött szkript tartalmazó mappát. Módosítsa az értékeket a paraméterekhez *– AutomationAccountName*, *- AAResourceGroupName*, *- OMSResourceGroupName*, *- HybridGroupName*, *- SubscriptionId*, és *- WorkspaceName*. Ezután futtassa a szkriptet.
@@ -91,9 +93,13 @@ Ha még nem rendelkezik a Log Analytics-munkaterületet, hozzon létre egyet uta
 
 #### <a name="2-add-the-automation-solution-to-the-log-analytics-workspace"></a>2. Az Automation-megoldás a Log Analytics-munkaterület hozzáadása
 
-Megoldások funkciókkal bővítik az Azure Monitor naplóira. Az Automation-megoldás funkciókkal bővíti az Azure Automation, beleértve a hibrid Runbook-feldolgozó támogatását. Amikor a megoldás ad hozzá a munkaterülethez, leküldi a megfelelő feldolgozó összetevőinek automatikusan az ügynökszámítógép, amely a következő lépésben telepíteni fogja.
+Az Automation az Azure Monitor logs megoldás funkciókkal bővíti az Azure Automation, beleértve a hibrid Runbook-feldolgozó támogatását. Amikor a megoldás ad hozzá a munkaterülethez, leküldi a megfelelő feldolgozó összetevőinek automatikusan az ügynökszámítógép, amely a következő lépésben telepíteni fogja.
 
-Hozzáadása a **Automation** megoldás a Log Analytics-munkaterület utasításai [hozzáadása egy megoldást a használatával, kövesse a megoldástárban](../log-analytics/log-analytics-add-solutions.md).
+Hozzáadása a **Automation** Azure Monitor megoldás naplózza a munkaterülethez, futtassa az alábbi PowerShell-lel.
+
+```powershell-interactive
+Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName <logAnalyticsResourceGroup> -WorkspaceName <LogAnalyticsWorkspaceName> -IntelligencePackName "AzureAutomation" -Enabled $true
+```
 
 #### <a name="3-install-the-microsoft-monitoring-agent"></a>3. A Microsoft Monitoring Agent telepítése
 

@@ -1,19 +1,19 @@
 ---
-title: Adatok másolása az Azure Data Box Blob storage REST API-kon keresztül |} A Microsoft Docs
+title: 'Oktatóanyag: adatok másolása az Azure Data Box Blob storage REST API-kon keresztül |} A Microsoft Docs'
 description: Ismerje meg, hogyan másolhat adatokat az Azure Data Box Blob storage REST API-kon keresztül
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 04/19/2019
+ms.date: 05/09/2019
 ms.author: alkohli
-ms.openlocfilehash: 2a4c4c7431752ade60161af84b4cc15f010af656
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: fcd6fc95adc892885fd8471e622ce3b04258d8b5
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59995744"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65800540"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>Oktatóanyag: Adatok másolása az Azure Data Box Blob storage REST API-kon keresztül  
 
@@ -46,7 +46,7 @@ Data Box Blob storage keresztül kapcsolódhat *http* vagy *https*.
 - *HTTPS* csatlakozhat a Data Box Blob storage és ajánlott módja.
 - *Http* használatos, amikor keresztül csatlakozó megbízható hálózatok.
 
-Csatlakozás más lépéseket kell végrehajtania, ha a Data Box Blob Storage-kapcsolattal csatlakozik *http* vagy *https*,.
+Csatlakozás más lépéseket kell végrehajtania, ha a Data Box Blob Storage-kapcsolattal csatlakozik *http* vagy *https*.
 
 ## <a name="connect-via-http"></a>Kapcsolódás http-n keresztül
 
@@ -116,7 +116,7 @@ Kövesse az alábbi lépéseket importálása a `.cer` fájlt egy Windows vagy L
 
     ![Tanúsítvány importálása a PowerShell használatával](media/data-box-deploy-copy-data-via-rest/import-cert-ws-2.png)
 
-4.  Kattintson a **Befejezés** gombra. Megjelenik egy üzenet, amely tájékoztatja, hogy az importálás sikeres volt-e.
+4.  Kattintson a **Befejezés**gombra. Megjelenik egy üzenet, amely tájékoztatja, hogy az importálás sikeres volt-e.
 
     ![Tanúsítvány importálása a PowerShell használatával](media/data-box-deploy-copy-data-via-rest/import-cert-ws-3.png)
 
@@ -152,6 +152,7 @@ Miután csatlakozott a Data Box Blob Storage, a következő lépés az adatok m�
 - Adatok feltöltése folyamatban van a Data Box, Data Box-en kívül más alkalmazás egyidejűleg fel, ha lehetséges, hogy emiatt feltöltési feladat hibák és az adatok sérülését.
 
 Ebben az oktatóanyagban az AzCopy segítségével adatmásolás a Data Box blobtárolóba. Használhatja az Azure Storage Explorer (Ha inkább a GUI-alapú eszköz) vagy egy partneri szoftver az adatok másolásához.
+
 A másolási eljárás rendelkezik az alábbi lépéseket:
 
 - Tároló létrehozása
@@ -215,6 +216,8 @@ Ha csak azokat az erőforrásokat szeretné átmásolni a forrásból, amelyek n
 #### <a name="windows"></a>Windows
 
     AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S /XO
+
+Ha a csatlakozás vagy másolási művelet során bármilyen hiba merül fel, tekintse meg [Data Box Blob storage-problémák hibaelhárítása](data-box-troubleshoot-rest.md).
 
 Következő lépés, hogy az eszköz szállításra való előkészítése.
 

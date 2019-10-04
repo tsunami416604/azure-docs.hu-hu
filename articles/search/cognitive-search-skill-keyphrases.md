@@ -1,57 +1,56 @@
 ---
-title: A kulcsfontosságú kifejezések kinyerése kognitív keresés szakértelem – Azure Search
-description: Kiértékeli a strukturálatlan szöveg, és az egyes rekordok listáját adja vissza a kulcskifejezéseket Azure Search-felderítési bővítést folyamatban.
+title: A kulcs kifejezése a kognitív keresési képességek kinyerése – Azure Search
+description: Kiértékeli a strukturálatlan szöveget, és minden rekord esetében egy Azure Search alkoholtartalom-növelési folyamatban található kulcs-kifejezések listáját adja vissza.
 services: search
-manager: pablocas
+manager: nitinme
 author: luiscabrer
 ms.service: search
-ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 02/22/2019
+ms.date: 09/18/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: 422b97414142c36669ed449a21c6045fd774581a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ffaa2afbfa12770168cb5a92b7022addc039f0fb
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57902654"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265775"
 ---
-#   <a name="key-phrase-extraction-cognitive-skill"></a>Kulcs kifejezések kinyerése kognitív szakértelem
+#   <a name="key-phrase-extraction-cognitive-skill"></a>Kulcsszókeresés kognitív képesség
 
-A **kulcs kulcsszókeresés** szakértelem strukturálatlan szöveges kiértékeli, és az egyes rekordok listáját adja vissza, kulcskifejezéseket. Ezen a képzettségi használja a gépi tanulási modellek által biztosított [Szövegelemzés](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) a Cognitive Services.
+A **kulcsszókeresési** készség kiértékeli a strukturálatlan szöveget, és minden rekord esetében a legfontosabb kifejezések listáját adja vissza. Ez a képesség a Cognitive Services [text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) által biztosított gépi tanulási modelleket használja.
 
-Ez a funkció akkor hasznos, ha az a rekord található fő beszédtémákat gyorsan azonosítani kell. Ha például adott bemeneti szöveg "az élelmiszer delicious volt, és izgalommal személyzet történt", a szolgáltatás a "food" és "izgalommal személyzetet" adja vissza.
+Ez a funkció akkor hasznos, ha gyorsan meg kell határoznia a rekordban lévő fő beszélő pontokat. Például a bemeneti szöveg "az élelmiszer finom volt, és csodálatos volt a személyzet", a szolgáltatás a "Food" és a "csodálatos személyzet" értéket adja vissza.
 
 > [!NOTE]
-> 2018. December 21., kezdési is [Cognitive Services-erőforrás csatolása](cognitive-search-attach-cognitive-services.md) és a egy Azure Search-képességek alkalmazási lehetőségét. Ez lehetővé teszi indexmezők végrehajtási díjszabási elindításához. Ezen a napon azt is már díjszabási kép kinyerése a dokumentumfeltörést fázis részeként. A dokumentumok szövegkinyerés továbbra is ingyenesen kínáljuk.
+> Ha a hatókört a feldolgozás gyakoriságának növelésével, további dokumentumok hozzáadásával vagy további AI-algoritmusok hozzáadásával bővíti, akkor [a számlázható Cognitive Services erőforrást](cognitive-search-attach-cognitive-services.md)kell csatolnia. Az API-k Cognitive Services-ben való meghívásakor felmerülő díjak, valamint a képek kinyerése a dokumentum repedési szakaszának részeként Azure Search. A dokumentumokból való szöveg kinyerése díjmentes.
 >
-> [Beépített kognitív szakértelem](cognitive-search-predefined-skills.md) végrehajtás díja a [használatalapú-as-, a Cognitive Services nyissa meg az árat](https://azure.microsoft.com/pricing/details/cognitive-services), azonos értékelje, ha végrehajtotta a feladat közvetlenül. Kép kinyerése nem egy Azure Search költségekkel, jelenleg az előzetes verzió áron érhető el. További információkért lásd: a [díjszabását ismertető oldalt az Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400) vagy [számlázás módját works](search-sku-tier.md#how-billing-works).
+> A beépített készségek elvégzése a meglévő Cognitive Services utólagos elszámolású [díjszabás szerint](https://azure.microsoft.com/pricing/details/cognitive-services/)történik. A rendszerkép kibontásának díjszabását a [Azure Search díjszabási oldalán](https://go.microsoft.com/fwlink/?linkid=2042400)találja.
+
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.KeyPhraseExtractionSkill 
 
 ## <a name="data-limits"></a>Adatkorlátok
-Egy rekord maximális mérete 50 000 karakter által mért kell lennie `String.Length`. Ha az adatok tördelésével, mielőtt elküldené a kulcskifejezések információkinyerő van szüksége, fontolja meg a [szöveg felosztása szakértelem](cognitive-search-skill-textsplit.md).
+A rekordok maximális méretének 50 000 karakternek kell lennie, a [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)következőképpen mérve:. Ha meg kell szakítania az adatokat, mielőtt elküldené a kivonó kifejezést, érdemes lehet a [szöveg felosztása képességet](cognitive-search-skill-textsplit.md)használni.
 
-## <a name="skill-parameters"></a>Ismeretek paraméterek
+## <a name="skill-parameters"></a>Szakértelem paraméterei
 
-A paraméterei a kis-és nagybetűket.
+A paraméterek megkülönböztetik a kis-és nagybetűket.
 
 | Bemenetek                | Leírás |
 |---------------------|-------------|
-| defaultLanguageCode | (Nem kötelező) A alkalmazni a dokumentumokat, explicit módon nem ad meg nyelvi nyelvkód.  Ha az alapértelmezett nyelvi kód nem megadott, az angol (en) lesz az alapértelmezett nyelvi kódot. <br/> Lásd: [támogatott nyelvek teljes listáját](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages). |
-| maxKeyPhraseCount   | (Nem kötelező) A kulcskifejezések előállításához maximális számát. |
+| defaultLanguageCode | Választható A nyelvet explicit módon nem megadó dokumentumokra alkalmazandó nyelvi kód.  Ha nincs megadva az alapértelmezett nyelvkód, a rendszer az angol (en) nyelvet használja alapértelmezett nyelvi kódnak. <br/> [A támogatott nyelvek teljes listáját](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)itt tekintheti meg. |
+| maxKeyPhraseCount   | Választható A létrehozni kívánt legfontosabb kifejezések maximális száma. |
 
-## <a name="skill-inputs"></a>Ismeretek bemenetek
+## <a name="skill-inputs"></a>Szaktudás bemenetei
 
 | Bemenetek     | Leírás |
 |--------------------|-------------|
-| szöveg | Elemezni kívánt szöveget.|
-| languageCode  |  A nyelv, a rekordok jelző karakterlánc. Ha ez a paraméter nincs megadva, az alapértelmezett nyelvi kód a rekordok elemzésére használható. <br/>Lásd: [támogatott nyelvek teljes listáját](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)|
+| text | Az elemezni kívánt szöveg.|
+| languageCode  |  A rekordok nyelvét jelző sztring. Ha ez a paraméter nincs megadva, a rendszer az alapértelmezett nyelvkódot fogja használni a rekordok elemzéséhez. <br/>[A támogatott nyelvek teljes listája](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)|
 
-##  <a name="sample-definition"></a>Minta-definíció
+##  <a name="sample-definition"></a>Minta definíciója
 
 ```json
  {
@@ -59,7 +58,7 @@ A paraméterei a kis-és nagybetűket.
     "inputs": [
       {
         "name": "text",
-        "source": "/document/text"
+        "source": "/document/content"
       },
       {
         "name": "languageCode",
@@ -75,7 +74,7 @@ A paraméterei a kis-és nagybetűket.
   }
 ```
 
-##  <a name="sample-input"></a>Minta beviteli
+##  <a name="sample-input"></a>Minta bemenet
 
 ```json
 {
@@ -118,11 +117,11 @@ A paraméterei a kis-és nagybetűket.
 
 
 ## <a name="errors-and-warnings"></a>Hibák és figyelmeztetések
-Egy nem támogatott nyelvi kódot ad meg, ha hiba történik, és a kulcskifejezéseket nem ki kell olvasni.
-Ha a szöveg üres, figyelmeztetés előállított.
-Ha a szöveg mérete nagyobb, mint 50 000 karakter, csak az első 50 000 karakter elemzik, és megjelenik egy figyelmeztetés.
+Ha nem támogatott nyelvi kódot ad meg, a rendszer hibát generál, és a rendszer nem bontja ki a fő kifejezéseket.
+Ha a szöveg üres, a rendszer figyelmeztetést készít.
+Ha a szöveg 50 000 karakternél nagyobb, akkor csak az első 50 000 karakter lesz elemezve, és a rendszer figyelmeztetést ad ki.
 
 ## <a name="see-also"></a>Lásd még
 
-+ [Előre megadott képesség](cognitive-search-predefined-skills.md)
-+ [Hogyan képességcsoport megadása](cognitive-search-defining-skillset.md)
++ [Előre definiált képességek](cognitive-search-predefined-skills.md)
++ [Készségkészlet definiálása](cognitive-search-defining-skillset.md)

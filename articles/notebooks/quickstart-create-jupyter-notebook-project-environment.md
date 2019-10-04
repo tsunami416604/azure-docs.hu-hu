@@ -10,15 +10,15 @@ ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: quickstart
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 368bc0402e56479ad8696ca9ed0702f246a670bd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 954bbc22e42865991ca7f38fbf3f6f0e8e78a437
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59262006"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754033"
 ---
 # <a name="quickstart-create-a-project-with-a-custom-environment"></a>Gyors útmutató: Projekt létrehozása egyéni környezettel
 
@@ -43,7 +43,7 @@ A projekt Azure notebookok gyűjteménye, fájlok, például a notebookok, adatf
     - **Nyilvános projekt**: (törölve)
     - **Hozzon létre egy README.md**: (törölve)
 
-1. Néhány pillanat múlva Azure notebookok nyit meg az új projekt. Kiválasztásával adjon hozzá egy jegyzetfüzetet a projekthez a **+ új** legördülő (amely jelennek meg, csak **+**), majd válassza **Notebook**.
+1. Néhány pillanat múlva Azure notebookok nyit meg az új projekt. Kiválasztásával adjon hozzá egy jegyzetfüzetet a projekthez a **+ új** legördülő (amely jelennek meg, csak **+** ), majd válassza **Notebook**.
 
 1. Nevezze el a notebook például *egyéni environment.ipynb*válassza **Python 3.6-os** a nyelvet, és válassza a **új**.
 

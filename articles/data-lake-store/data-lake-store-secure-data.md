@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: cebdff5ed233516683df3330e8fd3332ded664e5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58885672"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60198262"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>Az Azure Data Lake Storage Gen1 tárolt adatok védelme
 Az adatok védelme az Azure Data Lake Storage Gen1 egy három lépéses megközelítést.  Mindkét szerepköralapú hozzáférés-vezérlés (RBAC), és a hozzáférés-vezérlési listák (ACL) kell állítani a felhasználók és biztonsági csoportok adatokhoz való hozzáférés teljes mértékű engedélyezéséhez.
@@ -55,7 +55,7 @@ Amikor a felhasználók vagy biztonsági csoportok hozzárendelése Data Lake St
 
 1. Nyissa meg a Data Lake Storage Gen1 fiókot. A bal oldali ablaktáblában kattintson **összes erőforrás**, és az összes erőforrás panelen kattintson a fiók nevét, amelyhez szeretné egy felhasználó vagy biztonsági csoport hozzárendelése.
 
-2. A Data Lake Storage Gen1 fiók panelén kattintson **hozzáférés-vezérlés (IAM)**. A panel alapértelmezés szerint az előfizetés-tulajdonost tulajdonosként sorolja fel.
+2. A Data Lake Storage Gen1 fiók panelén kattintson **hozzáférés-vezérlés (IAM)** . A panel alapértelmezés szerint az előfizetés-tulajdonost tulajdonosként sorolja fel.
    
     ![Biztonsági csoport hozzárendelése az Azure Data Lake Storage Gen1 fiók](./media/data-lake-store-secure-data/adl.select.user.icon1.png "biztonsági csoport hozzárendelése az Azure Data Lake Storage Gen1 fiókhoz")
 
@@ -127,7 +127,7 @@ Amikor a biztonsági csoportok eltávolítja a Data Lake Storage Gen1 fiókok, c
 
 Adatokhoz való hozzáférés nem változik, és továbbra is felügyeli a hozzáférési ACL-ek.  A kivétel ez alól a tulajdonosok szerepkörű felhasználók/csoportok.  Felhasználók/csoportok eltávolítva a tulajdonos szerepkör már nem felügyelők és hozzáférésüket visszavált hozzáférési ACL-beállítások. 
 
-1. A Data Lake Storage Gen1 fiók panelén kattintson **hozzáférés-vezérlés (IAM)**. 
+1. A Data Lake Storage Gen1 fiók panelén kattintson **hozzáférés-vezérlés (IAM)** . 
    
     ![Biztonsági csoport hozzárendelése a Data Lake Storage Gen1 fiók](./media/data-lake-store-secure-data/adl.select.user.icon.png "biztonsági csoport hozzárendelése a Data Lake Storage Gen1 fiókhoz")
 2. Az a **hozzáférés-vezérlés (IAM)** panelen kattintson az eltávolítani kívánt biztonsági csoport(ok). Kattintson a **eltávolítása**.

@@ -7,7 +7,7 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: magattus
 ms.custom: ''
-ms.openlocfilehash: afadef8b29927f909af5be1e1204180724258b74
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 276fe9352d0c4ca7ec525b88d65689b56c0ba027
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58167065"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593342"
 ---
 # <a name="set-up-failover-across-multiple-azure-cdn-endpoints-with-azure-traffic-manager"></a>Hozza létre a feladatátvétel több Azure CDN-végpontok Azure Traffic Managerrel
 
@@ -80,6 +80,10 @@ Miután beállította a CDN és a Traffic Manager-profilok, kövesse az alábbi 
 2.  Az Azure CDN-profilt válassza ki az első CDN-végpont (Akamai). Válassza ki **egyéni tartomány hozzáadása** és bemeneti *cdndemo101.dustydogpetcare.online*. Ellenőrizze, hogy zöld pipa az egyéni tartomány ellenőrzése. 
 
     Az Azure CDN-t használ a *cdnverify* altartomány érvényesítése a DNS-hozzárendelést a regisztrációs folyamat befejezéséhez. További információkért lásd: [hozzon létre egy CNAME DNS-rekord](cdn-map-content-to-custom-domain.md#create-a-cname-dns-record). Ez a lépés lehetővé teszi, hogy az Azure CDN-t az egyéni tartomány felismerje, hogy a kérelmek válaszolni tud.
+    
+    > [!NOTE]
+    > Az SSL engedélyezéséhez egy **Akamai Azure CDN** profilok kell közvetlenül cname az egyéni tartományt a végpontjához. az SSL engedélyezésével a cdnverify még nem támogatott. 
+    >
 
 3.  Térjen vissza a webhely számára az egyéni tartomány tartományszolgáltatójának, és úgy, hogy az egyéni tartomány le van képezve a második CDN-végpontra létrehozott első DNS-hozzárendelést frissítenie.
                              

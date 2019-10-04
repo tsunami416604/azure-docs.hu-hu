@@ -1,114 +1,127 @@
 ---
-title: 'Példa: Az elemzés image API - hívás a Computer Vision'
-titlesuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan hívhatja meg a Computer Vision API-t a REST használatával az Azure Cognitive Servicesben.
+title: A Computer Vision API meghívása
+titleSuffix: Azure Cognitive Services
+description: Megtudhatja, hogyan hívhatja meg a Computer Vision API az Azure Cognitive Services REST API használatával.
 services: cognitive-services
 author: KellyDF
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: sample
-ms.date: 03/21/2019
+ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 0e2767660edf2a9dbcb8617b07a6b9f71fedb743
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 417ff7ac345b9a83b3d3f4c50e9fd141d74bc99c
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011243"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103549"
 ---
-# <a name="example-how-to-call-the-computer-vision-api"></a>Példa: A Computer Vision API meghívása
+# <a name="call-the-computer-vision-api"></a>A Computer Vision API meghívása
 
-Ez az útmutató ismerteti, hogyan hívhatja meg a Computer Vision API-t a REST használatával. A mintákat megadjuk C#-ben a Computer Vision API ügyfélkódtár használatával és HTTP POST/GET hívásokkal is. Amire figyelni fogunk:
+Ez a cikk bemutatja, hogyan hívhatja meg a Computer Vision APIt a REST API használatával. A mintákat a Computer Vision API ügyféloldali kódtár C# és http post vagy Get hívások használatával is megírják. A cikk témája:
 
-- Hogyan kaphatjuk meg a „Címkék”, „Leírás” és „Kategóriák” elemeket.
-- Hogyan kaphatjuk meg a „fogalomkör-specifikus” információkat (hírességek).
+- Címkék, leírások és kategóriák beolvasása
+- Domain-specifikus információk vagy "hírességek" beszerzése
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- A kép URL-címe vagy a helyileg tárolt kép elérési útja.
-- Támogatott bemeneti módszerek: Egy application/octet-stream vagy URL-formájában bináris nyers kép
-- Képformátum támogatja: JPEG, PNG, GIF, BMP
-- Kép mérete: 4MB-nál kevesebb
-- Lemezkép-dimenzió: Nagyobb, mint 50 x 50 képpont
+- A rendszerkép URL-címe vagy egy helyileg tárolt rendszerkép elérési útja
+- Támogatott bemeneti metódusok: egy nyers bináris képfájl egy alkalmazás/oktett-stream vagy egy képurl-cím formájában
+- Támogatott képfájl-formátumok: JPEG, PNG, GIF és BMP
+- Képfájl mérete: 4 MB vagy kevesebb
+- Képdimenziók: 50 &times; 50 képpont vagy nagyobb
   
-Az alábbi példákban a következő funkciókat mutatjuk be:
+A cikkben szereplő példák a következő funkciókat mutatják be:
 
-1. Kép elemzése és a címkék és a leírás visszaadása tömbben.
-2. Kép elemzése fogalomkör-specifikus modellel (pontosabban a „hírességek” modellel), a megfelelő eredmények visszaadása JSON formában.
+* Egy olyan rendszerkép elemzése, amely címkék és leírások tömbjét állítja vissza
+* Egy olyan rendszerkép elemzése, amely egy tartományszintű modellel rendelkezik (pontosabban a "hírességek" modellt), hogy a megfelelő eredményt a JSON-ban küldje vissza.
 
-A funkciók lebontása:
+A funkciók a következő lehetőségeket kínálnak:
 
-- **1. lehetőség:** Hatókörön belüli elemzés – csak egy adott modell elemzése
-- **2. lehetőség:** Továbbfejlesztett elemzése – további információkat a elemzése [86-kategóriák besorolás](../Category-Taxonomy.md)
+- **1. lehetőség**: Hatókörrel rendelkező elemzés – csak a megadott modell elemzése
+- **2. lehetőség**: Bővített elemzés – további részletek biztosítása a [86-kategóriák besorolásával](../Category-Taxonomy.md)
   
-## <a name="authorize-the-api-call"></a>Engedélyezze az API-hívás
+## <a name="authorize-the-api-call"></a>Az API-hívás engedélyezése
 
-A Computer Vision API minden meghívásához előfizetési kulcs szükséges. Ezt a kulcsot egy lekérdezésisztring-paraméteren keresztül kell továbbítani, vagy a kérelemfejlécben kell megadni.
+A Computer Vision API minden meghívásához előfizetési kulcs szükséges. Ezt a kulcsot egy lekérdezési karakterlánc paraméterének kell átadnia, vagy meg kell adni a kérelem fejlécében.
 
-Ingyenes próba kulcs beszerzéséhez tekintse meg a [próbálja meg a Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Másik lehetőségként kövesse a [Cognitive Services-fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) előfizetni a Computer Vision, és a kulcs beszerzése.
+Az ingyenes próbaverziós kulcs beszerzéséhez tegye a következők egyikét:
+* Lépjen a [Cognitive Services kipróbálása](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision) lapra. 
+* A Computer Visionra való előfizetéshez lépjen a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) lapra.
 
-1. Az előfizetési kulcs lekérdezési karakterláncban történő átadásához lásd az alábbi Computer Vision API példát:
+Az előfizetési kulcsot az alábbi módokon adhatja át:
 
-```https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?visualFeatures=Description,Tags&subscription-key=<Your subscription key>```
+* Adja át egy lekérdezési karakterláncon, ahogy az alábbi példában látható Computer Vision API:
 
-1. Az előfizetési kulcs átadható a HTTP-kérés fejlécében is:
+  ```
+  https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?visualFeatures=Description,Tags&subscription-key=<Your subscription key>
+  ```
 
-```ocp-apim-subscription-key: <Your subscription key>```
+* A HTTP-kérelem fejlécében adhatja meg:
 
-1. Az ügyfélkódtár használatakor az előfizetési kulcs átadása a VisionServiceClient konstruktorán keresztül történik:
+  ```
+  ocp-apim-subscription-key: <Your subscription key>
+  ```
 
-```var visionClient = new VisionServiceClient("Your subscriptionKey");```
+* Ha az ügyféloldali kódtárat használja, adja át a kulcsot a ComputerVisionClient konstruktorán keresztül, és adja meg a régiót az ügyfél egy tulajdonságában:
 
-## <a name="upload-an-image-to-the-computer-vision-api-service-and-get-back-tags-descriptions-and-celebrities"></a>A Computer Vision API szolgáltatásba töltsön fel egy képet, majd az címkéket, leírásokat és hírességek
+    ```
+    var visionClient = new ComputerVisionClient(new ApiKeyServiceClientCredentials("Your subscriptionKey"))
+    {
+        Endpoint = "https://westus.api.cognitive.microsoft.com"
+    }
+    ```
 
-A Computer Vision API-hívás elvégzésének alapvető módja a kép közvetlen feltöltése. Ez „POST” kérés küldését jelenti application/octet-stream tartalomtípussal, a képből kiolvasott adatokkal együtt. A „Címkék” és „Leírás” esetében ez a feltöltési mód minden Computer Vision API-hívásra azonos lesz. Az egyetlen különbség a felhasználó által megadott lekérdezési paraméterben lesz. 
+## <a name="upload-an-image-to-the-computer-vision-api-service"></a>Rendszerkép feltöltése a Computer Vision API szolgáltatásba
 
-Íme a „Címkék” és „Leírás” lekérése egy adott képre:
+Az Computer Vision API hívás végrehajtásának alapszintű módja, ha közvetlenül feltölt egy képet a címkék, a leírás és a hírességek visszaküldéséhez. Ezt úgy teheti meg, hogy "POST" kérést küld a HTTP-szövegtörzsben található bináris képpel együtt a rendszerképből beolvasott adatokkal. A feltöltési módszer az összes Computer Vision API-hívás esetében azonos. Az egyetlen különbség a megadott lekérdezési paraméterek. 
 
-**1. lehetőség:** "Címkék" listája és a egy "Description"
+Egy adott rendszerkép esetében a címkék és a leírások beszerzése a következő lehetőségek egyikével történhet:
+
+### <a name="option-1-get-a-list-of-tags-and-a-description"></a>1\. módszer: A címkék és a leírások listájának beolvasása
 
 ```
 POST https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?visualFeatures=Description,Tags&subscription-key=<Your subscription key>
 ```
 
 ```csharp
-using Microsoft.ProjectOxford.Vision;
-using Microsoft.ProjectOxford.Vision.Contract;
 using System.IO;
+using Microsoft.Azure.CognitiveServices.Vision.ComputerVision;
+using Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models;
 
-AnalysisResult analysisResult;
-var features = new VisualFeature[] { VisualFeature.Tags, VisualFeature.Description };
+ImageAnalysis imageAnalysis;
+var features = new VisualFeatureTypes[] { VisualFeatureTypes.Tags, VisualFeatureTypes.Description };
 
 using (var fs = new FileStream(@"C:\Vision\Sample.jpg", FileMode.Open))
 {
-  analysisResult = await visionClient.AnalyzeImageAsync(fs, features);
+  imageAnalysis = await visionClient.AnalyzeImageInStreamAsync(fs, features);
 }
 ```
 
-**Második lehetőség** Csak a „Címkék” listájának vagy csak a „Leírás” listájának lekérése:
+### <a name="option-2-get-a-list-of-tags-only-or-a-description-only"></a>2\. lehetőség: Csak a címkék és a leírások listájának beolvasása
 
-###### <a name="tags-only"></a>Csak címkék:
-
-```
-POST https://westus.api.cognitive.microsoft.com/vision/v2.0/tag&subscription-key=<Your subscription key>
-var analysisResult = await visionClient.GetTagsAsync("http://contoso.com/example.jpg");
-```
-
-###### <a name="description-only"></a>Csak leírása:
+Csak címkék esetén futtassa a következőt:
 
 ```
-POST https://westus.api.cognitive.microsoft.com/vision/v2.0/describe&subscription-key=<Your subscription key>
+POST https://westus.api.cognitive.microsoft.com/vision/v2.0/tag?subscription-key=<Your subscription key>
+var tagResults = await visionClient.TagImageAsync("http://contoso.com/example.jpg");
+```
+
+Csak leírás esetén futtassa a következőt:
+
+```
+POST https://westus.api.cognitive.microsoft.com/vision/v2.0/describe?subscription-key=<Your subscription key>
 using (var fs = new FileStream(@"C:\Vision\Sample.jpg", FileMode.Open))
 {
-  analysisResult = await visionClient.DescribeAsync(fs);
+  imageDescription = await visionClient.DescribeImageInStreamAsync(fs);
 }
 ```
 
-### <a name="get-domain-specific-analysis-celebrities"></a>Tartomány-specifikus elemzését (hírességek) beolvasása
+## <a name="get-domain-specific-analysis-celebrities"></a>Tartomány-specifikus elemzés (hírességek) beolvasása
 
-**1. lehetőség:** Hatókörön belüli elemzés – csak egy adott modell elemzése
+### <a name="option-1-scoped-analysis---analyze-only-a-specified-model"></a>1\. módszer: Hatókörrel rendelkező elemzés – csak a megadott modell elemzése
 ```
 POST https://westus.api.cognitive.microsoft.com/vision/v2.0/models/celebrities/analyze
 var celebritiesResult = await visionClient.AnalyzeImageInDomainAsync(url, "celebrities");
@@ -121,19 +134,19 @@ GET https://westus.api.cognitive.microsoft.com/vision/v2.0/models
 var models = await visionClient.ListModelsAsync();
 ```
 
-**2. lehetőség:** Továbbfejlesztett elemzése – további információkat a elemzése [86-kategóriák besorolás](../Category-Taxonomy.md)
+### <a name="option-2-enhanced-analysis---analyze-to-provide-additional-details-by-using-86-categories-taxonomy"></a>2\. lehetőség: Bővített elemzés – további részletek biztosítása a 86-kategóriák besorolásával
 
-Olyan alkalmazásokban, ahol a felhasználó az egy vagy több fogalomkör-specifikus modellből származó részleteken kívül általános képelemzést is szeretne, kibővítjük a v1 API-t a modell lekérdező paraméterrel.
+Azokon az alkalmazásokban, amelyekben egy vagy több tartományalapú modell részletei mellett általános képelemzést szeretne kapni, a models Query paraméterrel bővítse ki a v1 API-t.
 
 ```
 POST https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?details=celebrities
 ```
 
-A metódus hívásakor először meghívjuk a 86-kategóriás osztályozót. Ha a kategóriák bármelyike egyezik egy ismert/megfelelő modellével, akkor sor kerül az osztályozó másodszori meghívására. Például ha a „részletek = all” vagy a „részletek” tartalmazza a „hírességek”-et, akkor a 86-kategóriás osztályozó meghívása után és ha az eredmény tartalmazza a kategória személyt, meghívjuk a hírességek modellt. Ez az első lehetőséghez képest növelni fogja a késést a hírességek iránt érdeklődő felhasználók számára.
+A metódus meghívásakor először hívja meg a [86 kategóriás](../Category-Taxonomy.md) besorolást. Ha a kategóriák bármelyike megfelel egy ismert vagy egyező modellnek, az osztályozó meghívások egy második fázisa jelenik meg. Ha például a "details = all" vagy a "details" kifejezés a "hírességek" kifejezést tartalmazza, akkor az 86 kategóriás osztályozó hívása után hívja meg a hírességek modelljét. Az eredmény tartalmazza a kategória személyét. Az 1. lehetőséggel ellentétben ez a módszer növeli a hírességeket érdeklő felhasználók késését.
 
-Ebben az esetben az összes v1 lekérdezési paraméter ugyanúgy viselkedik.  Ha a visualFeatures=categories megadása elmaradt, implicit módon engedélyezésre kerül.
+Ebben az esetben az összes v1 lekérdezési paraméter ugyanúgy viselkedik. Ha nem ad meg visualFeatures = kategóriákat, az implicit módon engedélyezve van.
 
-## <a name="retrieve-and-understand-the-json-output-for-analysis"></a>Beolvasása és elemzése a JSON-kimenetet ismertetése
+## <a name="retrieve-and-understand-the-json-output-for-analysis"></a>Az elemzéshez használt JSON-kimenet beolvasása és megismerése
 
 Például:
 
@@ -164,21 +177,21 @@ Például:
 }
 ```
 
-Mező | Typo | Tartalom
+Mező | Type | Tartalom
 ------|------|------|
-Címkék  | `object` | Felső szintű objektum a címkék tömbjének
-tags[].Name | `string`  | Kulcsszó a címke osztályozótól
-tags[].Score    | `number`  | Megbízhatósági pontszám, 0 és 1 között.
-description  | `object` | Felső szintű objektum a leírásnak.
-description.tags[] |    `string`    | Címkék listája.  Ha a felirat létrehozásához nincs elegendően nagy megbízhatóság, akkor a hívó számára egyedül a címkék adnak elérhető információt.
+Tags  | `object` | A címkék egy tömb legfelső szintű objektuma.
+tags[].Name | `string`  | A címkét a címkék besorolása alapján.
+tags[].Score    | `number`  | A megbízhatósági pontszám 0 és 1 között van.
+description  | `object` | A Leírás legfelső szintű objektuma.
+description.tags[] |    `string`    | A címkék listája.  Ha nem áll rendelkezésre elegendő megbízhatóság a képaláírás létrehozásához, akkor előfordulhat, hogy a címkék az egyetlen elérhető információ a hívó számára.
 description.captions[].text | `string`  | A képet leíró kifejezés.
-description.captions[].confidence   | `number`  | A kifejezéshez tartozó megbízhatóság.
+description.captions[].confidence   | `number`  | A kifejezés megbízhatósági pontszáma.
 
-## <a name="retrieve-and-understand-the-json-output-of-domain-specific-models"></a>Lekéréséhez és a tartomány-specifikus modelleket JSON-kimenetét ismertetése
+## <a name="retrieve-and-understand-the-json-output-of-domain-specific-models"></a>A tartományi specifikus modellek JSON-kimenetének beolvasása és megértése
 
-**1. lehetőség:** Hatókörön belüli elemzés – csak egy adott modell elemzése
+### <a name="option-1-scoped-analysis---analyze-only-a-specified-model"></a>1\. módszer: Hatókörrel rendelkező elemzés – csak a megadott modell elemzése
 
-A kimenet címkék tömbje lesz, például az alábbi példához hasonló lesz:
+A kimenet a címkék egy tömbje, ahogy az az alábbi példában is látható:
 
 ```json
 {  
@@ -195,9 +208,9 @@ A kimenet címkék tömbje lesz, például az alábbi példához hasonló lesz:
 }
 ```
 
-**2. lehetőség:** Továbbfejlesztett elemzése – további részleteket biztosít 86-kategóriák besorolás elemzése
+### <a name="option-2-enhanced-analysis---analyze-to-provide-additional-details-by-using-the-86-categories-taxonomy"></a>2\. lehetőség: Továbbfejlesztett elemzés – a "86-Categories" rendszertan használatával további részleteket adhat meg.
 
-A második lehetőséget használó fogalomkör-specifikus modellekre (bővített elemzés) a kategória visszatérési típusa kibővül. Például a következőképpen:
+A 2. lehetőséget (bővített elemzés) használó, tartományhoz tartozó modellek esetében a kategóriák visszatérési típusa kibővült, ahogy az alábbi példában is látható:
 
 ```json
 {  
@@ -224,20 +237,20 @@ A második lehetőséget használó fogalomkör-specifikus modellekre (bővítet
 }
 ```
 
-A kategóriák mező egy vagy több lista az eredeti [86-kategóriás](../Category-Taxonomy.md) eredeti elnevezésekből. Fontos megjegyezni, hogy az aláhúzással végződő kategóriák a kategóriának és a gyerek kategóriának is megfelelnek (például people_, valamint people_group a hírességek modellnél).
+A Categories (kategóriák) mező az eredeti besorolásban szereplő [86-kategóriák](../Category-Taxonomy.md) közül egy vagy több listáját tartalmazza. Azok a kategóriák, amelyek aláhúzással egyeznek meg a kategóriával és a gyermekeivel (például "people_" vagy "people_group", a hírességek modell esetében).
 
-Mező   | Typo  | Tartalom
+Mező   | Type  | Tartalom
 ------|------|------|
-kategóriák | `object`   | Legfelső szintű objektum
-categories[].name    | `string` | Neve a 86-kategóriás rendszerben
-categories[].score  | `number`  | Megbízhatósági pontszám, 0 és 1 között
-categories[].detail  | `object?`      | Nem kötelező részletes objektum
+categories | `object`   | A legfelső szintű objektum.
+categories[].name    | `string` | A név a 86 kategóriás besorolási listáról.
+categories[].score  | `number`  | A megbízhatósági pontszám 0 és 1 között van.
+categories[].detail  | `object?`      | Választható A részletező objektum.
 
-Vegye figyelembe, hogy ha több kategória is megfelel (például a 86-kategóriás osztályozó ad eredményt a people_ és a people_young esetében is ha model=hírességek), az adatokat az általánosabb szintű megfeleléshez illeszti (a példában people_.)
+Ha több kategória is egyezik (például az 86 kategóriás osztályozó egy pontszámot ad vissza a "people_" és a "people_young" típushoz, ha a Model = hírességek), akkor a részletek a legáltalánosabb szintű egyezéshez ("people_", ebben a példában) vannak csatolva.
 
-## <a name="errors-responses"></a>Hibák válaszok
+## <a name="error-responses"></a>Hibaüzenetek
 
-Ezek ugyanazok, mint a vision.analyze esetén, de van egy plusz hiba, a NotSupportedModel (HTTP 400), amely az első és második lehetőségnél is előfordulhat. A második lehetőségnél (bővített elemzés), ha a részletesen megadott modellek bármelyikét nem sikerül felismerni, az API a NotSupportedModel-lel fog visszaténi, akkor is ha van köztük érvényes.  A felhasználók a listModels hívásával deríthetik ki, hogy mely modellek támogatottak.
+Ezek a hibák ugyanazok, mint a vízióban. elemezze a további NotSupportedModel hibával (HTTP 400), amelyet az 1. és 2. lehetőség esetében is vissza lehet adni. A 2. lehetőség (bővített elemzés) esetén, ha a részletekben megadott bármelyik modell nem ismerhető fel, az API egy NotSupportedModel ad vissza, még akkor is, ha egy vagy több érvényes. A listModels meghívásával megállapíthatja, hogy milyen modellek támogatottak.
 
 ## <a name="next-steps"></a>További lépések
 

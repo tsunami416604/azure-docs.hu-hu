@@ -1,185 +1,65 @@
 ---
-title: Az Azure Cosmos DB indexelési szabályzatok kezelése
-description: Az Azure Cosmos DB indexelési szabályzatok kezelése
+title: Az indexelési szabályzatok kezelése a Azure Cosmos DBban
+description: Ismerje meg, hogyan kezelheti az indexelési szabályzatokat Azure Cosmos DB
 author: ThomasWeiss
 ms.service: cosmos-db
-ms.topic: sample
-ms.date: 04/08/2019
+ms.topic: conceptual
+ms.date: 09/28/2019
 ms.author: thweiss
-ms.openlocfilehash: 76275420e1e6ed7fdec8309da9e11a272f08fee0
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: f7d364eb5db5c6d6304944d490468edf8b5ebe2e
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60005588"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71811663"
 ---
-# <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Az Azure Cosmos DB indexelési szabályzatok kezelése
+# <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Az indexelési szabályzatok kezelése a Azure Cosmos DBban
 
-Azure Cosmos DB, az adatok indexelését követően [indexelési szabályzataihoz](index-policy.md) , amely az egyes tárolók definiált. Alapértelmezett indexelési szabályzat az újonnan létrehozott tárolókhoz érvényesíti a tartomány indexei bármilyen karakterlánc vagy szám, és a térbeli indexek bármely GeoJSON típusú objektumhoz és pont. Ez a szabályzat felülbírálható lesz:
+Azure Cosmos DB a rendszer az egyes tárolók számára definiált [indexelési házirendek](index-policy.md) alapján indexeli az adatkészleteket. Az újonnan létrehozott tárolók alapértelmezett indexelési házirendje minden karakterlánc vagy szám esetében kikényszeríti a tartomány indexeit. Ez a szabályzat felülbírálható a saját egyéni indexelési házirendjével.
 
-- Az Azure Portalról
-- Az Azure CLI használatával
-- Az SDK-k használatával
+## <a name="indexing-policy-examples"></a>Példák indexelési házirendre
 
-Egy [indexelési házirend frissítése](index-policy.md#modifying-the-indexing-policy) elindít egy index átalakítást. Az átalakítás előrehaladását is követhetők az SDK-k.
+Az alábbiakban néhány példát láthat a JSON-formátumában látható indexelési házirendekre, így azok elérhetővé válnak a Azure Portal. Ugyanezen paraméterek állíthatók be az Azure CLI-n vagy bármely SDK-n keresztül.
 
-## <a name="use-the-azure-portal"></a>Az Azure Portal használata
+### <a name="opt-out-policy-to-selectively-exclude-some-property-paths"></a>Letiltási szabályzat a tulajdonságok egyes elérési útjai szelektív kizárásához
 
-Azure Cosmos-tárolókat az indexelési házirendet, amely az Azure portal segítségével közvetlenül szerkesztheti JSON-dokumentumként tárolja.
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-
-1. Hozzon létre egy új Azure Cosmos-fiókot, vagy válasszon ki egy meglévő fiókot.
-
-1. Nyissa meg a **adatkezelő** ablaktáblán, és válassza ki a tárolót, hogy a használni kívánt.
-
-1. Kattintson a **méretezés és beállítások**.
-
-1. Az indexelési szabályzat JSON-dokumentum módosítása (példák [alábbi](#indexing-policy-examples))
-
-1. Kattintson a **mentése** Ha elkészült.
-
-![Az Azure portal segítségével indexelési kezelése](./media/how-to-manage-indexing-policy/indexing-policy-portal.png)
-
-## <a name="use-the-azure-cli"></a>Az Azure parancssori felületének használata
-
-A [az, cosmos DB gyűjteményfrissítés](/cli/azure/cosmosdb/collection#az-cosmosdb-collection-update) indexelési házirendet egy tárolót a JSON-definícióját cserélje le az Azure parancssori felületen parancs segítségével:
-
-```azurecli-interactive
-az cosmosdb collection update \
-    --resource-group-name $resourceGroupName \
-    --name $accountName \
-    --db-name $databaseName \
-    --collection-name $containerName \
-    --indexing-policy "{\"indexingMode\": \"consistent\", \"includedPaths\": [{ \"path\": \"/*\", \"indexes\": [{ \"dataType\": \"String\", \"kind\": \"Range\" }] }], \"excludedPaths\": [{ \"path\": \"/headquarters/employees/?\" } ]}"
-```
-
-## <a name="use-the-net-sdk-v2"></a>A .NET SDK V2 használata
-
-A `DocumentCollection` objektum a [.NET SDK-val v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) (lásd: [ebben a rövid útmutatóban](create-sql-api-dotnet.md) a használattal kapcsolatos) tesz közzé egy `IndexingPolicy` tulajdonság, ahol módosíthatja a `IndexingMode` és adja hozzá, vagy távolítsa el a `IncludedPaths` és `ExcludedPaths`.
-
-```csharp
-// retrieve the container's details
-ResourceResponse<DocumentCollection> containerResponse = await client.ReadDocumentCollectionAsync(UriFactory.CreateDocumentCollectionUri("database", "container"));
-// set the indexing mode to Consistent
-containerResponse.Resource.IndexingPolicy.IndexingMode = IndexingMode.Consistent;
-// add an excluded path
-containerResponse.Resource.IndexingPolicy.ExcludedPaths.Add(new ExcludedPath { Path = "/headquarters/employees/?" });
-// update the container with our changes
-await client.ReplaceDocumentCollectionAsync(containerResponse.Resource);
-```
-
-Index átalakítási folyamat nyomon követéséhez át kell adnia egy `RequestOptions` objektum, amely beállítja a `PopulateQuotaInfo` tulajdonságot `true`.
-
-```csharp
-// retrieve the container's details
-ResourceResponse<DocumentCollection> container = await client.ReadDocumentCollectionAsync(UriFactory.CreateDocumentCollectionUri("database", "container"), new RequestOptions { PopulateQuotaInfo = true });
-// retrieve the index transformation progress from the result
-long indexTransformationProgress = container.IndexTransformationProgress;
-```
-
-## <a name="use-the-java-sdk"></a>Use the Java SDK
-
-A `DocumentCollection` objektum a [Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) (lásd: [ebben a rövid útmutatóban](create-sql-api-java.md) a használattal kapcsolatos) tesz közzé `getIndexingPolicy()` és `setIndexingPolicy()` módszereket. A `IndexingPolicy` azok kezelése lehetővé teszi, hogy az indexelő üzemmódjának módosítása, és adja hozzá az objektum, vagy távolítsa el és elérési utak nem.
-
-```java
-// retrieve the container's details
-Observable<ResourceResponse<DocumentCollection>> containerResponse = client.readCollection(String.format("/dbs/%s/colls/%s", "database", "container"), null);
-containerResponse.subscribe(result -> {
-    DocumentCollection container = result.getResource();
-    IndexingPolicy indexingPolicy = container.getIndexingPolicy();
-    // set the indexing mode to Consistent
-    indexingPolicy.setIndexingMode(IndexingMode.Consistent);
-    Collection<ExcludedPath> excludedPaths = new ArrayList<>();
-    ExcludedPath excludedPath = new ExcludedPath();
-    excludedPath.setPath("/*");
-    // add an excluded path
-    excludedPaths.add(excludedPath);
-    indexingPolicy.setExcludedPaths(excludedPaths);
-    // update the container with our changes
-    client.replaceCollection(container, null);
-});
-```
-
-Egy tároló index átalakítási folyamat nyomon követéséhez át kell adnia egy `RequestOptions` objektum, amely kéri a kvótaadatok kell feltöltenie, majd az értéket lekérheti a `x-ms-documentdb-collection-index-transformation-progress` válaszfejléc.
-
-```java
-// set the RequestOptions object
-RequestOptions requestOptions = new RequestOptions();
-requestOptions.setPopulateQuotaInfo(true);
-// retrieve the container's details
-Observable<ResourceResponse<DocumentCollection>> containerResponse = client.readCollection(String.format("/dbs/%s/colls/%s", "database", "container"), requestOptions);
-containerResponse.subscribe(result -> {
-    // retrieve the index transformation progress from the response headers
-    String indexTransformationProgress = result.getResponseHeaders().get("x-ms-documentdb-collection-index-transformation-progress");
-});
-```
-
-## <a name="use-the-nodejs-sdk"></a>A Node.js SDK-val
-
-A `ContainerDefinition` az illesztő [Node.js SDK](https://www.npmjs.com/package/@azure/cosmos) (lásd: [ebben a rövid útmutatóban](create-sql-api-nodejs.md) a használattal kapcsolatos) tesz közzé egy `indexingPolicy` tulajdonság, ahol módosíthatja a `indexingMode` és adja hozzá, vagy távolítsa el a `includedPaths` és `excludedPaths`.
-
-```javascript
-// retrieve the container's details
-const containerResponse = await client.database('database').container('container').read();
-// set the indexing mode to Consistent
-containerResponse.body.indexingPolicy.indexingMode = "consistent";
-// add an excluded path
-containerResponse.body.indexingPolicy.excludedPaths.push({ path: '/headquarters/employees/?' });
-// update the container with our changes
-const replaceResponse = await client.database('database').container('container').replace(containerResponse.body);
-```
-
-Egy tároló index átalakítási folyamat nyomon követéséhez át kell adnia egy `RequestOptions` objektum, amely beállítja a `populateQuotaInfo` tulajdonságot `true`, majd kérje le az értéket, az a `x-ms-documentdb-collection-index-transformation-progress` válaszfejléc.
-
-```javascript
-// retrieve the container's details
-const containerResponse = await client.database('database').container('container').read({
-    populateQuotaInfo: true
-});
-// retrieve the index transformation progress from the response headers
-const indexTransformationProgress = replaceResponse.headers['x-ms-documentdb-collection-index-transformation-progress'];
-```
-
-## <a name="use-the-python-sdk"></a>A Python SDK használata
-
-Használatakor a [Python SDK](https://pypi.org/project/azure-cosmos/) (lásd: [ebben a rövid útmutatóban](create-sql-api-python.md) a használattal kapcsolatos), a tárolókonfigurációt felügyelt egy szótárban. Tento slovník származó az indexelési házirendet és az összes attribútum eléréséhez.
-
-```python
-containerPath = 'dbs/database/colls/collection'
-# retrieve the container's details
-container = client.ReadContainer(containerPath)
-# set the indexing mode to Consistent
-container['indexingPolicy']['indexingMode'] = 'consistent'
-# add an excluded path
-container['indexingPolicy']['excludedPaths'] = [{"path" : "/headquarters/employees/?"}]
-# update the container with our changes
-response = client.ReplaceContainer(containerPath, container)
-```
-
-## <a name="indexing-policy-examples"></a>Indexelési házirend-példák
-
-Az alábbiakban néhány példa látható a JSON formátumban, azaz, hogy hogyan ki vannak téve az Azure Portalon az indexelő szabályzatokat. Ugyanazokat a paramétereket az Azure CLI vagy bármely SDK segítségével állíthatja be.
-
-### <a name="opt-out-policy-to-selectively-exclude-some-property-paths"></a>Az elutasítás házirendet külön-külön az egyes tulajdonság elérési utak kizárása
-
+```json
     {
-        "indexingPolicy": "consistent",
+        "indexingMode": "consistent",
+        "includedPaths": [
+            {
+                "path": "/*"
+            }
+        ],
+        "excludedPaths": [
+            {
+                "path": "/path/to/single/excluded/property/?"
+            },
+            {
+                "path": "/path/to/root/of/multiple/excluded/properties/*"
+            }
+        ]
+    }
+```
+
+Ez az indexelési házirend egyenértékű a manuálisan beállított ```kind```, ```dataType```és ```precision``` az alapértelmezett értékekkel. Ezek a tulajdonságok már nem szükségesek explicit módon beállítani, és kihagyhatja őket az indexelési szabályzatból (a fenti példában látható módon).
+
+```json
+    {
+        "indexingMode": "consistent",
         "includedPaths": [
             {
                 "path": "/*",
                 "indexes": [
                     {
                         "kind": "Range",
-                        "dataType": "Number"
+                        "dataType": "Number",
+                        "precision": -1
                     },
                     {
                         "kind": "Range",
-                        "dataType": "String"
-                    },
-                    {
-                        "kind": "Spatial",
-                        "dataType": "Point"
+                        "dataType": "String",
+                        "precision": -1
                     }
                 ]
             }
@@ -193,29 +73,19 @@ Az alábbiakban néhány példa látható a JSON formátumban, azaz, hogy hogyan
             }
         ]
     }
+```
 
-### <a name="opt-in-policy-to-selectively-include-some-property-paths"></a>Jóváhagyás házirendet külön-külön néhány tulajdonság elérési utak
+### <a name="opt-in-policy-to-selectively-include-some-property-paths"></a>Bizonyos tulajdonságok elérési útjainak szelektív kiválasztására szolgáló szabályzat
 
+```json
     {
-        "indexingPolicy": "consistent",
+        "indexingMode": "consistent",
         "includedPaths": [
             {
-                "path": "/path/to/included/property/?",
-                "indexes": [
-                    {
-                        "kind": "Range",
-                        "dataType": "Number"
-                    }
-                ]
+                "path": "/path/to/included/property/?"
             },
             {
-                "path": "/path/to/root/of/multiple/included/properties/*",
-                "indexes": [
-                    {
-                        "kind": "Range",
-                        "dataType": "Number"
-                    }
-                ]
+                "path": "/path/to/root/of/multiple/included/properties/*"
             }
         ],
         "excludedPaths": [
@@ -224,16 +94,16 @@ Az alábbiakban néhány példa látható a JSON formátumban, azaz, hogy hogyan
             }
         ]
     }
+```
 
-Megjegyzés: Általában javasolt használni egy **lemond** indexelési szabályzat ahhoz, hogy proaktív módon az Azure Cosmos DB indexelése minden új tulajdonság, amely a modell adhatók hozzá.
+Ez az indexelési házirend egyenértékű a manuálisan beállított ```kind```, ```dataType```és ```precision``` az alapértelmezett értékekkel. Ezek a tulajdonságok már nem szükségesek explicit módon beállítani, és kihagyhatja őket az indexelési szabályzatból (a fenti példában látható módon).
 
-### <a name="using-a-spatial-index-on-a-specific-property-path-only"></a>A térbeli index használatával csak egy adott tulajdonságra elérési úton
-
+```json
     {
-        "indexingPolicy": "consistent",
+        "indexingMode": "consistent",
         "includedPaths": [
             {
-                "path": "/*",
+                "path": "/path/to/included/property/?",
                 "indexes": [
                     {
                         "kind": "Range",
@@ -246,22 +116,199 @@ Megjegyzés: Általában javasolt használni egy **lemond** indexelési szabály
                 ]
             },
             {
-                "path": "/path/to/geojson/property/?",
+                "path": "/path/to/root/of/multiple/included/properties/*",
                 "indexes": [
                     {
-                        "kind": "Spatial",
-                        "dataType": "Point"
+                        "kind": "Range",
+                        "dataType": "Number"
+                    },
+                    {
+                        "kind": "Range",
+                        "dataType": "String"
                     }
                 ]
             }
         ],
-        "excludedPaths": []
+        "excludedPaths": [
+            {
+                "path": "/*"
+            }
+        ]
     }
+```
 
-### <a name="excluding-all-property-paths-but-keeping-indexing-active"></a>Az összes tulajdonság elérési utak kizárása de megtartva indexelő aktív
+> [!NOTE] 
+> Általában ajánlott egy kijelentkezési indexelési házirend használata, amely lehetővé teszi, hogy Azure Cosmos DB proaktív módon indexelje a modellhez esetleg hozzáadott új tulajdonságokat.
 
-Ez a szabályzat helyzetekben használható, a [idő-az-élettartam (TTL) funkció](time-to-live.md) aktív, de nem a másodlagos index megadása kötelező (Azure Cosmos DB-hez használandó egy tiszta kulcs-érték tároló).
+### <a name="using-a-spatial-index-on-a-specific-property-path-only"></a>Térbeli index használata csak adott tulajdonság elérési útján
 
+```json
+{
+    "indexingMode": "consistent",
+    "automatic": true,
+    "includedPaths": [
+        {
+            "path": "/*"
+        }
+    ],
+    "excludedPaths": [
+        {
+            "path": "/\"_etag\"/?"
+        }
+    ],
+    "spatialIndexes": [
+        {
+            "path": "/path/to/geojson/property/?",
+            "types": [
+                "Point",
+                "Polygon",
+                "MultiPolygon",
+                "LineString"
+            ]
+        }
+    ]
+}
+```
+
+## <a name="composite-indexing-policy-examples"></a>Összetett indexelési házirend – példák
+
+Az egyéni tulajdonságok elérési útjának belefoglalása vagy kizárása mellett összetett index is megadható. Ha olyan lekérdezést szeretne végrehajtani, amely több tulajdonságra vonatkozó `ORDER BY` záradékot tartalmaz, az ezen tulajdonságok [összetett indexét](index-policy.md#composite-indexes) kell megadni. Emellett az összetett indexek teljesítménybeli előnyben részesülnek a szűrővel rendelkező lekérdezéseknél, és ORDER BY záradékkal rendelkeznek különböző tulajdonságokon.
+
+### <a name="composite-index-defined-for-name-asc-age-desc"></a>Összetett index definiálva (név ASC, Age desc):
+
+```json
+    {  
+        "automatic":true,
+        "indexingMode":"Consistent",
+        "includedPaths":[  
+            {  
+                "path":"/*"
+            }
+        ],
+        "excludedPaths":[],
+        "compositeIndexes":[  
+            [  
+                {  
+                    "path":"/name",
+                    "order":"ascending"
+                },
+                {  
+                    "path":"/age",
+                    "order":"descending"
+                }
+            ]
+        ]
+    }
+```
+
+A lekérdezési #1 és a lekérdezési #2 a fenti összetett index szükséges a Name és a Age kifejezéshez:
+
+Lekérdezés #1:
+
+```sql
+    SELECT *
+    FROM c
+    ORDER BY c.name ASC, c.age DESC
+```
+
+Lekérdezés #2:
+
+```sql
+    SELECT *
+    FROM c
+    ORDER BY c.name DESC, c.age ASC
+```
+
+Ez az összetett index kihasználja a lekérdezési #3 és a lekérdezési #4 és optimalizálja a szűrőket:
+
+Lekérdezés #3:
+
+```sql
+SELECT *
+FROM c
+WHERE c.name = "Tim"
+ORDER BY c.name DESC, c.age ASC
+```
+
+Lekérdezés #4:
+
+```sql
+SELECT *
+FROM c
+WHERE c.name = "Tim" AND c.age > 18
+```
+
+### <a name="composite-index-defined-for-name-asc-age-asc-and-name-asc-age-desc"></a>Összetett index definiálva (név ASC, Age ASC) és (név ASC, Age DESC):
+
+Több különböző összetett index is definiálható ugyanabban az indexelési házirendben.
+
+```json
+    {  
+        "automatic":true,
+        "indexingMode":"Consistent",
+        "includedPaths":[  
+            {  
+                "path":"/*"
+            }
+        ],
+        "excludedPaths":[],
+        "compositeIndexes":[  
+            [  
+                {  
+                    "path":"/name",
+                    "order":"ascending"
+                },
+                {  
+                    "path":"/age",
+                    "order":"ascending"
+                }
+            ],
+            [  
+                {  
+                    "path":"/name",
+                    "order":"ascending"
+                },
+                {  
+                    "path":"/age",
+                    "order":"descending"
+                }
+            ]
+        ]
+    }
+```
+
+### <a name="composite-index-defined-for-name-asc-age-asc"></a>Összetett index definiálva (név ASC, Age ASC):
+
+A sorrend megadása nem kötelező. Ha nincs megadva, a sorrend növekvő.
+
+```json
+{  
+        "automatic":true,
+        "indexingMode":"Consistent",
+        "includedPaths":[  
+            {  
+                "path":"/*"
+            }
+        ],
+        "excludedPaths":[],
+        "compositeIndexes":[  
+            [  
+                {  
+                    "path":"/name",
+                },
+                {  
+                    "path":"/age",
+                }
+            ]
+        ]
+}
+```
+
+### <a name="excluding-all-property-paths-but-keeping-indexing-active"></a>Az összes tulajdonság elérési útjának kizárása, de az indexelés aktív marad
+
+Ez a szabályzat olyan helyzetekben használható, ahol az élettartam [(TTL) funkció](time-to-live.md) aktív, de nincs szükség másodlagos indexre (Azure Cosmos db tiszta kulcs-érték tárolóként való használatára).
+
+```json
     {
         "indexingMode": "consistent",
         "includedPaths": [],
@@ -269,16 +316,378 @@ Ez a szabályzat helyzetekben használható, a [idő-az-élettartam (TTL) funkci
             "path": "/*"
         }]
     }
+```
 
-### <a name="no-indexing"></a>Nincs indexelése
+### <a name="no-indexing"></a>Nincs indexelés
 
+Ez a szabályzat kikapcsolja az indexelést. Ha `indexingMode` a értéke `none`, akkor nem állítható be TTL a tárolón.
+
+```json
     {
-        "indexingPolicy": "none"
+        "indexingMode": "none"
     }
+```
+
+## <a name="updating-indexing-policy"></a>Indexelési házirend frissítése
+
+Azure Cosmos DB az indexelési házirend az alábbi módszerek bármelyikével frissíthető:
+
+- a Azure Portal
+- Az Azure CLI használata
+- A PowerShell használata
+- Az SDK-k egyikének használata
+
+Az [indexelési házirend frissítése](index-policy.md#modifying-the-indexing-policy) elindítja az index átalakítását. Az átalakítás előrehaladása az SDK-k által is nyomon követhető.
+
+> [!NOTE]
+> Az indexelési szabályzat frissítésekor a Azure Cosmos DB írások megszakítás nélkül lesznek megszakítva. Az újbóli indexelés során a lekérdezések részleges eredményeket adhatnak vissza, mivel az index frissítése folyamatban van.
+
+## <a name="use-the-azure-portal"></a>Az Azure Portal használata
+
+Az Azure Cosmos-tárolók az indexelési szabályzatot JSON-dokumentumként tárolják, amelyet a Azure Portal közvetlenül szerkeszthet.
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+
+1. Hozzon létre egy új Azure Cosmos-fiókot, vagy válasszon ki egy meglévő fiókot.
+
+1. Nyissa meg a **adatkezelő** ablaktáblát, és válassza ki a használni kívánt tárolót.
+
+1. Kattintson a **méretezési & beállítások**elemre.
+
+1. Az indexelési szabályzat JSON-dokumentumának módosítása (lásd az [alábbi](#indexing-policy-examples)példákat)
+
+1. Ha elkészült, kattintson a **Mentés** gombra.
+
+![Indexelés kezelése Azure Portal használatával](./media/how-to-manage-indexing-policy/indexing-policy-portal.png)
+
+## <a name="use-the-azure-cli"></a>Az Azure parancssori felületének használata
+
+Egyéni indexelési házirenddel rendelkező tároló létrehozásához lásd: [tároló létrehozása egyéni index-házirenddel a parancssori felület használatával](manage-with-cli.md#create-a-container-with-a-custom-index-policy)
+
+## <a name="use-powershell"></a>A PowerShell használata
+
+Egyéni indexelési házirenddel rendelkező tároló létrehozásához lásd: [tároló létrehozása egyéni index-házirenddel a PowerShell használatával](manage-with-powershell.md#create-container-custom-index)
+
+## <a name="use-the-net-sdk-v2"></a>A .NET SDK v2 használata
+
+A `DocumentCollection` [.net SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) `IndexingPolicy` objektuma egy olyan tulajdonságot tesz elérhetővé, amely lehetővé `IndexingMode` teszi a `ExcludedPaths`módosítását `IncludedPaths` , illetve a hozzáadását és eltávolítását.
+
+```csharp
+// Retrieve the container's details
+ResourceResponse<DocumentCollection> containerResponse = await client.ReadDocumentCollectionAsync(UriFactory.CreateDocumentCollectionUri("database", "container"));
+// Set the indexing mode to consistent
+containerResponse.Resource.IndexingPolicy.IndexingMode = IndexingMode.Consistent;
+// Add an included path
+containerResponse.Resource.IndexingPolicy.IncludedPaths.Add(new IncludedPath { Path = "/*" });
+// Add an excluded path
+containerResponse.Resource.IndexingPolicy.ExcludedPaths.Add(new ExcludedPath { Path = "/name/*" });
+// Add a spatial index
+containerResponse.Resource.IndexingPolicy.SpatialIndexes.Add(new SpatialSpec() { Path = "/locations/*", SpatialTypes = new Collection<SpatialType>() { SpatialType.Point } } );
+// Add a composite index
+containerResponse.Resource.IndexingPolicy.CompositeIndexes.Add(new Collection<CompositePath> {new CompositePath() { Path = "/name", Order = CompositePathSortOrder.Ascending }, new CompositePath() { Path = "/age", Order = CompositePathSortOrder.Descending }});
+// Update container with changes
+await client.ReplaceDocumentCollectionAsync(containerResponse.Resource);
+```
+
+Az index átalakítási folyamatának nyomon követéséhez `RequestOptions` adjon át egy objektumot `PopulateQuotaInfo` , amely `true`a tulajdonságot állítja be.
+
+```csharp
+// retrieve the container's details
+ResourceResponse<DocumentCollection> container = await client.ReadDocumentCollectionAsync(UriFactory.CreateDocumentCollectionUri("database", "container"), new RequestOptions { PopulateQuotaInfo = true });
+// retrieve the index transformation progress from the result
+long indexTransformationProgress = container.IndexTransformationProgress;
+```
+
+## <a name="use-the-net-sdk-v3"></a>A .NET SDK v3 használata
+
+A `ContainerProperties` [.net SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) objektuma [(lásd a](create-sql-api-dotnet.md) használatról szóló rövid útmutatót) egy olyan `IndexingPolicy` tulajdonságot tesz elérhetővé, amely `IndexingMode` `ExcludedPaths`lehetővé teszi a módosítását, illetve a hozzáadását és eltávolítását `IncludedPaths` .
+
+```csharp
+// Retrieve the container's details
+ContainerResponse containerResponse = await client.GetContainer("database", "container").ReadContainerAsync();
+// Set the indexing mode to consistent
+containerResponse.Resource.IndexingPolicy.IndexingMode = IndexingMode.Consistent;
+// Add an included path
+containerResponse.Resource.IndexingPolicy.IncludedPaths.Add(new IncludedPath { Path = "/*" });
+// Add an excluded path
+containerResponse.Resource.IndexingPolicy.ExcludedPaths.Add(new ExcludedPath { Path = "/name/*" });
+// Add a spatial index
+SpatialPath spatialPath = new SpatialPath
+{
+    Path = "/locations/*"
+};
+spatialPath.SpatialTypes.Add(SpatialType.Point);
+containerResponse.Resource.IndexingPolicy.SpatialIndexes.Add(spatialPath);
+// Add a composite index
+containerResponse.Resource.IndexingPolicy.CompositeIndexes.Add(new Collection<CompositePath> { new CompositePath() { Path = "/name", Order = CompositePathSortOrder.Ascending }, new CompositePath() { Path = "/age", Order = CompositePathSortOrder.Descending } });
+// Update container with changes
+await client.GetContainer("database", "container").ReplaceContainerAsync(containerResponse.Resource);
+```
+
+Az index átalakítási folyamatának nyomon követéséhez `RequestOptions` adjon meg `true`egy objektumot `PopulateQuotaInfo` , amely a tulajdonságot állítja be, majd `x-ms-documentdb-collection-index-transformation-progress` kérje le az értéket a válasz fejlécből.
+
+```csharp
+// retrieve the container's details
+ContainerResponse containerResponse = await client.GetContainer("database", "container").ReadContainerAsync(new ContainerRequestOptions { PopulateQuotaInfo = true });
+// retrieve the index transformation progress from the result
+long indexTransformationProgress = long.Parse(containerResponse.Headers["x-ms-documentdb-collection-index-transformation-progress"]);
+```
+
+Amikor új tároló létrehozásakor egyéni indexelési szabályzatot határoz meg, az SDK-V3's fluent API lehetővé teszi a definíció tömör és hatékony módon történő megírását:
+
+```csharp
+await client.GetDatabase("database").DefineContainer(name: "container", partitionKeyPath: "/myPartitionKey")
+    .WithIndexingPolicy()
+        .WithIncludedPaths()
+            .Path("/*")
+        .Attach()
+        .WithExcludedPaths()
+            .Path("/name/*")
+        .Attach()
+        .WithSpatialIndex()
+            .Path("/locations/*", SpatialType.Point)
+        .Attach()
+        .WithCompositeIndex()
+            .Path("/name", CompositePathSortOrder.Ascending)
+            .Path("/age", CompositePathSortOrder.Descending)
+        .Attach()
+    .Attach()
+    .CreateIfNotExistsAsync();
+```
+
+## <a name="use-the-java-sdk"></a>A Java SDK használata
+
+A `DocumentCollection` [Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) -ból származó objektum ( [lásd a](create-sql-api-java.md) használatról szóló rövid útmutatót) `getIndexingPolicy()` teszi `setIndexingPolicy()` elérhetővé és metódusokat. Az `IndexingPolicy` általuk manipulált objektum lehetővé teszi az indexelési mód módosítását, valamint a felvett és kizárt elérési utak hozzáadását és eltávolítását.
+
+A tároló részleteinek beolvasása
+
+```java
+Observable<ResourceResponse<DocumentCollection>> containerResponse = client.readCollection(String.format("/dbs/%s/colls/%s", "database", "container"), null);
+containerResponse.subscribe(result -> {
+DocumentCollection container = result.getResource();
+IndexingPolicy indexingPolicy = container.getIndexingPolicy();
+```
+
+Az indexelési mód beállítása konzisztens értékre
+
+```java
+indexingPolicy.setIndexingMode(IndexingMode.Consistent);
+```
+
+Belefoglalt elérési út hozzáadása
+
+```java
+Collection<IncludedPath> includedPaths = new ArrayList<>();
+ExcludedPath includedPath = new IncludedPath();
+includedPath.setPath("/age/*");
+includedPaths.add(includedPath);
+indexingPolicy.setIncludedPaths(includedPaths);
+```
+
+Kizárt elérési út hozzáadása
+
+```java
+Collection<ExcludedPath> excludedPaths = new ArrayList<>();
+ExcludedPath excludedPath = new ExcludedPath();
+excludedPath.setPath("/name/*");
+excludedPaths.add(excludedPath);
+indexingPolicy.setExcludedPaths(excludedPaths);
+```
+
+Térbeli index hozzáadása
+
+```java
+Collection<SpatialSpec> spatialIndexes = new ArrayList<SpatialSpec>();
+Collection<SpatialType> collectionOfSpatialTypes = new ArrayList<SpatialType>();
+
+SpatialSpec spec = new SpatialSpec();
+spec.setPath("/locations/*");
+collectionOfSpatialTypes.add(SpatialType.Point);
+spec.setSpatialTypes(collectionOfSpatialTypes);
+spatialIndexes.add(spec);
+
+indexingPolicy.setSpatialIndexes(spatialIndexes);
+
+```
+
+Összetett index hozzáadása
+
+```java
+Collection<ArrayList<CompositePath>> compositeIndexes = new ArrayList<>();
+ArrayList<CompositePath> compositePaths = new ArrayList<>();
+
+CompositePath nameCompositePath = new CompositePath();
+nameCompositePath.setPath("/name/*");
+nameCompositePath.setOrder(CompositePathSortOrder.Ascending);
+
+CompositePath ageCompositePath = new CompositePath();
+ageCompositePath.setPath("/age/*");
+ageCompositePath.setOrder(CompositePathSortOrder.Descending);
+
+compositePaths.add(ageCompositePath);
+compositePaths.add(nameCompositePath);
+
+compositeIndexes.add(compositePaths);
+indexingPolicy.setCompositeIndexes(compositeIndexes);
+```
+
+A tároló frissítése a módosításokkal
+
+```java
+ client.replaceCollection(container, null);
+```
+
+Ha nyomon szeretné követni az index átalakításának folyamatát egy tárolón, adjon meg egy olyan `RequestOptions` objektumot, amely kéri a kvóta-információ feltöltését, majd kérje le az értéket a `x-ms-documentdb-collection-index-transformation-progress` válasz fejlécből.
+
+```java
+// set the RequestOptions object
+RequestOptions requestOptions = new RequestOptions();
+requestOptions.setPopulateQuotaInfo(true);
+// retrieve the container's details
+Observable<ResourceResponse<DocumentCollection>> containerResponse = client.readCollection(String.format("/dbs/%s/colls/%s", "database", "container"), requestOptions);
+containerResponse.subscribe(result -> {
+    // retrieve the index transformation progress from the response headers
+    String indexTransformationProgress = result.getResponseHeaders().get("x-ms-documentdb-collection-index-transformation-progress");
+});
+```
+
+## <a name="use-the-nodejs-sdk"></a>A Node. js SDK használata
+
+A `ContainerDefinition` [Node. js SDK](https://www.npmjs.com/package/@azure/cosmos) felülete [(lásd a](create-sql-api-nodejs.md) használattal kapcsolatos rövid útmutatót) egy olyan `indexingPolicy` tulajdonságot tesz elérhetővé, `indexingMode` amely lehetővé teszi a módosítását, illetve a és `excludedPaths`a hozzáadását, illetve eltávolítását `includedPaths` .
+
+A tároló részleteinek beolvasása
+
+```javascript
+const containerResponse = await client.database('database').container('container').read();
+```
+
+Az indexelési mód beállítása konzisztens értékre
+
+```javascript
+containerResponse.body.indexingPolicy.indexingMode = "consistent";
+```
+
+Belefoglalt elérési út hozzáadása térbeli indexhez
+
+```javascript
+containerResponse.body.indexingPolicy.includedPaths.push({
+    includedPaths: [
+      {
+        path: "/age/*",
+        indexes: [
+          {
+            kind: cosmos.DocumentBase.IndexKind.Range,
+            dataType: cosmos.DocumentBase.DataType.String
+          },
+          {
+            kind: cosmos.DocumentBase.IndexKind.Range,
+            dataType: cosmos.DocumentBase.DataType.Number
+          }
+        ]
+      },
+      {
+        path: "/locations/*",
+        indexes: [
+          {
+            kind: cosmos.DocumentBase.IndexKind.Spatial,
+            dataType: cosmos.DocumentBase.DataType.Point
+          }
+        ]
+      }
+    ]
+  });
+```
+
+Kizárt elérési út hozzáadása
+
+```javascript
+containerResponse.body.indexingPolicy.excludedPaths.push({ path: '/name/*' });
+```
+
+A tároló frissítése a módosításokkal
+
+```javascript
+const replaceResponse = await client.database('database').container('container').replace(containerResponse.body);
+```
+
+Ha nyomon szeretné követni az index átalakításának folyamatát egy tárolón `RequestOptions` , adjon meg egy objektumot `true`, amely a `populateQuotaInfo` tulajdonságot állítja be `x-ms-documentdb-collection-index-transformation-progress` , majd kérje le az értéket a válasz fejlécből.
+
+```javascript
+// retrieve the container's details
+const containerResponse = await client.database('database').container('container').read({
+    populateQuotaInfo: true
+});
+// retrieve the index transformation progress from the response headers
+const indexTransformationProgress = replaceResponse.headers['x-ms-documentdb-collection-index-transformation-progress'];
+```
+
+## <a name="use-the-python-sdk"></a>A Python SDK használata
+
+A [PYTHON SDK](https://pypi.org/project/azure-cosmos/) használatakor (tekintse meg [ezt](create-sql-api-python.md) a rövid útmutatót a használatáról) a tároló konfigurációja szótárként van kezelve. Ebből a szótárból elérhető az indexelési házirend és annak összes attribútuma.
+
+A tároló részleteinek beolvasása
+
+```python
+containerPath = 'dbs/database/colls/collection'
+container = client.ReadContainer(containerPath)
+```
+
+Az indexelési mód beállítása konzisztens értékre
+
+```python
+container['indexingPolicy']['indexingMode'] = 'consistent'
+```
+
+Egy befoglalt elérési úttal és egy térbeli indexszel rendelkező indexelési szabályzat definiálása
+
+```python
+container["indexingPolicy"] = {
+
+    "indexingMode":"consistent",
+    "spatialIndexes":[
+                {"path":"/location/*","types":["Point"]}
+             ],
+    "includedPaths":[{"path":"/age/*","indexes":[]}],
+    "excludedPaths":[{"path":"/*"}]
+}
+```
+
+Az indexelési szabályzat definiálása kizárt elérési úttal
+
+```python
+container["indexingPolicy"] = {
+    "indexingMode":"consistent",
+    "includedPaths":[{"path":"/*","indexes":[]}],
+    "excludedPaths":[{"path":"/name/*"}]
+}
+```
+
+Összetett index hozzáadása
+
+```python
+container['indexingPolicy']['compositeIndexes'] = [
+                [
+                    {
+                        "path": "/name",
+                        "order": "ascending"
+                    },
+                    {
+                        "path": "/age",
+                        "order": "descending"
+                    }
+                ]
+                ]
+```
+
+A tároló frissítése a módosításokkal
+
+```python
+response = client.ReplaceContainer(containerPath, container)
+```
 
 ## <a name="next-steps"></a>További lépések
 
-További információ az indexelő az alábbi cikkeket:
+Az indexeléssel kapcsolatban az alábbi cikkekben olvashat bővebben:
 
-- [Az indexelő áttekintése](index-overview.md)
+- [Indexelés – áttekintés](index-overview.md)
 - [Indexelési házirend](index-policy.md)

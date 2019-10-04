@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/14/2018
+ms.date: 05/21/2019
 ms.topic: troubleshooting
 ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 6ebd25dc65f86e5e028c1c56943756b46d0db9a8
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 02a03adb128c140343032075ec334cbd6d88729b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58011805"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66002031"
 ---
 # <a name="frequently-asked-questions-for-cloudyn"></a>A Cloudyn kapcsolatos gyakori kérdések
 
@@ -74,9 +74,9 @@ Miután elvégezte az előző lépéseket, megtekintheti a optimalizáló javasl
 
 Először tekintsük át azokat a leggyakoribb forgatókönyvet, amelynek hatására a felhasználói fiókok beolvasásához *initiallySuspended*.
 
-> Rendszergazda1 a Microsoft Cloud Solution Provider és a nagyvállalati szerződés felhasználó lehet. A szervezet készen áll a Cloudyn használatának megkezdéséhez.  Ő regisztrálja az Azure Portalon keresztül, és bejelentkezik a Cloudyn portálon. Regisztrálja a Cloudyn szolgáltatás és a jelentkezik be a Cloudyn portálra személynek, ő válik a *elsődleges rendszergazdai*. Rendszergazda1 nem hoz létre az összes felhasználói fiókot. Azonban a Cloudyn portált használja, akkor létrehozása az Azure-fiókok és állít be egy entitáshierarchiára. Rendszergazda1 Admin2, egy Bérlői rendszergazda, amely regisztrálja a Cloudyn, és jelentkezzen be a Cloudyn portálon kell figyelmeztet.
-> 
-> Admin2 regisztrálja az Azure Portalon keresztül. Azonban ha ő próbál bejelentkezni a Cloudyn portálon, kapjuk fiókját próbálnak hiba **felfüggesztve**. Az elsődleges rendszergazdai rendszergazda1, értesítést kap, a fiók felfüggesztését. Rendszergazda1 kell aktiválni Admin2 a fiókot, és biztosítson számára *rendszergazdai entitás hozzáférés* a megfelelő entitások, és lehetővé teszi a felhasználói hozzáférés-kezelési és aktív felhasználói fiók.
+> Rendszergazda1 a Microsoft Cloud Solution Provider és a nagyvállalati szerződés felhasználó lehet. A vállalat készen áll a Cloudyn használatának megkezdéséhez.  Ő regisztrálja az Azure Portalon keresztül, és bejelentkezik a Cloudyn portálon. A személy, aki a Cloudyn szolgáltatás és a tünetek regisztrálja a Cloudyn portált, mint rendszergazda1 válik a *elsődleges rendszergazdai*. Rendszergazda1 nem hoz létre az összes felhasználói fiókot. Azonban a Cloudyn portál használata esetén azokat az Azure-fiókok létrehozásához, és egy entitáshierarchiára beállítása. Rendszergazda1 Admin2, egy Bérlői rendszergazda, a regisztrálja a Cloudyn, és jelentkezzen be a Cloudyn portál tájékoztatja.
+>
+> Admin2 regisztrálja az Azure Portalon keresztül. Azonban a Cloudyn portál bejelentkezni próbál, ha azok hibaüzenet fiókjuk próbálnak **felfüggesztve**. Az elsődleges rendszergazdai rendszergazda1, értesítést kap, a fiók felfüggesztését. Rendszergazda1 kell aktiválni Admin2 a fiókot, és biztosítson számára *rendszergazdai entitás hozzáférés* a megfelelő entitások, és lehetővé teszi a felhasználói hozzáférés-kezelési és aktív felhasználói fiók.
 
 
 Riasztás, hozzáférés engedélyezése egy felhasználó kérést kap, ha a felhasználói fiók aktiválásához szüksége.
@@ -118,7 +118,7 @@ Egy entitás további CSP-fiókok hozzáadásához válassza **MSP hozzáférés
 
 Előfordulhat, hogy különböző pénznemek használatával több Azure-fiókokon. A Cloudyn cost jelentések azonban ne jelenjen meg egynél több pénznem típusa jelentésenként.
 
-Ha különböző pénznemek használatával több előfizetéssel rendelkezik, egy szülőentitás és annak gyermek entitás pénznemek USD-ben jelennek **$**. A javasolt ajánlott eljárás, hogy kerülje a különböző pénznemek entitás ugyanabban a hierarchiában. Más szóval egy entitás struktúrájából összes előfizetés az adott pénznemben kell használnia.
+Ha különböző pénznemek használatával több előfizetéssel rendelkezik, egy szülőentitás és annak gyermek entitás pénznemek USD-ben jelennek **$** . A javasolt ajánlott eljárás, hogy kerülje a különböző pénznemek entitás ugyanabban a hierarchiában. Más szóval egy entitás struktúrájából összes előfizetés az adott pénznemben kell használnia.
 
 A Cloudyn automatikusan észleli a nagyvállalati szerződés előfizetés pénznem és mutat be megfelelően a jelentésekben.  Azonban a Cloudyn csak jeleníti USD **$** CSP és az Azure web-direct-fiókok esetében.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: spelluru
-ms.openlocfilehash: 2952c446e2d66505ebaec42eb82e37be02035483
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 6d7e4253d37d5b50fc8c3de1c8c31636e59b2b9c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59047789"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444788"
 ---
 # <a name="create-a-service-bus-namespace-and-a-queue-using-an-azure-resource-manager-template"></a>Service Bus-névtér és a egy Azure Resource Manager-sablonnal üzenetsor létrehozása
 
@@ -27,7 +27,7 @@ Ez a cikk bemutatja, hogyan használható az Azure Resource Manager-sablon, amel
 
 Sablonok létrehozásával kapcsolatos további információkért tekintse meg [Azure Resource Manager-sablonok készítése][Authoring Azure Resource Manager templates].
 
-A teljes sablont, tekintse meg a [a Service Bus-névtérhez és üzenetsorhoz sablon] [ Service Bus namespace and queue template] a Githubon.
+A teljes sablont, tekintse meg a [a Service Bus-névtérhez és üzenetsorhoz sablon][Service Bus namespace and queue template] a Githubon.
 
 > [!NOTE]
 > Az alábbi Azure Resource Manager-sablonok letöltése és központi telepítési érhetők el.
@@ -37,7 +37,7 @@ A teljes sablont, tekintse meg a [a Service Bus-névtérhez és üzenetsorhoz sa
 > * [Service Bus-névtér létrehozása](service-bus-resource-manager-namespace.md)
 > * [Service Bus-névtér létrehozása témakörrel, előfizetéssel és szabály](service-bus-resource-manager-namespace-topic-with-rule.md)
 > 
-> A legújabb sablonokat keressen, látogasson el a [Azure gyorsindítási sablonok] [ Azure Quickstart Templates] katalógusban, és keresse meg a **a Service Bus**.
+> A legújabb sablonokat keressen, látogasson el a [Azure gyorsindítási sablonok][Azure Quickstart Templates] katalógusban, és keresse meg a **a Service Bus**.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -137,7 +137,9 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 ```
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy létrehozta és erőforrások Azure Resource Managerrel üzembe helyezett, megtudhatja, hogyan kezelhetők ezek a cikkek alapján:
+A következő témakör bemutatja, hogyan hozhat létre egy engedélyezési szabályt, hogy a névtér/várólista: [Hozzon létre egy Service Bus-engedélyezési szabály névtérhez és üzenetsorhoz, egy Azure Resource Manager-sablon használatával](service-bus-resource-manager-namespace-auth-rule.md)
+
+Megtudhatja, hogyan kezelhetők ezek a cikkek alapján:
 
 * [A Service Bus kezelése a PowerShell használatával](service-bus-manage-with-ps.md)
 * [A Service Bus-erőforrások kezelése a Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/releases)

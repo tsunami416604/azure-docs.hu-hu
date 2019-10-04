@@ -1,117 +1,117 @@
 ---
-title: Windows-beli virtuális gépen hurok újraindítás |} A Microsoft Docs
-description: Ismerje meg, hogyan háríthatók el a Windows újraindítási hurokba került |} A Microsoft Docs
+title: Windows újraindítási hurok egy Azure-beli virtuális gépen | Microsoft Docs
+description: Útmutató a Windows újraindítási ciklusának hibakereséséhez | Microsoft Docs
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/15/2018
 ms.author: genli
-ms.openlocfilehash: 032bc1b9c4b1b0e3bf8040ed52bf4db65ba7b6c7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d8a1d64ac8e65fd52730ee1750c0b0b1949b3512
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58085592"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71088474"
 ---
-# <a name="windows-reboot-loop-on-an-azure-vm"></a>Egy Azure-beli virtuális gépen Windows újraindítási hurokba került
-Ez a cikk ismerteti az újraindítási hurokba került, előfordulhat, a Windows virtuális gép (VM) a Microsoft Azure-ban.
+# <a name="windows-reboot-loop-on-an-azure-vm"></a>Windows újraindítási hurok Azure-beli virtuális gépen
+Ez a cikk a Windows rendszerű virtuális gépeken (VM) tapasztalható újraindítási hurkot ismerteti Microsoft Azureban.
 
 ## <a name="symptom"></a>Jelenség
 
-Ha használ [rendszerindítási diagnosztika](./boot-diagnostics.md) a képernyőképek csak egy virtuális gép lekéréséhez található indítja a virtuális gép, de a rendszerindítási folyamat első megszakad, és a folyamat indulásával keresztül.
+Ha [rendszerindítási diagnosztikát](./boot-diagnostics.md) használ egy virtuális gép képernyőképének beszerzéséhez, a rendszer elindítja a virtuális gépet, de a rendszerindítási folyamat megszakad, és a folyamat elindul.
 
-![Indítsa el az 1. képernyő](./media/troubleshoot-reboot-loop/start-screen-1.png)
+![1\. kezdőképernyő](./media/troubleshoot-reboot-loop/start-screen-1.png)
 
 ## <a name="cause"></a>Ok
 
-Az újraindítási hurokba került akkor fordul elő, a következő okok miatt:
+Az újraindítási hurok a következő okok miatt fordul elő:
 
 ### <a name="cause-1"></a>OK: 1
 
-Egy külső szolgáltatás, amely meg van jelölve, a kritikus fontosságú, és nem indul el. Ez azt eredményezi, hogy újraindítja az operációs rendszer.
+Létezik egy harmadik féltől származó szolgáltatás, amely kritikusként van megjelölve, és nem indítható el. Ez az operációs rendszer újraindítását okozza.
 
 ### <a name="cause-2"></a>OK 2
 
-Egyes módosítások történtek az operációs rendszer. Általában ezek kapcsolódnak egy frissítés telepítésének, alkalmazástelepítést vagy egy új házirendet. Előfordulhat, hogy ellenőrizze a további részleteket a következő naplók kapcsolódnak:
+Néhány módosítás történt az operációs rendszeren. Ezek általában a frissítés telepítésével, az alkalmazások telepítésével vagy egy új házirenddel kapcsolatosak. További részletekért tekintse meg a következő naplókat:
 
 - Eseménynaplók
 - CBS.logWindows
 - Update.log
 
-### <a name="cause-3"></a>OK: 3
+### <a name="cause-3"></a>3\. ok
 
-Fájlrendszer sérülése ennek oka az lehet. Azonban meglehetősen nehéz diagnosztizálása és a módosítás az operációs rendszer sérülését okozó azonosítása.
+A fájlrendszer sérülése ezt okozhatta. Azonban nehéz diagnosztizálni és azonosítani az operációs rendszer sérülését okozó változást.
 
 ## <a name="solution"></a>Megoldás
 
-Ez a probléma megoldásához [készítsen biztonsági másolatot az operációsrendszer-lemez](../windows/snapshot-copy-managed-disk.md), és [az operációsrendszer-lemez csatolása a virtuális gép mentési](../windows/troubleshoot-recovery-disks-portal.md), majd hajtsa végre a megoldási lehetőségeket az ennek megfelelően, vagy próbálja ki a megoldásokat, egyenként.
+A probléma megoldásához [végezze el az operációsrendszer-lemez biztonsági mentését](../windows/snapshot-copy-managed-disk.md), és [csatlakoztassa az operációsrendszer-lemezt egy mentési virtuális géphez](../windows/troubleshoot-recovery-disks-portal.md), majd kövesse a megoldás beállításait, vagy próbálja meg egyenként a megoldásokat.
 
-### <a name="solution-for-cause-1"></a>1 OK megoldás
+### <a name="solution-for-cause-1"></a>Megoldás az 1. ok esetén
 
-1. Miután az operációsrendszer-lemez csatolva van egy működő virtuális Gépet, győződjön meg arról, hogy a lemez megjelölt **Online** a Lemezkezelés konzol, és jegyezze fel a tartalmazó partíció meghajtóbetűjelét a **\Windows** mappát.
+1. Miután az operációsrendszer-lemez csatlakoztatva van egy működő virtuális géphez, ellenőrizze, hogy a lemez **online** állapotban van-e megjelölve a Lemezkezelés konzolon, és jegyezze fel a **\Windows** mappát tároló partíció meghajtóbetűjelét.
 
-2. Ha a lemez **Offline**, majd beállíthatja azt a **Online**.
+2. Ha a lemez offline értékre van beállítva, akkor állítsa **online** **állapotba**.
 
-3. Másolatot készít a **\Windows\System32\config** mappát abban az esetben a módosítások a visszaállítás van szükség.
+3. Hozzon létre egy másolatot a **\Windows\System32\config** mappából abban az esetben, ha a módosítások visszaállítására van szükség.
 
-4. Virtuális gép mentési nyissa meg a Windows beállításjegyzék-szerkesztővel (regedit).
+4. A mentési virtuális gépen nyissa meg a Windows rendszerleíróadatbázis-szerkesztőt (Regedit).
 
-5. Válassza ki a **HKEY_LOCAL_MACHINE** billentyűt, majd **fájl** > **a struktúra betöltése** a menüből.
+5. Válassza ki a **HKEY_LOCAL_MACHINE** kulcsot, majd válassza a **fájl** > **betöltése struktúra** lehetőséget a menüből.
 
-6. Keresse meg a rendszer-fájlt a **\Windows\System32\config** mappát.
+6. Keresse meg a rendszerfájlt a **\Windows\System32\config** mappában.
 
-7. Válassza ki **nyílt**, típus **BROKENSYSTEM** nevét, bontsa ki a **HKEY_LOCAL_MACHINE** kulcsot, és aztán megjelenik egy további nevű kulcsot **BROKENSYSTEM** .
+7. Válassza a **Megnyitás**elemet, írja be a **BROKENSYSTEM** nevet, bontsa ki a **HKEY_LOCAL_MACHINE** kulcsot, majd megjelenik egy **BROKENSYSTEM**nevű további kulcs.
 
-8. Ellenőrizze, melyik ControlSet a indítja a számítógépet. Látni fogja a következő beállításkulcsot a kulcsok száma.
+8. Győződjön meg arról, hogy a számítógép melyik ControlSet indul el. A kulcs számát a következő beállításkulcs fogja látni.
 
     `HKEY_LOCAL_MACHINE\BROKENSYSTEM\Select\Current`
 
-9. Ellenőrizze, amely a VM agent szolgáltatást a következő beállításkulcs használatával a kritikusság.
+9. Győződjön meg arról, hogy a virtuálisgép-ügynök szolgáltatás kritikus fontosságú a következő beállításkulcs használatával.
 
     `HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Services\RDAgent\ErrorControl`
 
-10. Ha a beállításkulcs értéke nincs beállítva **2**, majd nyissa meg a következő megoldás.
+10. Ha a beállításkulcs értéke nem **2**, akkor folytassa a következő enyhítéssel.
 
-11. Ha a beállításkulcs értéke **2**, majd módosítsa az értéket **2** való **1**.
+11. Ha a beállításkulcs értéke **2**, akkor módosítsa az értéket **2** – **1**értékre.
 
-12. Ha bármely, a következő kulcs létezik, és értéket kell **2** vagy **3**, majd módosítsa ezeket az értékeket a **1** ennek megfelelően:
+12. Ha a következő kulcsok bármelyike létezik, és a **2** . vagy **3**. értékkel rendelkezik, majd módosítsa ezeket az értékeket **1** ennek megfelelően:
 
     - `HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Services\AzureWLBackupCoordinatorSvc\ErrorControl`
     - `HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Services\AzureWLBackupInquirySvc\ErrorControl`
     - `HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Services\AzureWLBackupPluginSvc\ErrorControl`
 
-13. Válassza ki a **BROKENSYSTEM** billentyűt, majd **fájl** > **a struktúra betöltése** a menüből.
+13. Válassza ki a **BROKENSYSTEM** kulcsot, majd válassza a **fájl** > **betöltése struktúra** lehetőséget a menüből.
 
-14. Válassza le az operációsrendszer-lemezt a hibaelhárító virtuális gépről.
+14. Válassza le az operációsrendszer-lemezt a hibaelhárítási virtuális gépről.
 
-15. Távolítsa el a lemezt a hibaelhárító virtuális gépről, és várjon körülbelül 2 percet, az Azure-hoz, a lemez felszabadítása érdekében.
+15. Távolítsa el a lemezt a hibaelhárítási virtuális gépről, és várjon 2 percet, amíg az Azure kiadja ezt a lemezt.
 
-16. [Hozzon létre egy új virtuális Gépet az operációsrendszer-lemezről](../windows/create-vm-specialized.md).
+16. [Hozzon létre egy új virtuális gépet az operációsrendszer-lemezről](../windows/create-vm-specialized.md).
 
-17. Ha a probléma kijavítása, akkor előfordulhat, hogy újra kell telepítenie a [RDAgent](https://blogs.msdn.microsoft.com/mast/2014/04/07/install-the-vm-agent-on-an-existing-azure-vm/) (WaAppAgent.exe).
+17. Ha a probléma kijavítva van, előfordulhat, hogy újra kell telepítenie a [RDAgent](https://blogs.msdn.microsoft.com/mast/2014/04/07/install-the-vm-agent-on-an-existing-azure-vm/) (WaAppAgent. exe).
 
-### <a name="solution-for-cause-2"></a>Megoldás ok 2
+### <a name="solution-for-cause-2"></a>Megoldás a 2. ok esetén
 
-A virtuális gép visszaállítása az utolsó ismert helyes konfigurációra, kövesse a [Azure Windows virtuális gép elindítása a legutolsó helyes konfiguráció](https://support.microsoft.com/help/4016731/).
+Állítsa vissza a virtuális gépet az utolsó ismert helyes konfigurációra, kövesse az [Azure Windows rendszerű virtuális gép indítása az utolsó ismert jó konfigurációval](https://support.microsoft.com/help/4016731/)című témakör lépéseit.
 
-### <a name="solution-for-cause-3"></a>Megoldás ok 3
-
-1. Miután a lemezt a hibaelhárító virtuális Géphez van csatlakoztatva, győződjön meg arról, hogy a lemez megjelölt **Online** a Lemezkezelés konzol.
-
-2. Másolatot készít a **\Windows\System32\config** mappát abban az esetben a módosítások a visszaállítás van szükség.
-
-3. Másolja a fájlokat a a **\Windows\System32\config\regback** mappát, és cserélje le a fájlokat a **\Windows\System32\config** mappát.
-
-4. Távolítsa el a lemezt a hibaelhárító virtuális gépről, és várjon körülbelül 2 percet, az Azure-hoz, a lemez felszabadítása érdekében.
-
-5. [Hozzon létre egy új virtuális Gépet az operációsrendszer-lemezről](../windows/create-vm-specialized.md).
-
+### <a name="solution-for-cause-3"></a>3\. ok megoldás
 >[!NOTE]
->Az alábbi eljárás csak utolsó erőforrásként használható. Regback történő visszaállítását visszaállítása lehetséges, hogy a gép hozzáférést, amíg az operációs rendszer nem számít stabil, mivel a beállításjegyzékben a hive időbélyegét és az aktuális nap között elveszett adatok. Kell egy új virtuális Gépet hozhat létre, és adja meg a csomagok az adatok áttelepítéséhez.
+>A következő eljárást csak utolsó erőforrásként kell használni. Míg a Regback-re való visszaállítás visszaállíthatja a számítógép elérését, az operációs rendszer nem tekinthető stabilnak, mivel a beállításjegyzékben a struktúra és az aktuális nap időbélyege között elveszett adatok. Létre kell hoznia egy új virtuális gépet, és el kell végeznie az adatmigrálás terveit.
+
+1. Miután a lemez csatlakoztatva van egy hibaelhárítási virtuális géphez, ellenőrizze, hogy a lemez **online** állapotban van-e megjelölve a Lemezkezelés konzolon.
+
+2. Hozzon létre egy másolatot a **\Windows\System32\config** mappából abban az esetben, ha a módosítások visszaállítására van szükség.
+
+3. Másolja a fájlokat a **\Windows\System32\config\regback** mappába, és cserélje le a fájlokat a **\Windows\System32\config** mappába.
+
+4. Távolítsa el a lemezt a hibaelhárítási virtuális gépről, és várjon 2 percet, amíg az Azure kiadja ezt a lemezt.
+
+5. [Hozzon létre egy új virtuális gépet az operációsrendszer-lemezről](../windows/create-vm-specialized.md).
+
+

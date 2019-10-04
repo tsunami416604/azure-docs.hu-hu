@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: timlt
 ms.openlocfilehash: 2d2661593ba3d9be2755d81803c8e248a2f7d0e1
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58335810"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60810603"
 ---
 # <a name="service-fabric-mesh-terminology"></a>Service Fabric-háló terminológiája
 
@@ -55,7 +55,7 @@ A natív modell támogatja a Reliable Services keretrendszer, amely a Service Fa
 
 A natív modell nem támogatott a Service Fabric-háló környezetben.  További információkért lásd: [programozási modell áttekintése](/azure/service-fabric/service-fabric-choose-framework).
 
-### <a name="docker-compose"></a>Docker Compose 
+### <a name="docker-compose"></a>A docker Compose 
 [A docker Compose](https://docs.docker.com/compose/) része a Docker-projekt. Service Fabric korlátozott támogatást biztosít a Docker Compose modellt használó alkalmazások üzembe helyezéséhez.
 
 ## <a name="environments"></a>Környezetek

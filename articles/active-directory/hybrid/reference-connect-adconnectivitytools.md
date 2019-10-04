@@ -5,17 +5,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.date: 10/19/2018
+ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40b4be9aca5243b80151afac0ae221f0d44509c5
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: d6b90ff82601acca1249c7d8c353944e39e89f95
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650513"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66473782"
 ---
 # <a name="azure-ad-connect--adconnectivitytools-powershell-reference"></a>Azure AD Connect:  ADConnectivityTools PowerShell-referencia
 
@@ -23,7 +23,7 @@ A következő dokumentáció arról nyújt a ADConnectivityTools.psm1 PowerShell
 
 ## <a name="confirm-dnsconnectivity"></a>Confirm-DnsConnectivity
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 
 Észleli a helyi Dns-probléma.
 
@@ -36,11 +36,11 @@ Confirm-DnsConnectivity [-Forest] <String> [-DCs] <Array> [-ReturnResultAsPSObje
 ### <a name="description"></a>LEÍRÁS
 
 Helyi Dns-kapcsolat teszteket futtat.
-Az Active Directory-összekötő konfigurálásához felhasználónak rendelkeznie kell mindkét névfeloldás esetében az erdő he\she hasonlóan a tartományvezérlők, az erdőhöz tartozó, valamint csatlakozni próbál.
+Az Active Directory-összekötő konfigurálásához a felhasználónak rendelkeznie kell mindkét név resolutionthe azt az erdőt, azok próbál hasonlóan a tartományvezérlők, ebben az erdőben kapcsolódó is csatlakozhat.
 
 ### <a name="examples"></a>PÉLDÁK
 
-#### <a name="example-1"></a>1. PÉLDA
+#### <a name="example-1"></a>1\. PÉLDA
 
 ```powershell
 Confirm-DnsConnectivity -Forest "TEST.CONTOSO.COM" -DCs "MYDC1.CONTOSO.COM","MYDC2.CONTOSO.COM"
@@ -110,7 +110,7 @@ További információk: about_CommonParameters (https://go.microsoft.com/fwlink/
 
 ## <a name="confirm-forestexists"></a>Győződjön meg róla ForestExists
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 
 Meghatározza, hogy létezik-e a megadott erdő.
 
@@ -126,7 +126,7 @@ Lekérdezi egy erdő társított IP-cím DNS-kiszolgáló.
 
 ### <a name="examples"></a>PÉLDÁK
 
-#### <a name="example-1"></a>1. PÉLDA
+#### <a name="example-1"></a>1\. PÉLDA
 
 ```powershell
 Confirm-TargetsAreReachable -Forest "TEST.CONTOSO.COM"
@@ -157,7 +157,7 @@ További információk: about_CommonParameters (https://go.microsoft.com/fwlink/
 
 ## <a name="confirm-functionallevel"></a>Confirm-FunctionalLevel
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 
 Ellenőrzi az AD-erdő működési szintje.
 
@@ -182,7 +182,7 @@ Ellenőrzi, hogy az AD-erdő működési szintjét egy adott MinAdForestVersion 
 
 ### <a name="examples"></a>PÉLDÁK
 
-#### <a name="example-1"></a>1. PÉLDA
+#### <a name="example-1"></a>1\. PÉLDA
 
 ```powershell
 Confirm-FunctionalLevel -Forest "test.contoso.com"
@@ -194,7 +194,7 @@ Confirm-FunctionalLevel -Forest "test.contoso.com"
 Confirm-FunctionalLevel -Forest "test.contoso.com" -RunWithCurrentlyLoggedInUserCredentials -Verbose
 ```
 
-#### <a name="example-3"></a>3. PÉLDA
+#### <a name="example-3"></a>3\. PÉLDA
 
 ```powershell
 Confirm-FunctionalLevel -ForestFQDN $ForestFQDN -RunWithCurrentlyLoggedInUserCredentials -Verbose
@@ -258,7 +258,7 @@ További információk: about_CommonParameters (https://go.microsoft.com/fwlink/
 
 ## <a name="confirm-networkconnectivity"></a>Confirm-NetworkConnectivity
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 
 Észleli a helyi hálózati problémák léptek fel.
 
@@ -277,7 +277,7 @@ A helyi hálózati teszteket az AAD Connect képesnek kell lennie kommunikálni 
 
 ### <a name="examples"></a>PÉLDÁK
 
-#### <a name="example-1"></a>1. PÉLDA
+#### <a name="example-1"></a>1\. PÉLDA
 
 ```powershell
 Confirm-NetworkConnectivity -SkipDnsPort -DCs "MYDC1.CONTOSO.COM","MYDC2.CONTOSO.COM"
@@ -309,8 +309,8 @@ Accept wildcard characters: False
 
 #### <a name="-skipdnsport"></a>-SkipDnsPort
 
-Ha a felhasználó nem használja az Active Directory-hely által biztosított DNS-szolgáltatások / bejelentkezési DC, majd he\she előfordulhat, hogy ki szeretné hagyni 53-as port ellenőrzése.
-Felhasználó továbbra is tudja feloldani az _.ldap._tcp kell lennie. \<forestfqdn\> ahhoz, hogy az Active Directory-összekötő konfigurálása sikeres.
+Ha a felhasználó nem használja az Active Directory-hely által biztosított DNS-szolgáltatások / bejelentkezési tartományvezérlő, akkor előfordulhat, hogy ki szeretné hagyni 53-as port ellenőrzése.
+A felhasználó továbbra is tudja feloldani az _.ldap._tcp kell lennie. \<forestfqdn\> ahhoz, hogy az Active Directory-összekötő konfigurálása sikeres.
 
 ```yml
 Type: SwitchParameter
@@ -348,7 +348,7 @@ További információk: about_CommonParameters (https://go.microsoft.com/fwlink/
 
 ## <a name="confirm-targetsarereachable"></a>Confirm-TargetsAreReachable
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 
 Azt határozza meg, ha a megadott erdő és a társított tartományvezérlők érhetők el.
 
@@ -364,7 +364,7 @@ Futtatások "pingelje" (e számítógép segítségével érik el a célszámít
 
 ### <a name="examples"></a>PÉLDÁK
 
-#### <a name="example-1"></a>1. PÉLDA
+#### <a name="example-1"></a>1\. PÉLDA
 
 ```powershell
 Confirm-TargetsAreReachable -Forest "TEST.CONTOSO.COM" -DCs "MYDC1.CONTOSO.COM","MYDC2.CONTOSO.COM"
@@ -417,7 +417,7 @@ További információk: about_CommonParameters (https://go.microsoft.com/fwlink/
 
 ## <a name="confirm-validdomains"></a>Confirm-ValidDomains
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 
 Ellenőrizze a érhetők el, hogy a kapott erdő teljes Tartományneve tartományban
 
@@ -442,7 +442,7 @@ Ellenőrizze, hogy minden a tartománynak a kapott erdő teljes Tartományneve �
 
 ### <a name="examples"></a>PÉLDÁK
 
-#### <a name="example-1"></a>1. PÉLDA
+#### <a name="example-1"></a>1\. PÉLDA
 
 ```powershell
 Confirm-ValidDomains -Forest "test.contoso.com" -Verbose
@@ -454,7 +454,7 @@ Confirm-ValidDomains -Forest "test.contoso.com" -Verbose
 Confirm-ValidDomains -Forest "test.contoso.com" -RunWithCurrentlyLoggedInUserCredentials -Verbose
 ```
 
-#### <a name="example-3"></a>3. PÉLDA
+#### <a name="example-3"></a>3\. PÉLDA
 
 ```powershell
 Confirm-ValidDomains -ForestFQDN $ForestFQDN -RunWithCurrentlyLoggedInUserCredentials -Verbose
@@ -517,7 +517,7 @@ További információk: about_CommonParameters (https://go.microsoft.com/fwlink/
 
 ## <a name="confirm-validenterpriseadmincredentials"></a>Confirm-ValidEnterpriseAdminCredentials
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 
 Ellenőrzi, ha a felhasználó rendelkezik-e a vállalati rendszergazdai hitelesítő adatokat.
 
@@ -534,7 +534,7 @@ Ha a felhasználó rendelkezik vállalati rendszergazdai hitelesítő adatokat a
 
 ### <a name="examples"></a>PÉLDÁK
 
-#### <a name="example-1"></a>1. PÉLDA
+#### <a name="example-1"></a>1\. PÉLDA
 
 ```powershell
 Confirm-ValidEnterpriseAdminCredentials -DomainName test.contoso.com -Verbose
@@ -571,7 +571,7 @@ További információk: about_CommonParameters (https://go.microsoft.com/fwlink/
 
 ## <a name="get-domainfqdndata"></a>Get-DomainFQDNData
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 
 Lekéri egy DomainFQDN kívül egy fiók és jelszó kombinációjával.
 
@@ -590,7 +590,7 @@ Ha a domainFQDN érvényes, egy DomainFQDNName vagy RootDomainName adja vissza, 
 
 ### <a name="examples"></a>PÉLDÁK
 
-#### <a name="example-1"></a>1. PÉLDA
+#### <a name="example-1"></a>1\. PÉLDA
 
 ```powershell
 Get-DomainFQDNData -DomainFQDNDataType DomainFQDNName -Verbose
@@ -660,7 +660,7 @@ További információk: about_CommonParameters (https://go.microsoft.com/fwlink/
 
 ## <a name="get-forestfqdn"></a>Get-ForestFQDN
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 
 Lekéri egy ForestFQDN kívül egy fiók és jelszó kombinációjával.
 
@@ -677,7 +677,7 @@ Próbálja ki a megadott hitelesítő adatok egy ForestFQDN lekérdezni.
 
 ### <a name="examples"></a>PÉLDÁK
 
-#### <a name="example-1"></a>1. PÉLDA
+#### <a name="example-1"></a>1\. PÉLDA
 
 ```powershell
 Get-ForestFQDN -Forest CONTOSO.MICROSOFT.COM -Verbose
@@ -730,7 +730,7 @@ További információk: about_CommonParameters (https://go.microsoft.com/fwlink/
 
 ## <a name="start-connectivityvalidation"></a>Start-ConnectivityValidation
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 
 Fő függvényt.
 
@@ -747,7 +747,7 @@ Futtatások AD hitelesítő adatok ellenőrzéséhez minden elérhető mechanizm
 
 ### <a name="examples"></a>PÉLDÁK
 
-#### <a name="example-1"></a>1. PÉLDA
+#### <a name="example-1"></a>1\. PÉLDA
 
 ```powershell
 Start-ConnectivityValidation -Forest "test.contoso.com" -AutoCreateConnectorAccount $True -Verbose
@@ -812,7 +812,7 @@ További információk: about_CommonParameters (https://go.microsoft.com/fwlink/
 
 ## <a name="start-networkconnectivitydiagnosistools"></a>Start-NetworkConnectivityDiagnosisTools
 
-### <a name="synopsis"></a>SZINOPSZIS
+### <a name="synopsis"></a>SYNOPSIS
 
 Hálózati kapcsolat a fő függvény azt teszteli.
 
@@ -830,7 +830,7 @@ Helyi hálózati kapcsolati tesztek futtatja.
 
 ### <a name="examples"></a>PÉLDÁK
 
-#### <a name="example-1"></a>1. PÉLDA
+#### <a name="example-1"></a>1\. PÉLDA
 
 ```powershell
 Start-NetworkConnectivityDiagnosisTools -Forest "TEST.CONTOSO.COM"

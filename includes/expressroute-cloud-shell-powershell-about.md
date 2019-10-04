@@ -5,23 +5,26 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 02/13/2019
+ms.date: 06/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: ece75ff84c9f45e7284d7a5976f55f8a4ac4680f
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 8ba8f98268f076710b120166ccb3a4440307cfbf
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57410661"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059686"
 ---
-Ez a cikk a PowerShell-parancsmagok. A parancsmagok futtatásához használhatja az Azure Cloud Shell olyan ingyenes interaktív kezelőfelület. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. A **Másolás** gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz. Néhány módszer a Cloud Shell indításához:
+Ez a cikk a PowerShell-parancsmagokat használja. A parancsmagok futtatásához használhatja a Azure Cloud Shell, egy Azure-ban üzemeltetett interaktív rendszerhéj-környezetet, amelyet a böngészőben használhat. Azure Cloud Shell a Azure PowerShell-parancsmagokat előre telepítette.
+
+Ha az ebben a cikkben szereplő kódot szeretné futtatni Azure Cloud Shellon, nyisson meg egy Cloud Shell-munkamenetet, majd a kód másolásához használja a **Másolás** gombot a kód másolásához, majd illessze be a Cloud Shell-munkamenetbe a __CTRL + SHIFT + v billentyűkombinációval__ Windows és Linux rendszeren, vagy a __cmd + SHIFT + v__ macOS rendszeren. A beillesztett szöveg nem lesz automatikusan végrehajtva, ezért a kód futtatásához nyomja le az **ENTER** billentyűt.
+
+Azure Cloud Shell a használatával indítható el:
 
 |  |   |
 |-----------------------------------------------|---|
-| Kattintson a **Try It** (Kipróbálás) lehetőségre a kódblokk jobb felső sarkában. | ![A Cloud Shell ebben a cikkben](./media/vpn-gateway-cloud-shell-powershell/cloud-shell-powershell-try-it.png) |
-| Nyissa meg a Cloud Shellt a böngészőben. | [![https://shell.azure.com/powershell](./media/vpn-gateway-cloud-shell-powershell/launchcloudshell.png)](https://shell.azure.com/powershell) |
-| Az Azure Portal jobb felső sarkában található menüben kattintson a **Cloud Shell** gombra. | [![A Cloud Shell a portálon](./media/vpn-gateway-cloud-shell-powershell/cloud-shell-menu.png)](https://portal.azure.com) |
-|  |  |
+| Kattintson a **Kipróbálás** elemre egy kódblokk jobb felső sarkában. Ez a szöveg __nem__ másolja automatikusan Cloud Shellba. | ![Példa a Azure Cloud Shell kipróbálására](./media/cloud-shell-try-it/hdi-azure-cli-try-it.png) |
+| Nyissa meg a [shell.Azure.com](https://shell.azure.com) a böngészőben. | [![Azure Cloud Shell indítása gomb](./media/cloud-shell-try-it/hdi-launch-cloud-shell.png)](https://shell.azure.com) |
+| Az [Azure Portal](https://portal.azure.com) jobb felső sarkában található menüben kattintson a **Cloud Shell** gombra. | ![Cloud Shell gomb a Microsoft Azure Portal-on](./media/cloud-shell-try-it/hdi-cloud-shell-menu.png) |
 
-Ha nem szeretné használni az Azure Cloud Shellt, telepíthet PowerShell helyileg helyette. Ha a helyi telepítése és használata PowerShell választja, mindenképpen telepítse a legújabb verzióját, az Azure Resource Manager PowerShell-parancsmagokat a legújabb szolgáltatásfunkciók eléréséhez. További információt [az Azure PowerShell telepítésével és konfigurálásával](/powershell/azure/overview) foglalkozó témakörben talál.
+Ha nem kívánja használni a Azure Cloud Shellt, helyette telepítse a Azure PowerShell helyileg. Győződjön meg arról, hogy az Azure PowerShell legújabb verzióját telepíti, hogy naprakész funkciókat kapjon. További információ: [Install Azure PowerShell](/powershell/azure/overview).

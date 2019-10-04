@@ -10,19 +10,18 @@ tags: azure-service-management
 ms.assetid: fc755f82-ca3e-4532-b251-690b699324d6
 ms.service: app-service-web
 ms.workload: web
-ms.devlang: na
 ms.topic: sample
 ms.date: 10/30/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: f1f08ca8517d01a6d72f1f8a18514ea3f851ff14
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: c1c43e8523a46971e99b2d91b9c121de3dc57681
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587905"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70087966"
 ---
-# <a name="back-up-a-web-app-using-powershell"></a>Készítsen biztonsági másolatot egy webes alkalmazásban a PowerShell segítségével
+# <a name="back-up-a-web-app-using-powershell"></a>Webalkalmazás biztonsági mentése a PowerShell használatával
 
 Ez a példaszkript egy webalkalmazást hoz létre az App Service-ben a kapcsolódó erőforrásokkal együtt, majd egyszeri biztonsági mentést hajt végre. 
 

@@ -1,6 +1,6 @@
 ---
 title: Adatok növekményes másolása változáskövetés és az Azure Data Factory használatával | Microsoft Docs
-description: 'Az oktatóanyag során egy Azure Data Factory-folyamatot hoz létre, amely egy helyszíni SQL Server több táblájának módosított adatait másolja növekményesen egy Azure SQL Database-be. '
+description: 'Az oktatóanyag során egy Azure Data Factory-folyamatot hoz létre, amely egy helyszíni SQL Server több táblájának módosított adatait másolja növekményesen egy Azure SQL-adatbázisba. '
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
@@ -8,19 +8,18 @@ manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/12/2018
 ms.author: yexu
-ms.openlocfilehash: 41f8769aea841e05887feb6a44511cbf444a7acf
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 6a71c83a190bd7e88edd5008edef670b32905add
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449156"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140809"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Adatok növekményes betöltése az Azure SQL Database-ből az Azure Blob Storage-ba változáskövetési adatok használatával 
-Az oktatóanyag során egy Azure-beli adat-előállítót hoz létre egy olyan folyamattal, amely változásadatokat tölt be a forrás Azure SQL Database-ben lévő **változáskövetési** adatok alapján egy Azure Blob Storage-be.  
+Az oktatóanyag során egy Azure-beli adat-előállítót hoz létre egy olyan folyamattal, amely változásadatokat tölt be a forrás Azure SQL-adatbázisban lévő **változáskövetési** adatok alapján egy Azure Blob Storage-be.  
 
 Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 
@@ -34,7 +33,7 @@ Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 > * A növekményes másolási folyamat létrehozása, futtatása és figyelése
 
 ## <a name="overview"></a>Áttekintés
-Adatintegrációs megoldások esetében gyakran használt forgatókönyv az adatok növekményes betöltése egy kezdeti, teljes adatbetöltést követően. Bizonyos esetekben a forrásadattárban lévő adott időszakbeli módosított adatok egyszerűen felszeletelhetők (például: LastModifyTime, CreationTime). Bizonyos esetekben nincs kifejezett módja a legutóbbi adatfeldolgozásból származó változásadatok azonosításának. A változásadatok a változáskövetési technológiával azonosíthatóak, amelyeket egyes adattárak támogatnak, például az Azure SQL Database vagy az SQL Server.  Ez az oktatóanyag bemutatja, hogy az Azure Data Factory és az SQL változáskövetési technológia segítségével hogyan tölthetők be növekményesen egy Azure SQL Database változásadatai egy Azure Blob Storage-ba.  Az SQL változáskövetési technológiával kapcsolatos részletesebb információért lásd: [Változáskövetés az SQL Serveren](/sql/relational-databases/track-changes/about-change-tracking-sql-server). 
+Adatintegrációs megoldások esetében gyakran használt forgatókönyv az adatok növekményes betöltése egy kezdeti, teljes adatbetöltést követően. Bizonyos esetekben a forrásadattárban lévő adott időszakbeli módosított adatok egyszerűen felszeletelhetők (például: LastModifyTime, CreationTime). Bizonyos esetekben nincs kifejezett módja a legutóbbi adatfeldolgozásból származó változásadatok azonosításának. A változásadatok a változáskövetési technológiával azonosíthatóak, amelyeket egyes adattárak támogatnak, például az Azure SQL Database vagy az SQL Server.  Ez az oktatóanyag bemutatja, hogy az Azure Data Factory és az SQL változáskövetési technológia segítségével hogyan tölthetők be növekményesen az Azure SQL Database változásadatai az Azure Blob Storage-ba.  Az SQL változáskövetési technológiával kapcsolatos részletesebb információért lásd: [Változáskövetés az SQL Serveren](/sql/relational-databases/track-changes/about-change-tracking-sql-server). 
 
 ## <a name="end-to-end-workflow"></a>Teljes körű munkafolyamat
 Íme az adatok változáskövetési technológiával történő növekményes betöltési munkafolyamatának részletes lépései.
@@ -43,8 +42,8 @@ Adatintegrációs megoldások esetében gyakran használt forgatókönyv az adat
 > Az Azure SQL Database és az SQL Server is támogatja a változáskövetési technológiát. Ez az oktatóanyag az Azure SQL Database-t használja forrásadattárként. Vagy egy helyszíni SQL Servert is használhat. 
 
 1. **Előzményadatok kezdeti betöltése** (egyszeri futtatás):
-    1. Engedélyezze a változáskövetési technológiát a forrás Azure SQL Database-ben.
-    2. Az Azure SQL Database-ben kérje le a SYS_CHANGE_VERSION kezdeti értékét. Ez lesz a módosított adatok rögzítésének alapja.
+    1. Engedélyezze a változáskövetési technológiát a forrás Azure SQL-adatbázisban.
+    2. Az Azure SQL-adatbázisban kérje le a SYS_CHANGE_VERSION kezdeti értékét. Ez lesz a módosított adatok rögzítésének alapja.
     3. Töltse be az összes adatot az Azure SQL Database-ből az Azure Blob Storage-be. 
 2. **Változásadatok ütemezett növekményes betöltése** (időszakos futtatás az első adatbetöltést követően):
     1. Kérje le a SYS_CHANGE_VERSION régi és új értékét.
@@ -98,7 +97,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 4. Engedélyezze a **változáskövetési** mechanizmust az adatbázisban és a forrástáblában (data_source_table) az alábbi SQL-lekérdezés futtatásával: 
 
     > [!NOTE]
-    > - Cserélje le &lt;az adatbázisa nevét&gt; a data_source_table táblát tartalmazó Azure SQL Database nevére. 
+    > - Cserélje le &lt;az adatbázisa nevét&gt; a data_source_table táblát tartalmazó Azure SQL-adatbázis nevére. 
     > - Ebben a példában a rendszer két napig tárolja a módosított adatokat. Ha a módosított adatokat három naponta vagy annál ritkábban tölti be, nem minden módosított adat jelenik meg.  Növelje a CHANGE_RETENTION változó értékét, vagy ügyeljen arra, hogy a módosított adatok betöltései között ne teljen el két napnál több idő. További információk: [Változáskövetés engedélyezése adatbázishoz](/sql/relational-databases/track-changes/enable-and-disable-change-tracking-sql-server#enable-change-tracking-for-a-database).
  
     ```sql
@@ -128,7 +127,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
     
     > [!NOTE]
     > Ha az adatok nem módosultak, miután engedélyezte a változáskövetést az SQL Database-ben, a változáskövetés verziójának értéke 0.
-6. Az alábbi lekérdezés futtatásával hozzon létre egy tárolt eljárást az Azure SQL Database-ben. A folyamat ezt a tárolt eljárást hívja meg az előző lépésben létrehozott tábla változáskövetési verziójának frissítéséhez. 
+6. Az alábbi lekérdezés futtatásával hozzon létre egy tárolt eljárást az Azure SQL-adatbázisban. A folyamat ezt a tárolt eljárást hívja meg az előző lépésben létrehozott tábla változáskövetési verziójának frissítéséhez. 
 
     ```sql
     CREATE PROCEDURE Update_ChangeTracking_Version @CurrentTrackingVersion BIGINT, @TableName varchar(50)
@@ -149,10 +148,10 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/install-Az-ps) ismertető cikkben szereplő utasításokat a legújabb Azure PowerShell-modulok telepítéséhez.
 
-## <a name="create-a-data-factory"></a>Data factory létrehozása
+## <a name="create-a-data-factory"></a>data factory létrehozása
 
 1. Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
-1. A bal oldali menüben válassza ki a **erőforrás létrehozása** > **adatok + analitika** > **adat-előállító**: 
+1. A bal oldali menüben válassza az **erőforrás** > létrehozása**adatok és Analitika** > **Data Factory**: 
    
    ![Data Factory kiválasztása az „Új” ablaktáblán](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
@@ -174,7 +173,7 @@ Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/
 5. Válassza ki a Data Factory **helyét**. A legördülő listán csak a támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
 6. Válassza a **Rögzítés az irányítópulton** lehetőséget.     
 7. Kattintson a **Create** (Létrehozás) gombra.      
-8. Az irányítópulton a következő állapotleírás látható: **Data factory üzembe helyezése**. 
+8. Az irányítópulton a következő csempe jelenik meg az állapottal: **Az adatelőállító üzembe helyezése**. 
 
     ![adat-előállító üzembe helyezése csempe](media/tutorial-incremental-copy-change-tracking-feature-portal/deploying-data-factory.png)
 9. A létrehozás befejezése után a **Data Factory** lap a képen látható módon jelenik meg.
@@ -207,7 +206,7 @@ Ebben a lépésben az Azure Storage-fiókot társítja az adat-előállítóval.
 
 
 ### <a name="create-azure-sql-database-linked-service"></a>Azure SQL Database-beli társított szolgáltatás létrehozása.
-Ebben a lépésben az Azure SQL Database-t az adat-előállítóhoz kapcsolja.
+Ebben a lépésben az Azure SQL-adatbázist az adat-előállítóhoz kapcsolja.
 
 1. Kattintson a **Kapcsolatok**, majd az **+ Új** elemre.
 2. Az **Új társított szolgáltatás** ablakban válassza az **Azure SQL Database** lehetőséget, majd kattintson a **Folytatás** elemre. 
@@ -215,13 +214,13 @@ Ebben a lépésben az Azure SQL Database-t az adat-előállítóhoz kapcsolja.
 
     1. A **Név** mezőben adja meg az **AzureSqlDatabaseLinkedService** értéket. 
     2. A **Kiszolgáló neve** mezőnél válassza ki az Azure SQL Server-kiszolgálót.
-    4. Az **Adatbázis neve** mezőnél válassza ki az Azure SQL Database-adatbázist. 
+    4. Az **Adatbázis neve** mezőnél válassza ki az Azure SQL-adatbázist. 
     5. A **Felhasználónév** mezőben adja meg a felhasználó nevét. 
     6. A **Jelszó** mezőben adja meg a felhasználóhoz tartozó jelszót. 
     7. A kapcsolat teszteléséhez kattintson a **Kapcsolat tesztelése** elemre.
     8. A társított szolgáltatás mentéséhez kattintson a **Mentés** gombra. 
     
-       ![Az Azure SQL Database-beli társított szolgáltatás beállításai](./media/tutorial-incremental-copy-change-tracking-feature-portal/azure-sql-database-linked-service-settings.png)
+       ![Azure SQL Database társított szolgáltatás beállításai](./media/tutorial-incremental-copy-change-tracking-feature-portal/azure-sql-database-linked-service-settings.png)
 
 ## <a name="create-datasets"></a>Adatkészletek létrehozása
 Ebben a lépésben adatkészleteket hoz létre, amelyek az adatforrást, az adatcél helyét és a SYS_CHANGE_VERSION változó tárolási helyét jelölik.
@@ -261,7 +260,7 @@ Ebben a lépésben egy adatkészletet hoz létre, amely a forrásadattárból m�
 
     1. A **Társított szolgáltatás** mezőben válassza az **AzureStorageLinkedService** értéket.
     2. A **filePath** **mappa** részéhez írja be az **adftutorial/incchgtracking** kifejezést.
-    3. Adja meg  **\@CONCAT ("növekményes-', pipeline(). RunId, '.txt')** a **fájl** része a **filePath**.  
+    3. Adja meg  **\@a concat (növekményes, folyamat () értéket. RunId, '. txt ')** a **filepath**fájljának részeként.  
 
        ![Fogadó adatkészlet – kapcsolat](./media/tutorial-incremental-copy-change-tracking-feature-portal/sink-dataset-connection.png)
 
@@ -327,7 +326,7 @@ Egy `incremental-<GUID>.txt` nevű fájl található az `adftutorial` nevű tár
 
 ![Kimeneti fájl teljes másolásból](media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-output-file.png)
 
-A fájlnak tartalmaznia kell az Azure SQL Database-ből származó adatokat:
+A fájlnak tartalmaznia kell az Azure SQL-adatbázisból származó adatokat:
 
 ```
 1,aaaa,21
@@ -339,7 +338,7 @@ A fájlnak tartalmaznia kell az Azure SQL Database-ből származó adatokat:
 
 ## <a name="add-more-data-to-the-source-table"></a>További adatok hozzáadása a forrástáblához
 
-Futtassa az alábbi lekérdezést az Azure SQL Database-ben sor hozzáadásához és frissítéséhez. 
+Futtassa az alábbi lekérdezést az Azure SQL-adatbázisban sor hozzáadásához és frissítéséhez. 
 
 ```sql
 INSERT INTO data_source_table
@@ -450,13 +449,13 @@ A második fájl az `adftutorial` nevű tároló `incchgtracking` mappájában t
 
 ![Kimeneti fájl növekményes másolásból](media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-copy-output-file.png)
 
-A fájl kizárólag az Azure SQL Database változásadatait tartalmazza. Az `U` karaktert tartalmazó rekord a frissített sor az adatbázisban, az `I` karaktert tartalmazó rekord pedig a hozzáadott sor. 
+A fájl kizárólag az Azure SQL-adatbázis változásadatait tartalmazza. Az `U` karaktert tartalmazó rekord a frissített sor az adatbázisban, az `I` karaktert tartalmazó rekord pedig a hozzáadott sor. 
 
 ```
 1,update,10,2,U
 6,new,50,1,I
 ```
-Az első három oszlop a data_source_table táblából származó módosított adatokat tartalmazza. Az utolsó két oszlop a változáskövetési rendszer táblájából származó metaadatokat tartalmazza. A negyedik oszlop az egyes módosított sorokra vonatkozó SYS_CHANGE_VERSION értéket tartalmazza. Az ötödik oszlop a következő művelet:  U = frissítés, I = Beszúrás.  A változáskövetési adatokkal kapcsolatos információért lásd: [CHANGETABLE](/sql/relational-databases/system-functions/changetable-transact-sql). 
+Az első három oszlop a data_source_table táblából származó módosított adatokat tartalmazza. Az utolsó két oszlop a változáskövetési rendszer táblájából származó metaadatokat tartalmazza. A negyedik oszlop az egyes módosított sorokra vonatkozó SYS_CHANGE_VERSION értéket tartalmazza. Az ötödik oszlop a művelet:  U = frissítés, I = Beszúrás.  A változáskövetési adatokkal kapcsolatos információért lásd: [CHANGETABLE](/sql/relational-databases/system-functions/changetable-transact-sql). 
 
 ```
 ==================================================================
@@ -468,10 +467,10 @@ PersonID Name    Age    SYS_CHANGE_VERSION    SYS_CHANGE_OPERATION
 
     
 ## <a name="next-steps"></a>További lépések
-Folytassa a következő oktatóanyaggal, csak azok LastModifiedDate alapján új és módosított fájlok másolásának megismeréséhez:
+Folytassa a következő oktatóanyaggal, amely azt ismerteti, hogyan másolhat új és módosított fájlokat csak a LastModifiedDate alapján:
 
 > [!div class="nextstepaction"]
->[Új fájlok másolása lastmodifieddate szerint](tutorial-incremental-copy-lastmodified-copy-data-tool.md)
+>[Új fájlok másolása a lastmodifieddate](tutorial-incremental-copy-lastmodified-copy-data-tool.md)
 
 
 

@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 8/24/2018
 ms.author: dekapur
 ms.openlocfilehash: f49176f944aa2abfa1d355ce0bd207d1b544c275
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527050"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60772958"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>A Stateful Reliable Services diagnosztikai funkciói
 Az Azure Service Fabric Stateful Reliable Services StatefulServiceBase osztály bocsát ki [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) eseményeket, amelyek a szolgáltatás hibakeresése segítségével hogyan a futtatókörnyezet üzemeltetési, és hibaelhárítást betekintést nyújtson.
@@ -29,8 +29,8 @@ A Stateful Reliable Services StatefulServiceBase osztály az eseményforrás nev
 
 Példa eszközöket és technológiákat, amelyek segítségével gyűjtése és/vagy EventSource események megtekintése a [PerfView](https://www.microsoft.com/download/details.aspx?id=28567), [Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md), és a [Microsoft TraceEvent Library](https://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent).
 
-## <a name="events"></a>Események
-| Esemény neve | Esemény azonosítója | Szint | Esemény leírása |
+## <a name="events"></a>Events
+| Esemény neve | Eseményazonosító | Szint | Esemény leírása |
 | --- | --- | --- | --- |
 | StatefulRunAsyncInvocation |1 |Tájékoztató |Amikor a szolgáltatás RunAsync feladat elindult |
 | StatefulRunAsyncCancellation |2 |Tájékoztató |Amikor a szolgáltatás RunAsync feladat meg lett szakítva |
@@ -50,7 +50,7 @@ StatefulRunAsyncSlowCancellation bocsásson ki, amikor a RunAsync feladathoz meg
 ## <a name="performance-counters"></a>Teljesítményszámlálók
 A Reliable Services-modul határozza meg a következő teljesítményszámláló-kategóriák:
 
-| Kategória | Leírás |
+| Category | Leírás |
 | --- | --- |
 | Service Fabric tranzakciós replikátor |Adott, az Azure Service Fabric tranzakciós replikátor számlálói |
 | Service Fabric TStore |Az Azure Service Fabric TStore vonatkozó számlálók |
@@ -104,9 +104,9 @@ A Reliable Services modul a következő események alapján bocsát ki a `Servic
 
  Számláló neve | Leírás |
 | --- | --- |
-| Megkezdett tranzakciós művelet/másodperc | A másodpercenként létrehozott új írási tranzakciók száma.|
+| Kezdje a tranzakciós művelet/mp | A másodpercenként létrehozott új írási tranzakciók száma.|
 | Tranzakciós művelet/mp | A reliable collections másodpercenként végrehajtott hozzáadása/frissítése/törlése műveletek száma.|
-| A naplófájl kiürítése (bájt/mp) | A másodpercenkénti tranzakciós replikátor által a lemezre kiürített bájtok száma |
+| Naplófájl kiürítése (bájt/mp) | A másodpercenkénti tranzakciós replikátor által a lemezre kiürített bájtok száma |
 | Szabályozott művelet/mp | Műveletek száma másodpercenként a szabályozás miatt tranzakciós replikátor által elutasították. |
 | Átl. Ms/véglegesítés | Véglegesítés átlagos késése ezredmásodpercben tranzakciónként |
 | Átl. Kiürítési késés (ms) | Lemezes flush ezredmásodpercben a tranzakciós replikátor által kezdeményezett műveletek átlagos időtartama |
@@ -119,8 +119,8 @@ A Reliable Services modul a következő események alapján bocsát ki a `Servic
 | --- | --- |
 | Elemek száma | A tárolóban lévő elemek száma.|
 | Lemezméret | A teljes lemez méretét, a tároló ellenőrzőpontfájljainak bájtban.|
-| Ellenőrzőpontfájl írása (bájt/s) | Az utolsó ellenőrzőpont fájlja számára másodpercenként írt bájtok száma.|
-| Lemezmásolás átviteli sebessége (bájt/s) | (Az elsődleges replikán) olvasása vagy írása (a másodlagos replika) másodpercenként egy tároló másolása során lemez bájtok száma.|
+| Ellenőrzőpont fájl Zapsané Bajty/s | Az utolsó ellenőrzőpont fájlja számára másodpercenként írt bájtok száma.|
+| Másolja a lemez adatátviteli bájt/mp | (Az elsődleges replikán) olvasása vagy írása (a másodlagos replika) másodpercenként egy tároló másolása során lemez bájtok száma.|
 
 ## <a name="next-steps"></a>További lépések
 [A PerfView EventSource szolgáltatók](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)

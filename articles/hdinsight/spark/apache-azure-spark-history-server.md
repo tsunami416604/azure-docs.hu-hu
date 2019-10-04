@@ -1,248 +1,248 @@
 ---
-title: Használja a kiterjesztett hibakeresése és diagnosztizálása a Spark-alkalmazások – Azure HDInsight Spark-Előzménykiszolgáló
-description: Használja a hibakereséshez és diagnosztizálhatja a Spark-alkalmazások – Azure HDInsight Spark-Előzménykiszolgáló terjeszteni.
-services: hdinsight
-ms.service: hdinsight
-author: jejiang
-ms.author: jejiang
+title: Kiterjesztett Spark-előzmények kiszolgálója Spark-alkalmazások hibakereséséhez – Azure HDInsight
+description: Kiterjesztett Spark-előzmények használata a Spark-alkalmazások hibakereséséhez és diagnosztizálásához – Azure HDInsight.
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 09/14/2018
-ms.openlocfilehash: 96c2f1c021e27a8f5a0f4d2af2b34970b9d44e80
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.date: 09/04/2019
+ms.openlocfilehash: 9398745cb240e7b7dff45ff5d6d9cdf064239bfd
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59524174"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130353"
 ---
-# <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>A kiterjesztett Apache Spark-Előzménykiszolgáló használatával hibakeresése és diagnosztizálása az Apache Spark-alkalmazások
+# <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Apache Spark alkalmazások hibakeresése és diagnosztizálása a kiterjesztett Apache Sparki előzményeket használó kiszolgálón
 
-Ez a cikk ismerteti, hogyan használja az Apache Spark-Előzménykiszolgáló hibakeresése és diagnosztizálása a befejezett és futó Spark-alkalmazások, kiterjesztett. A bővítmény magában foglalja az adatok lapon és a graph és diagnosztikai lapon. Az a **adatok** lapon felhasználók ellenőrizheti a bemeneti és kimeneti adatokat a Spark-feladat. Az a **Graph** lapon felhasználók ellenőrizheti, flow és a feladat ábra visszajátszani az adatokat. Az a **diagnosztikai** lap felhasználói az itt található **adatok tevékenységdiagramon**, **Időeltérési** és **végrehajtó Használatelemzést**.
+Ez a cikk útmutatást nyújt arról, hogyan használható a kiterjesztett Apache Sparki előzmények kiszolgálója a befejezett és futó Spark-alkalmazások hibakeresésére és diagnosztizálására. A bővítmény tartalmazza az adatlapok és a Graph lap és a diagnosztika lapot. Az **adatok** lapon a felhasználók megnézhetik a Spark-feladathoz tartozó bemeneti és kimeneti adatokat. A **Graph (gráf** ) lapon a felhasználók megnézhetik az adatfolyamot, és visszajátszhatják a feladatok gráfját. A **diagnosztika** lapon a felhasználó hivatkozhat az **adatok eldöntésére**, az **idő eldöntésére** és a **végrehajtó használati elemzésre**.
 
-## <a name="get-access-to-apache-spark-history-server"></a>Az Apache Spark-Előzménykiszolgáló eléréséhez
+## <a name="get-access-to-apache-spark-history-server"></a>Apache Spark History-kiszolgáló elérésének beolvasása
 
-Az Apache Spark-Előzménykiszolgáló a webes felhasználói felület a befejezett és futó Spark-alkalmazások. 
+A Apache Spark History Server a Spark-alkalmazások befejezéséhez és futtatásához használható webes KEZELŐFELÜLET.
 
-### <a name="open-the-apache-spark-history-server-web-ui-from-azure-portal"></a>Nyissa meg a Apache Spark előzmények kiszolgáló webes felhasználói felület az Azure Portalról
+### <a name="open-the-apache-spark-history-server-web-ui-from-azure-portal"></a>Nyissa meg az Apache Spark History Server webes felhasználói felületét Azure Portal
 
-1. Az a [az Azure portal](https://portal.azure.com/), nyissa meg a Spark-fürtön. További információkért lásd: [fürtök listázása és megjelenítése](../hdinsight-administer-use-portal-linux.md#showClusters).
-2. A **Gyorshivatkozások**, kattintson a **fürt irányítópultja**, és kattintson a **Spark-Előzménykiszolgáló**. Amikor a rendszer kéri, adja meg a rendszergazdai hitelesítő adatokat a Spark-fürtön. 
+1. A [Azure Portal](https://portal.azure.com/)nyissa meg a Spark-fürtöt. További információ: [fürtök listázása és megjelenítése](../hdinsight-administer-use-portal-linux.md#showClusters).
+2. A **Gyorshivatkozások**területen kattintson a **fürt irányítópultja**, majd a **Spark-előzmények kiszolgáló**elemre. Ha a rendszer kéri, adja meg a Spark-fürt rendszergazdai hitelesítő adatait.
 
-    ![Spark-Előzménykiszolgáló](./media/apache-azure-spark-history-server/launch-history-server.png "Spark-Előzménykiszolgáló")
+    a ![Portal indítása Spark History Server](./media/apache-azure-spark-history-server/launch-history-server.png "Spark-előzmények kiszolgálója")
 
-### <a name="open-the-spark-history-server-web-ui-by-url"></a>Nyissa meg a Spark előzmények kiszolgáló webes felhasználói felületének URL-cím szerint
-Nyissa meg a Spark-Előzménykiszolgáló keresse a következő URL-címet, cserélje le `<ClusterName>` az ügyfél a Spark-fürt neve.
+### <a name="open-the-spark-history-server-web-ui-by-url"></a>A Spark History Server webes felhasználói felületének megnyitása URL-cím alapján
+
+Nyissa meg a Spark History-kiszolgálót úgy, hogy megkeresi a következő URL-címet, a helyére `<ClusterName>` pedig a Spark-fürt nevét használja.
 
    ```
    https://<ClusterName>.azurehdinsight.net/sparkhistory
    ```
 
-A Spark-Előzménykiszolgáló webes felhasználói felület hasonlóan néz ki:
+A Spark History-kiszolgáló webes felhasználói felülete a következőképpen néz ki:
 
-![HDInsight Spark-Előzménykiszolgáló](./media/apache-azure-spark-history-server/hdinsight-spark-history-server.png)
+![HDInsight Spark-előzmények kiszolgálója](./media/apache-azure-spark-history-server/hdinsight-spark-history-server.png)
 
+## <a name="data-tab-in-spark-history-server"></a>Az adatlap a Spark History-kiszolgálón
 
-## <a name="data-tab-in-spark-history-server"></a>Az adatok lapon, a Spark-Előzménykiszolgáló
-Válassza ki a feladat azonosítója, majd kattintson a **adatok** beolvasni az adatnézet az Eszközök menü.
+Válassza ki a feladatok AZONOSÍTÓját, majd az eszköz menüjében kattintson az **adatok** elemre az adatnézet beolvasásához.
 
-+ Ellenőrizze a **bemenetek**, **kimenetek**, és **Table műveletek** lapok külön-külön kiválasztásával.
++ A lapokat külön kiválasztva jelölje be a **bemenetek**, a **kimenetek**és a **táblák műveleteit** .
 
-    ![Adatlap](./media/apache-azure-spark-history-server/sparkui-data-tabs.png)
+    ![A Spark-alkalmazások lapjai](./media/apache-azure-spark-history-server/apache-spark-data-tabs.png)
 
-+ Másolja ki az összes sor gombra kattintva **másolási**.
++ A Másolás gombra kattintva másolja az összes **sort.**
 
-    ![Adatok másolása](./media/apache-azure-spark-history-server/sparkui-data-copy.png)
+    ![A Spark-alkalmazás másolására vonatkozó adatgyűjtés](./media/apache-azure-spark-history-server/apache-spark-data-copy.png)
 
-+ Az összes adat mentése CSV-fájlként gombra kattintva **csv**.
++ Mentse az összes fájlt CSV-fájlként a **CSV**-fájl gombra kattintva.
 
-    ![Adatok mentése](./media/apache-azure-spark-history-server/sparkui-data-save.png)
+    ![A Spark-alkalmazás mentésének adatvédelme](./media/apache-azure-spark-history-server/apache-spark-data-save.png)
 
-+ A keresési mezőben adjon meg kulcsszavakat **keresési**, a keresési eredmény jelenik meg azonnal.
++ Keresés kulcsszavak beírásával a mező **keresése**mezőbe a keresési eredmény azonnal megjelenik.
 
-    ![Adatok keresése](./media/apache-azure-spark-history-server/sparkui-data-search.png)
+    ![A Spark-alkalmazások keresésére vonatkozó adatgyűjtés](./media/apache-azure-spark-history-server/apache-spark-data-search.png)
 
-+ Kattintson a táblázat rendezéséhez, kattintson a plusz jelre kattintva bontsa ki a további részletek egy sor vagy a mínuszjelet sor összecsukásához kattintson az oszlop fejlécére.
++ Kattintson az oszlop fejlécére a táblázat rendezéséhez, kattintson a pluszjelre egy sor kibontásához a további részletek megjelenítéséhez, vagy kattintson a mínusz jelre egy sor összecsukásához.
 
-    ![Adattábla](./media/apache-azure-spark-history-server/sparkui-data-table.png)
+    ![A Spark-alkalmazás táblázatának adatkészlete](./media/apache-azure-spark-history-server/apache-spark-data-table.png)
 
-+ Gombra kattintva egyetlen fájl letöltése **részleges letöltés** jobb, amely helyezni, majd a rendszer letölti a kiválasztott fájl helyi, ha a fájl nem létezik, megnyílik egy új lap megjelenítéséhez a hibaüzenetek.
++ Töltsön le egy fájlt úgy, hogy a gomb **részleges Letöltés** lehetőségre kattint a jobb oldalon, majd a kiválasztott fájl a helyi helyre lesz letöltve, ha a fájl nem létezik többé, megnyílik egy új lap a hibaüzenetek megjelenítéséhez.
 
-    ![Adatok letöltése sor](./media/apache-azure-spark-history-server/sparkui-data-download-row.png)
+    ![A Spark-alkalmazás letöltési sorával kapcsolatos adatgyűjtés](./media/apache-azure-spark-history-server/sparkui-data-download-row.png)
 
-+ Másolja ki a teljes elérési útja vagy relatív elérési út kiválasztásával a **másolás teljes elérési útja**, **másolási relatív elérési út** , amely kibővíti a letöltés menüben. Az azure data lake storage fájlok **nyissa meg az Azure Storage Explorerben** indítsa el az Azure Storage Explorert, és keresse meg, amikor jelentkezzen be a mappához.
++ Másolja a teljes elérési utat vagy relatív elérési utat úgy, hogy kiválasztja a **teljes elérési utat**, és a letöltési menüből kibontott **relatív elérési utat másolja** . Az Azure-beli adattárat tároló fájlok esetében a **megnyitás Azure Storage Explorer** elindítja Azure Storage Explorer, majd a bejelentkezéshez keresse meg a mappát.
 
-    ![Adatok másolása elérési útja](./media/apache-azure-spark-history-server/sparkui-data-copy-path.png)
+    ![A Spark-alkalmazás másolási útvonalának elérési útja](./media/apache-azure-spark-history-server/sparkui-data-copy-path.png)
 
-+ Kattintson a szám keresse meg a táblázat alatti lapok mikor túl sok sorok oldal megjelenítéséhez. 
++ A táblázat alatti számra kattintva navigáljon a lapokhoz, amikor túl sok sor jelenjen meg egy oldalon.
 
-    ![Az adatok lap](./media/apache-azure-spark-history-server/sparkui-data-page.png)
+    ![A Spark-alkalmazásra vonatkozó adatgyűjtés oldal](./media/apache-azure-spark-history-server/apache-spark-data-page.png)
 
-+ Vigye a mutatót a kérdőjel mellett az elemleírásban megjeleníteni az adatokat, vagy kattintson a kérdőjel további információért.
++ Mutasson az adatok melletti kérdőjelre az elemleírás megjelenítéséhez, vagy kattintson a kérdőjelre további információk megszerzéséhez.
 
-    ![Adatok további információ](./media/apache-azure-spark-history-server/sparkui-data-more-info.png)
+    ![Adatok a Spark-alkalmazásról – további információ](./media/apache-azure-spark-history-server/sparkui-data-more-info.png)
 
-+ Küldjön visszajelzést problémákkal rendelkező kattintva **várjuk visszajelzéseit**.
++ Küldjön visszajelzést a problémákkal kapcsolatos visszajelzések **megadásával.**
 
-    ![Graph-visszajelzés](./media/apache-azure-spark-history-server/sparkui-graph-feedback.png)
+    ![A Spark Graph újra visszajelzést küld nekünk](./media/apache-azure-spark-history-server/sparkui-graph-feedback.png)
 
+## <a name="graph-tab-in-apache-spark-history-server"></a>Apache Spark History-kiszolgáló gráf lapja
 
-## <a name="graph-tab-in-apache-spark-history-server"></a>Az Apache Spark-Előzménykiszolgáló Graph lap
-Válassza ki a feladat azonosítója, majd kattintson a **Graph** beolvasni a feladat Grafikonnézet az Eszközök menü.
+Válassza a feladatok azonosítója lehetőséget, majd kattintson a **Graph** elemre az eszköz menüjében a feladatütemezés nézet beolvasásához.
 
-+ A feladat áttekintése a generált feladatgrafikon ellenőrzéséhez. 
++ Tekintse át a feladatot a generált feladatütemezés alapján.
 
-+ Alapértelmezés szerint az összes feladat megjelenik, és sikerült filtered by **Feladatazonosító**.
++ Alapértelmezés szerint az összes feladat megjelenik, és a **Feladat azonosítója**alapján szűrhető.
 
-    ![Graph-feladat azonosítója](./media/apache-azure-spark-history-server/sparkui-graph-jobid.png)
+    ![Spark-alkalmazás és a feladatütemezés-feladatok azonosítója](./media/apache-azure-spark-history-server/apache-spark-graph-jobid.png)
 
-+ Alapértelmezés szerint **folyamatban** van kijelölve, felhasználói sikerült ellenőrizni az adatfolyamot kiválasztásával **olvasás/Written** legördülő listájában **megjelenített**.
++ Alapértelmezés szerint a **folyamat** ki van választva, a felhasználó az adatfolyamatot úgy is megtekintheti, hogy a **Megjelenítés**legördülő listájában az írás **/írás** lehetőséget választja.
 
-    ![diagram megjelenítése](./media/apache-azure-spark-history-server/sparkui-graph-display.png)
+    ![Spark-alkalmazás és-feladatok diagramjának megjelenítése](./media/apache-azure-spark-history-server/sparkui-graph-display.png)
 
-    A színt, amely bemutatja az intenzitástérkép graph csomópont megjelenítéshez.
+    A Graph csomópont színe a hő jeleníti meg.
 
-    ![Graph-intenzitástérkép](./media/apache-azure-spark-history-server/sparkui-graph-heatmap.png)
+    ![Spark-alkalmazás és a Job Graph hő](./media/apache-azure-spark-history-server/sparkui-graph-heatmap.png)
 
-+ Játssza le a feladat kattintva a **lejátszás** gombra, és a Leállítás gombra kattintva bármikor leállítása. A feladat megjelenítése a színt, különböző állapot megjelenítése során lejátszási:
++ A feladatot a **Lejátszás** gombra kattintva, majd a Leállítás gombra kattintva bármikor leállíthatja. A feladat színesben jelenik meg, hogy a lejátszás közben eltérő állapot jelenjen meg:
 
-  + Zöld, a sikeres volt: A feladat sikeresen befejeződött.
-  + Narancssárga, a rendszer megpróbálja újból végrehajtani: Nem sikerült, de nincsenek hatással a feladat végső eredményt feladatok példányai. Ezek a feladatok rendelkezett ismétlődő, vagy próbálkozzon újra, amelyek később valószínűleg sikeres lesz.
-  + Kék futtatásához: A feladat fut.
-  + Várakozás a fehér vagy a rendszer kihagyta: A feladat futtatásához vár, vagy a szakasz rendelkezik kihagyása.
-  + Nem sikerült a vörös színt: A feladat sikertelen volt.
+  + A következő zöld: A feladatot sikeresen befejezte.
+  + A narancssárga az újrapróbálkozáshoz: A sikertelen feladatok példányai, amelyek nem befolyásolják a feladat végeredményét. Ezek a feladatok ismétlődő vagy újrapróbálkozási példányokkal rendelkeztek, amelyek később esetleg sikeresek lehetnek.
+  + Kék a futtatáshoz: A feladat fut.
+  + A várt vagy kihagyott fehér: A feladat futásra vár, vagy a szakasz kimaradt.
+  + Nem sikerült a vörös: A feladat nem sikerült.
 
-    ![Graph színminta fut](./media/apache-azure-spark-history-server/sparkui-graph-color-running.png)
- 
-    A fehér kihagyott fázis megjelenítését.
-    ![színminta Graph, hagyja ki](./media/apache-azure-spark-history-server/sparkui-graph-color-skip.png)
+    ![Spark-alkalmazás és a feladatütemezés színmintája, Futtatás](./media/apache-azure-spark-history-server/sparkui-graph-color-running.png)
 
-    ![sikertelen Graph színminta](./media/apache-azure-spark-history-server/sparkui-graph-color-failed.png)
- 
+    A kihagyott szakasz fehérre van állítva.
+    ![Spark-alkalmazás és a feladatütemezés színének mintája, kihagyás](./media/apache-azure-spark-history-server/sparkui-graph-color-skip.png)
+
+    ![A Spark-alkalmazás és a feladatütemezés színes mintája sikertelen](./media/apache-azure-spark-history-server/sparkui-graph-color-failed.png)
+
     > [!NOTE]  
-    > Lejátszás feladatonként engedélyezett. A lejátszás hiányos feladat, nem támogatott.
+    > Az egyes feladatokhoz tartozó lejátszás engedélyezett. Hiányos feladatok esetén a lejátszás nem támogatott.
 
++ Az egér görgeti a feladatokat a grafikonon, vagy a **nagyításhoz** kattintson a Nagyítás gombra, hogy illeszkedjen a képernyőhöz.
 
-+ Nagyítás/kimenő a feladatábra csúcsaira, vagy kattintson a jobbra görget egér **igazítás nagyítás** legyen a képernyőhöz igazítás.
- 
-    ![Graph nagyítás igazítás](./media/apache-azure-spark-history-server/sparkui-graph-zoom2fit.png)
+    ![A Spark-alkalmazás és a feladatok gráfjának méretezése](./media/apache-azure-spark-history-server/sparkui-graph-zoom2fit.png)
 
-+ Vigye a mutatót az elemleírás, ha a meghiúsult feladatok megtekintéséhez graph-csomópont, majd kattintson a fázis fázis lap megnyitásához.
++ Mutasson a Graph csomópontra az elemleírás megjelenítéséhez, amikor a feladatok sikertelenek, majd kattintson a szakasz elemre a szakasz megnyitása lapon.
 
-    ![Graph-elemleírás](./media/apache-azure-spark-history-server/sparkui-graph-tooltip.png)
+    ![Spark-alkalmazás és a feladatütemezés elemleírása](./media/apache-azure-spark-history-server/sparkui-graph-tooltip.png)
 
-+ Feladat graph lap szakaszban fog rendelkezni, elemleírás és kis ikon jelenik meg, ha rendelkeznek feladatok felel meg az alábbi feltételek:
-  + Adateltérés: az olvasási adatok mérete > átlagos olvasási méret az ebben a szakaszban található összes feladat * 2 és a beolvasott adatok mérete > 10 MB-ot.
-  + Időeltérés: végrehajtási idő > ebben a szakaszban található összes tevékenység átlagos végrehajtási idő * 2 és a végrehajtási idő > 2 perc.
++ A feladatütemezés lapon a szakaszok elemleírással és kis ikonnal jelennek meg, ha a feladatok megfelelnek az alábbi feltételeknek:
+  + Adat-elferdítés: az adatolvasási méret > a fázisban lévő összes feladat átlagos adatolvasási mérete, és az adatolvasási méret > 10 MB.
+  + Időeltérés: a végrehajtás ideje > az ebben a szakaszban szereplő összes feladat átlagos végrehajtási idejét, a végrehajtási időt pedig > 2 percen belül.
 
-    ![diagram torzulása ikonnal](./media/apache-azure-spark-history-server/sparkui-graph-skew-icon.png)
+    ![Spark-alkalmazás és a feladatok gráfjának döntési ikonja](./media/apache-azure-spark-history-server/sparkui-graph-skew-icon.png)
 
-+ A feladat graph csomópont megjeleníti minden egyes szakasza a következő információkat:
-  + AZONOSÍTÓ.
++ A feladatok gráf csomópontja a következő információkat jeleníti meg az egyes szakaszok esetében:
+  + ID.
   + Név vagy leírás.
-  + Tevékenységek teljes száma.
-  + Olvasott adatok: a bemeneti méret és a shuffle olvasási méret.
-  + Írása: a kimeneti mérete és a shuffle írási mérete.
-  + Végrehajtási idő: az első kísérlet kezdete és befejezési idő a legutóbbi kísérlet között eltelt idő.
-  + Sorok száma: bemeneti rekord összege kimeneti bejegyzések, olvasási rekordok shuffle és shuffle írási rögzíti.
-  + Folyamatban van.
+  + A feladat teljes száma.
+  + Olvasott adatok: a bemeneti méret és a shuffle olvasási méret összege.
+  + Adatírás: a kimeneti méret és a shuffle írási méret összege.
+  + Végrehajtási idő: az első kísérlet kezdési időpontja és a legutóbbi kísérlet befejezési időpontja közötti idő.
+  + Sorok száma: a bemeneti rekordok, a kimeneti rekordok, a shuffle olvasási rekordok és a shuffle írási rekordok összege.
+  + Haladás.
 
     > [!NOTE]  
-    > Alapértelmezés szerint a feladat graph csomópont és az egyes szintek (kivéve a végrehajtási idő fázis) utolsó kísérlet adatait jeleníti meg, de a grafikon a lejátszás során csomópont információk jelennek meg minden egyes kísérlethez.
+    > Alapértelmezés szerint a feladatütemezés csomópontja az egyes szakaszok utolsó próbálkozásának adatait jeleníti meg (kivéve a fázis végrehajtásának idejét), de a lejátszási gráf csomópontjában minden egyes kísérlet információit meg fogja jeleníteni.
 
     > [!NOTE]  
-    > Az olvasási és írási 1 használjuk adatméret MB = 1000 KB = 1000 * 1000 bájt.
+    > Olvasási és írási adatméret esetén az 1MB = 1000 KB = 1000 * 1000 bájtot használja.
 
-+ Küldjön visszajelzést problémákkal rendelkező kattintva **várjuk visszajelzéseit**.
++ Küldjön visszajelzést a problémákkal kapcsolatos visszajelzések **megadásával.**
 
-    ![Graph-visszajelzés](./media/apache-azure-spark-history-server/sparkui-graph-feedback.png)
+    ![Spark-alkalmazás és a feladatok gráfjának visszajelzése](./media/apache-azure-spark-history-server/sparkui-graph-feedback.png)
 
+## <a name="diagnosis-tab-in-apache-spark-history-server"></a>A Apache Spark History Server diagnosztika lapja
 
-## <a name="diagnosis-tab-in-apache-spark-history-server"></a>Az Apache Spark-Előzménykiszolgáló Diagnosztika lap
-Válassza ki a feladat azonosítója, majd kattintson a **diagnosztikai** az Eszközök menü a nézet diagnosztikai feladatot. A Diagnosztika lapot tartalmaz **adatok tevékenységdiagramon**, **Időeltérési**, és **végrehajtó Használatelemzést**.
-    
-+ Ellenőrizze a **adatok tevékenységdiagramon**, **Időeltérési**, és **végrehajtó Használatelemzést** lapok rendre kiválasztásával.
+Válassza ki a feladatok AZONOSÍTÓját, majd kattintson a **diagnosztika** elemre az eszköz menüjében a feladatok diagnosztizálási nézetének lekéréséhez. A diagnosztika lapon szerepel az **adatok eldöntése**, az **időeltérés**és a **végrehajtó általi használat elemzése**.
 
-    ![Diagnosztika lap](./media/apache-azure-spark-history-server/sparkui-diagnosis-tabs.png)
++ A lapfülek kiválasztásával keresse meg az **adatok eldöntését**, az **időeltérést**és a **végrehajtó használatának elemzését** .
 
-### <a name="data-skew"></a>Adateltérés
-Kattintson a **adatok tevékenységdiagramon** lapon, a megfelelő magokon feladatok jelennek meg a megadott paraméterek alapján. 
+    ![SparkUI-diagnosztika adatferdítő lapja](./media/apache-azure-spark-history-server/sparkui-diagnosis-tabs.png)
 
-+ **Adja meg a paramétereket** – az első szakaszban megjeleníti a paramétereket, amelyeknek a döntés adatok észlelésére használatosak. A beépített szabály van: Feladat az olvasott értéke nagyobb, mint 3 alkalommal az átlagos feladat adatok olvasása, és a olvassa el a feladat adatai több mint 10 MB-ot. Ha azt szeretné, a saját magokon feladatok szabály meghatározásához, a paraméterek, kiválaszthatja a **torzítja fázis**, és **tevékenységdiagramon Char** szakasz ennek megfelelően frissülnek.
+### <a name="data-skew"></a>Az adattorzítás
 
-+ **Fázis torzítja** – a második szakasz szakaszai, amelyek megfelelnek a feltételeknek, a fentiekben ismertetett feladatok rendelkezik torzítja jeleníti meg. Ha egynél több magokon feladat egy lépésben hajtaná, az egyenetlen szakasz tábla csak megjeleníti a legtöbb magokon feladat (például az adatok legnagyobb adatok tevékenységdiagramon).
+Kattintson az **adatok eldöntése** lapra, a megadott paraméterek alapján megjelennek a megfelelő ferde feladatok.
 
-    ![Adatok tevékenységdiagramon section2](./media/apache-azure-spark-history-server/sparkui-diagnosis-dataskew-section2.png)
++ **Paraméterek megadása** – az első szakasz azokat a paramétereket jeleníti meg, amelyek az adatok eldöntésének észlelésére szolgálnak. A beépített szabály a következőket eredményezi: A feladathoz tartozó adatok olvasása nagyobb, mint az átlagos feladathoz tartozó adatok olvasási ideje, és a feladat adatolvasása meghaladja a 10 MB-ot. Ha meg szeretné határozni saját szabályát a ferde feladatokhoz, kiválaszthatja a paramétereket, az eldöntött **szakasz**és a **ferde karakter** elválasztása szakaszt.
 
-+ **Diagram tevékenységdiagramon** – Ha a torzulása fázis táblában egy sor van kijelölve, az torzulása diagramot jelenít meg a feladat disztribúciók további részleteket a beolvasott adatok és a végrehajtási idő alapján. Az egyenetlen feladatok piros vannak megjelölve, és a szokásos tevékenységek lesznek megjelölve kék színnel. Teljesítmény megfontolás a diagram csak legfeljebb 100 mintatevékenységeket jeleníti meg. A feladat részletes adatait a jobb alsó panelen jelennek meg.
++ **Ferde fázis** – a második szakasz azokat a szakaszokat jeleníti meg, amelyek a fent megadott feltételeknek megfelelő ferde feladatokat látnak el. Ha egy adott szakaszban több elferdített feladat van, akkor a ferde szakasz tábla csak a leginkább ferde feladatot jeleníti meg (például az elferdítés legnagyobb adatát).
 
-    ![Adatok tevékenységdiagramon section3](./media/apache-azure-spark-history-server/sparkui-diagnosis-dataskew-section3.png)
+    ![sparkui-diagnosztika adattorzításának lapja](./media/apache-azure-spark-history-server/sparkui-diagnosis-dataskew-section2.png)
 
-### <a name="time-skew"></a>Idő döntés
-A **Időeltérési** lap magokon feladatokat, a feladat végrehajtási ideje alapján jeleníti meg. 
++ **Döntse** el, hogy mikor van kiválasztva az elferdítő tábla egy sora, az elferdítő diagram több feladat-elosztási részletet jelenít meg az adatok olvasási és végrehajtási ideje alapján. A ferde feladatok piros színnel vannak megjelölve, és a normál feladatok kék színnel vannak megjelölve. A teljesítmény szempontjából a diagram legfeljebb 100 minta feladatot jelenít meg. A feladat részletei a jobb alsó panelen jelennek meg.
 
-+ **Adja meg a paramétereket** – az első szakaszban megjeleníti a paramétereket, amelyeknek Időeltérési észlelésére használatosak. Az alapértelmezett feltételekhez időeltérés észleléséhez van: a feladat-végrehajtási idő értéke nagyobb, mint 3 alkalommal az átlagos végrehajtási idő és a feladat-végrehajtási idő értéke nagyobb, mint 30 másodperc. A paraméterek az igényei szerint módosíthatja. A **torzítja fázis** és **tevékenységdiagramon diagram** megfelelő fázisok és feladatok adatainak megjelenítéséhez, ugyanúgy, mint a **adatok tevékenységdiagramon** fenti fülre.
+    ![sparkui-diagram a 10. fázishoz](./media/apache-azure-spark-history-server/sparkui-diagnosis-dataskew-section3.png)
 
-+ Kattintson a **Időeltérési**, szűrt eredmény jelenik meg, majd **torzítja fázis** szakasz szerint a paraméterek szakaszában állítjuk be **paraméterek megadása**. Kattintson egy elemre **torzítja fázis** szakaszban, akkor a megfelelő diagram a section3 van elkészíteni, és a jobb alsó panelen jelennek meg a feladat részletes adatait.
+### <a name="time-skew"></a>Időbeli döntés
 
-    ![Idő torzulása section2](./media/apache-azure-spark-history-server/sparkui-diagnosis-timeskew-section2.png)
+Az **idő megdöntése** lap a feladat végrehajtási ideje alapján elferdített feladatokat jeleníti meg.
 
-### <a name="executor-usage-analysis"></a>Végrehajtó használati elemzés
-A végrehajtó használati diagramot a Spark feladat tényleges végrehajtó költséglefoglalási és futó állapotát megjeleníti.  
++ **Paraméterek megadása** – az első szakasz az időeltérés észleléséhez használt paramétereket jeleníti meg. Az időeltérés észlelésének alapértelmezett feltételei: a feladat-végrehajtási idő nagyobb, mint az átlagos végrehajtási idő 3-szor, a feladat végrehajtási ideje pedig 30 másodpercnél nagyobb. A paramétereket igény szerint módosíthatja. A **ferde szakasz** és az elferdítés **diagram** a megfelelő szakaszokat és feladatokat jeleníti meg, ugyanúgy, mint a fenti **adattorzítási** lap.
 
-+ Kattintson a **végrehajtó Használatelemzést**, akkor négy különböző görbék végrehajtó használatáról elkészíteni, beleértve a **lefoglalt végrehajtóval**, **futó végrehajtóval**, **üresjárati végrehajtóval**, és **végrehajtó példányok maximális száma**. Lefoglalt végrehajtóval kapcsolatos minden "Végrehajtó hozzáadott" vagy "Végrehajtó eltávolítva" esemény növeli vagy csökkenti a lefoglalt végrehajtóval, a "Esemény ütemterv" a "Jobs" lapon további összehasonlítási ellenőrizheti.
++ Kattintson az **időeltérés**elemre, majd a szűrt eredmény **megjelenik a szakasz** paramétereinek meghatározása szakaszban, a paraméterek **megadása**részben leírtak szerint. Kattintson egy elemre az **elferdített fázis** szakaszban, majd a megfelelő diagramot a section3-ben, a feladat részletei pedig a jobb alsó panelen jelennek meg.
 
-    ![Végrehajtóval lap](./media/apache-azure-spark-history-server/sparkui-diagnosis-executors.png)
+    ![sparkui-diagnosztika időtartamának eldöntése szakasz](./media/apache-azure-spark-history-server/sparkui-diagnosis-timeskew-section2.png)
 
-+ Kattintson a szín jelölje be és törölje a megfelelő tartalmat a összes Piszkozatok ikonra.
+### <a name="executor-usage-analysis"></a>Végrehajtói használat elemzése
 
-    ![Válassza a diagram](./media/apache-azure-spark-history-server/sparkui-diagnosis-select-chart.png)
+A végrehajtói használati gráf megjeleníti a Spark-feladatok tényleges végrehajtóinak kiosztását és futási állapotát.  
 
++ Kattintson **a végrehajtói használat elemzése**lehetőségre, majd a végrehajtói használattal kapcsolatos négy típusú görbére, beleértve a **lefoglalt végrehajtókat**, a **végrehajtók**, az**üresjárati végrehajtók**és a **maximális végrehajtó példányok**futtatását. A lefoglalt végrehajtók esetében minden "végrehajtó Hozzáadás" vagy "végrehajtó eltávolítva" esemény növeli vagy csökkenti a lefoglalt végrehajtókat. további összehasonlításért tekintse meg az "esemény ütemezése" lapot a "feladatok" lapon.
+
+    ![sparkui-diagnosztikai végrehajtók lap](./media/apache-azure-spark-history-server/sparkui-diagnosis-executors.png)
+
++ A szín ikonra kattintva kiválaszthatja vagy kiválaszthatja a megfelelő tartalmat az összes piszkozatban.
+
+    ![sparkui-diagnosztika – diagram kiválasztása](./media/apache-azure-spark-history-server/sparkui-diagnosis-select-chart.png)
 
 ## <a name="faq"></a>GYIK
 
-### <a name="1-revert-to-community-version"></a>1. Közösségi verzió visszaállítása
+### <a name="1-revert-to-community-version"></a>1. A közösségi verzió visszaállítása
 
-Közösségi verzió visszaállításához kövesse az alábbi lépéseket:
+A közösségi verzióra való visszaálláshoz hajtsa végre a következő lépéseket:
 
-1. Nyissa meg a fürt Ambari az. Kattintson a **Spark2** a bal oldali panelen.
-2. Kattintson a **Configs** fülre.
-3. Bontsa ki a csoport **egyéni spark2-alapértelmezett**.
-4. Kattintson a **tulajdonság hozzáadása**, adjon hozzá **spark.ui.enhancement.enabled=false**, mentse.
-5. A tulajdonság határozza meg **hamis** most.
-6. Kattintson a **mentése** a konfiguráció mentéséhez.
+1. Nyissa meg a fürtöt a Ambari-ben. Kattintson a **Spark2** elemre a bal oldali panelen.
+2. Kattintson a **konfigurációk** fülre.
+3. Bontsa ki a csoport **Egyéni spark2 – alapértelmezett beállítások**elemet.
+4. Kattintson a **tulajdonság hozzáadása**gombra, adja hozzá a **Spark. UI. Enhancement. enabled = false**, mentés lehetőséget.
+5. A tulajdonság a **false (hamis) értéket** állítja be.
+6. A konfiguráció mentéséhez kattintson a **Save (Mentés** ) gombra.
 
-    ![a szolgáltatás kikapcsolása](./media/apache-azure-spark-history-server/sparkui-turn-off.png)
+    ![Az Apache Ambari funkció kikapcsol](./media/apache-azure-spark-history-server/apache-spark-turn-off.png)
 
-7. Kattintson a **Spark2** a bal oldali panel alatt **összefoglalás** lapra, majd **Spark2 Előzménykiszolgáló**.
+7. Kattintson a **Spark2** elemre a bal oldali panelen, az **Összefoglalás** lapon, kattintson a **Spark2-előzmények kiszolgáló**elemre.
 
-    ![Indítsa újra a kiszolgáló1](./media/apache-azure-spark-history-server/sparkui-restart-1.png) 
+    ![Apache Ambari Spark2 Összefoglaló Nézet](./media/apache-azure-spark-history-server/apache-spark-restart1.png)
 
-8. Indítsa újra a korábbi kiszolgáló kattintva **indítsa újra a** , **Spark2 Előzménykiszolgáló**.
+8. Indítsa újra az előzmények kiszolgálóját a **Spark2-előzmények kiszolgálójának** **újraindítása** elemre kattintva.
 
-    ![Indítsa újra a kiszolgáló2](./media/apache-azure-spark-history-server/sparkui-restart-2.png)  
+    ![Apache Ambari Spark2 előzmények újraindítása](./media/apache-azure-spark-history-server/apache-spark-restart2.png)  
+9. Frissítse a Spark History Server webes FELÜLETét, és a rendszer visszaállít egy közösségi verzióra.
 
-9. Frissítse a Spark előzmények kiszolgáló webes felhasználói felületen, azt vissza fog állítani community verziójához.
+### <a name="2-upload-history-server-event"></a>2. Feltöltési előzmények kiszolgálói esemény
 
-### <a name="2-upload-history-server-event"></a>2. Töltse fel a korábbi kiszolgáló esemény
+Ha az előzmények kiszolgálói hibát futtat, kövesse az alábbi lépéseket az esemény megadásához:
 
-Ha előzmények kiszolgálóhiba, kövesse a lépéseket adja meg az esemény:
-1. Esemény letöltéséhez kattintson **letöltése** előzménykiszolgáló a webes felhasználói Felületét.
+1. Az esemény letöltéséhez kattintson az előzmények kiszolgáló webes felhasználói felületén a **Letöltés** elemre.
 
-    ![esemény letöltése](./media/apache-azure-spark-history-server/sparkui-download-event.png)
+    ![Spark2-előzmények kiszolgálójának letöltése](./media/apache-azure-spark-history-server/sparkui-download-event.png)
 
-2. Kattintson a **várjuk visszajelzéseit** data/graph lapról.
+2. Kattintson az adatok/gráf lapról **elérhető visszajelzés küldése** lehetőségre.
 
-    ![Graph-visszajelzés](./media/apache-azure-spark-history-server/sparkui-graph-feedback.png)
+    ![A Spark Graph visszajelzést küld nekünk](./media/apache-azure-spark-history-server/sparkui-graph-feedback.png)
 
-3. Adja meg a cím és a hiba leírása, húzza át a zip-fájlt a Szerkesztés mezőbe, majd kattintson a **új probléma küldése**.
+3. Adja meg a hiba címét és leírását, húzza a zip-fájlt a Szerkesztés mezőbe, majd kattintson az **új probléma küldése**elemre.
 
-    ![fájl probléma](./media/apache-azure-spark-history-server/sparkui-file-issue.png)
+    ![példa az Apache Spark file problémájára](./media/apache-azure-spark-history-server/apache-spark-file-issue.png)
 
+### <a name="3-upgrade-jar-file-for-hotfix-scenario"></a>3. Jar-fájl frissítése gyorsjavítási forgatókönyvhöz
 
-### <a name="3-upgrade-jar-file-for-hotfix-scenario"></a>3. Frissítse a jar-fájlra a gyorsjavítás a forgatókönyvhöz
-
-Ha szeretné frissíteni, hogy a gyorsjavítás, használja a parancsfájlt, ami frissíteni fogja a spark-enhancement.jar*.
+Ha gyorsjavítással szeretné frissíteni, használja az alábbi parancsfájlt, amely frissíti a Spark-Enhancement. jar * fájlt.
 
 **upgrade_spark_enhancement.sh**:
 
@@ -291,45 +291,43 @@ Ha szeretné frissíteni, hogy a gyorsjavítás, használja a parancsfájlt, ami
     fi
    ```
 
-**Használati**: 
+**Használat**:
 
 `upgrade_spark_enhancement.sh https://${jar_path}`
 
 **Példa**:
 
-`upgrade_spark_enhancement.sh https://${account_name}.blob.core.windows.net/packages/jars/spark-enhancement-${version}.jar` 
+`upgrade_spark_enhancement.sh https://${account_name}.blob.core.windows.net/packages/jars/spark-enhancement-${version}.jar`
 
-**A bash-fájl az Azure Portalról**
+**A bash-fájl használata a Azure Portal**
 
-1. Indítsa el a [az Azure Portal](https://ms.portal.azure.com), és válassza ki a fürtöt.
-2. Kattintson a **Szkriptműveletek**, majd **új küldés**. Végezze el a **Szkriptművelet** alkotnak, majd kattintson a **létrehozás** gombra.
-    
-    + **Parancsprogram típusa**: válasszon **egyéni**.
-    + **Név**: Adjon meg egy szkriptnevet.
-    + **Bash parancsfájl URI azonosítója**: a bash-fájl feltöltése a privát fürtbe, akkor itt másolja az URL-címet. Másik megoldásként használhatja a megadott URI azonosító.
-    
+1. Indítsa el [Azure Portal](https://ms.portal.azure.com), majd válassza ki a fürtöt.
+2. Kattintson a **parancsfájlok műveletek**, majd az **új küldése**elemre. Fejezze **be a parancsfájl elküldése művelet** űrlapját, majd kattintson a **Létrehozás** gombra.
+
+    + **Parancsfájl típusa**: válassza az **Egyéni**lehetőséget.
+    + **Név**: adjon meg egy parancsfájl nevét.
+    + **Bash-parancsfájl URI-ja**: töltse fel a bash-fájlt a privát fürtbe, majd ide másolja az URL-címet. Másik lehetőségként használja a megadott URI-t.
+
    ```upgrade_spark_enhancement
     https://hdinsighttoolingstorage.blob.core.windows.net/shsscriptactions/upgrade_spark_enhancement.sh
    ```
 
-   + Ellenőrizze a **fő** és **feldolgozó**.
-   + **Paraméterek**: állítsa be a paraméterek kövesse a bash használatát.
+   + A **fej** és a **feldolgozó**keresése.
+   + **Paraméterek**: állítsa be a paramétereket a bash-használat után.
 
-     ![napló feltöltése vagy a gyorsjavítás frissítése](./media/apache-azure-spark-history-server/sparkui-upload2.png)
-
+     ![Parancsfájl-Azure Portal küldése művelet](./media/apache-azure-spark-history-server/apache-spark-upload1.png)
 
 ## <a name="known-issues"></a>Ismert problémák
 
-1.  Jelenleg csak működik Spark 2.3-fürt.
+1. Jelenleg csak a Spark 2,3 és a 2,4 fürtök esetében működik.
 
-2.  Bemeneti és kimeneti adatokat RDD használatával nem jelenik meg az adatok lapot.
+2. A RDD-t használó bemeneti/kimeneti adatok nem jelennek meg az adatok lapon.
 
 ## <a name="next-steps"></a>További lépések
 
-* [A HDInsight Apache Spark-fürt erőforrásainak kezelése](apache-spark-resource-manager.md)
-* [Az Apache Spark beállításainak konfigurálása](apache-spark-settings.md)
-
+* [Apache Spark-fürt erőforrásainak kezelése a HDInsight-ben](apache-spark-resource-manager.md)
+* [Apache Spark beállítások konfigurálása](apache-spark-settings.md)
 
 ## <a name="contact-us"></a>Kapcsolat
 
-Ha bármilyen visszajelzése van, vagy bármely egyéb problémákat tapasztal, amikor ezzel az eszközzel, küldjön egy e-mailt ([hdivstool@microsoft.com](mailto:hdivstool@microsoft.com)).
+Ha visszajelzést szeretne küldeni, vagy ha az eszköz használata során bármilyen más problémába ütközik, küldjön egy e-mailt a[hdivstool@microsoft.com](mailto:hdivstool@microsoft.com)következő címre: ().

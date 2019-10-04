@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: v-sharos
 ms.openlocfilehash: ee17e4b69d1e6c9de465e4241ee2237361e320b7
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55168005"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61077679"
 ---
 # <a name="deploy-the-storsimple-snapshot-manager-mmc-snap-in"></a>A StorSimple Snapshot Manager MMC beépülő modul telepítése
 
@@ -78,11 +78,11 @@ A StorSimple Snapshot Manager telepítése előtt győződjön meg arról, hogy 
 
 Kövesse az alábbi lépéseket egy friss, a StorSimple Snapshot Manager telepítés befejezéséhez. Ha a frissítés telepítésekor, lépjen a [frissítése, vagy telepítse újra a StorSimple Snapshot Manager](#upgrade-or-reinstall-storsimple-snapshot-manager).
 
-* 1. lépés: Install StorSimple Snapshot Manager 
-* 2. lépés: A StorSimple Snapshot Manager csatlakozni egy eszközhöz 
-* 3. lépés: Az eszközön a kapcsolat ellenőrzése 
+* 1\. lépés: Install StorSimple Snapshot Manager 
+* 2\. lépés: A StorSimple Snapshot Manager csatlakozni egy eszközhöz 
+* 3\. lépés: Az eszközön a kapcsolat ellenőrzése 
 
-### <a name="step-1-install-storsimple-snapshot-manager"></a>1. lépés: Install StorSimple Snapshot Manager
+### <a name="step-1-install-storsimple-snapshot-manager"></a>1\. lépés: Install StorSimple Snapshot Manager
 A következő lépések segítségével telepítse a StorSimple Snapshot Manager.
 
 #### <a name="to-install-storsimple-snapshot-manager"></a>A StorSimple Snapshot Manager telepítéséhez
@@ -101,7 +101,7 @@ A következő lépések segítségével telepítse a StorSimple Snapshot Manager
    
     ![asztali ikonra](./media/storsimple-snapshot-manager-deployment/HCS_SSM_desktop_icon.png) 
 
-### <a name="step-2-connect-storsimple-snapshot-manager-to-a-device"></a>2. lépés: A StorSimple Snapshot Manager csatlakozni egy eszközhöz
+### <a name="step-2-connect-storsimple-snapshot-manager-to-a-device"></a>2\. lépés: A StorSimple Snapshot Manager csatlakozni egy eszközhöz
 Használja az alábbi lépéseket a StorSimple eszköz StorSimple Snapshot Manager csatlakozni.
 
 #### <a name="to-connect-storsimple-snapshot-manager-to-a-device"></a>Egy eszköz csatlakozni a StorSimple Snapshot Manager
@@ -123,7 +123,7 @@ Használja az alábbi lépéseket a StorSimple eszköz StorSimple Snapshot Manag
     Ha az eszköz valamilyen okból elérhetetlenné válik, a StorSimple Snapshot Manager hibaüzenetet ad vissza. Kattintson a **OK** zárja be a hibaüzenetet, és kattintson a **Mégse** gombra kattintva zárja be a **eszközök konfigurálása** párbeszédpanel bezárásához.
 5. Amikor egy eszköz csatlakozik, a StorSimple Snapshot Manager importálja minden kötet csoport van konfigurálva. az eszközön, feltéve, hogy a kötet csoporthoz társított biztonsági másolatok. Kötet csoportok, amelyek nem rendelkeznek társított biztonsági másolatok nem lesznek importálva. Emellett a biztonsági mentési mennyiségi csoport létrehozott házirendek nem lesznek importálva. Az importált csoportokat megtekintéséhez kattintson a jobb gombbal a felső – a legtöbb **kötet csoportok** csomópontja a **hatókör** panelre, és kattintson **importált csoportok átváltása**.
 
-### <a name="step-3-verify-the-connection-to-the-device"></a>3. lépés: Az eszközön a kapcsolat ellenőrzése
+### <a name="step-3-verify-the-connection-to-the-device"></a>3\. lépés: Az eszközön a kapcsolat ellenőrzése
 Az alábbi lépések segítségével győződjön meg arról, hogy a StorSimple Snapshot Manager a StorSimple-eszközhöz van csatlakoztatva.
 
 #### <a name="to-verify-the-connection"></a>A kapcsolat ellenőrzése
@@ -143,11 +143,11 @@ A StorSimple Snapshot Manager újratelepítése, előtt készítsen biztonsági 
 
 Ha frissíteni vagy újratelepíteni a StorSimple Snapshot Manager kövesse az alábbi lépéseket:
 
-* 1. lépés: Távolítsa el a StorSimple Snapshot Managerrel 
-* 2. lépés: A StorSimple Snapshot Manager-adatbázis biztonsági mentése 
-* 3. lépés: Telepítse újra a StorSimple Snapshot Managerben, és állítsa vissza az adatbázist 
+* 1\. lépés: Távolítsa el a StorSimple Snapshot Managerrel 
+* 2\. lépés: A StorSimple Snapshot Manager-adatbázis biztonsági mentése 
+* 3\. lépés: Telepítse újra a StorSimple Snapshot Managerben, és állítsa vissza az adatbázist 
 
-### <a name="step-1-uninstall-storsimple-snapshot-manager"></a>1. lépés: Távolítsa el a StorSimple Snapshot Managerrel
+### <a name="step-1-uninstall-storsimple-snapshot-manager"></a>1\. lépés: Távolítsa el a StorSimple Snapshot Managerrel
 Az alábbi lépések segítségével távolítsa el a StorSimple Snapshot Manager.
 
 #### <a name="to-uninstall-storsimple-snapshot-manager"></a>A StorSimple Snapshot Manager eltávolítása
@@ -162,7 +162,7 @@ Az alábbi lépések segítségével távolítsa el a StorSimple Snapshot Manage
    > 
 5. Az eltávolítási folyamat befejezését követően egy **beállítása sikeres** üzenet jelenik meg. Kattintson a **Bezárás** gombra.
 
-### <a name="step-2-back-up-the-storsimple-snapshot-manager-database"></a>2. lépés: A StorSimple Snapshot Manager-adatbázis biztonsági mentése
+### <a name="step-2-back-up-the-storsimple-snapshot-manager-database"></a>2\. lépés: A StorSimple Snapshot Manager-adatbázis biztonsági mentése
 A következő lépések segítségével hozzon létre és mentsen a StorSimple Snapshot Manager-adatbázis másolatát.
 
 #### <a name="to-back-up-the-database"></a>Az adatbázis biztonsági mentése
@@ -188,7 +188,7 @@ A következő lépések segítségével hozzon létre és mentsen a StorSimple S
    2. Az a **szolgáltatások** lapon válassza ki a **Microsoft StorSimple szolgáltatás**.
    3. A jobb oldali ablaktáblában alatt **Microsoft StorSimple szolgáltatás**, kattintson a **indítsa újra a szolgáltatást**. 
 
-### <a name="step-3-reinstall-storsimple-snapshot-manager-and-restore-the-database"></a>3. lépés: Telepítse újra a StorSimple Snapshot Managerben, és állítsa vissza az adatbázist
+### <a name="step-3-reinstall-storsimple-snapshot-manager-and-restore-the-database"></a>3\. lépés: Telepítse újra a StorSimple Snapshot Managerben, és állítsa vissza az adatbázist
 Telepítse újra a StorSimple Snapshot Managerben, kövesse a [telepítése egy új StorSimple Snapshot Manager](#install-a-new-storsimple-snapshot-manager). Ezután az alábbi eljárás segítségével a StorSimple Snapshot Manager-adatbázis visszaállítása.
 
 #### <a name="to-restore-the-database"></a>Az adatbázis visszaállítása

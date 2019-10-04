@@ -1,7 +1,6 @@
 ---
 title: Az Apache Hadoop, a HDInsight - Azure MapReduce és SSH-kapcsolat
 description: Útmutató az SSH használata a HDInsight segítségével az Apache Hadoop MapReduce-feladatok futtatásához.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: bce79aed49b94071b4e83524de2d599fca182256
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 5eac6cd60b9e58dea8901fad076bb481d5f2eb06
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438569"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67078296"
 ---
 # <a name="use-mapreduce-with-apache-hadoop-on-hdinsight-with-ssh"></a>Az ssh-val a HDInsight az Apache Hadoop MapReduce használata
 
@@ -28,9 +27,6 @@ Ismerje meg, hogyan lehet elküldeni a HDInsight a Secure Shell (SSH) kapcsolat 
 ## <a id="prereq"></a>Előfeltételek
 
 * Egy Linux-alapú HDInsight (Hadoop on HDInsight)-fürt
-
-  > [!IMPORTANT]
-  > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * Egy SSH-ügyfél. További információkért lásd: [az SSH használata a HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md)
 

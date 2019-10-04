@@ -1,19 +1,19 @@
 ---
-title: Az Azure Cosmos DB teljesítményével kapcsolatos tippek .NET
-description: Ismerje meg az ügyfél-konfigurációs beállításokat az Azure Cosmos DB adatbázis-teljesítmény javítása
+title: Azure Cosmos DB teljesítményre vonatkozó tippek a .NET-hez
+description: Az ügyfél-konfigurációs beállítások megismerése az Azure Cosmos Database teljesítményének növeléséhez
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 01/24/2018
+ms.date: 05/20/2019
 ms.author: sngun
-ms.openlocfilehash: 81adf643541b5a4486694026acec49129ef8e5a6
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 27f39af480db8c0a044489a2efe6d2e4447b6db1
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60000623"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261311"
 ---
-# <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Teljesítménnyel kapcsolatos tippek az Azure Cosmos DB- és .NET
+# <a name="performance-tips-for-azure-cosmos-db-and-net"></a>A Azure Cosmos DB és a .NET teljesítményével kapcsolatos tippek
 
 > [!div class="op_single_selector"]
 > * [Aszinkron Java](performance-tips-async-java.md)
@@ -21,43 +21,53 @@ ms.locfileid: "60000623"
 > * [.NET](performance-tips.md)
 > 
 
-Az Azure Cosmos DB egy gyors és rugalmas elosztott adatbázis, teljesítmény és a késés garantált az zökkenőmentesen méretezhető. Nem rendelkezik architektúra jelentős módosításokat, vagy az adatbázis az Azure Cosmos DB méretezése összetett programkód írása. Felfelé és lefelé skálázás olyan egyszerű, mintha, így egyetlen API hívással. További tudnivalókért lásd: [hogyan építheti ki a tároló átviteli teljesítményének](how-to-provision-container-throughput.md) vagy [kiépítése az adatbázis átviteli](how-to-provision-database-throughput.md). Azonban mivel a Azure Cosmos DB a hálózati hívások segítségével érhető el vannak ügyféloldali optimalizálást is végezhet használata esetén a csúcsteljesítmény érhet el a [SQL .NET SDK](documentdb-sdk-dotnet.md).
+A Azure Cosmos DB egy gyors és rugalmas elosztott adatbázis, amely zökkenőmentesen méretezhető a garantált késés és az átviteli sebesség tekintetében. Nem kell megváltoztatnia a jelentős architektúrát, vagy összetett kódot kell írnia az adatbázis méretezéséhez Azure Cosmos DB. A fel-és leskálázás olyan egyszerű, mint egyetlen API-hívás. További információkért lásd: [a tárolók teljesítményének kiépítése](how-to-provision-container-throughput.md) vagy [az adatbázis átviteli sebességének kiépítése](how-to-provision-database-throughput.md). Mivel azonban a Azure Cosmos DB hálózati hívásokkal érhetők el, ügyféloldali optimalizálási lehetőségek érhetők el, amelyekkel elérheti a maximális teljesítményt az [SQL .net SDK](sql-api-sdk-dotnet-standard.md)használatakor.
 
-Így ha Ön kérő "Hogyan javíthatom adatbázis teljesítmény?" Vegye figyelembe a következő beállításokat:
+Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témakört kérdezi le? vegye figyelembe a következő lehetőségeket:
 
 ## <a name="networking"></a>Hálózat
 <a id="direct-connection"></a>
 
-1. **Csatlakozási házirend: Közvetlen kapcsolat mód használata**
+1. **Kapcsolatbiztonsági szabályzat: Közvetlen kapcsolási mód használata**
 
-    Hogyan ügyfél csatlakozik-e az Azure Cosmos DB következményeket vonhat fontos a teljesítmény, különösen a megfigyelt ügyféloldali késés szempontjából. Nincsenek elérhető ügyfél kapcsolódási szabályzat – a kapcsolat konfigurálásához két fő konfigurációs beállítások *mód* és a kapcsolat *protokoll*.  A két rendelkezésre álló beállításokat a következők:
+    Az ügyfél Azure Cosmos DBhoz való csatlakozásának módja fontos hatással van a teljesítményre, különösen a megfigyelt ügyféloldali késések tekintetében. Az ügyfélkapcsolati házirend konfigurálásához két fő konfigurációs beállítás érhető el – a kapcsolati *mód* és a kapcsolati *protokoll*.  A két elérhető mód a következők:
 
-   * Átjáró mód (alapértelmezett)
+   * Átjáró üzemmód
       
-     Átjáró mód az összes SDK-platformon támogatott, és a konfigurált alapértelmezett. Ha az alkalmazás fut a vállalati hálózaton belül szigorú tűzfal korlátozásokkal, az átjáró mód nem a legjobb választás, mivel a szabványos HTTPS-port és a egy végpontot használja. A teljesítményre vonatkozóan kompromisszumot jelent, azonban nem, hogy az átjáró mód érint egy további hálózati Ugrás minden alkalommal, amikor adatokat olvasni vagy írni az Azure Cosmos DB. Emiatt a közvetlen üzemmódban miatt kevesebb hálózati útválasztók ugrásainak jobb teljesítményt nyújt. Átjáró kapcsolati módot is ajánlott csak korlátozott számú szoftvercsatorna-kapcsolatok, például az Azure Functions, illetve ha a használatalapú csomag használatakor a környezetek alkalmazások futtatásakor. 
+     Az átjáró üzemmód minden SDK platformon támogatott, és a [Microsoft. Azure. DOCUMENTDB SDK](sql-api-sdk-dotnet.md)számára beállított alapértelmezett érték. Ha az alkalmazása szigorú tűzfal-korlátozásokkal rendelkező vállalati hálózaton belül fut, az átjáró mód a legjobb választás, mivel a szabványos HTTPS-portot és egyetlen végpontot használ. A teljesítmény-kompromisszum azonban az, hogy az átjáró üzemmód egy további hálózati ugrást is magában foglal minden alkalommal, amikor az összes adat beolvasása vagy írása Azure Cosmos DB. Emiatt a közvetlen mód jobb teljesítményt nyújt kevesebb hálózati ugrás miatt. Az átjáró kapcsolódási módja akkor is ajánlott, ha korlátozott számú szoftvercsatorna-kapcsolattal rendelkező környezetekben futtat alkalmazásokat. 
+
+     Ha az SDK-t Azure Functions, különösen a használati [tervben](../azure-functions/functions-scale.md#consumption-plan)használja, vegye figyelembe a [kapcsolatok jelenlegi korlátait](../azure-functions/manage-connections.md). Ebben az esetben előfordulhat, hogy az átjáró mód akkor ajánlott, ha más HTTP-alapú ügyfelekkel is dolgozik a Azure Functions alkalmazáson belül.
 
    * Közvetlen mód
 
-     Közvetlen mód támogatja a TCP- és HTTPS protokollok keresztüli kapcsolat. A legújabb .NET SDK-t használ, ha közvetlen kapcsolódás módban támogatott a .NET Standard 2.0 és a .NET-keretrendszer. Közvetlen mód használatakor kétféle protokoll érhető el:
+     A közvetlen mód a TCP és a HTTPS protokollon keresztül támogatja a kapcsolódást, és az alapértelmezett csatlakozási mód, ha a [Microsoft. Azure. Cosmos/.net v3 SDK-](sql-api-sdk-dotnet-standard.md)t használja.
 
-     * TCP
-     * HTTPS
+     Az átjáró mód használata esetén a Cosmos DB a 443-es portot és a 10250-es, 10255-as és 10256-es portokat használja a MongoDB API-k Azure Cosmos DB használatakor. Az 10250-es port az alapértelmezett MongoDB-példányra van leképezve, a Geo-replikálás és a 10255/10256-portok nélkül, a MongoDB-példányhoz a Geo-replikálási funkcióval. Ha a TCP-t közvetlen módban használja, az átjáró portjain kívül meg kell győződnie arról, hogy a 10000 és a 20000 közötti porttartomány meg van nyitva, mert Azure Cosmos DB dinamikus TCP-portokat használ. Ha ezek a portok nincsenek megnyitva, és a TCP-t próbálja használni, a 503-es szolgáltatás nem érhető el hibaüzenetet kap. Az alábbi táblázat a különböző API-k és a szolgáltatási portok felhasználói számára elérhető csatlakozási módokat mutatja be az egyes API-kra vonatkozóan:
 
-     Átjáró mód használatakor a Cosmos DB 443-as porton és portokat használja, 10250, 10255 és 10256 mongodb-hez készült Azure Cosmos DB API használatakor. A georeplikáció és a MongoDB-példányban georeplikációs funkciókkal 10255/10256 portok leképezés nélkül egy alapértelmezett MongoDB-példányban 10250 port leképezések. Ha használ TCP közvetlen üzemmódban átjáró portokon kívül, gondoskodnia kell arról, a port 10000 és 20000 közötti nyitva, mert az Azure Cosmos DB dinamikus TCP-portot használja. Ha ezeket a portokat nem nyitott, és próbálja meg használni, a TCP, hibaüzenet 503-as szolgáltatás nem érhető el. A következő táblázat különböző API-k és a portok felhasználói rendelkezésre álló csatlakozási módot mutatja az egyes API:
-
-     |Kapcsolat módja  |Támogatott protokollok  |Támogatott SDK-k  |API-szolgáltatás portja  |
+     |Csatlakoztatási mód  |Támogatott protokoll  |Támogatott SDK-k  |API/szolgáltatás portja  |
      |---------|---------|---------|---------|
-     |Átjáró  |   HTTPS    |  All SDKS    |   SQL(443), Mongo(10250, 10255, 10256), Table(443), Cassandra(10350), Graph(443)    |
-     |Direct    |    HTTPS     |  .NET and Java SDK    |   10 000-20 000 tartományon belüli portok    |
-     |Direct    |     TCP    |  .NET SDK    | 10 000-20 000 tartományon belüli portok |
+     |Átjáró  |   HTTPS    |  Minden SDK    |   SQL(443), Mongo(10250, 10255, 10256), Table(443), Cassandra(10350), Graph(443)    |
+     |Közvetlen    |     TCP    |  .NET SDK    | 10 000 000 tartományon belüli portok |
 
-     Az Azure Cosmos DB egy egyszerű, és nyissa meg RESTful programozási modellt kínál a HTTPS-kapcsolaton keresztül. Ezenkívül kínál egy hatékony TCP protokoll, amely egyben a RESTful a kommunikációt a modellben, és a .NET ügyféloldali SDK keresztül érhető el. Közvetlen TCP és a HTTPS SSL használata a kezdeti hitelesítésre és a titkosított forgalmat. A legjobb teljesítmény érdekében használja a TCP protokollt, amikor csak lehetséges.
+     Azure Cosmos DB egy egyszerű és nyitott, REST-alapú programozási modellt biztosít a HTTPS-en keresztül. Emellett hatékony TCP protokollt is biztosít, amely a kommunikációs modellben is elérhető, és a .NET Client SDK-n keresztül érhető el. A közvetlen TCP és a HTTPS egyaránt SSL-t használ a kezdeti hitelesítéshez és a forgalom titkosításához. A legjobb teljesítmény érdekében a TCP protokollt használja, ha lehetséges.
 
-     A csatlakozási mód a DocumentClient példányának a ConnectionPolicy paramétere a konstrukció során van konfigurálva. Ha a közvetlen üzemmódban használja, a protokoll is megadható belül ConnectionPolicy paramétere.
+     Az SDK V3 esetében a kapcsolati mód a CosmosClient-példány létrehozásakor van konfigurálva a CosmosClientOptions részeként.
 
      ```csharp
      var serviceEndpoint = new Uri("https://contoso.documents.net");
-     var authKey = new "your authKey from the Azure portal";
+     var authKey = "your authKey from the Azure portal";
+     CosmosClient client = new CosmosClient(serviceEndpoint, authKey,
+     new CosmosClientOptions
+     {
+        ConnectionMode = ConnectionMode.Direct
+     });
+     ```
+
+     A Microsoft. Azure. DocumentDB SDK esetében a kapcsolati mód a DocumentClient-példánynak a ConnectionPolicy paraméterrel való létrehozásakor van konfigurálva. Ha a közvetlen mód van használatban, a protokoll a ConnectionPolicy paraméteren belül is megadható.
+
+     ```csharp
+     var serviceEndpoint = new Uri("https://contoso.documents.net");
+     var authKey = "your authKey from the Azure portal";
      DocumentClient client = new DocumentClient(serviceEndpoint, authKey,
      new ConnectionPolicy
      {
@@ -66,105 +76,124 @@ Az Azure Cosmos DB egy gyors és rugalmas elosztott adatbázis, teljesítmény �
      });
      ```
 
-     TCP átjáró mód használata esetén csak akkor támogatott a közvetlen módban, mert a HTTPS protokollt mindig közötti kommunikációra szolgál az átjáróval, és a ConnectionPolicy protokoll értékét a rendszer figyelmen kívül hagyja.
+     Mivel a TCP csak közvetlen módban támogatott, az átjáró mód használata esetén a rendszer mindig a HTTPS protokollt használja az átjáróval való kommunikációhoz, és a protokoll értékét a ConnectionPolicy figyelmen kívül hagyja.
 
-     ![Az Azure Cosmos DB kapcsolati házirend ábrája](./media/performance-tips/connection-policy.png)
+     ![A Azure Cosmos DB-kapcsolatok házirendjének ábrája](./media/performance-tips/connection-policy.png)
 
-2. **Első kérésre indítási késleltetés elkerülése érdekében OpenAsync hívása**
+2. **OpenAsync meghívása az első kérés indítási késésének elkerülése érdekében**
 
-    Alapértelmezés szerint az első kérelem egy magasabb késleltetésű rendelkezik, mert a cím útválasztási táblázat beolvasása. Ez az első kérelem indítási késést elkerülése érdekében célszerű hívni OpenAsync() egyszer inicializálása során a következő.
+    Alapértelmezés szerint az első kérelem nagyobb késéssel jár, mert be kell olvasnia a címek útválasztási tábláját. Ha az [SDK v2](sql-api-sdk-dotnet.md)-t használja, hogy elkerülje az indítási késést az első kérelemnél, a következő módon hívja meg a OpenAsync () függvényt az inicializálás során.
 
         await client.OpenAsync();
+
+    > [!NOTE] 
+    > A OpenAsync metódus a fiókban lévő összes tárolóhoz tartozó címek útválasztási táblázatának beolvasására vonatkozó kérelmeket hoz létre. Az olyan fiókok esetében, amelyek sok tárolóval rendelkeznek, de az alkalmazásuk hozzájuk fér hozzájuk egy részhalmazához, felesleges forgalmat eredményezne, ami lelassítja az inicializálást. Így előfordulhat, hogy a OpenAsync metódus használata nem hasznos ebben a forgatókönyvben, mert lelassítja az alkalmazás indítását.
+
    <a id="same-region"></a>
-3. **A teljesítmény Fájlmegosztáséval azonos régióban lévő ügyfelek elhelyezésének engedélyezése**
+3. **Rézvezetékes végezhet-ügyfelek ugyanabban az Azure-régióban a teljesítmény érdekében**
 
-    Ha lehetséges, helyezze el az alkalmazásokat Azure Cosmos DB hívja meg az Azure Cosmos DB-adatbázis és ugyanabban a régióban. 1 – 2 ms belül végezze az azonos régión belüli Azure Cosmos DB-hívások hozzávetőleges összehasonlításáért, de a nyugati és keleti parti területei az Egyesült Államok a késés > 50 ms. Ez a késés kérelem kérés valószínűleg függvényében az útvonal, az ügyfél az Azure-adatközpont határt adja át a kérés által készített. A lehető legkisebb késleltetést úgy, hogy a hívó alkalmazás megtalálható az üzembe helyezett Azure Cosmos DB-végpontként az azonos Azure-régióban érhető el. Az elérhető régiók listáját lásd: [Azure-régiók](https://azure.microsoft.com/regions/#services).
+    Ha lehetséges, helyezzen minden olyan alkalmazást, amely a Azure Cosmos DBt hívja meg ugyanabban a régióban, mint az Azure Cosmos Database. A hozzávetőleges összehasonlításhoz az azonos régióban lévő Azure Cosmos DB a 1-2 MS-on belül fejeződik be, de az USA nyugati és keleti partja közötti késés > 50 MS. Ez a késés valószínűleg a kérelemtől függ attól függően, hogy a kérés milyen útvonalon halad át az ügyféltől az Azure Datacenter-határig. A lehető legalacsonyabb késést úgy érheti el, hogy a hívó alkalmazás ugyanabban az Azure-régióban található, mint a kiépített Azure Cosmos DB végpont. Az elérhető régiók listáját az [Azure-régiók](https://azure.microsoft.com/regions/#services)című részben tekintheti meg.
 
-    ![Az Azure Cosmos DB kapcsolati házirend ábrája](./media/performance-tips/same-region.png)
+    ![A Azure Cosmos DB-kapcsolatok házirendjének ábrája](./media/performance-tips/same-region.png)
    <a id="increase-threads"></a>
-4. **Növelje a szálak/feladatok száma**
+4. **Szálak/feladatok számának növekedése**
 
-    Mivel az Azure Cosmos DB-hívások a hálózaton keresztül, szükség lehet a kérelmet párhuzamosság foka változnak, hogy az ügyfélalkalmazás várólistában nagyon rövid ideig várakozik az kérések között. Például ha használ. A NET [párhuzamos feladatok könyvtára](https://msdn.microsoft.com//library/dd460717.aspx), hozzon létre feladatokat az Azure Cosmos DB írása és olvasása 100s sorrendjében.
+    Mivel a hálózatra irányuló Azure Cosmos DB hívások a hálózaton keresztül történnek, lehetséges, hogy a kérések párhuzamosságának mértékét módosítani kell, hogy az ügyfélalkalmazás nagyon kevés időt töltsön a kérések között. Ha például a-t használja. A NET [feladatának párhuzamos könyvtára](https://msdn.microsoft.com//library/dd460717.aspx), amely a Azure Cosmos DBba olvasott vagy írt feladatok (100s) sorrendjében hozható létre.
 
-5. **Gyorsított hálózatkezelés engedélyezéséhez**
+5. **Gyorsított hálózatkezelés engedélyezése**
 
-   Annak érdekében, hogy a Processzor jitter és késés csökkentése érdekében azt javasoljuk, hogy az ügyfél virtuális gépek gyorsított hálózatkezelés engedélyezve vannak. Tekintse meg a [hozzon létre egy Windows virtuális gép gyorsított hálózatkezelésű](../virtual-network/create-vm-accelerated-networking-powershell.md) vagy [hozzon létre egy Linux rendszerű virtuális gép gyorsított hálózatkezelésű](../virtual-network/create-vm-accelerated-networking-cli.md) cikkek gyorsított hálózatkezelés engedélyezéséhez.
+   A késés és a CPU vibrálás csökkentése érdekében javasoljuk, hogy az ügyfél virtuális gépei gyorsított hálózatkezelést engedélyezzenek. A gyorsított hálózatkezelés lehetővé tételéhez tekintse meg a [Windows rendszerű virtuális gép gyorsított hálózatkezeléssel való létrehozását](../virtual-network/create-vm-accelerated-networking-powershell.md) , vagy [hozzon létre egy linuxos virtuális gépet a gyorsított](../virtual-network/create-vm-accelerated-networking-cli.md) hálózatkezelési cikkekkel.
 
 
-## <a name="sdk-usage"></a>SDK-használata
+## <a name="sdk-usage"></a>SDK-használat
 1. **A legújabb SDK telepítése**
 
-    Az Azure Cosmos DB SDK kat folyamatosan fejlesztik a lehető legjobb teljesítményt. Tekintse meg a [Azure Cosmos DB SDK](documentdb-sdk-dotnet.md) oldalt, hogy a legújabb SDK határozza meg, és tekintse át a fejlesztései.
-2. **Az alkalmazás teljes élettartama egyedülálló Azure Cosmos DB-ügyfél használata**
+    A Azure Cosmos DB SDK-kat folyamatosan fejlesztjük a legjobb teljesítmény érdekében. Tekintse meg a [Azure Cosmos db SDK](sql-api-sdk-dotnet-standard.md) -lapokat a legújabb SDK-val, és tekintse át a módosításokat.
 
-    Minden egyes DocumentClient-példányt szálbiztos, és hatékony kapcsolat kezelése és a címek gyorsítótárazása, közvetlen üzemmódban hajt végre. Ahhoz, hogy a kapcsolat hatékony kezelése és a DocumentClient jobb teljesítményt, ajánlott az alkalmazás teljes élettartama alkalmazástartományonként DocumentClient egyetlen példányát használja.
+2. **Stream API-k használata**
+
+    A [.net SDK v3](sql-api-sdk-dotnet-standard.md) olyan stream API-kat tartalmaz, amelyek szerializálás nélkül fogadhatnak és adhatnak vissza adatforrást. 
+
+    Azok a középső szintű alkalmazások, amelyek nem használják közvetlenül az SDK válaszait, de más alkalmazási rétegekbe továbbítják őket, a stream API-k előnyeit élvezheti. A streamek kezelésével kapcsolatos példákért tekintse meg az [elemek kezelési](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement) mintáit.
+
+3. **Egyedi Azure Cosmos DB-ügyfél használata az alkalmazás élettartama során**
+
+    Az egyes DocumentClient-és CosmosClient-példányok a szálon biztonságosak, és hatékonyan kezelik a kapcsolatok felügyeletét és a címek gyorsítótárazását közvetlen módban való működés közben. Annak érdekében, hogy az SDK-ügyfél hatékony legyen a kapcsolatok kezeléséhez és jobb teljesítményhez, a alkalmazástartomány egyetlen példányát ajánlott használni az alkalmazás élettartama szempontjából.
 
    <a id="max-connection"></a>
-3. **Növelje az System.Net MaxConnections gazdagépenként átjáró mód használatakor**
+4. **System.Net-MaxConnections növelésének engedélyezése gazdagépen az átjáró mód használatakor**
 
-    Az Azure Cosmos DB kérelmek végrehajtott HTTPS/REST átjáró mód használatakor, és vannak kitéve, állomásnév vagy IP-cím alapértelmezett kapcsolathoz megadott korlátot. Szükség lehet beállítani a MaxConnections értéke (100-1000), hogy az ügyféloldali kódtár képes használni az Azure Cosmos DB több egyidejű kapcsolatot. A .NET SDK 1.8.0-as és újabb, az alapértelmezett érték a [ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) 50, és módosítsa az értéket, beállíthatja a [Documents.Client.ConnectionPolicy.MaxConnectionLimit](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit.aspx)értéke.   
-4. **Particionált gyűjteményeknél végezzen párhuzamos lekérdezések hangolása**
+    Azure Cosmos DB kérések HTTPS/REST protokollon keresztül történnek az átjáró mód használatakor, és a rendszer az alapértelmezett kapcsolati korlátot adja meg egy állomásnév vagy IP-cím alapján. Előfordulhat, hogy a MaxConnections magasabb értékre (100-1000) kell állítania, hogy az ügyféloldali kódtár több egyidejű kapcsolatot is felhasználjon Azure Cosmos DBhoz. A .NET SDK 1.8.0-ben és a fentiekben a [ServicePointManager. DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) alapértelmezett értéke 50, és az érték módosításához beállíthatja a Documents [. Client. ConnectionPolicy. MaxConnectionLimit](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit.aspx) értéket magasabb értékre.   
+5. **A particionált gyűjtemények párhuzamos lekérdezésének finomhangolása**
 
-     SQL .NET SDK 1.9.0-s verzió vagy újabb támogatási párhuzamos lekérdezések, így lehetővé teszi a párhuzamos particionált gyűjtemény lekérdezése. További információkért lásd: [Kódminták](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs) az SDK-k használatával kapcsolatos. Javítja a Lekérdezések késése és az átviteli sebesség soros többszörözi a párhuzamos lekérdezések lettek kialakítva. Párhuzamos lekérdezések adja meg, hogy a felhasználók hangolhassa a rájuk vonatkozó követelményeket, a Maxanalyticsunits illeszkedjen a két paramétert: vezérlőelemre, majd a partíciók maximális száma a párhuzamos és (b) MaxBufferedItemCount kérdezhetők le: a száma előzetesen beolvasott eredményeket.
+     Az SQL .NET SDK 1.9.0 és újabb verziója támogatja a párhuzamos lekérdezéseket, amelyek lehetővé teszik a particionált gyűjtemények párhuzamos lekérdezését. További információ: az SDK-k használatához kapcsolódó [kód-minták](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs) . A párhuzamos lekérdezések úgy vannak kialakítva, hogy a lekérdezési késést és az adatátvitelt a soros munkatársaik A párhuzamos lekérdezések két olyan paramétert biztosítanak, amelyeket a felhasználók az egyéni igényeknek megfelelően módosíthatnak (a) Maxanalyticsunits: a partíciók maximális számának szabályozása érdekében párhuzamosan lekérdezhető, és (b) MaxBufferedItemCount: a (z) számának szabályozása előre lehívott eredmények.
 
-    (a) ***hangolása Maxanalyticsunits\:***  párhuzamos lekérdezés működését több partíció párhuzamosan lekérdezésével. Azonban az egyes particionált gyűjtése származó adatok letöltődött tárolókonfigurációhoz garanciát a lekérdezést. Így a Maxanalyticsunits beállítása a partíciók számát rendelkezik jövedelmezőbb munkát tesznek lehetővé a legtöbb nagy teljesítményű lekérdezési maximális esélyét megadott rendszer összes egyéb feltételek változatlanok maradnak. Ha nem ismeri a partíciók száma, beállíthatja a Maxanalyticsunits nagy számú, és a rendszer úgy dönt, mint a Maxanalyticsunits minimális (partíciók, felhasználó által megadott bemeneti száma).
+    (a) a párhuzamos lekérdezés ***hangolási\: foka*** több partíció párhuzamos lekérdezésével működik. Az egyes partíciók adatait azonban a lekérdezésre vonatkozó sorosan kell beolvasni. Ha az `MaxDegreeOfParallelism` [SDK v2](sql-api-sdk-dotnet.md) -ben `MaxConcurrency` vagy az [SDK v3](sql-api-sdk-dotnet-standard.md) -ben állítja be a partíciók számát, akkor a legtöbb teljesítménybeli lekérdezés nem érhető el, ha az összes többi rendszerfeltétel változatlan marad. Ha nem ismeri a partíciók számát, megadhatja a párhuzamosság mértékét magas értékre, és a rendszer a minimális (partíciók száma, felhasználó által megadott bemenet) szintet választja a párhuzamosság fokaként.
 
-    Fontos megjegyezni, hogy párhuzamos lekérdezések a legjobb előnyöket előállításához, ha az adatok egyenletesen garanciát a lekérdezés összes partíciók között. Ha a particionált gyűjtemény particionált oly módon, hogy az összes vagy egy lekérdezés által visszaadott adatok többsége összpontosul néhány partíciók (egy partíciót a legrosszabb esetben), majd a lekérdezés teljesítményének lenne bottlenecked, ezek a partíciók szerint.
+    Fontos megjegyezni, hogy a párhuzamos lekérdezések a legjobb előnyöket nyújtják, ha az adatforgalom egyenletesen oszlik el az összes partíció között a lekérdezés tekintetében. Ha a particionált gyűjtemény úgy van particionálva, hogy a lekérdezés által visszaadott összes adat többsége néhány partíción (egy partíció a legrosszabb esetben) van, akkor a lekérdezés teljesítményét a partíciók szűk keresztmetszete okozhatja.
 
-    (b) ***hangolása MaxBufferedItemCount\:***  párhuzamos lekérdezés úgy tervezték, hogy előre olvashatók be eredményeket, amíg az eredmények az aktuális köteg feldolgozása folyamatban van az ügyfél által. A lekérdezés teljes késés fokozása lehívását segít. MaxBufferedItemCount az a paraméter előre lehívott eredmények számának korlátozására. A lekérdezést úgy, hogy fogadjon a legnagyobb előny lehívását MaxBufferedItemCount adatsorban visszaadott várt számú (vagy nagyobb) beállítás lehetővé teszi.
+    (b) az ***MaxBufferedItemCount\:***  párhuzamos lekérdezés finomhangolása az eredmények előzetes beolvasására szolgál, miközben az ügyfél az aktuális eredményt dolgozza fel. Az előzetes beolvasás a lekérdezés teljes késésének javulását segíti elő. Az MaxBufferedItemCount az a paraméter, amellyel korlátozható az előre lehívott eredmények száma. A MaxBufferedItemCount beállítása a visszaadott eredmények várt számához (vagy egy nagyobb szám) lehetővé teszi, hogy a lekérdezés a lehető legtöbb előnyt fogadja az előzetes lekéréstől.
 
-    Lehívását attól függetlenül, a Maxanalyticsunits ugyanúgy működik, és az összes partíciót az adatok egyetlen puffert.  
-5. **Kapcsolja be a kiszolgálóoldali globális Katalógus**
+    Az előzetes lekérés ugyanúgy működik, mint a párhuzamosság foka, és egyetlen puffer van az összes partícióból származó adatokhoz.  
+6. **Kiszolgálóoldali GC bekapcsolása**
 
-    Bizonyos esetekben segíthet a szemétgyűjtés gyakoriságának csökkentését. A .NET-ben, állítsa be [gcServer](https://msdn.microsoft.com/library/ms229357.aspx) igaz értékre.
-6. **Leállítási megvalósítása RetryAfter időközönként**
+    Bizonyos esetekben a Garbage-gyűjtemények gyakoriságának csökkentése segíthet. A .NET-ben állítsa a [gcServer](https://msdn.microsoft.com/library/ms229357.aspx) igaz értékre.
+7. **Leállítási megvalósítása RetryAfter időközönként**
 
-    Teljesítmény tesztelése során terhelés mindaddig, amíg egy kis méretű kérések másodpercenkénti száma leszabályozza növelje meg. Ha szabályozott, az ügyfélalkalmazás kell leállásait, szabályozása az a kiszolgáló által megadott újrapróbálkozási időköz. A leállítási tiszteletben biztosítja, hogy az újrapróbálkozások közötti várakozási idő mennyisége minimális idő. Újrapróbálkozási házirend támogatás is biztosított, a verzió 1.8.0-as és újabb, az SQL [.NET](sql-api-sdk-dotnet.md) és [Java](sql-api-sdk-java.md), verzió 1.9.0-s és újabb, a [Node.js](sql-api-sdk-node.md) és [Python](sql-api-sdk-python.md), és az összes támogatott verzióján a [.NET Core](sql-api-sdk-dotnet-core.md) SDK-k. További információ [RetryAfter](https://msdn.microsoft.com/library/microsoft.azure.documents.documentclientexception.retryafter.aspx).
+    A teljesítmény tesztelése során növelje a terhelést, amíg a kérelmek kis száma le nem kerül a szabályozásba. Ha a szabályozás meg van adva, az ügyfélalkalmazás leállítási kell lennie a kiszolgáló által megadott újrapróbálkozási időköz szabályozása érdekében. A leállítási tiszteletben tartásával biztosítható, hogy az újrapróbálkozások között minimálisan mennyi időt kell várnia. Az újrapróbálkozási szabályzat támogatása a 1.8.0 és az SQL [.net](sql-api-sdk-dotnet.md) és a [Java](sql-api-sdk-java.md), valamint a [Node. js](sql-api-sdk-node.md) és a [Python](sql-api-sdk-python.md), valamint a [.net Core](sql-api-sdk-dotnet-core.md) SDK-k összes támogatott verziójának 1.9.0-verziójában található. További információ: [RetryAfter](https://msdn.microsoft.com/library/microsoft.azure.documents.documentclientexception.retryafter.aspx).
     
-    1,19 és a .NET SDK újabb verziójú nincs olyan mechanizmus, hogy további diagnosztikai adatok és az alábbi mintában látható módon késési problémák elhárítása. A diagnosztikai karakterláncot a kéréseket, amelyek rendelkeznek a nagyobb olvasási késés jelentkezhet. A rögzített diagnosztikai karakterlánc segít megérteni, hogy hányszor megfigyelte 429s egy adott kérés esetében.
+    A .NET SDK 1,19-es és újabb verzióiban létezik egy mechanizmus a további diagnosztikai információk naplózására és a késéssel kapcsolatos hibák elhárítására az alábbi példában látható módon. Naplózhatja a diagnosztikai karakterláncot olyan kérésekhez, amelyek nagyobb olvasási késéssel rendelkeznek. A rögzített diagnosztikai sztring segít megérteni, hogy az adott kérelem 429s hányszor észlelt.
     ```csharp
     ResourceResponse<Document> readDocument = await this.readClient.ReadDocumentAsync(oldDocuments[i].SelfLink);
     readDocument.RequestDiagnosticsString 
     ```
     
-7. **Az ügyfél-alkalmazások és szolgáltatások méretezése**
+8. **Az ügyfél felskálázása – munkaterhelés**
 
-    Ha nagy átviteli sebesség szinten teszteli (> 50 000 RU/s), az ügyfélalkalmazás miatt a gép kapacitástól meg a Processzor vagy a hálózati kihasználtság a szűk keresztmetszetté válhat. Ha eléri ezt a pontot, továbbra is küldje le az Azure Cosmos DB-fiókot további horizontális felskálázása az ügyfélalkalmazásokat, több kiszolgáló között.
-8. **Gyorsítótár dokumentum URI-k kisebb olvasási késés**
+    Ha nagy átviteli sebességű > (50000 RU/s) szintű tesztelést végez, akkor előfordulhat, hogy az ügyfélalkalmazás szűk keresztmetszetet okoz a PROCESSZORon vagy a hálózat kihasználtságán túl. Ha eléri ezt a pontot, továbbra is folytathatja a Azure Cosmos DB-fiók leküldését az ügyfélalkalmazások több kiszolgálón való skálázásával.
+9. **Az alacsonyabb olvasási késéshez tartozó URI-k gyorsítótárazása**
 
-    Gyorsítótár-dokumentum URI-k, amikor csak lehetséges, a legjobb olvasási teljesítmény. Meg kell adnia a logika gyorsítótárazza az erőforrás-azonosító, ha az erőforrás létrehozásához. Erőforrás-azonosító-alapú keresések neve alapján kereséseket, gyorsabban, így ezeket az értékeket gyorsítótárazás növeli a teljesítményt. 
+    Ha lehetséges, a legjobb olvasási teljesítmény érdekében gyorsítótárazza a dokumentumok URI-azonosítóit. Az erőforrás létrehozásakor meg kell határoznia a ResourceId gyorsítótárazásához szükséges logikát. A ResourceId-alapú keresések gyorsabbak, mint a neveken alapuló keresések, ezért az értékek gyorsítótárazása javítja a teljesítményt. 
 
    <a id="tune-page-size"></a>
-1. **Az oldal méretét a lekérdezések és olvasási hírcsatornák, a jobb teljesítmény hangolása**
+10. **A jobb teljesítmény érdekében a lekérdezések/olvasási hírcsatornák méretének finomhangolása**
 
-    Olvasási hírcsatorna-funkciókat (például ReadDocumentFeedAsync) használó dokumentumokat, vagy a tömeges végrehajtása olvasási, egy SQL-lekérdezést kiadásakor, az eredmény akkor szegmentált módon ha túl nagy az eredményhalmaz. Alapértelmezés szerint az eredmény akkor 100 elemet vagy 1 MB-os blokkonként, bármelyik korlát nyomja le az első.
+   Ha a dokumentumok tömeges olvasását az olvasási hírcsatorna funkció (például ReadDocumentFeedAsync) vagy egy SQL-lekérdezés kiadása során hajtja végre, akkor az eredmények szegmentált módon lesznek visszaadva, ha az eredményhalmaz túl nagy. Alapértelmezés szerint a rendszer az eredményeket 100 elemből vagy 1 MB-ra adja vissza, amely a határértékek közül az első.
 
-    Kevesebb hálózati kerekíteni lelassítja az összes vonatkozó eredmények beolvasásához szükséges, növelhető a méret használatával [x-ms-max-item-count](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) legfeljebb 1000 kérelem fejléce. Azokban az esetekben, ahol csak néhány eredmények megjelenítéséhez szüksége például, ha a felhasználói felület vagy a kérelem API függvény csak 10 eredménye egy idő, is csökkentheti, ha az oldal méretét a 10-re az olvasást és lekérdezések felhasznált átviteli sebesség csökkentése érdekében.
+   Ha csökkenteni szeretné az összes vonatkozó eredmény beolvasásához szükséges hálózati kör alakú utak számát, az [x-MS-Max-Item-](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) Request fejléc használatával növelheti az oldal méretét akár 1000-ra. Olyan esetekben, ahol csak néhány eredményt kell megjelenítenie, például ha a felhasználói felület vagy az Application API csak 10 eredményt ad vissza, az olvasási és lekérdezési teljesítmény csökkentése érdekében csökkentheti az oldal méretét is 10 értékre.
 
-    Az oldal méretét a rendelkezésre álló Azure Cosmos DB SDK-k használatával is beállíthatja.  Példa:
+   > [!NOTE] 
+   > A maxItemCount tulajdonságot nem szabad kizárólag tördelési célra használni. Ez a legfontosabb használat a lekérdezések teljesítményének javítására azáltal, hogy csökkenti az egyetlen oldalon visszaadott elemek maximális számát.  
 
-        IQueryable<dynamic> authorResults = client.CreateDocumentQuery(documentCollection.SelfLink, "SELECT p.Author FROM Pages p WHERE p.Title = 'About Seattle'", new FeedOptions { MaxItemCount = 1000 });
-10. **Növelje a szálak/feladatok száma**
+   Az oldalméret az elérhető Azure Cosmos DB SDK-k használatával is beállítható. A FeedOptions [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet) tulajdonsága lehetővé teszi, hogy beállítsa a számbavételi műveletben visszaadott elemek maximális számát. Ha `maxItemCount` a értéke-1, az SDK automatikusan megkeresi a legoptimálisabb értéket a dokumentum méretétől függően. Példa:
+    
+   ```csharp
+    IQueryable<dynamic> authorResults = client.CreateDocumentQuery(documentCollection.SelfLink, "SELECT p.Author FROM Pages p WHERE p.Title = 'About Seattle'", new FeedOptions { MaxItemCount = 1000 });
+   ```
+    
+   Egy lekérdezés végrehajtásakor az eredményül kapott adatküldés egy TCP-csomagon belül történik. Ha túl alacsony értéket `maxItemCount`ad meg, a TCP-csomagban lévő adatküldéshez szükséges utak száma magas, ami hatással van a teljesítményre. Tehát ha nem biztos benne, hogy melyik értéket kell beállítani `maxItemCount` a tulajdonsághoz, akkor a legjobb, ha az-1 értékre állítja, és lehetővé teszi, hogy az SDK kiválassza az alapértelmezett értéket. 
 
-    Lásd: [növelje a szálak/feladatok számát](#increase-threads) a hálózatkezelés szakaszban.
+11. **Szálak/feladatok számának növekedése**
 
-11. **Használja a 64 bites gazdagép feldolgozása**
+    Lásd: a [szálak/feladatok számának növekedése](#increase-threads) a hálózatkezelés szakaszban.
 
-    Az SQL SDK működik egy 32 bites gazdafolyamat SQL .NET SDK 1.11.4 verzió használata esetén, vagy újabb. Azonban ha közötti partíció lekérdezéseket használ, 64 bites gazdagép feldolgozása ajánlott jobb teljesítmény. A következő típusú alkalmazások a 32 bites gazdafolyamat, alapértelmezés szerint rendelkezik, így annak érdekében, hogy módosíthatja, hogy a 64 bites, kövesse ezeket a lépéseket az alkalmazás típusa alapján:
+12. **64 bites gazdagép-feldolgozás használata**
 
-    - Futtatható alkalmazások esetében ezt megteheti eszközhitelesítést a **Prefer 32-bites** beállítást a **projekt tulajdonságai** ablakban, a a **hozhat létre** fülre.
+    Az SQL SDK 32 bites gazdagép-folyamattal működik, ha az SQL .NET SDK 1.11.4 vagy újabb verzióját használja. Ha azonban több partíciós lekérdezést használ, a jobb teljesítmény érdekében ajánlott a 64 bites gazdagép-feldolgozás. A következő típusú alkalmazások alapértelmezettként 32 bites gazdagép-folyamattal rendelkeznek, így a 64 bitesre való váltáshoz kövesse az alábbi lépéseket az alkalmazás típusától függően:
 
-    - VSTest alapú tesztelési projekt, ezt megteheti kiválasztásával **tesztelése**->**beállítások ellenőrzése**->**X64 processzorarchitektúrát alapértelmezett**, az a **Visual Studio Test** menüpont.
+    - A végrehajtható alkalmazások esetében ez az **előnyben részesített 32-bites** lehetőség törlésével végezhető el a **Projekt tulajdonságai** ablakban a **Build** lapon.
 
-    - A helyileg üzembe helyezett ASP.NET webes alkalmazásokhoz, ezt megteheti úgy a **64 bites verzióját használja, az IIS Express webhelyek és projektek**alatt **eszközök**->**beállítások**  -> **Projektek és megoldások**->**webes projektek**.
+    - A VSTest-alapú tesztelési projektek esetében **Ehhez válassza**->a tesztelési**Beállítások**->**alapértelmezett processzor-architektúra x64-ként**lehetőséget a **Visual Studio test** menüpontban.
 
-    - Az ASP.NET webalkalmazások üzembe helyezése az Azure-ban, ehhez válassza ki a **64 bites platformként** a a **Alkalmazásbeállítások** az Azure Portalon.
+    - Helyileg telepített ASP.NET-webalkalmazások esetén ezt a webhelyekhez **és projektekhez készült IIS Express a 64 bites verziójának használata**a következő eszközökhöz: az **eszközök**->**beállítási**->**projektjei és megoldásai** szakaszban **Webes projektek**. ->
+
+    - Az Azure-on üzembe helyezett webalkalmazások esetében ez a **Platform 64 bitesként** való kiválasztásával végezhető el a Azure Portal ASP.net.
 
 ## <a name="indexing-policy"></a>Indexelési házirend
  
-1. **A fel nem használt elérési utak kizárása a gyorsabb írások indexelése**
+1. **Nem használt útvonalak kizárása az indexelésből a gyorsabb írás érdekében**
 
-    Cosmos DB indexelési házirendet is lehetővé teszi, hogy adja meg, mely a dokumentum elérési útjait belefoglalása vagy kizárása indexelő útvonalak (IndexingPolicy.IncludedPaths és IndexingPolicy.ExcludedPaths) kihasználásával az indexelés. Indexelő elérési utak használatát is kínál a továbbfejlesztett írási teljesítmény- és alacsonyabb index forgatókönyvekhez, ahol a lekérdezési mintáknak előzetesen ismert, mivel az indexelő költségek közvetlenül indexelt egyedi elérési utak száma közötti kapcsolatot.  Például a következő kód bemutatja, hogyan zárhat ki (más néven a dokumentumok egy teljes szakasz részfa) az indexelő használatával a "*" helyettesítő karakter.
+    A Cosmos DB indexelési házirendje azt is lehetővé teszi, hogy az indexelési elérési utak (IndexingPolicy. IncludedPaths és IndexingPolicy. ExcludedPaths) használatával megadhatja, hogy mely dokumentum-elérési utakat kell belefoglalni vagy kizárni Az indexelési útvonalak használata javíthatja az írási teljesítményt és az alacsonyabb indexű tárolást olyan helyzetekben, amikor a lekérdezési mintákat előre ismerték, mivel az indexelési költségek közvetlenül az indexelt egyedi útvonalak számával vannak összekapcsolva.  Az alábbi kód például azt mutatja be, hogyan zárható ki a dokumentumok (egy részfa) teljes szakasza az indexelésből a "*" helyettesítő karakter használatával.
 
     ```csharp
     var collection = new DocumentCollection { Id = "excludedPathCollection" };
@@ -173,20 +202,20 @@ Az Azure Cosmos DB egy gyors és rugalmas elosztott adatbázis, teljesítmény �
     collection = await client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("db"), excluded);
     ```
 
-    További információkért lásd: [indexelési szabályzatok az Azure Cosmos DB](index-policy.md).
+    További információ: [Azure Cosmos db indexelési házirendek](index-policy.md).
 
 ## <a name="throughput"></a>Teljesítmény
 <a id="measure-rus"></a>
 
-1. **Mérheti és finomhangolási feladat alacsonyabb kérelem kérelemegység/s használat**
+1. **Az alacsonyabb kérelmek egységének mérése és finomhangolása/második használat**
 
-    Az Azure Cosmos DB adatbázis-műveletek, beleértve a relációs és hierarchikus lekérdezéseket UDF-EK, tárolt eljárásokkal és eseményindítókkal adatbázis-gyűjteményekben dokumentumok gazdag választékát kínálja. A műveletekhez kapcsolódó költségek a CPU, IO és a művelet végrehajtásához szükséges alapján változik. Szem előtt tartva és hardver-erőforrások kezelése, helyett is felfoghatók kérelemegység (RU) azon erőforrások számos adatbázis-műveletek végrehajtásához, és adott alkalmazáskérelem kiszolgálásához szükséges egyetlen érték.
+    A Azure Cosmos DB az adatbázis-műveletek gazdag készletét kínálja, beleértve a UDF, tárolt eljárásokkal és triggerekkel kapcsolatos, és az adatbázis-gyűjteményen belüli összes műveletet. Az egyes műveletekhez kapcsolódó díjak a művelet végrehajtásához szükséges CPU, IO és memória alapján változnak. A hardveres erőforrások gondolkodása és kezelése helyett a kérések egysége (RU) egyetlen mértékként használható a különböző adatbázis-műveletek végrehajtásához és az alkalmazásokra vonatkozó kérések kiszolgálásához szükséges erőforrásokhoz.
 
-    Átviteli sebesség száma alapján van kiépítve [kérelemegységek](request-units.md) állítsa be az egyes tárolók. Kérelem-egységek felhasználását másodpercenkénti minősül. Alkalmazások, amelyek túllépik a tárolóban kiosztott kérelem egység díjaival korlátozva, mindaddig, amíg az arány a tároló a kiépített szint alá csökken. Ha az alkalmazás egy magasabb adatátviteli kapacitást igényel, további kérelemegységet kiépítésével növelheti az átviteli sebességet. 
+    Az átviteli sebesség az egyes tárolók számára beállított [kérelmek egységeinek](request-units.md) száma alapján lett kiépítve. A kérelem egységének felhasználását a rendszer másodpercenkénti arányban értékeli. Azok az alkalmazások, amelyek túllépik a tárolók kiépített kérelmi egységének sebességét, csak a tároló számára kiépített szint alá csökkennek. Ha az alkalmazás magasabb adatátviteli kapacitást igényel, akkor a további kérelmek kiszámításával növelheti a teljesítményt. 
 
-    A lekérdezés összetettségétől hatással van egy művelet felhasznált Kérelemegységek számát. A predikátumok száma, a predikátumok UDF-EK számát és méretét a forrás adatkészlet összes jellege befolyásolhatják a lekérdezési műveletek költségét.
+    A lekérdezés bonyolultsága befolyásolja, hogy hány kérelem-egységet használ a művelet. A predikátumok száma, a predikátumok természete, a UDF száma és a forrásadatok készletének mérete egyaránt befolyásolja a lekérdezési műveletek költségeit.
 
-    Bármilyen műveletet járó többletterhelést mérésére (létrehozása, frissítése vagy törlése), vizsgálja meg a [x-ms-kérelem-díj](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) fejléc (vagy az azzal egyenértékű RequestCharge tulajdonság a ResourceResponse<T> vagy FeedResponse<T> a a. NETTÓ SDK), ezek a műveletek által felhasznált kérelemegységek számát.
+    Bármilyen művelet (létrehozás, frissítés vagy törlés) mértékének méréséhez vizsgálja meg az [x-MS-Request-Charge](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) fejlécét (vagy a ResourceResponse\<t > vagy FeedResponse\<t > a .net SDK-ban található RequestCharge-tulajdonságot) a következőre: a műveletek által felhasznált kérelmek mennyiségének mérése.
 
     ```csharp
     // Measure the performance (request units) of writes
@@ -201,26 +230,26 @@ Az Azure Cosmos DB egy gyors és rugalmas elosztott adatbázis, teljesítmény �
          }
     ```             
 
-    A kérelem díja a fejléc adja vissza a kiosztott átviteli sebesség töredékéért (azaz a 2000 kérelemegység / s). Például ha az előző lekérdezés 1000 1KB-dokumentumokat ad vissza, a költség, a művelet: 1000. Emiatt a belül egy második, a kiszolgáló figyelembe veszi előtt sebességével későbbi kérelmeket csak két ilyen kérelmeket. További információkért lásd: [Kérelemegységek](request-units.md) és a [kérelem egység Számológép](https://www.documentdb.com/capacityplanner).
+    Az ebben a fejlécben visszaadott kérelem díja a kiépített átviteli sebesség (azaz 2000 RUs/másodperc) része. Ha például az előző lekérdezés 1000 1KB ad vissza, a művelet díja 1000. Mint ilyen, egy másodpercen belül a kiszolgáló csak két ilyen kérést értékel ki a későbbi kérelmek korlátozása előtt. További információ: a [kérelmek egységei](request-units.md) és a [kérési egység kalkulátora](https://www.documentdb.com/capacityplanner).
 <a id="429"></a>
-2. **Kezeli a sebesség korlátozása/kérelmek arányának túl nagy**
+2. **A kezelői sebesség korlátozása/kérelmek arányának aránya túl nagy**
 
-    Amikor az ügyfél meghaladja a fenntartott átviteli sebesség egy olyan fiók, nincs teljesítmény csökkenése nélkül működhet a kiszolgálón, és felül a fenntartott átviteli kapacitás használatának tilalma. A kiszolgáló előrelátó módon RequestRateTooLarge (HTTP-állapotkódot 429-es) a kérelem befejezése, és adja vissza a [x-ms-újrapróbálkozási-után – az ms](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) jelző idő ezredmásodpercben, amely a felhasználónak várakoznia kell, mielőtt újrapróbálkozni azoknál a fejléc a kérelmet.
+    Ha egy ügyfél megpróbál meghaladni egy fiók fenntartott átviteli sebességét, nincs teljesítmény-romlás a kiszolgálón, és a lefoglalt szinten túl nem használható az átviteli kapacitás. A kiszolgáló megelőző jelleggel a kérést a RequestRateTooLarge (429-es HTTP-állapotkód), és visszaküldi az [x-MS-újrapróbálkozás-After-MS](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) fejlécet, jelezve azt az időtartamot (ezredmásodpercben), ameddig a felhasználónak meg kell várnia a kérés ismételt megkísérlése előtt.
 
         HTTP Status 429,
         Status Line: RequestRateTooLarge
         x-ms-retry-after-ms :100
 
-    Az SDK-k az összes implicit módon ezt a választ a tényleges, a kiszolgáló által megadott retry-after fejléccel tiszteletben, és ismételje meg a kérelmet. Kivéve, ha a fiók több ügyfélnek egyszerre használja, a következő újrapróbálkozás sikeres lesz.
+    Az SDK-k minden implicit módon elkapják ezt a választ, tiszteletben tartsák a kiszolgáló által megadott újrapróbálkozás utáni újrapróbálkozást, majd próbálja megismételni a kérelmet. Ha a fiókját több ügyfél egyidejűleg nem éri el, a következő újrapróbálkozás sikeres lesz.
 
-    Ha egynél több ügyfél felett a kérések mennyisége következetesen összesítve működő, az alapértelmezett újrapróbálkozások jelenlegi beállítása 9 belsőleg az ügyfél által esetleg nem elegendő; Ebben az esetben az ügyfél egy 429-es állapotkód DocumentClientException jelez az alkalmazásnak. Az alapértelmezett újrapróbálkozások ConnectionPolicy-példányon a RetryOptions beállításával módosítható. Alapértelmezés szerint a 429-es állapotkód DocumentClientException adja vissza egy halmozódó várakozási idő pedig 30 másodperc után, ha a kérés továbbra is működőképes fent a kérések aránya. Ez akkor fordul elő, még ha az aktuális újrapróbálkozások nem éri el az újrapróbálkozások maximális számát, legyen az alapértelmezett 9 vagy egy felhasználó által definiált értéket.
+    Ha több ügyfél halmozottan működik, és a kérések aránya meghaladja a kérelmek arányát, akkor előfordulhat, hogy az ügyfél az újrapróbálkozások alapértelmezett száma jelenleg 9 belső értékre van állítva. Ebben az esetben az ügyfél egy 429-as állapotkódot tartalmazó DocumentClientException hoz az alkalmazáshoz. Az újrapróbálkozások alapértelmezett száma módosítható úgy, hogy beállítja a RetryOptions a ConnectionPolicy-példányon. Alapértelmezés szerint a 429-as kódú DocumentClientException a rendszer a 30 másodperces kumulatív várakozási idő után adja vissza, ha a kérés továbbra is a kérelmek arányán felül működik. Ez akkor is előfordul, ha a jelenlegi újrapróbálkozások száma kisebb, mint az újrapróbálkozások maximális száma, legyen az alapértelmezett 9-es vagy felhasználó által definiált érték.
 
-    Az automatikus újrapróbálkozási viselkedés segít a rugalmasság és a legtöbb alkalmazás használhatóság javítása érdekében, miközben, előfordulhat, hogy származnak, bármikor odds esetén teljesítményteszteket, különösen akkor, amikor a késleltetés mérése.  Az ügyfél-megfigyelt késés fog hirtelen, ha eléri a kiszolgáló szabályozása a kísérletet, és az ügyfél SDK-val csendes módban próbálja újra. Teljesítmény kísérletek során késés ugrásszerűen elkerüléséhez a díjat az egyes műveletek által visszaadott mérjük, és győződjön meg arról, hogy a kérelmek működnek-e alatt a szolgáltatás számára fenntartott kérések mennyisége. További információkért lásd: [Kérelemegységek](request-units.md).
-3. **A nagyobb sebesség érdekében kisebb méretű dokumentumokra tervezése**
+    Míg az automatikus újrapróbálkozási viselkedés segíti a legtöbb alkalmazás rugalmasságának és használhatóságának javítását, akkor előfordulhat, hogy a teljesítményre vonatkozó teljesítménymutatók végrehajtásakor a rendszer hasznosnak bizonyul, különösen a késés mérése során.  Az ügyfél által megfigyelt késés megszegi, ha a kísérlet megkeresi a kiszolgáló szabályozását, és az ügyfél-SDK-t csendes újrapróbálkozás okozta. A teljesítmény-kísérletek során felmerülő késések elkerülése érdekében mérje fel az egyes műveletek által visszaadott díjat, és győződjön meg arról, hogy a kérelmek a fenntartott kérelmek arányában működnek. További információt a [kérelmek egységei](request-units.md)című témakörben talál.
+3. **Kisebb dokumentumok tervezése magasabb átviteli sebesség esetén**
 
-    A kérelem díja (azaz a kérelem feldolgozása költség) egy adott műveletnek közvetlenül visszamenőleges korrelációban állnak a dokumentum mérete. A nagy dokumentumok Operations drágább, mint a kisméretű dokumentumok műveletek.
+    Egy adott műveletre vonatkozó kérések (például a kérelmek feldolgozási díja) közvetlenül összefügg a dokumentum méretével. A nagyméretű dokumentumokon végzett műveletek többek között a kis méretű dokumentumok műveleteinél nagyobb mértékben járnak.
 
 ## <a name="next-steps"></a>További lépések
-Egy Azure Cosmos DB kiértékelése néhány ügyfél gépek a nagy teljesítményű forgatókönyvekhez használt mintaalkalmazás, lásd: [teljesítmény és méretezhetőség tesztelése az Azure Cosmos DB](performance-testing.md).
+Az egyes ügyfélszámítógépeken a nagy teljesítményű forgatókönyvek Azure Cosmos DB kiértékeléséhez használt minta alkalmazás esetében tekintse meg a [teljesítmény-és méretezési tesztet](performance-testing.md)a Azure Cosmos DBával.
 
-Ezenkívül az alkalmazás a méretezés és a nagy teljesítményű megtervezésével kapcsolatos további tudnivalókért lásd: [particionálás és skálázás az Azure Cosmos DB](partition-data.md).
+Ha többet szeretne megtudni a méretezési és a nagy teljesítménybeli alkalmazások tervezéséről, olvassa el [a particionálás és skálázás a Azure Cosmos DBban](partition-data.md)című témakört.

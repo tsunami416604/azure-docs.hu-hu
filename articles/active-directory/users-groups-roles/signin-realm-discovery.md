@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: kexia
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b6846c5f907c41db16e99883be7041a68357586
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: db627359b75aa0ea19e30a8d22bcacaa3409cb4a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59608775"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66418221"
 ---
 # <a name="home-realm-discovery-for-azure-active-directory-sign-in-pages"></a>Azure Active Directory bejelentkezési lapok hitelesítőtartomány
 
@@ -32,24 +32,24 @@ Hitelesítő adatok szélesebb körének támogatására, és a használhatósá
 
 További előnye ennek, javult a hibajelentések üzenetkezelés. Szívesen adunk néhány ötletet a üzenetküldési bejelentkezés egy alkalmazásba, amely támogatja a csak az Azure Active Directory-felhasználók továbbfejlesztett hiba.
 
-1. A felhasználónév rosszul van, vagy a felhasználónév már nem szinkronizált Azure ad-hez:
+- A felhasználónév rosszul van, vagy a felhasználónév már nem szinkronizált Azure ad-hez:
   
     ![a felhasználónév rosszul adott meg, vagy nem található](./media/signin-realm-discovery/typo-username.png)
   
-2. A tartománynév rosszul van:
+- A tartománynév rosszul van:
   
     ![a tartománynév rosszul adott meg, vagy nem található](./media/signin-realm-discovery/typo-domain.png)
   
-3. Felhasználó megpróbál bejelentkezni egy ismert fogyasztói tartománynak:
+- Felhasználó megpróbál bejelentkezni egy ismert fogyasztói tartománynak:
   
     ![Jelentkezzen be egy ismert fogyasztói tartománynak](./media/signin-realm-discovery/consumer-domain.png)
   
-4. A jelszó rosszul van, de a felhasználónév pontos:  
+- A jelszó rosszul van, de a felhasználónév pontos:  
   
     ![jelszava hibásan írta be a helyes felhasználónévvel](./media/signin-realm-discovery/incorrect-password.png)
   
 > [!IMPORTANT]
-> Ez a funkció lehet hatással a függő entitások kényszerített az összevonási Kezdőtartomány felderítésének régi tartományi szint összevont tartományok. Ha összevont tartományt fogja támogatni a frissítéseket, lásd: [kezdőlap kezdőtartomány-felderítés során jelentkezzen be a Microsoft 365-szolgáltatásokhoz](https://azure.microsoft.com/en-us/updates/signin-hrd/). Addig is egyes szervezetek számára, hogy jelentkezzen be az Azure Active Directoryban nem létezik, de tartalmazza a megfelelő tartománynevet, felhasználónevet, mivel a tartománynevek átirányítja a felhasználókat jelenleg a szervezeti tartományi végpontra szakképzett. Az új bejelentkezés működése nem engedélyezi ezt. A felhasználó értesítést kap, javítsa ki a felhasználó nevét, és azok nincs engedélye arra, hogy jelentkezzen be egy felhasználónevet, amely nem létezik az Azure Active Directoryban.
+> Ez a funkció lehet hatással a függő entitások kényszerített az összevonási Kezdőtartomány felderítésének régi tartományi szint összevont tartományok. Ha összevont tartományt fogja támogatni a frissítéseket, lásd: [kezdőlap kezdőtartomány-felderítés során jelentkezzen be a Microsoft 365-szolgáltatásokhoz](https://azure.microsoft.com/updates/signin-hrd/). Addig is egyes szervezetek számára, hogy jelentkezzen be az Azure Active Directoryban nem létezik, de tartalmazza a megfelelő tartománynevet, felhasználónevet, mivel a tartománynevek átirányítja a felhasználókat jelenleg a szervezeti tartományi végpontra szakképzett. Az új bejelentkezés működése nem engedélyezi ezt. A felhasználó értesítést kap, javítsa ki a felhasználó nevét, és azok nincs engedélye arra, hogy jelentkezzen be egy felhasználónevet, amely nem létezik az Azure Active Directoryban.
 >
 > Ha Ön vagy a szervezet rendelkezik gyakorlatokat, amelyek a régi viselkedése attól függ, fontos a szervezet rendszergazdák alkalmazott bejelentkezési és hitelesítési dokumentáció frissítésére és alkalmazottak számára az Azure Active Directory felhasználónevet használva a bejelentkezéshez betanításához.
   

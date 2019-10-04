@@ -1,9 +1,9 @@
 ---
-title: Az Azure-erőforrások szerepköreihez tartozó biztonsági riasztások konfigurálása a PIM - Azure Active Directory |} A Microsoft Docs
-description: Ismerje meg az Azure-erőforrások szerepköreihez tartozó biztonsági riasztások konfigurálása az Azure AD Privileged Identity Management (PIM).
+title: Biztonsági riasztások konfigurálása Azure-beli erőforrás-szerepkörökhöz a PIM-ben – Azure Active Directory | Microsoft Docs
+description: Megtudhatja, hogyan konfigurálhat biztonsági riasztásokat az Azure-erőforrás szerepköreihez a Azure AD Privileged Identity Management (PIM) szolgáltatásban.
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 ms.service: active-directory
 ms.devlang: na
@@ -12,46 +12,48 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
 ms.date: 04/02/2018
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09e04e6b61d3387cb8c50c2af4eef2cfb4bec196
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 177f61392c3e441c891ba1b531301b3dae8c0db2
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58575762"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804235"
 ---
-# <a name="configure-security-alerts-for-azure-resource-roles-in-pim"></a>Az Azure-erőforrások szerepköreihez tartozó biztonsági riasztások konfigurálása az PIM-ben
-Az Azure Active Directory (Azure AD) Privileged Identity Management (PIM) riasztásokat állít elő, ha bármi gyanúsat vagy nem biztonságos tevékenységre van a környezetben. Riasztást vált ki, amikor megjelenik a riasztások lapon. 
+# <a name="configure-security-alerts-for-azure-resource-roles-in-pim"></a>Biztonsági riasztások konfigurálása Azure-beli erőforrás-szerepkörökhöz a PIM-ben
+A Azure Active Directory (Azure AD) Privileged Identity Management (PIM) riasztásokat állít elő, amikor gyanús vagy nem biztonságos tevékenység van a környezetben. Riasztások aktiválásakor megjelenik a riasztások lapon. 
 
-![Riasztások lap](media/azure-pim-resource-rbac/RBAC-alerts-home.png)
+![Azure-erőforrások – riasztások lap, a riasztás, a kockázati szint és a darabszám](media/pim-resource-roles-configure-alerts/rbac-alerts-page.png)
 
 ## <a name="review-alerts"></a>Riasztások áttekintése
-Válasszon ki egy riasztást, a felhasználók vagy szerepkör, amely kiváltotta a riasztást, valamint szervizelési tanácsokat felsoroló jelentés megtekintéséhez.
+Válassza ki a riasztást, hogy megjelenjen egy jelentés, amely felsorolja a riasztást kiváltó felhasználókat vagy szerepköröket, valamint szervizelési tanácsokat.
 
-![Riasztási jelentés](media/azure-pim-resource-rbac/rbac-alert-info.png)
+![Riasztási jelentés, amely a legutóbbi vizsgálat idejét, a leírását, a kockázatcsökkentő lépéseket, a típust, a súlyosságot, a biztonsági hatásokat és a következő idő megelőzését mutatja be](media/pim-resource-roles-configure-alerts/rbac-alert-info.png)
 
 ## <a name="alerts"></a>Riasztások
-| Riasztás | Severity | Eseményindító | Ajánlás |
+| Riasztás | severity | Eseményindító | Ajánlás |
 | --- | --- | --- | --- |
-| **Túl sok tulajdonos van hozzárendelve egy erőforráshoz** |Közepes |Túl sok felhasználót a tulajdonosi szerepkörrel rendelkezik. |Tekintse át a felhasználókat a listában, és néhány kisebb a kiemelt szerepkörökhöz való átrendelése. |
-| **Túl sok állandó tulajdonos van hozzárendelve egy erőforráshoz** |Közepes |Túl sok felhasználó véglegesen egy szerepkörhöz vannak hozzárendelve. |Tekintse át a felhasználókat a listában, és rendelje hozzá néhányat a aktiválni kell szerepkört használni. |
-| **Ismétlődő szerepkör létrehozása** |Közepes |Több szerepkör rendelkezik ugyanezeket a feltételeket. |Ezek a szerepkörök egyikét használhatja. |
+| **Túl sok tulajdonos van hozzárendelve egy erőforráshoz** |Közepes |Túl sok felhasználó rendelkezik tulajdonosi szerepkörrel. |Tekintse át a listában szereplő felhasználókat, és rendeljen hozzá néhányat a kevésbé Kiemelt szerepkörökhöz. |
+| **Túl sok állandó tulajdonos van hozzárendelve egy erőforráshoz** |Közepes |Túl sok felhasználó van hozzá véglegesen rendelve egy szerepkörhöz. |Tekintse át a listában szereplő felhasználókat, és rendelje újra a szerepkör-használathoz szükséges aktiválást. |
+| **Ismétlődő szerepkör létrehozva** |Közepes |Több szerepkör azonos feltételekkel rendelkezik. |Csak az egyik szerepkört használja. |
 
 
-### <a name="severity"></a>Severity
-* **Magas**: Egy szabályzat megsértése miatt azonnali beavatkozást igényel. 
-* **Közepes**: Nem igényel azonnali intézkedést, de lehetséges szabályzat megsértését jelzi.
-* **Alacsony**: Nem igényel azonnali intézkedést, de javasol a kívánt házirend módosítását.
+### <a name="severity"></a>severity
+* **Magas**: A szabályzat megsértése miatt azonnali műveletre van szükség. 
+* **Közepes**: Nincs szükség azonnali műveletre, de lehetséges szabályzat megsértését jelzi.
+* **Alacsony**: Nincs szükség azonnali műveletre, de javasolt házirend-módosítást javasol.
 
-## <a name="configure-security-alert-settings"></a>Biztonsági riasztási beállításainak konfigurálása
-Lépjen a riasztások oldaláról **beállítások**.
-![Beállítások](media/azure-pim-resource-rbac/rbac-navigate-settings.png)
+## <a name="configure-security-alert-settings"></a>Biztonsági riasztás beállításainak konfigurálása
+A riasztások lapon lépjen a **Beállítások**elemre.
 
-A különböző riasztások beállításai a környezetet és biztonsági célok testreszabásához.
-![A beállítások testre szabása](media/azure-pim-resource-rbac/rbac-alert-settings.png)
+![Riasztások lap Kiemelt beállításokkal](media/pim-resource-roles-configure-alerts/rbac-navigate-settings.png)
+
+A különböző riasztások beállításainak testreszabásával dolgozhat a környezettel és a biztonsági célokkal.
+
+![Riasztás beállítása a beállítások engedélyezéséhez és konfigurálásához](media/pim-resource-roles-configure-alerts/rbac-alert-settings.png)
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az Azure-erőforrások szerepköreihez tartozó biztonsági riasztások konfigurálása az PIM-ben](pim-resource-roles-configure-alerts.md)
+- [Az Azure erőforrás-szerepkör beállításainak konfigurálása a PIM-ben](pim-resource-roles-configure-role-settings.md)

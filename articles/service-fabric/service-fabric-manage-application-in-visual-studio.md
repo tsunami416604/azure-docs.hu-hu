@@ -16,11 +16,11 @@ ms.workload: azure-vs
 ms.date: 03/26/2018
 ms.author: mikhegn
 ms.openlocfilehash: 4744858869e10094389be58ddd3960cb8cc2773a
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58664845"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60720053"
 ---
 # <a name="use-visual-studio-to-simplify-writing-and-managing-your-service-fabric-applications"></a>Írása, és a Service Fabric-alkalmazások kezelése a Visual Studio használatával
 Az Azure Service Fabric-alkalmazások és szolgáltatások Visual Studión keresztül kezelheti. Miután [a fejlesztési környezet beállítása](service-fabric-get-started.md), a Visual Studio segítségével Service Fabric-alkalmazások létrehozása, adja hozzá a szolgáltatások vagy a csomag regisztrálása és alkalmazások üzembe helyezése a helyi fejlesztési fürtön.

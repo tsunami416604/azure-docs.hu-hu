@@ -1,55 +1,54 @@
 ---
-title: Biztonsági mentése és helyreállítása, az Oracle Database 12c adatbázis egy Azure-beli Linuxos virtuális gépen |} A Microsoft Docs
-description: Ismerje meg, hogyan biztonsági mentése és helyreállítása, az Oracle Database 12c adatbázis az Azure-környezetben.
+title: Egy Oracle Database 12c-adatbázis biztonsági mentése és helyreállítása Azure Linux rendszerű virtuális gépen | Microsoft Docs
+description: Megtudhatja, hogyan készíthet biztonsági másolatot egy Oracle Database 12c-adatbázisról az Azure-környezetben.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: romitgirdhar
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 93fbd5bbba91b45e1afd123a2466b249302e2354
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: c493f79a066f872be6b38d127622cc757ab3c1cc
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39492840"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100243"
 ---
-# <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a>Biztonsági mentése és helyreállítása, az Oracle Database 12c adatbázis egy Azure-beli Linuxos virtuális gépen
+# <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a>Oracle Database 12c-adatbázis biztonsági mentése és helyreállítása Azure-beli linuxos virtuális gépen
 
-Azure CLI segítségével létrehozása és kezelése az Azure-erőforrások parancssorból vagy szkriptek. Ez a cikk az Azure CLI-szkriptek használjuk egy Oracle Database 12c adatbázis az Azure Marketplace-en katalógus-lemezkép telepítése.
+Az Azure CLI-vel Azure-erőforrásokat hozhat létre és kezelhet a parancssorban, illetve parancsfájlokat is használhat. Ebben a cikkben az Azure CLI-szkriptekkel telepítünk egy Oracle Database 12c-adatbázist egy Azure Marketplace Gallery-rendszerképből.
 
-Mielőtt elkezdené, győződjön meg arról, hogy az Azure CLI telepítve van-e. További információkért lásd: a [Azure CLI telepítési útmutatóját](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Mielőtt elkezdené, győződjön meg arról, hogy az Azure CLI telepítve van. További információ: az [Azure CLI telepítési útmutatója](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ## <a name="prepare-the-environment"></a>A környezet előkészítése
 
-### <a name="step-1-prerequisites"></a>1. lépés: Előfeltételek
+### <a name="step-1-prerequisites"></a>1\. lépés: Előfeltételek
 
-*   A biztonsági mentési és helyreállítási folyamat végrehajtásához először létre kell hoznia egy Linux rendszerű virtuális gép, amely rendelkezik az Oracle Database 12c telepített példányát. A Piactéri lemezképet hozhat létre a virtuális gép neve *Oracle: Oracle-adatbázis – Ee:12.1.0.2:latest*.
+*   A biztonsági mentési és helyreállítási folyamat végrehajtásához először létre kell hoznia egy linuxos virtuális gépet, amelyen Oracle Database 12c telepített példánya van. A virtuális gép létrehozásához használt Piactéri rendszerkép neve *Oracle: Oracle-Database-EE: 12.1.0.2: Latest*.
 
-    Megtudhatja, hogyan hozhat létre egy Oracle database, tekintse meg a [Oracle database gyors üzembe helyezése létrehozása](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-database-quick-create).
+    Az Oracle-adatbázisok létrehozásával kapcsolatos információkért tekintse meg az [Oracle Create Database](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-database-quick-create)rövid útmutatóját.
 
 
-### <a name="step-2-connect-to-the-vm"></a>2. lépés: Kapcsolódás a virtuális Géphez
+### <a name="step-2-connect-to-the-vm"></a>2\. lépés: Kapcsolódás a virtuális géphez
 
-*   Secure Shell (SSH)-munkamenetet létrehozni a virtuális géppel, a következő paranccsal. Cserélje le az IP-cím és a gazdagép neve együtt a `publicIpAddress` értéket a virtuális géphez.
+*   Ha Secure Shell-(SSH-) munkamenetet szeretne létrehozni a virtuális géppel, használja a következő parancsot. Cserélje le az IP-címet és az állomásnév kombinációját `publicIpAddress` a virtuális gép értékére.
 
     ```bash 
     ssh <publicIpAddress>
     ```
 
-### <a name="step-3-prepare-the-database"></a>3. lépés: Az adatbázis előkészítése
+### <a name="step-3-prepare-the-database"></a>3\. lépés: Az adatbázis előkészítése
 
-1.  Ez a lépés azt feltételezi, hogy rendelkezik-e egy nevű virtuális gépen futó Oracle-példányok (cdb1) *myVM*.
+1.  Ez a lépés azt feltételezi, hogy rendelkezik egy *myVM*nevű virtuális gépen futó Oracle-példánnyal (cdb1).
 
-    Futtassa a *oracle* superuser legfelső szintű, és ezután inicializálása a figyelőt:
+    Futtassa az *Oracle* rendszeradminisztrátori gyökerét, majd inicializálja a figyelőt:
 
     ```bash
     $ sudo su - oracle
@@ -79,7 +78,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy az Azure CLI telepítve van-e
     The command completed successfully
     ```
 
-2.  (Nem kötelező) Ellenőrizze, hogy az adatbázis archív log módban van:
+2.  Választható Győződjön meg arról, hogy az adatbázis archiválási napló módban van:
 
     ```bash
     $ sqlplus / as sysdba
@@ -95,7 +94,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy az Azure CLI telepítve van-e
     SQL> ALTER DATABASE OPEN;
     SQL> ALTER SYSTEM SWITCH LOGFILE;
     ```
-3.  (Nem kötelező) Hozzon létre egy táblát a véglegesítés teszteléséhez:
+3.  Választható Hozzon létre egy táblázatot a véglegesítés teszteléséhez:
 
     ```bash
     SQL> alter session set "_ORACLE_SCRIPT"=true ;
@@ -116,7 +115,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy az Azure CLI telepítve van-e
     SQL> commit;
     Commit complete.
     ```
-4.  Győződjön meg arról, vagy módosítsa a biztonságimásolat-fájl helye és mérete:
+4.  A biztonságimásolat-fájl helyének és méretének ellenőrzése vagy módosítása:
 
     ```bash
     $ sqlplus / as sysdba
@@ -126,20 +125,20 @@ Mielőtt elkezdené, győződjön meg arról, hogy az Azure CLI telepítve van-e
     db_recovery_file_dest                string      /u01/app/oracle/fast_recovery_area
     db_recovery_file_dest_size           big integer 4560M
     ```
-5. Oracle Recovery Manager (RMAN) használatával az adatbázis biztonsági mentése:
+5. Az adatbázis biztonsági mentése az Oracle Recovery Manager (Oláh Anna) használatával:
 
     ```bash
     $ rman target /
     RMAN> backup database plus archivelog;
     ```
 
-### <a name="step-4-application-consistent-backup-for-linux-vms"></a>4. lépés: Linux rendszerű virtuális gépek alkalmazáskonzisztens biztonsági mentés
+### <a name="step-4-application-consistent-backup-for-linux-vms"></a>4\. lépés: Alkalmazás-konzisztens biztonsági mentés Linux rendszerű virtuális gépekhez
 
-Alkalmazáskonzisztens biztonsági mentést egy olyan új szolgáltatás az Azure Backup. Hozzon létre, és jelölje be a parancsfájlok végrehajtása előtt és után a virtuális gép pillanatképét, (pillanatkép előtti és utáni pillanatkép).
+Az alkalmazás-konzisztens biztonsági mentések a Azure Backup új szolgáltatása. Létrehozhatja és kiválaszthatja a virtuális gép pillanatképe előtt és után végrehajtandó parancsfájlokat (a pillanatkép előtti és utáni pillanatképet is).
 
 1. Töltse le a JSON-fájlt.
 
-    Töltse le a VMSnapshotScriptPluginConfig.json https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig. A fájl tartalmának keresse meg a következőhöz hasonló:
+    Töltse le a VMSnapshotScriptPluginConfig. https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig JSON fájlt a alkalmazásból. A fájl tartalma a következőhöz hasonlóan néz ki:
 
     ```azurecli
     {
@@ -156,7 +155,7 @@ Alkalmazáskonzisztens biztonsági mentést egy olyan új szolgáltatás az Azur
     }
     ```
 
-2. A /etc/azure mappa létrehozása a virtuális gépen:
+2. Hozza létre a/etc/Azure mappát a virtuális gépen:
 
     ```bash
     $ sudo su -
@@ -166,11 +165,11 @@ Alkalmazáskonzisztens biztonsági mentést egy olyan új szolgáltatás az Azur
 
 3. Másolja a JSON-fájlt.
 
-    VMSnapshotScriptPluginConfig.json a /etc/azure mappába másolja.
+    Másolja a VMSnapshotScriptPluginConfig. JSON fájlt a/etc/Azure mappába.
 
 4. Szerkessze a JSON-fájlt.
 
-    A VMSnapshotScriptPluginConfig.json-fájl szerkesztése a `PreScriptLocation` és `PostScriptlocation` paramétereket. Példa:
+    Szerkessze a VMSnapshotScriptPluginConfig. JSON fájlt, hogy `PreScriptLocation` tartalmazza `PostScriptlocation` a és a paramétereket. Példa:
 
     ```azurecli
     {
@@ -187,11 +186,11 @@ Alkalmazáskonzisztens biztonsági mentést egy olyan új szolgáltatás az Azur
     }
     ```
 
-5. A pillanatkép előtti és utáni parancsfájl-fájlokat hoz létre.
+5. Hozza létre a pillanatkép előtti és utáni parancsfájlokat.
 
-    Íme egy példa egy "offline biztonsági mentés" pillanatkép előtti és utáni szkriptekkel (egy offline biztonsági mentés leállítása és újraindítása):
+    Íme egy példa a pillanatkép előtti és a pillanatkép utáni parancsfájlokra a "hideg biztonsági mentéshez" (offline biztonsági mentés, leállítás és újraindítás után):
 
-    A /etc/azure/pre_script.sh:
+    /Etc/Azure/pre_script.sh esetén:
 
     ```bash
     v_date=`date +%Y%m%d%H%M`
@@ -200,7 +199,7 @@ Alkalmazáskonzisztens biztonsági mentést egy olyan új szolgáltatás az Azur
     su - $ORA_OWNER -c "$ORA_HOME/bin/dbshut $ORA_HOME" > /etc/azure/pre_script_$v_date.log
     ```
 
-    A /etc/azure/post_script.sh:
+    /Etc/Azure/post_script.sh esetén:
 
     ```bash
     v_date=`date +%Y%m%d%H%M`
@@ -209,7 +208,7 @@ Alkalmazáskonzisztens biztonsági mentést egy olyan új szolgáltatás az Azur
     su - $ORA_OWNER -c "$ORA_HOME/bin/dbstart $ORA_HOME" > /etc/azure/post_script_$v_date.log
     ```
 
-    Íme egy példa egy "gyakran használt adatok biztonsági mentésének" pillanatkép előtti és utáni szkriptekkel (online biztonsági mentés):
+    Íme egy példa a pillanatkép előtti és a pillanatkép utáni parancsfájlokra a "gyors biztonsági mentéshez" (online biztonsági mentés):
 
     ```bash
     v_date=`date +%Y%m%d%H%M`
@@ -218,7 +217,7 @@ Alkalmazáskonzisztens biztonsági mentést egy olyan új szolgáltatás az Azur
     su - $ORA_OWNER -c "sqlplus / as sysdba @/etc/azure/pre_script.sql" > /etc/azure/pre_script_$v_date.log
     ```
 
-    A /etc/azure/post_script.sh:
+    /Etc/Azure/post_script.sh esetén:
 
     ```bash
     v_date=`date +%Y%m%d%H%M`
@@ -227,7 +226,7 @@ Alkalmazáskonzisztens biztonsági mentést egy olyan új szolgáltatás az Azur
     su - $ORA_OWNER -c "sqlplus / as sysdba @/etc/azure/post_script.sql" > /etc/azure/pre_script_$v_date.log
     ```
 
-    /Etc/azure/pre_script.sql módosítsa a igényeknek a fájl tartalmát:
+    A/etc/Azure/pre_script.SQL módosítsa a fájl tartalmát a követelmények szerint:
 
     ```bash
     alter tablespace SYSTEM begin backup;
@@ -237,7 +236,7 @@ Alkalmazáskonzisztens biztonsági mentést egy olyan új szolgáltatás az Azur
     alter system archive log stop;
     ```
 
-    /Etc/azure/post_script.sql módosítsa a igényeknek a fájl tartalmát:
+    A/etc/Azure/post_script.SQL módosítsa a fájl tartalmát a követelmények szerint:
 
     ```bash
     alter tablespace SYSTEM end backup;
@@ -256,73 +255,73 @@ Alkalmazáskonzisztens biztonsági mentést egy olyan új szolgáltatás az Azur
 
 7. Tesztelje a parancsfájlokat.
 
-    Tesztelje a parancsfájlokat, először jelentkezzen be rendszergazdaként. Ezt követően ellenőrizze, hogy nincsenek-e hibák:
+    A parancsfájlok teszteléséhez először jelentkezzen be root-ként. Ezt követően győződjön meg arról, hogy nincsenek hibák:
 
     ```bash
     # /etc/azure/pre_script.sh
     # /etc/azure/post_script.sh
     ```
 
-További információkért lásd: [Linux rendszerű virtuális gépek alkalmazáskonzisztens biztonsági mentés](https://azure.microsoft.com/blog/announcing-application-consistent-backup-for-linux-vms-using-azure-backup/).
+További információ: [alkalmazás-konzisztens biztonsági mentés Linux rendszerű virtuális gépekhez](https://azure.microsoft.com/blog/announcing-application-consistent-backup-for-linux-vms-using-azure-backup/).
 
 
-### <a name="step-5-use-azure-recovery-services-vaults-to-back-up-the-vm"></a>5. lépés: Használja az Azure Recovery Services-tárolók biztonsági mentése a virtuális gép
+### <a name="step-5-use-azure-recovery-services-vaults-to-back-up-the-vm"></a>5\. lépés: Az Azure Recovery Services-tárolók használata a virtuális gép biztonsági mentésére
 
-1.  Az Azure Portalon keresse meg **Recovery Services-tárolók**.
+1.  A Azure Portal **Recovery Services**-tárolók keresése elemre.
 
-    ![Recovery Services-tárolók oldalon](./media/oracle-backup-recovery/recovery_service_01.png)
+    ![Recovery Services-tárolók lapja](./media/oracle-backup-recovery/recovery_service_01.png)
 
-2.  Az a **Recovery Services-tárolók** adjon hozzá egy új tároló paneljén kattintson **Hozzáadás**.
+2.  A **Recovery Services** -tárolók panelen új tároló hozzáadásához kattintson a **Hozzáadás**gombra.
 
-    ![Recovery Services-tárolók oldal hozzáadása](./media/oracle-backup-recovery/recovery_service_02.png)
+    ![Recovery Services-tárolók hozzáadása lap](./media/oracle-backup-recovery/recovery_service_02.png)
 
-3.  A folytatáshoz kattintson a **myVault**.
+3.  A folytatáshoz kattintson a **myVault**elemre.
 
-    ![Recovery Services-tárolók Részletek lap](./media/oracle-backup-recovery/recovery_service_03.png)
+    ![Recovery Services-tárolók részletes lapja](./media/oracle-backup-recovery/recovery_service_03.png)
 
-4.  Az a **myVault** panelen kattintson a **Backup**.
+4.  A **myVault** panelen kattintson a **biztonsági mentés**elemre.
 
-    ![Recovery Services-tárolók biztonságimásolat-készítési lapján](./media/oracle-backup-recovery/recovery_service_04.png)
+    ![Recovery Services-tárolók biztonsági másolatának lapja](./media/oracle-backup-recovery/recovery_service_04.png)
 
-5.  Az a **biztonsági mentés célja** panelen használja az alapértelmezett értékeket, **Azure** és **virtuális gép**. Kattintson az **OK** gombra.
+5.  A **biztonsági mentés célja** panelen használja az **Azure** és a **virtuális gép**alapértelmezett értékeit. Kattintson az **OK** gombra.
 
-    ![Recovery Services-tárolók Részletek lap](./media/oracle-backup-recovery/recovery_service_05.png)
+    ![Recovery Services-tárolók részletes lapja](./media/oracle-backup-recovery/recovery_service_05.png)
 
-6.  A **biztonsági mentési szabályzat**, használjon **DefaultPolicy**, vagy válasszon ki **hozzon létre új házirendet**. Kattintson az **OK** gombra.
+6.  A **biztonsági mentési**szabályzathoz használja az **DefaultPolicy**-t, vagy válassza az **új szabályzat létrehozása**lehetőséget. Kattintson az **OK** gombra.
 
-    ![Recovery Services-tárolók, biztonsági mentési házirend részletei lap](./media/oracle-backup-recovery/recovery_service_06.png)
+    ![Recovery Services-tárolók biztonsági mentési szabályzatának részletes lapja](./media/oracle-backup-recovery/recovery_service_06.png)
 
-7.  Az a **válassza ki a virtuális gépek** panelen válasszon ki a **myVM1** jelölőnégyzetet, majd kattintson a **OK**. Kattintson a **biztonsági mentés engedélyezése** gombra.
+7.  A **virtuális gépek kijelölése** panelen jelölje be a **myVM1** jelölőnégyzetet, majd kattintson az **OK**gombra. Kattintson a **biztonsági mentés engedélyezése** gombra.
 
-    ![Recovery Services-tárolók elemek a biztonsági mentés részletei lap](./media/oracle-backup-recovery/recovery_service_07.png)
+    ![A tároló elemeinek Recovery Services a biztonsági mentés részletei lapra](./media/oracle-backup-recovery/recovery_service_07.png)
 
     > [!IMPORTANT]
-    > Miután rákattintott **biztonsági mentés engedélyezése**, a biztonsági mentési folyamat nem indul el, amíg le nem jár az ütemezett időpont. Állítsa be az azonnali biztonsági mentés, hajtsa végre a következő lépéssel.
+    > Miután rákattintott a **biztonsági mentés engedélyezése**lehetőségre, a biztonsági mentési folyamat nem indul el, amíg az ütemezett idő lejár. Ha azonnali biztonsági mentést szeretne beállítani, hajtsa végre a következő lépést.
 
-8.  Az a **myVault - biztonsági másolati elemek** panel alatt **biztonsági MENTÉSI elemek száma**, válassza ki a biztonsági másolati elemek száma.
+8.  A **myVault-Backup elemek** panelen, a biztonsági másolati elemek **száma**területen válassza ki a biztonsági másolati elemek darabszámát.
 
-    ![Recovery Services-tárolók myVault részletei oldalon](./media/oracle-backup-recovery/recovery_service_08.png)
+    ![Recovery Services-tárolók myVault részletei lap](./media/oracle-backup-recovery/recovery_service_08.png)
 
-9.  Az a **biztonsági mentési elemek (Azure virtuális gép)** paneljén, az oldal jobb oldalán kattintson a három pontra (**...** ) gombra, majd **biztonsági mentés**.
+9.  A **biztonsági mentési elemek (Azure-beli virtuális gép)** panel jobb oldalán kattintson a három pontra ( **..** .), majd a **biztonsági mentés**elemre.
 
-    ![Biztonsági mentés most parancsot a Recovery Services-tárolók](./media/oracle-backup-recovery/recovery_service_09.png)
+    ![Recovery Services-tárolók biztonsági mentése – parancs](./media/oracle-backup-recovery/recovery_service_09.png)
 
-10. Kattintson a **Backup** gombra. Várjon, amíg a biztonsági mentési folyamat befejezéséhez. Folytassa a [6. lépés: távolítsa el az adatbázisfájlok](#step-6-remove-the-database-files).
+10. Kattintson a **Backup (biztonsági mentés** ) gombra. Várjon, amíg a biztonsági mentési folyamat befejeződik. Ezután folytassa a [6. lépéssel: Távolítsa el az](#step-6-remove-the-database-files)adatbázisfájlok.
 
-    A biztonsági mentési feladat állapotának megtekintéséhez kattintson **feladatok**.
+    A biztonsági mentési feladat állapotának megtekintéséhez kattintson a **feladatok**lehetőségre.
 
-    ![Recovery Services-tárolók feladat lap](./media/oracle-backup-recovery/recovery_service_10.png)
+    ![Recovery Services-tárolók feladatainak lapja](./media/oracle-backup-recovery/recovery_service_10.png)
 
-    A biztonsági mentési feladat állapotát az alábbi képen a jelenik meg:
+    A biztonsági mentési feladatok állapota a következő képen jelenik meg:
 
-    ![Recovery Services-tárolók feladat állapota lap](./media/oracle-backup-recovery/recovery_service_11.png)
+    ![Recovery Services-tárolók feladatainak állapota](./media/oracle-backup-recovery/recovery_service_11.png)
 
-11. Az alkalmazáskonzisztens biztonsági mentés cím esetleges hibákat a naplófájlban. A naplófájl nem található: /var/log/azure/Microsoft.Azure.RecoveryServices.VMSnapshotLinux/1.0.9114.0.
+11. Egy alkalmazással konzisztens biztonsági mentés esetén a naplófájlban felmerülő hibák elhárítása. A naplófájl a következő helyen található:/var/log/azure/Microsoft.Azure.RecoveryServices.VMSnapshotLinux/1.0.9114.0.
 
-### <a name="step-6-remove-the-database-files"></a>6. lépés: Távolítsa el az adatbázisfájlok 
-Ez a cikk későbbi részében fogja ismerje meg a helyreállítási folyamat tesztelése. Mielőtt tesztelhetné a helyreállítási folyamat, el kell távolítania az adatbázisfájlokat.
+### <a name="step-6-remove-the-database-files"></a>6\. lépés: Adatbázisfájlok eltávolítása 
+A cikk későbbi részében megtudhatja, hogyan tesztelheti a helyreállítási folyamatot. A helyreállítási folyamat tesztelése előtt el kell távolítania az adatbázisfájlok fájljait.
 
-1.  Távolítsa el a táblaterületen. keresse és a biztonsági mentési fájlokat:
+1.  Távolítsa el az Tablespace és a backup fájlokat:
 
     ```bash
     $ sudo su - oracle
@@ -332,7 +331,7 @@ Ez a cikk későbbi részében fogja ismerje meg a helyreállítási folyamat te
     $ rm -rf *
     ```
     
-2.  (Nem kötelező) Állítsa le az Oracle-példány:
+2.  Választható Az Oracle-példány leállítása:
 
     ```bash
     $ sqlplus / as sysdba
@@ -340,38 +339,38 @@ Ez a cikk későbbi részében fogja ismerje meg a helyreállítási folyamat te
     ORACLE instance shut down.
     ```
 
-## <a name="restore-the-deleted-files-from-the-recovery-services-vaults"></a>A törölt fájlok visszaállítása a Recovery Services-tárolók
-A törölt fájlok visszaállításához kövesse az alábbi lépéseket:
+## <a name="restore-the-deleted-files-from-the-recovery-services-vaults"></a>A törölt fájlok visszaállítása a Recovery Services-tárolóból
+A törölt fájlok visszaállításához hajtsa végre a következő lépéseket:
 
-1. Az Azure Portalon keresse meg a *myVault* Recovery Services-tárolók elemet. Az a **áttekintése** panel alatt **biztonsági mentési elemek**, válassza ki az elemek számát.
+1. A Azure Portal keresse meg a *myVault* Recovery Services-tárolók elemét. Az **Áttekintés** panel **biztonsági másolati elemek**területén válassza ki az elemek számát.
 
-    ![Recovery Services tároló myVault biztonsági másolati elemek](./media/oracle-backup-recovery/recovery_service_12.png)
+    ![Recovery Services-tárolók myVault biztonsági másolati elemei](./media/oracle-backup-recovery/recovery_service_12.png)
 
-2. A **biztonsági MENTÉSI elemek száma**, válassza ki az elemek számát.
+2. A **biztonsági másolati elemek**száma területen válassza ki az elemek számát.
 
-    ![Recovery Services-tárolók az Azure virtuális gép biztonsági másolati elemek száma](./media/oracle-backup-recovery/recovery_service_13.png)
+    ![Recovery Services tárolók Azure-beli virtuális gép biztonsági mentési elemeinek száma](./media/oracle-backup-recovery/recovery_service_13.png)
 
-3. Az a **myvm1** panelen kattintson a **fájlhelyreállítás (előzetes verzió)**.
+3. A **Myvm1** panelen kattintson a **File Recovery (előzetes verzió)** elemre.
 
-    ![Képernyőkép a Recovery Services-tárolók helyreállítás lapja](./media/oracle-backup-recovery/recovery_service_14.png)
+    ![Képernyőkép a Recovery Services-tárolók fájljának helyreállítási oldaláról](./media/oracle-backup-recovery/recovery_service_14.png)
 
-4. Az a **fájlhelyreállítás (előzetes verzió)** ablaktáblán kattintson a **szkript letöltése**. Az ügyfélszámítógépen, majd mentse a download (.sh) fájlt egy mappába.
+4. A **fájl-helyreállítás (előzetes verzió)** panelen kattintson a **parancsfájl letöltése**elemre. Ezután mentse a letöltési (. sh) fájlt az ügyfélszámítógép egyik mappájába.
 
-    ![Töltse le a szkript fájlba menti beállításai](./media/oracle-backup-recovery/recovery_service_15.png)
+    ![Parancsfájl-mentési beállítások letöltése](./media/oracle-backup-recovery/recovery_service_15.png)
 
-5. Másolja a .sh-fájlját a virtuális géphez.
+5. Másolja az. sh fájlt a virtuális gépre.
 
-    Az alábbi példa bemutatja, hogyan használhatja a biztonságos másolás (scp) paranccsal helyezze át a fájlt a virtuális Gépet. Is másolhatja a tartalmát a vágólapra, majd illessze be a tartalmát egy új fájlba, amely a virtuális gép be van állítva.
+    Az alábbi példa bemutatja, hogyan helyezheti át a fájlt a virtuális gépre a biztonságos másolás (SCP) parancs használatával. A vágólapra másolhatja is a tartalmat, majd beillesztheti a tartalmat a virtuális gépen beállított új fájlba.
 
     > [!IMPORTANT]
-    > A következő példában győződjön meg arról, hogy frissíti az IP cím és a mappa értékeket. Az értékek képezze le a mappába, ahová mentette a fájlt.
+    > Az alábbi példában ellenőrizze, hogy az IP-cím és a mappa értékét frissíti-e. Az értékeknek arra a mappára kell leképezni, ahová a fájlt mentette.
 
     ```bash
     $ scp Linux_myvm1_xx-xx-2017 xx-xx-xx PM.sh <publicIpAddress>:/<folder>
     ```
-6. A fájl módosítani, hogy a legfelső szintű tulajdonában van.
+6. Módosítsa a fájlt úgy, hogy az a gyökér tulajdonosa legyen.
 
-    A következő példában a fájl módosítása, hogy a legfelső szintű tulajdonában van. Ezután módosítsa az engedélyeket.
+    A következő példában módosítsa a fájlt úgy, hogy az a gyökeréhez legyen rendelve. Ezután módosítsa az engedélyeket.
 
     ```bash 
     $ ssh <publicIpAddress>
@@ -380,7 +379,7 @@ A törölt fájlok visszaállításához kövesse az alábbi lépéseket:
     # chmod 755 /<folder>/Linux_myvm1_xx-xx-2017 xx-xx-xx PM.sh
     # /<folder>/Linux_myvm1_xx-xx-2017 xx-xx-xx PM.sh
     ```
-    Az alábbi példa bemutatja, lásd a fenti szkript futtatása után. Ha van, a folytatás megerősítését kéri, adja meg **Y**.
+    Az alábbi példa azt mutatja be, hogy mit kell látni az előző szkript futtatása után. Ha a rendszer felszólítja a folytatásra, írja be az **Y**értéket.
 
     ```bash
     Microsoft Azure VM Backup - File Recovery
@@ -412,13 +411,13 @@ A törölt fájlok visszaállításához kövesse az alábbi lépéseket:
     Please enter 'q/Q' to exit...
     ```
 
-7. A csatlakoztatott kötetek való hozzáférés ellenőrzése.
+7. A csatlakoztatott kötetekhez való hozzáférés megerősítve.
 
-    Adja meg a kilépéshez **q**, majd keresse meg a csatlakoztatott kötetek. A felvett kötetek listájának létrehozásához parancsot a parancssorba írja be **df -k**.
+    A kilépéshez írja be a **q**kifejezést, majd keresse meg a csatlakoztatott köteteket. A hozzáadott kötetek listájának létrehozásához írja be a következőt a parancssorba: **DF-k**.
 
-    ![A df -k parancs](./media/oracle-backup-recovery/recovery_service_16.png)
+    ![A DF-k parancs](./media/oracle-backup-recovery/recovery_service_16.png)
 
-8. A következő parancsfájl használatával másolja vissza a hiányzó fájlokat a mappák:
+8. A következő szkripttel másolja vissza a hiányzó fájlokat a mappákba:
 
     ```bash
     # cd /root/myVM-2017XXXXXXX/Volume2/u01/app/oracle/fast_recovery_area/CDB1/backupset/2017_xx_xx
@@ -430,7 +429,7 @@ A törölt fájlok visszaállításához kövesse az alábbi lépéseket:
     # cd /u01/app/oracle/oradata/cdb1
     # chown oracle:oinstall *.dbf
     ```
-9. Az alábbi szkriptben RMAN használatával állítsa helyre az adatbázist:
+9. A következő parancsfájlban a Oláh Anna használatával állítsa helyre az adatbázist:
 
     ```bash
     # sudo su - oracle
@@ -442,93 +441,93 @@ A törölt fájlok visszaállításához kövesse az alábbi lépéseket:
     RMAN> SELECT * FROM scott.scott_table;
     ```
     
-10. A lemez leválasztásához.
+10. Válassza le a lemezt.
 
-    Az Azure Portalon az a **fájlhelyreállítás (előzetes verzió)** panelen kattintson a **lemezek leválasztása**.
+    A Azure Portal a **fájl-helyreállítás (előzetes verzió) panelen** kattintson a **lemezek**leválasztása elemre.
 
-    ![Válassza le a lemezek parancs](./media/oracle-backup-recovery/recovery_service_17.png)
+    ![Lemezek leválasztása parancs](./media/oracle-backup-recovery/recovery_service_17.png)
 
-## <a name="restore-the-entire-vm"></a>A teljes virtuális gép helyreállítása
+## <a name="restore-the-entire-vm"></a>A teljes virtuális gép visszaállítása
 
-Ahelyett, hogy a törölt fájlok visszaállítása a Recovery Services-tárolók, visszaállíthatja a teljes virtuális Gépet.
+A törölt fájlok Recovery Services tárolóból való visszaállítása helyett visszaállíthatja a teljes virtuális gépet.
 
-### <a name="step-1-delete-myvm"></a>1. lépés: Törlés myVM
+### <a name="step-1-delete-myvm"></a>1\. lépés: MyVM törlése
 
-*   Az Azure Portalon nyissa meg a **myVM1** tárba, és válassza ki **törlése**.
+*   A Azure Portal nyissa meg a **myVM1** -tárolót, majd válassza a **Törlés**lehetőséget.
 
-    ![Tároló törlése paranccsal](./media/oracle-backup-recovery/recover_vm_01.png)
+    ![Tár törlési parancsa](./media/oracle-backup-recovery/recover_vm_01.png)
 
-### <a name="step-2-recover-the-vm"></a>2. lépés: A virtuális gép helyreállítása
+### <a name="step-2-recover-the-vm"></a>2\. lépés: A virtuális gép helyreállítása
 
-1.  Lépjen a **Recovery Services-tárolók**, majd válassza ki **myVault**.
+1.  Nyissa meg **Recovery Services**-tárolókat, majd válassza a **myVault**lehetőséget.
 
-    ![myVault bejegyzés](./media/oracle-backup-recovery/recover_vm_02.png)
+    ![myVault-bejegyzés](./media/oracle-backup-recovery/recover_vm_02.png)
 
-2.  Az a **áttekintése** panel alatt **biztonsági mentési elemek**, válassza ki az elemek számát.
+2.  Az **Áttekintés** panel **biztonsági másolati elemek**területén válassza ki az elemek számát.
 
-    ![myVault elemek biztonsági mentése](./media/oracle-backup-recovery/recover_vm_03.png)
+    ![elemek biztonsági mentése myVault](./media/oracle-backup-recovery/recover_vm_03.png)
 
-3.  Az a **biztonsági mentési elemek (Azure virtuális gép)** panelen válassza ki **myvm1**.
+3.  A **biztonsági mentési elemek (Azure-beli virtuális gép)** panelen válassza a **myvm1**lehetőséget.
 
-    ![A helyreállítási virtuális gép lap](./media/oracle-backup-recovery/recover_vm_04.png)
+    ![Helyreállítási virtuális gép lapja](./media/oracle-backup-recovery/recover_vm_04.png)
 
-4.  Az a **myvm1** panelen kattintson a három pont (**...** ) gombra, majd **virtuális gép visszaállítása**.
+4.  A **myvm1** panelen kattintson a három pontra ( **..** .), majd a **virtuális gép visszaállítása**gombra.
 
-    ![A restore parancs a virtuális gép](./media/oracle-backup-recovery/recover_vm_05.png)
+    ![VM-parancs visszaállítása](./media/oracle-backup-recovery/recover_vm_05.png)
 
-5.  Az a **visszaállítási pont kiválasztása** panelt, válassza ki a visszaállítani kívánt elemet, és kattintson **OK**.
+5.  A **visszaállítási pont kiválasztása** panelen jelölje ki a visszaállítani kívánt elemet, majd kattintson **az OK**gombra.
 
-    ![A visszaállítási pont kijelölése](./media/oracle-backup-recovery/recover_vm_06.png)
+    ![A visszaállítási pont kiválasztása](./media/oracle-backup-recovery/recover_vm_06.png)
 
-    Ha engedélyezte az alkalmazáskonzisztens biztonsági mentés, egy függőleges kék sáv jelenik meg.
+    Ha engedélyezte az alkalmazás-konzisztens biztonsági mentést, megjelenik egy függőleges kék sáv.
 
-6.  Az a **konfiguráció visszaállítása** panelen válassza ki a virtuális gép nevét, válassza ki az erőforráscsoportot, és kattintson a **OK**.
+6.  A **konfiguráció visszaállítása** panelen jelölje ki a virtuális gép nevét, válassza ki az erőforráscsoportot, majd kattintson az **OK**gombra.
 
-    ![Állítsa vissza a konfigurációs értékek](./media/oracle-backup-recovery/recover_vm_07.png)
+    ![Konfigurációs értékek visszaállítása](./media/oracle-backup-recovery/recover_vm_07.png)
 
-7.  A virtuális gép visszaállításához kattintson a **visszaállítása** gombra.
+7.  A virtuális gép visszaállításához kattintson a **visszaállítás** gombra.
 
-8.  A visszaállítási folyamat állapotának megtekintéséhez kattintson **feladatok**, és kattintson a **biztonsági mentési feladatok**.
+8.  A visszaállítási folyamat állapotának megtekintéséhez kattintson a **feladatok**, majd a **biztonsági mentési feladatok**elemre.
 
-    ![Biztonsági mentési feladatok állapot parancs](./media/oracle-backup-recovery/recover_vm_08.png)
+    ![Biztonsági mentési feladatok állapotának parancsa](./media/oracle-backup-recovery/recover_vm_08.png)
 
-    Az alábbi ábra a visszaállítási folyamat állapotát jeleníti meg:
+    Az alábbi ábrán a visszaállítási folyamat állapota látható:
 
     ![A visszaállítási folyamat állapota](./media/oracle-backup-recovery/recover_vm_09.png)
 
-### <a name="step-3-set-the-public-ip-address"></a>3. lépés: A nyilvános IP-cím beállítása
+### <a name="step-3-set-the-public-ip-address"></a>3\. lépés: A nyilvános IP-cím beállítása
 A virtuális gép visszaállítása után állítsa be a nyilvános IP-címet.
 
-1.  A Keresés mezőbe írja be a **nyilvános IP-cím**.
+1.  A keresőmezőbe írja be a **nyilvános IP-címet**.
 
     ![Nyilvános IP-címek listája](./media/oracle-backup-recovery/create_ip_00.png)
 
-2.  Az a **nyilvános IP-címek** panelen kattintson a **Hozzáadás**. Az a **nyilvános IP-cím létrehozása** panelen a **neve**, válassza ki a nyilvános IP-név. Az **Erőforráscsoport** területen válassza a **Meglévő használata** lehetőséget. Ezt követően kattintson a **Create** (Létrehozás) gombra.
+2.  A **nyilvános IP-címek** panelen kattintson a **Hozzáadás**gombra. A **nyilvános IP-cím létrehozása** panelen a **név**mezőben válassza ki a nyilvános IP-címet. Az **Erőforráscsoport** területen válassza a **Meglévő használata** lehetőséget. Kattintson a **létrehozás**.
 
     ![IP-cím létrehozása](./media/oracle-backup-recovery/create_ip_01.png)
 
-3.  A hálózati adaptert a virtuális gép nyilvános IP-cím társítása, keresése és kiválasztása **myVMip**. Kattintson a **társítása**.
+3.  Ha a nyilvános IP-címet a virtuális gép hálózati adapteréhez szeretné rendelni, keresse meg és válassza ki a **myVMip**. Ezután kattintson a **hozzárendelés**elemre.
 
-    ![IP-cím társítása](./media/oracle-backup-recovery/create_ip_02.png)
+    ![IP-cím hozzárendelése](./media/oracle-backup-recovery/create_ip_02.png)
 
-4.  A **erőforrástípus**válassza **hálózati adapter**. Válassza ki a hálózati adaptert, amely a myVM példány által használt, és kattintson a **OK**.
+4.  Az **erőforrástípus**mezőben válassza a **hálózati adapter**lehetőséget. Válassza ki a myVM-példány által használt hálózati adaptert, majd kattintson **az OK**gombra.
 
-    ![Válassza ki az erőforrás típusa és a hálózati adapter értékek](./media/oracle-backup-recovery/create_ip_03.png)
+    ![Adja meg az erőforrás típusát és a NIC-értékeket](./media/oracle-backup-recovery/create_ip_03.png)
 
-5.  Keresse meg és nyissa meg az, hogy van-e már myVM példányát a portálról. A virtuális Géphez társított IP-cím jelenik meg a myVM **áttekintése** panelen.
+5.  Keresse meg és nyissa meg a portálról portolt myVM-példányt. A virtuális géphez hozzárendelt IP-cím megjelenik a myVM **Áttekintés** paneljén.
 
-    ![IP-címének értékét](./media/oracle-backup-recovery/create_ip_04.png)
+    ![IP-cím értéke](./media/oracle-backup-recovery/create_ip_04.png)
 
-### <a name="step-4-connect-to-the-vm"></a>4. lépés: Kapcsolódás a virtuális Géphez
+### <a name="step-4-connect-to-the-vm"></a>4\. lépés: Kapcsolódás a virtuális géphez
 
-*   A virtuális Géphez való csatlakozáshoz, használja a következő szkriptet:
+*   A virtuális géphez való kapcsolódáshoz használja a következő parancsfájlt:
 
     ```bash 
     ssh <publicIpAddress>
     ```
 
-### <a name="step-5-test-whether-the-database-is-accessible"></a>5. lépés: Ellenőrizze, hogy az adatbázis érhető el
-*   Kisegítő lehetőségek teszteléséhez használja a következő szkriptet:
+### <a name="step-5-test-whether-the-database-is-accessible"></a>5\. lépés: Annak tesztelése, hogy az adatbázis elérhető-e
+*   A kisegítő lehetőségek teszteléséhez használja a következő parancsfájlt:
 
     ```bash 
     $ sudo su - oracle
@@ -537,10 +536,10 @@ A virtuális gép visszaállítása után állítsa be a nyilvános IP-címet.
     ```
 
     > [!IMPORTANT]
-    > Ha az adatbázis **indítási** parancs hibát generál, állítsa helyre az adatbázist, lásd: [6. lépés: az adatbázis helyreállításához használja RMAN](#step-6-optional-use-rman-to-recover-the-database).
+    > Ha az adatbázis- **indítási** parancs hibát generál, az adatbázis helyreállításához tekintse [meg a 6. lépést: Az adatbázis](#step-6-optional-use-rman-to-recover-the-database)helyreállításához használja a Oláh Anna.
 
-### <a name="step-6-optional-use-rman-to-recover-the-database"></a>6. lépés: (Nem kötelező) használata RMAN az adatbázis helyreállítása
-*   Állítsa helyre az adatbázist, használja a következő parancsfájlt:
+### <a name="step-6-optional-use-rman-to-recover-the-database"></a>6\. lépés: Választható A Oláh Anna használata az adatbázis helyreállításához
+*   Az adatbázis helyreállításához használja a következő parancsfájlt:
 
     ```bash
     # sudo su - oracle
@@ -552,11 +551,11 @@ A virtuális gép visszaállítása után állítsa be a nyilvános IP-címet.
     RMAN> SELECT * FROM scott.scott_table;
     ```
 
-A biztonsági mentés és helyreállítás az Oracle Database 12c adatbázis-beli Linux rendszerű virtuális gépen már befejeződött.
+A Oracle Database 12c-adatbázis biztonsági mentése és helyreállítása egy Azure Linux rendszerű virtuális gépen befejeződött.
 
 ## <a name="delete-the-vm"></a>A virtuális gép törlése
 
-Ha már nincs szüksége a virtuális Gépet, a következő paranccsal eltávolítható az erőforráscsoport, a virtuális gép és minden kapcsolódó erőforrás:
+Ha már nincs szüksége a virtuális gépre, a következő paranccsal távolíthatja el az erőforráscsoportot, a virtuális gépet és az összes kapcsolódó erőforrást:
 
 ```azurecli
 az group delete --name myResourceGroup
@@ -564,9 +563,9 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>További lépések
 
-[Oktatóanyag: Magas rendelkezésre állású virtuális gépek létrehozása](../../linux/create-cli-complete.md)
+[Oktatóanyag: Magasan elérhető virtuális gépek létrehozása](../../linux/create-cli-complete.md)
 
-[Ismerje meg a virtuális gép üzembe helyezés az Azure CLI-minták](../../linux/cli-samples.md)
+[A virtuális gépek üzembe helyezésének megismerése Azure CLI-mintákkal](../../linux/cli-samples.md)
 
 
 

@@ -7,11 +7,11 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: zhshang
 ms.openlocfilehash: 28fb3295ef02d508ef04299398a61ea59828df35
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59278836"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60254005"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>Oktatóanyag: Az Azure SignalR Service – hitelesítés az Azure Functions használatával
 
@@ -53,11 +53,11 @@ Azure Functions-alkalmazását helyileg fogja összeállítani és tesztelni. Az
 
 1. Adja meg a következő információkat:
 
-    | Name (Név) | Érték |
+    | Name (Név) | Value |
     |---|---|
     | Erőforrás neve | A SignalR Service-példány egyedi neve |
     | Erőforráscsoport | Hozzon létre egy új erőforráscsoportot, egyedi névvel |
-    | Földrajzi egység | Válasszon ki egy Önhöz közel eső helyet |
+    | Location egység | Válasszon ki egy Önhöz közel eső helyet |
     | Tarifacsomag | Ingyenes |
 
 1. Kattintson a **Create** (Létrehozás) gombra.
@@ -145,7 +145,7 @@ Amikor a csevegőalkalmazás először nyílik meg a böngészőben, szüksége 
 
 1. Adja meg az alábbi információkat:
 
-    | Name (Név) | Érték |
+    | Name (Név) | Value |
     |---|---|
     | Function app folder (Függvényalkalmazás mappája) | Válassza ki a projekt főmappáját |
     | Sablon | HTTP-trigger |
@@ -204,7 +204,7 @@ A webalkalmazásnak egy HTTP API-ra is szüksége lesz, hogy csevegőüzeneteket
 
 1. Adja meg az alábbi információkat:
 
-    | Name (Név) | Érték |
+    | Name (Név) | Value |
     |---|---|
     | Function app folder (Függvényalkalmazás mappája) | válassza ki a projekt főmappáját |
     | Sablon | HTTP-trigger |
@@ -315,12 +315,12 @@ Azure-ban futó függvényalkalmazást egy Azure Storage-fiók szükséges. A we
 
 1. Adja meg a következő információkat:
 
-    | Name (Név) | Érték |
+    | Name (Név) | Value |
     |---|---|
     | Előfizetés | Válassza ki az előfizetést, amely tartalmazza a SignalR Service-példány |
     | Erőforráscsoport | Válassza ki ugyanazt az erőforráscsoportot |
     | Erőforrás neve | A tárfiók egy egyedi nevet |
-    | Földrajzi egység | Válassza ki ugyanazt a helyet, az egyéb erőforrások |
+    | Location egység | Válassza ki ugyanazt a helyet, az egyéb erőforrások |
     | Teljesítmény | Standard |
     | Fióktípus | StorageV2 (általános célú v2) |
     | Replikáció | Helyileg redundáns tárolás (LRS) |
@@ -371,7 +371,7 @@ Az alkalmazás eldöntheti, hogy az egyes üzeneteket minden csatlakoztatott üg
 
 1. Adja meg az alábbi információkat:
 
-    | Name (Név) | Érték |
+    | Name (Név) | Value |
     |---|---|
     | Folder to deploy (Üzembe helyezni kívánt mappa) | Válassza ki a projekt főmappáját |
     | Előfizetés | Válassza ki előfizetését. |
@@ -390,7 +390,7 @@ Az alkalmazás eldöntheti, hogy az egyes üzeneteket minden csatlakoztatott üg
 
 1. Adja meg az alábbi információkat:
 
-    | Name (Név) | Érték |
+    | Name (Név) | Value |
     |---|---|
     | Local settings file (Helyi beállításfájl) | local.settings.json |
     | Előfizetés | Válassza ki előfizetését. |
@@ -449,7 +449,7 @@ A webalkalmazást az Azure Blob Storage statikuswebhely-szolgáltatásával fogj
 
 1. Írja be a következő értékeket:
 
-    | Name (Név) | Érték |
+    | Name (Név) | Value |
     |---|---|
     | Előfizetés | Válassza ki előfizetését. |
     | Tárfiók | Válassza ki a korábban létrehozott tárfiókot |

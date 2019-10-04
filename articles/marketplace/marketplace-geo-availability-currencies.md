@@ -1,26 +1,24 @@
 ---
-title: A földrajzi elérhetőséggel és a pénznem támogatás |} Az Azure
-description: Földrajzi elérhetőség az Azure Marketplace és appsource-ban
+title: Földrajzi Elérhetőség és pénznemek támogatása | Azure
+description: Földrajzi elérhetőség az Azure Marketplace-en és a AppSource-ben
 services: Azure, Marketplace, Compute, Storage, Networking
-documentationcenter: ''
 author: qianw211
-manager: Patrick.Butler
 ms.service: marketplace
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: ellacroi
-ms.openlocfilehash: 5a07ea4d1d27dcc054d64cb4ce8893a13adc4aad
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 344479a270119137a256620304d88f139d0b0322
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60007661"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619969"
 ---
-# <a name="geographic-availability-and-currency-support"></a>A földrajzi elérhetőséggel és a pénznem támogatás
+# <a name="geographic-availability-and-currency-support"></a>Földrajzi Elérhetőség és pénznemek támogatása
 
-Az Azure piactér-beli előfizetések 141 földrajzi területek számára is megvásárolható, számlázási címét a felhasználó által meghatározott, és a tranzakciók 17 pénznemek elvégezhető. A táblázat felsorolja az egyes alábbi támogatott földrajzi hely, a [ISO 3166 kétjegyű alfanumerikus kód](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes), és a hozzárendelt pénznemben.
+Az Azure Marketplace-és AppSource-ajánlatokat az ügyfél számlázási címe által meghatározott 141 földrajzi régiókban lehet megvásárolni, a tranzakciók pedig 17 pénznemben végezhetők el. Az alábbi táblázat felsorolja az egyes támogatott földrajzi helyeket, az [ISO 3166 2 számjegyű alfa-kódot](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)és a hozzárendelt pénznemet.
 
-|   Ország/régió neve               |   ISO-2   |   Currency (Pénznem)   |
+|   Ország/régió neve               |   ISO-2   |   Currency   |
 |-------------------------------------|-----------|--------------|
 | Afganisztán                         | AF        | USD          |
 | Albánia                             | AL        | USD          |
@@ -28,7 +26,7 @@ Az Azure piactér-beli előfizetések 141 földrajzi területek számára is meg
 | Andorra                             | AD        | EUR          |
 | Angola                              | AO        | USD          |
 | Argentína                           | AR        | USD          |
-| Örményország                             | AM        | USD          |
+| Örményország                             | de.        | USD          |
 | Ausztrália                           | AU        | AUD          |
 | Ausztria                             | AT        | EUR          |
 | Azerbajdzsán                          | AZ        | USD          |
@@ -52,19 +50,19 @@ Az Azure piactér-beli előfizetések 141 földrajzi területek számára is meg
 | Chile                               | CL        | USD          |
 | Kolumbia                            | CO        | USD          |
 | Costa Rica                          | CR        | USD          |
-| Côte d’Ivoire                       | CI        | USD          |
+| Côte d'Ivoire                       | CI        | USD          |
 | Horvátország                             | HR        | EUR          |
 | Curaçao                             | CW        | USD          |
 | Ciprus                              | CY        | EUR          |
-| Cseh Köztársaság                      | CZ        | EUR          |
+| Csehország                      | CZ        | EUR          |
 | Dánia                             | DK        | DKK          |
 | Dominikai Köztársaság                  | DO        | USD          |
 | Ecuador                             | EC        | USD          |
 | Egyiptom                               | EG        | USD          |
-| Salvador                         | SV        | USD          |
+| El Salvador                         | SV        | USD          |
 | Észtország                             | EE        | EUR          |
 | Etiópia                            | ET        | USD          |
-| Feröer-szigetek                       | FO        | DKK          |
+| Feröer szigetek                       | UTCÁN        | DKK          |
 | Fidzsi                                | FJ        | AUD          |
 | Finnország                             | FI        | EUR          |
 | Franciaország                              | JK        | EUR          |
@@ -78,7 +76,7 @@ Az Azure piactér-beli előfizetések 141 földrajzi területek számára is meg
 | Magyarország                             | HU        | EUR          |
 | Izland                             | IS        | EUR          |
 | India                               | IN        | INR          |
-| Indonézia                           | ID (Azonosító)        | USD          |
+| Indonézia                           | id        | USD          |
 | Irak                                | IQ        | USD          |
 | Írország                             | IE        | EUR          |
 | Izrael                              | IL        | USD          |
@@ -88,7 +86,7 @@ Az Azure piactér-beli előfizetések 141 földrajzi területek számára is meg
 | Jordánia                              | JO        | USD          |
 | Kazahsztán                          | KZ        | USD          |
 | Kenya                               | KE        | USD          |
-| Koreai (India)                       | KR        | KRW          |
+| Dél-Korea                       | KR        | KRW          |
 | Kuvait                              | KW        | USD          |
 | Kirgizisztán                          | KG        | USD          |
 | Lettország                              | LV        | EUR          |
@@ -117,7 +115,7 @@ Az Azure piactér-beli előfizetések 141 földrajzi területek számára is meg
 | Norvégia                              | NO        | NOK          |
 | Omán                                | OM        | USD          |
 | Pakisztán                            | PK        | USD          |
-| Palesztin                           | PS        | USD          |
+| Palesztin Hatóság               | PS        | USD          |
 | Panama                              | PA        | USD          |
 | Paraguay                            | PY        | USD          |
 | Peru                                | PE        | USD          |
@@ -149,7 +147,7 @@ Az Azure piactér-beli előfizetések 141 földrajzi területek számára is meg
 | Tunézia                             | TN        | USD          |
 | Törökország                              | TR        | USD          |
 | Türkmenisztán                        | TM        | USD          |
-| Vatikánváros (Szentszék)             | VA        | EUR          |
+| Vatikáni Városállam (Szentszék)             | VA        | EUR          |
 | Amerikai Virgin-szigetek | VI        | USD          |
 | Uganda                              | UG        | USD          |
 | Ukrajna                             | UA        | USD          |
@@ -160,9 +158,9 @@ Az Azure piactér-beli előfizetések 141 földrajzi területek számára is meg
 | Üzbegisztán                          | UZ        | USD          |
 | Venezuela                           | VE        | USD          |
 | Vietnam                             | VN        | USD          |
-| Jemen                               | YE        | USD          |
+| Jemen                               | TI        | USD          |
 | Zambia                              | ZM        | USD          |
 | Zimbabwe                            | ZW        | USD          |
 |   |   |   |
 
-\* Ügyfelek Brazíliában a Marketplace-en keresztül Cloud Solution Providers (CSP) USD-t használja.
+\*Brazíliában a felhőalapú megoldások szolgáltatói (CSP) használatával a piactér USD-t használ.

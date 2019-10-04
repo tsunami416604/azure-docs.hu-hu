@@ -1,6 +1,6 @@
 ---
-title: Kötegelt tesztelés
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Batch-tesztelés – LUIS
+titleSuffix: Azure Cognitive Services
 description: Tesztelés a batch segítségével folyamatosan dolgozunk azon, pontosítsa és javítható a beszédfelismerés annak az alkalmazás.
 services: cognitive-services
 author: diberry
@@ -9,33 +9,33 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/29/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: acb561970b6a8576d1219fc15758e21a3032c9e5
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: b962fc32cdcde0509cfa60d105022bb208633ae3
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59528152"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639303"
 ---
-# <a name="batch-testing-with-1000-utterances-in-luis-portal"></a>A LUIS-portál 1000 utterances tesztelésével Batch
+# <a name="batch-testing-with-1000-utterances-in-luis-portal"></a>Batch-tesztelés a 1000 hosszúságú kimondott szöveg a LUIS portálon
 
-Batch tesztelés érvényesíti a [aktív](luis-concept-version.md#active-version) betanított modell méréséhez az előrejelzés pontosságát. Az egyes szándékot és entitás pontosságát megtekintése a diagramon az aktuális betanított modell egy batch-teszt segítségével. Tekintse át a batch-vizsgálati eredmények pontosságának, például további példa beszédmódok hozzáadása megjelölésű, ha az alkalmazás gyakran nem tudja azonosítani a helyes cél növelése érdekében a megfelelő műveletet.
+Batch tesztelés érvényesíti a [aktív](luis-concept-version.md#active-version) betanított modell méréséhez az előrejelzés pontosságát. A Batch-tesztek segítségével megtekintheti az egyes szándékok és entitások pontosságát az aktuálisan betanított modellben, és megjelenítheti az eredményeket egy diagrammal. Tekintse át a batch-vizsgálati eredmények pontosságának, például további példa beszédmódok hozzáadása megjelölésű, ha az alkalmazás gyakran nem tudja azonosítani a helyes cél növelése érdekében a megfelelő műveletet.
 
 ## <a name="group-data-for-batch-test"></a>A batch-teszt csoport adatai
 
-Fontos, hogy batch tesztelésére utterances nem ismeri a LUIS. Ha utterances az adatkészlet, megcímkézzen három csoportokba oszthatja: utterances megjelölésű hozzáadott, a közzétett végpontról érkezett utterances és használt batch-próbára LUIS, ha be van tanítva kimondott szöveg. 
+Fontos, hogy batch tesztelésére utterances nem ismeri a LUIS. Ha rendelkezik hosszúságú kimondott szöveg, ossza fel a hosszúságú kimondott szöveg három csoportba: példa a hosszúságú kimondott szöveg hozzáadására, a közzétett végponttól kapott hosszúságú kimondott szöveg, valamint a LUIS-teszt betanítása után használt hosszúságú kimondott szöveg. 
 
-## <a name="a-dataset-of-utterances"></a>Egy adatkészlet a kimondott szöveg
+## <a name="a-data-set-of-utterances"></a>Hosszúságú kimondott szöveg adathalmaza
 
-Küldje el a fájlt egy kötegfájlban utterances, más néven egy *adatkészlet*, kötegelt teszteléséhez. Az adatkészlet maximum 1000 feliratú tartalmazó JSON-formátumú fájlt **egyszer előforduló** kimondott szöveg. Legfeljebb 10 adatkészletek tesztelheti egy alkalmazásban. Ha szeretne további tesztelése, adatkészlet törlése, és adja hozzá az egy újat.
+A Batch-teszteléshez elküldheti az adatkészletként ismert hosszúságú kimondott szöveg batch-fájlt. Az adatkészlet egy JSON-formátumú fájl, amely legfeljebb 1 000 címkézett, **nem duplikált** hosszúságú kimondott szöveg tartalmaz. Egy alkalmazásban akár 10 adatkészletet is kipróbálhat. Ha további tesztelésre van szüksége, töröljön egy adatkészletet, majd adjon hozzá egy újat.
 
 |**Szabályok**|
 |--|
-|* Nincsenek ismétlődő kimondott szöveg|
+|\* Nincsenek ismétlődő kimondott szöveg|
 |1000 utterances vagy kevesebb|
 
-* Ismétlődések karakterlánc pontos egyezést, nem a rendszer először tokenekre bontott egyezéstípust minősülnek. 
+\* Ismétlődések karakterlánc pontos egyezést, nem a rendszer először tokenekre bontott egyezéstípust minősülnek. 
 
 ## <a name="entities-allowed-in-batch-tests"></a>Entitások engedélyezett a batch-tesztek
 
@@ -48,7 +48,7 @@ A modellben az egyéni entitások jelennek meg a batch teszt entitások szűrő 
 
 A kötegfájl utterances áll. Minden kimondásakor rendelkeznie kell egy várt szándék előrejelzési együtt bármely [gép megismert entitások](luis-concept-entity-types.md#types-of-entities) várhatóan észlelhető. 
 
-## <a name="batch-syntax-template-for-intents-with-entities"></a>A Batch szintaxis sablon szándékok és entitások
+## <a name="batch-syntax-template-for-intents-with-entities"></a>Batch-szintaxis sablon az entitásokkal való leképezéshez
 
 Az alábbi sablon használatával indítsa el a parancsfájlba:
 
@@ -78,9 +78,9 @@ A szkript a **startPos** és **endPos** megjegyezni elején és végén egy enti
 
 [!INCLUDE [Entity roles in batch testing - currently not supported](../../../includes/cognitive-services-luis-roles-not-supported-in-batch-testing.md)]
 
-## <a name="batch-syntax-template-for-intents-without-entities"></a>A Batch szintaxis sablon nélkül entitások leképezések
+## <a name="batch-syntax-template-for-intents-without-entities"></a>Batch-szintaxis sablon az entitások nélküli leképezésekhez
 
-Az alábbi sablon használatával indítsa el a kötegfájlt entitások nélkül:
+A következő sablonnal elindíthatja a batch-fájlt entitások nélkül:
 
 ```JSON
 [
@@ -92,7 +92,7 @@ Az alábbi sablon használatával indítsa el a kötegfájlt entitások nélkül
 ]
 ```
 
-Ha nem szeretné tesztelni az entitások, például a `entities` tulajdonságot, és állítsa be az üres tömbként `[]`.
+Ha nem szeretne entitásokat tesztelni, foglalja bele a `entities` tulajdonságot, és állítsa üres `[]`tömbként az értéket.
 
 
 ## <a name="common-errors-importing-a-batch"></a>Gyakori hibák a batch importálása
@@ -106,7 +106,7 @@ Gyakori hibák a következők:
 
 ## <a name="batch-test-state"></a>Batch-teszt állapota
 
-A LUIS minden adathalmaz utolsó teszt állapotát követi nyomon. Ez magában foglalja a legutóbbi futtatás mérete (a köteg utterances száma), dátum, és a legutóbbi eredmény (utterances sikeresen előre jelzett száma).
+LUIS az egyes adathalmazok utolsó tesztelésének állapotát követi nyomon. Ez magában foglalja a legutóbbi futtatás mérete (a köteg utterances száma), dátum, és a legutóbbi eredmény (utterances sikeresen előre jelzett száma).
 
 <a name="sections-of-the-results-chart"></a>
 
@@ -114,7 +114,7 @@ A LUIS minden adathalmaz utolsó teszt állapotát követi nyomon. Ez magában f
 
 A batch-vizsgálat eredményének a pontdiagram grafikon, egy hiba mátrix néven. Ez a diagram a batch-fájlt és az aktuális modell előre jelzett szándékot és entitások megcímkézzen 4-módon összehasonlítása. 
 
-Az adatpontok a **hamis pozitív** és **téves negatív** szakaszok jelzi a hibákat, amelyeket meg kell vizsgálni. Összes adatpont esetén a **valódi pozitívak** és **igaz negatív** részei, akkor az alkalmazás pontossága tökéletes megoldás az adatkészlethez.
+Az adatpontok a **hamis pozitív** és **téves negatív** szakaszok jelzi a hibákat, amelyeket meg kell vizsgálni. Ha az összes adatpont a **valódi pozitív** és **igaz negatív** szakaszban van, akkor az alkalmazás pontossága tökéletes ezen az adathalmazon.
 
 ![Diagram négy részből áll](./media/luis-concept-batch-test/chart-sections.png)
 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: d3917f65d8be08d6355013393f6c6675ea6c7fc5
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58619441"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61131815"
 ---
 # <a name="analyze-your-media-using-the-azure-portal"></a>Médiatartalmak elemzése az Azure Portal használatával 
 > [!NOTE]
@@ -53,7 +53,7 @@ A **Azure Media Indexer** médiafeldolgozót lehetővé teszi, hogy az adathordo
 ### <a name="language"></a>Nyelv
 A multimédiás fájlban ismeri fel a természetes nyelv. Például angol vagy spanyol. 
 
-### <a name="captions"></a>Akadálymentes feliratok
+### <a name="captions"></a>akadálymentes feliratok
 Kiválaszthatja egy a tartalomból generált felirat formátuma. Egy indexelési feladat feliratfájlok hozhat létre a következő formátumban:  
 
 * **SAMI**
@@ -65,7 +65,7 @@ Ezek a formátumok a fájlok használhatók elérhetővé a hang- és videofájl
 ### <a name="aib-file"></a>AIB-fájl
 Válassza ezt a lehetőséget, ha szeretné létrehozni a hang Index Blob fájlt, és az egyéni SQL Server ifilterrel való használatra. További információkért lásd: [ez](https://azure.microsoft.com/blog/using-aib-files-with-azure-media-indexer-and-sql-server/) blog.
 
-### <a name="keywords"></a>Kulcsszavak
+### <a name="keywords"></a>a kulcsszavak
 Válassza ezt a lehetőséget, ha szeretne egy kulcsszavak XML-fájl létrehozásához. Ez a fájl tartalmazza, gyakorisági és eltérési információkkal együtt a beszédtartalomból kinyert kulcsszavakat.
 
 ### <a name="job-name"></a>Feladat neve
@@ -136,7 +136,7 @@ A processzor segítségével észlelheti a potenciális felnőtt és szexuális 
 
 ![Mérsékelt videók](./media/media-services-portal-analyze/media-services-portal-analyze-content-moderator.PNG)
 
-### <a name="version"></a>Verzió 
+### <a name="version"></a>Version 
 Használja a "2.0-s".
 
 ### <a name="mode"></a>Mód

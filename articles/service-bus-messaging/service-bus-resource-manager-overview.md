@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 09/11/2018
 ms.author: spelluru
 ms.openlocfilehash: 196b00f1268eada20d0e35473dc6eb43c9e48df6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59045269"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66111136"
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>Hozzon létre a Service Bus-erőforrások Azure Resource Manager-sablonok használatával
 

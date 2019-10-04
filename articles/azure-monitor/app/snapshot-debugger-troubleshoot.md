@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 03/07/2019
 ms.author: mbullwin
-ms.openlocfilehash: bf19d4f5ce60411413c21fce12f9fe9d2f391bf1
-ms.sourcegitcommit: f596d88d776a3699f8c8cf98415eb874187e2a48
+ms.openlocfilehash: 25ccf20fc78a9ec00d4dfe23a60e824e96d12945
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2019
-ms.locfileid: "58094939"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444553"
 ---
 # <a id="troubleshooting"></a> Application Insights Snapshot Debugger engedélyezése és pillanatképek megtekintése kapcsolatos problémák elhárítása
 Ha engedélyezve van az Application Insights Snapshot Debugger az alkalmazáshoz, de nem jelennek meg a kivételek pillanatképeinek, ezek az utasítások segítségével hibaelhárítása. Számos különféle oka lehet, hogy miért pillanatképeket a rendszer nem hozza létre lehet. Egyes gyakori oka lehet az pillanatkép állapot-ellenőrzés futtatása.
@@ -38,6 +38,10 @@ Ha ez nem oldja meg a problémát, majd tekintse meg a következő manuális hib
 ## <a name="verify-the-instrumentation-key"></a>A kialakítási kulcs ellenőrzése
 
 Ellenőrizze, hogy a megfelelő kialakítási kulcsot használ a közzétett alkalmazásban. Általában a kialakítási kulcs az ApplicationInsights.config fájlban olvasható. Ellenőrizze, hogy értéke ugyanaz, mint a rendszerállapotkulcsot az Application Insights-erőforrás számára, a portálon.
+
+## <a name="preview-versions-of-net-core"></a>A .NET Core előzetes verziók
+Ha az alkalmazás a .NET Core előzetes verzióját használja, és a pillanatkép-hibakereső keresztül lett engedélyezve az [Application Insights panelen](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json) a portálon, majd Snapshot Debugger nem indul el. Kövesse az utasításokat, [Snapshot Debugger engedélyezése más környezetek](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) először felvenni a [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet-csomagot az alkalmazásban ***emellett*** keresztül engedélyezését a [Application Insights panelen](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json).
+
 
 ## <a name="upgrade-to-the-latest-version-of-the-nuget-package"></a>A legújabb verzióra a NuGet-csomag frissítése
 

@@ -3,8 +3,8 @@ title: Önkiszolgáló alkalmazás-hozzáférés probléma |} A Microsoft Docs
 description: Az önkiszolgáló alkalmazás-hozzáférés kapcsolatos problémák elhárítása
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: celested
+ms.author: mimart
 ms.reviewer: japere,asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd3ae06c42452d425f041543715336827048ccb2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a981dfb1d72c21eccf2ad7119ea219114ed15aed
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58076445"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65784278"
 ---
 # <a name="problem-using-self-service-application-access"></a>A probléma önkiszolgáló alkalmazás-hozzáférés
 

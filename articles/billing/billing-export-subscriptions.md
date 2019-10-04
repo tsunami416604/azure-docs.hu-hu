@@ -1,6 +1,6 @@
 ---
-title: Az Azure-előfizetés felső szintű adatainak exportálása |} A Microsoft Docs
-description: Bemutatja, hogyan tekintheti meg az összes Azure-előfizetés azonosítókat a fiókjához társított.
+title: Az Azure-előfizetés legfelső szintű adatainak exportálása | Microsoft Docs
+description: Ez a cikk azt mutatja be, hogyan tekintheti meg a fiókjához társított összes Azure-előfizetési azonosítót.
 keywords: ''
 services: billing
 documentationcenter: ''
@@ -16,23 +16,23 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: banders
 ms.openlocfilehash: 8a3d1a3a6b1dce1d729942715bbe5962837ff093
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57532133"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "60918792"
 ---
-# <a name="export-and-view-your-top-level-subscription-information"></a>Exportálás és a legfelső szintű előfizetés adatainak megtekintése
-Ha szeretne az előfizetés azonosítókat a felhasználói hitelesítő adatokhoz tartozó megtekintése [töltse le egy .JSON kiterjesztésű fájlt, amely az előfizetés adatait az Azure Account Center](https://account.azure.com/subscriptions/download).
+# <a name="export-and-view-your-top-level-subscription-information"></a>Az előfizetés legfelső szintű adatainak exportálása és megtekintése
+Ha meg szeretné tekinteni a felhasználói hitelesítő adataihoz tartozó előfizetési azonosítókat, [töltse le az előfizetési adatait tartalmazó .json fájlt az Azure Fiókközpontból](https://account.azure.com/subscriptions/download).
 
 [!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
-A letöltött .JSON kiterjesztésű fájlt a következő információkat biztosítja:
-- E-mail: A fiókjához társított e-mail-cím.
-- PUID azonosítója: Az Ön számlázási fiókjához tartozó egyedi azonosítója.
-- SubscriptionIds: A fiókjához, előfizetés-azonosító. a felsorolt tartozó előfizetések listája
+A letöltött .json fájl az alábbi adatokat tartalmazza:
+- Email: A fiókjához társított e-mail-cím.
+- Puid: A számlázási fiókjához társított egyedi azonosító.
+- SubscriptionIds: A fiókhoz tartozó előfizetések listája az előfizetési azonosítók szerint felsorolva.
 
-### <a name="subscriptionsjson-sample"></a>Subscriptions.JSON minta
+### <a name="subscriptionsjson-sample"></a>Példa subscriptions.json fájlra
 
 ```json
 {

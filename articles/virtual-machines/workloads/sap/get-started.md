@@ -1,129 +1,117 @@
 ---
-title: Ismerkedés az Azure virtuális gépeken SAP |} A Microsoft Docs
-description: Ismerje meg a virtuális gépek (VM) a Microsoft Azure-ban futó SAP-megoldások
+title: Ismerkedés az SAP Azure-beli virtuális gépeken való használatába | Microsoft Docs
+description: A virtuális gépeken (VM) futó SAP-megoldások ismertetése Microsoft Azure
 services: virtual-machines-linux
 documentationcenter: ''
 author: msjuergent
-manager: patfilot
+manager: bburns
 editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: ad8e5c75-0cf6-4564-ae62-ea1246b4e5f2
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/10/2019
+ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c22715434693abd5cebdc5ffd196a0e39b227d1b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ab6139e1f87938edaa0a8a94453faa213d39e23f
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698509"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719008"
 ---
-# <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Az Azure-üzemeltetése és futtatása SAP munkaterhelés-forgatókönyvek
+# <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Az Azure használata az SAP munkaterhelés-forgatókönyvek üzemeltetéséhez és futtatásához
 
-A Microsoft Azure használatakor megbízhatóan futtathatja az üzleti szempontból alapvető fontosságú SAP számítási feladatok és forgatókönyvek egy skálázható, kompatibilis és vállalati környezetekben kipróbált platformon. Get, a skálázhatóságot, rugalmasságot és megtakarítás az Azure. Között a Microsoft és az SAP kiterjesztett partneri futtatható SAP-alkalmazások az Azure-beli fejlesztési és tesztelési és éles környezetekben, és mindehhez teljes körű támogatást. Az SAP Netweavertől az SAP S/4HANA, SAP BI, a Windows, Linux- és SAP HANA, SQL, állunk jelez.
+A Microsoft Azure használatakor megbízhatóan futtathatja a kritikus fontosságú SAP-munkaterheléseket és forgatókönyveket egy skálázható, megfelelő és nagyvállalati használatra kipróbált platformon. Az Azure méretezhetőségét, rugalmasságát és költségmegtakarítását is elérheti. A Microsoft és az SAP közötti kibővített partneri együttműködés révén az Azure-ban fejlesztési és tesztelési és éles környezetben is futtathat SAP-alkalmazásokat, és teljes mértékben támogatott. Az SAP NetWeavertól az SAP S/4HANA, a Linuxon futó SAP BI-tól a Windowshoz, és SAP HANA az SQL-hez.
 
-SAP NetWeaver-forgatókönyvek az Azure-ban a különböző DBMS-üzemeltetési mellett egyéb SAP munkaterhelés-forgatókönyvek, például az SAP bi-ban az Azure-ban is üzemeltethet. 
+Az SAP NetWeaver-forgatókönyvek az Azure-beli különböző adatbázis-kezelőn kívül más SAP-munkaterhelési forgatókönyveket is tartalmazhatnak, például az Azure-beli SAP BI-t. 
 
-Az egyedi-e az SAP Hana Azure-ajánlat, amely az Azure közötti. Ahhoz, hogy több memóriát és CPU erőforrás-erőforrás-igényes SAP forgatókönyvekről, az SAP HANA üzemeltető, az Azure kínál operációs rendszer nélküli ügyfél dedikált hardver használata. Használja ezt a megoldást az SAP HANA üzemelő példánya, amely akár 24 TB (120 TB-os horizontális felskálázás) memóriát igényelnek az S/4HANA vagy egyéb SAP HANA számítási feladatok futtatásához. 
+Az Azure SAP HANA-hoz való egyedisége egy olyan ajánlat, amely az Azure-t egymástól függetlenül állítja be. Ahhoz, hogy több memóriát és CPU-erőforrást igénylő SAP-forgatókönyveket lehessen üzemeltetni, amelyek SAP HANA, az Azure az ügyfél által dedikált operációs rendszer nélküli hardver használatát kínálja. Ezzel a megoldással olyan SAP HANA üzemelő példányokat futtathat, amelyek akár 24 TB (120 – TB kibővített) memóriát igényelnek az S/4HANA vagy más SAP HANA számítási feladatokhoz. 
 
-SAP munkaterhelés-forgatókönyvek az Azure-beli futtató hozhat létre identitásintegráció és egyszeri bejelentkezés követelményeinek. Ez a helyzet akkor fordulhat elő, gyorsjavításainak SAP és SAP-t-a szoftverszolgáltatások (SaaS) vagy a platform--szolgáltatásként (PaaS) ajánlatok az Azure Active Directory (Azure AD) használatakor. Az ilyen integrációt és az egyszeri bejelentkezéses forgatókönyvek használatához Azure AD-vel listáját és az SAP-entitások leírt, és részletes ismertetését lásd: a szakasz "AAD SAP-identitásintegráció és egyszeri bejelentkezést."
+Az Azure SAP munkaterhelés-forgatókönyvek üzemeltetése az identitás-integrációra és az egyszeri bejelentkezésre vonatkozó követelményeket is képes létrehozni. Ez a helyzet akkor fordulhat elő, ha Azure Active Directory (Azure AD) használatával csatlakozik a különböző SAP-összetevőkhöz és az SAP-szolgáltatásokhoz (SaaS) vagy a szolgáltatásként kínált platformokhoz. Az Azure AD-val és az SAP-entitásokkal kapcsolatos ilyen integrációs és egyszeri bejelentkezési forgatókönyvek listáját a "HRE SAP Identity Integration és az egyszeri bejelentkezés" című szakaszban ismertetjük és dokumentáljuk.
 
-## <a name="latest-changes"></a>Legutóbbi módosítások
-
-- Kiadása [Azure HANA nagyméretű példányok szabályozhatja az Azure Portalon keresztül](hana-li-portal.md)
-
-- Kiadása [magas rendelkezésre állás az SAP NetWeaver SUSE Linux Enterprise Server az Azure NetApp Files SAP alkalmazások az Azure virtuális gépeken](high-availability-guide-suse-netapp-files.md)
-
-- A pontosítása **Linux operációs rendszer paraméter net.ipv4.tcp_timestamps** beállítások együtt egy Azure-terheléselosztó
-
-- Kiadása [SAP számítási feladatok konfigurációk az Azure rendelkezésre állási zónák](sap-ha-availability-zones.md)
-
-- Kiadása [SAP számítási feladatok tervezési és telepítési ellenőrzőlista](sap-deployment-checklist.md)
-
-
+## <a name="changes-to-the-sap-workload-section"></a>Az SAP munkaterhelés szakasz változásai
+Az SAP on Azure munkaterhelés című szakaszban szereplő dokumentumok módosításai a cikk végén találhatók.
 
 
 ## <a name="sap-hana-on-azure-large-instances"></a>SAP HANA az Azure-ban (nagyméretű példányok)
 
-A dokumentumok egy sorozat végigvezeti az SAP HANA az Azure-ban (nagyméretű példányok), vagy röviden, nagyméretű HANA-példányokhoz. A HANA nagyméretű példányok az alábbi területeken információkért lásd:
+A dokumentumok egy sorozata az Azure-ban (nagyméretű példányokon), vagy rövid, HANA nagyméretű példányokon SAP HANA. A HANA Large instances következő területeivel kapcsolatos információkért lásd:
 
-- [Az SAP HANA az Azure-ban (nagyméretű példányok) áttekintése](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
-- [Az SAP HANA az Azure-ban (nagyméretű példányok) architektúrája](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-architecture)
-- [Infrastruktúra és kapcsolódás az Azure-ban (nagyméretű példányok) SAP Hana-hoz](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-infrastructure-connectivity)
-- [Az SAP HANA telepítése az Azure-ban (nagyméretű példányok)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-installation)
-- [Az Azure-ban (nagyméretű példányok) SAP HANA magas rendelkezésre állás és vészhelyreállítás helyreállítási](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)
-- [Hibaelhárítás és figyelés SAP HANA az Azure-ban (nagyméretű példányok)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/troubleshooting-monitoring)
+- [Az Azure-beli SAP HANA áttekintése (nagyméretű példányok)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
+- [A SAP HANA architektúrája az Azure-ban (nagyméretű példányok)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-architecture)
+- [Infrastruktúra és kapcsolódás az Azure-SAP HANAhoz (nagyméretű példányok)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-infrastructure-connectivity)
+- [SAP HANA telepítése az Azure-ban (nagyméretű példányok)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-installation)
+- [A SAP HANA magas rendelkezésre állása és vész-helyreállítása az Azure-ban (nagyméretű példányok)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)
+- [Az Azure-beli SAP HANA hibakeresése és figyelése (nagyméretű példányok)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/troubleshooting-monitoring)
 
 Következő lépések:
 
-- Olvasási [áttekintése és architektúrája az SAP HANA az Azure-ban (nagyméretű példányok)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
+- [A SAP HANA áttekintése és architektúrája az Azure-ban (nagyméretű példányok)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
 
 
 
 ## <a name="sap-hana-on-azure-virtual-machines"></a>SAP HANA Azure-beli virtuális gépeken
-A dokumentáció ezen szakasza az SAP Hana különböző szempontokat ismerteti. Egy előfeltétel az egyszerű szolgáltatások Azure az Azure IaaS alapvető szolgáltatásokat nyújtó tisztában kell lennie. Ezért létre kell az Azure számítási, tárolási és hálózatkezelési ismerete. Az e számos kezeli az SAP NetWeaver kapcsolatos [Azure kapacitástervezési útmutató](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide). 
+A dokumentáció ezen szakasza a SAP HANA különböző szempontjait ismerteti. Előfeltételként ismernie kell az Azure legfontosabb szolgáltatásait, amelyek az Azure IaaS általános szolgáltatásait biztosítják. Ezért az Azure számítási, tárolási és hálózatkezelési ismereteire van szüksége. Ezeknek a témaköröknek a kezelése az SAP NetWeaver-hez kapcsolódó [Azure tervezési útmutatóban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)történik. 
 
-Az Azure-beli HANA információkért lásd: a következő cikkeket, és azok subarticles:
+Az Azure-beli HANA-ról további információt a következő cikkekben és alcikkeiben talál:
 
-- [Rövid útmutató: Egypéldányos SAP HANA az Azure virtuális gépek manuális telepítése](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-get-started)
-- [SAP S/4HANA vagy BW/4hana-t az Azure-ban üzembe helyezése](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h)
+- [Rövid útmutató: Egypéldányos SAP HANA manuális telepítése Azure-beli virtuális gépeken](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-get-started)
+- [SAP S/4HANA vagy BW/4HANA üzembe helyezése az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h)
 - [SAP HANA infrastruktúrakonfigurációk és -műveletek az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)
-- [SAP HANA magas rendelkezésre állás az Azure-beli virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview)
-- [SAP HANA rendelkezésre állási egy Azure-régióban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-one-region)
-- [SAP HANA rendelkezésre állása az Azure-régiók](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-across-regions)
-- [Azure virtuális gépeken futó SAP Hana magas rendelkezésre állás](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability)
-- [Azure virtuális gépeken futó SAP Hana biztonsági mentési útmutató](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide)
-- [Az SAP HANA az Azure Backup a fájlok szintjén](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-file-level)
-- [Tárolási pillanatképeken alapuló SAP HANA biztonsági mentés](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-storage-snapshots)
+- [SAP HANA magas rendelkezésre állás az Azure Virtual Machines szolgáltatásban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview)
+- [SAP HANA rendelkezésre állás egy Azure-régión belül](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-one-region)
+- [SAP HANA rendelkezésre állás Azure-régiók között](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-across-regions)
+- [SAP HANA magas rendelkezésre állása Azure-beli virtuális gépeken](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability)
+- [Biztonsági mentési útmutató Azure-beli virtuális gépek SAP HANAához](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide)
+- [SAP HANA Azure Backup a fájl szintjén](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-file-level)
+- [SAP HANA biztonsági mentés tárolási Pillanatképek alapján](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-storage-snapshots)
 
  
 
-## <a name="sap-netweaver-deployed-on-azure-virtual-machines"></a>SAP NetWeaver üzembe helyezett Azure-beli virtuális gépeken
-Ez a szakasz felsorolja az SAP NetWeaver és az Azure-ban egy üzleti tervezési és telepítési dokumentációját. A dokumentáció összpontosít az alapokat, és nem a HANA-adatbázisok használata az Azure-ban az SAP számítási feladatok. A dokumentumok és a magas rendelkezésre állású cikkeket is is alapját HANA magas rendelkezésre állás az Azure-ban, például:
+## <a name="sap-netweaver-deployed-on-azure-virtual-machines"></a>Azure-beli virtuális gépeken üzembe helyezett SAP NetWeaver
+Ez a szakasz az SAP NetWeaver és az Azure-beli Business One tervezési és üzembe helyezési dokumentációját sorolja fel. A dokumentáció az Azure-beli SAP-munkaterheléssel rendelkező, nem HANA-adatbázisok alapjaira és használatára koncentrál. A magas rendelkezésre állást biztosító dokumentumok és cikkek a HANA magas rendelkezésre állásának alapja is az Azure-ban, például:
 
-- [SAP Business One Azure-beli virtuális gépeken](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/business-one-azure)
-- [SAP IDES EHP7 SP3 telepítése a SAP ERP 6.0 az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-ides-erp6-erp7-sp3-sql)
-- [SAP NetWeaver futtatása Microsoft Azure SUSE Linux rendszerű virtuális gépeken](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/suse-quickstart)
-- [Az Azure virtuális gépek tervezése és megvalósítása SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)
-- [Az SAP NetWeaver számára az Azure virtuális gépek üzembe helyezése](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/deployment-guide)
-- [Egy többrétegű SAP NetWeaver alkalmazás központi telepítésének védeni a Site Recovery használatával](https://docs.microsoft.com/azure/site-recovery/site-recovery-sap)
+- [SAP Business One az Azure Virtual Machines szolgáltatásban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/business-one-azure)
+- [SAP ide EHP7 SP3 telepítése SAP ERP 6,0-hez az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-ides-erp6-erp7-sp3-sql)
+- [Az SAP NetWeaver futtatása Microsoft Azure SUSE Linux rendszerű virtuális gépeken](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/suse-quickstart)
+- [Azure Virtual Machines az SAP NetWeaver tervezése és megvalósítása](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)
+- [Azure Virtual Machines üzembe helyezés az SAP NetWeaver-ben](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/deployment-guide)
+- [Többplatformos SAP NetWeaver-alkalmazások telepítésének biztosítása Site Recovery használatával](https://docs.microsoft.com/azure/site-recovery/site-recovery-sap)
 - [Az Azure SAP LaMa összekötője](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/lama-installation)
 
-Az SAP számítási feladatok Azure-ban nem HANA adatbázisokat kapcsolatos tudnivalókat lásd:
+Az Azure-beli SAP-munkaterhelések keretében nem HANA-adatbázisokkal kapcsolatos információkért lásd:
 
-- [Az SAP számítási feladatok Azure virtuális gépek DBMS üzembe szempontjai](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)
-- [SAP NetWeaver az SQL Server Azure virtuális gépek DBMS üzembe helyezése](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_sqlserver)
+- [Az Azure Virtual Machines adatbázis-kezelő üzembe helyezésének szempontjai az SAP-munkaterheléshez](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)
+- [SQL Server Azure Virtual Machines adatbázis-kezelő rendszerbe állítás az SAP NetWeaver számára](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_sqlserver)
 - [Oracle Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_oracle)
 - [IBM DB2 Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_ibm)
 - [SAP ASE Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_sapase)
-- [Azure virtuális gépeken SAP MaxDB, az élő gyorsítótárat és a webtartalom-kiszolgáló üzembe helyezés](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_maxdb)
+- [SAP-MaxDB, élő gyorsítótár és a Content Server üzembe helyezése Azure-beli virtuális gépeken](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_maxdb)
 
-Információ az SAP HANA-adatbázisok az Azure-ban című témakör "Az SAP HANA Azure-beli virtuális gépeken."
+További információ az Azure-beli SAP HANA adatbázisokról: "SAP HANA az Azure Virtual Machines szolgáltatásban" című rész.
 
-Információk a magas rendelkezésre állás az SAP számítási feladatok az Azure-ban::
+Az Azure-beli SAP-munkaterhelések magas rendelkezésre állásáról további információt a következő témakörben talál:
 
-- [Az Azure virtuális gépek magas rendelkezésre állás az SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-start)
+- [Azure Virtual Machines magas rendelkezésre állás az SAP NetWeaver számára](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-start)
 
-Ez a dokumentum különböző architektúra és a forgatókönyv más dokumentumok mutat. Újabb forgatókönyv-dokumentumokban mutató részletes műszaki dokumentáció, amely leírja, telepítését és konfigurálását a másik magas rendelkezésre állású módszerek állnak rendelkezésre. A különböző dokumentumokon, amelyek bemutatják a létrehozásához, és magas rendelkezésre állás az SAP NetWeaver számítási feladat konfigurálása a Linux és Windows operációs rendszerek terjed ki.
+Ez a dokumentum különböző architektúra-és forgatókönyv-dokumentumokra mutat. A későbbi forgatókönyvek dokumentumaiban olyan részletes technikai dokumentumokra mutató hivatkozásokat talál, amelyek ismertetik a különböző magas rendelkezésre állású módszerek üzembe helyezését és konfigurálását. A különböző dokumentumok, amelyek bemutatják, hogyan hozhat létre és konfigurálhat magas rendelkezésre állást egy SAP NetWeaver-munkaterhelés számára a Linux és a Windows operációs rendszereken.
 
 
-Azure Active Directory (Azure AD) és az SAP-szolgáltatások és egyszeri bejelentkezés között-integrációval kapcsolatos információkért lásd:
+Az Azure Active Directory (Azure AD) és az SAP Services és az egyszeri bejelentkezés közötti integrációval kapcsolatos információkért lásd:
 
-- [Oktatóanyag: Az ügyfél az Azure Active Directory-integráció az SAP-felhővel](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-customer-cloud-tutorial?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-- [Oktatóanyag: Az Azure Active Directory-integráció az SAP Felhőplatform Identitáshitelesítésével](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-hana-cloud-platform-identity-authentication-tutorial?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-- [Oktatóanyag: Az Azure Active Directory-integráció az SAP Cloud platformon](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-hana-cloud-platform-tutorial?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-- [Oktatóanyag: Az Azure Active Directory-integráció az SAP netweaver megoldással](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-netweaver-tutorial?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-- [Oktatóanyag: Az Azure Active Directory-integráció az SAP Business Bydesignnal](https://docs.microsoft.com/azure/active-directory/saas-apps/sapbusinessbydesign-tutorial?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-- [Oktatóanyag: Az Azure Active Directory-integráció az SAP HANA](https://docs.microsoft.com/azure/active-directory/saas-apps/saphana-tutorial?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-- [Az S/4HANA-környezetben: Fiori Kezdőpanele SAML egyszeri bejelentkezés az Azure ad-vel](https://blogs.sap.com/2017/02/20/your-s4hana-environment-part-7-fiori-launchpad-saml-single-sing-on-with-azure-ad/)
+- [Oktatóanyag: Azure Active Directory integráció az SAP Cloud ügyféllel](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-customer-cloud-tutorial?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
+- [Oktatóanyag: Azure Active Directory integráció az SAP Cloud platform Identity Authentication szolgáltatással](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-hana-cloud-platform-identity-authentication-tutorial?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
+- [Oktatóanyag: Azure Active Directory integráció az SAP Cloud platformmal](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-hana-cloud-platform-tutorial?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
+- [Oktatóanyag: Azure Active Directory integráció az SAP NetWeaver-vel](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-netweaver-tutorial?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
+- [Oktatóanyag: Azure Active Directory integráció az SAP Business Bydesignnal](https://docs.microsoft.com/azure/active-directory/saas-apps/sapbusinessbydesign-tutorial?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
+- [Oktatóanyag: Azure Active Directory integráció a SAP HANA](https://docs.microsoft.com/azure/active-directory/saas-apps/saphana-tutorial?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
+- [Az S/4HANA-környezet: Fiori-dob SAML egyszeri bejelentkezés az Azure AD-vel](https://blogs.sap.com/2017/02/20/your-s4hana-environment-part-7-fiori-launchpad-saml-single-sing-on-with-azure-ad/)
 
-Az SAP-összetevők integrálása az Azure-szolgáltatások további információkért lásd:
+Az Azure-szolgáltatások SAP-összetevőkbe való integrálásával kapcsolatos információkért lásd:
 
 - [Az SAP HANA használata a Power BI Desktopban](https://docs.microsoft.com/power-bi/desktop-sap-hana)
 - [DirectQuery és SAP HANA](https://docs.microsoft.com/power-bi/desktop-directquery-sap-hana)
@@ -131,5 +119,19 @@ Az SAP-összetevők integrálása az Azure-szolgáltatások további informáci�
 - [Az Azure Data Factory SAP HANA- és Business Warehouse-adatok integrációját nyújtja](https://azure.microsoft.com/blog/azure-data-factory-offer-sap-hana-and-business-warehouse-data-integration)
 
 
+## <a name="change-log"></a>Módosítási napló
+- 10/01/2019: Az [Azure Proximity-elhelyezési csoportok grafikáinak változása az optimális hálózati késés érdekében az SAP-alkalmazásokkal](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios) , hogy világosabb legyen
+- 10/01/2019: [SAP HANA infrastruktúra-konfigurációk és-műveletek](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations) változása az Azure-ban a/Hana/Shared.-hez készült, magasan rendelkezésre álló NFS-megosztásra vonatkozó utasítások helyesbítéséhez 
+- 09/28/2019: A [pacemaker beállítása a Red Hat Enterprise Linux az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) a SBD tisztázására, mivel a kerítési mechanizmus nem támogatott a RHEL-fürtökön  
+- 09/17/2019: A NetWeaver tervezési és telepítési útmutatójának módosítása az SAP virtuálisgép-bővítményével kapcsolatos feltételek egységesítéséhez  
+- 08/22/2019: A [pacemaker beállítása a SUSE Linux Enterprise Server az Azure-ban beállításának](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) változásai az egyéni szerepkör-létrehozás URL-címeinek frissítéséhez  
+- 08/16/2019: A [pacemaker beállítása Red Hat Enterprise Linux az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) című részében szereplő változások emlékeztetik az ügyfeleket az egyéni szerepkör műveleteinek frissítésére, ha az Azure kerítési ügynök új verziójára frissítenek.  
+- 08/15/2019: [SAP HANA Azure-beli virtuális gépek tárolási konfigurációjának](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) változásai az ultra Disk (korábban Ultra SSD) általánosan elérhetővé tételének tükrözéséhez
+- 08/01/2019: Változások az [Azure-beli SUSE Linux Enterprise Server pacemaker beállításához](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) a módosítások integrálásához a SLES 15 esetében 
+- 07/23/2019: Változások a [fürtben egy SAP ASCS/SCS-példány egy Windows feladatátvevő fürtön egy Azure-beli fájlmegosztás használatával](sap-high-availability-guide-wsfc-file-share.md) , amely a közvetlen tárolóhelyek Azure site Recovery szolgáltatások általi támogatását tükrözi
+- 07/14/2019: [Azure Proximity-elhelyezési csoportok kiadása az optimális hálózati késés érdekében SAP](sap-proximity-placement-scenarios.md) -alkalmazásokkal
+- 07/11/2019: A HANA nagy példányokat bemutató különböző dokumentumok változásai a HANA nagy példányok 4. változatának befedéséhez
+- 07/09/2019: Az IBM DB2 HADR új útmutatójának kiadása a [Red Hat Enterprise Serveren](high-availability-guide-rhel-ibm-db2-luw.md)
+- 06/13/2019: Az [SAP NetWeaver magas rendelkezésre állásának kiadása Red Hat Enterprise Linux Azure NETAPP Files SAP](high-availability-guide-rhel-netapp-files.md) -alkalmazásokhoz
 
 

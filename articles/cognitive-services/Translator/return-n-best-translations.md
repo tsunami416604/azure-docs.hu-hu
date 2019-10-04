@@ -1,31 +1,31 @@
 ---
-title: Vissza a legjobb N fordítások – Translator Text API
-titlesuffix: Azure Cognitive Services
-description: Legjobb N fordítás a Microsoft Translator Text API használatával adja vissza.
+title: Vissza N-legjobb fordítások – Translator Text API
+titleSuffix: Azure Cognitive Services
+description: N-legjobb fordítások visszaadása a Microsoft Translator Text API használatával.
 services: cognitive-services
-author: v-pawal
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
-ms.author: v-jansko
-ms.openlocfilehash: 62992122dc16003078bb80ecd87c2bd3692586dd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: swmachan
+ms.openlocfilehash: 7aec6bb81f3ca99ead744767668c2e4f1d1d4d53
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58918314"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68594883"
 ---
-# <a name="how-to-return-n-best-translations"></a>Legjobb N fordítások visszaállítása
+# <a name="how-to-return-n-best-translations"></a>N – legjobb fordítások visszaküldése
 
 > [!NOTE]
-> Tato metoda se zamítá. Nem érhető a 3.0-s verzió, a Translator Text API.
+> Ez a metódus elavult. A Translator Text API 3.0-s verziójában nem érhető el.
 
-A Microsoft Translator API GetTranslations() és GetTranslationsArray() módszerei közé tartozik egy választható logikai jelzőt "IncludeMultipleMTAlternatives".
-A metódus legfeljebb maxTranslations alternatívák ad vissza, ahol a különbözeti kerüljön a translator motor legjobb N listájából.
+A Microsoft Translator API GetTranslations () és GetTranslationsArray () metódusa egy opcionális logikai jelzőt ("IncludeMultipleMTAlternatives") tartalmaz.
+A metódus olyan maxTranslations alternatívákat ad vissza, amelyekben a Delta a Translator Engine N-Best listájából származik.
 
-Az aláírás az:
+Az aláírás:
 
 **Syntax**
 
@@ -37,24 +37,24 @@ Az aláírás az:
 
 | Paraméter | Leírás |
 |:---|:---|
-| appId | **Szükséges** az engedélyezési fejléc használata esetén a appid mezőt üresen hagyja más esetben adja meg egy karakterlánc, amely tartalmazza a "Tulajdonos" + "" + a hozzáférési jogkivonatot.|
-| szöveg | **Szükséges** egy karakterlánc, amely a fordítandó szöveg. A szöveg mérete nem haladhatja meg a 10000 karakternél.|
-| forrás: | **Szükséges** egy karakterlánc, amely a fordítandó szöveg nyelvkódja. |
-| erre: | **Szükséges** karakterláncként lefordítani a szöveget a nyelvi kódot. |
-| maxTranslations | **Szükséges** egy int való visszatéréshez fordítások maximális számát jelöli. |
-| beállítások | **Nem kötelező** TranslateOptions egy objektum, amely tartalmazza az alább felsorolt értékeket. Minden nem kötelező, és alapértelmezés szerint a leggyakrabban használt beállításait.
+| appId | **Kötelező megadni** Ha az engedélyezési fejlécet használja, hagyja üresen a AppID mezőt, és írjon be egy olyan karakterláncot, amely tartalmazza a "tulajdonos" + "+" hozzáférési tokent.|
+| text | **Kötelező megadni** A lefordítani kívánt szöveget jelölő sztring. A szöveg mérete nem haladhatja meg a 10000 karaktert.|
+| from | **Kötelező megadni** A lefordítani kívánt szöveg nyelvi kódját jelölő sztring. |
+| to | **Kötelező megadni** A szöveg fordítására szolgáló nyelvkód jelölő sztring. |
+| maxTranslations | **Kötelező megadni** Egy int, amely a visszaküldött fordítások maximális számát jelöli. |
+| options | Nem **kötelező** Egy TranslateOptions objektum, amely az alább felsorolt értékeket tartalmazza. Ezek mind opcionálisak, és alapértelmezés szerint a leggyakoribb beállítások.
 
-* Kategória: Az egyetlen támogatott, és az alapértelmezett beállítás "általános".
-* ContentType: Az egyetlen támogatott, és az alapértelmezett beállítás "text/plain".
-* Állapot: Felhasználói állapot összevetését kérések és válaszok érdekében. Ugyanaz a tartalma visszatér a válaszban.
-* IncludeMultipleMTAlternatives: Ez a jelző azt határozza meg, hogy az MT motortól alternatívák egynél több visszaadása. Alapértelmezés a False (hamis), és csak 1 alternatív tartalmazza.
+* Kategória Az egyetlen támogatott és az alapértelmezett beállítás az "általános".
+* ContentType: Az egyetlen támogatott és az alapértelmezett beállítás a "text/plain".
+* Állapot: A kérelem és válasz összekapcsolását segítő felhasználói állapot. A válaszban ugyanazt a tartalmat adja vissza a rendszer.
+* IncludeMultipleMTAlternatives: jelző, amely meghatározza, hogy az MT motorból egynél több alternatíva legyen visszaadva. Az alapértelmezett érték false (hamis), és csak 1 alternatívát tartalmaz.
 
-## <a name="ratings"></a>Minősítések
-A minősítések alkalmazza az alábbiak szerint: A legjobb automatikus fordítás, 5 besorolású.
-Az automatikusan generált (N-a legjobb) fordítási lehetőségeket 0 minősítést, és egy 100 egyezés mértékét rendelkeznek.
+## <a name="ratings"></a>Értékelés
+A minősítések a következőképpen lesznek alkalmazva: A legjobb automatikus fordítás 5-ös minősítéssel rendelkezik.
+Az automatikusan generált (N-Best) fordítási alternatívák 0 minősítéssel rendelkeznek, és a megfelelési fok 100.
 
-## <a name="number-of-alternatives"></a>Alternatív megoldások száma
-Visszaadott alternatív megoldások száma legfeljebb maxTranslations, de kevesebb is lehet.
+## <a name="number-of-alternatives"></a>Alternatívák száma
+A visszaadott alternatívák száma maxTranslations, de kevesebb is lehet.
 
 ## <a name="language-pairs"></a>Nyelvi párok
-Ez a funkció a fordítások egyszerűsített és hagyományos kínai, mindkét irányban között nem érhető el. Minden más támogatott Microsoft Translator nyelvi párok érhető el.
+Ez a funkció nem érhető el az egyszerűsített és hagyományos kínai, mindkét irányban zajló fordításokhoz. A Microsoft Translator minden más támogatott nyelvi párja számára elérhető.

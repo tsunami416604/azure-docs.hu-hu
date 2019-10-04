@@ -1,28 +1,30 @@
 ---
-title: Állítsa be az Azure-ban folyamatkiszolgáló sikertelen vissza a vészhelyreállítás során a VMware virtuális gépek és fizikai kiszolgálók az Azure Site Recovery |} A Microsoft Docs
-description: Ez a cikk ismerteti, hogyan állítható be a folyamatkiszolgáló az Azure-ban, sikertelen lesz az Azure-ból a helyszíni VMware virtuális gépek és fizikai kiszolgálók vészhelyreállítása során.
+title: A vészhelyreállítás során a VMware virtuális gépek és fizikai kiszolgálók az Azure Site Recovery egy horizontális felskálázási folyamatkiszolgáló beállítása |} A Microsoft Docs
+description: Ez a cikk ismerteti a horizontális felskálázási folyamatkiszolgáló beállítása VMware virtuális gépek és fizikai kiszolgálók vészhelyreállítása során.
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 4/9/2019
+ms.date: 4/23/2019
 ms.author: ramamill
-ms.openlocfilehash: 6849ffb6fa46365aa775b9410067cb0874c70ef8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 1b6084b4e93f3dc17f633f1b8496f9c26e7f576f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59362156"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64925488"
 ---
-# <a name="scale-for-failback-with-additional-process-servers"></a>Méretezési csoport és további folyamatkiszolgálók feladat-visszavételhez
+# <a name="scale-with-additional-process-servers"></a>További folyamatkiszolgálók méretezés
 
-Alapesetben, amikor replikál a VMware virtuális gépek vagy fizikai kiszolgálók Azure-bA [Site Recovery](site-recovery-overview.md), folyamatkiszolgáló a konfigurációs kiszolgáló gépen telepítve van, és koordinálja a Site Recovery közötti adatátvitelt és a helyszíni infrastruktúrával. Kapacitás és a horizontális felskálázás a replikációtelepítés növelése érdekében hozzáadhat további önálló folyamatkiszolgálók. Ez a cikk azt ismerteti, hogyan teheti ezt.
+Alapesetben, amikor replikál a VMware virtuális gépek vagy fizikai kiszolgálók Azure-bA [Site Recovery](site-recovery-overview.md), folyamatkiszolgáló a konfigurációs kiszolgáló gépen telepítve van, és koordinálja a Site Recovery közötti adatátvitelt és a helyszíni infrastruktúrával. Kapacitás és a horizontális felskálázás a replikációtelepítés növelése érdekében hozzáadhat további önálló folyamatkiszolgálók. Ez a cikk ismerteti, hogyan állíthatja be egy horizontális felskálázási folyamatkiszolgáló.
 
 ## <a name="before-you-start"></a>Előkészületek
 
 ### <a name="capacity-planning"></a>Kapacitástervezés
 
 Győződjön meg arról, hogy végre [kapacitástervezés](site-recovery-plan-capacity-vmware.md) a VMware replikálásához. Ennek segítségével azonosíthatja módjának és további folyamatkiszolgálók üzembe kell helyeznie.
+
+9\.24 verzióról útmutató során az új replikációk folyamatkiszolgáló választott egészül ki. Folyamatkiszolgáló kifogástalan, figyelmeztetési és kritikus bizonyos feltételek alapján lesznek megjelölve. Különböző helyzetekben, amely befolyásolhatja a folyamatkiszolgáló állapotát, tekintse át a [kiszolgálóriasztások feldolgozni](vmware-physical-azure-monitor-process-server.md#process-server-alerts).
 
 > [!NOTE]
 > Klónozott Folyamatkiszolgáló összetevő nem támogatott. Kövesse a jelen cikk egyes PS horizontális felskálázást.
@@ -44,8 +46,6 @@ Ha minden egyes védett forrásgép egyenként 100 GB-os 3 lemezzel van konfigur
 A további folyamatkiszolgálón előfeltételeit az alábbi táblázat foglalja össze.
 
 [!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
-
-
 
 ## <a name="download-installation-file"></a>Telepítési fájl letöltése
 

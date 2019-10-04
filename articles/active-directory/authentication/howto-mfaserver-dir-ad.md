@@ -12,16 +12,19 @@ manager: daveba
 ms.reviewer: michmcla
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f97b4ee364ecadde7738b8fe077f21d5732365f6
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: eac6cff0f0f12daaf772549f547aafd670600d61
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371809"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67536976"
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Címtár-integráció az Azure MFA-kiszolgáló és az Active Directory között
 
 Az Azure MFA-kiszolgáló Címtár-integráció szakaszának használatával integrálhatja a címtárat az Active Directoryval vagy egy másik LDAP-címtárral. Konfigurálhatja az attribútumokat, hogy megfeleljenek a címtársémának, illetve beállíthatja a felhasználók automatikus szinkronizálását.
+
+> [!IMPORTANT]
+> 2019. július 1-től a Microsoft már nem szavatolnak MFA-kiszolgáló az új üzembe helyezésekhez. Új felhasználókat szeretné a felhasználóktól többtényezős hitelesítést kell használnia a felhőalapú Azure multi-factor Authentication. Meglévő ügyfeleink, akik aktiválták az MFA-kiszolgáló előtt július 1 lesz a legújabb verzió, a jövőbeli frissítések letöltéséhez és a szokásos módon aktiváló hitelesítő adatok előállítása.
 
 ## <a name="settings"></a>Beállítások
 
@@ -29,7 +32,10 @@ Alapértelmezés szerint az Azure Multi-Factor Authentication-(MFA-) kiszolgál�
 
 ![MFA-kiszolgáló az LDAP-konfiguráció szerkesztése](./media/howto-mfaserver-dir-ad/dirint.png)
 
-| Szolgáltatás | Leírás |
+> [!NOTE]
+> Címtár-integráció a könyvtárak eltérő Active Directory Domain Services működése nem garantált.
+
+| Funkció | Leírás |
 | --- | --- |
 | Active Directory használata |Válassza az Active Directory használata beállítást, ha az Active Directoryt szeretné alkalmazni importáláshoz és szinkronizáláshoz.  Ez az alapértelmezett beállítás. <br>Megjegyzés: Az Active Directory integrációja megfelelően működjön csatlakoztassa a számítógépet egy tartományhoz, és jelentkezzen be egy tartományi fiókkal. |
 | Megbízható tartományok belefoglalása |Jelölje be a **Megbízható tartományok belefoglalása** jelölőnégyzetet, hogy az ügynök az aktuális tartomány által megbízhatónak tartott tartományokhoz, az erdőben egy másik tartományhoz vagy erdőszintű megbízhatósággal rendelkező tartományokhoz csatlakozzon.  Amikor nem a megbízható tartományokból importál vagy szinkronizál felhasználókat, törölje a jelölőnégyzet jelölését a teljesítmény növeléséhez.  Alapértelmezés szerint be van jelölve. |
@@ -70,7 +76,7 @@ Az attribútumokat manuálisan is megadhatja, és nem kell egyezniük az attrib�
 
 ![Az MFA-kiszolgáló címtár-integrációs attribútumokban testreszabása](./media/howto-mfaserver-dir-ad/dirint3.png)
 
-| Szolgáltatás | Leírás |
+| Funkció | Leírás |
 | --- | --- |
 | Egyedi azonosító |Megadhatja a tároló-, biztonságicsoport- és felhasználórekordok egyedi azonosítójaként szolgáló attribútum nevét.  Az Active Directoryban ez általában az objectGUID. Egyéb LDAP-megvalósításokban az entryUUID vagy valami ehhez hasonló is előfordulhat.  Az alapértelmezett érték az objectGUID. |
 | Egyedi azonosító típusa |Válassza ki az egyedi azonosító attribútum típusát.  Az Active Directoryban az objectGUID attribútum típusa GUID. Egyéb LDAP-megvalósításokban az ASCII bájttömb vagy Sztring típusok is előfordulhatnak.  Az alapértelmezett érték a GUID. <br><br>Fontos, hogy ezt a típust helyesen adja meg, mivel a rendszer a szinkronizált elemekre az egyedi azonosítójuk alapján hivatkozik. Az objektumok a címtárban közvetlenül az egyedi azonosítótípusuk segítségével kereshetők meg.  Ha a típust Sztringre állítja, miközben a címtár valójában ASCII-karakterek bájttömbjeként tárolja az értéket, a szinkronizálás nem fog megfelelően működni. |
@@ -115,7 +121,7 @@ Ha az LDAP-címtár támogatja a DirSync vezérlőt és ahhoz van konfigurálva,
 
 Az alábbi táblázat további információkat tartalmaz a Szinkronizálás lap egyes beállításairól.
 
-| Szolgáltatás | Leírás |
+| Funkció | Leírás |
 | --- | --- |
 | Active Directory-szinkronizálás engedélyezése |Ha be van jelölve, a Multi-Factor Auth-kiszolgáló szolgáltatás rendszeres időközönként lekérdezi a változásokat az Active Directoryból. <br><br>Megjegyzés: Legalább egy szinkronizálási elemet hozzá kell adni, és a egy szinkronizálás most végre kell hajtani a multi-factor Auth-kiszolgáló szolgáltatás elkezdené a változások feldolgozását. |
 | Szinkronizálás gyakorisága |Megadhatja azt az időtartamot, amennyit a Multi-Factor Auth-kiszolgáló szolgáltatás vár a változások lekérdezése és feldolgozása között. <br><br> Megjegyzés: A megadott időköz az egyes ciklusok kezdete közötti idő.  Ha a feldolgozási idő meghaladja az időközt, a szolgáltatás azonnal ismét elindítja a lekérdezést. |

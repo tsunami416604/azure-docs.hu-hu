@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 69099fe1369223871142f74d8f6d1c6a8bd66dab
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 618acae10b874eb5ebd5b6da7fe081368528dbd8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57851764"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61217512"
 ---
 # <a name="develop-azure-functions-with-media-services"></a>A Media Services az Azure Functions fejlesztése
 
@@ -64,11 +64,11 @@ A függvényalkalmazás üzembe helyezése után található között **App Serv
 2. Válassza ki a **C#** nyelvi és **adatfeldolgozási** forgatókönyv.
 3. Válasszon **BlobTrigger** sablont. Ez a függvény akkor aktiválódik, amikor egy blob feltöltése a **bemeneti** tároló. A **bemeneti** neve van meghatározva a **elérési út**, a következő lépésben.
 
-    ![fájl megjelenítése](./media/media-services-azure-functions/media-services-azure-functions004.png)
+    ![files](./media/media-services-azure-functions/media-services-azure-functions004.png)
 
 4. Miután kiválasztotta **BlobTrigger**, néhány további vezérlők jelennek meg az oldalon.
 
-    ![fájl megjelenítése](./media/media-services-azure-functions/media-services-azure-functions005.png)
+    ![files](./media/media-services-azure-functions/media-services-azure-functions005.png)
 
 4. Kattintson a **Create** (Létrehozás) gombra. 
 
@@ -76,7 +76,7 @@ A függvényalkalmazás üzembe helyezése után található között **App Serv
 
 Az Azure-függvény kódja és egyéb fájlokat, az ebben a szakaszban leírt társítva. Ha az Azure portal használatával hozzon létre egy függvényt, **function.json** és **run.csx** jönnek létre az Ön számára. Adja hozzá, vagy töltse fel a **project.json** fájlt. Ez a szakasz a többi biztosít, amely röviden elmagyarázza az egyes fájlok, és megjeleníti a definíciójukat.
 
-![fájl megjelenítése](./media/media-services-azure-functions/media-services-azure-functions003.png)
+![files](./media/media-services-azure-functions/media-services-azure-functions003.png)
 
 ### <a name="functionjson"></a>function.json
 

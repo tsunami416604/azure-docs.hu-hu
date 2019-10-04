@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 09/05/2018
 ms.author: aschhab
 ms.openlocfilehash: 0801469d586e6f2d6514927cdc7b894900a3aa35
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57843567"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61471961"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-service-bus"></a>Virtuális hálózati Szolgáltatásvégpontok használata az Azure Service busszal
 
@@ -79,7 +79,7 @@ Sablon paraméterei:
 > Nincsenek Megtagadás szabályok lehetséges, amíg az Azure Resource Manager-sablon rendelkezik-e beállítva alapértelmezett művelet **"Engedélyezés"** amely nem korlátozza a kapcsolatokat.
 > Amikor a virtuális hálózathoz vagy a tűzfalak szabályokat, hogy módosítania kell a ***"defaultAction"***
 > 
-> forrás:
+> from
 > ```json
 > "defaultAction": "Allow"
 > ```

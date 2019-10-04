@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e2b8d68cc348ce8e157c7d58424eaebb06940335
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436662"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60359041"
 ---
 # <a name="azure-multi-factor-authentication-user-data-collection"></a>Az Azure multi-factor Authentication felhasználói adatok gyűjtése
 
@@ -62,7 +62,7 @@ Hitelesítési kísérlet (használt jelentések és hibaelhárítás):
 - Initiating IP Address
 - Eszközök
 - Eszköztoken
-- Az eszköz típusa
+- Eszköz típusa
 - Mobile App-verzió
 - Operációs rendszer verziója
 - Eredmény
@@ -77,7 +77,7 @@ Aktiválások (kísérlet egy fiókot a Microsoft Authenticator mobilalkalmazás
 - Hiba aktiválása
 - Aktiválási állapot eredménye
 - Eszköz neve
-- Az eszköz típusa
+- Eszköz típusa
 - Alkalmazásverzió
 - OATH Token engedélyezése
 
@@ -86,12 +86,12 @@ Blokkok (tiltott állapot meghatározásához használt és a jelentéskészít�
 - Időbélyeg letiltása
 - Felhasználónév letiltása
 - Felhasználónév
-- Országkód
+- Országkód:
 - Telefonszám
 - Formázott telefonszám
 - Mellék
 - Bővítmény törlése
-- Letiltva
+- Blokkolt
 - Blokkolás oka
 - Befejezés időbélyeg
 - Befejezés oka
@@ -103,10 +103,10 @@ Blokkok (tiltott állapot meghatározásához használt és a jelentéskészít�
 Körgyűrűk (jelentéskészítéshez használt):
 
 - Mellőzés időbélyeg
-- Mellőzés (mp)
+- Megkerülés (mp)
 - Mellőzés felhasználónév szerint
 - Felhasználónév
-- Országkód
+- Országkód:
 - Telefonszám
 - Formázott telefonszám
 - Mellék
@@ -120,16 +120,16 @@ A módosítások (MFA-kiszolgáló és az AAD felhasználói módosítása szink
 
 - Időbélyeg módosítása
 - Felhasználónév
-- Új országkód
+- Új országkód:
 - Új telefonszám
 - Új mellék
 - Új tartalék országkód
 - Új biztonsági mentési telefonszám
 - Új biztonsági mentési bővítményt
-- Új PIN kód
-- Meg kell változtatnia a PIN-kódot
+- Új PIN-kód
+- Meg kell változtatnia a PIN-kód
 - Régi Eszköztoken
-- Új eszköztoken
+- Új Eszköztoken
 
 ## <a name="gather-data-from-mfa-server"></a>Gyűjthet velük adatokat az MFA-kiszolgáló
 

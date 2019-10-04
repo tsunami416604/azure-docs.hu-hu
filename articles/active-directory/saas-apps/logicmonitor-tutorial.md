@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a953ae52f37b8d48f9e2e0566325691dbb08307
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 468d55b2b96979658bc8f3e226da36dc4af1c174
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59258096"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67097945"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-logicmonitor"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező LogicMonitor
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a LogicMonitor konfigurálásához hozzá kell LogicMo
 
 **LogicMonitor hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -213,7 +213,7 @@ Az Azure AD-felhasználók számára jelentkezhetnek be akkor ki kell építeni 
 
     ![Szerepkörök és a felhasználók](./media/logicmonitor-tutorial/ic790056.png "szerepkörök és a felhasználók")
 
-3. Kattintson a **Hozzáadás** parancsra.
+3. Kattintson a **Hozzáadás**lehetőségre.
 
 4. Az a **vegyen fel egy fiókot** szakaszban, hajtsa végre az alábbi lépéseket:
 

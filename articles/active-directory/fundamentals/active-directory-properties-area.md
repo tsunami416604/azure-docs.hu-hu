@@ -2,22 +2,22 @@
 title: Adja hozzá a szervezet adatvédelmi info – Azure Active Directory |} A Microsoft Docs
 description: Útmutatás a szervezet adatvédelmi információ hozzáadása az Azure Active Directory tulajdonságai területen.
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/17/2018
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: bpham
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98b4e3585f25a0b081e30c5524678a0f7bb27942
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0a2397662112bda6c6789b25691848344a4e611b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56187270"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561806"
 ---
 # <a name="add-your-organizations-privacy-info-using-azure-active-directory"></a>Adja hozzá a szervezet adatvédelmi információ az Azure Active Directoryval
 Ez a cikk bemutatja, hogyan Bérlői rendszergazda adhat hozzá adatvédelemmel kapcsolatos adatokat a szervezet Azure Active Directory (Azure AD) bérlő az Azure Portalon keresztül.

@@ -1,25 +1,18 @@
 ---
-title: Virtuálisgép-ajánlat létrehozása az Azure Marketplace-en |} A Microsoft Docs
+title: Virtuálisgép-ajánlat létrehozása az Azure Marketplace-en
 description: Listák hozzon létre egy új virtuális gépet (VM) szükséges lépéseket kínálnak az Azure Marketplace-en.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 10/19/2018
-ms.author: pbutlerm
-ms.openlocfilehash: a3124ca2f163291d266fba77255d2ee98d30fd23
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: pabutler
+ms.openlocfilehash: 4cd635c6f664a5260b79e62ea72bbb86fc4e1e4f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57888808"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64938357"
 ---
 # <a name="create-virtual-machine-offer"></a>Virtuálisgép-ajánlat létrehozása
 
@@ -31,7 +24,7 @@ Ahol:
 
 |  **Eszközcsoport**   |  **Leírás**  |
 |  ---------------   |  ---------------  |
-|    Termékváltozatok            |  A legkisebb megvásárolható egysége egy ajánlatot. (A termék osztály) egyetlen ajánlatba rendelhető hozzá több termékváltozatok különbséget tenni a támogatott szolgáltatások, a Virtuálisgép-lemezképek típusai és a számlázási modellek között lehet. |
+|    SKU-k            |  A legkisebb megvásárolható egysége egy ajánlatot. (A termék osztály) egyetlen ajánlatba rendelhető hozzá több termékváltozatok különbséget tenni a támogatott szolgáltatások, a Virtuálisgép-lemezképek típusai és a számlázási modellek között lehet. |
 |  Piactér       | Marketing, jogi és elégtelen felügyeleti eszközök és előírásokat tartalmazza.  <ul><li> Marketing eszközök tartalmazzák az ajánlat nevét, leírását és emblémák</li> <li> Jogi eszközök közé tartozik egy adatvédelmi szabályzatát, használati feltételeit és egyéb jogi dokumentáció</li>  <li> Elégtelen felügyeleti házirend lehetővé teszi, hogy adja meg, hogyan kezelje az Azure Marketplace-en a végfelhasználói portálon vezet.</li> </ul> |
 | Támogatás            | Támogatási kapcsolattartó és házirend információkat tartalmaz |
 | Tesztverzió         | Határozza meg, amelyek lehetővé teszik a végfelhasználók számára, hogy tesztelje ajánlatát, mielőtt azok a vásárláskor eszközök |

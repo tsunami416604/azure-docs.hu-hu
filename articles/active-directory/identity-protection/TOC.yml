@@ -17,6 +17,8 @@
       href: notifications.md
     - name: Mi az a bejelentkezési élmény?
       href: flows.md
+    - name: Identity Protection- és B2B-felhasználók
+      href: concept-identity-protection-b2b.md
 - name: Útmutatók
   expanded: true
   items:
@@ -30,11 +32,11 @@
           href: howto-sign-in-risk-policy.md
         - name: A felhasználói kockázati szabályzat konfigurálása
           href: howto-user-risk-policy.md
-        - name: Az aktív kockázati események bezárása
+        - name: Az aktív kockázatészlelések bezárása
           href: howto-close-active-risk-events.md
         - name: Felhasználók tiltásának feloldása
           href: howto-unblock-user.md
-        - name: Kockázati események szimulálása
+        - name: Kockázatészlelések szimulálása
           href: playbook.md
         - name: Gyakori kérdések
           href: faqs.md
@@ -44,19 +46,19 @@
           href: overview-v2.md
         - name: Biztonsági áttekintés
           href: security-overview.md
-        - name: Kockázatos felhasználók és bejelentkezések vizsgálata
-          href: howto-investigate-risky-users-signins.md
+        - name: Kockázat vizsgálata
+          href: howto-investigate-risk.md
+        - name: Visszajelzés a kockázatészlelésekről
+          href: howto-provide-risk-event-feedback.md
         - name: Kockázati szabályzatok beállítása
           href: howto-configure-risk-policies.md
-        - name: Észlelés pontosságának javítása
-          href: howto-improve-detection-accuracy.md
         - name: Gyakori kérdések és ismert problémák
           href: known-issues.md
 - name: Referencia
   items:
     - name: A Microsoft Graph API használata
       href: graph-get-started.md
-    - name: Kockázati események
+    - name: Kockázatészlelések
       href: risk-events-reference.md
     - name: Szószedet
       href: glossary.md

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/25/2018
 ms.author: markvi
-ms.openlocfilehash: 5b3c6c99b05320ee53c3ff49f5c299650c32e939
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 6ee8891eae108256875660cc3f2256b65703a1aa
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58498332"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65406791"
 ---
 # <a name="how-to-stop-using-the-virtual-machine-managed-identities-extension-and-start-using-the-azure-instance-metadata-service"></a>Állítsa le a virtuális gép használatával felügyelt identitások bővítményt, és elkezdheti az Azure Instance Metadata szolgáltatás
 
@@ -35,7 +35,7 @@ A következő szakaszban leírt több korlátozások miatt a felügyelt identit�
 
 ### <a name="provision-the-extension"></a>A bővítmény kiépítése 
 
-Amikor konfigurál egy virtuális gép vagy virtuálisgép-méretezési csoport egy felügyelt identitás van beállítva, akkor előfordulhat, hogy nem kötelező váltani, igény szerint dönthet úgy, hogy az Azure-erőforrások virtuális gép bővítmény használatával a felügyelt identitásokból kiépítése a `-Type` a paraméterrel[ Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) parancsmagot. Átadhat `ManagedIdentityExtensionForWindows` vagy `ManagedIdentityExtensionForLinux`, attól függően, a virtuális gép típusát, és adja neki a használatával a `-Name` paraméter. A `-Settings` paraméter adja meg a token beszerzéséhez az OAuth jogkivonat-végpont által használt port:
+Amikor konfigurál egy virtuális gép vagy virtuálisgép-méretezési csoport egy felügyelt identitás van beállítva, szükség esetén dönthet úgy, hogy üzembe helyezése az Azure-erőforrások virtuális gép bővítmény használatával a felügyelt identitásokból a `-Type` paraméterrel a [ Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) parancsmagot. Átadhat `ManagedIdentityExtensionForWindows` vagy `ManagedIdentityExtensionForLinux`, attól függően, a virtuális gép típusát, és adja neki a használatával a `-Name` paraméter. A `-Settings` paraméter adja meg a token beszerzéséhez az OAuth jogkivonat-végpont által használt port:
 
 ```powershell
    $settings = @{ "port" = 50342 }

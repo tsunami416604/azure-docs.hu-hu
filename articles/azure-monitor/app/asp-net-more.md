@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: b81a555111ff49fcf2e14a75afdce81835d151bb
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 7e62efb0b64b0b882b36126af4a1f9d520d92475
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038549"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65230639"
 ---
 # <a name="more-telemetry-from-application-insights"></a>További telemetria az Application Insightsból
 Miután [hozzá az Application Insights az ASP.NET-kódban](../../azure-monitor/app/asp-net.md), akkor megteheti, hogy további telemetriai adatokat néhány dolgot. 
@@ -27,7 +27,7 @@ Miután [hozzá az Application Insights az ASP.NET-kódban](../../azure-monitor/
 |(Az IIS-kiszolgálókkal) [Állapotfigyelő telepítése](https://go.microsoft.com/fwlink/?LinkId=506648) az összes kiszolgálón.<br/>(Az azure web apps) A webalkalmazás Azure Vezérlőpulton nyissa meg az Application Insights paneljén.| [**Teljesítményszámlálók**](../../azure-monitor/app/performance-counters.md)<br/>[**Kivételek** ](asp-net-exceptions.md) – részletes veremkiíratásokat<br/>[**Függőségek**](../../azure-monitor/app/asp-net-dependencies.md)|
 |[A JavaScript-kódrészletet a weboldalakhoz hozzáadása](../../azure-monitor/app/javascript.md)|[Teljesítmény lapon](../../azure-monitor/app/usage-overview.md), böngészőbeli kivételekkel, az AJAX teljesítménye. Egyéni ügyféloldali telemetria.|
 |[Rendelkezésre állási webes tesztek létrehozása](../../azure-monitor/app/monitor-web-app-availability.md)|Riasztásokat kaphat, ha a webhely elérhetetlenné válik.|
-|[Győződjön meg, hogy buildinfo.config](https://msdn.microsoft.com/library/dn449058.aspx) MSBuild által generált|[A mérőszám-diagramok jegyzetek létrehozása](https://blogs.msdn.microsoft.com/visualstudioalm/2013/11/14/implementing-deployment-markers-in-application-insights/)
+|[Győződjön meg, hogy buildinfo.config](https://msdn.microsoft.com/library/dn449058.aspx) MSBuild által generált|[A mérőszám-diagramok jegyzetek létrehozása](https://docs.microsoft.com/azure/azure-monitor/app/annotations)
 |[Egyéni események és metrikák írása](../../azure-monitor/app/api-custom-events-metrics.md)|Üzleti eseményeket és mérőszámokat száma, nyomon követheti a részletes használati és egyebek.|
 |[Az élő webhelyet profil](https://aka.ms/AIProfilerPreview)|Az élő webalkalmazását részletes függvény időzítés|
 

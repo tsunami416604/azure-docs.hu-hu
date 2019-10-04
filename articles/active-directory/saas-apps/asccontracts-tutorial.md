@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da1fefcad3f79bcd394c7d742e9366fc9f0a359b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 4cc1685f41f53b244281a13ada1faa21a0010a9f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57838629"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67106632"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asc-contracts"></a>Oktatóanyag: Az Azure Active Directory integrációja az ASC-szerződések
 
@@ -53,7 +53,7 @@ ASC szerződések integrálása az Azure AD beállításához szüksége a katal
 
 **Az ASC-szerződések hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

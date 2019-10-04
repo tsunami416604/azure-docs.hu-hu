@@ -1,99 +1,106 @@
 ---
-title: Raspberry Pi csatlakoztatása az Azure IoT Central alkalmazáshoz (C#) |} A Microsoft Docs
-description: Eszköz a fejlesztők hogyan Raspberry Pi csatlakozhat az Azure IoT Central alkalmazást a C#.
+title: Málna PI összekötése az Azure IoT Central alkalmazással (C#) | Microsoft Docs
+description: Eszköz-fejlesztőként, hogyan csatlakoztatható a málna PI az Azure IoT Central-alkalmazáshoz a használatával C#.
 author: viv-liu
 ms.author: viviali
-ms.date: 04/05/2018
+ms.date: 09/13/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 8a7b2d15884f7a1cb8b6e72937b0f1e3b6cb8ca9
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: d15e58d53e53779b1db1369c4e698032d524f096
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59616016"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067633"
 ---
-# <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>Raspberry Pi csatlakoztatása az Azure IoT Central alkalmazáshoz (C#)
+# <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>Málna PI összekötése az Azure IoT Central alkalmazással (C#)
 
 [!INCLUDE [howto-raspberrypi-selector](../../includes/iot-central-howto-raspberrypi-selector.md)]
 
-Ez a cikk azt ismerteti, hogyan eszköz a fejlesztők Raspberry Pi kapcsolódni a Microsoft Azure IoT Central alkalmazáshoz C# programozási nyelv használatával.
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
+
+Ez a cikk azt ismerteti, hogyan lehet az eszköz fejlesztője a málna PI-t a Microsoft Azure IoT Central alkalmazáshoz a C# programozási nyelv használatával.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A jelen cikkben ismertetett lépések végrehajtásához szüksége van a következő összetevők:
+A cikkben szereplő lépések végrehajtásához a következő összetevőkre van szükség:
 
-* A létrehozott Azure IoT Central alkalmazáshoz a **minta Devkits** alkalmazássablon. További információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](quick-deploy-iot-central.md).
-* Raspberry Pi eszköz a Raspbian operációs rendszert. A Raspberry Pi kell rendelkezniük az internethez való kapcsolódáshoz. További információkért lásd: [beállítása a Raspberry Pi](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/3).
+* A **mintául szolgáló Devkits** létrehozott Azure IoT Central-alkalmazás. További információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](quick-deploy-iot-central.md).
+* A Raspbian operációs rendszert futtató málna PI-eszköz. A málna PI-nek képesnek kell lennie az internethez való kapcsolódásra. További információ: [a málna PI beállítása](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/3).
 
-## <a name="sample-devkits-application"></a>**Minta Devkits** alkalmazás
+## <a name="sample-devkits-application"></a>**Példa Devkits** alkalmazásra
 
-A létrehozott alkalmazáshoz a **minta Devkits** alkalmazást sablon tartalmaz egy **Raspberry Pi** eszköz sablon a következő jellemzőkkel:
+A **mintául szolgáló Devkits** létrehozott alkalmazások egy **málna PI** -eszközt tartalmaznak a következő jellemzőkkel:
 
-- Telemetriai adatokat, amely tartalmazza az eszköz összegyűjti a következő mérési:
-  - Páratartalom
-  - Hőmérséklet
-  - Pressure
-  - Magnetométer (X, Y, a – Z)
-  - Érzékelőből (X, Y, a – Z)
-  - Giroszkóp (X, Y, a – Z)
-- Beállítások
-  - Feszültségérzékelő
-  - Aktuális
-  - Sebesség ventilátor
-  - Integrációs modul váltógombot.
-- Tulajdonságok
-  - Eszköz-tulajdonságot die
-  - Hely felhőalapú tulajdonság
+* Telemetria, amely a következő méréseket tartalmazza, amelyeket az eszköz gyűjt:
+  * Nedvességtartalom
+  * Hőmérséklet
+  * Pressure
+  * Magnetometer (X, Y, Z)
+  * Gyorsulásmérő (X, Y, Z)
+  * Giroszkóp (X, Y, Z)
+* Beállítások
+  * Feszültség
+  * Aktuális
+  * Ventilátor sebessége
+  * IR-váltógomb
+* properties
+  * Die Number Device tulajdonság
+  * Location Cloud tulajdonság
 
-A konfigurációs eszköz-sablon teljes részletekért lásd: a [Raspberry Pi eszköz sablon részleteinek](#raspberry-pi-device-template-details).
+Az eszköz sablon konfigurációjának részletes ismertetését lásd: [málna PI-eszköz sablonjának részletei](#raspberry-pi-device-template-details).
 
 ## <a name="add-a-real-device"></a>Valós eszköz hozzáadása
 
-Az Azure IoT Central-alkalmazás hozzáadása a valós eszközöknek a **Raspberry Pi** eszköz sablont. Jegyezze fel az eszköz kapcsolati adatok (**hatókör azonosítója**, **Eszközazonosító**, és **elsődleges kulcs**). További információkért lásd: [valós eszköz hozzáadása az Azure IoT Central alkalmazásnak](tutorial-add-device.md).
+Az Azure IoT Central alkalmazásban vegyen fel egy valódi eszközt a **málna PI** -eszköz sablonból. Jegyezze fel az eszköz kapcsolatának részleteit (a**hatókör azonosítóját**, az **eszköz azonosítóját**és az **elsődleges kulcsot**). További információ: Real- [eszköz hozzáadása az Azure IoT Central alkalmazáshoz](tutorial-add-device.md).
 
-### <a name="create-your-net-application"></a>A .NET-alkalmazás létrehozása
+### <a name="create-your-net-application"></a>.NET-alkalmazás létrehozása
 
-Hozzon létre, és az eszköz alkalmazás tesztelése a asztali gépén.
+Az eszköz alkalmazást az asztali gépen hozza létre és teszteli.
 
-A következő lépéseket, használhatja a Visual Studio Code-ot. További információkért lásd: [használata a C#](https://code.visualstudio.com/docs/languages/csharp).
+A következő lépések végrehajtásához használhatja a Visual Studio Code-ot. További információ: [Working with C# ](https://code.visualstudio.com/docs/languages/csharp).
 
 > [!NOTE]
-> Ha szeretné, az alábbi lépéseket egy másik kódot-szerkesztő használatával is elvégezheti.
+> Ha szeretné, a következő lépéseket elvégezheti egy másik Kódszerkesztő használatával.
 
-1. A .NET projekt inicializálása, és adja hozzá a szükséges NuGet-csomagok, futtassa a következő parancsokat:
+1. A .NET-projekt inicializálásához és a szükséges NuGet-csomagok hozzáadásához futtassa a következő parancsokat:
 
    ```cmd/sh
    mkdir pisample
    cd pisample
    dotnet new console
    dotnet add package Microsoft.Azure.Devices.Client
+   dotnet add package Microsoft.Azure.Devices.Provisioning.Client
+   dotnet add package Microsoft.Azure.Devices.Provisioning.Transport.Mqtt
    dotnet restore
    ```
 
-1. Nyissa meg a `pisample` mappát a Visual Studio Code-ban. Nyissa meg a **pisample.csproj** soubor projektu. Adja hozzá a `<RuntimeIdentifiers>` címke az alábbi kódrészletben látható módon:
+1. Nyissa `pisample` meg a mappát a Visual Studio Code-ban. Ezután nyissa meg a **pisample. csproj** projektfájlt. Adja hozzá `<RuntimeIdentifiers>` az alábbi kódrészletben látható címkét:
 
     ```xml
     <Project Sdk="Microsoft.NET.Sdk">
       <PropertyGroup>
         <OutputType>Exe</OutputType>
-        <TargetFramework>netcoreapp2.0</TargetFramework>
+        <TargetFramework>netcoreapp2.1</TargetFramework>
+        <RootNamespace>pisample</RootNamespace>
         <RuntimeIdentifiers>win-arm;linux-arm</RuntimeIdentifiers>
       </PropertyGroup>
       <ItemGroup>
-        <PackageReference Include="Microsoft.Azure.Devices.Client" Version="1.19.0" />
+        <PackageReference Include="Microsoft.Azure.Devices.Client" Version="1.21.0" />
+        <PackageReference Include="Microsoft.Azure.Devices.Provisioning.Client" Version="1.4.0" />
+        <PackageReference Include="Microsoft.Azure.Devices.Provisioning.Transport.Mqtt" Version="1.1.8" />
       </ItemGroup>
     </Project>
     ```
 
     > [!NOTE]
-    > A **Microsoft.Azure.Devices.Client** lehet, hogy a csomag verziószáma magasabb, mint meg.
+    > Előfordulhat, hogy a csomag verziószáma nagyobb, mint a megjelenített értékek.
 
-1. Mentés **pisample.csproj**. Ha a Visual Studio Code kéri, hogy a restore parancs végrehajtása, válassza a **visszaállítása**.
+1. Mentse a **pisample. csproj**. Ha a Visual Studio Code arra kéri, hogy hajtsa végre a Restore parancsot, válassza a **visszaállítás**lehetőséget.
 
-1. Nyissa meg **Program.cs** , és cserélje ki annak tartalmát az alábbira:
+1. Nyissa meg a **program.cs** , és cserélje le a tartalmát a következő kódra. Frissítse a `{your Scope ID}` `{your Device ID}`(z) `{your Device Primary Key}` , és értékeit a korábban megjegyzett értékekkel:
 
     ```csharp
     using System;
@@ -103,154 +110,161 @@ A következő lépéseket, használhatja a Visual Studio Code-ot. További infor
 
     using Microsoft.Azure.Devices.Client;
     using Microsoft.Azure.Devices.Shared;
+    using Microsoft.Azure.Devices.Provisioning.Client;
+    using Microsoft.Azure.Devices.Provisioning.Client.Transport;
+
     using Newtonsoft.Json;
 
     namespace pisample
     {
       class Program
       {
-        static string DeviceConnectionString = "{your device connection string}";
+        static string ScopeID = "{your Scope ID}";
+        static string DeviceID = "{your Device ID}";
+        static string PrimaryKey = "{your Device Primary Key}";
+        static string GlobalDeviceEndpoint = "global.azure-devices-provisioning.net";
         static DeviceClient Client = null;
         static TwinCollection reportedProperties = new TwinCollection();
         static CancellationTokenSource cts;
         static double baseTemperature = 60;
         static double basePressure = 500;
         static double baseHumidity = 50;
-        static void Main(string[] args)
+
+        static async Task Main(string[] args)
         {
-          Console.WriteLine("Raspberry Pi Azure IoT Central example");
+          Console.WriteLine("== Raspberry Pi Azure IoT Central example ==");
 
           try
           {
-            InitClient();
-            SendDeviceProperties();
+
+            using (var security = new SecurityProviderSymmetricKey(DeviceID, PrimaryKey, null))
+            {
+              DeviceRegistrationResult result = await RegisterDeviceAsync(security);
+              if (result.Status != ProvisioningRegistrationStatusType.Assigned) {
+                Console.WriteLine("Failed to register device");
+                return;
+              }
+              IAuthenticationMethod auth = new DeviceAuthenticationWithRegistrySymmetricKey(result.DeviceId, (security as SecurityProviderSymmetricKey).GetPrimaryKey());
+              Client = DeviceClient.Create(result.AssignedHub, auth, TransportType.Mqtt);
+            }
+
+            await SendDevicePropertiesAsync();
+
+            Console.Write("Register settings changed handler...");
+            await Client.SetDesiredPropertyUpdateCallbackAsync(HandleSettingChanged, null);
+            Console.WriteLine("Done");
 
             cts = new CancellationTokenSource();
-            SendTelemetryAsync(cts.Token);
+            Task task = SendTelemetryAsync(cts.Token);
 
-            Console.WriteLine("Wait for settings update...");
-            Client.SetDesiredPropertyUpdateCallbackAsync(HandleSettingChanged, null).Wait();
+            Console.WriteLine("Press any key to exit...");
             Console.ReadKey();
             cts.Cancel();
+            await task;
           }
           catch (Exception ex)
           {
             Console.WriteLine();
-            Console.WriteLine("Error in sample: {0}", ex.Message);
+            Console.WriteLine(ex.Message);
           }
         }
 
-        public static void InitClient()
+        public static async Task<DeviceRegistrationResult> RegisterDeviceAsync(SecurityProviderSymmetricKey security)
         {
-          try
-          {
-            Console.WriteLine("Connecting to hub");
-            Client = DeviceClient.CreateFromConnectionString(DeviceConnectionString, TransportType.Mqtt);
-          }
-          catch (Exception ex)
-          {
-            Console.WriteLine();
-            Console.WriteLine("Error in sample: {0}", ex.Message);
-          }
+            Console.WriteLine("Register device...");
+
+            using (var transport = new ProvisioningTransportHandlerMqtt(TransportFallbackType.TcpOnly))
+            {
+              ProvisioningDeviceClient provClient =
+                        ProvisioningDeviceClient.Create(GlobalDeviceEndpoint, ScopeID, security, transport);
+
+              Console.WriteLine($"RegistrationID = {security.GetRegistrationID()}");
+
+
+              Console.Write("ProvisioningClient RegisterAsync...");
+              DeviceRegistrationResult result = await provClient.RegisterAsync();
+
+              Console.WriteLine($"{result.Status}");
+              Console.WriteLine($"ProvisioningClient AssignedHub: {result.AssignedHub}; DeviceID: {result.DeviceId}");
+
+              return result;
+            }
         }
 
-        public static async void SendDeviceProperties()
+        public static async Task SendDevicePropertiesAsync()
         {
-          try
-          {
-            Console.WriteLine("Sending device properties:");
+            Console.WriteLine("Send device properties...");
             Random random = new Random();
             TwinCollection telemetryConfig = new TwinCollection();
             reportedProperties["dieNumber"] = random.Next(1, 6);
             Console.WriteLine(JsonConvert.SerializeObject(reportedProperties));
 
             await Client.UpdateReportedPropertiesAsync(reportedProperties);
-          }
-          catch (Exception ex)
-          {
-            Console.WriteLine();
-            Console.WriteLine("Error in sample: {0}", ex.Message);
-          }
         }
 
-        private static async void SendTelemetryAsync(CancellationToken token)
+        private static async Task SendTelemetryAsync(CancellationToken token)
         {
-          try
-          {
-            Random rand = new Random();
+          Random rand = new Random();
 
-            while (true)
+          while (true)
+          {
+            double currentTemperature = baseTemperature + rand.NextDouble() * 20;
+            double currentPressure = basePressure + rand.NextDouble() * 100;
+            double currentHumidity = baseHumidity + rand.NextDouble() * 20;
+
+            var telemetryDataPoint = new
             {
-              double currentTemperature = baseTemperature + rand.NextDouble() * 20;
-              double currentPressure = basePressure + rand.NextDouble() * 100;
-              double currentHumidity = baseHumidity + rand.NextDouble() * 20;
+              humidity = currentHumidity,
+              pressure = currentPressure,
+              temp = currentTemperature
+            };
+            var messageString = JsonConvert.SerializeObject(telemetryDataPoint);
+            var message = new Message(Encoding.ASCII.GetBytes(messageString));
 
-              var telemetryDataPoint = new
-              {
-                humidity = currentHumidity,
-                pressure = currentPressure,
-                temp = currentTemperature
-              };
-              var messageString = JsonConvert.SerializeObject(telemetryDataPoint);
-              var message = new Message(Encoding.ASCII.GetBytes(messageString));
+            token.ThrowIfCancellationRequested();
+            await Client.SendEventAsync(message);
 
-              token.ThrowIfCancellationRequested();
-              await Client.SendEventAsync(message);
+            Console.WriteLine("{0} > Sending telemetry: {1}", DateTime.Now, messageString);
 
-              Console.WriteLine("{0} > Sending telemetry: {1}", DateTime.Now, messageString);
-
-              await Task.Delay(1000);
-            }
-          }
-          catch (Exception ex)
-          {
-            Console.WriteLine();
-            Console.WriteLine("Intentional shutdown: {0}", ex.Message);
+            await Task.Delay(1000);
           }
         }
+
 
         private static async Task HandleSettingChanged(TwinCollection desiredProperties, object userContext)
         {
-          try
-          {
-            Console.WriteLine("Received settings change...");
-            Console.WriteLine(JsonConvert.SerializeObject(desiredProperties));
+          Console.WriteLine("Received settings change...");
+          Console.WriteLine(JsonConvert.SerializeObject(desiredProperties));
 
-            string setting = "fanSpeed";
-            if (desiredProperties.Contains(setting))
-            {
-              // Act on setting change, then
-              AcknowledgeSettingChange(desiredProperties, setting);
-            }
-            setting = "setVoltage";
-            if (desiredProperties.Contains(setting))
-            {
-              // Act on setting change, then
-              AcknowledgeSettingChange(desiredProperties, setting);
-            }
-            setting = "setCurrent";
-            if (desiredProperties.Contains(setting))
-            {
-              // Act on setting change, then
-              AcknowledgeSettingChange(desiredProperties, setting);
-            }
-            setting = "activateIR";
-            if (desiredProperties.Contains(setting))
-            {
-              // Act on setting change, then
-              AcknowledgeSettingChange(desiredProperties, setting);
-            }
-            await Client.UpdateReportedPropertiesAsync(reportedProperties);
-          }
-
-          catch (Exception ex)
+          string setting = "fanSpeed";
+          if (desiredProperties.Contains(setting))
           {
-            Console.WriteLine();
-            Console.WriteLine("Error in sample: {0}", ex.Message);
+            // Act on setting change, then
+            BuildAcknowledgement(desiredProperties, setting);
           }
+          setting = "setVoltage";
+          if (desiredProperties.Contains(setting))
+          {
+            // Act on setting change, then
+            BuildAcknowledgement(desiredProperties, setting);
+          }
+          setting = "setCurrent";
+          if (desiredProperties.Contains(setting))
+          {
+            // Act on setting change, then
+            BuildAcknowledgement(desiredProperties, setting);
+          }
+          setting = "activateIR";
+          if (desiredProperties.Contains(setting))
+          {
+            // Act on setting change, then
+            BuildAcknowledgement(desiredProperties, setting);
+          }
+          Console.WriteLine("Send settings changed acknowledgement...");
+          await Client.UpdateReportedPropertiesAsync(reportedProperties);
         }
 
-        private static void AcknowledgeSettingChange(TwinCollection desiredProperties, string setting)
+        private static void BuildAcknowledgement(TwinCollection desiredProperties, string setting)
         {
           reportedProperties[setting] = new
           {
@@ -264,14 +278,9 @@ A következő lépéseket, használhatja a Visual Studio Code-ot. További infor
     }
     ```
 
-    > [!NOTE]
-    > A helyőrző frissítenie `{your device connection string}` a következő lépésben.
+## <a name="run-your-net-application"></a>.NET-alkalmazás futtatása
 
-## <a name="run-your-net-application"></a>A .NET-alkalmazás futtatása
-
-Adja hozzá a kódot az eszköz hitelesítéséhez az Azure IoT Central eszközspecifikus kapcsolati karakterláncra. Ezeket az utasításokat követve [az eszköz kapcsolati karakterláncának létrehozása](howto-generate-connection-string.md) használatával a **hatókör azonosítója**, **Eszközazonosító**, és **elsődleges kulcs** történtek egy korábban vegye figyelembe a.
-
-1. Cserélje le `{your device connection string}` a a **Program.cs** fájl létrehozott kapcsolati karakterlánccal.
+A minta alkalmazás létrehozása és futtatása:
 
 1. Futtassa a következő parancsot a parancssori környezetben:
 
@@ -280,22 +289,22 @@ Adja hozzá a kódot az eszköz hitelesítéséhez az Azure IoT Central eszközs
    dotnet publish -r linux-arm
    ```
 
-1. Másolás a `pisample\bin\Debug\netcoreapp2.1\linux-arm\publish` mappát a Raspberry Pi-eszközre. Használhatja a **scp** parancs használatával másolja ki a fájlokat, például:
+1. Másolja a `pisample\bin\Debug\netcoreapp2.1\linux-arm\publish` mappát a málna PI-eszközre. A **szolgáltatáskapcsolódási** pont parancs használatával másolhatja a fájlokat, például:
 
     ```cmd/sh
     scp -r publish pi@192.168.0.40:publish
     ```
 
-    További információkért lásd: [Raspberry Pi távelérési](https://www.raspberrypi.org/documentation/remote-access/).
+    További információ: [málna PI-távelérés](https://www.raspberrypi.org/documentation/remote-access/).
 
-1. Jelentkezzen be a Raspberry Pi-eszközét, és futtassa a következő parancsokat egy rendszerhéjból a:
+1. Jelentkezzen be a málna PI-eszközbe, és futtassa a következő parancsokat egy rendszerhéjban:
 
     ```cmd/sh
     sudo apt-get update
     sudo apt-get install libc6 libcurl3 libgcc1 libgssapi-krb5-2 liblttng-ust0 libstdc++6 libunwind8 libuuid1 zlib1g
     ```
 
-1. A Raspberry Pi futtassa a következő parancsokat:
+1. A málna PI-ben futtassa a következő parancsokat:
 
     ```cmd/sh
     cd publish
@@ -303,62 +312,62 @@ Adja hozzá a kódot az eszköz hitelesítéséhez az Azure IoT Central eszközs
     ./pisample
     ```
 
-    ![Program elkezd](./media/howto-connect-raspberry-pi-csharp/device_begin.png)
+    ![A program elindul](./media/howto-connect-raspberry-pi-csharp/device_begin.png)
 
-1. Az Azure IoT Central-alkalmazás láthatja, hogy a kód a Raspberry Pi-on futó hogyan működjön együtt az alkalmazás:
+1. Az Azure IoT Central alkalmazásban láthatja, hogy a málna PI-on futó kód hogyan működik együtt az alkalmazással:
 
-   * Az a **mérések** lap a valós eszközhöz, tekintse meg a telemetriát.
-   * Az a **tulajdonságok** lapon láthatja a jelentett értékét **Die szám** tulajdonság.
-   * Az a **beállítások** lapon módosíthatja a Raspberry Pi feszültség és ventilátor sebesség például a különböző beállításait.
+   * A valós eszköz mérések lapján megtekintheti a telemetria.
+   * A **Tulajdonságok** lapon látható a jelentett **Die Number** tulajdonság értéke.
+   * A **Beállítások** lapon megváltoztathatja a málna PI különböző beállításait, például a feszültséget és a ventilátor sebességét.
 
-     Az alábbi képernyőfelvételen a Raspberry Pi fogad beállítás változása:
+     Az alábbi képernyőfelvételen a beállítás módosítását fogadó málna PI látható:
 
-     ![Raspberry Pi fogad beállítás változása](./media/howto-connect-raspberry-pi-csharp/device_switch.png)
+     ![A málna PI a beállítás módosítását fogadja](./media/howto-connect-raspberry-pi-csharp/device_switch.png)
 
-## <a name="raspberry-pi-device-template-details"></a>Raspberry Pi eszköz sablon részletei
+## <a name="raspberry-pi-device-template-details"></a>Málna PI-eszköz sablonjának részletei
 
-A létrehozott alkalmazáshoz a **minta Devkits** alkalmazást sablon tartalmaz egy **Raspberry Pi** eszköz sablon a következő jellemzőkkel:
+A **mintául szolgáló Devkits** létrehozott alkalmazások egy **málna PI** -eszközt tartalmaznak a következő jellemzőkkel:
 
 ### <a name="telemetry-measurements"></a>Telemetria mérések
 
-| Mező neve     | Egység  | Minimális | Maximum | Tizedeshelyek |
+| Mezőnév     | Mértékegységek  | Minimális | Maximum | Tizedeshelyek |
 | -------------- | ------ | ------- | ------- | -------------- |
 | páratartalom       | %      | 0       | 100     | 0              |
-| TEMP           | °C     | -40     | 120     | 0              |
+| ideiglenes           | °C     | – 40     | 120     | 0              |
 | pressure       | hPa    | 260     | 1260    | 0              |
 | magnetometerX  | mgauss | -1000   | 1000    | 0              |
 | magnetometerY  | mgauss | -1000   | 1000    | 0              |
 | magnetometerZ  | mgauss | -1000   | 1000    | 0              |
-| accelerometerX | mg     | -2000   | 2000    | 0              |
-| accelerometerY | mg     | -2000   | 2000    | 0              |
-| accelerometerZ | mg     | -2000   | 2000    | 0              |
-| gyroscopeX     | mdps   | -2000   | 2000    | 0              |
-| gyroscopeY     | mdps   | -2000   | 2000    | 0              |
-| gyroscopeZ     | mdps   | -2000   | 2000    | 0              |
+| accelerometerX | mg     | – 2000   | 2000    | 0              |
+| gyorsulásmérő | mg     | – 2000   | 2000    | 0              |
+| accelerometerZ | mg     | – 2000   | 2000    | 0              |
+| gyroscopeX     | mdps   | – 2000   | 2000    | 0              |
+| gyroscopeY     | mdps   | – 2000   | 2000    | 0              |
+| gyroscopeZ     | mdps   | – 2000   | 2000    | 0              |
 
 ### <a name="settings"></a>Beállítások
 
-Numerikus beállításai
+Numerikus beállítások
 
-| Megjelenített név | Mező neve | Egység | Tizedeshelyek | Minimális | Maximum | Kezdeti |
+| Display name | Mezőnév | Mértékegységek | Tizedeshelyek | Minimális | Maximum | Kezdeti |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
-| Feszültségérzékelő      | setVoltage | V | 0              | 0       | 240     | 0       |
-| Aktuális      | setCurrent | Teljesítménytényező  | 0              | 0       | 100     | 0       |
-| Sebesség ventilátor    | fanSpeed   | RPM   | 0              | 0       | 1000    | 0       |
+| Feszültség      | setVoltage | V | 0              | 0       | 240     | 0       |
+| Aktuális      | setCurrent | Erősítők  | 0              | 0       | 100     | 0       |
+| Ventilátor sebessége    | fanSpeed   | RPM   | 0              | 0       | 1000    | 0       |
 
-A beállítások ki-/ bekapcsolása
+Váltási beállítások
 
-| Megjelenített név | Mező neve | A szöveg | Ki a szöveg | Kezdeti |
+| Display name | Mezőnév | Szövegen | Kikapcsolt szöveg | Kezdeti |
 | ------------ | ---------- | ------- | -------- | ------- |
 | IR           | activateIR | ON      | KI      | Ki     |
 
-### <a name="properties"></a>Tulajdonságok
+### <a name="properties"></a>properties
 
-| Typo            | Megjelenített név | Mező neve | Adattípus |
-| --------------- | ------------ | ---------- | --------- |
-| Eszköztulajdonság | Die száma   | dieNumber  | szám    |
-| Szöveg            | Földrajzi egység     | location   | –       |
+| Type            | Display name | Mezőnév | Adattípus                              |
+| --------------- | ------------ | ---------- | -------------------------------------- |
+| Eszköz tulajdonsága | Die száma   | dieNumber  | number                                 |
+| Location        | Location     | location   | {Lat: float, Long: float, Alt?: float} |
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megismerte a Raspberry Pi csatlakoztatása az Azure IoT Central alkalmazáshoz, a javasolt következő lépésre megtudhatja, hogyan [állítson be egy egyéni sablont](howto-set-up-template.md) a saját IoT-eszköz.
+Most, hogy megtanulta, hogyan csatlakoztatható a málna PI az Azure IoT Central-alkalmazáshoz, a javasolt következő lépés az, hogy megtudja, hogyan [állíthat be egyéni](howto-set-up-template.md) IoT-eszközt a saját eszközökhöz.

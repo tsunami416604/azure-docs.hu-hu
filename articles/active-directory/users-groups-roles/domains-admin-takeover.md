@@ -1,6 +1,6 @@
 ---
-title: Egy nem felügyelt címtár – Azure Active Directory rendszergazdai átvételt |} A Microsoft Docs
-description: Hogyan vegye át az Azure Active Directoryban egy nem felügyelt címtár (árnyékmásolat-bérlő) egy DNS-tartománynevet.
+title: Nem felügyelt könyvtár rendszergazdai átvétele – Azure Active Directory | Microsoft Docs
+description: DNS-tartománynév átvétele nem felügyelt címtárban (árnyékmásolat-bérlő) a Azure Active Directoryban.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -10,129 +10,126 @@ ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 03/18/2019
+ms.date: 08/01/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f9a33b6bce8cef5bf790efeb43259dfb8013487
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 44276c911768f588064245c37a1284adeda8138f
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202486"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315719"
 ---
-# <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Rendszergazdaként az Azure Active Directoryban egy nem felügyelt könyvtár átvétele
+# <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Nem felügyelt címtár átvétele rendszergazdaként Azure Active Directory
 
-Ez a cikk ismerteti egy DNS-tartománynevet az Azure Active Directoryban (Azure AD) egy nem felügyelt könyvtár átvétele kétféle módon. Amikor egy önkiszolgáló felhasználó regisztrál egy Azure AD-t használó felhőszolgáltatásra, a rendszer az e-mail-címe alapján hozzáadja egy nem felügyelt Azure AD-címtárhoz. Önkiszolgáló vagy "vírusos" a szolgáltatás regisztrációs kapcsolatos további információkért lásd: [Mi az Azure Active Directory önkiszolgáló regisztráció?](directory-self-service-signup.md)
+Ez a cikk két módszert ismertet a DNS-tartománynév átvételére egy nem felügyelt címtárban Azure Active Directory (Azure AD). Amikor egy önkiszolgáló felhasználó regisztrál egy Azure AD-t használó felhőszolgáltatásra, a rendszer az e-mail-címe alapján hozzáadja egy nem felügyelt Azure AD-címtárhoz. További információ az önkiszolgáló vagy a "vírusos" szolgáltatással való regisztrációról: [Mi az a Azure Active Directory önkiszolgáló regisztrációja?](directory-self-service-signup.md)
 
-## <a name="decide-how-you-want-to-take-over-an-unmanaged-directory"></a>Annak eldöntése, hogyan szeretné egy nem felügyelt könyvtár átvétele
+## <a name="decide-how-you-want-to-take-over-an-unmanaged-directory"></a>Döntse el, hogyan szeretné átvenni a nem felügyelt címtárat
 A rendszergazdai átvétel során az [Egyéni tartománynév hozzáadása az Azure Active Directoryhoz](../fundamentals/add-custom-domain.md) című cikkben leírt módon bizonyíthatja tulajdonjogát. A következő szakaszok részletesen ismertetik a rendszergazdai feladatokat, amelyek összegzése itt olvasható:
 
 * Ha [„belső” rendszergazdai átvételt](#internal-admin-takeover) végez egy nem felügyelt Azure-címtáron, a rendszer hozzáadja Önt a nem felügyelt címtár globális rendszergazdájaként. Semmilyen felhasználó, tartomány vagy szolgáltatáscsomag nem lesz migrálva az Ön által felügyelt más címtárakba.
 
 * Ha [„külső” rendszergazdai átvételt](#external-admin-takeover) végez egy nem felügyelt Azure-címtáron, hozzáadja a nem felügyelt címtár DNS-tartománynevét az Ön által felügyelt Azure-címtárhoz. A tartománynév hozzáadásakor az Ön által felügyelt Azure-címtárban létrejön a felhasználók és erőforrások közötti kapcsolatok leképezése, így a felhasználók továbbra is megszakítás nélkül érhetik el a szolgáltatásokat. 
 
-## <a name="internal-admin-takeover"></a>Belső rendszergazdai átvétellel
+## <a name="internal-admin-takeover"></a>Belső rendszergazdai átvétel
 
-Egyes termékek, amelyek tartalmazzák a SharePoint és onedrive vállalati verzió, például az Office 365, nem támogatja a külső átvételt. Ha ez a forgatókönyv, vagy ha a rendszergazda, és a egy nem felügyelt átvenni szeretné, vagy "árnyékmásolat" bérlő létrehozása a felhasználók, akik önkiszolgáló bejelentkezést használt a, ezt megteheti egy belső rendszergazdai átvétellel.
+A SharePoint-és OneDrive, például az Office 365-et tartalmazó termékek nem támogatják a külső átvételt. Ha ez a forgatókönyv, vagy ha Ön rendszergazda, és nem felügyelt vagy "Shadow" bérlőt szeretne létrehozni az önkiszolgáló regisztrációt használó felhasználók számára, ezt egy belső rendszergazdai átvételsel teheti meg.
 
-1. Hozzon létre egy felhasználói környezetben keresztül, mint a Power BI regisztráció a nem felügyelt bérlőt. Példa kényelmi célokat szolgál ezek a lépések feltételezik, hogy az elérési út.
+1. Hozzon létre egy felhasználói környezetet a nem felügyelt bérlőn a Power BI regisztrálásával. Például a következő lépések elvégzésével feltételezhető, hogy az elérési út.
 
-2. Nyissa meg a [Power BI-webhelyén](https://powerbi.com) válassza **ingyenes próba megkezdése**. Adjon meg egy felhasználói fiókot, amely a szervezet; tartománynevet használja: Ha például `admin@fourthcoffee.xyz`. Az ellenőrző kód megadása után ellenőrizze az e-mailben a megerősítő kód.
+2. Nyissa meg az [Power bi webhelyet](https://powerbi.com) , és válassza az **ingyenes indítás**lehetőséget. Adjon meg egy olyan felhasználói fiókot, amely a szervezet tartománynevét használja; például `admin@fourthcoffee.xyz`:. Az ellenőrző kód megadása után tekintse meg az e-mailt a megerősítő kódhoz.
 
-3. A megerősítő e-mailben a Power bi-BÓL, válassza ki a **Igen, én**.
+3. A Power BI megerősítő e-mailben válassza az **Igen, ez nekem**lehetőséget.
 
-4. Jelentkezzen be a [Microsoft 365 felügyeleti központban](https://admin.microsoft.com) a Power BI felhasználói fiókkal. Megjelenik az üzenet, amely arra utasítja, hogy **váljon rendszergazdává** a tartomány neve, amely már megtörtént a nem felügyelt bérlőt. Válassza ki **Igen, szeretnék lenni a rendszergazda**.
+4. Jelentkezzen be a [Microsoft 365 felügyeleti központba](https://portal.office.com/admintakeover) a Power bi felhasználói fiókkal. Egy üzenet jelenik meg, amely arra utasítja Önt, hogy a nem felügyelt bérlőben már ellenőrzött tartománynév **rendszergazdája legyen** . válassza **az igen, szeretnék a rendszergazdát**.
   
-   ![a rendszergazda legyen az első képernyőképe](./media/domains-admin-takeover/become-admin-first.png)
+   ![a rendszergazdai jogosultságok első képernyőképe](./media/domains-admin-takeover/become-admin-first.png)
   
-5. Adja hozzá a TXT-rekordot a tartománynév tulajdonjogának igazolásához **fourthcoffee.xyz** , a tartománynév regisztrálójánál. Ebben a példában GoDaddy.com.
+5. Adja hozzá a TXT-rekordot, hogy igazolja, hogy a tartománynév-regisztrálónál a **fourthcoffee. xyz** nevű tartománynév van. Ebben a példában ez a GoDaddy.com.
   
-   ![Egy txt típusú rekordot a tartománynév hozzáadása](./media/domains-admin-takeover/become-admin-txt-record.png)
+   ![TXT-rekord hozzáadása a tartománynévhez](./media/domains-admin-takeover/become-admin-txt-record.png)
 
-Ha a DNS txt típusú rekordok, a tartománynév regisztrálójánál az megtörtént, az Azure AD-bérlő is kezelheti.
+A DNS TXT-rekordok a tartománynév-regisztrálónál való ellenőrzésekor kezelheti az Azure AD-bérlőt.
 
-Amikor végzett a fenti lépéseket, Ön mostantól az Office 365-ben a negyedik kávé bérlő globális rendszergazdája. A tartománynév integrálása más Azure-szolgáltatások, távolítsa el az Office 365-ből, és adja hozzá a különböző felügyelt bérlőre, az Azure-ban.
+Az előző lépések elvégzése után Ön most már az Office 365 negyedik kávé bérlője globális rendszergazdája. Ha a tartománynevet a többi Azure-szolgáltatással szeretné integrálni, távolítsa el az Office 365-ből, és vegye fel egy másik felügyelt bérlőbe az Azure-ban.
 
-### <a name="adding-the-domain-name-to-a-managed-tenant-in-azure-ad"></a>A tartománynév hozzáadását felügyelt bérlőre az Azure ad-ben
+### <a name="adding-the-domain-name-to-a-managed-tenant-in-azure-ad"></a>Tartománynév hozzáadása felügyelt bérlőhöz az Azure AD-ben
 
-1. Nyissa meg a [Microsoft 365 felügyeleti központban](https://admin.microsoft.com).
-2. Válassza ki **felhasználók** lapra, és hozzon létre egy új felhasználói fiókot vagy hasonló néven *felhasználói\@fourthcoffeexyz.onmicrosoft.com* , amely nem használja az egyéni tartomány nevét. 
-3. Győződjön meg arról, hogy az új felhasználói fiók rendelkezik-e az Azure AD-bérlő globális rendszergazdai jogosultságokkal.
-4. Nyissa meg **tartományok** a Microsoft 365 felügyeleti központban lapon kattintson a tartomány nevét, majd válassza ki **eltávolítása**. 
+1. Nyissa meg a [Microsoft 365 felügyeleti központot](https://admin.microsoft.com).
+2. Válassza a **felhasználók** fület, és hozzon létre egy olyan nevű új felhasználói fiókot, amely nem használja az egyéni tartománynevet (például *felhasználói\@fourthcoffeexyz.onmicrosoft.com* ). 
+3. Győződjön meg arról, hogy az új felhasználói fiók globális rendszergazdai jogosultságokkal rendelkezik az Azure AD-bérlőhöz.
+4. Nyissa meg a **tartományok** fület a Microsoft 365 felügyeleti központban, válassza ki a tartománynevet, és válassza az **Eltávolítás**lehetőséget. 
   
-   ![Távolítsa el a tartománynevet az Office 365-ből](./media/domains-admin-takeover/remove-domain-from-o365.png)
+   ![a tartománynév eltávolítása az Office 365-ből](./media/domains-admin-takeover/remove-domain-from-o365.png)
   
-5. Ha a felhasználók és csoportok az Office 365-ben az eltávolított tartománynév rendelkezik, azok kell átnevezni az. onmicrosoft.com tartomány. Ha kényszeríti a tartománynév törlése, minden felhasználó automatikusan átnevezi, ebben a példában a *felhasználói\@fourthcoffeexyz.onmicrosoft.com*.
+5. Ha az Office 365-ben olyan felhasználók vagy csoportok találhatók, amelyek az eltávolított tartománynévre hivatkoznak, akkor azokat a. onmicrosoft.com tartományba kell átnevezni. Ha kényszeríti a tartománynév törlését, az összes felhasználó automatikusan átnevezve lesz, ebben a példában a *felhasználói\@fourthcoffeexyz.onmicrosoft.com*.
   
-6. Jelentkezzen be a [Azure AD felügyeleti központ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) egy olyan fiókkal, amely a az Azure AD-bérlő globális rendszergazdája.
+6. Jelentkezzen be az [Azure ad felügyeleti központba](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) egy olyan fiókkal, amely az Azure ad-bérlő globális rendszergazdája.
   
-7. Válassza ki **egyéni tartománynevek**, majd adja hozzá a tartomány nevét. Írja be az DNS txt típusú rekordot a tartománynév tulajdonjogának ellenőrzése kell. 
+7. Válassza az **Egyéni tartománynevek**lehetőséget, majd adja hozzá a tartománynevet. A tartománynév tulajdonjogának ellenőrzéséhez meg kell adnia a DNS TXT-rekordokat. 
   
-   ![az Azure AD hozzá ad ellenőrzött tartomány](./media/domains-admin-takeover/add-domain-to-azure-ad.png)
+   ![Az Azure AD-hez hozzáadott tartomány ellenőrizve](./media/domains-admin-takeover/add-domain-to-azure-ad.png)
   
 > [!NOTE]
-> Bármely Power bi-ban vagy az Azure Rights Management szolgáltatást az Office 365-bérlő a hozzárendelt licenccel rendelkező felhasználók irányítópultokkal kell menteni, ha a tartomány nevét a rendszer eltávolítja. Jelentkezzen be egy felhasználónevet, például a használatához be kell jelentkezniük *felhasználói\@fourthcoffeexyz.onmicrosoft.com* helyett *felhasználói\@fourthcoffee.xyz*.
+> A Power BI vagy az Azure Rights Management szolgáltatás azon felhasználói, akik rendelkeznek az Office 365-bérlőhöz hozzárendelt licenccel, menteniük kell az irányítópultokat, ha a tartománynév el lett távolítva. A felhasználóknak olyan felhasználónévvel kell bejelentkezniük, mint a *\@felhasználói fourthcoffeexyz.onmicrosoft.com* , nem pedig a *User\@fourthcoffee. xyz*néven.
 
-## <a name="external-admin-takeover"></a>Külső rendszergazdai átvétellel
+## <a name="external-admin-takeover"></a>Külső rendszergazdai átvétel
 
-Már az Azure-szolgáltatások vagy az Office 365-bérlő kezelése esetén nem adhat hozzá egyéni tartománynév már ellenőrizve van egy másik Azure AD-bérlő Ha. Azonban az Azure ad-ben a felügyelt bérlőről, képes átvenni egy nem felügyelt bérlőt egy külső rendszergazdai átvétellel. Az általános eljárást követi a cikk [egyéni tartomány hozzáadása az Azure AD](../fundamentals/add-custom-domain.md).
+Ha már felügyel egy bérlőt az Azure-szolgáltatásokkal vagy az Office 365-mel, nem adhat hozzá egyéni tartománynevet, ha már ellenőrizve van egy másik Azure AD-bérlőben. Az Azure AD-beli felügyelt bérlője azonban átveheti a nem felügyelt bérlőt külső rendszergazdai átvételre. Az általános eljárás az [egyéni tartomány hozzáadása az Azure ad-hoz](../fundamentals/add-custom-domain.md)című cikket követi.
 
-Ha a tartománynév tulajdonjogának ellenőrzéséhez az Azure AD a tartománynév távolít el a nem felügyelt bérlőt, és áthelyezi a meglévő bérlőhöz. Külső rendszergazdai átvétellel egy nem felügyelt címtár DNS TXT érvényesítési leírt eljárást belső rendszergazdai átvétellel van szükség. A különbség az, hogy a következő vannak is átkerül a tartomány nevét:
+A tartománynév tulajdonjogának ellenőrzésekor az Azure AD eltávolítja a tartománynevet a nem felügyelt bérlőről, és áthelyezi a meglévő bérlőre. A nem felügyelt címtár külső rendszergazdai átvételéhez ugyanazt a DNS TXT-ellenőrzési folyamatot kell megadnia, mint a belső rendszergazdai átvétel. A különbség az, hogy az alábbiak is át lesznek helyezve a tartománynévvel:
 
 - Felhasználók
 - Előfizetések
 - Licenc-hozzárendelések
 
-### <a name="support-for-external-admin-takeover"></a>Külső rendszergazdai átvétellel támogatása
-A következő online services által támogatott külső rendszergazdai átvétel:
+### <a name="support-for-external-admin-takeover"></a>Külső rendszergazdai átvétel támogatása
+A külső rendszergazdai átvételt a következő online szolgáltatások támogatja:
 
-- Power BI
 - Azure Rights Management
 - Exchange Online
 
-A támogatott service-csomagok a következők:
+A támogatott szolgáltatási csomagok a következők:
 
-- A Power BI ingyenes
-- A Power BI Pro
-- A PowerApps ingyenes
+- Ingyenes PowerApps
 - Ingyenes PowerFlow
 - RMS egyéni felhasználók számára
 - Microsoft Stream
 - Dynamics 365 ingyenes próbaverzió
 
-Külső rendszergazdai átvétellel bármely szolgáltatás, amely rendelkezik a SharePoint, a onedrive vállalati verzió, illetve a Skype For Business; service-csomagok esetén nem támogatott például a ingyenes Office-előfizetés vagy az Office alapszintű Termékváltozat. Lehetősége van a [ **ForceTakeover** beállítás](#azure-ad-powershell-cmdlets-for-the-forcetakeover-option) eltávolítása a nem felügyelt bérlőt a tartomány nevét, és ellenőrzi a kívánt bérlőre. Ez a beállítás ForceTakeover nem felhasználók átvitele, vagy az előfizetéshez való hozzáférés megőrzése. Ehelyett ezt a beállítást csak áthelyezi a tartomány nevét. 
+A külső rendszergazdai átvétel nem támogatott bármely olyan szolgáltatás esetében, amely tartalmazza a SharePoint, a OneDrive vagy a Skype vállalati verziójának szolgáltatási csomagját. például egy Office ingyenes előfizetésen keresztül. 
 
-#### <a name="more-information-about-rms-for-individuals"></a>További információk az RMS egyéni felhasználók számára
+Igény szerint a [ **ForceTakeover** beállítással](#azure-ad-powershell-cmdlets-for-the-forcetakeover-option) is eltávolíthatja a tartománynevet a nem felügyelt bérlőről, és ellenőrizheti a kívánt bérlőn. 
 
-A [RMS egyéni felhasználók számára](/azure/information-protection/rms-for-individuals), ha a nem felügyelt bérlőt a bérlő ugyanabban a régióban, hogy saját, az automatikusan létrehozott [Azure Information Protection-bérlőkulcs](/azure/information-protection/plan-implement-tenant-key) és [alapértelmezett védelmi sablonok](/azure/information-protection/configure-usage-rights#rights-included-in-the-default-templates) továbbá a tartomány nevét átkerül. 
+#### <a name="more-information-about-rms-for-individuals"></a>További információ az RMS egyéni felhasználók számára szolgáltatásról
 
-A kulcs és a sablonok nem kerülnek, ha a nem felügyelt bérlő egy másik régióban van. Például a nem felügyelt bérlő az Európai és a bérlő Észak-amerikai van saját. 
+Az [RMS egyéni felhasználók](/azure/information-protection/rms-for-individuals)számára esetében, ha a nem felügyelt bérlő ugyanabban a régióban található, mint a bérlő, az automatikusan létrehozott [Azure Information Protection bérlői kulcsot](/azure/information-protection/plan-implement-tenant-key) és az [alapértelmezett védelmi sablonokat](/azure/information-protection/configure-usage-rights#rights-included-in-the-default-templates) is áthelyezi a következővel: a tartománynév.
 
-RMS egyéni felhasználók számára védett tartalom megnyitása az Azure AD-hitelesítés támogatására szolgálnak, bár nem rendszergazdák számára is a tartalmak védelmére. Felhasználók tartalomvédelemre volt az RMS egyéni felhasználók számára előfizetéssel, és a kulcs és a sablonok nem lett áthelyezve, tartalom nem érhető el követően a tartomány átvételéről.
+A kulcs és a sablonok nem lesznek áthelyezve, amikor a nem felügyelt bérlő egy másik régióban található. Ha például a nem felügyelt bérlő Európában található, és a saját szervezete Észak-Amerika van.
 
-#### <a name="more-information-about-power-bi"></a>További információ a Power bi-ban
+Bár az RMS egyéni felhasználók számára készült, hogy támogassa az Azure AD-hitelesítést a védett tartalom megnyitásához, nem akadályozza meg, hogy a felhasználók is megóvják a tartalmat. Ha a felhasználók védik a tartalmat az RMS egyéni felhasználók számára előfizetéssel, és a kulcs és a sablonok nem lettek áthelyezve, akkor ez a tartalom nem érhető el a tartomány átvétele után.
 
-Egy külső átvétel, Power BI-tartalmakat, amelyek előtt kerül az átvétel végrehajtásakor egy [a Power BI archivált munkaterülete](/power-bi/service-admin-power-bi-archived-workspace). Az új bérlő használni kívánt tartalmak manuálisan át kell telepítenie.
+### <a name="azure-ad-powershell-cmdlets-for-the-forcetakeover-option"></a>Azure AD PowerShell-parancsmagok a ForceTakeover beállításhoz
+Ezeket a parancsmagokat a [PowerShell-példában](#powershell-example)is láthatja.
 
-### <a name="azure-ad-powershell-cmdlets-for-the-forcetakeover-option"></a>Az Azure AD PowerShell-parancsmagok a ForceTakeover lehetőséget
-Láthatja, hogy ezeket a parancsmagokat a használt [PowerShell-példa](#powershell-example).
-
-
-A parancsmag | Használat 
+Parancsmag | Használat
 ------- | -------
-`connect-msolservice` | Amikor a rendszer kéri, jelentkezzen be a felügyelt bérlőhöz.
-`get-msoldomain` | A tartománynevek az aktuális bérlőhöz társított mutatja.
-`new-msoldomain –name <domainname>` | Hozzáadja a bérlő ellenőrzött (nem DNS-ellenőrzés elvégzése még), a tartomány nevét.
-`get-msoldomain` | A tartománynév már szerepel a felügyelt bérlőhöz társított tartománynevek listája, de állapottal **ellenőrzött**.
-`get-msoldomainverificationdns –Domainname <domainname> –Mode DnsTxtRecord` | Provides the information to put into new DNS TXT record for the domain (MS=xxxxx). Ellenőrzési előfordulhat, hogy nem történik azonnal, mivel némi időre a txt típusú rekord propagálása, ezért vár néhány percet, mielőtt a mérlegeli a **- ForceTakeover** lehetőséget. 
-`confirm-msoldomain –Domainname <domainname> –ForceTakeover Force` | <li>Ha továbbra is nem ellenőrzi a tartománynevet, folytathatja a **- ForceTakeover** lehetőséget. Ellenőrzi, hogy a TXT-rekord lett létrehozva, és az átvétel folyamat elindít.<li>A **- ForceTakeover** beállítás hozzá kell adni a parancsmag csak akkor, ha egy külső alá vonhatja rendszergazdai átvétellel, például ha a nem felügyelt bérlőt rendelkezik a Office 365-szolgáltatások blokkolja az átvétel kényszerítése.
-`get-msoldomain` | A tartományok listáját jeleníti meg most tartománynevet **ellenőrzött**.
+`connect-msolservice` | Ha a rendszer kéri, jelentkezzen be a felügyelt bérlőbe.
+`get-msoldomain` | Megjeleníti az aktuális bérlőhöz társított tartományneveket.
+`new-msoldomain –name <domainname>` | Nem ellenőrzöttként adja hozzá a tartománynevet a bérlőhöz (a DNS-ellenőrzés még nem lett elvégezve).
+`get-msoldomain` | A tartománynév már szerepel a felügyelt bérlőhöz társított tartománynevek listáján, de nem **ellenőrzöttként**van felsorolva.
+`get-msoldomainverificationdns –Domainname <domainname> –Mode DnsTxtRecord` | Megadja a tartományhoz tartozó új DNS TXT-rekordba (MS = XXXXX) való üzembe helyezéshez szükséges adatokat. Előfordulhat, hogy az ellenőrzés nem történik meg azonnal, mert eltart egy ideig a TXT-rekord propagálásához, ezért várjon néhány percet, mielőtt fontolóra venné a **-ForceTakeover** kapcsolót. 
+`confirm-msoldomain –Domainname <domainname> –ForceTakeover Force` | <li>Ha a tartománynevet még nem ellenőrzi, folytathatja a **-ForceTakeover** kapcsolót. Ellenőrzi, hogy létrejött-e a TXT-rekord, és elindította-e az átvételi folyamatot.<li>A **-ForceTakeover** beállítást csak akkor adja hozzá a parancsmaghoz, ha a külső rendszergazdai átvételt kényszeríti, például ha a nem felügyelt bérlő rendelkezik Office 365-szolgáltatásokkal, amelyek blokkolják az átvételt.
+`get-msoldomain` | A tartománynevek mostantól **ellenőrzöttként**jelenítik meg a tartománynevet.
+
+> [!NOTE]
+> A nem felügyelt Azure AD-szervezet 10 nappal a külső átvételi kényszerítési lehetőség gyakorlása után törlődik.
 
 ### <a name="powershell-example"></a>PowerShell-példa
 
-1. Csatlakozás az Azure AD önkiszolgáló előfizetésért válaszolni használt hitelesítő adatok használatával:
+1. Kapcsolódjon az Azure AD-hez az önkiszolgáló ajánlatra való válaszadáshoz használt hitelesítő adatok használatával:
    ```powershell
     Install-Module -Name MSOnline
     $msolcred = get-credential
@@ -144,7 +141,7 @@ A parancsmag | Használat
    ```powershell
     Get-MsolDomain
    ```
-3. Futtassa a Get-MsolDomainVerificationDns parancsmagot kihívást létrehozásához:
+3. A Get-MsolDomainVerificationDns parancsmag futtatásával hozzon létre egy kihívást:
    ```powershell
     Get-MsolDomainVerificationDns –DomainName *your_domain_name* –Mode DnsTxtRecord
   
@@ -153,12 +150,12 @@ A parancsmag | Használat
     Get-MsolDomainVerificationDns –DomainName contoso.com –Mode DnsTxtRecord
    ```
 
-4. Ez a parancs által visszaadott értéket (a kihívás) másolja. Példa:
+4. Másolja ki a parancs által visszaadott értéket (a kihívást). Példa:
    ```powershell
     MS=32DD01B82C05D27151EA9AE93C5890787F0E65D9
    ```
-5. Hozzon létre egy, az előző lépésben kimásolt értéket tartalmazó DNS txt típusú rekordot a nyilvános DNS-névtérben. Ez a bejegyzés a név a szülőtartomány neve, így a rekord a DNS-szerepkört a Windows Server használatával hoz létre, ha hagyja meg a rekord neve üres, és csak illessze be az értéket a szövegmezőbe.
-6. Futtassa a a kérdés ellenőrzése Confirm-MsolDomain-parancsmagot:
+5. A nyilvános DNS-névtérben hozzon létre egy olyan DNS TXT-rekordot, amely az előző lépésben másolt értéket tartalmazza. A rekord neve a szülőtartomány neve, így ha létrehozza ezt az erőforrásrekordot a Windows Server DNS-szerepkörének használatával, hagyja üresen a rekord nevét, és illessze be az értéket a szövegmezőbe.
+6. Futtassa a Confirm-MsolDomain parancsmagot a probléma ellenőrzéséhez:
   
    ```powershell
     Confirm-MsolEmailVerifiedDomain -DomainName *your_domain_name*
@@ -170,11 +167,11 @@ A parancsmag | Használat
     Confirm-MsolEmailVerifiedDomain -DomainName contoso.com
    ```
 
-Sikeres kihívást visszatér a parancssorba hiba nélkül.
+A sikeres kihívás egy hiba nélkül visszaadja a kérést.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Egy egyéni tartománynév hozzáadása az Azure ad-ben](../fundamentals/add-custom-domain.md)
+* [Egyéni tartománynév hozzáadása az Azure AD-hez](../fundamentals/add-custom-domain.md)
 * [Az Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview)
 * [Azure PowerShell](/powershell/azure/overview)
 * [Azure parancsmag-referencia](/powershell/azure/get-started-azureps)

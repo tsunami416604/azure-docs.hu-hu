@@ -1,68 +1,137 @@
 ---
-title: Az Azure Maps előugró ablak hozzáadása |} A Microsoft Docs
-description: Egy előugró ablak hozzáadása a Javascript-térkép
+title: Felugró ablak hozzáadása a Azure Mapshoz | Microsoft Docs
+description: Felugró ablak hozzáadása a Azure Maps web SDK-hoz.
 author: jingjing-z
 ms.author: jinzh
-ms.date: 11/09/2018
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: a6c8a8aa954379036ce566a205b8cb4e97952727
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: cde6c745034d0963bd372e36e6e5a046113c202b
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52887838"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976553"
 ---
-# <a name="add-a-popup-to-the-map"></a>A térkép egy előugró ablak hozzáadása
+# <a name="add-a-popup-to-the-map"></a>Felugró ablak hozzáadása a térképhez
 
-Ez a cikk bemutatja, hogyan egy előugró ablak hozzáadása egy pont a térképen.
+Ez a cikk bemutatja, hogyan adhat hozzá egy előugró pontot egy térképen.
 
 ## <a name="understand-the-code"></a>A kód értelmezése
 
-<a id="addAPopup"></a>
+A következő kód egy szimbólum réteget használva hozzáadja a térképhez `description` egy pont funkciót, amely rendelkezik `name` a és a tulajdonsággal. Az [előugró osztály](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest) egy példánya jön létre, de nem jelenik meg. Az egérmutató a szimbólum rétegbe kerül, és az előugró ablak megnyitására és bezárására szolgál, amikor az egérmutató a szimbólum jelölője fölé vagy lefelé mutat. Ha a jelölő szimbólum `position` látható, az előugró ablak tulajdonsága a jelölő pozíciójának megfelelően frissül, és a `content` beállítás frissül, és egy olyan `name` HTML-kódot tartalmaz, `description` amely betakarja az egérmutatót a pont funkció és tulajdonságai között. Ekkor megjelenik a felugró ablak a térképen a `open` függvény használatával.
 
-<iframe height='500' scrolling='no' title='Az Azure Maps pop hozzáadása' src='//codepen.io/azuremaps/embed/MPRPvz/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll típusú <a href='https://codepen.io/azuremaps/pen/MPRPvz/'>pop összeadódhatnak az Azure Maps</a> által az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
-</iframe>
+```javascript
+//Define an HTML template for a custom popup content laypout.
+var popupTemplate = '<div class="customInfobox"><div class="name">{name}</div>{description}</div>';
 
-A fenti kód az első kódblokkot egy térkép-objektumot hoz létre. Látható [térkép létrehozásához](./map-create.md) útmutatást. Azt is létrehoz HTML tartalom megjeleníteni kívánt helyi belül.
+//Create a data source and add it to the map.
+var dataSource = new atlas.source.DataSource();
+map.sources.add(dataSource);
 
-A második kódblokkot létrehoz egy objektum használhatja a [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) osztály. A pont egy [funkció](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) , a [pont](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) osztály. Ezután létrehozott és az adatforráshoz hozzáadandó egy pont egy név és leírás tulajdonsággal rendelkező objektumot.
+dataSource.add(new atlas.data.Feature(new atlas.data.Point([-122.1333, 47.63]), {
+  name: 'Microsoft Building 41', 
+  description: '15571 NE 31st St, Redmond, WA 98052'
+}));
 
-A [szimbólum réteg](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) használja a szöveges vagy ikonjai csomagolni szoftverfrissítésipont-alapú adatok megjelenítése a [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) szimbólumra a térképen.  A harmadik kódblokkot egy szimbólum réteg jön létre. Az adatforrás fel van véve a szimbólum réteghez, majd a térkép felvett.
+//Create a layer to render point data.
+var symbolLayer = new atlas.layer.SymbolLayer(dataSource);
 
-A negyedik kódblokkot létrehoz egy [előugró objektum](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest) keresztül `new atlas.Popup()`. Előugró ablak tulajdonságok, mint például a pozíció és pixelOffset részét képező [PopupOptions](/javascript/api/azure-maps-control/atlas.popupoptions). Előugró ablak a konstruktorban, vagy keresztül határozhatók PopupOptions [setOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#setoptions-popupoptions-) függvény az előugró osztály. A `mouseover` majd jön létre a szimbólum réteg eseményfigyelő.
+//Add the polygon and line the symbol layer to the map.
+map.layers.add(symbolLayer);
 
-A legutóbbi kódblokkot által aktivált függvény létrehozása a `mouseover` eseményfigyelő. Azt állítja be a tartalmát és tulajdonságait – előugró, és hozzáadja az előugró objektum a térképen.
+//Create a popup but leave it closed so we can update it and display it later.
+popup = new atlas.Popup({
+  pixelOffset: [0, -18],
+  closeButton: false
+});
 
-## <a name="reusing-a-popup-with-multiple-points"></a>Egy előugró ablak, több pontok újbóli használata
+//Add a hover event to the symbol layer.
+map.events.add('mouseover', symbolLayer, function (e) {
+  //Make sure that the point exists.
+  if (e.shapes && e.shapes.length > 0) {
+    var content, coordinate;
+    var properties = e.shapes[0].getProperties();
+    content = popupTemplate.replace(/{name}/g, properties.name).replace(/{description}/g, properties.description);
+    coordinate = e.shapes[0].getCoordinates();
 
-Sok pontok, és csak egy előugró ablak megjelenítése egyszerre szeretné, a legjobb módszer esetén hozzon létre egy előugró ablak, és újra felhasználhatja azt létrehozása helyett egy előugró ablak az egyes pont szolgáltatásokhoz. Ezáltal a DOM-elemek az alkalmazás által létrehozott száma jelentősen csökken, amely jobb teljesítményt tud nyújtani. Ez a példa 3 pont szolgáltatásokat hoz létre. Ha ezek közül bármelyik kattint, a tartalom az adott pont szolgáltatás egy előugró ablak jelenik meg.
+    popup.setOptions({
+      //Update the content of the popup.
+      content: content,
+
+      //Update the popup's position with the symbol's coordinate.
+      position: coordinate
+
+    });
+    //Open the popup.
+    popup.open(map);
+  }
+});
+
+map.events.add('mouseleave', symbolLayer, function (){
+  popup.close();
+});
+```
+
+Alább látható a fenti funkciók teljes futási kódjának mintája.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Újbóli felhasználása több PIN-kód az előugró ablak' src='//codepen.io/azuremaps/embed/rQbjvK/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll típusú <a href='https://codepen.io/azuremaps/pen/rQbjvK/'>újbóli felhasználása több PIN-kód az előugró</a> által az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Felugró ablak hozzáadása a Azure Maps használatával' src='//codepen.io/azuremaps/embed/MPRPvz/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a következőt: <a href='https://codepen.io/azuremaps/pen/MPRPvz/'>Azure Maps</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) használatával a <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+## <a name="reusing-a-popup-with-multiple-points"></a>Felugró ablak újrahasználata több ponttal
+
+Ha nagy számú ponttal rendelkezik, és egyszerre csak egy előugró ablak jelenik meg, a legjobb módszer egy előugró ablak létrehozása és újbóli használata, mint az egyes pontokhoz tartozó előugró ablakok létrehozása. A felugró ablak újrafelhasználásával az alkalmazás által létrehozott DOM-elemek száma jelentősen csökkent, ami jobb teljesítményt nyújt. Az alábbi minta 3 pontos funkciókat hoz létre. Ha bármelyikre kattint, megjelenik egy előugró ablak, amely az adott pont funkciójának tartalmát jeleníti meg.
+
+<br/>
+
+<iframe height='500' scrolling='no' title='Felugró ablak újrahasználata több PIN-kód használatával' src='//codepen.io/azuremaps/embed/rQbjvK/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a tollat a <a href='https://codepen.io'>CodePen</a>-on Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) által <a href='https://codepen.io/azuremaps/pen/rQbjvK/'>több PIN</a> -kód használatával.
+</iframe>
+
+## <a name="customizing-a-popup"></a>Felugró ablak testreszabása
+
+Alapértelmezés szerint az előugró ablak fehér háttérrel, egy mutató nyilat tartalmaz az alján, valamint egy Bezárás gombot a jobb felső sarokban. A következő minta a háttérszínt fekete `fillColor` színnel változtatja meg a felugró ablak beállításával. A Bezárás gomb eltávolításához állítsa a `shoCloseButton` beállítást hamis értékre. A felugró ablak HTML-tartalma a felugró ablak széleitől számított 10 képpontot használ, és a szöveg fehér színűvé válik, így szépen jelenik meg a fekete háttéren.  
+
+<br/>
+
+<iframe height="500" style="width: 100%;" scrolling="no" title="Testreszabott előugró ablak" src="//codepen.io/azuremaps/embed/ymKgdg/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Tekintse meg a tollal <a href='https://codepen.io/azuremaps/pen/ymKgdg/'>testreszabott előugró ablakokat</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) használatával a <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+## <a name="popup-events"></a>Felugró események
+
+Az előugró ablakok megnyithatók, lezárhatók és áthúzhatók. Az előugró osztály olyan eseményeket biztosít, amelyek segítségével a fejlesztők reagálni tudnak ezekre a műveletekre. Az alábbi példa kiemeli, hogy az előugró ablak megnyitásakor, zárásakor vagy húzásakor milyen események égetése következik be. 
+
+<br/>
+
+<iframe height="500" style="width: 100%;" scrolling="no" title="Felugró események" src="//codepen.io/azuremaps/embed/BXrpvB/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Tekintse meg a toll előugró <a href='https://codepen.io/azuremaps/pen/BXrpvB/'>eseményeit</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) alapján a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="next-steps"></a>További lépések
 
-További információ az osztályok és módszerek a cikk ezt használja:
+További információ a cikkben használt osztályokról és módszerekről:
 
 > [!div class="nextstepaction"]
-> [Helyi menü](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
+> [Lakosság](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
 > [PopupOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popupoptions?view=azure-iot-typescript-latest)
 
-Tekintse meg az alábbi nagyszerű teljes körű Kódminták cikkeket:
+A következő nagyszerű cikkekből megtudhatja a kódok teljes mintáit:
 
 > [!div class="nextstepaction"]
-> [Egy szimbólum réteg hozzáadása](./map-add-pin.md)
+> [Szimbólum réteg hozzáadása](./map-add-pin.md)
 
 > [!div class="nextstepaction"]
-> [Egy HTML-mutató hozzáadása](./map-add-custom-html.md)
+> [HTML-jelölő hozzáadása](./map-add-custom-html.md)
 
 > [!div class="nextstepaction"]
-> [Alakzat hozzáadása](./map-add-shape.md)
+> [Vonal rétegének hozzáadása](map-add-line-layer.md)
+
+> [!div class="nextstepaction"]
+> [Sokszög réteg hozzáadása](map-add-shape.md)

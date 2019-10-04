@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: 6757a038a945bf153cb62662bee8c715c87baf19
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 6960c21091e0bc01c198e713c0c276984566ac41
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237740"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65786081"
 ---
 # <a name="introduction-to-the-azure-cache-for-redis-premium-tier"></a>Bevezetés az Azure Cache redis Cache prémium szint
 A Redis Azure Cache olyan elosztott, felügyelt gyorsítótár, amely segítséget nyújt az adatok a villámgyors adathozzáférésnek köszönhetően gyors és hatékonyan méretezhető alkalmazások készítését. 
@@ -63,9 +63,9 @@ További információkért lásd: [adatok importálása, és az adatok exportál
 A prémium szint lehetővé teszi, hogy a gyorsítótár igény szerinti, egy vagy több csomópont újraindítását. Ez lehetővé teszi, hogy tesztelje az alkalmazást a rugalmassághoz meghibásodása. Az alábbi csomópontok indíthatja újra.
 
 * Fő csomóponttal, a gyorsítótár
-* Az alárendelt csomópont a gyorsítótár
-* A gyorsítótár fő és az alárendelt csomópontok
-* Egy prémium szintű gyorsítótár fürtözési használatakor akkor indíthatja újra a fő, az alárendelt vagy mindkét csomópontját az egyes szegmensek a gyorsítótárban
+* Másodlagos csomópontra, a gyorsítótár
+* A gyorsítótár elsődleges és másodlagos csomópontján
+* Egy prémium szintű gyorsítótár fürtözési használatakor akkor indíthatja újra az elsődleges, másodlagos vagy mindkét csomópontját az egyes szegmensek a gyorsítótárban
 
 További információkért lásd: [újraindítás](cache-administration.md#reboot) és [újraindítás – gyakori kérdések](cache-administration.md#reboot-faq).
 

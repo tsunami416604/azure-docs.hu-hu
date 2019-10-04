@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f57d4615fc80df6c5df9ba295288ad71ae12fa23
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58310829"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60359075"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Az Azure Active Directory Tanúsítványalapú hitelesítés első lépései
 
@@ -44,7 +44,7 @@ Tanúsítványalapú hitelesítés konfigurálásához a következő utasításo
 - Az ügyféleszköz legalább egy hitelesítésszolgáltató által kiállított ügyféltanúsítványok hozzáféréssel kell rendelkeznie.
 - Ügyféltanúsítványt az ügyfél-hitelesítés részére lett kiállítva az ügyfélnek.
 
-## <a name="step-1-select-your-device-platform"></a>1. lépés: Válassza ki az eszközplatformot
+## <a name="step-1-select-your-device-platform"></a>1\. lépés: Válassza ki az eszközplatformot
 
 Az Ön számára, eszközplatform, első lépésként tekintse át a következőket kell:
 
@@ -56,7 +56,7 @@ A kapcsolódó információkat a következő eszközplatformokat létezik:
 - [Android](active-directory-certificate-based-authentication-android.md)
 - [iOS](active-directory-certificate-based-authentication-ios.md)
 
-## <a name="step-2-configure-the-certificate-authorities"></a>2. lépés: A hitelesítésszolgáltatók konfigurálása
+## <a name="step-2-configure-the-certificate-authorities"></a>2\. lépés: A hitelesítésszolgáltatók konfigurálása
 
 A hitelesítésszolgáltatók konfigurálása az Azure Active Directoryban, minden egyes hitelesítésszolgáltató, töltse fel a következőket:
 
@@ -102,7 +102,7 @@ A bérlő kapcsolatot hoz létre, használja a [Connect-AzureAD](/powershell/mod
 
     Connect-AzureAD
 
-### <a name="retrieve"></a>Lekérés
+### <a name="retrieve"></a>Beolvasása
 
 A megbízható tanúsítványszolgáltatók a könyvtárat a definiált lekéréséhez használja a [Get-AzureADTrustedCertificateAuthority](/powershell/module/azuread/get-azureadtrustedcertificateauthority?view=azureadps-2.0) parancsmagot.
 
@@ -134,7 +134,7 @@ Egy megbízható hitelesítésszolgáltatótól módosításához használja a [
     $c[0].AuthorityType=1
     Set-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $c[0]
 
-## <a name="step-3-configure-revocation"></a>3. lépés: Visszavont tanúsítványok konfigurálása
+## <a name="step-3-configure-revocation"></a>3\. lépés: Visszavont tanúsítványok konfigurálása
 
 Ügyféltanúsítvány visszavonása, hogy az Azure Active Directory hitelesítésszolgáltató adatai részeként feltöltése URL-címeket olvas be a visszavont tanúsítványok listáját (CRL), és gyorsítótárba helyezi azt. Az utolsó időbélyeg közzétételi (**hatályba lépés dátuma** tulajdonság) a visszavont tanúsítványok Listáját a segítségével győződjön meg arról a CRL-t továbbra is érvényes. A visszavont tanúsítványok Listájának rendszeres időközönként vonni a hozzáférést a tanúsítványok, a lista egy részét képező hivatkozik.
 
@@ -162,7 +162,7 @@ Az alábbi lépéseket vázoltuk frissítése és az engedélyezési jogkivonato
 
 A beállított dátumot kell lennie a jövőben. Ha a dátum nem a jövőben a **StsRefreshTokensValidFrom** tulajdonság nincs beállítva. Ha a dátum a jövőben **StsRefreshTokensValidFrom** az aktuális idő (nem a Set-MsolUser parancs által jelzett dátuma) értékre van állítva.
 
-## <a name="step-4-test-your-configuration"></a>4. lépés: A konfiguráció tesztelése
+## <a name="step-4-test-your-configuration"></a>4\. lépés: A konfiguráció tesztelése
 
 ### <a name="testing-your-certificate"></a>A tanúsítvány tesztelés
 

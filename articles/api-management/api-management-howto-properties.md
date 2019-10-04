@@ -1,6 +1,6 @@
 ---
-title: Megnevezett értékek használata az Azure API Management házirendek
-description: Ismerje meg, hogyan nevű értékeket használja az Azure API Management házirendek.
+title: Nevesített értékek használata az Azure API Management-házirendekben
+description: Megtudhatja, hogyan használhatja a nevesített értékeket az Azure API Management-házirendekben.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -9,74 +9,73 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2018
+ms.date: 07/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 478b80b021b4df36e2eccc37ac9c74f75e43a5bb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d71d71c4d289235e5b67a5201c1f7417274b8fca
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58791626"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072327"
 ---
-# <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Megnevezett értékek használata az Azure API Management házirendek
-Az API Management-házirendek olyan egy hatékony képesség, a rendszer, amelyek lehetővé teszik az Azure Portalon keresztül konfigurációs API-változtathatja meg. A házirendek utasítások gyűjteményei, amelyeket az API-k kérelmei és válaszai szerint egymást követően hajtanak végre. Házirend-utasítások szövegkonstans érték, a házirend-kifejezések, és az értékek nevű lehet létrehozni. 
+# <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Nevesített értékek használata az Azure API Management-házirendekben
 
-Minden API Management-szolgáltatáspéldány tulajdonságok gyűjteménye, kulcs/érték párok, nevű értékek, a szolgáltatáspéldány globális nevezett rendelkezik. Ezek az értékek nevű használható állandó karakterlánc-értékek kezelheti minden API konfigurálása és szabályzatokat. Minden egyes tulajdonság veheti fel a következő attribútumokat:
+API Management házirendek a rendszer hatékony funkciója, amely lehetővé teszi, hogy a Azure Portal a konfiguráción keresztül megváltoztassa az API viselkedését. A házirendek utasítások gyűjteményei, amelyeket az API-k kérelmei és válaszai szerint egymást követően hajtanak végre. A házirend-utasítások literális szöveges értékekkel, házirend-kifejezésekkel és elnevezett értékekkel állíthatók össze.
 
-| Attribútum | Typo | Leírás |
-| --- | --- | --- |
-| Megjelenített név |sztring |Alfanumerikus sztring, amellyel hivatkozni lehet a tulajdonságra a szabályzatokban. |
-| Érték |sztring |A tulajdonság értéke. Nem lehet üres vagy állhatnak csak térközökből. |
-|Titkos|logikai|Meghatározza, hogy az érték egy titkos kulcs-e, és a rendszer titkosítsa-e.|
-| Címkék |sztringek tömbje |Nem kötelező, címkék, akkor használható a tulakdonságlista szűréséhez. |
+Minden API Management Service-példányhoz kulcs/érték párokat tartalmazó tulajdonságok gyűjteménye tartozik, amely neve named Values, amely globális a szolgáltatási példány számára. A gyűjtemény elemeinek száma nincs korlátozva. A nevesített értékek használatával állandó karakterlánc-értékeket kezelhet az összes API-konfigurációban és-házirendben. Minden megnevezett érték a következő tulajdonságokkal rendelkezhet:
 
-![Névvel ellátott értékek](./media/api-management-howto-properties/named-values.png)
+| Attribútum      | Type            | Leírás                                                                                                                         |
+| -------------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `Display name` | Karakterlánc          | A tulajdonságnak a házirendekben való hivatkozására szolgál. Egy 256 karakterből álló karakterlánc. Csak betűket, számokat, pontokat és kötőjeleket lehet engedélyezni. |
+| `Value`        | Karakterlánc          | Tényleges érték. Nem lehet üres, és nem állhat csak szóközökből. Legfeljebb 4096 karakter hosszú lehet.                                     |
+| `Secret`       | boolean         | Meghatározza, hogy az érték titkos-e, és hogy titkosítva legyen-e.                                                            |
+| `Tags`         | sztringek tömbje | A tulajdonságok listájának szűrésére szolgál. Legfeljebb 32 címkével.                                                                                    |
 
-Tulajdonságértékek tartalmazhat szövegkonstansok és [házirend-kifejezések](/azure/api-management/api-management-policy-expressions). Például értékét `ExpressionProperty` egy házirend-kifejezés, amely az aktuális dátumot és időt tartalmazó karakterláncot ad vissza. A tulajdonság `ContosoHeaderValue` egy titkos kulcsot van megjelölve, ezért nem jelenik meg az értékét.
+![Megnevezett értékek](./media/api-management-howto-properties/named-values.png)
 
-| Name (Név) | Érték | Titkos | Címkék |
-| --- | --- | --- | --- |
-| ContosoHeader |TrackingId |False (Hamis) |Contoso |
-| ContosoHeaderValue |•••••••••••••••••••••• |True (Igaz) |Contoso |
-| ExpressionProperty |@(DateTime.Now.ToString()) |False (Hamis) | |
+A nevesített értékek literál karakterláncokat és [házirend](/azure/api-management/api-management-policy-expressions)-kifejezéseket tartalmazhatnak. Az értéke `Expression` például egy olyan házirend-kifejezés, amely az aktuális dátumot és időpontot tartalmazó karakterláncot ad vissza. A megnevezett `Credential` érték titkosként van megjelölve, ezért az értéke alapértelmezés szerint nem jelenik meg.
 
-## <a name="to-add-and-edit-a-property"></a>Adja hozzá, és a egy tulajdonság szerkesztése
+| Name (Név)       | Value                      | Secret | Tags          |
+| ---------- | -------------------------- | ------ | ------------- |
+| Value      | 42                         | False (Hamis)  | létfontosságú számok |
+| Hitelesítő adat | ••••••••••••••••••••••     | True   | biztonság      |
+| Kifejezés | @(DateTime.Now.ToString()) | False (Hamis)  |               |
+
+## <a name="to-add-and-edit-a-property"></a>Tulajdonság hozzáadása és szerkesztése
 
 ![Tulajdonság hozzáadása](./media/api-management-howto-properties/add-property.png)
 
 1. Válassza ki az **API-kat** az **API MANAGEMENT** részben.
-2. Válassza ki **értékek nevű**.
-3. Nyomja meg **+ Hozzáadás**.
+2. Válassza a **nevesített értékek**lehetőséget.
+3. Kattintson a **+ Hozzáadás**gombra.
 
-   Neve és értéke szükséges értékeket. Ha ez a tulajdonság értéke egy titkos kulcsot, ellenőrizze, a titkos jelölőnégyzetet. Adjon meg egy vagy több választható címkék segítség a névvel ellátott értékek rendszerezése, majd kattintson a mentés.
+    A név és az érték kötelező érték. Ha a tulajdonság értéke titkos, jelölje be a titkos jelölőnégyzetet. Adjon meg egy vagy több opcionális címkét, amely segítséget nyújt az elnevezett értékek megszervezésében, majd kattintson a Mentés gombra.
+
 4. Kattintson a **Create** (Létrehozás) gombra.
 
-A tulajdonság létrehozása után szerkesztheti a tulajdonság kattintva. Ha módosítja a tulajdonság nevét, minden olyan szabályzatokat, hogy a tulajdonság automatikusan frissülnek az új nevét.
+A tulajdonság létrehozása után a tulajdonságra kattintva szerkesztheti azt. Ha megváltoztatja a tulajdonság nevét, az adott tulajdonságra hivatkozó házirendek automatikusan frissülnek az új név használatára.
 
-A REST API-val tulajdonság szerkesztési információkért lásd: [a REST API-val tulajdonság módosítása](/rest/api/apimanagement/property?Patch).
+A tulajdonságok a REST API használatával történő szerkesztésével kapcsolatos információkért lásd: [tulajdonság szerkesztése a REST API használatával](/rest/api/apimanagement/2019-01-01/property?patch).
 
-## <a name="to-delete-a-property"></a>Egy tulajdonság
+## <a name="to-delete-a-property"></a>Tulajdonság törlése
 
-Vlastnost törléséhez kattintson **törlése** törli a tulajdonság mellett.
+Ha törölni szeretne egy tulajdonságot, kattintson a Delete (Törlés) elem melletti **törölni** kívánt tulajdonságra.
 
 > [!IMPORTANT]
-> Ha a tulajdonságot minden olyan házirendek hivatkozik, nem lehet sikeresen törölni, amíg nem törli a tulajdonság azt használó összes szabályzatokból származó fogjuk.
-> 
-> 
+> Ha a tulajdonságot bármely házirend hivatkozik, akkor nem tudja sikeresen törölni, amíg el nem távolítja a tulajdonságot az összes olyan házirendből, amelyik azt használja.
 
-A törölni egy tulajdonságot a REST API-val további információkért lásd: [törölni egy tulajdonságot a REST API-val](/rest/api/apimanagement/property?Delete).
+A tulajdonságok a REST API használatával történő törlésével kapcsolatos információkért lásd: [tulajdonság törlése a REST API használatával](/rest/api/apimanagement/2019-01-01/property/delete).
 
-## <a name="to-search-and-filter-named-values"></a>Keresés és nevű értékeinek szűrése
+## <a name="to-search-and-filter-named-values"></a>Névvel ellátott értékek keresése és szűrése
 
-A **értékek nevű** lapon a keresési és szűrési lehetőségek válnak elérhetővé, amelyek segítségével kezelheti a névvel ellátott értékek is. Név tulajdonság szerint a tulakdonságlista szűréséhez, adja meg a kívánt keresőkifejezést a a **tulajdonság keresése** szövegmezőbe. Minden elnevezett értékek megjelenítéséhez törölje a jelet a **tulajdonság keresése** szövegmezőbe, majd nyomja le adja meg.
+Az **elnevezett értékek** lapon keresési és szűrési lehetőségek találhatók a megnevezett értékek kezelésének megkönnyítésére. Ha a tulajdonságok neve alapján szeretné szűrni a tulajdonságokat, adjon meg egy keresési kifejezést a **keresési tulajdonság** szövegmezőben. Az összes megnevezett érték megjelenítéséhez törölje a jelet a **keresési tulajdonság** szövegmezőből, és nyomja le az ENTER billentyűt.
 
-A tulajdonságlista szűréséhez címkeértékeket által, adjon meg egy vagy több címkét helyezünk el a **szűrés címkék szerint** szövegmezőbe. Minden elnevezett értékek megjelenítéséhez törölje a jelet a **szűrés címkék szerint** szövegmezőbe, majd nyomja le adja meg.
+Ha a tulajdonságokat címkéző értékek alapján szeretné szűrni, írjon be egy vagy több címkét a **Filter by Tags** szövegmezőbe. Az összes megnevezett érték megjelenítéséhez törölje a **szűrés címkék alapján** szövegmezőt, majd nyomja le az ENTER billentyűt.
 
-## <a name="to-use-a-property"></a>Egy tulajdonság használata
+## <a name="to-use-a-property"></a>Tulajdonság használata
 
-Egy házirend tulajdonságot használja, helyezze a tulajdonságnév belül zárójelek között, például a double párjai `{{ContosoHeader}}`, az alábbi példában látható módon:
+Ha egy házirendben egy tulajdonságot szeretne használni, helyezze a tulajdonság nevét egy dupla pár kapcsos zárójelbe `{{ContosoHeader}}`, ahogy az a következő példában látható:
 
 ```xml
 <set-header name="{{ContosoHeader}}" exists-action="override">
@@ -84,11 +83,11 @@ Egy házirend tulajdonságot használja, helyezze a tulajdonságnév belül zár
 </set-header>
 ```
 
-Ebben a példában `ContosoHeader` egy fejléc a nevet használja egy `set-header` szabályzatot, és `ContosoHeaderValue` szolgál, hogy a fejléc értékeként. Ez a szabályzat kérelem vagy válasz az API Management-átjáró során kiértékelésekor `{{ContosoHeader}}` és `{{ContosoHeaderValue}}` cserélése megfelelő tulajdonságot értékekre.
+Ebben a példában `ContosoHeader` a rendszer a `set-header` szabályzat fejlécének neveként használja, és `ContosoHeaderValue` a fejléc értékeként használja. Ha ezt a házirendet az API Management-átjáróra irányuló kérelem vagy válasz során `{{ContosoHeader}}` kiértékelik, `{{ContosoHeaderValue}}` a helyük a megfelelő tulajdonságértékek alapján történik.
 
-Névvel ellátott értékek is használható, teljes körű attribútum vagy az elem értékeket az előző példában látható módon, de ezek is lehet szúr be vagy kombinálva egy szövegkonstans kifejezés részeként a következő példában látható módon: `<set-header name = "CustomHeader{{ContosoHeader}}" ...>`
+Az elnevezett értékek teljes attribútumként vagy elemként használhatók, ahogy az az előző példában is látható, de az alábbi példában látható módon egy literális kifejezés egy részébe is beilleszthető vagy kombinálható:`<set-header name = "CustomHeader{{ContosoHeader}}" ...>`
 
-Névvel ellátott értékek házirend-kifejezések is tartalmazhat. A következő példában a `ExpressionProperty` szolgál.
+A nevesített értékek házirend-kifejezéseket is tartalmazhatnak. A következő példában a `ExpressionProperty` használatban van.
 
 ```xml
 <set-header name="CustomHeader" exists-action="override">
@@ -96,25 +95,25 @@ Névvel ellátott értékek házirend-kifejezések is tartalmazhat. A következ�
 </set-header>
 ```
 
-Ez a szabályzat kiértékelésekor `{{ExpressionProperty}}` értékének helyére: `@(DateTime.Now.ToString())`. Egy házirend-kifejezés értéke, mert a kifejezés ki lesz értékelve, és hitelesíti a házirend a végrehajtása során.
+A szabályzat kiértékelése `{{ExpressionProperty}}` után a rendszer a következő értékkel cseréli le: `@(DateTime.Now.ToString())`. Mivel az érték egy házirend-kifejezés, a rendszer kiértékeli a kifejezést, és a szabályzat végrehajtásával folytatja.
 
-Tesztelheti ezt ki a fejlesztői portálon, amely rendelkezik egy névvel ellátott értékekkel a házirend hatókörébe művelet meghívásával. A következő példában egy műveletet hívja meg az előző két példában `set-header` házirendek névvel ellátott értékekkel. Vegye figyelembe, hogy a válasz tartalmazza-e a házirendek segítségével névvel ellátott értékekkel konfigurált, két egyéni fejlécek.
+Ezt kipróbálhatja a fejlesztői portálon egy olyan művelet meghívásával, amelynek a hatókörében megnevezett értékekkel rendelkező házirend található. A következő példában egy műveletet kell meghívni a két korábbi `set-header` , nevesített értékekkel rendelkező házirenddel. Vegye figyelembe, hogy a válasz két olyan egyéni fejlécet tartalmaz, amelyek nevesített értékekkel rendelkező házirendek használatával lettek konfigurálva.
 
 ![Fejlesztői portál][api-management-send-results]
 
-Ha megtekinti a [API Inspectorral nyomkövetési](api-management-howto-api-inspector.md) hívás, amely tartalmazza a két előző minta szabályzatok névvel ellátott értékek, tekintse meg a két `set-header` szabályzatok a tulajdonságértékeket és a házirend-kifejezés beszúrva a tulajdonság, amely a házirend-kifejezés kiértékelési.
+Ha megtekinti az [API Inspector nyomkövetését](api-management-howto-api-inspector.md) egy olyan híváshoz, amely tartalmazza a két korábbi, névvel ellátott minta szabályzatot, `set-header` akkor a két házirendet láthatja a beszúrt tulajdonságértékek mellett, valamint a házirend-kifejezés kiértékelését azon tulajdonság esetében, amely a szabályzat kifejezése szerepel.
 
-![Nyomkövetési API Inspectorral][api-management-api-inspector-trace]
+![API Inspector nyomkövetés][api-management-api-inspector-trace]
 
-Tulajdonságértékek tartalmazhat házirend-kifejezések, míg a tulajdonságértékek nem tartalmazhat más névvel ellátott értékek. Ha egy tulajdonság rá mutató hivatkozást tartalmazó szöveg szolgál egy tulajdonság értéke például `Property value text {{MyProperty}}`, adott tulajdonsághivatkozás nem kell cserélni, és a tulajdonság értéke része lesz.
+Míg a tulajdonságértékek tartalmazhatnak házirend-kifejezéseket, a tulajdonságértékek nem tartalmazhatnak más nevesített értékeket. Ha tulajdonságot tartalmazó szöveget (például) `Property value text {{MyProperty}}`használ, a tulajdonság hivatkozása nem lesz lecserélve, és a tulajdonság értéke részeként fog szerepelni.
 
 ## <a name="next-steps"></a>További lépések
-* További információ a házirendek használata
-  * [Az API Management házirendek](api-management-howto-policies.md)
-  * [Házirend-referencia](/azure/api-management/api-management-policies)
-  * [Házirend-kifejezések](/azure/api-management/api-management-policy-expressions)
+
+-   További információ a szabályzatok használatáról
+    -   [Szabályzatok API Management](api-management-howto-policies.md)
+    -   [Házirend-referencia](/azure/api-management/api-management-policies)
+    -   [Házirend-kifejezések](/azure/api-management/api-management-policy-expressions)
 
 [api-management-send-results]: ./media/api-management-howto-properties/api-management-send-results.png
 [api-management-properties-filter]: ./media/api-management-howto-properties/api-management-properties-filter.png
 [api-management-api-inspector-trace]: ./media/api-management-howto-properties/api-management-api-inspector-trace.png
-

@@ -1,122 +1,122 @@
 ---
-title: Az Azure Active Directory B2C felhasználói hozzáférés felügyelete |} A Microsoft Docs
-description: Ismerje meg, hogyan kiskorúak azonosítása, dátum születési idő és az országot adatok gyűjtése és használati feltételek elfogadása beszerzése az alkalmazás Azure AD B2C használatával.
+title: Felhasználói hozzáférés kezelése Azure Active Directory B2Cban | Microsoft Docs
+description: Megtudhatja, hogyan azonosíthatja a kiskorúakat, begyűjtheti a születési és az ország/régió adatait, és elvégezheti az alkalmazás használati feltételeinek elfogadását Azure AD B2C használatával.
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/24/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2fb9de7781fae51792e2802002a3cf68974dec83
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 98d3fa50f405658b33f879ed8e7b95667cddcedf
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59783735"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064132"
 ---
-# <a name="manage-user-access-in-azure-active-directory-b2c"></a>Az Azure Active Directory B2C felhasználói hozzáférés felügyelete
+# <a name="manage-user-access-in-azure-active-directory-b2c"></a>Felhasználói hozzáférés kezelése Azure Active Directory B2C
 
-Ez a cikk ismerteti az alkalmazásokhoz való felhasználói hozzáférés felügyelete Azure Active Directory (Azure AD) B2C használatával. Az alkalmazás hozzáférés-kezelés a következőket tartalmazza:
+Ez a cikk azt ismerteti, hogyan kezelheti az alkalmazásokhoz való felhasználói hozzáférést Azure Active Directory B2C (Azure AD B2C) használatával. A hozzáférés-kezelés az alkalmazásban az alábbiakat tartalmazza:
 
-- Kiskorúak azonosítása, és az alkalmazásokhoz való felhasználói hozzáférés szabályozása.
-- Szülői hozzájárulást kiskorúaknak ahhoz, hogy az alkalmazásokat.
-- Születési idő és az országot adatokat gyűjt a felhasználók.
-- A használati feltételek szerződés rögzítése és változástábla hozzáférésének korlátozásához.
+- A kiskorúak azonosítása és az alkalmazáshoz való felhasználói hozzáférés szabályozása.
+- Szülői engedély kérése kiskorúak számára az alkalmazások használatához.
+- A születési és az ország/régió adatainak összegyűjtése a felhasználóktól.
+- Használati feltételek és kapuzás-hozzáférés rögzítése.
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-## <a name="control-minor-access"></a>Kisebb hozzáférés-vezérlése
+## <a name="control-minor-access"></a>Kisebb hozzáférés szabályozása
 
-Alkalmazások és a szervezetek dönthetnek arról, hogy letiltja az alkalmazások és szolgáltatások, a célközönség nem szánt kiskorúak. Azt is megteheti alkalmazások és a szervezetek dönthetnek úgy kiskorúak fogadja el, és ezt követően a szülői beleegyezési kezelése és megengedett élményeket nyújthat kiskorúaknak üzleti szabályok által, és engedélyezi a rendelet. 
+Az alkalmazások és a szervezetek dönthetnek úgy, hogy letiltják a kiskorúakat olyan alkalmazások és szolgáltatások használatával, amelyek nem célozzák meg a célközönséget. Alternatív megoldásként az alkalmazások és a szervezetek dönthetnek úgy is, hogy elfogadják a kiskorúakat, és ezt követően kezelik a szülői engedélyt, és lehetővé teszik az üzleti szabályok által diktált és a szabályozás által megengedett kiskorúak számára engedélyezett élményeket.
 
-Ha egy felhasználó egy kisebb azonosítottak, állíthatja be a felhasználói folyamatot az Azure AD B2C-vel három lehetőség közül:
+Ha a felhasználó másodlagosként van azonosítva, a felhasználói folyamat a következő három lehetőség egyikére állítható be Azure AD B2Cban:
 
-- **Egy aláírt JWT id_token küldése az alkalmazásnak**: A felhasználónak regisztrálva van a címtárban, és a egy jogkivonatot adott vissza az alkalmazásba. Az alkalmazás ezután folytatja az üzleti szabályok alkalmazásával. Például az alkalmazás folytathatja a szülői beleegyezési folyamat. Fogadásához válassza ezt a módszert használja, a **korcsoport** és **consentProvidedForMinor** jogcímek az alkalmazásból.
+- **Aláírt JWT id_token visszaküldése az alkalmazásnak**: A felhasználó regisztrálva van a címtárban, és a rendszer visszaadja a tokent az alkalmazásnak. Az alkalmazás ezután az üzleti szabályok alkalmazásával folytatja az alkalmazást. Előfordulhat például, hogy az alkalmazás egy szülői engedélyezési folyamattal folytatja a műveletet. Ha ezt a módszert szeretné használni, válassza a **beszerzésimennyiség** és **consentProvidedForMinor** jogcímek fogadása az alkalmazásból lehetőséget.
 
-- **Az előjel nélküli JSON-jogkivonat küldhet az alkalmazáshoz**: Az Azure AD B2C az alkalmazás értesítést küld az, hogy a felhasználó egy kisebb, és biztosítja a szülői jóváhagyás a felhasználó állapotát. Az alkalmazás ezután folytatja az üzleti szabályok alkalmazásával. A JSON-jogkivonat nem fejeződik be az alkalmazás a sikeres hitelesítés. Az alkalmazás fel kell dolgoznia a jogcím szerepel a jogkivonatban JSON, amely szerint a nem hitelesített felhasználó **neve**, **e-mail**, **korcsoport**, és **consentProvidedForMinor**.
+- **ALÁÍRATLAN JSON-token küldése az alkalmazásnak**: Azure AD B2C értesíti az alkalmazást, hogy a felhasználó kiskorú, és megadja a felhasználó szülői beleegyező állapotát. Az alkalmazás ezután az üzleti szabályok alkalmazásával folytatja az alkalmazást. Egy JSON-jogkivonat nem végez sikeres hitelesítést az alkalmazással. Az alkalmazásnak a JSON-tokenben foglalt jogcímek alapján kell feldolgoznia a nem hitelesített felhasználót, amely tartalmazhatja a **nevet**, az **e-maileket**, a **beszerzésimennyiség**és a **consentProvidedForMinor**.
 
-- **Felhasználó letiltása**: Ha egy felhasználó egy kisebb, és nem lett megadva a szülői hozzájárulást kér, az Azure AD B2C-vel is értesíti a felhasználót, hogy ő blokkolva van. Nem jogkivonat kiadott, hozzáférés le lesz tiltva, és a felhasználói fiók nem jön létre egy regisztrációs utazás közben. Alkalmazza ezt az értesítést, adjon meg egy megfelelő HTML/CSS tartalomlap tájékoztatja a felhasználó és a jelen a megfelelő beállításokat. Az alkalmazás új regisztrációs semmilyen további műveletet van szüksége.
+- **A felhasználó letiltása**: Ha a felhasználó kiskorú, és nem adta meg a szülői engedélyt, a Azure AD B2C értesíti a felhasználót arról, hogy le vannak tiltva. Nem lett kiadva jogkivonat, a hozzáférés le van tiltva, és a felhasználói fiók nem jön létre a regisztráció során. Az értesítés megvalósításához meg kell adnia egy megfelelő HTML/CSS-tartalom lapot, amely tájékoztatja a felhasználót, és bemutatja a megfelelő beállításokat. Az alkalmazás nem igényel további műveletet az új regisztrációhoz.
 
-## <a name="get-parental-consent"></a>Szülői beleegyezési beolvasása
+## <a name="get-parental-consent"></a>Szülői engedély beszerzése
 
-Szülői beleegyezési alkalmazás rendelet, függően szükség lehet a felnőtt annak ellenőrzése, felhasználó által nyújtott. Az Azure AD B2C nem biztosít egy személy életkora ellenőrzése és a egy ellenőrzött felnőtt kiskorú szülői beleegyezési biztosítani, majd engedélyezése. Ez a tapasztalat kell adni az alkalmazás vagy egy másik szolgáltató által.
+Az alkalmazásra vonatkozó szabályozástól függően előfordulhat, hogy a szülői jóváhagyást egy felnőttként ellenőrzött felhasználónak kell megadnia. A Azure AD B2C nem biztosít olyan felhasználói élményt, amely ellenőrzi egy adott életkort, és lehetővé teszi, hogy egy ellenőrzött felnőtt a szülői jóváhagyást egy kisebb értékre engedélyezze. Ezt a folyamatot az alkalmazásnak vagy egy másik szolgáltatónak kell megadnia.
 
-A következő egy felhasználói folyamat szülői beleegyezési ötvözve egy példát:
+A következő példa egy felhasználói folyamatot mutat be a szülői engedély összegyűjtéséhez:
 
-1. Egy [Azure Active Directory Graph API](/previous-versions/azure/ad/graph/api/api-catalog) művelet a felhasználó egy kisebb azonosítja, és a felhasználói adatokat ad vissza az alkalmazás egy előjel nélküli JSON-jogkivonat formájában.
+1. Az [Azure Active Directory Graph API](/previous-versions/azure/ad/graph/api/api-catalog) művelet a felhasználót a másodlagosként azonosítja, és aláíratlan JSON-token formájában visszaadja a felhasználói adatoknak az alkalmazásnak.
 
-2. Az alkalmazás dolgozza fel a JSON-jogkivonatot, és a képernyő látható, a kisebb értesíteni az őt szülői hozzájárulásra szükség, és a hozzájárulás kérése egy szülő online. 
+2. Az alkalmazás feldolgozza a JSON-tokent, és megjelenít egy képernyőt a kiskorú számára, és értesíti arról, hogy a szülői beleegyezés szükséges, és kéri a szülő online beleegyezését.
 
-3. Az Azure AD B2C mutatja be az út, hogy a felhasználó bejelentkezhet általában és kiad egy jogkivonatot, amely tartalmazza az alkalmazáshoz **legalAgeGroupClassification = "minorWithParentalConsent"**. Az alkalmazás gyűjti a szülő e-mail-címét, és ellenőrzi, hogy a szülő felnőtt. Ehhez egy megbízható forrásból, például egy nemzeti azonosító office, licencellenőrzési vagy megvalósíthatósági példában hitelkártya használ. Ha az ellenőrzés sikeres, az alkalmazás kéri, jelentkezzen be az Azure AD B2C felhasználói folyamat használatával a kisebb. Ha a rendszer megtagadja a hozzájárulási (például, ha **legalAgeGroupClassification = "minorWithoutParentalConsent"**), Azure AD B2C visszaadja egy JSON-token (nem a bejelentkezési) az alkalmazást, hogy indítsa újra a jóváhagyási folyamatot. Úgy is igény szerint testre szabhatja a felhasználói folyamatot, hogy egy kisebb vagy a felnőtt újra hozzáférést kaphatnak egy kisebb fiók regisztrációs kód küld a másodlagos e-mail cím vagy a felnőtt e-mail-címét a rekordot.
+3. Azure AD B2C egy olyan bejelentkezési utat mutat be, amelyet a felhasználó a szokásos módon tud bejelentkezni, és a **legalAgeGroupClassification = "minorWithParentalConsent"** értékkel rendelkező alkalmazásnak ad ki jogkivonatot. Az alkalmazás gyűjti a szülő e-mail-címét, és ellenőrzi, hogy a szülő felnőtt-e. Ehhez megbízható forrást használ, mint például a nemzeti azonosító iroda, a licenc-ellenőrzés vagy a hitelkártya-igazolás. Ha az ellenőrzés sikeres, az alkalmazás a Azure AD B2C felhasználói folyamat használatával kéri a kiskorút a bejelentkezéshez. Ha a jóváhagyás megtagadva (például **legalAgeGroupClassification = "minorWithoutParentalConsent"** ), akkor a Azure ad B2C egy JSON-tokent (nem pedig bejelentkezést) ad vissza az alkalmazásnak a jóváhagyás folyamatának újraindításához. Lehetőség van a felhasználói folyamat testreszabására úgy, hogy egy kisebb vagy egy felnőtt hozzáférjen a kiskorú fiókjához úgy, hogy regisztrációs kódot küld a kiskorú e-mail-címére vagy az e-mail-címére a rekordban.
 
-4. Az alkalmazás egy lehetőséget kínál, a kisebb beleegyezése visszavonásához.
+4. Az alkalmazás lehetőséget biztosít a kiskorú számára a beleegyezés visszavonására.
 
-5. A kisebb vagy a felnőtt visszavonja a hozzájárulását, amikor az Azure AD Graph API segítségével módosíthatja **consentProvidedForMinor** való **megtagadva**. Az alkalmazás választhatja azt is megteheti, törölni egy kisebb, amelynek hozzájárulási byl odvolán. Úgy is igény szerint testre szabhatja a felhasználói folyamatot, hogy a hitelesített (vagy szülő által használt fiók a kisebb) kisebb vissza tudja vonni hozzájárulását. Az Azure AD B2C-rekordok **consentProvidedForMinor** , **megtagadva**.
+5. Ha a kiskorú vagy a felnőtt visszavonja a beleegyezését, az Azure AD Graph API a **consentProvidedForMinor** megtagadásárais használható. Azt is megteheti, hogy az alkalmazás törli azt a kiskorút, amelynek a beleegyezését visszavonták. Lehetőség van a felhasználói folyamat testreszabására is, hogy a hitelesített kiskorú (vagy a kiskorú fiókját használó szülő) visszavonja a beleegyezést. Azure AD B2C a **consentProvidedForMinor** amegtagadott módon rögzíti.
 
-További információ **legalAgeGroupClassification**, **consentProvidedForMinor**, és **korcsoport**, lásd: [felhasználói erőforrás típusa](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user). Egyéni attribútumok kapcsolatos további információkért lásd: [egyéni attribútumok használata a felhasználók adatainak gyűjtésére](active-directory-b2c-reference-custom-attr.md). Kiterjesztett attribútumok oldja meg az Azure AD Graph API-val, amikor például kell használnia az attribútum a hosszú verzió *extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*: *2011-01-01T00:00:00Z*.
+A **legalAgeGroupClassification**, a **ConsentProvidedForMinor**és a **beszerzésimennyiség**szolgáltatással kapcsolatos további információkért lásd: [felhasználói erőforrás típusa](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user). További információ az egyéni attribútumokról: [Egyéni attribútumok használata a felhasználók adatainak gyűjtéséhez](active-directory-b2c-reference-custom-attr.md). Ha az Azure AD Graph API használatával kezeli a kiterjesztett attribútumokat, az attribútum hosszú verzióját kell használnia, például *extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*: *2011-01-01T00:00:00Z*.
 
-## <a name="gather-date-of-birth-and-country-data"></a>Gyűjtse össze a születési idő és az ország-adatok dátuma
+## <a name="gather-date-of-birth-and-countryregion-data"></a>Születési dátum és ország/régió adatok összegyűjtése
 
-Alkalmazások az Azure AD B2C-vel a születési dátum (DOB) és ország információkat gyűjtsön a minden felhasználó regisztrációja során hivatkozhatnak. Ha ezek az információk még nem létezik, az alkalmazás kérheti a felhasználótól a következő hitelesítési (bejelentkezik) utazás közben. Felhasználók saját DOB megadása nélkül nem lehet folytatni és ország információkat. Az Azure AD B2C az információk segítségével határozza meg, hogy az egyes van-e a szabályozási normák terén, az adott ország szerint kiskorúnak számít. 
+Az alkalmazások a regisztráció során felhasználhatják Azure AD B2C a születési idő (DOB) és az ország/régió információinak összegyűjtését az összes felhasználótól. Ha ez az információ még nem létezik, az alkalmazás a következő hitelesítési (bejelentkezési) útvonalon kérheti le a felhasználót a felhasználótól. A felhasználók nem tudnak továbblépni a DOB és az ország/régió adatainak megadása nélkül. Azure AD B2C az információ segítségével határozza meg, hogy az adott ország vagy régió szabályozási előírásai szerint az egyes személyek kisebbnek minősülnek-e.
 
-Testre szabott felhasználói folyamat DOB gyűjthet és ország információkat, és használja az Azure AD B2C-vel jogcím-e meghatározásához átalakítás a **korcsoport** és megőrzéséhez az eredmény (vagy megőrizni az DOB és ország adatokat közvetlenül) a címtárban.
+A testreszabott felhasználói folyamatok összegyűjthetik a DOB és az ország/régió adatait, és Azure AD B2C jogcímek átalakításával határozzák meg a **beszerzésimennyiség** , és megtartják az eredményt (vagy megőrzik a dob és az ország/régió adatait közvetlenül) a címtárban.
 
-A következő lépések bemutatják, hogy a rendszer kiszámítja a logika **korcsoport** , a felhasználó születési dátuma:
+A következő lépések azt mutatják be, hogy milyen logikát kell kiszámítani a **beszerzésimennyiség** a felhasználó születési dátumának kiszámításához:
 
-1. Próbálja meg megkeresni az ország szerint az országkódot a listában. Ha nem található az ország, visszatér **alapértelmezett**.
+1. Próbálja megkeresni az országot az országkód alapján a listában. Ha az ország nem található, térjen vissza az **alapértelmezett értékre**.
 
-2. Ha a **MinorConsent** csomópont szerepel az ország elem:
+2. Ha a **MinorConsent** csomópontja szerepel az ország elemében:
 
-    a. A dátum, amelyen a felhasználó kell születtek figyelembe kell venni a felnőtt kiszámítása. Például, ha az aktuális dátum későbbi, 2015. március 14 és **MinorConsent** 18-ra, a születési dátum nem később mint 2000 március 14 kell lennie.
+    a. Annak a dátumnak a kiszámítása, amely szerint a felhasználónak felnőttnek kell lennie. Ha például az aktuális dátum március 14, 2015, a **MinorConsent** pedig 18, a születési dátum nem lehet későbbi, mint a 2000. március 14.
 
-    b. Hasonlítsa össze a tényleges születési dátumot a minimális születési dátumát. A minimális születési dátum-e a felhasználó születési dátum előtt, a számítás adja vissza **kisebb** korcsoport számítását.
+    b. A születési dátum és a tényleges születési dátum összevetése. Ha a minimális születési dátum a felhasználó születési dátuma, akkor a számítás a korcsoport szerinti számításnak minősülő alhálózatot adja vissza.
 
-3. Ha a **MinorNoConsentRequired** csomópont szerepel az ország elem, a 2a. Ismételje meg a lépéseket és a 2b származó értékkel **MinorNoConsentRequired**. 2b kimenete adja vissza **MinorNoConsentRequired** Ha a minimális születési dátum a felhasználó születési dátum előtt. 
+3. Ha a **MinorNoConsentRequired** csomópont szerepel az ország elemben, ismételje meg a 2a és a 2B lépést a **MinorNoConsentRequired**értékének használatával. A 2B kimenete **MinorNoConsentRequired** ad vissza, ha a minimális születési dátum a felhasználó születési dátuma.
 
-4. Ha sem számítási igaz értéket ad vissza, a számítás eredménye **felnőtt**.
+4. Ha egyik számítás sem igaz értéket ad vissza, a számítás **felnőtt**értéket ad vissza.
 
-Ha egy alkalmazás megbízhatóan összegyűjtött DOB vagy más módszerekkel országos adatok, az alkalmazás használatával a Graph API a felhasználói rekord frissítse ezt az információt. Példa:
+Ha egy alkalmazás más módszerekkel megbízhatóan gyűjtött DOB vagy ország/régió adatait, az alkalmazás a Graph API használatával frissítheti a felhasználói rekordot ezekkel az adatokkal. Példa:
 
-- Ha egy felhasználó felnőtt életkorhoz ismert, frissítse a directory-attribútum **korcsoport** értékkel **felnőtt**.
-- Ha egy felhasználó ismert, hogy egy kisebb, frissítse a directory-attribútum **korcsoport** értékkel **kisebb** és **consentProvidedForMinor**, ha szükséges.
+- Ha egy felhasználó ismert felnőttnek, akkor frissítse a **beszerzésimennyiség** Directory-attribútumot **felnőtt**értékkel.
+- Ha a felhasználó neve kisebb, akkor frissítse a **beszerzésimennyiség** attribútumot, és adja meg a **consentProvidedForMinor**értéket a megfelelő értékkel.
 
-Adatgyűjtés DOB kapcsolatos további információkért lásd: [használja a korhatáralapú hozzáférés az Azure AD B2C-vel](basic-age-gating.md).
+További információ a DOB-adatok gyűjtéséről: [Age kapuzás használata a Azure ad B2Cban](basic-age-gating.md).
 
 ## <a name="capture-terms-of-use-agreement"></a>Használati feltételek rögzítése
 
-Az alkalmazás fejlesztésekor parancsmagokéval rögzítése nem rendelkező alkalmazásokba használati feltételek felhasználói elfogadását, vagy csak kisebb való részvétel a felhasználói könyvtárból. Lehetőség azonban egy Azure AD B2C felhasználói folyamat gyűjtse össze a használati feltételek elfogadása a felhasználó, ha elfogadási nincs engedélyezve a hozzáférés korlátozása, és a használati feltételeket, a legújabb elfogadása és a dátumot, az a dátum alapján jövőbeli módosításai elfogadása kényszerítése a  a használati feltételek legújabb verzióját.
+Az alkalmazás fejlesztésekor általában a felhasználók beleegyezését rögzíti a használati feltételekben az alkalmazásokon belül, a nem vagy csak a kisebb, a felhasználói címtárban való részvételt illetően. Azonban lehetséges, hogy egy Azure AD B2C felhasználói folyamat használatával gyűjti a felhasználók használati feltételeinek elfogadását, korlátozhatja a hozzáférést, ha az elfogadás nem engedélyezett, és a jövőbeli változások elfogadásának érvényesítése a használati feltételek alapján, a legutóbbi elfogadás dátuma és a  a használati feltételek legújabb verziója.
 
-**Használati feltételek** is tartalmazhat "Beleegyezik abba, hogy adatokat megoszthatja harmadik féllel." Helyi szabályozásokról és az üzleti szabályok függően gyűjthet mindkét kombinált feltételek elfogadása a felhasználó, vagy engedélyezheti a felhasználót, hogy egy feltétel, a másik nem fogadja el.
+**A használati feltételek** tartalmazhatják az adatmegosztást harmadik felekkel is. A helyi szabályozástól és az üzleti szabályoktól függően a felhasználók elfogadják mindkét feltétel összevonását, vagy engedélyezheti, hogy a felhasználó elfogadjon egy feltételt, nem pedig a másikat is.
 
-Az alábbi lépések bemutatják, hogyan kezelheti a használati feltételek:
+A következő lépések bemutatják, hogyan kezelheti a használati feltételeket:
 
-1. A Graph API-t és a kiterjesztett attribútumok segítségével történő rögzítéséhez a rájuk a használati feltételeket és a elfogadásának dátumát. Ezt is a beépített és egyéni felhasználói folyamatok használatával teheti meg. Javasoljuk, hogy hozzon létre, és használja a **extension_termsOfUseConsentDateTime** és **extension_termsOfUseConsentVersion** attribútumok.
+1. Rögzítse a használati feltételek elfogadását és az elfogadás dátumát a Graph API és a kiterjesztett attribútumok használatával. Ezt a beépített és egyéni felhasználói folyamatok is megteheti. Javasoljuk, hogy hozza létre és használja a **extension_termsOfUseConsentDateTime** és a **extension_termsOfUseConsentVersion** attribútumokat.
 
-2. Hozzon létre egy szükséges "Fogadja el felhasználási feltételek" feliratú jelölőnégyzetet, és jegyezze fel az eredmény a regisztráció során. Ezt is a beépített és egyéni felhasználói folyamatok használatával teheti meg.
+2. Hozzon létre egy kötelező jelölőnégyzetet "a használati feltételek elfogadása" címkével, és jegyezze fel az eredményt a regisztráció során. Ezt a beépített és egyéni felhasználói folyamatok is megteheti.
 
-3. Az Azure AD B2C tárolja a használati használata szerződés és a felhasználói elfogadását. Használhatja a Graph API lekérdezéséhez bármely felhasználó állapotának a mellék attribútum, amellyel a válasz rögzítése olvassa el (például Olvasás **termsOfUseTestUpdateDateTime**). Ezt is a beépített és egyéni felhasználói folyamatok használatával teheti meg.
+3. Azure AD B2C a használati feltételeket és a felhasználó elfogadását tárolja. A Graph API segítségével bármely felhasználó állapotát lekérdezheti a válasz rögzítéséhez használt Extension attribútum (például olvasás **termsOfUseTestUpdateDateTime**) olvasásával. Ezt a beépített és egyéni felhasználói folyamatok is megteheti.
 
-4. Frissített használati feltételek elfogadása szükséges a használati feltételek legújabb verzióját Date elfogadásától összehasonlításával. Csak egyéni felhasználói folyamat segítségével összehasonlíthatja a dátumok. A kiterjesztett attribútum használata a **extension_termsOfUseConsentDateTime**, és hasonlítsa össze a jogcímek, az érték **termsOfUseTextUpdateDateTime**. Ha az elfogadás régi, kényszerítheti egy új elfogadási önellenőrzött képernyő megjelenítésével. Ellenkező esetben a házirend logikája blokkolni a hozzáférést.
+4. A frissített használati feltételek elfogadásának megkövetelése az elfogadás dátumát a használati feltételek legújabb verziójának dátumával összehasonlítva. A dátumokat csak egyéni felhasználói folyamat használatával lehet összehasonlítani. Használja a kiterjesztett attribútum **extension_termsOfUseConsentDateTime**, és hasonlítsa össze az értéket a **termsOfUseTextUpdateDateTime**jogcímével. Ha az elfogadás régi, egy önérvényesített képernyő megjelenítésével kényszerítheti az új elfogadás elfogadását. Ellenkező esetben tiltsa le a hozzáférést a szabályzat logikája segítségével.
 
-5. Frissített használati feltételek elfogadása szükséges össze a legutóbb elfogadott verziószámot, elfogadásának verziószáma. Csak egyéni felhasználói folyamat segítségével összehasonlíthatja a verziószámok. A kiterjesztett attribútum használata a **extension_termsOfUseConsentDateTime**, és hasonlítsa össze a jogcímek, az érték **extension_termsOfUseConsentVersion**. Ha az elfogadás régi, kényszerítheti egy új elfogadási önellenőrzött képernyő megjelenítésével. Ellenkező esetben a házirend logikája blokkolni a hozzáférést.
+5. A frissített használati feltételek elfogadásának megkövetelése az elfogadás verziószámának összevetésével a legújabb elfogadott verziószámra. A verziószámokat csak egyéni felhasználói folyamat használatával hasonlíthatja össze. Használja a kiterjesztett attribútum **extension_termsOfUseConsentDateTime**, és hasonlítsa össze az értéket a **extension_termsOfUseConsentVersion**jogcímével. Ha az elfogadás régi, egy önérvényesített képernyő megjelenítésével kényszerítheti az új elfogadás elfogadását. Ellenkező esetben tiltsa le a hozzáférést a szabályzat logikája segítségével.
 
-Rögzítheti a feltételek használata elfogadási alatt a következő esetekben:
+A használati feltételek elfogadását a következő esetekben rögzítheti:
 
-- Új felhasználó jelentkezik. A használati feltételek jelennek meg, és az elfogadási eredmény tárolja.
-- Egy felhasználó jelentkezik be, akik korábban elfogadta a legújabb vagy aktív használati feltételeket. A használati feltételek nem jelennek meg.
-- A felhasználó bejelentkezik ki nem már fogadta el a legújabb vagy aktív használati feltételeket. A használati feltételek jelennek meg, és az elfogadási eredmény tárolja.
-- A felhasználó bejelentkezik már elfogadta, akik egy régebbi verzióját a használati feltételeket, amelyek most frissülnek, hogy a legújabb verzióra. A használati feltételek jelennek meg, és az elfogadási eredmény tárolja.
+- Új felhasználó regisztrálása. Megjelenik a használati feltételek, és a rendszer az elfogadási eredményt tárolja.
+- A felhasználó bejelentkezik, aki korábban elfogadta a legújabb vagy az aktív használati feltételeket. A használati feltételek nem jelennek meg.
+- A felhasználó bejelentkezik, aki még nem fogadta el a legújabb vagy az aktív használati feltételeket. Megjelenik a használati feltételek, és a rendszer az elfogadási eredményt tárolja.
+- A felhasználó bejelentkezik, aki már elfogadta a használati feltételek egy régebbi verzióját, amely most már frissítve lett a legújabb verzióra. Megjelenik a használati feltételek, és a rendszer az elfogadási eredményt tárolja.
 
-Az alábbi képen látható a javasolt felhasználói folyamatot:
+Az alábbi képen az ajánlott felhasználói folyamat látható:
 
-![Felhasználói folyamat elfogadása](./media/manage-user-access/user-flow.png) 
+![Az ajánlott elfogadási felhasználói folyamatot bemutató folyamatábra-diagram](./media/manage-user-access/user-flow.png)
 
-Az alábbiakban látható egy példa egy dátum és idő alapján használati feltételekhez tartozó jóváhagyások egy jogcím:
+A következő példa egy DateTime-alapú használati feltételeket foglal bele a jogcímbe:
 
-```
+```xml
 <ClaimsTransformations>
   <ClaimsTransformation Id="GetNewUserAgreeToTermsOfUseConsentDateTime" TransformationMethod="GetCurrentDateTime">
     <OutputClaims>
@@ -137,9 +137,9 @@ Az alábbiakban látható egy példa egy dátum és idő alapján használati fe
 </ClaimsTransformations>
 ```
 
-Az alábbiakban látható egy példa egy verziót, attól függően használati feltételekhez tartozó jóváhagyások a jogcím:
+A következőkben egy példa látható egy verzióra vonatkozó használati feltételek megadására a jogcímben:
 
-```
+```xml
 <ClaimsTransformations>
   <ClaimsTransformation Id="GetEmptyTermsOfUseConsentVersionForNewUser" TransformationMethod="CreateStringClaim">
     <InputParameters>
@@ -170,9 +170,9 @@ Az alábbiakban látható egy példa egy verziót, attól függően használati 
       <OutputClaim ClaimTypeReferenceId="termsOfUseConsentRequired" TransformationClaimType="outputClaim" />
     </OutputClaims>
   </ClaimsTransformation>
-</ClaimsTransformations> 
+</ClaimsTransformations>
 ```
 
 ## <a name="next-steps"></a>További lépések
 
-- Törölje, és a felhasználói adatok exportálása kapcsolatban lásd: [felhasználói adatokat](manage-user-data.md).
+- A felhasználói információk törlésével és exportálásával kapcsolatos információkért lásd: [felhasználói adatkezelés](manage-user-data.md).

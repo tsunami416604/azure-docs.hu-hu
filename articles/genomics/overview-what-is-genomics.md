@@ -10,11 +10,11 @@ ms.service: genomics
 ms.topic: article
 ms.date: 12/07/2017
 ms.openlocfilehash: 1b52f47d692cf2fb2925ebb2a9882b9c79c29a87
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57452640"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60780897"
 ---
 # <a name="what-is-microsoft-genomics"></a>Mi az a Microsoft Genomics?
 A Microsoft Genomics kínál felhőalapú megvalósítása a Burrows-Wheeler Aligner (BWA) és a Genome Analysis Toolkit (GATK) másodlagos elemzéshez. A szolgáltatás ISO-minősítéssel rendelkezik, és megfelel a HIPAA előírásainak, és az alkalmazás-előkészítés genom igényeinek árkiszámíthatóságot kínál. Megtudhatja, hogyan használja a Microsoft Genomics szolgáltatásba, és integrálhatja az API a rövid útmutatók, oktatóanyagok és dokumentáció olvasásakor.

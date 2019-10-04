@@ -1,89 +1,88 @@
 ---
-title: Hitelesítés az Azure ad-ben a nemzeti felhőkben
-description: További információ az országos felhők regisztrációjának és hitelesítésének végpontok alkalmazást.
+title: Hitelesítés a Azure Active Directory használatával az országos felhőkben
+description: Ismerje meg az alkalmazások regisztrációs és hitelesítési végpontját az országos felhők számára.
 services: active-directory
 documentationcenter: ''
 author: negoe
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/20/2018
+ms.date: 08/28/2019
 ms.author: negoe
-ms.reviewer: negoe,andret,saeeda,CelesteDG
+ms.reviewer: negoe,CelesteDG
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4feaf97de7b833514113af6c91b3745be0503eff
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ca82efbd4e26ccb8a169c84332e3d24196fae95e
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58113686"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135853"
 ---
-# <a name="national-clouds"></a>Országos felhőkörnyezetek
+# <a name="national-clouds"></a>Nemzeti felhők
 
-Országos felhők (más néven a független felhőkben) az Azure fizikailag izolált példánya. Győződjön meg arról, hogy adatok fizikai tárolási helye, adatszuverenitási és megfelelőségi követelmények összes régió megfelel a földrajzi határokon belüli Azure ezekben a régiókban lettek kialakítva.
+Az országos felhők fizikailag elkülönített Azure-példányok. Az Azure ezen régiói úgy vannak kialakítva, hogy meggyőződjenek arról, hogy az adattárolási, a szuverenitási és a megfelelőségi követelmények a földrajzi határokon belül teljesülnek.
 
-Azure Active Directory globális felhő, beleértve a következő országos felhők üzemel:  
+A globális felhővel (Azure Active Directory (Azure AD) együtt a következő nemzeti felhőkben is üzembe helyezhetők:  
 
-- Amerikai Egyesült Államok kormánya által használt Azure
+- Azure Government
 - Azure Germany
 - Azure China 21Vianet
 
-Országos felhők, mint a globális Azure egyedi és eltérő környezetben. Ezért fontos figyelembe venni néhány fontos eltérés az ezekben a környezetekben, például alkalmazásokat regisztrálni, -jogkivonatok beszerzésének és végpontok konfigurálása az alkalmazás fejlesztése során.
+Az országos felhők egyediek és egy különálló környezetek az Azure Global-től. Fontos, hogy tisztában legyenek a legfontosabb különbségekkel, miközben az alkalmazás fejlesztése ezekben a környezetekben. A különbségek közé tartozik az alkalmazások regisztrálása, a jogkivonatok beszerzése és a végpontok konfigurálása.
 
-## <a name="app-registration-endpoints"></a>Alkalmazás regisztrációs végpontok
+## <a name="app-registration-endpoints"></a>Alkalmazás-regisztrációs végpontok
 
-Egy külön Azure-portálon az országos felhők mindegyike van. Alkalmazások integrálása az országos felhőben a Microsoft Identity Platform, szükségesek az alkalmazás regisztrálásához külön-külön az egyes környezetben az Azure Portalon.
+A nemzeti felhők mindegyike külön Azure Portal. Ha egy nemzeti felhőben szeretné integrálni az alkalmazásokat a Microsoft Identity platformmal, akkor külön regisztrálnia kell az alkalmazást a környezetre jellemző összes Azure Portalban.
 
-A következő táblázat felsorolja az alap URL-címeket kell regisztrálni egy alkalmazást, minden egyes országos felhőben használt Azure Active Directory (Azure AD-) végpontjait.
+A következő táblázat felsorolja az egyes nemzeti felhőhöz tartozó alkalmazások regisztrálásához használt Azure AD-végpontok alap URL-címeit.
 
-| Országos felhőben | Az Azure AD-portál végpontja
-| --- | --- |
-| Azure ad-ben az USA kormányzatának |`https://portal.azure.us`
-|Az Azure AD-Németország |`https://portal.microsoftazure.de`
-|Az Azure AD Kínában a 21Vianet által üzemeltetett |`https://portal.azure.cn`
-|Az Azure AD (globális szolgáltatás)|`https://portal.azure.com` 
+| Nemzeti felhő | Azure AD-portál végpont |
+|----------------|--------------------------|
+| Azure AD az USA kormányzati szerveinek | `https://portal.azure.us` |
+| Azure AD Germany | `https://portal.microsoftazure.de` |
+| 21Vianet által üzemeltetett Azure AD China | `https://portal.azure.cn` |
+| Azure AD (globális szolgáltatás) |`https://portal.azure.com` |
 
-## <a name="azure-ad-authentication-endpoints"></a>Az Azure AD hitelesítési végpontjai
+## <a name="azure-ad-authentication-endpoints"></a>Azure AD-hitelesítési végpontok
 
-Az országos felhők minden környezetben külön-külön felhasználóhitelesítést, és külön hitelesítés végpontokat.
+Minden nemzeti felhő külön hitelesíti a felhasználókat az egyes környezetekben, és külön hitelesítési végpontokkal rendelkezik.
 
-A következő táblázat felsorolja az alap URL-címek nemzeti felhőnként jogkivonatok beszerzésére használható Azure Active Directory (Azure AD-) végpontjait.
+A következő táblázat felsorolja az egyes nemzeti felhők jogkivonatának beszerzéséhez használt Azure AD-végpontok alap URL-címeit.
 
-| Országos felhőben | Az Azure AD-hitelesítési végpont
-| --- | --- |
-| Azure ad-ben az USA kormányzatának |`https://login.microsoftonline.us`
-|Az Azure AD-Németország| `https://login.microsoftonline.de`
-|Az Azure AD Kínában a 21Vianet által üzemeltetett | `https://login.chinacloudapi.cn`
-|Az Azure AD (globális szolgáltatás)|`https://login.microsoftonline.com`
+| Nemzeti felhő | Azure AD-hitelesítési végpont |
+|----------------|-------------------------|
+| Azure AD az USA kormányzati szerveinek | `https://login.microsoftonline.us` |
+| Azure AD Germany| `https://login.microsoftonline.de` |
+| 21Vianet által üzemeltetett Azure AD China | `https://login.chinacloudapi.cn` |
+| Azure AD (globális szolgáltatás)| `https://login.microsoftonline.com` |
 
-- Az Azure AD engedélyezési vagy a token-végpontokra irányuló kéréseket a megfelelő régióspecifikus alap URL-cím használatával kell létrehozni. Ha például az Azure Germany:
+Az Azure AD-engedélyezési vagy jogkivonat-végpontokra irányuló kéréseket a megfelelő régióspecifikus alap URL-cím használatával lehet megalkotni. Az Azure Germany esetében például:
 
-  - Engedélyezési közös végpont `https://login.microsoftonline.de/common/oauth2/authorize`.
-  - Token közös végpont `https://login.microsoftonline.de/common/oauth2/token`.
+  - Az engedélyezési Common `https://login.microsoftonline.de/common/oauth2/authorize`Endpoint értéke.
+  - A token Common `https://login.microsoftonline.de/common/oauth2/token`Endpoint értéke.
 
-- Egybérlős alkalmazások, cserélje le az előző URL-címeket a bérlő Azonosítóját vagy nevét, a közös például `https://login.microsoftonline.de/contoso.com`.
-
->[!NOTE]
-> A [az Azure AD v2.0-engedélyezési]( https://docs.microsoft.com/azure/active-directory/develop/active-directory-appmodel-v2-overview) és jogkivonat-végpont csak a globális szolgáltatás érhetők el. Még nem támogatott az országos felhőben üzemelő példányok esetében ez.
+Egybérlős alkalmazások esetében az előző URL-címek "Common" értékét cserélje le a bérlői AZONOSÍTÓra vagy a névre. Például: `https://login.microsoftonline.de/contoso.com`.
 
 ## <a name="microsoft-graph-api"></a>Microsoft Graph API
 
-Megtudhatja, hogyan hívhat meg a Microsoft Graph API-k az országos felhőkörnyezet Ugrás [országos felhőben a Microsoft Graph](https://developer.microsoft.com/graph/docs/concepts/deployments).
-
-
+Ha meg szeretné tudni, hogyan hívhatja meg a Microsoft Graph API-kat egy nemzeti felhőalapú környezetben, lépjen a [Microsoft Graph a nemzeti Felhőbeli üzembe helyezések](https://developer.microsoft.com/graph/docs/concepts/deployments)területen.
 
 > [!IMPORTANT]
-> Egyes szolgáltatások és funkciók, amelyek az adott régióban, a globális szolgáltatás nem érhető el az országos felhők mindegyikét. Ismerje meg, milyen szolgáltatások érhetők el, lépjen a [elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/?products=all&regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia,china-non-regional,china-east,china-east-2,china-north,china-north-2,germany-non-regional,germany-central,germany-northeast).
+> Előfordulhat, hogy a globális szolgáltatás adott régióiban lévő bizonyos szolgáltatások és szolgáltatások nem érhetők el az összes nemzeti felhőben. Ha szeretné megtudni, hogy mely szolgáltatások érhetők el, lépjen az [elérhető termékek régiónként](https://azure.microsoft.com/global-infrastructure/services/?products=all&regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia,china-non-regional,china-east,china-east-2,china-north,china-north-2,germany-non-regional,germany-central,germany-northeast).
+
+Ha meg szeretné tudni, hogyan hozhat létre egy alkalmazást a Microsoft Identity platform használatával, kövesse a [Microsoft Authentication Library (MSAL) oktatóanyagot](msal-national-cloud.md). Pontosabban, az alkalmazás bejelentkezik egy felhasználóval, és hozzáférési jogkivonatot kap a Microsoft Graph API meghívásához.
 
 ## <a name="next-steps"></a>További lépések
 
-- Tudjon meg többet [Azure Government](https://docs.microsoft.com/azure/azure-government/).
-- Tudjon meg többet [Azure China 21Vianet](https://docs.microsoft.com/azure/china/).
-- Tudjon meg többet [Azure Germany](https://docs.microsoft.com/azure/germany/).
-- További információ a [az Azure AD hitelesítési alapok](authentication-scenarios.md).
+További információk az alábbiakról:
+
+- [Azure Government](https://docs.microsoft.com/azure/azure-government/)
+- [Azure China 21Vianet](https://docs.microsoft.com/azure/china/)
+- [Azure Germany](https://docs.microsoft.com/azure/germany/)
+- [Az Azure AD-hitelesítés alapjai](authentication-scenarios.md)

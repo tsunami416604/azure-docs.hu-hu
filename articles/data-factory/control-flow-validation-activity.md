@@ -1,26 +1,25 @@
 ---
-title: Érvényesítési tevékenység az Azure Data Factoryban |} A Microsoft Docs
-description: Az érvényesítés tevékenység folytassa az a folyamat végrehajtását bizonyos feltételeknek, a felhasználó adja meg a csatolt adatkészlet ellenőrzi azt.
+title: Érvényesítési tevékenység a Azure Data Factoryban | Microsoft Docs
+description: Az érvényesítési tevékenység nem folytatja a folyamat végrehajtását mindaddig, amíg a felhasználó által megadott feltételekkel ellenőrzi a csatolt adatkészletet.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.author: shlo
-ms.openlocfilehash: 46447bdbea93d1f99c5682cf878c2035e6f49b78
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 77fdab04e03429d135875cb2ef223e8c23d312a2
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522949"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141607"
 ---
-# <a name="validation-activity-in-azure-data-factory"></a>Az Azure Data Factoryban érvényesítési tevékenység
-Használhatja egy érvényesítési a folyamat a folyamat csak zavartalan végrehajtási, miután megtörtént a csatolt adatkészlet-hivatkozásban létezik, hogy megfelel-e a megadott feltételeknek megfelelő, vagy elérte az időkorlát.
+# <a name="validation-activity-in-azure-data-factory"></a>Érvényesítési tevékenység a Azure Data Factoryban
+A folyamat érvényesítésével biztosíthatja, hogy a folyamat csak akkor folytassa a végrehajtást, ha a csatolt adatkészlet hivatkozása már létezik, hogy az megfelel a megadott feltételeknek, vagy elérte az időtúllépést.
 
 
 ## <a name="syntax"></a>Szintaxis
@@ -57,25 +56,25 @@ Használhatja egy érvényesítési a folyamat a folyamat csak zavartalan végre
 ```
 
 
-## <a name="type-properties"></a>Tulajdonságok
+## <a name="type-properties"></a>Típus tulajdonságai
 
-Tulajdonság | Leírás | Megengedett értékek | Szükséges
+Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
-név | Az "Ellenőrzés" tevékenység neve | String | Igen |
-type | Meg kell **érvényesítési**. | String | Igen |
-Adatkészlet | Tevékenység futtatásának letiltása, amíg az adatkészlet-hivatkozásban érvényesített létezik, és, hogy megfelel-e a megadott feltételeknek megfelelő, vagy elérte az időtúllépési lesz. A megadott adatkészlet támogatnia kell a "MinimumSize" vagy "ChildItems" tulajdonság. | Adatkészlet-hivatkozásban | Igen |
-timeout | Megadja a futtatni kívánt tevékenység időtúllépését. Ha nem ad meg értéket, az alapértelmezett érték: 7 nap ("7.00:00:00"). Formátuma d.hh:mm:ss | String | Nem |
-Alvó állapot | A késleltetés, másodpercben ellenőrzési kísérletek között. Ha nem ad meg értéket, az alapértelmezett érték: 10 másodperc. | Egész szám | Nem |
-childItems | Ellenőrzi, hogy a mappa rendelkezik-e a gyermekelemek. Adható meg az igaz: Ellenőrizze, hogy a mappa létezik-e, és arról, hogy vannak-e elemeket. Letiltja, amíg legalább egy elem szerepel a mappa vagy időtúllépési érték elérésekor.-false (hamis): Ellenőrizze, hogy létezik-e a mappát, és üres. Blokkok amíg mappa nem üres, vagy amíg időtúllépési érték elérésekor. Ha nem ad meg értéket, tevékenység le fogja tiltani, amíg a mappa létezik, vagy időtúllépését. | Logikai | Nem |
-minimumSize | Minimális fájlméret (bájt). Ha nem ad meg értéket, alapértelmezett értéke 0 bájt | Egész szám | Nem |
+name | Az "Érvényesítés" tevékenység neve | Sztring | Igen |
+type | Érvényesítésre kell beállítani. | Sztring | Igen |
+adatkészlet | A tevékenység letiltja a végrehajtást, amíg nem ellenőrizte, hogy az adatkészlet-hivatkozás létezik, és megfelel a megadott feltételeknek, vagy elérte az időtúllépést. A megadott adatkészletnek támogatnia kell a "MinimumSize" vagy a "ChildItems" tulajdonságot. | Adatkészlet-hivatkozás | Igen |
+timeout | Megadja a futtatni kívánt tevékenység időtúllépését. Ha nincs megadva érték, az alapértelmezett érték 7 nap ("7.00:00:00"). A formátum d. óó: PP: SS | Sztring | Nem |
+aludni | Az érvényesítési kísérletek közötti késleltetés másodpercben. Ha nincs megadva érték, az alapértelmezett érték 10 másodperc. | Integer | Nem |
+childItems | Ellenőrzi, hogy a mappában van-e alárendelt elem. Állítható be a-True értékre: Ellenőrizze, hogy a mappa létezik-e, és hogy vannak-e elemek. A rendszer letiltja, amíg legalább egy elem szerepel a mappában, vagy elérte az időtúllépési értéket.-FALSE: Ellenőrizze, hogy a mappa létezik-e, és hogy üres-e. Blokkolja a mappa üres vagy az időtúllépési érték eléréséig. Ha nincs megadva érték, a tevékenység letiltja, amíg a mappa nem létezik, vagy amíg az időtúllépés el nem éri. | Logikai | Nem |
+minimumSize | A fájl minimális mérete bájtban megadva. Ha nincs megadva érték, az alapértelmezett érték 0 bájt | Integer | Nem |
 
 
 ## <a name="next-steps"></a>További lépések
-Tekintse meg a többi Data Factory által támogatott átvitelvezérlési tevékenységek:
+Tekintse meg a Data Factory által támogatott egyéb vezérlési folyamatokat:
 
 - [If Condition tevékenység](control-flow-if-condition-activity.md)
 - [Folyamat végrehajtása tevékenység](control-flow-execute-pipeline-activity.md)
-- [Minden egyes tevékenységhez](control-flow-for-each-activity.md)
+- [Minden tevékenységhez](control-flow-for-each-activity.md)
 - [Metaadatok beolvasása tevékenység](control-flow-get-metadata-activity.md)
 - [Keresési tevékenység](control-flow-lookup-activity.md)
 - [Webes tevékenység](control-flow-web-activity.md)

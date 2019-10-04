@@ -1,32 +1,32 @@
 ---
-title: 'Gyors útmutató: Hajtsa végre a PHP - Bing News Search REST API egy hírkeresés'
-titlesuffix: Azure Cognitive Services
-description: Ez a rövid útmutató segítségével egy kérelmet küld a Bing News Search REST API a PHP használatával, és a egy JSON-választ kap.
+title: 'Gyors útmutató: Hírek keresése a PHP-vel és a Bing News Search REST API'
+titleSuffix: Azure Cognitive Services
+description: Ezzel a rövid útmutatóval kérést küldhet a Bing News Search REST API PHP használatával, és JSON-választ kap.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 1/10/2019
+ms.date: 6/18/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: e77c7ea6036e92c33c975f8180053a8880db55a0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b905993c88bd4425215dd83962980d8e46a7b943
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58090525"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423706"
 ---
-# <a name="quickstart-perform-a-news-search-using-php-and-the-bing-news-search-rest-api"></a>Gyors útmutató: Hajtsa végre a PHP és a Bing News Search REST API használatával hírkeresés
+# <a name="quickstart-perform-a-news-search-using-php-and-the-bing-news-search-rest-api"></a>Gyors útmutató: Hírek keresése a PHP és a Bing News Search használatával REST API
 
 Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre az első Bing Image Search API-hívását, majd hogyan fogadhatja a JSON-választ. Ez az egyszerű JavaScript-alkalmazás keresési lekérdezést küld az API-nak, majd megjeleníti a nyers adatokat.
 
-Bár ez az alkalmazás PHP nyelven van megírva, az API-t-e a webes RESTful szolgáltatás kompatibilis szinte bármelyik programozási nyelvével.
+Az alkalmazás PHP-ben íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A PHP 5.6-os vagy újabb
+* PHP 5,6 vagy újabb
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
@@ -34,7 +34,7 @@ Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://az
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-A [Bing News Search API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) a Bing keresőmotor hírtalálatait adja vissza.
+A [Bing News Search API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) a Bing keresőmotor hírtalálatait adja vissza.
 
 1. Gondoskodjon róla, hogy a biztonságos HTTP támogatása a kódhoz tartozó megjegyzésben megadottak szerint engedélyezve legyen a `php.ini` fájlban.
 2. Hozzon létre egy új PHP-projektet a kedvenc IDE-környezetében vagy szerkesztőjében.

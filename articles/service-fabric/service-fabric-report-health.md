@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
 ms.openlocfilehash: 49ebf4ab95816a3da2f74a464b12b46de6228456
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59280553"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60723445"
 ---
 # <a name="add-custom-service-fabric-health-reports"></a>Egyéni Service Fabric-állapotjelentések hozzáadása
 Az Azure Service Fabric mutatja be egy [állapotmodell](service-fabric-health-introduction.md) célzó jelző nem megfelelő állapotú fürt és az alkalmazás feltételeket az adott entitásokon. Használja az állapotközpontú modellről **egészségügyi jelentéskészítők** (rendszer összetevőit és watchdogs). A cél, egyszerű és gyors diagnosztizálása és javítás. Szolgáltatás írók kell health szolgáltatással kapcsolatos előzetes költségek. Tetszőleges feltételt, amely hatással lehet a health kell jelenteni, különösen akkor, ha a legfelső szintű közeli jelző problémák megkönnyíti. Az egészségügyi információk takaríthat meg időt és energiát a Hibakeresés és kivizsgálása érdekében. Az üzletmenetet különösen törlése után a szolgáltatás nem működik és ipari méretekben a felhőben (magán- vagy Azure).
@@ -57,8 +57,8 @@ Egyszer az egészségügyi jelentéskészítő Tervező nincs bejelölve, rendsz
 ## <a name="health-client"></a>Állapot ügyfél
 A rendszerállapot-jelentések küldése a az ügyfélállapot-kezelő egy rendszerállapot-ügyfelet, amely lakik belsejében a fabric-ügyfél használatával. A health manager jelentéseket menti a health Store adatbázisban. Az állapot-ügyfél a következő beállításokkal konfigurálhatók:
 
-* **HealthReportSendInterval**: A health manager továbbítja a jelentést kerül az ügyfél és az idő közötti késleltetés. A batch-jelentésekhez használt, egy üzenet, nem pedig egy üzenet küldése az egyes jelentések. A kötegelés javítja a teljesítményt. Alapértelmezett: 30 másodperc.
-* **HealthReportRetrySendInterval**: A health manager jelenti az időközt, amelyen az állapotfigyelő létrehozása után újraküldi összesített állapotát. Alapértelmezett: 30 másodperc, minimális: 1 másodperc.
+* **HealthReportSendInterval**: A health manager továbbítja a jelentést kerül az ügyfél és az idő közötti késleltetés. A batch-jelentésekhez használt, egy üzenet, nem pedig egy üzenet küldése az egyes jelentések. A kötegelés javítja a teljesítményt. alapértelmezett érték: 30 másodperc.
+* **HealthReportRetrySendInterval**: A health manager jelenti az időközt, amelyen az állapotfigyelő létrehozása után újraküldi összesített állapotát. alapértelmezett érték: 30 másodperc, minimális: 1 másodperc.
 * **HealthOperationTimeout**: Az időkorlát a health manager küldött jelentés üzenet. Egy üzenet túllépi az időkorlátot, ha az állapotfigyelő ügyfél azt újrapróbálkozik, mindaddig, amíg a health manager megerősíti, hogy a jelentés feldolgozása megtörtént. Alapértelmezett: két perc.
 
 > [!NOTE]

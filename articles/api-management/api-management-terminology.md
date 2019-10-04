@@ -1,6 +1,6 @@
 ---
-title: Az Azure API Management terminológiája |} Microsoft Docs
-description: Ez a cikk az API Management szakkifejezéseit definíciók ad.
+title: Az Azure API Management terminológiája |} A Microsoft Docs
+description: Ez a cikk a feltételeket, amelyeket az API Management jellemző definíciókat megtalálható.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -11,26 +11,26 @@ ms.workload: integration
 ms.topic: article
 ms.date: 10/11/2017
 ms.author: apimpm
-ms.openlocfilehash: 81cf34cacdfe37e25d6b745304ab0879245fd8da
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: b99ca444532799d21850058eae0e3f40ed871135
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33934597"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61074054"
 ---
 # <a name="terminology"></a>Terminológia
 
-Ez a cikk az adott API-felügyeleti (APIM) kifejezéssel definíciók ad.
+Ez a cikk a feltételeket, amelyeket az API Management (APIM) jellemző definíciókat megtalálható.
 
 ## <a name="term-definitions"></a>Kifejezés definíciók
 
-* **Háttér-API** -egy HTTP-szolgáltatás, amely megvalósítja az API-t és a műveleteket. 
-* **Előtérbeli API**/**APIM API** -egy APIM API nem működik az API-k, homlokzatoknál hoz létre a biztonsági érintése nélkül a homlokzati igényei szerint testre az API-kat API végén. További információkért lásd: [importálása és tegye közzé az API-k](import-and-publish.md).
-* **APIM termék** -a termék egy vagy több API-k, valamint a memóriahasználati kvóta és a használati feltételeket tartalmazza. Számos olyan API-k, és a fejlesztői portálon keresztül a fejlesztők számára biztosíthat számukra. További információkért lásd: [létrehozása és közzététele egy termék](api-management-howto-add-products.md).
-* **APIM API-művelet** -fejlesztők számára elérhető műveletek készletét reprezentálja, minden APIM API. Minden egyes APIM API tartalmaz egy hivatkozást a háttér-szolgáltatás, amely megvalósítja az API-t, és a műveletek leképezés a háttér-szolgáltatás által megvalósított műveletekre. További információkért lásd: [Mock API válaszok](mock-api-responses.md).
-* **Verzió** - néha közzé szeretné tenni az új vagy eltérő API szeretne egyes felhasználóknak szolgáltatásokat, míg mások szeretné, hogy az API-t, amely jelenleg működik a számukra odatapadjon. További információkért lásd: [közzététele az API-t több verziójának](api-management-get-started-publish-versions.md).
-* **Változat** - amikor az API-Ugrás kész, és kezdődik, akkor általában a fejlesztők által használandó kell gondoskodunk a módosítások elvégzése az adott API, és nem zavarja a API hívóknak az egy időben. Emellett az is hasznos, ha a fejlesztők értesülnek az elvégzett módosításokról. További információkért lásd: [használja a változatok](api-management-get-started-revise-api.md).
-* **Fejlesztői portálján** -ügyfelei az alábbiakra (fejlesztők) az API-k eléréséhez használ a fejlesztői portálján. A fejlesztői portálján testre szabható. További információkért lásd: [testre szabhatja a fejlesztői portálján](api-management-customize-styles.md).
+* **Háttérrendszeri API-t** – egy HTTP-szolgáltatás, amely megvalósítja az API-t és a műveleteket. 
+* **Előtérbeli API**/**APIM API** – az APIM API nem működik az API-k, homlokzatoknál hoz létre az API-k, annak érdekében, hogy a adapterréteget igény szerint testreszabhatja vissza a módosítása nélkül záró API. További információkért lásd: [importálása és közzététele az API-k](import-and-publish.md).
+* **APIM-termék** – a termék egy vagy több API-k, valamint a használati kvótát és a használati feltételeket tartalmazza. API-k számát, és a fejlesztők számára a fejlesztői portálon elérhetővé teheti őket. További információkért lásd: [létrehozása és a egy termék közzététele](api-management-howto-add-products.md).
+* **APIM API-művelet** – minden APIM API fejlesztők számára elérhető műveletek készletét jelenti. Minden egyes APIM API tartalmaz egy hivatkozást a háttér-szolgáltatás, amely megvalósítja az API-t, a műveletei pedig leképezik a háttérszolgáltatás által megvalósított műveleteket. További információkért lásd: [utánzása API-válaszok](mock-api-responses.md).
+* **Verzió** – néha szeretne új közzététele, vagy különböző API-funkció az egyes felhasználók, míg mások szeretné az API-t, amely számukra jelenleg működik jól. További információkért lásd: [az API több verziójának közzététele](api-management-get-started-publish-versions.md).
+* **Változat** – Ha az API-ját, készen áll arra, go, és elindul, és a fejlesztők, általában ügyelni kell arra, hogy API-hoz, és akadályozza az API hívóit, nem egy időben módosításokat végez. Emellett az is hasznos, ha a fejlesztők értesülnek az elvégzett módosításokról. További információkért lásd: [változatok használata a](api-management-get-started-revise-api.md).
+* **Fejlesztői portál** – az ügyfelek (fejlesztőknek) kell használnia a fejlesztői portál az API-k eléréséhez. A fejlesztői portál testre szabható. További információkért lásd: [a fejlesztői portál testreszabása](api-management-customize-styles.md).
 
 ## <a name="next-steps"></a>További lépések
 

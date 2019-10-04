@@ -1,71 +1,74 @@
 ---
-title: Az Azure virtuális gépek helyi Linux-jelszó alaphelyzetbe állítása |} A Microsoft Docs
-description: Vezessen be a lépéseket az Azure virtuális Gépen futó helyi Linux-jelszó alaphelyzetbe állítása
+title: Helyi Linux-jelszó alaphelyzetbe állítása Azure-beli virtuális gépeken | Microsoft Docs
+description: A helyi Linux-jelszó alaphelyzetbe állításának lépései az Azure-beli virtuális gépen
 services: virtual-machines-linux
 documentationcenter: ''
 author: Deland-Han
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
-ms.date: 06/15/2018
+ms.date: 08/20/2019
 ms.author: delhan
-ms.openlocfilehash: d96d75f4f2623476f7af4e6eea930c1f2c503e3a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 83751538efe4f3d3af5928caa04b265b6c867442
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51226913"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71153570"
 ---
-# <a name="how-to-reset-local-linux-password-on-azure-vms"></a>Az Azure virtuális gépek helyi Linux-jelszó alaphelyzetbe állítása
+# <a name="how-to-reset-local-linux-password-on-azure-vms"></a>Helyi Linux-jelszó alaphelyzetbe állítása Azure-beli virtuális gépeken
 
-Ez a cikk bemutatja a több módszert is helyi Linux rendszerű virtuális gép (VM) jelszavakat. Ha a felhasználói fiók lejárt vagy csak szeretné hozzon létre egy új fiókot, az alábbi módszerek segítségével hozzon létre egy új helyi rendszergazdai fiókot, valamint a virtuális gép újbóli eléréséhez.
+Ez a cikk számos módszert ismertet a helyi linuxos virtuális gépek (VM) jelszavának alaphelyzetbe állításához. Ha a felhasználói fiók lejárt, vagy csak egy új fiókot szeretne létrehozni, akkor a következő módszerekkel hozhat létre új helyi rendszergazdai fiókot, és újból hozzáférhet a virtuális géphez.
 
 ## <a name="symptoms"></a>Probléma
 
-Nem tud bejelentkezni a virtuális Gépet, és megjelenik az üzenet, amely azt jelzi, hogy a használt jelszó helytelen. Vmagent esetében ezenkívül az Azure Portalon a jelszó nem használható.
+Nem tud bejelentkezni a virtuális gépre, és megjelenik egy üzenet, amely jelzi, hogy a használt jelszó helytelen. Emellett a VMAgent nem használható a jelszó alaphelyzetbe állításához a Azure Portal.
 
-## <a name="manual-password-reset-procedure"></a>Manuális jelszó-visszaállítási eljárást
+## <a name="manual-password-reset-procedure"></a>Manuális jelszó-visszaállítási eljárás
 
-1.  Törölje a virtuális Gépet, és megtartása a csatlakoztatott lemezeket.
+> [!NOTE]
+> A következő lépések nem vonatkoznak a nem felügyelt lemezzel rendelkező virtuális gépre.
 
-2.  Az operációs rendszer meghajtójának csatolása adatlemezként egy másik ideiglenes virtuális géphez ugyanazon a helyen.
+1. Készítsen pillanatképet az érintett virtuális gép operációsrendszer-lemezéről, hozzon létre egy lemezt a pillanatképből, majd csatolja a lemezt egy hibakeresési virtuális géphez. További információ: Windows rendszerű [virtuális gép hibáinak elhárítása az operációsrendszer-lemez egy helyreállítási virtuális géphez való csatolásával a Azure Portal használatával](troubleshoot-recovery-disks-portal-linux.md).
 
-3.  A következő SSH-parancs futtatása a virtuális gépen historikus felügyelője lesz.
+2. Kapcsolódjon a hibaelhárítási virtuális géphez Távoli asztal használatával.
+
+3.  Futtassa a következő SSH-parancsot a hibaelhárítási virtuális gépen, hogy legyen egy felügyelő.
 
     ```bash
     sudo su
     ```
 
-4.  Futtatás **fdisk -l** vagy rendszernaplók az újonnan csatolt lemezen található meg. Keresse meg azt a meghajtó nevét csatlakoztatásához. A historikus virtuális Gépen, keresse meg az érintett naplófájlban.
+4.  Futtassa az **fdisk-l** parancsot, vagy tekintse meg a rendszernaplókat az újonnan csatlakoztatott lemez megtalálásához. Keresse meg a csatlakoztatni kívánt meghajtó nevét. Ezután az időszakos virtuális gépen keresse meg a megfelelő naplófájlt.
 
     ```bash
     grep SCSI /var/log/kern.log (ubuntu)
     grep SCSI /var/log/messages (centos, suse, oracle)
     ```
 
-    A következő egy példa kimenet a grep parancs:
+    A következő példa a GREP-parancs kimenetét szemlélteti:
 
     ```bash
     kernel: [ 9707.100572] sd 3:0:0:0: [sdc] Attached SCSI disk
     ```
 
-5.  Hozzon létre egy csatlakoztatási pontot nevű **tempmount**.
+5.  Hozzon létre egy **tempmount**nevű csatlakoztatási pontot.
 
     ```bash
     mkdir /tempmount
     ```
 
-6.  Csatlakoztassa az operációsrendszer-lemez a csatlakoztatási ponton. Általában csatlakoztatni kell *sdc1* vagy *sdc2*. Ez függ, a üzemeltetési partíción */etc* könyvtárat abból a hibás gép lemezét.
+6.  Csatlakoztassa az operációsrendszer-lemezt a csatlakoztatási ponthoz. Általában csatlakoztatnia kell a *sdc1* -t vagy a *sdc2*-t. Ez attól függ, hogy az */etc* könyvtárban lévő üzemeltetési partíció a hibás számítógép lemezéről származik-e.
 
     ```bash
     mount /dev/sdc1 /tempmount
     ```
 
-7.  Hitelesítőadat-fájlok az alapvető fontosságú másolatokat készíthet változtatások előtt:
+7.  A módosítások végrehajtása előtt készítsen másolatot az alapvető hitelesítő adatok fájljairól:
 
     ```bash
     cp /etc/passwd /etc/passwd_orig    
@@ -76,13 +79,13 @@ Nem tud bejelentkezni a virtuális Gépet, és megjelenik az üzenet, amely azt 
     cp /tempmount/etc/shadow /tempmount/etc/shadow_orig
     ```
 
-8.  Szükséges a felhasználói jelszó alaphelyzetbe állítása:
+8.  A felhasználó jelszavának alaphelyzetbe állítása:
 
     ```bash
     passwd <<USER>> 
     ```
 
-9.  Helyezze át a módosított fájlokat a megfelelő helyre a hibás gép lemezen.
+9.  Helyezze át a módosított fájlokat a hibás számítógép lemezének megfelelő helyére.
 
     ```bash
     cp /etc/passwd /tempmount/etc/passwd
@@ -91,19 +94,19 @@ Nem tud bejelentkezni a virtuális Gépet, és megjelenik az üzenet, amely azt 
     cp /etc/shadow_orig /etc/shadow
     ```
 
-10. Lépjen vissza a legfelső szintű, és a lemez leválasztásához.
+10. Lépjen vissza a gyökérkönyvtárba, és válassza le a lemezt.
 
     ```bash
     cd /
     umount /tempmount
     ```
 
-11. Válassza le a lemezt, a felügyeleti portálról.
+11. A Azure Portalban válassza le a lemezt a hibaelhárítási virtuális gépről.
 
-12. Hozza létre újra a virtuális Gépet.
+12. [Módosítsa az érintett virtuális gép operációsrendszer-lemezét](troubleshoot-recovery-disks-portal-linux.md#swap-the-os-disk-for-the-vm).
 
 ## <a name="next-steps"></a>További lépések
 
-* [Hibaelhárítás Azure virtuális Gépen egy másik Azure virtuális gép operációsrendszer-lemez csatolása](https://social.technet.microsoft.com/wiki/contents/articles/18710.troubleshoot-azure-vm-by-attaching-os-disk-to-another-azure-vm.aspx)
+* [Azure-beli virtuális gép – operációsrendszer-lemez csatlakoztatása egy másik Azure-beli virtuális géphez](https://social.technet.microsoft.com/wiki/contents/articles/18710.troubleshoot-azure-vm-by-attaching-os-disk-to-another-azure-vm.aspx)
 
-* [Az Azure CLI: Hogyan lehet törölni, és helyezze újra üzembe a virtuális gép VHD-ből](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/azure-cli-how-to-delete-and-re-deploy-a-vm-from-vhd/)
+* [Azure CLI: Virtuális gép törlése és újbóli üzembe helyezése virtuális merevlemezről](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/azure-cli-how-to-delete-and-re-deploy-a-vm-from-vhd/)

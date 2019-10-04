@@ -1,25 +1,18 @@
 ---
-title: HTTPS-végpont |} A Microsoft Docs
+title: HTTPS-végpont |} Az Azure Marketplace-en
 description: HTTPS-végpont érdeklődő felügyeletének konfigurálásához.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/24/2018
-ms.author: pbutlerm
-ms.openlocfilehash: cfcd154b2f44c9e8acf12a9666abc9ce95fb3c26
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.author: pabutler
+ms.openlocfilehash: 058ab30358811cb66ae033fb464974639569ae18
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648350"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64935259"
 ---
 # <a name="configure-lead-management-using-an-https-endpoint"></a>HTTPS-végpont használatával lead felügyelet konfigurálása
 

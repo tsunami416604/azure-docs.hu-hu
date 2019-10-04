@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 592d885656ee7753054f020f5768a75a5d43a489
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0c7e97b2f2a447ae5152764d6b4f40ff38f012c3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57886320"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67102498"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fiscalnote"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező FiscalNote
 
@@ -55,7 +55,7 @@ Az Azure AD integrálása a FiscalNote konfigurálásához hozzá kell FiscalNot
 
 **FiscalNote hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -123,7 +123,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés FiscalNote, hajtsa v
     | Name (Név) | Adatforrás-attribútum|
     | ---------------| ----------------|
     | familyName| user.surname|
-    | e-mail| user.mail|
+    | email| user.mail|
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
 

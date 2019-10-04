@@ -12,19 +12,19 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/11/2018
+ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 1bcb7f9fadc79db0db17336f07f6d58302433c1f
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 82358f4d5548464f1304d77a846d71863ed9efa1
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58664029"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385005"
 ---
-# <a name="tutorial-install-and-create-service-fabric-cluster"></a>Oktatóanyag: Telepítse, és a Service Fabric-fürt létrehozása
+# <a name="tutorial-install-and-create-service-fabric-cluster"></a>Oktatóanyag: Service Fabric-fürt telepítése és létrehozása
 
-Az önálló Service Fabric-fürtök lehetővé teszik, hogy kiválassza a saját környezetét, és hogy a Service Fabric „bármely operációs rendszer, bármilyen felhő” módszerével hozzon létre egy fürtöt. Ebben az oktatóanyag-sorozatban egy, az AWS-en futtatott önálló fürtöt hoz létre, majd telepít rá egy alkalmazást.
+Az önálló Service Fabric-fürtök lehetővé teszik, hogy kiválassza a saját környezetét, és hogy a Service Fabric „bármely operációs rendszer, bármilyen felhő” módszerével hozzon létre egy fürtöt. Ebben az oktatóanyag-sorozatban létre fog hozni egy AWS-ben vagy az Azure-ban üzemeltetett önálló fürtöt, és telepítenie kell egy alkalmazást.
 
 Ez az oktatóanyag egy sorozat második része. Ez az oktatóanyag végigvezeti az önálló Service Fabric-fürt létrehozásának lépésein.
 
@@ -37,7 +37,7 @@ A sorozat második részében az alábbiakkal fog megismerkedni:
 
 ## <a name="download-the-service-fabric-for-windows-server-package"></a>A Windows Serverhez készült Service Fabric-csomag letöltése
 
-A Service Fabric egy telepítőcsomagot biztosít az önálló Service Fabric-fürtök telepítéséhez.  [Töltse le a telepítőcsomagot](https://go.microsoft.com/fwlink/?LinkId=730690) a helyi számítógépre.  Miután sikeresen letöltötte, az RDP-kapcsolaton keresztül másolja át az EC2-példányra, és illessze be az asztalra.
+A Service Fabric egy telepítőcsomagot biztosít az önálló Service Fabric-fürtök telepítéséhez.  [Töltse le a telepítőcsomagot](https://go.microsoft.com/fwlink/?LinkId=730690) a helyi számítógépre.  Miután sikeresen letöltötte a példányt a virtuális gépre irányuló RDP-kapcsolaton keresztül, és beilleszti az asztalra.
 
 Jelölje ki a ZIP-fájlt, nyissa meg a helyi menüt, ás válassza az **Összes kibontása** > **Kibontás** lehetőséget.  A fájlok kibontásakor létrejön egy mappa az asztalon, amelynek neve megegyezik a ZIP-fájl nevével.
 
@@ -129,7 +129,7 @@ Your cluster is successfully created! You can connect and manage your cluster us
 
 ### <a name="bring-up-service-fabric-explorer"></a>A Service Fabric Explorer megnyitása
 
-Most a fürthöz a Service Fabric Explorerrel kapcsolódhat közvetlenül az egyik a http-gépek:\//localhost:19080/Explorer/index.html vagy távoli http-:\/ /<  *IPAddressofaMachine*>: 19080/Explorer/index.html.
+Most már csatlakozhat a fürthöz Service Fabric Explorer vagy\/közvetlenül az egyik gépen, http:/localhost:19080/Explorer/index.html vagy távolról, http:\//<IPAddressofaMachine > használatával : 19080/Explorer/index.html.
 
 ## <a name="add-and-remove-nodes"></a>Csomópontok hozzáadása és eltávolítása
 

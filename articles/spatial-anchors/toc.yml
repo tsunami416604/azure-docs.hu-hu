@@ -5,6 +5,7 @@
     - name: A Spatial Anchors ismertetése
       href: overview.md
 - name: Gyors útmutatók
+  expanded: true
   items:
     - name: Unity-alkalmazás létrehozása
       href: unity-overview.yml
@@ -16,18 +17,26 @@
           href: quickstarts/get-started-unity-android.md
         - name: iOS
           href: quickstarts/get-started-unity-ios.md
-    - name: iOS-alkalmazás létrehozása
-      href: quickstarts/get-started-ios.md
-    - name: Android-alkalmazás létrehozása
-      href: quickstarts/get-started-android.md
     - name: HoloLens-alkalmazás létrehozása
       href: quickstarts/get-started-hololens.md
+    - name: Android-alkalmazás létrehozása
+      href: quickstarts/get-started-android.md
+    - name: iOS-alkalmazás létrehozása
+      href: quickstarts/get-started-ios.md
+    - name: Xamarin-alkalmazás létrehozása
+      items:
+        - name: Android
+          href: quickstarts/get-started-xamarin-android.md
+        - name: iOS
+          href: quickstarts/get-started-xamarin-ios.md
 - name: Oktatóanyagok
   items:
     - name: Megosztás a Unityben
       href: tutorials/tutorial-share-anchors-across-devices.md
     - name: Megosztás a Unityben az Azure Cosmos DB-vel
       href: tutorials/tutorial-use-cosmos-db-to-store-anchors.md
+    - name: Új Unity HoloLens-alkalmazás indítása
+      href: tutorials/tutorial-new-unity-hololens-app.md
     - name: Új androidos alkalmazás indítása
       href: tutorials/tutorial-new-android-app.md
 - name: Használati útmutató
@@ -53,6 +62,8 @@
       href: 'https://github.com/Azure/azure-spatial-anchors-samples'
 - name: Alapelvek
   items:
+    - name: Hitelesítés
+      href: concepts/authentication.md
     - name: Kapcsolatok horgonyzása
       href: concepts/anchor-relationships-way-finding.md
     - name: Útmutatók
@@ -73,6 +84,8 @@
       href: 'https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/'
 - name: További források
   items:
+    - name: Azure Mixed Reality Resource Management REST API
+      href: 'https://docs.microsoft.com/en-us/rest/api/mixedreality/'
     - name: GYIK
       href: spatial-anchor-faq.md
     - name: Termékkel kapcsolatos visszajelzés küldése

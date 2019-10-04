@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: 15cfa025bde3367c57255ce50f95c69293b63f92
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 59d61eda7002fe46cf99fac63822b2333b2d64b5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59283375"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67087771"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-userecho"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező UserEcho
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a UserEcho konfigurálásához hozzá kell UserEcho a 
 
 **UserEcho hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -138,7 +138,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés UserEcho, hajtsa vé
    
     ![Egyszeri bejelentkezés konfigurálása](./media/userecho-tutorial/tutorial_userecho_07.png) 
 
-4. Kattintson a **webhely**, és kattintson a **egyszeri bejelentkezés (egy SAML2)**.
+4. Kattintson a **webhely**, és kattintson a **egyszeri bejelentkezés (egy SAML2)** .
    
     ![Egyszeri bejelentkezés konfigurálása](./media/userecho-tutorial/tutorial_userecho_08.png) 
 

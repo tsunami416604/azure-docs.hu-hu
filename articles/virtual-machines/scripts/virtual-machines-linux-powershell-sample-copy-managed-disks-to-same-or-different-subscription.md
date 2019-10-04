@@ -1,6 +1,6 @@
 ---
-title: Az Azure PowerShell-Példaszkript – felügyelt azonos vagy eltérő előfizetéshez lemezek másolása (áthelyezése) |} A Microsoft Docs
-description: Az Azure PowerShell-Példaszkript – felügyelt azonos vagy eltérő előfizetéshez lemezek másolása (áthelyezése)
+title: Azure PowerShell parancsfájl-minta – felügyelt lemezek másolása (mozgatása) azonos vagy eltérő előfizetésre | Microsoft Docs
+description: Azure PowerShell parancsfájl mintája – a felügyelt lemezek másolása (mozgatása) azonos vagy eltérő előfizetésre
 services: virtual-machines-linux
 documentationcenter: storage
 author: ramankumarlive
@@ -9,28 +9,27 @@ editor: tysonn
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/06/2017
 ms.author: ramankum
-ms.openlocfilehash: c063fc431578cafebac6fb412f15023ffcf70e17
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 9eff4deca3caf5cef08a9075d9f994f7a6cd3a37
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57248727"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70081427"
 ---
-# <a name="copy-managed-disks-in-the-same-subscription-or-different-subscription-with-powershell"></a>Felügyelt lemezek másolása a ugyanahhoz az előfizetéshez vagy a PowerShell-lel másik előfizetésre
+# <a name="copy-managed-disks-in-the-same-subscription-or-different-subscription-with-powershell"></a>Felügyelt lemezek másolása ugyanabban az előfizetésben vagy eltérő előfizetésben a PowerShell-lel
 
-Ez a szkript létrehoz egy olyan meglévő felügyelt lemezről példányát ugyanahhoz az előfizetéshez vagy másik előfizetést. Az új lemez jön létre a szülő felügyelt lemez ugyanabban a régióban.
+Ez a szkript egy meglévő felügyelt lemez másolatát hozza létre ugyanabban az előfizetésben vagy más előfizetésben. Az új lemez ugyanabban a régióban jön létre, mint a szülő felügyelt lemez.
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -42,7 +41,7 @@ A szkript a következő parancsokat használja egy új felügyelt lemez létreho
 
 | Parancs | Megjegyzések |
 |---|---|
-| [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/New-AzDiskConfig) | Létrehoz egy lemezkonfigurációt lemezlétrehozáshoz. Az erőforrás-azonosítóját a szülőlemezt és a helyet, hogy ugyanaz, mint a szülőlemezt helyét tartalmazza.  |
+| [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/New-AzDiskConfig) | Létrehoz egy lemezkonfigurációt lemezlétrehozáshoz. Tartalmazza a szülő lemez erőforrás-azonosítóját, valamint a szülő lemez helyét megegyező helyet.  |
 | [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/New-AzDisk) | Létrehoz egy lemezt a paraméterként megadott lemezkonfiguráció, lemeznév és erőforráscsoport-név alapján. |
 
 ## <a name="next-steps"></a>További lépések

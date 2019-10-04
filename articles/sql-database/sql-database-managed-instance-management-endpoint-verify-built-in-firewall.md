@@ -1,6 +1,6 @@
 ---
-title: Fedezze fel az Azure SQL Database felügyelt példányába beépített tűzfal |} A Microsoft Docs
-description: Megtudhatja, hogyan ellenőrizheti a beépített tűzfalas védelem az Azure SQL Database felügyelt példányain.
+title: A beépített tűzfal Azure SQL Database felügyelt példány felderítése | Microsoft Docs
+description: Útmutató a beépített tűzfalbeállítások ellenőrzéséhez Azure SQL Database felügyelt példányban.
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -10,25 +10,24 @@ ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab
-manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: 774455a2901782ef52b213c6a13c17636e28b1a4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c98b0fd5669140559b4840e157394c2e8c6086ae
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59788105"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567427"
 ---
-# <a name="verifying-the-managed-instance-built-in-firewall"></a>A felügyelt példány beépített tűzfal ellenőrzése
+# <a name="verifying-the-managed-instance-built-in-firewall"></a>A felügyelt példány beépített tűzfalának ellenőrzése
 
-A felügyelt példány [kötelező bejövő biztonsági szabályok](sql-database-managed-instance-connectivity-architecture.md#mandatory-inbound-security-rules) igényelnek a felügyeleti portokat 9000, 9003, 1438, 1440, nyissa meg a kívánt 1452 **bármilyen forrásból** lévő a hálózati biztonsági csoport (NSG), amely védelmet nyújt a felügyelt A példány. Bár az ezeket a portokat nyissa meg az NSG-t szintjén, védi azokat a hálózati szinten a beépített tűzfal.
+A felügyelt példányok [kötelező bejövő biztonsági szabályai](sql-database-managed-instance-connectivity-architecture.md#mandatory-inbound-security-rules) a 9000, 9003, 1438, 1440, 1452 felügyeleti portok megkövetelését igénylik a felügyelt példányt védő hálózati biztonsági csoport (NSG) **bármely forrásból** . Habár ezek a portok a NSG szinten vannak megnyitva, a beépített tűzfal hálózati szinten védi azokat.
 
-## <a name="verify-firewall"></a>Ellenőrizze a tűzfal
+## <a name="verify-firewall"></a>Tűzfal ellenőrzése
 
-Ezeket a portokat, eszközzel ellenőrizheti bármilyen biztonsági ellenőrzőeszköz teszteléséhez ezeket a portokat. A következő képernyőképen látható, hogyan használhatja az eszközöket.
+A portok ellenőrzéséhez használja a bármely biztonsági ellenőrzőeszköz eszközt a portok teszteléséhez. Az alábbi képernyőképen az eszközök egyikét láthatja.
 
 ![Beépített tűzfal ellenőrzése](./media/sql-database-managed-instance-management-endpoint/03_verify_firewall.png)
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a felügyelt példányok és a kapcsolat: [Azure SQL Database felügyelt példány kapcsolati architektúra](sql-database-managed-instance-connectivity-architecture.md).
+A felügyelt példányokkal és kapcsolatokkal kapcsolatos további információkért lásd: [Azure SQL Database felügyelt példány kapcsolati architektúrája](sql-database-managed-instance-connectivity-architecture.md).

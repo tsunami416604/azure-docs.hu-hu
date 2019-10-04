@@ -1,61 +1,61 @@
 ---
-title: Feladatátadás és feladatátvétel a Site Recovery az Azure-bA vész-helyreállítási fizikai kiszolgálók |} A Microsoft Docs
-description: Útmutató az Azure-bA fizikai kiszolgálók feladatait átadja, és a feladat-visszavételhez vész-helyreállítási az Azure Site Recovery a helyszíni hely
+title: Fizikai kiszolgálók feladatátvétele és visszavétele az Azure-ba való vész-helyreállítás Site Recovery használatával | Microsoft Docs
+description: Ismerje meg, hogyan hajthatja végre a fizikai kiszolgálók feladatátvételét az Azure-ba, és hogyan térhet vissza a helyszíni helyre a vész-helyreállításhoz Azure Site Recovery
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: edb169d131aafd045fdf0f670e1dda87677d57ee
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 49b61423b33282be7f0ace52c2a164d52ba20314
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57834677"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814409"
 ---
-# <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>Átadása és visszavétele Azure-bA replikált fizikai kiszolgálók
+# <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>Az Azure-ba replikált fizikai kiszolgálók feladatátvétele és feladatátvétele
 
-Ez az oktatóanyag leírja, hogyan végezhet feladatátvételt egy fizikai kiszolgáló Azure-bA. A feladatátvétel után visszaadja a feladatokat a kiszolgáló a helyszíni hely elérhetővé válik.
+Ez az oktatóanyag leírja, hogyan végezhet feladatátvételt egy fizikai kiszolgálón az Azure-ban. A feladatátvételt követően a kiszolgáló a rendelkezésre állása után visszatérhet a helyszíni helyhez.
 
 ## <a name="preparing-for-failover-and-failback"></a>Felkészülés a feladatátvételre és a feladat-visszavételre
 
-Fizikai kiszolgálók replikálása az Azure Site Recovery használatával; az VMware virtuális gépek csak sikertelen lehet. VMware-infrastruktúrára van szüksége ahhoz, hogy a feladat-visszavételt.
+Az Azure-ba replikált fizikai kiszolgálók Site Recovery csak a VMware virtuális gépeken tudnak visszatérni. A feladat-visszavétel érdekében VMware-infrastruktúrára van szükség.
 
 A feladatátvétel és a feladat-visszavétel négy fázisból áll:
 
-1. **Az Azure-bA feladatátvételt**: Gépek átvétele a helyszíni helyről az Azure-bA.
-2. **Az Azure virtuális gépek ismételt védelme**: Az Azure virtuális gépek ismételt védelme, hogy megkezdődhessen a vissza a helyszíni VMware virtuális gépek replikálása.
-3. **Átadja a feladatokat a helyszíni**: Feladatátvételt végez, az Azure-ból sikertelen lesz.
-4. **Az ismételt védelem a helyszíni virtuális gépek**: Miután adatokat vissza nem sikerült, ismételt védelme a helyszíni VMware virtuális gépek vissza az, hogy megkezdődhessen a replikálás az Azure-bA.
+1. **Feladatátvétel az Azure-** ba: Feladatátvétel a helyszíni helyről az Azure-ba.
+2. **Azure-beli virtuális gépek ismételt védetté**: Állítsa be újra az Azure-beli virtuális gépeket, hogy azok a helyszíni VMware virtuális gépekre replikálódnak.
+3. **Feladatátvétel a helyszíni rendszerbe**: Futtasson feladatátvételt az Azure-ból való visszatéréshez.
+4. Helyszíni **virtuális gépek ismételt védetté**: Az adatműveletek visszautasítása után állítsa be újra a helyszíni VMware virtuális gépeket, amelyekről a művelet sikertelen volt, hogy megkezdje az Azure-ba való replikálást.
 
-## <a name="verify-server-properties"></a>Ellenőrizze a kiszolgáló tulajdonságai
+## <a name="verify-server-properties"></a>Kiszolgáló tulajdonságainak ellenőrzése
 
-Ellenőrizze a kiszolgáló tulajdonságait, és győződjön meg arról, hogy megfelel [Azure-követelmények](vmware-physical-azure-support-matrix.md#replicated-machines) az Azure virtuális gépek.
+Ellenőrizze a kiszolgáló tulajdonságait, és győződjön meg arról, hogy az megfelel az Azure-beli virtuális gépekre [vonatkozó Azure-követelményeknek](vmware-physical-azure-support-matrix.md#replicated-machines) .
 
-1. A **védett elemek**, kattintson a **replikált elemek**, és válassza ki a gépet.
+1. A **védett elemek**területen kattintson a **replikált elemek**elemre, majd válassza ki a gépet.
 
-2. Az a **replikált elem** ablaktáblán állapot, gép információk összegzését, és a legújabb elérhető helyreállítási pontok. Kattintson a **Tulajdonságok** lehetőségre a további részletek megtekintéséhez.
-3. A **számítás és hálózat**, módosíthatja az Azure-nevet, az erőforráscsoportot, a célméretet, [rendelkezésre állási csoport](../virtual-machines/windows/tutorial-availability-sets.md), és a felügyelt lemez beállításait
+2. A **replikált elem** ablaktáblán a számítógép adatai, az állapot és a legújabb elérhető helyreállítási pontok összegzése látható. Kattintson a **Tulajdonságok** lehetőségre a további részletek megtekintéséhez.
+3. A **számítás és hálózat**területen módosíthatja az Azure-nevet, az erőforráscsoportot, a célként megadott méretet, a [rendelkezésre állási](../virtual-machines/windows/tutorial-availability-sets.md)csoportot és a felügyelt lemez beállításait.
 4. Megtekintheti és módosíthatja a hálózati beállításokat, beleértve azt a hálózatot/alhálózatot, amelyen az Azure-beli virtuális gép a feladatátvétel után lesz és a hozzá rendelt IP-címet.
-5. A **lemezek**, láthatja, hogy a gép operációs rendszerének és az adatlemezek kapcsolatos információkat.
+5. A **lemezekben**a számítógép operációs rendszerével és az adatlemezekkel kapcsolatos információk láthatók.
 
 ## <a name="run-a-failover-to-azure"></a>Feladatátvétel futtatása az Azure-ban
 
 1. A **Beállítások** > **Replikált elemek** területen kattintson a gépre > **Feladatátvétel** ikonra.
 2. A **Feladatátvétel** területen válassza ki a **Helyreállítási pontot** a feladatok átvételéhez. Az alábbi lehetőségek egyikét használhatja:
-   - **Legújabb**: Ez a lehetőség először feldolgozza a Site Recovery számára küldött összes adatot. A legalacsonyabb helyreállítási időkorlátot (RPO) nyújtja, mert a feladatátvétel után létrehozott Azure-beli virtuális gép rendelkezik a feladatátvétel elindításakor a Site Recoverybe replikált összes adattal.
-   - **Legutóbb feldolgozott**: Ez a beállítás átadja a feladatokat a gépet a Site Recovery által feldolgozott legutóbbi helyreállítási pontnak. Ez a lehetőség alacsony helyreállítási időre vonatkozó célkitűzést (RTO) nyújt, mert a rendszer nem tölt időt a feldolgozatlan adatok feldolgozásával.
-   - **Legutóbbi alkalmazáskonzisztens**: Ez a beállítás átadja a feladatokat a gépet a Site Recovery által feldolgozott legutóbbi alkalmazáskonzisztens helyreállítási pontnak.
-   - **Egyéni**: Adjon meg egy helyreállítási pontot.
+   - **Legutóbbi**: Ez a beállítás először a Site Recoveryba elküldett összes adatfeldolgozást feldolgozza. A legalacsonyabb helyreállítási időkorlátot (RPO) nyújtja, mert a feladatátvétel után létrehozott Azure-beli virtuális gép rendelkezik a feladatátvétel elindításakor a Site Recoverybe replikált összes adattal.
+   - **Legutóbb feldolgozott**: Ez a beállítás feladatátvételt hajt végre a gépen a Site Recovery által feldolgozott legújabb helyreállítási pontra. Ez a lehetőség alacsony helyreállítási időre vonatkozó célkitűzést (RTO) nyújt, mert a rendszer nem tölt időt a feldolgozatlan adatok feldolgozásával.
+   - **Legújabb alkalmazás – konzisztens**: Ez a beállítás feladatátvételt hajt végre a gépen a Site Recovery által feldolgozott legújabb, alkalmazás-konzisztens helyreállítási pontra.
+   - **Egyéni**: Egy helyreállítási pontot kell megadnia.
 
-3. Válassza ki **gép leállítása a feladatátvétel megkezdése előtt** Ha azt szeretné, hogy a Site Recovery megpróbálja forrásgép leállítása a feladatátvétel indítása előtt. A feladatátvételi akkor is folytatódik, ha a leállítás meghiúsul. A feladatátvételi folyamatot a **Feladatok** lapon követheti nyomon.
+3. Válassza a **gép leállítása a feladatátvétel** megkezdése előtt lehetőséget, ha azt szeretné, hogy a site Recovery a feladatátvétel elindítása előtt megpróbálja leállítani a forrásoldali gépet. A feladatátvételi akkor is folytatódik, ha a leállítás meghiúsul. A feladatátvételi folyamatot a **Feladatok** lapon követheti nyomon.
 4. Ha felkészült az Azure-beli virtuális géphez való kapcsolódáshoz, csatlakozzon a feladatátvétel utáni ellenőrzéshez.
 5. Az ellenőrzés után **véglegesítse** a feladatátvételt. Ez törli az összes rendelkezésre álló helyreállítási pontot.
 
 > [!WARNING]
-> Ne szakítsa meg a feladatátvételt, folyamatban van. Feladatátvétel megkezdése előtt leállítja a gép replikálása. Ha megszakítja a feladatátvétel, leállítja, de a gép nem replikálja újra.
-> A fizikai kiszolgálók esetében további feladatátvételi feldolgozási is igénybe vehet körülbelül nyolc-tíz percet végrehajtásához.
+> Ne szakítsa meg a folyamatban lévő feladatátvételt. A feladatátvétel megkezdése előtt a gép replikációja leáll. Ha megszakítja a feladatátvételt, leáll, de a gép nem replikálódik újra.
+> Fizikai kiszolgálók esetében a feladatátvétel további feldolgozása nyolc – tíz percet vesz igénybe.
 
 ## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>Felkészülés az Azure virtuális gépekhez való kapcsolódásra a feladatátvételt követően
 
@@ -65,20 +65,20 @@ Kövesse az [itt](site-recovery-failover-to-azure-troubleshoot.md) leírt lépé
 
 ## <a name="create-a-process-server-in-azure"></a>Folyamatkiszolgáló létrehozása az Azure-ban
 
-A folyamatkiszolgáló adatokat fogad az Azure-beli virtuális gépről, és elküldi azokat a helyszíni helyre. Egy kis késleltetésű hálózatra szükség a folyamatkiszolgáló és a védett számítógép között.
+A folyamatkiszolgáló adatokat fogad az Azure-beli virtuális gépről, és elküldi azokat a helyszíni helyre. Kis késleltetésű hálózatra van szükség a Process kiszolgáló és a védett gép között.
 
 - Ha Azure ExpressRoute-kapcsolata van, tesztelési célból használhatja a konfigurációs kiszolgálóra automatikusan telepített helyszíni folyamatkiszolgálót.
 - Ha VPN-kapcsolata van, vagy ha éles környezetben futtat feladat-visszavételt, a feladat-visszavételhez be kell állítania egy Azure-beli virtuális gépet Azure alapú folyamatkiszolgálóként.
-- Kövesse a [Ez a cikk](vmware-azure-set-up-process-server-azure.md) állíthatja be a folyamatkiszolgáló az Azure-ban.
+- Az [ebben a cikkben](vmware-azure-set-up-process-server-azure.md) található útmutatást követve állítson be egy Process Servert az Azure-ban.
 
 ## <a name="configure-the-master-target-server"></a>A fő célkiszolgáló konfigurálása
 
-Alapértelmezés szerint a fő célkiszolgáló fogadja a feladat-visszavételi adatokat. A helyszíni konfigurációs kiszolgálót futtat.
+Alapértelmezés szerint a fő célkiszolgáló fogadja a feladat-visszavételi adatokból. A helyszíni konfigurációs kiszolgálón fut.
 
-- Ha a VMware virtuális gép, amelyhez visszavétel egy VMware vCenter-kiszolgáló által kezelt ESXi-gazdagépen, a fő célkiszolgáló kell férnie a virtuális gép adattárolójához (VMDK), a replikált adatokat írni a Virtuálisgép-lemezek. Győződjön meg arról, hogy a virtuális gép adattárolója olvasási/írási hozzáféréssel van-e csatlakoztatva a fő célkiszolgáló gazdagépéhez.
-- Ha a vCenter-kiszolgáló, a Site Recovery szolgáltatás által kezelt ESXi-gazdagéphez egy új virtuális gép ismételt védelem során hoz létre. A virtuális gép létrehozása az ESX-gazdagépen, amelyen a fő célkiszolgáló virtuális Gépet hoz létre. A virtuális gép merevlemezének olyan adattárolón kell lennie, amelyhez hozzáfér a fő célkiszolgálót futtató gazdagép.
-- Fizikai gépek, amelyek, feladat-visszavételt, hajtsa végre, amelyen a fő célkiszolgálón fut, mielőtt ismét megvédhetné a gépet gazdagép felderítését.
-- Egy másik lehetőség, ha már létezik a helyszíni virtuális gép feladat-visszavétel, hogy a feladat-visszavételhez mielőtt törölné. A feladat-visszavétel ekkor új virtuális gépet hoz létre a fő célként megadott ESX-gazdagépen. Amikor másik helyre végez feladat-visszavételt, akkor az adatokat a helyszíni fő célkiszolgáló által használt adattárolóba és ESX-gazdagépre állítja helyre.
+- Ha a VMware virtuális gép, amelyre a feladatátvételt végzi, VMware vCenter Server által felügyelt ESXi-gazdagépen található, a fő célkiszolgáló számára elérhetőnek kell lennie a virtuális gép adattárához (VMDK), hogy a replikált adatok a virtuálisgép-lemezekre legyenek írhatók. Győződjön meg arról, hogy a virtuális gép adattárolója olvasási/írási hozzáféréssel van-e csatlakoztatva a fő célkiszolgáló gazdagépéhez.
+- Ha a vCenter-kiszolgáló által nem kezelt ESXi-gazdagépen a Site Recovery szolgáltatás új virtuális gépet hoz létre az ismételt védelem során. A virtuális gép az ESX-gazdagépen jön létre, amelyen létrehozta a fő célként megadott virtuális gépet. A virtuális gép merevlemezének olyan adattárolón kell lennie, amelyhez hozzáfér a fő célkiszolgálót futtató gazdagép.
+- A nem visszaadott fizikai gépek esetén a számítógép ismételt védetté megkezdése előtt el kell végeznie annak a gazdagépnek a felderítését, amelyen a fő célkiszolgáló fut.
+- Egy másik lehetőség, ha a helyszíni virtuális gép már létezik a feladat-visszavételhez, törölje a feladat-visszavétel előtt. A feladat-visszavétel ekkor új virtuális gépet hoz létre a fő célként megadott ESX-gazdagépen. Amikor másik helyre végez feladat-visszavételt, akkor az adatokat a helyszíni fő célkiszolgáló által használt adattárolóba és ESX-gazdagépre állítja helyre.
 - Nem használhatja a Storage vMotion szolgáltatást a fő célkiszolgálón. Ha mégis így tesz, a feladat-visszavétel nem működik, mert nem érhetők el számára a lemezek. Zárja ki a fő célkiszolgálókat a vMotion-listából.
 
 ## <a name="reprotect-azure-vms"></a>Az Azure-beli virtuális gépek ismételt védelme

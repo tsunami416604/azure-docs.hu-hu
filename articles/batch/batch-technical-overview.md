@@ -4,23 +4,22 @@ description: Megismerheti, hogyan használhatja az Azure Batch szolgáltatást n
 services: batch
 documentationcenter: ''
 author: mscurrell
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: batch
 ms.workload: big-compute
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.date: 01/19/2018
-ms.author: mscurrell
+ms.author: markscu
 ms.custom: mvc
-ms.openlocfilehash: e3fcc8be68282f6ce491ff49f0dc5059d79fa98f
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: ee61f0f550a09640469914d29bde175028b59142
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57730941"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70094327"
 ---
 # <a name="what-is-azure-batch"></a>Mi az Azure Batch?
 
@@ -30,7 +29,7 @@ A fejlesztők a Batch platformszolgáltatásként való használatával olyan Sa
 
 A Batch felár nélkül használható. Csak a mögöttes erőforrások, például a virtuális gépek, a tárolók és a hálózatkezelés használatáért kell fizetnie.
 
-Kötegelt és egyéb HPC-megoldás az Azure-ban közötti összehasonlításáért lásd: [magas teljesítményt feldolgozási (HPC) az Azure-ban](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/).
+Az Azure batch és egyéb HPC-megoldási lehetőségeinek összehasonlítását lásd: [nagy teljesítményű számítástechnika (HPC) az Azure](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/)-ban.
 
 ## <a name="run-parallel-workloads"></a>Párhuzamos számítási feladatok futtatása
 A Batch nagyszerűen működik a belsőleg párhuzamos (más néven „zavaróan párhuzamos”) számítási feladatokkal. A belsőleg párhuzamos számítási feladatok azok, amelyek esetében az alkalmazások egymástól függetlenül futtathatóak, és mindegyik példány a munka egy részét végzi el. Az alkalmazások végrehajtásakor a példányok hozzáférhetnek bizonyos közös adatokhoz, de egymás között nem kommunikálnak. A belsőleg párhuzamos számítási feladatok ezért nagy méretben futtathatók, amit csupán az alkalmazások egyidejű futtatásához rendelkezésre álló számítási erőforrások mennyisége határoz meg.

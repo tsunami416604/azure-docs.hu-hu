@@ -1,10 +1,10 @@
 ---
-title: Hozzon létre egy Azure virtuális hálózat (klasszikus) több alhálózattal rendelkező |} A Microsoft Docs
-description: Útmutató az Azure-ban több alhálózattal rendelkező virtuális hálózat (klasszikus) létrehozása.
+title: Azure-beli virtuális hálózat (klasszikus) létrehozása több alhálózattal | Microsoft Docs
+description: Megtudhatja, hogyan hozhat létre virtuális hálózatot (klasszikus) több alhálózattal az Azure-ban.
 services: virtual-network
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: azure-service-management
 ms.assetid: ''
@@ -16,71 +16,71 @@ ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: ''
-ms.openlocfilehash: e40648ef47b108050486d43eefdb1564786c053e
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: d934386a47c339cd3abdf72578736b44d40e7952
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50421390"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059015"
 ---
-# <a name="create-a-virtual-network-classic-with-multiple-subnets"></a>Több alhálózattal rendelkező virtuális hálózat (klasszikus) létrehozása
+# <a name="create-a-virtual-network-classic-with-multiple-subnets"></a>Virtuális hálózat (klasszikus) létrehozása több alhálózattal
 
 > [!IMPORTANT]
-> Az Azure rendelkezik két [különböző üzemi modellek](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) számára az erőforrások létrehozásához és használatához: Resource Manager és klasszikus. Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. A Microsoft azt javasolja, hogy keresztül a legtöbb új virtuális hálózat létrehozása a [Resource Manager](quick-create-portal.md) üzemi modellt.
+> Az Azure két [különböző üzembe helyezési modellel](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) rendelkezik az erőforrások létrehozásához és használatához: Resource Manager és klasszikus. Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. A Microsoft a [Resource Manager](quick-create-portal.md) -alapú üzemi modell használatával javasolja a legtöbb új virtuális hálózat létrehozását.
 
-Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy alapszintű Azure virtuális hálózat (klasszikus), amely rendelkezik külön nyilvános és privát alhálózatra. Azure-erőforrások, például a virtuális gépek és felhőszolgáltatások egy alhálózat is létrehozhat. Virtuális hálózatok (klasszikus) létrehozott erőforrásokat kommunikálhatnak egymással, és az erőforrások a virtuális hálózathoz csatlakozó más hálózatokhoz.
+Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre olyan alapszintű Azure-beli virtuális hálózatot (klasszikus), amely külön nyilvános és magánhálózati alhálózatokat tartalmaz. Létrehozhat Azure-erőforrásokat, például a virtuális gépeket és a Cloud Servicest egy alhálózatban. A virtuális hálózatok (klasszikus) használatával létrehozott erőforrások kommunikálhatnak egymással, és a virtuális hálózathoz csatlakoztatott más hálózatokban lévő erőforrásokkal.
 
-További információ az összes [virtuális hálózat](manage-virtual-network.md) és [alhálózati](virtual-network-manage-subnet.md) beállításait.
+További információ az összes [virtuális hálózat](manage-virtual-network.md) és [alhálózat](virtual-network-manage-subnet.md) beállításairól.
 
 > [!WARNING]
-> Virtuális hálózatok (klasszikus) Azure azonnal törli amikor egy [előfizetés le van tiltva](../billing/billing-subscription-become-disable.md?toc=%2fazure%2fvirtual-network%2ftoc.json#you-reached-your-spending-limit). Virtuális hálózatok (klasszikus) törlődnek, függetlenül attól, hogy erőforrások szerepel-e a virtuális hálózat. Ha később újra engedélyezi az előfizetés, erőforrás, amely létezett az a virtuális hálózat létre kell hozni.
+> Az Azure azonnal törli a virtuális hálózatokat (klasszikus), ha az [előfizetés le van tiltva](../billing/billing-subscription-become-disable.md?toc=%2fazure%2fvirtual-network%2ftoc.json#you-reached-your-spending-limit). A virtuális hálózatok (klasszikus) törölve lesznek, függetlenül attól, hogy a virtuális hálózatban léteznek-e erőforrások. Ha később újra engedélyezi az előfizetést, a virtuális hálózatban található erőforrásokat újra létre kell hozni.
 
-Létrehozhat egy virtuális hálózat (klasszikus) használatával a [az Azure portal](#portal), a [az Azure parancssori felület (CLI), 1.0-s](#azure-cli), vagy [PowerShell](#powershell).
+A virtuális hálózat (klasszikus) a [Azure Portal](#portal), az [Azure parancssori felület (CLI) 1,0](#azure-cli)vagy a [PowerShell](#powershell)használatával hozható létre.
 
 ## <a name="portal"></a>Portál
 
-1. Egy webböngészőben nyissa meg a [az Azure portal](https://portal.azure.com). Jelentkezzen be a [Azure-fiók](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account). Ha nincs Azure-fiókja, regisztráljon egy [ingyenes próbaverzióra](https://azure.microsoft.com/offers/ms-azr-0044p).
-2. Kattintson a **erőforrás létrehozása** a portálon.
-3. Adja meg *virtuális hálózati* a a **keresés a piactéren** tetején található mezőbe a **új** megjelenő panelen. Kattintson a **virtuális hálózati** amikor megjelenik a keresési eredmények között.
-4. Válassza ki **klasszikus** a a **telepítési modell kiválasztása** párbeszédpanel a **virtuális hálózat** megjelenő panelen, majd kattintson **létrehozás**. 
-5. Adja meg a következő értékeket a **virtuális hálózat létrehozása (klasszikus)** , majd rákattinthat **létrehozás**:
+1. Egy böngészőben nyissa meg a [Azure Portal](https://portal.azure.com). Jelentkezzen be az [Azure-fiókjával](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account). Ha nincs Azure-fiókja, regisztráljon egy [ingyenes próbaverzióra](https://azure.microsoft.com/offers/ms-azr-0044p).
+2. Kattintson az **erőforrás létrehozása** elemre a portálon.
+3. A megjelenő **új** ablaktábla tetején található **Keresés a piactéren** mezőbe írja be a *virtuális hálózat* kifejezést. Kattintson a **virtuális hálózat** elemre, amikor megjelenik a keresési eredmények között.
+4. A megjelenő **Virtual Network** ablaktáblán válassza a **klasszikus** **lehetőséget,** majd kattintson a **Létrehozás**gombra. 
+5. A **virtuális hálózat létrehozása (klasszikus)** panelen adja meg a következő értékeket, majd kattintson a **Létrehozás**gombra:
 
     |Beállítás|Érték|
     |---|---|
     |Name (Név)|myVNet|
-    |Címtér|10.0.0.0/16|
+    |Címtartomány|10.0.0.0/16|
     |Alhálózat neve|Nyilvános|
-    |Alhálózati címtartomány|10.0.0.0/24|
-    |Erőforráscsoport|Hagyja **új létrehozása** kiválasztva, és adja meg **myResourceGroup**.|
-    |Az előfizetést és helyet|Válassza ki az előfizetést és helyet.
+    |Alhálózat címtartománya|10.0.0.0/24|
+    |Resource group|Hagyja meg az **új kijelölt létrehozása** elemet, majd adja meg a **myResourceGroup**.|
+    |Előfizetés és hely|Válassza ki az előfizetést és a helyet.
 
-    Ha most ismerkedik az Azure-ba, tudjon meg többet [erőforráscsoportok](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group), [előfizetések](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription), és [helyek](https://azure.microsoft.com/regions) (más néven *régiók*).
-4. A portál csak egy alhálózat is létrehozhat, egy virtuális hálózat létrehozásakor. Ebben az oktatóanyagban létrehozhat egy második alhálózatot a virtuális hálózat létrehozása után. Később létrehozhat az internetről elérhető erőforrásokhoz a **nyilvános** alhálózat. Akkor is létre erőforrásokat, amelyek nem érhetők el az internetről a **privát** alhálózat. A második alhálózat létrehozásához írja be **myVnet** a a **erőforrások keresése** az oldal tetején. Kattintson a **myVnet** amikor megjelenik a keresési eredmények között.
-5. Kattintson a **alhálózatok** (a a **beállítások** szakaszt) a a **virtuális hálózat létrehozása (klasszikus)** megjelenő panelen.
-6. Kattintson a **+ Hozzáadás** a a **myVnet – alhálózatok** megjelenő panelen.
-7. Adja meg **privát** a **neve** a a **alhálózat hozzáadása** ablaktáblán. Adja meg **10.0.1.0/24** a **címtartomány**.  Kattintson az **OK** gombra.
-8. Az a **myVnet – alhálózatok** panelen láthatja a **nyilvános** és **privát** létrehozott alhálózat.
-9. **Nem kötelező**: Ez az oktatóanyag befejezésekor előfordulhat, hogy törölni kívánja a létrehozott erőforrásokat, így nem használati díjak merülhetnek fel:
-    - Kattintson a **áttekintése** a a **myVnet** ablaktáblán.
-    - Kattintson a **törlése** ikonra a **myVnet** ablaktáblán.
-    - Kattintson a törlés megerősítéséhez **Igen** a a **virtuális hálózat törlése** mezőbe.
+    Ha még nem ismeri az Azure-t, tekintse meg az [erőforráscsoportok](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group), [előfizetések](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)és [helyszínek](https://azure.microsoft.com/regions) (más néven *régiók*) című témakört.
+4. A portálon csak egy alhálózat hozható létre virtuális hálózat létrehozásakor. Ebben az oktatóanyagban egy második alhálózatot hoz létre a virtuális hálózat létrehozása után. Lehet, hogy később internetről elérhető erőforrásokat hoz létre a **nyilvános** alhálózatban. Olyan erőforrásokat is létrehozhat, amelyek nem érhetők el az internetről a **privát** alhálózaton. A második alhálózat létrehozásához adja meg a **myVnet** kifejezést az oldal tetején található **Keresés erőforrások** mezőben. Kattintson a **myVnet** elemre, amikor megjelenik a keresési eredmények között.
+5. Kattintson a megjelenő **virtuális hálózat létrehozása (klasszikus)** panel **alhálózatok** elemére (a **Beállítások** szakaszban).
+6. Kattintson a **+ Hozzáadás** elemre a megjelenő **MyVnet-alhálózatok** ablaktáblán.
+7. Az **alhálózat hozzáadása** ablaktáblán adja meg a **saját** **nevet a név** mezőben. Adja meg a **10.0.1.0/24** értéket a **címtartományból**.  Kattintson az **OK** gombra.
+8. A **myVnet-alhálózatok** ablaktáblán láthatja a létrehozott **nyilvános** és **magánhálózati** alhálózatokat.
+9. Nem **kötelező**: Az oktatóanyag befejezése után érdemes lehet törölni a létrehozott erőforrásokat, így a használati díjak nem merülnek fel:
+    - A **myVnet** ablaktáblán kattintson az **Áttekintés** elemre.
+    - Kattintson a **Törlés** ikonra a **myVnet** ablaktáblán.
+    - A törlés megerősítéséhez kattintson az **Igen** gombra a **virtuális hálózat törlése** mezőben.
 
 ## <a name="azure-cli"></a>Azure CLI
 
-1. Választhatja [telepítése és konfigurálása az Azure CLI](../cli-install-nodejs.md?toc=%2fazure%2fvirtual-network%2ftoc.json), vagy a parancssori felület az Azure Cloud Shell belül használja. Az Azure Cloud Shell olyan ingyenes Bash-felület, amelyet közvetlenül futtathat az Azure Portalon. A fiókjával való használat érdekében az Azure CLI már előre telepítve és konfigurálva van rajta. CLI-parancsok súgójának, írja be a `azure <command> --help`. 
-2. A CLI-munkamenetben jelentkezzen be az Azure-bA a következő paranccsal. Ha rákattint **kipróbálás** az alábbi mezőbe, a Cloud Shell megnyílik. Bejelentkezhet az Azure-előfizetéshez, anélkül, hogy az alábbi parancs beírásával:
+1. [Telepítheti és konfigurálhatja az Azure CLI](../cli-install-nodejs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)-t, vagy használhatja a Azure Cloud Shellon belül a CLI-t is. Az Azure Cloud Shell olyan ingyenes Bash-felület, amelyet közvetlenül futtathat az Azure Portalon. A fiókjával való használat érdekében az Azure CLI már előre telepítve és konfigurálva van rajta. Ha segítséget szeretne kérni a CLI-parancsokhoz, írja be a következőt `azure <command> --help`:. 
+2. Egy CLI-munkamenetben jelentkezzen be az Azure-ba az alábbi paranccsal. Ha az alábbi mezőben a **kipróbálás** gombra kattint, megnyílik egy Cloud shell. A következő parancs beírása nélkül is bejelentkezhet az Azure-előfizetésbe:
 
     ```azurecli-interactive
     azure login
     ```
 
-3. Annak érdekében, hogy a parancssori felület szolgáltatásfelügyelet módban van, adja meg a következő parancsot:
+3. A parancssori felület Service Management módban való biztosításához írja be a következő parancsot:
 
     ```azurecli-interactive
     azure config mode asm
     ```
 
-4. Hozzon létre egy virtuális hálózaton egy privát alhálózatra:
+4. Hozzon létre egy privát alhálózattal rendelkező virtuális hálózatot:
 
     ```azurecli-interactive
     azure network vnet create --vnet myVnet --address-space 10.0.0.0 --cidr 16  --subnet-name Private --subnet-start-ip 10.0.0.0 --subnet-cidr 24 --location "East US"
@@ -92,33 +92,33 @@ Létrehozhat egy virtuális hálózat (klasszikus) használatával a [az Azure p
     azure network vnet subnet create --name Public --vnet-name myVnet --address-prefix 10.0.1.0/24
     ```    
     
-6. Tekintse át a virtuális hálózat és alhálózatok:
+6. Tekintse át a virtuális hálózatot és az alhálózatokat:
 
     ```azurecli-interactive
     azure network vnet show --vnet myVnet
     ```
 
-7. **Nem kötelező**: érdemes törölni a létrehozott erőforrásokat, ez az oktatóanyag befejezésekor, hogy ne használati díjak merülhetnek fel:
+7. Nem **kötelező**: Előfordulhat, hogy törölni szeretné az oktatóanyag befejezése után létrehozott erőforrásokat, így nem számít fel használati díjat:
 
     ```azurecli-interactive
     azure network vnet delete --vnet myVnet --quiet
     ```
 
 > [!NOTE]
-> Bár nem adhat meg egy erőforráscsoportot, egy virtuális hálózat (klasszikus) létrehozása a parancssori felület használatával, az Azure nevű erőforráscsoportban létrehozza a virtuális hálózatot *alapértelmezett hálózati*.
+> Bár a parancssori felület használatával nem adhat meg egy erőforráscsoportot a virtuális hálózat (klasszikus) létrehozásához, az Azure egy *alapértelmezett-hálózatkezelés*nevű erőforráscsoporthoz hozza létre a virtuális hálózatot.
 
 ## <a name="powershell"></a>PowerShell
 
-1. Telepítse a PowerShell legújabb verzióját [Azure](https://www.powershellgallery.com/packages/Azure) modul. Ha először használja a PowerShellt, olvassa el az [Azure PowerShell áttekintését](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json).
-2. Indítsa el egy PowerShell-munkamenetet.
+1. Telepítse a PowerShell [Azure](https://www.powershellgallery.com/packages/Azure) -modul legújabb verzióját. Ha először használja a PowerShellt, olvassa el az [Azure PowerShell áttekintését](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json).
+2. Indítsa el a PowerShell-munkamenetet.
 3. A PowerShellben jelentkezzen be az Azure-ba a `Add-AzureAccount` paranccsal.
-4. A következő elérési út és fájlnév, szükség esetén módosítsa, majd exportálhatja a meglévő hálózati konfigurációs fájlt:
+4. Módosítsa a következő elérési utat és fájlnevet, ha szükséges, majd exportálja a meglévő hálózati konfigurációs fájlt:
 
     ```powershell
     Get-AzureVNetConfig -ExportToFile c:\azure\NetworkConfig.xml
     ```
 
-5. Virtuális hálózat létrehozása a nyilvános és privát alhálózattal, bármely szövegszerkesztő segítségével adja hozzá a **VirtualNetworkSite** elem az a hálózati konfigurációs fájl.
+5. Nyilvános és magánhálózati alhálózattal rendelkező virtuális hálózat létrehozásához használja a szövegszerkesztőt a hálózati konfigurációs fájlhoz tartozó **VirtualNetworkSite** elem hozzáadásához.
 
     ```xml
     <VirtualNetworkSite name="myVnet" Location="East US">
@@ -136,7 +136,7 @@ Létrehozhat egy virtuális hálózat (klasszikus) használatával a [az Azure p
       </VirtualNetworkSite>
     ```
 
-    Tekintse át a teljes [hálózat konfigurációs sémáját](https://msdn.microsoft.com/library/azure/jj157100.aspx).
+    Tekintse át a teljes [hálózati konfigurációs fájl sémáját](https://msdn.microsoft.com/library/azure/jj157100.aspx).
 
 6. Importálja a hálózati konfigurációs fájlt:
 
@@ -145,24 +145,24 @@ Létrehozhat egy virtuális hálózat (klasszikus) használatával a [az Azure p
     ```
 
     > [!WARNING]
-    > Megváltozott hálózati konfigurációs fájl importálása okozhat a módosításokat a meglévő virtuális hálózatok (klasszikus) az előfizetésében. Győződjön meg arról, csak adja hozzá a korábbi virtuális hálózat és az, hogy ne módosítsa vagy bármely meglévő virtuális hálózatok eltávolítása az előfizetésből. 
+    > A módosított hálózati konfigurációs fájlok importálása a meglévő virtuális hálózatok (klasszikus) módosítását eredményezheti az előfizetésében. Győződjön meg arról, hogy csak az előző virtuális hálózatot adja hozzá, és hogy nem módosítja vagy nem távolítja el az előfizetéshez tartozó meglévő virtuális hálózatokat. 
 
-7. Tekintse át a virtuális hálózat és alhálózatok:
+7. Tekintse át a virtuális hálózatot és az alhálózatokat:
 
     ```powershell
     Get-AzureVNetSite -VNetName "myVnet"
     ```
 
-8. **Nem kötelező**: érdemes törölni a létrehozott erőforrásokat, ez az oktatóanyag befejezésekor, hogy ne használati díjak merülhetnek fel. A virtuális hálózat törlése, teljes körű lépések 4 – 6 újra, ez idő eltávolítása a **VirtualNetworkSite** az 5. lépésben hozzáadott elem.
+8. Nem **kötelező**: Előfordulhat, hogy törölni szeretné az oktatóanyag befejezése után létrehozott erőforrásokat, hogy ne kelljen használati díjat fizetnie. A virtuális hálózat törléséhez hajtsa végre a 4-6-es lépést újra, ezúttal távolítsa el az 5. lépésben hozzáadott **VirtualNetworkSite** elemet.
  
 > [!NOTE]
-> Bár nem adhat meg egy erőforráscsoportot, egy virtuális hálózat (klasszikus) létrehozása a PowerShell-lel, az Azure nevű erőforráscsoportban létrehozza a virtuális hálózatot *alapértelmezett hálózati*.
+> Bár nem adhat meg erőforráscsoportot a virtuális hálózat (klasszikus) létrehozásához a PowerShell használatával, az Azure egy *alapértelmezett hálózatkezelés*nevű erőforráscsoporthoz hozza létre a virtuális hálózatot.
 
 ---
 
 ## <a name="next-steps"></a>További lépések
 
-- Minden virtuális hálózati és alhálózati beállítások kapcsolatos további információkért lásd: [virtuális hálózatok kezelése](manage-virtual-network.md) és [kezelheti a virtuális hálózat alhálózataiban](virtual-network-manage-subnet.md). A virtuális hálózatok és alhálózatok éles környezetben eltérő követelmények kielégítése érdekében számos lehetősége van.
-- Hozzon létre egy [Windows](../virtual-machines/windows/classic/createportal-classic.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy egy [Linux](../virtual-machines/linux/classic/createportal-classic.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuális gépet, majd csatlakozzon egy meglévő virtuális hálózatot.
-- Csatlakozzon a két virtuális hálózat azonos Azure-beli helyen, hozzon létre egy [virtuális hálózatok közötti társviszony](create-peering-different-deployment-models.md) a virtuális hálózatok között. Virtuális hálózat (Resource Manager) (klasszikus) virtuális hálózati társviszonyt, de nem hozhat létre (klasszikus) virtuális hálózatok közötti társviszonyt.
-- Csatlakozhat a virtuális hálózat egy helyszíni hálózat egy [VPN-átjáró](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy [Azure ExpressRoute](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md?toc=%2fazure%2fvirtual-network%2ftoc.json) kapcsolatcsoport.
+- Az összes virtuális hálózat és alhálózat beállításával kapcsolatos további tudnivalókért lásd: [virtuális hálózatok kezelése](manage-virtual-network.md) és [virtuális hálózati alhálózatok kezelése](virtual-network-manage-subnet.md). A virtuális hálózatok és az alhálózatok használatának különböző lehetőségei vannak az éles környezetben, hogy megfeleljenek a különböző követelményeknek.
+- Hozzon létre egy Windows vagy [Linux](../virtual-machines/linux/classic/createportal-classic.md?toc=%2fazure%2fvirtual-network%2ftoc.json) [rendszerű](../virtual-machines/windows/classic/createportal-classic.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuális gépet, majd kapcsolódjon egy meglévő virtuális hálózathoz.
+- Ha ugyanazon az Azure-helyen két virtuális hálózatot szeretne összekapcsolni, hozzon létre egy [virtuális hálózatot](create-peering-different-deployment-models.md) a virtuális hálózatok között. A virtuális hálózat (Resource Manager) egy virtuális hálózathoz (klasszikus) is használható, de két virtuális hálózat (klasszikus) közötti társítást nem lehet létrehozni.
+- A virtuális hálózat összekapcsolása egy helyszíni hálózattal [VPN Gateway](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy [Azure ExpressRoute](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md?toc=%2fazure%2fvirtual-network%2ftoc.json) áramkör használatával.

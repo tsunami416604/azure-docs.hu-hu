@@ -1,0 +1,16 @@
+- name: Azure-beli felügyeleti csoportok dokumentációja
+  href: ./index.yml
+- name: Áttekintés
+  expanded: true
+  items:
+    - name: Azure-felügyelet
+      href: ../azure-management.md
+    - name: Felügyeleti csoportok
+      href: ./overview.md
+- name: Útmutatók
+  expanded: true
+  items:
+    - name: Felügyeleti csoportok létrehozása
+      href: ./create.md
+    - name: Az erőforrások kezelése
+      href: ./manage.md

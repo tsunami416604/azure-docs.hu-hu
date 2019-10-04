@@ -4,19 +4,19 @@ description: Az Azure DevOps Projects megkönnyíti az Azure használatának els
 author: shizn
 manager: ''
 ms.author: xshi
-ms.date: 01/22/2019
+ms.date: 07/09/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 02977032c5975de4098600ddbebccfcbb9b0fafd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 109a7e327217a342f485dd61b53115569f2346cd
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58122892"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722984"
 ---
-# <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-projects-preview"></a>Az IoT Edge-hez az Azure DevOps Projects (előzetes verzió) segítségével a CI/CD-folyamat létrehozása
+# <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-projects"></a>A CI/CD-folyamat létrehozása az IoT Edge-hez az Azure DevOps Projects segítségével
 
 Folyamatos integrációs (CI) és az IoT Edge-alkalmazás folyamatos továbbítás (CD) beállítása az DevOps Projects segítségével. DevOps-projektek egyszerűbbé teszi a kezdeti konfigurálása az Azure-folyamatok készítése és kiadása folyamat.
 
@@ -38,7 +38,7 @@ DevOps-projektek az Azure DevOps hoz létre a CI/CD-folyamat. Hozzon létre egy 
 
    ![Válassza ki a nyelvet és a egy új alkalmazás létrehozása](./media/how-to-devops-project/select-language.png)
 
-2. Válassza ki **egyszerű IoT (előzetes verzió)** az alkalmazási keretrendszer, és válassza ki, **tovább**.
+2. Válassza ki **egyszerű IoT** az alkalmazási keretrendszer, és válassza ki, **tovább**.
 
    ![Egyszerű IoT keretrendszer kiválasztása](media/how-to-devops-project/select-iot.png)
 

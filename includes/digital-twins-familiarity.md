@@ -5,17 +5,17 @@ services: digital-twins
 author: kingdomofends
 ms.service: digital-twins
 ms.topic: include
-ms.date: 01/09/2019
-ms.author: adgera
+ms.date: 10/02/2019
+ms.author: v-adgera
 ms.custom: include file
-ms.openlocfilehash: 0d5f483f074f90c51f500e8f8142bb54f9f6bb1e
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
-ms.translationtype: MT
+ms.openlocfilehash: 302f9cd515677c928e1f70febe7938f05ee687ce
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54211856"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71845503"
 ---
-Ez a cikk feltételezi, hogy néhány ismerete hitelesítése az Azure digitális Twins felügyeleti API-kkal.
+Ez a cikk feltételezi, hogy az Azure digitális Twins felügyeleti API-kkal való hitelesítése némi ismerettel történik.
 
-* A felügyeleti API-k hitelesítésről kapcsolatos további információkért lásd: [hitelesítése az Azure digitális Twins API-kkal](../articles/digital-twins/security-authenticating-apis.md).
-* Felügyeleti API-jait a Postman REST-ügyfél-hitelesítésre, olvassa el a [Postman konfigurálása](../articles/digital-twins/how-to-configure-postman.md).
+* További információ a felügyeleti API-kkal való hitelesítésről: [hitelesítés az Azure Digital Twins API](../articles/digital-twins/security-authenticating-apis.md)-kkal.
+* Ha a Poster REST-ügyféllel szeretne hitelesítést végezni a felügyeleti API-kkal, olvassa el a következő [témakört: a Poster konfigurálása](../articles/digital-twins/how-to-configure-postman.md).

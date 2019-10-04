@@ -8,11 +8,11 @@ ms.topic: quickstart
 ms.date: 3/11/2019
 ms.author: victorh
 ms.openlocfilehash: 7a2c300e30050e7e46a2b2c724258539df85e410
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58093422"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66111335"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-cli"></a>Gyors útmutató: Hozzon létre egy Azure DNS-zóna és -rekordhalmazok Azure CLI használatával
 

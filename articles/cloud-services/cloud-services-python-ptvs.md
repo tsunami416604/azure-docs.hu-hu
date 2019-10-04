@@ -3,23 +3,18 @@ title: Ismerkedés a Pythonnal és az Azure Cloud Serviceszel | Microsoft Docs
 description: Azure felhőszolgáltatások, például webes és feldolgozói szerepkörök létrehozása a Python Tools for Visual Studio eszközzel.
 services: cloud-services
 documentationcenter: python
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: 5489405d-6fa9-4b11-a161-609103cbdc18
+author: georgewallace
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: conceptual
 ms.date: 07/18/2017
-ms.author: jeconnoc
-ms.openlocfilehash: 2cfb8f922819802834d9833ae614f5bc5b4ff886
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.author: gwallace
+ms.openlocfilehash: 981b1cc4a7adb98ba68ebf3a7673b7116479e704
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57764468"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68359575"
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>Python webes és feldolgozói szerepkörök a Visual Studio eszközzel
 
@@ -30,13 +25,13 @@ Ez a cikk a Python webes és feldolgozói szerepkörök [Python Tools for Visual
 * [Python Tools for Visual Studio][Python Tools for Visual Studio] (PTVS)
 * [Azure SDK Tools for VS 2013][Azure SDK Tools for VS 2013] vagy  
 [Azure SDK Tools for VS 2015][Azure SDK Tools for VS 2015] vagy  
-[Azure SDK Tools for VS 2017][Azure SDK Tools for VS 2017]
-* [Python 2.7 32 bites][Python 2.7 32-bit] vagy [Python 3.5 32 bites][Python 3.5 32-bit]
+[Azure SDK-eszközök a VS 2017-hoz][Azure SDK Tools for VS 2017]
+* [Python 2.7 32 bites][Python 2.7 32-bit] vagy [Python 3.5, 32 bites][Python 3.5 32-bit]
 
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
 ## <a name="what-are-python-web-and-worker-roles"></a>Mik a Python webes és feldolgozói szerepkörök?
-Az Azure három számítási modellt kínál az alkalmazások futtatásához: [Az Azure App Service Web Apps szolgáltatásának][execution model-web sites], [Azure Virtual Machines][execution model-vms], és [Azure Cloud Services] [execution model-cloud services]. Mindhárom modell támogatja a Python eszközt. A webes és feldolgozói szerepköröket is tartalmazó Cloud Services *platformszolgáltatást (PaaS)* kínál. A felhőszolgáltatásban a webes szerepkör egy külön Internet Information Services (IIS) webkiszolgálót biztosít az előtéri webalkalmazásokhoz, míg a feldolgozói szerepkör aszinkron, hosszan futó vagy folyamatos feladatokat futtat függetlenül a felhasználói műveletektől vagy bemenettől.
+Az Azure három számítási modellt kínál az alkalmazások futtatásához: [Web Apps funkció a Azure app Service, az][execution model-web sites] [Azure Virtual Machines][execution model-vms]és az [Azure Cloud Servicesban][execution model-cloud services]. Mindhárom modell támogatja a Python eszközt. A webes és feldolgozói szerepköröket is tartalmazó Cloud Services *platformszolgáltatást (PaaS)* kínál. A felhőszolgáltatásban a webes szerepkör egy külön Internet Information Services (IIS) webkiszolgálót biztosít az előtéri webalkalmazásokhoz, míg a feldolgozói szerepkör aszinkron, hosszan futó vagy folyamatos feladatokat futtat függetlenül a felhasználói műveletektől vagy bemenettől.
 
 További információ: [Mi az a Cloud Service?].
 
@@ -340,8 +335,8 @@ Ha további részletekre kíváncsi az Azure-szolgáltatások webes és feldolgo
 * [Blob Service][Blob Service]
 * [Table Service][Table Service]
 * [Queue szolgáltatás][Queue Service]
-* [Service Bus-üzenetsorok][Service Bus Queues]
-* [Service Bus-témakörök][Service Bus Topics]
+* [Service Bus által kezelt üzenetsorok][Service Bus Queues]
+* [Service Bus-üzenettémák][Service Bus Topics]
 
 <!--Link references-->
 

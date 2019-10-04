@@ -13,11 +13,11 @@ ms.reviewer: GeneMi
 ms.date: 03/12/2019
 manager: craigg
 ms.openlocfilehash: bc7274308b8a349d16866f107eac4a57e115be9e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58850171"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66160878"
 ---
 # <a name="connect-to-azure-sql-database-with-azure-multi-factor-authentication"></a>Csatlakozás az Azure SQL Database az Azure multi-factor Authentication
 
@@ -62,7 +62,7 @@ Regisztráljon, és az alkalmazáshoz szükséges engedélyek beállítása:
 
 1. Az Azure Portalon válassza ki a **Azure Active Directory** > **alkalmazásregisztrációk** > **új alkalmazásregisztráció**.
 
-    ![Appok regisztrálása](media/active-directory-interactive-connect-azure-sql-db/image1.png)
+    ![Alkalmazásregisztráció](media/active-directory-interactive-connect-azure-sql-db/image1.png)
 
     Az alkalmazásregisztráció létrehozása után a **Alkalmazásazonosító** érték jön létre és jelennek meg.
 
@@ -122,7 +122,7 @@ Az a C# programot sikeresen futtatni kell, hogy a statikus mezők rendelje hozz�
 | AzureAD_UserID | "auser\@abc.onmicrosoft.com" | **Az Azure Active Directory** > **felhasználói** > **új vendégfelhasználó** |
 | Initial_DatabaseName | "myDatabase." | **SQL Server-kiszolgálók** > **SQL-adatbázisok** |
 | ClientApplicationID | "a94f9c62-97fe-4d19-b06d-111111111111" | **Az Azure Active Directory** > **alkalmazásregisztrációk** > **Keresés név alapján** > **alkalmazás azonosítója** |
-| RedirectUri | új Uri ("https://mywebserver.com/") | **Az Azure Active Directory** > **alkalmazásregisztrációk** > **Keresés név alapján** > *[Your App-regisztrációs]*  >  **Beállítások** > **RedirectURIs**<br /><br />Ebben a cikkben minden olyan érvényes érték nem okoz gondot az RedirectUri, mert itt nem használja. |
+| RedirectUri | új Uri ("https://mywebserver.com/") | **Az Azure Active Directory** > **alkalmazásregisztrációk** > **Keresés név alapján** >  *[Your App-regisztrációs]*  >  **Beállítások** > **RedirectURIs**<br /><br />Ebben a cikkben minden olyan érvényes érték nem okoz gondot az RedirectUri, mert itt nem használja. |
 | &nbsp; | &nbsp; | &nbsp; |
 
 ## <a name="verify-with-sql-server-management-studio"></a>Ellenőrizze az SQL Server Management Studióval

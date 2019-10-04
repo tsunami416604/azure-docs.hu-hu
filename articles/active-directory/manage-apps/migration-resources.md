@@ -2,28 +2,28 @@
 title: Erőforrások áttelepítése az Azure Active Directory-alkalmazások |} A Microsoft Docs
 description: Forrásanyagok az Azure Active Directory (Azure AD-) alkalmazás-hozzáférés és a hitelesítési át.
 services: active-directory
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 09/19/2018
-ms.author: celested
+ms.author: mimart
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92ce62d745bfb0299dc8f3eb401f5a66e38580f2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b39704b25c26998e16ca8080c4e44dd1adf6965c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182119"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108217"
 ---
 # <a name="resources-for-migrating-applications-to-azure-active-directory"></a>Erőforrások áttelepítése az Azure Active Directory-alkalmazások
 
 Forrásanyagok az Azure Active Directory (Azure AD-) alkalmazás-hozzáférés és a hitelesítési át. Ez a rövid kérdőívet (https://aka.ms/AppsMigrationFeedback) visszajelzést élmény áttelepítése alkalmazásait az Azure AD (blockers áttelepítése, beleértve a szükséges eszközkészlet / útmutatást, vagy a helyszíni Identitásszolgáltató megőrzése okai). 
 
-| Erőforrás  | Leírás  |
+| Resource  | Leírás  |
 |:-----------|:-------------|
 |[Az alkalmazások az Azure AD-be való migrálása](https://aka.ms/migrateapps/whitepaper) | Ez a tanulmány bemutatja a migrálás előnyeit, és ismerteti, hogyan lehet egyértelműen vázolt tételéhez négy fázisban áttelepítés tervezése: felderítés, besorolás, áttelepítési és folyamatos felügyeletét. Gondolja át a folyamat és a projekt könnyen feldolgozható darabokra felosztania rendszer végigvezeti. A dokumentum segítséget nyújt a vizualizáción fontos erőforrásokra mutató hivatkozásokat is. |
 |[Megoldási útmutató: Az Active Directory összevonási szolgáltatások (AD FS) áttelepítése alkalmazásokat az Azure ad-hez](https://aka.ms/migrateapps/adfssolutionguide) | Ez a megoldási útmutató végigvezeti tervezési és a egy magasabb szintű az áttelepítés tanulmányban leírtak áttelepítési projektet végrehajtása azonos négy fázisa. Ebben az útmutatóban megismerheti, hogyan a alkalmazni ezeket a fázisokat adott célja az alkalmazások áthelyezése az Azure Directory összevont szolgáltatások (AD FS) az Azure AD fog.|

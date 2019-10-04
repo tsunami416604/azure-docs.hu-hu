@@ -9,11 +9,11 @@ ms.date: 02/27/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 0a81d8c97b916fd15e7be5fde05e9ea25ba1151d
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58352439"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179021"
 ---
 Az átjáró hubnak. A központ létrehozását követően a szolgáltatás akkor is díjköteles, ha nem csatol hozzá egyetlen webhelyet sem. A hub és az átjáró létrehozása 30 percet vesz igénybe.
 
@@ -21,7 +21,7 @@ Az átjáró hubnak. A központ létrehozását követően a szolgáltatás akko
 2. Hubs lapon kattintson **+ új Eseményközpont** megnyitásához a **létrehozása virtuális központ** lapot.
 3. Az a **létrehozása virtuális központ** lapon, hajtsa végre a következő mezőket:
 
-   * Hely
+   * Location egység
    * Name (Név)
    * Központ titkos címtartománya
 

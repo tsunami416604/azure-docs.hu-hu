@@ -1,6 +1,6 @@
 ---
-title: Az Azure SQL Database többmodelles képességei |} A Microsoft Docs
-description: Az Azure SQL Database lehetővé teszi, hogy több adatmodellt ugyanabban az adatbázisban.
+title: Többmodelles képességek Azure SQL Database | Microsoft Docs
+description: Azure SQL Database lehetővé teszi több adatmodell használatát ugyanabban az adatbázisban.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -10,121 +10,120 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
-manager: craigg
 ms.date: 12/17/2018
-ms.openlocfilehash: 4351017cc1848e29cca038f82fd96548ae3492e0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e319daf322d688828c7d05d78dacd2359273223f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58892466"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567135"
 ---
-# <a name="multi-model-capabilities-of-azure-sql-database"></a>Az Azure SQL Database többmodelles képességek
+# <a name="multi-model-capabilities-of-azure-sql-database"></a>Azure SQL Database több modellből álló képességei
 
-Többmodelles adatbázisok engedélyezése tárolhatja, és az adatok jelennek meg több adatformátumok a célnyelven például a relációs adatok, diagramok, JSON vagy XML-dokumentumok, kulcs-érték párok, stb.
+A többmodelles adatbázisok lehetővé teszik több adatformátumban (például a kapcsolatok, a diagramok, a JSON/XML-dokumentumok, a kulcs-érték párok stb.) történő tárolását és használatát.
 
-## <a name="when-to-use-multi-model-capabilities"></a>Többmodelles képességek használata
+## <a name="when-to-use-multi-model-capabilities"></a>Mikor kell használni a többmodelles funkciókat?
 
-Az Azure SQL Database használata a relációs modell, amely biztosítja a legjobb teljesítmény érdekében a legtöbb esetben a különböző általános célú alkalmazások célja. Azure SQL Database viszont nem relációs adatok csak korlátozott. Az Azure SQL Database számos különböző nem relációs formátumban, szorosan integrált a relációs modell használatát teszi lehetővé.
-Akkor érdemes megfontolni az Azure SQL Database többmodelles képességeit a következő esetekben:
-- Van néhány információt, vagy adatstruktúrákat, amelyek jobban alkalmasak a nosql-alapú modell, és nem szeretné használni a külön NoSQL-adatbázis.
-- Az adatok többsége ideális választás relációs modell, és a nosql-alapú stílus-adatok bizonyos részeihez modell kell.
-- Biztosított a gazdag Transact-SQL nyelvi lekérdezéséhez és kielemzéséhez mind a relációs és NoSQL-adatok, és integrálhatja a különböző eszközök és alkalmazások által használható SQL-nyelv szeretné.
-- Adatbázis-szolgáltatások például a alkalmazni kívánt [, memóriabeli technológiákat](sql-database-in-memory.md) az elemzési teljesítményének növelése, vagy használja a nosql-alapú adatok strucutres feldolgozása [tranzakciós replikáció](sql-database-managed-instance-transactional-replication.md) vagy [olvasható replikát](sql-database-read-scale-out.md) , hozzon létre az adatok másolatát a többi beállítási helyet, és az elsődleges adatbázis egyes elemzési számítási feladatok kiszervezése.
+A Azure SQL Database úgy lett kialakítva, hogy működjön együtt a legjobb teljesítményt nyújtó, a legtöbb esetben a különböző általános célú alkalmazások esetében. A Azure SQL Database azonban nem kizárólag a kapcsolódó adatmennyiségre korlátozódik. A Azure SQL Database lehetővé teszi, hogy a kapcsolati modellbe szorosan integrált, különböző, nem rokon formátumokat használjon.
+A következő esetekben érdemes megfontolni a Azure SQL Database többmodelles funkcióinak használatát:
+- Olyan információkkal vagy struktúrákkal rendelkezik, amelyek jobban illeszkednek a NoSQL-modellekhez, és nem szeretne külön NoSQL-adatbázist használni.
+- Az adatai többsége megfelelő a rokon modellekhez, és az adatai egyes részeit NoSQL stílusban kell modellezni.
+- Széles körű Transact-SQL nyelvet szeretne használni a NoSQL-és adatelemzési lekérdezések lekérdezéséhez és elemzéséhez, valamint az SQL nyelvet használó különféle eszközök és alkalmazások integrálásához.
+- Olyan adatbázis-funkciókat kíván alkalmazni, mint [a memórián belüli technológiák](sql-database-in-memory.md) a NoSQL-adatstrucutres elemzésének vagy feldolgozásának javítása érdekében, [tranzakciós replikálás](sql-database-managed-instance-transactional-replication.md) vagy [olvasható replikák](sql-database-read-scale-out.md) használatával készítsen másolatot az adatairól a másik helyet és a kiszervezést végez néhány analitikus számítási feladatot az elsődleges adatbázisból.
 
 ## <a name="overview"></a>Áttekintés
 
-Az Azure SQL a következő többmodelles szolgáltatásokat biztosítja:
-- [Graph-funkciók](#graph-features) lehetővé teszi az adatok csomópontok és élek tartozik, és a graph fokozott standard Transact-SQL-lekérdezések használata `MATCH` operátor a grafikon adatainak lekérdezéséhez.
-- [JSON-funkcióit](#json-features) lehetővé teszi a JSON-dokumentumok put táblákban, alakíthat át adatokat relációs, JSON-dokumentumokat, és ez fordítva is igaz. A JSON-dokumentumok elemzéséhez függvényekkel fokozott standard Transact-SQL nyelvet használja, és nem fürtözött indexek, az oszlopcentrikus indexek vagy memóriaoptimalizált táblák segítségével optimalizálható a lekérdezéseket.
-- [Térbeli funkciók](#spatial-features) lehetővé teszi a geometriai, földrajzi és adatok tárolására, a térbeli indexekkel indexelés és térbeli lekérdezéseket használó adatok lekéréséhez.
-- [XML-funkciók](#xml-features) engedélyezése tárolhatja, és az adatbázis adatainak XML index és natív XQuery/XPath műveletek használható az XML-adataiban. Az Azure SQL database beépített XML lekérdezési motor, amely XML-adatok feldolgozására van speciális.
-- [Kulcs-érték párok](#key-value-pairs) nem explicit módon támogatottak különleges funkciókat, mivel a kulcs-érték Párizs két oszlop táblákként natív módon modellezhető.
+Az Azure SQL a következő többmodelles funkciókat biztosítja:
+- A [Graph-funkciók](#graph-features) lehetővé teszik, hogy az adatait csomópontok és élek szerint képviseljék, és a Graph- `MATCH` kezelővel bővített szabványos Transact-SQL-lekérdezéseket használja a Graph-adatlekérdezéshez.
+- A [JSON-funkciók](#json-features) lehetővé teszik a JSON-dokumentumok táblázatokba való behelyezését, a kapcsolódó adattípusok a JSON-dokumentumokra való átalakítását és fordítva. A normál Transact-SQL nyelvet a JSON-függvények használatával a dokumentumok elemzéséhez használhatja, a nem fürtözött indexeket, a oszlopcentrikus indexeket és a memóriára optimalizált táblákat pedig a lekérdezések optimalizálására használhatja.
+- A [térbeli funkciók](#spatial-features) lehetővé teszik a földrajzi és a geometriai adattárolást, a térbeli indexekkel való indexelést, valamint a térbeli lekérdezések használatával történő lekérését.
+- Az [XML-funkciók](#xml-features) lehetővé teszik az XML-adatok tárolását és indexelését az adatbázisban, és natív XQuery/XPath műveleteket használhatnak az XML-adatokkal való munkavégzéshez. Az Azure SQL Database speciális beépített XML-lekérdezési motorral rendelkezik, amely XML-adatfeldolgozást dolgoz fel.
+- A [kulcs-érték párok](#key-value-pairs) explicit módon nem támogatottak, mert a Key-Value Párizs natív módon kétoszlopos táblákként is modellezhető.
 
   > [!Note]
-  > Segítségével JSON-útvonalának kifejezését, XQuery/XPath kifejezés, térbeli funkciók és graph-lekérdezési kifejezések ugyanabban a Transact-SQL-lekérdezésben hozzáférni az adatbázisban tárolt adatokhoz. Emellett bármely eszköz vagy a programozási nyelv, amely hajthat végre lekérdezést Transact-SQL, használhatja a lekérdezési felületet többmodelles adatok eléréséhez. Ez a többmodelles adatbázisok képest például a fő különbség az [Azure Cosmos DB](/azure/cosmos-db/) speciális API-t biztosít különböző adatmodellek számára.
+  > Ugyanazzal a Transact-SQL-lekérdezéssel a JSON Path kifejezés, a XQuery/XPath kifejezések, a térbeli függvények és a Graph-lekérdezés kifejezéseket használhatja az adatbázisban tárolt adatok eléréséhez. Emellett a Transact-SQL-lekérdezéseket végrehajtó bármely eszköz vagy programozási nyelv is használhatja a lekérdezési felületet a többmodelles adattípusokhoz való hozzáféréshez. Ez a különbség a többmodelles adatbázisok, például a különböző adatmodellek speciális API-ját biztosító [Azure Cosmos db](/azure/cosmos-db/) összehasonlítva.
 
-A következő szakaszokban megismerheti a Azures SQL Database legfontosabb többmodelles képességeit.
+A következő szakaszokban megismerheti az Azure-SQL Database legfontosabb többmodelles funkcióit.
 
 ## <a name="graph-features"></a>Gráffunkciók
 
-Az Azure SQL Database adatbázisban több-a-többhöz kapcsolatok modellezésére graph adatbázis-képességeket kínál. Gráf gyűjteménye csomópontok (vagy csúcspontok) és élek (vagy kapcsolatok). A csomópont egy entitás (például egy személy vagy szervezet) és a egy edge jelenti (a példában, a kedvelések vagy az ismerősök felvételének engedélyezése) csatlakozó a két csomópont közötti kapcsolatot. Az alábbiakban néhány olyan funkciókat egy gráfadatbázist egyedi:
-- Élek és kapcsolatok keresési módjához első osztályú entitások egy Gráfadatbázist és is attribútumok vagy tulajdonságok társított őket.
-- Egyetlen edge rugalmasan csatlakozhatnak egy Gráfadatbázist több csomópontján.
-- Is express egyszerűen mintamegfeleltetés és lekérdezések Többugrásos navigáció.
-- Tranzitív megszüntetésre és polimorf lekérdezések könnyedén is express.
+A Azure SQL Database gráf-adatbázis-képességeket kínál a több-a-többhöz relációk modellezéséhez az adatbázisban. A gráfok csomópontok (vagy csúcspontok) és élek (vagy kapcsolatok) gyűjteményei. A csomópontok egy entitást (például egy személyt vagy szervezetet) jelölnek, és az Edge az általa összekapcsolt két csomópont (például a likes vagy a barátok) közötti kapcsolatot jelöli. Íme néhány olyan funkció, amely egyedi gráf-adatbázist tesz elérhetővé:
+- Az élek vagy a kapcsolatok az első osztályú entitások egy gráf-adatbázisban, és rendelkezhetnek hozzájuk társított attribútumokkal vagy tulajdonságokkal.
+- Egyetlen Edge rugalmasan tud csatlakoztatni több csomópontot egy gráf-adatbázisban.
+- Egyszerűen kipróbálhatja a minta egyeztetését és a több ugrásos navigációs lekérdezéseket.
+- A tranzitív lezáró és a polimorf lekérdezéseket egyszerűen kipróbálhatja.
 
-A graph-kapcsolatok graph-lekérdezési képességek integrálva vannak a Transact-SQL és fogadni, az alapvető adatbázis-kezelő rendszer, az SQL Server használatának előnyeit.
-[Gráffeldolgozási](https://docs.microsoft.com/sql/relational-databases/graphs/sql-graph-overview) van az alapvető SQL Server adatbázismotor-funkció, így található további információ a Graph feldolgozási hiba.
+A Graph-kapcsolatok és a Graph lekérdezési képességek integrálva vannak a Transact-SQL szolgáltatásba, és a SQL Server használatának előnyeit kapják meg az alapvető adatbázis-kezelő rendszerként.
+A [Graph Processing](https://docs.microsoft.com/sql/relational-databases/graphs/sql-graph-overview) a Core SQL Server adatbázismotor-szolgáltatás, így további információk is megtalálhatók a gráf feldolgozásáról.
 
-### <a name="when-to-use-a-graph-capability"></a>Mikor érdemes használni egy graph képesség
+### <a name="when-to-use-a-graph-capability"></a>Mikor használjon gráf-képességet
 
-Nincs semmi gráfadatbázis érheti el, amelyek nem tudják elérni a relációs adatbázis. Azonban egy gráfadatbázist megkönnyítheti bizonyos lekérdezéseket Express. A választhat közülük a döntést a következő tényezőket:
+A Graph-adatbázis nem érhető el, mert nem érhető el a viszonyítási adatbázis használatával. A Graph-adatbázisok azonban egyszerűbbé tehetik bizonyos lekérdezések kifejtését. A másik lehetőség közül választhat a következő tényezők alapján:
 
-- Ahol egy csomópont lehet több szülőkkel, így nem használható a HierarchyId hierarchikus adatok modellezése
-- Modell van az alkalmazás összetett több-a-többhöz kapcsolatok; rendelkezik módon alakul ki az alkalmazást, új kapcsolatokat a rendszer hozzáadja.
-- Összekapcsolt adatok és kapcsolatok elemezni kell.
+- Olyan hierarchikus adat modellezése, amelyben egy csomópont több szülővel rendelkezhet, így a HierarchyId nem használható
+- A modellben az alkalmazás komplex több-a-többhöz kapcsolatot tartalmaz; az alkalmazás fejlődése során új kapcsolatok lesznek hozzáadva.
+- Össze kell elemezni a kapcsolattal összekapcsolt adatkapcsolatokat és kapcsolatokat.
 
-## <a name="json-features"></a>JSON-funkciókkal
+## <a name="json-features"></a>JSON-funkciók
 
-Az Azure SQL Database lehetővé teszi a elemzése és kérdezhet le adatokat a JavaScript Object Notation jelölt [(JSON)](https://www.json.org/) formázhatja és exportálni a relációs adatok JSON-szövegben.
+Azure SQL Database lehetővé teszi a JavaScript Object Notation [(JSON)](https://www.json.org/) formátumban ábrázolt adatelemzést és lekérdezéseket, és a rokoni adatait JSON-szövegként exportálja.
 
-JSON-ja egy modern webes és mobilalkalmazások az adatcsere használt népszerű adatok formátuma. JSON félig strukturált adatok tárolására, naplófájlokban vagy hasonló NoSQL-adatbázisok esetében is alkalmazható [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/). Számos REST webes szolgáltatás visszaadott eredmények formázott JSON-szöveget, vagy fogadja el az adatok JSON formátumú. A legtöbb Azure-szolgáltatások például [Azure Search](https://azure.microsoft.com/services/search/), [Azure Storage](https://azure.microsoft.com/services/storage/), és [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) adja vissza, vagy JSON felhasználása REST-végpontokat.
+A JSON a modern webes és mobil alkalmazások adatcseréjéhez használt népszerű adatformátum. A JSON-t a részben strukturált, a naplófájlokban vagy NoSQL-adatbázisokban (például [Azure Cosmos db](https://azure.microsoft.com/services/cosmos-db/)) tárolt fájlok tárolására is használják. Számos REST-webszolgáltatásnak az eredményeket JSON-szövegként kell megadnia, vagy JSON-ként formázott adatokhoz kell fogadnia. A legtöbb Azure-szolgáltatás, például az [Azure Search](https://azure.microsoft.com/services/search/), az [Azure Storage](https://azure.microsoft.com/services/storage/)és a [Azure Cosmos db](https://azure.microsoft.com/services/cosmos-db/) olyan Rest-végpontokkal rendelkezik, amelyek JSON-t adnak vissza vagy használnak.
 
-Az Azure SQL Database lehetővé teszi a JSON-adatok egyszerűen dolgozhat, és az adatbázis integrálása a modern szolgáltatások. Az Azure SQL Database a JSON-adatok használata a következő funkciókat biztosítja:
+Azure SQL Database lehetővé teszi, hogy könnyen működjön a JSON-adataival, és integrálja az adatbázist a modern szolgáltatásokkal. A Azure SQL Database a következő funkciókat biztosítja a JSON-adatok használatához:
 
 ![JSON-függvények](./media/sql-database-json-features/image_1.png)
 
-Ha JSON-szöveg, JSON-ból adatokat nyerhet ki, vagy győződjön meg arról, hogy a beépített funkciókkal megfelelően formázott JSON [JSON_VALUE](https://msdn.microsoft.com/library/dn921898.aspx), [JSON_QUERY](https://msdn.microsoft.com/library/dn921884.aspx), és [ISJSON](https://msdn.microsoft.com/library/dn921896.aspx). A [JSON_MODIFY](https://msdn.microsoft.com/library/dn921892.aspx) funkció lehetővé teszi, hogy frissítse a JSON-szövegben lévő értéket. További speciális lekérdezés és elemzés céljából, [OPENJSON](https://msdn.microsoft.com/library/dn921885.aspx) függvény JSON-objektumok tömbje ismeretekké a sorkészletet. Bármely SQL-lekérdezés a visszaadott eredménykészlet hajtható végre. Végül pedig egy [FOR JSON](https://msdn.microsoft.com/library/dn921882.aspx) záradék, amely lehetővé teszi a JSON-szövegként a relációs táblákban tárolt adatok formázása.
+Ha JSON-szöveggel rendelkezik, kinyerheti az adatait a JSON-ból, vagy ellenőrizheti, hogy a JSON formátuma megfelelően formázott-e a beépített függvények [JSON_VALUE](https://msdn.microsoft.com/library/dn921898.aspx), [JSON_QUERY](https://msdn.microsoft.com/library/dn921884.aspx)és [ISJSON](https://msdn.microsoft.com/library/dn921896.aspx). A [JSON_MODIFY](https://msdn.microsoft.com/library/dn921892.aspx) függvény lehetővé teszi az érték JSON-szövegen belüli frissítését. A speciális lekérdezés és elemzés érdekében a [openjson utasítással](https://msdn.microsoft.com/library/dn921885.aspx) függvény JSON-objektumok tömbjét is át tudja alakítani sorok halmazára. Bármely SQL-lekérdezés végrehajtható a visszaadott eredményhalmaz alapján. Végezetül van egy [for JSON](https://msdn.microsoft.com/library/dn921882.aspx) záradék, amely lehetővé teszi, hogy a rokon táblákban tárolt adatait JSON-szövegként formázza.
 
-További információkért lásd: [használata azure SQL Database-ben JSON-adatok](sql-database-json-features.md).
-[JSON](https://docs.microsoft.com/sql/relational-databases/json/json-data-sql-server) van core SQL Server adatbázismotor-funkció, így ott a JSON-szolgáltatással kapcsolatos további információ található.
+További információkért lásd: [JSON-adatok használata az Azure-ban SQL Database](sql-database-json-features.md).
+A [JSON](https://docs.microsoft.com/sql/relational-databases/json/json-data-sql-server) a Core SQL Server adatbázismotor szolgáltatás, így további információ található a JSON szolgáltatásról.
 
-### <a name="when-to-use-a-json-capability"></a>Mikor érdemes használni egy olyan JSON-funkció
+### <a name="when-to-use-a-json-capability"></a>Mikor használjon JSON-képességet
 
-A dokumentum modellek helyett a relációs modell különleges esetekben használhatók:
-- Nagy-normalizálási séma nem használata jelentős előnyöket, mert az összes mezőt az objektumok egyszerre eléréséhez, vagy soha nem frissíti az objektumok normalizált részét. A normalizált modell azonban bonyolítják a táblákat, amelyek kell csatlakoztatni az adatok beolvasásához nagy száma miatt a lekérdezéseket.
-- Dolgozunk az alkalmazásokat, hogy natív módon használható JSON-dokumentumok kommunikációs és adatmodelleket, és nem kívánja bevezetni a további rétegek, amelyek alakítja át az adatokat relációs, JSON, és ez fordítva is igaz.
-- Egyszerűsítse az adatmodellben megszüntetéséhez normalizálása gyermek táblák vagy entitás értékű objektum minták kell.
-- Kell betölteni vagy exportálhat adatokat anélkül, hogy néhány további eszköz, amely elemzi az adatokat JSON formátumban tárolja.
+A kapcsolódó modellek helyett a dokumentumok modelljei is használhatók a különböző helyzetekben:
+- A séma nagy mértékű normalizálása nem jelent jelentős előnyöket, mert egyszerre fér hozzá az összes mezőhöz, vagy ha soha nem frissíti az objektumok normalizált részeit. A normalizált modell azonban növeli a lekérdezések összetettségét, mert a nagy számú tábla, amelyhez az adatgyűjtéshez csatlakoznia kell.
+- A JSON-dokumentumokat natív módon használó alkalmazásokkal dolgozik a kommunikációs vagy adatmodellekben, és nem szeretne olyan további réteget bevezetni, amely átalakítja a kapcsolati adatforgalmat a JSON-ba, és fordítva.
+- Egyszerűsíteni kell az adatmodellt a gyermektábla vagy az entitás-érték mintázatok normalizálása révén.
+- JSON formátumban tárolt adatterhelést kell betöltenia vagy exportálnia anélkül, hogy további eszközt kellene elemezni.
 
 ## <a name="spatial-features"></a>Térbeli funkciók
 
-Térbeli adatok fizikai helyének és geometriai objektum alakját adatait jelöli. Ezek az objektumok pontok helykérelmei vagy összetett objektumok, például az országok, utak vagy Lake lehet.
+A térbeli adatok a geometriai objektumok fizikai helyével és alakával kapcsolatos információkat jelölik. Ezek az objektumok lehetnek pontok vagy összetettebb objektumok, például országok/régiók, utak vagy tavak.
 
-Az Azure SQL Database támogatja a térbeli adatok kétféle - a geometria adattípust, és a földrajzi adatok típusa.
-- A geometry típusú Euclidean (egyszerű) koordináta-rendszerére tárolt adatokat jelöli.
-- A földrajzi hely típusa egy ciklikus-earth koordináta-rendszerére tárolt adatokat jelöli.
+Azure SQL Database két térbeli adattípust támogat: a geometria adattípust és a földrajz adattípust.
+- A geometriai típus egy euklideszi (Flat) koordináta-rendszerbeli adathalmazt jelöl.
+- A földrajzi típus a kör alakú koordináta-rendszerbeli adathalmazokat jelöli.
 
-Térbeli objektumok, például az Azure SQL database-ben használható számos van [pont](https://docs.microsoft.com/sql/relational-databases/spatial/point), [LineString](https://docs.microsoft.com/sql/relational-databases/spatial/linestring), [sokszög](https://docs.microsoft.com/sql/relational-databases/spatial/polygon)stb.
+Több térbeli objektum is használható az Azure SQL Database-ben, például [pont](https://docs.microsoft.com/sql/relational-databases/spatial/point), [LineString](https://docs.microsoft.com/sql/relational-databases/spatial/linestring), [sokszög](https://docs.microsoft.com/sql/relational-databases/spatial/polygon)stb.
 
-Az Azure SQL Database emellett speciális [a térbeli indexek](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-indexes-overview) , amely használható a térbeli lekérdezések teljesítményének javítása érdekében.
+A Azure SQL Database olyan speciális [térbeli indexeket](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-indexes-overview) is biztosít, amelyek a térbeli lekérdezések teljesítményének javítására használhatók.
 
-[Térbeli támogatási](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-sql-server) van core SQL Server adatbázismotor-funkció, így megtalálhatja a térbeli szolgáltatással kapcsolatos további információk.
+A [térbeli támogatás](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-sql-server) a Core SQL Server adatbázismotor-szolgáltatás, így további információ található a térbeli szolgáltatásról.
 
 ## <a name="xml-features"></a>XML-funkciók
 
-Az SQL Server hatékony platformot biztosít, részben strukturált adatok kezelésére gazdag alkalmazások fejlesztéséhez. Támogatja az XML integrálva van az SQL Server összes összetevőt, és a következőket tartalmazza:
+A SQL Server hatékony platformot biztosít a félig strukturált adatkezeléshez használható sokoldalú alkalmazások fejlesztéséhez. Az XML-támogatás integrálva van a SQL Server összes összetevőjébe, és a következőket tartalmazza:
 
-- Az xml adattípust. XML-értékeket egy xml adattípusú oszlop XML-sémák gyűjteménye megfelelően írta be, vagy balra típus nélküli natív módon is tárolhatók. Az XML-oszlop indexelésére használhatja.
-- Az XQuery-lekérdezést és változókat az xml-típusú oszlopokban tárolt XML-adatok megadásának lehetőségét. XQuery funkciókat is használható adatmodellek, amelyek használatával az adatbázis eléréséhez a Transact-SQL lekérdezések.
-- XML-dokumentumok szereplő összes elem automatikus indexelése [elsődleges XML-index](https://docs.microsoft.com/sql/relational-databases/xml/xml-indexes-sql-server#primary-xml-index) , vagy adja meg a pontos elérési utakat kell indexelni használatával [másodlagos XML-index](https://docs.microsoft.com/sql/relational-databases/xml/xml-indexes-sql-server#secondary-xml-indexes).
-- Az OPENROWSET, amely lehetővé teszi, hogy az XML-adatok tömeges betöltése.
-- Relációs adatok XML-formátumba alakítsa át.
+- Az XML-adattípus. Az XML-értékek natív módon tárolhatók egy XML-adattípusú oszlopban, amely XML-sémák gyűjteménye szerint írható, vagy a típus nem hagyható el. Az XML-oszlop indexelése megtehető.
+- Az XML-típus oszlopaiban és változójában tárolt XML-adatmennyiség XQuery-lekérdezésének megadására van lehetőség. A XQuery funkciói olyan Transact-SQL-lekérdezésekben használhatók, amelyek az adatbázisban használt adatmodellekhez férnek hozzá.
+- Az XML-dokumentumok összes elemét automatikusan indexeli az [elsődleges XML-index](https://docs.microsoft.com/sql/relational-databases/xml/xml-indexes-sql-server#primary-xml-index) használatával, vagy megadhatja a [másodlagos XML-index](https://docs.microsoft.com/sql/relational-databases/xml/xml-indexes-sql-server#secondary-xml-indexes)használatával indexelni kívánt elérési utakat.
+- OPENROWSET, amely lehetővé teszi az XML-adatmennyiségek tömeges betöltését.
+- A viszonyítási adattartalom átalakítása XML-formátumba.
 
-[XML](https://docs.microsoft.com/sql/relational-databases/xml/xml-data-sql-server) van core SQL Server adatbázismotor-funkció, így hiba az XML-szolgáltatással kapcsolatos további információ található.
+Az [XML](https://docs.microsoft.com/sql/relational-databases/xml/xml-data-sql-server) a Core SQL Server adatbázismotor szolgáltatás, így további információk is megtalálhatók az XML-szolgáltatásról.
 
-### <a name="when-to-use-an-xml-capability"></a>Mikor érdemes használni egy XML-képesség
+### <a name="when-to-use-an-xml-capability"></a>Mikor kell XML-képességet használni
 
-A dokumentum modellek helyett a relációs modell különleges esetekben használhatók:
-- Nagy-normalizálási séma nem használata jelentős előnyöket, mert az összes mezőt az objektumok egyszerre eléréséhez, vagy soha nem frissíti az objektumok normalizált részét. A normalizált modell azonban bonyolítják a táblákat, amelyek kell csatlakoztatni az adatok beolvasásához nagy száma miatt a lekérdezéseket.
-- Dolgozunk az alkalmazásokat, hogy natív módon használható XML-dokumentumok kommunikáció vagy adatmodelleket, és nem kívánja bevezetni a további rétege, amely átalakítja a relációs adatok XML-fájlba, és ez fordítva is igaz.
-- Egyszerűsítse az adatmodellben megszüntetéséhez normalizálása gyermek táblák vagy entitás értékű objektum minták kell.
-- Kell betölteni vagy exportálhat adatokat anélkül, hogy néhány további eszköz, amely elemzi az adatokat az XML formátumban tárolja.
+A kapcsolódó modellek helyett a dokumentumok modelljei is használhatók a különböző helyzetekben:
+- A séma nagy mértékű normalizálása nem jelent jelentős előnyöket, mert egyszerre fér hozzá az összes mezőhöz, vagy ha soha nem frissíti az objektumok normalizált részeit. A normalizált modell azonban növeli a lekérdezések összetettségét, mert a nagy számú tábla, amelyhez az adatgyűjtéshez csatlakoznia kell.
+- Az XML-dokumentumokat natív módon használó alkalmazásokkal folytatott kommunikációt és adatmodelleket használ, és nem szeretne olyan további réteget bevezetni, amely átalakítja a kapcsolati adattípusokat az XML-be, és fordítva.
+- Egyszerűsíteni kell az adatmodellt a gyermektábla vagy az entitás-érték mintázatok normalizálása révén.
+- XML formátumban tárolt adatgyűjtést vagy-exportálást kell végeznie az adatelemzést elvégező további eszköz nélkül.
 
 ## <a name="key-value-pairs"></a>Kulcs-érték párok
 
-Az Azure SQL Database speciális típusokat vagy struktúrák, amelyek támogatják a kulcs-érték párokat, kulcs-érték struktúrák natív módon jelölt standard relációs tábláival, mivel nem rendelkezik:
+Azure SQL Database nem rendelkezik olyan specializált típusokkal vagy struktúrákkal, amelyek támogatják a kulcs-érték párokat, mivel a kulcs-érték struktúrák natív módon, szabványos táblázatként jeleníthetők meg:
 
 ```sql
 CREATE TABLE Collection (
@@ -133,14 +132,14 @@ CREATE TABLE Collection (
 )
 ```
 
-Ez a kulcs-érték struktúra korlátozások nélkül saját igényei szerint testre szabhatja. Tegyük fel, az érték lehet XML-dokumentumot `nvarchar(max)` típusa, ha az érték JSON-dokumentumok, helyezheti `CHECK` korlátozás, amely a JSON-tartalmak érvényességét ellenőrzi. Helyezzen egy kulcsot a további oszlopok értékeinek tetszőleges számú, adja hozzá a számított oszlopok és egyszerűbbé tétele és az adatelérés optimalizálása indexekkel, adja meg a tábla memóriaoptimalizált/csak a sémára vonatkozó táblaként való beolvasása jobb teljesítményt, és így tovább.
+Ezt a kulcs-érték struktúrát úgy szabhatja testre, hogy korlátozás nélkül illeszkedjen az igényeihez. Az érték például lehet XML-dokumentum a `nvarchar(max)` típus helyett, ha az érték JSON-dokumentum, a JSON-tartalom érvényességét ellenőrző `CHECK` korlátozást adhat meg. A további oszlopok egy kulcsával kapcsolatos tetszőleges számú értéket adhat hozzá, a számított oszlopok és indexek hozzáadásával egyszerűsítheti és optimalizálhatja az adatelérést, valamint a tábla memóriához/optimalizált séma-táblaként való definiálásával jobb teljesítményt érhet el.
 
-Lásd: [hogyan BWin használja In-Memory OLTP páratlan teljesítmény és méretezhetőség eléréséhez](https://blogs.msdn.microsoft.com/sqlcat/20../../how-bwin-is-using-sql-server-2016-in-memory-oltp-to-achieve-unprecedented-performance-and-scale/) saját ASP.NET-gyorsítótárazás megoldás, amely 1.200.000 elért kötegeli az másodpercenként példaként hogyan relációs modellt is hatékonyan használható kulcs-érték pár megoldás a gyakorlatban.
+Megtudhatja, [hogyan használja a BWin a memóriában tárolt OLTP, hogy példátlan teljesítményt és méretezést](https://blogs.msdn.microsoft.com/sqlcat/20../../how-bwin-is-using-sql-server-2016-in-memory-oltp-to-achieve-unprecedented-performance-and-scale/) biztosítson a ASP.net gyorsítótárazási megoldás számára, amely másodpercenként 1.200.000-kötegeket ért el, például hogyan lehet a viszonyítási modellt hatékonyan használni kulcs-érték párok megoldásként eljárás.
 
 ## <a name="next-steps"></a>További lépések
-Többmodelles képességek az Azure SQL Database-adatbázisok is rendelkezésre állnak az SQL Server adatbázismotor alapszolgáltatások, amely az Azure SQL Database és az SQL Server között vannak megosztva. Ezek a funkciók kapcsolatos további részletekért látogasson el a relációs SQL database dokumentációs oldalát érintő:
+Az Azure SQL Database-ben a többmodelles funkciók a Azure SQL Database és a SQL Server között megosztva SQL Server adatbázismotor alapszintű funkciói. Ha többet szeretne megtudni ezekről a funkciókról, látogasson el az SQL-kapcsolati adatbázis dokumentációs oldalaira:
 
-* [Graph-feldolgozás](https://docs.microsoft.com/sql/relational-databases/graphs/sql-graph-overview)
+* [Gráf feldolgozása](https://docs.microsoft.com/sql/relational-databases/graphs/sql-graph-overview)
 * [JSON-adatok](https://docs.microsoft.com/sql/relational-databases/json/json-data-sql-server)
-* [Térbeli támogatása](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-sql-server)
-* [XML-adatok](https://docs.microsoft.com/sql/relational-databases/xml/xml-data-sql-server)
+* [Térbeli támogatás](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-sql-server)
+* [XML-adatfájlok](https://docs.microsoft.com/sql/relational-databases/xml/xml-data-sql-server)

@@ -8,12 +8,12 @@ ms.service: service-bus-messaging
 ms.topic: quickstart
 ms.date: 04/15/2019
 ms.author: spelluru
-ms.openlocfilehash: 2af346b2c9fa5c46593aa9421c3a762bda78dc2f
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: a392f8b11a7ab1ad72f4da289c54e34b022f1ea6
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59610305"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65990317"
 ---
 # <a name="quickstart-use-the-azure-portal-to-create-a-service-bus-topic-and-subscriptions-to-the-topic"></a>Gyors útmutató: A témakör előfizetési és a egy Service Bus-témakör létrehozása az Azure portal használatával
 Ebben a rövid útmutatóban használatával az Azure Portalon hozzon létre egy Service Bus-témakörbe, és hozzon létre előfizetéseket az adott üzenettémakörhöz. 
@@ -31,10 +31,11 @@ Service Bus-üzenettémák és előfizetések lehetővé teszi nagy mennyiségű
 
 [!INCLUDE [service-bus-create-topics-three-subscriptions-portal](../../includes/service-bus-create-topics-three-subscriptions-portal.md)]
 
-
+> [!NOTE]
+> A Service Bus-erőforrások is kezelhetők [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/). A Service Bus Explorer lehetővé teszi, hogy a felhasználók csatlakozni a Service Bus-névtér és üzenetküldési entitások felügyelete egyszerű módon. Az eszköz például importálás/exportálás funkció vagy tesztelhetik, témakör, üzenetsorok, előfizetések, relay-szolgáltatások, a notification hubs és események hubok speciális szolgáltatásokat biztosítja. 
 
 ## <a name="next-steps"></a>További lépések
-Megtudhatja, hogyan küldhet üzeneteket egy üzenettémát és egy reiceve keresztül egy előfizetés üzeneteket, tekintse meg a következő cikket: válassza ki a programozási nyelvet a tartalomjegyzékben. 
+Megtudhatja, hogyan üzenetek küldése egy üzenettémakörbe, és a egy előfizetés útján üzeneteket kapni, tekintse meg a következő cikket: válassza ki a programozási nyelvet a tartalomjegyzékben. 
 
 > [!div class="nextstepaction"]
 > [Közzététel és előfizetés üzenetek](service-bus-dotnet-how-to-use-topics-subscriptions.md)

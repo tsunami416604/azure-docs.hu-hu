@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 433ae852-a833-44d3-a3c3-14cca33403a2
 ms.date: 01/27/2017
-ms.openlocfilehash: f919e9a7cca210fa5920bcc6bed05a9a41fba8bf
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 76a9ece9e925543e856136a798a60038316caad9
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57192384"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203043"
 ---
 # <a name="create-custom-tracking-schemas-that-monitor-end-to-end-workflows-in-azure-logic-apps"></a>Hozzon létre egyéni követési sémák, a végpontok közötti munkafolyamatokat az Azure Logic Apps figyelése
 
@@ -56,22 +56,22 @@ Ez a cikk az egyéni kódot is használhatja a rétegek kívül a logikai alkalm
 }
 ```
 
-| Tulajdonság | Típus | Leírás |
-| --- | --- | --- |
-| sourceType |   | A futtatási forrás típusa. Engedélyezett értékek a következők **Microsoft.Logic/workflows** és **egyéni**. (Kötelező) |
-| Forrás |   | Ha a forrás típusa **Microsoft.Logic/workflows**, kövesse az ebben a sémában kell az adatforrások információit. Ha a forrás típusa **egyéni**, egy JToken sémája. (Kötelező) |
-| Rendszerazonosító | String | Logikai alkalmazás rendszer azonosítóját. (Kötelező) |
-| runId | String | A logikai alkalmazás futtatásának azonosítóját. (Kötelező) |
-| operationName | String | A művelet (például művelet vagy trigger) neve. (Kötelező) |
-| repeatItemScopeName | String | Ismételje meg a konfigurációelem neve, ha a művelet belül egy `foreach` / `until` ciklus. (Kötelező) |
-| repeatItemIndex | Egész szám | E művelet belül van-e egy `foreach` / `until` ciklus. Azt jelzi, hogy az ismétlődő elem index. (Kötelező) |
-| trackingId | String | Követési azonosító, az üzenetek korrelációját. (Választható lehetőség) |
-| correlationId | String | Korrelációs azonosító, az üzenetek korrelációját. (Választható lehetőség) |
-| clientRequestId | String | Ügyfél töltheti fel, hogy üzeneteket összekapcsolását. (Választható lehetőség) |
-| eventLevel |   | Az esemény szintjét. (Kötelező) |
-| eventTime |   | ÉÉÉÉ-hh-DDTHH:MM:SS.00000Z UTC formátumban, az esemény időpontja. (Kötelező) |
-| recordType |   | A track rekord típusát. Az érték engedélyezett **egyéni**. (Kötelező) |
-| rekord |   | Egyéni rekord típusa. Engedélyezett formátuma JToken. (Kötelező) |
+| Tulajdonság | Kötelező | Típus | Leírás |
+| --- | --- | --- | --- |
+| sourceType | Igen |   | A futtatási forrás típusa. Engedélyezett értékek a következők **Microsoft.Logic/workflows** és **egyéni**. |
+| source | Igen |   | Ha a forrás típusa **Microsoft.Logic/workflows**, kövesse az ebben a sémában kell az adatforrások információit. Ha a forrás típusa **egyéni**, egy JToken sémája. |
+| systemId | Igen | String | Logikai alkalmazás rendszer azonosítóját. |
+| runId | Igen | String | A logikai alkalmazás futtatásának azonosítóját. |
+| operationName | Igen | String | A művelet (például művelet vagy trigger) neve. |
+| repeatItemScopeName | Igen | String | Ismételje meg a konfigurációelem neve, ha a művelet belül egy `foreach` / `until` ciklus. |
+| repeatItemIndex | Igen | Integer | E művelet belül van-e egy `foreach` / `until` ciklus. Azt jelzi, hogy az ismétlődő elem index. |
+| trackingId | Nem | String | Követési azonosító, az üzenetek korrelációját. |
+| correlationId | Nem | String | Korrelációs azonosító, az üzenetek korrelációját. |
+| clientRequestId | Nem | String | Ügyfél töltheti fel, hogy üzeneteket összekapcsolását. |
+| eventLevel | Igen |   | Az esemény szintjét. |
+| eventTime | Igen |   | ÉÉÉÉ-hh-DDTHH:MM:SS.00000Z UTC formátumban, az esemény időpontja. |
+| recordType | Igen |   | A track rekord típusát. Az érték engedélyezett **egyéni**. |
+| record | Igen |   | Egyéni rekord típusa. Engedélyezett formátuma JToken. |
 ||||
 
 ## <a name="b2b-protocol-tracking-schemas"></a>B2B-protokoll követési sémák

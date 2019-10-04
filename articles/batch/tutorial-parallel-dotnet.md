@@ -3,7 +3,7 @@ title: Párhuzamos számítási feladat feldolgozása – Azure Batch .NET
 description: Oktatóanyag – Médiafájlok párhuzamos átkódolása ffmpeg segítségével az Azure Batchben a Batch .NET ügyfélkódtár használatával
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.assetid: ''
 ms.service: batch
 ms.devlang: dotnet
@@ -11,14 +11,14 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: a6fe5b0452771cd2e618d1a08cb2f4af52e3cc0d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 103d09da3fedf9c31d4e5255456e63cab34bc0ee
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57538687"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258583"
 ---
-# <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Oktatóanyag: Párhuzamos számítási feladatok futtatása az Azure Batch .NET API használatával
+# <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Oktatóanyag: Párhuzamos számítási feladat futtatása Azure Batch a .NET API használatával
 
 Az Azure Batch használatával hatékonyan futtathat nagy méretű párhuzamos és nagy teljesítményű feldolgozási (high-performance computing, HPC) Batch-feladatokat az Azure-ban. Ez az oktatóanyag végigvezeti egy, a Batch segítségével párhuzamos számításifeladat-futtatást bemutató C#-példán. Megismerheti a Batch-alkalmazások általános munkafolyamatát, valamint azt, hogyan kommunikálhat programkódon keresztül a Batch- és Storage-erőforrásokkal. Az alábbiak végrehajtásának módját ismerheti meg:
 
@@ -37,11 +37,11 @@ Ebben az oktatóanyagban MP4-médiafájlokat konvertál párhuzamosan MP3 formá
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Visual Studio 2017](https://www.visualstudio.com/vs) vagy [.NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1) Linux, macOS vagy Windows rendszeren.
+* [Visual Studio 2017 vagy újabb](https://www.visualstudio.com/vs), vagy [.net Core 2,1](https://www.microsoft.com/net/download/dotnet-core/2.1) Linux, MacOS vagy Windows rendszerhez.
 
 * Egy Batch-fiók és egy társított Azure Storage-fiók. A fiókok létrehozásához tekintse meg a Batch az [Azure Portallal](quick-create-portal.md) vagy az [Azure CLI-vel](quick-create-cli.md) történő használatát ismertető rövid útmutatókat.
 
-* [Az ffmpeg 3.4 64 bites Windowshoz készült verziója](https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.4-win64-static.zip) (.zip). Töltse le a .zip-fájlt a helyi számítógépére. Ebben az oktatóanyagban a zip-fájl csak kell. A fájlt nem kell sem kibontania, sem helyileg telepítenie.
+* [Az ffmpeg 3.4 64 bites Windowshoz készült verziója](https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.4-win64-static.zip) (.zip). Töltse le a .zip-fájlt a helyi számítógépére. Ebben az oktatóanyagban csak a zip-fájlra van szükség. A fájlt nem kell sem kibontania, sem helyileg telepítenie.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -140,7 +140,7 @@ A következő szakaszok a mintaalkalmazást felosztják azokra a lépésekre, am
 
 ### <a name="authenticate-blob-and-batch-clients"></a>Blob- és Batch-ügyfelek hitelesítése
 
-A társított Storage-fiókkal való kommunikációhoz az alkalmazás a .NET-hez készült Azure Storage ügyféloldali kódtárat használja. Ez létrehoz egy hivatkozást a fiókra egy [CloudStorageAccount](/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount) objektummal, és ehhez megosztott kulcsos hitelesítést használ. Ezután létrehoz egy [CloudBlobClient](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobclient) objektumot.
+A társított Storage-fiókkal való kommunikációhoz az alkalmazás a .NET-hez készült Azure Storage ügyféloldali kódtárat használja. Ez létrehoz egy hivatkozást a fiókra egy [CloudStorageAccount](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount) objektummal, és ehhez megosztott kulcsos hitelesítést használ. Ezután létrehoz egy [CloudBlobClient](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient) objektumot.
 
 ```csharp
 // Construct the Storage account connection string
@@ -153,7 +153,7 @@ CloudStorageAccount storageAccount = CloudStorageAccount.Parse(storageConnection
 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 ```
 
-Az alkalmazás létrehoz egy [BatchClient](/dotnet/api/microsoft.azure.batch.batchclient) objektumot a Batch szolgáltatásban lévő készletek, feladatok és tevékenységek létrehozásához és kezeléséhez. A példákban szereplő Batch-ügyfél megosztott kulcsos hitelesítést használ. A Batch is támogatja a hitelesítés a [Azure Active Directory](batch-aad-auth.md) egyes felhasználókat vagy felügyelet nélküli alkalmazások hitelesítéséhez.
+Az alkalmazás létrehoz egy [BatchClient](/dotnet/api/microsoft.azure.batch.batchclient) objektumot a Batch szolgáltatásban lévő készletek, feladatok és tevékenységek létrehozásához és kezeléséhez. A példákban szereplő Batch-ügyfél megosztott kulcsos hitelesítést használ. A Batch a [Azure Active Directoryon](batch-aad-auth.md) keresztüli hitelesítést is támogatja az egyes felhasználók vagy a felügyelet nélküli alkalmazások hitelesítéséhez.
 
 ```csharp
 BatchSharedKeyCredentials sharedKeyCredentials = new BatchSharedKeyCredentials(BatchAccountUrl, BatchAccountName, BatchAccountKey);
@@ -167,7 +167,7 @@ using (BatchClient batchClient = BatchClient.Open(sharedKeyCredentials))
 Az alkalmazás továbbítja a `CreateContainerIfNotExistAsync` objektumot a `blobClient` metódusnak, hogy az létrehozzon egy Storage-tárolót a bemeneti MP4-fájlokhoz, valamint egy tárolót a tevékenység kimenetének.
 
 ```csharp
-CreateContainerIfNotExistAsync(blobClient, inputContainerName;
+CreateContainerIfNotExistAsync(blobClient, inputContainerName);
 CreateContainerIfNotExistAsync(blobClient, outputContainerName);
 ```
 
@@ -175,8 +175,8 @@ Ezt követően a rendszer feltölti a fájlokat a bemeneti tárolóba a helyi `I
 
 A `Program.cs` két metódusa vesz részt a fájlok feltöltésében:
 
-* `UploadResourceFilesToContainerAsync`: ResourceFile-objektumok gyűjteményét adja vissza, és belsőleg meghívja `UploadResourceFileToContainerAsync` átadott feltöltse a `inputFilePaths` paraméter.
-* `UploadResourceFileToContainerAsync`: A bemeneti tárolóba blobként tölt fel minden egyes fájl. A fájl feltöltése után közös hozzáférésű jogosultságkódot (SAS) szerez be a blobhoz, és visszaadja az azt jelölő ResourceFile-objektumot.
+* `UploadFilesToContainerAsync`: ResourceFile objektumok gyűjteményét adja vissza, és belsőleg meghívja `UploadResourceFileToContainerAsync` a `inputFilePaths` paraméterben átadott fájlok feltöltését.
+* `UploadResourceFileToContainerAsync`: Feltölt minden fájlt blobként a bemeneti tárolóba. A fájl feltöltése után közös hozzáférésű jogosultságkódot (SAS) szerez be a blobhoz, és visszaadja az azt jelölő ResourceFile-objektumot.
 
 ```csharp
 string inputPath = Path.Combine(Environment.CurrentDirectory, "InputFiles");
@@ -184,7 +184,7 @@ string inputPath = Path.Combine(Environment.CurrentDirectory, "InputFiles");
 List<string> inputFilePaths = new List<string>(Directory.GetFileSystemEntries(inputPath, "*.mp4",
     SearchOption.TopDirectoryOnly));
 
-List<ResourceFile> inputFiles = await UploadResourceFilesToContainerAsync(
+List<ResourceFile> inputFiles = await UploadFilesToContainerAsync(
   blobClient,
   inputContainerName,
   inputFilePaths);
@@ -248,7 +248,7 @@ await job.CommitAsync();
 
 A minta tevékenységeket hoz létre a feladatban az `AddTasksAsync` metódus meghívásával, amely létrehoz egy listát a [CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask)-objektumokról. Minden `CloudTask` az ffmpeg futtatásával dolgoz fel egy bemeneti `ResourceFile`-objektumot egy [CommandLine](/dotnet/api/microsoft.azure.batch.cloudtask.commandline) tulajdonság segítségével. Az ffmpeg már korábban, a készlet létrehozásakor telepítve lett minden egyes csomóponton. Itt a parancssor az ffmpeg futtatásával konvertálja az egyes bemeneti MP4-videofájlokat MP3-hangfájllá.
 
-A minta a parancssor futtatása után létrehoz egy [OutputFile](/dotnet/api/microsoft.azure.batch.outputfile) objektumot az MP3-fájlhoz. A rendszer az összes tevékenység kimeneti fájlját (ebben az esetben egyet) feltölti egy, a társított Storage-fiókban lévő tárolóba a tevékenység [OutputFiles](/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles) tulajdonsága segítségével. A kódminta található, egy közös hozzáférésű jogosultságkód URL-címet a korábban (`outputContainerSasUrl`) lett lekérve, a kimeneti tárolóhoz írási hozzáférést biztosít. Vegye figyelembe a meghatározott feltételek a `outputFile` objektum. A feladat kimeneti fájl csak feltöltött a tárolóhoz, miután a feladat sikeresen befejeződött (`OutputFileUploadCondition.TaskSuccess`). Teljes [kódminta](https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial) további részleteket a githubon.
+A minta a parancssor futtatása után létrehoz egy [OutputFile](/dotnet/api/microsoft.azure.batch.outputfile) objektumot az MP3-fájlhoz. A rendszer az összes tevékenység kimeneti fájlját (ebben az esetben egyet) feltölti egy, a társított Storage-fiókban lévő tárolóba a tevékenység [OutputFiles](/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles) tulajdonsága segítségével. Korábban a kód mintájában egy közös hozzáférésű aláírási URL`outputContainerSasUrl`-címet () kapott, amely írási hozzáférést biztosít a kimeneti tárolóhoz. Jegyezze fel az `outputFile` objektumon beállított feltételeket. Egy tevékenységből származó kimeneti fájl csak a feladat sikeres befejeződése után lesz feltöltve a tárolóba (`OutputFileUploadCondition.TaskSuccess`). További részletekért tekintse meg a GitHubon a teljes [kód mintát](https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial) .
 
 Ezt követően a minta tevékenységeket ad a feladathoz az [AddTaskAsync](/dotnet/api/microsoft.azure.batch.joboperations.addtaskasync) metódussal, amely várólistára helyezi azokat a számítási csomópontokon való futtatáshoz.
 

@@ -1,100 +1,99 @@
 ---
-title: Virtuális hálózat és alhálózat-alapú hozzáférés az Azure Cosmos DB-fiók konfigurálása
-description: Ez a dokumentum az Azure Cosmos DB egy virtuális hálózati szolgáltatásvégpont beállításához szükséges lépéseket ismerteti.
-author: kanshiG
+title: A virtuális hálózat és az alhálózat-alapú hozzáférés konfigurálása a Azure Cosmos DB-fiókhoz
+description: Ez a dokumentum ismerteti a Azure Cosmos DB virtuális hálózati szolgáltatás végpontjának beállításához szükséges lépéseket.
+author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/06/2018
-ms.author: govindk
-ms.openlocfilehash: c0b1b415db9d8a530a495e09805ad9788c1edfbe
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 09/28/2019
+ms.author: mjbrown
+ms.openlocfilehash: 1c81045408a948820c8b9fef56e2c7d69cd39e08
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59785030"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71811918"
 ---
-# <a name="configure-access-from-virtual-networks-vnet"></a>Hozzáférés a virtuális hálózatok (VNet) konfigurálása
+# <a name="configure-access-from-virtual-networks-vnet"></a>Virtuális hálózatok (VNet) elérésének konfigurálása
 
-Konfigurálhatja az Azure Cosmos DB fiókok használatával engedélyezze a hozzáférést az Azure-beli virtuális hálózathoz csak egy adott alhálózatról. Az Azure Cosmos DB-fiókot, a kapcsolatok hozzáférés korlátozására a virtuális hálózatban lévő alhálózat:
- 
-1. Engedélyezze az alhálózat és virtuális hálózati azonosságának küldése az Azure Cosmos DB az alhálózat. Ez egy szolgáltatásvégpont engedélyezése az Azure Cosmos DB az adott alhálózat szerint érheti el.
+Azure Cosmos DB fiókokat konfigurálhat úgy, hogy az csak az Azure-beli virtuális hálózatok egy adott alhálózatáról engedélyezze a hozzáférést. Egy Azure Cosmos DB-fiókhoz való hozzáférés korlátozása egy virtuális hálózatban lévő alhálózattal létesített kapcsolattal:
 
-1. Adja hozzá a szabály az Azure Cosmos DB-fiókot, adja meg az alhálózatot, amelyből a fiókhoz elérhető forrásként.
+1. Engedélyezze az alhálózatnak az alhálózat és a virtuális hálózat identitásának küldését Azure Cosmos DB. Ezt úgy érheti el, ha engedélyezi egy szolgáltatási végpontot az adott alhálózat Azure Cosmos DBához.
+
+1. Adjon hozzá egy szabályt a Azure Cosmos DB-fiókban az alhálózat forrásként való megadásához, amely a fiók elérésére szolgál.
 
 > [!NOTE]
-> Az Azure Cosmos DB-fiók egy szolgáltatásvégpont engedélyezésekor egy alhálózaton, amely az Azure Cosmos DB eléri a forgalom forrását a nyilvános IP-címről vált, amennyiben egy virtuális hálózatot és alhálózatot. A forgalom váltás bármilyen Azure Cosmos DB-fiókot az alhálózatról elért vonatkozik. Ha az Azure Cosmos DB-fiókokhoz, hogy ez az alhálózat egy IP-alapú tűzfal, a szolgáltatás engedélyezve van az alhálózatról kérelmek már nem felel meg az IP-tűzfalszabályainak, és azokat Ön elutasította. 
+> Ha a Azure Cosmos DB-fiókhoz tartozó szolgáltatási végpont engedélyezve van az alhálózaton, akkor a forgalom forrása Azure Cosmos DB a nyilvános IP-címekről egy virtuális hálózatra és alhálózatra vált. A forgalom váltás minden olyan Azure Cosmos DB-fiókra vonatkozik, amely ebből az alhálózatból elérhető. Ha a Azure Cosmos DB-fiókok IP-alapú tűzfallal engedélyezik ezt az alhálózatot, a szolgáltatással kompatibilis alhálózatról érkező kérések már nem felelnek meg az IP-tűzfalszabályok feltételeinek, és el lesznek utasítva.
 >
-> További tudnivalókért tekintse meg a leírt lépéseket a [áttelepítés a virtuális hálózati hozzáférés-vezérlési lista IP-tűzfalszabály](#migrate-from-firewall-to-vnet) című szakaszát. 
+> További információ: az [áttelepítés IP-tűzfallal szabályból a virtuális hálózati hozzáférés-vezérlési listára](#migrate-from-firewall-to-vnet) című szakasz lépései.
 
-A következő szakaszok ismertetik az Azure Cosmos DB-fiók egy virtuális hálózati szolgáltatásvégpont beállítása.
+A következő szakaszok azt ismertetik, hogyan konfigurálható egy virtuális hálózati szolgáltatás végpontja egy Azure Cosmos DB-fiókhoz.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a id="configure-using-portal"></a>Egy szolgáltatásvégpont konfigurálása az Azure portal használatával
+## <a id="configure-using-portal"></a>Szolgáltatási végpont konfigurálása a Azure Portal használatával
 
-### <a name="configure-a-service-endpoint-for-an-existing-azure-virtual-network-and-subnet"></a>A meglévő Azure virtuális hálózat és alhálózat szolgáltatásvégpont beállítása
+### <a name="configure-a-service-endpoint-for-an-existing-azure-virtual-network-and-subnet"></a>Szolgáltatási végpont konfigurálása meglévő Azure-beli virtuális hálózathoz és alhálózathoz
 
-1. Az a **összes erőforrás** panelen, és keresse meg az Azure Cosmos DB-fiók, amely szeretné biztonságossá tenni.
+1. A **minden erőforrás** panelen keresse meg a védeni kívánt Azure Cosmos db fiókot.
 
-1. Válassza ki **tűzfalak és virtuális hálózatok** a beállítások menüben, és engedélyezze a hozzáférést **kiválasztott hálózatok**.
+1. Válassza a **tűzfalak és virtuális hálózatok** lehetőséget a beállítások menüben, és válassza a hozzáférés engedélyezése a **kiválasztott hálózatokból**lehetőséget.
 
-1. Egy meglévő virtuális hálózat alhálózatán, hozzáférés adható a **virtuális hálózatok**, jelölje be **meglévő Azure virtuális hálózat hozzáadása**.
+1. Ha hozzáférést szeretne biztosítani egy meglévő virtuális hálózat alhálózatához, a **virtuális hálózatok**területen válassza a **meglévő Azure-beli virtuális hálózat hozzáadása**elemet.
 
-1. Válassza ki a **előfizetés** , amely egy Azure virtual network hozzáadni kívánt. Válassza ki az Azure **virtuális hálózatok** és **alhálózatok** , hogy szeretné-e az Azure Cosmos DB-fiók eléréséhez. Majd **engedélyezése** kiválasztott hálózatokon a Szolgáltatásvégpontok engedélyezése "Microsoft.AzureCosmosDB". Ha elkészült, válassza ki a **Hozzáadás**. 
+1. Válassza ki azt az **előfizetést** , amelyből hozzá szeretné adni az Azure-beli virtuális hálózatot. Válassza ki azokat az Azure-beli **virtuális hálózatokat** és **alhálózatokat** , amelyeknek hozzáférést kíván biztosítani a Azure Cosmos db-fiókjához. Ezután válassza az **Engedélyezés** lehetőséget a kiválasztott hálózatok engedélyezéséhez a "Microsoft. AzureCosmosDB" szolgáltatási végpontokkal. Ha elkészült, válassza a **Hozzáadás**lehetőséget.
 
-   ![Válassza ki a virtuális hálózatot és alhálózatot](./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet.png)
+   ![Válassza ki a virtuális hálózatot és az alhálózatot](./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet.png)
 
+1. Ha a Azure Cosmos DB fiók engedélyezve van egy virtuális hálózatról való hozzáférésre, akkor csak a kiválasztott alhálózatról érkező forgalmat engedélyezi. A hozzáadott virtuális hálózatnak és alhálózatnak az alábbi képernyőképen látható módon kell megjelennie:
 
-1. Miután az Azure Cosmos DB-fiók engedélyezve van a virtuális hálózatról a hozzáférést, csak a kiválasztott alhálózat forgalmát engedélyezi. A virtuális hálózatot és alhálózatot, amelyet hozzáadott meg kell jelennie az alábbi képernyőképen látható módon:
-
-   ![virtuális hálózat és alhálózat sikeresen konfigurálva](./media/how-to-configure-vnet-service-endpoint/vnet-and-subnet-configured-successfully.png)
+   ![A virtuális hálózat és az alhálózat sikeresen konfigurálva](./media/how-to-configure-vnet-service-endpoint/vnet-and-subnet-configured-successfully.png)
 
 > [!NOTE]
-> Ahhoz, hogy a virtuális hálózati Szolgáltatásvégpontok, a következő előfizetés-engedélyek szükségesek:
->   * Előfizetés a virtual network szolgáltatással: Hálózati közreműködő
->   * Előfizetés az Azure Cosmos DB-fiók: A DocumentDB-fiókközreműködő
->   * Ha különböző előfizetésekhez tartoznak a virtuális hálózat és az Azure Cosmos DB-fiókot, ellenőrizze, hogy a virtuális hálózatot tartalmazó előfizetést is `Microsoft.DocumentDB` erőforrás-szolgáltató regisztrálva. Erőforrás-szolgáltató regisztrálásához lásd [Azure-erőforrás-szolgáltatókat és típusaikat](../azure-resource-manager/resource-manager-supported-services.md) cikk. 
+> A virtuális hálózati szolgáltatás végpontok engedélyezéséhez a következő előfizetési engedélyek szükségesek:
+>   * Előfizetés virtuális hálózattal: Hálózati közreműködő
+>   * Előfizetés Azure Cosmos DB fiókkal: DocumentDB-fiók közreműködői
+>   * Ha a virtuális hálózat és a Azure Cosmos DB fiók különböző előfizetésekben található, győződjön meg arról, hogy a virtuális hálózattal rendelkező előfizetéshez `Microsoft.DocumentDB` erőforrás-szolgáltató is regisztrálva van. Erőforrás-szolgáltató regisztrálásához tekintse meg az [Azure Resource Providers és types](../azure-resource-manager/resource-manager-supported-services.md) című cikket.
 
-Az alábbiakban az előfizetés regisztrálása az erőforrás-szolgáltató utasításait.
+Az előfizetés erőforrás-szolgáltatóval való regisztrálásának útmutatója.
 
-### <a name="configure-a-service-endpoint-for-a-new-azure-virtual-network-and-subnet"></a>Egy új Azure virtuális hálózat és alhálózat szolgáltatásvégpont beállítása
+### <a name="configure-a-service-endpoint-for-a-new-azure-virtual-network-and-subnet"></a>Szolgáltatási végpont konfigurálása új Azure-beli virtuális hálózat és alhálózat számára
 
-1. Az a **összes erőforrás** panelen, és keresse meg az Azure Cosmos DB-fiók, amely szeretné biztonságossá tenni.  
+1. A **minden erőforrás** panelen keresse meg a védeni kívánt Azure Cosmos db fiókot.  
 
-1. Válassza ki **tűzfalak és az Azure virtuális hálózatok** a beállítások menüben, és engedélyezze a hozzáférést **kiválasztott hálózatok**.  
+1. Válassza a **tűzfalak és az Azure-beli virtuális hálózatok** lehetőséget a beállítások menüben, és válassza a hozzáférés engedélyezése a **kiválasztott hálózatokból**lehetőséget.  
 
-1. Hozzáférést kell adni egy új Azure virtuális hálózat alatt **virtuális hálózatok**válassza **hozzáadása új virtuális hálózat**.  
+1. Ha hozzáférést szeretne biztosítani egy új Azure-beli virtuális hálózathoz, a **virtuális hálózatok**területen válassza az **új virtuális hálózat hozzáadása**lehetőséget.  
 
-1. Adja meg a hozzon létre egy új virtuális hálózatot, és válassza ki a szükséges adatokat **létrehozás**. Az alhálózat "Microsoft.AzureCosmosDB" engedélyezett szolgáltatásvégponttal jön.
+1. Adja meg az új virtuális hálózat létrehozásához szükséges adatokat, majd válassza a **Létrehozás**lehetőséget. Az alhálózat a "Microsoft. AzureCosmosDB" számára engedélyezett szolgáltatási végponttal lesz létrehozva.
 
-   ![Egy virtuális hálózatot és alhálózatot egy új virtuális hálózat kiválasztása](./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet-new-vnet.png)
+   ![Válasszon ki egy virtuális hálózatot és alhálózatot egy új virtuális hálózat számára](./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet-new-vnet.png)
 
-Az Azure Cosmos DB-fiók más Azure-szolgáltatásokhoz hasonlóan az Azure Search által használt, vagy a Stream analytics vagy a Power bi-ban érhető el, ha engedélyezi a hozzáférést kiválasztásával **belül nyilvános Azure-adatközpontok kapcsolatokat fogadjon**.
+Ha a Azure Cosmos DB-fiókot más Azure-szolgáltatások, például a Azure Search vagy a stream Analytics vagy a Power BI használatával érik el, akkor a hozzáférést a **globális Azure-adatközpontokban lévő kapcsolatok fogadása**lehetőség választásával engedélyezheti.
 
-Gondoskodjon arról, hogy hozzáférést az Azure Cosmos DB-metrikák a portálról, engedélyeznie kell **engedélyezze a hozzáférést az Azure portal** beállítások. Ezek a beállítások kapcsolatos további információkért tekintse meg a [egy IP-tűzfal konfigurálása](how-to-configure-firewall.md) cikk. Miután engedélyezte a hozzáférést, válassza ki a **mentése** a beállítások mentéséhez.
+Annak biztosítása érdekében, hogy a portálon Azure Cosmos DB metrikák hozzáférhessenek, engedélyeznie kell a **hozzáférést a Azure Portal** lehetőségek közül. Ha többet szeretne megtudni ezekről a lehetőségekről, tekintse meg az [IP-tűzfal konfigurálása](how-to-configure-firewall.md) című cikket. A hozzáférés engedélyezése után válassza a **Mentés** lehetőséget a beállítások mentéséhez.
 
-## <a id="remove-vnet-or-subnet"></a>Egy virtuális hálózat vagy alhálózat törlése 
+## <a id="remove-vnet-or-subnet"></a>Virtuális hálózat vagy alhálózat eltávolítása
 
-1. Az a **összes erőforrás** panelen, és keresse meg az Azure Cosmos DB-fiók, amelynek a Szolgáltatásvégpontok hozzárendelve.  
+1. A **minden erőforrás** panelen keresse meg azt a Azure Cosmos db fiókot, amelyhez hozzárendelte a szolgáltatási végpontokat.  
 
-2. Válassza ki **tűzfalak és virtuális hálózatok** beállítások menüjében.  
+2. A beállítások menüben válassza a **tűzfalak és virtuális hálózatok** lehetőséget.  
 
-3. Egy virtuális hálózat vagy alhálózat szabály eltávolításához jelölje ki **...**  mellett a virtuális hálózat vagy alhálózat, és válassza **eltávolítása**.
+3. Virtuális hálózat vagy alhálózat szabályának eltávolításához válassza a **...** lehetőséget a virtuális hálózat vagy alhálózat mellett, és válassza az **Eltávolítás**lehetőséget.
 
    ![Virtuális hálózat eltávolítása](./media/how-to-configure-vnet-service-endpoint/remove-a-vnet.png)
 
-4.  Válassza ki **mentése** alkalmazza a módosításokat.
+4. A módosítások alkalmazásához válassza a **Mentés** lehetőséget.
 
-## <a id="configure-using-powershell"></a>Egy szolgáltatásvégpont konfigurálása az Azure PowerShell-lel
+## <a id="configure-using-powershell"></a>Szolgáltatási végpont konfigurálása Azure PowerShell használatával
 
 > [!NOTE]
-> Ha a PowerShell vagy az Azure CLI használata esetén mindenképpen adja meg az IP-szűrők és a virtuális hálózati hozzáférés-vezérlési listák teljes listáját a paraméterek, nem csak az címkéket is hozzá kell adni.
+> Ha a PowerShellt vagy az Azure CLI-t használja, ügyeljen arra, hogy az IP-szűrők és a virtuális hálózati ACL-ek teljes listáját adja meg a paraméterekben, nem csak azokat, amelyeket hozzá kell adnia.
 
-Használja az alábbi lépéseket egy végpontot egy Azure Cosmos DB-fiók konfigurálása az Azure PowerShell használatával:  
+A következő lépésekkel konfigurálhatja a szolgáltatási végpontot egy Azure Cosmos DB-fiókra a Azure PowerShell használatával:  
 
-1. Telepítés [Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/install-Az-ps) és [jelentkezzen be a](https://docs.microsoft.com/powershell/azure/authenticate-azureps).  
+1. Telepítse a [Azure PowerShellt](https://docs.microsoft.com/powershell/azure/install-Az-ps) , és [Jelentkezzen be](https://docs.microsoft.com/powershell/azure/authenticate-azureps).  
 
-1. A virtuális hálózat egy meglévő alhálózat szolgáltatásvégpont engedélyezése.  
+1. Engedélyezze a szolgáltatási végpontot egy virtuális hálózat meglévő alhálózatához.  
 
    ```powershell
    $rgname = "<Resource group name>"
@@ -110,7 +109,7 @@ Használja az alábbi lépéseket egy végpontot egy Azure Cosmos DB-fiók konfi
     -ServiceEndpoint "Microsoft.AzureCosmosDB" | Set-AzVirtualNetwork
    ```
 
-1. Virtuális hálózat adatai olvashatók be.
+1. Virtuális hálózati adatok beolvasása.
 
    ```powershell
    $vnProp = Get-AzVirtualNetwork `
@@ -118,7 +117,7 @@ Használja az alábbi lépéseket egy végpontot egy Azure Cosmos DB-fiók konfi
      -ResourceGroupName $rgName
    ```
 
-1. Az Azure Cosmos DB-fiók tulajdonságainak beolvasása a következő parancsmagot:  
+1. A Azure Cosmos DB fiók tulajdonságainak beolvasása a következő parancsmag futtatásával:  
 
    ```powershell
    $apiVersion = "2015-04-08"
@@ -131,7 +130,7 @@ Használja az alábbi lépéseket egy végpontot egy Azure Cosmos DB-fiók konfi
      -Name $acctName
    ```
 
-1. A későbbi felhasználás céljára változók inicializálása. Beállítani az összes változót a meglévő fiók-definíciót.
+1. A változók későbbi használatra való inicializálása. Állítsa be az összes változót a meglévő fiók definíciójában.
 
    ```powershell
    $locations = @()
@@ -152,7 +151,7 @@ Használja az alábbi lépéseket egy végpontot egy Azure Cosmos DB-fiók konfi
    }
    ```
 
-1. Azure Cosmos DB-fiók tulajdonságainak frissítése az új konfigurációval a következő parancsmag futtatásával: 
+1. Frissítse Azure Cosmos DB fiók tulajdonságait az új konfigurációval a következő parancsmagok futtatásával: 
 
    ```powershell
    $cosmosDBProperties = @{
@@ -172,7 +171,7 @@ Használja az alábbi lépéseket egy végpontot egy Azure Cosmos DB-fiók konfi
      -Properties $CosmosDBProperties
    ```
 
-1. Győződjön meg arról, hogy a virtuális hálózati szolgáltatásvégpontot az előző lépésben beállított frissül az Azure Cosmos DB-fiókot az alábbi parancsot futtassa:
+1. Futtassa a következő parancsot annak ellenőrzéséhez, hogy a Azure Cosmos DB-fiókja frissítve lett-e az előző lépésben konfigurált Virtual Network Service-végponttal:
 
    ```powershell
    $UpdatedcosmosDBConfiguration = Get-AzResource `
@@ -184,44 +183,121 @@ Használja az alábbi lépéseket egy végpontot egy Azure Cosmos DB-fiók konfi
    $UpdatedcosmosDBConfiguration.Properties
    ```
 
-## <a id="configure-using-cli"></a>Egy szolgáltatásvégpont konfigurálása az Azure CLI használatával 
+## <a id="configure-using-cli"></a>Szolgáltatási végpont konfigurálása az Azure CLI használatával
 
-1. A virtuális hálózatban lévő alhálózat szolgáltatásvégpont engedélyezése.
+Az Azure Cosmos-fiókok a szolgáltatás-végpontokhoz konfigurálhatók, amikor később jönnek létre vagy frissülnek, ha az alhálózat már konfigurálva van. A szolgáltatási végpontok akkor is engedélyezhetők a Cosmos-fiókon, ha az alhálózat még nincs konfigurálva, és a későbbiekben is működni fog, ha az alhálózat később van konfigurálva. Ez a rugalmasság lehetővé teszi azoknak a rendszergazdáknak, akik nem férnek hozzá a Cosmos-fiókhoz és a virtuális hálózati erőforrásokhoz, hogy a konfigurációk egymástól függetlenek legyenek.
 
-1. Frissítse a meglévő Azure Cosmos DB-fiók alhálózati hozzáférés-vezérlési listák (ACL).
+### <a name="create-a-new-cosmos-account-and-connect-it-to-a-back-end-subnet-for-a-new-virtual-network"></a>Új Cosmos-fiók létrehozása és egy új virtuális hálózat háttérbeli alhálózathoz való kapcsolódása
 
-   ```azurecli-interactive
+Ebben a példában a virtuális hálózatot és az alhálózatot olyan szolgáltatási végpontok hozzák létre, amelyek mind a létrehozáskor engedélyezve vannak.
 
-   name="<Azure Cosmos DB account name>"
-   resourceGroupName="<Resource group name>"
+```azurecli-interactive
+# Create an Azure Cosmos Account with a service endpoint connected to a backend subnet
 
-   az cosmosdb update \
-    --name $name \
-    --resource-group $resourceGroupName \
-    --enable-virtual-network true \
-    --virtual-network-rules "/subscriptions/testsub/resourceGroups/testRG/providers/Microsoft.Network/virtualNetworks/testvnet/subnets/frontend"
-   ```
+# Resource group and Cosmos account variables
+resourceGroupName='MyResourceGroup'
+location='West US 2'
+accountName='mycosmosaccount'
 
-1. Hozzon létre egy új Azure Cosmos DB-fiókot alhálózati ACL-ek.
+# Variables for a new Virtual Network with two subnets
+vnetName='myVnet'
+frontEnd='FrontEnd'
+backEnd='BackEnd'
 
-   ```azurecli-interactive
-   az cosmosdb create \
-    --name $name \
-    --kind GlobalDocumentDB \
-    --resource-group $resourceGroupName \
-    --max-interval 10 \
-    --max-staleness-prefix 200 \
-    --enable-virtual-network true \
-    --virtual-network-rules "/subscriptions/testsub/resourceGroups/testRG/providers/Microsoft.Network/virtualNetworks/testvnet/subnets/default"
-   ```
+# Create a resource group
+az group create -n $resourceGroupName -l $location
 
-## <a id="migrate-from-firewall-to-vnet"></a>Áttelepítés a virtuális hálózat ACL-t egy IP-tűzfalszabály 
+# Create a virtual network with a front-end subnet
+az network vnet create \
+   -n $vnetName \
+   -g $resourceGroupName \
+   --address-prefix 10.0.0.0/16 \
+   --subnet-name $frontEnd \
+   --subnet-prefix 10.0.1.0/24
 
-Kövesse az alábbi lépéseket csak az Azure Cosmos DB-fiókokat a meglévő IP-tűzfalszabályainak, amelyek lehetővé teszik egy alhálózatot, ha meg szeretné használni a virtuális hálózat és alhálózat-alapú hozzáférés-vezérlési helyett egy IP-tűzfalszabály.
+# Create a back-end subnet with service endpoints enabled for Cosmos DB
+az network vnet subnet create \
+   -n $backEnd \
+   -g $resourceGroupName \
+   --address-prefix 10.0.2.0/24 \
+   --vnet-name $vnetName \
+   --service-endpoints Microsoft.AzureCosmosDB
 
-Miután egy végpontot egy Azure Cosmos DB-fiók egy alhálózathoz van kapcsolva, a kérelmek egy nyilvános IP-cím helyett virtuális hálózatot és alhálózatot információt tartalmazó adatforrás lesznek elküldve. Ezek a kérelmek egy IP-szűrő nem egyezik. A forrás kapcsoló hoz engedélyezett szolgáltatásvégponttal rendelkező az alhálózatról elért összes Azure Cosmos DB-fiókok esetében történik. Állásidő elkerülése érdekében használja az alábbi lépéseket:
+svcEndpoint=$(az network vnet subnet show -g $resourceGroupName -n $backEnd --vnet-name $vnetName --query 'id' -o tsv)
 
-1. Az Azure Cosmos DB-fiók tulajdonságainak beolvasása a következő parancsmagot:
+# Create a Cosmos DB account with default values and service endpoints
+az cosmosdb create \
+   -n $accountName \
+   -g $resourceGroupName \
+   --enable-virtual-network true \
+   --virtual-network-rules $svcEndpoint
+```
+
+### <a name="connect-and-configure-a-cosmos-account-to-a-back-end-subnet-independently"></a>Cosmos-fiók összekapcsolása és konfigurálása a háttérbeli alhálózatokhoz egymástól függetlenül
+
+Ebből a példából megtudhatja, hogyan csatlakoztatható egy Azure Cosmos-fiók egy meglévő új virtuális hálózathoz, ahol az alhálózat még nincs konfigurálva a szolgáltatási végpontokhoz. Ezt a `--ignore-missing-vnet-service-endpoint` paraméter használatával végezheti el. Ez lehetővé teszi, hogy a Cosmos-fiók konfigurációja hiba nélkül befejeződjön, mielőtt a virtuális hálózat alhálózatának konfigurációja befejeződik. Az alhálózat-konfiguráció befejezése után a Cosmos-fiók elérhető lesz a konfigurált alhálózaton keresztül.
+
+```azurecli-interactive
+# Create an Azure Cosmos Account with a service endpoint connected to a backend subnet
+# that is not yet enabled for service endpoints.
+
+# Resource group and Cosmos account variables
+resourceGroupName='MyResourceGroup'
+location='West US 2'
+accountName='mycosmosaccount'
+
+# Variables for a new Virtual Network with two subnets
+vnetName='myVnet'
+frontEnd='FrontEnd'
+backEnd='BackEnd'
+
+# Create a resource group
+az group create -n $resourceGroupName -l $location
+
+# Create a virtual network with a front-end subnet
+az network vnet create \
+   -n $vnetName \
+   -g $resourceGroupName \
+   --address-prefix 10.0.0.0/16 \
+   --subnet-name $frontEnd \
+   --subnet-prefix 10.0.1.0/24
+
+# Create a back-end subnet but without configuring service endpoints (--service-endpoints Microsoft.AzureCosmosDB)
+az network vnet subnet create \
+   -n $backEnd \
+   -g $resourceGroupName \
+   --address-prefix 10.0.2.0/24 \
+   --vnet-name $vnetName
+
+svcEndpoint=$(az network vnet subnet show -g $resourceGroupName -n $backEnd --vnet-name $vnetName --query 'id' -o tsv)
+
+# Create a Cosmos DB account with default values
+az cosmosdb create -n $accountName -g $resourceGroupName
+
+# Add the virtual network rule but ignore the missing service endpoint on the subnet
+az cosmosdb network-rule add \
+   -n $accountName \
+   -g $resourceGroupName \
+   --virtual-network $vnetName \
+   --subnet svcEndpoint \
+   --ignore-missing-vnet-service-endpoint true
+
+read -p'Press any key to now configure the subnet for service endpoints'
+
+az network vnet subnet update \
+   -n $backEnd \
+   -g $resourceGroupName \
+   --vnet-name $vnetName \
+   --service-endpoints Microsoft.AzureCosmosDB
+```
+
+## <a id="migrate-from-firewall-to-vnet"></a>Áttelepítés IP-tűzfalszabály alapján virtuális hálózati ACL-re
+
+Az alábbi lépéseket csak olyan Azure Cosmos DB fiókok esetében alkalmazza, amelyek egy alhálózatot engedélyező meglévő IP-tűzfalszabályok, ha a virtuális hálózatot és az alhálózat-alapú ACL-eket szeretné használni IP-tűzfalszabály helyett.
+
+Miután egy Azure Cosmos DB-fiókhoz tartozó szolgáltatási végpont be van kapcsolva egy alhálózathoz, a rendszer egy olyan forrással küldi el a kérelmeket, amely egy nyilvános IP-cím helyett virtuális hálózatot és alhálózati adatokat tartalmaz. Ezek a kérések nem egyeznek meg az IP-szűrővel. Ez a forrás kapcsoló minden olyan Azure Cosmos DB, amely az alhálózatról elérhető, és egy szolgáltatás-végpont engedélyezve van. Az állásidő megelőzéséhez kövesse az alábbi lépéseket:
+
+1. A Azure Cosmos DB fiók tulajdonságainak beolvasása a következő parancsmag futtatásával:
 
    ```powershell
    $apiVersion = "2015-04-08"
@@ -234,7 +310,7 @@ Miután egy végpontot egy Azure Cosmos DB-fiók egy alhálózathoz van kapcsolv
      -Name $acctName
    ```
 
-1. A későbbi használat céljából változók inicializálása. Beállítani az összes változót a meglévő fiók-definíciót. A virtuális hálózat ACL hozzáadása az alhálózatról elért összes Azure Cosmos DB-fiók `ignoreMissingVNetServiceEndpoint` jelzőt.
+1. Inicializálja a változókat, hogy később használhassák őket. Állítsa be az összes változót a meglévő fiók definíciójában. Adja hozzá a virtuális hálózati ACL-t az alhálózatról `ignoreMissingVNetServiceEndpoint` jelölővel elért összes Azure Cosmos DB fiókhoz.
 
    ```powershell
    $locations = @()
@@ -258,7 +334,7 @@ Miután egy végpontot egy Azure Cosmos DB-fiók egy alhálózathoz van kapcsolv
    }
    ```
 
-1. Azure Cosmos DB-fiók tulajdonságainak frissítése az új konfigurációval a következő parancsmag futtatásával:
+1. Frissítse Azure Cosmos DB fiók tulajdonságait az új konfigurációval a következő parancsmagok futtatásával:
 
    ```powershell
    $cosmosDBProperties = @{
@@ -278,11 +354,11 @@ Miután egy végpontot egy Azure Cosmos DB-fiók egy alhálózathoz van kapcsolv
       -Properties $CosmosDBProperties
    ```
 
-1. 1 – 3. lépést ismételje meg az alhálózatról elérhető összes Azure Cosmos DB-fiók.
+1. Ismételje meg a 1-3. lépést az alhálózatból elérhető összes Azure Cosmos DB fiók esetében.
 
-1.  Várjon 15 percig, és frissítse az alhálózat a szolgáltatásvégpont engedélyezése.
+1.  Várjon 15 percet, majd frissítse az alhálózatot a szolgáltatás végpontjának engedélyezéséhez.
 
-1.  A virtuális hálózat egy meglévő alhálózat szolgáltatásvégpont engedélyezése.
+1.  Engedélyezze a szolgáltatási végpontot egy virtuális hálózat meglévő alhálózatához.
 
     ```powershell
     $rgname= "<Resource group name>"
@@ -298,8 +374,8 @@ Miután egy végpontot egy Azure Cosmos DB-fiók egy alhálózathoz van kapcsolv
        -ServiceEndpoint "Microsoft.AzureCosmosDB" | Set-AzVirtualNetwork
     ```
 
-1. Távolítsa el az alhálózat IP-tűzfalszabály.
+1. Távolítsa el az alhálózat IP-tűzfalszabály-szabályát.
 
 ## <a name="next-steps"></a>További lépések
 
-* Tűzfal beállítása az Azure Cosmos DB: a [tűzfal-támogatás](firewall-support.md) cikk.
+* Ha Azure Cosmos DB tűzfalat szeretne konfigurálni, tekintse meg a [tűzfal támogatását](firewall-support.md) ismertető cikket.

@@ -1,553 +1,578 @@
-items:
 - name: Stream Analytics-dokumentáció
   href: index.yml
 - name: Áttekintés
   items:
-  - name: Mi a Stream Analytics?
-    href: stream-analytics-introduction.md
+    - name: Mi a Stream Analytics?
+      href: stream-analytics-introduction.md
+    - name: Teljes körű megoldásminták
+      href: stream-analytics-solution-patterns.md
 - name: Gyors útmutatók
+  expanded: true
   items:
-  - name: Feladat létrehozása – Azure Portal
-    href: stream-analytics-quick-create-portal.md
-  - name: Feladat létrehozása – PowerShell
-    href: stream-analytics-quick-create-powershell.md
-  - name: Feladat létrehozása – Visual Studio
-    href: stream-analytics-quick-create-vs.md
+    - name: Feladat létrehozása – Azure Portal
+      href: stream-analytics-quick-create-portal.md
+    - name: Feladat létrehozása – PowerShell
+      href: stream-analytics-quick-create-powershell.md
+    - name: Feladat létrehozása – Visual Studio
+      href: stream-analytics-quick-create-vs.md
+    - name: Feladat létrehozása – Visual Studio Code
+      href: quick-create-vs-code.md
 - name: Oktatóanyagok
   items:
-  - name: 1 – Feladat létrehozása/kezelése
-    href: stream-analytics-manage-job.md
-  - name: 2 – Az Azure Functions futtatása
-    href: stream-analytics-with-azure-functions.md
-  - name: 3 – JavaScript UDF futtatása
-    href: stream-analytics-javascript-user-defined-functions.md
-  - name: 4 – Üzembe helyezés CI/CD-vel az Azure Pipelinesban
-    href: stream-analytics-tools-visual-studio-cicd-vsts.md
-  - name: 5 – C# UDF futtatása az IoT Edge-ben
-    href: stream-analytics-edge-csharp-udf.md
+    - name: 1 – Feladat létrehozása/kezelése
+      href: stream-analytics-manage-job.md
+    - name: 2 – Az Azure Functions futtatása
+      href: stream-analytics-with-azure-functions.md
+    - name: 3 – JavaScript UDF futtatása
+      href: stream-analytics-javascript-user-defined-functions.md
+    - name: 4 – Üzembe helyezés CI/CD-vel az Azure Pipelinesban
+      href: stream-analytics-tools-visual-studio-cicd-vsts.md
+    - name: '5 – C# UDF futtatása az IoT Edge-ben'
+      href: stream-analytics-edge-csharp-udf.md
 - name: Példák
   items:
-  - name: Kódminták
-    href: https://azure.microsoft.com/resources/samples/?service=stream-analytics
+    - name: Kódminták
+      href: 'https://azure.microsoft.com/resources/samples/?service=stream-analytics'
 - name: Alapelvek
   items:
-  - name: Feladatok bemenettípusai
-    items:
-    - name: Bemenetek áttekintése
-      href: stream-analytics-add-inputs.md
-    - name: Streamadat típusú bemenetek
-      href: stream-analytics-define-inputs.md
-    - name: Referenciaadat típusú bemenetek
-      href: stream-analytics-use-reference-data.md
-  - name: Feladatok kimenettípusai
-    items:
-    - name: Kimenetek áttekintése
-      href: stream-analytics-define-outputs.md
-    - name: Kimenet a Cosmos DB-be
-      href: stream-analytics-documentdb-output.md
-    - name: Kimenet az Azure SQL DB-be
-      href: stream-analytics-sql-output-perf.md
-    - name: Blob egyéni elérési útjára vonatkozó minták
-      href: stream-analytics-custom-path-patterns-blob-storage-output.md
-  - name: Feladat állapotai
-    href: job-states.md
-  - name: Ablakfunkciók
-    href: stream-analytics-window-functions.md
-  - name: Térinformatikai funkciók
-    href: stream-analytics-geospatial-functions.md
-  - name: Kompatibilitási szint
-    href: stream-analytics-compatibility-level.md
-  - name: Gyakori lekérdezési minták
-    href: stream-analytics-stream-analytics-query-patterns.md
-  - name: JSON- és AVRO-adatok elemzése
-    href: stream-analytics-parsing-json.md
-  - name: Időkezelési megfontolások
-    href: stream-analytics-time-handling.md
-  - name: Ellenőrzőpont és visszajátszás
-    href: stream-analytics-concepts-checkpoint-replay.md
-  - name: Hibakezelési szabályzat
-    href: stream-analytics-output-error-policy.md
-- name: Útmutatók
-  items:
-  - name: Kezelés
-    items:
-    - name: Hitelesítő adatok frissítése
-      href: stream-analytics-login-credentials-inputs-outputs.md
-    - name: Eseményrendező szabályzatok konfigurálása
-      href: event-ordering.md
-    - name: Riasztások konfigurálása
-      href: stream-analytics-set-up-alerts.md
-    - name: Feladat elindítása
-      href: start-job.md
-    - name: Feladat tesztelése
-      href: stream-analytics-test-query.md
-    - name: Eredmények megtekintése az irányítópulton
-      href: stream-analytics-power-bi-dashboard.md
-    - name: Feladat törlése
-      href: stream-analytics-clean-up-your-job.md
-    - name: Feladatok párosítása a megbízhatóság érdekében
-      href: stream-analytics-job-reliability.md
-    - name: Hitelesítés felügyelt identitással
-      href: stream-analytics-managed-identities-adls.md
-    - name: SQL-referenciaadatok használata
-      href: sql-reference-data.md
-  - name: Megoldások kiépítése
-    items:
-    - name: Twitter-hangulatelemzés
-      href: stream-analytics-twitter-sentiment-analysis-trends.md
-    - name: Csalások valós idejű észlelése
-      href: stream-analytics-real-time-fraud-detection.md
-    - name: Feladatok futtatása az IoT Edge-en
-      href: stream-analytics-edge.md
-    - name: Fizetőkapu érzékelőadatainak elemzése
-      href: stream-analytics-build-an-iot-solution-using-stream-analytics.md
-    - name: JavaScript UDA futtatása
-      href: stream-analytics-javascript-user-defined-aggregates.md
-    - name: Nagy gyakoriságú kereskedelem
-      href: stream-analytics-high-frequency-trading.md
-    - name: IoT-streamadatok feldolgozása
-      href: stream-analytics-get-started-with-azure-stream-analytics-to-process-data-from-iot-devices.md
-    - name: Küszöbérték-alapú szabályok
-      href: stream-analytics-threshold-based-rules.md
-    - name: Kafka-események feldolgozása
-      href: ../event-hubs/event-hubs-kafka-stream-analytics.md
-      maintainContext: true
-    - name: Térinformatikai forgatókönyvek
-      href: geospatial-scenarios.md
-  - name: Figyelés
-    items:
-    - name: Feladatok monitorozása – Azure Portal
-      href: stream-analytics-monitoring.md
-    - name: Feladatok monitorozása – PowerShell
-      href: stream-analytics-monitor-and-manage-jobs-use-powershell.md
-    - name: Feladatok monitorozása – Azure .NET SDK
-      href: stream-analytics-monitor-jobs.md
-    - name: Feladatok monitorozása – Visual Studio
-      href: stream-analytics-monitor-jobs-use-vs.md
-  - name: Méretezés
-    items:
-    - name: Skálázás streamelési egységekkel
-      href: stream-analytics-streaming-unit-consumption.md
-    - name: Skálázás párhuzamosítással
+    - name: Streaming Analytics-technológia kiválasztása
+      href: streaming-technologies.md
+    - name: Feladatfejlesztési eszköz kiválasztása
+      href: feature-comparison.md
+    - name: Feladatok bemenettípusai
       items:
-      - name: Lekérdezések párhuzamosítása
-        href: stream-analytics-parallelization.md
-      - name: Az átviteli sebesség növelése
-        href: stream-analytics-scale-jobs.md
-    - name: Skálázás Machine Learning-függvényekkel
-      href: stream-analytics-scale-with-machine-learning-functions.md
-  - name: Automatizálás
-    items:
-    - name: A .NET SDK használata
-      href: stream-analytics-dotnet-management-sdk.md
-    - name: Az Azure PowerShell használata
-      href: https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick
-    - name: API használata az IoT Edge-feladatokhoz
-      href: stream-analytics-cicd-api.md
-  - name: Visual Studio-eszközök
-    items:
-    - name: Eszközök telepítése
-      href: stream-analytics-tools-for-visual-studio-install.md
-    - name: Tesztelés mintaadatokkal
-      href: stream-analytics-vs-tools-local-run.md
-    - name: Tesztelés élő adatokkal
-      href: stream-analytics-live-data-local-testing.md
-    - name: Feladatok megtekintése a Visual Studióban
-      href: stream-analytics-vs-tools.md
-    - name: Edge-feladatok fejlesztése
-      href: stream-analytics-tools-for-visual-studio-edge-jobs.md
-    - name: CI-/CD-folyamat beállítása
-      href: stream-analytics-tools-for-visual-studio-cicd.md
-    - name: .NET UDF írása az Edge-hez
-      href: stream-analytics-edge-csharp-udf-methods.md
-  - name: Hibaelhárítás
-    items:
-    - name: Input (Bemenet)
-      href: stream-analytics-troubleshoot-input.md
-    - name: Kimenet
-      href: stream-analytics-troubleshoot-output.md
-    - name: Lekérdezési logika
-      href: stream-analytics-troubleshoot-query.md
-    - name: Tevékenység és diagnosztikai naplók
-      href: stream-analytics-job-diagnostic-logs.md
-  - name: Integráció a Machine Learninggel
-    items:
-    - name: Hangulatelemzés Machine Learning-modellekkel
-      href: stream-analytics-machine-learning-integration-tutorial.md
-    - name: Rendellenességek észlelése
-      href: stream-analytics-machine-learning-anomaly-detection.md
-    - name: REST API-k használata
-      href: stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md
-  - name: Hibakeresés feladatábra segítségével
-    href: stream-analytics-job-diagram-with-metrics.md
-- name: A Stream Analytics lekérdezési nyelve
-  items:
-  - name: Beépített függvények
-    items:
-    - name: Beépített függvények áttekintése
-      href: /stream-analytics-query/built-in-functions-azure-stream-analytics
-      maintainContext: true
-    - name: Aggregátumfüggvények
+        - name: Bemenetek áttekintése
+          href: stream-analytics-add-inputs.md
+        - name: Streamadat típusú bemenetek
+          href: stream-analytics-define-inputs.md
+        - name: Referenciaadat típusú bemenetek
+          href: stream-analytics-use-reference-data.md
+    - name: Feladatok kimenettípusai
       items:
-      - name: Aggregátumfüggvények áttekintése
-        href: /stream-analytics-query/aggregate-functions-azure-stream-analytics
-        maintainContext: true
-      - name: AVG
-        href: /stream-analytics-query/avg-azure-stream-analytics
-        maintainContext: true
-      - name: COUNT
-        href: /stream-analytics-query/count-azure-stream-analytics
-        maintainContext: true
-      - name: Collect
-        href: /stream-analytics-query/collect-azure-stream-analytics
-        maintainContext: true
-      - name: CollectTOP
-        href: /stream-analytics-query/collecttop-azure-stream-analytics
-        maintainContext: true
-      - name: MAX
-        href: /stream-analytics-query/max-azure-stream-analytics
-        maintainContext: true
-      - name: MIN
-        href: /stream-analytics-query/min-azure-stream-analytics
-        maintainContext: true
-      - name: Percentile_Cont
-        href: /stream-analytics-query/percentile-cont-azure-stream-analytics
-        maintainContext: true
-      - name: Percentile_Disc
-        href: /stream-analytics-query/percentile-disc-azure-stream-analytics
-        maintainContext: true
-      - name: STDEV
-        href: /stream-analytics-query/stdev-azure-stream-analytics
-        maintainContext: true
-      - name: STDEVP
-        href: /stream-analytics-query/stdevp-azure-stream-analytics
-        maintainContext: true
-      - name: SUM
-        href: /stream-analytics-query/sum-azure-stream-analytics
-        maintainContext: true
-      - name: TopOne
-        href: /stream-analytics-query/topone-azure-stream-analytics
-        maintainContext: true
-      - name: VAR
-        href: /stream-analytics-query/var-azure-stream-analytics
-        maintainContext: true
-      - name: VARP
-        href: /stream-analytics-query/varp-azure-stream-analytics
-        maintainContext: true
-    - name: Analitikai függvények
-      items:
-      - name: Analitikai függvények áttekintése
-        href: /stream-analytics-query/analytic-functions-azure-stream-analytics
-        maintainContext: true
-      - name: AnomalyDetection_SpikeAndDip
-        href: /stream-analytics-query/anomalydetection-spikeanddip-azure-stream-analytics
-        maintainContext: true
-      - name: AnomalyDetection_ChangePoint
-        href: /stream-analytics-query/anomalydetection-changepoint-azure-stream-analytics
-        maintainContext: true
-      - name: ISFIRST
-        href: /stream-analytics-query/isfirst-azure-stream-analytics
-        maintainContext: true
-      - name: LAG
-        href: /stream-analytics-query/lag-azure-stream-analytics
-        maintainContext: true
-      - name: LAST
-        href: /stream-analytics-query/last-azure-stream-analytics
-        maintainContext: true
-    - name: Tömb függvények
-      items:
-      - name: Tömb függvények áttekintése
-        href: /stream-analytics-query/array-functions-stream-analytics
-        maintainContext: true
-      - name: GetArrayLength
-        href: /stream-analytics-query/getarraylength-azure-stream-analytics
-        maintainContext: true
-      - name: GetArrayElement
-        href: /stream-analytics-query/getarrayelement-azure-stream-analytics
-        maintainContext: true
-      - name: GetArrayElements
-        href: /stream-analytics-query/getarrayelements-azure-stream-analytics
-        maintainContext: true
-    - name: Konverziós függvények
-      items:
-      - name: Konverziós függvények áttekintése
-        href: /stream-analytics-query/conversion-functions-azure-stream-analytics
-        maintainContext: true
-      - name: CAST
-        href: /stream-analytics-query/cast-azure-stream-analytics
-        maintainContext: true
-      - name: GetType
-        href: /stream-analytics-query/gettype-azure-stream-analytics
-        maintainContext: true
-      - name: TRY_CAST
-        href: /stream-analytics-query/try-cast-azure-stream-analytics
-        maintainContext: true
-    - name: Dátum és időpont függvényei
-      items:
-      - name: Dátum és időpont függvényeinek áttekintése
-        href: /stream-analytics-query/date-and-time-functions-azure-stream-analytics
-        maintainContext: true
-      - name: DATEADD
-        href: /stream-analytics-query/dateadd-azure-stream-analytics
-        maintainContext: true
-      - name: DATEDIFF
-        href: /stream-analytics-query/datediff-azure-stream-analytics
-        maintainContext: true
-      - name: DATENAME
-        href: /stream-analytics-query/datename-azure-stream-analytics
-        maintainContext: true
-      - name: DATEPART
-        href: /stream-analytics-query/datepart-azure-stream-analytics
-        maintainContext: true
-      - name: DATETIMEFROMPARTS
-        href: /stream-analytics-query/datetimefromparts-azure-stream-analytics
-        maintainContext: true
-      - name: DAY
-        href: /stream-analytics-query/day-azure-stream-analytics
-        maintainContext: true
-      - name: MONTH
-        href: /stream-analytics-query/month-azure-stream-analytics
-        maintainContext: true
-      - name: YEAR
-        href: /stream-analytics-query/year-azure-stream-analytics
-        maintainContext: true
-    - name: Térinformatikai függvények
-      items:
-      - name: Térinformatikai függvények áttekintése
-        href: /stream-analytics-query/geospatial-functions
-        maintainContext: true
-      - name: CreateLineString
-        href: /stream-analytics-query/createlinestring
-        maintainContext: true
-      - name: CreatePoint
-        href: /stream-analytics-query/createpoint
-        maintainContext: true
-      - name: CreatePolygon
-        href: /stream-analytics-query/createpolygon
-        maintainContext: true
-      - name: ST_DISTANCE
-        href: /stream-analytics-query/st-distance
-        maintainContext: true
-      - name: ST_OVERLAPS
-        href: /stream-analytics-query/st-overlaps
-        maintainContext: true
-      - name: ST_INTERSECTS
-        href: /stream-analytics-query/st-intersects
-        maintainContext: true
-      - name: ST_WITHIN
-        href: /stream-analytics-query/st-within
-        maintainContext: true
-    - name: Bemeneti metaadatok függvényei
-      items:
-      - name: Bemeneti metaadatok függvényeinek áttekintése
-        href: /stream-analytics-query/input-metadata-functions
-        maintainContext: true
-      - name: GetMetadataPropertyValue
-        href: /stream-analytics-query/getmetadatapropertyvalue
-        maintainContext: true
-    - name: Matematika függvények
-      items:
-      - name: Matematika függvények áttekintése
-        href: /stream-analytics-query/mathematical-functions-azure-stream-analytics
-        maintainContext: true
-      - name: ABS
-        href: /stream-analytics-query/abs-azure-stream-analytics
-        maintainContext: true
-      - name: CEILING
-        href: /stream-analytics-query/ceiling-azure-stream-analytics
-        maintainContext: true
-      - name: EXP
-        href: /stream-analytics-query/exp-azure-stream-analytics
-        maintainContext: true
-      - name: FLOOR
-        href: /stream-analytics-query/floor-azure-stream-analytics
-        maintainContext: true
-      - name: POWER
-        href: /stream-analytics-query/power-azure-stream-analytics
-        maintainContext: true
-      - name: ROUND
-        href: /stream-analytics-query/round-azure-stream-analytics.md
-        maintainContext: true
-      - name: SIGN
-        href: /stream-analytics-query/sign-azure-stream-analytics
-        maintainContext: true
-      - name: SQUARE
-        href: /stream-analytics-query/square-azure-stream-analytics
-        maintainContext: true
-      - name: SQRT
-        href: /stream-analytics-query/sqrt-azure-stream-analytics
-        maintainContext: true
-    - name: Rekordfüggvények
-      items:
-      - name: Rekordfüggvények áttekintése
-        href: /stream-analytics-query/record-functions-azure-stream-analytics
-        maintainContext: true
-      - name: GetRecordProperties
-        href: /stream-analytics-query/getrecordproperties-azure-stream-analytics
-        maintainContext: true
-      - name: GetRecordPropertyValue
-        href: /stream-analytics-query/getrecordpropertyvalue-azure-stream-analytics
-        maintainContext: true
-    - name: Sztringfüggvények
-      items:
-      - name: Sztringfüggvények áttekintése
-        href: /stream-analytics-query/string-functions-azure-stream-analytics
-        maintainContext: true
-      - name: CHARINDEX
-        href: /stream-analytics-query/charindex-azure-stream-analytics
-        maintainContext: true
-      - name: CONCAT
-        href: /stream-analytics-query/concat-azure-stream-analytics
-        maintainContext: true
-      - name: LEN
-        href: /stream-analytics-query/len-azure-stream-analytics
-        maintainContext: true
-      - name: LOWER
-        href: /stream-analytics-query/lower-azure-stream-analytics
-        maintainContext: true
-      - name: PATINDEX
-        href: /stream-analytics-query/patindex-azure-stream-analytics
-        maintainContext: true
-      - name: REGEXMATCH
-        href: /stream-analytics-query/regexmatch-azure-stream-analytics
-        maintainContext: true
-      - name: REPLACE
-        href: /stream-analytics-query/replace-azure-stream-analytics.md
-        maintainContext: true
-      - name: SUBSTRING
-        href: /stream-analytics-query/substring-azure-stream-analytics
-        maintainContext: true
-      - name: UPPER
-        href: /stream-analytics-query/upper-azure-stream-analytics
-        maintainContext: true
-    - name: Ablakkezelési függvények
-      items:
-      - name: Ablakkezelési függvények áttekintése
-        href: /stream-analytics-query/windowing-azure-stream-analytics
-        maintainContext: true
-      - name: Ugróablak
-        href: /stream-analytics-query/hopping-window-azure-stream-analytics
-        maintainContext: true
-      - name: Munkameneti ablak
-        href: /stream-analytics-query/session-window-azure-stream-analytics
-        maintainContext: true
-      - name: Csúszóablak
-        href: /stream-analytics-query/sliding-window-azure-stream-analytics
-        maintainContext: true
-      - name: Átfedésmentes ablak
-        href: /stream-analytics-query/tumbling-window-azure-stream-analytics
-        maintainContext: true
-  - name: Adattípusok
-    items:
-    - name: Adattípusok áttekintése
-      href: /stream-analytics-query/data-types-azure-stream-analytics
-      maintainContext: true
+        - name: Kimenetek áttekintése
+          href: stream-analytics-define-outputs.md
+        - name: Kimenet a Cosmos DB-be
+          href: stream-analytics-documentdb-output.md
+        - name: Kimenet az Azure SQL DB-be
+          href: stream-analytics-sql-output-perf.md
+        - name: Blob egyéni elérési útjára vonatkozó minták
+          href: stream-analytics-custom-path-patterns-blob-storage-output.md
+    - name: Feladat állapotai
+      href: job-states.md
+    - name: Ablakfunkciók
+      href: stream-analytics-window-functions.md
+    - name: Térinformatikai funkciók
+      href: stream-analytics-geospatial-functions.md
+    - name: Kompatibilitási szint
+      href: stream-analytics-compatibility-level.md
+    - name: Gyakori lekérdezési minták
+      href: stream-analytics-stream-analytics-query-patterns.md
     - name: JSON- és AVRO-adatok elemzése
       href: stream-analytics-parsing-json.md
+    - name: Időkezelési megfontolások
+      href: stream-analytics-time-handling.md
+    - name: Ellenőrzőpont és visszajátszás
+      href: stream-analytics-concepts-checkpoint-replay.md
+    - name: Hibakezelési szabályzat
+      href: stream-analytics-output-error-policy.md
+- name: Útmutatók
+  items:
+    - name: Kezelés
+      items:
+        - name: Hitelesítő adatok frissítése
+          href: stream-analytics-login-credentials-inputs-outputs.md
+        - name: Eseményrendező szabályzatok konfigurálása
+          href: event-ordering.md
+        - name: Riasztások konfigurálása
+          href: stream-analytics-set-up-alerts.md
+        - name: Feladat elindítása
+          href: start-job.md
+        - name: Feladat tesztelése
+          href: stream-analytics-test-query.md
+        - name: Eredmények megtekintése az irányítópulton
+          href: stream-analytics-power-bi-dashboard.md
+        - name: Feladat leállítása vagy törlése
+          href: stream-analytics-clean-up-your-job.md
+        - name: Feladatok párosítása a megbízhatóság érdekében
+          href: stream-analytics-job-reliability.md
+        - name: Hitelesítés felügyelt identitással – 1. generációs ADLS-kimenet
+          href: stream-analytics-managed-identities-adls.md
+        - name: SQL-referenciaadatok használata
+          href: sql-reference-data.md
+        - name: Hitelesítés felügyelt identitással – Blobkimenet
+          href: blob-output-managed-identity.md
+    - name: Megoldások kiépítése
+      items:
+        - name: Twitter-hangulatelemzés
+          href: stream-analytics-twitter-sentiment-analysis-trends.md
+        - name: Csalások valós idejű észlelése
+          href: stream-analytics-real-time-fraud-detection.md
+        - name: Feladatok futtatása az IoT Edge-en
+          href: stream-analytics-edge.md
+        - name: Fizetőkapu érzékelőadatainak elemzése
+          href: stream-analytics-build-an-iot-solution-using-stream-analytics.md
+        - name: JavaScript UDA futtatása
+          href: stream-analytics-javascript-user-defined-aggregates.md
+        - name: Nagy gyakoriságú kereskedelem
+          href: stream-analytics-high-frequency-trading.md
+        - name: IoT-streamadatok feldolgozása
+          href: stream-analytics-get-started-with-azure-stream-analytics-to-process-data-from-iot-devices.md
+        - name: Küszöbérték-alapú szabályok
+          href: stream-analytics-threshold-based-rules.md
+        - name: Kafka-események feldolgozása
+          href: ../event-hubs/event-hubs-kafka-stream-analytics.md
+          maintainContext: true
+        - name: Event Hubs-adatok feldolgozása
+          href: ../event-hubs/process-data-azure-stream-analytics.md
+          maintainContext: true
+        - name: Térinformatikai forgatókönyvek
+          href: geospatial-scenarios.md
+    - name: Figyelés
+      items:
+        - name: Feladatok monitorozása – Azure Portal
+          href: stream-analytics-monitoring.md
+        - name: Feladatok monitorozása – PowerShell
+          href: stream-analytics-monitor-and-manage-jobs-use-powershell.md
+        - name: Feladatok monitorozása – Azure .NET SDK
+          href: stream-analytics-monitor-jobs.md
+        - name: Feladatok monitorozása – Visual Studio
+          href: stream-analytics-monitor-jobs-use-vs.md
+    - name: Méretezés
+      items:
+        - name: Skálázás streamelési egységekkel
+          href: stream-analytics-streaming-unit-consumption.md
+        - name: Skálázás párhuzamosítással
+          items:
+            - name: Lekérdezések párhuzamosítása
+              href: stream-analytics-parallelization.md
+            - name: Az átviteli sebesség növelése
+              href: stream-analytics-scale-jobs.md
+        - name: Skálázás Machine Learning-függvényekkel
+          href: stream-analytics-scale-with-machine-learning-functions.md
+        - name: Skálázás újraparticionálással
+          href: repartition.md
+    - name: Automatizálás
+      items:
+        - name: A .NET SDK használata
+          href: stream-analytics-dotnet-management-sdk.md
+        - name: Az Azure PowerShell használata
+          href: 'https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick'
+        - name: API használata az IoT Edge-feladatokhoz
+          href: stream-analytics-cicd-api.md
+    - name: Visual Studio
+      items:
+        - name: Eszközök telepítése
+          href: stream-analytics-tools-for-visual-studio-install.md
+        - name: Tesztelés mintaadatokkal
+          href: stream-analytics-vs-tools-local-run.md
+        - name: Tesztelés élő adatokkal
+          href: stream-analytics-live-data-local-testing.md
+        - name: Feladatok megtekintése a Visual Studióban
+          href: stream-analytics-vs-tools.md
+        - name: Edge-feladatok fejlesztése
+          href: stream-analytics-tools-for-visual-studio-edge-jobs.md
+        - name: CI-/CD-folyamat beállítása
+          href: stream-analytics-tools-for-visual-studio-cicd.md
+        - name: .NET UDF írása az Edge-hez
+          href: stream-analytics-edge-csharp-udf-methods.md
+    - name: Visual Studio Code
+      items:
+        - name: Tesztelés mintaadatokkal
+          href: vscode-local-run.md
+        - name: CI-/CD-folyamat beállítása
+          href: setup-cicd-vs-code.md
+        - name: Feladatok böngészése
+          href: vscode-explore-jobs.md
+    - name: Hibaelhárítás
+      items:
+        - name: Input (Bemenet)
+          href: stream-analytics-troubleshoot-input.md
+        - name: Kimenet
+          href: stream-analytics-troubleshoot-output.md
+        - name: Lekérdezési logika
+          href: stream-analytics-troubleshoot-query.md
+        - name: Tevékenység és diagnosztikai naplók
+          href: stream-analytics-job-diagnostic-logs.md
+        - name: Adathibák
+          href: data-errors.md
+    - name: Integráció a Machine Learninggel
+      items:
+        - name: Hangulatelemzés Machine Learning-modellekkel
+          href: stream-analytics-machine-learning-integration-tutorial.md
+        - name: Rendellenességek észlelése
+          href: stream-analytics-machine-learning-anomaly-detection.md
+        - name: REST API-k használata
+          href: stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md
+    - name: Hibakeresés feladatábra segítségével
+      href: stream-analytics-job-diagram-with-metrics.md
+- name: A Stream Analytics lekérdezési nyelve
+  items:
+    - name: Beépített függvények
+      items:
+        - name: Beépített függvények áttekintése
+          href: /stream-analytics-query/built-in-functions-azure-stream-analytics
+          maintainContext: true
+        - name: Aggregátumfüggvények
+          items:
+            - name: Aggregátumfüggvények áttekintése
+              href: /stream-analytics-query/aggregate-functions-azure-stream-analytics
+              maintainContext: true
+            - name: AVG
+              href: /stream-analytics-query/avg-azure-stream-analytics
+              maintainContext: true
+            - name: COUNT
+              href: /stream-analytics-query/count-azure-stream-analytics
+              maintainContext: true
+            - name: Collect
+              href: /stream-analytics-query/collect-azure-stream-analytics
+              maintainContext: true
+            - name: CollectTOP
+              href: /stream-analytics-query/collecttop-azure-stream-analytics
+              maintainContext: true
+            - name: MAX
+              href: /stream-analytics-query/max-azure-stream-analytics
+              maintainContext: true
+            - name: MIN
+              href: /stream-analytics-query/min-azure-stream-analytics
+              maintainContext: true
+            - name: Percentile_Cont
+              href: /stream-analytics-query/percentile-cont-azure-stream-analytics
+              maintainContext: true
+            - name: Percentile_Disc
+              href: /stream-analytics-query/percentile-disc-azure-stream-analytics
+              maintainContext: true
+            - name: STDEV
+              href: /stream-analytics-query/stdev-azure-stream-analytics
+              maintainContext: true
+            - name: STDEVP
+              href: /stream-analytics-query/stdevp-azure-stream-analytics
+              maintainContext: true
+            - name: SUM
+              href: /stream-analytics-query/sum-azure-stream-analytics
+              maintainContext: true
+            - name: TopOne
+              href: /stream-analytics-query/topone-azure-stream-analytics
+              maintainContext: true
+            - name: VAR
+              href: /stream-analytics-query/var-azure-stream-analytics
+              maintainContext: true
+            - name: VARP
+              href: /stream-analytics-query/varp-azure-stream-analytics
+              maintainContext: true
+        - name: Analitikai függvények
+          items:
+            - name: Analitikai függvények áttekintése
+              href: /stream-analytics-query/analytic-functions-azure-stream-analytics
+              maintainContext: true
+            - name: AnomalyDetection_SpikeAndDip
+              href: /stream-analytics-query/anomalydetection-spikeanddip-azure-stream-analytics
+              maintainContext: true
+            - name: AnomalyDetection_ChangePoint
+              href: /stream-analytics-query/anomalydetection-changepoint-azure-stream-analytics
+              maintainContext: true
+            - name: ISFIRST
+              href: /stream-analytics-query/isfirst-azure-stream-analytics
+              maintainContext: true
+            - name: LAG
+              href: /stream-analytics-query/lag-azure-stream-analytics
+              maintainContext: true
+            - name: LAST
+              href: /stream-analytics-query/last-azure-stream-analytics
+              maintainContext: true
+        - name: Tömb függvények
+          items:
+            - name: Tömb függvények áttekintése
+              href: /stream-analytics-query/array-functions-stream-analytics
+              maintainContext: true
+            - name: GetArrayLength
+              href: /stream-analytics-query/getarraylength-azure-stream-analytics
+              maintainContext: true
+            - name: GetArrayElement
+              href: /stream-analytics-query/getarrayelement-azure-stream-analytics
+              maintainContext: true
+            - name: GetArrayElements
+              href: /stream-analytics-query/getarrayelements-azure-stream-analytics
+              maintainContext: true
+        - name: Konverziós függvények
+          items:
+            - name: Konverziós függvények áttekintése
+              href: /stream-analytics-query/conversion-functions-azure-stream-analytics
+              maintainContext: true
+            - name: CAST
+              href: /stream-analytics-query/cast-azure-stream-analytics
+              maintainContext: true
+            - name: GetType
+              href: /stream-analytics-query/gettype-azure-stream-analytics
+              maintainContext: true
+            - name: TRY_CAST
+              href: /stream-analytics-query/try-cast-azure-stream-analytics
+              maintainContext: true
+        - name: Dátum és időpont függvényei
+          items:
+            - name: Dátum és időpont függvényeinek áttekintése
+              href: /stream-analytics-query/date-and-time-functions-azure-stream-analytics
+              maintainContext: true
+            - name: DATEADD
+              href: /stream-analytics-query/dateadd-azure-stream-analytics
+              maintainContext: true
+            - name: DATEDIFF
+              href: /stream-analytics-query/datediff-azure-stream-analytics
+              maintainContext: true
+            - name: DATENAME
+              href: /stream-analytics-query/datename-azure-stream-analytics
+              maintainContext: true
+            - name: DATEPART
+              href: /stream-analytics-query/datepart-azure-stream-analytics
+              maintainContext: true
+            - name: DATETIMEFROMPARTS
+              href: /stream-analytics-query/datetimefromparts-azure-stream-analytics
+              maintainContext: true
+            - name: DAY
+              href: /stream-analytics-query/day-azure-stream-analytics
+              maintainContext: true
+            - name: MONTH
+              href: /stream-analytics-query/month-azure-stream-analytics
+              maintainContext: true
+            - name: YEAR
+              href: /stream-analytics-query/year-azure-stream-analytics
+              maintainContext: true
+        - name: Térinformatikai függvények
+          items:
+            - name: Térinformatikai függvények áttekintése
+              href: /stream-analytics-query/geospatial-functions
+              maintainContext: true
+            - name: CreateLineString
+              href: /stream-analytics-query/createlinestring
+              maintainContext: true
+            - name: CreatePoint
+              href: /stream-analytics-query/createpoint
+              maintainContext: true
+            - name: CreatePolygon
+              href: /stream-analytics-query/createpolygon
+              maintainContext: true
+            - name: ST_DISTANCE
+              href: /stream-analytics-query/st-distance
+              maintainContext: true
+            - name: ST_OVERLAPS
+              href: /stream-analytics-query/st-overlaps
+              maintainContext: true
+            - name: ST_INTERSECTS
+              href: /stream-analytics-query/st-intersects
+              maintainContext: true
+            - name: ST_WITHIN
+              href: /stream-analytics-query/st-within
+              maintainContext: true
+        - name: Bemeneti metaadatok függvényei
+          items:
+            - name: Bemeneti metaadatok függvényeinek áttekintése
+              href: /stream-analytics-query/input-metadata-functions
+              maintainContext: true
+            - name: GetMetadataPropertyValue
+              href: /stream-analytics-query/getmetadatapropertyvalue
+              maintainContext: true
+        - name: Matematika függvények
+          items:
+            - name: Matematika függvények áttekintése
+              href: /stream-analytics-query/mathematical-functions-azure-stream-analytics
+              maintainContext: true
+            - name: ABS
+              href: /stream-analytics-query/abs-azure-stream-analytics
+              maintainContext: true
+            - name: CEILING
+              href: /stream-analytics-query/ceiling-azure-stream-analytics
+              maintainContext: true
+            - name: EXP
+              href: /stream-analytics-query/exp-azure-stream-analytics
+              maintainContext: true
+            - name: FLOOR
+              href: /stream-analytics-query/floor-azure-stream-analytics
+              maintainContext: true
+            - name: POWER
+              href: /stream-analytics-query/power-azure-stream-analytics
+              maintainContext: true
+            - name: ROUND
+              href: /stream-analytics-query/round-azure-stream-analytics.md
+              maintainContext: true
+            - name: SIGN
+              href: /stream-analytics-query/sign-azure-stream-analytics
+              maintainContext: true
+            - name: SQUARE
+              href: /stream-analytics-query/square-azure-stream-analytics
+              maintainContext: true
+            - name: SQRT
+              href: /stream-analytics-query/sqrt-azure-stream-analytics
+              maintainContext: true
+        - name: Rekordfüggvények
+          items:
+            - name: Rekordfüggvények áttekintése
+              href: /stream-analytics-query/record-functions-azure-stream-analytics
+              maintainContext: true
+            - name: GetRecordProperties
+              href: /stream-analytics-query/getrecordproperties-azure-stream-analytics
+              maintainContext: true
+            - name: GetRecordPropertyValue
+              href: /stream-analytics-query/getrecordpropertyvalue-azure-stream-analytics
+              maintainContext: true
+        - name: Sztringfüggvények
+          items:
+            - name: Sztringfüggvények áttekintése
+              href: /stream-analytics-query/string-functions-azure-stream-analytics
+              maintainContext: true
+            - name: CHARINDEX
+              href: /stream-analytics-query/charindex-azure-stream-analytics
+              maintainContext: true
+            - name: CONCAT
+              href: /stream-analytics-query/concat-azure-stream-analytics
+              maintainContext: true
+            - name: LEN
+              href: /stream-analytics-query/len-azure-stream-analytics
+              maintainContext: true
+            - name: LOWER
+              href: /stream-analytics-query/lower-azure-stream-analytics
+              maintainContext: true
+            - name: PATINDEX
+              href: /stream-analytics-query/patindex-azure-stream-analytics
+              maintainContext: true
+            - name: REGEXMATCH
+              href: /stream-analytics-query/regexmatch-azure-stream-analytics
+              maintainContext: true
+            - name: REPLACE
+              href: /stream-analytics-query/replace-azure-stream-analytics.md
+              maintainContext: true
+            - name: SUBSTRING
+              href: /stream-analytics-query/substring-azure-stream-analytics
+              maintainContext: true
+            - name: UPPER
+              href: /stream-analytics-query/upper-azure-stream-analytics
+              maintainContext: true
+        - name: Ablakkezelési függvények
+          items:
+            - name: Ablakkezelési függvények áttekintése
+              href: /stream-analytics-query/windowing-azure-stream-analytics
+              maintainContext: true
+            - name: Ugróablak
+              href: /stream-analytics-query/hopping-window-azure-stream-analytics
+              maintainContext: true
+            - name: Munkameneti ablak
+              href: /stream-analytics-query/session-window-azure-stream-analytics
+              maintainContext: true
+            - name: Csúszóablak
+              href: /stream-analytics-query/sliding-window-azure-stream-analytics
+              maintainContext: true
+            - name: Átfedésmentes ablak
+              href: /stream-analytics-query/tumbling-window-azure-stream-analytics
+              maintainContext: true
+            - name: Ablakkezelési aggregátumfüggvények
+              href: /stream-analytics-query/windows-azure-stream-analytics
+              maintainContext: true
+    - name: Adattípusok
+      items:
+        - name: Adattípusok áttekintése
+          href: /stream-analytics-query/data-types-azure-stream-analytics
+          maintainContext: true
+        - name: JSON- és AVRO-adatok elemzése
+          href: stream-analytics-parsing-json.md
+          maintainContext: true
+    - name: Nyelvi elemek lekérdezése
+      items:
+        - name: Nyelvi elemek lekérdezésének áttekintése
+          href: /stream-analytics-query/query-language-elements-azure-stream-analytics
+          maintainContext: true
+        - name: APPLY
+          href: /stream-analytics-query/apply-azure-stream-analytics
+          maintainContext: true
+        - name: CASE
+          href: /stream-analytics-query/case-azure-stream-analytics
+          maintainContext: true
+        - name: COALESCE
+          href: /stream-analytics-query/coalesce-azure-stream-analytics.md
+          maintainContext: true
+        - name: CREATE TABLE
+          href: /stream-analytics-query/create-table-stream-analytics
+          maintainContext: true
+        - name: FROM
+          href: /stream-analytics-query/from-azure-stream-analytics
+          maintainContext: true
+        - name: GROUP BY
+          href: /stream-analytics-query/group-by-azure-stream-analytics
+          maintainContext: true
+        - name: HAVING
+          href: /stream-analytics-query/having-azure-stream-analytics
+          maintainContext: true
+        - name: INTO
+          href: /stream-analytics-query/into-azure-stream-analytics
+          maintainContext: true
+        - name: JOIN
+          href: /stream-analytics-query/join-azure-stream-analytics
+          maintainContext: true
+        - name: MATCH_RECOGNIZE
+          href: /stream-analytics-query/match-recognize-stream-analytics.md
+          maintainContext: true
+        - name: Referenciaadatok JOIN
+          href: /stream-analytics-query/reference-data-join-azure-stream-analytics
+          maintainContext: true
+        - name: SELECT
+          href: /stream-analytics-query/select-azure-stream-analytics
+          maintainContext: true
+        - name: UNION
+          href: /stream-analytics-query/union-azure-stream-analytics
+          maintainContext: true
+        - name: WHERE
+          href: /stream-analytics-query/where-azure-stream-analytics
+          maintainContext: true
+        - name: WITH
+          href: /stream-analytics-query/with-azure-stream-analytics
+          maintainContext: true
+    - name: Időkezelés
+      items:
+        - name: Időkezelés áttekintése
+          href: /stream-analytics-query/time-management-azure-stream-analytics
+          maintainContext: true
+        - name: System.Timestamp
+          href: /stream-analytics-query/system-timestamp-stream-analytics
+          maintainContext: true
+        - name: TIMESTAMP BY
+          href: /stream-analytics-query/timestamp-by-azure-stream-analytics
+          maintainContext: true
+        - name: Időeltérési szabályzatok
+          href: /stream-analytics-query/time-skew-policies-azure-stream-analytics
+          maintainContext: true
+    - name: Eseménykézbesítési garanciák
+      href: /stream-analytics-query/event-delivery-guarantees-azure-stream-analytics
       maintainContext: true
-  - name: Nyelvi elemek lekérdezése
-    items:
-    - name: Nyelvi elemek lekérdezésének áttekintése
-      href: /stream-analytics-query/query-language-elements-azure-stream-analytics
-      maintainContext: true
-    - name: APPLY
-      href: /stream-analytics-query/apply-azure-stream-analytics
-      maintainContext: true
-    - name: CASE
-      href: /stream-analytics-query/case-azure-stream-analytics
-      maintainContext: true
-    - name: COALESCE
-      href: /stream-analytics-query/coalesce-azure-stream-analytics.md
-      maintainContext: true
-    - name: CREATE TABLE
-      href: /stream-analytics-query/create-table-stream-analytics
-      maintainContext: true
-    - name: FROM
-      href: /stream-analytics-query/from-azure-stream-analytics
-      maintainContext: true
-    - name: GROUP BY
-      href: /stream-analytics-query/group-by-azure-stream-analytics
-      maintainContext: true
-    - name: HAVING
-      href: /stream-analytics-query/having-azure-stream-analytics
-      maintainContext: true
-    - name: INTO
-      href: /stream-analytics-query/into-azure-stream-analytics
-      maintainContext: true
-    - name: JOIN
-      href: /stream-analytics-query/join-azure-stream-analytics
-      maintainContext: true
-    - name: Referenciaadatok JOIN
-      href: /stream-analytics-query/reference-data-join-azure-stream-analytics
-      maintainContext: true
-    - name: SELECT
-      href: /stream-analytics-query/select-azure-stream-analytics
-      maintainContext: true
-    - name: UNION
-      href: /stream-analytics-query/union-azure-stream-analytics
-      maintainContext: true
-    - name: WHERE
-      href: /stream-analytics-query/where-azure-stream-analytics
-      maintainContext: true
-    - name: WITH
-      href: /stream-analytics-query/with-azure-stream-analytics
-      maintainContext: true
-  - name: Időkezelés
-    items:
-    - name: Időkezelés áttekintése
-      href: /stream-analytics-query/time-management-azure-stream-analytics
-      maintainContext: true
-    - name: System.Timestamp
-      href: /stream-analytics-query/system-timestamp-stream-analytics
-      maintainContext: true
-    - name: TIMESTAMP BY
-      href: /stream-analytics-query/timestamp-by-azure-stream-analytics
-      maintainContext: true
-    - name: Időeltérési szabályzatok
-      href: /stream-analytics-query/time-skew-policies-azure-stream-analytics
-      maintainContext: true
-  - name: Eseménykézbesítési garanciák
-    href: /stream-analytics-query/event-delivery-guarantees-azure-stream-analytics
-    maintainContext: true
 - name: Referencia
   items:
-  - name: Azure PowerShell
-    href: /powershell/module/az.streamanalytics
-  - name: .NET
-    href: /dotnet/api/microsoft.azure.management.streamanalytics
-  - name: REST
-    href: /rest/api/streamanalytics
-  - name: Resource Manager-sablon
-    href: /azure/templates/microsoft.streamanalytics/allversions
+    - name: Azure PowerShell
+      href: /powershell/module/az.streamanalytics
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.management.streamanalytics
+    - name: REST
+      href: /rest/api/streamanalytics
+    - name: Resource Manager-sablon
+      href: /azure/templates/microsoft.streamanalytics/allversions
 - name: További források
   items:
-  - name: Stream Analytics előzetes verziói
-    href: stream-analytics-previews.md
-  - name: Azure-ütemterv
-    href: https://azure.microsoft.com/roadmap/
-  - name: Blog
-    href: https://azure.microsoft.com/blog/tag/azure-stream-analytics/
-  - name: Visszajelzési fórum
-    href: https://feedback.azure.com/forums/270577-azure-stream-analytics
-  - name: Fórum
-    href: https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics
-  - name: Díjszabás
-    href: https://azure.microsoft.com/pricing/details/stream-analytics/
-  - name: Díjkalkulátor
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: Szolgáltatási hírek
-    href: https://azure.microsoft.com/updates/?product=stream-analytics
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/azure-stream-analytics
-  - name: Videók
-    href: https://azure.microsoft.com/resources/videos/index/?services=stream-analytics&sort=newest
-  - name: Ügyféleset-tanulmányok
-    href: https://azure.microsoft.com/case-studies/?service=stream-analytics
-  - name: Tanulmány – Valós idejű eseményfeldolgozás
-    href: stream-analytics-real-time-event-processing-reference-architecture.md
-ms.openlocfilehash: ddb035686e8788710aeea5c6dc532ef6a87310a0
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59609353"
+    - name: Stream Analytics előzetes verziói
+      href: stream-analytics-previews.md
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Blog
+      href: 'https://azure.microsoft.com/blog/tag/azure-stream-analytics/'
+    - name: Visszajelzési fórum
+      href: 'https://feedback.azure.com/forums/270577-azure-stream-analytics'
+    - name: Fórum
+      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/stream-analytics/'
+    - name: Díjkalkulátor
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Szolgáltatási hírek
+      href: 'https://azure.microsoft.com/updates/?product=stream-analytics'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-stream-analytics'
+    - name: Videók
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=stream-analytics&sort=newest'
+    - name: Ügyféleset-tanulmányok
+      href: 'https://azure.microsoft.com/case-studies/?service=stream-analytics'
+    - name: Tanulmány – Valós idejű eseményfeldolgozás
+      href: stream-analytics-real-time-event-processing-reference-architecture.md

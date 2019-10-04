@@ -4,18 +4,18 @@ description: EDI ellenőrzése és nyugtázását X12 az Azure Logic Apps Enterp
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
-author: divyaswarnkar
-ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+author: ecfan
+ms.author: estfan
+ms.reviewer: jonfan, divswa, LADocs
 ms.topic: article
 ms.assetid: 4fd48d2d-2008-4080-b6a1-8ae183b48131
 ms.date: 01/27/2017
-ms.openlocfilehash: e3d2a458c2cece5e3f01fdb9e3d403b3fb78dd2b
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 4a19462f4f849602fd14fe1204f1c7e3c01e6ec4
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43121645"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64701451"
 ---
 # <a name="decode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>Dekódolandó X12 üzeneteket az Azure Logic Appsben és Enterprise Integration Pack
 
@@ -48,8 +48,8 @@ A következő szükséges elemek:
 
     | Tulajdonság | Részletek |
     | --- | --- |
-    | Kapcsolat neve * |Adja meg a kapcsolat bármilyen nevet. |
-    | Integrációs fiók * |Adja meg az integrációs fiók nevét. Győződjön meg arról, hogy az integrációs fiók és a logikai alkalmazás ugyanazon Azure-helyen. |
+    | Connection Name * |Adja meg a kapcsolat bármilyen nevet. |
+    | Integration Account * |Adja meg az integrációs fiók nevét. Győződjön meg arról, hogy az integrációs fiók és a logikai alkalmazás ugyanazon Azure-helyen. |
 
 5.  Ha elkészült, a kapcsolat adatait példához hasonlóan kell kinéznie. A kapcsolat létrehozásának befejezéséhez válasszon **létrehozás**.
    
@@ -89,13 +89,13 @@ A X12 dekódolási összekötő az alábbi feladatokat hajtja végre:
   * A csoport-ellenőrzőszám szemben a többi csoport ellenőrzőszámok az adatcsere ellenőrzi.
   * Ellenőrzi, hogy a tranzakciókészlet ellenőrzőszáma egyéb tranzakció beállítása, hogy a csoportban ellenőrzőszámok ellen.
 * A tranzakció csoportokba adatcsere felosztása, vagy megőrzi a teljes adatcsere:
-  * Adatcsere felosztása tranzakciókészletekre – tranzakciókészletek felfüggesztése hiba esetén: tranzakció az elágazást adatcsere állítja be, és minden egyes tranzakciókészlet elemzi. 
+  * Adatcsere felosztása tranzakciókészletekre – tranzakciókészletek felfüggesztése hiba esetén: Tranzakció az elágazást adatcsere állítja be, és minden egyes tranzakciókészlet elemzi. 
   A X12 dekódolási műveleti kimenetek csak azokat a tranzakció állítja be, amelyek sikertelen érvényesítést `badMessages`, és beállítja a fennmaradó tranzakciók kimenetek `goodMessages`.
-  * Adatcsere felosztása tranzakciókészletekre – adatcsere felfüggesztése hiba esetén: tranzakció az elágazást adatcsere állítja be, és minden egyes tranzakciókészlet elemzi. 
+  * Adatcsere felosztása tranzakciókészletekre – adatcsere felfüggesztése hiba esetén: Tranzakció az elágazást adatcsere állítja be, és minden egyes tranzakciókészlet elemzi. 
   Ha egy vagy több tranzakció beállítja az adatcsere sikertelen ellenőrzést követően az dekódolási műveleti kimenetek összes tranzakció beállítja, hogy az adatcsere X12 `badMessages`.
-  * Adatcsere megőrzése – tranzakciókészletek felfüggesztése hiba esetén: az adatcsere, és a teljes kötegelt adatcsere feldolgozása. 
+  * Adatcsere megőrzése – tranzakciókészletek felfüggesztése hiba esetén: Az adatcsere, és a teljes kötegelt adatcsere feldolgozása. 
   A X12 dekódolási műveleti kimenetek csak azokat a tranzakció állítja be, amelyek sikertelen érvényesítést `badMessages`, és beállítja a fennmaradó tranzakciók kimenetek `goodMessages`.
-  * Adatcsere megőrzése – adatcsere felfüggesztése hiba esetén: az adatcsere, és a teljes kötegelt adatcsere feldolgozása. 
+  * Adatcsere megőrzése – adatcsere felfüggesztése hiba esetén: Az adatcsere, és a teljes kötegelt adatcsere feldolgozása. 
   Ha egy vagy több tranzakció beállítja az adatcsere sikertelen ellenőrzést követően az dekódolási műveleti kimenetek összes tranzakció beállítja, hogy az adatcsere X12 `badMessages`. 
 * A műszaki és/vagy funkcionális visszaigazolás állít elő, (Ha be van állítva).
   * A technikai visszaigazolás fejléc érvényesítési eredményeként létrehozott. A technikai nyugtázást jelentések egy adatcsere fejlécet és a cím fogadó bemutató feldolgozásának állapotát.

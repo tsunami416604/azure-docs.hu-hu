@@ -5,14 +5,12 @@ metadata:
   title: Az Azure API Management dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
   description: 'Ismerje meg, hogy az API Management hogyan használható az API-k külső rendszerek, partnerek és belső fejlesztők felé történő biztonságos és skálázott közzétételére. Az oktatóanyagok, API-referenciák és az egyéb dokumentáció bemutatják, hogyan hozhat létre és kezelhet modern API-átjárókat meglévő háttérrendszerekhez, függetlenül azok üzemeltetési helyétől.'
   services: api-management
-  author: czeumault
-  manager: carolz
+  author: georgewallace
+  manager: gwallace
   ms.service: api-management
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 11/15/2017
-  ms.author: carolz
+  ms.author: gwallace
 abstract:
   description: 'Ismerje meg, hogy az API Management hogyan használható az API-k külső rendszerek, partnerek és belső fejlesztők felé történő biztonságos és skálázott közzétételére. Az oktatóanyagok, API-referenciák és az egyéb dokumentáció bemutatják, hogyan hozhat létre és kezelhet modern API-átjárókat meglévő háttérrendszerekhez, függetlenül azok üzemeltetési helyétől.'
 sections:

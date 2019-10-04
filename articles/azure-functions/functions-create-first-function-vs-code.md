@@ -7,17 +7,16 @@ author: ggailey777
 manager: jeconnoc
 keywords: azure functions, függvények, eseményfeldolgozás, számítás, kiszolgáló nélküli architektúra
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: quickstart
-ms.date: 09/07/2018
+ms.date: 06/25/2019
 ms.author: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: cbe4dbd2ae741f4225cfdc628c31508956cbb95c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 52f682f7c7f06056be122b33d27592a55a01be94
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59490533"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70744068"
 ---
 # <a name="create-your-first-function-using-visual-studio-code"></a>Az első függvény létrehozása a Visual Studio Code használatával
 
@@ -27,25 +26,26 @@ Ebben a cikkben megtudhatja, hogy a [Azure Functions-bővítmény a Visual Studi
 
 ![Azure-függvénykód Visual Studio-projektben](./media/functions-create-first-function-vs-code/functions-vscode-intro.png)
 
-A bővítmény jelenleg teljes mértékben támogatja a C#, JavaScript és Java-függvények, Python támogatással jelenleg előzetes verzióban érhető el. Az ebben a cikkben leírt lépések eltérhetnek az Azure Functions-projekthez választott nyelvtől függően. A bővítmény jelenleg előzetes verzióként érhető el. További tudnivalókért tekintse meg az [Azure Functions-bővítmény a Visual Studio Code-hoz] bővítmény oldalát.
+A bővítmény jelenleg a C#JavaScript, a Java és a Python függvényeket támogatja. A cikkben ismertetett lépések és az azt követő cikk csak a JavaScriptet C# és a függvényeket támogatja. Ha szeretné megtudni, hogyan hozhat létre és tehet közzé Python-függvényeket a Visual Studio Code használatával, tekintse meg a következőt: a [Python telepítése Azure functions](https://code.visualstudio.com/docs/python/tutorial-azure-functions). Ha szeretné megtudni, hogyan hozhat létre és tehet közzé PowerShell-funkciókat a Visual Studio Code használatával, tekintse meg [az első PowerShell-függvény létrehozása az Azure-ban](functions-create-first-function-powershell.md)című témakört. 
+
+A bővítmény jelenleg előzetes verzióként érhető el. További tudnivalókért tekintse meg az [Azure Functions-bővítmény a Visual Studio Code-hoz] bővítmény oldalát.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A gyorsútmutató elvégzéséhez:
 
-* Telepítse a [Visual Studio Code-ot](https://code.visualstudio.com/) a [támogatott platformok](https://code.visualstudio.com/docs/supporting/requirements#_platforms) egyikén. Ez a cikk macOS (High Sierra) operációs rendszerű eszközön lett fejlesztve és tesztelve.
+* Telepítse a [Visual Studio Code-ot](https://code.visualstudio.com/) a [támogatott platformok](https://code.visualstudio.com/docs/supporting/requirements#_platforms) egyikén.
 
-* Telepítse az [Azure Functions Core Tools](functions-run-local.md#v2) jelenleg előzetes verzióban lévő 2.x. verzióját.
+* Telepítse a [Azure functions Core Tools](functions-run-local.md#v2)2. x verzióját.
 
 * Telepítse az Ön által választott nyelvhez tartozó követelményeket:
 
-    | Nyelv | Mellék |
+    | Nyelv | Követelmény |
     | -------- | --------- |
-    | **C#** | [C# a Visual Studio Code-hoz](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)<br/>[.NET Core CLI-eszközök](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x)*   |
-    | **Java** | [A Javához készült hibakereső](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)<br/>[Java 8](https://aka.ms/azure-jdks)<br/>[Maven 3+](https://maven.apache.org/) |
-    | **JavaScript** | [Node 8.0+](https://nodejs.org/)  |
-
-    \* A Core Tools is igényli.
+    | **C#** | [C#kiterjesztés](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)  |
+    | **JavaScript** | [Node.js](https://nodejs.org/)<sup>*</sup> | 
+ 
+    <sup>*</sup>Aktív LTS-és karbantartási LTS-verziók (8.11.1 és 10.14.1 ajánlott).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -53,47 +53,7 @@ A gyorsútmutató elvégzéséhez:
 
 [!INCLUDE [functions-create-function-app-vs-code](../../includes/functions-create-function-app-vs-code.md)]
 
-## <a name="create-an-http-triggered-function"></a>HTTP által aktivált függvény létrehozása
-
-1. A **Azure: Függvények**, kattintson a Create Function ikonra.
-
-    ![Függvény létrehozása](./media/functions-create-first-function-vs-code/create-function.png)
-
-1. Válassza ki a függvényalkalmazás-projektet tartalmazó mappát, majd válassza a **HTTP-trigger** (HTTP-eseményindító) függvénysablont.
-
-    ![A HTTP-eseményindító sablon kiválasztása](./media/functions-create-first-function-vs-code/create-function-choose-template.png)
-
-1. A függvénynek adja a `HTTPTrigger` nevet, nyomja le az Enter billentyűt, majd válassza az **Anonymous** (Névtelen) hitelesítést.
-
-    ![A névtelen hitelesítés kiválasztása](./media/functions-create-first-function-vs-code/create-function-anonymous-auth.png)
-
-    A rendszer létrehoz egy függvényt a választott nyelven a HTTP által indított függvények sablonjának használatával.
-
-    ![A HTTP által indított függvények sablonja a Visual Studio Code-ban](./media/functions-create-first-function-vs-code/new-function-full.png)
-
-A függvényhez további bemeneti és kimeneti kötések adhatók hozzá a function.json fájl módosításával. További információkat az [Azure Functions triggers and bindings concepts](functions-triggers-bindings.md) (Az Azure Functions eseményindítói és kötési alapelvei) témakörben talál.
-
-Most, hogy már létrehozott egy függvényprojektet és egy HTTP-eseményindítóval aktivált függvényt, tesztelheti a helyi számítógépen.
-
-## <a name="test-the-function-locally"></a>A függvény helyi tesztelése
-
-Az Azure Functions Core Tools lehetővé teszi Azure Functions-projektek helyi fejlesztői számítógépen való futtatását. Amikor a Visual Studio Code-ból először indít el egy függvényt, a rendszer arra kéri, hogy telepítse ezeket az eszközöket.  
-
-1. A függvény teszteléséhez állítson be egy töréspontot a függvény kódjában, majd nyomja le az F5 billentyűt a függvényalkalmazás-projekt elindításához. A Core Tools kimenete a **Terminal** (Terminál) panelen jelenik meg.
-
-1. A **Terminal** (Terminál) panelen másolja a vágólapra a HTTP által indított függvény URL-végpontját.
-
-    ![Az Azure helyi kimenete](./media/functions-create-first-function-vs-code/functions-vscode-f5.png)
-
-1. Illessze be a HTTP-kérelem URL-címét a böngésző címsorába. Az URL-címhez fűzze hozzá a `?name=<yourname>` lekérdezési sztringet, és hajtsa végre a kérelmet. A végrehajtás a töréspont elérésekor szünetelni fog.
-
-    ![Töréspontot elérő függvény a Visual Studio Code-ban](./media/functions-create-first-function-vs-code/function-debug-vscode-js.png)
-
-1. A végrehajtás folytatásakor a böngészőben a következőképp jelenik meg a válasz a GET-kérésre:
-
-    ![A függvény által visszaadott localhost válasz a böngészőben](./media/functions-create-first-function-vs-code/functions-test-local-browser.png)
-
-1. A hibakeresés leállításához nyomja le a Shift + F5 billentyűkombinációt.
+[!INCLUDE [functions-run-function-test-local-vs-code](../../includes/functions-run-function-test-local-vs-code.md)]
 
 Miután ellenőrizte, hogy a függvény megfelelően fut a helyi számítógépen, tegye közzé a projektet az Azure-ban.
 
@@ -101,13 +61,13 @@ Miután ellenőrizte, hogy a függvény megfelelően fut a helyi számítógépe
 
 [!INCLUDE [functions-publish-project-vscode](../../includes/functions-publish-project-vscode.md)]
 
-## <a name="test-your-function-in-azure"></a>A függvény tesztelése az Azure-ban
+## <a name="run-the-function-in-azure"></a>A függvény futtatása az Azure-ban
 
-1. Másolja a vágólapra a HTTP-eseményindító URL-címét az **Output** (Kimenet) panelről. Ahogyan korábban, most is az URL-cím végéhez adja hozzá a `?name=<yourname>` lekérdezési sztringet, és hajtsa végre a kérelmet.
+1. Másolja a vágólapra a HTTP-eseményindító URL-címét az **Output** (Kimenet) panelről. Ez az URL-cím tartalmazza a függvény kulcsát, amelyet `code` a rendszer a lekérdezési paraméternek továbbít. Ahogyan korábban, most is az URL-cím végéhez adja hozzá a `?name=<yourname>` lekérdezési sztringet, és hajtsa végre a kérelmet.
 
     A HTTP-eseményindítót használó függvényt meghívó URL-címnek az alábbi formátumban kell lennie:
 
-        http://<functionappname>.azurewebsites.net/api/<functionname>?name=<yourname> 
+        http://<functionappname>.azurewebsites.net/api/<functionname>?code=<function_key>&name=<yourname> 
 
 1. Illessze be a HTTP-kérelem új URL-címét a böngésző címsorába. Az alábbiakban látható a böngészőben a távoli GET kérelemre a függvény által visszaadott válasz: 
 
@@ -115,10 +75,10 @@ Miután ellenőrizte, hogy a függvény megfelelően fut a helyi számítógépe
 
 ## <a name="next-steps"></a>További lépések
 
-A Visual Studio Code segítéségével létrehozott egy egyszerű, HTTP-eseményindítóval aktivált függvényt tartalmazó függvényalkalmazást. További információk is érdemes [helyi tesztelése és hibakeresése a terminált vagy parancssort](functions-run-local.md) az Azure Functions Core Tools használatával.
+A Visual Studio Code segítéségével létrehozott egy egyszerű, HTTP-eseményindítóval aktivált függvényt tartalmazó függvényalkalmazást. A következő cikkben kibonthatja ezt a függvényt egy kimeneti kötés hozzáadásával. Ez a kötés a HTTP-kérelemből írja be a karakterláncot egy Azure Queue Storage-várólistában lévő üzenetbe. A következő cikk azt is bemutatja, hogyan távolíthatja el ezeket az új Azure-erőforrásokat a létrehozott erőforráscsoport eltávolításával.
 
 > [!div class="nextstepaction"]
-> [Az Application Insights-integráció engedélyezése](functions-monitoring.md#manually-connect-an-app-insights-resource)
+> [Azure Storage-várólista kötésének hozzáadása a függvényhez](functions-add-output-binding-storage-queue-vs-code.md)
 
 [Azure Functions Core Tools]: functions-run-local.md
 [Azure Functions-bővítmény a Visual Studio Code-hoz]: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions

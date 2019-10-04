@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 0ef65c23ee1bf4f064695779b71c8616427da204
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58881443"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60877822"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>Végfelhasználói hitelesítés az Azure Data Lake Storage Gen1 a REST API használatával
 > [!div class="op_single_selector"]
@@ -35,7 +35,7 @@ Ebben a cikkben megismerkedhet a REST API használata az Azure Data Lake Storage
 
 * **Hozzon létre a "Natív" Azure Active Directory-alkalmazás**. El kell végeznie a lépések [végfelhasználói hitelesítés a Data Lake Storage Gen1 az Azure Active Directoryval](data-lake-store-end-user-authenticate-using-active-directory.md).
 
-* **[cURL](https://curl.haxx.se/)**. Ez a cikk a curl használatával bemutatják, hogyan lehet REST API-hívásokat a Data Lake Storage Gen1 fiók ellen.
+* **[cURL](https://curl.haxx.se/)** . Ez a cikk a curl használatával bemutatják, hogyan lehet REST API-hívásokat a Data Lake Storage Gen1 fiók ellen.
 
 ## <a name="end-user-authentication"></a>Végfelhasználói hitelesítés
 Végfelhasználói hitelesítés használata az ajánlott módszer, ha azt szeretné, hogy a felhasználót, hogy jelentkezzen be az alkalmazás Azure AD használatával. Az alkalmazás el tudja-e a bejelentkezett felhasználóéval megegyező hozzáférési szinttel rendelkező Azure-erőforrások eléréséhez. A felhasználónak kell sorrendben rendszeres időközönként, hogy az alkalmazás karbantartása hozzáférés megadására.
@@ -49,7 +49,7 @@ Ebben az esetben az alkalmazás bejelentkezésre kéri a felhasználót, és min
         https://login.microsoftonline.com/<TENANT-ID>/oauth2/authorize?client_id=<APPLICATION-ID>&response_type=code&redirect_uri=<REDIRECT-URI>
 
    > [!NOTE]
-   > A \<REDIRECT-URI> értéket kódolni kell az URL-ben való használatra. Tehát például https://localhost, használjon `https%3A%2F%2Flocalhost`)
+   > A \<REDIRECT-URI> értéket kódolni kell az URL-ben való használatra. Tehát például https://localhost , használjon `https%3A%2F%2Flocalhost` )
 
     A jelen oktatóanyagban kicserélheti a fenti URL-ben szereplő helyőrző értékeket, és beillesztheti egy webböngésző címsorába. A rendszer átirányítja az Azure bejelentkezési azonosítójával történő hitelesítéshez. Miután sikeresen bejelentkezett, a válasz megjelenik a böngésző címsorában. A válasz az alábbi formátumban jelenik meg:
 

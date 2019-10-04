@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 8e8b493881662483e66dd835d1cc68a471b18454
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58803307"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60545520"
 ---
 # <a name="azure-media-services-telemetry"></a>Az Azure Media Services-telemetria  
 
@@ -79,7 +79,7 @@ Tulajdonság|Érték|Példák és megjegyzések
 PartitionKey|{fiókazonosító} _ {entity Azonosítójú}|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66<br/<br/>A Fiókazonosító tartalmazza a partíciókulcsot, ahol több Media Services-fiókok írása ugyanazt a tárfiókot a munkafolyamatok egyszerűsítése érdekében.
 RowKey|{seconds éjféli} _ {véletlenszerű értéket}|01688_00199<br/><br/>A sorkulcs indul ki, hogy a felső n stílus lekérdezések egy partíción belül éjféli másodpercek számát. További információkért tekintse meg [ezt](../../cosmos-db/table-storage-design-guide.md#log-tail-pattern) a cikket. 
 Időbélyeg|Dátum/idő|Automatikus időbélyege az Azure-tábla 2016-09-09T22:43:42.241Z
-Typo|A telemetria-adatokat biztosítva entitás típusa|Channel/StreamingEndpoint/Archive<br/><br/>Esemény típus egy karakterláncértéket.
+Típus|A telemetria-adatokat biztosítva entitás típusa|Channel/StreamingEndpoint/Archive<br/><br/>Esemény típus egy karakterláncértéket.
 Name (Név)|A telemetriai esemény neve|ChannelHeartbeat/StreamingEndpointRequestLog
 ObservedTime|Az idő, a telemetriai esemény történt (UTC)|2016-09-09T22:42:36.924Z<br/><br/>A megfigyelt idő (például egy csatorna) telemetriát küld az entitás által biztosított. Szinkronizálási hibák, ez az érték-összetevők közötti hozzávetőleges időt lehet
 ServiceID|{service} Azonosítójú|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
@@ -100,16 +100,16 @@ Tulajdonság|Érték|Példák
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
 Időbélyeg|Időbélyeg|Automatikus időbélyeg Azure Table 2016-09-09T22:43:42.241Z
-Typo|Typo|StreamingEndpoint
+Típus|Típus|StreamingEndpoint
 Name (Név)|Name (Név)|StreamingEndpointRequestLog
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
-ServiceID|Szolgáltatás azonosítója|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
+ServiceID|Service ID|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 Állomásnév|A végpont állomásneve|builddemoserver.origin.mediaservices.windows.net
 StatusCode|Rögzíti a HTTP-állapot|200
 Eredménykód|Eredmény kódja részletei|S_OK
 RequestCount|Ilyenkor az összesítést a kérelmek száma összesen|3
 BytesSent|Küldött bájtok összesített száma|2987358
-Kiszolgáló késése|Kiszolgáló átlagos késése (tárolóval együtt)|129
+ServerLatency|Kiszolgáló átlagos késése (tárolóval együtt)|129
 E2ELatency|Átlagos végpontok közötti késés|250
 
 **Élő csatorna**
@@ -119,10 +119,10 @@ Tulajdonság|Érték|Példák és megjegyzések
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
 Időbélyeg|Időbélyeg|Automatikus időbélyege az Azure-tábla 2016-09-09T22:43:42.241Z
-Typo|Typo|Csatorna
+Típus|Típus|Csatorna
 Name (Név)|Name (Név)|ChannelHeartbeat
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
-ServiceID|Szolgáltatás azonosítója|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
+ServiceID|Service ID|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 TrackType|Írja be a videó vagy hang/szöveg nyomon követése|a videó vagy hang
 TrackName|A track neve|a videó/audio_1
 Átviteli sebesség|Sávszélességű nyomon követése|785000
@@ -144,10 +144,10 @@ Tulajdonság|Érték|Példák és megjegyzések
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
 Időbélyeg|Időbélyeg|Automatikus időbélyege az Azure-tábla 2016-09-09T22:43:42.241Z
-Typo|Typo|Archívum
+Típus|Típus|Archívum
 Name (Név)|Name (Név)|ArchiveHeartbeat
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
-ServiceID|Szolgáltatás azonosítója|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
+ServiceID|Service ID|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 manifestName|Program URL-címe|asset-eb149703-ed0a-483c-91c4-e4066e72cce3/a0a5cfbf-71ec-4bd2-8c01-a92a2b38c9ba.ism
 TrackName|A track neve|audio_1
 TrackType|A szám típus|Hang/kép

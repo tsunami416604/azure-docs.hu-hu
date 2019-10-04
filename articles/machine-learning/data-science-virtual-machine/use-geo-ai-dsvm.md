@@ -1,53 +1,47 @@
 ---
-title: Az a földrajzi mesterséges intelligenciát használó adatelemző virtuális gép – Azure |} A Microsoft Docs
+title: A Geo AI használata
+titleSuffix: Azure Data Science Virtual Machine
 description: Ismerje meg, hogyan használhatja a földrajzi mesterséges Intelligencia adatelemző virtuális gép-adatok elemzésére és a földrajzi adatok alapján modelleket.
 keywords: deep learning, AI, beépített adatelemzési eszközzel, az adatelemzési virtuális gépet, a térinformatikai elemzés
 services: machine-learning
-documentationcenter: ''
-author: gopitk
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 03/05/2018
-ms.author: gokuma
-ms.openlocfilehash: 6e6737e928ece820ea9119d8dfe1d7cf22477646
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2d7532c51e2963c0dc9f8d02e7a0e32864e80f92
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57880109"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278416"
 ---
 # <a name="using-the-geo-artificial-intelligence-data-science-virtual-machine"></a>A földrajzi mesterséges intelligenciát használó adatelemző virtuális gép használata
 
-A földrajzi mesterséges Intelligencia adatelemző virtuális gép használatával adatlehívást elemzéshez, hajtsa végre az adatok konvertálását és modelleket az AI-alkalmazások, amelyek a földrajzi információk felhasználása. Miután a földrajzi mesterséges Intelligencia adatelemző virtuális gép kiépítése és ArcGIS Pro bejelentkezett az ArcGIS-fiókjával, megkezdése ArcGIS asztali és az ArcGis online implementálására. Az ArcGIS a Python-felületek és a egy R nyelv híd előre konfigurálva a Geo-adatelemzési virtuális gép keresztül is elérhető. Gazdag AI-alkalmazások létrehozásához, kombinálva, a gép tanulási és deep learning-keretrendszerek és egyéb adatok tudományos szoftverek az adatelemző virtuális gép elérhető.  
+A földrajzi mesterséges Intelligencia adatelemző virtuális gép használatával adatlehívást elemzéshez, hajtsa végre az adatok konvertálását és modelleket az AI-alkalmazások, amelyek a földrajzi információk felhasználása. Miután kiépítte a Geo AI-Data Science VM, és bejelentkezett a ArcGIS Pro-ba a ArcGIS-fiókkal, elindíthatja a ArcGIS Desktop és a ArcGIs online interakcióját. A ArcGIS a Python-felületekről és egy, a Geo-Data Science VM előre konfigurált R nyelvi hídra is elérheti. Gazdag AI-alkalmazások létrehozásához egyesítse a Geo-Data Science VMt a gépi tanulással és a mélyreható tanulási keretrendszerekkel és a rajta elérhető egyéb adatelemzési szoftverekkel.  
 
 
 ## <a name="configuration-details"></a>Konfiguráció részletei
 
-A Python-kódtár [arcpy](https://pro.arcgis.com/en/pro-app/arcpy/main/arcgis-pro-arcpy-reference.htm), amely szolgál ArcGIS-felület telepítve van a globális legfelső szintű conda környezetében az adatelemző virtuális gép, amely a következő címen található ```c:\anaconda```. 
+A ArcGIS-vel való kapcsolathoz használt Python-könyvtár, a [arcpy](https://pro.arcgis.com/en/pro-app/arcpy/main/arcgis-pro-arcpy-reference.htm), amely a (z) ```c:\anaconda```rendszerhez tartozó Data Science VM globális legfelső szintű Conda-környezetében található.
 
-- Ha a Python egy parancssorban futtatja, futtassa ```activate``` conda legfelső szintű Python környezetbe történő aktiválásához. 
-- Ha egy IDE- vagy Jupyter notebookot használja, a környezet vagy a kernel ellenőrizze, hogy a megfelelő conda-környezetben is kiválaszthatja. 
+- Ha a Pythont a parancssorból futtatja, akkor ```activate``` a Conda root Python-környezetbe való aktiváláshoz futtassa a parancsot.
+- IDE-vagy Jupyter-jegyzetfüzet használata esetén kiválaszthatja a környezetet vagy a rendszermagot, és meggyőződhet arról, hogy a megfelelő Conda-környezetben van-e.
 
-Az R-híd ArcGIS telepítve van, az R-tár nevű [arcgisbinding](https://github.com/R-ArcGIS/r-bridge) a fő Microsoft R server különálló példány található a ```C:\Program Files\Microsoft\ML Server\R_SERVER```. A Visual Studio, az RStudio és Jupyter már előre konfigurálva a R-környezetben, és hozzáférést kap a ```arcgisbinding``` R könyvtár. 
+A ArcGIS R-híd a [arcgisbinding](https://github.com/R-ArcGIS/r-bridge) nevű r-könyvtárként van telepítve a fő Microsoft Machine learning Server önálló példányában, amely a ```C:\Program Files\Microsoft\ML Server\R_SERVER```következő helyen található:. A Visual Studio, a RStudio és a Jupyter már előre konfigurálva van az r-környezet használatához, és hozzáfér az ```arcgisbinding``` r-könyvtárhoz. 
 
 
 ## <a name="geo-ai-data-science-vm-samples"></a>A földrajzi mesterséges Intelligencia adatelemző virtuális gép minták
 
-A gépi Tanulási és deep learning-keretrendszer-alapú-mintákat az az alapvető adatelemző virtuális gép mellett a földrajzi mintákat is tartalmaz a földrajzi mesterséges Intelligencia adatelemző virtuális gép részeként. Ezek a minták segítségével gyorsan elindíthatja a térinformatikai adatok és az ArcGIS-szoftverek használatával AI-alkalmazások fejlesztését. 
+Az alapszintű Data Science VM gépi tanulási és mélyreható mintákon alapuló mintáján kívül térinformatikai mintákat is biztosítunk a Geo AI-Data Science VM részeként. Ezek a minták segítséget nyújtanak a mesterséges intelligenciát használó alkalmazások fejlesztésének megkezdéséhez térinformatikai és ArcGIS szoftver használatával:
 
 
-1. [Első Python-térinformatikai elemzés paraméterkészlettel lesz kiadva](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/Python%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb): A Python felületén által biztosított ArcGIS térinformatikai adatok használatát bemutató egy bevezető minta a [arcpy](https://pro.arcgis.com/en/pro-app/arcpy/main/arcgis-pro-arcpy-reference.htm) könyvtár. Azt is bemutatja, hogyan kombinálhatja a hagyományos gépi tanulás a térinformatikai adatok és ArcGIS egy térképen az eredmény megjelenítése. 
+1. Bevezetés [a térinformatikai elemzés használatába a Python használatával](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/Python%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb): Bevezető minta, amely bemutatja, hogyan használhatók térinformatikai információk a Python felületen keresztül a ArcGIS-re a [arcpy](https://pro.arcgis.com/en/pro-app/arcpy/main/arcgis-pro-arcpy-reference.htm) -könyvtár által. Azt is bemutatja, hogyan kombinálhatja a hagyományos gépi tanulást a térinformatikai adatkezeléssel, majd megjelenítheti az eredményeket a ArcGIS egy térképén.
 
-2. [Első térinformatikai elemzés az r nyelv paraméterkészlettel lesz kiadva](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/R%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb): Egy bevezető minta bemutatja, hogyan dolgozhat a térinformatikai adatok által biztosított ArcGIS az R-felület használatával a [arcgisbinding](https://github.com/R-ArcGIS/r-bridge) könyvtár. 
+2. [Ismerkedés a térinformatikai elemzéssel az R használatával](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/R%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb): Bevezető minta, amely bemutatja, hogyan dolgozhat a térinformatikai adataival az R felülettel a [arcgisbinding](https://github.com/R-ArcGIS/r-bridge) -könyvtár által biztosított ArcGIS. 
 
-3. [Képpontos szintű föld besorolás használata](https://github.com/Azure/pixel_level_land_classification): Ez az oktatóanyag bemutatja, hogyan hozhat létre egy olyan Neurális hálózat-modell, légi felvételeken fogad bemenetként, és adja vissza a föld-cover címke. Példák a föld-cover címkék "erdős" vagy "víz." A modell minden képpont ilyen egy címkét a rendszerkép adja vissza. A modell a Microsoft nyílt forráskódú használatával lett összeállítva [Cognitive Toolkit (CNTK)](https://www.microsoft.com/en-us/cognitive-toolkit/) deep learning keretrendszer. 
+3. [Képpont szintű földhasználat besorolása](https://github.com/Azure/pixel_level_land_classification): Egy oktatóanyag, amely bemutatja, hogyan hozhat létre egy olyan mély neurális hálózati modellt, amely egy adott antenna-rendszerképet fogad el bemenetként, és visszaadja a földre kiterjedő címkét. Ilyenek például az *erdő* és a *víz*. A modell minden képpont ilyen egy címkét a rendszerkép adja vissza. 
 
 
 ## <a name="next-steps"></a>További lépések
@@ -55,4 +49,3 @@ A gépi Tanulási és deep learning-keretrendszer-alapú-mintákat az az alapvet
 Itt érhetők el, amelyek használják az adatelemző virtuális gép további példákat:
 
 * [Példák](dsvm-samples-and-walkthroughs.md)
-

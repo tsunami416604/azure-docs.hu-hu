@@ -12,21 +12,21 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/03/2018
+ms.date: 05/14/2019
 ms.author: b-juche
-ms.openlocfilehash: f08eaee038ad18c600826dea6fe0fd85935de59a
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: c58ceef57b984f46b86bb2a8577c53b75082b78b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57761973"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65794617"
 ---
 # <a name="resize-a-capacity-pool-or-a-volume"></a>A kapacitáskészlet vagy kötet átméretezése
 Módosíthatja a kapacitást készlet vagy szükség szerint kötet méretét. 
 
 ## <a name="resize-the-capacity-pool"></a>A kapacitás a készlet átméretezése 
 
-Módosíthatja a kapacitást készlet mérete 4-Tib-ra kerekítve vagy csökkentésére. A kapacitás a készlet átméretezése módosítja a megvásárolt Azure NetApp fájlok kapacitást.
+Módosíthatja a kapacitást készlet mérete 1-Tib-ra kerekítve vagy csökkentésére. A kapacitás a készlet méretét azonban nem lehet kisebb, mint 4 Tib-ra. A kapacitás a készlet átméretezése módosítja a megvásárolt Azure NetApp fájlok kapacitást.
 
 1. A NetApp fiók kezelése panelen kattintson a kapacitás a készlet átméretezése kívánt. 
 2. Kattintson a jobb gombbal a kapacitás-készlet neve, vagy kattintson a "..." ikonra a helyi menü megjelenítése a kapacitás a készlet sor végén található. 

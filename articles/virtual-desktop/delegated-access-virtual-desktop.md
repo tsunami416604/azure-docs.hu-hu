@@ -1,69 +1,69 @@
 ---
-title: Delegált hozzáférés Windows virtuális asztal előzetes verziója – Azure
-description: Hogyan kell delegálni a felügyeleti funkciókat biztosít a Windows virtuális asztal előzetes központi telepítés, beleértve a példákat.
+title: Delegált hozzáférés a Windows rendszerű virtuális asztalon – Azure
+description: Felügyeleti képességek delegálása Windows rendszerű virtuális asztali környezetben, például példákkal.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 250aea52de63a6397ce00e9cadcadf3a8ba39858
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: e8d1ba00043f43f626043d78ce0ab8953a0b3fbe
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400014"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679565"
 ---
-# <a name="delegated-access-in-windows-virtual-desktop-preview"></a>Windows virtuális asztal előzetes verzióban elérhető delegált hozzáférés
+# <a name="delegated-access-in-windows-virtual-desktop"></a>Delegált hozzáférés a Windows Virtual Desktopon
 
-Windows virtuális asztal előzetes rendelkezik delegált hozzáférés modell, amely lehetővé teszi olyan mértékű hozzáférést egy adott felhasználó jogosult szerepkör hozzárendelése szerint határozza meg. Szerepkör-hozzárendelés három részből áll: szolgáltatásnév, szerepkör-definíció és hatókör. A Windows virtuális asztal delegált hozzáférés modell alapján az Azure RBAC-modellben. Az adott szerepkör-hozzárendelések és azok összetevőiből kapcsolatos további információkért lásd: [az Azure szerepköralapú hozzáférés-vezérlés áttekintése](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles).
+A Windows virtuális asztal olyan delegált hozzáférési modellel rendelkezik, amely lehetővé teszi, hogy egy adott felhasználó számára engedélyezett mennyiségű hozzáférést rendeljen hozzá egy szerepkörhöz. A szerepkör-hozzárendelés három összetevőből áll: rendszerbiztonsági tag, szerepkör-definíció és hatókör. A Windows rendszerű virtuális asztali delegált hozzáférési modell az Azure RBAC-modellen alapul. Ha többet szeretne megtudni az adott szerepkör-hozzárendelésekről és azok összetevőiről, tekintse meg [Az Azure szerepköralapú hozzáférés-vezérlés áttekintését](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles).
 
-Windows virtuális asztal delegált hozzáférés által támogatott összes eleme a szerepkör-hozzárendelést a következő értékeket:
+A Windows virtuális asztal delegált hozzáférése a következő értékeket támogatja a szerepkör-hozzárendelés minden eleméhez:
 
 * Rendszerbiztonsági tag
     * Felhasználók
     * Szolgáltatásnevek
 * Szerepkör-definíció
     * Beépített szerepkörök
-* Hatókör
-    * Bérlő csoportok
-    * Bérlők
-    * Gazdagép-készletek
+* Scope
+    * Bérlői csoportok
+    * bérlők
+    * Gazdagépek készletei
     * Alkalmazáscsoportok
 
 ## <a name="built-in-roles"></a>Beépített szerepkörök
 
-A Windows virtuális asztal delegált hozzáférés hozzárendelheti a felhasználókhoz és az egyszerű szolgáltatások számos beépített szerepkör-definíciók rendelkezik.
+A Windows rendszerű virtuális asztal delegált hozzáférése számos beépített szerepkör-definícióval rendelkezik, amelyeket hozzárendelhet a felhasználókhoz és az egyszerű szolgáltatásokhoz.
 
-* A távoli asztali szolgáltatások tulajdonosa mindent felügyelhetnek, beleértve az erőforrásokhoz való hozzáférést.
-* Egy távoli asztali szolgáltatások közreműködői erőforrásokhoz való hozzáférés kivételével mindent felügyelhetnek.
-* Egy távoli asztali szolgáltatások olvasó, aki mindent megtekinthet, de nem módosíthatja.
-* A távoli asztali szolgáltatások az operátornak diagnosztikai tevékenységek megtekintéséhez.
+* Az RDS-tulajdonosok mindent kezelhetnek, beleértve az erőforrásokhoz való hozzáférést is.
+* Az RDS-közreműködők mindent kezelhetnek, de az erőforrásokhoz is hozzáférnek.
+* Az RDS-olvasó mindent megtekinthet, de nem végezhet módosításokat.
+* Az RDS-operátorok megtekinthetik a diagnosztikai tevékenységeket.
 
-## <a name="powershell-cmdlets-for-role-assignments"></a>PowerShell-parancsmagok a szerepkör-hozzárendelések
+## <a name="powershell-cmdlets-for-role-assignments"></a>A szerepkör-hozzárendelések PowerShell-parancsmagjai
 
-Futtassa a következő parancsmagokat létrehozása, megtekintése és szerkesztése a szerepkör-hozzárendelések:
+A következő parancsmagok futtatásával hozhatja létre, tekintheti meg és távolíthatja el a szerepkör-hozzárendeléseket:
 
-* **Get-RdsRoleAssignment** szerepkör-hozzárendelések listáját jeleníti meg.
-* **Új RdsRoleAssignment** hoz létre egy új szerepkör-hozzárendelést.
-* **Set-RdsRoleAssignment** szerkeszti a szerepkör-hozzárendeléseket.
+* A **Get-RdsRoleAssignment** megjeleníti a szerepkör-hozzárendelések listáját.
+* A **New-RdsRoleAssignment** új szerepkör-hozzárendelést hoz létre.
+* A **Remove-RdsRoleAssignment** törli a szerepkör-hozzárendeléseket.
 
-### <a name="accepted-parameters"></a>Elfogadott paramétereinek
+### <a name="accepted-parameters"></a>Elfogadott paraméterek
 
-Módosíthatja a alapszintű három parancsmag a következő paraméterekkel:
+Az alapszintű három parancsmagot a következő paraméterekkel módosíthatja:
 
-* **AadTenantId**: Itt adhatja meg, amely tagja az egyszerű szolgáltatás Azure Active Directory bérlői azonosító.
-* **AppGroupName**: a távoli asztal alkalmazás csoport neve.
-* **Diagnosztikai**: diagnosztika hatókörét jelzi. (Akár kell megfeleltetni a **infrastruktúra** vagy **bérlői** paraméterek.)
-* **HostPoolName**: a távoli asztali állomás készlet nevét.
-* **Infrastruktúra**: azt jelzi, hogy az infrastruktúra hatókör.
-* **RoleDefinitionName**: a felhasználó, csoport vagy alkalmazás rendelt távoli asztali szolgáltatások szerepköralapú hozzáférés-vezérlési szerepkör nevét. (Például távoli asztali szolgáltatások tulajdonos, távoli asztali szolgáltatások olvasó és így tovább.)
-* **ServerPrincipleName**: az Azure Active Directory-alkalmazás neve.
-* **SignInName**: a felhasználó e-mail címét vagy egyszerű felhasználónév.
+* **AadTenantId**: azt a Azure Active Directory bérlői azonosítót adja meg, amelyből az egyszerű szolgáltatásnév tagja.
+* **AppGroupName**: a távoli asztal alkalmazás csoportjának neve.
+* **Diagnosztika**: a diagnosztika hatókörét jelzi. (Párosítva kell lennie az **infrastruktúra** vagy a **bérlő** paramétereinek.)
+* **HostPoolName**: a távoli asztal-címkészlet neve.
+* **Infrastruktúra**: az infrastruktúra hatókörét jelzi.
+* **RoleDefinitionName**: a felhasználóhoz, csoporthoz vagy alkalmazáshoz rendelt, szerepkörön alapuló hozzáférés-vezérlési szerepkör távoli asztali szolgáltatások neve. (Például Távoli asztali szolgáltatások tulajdonos, Távoli asztali szolgáltatások olvasó stb.)
+* **ServerPrincipleName**: a Azure Active Directory alkalmazás neve.
+* **SignInName**: a felhasználó e-mail-címe vagy egyszerű felhasználóneve.
 * **TenantName**: a távoli asztal bérlő neve.
 
 ## <a name="next-steps"></a>További lépések
 
-Minden szerepkör által használható PowerShell-parancsmagok teljes listájáért tekintse meg a [PowerShell-referencia](/powershell/windows-virtual-desktop/overview).
+Az egyes szerepkörök által használható PowerShell-parancsmagok teljes listájáért tekintse meg a [PowerShell-referenciát](/powershell/windows-virtual-desktop/overview).
 
-Egy Windows virtuális asztali környezet beállításához útmutatást, lásd: [Windows virtuális asztal előzetes verziójú környezet](environment-setup.md).
+A Windows rendszerű virtuális asztali környezet beállításával kapcsolatos útmutatásért lásd: [Windows rendszerű virtuális asztali környezet](environment-setup.md).

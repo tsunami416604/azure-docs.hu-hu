@@ -15,11 +15,11 @@ ms.date: 01/09/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4e5c27911fe86a6916235014f8602327df929e20
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526367"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60595770"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Hozzon létre egy felügyeleti megoldás fájlt az Azure-ban (előzetes verzió)
 > [!NOTE]
@@ -72,8 +72,8 @@ Az alábbi táblázatban a paraméter attribútumait ismerteti.
 |:--- |:--- |
 | type |A paraméter adattípusa. A bemeneti vezérlőelem jelenik meg a felhasználó az adatok típusától függ.<br><br>logikai – a legördülő listából<br>karakterlánc - szövegmező<br>int - szövegmező<br>SecureString - jelszó mező<br> |
 | category |A kategória nem kötelező paraméter.  Paraméterek ugyanahhoz a kategóriához vannak csoportosítva. |
-| Vezérlő |További funkciókat lekérdezésikarakterlánc-paramétereket.<br><br>dátum és idő – dátum és idő vezérlőelem jelenik meg.<br>GUID - érték a GUID azonosító automatikusan jön létre, és a paraméter nem jelenik meg. |
-| leírás |A paraméter szükséges, leírását.  Megjelenik egy információk buborékra a paraméter mellett. |
+| control |További funkciókat lekérdezésikarakterlánc-paramétereket.<br><br>dátum és idő – dátum és idő vezérlőelem jelenik meg.<br>GUID - érték a GUID azonosító automatikusan jön létre, és a paraméter nem jelenik meg. |
+| description |A paraméter szükséges, leírását.  Megjelenik egy információk buborékra a paraméter mellett. |
 
 ### <a name="standard-parameters"></a>Szabványos paraméterek
 Az alábbi táblázat felsorolja az összes felügyeleti megoldások szabványos paramétereit.  Ezeket az értékeket a felhasználó helyett adatkérés el a megoldás az Azure Marketplace vagy gyorsindítási sablonok telepítésekor a rendszer kitölti.  Ha a megoldás telepítve van egy másik módszerrel a felhasználó értékeket kell megadnia a számukra.
@@ -83,14 +83,14 @@ Az alábbi táblázat felsorolja az összes felügyeleti megoldások szabványos
 >
 >
 
-| Paraméter | Typo | Leírás |
+| Paraméter | Típus | Leírás |
 |:--- |:--- |:--- |
-| fióknév |sztring |Az Azure Automation-fiók nevét. |
-| pricingTier |sztring |Log Analytics-munkaterületet és az Azure Automation-fiók tarifacsomagját. |
-| regionId |sztring |Az Azure Automation-fiók régiója. |
-| megoldás neve |sztring |A megoldás nevére.  A megoldás gyorsindítási sablonok használatával helyez üzembe, majd meg kell határozni solutionName paraméterként így meghatározhatja, hogy inkább igénylő a felhasználó számára adjon meg egy karakterláncot. |
-| workspaceName |sztring |Log Analytics-munkaterület neve. |
-| workspaceRegionId |sztring |A Log Analytics-munkaterület régiója. |
+| accountName |string |Az Azure Automation-fiók nevét. |
+| pricingTier |string |Log Analytics-munkaterületet és az Azure Automation-fiók tarifacsomagját. |
+| regionId |string |Az Azure Automation-fiók régiója. |
+| solutionName |string |A megoldás nevére.  A megoldás gyorsindítási sablonok használatával helyez üzembe, majd meg kell határozni solutionName paraméterként így meghatározhatja, hogy inkább igénylő a felhasználó számára adjon meg egy karakterláncot. |
+| workspaceName |string |Log Analytics-munkaterület neve. |
+| workspaceRegionId |string |A Log Analytics-munkaterület régiója. |
 
 
 Következő, másolja és illessze be a megoldásfájlt a szabványos paraméterek struktúráját.  
@@ -129,7 +129,7 @@ Következő, másolja és illessze be a megoldásfájlt a szabványos paraméter
     }
 
 
-Tekintse meg a paraméterértékeket a más elemek, a megoldás a szintaxissal **paraméter ("a paraméter neve")**.  Ha például a munkaterület nevének elérését, használja **parameters('workspaceName')**
+Tekintse meg a paraméterértékeket a más elemek, a megoldás a szintaxissal **paraméter ("a paraméter neve")** .  Ha például a munkaterület nevének elérését, használja **parameters('workspaceName')**
 
 ## <a name="variables"></a>Változók
 [Változók](../../azure-resource-manager/resource-group-authoring-templates.md#variables) többi része a felügyeleti megoldást használni kívánt érték.  Ezek az értékek nem jelennek meg a megoldást telepítő felhasználónak a.  A szerző biztosít egy egyetlen helyen, ahol felügyelheti az értékeket, amelyeket lehet, hogy több alkalommal a megoldás teljes szolgálnak. El kell helyezni minden olyan értéket adott a változók helyett sorszámozás az azokat a megoldást a **erőforrások** elemet.  Ez olvashatóbbá teszi a kódot, és egyszerűen módosíthatja ezeket az értékeket későbbi verziókban.
@@ -144,7 +144,7 @@ Az alábbiakban egy példát a egy **változók** megoldásokban használt szok�
         "AutomationApiVersion": "2015-10-31"
     },
 
-Tekintse meg a változó értéke a szintaxissal a megoldáson keresztül **változók ("változó neve")**.  Ha például SolutionName változó eléréséhez használja **variables('SolutionName')**.
+Tekintse meg a változó értéke a szintaxissal a megoldáson keresztül **változók ("változó neve")** .  Ha például SolutionName változó eléréséhez használja **variables('SolutionName')** .
 
 Azt is megadhatja, összetett változók értékeinek beállítja, hogy több.  Az alábbiak különösen hasznos lehet az eszközfelügyeleti megoldások, ahol több különböző típusú erőforrások tulajdonság határoz.  Például akkor lehetett átalakítása a megoldás változók, a következőhöz fent látható.
 
@@ -213,7 +213,7 @@ A megoldás erőforrás tulajdonságokkal rendelkezik, az alábbi táblázatban.
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| workspaceResourceId |A képernyőn a Log Analytics-munkaterület azonosítója  *\<erőforráscsoport azonosítója > /providers/Microsoft.OperationalInsights/workspaces/\<Munkaterületnév\>*. |
+| workspaceResourceId |A képernyőn a Log Analytics-munkaterület azonosítója  *\<erőforráscsoport azonosítója > /providers/Microsoft.OperationalInsights/workspaces/\<Munkaterületnév\>* . |
 | referencedResources |A megoldás, nem lehet eltávolítani, ha a megoldás a rendszer eltávolítja az erőforrások listájában. |
 | containedResources |A megoldás, amely a megoldás eltávolításakor el kell távolítani az erőforrások listájában. |
 
@@ -224,9 +224,9 @@ A **terv** entitás a megoldás erőforrás tulajdonságokkal rendelkezik, az al
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| név |A megoldás nevére. |
+| name |A megoldás nevére. |
 | version |A megoldás a szerző által meghatározott verziója. |
-| termék |A megoldás azonosításához egyedi karakterlánc. |
+| product |A megoldás azonosításához egyedi karakterlánc. |
 | publisher |Adott megoldás kiadójával. |
 
 

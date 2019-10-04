@@ -1,18 +1,18 @@
 ---
-title: 'A helyszíni hálózat csatlakoztatása az Azure-beli virtuális hálózathoz: Helyek közötti VPN: Portál |} A Microsoft Docs'
+title: 'A helyszíni hálózat összekapcsolása egy Azure-beli virtuális hálózattal: Helyek közötti VPN: Portál | Microsoft Docs'
 description: A helyszíni hálózatot az Azure-beli virtuális hálózattal a nyilvános interneten keresztül összekötő IPsec-kapcsolat létrehozásának lépései. Ezen lépéseket követve létrehozhat egy helyek közötti VPN-átjáró kapcsolatot a portál segítségével.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 12/19/2018
+ms.date: 09/24/2019
 ms.author: cherylmc
-ms.openlocfilehash: 032b6a4f5147d06a4613a827a0372437dca47f47
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 9fb62d74025869c3442308f9e4ac9fb8fc02669b
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651639"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266556"
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>Helyek közötti kapcsolat létrehozása az Azure Portalon
 
@@ -42,53 +42,45 @@ A konfigurálás megkezdése előtt győződjön meg a következő feltételek t
 
 A cikkben szereplő példák a következő értékeket használják. Ezekkel az értékekkel létrehozhat egy tesztkörnyezetet, vagy a segítségükkel értelmezheti a cikkben szereplő példákat. További információkat a VPN Gateway beállításairól általánosságban [a VPN Gateway beállításaival kapcsolatos](vpn-gateway-about-vpn-gateway-settings.md) cikkben találhat.
 
-* **Virtuális hálózat neve:** A TestVNet1
+* **VNet neve:** VNet1
 * **Címtér:** 10.1.0.0/16
-* **Előfizetés:** A használni kívánt előfizetés
+* **Előfizetés** A használni kívánt előfizetés
 * **Erőforráscsoport:** TestRG1
-* **Hely:** USA keleti régiója
-* **Alhálózat:** Előtérbeli: 10.1.0.0/24, háttér: 10.1.1.0/24 (nem kötelező ehhez a gyakorlathoz)
-* **Átjáróalhálózat neve:** Átjáró-alhálózat (Ez lesz automatikusan ki a portál)
-* **Átjáróalhálózat címtartománya:** 10.1.255.0/27
-* **DNS-kiszolgáló:** 8.8.8.8 – nem kötelező. A saját DNS-kiszolgálójának IP-címe.
-* **Virtuális hálózati átjáró neve:** VNet1GW
-* **Nyilvános IP-címe:** VNet1GWIP
+* **Location** (Hely): East US
+* **Alhálózat** FrontEnd 10.1.0.0/24, háttérrendszer: 10.1.1.0/24 (nem kötelező ehhez a gyakorlathoz)
+* **Átjáró alhálózatának neve:** GatewaySubnet (ez automatikusan kitölti a portált)
+* **Átjáró-alhálózati címtartomány:** 10.1.255.0/27
+* **Virtual Network átjáró neve:** VNet1GW
+* **Nyilvános IP-cím:** VNet1GWIP
 * **VPN típusa:** Útvonalalapú
-* **Kapcsolat típusa:** Site-to-site (IPsec)
+* **Kapcsolattípus:** Helyek közötti (IPsec)
 * **Átjáró típusa:** VPN
-* **Helyi hálózati átjáró neve:** Site1
-* **Kapcsolat neve:** VNet1toSite1
-* **Megosztott kulcs:** Ebben a példában az abc123 kulcsot használjuk. Használhat azonban bármi mást is, ami kompatibilis a VPN-hardverrel. A lényeg az, hogy az értékek azonosak legyenek a kapcsolat két oldalán.
+* **Helyi hálózati átjáró neve:** Hely1
+* **Kapcsolatok neve:** VNet1toSite1
+* **Megosztott kulcs:** Ebben a példában a abc123-t használjuk. Használhat azonban bármi mást is, ami kompatibilis a VPN-hardverrel. A lényeg az, hogy az értékek azonosak legyenek a kapcsolat két oldalán.
 
 ## <a name="CreatVNet"></a>1. Virtuális hálózat létrehozása
 
 [!INCLUDE [Create a virtual network](../../includes/vpn-gateway-create-virtual-network-portal-include.md)]
 
-## <a name="dns"></a>2. DNS-kiszolgáló megadása
+## <a name="VNetGateway"></a>2. A VPN-átjáró létrehozása
 
-A helyek közötti kapcsolatok létrehozásához nincs szükség DNS-re. Ha azonban azt szeretné, hogy a virtuális hálózatokon üzembe helyezett erőforrásokon működjön a névfeloldás, adjon meg egy DNS-kiszolgálót. Ezzel a beállítással megadhatja azt a DNS-kiszolgálót, amelyet névfeloldásra kíván használni ennél a virtuális hálózatnál. A beállítás nem hoz létre új DNS-kiszolgálót. A névfeloldással kapcsolatos további információkért tekintse meg [A virtuális gépek és szerepkörpéldányok névfeloldása](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) című cikket.
+Ebben a lépésben a virtuális hálózat virtuális hálózati átjáróját fogja létrehozni. Az átjáró létrehozása akár 45 percet is igénybe vehet, az átjáró kiválasztott termékváltozatától függően.
 
-[!INCLUDE [Specify a dns server - optional](../../includes/vpn-gateway-specify-dns-portal-include.md)]
+[!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-portal-include.md)]
 
-## <a name="gatewaysubnet"></a>3. Az átjáróalhálózat létrehozása
-
-[!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-include.md)]
-
-[!INCLUDE [Add a gateway subnet](../../includes/vpn-gateway-add-gateway-subnet-portal-include.md)]
+[!INCLUDE [Create a vpn gateway](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
 
 [!INCLUDE [NSG warning](../../includes/vpn-gateway-no-nsg-include.md)]
 
-## <a name="VNetGateway"></a>4. A VPN-átjáró létrehozása
 
-[!INCLUDE [Create a vpn gateway](../../includes/vpn-gateway-add-gateway-portal-include.md)]
-
-## <a name="LocalNetworkGateway"></a>5. A helyi hálózati átjáró létrehozása
+## <a name="LocalNetworkGateway"></a>3. A helyi hálózati átjáró létrehozása
 
 A helyi hálózati átjáró általában a helyszínt jelenti. Olyan nevet adjon a helynek, amellyel az Azure hivatkozhat rá, majd határozza meg annak a helyszíni VPN-eszköznek az IP-címét, amellyel létre kívánja hozni a kapcsolatot. Emellett megadhatja azokat az IP-címelőtagokat, amelyek a VPN-átjárón keresztül a VPN-eszközre lesznek irányítva. Az Ön által meghatározott címelőtagok a helyszíni hálózatán található előtagok. Ha a helyszíni hálózat megváltozik, vagy módosítania kell a VPN-eszköz nyilvános IP-címét, könnyen frissítheti az értékeket később.
 
 [!INCLUDE [Add a local network gateway](../../includes/vpn-gateway-add-local-network-gateway-portal-include.md)]
 
-## <a name="VPNDevice"></a>6. VPN-eszköz konfigurálása
+## <a name="VPNDevice"></a>4. VPN-eszköz konfigurálása
 
 A helyszíni hálózaton a helyek közötti kapcsolatok létesítéséhez VPN-eszközre van szükség. Ebben a lépésben a VPN-eszköz konfigurálása következik. A VPN-eszköz konfigurálásakor a következőkre van szüksége:
 
@@ -97,13 +89,13 @@ A helyszíni hálózaton a helyek közötti kapcsolatok létesítéséhez VPN-es
 
 [!INCLUDE [Configure a VPN device](../../includes/vpn-gateway-configure-vpn-device-include.md)]
 
-## <a name="CreateConnection"></a>7. VPN-kapcsolat létrehozása
+## <a name="CreateConnection"></a>5. VPN-kapcsolat létrehozása
 
 Hozzon létre egy helyek közötti VPN-kapcsolatot a virtuális hálózati átjáró és a helyszíni VPN-eszköz között.
 
 [!INCLUDE [Add a site-to-site connection](../../includes/vpn-gateway-add-site-to-site-connection-portal-include.md)]
 
-## <a name="VerifyConnection"></a>8. A VPN-kapcsolat ellenőrzése
+## <a name="VerifyConnection"></a>6. A VPN-kapcsolat ellenőrzése
 
 [!INCLUDE [Verify the connection](../../includes/vpn-gateway-verify-connection-portal-include.md)]
 

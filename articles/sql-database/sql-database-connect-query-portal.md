@@ -1,5 +1,5 @@
 ---
-title: 'Az Azure Portalon: Azure SQL Database Query-szerkesztő használatával lekérdezheti |} A Microsoft Docs'
+title: 'Azure Portal: Lekérdezés Azure SQL Database a Query Editor használatával | Microsoft Docs'
 description: Megtudhatja, hogyan csatlakozhat az SQL Database-hez az Azure Portalon az SQL-lekérdezésszerkesztő segítségével. Ezután futtasson Transact-SQL (T-SQL) utasításokat az adatok lekérdezéséhez és szerkesztéséhez.
 keywords: csatlakozás SQL Database-adatbázishoz, Azure Portal, portál, lekérdezésszerkesztő
 services: sql-database
@@ -8,38 +8,37 @@ ms.subservice: development
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
-author: AyoOlubeko
-ms.author: ayolubek
+author: Ninarn
+ms.author: ninarn
 ms.reviewer: carlrab
-manager: craigg
-ms.date: 02/12/2019
-ms.openlocfilehash: b2109afe6760eb87269a33ed74784149c2bf3e03
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 06/28/2019
+ms.openlocfilehash: 3702c88d0a5cdc7aa1f854f71e3aee8a42d9c22c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58105794"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569161"
 ---
-# <a name="quickstart-use-the-azure-portals-sql-query-editor-to-connect-and-query-data"></a>Gyors útmutató: Csatlakozás és adatok lekérdezése az Azure portal SQL-Lekérdezésszerkesztő használatával
+# <a name="quickstart-use-the-azure-portals-sql-query-editor-to-connect-and-query-data"></a>Gyors útmutató: A Azure Portal SQL-lekérdezés-szerkesztője segítségével csatlakozhat és lekérdezheti azokat
 
-Az SQL-Lekérdezésszerkesztő egy SQL-lekérdezések végrehajtása az Azure SQL Database vagy Azure SQL Data Warehouse egyszerű módot biztosít az Azure portal böngésző eszköz. Ez a rövid útmutatóban való csatlakoztatása SQL-adatbázishoz, majd futtassa a Transact-SQL-utasítások használatával lekérdezni, beszúrni, frissíteni és törli az adatokat a Lekérdezésszerkesztő használni kívánt.
+Az SQL-Lekérdezésszerkesztő egy SQL-lekérdezések végrehajtása az Azure SQL Database vagy Azure SQL Data Warehouse egyszerű módot biztosít az Azure portal böngésző eszköz. Ebben a rövid útmutatóban a lekérdezéstervező segítségével csatlakozhat egy SQL-adatbázishoz, majd a Transact-SQL-utasítások futtatásával lekérdezheti, beszúrhatja, frissítheti és törölheti az adatokat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
-- Azure SQL Database-adatbázis. Az alábbi rövid útmutatókban hozhat létre, és válassza az Azure SQL Database egy adatbázis is használja:
+- Azure SQL-adatbázis. Az alábbi rövid útmutatók segítségével hozhat létre és konfigurálhat egy adatbázist Azure SQL Databaseban:
 
   || Önálló adatbázis |
   |:--- |:--- |
-  | Létrehozás| [Portál](sql-database-single-database-get-started.md) | 
-  || [Parancssori felület](scripts/sql-database-create-and-configure-database-cli.md) | 
-  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | 
-  | Konfigurálás | [kiszolgálószintű IP-tűzfalszabály](sql-database-server-level-firewall-rule.md)| 
+  | Hozzon létre| [Portál](sql-database-single-database-get-started.md) |
+  || [Parancssori felület](scripts/sql-database-create-and-configure-database-cli.md) |
+  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) |
+  | Konfigurálás | [Kiszolgálói szintű IP-tűzfalszabály](sql-database-server-level-firewall-rule.md)|
   |||
 
 > [!NOTE]
-> Győződjön meg arról, hogy a **Azure-szolgáltatásokhoz való hozzáférés engedélyezése** beállítás **ON** az SQL server Tűzfalbeállításaiban. Ezt a lehetőséget biztosít az SQL-lekérdezésszerkesztőnek az adatbázisokhoz és az adattárházakhoz.
+> A lekérdezés-szerkesztő a 443-es és a 1443-es portot használja a kommunikációhoz.  Győződjön meg arról, hogy engedélyezte a kimenő HTTPS-forgalmat ezeken a portokon. Emellett hozzá kell adnia a kimenő IP-címét a kiszolgáló engedélyezett tűzfalszabályok számára az adatbázisok és az adattárházak eléréséhez.
 
 ## <a name="sign-in-the-azure-portal"></a>Jelentkezzen be az Azure Portalon
 
@@ -49,13 +48,13 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 1. Válassza ki **SQL-adatbázisok** a bal oldali menüben válassza ki **mySampleDatabase**.
 
-2. A bal oldali menüben, kereséséhez és kijelöléséhez **Lekérdezésszerkesztő (előzetes verzió)**. A **bejelentkezési** lap jelenik meg.
+2. A bal oldali menüben, kereséséhez és kijelöléséhez **Lekérdezésszerkesztő (előzetes verzió)** . A **bejelentkezési** lap jelenik meg.
 
     ![lekérdezésszerkesztő keresése](./media/sql-database-connect-query-portal/find-query-editor.PNG)
 
 3. Az a **engedélyezési típus** legördülő menüjében válassza **SQL Server-hitelesítés** , és adja meg a felhasználói Azonosítót és jelszót a kiszolgálói rendszergazdai fiók az adatbázis létrehozásakor használt.
 
-    ![bejelentkezés](./media/sql-database-connect-query-portal/login-menu.png) 
+    ![bejelentkezés](./media/sql-database-connect-query-portal/login-menu.png)
 
 4. Kattintson az **OK** gombra.
 
@@ -70,7 +69,7 @@ Az Active Directory (AD) rendszergazda konfigurálása lehetővé teszi, hogy eg
 
 1. Válassza ki **összes erőforrás** elemet a bal oldali menüben, majd az SQL Serverhez.
 
-2. Az SQL-kiszolgáló **beállítások** menüjében válassza **Active Directory-rendszergazda**.
+2. Az SQL Server **Beállítások** menüjében válassza a **Active Directory rendszergazda**elemet.
 
 3. AD admin oldal eszköztárán válassza **rendszergazda beállítása** , és válassza ki a felhasználó vagy csoport az AD-rendszergazdaként
 
@@ -78,8 +77,8 @@ Az Active Directory (AD) rendszergazda konfigurálása lehetővé teszi, hogy eg
 
 4. AD admin oldal eszköztárán válassza **mentése**.
 
-5. Keresse meg a **mySampleDatabase** adatbázisra, majd a bal oldali menüből válassza **Lekérdezésszerkesztő (előzetes verzió)**. A **bejelentkezési** lap jelenik meg. Ha Ön AD rendszergazda, majd a jobb oldali alatt **Active Directory egyszeri bejelentkezés**, megjelenik egy üzenet közli, hogy már bejelentkezett. 
-   
+5. Keresse meg a **mySampleDatabase** adatbázisra, majd a bal oldali menüből válassza **Lekérdezésszerkesztő (előzetes verzió)** . A **bejelentkezési** lap jelenik meg. Ha Ön AD-rendszergazda, akkor a jobb oldalon **Active Directory egyszeri bejelentkezés**alatt megjelenik egy üzenet, amely azt jelzi, hogy be van jelentkezve.
+
 6. Kattintson az **OK** gombra.
 
 
@@ -100,7 +99,7 @@ Az Active Directory (AD) rendszergazda konfigurálása lehetővé teszi, hogy eg
 
 ## <a name="insert-data"></a>Adat beszúrása
 
-Futtassa a következő [BESZÚRÁSA](https://msdn.microsoft.com/library/ms174335.aspx) hozzáadása egy új terméket a Transact-SQL utasítást a `SalesLT.Product` tábla.
+Az alábbi [Insert](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL-utasítás futtatásával adjon hozzá egy új terméket `SalesLT.Product` a táblához.
 
 1. Ehhez cserélje le az előző lekérdezést.
 
@@ -125,12 +124,12 @@ Futtassa a következő [BESZÚRÁSA](https://msdn.microsoft.com/library/ms174335
    ```
 
 
-2. Válassza ki **futtatása** az új sor beszúrásához a `Product` tábla. A **üzenetek** ablaktáblán megjelennek azok **sikeres lekérdezés: Érintett sorok: 1**.
+2. Válassza a **Futtatás** elemet egy új sor `Product` táblázatba való beszúrásához. Az **üzenetek** ablaktábla a **lekérdezés sikerességét jeleníti meg: Érintett sorok: 1**.
 
 
 ## <a name="update-data"></a>Adatok frissítése
 
-Futtassa a következő [frissítés](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL utasítás használatával módosíthat az új termék.
+Futtassa az alábbi [Update](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL-utasítást az új termék módosításához.
 
 1. Ehhez cserélje le az előző lekérdezést.
 
@@ -140,11 +139,11 @@ Futtassa a következő [frissítés](https://msdn.microsoft.com/library/ms177523
    WHERE Name = 'myNewProduct';
    ```
 
-2. Válassza ki **futtatása** egy megadott sorának frissítéséhez a `Product` tábla. A **üzenetek** ablaktáblán megjelennek azok **sikeres lekérdezés: Érintett sorok: 1**.
+2. Válassza a **Futtatás** lehetőséget a `Product` tábla megadott sorának frissítéséhez. Az **üzenetek** ablaktábla a **lekérdezés sikerességét jeleníti meg: Érintett sorok: 1**.
 
 ## <a name="delete-data"></a>Adat törlése
 
-Futtassa a következő [törlése](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL utasítást az új termék eltávolítása.
+Futtassa az alábbi [delete](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL utasítást az új termék eltávolításához.
 
 1. Cserélje le az előző lekérdezés erre:
 
@@ -153,18 +152,18 @@ Futtassa a következő [törlése](https://msdn.microsoft.com/library/ms189835.a
    WHERE Name = 'myNewProduct';
    ```
 
-2. Válassza ki **futtatása** egy megadott sorának törléséhez a `Product` tábla. A **üzenetek** ablaktáblán megjelennek azok **sikeres lekérdezés: Érintett sorok: 1**.
+2. Válassza a **Futtatás** lehetőséget a `Product` tábla megadott sorának törléséhez. Az **üzenetek** ablaktábla a **lekérdezés sikerességét jeleníti meg: Érintett sorok: 1**.
 
 
 ## <a name="query-editor-considerations"></a>Lekérdezés-szerkesztő szempontok
 
 Ha a Lekérdezésszerkesztő néhány dolgot lehet.
 
-* A virtuális hálózaton nem használható a Lekérdezésszerkesztő az SQL server-adatbázisok lekérdezése.
+* A lekérdezés-szerkesztő a 443-es és a 1443-es portot használja a kommunikációhoz.  Győződjön meg arról, hogy engedélyezte a kimenő HTTPS-forgalmat ezeken a portokon. Emellett hozzá kell adnia a kimenő IP-címét a kiszolgáló engedélyezett tűzfalszabályok számára az adatbázisok és az adattárházak eléréséhez.
 
 * F5 billentyű lenyomásával frissíti a Lekérdezésszerkesztő lapja, és bármilyen szerkesztett lekérdezést elvész.
 
-* A Lekérdezésszerkesztő nem támogatja a Kapcsolódás a `master` adatbázis.
+* A lekérdezés-szerkesztő nem támogatja az `master` adatbázishoz való kapcsolódást.
 
 * A lekérdezés végrehajtása 5 perces időtúllépés van.
 

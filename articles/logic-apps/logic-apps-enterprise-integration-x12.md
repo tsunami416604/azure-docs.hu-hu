@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 7422d2d5-b1c7-4a11-8c9b-0d8cfa463164
 ms.date: 01/31/2017
-ms.openlocfilehash: 6665ea8bc4016c9d64005f9c742115cf785ed5ba
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f06e213dbae31c9d7c4e212d605cc962aba71d2d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57842138"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64728755"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>B2B vállalati integráció az Azure Logic Apps Enterprise Integration Pack Exchange X12 üzenete
 
@@ -53,11 +53,11 @@ Miután [integrációs fiók létrehozása](../logic-apps/logic-apps-enterprise-
 4. Válassza ki **áttekintése**, majd válassza ki a **szerződések** csempére. 
    Ha nem rendelkezik egy szerződés-csempét, először adja hozzá a csempét. 
 
-   ![Válassza a "Szerződés" csempe](./media/logic-apps-enterprise-integration-as2/agreement-1.png)
+   ![Válassza a "Szerződés" csempe](./media/logic-apps-enterprise-integration-x12/agreement-1.png)
 
 5. A **szerződések**, válassza a **Hozzáadás**.
 
-   ![Válassza az "Add"](./media/logic-apps-enterprise-integration-as2/agreement-2.png)     
+   ![Válassza az "Add"](./media/logic-apps-enterprise-integration-x12/agreement-2.png)     
 
 6. Alatt **Hozzáadás**, adjon meg egy **neve** esetében a szerződés hatálya alá. 
    A szerződés típusának kiválasztása **X12**. 
@@ -69,12 +69,12 @@ Miután [integrációs fiók létrehozása](../logic-apps/logic-apps-enterprise-
     | Tulajdonság | Leírás |
     | --- | --- |
     | Name (Név) |A Szerződés neve |
-    | Egyezmény típusa | X12 kell lennie. |
+    | Szerződés típusa | X12 kell lennie. |
     | Gazdagéppartner |Egy szerződést kell a gazdagép és Vendég partner. A gazdagéppartner a szervezet, amely beállítja a szerződés jelöli. |
     | Gazdagép-identitás |A gazdagéppartner azonosítója |
     | Vendégpartner |Egy szerződést kell a gazdagép és Vendég partner. A vendégpartner a szervezet, amely a fogadó partner üzleti állapotát jelöli. |
     | Vendégidentitás |A vendégpartner azonosítója |
-    | Fogadási beállítások |Ezek a tulajdonságok vonatkoznak az összes, a szerződés által fogadott üzeneteket. |
+    | Beállítások |Ezek a tulajdonságok vonatkoznak az összes, a szerződés által fogadott üzeneteket. |
     | Küldési beállítások |Ezek a tulajdonságok a szerződés által küldött összes üzenet vonatkozik. |  
 
    > [!NOTE]
@@ -122,9 +122,9 @@ Válassza ki az egyes tranzakciótípus (ST1) és a küldő alkalmazás (GS2) s�
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| Verzió |Válassza ki a X12 verzió |
+| Version |Válassza ki a X12 verzió |
 | Tranzakció típusa (ST01) |Jelölje be a tranzakció típusa |
-| Küldő alkalmazás (GS02) |Válassza ki a küldő alkalmazást |
+| Sender Application (GS02) |Válassza ki a küldő alkalmazást |
 | Séma |Válassza ki a használni kívánt fájl. Sémákat az integrációs fiók kerülnek. |
 
 > [!NOTE]
@@ -136,7 +136,7 @@ Válassza ki az egyes tranzakciótípus (ST1) és a küldő alkalmazás (GS2) s�
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| ISA11 használata |A tranzakciókészlet használandó elválasztó határozza meg: <p>Válassza ki **szabványos azonosító** decimális jelölés használandó ponttal (.), ahelyett, hogy a bejövő dokumentum az EDI a decimális jelölés kap a folyamatot. <p>Válassza ki **ismétlődés-elválasztó** az elválasztó egy egyszerű adatelemének vagy ismétlődő adatstruktúra ismételt előfordulásának a megadásához. Ha például általában a karátot (^) szolgál a ismétlődési elválasztóként. A HIPAA sémák a karátot csak használhatja. |
+| ISA11 Usage |A tranzakciókészlet használandó elválasztó határozza meg: <p>Válassza ki **szabványos azonosító** decimális jelölés használandó ponttal (.), ahelyett, hogy a bejövő dokumentum az EDI a decimális jelölés kap a folyamatot. <p>Válassza ki **ismétlődés-elválasztó** az elválasztó egy egyszerű adatelemének vagy ismétlődő adatstruktúra ismételt előfordulásának a megadásához. Ha például általában a karátot (^) szolgál a ismétlődési elválasztóként. A HIPAA sémák a karátot csak használhatja. |
 
 ### <a name="control-numbers"></a>Ellenőrzőszámok
 
@@ -144,9 +144,9 @@ Válassza ki az egyes tranzakciótípus (ST1) és a küldő alkalmazás (GS2) s�
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| Adatcsere ellenőrzőszám ismétlődésének letiltása |Ismétlődő adatcsere letiltása. Az adatcsere ellenőrzőszáma (ISA13) ellenőrzi a beérkezett adatcsere-ellenőrzőszám. Egyezés észlelése esetén a fogadási folyamat nem dolgozza fel az adatcsere. Megadhatja, hogy hány napig értékét, így az ellenőrzés végrehajtásához *ismétlődő ISA13 ellenőrzésének gyakorisága (napokban)*. |
-| Csoport-ellenőrzőszám ismétlődésének letiltása |Blokk felcserélődések a duplikált csoportokhoz ellenőrzőszámok. |
-| Tranzakciókészlet-ellenőrzőszám ismétlődésének letiltása |Blokk felcserélődések az ismétlődő tranzakciókészlet set ellenőrzőszámok. |
+| Adatcsere ellenőrzőszám ismétlődésének letiltása |Ismétlődő adatcsere letiltása. Az adatcsere ellenőrzőszáma (ISA13) ellenőrzi a beérkezett adatcsere-ellenőrzőszám. Egyezés észlelése esetén a fogadási folyamat nem dolgozza fel az adatcsere. Megadhatja, hogy hány napig értékét, így az ellenőrzés végrehajtásához *ismétlődő ISA13 ellenőrzésének gyakorisága (napokban)* . |
+| Csoport-ellenőrzőszám ismétlődésének |Blokk felcserélődések a duplikált csoportokhoz ellenőrzőszámok. |
+| Tranzakció csoport-ellenőrzőszám ismétlődésének |Blokk felcserélődések az ismétlődő tranzakciókészlet set ellenőrzőszámok. |
 
 ### <a name="validations"></a>Ellenőrzések
 
@@ -156,11 +156,11 @@ Után minden érvényesítési sorban, egy másik automatikusan hozzáadja. Ha n
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| Üzenettípus |Válassza ki az EDI-üzenet típusa. |
+| Üzenet típusa |Válassza ki az EDI-üzenet típusa. |
 | EDI-ellenőrzés |Hajtsa végre a séma EDI tulajdonságok, mezőhossz-korlátozásai, üres adatelem és záró elválasztók által meghatározott adattípusok EDI-ellenőrzés. |
 | Bővített ellenőrzés |Ha az adattípus nem EDI, ellenőrzés be van kapcsolva az elem követelménynek és ismétlődési, enumerálások és az adatok elem hossza érvényesítési (minimális/maximális) engedélyezett. |
 | Kezdő/záró nullák engedélyezése |A többi kezdő vagy záró nulla megőrzi, és szóköz karakter. Ne távolítsa el ezeket a karaktereket. |
-| Kezdő/záró nullák levágása |Távolítsa el a kezdő vagy záró nulla, a térköz karaktereket. |
+| Kezdő/záró nullák Trim |Távolítsa el a kezdő vagy záró nulla, a térköz karaktereket. |
 | Záróelválasztó-szabályzat |Záró elválasztók készítése. <p>Válassza ki **nem engedélyezett** időtartamig záró elválasztó karakterek és a kapott adatcsere elválasztók. Ha az adatcsere záró elválasztó karakterek és elválasztók, az adatcsere van deklarálva nem érvényes. <p>Válassza ki **nem kötelező** vagy a záró elválasztó karakterek és elválasztók nélkül érték elfogadásához. <p>Válassza ki **kötelező** mikor kell rendelkeznie az adatcsere, záró elválasztó karakterek és elválasztók. |
 
 ### <a name="internal-settings"></a>Belső beállítások
@@ -216,7 +216,7 @@ Most már a szerződés elkészült kezelésére, amelyek megfelelnek a kiválas
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| Verzió |Válassza ki a X12 verzió |
+| Version |Válassza ki a X12 verzió |
 | Tranzakció típusa (ST01) |Jelölje be a tranzakció típusa |
 | SCHEMA |Válassza ki a használandó sémát. Sémákat az integrációs fiókjában található. Ha először válassza ki a sémát, a rendszer automatikusan beállítja verziója és a tranzakció típusa  |
 
@@ -229,7 +229,7 @@ Most már a szerződés elkészült kezelésére, amelyek megfelelnek a kiválas
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| ISA11 használata |A tranzakciókészlet használandó elválasztó határozza meg: <p>Válassza ki **szabványos azonosító** decimális jelölés használandó ponttal (.), ahelyett, hogy a bejövő dokumentum az EDI a decimális jelölés kap a folyamatot. <p>Válassza ki **ismétlődés-elválasztó** az elválasztó egy egyszerű adatelemének vagy ismétlődő adatstruktúra ismételt előfordulásának a megadásához. Ha például általában a karátot (^) szolgál a ismétlődési elválasztóként. A HIPAA sémák a karátot csak használhatja. |
+| ISA11 Usage |A tranzakciókészlet használandó elválasztó határozza meg: <p>Válassza ki **szabványos azonosító** decimális jelölés használandó ponttal (.), ahelyett, hogy a bejövő dokumentum az EDI a decimális jelölés kap a folyamatot. <p>Válassza ki **ismétlődés-elválasztó** az elválasztó egy egyszerű adatelemének vagy ismétlődő adatstruktúra ismételt előfordulásának a megadásához. Ha például általában a karátot (^) szolgál a ismétlődési elválasztóként. A HIPAA sémák a karátot csak használhatja. |
 
 ### <a name="control-numbers"></a>Ellenőrzőszámok
 
@@ -263,7 +263,7 @@ Eltérő a karakterkészletet, a elválasztó külön készletét adja meg minde
 | --- | --- |
 | Használandó karakterkészlet |A tulajdonságait, válassza ki a X12 karakterkészlet ellenőrzése. A beállítások a következők: alapszintű, bővített és UTF8. |
 | Séma |A legördülő listából válassza ki a sémát. Miután végzett az egyes sorok, a rendszer automatikusan hozzáadja az új sort. A kiválasztott séma, az elválasztók készletének kiválasztása, amelyet szeretne használni, az alábbi elválasztó leírása alapján. |
-| Bevitel típusa |Válassza ki egy bemeneti típusát a legördülő listából. |
+| Bemenet típusa |Válassza ki egy bemeneti típusát a legördülő listából. |
 | Összetevő-elválasztó |Összetett adatok elemek elválasztásához, adja meg egy egyetlen karaktert. |
 | Adatelem-elválasztó |Összetett adatok egyszerű elemek elválasztásához, adjon meg egy egyetlen karaktert. |
 | Helyettesítő karakter |Adjon meg egy helyettesítő karaktert, és cserélje le a hasznos adatok összes elválasztó karakter, a kimenő X12 létrehozásakor használt üzenet. |
@@ -281,11 +281,11 @@ Után minden érvényesítési sorban, egy másik automatikusan hozzáadja. Ha n
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| Üzenettípus |Válassza ki az EDI-üzenet típusa. |
+| Üzenet típusa |Válassza ki az EDI-üzenet típusa. |
 | EDI-ellenőrzés |Hajtsa végre a séma EDI tulajdonságok, mezőhossz-korlátozásai, üres adatelem és záró elválasztók által meghatározott adattípusok EDI-ellenőrzés. |
 | Bővített ellenőrzés |Ha az adattípus nem EDI, ellenőrzés be van kapcsolva az elem követelménynek és ismétlődési, enumerálások és az adatok elem hossza érvényesítési (minimális/maximális) engedélyezett. |
 | Kezdő/záró nullák engedélyezése |A többi kezdő vagy záró nulla megőrzi, és szóköz karakter. Ne távolítsa el ezeket a karaktereket. |
-| Kezdő/záró nullák levágása |Távolítsa el a felesleges kezdő vagy záró nulla karakter. |
+| Kezdő/záró nullák Trim |Távolítsa el a felesleges kezdő vagy záró nulla karakter. |
 | Záróelválasztó-szabályzat |Záró elválasztók készítése. <p>Válassza ki **nem engedélyezett** időtartamig záró elválasztó karakterek és az elküldött adatcsere elválasztók. Ha az adatcsere záró elválasztó karakterek és elválasztók, az adatcsere van deklarálva nem érvényes. <p>Válassza ki **nem kötelező** érték, vagy a záró elválasztó karakterek és elválasztók nélkül küldhet. <p>Válassza ki **kötelező** az elküldött adatcsere záró elválasztó karakterek és elválasztók kell rendelkeznie. Ha. |
 
 ## <a name="find-your-created-agreement"></a>Keresse meg a létrehozott szerződés

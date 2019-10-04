@@ -1,84 +1,83 @@
 ---
-title: Azure-fájlmegosztás az Azure Batch-készletekben |} A Microsoft Docs
-description: Hogyan lehet egy Azure-fájlmegosztási csatlakoztassa egy Linux vagy Windows Azure Batch a készlet számítási csomópontjain.
+title: Azure-fájlmegosztás Azure Batch készletekhez | Microsoft Docs
+description: Azure Files-megosztás csatlakoztatása a számítási csomópontokból egy Linux-vagy Windows-készletben a Azure Batchban.
 services: batch
 documentationcenter: ''
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: batch
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
 ms.date: 05/24/2018
 ms.author: lahugh
 ms.custom: ''
-ms.openlocfilehash: 1e9d039769e7fbcb9c2b7285aa727acd7322bcdf
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: cd185035640bf0beaa54fa6a0f4d92a33837442b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58103332"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70093970"
 ---
-# <a name="use-an-azure-file-share-with-a-batch-pool"></a>Azure-fájlmegosztás használata Batch-készlet
+# <a name="use-an-azure-file-share-with-a-batch-pool"></a>Azure-fájlmegosztás használata batch-készlettel
 
-[Az Azure Files](../storage/files/storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást kínáló, amely a Server Message Block (SMB) protokollon keresztül érhető el a felhőben. Ez a cikk nyújt információkat, és a kód példák csatlakoztatja, és az Azure-fájlmegosztások használatával a készlet számítási csomópontjait. Hitelesítésikód-példák használata a Batch .NET-es és a Python SDK-k, de más Batch SDK-k és eszközök használatával hasonló műveleteket hajthat végre.
+A [Azure Files](../storage/files/storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást biztosít a felhőben, amely a Server Message Block (SMB) protokollon keresztül érhető el. Ez a cikk a készlet számítási csomópontjain található Azure-fájlmegosztás csatlakoztatására és használatára vonatkozó példákkal kapcsolatos információkat és kódokat tartalmaz. A kód például a Batch .NET és a Python SDK-kat használja, de más batch SDK-k és eszközök használatával hasonló műveleteket is elvégezhet.
 
-A Batch natív API-támogatást biztosít az Azure Storage blobs használata olvasása és írása az adatok. Azonban bizonyos esetekben érdemes az Azure-fájlmegosztások elérését a készlet számítási csomópontjait. Például ha egy örökölt számítási feladatokhoz, amelyek SMB-fájlmegosztás függ, vagy a tevékenységek kell a megosztott adatok eléréséhez, vagy létre megosztott kimenetét. 
+A Batch natív API-támogatást biztosít az Azure Storage-Blobok használatához az adatolvasáshoz és az íráshoz. Bizonyos esetekben azonban előfordulhat, hogy egy Azure-fájlmegosztást szeretne elérni a készlet számítási csomópontjairól. Például egy olyan örökölt számítási feladattal rendelkezik, amely egy SMB-fájlmegosztástől függ, vagy a tevékenységeknek megosztott adatokhoz kell hozzáférnie, vagy megosztott kimenetet kell létrehozniuk. 
 
-## <a name="considerations-for-use-with-batch"></a>Szempontok a Batch segítségével
+## <a name="considerations-for-use-with-batch"></a>A Batch szolgáltatással való használat szempontjai
 
-* Fontolja meg Azure-fájlmegosztások használatát, ha címkészleteket, amelyek viszonylag kis mennyiségű párhuzamos feladatot futtatni. Tekintse át a [teljesítmény és méretezhetőség célok](../storage/files/storage-files-scale-targets.md) meghatározni, ha az Azure Files (amely egy Azure Storage-fiókot) kell használni, a várt készlet méretét és az adategység-fájlok száma. 
+* Érdemes lehet egy Azure-fájlmegosztást használni, ha olyan készletekkel rendelkezik, amelyek viszonylag alacsony számú párhuzamos feladatot futtatnak. Tekintse át a [teljesítmény-és méretezési célokat](../storage/files/storage-files-scale-targets.md) annak megállapításához, hogy a Azure Files (amely egy Azure Storage-fiókot használ) a várt készlet mérete és az adategységek száma alapján kell-e használni. 
 
-* Azure-fájlmegosztások vannak [költséghatékony](https://azure.microsoft.com/pricing/details/storage/files/) és konfigurálhatja az adatok replikálása egy másik régióba úgy globálisan redundáns. 
+* Az Azure-fájlmegosztás [költséghatékony](https://azure.microsoft.com/pricing/details/storage/files/) , és egy másik régióba történő adatreplikálással is konfigurálható, így globálisan redundánsak. 
 
-* A helyi számítógépről Azure-fájlmegosztások párhuzamosan lehet csatlakoztatni.
+* Egy Azure-fájlmegosztást egyszerre csatlakoztathat egy helyszíni számítógépről.
 
-* Lásd még az általános [tervezési megfontolások a](../storage/files/storage-files-planning.md) az Azure-fájlmegosztások.
+* Tekintse meg az Azure-fájlmegosztás általános [tervezési szempontjait](../storage/files/storage-files-planning.md) is.
 
 
 ## <a name="create-a-file-share"></a>Fájlmegosztás létrehozása
 
-[Fájlmegosztás létrehozása](../storage/files/storage-how-to-create-file-share.md) egy tárfiókot, amelyet a Batch-fiókhoz van csatolva, vagy egy önálló tárfiókot.
+[Hozzon létre egy fájlmegosztást](../storage/files/storage-how-to-create-file-share.md) egy olyan Storage-fiókban, amely a Batch-fiókjához van csatolva, vagy egy különálló Storage-fiókban.
 
-## <a name="mount-a-share-on-a-windows-pool"></a>Egy fájlmegosztás egy Windows-készlet csatlakoztatása
+## <a name="mount-a-share-on-a-windows-pool"></a>Megosztás csatlakoztatása Windows-készleten
 
-Ez a szakasz ismerteti, és a Windows-csomópontok készletét a megosztás csatlakoztatásához és a egy Azure fájllal hitelesítésikód-példák. A további háttér-információkért lásd: a [dokumentáció](../storage/files/storage-how-to-use-files-windows.md) csatlakoztatási Azure-beli fájlmegosztás a Windows. 
+Ez a szakasz a Windows-csomópontok készletén található Azure-fájlmegosztás csatlakoztatásához és használatához szükséges lépéseket és kódokat ismerteti. További háttérért tekintse meg [](../storage/files/storage-how-to-use-files-windows.md) az Azure-fájlmegosztás Windows rendszeren való csatlakoztatásának dokumentációját. 
 
-A Batch szolgáltatásban meg kell minden alkalommal, amikor egy tevékenység fut egy Windows-csomóponton a megosztás csatlakoztatásához. Jelenleg nincs lehetőség a feladatok a Windows-csomópontok közötti hálózati kapcsolat megőrzéséhez.
+A Batch-ben minden alkalommal csatlakoztatni kell a megosztást, amikor egy feladat egy Windows-csomóponton fut. Jelenleg nem lehet megtartani a hálózati kapcsolatot a Windows-csomópontokon lévő feladatok között.
 
-Például egy `net use` parancsot minden egyes tevékenység parancssorának részeként a fájlmegosztás csatlakoztatásához. A fájlmegosztás csatlakoztatása, a következő hitelesítő adatok szükségesek:
+Például adjon meg egy `net use` parancsot a fájlmegosztás csatlakoztatásához az egyes feladatok parancssorának részeként. A fájlmegosztás csatlakoztatásához a következő hitelesítő adatok szükségesek:
 
-* **Felhasználónév**: AZURE\\\<storageaccountname\>, például az AZURE\\*mystorageaccountname*
-* **Jelszó**: < StorageAccountKeyWhichEnds a == >, például *XXXXXXXXXXXXXXXXXXXXX ==*
+* **Felhasználónév**: Azure\\-\<storageaccountname,\>például Azure mystorageaccountname\\
+* **Jelszó**: \<StorageAccountKeyWhichEnds a = = >ban, például *XXXXXXXXXXXXXXXXXXXXX = =*
 
-A következő parancsot egy fájlmegosztást csatlakoztathatnak *myfileshare* tárfiókban *mystorageaccountname* , a *S:* meghajtó:
+A következő parancs egy fájlmegosztási *myfileshare* csatlakoztat a Storage-fiók *mystorageaccountname* az *S:* meghajtóként:
 
 ```
 net use S: \\mystorageaccountname.file.core.windows.net\myfileshare /user:AZURE\mystorageaccountname XXXXXXXXXXXXXXXXXXXXX==
 ```
 
-Az egyszerűség kedvéért a az itt szereplő példák a hitelesítő adatokat küldenie a közvetlenül a szöveget. A gyakorlatban javasoljuk, hogy a hitelesítő adatokat, a környezeti változók, tanúsítványok vagy hasonló megoldással például az Azure Key Vault kezelése.
+Az egyszerűség kedvéért a példák a hitelesítő adatokat közvetlenül a szövegbe továbbítják. A gyakorlatban erősen ajánlott a hitelesítő adatok kezelése környezeti változók, tanúsítványok vagy egy megoldás, például Azure Key Vault használatával.
 
-A csatlakoztatási műveletet leegyszerűsítése igény szerint megőrzéséhez a hitelesítő adatokat a csomópontokon. Ezután csatlakoztathatja a hitelesítő adatok nélkül. Hajtsa végre a következő lépéseket:
+A csatlakoztatási művelet leegyszerűsítése érdekében opcionálisan megőrzi a hitelesítő adatokat a csomópontokon. Ezután a megosztást hitelesítő adatok nélkül is csatlakoztathatja. Hajtsa végre a következő két lépést:
 
-1. Futtassa a `cmdkey` parancssori segédprogram használatával az indítási tevékenység a készlet konfigurációjában. Ez továbbra is fennáll a hitelesítő adatokat a Windows-csomópontokon. A kezdő tevékenység parancssorának hasonlít:
+1. Futtassa a `cmdkey` parancssori segédprogramot egy indítási tevékenységgel a készlet konfigurációjában. Ez minden Windows-csomóponton megőrzi a hitelesítő adatokat. Az indítási tevékenység parancssora a következőhöz hasonló:
 
    ```
    cmd /c "cmdkey /add:mystorageaccountname.file.core.windows.net /user:AZURE\mystorageaccountname /pass:XXXXXXXXXXXXXXXXXXXXX=="
 
    ```
 
-2. A megosztás csatlakoztatásához használatával minden egyes feladat részeként minden egyes csomóponton `net use`. Például az a következő tevékenység parancssorának csatlakoztatja a fájlmegosztást, mint a *S:* meghajtót. Ez lenne követi, parancsot vagy parancsfájlt, amely hivatkozik a megosztást. Gyorsítótárazott hitelesítő adatok használhatók hívásában `net use`. Ez a lépés feltételezi, hogy az ugyanazon felhasználói identitás használ a feladatokkal, amelyek az indítási tevékenység a készlet, amely nem minden esetben megfelelő használt.
+2. Csatlakoztassa a megosztást az egyes csomópontokon az egyes feladatok részeként a használatával `net use`. Például a következő feladat parancssora az *S:* meghajtóként csatlakoztatja a fájlmegosztást. Ezt egy olyan parancs vagy parancsfájl követheti, amely hivatkozik a megosztásra. A gyorsítótárazott hitelesítő adatok a hívásakor `net use`használatosak. Ez a lépés azt feltételezi, hogy ugyanazt a felhasználói identitást használja, mint a készlet indítási tevékenységében használt feladatok esetében, ami nem felel meg az összes forgatókönyvnek.
 
    ```
    cmd /c "net use S: \\mystorageaccountname.file.core.windows.net\myfileshare" 
    ```
 
-### <a name="c-example"></a>C#-példa
-A következő C# példa bemutatja, hogyan is tartalmaz a hitelesítő adatokat, egy Windows-készlet indítási tevékenységet használ. A storage szolgáltatás nevét és a storage hitelesítő adatai továbbítódnak, meghatározott állandókkal van megadva. Az indítási tevékenység itt, normál (nem rendszergazdai) automatikus felhasználói fiók alatt fut, a készlet hatóköre.
+### <a name="c-example"></a>C#például
+Az alábbi C# példa azt szemlélteti, hogyan lehet megőrizni a hitelesítő adatokat egy Windows-készleten egy indítási feladat használatával. A tárolási fájl szolgáltatás neve és a tároló hitelesítő adatai megadott konstansként lesznek átadva. Itt az indítási tevékenység egy standard (nem rendszergazda) automatikus felhasználói fiókban fut a készlet hatókörével.
 
 ```csharp
 ...
@@ -102,7 +101,7 @@ pool.StartTask = new StartTask
 pool.Commit();
 ```
 
-Rendezést követően a hitelesítő adatokat használja a feladat parancssorait a megosztás csatlakoztatásához, és hivatkozzon a megosztás olvasási vagy írási műveleteket. Egy alapszintű példaként az alábbi kódrészletben a tevékenység parancssora használja a `dir` parancsot a fájlok listázása a fájlmegosztásban. Ellenőrizze, hogy minden egyes feladat feladatot azonos [felhasználói identitás](batch-user-accounts.md) segítségével futtatta az indítási tevékenység a készlet. 
+A hitelesítő adatok tárolása után a feladat parancssorával csatlakoztassa a megosztást, és hivatkozzon a megosztásra az olvasási vagy írási műveletekben. Alapszintű példaként az alábbi kódrészletben szereplő feladat parancssora a `dir` parancsot használja a fájlmegosztás fájljainak listázásához. Győződjön meg arról, hogy az egyes feladatok feladatait ugyanazzal a [felhasználói identitással](batch-user-accounts.md) futtatja, amelyet az indítási feladat a készletben való futtatásához használt. 
 
 ```csharp
 ...
@@ -116,49 +115,50 @@ task.UserIdentity = new UserIdentity(new AutoUserSpecification(
 tasks.Add(task);
 ```
 
-## <a name="mount-a-share-on-a-linux-pool"></a>Csatlakoztassa egy könyvtármegosztáson található a Linux-készlet
+## <a name="mount-a-share-on-a-linux-pool"></a>Megosztás csatlakoztatása Linux-készleten
 
-Azure-fájlmegosztások használatával Linux-disztribúciók csatlakoztathatók a [CIFS kernel ügyfél](https://wiki.samba.org/index.php/LinuxCIFS). Az alábbi példa bemutatja, hogyan Ubuntu 16.04 LTS számítási csomópontok készletét a fájlmegosztást. Ha használja a különböző Linux-disztribúció, az általános lépések hasonlóak, de használja a disztribúciónak megfelelő Csomagkezelő. Részletek és további példákért lásd: [használata az Azure Files linuxszal](../storage/files/storage-how-to-use-files-linux.md).
+Az Azure-fájlmegosztás Linux-disztribúciókban a [CIFS kernel-ügyféllel](https://wiki.samba.org/index.php/LinuxCIFS)is csatlakoztatható. Az alábbi példa bemutatja, hogyan csatlakoztathat fájlmegosztást az Ubuntu 16,04 LTS számítási csomópontok készletén. Ha más Linux-disztribúciót használ, az általános lépések hasonlóak, de az elosztáshoz megfelelő csomagkezelő használható. A részleteket és a további példákat lásd: [Azure Files használata Linux rendszeren](../storage/files/storage-how-to-use-files-linux.md).
 
-Először a rendszergazda felhasználói identitást, telepítse a `cifs-utils` csomagot, majd a csatlakoztatási pont létrehozása (például */mnt/MyAzureFileShare*) a helyi fájlrendszerben található. Egy mappát a csatlakoztatási pont hozható létre tetszőleges a fájlrendszerben, de általános egyezmény a alatt létrehozásához a `/mnt` mappát. Győződjön meg arról, hogy ne hozzon létre egy csatlakoztatási pontot közvetlenül `/mnt` (Ubuntu) rendszeren vagy `/mnt/resource` (a többi disztribúciók).
+Először a rendszergazda felhasználói identitás alatt telepítse a `cifs-utils` csomagot, és hozza létre a csatlakoztatási pontot (például */mnt/MyAzureFileShare*) a helyi fájlrendszerben. A csatlakoztatási ponthoz tartozó mappa bárhol létrehozható a fájlrendszerben, de ez az `/mnt` általános egyezmény a mappában való létrehozásához. Ügyeljen arra, hogy ne hozzon létre csatlakoztatási `/mnt` pontot közvetlenül az (Ubuntu `/mnt/resource` rendszeren) vagy (más disztribúción).
 
 ```
 apt-get update && apt-get install cifs-utils && sudo mkdir -p /mnt/MyAzureFileShare
 ```
 
-Ezután futtassa a `mount` parancs segítségével csatlakoztassa a fájlmegosztást, ezeket a hitelesítő adatokkal:
+Ezután futtassa a `mount` parancsot a fájlmegosztás csatlakoztatásához, és adja meg a következő hitelesítő adatokat:
 
 * **Felhasználónév**: \<storageaccountname\>, például *mystorageaccountname*
-* **Jelszó**: < StorageAccountKeyWhichEnds a == >, például *XXXXXXXXXXXXXXXXXXXXX ==*
+* **Jelszó**: \<StorageAccountKeyWhichEnds a = = >ban, például *XXXXXXXXXXXXXXXXXXXXX = =*
 
-A következő parancsot egy fájlmegosztást csatlakoztathatnak *myfileshare* tárfiókban *mystorageaccountname* , */mnt/MyAzureFileShare*: 
+Az alábbi parancs egy fájlmegosztási *myfileshare* csatlakoztat a Storage-fiók *mystorageaccountname* a következő helyen: */mnt/MyAzureFileShare*: 
 
 ```
 mount -t cifs //mystorageaccountname.file.core.windows.net/myfileshare /mnt/MyAzureFileShare -o vers=3.0,username=mystorageaccountname,password=XXXXXXXXXXXXXXXXXXXXX==,dir_mode=0777,file_mode=0777,serverino && ls /mnt/MyAzureFileShare
 ```
 
-Az egyszerűség kedvéért a az itt szereplő példák a hitelesítő adatokat küldenie a közvetlenül a szöveget. A gyakorlatban javasoljuk, hogy a hitelesítő adatokat, a környezeti változók, tanúsítványok vagy hasonló megoldással például az Azure Key Vault kezelése.
+Az egyszerűség kedvéért a példák a hitelesítő adatokat közvetlenül a szövegbe továbbítják. A gyakorlatban erősen ajánlott a hitelesítő adatok kezelése környezeti változók, tanúsítványok vagy egy megoldás, például Azure Key Vault használatával.
 
-A Linux-készlet kombinálhatja az összes egyetlen az indítási tevékenység ezeket a lépéseket, vagy pedig egy parancsfájlt is futtathatja. Az indítási tevékenység futtató egy rendszergazda felhasználó a készleten. Állítsa be a kezdő tevékenység sikeresen befejeződik, mielőtt további feladatok futtatása a készleten, hogy a megosztás várnia.
+Linux-készleteken egyetlen indítási feladatban egyesítheti ezeket a lépéseket, vagy futtathatja őket egy parancsfájlban. Futtassa a Start feladatot rendszergazda felhasználóként a készleten. Állítsa be a kezdési feladatot úgy, hogy a rendszer a megosztásra hivatkozó további feladatok futtatása előtt várjon a sikeres befejezésre.
 
-### <a name="python-example"></a>Python-példát
+### <a name="python-example"></a>Python-példa
 
-Ez a példa Python bemutatja, hogyan konfigurálhatja egy Ubuntu-készlet indítási tevékenységet a megosztás csatlakoztatásához. A csatlakoztatási pont, a végpont részesedés és a storage hitelesítő adatai továbbítódnak, meghatározott állandókkal van megadva. Az indítási tevékenység a készlet hatóköre egy rendszergazda automatikus felhasználói fiók alatt fut.
+A következő Python-példa bemutatja, hogyan konfigurálhat egy Ubuntu-készletet a megosztás egy indítási feladatba való csatlakoztatásához. A csatlakoztatási pont, a fájlmegosztás végpontja és a tároló hitelesítő adatai megadott konstansként lesznek átadva. Az indítási tevékenység a készlet hatókörével rendelkező rendszergazda automatikus felhasználói fiók alatt fut.
 
 ```python
 pool = batch.models.PoolAddParameter(
     id=pool_id,
-    virtual_machine_configuration = batchmodels.VirtualMachineConfiguration(
-        image_reference = batchmodels.ImageReference(
+    virtual_machine_configuration=batchmodels.VirtualMachineConfiguration(
+        image_reference=batchmodels.ImageReference(
             publisher="Canonical",
             offer="UbuntuServer",
             sku="16.04.0-LTS",
             version="latest"),
-        node_agent_sku_id = "batch.node.ubuntu 16.04"),
+        node_agent_sku_id="batch.node.ubuntu 16.04"),
     vm_size=_POOL_VM_SIZE,
     target_dedicated_nodes=_POOL_NODE_COUNT,
     start_task=batchmodels.StartTask(
-        command_line="/bin/bash -c \"apt-get update && apt-get install cifs-utils && mkdir -p {} && mount -t cifs {} {} -o vers=3.0,username={},password={},dir_mode=0777,file_mode=0777,serverino\"".format(_COMPUTE_NODE_MOUNT_POINT, _STORAGE_ACCOUNT_SHARE_ENDPOINT, _COMPUTE_NODE_MOUNT_POINT, _STORAGE_ACCOUNT_NAME, _STORAGE_ACCOUNT_KEY),
+        command_line="/bin/bash -c \"apt-get update && apt-get install cifs-utils && mkdir -p {} && mount -t cifs {} {} -o vers=3.0,username={},password={},dir_mode=0777,file_mode=0777,serverino\"".format(
+            _COMPUTE_NODE_MOUNT_POINT, _STORAGE_ACCOUNT_SHARE_ENDPOINT, _COMPUTE_NODE_MOUNT_POINT, _STORAGE_ACCOUNT_NAME, _STORAGE_ACCOUNT_KEY),
         wait_for_success=True,
         user_identity=batchmodels.UserIdentity(
             auto_user=batchmodels.AutoUserSpecification(
@@ -169,7 +169,7 @@ pool = batch.models.PoolAddParameter(
 batch_service_client.pool.add(pool)
 ```
 
-A megosztás csatlakoztatásával és a egy feladat meghatározása után a feladat parancssorait a megosztás használatára. Például a következő alapvető parancsot használ `ls` a fájlmegosztásban található fájlok listázásához.
+A megosztás csatlakoztatása és a feladat definiálása után használja a megosztást a feladat parancssorában. A következő alapszintű parancs `ls` például a fájlmegosztás fájljainak listázására használható.
 
 ```python
 ...
@@ -183,6 +183,6 @@ batch_service_client.task.add(job_id, task)
 
 ## <a name="next-steps"></a>További lépések
 
-* Egyéb beállítások olvasása és írása az adatokat a Batch szolgáltatásban, lásd: a [Azure Batch funkcióinak áttekintése](batch-api-basics.md) és [feladatok és tevékenységek kimenetének megőrzése](batch-task-output.md).
+* A Batch-adatok olvasására és írására vonatkozó egyéb lehetőségekért lásd a [Batch funkcióinak áttekintése](batch-api-basics.md) és a feladatok [és tevékenységek kimenetének](batch-task-output.md)megőrzése című témakört.
 
-* Lásd még a [Batch hajógyárnak](https://github.com/Azure/batch-shipyard) eszközkészlet, amely tartalmazza a [hajógyárnak receptek](https://github.com/Azure/batch-shipyard/tree/master/recipes) fájlrendszereket, a Batch-tárolókhoz kapcsolódó számítási feladatok üzembe helyezéséhez.
+* Lásd még a [Batch-hajógyár](https://github.com/Azure/batch-shipyard) eszközkészletét, amely tartalmazza a [hajógyári recepteket](https://github.com/Azure/batch-shipyard/tree/master/recipes) a Batch-tároló munkaterhelések fájlrendszerének üzembe helyezéséhez.

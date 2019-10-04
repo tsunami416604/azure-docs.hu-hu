@@ -1,6 +1,6 @@
 ---
-title: Az Azure virtuális gépek magas rendelkezésre állás az SAP NetWeaver SUSE Linux Enterprise Server az Azure Files-NetApp |} A Microsoft Docs
-description: Magas rendelkezésre állású útmutató az SAP NetWeaver SUSE Linux Enterprise Server, SAP-alkalmazások Azure NetApp fájljait a futó
+title: Az Azure Virtual Machines magas rendelkezésre állása az SAP NetWeaver-on SUSE Linux Enterprise Server a Azure NetApp Files-mel | Microsoft Docs
+description: Magas rendelkezésre állási útmutató az SAP NetWeaver-hez a SUSE Linux Enterprise Server Azure NetApp Files SAP-alkalmazásokhoz
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: rdeltcheva
@@ -10,28 +10,27 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
 ms.service: virtual-machines-windows
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/015/2019
+ms.date: 04/30/2019
 ms.author: radeltch
-ms.openlocfilehash: 18bbeef833e1c82999e87451d279c0d3464af509
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: 572255cfcd34b97a6ba0f784f7fc7ed1c0df040a
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617767"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213268"
 ---
-# <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Magas rendelkezésre állás az SAP NetWeaver SUSE Linux Enterprise Server az Azure NetApp Files SAP alkalmazások az Azure virtuális gépeken
+# <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Magas rendelkezésre állás az Azure-beli virtuális gépeken futó SAP NetWeaver-hez SUSE Linux Enterprise Serveron Azure NetApp Files SAP-alkalmazásokhoz
 
 [dbms-guide]:dbms-guide.md
 [deployment-guide]:deployment-guide.md
 [planning-guide]:planning-guide.md
 
-[anf-azure-doc]:https://docs.microsoft.com/en-gb/azure/azure-netapp-files/
-[anf-avail-matrix]:https://azure.microsoft.com/en-us/global-infrastructure/services/?products=storage&regions=all
-[anf-register]:https://docs.microsoft.com/en-gb/azure/azure-netapp-files/azure-netapp-files-register
+[anf-azure-doc]:https://docs.microsoft.com/azure/azure-netapp-files/
+[anf-avail-matrix]:https://azure.microsoft.com/global-infrastructure/services/?products=storage&regions=all
+[anf-register]:https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register
 [anf-sap-applications-azure]:https://www.netapp.com/us/media/tr-4746.pdf
 
 [2205917]:https://launchpad.support.sap.com/#/notes/2205917
@@ -58,210 +57,215 @@ ms.locfileid: "59617767"
 [sap-hana-ha]:sap-hana-high-availability.md
 [nfs-ha]:high-availability-guide-suse-nfs.md
 
-Ez a cikk ismerteti a virtuális gépek üzembe helyezése, konfigurálja a virtuális gépek, telepítse a fürt keretrendszert és egy magas rendelkezésre állású SAP NetWeaver 7.50 rendszert, használatával [Azure NetApp fájlokat (a nyilvános előzetes verzió)](https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-introduction/).
-A példa konfiguráció, telepítési parancsokat stb., a ASCS példány szám 02 00, a SSZON példányszámának 01, az elsődleges alkalmazáspéldány (szolgáltatói CÍMEI) pedig az alkalmazáspéldány (AAS) 03. Az SAP-rendszer azonosító QAS szolgál. 
+Ez a cikk leírja, hogyan telepítheti a virtuális gépeket, konfigurálhatja a virtuális gépeket, telepítheti a fürtöt, és telepítheti a magasan elérhető SAP NetWeaver 7,50-rendszereket [Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction/)használatával.
+A példában a konfigurációk, a telepítési parancsok stb., a ASCS-példány a 00-as szám, az ERS-példány száma 01, az elsődleges alkalmazás példánya (PAS) 02, az Application instance (AAS) pedig 03. A rendszer az SAP rendszerazonosító QAS használja. 
 
-Ez a cikk azt ismerteti, hogyan érhető el magas rendelkezésre állás az SAP NetWeaver alkalmazást az Azure Files-NetApp. Az adatbázis réteg nem ez a cikk részletesen ismertetett.
+Ez a cikk azt ismerteti, hogyan lehet magas rendelkezésre állást elérni az SAP NetWeaver alkalmazáshoz a Azure NetApp Files használatával. Ebben a cikkben nem szerepel részletesen az adatbázis rétege.
 
-Először olvassa el az alábbi SAP-megjegyzések és tanulmányok:
+Először olvassa el a következő SAP-megjegyzéseket és dokumentumokat:
 
-* [Az Azure NetApp Files dokumentációja][anf-azure-doc] 
-* SAP-Jegyzetnek [1928533], amely rendelkezik:  
-  * SAP szoftver központi telepítése által támogatott Azure-beli Virtuálisgép-méretek
-  * Azure-beli Virtuálisgép-méretek esetében fontos kapacitásadatok
-  * Támogatott SAP-szoftverek és operációs rendszer (OS) és adatbázis-kombinációk
-  * Szükséges SAP kernel verziója a Windows és Linux a Microsoft Azure
-* SAP-Jegyzetnek [2015553] az Azure-beli SAP az SAP által támogatott szoftverek központi telepítéséhez szükséges előfeltételeket ismerteti.
-* SAP-Jegyzetnek [2205917] ajánlott az operációs rendszer beállításait a SUSE Linux Enterprise Server SAP-alkalmazások
-* SAP-Jegyzetnek [1944799] SUSE Linux Enterprise Server SAP HANA-irányelvek rendelkezik az SAP-alkalmazások
-* SAP-Jegyzetnek [2178632] részletes jelentett az Azure-beli SAP-figyelési metrikákat kapcsolatos információkat tartalmaz.
-* SAP-Jegyzetnek [2191498] rendelkezik a szükséges SAP gazdagép-ügynök verziója Linux az Azure-ban.
-* SAP-Jegyzetnek [2243692] SAP linuxon az Azure-beli licenceléssel kapcsolatos információkat tartalmaz.
-* SAP-Jegyzetnek [1984787] SUSE Linux Enterprise Server 12 vonatkozó általános információkat tartalmaz.
-* SAP-Jegyzetnek [1999351] további információkat talál az Azure Enhanced Monitoring bővítményt az SAP rendelkezik.
-* [Az SAP közösségi WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) rendelkezik az összes szükséges SAP-megjegyzések Linux rendszeren.
-* [Az Azure virtuális gépek tervezése és megvalósítása az SAP, Linux rendszeren][planning-guide]
-* [Az Azure virtuális gépek üzembe helyezése, az SAP, Linux rendszeren][deployment-guide]
-* [Az Azure Virtual Machines DBMS üzembe helyezése, az SAP, Linux rendszeren][dbms-guide]
-* [SUSE SAP magas rendelkezésre ÁLLÁS ajánlott eljárások gyűjteménye] [ suse-ha-guide] a útmutatókat tartalmaz minden szükséges információt a beállítása Netweaver magas rendelkezésre ÁLLÁS és a helyszíni SAP HANA-Rendszerreplikálást. Ezek az útmutatók használja általános kiindulópontként. Sokkal részletesebb információkat biztosítanak.
-* [SUSE magas rendelkezésre állású bővítmény 12 SP3 kibocsátási megjegyzései][suse-ha-12sp3-relnotes]
-* [NetApp SAP alkalmazások az Azure Files-NetApp használatával a Microsoft Azure][anf-sap-applications-azure]
+* [Azure NetApp Files dokumentáció][anf-azure-doc] 
+* SAP-Megjegyzés [1928533][1928533], amely a következőket tartalmazta:  
+  * Az SAP-szoftverek üzembe helyezéséhez támogatott Azure-beli virtuálisgép-méretek listája
+  * Fontos kapacitási információk Azure-beli virtuális gépek méreteihez
+  * Támogatott SAP-szoftverek és operációs rendszerek (OS) és adatbázis-kombinációk
+  * A Windows és a Linux rendszerhez szükséges SAP kernel verziója Microsoft Azure
+* Az SAP Note [2015553][2015553] az SAP által támogatott SAP-szoftverek Azure-beli üzembe helyezésének előfeltételeit sorolja fel.
+* Az SAP Megjegyzés [2205917][2205917] ajánlott operációsrendszer-beállításokkal SUSE Linux Enterprise Server SAP-alkalmazásokhoz
+* A [1944799][1944799] -es SAP-Megjegyzés SAP HANA irányelvek az SAP-alkalmazásokhoz SUSE Linux Enterprise Server
+* Az [2178632][2178632] -es SAP-Megjegyzés részletes információkat tartalmaz az Azure-beli SAP-ban jelentett összes figyelési mérőszámról.
+* A [2191498][2191498] -es SAP-Megjegyzés a szükséges SAP-gazdagép ügynökének verziója az Azure-ban linuxos.
+* Az [2243692][2243692] -es SAP-Megjegyzés az Azure-beli Linuxon futó SAP-licenceléssel kapcsolatos információkat tartalmaz.
+* Az [1984787][1984787] -es SAP-Megjegyzés általános információkat tartalmaz a SUSE Linux Enterprise Server 12.
+* Az SAP Megjegyzés [1999351][1999351] további hibaelhárítási információkat tartalmaz az SAP-hez készült Azure Enhanced monitoring bővítménnyel kapcsolatban.
+* SAP Community wiki] (https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) az összes szükséges SAP-Megjegyzés a Linux rendszerhez.
+* [Azure Virtual Machines tervezése és implementálása Linux rendszeren az SAP-ban][planning-guide]
+* [Azure Virtual Machines üzembe helyezés az SAP-hez Linux rendszeren][deployment-guide]
+* [Azure Virtual Machines adatbázis-kezelői telepítés az SAP-hez Linux rendszeren][dbms-guide]
+* [SUSE SAP ha ajánlott eljárási útmutatók][suse-ha-guide] Az útmutatók az összes szükséges információt tartalmazzák, amelyekkel beállítható a NetWeaver HA és SAP HANA rendszer-replikáció a helyszínen. Ezeket az útmutatókat általános alaptervként használhatja. Sokkal részletesebb információkat biztosítanak.
+* [SUSE magas rendelkezésre állású bővítmény – 12 SP3 kibocsátási megjegyzések][suse-ha-12sp3-relnotes]
+* [NetApp SAP-alkalmazások Microsoft Azure a Azure NetApp Files használatával][anf-sap-applications-azure]
 
 ## <a name="overview"></a>Áttekintés
 
-Magas availability(HA) SAP Netweaver központi szolgáltatásokhoz megosztott tárolóra van szükség.
-Ennek érdekében javítottunk a SUSE Linux, amennyiben szükséges volt külön magas rendelkezésre állású NFS-fürt létrehozásához. 
+Az SAP NetWeaver Central Services magas rendelkezésre állása (HA) megosztott tárterületet igényel.
+Annak érdekében, hogy a SUSE Linuxon eddig is szükség volt egy különálló, nagy rendelkezésre állású NFS-fürt létrehozására. 
 
-Most Önön eléréséhez SAP Netweaver magas rendelkezésre ÁLLÁS megosztott tárolót üzembe helyezve az Azure Files-NetApp használatával lehetséges. A megosztott tároló nem kell az Azure NetApp Files használatával további [NFS fürt](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs). Magas rendelkezésre ÁLLÁS, az SAP Netweaver központi services(ASCS/SCS) támasztja továbbra is szükség van.
+Most már lehetséges, hogy az SAP NetWeaver HA-t megosztott tároló használatával, Azure NetApp Fileson helyezi el. A megosztott tárolóhoz Azure NetApp Files használata nem igényel további NFS- [fürtöt](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs). Az SAP NetWeaver Central Services (ASCS/SCS) esetében továbbra is a pacemaker szükséges.
 
 
-![SAP NetWeaver magas rendelkezésre állás – Áttekintés](./media/high-availability-guide-suse-anf/high-availability-guide-suse-anf.PNG)
+![SAP NetWeaver – magas rendelkezésre állás – áttekintés](./media/high-availability-guide-suse-anf/high-availability-guide-suse-anf.PNG)
 
-SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS, and the SAP HANA database use virtual hostname and virtual IP addresses. Az Azure-ban egy [terheléselosztó](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-overview) kell használnia a virtuális IP-címet. Az alábbi lista tartalmazza (A) konfigurációjának SCS és SSZON terheléselosztó.
+Az SAP NetWeaver ASCS, az SAP NetWeaver SCS, az SAP NetWeaver ERS és a SAP HANA adatbázis virtuális gazdagépeket és virtuális IP-címeket használ. Az Azure-ban a virtuális IP-címek használatához [terheléselosztó](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) szükséges. Az alábbi lista az (A) SCS és az ERS Load Balancer konfigurációját mutatja be.
+
+> [!IMPORTANT]
+> Az SAP ASCS/ERS multi-SID fürtszolgáltatása az Azure-beli virtuális gépeken található vendég operációs rendszerként a SUSE Linux rendszerben **nem támogatott**. A többszörös SID-fürtszolgáltatás több SAP ASCS/ERS példány telepítését ismerteti különböző SID-kiszolgálókkal egy pacemaker-fürtben
+
 
 ### <a name="ascs"></a>(A)SCS
 
-* Előtér-konfigurációjához
-  * IP address 10.1.1.20
+* Előtér-konfiguráció
+  * IP-10.1.1.20
 * Háttér-konfiguráció
-  * (A) részének kell lennie az összes virtuális gépek elsődleges hálózati adaptere csatlakozik SCS/SSZON fürt
-* Mintavételi Port
-  * Port 620<strong>&lt;nr&gt;</strong>
+  * Az (A) SCS/ERS-fürt részét képező összes virtuális gép elsődleges hálózati adapteréhez csatlakozik
+* Mintavételi port
+  * Port 620<strong>&lt;Nr&gt;</strong>
 * Terheléselosztási szabályok
-  * 32<strong>&lt;nr&gt;</strong> TCP
-  * 36<strong>&lt;nr&gt;</strong> TCP
-  * 39<strong>&lt;nr&gt;</strong> TCP
-  * 81<strong>&lt;nr&gt;</strong> TCP
+  * <strong>32&lt;nr&gt;</strong>  TCP
+  * <strong>36&lt;nr&gt;</strong>  TCP
+  * <strong>39&lt;nr&gt;</strong>  TCP
+  * <strong>81&lt;nr&gt;</strong>  TCP
   * 5<strong>&lt;nr&gt;</strong>13 TCP
   * 5<strong>&lt;nr&gt;</strong>14 TCP
   * 5<strong>&lt;nr&gt;</strong>16 TCP
 
 ### <a name="ers"></a>ERS
 
-* Előtér-konfigurációjához
-  * IP address 10.1.1.21
+* Előtér-konfiguráció
+  * IP-10.1.1.21
 * Háttér-konfiguráció
-  * (A) részének kell lennie az összes virtuális gépek elsődleges hálózati adaptere csatlakozik SCS/SSZON fürt
-* Mintavételi Port
-  * Port 621<strong>&lt;nr&gt;</strong>
+  * Az (A) SCS/ERS-fürt részét képező összes virtuális gép elsődleges hálózati adapteréhez csatlakozik
+* Mintavételi port
+  * Port 621<strong>&lt;Nr&gt;</strong>
 * Terheléselosztási szabályok
-  * 33<strong>&lt;nr&gt;</strong> TCP
+  * <strong>32&lt;nr&gt;</strong>  TCP
+  * <strong>33&lt;nr&gt;</strong>  TCP
   * 5<strong>&lt;nr&gt;</strong>13 TCP
   * 5<strong>&lt;nr&gt;</strong>14 TCP
   * 5<strong>&lt;nr&gt;</strong>16 TCP
 
-## <a name="setting-up-the-azure-netapp-files-infrastructure"></a>Az Azure Files-NetApp infrastruktúra beállítása 
+## <a name="setting-up-the-azure-netapp-files-infrastructure"></a>A Azure NetApp Files-infrastruktúra beállítása 
 
-SAP NetWeaver az átvitel és a profil Directory megosztott tároló szükséges hozzá.  A Azure NetApp files-infrastruktúra telepítése előtt, ismerje meg az a [Azure NetApp fájlok dokumentáció][anf-azure-doc]. Ellenőrizze, hogy ha a kiválasztott Azure-régiót kínál Azure NetApp fájlokat. Az alábbi hivatkozásra a NetApp Azure fájlok az Azure-régióban rendelkezésre állását jeleníti meg: [Azure NetApp rendelkezésre állási fájlok az Azure-régió szerint][anf-avail-matrix].
+Az SAP NetWeaver megosztott tárterületet igényel az átvitelhez és a profilhoz.  Mielőtt folytatná az Azure NetApp-fájlok infrastruktúrájának telepítését, ismerkedjen meg az [Azure NetApp Files dokumentációval][anf-azure-doc]. Ellenőrizze, hogy a kiválasztott Azure-régió kínál-e Azure NetApp Files. A következő hivatkozás az Azure-régió Azure NetApp Files rendelkezésre állását jeleníti meg: [Az Azure-régió Azure NetApp Files rendelkezésre állását][anf-avail-matrix].
 
-Az Azure NetApp fájlok szolgáltatás jelenleg nyilvános előzetes verzióban több Azure-régióban. Azure NetApp fájlok üzembe helyezése előtt regisztráljon az Azure Files-NetApp előzetes verziójára, a következő a [regisztrálni Azure NetApp fájlok útmutatás][anf-register]. 
+Az Azure NetApp-fájlok több [Azure-régióban](https://azure.microsoft.com/global-infrastructure/services/?products=netapp)is elérhetők. Azure NetApp Files üzembe helyezése előtt a bevezetést a Azure NetApp Filesra kell kérnie, az [Azure NetApp-fájlok regisztrálásával kapcsolatos utasításokat][anf-register]követve. 
 
-### <a name="deploy-azure-netapp-files-resources"></a>NetApp fájlokat az Azure-erőforrások üzembe helyezése  
+### <a name="deploy-azure-netapp-files-resources"></a>Azure NetApp Files erőforrások üzembe helyezése  
 
-A lépések azt feltételezik, hogy korábban már telepítettek [Azure Virtual Network](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview). Ne feledje, hogy a NetApp fájlokat az Azure-erőforrások és a virtuális gépek, ahol a NetApp fájlokat az Azure-erőforrások lesz csatlakoztatva kell telepíteni az azonos Azure virtuális hálózatban.  
+A lépések azt feltételezik, hogy már telepítette az [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)-t. A Azure NetApp Files erőforrásokat és a virtuális gépeket, ahol a Azure NetApp Files erőforrásokat csatlakoztatni kell ugyanazon az Azure-Virtual Network vagy az Azure-beli virtuális hálózatokban.  
 
-1. A kérelem nem tette meg már, ha [regisztrálása a Azure NetApp Preview](https://docs.microsoft.com/en-gb/azure/azure-netapp-files/azure-netapp-files-register).  
+1. Ha eddig még nem tette meg, kérje [a Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register)bevezetését.  
 
-2. A NetApp fiók létrehozása a kiválasztott Azure-régióban, a következő a [NetApp fiók létrehozására vonatkozó utasításokat](https://docs.microsoft.com/en-gb/azure/azure-netapp-files/azure-netapp-files-create-netapp-account).  
-3. Állítsa be a következő Azure NetApp fájlok kapacitás-készletben a [való beállítása az Azure Files-NetApp kapacitás készlet](https://docs.microsoft.com/en-gb/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool).  
-Az SAP Netweaver-architektúra ebben a cikkben bemutatott egyetlen Azure NetApp fájlok kapacitás készletet, prémium szintű Termékváltozatot használja. Azure NetApp fájlok prémium Termékváltozatot javasoljuk az SAP Netweaver alkalmazás számítási feladatait az Azure-ban.  
+2. Hozza létre a NetApp-fiókot a kiválasztott Azure-régióban, és kövesse a [NetApp-fiók létrehozásához szükséges utasításokat](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-netapp-account).  
+3. Azure NetApp Files kapacitás-készlet beállítása a [Azure NetApp Files kapacitás készletének beállításához szükséges útmutatás alapján](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool).  
+A jelen cikkben bemutatott SAP NetWeaver architektúra egy Azure NetApp Files kapacitási készletet, prémium SKU-t használ. Javasoljuk, hogy az Azure-ban az SAP NetWeaver alkalmazás számítási feladataihoz Azure NetApp Files Premium SKU-t.  
 
-4. Azure NetApp files alhálózat delegálása leírtak szerint a [utasításokat delegálása az Azure Files-NetApp alhálózat](https://docs.microsoft.com/en-gb/azure/azure-netapp-files/azure-netapp-files-delegate-subnet).  
+4. Az alhálózat delegálása az Azure NetApp-fájlokba az [alhálózat delegálása Azure NetApp Filesra](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet)című részben leírtak szerint.  
 
-5. Az Azure Files-NetApp köteteket, a következő üzembe helyezheti a [kötet létrehozása a NetApp Azure-fájlok útmutatás](https://docs.microsoft.com/en-gb/azure/azure-netapp-files/azure-netapp-files-create-volumes). A köteteket a kijelölt NetApp Azure Files szolgáltatásban üzembe helyezheti [alhálózati](https://docs.microsoft.com/en-us/rest/api/virtualnetwork/subnets). Ne feledje, hogy a NetApp fájlokat az Azure-erőforrások és az Azure virtuális gépek azonos Azure virtuális hálózatban kell lennie. Például sapmnt<b>QAS</b>, usrsap<b>QAS</b>használatához és így tovább a kötetnevek és sapmnt<b>qas</b>, usrsap<b>qas</b>használatához és így tovább a filepaths vannak az Azure-beli használatra NetApp fájlok kötetek.  
+5. Azure NetApp Files kötetek telepítéséhez kövesse az [utasításokat, amelyekkel Azure NetApp Files kötetet hozhat létre](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes). Telepítse a köteteket a kijelölt Azure NetApp Files [alhálózatban](https://docs.microsoft.com/rest/api/virtualnetwork/subnets). Ne feledje, hogy a Azure NetApp Files erőforrásoknak és az Azure-beli virtuális gépeknek ugyanabban az Azure-Virtual Networkban vagy az Azure-beli virtuális hálózatokban kell lenniük. Például a sapmnt<b>QAS</b>, a usrsap<b>QAS</b>stb. a kötetek nevei<b>és sapmnt QAS, usrsap</b><b>QAS</b>stb. a filepaths a Azure NetApp Files kötetek esetében.  
 
-   1. kötet sapmnt<b>QAS</b> (nfs://10.1.0.4/sapmnt<b>qas</b>)
-   2. kötet usrsap<b>QAS</b> (nfs://10.1.0.4/usrsap<b>qas</b>)
-   3. kötet usrsap<b>QAS</b>sys (nfs://10.1.0.5/usrsap<b>qas</b>sys)
-   4. kötet usrsap<b>QAS</b>sszon (nfs://10.1.0.4/usrsap<b>qas</b>sszon)
-   5. kötet trans (nfs://10.1.0.4/trans)
-   6. kötet usrsap<b>QAS</b>szolgáltatói címei (nfs://10.1.0.5/usrsap<b>qas</b>szolgáltatói címei)
-   7. kötet usrsap<b>QAS</b>rendszergazdájaként (nfs://10.1.0.4/usrsap<b>qas</b>aas)
+   1. kötet sapmnt<b>QAS</b> (NFS://10.1.0.4/sapmnt<b>QAS</b>)
+   2. kötet usrsap<b>QAS</b> (NFS://10.1.0.4/usrsap<b>QAS</b>)
+   3. kötet usrsap<b>QAS</b>(NFS://10.1.0.5/usrsap<b>QAS</b>sys)
+   4. kötet usrsap<b>QAS</b>(NFS://10.1.0.4/usrsap<b>QAS</b>ERS)
+   5. kötet Trans (nfs://10.1.0.4/trans)
+   6. kötet usrsap<b>QAS</b>pas (NFS://10.1.0.5/usrsap<b>QAS</b>Pas)
+   7. Volume usrsap<b>QAS</b>aas (NFS://10.1.0.4/usrsap<b>QAS</b>AAS)
    
-Ebben a példában a NetApp fájlokat az Azure minden SAP Netweaver fájlrendszerekben bemutatásához, hogyan használható az Azure Files-NetApp használtuk. Az SAP fájlrendszereket, amelyeket nem kell csatlakoztatnia kell az NFS-n keresztül is telepíthető központilag [az Azure disk storage](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/disks-types#premium-ssd) . Ebben a példában <b>-e</b> kell lennie az Azure Files-NetApp és <b>f-g</b> (azaz usr/sap/<b>QAS</b>/D<b>02</b>,usr/sap/<b>QAS </b>/D<b>03</b>), az Azure disk storage is telepíthető. 
+Ebben a példában az összes SAP NetWeaver fájlrendszer Azure NetApp Files használták, hogy bemutassa, hogyan használható a Azure NetApp Files. Az NFS-en keresztül nem szükséges SAP-fájlrendszerek is üzembe helyezhetők az [Azure Disk Storage](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd) szolgáltatásban. Ebben a példában az <b>a-e</b> Azure NetApp Files és <b>f-g</b> (azaz/usr/SAP/<b>QAS</b>/d<b>02</b>,/usr/SAP/<b>QAS</b>/d<b>03</b>) telepíthető Azure Disk Storage-ként. 
 
 ### <a name="important-considerations"></a>Fontos szempontok
 
-Az SAP Netweaver SUSE magas rendelkezésre állású architektúra az Azure NetApp fájlok kiválasztásakor vegye figyelembe az alábbi fontos szempontokat:
+Az SAP NetWeaver SUSE magas rendelkezésre állású architektúrán való Azure NetApp Filesának megfontolásakor vegye figyelembe a következő fontos szempontokat:
 
-- A kapacitásérték-minimumot készlet használata 4 Tib-ra. A kapacitás a készlet méretét 4 Tib-ra többszörösének kell lennie.
+- A minimális kapacitási készlet 4 TiB. A kapacitási készlet méretének 4 TiB-nál több többszörösének kell lennie.
 - A minimális kötet 100 GiB
-- NetApp Azure Files és az összes virtuális gép, ahol az Azure Files-NetApp kötetek lesz csatlakoztatva, kell lennie, az azonos Azure virtuális hálózatban vagy a [társviszonyban álló virtuális hálózatok](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-peering-overview) ugyanabban a régióban. Keresztül a virtuális hálózatok közötti társviszony az azonos régióban található Azure NetApp fájlok hozzáférés mostantól támogatott. Az Azure a NetApp hozzáférés globális társviszony-létesítésen keresztül még nem támogatott.
-- A kiválasztott virtuális hálózat egy alhálózat Azure NetApp Files, meghatalmazott kell rendelkeznie.
-- NetApp Azure Files jelenleg csak NFSv3 támogatja 
-- Biztosít a NetApp Azure Files [házirend exportálása](https://docs.microsoft.com/en-gb/azure/azure-netapp-files/azure-netapp-files-configure-export-policy): szabályozhatja az engedélyezett ügyfelektől, a hozzáférés típusa (Olvasás és írás, csak olvasható, stb.). 
-- Azure NetApp fájlok funkció még nem ismeri a zóna. Azure NetApp fájlok szolgáltatás jelenleg nem telepített minden rendelkezésre állási zónák egy Azure-régióban. Vegye figyelembe a lehetséges késés hatással az egyes Azure-régióban. 
+- Azure NetApp Files és az összes olyan virtuális gép, amelyben Azure NetApp Files köteteket csatlakoztatni kell, ugyanabban az Azure-Virtual Network vagy egymással azonos régióban lévő [virtuális hálózatokban](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) kell lennie. A VNET-társítások ugyanazon régióban való elérésének Azure NetApp Files jelenleg támogatott. Az Azure NetApp a globális társon keresztüli hozzáférése még nem támogatott.
+- A kiválasztott virtuális hálózatnak rendelkeznie kell egy, a Azure NetApp Files delegált alhálózattal.
+- Azure NetApp Files jelenleg csak a NFSv3 támogatja 
+- Azure NetApp Files az [exportálási szabályzatot](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy): szabályozhatja az engedélyezett ügyfeleket, a hozzáférési típust (olvasási & írás, csak olvasható stb.). 
+- Azure NetApp Files a szolgáltatás még nem ismeri a zónát. Jelenleg Azure NetApp Files funkció nincs telepítve az Azure-régió összes rendelkezésre állási zónájában. Vegye figyelembe, hogy egyes Azure-régiókban lehetséges a késés következményei. 
 
-## <a name="deploy-linux-vms-manually-via-azure-portal"></a>Manuálisan üzembe helyezése Linux rendszerű virtuális gépek Azure-portálon
+## <a name="deploy-linux-vms-manually-via-azure-portal"></a>Linux rendszerű virtuális gépek manuális üzembe helyezése Azure Portal használatával
 
-Először meg kell az Azure Files-NetApp köteteket hozhat létre. A virtuális gépek üzembe helyezése. Ezt követően hozzon létre egy terheléselosztó, és a virtuális gépek használata a háttérkészletek.
+Először létre kell hoznia a Azure NetApp Files köteteket. Telepítse a virtuális gépeket. Ezt követően hozzon létre egy terheléselosztó-t, és használja a virtuális gépeket a háttér-készletekben.
 
 1. Erőforráscsoport létrehozása
-1. Virtuális hálózat létrehozása
-1. Az ascs rendszerbe fut be egy rendelkezésre állási csoport létrehozása  
+1. Virtual Network létrehozása
+1. Rendelkezésre állási csoport létrehozása a ASCS  
    Maximális frissítési tartomány beállítása
-1. 1 virtuális gép létrehozása  
-   Legalább SLES4SAP 12 SP3, ebben a példában a SLES4SAP 12 SP3 lemezképet használja  
-   Válassza ki a rendelkezésre állási csoport ascs rendszerbe fut be a korábban létrehozott  
-1. 2 virtuális gép létrehozása  
-   Legalább SLES4SAP 12 SP3, ebben a példában a SLES4SAP 12 SP3 lemezképet használja  
-   Válassza ki a rendelkezésre állási csoport ascs rendszerbe fut be a korábban létrehozott  
-1. Az SAP alkalmazáspéldányok (szolgáltatói CÍMEI, AAS) egy rendelkezésre állási csoport létrehozása    
+1. 1\. virtuális gép létrehozása  
+   Legalább 12 SP3 SLES4SAP, ebben a példában a SLES4SAP 12 SP3 rendszerképet használja a rendszer  
+   Válassza ki a korábban létrehozott rendelkezésre állási készletet a ASCS  
+1. 2\. virtuális gép létrehozása  
+   Legalább 12 SP3 SLES4SAP, ebben a példában a SLES4SAP 12 SP3 rendszerképet használja a rendszer  
+   Válassza ki a korábban létrehozott rendelkezésre állási készletet a ASCS  
+1. Rendelkezésre állási csoport létrehozása az SAP-alkalmazás példányaihoz (PAS, AAS)    
    Maximális frissítési tartomány beállítása
-1. 3 virtuális gép létrehozása  
-   Legalább SLES4SAP 12 SP3, ebben a példában a SLES4SAP 12 SP3 lemezképet használja  
-   Válassza ki a rendelkezésre állási szolgáltatói CÍMEI vagy Rendszergazdájaként a korábban létrehozott   
-1. 4 virtuális gép létrehozása  
-   Legalább SLES4SAP 12 SP3, ebben a példában a SLES4SAP 12 SP3 lemezképet használja  
-   Válassza ki a rendelkezésre állási szolgáltatói CÍMEI vagy Rendszergazdájaként a korábban létrehozott  
+1. 3\. virtuális gép létrehozása  
+   Legalább 12 SP3 SLES4SAP, ebben a példában a SLES4SAP 12 SP3 rendszerképet használja a rendszer  
+   Válassza ki a korábban létrehozott rendelkezésre állási készletet a PAS/AAS számára   
+1. 4\. virtuális gép létrehozása  
+   Legalább 12 SP3 SLES4SAP, ebben a példában a SLES4SAP 12 SP3 rendszerképet használja a rendszer  
+   Válassza ki a korábban létrehozott rendelkezésre állási készletet a PAS/AAS számára  
 
-## <a name="setting-up-ascs"></a>(A) SCS beállítása
+## <a name="setting-up-ascs"></a>Az (A) SCS beállítása
 
-Ebben a példában a rendszer üzembe helyezett erőforrások manuálisan keresztül a [az Azure portal](https://portal.azure.com/#home) .
+Ebben a példában az erőforrásokat manuálisan telepítették a [Azure Portal](https://portal.azure.com/#home) használatával.
 
-### <a name="deploy-azure-load-balancer-manually-via-azure-portal"></a>Az Azure Load Balancer telepítheti manuálisan az Azure Portalon keresztül
+### <a name="deploy-azure-load-balancer-manually-via-azure-portal"></a>Azure Load Balancer manuális üzembe helyezése Azure Portal használatával
 
-Először meg kell az Azure Files-NetApp köteteket hozhat létre. A virtuális gépek üzembe helyezése. Ezt követően hozzon létre egy terheléselosztó, és a virtuális gépek használata a háttérkészletek.
+Először létre kell hoznia a Azure NetApp Files köteteket. Telepítse a virtuális gépeket. Ezt követően hozzon létre egy terheléselosztó-t, és használja a virtuális gépeket a háttér-készletekben.
 
 1. Load Balancer létrehozása (belső)  
-   1. Hozzon létre az előtérbeli IP-címek
-      1. Az ASCS 10.1.1.20 IP-címe
-         1. Nyissa meg a terheléselosztó, válassza ki az előtérbeli IP-címkészlet, kattintson a Hozzáadás gombra
-         1. Adja meg az új előtérbeli IP-címkészlet nevét (például **előtérbeli. QAS. ASCS**)
-         1. A hozzárendelés Static értékre, és adja meg az IP-címet (például **10.1.1.20**)
+   1. Az előtérbeli IP-címek létrehozása
+      1. A ASCS IP-10.1.1.20
+         1. Nyissa meg a terheléselosztó-t, válassza a előtéri IP-készlet lehetőséget, majd kattintson a Hozzáadás gombra.
+         1. Adja meg az új előtér-IP-készlet nevét (például a **frontend. QAS. ASCS**)
+         1. Állítsa a hozzárendelést statikus értékre, és adja meg az IP-címet (például **10.1.1.20**).
          1. Kattintson az OK gombra
-      1. Az ASCS SSZON 10.1.1.21 IP-címe
-         * Ismételje meg a fenti lépéseket a SSZON IP-cím létrehozása "a" alatt (például **10.1.1.21** és **előtérbeli. QAS. SSZON**)
-   1. Hozzon létre a háttérkészletek
-      1. Az ASCS háttérkészlet létrehozása
-         1. Nyissa meg a terheléselosztó, válassza ki a háttérkészletek, és kattintson a Hozzáadás gombra
-         1. Adja meg az új háttérkészlet nevét (például **háttérrendszer. QAS**)
-         1. Kattintson a Hozzáadás elemre egy virtuális gépet.
-         1. Válassza ki a korábban létrehozott ascs rendszerbe fut be a rendelkezésre állási csoport 
-         1. Válassza ki a virtuális gépek (A) SCS-fürt
+      1. A ASCS IP-10.1.1.21
+         * Ismételje meg a fenti lépéseket az "a" alatt, és hozzon létre egy IP-címet az ERS számára (például **10.1.1.21** és **frontend. QAS. ERS**)
+   1. A háttér-készletek létrehozása
+      1. Háttérbeli készlet létrehozása a ASCS
+         1. Nyissa meg a Load balancert, válassza a háttérbeli készletek elemet, majd kattintson a Hozzáadás gombra.
+         1. Adja meg az új háttér-készlet nevét (például **háttér. QAS**)
+         1. Kattintson a virtuális gép hozzáadása elemre.
+         1. Válassza ki a ASCS korábban létrehozott rendelkezésre állási készletet 
+         1. Válassza ki az (A) SCS-fürthöz tartozó virtuális gépeket.
          1. Kattintson az OK gombra
-   1. Az állapotminták létrehozása
-      1. Port 620**00** ASCS számára
-         1. Nyissa meg a terheléselosztó, válassza ki az állapotmintákat, kattintson a Hozzáadás gombra
-         1. Adja meg az új állapotadat-mintavétel nevét (például **állapotát. QAS. ASCS**)
-         1. Válassza ki a TCP protokoll, port 620**00**, időköz 5 és a nem kifogástalan állapot küszöbértéke 2
+   1. Az állapot-mintavételek létrehozása
+      1. A ASCS 620**00** portja
+         1. Nyissa meg a terheléselosztó-t, válassza az állapot-tesztek elemet, majd kattintson a Hozzáadás gombra.
+         1. Adja meg az új állapotadatok (például az **állapot) nevét. QAS. ASCS**)
+         1. Válassza a TCP protokollt, a 620**00**portot, az 5. időközt és a nem megfelelő állapotú küszöbértéket 2
          1. Kattintson az OK gombra
-      1. Port 621**01** ASCS SSZON számára
-            * Ismételje meg a fenti lépéseket a "c" hozzon létre egy állapotmintát az on-felhasználók számára (például 621**01** és **állapotát. QAS. SSZON**)
+      1. Port 621**01** ASCS-eseknél
+            * A "c" alatt a fenti lépések megismétlésével hozzon létre egy állapot-mintavételt a ERS számára (például 621**01** és **Health. QAS. ERS**)
    1. Terheléselosztási szabályok
-      1. 32**00** TCP ASCS használata
-         1. Nyissa meg a terheléselosztó, terheléselosztási szabályok kiválasztása, és kattintson a Hozzáadás gombra
-         1. Adja meg az új terheléselosztó-szabályt nevét (például **lb. QAS. ASCS.3200**)
-         1. Válassza ki az előtérbeli IP-cím ascs rendszerbe fut be, a háttérkészlet, valamint a korábban létrehozott állapotadat-mintavétel (például **előtérbeli. QAS. ASCS**)
-         1. Tartsa protokoll **TCP**, adja meg a port **3200**
-         1. Üresjárati időkorlát akár 30 percig növelése
-         1. **Ügyeljen arra, hogy Floating IP engedélyezése**
+      1. 32**00** TCP a ASCS
+         1. Nyissa meg a Load balancert, válassza a terheléselosztási szabályok elemet, majd kattintson a Hozzáadás gombra.
+         1. Adja meg az új terheléselosztó szabály nevét (például **LB. QAS. ASCS. 3200**)
+         1. Válassza ki a korábban létrehozott ASCS, háttér-készlet és állapot-mintavételi felület IP-címét (például a **frontendet). QAS. ASCS**)
+         1. Tartsa meg a protokoll **TCP**-t, írja be a **3200** portot
+         1. Üresjárati időkorlát 30 percre növelve
+         1. **Ügyeljen arra, hogy a lebegő IP-címet engedélyezze**
          1. Kattintson az OK gombra
-      1. Az ASCS további portokat
-         * Ismételje meg a fenti lépéseket a "d" portok 36**00**, 39**00**, 81**00**, 5**00**13, 5**00**14., 5**00**16 és a TCP az ASCS használata
-      1. Az ASCS SSZON további portokat
-         * Ismételje meg a fenti lépéseket a "d" portok 33**01**, 5**01**13, 5**01**14, 5**01**16 és a TCP az ASCS SSZON használata
+      1. További portok a ASCS
+         * Ismételje meg a fenti lépéseket a "d" alatt a 36**00**, 39**00**, 81**00**, 5**00**13, 5**00**14, 5**00**16 és TCP ASCS
+      1. További portok a ASCS-ESEK számára
+         * Ismételje meg a fenti lépéseket a "d" alatt a 33**01**, 5**01**13, 5**01**14, 5**01 16 és**TCP ASCS-eseknél.
 
 > [!IMPORTANT]
-> Ne engedélyezze a TCP időbélyegeket Azure Load Balancer mögé helyezett Azure virtuális gépeken. Sikertelen állapotadat-mintavételek engedélyezése TCP időbélyegek miatt. A paramétert **net.ipv4.tcp_timestamps** való **0**. További részletekért lásd: [Load Balancer állapot-mintavételei](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-custom-probe-overview).
+> Ne engedélyezze a TCP-időbélyegeket a Azure Load Balancer mögött elhelyezett Azure-beli virtuális gépeken. A TCP-időbélyegek engedélyezése az állapot-mintavételek meghibásodását eredményezi. Állítsa a **net. IPv4. TCP** paramétert **0-ra**_timestamps. Részletekért lásd: [Load Balancer Health](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)-tesztek.
 
-### <a name="create-pacemaker-cluster"></a>Támasztja fürt létrehozása
+### <a name="create-pacemaker-cluster"></a>Pacemaker-fürt létrehozása
 
-Kövesse a [támasztja a SUSE Linux Enterprise Server az Azure-beli beállítása](high-availability-guide-suse-pacemaker.md) hozzon létre egy alapszintű támasztja fürtről ehhez (A) SCS-kiszolgálón.
+Kövesse a [pacemaker beállítása SUSE Linux Enterprise Server az Azure-ban](high-availability-guide-suse-pacemaker.md) című témakör lépéseit egy alapszintű pacemaker-fürt létrehozásához ehhez A (a) SCS-kiszolgálóhoz.
 
 ### <a name="installation"></a>Telepítés
 
 A következő elemek van fűzve előtagként vagy **[A]** – az összes csomópont alkalmazandó **[1]** – 1. csomópont csak érvényes vagy **: [2]** – 2. csomópont csak érvényes.
 
-1. **[A]**  SUSE-összekötő telepítése
+1. **[A]** SUSE-összekötő telepítése
 
    <pre><code>sudo zypper install sap-suse-cluster-connector
    </code></pre>
 
    > [!NOTE]
-   > Ne használjon gondolatjelek a fürtcsomópontok állomásnevét. Ellenkező esetben a fürt nem fog működni. Ez egy ismert korlátozás és SUSE dolgozik a javítást. A javítás, a javítás az sap-suse-felhő-összekötő csomag elérhető lesz.
+   > A fürtcsomópontok állomásneve ne használjon kötőjeleket. Ellenkező esetben a fürt nem fog működni. Ez egy ismert korlátozás, és a SUSE a javításon dolgozik. A javítás az SAP-SUSE-Cloud-Connector csomag javításának részeként jelenik meg.
 
-   Győződjön meg arról, hogy telepítette-e a SAP SUSE-fürt összekötő új verziója. A régit sap_suse_cluster_connector byla volána és a egy újra nevezzük **sap-suse-fürtösszekötő**.
+   Győződjön meg arról, hogy az SAP SUSE-fürt összekötő új verzióját telepítette. A régit sap_suse_cluster_connector hívták, az újat pedig **SAP-SUSE-cluster-Connector**néven.
 
    <pre><code>sudo zypper info sap-suse-cluster-connector
    
@@ -280,19 +284,19 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
    Summary        : SUSE High Availability Setup for SAP Products
    </code></pre>
 
-2. **[A]**  Frissítés SAP erőforrás ügynökök  
+2. **[A]** SAP-erőforrás-ügynökök frissítése  
    
-   Az erőforrás-ügynökök csomag javítást kell használnia az új konfigurációt, ebben a cikkben leírt. Ellenőrizheti, ha a javítás már telepítve van a következő paranccsal
+   Az ebben a cikkben ismertetett új konfiguráció használatához az erőforrás-ügynökök csomagra vonatkozó javításra van szükség. A következő paranccsal ellenőrizhető, hogy a javítás már telepítve van-e
 
    <pre><code>sudo grep 'parameter name="IS_ERS"' /usr/lib/ocf/resource.d/heartbeat/SAPInstance
    </code></pre>
 
-   A kimenet hasonlít kell lennie.
+   A kimenetnek a következőhöz hasonlónak kell lennie
 
    <pre><code>&lt;parameter name="IS_ERS" unique="0" required="0"&gt;
    </code></pre>
 
-   Ha a grep parancs nem találja a IS_ERS paraméter, a javítás található telepítenie kell [a SUSE letöltési oldala](https://download.suse.com/patch/finder/#bu=suse&familyId=&productId=&dateRange=&startDate=&endDate=&priority=&architecture=&keywords=resource-agents)
+   Ha a GREP-parancs nem találja a IS_ERS paramétert, telepítenie kell a [SUSE letöltési oldalán](https://download.suse.com/patch/finder/#bu=suse&familyId=&productId=&dateRange=&startDate=&endDate=&priority=&architecture=&keywords=resource-agents) található javítást.
 
    <pre><code># example for patch for SLES 12 SP1
    sudo zypper in -t patch SUSE-SLE-HA-12-SP1-2017-885=1
@@ -303,7 +307,7 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
 3. **[A]**  Állomásnév-feloldás beállítása
 
    DNS-kiszolgálót használjon, vagy módosítsa a Hosts az összes csomópontra. Ez a példa bemutatja, hogyan használhatja a Hosts fájlt.
-   Cserélje le az IP-cím és a következő parancsokat az állomásnevet
+   Cserélje le az IP-címet és a gazdagépet a következő parancsokra
 
    <pre><code>sudo vi /etc/hosts
    </code></pre>
@@ -321,9 +325,9 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
    <b>10.1.1.21    anftstsapers</b>
    </code></pre>
 
-## <a name="prepare-for-sap-netweaver-installation"></a>SAP NetWeaver-telepítés előkészítése
+## <a name="prepare-for-sap-netweaver-installation"></a>Felkészülés az SAP NetWeaver telepítésére
 
-1. **[A]**  a közös könyvtárak létrehozása
+1. **[A]** a megosztott könyvtárak létrehozása
 
    <pre><code>sudo mkdir -p /sapmnt/<b>QAS</b>
    sudo mkdir -p /usr/sap/trans
@@ -338,7 +342,7 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
    sudo chattr +i /usr/sap/<b>QAS</b>/ERS<b>01</b>
    </code></pre>
 
-2. **[A]**  Autofs konfigurálása
+2. **[A]** AutoFS konfigurálása
 
    <pre><code>
    sudo vi /etc/auto.master
@@ -346,7 +350,7 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
    /- /etc/auto.direct
    </code></pre>
 
-   Fájl létrehozása
+   Hozzon létre egy fájlt
 
    <pre><code>
    sudo vi /etc/auto.direct
@@ -357,15 +361,15 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
    </code></pre>
    
    > [!NOTE]
-   > Azure NetApp Files jelenleg csak NFSv3 támogatja. Ne hagyja ki a nfsvers = 3 kapcsoló.
+   > Jelenleg Azure NetApp Files csak a NFSv3 támogatja. Ne hagyja ki a nfsvers = 3 kapcsolót.
    
-   Indítsa újra az új megosztások csatlakoztatására autofs
+   Az `autofs` új megosztások csatlakoztatásának újraindítása
     <pre><code>
       sudo systemctl enable autofs
       sudo service autofs restart
      </code></pre>
 
-3. **[A]**  Fájl cseréje konfigurálása
+3. **[A] A** swap-fájl konfigurálása
 
    <pre><code>sudo vi /etc/waagent.conf
    
@@ -379,15 +383,15 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
    ResourceDisk.SwapSizeMB=<b>2000</b>
    </code></pre>
 
-   Indítsa újra az ügynököt, a módosítás aktiválása
+   Az ügynök újraindítása a módosítás aktiválásához
 
    <pre><code>sudo service waagent restart
    </code></pre>
 
 
-### <a name="installing-sap-netweaver-ascsers"></a>SAP NetWeaver ASCS/SSZON telepítése
+### <a name="installing-sap-netweaver-ascsers"></a>Az SAP NetWeaver ASCS/ERS telepítése
 
-1. **[1]**  Egy virtuális IP- és állapot-mintavételi ASCS-példány létrehozása
+1. **[1]** virtuális IP-erőforrás és állapot-mintavétel létrehozása a ASCS-példányhoz
 
    <pre><code>sudo crm node standby <b>anftstsapcl2</b>
    
@@ -408,7 +412,7 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
       meta resource-stickiness=3000
    </code></pre>
 
-   Győződjön meg arról, hogy a fürt állapota rendben, és elindulnak, hogy az összes erőforrás. Nem számít mely erőforrásokat futtató csomóponton.
+   Győződjön meg arról, hogy a fürt állapota ok, és hogy az összes erőforrás el van indítva. Nem fontos, hogy az erőforrások melyik csomóponton futnak.
 
    <pre><code>sudo crm_mon -r
    
@@ -421,27 +425,26 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
    #     fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    <b>Started anftstsapcl1</b>
    #     nc_QAS_ASCS        (ocf::heartbeat:anything):      <b>Started anftstsapcl1</b>
    #     vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       <b>Started anftstsapcl1</b>
-   #     rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   <b>Started anftstsapcl1</b>
    # stonith-sbd     (stonith:external/sbd): <b>Started anftstsapcl2</b>
    </code></pre>
   
-2. **[1]**  SAP NetWeaver ASCS telepítése  
+2. **[1]** az SAP NetWeaver ASCS telepítése  
 
-   SAP NetWeaver ASCS telepítése egy virtuális állomásnevet, amely leképezi a terheléselosztó előtérbeli konfigurációját a ascs rendszerbe fut be, az IP-címe például használatával első csomópontjára legfelső szintű <b>anftstsapvh</b>, <b>10.1.1.20</b> és a példányok számát, amelyet a például használja a terheléselosztó a mintavétel <b>00</b>.
+   Telepítse az SAP NetWeaver ASCS root-ként az első csomóponton egy olyan virtuális állomásnév használatával, amely a ASCS terheléselosztó-felületi konfigurációjának IP-címét képezi le, például a <b>anftstsapvh</b>, a <b>10.1.1.20</b> és a által használt példány számát. a terheléselosztó mintavétele, például <b>00</b>.
 
-   A sapinst paraméter SAPINST_REMOTE_ACCESS_USER használhatja, hogy a nem gyökér felhasználó sapinst csatlakozni. SAPINST_USE_HOSTNAME paraméter használatával telepítse az SAP virtuális állomásnevet használja.
+   A sapinst paraméter SAPINST_REMOTE_ACCESS_USER lehetővé teszi, hogy a nem root felhasználó csatlakozhasson a sapinst. A SAPINST_USE_HOSTNAME paraméter használatával telepítheti az SAP-t a virtuális állomásnév használatával.
 
    <pre><code>sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b> SAPINST_USE_HOSTNAME=<b>virtual_hostname</b>
    </code></pre>
 
-   Ha a telepítés sikertelen lesz, hozzon létre egy almappát a usr/sap/**QAS**/ASCS**00**, próbálja meg a tulajdonos és a ASCS csoportja**00** mappát, majd próbálkozzon újra. 
+   Ha a telepítés során nem sikerül almappát létrehozni a/usr/SAP/**QAS**/ASCS**00**-ben, próbálja meg beállítani a ASCS**00** mappa tulajdonosát és csoportját, és próbálkozzon újra. 
 
    <pre><code>
    chown <b>qas</b>adm /usr/sap/<b>QAS</b>/ASCS<b>00</b>
    chgrp sapsys /usr/sap/<b>QAS</b>/ASCS<b>00</b>
    </code></pre>
 
-3. **[1]**  Egy virtuális IP- és állapot-mintavételi SSZON-példány létrehozása
+3. **[1]** virtuális IP-erőforrás és állapot-mintavétel létrehozása az ERS-példányhoz
 
    <pre><code>
    sudo crm node online <b>anftstsapcl2</b>
@@ -466,7 +469,7 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
    sudo crm configure group g-<b>QAS</b>_ERS fs_<b>QAS</b>_ERS nc_<b>QAS</b>_ERS vip_<b>QAS</b>_ERS
    </code></pre>
 
-   Győződjön meg arról, hogy a fürt állapota rendben, és elindulnak, hogy az összes erőforrás. Nem számít mely erőforrásokat futtató csomóponton.
+   Győződjön meg arról, hogy a fürt állapota ok, és hogy az összes erőforrás el van indítva. Nem fontos, hogy az erőforrások melyik csomóponton futnak.
 
    <pre><code>sudo crm_mon -r
    
@@ -486,19 +489,19 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
    #      vip_QAS_ERS  (ocf::heartbeat:IPaddr2):     <b>Started anftstsapcl2</b>
    </code></pre>
 
-4. **a(z) [2]**  SAP NetWeaver SSZON telepítése
+4. **[2]** SAP NETWEAVER-ERS telepítése
 
-   SAP NetWeaver SSZON telepíti, a második csomópont használatával egy virtuális állomásnevet, amely leképezi a terheléselosztó előtérbeli konfigurációját a SSZON az IP-címét, például a legfelső szintű <b>anftstsapers</b>, <b>10.1.1.21</b> és a példányok számát, amelyet a például használja a terheléselosztó a mintavétel <b>01</b>.
+   Telepítse az SAP NetWeaver-ket root-ként a második csomóponton egy olyan virtuális állomásnév használatával, amely a hálózati terheléselosztási felület konfigurációjának IP-címét képezi le az ERS számára, például <b>anftstsapers</b>, <b>10.1.1.21</b> és a a Load Balancer mintavétele, például <b>01</b>.
 
-   A sapinst paraméter SAPINST_REMOTE_ACCESS_USER használhatja, hogy a nem gyökér felhasználó sapinst csatlakozni. SAPINST_USE_HOSTNAME paraméter használatával telepítse az SAP virtuális állomásnevet használja.
+   A sapinst paraméter SAPINST_REMOTE_ACCESS_USER lehetővé teszi, hogy a nem root felhasználó csatlakozhasson a sapinst. A SAPINST_USE_HOSTNAME paraméter használatával telepítheti az SAP-t a virtuális állomásnév használatával.
 
    <pre><code>sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b> SAPINST_USE_HOSTNAME=<b>virtual_hostname</b>
    </code></pre>
 
    > [!NOTE]
-   > Használjon SWPM SP 20 PL 05 vagy újabb verziója. Alacsonyabb verziók nincs beállítva az engedélyeket, és a telepítés sikertelen lesz.
+   > Használja az SWPM SP 20 PL 05-es vagy újabb verzióját. Az alacsonyabb verziók nem tudják megfelelően beállítani az engedélyeket, és a telepítés sikertelen lesz.
 
-   Ha a telepítés sikertelen lesz, hozzon létre egy almappát a usr/sap/**QAS**/ERS**01**, próbálja meg a tulajdonos és a SSZON csoportja**01** mappát, majd próbálkozzon újra.
+   Ha a telepítés során nem sikerül almappát létrehozni a/usr/SAP/**QAS**/ERS**01**-ben, próbálja meg beállítani az ERS**01** mappa tulajdonosát és csoportját, és próbálkozzon újra.
 
    <pre><code>
    chown qasadm /usr/sap/<b>QAS</b>/ERS<b>01</b>
@@ -506,7 +509,7 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
    </code></pre>
 
 
-5. **[1]**  Adapt ASCS/SCS és SSZON példány profilok
+5. **[1]** a ASCS/SCS és az ERS instance-profilok átalakítása
  
    * ASCS/SCS-profil
 
@@ -525,7 +528,7 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
    enque/encni/set_so_keepalive = true
    </code></pre>
 
-   * SSZON profil
+   * ERS-profil
 
    <pre><code>
    sudo vi /sapmnt/<b>QAS</b>/profile/<b>QAS</b>_ERS<b>01</b>_<b>anftstsapers</b>
@@ -542,36 +545,36 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
    # Autostart = 1
    </code></pre>
 
-6. **[A]**  Életben tartási konfigurálása
+6. **[A] A** Keep Alive konfigurálása
 
-   A SAP NetWeaver-kiszolgáló és az ASC/SCS közötti kommunikáció áthalad egy szoftveres terheléselosztót. A load balancer inaktív kapcsolatok leválasztása után konfigurálható időkorlát. Ennek megelőzéséhez szüksége egy paraméter az SAP NetWeaver ASCS/SCS-profilban és a Linux rendszer beállításait módosíthatja. Olvasási [SAP Megjegyzés 1410736] [ 1410736] további információt.
+   Az SAP NetWeaver Application Server és a ASCS/SCS közötti kommunikáció egy szoftveres terheléselosztó használatával irányítható át. A terheléselosztó konfigurálható időtúllépés után leválasztja az inaktív kapcsolatokat. Ennek elkerüléséhez be kell állítania egy paramétert az SAP NetWeaver ASCS/SCS profilban, és módosítania kell a Linux rendszer beállításait. További információért olvassa el az [SAP megjegyzés 1410736][1410736] .
 
-   Az ASCS/SCS profil paraméter célzó/encni/set_so_keepalive már lett adva az előző lépésben.
+   A enque/encni/set_so_keepalive ASCS/SCS-profil paramétere már hozzá lett adva az utolsó lépésben.
 
    <pre><code>
    # Change the Linux system configuration
    sudo sysctl net.ipv4.tcp_keepalive_time=120
    </code></pre>
 
-7. **[A]**  a telepítés után az SAP-felhasználó konfigurálása
+7. **[A]** a telepítés után KONFIGURÁLJA az SAP-felhasználókat
 
    <pre><code>
    # Add sidadm to the haclient group
    sudo usermod -aG haclient <b>qas</b>adm
    </code></pre>
 
-8. **[1]**  A ASCS és SSZON SAP-szolgáltatás hozzáadása a sapservice fájlhoz
+8. **[1]** adja hozzá a ASCS és a ERS SAP-szolgáltatásokat a sapservice-fájlhoz
 
-   Az ASCS bejegyzést a második csomópontra történő szolgáltatást, és másolja a SSZON szolgáltatás bejegyzés az első fürtcsomópont hozzáadása.
+   Adja hozzá a ASCS-szolgáltatási bejegyzést a második csomóponthoz, és másolja az ERS szolgáltatási bejegyzést az első csomópontra.
 
    <pre><code>
    cat /usr/sap/sapservices | grep ASCS<b>00</b> | sudo ssh <b>anftstsapcl2</b> "cat >>/usr/sap/sapservices"
    sudo ssh <b>anftstsapcl2</b> "cat /usr/sap/sapservices" | grep ERS<b>01</b> | sudo tee -a /usr/sap/sapservices
    </code></pre>
 
-9. **[1]**  Az SAP-fürt erőforrásainak létrehozása
+9. **[1]** az SAP-fürt erőforrásainak létrehozása
 
-Ha sorba 1 kiszolgáló architektúra (ENSA1) használ, erőforrásokat határozzák meg a következő:
+Ha a sorba helyezni Server 1 architektúráját (ENSA1) használja, az erőforrásokat az alábbiak szerint határozza meg:
 
    <pre><code>sudo crm configure property maintenance-mode="true"
    
@@ -599,8 +602,8 @@ Ha sorba 1 kiszolgáló architektúra (ENSA1) használ, erőforrásokat határoz
    sudo crm configure property maintenance-mode="false"
    </code></pre>
 
-   Sorba server 2, beleértve a replikációs állapot SAP északnyugati része 7.52 jelent meg az SAP támogatása. ABAP Platform 1809 kezdődő, 2. sorba kiszolgáló alapértelmezés szerint telepítve van. Tekintse meg az SAP Megjegyzés [2630416](https://launchpad.support.sap.com/#/notes/2630416) sorba 2 kiszolgáló támogatására.
-Ha sorba 2 kiszolgáló architektúra használatával ([ENSA2](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e0/1709%20001/en-US/6d655c383abf4c129b0e5c8683e7ecd8.html)), erőforrásokat határozzák meg a következő:
+   Az SAP bevezette a 2. sorba helyezni-kiszolgáló, beleértve a replikálást, az SAP NW 7,52-támogatását. A ABAP platform 1809-től kezdődően a sorba helyezni Server 2 alapértelmezés szerint telepítve van. Lásd: SAP-Megjegyzés [2630416](https://launchpad.support.sap.com/#/notes/2630416) a sorba helyezni Server 2 támogatásához.
+Ha a sorba helyezni Server 2 architektúráját ([ENSA2](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e0/1709%20001/en-US/6d655c383abf4c129b0e5c8683e7ecd8.html)) használja, adja meg az erőforrásokat az alábbiak szerint:
 
    <pre><code>sudo crm configure property maintenance-mode="true"
    
@@ -626,9 +629,9 @@ Ha sorba 2 kiszolgáló architektúra használatával ([ENSA2](https://help.sap.
    sudo crm configure property maintenance-mode="false"
    </code></pre>
 
-   Ha Ön egy régebbi verzióból frissítése és sorba server 2 vált, tekintse meg az sap-jegyzetnek [2641019](https://launchpad.support.sap.com/#/notes/2641019). 
+   Ha egy régebbi verzióról frissít, és átvált a 2. sorba helyezni-kiszolgálóra, tekintse meg a következőt: SAP Note [2641019](https://launchpad.support.sap.com/#/notes/2641019). 
 
-   Győződjön meg arról, hogy a fürt állapota rendben, és elindulnak, hogy az összes erőforrás. Nem számít mely erőforrásokat futtató csomóponton.
+   Győződjön meg arról, hogy a fürt állapota ok, és hogy az összes erőforrás el van indítva. Nem fontos, hogy az erőforrások melyik csomóponton futnak.
 
    <pre><code>sudo crm_mon -r
    # Full list of resources:
@@ -646,13 +649,13 @@ Ha sorba 2 kiszolgáló architektúra használatával ([ENSA2](https://help.sap.
    #      rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   <b>Started anftstsapcl2</b>
    </code></pre>
 
-## <a name="2d6008b0-685d-426c-b59e-6cd281fd45d7"></a>SAP NetWeaver alkalmazás kiszolgáló előkészítése 
+## <a name="2d6008b0-685d-426c-b59e-6cd281fd45d7"></a>Az SAP NetWeaver Application Server előkészítése 
 
-Egyes adatbázisokhoz szükséges, hogy az adatbázis-példány telepítése alkalmazáskiszolgáló hajtja végre. Készítse elő az alkalmazás server virtuális gépek ezekben az esetekben használhatja őket.
+Egyes adatbázisokhoz szükséges, hogy az adatbázis példányának telepítése egy alkalmazáskiszolgáló legyen végrehajtva. Készítse elő az alkalmazáskiszolgáló virtuális gépeket, hogy azok használni tudják őket ezekben az esetekben.
 
-A lépések Csengő azt feltételezik, hogy a kiszolgáló egy kiszolgálón telepíti a ASCS/SCS- és HANA-kiszolgálókról különböző. Ellenkező esetben néhány (pl. állomásnév-feloldás konfigurálása) az alábbi lépéseket nem szükséges.
+Az ordító lépések azt feltételezik, hogy az alkalmazáskiszolgáló a ASCS/SCS és HANA kiszolgálóktól eltérő kiszolgálóra van telepítve. Ellenkező esetben az alábbi lépések (például az állomásnév-feloldás konfigurálása) nem szükségesek.
 
-A következő elemek van fűzve előtagként vagy **[A]** – szolgáltatói CÍMEI és a Rendszergazdájaként, alkalmazandó **[P]** – csak érvényes szolgáltatói CÍMEI vagy **[S]** – csak érvényes Rendszergazdájaként.
+A (z) **[a]** előtaggal rendelkező következő elemek a Pas és az AAS esetében egyaránt érvényesek **[P]** – csak a Pas vagy **[S]** esetében érvényesek.
 
 
 1. **[A]**  Az operációs rendszer konfigurálása
@@ -669,7 +672,7 @@ A következő elemek van fűzve előtagként vagy **[A]** – szolgáltatói CÍ
 1. **[A]**  Állomásnév-feloldás beállítása
 
    DNS-kiszolgálót használjon, vagy módosítsa a Hosts az összes csomópontra. Ez a példa bemutatja, hogyan használhatja a Hosts fájlt.
-   Cserélje le az IP-cím és a következő parancsokat az állomásnevet
+   Cserélje le az IP-címet és a gazdagépet a következő parancsokra
 
    ```bash
    sudo vi /etc/hosts
@@ -687,7 +690,7 @@ A következő elemek van fűzve előtagként vagy **[A]** – szolgáltatói CÍ
    <b>10.1.1.16 anftstsapa02</b>
    </code></pre>
 
-1. **[A]**  a sapmnt könyvtár létrehozása
+1. **[A]** a sapmnt könyvtárának létrehozása
 
    <pre><code>
    sudo mkdir -p /sapmnt/<b>QAS</b>
@@ -697,21 +700,21 @@ A következő elemek van fűzve előtagként vagy **[A]** – szolgáltatói CÍ
    sudo chattr +i /usr/sap/trans
    </code></pre>
 
-1. **[P]**  a szolgáltatói CÍMEI könyvtár létrehozása
+1. **[P]** a Pas-címtár létrehozása
 
    <pre><code>
    sudo mkdir -p /usr/sap/<b>QAS</b>/D<b>02</b>
    sudo chattr +i /usr/sap/<b>QAS</b>/D<b>02</b>
    </code></pre>
 
-1. **[S]**  A AAS könyvtár létrehozása
+1. **[S]** az AAS-címtár létrehozása
 
    <pre><code>
    sudo mkdir -p /usr/sap/<b>QAS</b>/D<b>03</b>
    sudo chattr +i /usr/sap/<b>QAS</b>/D<b>03</b>
    </code></pre>
 
-1. **[P]**  Szolgáltatói CÍMEI autofs konfigurálása
+1. **[P]** AutoFS konfigurálása a Pas-on
 
    <pre><code>sudo vi /etc/auto.master
    
@@ -719,24 +722,24 @@ A következő elemek van fűzve előtagként vagy **[A]** – szolgáltatói CÍ
    /- /etc/auto.direct
    </code></pre>
 
-   Új fájl létrehozása
+   Hozzon létre egy új fájlt a
 
    <pre><code>
    sudo vi /etc/auto.direct
    # Add the following lines to the file, save and exit
    /sapmnt/<b>QAS</b> -nfsvers=3,nobind,sync <b>10.1.0.4</b>:/sapmnt<b>qas</b>
    /usr/sap/trans -nfsvers=3,nobind,sync <b>10.1.0.4</b>:/trans
-   /usr/sap/<b>QAS</b>/D<b>02</b> -nfsvers=3,nobind,sync <b>10.1.0.5</b>:/ursap<b>qas</b>pas
+   /usr/sap/<b>QAS</b>/D<b>02</b> -nfsvers=3,nobind,sync <b>10.1.0.5</b>:/usrsap<b>qas</b>pas
    </code></pre>
 
-   Indítsa újra az új megosztások csatlakoztatására autofs
+   Az `autofs` új megosztások csatlakoztatásának újraindítása
 
    <pre><code>
    sudo systemctl enable autofs
    sudo service autofs restart
    </code></pre>
 
-1. **[P]**  AAS autofs konfigurálása
+1. **[P]** AutoFS konfigurálása az AAS-on
 
    <pre><code>sudo vi /etc/auto.master
    
@@ -744,7 +747,7 @@ A következő elemek van fűzve előtagként vagy **[A]** – szolgáltatói CÍ
    /- /etc/auto.direct
    </code></pre>
 
-   Új fájl létrehozása
+   Hozzon létre egy új fájlt a
 
    <pre><code>
    sudo vi /etc/auto.direct
@@ -754,14 +757,14 @@ A következő elemek van fűzve előtagként vagy **[A]** – szolgáltatói CÍ
    /usr/sap/<b>QAS</b>/D<b>03</b> -nfsvers=3,nobind,sync <b>10.1.0.4</b>:/usrsap<b>qas</b>aas
    </code></pre>
 
-   Indítsa újra az új megosztások csatlakoztatására autofs
+   Az `autofs` új megosztások csatlakoztatásának újraindítása
 
    <pre><code>
    sudo systemctl enable autofs
    sudo service autofs restart
    </code></pre>
 
-1. **[A]**  Fájl cseréje konfigurálása
+1. **[A] A** swap-fájl konfigurálása
 
    <pre><code>
    sudo vi /etc/waagent.conf
@@ -776,47 +779,47 @@ A következő elemek van fűzve előtagként vagy **[A]** – szolgáltatói CÍ
    ResourceDisk.SwapSizeMB=<b>2000</b>
    </code></pre>
 
-   Indítsa újra az ügynököt, a módosítás aktiválása
+   Az ügynök újraindítása a módosítás aktiválásához
 
    <pre><code>sudo service waagent restart
    </code></pre>
 
 ## <a name="install-database"></a>Adatbázis telepítése
 
-Ebben a példában SAP Netweavertől az SAP HANA telepítve van. Minden támogatott adatbázis használhatja a telepítéshez. Az Azure-beli SAP HANA telepítése További információkért lásd: [magas rendelkezésre állás az SAP HANA Azure-beli virtuális gépeken (VM)][sap-hana-ha]. Támogatott adatbázisok listájának megtekintéséhez lásd: [SAP Megjegyzés 1928533][1928533].
+Ebben a példában az SAP NetWeaver SAP HANAra van telepítve. A telepítéshez minden támogatott adatbázist használhat. A SAP HANA Azure-ban való telepítésével kapcsolatos további információkért lásd: [SAP HANA magas rendelkezésre állása Azure-beli Virtual Machines (VM)][sap-hana-ha]. A támogatott adatbázisok listáját lásd: SAP- [megjegyzés 1928533][1928533].
 
-* Futtassa az SAP adatbázis-példány telepítése
+* Az SAP Database-példány telepítésének futtatása
 
-   Telepítse az SAP NetWeaver-adatbázispéldány legfelső szintű használatával egy virtuális állomásnevet, amely a terheléselosztó előtérbeli konfigurációját az adatbázis IP-címére van leképezve.
+   Telepítse az SAP NetWeaver Database-példányt root-ként egy olyan virtuális állomásnév használatával, amely az adatbázishoz tartozó terheléselosztó előtér-konfigurációjának IP-címére van leképezve.
 
-   A sapinst paraméter SAPINST_REMOTE_ACCESS_USER használhatja, hogy a nem gyökér felhasználó sapinst csatlakozni.
-
-   <pre><code>sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b>
-   </code></pre>
-
-## <a name="sap-netweaver-application-server-installation"></a>SAP NetWeaver alkalmazás kiszolgáló telepítése
-
-Kövesse az alábbi lépéseket egy SAP-alkalmazáskiszolgáló telepítése.
-
-1. **[A]**  Előkészítése az alkalmazáskiszolgáló kövesse a fejezet a [SAP NetWeaver alkalmazás server előkészítési](high-availability-guide-suse-netapp-files.md#2d6008b0-685d-426c-b59e-6cd281fd45d7) fenti a kiszolgáló előkészítéséhez.
-
-2. **[A]**  Alkalmazáskiszolgáló telepítése SAP NetWeaver elsődleges vagy a további SAP NetWeaver-alkalmazások kiszolgáló telepítése.
-
-   A sapinst paraméter SAPINST_REMOTE_ACCESS_USER használhatja, hogy a nem gyökér felhasználó sapinst csatlakozni.
+   A sapinst paraméter SAPINST_REMOTE_ACCESS_USER lehetővé teszi, hogy a nem root felhasználó csatlakozhasson a sapinst.
 
    <pre><code>sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b>
    </code></pre>
 
-3. **[A]**  Biztonságos frissítés SAP HANA-tároló
+## <a name="sap-netweaver-application-server-installation"></a>SAP NetWeaver alkalmazáskiszolgáló telepítése
 
-   Frissítse az SAP HANA biztonságos tároló, a SAP HANA-Rendszerreplikálást beállítása virtuális nevére mutasson.
+Az SAP-alkalmazáskiszolgáló telepítéséhez kövesse az alábbi lépéseket.
 
-   Futtassa a következő parancsot a tételek felsorolása
+1. **[A]** az alkalmazáskiszolgáló előkészítése az alkalmazáskiszolgáló előkészítéséhez kövesse az alábbi, az [SAP NetWeaver Application Server előkészítése](high-availability-guide-suse-netapp-files.md#2d6008b0-685d-426c-b59e-6cd281fd45d7) című fejezet lépéseit.
+
+2. **[A]** az SAP NetWeaver alkalmazáskiszolgáló telepítése telepítsen egy elsődleges vagy további SAP NetWeaver Application Servert.
+
+   A sapinst paraméter SAPINST_REMOTE_ACCESS_USER lehetővé teszi, hogy a nem root felhasználó csatlakozhasson a sapinst.
+
+   <pre><code>sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b>
+   </code></pre>
+
+3. **[A]** a biztonságos tár SAP HANA frissítése
+
+   Frissítse a SAP HANA biztonságos tárolót, hogy az SAP HANA rendszerreplikáció beállításának virtuális nevére mutasson.
+
+   A következő parancs futtatásával sorolja fel a bejegyzéseket
    <pre><code>
    hdbuserstore List
    </code></pre>
 
-   Ez felsorolásban szerepelnie kell az összes bejegyzést, és kell kinéznie:
+   Ennek az összes bejegyzést fel kell sorolnia, és a következőhöz hasonlóan kell kinéznie
    <pre><code>
    DATA FILE       : /home/qasadm/.hdb/anftstsapa01/SSFS_HDB.DAT
    KEY FILE        : /home/qasadm/.hdb/anftstsapa01/SSFS_HDB.KEY
@@ -827,20 +830,20 @@ Kövesse az alábbi lépéseket egy SAP-alkalmazáskiszolgáló telepítése.
      DATABASE: <b>QAS</b>
    </code></pre>
 
-   A kimenet mutatja, hogy a virtuális gépet, és nem a terheléselosztó IP-cím mutat-e alapértelmezett bejegyzését IP-címét. Ez a bejegyzés kell módosítani, hogy a terheléselosztó virtuális állomásnevét mutasson. Győződjön meg arról, hogy ugyanazt a portot használja (**30313** a fenti kimenetben) és az adatbázis nevét (**QAS** a fenti kimenetben)!
+   A kimenet azt mutatja, hogy az alapértelmezett bejegyzés IP-címe a virtuális gépre mutat, nem pedig a terheléselosztó IP-címére. Ezt a bejegyzést úgy kell módosítani, hogy a terheléselosztó virtuális állomásneve mutasson. Ügyeljen arra, hogy ugyanazt a portot használja (a fenti kimenetben**30313** ) és az adatbázis nevét (a fenti kimenet**QAS** )!
 
    <pre><code>
    su - <b>qas</b>adm
    hdbuserstore SET DEFAULT <b>qasdb:30313@QAS</b> <b>SAPABAP1</b> <b>&lt;password of ABAP schema&gt;</b>
    </code></pre>
 
-## <a name="test-the-cluster-setup"></a>Tesztelje a fürt beállítása
+## <a name="test-the-cluster-setup"></a>A fürt beállításának tesztelése
 
-A következő tesztek elvégzése a vizsgálati esetek másolatát a [ajánlott eljárások útmutatók, SUSE][suse-ha-guide]. A felhasználók kényelme érdekében másolja őket. Mindig is olvassa el az ajánlott eljárások útmutatókat, és hajtsa végre, előfordulhat, hogy hozzáadott összes további vizsgálat.
+A következő tesztek a tesztelési esetek egy példányát jelentik a [SUSE ajánlott eljárásokat ismertető útmutatójában][suse-ha-guide]. Ezeket a rendszer átmásolja az Ön kényelme érdekében. Mindig olvassa el az ajánlott eljárásokat ismertető útmutatót, és végezze el az esetleg hozzáadott további teszteket is.
 
-1. Teszt HAGetFailoverConfig HACheckConfig és HACheckFailoverConfig
+1. HAGetFailoverConfig, HACheckConfig és HACheckFailoverConfig tesztelése
 
-   Futtassa a következő parancsokat, \<sapsid > adm, ahol az ASCS-példány fut, a csomóponton. Ha a parancs sikertelen, és a sikertelen: Nincs elég memória, ez oka lehet a gazdanév található kötőjelek. Ez egy ismert probléma, és úgy lesz kijavítva, SUSE az sap-suse-fürtösszekötő csomagban.
+   Futtassa az alábbi parancsokat sapsid \<> adm-ként azon a csomóponton, amelyen a ASCS-példány jelenleg fut. Ha a parancsok meghiúsulnak: Nincs elég memória, a gazdagép kötőjelei okozhatja. Ez egy ismert probléma, amelyet a SUSE az SAP-SUSE-cluster-Connector csomagban fog megállapítani.
 
    <pre><code>
    anftstsapcl1:qasadm 52> sapcontrol -nr 00 -function HAGetFailoverConfig
@@ -889,9 +892,9 @@ A következő tesztek elvégzése a vizsgálati esetek másolatát a [ajánlott 
    SUCCESS, SAP CONFIGURATION, SAPInstance RA sufficient version, SAPInstance includes is-ers patch
    </code></pre>
 
-2. Az ASCS-példány manuális áttelepítésével kapcsolatban
+2. A ASCS-példány manuális áttelepíteni
 
-   Erőforrás állapotának a vizsgálat megkezdése előtt:
+   Erőforrás állapota a teszt elindítása előtt:
 
    <pre><code>
     Resource Group: g-QAS_ASCS
@@ -907,7 +910,7 @@ A következő tesztek elvégzése a vizsgálati esetek másolatát a [ajánlott 
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Starting anftstsapcl1
    </code></pre>
 
-   Futtassa az alábbi parancsokat rendszergazdaként az ASCS-példányát.
+   Futtassa a következő parancsokat root-ként a ASCS-példány áttelepíteni.
 
    <pre><code>
    anftstsapcl1:~ # crm resource migrate rsc_sap_QAS_ASCS00 force
@@ -920,7 +923,7 @@ A következő tesztek elvégzése a vizsgálati esetek másolatát a [ajánlott 
    anftstsapcl1:~ # crm resource cleanup rsc_sap_QAS_ERS01
    </code></pre>
 
-   Erőforrás állapotának a vizsgálat után:
+   Erőforrás állapota a teszt után:
 
    <pre><code>
     Resource Group: g-QAS_ASCS
@@ -936,9 +939,9 @@ A következő tesztek elvégzése a vizsgálati esetek másolatát a [ajánlott 
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    </code></pre>
 
-3. Teszt HAFailoverToNode
+3. HAFailoverToNode tesztelése
 
-   Erőforrás állapotának a vizsgálat megkezdése előtt:
+   Erőforrás állapota a teszt elindítása előtt:
 
    <pre><code>
     Resource Group: g-QAS_ASCS
@@ -954,7 +957,7 @@ A következő tesztek elvégzése a vizsgálati esetek másolatát a [ajánlott 
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    </code></pre>
 
-   Futtassa a következő parancsokat, \<sapsid > adm ASCS-példányát.
+   Futtassa a következő parancsokat sapsid \<> adm-ként a ASCS-példány áttelepíteni.
 
    <pre><code>
    anftstsapcl1:qasadm 53> sapcontrol -nr 00 -host anftstsapvh -user <b>qas</b>adm &lt;password&gt; -function HAFailoverToNode ""
@@ -962,9 +965,12 @@ A következő tesztek elvégzése a vizsgálati esetek másolatát a [ajánlott 
    # run as root
    # Remove failed actions for the ERS that occurred as part of the migration
    anftstsapcl1:~ # crm resource cleanup rsc_sap_QAS_ERS01
+   # Remove migration constraints
+   anftstsapcl1:~ # crm resource clear rsc_sap_QAS_ASCS00
+   #INFO: Removed migration constraints for rsc_sap_QAS_ASCS00
    </code></pre>
 
-   Erőforrás állapotának a vizsgálat után:
+   Erőforrás állapota a teszt után:
 
    <pre><code>
     Resource Group: g-QAS_ASCS
@@ -980,9 +986,9 @@ A következő tesztek elvégzése a vizsgálati esetek másolatát a [ajánlott 
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
 
-4. Csomópont-összeomlás szimulálása 
+4. Csomópont összeomlásának szimulálása 
 
-   Erőforrás állapotának a vizsgálat megkezdése előtt:
+   Erőforrás állapota a teszt elindítása előtt:
 
    <pre><code>
     Resource Group: g-QAS_ASCS
@@ -998,12 +1004,12 @@ A következő tesztek elvégzése a vizsgálati esetek másolatát a [ajánlott 
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
 
-   Az alábbi parancsot rendszergazdaként a csomóponton a ASCS-példányt futtató
+   Futtassa a következő parancsot gyökérként azon a csomóponton, amelyen a ASCS-példány fut
 
    <pre><code>anftstsapcl2:~ # echo b > /proc/sysrq-trigger
    </code></pre>
 
-   SBD használatakor támasztja kell nem indul el automatikusan a leállítva csomóponton. Az állapot, miután elindult a csomópontot újra kell kinéznie.
+   Ha SBD használ, a pacemaker nem kezdődhet automatikusan a megölt csomóponton. A csomópont újraindítása utáni állapotnak így kell kinéznie.
 
    <pre><code>Online:
    Online: [ anftstsapcl1 ]
@@ -1028,7 +1034,7 @@ A következő tesztek elvégzése a vizsgálati esetek másolatát a [ajánlott 
     last-rc-change='Fri Mar  8 18:26:10 2019', queued=0ms, exec=0ms
    </code></pre>
 
-   A következő parancsok használatával támasztja a leállítva csomóponton induljon el, a SBD üzenetek tiszta és tisztítsa meg a sikertelen erőforrásokat.
+   Az alábbi parancsokkal elindíthatja a pacemakert a megölt csomóponton, megtisztíthatja a SBD-üzeneteket, és megtisztíthatja a sikertelen erőforrásokat.
 
    <pre><code>
    # run as root
@@ -1043,7 +1049,7 @@ A következő tesztek elvégzése a vizsgálati esetek másolatát a [ajánlott 
    anftstsapcl2:~ # crm resource cleanup rsc_sap_QAS_ERS01
    </code></pre>
 
-   Erőforrás állapotának a vizsgálat után:
+   Erőforrás állapota a teszt után:
 
    <pre><code>
    Full list of resources:
@@ -1061,9 +1067,9 @@ A következő tesztek elvégzése a vizsgálati esetek másolatát a [ajánlott 
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    </code></pre>
 
-5. Manuális újraindítás ASCS példány tesztelése
+5. A ASCS-példány manuális újraindításának tesztelése
 
-   Erőforrás állapotának a vizsgálat megkezdése előtt:
+   Erőforrás állapota a teszt elindítása előtt:
 
    <pre><code>
     Resource Group: g-QAS_ASCS
@@ -1079,22 +1085,22 @@ A következő tesztek elvégzése a vizsgálati esetek másolatát a [ajánlott 
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
 
-   Hozzon létre egy sorba zárolási szerint, például egy felhasználó a tranzakció su01 szerkesztésre. Futtassa a következő parancsokat, < sapsid\>adm a csomóponton, hol futnak az ASCS-példány. A parancsok a ASCS példány leáll, és indítsa el újra. Sorba 1 kiszolgáló architektúra használatával, ha a sorba zárolást várhatóan ebben a tesztben elvész. Ha sorba 2 kiszolgáló architektúra használatával, a sorba lesznek megőrizve. 
+   Hozzon létre egy sorba helyezni zárolást, például szerkesszen egy felhasználót a tranzakció su01. Futtassa az alábbi parancsokat < sapsid\>adm-ként azon a csomóponton, amelyen a ASCS-példány fut. A parancsok leállítják a ASCS-példányt, és újra elindítják. Ha a sorba helyezni Server 1 architektúrát használja, a sorba helyezni zárolás várhatóan el fog veszni ebben a tesztben. Ha a sorba helyezni Server 2 architektúrát használja, a rendszer megőrzi a sorba helyezni. 
 
    <pre><code>anftstsapcl2:qasadm 51> sapcontrol -nr 00 -function StopWait 600 2
    </code></pre>
 
-   Az ASCS-példány már le kell tiltani a támasztja
+   A ASCS-példánynak mostantól le kell tiltania a Pacemakerben
 
    <pre><code>  rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Stopped (disabled)
    </code></pre>
 
-   Indítsa el az ASCS-példány újra ugyanazon a csomóponton.
+   Indítsa el újra a ASCS példányt ugyanazon a csomóponton.
 
    <pre><code>anftstsapcl2:qasadm 52> sapcontrol -nr 00 -function StartWait 600 2
    </code></pre>
 
-   A sorba zárolási tranzakció su01 az elveszett, kell, ha sorba kiszolgáló replikációs 1 architektúra használatával, és a háttér-kell vissza lett állítva. Erőforrás állapotának a vizsgálat után:
+   A su01 sorba helyezni zárolását el kell veszíteni, ha a sorba helyezni Server Replication 1 architektúrát használja, és a háttérnek alaphelyzetbe kell állítani. Erőforrás állapota a teszt után:
 
    <pre><code>
     Resource Group: g-QAS_ASCS
@@ -1110,9 +1116,9 @@ A következő tesztek elvégzése a vizsgálati esetek másolatát a [ajánlott 
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
 
-6. Üzenet kiszolgálói folyamat leállítása
+6. Az üzenetküldési kiszolgáló folyamatának leölése
 
-   Erőforrás állapotának a vizsgálat megkezdése előtt:
+   Erőforrás állapota a teszt elindítása előtt:
 
    <pre><code>
     Resource Group: g-QAS_ASCS
@@ -1128,19 +1134,19 @@ A következő tesztek elvégzése a vizsgálati esetek másolatát a [ajánlott 
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
 
-   Futtassa az alábbi parancsokat a folyamat az üzenet-kiszolgáló azonosításához, és állítsa le a legfelső szintű.
+   Futtassa az alábbi parancsokat root-ként az üzenet-kiszolgáló folyamatának azonosításához és a megöléséhez.
 
    <pre><code>anftstsapcl2:~ # pgrep ms.sapQAS | xargs kill -9
    </code></pre>
 
-   Ha Ön csak kill a üzenetkiszolgáló egyszer, által sapstart újraindul. Ha Ön kill Ez gyakran elegendő támasztja a rendszer végül helyezze át az ASCS-példány egy másik csomópontra. Futtassa az alábbi parancsokat rendszergazdaként a vizsgálat után az erőforrás állapotának ASCS és SSZON példány karbantartása.
+   Ha csak egyszer fogja megölni az üzenetet, a sapstart újraindítja a kiszolgálót. Ha elég gyakran megölni, a pacemaker végül áthelyezi a ASCS-példányt a másik csomópontra. A teszt után futtassa a következő parancsokat root-ként a ASCS és az ERS-példány erőforrás-állapotának tisztításához.
 
    <pre><code>
    anftstsapcl2:~ # crm resource cleanup rsc_sap_QAS_ASCS00
    anftstsapcl2:~ # crm resource cleanup rsc_sap_QAS_ERS01
    </code></pre>
 
-   Erőforrás állapotának a vizsgálat után:
+   Erőforrás állapota a teszt után:
 
    <pre><code>
     Resource Group: g-QAS_ASCS
@@ -1156,9 +1162,9 @@ A következő tesztek elvégzése a vizsgálati esetek másolatát a [ajánlott 
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    </code></pre>
 
-7. Sorba kiszolgálói folyamat leállítása
+7. Sorba helyezni-kiszolgáló folyamatának leölése
 
-   Erőforrás állapotának a vizsgálat megkezdése előtt:
+   Erőforrás állapota a teszt elindítása előtt:
 
    <pre><code>
     Resource Group: g-QAS_ASCS
@@ -1174,19 +1180,19 @@ A következő tesztek elvégzése a vizsgálati esetek másolatát a [ajánlott 
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    </code></pre>
 
-   Futtassa az alábbi parancsokat rendszergazdaként azon a csomóponton hol futnak az ASCS-példány a sorba kiszolgáló leállítása.
+   Futtassa a következő parancsokat gyökérként azon a csomóponton, amelyen a ASCS-példány fut, hogy megöli a sorba helyezni-kiszolgálót.
 
    <pre><code>anftstsapcl1:~ # pgrep en.sapQAS | xargs kill -9
    </code></pre>
 
-   Az ASCS példányt kell azonnal átadja a feladatokat egy másik csomópontra. A SSZON példányt is feladatátvételt az ASCS-példány indítása után. Futtassa az alábbi parancsokat rendszergazdaként a vizsgálat után az erőforrás állapotának ASCS és SSZON példány karbantartása.
+   A ASCS-példánynak azonnal át kell vennie a feladatátvételt a másik csomópontra. Az ERS-példánynak a ASCS-példány elindítása után is feladatátvételt kell tennie. A teszt után futtassa a következő parancsokat root-ként a ASCS és az ERS-példány erőforrás-állapotának tisztításához.
 
    <pre><code>
    anftstsapcl1:~ # crm resource cleanup rsc_sap_QAS_ASCS00
    anftstsapcl1:~ # crm resource cleanup rsc_sap_QAS_ERS01
    </code></pre>
 
-   Erőforrás állapotának a vizsgálat után:
+   Erőforrás állapota a teszt után:
 
    <pre><code>
     Resource Group: g-QAS_ASCS
@@ -1202,9 +1208,9 @@ A következő tesztek elvégzése a vizsgálati esetek másolatát a [ajánlott 
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
 
-8. Sorba replikációs kiszolgálói folyamat leállítása
+8. Sorba helyezni-replikációs kiszolgáló folyamatának leölése
 
-   Erőforrás állapotának a vizsgálat megkezdése előtt:
+   Erőforrás állapota a teszt elindítása előtt:
 
    <pre><code>
     Resource Group: g-QAS_ASCS
@@ -1220,17 +1226,17 @@ A következő tesztek elvégzése a vizsgálati esetek másolatát a [ajánlott 
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
 
-   Futtassa a következő parancsot rendszergazdaként azon a csomóponton a SSZON példányt futtató kiszolgáló a sorba replikációs kiszolgálói folyamat leállítása.
+   Futtassa a következő parancsot gyökérként azon a csomóponton, amelyen az ERS-példány fut, hogy megöli a sorba helyezni replikációs kiszolgáló folyamatát.
 
    <pre><code>anftstsapcl1:~ # pgrep er.sapQAS | xargs kill -9
    </code></pre>
 
-   Csak a parancs futtatása után, sapstart újraindítja a folyamatot. Kell futtatnia, ha gyakran elegendő sapstart lesz indítsa újra a folyamatot, és az erőforrás egy leállított állapotba kerül. Futtassa az alábbi parancsokat rendszergazdaként a vizsgálat után az erőforrás állapotának SSZON példány karbantartása.
+   Ha csak egyszer futtatja a parancsot, `sapstart` a automatikusan újraindítja a folyamatot. Ha elég gyakran fut, a nem `sapstart` indítja újra a folyamatot, és az erőforrás leállított állapotba kerül. A teszt után futtassa a következő parancsokat root-ként az ERS-példány erőforrás-állapotának tisztításához.
 
    <pre><code>anftstsapcl1:~ # crm resource cleanup rsc_sap_QAS_ERS01
    </code></pre>
 
-   Erőforrás állapotának a vizsgálat után:
+   Erőforrás állapota a teszt után:
 
    <pre><code>
     Resource Group: g-QAS_ASCS
@@ -1246,9 +1252,9 @@ A következő tesztek elvégzése a vizsgálati esetek másolatát a [ajánlott 
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
 
-9. Sorba sapstartsrv folyamat leállítása
+9. Sorba helyezni sapstartsrv folyamatának leölése
 
-   Erőforrás állapotának a vizsgálat megkezdése előtt:
+   Erőforrás állapota a teszt elindítása előtt:
 
    <pre><code>
     Resource Group: g-QAS_ASCS
@@ -1264,7 +1270,7 @@ A következő tesztek elvégzése a vizsgálati esetek másolatát a [ajánlott 
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
 
-   Futtassa az alábbi parancsokat rendszergazdaként azon a csomóponton hol futnak az ascs rendszerbe fut be.
+   Futtassa a következő parancsokat gyökérként azon a csomóponton, amelyen a ASCS fut.
 
    <pre><code>
    anftstsapcl2:~ # pgrep -fl ASCS00.*sapstartsrv
@@ -1273,7 +1279,7 @@ A következő tesztek elvégzése a vizsgálati esetek másolatát a [ajánlott 
    anftstsapcl2:~ # kill -9 67625
    </code></pre>
 
-   A sapstartsrv folyamat mindig újra kell indítani az támasztja erőforrás ügynök. Erőforrás állapotának a vizsgálat után:
+   A sapstartsrv folyamatot mindig újra kell indítani a pacemaker erőforrás-ügynökkel. Erőforrás állapota a teszt után:
 
    <pre><code>
     Resource Group: g-QAS_ASCS
@@ -1291,9 +1297,9 @@ A következő tesztek elvégzése a vizsgálati esetek másolatát a [ajánlott 
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az Azure virtuális gépek tervezése és megvalósítása SAP][planning-guide]
-* [Az SAP az Azure virtuális gépek üzembe helyezése][deployment-guide]
-* [Az SAP az Azure Virtual Machines DBMS üzembe helyezése][dbms-guide]
-* Megtudhatja, hogyan kell magas rendelkezésre állást és az SAP vész-helyreállítási terv létrehozása 
-* Az Azure-ban (nagyméretű példányok), HANA lásd [SAP HANA (nagyméretű példányok) magas rendelkezésre állás és vészhelyreállítás recovery az Azure-ban](hana-overview-high-availability-disaster-recovery.md).
-* Magas rendelkezésre állást és az Azure virtuális gépeken SAP Hana vész-helyreállítási terv létrehozásához, lásd: [magas rendelkezésre állás az SAP HANA Azure-beli virtuális gépeken (VM)][sap-hana-ha]
+* [Azure Virtual Machines az SAP tervezéséhez és megvalósításához][planning-guide]
+* [Azure Virtual Machines üzembe helyezés az SAP-ban][deployment-guide]
+* [Azure Virtual Machines adatbázis-kezelői telepítés az SAP-hoz][dbms-guide]
+* Ismerje meg, hogyan hozhat létre magas rendelkezésre állást, és hogyan tervezze meg az SAP vész-helyreállítását 
+* HANA az Azure-ban (nagyméretű példányok) a [magas rendelkezésre állást és a vész-helyreállítást az Azure-ban SAP HANA (nagyméretű példányok)](hana-overview-high-availability-disaster-recovery.md).
+* A magas rendelkezésre állás és a SAP HANA Azure-beli virtuális gépeken történő vész-helyreállítási tervének megismeréséhez lásd: [Az Azure-beli SAP HANA magas rendelkezésre állása Virtual Machines (VM)][sap-hana-ha]

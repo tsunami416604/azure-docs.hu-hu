@@ -1,73 +1,73 @@
 ---
-title: 'Példa: Az AdventureWorks készlet adatbázis – Azure Search modell'
-description: Útmutató a relációs adatok, átalakítja őket egy egybesimított adatkészlet, az indexelés és a teljes szöveges keresés az Azure Search-be.
-author: cstone
-manager: cgronlun
+title: 'Példa: A AdventureWorks-leltári adatbázis modellezése – Azure Search'
+description: Megtudhatja, hogyan modellezheti a kapcsolatokat, és hogyan alakíthatja át azt egy összevont adatkészletbe az indexeléshez és a teljes szöveges kereséshez Azure Searchban.
+author: HeidiSteen
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 01/25/2019
-ms.author: chstone
-ms.openlocfilehash: 6d5d01dfbbcfda56818f5c38b06117a87e021445
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.date: 09/05/2019
+ms.author: heidist
+ms.openlocfilehash: c25dd34460e7e92bb20913f5b812044623dd38e3
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55174567"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274037"
 ---
-# <a name="example-model-the-adventureworks-inventory-database-for-azure-search"></a>Példa: Az Azure Search az AdventureWorks készlet adatbázis minta
+# <a name="example-model-the-adventureworks-inventory-database-for-azure-search"></a>Példa: A Azure Search AdventureWorks-leltározási adatbázisának modellezése
 
-Modellezési strukturált adatbázis hatékony keresési indexbe tartalom ritkán egy könnyen érthető megjegyzésblokkok írására. gyakorlat. Ütemezés és a változáskezelés elkülönített, létezik az igazi kihívást a forrásadatok tábla tartományhoz csatlakoztatott állapotuk Forrássorok denormalizálni az keresési mobilbarát entitásokkal. Ebben a cikkben az AdventureWorks mintaadatokat, az elérhető online, jelölje ki az áttérés adatbázisából kereséséhez közös élményt. 
+A Azure Search az [indexelési (adatfeldolgozási) folyamat](search-what-is-an-index.md)bemenetként fogadja az összeolvasztott sorhalmazt. Ha a forrásadatok egy SQL Server viszonyítási adatbázisból származnak, ez a cikk azt mutatja be, hogyan hozható létre egy összevont sorhalmaz az indexelés előtt, az AdventureWorks példaként használva.
 
-## <a name="about-adventureworks"></a>– Az AdventureWorks kapcsolatban
+## <a name="about-adventureworks"></a>A AdventureWorks névjegye
 
-Ha egy SQL Server-példányt, esetleg ismerős t az AdventureWorks mintaadatbázissal. A táblák az adatbázisban szereplő közé tartoznak a termékinformációk teszi közzé öt táblákhoz.
+Ha SQL Server példánya van, akkor lehet, hogy ismeri a [AdventureWorks-minta adatbázisát](https://docs.microsoft.com/sql/samples/adventureworks-install-configure?view=sql-server-2017). Az adatbázis táblái között öt tábla látható, amelyek a termékre vonatkozó információkat tartalmaznak.
 
 + **ProductModel**: név
-+ **A termék**: név, szín, költség, méret, súly, kép, kategória (minden sor egy adott ProductModel csatlakozik)
-+ **ProductDescription**: leírás
-+ **ProductModelProductDescription**: területi beállítás (minden sor csatlakoztatja egy ProductModel egy adott ProductDescription egy adott nyelven)
-+ **ProductCategory**: név, a szülő kategória
++ **Termék**: név, szín, Ár, méret, súly, rendszerkép, kategória (minden sor egy adott ProductModel csatlakozik)
++ **ProductDescription**: Leírás
++ **ProductModelProductDescription**: területi beállítás (minden sor egy adott nyelvhez csatlakozik egy ProductModel egy adott ProductDescription)
++ **ProductCategory**: név, szülő kategória
 
-Összefűzhet a létrejövő adatok olvasódnak be a keresési index egybesimított sorhalmaz a feladattól. 
+Ennek a példának a célja, hogy az összes adatot egy összevont sorhalmazba kombinálja, amely a keresési indexbe betölthető. 
 
-## <a name="considering-our-options"></a>A mérlegeli beállításai
+## <a name="considering-our-options"></a>A lehetőségek figyelembevétele
 
-A natív megközelítés lenne óta a Product tábla összes sort a Product táblából (adott esetben csatlakozik) indexelése a legtöbb adott információval rendelkezik. Azonban ezt a megközelítést vezet a keresési index észlelt ismétlődések az adott eredményül. Például a közúti – 650 modell két színek és hat méretek érhető el. A lekérdezés a "közúti kerékpárok" majd lenne uralja ugyanannak a modellnek, csak a méretét és színét differenciált tizenkét példányok. A hat közúti-specifikus modelleket szeretne minden kell relegated keresés elsajátították a nether tételéhez: két lapon.
+A naiv megközelítés a Product tábla összes sorát indexeli (ha szükséges), mivel a termék táblája a legpontosabb információkkal rendelkezik. Azonban ez a megközelítés kiteszi a keresési indexet, hogy észlelje az ismétlődéseket egy eredményhalmazt. Például a Road-650 modell két színben és hat méretben érhető el. Ezt követően a "Road Bikes" lekérdezését egy adott modell tizenkét példánya uralja, amely csak méret és szín alapján megkülönböztethető. A másik hat út-specifikus modellt mind az Alvilágban, mind a Search (a második oldalon).
 
-  ![Termékek listájának](./media/search-example-adventureworks/products-list.png "termékek listája")
+  ![Termékek listája](./media/search-example-adventureworks/products-list.png "Termékek listája")
  
-Figyelje meg, hogy rendelkezik-e a közúti – 650 modell tizenkét beállítások. -A-többhöz entitás sorok legjobb jelentésekként jelennek meg több értéket vagy előtti aggregated érték mező a keresési indexben.
+Figyelje meg, hogy a Road-650 modell tizenkét lehetőséggel rendelkezik. Az egy-a-többhöz típusú entitások sorait a rendszer a keresési indexben szereplő, előre összevont érték mezőkként jelöli meg legjobban.
 
-A probléma megoldása nem mozdítani az célindex ProductModel táblához. Ezzel a fontos adatokat a Product tábla még mindig finomítja a keresési eredmények között lenne figyelmen kívül.
+A probléma megoldása nem annyira egyszerű, hogy a cél indexet a ProductModel táblába helyezze át. Ez figyelmen kívül hagyja a Product táblában szereplő fontos információkat, amelyeket továbbra is a keresési eredmények között kell megjeleníteni.
 
-## <a name="use-a-collection-data-type"></a>Az adatgyűjtési adattípusa
+## <a name="use-a-collection-data-type"></a>Gyűjtemény adattípusának használata
 
-A "megfelelő módszer" egy keresési-séma-szolgáltatás, amely nem rendelkezik közvetlen párhuzamos az adatbázis-modell használatához: **Collection(Edm.String)**. Egy gyűjtemény típusa használatos, ha önálló karakterláncokra, nem pedig egy nagyon hosszú listáját (szimpla) karakterlánc. Ha a címkék vagy a kulcsszavak, használja a mező egy gyűjtemény típusa.
+A "helyes megközelítés" olyan keresési séma funkció használata, amely nem rendelkezik közvetlen párhuzamosan az adatbázis-modellben: **Collection(Edm.String)** . Ez a szerkezet a Azure Search index sémában van definiálva. A gyűjtemény adattípusa akkor használatos, ha egy nagyon hosszú (szimpla) karakterlánc helyett az egyes karakterláncok listáját kell képviselnie. Ha címkéket vagy kulcsszavakat tartalmaz, a mezőhöz gyűjtemény adattípust kell használnia.
 
-Többértékű index mezőinek definiálásával **Collection(Edm.String)** "szín", "méretben" és "image", a kiegészítő információkat nem megőrzött, a többnyelvűséget és a szűrési szennyező az ismétlődő bejegyzéseket az index. Ehhez hasonlóan az aggregátumfüggvények alkalmazni a numerikus termék mezők, az indexelés **minListPrice** helyett minden egyetlen termék **listPrice**.
+A többértékű index mezők **(EDM. String)** a "Color", a "size" és a "képhez" tulajdonság megadásával a kiegészítő információk megmaradnak az elemzéshez és a szűréshez, az index ismétlődő bejegyzésekkel való szennyezése nélkül. Ehhez hasonlóan alkalmazzon összesítő függvényeket a numerikus termékek mezőire, az indexelési **minListPrice** az egyes termékek **listPrice**helyett.
 
-Adja meg az ezen szerkezetek index, a keresést "mountain Bike-OK" jelenik meg különálló kerékpár modellek, fontos metaadatokat, például színét, méretét és a legalacsonyabb ár megőrzése. Az alábbi képernyőképen illusztrálja.
+Az ilyen struktúrákkal rendelkező indexek esetében a "Mountain Bikes" kifejezés a különálló kerékpár-modelleket jeleníti meg, miközben a fontos metaadatokat, például a színt, a méretet és a legalacsonyabb árat őrzi meg. Az alábbi képernyőfelvétel egy illusztrációt tartalmaz.
 
-  ![Mountain bike keresési példa](./media/search-example-adventureworks/mountain-bikes-visual.png "Mountain bike keresési példa")
+  ![Példa Mountain Bike-keresésre](./media/search-example-adventureworks/mountain-bikes-visual.png "Példa Mountain Bike-keresésre")
 
-## <a name="use-script-for-data-manipulation"></a>Az adatkezelés parancsfájl használata
+## <a name="use-script-for-data-manipulation"></a>Az adatkezeléshez használt parancsfájl használata
 
-Sajnos az ilyen típusú modellezési nem könnyen elérhető önálló SQL-utasítások segítségével. Ehelyett egyszerű NodeJS parancsfájl használata az adatok betöltéséhez és képezze keresési mobilbarát JSON entitásokkal.
+Sajnos az ilyen típusú modellezés nem érhető el egyszerűen csak SQL-utasításokkal. Ehelyett használjon egy egyszerű NodeJS-szkriptet az adattöltéshez, majd leképezheti a kereshető JSON-entitásokra.
 
-A végső adatbázis-keresés hozzárendelés a következőhöz hasonló:
+A végső adatbázis – Keresés leképezése így néz ki:
 
-+ modell (Edm.String: kereshető, szűrhető, lekérdezhető) a "ProductModel.Name"
-+ description_en (Edm.String: kereshető) a "ProductDescription" modell, culture = "en"
-+ szín (Collection(Edm.String): lekérhető kereshető, szűrhető, kategorizálható): a modell "Product.Color" egyéni értékeivel
-+ méret (Collection(Edm.String): lekérhető kereshető, szűrhető, kategorizálható): a modell "Product.Size" egyéni értékeivel
-+ kép (Collection(Edm.String): lekérhető): a modell "Product.ThumbnailPhoto" egyéni értékeivel
-+ minStandardCost (Edm.Double: szűrhető, kategorizálható, rendezhető, lekérdezhető): az összes "Product.StandardCost" modell összesített minimuma
-+ minListPrice (Edm.Double: szűrhető, kategorizálható, rendezhető, lekérdezhető): az összes "Product.ListPrice" modell összesített minimuma
-+ minWeight (Edm.Double: szűrhető, kategorizálható, rendezhető, lekérdezhető): az összes "Product.Weight" modell összesített minimuma
-+ termékek (Collection(Edm.String): kereshető, szűrhető, lekérdezhető): a modell "Product.Name" egyéni értékeivel
++ Model (EDM. string: kereshető, szűrhető, lekérhető) a következő helyről: "ProductModel.Name"
++ description_en (EDM. string: kereshető) a "ProductDescription" a modellhez, ahol a Culture = "en"
++ Color (gyűjtemény (EDM. String): kereshető, szűrhető, megkereshető, lekérhető: a modell egyedi értékei a "Product. Color" típustól
++ size (gyűjtemény (EDM. String): kereshető, szűrhető, méretezhető, lekérhető: a modellhez tartozó "termék. size" egyedi értékek
++ rendszerkép (gyűjtemény (EDM. String): lekérhető): a modell "Product. ThumbnailPhoto" egyedi értékei
++ minStandardCost (EDM. Double: szűrhető, sokoldalú, rendezhető, lekérhető): a modell összes "Product. StandardCost" összesítésének minimuma
++ minListPrice (EDM. Double: szűrhető, sokoldalú, rendezhető, lekérhető): a modell összes "Product. ListPrice" összesítésének minimuma
++ minWeight (EDM. Double: szűrhető, sokoldalú, rendezhető, lekérhető): a modell összes "Product. Weight" összesítésének minimuma
++ termékek (gyűjtemény (EDM. String): kereshető, szűrhető, lekérhető): a modell "Product.Name" egyedi értékei
 
-A ProductModel tábla termék és ProductDescription, használja a csatlakozás után [lodash](https://lodash.com/) (vagy a Linq C#) eredményhalmaza gyors átalakításához:
+Miután csatlakozott a ProductModel táblához a termékkel, és ProductDescription, használja a [lodash](https://lodash.com/) ( C#vagy LINQ in) a eredményhalmazt gyors átalakításához:
 
 ```javascript
 var records = queryYourDatabase();
@@ -93,7 +93,7 @@ var models = _(records)
   .value();
 ```
 
-Az eredményül kapott JSON így néz ki:
+Az eredményül kapott JSON a következőképpen néz ki:
 
 ```json
 [
@@ -137,7 +137,7 @@ Az eredményül kapott JSON így néz ki:
 ]
 ```
 
-Végül Íme az SQL-lekérdezést a kezdeti rekordhalmaz vissza. Használtam a [mssql](https://www.npmjs.com/package/mssql) az adatok betöltése a NodeJS-alkalmazásokban az npm modult.
+Végezetül itt az SQL-lekérdezés, amely visszaküldi a kezdeti rekordhalmazt. Az [MSSQL](https://www.npmjs.com/package/mssql) NPM modul használatával betöltöttem az adataimat a NodeJS alkalmazásba.
 
 ```T-SQL
 SELECT
@@ -163,6 +163,4 @@ WHERE
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Példa: Az Azure Search több szintű értékkorlátozás besorolások](search-example-adventureworks-multilevel-faceting.md)
-
-
+> [Példa: Többszintű dimenziók besorolása Azure Search](search-example-adventureworks-multilevel-faceting.md)

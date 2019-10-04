@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: dc86943924cd0c47c465e9d3bac4ca91b73a3ff5
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 1d28a9d330dd001e3fdc05e37f7bbcdd2db7ee6e
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56112782"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "71224544"
 ---
 # <a name="create-and-publish-a-managed-application-definition"></a>Felügyelt alkalmazás definíciójának létrehozása és közzététele
 
@@ -85,20 +85,20 @@ Adja hozzá az alábbi JSON-kódot a fájlhoz. Ez a kód határozza meg a tárfi
 
 Mentse a mainTemplate.json fájlt.
 
-## <a name="create-the-user-interface-definition"></a>A felhasználói felület definíciójának létrehozása
+## <a name="defining-your-create-experience-using-createuidefinitionjson"></a>A létrehozási élmény meghatározása a CreateUiDefinition. JSON használatával
 
-Az Azure Portal a **createUiDefinition.json** fájl segítségével hozza létre a felhasználói felületet a felügyelt alkalmazást létrehozó felhasználók számára. Ön határozhatja meg, hogy a felhasználók hogyan adhatnak meg értéket az egyes paraméterek számára. Használhat például legördülő listát, szövegmezőt, jelszómezőt vagy más beviteli eszközöket. Felhasználóifelület-definíciós fájl felügyelt alkalmazáshoz való létrehozásával kapcsolatban tekintse meg a [CreateUiDefinition első lépéseit bemutató](create-uidefinition-overview.md) témakört.
+Közzétevőként a létrehozási élményt a **createUiDefinition. JSON** fájl használatával határozhatja meg, amely a felügyelt alkalmazásokat létrehozó felhasználók felületét hozza létre. Azt határozza meg, hogy a felhasználók hogyan biztosítanak bemenetet az egyes paraméterekhez [vezérlő elemek] (create-uidefinition-elements.md), beleértve a legördülő listákat, a szövegmezőket és a jelszó mezőket.
 
-Hozzon létre egy **createUiDefinition.json** nevű fájlt. A név megkülönbözteti a kis- és nagybetűket.
+Hozzon létre egy **createUiDefinition. JSON** nevű fájlt (ez a név megkülönbözteti a kis-és nagybetűket)
 
-Adja hozzá az alábbi JSON-kódot a fájlhoz.
+Adja hozzá a következő kezdő JSON-fájlt a fájlhoz, és mentse azt.
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json#",
-    "handler": "Microsoft.Compute.MultiVm",
-    "version": "0.1.2-preview",
-    "parameters": {
+   "$schema": "https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json#",
+   "handler": "Microsoft.Azure.CreateUIDef",
+   "version": "0.1.2-preview",
+   "parameters": {
         "basics": [
             {}
         ],
@@ -142,7 +142,7 @@ Adja hozzá az alábbi JSON-kódot a fájlhoz.
 }
 ```
 
-Mentse a createUiDefinition.json fájlt.
+További információ: Ismerkedés [a CreateUiDefinition szolgáltatással](create-uidefinition-overview.md).
 
 ## <a name="package-the-files"></a>A fájlok becsomagolása
 

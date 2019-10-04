@@ -1,70 +1,69 @@
 ---
-title: Cloud Foundry-hoz a Microsoft Azure-ban – első lépések |} A Microsoft Docs
-description: A Microsoft Azure nyílt Forráskódú vagy a Pivotal Cloud Foundry futtatása
+title: Első lépések a Cloud Foundry on Microsoft Azure | Microsoft Docs
+description: OSS vagy Pivotal Cloud Foundry futtatása Microsoft Azure
 services: virtual-machines-linux
 documentationcenter: ''
 author: seanmck
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: ''
 keywords: ''
 ms.assetid: 2a15ffbf-9f86-41e4-b75b-eb44c1a2a7ab
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 01/19/2017
 ms.author: seanmck
-ms.openlocfilehash: 68ae01b814de08098c0ba6b5713f420cfebc3d97
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d91ad0bea7f79dd67edd4f0bb9e06a37a0f86bea
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58001261"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70091922"
 ---
 # <a name="cloud-foundry-on-azure"></a>Cloud Foundry az Azure-ban
 
-A Cloud Foundry egy olyan nyílt forráskódú „szolgáltatásként nyújtott platform” (PaaS), amely különböző nyelveken és keretrendszerekben fejlesztett, 12 faktoros alkalmazások létrehozását, telepítését és üzemeltetését teszi lehetővé. Ez a dokumentum ismerteti a Cloud Foundry szolgáltatást futtató Azure-ra, és hogyan kezdheti különféle lehetőségeit.
+A Cloud Foundry egy olyan nyílt forráskódú „szolgáltatásként nyújtott platform” (PaaS), amely különböző nyelveken és keretrendszerekben fejlesztett, 12 faktoros alkalmazások létrehozását, telepítését és üzemeltetését teszi lehetővé. Ez a dokumentum a Cloud Foundry Azure-on való futtatásához és az első lépésekhez szükséges beállításokat ismerteti.
 
-## <a name="cloud-foundry-offerings"></a>Cloud Foundry-ajánlatok
+## <a name="cloud-foundry-offerings"></a>Ajánlatok Cloud Foundry
 
-Nincsenek a Cloud Foundry az Azure-ban futtatható kétféle: nyílt forráskódú Cloud Foundry (OSS CF) és a Pivotal Cloud Foundry (PCF). Nyílt Forráskódú cf-hez van egy teljes mértékben [nyílt forráskódú](https://github.com/cloudfoundry) Cloud Foundry verziója kezeli a Cloud Foundry alapítványhoz. A Pivotal Cloud Foundry egy, a Cloud Foundry Pivotal szoftver Inc. vállalati terjesztés Hogy tekintsen meg néhányat a két ajánlatokat közötti különbségeket.
+Az Azure-ban az Cloud Foundry két formája érhető el: nyílt forráskódú Cloud Foundry (OSS CF) és Pivotal Cloud Foundry (PCF). Az OSS CF a Cloud Foundry Foundation által felügyelt Cloud Foundry teljesen [nyílt forráskódú](https://github.com/cloudfoundry) verziója. A Pivotal Cloud Foundry a Cloud Foundry vállalati disztribúciója a Pivotal Software Inc-ből. Megvizsgáljuk a két ajánlat közötti különbségeket.
 
-### <a name="open-source-cloud-foundry"></a>Nyílt forráskódú Cloud Foundry-hoz
+### <a name="open-source-cloud-foundry"></a>Nyílt forráskódú Cloud Foundry
 
-Nyílt Forráskódú Cloud Foundry az Azure-ban először üzembe helyezése egy BOSH igazgató, és üzembe kell helyezni a Cloud Foundry, telepítheti használatával a [a GitHub utasításait](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/blob/master/docs/guidance.md). Nyílt Forráskódú CF használatával kapcsolatos további tudnivalókért lásd: a [dokumentáció](https://docs.cloudfoundry.org/) a Cloud Foundry alapítvány által biztosított.
+Az OSS-Cloud Foundry az Azure-ban központilag telepítheti a BOSH-igazgató üzembe helyezésével, majd Cloud Foundry üzembe helyezésével a GitHubon található [utasítások](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/blob/master/docs/guidance.md)használatával. Ha többet szeretne megtudni az OSS CF használatáról, [](https://docs.cloudfoundry.org/) tekintse meg az Cloud Foundry Foundation által biztosított dokumentációt.
 
-A Microsoft legjobb támogatás a nyílt Forráskódú cf-hez a következő közösségi csatornákon keresztül biztosít:
+A Microsoft a következő közösségi csatornákon keresztül biztosítja az OSS CF legjobb munkamennyiség-támogatását:
 
-- #<a name="bosh-azure-cpi-channel-on-cloud-foundry-slackhttpsslackcloudfoundryorg"></a>csatorna bosh – azure-cpi a [Cloud Foundry Slack](https://slack.cloudfoundry.org/)
-- [CF-bosh levelezőlistára](https://lists.cloudfoundry.org/pipermail/cf-bosh)
-- GitHub-problémák – a [CPI](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/issues) és [service broker](https://github.com/Azure/meta-azure-service-broker/issues)
+- #<a name="bosh-azure-cpi-channel-on-cloud-foundry-slackhttpsslackcloudfoundryorg"></a>Bosh-Azure – CPI-csatorna [Cloud Foundry slacken](https://slack.cloudfoundry.org/)
+- [CF-Bosh levelezési lista](https://lists.cloudfoundry.org/pipermail/cf-bosh)
+- A [CPI](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/issues) és a [Service Broker](https://github.com/Azure/meta-azure-service-broker/issues) GitHub-problémái
 
 >[!NOTE]
-> Az Azure-erőforrások, például a virtuális gépek, amelyiken futtatja a Cloud Foundry-hoz, a támogatás szintjét az Azure-támogatási szerződés alapján. Legjobb közösségi támogatás csak a Cloud Foundry-specifikus összetevőkre vonatkozik.
+> Az Azure-erőforrások, például a Cloud Foundry futtatott virtuális gépek támogatásának szintje az Azure-támogatási szerződésen alapul. A legjobb közösségi támogatás csak a Cloud Foundry-specifikus összetevőkre vonatkozik.
 
-### <a name="pivotal-cloud-foundry"></a>A Pivotal Cloud Foundry-hoz
+### <a name="pivotal-cloud-foundry"></a>Pivotal Cloud Foundry
 
-A Pivotal Cloud Foundry tartalmazza az ugyanazon alapvető platformot, mint a nyílt Forráskódú terjesztési néhány egyéb felügyeleti eszközök és a vállalati szintű támogatással együtt. A PCF futtatásához az Azure-ban, meg kell szerezni a Pivotal licenc. A PCF-ajánlat az Azure marketplace-ről egy 90 napos próbaidőszaki licencre is tartalmaz.
+A Pivotal Cloud Foundry az OSS-eloszlással megegyező alapplatformot tartalmaz, valamint egy szabadalmaztatott felügyeleti eszközt és nagyvállalati támogatást. A PCF Azure-on való futtatásához a Pivotal licencet kell beszerezni. Az Azure piactéren elérhető PCF-ajánlat 90 napos próbaverziós licencet tartalmaz.
 
-Az eszközök között [Pivotal az Operations Manager](https://docs.pivotal.io/pivotalcf/customizing/), egy webalkalmazás, amely leegyszerűsíti az üzembe helyezését és felügyeletét egy a Cloud Foundry alapítvány és [Pivotal alkalmazások Manager](https://docs.pivotal.io/pivotalcf/console/), egy webalkalmazás kezeléséhez a felhasználók és alkalmazások.
+Az eszközök olyan [pivotal Operations Manager](https://docs.pivotal.io/pivotalcf/customizing/), egy webalkalmazás, amely leegyszerűsíti a Cloud Foundry Foundation és a Pivotal [apps Manager](https://docs.pivotal.io/pivotalcf/console/)üzembe helyezését és kezelését, valamint a felhasználók és alkalmazások kezelésére szolgáló webes alkalmazást.
 
-A fenti nyílt Forráskódú cf-hez felsorolt támogatási csatornák mellett a PCF licenc feljogosítja a Pivotal forduljon a támogatási. A Microsoft és a Pivotal is engedélyezte támogatási munkafolyamatok, amelyek lehetővé teszik, hogy bármelyik fél kapcsolatba segítségért és rendelkezik a megfelelő irányításához, attól függően, hol helyezkedik el a problémát megkeresését.
+A fenti OSS CF-hez tartozó támogatási csatornák mellett a PCF-licenc arra jogosítja fel a kapcsolatot, hogy forduljon a Pivotal támogatási szolgálatához. A Microsoft és a Pivotal is engedélyezte a támogatási munkafolyamatokat, amelyek lehetővé teszik, hogy bármelyik fél számára segítséget nyújtson, és a kérdéses helytől függően megfelelő módon irányítsa a kérést.
 
 ## <a name="azure-service-broker"></a>Azure Service Broker
 
-A cloud Foundry arra ösztönzi a ["tizenkét tényezős alkalmazásfejlesztési"](https://12factor.net/) módszer, amely elősegíti a állapot nélküli alkalmazások, folyamatok és az állapotalapú szolgáltatások biztonsági tiszta elkülönítése. [Szolgáltatás közvetítők](https://docs.cloudfoundry.org/services/api.html) üzembe helyezhető, és kötést létrehozni alkalmazásokat támogató szolgáltatások egységes módon kínálnak. A [az Azure service broker](https://github.com/Azure/meta-azure-service-broker) biztosít néhány a legfontosabb Azure-szolgáltatásokat a csatornát, beleértve az Azure storage és Azure SQL segítségével.
+Cloud Foundry a ["tizenkét faktoros alkalmazás"](https://12factor.net/) módszerét javasolja, amely az állapot nélküli alkalmazások folyamatainak és az állapot-nyilvántartó szolgáltatások tiszta elkülönítését segíti elő. A [Service Broker](https://docs.cloudfoundry.org/services/api.html) egységes módszert kínál a szolgáltatások alkalmazásokba való kiépítésére és a hozzájuk kötődő biztonsági mentésre. Az [Azure Service Broker](https://github.com/Azure/meta-azure-service-broker) ezen a csatornán keresztül biztosítja a legfontosabb Azure-szolgáltatásokat, beleértve az Azure Storage és az Azure SQL szolgáltatást is.
 
-A Pivotal Cloud Foundry használja, ha a service broker is [elérhető csempeként](https://docs.pivotal.io/azure-sb/installing.html) a Pivotal hálózat.
+Ha Pivotal Cloud Foundry használ, a Service Broker a csuklós hálózat csempéje is [elérhető](https://docs.pivotal.io/azure-sb/installing.html) .
 
-## <a name="related-resources"></a>Kapcsolódó források (lehet, hogy a cikkek angol nyelvűek)
+## <a name="related-resources"></a>Kapcsolódó erőforrások
 
-### <a name="azure-devops-services-plugin"></a>Az Azure DevOps-szolgáltatásokkal beépülő modulja
+### <a name="azure-devops-services-plugin"></a>Azure DevOps Services beépülő modul
 
-A cloud Foundry egy jól Agilis szoftverfejlesztés, beleértve a folyamatos integrációs (CI) és a folyamatos továbbítás (CD) használatát. Ha az Azure DevOps-szolgáltatásokkal használata kezelheti a projektjeit, és szeretne másolatot CI/CD-ről folyamat a Cloud Foundry célzó, használja a [Azure fejlesztési és üzemeltetési szolgáltatásokat a Cloud Foundry hozzon létre bővítményt](https://marketplace.visualstudio.com/items?itemName=ms-vsts.cloud-foundry-build-extension). A beépülő modul segítségével egyszerűen konfigurálható és automatizálja az üzembe helyezést, a Cloud Foundry-hoz, üzemelő Azure-ban vagy egy másik környezetre.
+Cloud Foundry kiválóan alkalmas a szoftverfejlesztés gyors fejlesztésére, beleértve a folyamatos integráció (CI) és a folyamatos teljesítés (CD) használatát. Ha az Azure DevOps Services használatával felügyeli a projekteket, és szeretné beállítani a CI/CD-t célzó Cloud Foundry, akkor használhatja az [Azure DevOps Services Cloud Foundry Build bővítményt](https://marketplace.visualstudio.com/items?itemName=ms-vsts.cloud-foundry-build-extension). A beépülő modul megkönnyíti az üzembe helyezések konfigurálását és automatizálását Cloud Foundry, akár az Azure-ban, akár más környezetben fut.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az Azure Marketplace-ről a Pivotal Cloud Foundry üzembe helyezése](https://azure.microsoft.com/marketplace/partners/pivotal/pivotal-cloud-foundryazure-pcf/)
-- [Alkalmazás üzembe helyezése a Cloud Foundry az Azure-ban](./cloudfoundry-deploy-your-first-app.md)
+- [A Pivotal Cloud Foundry üzembe helyezése az Azure piactéren](https://azure.microsoft.com/marketplace/partners/pivotal/pivotal-cloud-foundryazure-pcf/)
+- [Alkalmazás üzembe helyezése az Azure-ban Cloud Foundry](./cloudfoundry-deploy-your-first-app.md)

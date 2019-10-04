@@ -1,6 +1,6 @@
 ---
-title: API HTTP-válaszkódot
-titleSuffix: Azure
+title: API HTTP-reagálási kódok – LUIS
+titleSuffix: Azure Cognitive Services
 description: Mely HTTP-válaszkódot kapott a LUIS szerzői és végponti API-k ismertetése
 services: cognitive-services
 author: diberry
@@ -8,22 +8,22 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: diberry
-ms.openlocfilehash: 18ec59200d3cf820794ac353e38106ad26aca697
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 43fbca732bbd281ad980ae86e4a89f446fdb69bc
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337244"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945864"
 ---
-# <a name="common-api-response-codes-and-their-meaning"></a>Gyakori API válaszkódok és azok jelentése
+# <a name="common-api-response-codes-and-their-meaning"></a>Általános API-válaszok kódjai és azok jelentése
 
-A [szerzői](https://aka.ms/luis-authoring-apis) és [végpont](https://aka.ms/luis-endpoint-apis) API-k HTTP-válaszkódot adja vissza. Parancsválasz-üzeneteket egy kérelem-re vonatkozó információk közé tartozik, míg a HTTP-válaszként kapott állapotkód általános. 
+A [szerzői](https://go.microsoft.com/fwlink/?linkid=2092087) és [végpont](https://go.microsoft.com/fwlink/?linkid=2092356) API-k HTTP-válaszkódot adja vissza. Parancsválasz-üzeneteket egy kérelem-re vonatkozó információk közé tartozik, míg a HTTP-válaszként kapott állapotkód általános. 
 
 ## <a name="common-status-codes"></a>Közös állapotkódok
-Az alábbi táblázat a leggyakoribb HTTP-válasz állapota kódokat a némelyike a [szerzői](https://aka.ms/luis-authoring-apis) és [végpont](https://aka.ms/luis-endpoint-apis) API-kat:
+Az alábbi táblázat a leggyakoribb HTTP-válasz állapota kódokat a némelyike a [szerzői](https://go.microsoft.com/fwlink/?linkid=2092087) és [végpont](https://go.microsoft.com/fwlink/?linkid=2092356) API-kat:
 
 |Kód|API|Magyarázat|
 |:--|--|--|
@@ -42,4 +42,4 @@ Az alábbi táblázat a leggyakoribb HTTP-válasz állapota kódokat a némelyik
 
 ## <a name="next-steps"></a>További lépések
 
-* REST API-val [szerzői](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) és [végpont](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78) dokumentációja
+* A [szerzői](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) és [végponti](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78) dokumentáció REST API

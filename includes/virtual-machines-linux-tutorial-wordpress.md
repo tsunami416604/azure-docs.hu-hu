@@ -4,12 +4,12 @@ ms.service: virtual-machines-linux
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 5df1f7ff44a1603dd03d1d803ae9960dc124781e
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
-ms.translationtype: HT
+ms.openlocfilehash: 76a080d40721fa78ad703f77f6dbe7a3363ab77e
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50226810"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68857399"
 ---
 ## <a name="install-wordpress"></a>A WordPress telepítése
 
@@ -21,7 +21,7 @@ Ez a WordPress-telepítés csak a működés ellenőrzésére szolgál. A WordPr
 
 ### <a name="install-the-wordpress-package"></a>A WordPress-csomag telepítése
 
-Futtassa az alábbi parancsot:
+Futtassa a következő parancsot:
 
 ```bash
 sudo apt install wordpress
@@ -45,7 +45,6 @@ GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,ALTER
 ON wordpress.*
 TO wordpress@localhost
 IDENTIFIED BY 'yourPassword';
-FLUSH PRIVILEGES;
 ```
 
 Futtassa az alábbi parancsot az adatbázis létrehozásához:

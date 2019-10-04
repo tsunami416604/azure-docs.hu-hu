@@ -18,11 +18,11 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ae932191c7b76590ea217386dfd729add5566f87
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431172"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60384195"
 ---
 # <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>Összekötők használata az Azure AD Connect szinkronizálása a Service Manager rendszerrel
 
@@ -33,7 +33,7 @@ Az összekötők lap a szinkronizálási motor csatlakozik az összes rendszer k
 ## <a name="connector-actions"></a>Összekötő-műveletek
 | Műveletek | Megjegyzés |
 | --- | --- |
-| Létrehozás |Ne használja. További AD-erdőhöz való csatlakozáshoz, a telepítési varázslóval. |
+| Hozzon létre |Ne használja. További AD-erdőhöz való csatlakozáshoz, a telepítési varázslóval. |
 | Tulajdonságok |Tartomány és szervezeti egységek szűrése használható. |
 | [Törlés](#delete) |Vagy törölni szeretné az adatokat az összekötőtérben, illetve törli a kapcsolatot, az adott erdő használják. |
 | [Futtatási profilok konfigurálása](#configure-run-profiles) |Kivéve a szűréshez, tartomány konfigurálása itt semmi sem. Ez a művelet segítségével tekintse meg a már konfigurált futtatási profilokat. |

@@ -14,11 +14,11 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/04/2018
 ms.openlocfilehash: 46232afcaf9504d4cfbd80160e2d7e7ea958d600
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53272779"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61488192"
 ---
 # <a name="designing-globally-available-services-using-azure-sql-database"></a>Az Azure SQL Database használatával globálisan elérhető szolgáltatások tervezése
 
@@ -27,7 +27,7 @@ Amikor készítése és üzembe helyezése a cloud services az Azure SQL Databas
 > [!NOTE]
 > Ha prémium szintű és az üzletileg kritikus adatbázisok és rugalmas készletek használ, akkor is használhatja őket rugalmas a regionális üzemkimaradások utáni helyreállításon zóna redundáns üzembe helyezési konfiguráció átalakításával. Lásd: [zónaredundáns adatbázisok](sql-database-high-availability.md).  
 
-## <a name="scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime"></a>1. forgatókönyv: Az üzletmenet folytonosságának minimális állásidővel két Azure-régió használatával
+## <a name="scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime"></a>1\. forgatókönyv: Az üzletmenet folytonosságának minimális állásidővel két Azure-régió használatával
 
 Ebben a forgatókönyvben az alkalmazások a következő jellemzőkkel rendelkeznek:
 
@@ -43,14 +43,14 @@ Ebben az esetben az alkalmazás üzembe helyezési topológiát optimalizált re
 
 Az alábbi ábrán ez a konfiguráció a leállás előtt:
 
-![1. forgatókönyv. A konfiguráció a leállás előtt.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario1-a.png)
+![1\. forgatókönyv. A konfiguráció a leállás előtt.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario1-a.png)
 
 Az elsődleges régióban kimaradás után a az SQL Database szolgáltatás észleli, hogy az elsődleges adatbázis nem érhető el, és elindítja a feladatátvételt a másodlagos régióba, az Automatikus feladatátvétel házirend (1) a paraméterei alapján. Az alkalmazás SLA függően konfigurálhat egy türelmi időszak, amely a szolgáltatáskiesés megszüntetése után észlelését, és magát a feladatátvétel között eltelt idő vezérli. Akkor lehet, hogy a traffic manager a végpont feladatátvételt kezdeményez, a feladatátvételi csoport az adatbázis a feladatátvétel aktiválása előtt. Ebben az esetben a webalkalmazás nem azonnal újra az adatbázishoz. De az ezt a lehetőséget, amint az adatbázis-feladatátvétel befejezése automatikusan fog sikerülni. Ha a sikertelen régió visszaállítása, és ismét online, a régi elsődleges automatikusan újracsatlakozik, egy új másodlagos. Az alábbi ábra a konfigurációt a feladatátvételt követően.
 
 > [!NOTE]
 > A feladatátvétel után végrehajtott összes tranzakciók során az újracsatlakozás elvesznek. A feladatátvétel befejezése után a B régióban az alkalmazás is képes csatlakozzon újra, és indítsa újra a felhasználói kérelmek feldolgozásához. A webes alkalmazás, mind az elsődleges adatbázis most B régióban és ugyanott maradnak.
 
-![1. forgatókönyv. Feladatátvétel utáni konfigurációja](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario1-b.png)
+![1\. forgatókönyv. Feladatátvétel utáni konfigurációja](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario1-b.png)
 
 Ha kimaradás B régióban történik, az elsődleges és a másodlagos adatbázis között a replikációs folyamatot felfüggesztett lekérdezi, de a kettő közötti kapcsolat továbbra is változatlan marad (1). Kezelt forgalom észleli, hogy a régió b kapcsolat megszakad, és jelöli meg a végpont webalkalmazás 2 (2) csökkentett teljesítményű. Ebben az esetben nem működik az alkalmazás teljesítményét, de az adatbázis elérhető lesz, és ezért magasabb fennáll a kockázata, adatvesztés esetben A régió nem sikerül egymás után.
 
@@ -60,7 +60,7 @@ Ha kimaradás B régióban történik, az elsődleges és a másodlagos adatbáz
 
  Amint a szolgáltatáskimaradás megszűnése van, a másodlagos adatbázis automatikusan újraszinkronizálja az elsődleges. A szinkronizálás során az elsődleges teljesítményét befolyásolja. Adatmennyiség óta a feladatátvételt az új elsődleges függ az adott hatását. A következő ábra szemlélteti a másodlagos régióban leállás:
 
-![1. forgatókönyv. A másodlagos régió kimaradás után konfiguráció.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario1-c.png)
+![1\. forgatókönyv. A másodlagos régió kimaradás után konfiguráció.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario1-c.png)
 
 A kulcs **előnyeit** , ebben a kialakítási mintában a:
 
@@ -69,7 +69,7 @@ A kulcs **előnyeit** , ebben a kialakítási mintában a:
 
 A fő **kompromisszum** , hogy az alkalmazás-erőforrások, a B régió az esetek többségében kihasználva.
 
-## <a name="scenario-2-azure-regions-for-business-continuity-with-maximum-data-preservation"></a>2. forgatókönyv: Az üzletmenet folytonosságának maximális adatok megőrzése az Azure-régiók
+## <a name="scenario-2-azure-regions-for-business-continuity-with-maximum-data-preservation"></a>2\. forgatókönyv: Az üzletmenet folytonosságának maximális adatok megőrzése az Azure-régiók
 
 Ez a beállítás akkor egygépes alkalmazásokhoz, a következő jellemzőkkel:
 
@@ -80,18 +80,18 @@ Ebben a mintában az alkalmazás csak olvasható módra vált az olvasási és �
 
 A következő ábra szemlélteti ezt a konfigurációt a leállás előtt:
 
-![2. forgatókönyv. A konfiguráció a leállás előtt.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario2-a.png)
+![2\. forgatókönyv. A konfiguráció a leállás előtt.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario2-a.png)
 
 Amikor a traffic manager régióba A kapcsolódási hibát észlel, automatikusan átvált a felhasználói adatforgalmat az alkalmazáspéldány régióban B. Ezzel a mintával fontos, hogy beállította a türelmi időszak adatvesztéssel elég nagy értéket, például 24 óra. Ez biztosítja, hogy a rendszer letiltja az adatvesztés a Ha idő alatt teljesítményköltségeket csökkenti a szolgáltatáskimaradás elhárítása után. A webalkalmazás régióban B aktiválásakor az olvasási és írási műveletek kezdenek. Ezen a ponton, át kell váltania a csak olvasható módra (1). Ebben a módban a kérések útválasztása automatikusan a másodlagos adatbázis. Ha a szolgáltatáskimaradás elhárítása után egy Katasztrofális hiba okozta, nagy valószínűséggel, már nem mérsékelhetők a türelmi időszak. Amikor lejár a feladatátvételi csoport eseményindítók a feladatátvételt. Miután az olvasási és írási figyelő elérhetővé válik, és a kapcsolataikat leállítása sikertelen volt (2). A következő ábra szemlélteti a helyreállítási folyamat két szakaszban.
 
 > [!NOTE]
 > A szolgáltatáskimaradás, az elsődleges régióban teljesítményköltségeket csökkenti a türelmi időszak, ha a traffic manager észleli a hálózati kapcsolat a visszaállítást az elsődleges régióban, és vált vissza a felhasználói adatforgalmat az alkalmazáspéldány régióban rögzíti. Adott alkalmazáspéldány folytatja, és az elsődleges adatbázis használatával régióban leírtak szerint az előző ábrán egy írható-olvasható módban működik.
 
-![2. forgatókönyv. Vész-helyreállítási szakaszokat.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario2-b.png)
+![2\. forgatókönyv. Vész-helyreállítási szakaszokat.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario2-b.png)
 
 Kimaradás B régióban történik, ha a traffic manager észleli azt, a web-app-2 végpontot, a B régió és jelek csökken, mert (1). Addig is a feladatátvételi csoport átvált a csak olvasható figyelőt, hogy A régió (2). A szolgáltatáskimaradás nem befolyásolja a végfelhasználói élményt, de az elsődleges adatbázishoz ki van téve a szolgáltatáskimaradás közben. A következő ábra szemlélteti a másodlagos régióban hiba:
 
-![2. forgatókönyv. A másodlagos régió szolgáltatáskimaradás.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario2-c.png)
+![2\. forgatókönyv. A másodlagos régió szolgáltatáskimaradás.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario2-c.png)
 
 Miután teljesítményköltségeket csökkenti a szolgáltatáskimaradás, a másodlagos adatbázis a rendszer azonnal szinkronizálja az elsődleges és a csak olvasási figyelői visszakapcsol a másodlagos régió b-adatbázis A szinkronizálás során az elsődleges teljesítményét némileg érinthetik szinkronizálni kell adatok mennyiségétől függően.
 
@@ -102,7 +102,7 @@ Ebben a kialakításban rendelkezik több **előnyeit**:
 
 A **kompromisszum** , hogy az alkalmazás tudja, csak olvasható módban kell lennie.
 
-## <a name="scenario-3-application-relocation-to-a-different-geography-without-data-loss-and-near-zero-downtime"></a>3. forgatókönyv: Alkalmazás áthelyezheti egy másik földrajzi adatvesztés nélkül, és közel állásidő nélkül
+## <a name="scenario-3-application-relocation-to-a-different-geography-without-data-loss-and-near-zero-downtime"></a>3\. forgatókönyv: Alkalmazás áthelyezheti egy másik földrajzi adatvesztés nélkül, és közel állásidő nélkül
 
 Ebben a forgatókönyvben az alkalmazás a következő jellemzőkkel rendelkezik:
 
@@ -118,7 +118,7 @@ Minden egyes földrajzi, amelyekben jelentős használati értéket igény szeri
 > [!NOTE]
 > A feladatátvételi csoport konfigurációja határozza meg, hogy melyik régióban szolgál a feladatátvételhez. Mivel az új elsődleges egy másik földrajzi OLTP, mind a csak olvasható számítási feladatok hosszabb késéssel feladatátvételt eredményez addig, amíg az érintett régió újra online állapotba kerül.
 
-![3. forgatókönyv. Az USA keleti régiójában elsődleges konfigurációt.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-a.png)
+![3\. forgatókönyv. Az USA keleti régiójában elsődleges konfigurációt.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-a.png)
 
 (Például a helyi idő 23 óra) a nap végén az aktív adatbázisok a legközelebbi régió (Észak-Európa) kell állítani. Ez a feladat automatizálható a [Azure szolgáltatásunk](../scheduler/scheduler-intro.md).  A feladat az alábbi lépésekből áll:
 
@@ -129,11 +129,11 @@ Minden egyes földrajzi, amelyekben jelentős használati értéket igény szeri
 
 A következő ábra szemlélteti a tervezett feladatátvétel után az új konfigurációt:
 
-![3. forgatókönyv. Váltás az elsődleges, Észak-Európa.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-b.png)
+![3\. forgatókönyv. Váltás az elsődleges, Észak-Európa.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-b.png)
 
 Egy kimaradás például Észak-Európában történik, ha az adatbázis automatikus feladatátvételi a feladatátvételi csoporthoz, ami hatékonyan áthelyezése a következő régiónak, ütemezett (1) az alkalmazás által kezdeményezett.  Ebben az esetben az USA keleti régiója nem az egyetlen fennmaradó másodlagos régióban, amíg az Észak-Európa újra online állapotba kerül. A fennmaradó két régió szolgál az ügyfelek összes három régióban szerepkörök között. Az Azure scheduler válaszokban rendelkezik. A fennmaradó régiók további felhasználói forgalom kérhet Európában, mert az alkalmazás teljesítményét kihatással van, nem csak további késés, hanem egy nő a felhasználói kapcsolatok száma szerint. Amint a szolgáltatáskimaradás elhárítása után teljesítményköltségeket csökkenti az Észak-Európa, a másodlagos adatbázis azonnal szinkronizálva van az aktuális elsődleges. A következő ábra szemlélteti egy kimaradás az Észak-Európa:
 
-![3. forgatókönyv. Észak-Európában szolgáltatáskimaradás.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-c.png)
+![3\. forgatókönyv. Észak-Európában szolgáltatáskimaradás.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-c.png)
 
 > [!NOTE]
 > Ha a végfelhasználói élmény Európai csökken, mert a hosszú várakozási idő csökkentéséhez. Amihez meg kell proaktív módon üzembe helyezni egy alkalmazás másolása és létrehozni a másodlagos adatbázis (oka) egy másik helyi régióban (Nyugat-Európa) Észak-Európában offline alkalmazáspéldány helyett. Ha ez utóbbi ismét online eldöntheti e Nyugat-Európa használatának folytatásához, vagy távolítsa el az alkalmazást a másolatát, és váltson vissza az Észak-Európa használatával.
@@ -153,7 +153,7 @@ De van néhány **kompromisszumot kínál a**:
 
 Az egyes adott felhőalapú vész-helyreállítási stratégiát egyesítése, vagy bővítheti az alkalmazás igényeinek leginkább megfelelő ezek a tervezési minták is.  Ahogy korábban említettük, a választott stratégia az SLA-t szeretne nyújtani az ügyfelek és az alkalmazás telepítési topológia alapján történik. Segít a döntést, a következő táblázat összehasonlítja a választási lehetőségek helyreállításipont-célkitűzés (RPO) és a becsült helyreállítási idejének (ERT) alapján.
 
-| Mintázat | Helyreállítási időkorlát | ERT |
+| Pattern | HELYREÁLLÍTÁSI IDŐKORLÁT | ERT |
 |:--- |:--- |:--- |
 | Aktív-passzív telepítési vész-helyreállítási közös elhelyezésű adatbázis-hozzáférést |Olvasási és írási hozzáférése < 5 mp |Hiba észlelés ideje + a DNS-Élettartamot |
 | Aktív-aktív központi telepítés alkalmazás terheléselosztásra |Olvasási és írási hozzáférése < 5 mp |Hiba észlelés ideje + a DNS-Élettartamot |

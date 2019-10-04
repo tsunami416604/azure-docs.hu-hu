@@ -16,11 +16,11 @@ ms.date: 05/04/2017
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 361e921af65b33ac0a7a8d12e28db1cb305b0fa1
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59548121"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66138902"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>Oktatóanyag: Hozhat létre egy Node.js és MongoDB-alkalmazások az Azure-ban
 
@@ -272,7 +272,7 @@ Alapértelmezés szerint a MEAN.js-projekt a Git-adattáron kívül tartja a _co
 
 Az alkalmazásbeállítások megadásához használja az [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) parancsot a Cloud Shellben. 
 
-Ez a példa konfigurálja egy `MONGODB_URI` alkalmazásbeállítást az Azure-alkalmazáshoz. Cserélje le az *\<app_name>*, a *\<cosmosdb_name>* és a *\<primary_master_key>* helyőrzőt.
+Ez a példa konfigurálja egy `MONGODB_URI` alkalmazásbeállítást az Azure-alkalmazáshoz. Cserélje le az *\<app_name>* , a *\<cosmosdb_name>* és a *\<primary_master_key>* helyőrzőt.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings MONGODB_URI="mongodb://<cosmosdb_name>:<primary_master_key>@<cosmosdb_name>.documents.azure.com:10250/mean?ssl=true"

@@ -1,51 +1,48 @@
 ---
-title: Mi a teendő, ha meghibásodik egy Azure-szolgáltatás megszakadása, ami hatással van az Azure Key Vault az Azure Key Vault - |} A Microsoft Docs
-description: Ismerje meg, mi a teendő az Azure szolgáltatáskimaradás, amely hatással van az Azure Key Vault működésében.
+title: Mi a teendő egy olyan Azure-szolgáltatás megszakadása esetén, amely hatással van a Azure Key Vault-Azure Key Vaultra | Microsoft Docs
+description: Ismerje meg, mi a teendő olyan Azure-szolgáltatás megszakadásakor, amely hatással van a Azure Key Vaultra.
 services: key-vault
-documentationcenter: ''
-author: barclayn
-manager: barbkess
-editor: ''
-ms.assetid: 19a9af63-3032-447b-9d1a-b0125f384edb
+author: msmbaldwin
+manager: rkarlin
 ms.service: key-vault
-ms.workload: key-vault
-ms.tgt_pltfrm: na
-ms.topic: conceptual
-ms.date: 01/07/2019
-ms.author: barclayn
-ms.openlocfilehash: dd1d2af174f93cceabccd62a78d45a0e4fbed502
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.topic: tutorial
+ms.date: 08/12/2019
+ms.author: mbaldwin
+ms.openlocfilehash: c0fed80f4ba9815cee49bc9968d542f168570986
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56104516"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976373"
 ---
-# <a name="azure-key-vault-availability-and-redundancy"></a>Az Azure Key Vault rendelkezésre állás és redundancia
+# <a name="azure-key-vault-availability-and-redundancy"></a>Azure Key Vault rendelkezésre állás és redundancia
 
-Az Azure Key Vault többrétegű redundanciát biztosít, győződjön meg arról, hogy a kulcsok és titkok továbbra is elérhetők az alkalmazás akkor is, ha a szolgáltatás egyes összetevők nem tudnak funkciókat.
+Azure Key Vault több réteget is tartalmaz, így biztosíthatja, hogy a kulcsok és a titkos kódok továbbra is elérhetők legyenek az alkalmazás számára, még akkor is, ha a szolgáltatás egyes összetevői meghibásodnak.
 
-A key vault tartalmát a rendszer replikálja a régión belül, és a egy másodlagos régióba legalább 150 mérföld nyelvet a lenti listában, de azonos földrajzi helyen belül. Ez a nagyfokú tartósság, a kulcsok és titkok tart fenn. Tekintse meg a [Azure párosított régióiról](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) dokumentum adott régiópárok részleteiért.
+A Key Vault tartalmát a régión belül, a másodlagos régióba legalább 150 mérfölddel arrébb, de ugyanazon a földrajzon belül replikálja a rendszer. Ez fenntartja a kulcsok és a titkok magas tartósságát. Az egyes régiókkal kapcsolatos részletekért tekintse meg az [Azure párosított régiókról](../best-practices-availability-paired-regions.md) szóló dokumentumot.
 
-A key vault szolgáltatásban az egyes összetevők nem tudnak, ha a régión belül más összetevők lépést győződjön meg arról, hogy nincs-e funkció nincs teljesítménycsökkenése kérelem kiszolgálására. Nem kell semmit sem ez aktiválásához. Ez automatikusan megtörténik, és érzékelhető lesz.
+Ha a Key Vault szolgáltatásban lévő egyes összetevők meghibásodnak, a régión belüli alternatív összetevők, hogy kiszolgálják a kérést, hogy a rendszer ne csökkentse a funkciók romlását. A művelet elindításához semmilyen műveletet nem kell elvégeznie. Ez automatikusan megtörténik, és transzparens lesz az Ön számára.
 
-A ritka esemény, hogy egy teljes Azure-régió nem érhető el, a rendszer automatikusan irányítja a kérelmeket, hogy az Azure Key vault az adott régióban (*átadta a feladatait*) egy másodlagos régióba. Ha az elsődleges régió újra elérhetővé válik, a kérelmek útválasztása vissza (*részt a feladatátvételben*) az elsődleges régióba. Újra nem kell tennie semmit, mert ez automatikusan megtörténik.
+Abban a ritka esetben, ha egy teljes Azure-régió nem érhető el, az adott régióban Azure Key Vault a kérelmeket a rendszer automatikusan átirányítja (*feladatátvétel*) egy másodlagos régióba. Ha az elsődleges régió újra elérhetővé válik, a rendszer visszairányítja a kérelmeket az elsődleges régióhoz (a*sikertelen visszaállítást*). Megint nem kell semmit tennie, mert ez automatikusan megtörténik.
 
-Van néhány figyelmeztetések érdemes figyelembe vennie:
+A magas rendelkezésre állás kialakításán keresztül a Azure Key Vault nem igényel állásidőt karbantartási tevékenységekhez.
 
-* Egy régióban feladatátvételkor igénybe vehet néhány percet, amíg a szolgáltatás a feladatátvételt. Ebben az időszakban kérelmek mindaddig, amíg befejeződik a feladatátvétel sikertelen lehet.
-* A feladatátvétel befejezését követően a key vault írásvédett módban van. Ebben a módban támogatott kéréseket a következők:
-  * A kulcstartók listája
-  * Kulcstartók tulajdonságainak beolvasása
-  * Titkos kulcsainak listázása
-  * Titkos kódok lekéréséhez
+A következőkkel kapcsolatos figyelmeztetéseket kell figyelembe venni:
+
+* Régió feladatátvétele esetén eltarthat néhány percig, amíg a szolgáltatás feladatátvételt végez. Az ebben az időszakban végrehajtott kérelmek sikertelenek lehetnek, amíg a feladatátvétel be nem fejeződik.
+* A feladatátvétel befejezése után a kulcstartó írásvédett módban van. Az ebben a módban támogatott kérelmek a következők:
+  * Kulcstartók listázása
+  * Key vaultok tulajdonságainak beolvasása
+  * Titkos kulcsok listázása
+  * Titkok beolvasása
   * Kulcsok listázása
-  * (A Tulajdonságok) kulcsok beolvasása
+  * Kulcsok beolvasása (tulajdonságai)
   * Titkosítás
   * Visszafejtés
-  * Sortörés
+  * Wrap
   * Kicsomagolása
   * Ellenőrzés
   * Aláírás
   * Backup
-* Feladatátvétel feladatátvételben, miután az összes kérelem típusok (beleértve az olvasási *és* írási kérelmek) érhetők el.
+* A feladatátvétel meghiúsulása után az összes kérelem típusa (beleértve az olvasási *és* írási kérelmeket is) elérhető.
 

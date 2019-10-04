@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
-ms.author: v-ant
+ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d8fedb372fb245b7bc35cb440bd758336ab2a68
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 84870ef03e07cdabe994da7c04a103bead48d34f
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59258759"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672998"
 ---
 # <a name="tutorial-configure-bluejeans-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása BlueJeans konfigurálása
 
@@ -47,7 +47,7 @@ Mielőtt konfigurálná a BlueJeans a felhasználók automatikus átadása az Az
 
 **Az Azure AD alkalmazáskatalógusában BlueJeans hozzáadásához hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, a bal oldali navigációs panelen válassza ki a **Azure Active Directory**.
+1. Az a  **[az Azure portal](https://portal.azure.com)** , a bal oldali navigációs panelen válassza ki a **Azure Active Directory**.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -108,7 +108,7 @@ Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás létrehozása
 
    * Az a **rendszergazdai jelszó** mezőbe a jelszót a rendszergazdai felhasználónév megfelelő feltöltéséhez.
 
-6. 5. lépésben megjelenő mezők feltöltése, után kattintson a **kapcsolat tesztelése** annak biztosítása érdekében az Azure AD BlueJeans csatlakozhat. Ha a kapcsolat hibája esetén, győződjön meg arról, BlueJeans fiókja rendszergazdai engedélyekkel rendelkező, és próbálkozzon újra.
+6. 5\. lépésben megjelenő mezők feltöltése, után kattintson a **kapcsolat tesztelése** annak biztosítása érdekében az Azure AD BlueJeans csatlakozhat. Ha a kapcsolat hibája esetén, győződjön meg arról, BlueJeans fiókja rendszergazdai engedélyekkel rendelkező, és próbálkozzon újra.
 
     ![BlueJeans Provisioning](./media/bluejeans-provisioning-tutorial/BluejeansTestConnection.png)
 

@@ -1,43 +1,43 @@
 ---
-title: Az Azure HDinsight a HDFS hibaelhárítása
-description: HDFS- és Azure HDInsight használata kapcsolatos gyakori kérdésekre adott válaszok.
-services: hdinsight
+title: Az Azure HDInsight HDFS hibáinak megoldása
+description: Választ kaphat a HDFS és az Azure HDInsight való használattal kapcsolatos gyakori kérdésekre.
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
-ms.date: 12/06/2018
+ms.topic: troubleshooting
+ms.date: 09/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: fca763d04cc8cbf22d1578b18d504ec3ce9656d9
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 1c5d9f665c9b3e7a439a09f4259f304f8f8b1a0a
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993025"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718333"
 ---
-# <a name="troubleshoot-apache-hadoop-hdfs-by-using-azure-hdinsight"></a>Az Azure HDInsight az Apache Hadoop HDFS hibaelhárítása
+# <a name="troubleshoot-apache-hadoop-hdfs-by-using-azure-hdinsight"></a>Apache Hadoop HDFS hibáinak megoldása az Azure HDInsight használatával
 
-A leggyakoribb problémák és azok megoldásait ismerje meg az Ambari az Apache Hadoop elosztott fájlrendszer (HDFS) hasznos adatot használatakor.
+Ismerje meg a leggyakoribb problémákat és azok megoldásait, amikor a Hadoop elosztott fájlrendszer (HDFS) hasznos adattartalommal dolgozik az Apache Ambari-ban. A parancsok teljes listáját a [HDFS parancsok útmutatójában](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HDFSCommands.html) és a [fájlrendszer rendszerhéj-útmutatójában](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html)találja.
 
-## <a name="how-do-i-access-local-hdfs-from-inside-a-cluster"></a>Hogyan férhetek hozzá a helyi HDFS egy fürtben?
+## <a name="how-do-i-access-local-hdfs-from-inside-a-cluster"></a>Hogyan hozzáférni a helyi HDFS egy fürtön belülről?
 
 ### <a name="issue"></a>Probléma
 
-A helyi HDFS eléréséhez a parancssor és az alkalmazás kódja helyett az Azure Blob storage vagy az Azure Data Lake Storage a HDInsight-fürtben.   
+A helyi HDFS a parancssorból és az alkalmazás kódjából a HDInsight-fürtön belüli Azure Blob Storage vagy Azure Data Lake Storage használatával érheti el.
 
 ### <a name="resolution-steps"></a>A megoldás lépései
 
-1. Használhatja a parancssorban `hdfs dfs -D "fs.default.name=hdfs://mycluster/" ...` szó szerint, ahogy az alábbi parancsot:
+1. A parancssorban a szó szerint `hdfs dfs -D "fs.default.name=hdfs://mycluster/" ...` használja a következő parancsot:
 
-    ```apache
-    hdiuser@hn0-spark2:~$ hdfs dfs -D "fs.default.name=hdfs://mycluster/" -ls /
+    ```output
+    hdfs dfs -D "fs.default.name=hdfs://mycluster/" -ls /
     Found 3 items
     drwxr-xr-x   - hdiuser hdfs          0 2017-03-24 14:12 /EventCheckpoint-30-8-24-11102016-01
     drwx-wx-wx   - hive    hdfs          0 2016-11-10 18:42 /tmp
     drwx------   - hdiuser hdfs          0 2016-11-10 22:22 /user
     ```
 
-2. A forráskódot, használja az URI-t `hdfs://mycluster/` szó, mint a következő mintaalkalmazást:
+2. A forráskódból használja az URI `hdfs://mycluster/` -t a szó szoros értelmében, ahogy az alábbi példában is látható:
 
     ```Java
     import java.io.IOException;
@@ -62,170 +62,46 @@ A helyi HDFS eléréséhez a parancssor és az alkalmazás kódja helyett az Azu
     }
     ```
 
-3. Futtassa a lefordított .jar fájlt (például egy fájl nevű `java-unit-tests-1.0.jar`) a HDInsight-fürtön a következő paranccsal:
+3. Futtassa a lefordított. jar-fájlt (például egy nevű `java-unit-tests-1.0.jar`fájlt) a HDInsight-fürtön a következő paranccsal:
 
     ```apache
-    hdiuser@hn0-spark2:~$ hadoop jar java-unit-tests-1.0.jar JavaUnitTests
+    hadoop jar java-unit-tests-1.0.jar JavaUnitTests
     hdfs://mycluster/tmp/hive/hive/5d9cf301-2503-48c7-9963-923fb5ef79a7/inuse.info
     hdfs://mycluster/tmp/hive/hive/5d9cf301-2503-48c7-9963-923fb5ef79a7/inuse.lck
     hdfs://mycluster/tmp/hive/hive/a0be04ea-ae01-4cc4-b56d-f263baf2e314/inuse.info
     hdfs://mycluster/tmp/hive/hive/a0be04ea-ae01-4cc4-b56d-f263baf2e314/inuse.lck
     ```
 
+## <a name="du"></a>du
 
-## <a name="how-do-i-force-disable-hdfs-safe-mode-in-a-cluster"></a>Hogyan do I force-letiltása HDFS csökkentett módban egy fürtben?
+A [-du](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#du) parancs megjeleníti az adott könyvtárban található fájlok és könyvtárak méretét, vagy egy fájl hosszát, ha ez csak egy fájl.
 
-### <a name="issue"></a>Probléma
+A `-s` kapcsoló a fájlok megjelenített hosszának összesített összegzését állítja elő.  
+A `-h` kapcsoló a fájlméretet formázza.
 
-A helyi HDFS a HDInsight-fürtön csökkentett módban elakadt.   
+Példa:
 
-### <a name="detailed-description"></a>Részletes leírás
-
-Hiba történik, a következő HDFS parancs futtatásakor:
-
-```apache
-hdfs dfs -D "fs.default.name=hdfs://mycluster/" -mkdir /temp
+```bash
+hdfs dfs -du -s -h hdfs://mycluster/
+hdfs dfs -du -s -h hdfs://mycluster/tmp
 ```
 
-A parancs futtatásakor a következő hibát látja:
+## <a name="rm"></a>RM
 
-```apache
-hdiuser@hn0-spark2:~$ hdfs dfs -D "fs.default.name=hdfs://mycluster/" -mkdir /temp
-17/04/05 16:20:52 WARN retry.RetryInvocationHandler: Exception while invoking ClientNamenodeProtocolTranslatorPB.mkdirs over hn0-spark2.2oyzcdm4sfjuzjmj5dnmvscjpg.dx.internal.cloudapp.net/10.0.0.22:8020. Not retrying because try once and fail.
-org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.hdfs.server.namenode.SafeModeException): Cannot create directory /temp. Name node is in safe mode.
-It was turned on manually. Use "hdfs dfsadmin -safemode leave" to turn safe mode off.
-        at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1359)
-        at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.mkdirs(FSNamesystem.java:4010)
-        at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.mkdirs(NameNodeRpcServer.java:1102)
-        at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.mkdirs(ClientNamenodeProtocolServerSideTranslatorPB.java:630)
-        at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
-        at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:640)
-        at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:982)
-        at org.apache.hadoop.ipc.Server$Handler$1.run(Server.java:2313)
-        at org.apache.hadoop.ipc.Server$Handler$1.run(Server.java:2309)
-        at java.security.AccessController.doPrivileged(Native Method)
-        at javax.security.auth.Subject.doAs(Subject.java:422)
-        at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1724)
-        at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2307)
-        at org.apache.hadoop.ipc.Client.getRpcResponse(Client.java:1552)
-        at org.apache.hadoop.ipc.Client.call(Client.java:1496)
-        at org.apache.hadoop.ipc.Client.call(Client.java:1396)
-        at org.apache.hadoop.ipc.ProtobufRpcEngine$Invoker.invoke(ProtobufRpcEngine.java:233)
-        at com.sun.proxy.$Proxy10.mkdirs(Unknown Source)
-        at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolTranslatorPB.mkdirs(ClientNamenodeProtocolTranslatorPB.java:603)
-        at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-        at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-        at java.lang.reflect.Method.invoke(Method.java:498)
-        at org.apache.hadoop.io.retry.RetryInvocationHandler.invokeMethod(RetryInvocationHandler.java:278)
-        at org.apache.hadoop.io.retry.RetryInvocationHandler.invoke(RetryInvocationHandler.java:194)
-        at org.apache.hadoop.io.retry.RetryInvocationHandler.invoke(RetryInvocationHandler.java:176)
-        at com.sun.proxy.$Proxy11.mkdirs(Unknown Source)
-        at org.apache.hadoop.hdfs.DFSClient.primitiveMkdir(DFSClient.java:3061)
-        at org.apache.hadoop.hdfs.DFSClient.mkdirs(DFSClient.java:3031)
-        at org.apache.hadoop.hdfs.DistributedFileSystem$24.doCall(DistributedFileSystem.java:1162)
-        at org.apache.hadoop.hdfs.DistributedFileSystem$24.doCall(DistributedFileSystem.java:1158)
-        at org.apache.hadoop.fs.FileSystemLinkResolver.resolve(FileSystemLinkResolver.java:81)
-        at org.apache.hadoop.hdfs.DistributedFileSystem.mkdirsInternal(DistributedFileSystem.java:1158)
-        at org.apache.hadoop.hdfs.DistributedFileSystem.mkdirs(DistributedFileSystem.java:1150)
-        at org.apache.hadoop.fs.FileSystem.mkdirs(FileSystem.java:1898)
-        at org.apache.hadoop.fs.shell.Mkdir.processNonexistentPath(Mkdir.java:76)
-        at org.apache.hadoop.fs.shell.Command.processArgument(Command.java:273)
-        at org.apache.hadoop.fs.shell.Command.processArguments(Command.java:255)
-        at org.apache.hadoop.fs.shell.FsCommand.processRawArguments(FsCommand.java:119)
-        at org.apache.hadoop.fs.shell.Command.run(Command.java:165)
-        at org.apache.hadoop.fs.FsShell.run(FsShell.java:297)
-        at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:76)
-        at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:90)
-        at org.apache.hadoop.fs.FsShell.main(FsShell.java:350)
-mkdir: Cannot create directory /temp. Name node is in safe mode.
+Az [-RM](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#rm) parancs az argumentumként megadott fájlokat törli.
+
+Példa:
+
+```bash
+hdfs dfs -rm hdfs://mycluster/tmp/testfile
 ```
 
-### <a name="probable-cause"></a>Lehetséges ok
+## <a name="next-steps"></a>További lépések
 
-A HDInsight-fürt mérete le egy nagyon kevés csomópontot. A csomópontok számát alább, vagy a HDFS replikációs tényező közelében van.
+Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 
-### <a name="resolution-steps"></a>A megoldás lépései 
+* Azure-szakértőktől kaphat válaszokat az [Azure közösségi támogatásával](https://azure.microsoft.com/support/community/).
 
-1. A HDInsight-fürt HDFS állapotának lekérése a következő parancsokat:
+* Kapcsolódjon [@AzureSupport](https://twitter.com/azuresupport) a-a hivatalos Microsoft Azure fiókhoz a felhasználói élmény javítása érdekében. Az Azure-Közösség összekapcsolása a megfelelő erőforrásokkal: válaszok, támogatás és szakértők.
 
-    ```apache
-    hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -report
-    ```
-
-    ```apache
-    hdiuser@hn0-spark2:~$ hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -report
-    Safe mode is ON
-    Configured Capacity: 3372381241344 (3.07 TB)
-    Present Capacity: 3138625077248 (2.85 TB)
-    DFS Remaining: 3102710317056 (2.82 TB)
-    DFS Used: 35914760192 (33.45 GB)
-    DFS Used%: 1.14%
-    Under replicated blocks: 0
-    Blocks with corrupt replicas: 0
-    Missing blocks: 0
-    Missing blocks (with replication factor 1): 0
-
-    -------------------------------------------------
-    Live datanodes (8):
-
-    Name: 10.0.0.17:30010 (10.0.0.17)
-    Hostname: 10.0.0.17
-    Decommission Status : Normal
-    Configured Capacity: 421547655168 (392.60 GB)
-    DFS Used: 5288128512 (4.92 GB)
-    Non DFS Used: 29087272960 (27.09 GB)
-    DFS Remaining: 387172253696 (360.58 GB)
-    DFS Used%: 1.25%
-    DFS Remaining%: 91.85%
-    Configured Cache Capacity: 0 (0 B)
-    Cache Used: 0 (0 B)
-    Cache Remaining: 0 (0 B)
-    Cache Used%: 100.00%
-    Cache Remaining%: 0.00%
-    Xceivers: 2
-    Last contact: Wed Apr 05 16:22:00 UTC 2017
-    ...
-    ```
-
-2. A HDInsight-fürt HDFS sértetlenségének ellenőrzéséhez a következő parancsokat:
-
-    ```apache
-    hdiuser@hn0-spark2:~$ hdfs fsck -D "fs.default.name=hdfs://mycluster/" /
-    ```
-
-    ```apache
-    Connecting to namenode via http://hn0-spark2.2oyzcdm4sfjuzjmj5dnmvscjpg.dx.internal.cloudapp.net:30070/fsck?ugi=hdiuser&path=%2F
-    FSCK started by hdiuser (auth:SIMPLE) from /10.0.0.22 for path / at Wed Apr 05 16:40:28 UTC 2017
-    ....................................................................................................
-
-    ....................................................................................................
-    ..................Status: HEALTHY
-    Total size:    9330539472 B
-    Total dirs:    37
-    Total files:   2618
-    Total symlinks:                0 (Files currently being written: 2)
-    Total blocks (validated):      2535 (avg. block size 3680686 B)
-    Minimally replicated blocks:   2535 (100.0 %)
-    Over-replicated blocks:        0 (0.0 %)
-    Under-replicated blocks:       0 (0.0 %)
-    Mis-replicated blocks:         0 (0.0 %)
-    Default replication factor:    3
-    Average block replication:     3.0
-    Corrupt blocks:                0
-    Missing replicas:              0 (0.0 %)
-    Number of data-nodes:          8
-    Number of racks:               1
-    FSCK ended at Wed Apr 05 16:40:28 UTC 2017 in 187 milliseconds
-
-    The filesystem under path '/' is HEALTHY
-    ```
-
-3. Ha azt állapítja meg, amelyek nincsenek nem hiányzik, sérült, vagy under-replikált blokkolja, vagy hogy blokkokat figyelmen kívül hagyható, futtassa a következő parancsot a név csomópont biztonságos módból érvénybe:
-
-    ```apache
-    hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -safemode leave
-    ```
-
-### <a name="see-also"></a>Lásd még:
-[Hibaelhárítás az Azure HDInsight segítségével](hdinsight-troubleshoot-guide.md)
+* Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.

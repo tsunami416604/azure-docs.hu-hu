@@ -1,10 +1,10 @@
 ---
-title: A cloud-init használatával a lapozófájl konfigurálása a Linux rendszerű virtuális gép |} A Microsoft Docs
-description: A lapozófájl konfigurálása a Linux rendszerű virtuális gép létrehozása az Azure CLI-vel során a cloud-init használatával
+title: A Cloud-init használatával konfigurálhatja a swap-partíciót egy Linux rendszerű virtuális gépen | Microsoft Docs
+description: A Cloud-init használata a swap-partíció konfigurálásához Linux rendszerű virtuális gépen az Azure CLI-vel való létrehozás során
 services: virtual-machines-linux
 documentationcenter: ''
 author: rickstercdn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
@@ -14,22 +14,22 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 626fd4739daf2506854c42f16ac986a361ebab38
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: d8ce12b931b6a30fa375588b73a1140ed4697c2f
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55769912"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640770"
 ---
-# <a name="use-cloud-init-to-configure-a-swapfile-on-a-linux-vm"></a>A lapozófájl konfigurálása a Linux rendszerű virtuális gépen a cloud-init használatával
-Ez a cikk bemutatja, hogyan használható [a cloud-init](https://cloudinit.readthedocs.io) különböző Linux-disztribúciókon a lapozófájl konfigurálása. A lapozófájl hagyományosan konfigurálása által a Linuxos ügynök (WALA) melyik disztribúció szükséges egyik alapján.  Ez a dokumentum igény szerinti üzembe helyezés ideje a cloud-init használata során a lapozófájl létrehozásához fog vázoltuk.  A cloud-init működése natív módon az Azure és a támogatott Linux-disztribúciók kapcsolatos további információkért lásd: [cloud-init áttekintése](using-cloud-init.md)
+# <a name="use-cloud-init-to-configure-a-swap-partition-on-a-linux-vm"></a>A Cloud-init használata a swap-partíciók Linux rendszerű virtuális gépen való konfigurálásához
+Ez a cikk bemutatja, hogyan konfigurálhatja a swap partíciót különböző Linux-disztribúciókban a [Cloud-init](https://cloudinit.readthedocs.io) használatával. A swap-partíciót hagyományosan a Linux-ügynök (WALA) állította be, amely alapján a disztribúciók közül egy szükséges.  Ez a dokumentum felvázolja a swap-partíció igény szerinti felépítési folyamatát a üzembe helyezés ideje alatt a Cloud-init használatával.  További információ arról, hogyan működik a Cloud-init natív módon az Azure-ban és a támogatott Linux-disztribúciókban: a [Cloud-init áttekintése](using-cloud-init.md)
 
-## <a name="create-swapfile-for-ubuntu-based-images"></a>Lapozófájl Ubuntu-alapú lemezképek létrehozása
-Ubuntu-katalógusbeli rendszerképeket az Azure-ban alapértelmezés szerint ne hozzon létre lapozó. Virtuális gép üzembe helyezési idő cloud-init használata során a lapozófájl-kapacitás fájl konfiguráció engedélyezése – tekintse át a [AzureSwapPartitions dokumentum](https://wiki.ubuntu.com/AzureSwapPartitions) Ubuntu wiki.
+## <a name="create-swap-partition-for-ubuntu-based-images"></a>Swap-partíció létrehozása Ubuntu-alapú rendszerképekhez
+Az Azure-ban alapértelmezés szerint az Ubuntu Gallery-lemezképek nem hoznak létre swap-partíciókat. Ha engedélyezni szeretné a felcserélt partíciók konfigurációját a virtuális gép üzembe helyezésekor a Cloud-init használatával – tekintse meg a [AzureSwapPartitions dokumentumot](https://wiki.ubuntu.com/AzureSwapPartitions) az Ubuntu wikin.
 
-## <a name="create-swapfile-for-red-hat-and-centos-based-images"></a>Red Hat és a CentOS-alapú lemezképek lapozófájl létrehozása
+## <a name="create-swap-partition-for-red-hat-and-centos-based-images"></a>Swap-partíció létrehozása a Red Hat és a CentOS-alapú rendszerképekhez
 
-Hozzon létre egy fájlt az aktuális felületen *cloud_init_swapfile.txt* , és illessze be a következő konfigurációt. Ebben a példában a Cloud shellben, nem a helyi gépén hozzon létre a fájlt. Bármelyik szerkesztőt használhatja. Írja be a `sensible-editor cloud_init_swapfile.txt` parancsot a fájl létrehozásához és az elérhető szerkesztők listájának megtekintéséhez. Válassza ki a használandó #1 a **nano** szerkesztő. Győződjön meg arról, hogy a teljes cloud-init-fájlt, másolja, különösen az első sort.  
+Hozzon létre egy fájlt a *cloud_init_swappart. txt* nevű aktuális rendszerhéjban, és illessze be a következő konfigurációt. Ebben a példában hozza létre a fájlt a Cloud Shell nem a helyi gépen. Bármelyik szerkesztőt használhatja. Írja be a `sensible-editor cloud_init_swappart.txt` parancsot a fájl létrehozásához és az elérhető szerkesztők listájának megtekintéséhez. A **Nano** Editor használatához válassza a #1 lehetőséget. Győződjön meg arról, hogy a teljes Cloud-init fájl megfelelően van másolva, különösen az első sorban.  
 
 ```yaml
 #cloud-config
@@ -48,37 +48,37 @@ mounts:
   - ["ephemeral0.2", "none", "swap", "sw", "0", "0"]
 ```
 
-Ez a rendszerkép üzembe helyezése előtt hozzon létre egy erőforráscsoportot kell a [az csoport létrehozása](/cli/azure/group) parancsot. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
+A rendszerkép telepítése előtt létre kell hoznia egy erőforráscsoportot az az [Group Create](/cli/azure/group) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
 ```
 
-Most hozzon létre egy virtuális Gépet a [az virtuális gép létrehozása](/cli/azure/vm) , és adja meg a cloud-init fájl `--custom-data cloud_init_swapfile.txt` módon:
+Most hozzon létre egy virtuális gépet az [az VM Create](/cli/azure/vm) paranccsal, és határozza meg a `--custom-data cloud_init_swappart.txt` Cloud-init fájlt a következő módon:
 
 ```azurecli-interactive 
 az vm create \
   --resource-group myResourceGroup \
   --name centos74 \
   --image OpenLogic:CentOS:7-CI:latest \
-  --custom-data cloud_init_swapfile.txt \
+  --custom-data cloud_init_swappart.txt \
   --generate-ssh-keys 
 ```
 
-## <a name="verify-swapfile-was-created"></a>Lapozófájl létrehozásának ellenőrzéséhez
-SSH nyilvános IP-címet a virtuális gép az előző parancs kimenetében látható. Adja meg a saját **publicIpAddress** módon:
+## <a name="verify-swap-partition-was-created"></a>A swap-partíció létrehozásának ellenőrzése
+SSH-t az előző parancs kimenetében látható virtuális gép nyilvános IP-címére. Adja meg saját **publicIpAddress** a következőképpen:
 
 ```bash
 ssh <publicIpAddress>
 ```
 
-Miután SSH'ed a virtuális géppel, ellenőrizze, ha a lapozófájl létrehozása
+Miután SSH'ed a virtuális gépre, ellenőrizze, hogy létrejött-e a swap-partíció.
 
 ```bash
 swapon -s
 ```
 
-Ez a parancs kimenete kell kinéznie:
+A parancs kimenetének a következőhöz hasonlóan kell kinéznie:
 
 ```text
 Filename                Type        Size    Used    Priority
@@ -86,12 +86,12 @@ Filename                Type        Size    Used    Priority
 ```
 
 > [!NOTE] 
-> Ha rendelkezik meglévő Azure-rendszerképet, amely rendelkezik egy lapozófájl konfigurált, és meg szeretné változtatni a lapozófájl-kapacitás fájl konfigurációs új képek, távolítsa el a meglévő lapozófájl. Tekintse át "Testreszabás képek üzembe helyezni a cloud-init" dokumentum további részletekért.
+> Ha van olyan meglévő Azure-lemezképe, amelynek van konfigurált swap-partíciója, és módosítani szeretné az új lemezképek swap-partíciójának konfigurációját, távolítsa el a meglévő swap partíciót. További részletekért tekintse meg a "rendszerképek testreszabása a Cloud-init" dokumentumban.
 
 ## <a name="next-steps"></a>További lépések
-Konfigurációs módosítások további a cloud-init példákért tekintse meg a következőket:
+További felhő-inicializálási példákat a konfiguráció változásairól a következő témakörben talál:
  
-- [További Linux-felhasználó hozzáadása virtuális Géphez](cloudinit-add-user.md)
-- [Az első rendszerindításkor a meglévő csomagokat frissíteni Csomagkezelő futtatása](cloudinit-update-vm.md)
-- [Módosítsa a virtuális gép helyi gazdagépnév](cloudinit-update-vm-hostname.md) 
-- [Alkalmazáscsomag telepítése, a konfigurációs fájlokat és a kulcsok beszúrása](tutorial-automate-vm-deployment.md)
+- [További linuxos felhasználó hozzáadása egy virtuális géphez](cloudinit-add-user.md)
+- [Csomagkezelő futtatása a meglévő csomagok frissítéséhez az első rendszerindításkor](cloudinit-update-vm.md)
+- [Virtuális gép helyi gazdagépének módosítása](cloudinit-update-vm-hostname.md) 
+- [Alkalmazáscsomag telepítése, konfigurációs fájlok frissítése és kulcsok behelyezése](tutorial-automate-vm-deployment.md)

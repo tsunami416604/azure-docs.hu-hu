@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ba76692ec35ddfd0b6c8c49306d6056709d684e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 669dfaa40cfe1bc65618d8706910e19d72c233ad
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57840681"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67092054"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-for-customer"></a>Oktatóanyag: Az ügyfél az Azure Active Directory-integráció az SAP-felhővel
 
@@ -53,7 +53,7 @@ Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri b
 
 **Adja hozzá az SAP Cloud ügyfél számára a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -126,7 +126,7 @@ Konfigurálja az Azure AD egyszeri bejelentkezés az SAP-felhővel ügyfél, haj
 
     b. Válassza ki **átalakítási** , **forrás**.
 
-    c. Az a **átalakítási** listáról válassza ki **ExtractMailPrefix()**.
+    c. Az a **átalakítási** listáról válassza ki **ExtractMailPrefix()** .
 
     d. Az a **paraméter 1** listájához, válassza ki a példányhoz használni kívánt felhasználói attribútum.
     Például ha az attribútum értékét a ExtensionAttribute2 tárolt az EmployeeID használandó egyedi felhasználói azonosítóként, majd válassza ki user.extensionattribute2.

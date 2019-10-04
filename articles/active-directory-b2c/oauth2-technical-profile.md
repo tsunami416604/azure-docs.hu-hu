@@ -1,42 +1,42 @@
 ---
-title: Egy egyéni házirendek az Azure Active Directory B2C az OAuth2 technikai profil meghatározása |} A Microsoft Docs
-description: Adja meg egy egyéni házirendet az Azure Active Directory B2C az OAuth2 technikai profil.
+title: OAuth2-technikai profil definiálása egyéni szabályzatban Azure Active Directory B2Cban | Microsoft Docs
+description: OAuth2-technikai profilt definiálhat egy egyéni szabályzatban Azure Active Directory B2Cban.
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e92378cca445191f42708bd6348b1c75b29da1a1
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 63500c057b5c9f497e59589286a852a4394059ec
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60009837"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063974"
 ---
-# <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Az OAuth2 technikai profil meghatározása az Azure Active Directory B2C egyéni házirendek
+# <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>OAuth2 műszaki profil definiálása egy Azure Active Directory B2C egyéni házirendben
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Az Azure Active Directory (Azure AD) B2C az OAuth2 protokoll identitásszolgáltató támogatja. Az OAuth2 olyan delegált hitelesítési és engedélyezési elsődleges protokollja. További információkért lásd: a [RFC 6749 az OAuth 2.0 engedélyezési keretrendszer](https://tools.ietf.org/html/rfc6749). Az OAuth2 technikai profil az OAuth2 alapján Identitásszolgáltatóként, többek között a Facebookhoz használatával is összevonható. Összevonás az identitásszolgáltatót lehetővé teszi a felhasználóknak, hogy jelentkezzen be a meglévő közösségi vagy vállalati identitásokat.
+A Azure Active Directory B2C (Azure AD B2C) támogatást nyújt a OAuth2 protokoll identitás-szolgáltatója számára. A OAuth2 az engedélyezés és a delegált hitelesítés elsődleges protokollja. További információ: [RFC 6749 The OAuth 2,0 Authorization Framework](https://tools.ietf.org/html/rfc6749). A OAuth2-alapú technikai profillal OAuth2-alapú összevonása, például a Facebook használatával is elvégezhető. Az egyesítő lehetővé teszi, hogy a felhasználók bejelentkezzenek a meglévő közösségi vagy vállalati identitásokkal.
 
-## <a name="protocol"></a>Protokoll
+## <a name="protocol"></a>Protocol
 
-A **neve** attribútuma a **protokoll** elemet hozzá kell beállítani `OAuth2`. Például a protokoll a **Facebook-OAUTH** technikai profil `OAuth2`:
+A **protokoll** elem `OAuth2` **Name** attribútumát be kell állítani. A **Facebook-OAUTH** technikai profilhoz `OAuth2`tartozó protokoll például a következő:
 
 ```XML
 <TechnicalProfile Id="Facebook-OAUTH">
   <DisplayName>Facebook</DisplayName>
   <Protocol Name="OAuth2" />
-  ...    
+  ...
 ```
 
-## <a name="input-claims"></a>A bemeneti jogcímek
+## <a name="input-claims"></a>Bemeneti jogcímek
 
-A **InputClaims** és **InputClaimsTransformations** elemek nem szükségesek. Azonban előfordulhat, hogy szeretne küldeni a további paraméterek segítségével az identitásszolgáltatókhoz. Az alábbi példa hozzáadja a **domain_hint** lekérdezési karakterlánc paraméterének értékét `contoso.com` az engedélyezési kérés.
+A **szabályzattípushoz** és a **InputClaimsTransformations** elemek nem szükségesek. Előfordulhat azonban, hogy további paramétereket szeretne küldeni az identitás-szolgáltatónak. A következő példa hozzáadja a **domain_hint** lekérdezési karakterlánc paramétert az engedélyezési `contoso.com` kérelem értékével.
 
 ```XML
 <InputClaims>
@@ -46,21 +46,21 @@ A **InputClaims** és **InputClaimsTransformations** elemek nem szükségesek. A
 
 ## <a name="output-claims"></a>Kimeneti jogcímek
 
-A **OutputClaims** elem az OAuth2 identitásszolgáltató által visszaküldött jogcímek listáját tartalmazza. Szükség lehet a meghatározott az identitásszolgáltató nevét a szabályzatban meghatározott jogcím nevének való leképezéséhez. Nem adott vissza az identitásszolgáltató mindaddig, amíg meg jogcímeket is használható a `DefaultValue` attribútum.
+A **OutputClaims** elem tartalmazza a OAuth2-identitás szolgáltatója által visszaadott jogcímek listáját. Előfordulhat, hogy le kell képeznie a szabályzatban definiált jogcím nevét az identitás-szolgáltatóban definiált névre. Olyan jogcímeket is megadhat, amelyeket nem ad vissza az identitás-szolgáltató, ha `DefaultValue` beállítja az attribútumot.
 
-A **OutputClaimsTransformations** elemet tartalmazhat egy gyűjteményét **OutputClaimsTransformation** elemek, amelyek segítségével módosíthatja a kimeneti jogcímek, és hozzon létre újakat.
+A **OutputClaimsTransformations** elem olyan **OutputClaimsTransformation** -elemek gyűjteményét is tartalmazhatja, amelyek a kimeneti jogcímek módosítására vagy újak előállítására szolgálnak.
 
-Az alábbi példa bemutatja a jogcímeket, a Facebook-identitás szolgáltató által visszaadott:
+A következő példa a Facebook-identitás szolgáltatója által visszaadott jogcímeket mutatja be:
 
-- A **first_name** jogcím van leképezve a **givenName** jogcím.
-- A **first_name** jogcím van leképezve a **Vezetéknév** jogcím.
-- A **displayName** jogcím-name-leképezés nélkül.
-- A **e-mail** jogcím a felhasználónév-leképezés nélkül.
+- A **first_name** jogcím a **givenName** jogcímhez van rendelve.
+- A **vezetéknév** jogcím a **vezetékneve** jogcímhez van rendelve.
+- Név-hozzárendelés nélküli **DisplayName** jogcím.
+- A név leképezése nélküli **e-mail-** jogcím.
 
-A technikai profil is az identitásszolgáltató nem adott vissza jogcímeket adja vissza: 
+A technikai profil az Identitáskezelő által nem visszaadott jogcímeket is visszaadja:
 
-- A **identityProvider** jogcímet, amelyet az identitásszolgáltató nevét tartalmazza.
-- A **authenticationSource** jogcím alapértelmezett értéke **socialIdpAuthentication**.
+- Az **identityProvider** -jogcím, amely tartalmazza az identitás-szolgáltató nevét.
+- A **authenticationSource** jogcím alapértelmezett **socialIdpAuthentication**-értékkel rendelkezik.
 
 ```xml
 <OutputClaims>
@@ -76,43 +76,43 @@ A technikai profil is az identitásszolgáltató nem adott vissza jogcímeket ad
 
 ## <a name="metadata"></a>Metaadatok
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| client_id | Igen | Az identitásszolgáltató az alkalmazás azonosítója. |
-| IdTokenAudience | Nem | A id_token célközönségét. Ha meg van adva, az Azure AD B2C-vel ellenőrzi, hogy a jogkivonat az identitásszolgáltató által visszaadott jogcím szerepel-e, és megadott egyenlő. |
-| authorization_endpoint | Igen | RFC 6749 megfelelően az engedélyezési végpont URL-címe |
-| AccessTokenEndpoint | Igen | RFC 6749 megfelelően a jogkivonat-végpont URL-címe |  
-| ClaimsEndpoint | Igen | A végpont URL-címét a felhasználó információt RFC 6749 megfelelően. | 
-| AccessTokenResponseFormat | Nem | A hozzáférési jogkivonat-végpont hívás formátumát. Például Facebook egy HTTP GET módszert igényel, de a hozzáférési jogkivonat-válasz JSON formátumban vannak. |
-| AdditionalRequestQueryParameters | Nem | További kérelem lekérdezési paraméterek. Például előfordulhat, hogy szeretne küldeni további paraméterek segítségével az identitásszolgáltatókhoz. Elválasztó karakterként használatával több paramétereket is megadhat. | 
-| ClaimsEndpointAccessTokenName | Nem | A hozzáférési jogkivonat lekérdezésisztring-paraméter neve. Néhány Identitásszolgáltatók jogcímek végpontokat támogatja a GET HTTP kérést. Ebben az esetben a tulajdonosi jogkivonat a lekérdezési sztring paramétereként helyett az engedélyezési fejléc zajlik. |
-| ClaimsEndpointFormatName | Nem | A formátum lekérdezésisztring-paraméter neve. Például beállíthatja a nevet a következőként `format` a LinkedIn a jogcím-végpont `https://api.linkedin.com/v1/people/~?format=json`. | 
-| ClaimsEndpointFormat | Nem | A formátum lekérdezésisztring-paraméter értéke. Például beállíthatja a értékként `json` a LinkedIn a jogcím-végpont `https://api.linkedin.com/v1/people/~?format=json`. | 
-| ProviderName | Nem | Az identitásszolgáltató neve. |
-| response_mode | Nem | A módszer, amely az identitásszolgáltató nem küldi vissza az eredményt az Azure AD B2C-t használja. A lehetséges értékek: `query`, `form_post` (alapértelmezett), vagy `fragment`. |
-| scope | Nem | A kérelem az OAuth2 identity provider specifikáció alapján meghatározott köre. Például `openid`, `profile`, és `email`. |
-| HttpBinding | Nem | A várt HTTP-kötést a hozzáférési jogkivonatot, és a jogcímek jogkivonat végpontokhoz. A lehetséges értékek: `GET` vagy `POST`.  |
-| ResponseErrorCodeParamName | Nem | Neve a paraméter, amely a HTTP 200 (Ok) keresztül visszaadott hibaüzenet tartalmazza. |
-| ExtraParamsInAccessTokenEndpointResponse | Nem | A válasz, a visszaadható a további paramétereket tartalmaz **AccessTokenEndpoint** néhány identitásszolgáltatók által. Például válasza **AccessTokenEndpoint** például tartalmaz egy kiegészítő paraméterrel `openid`, azaz mellett a access_token a paramétert kötelező megadni egy **ClaimsEndpoint** kérelem lekérdezési karakterlánc. Több paraméterneveket kell escape-karakterrel és a vesszővel elválasztva ',' elválasztó karaktert. |
-| ExtraParamsInClaimsEndpointRequest | Nem | A további paraméterek, a visszaadható tartalmazza a **ClaimsEndpoint** néhány Identitásszolgáltatók kérelmét. Több paraméterneveket kell escape-karakterrel és a vesszővel elválasztva ',' elválasztó karaktert. |
+| client_id | Igen | Az identitás-szolgáltató alkalmazás-azonosítója. |
+| IdTokenAudience | Nem | A id_token célközönsége. Ha meg van adva, Azure AD B2C ellenőrzi, hogy a jogkivonat az identitás-szolgáltató által visszaadott jogcímben van-e, és megegyezik-e a megadott értékkel. |
+| authorization_endpoint | Igen | Az engedélyezési végpont URL-címe RFC 6749-ként. |
+| AccessTokenEndpoint | Igen | A jogkivonat-végpont URL-címe RFC 6749-ként. |
+| ClaimsEndpoint | Igen | A felhasználói adatok végpontjának URL-címe RFC 6749-ként. |
+| AccessTokenResponseFormat | Nem | A hozzáférési jogkivonat-végpont hívásának formátuma. Például a Facebook HTTP GET metódust igényel, de a hozzáférési jogkivonat válasza JSON formátumú. |
+| AdditionalRequestQueryParameters | Nem | További lekérdezési paraméterek. Előfordulhat például, hogy további paramétereket szeretne küldeni az identitás-szolgáltatónak. Vesszővel elválasztó használatával több paramétert is megadhat. |
+| ClaimsEndpointAccessTokenName | Nem | A hozzáférési jogkivonat lekérdezési karakterlánc-paraméterének neve. Egyes identitás-szolgáltatók jogcímei végpontok támogatják a HTTP-kérések beolvasását. Ebben az esetben a tulajdonosi jogkivonatot egy lekérdezési karakterlánc paraméterrel kell elküldeni az engedélyezési fejléc helyett. |
+| ClaimsEndpointFormatName | Nem | A Format lekérdezési karakterlánc paraméterének neve. Például megadhatja a nevet `format` ebben a LinkedIn jogcím-végpontban. `https://api.linkedin.com/v1/people/~?format=json` |
+| ClaimsEndpointFormat | Nem | A Format lekérdezési karakterlánc paraméter értéke. Például megadhatja az értéket `json` ebben a LinkedIn jogcím-végpontban. `https://api.linkedin.com/v1/people/~?format=json` |
+| ProviderName | Nem | Az identitás-szolgáltató neve. |
+| response_mode | Nem | Az a metódus, amelyet az Identitáskezelő használ az eredmény Azure AD B2Cba való visszaküldéséhez. Lehetséges értékek: `query`, `form_post` (alapértelmezett) vagy `fragment`. |
+| scope | Nem | A kérelem hatóköre, amely a OAuth2-identitás szolgáltatójának specifikációja szerint van meghatározva. Például: `profile` `email`,,és. `openid` |
+| HttpBinding | Nem | A hozzáférési jogkivonat és a jogcímek jogkivonat-végpontjának várt HTTP-kötése. Lehetséges értékek: `GET` vagy `POST`.  |
+| ResponseErrorCodeParamName | Nem | A HTTP 200 (ok) protokollon keresztül visszaadott hibaüzenetet tartalmazó paraméter neve. |
+| ExtraParamsInAccessTokenEndpointResponse | Nem | Azokat a felesleges paramétereket tartalmazza, amelyeket egyes identitás-szolgáltatók a **AccessTokenEndpoint** válaszában adhatnak vissza. A **AccessTokenEndpoint** válasza például egy további paramétert `openid`tartalmaz, amely egy kötelező paraméter, amely a access_token mellett egy **ClaimsEndpoint** -kérelem lekérdezési karakterláncában található. Több paraméter nevét el kell kerülni és el kell különíteni a vessző "," elválasztóval. |
+| ExtraParamsInClaimsEndpointRequest | Nem | Azokat a felesleges paramétereket tartalmazza, amelyeket egyes identitás-szolgáltatók a **ClaimsEndpoint** -kérelemben adhatnak vissza. Több paraméter nevét el kell kerülni és el kell különíteni a vessző "," elválasztóval. |
 
 ## <a name="cryptographic-keys"></a>Titkosítási kulcsok
 
-A **CryptographicKeys** elem tartalmazza a következő attribútumot:
+A **CryptographicKeys** elem a következő attribútumot tartalmazza:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| client_secret | Igen | A titkos ügyfélkulcsot az identity provider alkalmazás. A titkosítási kulcsot kötelező megadni, ha csak a **response_types** metaadat értéke `code`. Ebben az esetben az Azure AD B2C-vel hívást egy másik az engedélyezési kódot, a hozzáférési jogkivonatot. Ha a metaadat értéke `id_token`, kihagyhatja a titkosítási kulcs. |  
+| client_secret | Igen | Az Identity Provider alkalmazás ügyfél-titka. A titkosítási kulcs csak akkor szükséges, ha a **response_types** - `code`metaadatok értéke. Ebben az esetben Azure AD B2C egy másik hívást kezdeményez a hozzáférési token engedélyezési kódjának cseréjéhez. Ha a metaadatok `id_token`értéke, akkor kihagyhatja a titkosítási kulcsot. |
 
 ## <a name="redirect-uri"></a>Átirányítási URI
 
-Az identitásszolgáltató az átirányítási URL-cím konfigurálásakor adja meg a `https://login.microsoftonline.com/te/tenant/policyId/oauth2/authresp`. Cserélje le **bérlői** a bérlő nevét (például: contosob2c.onmicrosoft.com) és **policyId** azonosítóval a szabályzat (például b2c_1a_policy). Az átirányítási URI-t kell lennie az összes kisbetűt.
+Az Identitáskezelő átirányítási URL-címének konfigurálásakor adja meg `https://login.microsoftonline.com/te/tenant/policyId/oauth2/authresp`a (z) értéket. Ne felejtse el **lecserélni a bérlő nevét** (például contosob2c.onmicrosoft.com) és a **policyId** a szabályzat azonosítójával (például b2c_1a_policy). Az átirányítási URI-nak minden kisbetűsnek kell lennie.
 
-Ha használja a **b2clogin.com** helyett tartományi **login.microsoftonline.com** ügyeljen arra, hogy a b2clogin.com használata helyett login.microsoftonline.com.
+Ha a **b2clogin.com** tartományt használja a **login.microsoftonline.com** helyett, ügyeljen arra, hogy a login.microsoftonline.com helyett a b2clogin.com használja.
 
 Példák:
 
-- [Adja hozzá a Google + identitás-szolgáltatóként OAuth2 egyéni szabályzatok használatával](active-directory-b2c-custom-setup-goog-idp.md)
+- [Google + hozzáadása OAuth2-identitás-szolgáltatóként egyéni szabályzatok használatával](active-directory-b2c-custom-setup-goog-idp.md)
 
 
 

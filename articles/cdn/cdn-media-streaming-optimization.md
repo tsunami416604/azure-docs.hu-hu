@@ -7,19 +7,19 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: magattus
-ms.openlocfilehash: 9802296170f07bb8599058e230798f647e900d4d
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: c6ed546735058e330368151adb0df7323f943050
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093697"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593671"
 ---
 # <a name="media-streaming-optimization-with-azure-cdn"></a>Online médialejátszás optimalizálása az Azure CDN-nel 
  
@@ -104,8 +104,8 @@ A következő táblázatban megtalálható, az online médialejátszás optimali
 Támogatott az adatfolyam-típusok | Fájlkiterjesztések  
 --- | ---  
 Apple HLS | m3u8, m3u, m3ub, kulcsot ts, aac
-Az Adobe HDS | f4m, f4x, drmmeta, rendszerindítási, f4f,<br>Seg-illetheti URL-cím szerkezete <br> (reguláris kifejezéssel egyező: ^(/.*)Seq(\d+)-Frag(\d+)
-KÖTŐJEL | mpd, kötőjelet, divx, ismv, m4s, m4v, mp4, mp4v, <br> sidx, webm, mp4a, m4a, isma
+Adobe HDS | f4m, f4x, drmmeta, rendszerindítási, f4f,<br>Seg-illetheti URL-cím szerkezete <br> (reguláris kifejezéssel egyező: ^(/.*)Seq(\d+)-Frag(\d+)
+DASH | mpd, dash, divx, ismv, m4s, m4v, mp4, mp4v, <br> sidx, webm, mp4a, m4a, isma
 Smooth streaming | / jegyzékfájl//QualityLevels/töredékek száma /
   
  

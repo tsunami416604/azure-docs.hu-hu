@@ -13,15 +13,15 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 robots: noindex
-ms.openlocfilehash: 0ddc235064d99e9d6385ab48e78f893952eefa15
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: f7e3b1496890a4b97fc435b49ab9bf282134d1a6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487481"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65910812"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Egyéni tevékenységek használata Azure Data Factory-folyamatban
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
 > * [1-es verzió](data-factory-use-custom-activities.md)
 > * [2-es verzió (aktuális verzió)](../transform-data-using-dotnet-custom-activity.md)
 
@@ -44,11 +44,11 @@ A következő forgatókönyv részletes útmutatást nyújt a .NET egyéni tevé
 
 ## <a name="walkthrough-create-a-custom-activity"></a>Forgatókönyv: egyéni tevékenységek létrehozása
 ### <a name="prerequisites"></a>Előfeltételek
-* Visual Studio 2012/2013/2015
+* Visual Studio 2012/2013/2015/2017
 * Az [Azure .NET SDK](https://azure.microsoft.com/downloads/) letöltése és telepítése.
 
 ### <a name="azure-batch-prerequisites"></a>Az Azure Batch előfeltételei
-A forgatókönyv futtatása az Azure Batch számítási erőforrásai használatával egyéni .NET-tevékenységek. **Az Azure Batch** van egy platform szolgáltatást futtató nagy méretű párhuzamos és nagy teljesítményű számítástechnika (HPC) alkalmazásokat futtathat hatékonyan a felhőben. Az Azure Batch számításigényes munkák futtatását egy felügyelt ütemezi **virtuális gépek gyűjteményét**, és képes automatikusan méretezni a számítási erőforrásokat a feladatok igényeinek kielégítése érdekében. Lásd: [Azure Batch alapjai] [ batch-technical-overview] cikk részletes áttekintést az Azure Batch szolgáltatás.
+A forgatókönyv futtatása az Azure Batch számítási erőforrásai használatával egyéni .NET-tevékenységek. Az **Azure Batch** platformszolgáltatás lehetővé teszi, hogy hatékonyan futtasson nagyméretű párhuzamos és nagy teljesítményű feldolgozási (HPC) alkalmazásokat a felhőben. Az Azure Batch számításigényes munkák futtatását egy felügyelt ütemezi **virtuális gépek gyűjteményét**, és képes automatikusan méretezni a számítási erőforrásokat a feladatok igényeinek kielégítése érdekében. Lásd: [Azure Batch alapjai] [ batch-technical-overview] cikk részletes áttekintést az Azure Batch szolgáltatás.
 
 Az oktatóanyag az Azure Batch-fiók létrehozása készletét, virtuális gépeket. A lépések a következők:
 
@@ -100,10 +100,10 @@ A metódus adja vissza egy szótár, amely összekapcsolja az egyéni tevékenys
 ### <a name="procedure"></a>Eljárás
 1. Hozzon létre egy **.NET osztálytár** projekt.
    <ol type="a">
-     <li>Indítsa el a <b>Visual Studio 2017</b> vagy <b>Visual Studio 2015</b> vagy <b>Visual Studio 2013</b> vagy <b>Visual Studio 2012</b>.</li>
+     <li>Indítsa el a Visual Studiót.</li>
      <li>Kattintson a <b>File</b> (Fájl) menüre, mutasson a <b>New</b> (Új) elemre, és kattintson a <b>Project</b> (Projekt) lehetőségre.</li>
      <li>Bontsa ki a <b>Sablonok</b> lehetőséget, és válassza a <b>Visual C#</b> lehetőséget. Ez az útmutató használata a C#, de bármilyen .NET programozási nyelvvel használhatja az egyéni tevékenység fejlesztéséhez.</li>
-     <li>Válassza ki <b>osztálytár</b> projekttípusok jobb listájából. A VS 2017-ben, válasszon <b>osztálytár (.NET-keretrendszer)</b> </li>
+     <li>Válassza ki <b>osztálytár</b> projekttípusok jobb listájából. A Visual Studióban válassza <b>osztálytár (.NET-keretrendszer)</b> </li>
      <li>Adja meg <b>MyDotNetActivity</b> számára a <b>neve</b>.</li>
      <li>Válassza ki <b>C:\ADFGetStarted</b> számára a <b>hely</b>.</li>
      <li>A projekt létrehozásához kattintson az <b>OK</b> gombra.</li>
@@ -415,14 +415,14 @@ Az alábbiakban a jelen szakaszban végrehajtandó lépések:
 > [!NOTE]
 > Hozzon létre a **file.txt** és feltöltése a blob-tárolóba, ha ezt még nem tette meg. Tekintse meg az előző szakaszban található.
 
-### <a name="step-1-create-the-data-factory"></a>1. lépés: Az adat-előállító létrehozása
+### <a name="step-1-create-the-data-factory"></a>1\. lépés: Az adat-előállító létrehozása
 1. Miután bejelentkezett az Azure Portalra, tegye a következőket:
    1. Kattintson a **erőforrás létrehozása** a bal oldali menüben.
    2. Kattintson a **adatok + analitika** a a **új** panelen.
    3. Kattintson a **Data Factory** elemre a **Data analytics** (Adatelemzés) panelen.
 
       ![Új Azure Data Factory menü](media/data-factory-use-custom-activities/new-azure-data-factory-menu.png)
-2. Az a **új adat-előállító** panelen adja meg **CustomActivityFactory** neve. Az Azure data factory nevének globálisan egyedinek kell lennie. Ha a hibaüzenetet kapja: **Nem érhető el a Data factory name "CustomActivityFactory"**, módosítsa az adat-előállító nevét (például **yournameCustomActivityFactory**), és próbálkozzon újra a létrehozással.
+2. Az a **új adat-előállító** panelen adja meg **CustomActivityFactory** neve. Az Azure data factory nevének globálisan egyedinek kell lennie. Ha a hibaüzenetet kapja: **Nem érhető el a Data factory name "CustomActivityFactory"** , módosítsa az adat-előállító nevét (például **yournameCustomActivityFactory**), és próbálkozzon újra a létrehozással.
 
     ![Új Azure Data Factory panel](media/data-factory-use-custom-activities/new-azure-data-factory-blade.png)
 3. Kattintson a **ERŐFORRÁSCSOPORT-név**, és válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy erőforráscsoportot.
@@ -433,7 +433,7 @@ Az alábbiakban a jelen szakaszban végrehajtandó lépések:
 
     ![A Data Factory panel](media/data-factory-use-custom-activities/data-factory-blade.png)
 
-### <a name="step-2-create-linked-services"></a>2. lépés: Társított szolgáltatások létrehozása
+### <a name="step-2-create-linked-services"></a>2\. lépés: Társított szolgáltatások létrehozása
 A társított szolgáltatások adattárakat vagy számítási szolgáltatásokat társítanak az Azure data factoryhez. Ebben a lépésben társítani fogja az Azure Storage-fiók és az Azure Batch-fiókot az adat-előállítóhoz.
 
 #### <a name="create-azure-storage-linked-service"></a>Azure Storage társított szolgáltatás létrehozása
@@ -476,7 +476,7 @@ A társított szolgáltatások adattárakat vagy számítási szolgáltatásokat
 
        Az a **poolName** tulajdonságot használja, azt is megadhatja a készlet neve helyett a készlet azonosítója.
 
-### <a name="step-3-create-datasets"></a>3. lépés: Adatkészletek létrehozása
+### <a name="step-3-create-datasets"></a>3\. lépés: Adatkészletek létrehozása
 Ebben a lépésben adatkészleteket hoz létre, bemeneti és kimeneti adatokat képviselik.
 
 #### <a name="create-input-dataset"></a>Bemeneti adatkészlet létrehozása
@@ -548,7 +548,7 @@ Ebben a lépésben adatkészleteket hoz létre, bemeneti és kimeneti adatokat k
 
     Kimeneti blob/fájl jön létre az egyes bemeneti szeletek. Itt látható, hogy az egyes szeletekhez egy kimeneti fájl neve. A kimeneti fájlok jönnek létre egy kimeneti mappában: **adftutorial\customactivityoutput**.
 
-   | Szelet | Kezdő időpont | Kimeneti fájl |
+   | Szelet | Kezdési idő | Kimeneti fájl |
    |:--- |:--- |:--- |
    | 1 |2016-11-16T00:00:00 |2016-11-16-00.txt |
    | 2 |2016-11-16T01:00:00 |2016-11-16-01.txt |

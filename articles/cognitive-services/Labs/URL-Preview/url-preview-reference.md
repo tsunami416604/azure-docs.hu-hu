@@ -1,7 +1,7 @@
 ---
-title: Projekt URL-cím előnézete referencia
+title: Projekt URL-címének előzetes verziója
 titlesuffix: Azure Cognitive Services
-description: Projekt URL-cím előnézete végponthoz tartozó hivatkozás.
+description: A projekt URL-címének előnézeti végpontjának referenciája
 services: cognitive-services
 author: mikedodaro
 manager: nitinme
@@ -10,137 +10,138 @@ ms.subservice: url-preview
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: rosh
-ms.openlocfilehash: 69db722295c9c81d45913bd078fe9cc5ab74c512
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ROBOTS: NOINDEX
+ms.openlocfilehash: f92c0faaaa3aa0cd2af16a031f3bed4c6b41fc22
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58104709"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706842"
 ---
-# <a name="project-url-preview-v7-reference"></a>Projekt URL-cím előnézete v7-referencia
+# <a name="project-url-preview-v7-reference"></a>Projekt URL-címének előzetes verziója – dokumentáció
 
-URL-cím előnézete rövid leírást olvashat a webes erőforrások támogatja a blogbejegyzések, hozzászólások a fórumon, előzetes oldalak, stb. Az URL-cím internetes erőforrás bármilyen típusú lehet: Weblap, hírek, kép vagy videó. A lekérdezés egy http vagy https sémával; abszolút URL-CÍMNEK kell lennie. relatív URL-címeket vagy más rendszerek például az ftp: / / nem támogatottak.
+Az URL-cím előzetes verziója támogatja a blogbejegyzések webes erőforrásainak rövid leírását, a fórum vitafórumait, az előnézeti lapokat stb. Az URL-cím bármilyen típusú internetes erőforrás lehet: Weblap, hírek, képek vagy videók. A lekérdezésnek abszolút URL-címnek kell lennie, http-vagy https-sémával. a relatív URL-címek vagy más sémák, például a ftp://nem támogatottak.
 
-Előnézeti URL-címet használó webes kéréseket küldjön a végpont található egy lekérdezési paraméterrel megjeleníthető URL-címet. A kérésnek tartalmaznia kell a *Ocp-Apim-Subscription-Key* fejléc.
+Az URL-címet használó alkalmazások webes kéréseket küldenek a végpontnak egy lekérdezési paraméterben az előnézet URL-címével. A kérelemnek tartalmaznia kell a *OCP-APIM-Subscription-Key* fejlécet.
 
-A JSON-válasz elemzése az előzetes verzió információt: név, leírás, az erőforrás *isFamilyFriendly*, és hivatkozásokat tartalmaz, amelyek hozzáférést biztosít egy reprezentatív rendszerképet és a teljes erőforrás.
+A JSON-válasz elemezhető az előzetes verzióra vonatkozó információk: név, az erőforrás, a *isFamilyFriendly*és a hivatkozások, amelyek hozzáférést biztosítanak a reprezentatív képhez és a teljes erőforráshoz.
 
-Megjeleníti a előzetes kódrészletek és a miniatűr képekhez hiperhivatkozással azok forráshelyeket, felhasználó által kezdeményezett URL-címet a közösségi oldalakon, csevegőrobot, vagy hasonló ajánlatok megosztása csak URL-cím előnézete származó adatok kell használnia. Nem másolja, tárolni vagy kell minden projekt URL-cím előnézete érkező adatokat. Tiltsa le a webhely vagy a tartalomtulajdonosok kaphat előzetes érkező kérésekre kell fogadja el.
+Csak az URL-cím előnézetének adatait kell használnia, hogy megjelenjenek az előnézeti kódrészletek és a miniatűr képek a forrás helyükre mutató hiperhivatkozások, a felhasználó által kezdeményezett URL-cím megosztása a közösségi médián, a csevegési bot vagy hasonló ajánlatokban. A Project URL előzetes verziójából kapott adatok nem másolhatók, tárolhatók és nem gyorsítótárazható. Tiszteletben kell hagynia minden olyan kérést, amely letiltja a webhely vagy a tartalom tulajdonosai által esetlegesen megjelenő előnézeteket.
 
 ## <a name="endpoint"></a>Végpont
-A kérelem URL-cím előnézete eredmények, a következő végpont egy kérés küldése. A fejlécek és URL-paraméterek használatával további specifikációk meghatározása.
+Az URL-cím előnézeti eredményeinek megkereséséhez küldjön egy kérelmet a következő végpontnak. A fejlécek és az URL-paraméterek használatával további specifikációkat határozhat meg.
 
-GET-végpont:
+Végpont lekérése:
 ```
 https://api.labs.cognitive.microsoft.com/urlpreview/v7.0/search?q=queryURL
 
 ```
 
-A kérelem kell a HTTPS protokollt használja, és tartalmazza a lekérdezési paraméter a következő:
+A kérelemnek a HTTPS protokollt kell használnia, és tartalmaznia kell a következő lekérdezési paramétert:
 
-válaszok – a lekérdezést, amely azonosítja az előzetes verzióra az URL-cím
+q – az előnézet URL-címét azonosító lekérdezés
 
-A következő szakaszok a válaszobjektumok, a lekérdezési paraméterek és a fejlécek, amelyek befolyásolják a keresési eredmények vonatkozó technikai részleteket.
+A következő szakaszokban technikai részleteket talál a válaszok objektumairól, a lekérdezési paraméterekről és a keresési eredményeket érintő fejlécekről.
 
-További információ a fejlécekről, amely a kérések tartalmaznia kell: [fejlécek](#headers).
+További információ a kérelmeket tartalmazó fejlécekről: [fejlécek](#headers).
 
-További információ a lekérdezési paraméterek, amely a kérések tartalmaznia kell: [lekérdezési paramétereket](#query-parameters).
+További információ a kérelmeket tartalmazó lekérdezési paraméterekről: [lekérdezési paraméterek](#query-parameters).
 
-A JSON-fájllal kapcsolatos információk objektumok, hogy a válasz tartalmazza, lásd: [válaszobjektumok](#response-objects).
+További információ a válaszban szereplő JSON-objektumokról: [Response Objects](#response-objects).
 
-A maximális lekérdezési URL-cím hossza 2048 karakter lehet. Győződjön meg arról, hogy az URL-cím hossza ne haladja meg a korlátot, a lekérdezési paraméterek maximális hossza legfeljebb 1500 karakterből kell lennie. Ha az URL-cím 2048 karakternél hosszabb, a kiszolgáló a 404 nem található adja vissza.
+A lekérdezési URL-cím maximális hossza 2 048 karakter. Annak érdekében, hogy az URL-cím hossza ne haladja meg a korlátot, a lekérdezési paraméterek maximális hosszának 1 500 karakternél rövidebbnek kell lennie. Ha az URL-cím meghaladja az 2 048 karaktert, a kiszolgáló a 404 értéket adja vissza.
 
-Engedélyezett használatát és a megjelenített eredmények kapcsolatos információkért lásd: [használja és megjelenítési követelményeihez](use-display-requirements.md).
+További információ az eredmények használatáról és megjelenítéséről: [használati és megjelenítési követelmények](use-display-requirements.md).
 
 > [!NOTE]
-> Néhány kérelemfejlécek jelentős más keresési API-k nem befolyásolják a következő URL-cím előnézete
-> - Direktiva pragma – a hívó nem rendelkezik URL-cím előnézete használ-e gyorsítótár felett
-> - Felhasználói ügynök – egyelőre előzetes API Url nem biztosít különböző válaszokat ad a Közösségtől származó PC, hordozható számítógép vagy mobileszköz hívásokat.
+> Egyes, más keresési API-kra vonatkozó kérelem-fejlécek nem érintik az URL-cím előnézetét
+> - Sorpragmákat – a hívó nem szabályozhatja, hogy az URL-előnézet a gyorsítótárat használja-e
+> - Felhasználói ügynök – egyelőre az URL-előnézet API nem biztosít különböző válaszokat a PC-ről, laptopról vagy mobilról származó hívásokhoz.
 > 
-> Is néhány paraméter nem jelenleg jelentéssel bíró URL-cím előzetes API-hoz, de a jövőben a továbbfejlesztett globalizációs használhatók.
+> Bizonyos paraméterek jelenleg nem értelmezhető az URL-cím előnézeti API-hoz, de a jövőben a jobb globalizáció érdekében is felhasználhatók.
 
 ## <a name="headers"></a>Fejlécek
-Az alábbiakban a fejlécek, köztük a kérést és választ.
+A következő fejlécek lehetnek a kérések és válaszok.
 
 |Fejléc|Leírás|
 |------------|-----------------|
 |<a name="market" />BingAPIs-Market|Válaszfejléc.<br /><br /> A kérelem által használt piac. A formátum a következő: \<languageCode\>-\<countryCode\>. Például: en-US.|
 |<a name="traceid" />BingAPIs-TraceId|Válaszfejléc.<br /><br /> A kérelem részleteit tartalmazó naplóbejegyzés azonosítója. Ha hiba történik, rögzítse ezt az azonosítót. Ha nem tudja meghatározni és megoldani a problémát, foglalja bele a kérelembe ezt az azonosítót is a támogatási csoportnak megadott többi információval együtt.|
 |<a name="subscriptionkey" />Ocp-Apim-Subscription-Key|Kötelező kérelemfejléc.<br /><br /> Az előfizetési kulcs, amelyet akkor kapott, amikor feliratkozott a szolgáltatásra a [Cognitive Servicesben](https://www.microsoft.com/cognitive-services/).|
-|<a name="clientid" />X-MSEdge-ClientID|Választható kérelem- és válaszfejléc.<br /><br /> A Bing ezt a fejlécet használja ahhoz, hogy következetes viselkedést biztosítson a felhasználók számára a Bing API-hívásaiban. A Bing gyakran tesztel új funkciókat és fejlesztéseket, és az ügyfél-azonosítót használja kulcsként ahhoz, hogy a tesztcsomagokhoz rendelje a forgalmat. Ha a kérelmekben nem ugyanazt az ügyfél-azonosítót használja egy adott felhasználóhoz, előfordulhat, hogy a Bing több ütköző tesztcsomaghoz rendeli hozzá a felhasználót. Az ütköző tesztcsomagok hozzárendelése inkonzisztens felhasználói élményhez vezethet. Például ha a második kérelemhez más tesztcsomag van hozzárendelve, mint az elsőhöz, az váratlan működést eredményezhet. A Bing arra is felhasználhatja az ügyfél-azonosítót, hogy az ügyfél-azonosító keresési előzményeire szabja a webes találatokat, gazdagabb élményt nyújtva a felhasználónak.<br /><br /> A Bing továbbá az ügyfél-azonosító által létrehozott tevékenységek elemzésével az eredmények rangsorolásának javítására is használja a fejlécet. A relevancia javítása segít abban, hogy a Bing API-k jobb minőségű eredményeket biztosítsanak, ami pedig lehetővé teszi a magasabb átkattintási arányt az API fogyasztója számára.<br /><br />A fejlécre az alábbi alapvető használati szabályok vonatkoznak.<br /><ul><li>Minden felhasználónak, aki használja az eszközön lévő alkalmazást, rendelkeznie kell egy egyedi, Bing által létrehozott ügyfél-azonosítóval.<br /><br/>Ha nem foglalja bele ezt a fejlécet a kérelembe, a Bing létrehoz egy azonosítót, és visszaküldi azt az X-MSEdge-ClientID válaszfejlécben. Ezt a fejlécet csak akkor NEM szabad belefoglalni a kérelembe, amikor a felhasználó először használja az alkalmazást azon az eszközön.<br /><br/></li><li>Használja az ügyfél-azonosítót minden olyan Bing API-kéréshez, amelyet az alkalmazás intéz a felhasználó kapcsán az eszközön.<br /><br/></li><li>**FIGYELEM:** Biztosítania kell, hogy az ügyfél-azonosító ne legyen összekapcsolhatónak, bármely forrásának hitelesíthetőnek felhasználóifiók-adatokat.</li><br/><li>Őrizze meg az ügyfél-azonosítót. Az azonosító böngészőalkalmazásban való megőrzéséhez használjon egy állandó HTTP-cookie-t, amely biztosítja, hogy minden munkamenetben ez az azonosító legyen használva. Ne használjon munkamenet-cookie-t. Más alkalmazások, például a mobilalkalmazások esetében az azonosító megőrzéséhez használja az eszköz állandó tárolóját.<br /><br/>Kérje le a megőrzött ügyfél-azonosítót, amikor a felhasználó ismét használja az alkalmazást az eszközön.</li></ul><br /> **MEGJEGYZÉS:** A Bing-válaszok is, vagy nem feltétlenül tartalmazzák ezt a fejlécet. Ha a válasz tartalmazza ezt a fejlécet, rögzítse az ügyfél-azonosítót, és használja azt a felhasználó összes további Bing-kérelméhez az adott eszközön.<br /><br /> **MEGJEGYZÉS:** Ha az X-MSEdge-ClientID adja meg, nem tartalmazhat cookie-kat a kérésben.|
+|<a name="clientid" />X-MSEdge-ClientID|Választható kérelem- és válaszfejléc.<br /><br /> A Bing ezt a fejlécet használja ahhoz, hogy következetes viselkedést biztosítson a felhasználók számára a Bing API-hívásaiban. A Bing gyakran tesztel új funkciókat és fejlesztéseket, és az ügyfél-azonosítót használja kulcsként ahhoz, hogy a tesztcsomagokhoz rendelje a forgalmat. Ha a kérelmekben nem ugyanazt az ügyfél-azonosítót használja egy adott felhasználóhoz, előfordulhat, hogy a Bing több ütköző tesztcsomaghoz rendeli hozzá a felhasználót. Az ütköző tesztcsomagok hozzárendelése inkonzisztens felhasználói élményhez vezethet. Például ha a második kérelemhez más tesztcsomag van hozzárendelve, mint az elsőhöz, az váratlan működést eredményezhet. A Bing arra is felhasználhatja az ügyfél-azonosítót, hogy az ügyfél-azonosító keresési előzményeire szabja a webes találatokat, gazdagabb élményt nyújtva a felhasználónak.<br /><br /> A Bing továbbá az ügyfél-azonosító által létrehozott tevékenységek elemzésével az eredmények rangsorolásának javítására is használja a fejlécet. A relevancia javítása segít abban, hogy a Bing API-k jobb minőségű eredményeket biztosítsanak, ami pedig lehetővé teszi a magasabb átkattintási arányt az API fogyasztója számára.<br /><br />A fejlécre az alábbi alapvető használati szabályok vonatkoznak.<br /><ul><li>Minden felhasználónak, aki használja az eszközön lévő alkalmazást, rendelkeznie kell egy egyedi, Bing által létrehozott ügyfél-azonosítóval.<br /><br/>Ha nem foglalja bele ezt a fejlécet a kérelembe, a Bing létrehoz egy azonosítót, és visszaküldi azt az X-MSEdge-ClientID válaszfejlécben. Ezt a fejlécet csak akkor NEM szabad belefoglalni a kérelembe, amikor a felhasználó először használja az alkalmazást azon az eszközön.<br /><br/></li><li>Használja az ügyfél-azonosítót minden olyan Bing API-kéréshez, amelyet az alkalmazás intéz a felhasználó kapcsán az eszközön.<br /><br/></li><li>**FIGYELMET** Győződjön meg arról, hogy ez az ügyfél-azonosító nem a hitelesíthető felhasználói fiókadatok linkable.</li><br/><li>Őrizze meg az ügyfél-azonosítót. Az azonosító böngészőalkalmazásban való megőrzéséhez használjon egy állandó HTTP-cookie-t, amely biztosítja, hogy minden munkamenetben ez az azonosító legyen használva. Ne használjon munkamenet-cookie-t. Más alkalmazások, például a mobilalkalmazások esetében az azonosító megőrzéséhez használja az eszköz állandó tárolóját.<br /><br/>Kérje le a megőrzött ügyfél-azonosítót, amikor a felhasználó ismét használja az alkalmazást az eszközön.</li></ul><br /> **MEGJEGYZÉS:** A Bing-válaszok esetleg nem tartalmazzák ezt a fejlécet. Ha a válasz tartalmazza ezt a fejlécet, rögzítse az ügyfél-azonosítót, és használja azt a felhasználó összes további Bing-kérelméhez az adott eszközön.<br /><br /> **MEGJEGYZÉS:** Ha belefoglalja az X-MSEdge-ClientID, akkor nem tartalmazhat cookie-kat a kérelemben.|
 |<a name="clientip" />X-MSEdge-ClientIP|Választható kérelemfejléc.<br /><br /> Az ügyféleszköz IPv4- vagy IPv6-címe. Az IP-cím a felhasználó tartózkodási helyének felderítésére szolgál. A Bing arra használja a helyadatokat, hogy meghatározza a biztonságos keresés viselkedését.<br /><br /> Ne rejtse el a címet (például úgy, hogy 0-ra módosítja az utolsó oktettet). Ha elrejti a címet, a tartózkodási hely távol fog esni az eszköz tényleges helyétől, amely ahhoz vezethet, hogy a Bing téves eredményeket fog megadni.|
 
 ## <a name="query-parameters"></a>Lekérdezési paraméterek
-A kérelem lekérdezési paraméterek tartalmazhat. Tekintse meg a szükséges oszlop, paraméter szükséges. URL-címet kell kódolása a lekérdezési paramétereket. A lekérdezés egy http vagy https sémával; abszolút URL-CÍMNEK kell lennie. nem támogatjuk a relatív URL-címeket vagy más rendszerek például az ftp: / /
+A kérelem tartalmazhat a következő lekérdezési paramétereket. Tekintse meg a szükséges paraméterek oszlopát. A lekérdezési paraméterek kódolásához URL-címet kell megadni. A lekérdezésnek abszolút URL-címnek kell lennie, http-vagy https-sémával. nem támogatjuk a relatív URL-címeket vagy más, például a ftp://-sémákat
 
-|Name (Név)|Érték|Typo|Szükséges|
+|Name (Név)|Value|Type|Kötelező|
 |----------|-----------|----------|--------------|
-|<a name="mkt" />mkt|A piac, ahonnan az eredmények származnak. <br /><br />Tekintse meg piaci kódok piaci a lehetséges értékek listáját.<br /><br /> **MEGJEGYZÉS:** Az URL-cím előzetes API jelenleg csak támogatja a földrajzi RÉGIÓJA és az angol nyelvű.<br /><br />|String|Igen|
-|<a name="query" />q|Az előzetes verzióra az URL-cím|String|Igen|
-|<a name="responseformat" />responseFormat|Az adathordozó-típus használata a válaszhoz. A kis-és értékek a következők.<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> Az alapértelmezett érték a JSON. A JSON-fájllal kapcsolatos információk objektumok, hogy a válasz tartalmazza, lásd: [Válaszobjektumok](#response-objects).<br /><br />Ha JsonLd adja meg, a válasz törzse tartalmazza a keresési eredményeket tartalmazó JSON-LD objektumok. A JSON-LD kapcsolatos információkért lásd: [JSON-LD](https://json-ld.org/).|String|Nem|
-|<a name="safesearch"/>safeSearch|Érvénytelen felnőtt tartalom, vagy a hamisított tartalom le van tiltva, hibakód: 400, és a *isFamilyFriendly* jelző nem ad vissza. <p>Jogi felnőtt tartalom, az alábbi történik. Állapotkód: 200, adja vissza, és a *isFamilyFriendly* jelző false értékre van állítva.<ul><li>safeSearch=strict: Cím, leírás, URL-cím és a lemezkép nem állítható vissza.</li><li>biztonságos keresés = közepes; Cím, URL-cím és leírás, de nem a leíró képet kaphat.</li><li>biztonságos keresés kikapcsolása:; = Minden válasz objektumok/elemet – title, URL-címet, leírást és képet kaphat.</li></ul> |String|Nem kötelező. </br> Biztonságos keresés alapértelmezés szerint szigorú =.|
+|<a name="mkt" />mkt|A piac, ahonnan az eredmények származnak. <br /><br />A lehetséges piaci értékek listáját a piaci kódok részben tekintheti meg.<br /><br /> **MEGJEGYZÉS:** Az URL-cím előnézeti API jelenleg csak az USA földrajzát és az angol nyelvet támogatja.<br /><br />|Sztring|Igen|
+|<a name="query" />q|Az előnézeti URL-cím|Sztring|Igen|
+|<a name="responseformat" />responseFormat|A válaszhoz használandó adathordozó-típus. A következő a lehetséges kis-és nagybetűket megkülönböztető értékek.<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> Az alapértelmezett érték a JSON. A válasz által tartalmazott JSON-objektumokkal kapcsolatos információkért lásd: [Response Objects](#response-objects).<br /><br />Ha JsonLd ad meg, a válasz törzse JSON-LD objektumokat tartalmaz, amelyek tartalmazzák a keresési eredményeket. A JSON-LD-vel kapcsolatos információkért lásd: [JSON-ld](https://json-ld.org/).|Sztring|Nem|
+|<a name="safesearch"/>safeSearch|Az illegális felnőtt tartalmak vagy a kalóz tartalmak blokkolva vannak a 400 hibakód miatt, és a rendszer nem adja vissza a *isFamilyFriendly* jelzőt. <p>A jogi felnőtt tartalom esetében az alábbi viselkedést láthatja. Az állapotkód a 200 értéket adja vissza, és a *isFamilyFriendly* jelző hamis értékre van állítva.<ul><li>safeSearch=strict: A cím, a leírás, az URL-cím és a rendszerkép nem lesz visszaadva.</li><li>safeSearch = mérsékelt; Adja meg a címet, az URL-címet és a leírást, de ne a leíró képet.</li><li>safeSearch = kikapcsolva; Az összes válasz objektum/elem – cím, URL, leírás és rendszerkép lekérése.</li></ul> |Karakterlánc|Nem kötelező. </br> Alapértelmezés szerint a safeSearch = strict.|
 
 ## <a name="response-objects"></a>Válasz objektumok
-A válasz sémája vagy egy [weblap] vagy byl vrácen Prvek, ahogy a webes keresési API-t. Ha a kérelem meghiúsul, a legfelső szintű objektum a [byl vrácen Prvek](#errorresponse) objektum.
+A válasz sémája egy [weblap] vagy ErrorResponse, mint a Web Search API. Ha a kérelem meghiúsul, a legfelső szintű objektum a [ErrorResponse](#errorresponse) objektum.
 
-|Objektum|Leírás|
+|Object|Leírás|
 |------------|-----------------|
-|[WebPage](#webpage)|Legfelső szintű JSON-objektum, amely tartalmazza az előzetes verzió attribútumai.|
+|[Weblap](#webpage)|A legfelső szintű JSON-objektum, amely az előzetes verzió attribútumait tartalmazza.|
 
 ### <a name="error"></a>Hiba
-Határozza meg a következő hiba történt.
+Meghatározza a hiba előfordulását.
 
-|Elem|Leírás|Typo|
+|Elem|Leírás|Type|
 |-------------|-----------------|----------|
-|<a name="error-code" />Kód|A hiba kódja, amely azonosítja a hiba kategóriáját. Lehetséges kódok listáját lásd: [hibakódok](#error-codes).|String|
-|<a name="error-message" />üzenet|A hiba leírása.|String|
-|<a name="error-moredetails" />moreDetails|Egy leírást, amely a hibával kapcsolatos további információkat biztosít.|String|
-|<a name="error-parameter" />A paraméter|A lekérdezési paraméter, amely a hibát okozó a kérésben.|String|
-|<a name="error-subcode" />subCode|A hiba kódja, amely azonosítja a hibát. Például ha `code` InvalidRequest, akkor `subCode` ParameterInvalid vagy ParameterInvalidValue is lehet. |String|
-|<a name="error-value" />value|A lekérdezési paraméter értéke, amely nem érvényes.|String|
+|<a name="error-code" />kód|A hiba kategóriáját azonosító hibakód. A lehetséges kódok listáját lásd: hibakódok [](#error-codes).|Sztring|
+|<a name="error-message" />üzenetet|A hiba leírása.|Sztring|
+|<a name="error-moredetails" />moreDetails|A hibával kapcsolatos további információkat biztosító leírás.|Sztring|
+|<a name="error-parameter" />paraméter|A hibát okozó kérelem lekérdezési paramétere.|Karakterlánc|
+|<a name="error-subcode" />subCode|A hibát azonosító hibakód. Ha `code` például a InvalidRequest, `subCode` ParameterInvalid vagy ParameterInvalidValue lehet. |Karakterlánc|
+|<a name="error-value" />érték|A lekérdezési paraméter értéke érvénytelen.|Sztring|
 
-### <a name="errorresponse"></a>Byl vrácen Prvek
-A legfelső szintű objektum, amely a válasz tartalmazza, ha a kérés nem teljesíthető.
+### <a name="errorresponse"></a>ErrorResponse
+Az a legfelső szintű objektum, amelyre a válasz vonatkozik, ha a kérelem meghiúsul.
 
-|Name (Név)|Érték|Typo|
+|Name (Név)|Value|Type|
 |----------|-----------|----------|
-|_type|Mutató típusa.|String|
-|<a name="errors" />Hibák|Miért nem sikerült a kérelem miatt hibák listája.|[Error](#error)[]|
+|_type|Írja be a következőt: hint.|Karakterlánc|
+|<a name="errors" />hibák|Azon hibák listája, amelyek leírják, miért nem sikerült a kérelem végrehajtása.|[Hiba](#error) []|
 
 ### <a name="webpage"></a>WebPage
-Meghatározza, milyen kapcsolatos információkat egy előzetes verzióban érhető el a weblapot.
+Az előzetes verzióban elérhető weblapokra vonatkozó információkat határozza meg.
 
-|Name (Név)|Érték|Typo|
+|Name (Név)|Érték|Type|
 |----------|-----------|----------|
-|név|Az oldal címe, nem feltétlenül a HTML-cím|String|
-|url|Az URL-cím, amely ténylegesen volt bejárt (kérelem előfordulhat, hogy felvette a átirányítások)|String|
-|leírás|Az oldal és a tartalom rövid leírása|String|
-|isFamilyFriendly|A legpontosabb a webes index; eleme valós idejű fetches tegye alapján kizárólag az URL-címet, és nem az oldal tartalmát az észlelés|logikai|
-|primaryImageOfPage/contentUrl|Tartalmazza az előzetes verzióban érhető el egy reprezentatív kép URL-címe|String|
+|name|Az oldal címe, nem feltétlenül a HTML-cím|Karakterlánc|
+|url|A ténylegesen bejárt URL-cím (a kérés követte az átirányítást)|Sztring|
+|description|Az oldal és a tartalom rövid leírása|Sztring|
+|isFamilyFriendly|A legpontosabb a webes index elemeinél. a valós idejű lekérések ezt az észlelést kizárólag az URL-címen, nem pedig az oldal tartalmán alapulnak.|boolean|
+|primaryImageOfPage/contentUrl|Az előzetes verzióban szerepeltetni kívánt reprezentatív kép URL-címe|Sztring|
 
-### <a name="identifiable"></a>Azonosításra alkalmas
-|Name (Név)|Érték|Typo|
+### <a name="identifiable"></a>Azonosítható
+|Name (Név)|Value|Type|
 |-------------|-----------------|----------|
-|id|Egy erőforrás-azonosítója|String|
+|id|Erőforrás-azonosító|Sztring|
 
 ## <a name="error-codes"></a>Hibakódok
 
-Az alábbi táblázat a lehetséges HTTP-állapotkódok, amely egy kérés adja vissza.
+A kérelem által visszaadott lehetséges HTTP-állapotkódok a következők:
 
 |Állapotkód|Leírás|
 |-----------------|-----------------|
-|200|Siker.|
+|200|Sikeres művelet.|
 |400|A lekérdezési paraméterek egyike hiányzik vagy érvénytelen.|
-|400|ServerError, subCode ResourceError: A kért URL nem érhető el|
-|400|ServerError, subCode ResourceError: A kért URL-cím nem adta vissza sikerkódot (beleértve a Ha a visszaadott HTTP 404)|
-|400|InvalidRequest, letiltott Alkód: A kért URL-cím tartalmazhat felnőtt tartalom, és le lett tiltva|
-|401|Az előfizetési kulcs hiányzik vagy nem érvényes.|
-|403|A felhasználó hitelesítése (például használni őket egy érvényes előfizetési kulcsot), de azok nem rendelkezik engedéllyel a kért erőforrás.<br /><br /> Bing is előfordulhat, hogy ez az állapot vissza. Ha a hívó lekérdezéseit kiszolgálónként havi kvóta túllépve.|
-|410|A kérelem HTTP helyett a HTTPS protokollt használja. HTTPS az egyetlen támogatott protokoll.|
-|429|A hívó lekérdezéseit egy második kvóta túllépve.|
-|500|Váratlan kiszolgálóhiba.|
+|400|ServerError, alkód ResourceError: A kért URL-cím nem érhető el|
+|400|ServerError, alkód ResourceError: A kért URL-cím nem adott vissza sikerességi kódot (beleértve, ha a HTTP 404-et adta vissza)|
+|400|InvalidRequest, alkód blokkolva: A kért URL-cím csak felnőtt tartalmat tartalmazhat, és blokkolva volt|
+|401|Az előfizetési kulcs hiányzik vagy érvénytelen.|
+|403|A felhasználó hitelesítése megtörtént (például egy érvényes előfizetési kulcsot használt), de nincs engedélye a kért erőforráshoz.<br /><br /> A Bing akkor is visszaállíthatja ezt az állapotot, ha a hívó havi kvótán túllépte a lekérdezéseket.|
+|410|A kérelem HTTP-t használ a HTTPS protokoll helyett. A HTTPS az egyetlen támogatott protokoll.|
+|429|A hívó meghaladta a lekérdezések másodpercenkénti számát.|
+|500|Váratlan kiszolgálóhiba történt.|
 
-Ha a kérelem meghiúsul, a válasz tartalmaz egy [byl vrácen Prvek](#errorresponse) listáját tartalmazó objektum [hiba](#error) objektumok, amelyek a hiba okáról. Ha a hiba kapcsolatos a paramétert, a `parameter` mező azonosítja a probléma paraméter. És ha a hiba kapcsolatos egy paraméterérték a `value` mező azonosítja az értéket, amely nem érvényes.
+Ha a kérelem sikertelen, a válasz egy [ErrorResponse](#errorresponse) objektumot tartalmaz, amely a hibát okozó [hibák](#error) listáját tartalmazza. Ha a hiba egy paraméterhez kapcsolódik, a `parameter` mező azonosítja a hibát megadó paramétert. Ha a hiba egy paraméter értékéhez kapcsolódik, akkor a `value` mező nem érvényes értéket azonosít.
 
 ```json
 {
@@ -168,15 +169,15 @@ Ha a kérelem meghiúsul, a válasz tartalmaz egy [byl vrácen Prvek](#errorresp
 }
 ```
 
-A következő értékeket a lehetséges hiba kód és a részleges hiba kódja.
+A lehetséges hibakód és az alhibakódok értéke a következő:
 
 |Kód|SubCode|Leírás
 |-|-|-
-|Kiszolgálóhibái|UnexpectedError<br/>ResourceError<br/>Nincs implementálva|HTTP-állapotkód: 500.
-|InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Letiltva|A Bing InvalidRequest adja vissza, ha bármelyik részét a kérés érvénytelen, nem. Például egy kötelező paraméter hiányzik, vagy egy paraméter értéke nem érvényes.<br/><br/>Ha a hiba ParameterMissing vagy ParameterInvalidValue, a a HTTP-állapotkód: 400.<br/><br/>Ha a HTTPS helyett a HTTP protokollt használja, a Bing HttpNotAllowed adja vissza, és a HTTP-állapotkód: 410.
-|RateLimitExceeded|Nincsenek alárendelt kódok|Minden alkalommal, amikor a lekérdezések másodpercenkénti (lekérdezési QPS) és a lekérdezések száma (QPM) havi kvótát túllépi a Bing RateLimitExceeded adja vissza.<br/><br/>Ha túllépi QPS, a Bing adja vissza a 429-es HTTP-állapotkód:, és Ha elfogynak QPM, a Bing adja vissza a 403-as.
-|InvalidAuthorization|AuthorizationMissing<br/>AuthorizationRedundancy|A Bing InvalidAuthorization adja vissza, ha a Bing a hívó nem tudja hitelesíteni. Ha például a `Ocp-Apim-Subscription-Key` fejléc hiányzik, vagy az előfizetési kulcs nem érvényes.<br/><br/>A redundancia akkor fordul elő, ha egynél több hitelesítési módszer adja meg.<br/><br/>Ha a hiba InvalidAuthorization, a HTTP-állapotkód: a 401-es.
-|InsufficientAuthorization|AuthorizationDisabled<br/>AuthorizationExpired|A Bing InsufficientAuthorization adja vissza, ha a hívó nem rendelkezik engedéllyel az erőforrás eléréséhez. Ez akkor fordulhat elő, ha az előfizetési kulcs le lett tiltva, vagy lejárt. <br/><br/>Ha a hiba InsufficientAuthorization, a HTTP-állapotkód: a 403-as.
+|ServerError|UnexpectedError<br/>ResourceError<br/>Nincs implementálva|A HTTP-állapotkód 500.
+|InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Blokkolt|A Bing visszaadja a InvalidRequest, ha a kérelem bármely része érvénytelen. Például hiányzik egy kötelező paraméter, vagy a paraméter értéke érvénytelen.<br/><br/>Ha a hiba ParameterMissing vagy ParameterInvalidValue, a HTTP-állapotkód 400.<br/><br/>Ha HTTPS helyett HTTP protokollt használ, a Bing visszaadja a HttpNotAllowed, a HTTP-állapotkód pedig 410.
+|RateLimitExceeded|Nincsenek alkódok|A Bing visszaadja a RateLimitExceeded, amikor a másodpercenkénti lekérdezések (QPS) vagy a havi lekérdezés (QPM) kvóta meghaladja a kvótát.<br/><br/>Ha túllépi a QPS, a Bing a 429-as HTTP-állapotkódot adja vissza, és ha túllépi a QPM, a Bing visszaadja a 403 értéket.
+|InvalidAuthorization|AuthorizationMissing<br/>AuthorizationRedundancy|A Bing visszaadja a InvalidAuthorization, ha a Bing nem tudja hitelesíteni a hívót. Például hiányzik a `Ocp-Apim-Subscription-Key` fejléc, vagy az előfizetési kulcs érvénytelen.<br/><br/>A redundancia akkor fordul elő, ha egynél több hitelesítési módszert ad meg.<br/><br/>Ha a hiba InvalidAuthorization, a HTTP-állapotkód 401.
+|InsufficientAuthorization|AuthorizationDisabled<br/>AuthorizationExpired|A Bing visszaadja a InsufficientAuthorization, ha a hívónak nincs engedélye az erőforrás elérésére. Ez akkor fordulhat elő, ha az előfizetési kulcs le van tiltva vagy lejárt. <br/><br/>Ha a hiba InsufficientAuthorization, a HTTP-állapotkód 403.
 
 ## <a name="next-steps"></a>További lépések
 - [C# – rövid útmutató](csharp.md)

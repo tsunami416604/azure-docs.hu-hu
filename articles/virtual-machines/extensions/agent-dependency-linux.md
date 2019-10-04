@@ -1,6 +1,6 @@
 ---
-title: Figyelőfüggőség linuxos Azure virtuális gépi bővítmény |} A Microsoft Docs
-description: Telepítse az Azure Monitor függőségi ügynök virtuálisgép-bővítmények használata Linux rendszerű virtuális gépen.
+title: Virtuálisgép-bővítmények Azure Monitor Linux rendszerhez | Microsoft Docs
+description: Telepítse a Azure Monitor függőségi ügynököt Linux rendszerű virtuális gépen a virtuálisgép-bővítmény használatával.
 services: virtual-machines-linux
 documentationcenter: ''
 author: mgoedtel
@@ -9,32 +9,31 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: magoedte
-ms.openlocfilehash: 16491ccc8a9cdc24b82c4c4e27705fa30da61088
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 416b0c89105f97514efdfcc859a630d78f7ba7f5
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58671347"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084836"
 ---
-# <a name="azure-monitor-dependency-virtual-machine-extension-for-linux"></a>Az Azure Figyelőfüggőség virtuálisgép-bővítmény linuxhoz
+# <a name="azure-monitor-dependency-virtual-machine-extension-for-linux"></a>A Linux rendszerhez készült virtuálisgép-bővítmény Azure Monitor
 
-Virtuális gépek térkép funkció az Azure Monitor az adatok lekérése a Microsoft Dependency agent. Az Azure virtuális gép függőségi ügynök virtuálisgép-bővítmény linuxhoz közzétett és a Microsoft támogatja. A bővítmény a függőségi ügynök telepítése Azure-beli virtuális gépeken. Ez a dokumentum részletesen, a támogatott platformok, konfigurációk és Azure virtuális gép függőségi ügynök virtuálisgép-bővítmény linuxhoz üzembe helyezési lehetőségeit.
+Virtuális gépek térkép funkció az Azure Monitor az adatok lekérése a Microsoft Dependency agent. Az Azure-beli virtuális gép függőségi ügynökének a Linux rendszerhez készült virtuálisgép-bővítményét a Microsoft közzétette és támogatja. A bővítmény telepíti a függőségi ügynököt az Azure Virtual Machines szolgáltatásban. Ez a dokumentum részletesen ismerteti az Azure-beli virtuális gép függőségi ügynökének támogatott platformokat, konfigurációkat és üzembe helyezési lehetőségeit Linuxra.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 ### <a name="operating-system"></a>Operációs rendszer
 
-Az Azure virtuális gép függőségi ügynök-bővítmény linuxhoz is futtatható a felsorolt támogatott operációs rendszerek a [támogatott operációs rendszerek](../../azure-monitor/insights/vminsights-onboard.md#supported-operating-systems) virtuális gépek üzembe helyezés a cikkhez az Azure Monitor szakaszában.
+A Linux rendszerhez készült Azure-beli virtuálisgép-függőségi ügynök bővítmény a Azure Monitor for VMs telepítési cikk [támogatott operációs rendszerek](../../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) szakaszában felsorolt támogatott operációs rendszereken is futtatható.
 
 ## <a name="extension-schema"></a>Bővítményséma
 
-A következő JSON Azure Linux virtuális gép az Azure virtuális gép függőségi ügynök bővítmény sémáját jeleníti meg. 
+A következő JSON az Azure-beli virtuális gép függőségi ügynökének sémáját mutatja be egy Azure Linux rendszerű virtuális gépen. 
 
 ```json
 {
@@ -74,7 +73,7 @@ A következő JSON Azure Linux virtuális gép az Azure virtuális gép függős
 
 ### <a name="property-values"></a>Tulajdonságok értékei
 
-| Name (Név) | Érték és példa |
+| Name (Név) | Érték/példa |
 | ---- | ---- |
 | apiVersion | 2015-01-01 |
 | publisher | Microsoft.Azure.Monitoring.DependencyAgent |
@@ -83,11 +82,11 @@ A következő JSON Azure Linux virtuális gép az Azure virtuális gép függős
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
 
-Az Azure Virtuálisgép-bővítmények is üzembe helyezhetők az Azure Resource Manager-sablonok. Az előző szakaszban részletes JSON-sémájában az Azure Resource Manager-sablon használható az Azure virtuális gép függőségi ügynök bővítmény futtatásához az Azure Resource Manager-sablon telepítése során. 
+Az Azure virtuálisgép-bővítmények Azure Resource Manager-sablonokkal helyezhetők üzembe. Az Azure Resource Manager sablon előző szakaszában részletes JSON-sémát használva futtathatja az Azure-beli virtuális gép függőségi ügynökének bővítményét egy Azure Resource Manager-sablon központi telepítése során.
 
-A JSON-t egy virtuálisgép-bővítményt a virtuális gép típusú erőforrást belülre, vagy elhelyezve, a legfelső szintű vagy a legfelső szintű Resource Managerből származó JSON-sablon. A JSON-fájllal való elhelyezését hatással van az erőforrás nevét, és írja be az értékét. További információkért lásd: [állítsa be a nevét és típusát gyermekerőforrásait](../../azure-resource-manager/resource-group-authoring-templates.md#child-resources). 
+A virtuálisgép-bővítmények JSON-je beágyazható a virtuális gép erőforrásaiba. Azt is megteheti, hogy egy Resource Manager JSON-sablon gyökerére vagy legfelső szintjére helyezi. A JSON elhelyezése hatással van az erőforrás nevének és típusának értékére. További információkért lásd: [állítsa be a nevét és típusát gyermekerőforrásait](../../azure-resource-manager/child-resource-name-type.md).
 
-Az alábbi példa azt feltételezi, hogy a függőségi ügynök bővítményt a virtuális gép típusú erőforrást van beágyazva. A bővítmény erőforrás beágyazása, ha a JSON az kerül a `"resources": []` objektum a virtuális gép.
+Az alábbi példa azt feltételezi, hogy a függőségi ügynök bővítménye a virtuális gép erőforrásán belül van beágyazva. A bővítmény erőforrásának beágyazásakor a rendszer a JSON- `"resources": []` t a virtuális gép objektumában helyezi el.
 
 
 ```json
@@ -108,7 +107,7 @@ Az alábbi példa azt feltételezi, hogy a függőségi ügynök bővítményt a
 }
 ```
 
-Helyezi el a JSON-bővítmény a sablonban gyökérmappájában, amikor az erőforrás neve a szülő virtuális gép egy hivatkozást tartalmaz, és a típus a beágyazott konfigurációját tükrözi. 
+Ha a bővítmény JSON-fájlját a sablon gyökerében helyezi el, az erőforrás neve a szülő virtuális gépre mutató hivatkozást tartalmaz. A típus a beágyazott konfigurációt tükrözi. 
 
 ```json
 {
@@ -130,7 +129,7 @@ Helyezi el a JSON-bővítmény a sablonban gyökérmappájában, amikor az erőf
 
 ## <a name="azure-cli-deployment"></a>Az Azure CLI-telepítés
 
-Az Azure CLI segítségével a függőségi ügynök Virtuálisgép-bővítmény egy meglévő virtuális gépek üzembe helyezéséhez.  
+Az Azure CLI használatával telepítheti a függőségi ügynök virtuálisgép-bővítményét egy meglévő virtuális gépre.  
 
 ```azurecli
 
@@ -146,7 +145,7 @@ az vm extension set \
 
 ### <a name="troubleshoot"></a>Hibaelhárítás
 
-Bővítmény központi telepítések állapotát lehet adatokat beolvasni az Azure Portalról, és az Azure parancssori felület használatával. Adott Virtuálisgép-bővítmények központi telepítési állapotának megtekintéséhez futtassa a következő parancsot az Azure CLI használatával.
+A bővítmények állapotával kapcsolatos adatok a Azure Portal és az Azure CLI használatával kérhetők le. Egy adott virtuális gép bővítményeinek telepítési állapotának megtekintéséhez futtassa az alábbi parancsot az Azure CLI használatával:
 
 ```azurecli
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
@@ -160,4 +159,4 @@ Bővítmény végrehajtás kimenetének a rendszer naplózza a következő fájl
 
 ### <a name="support"></a>Támogatás
 
-Ha ebben a cikkben bármikor további segítségre van szüksége, forduljon az Azure-szakértőket a a [MSDN Azure-ban és a Stack Overflow-fórumok](https://azure.microsoft.com/support/forums/). Másik lehetőségként a egy Azure-támogatási esemény is fájl. Nyissa meg a [Azure támogatási webhelyén](https://azure.microsoft.com/support/options/) , és válassza ki a Get-támogatást. Azure-támogatási használatával kapcsolatos információkért olvassa el a [Microsoft Azure-támogatás – gyakori kérdések](https://azure.microsoft.com/support/faq/).
+Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel az [MSDN Azure-ban és stack overflow fórumokon](https://azure.microsoft.com/support/forums/). Vagy egy Azure-támogatási incidenst is betölthet. Nyissa meg az [Azure támogatási](https://azure.microsoft.com/support/options/) webhelyét, és válassza a **támogatás kérése**lehetőséget. További információ az Azure-támogatás használatáról: [Microsoft Azure támogatással kapcsolatos gyakori kérdések](https://azure.microsoft.com/support/faq/).

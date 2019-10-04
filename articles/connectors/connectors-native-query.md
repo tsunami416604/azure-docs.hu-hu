@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 07/20/2016
 ms.author: jehollan
 ms.openlocfilehash: 2a82afe396039857e5b9ad6b8a6d0e710573037f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59794879"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60538243"
 ---
 # <a name="get-started-with-the-query-action"></a>A lekérdezés művelettel használatának első lépései
 A query művelet használatával, használhatja a kötegek és tömbök munkafolyamatokat elvégzéséhez:
@@ -67,9 +67,9 @@ A lekérdezés művelettel egy lehetséges műveletet tartalmaz. Az alábbi táb
 Az alábbiakban a beviteli mezőket a művelet, ami lehetővé teszi a kimenő HTTP-kérést.
 A * azt jelenti, hogy egy kötelező mező.
 
-| Megjelenített név | Tulajdonság neve | Leírás |
+| Display name | Tulajdonság neve | Leírás |
 | --- | --- | --- |
-| A * |forrás: |A tömb szűrése |
+| A * |from |A tömb szűrése |
 | A feltétel * |ahol |Az egyes elemekhez tartozó kiértékelendő feltétel |
 
 <br>

@@ -1,10 +1,10 @@
 ---
-title: Egyoldalas AngularJS-alkalmazás létrehozása az Azure Active Directoryval történő bejelentkezéshez és kijelentkezéshez | Microsoft Docs
+title: AngularJS egyoldalas alkalmazás létrehozása bejelentkezéshez és kijelentkezés az Azure AD-vel | Microsoft Docs
 description: Útmutató a bejelentkezés céljából az Azure AD-vel integrálható, és az Azure AD által védett API-kat OAuth használatával meghívó egyoldalas AngularJS-alkalmazás létrehozásához.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: f2991054-8146-4718-a5f7-59b892230ad7
 ms.service: active-directory
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6596d1d8251bafd1ff013961555b20475e3a06d3
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 20c62d379006382d4208e4b111202581bc75454f
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544940"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68380757"
 ---
-# <a name="quickstart-build-an-angularjs-single-page-app-for-sign-in-and-sign-out-with-azure-active-directory"></a>Gyors útmutató: Jelentkezzen be, és jelentkezzen ki az Azure Active Directoryval AngularJS egyoldalas alkalmazás készítése
+# <a name="quickstart-build-an-angularjs-single-page-app-for-sign-in-and-sign-out-with-azure-active-directory"></a>Gyors útmutató: AngularJS egyoldalas alkalmazás létrehozása bejelentkezéshez és kijelentkezés Azure Active Directory
 
 [!INCLUDE [active-directory-develop-applies-v1-adal](../../../includes/active-directory-develop-applies-v1-adal.md)]
 
@@ -47,7 +47,7 @@ Egy teljes körű, működő alkalmazás létrehozásához az alábbiakat kell t
 3. Az ADAL használata az egyoldalas alkalmazás oldalainak védelemmel való ellátásához.
 
 > [!NOTE]
-> Ha engedélyezi a munkahelyi és iskolai fiókok mellett személyes fiókok bejelentkezések van szüksége, használhatja a  *[a Microsoft identity platform endpoint](azure-ad-endpoint-comparison.md)*. További információ: [JavaScript SPA-oktatóanyag](tutorial-v2-javascript-spa.md) , valamint [Ez a cikk](active-directory-v2-limitations.md) elmagyarázza a *a Microsoft identity platform endpoint*. 
+> Ha a munkahelyi és az iskolai fiókokon kívül a személyes fiókokhoz is engedélyeznie kell a bejelentkezéseket, használhatja a *[Microsoft Identity platform végpontját](azure-ad-endpoint-comparison.md)* . További információért tekintse meg [ezt a JavaScript Spa](tutorial-v2-javascript-spa.md) -oktatóanyagot, valamint a *Microsoft Identity platform végpontját*ismertető [cikket](active-directory-v2-limitations.md) . 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -56,30 +56,25 @@ Első lépésként végre kell hajtania az alábbi lépéseket:
 * [Töltse le az alkalmazás vázát](https://github.com/AzureADQuickStarts/SinglePageApp-AngularJS-DotNet/archive/skeleton.zip) vagy [a kész mintát](https://github.com/AzureADQuickStarts/SinglePageApp-AngularJS-DotNet/archive/complete.zip).
 * Rendelkeznie kell egy Azure AD-bérlővel, amelyben felhasználókat hozhat létre, és regisztrálhat egy alkalmazást. Ha még nem rendelkezik bérlővel, [itt megtudhatja, hogyan tehet szert egyre](quickstart-create-new-tenant.md).
 
-## <a name="step-1-register-the-directorysearcher-application"></a>1. lépés: A DirectorySearcher alkalmazás regisztrálása
+## <a name="step-1-register-the-directorysearcher-application"></a>1\. lépés: A DirectorySearcher alkalmazás regisztrálása
 
 Ha lehetővé szeretné tenni az alkalmazás számára a felhasználók hitelesítését és a jogkivonatok lekérését, először regisztrálnia kell az alkalmazást az Azure AD-bérlőben:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Ha több címtárba jelentkezett be, lehetséges, hogy ellenőriznie kell, hogy a megfelelő címtárat látja-e. Ehhez kattintson a fiókjára a felső sávon. A **Címtár** listában válassza ki azt az Azure AD-bérlőt, amelyben az alkalmazást regisztrálni kívánja.
 1. Kattintson a **Minden szolgáltatás** lehetőségre a bal oldali panelen, majd válassza az **Azure Active Directory** elemet.
-1. Kattintson az **Alkalmazásregisztrációk** elemre, majd válassza a **Hozzáadás** parancsot.
-1. Kövesse az utasításokat, és hozzon létre egy új webalkalmazást és/vagy webes API-t:
-
-    * A **név** az alkalmazást ismerteti a felhasználók számára.
-    * **Bejelentkezési URL** – az a hely, ahová az Azure AD visszaadja a jogkivonatokat. Ebben a példában az alapértelmezett hely a `https://localhost:44326/`.
-
-1. A regisztráció befejezését követően az Azure AD egy egyedi alkalmazásazonosítót rendel az alkalmazáshoz. Erre az értékre szüksége lesz a következő szakaszokban, ezért másolja ki az alkalmazás lapjáról.
-1. Az Adal.js az OAuth implicit folyamatát használja az Azure AD-vel folytatott kommunikációhoz. Engedélyeznie kell az implicit folyamatot az alkalmazás számára:
-
-    1. Kattintson az alkalmazásra, és válassza a **Jegyzékfájl** elemet a beépített jegyzékszerkesztő megnyitásához.
-    1. Keresse meg az `oauth2AllowImplicitFlow` tulajdonságot. Állítsa az értékét `true` értékűre.
-    1. Kattintson a **Mentés** gombra a jegyzék mentéséhez.
-
-1. Biztosítson engedélyeket a bérlőben az alkalmazás számára. Lépjen a **Beállítások > Szükséges engedélyek** részre, és kattintson a felső sáv **Engedélyek megadása** gombjára.
+1. Kattintson a **Alkalmazásregisztrációk**elemre, majd válassza az **új regisztráció**lehetőséget.
+1. Amikor megjelenik az **alkalmazás regisztrálása** lap, adja meg az alkalmazás nevét.
+1. A **támogatott fiókok típusai**területen válassza a **fiókok lehetőséget bármely szervezeti címtárban és személyes Microsoft-fiókban**.
+1. Válassza ki a **webplatformot** az átirányítási **URI** szakaszban, és állítsa `https://localhost:44326/` be az értéket (az Azure ad által visszaadott jogkivonatokat).
+1. Miután végzett, válassza a **Regisztrálás** lehetőséget. Az alkalmazás **áttekintése** lapon jegyezze fel az **alkalmazás (ügyfél) azonosítójának** értékét.
+1. Az Adal.js az OAuth implicit folyamatát használja az Azure AD-vel folytatott kommunikációhoz. Engedélyeznie kell az alkalmazás implicit folyamatát. A regisztrált alkalmazás bal oldali navigációs paneljén válassza a **hitelesítés**lehetőséget.
+1. A **Speciális beállítások**területen az **implicit támogatás**alatt engedélyezze mindkét **azonosító** jogkivonatot és a **hozzáférési tokenek** jelölőnégyzetet. Az azonosító jogkivonatok és hozzáférési tokenek szükségesek, mivel az alkalmazásnak be kell jelentkeznie a felhasználókba, és hívnia kell egy API-t.
+1. Kattintson a **Mentés** gombra.
+1. Biztosítson engedélyeket a bérlőben az alkalmazás számára. Lépjen az **API-engedélyek**elemre, és válassza a jogosultság **megadása a rendszergazdai jóváhagyáshoz** lehetőséget.
 1. Válassza az **Igen** lehetőséget a megerősítéshez.
 
-## <a name="step-2-install-adal-and-configure-the-single-page-app"></a>2. lépés: Adal-t telepítse és konfigurálja az egyoldalas alkalmazás
+## <a name="step-2-install-adal-and-configure-the-single-page-app"></a>2\. lépés: A ADAL telepítése és az egyoldalas alkalmazás konfigurálása
 
 Mivel már rendelkezik egy alkalmazással az Azure AD-ben, telepítheti az adal.js-t, és megírhatja az identitáshoz kapcsolódó kódot.
 
@@ -105,7 +100,7 @@ Ahhoz, hogy az egyoldalas alkalmazás teendőlistás háttér-API-ja elfogadhass
    * `ida:Tenant` – az Azure AD-bérlő tartománya, például: contoso.onmicrosoft.com.
    * A `ida:Audience` az alkalmazás portálról kimásolt ügyfél-azonosítója.
 
-## <a name="step-3-use-adal-to-help-secure-pages-in-the-single-page-app"></a>3. lépés: Adal-t használó egyoldalas alkalmazás biztonságos lapok segítségével
+## <a name="step-3-use-adal-to-help-secure-pages-in-the-single-page-app"></a>3\. lépés: Az egyoldalas alkalmazásban lévő lapok biztonságossá tétele a ADAL segítségével
 
 Az adal.js AngularJS-útvonallal és HTTP-szolgáltatókkal integrálható, így könnyebben láthatja el védelemmel az egyoldalas alkalmazás egyes nézeteit.
 

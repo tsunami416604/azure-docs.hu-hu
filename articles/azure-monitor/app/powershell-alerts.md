@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 10/31/2016
 ms.author: mbullwin
 ms.openlocfilehash: 5dfbc6fa18b5d1b5b3058db14eb1232be27a0c40
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58481791"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66130983"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>A PowerShell használata riasztások beállításához az Application Insights szolgáltatásban
 
@@ -65,7 +65,7 @@ Indítsa el az Azure Powershellt, és [csatlakozzon az előfizetéséhez](/power
 
 
 
-## <a name="example-1"></a>1. példa
+## <a name="example-1"></a>1\. példa
 E-mailt kérek a kiszolgáló válasza a HTTP-kérelmekre, több mint 5 perc elteltével átlagolt lassabb, mint 1 másodperc esetén. Az Application Insights-erőforrás neve IceCreamWebApp, és a Fabrikam az erőforráscsoportban. Az Azure-előfizetés tulajdonosa vagyok.
 
 A GUID azonosító az előfizetés-azonosító (nem a kialakítási kulcsot az alkalmazás).
@@ -81,7 +81,7 @@ A GUID azonosító az előfizetés-azonosító (nem a kialakítási kulcsot az a
      -SendEmailToServiceOwners `
      -Location "East US" -RuleType Metric
 
-## <a name="example-2"></a>2. példa
+## <a name="example-2"></a>2\. példa
 Az alkalmazástól, amelyben van [a trackmetric() függvény](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric) jelentéséhez "salesPerHour." nevű metrika Küldjön egy e-mailt a munkatársainak, ha 100, alá csökken "salesPerHour" átlagolt 24 órán át.
 
     Add-AzMetricAlertRule -Name "poor sales" `
@@ -103,19 +103,19 @@ A metrika használata által jelentett ugyanaz a szabály használható a [mér�
 | `basicExceptionBrowser.count` |Böngészőkivételek |A böngészőben fellépő nem kezelt kivételek száma. |
 | `basicExceptionServer.count` |Kiszolgálókivételek |Az alkalmazás által fellépő nem kezelt kivételek száma |
 | `clientPerformance.clientProcess.value` |Ügyfél feldolgozási ideje |Az utolsó bájtig eltelt egy dokumentum fogadása, mindaddig, amíg a DOM betöltése között eltelt idő. Aszinkron kérelmek feldolgozása még folyamatban lehet is. |
-| `clientPerformance.networkConnection.value` |Hálózati kapcsolat ideje lapbetöltéskor |A böngészőben a hálózathoz való csatlakozáshoz szükséges idő. 0 is lehet, ha a gyorsítótárba. |
+| `clientPerformance.networkConnection.value` |Oldal a hálózati kapcsolat ideje lapbetöltéskor |A böngészőben a hálózathoz való csatlakozáshoz szükséges idő. 0 is lehet, ha a gyorsítótárba. |
 | `clientPerformance.receiveRequest.value` |Válasz fogadási ideje |Kérelem küldése a válasz fogadására indítása böngésző között eltelt idő. |
 | `clientPerformance.sendRequest.value` |Kérelem küldési ideje |Kérelem elküldéséhez a böngésző által igénybe vett idő. |
-| `clientPerformance.total.value` |Böngésző lapbetöltési ideje |A felhasználói kérelemtől a DOM, a stíluslapok, a szkriptek és a képek betöltéséig eltelt idő. |
-| `performanceCounter.available_bytes.value` |Elérhető memória |A folyamatot, vagy a rendszer általi használatra azonnal elérhető fizikai memória. |
-| `performanceCounter.io_data_bytes_per_sec.value` |Folyamat átviteli sebessége |Olvasási-írási műveletek fájlokon, hálózaton és eszközökön összesen (bájt/mp). |
+| `clientPerformance.total.value` |Böngészőlap-betöltési ideje |A felhasználói kérelemtől a DOM, a stíluslapok, szkriptek és a képek idő töltődnek be. |
+| `performanceCounter.available_bytes.value` |Rendelkezésre álló memória |A folyamatot, vagy a rendszer általi használatra azonnal elérhető fizikai memória. |
+| `performanceCounter.io_data_bytes_per_sec.value` |Folyamat átviteli sebessége |Összes bájt / másodperc olvasási-írási műveletek fájlokon, hálózaton és eszközökön. |
 | `performanceCounter.number_of_exceps_thrown_per_sec.value` |kivételek sebessége |Kivételek száma másodpercenként. |
 | `performanceCounter.percentage_processor_time.value` |Folyamat CPU |Az alkalmazások a folyamatot a processzor-végrehajtási utasításokat által használt összes szál futtatására fordított időt százalékos. |
-| `performanceCounter.percentage_processor_total.value` |Processzoridő |A processzor nem üresjárati szálak futtatásával töltött százalékos időhányada. |
-| `performanceCounter.process_private_bytes.value` |Folyamat saját bájtjai |A kizárólag a megfigyelt alkalmazás folyamataihoz hozzárendelt memória mennyisége. |
+| `performanceCounter.percentage_processor_total.value` |Processzoridő |A processzor nem üresjárati szálak futtatásával töltött idő aránya. |
+| `performanceCounter.process_private_bytes.value` |Folyamat saját bájtjai |Folyamataihoz hozzárendelt memória a megfigyelt alkalmazás. |
 | `performanceCounter.request_execution_time.value` |ASP.NET-kérelem végrehajtási ideje |A legutóbbi kérelem végrehajtási ideje. |
 | `performanceCounter.requests_in_application_queue.value` |Végrehajtási üzenetsorban lévő ASP.NET-es kérelmek |Az alkalmazás kérelem-várólistájának hossza. |
-| `performanceCounter.requests_per_sec.value` |ASP.NET-kérelmek gyakorisága |Az ASP.NET által az alkalmazásnak küldött összes kérelem száma másodpercenként. |
+| `performanceCounter.requests_per_sec.value` |ASP.NET-kérelmek gyakorisága |Az ASP.NET által az alkalmazáshoz, másodpercenként küldött összes kérelem száma. |
 | `remoteDependencyFailed.durationMetric.count` |Függőségi hibák |A kiszolgálói alkalmazás által külső erőforrások indított sikertelen hívások száma. |
 | `request.duration` |Kiszolgáló válaszideje |Egy HTTP-kérelem fogadása és a válasz küldésének befejezése között eltelt idő. |
 | `request.rate` |Kérelmek száma |Az alkalmazás másodpercenként küldött összes kérelem száma. |

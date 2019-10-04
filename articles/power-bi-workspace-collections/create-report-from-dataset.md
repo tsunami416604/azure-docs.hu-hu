@@ -2,18 +2,18 @@
 title: Új jelentés létrehozása adatkészletből a Power BI-Munkaterületcsoportok |} A Microsoft Docs
 description: A Power BI-Munkaterületcsoport jelentések mostantól a saját alkalmazásában egy adatkészletből hozható létre.
 services: power-bi-workspace-collections
-ms.service: power-bi-workspace-collections
-author: markingmyname
-ms.author: maghan
+ms.service: power-bi-embedded
+author: rkarlin
+ms.author: rkarlin
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.openlocfilehash: 92f75a15374738d02972adc012b3a28918d7825d
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 2034c62a17b71b92b43a7afd794c2c172288d58c
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518813"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672448"
 ---
 # <a name="create-a-new-report-from-a-dataset-in-power-bi-workspace-collections"></a>Új jelentés létrehozása adatkészletből a Power BI munkaterületi gyűjteményekkel
 

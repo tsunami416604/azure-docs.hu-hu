@@ -14,11 +14,11 @@ ms.date: 02/11/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 7832691812d8f10342dc7df20a7cfab7265f2d9d
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243518"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60775712"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---manage-cost-and-ownership"></a>Irányítás az Azure DevTest Labs-infrastruktúra - kezelheti a költségeket és tulajdonosi viszonyainak
 Költség és tulajdonosi is elsődleges szempontok, fontolja meg a fejlesztési és tesztelési környezetek. Ebben a szakaszban található információk segítségével optimalizálhatja a költségeket, és tulajdonosi igazítása megtalálhatja a környezetben.

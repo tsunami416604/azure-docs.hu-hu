@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/23/2018
 ms.author: apimpm
 ms.openlocfilehash: c52a1942bda9881f8f782a227c81feaa4813722d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58793637"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60656733"
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-moesif"></a>Az Azure API Management, az Event Hubs és Moesif API-k monitorozása
 A [API Management-szolgáltatás](api-management-key-concepts.md) javíthatják a HTTP API-nak küldött HTTP-kérések feldolgozását számos funkciót kínál. Létezik-e a kérelmek és válaszok azonban csak átmeneti. A kérelmet, és biztosítani az API Management szolgáltatás számára a háttérrendszeri API segítségével. Az API-t feldolgozza a kérést és választ keresztüláramló vissza az API fogyasztó számára. Az API Management szolgáltatás tartja néhány Megjelenítés az API-k leíró fontos statisztikákat az Azure portal irányítópultján, de után eltűnnek róla, hogy a részletek.
@@ -304,7 +304,7 @@ A következő animált ábrán láthatja a webkiszolgálónak küldött a fejles
 
 ![A kérelem lesznek továbbítva a Runscope bemutatója](./media/api-management-log-to-eventhub-sample/apim-eventhub-runscope.gif)
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 Az Azure API Management-szolgáltatás szempontokból ideális hely utazik, és az API-k HTTP-forgalom rögzítése biztosít. Az Azure Event Hubs egy rugalmasan méretezhető, költséghatékony megoldás, hogy a forgalom rögzítése és elágazó, naplózás, figyelés és más kifinomult elemzési rendszerek másodlagos feldolgozás. Csatlakozás a külső forgalmat, Moesif nem egyszerű: mindössze néhány tucat sornyi kóddal rendszerek figyelése.
 
 ## <a name="next-steps"></a>További lépések

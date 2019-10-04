@@ -1,42 +1,42 @@
 ---
-title: Hozzon létre egy küllős hálózati a terraform használatával Azure-ban
-description: Ismerje meg, hogyan valósíthat meg két küllő virtuális hálózatokhoz csatlakoznak a küllős topológiában
+title: Küllős hálózat létrehozása az Azure-beli Terraform
+description: Ismerje meg, hogyan valósítható meg két küllős virtuális hálózatok egy hubhoz csatlakoztatva egy sugaras topológiában
 services: terraform
 ms.service: azure
-keywords: terraform, hub and spoke, networks, hybrid networks, devops, virtual machine, azure, VNet peering, spoke, hub-spoke
+keywords: Terraform, hub és küllő, hálózatok, hibrid hálózatok, devops, virtuális gép, Azure, VNet-társítás, küllő, sugarasan küllő
 author: VaijanathB
 manager: jeconnoc
 ms.author: vaangadi
 ms.topic: tutorial
-ms.date: 03/01/2019
-ms.openlocfilehash: 9cce809401a26eb2b45b11303afcd4818a1f950b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 09/20/2019
+ms.openlocfilehash: 9437f43a12204c9a08e1c0da11fc737e8c026c80
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58009946"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173392"
 ---
-# <a name="tutorial-create-a-spoke-virtual-network-with-terraform-in-azure"></a>Oktatóanyag: Az Azure-beli terraform küllő virtuális hálózat létrehozása
+# <a name="tutorial-create-a-spoke-virtual-network-with-terraform-in-azure"></a>Oktatóanyag: Küllős virtuális hálózat létrehozása az Azure-beli Terraform
 
-Ebben az oktatóanyagban két külön küllő hálózat bemutatása a számítási feladatok elkülönítése valósíthatja meg. A hálózatok használata a központi virtuális hálózaton közös erőforrások megosztása. A küllőkkel elszigetelhetőek a számítási feladatok saját virtuális hálózataikban, így más küllőktől elkülönülten kezelhetőek. Minden számítási feladat több szintet tartalmazhat, amelyek alhálózatait Azure-terheléselosztók kapcsolják össze.
+Ebben az oktatóanyagban két különálló küllős hálózatot valósít meg a munkaterhelések elkülönítésének bemutatására. A hálózatok közös erőforrásokat használnak a hub Virtual Network használatával. A küllőkkel elszigetelhetőek a számítási feladatok saját virtuális hálózataikban, így más küllőktől elkülönülten kezelhetőek. Minden számítási feladat több szintet tartalmazhat, amelyek alhálózatait Azure-terheléselosztók kapcsolják össze.
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
 > [!div class="checklist"]
-> * A küllő virtuális hálózatok megvalósítása küllős topológia az HCL (HashiCorp Language) használata
-> * A Terraform használata a topológiájú hálózatokat a virtuális gépek létrehozása
-> * A Terraform használatával szeretne létrehozni a virtuális társhálózatok a hub hálózatokkal
+> * A küllős virtuális hálózatok megvalósításához használja a HCL (HashiCorp Language) eszközt a küllős topológiában
+> * Virtuális gépek létrehozása a küllős hálózatokban a Terraform használatával
+> * A Terraform használata virtuális hálózati kapcsolatok létrehozásához a hub-hálózatokkal
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-1. [Eseményközpont létrehozásához, küllős a hibrid hálózati topológiák az Azure-beli terraform](./terraform-hub-spoke-introduction.md).
-1. [A helyszíni virtuális hálózat létrehozása az Azure-beli terraform](./terraform-hub-spoke-on-prem.md).
-1. [Hub virtuális hálózat létrehozása az Azure-beli terraform](./terraform-hub-spoke-hub-network.md).
-1. [A hub virtuális hálózati berendezés létrehozása terraform az Azure-ban](./terraform-hub-spoke-hub-nva.md).
+1. [Hozzon létre egy sugaras hibrid hálózati topológiát az Azure-beli Terraform](./terraform-hub-spoke-introduction.md).
+1. Helyszíni [virtuális hálózat létrehozása az Azure-beli Terraform](./terraform-hub-spoke-on-prem.md).
+1. [Hozzon létre egy hub virtuális hálózatot a Terraform az Azure-ban](./terraform-hub-spoke-hub-network.md).
+1. [Hozzon létre egy hub virtuális hálózati készüléket a Terraform az Azure-ban](./terraform-hub-spoke-hub-nva.md).
 
 ## <a name="create-the-directory-structure"></a>A könyvtárstruktúra létrehozása
 
-Ebben a szakaszban két küllő parancsfájlok jönnek létre. Minden parancsprogramhoz küllő virtuális hálózat és a egy virtuális gépet, a számítási feladathoz tartozó határozza meg. Egy virtuális Társhálózat-központból küllőhöz majd jön létre.
+Ebben a szakaszban két küllős szkript jön létre. Minden parancsfájl egy küllős virtuális hálózatot és egy virtuális gépet határoz meg a munkaterhelés számára. Ekkor létrejön egy, a hub és a küllő közötti virtuális hálózat.
 
 1. Keresse fel az [Azure Portalt](https://portal.azure.com).
 
@@ -56,9 +56,9 @@ Ebben a szakaszban két küllő parancsfájlok jönnek létre. Minden parancspro
     cd hub-spoke
     ```
 
-## <a name="declare-the-two-spoke-networks"></a>A két topológiájú hálózatokat deklarálása
+## <a name="declare-the-two-spoke-networks"></a>A két küllős hálózat deklarálása
 
-1. A Cloud Shellben, nyisson meg egy új fájlt `spoke1.tf`.
+1. A Cloud Shellban nyisson meg egy nevű `spoke1.tf`új fájlt.
 
     ```bash
     code spoke1.tf
@@ -66,7 +66,7 @@ Ebben a szakaszban két küllő parancsfájlok jönnek létre. Minden parancspro
 
 1. Másolja az alábbi kódot a szerkesztőbe:
 
-    ```JSON
+    ```hcl
     locals {
       spoke1-location       = "CentralUS"
       spoke1-resource-group = "spoke1-vnet-rg"
@@ -188,7 +188,7 @@ Ebben a szakaszban két küllő parancsfájlok jönnek létre. Minden parancspro
     
 1. Másolja az alábbi kódot a szerkesztőbe:
     
-    ```JSON
+    ```hcl
     locals {
       spoke2-location       = "CentralUS"
       spoke2-resource-group = "spoke2-vnet-rg"
@@ -309,4 +309,4 @@ Ebben a szakaszban két küllő parancsfájlok jönnek létre. Minden parancspro
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"] 
-> [Az Azure-ban a terraform egy küllős hálózati ellenőrzése](./terraform-hub-spoke-validation.md)
+> [Hub-és küllős hálózat ellenőrzése az Azure-beli Terraform](./terraform-hub-spoke-validation.md)

@@ -4,14 +4,14 @@ description: Hogyan lehet csatlakozni a vFXT fürt és a böngésző alapú Aver
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 06/24/2019
 ms.author: v-erkell
-ms.openlocfilehash: f989f4d103efecf2b6e206287dd8b7b300a1796d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 830be92d37f304598cca05c3ac80973158c38a59
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57856841"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67439974"
 ---
 # <a name="access-the-vfxt-cluster"></a>Hozzáférés a vFXT fürt
 
@@ -27,9 +27,11 @@ A vFXT fürt egy privát virtuális hálózaton belül helyezkedik el, mert az S
 
 Mielőtt csatlakozna, győződjön meg arról, hogy az SSH nyilvános/titkos kulcspár, amelyet a fürt vezérlő létrehozásakor használt telepítve van-e a helyi gépen. Olvassa el az SSH kulcsok dokumentációját [Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) vagy [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys) Ha segítségre van szüksége. (A jelszó helyett a nyilvános kulcs használatakor kéri, adja meg, ha csatlakozik.) 
 
-## <a name="ssh-tunnel-with-a-linux-host"></a>SSH-alagutat egy Linux-gazdagépre
+## <a name="create-an-ssh-tunnel"></a>SSH-alagút létrehozása 
 
-Ha Linux-alapú ügyfelet használ, használja az SSH-alagútkezelési az űrlap-parancsot: 
+Létrehozhat egy SSH-alagutat a parancssorból, a Linux-alapú vagy a Windows 10-es ügyfél rendszer. 
+
+Használja az SSH-alagútkezelési az űrlap-parancsot: 
 
 ssh -L *local_port*:*cluster_mgmt_ip*:443 *controller_username*\@*controller_public_IP*
 
@@ -40,28 +42,6 @@ Példa:
 ```sh
 ssh -L 8443:10.0.0.5:443 azureuser@203.0.113.51
 ```
-
-Hitelesítés automatikusan végbemegy, ha a fürt létrehozásához használt nyilvános SSH-kulcsot, és a megfelelő kulcs telepítve van az ügyfélrendszeren. Ha jelszót használt, a rendszer kérni fogja annak megadására.
-
-## <a name="ssh-tunnel-with-a-windows-host"></a>Windows állomással való SSH-alagút
-
-Ez a példa a gyakori Windows-alapú terminál segédprogram, a putty-t használja.
-
-Adja meg a PuTTY **állomásnév** mezőt a fürt vezérlő felhasználónévvel és az IP-címére: *your_username*\@*controller_public_IP*.
-
-Például: ``azureuser@203.0.113.51``
-
-Az a **konfigurációs** panelen:
-
-1. Bontsa ki a **kapcsolat** > **SSH** a bal oldalon. 
-1. Kattintson a **alagutak**. 
-1. Adja meg a forrásport, például a 8443. 
-1. A célhelyen adja meg a vFXT fürt felügyeleti IP-cím és a 443-as porton. 
-   Például: ``203.0.113.51:443``
-1. Kattintson a **Hozzáadás** parancsra.
-1. Kattintson az **Open** (Megnyitás) elemre.
-
-![Képernyőkép a Putty alkalmazást helyéről a alagút hozzáadásához kattintson](media/avere-vfxt-ptty-numbered.png)
 
 Hitelesítés automatikusan végbemegy, ha a fürt létrehozásához használt nyilvános SSH-kulcsot, és a megfelelő kulcs telepítve van az ügyfélrendszeren. Ha jelszót használt, a rendszer kérni fogja annak megadására.
 

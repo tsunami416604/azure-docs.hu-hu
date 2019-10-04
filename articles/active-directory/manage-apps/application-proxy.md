@@ -2,22 +2,22 @@
 title: Távoli hozzáférést a helyszíni alkalmazások – Azure Active Directory-alkalmazásproxyval |} A Microsoft Docx
 description: Az Azure Active Directory Application Proxy a helyi webes alkalmazásokhoz való biztonságos távoli hozzáférést biztosít. Egy egyszeri bejelentkezés az Azure ad-hez, miután felhasználók hozzáférhessenek felhő- és a helyszíni alkalmazásokhoz egy külső URL-cím vagy egy belső alkalmazás portálon keresztül. Például az alkalmazásproxy biztosíthat távoli hozzáférést és egyszeri bejelentkezést, a távoli asztal, a SharePoint, a Teams, a Tableau, a Qlik és a üzletági (LOB) alkalmazások.
 services: active-directory
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/07/2019
-ms.author: celested
+ms.date: 05/09/2019
+ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac94574ac297da7b3555be8d92ba3c5b62a990c5
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 780dedd52e492aceaab1aa00eedb631d0814ebf3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56174758"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108380"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-active-directorys-application-proxy"></a>Távoli hozzáférés a helyszíni alkalmazások Azure Active Directory Application Proxy használatával 
 
@@ -27,11 +27,11 @@ Az Azure AD-alkalmazásproxy van:
 
 - **Könnyen használható**. Felhasználók férnek hozzá Office 365 és más SaaS-alkalmazások az Azure AD-vel integrált azonos módon érhetik el a helyszíni alkalmazások. Nem kell módosítani vagy frissíteni az alkalmazások a proxyval működjenek. 
 
-- **Biztonságos**. A helyszíni alkalmazások az Azure engedélyeztetési vezérlőit és biztonsági elemzési használhatja. A helyszíni alkalmazások használhatja például a feltételes hozzáférés és a kétlépéses ellenőrzést. Application Proxy nem igényel, meg kell nyitni bejövő kapcsolatok a tűzfalon keresztül.
+- **Biztonságos**. A helyszíni alkalmazások az Azure engedélyeztetési vezérlőit és biztonsági elemzési használhatja. Ha például a helyszíni alkalmazások használhatják a feltételes hozzáférés és a kétlépéses ellenőrzést. Application Proxy nem igényel, meg kell nyitni bejövő kapcsolatok a tűzfalon keresztül.
  
 - **Költséghatékony**. A helyszíni megoldások használatához általában szükség van, és demilitarizált zóna (DMZ-ket), biztonsági kiszolgálókat és más bonyolult infrastruktúra karbantartása. Az alkalmazásproxy fut a felhőben, ami lehetővé teszi az egyszerűen használható. Az alkalmazásproxy használatához nem kell módosítani a hálózati infrastruktúrát, vagy telepítse a további berendezésekre a helyszíni környezetben.
 
-## <a name="what-is-application-proxy"></a>Mi az Application Proxy?
+## <a name="what-is-application-proxy"></a>Mi az alkalmazásproxy?
 Az alkalmazásproxy funkciója az Azure ad-ben, amely lehetővé teszi a felhasználók számára hozzáférést a helyszíni webalkalmazások egy távoli ügyfélhez. Alkalmazásproxy tartoznak az alkalmazásproxy-szolgáltatás, amely a felhőben fut, és az alkalmazásproxy-összekötő, amely egy helyszíni kiszolgálón fut. Az Azure AD-ben az alkalmazásproxy-szolgáltatás, és az Application Proxy connector együttműködve biztonságos módon adnak át a felhasználói bejelentkezési jogkivonat Azure AD-ből a webalkalmazás.
 
 Az alkalmazásproxy működik együtt:
@@ -43,6 +43,8 @@ Az alkalmazásproxy működik együtt:
 * Gazdag ügyfél alkalmazások integrált a az Active Directory Authentication Library (ADAL)
 
 Az alkalmazásproxy egyszeri bejelentkezést támogatja. Támogatott módszerekkel kapcsolatos további információkért lásd: [egyszeri bejelentkezési módszer kiválasztása](what-is-single-sign-on.md#choosing-a-single-sign-on-method).
+
+A belső erőforrásokhoz hozzáférést ad a távoli felhasználók alkalmazásproxy használata ajánlott. Az alkalmazásproxy helyettesíti a VPN-t vagy fordított proxy. Nem célja a belső felhasználók számára a vállalati hálózaton.  Ezek a felhasználók, akik szükségtelenül használja az Application Proxy bevezethet váratlan és nem kívánatos teljesítménybeli problémák.
 
 ## <a name="how-application-proxy-works"></a>Application Proxy működése
 

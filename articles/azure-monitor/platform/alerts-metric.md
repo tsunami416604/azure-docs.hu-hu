@@ -8,11 +8,11 @@ ms.date: 09/18/2018
 ms.author: snmuvva
 ms.subservice: alerts
 ms.openlocfilehash: 117b65265c853194e93a97fe5e2b2dcc6e9f5bc2
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54807388"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60712987"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Létrehozása, megtekintése és kezelése az Azure Monitor használatával metrikákhoz kapcsolódó riasztások
 

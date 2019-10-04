@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: bf8c7e76aa6dd69cc505be237e47d8e10e7e8db5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 9417d7b957d69dc802ecb2f9f78723eb7aba08ba
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59264862"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67099853"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ipass-smartconnect"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező iPass SmartConnect
 
@@ -54,7 +54,7 @@ Az Azure AD integrálása a iPass SmartConnect konfigurálásához hozzá kell i
 
 **IPass SmartConnect hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -122,8 +122,8 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés iPass SmartConnect, 
     | ---------------| ----------|
     | Keresztnév | user.givenname |
     | Vezetéknév | user.surname |
-    | e-mail | user.userprincipalname |
-    | felhasználónév | user.userprincipalname |
+    | email | user.userprincipalname |
+    | username | user.userprincipalname |
     | | |
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
@@ -215,7 +215,7 @@ Ebben a szakaszban engedélyezze Britta Simon használja az Azure egyszeri bejel
 
 ### <a name="create-ipass-smartconnect-test-user"></a>IPass SmartConnect tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy felhasználói Britta Simon nevű iPass SmartConnect hoz létre. Együttműködve [iPass SmartConnect támogatási csoportjának](mailto:help@ipass.com) hozzáadása a felhasználók és a tartományt, amely a iPass SmartConnect platform az engedélyezéshez van szükség. Ha a tartomány a csapata által hozzáadott, a iPass SmartConnect platform automatikusan kiépítve felhasználók. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ebben a szakaszban egy felhasználói Britta Simon nevű iPass SmartConnect hoz létre. Együttműködve [iPass SmartConnect támogatási csoportjának](mailto:help@ipass.com) a felhasználók vagy a tartományban, amelyhez hozzá kell adni a iPass SmartConnect platform engedélyezési lista hozzáadása. Ha a tartomány a csapata által hozzáadott, a iPass SmartConnect platform automatikusan kiépítve felhasználók. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 

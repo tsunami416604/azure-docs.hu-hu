@@ -3,20 +3,20 @@ title: Tudásbázis – QnA Maker élettartama
 titleSuffix: Azure Cognitive Services
 description: A QnA Maker legjobb megtanulja az iteratív ciklusának adatmodell változásainak, utterance (kifejezés) példákat, közzététel és adatok összegyűjtése a végpont lekérdezések.
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
-ms.date: 04/16/2019
-ms.author: tulasim
+ms.topic: conceptual
+ms.date: 09/25/2019
+ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 3f78b8a2566137d596f4ab3f083e1d14289365c3
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 530869928f7a25e779cb01f0fe392efdbb54c5ba
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59684021"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695119"
 ---
 # <a name="knowledge-base-lifecycle-in-qna-maker"></a>A QnA Maker Tudásbázis életciklusa
 A QnA Maker legjobb megtanulja az iteratív ciklusának adatmodell változásainak, utterance (kifejezés) példákat, közzététel és adatok összegyűjtése a végpont lekérdezések. 
@@ -28,14 +28,14 @@ A QnA Maker Tudásbázis (KB) végpontja biztosítja a legjobb-match válasz tar
 
 ## <a name="testing-and-updating-the-knowledge-base"></a>Tesztelése és frissítése a Tudásbázis
 
-A Tudásbázis készen áll a tesztelésre, a rendszer kitölti tartalmat, besorolást vagy automatikus kivonása után. A QnA Maker portálon keresztül végezhető interaktív tesztelése a **teszt** panel gyakori felhasználói lekérdezések beírásával, és annak ellenőrzésére, hogy a válaszokat a helyes választ, és elegendő magabiztossági pontszámot ad vissza. 
+A Tudásbázis készen áll a tesztelésre, a rendszer kitölti tartalmat, besorolást vagy automatikus kivonása után. Az interaktív tesztelés a QnA Maker portálon keresztül végezhető el a **tesztelési** panelen a gyakori felhasználói lekérdezések beírásával és annak ellenőrzésével, hogy a válaszok a megfelelő válasz és a megfelelő megbízhatósági pontszám alapján lettek-e visszaküldve. 
 
-* **Alacsony megbízhatósági pontszámok megoldásához**: alternatív kérdések hozzáadása. 
-* **Ha a lekérdezés nem megfelelően adja vissza a [alapértelmezett válasz](confidence-score.md#change-default-answer)**: Adja hozzá a megfelelő kérdésekre adott válaszok új. 
+* **Az alacsony megbízhatósági pontszámok kijavítása**: alternatív kérdések hozzáadása. 
+* **Ha egy lekérdezés helytelenül adja vissza az [alapértelmezett választ](confidence-score.md#change-default-answer)** : új válaszok hozzáadása a megfelelő kérdéshez. 
 
 Ez a teszt-frissítés szoros ciklus továbbra is fennáll, addig, amíg az eredmények elégedett. Ismerje meg, hogyan [a Tudásbázis tesztelése](../How-To/test-knowledge-base.md).
 
-A nagy Tudásbázis használata automatizált teszteléshez a a [generateAnswer API](../how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api) és a `isTest` törzs tulajdonság azokat a lekérdezéseket a `test` Tudásbázis helyett a közzétett Tudásbázis. 
+Nagyméretű Tudásbázis esetén a [GENERATEANSWER API](../how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api) -val és a `isTest` Body tulajdonsággal automatizált tesztelést használhat, amely a közzétett Tudásbázis helyett a `test` tudásbázist kérdezi le. 
 
 ```json
 {
@@ -51,7 +51,7 @@ Ha elkészült a Tudásbázis tesztelése, közzéteheti azt. A legújabb verzi�
 
 Ezzel a módszerrel végzett módosítások folyamatban van a Tudásbázis tesztelése verziója nincsenek hatással a közzétett verzió, amely egy éles alkalmazásban élő lehet.
 
-Ezek tudásbázisok mindegyike külön tesztelési megcélozhatóvá válnak. A teszt verzióját a Tudásbázis-célként az API-k használatával, `isTest` törzs generateAnswer hívásában tulajdonság.
+Ezek tudásbázisok mindegyike külön tesztelési megcélozhatóvá válnak. Az API-k használatával megcélozhatja a Tudásbázis tesztelési verzióját `isTest` Body tulajdonsággal a generateAnswer hívásban.
 
 Ismerje meg, hogyan [közzéteheti a tudásbázist](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base).
 
@@ -61,6 +61,14 @@ Kell tudniuk jelentkezni a csevegési naplók, a szolgáltatás, akkor engedély
 A szolgáltatás használatának különböző analytics kérheti le. További információ az application insights használatával első [a QnA Maker szolgáltatás analytics](../How-To/get-analytics-knowledge-base.md).
 
 Analytics-témák alapján, győződjön meg arról, megfelelő [frissítéseit a Tudásbázis](../How-To/edit-knowledge-base.md).
+
+## <a name="version-control-of-a-knowledge-base"></a>Tudásbázis verziószám-vezérlése
+
+A QnA Maker nem biztosít verziószám-vezérlést. A tudásbázist a **Beállítások** lapról kell exportálnia, és saját módszert és eszközöket kell használnia.
+
+A Tudásbázis a TSV vagy az XLS formátumra való exportálása a **Beállítások** lapról végezhető el. 
+
+Ha egy adott verzióra vissza kell térnie, importálnia kell a fájlt a helyi rendszerből. A **Beállítások** lapon importálja a TSV vagy XLS fájlt. Ezzel felülírja a Tudásbázisban az importált fájl tartalmával kapcsolatos kérdéseket és válaszokat.   
 
 ## <a name="next-steps"></a>További lépések
 

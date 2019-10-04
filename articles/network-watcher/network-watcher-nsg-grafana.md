@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: mareat
 ms.openlocfilehash: 73173c144f979d4a10b90a16aec783fe51a3f90e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58000398"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62116259"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-using-network-watcher-and-grafana"></a>Kezelheti és elemezheti a hálózati biztonsági csoportok folyamatnaplóit a Network Watcher és a Grafana használatával
 

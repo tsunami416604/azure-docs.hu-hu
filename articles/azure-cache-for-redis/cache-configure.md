@@ -15,11 +15,11 @@ ms.workload: tbd
 ms.date: 08/22/2017
 ms.author: yegu
 ms.openlocfilehash: 6bf42406c97ccb67251a14a7a963d3da2e01dbb4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58849967"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60554498"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Azure Cache Redis konfigurálása
 Ez a témakör ismerteti az Azure Cache a Redis-példány érhető el a konfigurációkat. Ez a témakör ismerteti a Redis server az alapértelmezett konfigurációjának for Azure Cache Redis-példány is.
@@ -82,7 +82,7 @@ Kattintson a **tevékenységnapló** művelet elvégezhető a gyorsítótár meg
 
 A **hozzáférés-vezérlés (IAM)** szakasz támogatja a szerepköralapú hozzáférés-vezérlés (RBAC) az Azure Portalon. Ez a konfiguráció segít a szervezeteknek felel meg a hozzáférési követelményeket, egyszerűen és pontosan. További információkért lásd: [szerepköralapú hozzáférés-vezérlés az Azure Portalon](../role-based-access-control/role-assignments-portal.md).
 
-### <a name="tags"></a>Címkék
+### <a name="tags"></a>Tags
 
 A **címkék** szakasz segítséget nyújt az erőforrások rendszerezéséhez. További információkért lásd: [az Azure-erőforrások rendszerezése címkék használatával](../azure-resource-manager/resource-group-using-tags.md).
 
@@ -263,7 +263,7 @@ A **georeplikációs** panelen két prémium szintű Azure Cache Redis-példány
 > 
 > 
 
-### <a name="virtual-network"></a>Virtual Network
+### <a name="virtual-network"></a>Virtuális hálózat
 A **virtuális hálózat** szakasz lehetővé teszi, hogy konfigurálja a virtuális hálózati beállításait a gyorsítótárhoz. Támogatja a virtuális hálózattal egy prémium szintű gyorsítótár létrehozásával kapcsolatos információkat és a beállítások frissítése, lásd: [konfigurálása virtuális hálózat támogatja a prémium szintű Azure Cache Redis](cache-how-to-premium-vnet.md).
 
 > [!IMPORTANT]
@@ -404,7 +404,7 @@ Kattintson a **új támogatási kérelem** , nyisson egy támogatási kérelmet 
 | `maxclients` |A tarifacsomag függ<sup>2</sup> |Ez az érték egyszerre engedélyezett csatlakoztatott ügyfelek maximális számát. A korlát elérésekor a Redis bezárul az új kapcsolatok az összes olyan ügyfelek maximális számát elérte hiba újra. |
 | `maxmemory-policy` |`volatile-lru` |A Maxmemory házirend beállítás a hogyan Redis választja ki, mit és mikor `maxmemory` (a mérete a gyorsítótárban a gyorsítótár létrehozásakor kiválasztott ajánlat) elérésekor. Az alapértelmezett beállítás: az Azure redis Cache- `volatile-lru`, amely a kulcsok távolítja el, az elévülés LRU algoritmus használatával. Ez a beállítás konfigurálható az Azure Portalon. További információkért lásd: [memória házirendek](#memory-policies). |
 | `maxmemory-samples` |3 |A memóriahasználat a LRU és a minimális TTL algoritmusok helyett pontos algoritmusok közelítő algoritmusok is. Alapértelmezés szerint a Redis-ellenőrzések három kulcsot, és kiválasztja azt, amelyik utoljára kevésbé használt. |
-| `lua-time-limit` |5000 |Maximális végrehajtási ideje (MS) egy Lua-parancsprogram. Ha eléri a maximális végrehajtási időt, a Redis naplózza, hogy egy parancsfájl továbbra is a végrehajtási, a maximális engedélyezett idő után, és elindítja egy hiba miatt lekérdezések megválaszolására. |
+| `lua-time-limit` |5,000 |Maximális végrehajtási ideje (MS) egy Lua-parancsprogram. Ha eléri a maximális végrehajtási időt, a Redis naplózza, hogy egy parancsfájl továbbra is a végrehajtási, a maximális engedélyezett idő után, és elindítja egy hiba miatt lekérdezések megválaszolására. |
 | `lua-event-limit` |500 |Parancsfájl esemény üzenetsor maximális méretét. |
 | `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 032mb, 8 MB méretű 60 0 |Az ügyfél kimeneti puffer korlátok használható leválasztásának az ügyfelek, amelyek a rendszer nem történő adatkiolvasás elég gyors a kiszolgáló valamilyen okból (gyakori oka az, hogy egy Pub/Sub-ügyfél nem tudja fogadni üzenetek a lehető leghamarabb a közzétevő hozhatnak, azokat) kényszerítése. Tovább információ: [https://redis.io/topics/clients](https://redis.io/topics/clients). |
 

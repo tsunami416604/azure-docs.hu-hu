@@ -18,11 +18,11 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 474000d1d4d7e1358682d1421125d482e3782049
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56195294"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60381407"
 ---
 # <a name="using-the-sync-service-manager-operations-tab"></a>A szinkronizálási szolgáltatáskezelő műveleti lapon
 
@@ -35,7 +35,7 @@ Felső részén látható minden Futtatás időrendi sorrendben. Alapértelmezé
 
 A **állapot** oszlop a legfontosabb információt, és bemutatja a legsúlyosabb problémát egy Futtatás esetében. Íme a leggyakoribb állapotok a prioritásuk szerinti sorrendben kell vizsgálatára gyors összefoglalását (ahol * több lehetséges hiba karakterláncok jelzi).
 
-| status | Megjegyzés |
+| Állapot | Megjegyzés |
 | --- | --- |
 | leállított-\* |A Futtatás nem sikerült végrehajtani. Ha például a távoli rendszer nem működik, és nem érhető el. |
 | stopped-error-limit |Több mint 5000 hibák vannak. A Futtatás hibák nagy száma miatt automatikusan le lett állítva. |
@@ -43,7 +43,7 @@ A **állapot** oszlop a legfontosabb információt, és bemutatja a legsúlyosab
 | Befejezett -\*– figyelmeztetés |A Futtatás befejeződött, de egyes adatokat nem szerepel a várt állapota. Ha hibákat észlel, majd ezt az üzenetet általában a csak a hiba. Hibák elhárítása, amíg nem kell vizsgálni – figyelmeztetések. |
 | sikeres |Nincs probléma. |
 
-Amikor kiválaszt egy sort, az alsó frissíti az adott Futtatás részleteinek megjelenítéséhez. A bal szélén az alsó, lehetséges, hogy egy lista üzenettel **lépés #**. Ez a lista csak akkor jelenik meg, ha több tartományt az erdőben, ahol minden egyes tartományhoz egy lépés képviseli. A tartomány nevét a cím alatt található **partíció**. A **szinkronizálási statisztika**, talál további információt a feldolgozott módosítások számát. Kattinthat a hivatkozásokra kattintva a módosított objektumok listája. Ha hibákkal objektummal rendelkezik, ezek a hibák jelennek meg **szinkronizálási hibák**.
+Amikor kiválaszt egy sort, az alsó frissíti az adott Futtatás részleteinek megjelenítéséhez. A bal szélén az alsó, lehetséges, hogy egy lista üzenettel **lépés #** . Ez a lista csak akkor jelenik meg, ha több tartományt az erdőben, ahol minden egyes tartományhoz egy lépés képviseli. A tartomány nevét a cím alatt található **partíció**. A **szinkronizálási statisztika**, talál további információt a feldolgozott módosítások számát. Kattinthat a hivatkozásokra kattintva a módosított objektumok listája. Ha hibákkal objektummal rendelkezik, ezek a hibák jelennek meg **szinkronizálási hibák**.
 
 További információkért lásd: [nem szinkronizálódó objektumok hibaelhárítása](tshoot-connect-object-not-syncing.md)
 

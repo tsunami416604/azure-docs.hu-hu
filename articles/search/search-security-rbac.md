@@ -1,43 +1,43 @@
 ---
-title: A portálban – Azure Search rendszergazdai hozzáféréshez az Azure RBAC-szerepkörök beállítása
-description: Szerepkör alapú felügyeleti vezérlés (RBAC) szabályozása és az Azure Search management felügyeleti feladatok delegálása az Azure Portalon.
+title: Az Azure rendszergazdai hozzáférés RBAC szerepköreinek beállítása a portálon – Azure Search
+description: Szerepköralapú felügyeleti vezérlés (RBAC) a Azure Portal a Azure Search felügyeletéhez szükséges felügyeleti feladatok vezérlésére és delegálására.
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 04/05/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 34def35eba1e5c1645e6e1f9a505704d153ac716
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 924d2529e3477c299d4a90c076fe9e6c8faf11f3
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59277783"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647404"
 ---
-# <a name="set-rbac-roles-for-administrative-access"></a>Állítsa be a rendszergazdai hozzáférés RBAC-szerepkörök
+# <a name="set-rbac-roles-for-administrative-access"></a>RBAC-szerepkörök beállítása rendszergazdai hozzáféréshez
 
-Az Azure biztosít egy [globális szerepkör-alapú engedélyezési modellt](../role-based-access-control/role-assignments-portal.md) a portálon vagy a Resource Manager API-k segítségével kezelt szolgáltatásokhoz. Tulajdonos, közreműködő és olvasó szerepkörök határozzák meg az *szolgáltatás felügyeletét tárgyaló* Active Directory felhasználók, csoportok és minden egyes szerepkörhöz hozzárendelt rendszerbiztonsági. 
+Az Azure [globális szerepköralapú engedélyezési modellt](../role-based-access-control/role-assignments-portal.md) biztosít a portálon vagy a Resource Manager API-kon keresztül felügyelt összes szolgáltatáshoz. A tulajdonos, közreműködő és olvasó szerepkörök határozzák meg az egyes szerepkörökhöz rendelt Active Directory felhasználók, csoportok és rendszerbiztonsági tag *szolgáltatások felügyeletének* szintjét. 
 
 > [!Note]
-> Nincs nincsenek szerepköralapú hozzáférés-vezérlők az index egyes részei vagy dokumentumok egy részét. A keresési eredmények az identitásalapú hozzáférés létrehozhat által identitás, az eredmények azokat a biztonsági szűrők, amelynek a kérelmező nem szeretett volna dokumentumok eltávolítása. További információkért lásd: [biztonsági szűrők](search-security-trimming-for-azure-search.md) és [az Active Directory biztonságos](search-security-trimming-for-azure-search-with-aad.md).
+> Nincs szerepköralapú hozzáférés-vezérlés az index vagy a dokumentumok egy részhalmazának biztonságossá tételéhez. A keresési eredményeken alapuló, identitás-alapú hozzáféréshez biztonsági szűrőket hozhat létre, amelyek identitás alapján metszik az eredményeket, és eltávolíthatja azokat a dokumentumokat, amelyekhez a kérelmezőnek nincs hozzáférése. További információ: [biztonsági szűrők](search-security-trimming-for-azure-search.md) és [biztonságos a Active Directory](search-security-trimming-for-azure-search-with-aad.md).
 
 ## <a name="management-tasks-by-role"></a>Felügyeleti feladatok szerepkör szerint
 
-Az Azure Search a szerepkörök társítva, amelyek támogatják az alábbi kezelési feladatok jogosultsági szintek:
+Azure Search esetén a szerepkörök a következő felügyeleti feladatokat támogató jogosultsági szintekhez vannak társítva:
 
-| Szerepkör | Tevékenység |
+| Role | Tevékenység |
 | --- | --- |
-| Tulajdonos |Hozzon létre, vagy a szolgáltatás vagy bármely objektumához a szolgáltatást, ideértve az api-kulcsok, indexek, indexelők, az indexelő az adatforrásokat és indexelő ütemezések törlése.<p>Szolgáltatás állapota, beleértve a számát, és a tároló mérete megtekintése.<p>Adjon hozzá vagy törlése (csak egy tulajdonosa kezelheti szerepkörtagság) szerepkör tagságát.<p>Előfizetések rendszergazdái és szolgáltatások tulajdonosai rendelkező automatikus tagsági tulajdonosai. |
-| Közreműködő |Ugyanazt a hozzáférési szintet tulajdonosként, csökkentve az RBAC-szerepkörök kezeléséhez. Közreműködője létrehozhat vagy törölhet objektumok, például vagy megtekintéséhez, és hozza létre újra [api-kulcsainak](search-security-api-keys.md), de nem módosíthatják a szerepkör tagságát. |
-| [Search szolgáltatás Közreműködője beépített szerepkörrel](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#search-service-contributor) | Közreműködői szerepkörével egyenértékű. |
-| Olvasó |Nézet szolgáltatás essentials és a metrikákat. Ezen szerepkör tagjai nem jelennek meg index, indexelő, az adatforrás vagy kulcsot.  |
+| Tulajdonos |Hozza létre vagy törölje a szolgáltatást vagy a szolgáltatás bármely objektumát, beleértve az API-kulcsokat, az indexeket, az indexelő, az indexelő adatforrásokat és az indexelő-ütemterveket.<p>A szolgáltatás állapotának megtekintése, beleértve a darabszámot és a tárterület méretét.<p>Szerepkör-tagság hozzáadása vagy törlése (csak a tulajdonosok kezelhetik a szerepkör-tagságot).<p>Az előfizetés-rendszergazdák és a szolgáltatás tulajdonosai automatikus tagsággal rendelkeznek a tulajdonosi szerepkörben. |
+| Közreműködő |Azonos szintű hozzáférés tulajdonosként, mínusz a RBAC szerepkör-kezelés. A közreműködők például létrehozhatnak vagy törölhetnek objektumokat, vagy megtekinthetik és újragenerálják az [API-kulcsokat](search-security-api-keys.md), de nem módosíthatják a szerepkör-tagságokat. |
+| [Search Service közreműködő beépített szerepköre](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#search-service-contributor) | A közreműködő szerepkörrel egyenértékű. |
+| Olvasó |A szolgáltatás Essentials és metrikáinak megtekintése. Ennek a szerepkörnek a tagjai nem tekinthetik meg az indexet, az indexelő, az adatforrás vagy a kulcs információit.  |
 
-Szerepkörök nem hozzáférési jogosultságokat biztosíthat a a szolgáltatásvégpontot. Keresési szolgáltatás műveletek, például index kezelését, az index feltöltése és a lekérdezések a keresési adatok api-kulcsok, nem szerepkörök szabályozza-e. További információkért lásd: [api-kulcsok kezelése](search-security-api-keys.md).
+A szerepkörök nem biztosítanak hozzáférési jogosultságot a szolgáltatási végpont számára. A keresési szolgáltatási műveleteket, például az indexelést, az indexelést és a keresési adatok lekérdezéseit az API-kulcsok vezérlik, nem pedig a szerepkörök. További információ: az [API-kulcsok kezelése](search-security-api-keys.md).
 
 ## <a name="see-also"></a>Lásd még
 
 + [Kezelés a PowerShell használatával](search-manage-powershell.md) 
-+ [Teljesítmény és optimalizálás az Azure Search szolgáltatásban](search-performance-optimization.md)
-+ [Ismerkedés a szerepköralapú hozzáférés-vezérlés az Azure Portalon](../role-based-access-control/overview.md).
++ [Teljesítmény és optimalizálás Azure Search](search-performance-optimization.md)
++ [Ismerkedjen meg a Azure Portal szerepköralapú Access Controlával](../role-based-access-control/overview.md).

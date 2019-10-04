@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 01/18/2019
+ms.date: 05/23/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: f72ce02a8655ea97497098dc1412f69e07686861
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 3cffd2de0763ea6984b64b965ce1214951d3d569
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59284909"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056484"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>Hány VPN-ügyfélvégpont lehet a pont–hely konfigurációban?
 
@@ -38,11 +38,13 @@ A következő ügyféloldali operációs rendszerek támogatottak:
 
 ### <a name="can-i-traverse-proxies-and-firewalls-using-point-to-site-capability"></a>Lehetővé teszi-e a pont–hely kapcsolat a proxykon és tűzfalakon való áthaladást?
 
-Az Azure kétféle pont-hely típusú VPN-lehetőséget támogat:
+Az Azure pont – hely VPN-beállítások három típusát támogatja:
 
-* Secure Socket Tunneling Protocol (SSTP). Az SSTP a Microsoft jogvédett, SSL-alapú megoldása, amely képes átjutni a tűzfalakon, mivel a legtöbb tűzfal nyitva hagyja az SSL által használt 443-as TCP-portot.
+* Secure Socket Tunneling Protocol (SSTP). Az SSTP a Microsoft jogvédett SSL-alapú megoldás, amely behatolásának tűzfalak, mivel a legtöbb tűzfal nyitva a kimenő TCP-portot használja a 443-as SSL.
 
-* IKEv2 VPN. Az IKEv2 VPN egy szabványalapú IPsec VPN-megoldás, amely az 500-as és 4500-as UDP-portokat, valamint a következő IP-protokollt használja: 50. A tűzfalak ezeket a portokat nem mindig nyitják meg, ezért elképzelhető, hogy az IKEv2 VPN nem képes átjutni egyes proxykon és tűzfalakon.
+* OpenVPN. OpenVPN SSL-alapú megoldás, amely behatolásának tűzfalak, mivel a legtöbb tűzfal nyitva a kimenő TCP-portot használja a 443-as SSL is.
+
+* IKEv2 VPN. Az IKEv2 VPN egy szabványalapú IPsec VPN megoldást, amely nem az 500-as és 4500-as kimeneti UDP-portok és IP-protokoll. 50. A tűzfalak ezeket a portokat nem mindig nyitják meg, ezért elképzelhető, hogy az IKEv2 VPN nem képes átjutni egyes proxykon és tűzfalakon.
 
 ### <a name="if-i-restart-a-client-computer-configured-for-point-to-site-will-the-vpn-automatically-reconnect"></a>Ha újraindítok egy pont–hely kapcsolat használatára konfigurált ügyfélszámítógépet, a VPN automatikusan újracsatlakozik?
 
@@ -66,7 +68,7 @@ Az átviteli sebesség fenntartása nehéz a VPN-alagutakban. Az IPsec és az SS
 
 ### <a name="can-i-use-any-software-vpn-client-for-point-to-site-that-supports-sstp-andor-ikev2"></a>Használhatok szoftveres VPN-ügyfelet az SSTP-t és/vagy IKEv2-t támogató pont–hely kapcsolatokhoz?
 
-Nem. Az SSTP esetében csak a Windows natív VPN-ügyfele, az IKEv2 esetében pedig csak a Mac natív VPN-ügyfele használható. Tekintse át a támogatott ügyfél operációs rendszerek listáját.
+Nem. Az SSTP esetében csak a Windows natív VPN-ügyfele, az IKEv2 esetében pedig csak a Mac natív VPN-ügyfele használható. Azonban használhatja az OpenVPN ügyfél az összes platformon OpenVPN protokollon keresztül csatlakozni. Tekintse át a támogatott ügyfél operációs rendszerek listáját.
 
 ### <a name="does-azure-support-ikev2-vpn-with-windows"></a>Támogatja az Azure az IKEv2 VPN használatát Windows rendszeren?
 
@@ -78,9 +80,9 @@ A Windows 10 vagy a Server 2016 előkészítése az IKEv2 használatára:
 
    | Operációs rendszer verziója | Dátum | Szám/hivatkozás |
    |---|---|---|
-   | Windows Server 2016<br>Windows 10, 1607-es verzió | 2018. január 17. | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
-   | Windows 10, 1703-as verzió | 2018. január 17. | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
-   | A Windows 10 1709-es verzió | 2018. március 22. | [KB4089848](https://www.catalog.update.microsoft.com/search.aspx?q=kb4089848) |
+   | Windows Server 2016<br>Windows 10, 1607-es verzió | 2018\. január 17. | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
+   | Windows 10, 1703-as verzió | 2018\. január 17. | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
+   | A Windows 10 1709-es verzió | 2018\. március 22. | [KB4089848](https://www.catalog.update.microsoft.com/search.aspx?q=kb4089848) |
    |  |  |  |
 
 2. Adja meg a beállításkulcs értékét. Hozza létre a „HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload” REG_DWORD kulcsot a beállításjegyzékben, vagy állítsa az értékét 1-re.

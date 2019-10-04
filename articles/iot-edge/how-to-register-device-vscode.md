@@ -4,23 +4,23 @@ description: A Visual Studio Code használatával hozzon létre egy új IoT Edge
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 01/03/2019
+ms.date: 06/03/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 2b851e7f2ebdbff08fa09002765fbd7d7927deba
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: c8fce104d48acc3a562599c65eb15cb0a66657b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051169"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66495263"
 ---
 # <a name="register-a-new-azure-iot-edge-device-from-visual-studio-code"></a>A Visual Studio Code-ból egy új Azure IoT Edge-eszköz regisztrálása
 
-Az IoT-eszközök Azure IoT Edge használata előtt kell regisztrálni őket az IoT hubbal. Miután regisztrált egy eszközt, kap egy kapcsolati karakterláncot, amely segítségével konfigurálja az eszközt, a peremhálózati számítási feladatokhoz.
+Az IoT-eszközök Azure IoT Edge használata előtt kell regisztrálni őket az IoT hubbal. Miután regisztrált egy eszközt, kap egy kapcsolati karakterláncot, amely segítségével konfigurálja az eszközt az IoT Edge számítási feladatokhoz.
 
-Ez a cikk bemutatja, hogyan regisztrálhat egy új IoT Edge-eszköz, a Visual Studio Code (a VS Code). A legtöbb műveletek végrehajtása a VS Code-ban többféle módon lehet. Ez a cikk a Explorert használja, de is használhatja a Parancskatalógus futtatásához a lépések többségét.
+Ez a cikk bemutatja, hogyan regisztrálhat egy új IoT Edge-eszköz, a Visual Studio Code (a VS Code). A legtöbb műveletek végrehajtása a VS Code-ban többféle módon lehet. Ebben a cikkben a Explorerben, de a lépéseket a Parancskatalógus is használhatja.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -30,19 +30,19 @@ Ez a cikk bemutatja, hogyan regisztrálhat egy új IoT Edge-eszköz, a Visual St
 
 ## <a name="sign-in-to-access-your-iot-hub"></a>Jelentkezzen be az IoT hub eléréséhez
 
-Használhatja a Visual Studio Code az Azure IoT-bővítmények az IoT hub-műveletek végrehajtásához. Ezeket a műveleteket működéséhez kell jelentkezzen be az Azure-fiókjával, és válassza ki az IoT hubot, amelyen dolgozik.
+Használhatja a Visual Studio Code az Azure IoT-bővítmények az IoT hub-műveletek végrehajtásához. Ezeket a műveleteket működjön meg kell jelentkezzen be az Azure-fiókjával, és válassza ki az IoT hub.
 
 1. A Visual Studio Code-ban nyissa meg a **Explorer** megtekintése.
 
-1. Az Explorer alján bontsa ki a **Azure IoT Hub-eszközök** szakaszban.
+1. Az Explorer alján bontsa ki a **Azure IoT Hub** szakaszban.
 
    ![Az Azure IoT Hub-eszközök a szakaszt kibontva](./media/how-to-register-device-vscode/azure-iot-hub-devices.png)
 
-1. Kattintson a **...**  a a **Azure IoT Hub-eszközök** szakaszcímben. Ha nem látja a három pontra, kattintson a, vagy vigye a kurzort a fejléc fölé.
+1. Kattintson a **...**  a a **Azure IoT Hub** szakaszcímben. Ha nem látja a három pontra, kattintson a, vagy vigye a kurzort a fejléc fölé.
 
 1. Válasszon **válassza ki az IoT Hub**.
 
-1. Ha nem jelentkezett be az Azure-fiókját, kövesse az ehhez az utasításokat.
+1. Azure-fiókjába jelenleg nincs bejelentkezve, ha kövesse az utasításokat ennek a végrehajtására.
 
 1. Válassza ki az Azure-előfizetését.
 
@@ -62,7 +62,7 @@ A képernyőn a parancs eredménye látható. Az eszközinformáció nyomtatott,
 
 ## <a name="view-all-devices"></a>Minden eszköz megjelenítése
 
-Az IoT hubhoz csatlakozó eszközök szerepelnek az **Azure IoT Hub-eszközök** a Visual Studio Code Explorerben szakaszában. IoT Edge-eszközök különböznek egymástól, egy másik ikon és a tényt, hogy azok az adott eszközön üzembe helyezett modulok megjeleníthető bővíthetők nem peremhálózati eszközökön.
+Az IoT hubhoz csatlakozó eszközök szerepelnek az **Azure IoT Hub** a Visual Studio Code Explorerben szakaszában. IoT Edge-eszközök egy másik ikonra, és azt a tényt nem Edge eszközök esetén megkülönböztethetők, amelyek a **$edgeAgent** és **$edgeHub** minden IoT Edge-eszközön telepített modulok.
 
    ![Az IoT hub IoT Edge-eszközök megtekintése](./media/how-to-register-device-vscode/view-devices.png)
 
@@ -70,7 +70,7 @@ Az IoT hubhoz csatlakozó eszközök szerepelnek az **Azure IoT Hub-eszközök**
 
 Amikor készen áll az eszköz beállításához, a kapcsolati karakterláncot, amely összekapcsolja a fizikai eszköz az IoT hub az identitással kell.
 
-1. Kattintson a jobb gombbal az eszköz azonosítója az **Azure IoT Hub-eszközök** szakaszban.
+1. Kattintson a jobb gombbal az eszköz azonosítója az **Azure IoT Hub** szakaszban.
 
 1. Válassza ki **eszköz kapcsolati karakterlánc másolása**.
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: d3459f7bcfc0e2e61cb55b38a05b7b6a21ea3e9e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 10ebe796f5aed827a4934a94d568aedbef704503
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59283511"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67088231"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-te-express"></a>Oktatóanyag: Az Azure Active Directory-integráció a T & E Express
 
@@ -53,7 +53,7 @@ Az Azure AD-be olyan példá & E Express integráció konfigurálásához, hozz�
 
 **T & E Express hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -110,7 +110,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása a T & E Express, hajtsa vég
     b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<domain>.tyeexpress.com/authorize/samlConsume.aspx`
 
     > [!NOTE]
-    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges azonosítóját és a válasz URL-cím. Itt javasoljuk, hogy az azonosító egyedi karakterlánc értékét használhatja. Kapcsolattartó [T & E Express ügyfél-támogatási csoportjának](http://www.tyeexpress.com/contacto.aspx) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges azonosítóját és a válasz URL-cím. Itt javasoljuk, hogy az azonosító egyedi karakterlánc értékét használhatja. Kapcsolattartó [T & E Express ügyfél-támogatási csoportjának](https://www.tyeexpress.com/contacto.aspx) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
 5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **összevonási metaadatainak XML**  a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 
@@ -134,7 +134,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása a T & E Express, hajtsa vég
 
     ![Egyszeri bejelentkezés konfigurálása](./media/tyeexpress-tutorial/tye-SAML.png)
 
-1. Válassza ki a **Activar(Activate)** parancsát **nem** való **SI(Yes)**. Az a **Identity Provider metaadatok** szövegmezőjébe illessze be a metaadat-XML fájlok, amelyek az Azure Portalról letöltött.
+1. Válassza ki a **Activar(Activate)** parancsát **nem** való **SI(Yes)** . Az a **Identity Provider metaadatok** szövegmezőjébe illessze be a metaadat-XML fájlok, amelyek az Azure Portalról letöltött.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/tyeexpress-tutorial/tyeAdmin.png)
 

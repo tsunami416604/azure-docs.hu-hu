@@ -6,6 +6,12 @@
       href: home.md
 - name: Gyors útmutatók
   items:
+    - name: A webes portál használata
+      items:
+        - name: Tartalombesoroló létrehozása
+          href: getting-started-build-a-classifier.md
+        - name: Objektumérzékelő készítése
+          href: get-started-build-detector.md
     - name: A .NET SDK használata
       items:
         - name: Képbesorolás
@@ -38,18 +44,20 @@
           href: go-tutorial-object-detection.md
 - name: Oktatóanyagok
   items:
-    - name: Emblémafelismerő mobileszközökhöz
+    - name: Vizuális állapotok jelentése IoT-eszközön
+      href: iot-visual-alerts-tutorial.md
+    - name: Logók felismerése mobileszközön
       href: logo-detector-mobile.md
 - name: Útmutatók
   items:
-    - name: Tartalombesoroló létrehozása
-      href: getting-started-build-a-classifier.md
     - name: Modell tesztelése
       href: test-your-model.md
     - name: Tartalombesoroló teljesítményének fokozása
       href: getting-started-improving-your-classifier.md
     - name: Előrejelzési API használata
       href: use-prediction-api.md
+    - name: Javasolt címkék használata
+      href: suggested-tags.md
     - name: Modellek exportálása
       items:
         - name: Modell exportálása mobileszközre
@@ -70,14 +78,16 @@
       href: 'https://go.microsoft.com/fwlink/?linkid=865446'
     - name: Egyéni vizuális előrejelzési API
       href: 'https://go.microsoft.com/fwlink/?linkid=865445'
-    - name: Szószedet
-      href: glossary-of-terms.md
     - name: SDK-k
       items:
         - name: .NET
           href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/customvision?view=azure-dotnet'
         - name: Java
           href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/customvision?view=azure-java-stable'
+        - name: Node.js – Betanítás
+          href: 'https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/customvisiontraining?view=azure-node-latest'
+        - name: Node.js – Előrejelzés
+          href: 'https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/customvisionprediction?view=azure-node-latest'
         - name: Python
           href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customvision?view=azure-python'
         - name: Go – Képzés
@@ -98,5 +108,7 @@
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
     - name: Régiónkénti rendelkezésre állás
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+    - name: Megfelelőség
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Kibocsátási megjegyzések
       href: release-notes.md

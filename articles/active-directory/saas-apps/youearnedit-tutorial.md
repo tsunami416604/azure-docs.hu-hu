@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb0610ac9578b1aa85ae422275d69e651b0b4cfd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1f3a3339481538cd38a1d26f97869ff55d3f6021
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838204"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67086321"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-youearnedit"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező YouEarnedIt
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a YouEarnedIt konfigurálásához hozzá kell YouEarne
 
 **YouEarnedIt hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -107,17 +107,17 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés YouEarnedIt, hajtsa 
 
     a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minták használatával URL-címe:
 
-    | Környezet  | Mintázat  |
+    | Környezet  | Pattern  |
     |:--- |:--- |
     | Production | `https://<company name>.youearnedit.com/users/sign_in` |
-    | Védőfal  |`https://<company name>.sandbox.youearnedit.com/users/sign_in` |
+    | Sandbox  |`https://<company name>.sandbox.youearnedit.com/users/sign_in` |
 
     b. Az a **azonosító** szövegmezőbe írja be a következő minták használatával URL-címe:
 
-    | Környezet  | Mintázat  |
+    | Környezet  | Pattern  |
     |:--- |:--- |
     | Production | `<company name>.youearnedit.com` |
-    | Védőfal  |`<company name>.sandbox.youearnedit.com` |
+    | Sandbox  |`<company name>.sandbox.youearnedit.com` |
 
     > [!NOTE]
     > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL- és azonosító. Támogatásért forduljon a hozzárendelt YouEarnedIt ügyfelek sikerességét beolvasni ezeket az értékeket.

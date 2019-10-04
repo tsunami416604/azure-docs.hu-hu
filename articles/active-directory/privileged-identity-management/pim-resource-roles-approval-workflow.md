@@ -1,9 +1,9 @@
 ---
-title: Hagyja jóvá vagy utasítsa a PIM - Azure Active Directory Azure-erőforrások szerepköreihez tartozó kérelmek |} A Microsoft Docs
-description: Megtudhatja, hogyan jóváhagyja vagy elutasítja az Azure AD Privileged Identity Management (PIM) az Azure-erőforrások szerepköreihez tartozó kérelmek.
+title: Azure-beli erőforrás-szerepkörökre vonatkozó kérelmek jóváhagyása vagy elutasítása a PIM-Azure Active Directoryban | Microsoft Docs
+description: Megtudhatja, hogyan hagyhatja jóvá vagy tilthatja le a Azure AD Privileged Identity Management (PIM) Azure-beli erőforrás-szerepköreire vonatkozó kérelmeket.
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 ms.service: active-directory
 ms.devlang: na
@@ -12,76 +12,76 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
 ms.date: 04/09/2019
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f645b7077ef43dc7eb4d70261b6b601b5e4af1b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 8b39434f8763e44a126f74ac9a19596e4413ae9c
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59492158"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804272"
 ---
-# <a name="approve-or-deny-requests-for-azure-resource-roles-in-pim"></a>Hagyja jóvá vagy utasítsa a PIM az Azure-erőforrások szerepköreihez tartozó kérelmek
+# <a name="approve-or-deny-requests-for-azure-resource-roles-in-pim"></a>Azure-erőforrás-szerepkörökre vonatkozó kérelmek jóváhagyása vagy elutasítása a PIM-ben
 
-Az Azure Active Directory (Azure AD) Privileged Identity Management (PIM), konfigurálhatja szerepkörök jóváhagyást kér az aktiválás, és válasszon egy vagy több felhasználót, vagy delegált jóváhagyók csoportot. Delegált jóváhagyók rendelkezik jóváhagyásra váró kérelmek 24 óra. Ha 24 órán belül nem jóváhagyják a kérését, majd a jogosult felhasználó újra egy új kérelmet kell benyújtania. A 24 órás jóváhagyási időtartomány érték nem módosítható.
+Azure Active Directory (Azure AD) Privileged Identity Management (PIM) használatával konfigurálhatja a szerepköröket az aktiválás jóváhagyásához, és egy vagy több felhasználót vagy csoportot delegált jóváhagyóként választhat ki. A delegált jóváhagyók 24 órával a kérelmek jóváhagyására jogosultak. Ha a kérést 24 órán belül nem hagyták jóvá, a jogosult felhasználónak újra be kell küldenie egy új kérelmet. A 24 órás jóváhagyási idő ablak nem konfigurálható.
 
-Kövesse az ebben a cikkben jóváhagyja vagy elutasítja a kérelmeket az Azure-erőforrások szerepköreihez tartozó lépéseket.
+Az Azure-erőforrás szerepköreire vonatkozó kérések jóváhagyásához vagy elutasításához kövesse a jelen cikkben ismertetett lépéseket.
 
-## <a name="view-pending-requests"></a>Függőben lévő kérelmek megtekintése
+## <a name="view-pending-requests"></a>Függőben lévő kérések megtekintése
 
-Delegált jóváhagyójaként e-mailben értesítést fog kapni, ha egy Azure-erőforrás szerepkör kérelem jóváhagyásra váró. Megtekintheti a függőben lévő kérések az PIM-ben.
+Meghatalmazott jóváhagyóként e-mail-értesítést fog kapni, ha az Azure-erőforrás szerepkörre vonatkozó kérelem jóváhagyásra vár. Ezeket a függőben lévő kéréseket a PIM-ben tekintheti meg.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-1. Nyissa meg **az Azure AD Privileged Identity Management**.
+1. Nyissa meg **Azure ad Privileged Identity Management**.
 
-1. Kattintson a **kérések jóváhagyása**.
+1. Kattintson a **kérelmek jóváhagyása**gombra.
 
-    ![Azure-erőforrás - kérelmek jóváhagyása](./media/pim-resource-roles-approval-workflow/resources-approve-requests.png)
+    ![Kérések jóváhagyása – Azure-erőforrások lap, amely a felülvizsgálati kérelmet tartalmazza](./media/pim-resource-roles-approval-workflow/resources-approve-requests.png)
 
-    Az a **szerepkör-aktiválásokhoz tartozó kérelmek** szakaszban jóváhagyásra váró kérelmek listáját láthatja.
+    A **szerepkör-aktiválási kérések** szakaszban megtekintheti a jóváhagyásra váró kérelmek listáját.
 
 ## <a name="approve-requests"></a>Kérések jóváhagyása
 
-1. Keresse meg és kattintson a jóváhagyni kívánt kérést. Egy jóváhagyási panel jelenik meg.
+1. Keresse meg és kattintson a jóváhagyni kívánt kérelemre. Megjelenik egy jóváhagyás vagy megtagadás panel.
 
-    ![Hagyja jóvá a kérelmek panel](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png)
+    ![Kérelmek jóváhagyása – jóváhagyás vagy megtagadás ablaktábla részletekkel és indoklással](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png)
 
-1. Az a **indoklás** mezőbe írja be az okot.
+1. Az **indoklás** mezőbe írja be az okot.
 
-1. Kattintson a **jóváhagyása**.
+1. Kattintson a **jóváhagyás**gombra.
 
-    A jóváhagyással megjelenik egy értesítés.
+    Megjelenik egy értesítés a jóváhagyással.
 
-    ![Értesítés jóváhagyása](./media/pim-resource-roles-approval-workflow/resources-approve-notification.png)
+    ![A kérelem jóváhagyását jelző értesítés jóváhagyása](./media/pim-resource-roles-approval-workflow/resources-approve-notification.png)
 
-## <a name="deny-requests"></a>Kérelmek elutasítása
+## <a name="deny-requests"></a>Kérelmek megtagadása
 
-1. Keresse meg és kattintson a kérelemhez, amely meg szeretné tagadni. Egy jóváhagyási panel jelenik meg.
+1. Keresse meg és kattintson a megtagadni kívánt kérelemre. Megjelenik egy jóváhagyás vagy megtagadás panel.
 
-    ![Hagyja jóvá a kérelmek panel](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png)
+    ![Kérelmek jóváhagyása – jóváhagyás vagy megtagadás ablaktábla részletekkel és indoklással](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png)
 
-1. Az a **indoklás** mezőbe írja be az okot.
+1. Az **indoklás** mezőbe írja be az okot.
 
-1. Kattintson a **megtagadása**.
+1. Kattintson a **Megtagadás**gombra.
 
-    Megjelenik egy értesítés, a elutasítva.
+    Megjelenik egy értesítés az elutasítással.
 
-## <a name="workflow-notifications"></a>A munkafolyamat-értesítések
+## <a name="workflow-notifications"></a>Munkafolyamat-értesítések
 
-A következő munkafolyamat-értesítést némi információt:
+Íme néhány információ a munkafolyamat-értesítésekről:
 
-- A jóváhagyó lista tagjainak az összes értesítést kap e-mailben a felülvizsgálatot függőben van egy kérelem egy adott szerepkör esetében. E-mail értesítések közé tartoznak a kérést, ha a jóváhagyó jóváhagyhatják vagy megtagadhatják a közvetlen hivatkozást.
-- Kérelmek jóváhagyja vagy megtagadja a lista első tag által megoldott.
-- Amikor egy jóváhagyó válaszolt a kérelemre, a jóváhagyó lista összes tagja, a művelet értesítést kap.
-- Erőforrás-rendszergazdák értesítést kap egy jóváhagyott tagot a szerepkörük aktívvá válik.
+- A jóváhagyó lista összes tagja e-mailben értesítést kap, ha a szerepkörre vonatkozó kérés függőben van a felülvizsgálatban. Az e-mail-értesítések közé tartozik egy közvetlen hivatkozás a kérésre, ahol a jóváhagyó jóváhagyhatja vagy megtagadhatja a kérelmet.
+- A kérelmeket a lista első tagja oldja fel, aki jóváhagyja vagy megtagadja a kérelmet.
+- Ha egy jóváhagyó válaszol a kérelemre, a jóváhagyó lista összes tagja értesítést kap a műveletről.
+- Az erőforrás-rendszergazdák értesítést kapnak, ha egy jóváhagyott tag aktív lesz a szerepkörében.
 
 >[!Note]
->Úgy véli, hogy egy jóváhagyott tag nem lehet aktív erőforrás rendszergazda eltávolíthatja a aktív szerepkör-hozzárendelés az PIM-ben. Bár az erőforrás-rendszergazdák nem kapnak értesítést a függőben lévő kérések kivéve, ha a jóváhagyó lista tagjainak, megtekintheti és visszavonása függőben lévő kéréseket az összes olyan felhasználó megtekinti a függőben lévő kéréseket az PIM-ben. 
+>Egy erőforrás-rendszergazda, aki úgy véli, hogy egy jóváhagyott tag nem lehet aktív, el tudja távolítani az aktív szerepkör-hozzárendelést a PIM-ben. Bár az erőforrás-rendszergazdák nem kapnak értesítést a függőben lévő kérelmekről, kivéve, ha azok tagjai a jóváhagyó listának, az összes felhasználó függőben lévő kérelmeit megtekinthetik és megtörölhetik a PIM-ben függőben lévő kérelmek megtekintésével 
 
 ## <a name="next-steps"></a>További lépések
 
-- [A PIM az Azure-erőforrás szerepkörök meghosszabbítása vagy megújítása](pim-resource-roles-renew-extend.md)
-- [A PIM e-mail-értesítések](pim-email-notifications.md)
-- [Hagyja jóvá vagy utasítsa a PIM az Azure AD-szerepkörökhöz tartozó kérelmek](azure-ad-pim-approval-workflow.md)
+- [Azure-erőforrás szerepköreinek kiterjesztése vagy megújítása a PIM-ben](pim-resource-roles-renew-extend.md)
+- [E-mail-értesítések a PIM-ben](pim-email-notifications.md)
+- [Azure AD-szerepkörökre vonatkozó kérelmek jóváhagyása vagy elutasítása a PIM-ben](azure-ad-pim-approval-workflow.md)

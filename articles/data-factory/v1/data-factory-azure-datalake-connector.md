@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3bb372c4c3ddb79429df20c24c691c847e927e2a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d8637a2711c0301d9e9f409e169ed04fb3d65783
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57975610"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839550"
 ---
 # <a name="copy-data-to-and-from-data-lake-storage-gen1-by-using-data-factory"></a>Adatok másolása és a Data Lake Storage Gen1 Data Factory használatával
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
 > * [1-es verzió](data-factory-azure-datalake-connector.md)
 > * [2-es verzió (aktuális verzió)](../connector-azure-data-lake-store.md)
 
@@ -54,7 +54,7 @@ Létrehozhat egy folyamatot egy másolási tevékenységgel az adatok áthelyez�
 
 Az adatok másolása folyamat létrehozásának legegyszerűbb módja az, hogy használja a **másolása varázsló**. A folyamat létrehozása a másolás varázsló használatával, olvassa el [oktatóanyag: Hozzon létre egy folyamatot a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md).
 
-A következő eszközök használatával hozzon létre egy folyamatot: **Az Azure portal**, **Visual Studio**, **Azure PowerShell-lel**, **Azure Resource Manager-sablon**, **.NET API**, és  **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját.
+A következő eszközök használatával hozzon létre egy folyamatot: **A Visual Studio**, **Azure PowerShell-lel**, **Azure Resource Manager-sablon**, **.NET API**, és **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját.
 
 Az eszközök vagy az API-kat használja, hogy létrehoz egy folyamatot, amely a helyez át adatokat egy forrásadattárból egy fogadó adattárba a következő lépéseket fogja végrehajtani:
 
@@ -208,12 +208,12 @@ A Data Factory-osztályokat használja a kód kapcsolatos részletekért lásd: 
 
 2. Ellenőrizze, hogy Ön legalább biztosít **olvasó** szerepkör a felhasználó vagy szolgáltatásnév az a data lake-fiók. Itt látható, hogy hogyan:
 
-    1. Válassza az Azure Portal -> a Data Lake Store-fiók
+    1. Az Azure Portalon válassza a Data Lake Store-fiók ->
     2. Kattintson a **hozzáférés-vezérlés (IAM)** a Data Lake Store az panel
     3. Kattintson a **szerepkör-hozzárendelés hozzáadása**
     4. Állítsa be **szerepkör** , **olvasó**, és válassza ki a felhasználó vagy az egyszerű szolgáltatás hozzáférést példányáért használja
 
-3. Ha nem szeretné megadni **olvasó** szerepe a felhasználó vagy szolgáltatásnév, alternatív [kifejezetten megad egy végrehajtási helyéhez](data-factory-data-movement-activities.md#global) másolási activitywith helyét, a Data Lake Store a. Példa:
+3. Ha nem szeretné megadni **olvasó** szerepe a felhasználó vagy szolgáltatásnév, alternatív [kifejezetten megad egy végrehajtási helyéhez](data-factory-data-movement-activities.md#global) a másolási tevékenység a Data Lake Store az helyét. Példa:
 
     ```json
     {
@@ -294,7 +294,7 @@ A rendelkezésre álló tulajdonságok a **typeProperties** a tevékenységek sz
 ### <a name="recursive-and-copybehavior-examples"></a>a rekurzív és copyBehavior példák
 Ez a szakasz ismerteti az eredményül kapott viselkedéstől a másolási művelet rekurzív és copyBehavior értékek különböző kombinációihoz.
 
-| a rekurzív | a copyBehavior | Eredményül kapott viselkedés |
+| recursive | copyBehavior | Eredményül kapott viselkedés |
 | --- | --- | --- |
 | true |preserveHierarchy |Forrás mappa mappa1 az alábbi struktúra használatával: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>a célmappában mappa1 szerkezete ugyanaz, mint a forrás jön létre<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5. |
 | true |flattenHierarchy |Forrás mappa mappa1 az alábbi struktúra használatával: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>A cél mappa1 jön létre az alábbi struktúra használatával: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automatikusan létrehozott nevet a file1 kiszolgálón<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet File5 |
@@ -307,7 +307,7 @@ Ez a szakasz ismerteti az eredményül kapott viselkedéstől a másolási műve
 További információkért lásd: a [fájl- és tömörítési formátumok az Azure Data Factoryban](data-factory-supported-file-and-compression-formats.md) cikk.
 
 ## <a name="json-examples-for-copying-data-to-and-from-data-lake-store"></a>Az adatok másolása, és a Data Lake Store JSON-példák
-Az alábbi példák megadják példa JSON-definíciói. Ezeknek a definícióknak minta segítségével hozzon létre egy folyamatot a [az Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md), [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), vagy [Azure PowerShell-lel](data-factory-copy-activity-tutorial-using-powershell.md). A példák bemutatják, hogyan másolhat adatokat a Data Lake Store és az Azure Blob storage szolgáltatásba vagy onnan. Azonban az adatok átmásolhatók _közvetlenül_ bármely, bármelyik támogatott forrás fogadók. További információkért lásd: a "támogatott adattárak és formátumok" szakasz a a [adatok áthelyezése másolási tevékenységgel](data-factory-data-movement-activities.md) cikk.
+Az alábbi példák megadják példa JSON-definíciói. Ezeknek a definícióknak minta segítségével hozzon létre egy folyamatot [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy [Azure PowerShell-lel](data-factory-copy-activity-tutorial-using-powershell.md). A példák bemutatják, hogyan másolhat adatokat a Data Lake Store és az Azure Blob storage szolgáltatásba vagy onnan. Azonban az adatok átmásolhatók _közvetlenül_ bármely, bármelyik támogatott forrás fogadók. További információkért lásd: a "támogatott adattárak és formátumok" szakasz a a [adatok áthelyezése másolási tevékenységgel](data-factory-data-movement-activities.md) cikk.
 
 ### <a name="example-copy-data-from-azure-blob-storage-to-azure-data-lake-store"></a>Példa: Adatok másolása az Azure Blob Storage-ból az Azure Data Lake Store
 Ebben a szakaszban található példakód mutatja:

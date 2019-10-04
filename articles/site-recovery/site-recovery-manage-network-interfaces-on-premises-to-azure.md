@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
 ms.openlocfilehash: 5d5dd7bc3f6b60c2f9d7c2179f2bd356ca101dc4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59791866"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61471774"
 ---
 # <a name="manage-virtual-machine-network-interfaces-for-on-premises-disaster-recovery-to-azure"></a>Az Azure-bA a helyszíni vész-helyreállítási virtuális gép hálózati adapterek kezelése
 Az Azure-beli virtuális gép (VM) rendelkeznie kell legalább egy hálózati adapter csatlakozik. Hálózati adapter csatlakozik a virtuális gép mérete támogatja, mint rendelkezhet.

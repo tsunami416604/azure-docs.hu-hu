@@ -1,9 +1,9 @@
 ---
-title: Az Azure Active Directory-jelentések adatmegőrzési szabályzata |} A Microsoft Docs
-description: Adatmegőrzési házirendek, a jelentés adatai az Azure Active Directoryban
+title: Mennyi ideig tart az Azure AD Store jelentéskészítési adatai? | Microsoft Docs
+description: Megtudhatja, hogy az Azure milyen hosszú ideig tárolja a különböző jelentési adattípusokat.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: 183e53b0-0647-42e7-8abe-3e9ff424de12
@@ -14,71 +14,71 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1423fddc13a6912e90b6a239921cf2a4d2662ec
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: c52f8873527d92e621ef032f5bc3e82d3364a691
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59683733"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989583"
 ---
-# <a name="azure-active-directory-report-retention-policies"></a>Az Azure Active Directory-jelentés adatmegőrzési szabályai
+# <a name="how-long-does-azure-ad-store-reporting-data"></a>Mennyi ideig tart az Azure AD Store jelentéskészítési adatai?
 
-Ebben a cikkben megismerkedhet a különböző tevékenységre vonatkozó jelentések az Azure Active Directoryban adatmegőrzési házirendek. 
+Ebből a cikkből megtudhatja, hogyan használhatók az adatmegőrzési szabályzatok a Azure Active Directory különböző tevékenységi jelentéseihez. 
 
-### <a name="when-does-azure-ad-start-collecting-data"></a>Ha nem az Azure AD megkezdi az adatok gyűjtését?
+### <a name="when-does-azure-ad-start-collecting-data"></a>Mikor kezdi az Azure AD az adatok gyűjtését?
 
-| Azure AD Edition | Gyűjtemény indítása |
+| Azure AD-kiadás | Gyűjtemény kezdete |
 | :--              | :--   |
-| Prémium szintű Azure AD P1 <br /> Prémium szintű Azure AD P2 | Amikor regisztrál egy előfizetést |
-| Azure AD Free <br /> Azure AD Basic | Az első megnyitásakor a [Azure Active Directory panel](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) vagy használja a [reporting API-k](https://aka.ms/aadreports)  |
+| Azure AD Premium P1 <br /> Azure AD Premium P2 | Ha előfizetést regisztrál |
+| Azure AD Free <br /> Azure AD Basic | Amikor először nyitja meg a [Azure Active Directory](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) panelt, vagy a [jelentéskészítő API-kat](https://aka.ms/aadreports) használja  |
 
 ---
 
-### <a name="when-is-the-activity-data-available-in-the-azure-portal"></a>Amikor a tevékenységek adatai érhető el az Azure Portalon?
+### <a name="when-is-the-activity-data-available-in-the-azure-portal"></a>Mikor érhetők el a tevékenységek a Azure Portal?
 
-- **Azonnal** – Ha már dolgozott a jelentések az Azure Portalon.
-- **2 órán belül** – Ha nem kapcsolta a jelentéskészítés az Azure Portalon.
-
----
-
-### <a name="how-soon-can-i-see-activities-data-after-getting-a-premium-license"></a>Hogy mikor is tevékenységek adatainak megtekintéséhez prémium licencre első után?
-
-Ha már rendelkezik az ingyenes licenc tevékenységek adatokat, majd tekintheti meg azonnal a frissítés. Ha nem rendelkezik semmilyen adatot, majd vesz igénybe egy vagy két napot megjelenjen a jelentésekben, prémium licencre történő frissítés után az adatok.
+- **Azonnal** – ha már dolgozik a Azure Portal jelentéseivel.
+- **2 órán belül** – ha nem kapcsolta be a jelentéskészítést a Azure Portalban.
 
 ---
 
-### <a name="can-i-see-last-months-data-after-getting-an-azure-ad-premium-license"></a>Ha prémium szintű Azure AD-licenccel is láthatók múlt havi adatokat?
+### <a name="how-soon-can-i-see-activities-data-after-getting-a-premium-license"></a>Milyen hamar láthatom a tevékenységek információit a prémium szintű licenc beszerzése után?
 
-Ha nemrég egy prémium szintű verzió (beleértve a próbaverzió) váltott, látható adatok mentése és 7 nap kezdetben. Amikor gyűlnek az adatok, láthatja a adatok az elmúlt 30 nap során.
-
----
-
-### <a name="when-does-azure-ad-start-collecting-security-signal-data"></a>Ha nem az Azure AD adatgyűjtés megkezdéséhez biztonsági jel?  
-
-A biztonsági jelek, az adatgyűjtési folyamat akkor kezdődik, amikor, jóváhagyja a használja a **Identity Protection Centerben**. 
+Ha már rendelkezik a tevékenységek adataival az ingyenes licenccel, akkor azonnal megtekintheti a frissítést. Ha nem rendelkezik az adataival, a rendszer egy vagy két napot is igénybe vesz, hogy az adatai megjelenjenek a jelentésekben a prémium szintű licencre való frissítés után.
 
 ---
 
-### <a name="how-long-does-azure-ad-store-the-data"></a>Mennyi ideig Azure ad-ben az adatok tárolása?
+### <a name="can-i-see-last-months-data-after-getting-an-azure-ad-premium-license"></a>A prémium szintű Azure AD-licenc beszerzése után láthatom a múlt havi adatszolgáltatást?
 
-**Tevékenységjelentések**    
+Ha nemrég áttért a prémium verzióra (beleértve a próbaverziót is), a kezdeti időszakban akár 7 napig is megtekintheti az adatvesztést. Az adatgyűjtés során az elmúlt 30 napban láthatja az adatmennyiséget.
 
-| Jelentés                 | Azure AD Free | Azure AD Basic | Prémium szintű Azure AD P1 | Prémium szintű Azure AD P2 |
+---
+
+### <a name="when-does-azure-ad-start-collecting-security-signal-data"></a>Mikor kezdi meg az Azure AD a biztonsági szignálok adatgyűjtését?  
+
+A biztonsági jelek esetében a begyűjtési folyamat elindul, amikor bekapcsolja az **Identity Protection centert**. 
+
+---
+
+### <a name="how-long-does-azure-ad-store-the-data"></a>Mennyi ideig tárolja az Azure AD az adattárolást?
+
+**Tevékenységgel kapcsolatos jelentések**    
+
+| Jelentés                 | Azure AD Free | Azure AD Basic | Azure AD Premium P1 | Azure AD Premium P2 |
 | :--                    | :--           | :--            | :--                 | :--                 |
 | Naplók             | 7 nap        |  7 nap        | 30 nap             | 30 nap             |
 | Bejelentkezések               | –           |  –           | 30 nap             | 30 nap             |
-| Az Azure MFA-használat        | 30 nap       |  30 nap       | 30 nap             | 30 nap             |
+| Azure MFA-használat        | 30 nap       |  30 nap       | 30 nap             | 30 nap             |
 
-A naplózási és a bejelentkezési tevékenységre vonatkozó adatok által átirányítására egy Azure storage-fiókot az Azure Monitor használatával a fent vázolt alapértelmezett megőrzési idejénél hosszabb őrizheti meg. További információkért lásd: [archiválása az Azure AD-naplók az Azure storage-fiókba](quickstart-azure-monitor-route-logs-to-storage-account.md).
+A naplózási és a bejelentkezési tevékenységek adatai hosszabbak maradnak, mint az alapértelmezett megőrzési időtartam, amelyet a fentiekben ismertetünk, ha Azure Monitor használatával irányítja át az Azure Storage-fiókba. További információ: [Azure ad-naplók archiválása Azure Storage-fiókba](quickstart-azure-monitor-route-logs-to-storage-account.md).
 
 **Biztonsági jelek**
 
-| Jelentés         | Azure AD Free | Azure AD Basic | Prémium szintű Azure AD P1 | Prémium szintű Azure AD P2 |
+| Jelentés         | Azure AD Free | Azure AD Basic | Azure AD Premium P1 | Azure AD Premium P2 |
 | :--            | :--           | :--            | :--                 | :--                 |
-| Veszélyeztetett felhasználók  | 7 nap        | 7 nap         | 30 nap             | 90 nap             |
+| Érintett felhasználók  | 7 nap        | 7 nap         | 30 nap             | 90 nap             |
 | Kockázatos bejelentkezések | 7 nap        | 7 nap         |  30 nap            | 90 nap             |
 
 ---

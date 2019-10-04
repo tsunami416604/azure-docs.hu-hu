@@ -1,46 +1,46 @@
 ---
-title: Translator Speech API nyelvek metódus
+title: Translator Speech API languages metódus
 titleSuffix: Azure Cognitive Services
-description: A Translator Speech API nyelvek módszert használja.
+description: Használja a Translator Speech API languages metódust.
 services: cognitive-services
-author: Jann-Skotdal
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: conceptual
 ms.date: 05/18/2018
-ms.author: v-jansko
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 7498ba08b9ce7b6aae10f38a393eb8cba37f3f4e
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 46ac3928238382f56db5a799226bd3d9243b7ca2
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57435762"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966416"
 ---
-# <a name="translator-speech-api-languages"></a>Beszédfordító API: Languages
+# <a name="translator-speech-api-languages"></a>Translator Speech API: Languages
 
 [!INCLUDE [Deprecation note](../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
 
-Fordítói beszéd folyamatosan bővíti a szolgáltatás által támogatott nyelvek listáját. Ez az API segítségével a jelenleg elérhető a Translator Speech szolgáltatással való használatra nyelvek készletét felderíteni.
+Translator Speech folyamatosan bővíti a szolgáltatásai által támogatott nyelvek listáját. Ezzel az API-val megismerheti a Translator Speech szolgáltatással jelenleg használható nyelvek készletét.
 
-Az API-t elérhető nyelvek beolvasása használatának bemutatásához Kódminták érhetők el a [a Microsoft Translator GitHub-webhelyről](https://github.com/MicrosoftTranslator).
+Az API-t az elérhető nyelvek beszerzését bemutató kód minták a [Microsoft Translator GitHub webhelyéről](https://github.com/MicrosoftTranslator)érhetők el.
 
-## <a name="implementation-notes"></a>Megvalósításhoz fűzött megjegyzések
+## <a name="implementation-notes"></a>Implementációs megjegyzések
 
 ### <a name="get-languages"></a>/Languages beolvasása
 
-A beszéd, hogy az átírt szöveg lefordítása, és a fordítás szintetizált lefényképezze nyelvek széles érhető el.
+Számos nyelv áll rendelkezésre a beszéd átírásához, az átmásolt szöveg lefordításához és a fordítás szintetizált beszédének létrehozásához.
 
-Ügyfél használ a `scope` lekérdezési paraméter meghatározásához, hogy mely csoportok nyelveken, van érdekelné.
+Az ügyfél a `scope` lekérdezési paramétert használja annak meghatározására, hogy mely nyelveket érdekli.
 
-* **Hang-szöveg:** Lekérdezési paraméter használata `scope=speech` lefényképezze beszéd szöveggé számára elérhető nyelveket a készletét lekéréséhez.
-* **Szövegfordítás:** Lekérdezési paraméter használata `scope=text` beolvasni az átírt szöveg lefordítása számára elérhető nyelveket készletét.
-* **Szöveg-hang transzformációs:**  Lekérdezési paraméter használata `scope=tts` nyelvek és beszédhangot szintetizálásához lefordított szöveget beszéddé vissza lehet lekérdezni.
+* **Beszéd – szöveg:** A lekérdezési `scope=speech` paraméter használatával lekérheti a beszéd szövegbe való átírásához elérhető nyelvek készletét.
+* **Szöveg fordítása:** A lekérdezési `scope=text` paraméter használatával lekérheti az átmásolt szöveg lefordításához elérhető nyelvek készletét.
+* **Szöveg – beszéd:**  A lekérdezési `scope=tts` paraméterrel lekérdezheti a szövegeket és hangokat, amelyekkel a fordítás szövege visszaállítható a beszédbe.
 
-Egy ügyfél egyszerre lekérheti több választási lehetőségek vesszővel tagolt listájának megadásával. Például: `scope=speech,text,tts`.
+Egy ügyfél egyszerre több készletet is lekérhet a választható lehetőségek vesszővel tagolt listájának megadásával. Például: `scope=speech,text,tts`.
 
-Minden kért beállítása sikeres válasz tulajdonsággal rendelkező JSON-objektum.
+A sikeres válasz egy JSON-objektum, amely egy tulajdonsággal rendelkezik az egyes kért készletekhez.
 
 ```
 {
@@ -56,17 +56,17 @@ Minden kért beállítása sikeres válasz tulajdonsággal rendelkező JSON-obje
 }
 ```
 
-Mivel az ügyfél használhatja a `scope` vissza kell adni a lekérdezési paraméter támogatott nyelveket, mely csoportok kiválasztásához, a tényleges választ előfordulhat, hogy csak egy részével fent látható az összes tulajdonság.
+Mivel az ügyfél a `scope` lekérdezési paraméterrel kiválaszthatja, hogy a támogatott nyelvek mely készletei legyenek visszaadva, a tényleges válasz csak a fent látható tulajdonságok egy részhalmazát veheti fel.
 
-Az egyes tulajdonság megadott értéke a következő.
+Az egyes tulajdonságokhoz megadott érték a következő.
 
-### <a name="speech-to-text-speech"></a>Hang-szöveg transzformációs (beszédfelismerés)
+### <a name="speech-to-text-speech"></a>Beszéd és szöveg (beszéd)
 
-A hang-szöveg transzformációs tulajdonság társított értéket `speech`, egy szótár (kulcs, érték) párok. Minden egyes kulcs azonosítja a hang-szöveg transzformációs támogatja. A kulcs az azonosítója, amely az API-t, hogy az ügyfél továbbítja. A kulcshoz tartozó érték a következő tulajdonságokkal rendelkező objektum:
+A beszéd – szöveg tulajdonsághoz `speech`társított érték (kulcs, érték) párok szótára. Az egyes kulcsok a beszéd és a szöveg között támogatott nyelvet azonosítanak. A kulcs az az azonosító, amelyet az ügyfél továbbít az API-nak. A kulcshoz társított érték egy olyan objektum, amely a következő tulajdonságokkal rendelkezik:
 
-* `name`: A nyelv nevének megjelenítéséhez.
-* `language`: A társított nyelven írt, nyelvcímke. Olvassa el a "Szöveg tranzakció".
-A következő egy példa:
+* `name`: A nyelv megjelenítendő neve.
+* `language`: A társított írott nyelv nyelvi címkéje. Tekintse meg az alábbi "szöveges tranzakció" című szakaszt.
+Példa:
 
 ```
 {
@@ -76,14 +76,14 @@ A következő egy példa:
 }
 ```
 
-### <a name="text-translation-text"></a>Szövegfordítás (szöveg)
+### <a name="text-translation-text"></a>Szöveg fordítása (szöveg)
 
-Az értéket a `text` tulajdonság akkor is egy szótár, ahol minden egyes kulcs azonosítja az szövegfordítás támogatott nyelvet. A kulcshoz tartozó érték a nyelv ismerteti:
+A `text` tulajdonsághoz társított érték egy olyan szótár is, amelyben az egyes kulcsok a szöveges fordításhoz támogatott nyelvet azonosítanak. A kulcshoz társított érték a nyelvet írja le:
 
-* `name`: A nyelv nevének megjelenítéséhez.
-* `dir`: Amely írásmód `rtl` jobbról balra író nyelvek vagy `ltr` jobbról balra író nyelvek.
+* `name`: A nyelv megjelenítendő neve.
+* `dir`: Írásirányát, amely `rtl` jobbról balra író nyelvekhez vagy `ltr` balról jobbra írt nyelvekhez használható.
 
-A következő egy példa:
+Példa:
 
 ```
 {
@@ -93,18 +93,18 @@ A következő egy példa:
 }
 ```
 
-### <a name="text-to-speech-tts"></a>Szövegfelolvasás
+### <a name="text-to-speech-tts"></a>Szöveg – beszéd (TTS)
 
-A szöveg-hang transzformációs tulajdonság, szöveg-beszéd átalakítás, társított érték is egy szótár, ahol minden egyes kulcs azonosítja az egy támogatott hangalapú. Egy hang-objektum attribútumai a következők:
+A szöveg-beszéd tulajdonsághoz (TTS) társított érték egy olyan szótár is, amelyben az egyes kulcsok támogatott hangfelismerést azonosítanak. A Hangobjektum attribútumai a következők:
 
-* `displayName`: A szóbeli megjelenített neve.
-* `gender`: A szóbeli (Férfi vagy női) neme.
-* `locale`: A hang és az elsődleges nyelv alkód régió alkód nyelvcímke.
-* `language`: A társított nyelven írt, nyelvcímke.
-* `languageName`: A nyelv nevének megjelenítéséhez.
-* `regionName`: Megjelenítendő név a régióban ehhez a nyelvhez.
+* `displayName`: A hang megjelenítendő neve.
+* `gender`: A hang neme (férfi vagy nő).
+* `locale`: A hang nyelvi címkéje az elsődleges nyelvi alkód és a régió alkód.
+* `language`: A társított írott nyelv nyelvi címkéje.
+* `languageName`: A nyelv megjelenítendő neve.
+* `regionName`: A régió megjelenítendő neve ehhez a nyelvhez.
 
-A következő egy példa:
+Példa:
 
 ```
 {
@@ -121,35 +121,35 @@ A következő egy példa:
 ```
 
 ### <a name="localization"></a>Honosítás
-A szolgáltatás minden nyelven az "Accept-nyelv" fejléc szövegfordítás támogatott összes nyelv adja vissza.
+A szolgáltatás az összes nevet visszaadja az "Accept-Language" fejléc nyelvén, a szöveges fordításban támogatott összes nyelv esetében.
 
-### <a name="response-class-status-200"></a>Válasz osztály (állapota 200)
+### <a name="response-class-status-200"></a>Válasz osztály (200-es állapot)
 A támogatott nyelvek készletét leíró objektum.
 
-ModelExample érték:
+ModelExample értéke:
 
-Langagues {beszéd (object, nem kötelező), szöveg (object, nem kötelező), szöveg-beszéd átalakítás (object, nem kötelező)}
+Langagues {Speech (objektum, nem kötelező), szöveg (objektum, nem kötelező), TTS (objektum, nem kötelező)}
 
 ### <a name="headers"></a>Fejlécek
 
-|Fejléc|Leírás|Typo|
+|Fejléc|Leírás|Type|
 :--|:--|:--|
-X-RequestId|Érték a kiszolgáló azonosításához a kérelem által generált, és használják hibaelhárítási célból.|sztring|
+X-RequestId|A kiszolgáló által a kérelem azonosítására és a hibaelhárítási célokra használt érték.|Karakterlánc|
 
 ### <a name="parameters"></a>Paraméterek
 
 |Paraméter|Leírás|Paraméter típusa|Adattípus|
 |:--|:--|:--|:--|
-|API-verzió    |Az ügyfél által kért API-verzió. Engedélyezett értékek a következők: `1.0`.|lekérdezés|sztring|
-|scope  |Támogatott nyelvek, vagy térjen vissza az ügyfél beszédhangot részhalmazához. Ez a paraméter van megadva kulcsszavak vesszővel elválasztott listáját. A következő kulcsszavak érhetők el:<ul><li>`speech`: A beszédfelismerés lefényképezze támogatott nyelvek készletét nyújtja.</li><li>`tts`: A szöveg-beszéd átalakítás támogatott beszédhangot biztosít.</li><li>`text`: Szöveg fordítása a támogatott nyelvek készletét nyújtja.</li></ul>Ha az érték nincs megadva, az értékét `scope` alapértelmezés szerint a `text`.|lekérdezés|sztring|
-|X-ClientTraceId    |Egy ügyfél által létrehozott GUID egy kérelmet nyomon követéséhez használható. Megkönnyítése érdekében kapcsolatos hibák elhárítása, ügyfelek kell minden egyes kérelemmel adjon meg új értéket, és azt.|header|sztring|
-|Accept-Language    |A mezők a válaszban némelyike régiók és nyelvek neve. Ez a paraméter használatával határozza meg a nyelvet, amelyben a nevét adja vissza. A nyelv azáltal, hogy megfelelően formázott BCP-47 nyelvi címke van megadva. Válassza ki a címke nyelv azonosítók hibát adott vissza a listából a `text` hatókör. Nem támogatott nyelvek a nevek angol nyelven szerepelnek.<br/>Például használja az értéket `fr` kérése nevek francia nyelvű, vagy használja az értéket `zh-Hant` hagyományos kínai kérelem nevek.|header|sztring|
+|api-version    |Az ügyfél által kért API-verzió. Az engedélyezett értékek a `1.0`következők:.|query|Karakterlánc|
+|scope  |A támogatott nyelvek és Hangok készletei az ügyfélnek való visszatéréshez. Ez a paraméter a kulcsszavak vesszővel tagolt listájaként van megadva. A következő kulcsszavak érhetők el:<ul><li>`speech`: A beszédfelismerés által támogatott nyelvek készletét biztosítja.</li><li>`tts`: A szöveg-beszéd átalakításhoz támogatott hangokat biztosít.</li><li>`text`: A szöveg fordításához támogatott nyelvek készletét adja meg.</li></ul>Ha nincs megadva érték, a rendszer az `scope` alapértelmezett értékeket adja meg. `text`|query|Karakterlánc|
+|X-ClientTraceId    |Egy ügyfél által generált GUID, amely egy kérés nyomkövetésére szolgál. A problémák hibaelhárítása érdekében az ügyfeleknek minden kéréssel új értéket kell megadniuk, és be kell jelentkezniük.|header|Karakterlánc|
+|Elfogadás – nyelv    |A válasz mezői a nyelvek vagy régiók nevei. Ezzel a paraméterrel határozhatja meg, hogy a rendszer milyen nyelven adja vissza a neveket. A nyelvet úgy kell megadni, hogy megfelelően formázott BCP 47 nyelvi címkét adjon meg. Válasszon ki egy címkét a `text` hatókörrel visszaadott nyelvi azonosítók listájából. A nem támogatott nyelvek esetében a nevek angol nyelven vannak megadva.<br/>Például a `fr` nevek francia nyelven való meghívásához használja az értéket, vagy használja `zh-Hant` a nevet a hagyományos kínai nyelven.|header|Karakterlánc|
 
-### <a name="response-messages"></a>Parancsválasz-üzeneteket
+### <a name="response-messages"></a>Válaszüzenetek
 
-|HTTP-állapotkód|Ok|
+|HTTP-állapotkód|Reason|
 |:--|:--|
-|400|Hibás kérés. Ellenőrizze, hogy biztosítsa azok érvényes bemeneti paramétereket. A válasz objektum tartalmazza a hiba részletes leírását.|
-|429|Túl sok kérelmet.|
-|500|Hiba történt. Ha a hiba továbbra is fennáll, jelentse az ügyfél nyomkövetési azonosító (X-ClientTraceId), vagy kérelemazonosító (X-kérelemazonosító).|
-|503|A kiszolgáló átmenetileg nem érhető el. Ismételje meg a kérelmet. Ha a hiba továbbra is fennáll, jelentse az ügyfél nyomkövetési azonosító (X-ClientTraceId), vagy kérelemazonosító (X-kérelemazonosító).|
+|400|Hibás kérelem. Ellenőrizze a bemeneti paramétereket, hogy azok érvényesek legyenek. A válasz objektum részletesebb leírást tartalmaz a hibáról.|
+|429|Túl sok kérés van.|
+|500|Hiba történt. Ha a hiba továbbra is fennáll, jelentse az ügyfél nyomkövetési azonosítóját (X-ClientTraceId) vagy a kérelem azonosítóját (X-kérelemazonosító).|
+|503|A kiszolgáló átmenetileg nem érhető el. Próbálkozzon újra a kéréssel. Ha a hiba továbbra is fennáll, jelentse az ügyfél nyomkövetési azonosítóját (X-ClientTraceId) vagy a kérelem azonosítóját (X-kérelemazonosító).|

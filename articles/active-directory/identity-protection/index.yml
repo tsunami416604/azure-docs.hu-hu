@@ -1,40 +1,55 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure AD Identity Protection
+### YamlMime:Landing
+title: Az Azure AD Identity Protection dokumentációja
+summary: Tudnivalók a szervezetében található identitáskockázatok Identity Protectionnel történő azonosításáról és kezeléséről
 metadata:
-  document_id: null
-  title: 'Az Azure Active Directory Identity Protection dokumentációja – rövid útmutatók, alapfogalmak és referenciák | Microsoft Docs'
-  description: 'Ebből a cikkből megtudhatja, hogyan konfigurálhatja és tesztelheti az Azure Active Directory Identity Protectiont.'
+  title: Az Azure AD Identity Protection dokumentációja
+  description: Tudnivalók a szervezetében található identitáskockázatok Identity Protectionnel történő azonosításáról és kezeléséről
   services: active-directory
-  ms.subservice: identity-protection
-  author: MicrosoftGuyJFlo
-  manager: daveba
   ms.service: active-directory
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: identity-protection
   ms.topic: landing-page
-  ms.date: 09/14/2018
+  author: MicrosoftGuyJFlo
   ms.author: joflore
-abstract:
-  description: 'Megtudhatja, hogyan működik a potenciálisan sérült identitások felderítése, valamint hogyan állíthat be automatikus válaszokat a kijavításukra. Az Azure Active Directory Identity Protection az Azure AD Premium P2 kiadás egyik szolgáltatása, amely lehetővé teszi a következőket:<ul><li>A szervezet identitásait érintő lehetséges biztonsági rések észlelése</li><li>Feltételes hozzáférési szabályzatok konfigurálása, amelyekkel a rendszer automatikusan válaszol a szervezet identitásaihoz kapcsolódó gyanús tevékenységekre</li><li>Gyanús incidensek kivizsgálása, és a szükséges intézkedések megtétele azok megoldásához</li></ul><br> Az alábbi forrásanyagokkal gyorsan felkészülhet.'
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: ./media/index/video.png
-      width: 246
-    title: Bevezetés az Azure AD Identity Protection használatába
-    href: 'https://www.youtube.com/watch?v=zI3jn_G0_Ns'
-    width: 246
-sections:
-  - title: 5 perces gyors útmutatók
-    items:
-      - type: paragraph
-        text: 'Megtudhatja, hogyan konfigurálhat a bejelentkezési kockázatra irányuló feltételes hozzáférési szabályzatokat gyakori hozzáférési forgatókönyvekhez.'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: ./media/index/i_security-management.png
-            text: Hozzáférés letiltása munkameneti kockázat észlelésekor
-            href: quickstart-sign-in-risk-policy.md
+  ms.date: 08/20/2019
+  ms.collection: M365-identity-device-management
+  ms.openlocfilehash: b493af4372c612c41bafeaef863d8542e6730cb1
+  ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 08/28/2019
+  ms.locfileid: "70126213"
+landingContent:
+- title: Tudnivalók az Identity Protectionről
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az Identity Protection?
+      url: overview-v2.md
+    - text: Biztonsági áttekintés bemutatása
+      url: security-overview.md
+- title: Kockázatészlelések vizsgálata
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Kockázati szabályzatok konfigurálása
+      url: howto-configure-risk-policies.md
+    - text: Kockázat vizsgálata
+      url: howto-investigate-risk.md
+  - linkListType: reference
+    links:
+    - text: Eseménytípusok
+      url: risk-events-reference.md
+- title: Az Identity Protection felhasználói felülete
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Bejelentkezési felület
+      url: flows.md
+  - linkListType: how-to-guide
+    links:
+    - text: Kockázatészlelések szimulálása
+      url: playbook.md
+  - linkListType: quickstart
+    links:
+    - text: Hozzáférés letiltása munkameneti kockázat észlelésekor
+      url: quickstart-sign-in-risk-policy.md

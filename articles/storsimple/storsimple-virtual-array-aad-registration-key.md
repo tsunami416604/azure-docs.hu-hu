@@ -1,6 +1,6 @@
 ---
-title: A StorSimple virtuális tömbök új hitelesítési |} Microsoft Docs
-description: A szolgáltatás az AAD-alapú hitelesítést használ, hozzon létre új regisztrációs kulcsot, és az eszközök kézi regisztrálására ismerteti.
+title: Új hitelesítés a StorSimple virtuális tömbökhöz | Microsoft Docs
+description: Ismerteti, hogyan használható az HRE-alapú hitelesítés a szolgáltatáshoz, új regisztrációs kulcs előállítása, valamint az eszközök manuális regisztrálásának elvégzése.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -12,84 +12,86 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/28/2018
+ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: e33a3f843017ec24f3a79701fac9a62e15b4f9ba
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 723d5e969ba2f635724ffa50d562a7abaf936dcf
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37109188"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68517139"
 ---
-# <a name="use-the-new-authentication-for-your-storsimple"></a>A StorSimple az új hitelesítés használatára
+# <a name="use-the-new-authentication-for-your-storsimple"></a>Az új hitelesítés használata a StorSimple
 
 ## <a name="overview"></a>Áttekintés
 
-A StorSimple Device Manager szolgáltatás a Microsoft Azure-ban és több StorSimple virtuális tömbök csatlakozik. Naprakész, StorSimple Device Manager szolgáltatás egy hozzáférés-vezérlés szolgáltatás (ACS) használta a szolgáltatást, hogy a StorSimple eszköz hitelesítéséhez. Az ACS-mechanizmus a rendszer hamarosan elavult, majd egy Azure Active Directory (AAD) hitelesítés helyett.
+[!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
 
-Ebben a cikkben szereplő információk csak mindkét StorSimple 1200 adatsorozat virtuális tömbök csak alkalmazható. Ez a cikk ismerteti az AAD-hitelesítés és a kapcsolódó új Szolgáltatásregisztrációs kulcs és a StorSimple-eszközökre vonatkozik, a tűzfalszabályok módosításai részleteit.
+A StorSimple Eszközkezelő szolgáltatás Microsoft Azure fut, és több StorSimple virtuális tömbhöz csatlakozik. A mai napig a StorSimple Eszközkezelő Service egy Access Control szolgáltatást (ACS) használt a szolgáltatás hitelesítéséhez a StorSimple-eszközön. Az ACS-mechanizmus hamarosan elavult, és egy Azure Active Directory (HRE) hitelesítéssel lesz lecserélve.
 
-Az AAD-hitelesítés történik a StorSimple virtuális tömbök (1200-as modell) 1 vagy újabb verziót futtató a frissítés.
+A cikkben szereplő információk csak a StorSimple 1200 sorozatú virtuális tömbökre érvényesek. Ez a cikk ismerteti a HRE-hitelesítés és a kapcsolódó új szolgáltatás regisztrációs kulcsának részleteit, valamint a tűzfalszabályok StorSimple-eszközökre vonatkozó módosításait.
 
-Az AAD-hitelesítés bevezetése miatt bekövetkező változások:
+A HRE-hitelesítés a StorSimple virtuális tömbökben (1200-es modell) fut az 1. vagy újabb frissítést futtatva.
 
-- A tűzfalszabályok URL-mintával.
-- Szolgáltatásregisztrációs kulcs.
+A HRE-hitelesítés bevezetése miatt a következő változások történnek:
 
-Ezeket a változásokat a következő szakaszokban részletesen ismertetése.
+- Tűzfalszabályok URL-mintái
+- Szolgáltatás regisztrációs kulcsa.
 
-## <a name="url-changes-for-aad-authentication"></a>URL-cím módosításainak AAD-hitelesítés
+Ezeket a módosításokat a következő szakaszokban részletesen ismertetjük.
 
-Győződjön meg arról, hogy a szolgáltatás az AAD-alapú hitelesítést használ, a minden felhasználó tartalmaznia kell az új hitelesítési URL-címek be a tűzfalszabályok között.
+## <a name="url-changes-for-aad-authentication"></a>HRE-hitelesítés URL-változásai
 
-StorSimple virtuális tömb használata esetén győződjön meg arról, hogy a következő URL-cím szerepel-e a tűzfalszabályok:
+Annak biztosítása érdekében, hogy a szolgáltatás HRE-alapú hitelesítést használjon, az összes felhasználónak tartalmaznia kell az új hitelesítési URL-címeket a tűzfalszabályok között.
 
-| Az URL-minta                         | Felhő | Összetevő/funkció         |
+StorSimple virtuális tömb használata esetén győződjön meg arról, hogy a tűzfalszabályok a következő URL-címet tartalmazzák:
+
+| URL-minta                         | Felhő | Összetevő/funkció         |
 |------------------------------------|-------|---------------------------------|
-| `https://login.windows.net`        | Azure Public |Az AAD-hitelesítési szolgáltatás      |
-| `https://login.microsoftonline.us` | Az USA kormányzata |Az AAD-hitelesítési szolgáltatás      |
+| `https://login.windows.net`        | Azure Public |HRE hitelesítési szolgáltatás      |
+| `https://login.microsoftonline.us` | Az USA kormányzata |HRE hitelesítési szolgáltatás      |
 
-Az URL-cím teljes listáját a StorSimple virtuális tömbök mintákra, Ugrás [URL-mintával tűzfalszabályaira vonatkozó](storsimple-ova-system-requirements.md#url-patterns-for-firewall-rules).
+A StorSimple virtuális tömbök URL-mintáinak teljes listájáért keresse fel a [Tűzfalszabályok URL-mintáit](storsimple-ova-system-requirements.md#url-patterns-for-firewall-rules).
 
-Ha a hitelesítés URL-címe nem szerepel a tűzfalszabályok túl a megszűnésének dátumát, a felhasználók jelenik meg a kritikus riasztás, amely a StorSimple-eszköz nem tudta hitelesíteni a szolgáltatással. A szolgáltatás nem lesz képes kommunikálni az eszközt. Ha a felhasználók ezt a figyelmeztetést, az új hitelesítési URL-cím szükséges. A figyelmeztetéssel kapcsolatos további információkért látogasson el [riasztások segítségével figyelheti a StorSimple eszköz](storsimple-virtual-array-manage-alerts.md#networking-alerts).
+Ha a tűzfalszabályok nem tartalmazzák a hitelesítési URL-címet az elavultság dátuma után, a felhasználók kritikus riasztást látnak arról, hogy a StorSimple-eszközük nem tudta hitelesíteni a szolgáltatást. A szolgáltatás nem fog tudni kommunikálni az eszközzel. Ha a felhasználók ezt a riasztást látják, fel kell venniük az új hitelesítési URL-címet. A riasztással kapcsolatos további információkért nyissa meg a [riasztások használata a StorSimple-eszköz figyeléséhez](storsimple-virtual-array-manage-alerts.md#networking-alerts)című témakört.
 
-## <a name="device-version-and-authentication-changes"></a>Eszköz verziója és a hitelesítés módosítása
+## <a name="device-version-and-authentication-changes"></a>Az eszköz verziószáma és a hitelesítés módosítása
 
-A StorSimple virtuális tömb használata esetén a következő táblázat segítségével határozza meg, mit kell tennie, futtató eszköz szoftver verziója alapján.
+Ha StorSimple virtuális tömböt használ, a következő táblázat segítségével határozza meg, hogy milyen műveletet kell végrehajtania a futtatott eszköz szoftverének verziójától függően.
 
-| Ha az eszköz fut.  | A következő művelet elvégzése                                    |
+| Ha az eszköz fut  | Végezze el a következő műveletet                                    |
 |----------------------------|--------------------------------------------------------------|
-| Frissítés 1.0-s vagy újabb és offline állapotban. <br> Megjelenik egy figyelmeztetés, győződjön meg arról, hogy az URL-címe nem szerepel az engedélyezési listán.| 1. A tűzfalszabályok a hitelesítési URL-cím módosításához. Lásd: [hitelesítési URL-címek](#url-changes-for-aad-authentication). <br> 2. [Az AAD-regisztrációs kulcs beolvasása a szolgáltatástól](#aad-based-registration-keys). <br> 3. 1-5 lépések végrehajtásával [csatlakozás a Windows PowerShell felületen, a virtuális tömb](storsimple-virtual-array-deploy2-provision-hyperv.md#step-2-provision-a-virtual-array-in-hypervisor).<br> 4. Használjon `Invoke-HcsReRegister` parancsmag futtatásával regisztrálja az eszközt a Windows PowerShell segítségével. Adja meg az előző lépésben kapott kulcsot.|
-| 1.0-s vagy újabb frissítés és az eszköz online állapotban.| Nincs szükség semmilyen műveletre.                                       |
-| Frissítés 0,6 vagy korábbi és az eszköz offline állapotban. | 1. [Töltse le az 1.0-s frissítési katalógus kiszolgálón keresztül](storsimple-virtual-array-install-update-1.md#download-the-update-or-the-hotfix).<br>2. [Frissítés 1.0 alkalmazza a helyi webes felhasználói felületen](storsimple-virtual-array-install-update-1.md#install-the-update-or-the-hotfix).<br>3. [Az AAD-regisztrációs kulcs beolvasása a szolgáltatástól](#aad-based-registration-keys). <br>4. 1-5 lépések végrehajtásával [csatlakozás a Windows PowerShell felületen, a virtuális tömb](storsimple-virtual-array-deploy2-provision-hyperv.md#step-2-provision-a-virtual-array-in-hypervisor).<br>5. Használjon `Invoke-HcsReRegister` parancsmag futtatásával regisztrálja az eszközt a Windows PowerShell segítségével. Adja meg az előző lépésben kapott kulcsot.|
-| Frissítés 0,6 vagy korábbi és az eszköz online állapotban | A tűzfalszabályok a hitelesítési URL-cím módosításához.<br> Frissítés 1.0 telepítse az Azure portálon keresztül. |
+| A 1,0-es vagy újabb frissítés offline állapotú. <br> Megjelenik egy riasztás arról, hogy az URL-cím nem engedélyezett.| 1. A tűzfalszabályok módosításával adja meg a hitelesítési URL-címet. Lásd: [hitelesítési URL-címek](#url-changes-for-aad-authentication). <br> 2. [Szerezze be a HRE regisztrációs kulcsát a szolgáltatásból](#aad-based-registration-keys). <br> 3. Hajtsa végre a 1-5. lépést a [virtuális tömb Windows PowerShell](storsimple-virtual-array-deploy2-provision-hyperv.md#step-2-provision-a-virtual-array-in-hypervisor)-felületéhez való kapcsolódáshoz.<br> 4. A `Invoke-HcsReRegister` parancsmag használatával regisztrálja az eszközt a Windows PowerShell segítségével. Adja meg az előző lépésben kapott kulcsot.|
+| Frissítse a 1,0-es vagy újabb verziót, és az eszköz online állapotú.| Nincs szükség felhasználói műveletre.                                       |
+| Az 0,6-es vagy korábbi verzió frissítése, az eszköz offline állapotban van. | 1. [Töltse le a 1,0-es frissítést a Catalog Server használatával](storsimple-virtual-array-install-update-1.md#download-the-update-or-the-hotfix).<br>2. [Alkalmazza a 1,0-es frissítést a helyi webes felületen keresztül](storsimple-virtual-array-install-update-1.md#install-the-update-or-the-hotfix).<br>3. [Szerezze be a HRE regisztrációs kulcsát a szolgáltatásból](#aad-based-registration-keys). <br>4. Hajtsa végre a 1-5. lépést a [virtuális tömb Windows PowerShell](storsimple-virtual-array-deploy2-provision-hyperv.md#step-2-provision-a-virtual-array-in-hypervisor)-felületéhez való kapcsolódáshoz.<br>5. A `Invoke-HcsReRegister` parancsmag használatával regisztrálja az eszközt a Windows PowerShell segítségével. Adja meg az előző lépésben kapott kulcsot.|
+| Az 0,6-es vagy korábbi frissítés, és az eszköz online állapotú | A tűzfalszabályok módosításával adja meg a hitelesítési URL-címet.<br> Telepítse a 1,0-es frissítést a Azure Portal. |
 
-## <a name="aad-based-registration-keys"></a>Az AAD-alapú regisztrációs kulcsokat
+## <a name="aad-based-registration-keys"></a>HRE-alapú regisztrációs kulcsok
 
-A StorSimple virtuális tömbök, új kulcsot használnak az AAD-alapú regisztrációs megkezdi a 1.0-s frissítésében. A regisztrációs kulcsokat segítségével regisztrálja az eszközt a StorSimple eszköz Manager szolgáltatás.
+A StorSimple virtuális tömbök 1,0-es frissítésének megkezdése után új HRE-alapú regisztrációs kulcsok használatosak. A regisztrációs kulcsok használatával regisztrálja StorSimple Eszközkezelő szolgáltatását az eszközön.
 
-Az új AAD szolgáltatás regisztrációs kulcsokat 0,6 vagy régebbi verziót futtató a frissítés egy StorSimple virtuális tömbök használata nem használható. A szolgáltatás regisztrációs kulcsának újragenerálása kell. Újragenerálja a kulcsot, ha az új kulccsal a következő eszközök regisztrálásához. A régi kulcsa már nem érvényes.
+Ha a 0,6-es vagy korábbi frissítést futtató StorSimple virtuális tömböket használ, nem használhatja az új HRE szolgáltatás regisztrációs kulcsait. Újra kell létrehoznia a szolgáltatás regisztrációs kulcsát. A kulcs újralétrehozása után az új kulcs az összes további eszköz regisztrálására szolgál. A régi kulcs már nem érvényes.
 
-- Az aad-ben új regisztrációs kulcsot 3 nap után lejár.
-- Az aad-ben regisztrációs kulcsok használata csak virtuális StorSimple 1200 sorozat tömbállandó futó Update 1 vagy újabb verziót. Az aad-ben kulcsot az a StorSimple 8000 series eszköz nem fog működni.
-- Az aad-ben regisztrációs kulcs hosszabb, mint a megfelelő ACS-regisztrációs kulcsokat.
+- Az új HRE regisztrációs kulcs 3 nap után lejár.
+- A HRE-regisztrációs kulcsok csak az 1. vagy újabb frissítést futtató StorSimple 1200 sorozatú virtuális tömbökkel működnek. A StorSimple 8000 sorozatú eszköz HRE-regisztrációs kulcsa nem fog működni.
+- A HRE regisztrációs kulcsa hosszabb a megfelelő ACS regisztrációs kulcsoknál.
 
-A következő lépésekkel hozzon létre egy AAD szolgáltatás regisztrációs kulcsot.
+A HRE szolgáltatás regisztrációs kulcsának létrehozásához hajtsa végre az alábbi lépéseket.
 
-#### <a name="to-generate-the-aad-service-registration-key"></a>Az AAD szolgáltatás regisztrációs kulcs létrehozása
+#### <a name="to-generate-the-aad-service-registration-key"></a>A HRE szolgáltatás regisztrációs kulcsának előállítása
 
-1. A **StorSimple Device Manager**, és **felügyeleti &gt;**  **kulcsok**.
+1. A **StorSimple Eszközkezelő**lépjen a **felügyeleti &gt;**  **kulcsok**elemre.
     
-    ![Ugrás a kulcsok](./media/storsimple-virtual-array-aad-registration-key/aad-registration-key1.png)
+    ![Ugrás a kulcsokra](./media/storsimple-virtual-array-aad-registration-key/aad-registration-key1.png)
 
-2. Kattintson a **kulcs**.
+2. Kattintson a **kulcs**előállítása elemre.
 
-    ![Kattintson a újragenerálása](./media/storsimple-virtual-array-aad-registration-key/aad-click-generate-registration-key.png)
+    ![Kattintson az újragenerált elemre.](./media/storsimple-virtual-array-aad-registration-key/aad-click-generate-registration-key.png)
 
-3. Az új kulcs másolása. A régebbi kulcs már nem működik.
+3. Másolja az új kulcsot. A régebbi kulcs már nem működik.
 
-    ![Regenerate megerősítése](./media/storsimple-virtual-array-aad-registration-key/aad-registration-key2.png)
+    ![Újragenerált megerősítés megerősítése](./media/storsimple-virtual-array-aad-registration-key/aad-registration-key2.png)
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ a központi telepítése [StorSimple virtuális tömb](storsimple-virtual-array-deploy1-portal-prep.md)
+* További információ a [StorSimple virtuális tömb](storsimple-virtual-array-deploy1-portal-prep.md) üzembe helyezéséről

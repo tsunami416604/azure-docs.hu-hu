@@ -16,8 +16,6 @@
       href: tutorial-sspr-pilot.md
     - name: Az SSPR helyszíni integrációjának engedélyezése
       href: tutorial-enable-writeback.md
-    - name: Új jelszó létrehozásának engedélyezése Windows 10 rendszerben
-      href: tutorial-sspr-windows.md
     - name: Az Azure Identity Protection integrálása
       href: tutorial-risk-based-sspr-mfa.md
 - name: Alapelvek
@@ -25,7 +23,9 @@
   items:
     - name: Hitelesítési módszerek
       href: concept-authentication-methods.md
-    - name: Kombinált regisztráció
+    - name: Jelszó nélküli hitelesítés
+      href: concept-authentication-passwordless.md
+    - name: Biztonsági tudnivalók regisztrálása
       href: concept-registration-mfa-sspr-combined.md
     - name: Új jelszó létrehozása
       items:
@@ -43,8 +43,6 @@
       items:
         - name: Az MFA működése
           href: concept-mfa-howitworks.md
-        - name: Melyik a megfelelő verzió?
-          href: concept-mfa-whichversion.md
         - name: Licence biztosítása a felhasználók számára
           href: concept-mfa-licensing.md
         - name: Hitelesítési szolgáltató kezelése
@@ -73,8 +71,8 @@
           href: howto-sspr-authenticationdata.md
         - name: Jelszóvisszaíró engedélyezése
           href: howto-sspr-writeback.md
-        - name: 'SSPR Windows 7, 8 és 8.1 rendszerhez'
-          href: howto-sspr-windows-7-8.md
+        - name: SSPR Windows rendszerű ügyfelekhez
+          href: howto-sspr-windows.md
     - name: Felhőalapú MFA
       items:
         - name: Felhőalapú MFA üzembe helyezése
@@ -105,7 +103,7 @@
               href: howto-mfa-nps-extension-rdg.md
             - name: VPN
               href: howto-mfa-nps-extension-vpn.md
-    - name: Kombinált regisztráció
+    - name: Biztonsági tudnivalók regisztrálása
       items:
         - name: A kombinált regisztráció engedélyezése
           href: howto-registration-mfa-sspr-combined.md
@@ -131,10 +129,14 @@
               href: howto-password-ban-bad-on-premises-agent-versions.md
     - name: Azure AD intelligens zárolás
       href: howto-password-smart-lockout.md
-    - name: Vállalati Windows Hello
-      href: 'https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification'
-    - name: Jelszó nélküli telefonos bejelentkezés
-      href: howto-authentication-phone-sign-in.md
+    - name: Jelszó nélküli
+      items:
+        - name: Jelszó nélküli biztonsági kulcsok
+          href: howto-authentication-passwordless-security-key.md
+        - name: Jelszó nélküli telefonos bejelentkezés
+          href: howto-authentication-passwordless-phone.md
+        - name: Vállalati Windows Hello
+          href: 'https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification'
     - name: Tanúsítványalapú hitelesítés
       items:
         - name: Bevezetés a tanúsítványalapú hitelesítésbe
@@ -144,12 +146,10 @@
               href: active-directory-certificate-based-authentication-android.md
             - name: CBA iOS-eszközökön
               href: active-directory-certificate-based-authentication-ios.md
-    - name: Fejlesztés
-      items:
-        - name: MFA beépítése egyéni alkalmazásokba
-          href: howto-mfa-sdk.md
     - name: Jelentéskészítés
       items:
+        - name: Használat és elemzések
+          href: howto-authentication-methods-usage-insights.md
         - name: SSPR-jelentések
           href: howto-sspr-reporting.md
         - name: MFA-jelentések

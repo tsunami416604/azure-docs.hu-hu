@@ -8,33 +8,35 @@ ms.topic: include
 ms.date: 12/14/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 69951693f9d3bacb556453aba954620815884d43
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 9e4f2e355240ba8682cbe9f86f2be94e7dd0d92d
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56334052"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70032348"
 ---
 ## <a name="create-a-service-principal"></a>Egyszerű szolgáltatás létrehozása
 
-Egyszerű szolgáltatás létrehozása a tárolóregisztrációs adatbázis-hozzáféréssel rendelkező, futtassa a következő szkriptet a [Azure Cloud Shell](../articles/cloud-shell/overview.md) vagy helyi telepítése az [Azure CLI](/cli/azure/install-azure-cli). A szkript a Bash rendszerhéj van formázva.
+A tároló-beállításjegyzékhez hozzáféréssel rendelkező egyszerű szolgáltatásnév létrehozásához futtassa az alábbi parancsfájlt az [Azure Cloud Shell](../articles/cloud-shell/overview.md) vagy az [Azure CLI](/cli/azure/install-azure-cli)helyi telepítésekor. A parancsfájl a bash-rendszerhéjhoz van formázva.
 
-A szkript futtatása előtt frissítse a `ACR_NAME` változó a tárolóregisztrációs adatbázis nevére. A `SERVICE_PRINCIPAL_NAME` érték az Azure Active Directory-bérlőn belül egyedinek kell lennie. Ha megjelenik egy "`'http://acr-service-principal' already exists.`" hiba történt, adja meg az egyszerű szolgáltatás egy másik nevet.
+A szkript futtatása előtt frissítse a `ACR_NAME` változót a tároló-beállításjegyzék nevével. Az `SERVICE_PRINCIPAL_NAME` értéknek egyedinek kell lennie a Azure Active Directory bérlőn belül. Ha "`'http://acr-service-principal' already exists.`" hibaüzenetet kap, adjon meg egy másik nevet az egyszerű szolgáltatásnév számára.
 
-Igény szerint módosíthatja a `--role` értékét a [az ad sp create-for-rbac] [ az-ad-sp-create-for-rbac] parancsot, hogy szeretné-e másik engedélyeket. Szerepkörök teljes listáját lásd: [ACR szerepköröket és engedélyeket](https://github.com/Azure/acr/blob/master/docs/roles-and-permissions.md).
+Igény szerint módosíthatja az `--role` az [ad SP Create-for-RBAC][az-ad-sp-create-for-rbac] parancs értékét, ha más engedélyeket szeretne megadni. A szerepkörök teljes listáját lásd: [ACR-szerepkörök és-engedélyek](https://github.com/Azure/acr/blob/master/docs/roles-and-permissions.md).
 
-A szkript futtatása után jegyezze fel a szolgáltatásnév **azonosító** és **jelszó**. Ha a hitelesítő adatait, konfigurálhatja úgy az alkalmazások és szolgáltatások a tárolóregisztrációs adatbázisba, az egyszerű szolgáltatás hitelesítéséhez.
+A parancsfájl futtatása után jegyezze fel az egyszerű szolgáltatásnév **azonosítóját** és **jelszavát**. A hitelesítő adatai megadásával beállíthatja, hogy alkalmazásai és szolgáltatásai hitelesítsék magukat a tároló-beállításjegyzékben az egyszerű szolgáltatásként.
 
-<!-- https://github.com/Azure-Samples/azure-cli-samples/blob/master/container-registry/service-principal-create/service-principal-create.sh --> [!code-azurecli-interactive[acr-sp-create](~/cli_scripts/container-registry/service-principal-create/service-principal-create.sh)]
+<!-- https://github.com/Azure-Samples/azure-cli-samples/blob/master/container-registry/service-principal-create/service-principal-create.sh -->
+[!code-azurecli-interactive[acr-sp-create](~/cli_scripts/container-registry/service-principal-create/service-principal-create.sh)]
 
-## <a name="use-an-existing-service-principal"></a>Meglévő egyszerű szolgáltatás használata
+### <a name="use-an-existing-service-principal"></a>Meglévő egyszerű szolgáltatás használata
 
-Beállításjegyzék hozzáférést egy létező egyszerű szolgáltatás, új szerepkört kell rendelni a szolgáltatásnévhez. Csakúgy, mint létrehozni egy új szolgáltatásnevet, biztosíthat lekéréses, leküldéses és lekéréses és tulajdonosi hozzáféréssel, többek között.
+Ahhoz, hogy a beállításjegyzék hozzáférjen egy meglévő egyszerű szolgáltatáshoz, hozzá kell rendelnie egy új szerepkört az egyszerű szolgáltatáshoz. Az új egyszerű szolgáltatás létrehozásához hasonlóan a lekéréses, leküldéses és lekéréses és tulajdonosi hozzáférés is biztosítható többek között.
 
-Az alábbi szkript a [az szerepkör-hozzárendelés létrehozása] [ az-role-assignment-create] parancsot adhat *lekéréses* szolgáltatásnév engedélyeket ad meg a `SERVICE_PRINCIPAL_ID` változó. Módosítsa a `--role` értékét, ha szeretne egy eltérő szintjét hozzáférés biztosítása.
+Az alábbi szkript az az [role hozzárendelés Create][az-role-assignment-create] parancsot használja a lekéréses engedélyek megadására a `SERVICE_PRINCIPAL_ID` változóban megadott egyszerű szolgáltatáshoz. Állítsa be `--role` az értéket, ha egy másik hozzáférési szintet szeretne megadni.
 
 
-<!-- https://github.com/Azure-Samples/azure-cli-samples/blob/master/container-registry/service-principal-assign-role/service-principal-assign-role.sh --> [!code-azurecli-interactive[acr-sp-role-assign](~/cli_scripts/container-registry/service-principal-assign-role/service-principal-assign-role.sh)]
+<!-- https://github.com/Azure-Samples/azure-cli-samples/blob/master/container-registry/service-principal-assign-role/service-principal-assign-role.sh -->
+[!code-azurecli-interactive[acr-sp-role-assign](~/cli_scripts/container-registry/service-principal-assign-role/service-principal-assign-role.sh)]
 
 <!-- LINKS - Internal -->
 [az-ad-sp-create-for-rbac]: /cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac

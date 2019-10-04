@@ -3,18 +3,18 @@ title: Hitelesítés az Azure Maps |} A Microsoft Docs
 description: Hitelesítés az Azure Maps-szolgáltatások használatával.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/12/2019
-ms.topic: tutorial
+ms.date: 07/11/2019
+ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: timlt
+manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 9dfe4024607e106565984d6d49de94d793bf7a8f
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: a4608d0631c9a590fdde583e399883a023275c30
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010412"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67838043"
 ---
 # <a name="authentication-with-azure-maps"></a>Hitelesítés az Azure Maps használatával
 
@@ -31,7 +31,7 @@ A kulcsok megtekintésével kapcsolatos további információkért lásd: [hitel
 
 ## <a name="authentication-with-azure-active-directory-preview"></a>Hitelesítés az Azure Active Directoryval (előzetes verzió)
 
-Az Azure Maps kínál [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) -integráció a hitelesítési kérések az Azure Maps-szolgáltatásokhoz. Az Azure AD identitás-alapú hitelesítést biztosít többek között [szerepköralapú hozzáférés-vezérlés (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview), az Azure Maps-erőforrások felhasználói szintű és alkalmazásszintű hozzáférést. A következő szakaszok segíthetnek a fogalmakat és az Azure Maps-integráció az Azure AD-összetevők ismertetése.
+Az Azure Maps kínál [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) -integráció a hitelesítési kérések az Azure Maps-szolgáltatásokhoz. Az Azure AD identitás-alapú hitelesítést biztosít többek között [szerepköralapú hozzáférés-vezérlés (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview), az Azure Maps-erőforrások felhasználói szintű, -szintű és alkalmazásszintű hozzáférést. A következő szakaszok segíthetnek a fogalmakat és az Azure Maps-integráció az Azure AD-összetevők ismertetése.
 
 ## <a name="authentication-with-oauth-access-tokens"></a>Hitelesítés az OAuth hozzáférési tokenek
 
@@ -54,10 +54,10 @@ Az Azure ad-ből kérő jogkivonatok kapcsolatos általános információkért l
 
 Egy tokent az Azure ad-ből fogadását követően kérelmet lehet küldeni az Azure Maps kulcstartón a következő két szükséges kérelem fejlécei:
 
-| Kérelem fejléce    |    Érték    |
+| Kérelem fejléce    |    Value    |
 |:------------------|:------------|
 | x-ms-client-id    | 30d7cc….9f55|
-| Engedélyezés     | Tulajdonosi eyJ0e... HNIVN |
+| Authorization     | Tulajdonosi eyJ0e... HNIVN |
 
 > [!Note]
 > `x-ms-client-id` az Azure Maps hitelesítési oldalon megjelenő Azure Maps tárfiókalapú GUID van.
@@ -75,9 +75,9 @@ Az ügyfél-azonosító megtekintésével kapcsolatos további információkért
 
 ## <a name="control-access-with-rbac"></a>Hozzáférés vezérlése RBAC használata
 
-Az Azure AD lehetővé teszi a hozzáférést RBAC használatával védett erőforrásokhoz. Miután az Azure Maps-fiók létrehozása és az Azure Maps az Azure AD alkalmazás regisztrálása az Azure AD-bérlő belül, akkor állíthatja RBAC egy felhasználó, alkalmazás vagy Azure-erőforrást az Azure Maps-fiók portál oldalon.
+Az Azure AD lehetővé teszi a hozzáférést RBAC használatával védett erőforrásokhoz. Miután az Azure Maps-fiók létrehozása és az Azure Maps az Azure AD alkalmazás regisztrálása az Azure AD-bérlő belül, akkor állíthatja RBAC az egy felhasználó, csoport, alkalmazás vagy Azure-erőforrást az Azure Maps-fiók portál oldalon.
 
-Az Azure Maps olvasási hozzáférés-vezérlést támogató egyedi az Azure AD felhasználók, alkalmazások és az Azure szolgáltatást a felügyelt identitások használatával az Azure-erőforrásokhoz.
+Az Azure Maps olvasási hozzáférés-vezérlést támogató egyedi az Azure AD-felhasználók, csoportok, alkalmazások és az Azure szolgáltatást a felügyelt identitások használatával az Azure-erőforrásokhoz.
 
 ![Az Azure Maps olvasója (minta)](./media/azure-maps-authentication/concept.png)
 

@@ -9,11 +9,11 @@ ms.date: 04/11/2018
 ms.author: sngun
 ms.subservice: tables
 ms.openlocfilehash: f56946702011968a0fcb31f6fbecbaacdc89ea42
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470416"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60326003"
 ---
 # <a name="encrypt-table-data"></a>Táblák adatainak titkosítása
 Az Azure Storage .NET ügyféloldali kódtár támogatja a titkosítást a karakterlánc-entitás tulajdonságai szúrhatók be, és cserélje le a műveleteket. A titkosított karakterláncokat tárolja a szolgáltatás bináris tulajdonságokként, és azok alakítja vissza karakterláncok a visszafejtés után.    

@@ -1,8 +1,7 @@
 ---
-title: 'Az Azure AD Connect szinkronizálása: Az Azure AD-szolgáltatásfiók kezelése |} A Microsoft Docs'
-description: Ez a témakör az Azure AD-szolgáltatásfiók visszaállítása dokumentumok.
+title: Az Azure AD-összekötő fiókhoz tartozó jelszó módosítása |} A Microsoft Docs
+description: Ez a témakör az Azure AD-összekötő fiók visszaállítása dokumentumok.
 services: active-directory
-keywords: AADSTS70002, AADSTS50054, az Azure AD Connect szinkronizálási szolgáltatás Connector-szolgáltatásfióknak a jelszó alaphelyzetbe állítása
 documentationcenter: ''
 author: billmath
 manager: daveba
@@ -13,22 +12,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/12/2017
+ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f88318c87e29567b40b5eacf10f3b6f259adee8b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0ea151ee79fccd66f1d9422744d8f57829677ec0
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56196350"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204530"
 ---
-# <a name="azure-ad-connect-sync-how-to-manage-the-azure-ad-service-account"></a>Az Azure AD Connect szinkronizálása: Az Azure AD-szolgáltatásfiók kezelése
-Az Azure AD-összekötő által használt szolgáltatásfiók kellene lennie ingyenes szolgáltatás. Ha a hitelesítő adatok alaphelyzetbe kell, majd ez a témakör Önnek szól. Például egy globális rendszergazdai szerint hibásan van visszaállíthatja a jelszót a szolgáltatás fiók a PowerShell-lel.
+# <a name="change-the-azure-ad-connector-account-password"></a>Az Azure AD Connector-fiók jelszavának módosítása
+Az Azure AD-összekötő fiók kellene lennie ingyenes szolgáltatás. Ha a hitelesítő adatok alaphelyzetbe kell, majd ez a témakör Önnek szól. Például egy globális rendszergazdai szerint hibásan van visszaállíthatja a jelszót a fiók PowerShell-lel.
 
 ## <a name="reset-the-credentials"></a>A hitelesítő adatok alaphelyzetbe állítása
-A szolgáltatás fiók az Azure AD Connectoron meghatározott Azure AD hitelesítési problémái miatt nem tud kapcsolatba lépni, ha a jelszó állítható vissza.
+Az Azure AD-összekötő fiók nem tud kapcsolatba lépni az Azure AD hitelesítési problémák miatt merülnek fel, ha a jelszó állítható vissza.
 
 1. Jelentkezzen be az Azure AD Connect szinkronizálási kiszolgáló, és indítsa el a Powershellt.
 2. Futtassa az `Add-ADSyncAADServiceAccount` parancsot.  
@@ -38,14 +37,14 @@ A szolgáltatás fiók az Azure AD Connectoron meghatározott Azure AD hitelesí
 Ez a parancsmag alaphelyzetbe állítja a jelszót a fiókhoz, és frissítse az Azure ad-ben és a szinkronizálási motor is.
 
 ## <a name="known-issues-these-steps-can-solve"></a>Ismert problémákat oldhat meg ezeket a lépéseket
-Ez a szakasz az ügyfelek által a hitelesítő adatok alaphelyzetbe állítása, az Azure AD-szolgáltatásfiók a javított által jelentett hibák listája.
+Ez a szakasz az ügyfelek által a hitelesítő adatok alaphelyzetbe állítása, az Azure AD-összekötő fiók javított által jelentett hibák listája.
 
-- - -
+---
 Esemény 6900  
 A kiszolgáló váratlan hibába ütközött a jelszóváltoztatási értesítés feldolgozása közben:  
 AADSTS70002: Hiba történt a hitelesítő érvényesítésekor. AADSTS50054: Régi jelszót használt a hitelesítéshez.
 
-- - -
+---
 Esemény 659  
 Hiba történt a jelszó szinkronizálása szabályzatkonfiguráció beolvasása. Microsoft.IdentityModel.Clients.ActiveDirectory.AdalServiceException:  
 AADSTS70002: Hiba történt a hitelesítő érvényesítésekor. AADSTS50054: Régi jelszót használt a hitelesítéshez.

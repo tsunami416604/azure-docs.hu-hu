@@ -1,23 +1,22 @@
 ---
-author: rothja
+author: mdgattuso
 ms.service: billing
 ms.topic: include
-ms.date: 11/09/2018
-ms.author: jroth
-ms.openlocfilehash: b3a610fd1c4da99d1e98a5caea9e1a4151fc1fea
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.date: 04/29/2019
+ms.author: magattus
+ms.openlocfilehash: 0c989aa32c4f4defc9d22a2e510d85d7583ed1c8
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553532"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "67179507"
 ---
-| Erőforrás | Alapértelmezett korlát | Felső korlát | 
-| --- | --- | --- |
-| Az Azure Content Delivery Network-profilok |25 |25 |
-| Content Delivery Network végpontot |10 |25 |
-| Egyéni tartományok végpontonként |10 |25 |
+| Resource | Alapértelmezett korlát |
+| --- | --- |
+| Azure Content Delivery Network-profilok |25 |
+| Content Delivery Network végpontok száma |25 |
+| Egyéni tartományok/végpont |25 |
 
-A Content Delivery Network előfizetés egy vagy több Content Delivery Network-profilt is tartalmazhat. A Content Delivery Network profil egy vagy több CDN-nel végpontot is tartalmazhat. Előfordulhat, hogy szeretné több profilok használatával a Content Delivery Network-végpontokat internetes tartomány, webalkalmazás vagy más feltétel alapján rendezheti. 
+A Content Delivery Network-előfizetés egy vagy több Content Delivery Network profilt is tartalmazhat. Egy Content Delivery Network profil egy vagy több Content Delivery Network végpontot tartalmazhat. Előfordulhat, hogy több profilt szeretne használni az Content Delivery Network-végpontok internetes tartomány, webalkalmazás vagy más feltétel alapján történő rendszerezéséhez. 
 
-Az előfizetés alapértelmezett korlátok egy frissítést a kérést, nyissa meg egy támogatási jegyet.
 

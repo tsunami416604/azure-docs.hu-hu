@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/10/2019
+ms.date: 04/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df8cb048964830f62fe483da63d24356f46538b7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d3b304bb35ea69906fc9576f45733134387be1b9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59501375"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67099516"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jira-saml-sso-by-microsoft-v52"></a>Oktatóanyag: JIRA SAML SSO által a Microsoft (V5.2) az Azure Active Directory-integráció
 
@@ -37,7 +37,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 ## <a name="description"></a>Leírás
 
-Egyszeri bejelentkezés engedélyezéséhez használja a Microsoft Azure Active Directory-fiók Atlassian JIRA-kiszolgálóval. Ezzel a módszerrel a munkahely összes felhasználója számára a JIRA alkalmazásba használhatja az Azure AD bejelentkezési hitelesítő adatokat. Ez a beépülő modul SAML 2.0 összevonási használ.
+Egyszeri bejelentkezés engedélyezéséhez használja a Microsoft Azure Active Directory-fiók Atlassian JIRA-kiszolgálóval. Ezzel a módszerrel a munkahely összes felhasználója számára szeretne bejelentkezni a JIRA alkalmazás használható az Azure AD hitelesítő adatait. Ez a beépülő modul SAML 2.0 összevonási használ.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -66,7 +66,7 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javasla
 * JIRA 6.0 való 7.12 is támogatja. További részletekért kattintson [JIRA SAML egyszeri bejelentkezés a Microsoft által](jiramicrosoft-tutorial.md)
 
 > [!NOTE]
-> Vegye figyelembe, hogy a JIRA is támogatja-e a Linux Ubuntu 16.04 verzió
+> Vegye figyelembe, hogy a JIRA beépülő modult is működik az Ubuntu 16.04-verzió
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
@@ -80,7 +80,7 @@ JIRA SAML SSO által a Microsoft (V5.2) integrálása az Azure AD beállításá
 
 **JIRA SAML SSO által a Microsoft (V5.2) hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -224,11 +224,11 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
 Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés JIRA SAML SSO által a Microsoft (V5.2) Azure egyszeri bejelentkezés használatára.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **JIRA SAML SSO által a Microsoft (V5.2)**.
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **JIRA SAML SSO által a Microsoft (V5.2)** .
 
     ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában jelölje ki a **JIRA SAML SSO által a Microsoft (V5.2)**.
+2. Az alkalmazások listájában jelölje ki a **JIRA SAML SSO által a Microsoft (V5.2)** .
 
     ![A JIRA SAML SSO által a Microsoft (V5.2) hivatkozásra az alkalmazások listáját](common/all-applications.png)
 

@@ -10,11 +10,11 @@ ms.date: 05/22/2017
 ms.author: saudas
 ms.custom: mvc
 ms.openlocfilehash: 895346447e33926dcaa5ca09302f35c9d6636ed9
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000223"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60713087"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-kubernetes-cluster-with-coscale"></a>(ELAVULT) Coscale-Azure Container Service Kubernetes-fürt megfigyelése
 
@@ -27,7 +27,7 @@ Ebben a cikkben bemutatjuk, hogyan helyezhet üzembe a [CoScale](https://web.arc
 
 CoScale a megfigyelő platformnak, metrikákkal és eseményekkel gyűjt több vezénylési platformokon az összes tárolót. CoScale kínál a teljes veremre kiterjedő figyelést Kubernetes-környezetekből. A veremben lévő összes rétegének adatmegjelenítési és elemzési biztosítja: az operációs rendszer, Kubernetes, Docker és a tárolókban futó alkalmazások. CoScale kínál számos beépített figyelési irányítópultokat, és rendelkezik beépített anomáliadetektálást, hogy a kezelők és fejlesztők infrastruktúráját és alkalmazási problémák gyors keresése.
 
-![Felhasználói felület coScale](./media/container-service-kubernetes-coscale/coscale.png)
+![CoScale UI](./media/container-service-kubernetes-coscale/coscale.png)
 
 Ebben a cikkben látható, a Kubernetes-fürtön történő futtatásra a Szolgáltatottszoftver-megoldás CoScale ügynökök is telepítheti. Ha meg szeretné tartani az adatokat a helyszíni, CoScale érhető el a helyszíni telepítéshez.
 

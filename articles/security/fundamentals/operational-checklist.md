@@ -1,0 +1,58 @@
+---
+title: Az Azure Operational Security ellenőrzőlista | Microsoft Docs
+description: Ez a cikk az Azure működési biztonságára vonatkozó ellenőrzőlista-készletet tartalmaz.
+services: security
+documentationcenter: na
+author: unifycloud
+manager: barbkess
+editor: tomsh
+ms.assetid: ''
+ms.service: security
+ms.subservice: security-fundamentals
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 11/21/2017
+ms.author: tomsh
+ms.openlocfilehash: 3ac414ddd9a59154beadd60132393be8f8dfde98
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035995"
+---
+# <a name="azure-operational-security-checklist"></a>Azure Operational Security ellenőrzőlista
+Az alkalmazások Azure-ban való üzembe helyezése gyors, egyszerű és költséghatékony. A felhőalapú alkalmazás éles környezetben való üzembe helyezése előtt olyan ellenőrzőlista szükséges, amely segítséget nyújt az alkalmazás kiértékelésében a szükséges alapvető és ajánlott működési biztonsági műveletek listájával.
+
+## <a name="introduction"></a>Bevezetés
+
+Az Azure az alkalmazások üzembe helyezéséhez használható infrastruktúra-szolgáltatásokat kínál. Az Azure Operational Security a felhasználók számára elérhető szolgáltatásokat, vezérlőket és szolgáltatásokat jelenti a Microsoft Azureban tárolt adatok, alkalmazások és egyéb eszközök védelmére.
+
+-   Az Azure-szolgáltatások kihasználása és az ellenőrzőlista nyomon követése érdekében javasoljuk, hogy a lehető legtöbbet használja ki a felhőalapú platformon.
+-   Azok a szervezetek, amelyek időt és erőforrásokat fektetnek be, és az alkalmazások működési készültségét kiértékelik, a elindítása előtt jóval magasabb elégedettségi arányt, mint a nem. A munka elvégzése során a feladatlisták felbecsülhetetlen értékű mechanizmust biztosítanak az alkalmazások következetes és holisztikus kiértékeléséhez.
+-   A működési értékelés szintje a szervezet Felhőbeli érettségi szintjétől és az alkalmazás fejlesztési fázisaitól, a rendelkezésre állási igényektől és az adatérzékeny követelményektől függ.
+
+## <a name="checklist"></a>Ellenőrzőlista
+
+Ez az ellenőrzőlista arra szolgál, hogy segítse a vállalatokat a különböző működési biztonsági megfontolásokon, miközben kifinomult vállalati alkalmazásokat telepítenek az Azure-ban. A szolgáltatás segítségével biztonságos Felhőbeli áttelepítési és műveleti stratégiát hozhat létre a szervezet számára.
+
+|Ellenőrzőlista kategóriája| Leírás|
+| ------------ | -------- |
+| [<br>Biztonsági szerepkörök & hozzáférés-vezérléssel](../../security-center/security-center-planning-and-operations-guide.md)|<ul><li>A [szerepköralapú hozzáférés-vezérlés (RBAC)](../../role-based-access-control/role-assignments-portal.md) használatával biztosíthatja a felhasználókhoz, csoportokhoz és alkalmazásokhoz adott hatókörön belüli engedélyek hozzárendeléséhez használt felhasználói jogosultságokat.</li></ul> |
+| [<br>Adatgyűjtés & Storage-ban](../../storage/common/storage-security-guide.md)|<ul><li>A felügyeleti sík biztonsági szolgáltatásával biztonságossá teheti a Storage-fiókját [szerepköralapú Access Control (RBAC)](../../role-based-access-control/role-assignments-portal.md)használatával.</li><li>Adatsíkok biztonsága az adataihoz való hozzáférés biztosításához [közös hozzáférésű aláírások (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) és tárolt hozzáférési szabályzatok használatával.</li><li>Használjon átviteli szintű titkosítást – HTTPS protokollal és az SMB által használt titkosítással [(Server Message Block PROTOCOLS) 3,0](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) [Azure-fájlmegosztás](../../storage/files/storage-dotnet-how-to-use-files.md)esetén.</li><li>Az [ügyféloldali titkosítással](../../storage/common/storage-client-side-encryption.md) biztosíthatja a Storage-fiókoknak küldött adatvédelmet, ha a titkosítási kulcsok kizárólagos felügyeletét igényli. </li><li>A [Storage Service encryption (SSE)](../../storage/common/storage-service-encryption.md) használatával automatikusan titkosíthatja az Azure Storage-ban tárolt és az operációs rendszer és az adatlemezek virtuális merevlemez-fájljainak titkosítását [Azure Disk Encryption](../azure-security-disk-encryption-overview.md) .</li><li>Az Azure [Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/storage-analytics) használatával figyelheti az engedélyezési típust; a Blob Storagehoz hasonlóan láthatja, hogy a felhasználók közös hozzáférési aláírást vagy a Storage-fiók kulcsait használták-e.</li><li>A különböző tartományokból származó tárolási erőforrások eléréséhez használjon eltérő [eredetű erőforrás-megosztást (CORS)](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) .</li></ul> |
+|[<br>Biztonsági házirendek & javaslatok](../../security-center/security-center-planning-and-operations-guide.md)|<ul><li>Végponti megoldások üzembe helyezéséhez használja a [Azure Security Center](../../security-center/security-center-install-endpoint-protection.md) .</li><li>Webalkalmazási [tűzfal (WAF)](../../application-gateway/waf-overview.md) hozzáadása a webalkalmazások biztonságossá tételéhez.</li><li>   A biztonsági [](../../sentinel/connect-data-sources.md) védelem növeléséhez használjon tűzfalat Microsoft-partnertől. </li><li>Az Azure-előfizetéshez tartozó biztonsági kapcsolattartási adatok alkalmazása; Ez a [Microsoft Security Response Center (MSRC)](https://technet.microsoft.com/security/dn528958.aspx) abban az esetben kapcsolatba lép Önnel, ha felfedi, hogy az ügyféladatokat törvénytelen vagy jogosulatlan fél használja.</li></ul> |
+| [<br>Identitás- és hozzáféréskezelés](identity-management-best-practices.md)|<ul><li>Szinkronizálja a helyszíni címtárat a [felhőalapú címtárral az Azure ad használatával](../../active-directory/hybrid/whatis-hybrid-identity.md).</li><li>Az [egyszeri bejelentkezés](https://azure.microsoft.com/resources/videos/overview-of-single-sign-on/) használatával lehetővé teheti a felhasználók számára, hogy az Azure ad-ben szervezeti fiókjuk alapján hozzáférjenek az SaaS-alkalmazásokhoz.</li><li>A regisztráláshoz használt felhasználók figyeléséhez használja a [jelszó-visszaállítási tevékenység](../../active-directory/active-directory-passwords-reporting.md) jelentését.</li><li>A [többtényezős hitelesítés (MFA)](../../active-directory/authentication/multi-factor-authentication.md) engedélyezése a felhasználók számára.</li><li>A fejlesztők biztonságos identitási képességeket használhatnak olyan alkalmazásokhoz, mint például a [Microsoft biztonsági fejlesztési életciklus (SDL)](https://www.microsoft.com/download/details.aspx?id=12379).</li><li>Aktívan figyelheti a gyanús tevékenységeket prémium szintű Azure AD rendellenességgel kapcsolatos jelentések és az [Azure ad Identity Protection funkciójának](../../active-directory/identity-protection/overview.md)használatával.</li></ul> |
+|[<br>Folyamatos biztonsági monitorozás](../../security-center/security-center-planning-and-operations-guide.md)|<ul><li>A Malware Assessment megoldás [Azure monitor naplók](../../log-analytics/log-analytics-queries.md) segítségével jelentést készít a kártevők elleni védelem állapotáról az infrastruktúrában.</li><li>A [frissítési értékelés](../../automation/automation-update-management.md) segítségével meghatározhatja a potenciális biztonsági problémák általános kockázatát, illetve azt, hogy ezek a frissítések milyen fontosak a környezet számára.</li><li>Az [identitás és a hozzáférés](../../security-center/security-center-monitoring.md) áttekintést nyújt a felhasználóról </li><ul><li>felhasználói identitás állapota,</li><li>a bejelentkezés sikertelen próbálkozások száma</li><li> a felhasználói fiók, amelyet a rendszer a kísérletek során használt, zárolt fiókok</li> <li>módosított vagy új jelszót tartalmazó fiókok </li><li>A jelenleg bejelentkezett fiókok száma.</li></ul></ul> |
+| [<br>Azure Security Center észlelési képességek](../../security-center/security-center-alerts-overview.md#detect-threats)|<ul><li>Az [észlelési képességek](../../security-center/security-center-alerts-overview.md#detect-threats)segítségével azonosíthatja a Microsoft Azure erőforrásaihoz célzott aktív fenyegetéseket.</li><li>A Microsoft-termékek és-szolgáltatások, a [Microsoft Digital Crimes Unit (DCU)](https://www.microsoft.com/trustcenter/security/cybercrime), a Microsoft Security Response Center (MSRC) által használt, [integrált veszélyforrások](https://blogs.msdn.microsoft.com/azuresecurity/2016/12/19/get-threat-intelligence-reports-with-azure-security-center/) elleni intelligenciával az ismert hibás szereplők is megtalálhatók. [ ](response-center.md)és külső hírcsatornák.</li><li>Használjon [](https://blogs.technet.microsoft.com/enterprisemobility/2016/06/30/ata-behavior-analysis-monitoring/) olyan viselkedési elemzést, amely ismert mintákat alkalmaz a kártékony viselkedés felderítésére. </li><li>Használjon [](https://msdn.microsoft.com/library/azure/dn913096.aspx) olyan anomália-észlelést, amely statisztikai profilkészítést használ egy korábbi alapkonfiguráció létrehozásához.</li></ul> |
+| [<br>Fejlesztői műveletek (DevOps)](https://docs.microsoft.com/azure/architecture/checklist/dev-ops)|<ul><li>Az [infrastruktúra mint kód (IaC)](https://azure.microsoft.com/documentation/articles/resource-group-authoring-templates/) egy olyan gyakorlat, amely lehetővé teszi a hálózatok és virtuális gépek létrehozásának és Teardown automatizálását és érvényesítését, így segítve a biztonságos, stabil alkalmazás-üzemeltetési platformok nyújtását.</li><li>A [folyamatos integráció és üzembe helyezés](https://www.visualstudio.com/docs/build/overview) a kód folyamatos egyesítését és tesztelését eredményezi, amely a hibák korai megkeresésére vezet. </li><li>[Kiadási felügyelet](https://msdn.microsoft.com/library/vs/alm/release/overview) Az automatizált üzembe helyezések kezelése a folyamat egyes szakaszain keresztül.</li><li>[](https://azure.microsoft.com/documentation/articles/app-insights-start-monitoring-app-health-usage/) A futó alkalmazások teljesítményének figyelése, beleértve az alkalmazások állapotára és az ügyfelek használatára vonatkozó üzemi környezeteket is, a hipotéziseket, és gyorsan érvényesítheti vagy cáfolhatja a stratégiákat.</li><li>A [terheléses tesztelés & az automatikus skálázással](https://www.visualstudio.com/docs/test/performance-testing/getting-started/getting-started-with-performance-testing) teljesítményproblémák merülhetnek fel az alkalmazásban az üzembe helyezés minőségének javítása érdekében, és annak biztosítása érdekében, hogy az alkalmazás mindig elérhető legyen az üzleti igények kielégítése érdekében.</li></ul> |
+
+
+## <a name="conclusion"></a>Összegzés
+Számos szervezet sikeresen üzembe helyezte és üzemeltette felhőalapú alkalmazásait az Azure-ban. A megadott ellenőrzőlisták számos olyan ellenőrzőlistát mutatnak be, amelyek elengedhetetlenek, és segítenek a sikeres üzembe helyezések és a frusztráció nélküli műveletek valószínűségének növelésében. A meglévő és az új alkalmazások Azure-beli üzembe helyezéséhez kifejezetten ajánljuk ezeket az operatív és stratégiai megfontolásokat.
+
+## <a name="next-steps"></a>További lépések
+A biztonsággal kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
+
+- [Tervezési és működési biztonság](https://www.microsoft.com/trustcenter/security/designopsecurity).
+- [Azure Security Center tervezés és műveletek](../../security-center/security-center-planning-and-operations-guide.md).

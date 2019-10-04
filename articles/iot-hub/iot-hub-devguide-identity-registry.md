@@ -9,11 +9,11 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.openlocfilehash: 935635c474190413545d1a2731c367a691bfa56d
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010260"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61363175"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Az IoT hub eszközidentitás-jegyzék ismertetése
 
@@ -112,12 +112,12 @@ Tulajdonságok: Üzenet Rendszertulajdonságok van fűzve előtagként a `$` szi
 |$iothub-message-source | deviceLifecycleEvents |
 |$content-encoding | utf-8 |
 |opType | **createDeviceIdentity** vagy **deleteDeviceIdentity** |
-|HubName | Name of IoT Hub |
+|hubName | Name of IoT Hub |
 |deviceId | Az eszköz azonosítója |
 |operationTimestamp | ISO8601 időbélyegző-művelet |
 |iothub-message-schema | deviceLifecycleNotification |
 
-Szövegtörzs: Ebben a szakaszban JSON formátumban vannak, és a létrehozott eszközidentitással, az ikereszköz jelöli. Például:
+Szervezet: Ebben a szakaszban JSON formátumban vannak, és a létrehozott eszközidentitással, az ikereszköz jelöli. Például:
 
 ```json
 {
@@ -148,12 +148,12 @@ $iothub-enqueuedtime |  Idő, amikor az értesítés küldése |
 $iothub-message-source | moduleLifecycleEvents |
 $content-encoding | utf-8 |
 opType | **createModuleIdentity** vagy **deleteModuleIdentity** |
-HubName | Name of IoT Hub |
+hubName | Name of IoT Hub |
 moduleId | A modul azonosítója |
 operationTimestamp | ISO8601 időbélyegző-művelet |
 iothub-message-schema | moduleLifecycleNotification |
 
-Szövegtörzs: Ez a szakasz a JSON formátumban vannak, és az ikereszköz az létrehozott modul identitás jelöli. Például:
+Szervezet: Ez a szakasz a JSON formátumban vannak, és az ikereszköz az létrehozott modul identitás jelöli. Például:
 
 ```json
 {
@@ -185,11 +185,11 @@ Eszközidentitások jelentésekként jelennek meg az alábbi tulajdonságokkal r
 | --- | --- | --- |
 | deviceId |szükség esetén a frissítések csak olvasható |A kis-és nagybetűket karakterlánc (legfeljebb 128 karakter hosszú) ASCII 7 bites alfanumerikus karaktereket, valamint bizonyos speciális karaktereket: `- . + % _ # * ? ! ( ) , = @ $ '`. |
 | generationId |kötelező, csak olvasható |Az IoT hub által létrehozott, a kis-és nagybetűket karakterlánc legfeljebb 128 karakter hosszúságú. Ez az érték azonos eszközök megkülönböztetésére használható **deviceId**, amikor törli és újból létrehozza. |
-| ETag |kötelező, csak olvasható |Egy gyenge ETag az eszközidentitást képviselő megfelelően karakterláncot [RFC7232](https://tools.ietf.org/html/rfc7232). |
-| hitelesítés |választható |A hitelesítési adatokat, és biztonsági anyagokat tartalmazó összetett objektum. |
-| auth.symkey |választható |Egy összetett objektum egy elsődleges és a egy másodlagos kulcsot tartalmazó base64 formátumban tárolja. |
-| status |szükséges |Az access kijelző. Lehet **engedélyezve** vagy **letiltott**. Ha **engedélyezve**, az eszköz csatlakozhat. Ha **letiltott**, az eszköz nem fér hozzá a bármely eszköz által használt végpont. |
-| statusReason |választható |128 karakter hosszú karakterlánc, amely tárolja az Eszközállapot-identitás az az oka. Az összes UTF-8 karakterek használhatók. |
+| etag |kötelező, csak olvasható |Egy gyenge ETag az eszközidentitást képviselő megfelelően karakterláncot [RFC7232](https://tools.ietf.org/html/rfc7232). |
+| hitelesítés |Nem kötelező |A hitelesítési adatokat, és biztonsági anyagokat tartalmazó összetett objektum. |
+| auth.symkey |Nem kötelező |Egy összetett objektum egy elsődleges és a egy másodlagos kulcsot tartalmazó base64 formátumban tárolja. |
+| status |Szükséges |Az access kijelző. Lehet **engedélyezve** vagy **letiltott**. Ha **engedélyezve**, az eszköz csatlakozhat. Ha **letiltott**, az eszköz nem fér hozzá a bármely eszköz által használt végpont. |
+| statusReason |Nem kötelező |128 karakter hosszú karakterlánc, amely tárolja az Eszközállapot-identitás az az oka. Az összes UTF-8 karakterek használhatók. |
 | statusUpdateTime |csak olvasható |A historikus mutató, dátuma és időpontja, utolsó frissítésének állapota látható. |
 | connectionState |csak olvasható |A mező jelzi a kapcsolat állapota: vagy **csatlakoztatva** vagy **leválasztott**. Ez a mező képviseli az IoT Hub nézetben, az eszköz kapcsolati állapotát. **Fontos**: Ez a mező csak fejlesztési és hibakeresési célokra használandó. A kapcsolat állapota úgy frissül, csak a MQTT, AMQP vagy használó eszközök esetében. Ezenkívül protokollszintű pingelésre (MQTT pingelésre vagy AMQP pingelésre.) alapján, és veheti fel a maximális késleltetés csak 5 perc. Ebből kifolyólag lehet téves, például a csatlakoztatott eszközök jelentve, de, amelyek le vannak választva. |
 | connectionStateUpdatedTime |csak olvasható |A historikus mutató, a dátum és idő utolsó megjelenítése a kapcsolati állapot frissítése megtörtént. |
@@ -210,11 +210,11 @@ A modul identitások jelentésekként jelennek meg az alábbi tulajdonságokkal 
 | deviceId |szükség esetén a frissítések csak olvasható |A kis-és nagybetűket karakterlánc (legfeljebb 128 karakter hosszú) ASCII 7 bites alfanumerikus karaktereket, valamint bizonyos speciális karaktereket: `- . + % _ # * ? ! ( ) , = @ $ '`. |
 | moduleId |szükség esetén a frissítések csak olvasható |A kis-és nagybetűket karakterlánc (legfeljebb 128 karakter hosszú) ASCII 7 bites alfanumerikus karaktereket, valamint bizonyos speciális karaktereket: `- . + % _ # * ? ! ( ) , = @ $ '`. |
 | generationId |kötelező, csak olvasható |Az IoT hub által létrehozott, a kis-és nagybetűket karakterlánc legfeljebb 128 karakter hosszúságú. Ez az érték azonos eszközök megkülönböztetésére használható **deviceId**, amikor törli és újból létrehozza. |
-| ETag |kötelező, csak olvasható |Egy gyenge ETag az eszközidentitást képviselő megfelelően karakterláncot [RFC7232](https://tools.ietf.org/html/rfc7232). |
-| hitelesítés |választható |A hitelesítési adatokat, és biztonsági anyagokat tartalmazó összetett objektum. |
-| auth.symkey |választható |Egy összetett objektum egy elsődleges és a egy másodlagos kulcsot tartalmazó base64 formátumban tárolja. |
-| status |szükséges |Az access kijelző. Lehet **engedélyezve** vagy **letiltott**. Ha **engedélyezve**, az eszköz csatlakozhat. Ha **letiltott**, az eszköz nem fér hozzá a bármely eszköz által használt végpont. |
-| statusReason |választható |128 karakter hosszú karakterlánc, amely tárolja az Eszközállapot-identitás az az oka. Az összes UTF-8 karakterek használhatók. |
+| etag |kötelező, csak olvasható |Egy gyenge ETag az eszközidentitást képviselő megfelelően karakterláncot [RFC7232](https://tools.ietf.org/html/rfc7232). |
+| hitelesítés |Nem kötelező |A hitelesítési adatokat, és biztonsági anyagokat tartalmazó összetett objektum. |
+| auth.symkey |Nem kötelező |Egy összetett objektum egy elsődleges és a egy másodlagos kulcsot tartalmazó base64 formátumban tárolja. |
+| status |Szükséges |Az access kijelző. Lehet **engedélyezve** vagy **letiltott**. Ha **engedélyezve**, az eszköz csatlakozhat. Ha **letiltott**, az eszköz nem fér hozzá a bármely eszköz által használt végpont. |
+| statusReason |Nem kötelező |128 karakter hosszú karakterlánc, amely tárolja az Eszközállapot-identitás az az oka. Az összes UTF-8 karakterek használhatók. |
 | statusUpdateTime |csak olvasható |A historikus mutató, dátuma és időpontja, utolsó frissítésének állapota látható. |
 | connectionState |csak olvasható |A mező jelzi a kapcsolat állapota: vagy **csatlakoztatva** vagy **leválasztott**. Ez a mező képviseli az IoT Hub nézetben, az eszköz kapcsolati állapotát. **Fontos**: Ez a mező csak fejlesztési és hibakeresési célokra használandó. A kapcsolat állapota úgy frissül, csak a MQTT, AMQP vagy használó eszközök esetében. Ezenkívül protokollszintű pingelésre (MQTT pingelésre vagy AMQP pingelésre.) alapján, és veheti fel a maximális késleltetés csak 5 perc. Ebből kifolyólag lehet téves, például a csatlakoztatott eszközök jelentve, de, amelyek le vannak választva. |
 | connectionStateUpdatedTime |csak olvasható |A historikus mutató, a dátum és idő utolsó megjelenítése a kapcsolati állapot frissítése megtörtént. |

@@ -2,7 +2,7 @@
 title: A felhasználói jelszó - Azure Active Directory |} A Microsoft Docs
 description: Az Azure Active Directory felhasználó jelszavának alaphelyzetbe állítása leírja.
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.assetid: fad5624b-2f13-4abc-b3d4-b347903a8f16
 ms.service: active-directory
@@ -10,16 +10,16 @@ ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/05/2018
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4db6554e86cef61f2fc8e7a466919d2ce723f0e5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b4fdbbd4d71a9c97259678413cd9e59ee8aeae6b
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59492702"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69032664"
 ---
 # <a name="reset-a-users-password-using-azure-active-directory"></a>Az Azure Active Directory felhasználói jelszó alaphelyzetbe állítása
 
@@ -33,7 +33,7 @@ A rendszergazdák, ha elfelejti a jelszavát, ha a felhasználó-eszköz lekérd
 
 ## <a name="to-reset-a-password"></a>Jelszó alaphelyzetbe állítása
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) vagy jelszókezelő felhasználó rendszergazda. Az elérhető szerepkörök kapcsolatos további információkért lásd: [rendszergazdai szerepkörök hozzárendelése az Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md#available-roles)
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com/) felhasználói rendszergazdaként vagy jelszó-rendszergazdaként. Az elérhető szerepkörök kapcsolatos további információkért lásd: [rendszergazdai szerepkörök hozzárendelése az Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md#available-roles)
 
 2. Válassza ki **Azure Active Directory**válassza **felhasználók**, keresse meg és válassza ki az alaphelyzetbe állítás szükséges, és válassza **jelszó alaphelyzetbe állítása**.
 
@@ -43,7 +43,8 @@ A rendszergazdák, ha elfelejti a jelszavát, ha a felhasználó-eszköz lekérd
 
 3. Az a **jelszó alaphelyzetbe állítása** lapon jelölje be **jelszó alaphelyzetbe állítása**.
 
-    Ideiglenes jelszó jön létre automatikusan a felhasználó számára.
+    > [!Note]
+    > Azure Active Directory használatakor a rendszer automatikusan létrehoz egy ideiglenes jelszót a felhasználó számára. Active Directory helyszíni használatakor hozza létre a felhasználó jelszavát.
 
 4. Másolja a jelszót, és adjon meg a felhasználó számára. A felhasználónak kell módosítani a jelszót a következő bejelentkezési folyamat során.
 

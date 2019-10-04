@@ -7,7 +7,7 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: ce136a341809b1a485e86337f428b4685eba22f7
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: a63914116f5ef9922ac05745764e0ad505dc3c91
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093546"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593951"
 ---
 # <a name="china-content-delivery-with-azure-cdn"></a>Kína az Azure CDN tartalomkézbesítési
 
@@ -38,7 +38,7 @@ Az Azure CDN globális és az Azure CDN Azure China van a következő funkcióka
 
      - Tartalomkézbesítési China-en kívül hajt végre
 
-     - Négy tarifacsomagok: a Microsoft standard, a standard – Verizon, a Verizon prémium szintű és az Akamai standard
+     - Négy tarifacsomagban is kapható: Microsoft standard, Verizon standard, Verizon premium, and Akamai standard
 
      - [Dokumentáció](https://docs.microsoft.com/azure/cdn/)
 
@@ -48,7 +48,7 @@ Az Azure CDN globális és az Azure CDN Azure China van a következő funkcióka
 
      - Tartalomkézbesítési Kína belül hajtja végre
 
-     - Két tarifacsomag: Standard és prémium
+     - Két tarifacsomagban is kapható: Standard és prémium
 
      - [Dokumentáció](https://docs.azure.cn/en-us/cdn/)
  
@@ -63,7 +63,7 @@ Az Azure CDN China kapcsolatos további információkért lásd:
 
 - [Az Azure Content Delivery Network használata](https://docs.azure.cn/en-us/cdn/cdn-how-to-use)
 
-- [Az Azure szolgáltatásainak elérhetősége Kínában](https://docs.microsoft.com/azure/china/china-get-started-service-availability)
+- [Az Azure szolgáltatásainak elérhetősége Kínában](https://docs.microsoft.com/azure/china/concepts-service-availability)
 
 
 

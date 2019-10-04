@@ -1,74 +1,75 @@
 ---
-title: Az Azure Container Registry webhookok adatbázisséma hivatkozása
-description: Webhook kérés JSON hasznos referencia az Azure Container Registry.
+title: Azure Container Registry webhook-séma referenciája
+description: Webhook-kérelem JSON-adattartalom-referenciája Azure Container Registry.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 03/05/2019
 ms.author: danlep
-ms.openlocfilehash: 4c0845b9cf5194ecbd0ab813997e17e070840f44
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: fcdee2be92f2a3052e2ebbfaab3a2f9cb96e0125
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58099899"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311598"
 ---
-# <a name="azure-container-registry-webhook-reference"></a>Az Azure Container Registry webhookok leírása
+# <a name="azure-container-registry-webhook-reference"></a>Webhook-hivatkozás Azure Container Registry
 
-Is [webhookok konfigurálása](container-registry-webhook.md) a tároló-beállításjegyzékhez, amelyek létrehozzák az eseményeket, amikor bizonyos műveleteket alapján történik. Például engedélyezze a webhookok, amelyek jelzik, ha egy tárolórendszerképet, vagy a Helm-diagram leküldte a tárolójegyzékbe, vagy törölni. Webhook akkor aktiválódik, amikor az Azure Container Registry bocsát ki, adja meg a végpont az eseménnyel kapcsolatos adatokat tartalmazó HTTP vagy HTTPS-kérést. A végpont ezután a webhook feldolgozni, és azoknak megfelelő cselekvést.
+A tároló-beállításjegyzékhez olyan webhookokat állíthat [be](container-registry-webhook.md) , amelyek eseményeket állítanak elő, amikor bizonyos műveletek végrehajtása történik. Engedélyezheti például, hogy a rendszer akkor aktiválja a webhookokat, amikor egy tárolói képet vagy Helm-diagramot továbbítanak egy beállításjegyzékbe, vagy törölve lettek. Webhook indításakor Azure Container Registry a megadott végpontra vonatkozó információkat tartalmazó HTTP-vagy HTTPS-kérést ad ki. A végpont ezután feldolgozza a webhookot, és ennek megfelelően cselekszik.
 
-Az alábbi szakaszok a séma támogatott események által webhook-kérelmet. Az esemény szakaszok az esemény típusa, egy példa kérelem hasznos adatai, és aktiválja a webhookot egy vagy több Példaparancsok tartalom sémáját.
+A következő részek a támogatott események által generált webhook-kérelmek sémáját részletezik. Az események részei tartalmazzák az esemény típusához tartozó hasznos adatokat, például a kérések hasznos adatait, valamint egy vagy több, a webhookot kiváltó példás parancsot.
 
-Az Azure container registry webhookok konfigurálásával kapcsolatos további információkért lásd: [használata Azure Container Registry webhookokat](container-registry-webhook.md).
+További információ a webhookok Azure Container registryben való konfigurálásáról: [Azure Container Registry webhookok használata](container-registry-webhook.md).
 
 ## <a name="webhook-requests"></a>Webhook-kérelmek
 
 ### <a name="http-request"></a>HTTP-kérelem
 
-Aktivált webhook lehetővé teszi egy olyan HTTP `POST` kérése az URL-végpontot, a webhook konfigurálásakor megadott.
+Egy aktivált webhook http `POST` -kérést küld a webhook konfigurálásakor megadott URL-végpontnak.
 
 ### <a name="http-headers"></a>HTTP-fejlécek
 
-Webhook kérések tartalmazzák egy `Content-Type` , `application/json` Ha nem adott meg egy `Content-Type` a webhook egyéni fejlécet.
+A webhook-kérelmek `Content-Type` közé `application/json` tartozik a, ha nem adott `Content-Type` meg egyéni fejlécet a webhookhoz.
 
-A kérelem ezek egyéni fejlécek, előfordulhat, hogy a megadott a webhook mellett egyéb fejlécek kerülnek.
+A kéréshez a webhookhoz megadott egyéni fejléceken felül nem kerül további fejlécek.
 
 ## <a name="push-event"></a>Leküldéses esemény
 
-A Webhook aktiválódik, ha egy adattár át lett helyezve egy tárolórendszerképet.
+A webhook akkor aktiválódik, amikor egy tároló képét leküldenek egy adattárba.
 
-### <a name="push-event-payload"></a>Leküldéses eseménytartalom
+### <a name="push-event-payload"></a>Leküldéses esemény hasznos adatai
 
-|Elem|Typo|Leírás|
+|Elem|Type|Leírás|
 |-------------|----------|-----------|
-|`id`|String|A webhook-esemény azonosítója.|
-|`timestamp`|DateTime|Az idő, amikor a webhook-esemény lett elindítva.|
-|`action`|String|A művelet, amely kiváltotta a webhook-esemény.|
-|[Cél](#target)|Komplex típus|A webhook-esemény kiváltó esemény célját.|
-|[Kérelem](#request)|Komplex típus|A kérelem, ami a webhook-esemény jön létre.|
+|`id`|Karakterlánc|A webhook esemény azonosítója.|
+|`timestamp`|Datetime|Az az idő, amikor a webhook eseményt aktiválták.|
+|`action`|Sztring|A webhook eseményt indító művelet.|
+|[cél](#target)|Összetett típus|A webhook eseményt kiváltó esemény célpontja.|
+|[kérelem](#request)|Összetett típus|A webhook eseményt létrehozó kérelem.|
 
-### <a name="target"></a>Cél
+### <a name="target"></a>cél
 
-|Elem|Typo|Leírás|
+|Elem|Type|Leírás|
 |------------------|----------|-----------|
-|`mediaType`|String|A hivatkozott objektum MIME-típusát.|
-|`size`|Int32|A tartalom bájtok száma. Ugyanaz, mint a Hossz mezőben.|
-|`digest`|String|A tartalom, ahogyan a beállításjegyzék V2 HTTP API-specifikációnak a kivonat.|
-|`length`|Int32|A tartalom bájtok száma. Ugyanaz, mint mérete mező.|
-|`repository`|String|A tárház nevét.|
-|`tag`|String|A kép címke neve.|
+|`mediaType`|Karakterlánc|A hivatkozott objektum MIME-típusa.|
+|`size`|Int32|A tartalom bájtjainak száma. Ugyanaz, mint a Length mező.|
+|`digest`|Sztring|A tartalom kivonata, amelyet a Registry v2 HTTP API-specifikáció határoz meg.|
+|`length`|Int32|A tartalom bájtjainak száma. Ugyanaz, mint a size mező.|
+|`repository`|Sztring|A tárház neve.|
+|`tag`|Karakterlánc|A Képcímke neve.|
 
-### <a name="request"></a>Kérelem
+### <a name="request"></a>kérelem
 
-|Elem|Typo|Leírás|
+|Elem|Type|Leírás|
 |------------------|----------|-----------|
-|`id`|String|Az esemény által kezdeményezett kérelem azonosítója.|
-|`host`|String|A kívülről elérhető-példányának gazdagépnevét a beállításjegyzék, a bejövő kérelem HTTP-állomásfejlécet által megadott.|
-|`method`|String|A kérelmi metódust, ami az esemény jön létre.|
-|`useragent`|String|A felhasználói ügynök fejléc a kérelem.|
+|`id`|Karakterlánc|Az eseményt kezdeményező kérelem azonosítója.|
+|`host`|Sztring|A beállításjegyzék-példány külsőleg elérhető állomásneve, amelyet a HTTP-állomásfejléc a bejövő kérelmekben megadott.|
+|`method`|Karakterlánc|Az eseményt létrehozó kérelem metódusa.|
+|`useragent`|Sztring|A kérelem felhasználói ügynökének fejléce.|
 
-### <a name="payload-example-image-push-event"></a>Adattartalom-példa: kép leküldéses esemény
+### <a name="payload-example-image-push-event"></a>Hasznos adatok például: leküldéses esemény
 
 ```JSON
 {
@@ -92,38 +93,38 @@ A Webhook aktiválódik, ha egy adattár át lett helyezve egy tárolórendszerk
 }
 ```
 
-Példa [Docker CLI](https://docs.docker.com/engine/reference/commandline/cli/) parancsot, amely elindítja a lemezkép **leküldéses** event webhook:
+Példa a [Docker CLI](https://docs.docker.com/engine/reference/commandline/cli/) -parancsra, amely elindítja a rendszerképek leküldéses eseményét webhookot:
 
 ```bash
 docker push myregistry.azurecr.io/hello-world:v1
 ```
 
-## <a name="chart-push-event"></a>Diagram leküldéses esemény
+## <a name="chart-push-event"></a>Diagram leküldéses eseménye
 
-A Webhook aktiválódik, ha egy tárház egy Helm-diagramot a rendszer továbbítja.
+A webhook akkor aktiválódik, ha egy Helm-diagramot egy adattárba küldenek.
 
-### <a name="chart-push-event-payload"></a>Diagram leküldéses eseménytartalom
+### <a name="chart-push-event-payload"></a>Diagram leküldéses eseményének adattartalma
 
-|Elem|Typo|Leírás|
+|Elem|Type|Leírás|
 |-------------|----------|-----------|
-|`id`|String|A webhook-esemény azonosítója.|
-|`timestamp`|DateTime|Az idő, amikor a webhook-esemény lett elindítva.|
-|`action`|String|A művelet, amely kiváltotta a webhook-esemény.|
-|[Cél](#helm_target)|Komplex típus|A webhook-esemény kiváltó esemény célját.|
+|`id`|Karakterlánc|A webhook esemény azonosítója.|
+|`timestamp`|Datetime|Az az idő, amikor a webhook eseményt aktiválták.|
+|`action`|Karakterlánc|A webhook eseményt indító művelet.|
+|[cél](#helm_target)|Összetett típus|A webhook eseményt kiváltó esemény célpontja.|
 
-### <a name="helm_target"></a>Cél
+### <a name="helm_target"></a>cél
 
-|Elem|Typo|Leírás|
+|Elem|Type|Leírás|
 |------------------|----------|-----------|
-|`mediaType`|String|A hivatkozott objektum MIME-típusát.|
-|`size`|Int32|A tartalom bájtok száma.|
-|`digest`|String|A tartalom, ahogyan a beállításjegyzék V2 HTTP API-specifikációnak a kivonat.|
-|`repository`|String|A tárház nevét.|
-|`tag`|String|A diagram címke neve.|
-|`name`|String|A diagram neve.|
-|`version`|String|A diagram verziója.|
+|`mediaType`|Karakterlánc|A hivatkozott objektum MIME-típusa.|
+|`size`|Int32|A tartalom bájtjainak száma.|
+|`digest`|Karakterlánc|A tartalom kivonata, amelyet a Registry v2 HTTP API-specifikáció határoz meg.|
+|`repository`|Sztring|A tárház neve.|
+|`tag`|Sztring|A diagram címkéjének neve|
+|`name`|Karakterlánc|A diagram neve.|
+|`version`|Sztring|A diagram verziója.|
 
-### <a name="payload-example-chart-push-event"></a>Adattartalom-példa: diagram leküldéses esemény
+### <a name="payload-example-chart-push-event"></a>Hasznos példa: diagram leküldéses esemény
 
 ```JSON
 {
@@ -142,7 +143,7 @@ A Webhook aktiválódik, ha egy tárház egy Helm-diagramot a rendszer továbbí
 }
 ```
 
-Példa [Azure CLI-vel](/cli/azure/acr) parancsot, amely elindítja a **chart_push** event webhook:
+Példa az [Azure CLI](/cli/azure/acr) -parancsra, amely elindítja a **chart_push** Event webhookot:
 
 ```azurecli
 az acr helm push wordpress-5.4.0.tgz --name MyRegistry
@@ -150,36 +151,36 @@ az acr helm push wordpress-5.4.0.tgz --name MyRegistry
 
 ## <a name="delete-event"></a>Esemény törlése
 
-Webhook által aktivált, amikor egy lemezképtárban, vagy a jegyzékfájl törlődik. Nem aktiválódik, ha egy címke törlése.
+A webhook akkor aktiválódik, amikor egy rendszerkép-tárházat vagy jegyzékfájlt törölnek. Nem aktiválódik, ha a címke törölve lett.
 
-### <a name="delete-event-payload"></a>Eseménytartalom törlése
+### <a name="delete-event-payload"></a>Esemény-adattartalom törlése
 
-|Elem|Typo|Leírás|
+|Elem|Type|Leírás|
 |-------------|----------|-----------|
-|`id`|String|A webhook-esemény azonosítója.|
-|`timestamp`|DateTime|Az idő, amikor a webhook-esemény lett elindítva.|
-|`action`|String|A művelet, amely kiváltotta a webhook-esemény.|
-|[Cél](#delete_target)|Komplex típus|A webhook-esemény kiváltó esemény célját.|
-|[Kérelem](#delete_request)|Komplex típus|A kérelem, ami a webhook-esemény jön létre.|
+|`id`|Sztring|A webhook esemény azonosítója.|
+|`timestamp`|Datetime|Az az idő, amikor a webhook eseményt aktiválták.|
+|`action`|Sztring|A webhook eseményt indító művelet.|
+|[cél](#delete_target)|Összetett típus|A webhook eseményt kiváltó esemény célpontja.|
+|[kérelem](#delete_request)|Összetett típus|A webhook eseményt létrehozó kérelem.|
 
-### <a name="delete_target"></a> Cél
+### <a name="delete_target"></a>cél
 
-|Elem|Typo|Leírás|
+|Elem|Type|Leírás|
 |------------------|----------|-----------|
-|`mediaType`|String|A hivatkozott objektum MIME-típusát.|
-|`digest`|String|A tartalom, ahogyan a beállításjegyzék V2 HTTP API-specifikációnak a kivonat.|
-|`repository`|String|A tárház nevét.|
+|`mediaType`|Sztring|A hivatkozott objektum MIME-típusa.|
+|`digest`|Sztring|A tartalom kivonata, amelyet a Registry v2 HTTP API-specifikáció határoz meg.|
+|`repository`|Sztring|A tárház neve.|
 
-### <a name="delete_request"></a> Kérelem
+### <a name="delete_request"></a>kérelem
 
-|Elem|Typo|Leírás|
+|Elem|Type|Leírás|
 |------------------|----------|-----------|
-|`id`|String|Az esemény által kezdeményezett kérelem azonosítója.|
-|`host`|String|A kívülről elérhető-példányának gazdagépnevét a beállításjegyzék, a bejövő kérelem HTTP-állomásfejlécet által megadott.|
-|`method`|String|A kérelmi metódust, ami az esemény jön létre.|
-|`useragent`|String|A felhasználói ügynök fejléc a kérelem.|
+|`id`|Sztring|Az eseményt kezdeményező kérelem azonosítója.|
+|`host`|Sztring|A beállításjegyzék-példány külsőleg elérhető állomásneve, amelyet a HTTP-állomásfejléc a bejövő kérelmekben megadott.|
+|`method`|Sztring|Az eseményt létrehozó kérelem metódusa.|
+|`useragent`|Sztring|A kérelem felhasználói ügynökének fejléce.|
 
-### <a name="payload-example-image-delete-event"></a>Adattartalom-példa: lemezkép törlése esemény
+### <a name="payload-example-image-delete-event"></a>Hasznos adat – példa: rendszerkép-törlési esemény
 
 ```JSON
 {
@@ -200,7 +201,7 @@ Webhook által aktivált, amikor egy lemezképtárban, vagy a jegyzékfájl tör
   }
 ```
 
-Példa [Azure CLI-vel](/cli/azure/acr) parancsok, az eseményindító egy **törlése** event webhook:
+Példa olyan [Azure CLI](/cli/azure/acr) -parancsokra, amelyek egy **delete** Event webhookot indítanak el:
 
 ```azurecli
 # Delete repository
@@ -210,32 +211,32 @@ az acr repository delete --name MyRegistry --repository MyRepository
 az acr repository delete --name MyRegistry --image MyRepository:MyTag
 ```
 
-## <a name="chart-delete-event"></a>Diagram törlése esemény
+## <a name="chart-delete-event"></a>Diagram törlési eseménye
 
-Webhook által aktivált, amikor egy Helm-diagram vagy a tárház törlődik. 
+A webhook egy Helm-diagram vagy-adattár törlésekor aktiválódik. 
 
-### <a name="chart-delete-event-payload"></a>Diagram törlése eseménytartalom
+### <a name="chart-delete-event-payload"></a>Diagram törlése esemény hasznos adatai
 
-|Elem|Typo|Leírás|
+|Elem|Type|Leírás|
 |-------------|----------|-----------|
-|`id`|String|A webhook-esemény azonosítója.|
-|`timestamp`|DateTime|Az idő, amikor a webhook-esemény lett elindítva.|
-|`action`|String|A művelet, amely kiváltotta a webhook-esemény.|
-|[Cél](#chart_delete_target)|Komplex típus|A webhook-esemény kiváltó esemény célját.|
+|`id`|Sztring|A webhook esemény azonosítója.|
+|`timestamp`|Datetime|Az az idő, amikor a webhook eseményt aktiválták.|
+|`action`|Karakterlánc|A webhook eseményt indító művelet.|
+|[cél](#chart_delete_target)|Összetett típus|A webhook eseményt kiváltó esemény célpontja.|
 
-### <a name="chart_delete_target"></a> Cél
+### <a name="chart_delete_target"></a>cél
 
-|Elem|Typo|Leírás|
+|Elem|Type|Leírás|
 |------------------|----------|-----------|
-|`mediaType`|String|A hivatkozott objektum MIME-típusát.|
-|`size`|Int32|A tartalom bájtok száma.|
-|`digest`|String|A tartalom, ahogyan a beállításjegyzék V2 HTTP API-specifikációnak a kivonat.|
-|`repository`|String|A tárház nevét.|
-|`tag`|String|A diagram címke neve.|
-|`name`|String|A diagram neve.|
-|`version`|String|A diagram verziója.|
+|`mediaType`|Sztring|A hivatkozott objektum MIME-típusa.|
+|`size`|Int32|A tartalom bájtjainak száma.|
+|`digest`|Karakterlánc|A tartalom kivonata, amelyet a Registry v2 HTTP API-specifikáció határoz meg.|
+|`repository`|Sztring|A tárház neve.|
+|`tag`|Sztring|A diagram címkéjének neve|
+|`name`|Sztring|A diagram neve.|
+|`version`|Sztring|A diagram verziója.|
 
-### <a name="payload-example-chart-delete-event"></a>Adattartalom-példa: diagram törlése esemény
+### <a name="payload-example-chart-delete-event"></a>Hasznos adat példa: diagram törlési esemény
 
 ```JSON
 {
@@ -254,7 +255,7 @@ Webhook által aktivált, amikor egy Helm-diagram vagy a tárház törlődik.
 }
 ```
 
-Példa [Azure CLI-vel](/cli/azure/acr) parancsot, amely elindítja a **chart_delete** event webhook:
+Példa az [Azure CLI](/cli/azure/acr) -parancsra, amely elindítja a **chart_delete** Event webhookot:
 
 ```azurecli
 az acr helm delete wordpress --version 5.4.0 --name MyRegistry

@@ -1,70 +1,66 @@
 ---
-title: Python-kódtárakat a Spark - az Azure webhelyek naplóinak elemzése
-description: Ez a jegyzetfüzet bemutatja, hogyan elemezheti a naplófájlok adatait a Spark on Azure HDInsight egy egyéni kódtár használatával.
-services: hdinsight
+title: Webhelyek naplóinak elemzése Python-tárakkal a Sparkban – Azure
+description: Ez a jegyzetfüzet azt mutatja be, hogyan elemezheti a naplózási adataikat egyéni kódtár használatával a Spark on Azure HDInsight.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
-ms.author: hrasheed
-ms.openlocfilehash: f8b479f55ea5ee22ae2510fad6279cac0aaa9c0d
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 6d23e8cfa8d20169d2b63723138b60dafb1069de
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608800"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146981"
 ---
-# <a name="analyze-website-logs-using-a-custom-python-library-with-apache-spark-cluster-on-hdinsight"></a>Egy egyéni Python-kódtár használata a HDInsight az Apache Spark-fürt webhelynaplók elemzése
+# <a name="analyze-website-logs-using-a-custom-python-library-with-apache-spark-cluster-on-hdinsight"></a>Webhelyek naplóinak elemzése egyéni Python-kódtár használatával Apache Spark-fürttel a HDInsight-on
 
-Ez a jegyzetfüzet bemutatja, hogyan elemezheti a naplófájlok adatait egy egyéni kódtár az Apache Spark on HDInsight használatával. Az egyéni tárát használja használjuk az nevű Python-kódtár **iislogparser.py**.
+Ez a jegyzetfüzet azt mutatja be, hogyan elemezheti a naplózási adataikat egy egyéni kódtár használatával, Apache Spark a HDInsight. Az általunk használt egyéni könyvtár egy **iislogparser.py**nevű Python-könyvtár.
 
 > [!TIP]  
-> Ebben az oktatóanyagban egyben egy Jupyter notebookot HDInsight szolgáltatásban létrehozott (Linux) Spark-fürtön elérhető. A jegyzetfüzet-megoldás lehetővé teszi a notebookból magát a Python-kódrészletek futtatását. Egy jegyzetfüzetet belül, az oktatóanyag elvégzéséhez hozzon létre egy Spark-fürtöt, indítsa el a Jupyter notebook (`https://CLUSTERNAME.azurehdinsight.net/jupyter`), majd futtassa a notebook **-naplók elemzése a Spark használatával egyéni library.ipynb** alatt a **PySpark**  mappát.
->
->
+> Ez a cikk Jupyter-jegyzetfüzetként is elérhető a HDInsight-ben létrehozott Spark-(Linux-) fürtökön. A notebook felülete lehetővé teszi a Python-kódrészletek futtatását a jegyzetfüzetből. A cikk jegyzetfüzetből való elvégzéséhez hozzon létre egy Spark-fürtöt, nyisson meg`https://CLUSTERNAME.azurehdinsight.net/jupyter`egy Jupyter notebookot (), majd futtassa a jegyzetfüzeteket a **Sparkban az egyéni kódtár használatával. ipynb** a **PySpark** mappában.
 
 **Előfeltételek:**
 
-Az alábbiakkal kell rendelkeznie:
+A következőkkel kell rendelkeznie:
 
 * Azure-előfizetés. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
 * Apache Spark-fürt megléte a HDInsightban. További útmutatásért lásd: [Apache Spark-fürt létrehozása az Azure HDInsightban](apache-spark-jupyter-spark-sql.md).
 
-## <a name="save-raw-data-as-an-rdd"></a>Nyers adatok mentése egy RDD
-Ebben a szakaszban fogjuk használni a [Jupyter](https://jupyter.org) notebook társított Apache Spark-fürt a HDInsight, amely a nyers mintaadatok feldolgozni, és mentse egy Hive-táblába feladatok futtatásához. A mintaadatokat egy .csv-fájlba (hvac.csv) elérhető alapértelmezés szerint minden fürtön.
+## <a name="save-raw-data-as-an-rdd"></a>Nyers adatbázis mentése RDD
+Ebben a szakaszban a HDInsight lévő Apache Spark-fürthöz társított [Jupyter](https://jupyter.org) -jegyzetfüzetet használjuk a nyers mintaadatok feldolgozását végző feladatok futtatásához és egy struktúra-táblázatként való mentéséhez. A mintaadatok egy. csv-fájl (HVAC. csv), amely alapértelmezés szerint minden fürtön elérhető.
 
-Az adatok az Apache Hive-tábla mentése után a következő szakaszban nem fog csatlakozni a Hive-tábla használatával, BI eszközök, például a Power BI és a Tableau.
+Miután az adatait Apache Hive táblázatként mentette, a következő szakaszban a BI-eszközök, például a Power BI és a tabló használatával fogunk csatlakozni a kaptár táblához.
 
-1. Az [Azure portál](https://portal.azure.com/) kezdőpultján kattintson a Spark-fürthöz tartozó csempére (ha rögzítette azt a kezdőpulton). A fürtöt a következő helyről is megkeresheti: **Browse All (Összes tallózása)** > **HDInsight Clusters** (HDInsight-fürtök).   
+1. Az [Azure portál](https://portal.azure.com/) kezdőpultján kattintson a Spark-fürthöz tartozó csempére (ha rögzítette azt a kezdőpulton). A fürtöt a következő helyről is megkeresheti: **Browse All (Összes tallózása)**  > **HDInsight Clusters** (HDInsight-fürtök).
+
 2. A Spark-fürt panelén kattintson a **Fürt irányítópultja Dashboard** lehetőségre, majd a **Jupyter Notebook** elemre. Ha a rendszer felkéri rá, adja meg a fürthöz tartozó rendszergazdai hitelesítő adatokat.
 
    > [!NOTE]
    > A fürthöz tartozó Jupyter notebookot az alábbi URL-cím böngészőben történő megnyitásával is elérheti. Cserélje le a **CLUSTERNAME** elemet a fürt nevére:
    >
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
-   >
-   >
+
 3. Hozzon létre új notebookot. Kattintson a **New** (Új), majd a **PySpark** elemre.
 
-    ![Új Jupyter notebook létrehozása](./media/apache-spark-custom-library-website-log-analysis/hdinsight-create-jupyter-notebook.png "Új Jupyter notebook létrehozása")
+    ![Új Apache Jupyter-jegyzetfüzet létrehozása](./media/apache-spark-custom-library-website-log-analysis/hdinsight-create-jupyter-notebook.png "Új Jupyter-jegyzetfüzet létrehozása")
+
 4. Az új notebook létrejött, és Untitled.pynb néven nyílt meg. A felső részen kattintson a notebook nevére, és adjon meg egy könnyen megjegyezhető nevet.
 
     ![Adjon nevet a notebooknak](./media/apache-spark-custom-library-website-log-analysis/hdinsight-name-jupyter-notebook.png "Adjon nevet a notebooknak")
-5. Mivel a notebook PySpark kernel használatával jött létre, explicit módon semmilyen tartalmat nem kell létrehozni. Az első kódcella futtatásakor a Spark- és Hive-környezetek automatikusan létrejönnek. Ehhez a forgatókönyvhöz szükséges típusok importálása elindíthatja. Illessze be a következő kódrészletet egy üres cellába, majd nyomja le a **SHIFT + ENTER** billentyűkombinációt.
+5. Mivel a notebook PySpark kernel használatával jött létre, explicit módon semmilyen tartalmat nem kell létrehozni. Az első kódcella futtatásakor a Spark- és Hive-környezetek automatikusan létrejönnek. Először importálja a forgatókönyvhöz szükséges típusokat. Illessze be a következő kódrészletet egy üres cellába, majd nyomja le a **SHIFT + ENTER** billentyűkombinációt.
 
         from pyspark.sql import Row
         from pyspark.sql.types import *
 
-
-1. Hozzon létre egy RDD mintaadatokkal a napló már elérhető a fürtön. Férhet hozzá az adataihoz a fürthöz társított alapértelmezett tárfiókban **\HdiSamples\HdiSamples\WebsiteLogSampleData\SampleLog\909f2b.log**.
+6. Hozzon létre egy RDD a fürtön már elérhető mintaadatok használatával. A fürthöz tartozó alapértelmezett Storage-fiókban lévő, a **\HdiSamples\HdiSamples\WebsiteLogSampleData\SampleLog\909f2b.log**címen található adatelérési helyhez férhet hozzá.
 
         logs = sc.textFile('wasb:///HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/909f2b.log')
 
-
-1. Beolvasni egy mintanaplót ellenőrizheti, hogy állítsa be az előző lépésben sikeresen befejeződött.
+7. Egy mintául szolgáló naplóbejegyzés lekérésével ellenőrizheti, hogy az előző lépés sikeresen befejeződött-e.
 
         logs.take(5)
 
@@ -80,21 +76,22 @@ Az adatok az Apache Hive-tábla mentése után a következő szakaszban nem fog 
          u'2014-01-01 02:01:09 SAMPLEWEBSITE GET /blogposts/mvc4/step3.png X-ARR-LOG-ID=9eace870-2f49-4efd-b204-0d170da46b4a 80 - 1.54.23.196 Mozilla/5.0+(Windows+NT+6.3;+WOW64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/31.0.1650.63+Safari/537.36 - http://weblogs.asp.net/sample/archive/2007/12/09/asp-net-mvc-framework-part-4-handling-form-edit-and-post-scenarios.aspx www.sample.com 200 0 0 51237 871 32',
          u'2014-01-01 02:01:09 SAMPLEWEBSITE GET /blogposts/mvc4/step4.png X-ARR-LOG-ID=4bea5b3d-8ac9-46c9-9b8c-ec3e9500cbea 80 - 1.54.23.196 Mozilla/5.0+(Windows+NT+6.3;+WOW64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/31.0.1650.63+Safari/537.36 - http://weblogs.asp.net/sample/archive/2007/12/09/asp-net-mvc-framework-part-4-handling-form-edit-and-post-scenarios.aspx www.sample.com 200 0 0 72177 871 47']
 
-## <a name="analyze-log-data-using-a-custom-python-library"></a>Elemezheti a naplófájlok adatait egy egyéni Python-kódtár használatával
-1. A fenti kimenetben az első néhány sor a fejléc-információkat tartalmaznak, és minden fennmaradó sor megfelel-e a séma a fejléc ismertetett. Ilyen naplók elemzése bonyolult lehet. Ezért használjuk egy egyéni Python-kódtár (**iislogparser.py**), amely lehetővé teszi az ilyen sokkal könnyebben naplók elemzése. Alapértelmezés szerint ez a kódtár részét képezi a HDInsight, Spark-fürthöz **/HdiSamples/HdiSamples/WebsiteLogSampleData/iislogparser.py**.
+## <a name="analyze-log-data-using-a-custom-python-library"></a>Naplófájlok elemzése egyéni Python-kódtár használatával
 
-    Azonban ebben a könyvtárban nem szerepel a következőben a `PYTHONPATH` így nem lehet használni, például importálás utasítás segítségével `import iislogparser`. A tár használata, hogy kell terjesztenie az összes munkavégző csomópontja. Futtassa az alábbi kódrészletet.
+1. A fenti kimenetben az első pár sor tartalmazza a fejléc adatait, és minden fennmaradó sor megegyezik a fejlécben leírt sémával. Az ilyen naplók elemzése bonyolult lehet. Tehát egy egyéni Python-függvénytárat (**iislogparser.py**) használunk, amely sokkal egyszerűbbé teszi az ilyen naplók elemzését. Alapértelmezés szerint ez a tár a Spark-fürt része a HDInsight-on a **/HdiSamples/HdiSamples/WebsiteLogSampleData/iislogparser.py**címen.
+
+    Ez a tár azonban nem a `PYTHONPATH` következő, ezért nem használható olyan importálási utasítás használatával, mint például `import iislogparser`:. Ennek a könyvtárnak a használatához terjesztenie kell az összes munkavégző csomópontra. Futtassa az alábbi kódrészletet.
 
         sc.addPyFile('wasb:///HdiSamples/HdiSamples/WebsiteLogSampleData/iislogparser.py')
 
-
-1. `iislogparser` biztosít egy függvény `parse_log_line` , amely visszaadja a `None` Ha egy napló sor a fejlécsor lesz, és a egy példányát adja vissza a `LogLine` osztályhoz, ha egy napló sor tapasztal. Használja a `LogLine` osztály a napló csak a Sorok kinyerése a RDD:
+1. `iislogparser`egy olyan függvényt `parse_log_line` ad `None` vissza, amely azt adja meg, hogy a naplósor fejléc-e, és `LogLine` az osztály egy példányát adja vissza, ha egy naplófájlt tartalmaz. `LogLine` A osztály használatával csak a naplósorokat lehet kibontani a RDD:
 
         def parse_line(l):
             import iislogparser
             return iislogparser.parse_log_line(l)
         logLines = logs.map(parse_line).filter(lambda p: p is not None).cache()
-2. Néhány kinyert log sorral ellenőrizheti, hogy sikeresen befejeződött. a lépés beolvasni.
+
+1. Néhány kibontott naplózási sor beolvasása annak ellenőrzéséhez, hogy a lépés sikeresen befejeződött-e.
 
        logLines.take(2)
 
@@ -106,7 +103,8 @@ Az adatok az Apache Hive-tábla mentése után a következő szakaszban nem fog 
 
        [2014-01-01 02:01:09 SAMPLEWEBSITE GET /blogposts/mvc4/step2.png X-ARR-LOG-ID=2ec4b8ad-3cf0-4442-93ab-837317ece6a1 80 - 1.54.23.196 Mozilla/5.0+(Windows+NT+6.3;+WOW64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/31.0.1650.63+Safari/537.36 - http://weblogs.asp.net/sample/archive/2007/12/09/asp-net-mvc-framework-part-4-handling-form-edit-and-post-scenarios.aspx www.sample.com 200 0 0 53175 871 46,
         2014-01-01 02:01:09 SAMPLEWEBSITE GET /blogposts/mvc4/step3.png X-ARR-LOG-ID=9eace870-2f49-4efd-b204-0d170da46b4a 80 - 1.54.23.196 Mozilla/5.0+(Windows+NT+6.3;+WOW64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/31.0.1650.63+Safari/537.36 - http://weblogs.asp.net/sample/archive/2007/12/09/asp-net-mvc-framework-part-4-handling-form-edit-and-post-scenarios.aspx www.sample.com 200 0 0 51237 871 32]
-3. A `LogLine` osztály, viszont az például néhány hasznos metódussal rendelkezik `is_error()`, hogy rendelkezik-e egy naplóbejegyzés hibakódot ad vissza. Ezzel a számítási hibák a kinyert log sorok száma, és jelentkezzen be a hibákat az egy másik fájlba.
+
+1. A `LogLine` (z) osztálynak vannak olyan hasznos módszerei, mint `is_error()`például a, amely azt adja vissza, hogy a naplóbejegyzés tartalmaz-e hibakódot. Ezzel kiszámíthatja a hibák számát a kibontott naplófájlokban, majd egy másik fájlba naplózhatja az összes hibát.
 
        errors = logLines.filter(lambda p: p.is_error())
        numLines = logLines.count()
@@ -121,8 +119,8 @@ Az adatok az Apache Hive-tábla mentése után a következő szakaszban nem fog 
        # -----------------
 
        There are 30 errors and 646 log entries
-4. Is **Matplotlib** az adatok a Vizualizáció létrehozásához. Például ha el szeretné különíteni a hosszú ideig futó kérelmek okának, érdemes keresse meg a fájlokat, az átlagos kiszolgálása érdekében a legtöbb időt vesz igénybe.
-   Az alábbi kódrészlet lekérdezi a felső 25 erőforrást, amely a kérés kiszolgálása érdekében a legtöbb időt vett igénybe.
+1. Az **Matplotlib** használatával az adatvizualizációt is létrehozhatja. Ha például el szeretné különíteni a hosszú ideig futó kérelmek okát, érdemes lehet megkeresni azokat a fájlokat, amelyek a legtöbb időt igénybe vehetik.
+   Az alábbi kódrészlet lekérdezi az első 25 erőforrást, amely a legtöbb időt a kérelem kiszolgálására vette.
 
        def avgTimeTakenByKey(rdd):
            return rdd.combineByKey(lambda line: (line.time_taken, 1),
@@ -163,7 +161,8 @@ Az adatok az Apache Hive-tábla mentése után a következő szakaszban nem fog 
         (u'/blogposts/sqlvideos/sqlvideos.jpg', 102.0),
         (u'/blogposts/mvcrouting/step21.jpg', 101.0),
         (u'/blogposts/mvc4/step1.png', 98.0)]
-5. Ez az információ diagram formájában is bemutathatja. Első lépésként létrehozhat egy rajzot, ossza meg velünk először hozzon létre egy ideiglenes táblát **AverageTime**. A tábla a naplók megtekintéséhez, hogy voltak-e bármilyen szokatlan késés adatforgalmi csúcsokhoz bármely adott időpontban idő szerint csoportosítja.
+
+1. Ezeket az információkat a mintaterület formájában is megjelenítheti. Első lépésként hozzon létre egy ideiglenes tábla **AverageTime**. A tábla ideje szerint csoportosítja a naplókat, hogy az adott időpontban szokatlan késéssel jár-e.
 
        avgTimeTakenByMinute = avgTimeTakenByKey(logLines.map(lambda p: (p.datetime.minute, p))).sortByKey()
        schema = StructType([StructField('Minutes', IntegerType(), True),
@@ -171,19 +170,21 @@ Az adatok az Apache Hive-tábla mentése után a következő szakaszban nem fog 
 
        avgTimeTakenByMinuteDF = sqlContext.createDataFrame(avgTimeTakenByMinute, schema)
        avgTimeTakenByMinuteDF.registerTempTable('AverageTime')
-6. Ezután futtathatja a következő SQL-lekérdezést összes rekord lekérése a **AverageTime** tábla.
+
+1. Ezután futtathatja a következő SQL-lekérdezést a **AverageTime** tábla összes rekordjának lekéréséhez.
 
        %%sql -o averagetime
        SELECT * FROM AverageTime
 
-   A `%%sql` Magic Quadrant követ `-o averagetime` biztosítja, hogy a lekérdezés kimenete a Jupyter-kiszolgálón (általában a fürt átjárócsomópontjával) helyileg tárolja. A kimenet a megőrzés pedig egy [Pandas](https://pandas.pydata.org/) a megadott nevű adathalmaz **averagetime**.
+   A `%%sql` Magic`-o averagetime` ezt követően biztosítja, hogy a lekérdezés kimenete helyileg megmaradjon a Jupyter-kiszolgálón (általában a fürt átjárócsomóponthoz). A kimenet a megadott nevű **Averagetime** [pandák](https://pandas.pydata.org/) dataframe marad.
 
    A következőhöz hasonló kimenetnek kell megjelennie:
 
-   ![SQL-lekérdezés kimenete](./media/apache-spark-custom-library-website-log-analysis/hdinsight-jupyter-sql-qyery-output.png "SQL-lekérdezés kimenete")
+   ![hdinsight jupyter SQL-qyery kimenete](./media/apache-spark-custom-library-website-log-analysis/hdinsight-jupyter-sql-qyery-output.png "SQL-lekérdezés kimenete")
 
-   További információ a `%%sql` magic, lásd: [támogatott paraméterek a %% sql Magic Quadrant](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
-7. Mostantól használhatja a Matplotlib, a kódtár segítségével hozza létre a vizualizációt az adatokat, létrehozhat egy rajzot. Az ábrázolást kell létrehozni, mert a megőrzött helyileg **averagetime** adathalmaz, a kódtöredék a következővel kell kezdődnie az `%%local` Magic Quadrant. Ez biztosítja, hogy a kód a Jupyter-kiszolgálón helyben futtatja.
+   A `%%sql` Magic szolgáltatással kapcsolatos további információkért lásd: [%% SQL Magic által támogatott paraméterek](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
+
+1. Most már használhatja a Matplotlib, az adatvizualizációk létrehozásához használt könyvtárat, amely létrehoz egy rajzolt. Mivel a parcellát a helyileg megőrzött **averagetime** dataframe kell létrehozni, a kódrészletnek a `%%local` mágia kell kezdődnie. Ez biztosítja, hogy a kód helyileg fusson a Jupyter-kiszolgálón.
 
        %%local
        %matplotlib inline
@@ -195,26 +196,27 @@ Az adatok az Apache Hive-tábla mentése után a következő szakaszban nem fog 
 
    A következőhöz hasonló kimenetnek kell megjelennie:
 
-   ![Matplotlib kimeneti](./media/apache-spark-custom-library-website-log-analysis/hdinsight-apache-spark-web-log-analysis-plot.png "Matplotlib kimenet")
-8. Az alkalmazás futtatását követően állítsa le a notebookot az erőforrások felszabadítása érdekében. Ehhez a notebook **File** (Fájl) menüjében kattintson a **Close and Halt** (Bezárás és leállítás) elemre. Ezzel leállítja és bezárja a notebookot.
+   az ![Apache Spark webes naplójának elemzési ábrázolása](./media/apache-spark-custom-library-website-log-analysis/hdinsight-apache-spark-web-log-analysis-plot.png "Matplotlib kimenete")
+
+1. Az alkalmazás futtatását követően állítsa le a notebookot az erőforrások felszabadítása érdekében. Ehhez a notebook **File** (Fájl) menüjében kattintson a **Close and Halt** (Bezárás és leállítás) elemre. Ezzel leállítja és bezárja a notebookot.
 
 ## <a name="seealso"></a>Lásd még:
-* [Áttekintés: Az Apache Spark on Azure HDInsight](apache-spark-overview.md)
+* [Áttekintés Apache Spark az Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Forgatókönyvek
-* [Az Apache Spark és BI: Spark on HDInsight használatával, BI-eszközökkel interaktív adatelemzés végrehajtása](apache-spark-use-bi-tools.md)
-* [Az Apache Spark és Machine Learning: A Spark használata a HDInsight HVAC-adatok épület-hőmérséklet elemzésére](apache-spark-ipython-notebook-machine-learning.md)
-* [Az Apache Spark és Machine Learning: A HDInsight Spark használata az élelmiszervizsgálati eredmények előrejelzésére](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark BI-val: Interaktív adatelemzés végrehajtása a Spark on HDInsight és a BI Tools használatával](apache-spark-use-bi-tools.md)
+* [Apache Spark a Machine Learningkal: A Spark in HDInsight használata az építési hőmérséklet elemzésére a HVAC-adatok használatával](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark a Machine Learningkal: Az élelmiszer-vizsgálati eredmények előrejelzése a Spark in HDInsight használatával](apache-spark-machine-learning-mllib-ipython.md)
 
 ### <a name="create-and-run-applications"></a>Alkalmazások létrehozása és futtatása
 * [Önálló alkalmazás létrehozása a Scala használatával](apache-spark-create-standalone-application.md)
 * [Feladatok távoli futtatása egy Apache Spark-fürtön az Apache Livy használatával](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Eszközök és bővítmények
-* [Az IntelliJ IDEA HDInsight-eszközei beépülő segítségével létrehozhat, és küldje el az Apache Spark Scala-alkalmazások](apache-spark-intellij-tool-plugin.md)
-* [Az Apache Spark-alkalmazások távoli hibakeresése az IntelliJ IDEA HDInsight-eszközei beépülő használata](../hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Az Apache Zeppelin notebookok használata a HDInsight Apache Spark-fürt](apache-spark-zeppelin-notebook.md)
-* [Notebookokhoz elérhető kernelek Jupyter a HDInsight az Apache Spark-fürt](apache-spark-jupyter-notebook-kernels.md)
+* [A IntelliJ IDEA HDInsight-eszközei beépülő moduljának használata Apache Spark Scala-alkalmazások létrehozásához és elküldéséhez](apache-spark-intellij-tool-plugin.md)
+* [Az IntelliJ IDEA HDInsight-eszközei beépülő moduljának használata a Apache Spark alkalmazások távoli hibakereséséhez](../hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [Apache Zeppelin notebookok használata Apache Spark-fürttel a HDInsight-on](apache-spark-zeppelin-notebook.md)
+* [Jupyter notebookokhoz elérhető kernelek Apache Spark-fürtben HDInsight](apache-spark-jupyter-notebook-kernels.md)
 * [Külső csomagok használata Jupyter notebookokkal](apache-spark-jupyter-notebook-use-external-packages.md)
 * [A Jupyter telepítése a számítógépre, majd csatlakozás egy HDInsight Spark-fürthöz](apache-spark-jupyter-notebook-install-locally.md)
 

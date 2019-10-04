@@ -10,19 +10,18 @@ tags: azure-service-management
 ms.assetid: a2a27d94-d378-4c17-a6a9-ae1e69dc4a72
 ms.service: app-service-web
 ms.workload: web
-ms.devlang: na
 ms.topic: sample
 ms.date: 10/30/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 262706868fe286f2134e71f53330ebd2eeb66488
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: b0223d093cc82becf66a903ea80c03c8435ea84c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587837"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098384"
 ---
-# <a name="create-a-scheduled-backup-for-a-web-app-using-powershell"></a>Egy PowerShell-lel webalkalmazás ütemezett biztonsági másolat létrehozása
+# <a name="create-a-scheduled-backup-for-a-web-app-using-powershell"></a>Ütemezett biztonsági mentés létrehozása egy webalkalmazáshoz a PowerShell használatával
 
 Ez a példaszkript egy webalkalmazást hoz létre az App Service-ben a kapcsolódó erőforrásokkal együtt, majd ütemezett biztonsági másolatot készít róla. 
 

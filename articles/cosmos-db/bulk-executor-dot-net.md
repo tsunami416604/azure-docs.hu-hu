@@ -1,54 +1,54 @@
 ---
-title: Tömeges végrehajtó .NET-kódtár segítségével hajtsa végre a tömeges importálási és frissítési műveleteket az Azure Cosmos DB-ben
-description: Tömeges importálás, és frissítse az Azure Cosmos DB-dokumentumot tömeges végrehajtó .NET-kódtár használatával.
+title: Tömeges importálási és frissítési műveletek végrehajtása a tömeges végrehajtó .NET-kódtár használatával Azure Cosmos DB
+description: A Azure Cosmos DB dokumentumok tömeges importálása és frissítése a tömeges végrehajtó .NET-kódtár használatával.
 author: tknandu
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 09/01/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: cfb90dc31635001291b1661f31ec2ee1fc378404
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: d76426e738d78391b92b008e821672017520b7d2
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523341"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71218401"
 ---
-# <a name="use-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Tömeges végrehajtó .NET-kódtár használatával tömeges műveletek végrehajtása az Azure Cosmos DB-ben
+# <a name="use-the-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Tömeges műveletek végrehajtása a tömeges végrehajtó .NET-kódtár használatával Azure Cosmos DB
 
-Ebben az oktatóanyagban útmutatás segítségével az Azure Cosmos DB tömeges végrehajtó .NET-kódtár importálása és az Azure Cosmos DB-tárolók dokumentumok frissítéséhez. Tömeges végrehajtó kódtár, és segítséget nyújt a nagy átviteli sebesség és a storage kapcsolatos további információkért lásd: [tömeges végrehajtó ügyfélkódtár áttekintése](bulk-executor-overview.md) cikk. Ebben az oktatóanyagban látni fogja, véletlenszerűen tömeges importálás .NET mintaalkalmazás dokumentumok létrehozott egy Azure Cosmos DB-tárolóba. Az importálás után azt mutatja, hogy kötegelve tölthesse be az importált adatok frissítése javítások végrehajtásához az adott dokumentum mezők műveletként megadásával. 
+Ez az oktatóanyag útmutatást nyújt a tömeges végrehajtó .NET-függvénytár használatáról a dokumentumok Azure Cosmos-tárolóba történő importálásához és frissítéséhez. Ha többet szeretne megtudni a tömeges végrehajtó függvénytárról, valamint arról, hogy miként segíti a nagy átviteli sebesség és a tárterület kihasználását, tekintse meg a [tömeges végrehajtó függvénytár áttekintését](bulk-executor-overview.md) ismertető cikket. Ebben az oktatóanyagban egy minta .NET-alkalmazást fog látni, amely a véletlenszerűen generált dokumentumokat egy Azure Cosmos-tárolóba importálja. Az importálást követően bemutatjuk, hogyan frissítheti az importált adatok tömeges frissítését úgy, hogy az adott dokumentum mezőin végrehajtandó műveletekként megadhatja a javításokat.
 
-Tömeges végrehajtó könyvtár jelenleg az Azure Cosmos DB SQL API-t, és csak a Gremlin API-fiókok által támogatott. Ez a cikk ismerteti a tömeges végrehajtó .NET-kódtár használata SQL API-fiókok. Tömeges végrehajtó .NET-kódtár használatával a Gremlin API-val kapcsolatos további információkért lásd: [tömeges műveletek végrehajtása az Azure Cosmos DB Gremlin API](bulk-executor-graph-dotnet.md). 
+Jelenleg a tömeges végrehajtó függvénytárat csak a Azure Cosmos DB SQL API és a Gremlin API-fiókok támogatják. Ez a cikk a tömeges végrehajtó .NET-függvénytár SQL API-fiókokkal való használatát ismerteti. A Gremlin API-fiókokkal rendelkező tömeges végrehajtó .NET-függvénytár használatáról további információt a következő témakörben talál: [tömeges műveletek végrehajtása a Azure Cosmos db GREMLIN API-ban](bulk-executor-graph-dotnet.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Ha már nincs telepítve a Visual Studio 2017, letöltheti és használhatja a [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/). Győződjön meg arról, hogy engedélyezze az Azure fejlesztői, a Visual Studio telepítése során.
+* Ha még nincs telepítve a Visual Studio 2019, letöltheti és használhatja a [Visual studio 2019 Community Editiont](https://www.visualstudio.com/downloads/). Győződjön meg arról, hogy engedélyezi az "Azure-fejlesztést" a Visual Studio telepítése során.
 
-* Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) a virtuális gép létrehozásának megkezdése előtt. 
+* Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) a virtuális gép létrehozásának megkezdése előtt.
 
-* Az [Azure Cosmos DB-t kipróbálhatja ingyenesen](https://azure.microsoft.com/try/cosmosdb/), Azure-előfizetés, díjfizetés és elköteleződés nélkül. Vagy használhatja a [Azure Cosmos DB Emulator](https://docs.microsoft.com/azure/cosmos-db/local-emulator) együtt a `https://localhost:8081` végpont. Az elsődleges kulcs a [Kérelmek hitelesítése](local-emulator.md#authenticating-requests) című részben található.
+* Az [Azure Cosmos DB-t kipróbálhatja ingyenesen](https://azure.microsoft.com/try/cosmosdb/), Azure-előfizetés, díjfizetés és elköteleződés nélkül. Vagy használhatja a [Azure Cosmos db emulátort](https://docs.microsoft.com/azure/cosmos-db/local-emulator) a `https://localhost:8081` végponttal. Az elsődleges kulcs a [Kérelmek hitelesítése](local-emulator.md#authenticating-requests) című részben található.
 
-* Hozzon létre egy Azure Cosmos DB SQL API-fiókot az ismertetett lépéseket követve [adatbázisfiók létrehozása](create-sql-api-dotnet.md#create-account) .NET rövid cikkének. 
+* Hozzon létre egy Azure Cosmos DB SQL API-fiókot a .NET gyors üzembe helyezési cikk [adatbázis-fiók létrehozása](create-sql-api-dotnet.md#create-account) című szakaszában ismertetett lépések segítségével.
 
 ## <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
 
-Most már váltsunk át kódok használatára néhány mintául szolgáló .NET-alkalmazások letöltése a Githubról. Ezek az alkalmazások tömeges műveletek végrehajtása a Azure Cosmos DB-adatai. Klónozza az alkalmazások, nyisson meg egy parancssort, lépjen abba a könyvtárba, ahová másolni a őket, és futtassa a következő parancsot:
+Most váltson a kóddal való használatra egy minta .NET-alkalmazás letöltésével a GitHubról. Ez az alkalmazás tömeges műveleteket hajt végre az Azure Cosmos-fiókjában tárolt adatokon. Az alkalmazás klónozásához nyisson meg egy parancssort, Navigáljon arra a könyvtárra, ahová másolni szeretné, majd futtassa a következő parancsot:
 
 ```
 git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started.git
 ```
 
-A klónozott adattár tartalmaz két minta "BulkImportSample" és "BulkUpdateSample." Nyissa meg a mintaalkalmazások egyikét, a kapcsolati karakterláncokkal az App.config fájlban frissítse az Azure Cosmos DB-fiók kapcsolati karakterláncok, a megoldás felépítéséhez és futtathatja. 
+A klónozott tárház két mintát tartalmaz: "BulkImportSample" és "BulkUpdateSample". A minta alkalmazások közül bármelyiket megnyitva frissítheti az app. config fájlban található kapcsolatok karakterláncait a Azure Cosmos DB fiókja kapcsolatainak karakterláncait, felépítheti a megoldást, és futtathatja.
 
-A "BulkImportSample" alkalmazás véletlenszerű dokumentumokat hoz létre, és tömeges importálja őket az Azure Cosmos DB-hez. A "BulkUpdateSample" alkalmazás tömeges frissíti az importált dokumentumok javítások végrehajtásához az adott dokumentum mezők műveletként megadásával. A következő szakaszokban a kódot a mintaalkalmazások mindegyike fogja ellenőrizni.
+A "BulkImportSample" alkalmazás véletlenszerű dokumentumokat hoz létre, és tömegesen importálja őket az Azure Cosmos-fiókjába. A "BulkUpdateSample" alkalmazás az importált dokumentumokat úgy frissíti, hogy a javításokat az adott dokumentum mezőin végrehajtandó műveletekként határozza meg. A következő részekben ezeket a példákat fogja áttekinteni a kódban.
 
-## <a name="bulk-import-data-to-azure-cosmos-db"></a>A tömeges adatok importálása az Azure Cosmos DB-hez
+## <a name="bulk-import-data-to-an-azure-cosmos-account"></a>Az Azure Cosmos-fiókba való tömeges importálás
 
-1. Keresse meg a "BulkImportSample" mappát, és nyissa meg a "BulkImportSample.sln" fájlt.  
+1. Navigáljon a "BulkImportSample" mappára, és nyissa meg a "BulkImportSample. SLN" fájlt.  
 
-2. Az Azure Cosmos DB kapcsolati karakterláncok kéri le a az App.config fájlban a következő kódban látható módon:  
+2. A Azure Cosmos DB a kapcsolatok karakterláncait az app. config fájlból kéri le, ahogy az a következő kódban látható:  
 
    ```csharp
    private static readonly string EndpointUrl = ConfigurationManager.AppSettings["EndPointUrl"];
@@ -58,9 +58,9 @@ A "BulkImportSample" alkalmazás véletlenszerű dokumentumokat hoz létre, és 
    private static readonly int CollectionThroughput = int.Parse(ConfigurationManager.AppSettings["CollectionThroughput"]);
    ```
 
-   A tömeges programu Pro import hoz létre egy új adatbázist és gyűjteményt az adatbázisnév, a gyűjtemény neve és az átviteli sebesség értékeket az App.config fájlban megadott. 
+   A tömeges importáló létrehoz egy új adatbázist és egy tárolót, amelynek az adatbázis neve, a tároló neve, valamint az app. config fájlban megadott átviteli sebesség.
 
-3. Ezután a DocumentClient objektum inicializálása során közvetlen TCP-kapcsolat módja:  
+3. A DocumentClient objektum következő közvetlen TCP-kapcsolati móddal van inicializálva:  
 
    ```csharp
    ConnectionPolicy connectionPolicy = new ConnectionPolicy
@@ -72,7 +72,7 @@ A "BulkImportSample" alkalmazás véletlenszerű dokumentumokat hoz létre, és 
    connectionPolicy)
    ```
 
-4. A BulkExecutor objektum magas újrapróbálkozási értékkel a várakozási idő inicializálva van, és a kérelmek szabályozva. És ezután azok értéke 0 BulkExecutor élettartamuk a torlódásszabályozás átadása.  
+4. A BulkExecutor objektum a várakozási idő és a szabályozott kérelmek esetében magas újrapróbálkozási értékkel van inicializálva. Ezután a 0 értékre vannak állítva, hogy átadja a zsúfoltság-vezérlést a BulkExecutor élettartama érdekében.  
 
    ```csharp
    // Set retry options high during initialization (default values).
@@ -87,7 +87,7 @@ A "BulkImportSample" alkalmazás véletlenszerű dokumentumokat hoz létre, és 
    client.ConnectionPolicy.RetryOptions.MaxRetryAttemptsOnThrottledRequests = 0;
    ```
 
-5. Az alkalmazás a BulkImportAsync API-t hív meg. A .NET-kódtár biztosít két túlterhelésekkel tömeges importálása API –, amely egy szerializált JSON-dokumentumok listáját fogadja el a másik pedig akkor deszerializált POCO dokumentumok listáját. E túlterhelt módszerek meghatározásai kapcsolatos további információkért tekintse meg [API-dokumentáció](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkimportasync?view=azure-dotnet).
+5. Az alkalmazás meghívja a BulkImportAsync API-t. A .NET-függvénytár két túlterhelést biztosít a tömeges importálási API-nak, amely elfogadja a szerializált JSON-dokumentumok listáját, valamint a másikat, amely elfogadja a deszerializált POCO-dokumentumok listáját. Ha többet szeretne megtudni ezekről a túlterhelt módszerekről, tekintse meg az [API dokumentációját](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkimportasync?view=azure-dotnet).
 
    ```csharp
    BulkImportResponse bulkImportResponse = await bulkExecutor.BulkImportAsync(
@@ -98,32 +98,32 @@ A "BulkImportSample" alkalmazás véletlenszerű dokumentumokat hoz létre, és 
      maxInMemorySortingBatchSize: null,
      cancellationToken: token);
    ```
-   **BulkImportAsync módszer a következő paramétereket fogadja:**
+   **A BulkImportAsync metódus a következő paramétereket fogadja el:**
    
    |**A paraméter**  |**Leírás** |
    |---------|---------|
-   |enableUpsert    |   Ahhoz, hogy a dokumentumok upserts jelző. Ha egy dokumentumot a megadott azonosító már létezik, frissül. Alapértelmezés szerint azt értéke hamis.      |
+   |enableUpsert    |   Egy jelző, amely engedélyezi a upsert műveleteket a dokumentumokon. Ha a megadott AZONOSÍTÓJÚ dokumentum már létezik, frissül. Alapértelmezés szerint hamis értékre van állítva.      |
    |disableAutomaticIdGeneration    |    Azt a jelzőt, automatikus generálása azonosítójának letiltása Alapértelmezés szerint az értéke igaz.     |
-   |maxConcurrencyPerPartitionKeyRange    | A partíciókulcs-tartományonként párhuzamosság maximális párhuzamossági, NULL beállítás alapértelmezett értéke 20 használandó szalagtárat okozhat. |
-   |maxInMemorySortingBatchSize     |  A dokumentum enumeráló modulja, amely az API-nak átadott lekért dokumentumok maximális száma az egyes fázisokban hívja.  A memórián belüli előfeldolgozási rendezési fázisban tömeges importálás előtt beállítás NULL okozhat könyvtár perc (documents.count 1000000) alapértelmezett értéket használja.       |
-   |cancellationToken    |    A megszakítás token tömeges importálás szabályosan kilép.     |
+   |maxConcurrencyPerPartitionKeyRange    | A partíciós kulcs tartományának maximális párhuzamossági foka, a NULL értékre állítás a függvénytár alapértelmezett értékét fogja használni. |
+   |maxInMemorySortingBatchSize     |  A dokumentum-enumerálásból lekért dokumentumok maximális száma, amely minden fázisban az API-hívásnak lesz átadva. A tömeges importálás előtt megjelenő memóriabeli rendezési fázisban a paraméter null értékre állítása esetén a könyvtár az alapértelmezett minimális értéket fogja használni (Documents. Count, 1000000).       |
+   |cancellationToken    |    A lemondási token, amely szabályosan kilép a tömeges importálási műveletből.     |
 
-   **Tömeges importálás válasz Objektumdefiníció** a tömeges importálás API-hívás eredménye a következő attribútumokat tartalmazza:
+   **Tömeges importálási válasz objektumának definíciója** A tömeges importálási API-hívás eredménye a következő attribútumokat tartalmazza:
 
    |**A paraméter**  |**Leírás**  |
    |---------|---------|
-   |NumberOfDocumentsImported (hosszú)   |  Sikeresen importálva lettek a tömeges megadott dokumentumból dokumentumok száma importálja az API-hívás.       |
-   |TotalRequestUnitsConsumed (kétirányú)   |   A tömeges által felhasznált teljes kérelemegység (RU) importálni az API-hívás.      |
-   |TotalTimeTaken (TimeSpan)    |   Teljes idő a tömeges importálás API-hívás végrehajtása befejeződik.      |
-   |BadInputDocuments (lista\<objektum >)   |     A lista rossz formátumú dokumentumok importálása nem sikerült a tömeges importálása API-hívás. Felhasználó kell hárítsa el a dokumentumokat ad vissza, és próbálkozzon újra az importálással. Hibás formátumú dokumentumok tartalmazzák a dokumentumok, amelynek azonosító értéke nem egy karakterláncot (NULL értékű vagy bármely más adattípus érvénytelen akkor tekinthető).    |
+   |NumberOfDocumentsImported (hosszú)   |  Azon dokumentumok teljes száma, amelyek importálása sikeresen megtörtént a tömeges importálási API-híváshoz megadott összes dokumentumból.       |
+   |TotalRequestUnitsConsumed (dupla)   |   A tömeges által felhasznált teljes kérelemegység (RU) importálni az API-hívás.      |
+   |TotalTimeTaken (TimeSpan)    |   A tömeges importálási API hívásának teljes ideje a végrehajtás befejezéséhez.      |
+   |BadInputDocuments (objektum\<listázása >)   |     A lista rossz formátumú dokumentumok importálása nem sikerült a tömeges importálása API-hívás. Javítsa ki a visszaadott dokumentumokat, és próbálkozzon újra az importálással. Hibás formátumú dokumentumok tartalmazzák a dokumentumok, amelynek azonosító értéke nem egy karakterláncot (NULL értékű vagy bármely más adattípus érvénytelen akkor tekinthető).    |
 
-## <a name="bulk-update-data-in-azure-cosmos-db"></a>Tömeges frissítés adatainak az Azure Cosmos DB
+## <a name="bulk-update-data-in-your-azure-cosmos-account"></a>Az Azure Cosmos-fiókban tárolt adatmennyiségek tömeges frissítése
 
-Meglévő dokumentumok frissítheti a BulkUpdateAsync API-val. Ebben a példában egy új értékre állítva a név mező, és a Leírás mező eltávolítása a meglévő dokumentumok. A támogatott mező teljes körű frissítési műveleteket, tekintse meg [API-dokumentáció](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate?view=azure-dotnet). 
+Meglévő dokumentumok frissítheti a BulkUpdateAsync API-val. Ebben a példában a `Name` mezőt egy új értékre állítja be, és eltávolítja a `Description` mezőt a meglévő dokumentumokból. A támogatott frissítési műveletek teljes készletét az [API dokumentációjában](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate?view=azure-dotnet)találja.
 
-1. Keresse meg a "BulkUpdateSample" mappát, és nyissa meg a "BulkUpdateSample.sln" fájlt.  
+1. Navigáljon a "BulkUpdateSample" mappára, és nyissa meg a "BulkUpdateSample. SLN" fájlt.  
 
-2. Adja meg a frissítés elemeket, és megfelelő mező frissítési műveleteket. Ebben a példában a SetUpdateOperation használandó frissíti a nevét és a Leírás mező eltávolítása az összes dokumentum UnsetUpdateOperation. Végez, és más műveletek növekmény például egy dokumentum mező egy adott érték, adott értékekre leküldése egy tömb mezőt, vagy egy adott érték eltávolítása egy tömb mező. A tömeges frissítés API által biztosított különböző módszerekkel kapcsolatos további információkért tekintse meg a [API-dokumentáció](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate?view=azure-dotnet).
+2. A frissítési elemek meghatározása a megfelelő mező-frissítési műveletekkel együtt. Ebben a `SetUpdateOperation` példában a használatával frissíti a `Name` mezőt, és `UnsetUpdateOperation` eltávolítja a `Description` mezőt az összes dokumentumból. Végez, és más műveletek növekmény például egy dokumentum mező egy adott érték, adott értékekre leküldése egy tömb mezőt, vagy egy adott érték eltávolítása egy tömb mező. Ha többet szeretne megtudni a tömeges frissítési API által nyújtott különböző módszerekről, tekintse meg az [API dokumentációját](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate?view=azure-dotnet).
 
    ```csharp
    SetUpdateOperation<string> nameUpdate = new SetUpdateOperation<string>("Name", "UpdatedDoc");
@@ -140,7 +140,7 @@ Meglévő dokumentumok frissítheti a BulkUpdateAsync API-val. Ebben a példába
    }
    ```
 
-3. Az alkalmazás a BulkUpdateAsync API-t hív meg. A definíció BulkUpdateAsync metódus kapcsolatos további információkért tekintse meg [API-dokumentáció](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.ibulkexecutor.bulkupdateasync?view=azure-dotnet).  
+3. Az alkalmazás meghívja a BulkUpdateAsync API-t. Az BulkUpdateAsync metódus definíciójának megismeréséhez tekintse meg az [API dokumentációját](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.ibulkexecutor.bulkupdateasync?view=azure-dotnet).  
 
    ```csharp
    BulkUpdateResponse bulkUpdateResponse = await bulkExecutor.BulkUpdateAsync(
@@ -149,41 +149,41 @@ Meglévő dokumentumok frissítheti a BulkUpdateAsync API-val. Ebben a példába
      maxInMemorySortingBatchSize: null,
      cancellationToken: token);
    ```  
-   **BulkUpdateAsync módszer a következő paramétereket fogadja:**
+   **A BulkUpdateAsync metódus a következő paramétereket fogadja el:**
 
    |**A paraméter**  |**Leírás** |
    |---------|---------|
-   |maxConcurrencyPerPartitionKeyRange    |   A partíciókulcs-tartományonként párhuzamosság maximális párhuzamossági, NULL beállítás alapértelmezett értéke 20 használandó szalagtárat okozhat.   |
-   |maxInMemorySortingBatchSize    |    Elemek maximális számát az update-elemek enumerátor lekért átadott memórián belüli előfeldolgozási rendezési fázishoz tömeges frissítése előtt az API-hívás az egyes fázisokban, beállítás NULL okozhat könyvtárat használja alapértelmezett értéket (updateItems.count, Min 1000000).     |
-   | cancellationToken|A megszakítás token tömeges frissítés szabályosan kilép. |
+   |maxConcurrencyPerPartitionKeyRange    |   A partíciós kulcs tartományának maximális párhuzamossági foka, ha ezt a paramétert NULL értékre állítja, a függvénytár az alapértelmezett értéket fogja használni (20).   |
+   |maxInMemorySortingBatchSize    |    Az egyes szakaszok API-hívása által a frissítési elemek enumerálása által lekért frissítési elemek maximális száma. A tömeges frissítés előtti, memóriabeli rendezési fázisban a paraméter null értékre állításával a könyvtár az alapértelmezett minimális értéket fogja használni (updateItems. Count, 1000000).     |
+   | cancellationToken|A lemondási token, amely szabályosan kilép a tömeges frissítési műveletből. |
 
-   **Tömeges frissítés válasz Objektumdefiníció** a tömeges frissítés API-hívás eredménye a következő attribútumokat tartalmazza:
+   **Tömeges frissítés válasz objektumának definíciója** A tömeges frissítési API-hívás eredménye a következő attribútumokat tartalmazza:
 
    |**A paraméter**  |**Leírás** |
    |---------|---------|
-   |NumberOfDocumentsUpdated (hosszú)    |   A sikeresen frissített helyreállításra dokumentumok teljes számát a tömeges frissítés megadott API-hívás.      |
-   |TotalRequestUnitsConsumed (kétirányú)   |    A teljes kérelemegység (RU) a tömeges frissítés által használt API-hívás.    |
-   |TotalTimeTaken (TimeSpan)   | A tömeges teljes idő frissítés API-hívás végrehajtása befejeződik. |
+   |NumberOfDocumentsUpdated (hosszú)    |   Azon dokumentumok száma, amelyek sikeresen frissítve lettek a tömeges frissítési API-híváshoz megadott összes dokumentumból.      |
+   |TotalRequestUnitsConsumed (dupla)   |    A tömeges frissítési API-hívás által felhasznált összes kérési egység (RUs).    |
+   |TotalTimeTaken (TimeSpan)   | A tömeges frissítési API-hívás által a végrehajtás befejezéséhez szükséges teljes idő. |
     
 ## <a name="performance-tips"></a>Teljesítménnyel kapcsolatos tippek 
 
-A jobb teljesítmény érdekében a következő szempontokat vegye figyelembe, tömeges végrehajtó szalagtár használata esetén:
+A tömeges végrehajtó függvénytár használata esetén vegye figyelembe a következő szempontokat a jobb teljesítmény érdekében:
 
-* A legjobb teljesítmény érdekében futtassa az alkalmazást az Azure virtuális gépből, amely a Cosmos DB-fiók írási régió ugyanabban a régióban.  
+* A legjobb teljesítmény érdekében az alkalmazást egy olyan Azure-beli virtuális gépről futtassa, amely ugyanabban a régióban található, mint az Azure Cosmos-fiók írási régiója.  
 
-* Javasoljuk, hogy a teljes alkalmazáshoz egyetlen virtuális gép megfelelő egy adott Cosmos DB-tárolón belül egyetlen BulkExecutor objektumot hozza létre.  
+* Azt javasoljuk, hogy egyetlen, egy adott Azure `BulkExecutor` Cosmos-tárolónak megfelelő virtuális gépen belül egyetlen objektumot hozza létre a teljes alkalmazáshoz.  
 
-* Mivel egy egyszeri tömeges API művelet végrehajtása egy nagy szövegrészletet, az ügyfél gépének Processzor- és hálózati i/o használ fel. Több feladat indítja belsőleg szerint ez történik, elkerülheti, hogy az alkalmazás folyamatának minden tömeges műveletet végrehajtó API-hívások belül több egyidejű feladat indítja. Nem lehet felhasználni a teljes tárolót átviteli egyetlen virtuális gépen futó egyetlen tömeges művelet API hívás esetén (Ha a tároló átviteli > 1 millió RU/s), előnyösebb egyidejűleg hajtsa végre a különálló virtuális gépek létrehozása tömeges művelet API-hívások száma.  
+* Mivel egyetlen tömeges művelet API-végrehajtása nagy mennyiségű adatrészletet használ az ügyfélszámítógép processzor-és hálózati IO-jával (ez a több feladat belső elindításával történik). Ne indítson el egyszerre több egyidejű feladatot az alkalmazási folyamaton belül, amely tömeges műveleti API-hívásokat hajt végre. Ha egyetlen virtuális gépen futó egyetlen tömeges művelet API-hívása nem tudja felhasználni a teljes tároló átviteli sebességét (ha a tároló átviteli sebessége > 1 000 000 RU/s), akkor érdemes külön virtuális gépeket létrehozni az egyidejű végrehajtáshoz a tömeges művelet API-hívásai.  
 
-* Győződjön meg arról, InitializeAsync() meghívása után a BulkExecutor objektum beolvasni a cél Cosmos DB-tároló partíciótérképen hárítható el.  
+* Győződjön meg `InitializeAsync()` arról, hogy a metódus meghívása egy BulkExecutor-objektum példányának beolvasását követően a cél Cosmos-tároló partíciós térképének beolvasása céljából  
 
-* Győződjön meg, hogy az alkalmazás App.Config, **gcServer** a jobb teljesítmény érdekében engedélyezve van
+* Az alkalmazás app. config fájljában ellenőrizze, hogy a **gcServer** engedélyezve van-e a jobb teljesítmény érdekében
   ```xml  
   <runtime>
     <gcServer enabled="true" />
   </runtime>
   ```
-* A könyvtár bocsát ki a nyomkövetési adatok gyűjthetők össze egy naplófájlba, vagy a konzolon. Mindkettő engedélyezéséhez adja hozzá a következő, az alkalmazás App.Config.
+* A könyvtár olyan nyomkövetéseket bocsát ki, amelyek egy naplófájlba vagy a konzolon gyűjthetők össze. Mindkét beállítás engedélyezéséhez adja hozzá a következő kódot az alkalmazás app. config fájljához.
 
   ```xml
   <system.diagnostics>
@@ -197,4 +197,5 @@ A jobb teljesítmény érdekében a következő szempontokat vegye figyelembe, t
   ```
 
 ## <a name="next-steps"></a>További lépések
-* Kibocsátási megjegyzések tömeges végrehajtó .NET könyvtár és Nuget csomag részletes ismertetése:[végrehajtó SDK részletek tömeges](sql-api-sdk-bulk-executor-dot-net.md). 
+
+* A Nuget-csomag részleteivel és a kibocsátási megjegyzésekkel kapcsolatos további információkért tekintse meg a [tömeges végrehajtó SDK részleteit](sql-api-sdk-bulk-executor-dot-net.md).

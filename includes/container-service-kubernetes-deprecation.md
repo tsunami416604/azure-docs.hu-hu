@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/27/2018
 ms.author: iainfou
 ms.openlocfilehash: 56b13a0ba6a93f1acd8edf1ce6c95561f63758c8
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002186"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179670"
 ---
 > [!WARNING]
 >  **Az Azure Container Service (ACS) elavult. Az ACS jelennek meg semmilyen új szolgáltatásokat és funkciókat. Az összes API-k, portálja, CLI-parancsok és dokumentáció lesznek megjelölve elavultként.**

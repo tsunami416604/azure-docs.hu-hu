@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 897513abcc9f829f1cbdc315208e4451ae4dbc41
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311237"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60637590"
 ---
 # <a name="import-a-postman-collection-with-live-streaming-operations"></a>Az élő adatfolyam-műveletek a Postman-gyűjtemény importálása 
 

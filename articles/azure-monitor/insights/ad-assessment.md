@@ -1,6 +1,6 @@
 ---
-title: Az Azure monitorral az Active Directory-környezet optimalizálása |} A Microsoft Docs
-description: Az Active Directory állapotának ellenőrzése megoldás segítségével felmérheti a kockázatait és állapotát, a környezetek rendszeres időközönkénti.
+title: Optimalizálja Active Directory-környezetét Azure Monitorkal | Microsoft Docs
+description: A Active Directory Health-ellenőrzési megoldással rendszeres időközönként felméri a környezetek kockázatait és állapotát.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -11,182 +11,204 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/27/2017
+ms.date: 09/10/2019
 ms.author: magoedte
-ms.openlocfilehash: 3b5da6c9046fc694bd5eb0f55cf031b82b6d0103
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: a0ffe7b8726ee78ca81751687bebd3c435365576
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370533"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883088"
 ---
-# <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>Az Active Directory állapotának ellenőrzése megoldással az Azure monitorban az Active Directory-környezet optimalizálása
+# <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>Optimalizálja Active Directory-környezetét az Active Directory Health-ellenőrzési megoldással Azure Monitor
 
-![AD állapotának ellenőrzése szimbólum](./media/ad-assessment/ad-assessment-symbol.png)
+![AD Health-ellenőrzési szimbólum](./media/ad-assessment/ad-assessment-symbol.png)
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Az Active Directory állapotának ellenőrzése megoldás segítségével felmérheti a kockázatokat és a kiszolgáló-környezetek állapotát rendszeres időközönkénti. Ez a cikk segítségével telepítheti és használhatja a megoldás, hogy a potenciális problémákat korrekciós műveleteket hajthatja végre.
+A Active Directory Health-ellenőrzési megoldással rendszeres időközönként felméri a kiszolgálói környezetek kockázatait és állapotát. Ebből a cikkből megtudhatja, hogyan telepítheti és használhatja a megoldást, hogy a lehetséges problémákra vonatkozó korrekciós műveleteket hajtson végre.
 
-Ez a megoldás a telepített kiszolgálói infrastruktúrát vonatkozó javaslatok rangsorolt listáját tartalmazza. Az ajánlások szerint vannak kategóriába sorolva négy különböző fókuszterületre vonatkozóan, amely segítségével gyorsan megismerheti a kockázatokat, és a szükséges műveletek.
+Ez a megoldás a telepített kiszolgálói infrastruktúrára vonatkozó javaslatok rangsorolt listáját tartalmazza. A javaslatok négy kiemelt területre vannak kategorizálva, amelyek segítségével gyorsan megismerheti a kockázatokat, és elvégezheti a szükséges lépéseket.
 
-A javaslatok tudással és ezer vevő a Microsoft mérnökei tapasztalatai alapulnak. Minden javaslat ismerteti, miért számít a probléma előfordulhat, hogy Önnek és a javasolt változások megvalósítása.
+A javaslatok a Microsoft-mérnökök által több ezer ügyfél-látogatásból nyert ismeretekre és tapasztalatokra épülnek. Az egyes javaslatok útmutatást nyújtanak arról, hogy miért fontos a probléma, és hogyan valósítja meg a javasolt módosításokat.
 
-Kiválaszthatja, hogy a szervezet számára legfontosabb, és nyomon követheti az előrehaladást kockázati ingyenes és kifogástalan állapotú környezetét fókuszterületek.
+Kiválaszthatja a szervezete számára legfontosabb fókusz területeket, és nyomon követheti az előrehaladást a kockázatmentes és kifogástalan állapotú környezetek futtatásának irányába.
 
-Miután hozzáadta a megoldást, és egy ellenőrzés befejeződött, összefoglaló adatait fókuszterületek jelenik meg a **AD állapotának ellenőrzése** a környezetében az infrastruktúra-irányítópulton. A következő szakaszok ismertetik az információk használata az a **AD állapotának ellenőrzése** irányítópult, amelyen megtekintheti és megfelelő ajánlott műveletek az Active Directory-kiszolgáló infrastruktúra.  
+A megoldás hozzáadása és az ellenőrzések befejezése után a fókusz területekre vonatkozó összefoglaló információk az **ad Health-ellenőrzési** irányítópulton jelennek meg a környezetében lévő infrastruktúrához. Az alábbi szakaszok azt ismertetik, hogyan használhatók az **ad Health-ellenőrzési** irányítópulton található információk, ahol megtekintheti és elvégezheti a Active Directory kiszolgálói infrastruktúrához javasolt műveleteket.  
 
-![AD állapotának ellenőrzése csempét ábrázoló kép](./media/ad-assessment/ad-healthcheck-summary-tile.png)
+![AD Health-ellenőrzési csempe képe](./media/ad-assessment/ad-healthcheck-summary-tile.png)
 
-![AD állapotának ellenőrzése irányítópult képe](./media/ad-assessment/ad-healthcheck-dashboard-01.png)
+![az AD Health-ellenőrzési irányítópult képe](./media/ad-assessment/ad-healthcheck-dashboard-01.png)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Az Active Directory állapotának ellenőrzése megoldás támogatott .NET-keretrendszer 4.5.2-es verziója szükséges, vagy a fent telepített minden olyan számítógépen, a Microsoft Monitoring Agent (MMA) telepítve van.  Az MMA-ügynök System Center 2016 – Operations Manager és az Operations Manager 2012 R2 és az Azure Monitor használják.
-* A megoldás támogatja a Windows Server 2008 és 2008 R2, Windows Server 2012 és 2012 R2 és Windows Server 2016 rendszert futtató tartományvezérlő.
-* Az Active Directory állapotának ellenőrzése megoldás hozzáadása az Azure Portalon az Azure marketplace-ről a Log Analytics-munkaterületet.  Nincs szükség további konfigurációra.
+* A Active Directory Health ellenőrzési megoldáshoz a .NET-keretrendszer 4.5.2-es vagy újabb verziójának támogatott verzióját kell telepítenie minden olyan számítógépen, amelyen telepítve van a Windows Log Analytics ügynöke (más néven a Microsoft monitoring Agent (MMA)).  Az ügynököt a System Center 2016-Operations Manager, Operations Manager 2012 R2 és Azure Monitor használja.
+* A megoldás támogatja a Windows Server 2008 és a 2008 R2, a Windows Server 2012 és az 2012 R2, valamint a Windows Server 2016 rendszert futtató tartományvezérlőket.
+* Log Analytics munkaterület, amely az Azure Portal Azure Marketplace-en adja hozzá a Active Directory Health-ellenőrzési megoldást. Nincs szükség további konfigurációra.
 
   > [!NOTE]
-  > A megoldás hozzáadását követően a AdvisorAssessment.exe fájlt adnak hozzá, ügynökökkel kiszolgálókra. Konfigurációs adatok olvasása és feldolgozása a felhőben az Azure Monitor majd küldött. A fogadott adatokat logikát alkalmaz, és a felhőszolgáltatás-adatait rögzíti.
+  > A megoldás hozzáadása után a rendszer hozzáadja a AdvisorAssessment. exe fájlt az ügynökökkel rendelkező kiszolgálókhoz. A rendszer beolvassa és elküldi a konfigurációs adatfeldolgozást a felhőben lévő Azure Monitorba. A fogadott adatokat logikát alkalmaz, és a felhőszolgáltatás-adatait rögzíti.
   >
   >
 
-Hajtsa végre az állapot-ellenőrzés a tartományvezérlők, amelyek ki kell értékelni a tartomány tagjai, szükségük van egy ügynök és a kapcsolatot az Azure monitornak a következő támogatott módszerek egyikének használatával:
+A tartományhoz tartozó tartományvezérlők állapot-ellenőrzésének elvégzéséhez az adott tartomány összes tartományvezérlőjén az alábbi támogatott módszerek egyikével kell ügynököt és kapcsolatot létesíteni Azure Monitor:
 
-1. Telepítse a [a Microsoft Monitoring Agent (MMA)](../../azure-monitor/platform/agent-windows.md) , ha a tartományvezérlő már nem áll a System Center 2016 – Operations Manager vagy Operations Manager 2012 R2.
-2. Ha figyelhető a System Center 2016 – Operations Manager vagy Operations Manager 2012 R2 és a felügyeleti csoport nincs integrálva az Azure Monitor szolgáltatással, a tartományvezérlő is lehet, és az Azure Monitor az adatok gyűjtéséhez és a szolgáltatás továbbítja, és továbbra is többhelyű az Operations Manager által figyelendő.  
-3. Ellenkező esetben az Operations Manager felügyeleti csoport integrálva van a szolgáltatást, ha hozzá kell a tartományvezérlők, az adatgyűjtés a szolgáltatás a következő szakasz lépéseit [adja hozzá az ügynök által felügyelt számítógépek](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-azure-monitor) engedélyezése után a megoldás a munkaterületén.  
+1. Telepítse a [Windows log Analytics Agent ügynököt,](../../azure-monitor/platform/agent-windows.md) ha a tartományvezérlőt még nem figyeli a System Center 2016-Operations Manager vagy a Operations Manager 2012 R2.
+2. Ha a System Center 2016 – Operations Manager vagy Operations Manager 2012 R2 rendszerrel van figyelve, és a felügyeleti csoport nincs integrálva a Azure Monitor-be, a tartományvezérlő több-is lehet az adatok gyűjtésére és a szolgáltatásba való továbbítására Azure Monitor, és továbbra is Operations Manager figyelése.  
+3. Ellenkező esetben, ha a Operations Manager felügyeleti csoport integrálva van a szolgáltatással, hozzá kell adnia a tartományvezérlőket az adatgyűjtéshez a szolgáltatáshoz az [ügynök által felügyelt számítógépek hozzáadása](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-azure-monitor) után, miután engedélyezte a megoldást a következőben: munkaterület.  
 
-Az ügynököt a tartományvezérlőn, az Operations Manager felügyeleti csoport jelentéseket gyűjti az adatokat, továbbítja a hozzárendelt felügyeleti kiszolgálónak, és majd küld egy felügyeleti kiszolgálóról közvetlenül az Azure Monitor.  Az adatok nem szerepel, az Operations Manager-adatbázisokról.  
+A tartományvezérlőn az ügynök, amely egy Operations Manager felügyeleti csoportnak jelent jelentést, adatokat gyűjt, továbbít a hozzárendelt felügyeleti kiszolgálóhoz, majd közvetlenül egy felügyeleti kiszolgálóról küldi el a Azure Monitor.  Az adatOperations Manager-adatbázisok nem kerülnek be az adatforrásba.  
 
-## <a name="active-directory-health-check-data-collection-details"></a>Az Active Directory állapotának ellenőrzése adatok gyűjtése részletei
+## <a name="active-directory-health-check-data-collection-details"></a>Active Directory állapot-ellenőrzési adatok gyűjtésének részletei
 
-Az Active Directory állapotának ellenőrzése gyűjti az adatokat, hogy engedélyezte-ügynök használatával a következő forrásokból:
+Active Directory állapot-ellenőrzési adatokat gyűjt a következő forrásokból az engedélyezett ügynök használatával:
 
 - Beállításjegyzék
 - LDAP
 - .NET-keretrendszer
 - Eseménynapló
-- Az Active Directory Service interfaces (ADSI)
+- Active Directory szolgáltatási felületek (ADSI)
 - Windows PowerShell
-- Fájladatok
+- Fájlinformációk
 - Windows Management Instrumentation (WMI)
-- A DCDIAG API-hívások
-- Fájlreplikációs szolgáltatás (NTFRS) tartozó API
-- Egyéni C#-kód
+- DCDIAG eszköz API
+- Fájlreplikációs szolgáltatás (NTFRS) API
+- Egyéni C# kód
 
-Adatokat gyűjti a tartományvezérlőn, és továbbítja az Azure Monitor hét naponta.  
+A rendszer a tartományvezérlőn gyűjti az adatokat, és hét naponta Azure Monitor továbbítja azokat.  
 
-## <a name="understanding-how-recommendations-are-prioritized"></a>Hogyan kerülnek előrébb a javaslatok megértése
-Minden végrehajtott javaslat, amely azonosítja a relatív fontosságát az ajánlás súlyozási értéket kap. A 10 legfontosabb javaslatok láthatók.
+## <a name="understanding-how-recommendations-are-prioritized"></a>A javaslatok rangsorolásának ismertetése
 
-### <a name="how-weights-are-calculated"></a>Hogyan számítják ki súlyok
-Súlyozás három fő tényezők alapján az összesített értékek:
+Minden javaslat egy súlyozási értéket kap, amely a javaslat relatív fontosságát azonosítja. Csak a 10 legfontosabb javaslat jelenik meg.
 
-* A *valószínűségi* , hogy az azonosított probléma problémákat okoz. Nagyobb a valószínűsége annak használatára, az ajánlás nagyobb általános pontszámot.
-* A *hatás* a szervezet azt problémát okozni, ha a probléma. Egy újabb hatás-adatbázisnak felel meg az ajánlás nagyobb általános pontszámot.
-* A *erőfeszítés* történő megvalósításához szükséges. A javaslat egy kisebb összesített pontszám magasabb erőfeszítéssel állapotnak felel meg.
+### <a name="how-weights-are-calculated"></a>A súlyok kiszámítása
 
-Az egyes javaslatok a súlyozás van a teljes elérhető egyes fókuszterület pontszám százalékban kifejezve. Például ha az adott javaslat a biztonság és megfelelőség fókuszterület 5 %-os pontszámot, a javaslat megvalósítása növeli az átfogó biztonsági és megfelelőségi pontszám szerint 5 %.
+A súlyozások három fő tényezőn alapuló összesített értékek:
 
-### <a name="focus-areas"></a>Fókuszterületek
-**Biztonsági és megfelelőségi** -e fókuszterület esetleges biztonsági fenyegetések és a problémák, a vállalati szabályzatok és a technikai, jogszabályi és szabályozásoknak való megfelelőség követelményeinek való javaslatait mutatja be.
+* A probléma azonosításának valószínűsége problémákat okoz. A nagyobb valószínűség a javaslat nagyobb összesített pontszáma.
+* A probléma *hatása* a szervezeten belül, ha problémát okoz. A nagyobb hatás a javaslat nagyobb összesített pontszáma.
+* A javaslat megvalósításához szükséges *erőfeszítés* . A nagyobb erőfeszítés a javaslat kisebb összesített pontszámának felel meg.
 
-**Rendelkezésre állás és üzleti folytonosság** -e fókuszterület javaslatait a szolgáltatás rendelkezésre állása, az infrastruktúra és a vállalati védelme rugalmasságát mutatja be.
+Az egyes javaslatok súlyozása az egyes fókuszokhoz rendelkezésre álló teljes pontszám százalékában van kifejezve. Ha például egy javaslat a biztonsági és megfelelőségi területen 5%-os pontszámmal rendelkezik, az ajánlás megvalósítása 5%-kal növeli az általános biztonsági és megfelelőségi pontszámot.
 
-**Teljesítmény és méretezhetőség** -e fókuszterület látható ajánlásokat a szervezet IT-infrastruktúráját a növeléssel, ellenőrizze, hogy informatikai környezete megfelel az aktuális teljesítménykövetelményeknek, és tud válaszolni az infrastruktúra módosítása szüksége van.
+### <a name="focus-areas"></a>Fókusz terület
 
-**Frissítés, Migrálás és üzembe helyezés** -e fókuszterület segítséget frissítése, migrálása és üzembe helyezése az Active Directory a meglévő infrastruktúra javaslatait mutatja be.
+**Biztonság és megfelelőség** – ez a kiemelt terület a lehetséges biztonsági fenyegetésekkel és szabálysértésekkel, a vállalati házirendekkel, valamint a technikai, jogi és szabályozási megfelelőségi követelményekkel kapcsolatos javaslatokat mutatja be.
 
-### <a name="should-you-aim-to-score-100-in-every-focus-area"></a>Tárhelyeken minden fókuszterület a 100 %-os pontozása?
-Nem feltétlenül. A javaslatok tudással és több ezer ügyfél által a Microsoft mérnökei szerzett tapasztalatok alapulnak. Azonban nem két kiszolgáló infrastruktúrák azonosak, és lehet, hogy több vagy kevesebb releváns konkrét javaslatokért. Például bizonyos biztonsági javaslatok kevésbé fontos, ha a virtuális gépek nem jelennek meg az interneten a lehet. Lehet, hogy egyes rendelkezésre állási javaslatok kevesebb releváns alacsony prioritású alkalmi adatok összegyűjtésére és a reporting services esetén. Érett fontos problémák a kevésbé fontos, hogy egy indítási is lehet. Előfordulhat, hogy szeretné azonosítani, melyik fókuszterületek a munkájukhoz, és keresse meg, hogyan a pontszámokat az idő előrehaladtával változik.
+**Rendelkezésre állás és Üzletmenet-folytonosság** – ez a fókusz a szolgáltatás rendelkezésre állására, az infrastruktúra rugalmasságára és az üzleti védelemre vonatkozó javaslatokat mutatja be.
 
-Minden javaslat, hogy miért fontos vonatkozó útmutatást tartalmaz. Ez az útmutató használjon kiértékelését, hogy a javaslat megvalósítása alkalmas, az informatikai szolgáltatások jellegét, és a szervezet igényeit.
+**Teljesítmény és méretezhetőség** – ez a fókusz a szervezet informatikai infrastruktúrájának növekedését segítő ajánlásokat mutat be, így biztosíthatja, hogy az informatikai környezet megfeleljen a jelenlegi teljesítménybeli követelményeknek, és képes legyen reagálni az infrastrukturális igények változására.
 
-## <a name="use-health-check-focus-area-recommendations"></a>Használat állapotának ellenőrzése fókusz területre vonatkozó javaslatok
-A telepítés után megtekintheti a javaslatok összegzését a állapotának ellenőrzése csempe a megoldás oldalon az Azure Portal használatával.
+**Frissítés, áttelepítés és üzembe helyezés** – ez a fókusz olyan javaslatokat mutat be, amelyek segítséget nyújtanak a meglévő infrastruktúrához való Active Directory frissítéséhez, áttelepítéséhez és üzembe helyezéséhez.
 
-Az összesített megfelelőségi értékeléseket az infrastruktúrát, és a-feltárás javaslatok megtekintése.
+### <a name="should-you-aim-to-score-100-in-every-focus-area"></a>Érdemes 100%-ot kimutatni minden fókuszban?
 
-### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>Egy fókuszterület javaslatok megtekintése, és korrekciós műveletek
+Nem feltétlenül. A javaslatok a Microsoft-mérnökök által több ezer ügyfél-látogatáson keresztül szerzett ismeretekre és tapasztalatokra épülnek. Azonban két kiszolgálói infrastruktúra sem azonos, és a konkrét javaslatok többé vagy kevésbé fontosak lehetnek. Előfordulhat például, hogy bizonyos biztonsági javaslatok kevésbé fontosak, ha a virtuális gépek nem lesznek elérhetők az internethez. Egyes rendelkezésre állási javaslatok kevésbé fontosak lehetnek az alacsony prioritású ad hoc adatgyűjtést és jelentéskészítést biztosító szolgáltatások esetében. Az érett üzleti tevékenység szempontjából fontos problémák kevésbé fontosak az indításhoz. Érdemes lehet azonosítani, hogy mely Kiemelt területek legyenek a prioritásai, és hogyan változnak meg a pontszámok időbeli változása.
+
+Minden javaslat tartalmaz útmutatást arról, hogy miért fontos. Ennek az útmutatónak a segítségével kiértékelheti, hogy az ajánlás alkalmazása megfelelő-e Önnek, az informatikai szolgáltatások természetétől és a szervezet üzleti igényeinek megfelelően.
+
+## <a name="use-health-check-focus-area-recommendations"></a>Az állapot-ellenőrzési fókusz területtel kapcsolatos javaslatok használata
+
+A telepítését követően megtekintheti a javaslatok összefoglalását a Azure Portal megoldás lapján található állapot-ellenőrzés csempével.
+
+Tekintse meg az infrastruktúra összesített megfelelőségi értékeléseit, majd a részletes ajánlásokat.
+
+### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>A fókusz területre vonatkozó javaslatok megtekintése és a kijavítani kívánt művelet elvégzése
+
 [!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
 
-1. Az a **áttekintése** lap, kattintson a **Active Directory állapotának ellenőrzése** csempére.
-1. Az a **állapotának ellenőrzése** lapon. tekintse át az összefoglaló adatokat az egyik a fókusz terület paneleket, majd kattintson egy adott fókuszterület javaslatok megtekintése.
-1. A bármelyik, fókusz terület megtekintheti a rangsorolt javaslatok arról, hogy a környezetben. Alatt egy javaslatra kattint **érintett objektumok** Miért jön létre a javaslat részleteinek megtekintéséhez.<br><br> ![kép az ajánlások állapotának ellenőrzése](./media/ad-assessment/ad-healthcheck-dashboard-02.png)
-1. Az ajánlott javítási műveleteket hajthatja végre **javasolt műveletek**. Intéztek a cikket, ha újabb értékelések rekordokat, amelyek a javasolt műveleteket származnak, és a megfelelőségi pontszám növeli. Kijavított elemek jelennek meg **átadott objektumok**.
+1. Az **Áttekintés** lapon kattintson a **Active Directory állapot-ellenőrzési** csempére.
 
-## <a name="ignore-recommendations"></a>Hagyja figyelmen kívül a javaslatok
-Ha javaslatoknál, amelyeket figyelmen kívül szeretne, létrehozhat egy szövegfájlt, amely az Azure Monitor használatával fogja megakadályozása javaslatokat az értékelés eredményeinek parancsot.
+2. Az **Állapot ellenőrzése** oldalon tekintse át az összefoglaló információkat az egyik fókuszban lévő panelen, majd kattintson az egyikre a fókuszhoz tartozó javaslatok megtekintéséhez.
 
-### <a name="to-identify-recommendations-that-you-will-ignore"></a>Javaslatok, amelyek figyelmen kívül hagyja majd azonosításához
+3. A fókusz oldalain megtekintheti a környezetére vonatkozó rangsorolt javaslatokat. Az **érintett objektumok** alatt található javaslatra kattintva megtekintheti a javaslat hátterének részleteit.
+
+    ![Állapot-ellenőrzési javaslatok képe](./media/ad-assessment/ad-healthcheck-dashboard-02.png)
+
+4. A **javasolt műveletekben**javasolt korrekciós műveleteket is végrehajthat. Az elem megcímzése után a későbbi felmérések rögzítik a javasolt műveleteket, és a megfelelőségi pontszám növekedni fog. A javított elemek **átadott objektumként**jelennek meg.
+
+## <a name="ignore-recommendations"></a>Javaslatok mellőzése
+
+Ha olyan javaslatok vannak, amelyeket figyelmen kívül szeretne hagyni, létrehozhat egy szövegfájlt, amelyet Azure Monitor fog használni, hogy megakadályozza a javaslatok megjelenését az értékelés eredményeiben.
+
+### <a name="to-identify-recommendations-that-you-will-ignore"></a>A figyelmen kívül hagyható javaslatok azonosítása
+
 [!INCLUDE [azure-monitor-log-queries](../../../includes/azure-monitor-log-queries.md)]
 
-A következő lista ajánlásokat, amelyek nem tudták lekérdezés használata a környezetében.
+A következő lekérdezéssel listázhatja azokat a javaslatokat, amelyek a környezetében lévő számítógépeken sikertelenek voltak.
 
 ```
 ADAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation
 ```
 
-Íme egy Képernyőkép a naplólekérdezés:<br><br> ![nem sikerült javaslatokat](media/ad-assessment/ad-failed-recommendations.png)
+Az alábbi képernyőképen a log lekérdezés látható: <
 
-Válassza ki a javaslatok, amelyek figyelmen kívül kívánja. Szeretné használni az értékeket a RecommendationId az alábbi eljárás írja le.
+![sikertelen javaslatok](media/ad-assessment/ad-failed-recommendations.png)
 
-### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>Hozhat létre és használhat egy IgnoreRecommendations.txt szövegfájl
-1. Hozzon létre egy fájlt IgnoreRecommendations.txt.
-2. Illessze be, vagy írjon be minden egyes RecommendationId minden javaslat, amelyet az Azure Monitor figyelmen kívül, külön sorban, majd mentse és zárja be a fájlt.
-3. Helyezni a fájlt a következő mappában minden olyan számítógépen, ahová szeretné az Azure Monitor figyelmen kívül hagyja a javaslatokat.
-   * A Microsoft Monitoring Agent (közvetlenül vagy Operations Manager keresztül csatlakozik) – a számítógépeken *SystemDrive*: Monitoring Agent\Agent \Program Files\Microsoft
-   * Az Operations Manager 2012 R2 felügyeleti kiszolgálón – *SystemDrive*: System Center 2012 R2\Operations Manager\Server \Program Files\Microsoft
-   * Az Operations Manager 2016 felügyeleti kiszolgálón – *SystemDrive*: System Center 2016\Operations Manager\Server \Program Files\Microsoft
+Válassza ki a figyelmen kívül hagyni kívánt ajánlásokat. A következő eljárásban a RecommendationId értékeit fogja használni.
 
-### <a name="to-verify-that-recommendations-are-ignored"></a>Győződjön meg arról, hogy a javaslatok figyelmen kívül hagyja a
-A következő ütemezett egészségügyi ellenőrzés futtatásakor a szolgáltatás alapértelmezés szerint minden hét nap, miután a megadott javaslatok vannak megjelölve az *figyelmen kívül hagyva* és nem jelenik meg az irányítópulton.
+### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>IgnoreRecommendations. txt szövegfájl létrehozása és használata
 
-1. A következő naplófájl-lekérdezéseket a figyelmen kívül hagyott javaslatok listázására használható.
+1. Hozzon létre egy IgnoreRecommendations. txt nevű fájlt.
+
+2. Illessze be vagy írja be az egyes RecommendationId minden olyan javaslathoz, amelyet szeretne figyelmen kívül hagyni Azure Monitor külön sorban, majd mentse és zárjuk be a fájlt.
+
+3. Helyezze a fájlt a következő mappába az összes olyan számítógépen, amelyen Azure Monitor szeretné figyelmen kívül hagyni a javaslatokat.
+
+   * A Microsoft monitoring agenttel rendelkező számítógépeken (közvetlenül vagy Operations Manageron keresztül csatlakoztatott) – *SYSTEMDRIVE*: \Program Files\Microsoft monitoring Agent\Agent
+   * A Operations Manager 2012 R2 felügyeleti kiszolgálón – *rendszermeghajtó*: \Program Files\Microsoft System Center 2012 R2\Operations Manager\Server
+   * A Operations Manager 2016 felügyeleti kiszolgálón – *rendszermeghajtó*: \Program Files\Microsoft System Center 2016 \ Operations Manager\Server
+
+### <a name="to-verify-that-recommendations-are-ignored"></a>A javaslatok figyelmen kívül hagyása
+
+A következő ütemezett állapot-ellenőrzés után, alapértelmezés szerint hét naponta, a megadott javaslatok *figyelmen kívül lesznek hagyva* , és nem jelennek meg az irányítópulton.
+
+1. A következő naplók használatával listázhatja az összes figyelmen kívül hagyott javaslatot.
 
     ```
     ADAssessmentRecommendation | where RecommendationResult == "Ignored" | sort by Computer asc | project Computer, RecommendationId, Recommendation
     ```
 
-2. Ha később úgy dönt, hogy szeretné-e figyelmen kívül hagyott javaslatok, IgnoreRecommendations.txt fájlok eltávolítása, vagy távolíthatja el RecommendationIDs őket.
+2. Ha később úgy dönt, hogy szeretné látni a figyelmen kívül hagyott javaslatokat, távolítsa el az összes IgnoreRecommendations. txt fájlt, vagy távolítsa el a RecommendationIDs.
 
-## <a name="ad-health-check-solutions-faq"></a>AD állapotának ellenőrzése megoldások – gyakori kérdések
-*Milyen gyakran fut a állapot-ellenőrzése?*
+## <a name="ad-health-check-solutions-faq"></a>AD Health-ellenőrzési megoldások – gyakori kérdések
 
-* Az ellenőrzés hét naponta fut.
+*Milyen gyakran fut az állapot-ellenőrzési funkció?*
 
-*Van mód konfigurálása, hogy milyen gyakran fut a az állapot-ellenőrzés?*
+* Az ellenőrzési hét naponta fut.
+
+*Van mód arra, hogy beállítsa, milyen gyakran fusson az állapot-ellenőrzési folyamat?*
 
 * Jelenleg nem.
 
-*Ha egy másik kiszolgáló fel van derítve, miután hozzá van adva egy health ellenőrzési megoldás az lesz, ellenőrizni kell*
+*Ha egy állapot-ellenőrzési megoldás hozzáadása után egy másik kiszolgáló is fel van derítve, a rendszer ellenőrzi*
 
-* Igen, ez be van jelölve, majd a hét naponta felderítése után.
+* Igen, a felderítés után a rendszer a hét minden napján ellenőrzi, hogy be van-e jelölve.
 
-*Ha egy kiszolgáló le van szerelve, amikor azt eltávolítjuk az állapot-ellenőrzés?*
+*Ha a kiszolgáló leszerelése megtörtént, akkor mikor lesz eltávolítva az állapot-ellenőrzési rendszerből?*
 
-* Ha a kiszolgáló nem küldenek adatokat a 3 hét, a rendszer eltávolítja.
+* Ha egy kiszolgáló 3 hétig nem küldi el az adatküldést, a rendszer eltávolítja.
 
-*Mi a neve, a folyamat, amely az adatgyűjtés?*
+*Mi az adatgyűjtés folyamatának neve?*
 
 * AdvisorAssessment.exe
 
-*Mennyi ideig tart a gyűjtendő adatokat?*
+*Mennyi időt vesz igénybe az adatok gyűjtése?*
 
-* A tényleges adatok gyűjtése a kiszolgálón körülbelül 1 órát vesz igénybe. Ez hosszabb időt vehet igénybe a kiszolgálókon, amelyek az Active Directory-kiszolgálók nagy száma.
+* A kiszolgálón a tényleges adatgyűjtés körülbelül 1 órát vesz igénybe. A nagy számú Active Directory kiszolgálóval rendelkező kiszolgálókon hosszabb ideig tarthat.
 
-*Van mód a konfigurálását, amikor az adatgyűjtés történik?*
+*Be lehet állítani az adatok gyűjtésének módját?*
 
 * Jelenleg nem.
 
-*Miért jelennek meg a csak az első 10-javaslatok?*
+*Miért csak az első 10 ajánlás jelenjen meg?*
 
-* Helyett így elsöprő teljesnek feladatot, azt javasoljuk, hogy arra összpontosítunk, először azoknak a rangsorolt javaslatok. Oldja meg őket, miután további javaslatokat is elérhetőek lesznek. Ha inkább a részletes listát, a napló lekérdezésekkel összes ajánlás tekintheti meg.
+* A feladatok teljes körű listájának megadása helyett javasoljuk, hogy először a rangsorolt javaslatok kezelésére koncentráljon. A megoldásuk után további javaslatok válnak elérhetővé. Ha szeretné megtekinteni a részletes listát, az összes javaslatot megtekintheti egy napló lekérdezés használatával.
 
-*Van mód figyelmen kívül hagyja a javaslatot?*
+*Van lehetőség arra, hogy figyelmen kívül hagyja a javaslatot?*
 
-* Igen, tekintse meg [figyelmen kívül hagyja a javaslatok](#ignore-recommendations) című fenti szakaszban.
+* Igen, lásd a fenti [javaslatok mellőzése](#ignore-recommendations) szakaszt.
 
 ## <a name="next-steps"></a>További lépések
-* Használat [Azure Monitor log-lekérdezések](../log-query/log-query-overview.md) megtudhatja, hogyan elemezheti a részletes adatokat AD állapotának ellenőrzése és javaslatok.
+
+[Azure monitor log-lekérdezések](../log-query/log-query-overview.md) használatával megismerheti, hogyan elemezheti a részletes ad Health-ellenőrzési információkat és javaslatokat.

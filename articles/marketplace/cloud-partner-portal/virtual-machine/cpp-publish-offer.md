@@ -1,25 +1,18 @@
 ---
-title: Egy virtuálisgép-ajánlat közzététele az Azure Marketplace-en |} A Microsoft Docs
+title: Egy virtuálisgép-ajánlat közzététele az Azure Marketplace-en
 description: Listák közzététele egy meglévő virtuális gép szükséges lépéseket az Azure Marketplace-en az alakzatot kínálnak.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 08/17/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 3cf6a3d9bcb9470fd3a6bd4fef964c1966adfa1a
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.author: pabutler
+ms.openlocfilehash: 6796c2871cf8a5928beed2ab557cefdfe8ecaae9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639765"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64938601"
 ---
 # <a name="publish-a-virtual-machine-offer"></a>Egy virtuálisgép-ajánlat közzététele
 
@@ -27,7 +20,8 @@ ms.locfileid: "49639765"
 
 ![Virtuális gép közzétételi lépéseket kínálnak.](./media/publishvm_013.png)
 
-Az alábbi táblázat ismerteti ezeket a lépéseket, és biztosít megszakíthat egy becsült maximális időtartam: <!-- we need to tell them that if an offer seems stuck in a step, to know that they should file a support ticket (link to support ticket doc) -->
+Az alábbi táblázat ismerteti ezeket a lépéseket, és biztosít megszakíthat egy becsült maximális időtartam:
+<!-- we need to tell them that if an offer seems stuck in a step, to know that they should file a support ticket (link to support ticket doc) -->
 
 
 |  **Közzétételi lépés**           | **idő**    | **Leírás**                                                            |

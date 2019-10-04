@@ -10,11 +10,11 @@ ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.openlocfilehash: d1b230b40d1f880787334ebfd39e704e3a650baa
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59489656"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60811601"
 ---
 # <a name="u-sql-programmability-guide"></a>U-SQL programozhatósági útmutató
 
@@ -1067,11 +1067,11 @@ UDO neve általában kifejezetten a U-SQL-szkript az alábbi U-SQL-utasítások 
 ## <a name="use-user-defined-extractors"></a>Felhasználó által definiált információkinyerők használata
 U-SQL lehetővé teszi, hogy a külső adatok importálása egy KIVONATOT utasítás használatával. Egy KIVONATOT utasítás beépített UDO információkinyerők használhatja:  
 
-* *Extractors.Text()*: Itt eltérő kódolásokat kivonása elválasztójellel tagolt szöveges fájlok.
+* *Extractors.Text()* : Itt eltérő kódolásokat kivonása elválasztójellel tagolt szöveges fájlok.
 
-* *Extractors.Csv()*: Kibontási vesszővel tagolt (CSV) fájljai különböző kódolást biztosít.
+* *Extractors.Csv()* : Kibontási vesszővel tagolt (CSV) fájljai különböző kódolást biztosít.
 
-* *Extractors.Tsv()*: Kibontási lapon tagolt (TSV) fájljai különböző kódolásokat biztosít.
+* *Extractors.Tsv()* : Kibontási lapon tagolt (TSV) fájljai különböző kódolásokat biztosít.
 
 Egyéni információkinyerőt fejleszthet hasznos lehet. Ez hasznos lehet adatok importálása során szeretnénk hajtsa végre a következő feladatok közül:
 
@@ -1219,9 +1219,9 @@ OUTPUT @rs0 TO @output_file USING Outputters.Text();
 ## <a name="use-user-defined-outputters"></a>Használja a felhasználó által definiált kiírókra
 Felhasználó által definiált outputter egy másik U-SQL UDO, amely lehetővé teszi, hogy terjessze ki a U-SQL beépített funkciókkal. A kivonatoló hasonlóan, több beépített kiírókra vannak.
 
-* *Outputters.Text()*: Írja az adatokat a különböző kódolású, elválasztójellel tagolt szöveges fájlok.
-* *Outputters.Csv()*: Írja az adatokat a különböző kódolásokat fájljai vesszővel tagolt (CSV).
-* *Outputters.Tsv()*: Írja az adatokat a különböző kódolásokat érték tabulátorral tagolt (TSV) fájljait.
+* *Outputters.Text()* : Írja az adatokat a különböző kódolású, elválasztójellel tagolt szöveges fájlok.
+* *Outputters.Csv()* : Írja az adatokat a különböző kódolásokat fájljai vesszővel tagolt (CSV).
+* *Outputters.Tsv()* : Írja az adatokat a különböző kódolásokat érték tabulátorral tagolt (TSV) fájljait.
 
 Egyéni outputter lehetővé teszi az adatok írása a meghatározott formátumban. Ez lehet hasznos, ha a következő feladatokat:
 

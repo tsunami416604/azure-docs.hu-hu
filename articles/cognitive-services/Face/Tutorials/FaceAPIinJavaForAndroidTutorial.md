@@ -1,52 +1,53 @@
 ---
-title: 'Oktatóanyag: Észlelheti és keret arcok a képen az Android SDK-val'
+title: 'Oktatóanyag: Képek észlelése és keretbe állítása az Android SDK-val'
 titleSuffix: Azure Cognitive Services
-description: Ebben az oktatóanyagban létrehozhat egy egyszerű Android-alkalmazást, amely a Face API-t használja és keret arcok a képen.
+description: Ebben az oktatóanyagban létre fog hozni egy egyszerű Android-alkalmazást, amely a Face API segítségével felismeri és képkockát készít a képekben.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: tutorial
-ms.date: 02/06/2019
+ms.date: 09/06/2019
 ms.author: pafarley
-ms.openlocfilehash: 5c7f2e86d6fe63d309c74d7304f1c19a714b6471
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 740b3fae81521fec2cba31e3b8fd161f767c4380
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312526"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858969"
 ---
-# <a name="tutorial-create-an-android-app-to-detect-and-frame-faces-in-an-image"></a>Oktatóanyag: Keret arcok a képet, és Android-alkalmazás létrehozása
+# <a name="tutorial-create-an-android-app-to-detect-and-frame-faces-in-an-image"></a>Oktatóanyag: Android-alkalmazás létrehozása az arcok észleléséhez és a képek keretének megjelenítéséhez
 
-Ebben az oktatóanyagban létrehozhat egy egyszerű Android-alkalmazás, amely az Azure Face API, a Java SDK-n keresztül az emberi arcok észlelése a képet. Az alkalmazás megjeleníti a kiválasztott kép, és megrajzolja az egyes észlelt face köré keretet.
+Ebben az oktatóanyagban egy egyszerű Android-alkalmazást fog létrehozni, amely az Azure Face API-t használja a Java SDK-n keresztül, hogy felismerje az emberi arcokat a képen. Az alkalmazás megjeleníti a kiválasztott kép, és megrajzolja az egyes észlelt face köré keretet.
 
 Ez az oktatóanyag a következőket mutatja be:
 
 > [!div class="checklist"]
 > - Android-alkalmazás létrehozása
-> - A Face API-ügyfélkódtárát telepítése
+> - Az Face API ügyféloldali kódtár telepítése
 > - Az ügyfélkódtár használata a képeken lévő arcok észleléséhez
 > - Keret rajzolása minden észlelt arc köré
 
 ![Android-képernyőkép egy fényképről, amelyen az arcok piros téglalappal vannak bekeretezve](../Images/android_getstarted2.1.PNG)
 
-A teljes minta kódja megtalálható a [Cognitive Services Face Android](https://github.com/Azure-Samples/cognitive-services-face-android-sample) tárházban a Githubon.
+A teljes mintakód a GitHubon a [Cognitive Services Face Android](https://github.com/Azure-Samples/cognitive-services-face-android-sample) -tárházban érhető el.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- A Face API előfizetési kulcs. Megjelenik a származó ingyenes próba-előfizetését kulcsok [próbálja meg a Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Másik lehetőségként kövesse a [Cognitive Services-fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Face API szolgáltatás és a kulcs beszerzése.
-- [Az Android Studio](https://developer.android.com/studio/) 22 vagy annál újabb API-szintű (a Face ügyféloldali kódtár által igényelt).
+- A Face API előfizetési kulcs. Megjelenik a származó ingyenes próba-előfizetését kulcsok [próbálja meg a Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Másik lehetőségként kövesse a [Cognitive Services-fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Face API szolgáltatás és a kulcs beszerzése. Ezután [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs-és szolgáltatás végponti `FACE_SUBSCRIPTION_KEY` karakterláncához, a nevet és `FACE_ENDPOINT`a-t.
+- A [Visual Studio 2015 vagy 2017](https://www.visualstudio.com/downloads/) bármely kiadása.
+- [Android Studio](https://developer.android.com/studio/) a 22-es vagy újabb API-szinttel (az arc ügyféloldali kódtár számára szükséges).
 
-## <a name="create-the-android-studio-project"></a>Az Android Studio-projekt létrehozása
+## <a name="create-the-android-studio-project"></a>A Android Studio projekt létrehozása
 
 Kövesse az alábbi lépéseket egy új Android-alkalmazás projekt létrehozásához.
 
-1. Az Android Studióban válassza a **indítsa el az új Android Studio-projekt**.
+1. A Android Studio területen válassza az **új Android Studio projekt indítása**lehetőséget.
 1. A **Create Android Project** (Android-projekt létrehozása) képernyőn szükség esetén módosítsa az alapértelmezett mezőket, majd kattintson a **Next** (Tovább) gombra.
-1. Az a **Target Android-eszközök** képernyő, válassza ki a legördülő listából választómezőt használja **API 22-es** vagy újabb, majd kattintson **tovább**.
+1. A **cél Android-eszközök** képernyőn a legördülő listából válassza ki az **API 22** -es vagy újabb verzióját, majd kattintson a **tovább**gombra.
 1. Válassza az **Empty Activity** (Üres tevékenység) elemet, majd kattintson a **Next** (Tovább) gombra.
 1. Törölje a **Backwards Compatibility** (Visszamenőleges kompatibilitás) beállítás bejelölését, majd kattintson a **Finish** (Befejezés) gombra.
 
@@ -54,77 +55,75 @@ Kövesse az alábbi lépéseket egy új Android-alkalmazás projekt létrehozás
 
 ### <a name="create-the-ui"></a>A felhasználói felület létrehozása
 
-Nyissa meg *activity_main.xml*. Az elrendezés Editorban válassza a **szöveg** lapfülre, majd cserélje ki annak tartalmát az alábbira.
+Nyissa meg a *activity_main. xml fájlt*. Az elrendezés-szerkesztőben válassza a **text (szöveg** ) fület, majd cserélje le a tartalmát a következő kódra.
 
-[!code-xml[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/res/layout/activity_main.xml?range=1-18)]
+[!code-xml[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/res/layout/activity_main.xml?name=snippet_activitymain)]
 
-### <a name="create-the-main-class"></a>Hozzon létre a fő osztályban
+### <a name="create-the-main-class"></a>A Main osztály létrehozása
 
-Nyissa meg *MainActivity.java* , és cserélje le a meglévő `import` utasítások a következő kóddal.
+Nyissa meg a *MainActivity. Java* - `import` t, és cserélje le a meglévő utasításokat a következő kódra.
 
-[!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?range=3-11)]
+[!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?name=snippet_imports)]
 
-Ezután cserélje le a tartalmát a **MainActivity** osztályban az alábbi kódra. Ez létrehoz egy eseménykezelőt a **gomb** , amely elindítja a új tevékenység, amely engedélyezi a felhasználó számára, válasszon ki egy képet. Megjeleníti a képet a a **ImageView**.
+Ezután cserélje le a **MainActivity** osztály tartalmát a következő kódra. Ez létrehoz egy eseménykezelőt a **gombon** , amely egy új tevékenység elindításával engedélyezi a felhasználó számára egy kép kiválasztását. Megjeleníti a képet a **ImageView**.
 
-[!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?range=29-68)]
+[!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?name=snippet_mainactivity_methods)]
 
 ### <a name="try-the-app"></a>Próbálja ki az alkalmazást
 
-Tegye megjegyzésbe a hívást **detectAndFrame** a a **onActivityResult** metódust. Nyomja le az **futtatása** a menü az alkalmazás teszteléséhez. Ha az alkalmazás megnyílik egy emulátort vagy egy csatlakoztatott eszközt, kattintson a **Tallózás** alján. Az eszköz Fájlkiválasztási párbeszédpanelt kell megjelennie. Kép kiválasztása, és győződjön meg arról, hogy az ablakban megjelenik. Ezt követően zárja be az alkalmazást, és folytassa a következő lépéssel.
+Megjegyzés a **onActivityResult** metódusban található **detectAndFrame** -híváshoz. Ezután nyomja meg a **Futtatás** gombot a menüben az alkalmazás teszteléséhez. Amikor az alkalmazás megnyílik, vagy egy emulátorban vagy egy csatlakoztatott eszközön, kattintson a lenti **Tallózás** gombra. Ekkor megjelenik az eszköz fájljának kiválasztására szolgáló párbeszédpanel. Válasszon ki egy rendszerképet, és ellenőrizze, hogy megjelenik-e az ablakban. Ezután zárjuk be az alkalmazást, és folytassa a következő lépéssel.
 
 ![Android-képernyőkép egy fényképről, amelyen arcok láthatóak](../Images/android_getstarted1.1.PNG)
 
 ## <a name="add-the-face-sdk"></a>A Face SDK hozzáadása
 
-### <a name="add-the-gradle-dependency"></a>A Gradle-függőség hozzáadása
+### <a name="add-the-gradle-dependency"></a>A Gradle függőség hozzáadása
 
 A **Project** (Projekt) panelen válassza az **Android** elemet a legördülő listából. Bontsa ki a **Gradle Scripts** (Gradle-szkriptek) elemet, majd nyissa meg a *build.gradle (Module: app)* elemet. Adjon hozzá egy függőséget a `com.microsoft.projectoxford:face:1.4.3` arcfelismerési ügyfélkódtárhoz, ahogyan az az alábbi képernyőképen látható, majd kattintson a **Sync Now** (Szinkronizálás most) gombra.
 
 ![Android Studio-képernyőkép az alkalmazás build.gradle fájljáról](../Images/face-tut-java-gradle.png)
 
-### <a name="add-the-face-related-project-code"></a>A Face kapcsolódó Projektkód hozzáadása
+### <a name="add-the-face-related-project-code"></a>A Face kapcsolódó projekt kódjának hozzáadása
 
-Lépjen vissza a **MainActivity.java** , és adja hozzá a következő `import` utasításokat:
+Lépjen vissza a **MainActivity. Java** -hoz, és `import` adja hozzá a következő utasításokat:
 
-[!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?range=13-14)]
+[!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?name=snippet_face_imports)]
 
-Ezután helyezze be a következő kódot a **MainActivity** osztályhoz, fent a **onCreate** metódus:
+Ezután szúrja be a következő kódot a **MainActivity** osztályban a **onCreate** metódus felett:
 
-[!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?range=17-27)]
-
-Le kell cserélnie `<Subscription Key>` az előfizetési kulccsal végzett. Továbbá cserélje le `<API endpoint>` a Face API végpontra, használja a megfelelő régióazonosító kulcs (lásd a [Face API-dokumentumok](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) minden régióban végpontok listáját). Ingyenes próba-előfizetését kulcsokat hoz létre a a **westus** régióban.
+[!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?name=snippet_mainactivity_fields)]
 
 A **Project** (Projekt) panelen bontsa ki az **app** elemet, majd a **manifests** elemet, és nyissa meg az *AndroidManifest.xml* fájlt. Illessze be a következő elemet a `manifest` elem közvetlen gyermekeként:
 
-[!code-xml[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/AndroidManifest.xml?range=5)]
+[!code-xml[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/AndroidManifest.xml?name=snippet_manifest_entry)]
 
-## <a name="upload-image-and-detect-faces"></a>Arcok észlelése és a Rendszerkép feltöltése
+## <a name="upload-image-and-detect-faces"></a>Rendszerkép feltöltése és arcok észlelése
 
-Az alkalmazás meghívásával arcokat észleli a **FaceServiceClient.detect** metódussal, amely becsomagolja a [hibakeresés](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) REST API-t és a egy listáját adja vissza **Face** példányok.
+Az alkalmazás az **faceClient. Face. DetectWithStreamAsync** metódus meghívásával fogja felderíteni az arcokat, amely az [észlelési](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) REST API, és a **Face** instances listáját adja vissza.
 
-Minden egyes visszaküldött **Face** egy téglalapot elfoglalt helye, több választható arctulajdonságok kombinált tartalmazza. Ebben a példában csak a arcjelző négyszögek kérik.
+Minden visszaadott **arc** tartalmaz egy téglalapot, amely jelzi a helyét, és egy sor opcionális arc-attribútummal együtt. Ebben a példában csak az arc téglalapokat kéri a rendszer.
 
-Helyezze be az alábbi két módszer a **MainActivity** osztály. Vegye figyelembe, hogy arcfelismerés befejezését követően az alkalmazás meghívja a **drawFaceRectanglesOnBitmap** úgy módosíthatók a **ImageView**. Ez a metódus ezután fogja meghatározni.
+Szúrja be az alábbi két metódust a **MainActivity** osztályba. Vegye figyelembe, hogy amikor az Arcfelismerés befejeződik, az alkalmazás meghívja a **drawFaceRectanglesOnBitmap** metódust a **ImageView**módosításához. Ezt a metódust a következő módon fogja meghatározni.
 
-[!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?range=70-150)]
+[!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?name=snippet_detection_methods)]
 
 ## <a name="draw-face-rectangles"></a>Arcjelző négyszögek rajzolása
 
-Az alábbi segédmetódus beszúrása a **MainActivity** osztály. Ez a módszer minden észlelt lapot, az egyes a téglalap koordináták segítségével körül négyszögbe **Face** példány.
+Szúrja be a következő Helper metódust a **MainActivity** osztályba. Ez a metódus egy téglalapot rajzol az összes észlelt arc körül, az egyes **Faces** -példányok téglalap koordinátáinak használatával.
 
-[!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?range=152-173)]
+[!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?name=snippet_drawrectangles)]
 
-Végezetül állítsa vissza a hívást a **detectAndFrame** metódus az **onActivityResult**.
+Végül a **OnActivityResult** **detectAndFrame** metódusának meghívása megjegyzéssel.
 
 ## <a name="run-the-app"></a>Az alkalmazás futtatása
 
-Futtassa az alkalmazást, és keressen egy képet, amelyen egy arc látható. Várjon néhány másodpercet, amíg az arcfelismerési szolgáltatás válaszol. Az egyes az arcok a képen piros téglalap megjelennie.
+Futtassa az alkalmazást, és keressen egy képet, amelyen egy arc látható. Várjon néhány másodpercet, amíg az arcfelismerési szolgáltatás válaszol. A képen egy piros négyszögnek kell megjelennie.
 
-![Arcok körül őket piros téglalapokkal Android képernyőképe](../Images/android_getstarted2.1.PNG)
+![Androidos képernyőkép az arcokról, piros téglalapokkal rajzolva](../Images/android_getstarted2.1.PNG)
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megismerte az alapvető folyamat a Face API a Java SDK-val, és létrehozott egy alkalmazást, és alkalmas keretet biztosítanak az arcok a képen. Ezután további információ az arcfelismerés részleteit.
+Ebben az oktatóanyagban megismerte a Face API Java SDK használatának alapszintű folyamatát, és létrehozott egy alkalmazást az arcok észleléséhez és a képek keretének megjelenítéséhez. Következő lépésként tekintse meg a Arcfelismerés részletes adatait.
 
 > [!div class="nextstepaction"]
 > [Arcok észlelése egy képen](../Face-API-How-to-Topics/HowtoDetectFacesinImage.md)

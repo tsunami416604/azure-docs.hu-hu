@@ -1,44 +1,44 @@
 ---
-title: Az Azure szerepköralapú hozzáférés vezérlés (RBAC) szabályozhatja a hozzáférési jogosultságokat, a támogatási kérések létrehozásához és kezeléséhez |} A Microsoft Docs
-description: Az Azure szerepköralapú hozzáférés vezérlés (RBAC) szabályozhatja a hozzáférési jogosultságokat, a támogatási kérések létrehozásához és kezeléséhez
+title: Azure szerepköralapú Access Control (RBAC) a támogatási kérések létrehozásához és kezeléséhez szükséges hozzáférési jogosultságok szabályozásához | Microsoft Docs
+description: Azure szerepköralapú Access Control (RBAC) a támogatási kérések létrehozásához és kezeléséhez szükséges hozzáférési jogosultságok szabályozásához
 author: ganganarayanan
 ms.author: gangan
 ms.date: 1/31/2017
 ms.topic: article
 ms.service: azure
 ms.assetid: 58a0ca9d-86d2-469a-9714-3b8320c33cf5
-ms.openlocfilehash: d98d0637c6d520193b11f4267c59016772ef063a
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 3cf17f6e391608af9d17591a81c579a1db779a6a
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57792480"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967807"
 ---
-# <a name="azure-role-based-access-control-rbac-to-control-access-rights-to-create-and-manage-support-requests"></a>Az Azure szerepköralapú hozzáférés vezérlés (RBAC) szabályozhatja a hozzáférési jogosultságokat, a támogatási kérések létrehozásához és kezeléséhez
+# <a name="azure-role-based-access-control-rbac-to-control-access-rights-to-create-and-manage-support-requests"></a>Azure szerepköralapú Access Control (RBAC) a támogatási kérések létrehozásához és kezeléséhez szükséges hozzáférési jogosultságok szabályozásához
 
-[Szerepköralapú hozzáférés-vezérlés (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) hozzáféréskezelést az Azure lehetővé teszi.
-Támogatási kérelem létrehozása az Azure Portalon [portal.azure.com](https://portal.azure.com), határozza meg, akik létrehozása és támogatási kérések kezelése az Azure RBAC modellt használ.
-A megfelelő RBAC-szerepkörök hozzárendelése a felhasználók, csoportok és alkalmazások egy bizonyos hatókörben, amely lehet egy előfizetés, erőforráscsoport vagy erőforrás hozzáférési jogot.
+A [szerepköralapú Access Control (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) lehetővé teszi a részletes hozzáférés-kezelést az Azure-hoz.
+Support request létrehozása a [Portal.Azure.com](https://portal.azure.com)-ben, Azure Portal az Azure RBAC-modelljét használja annak meghatározására, hogy kik hozhatnak létre és kezelhetnek támogatási kérelmeket.
+A hozzáféréshez a megfelelő RBAC-szerepkört kell hozzárendelni a felhasználókhoz, csoportokhoz és alkalmazásokhoz egy bizonyos hatókörben, amely lehet előfizetés, erőforráscsoport vagy erőforrás.
 
-Vegyünk egy példát: Egy erőforráscsoport-tulajdonosnak olvasási engedélyekkel az előfizetések szintjén, mint az erőforráscsoport, például a websites, a virtuális gépek és alhálózatok tartozó összes erőforrást is kezelheti.
-Azonban amikor megpróbál létrehozni egy támogatási kérelmet a virtuális gép típusú erőforrást, tapasztal a következő hiba
+Vegyük például a következőket: Az előfizetés hatókörében olvasási engedéllyel rendelkező erőforráscsoport-tulajdonosként kezelheti az erőforráscsoport alatti összes erőforrást, például a webhelyeket, a virtuális gépeket és az alhálózatokat.
+Ha azonban egy támogatási kérést próbál létrehozni a virtuális gép erőforrásával kapcsolatban, a következő hibaüzenet jelenik meg
 
-![Előfizetés hiba](./media/create-manage-support-requests-using-access-control/subscription-error.png)
+![Előfizetés-hiba](./media/create-manage-support-requests-using-access-control/subscription-error.png)
 
-A támogatási kérelem kezelése engedély, vagy egy szerepkör, amely rendelkezik a támogatási művelet Microsoft.Support/* tudják támogatási kérések létrehozásához és kezeléséhez az előfizetések szintjén kell írni.
+A támogatási kérelmek kezelése során írási engedéllyel vagy olyan szerepkörrel kell rendelkeznie, amely támogatja a Microsoft. support/* támogatását az előfizetés hatókörében, hogy képes legyen a támogatási kérések létrehozására és kezelésére.
 
-A következő cikk azt ismerteti, hogyan használhatja az Azure egyéni szerepköralapú hozzáférés-vezérlés (RBAC), az Azure Portalon a támogatási kérések létrehozásához és kezeléséhez.
+A következő cikk azt ismerteti, hogyan használható az Azure egyéni szerepköralapú Access Control (RBAC) a támogatási kérések létrehozásához és kezeléséhez a Azure Portalban.
 
 ## <a name="getting-started"></a>Első lépések
 
-A fenti példa használatával, akkor tudná hozhat létre egy támogatási kérést az erőforrás, ha a rendszer egy egyéni RBAC-szerepkört az előfizetésre az előfizetés tulajdonosa.
-[Egyéni RBAC-szerepkörök](https://azure.microsoft.com/documentation/articles/role-based-access-control-custom-roles/) hozhatók létre az Azure PowerShell, az Azure parancssori felület (CLI) és a REST API használatával.
+A fenti példa használatával létrehozhat egy támogatási kérést az erőforráshoz, ha az előfizetés tulajdonosa egyéni RBAC-szerepkört rendelt az előfizetéshez.
+Az [Egyéni RBAC szerepkörök](https://azure.microsoft.com/documentation/articles/role-based-access-control-custom-roles/) a Azure PowerShell, az Azure parancssori felület (CLI) és a REST API használatával hozhatók létre.
 
-A műveletek tulajdonsága egy egyéni biztonsági szerepkört, amelyhez a szerepkör hozzáférést biztosít az Azure műveletek megadja.
-Hozzon létre egy egyéni szerepkört, a támogatási kérések kezelése, a szerepkör kell rendelkeznie a művelet Microsoft.Support/*
+Az egyéni szerepkör Actions tulajdonsága határozza meg azokat az Azure-műveleteket, amelyekhez a szerepkör hozzáférést biztosít.
+Ha egyéni szerepkört szeretne létrehozni a támogatási kérelmek kezeléséhez, a szerepkörnek rendelkeznie kell a Microsoft. support/* művelettel.
 
-Íme egy példa egy egyéni szerepkör segítségével támogatási kérések létrehozásához és kezeléséhez.
-Azt már neve a "Támogatási kérelem közreműködő" szerepkör, és ez hogyan nevezzük az egyéni szerepkör ebben a cikkben.
+Az alábbi példa egy olyan egyéni szerepkört mutat be, amely támogatási kérések létrehozásához és kezeléséhez használható.
+Ennek a szerepkörnek a neve "támogatási kérelem közreműködője", és ez a cikk az egyéni szerepkörre hivatkozik.
 
 ``` Json
 {
@@ -57,54 +57,54 @@ Azt már neve a "Támogatási kérelem közreműködő" szerepkör, és ez hogya
 }
 ```
 
-Kövesse az ismertetett lépéseket [ebben a videóban](https://www.youtube.com/watch?v=-PaBaDmfwKI) megtudhatja, hogyan hozhat létre egy egyéni biztonsági szerepkört az előfizetés.
+Kövesse az [ebben](https://www.youtube.com/watch?v=-PaBaDmfwKI) a videóban ismertetett lépéseket, amelyből megtudhatja, hogyan hozhat létre egyéni szerepkört az előfizetéséhez.
 
-## <a name="create-and-manage-support-requests-in-the-azure-portal"></a>Az Azure Portalon a támogatási kérések létrehozásához és kezeléséhez
+## <a name="create-and-manage-support-requests-in-the-azure-portal"></a>Támogatási kérelmek létrehozása és kezelése a Azure Portal
 
-Vegyünk egy példát – Ön a tulajdonosa az előfizetés "Visual Studio MSDN-előfizetés."
-János a társ, akik ebben az előfizetésben az erőforráscsoportok némelyike erőforrás tulajdonosa, és rendelkezik-e olvasási engedéllyel az előfizetéshez.
-A társ, Joe, hozzon létre és kezelhetik a támogatási jegyeket, ehhez az előfizetéshez tartozó erőforrásokhoz való hozzáférést szeretné.
+Vegyük például a következőt: a Visual Studio MSDN-előfizetés tulajdonosa.
+Joe az a társa, aki egy erőforrás-tulajdonos az előfizetésben található egyes erőforráscsoportok számára, és olvasási engedéllyel rendelkezik az előfizetéshez.
+A partnernek, Joe-nak hozzáférést kíván adni, és támogatási jegyet hozhat létre és kezelhet az előfizetéshez tartozó erőforrásokhoz.
 
-1. Az első lépéseként nyissa meg az előfizetést, és a "Beállítások" felhasználók listájának megtekintéséhez. Kattintson a felhasználó János, akik olvasó hozzáféréssel rendelkezik az előfizetésre, és most egy új egyéni biztonsági szerepkört rendel neki.
+1. Első lépésként nyissa meg az előfizetést. A **Beállítások**területen láthatja a felhasználók listáját. Válassza ki azt a felhasználót, aki olvasói hozzáféréssel rendelkezik az előfizetéshez. Rendeljen hozzá egy új egyéni szerepkört a Joe-hoz.
 
     ![Szerepkör hozzáadása](./media/create-manage-support-requests-using-access-control/add-role.png)
 
-2. Kattintson a "Hozzáadás" a "Felhasználók" panel alatt. Az egyéni "Támogatási kérelem közreműködő" szerepkör kiválasztása a szerepkörök listájáról
+2. Kattintson a "Hozzáadás" gombra a "felhasználók" panelen. Válassza ki a szerepkörök listájából a "támogatási kérelem közreműködője" egyéni szerepkört.
 
-    ![Támogatási közreműködői szerepkör hozzáadása](./media/create-manage-support-requests-using-access-control/add-support-contributor-role.png)
+    ![Támogatási közreműködő szerepkör hozzáadása](./media/create-manage-support-requests-using-access-control/add-support-contributor-role.png)
 
-3. Miután kiválasztotta a szerepkör nevét, kattintson a "Felhasználó hozzáadása", és adja meg a Joe e-mail hitelesítő adatait. Kattintson a Kiválasztás gombra.
+3. A szerepkör nevének kiválasztása után kattintson a "felhasználók hozzáadása" lehetőségre, és adja meg a Joe e-mail hitelesítő adatait. Kattintson a Kiválasztás gombra.
 
     ![Felhasználók hozzáadása](./media/create-manage-support-requests-using-access-control/add-users.png)
 
-4. Kattintson az "Ok" gombra. a folytatáshoz
+4. A folytatáshoz kattintson az OK gombra.
 
     ![Hozzáférés hozzáadása](./media/create-manage-support-requests-using-access-control/add-access.png)
 
-5. Megjelenik az újonnan hozzáadott egyéni szerepkör "Támogatási kérelem közreműködő", amelynek Ön a tulajdonosa az előfizetés rendelkező felhasználó
+5. Most megjelenik a "támogatási kérelem közreműködője" nevű újonnan hozzáadott egyéni szerepkörrel rendelkező felhasználó az előfizetés alatt, amelynek Ön a tulajdonosa
 
     ![Felhasználó hozzáadva](./media/create-manage-support-requests-using-access-control/user-added.png)
 
-    János naplózza a portálon, ha látja az előfizetést, amelyhez úgy lett hozzáadva.
+    Amikor Joe bejelentkezik a portálra, Joe látja azt az előfizetést, amelyhez Joe hozzá lett adva.
 
-7. János "Új támogatási kérés" a "Súgó és támogatás" panelről kattint, és a támogatási kérések hozhat létre a "Visual Studio Ultimate az MSDN"
+7. János a "Súgó és támogatás" panel "új Support request" gombjára kattint, és a "Visual Studio Ultimate MSDN-nel" támogatási kérelmeit is létrehozhatja
 
     ![Új támogatási kérelem](./media/create-manage-support-requests-using-access-control/new-support-request.png)
 
-8. Kattintson a "Minden támogatási kérelem" János a listája látható az előfizetéshez létrehozott támogatási kérések ![eset Részletek nézet](./media/create-manage-support-requests-using-access-control/case-details-view.png)
+8. A "minden támogatási kérelem" gombra kattintva megtekintheti az előfizetési ![eset részletei nézethez létrehozott támogatási kérelmek listáját](./media/create-manage-support-requests-using-access-control/case-details-view.png)
 
-## <a name="remove-support-request-access-in-the-azure-portal"></a>Távolítsa el a támogatási kérelem hozzáférés az Azure Portalon
+## <a name="remove-support-request-access-in-the-azure-portal"></a>Támogatási kérelem hozzáférésének eltávolítása a Azure Portal
 
-Ugyanúgy, mint az is lehet hozzáférést biztosítani egy felhasználónak, a támogatási kérések létrehozásához és kezeléséhez, akkor lehet tiltani a hozzáférését, valamint a felhasználó.
-Távolítsa el a létrehozása és a támogatási kérések kezelése, nyissa meg az előfizetés lehetővé teszi, kattintson a "Beállítások" parancsra, majd kattintson a felhasználó (Ez esetben Attilára).
-Kattintson a jobb gombbal a szerepkör nevét, a "Támogatási kérelem közreműködő", és kattintson az "Eltávolítás" parancsra
+Ugyanúgy, ahogy a felhasználók számára engedélyezhető a támogatási kérések létrehozása és kezelése, a felhasználó hozzáférését is el lehet távolítani.
 
-![Támogatási kérelem hozzáférés eltávolítása](./media/create-manage-support-requests-using-access-control/remove-support-request-access.png)
+A támogatási kérések létrehozásához és kezeléséhez nyissa meg az előfizetést, kattintson a "beállítások" elemre, és kattintson a felhasználóra (ebben az esetben Joe). Kattintson a jobb gombbal a szerepkör nevére, a "támogatási kérelem közreműködői" elemre, majd kattintson az Eltávolítás gombra.
 
-János jelentkezik be a portálra, és megpróbálja hozzon létre egy támogatási kérést, ha akkor fordul elő a következő hiba
+![Támogatási kérelem hozzáférésének eltávolítása](./media/create-manage-support-requests-using-access-control/remove-support-request-access.png)
 
-![Hiba – 2 előfizetés](./media/create-manage-support-requests-using-access-control/subscription-error-2.png)
+Amikor Joe bejelentkezik a portálra, és megpróbál létrehozni egy támogatási kérést, Joe a következő hibába ütközik:
 
-János nem lát nyomokat kérelmek támogatásához, ha "Minden támogatási kérelem" kattint
+![Előfizetés-hiba – 2](./media/create-manage-support-requests-using-access-control/subscription-error-2.png)
 
-![eset részletes adatai megtekintése – 2](./media/create-manage-support-requests-using-access-control/case-details-view-2.png)
+János nem látja a támogatási kérelmeket, amikor Joe kiválasztja az "összes támogatási kérést"
+
+![eset részleteinek nézete – 2](./media/create-manage-support-requests-using-access-control/case-details-view-2.png)

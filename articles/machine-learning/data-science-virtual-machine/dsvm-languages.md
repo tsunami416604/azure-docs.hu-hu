@@ -1,190 +1,154 @@
 ---
-title: A Data Science virtuális gép esetében. a támogatott nyelvek
-titleSuffix: Azure
-description: Ismerje meg a program nyelveket és a kapcsolódó eszközök, előre telepített a Data Science virtuális gépen.
+title: Támogatott nyelvek
+titleSuffix: Azure Data Science Virtual Machine
+description: A Data Science Virtual Machineon előre telepített támogatott programok és kapcsolódó eszközök.
 keywords: adatelemzési eszközök, adatelemző virtuális gép, eszközök adatelemzéshez, linux adatelemzés
 services: machine-learning
-documentationcenter: ''
-author: gopitk
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: gvashishtha
+ms.author: gopalv
 ms.topic: conceptual
-ms.date: 09/11/2017
-ms.author: gokuma
-ms.openlocfilehash: 586f37ff972a6102da351794365f719a185857fc
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 09/27/2019
+ms.openlocfilehash: 586cdd6dc06a7685f17c78fa4c4ea2f2ebf52f3d
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58877414"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802398"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>A Data Science virtuális gépen támogatott nyelvek 
 
-Az adatelemzési virtuális gép (DSVM) tartalmaz számos előre elkészített nyelvek és fejlesztői eszközök, az AI-alkalmazások készítéséhez. Íme néhány, a következő azokat. 
+A Data Science Virtual Machine (DSVM) számos előre elkészített nyelvet és fejlesztői eszközt tartalmaz a mesterséges intelligencia (AI) alkalmazások kiépítéséhez. Íme néhány a jelentősek közül.
 
-## <a name="python-windows-server-2016-edition"></a>Python (Windows Server 2016 Edition)
+## <a name="python-windows-server-2016-edition"></a>Python (Windows Server 2016 kiadás)
 
 |    |           |
 | ------------- | ------------- |
-| Támogatott nyelvi verziók | 2.7-es és 3.6-os |
+| Támogatott nyelvi verziók | Python 2,7 és 3,6 |
 | Támogatott DSVM-kiadások      | Windows Server 2016     |
-| Hogyan van azt konfigurálni / telepíteni a dsvm-hez?  | Globális két `conda` környezetek jönnek létre. <br /> * `root` környezetben található `/anaconda/` Python 3.6-os verziója van. <br/> * `python2` környezetben található `/anaconda/envs/python2`Python 2.7-es van       |
-| A minták mutató hivatkozások      | Mintául szolgáló Jupyter-notebookok Python szerepelnek.     |
-| A dsvm-hez kapcsolódó eszközök      | PySpark, R, Julia      |
+| Hogyan van azt konfigurálni / telepíteni a dsvm-hez?  | Két globális `conda` környezet jön létre: <br /> * Az `root` a környezet `/anaconda/` , amely a Python 3,6. <br/> * Az `python2` a környezet `/anaconda/envs/python2` , amely a Python 2,7.       |
+| A minták mutató hivatkozások      | A Pythonhoz készült minta Jupyter-jegyzetfüzetek is elérhetők.     |
+| A DSVM kapcsolódó eszközök      | PySpark, R, Julia.      |
 
 > [!NOTE]
-> 2018. március előtt létrehozott Windows Server 2016 tartalmazza a Python 3.5-ös és a Python 2.7-t. Python 2.7-t is a conda **legfelső szintű** környezet és **py35** a Python 3.5-ös környezetben van. 
+> A 2018 márciusa előtt létrehozott Windows Server 2016-buildek Python 3,5 és Python 2,7-et tartalmaznak. A Python 2,7 a Conda **legfelső szintű** környezete, a **Py35** pedig a Python 3,5-környezet.
 
-### <a name="how-to-use--run-it"></a>Hogyan futtathatja / használata?    
+### <a name="how-to-use-and-run-it"></a>Használat és Futtatás    
 
-* A parancssor futtatása
+* Futtassa a parancsot a parancssorban:
 
-Nyissa meg a parancssort, és tegye a következőket futtatni kívánt Python verziójától függően. 
+  Nyisson meg egy parancssort, és használja a következő módszerek egyikét a futtatni kívánt Python-verziótól függően:
 
-```
-# To run Python 2.7
-activate python2
-python --version
+    ```
+    # To run Python 2.7
+    activate python2
+    python --version
+    
+    # To run Python 3.6
+    activate 
+    python --version 
+    ```
+    
+* Használat az IDE-ben:
 
-# To run Python 3.6
-activate 
-python --version
+  A Visual Studio Community Edition-ben telepített Python Tools for Visual Studio (PTVS) használata. Alapértelmezés szerint az PTVS-ben automatikusan beállított környezet a Python 3,6. 
 
-```
-* Egy IDE használatával
+    > [!NOTE]
+    > Ahhoz, hogy a PTVS a Python 2,7-es verzióra mutasson, egyéni környezetet kell létrehoznia a PTVS-ben. A környezeti útvonal a Visual Studio Community kiadásban történő beállításához nyissa meg az **eszközök** -> **Python-eszközök** -> **Python-környezetek** elemet, és válassza a **+ Egyéni**lehetőséget. Ezután állítsa be a **c:\anaconda\envs\python2** helyet, és válassza az **automatikus észlelés**lehetőséget.
 
-Használható Python Tools for Visual Studio (PTVS) a Visual Studio Community Edition telepítve van. Az egyetlen megengedett környezete telepítés automatikusan projektek készítése PTVS alapértelmezés szerint a Python 3.6-os. 
+* Használat a Jupyter-ben:
 
-> [!NOTE]
-> Python 2.7-t a PTVS mutassanak, egy egyéni környezet létrehozása a PTVS kell. A környezet elérési útvonalak beállítása a Visual Studio Community Edition kiadást a, navigáljon a **eszközök** -> **Python Tools** -> **Python-környezetek** majd **+ egyéni**. Ezután állítsa be annak helyét `c:\anaconda\envs\python2` majd _automatikus észlelése_. 
+  Nyissa meg a Jupyter, és válassza az **új** lehetőséget egy új jegyzetfüzet létrehozásához. A kernel típusát _Python [Conda root]_ -ként állíthatja be a Python 3,6 és a Python _[Conda env: python2]_ for Python 2,7 számára.
 
-* A Jupyter használatával
+* Python-csomagok telepítése:
 
-Nyissa meg a Jupyter és a kattintson a `New` gombra az új notebook létrehozásához. Ezen a ponton kiválaszthatja a kernel típusként _Python [Conda gyökér]_ a Python 3.6 és _Python [Conda env:python2]_ Python 2.7-es környezetben. 
+  A DSVM lévő alapértelmezett Python-környezetek az összes felhasználó által olvasható globális környezetek. Csak rendszergazdák írhatnak és telepíthetnek globális csomagokat. Ha a csomagokat a globális környezetbe szeretné telepíteni, aktiválja a parancsot rendszergazdaként a `activate` root vagy a python2 környezetbe. Ezt követően használhatja a Package Managert (például `conda` vagy `pip` ) a csomagok telepítéséhez vagy frissítéséhez.
 
-* Python-csomagok telepítése
-
-A dsvm-hez a Python alapértelmezett környezet összes felhasználó által olvasható globális környezetben. Azonban csak a rendszergazdák is írási és globális csomagok telepítéséhez. Annak érdekében, hogy telepítse a csomagot a globális környezetet, a legfelső szintű vagy a python2-környezet használatával aktiválásához a `activate` parancsot rendszergazdaként. Használhatja például a package manager `conda` vagy `pip` telepíteni vagy frissíteni a csomagokat. 
-
-## <a name="python-linux-and-windows-server-2012-edition"></a>Python (a Linux és Windows Server 2012 kiadás)
+## <a name="python-linux-edition"></a>Python (Linux kiadás)
 
 |    |           |
 | ------------- | ------------- |
-| Támogatott nyelvi verziók | 2.7-es és a 3.5. |
-| Támogatott DSVM-kiadások      | Linux, Windows Server 2012    |
-| Hogyan van azt konfigurálni / telepíteni a dsvm-hez?  | Globális két `conda` környezetek jönnek létre. <br /> * `root` környezetben található `/anaconda/` van a Python 2.7-t. <br/> * `py35` környezetben található `/anaconda/envs/py35`Python 3.5       |
-| A minták mutató hivatkozások      | Mintául szolgáló Jupyter-notebookok Python szerepelnek.     |
-| A dsvm-hez kapcsolódó eszközök      | PySpark, R, Julia      |
-### <a name="how-to-use--run-it"></a>Hogyan futtathatja / használata?    
+| Támogatott nyelvi verziók | Python 2,7 és 3,5 |
+| Támogatott DSVM-kiadások      | Linux   |
+| Hogyan van azt konfigurálni / telepíteni a dsvm-hez?  | Két globális `conda` környezet jön létre: <br /> * `root`a-ben `/anaconda/` található környezet a Python 2,7. <br/> * `py35`a-ben `/anaconda/envs/py35`található környezet a Python 3,5.       |
+| A minták mutató hivatkozások      | A Pythonhoz készült minta Jupyter-jegyzetfüzetek is elérhetők.     |
+| A DSVM kapcsolódó eszközök      | PySpark, R, Julia      |
+### <a name="how-to-use-and-run-it"></a>Használat és Futtatás    
 
-**Linux**
-* Fut a terminálon
+* Futtatás terminálon:
 
-Nyissa meg a terminált, és tegye a következőket futtatni kívánt Python verziójától függően. 
+  Nyissa meg a terminált, és hajtsa végre az alábbi műveletek egyikét a futtatni kívánt Python-verziótól függően:
 
-```
-# To run Python 2.7
-source activate 
-python --version
+    ```
+    # To run Python 2.7
+    source activate 
+    python --version
+    
+    # To run Python 3.5
+    source activate py35
+    python --version
+    
+    ```
+* Használat az IDE-ben:
 
-# To run Python 3.5
-source activate py35
-python --version
+  A Visual Studio Community Edition kiadásban telepített Notebookshoz használata. 
 
-```
-* Egy IDE használatával
+* Használat a Jupyter-ben:
 
-A Visual Studio Community Edition telepítve PyCharm használja. 
+  Nyissa meg a Jupyter, és válassza az **új** lehetőséget egy új jegyzetfüzet létrehozásához. A kernel típusát **Python [Conda root]** -ként állíthatja be Python 2,7 és **Python [Conda env: py35]** értékre a Python 3,5 környezetben. 
 
-* A Jupyter használatával
+* Python-csomagok telepítése:
 
-Nyissa meg a Jupyter és a kattintson a `New` gombra az új notebook létrehozásához. Ezen a ponton kiválaszthatja a kernel típusként _Python [Conda gyökér]_ for Python 2.7-es és _Python [Conda env:py35]_ Python 3.5-ös környezetben. 
+  A dsvm-hez a Python alapértelmezett környezet összes felhasználó által olvasható globális környezetben. Csak rendszergazdák írhatnak és telepíthetnek globális csomagokat. Ha a csomagokat a globális környezetbe szeretné telepíteni, aktiválja a `source activate` parancsot rendszergazdaként, vagy a sudo engedélyekkel rendelkező felhasználóként a root vagy a py35 környezetre. Ezt követően használhatja a Package Managert (például `conda` vagy `pip` ) a csomagok telepítéséhez vagy frissítéséhez.
 
-* Python-csomagok telepítése
-
-A dsvm-hez a Python alapértelmezett környezet összes felhasználó által olvasható globális környezetben. Azonban csak a rendszergazdák is írási és globális csomagok telepítéséhez. Annak érdekében, hogy telepítse a csomagot a globális környezetet, a legfelső szintű vagy py35 környezet használatával aktiválásához a `source activate` parancsot rendszergazdaként vagy a sudo engedéllyel rendelkező felhasználó. Használhatja például a Csomagkezelő `conda` vagy `pip` telepíteni vagy frissíteni a csomagokat. 
-
-**Windows 2012**
-* A parancssor futtatása
-
-Nyissa meg a parancssort, és tegye a következőket futtatni kívánt Python verziójától függően. 
-
-```
-# To run Python 2.7
-activate 
-python --version
-
-# To run Python 3.5
-activate py35
-python --version
-
-```
-* Egy IDE használatával
-
-Használható Python Tools for Visual Studio (PTVS) a Visual Studio Community Edition telepítve van. A csak környezet beállítása automatikusan a PTVS a Python 2.7-t. 
-> [!NOTE]
-> A projektek készítése PTVS mutassanak Python 3.5, egy egyéni környezet létrehozása a PTVS kell. A környezet elérési útvonalak beállítása a Visual Studio Community Edition kiadást a, navigáljon a **eszközök** -> **Python Tools** -> **Python-környezetek** majd **+ egyéni**. Ezután állítsa be annak helyét `c:\anaconda\envs\py35` majd _automatikus észlelése_. 
-
-* A Jupyter használatával
-
-Nyissa meg a Jupyter és a kattintson a `New` gombra az új notebook létrehozásához. Ezen a ponton kiválaszthatja a kernel típusként _Python [Conda gyökér]_ for Python 2.7-es és _Python [Conda env:py35]_ Python 3.5-ös környezetben. 
-
-* Python-csomagok telepítése
-
-A dsvm-hez a Python alapértelmezett környezet összes felhasználó által olvasható globális környezetben. Azonban csak a rendszergazdák is írási és globális csomagok telepítéséhez. Annak érdekében, hogy telepítse a csomagot a globális környezetet, a legfelső szintű vagy py35 környezet használatával aktiválásához a `activate` parancsot rendszergazdaként. Használhatja például a package manager `conda` vagy `pip` telepíteni vagy frissíteni a csomagokat. 
 
 ## <a name="r"></a>R
 
 |    |           |
 | ------------- | ------------- |
-| Támogatott nyelvi verziók | A Microsoft R Open 3.x (100 %-os kompatibilis a CRAN-R<br /> A Microsoft R Server 9.x Developer edition (egy méretezhető nagyvállalati készen áll az R platform)|
+| Támogatott nyelvi verziók | Microsoft R Open 3. x (100%-kompatibilis a CRAN-R-vel)<br /> Microsoft R Server 9. x Developer Edition (skálázható, nagyvállalati használatra kész R platform)|
 | Támogatott DSVM-kiadások      | Linux, Windows     |
 | Hogyan van azt konfigurálni / telepíteni a dsvm-hez?  | Windows: `C:\Program Files\Microsoft\ML Server\R_SERVER` <br />Linux: `/usr/lib64/microsoft-r/3.3/lib64/R`    |
-| A minták mutató hivatkozások      | Mintául szolgáló Jupyter-notebookok R szerepelnek.     |
-| A dsvm-hez kapcsolódó eszközök      | SparkR, Python, Julia      |
-### <a name="how-to-use--run-it"></a>Hogyan futtathatja / használata?    
+| A minták mutató hivatkozások      | Az R-hez készült minta Jupyter-jegyzetfüzeteket tartalmazza.     |
+| A DSVM kapcsolódó eszközök      | SparkR, Python, Julia      |
+### <a name="how-to-use-and-run-it"></a>Használat és Futtatás    
 
 **Windows**:
 
-* A parancssor futtatása
+* Futtassa a parancsot a parancssorban:
 
-Nyissa meg a parancssort, és csak írja be `R`.
+  Nyisson meg egy parancssort, `R`és írja be a parancsot.
 
-* Egy IDE használatával
+* Használat az IDE-ben:
 
-Használat RTools a Visual Studio (RTVS) a Visual Studio Community edition vagy az RStudio telepítése. Ezek érhetők el a start menüben, vagy egy asztali ikonra. 
+  Használat RTools a Visual Studio (RTVS) a Visual Studio Community edition vagy az RStudio telepítése. Ezek a Start menüben vagy asztali ikonként érhetők el. 
 
-* A Jupyter használatával
+* Használat a Jupyter
 
-Nyissa meg a Jupyter és a kattintson a `New` gombra az új notebook létrehozásához. Ezen a ponton kiválaszthatja a kernel típusként _R_ Jupyter R kernel (IRKernel) használatára. 
+  Nyissa meg a Jupyter, és válassza az **új** lehetőséget egy új jegyzetfüzet létrehozásához. A Jupyter R kernel (IRKernel) használatához a rendszermag típusát **r** értékre állíthatja.
 
-* R-csomagok telepítése
+* R-csomagok telepítése:
 
-Az R telepítve van a dsvm-hez egy globális környezetben olvasható összes felhasználó által. Azonban csak a rendszergazdák is írási és globális csomagok telepítéséhez. Annak érdekében, hogy telepítse a csomagot a globális környezetet, futtassa a fenti módszerek egyikével R. Ezután futtassa az R Csomagkezelő `install.packages()` telepíteni vagy frissíteni a csomagokat. 
+  Az R az összes felhasználó által olvasható globális környezetben van telepítve a DSVM. Csak rendszergazdák írhatnak és telepíthetnek globális csomagokat. Ha a csomagokat a globális környezetbe szeretné telepíteni, futtassa az R-t az előző módszerek egyikének használatával. Ezután futtathatja az R Package Managert `install.packages()` a csomagok telepítéséhez vagy frissítéséhez.
 
 **Linux**:
 
-* Fut a terminálon
+* Futtatás a (z) terminálban:
 
-Nyissa meg a Terminálszolgáltatások és a csak futtatási `R`.  
+  Nyisson meg egy terminált `R`, és futtassa a parancsot.  
 
-* Egy IDE használatával
+* Használat az IDE-ben:
 
-A Linux-DSVM telepítve RStudio használja.  
+  A Linux DSVM telepített RStudio használata.  
 
-* A Jupyter használatával
+* Használat a Jupyter-ben:
 
-Nyissa meg a Jupyter és a kattintson a `New` gombra az új notebook létrehozásához. Ezen a ponton kiválaszthatja a kernel típusként _R_ Jupyter R kernel (IRKernel) használatára. 
+  Nyissa meg a Jupyter, és válassza az **új** lehetőséget egy új jegyzetfüzet létrehozásához. A Jupyter R kernel (IRKernel) használatához a rendszermag típusát **r** értékre állíthatja. 
 
-* R-csomagok telepítése
+* R-csomagok telepítése:
 
-Az R telepítve van a dsvm-hez egy globális környezetben olvasható összes felhasználó által. Azonban csak a rendszergazdák is írási és globális csomagok telepítéséhez. Annak érdekében, hogy telepítse a csomagot a globális környezetet, futtassa a fenti módszerek egyikével R. Ezután futtassa az R Csomagkezelő `install.packages()` telepíteni vagy frissíteni a csomagokat. 
+  Az R az összes felhasználó által olvasható globális környezetben van telepítve a DSVM. Csak rendszergazdák írhatnak és telepíthetnek globális csomagokat. Ha a csomagokat a globális környezetbe szeretné telepíteni, futtassa az R-t az előző módszerek egyikének használatával. Ezután futtathatja az R Package Managert `install.packages()` a csomagok telepítéséhez vagy frissítéséhez.
 
 
 ## <a name="julia"></a>Julia
@@ -193,53 +157,51 @@ Az R telepítve van a dsvm-hez egy globális környezetben olvasható összes fe
 | ------------- | ------------- |
 | Támogatott nyelvi verziók | a 0.6-os |
 | Támogatott DSVM-kiadások      | Linux, Windows     |
-| Hogyan van azt konfigurálni / telepíteni a dsvm-hez?  | Windows: Telepített `C:\JuliaPro-VERSION`<br /> Linux: Telepített `/opt/JuliaPro-VERSION`    |
-| A minták mutató hivatkozások      | Mintául szolgáló Jupyter-notebookok Julia szerepelnek.     |
-| A dsvm-hez kapcsolódó eszközök      | Python, R      |
-### <a name="how-to-use--run-it"></a>Hogyan futtathatja / használata?    
+| Hogyan van azt konfigurálni / telepíteni a dsvm-hez?  | Windows: Telepítve:`C:\JuliaPro-VERSION`<br /> Linux: Telepítve:`/opt/JuliaPro-VERSION`    |
+| A minták mutató hivatkozások      | A Julia-hez készült minta Jupyter-jegyzetfüzetek beletartoznak.     |
+| A DSVM kapcsolódó eszközök      | Python, R      |
+### <a name="how-to-use-and-run-it"></a>Használat és Futtatás    
 
 **Windows**:
 
-* A parancssor futtatása
+* Futtatás parancssorból
 
-Nyissa meg a parancssort, és futtassa az `julia`. 
-* Egy IDE használatával
+  Nyisson meg egy parancssort, `julia`és futtassa a parancsot.
+* Használat az IDE-ben:
 
-Használat `Juno` telepíthető a DSVM- és asztali parancsikonja elérhető az Julia IDE.
+  A DSVM-ben telepített Julia ide- velésasztaliparancsikonkénthasználható.`Juno`
 
-* A Jupyter használatával
+* Használat a Jupyter-ben:
 
-Nyissa meg a Jupyter és a kattintson a `New` gombra az új notebook létrehozásához. Ezen a ponton kiválaszthatja a kernel típus szerint `Julia VERSION` 
+  Nyissa meg a Jupyter, és válassza az **új** lehetőséget egy új jegyzetfüzet létrehozásához. A kernel típusát **Júlia-verzióként**állíthatja be.
 
-* Julia csomagok telepítése
+* Julia-csomagok telepítése:
 
-Julia hely alapértelmezés szerint egy globális környezetben olvasható összes felhasználó. Azonban csak a rendszergazdák is írási és globális csomagok telepítéséhez. Annak érdekében, hogy telepítse a csomagot a globális környezetet, futtassa a fenti módszerek egyikével Julia. Ezután futtassa a Julia package manager parancsok például `Pkg.add()` telepíteni vagy frissíteni a csomagokat. 
+  Az alapértelmezett Julia-hely az összes felhasználó által olvasható globális környezet. Csak rendszergazdák írhatnak és telepíthetnek globális csomagokat. Ha a csomagokat a globális környezetbe szeretné telepíteni, futtassa a Julia-t az előző módszerek egyikének használatával. Ezután a Julia Package Manager parancsait is futtathatja `Pkg.add()` , például a csomagok telepítéséhez vagy frissítéséhez.
 
 
 **Linux**:
-* Fut a terminálon.
+* Futtatás terminálon:
 
-Nyissa meg a Terminálszolgáltatások és a csak futtatási `julia`. 
-* Egy IDE használatával
+  Nyisson meg egy terminált `julia`, és futtassa a parancsot.
+* Használat az IDE-ben:
 
-Használat `Juno` telepíthető a dsvm-hez és a egy alkalmazás menü parancsikonja elérhető az Julia IDE.
+  Használja `Juno`a (z) és a (z) Julia ide-t a DSVM, és elérhető az **alkalmazás** menüje parancsikonként.
 
-* A Jupyter használatával
+* Használat a Jupyter-ben:
 
-Nyissa meg a Jupyter és a kattintson a `New` gombra az új notebook létrehozásához. Ezen a ponton kiválaszthatja a kernel típus szerint `Julia VERSION` 
+  Nyissa meg a Jupyter, és válassza az **új** lehetőséget egy új jegyzetfüzet létrehozásához. A kernel típusát **Júlia-verzióként**állíthatja be.
 
-* Julia csomagok telepítése
+* Julia-csomagok telepítése:
 
-Julia hely alapértelmezés szerint egy globális környezetben olvasható összes felhasználó. Azonban csak a rendszergazdák is írási és globális csomagok telepítéséhez. Annak érdekében, hogy telepítse a csomagot a globális környezetet, futtassa a fenti módszerek egyikével Julia. Ezután futtassa a Julia package manager parancsok például `Pkg.add()` telepíteni vagy frissíteni a csomagokat. 
+  Az alapértelmezett Julia-hely az összes felhasználó által olvasható globális környezet. Csak rendszergazdák írhatnak és telepíthetnek globális csomagokat. Ha a csomagokat a globális környezetbe szeretné telepíteni, futtassa a Julia-t az előző módszerek egyikének használatával. Ezután a Julia Package Manager parancsait is futtathatja `Pkg.add()` , például a csomagok telepítéséhez vagy frissítéséhez.
 
 ## <a name="other-languages"></a>Más nyelveken
 
-**C#**: Elérhető a Windows és a Visual Studio Community edition keresztül vagy a elérhető egy `Developer Command Prompt for Visual Studio` ahol ugyanúgy futtathatja `csc` parancsot. 
+**C#** : Windows rendszeren érhető el, és a Visual Studio Community Edition vagy a `Developer Command Prompt for Visual Studio`rendszeren elérhető, ahol futtathatja a `csc` parancsot.
 
-**Java**: A dsvm-hez és a készlet az elérési utat a Linux és a Windows kiadását openjdk csomagját érhető el. Beírhatja `javac` vagy `java` parancsot a Windows parancssorból vagy a Java használata Linux bash felületet. 
+**Java**: A OpenJDK a DSVM Linux-és Windows-kiadásaiban is elérhető, és az elérési útra van beállítva. A Java használatához írja be a `javac` vagy `java` a parancsot a parancssorba a Windows vagy a Linux rendszerű bash-rendszerhéjba.
 
-**NODE.js**: node.js érhető el a dsvm-hez és a készlet az elérési utat a Linux és a Windows kiadását. Beírhatja `node` vagy `npm` parancsot a parancssorban a Windows vagy Linux node.js eléréséhez a bash felületet. Windows a Node.js-eszközök Visual Studio-bővítmény biztosít egy grafikus IDE való fejlesztés a node.js-alkalmazás telepítve van. 
+**Node.js**: A Node. js a DSVM Linux-és Windows-kiadásaiban is elérhető, és az elérési útra van beállítva. A Node. js eléréséhez írja be `node` a `npm` vagy a parancsot a parancssorba a Windows rendszerben vagy a Linux bash-rendszerhéjon. Windows rendszeren a Node. js-eszközökhöz készült Visual Studio-bővítmény telepítve van a Node. js-alkalmazás fejlesztéséhez szükséges grafikus IDE létrehozásához.
 
-**F#**: Elérhető a Windows és a Visual Studio Community edition keresztül vagy a elérhető egy `Developer Command Prompt for Visual Studio` ahol ugyanúgy futtathatja `fsc` parancsot. 
-
-
+**F#** : Windows rendszeren érhető el, és a Visual Studio Community Edition vagy egy `Developer Command Prompt for Visual Studio`rendszeren elérhető, ahol futtathatja a `fsc` parancsot.

@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 4/10/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 83bb3d65be71e78e981cc6658c99149019390071
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: e28104e1c795e093fda6457d9f86265312f540be
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59550984"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179682"
 ---
 > [!IMPORTANT]
-> Az Azure Functions Runtime előzetes 2 csak verziót támogatja az Azure Functions futtatókörnyezet 1.x. Ez a funkció előzetes verzióját nem frissítjük a futtatókörnyezeti és a jövőbeli frissítések 2.x bevezetését tervezzük. Ha Azure-on kívül az Azure Functions futtatókörnyezettel futtatására van szüksége, fontolja meg [használatával az ügyfél Linux-tárolóban](../articles/azure-functions/functions-create-function-linux-custom-image.md).
+> Az Azure Functions Runtime előzetes 2 csak verziót támogatja az Azure Functions futtatókörnyezet 1.x. Ez a funkció előzetes verzióját nem frissítjük a futtatókörnyezeti és a jövőbeli frissítések 2.x bevezetését tervezzük. Ha Azure-on kívül az Azure Functions futtatókörnyezettel futtatására van szüksége, fontolja meg [KEDA a Kubernetes az Azure Functions használatával](../articles/azure-functions/functions-kubernetes-keda.md)

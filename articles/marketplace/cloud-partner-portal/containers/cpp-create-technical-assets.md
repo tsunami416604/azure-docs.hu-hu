@@ -1,25 +1,18 @@
 ---
-title: Technikai adategységek létrehozása az Azure-tárolói rendszerképpel |} A Microsoft Docs
+title: Technikai adategységek létrehozása az Azure-tárolói rendszerképpel |} Az Azure Marketplace-en
 description: Hozzon létre egy Azure-tárolóhoz a technikai eszközök.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/01/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 5a7531be73a872d9c088a0bf02a8686f947c220a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: pabutler
+ms.openlocfilehash: c639389fdd0d4624152fcdfa4432be09a18a97bc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59047364"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65794344"
 ---
 # <a name="prepare-your-container-technical-assets"></a>A tároló technikai eszközök előkészítése
 
@@ -60,9 +53,10 @@ Emellett javasoljuk, hogy az elérhető eszközök áttekintése a [Azure fejles
 
 ## <a name="create-the-container-image"></a>Hozza létre a tárolórendszerképet
 
-- Hozzon létre, és konfigurálja a virtuális merevlemez (VHD) a tároló virtuális gép (VM). Ez a VHD operációs rendszert (Windows, Linux és Ubuntu) tároló tartalmazza. További adatlemezek lehet szükség.
-- Konfigurálja a virtuális gép operációs rendszerének, a virtuális gép mérete, a portok megnyitásához és a bármely más csatolt lemez.
-- Telepítse az alkalmazás és más szoftverek, amelyek az ajánlat szükséges. Például: adatbázis-szoftver, harmadik féltől származó szoftverekkel, vagy egy egyéni alkalmazást.
+További információ a következő jelenik meg:
+
+* [Oktatóanyag: Hozzon létre egy tárolórendszerképet az Azure Container Instances szolgáltatásban való üzembe helyezéshez](https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-app)
+* [Oktatóanyag: Hozhat létre és helyezhet üzembe rendszerképeket az Azure Container Registry feladatokat a felhőben](https://docs.microsoft.com/azure/container-registry/container-registry-tutorial-quick-task)
 
 ## <a name="next-steps"></a>További lépések
 

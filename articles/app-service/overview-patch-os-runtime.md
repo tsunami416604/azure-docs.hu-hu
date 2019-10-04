@@ -1,6 +1,6 @@
 ---
-title: Az operációs rendszer és a futtatókörnyezet javítása kiadása ütemben történik – az Azure App Service-ben |} A Microsoft Docs
-description: Ismerteti, hogyan frissítse az Azure App Service-frissítéseket az operációs rendszer és a modulok, és hogyan kezdheti közleményeket.
+title: Operációs rendszer és futtatókörnyezet javításának ritmusa – Azure App Service | Microsoft Docs
+description: Leírja, hogyan Azure App Service frissíti az operációs rendszert és a futtatókörnyezetet, és hogyan kérheti le a frissítési hirdetményeket.
 services: app-service
 documentationcenter: ''
 author: cephalin
@@ -9,63 +9,62 @@ editor: ''
 ms.service: app-service
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 576627c96b19dd3563ab21a5d478b779e4a3ed64
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 3469c4f11a075ceb958e35e4cfc87a78e60b3882
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53731337"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70074133"
 ---
-# <a name="os-and-runtime-patching-in-azure-app-service"></a>Az operációs rendszer és a futtatókörnyezet javítása az Azure App Service-ben
+# <a name="os-and-runtime-patching-in-azure-app-service"></a>Operációs rendszer és futtatókörnyezet javítása Azure App Service
 
-Ez a cikk bemutatja, hogyan tehet szert az operációs rendszer vagy a szoftver bizonyos fájlverzió-információkat [App Service-ben](overview.md). 
+Ebből a cikkből megtudhatja, hogyan szerezheti be a [app Service](overview.md)operációs rendszerével vagy szoftverével kapcsolatos egyes verziókat. 
 
-Az App Service-Platform--szolgáltatásként, ami azt jelenti, hogy az operációs rendszer és az alkalmazást halmozódik az Ön számára; az Azure által felügyelt csak az alkalmazás és az adatok kezeléséhez. Nagyobb mértékű végezheti el az operációs rendszer és alkalmazás stack érhető el, a [Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/). Az adott szem előtt hasznos lehet ennek ellenére meg tudni, hogy további információkat, például az App Service-felhasználóként:
+App Service egy szolgáltatásként szolgáló platform, ami azt jelenti, hogy az operációs rendszer és az alkalmazás veremét az Azure felügyeli. csak az alkalmazás és az adatai kezelhetők. Az operációs rendszer és az alkalmazás verem további felügyelete az [Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/)érhető el. Ennek ellenére hasznos, ha App Service-felhasználó további információkat szeretne megtudni, például:
 
--   Hogyan és mikor operációs rendszer frissítései érvényesek?
--   App Service-ben hogyan van javítani (például a nulladik napi) jelentős biztonsági rések ellen?
--   Mely operációs rendszer és a futtatókörnyezet verziója fut az alkalmazások?
+-   Hogyan és mikor alkalmazza az operációs rendszer frissítéseit?
+-   Hogyan App Service javítani a jelentős biztonsági rések (például a nulla nap) ellen?
+-   Mely operációsrendszer-és futtatókörnyezet-verziók futnak az alkalmazásaiban?
 
-Biztonsági okokból a biztonsági adatok meghatározott tulajdonságairól nincs közzétéve. Azonban a cikk célja, hogy által a folyamat a lehető legnagyobb átláthatóság vonatkozik, és hogyan akkor is naprakész maradhat a biztonsági közlemények és a futtatókörnyezet frissítéseket igény kielégítése érdekében.
+Biztonsági okokból a biztonsági információk bizonyos sajátosságai nincsenek közzétéve. A cikk azonban a folyamat átláthatóságának maximalizálása és a biztonsággal kapcsolatos bejelentések és futtatókörnyezet frissítéseinek naprakészen tartása érdekében igyekszik enyhíteni a problémákat.
 
-## <a name="how-and-when-are-os-updates-applied"></a>Hogyan és mikor operációs rendszer frissítései érvényesek?
+## <a name="how-and-when-are-os-updates-applied"></a>Hogyan és mikor alkalmazza az operációs rendszer frissítéseit?
 
-Az Azure kezeli a fiók alatt két szinttel, a fizikai kiszolgálóknak és a Vendég virtuális gépek (VM), az App Service-erőforrásokat futtató operációs rendszer javításait. Mindkét frissülnek havonta, amelyek igazodnak-e a havi [frissítő kedd](https://technet.microsoft.com/security/bulletins.aspx) ütemezés. Ezeket a frissítéseket a rendszer automatikusan alkalmazza, úgy, hogy garantálja a magas rendelkezésre állású SLA-t az Azure-szolgáltatásokat. 
+Az Azure két szinten kezeli az operációs rendszer javításait, a fizikai kiszolgálókat és a App Service erőforrásokat futtató vendég virtuális gépeket (VM). Mindkettő havonta frissül, amely igazodik a havi [patch keddi](https://technet.microsoft.com/security/bulletins.aspx) időponthoz. A rendszer automatikusan alkalmazza ezeket a frissítéseket, így garantálja az Azure-szolgáltatások magas rendelkezésre állású SLA-t. 
 
-Hogyan telepítse a frissítéseket a részletes információkért lásd: [az App Service-OS frissítés mögött Magic Quadrant Nyelvszakértőinkből](https://blogs.msdn.microsoft.com/appserviceteam/2018/01/18/demystifying-the-magic-behind-app-service-os-updates/).
+A frissítések alkalmazásával kapcsolatos részletes információkért lásd: [a Demystifying app Service operációs rendszer frissítései mögött](https://azure.github.io/AppService/2018/01/18/Demystifying-the-magic-behind-App-Service-OS-updates.html).
 
-## <a name="how-does-azure-deal-with-significant-vulnerabilities"></a>Hogyan foglalkozik az Azure jelentős biztonsági rések?
+## <a name="how-does-azure-deal-with-significant-vulnerabilities"></a>Hogyan foglalkozik az Azure a jelentős sebezhetőségekkel?
 
-Ha súlyos biztonsági réseket írja elő az azonnali javításokat, mint például [nulladik napi biztonsági rések](https://wikipedia.org/wiki/Zero-day_(computing)), a fontos frissítések kezelése – eseti alapon.
+Ha a súlyos biztonsági rések azonnali javítást igényelnek, például a [zéró napi biztonsági réseket](https://wikipedia.org/wiki/Zero-day_(computing)), a magas prioritású frissítéseket a rendszer eseti alapon kezeli.
 
-Legyen naprakész a kritikus fontosságú biztonsági értesítéseket az Azure-ban funkcionáló [Azure Security Blog](https://azure.microsoft.com/blog/topics/security/). 
+Az Azure [Security blogon](https://azure.microsoft.com/blog/topics/security/)meglátogatva naprakészen tarthatja a kritikus biztonsági közleményeket az Azure-ban. 
 
-## <a name="when-are-supported-language-runtimes-updated-added-or-deprecated"></a>Amikor támogatott nyelvi futtatókörnyezeteket frissítve, hozzáadva, vagy elavult?
+## <a name="when-are-supported-language-runtimes-updated-added-or-deprecated"></a>Mikor frissülnek a támogatott nyelvi futtatókörnyezetek, hogyan lettek hozzáadva vagy elavultak?
 
-Új stabil verzióiban támogatott nyelvi futtatókörnyezetet (nagyobb, kisebb vagy javítások) rendszeresen kerülnek az App Service-példányt. Egyes frissítések írja felül a meglévő telepítés, míg mások párhuzamosan lesz a meglévő verzió van telepítve. Felülírás telepítés azt jelenti, hogy az alkalmazás automatikusan futtatja a frissített runtime. Egy egymás melletti telepítés azt jelenti, hogy manuálisan át kell telepítenie az alkalmazást, hogy egy új modul verziót. További információkért tekintse meg a struktúrát.
+A támogatott nyelvi futtatókörnyezetek (Major, Minor vagy patch) új stabil verzióit a rendszer rendszeresen hozzáadja App Service példányokhoz. Egyes frissítések felülírják a meglévő telepítést, míg másokat a meglévő verziókkal párhuzamosan telepítenek. A felülírásos telepítés azt jelenti, hogy az alkalmazás automatikusan a frissített futtatókörnyezeten fut. A párhuzamos telepítés azt jelenti, hogy az új futtatókörnyezet kihasználása érdekében manuálisan kell áttelepítenie az alkalmazást. További információ: az alszakaszok egyike.
 
-Futásidejű frissítések és kivonások bejelentett itt:
+A futtatókörnyezet frissítései és az elavulás itt jelent meg:
 
 - https://azure.microsoft.com/updates/?product=app-service 
 - https://github.com/Azure/app-service-announcements/issues
 
 > [!NOTE] 
-> Itt információkat nyelvi futtatókörnyezeteket App Service-alkalmazások beépített vonatkozik. Egy egyéni modult feltölti az App Service-ben például változatlan marad, ha manuálisan frissíti.
+> Az itt található információk a App Service alkalmazásba beépített nyelvi futtatókörnyezetekre vonatkoznak. A App Servicera feltöltött egyéni futtatókörnyezet például változatlan marad, hacsak nem frissíti manuálisan.
 >
 >
 
-### <a name="new-patch-updates"></a>Új patch-frissítések
+### <a name="new-patch-updates"></a>Új javítási frissítések
 
-Javítás frissítések .NET, PHP, Java SDK-t vagy Tomcat vagy Jetty-verziót, a rendszer automatikusan alkalmazza a meglévő telepítés az új verzió felülírásával. NODE.js-javítás frissítések telepítése párhuzamosan lesz a meglévő verzió (hasonlóan a fő- és alverzió verzió a következő szakaszban). Új Python-javítás verziók keresztül manuálisan is telepíthető [webhelybővítményekkel](https://www.siteextensions.net/packages?q=Tags%3A%22python%22)), és a beépített Python telepítését.
+A .NET, a PHP, a Java SDK vagy a Tomcat/Jetty verzióhoz tartozó javítások frissítései automatikusan érvénybe lépnek, ha felülírja a meglévő telepítést az új verzióval. A Node. js-javítások frissítései a meglévő verziókkal együtt települnek (a következő szakaszban a fő-és alverzióhoz hasonlóan). Az új Python-javítási verziók manuálisan is telepíthetők a [hely bővítményein](https://www.siteextensions.net/packages?q=Tags%3A%22python%22)keresztül, a beépített Python-telepítésekkel párhuzamosan.
 
-### <a name="new-major-and-minor-versions"></a>Új fő- és alverzió verziók
+### <a name="new-major-and-minor-versions"></a>Új fő-és alverziók
 
-Új nagyobb vagy kisebb verzió hozzáadásakor a létező verziókat párhuzamosan lesz telepítve van. Az alkalmazás manuálisan frissítheti az új verzióra. Ha a futtatókörnyezet verziójának egy konfigurációs fájlban konfigurált (például `web.config` és `package.json`), ugyanazzal a módszerrel frissíteni szeretne. Ha egy App Service-ben használt beállítást konfigurálja a futtatókörnyezet verziója, módosíthatja a a [az Azure portal](https://portal.azure.com) vagy futtatja egy [Azure CLI-vel](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) parancsot a [Cloud Shell](../cloud-shell/overview.md), mint a következő példákban látható:
+Új fő vagy másodlagos verzió hozzáadásakor a rendszer a meglévő verziókkal együtt telepíti. Az alkalmazást manuálisan is frissítheti az új verzióra. Ha egy konfigurációs fájlban (például `web.config` és `package.json`) konfigurálta a futásidejű verziót, ugyanezt a metódust kell frissítenie. Ha App Service beállítást használt a futtatókörnyezet verziójának konfigurálásához, akkor azt a Azure Portalban vagy egy [](https://portal.azure.com) [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) -parancs futtatásával módosíthatja a [Cloud Shell](../cloud-shell/overview.md), ahogy az alábbi példákban is látható:
 
 ```azurecli-interactive
 az webapp config set --net-framework-version v4.7 --resource-group <groupname> --name <appname>
@@ -75,31 +74,31 @@ az webapp config set --python-version 3.4 --resource-group <groupname> --name <a
 az webapp config set --java-version 1.8 --java-container Tomcat --java-container-version 9.0 --resource-group <groupname> --name <appname>
 ```
 
-### <a name="deprecated-versions"></a>Elavult verzió  
+### <a name="deprecated-versions"></a>Elavult verziók  
 
-Ha egy régebbi verziója elavult, így, megtervezheti ennek megfelelően a futtatókörnyezet frissítése az Eltávolítás dátuma jelentettük be. 
+Ha egy régebbi verzió elavult, a rendszer az Eltávolítás dátumát is bejelenti, hogy a futtatókörnyezet verziófrissítésének megtervezése megfelelő legyen. 
 
-## <a name="how-can-i-query-os-and-runtime-update-status-on-my-instances"></a>Hogyan lehet az operációs rendszer és a futtatókörnyezet frissítési állapot lekérdezése saját példányokon?  
+## <a name="how-can-i-query-os-and-runtime-update-status-on-my-instances"></a>Hogyan lehet lekérdezni az operációs rendszer és a futtatókörnyezet frissítési állapotát a példányokon?  
 
-Zárolt operációs rendszer kritikus fontosságú információkhoz le a hozzáférést (lásd: [Azure App Service-ben az operációs rendszer funkcionalitása](operating-system-functionality.md)), a [Kudu konzol](https://github.com/projectkudu/kudu/wiki/Kudu-console) lehetővé teszi az App Service-példányhoz az operációs rendszer kapcsolatos lekérdezése verzió és a futtatókörnyezet-verzió. 
+Habár a kritikus operációsrendszer-információk le vannak tiltva a hozzáféréstől (lásd: [operációs rendszer funkciójának Azure app Service](operating-system-functionality.md)), a [kudu-konzol](https://github.com/projectkudu/kudu/wiki/Kudu-console) lehetővé teszi, hogy lekérdezze a app Service példányt az operációsrendszer-verzióra és a futásidejű verziókra vonatkozóan. 
 
-A következő táblázatban látható a verziók Windows és a nyelvi futtatókörnyezetet, hogy futnak az alkalmazások hogyan:
+Az alábbi táblázat bemutatja, hogyan használhatók a Windows és az alkalmazásokat futtató nyelvi futtatókörnyezetek verziói:
 
-| Információ | Hol található | 
+| Information | Hol található | 
 |-|-|
-| Windows-verzió | Lásd: `https://<appname>.scm.azurewebsites.net/Env.cshtml` (a rendszer-információ) |
-| .NET-verzió | A `https://<appname>.scm.azurewebsites.net/DebugConsole`, futtassa a következő parancsot a parancssorban: <br>`powershell -command "gci 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Net Framework Setup\NDP\CDF'"` |
-| .NET core-verzió | A `https://<appname>.scm.azurewebsites.net/DebugConsole`, futtassa a következő parancsot a parancssorban: <br> `dotnet --version` |
-| PHP-verzió | A `https://<appname>.scm.azurewebsites.net/DebugConsole`, futtassa a következő parancsot a parancssorban: <br> `php --version` |
-| Alapértelmezett Node.js verzió | Az a [Cloud Shell](../cloud-shell/overview.md), futtassa a következő parancsot: <br> `az webapp config appsettings list --resource-group <groupname> --name <appname> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION']"` |
-| Python-verzió | A `https://<appname>.scm.azurewebsites.net/DebugConsole`, futtassa a következő parancsot a parancssorban: <br> `python --version` |  
+| Windows-verzió | Lásd `https://<appname>.scm.azurewebsites.net/Env.cshtml` : (a Rendszerinformáció területen) |
+| .NET-verzió | `https://<appname>.scm.azurewebsites.net/DebugConsole`A alkalmazásban futtassa a következő parancsot a parancssorban: <br>`powershell -command "gci 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Net Framework Setup\NDP\CDF'"` |
+| .NET Core-verzió | `https://<appname>.scm.azurewebsites.net/DebugConsole`A alkalmazásban futtassa a következő parancsot a parancssorban: <br> `dotnet --version` |
+| PHP-verzió | `https://<appname>.scm.azurewebsites.net/DebugConsole`A alkalmazásban futtassa a következő parancsot a parancssorban: <br> `php --version` |
+| Alapértelmezett Node. js-verzió | A [Cloud Shell](../cloud-shell/overview.md)futtassa a következő parancsot: <br> `az webapp config appsettings list --resource-group <groupname> --name <appname> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION']"` |
+| Python-verzió | `https://<appname>.scm.azurewebsites.net/DebugConsole`A alkalmazásban futtassa a következő parancsot a parancssorban: <br> `python --version` |  
 
 > [!NOTE]  
-> Beállításjegyzék-helyhez való hozzáférés `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages`, ahol információkat ["KB" javítások](https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins) tárolódik, zárolva van.
+> Hozzáférés a beállításjegyzék helyéhez `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages`, ahol a ["kb"](https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins) -os javításokat tartalmazó információk tárolódnak, zárolva vannak.
 >
 >
 
-## <a name="more-resources"></a>További erőforrások
+## <a name="more-resources"></a>További források
 
-[Adatvédelmi központ: Biztonsági](https://www.microsoft.com/en-us/trustcenter/security)  
-[64 bites ASP.NET Core az Azure App Service](https://gist.github.com/glennc/e705cd85c9680d6a8f1bdb62099c7ac7)
+[Adatvédelmi központ: Biztonság](https://www.microsoft.com/en-us/trustcenter/security)  
+[64 bites ASP.NET Core Azure App Service](https://gist.github.com/glennc/e705cd85c9680d6a8f1bdb62099c7ac7)

@@ -1,6 +1,6 @@
 ---
 title: Biztonsági adatok (előzetes verzió) áttekintése – Azure Active Directory | Microsoft Docs
-description: A biztonsági adatok területre, többek között a szolgáltatással kapcsolatos más cikkek hivatkozásainak magas szintű áttekintését.
+description: A biztonsági adatok oldaláról és szolgáltatásáról szóló cikkekre mutató hivatkozásokat tartalmazó lista.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -9,34 +9,37 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: overview
-ms.date: 02/11/2019
+ms.date: 05/08/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 234c7244f438926f43ddf31234a38c9034a6ca52
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: d981ad0f02e9cef31a01a9d407de22cf63352c01
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453229"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382209"
 ---
 # <a name="security-info-preview-overview"></a>Biztonsági adatok (előzetes verzió) áttekintése
-Beállíthatja a kétlépéses ellenőrzés és a jelszó-visszaállítást a biztonsági adatait a **biztonsági adatok** lapot. Is a biztonsági adatok szerkesztése és az oldal az alapértelmezett mód megváltoztatása
+
+A **biztonsági adatok** oldal segítségével beállíthatja a kétlépéses ellenőrzési módszereket és a jelszó-visszaállítási információkat. Emellett segít a személyes biztonsági adatok és az alapértelmezett ellenőrzési módszer frissítésében.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
 >[!Important]
 >Ezek az anyagok felhasználók számára készültek. Amennyiben Ön rendszergazda, az Azure Active Directory- (Azure AD-) környezet beállításával és kezelésével kapcsolatosan további információt az [Azure Active Directory dokumentációjában](https://docs.microsoft.com/azure/active-directory) talál.
 
-## <a name="in-this-section"></a>Ebben a szakaszban
-Talál további információt ad hozzá, frissítése, és a törlés, biztonsági adatait, a módszer alapján szeretné használni, az alábbi cikkeket.
+## <a name="security-info-related-articles"></a>Biztonsági információk – kapcsolódó cikkek
 
-|Cikk |Leírás |
-|------|------------|
-|[Biztonsági adatok beállítása a bejelentkezés során](security-info-setup-signin.md)|Ismerteti, hogyan állítható be biztonsági adatait, ha a bejelentkezési oldalról kér.|
-|[Állítsa be a biztonsági információkat kelljen egy hitelesítő alkalmazást](security-info-setup-auth-app.md)|Ismerteti, hogyan állítható be a biztonsági adatait annak érdekében, hogy a Microsoft Authenticator alkalmazás használata legyen a módszer.|
-|[Állítsa be a biztonsági információkat kelljen szöveges üzenetküldés](security-info-setup-text-msg.md)|Ismerteti, hogyan állíthatja be a biztonsági adatok szöveges üzenetben módszerként használni.|
-|[A biztonsági adatok telefonhívással történő hitelesítésének beállítása](security-info-setup-phone-number.md)| Leírja, hogyan állíthatja be a telefonszáma használatát módszerként.|
-|[A biztonsági adatok e-mailben történő hitelesítésének beállítása](security-info-setup-email.md)|Leírja, hogyan állíthatja be az e-mail-címét új jelszó kéréséhez.|
-|[A biztonsági adatok előre meghatározott biztonsági kérdésekkel történő hitelesítésének beállítása](security-info-setup-questions.md)|Leírja, hogyan használhat biztonsági kérdéseket új jelszó kéréséhez.|
-|[Alkalmazásjelszavak kezelése](security-info-app-passwords.md)|Leírja, hogyan állíthat be alkalmazásjelszavakat biztonsági adatok használatával.|
-|[A bejelentkezés menete](user-help-sign-in.md)|A megadott hitelesítési módszerrel való bejelentkezés menetét írja le.|
+A biztonsági adatok hozzáadásával, frissítésével és törlésével kapcsolatos részletes információkat és útmutatást a következő cikkekben találja (a használni kívánt módszer alapján):
+
+| Cikk | Leírás |
+| ------ | ------------ |
+| [Biztonsági módszer hozzáadása a bejelentkezési oldalon megjelenő üzenetből](security-info-setup-signin.md) | Útmutató a biztonsági adatok beállításához, amikor a rendszer kéri a bejelentkezési oldalát. Ez a kérdés csak akkor jelenik meg, ha még nem állította be a szervezete által megkövetelt biztonsági adatokat. Ha nem látja a kérdést, a táblázat többi cikkének használatával továbbra is módosíthatja és hozzáadhatja az ellenőrzési módszereket. |
+| [A Microsoft Authenticator alkalmazás hozzáadása ellenőrzési módszerként](security-info-setup-auth-app.md) | Útmutatás az Microsoft Authenticator alkalmazás ellenőrzési módszerként való beállításához. |
+| [SMS-üzenetek hozzáadása ellenőrzési módszerként](security-info-setup-text-msg.md) | Útmutatás a szöveges üzenetküldés ellenőrzési módszerként való beállításához. |
+| [Telefonhívások hozzáadása ellenőrzési módszerként](security-info-setup-phone-number.md) | Útmutatás a telefonszám ellenőrzési módszerként való beállításához. |
+| [Biztonsági kulcs hozzáadása ellenőrzési módszerként](security-info-setup-security-key.md) | Útmutatás a Microsoft-kompatibilis biztonsági kulcsok ellenőrzési módszerként való regisztrálásához. |
+| [E-mail-cím hozzáadása a saját jelszavának alaphelyzetbe állításához](security-info-setup-email.md) | Útmutató az e-mail-cím hozzáadásához, így visszaállíthatja a saját jelszavát. |
+| [Biztonsági kérdések hozzáadása a saját jelszavának alaphelyzetbe állításához](security-info-setup-questions.md) | Az előre definiált biztonsági kérdések hozzáadására vonatkozó utasítások, így visszaállíthatja a saját jelszavát. |
+| [Alkalmazások jelszavainak kezelése olyan alkalmazásokhoz, amelyek nem támogatják a kétlépéses ellenőrzést](security-info-app-passwords.md) | Útmutató az alkalmazások jelszavainak létrehozásához olyan alkalmazásokhoz, amelyek nem támogatják a kétlépéses ellenőrzést használó szervezetekben a kétlépéses ellenőrzést. |
+| [A bejelentkezés menete](user-help-sign-in.md) |A megadott hitelesítési módszerrel való bejelentkezést ismerteti. |

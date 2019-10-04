@@ -1,6 +1,6 @@
 ---
-title: Adatok betöltési idő jelentkezzen be az Azure Monitor |} A Microsoft Docs
-description: Ismerteti a különböző tényező befolyásolja az Azure Monitor log-adatok gyűjtése a késés.
+title: Adatfeldolgozási idő naplózása Azure Monitorban | Microsoft Docs
+description: Ismerteti azokat a különböző tényezőket, amelyek befolyásolják a naplózási adatok Azure Monitorban való gyűjtésének késését.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -10,122 +10,135 @@ ms.service: log-analytics
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/24/2019
+ms.date: 07/18/2019
 ms.author: bwren
-ms.openlocfilehash: ba9a0ab775e062f21a058b537e289fe3ea2b40bb
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 5947c4c28736f8488ea0e48941214df42c6af72a
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56000046"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639492"
 ---
-# <a name="log-data-ingestion-time-in-azure-monitor"></a>Naplózási adatok betöltési idő, az Azure monitorban
-Az Azure Monitor egy nagy méretű szolgáltatás, amely több ezer ügyfelünk egyre bővülő ütemben havonta terabájtnyi adatot küldő szolgál. Vannak gyakran kérdések mennyi időt vesz igénybe a naplózási adatokat a begyűjtésük után lesz elérhető. Ez a cikk ismerteti a különböző tényező befolyásolja, a késés.
+# <a name="log-data-ingestion-time-in-azure-monitor"></a>Adatfeldolgozási idő naplózása Azure Monitor
+A Azure Monitor egy nagy léptékű adatszolgáltatás, amely több ezer ügyfelet szolgál ki havonta több, mint havi terabájt adatküldéssel. A naplózási adatok begyűjtése után elérhetővé tételével kapcsolatban gyakran merül fel kérdések. Ez a cikk a késést befolyásoló különféle tényezőket ismerteti.
 
-## <a name="typical-latency"></a>Átlagos késés
-Késés a létrehozott adatok a figyelt rendszeren és az idő, hogy előre elemezhetők az Azure Monitor hivatkozik. A Teljesítménynapló-adatok betöltését jellemző várakozási 2 és 5 perc között van. A megadott késése az adott adatok számos tényezőtől alábbi leírásban függően változhat.
+## <a name="typical-latency"></a>Jellemző késés
+A késés azt az időpontot jelenti, amikor az adatgyűjtés a figyelt rendszeren történik, valamint a Azure Monitor elemzéshez elérhetővé tételének időpontja. A naplózási adatgyűjtési gyakoriság átlagos késése 2 és 5 perc között lehet. Az egyes adatok késése az alábbiakban ismertetett különböző tényezőktől függően változhat.
 
 
-## <a name="factors-affecting-latency"></a>Késés befolyásoló tényezők
-A teljes feldolgozási idő egy adott adatkészlet is kell bontani a következő magas szintű területeken. 
+## <a name="factors-affecting-latency"></a>Késést befolyásoló tényezők
+Egy adott adathalmaz teljes betöltési ideje a következő magas szintű területekre osztható fel. 
 
-- Az ügynök idő – Fedezze fel az esemény, gyűjteni, és majd küldje el az Azure Monitor Adatbetöltési pont, egy naplórekord ideje. A legtöbb esetben ez a folyamat egy ügynök kezeli.
-- Folyamat idő – az idő a betöltési folyamat naplórekord feldolgozásához. Ez magában foglalja az esemény tulajdonságainak elemzés és a lehetséges hozzáadni számított információkat.
-- Indexelési idő – egy naplórekord Azure Monitor big data store-ba, hogy az idő.
+- Ügynök időpontja – az esemény felderítésének ideje, összegyűjtése, majd elküldése Azure Monitor betöltési pontnak a naplófájlba. A legtöbb esetben ezt a folyamatot egy ügynök kezeli.
+- Folyamatidő – Az az idő, amely alatt a feldolgozási folyamat feldolgozza a naplóbejegyzést. Ez magában foglalja az esemény tulajdonságainak elemzését és a számított információk esetleges hozzáadását.
+- Indexelési idő – a naplófájl betöltésére fordított idő Azure Monitor big data-tárolóba.
 
-A különböző késést, a folyamat részletei az alábbiakban tekintheti át.
+Az alábbiakban ismertetjük az ebben a folyamatban bevezetett különböző késések részleteit.
 
-### <a name="agent-collection-latency"></a>Az ügynök gyűjtemény késés
-Az ügynökök és felügyeleti megoldásokat különböző stratégiák segítségével adatokat gyűjteni a virtuális gép, amelyek befolyásolhatják a várakozási. Néhány konkrét példa a következők:
+### <a name="agent-collection-latency"></a>Ügynök-gyűjtés késése
+Az ügynökök és a felügyeleti megoldások különböző stratégiák használatával gyűjtenek adatokat egy virtuális gépről, ami hatással lehet a késésre. Néhány konkrét példa az alábbiakat tartalmazza:
 
-- Windows-események, a syslog-események és a teljesítmény-mérőszámokat a rendszer azonnal gyűjti. Linuxos teljesítményszámlálókkal, 30 másodperces időközönként kérdezi le azt.
-- IIS-naplók és egyéni naplók összegyűjtése után időbélyegzőik változik. Az IIS-naplók, ez befolyásolja a [átvitel ütemezése az IIS-kiszolgálón konfigurált](data-sources-iis-logs.md). 
-- Active Directory replikáció-megoldás a kiértékelés öt naponta, hajt végre, amíg az Active Directory Assessment megoldás hajt végre az Active Directory infrastruktúrával heti értékelése. Az ügynök összegyűjti ezeket a naplókat, csak ha értékelés befejeződött.
+- A Windows-események, a syslog-események és a teljesítmény-mérőszámok azonnal összegyűjthetők. A Linux-teljesítményszámlálók 30 másodperces időközönként lettek lekérdezve.
+- Az IIS-naplók és az egyéni naplók gyűjtése az időbélyeg módosítása után történik. IIS-naplók esetén ezt az [IIS-kiszolgálón konfigurált rollover ütemezés](data-sources-iis-logs.md)befolyásolja. 
+- Active Directory replikációs megoldás ötévente végzi el az értékelést, míg a Active Directory Assessment megoldás hetente értékeli az Active Directory-infrastruktúrát. Az ügynök csak az értékelés befejezésekor fogja gyűjteni ezeket a naplókat.
 
-### <a name="agent-upload-frequency"></a>Az ügynök feltöltési gyakoriságának
-Annak érdekében, hogy a Log Analytics-ügynököket az egyszerűsített, az ügynök naplóinak puffereli, és rendszeres időközönként feltölti őket az Azure Monitor. Töltse fel gyakorisága 30 másodperc és az adatok típusától függően 2 perc közé esik. A legtöbb adatfeltöltés 1 perc alatt. Hálózati körülmények hátrányosan befolyásolhatják a késést az adatok az Azure Monitor Adatbetöltési pont eléréséhez.
+### <a name="agent-upload-frequency"></a>Ügynök feltöltésének gyakorisága
+Annak biztosítása érdekében, hogy az Log Analytics-ügynök könnyű legyen, az ügynök pufferei naplózzák és rendszeresen feltöltik őket a Azure Monitorba. A feltöltés gyakorisága 30 másodperc és 2 perc között változik az adatok típusától függően. A legtöbb adat 1 percenként van feltöltve. Előfordulhat, hogy a hálózati feltételek negatív hatással vannak az adatmennyiség késésére Azure Monitor a betöltési pont eléréséhez.
 
-### <a name="azure-activity-logs-diagnostic-logs-and-metrics"></a>Azure-Tevékenységnaplók, diagnosztikai naplók és mérőszámok
-Az Azure data ad hozzá a Log Analytics Adatbetöltési pont feldolgozási címen elérhető legyen, további időt:
+### <a name="azure-activity-logs-diagnostic-logs-and-metrics"></a>Azure-tevékenységek naplói, diagnosztikai naplók és metrikák
+Az Azure-beli adatmennyiség további időt vehet igénybe, hogy a feldolgozás során Log Analytics betöltési ponton elérhetővé váljon:
 
-- Diagnosztikai naplók adatait az Azure-szolgáltatás függően a 2-15 percet igénybe vehet. Tekintse meg a [az alábbi lekérdezés](#checking-ingestion-time) megvizsgálhatja a késés, a környezetben
-- Az Azure platform metrikák kell küldeni a Log Analytics Adatbetöltési pont 3 percet igénybe vehet.
-- Tevékenységnapló adatainak kell küldeni a Log Analytics Adatbetöltési pont körülbelül 10 – 15 percig fog tartani.
+- A diagnosztikai naplókból származó adatok az Azure-szolgáltatástól függően 2-15 percet vesznek igénybe. Tekintse meg az [alábbi lekérdezést](#checking-ingestion-time) a késésnek a környezetben való vizsgálatához
+- Az Azure platform metrikái 3 percet vesznek igénybe Log Analytics betöltési pontra.
+- A tevékenység naplójának adatait a rendszer körülbelül 10-15 percet vesz igénybe Log Analytics betöltési pontra.
 
-Adatbetöltési pont érhető el, miután adatok lekérdezése elérhető további 2 – 5 percet vesz igénybe.
+Ha a betöltési ponton elérhető, az adatmennyiség további 2-5 percet vesz igénybe a lekérdezéshez.
 
-### <a name="management-solutions-collection"></a>Felügyeleti megoldások gyűjtemény
-Egyes megoldások ne gyűjtsön adataikat az ügynök, és előfordulhat, hogy a módszert egy gyűjtemény, amely további késleltetést. Egyes megoldások adatgyűjtést rendszeres időközönként közel valós idejű gyűjtemény kísérlet nélkül. Példák a következők:
+### <a name="management-solutions-collection"></a>Felügyeleti megoldások gyűjteménye
+Egyes megoldások nem gyűjtik az adatokat az ügynöktől, és olyan gyűjteményi módszert használnak, amely további késleltetést mutat be. Egyes megoldások rendszeres időközönként gyűjtenek adatokat a közel valós idejű gyűjtés megkísérlése nélkül. Bizonyos példák a következők:
 
-- Az Office 365-megoldás tevékenységeket tartalmazó naplók az Office 365 felügyeleti tevékenység API, amely jelenleg nem biztosít semmilyen közel valós idejű késési garancia használatával kérdezi le.
-- Windows Analytics-megoldások (például frissítési megfelelőség szempontjából) adatait gyűjti a megoldás a napi gyakorisággal.
+- Az Office 365-megoldás a tevékenységek naplóit az Office 365 felügyeleti tevékenység API használatával kérdezi le, amely jelenleg nem biztosít közel valós idejű késési garanciát.
+- A megoldás napi gyakorisággal gyűjti össze a Windows Analytics-megoldásokat (Update Compliance például).
 
-Tekintse meg az egyes megoldások annak gyűjtési gyakoriságát dokumentációját.
+A gyűjtemény gyakoriságának meghatározásához tekintse meg az egyes megoldások dokumentációját.
 
-### <a name="pipeline-process-time"></a>Pipeline-feldolgozási idő
-Ha a rekordok naplózása az Azure Monitor folyamat be vannak töltve, íródtak egy ideiglenes tárolóra annak biztosítása érdekében a bérlők elszigetelésére, és győződjön meg arról, hogy az adatok nem vesznek el. Ez a folyamat általában 5 – 15 másodperc hozzáadja. Egyes felügyeleti megoldások megvalósítása nehezebb algoritmusokat összesített adatokat, és hozzájut, az adatok a streamelés a. Például a hálózati teljesítmény figyelése összesíti a bejövő adatok keresztül 3 perces időközönként, hatékonyan hozzáadása a 3 perces késéssel. Egy másik folyamat, amely hozzáadja a késés az a, amely kezeli az egyéni naplókat. Bizonyos esetekben ez a folyamat néhány percet a késés előfordulhat, hogy hozzá-fájlokból az ügynök által gyűjtött naplók.
+### <a name="pipeline-process-time"></a>Folyamat – feldolgozási idő
+Miután betöltötte a naplóbejegyzések betöltését a Azure Monitori folyamatba (ahogy az a [_TimeReceived](log-standard-properties.md#_timereceived) tulajdonságban van meghatározva), a bérlők elkülönítésének biztosításához, valamint az adatok nem elvesztésének megtételéhez a rendszer az ideiglenes tárhelyre írja őket. Ez a folyamat általában 5-15 másodpercet vesz igénybe. Egyes felügyeleti megoldások súlyosabb algoritmusokat implementálnak az adatösszesítéshez és az elemzések kinyeréséhez, mivel az adatátviteli szolgáltatás a ben. A hálózati teljesítmény figyelése például 3 perces intervallumokban összesíti a bejövő adatokat, ami gyakorlatilag 3 perces késéssel jár. Egy másik folyamat, amely a késést adja meg, az egyéni naplókat kezelő folyamat. Bizonyos esetekben előfordulhat, hogy a folyamat néhány percet vesz igénybe az ügynök által a fájlokból gyűjtött naplók számára.
 
-### <a name="new-custom-data-types-provisioning"></a>Kiépítés új egyéni adattípusok
-Az egyéni adatokat egy új típusú létrehozásakor egy [egyéni napló](data-sources-custom-logs.md) vagy a [adatgyűjtő API](data-collector-api.md), a rendszer létrehoz egy dedikált storage-tárolóba. Ez az egy egyszeri terhelést, amely csak az első megjelenítési módja, ez az adattípus megy végbe.
+### <a name="new-custom-data-types-provisioning"></a>Új egyéni adattípusok kiépítés
+Amikor új egyéni adattípust hoz létre egy [Egyéni naplóból](data-sources-custom-logs.md) vagy az adatgyűjtő [API](data-collector-api.md)-ból, a rendszer létrehoz egy dedikált tároló-tárolót. Ez egy egyszeri terhelés, amely csak az adattípus első megjelenésekor fordul elő.
 
-### <a name="surge-protection"></a>Védelem
-Azure monitor a legmagasabb prioritást, hogy gondoskodjon arról, hogy nincsenek felhasználói adatok elvesznek, így a rendszer az adatok megnövekedésénél beépített védelemmel rendelkezik. Ez magában foglalja a pufferek ellenőrizze, hogy még terhelés környezetéről, a rendszer fog tartani működik. Normál terhelés alatt ezek a vezérlők hozzáadása a kevesebb mint egy percet, de a feltételek és a hibák, lehetőség van felvenni jelentős mennyiségű időt, miközben biztosítja az adatok biztonságos-e.
+### <a name="surge-protection"></a>Túlfeszültség-védelem
+Azure Monitor elsődleges prioritása annak biztosítása, hogy az ügyféladatok ne legyenek elveszve, így a rendszer beépített védelmet biztosít az adathullámok számára. Ilyenek például a pufferek, amelyekkel biztosítható, hogy a rendszer még az óriási terhelés mellett is működőképes maradjon. A normál betöltés alatt ezek a vezérlőelemek kevesebb mint egy percet vesznek igénybe, de szélsőséges körülmények között és meghibásodás esetén jelentős időt vehetnek igénybe, miközben az adat biztonságos.
 
 ### <a name="indexing-time"></a>Indexelési idő
-Nincs közötti analytics és a fejlett keresési képességek figyelésekor az adatokhoz való azonnali hozzáférés biztosítása minden big data platform beépített egyensúlyt. Az Azure Monitor lehetővé teszi nagy teljesítményű lekérdezések futtatása több milliárd rekordon, és néhány másodpercen belül eredményeinek beolvasása. Ez lehetséges legyen, mivel az infrastruktúra során az Adatbetöltési jelentősen alakítja át az adatokat, és tárolja azokat az egyedi kompakt struktúrák. A rendszer puffereli az adatokat, amíg elegendő az, hogy nem áll rendelkezésre ezen szerkezetek létrehozásához. Ez a keresési eredmények között megjelenik a naplórekord előtt kell elvégezni.
+Az elemzések és a speciális keresési funkciók között minden big data platformhoz beépített egyenleg áll rendelkezésre, amely nem biztosít azonnali hozzáférést az adateléréshez. Azure Monitor lehetővé teszi, hogy több milliárd rekordon futtasson hatékony lekérdezéseket, és néhány másodpercen belül eredményeket kapjon. Ez azért lehetséges, mert az infrastruktúra a betöltés során jelentősen átalakítja az adatmennyiséget, és az egyedi kompakt struktúrákban tárolja azt. A rendszer csak akkor távolítja el az adatmennyiséget, ha ahhoz elég, hogy létrehozza ezeket a struktúrákat. Ezt csak akkor kell elvégezni, ha a log rekord megjelenik a keresési eredmények között.
 
-Ez a folyamat jelenleg körülbelül 5 percet vesz igénybe esetén adatok mennyisége alacsony, de kevesebb idő magasabb adatok alapján. Ez a megszokottnál counterintuitive, de ez a folyamat lehetővé teszi, hogy a késés nagy mennyiségű éles számítási feladatokra optimalizálása.
+Ez a folyamat jelenleg körülbelül 5 percet vesz igénybe, ha kevés az adatmennyiség, de kevesebb idő van a magasabb adatforgalomra. Ez megszokás tűnik, de ez a folyamat lehetővé teszi a késések optimalizálását a nagy mennyiségű éles munkaterhelések esetében.
 
 
 
 ## <a name="checking-ingestion-time"></a>Betöltési idő ellenőrzése
-Betöltési idő eltérőek lehetnek a különböző körülmények között különböző erőforrásokat. Napló lekérdezések segítségével azonosíthatja a környezet konkrét viselkedését.
+A betöltési idő különböző körülmények között eltérő lehet. A naplózási lekérdezések segítségével azonosíthatja a környezet adott viselkedését. A következő táblázat azt ismerteti, hogyan határozható meg a rekord különböző időpontja, amikor a rendszer létrehozta és elküldje Azure Monitor.
 
-### <a name="ingestion-latency-delays"></a>Adatbetöltési késés késések
-Egy adott rekord késését eredményét összehasonlításával mérni tudja az [ingestion_time()](/azure/kusto/query/ingestiontimefunction) függvény a _TimeGenerated_ mező. Ezeket az adatokat a különböző összesítések használható található Adatbetöltési késés működését. Vizsgálja meg az egyes PERCENTILIS visszaadása a betöltési időt nyerhet a nagy mennyiségű adat. 
+| Lépés | Tulajdonság vagy függvény | Megjegyzések |
+|:---|:---|:---|
+| Rekord létrehozva az adatforrásban | [TimeGenerated](log-standard-properties.md#timegenerated-and-timestamp) <br>Ha az adatforrás nem állítja be ezt az értéket, akkor a _TimeReceived megegyező időpontra lesz beállítva. |
+| Azure Monitor betöltési végpont által fogadott rekord | [_TimeReceived](log-standard-properties.md#_timereceived) | |
+| A munkaterületen tárolt és a lekérdezésekhez elérhető rekord | [ingestion_time()](/azure/kusto/query/ingestiontimefunction) | |
 
-Például a következő lekérdezés bemutatják, hogy mely számítógépek volt a legnagyobb feldolgozási idő az aktuális nap során: 
+### <a name="ingestion-latency-delays"></a>Betöltési késés késése
+Egy adott rekord késését a [ingestion_time ()](/azure/kusto/query/ingestiontimefunction) függvény eredményének a _TimeGenerated_ tulajdonsághoz való összehasonlításával mérhetővé teheti. Ezeket az adatmennyiségeket különböző összesítésekkel lehet használni, hogy megtudja, hogyan viselkedik a betöltési késés. Vizsgálja meg a betöltési idő néhány százalékos arányát, hogy nagy mennyiségű adatot kapjon. 
+
+Például a következő lekérdezés megmutatja, hogy mely számítógépeken volt a legmagasabb betöltési idő az előző 8 órában: 
 
 ``` Kusto
 Heartbeat
 | where TimeGenerated > ago(8h) 
 | extend E2EIngestionLatency = ingestion_time() - TimeGenerated 
-| summarize percentiles(E2EIngestionLatency,50,95) by Computer 
-| top 20 by percentile_E2EIngestionLatency_95 desc  
+| extend AgentLatency = _TimeReceived - TimeGenerated 
+| summarize percentiles(E2EIngestionLatency,50,95), percentiles(AgentLatency,50,95) by Computer 
+| top 20 by percentile_E2EIngestionLatency_95 desc
 ```
- 
-Ha szeretne részletes elemzést egy időszakon belül egy adott számítógép betöltési időt, használja a következő lekérdezés az adatok egy Graph ábrázoló: 
+
+Az előző percentilis-ellenőrzések hasznosak a késés általános trendjeinek megkereséséhez. Ha egy rövid távú csúcsot szeretne meghatározni a késésben, a maximális`max()`() érték használata hatékonyabb lehet.
+
+Ha egy adott számítógép betöltési idejét egy adott időszakon belül szeretné részletezni, használja a következő lekérdezést, amely a diagramon az elmúlt nap adatait is megjeleníti: 
+
 
 ``` Kusto
 Heartbeat 
-| where TimeGenerated > ago(24h) and Computer == "ContosoWeb2-Linux"  
+| where TimeGenerated > ago(24h) //and Computer == "ContosoWeb2-Linux"  
 | extend E2EIngestionLatencyMin = todouble(datetime_diff("Second",ingestion_time(),TimeGenerated))/60 
-| summarize percentiles(E2EIngestionLatencyMin,50,95) by bin(TimeGenerated,30m) 
-| render timechart  
+| extend AgentLatencyMin = todouble(datetime_diff("Second",_TimeReceived,TimeGenerated))/60 
+| summarize percentiles(E2EIngestionLatencyMin,50,95), percentiles(AgentLatencyMin,50,95) by bin(TimeGenerated,30m) 
+| render timechart
 ```
  
-Számítógép betöltési idő megjelenítése az ország, találhatók az IP-címüket alapuló használja a következő lekérdezést: 
+A következő lekérdezés használatával jelenítheti meg a számítógép betöltési idejét az azon ország/régió szerint, amelyben az IP-címeik alapulnak: 
 
 ``` Kusto
 Heartbeat 
 | where TimeGenerated > ago(8h) 
 | extend E2EIngestionLatency = ingestion_time() - TimeGenerated 
-| summarize percentiles(E2EIngestionLatency,50,95) by RemoteIPCountry 
+| extend AgentLatency = _TimeReceived - TimeGenerated 
+| summarize percentiles(E2EIngestionLatency,50,95),percentiles(AgentLatency,50,95) by RemoteIPCountry 
 ```
  
-Az ügynök származó különböző adattípusok különböző Adatbetöltési késés idő, előfordulhat, így az előző lekérdezésekhez más típusú is használható. Vizsgálja meg a különböző Azure-szolgáltatások betöltési ideje használja a következő lekérdezést: 
+Az ügynökből származó különböző adattípusok eltérő betöltési késéssel rendelkezhetnek, így a korábbi lekérdezések más típusokkal is használhatók. A különböző Azure-szolgáltatások betöltési idejének vizsgálatához használja a következő lekérdezést: 
 
 ``` Kusto
 AzureDiagnostics 
 | where TimeGenerated > ago(8h) 
 | extend E2EIngestionLatency = ingestion_time() - TimeGenerated 
-| summarize percentiles(E2EIngestionLatency,50,95) by ResourceProvider
+| extend AgentLatency = _TimeReceived - TimeGenerated 
+| summarize percentiles(E2EIngestionLatency,50,95), percentiles(AgentLatency,50,95) by ResourceProvider
 ```
 
-### <a name="resources-that-stop-responding"></a>Erőforrások, amelyek nem válaszol 
-Bizonyos esetekben egy erőforrást sikerült nem küld adatokat. Szeretné megtudni, ha egy erőforrás adatokat küld-e, tekintse meg a legutóbbi rekord, amely segítségével azonosítható a standard _TimeGenerated_ mező.  
+### <a name="resources-that-stop-responding"></a>Nem válaszoló erőforrások 
+Bizonyos esetekben előfordulhat, hogy egy erőforrás leállítja az adatok küldését. Annak megismeréséhez, hogy egy erőforrás adatokat küld-e, vagy sem, tekintse meg a legutóbbi rekordot, amelyet a standard _TimeGenerated_ mezőben azonosíthat.  
 
-Használja a _szívverés_ táblázat, amelyben ellenőrizni egy virtuális gép rendelkezésre állását, mivel szívverést az ügynök által küldött percenként egyszer. Használja a következő lekérdezés az aktív számítógépek, amelyek még nem jelentettek szívverés nemrég listázásához: 
+A _szívverés_ táblázat segítségével ellenőrizhető a virtuális gép rendelkezésre állása, mivel az ügynök percenként egyszer elküldje a szívverést. A következő lekérdezéssel listázhatja azokat az aktív számítógépeket, amelyek nemrég jelentettek szívverést: 
 
 ``` Kusto
 Heartbeat  
@@ -135,5 +148,5 @@ Heartbeat
 ```
 
 ## <a name="next-steps"></a>További lépések
-* Olvassa el a [szolgáltatói szerződést (SLA)](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_1/) Azure figyelő.
+* A Azure Monitor [szolgáltatói szerződés (SLA)](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_1/) beolvasása.
 

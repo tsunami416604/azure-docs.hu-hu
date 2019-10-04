@@ -11,11 +11,11 @@ ms.custom: ''
 manager: mtillman
 ms.author: kfollis
 ms.openlocfilehash: fde7ffbaa3ef4d47eea48302a99948932aeb4f00
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59361951"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60551667"
 ---
 # <a name="export-or-delete-user-settings"></a>Felhasználói beállítások exportálása vagy törlése
 

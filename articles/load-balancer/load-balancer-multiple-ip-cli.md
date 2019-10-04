@@ -1,10 +1,10 @@
 ---
-title: Több IP-konfiguráció az Azure CLI-vel a terheléselosztás
+title: Terheléselosztás több IP-konfiguráción az Azure CLI használatával
 titlesuffix: Azure Load Balancer
-description: Ismerje meg, hogy több IP-cím hozzárendelése a virtuális gépek Azure CLI használatával.
+description: Megtudhatja, hogyan rendelhet hozzá több IP-címet egy virtuális géphez az Azure CLI használatával.
 services: virtual-network
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
@@ -12,51 +12,51 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
-ms.author: kumud
-ms.openlocfilehash: 1e8911847a555e3b6326f15d15a09344a4472f2c
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.author: allensu
+ms.openlocfilehash: c1606f14650843ea42cfe55381b5f23bf2742a58
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53165506"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274719"
 ---
-# <a name="load-balancing-on-multiple-ip-configurations-using-azure-cli"></a>Több IP-konfiguráció az Azure CLI-vel a terheléselosztás
+# <a name="load-balancing-on-multiple-ip-configurations-using-azure-cli"></a>Terheléselosztás több IP-konfiguráción az Azure CLI használatával
 
-Ez a cikk több, a másodlagos hálózati adapter (NIC) IP-címekkel rendelkező Azure Load Balancer használatát ismerteti. Ebben a forgatókönyvben két virtuális gépet futtató Windows, minden elsődleges és a egy másodlagos hálózati adapterre van Mindegyik másodlagos hálózati adapter két IP-konfigurációval rendelkezik. Minden virtuális gép, amelyen webhelyek a contoso.com és fabrikam.com. Minden webhely van kötve, az IP-konfigurációk közül a másodlagos hálózati adapteren. Az Azure Load Balancer használatával két előtérbeli IP-cím, egy minden olyan webhelyhez, a megfelelő IP-konfigurációhoz a webhely forgalom elosztását teszi közzé. Ebben a forgatókönyvben használja ugyanazt a portszámot is előtérrendszer, valamint háttérbeli címkészlet IP-címe között.
+Ez a cikk azt ismerteti, hogyan használható a Azure Load Balancer több IP-címmel a másodlagos hálózati adapteren (NIC). Ebben a forgatókönyvben két, Windows rendszerű virtuális gépet használunk, amelyek mindegyike elsődleges és másodlagos hálózati adapterrel rendelkezik. A másodlagos hálózati adapterek mindegyike két IP-konfigurációval rendelkezik. Mindegyik virtuális gép contoso.com és fabrikam.com egyaránt üzemelteti a webhelyeket. Minden webhely a másodlagos hálózati adapter egyik IP-konfigurációjáról van kötve. A Azure Load Balancer használatával két előtér-IP-címet teszünk közzé, amelyek közül az egyik az egyes webhelyekhez, a forgalom elosztása a webhely megfelelő IP-konfigurációjához. Ez a forgatókönyv ugyanazt a portszámot használja mindkét előtérben, valamint a háttérbeli készlet IP-címei között.
 
-![LB-forgatókönyv kép](./media/load-balancer-multiple-ip/lb-multi-ip.PNG)
+![LB-forgatókönyv képe](./media/load-balancer-multiple-ip/lb-multi-ip.PNG)
 
-## <a name="steps-to-load-balance-on-multiple-ip-configurations"></a>Terheléselosztás több IP-konfiguráció lépések
+## <a name="steps-to-load-balance-on-multiple-ip-configurations"></a>Több IP-konfiguráció terheléselosztásának lépései
 
-A következő cikkben ismertetett forgatókönyvben eléréséhez kövesse az alábbi lépéseket:
+A jelen cikkben ismertetett forgatókönyv megvalósításához hajtsa végre a következő lépéseket:
 
-1. [Telepítse és konfigurálja az Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) a hivatkozott cikk és a lépéseket követve az Azure-fiókba.
-2. [Hozzon létre egy erőforráscsoportot](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-resource-group) nevű *contosofabrikam* módon:
+1. [Telepítse és konfigurálja az Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) -t a csatolt cikkben leírt lépéseket követve, és jelentkezzen be az Azure-fiókjába.
+2. [Hozzon létre egy](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-resource-group) *contosofabrikam* nevű erőforráscsoportot a következő módon:
 
     ```azurecli
     az group create contosofabrikam westcentralus
     ```
 
-3. [Hozzon létre egy rendelkezésre állási csoport](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-an-availability-set) , a két virtuális gép számára. A jelen esetben használja a következő parancsot:
+3. [Hozzon létre egy rendelkezésre állási készletet](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-an-availability-set) a két virtuális gép számára. Ehhez a forgatókönyvhöz használja a következő parancsot:
 
     ```azurecli
     az vm availability-set create --resource-group contosofabrikam --location westcentralus --name myAvailabilitySet
     ```
 
-4. [Hozzon létre egy virtuális hálózatot](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-virtual-network-and-subnet) nevű *myVNet* és a egy alhálózat *mySubnet*:
+4. [Hozzon létre egy](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-virtual-network-and-subnet) *myVNet* nevű virtuális hálózatot és egy *mySubnet*nevű alhálózatot:
 
     ```azurecli
     az network vnet create --resource-group contosofabrikam --name myVnet --address-prefixes 10.0.0.0/16  --location westcentralus --subnet-name MySubnet --subnet-prefix 10.0.0.0/24
 
     ```
 
-5. [A load balancer létrehozása](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nevű *mylb*:
+5. [Hozza létre a](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json) terheléselosztó nevű *mylb*:
 
     ```azurecli
     az network lb create --resource-group contosofabrikam --location westcentralus --name mylb
     ```
 
-6. Hozzon létre két dinamikus nyilvános IP-címet a terheléselosztó előtérbeli IP-konfigurációk esetében:
+6. Hozzon létre két dinamikus nyilvános IP-címet a terheléselosztó előtér-IP-konfigurációjában:
 
     ```azurecli
     az network public-ip create --resource-group contosofabrikam --location westcentralus --name PublicIp1 --domain-name-label contoso --allocation-method Dynamic
@@ -64,14 +64,14 @@ A következő cikkben ismertetett forgatókönyvben eléréséhez kövesse az al
     az network public-ip create --resource-group contosofabrikam --location westcentralus --name PublicIp2 --domain-name-label fabrikam --allocation-method Dynamic
     ```
 
-7. A két előtérbeli IP-konfigurációk létrehozása *contosofe* és *fabrikamfe* jelölik:
+7. Hozza létre a két előtér-IP-konfigurációt, a *contosofe* és a *fabrikamfe* -t:
 
     ```azurecli
     az network lb frontend-ip create --resource-group contosofabrikam --lb-name mylb --public-ip-name PublicIp1 --name contosofe
     az network lb frontend-ip create --resource-group contosofabrikam --lb-name mylb --public-ip-name PublicIp2 --name fabrkamfe
     ```
 
-8. Hozzon létre a háttér-címkészletet - *contosopool* és *fabrikampool*, amely egy [mintavételi](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json) - *HTTP*, és a betöltés terheléselosztási szabályok – *HTTPc* és *HTTPf*:
+8. Hozza létre a háttérbeli címkészlet- *contosopool* és *fabrikampool*, [](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json) - a mintavételi*http*-t és a terheléselosztási szabályokat – *HTTPc* és *HTTPf*:
 
     ```azurecli
     az network lb address-pool create --resource-group contosofabrikam --lb-name mylb --name contosopool
@@ -83,13 +83,13 @@ A következő cikkben ismertetett forgatókönyvben eléréséhez kövesse az al
     az network lb rule create --resource-group contosofabrikam --lb-name mylb --name HTTPf --protocol tcp --probe-name http --frontend-port 5000 --backend-port 5000 --frontend-ip-name fabrkamfe --backend-address-pool-name fabrikampool
     ```
 
-9. Ellenőrizze a kimenetet [ellenőrizze a terheléselosztó](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json) megfelelően lett létrehozva a következő parancs futtatásával:
+9. A következő parancs futtatásával ellenőrizze, hogy a terheléselosztó helyesen lett-e létrehozva: [](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 
     ```azurecli
     az network lb show --resource-group contosofabrikam --name mylb
     ```
 
-10. [Hozzon létre egy nyilvános IP-cím](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-public-ip-address), *myPublicIp*, és [tárfiók](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json), *mystorageaccont1* az első virtuális gép VM1 az alábbiak szerint:
+10. [Hozzon létre egy nyilvános IP-címet](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-public-ip-address), egy *myPublicIp*és egy [Storage-FIÓKOT](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json)az első virtuális gép VM1 *mystorageaccont1* a következőképpen:
 
     ```azurecli
     az network public-ip create --resource-group contosofabrikam --location westcentralus --name myPublicIP --domain-name-label mypublicdns345 --allocation-method Dynamic
@@ -97,7 +97,7 @@ A következő cikkben ismertetett forgatókönyvben eléréséhez kövesse az al
     az storage account create --location westcentralus --resource-group contosofabrikam --kind Storage --sku-name GRS mystorageaccount1
     ```
 
-11. [A hálózati adapterek létrehozása](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-virtual-nic) vm1, és adja hozzá a második IP-konfiguráció *VM1-ipconfig2*, és [a virtuális gép létrehozása](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-vm) módon:
+11. [Hozza létre a hálózati adaptereket](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-virtual-nic) a VM1 számára, és adjon hozzá egy második IP-konfigurációt, a *VM1-ipconfig2*, és [hozza létre a virtuális gépet a](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-vm) következőképpen:
 
     ```azurecli
     az network nic create --resource-group contosofabrikam --location westcentralus --subnet-vnet-name myVnet --subnet-name mySubnet --name VM1Nic1 --ip-config-name NIC1-ipconfig1
@@ -106,7 +106,7 @@ A következő cikkben ismertetett forgatókönyvben eléréséhez kövesse az al
     az vm create --resource-group contosofabrikam --name VM1 --location westcentralus --os-type linux --nic-names VM1Nic1,VM1Nic2  --vnet-name VNet1 --vnet-subnet-name Subnet1 --availability-set myAvailabilitySet --vm-size Standard_DS3_v2 --storage-account-name mystorageaccount1 --image-urn canonical:UbuntuServer:16.04.0-LTS:latest --admin-username <your username>  --admin-password <your password>
     ```
 
-12. A második virtuális géphez ismételje meg a 10-11:
+12. Ismételje meg a 10-11 lépést a második virtuális géphez:
 
     ```azurecli
     az network public-ip create --resource-group contosofabrikam --location westcentralus --name myPublicIP2 --domain-name-label mypublicdns785 --allocation-method Dynamic
@@ -117,8 +117,8 @@ A következő cikkben ismertetett forgatókönyvben eléréséhez kövesse az al
     az vm create --resource-group contosofabrikam --name VM2 --location westcentralus --os-type linux --nic-names VM2Nic1,VM2Nic2 --vnet-name VNet1 --vnet-subnet-name Subnet1 --availability-set myAvailabilitySet --vm-size Standard_DS3_v2 --storage-account-name mystorageaccount2 --image-urn canonical:UbuntuServer:16.04.0-LTS:latest --admin-username <your username>  --admin-password <your password>
     ```
 
-13. Végül konfigurálnia kell DNS-erőforrásrekordok, a terheléselosztó megfelelő előtérbeli IP-címre mutasson. You may host your domains in Azure DNS. Azure DNS használata a Load Balancer kapcsolatos további információkért lásd: [Azure DNS használata más Azure-szolgáltatásokkal](../dns/dns-for-azure-services.md).
+13. Végezetül konfigurálnia kell a DNS-erőforrásrekordokat úgy, hogy az a Load Balancer megfelelő előtérbeli IP-címére mutasson. You may host your domains in Azure DNS. A Azure DNS és a Load Balancer használatával kapcsolatos további információkért lásd: a [Azure DNS használata más Azure](../dns/dns-for-azure-services.md)-szolgáltatásokkal.
 
 ## <a name="next-steps"></a>További lépések
-- Többféle terheléselosztási szolgáltatás az Azure-ban történő használatáról további [terheléselosztási szolgáltatás használata az Azure-ban](../traffic-manager/traffic-manager-load-balancing-azure.md).
-- Ismerje meg, hogyan használhatja naplók különböző típusú Azure-beli kezeléséhez, és a load balancer hibaelhárítása [Log analytics az Azure Load Balancer](../load-balancer/load-balancer-monitor-log.md).
+- További információ az Azure terheléselosztási szolgáltatásainak az Azure-beli [terheléselosztási szolgáltatások használatával](../traffic-manager/traffic-manager-load-balancing-azure.md)történő összevonásáról.
+- Megtudhatja, hogyan használhatja a különböző típusú naplókat az Azure-ban a [Azure Load Balancer log Analyticsben](../load-balancer/load-balancer-monitor-log.md)lévő Load Balancer kezeléséhez és hibakereséséhez.

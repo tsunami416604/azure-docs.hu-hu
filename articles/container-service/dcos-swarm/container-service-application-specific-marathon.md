@@ -10,11 +10,11 @@ ms.date: 04/12/2016
 ms.author: rogardle
 ms.custom: mvc
 ms.openlocfilehash: 1ba5ca54c0aa604289eab9c4475297b12580b69a
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52996124"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60557535"
 ---
 # <a name="deprecated-create-an-application-or-user-specific-marathon-service"></a>(ELAVULT) Létrehozhat egy alkalmazás- vagy felhasználóspecifikus Marathon-szolgáltatás
 

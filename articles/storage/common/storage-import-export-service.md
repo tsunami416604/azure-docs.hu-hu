@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 02/14/2019
+ms.date: 05/07/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 4850dd82ca52a060c921569433035256f5b74cce
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 97a3ac275613b644dfd90144039e4f3127186997
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58164926"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65603106"
 ---
 # <a name="what-is-azure-importexport-service"></a>Mi az Azure Import/Export szolgáltatás?
 
@@ -47,7 +47,7 @@ Import/Export szolgáltatás a következő összetevőket használja:
     
 > [!NOTE]
 > A WAImportExport eszköz két verziója, 1. és 2 verzió érhető el. Azt javasoljuk, hogy használja:
-> - 1. verzió az importálási és exportálási szolgáltatáshoz az Azure Blob storage-bA. 
+> - 1\. verzió az importálási és exportálási szolgáltatáshoz az Azure Blob storage-bA. 
 > - 2 az adatok importálása az Azure files-verzió.
 >
 > A WAImportExport eszköz csak nem kompatibilis a 64 bites Windows operációs rendszert. Lépjen az adott operációsrendszer-verziók támogatott, [Azure Import/Export követelmények](storage-import-export-requirements.md#supported-operating-systems).
@@ -74,9 +74,9 @@ Magas szintű az importálási feladat az alábbi lépésekből áll:
 8. A meghajtók mellékelt szolgáltatója, a feladó címe az importálási feladat megadott fiókkal.
 
 > [!NOTE]
-> Ossza meg a belföldi Szállítmányozói fiókjára (belül data center ország) helyi szállításhoz 
+> Ossza meg a belföldi Szállítmányozói fiókjára (belül data center ország/régió) helyi szállításhoz 
 >
-> Ossza meg egy nemzetközi Szállítmányozói fiókjára külföldön (data center ország) kívül eső szállításhoz
+> Ossza meg egy nemzetközi Szállítmányozói fiókjára külföldön (data center ország/régió) kívül eső szállításhoz
 
  ![Ábra 1:Import feladat folyamat](./media/storage-import-export-service/importjob.png)
 
@@ -104,9 +104,9 @@ Magas szintű exportálási feladat az alábbi lépésekből áll:
 10. A meghajtók mellékelt szolgáltatója, a feladó címe az importálási feladat megadott fiókkal.
 
 > [!NOTE]
-> Ossza meg a belföldi Szállítmányozói fiókjára (belül data center ország) helyi szállításhoz 
+> Ossza meg a belföldi Szállítmányozói fiókjára (belül data center ország/régió) helyi szállításhoz 
 >
-> Ossza meg egy nemzetközi Szállítmányozói fiókjára külföldön (data center ország) kívül eső szállításhoz
+> Ossza meg egy nemzetközi Szállítmányozói fiókjára külföldön (data center ország/régió) kívül eső szállításhoz
   
  ![Ábra 2:Export feladat folyamat](./media/storage-import-export-service/exportjob.png)
 
@@ -119,7 +119,7 @@ Az Azure Import/Export szolgáltatás támogatja az adatok másolását, és az 
 ### <a name="supported-shipping-locations"></a>Szállítási helyeken támogatott
 
 
-|Ország  |Ország  |Ország  |Ország  |
+|Ország/régió  |Ország/régió  |Ország/régió  |Ország/régió  |
 |---------|---------|---------|---------|
 |USA keleti régiója    | Észak-Európa        | Közép-India        |US Gov Iowa         |
 |USA nyugati régiója     |Nyugat-Európa         | Dél-India        | US DoD – Kelet        |
@@ -160,7 +160,7 @@ Amikor Ön az Azure-bA meghajtók, a szállítmányozási kell fizetnie a száll
 
 **Tranzakciós költségek**
 
-Amikor adatokat importál az Azure Storage-ba, nincsenek nincsenek tranzakciós díjak standard tárolási tranzakciós költségek mellett. A standard szintű kimenő adatforgalmi díjak vonatkoznak a Blob storage-ból exportált adatok. Tranzakciós költségek további információkért lásd: [adatátvitel díjszabási.](https://azure.microsoft.com/pricing/details/data-transfers/)
+[Standard szintű tárolási tranzakciós díj](https://azure.microsoft.com/pricing/details/storage/) importálása, valamint az adatok exportálása során. Standard kimenő forgalom költségeit akkor is alkalmazható storage szolgáltatásra vonatkozó forgalmi díjak együtt, ha az adatok exportálása az Azure Storage-ból. A kimenő adatforgalmi költségek további információkért lásd: [adatátvitel díjszabási.](https://azure.microsoft.com/pricing/details/data-transfers/).
 
 
 

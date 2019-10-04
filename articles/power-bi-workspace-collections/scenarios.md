@@ -2,18 +2,18 @@
 title: A Microsoft Power BI-Munkaterületcsoport gyakori helyzetek
 description: A Microsoft Power BI Embedded gyakori helyzetek
 services: power-bi-workspace-collections
-ms.service: power-bi-workspace-collections
-author: markingmyname
-ms.author: maghan
+ms.service: power-bi-embedded
+author: rkarlin
+ms.author: rkarlin
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.openlocfilehash: 0e111c40df79d236bad6130338d021f76587dde4
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 8339e35af80d6c5a7af34e270704b100ffcad98b
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58519170"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672402"
 ---
 # <a name="common-power-bi-workspace-collection-scenarios"></a>A Power BI-Munkaterületcsoport gyakori helyzetek
 

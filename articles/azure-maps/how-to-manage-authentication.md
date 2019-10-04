@@ -3,17 +3,17 @@ title: Azure Maps-hitelesítés kezelése |} A Microsoft Docs
 description: Az Azure portal segítségével Azure Maps-hitelesítés kezelésére szolgál.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/14/2019
+ms.date: 07/11/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 414ca7156fd59ec1dc08e45c73e9eb30835078d4
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 1dc63a2c2350ad4f1d02d0c1b22050293d7b866c
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259924"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67837818"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Azure Maps-hitelesítés kezelése
 
@@ -34,7 +34,7 @@ Miután létrehozott egy Azure Maps-fiók, kell létesítenie az Azure AD-bérl�
 
 1. Az Azure AD paneljéről, és hozzon létre egy alkalmazás regisztrációját. Adjon meg egy nevet, a regisztráció. Az a **bejelentkezési URL-** adja meg a kezdőlapon a webalkalmazás / API-t (például https:\//localhost/). Ha már rendelkezik egy regisztrált alkalmazást, folytassa a 2. lépés.
 
-    ![Appok regisztrálása](./media/how-to-manage-authentication/app-registration.png)
+    ![Alkalmazásregisztráció](./media/how-to-manage-authentication/app-registration.png)
 
     ![Alkalmazás regisztráció részletei](./media/how-to-manage-authentication/app-create.png)
 
@@ -59,13 +59,13 @@ Miután létrehozott egy Azure Maps-fiók, kell létesítenie az Azure AD-bérl�
 
 ## <a name="grant-rbac-to-azure-maps"></a>Az Azure Maps GRANT rbac-t
 
-Az Azure Maps-fiók társítása az Azure AD-bérlővel, miután egy felhasználó vagy alkalmazás egy vagy több Azure Maps hozzáférés-vezérlés szerepköreinek való hozzárendelésével hozzáférés-vezérlés megadásához.
+Után az Azure Maps-fiók társítása az Azure AD-bérlőhöz, a felhasználó, csoport vagy alkalmazás egy vagy több Azure Maps hozzáférés-vezérlés szerepköreinek hozzárendelésével biztosíthat hozzáférés-vezérlés.
 
 1. Lépjen a **hozzáférés-vezérlés (IAM)** válassza **szerepkör-hozzárendelések**, majd válassza ki **szerepkör-hozzárendelés hozzáadása**.
 
     ![Engedélyezés RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
-2. Az a **szerepkör-hozzárendelés hozzáadása** időszak alatt **szerepkör**, jelölje be **Azure Maps dátum olvasója (minta)**. Alatt **rendelhet hozzáféréseket**válassza **az Azure AD-felhasználó, csoport vagy szolgáltatásnév**. A **kiválasztása**, a felhasználó vagy alkalmazás kiválasztása. Kattintson a **Mentés** gombra.
+2. Az a **szerepkör-hozzárendelés hozzáadása** időszak alatt **szerepkör**, jelölje be **Azure Maps dátum olvasója (minta)** . Alatt **rendelhet hozzáféréseket**válassza **az Azure AD-felhasználó, csoport vagy szolgáltatásnév**. A **kiválasztása**, a felhasználó vagy alkalmazás kiválasztása. Kattintson a **Mentés** gombra.
 
     ![Szerepkör-hozzárendelés hozzáadása](./media/how-to-manage-authentication/add-role-assignment.png)
 
@@ -80,7 +80,7 @@ Szerepköralapú hozzáférés-vezérlés (RBAC) szerepkörök érhetők el az A
 
 Az RBAC részletes hozzáférés-vezérlést biztosít.
 
-Felhasználókat és alkalmazásokat, amelyek kapott RBAC az Azure Maps megtekintéséhez lépjen a **hozzáférés-vezérlés (IAM)**, jelölje be **szerepkör-hozzárendelések**, és szűrjön rá a **az Azure Maps**.
+Felhasználókat és alkalmazásokat, amelyek kapott RBAC az Azure Maps megtekintéséhez lépjen a **hozzáférés-vezérlés (IAM)** , jelölje be **szerepkör-hozzárendelések**, és szűrjön rá a **az Azure Maps**.
 
 ![Felhasználók és alkalmazások RBAC engedélyek megtekintése](./media/how-to-manage-authentication/how-to-view-amrbac.png)
 
@@ -98,4 +98,8 @@ Hozzáférési jogkivonatok kér az Azure AD-felhasználók és az egyszerű szo
 
 ## <a name="next-steps"></a>További lépések
 
-* Az Azure AD-hitelesítés és az Azure Maps Web SDK kapcsolatos további információkért lásd: [az Azure AD és az Azure Maps Web SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control).
+Az Azure AD-hitelesítés és az Azure Maps Web SDK kapcsolatos további információkért lásd: [az Azure AD és az Azure Maps Web SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control).
+
+Megtudhatja, hogyan tekintheti meg az API-használati metrikák az Azure Maps-fiók:
+> [!div class="nextstepaction"] 
+> [Használati metrikák megtekintése](how-to-view-api-usage.md)

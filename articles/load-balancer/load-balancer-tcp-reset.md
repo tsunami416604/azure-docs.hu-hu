@@ -1,47 +1,47 @@
 ---
 title: Load Balancer TCP alaphelyzetbe állítása üresjáratban az Azure-ban
 titlesuffix: Azure Load Balancer
-description: A terheléselosztó kétirányú TCP ÜZE csomagokkal az üresjárat időkorlátja
+description: Load Balancer a kétirányú TCP első csomagokkal üresjárati időkorláton
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/29/2019
-ms.author: kumud
-ms.openlocfilehash: 52524e6291faae8ccc27c0d53e9e38ab63a4c8d5
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 05/03/2019
+ms.author: allensu
+ms.openlocfilehash: 8485f4b6e8d4ff55de4930b3cfb7a07802cf1d41
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58132429"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274163"
 ---
-# <a name="load-balancer-with-tcp-reset-on-idle-public-preview"></a>Load Balancer a TCP üresjárati (nyilvános előzetes verzió) alaphelyzetbe állítása
+# <a name="load-balancer-with-tcp-reset-on-idle-public-preview"></a>Load Balancer a TCP alaphelyzetbe állítása üresjáratban (nyilvános előzetes verzió)
 
-Használhat [Standard Load Balancer](load-balancer-standard-overview.md) hozhat létre egy kiszámíthatóbb alkalmazások viselkedése a használati eseteihez egy adott szabály engedélyezése a TCP üresjárati a alaphelyzetbe állítása. Load Balancer alapértelmezett viselkedését, hogy csendes dobja el a flow, ha eléri a folyamat az üresjárati időkorlátot.  A funkció engedélyezése Load Balancer küldjön a kétirányú TCP (TCP ÜZE csomagot) alaphelyzetbe állítja az üresjárati időkorlát miatt.  Ez tájékoztatja a végpontjainak, hogy a kapcsolat túllépte az időkorlátot, és már nem használható.  Végpontok azonnal is létrehozhat egy új kapcsolatot, szükség esetén.
+A [standard Load Balancer](load-balancer-standard-overview.md) használatával kiszámítható alkalmazás-viselkedést hozhat létre a forgatókönyvek esetében, ha engedélyezi a TCP alaphelyzetbe állítását egy adott szabály esetében. Load Balancer alapértelmezett viselkedése a folyamatok csendes eldobása, amikor a folyamat üresjárati időkorlátja eléri a folyamatot.  Ha engedélyezi ezt a funkciót, a Load Balancer a kétirányú TCP-alaphelyzetbe (TCP első csomag) küldi az üresjárati időkorlátot.  Ez tájékoztatni fogja az alkalmazás-végpontokat arról, hogy a kapcsolatok túllépték az időkorlátot, és már nem használható.  Ha szükséges, a végpontok azonnal létrehozhatnak egy új kapcsolatot.
 
 ![Load Balancer TCP alaphelyzetbe állítása](media/load-balancer-tcp-reset/load-balancer-tcp-reset.png)
 
 >[!NOTE] 
->A TCP Alaphelyzet üresjárati időkorlát funkciókat a terheléselosztó jelenleg nyilvános előzetes verzióként érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+>Az üresjárat időkorlátjának TCP-visszaállítási funkciójának Load Balancer jelenleg nyilvános előzetes verzióként érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
  
-Módosíthatja az alapértelmezett viselkedését és alaphelyzetbe állítja a TCP üresjárati időkorlát a bejövő NAT-szabályokat, a terheléselosztási szabályokat és küldése engedélyezése és [kimenő szabályok](https://aka.ms/lboutboundrules).  Egy szabályban engedélyezésekor a Load Balancer küld-e az ügyfél- és végpontok összes forgalommal egyező üresjárati időkorlát időpontjában kétirányú TCP alaphelyzetbe állítása (TCP ÜZE csomagok).
+Ezt az alapértelmezett viselkedést kell módosítania, és engedélyezni kell a TCP alaphelyzetbe állítását a bejövő NAT-szabályok, a terheléselosztási szabályok és a [Kimenő szabályok](https://aka.ms/lboutboundrules)üresjárati időkorlátján.  Ha engedélyezve van a szabály, a Load Balancer a kétirányú TCP-visszaállítást (TCP első csomagokat) küldi az ügyfél-és a kiszolgálói végpontoknak az összes egyező folyamat üresjárati időkorlátjának időpontjában.
 
-TCP ÜZE csomagok fogadása végpontok zárja be a megfelelő szoftvercsatorna azonnal. Ez lehetővé teszi az azonnali értesítések a végpontokra, amely a kiadás a kapcsolat történt, és ugyanazt a TCP-kapcsolatot minden jövőbeli kommunikáció sikertelen lesz.  Alkalmazások is kiürítheti kapcsolatok, ha a szoftvercsatorna bezárja, majd helyreállítani a kapcsolatok nem várja meg a TCP-kapcsolatot, végül időtúllépés igény szerint.
+Az első TCP-csomagokat fogadó végpontok azonnal lezárták a megfelelő szoftvercsatornát. Ez azonnali értesítést küld a végpontokról, amelyeken a kapcsolat megjelent, és az azonos TCP-kapcsolaton folytatott jövőbeli kommunikáció meghiúsul.  Az alkalmazások kitörölhetik a kapcsolatokat, amikor a szoftvercsatorna lezárult, és szükség esetén újra létrehozza a kapcsolatokat, anélkül, hogy a TCP-kapcsolatra kellene várnia.
 
-A sok esetben ez csökkentheti a küldési TCP (vagy alkalmazásréteg) életben frissítése egy folyamatot az üresjárati időkorlátot. 
+Számos esetben előfordulhat, hogy a TCP (vagy az alkalmazási réteg) Keepalives egy folyamat üresjárati időkorlátjának frissítéséhez szükséges. 
 
-Ha az inaktivitási időtartam mérete meghaladja a konfiguráció által engedélyezett, vagy az alkalmazás látható, a nem kívánt viselkedést TCP visszaállítja engedélyezve van, előfordulhat, hogy továbbra is szeretné TCP életben (vagy alkalmazás réteg életben) használatával a TCP-kapcsolatok a liveness figyeli.  További életben is maradhat, ha a kapcsolat nem használ proxyt valahol az útvonalban, különösen az alkalmazás réteg életben hasznos.  
+Ha az üresjárati időtartama meghaladja a konfiguráció által engedélyezett beállításokat, vagy az alkalmazás nem kívánt viselkedést jelenít meg a TCP-visszaállítások engedélyezésével, akkor továbbra is a TCP-Keepalives (vagy az alkalmazás rétegének Keepalives) kell használnia a TCP-kapcsolatok élő állapotának figyeléséhez.  Emellett a Keepalives is hasznos lehet, ha a Kapcsolódás az elérési útban van, különösen az alkalmazás rétegbeli Keepalives.  
 
-Gondosan vizsgálja meg a teljes végpontok közötti forgatókönyv eldönteni, hogy engedélyezése a TCP visszaállítja az időtúllépést módosítani közül, és ha további lépésekre lehet szükség ahhoz, hogy az alkalmazás kívánt viselkedése.
+Alaposan vizsgálja meg a teljes végpontok közötti forgatókönyvet, és döntse el, hogy kihasználja-e a TCP alaphelyzetbe állítását, az üresjárat időkorlátjának módosítását, és ha további lépések szükségesek a kívánt alkalmazás működésének biztosításához.
 
-## <a name="enabling-tcp-reset-on-idle-timeout"></a>Az üresjárati időkorlát engedélyezése a TCP alaphelyzetbe állítása
+## <a name="enabling-tcp-reset-on-idle-timeout"></a>A TCP alaphelyzetbe állításának engedélyezése üresjárati időkorláton
 
-2018-07-01-es verziójú API-val, engedélyezheti a küldését a kétirányú alaphelyzetbe állítja a TCP üresjárati időtúllépés miatt egy szabály alapján:
+Az API 2018-07-01-es verziójának használatával engedélyezheti a kétirányú TCP-visszaállítások küldését a következő üresjárati időkorláton:
 
 ```json
       "loadBalancingRules": [
@@ -67,15 +67,16 @@ Gondosan vizsgálja meg a teljes végpontok közötti forgatókönyv eldönteni,
       ]
 ```
 
-## <a name="regions"></a> Régiónkénti elérhetőség
+## <a name="regions"></a>Régió elérhetősége
 
 Minden régióban elérhető.
 
 ## <a name="limitations"></a>Korlátozások
 
-- Portál konfigurálása, illetve megtekintheti a TCP alaphelyzetbe állítása nem használható.  Ehelyett használja a sablonok, REST API-t, Az CLI 2.0-val vagy PowerShell.
+- A portál nem használható a TCP-visszaállítás konfigurálására vagy megtekintésére.  Ehelyett használja a sablonok, REST API-t, Az CLI 2.0-val vagy PowerShell.
+- Az első TCP-t a rendszer csak a TCP-kapcsolatok során, a létesített állapotban küldik el.
 
 ## <a name="next-steps"></a>További lépések
 
 - Ismerje meg [a Standard Load Balancer](load-balancer-standard-overview.md).
-- Ismerje meg [kimenő szabályok](load-balancer-outbound-rules-overview.md).
+- További információ a [kimenő szabályokról](load-balancer-outbound-rules-overview.md).

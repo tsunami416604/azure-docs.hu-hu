@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 12/06/2018
 ms.author: bahariri
 ms.openlocfilehash: e704a2595130a2a815388447ac482ab96789d64a
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57453983"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60821769"
 ---
 # <a name="exchange-events-between-consumers-and-producers-that-use-different-protocols-amqp-kafka-and-https"></a>Az Exchange-események a fogyasztók és más protokollt használó gyártók között: AMQP, Kafka, and HTTPS
 Azure Event hubs szolgáltatás három protokoll támogatja a fogyasztók: Az AMQP-, Kafka, és HTTPS. Ezeket a protokollokat mindegyike rendelkezik a saját módja egy üzenetet, így természetesen felmerül a következő kérdés jelölő: Ha egy alkalmazás küldi az eseményeket egy Eseményközpontba, egy protokollal, és a egy másik protokoll használja őket, mire a különböző részeit és értékeit a amikor megérkeznek a fogyasztó esemény néz? Ez a cikk ismerteti az ajánlott eljárások az előállítói és a fogyasztói annak érdekében, hogy az esemény található értékek helyesen értelmezi a fogyasztó alkalmazás általi.

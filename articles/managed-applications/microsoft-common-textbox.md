@@ -1,6 +1,6 @@
 ---
-title: Az Azure szövegmező felhasználói felületi elem |} Microsoft Docs
-description: Azure-portálon a Microsoft.Common.TextBox felhasználói felületi elem ismerteti.
+title: Az Azure szövegmező felhasználói felületi elemben |} A Microsoft Docs
+description: Az Azure portal a Microsoft.Common.TextBox felhasználói felületi elem ismerteti.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: fa3e5fff8080acb9e824ffe27f6c149054804830
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: b06e8b49efe8b6de720fa9bb819d4720e4f80fb6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063646"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61044556"
 ---
-# <a name="microsoftcommontextbox-ui-element"></a>Microsoft.Common.TextBox felhasználói felületi elem
+# <a name="microsoftcommontextbox-ui-element"></a>Microsoft.Common.TextBox UI element
 Segítségével szerkesztheti a formázatlan szöveges vezérlő.
 
 ## <a name="ui-sample"></a>Felhasználói felület minta
@@ -44,10 +44,10 @@ Segítségével szerkesztheti a formázatlan szöveges vezérlő.
 ```
 
 ## <a name="remarks"></a>Megjegyzések
-- Ha `constraints.required` értéke **igaz**, akkor a szövegmező sikeresen érvényesíthető értékűnek kell lennie. Az alapértelmezett érték **hamis**.
-- `constraints.regex` a JavaScript reguláris kifejezési minta van. Ha meg van adva, majd a szövegmező értékét kell megfelel a mintának sikeresen érvényesíthető. Az alapértelmezett érték **null**.
-- `constraints.validationMessage` egy olyan karakterlánc jelenítsen meg, ha a szövegmező értékét érvényesítése sikertelen. Ha nincs megadva, akkor a szövegmező beépített ellenőrzési üzenetek használja. Az alapértelmezett érték **null**.
-- Adjon meg egy értéket lehet `constraints.regex` amikor `constraints.required` értéke **hamis**. Ebben a forgatókönyvben egy érték nem szükséges a szövegmező sikeresen érvényesíthető. Ha egy meg van adva, akkor meg kell egyeznie a reguláris kifejezési minta.
+- Ha `constraints.required` értékre van állítva **igaz**, majd a szövegmező sikeresen érvényesíthető értékkel kell rendelkeznie. Az alapértelmezett érték **hamis**.
+- `constraints.regex` van egy JavaScript Reguláriskifejezés-mintának. Ha meg van adva, majd a szövegmező értéknek egyeznie kell a minta ellenőrzése sikerült. Az alapértelmezett érték **null**.
+- `constraints.validationMessage` : a szövegmező értékét érvényesítése sikertelen megjelenített karakterlánc. Ha nincs megadva, a szövegmező beépített ellenőrzési üzenetek szolgálnak. Az alapértelmezett érték **null**.
+- Adjon meg egy értéket meg lehet `constraints.regex` amikor `constraints.required` értékre van állítva **hamis**. Ebben a forgatókönyvben egy érték nem sikerült érvényesíteni a beviteli mező szükséges. Ha meg van adva, akkor meg kell egyeznie a reguláris kifejezési minta.
 
 ## <a name="sample-output"></a>Példa kimenet
 
@@ -56,5 +56,5 @@ Segítségével szerkesztheti a formázatlan szöveges vezérlő.
 ```
 
 ## <a name="next-steps"></a>További lépések
-* A bevezetést UI-definíciók létrehozásáról lásd: [Ismerkedés a CreateUiDefinition](create-uidefinition-overview.md).
-* Általános tulajdonságok felhasználói felületi elemei ismertetését lásd: [CreateUiDefinition elemek](create-uidefinition-elements.md).
+* Felhasználóifelület-definíciók létrehozása bevezetésért lásd: [CreateUiDefinition használatának első lépései](create-uidefinition-overview.md).
+* Egy felhasználói felületi elemeket általános tulajdonságok leírásáért lásd: [CreateUiDefinition elemek](create-uidefinition-elements.md).

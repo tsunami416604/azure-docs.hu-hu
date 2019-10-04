@@ -1,25 +1,18 @@
 ---
-title: Dynamics 365 for Customer Engagement ajánlat kirakat Részletek lap – Azure Marketplace-en |} A Microsoft Docs
+title: Dynamics 365 for Customer Engagement ajánlat kirakat Részletek lap |} Az Azure Marketplace-en
 description: Az áruház oldala Részletek lap használatával adjon meg egy Dynamics 365 Customer Engagement ajánlat értékesítési és marketing adatokat.
 services: Dynamics 365 for Customer Engagement, Azure, Marketplace, Cloud Partner Portal, AppSource
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
-ms.date: 01/03/2019
-ms.author: pbutlerm
-ms.openlocfilehash: f9cbf5033d0ffb84959de94db052626dd1d131c8
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 04/24/2019
+ms.author: pabutler
+ms.openlocfilehash: ad6a84679df09964b1bed047f3fbd236a29172b5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57997952"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64942297"
 ---
 # <a name="dynamics-365-for-customer-engagement-storefront-details-tab"></a>Dynamics 365 Customer Engagement kirakat részletei lap
 
@@ -32,12 +25,12 @@ Az összegzés és az ebben a szakaszban az ajánlat leírása, biztosít.  Ezze
  
 ![Az ajánlat részletei szakaszban az kirakat részletei lapon](./media/storefront-tab-offer-details.png)
 
-Ha a következő táblázat ismerteti ezen a lapon a mezőket: 
+Ha a következő táblázat ismerteti a mezőket, ezt a lapot. Kötelező mezőt csillag (*) rendszer feltehetően. 
 
 |    **Mező**          |  **Leírás**               |
 |  ---------------      |  ---------------               |
-|  Ajánlat-összefoglaló        | Az ajánlat értékajánlat összefoglalása. Az ajánlat keresés lapon fog megjelenni. A formátuma egyszerű szöveg, amely legfeljebb 100 karakterből állhat. |
-|  Az ajánlat leírása    | Az leírást, amely megjelenik az alkalmazás részletei lapon. A formátuma (beleértve a p, em, ul, li, ol és fejléc címkék) egyszerű HTML egy legfeljebb 1300 karakter hosszú lehet.  |
+|  Ajánlat-összefoglaló\*        | Az ajánlat értékajánlat összefoglalása. Az ajánlat keresés lapon fog megjelenni. A formátuma egyszerű szöveg, amely legfeljebb 100 karakterből állhat. |
+|  Az ajánlat leírása\*    | Az leírást, amely megjelenik az alkalmazás részletei lapon. A formátuma (beleértve a p, em, ul, li, ol és fejléc címkék) egyszerű HTML egy legfeljebb 1300 karakter hosszú lehet.  |
 |  |  | 
 
 
@@ -47,21 +40,21 @@ A piactéren, listázás, ebben a szakaszban adatait biztosítja.
 
 ![Lista részletei szakaszban az kirakat részletei lapon](./media/storefront-tab-listing-details.png)
 
-Ha a következő táblázat ismerteti ezen a lapon a mezőket: 
+Ha a következő táblázat ismerteti a mezőket, ezt a lapot. Kötelező mezőt csillag (*) rendszer feltehetően. 
 
 |    **Mező**          |  **Leírás**               |
 |  ---------------      |  ---------------               |
 |  Ágazatok           | Válassza ki a iparágak (legfeljebb két), amely a legjobb alkalmazást igazodnak-e. Ha nincs érvényes, kiválaszthatja a nulla beállítások.  |
-|  Kategóriák           | Válassza ki, amely az alkalmazás a kategóriák. Válassza ki egy és három beállításai között.  |
-|  Alkalmazástípus             | Válassza ki a próbaverziót, amelyen engedélyezve van az alkalmazás az appsource-ban. **Ingyenes** azt jelzi, hogy az alkalmazás; díjmentesen használható **Próbaverziós** azt jelzi, hogy az ügyfelek egy rövid ideig; díjmentesen kipróbálhatja az alkalmazás és **kapcsolatfelvételi** azt jelzi, hogy ügyfeleink is kérhető az appsource-ban az alkalmazás-próbaverzióra.  |
-| Az alkalmazáshoz Súgó hivatkozásra | Online dokumentáció vagy az alkalmazás más Súgó-erőforrás URL-címe  |
+|  Kategóriák\*         | Válassza ki, amely az alkalmazás a kategóriák. Válassza ki egy és három beállításai között.  |
+|  Alkalmazás típusa\*           | Válassza ki a próbaverziót, amelyen engedélyezve van az alkalmazás az appsource-ban. **Ingyenes** azt jelzi, hogy az alkalmazás; díjmentesen használható **Próbaverziós** azt jelzi, hogy az ügyfelek egy rövid ideig; díjmentesen kipróbálhatja az alkalmazás és **kapcsolatfelvételi** azt jelzi, hogy ügyfeleink is kérhető az appsource-ban az alkalmazás-próbaverzióra.  |
+| Az alkalmazáshoz Súgó hivatkozásra\* | Online dokumentáció vagy az alkalmazás más Súgó-erőforrás URL-címe  |
 | Támogatott országok/régiók | Egy felugró párbeszédpanel lehetővé teszi, hogy a választott a földrajzi régióban, ahol az alkalmazás érhető el.  Globális terjesztés az alapértelmezett érték. |
 | Támogatott nyelvek   | Válassza ki a nyelvet, amely az alkalmazás támogatja-e. Jelenleg csak néhány nyelvi beállítások támogatottak.  (Ha az alkalmazás támogatja a további nyelveket, amelyek nem látható a listában, továbbra is az ajánlat közzététele és e-mail-információkból: appsource\@microsoft.com.)  |
 | Az alkalmazás verziója           | Az alkalmazás verziószáma    |
 | Alkalmazás kiadási dátum      | Az alkalmazás kiadási/közzétételi dátuma |
 | Az alkalmazás együttműködik termékek | Termék vagy szolgáltatás, az alkalmazás közötti működik. Legfeljebb három termék listázhatja. Termék listában, kattintson a **+ új** és a megjelenő mezőben adja meg a termék nevét.  |
 | A keresési kulcsszavak       | Az alkalmazás, amely legfeljebb három kulcsszavak társított kulcsszavakat halmaza.  Appsource-ban lehetővé teszi, hogy az ügyfél alapján kulcsszavak keresése.  Válassza ki, hogy a felhasználók valószínűleg használatával keres az alkalmazás általános, gyakori szavakat.  |
-|  Kulcs elrejtése             | Egy titkos kulcsot, amely lehetővé teszi az előzetes verzióra, mielőtt az ajánlat az ajánlat URL-cím van kombinálva élesíti.  Ez a kulcs *nem* egy jelszót.  Csak alfanumerikus karaktereket tartalmazhat.  |
+|  Kulcs elrejtése\*           | Egy titkos kulcsot, amely lehetővé teszi az előzetes verzióra, mielőtt az ajánlat az ajánlat URL-cím van kombinálva élesíti.  Ez a kulcs *nem* egy jelszót.  Csak alfanumerikus karaktereket tartalmazhat.  |
 |  |  |
 
 
@@ -75,11 +68,11 @@ Ha a következő táblázat ismerteti ezen a lapon a mezőket:
 
 |      Mező            |    Leírás                 |
 |  ---------------      |  ---------------               |
-| Az ajánlat embléma (png formátumú, 48 x 48) | Töltsön fel egy képet, az alkalmazás keresési oldalon jelenik meg. Formátum: PNG és 48 x 48 képpontos kell lennie. |
-| Az ajánlat embléma (png formátumú, 216 x 216) | Töltsön fel egy képet, az alkalmazás részletei lapon jelenik meg. Formátum: PNG és mérete 216 x 216 képpont lehet. |
+| Az ajánlat embléma (png formátumú, 48 x 48)\* | Töltsön fel egy képet, az alkalmazás keresési oldalon jelenik meg. Formátum: PNG és 48 x 48 képpontos kell lennie. |
+| Az ajánlat embléma (png formátumú, 216 x 216)\* | Töltsön fel egy képet, az alkalmazás részletei lapon jelenik meg. Formátum: PNG és mérete 216 x 216 képpont lehet. |
 | Videók                | Az alkalmazás, amely legfeljebb négy promóciós vagy intézet videókat tölthet fel.  Az egyes videók adja meg a videó neve, URL-címe (YouTube vagy Vimeo csak) és kapcsolódó miniatűrjén PNG formátumú és a méretezett 1280 x 720 képpont.  | 
-| Dokumentumok             | Töltse fel a termék promóciós vagy intézet dokumentum PDF formátumban, és legfeljebb három.  Minden egyes dokumentum esetében adja meg a dokumentum nevét.  |
-| Képernyőképek           | Töltsön fel egy legfeljebb öt rendszerképek az alkalmazás felhasználói felületén a PNG formátumú és a méretezett 1280 x 720 képpont.  Ezek a képernyőfelvételek az appsource-ban az alkalmazás részletek lapon fog megjelenni. |
+| Dokumentumok\*             | Töltse fel a termék promóciós vagy intézet dokumentum PDF formátumban, és legfeljebb három.  Minden egyes dokumentum esetében adja meg a dokumentum nevét.  |
+| Képernyőképek\*           | Töltsön fel egy legfeljebb öt rendszerképek az alkalmazás felhasználói felületén a PNG formátumú és a méretezett 1280 x 720 képpont.  Ezek a képernyőfelvételek az appsource-ban az alkalmazás részletek lapon fog megjelenni. |
 |  |  |
 
 
@@ -93,8 +86,8 @@ Ha a következő táblázat ismerteti ezen a lapon a mezőket:
 
 |      Mező            |    Leírás                 |
 |  ---------------      |  ---------------               |
-| Adatvédelmi szabályzat URL-címe    | Az online adatvédelmi szabályzatot, az alkalmazás URL-címe.  |
-| Használati feltételek          | Az alkalmazás egyszerű szöveges használati feltételeit.  Appsource-on ügyfelei elfogadja ezeket a feltételeket, mielőtt az alkalmazás próbálkozhatnak van szükség. |
+| Adatvédelmi szabályzat URL-címe\*    | Az online adatvédelmi szabályzatot, az alkalmazás URL-címe.  |
+| Használati feltételek\*          | Az alkalmazás egyszerű szöveges használati feltételeit.  Appsource-on ügyfelei elfogadja ezeket a feltételeket, mielőtt az alkalmazás próbálkozhatnak van szükség. |
 |  |  |
 
 

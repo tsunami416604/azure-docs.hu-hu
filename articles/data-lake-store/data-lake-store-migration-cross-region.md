@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 01/27/2017
 ms.author: stewu
 ms.openlocfilehash: 0bf0843314f38c0de28820c82e95b7921297bf40
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233048"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60518463"
 ---
 # <a name="migrate-azure-data-lake-storage-gen1-across-regions"></a>Az Azure Data Lake Storage Gen1 át a régiók között
 
@@ -30,7 +30,7 @@ Az Azure Data Lake Storage Gen1 új régióban elérhetővé válik, mivel egy e
 * **Az Azure Data Factory**. További információkért lásd: [Az Azure Data Factory bemutatása](../data-factory/introduction.md).
 
 
-## <a name="migration-considerations"></a>Az áttelepítés szempontjai
+## <a name="migration-considerations"></a>Migrálási szempontok
 
 Először azonosítsa a legjobban az Ön ír, olvassa be és dolgozza fel az adatokat a Data Lake Storage Gen1 stratégiájának. Ha úgy dönt, hogy olyan stratégiát, fontolja meg az alkalmazás rendelkezésre állási követelmények vonatkoznak, és az állásidő, amely során az áttelepítés történik. A legegyszerűbb megközelítés lehet például a "lift-and-shift" felhőbeli migrálás modell használatához. Ebben a megközelítésben az egérmutatót az alkalmazás a meglévő régióban közben minden adatát másolja az új régióban. A másolási folyamat befejeződése után folytathatja az alkalmazás az új régióban, és ezután törölje a régi Data Lake Storage Gen1 fiók. Az áttelepítés során állásidőre szükség.
 

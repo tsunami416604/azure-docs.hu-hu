@@ -1,6 +1,6 @@
 ---
-title: Protokollok és az Azure API Management Rejtjelek kezelése |} A Microsoft Docs
-description: Megtudhatja, hogyan (TLS, SSL) protokollt és titkosítások (DES) az Azure API Management kezeléséhez.
+title: Protokollok és titkosítások kezelése az Azure API Managementban | Microsoft Docs
+description: Ismerje meg, hogyan kezelheti a protokollok (TLS, SSL) és a titkosítások (DES) használatát az Azure API Managementban.
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -9,41 +9,38 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 02/26/2019
+ms.date: 05/29/2019
 ms.author: apimpm
-ms.openlocfilehash: 91b6cd64a42319b2a5307919c2efe6bc8e5dcd64
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: f7c7fdd06480ce3da70c86d38ab0685b9b3aaaf2
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56983200"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072391"
 ---
-# <a name="manage-protocols-and-ciphers-in-azure-api-management"></a>Protokollok és az Azure API Management Rejtjelek kezelése
+# <a name="manage-protocols-and-ciphers-in-azure-api-management"></a>Protokollok és titkosítások kezelése az Azure API Management
 
-Az Azure API Management az ügyfél és a háttér-partnerek, valamint a 3DES titkosítás TLS protokollal több verzióit támogatja.
+Az Azure API Management a TLS protokoll több verzióját is támogatja az ügyfél-és a háttérbeli, valamint a 3DES titkosításhoz.
 
-Ez az útmutató bemutatja, hogyan kezelheti a protokollok és titkosítások konfigurálása az Azure API Management-példány.
+Ez az útmutató bemutatja, hogyan kezelheti a protokollok és a titkosítási konfigurációk konfigurációját egy Azure API Management-példány esetében.
 
-![Protokollok és titkosítások az APIM kezelése](./media/api-management-howto-manage-protocols-ciphers/api-management-protocols-ciphers.png)
-
-[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
+![Protokollok és titkosítások kezelése a APIM-ben](./media/api-management-howto-manage-protocols-ciphers/api-management-protocols-ciphers.png)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A jelen cikkben ismertetett lépések követéséhez rendelkeznie:
+A cikkben ismertetett lépések végrehajtásához a következőket kell tennie:
 
-* API Management-példány
+* Egy API Management-példány
 
-## <a name="how-to-manage-tls-protocols-and-3des-cipher"></a>TLS-protokollok és a 3DES titkosítás kezelése
+## <a name="how-to-manage-tls-protocols-and-3des-cipher"></a>A TLS-protokollok és a 3DES titkosítás kezelése
 
-1. Keresse meg a **API Management-példány** az Azure Portalon.
-2. Válassza ki **beállítások protokoll** a menüből.  
-3. Engedélyezi vagy letiltja a kívánt protokollok vagy Rejtjelek.
-4. Kattintson a **Save** (Mentés) gombra. Módosítások egy órán belül lépnek érvénybe.  
+1. Navigáljon a **API Management** -példányhoz a Azure Portal.
+2. Válassza ki a **protokoll beállításait** a menüből.  
+3. A kívánt protokollok vagy titkosítások engedélyezése vagy letiltása.
+4. Kattintson a **Save** (Mentés) gombra. A módosítások egy órán belül lesznek alkalmazva.  
 
 ## <a name="next-steps"></a>További lépések
 
-* Tudjon meg többet [TLS (Transport Layer Security)](https://docs.microsoft.com/dotnet/framework/network-programming/tls).
-* Tekintse meg a további [videók](https://azure.microsoft.com/documentation/videos/index/?services=api-management) az API Management ismertetése.
+* További információ a [TLS-ről (Transport Layer Security)](https://docs.microsoft.com/dotnet/framework/network-programming/tls).
+* További [videók](https://azure.microsoft.com/documentation/videos/index/?services=api-management) a API Managementról.

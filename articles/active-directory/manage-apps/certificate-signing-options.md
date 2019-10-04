@@ -1,10 +1,10 @@
 ---
-title: Speciális tanúsítvány-aláírási beállítások előre integrált alkalmazások az Azure Active Directory a SAML-jogkivonat |} A Microsoft Docs
-description: Ismerje meg, speciális tanúsítvány-aláírási beállítások előre integrált alkalmazások az Azure Active Directory a SAML-jogkivonat használatával
+title: Speciális SAML-jogkivonat tanúsítvány-aláírási lehetőségei az előre integrált Azure AD-alkalmazásokhoz | Microsoft Docs
+description: Megtudhatja, hogyan használhatja a speciális tanúsítvány-aláírási lehetőségeket az SAML-jogkivonatban az előre integrált alkalmazások Azure Active Directory
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,74 +12,68 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.author: celested
+ms.author: mimart
 ms.reviewer: jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bede53ef2bc05750be21f831fc0cb790a001c6c5
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: ea99344399dbbbc17f0d7381e54ab68ae4bcc78f
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549337"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381262"
 ---
-# <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>Speciális tanúsítvány-aláírási beállítások katalógusbeli alkalmazásokat az Azure Active Directory a SAML-jogkivonat
+# <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>Speciális tanúsítvány-aláírási beállítások az SAML-jogkivonatban a Gallery-alkalmazásokhoz Azure Active Directory
 
-Még ma az Azure Active Directory (Azure AD) több ezer előre integrált alkalmazás támogatja az Azure Active Directory-alkalmazás gyűjtemény. Az alkalmazások több mint 500 támogatja az egyszeri bejelentkezés használatával a [Security Assertion Markup Language](https://wikipedia.org/wiki/Security_Assertion_Markup_Language) (SAML) 2.0-s protokoll, mint például a [NetSuite](https://azuremarketplace.microsoft.com/marketplace/apps/aad.netsuite) alkalmazás. Egy ügyfél egy alkalmazást az Azure AD-n keresztül SAML használatával hitelesíti magát, amikor az Azure AD egy tokent az alkalmazást (egy HTTP POST) küld. Az alkalmazás ellenőrzi, és használja a jogkivonatot az ügyfél nem kér a felhasználónévvel és jelszóval bejelentkezni. Ezek a SAML-jogkivonatok van bejelentkezve az Azure AD-ben és a standard algoritmusok által létrehozott egyedi tanúsítvánnyal.
+Ma Azure Active Directory (Azure AD) több ezer előre integrált alkalmazást támogat a Azure Active Directory app Galleryben. Az alkalmazások több mint 500 támogatja az egyszeri bejelentkezést az [Security Assertion Markup Language](https://wikipedia.org/wiki/Security_Assertion_Markup_Language) (SAML) 2,0 protokoll, például a [NetSuite](https://azuremarketplace.microsoft.com/marketplace/apps/aad.netsuite) alkalmazás használatával. Amikor az ügyfél az SAML használatával hitelesít egy alkalmazást az Azure AD-n keresztül, az Azure AD tokent küld az alkalmazásnak (HTTP-POSTon keresztül). Az alkalmazás ezután ellenőrzi és használja a jogkivonatot, hogy bejelentkezzen az ügyfélen a Felhasználónév és a jelszó kérése helyett. Ezek az SAML-tokenek az Azure AD-ben generált egyedi tanúsítvánnyal és meghatározott szabványos algoritmusokkal vannak aláírva.
 
-Azure ad-ben használja az alapértelmezett beállítások némelyike a katalógus alkalmazásokat. Az alapértelmezett értékek beállítása az alkalmazások követelményeinek megfelelően.
+Az Azure AD a katalógus alkalmazásaihoz tartozó alapértelmezett beállításokat használja. Az alapértelmezett értékeket az alkalmazás követelményei alapján állítja be a rendszer.
 
-Az Azure AD-ben állíthat be a tanúsítvány-aláírási beállítások és a tanúsítvány-aláírási algoritmus.
+Az Azure AD-ben beállíthat tanúsítvány-aláírási beállításokat és a tanúsítvány-aláírási algoritmust.
 
 ## <a name="certificate-signing-options"></a>Tanúsítvány-aláírási lehetőségek
 
-Az Azure AD által támogatott három tanúsítvány-aláírási beállítások:
+Az Azure AD három tanúsítvány-aláírási lehetőséget támogat:
 
-* **SAML-előfeltétel aláírása**. Ez az alapértelmezett beállítás a katalógus alkalmazások többsége van beállítva. Ha ezt a lehetőséget választja, az Azure AD Identitásszolgáltatóként (IdP), aláírja a SAML helyességi feltétel és a tanúsítvány a [X.509](https://wikipedia.org/wiki/X.509) tanúsítvány az alkalmazás.
+* **SAML-állítás aláírása**. Ez az alapértelmezett beállítás a legtöbb katalógus-alkalmazás esetében be van állítva. Ha ezt a lehetőséget választja, az Azure AD (identitásszolgáltató) azonosítja az SAML-kijelentést és a tanúsítványt az alkalmazás [X. 509](https://wikipedia.org/wiki/X.509) tanúsítványával.
 
-* **SAML-válasz aláírása**. Ezt a beállítást, ha az Azure AD-Identitásszolgáltatóként aláírja a SAML-válasz az alkalmazás X.509 tanúsítvánnyal.
+* **SAML-válasz aláírása**. Ha ezt a lehetőséget választja, az Azure AD-t identitásszolgáltató aláírja az SAML-választ az alkalmazás X. 509 tanúsítványával.
 
-* **SAML-válasz és -előfeltétel aláírása**. Ezt a beállítást, ha az Azure AD-Identitásszolgáltatóként aláírja az X.509-tanúsítvány az alkalmazás teljes SAML-jogkivonatban.
+* **SAML-válasz és-érvényesítés aláírása**. Ha ezt a lehetőséget választja, az Azure AD identitásszolgáltató a teljes SAML-tokent az alkalmazás X. 509 tanúsítványával aláírja.
 
-## <a name="certificate-signing-algorithms"></a>A tanúsítvány-aláírási algoritmus
+## <a name="certificate-signing-algorithms"></a>Tanúsítvány-aláírási algoritmusok
 
-Az Azure AD két aláíró algoritmust, vagy a biztonságos kivonatoló algoritmus (SHA), a SAML-válasz aláírásához támogatja:
+Az Azure AD két aláírási algoritmust vagy biztonságos kivonatoló algoritmust (SHA) támogat az SAML-válasz aláírásához:
 
-* **SHA-256**. Azure ad-ben az SAML-válasz aláírásához használja az alapértelmezett algoritmus. A legújabb algoritmus és biztonságosabb, mint az SHA-1. Az alkalmazások többsége támogatja az SHA-256 algoritmust. Ha egy alkalmazás támogatja a csak az SHA-1, az aláírási algoritmus, módosíthatja. Ellenkező esetben javasoljuk, hogy az SHA-256 algoritmust a SAML-válasz aláírása használjon.
+* **SHA-256**. Az Azure AD ezt az alapértelmezett algoritmust használja az SAML-válasz aláírásához. Ez a legújabb algoritmus, és biztonságosabb, mint az SHA-1. Az alkalmazások többsége támogatja az SHA-256 algoritmust. Ha egy alkalmazás csak az SHA-1 algoritmust támogatja, akkor módosíthatja azt. Ellenkező esetben javasoljuk, hogy az SAML-válasz aláírásához használja az SHA-256 algoritmust.
 
-* **AZ SHA-1**. Ez az algoritmus régebbi, és akkor számít kisebb biztonságos, mint az SHA-256 algoritmust. Ha egy alkalmazás támogatja az aláíró algoritmus, ezt a lehetőséget is válassza ki a **aláírási algoritmus** legördülő listából. Ezután az Azure AD SAML-válasz az SHA-1 algoritmussal jelentkezik.
+* **SHA-1**. Ez az algoritmus régebbi, és kevésbé biztonságos, mint az SHA-256. Ha egy alkalmazás csak ezt az aláírási algoritmust támogatja, ezt a lehetőséget az **aláírási algoritmus** legördülő listájában választhatja ki. Az Azure AD ezután aláírja az SAML-választ az SHA-1 algoritmussal.
 
-## <a name="change-certificate-signing-options-and-signing-algorithm"></a>Tanúsítvány-aláírási beállítások és az aláírási algoritmus módosítása
+## <a name="change-certificate-signing-options-and-signing-algorithm"></a>Tanúsítvány-aláírási beállítások és aláírási algoritmus módosítása
 
-A tanúsítvány-aláírási algoritmus és a egy alkalmazás SAML-tanúsítvány aláírási beállítások módosításához válassza ki a kérdéses alkalmazás:
+Az alkalmazás SAML-tanúsítvány-aláírási beállításainak és a tanúsítvány-aláírási algoritmus módosításához válassza ki a szóban forgó alkalmazást:
 
-1. Az a [Azure Active Directory portálon](https://aad.portal.azure.com/), jelentkezzen be a fiókjába. A **Azure Active Directory felügyeleti központ** lap jelenik meg.
-1. A bal oldali panelen válassza ki a **Vállalati alkalmazások** elemet. A fiók a vállalati alkalmazások listája jelenik meg.
-1. Válasszon ki egy alkalmazást. Az alkalmazás áttekintő oldala jelenik meg.
+1. A [Azure Active Directory portálon](https://aad.portal.azure.com/)jelentkezzen be a fiókjába. Megjelenik a **Azure Active Directory felügyeleti központ** lap.
+1. A bal oldali panelen válassza ki a **Vállalati alkalmazások** elemet. Megjelenik a fiókjában a vállalati alkalmazások listája.
+1. Válasszon ki egy alkalmazást. Megjelenik az alkalmazás áttekintő lapja.
 
-   ![Alkalmazások – Áttekintés lap](./media/certificate-signing-options/application-overview-page.png)
+   ![Példa: Alkalmazás – Áttekintés lap](./media/certificate-signing-options/application-overview-page.png)
 
-Ezután módosítsa a tanúsítvány-aláírási beállítások az adott alkalmazáshoz SAML-jogkivonat:
+Ezután módosítsa az alkalmazás SAML-jogkivonatának tanúsítvány-aláírási beállításait:
 
-1. Az alkalmazás áttekintés oldal bal oldali panelen válassza ki a **egyszeri bejelentkezési**.
+1. Az alkalmazás – Áttekintés lap bal oldali ablaktábláján válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Ha megjelenik az **egyszeri bejelentkezés az SAML-** előnézettel lapon, akkor lépjen az 5. lépésre.
+1. Ha az **egyszeri bejelentkezési módszer kiválasztása** lap nem jelenik meg, válassza az **egyszeri bejelentkezési módok módosítása** lehetőséget az oldal megjelenítéséhez.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget, ha elérhető. (Ha az **SAML** nem érhető el, az alkalmazás nem támogatja az SAML használatát, és figyelmen kívül hagyhatja az eljárás és a cikk további részét.)
+1. Az **egyszeri bejelentkezés az SAML-vel – előzetes** verziójának beállítása lapon keresse meg az **SAML aláíró tanúsítvány** fejlécét, és válassza a **Szerkesztés** ikont (egy ceruza). Megjelenik az **SAML aláíró tanúsítvány** lapja.
 
-2. Ha a **állítsa be egyszeri bejelentkezést az SAML - előzetes verzió** lap jelenik meg, folytassa az 5. lépés.
+   ![Példa: SAML-aláíró tanúsítvány lapja](./media/certificate-signing-options/saml-signing-page.png)
 
-3. Ha a **egyszeri bejelentkezési módszer** lap nem jelenik meg, jelölje be **egyszeri bejelentkezési mód módosítása** adott oldalának megnyitásához.
-
-4. Az a **egyszeri bejelentkezési módszer** lapra, jelölje be **SAML** ha rendelkezésre áll. (Ha **SAML** nem érhető el, az alkalmazás nem támogatja az SAML, és hagyja ki az eljárás, és a cikk többi.)
-
-5. Az a **állítsa be egyszeri bejelentkezést az SAML - előzetes verzió** lapon, keresse meg a **SAML-aláíró tanúsítvány** címsor, és válassza ki a **szerkesztése** ikon (a Ceruza). A **SAML-aláíró tanúsítvány** lap jelenik meg.
-
-   ![SAML-aláíró lap](./media/certificate-signing-options/saml-signing-page.png)
-
-6. Az a **aláírási beállítás** legördülő menüben válassza ki **bejelentkezési SAML-válasz**, **bejelentkezési SAML helyességi feltétel**, vagy **bejelentkezési SAML-válasz és -előfeltétel**. Ezek a beállítások leírását a jelen cikk korábbi jelennek meg a [tanúsítvány-aláírási beállítások](#certificate-signing-options).
-
-7. Az a **aláírási algoritmus** legördülő menüben válassza ki **SHA-1** vagy **SHA-256**. Ezek a beállítások leírását a jelen cikk korábbi jelennek meg a [tanúsítvány-aláírási algoritmusokat](#certificate-signing-algorithms) szakaszban.
-
-8. Ha már elégedett a kiválasztott beállításokat, jelölje be **mentése** a alkalmazni az új SAML-aláíró tanúsítvány beállításait. Ellenkező esetben válassza a **X** elveti a módosításokat.
+1. Az aláírási lehetőség legördülő listában válassza az **SAML-válasz aláírása**, az **SAML-érvényesítés**aláírása vagy az **SAML-válasz és-állítás aláírása** **lehetőséget** . Ezen beállítások leírása a jelen cikk korábbi részében jelenik meg a [tanúsítvány](#certificate-signing-options)-aláírási beállításokban.
+1. Az **aláírási algoritmus** legördülő listában válassza az **SHA-1** vagy az **SHA-256**elemet. Ezen beállítások leírása a jelen cikk korábbi, a tanúsítvány- [aláírási algoritmusok](#certificate-signing-algorithms) szakaszban található.
+1. Ha elégedett a lehetőségeivel, válassza a **Mentés** lehetőséget az új SAML-aláíró tanúsítvány beállításainak alkalmazásához. Ellenkező esetben válassza az **X-et** a módosítások elvetéséhez.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Egyszeri bejelentkezés alkalmazásokhoz, amelyek nem szerepelnek az Azure Active Directory-alkalmazás gyűjtemény konfigurálása](configure-federated-single-sign-on-non-gallery-applications.md)
-* [SAML-alapú egyszeri bejelentkezés hibaelhárítása](../develop/howto-v1-debug-saml-sso-issues.md)
+* [Egyszeri bejelentkezés konfigurálása olyan alkalmazásokhoz, amelyek nem szerepelnek a Azure Active Directory app Galleryben](configure-federated-single-sign-on-non-gallery-applications.md)
+* [SAML-alapú egyszeri bejelentkezés – problémamegoldás](../develop/howto-v1-debug-saml-sso-issues.md)

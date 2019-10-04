@@ -1,5 +1,5 @@
 ---
-title: 'A VS Code: Csatlakozás és adatlekérdezés az Azure SQL Database |} A Microsoft Docs'
+title: 'VS kód: Adatkapcsolat és-lekérdezés Azure SQL Databaseban | Microsoft Docs'
 description: Ebből a cikkből megtudhatja, hogyan csatlakozhat az SQL Database-hez az Azure-ban a Visual Studio Code segítségével. Ezután futtasson Transact-SQL (T-SQL) utasításokat az adatok lekérdezéséhez és szerkesztéséhez.
 keywords: csatlakozás SQL Database-adatbázishoz
 services: sql-database
@@ -11,36 +11,35 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 03/25/2019
-ms.openlocfilehash: 8901855ad68a5edb4710853dcde9311216fa2d61
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d8f12e699c17787d897a7f5ed23eccdbf3659921
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59357093"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569139"
 ---
-# <a name="quickstart-use-visual-studio-code-to-connect-and-query-an-azure-sql-database"></a>Gyors útmutató: A Visual Studio Code használatával csatlakozhat, és Azure SQL Database-adatbázis lekérdezéséhez
+# <a name="quickstart-use-visual-studio-code-to-connect-and-query-an-azure-sql-database"></a>Gyors útmutató: A Visual Studio Code használata egy Azure SQL Databasehoz való kapcsolódáshoz és lekérdezéshez
 
-[A Visual Studio Code](https://code.visualstudio.com/docs) van egy grafikus Kódszerkesztő Linux, macOS és Windows. Támogatja a bővítményeket, beleértve a [mssql bővítményt](https://aka.ms/mssql-marketplace) a Microsoft SQL Server, az Azure SQL Database és az SQL Data Warehouse lekérdezéséhez. Ebben a rövid útmutatóban fogja használni a Visual Studio Code egy Azure SQL Database-adatbázishoz csatlakozni, majd futtassa a Transact-SQL-utasítások használatával lekérdezni, beszúrni, frissíteni és törli az adatokat.
+[A Visual Studio Code](https://code.visualstudio.com/docs) van egy grafikus Kódszerkesztő Linux, macOS és Windows. Támogatja a bővítményeket, beleértve a [mssql bővítményt](https://aka.ms/mssql-marketplace) a Microsoft SQL Server, az Azure SQL Database és az SQL Data Warehouse lekérdezéséhez. Ebben a rövid útmutatóban a Visual Studio Code használatával csatlakozik egy Azure SQL Database-adatbázishoz, majd Transact-SQL-utasítások futtatásával kérdezheti le, szúrhatja be, frissítheti és törölheti az adatokat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Azure SQL Database-adatbázis. Az alábbi rövid útmutatókban hozhat létre, és válassza az Azure SQL Database egy adatbázis is használja:
+- Azure SQL-adatbázis. Az alábbi rövid útmutatók segítségével hozhat létre és konfigurálhat egy adatbázist Azure SQL Databaseban:
 
   || Önálló adatbázis | Felügyelt példány |
   |:--- |:--- |:---|
-  | Létrehozás| [Portál](sql-database-single-database-get-started.md) | [Portál](sql-database-managed-instance-get-started.md) |
+  | Hozzon létre| [Portál](sql-database-single-database-get-started.md) | [Portál](sql-database-managed-instance-get-started.md) |
   || [Parancssori felület](scripts/sql-database-create-and-configure-database-cli.md) | [Parancssori felület](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | Konfigurálás | [kiszolgálószintű IP-tűzfalszabály](sql-database-server-level-firewall-rule.md)| [Kapcsolat egy virtuális gépről](sql-database-managed-instance-configure-vm.md)|
-  |||[Helyszíni kapcsolat](sql-database-managed-instance-configure-p2s.md)
-  |Adatok betöltése|Az Adventure Works betöltött száma a rövid útmutató|[Állítsa vissza a Wide World Importers](sql-database-managed-instance-get-started-restore.md)
-  |||Állítsa vissza vagy importálása az Adventure Works [BACPAC](sql-database-import.md) fájlt [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
+  | Konfigurálás | [Kiszolgálói szintű IP-tűzfalszabály](sql-database-server-level-firewall-rule.md)| [Kapcsolódás virtuális gépről](sql-database-managed-instance-configure-vm.md)|
+  |||[Kapcsolódás a webhelyről](sql-database-managed-instance-configure-p2s.md)
+  |Adatok betöltése|Adventure Works betöltve|[Széles körű globális importőrök visszaállítása](sql-database-managed-instance-get-started-restore.md)
+  |||Adventure Works visszaállítása vagy importálása a [BACPAC](sql-database-import.md) -fájlból a [githubról](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
   |||
 
   > [!IMPORTANT]
-  > Ebben a cikkben a parancsfájlok az Adventure Works adatbázisa használatához készültek. Felügyelt példánnyal Ha az Adventure Works adatbázisa importálása-példány adatbázis, vagy módosítsa a parancsfájlokat ebben a cikkben a Wide World Importers-adatbázis használatára.
+  > A cikkben található parancsfájlok az Adventure Works-adatbázis használatára íródnak. Felügyelt példány esetén importálnia kell az Adventure Works-adatbázist egy példány-adatbázisba, vagy módosítania kell a jelen cikkben szereplő parancsfájlokat a Wide World Importálós adatbázis használatára.
 
 ## <a name="install-visual-studio-code"></a>A Visual Studio Code telepítése
 
@@ -50,7 +49,7 @@ Győződjön meg arról, hogy telepítette a legújabb [Visual Studio Code](http
 
 ### <a name="mac-os"></a>**Mac OS**
 
-MacOS rendszeren, amely .NET Core, amely az mssql bővítményt használ feltétele OpenSSL, telepítenie kell. Nyissa meg a terminált, és adja meg az alábbi parancsokat a **brew** és az **OpenSSL** telepítéséhez.
+MacOS esetén telepítenie kell az OpenSSL-t, amely az MSSQL-bővítmény által használt .NET Core előfeltétele. Nyissa meg a terminált, és adja meg az alábbi parancsokat a **brew** és az **OpenSSL** telepítéséhez.
 
 ```bash
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -69,15 +68,15 @@ Nincs szükség különleges konfigurációra.
 
 Nincs szükség különleges konfigurációra.
 
-## <a name="get-sql-server-connection-information"></a>Az SQL server-kapcsolati adatok lekéréséhez
+## <a name="get-sql-server-connection-information"></a>SQL Server-kapcsolatok adatainak beolvasása
 
-Az Azure SQL-adatbázishoz való csatlakozáshoz szükséges kapcsolati információkat kaphat. A következő eljárások szüksége a kiszolgáló teljes nevét vagy a gazdagépnév, az adatbázis neve és a bejelentkezési adatait.
+Az Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolati adatok beolvasása. A közelgő eljárásokhoz szüksége lesz a teljes kiszolgálónévre vagy az állomásnévre, az adatbázis nevére és a bejelentkezési adatokra.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-2. Keresse meg a **SQL-adatbázisok** vagy **SQL felügyelt példányai** lapot.
+2. Navigáljon az **SQL-adatbázisok** vagy az **SQL-felügyelt példányok** lapra.
 
-3. A a **áttekintése** lapon, tekintse át a teljes kiszolgálónevet melletti **kiszolgálónév** egy önálló adatbázis vagy a kiszolgáló teljes neve melletti **gazdagép** számára egy felügyelt a példány. Másolja ki a kiszolgáló nevét vagy az állomásnevet, rámutatnak, és válassza a **másolási** ikonra.
+3. Az **Áttekintés** lapon tekintse át a teljes kiszolgálónevet a **kiszolgáló neve** mellett egyetlen adatbázishoz vagy a felügyelt példányhoz tartozó **gazdagép** melletti teljes kiszolgálónévhez. A kiszolgálónév vagy az állomásnév másolásához vigye a kurzort a fölé, és válassza a **Másolás** ikont.
 
 ## <a name="set-language-mode-to-sql"></a>A nyelvmód SQL értékre állítása
 
@@ -85,7 +84,7 @@ A Visual Studio Code-ban a nyelvmód beállítása **SQL** mssql-parancsok és a
 
 1. Nyisson meg egy új Visual Studio Code-ablakot.
 
-2. Nyomja meg **Ctrl**+**N**. Megnyílik egy új egyszerű szöveges fájlt.
+2. Nyomja le a **CTRL**+**N**billentyűkombinációt. Megnyílik egy új egyszerű szöveges fájlt.
 
 3. Válassza ki **egyszerű szöveges** az állapotsor jobb alsó sarkában található.
 
@@ -96,15 +95,15 @@ A Visual Studio Code-ban a nyelvmód beállítása **SQL** mssql-parancsok és a
 A Visual Studio Code segítségével kapcsolatot hozhat létre az Azure SQL Database-kiszolgálóval.
 
 > [!IMPORTANT]
-> A folytatás előtt győződjön meg arról, hogy a kiszolgáló, és jelentkezzen be az információkat, készen áll. Ha elkezdi beírni a csatlakozási profil információit, ha módosítja a fókuszt a Visual Studio Code-ból, akkor indítsa újra a profil létrehozásához.
+> A folytatás előtt győződjön meg arról, hogy a kiszolgáló és a bejelentkezési adatok készen állnak. Ha elkezdi beírni a csatlakozási profil információit, ha módosítja a fókuszt a Visual Studio Code-ból, akkor indítsa újra a profil létrehozásához.
 
 1. A Visual Studio Code-ban nyomja le a **Ctrl + Shift + P** (vagy **F1**) a Parancskatalógus megnyitásához.
 
-2. Válassza ki **MS SQL: Csatlakozás** válassza **Enter**.
+2. Válassza az **MS SQL: kapcsolat** lehetőséget, és válassza az **ENTER billentyűt**.
 
 3. Válassza ki **kapcsolati profil létrehozása**.
 
-4. Kövesse az utasításokat követve adja meg az új profil kapcsolati tulajdonságait. Egyes értékek kiválasztása után válassza ki a **Enter** folytatásához.
+4. Kövesse az utasításokat követve adja meg az új profil kapcsolati tulajdonságait. Az egyes értékek megadása után a folytatáshoz válassza az **ENTER billentyűt** .
 
    | Tulajdonság       | Ajánlott érték | Leírás |
    | ------------ | ------------------ | ------------------------------------------------- |
@@ -120,7 +119,7 @@ A Visual Studio Code segítségével kapcsolatot hozhat létre az Azure SQL Data
 
 ## <a name="query-data"></a>Adatok lekérdezése
 
-Futtassa a következő [kiválasztása](https://msdn.microsoft.com/library/ms189499.aspx) kategóriánként az első 20 terméket a lekérdezést Transact-SQL utasítást.
+Futtassa a következő [Select](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL-utasítást az első 20 termék kategóriánkénti lekérdezéséhez.
 
 1. A szerkesztő ablakban illessze be a következő SQL-lekérdezést.
 
@@ -131,13 +130,13 @@ Futtassa a következő [kiválasztása](https://msdn.microsoft.com/library/ms189
    ON pc.productcategoryid = p.productcategoryid;
    ```
 
-2. Nyomja meg **Ctrl**+**Shift**+**E** futtatni a lekérdezést, és az eredményeket megjeleníteni a `Product` és `ProductCategory` táblákat.
+2. A **CTRL**+ `Product` `ProductCategory` billentyűt+lenyomva futtassa a lekérdezést, és jelenítse meg az eredményeket a és a táblákból.
 
     ![2 táblákból származó adatok beolvasására irányuló lekérdezés](./media/sql-database-connect-query-vscode/query.png)
 
 ## <a name="insert-data"></a>Adat beszúrása
 
-Futtassa a következő [BESZÚRÁSA](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL utasítást az új termék hozzáadása a `SalesLT.Product` tábla.
+Futtassa az alábbi [Insert](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL-utasítást egy új termék `SalesLT.Product` táblába való felvételéhez.
 
 1. Ehhez cserélje le az előző lekérdezést.
 
@@ -165,7 +164,7 @@ Futtassa a következő [BESZÚRÁSA](https://msdn.microsoft.com/library/ms174335
 
 ## <a name="update-data"></a>Adatok frissítése
 
-Futtassa a következő [frissítése](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL utasítást a hozzáadott termék frissítése.
+Futtassa a következő [frissítési](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL-utasítást a hozzáadott termék frissítéséhez.
 
 1. Cserélje le az előző lekérdezés erre:
 
@@ -179,7 +178,7 @@ Futtassa a következő [frissítése](https://msdn.microsoft.com/library/ms17752
 
 ## <a name="delete-data"></a>Adat törlése
 
-Futtassa a következő [törlése](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql) Transact-SQL utasítást az új termék eltávolítása.
+Futtassa az alábbi [delete](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql) Transact-SQL utasítást az új termék eltávolításához.
 
 1. Cserélje le az előző lekérdezés erre:
 
@@ -192,6 +191,6 @@ Futtassa a következő [törlése](https://docs.microsoft.com/sql/t-sql/statemen
 
 ## <a name="next-steps"></a>További lépések
 
-- Csatlakozás és lekérdezés az SQL Server Management Studio használatával: [a rövid útmutató: SQL Server Management Studio használatával csatlakozhat egy Azure SQL Database és a lekérdezés adatokhoz](sql-database-connect-query-ssms.md).
-- Csatlakozás és lekérdezés az Azure portal használatával: [a rövid útmutató: Az Azure Portalon az SQL-Lekérdezésszerkesztő használatával csatlakozhat és kérdezhet le adatokat](sql-database-connect-query-portal.md).
+- A SQL Server Management Studio használatával történő kapcsolódáshoz és lekérdezéshez lásd: gyors útmutató [: SQL Server Management Studio használatával csatlakozhat egy Azure SQL Databasehoz, és lekérdezheti azokat](sql-database-connect-query-ssms.md).
+- A Azure Portal használatával történő kapcsolódáshoz és lekérdezéshez [lásd: gyors útmutató: A Azure Portal SQL-lekérdezés szerkesztőjével csatlakozhat, és lekérdezheti](sql-database-connect-query-portal.md)azokat.
 - Az MSDN magazin Visual Studio Code használatáról szóló cikkéhez lásd az [Adatbázis IDE létrehozása az MSSQL bővítménnyel blogbejegyzést](https://msdn.microsoft.com/magazine/mt809115).

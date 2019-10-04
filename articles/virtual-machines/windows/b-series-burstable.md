@@ -1,33 +1,32 @@
 ---
-title: Azure Windows VM-méretek – B sorozat |} A Microsoft Docs
-description: A B sorozat – adatlöket-kezelés az Azure Virtuálisgép-méretek ismerteti.
+title: B sorozatú Azure-beli Windowsos virtuális gépek méretei | Microsoft Docs
+description: Ismerteti a feltört Azure-beli VM-méretek B sorozatát.
 services: virtual-machines-windows
 documentationcenter: ''
 author: ayshakeen
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/07/2017
 ms.author: ayshak
-ms.openlocfilehash: 8530682baac1544de2c73186b35fdf193e1826bd
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 1757b513d7b5451cd22b82bedef7c4ec48906edf
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59682916"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103267"
 ---
-# <a name="b-series-burstable-virtual-machine-sizes"></a>A B sorozat – adatlöket-kezelés virtuálisgép-méretek
+# <a name="b-series-burstable-virtual-machine-sizes"></a>B sorozatú virtuális gépek méretei
 
 [!INCLUDE [virtual-machines-common-b-series-burstable](../../../includes/virtual-machines-common-b-series-burstable.md)]
 
 
-## <a name="other-sizes"></a>További méretek
+## <a name="other-sizes"></a>Egyéb méretek
 - [Általános célú](sizes-general.md)
 - [Számításra optimalizált](sizes-compute.md)
 - [Memóriaoptimalizált](../virtual-machines-windows-sizes-memory.md)
@@ -36,4 +35,4 @@ ms.locfileid: "59682916"
 - [Nagy teljesítményű számítás](sizes-hpc.md)
 
 ## <a name="next-steps"></a>További lépések
-Tudjon meg többet [Azure számítási egységek (ACU)](acu.md) Azure-termékváltozatok hasonlítsa össze a számítási teljesítményt nyújt segítséget.
+További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

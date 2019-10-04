@@ -1,51 +1,51 @@
 ---
-title: Használja az Azure Data Lake Storage Gen2 URI
-description: Használja az Azure Data Lake Storage Gen2 URI
-services: storage
-author: jamesbak
+title: A Azure Data Lake Storage Gen2 URI használata
+description: A Azure Data Lake Storage Gen2 URI használata
+author: normesta
 ms.topic: conceptual
-ms.author: jamesbak
+ms.author: normesta
 ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: e4f148ac6f66cfbd7d89eff3623418197c2e0a33
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.reviewer: jamesbak
+ms.openlocfilehash: 04df30c2a97e865d23999df26768b38cb38be607
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59681182"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855557"
 ---
-# <a name="use-the-azure-data-lake-storage-gen2-uri"></a>Használja az Azure Data Lake Storage Gen2 URI
+# <a name="use-the-azure-data-lake-storage-gen2-uri"></a>A Azure Data Lake Storage Gen2 URI használata
 
-A [Hadoop-fájlrendszer](https://www.aosabook.org/en/hdfs.html) illesztőprogramot, amely kompatibilis az Azure Data Lake Storage Gen2 a rendszer-azonosító alapján van azonosítva `abfs` (Azure Blob-fájlrendszer). Más Hadoop-fájlrendszer illesztőprogramok összhangban a ABFS illesztőprogram alkalmaz egy URI-formátum cím fájlok és könyvtárak egy Data Lake Storage Gen2 képes a fiókon belül.
+A Azure Data Lake Storage Gen2 kompatibilis [Hadoop fájlrendszer](https://www.aosabook.org/en/hdfs.html) -illesztőprogramot a séma-azonosítója `abfs` (Azure Blob fájlrendszer) ismeri. Más Hadoop fájlrendszer-illesztőprogramokkal összhangban a ABFS-illesztőprogram egy URI-formátumot alkalmaz a fájlok és könyvtárak egy Data Lake Storage Gen2 képes fiókon belüli kezelésére.
 
 ## <a name="uri-syntax"></a>URI-szintaxis
 
-A Data Lake Storage Gen2 URI szintaxisa függ-e beállítása a tárfiókhoz, Data Lake Storage Gen2 az alapértelmezett fájlrendszerként van.
+Data Lake Storage Gen2 URI-szintaxisa attól függ, hogy a Storage-fiók úgy van-e beállítva, hogy az alapértelmezett fájlrendszerként Data Lake Storage Gen2.
 
-Ha a Data Lake Storage Gen2 képes a fiókot szeretné cím **nem** állítja be az alapértelmezett fájlrendszer fiók létrehozása során, akkor az URI szintaxisának gyorsírás:
+Ha a kezelni kívánt Data Lake Storage Gen2-fiók nem alapértelmezett fájlrendszerként **van** beállítva a fiók létrehozása során, akkor a Gyorsírás URI-szintaxisa a következő:
 
 <pre>abfs[s]<sup>1</sup>://&lt;file_system&gt;<sup>2</sup>@&lt;account_name&gt;<sup>3</sup>.dfs.core.windows.net/&lt;path&gt;<sup>4</sup>/&lt;file_name&gt;<sup>5</sup></pre>
 
-1. **Sémaazonosítót**: A `abfs` protokoll a séma azonosítóként van használatban. Lehetősége van csatlakozni, vagy a secure socket layer (SSL) kapcsolat nélkül. Használat `abfss` secure socket layer-kapcsolattal csatlakozni.
+1. **Séma azonosítója**: A `abfs` protokoll a séma-azonosítóként szolgál. Az SSL-kapcsolat használatával vagy anélkül is csatlakozhat. A `abfss` használatával csatlakozhat egy biztonságos szoftvercsatorna-kapcsolathoz.
 
-2. **Fájlrendszer**: A szülő hely neve, amely tárolja a fájlokat és mappákat. Ez megegyezik a tárolók az Azure Storage Blobs szolgáltatásban.
+2. **Fájlrendszer**: A fájlokat és mappákat tároló szülő hely. Ez ugyanaz, mint az Azure Storage-Blobok szolgáltatás tárolói.
 
-3. **Fiók neve**: A storage-fiók létrehozása során adott név.
+3. **Fiók neve**: A Storage-fióknak a létrehozás során megadott neve.
 
-4. **Elérési utak**: Tagolt perjellel (`/`) a könyvtárstruktúra ábrázolása.
+4. **Elérési utak**: A címtár struktúrájának perjel tagolt (`/`) ábrázolása.
 
-5. **Fájlnév**: Az egyes fájl neve. Ez a paraméter nem kötelező, ha éppen aktuális címtár.
+5. **Fájlnév**: Az egyedi fájl neve. Ez a paraméter nem kötelező, ha egy könyvtárat intéz.
 
-Azonban ha a cím kívánt fiók be van állítva az alapértelmezett fájlrendszerként fiók létrehozása során, majd a gyorsírás URI szintaxisának a következő:
+Ha azonban a kezelni kívánt fiók alapértelmezett fájlrendszerként van beállítva a fiók létrehozása során, akkor a Gyorsírás URI-szintaxisa a következő:
 
 <pre>/&lt;path&gt;<sup>1</sup>/&lt;file_name&gt;<sup>2</sup></pre>
 
-1. **Elérési út**: Tagolt perjellel (`/`) a könyvtárstruktúra ábrázolása.
+1. **Elérési út**: A címtár struktúrájának perjel tagolt (`/`) ábrázolása.
 
-2. **Fájlnév**: Az egyes fájl neve.
+2. **Fájlnév**: Az egyedi fájl neve.
 
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtök](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+- [Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtökkel](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)

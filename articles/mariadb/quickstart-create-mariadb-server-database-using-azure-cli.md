@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.date: 01/09/2019
 ms.custom: mvc
 ms.openlocfilehash: 7d94834523e331ff048f787760561739765e7023
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57842294"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66171423"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>Azure Database for MariaDB-kiszolgáló létrehozása az Azure CLI használatával
 
@@ -52,7 +52,7 @@ resource-group | **myresourcegroup** | Adja meg az Azure-erőforráscsoport nev�
 sku-name | **GP_Gen5_2** | A termékváltozat neve. A *tarifacsomag*\_*számítási generáció*\_*virtuális magok* mintát követi rövidített módon. Az **sku-name** paraméterről az alábbi táblázat utáni szakaszban talál további információt.
 backup-retention | **7** | Az az időtartam, ameddig egy biztonsági mentést meg kell őrizni. A mértékegysége a nap. Értékek: 7 – 35. 
 geo-redundant-backup | **Letiltva** | Azt adja meg, hogy a georedundáns biztonsági mentést engedélyezni kell-e ehhez a kiszolgálóhoz. Megengedett értékek: **Engedélyezett**, **letiltott**.
-location | **westus** | A kiszolgáló Azure-helye.
+hely | **westus** | A kiszolgáló Azure-helye.
 ssl-enforcement | **Engedélyezve** | Azt adja meg, hogy engedélyezni kell-e az SSL-t ehhez a kiszolgálóhoz. Megengedett értékek: **Engedélyezett**, **letiltott**.
 storage-size | **51200** | A kiszolgáló tárkapacitása (megabájtban megadva). Az érvényes tárolóméretek: 5120 Mb (legalább), 1024 MB-os egységekben történő növekedéssel. További információ a tárolóméret korlátairól: [Tarifacsomagok](./concepts-pricing-tiers.md). 
 version | **10.2** | A MariaDB fő motorjának verziója.
@@ -215,7 +215,7 @@ Csatlakozás a kiszolgálóhoz a mysql parancssori eszköz használatával:
    |---|---|---|
    | Kapcsolat neve | **Bemutató kapcsolat** | Adjon meg egy címkét a kapcsolathoz (a kapcsolat neve tetszőlegesen kiválasztható) |
    | Kapcsolati módszer | **Standard (TCP/IP)** | Csatlakozás az Azure Database for MariaDB-hez a TCP/IP protokollal |
-   | Gazdanév | **mydemoserver.mariadb.database.azure.com** | A korábban feljegyzett kiszolgálónév. |
+   | Állomásnév | **mydemoserver.mariadb.database.azure.com** | A korábban feljegyzett kiszolgálónév. |
    | Port | **3306** | Az Azure Database for MariaDB alapértelmezett portja. |
    | Felhasználónév | **myadmin\@mydemoserver** | A korábban feljegyzett kiszolgáló-rendszergazdai bejelentkezési név. |
    | Jelszó | *az Ön jelszava* | A korábban beállított rendszergazdai fiók jelszavát használja. |

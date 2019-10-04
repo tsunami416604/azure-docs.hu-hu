@@ -1,6 +1,6 @@
 ---
-title: Biztonsági szempontok az Azure Data Factoryban |} A Microsoft Docs
-description: Ismerteti az alapvető biztonsági infrastruktúra, amellyel az Azure Data Factoryban adatátviteli szolgáltatások védelme érdekében az adatok.
+title: Biztonsági megfontolások a Azure Data Factoryban | Microsoft Docs
+description: Ismerteti az alapszintű biztonsági infrastruktúrát, amelyet az adatátviteli szolgáltatások Azure Data Factory használnak az adatok biztonságossá tételéhez.
 services: data-factory
 documentationcenter: ''
 author: nabhishek
@@ -12,30 +12,30 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 635b45fe7f0108795c34f51081fa374c604036b2
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: b571ba8d259a5e3b3b049ad66d4718e9e85d488b
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59996125"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70931272"
 ---
-#  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Adatok áthelyezése az Azure Data Factoryban történő futtatásának biztonsági szempontjai
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+#  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>A Azure Data Factory adatáthelyezésének biztonsági szempontjai
+> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
 >
 > * [1-es verzió](v1/data-factory-data-movement-security-considerations.md)
 > * [Aktuális verzió](data-movement-security-considerations.md)
 
-Ez a cikk ismerteti, amelyek adatátviteli szolgáltatások az Azure Data Factory segítségével biztonságos alapvető biztonsági infrastruktúra adatait. Data Factory felügyeleti erőforrás az Azure biztonsági infrastruktúra épül, és használja az Azure-ban elérhető összes lehetséges biztonsági intézkedések.
+Ez a cikk azt az alapszintű biztonsági infrastruktúrát ismerteti, amelyet az adatátviteli szolgáltatások Azure Data Factory használnak az adatok biztonságossá tételéhez. Data Factory felügyeleti erőforrások az Azure biztonsági infrastruktúrára épülnek, és az Azure által kínált összes lehetséges biztonsági intézkedést felhasználhatják.
 
-A Data Factory-megoldásokkal egy vagy több [adatfolyamatot](concepts-pipelines-activities.md) is létrehozhat. A folyamatok olyan tevékenységek logikus csoportosításai, amelyek együttesen vesznek részt egy feladat végrehajtásában. Ezek a folyamatok a régió, ahol az adat-előállító létrejött-e lennie. 
+A Data Factory-megoldásokkal egy vagy több [adatfolyamatot](concepts-pipelines-activities.md) is létrehozhat. A folyamatok olyan tevékenységek logikus csoportosításai, amelyek együttesen vesznek részt egy feladat végrehajtásában. Ezek a folyamatok abban a régióban találhatók, ahol az adat-előállítót létrehozták. 
 
-Annak ellenére, hogy a Data Factory csak régiókban érhető el néhány, az adatátviteli szolgáltatás van [elérhető globálisan](concepts-integration-runtime.md#integration-runtime-location) adatok megfelelőség biztosítása érdekében hatékonyságát, és csökkentheti a hálózati kimenő forgalom költségeit. 
+Annak ellenére, hogy Data Factory csak néhány régióban érhető el, az adatátviteli szolgáltatás [globálisan elérhető](concepts-integration-runtime.md#integration-runtime-location) az adatmegfelelőség, a hatékonyság és a csökkentett hálózati kimenő költségek biztosításához. 
 
-Az Azure Data Factory nem tárol semmilyen adatot, kivéve a felhőalapú adattárolók, amelyek tanúsítványok segítségével lettek titkosítva társított szolgáltatás hitelesítő adatait. A Data Factory létrehozása adatvezérelt munkafolyamatok, amelyekkel előkészíthető a közötti adatmozgás [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats), és az adatok feldolgozása [számítási szolgáltatások](compute-linked-services.md) más régiókban, illetve a egy a helyszíni környezetben. Is figyelése és kezelése a munkafolyamatok SDK-k és az Azure Monitor használatával.
+A Azure Data Factory nem tárol adatokat, kivéve a társított szolgáltatás hitelesítő adatait a felhőalapú adattárakhoz, amelyek tanúsítványokkal vannak titkosítva. A Data Factory segítségével adatvezérelt munkafolyamatokat hozhat létre, amelyek a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats)közötti adatáthelyezést és az adatok feldolgozását végzik a más régiókban vagy helyszíni környezetben lévő [számítási szolgáltatások](compute-linked-services.md) használatával. Az SDK-k és a Azure Monitor használatával is nyomon követheti és kezelheti a munkafolyamatokat.
 
-A Data Factory a hitelesített:
+A Data Factory minősítése a következő:
 
-| **[CSA STAR-minősítés](https://www.microsoft.com/trustcenter/compliance/csa-star-certification)** |
+| **[CSA-csillag minősítése](https://www.microsoft.com/trustcenter/compliance/csa-star-certification)** |
 | :----------------------------------------------------------- |
 | **[ISO 20000-1:2011](https://www.microsoft.com/trustcenter/Compliance/ISO-20000-1)** |
 | **[ISO 22301:2012](https://www.microsoft.com/trustcenter/compliance/iso-22301)** |
@@ -46,142 +46,143 @@ A Data Factory a hitelesített:
 | **[SOC 1, 2, 3](https://www.microsoft.com/trustcenter/compliance/soc)** |
 | **[HIPAA BAA](https://www.microsoft.com/trustcenter/compliance/hipaa)** |
 
-Ha érdeklik az Azure megfelelőségi, és hogyan védi az Azure a saját infrastruktúráját, látogasson el a [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/default.aspx). A teljes lista az összes Azure-megfelelőségi ajánlatok ellenőrzése – https://aka.ms/AzureCompliance.
+Ha érdekli az Azure megfelelősége, és hogyan védi az Azure a saját infrastruktúráját, látogasson el a [Microsoft adatvédelmi központba](https://microsoft.com/en-us/trustcenter/default.aspx). Az összes Azure- https://aka.ms/AzureCompliance megfelelőségi ajánlat legújabb listájáért látogasson el a következőre:.
 
-Ez a cikk a következő két adattovábbítási esetekben biztonsági szempontok vizsgáljuk meg: 
+Ebben a cikkben a következő két adatáthelyezési forgatókönyvben tekintjük át a biztonsági szempontokat: 
 
-- **Alkalmazási helyzetben**: Ebben a forgatókönyvben a forrás- és a célkiszolgálón is az interneten keresztül nyilvánosan elérhető. Ezek közé tartozik például az Azure Storage, Azure SQL Data Warehouse, Azure SQL Database, Azure Data Lake Store, az Amazon S3, Amazon Redshift, SaaS-szolgáltatásokhoz, például a Salesforce és a webes protokollok, mint például az FTP- és OData felügyelt felhőalapú tárolási szolgáltatásokról. Keresse meg a támogatott adatforrások teljes listája [támogatott adattárak és formátumok](copy-activity-overview.md#supported-data-stores-and-formats).
-- **Hibrid forgatókönyv**: Ebben a forgatókönyvben a forrás- vagy a cél van egy tűzfal mögött található, vagy egy helyszíni vállalati hálózaton belül. Vagy az adattár egy saját hálózaton vagy virtuális hálózaton (általában a forrás) és nem nyilvánosan elérhető-e. Ebben a forgatókönyvben is tartozik a virtuális gépeken futtatott adatbázis-kiszolgálók.
+- **Felhőbeli forgatókönyv**: Ebben az esetben a forrás és a cél is nyilvánosan elérhető az interneten keresztül. Ezek közé tartoznak a felügyelt felhőalapú tárolási szolgáltatások, például az Azure Storage, a Azure SQL Data Warehouse, a Azure SQL Database, a Azure Data Lake Store, az Amazon S3, az Amazon vöröseltolódás, az SaaS-szolgáltatások, például a Salesforce és a webes protokollok, például az FTP és a OData. A támogatott [adattárakban és-formátumokban](copy-activity-overview.md#supported-data-stores-and-formats)található támogatott adatforrások teljes listája.
+- **Hibrid forgatókönyv**: Ebben az esetben a forrás vagy a cél egy tűzfal mögött vagy egy helyszíni vállalati hálózaton belül van. Az adattár pedig magánhálózat vagy virtuális hálózat (leggyakrabban a forrás), és nem nyilvánosan elérhető. A virtuális gépeken üzemeltetett adatbázis-kiszolgálók is ebbe a forgatókönyvbe tartoznak.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="cloud-scenarios"></a>Felhőbeli forgatókönyvek
 
-### <a name="securing-data-store-credentials"></a>Biztonságossá tétele adattár hitelesítő adatait
+### <a name="securing-data-store-credentials"></a>Adattároló hitelesítő adatainak biztonságossá tétele
 
-- **Store titkosított hitelesítő adatokat egy Azure Data Factory felügyelt áruházban**. A Data Factory segítségével a tároló hitelesítő adatainak védelme a Microsoft által kezelt tanúsítványokkal titkosításával. Ezeket a tanúsítványokat (amely tartalmazza a tanúsítvány megújításához, és a hitelesítő adatok áttelepítését) két évente vannak elforgatva. Azure Data Factory szolgáltatás által felügyelt Azure storage-fiókkal biztonságosan tárolja a titkosított hitelesítő adatokat. Azure Storage-biztonsággal kapcsolatos további információkért lásd: [Azure Storage biztonsági áttekintése](../security/security-storage-overview.md).
-- **Hitelesítő adatok Store az Azure Key Vaultban**. Az adattár hitelesítő adat is tárolhat [Azure Key Vault](https://azure.microsoft.com/services/key-vault/). A Data Factory a hitelesítő adatokat a tevékenységek végrehajtása során kérdezi le. További információkért lásd: [Store hitelesítő adatok az Azure Key Vaultban](store-credentials-in-key-vault.md).
+- **Titkosított hitelesítő adatok tárolása egy Azure Data Factory felügyelt tárolóban**. A Data Factory az adattár hitelesítő adatainak védelme érdekében titkosítja őket a Microsoft által kezelt tanúsítványokkal. Ezeket a tanúsítványokat kétévente elforgatják (ami magában foglalja a tanúsítvány megújítását és a hitelesítő adatok áttelepítését). Az Azure Storage biztonságával kapcsolatos további információkért lásd: az [Azure Storage biztonsági áttekintése](../security/fundamentals/storage-overview.md).
+- **Hitelesítő adatok tárolása Azure Key Vaultban**. Az adattár hitelesítő adatait [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)is tárolhatja. Data Factory lekéri a hitelesítő adatot egy tevékenység végrehajtása során. További információ: [a hitelesítő adatok tárolása Azure Key Vaultban](store-credentials-in-key-vault.md).
 
-### <a name="data-encryption-in-transit"></a>Adattitkosítás átvitel közben
-Ha a felhőbeli adattárban támogatja a HTTPS vagy a TLS, adat-előállítóban adatátviteli szolgáltatások közötti minden adatátvitel és egy felhőalapú adattár HTTPS vagy a TLS biztonságos csatornán keresztül.
-
-> [!NOTE]
-> Azure SQL Database és az Azure SQL Data warehouse-ba irányuló összes kapcsolatot igényelnek a titkosítás (SSL/TLS), miközben az átvitel során, illetve onnan az adatbázis az adatokat. Ha egy folyamat JSON használatával Ön szerzői, a titkosítási tulajdonság hozzáadása, illetve beállíthatja **igaz** a kapcsolati karakterláncban. Az Azure Storage esetében használható **HTTPS** a kapcsolati karakterláncban.
+### <a name="data-encryption-in-transit"></a>Adattitkosítás az átvitel során
+Ha a felhőalapú adattár támogatja a HTTPS-t vagy a TLS-t, az adatátviteli Data Factory szolgáltatások és a felhőalapú adattárolók közötti adatforgalom a biztonságos csatorna HTTPS vagy TLS protokollon keresztül történik.
 
 > [!NOTE]
-> Engedélyezése közben, amely adatokat helyez át az Oracle titkosítás az átvitel során kövesse az az alábbi beállításokat:
-> 1. Az Oracle-kiszolgálón nyissa meg az Oracle speciális biztonsági (OAS), és adja meg a titkosítási beállításokat, mely támogatja a háromszoros DES-titkosítás (3DES) és Advanced Encryption Standard (AES), tekintse meg [Itt](https://docs.oracle.com/cd/E11882_01/network.112/e40393/asointro.htm#i1008759) részleteiről. Az ADF automatikusan egyezteti OAS Oracle-kapcsolat létesítéséhez konfigurálja egy használandó titkosítási módszer.
-> 2. Az ADF, adhat hozzá, EncryptionMethod = 1 (a társított szolgáltatás), a kapcsolati karakterláncban. Ez a beállítás használja az SSL/TLS titkosítási módszert. Ennek kell az SSL titkosítási beállításainak letiltása OAS Oracle kiszolgálóoldali titkosítás ütközés elkerülése érdekében.
+> Azure SQL Database és Azure SQL Data Warehouse összes kapcsolata titkosítást igényel (SSL/TLS), miközben az adatok átvitele folyamatban van az adatbázisba és onnan. Amikor JSON használatával készít folyamatokat, adja hozzá a titkosítási tulajdonságot, és állítsa **igaz** értékre a kapcsolódási karakterláncban. Az Azure Storage esetében a kapcsolati sztringben **HTTPS protokollt** használhat.
 
 > [!NOTE]
-> Használt verzió a TLS 1.2-es.
+> Ha engedélyezni szeretné a titkosítást az Oracle-adatok áthelyezése közben, kövesse az alábbi lehetőségek egyikét:
+> 1. Az Oracle-kiszolgálón nyissa meg az Oracle Advanced Security (OAS) parancsot, és konfigurálja a titkosítási beállításokat, amelyek támogatják a Triple DES encryption (3DES) és a [](https://docs.oracle.com/cd/E11882_01/network.112/e40393/asointro.htm#i1008759) Advanced Encryption Standard (AES) használatát, további részletekért tekintse meg a következő témakört:. Az ADF automatikusan egyezteti a titkosítási módszert, hogy az Oracle-hez való kapcsolódáskor a OAS-ben konfigurált konfigurációt használja.
+> 2. Az ADF-ben a EncryptionMethod = 1 a kapcsolati sztringben (a társított szolgáltatásban) adható hozzá. Ez titkosítási módszerként az SSL/TLS protokollt fogja használni. Ennek használatához le kell tiltania a nem SSL titkosítási beállításokat a OAS az Oracle-kiszolgáló oldalán a titkosítási ütközés elkerülése érdekében.
+
+> [!NOTE]
+> A használt TLS-verzió 1,2.
 
 ### <a name="data-encryption-at-rest"></a>Adat-titkosítás inaktív állapotban
-Néhány adatot tárol az inaktív adatok titkosításának támogatása. Azt javasoljuk, hogy engedélyezze az adatok titkosítási mechanizmus ezeket olyan adattárakban. 
+Egyes adattárak támogatják a nyugalmi állapotban lévő adatok titkosítását. Javasoljuk, hogy engedélyezze az adattitkosítási mechanizmust ezekhez az adattárakhoz. 
 
 #### <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
-Transzparens adattitkosítás (TDE) az Azure SQL Data Warehouse segítségével elleni védelemhez kártevő szándékú tevékenységek által valós időben titkosítja és visszafejtése az inaktív adatokat. Ez a viselkedés az átlátható az ügyfélnek. További információkért lásd: [biztonságossá egy adatbázis az SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md).
+A Azure SQL Data Warehouse transzparens adattitkosítás (TDE) segít megvédeni a kártékony tevékenységek fenyegetését azáltal, hogy valós idejű titkosítást és visszafejtést végez az inaktív adatokon. Ez a viselkedés átlátható az ügyfél számára. További információ: [adatbázis biztonságossá tétele SQL Data Warehouseban](../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md).
 
 #### <a name="azure-sql-database"></a>Azure SQL Database
-Az Azure SQL Database támogatja a transzparens adattitkosítás (TDE) köszönhetően a amely védelmet nyújt a kártevő szándékú tevékenységek fenyegetés elleni valós idejű titkosítási és visszafejtési az adatok nem igényel változtatásokat a kérelem végrehajtásával is. Ez a viselkedés az átlátható az ügyfélnek. További információkért lásd: [transzparens adattitkosítás az SQL Database és az adatraktár](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql).
+A Azure SQL Database támogatja az transzparens adattitkosítást (TDE), amely segít megvédeni a kártékony tevékenységek fenyegetését azáltal, hogy az adatok valós idejű titkosítását és visszafejtését végzi, anélkül, hogy az alkalmazás módosítására lenne szükség. Ez a viselkedés átlátható az ügyfél számára. További információ: [transzparens adattitkosítás a SQL Database és az adattárházban](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql).
 
 #### <a name="azure-data-lake-store"></a>Azure Data Lake Store
-Az Azure Data Lake Store is biztosít a fiókban tárolt adatok titkosítását. Ha engedélyezve van, a Data Lake Store automatikusan megőrzése előtt titkosítja az adatokat, és visszafejti előtt lekéréséhez, így átlátható az ügyfélnek, amely hozzáfér az adatok. További információkért lásd: [biztonság az Azure Data Lake Store](../data-lake-store/data-lake-store-security-overview.md). 
+A Azure Data Lake Store a fiókban tárolt adatkezeléshez is biztosít titkosítást. Ha engedélyezve van, a Data Lake Store automatikusan titkosítja az adatokkal, mielőtt megőrzi és visszafejti azokat a beolvasás előtt, így transzparensvé válik az adatokhoz hozzáférő ügyfél számára. További információ: [Security in Azure Data Lake Store](../data-lake-store/data-lake-store-security-overview.md). 
 
-#### <a name="azure-blob-storage-and-azure-table-storage"></a>Az Azure Blob storage és Azure Table storage
-Az Azure Blob storage és Azure Table storage támogatja a Storage Service Encryption (SSE), amely automatikusan titkosítja az adatokat a tárolás előtt, és visszafejti őket a lekérés előtt. További információkért lásd: [Azure Storage Service Encryption az inaktív adatok](../storage/common/storage-service-encryption.md).
+#### <a name="azure-blob-storage-and-azure-table-storage"></a>Azure Blob Storage és Azure Table Storage
+Az Azure Blob Storage és az Azure Table Storage támogatási Storage Service Encryption (SSE), amely automatikusan titkosítja az adatait, mielőtt megőrzi a tárterületet, és visszafejti a beolvasás előtt. További információ: [Azure Storage Service encryption for](../storage/common/storage-service-encryption.md)inaktív adatok.
 
 #### <a name="amazon-s3"></a>Amazon S3
-Az Amazon S3 támogatja az ügyfél- és az inaktív adatok titkosítását. További információkért lásd: [védelme használatával adattitkosítás](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingEncryption.html).
+Az Amazon S3 az inaktív adatok ügyfél-és kiszolgálói titkosítását is támogatja. További információkért lásd: [adatok védelme titkosítás használatával](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingEncryption.html).
 
 #### <a name="amazon-redshift"></a>Amazon Redshift
-Amazon Redshift fürt titkosítási támogatja az inaktív adatok. További információkért lásd: [Amazon Redshift az adatbázis-titkosítás](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html). 
+Az Amazon vöröseltolódás támogatja a fürtök titkosítását a nyugalmi állapotban lévő adatokhoz. További információ: [Amazon vöröseltolódás Database encryption](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html). 
 
 #### <a name="salesforce"></a>Salesforce
-Salesforce Shield Platform titkosítás, amely lehetővé teszi az összes fájlt, a mellékletek és egyéni mezők titkosítási támogatja. További információkért lásd: [ismertetése a Web Server OAuth hitelesítési folyamatát](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_web_server_oauth_flow.htm).  
+A Salesforce támogatja a védelmi platform titkosítását, amely lehetővé teszi az összes fájl, melléklet és egyéni mező titkosítását. További információ: [a webkiszolgáló OAuth-hitelesítési folyamatának ismertetése](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_web_server_oauth_flow.htm).  
 
-## <a name="hybrid-scenarios"></a>A hibrid forgatókönyvek
-Hibrid forgatókönyvek igényelnek, saját üzemeltetésű integrációs modult egy helyi hálózaton (Azure) a virtuális hálózatokon belüli, vagy virtuális magánfelhőbe (Amazon) belül kell telepíteni. A saját üzemeltetésű integrációs modult a helyi adattárak eléréséhez képesnek kell lennie. Saját üzemeltetésű integrációs modul kapcsolatos további információkért lásd: [létrehozása és konfigurálása saját üzemeltetésű integrációs modul](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime). 
+## <a name="hybrid-scenarios"></a>Hibrid forgatókönyvek
+Hibrid forgatókönyvek esetén a saját üzemeltetésű integrációs modult egy helyszíni hálózaton, egy virtuális hálózaton (Azure) belül vagy egy virtuális magánhálózati felhőben (Amazon) belül kell telepíteni. A saját üzemeltetésű integrációs modulnak képesnek kell lennie a helyi adattárak elérésére. További információ a saját üzemeltetésű integrációs modulról: [saját üzemeltetésű integrációs modul létrehozása és konfigurálása](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime). 
 
-![saját üzemeltetésű integrációs modul csatornák](media/data-movement-security-considerations/data-management-gateway-channels.png)
+![saját üzemeltetésű Integration Runtime-csatornák](media/data-movement-security-considerations/data-management-gateway-channels.png)
 
-A parancscsatornát adatátviteli szolgáltatások a Data Factory és a saját üzemeltetésű integrációs modul közötti kommunikáció lehetővé teszi. A kommunikáció a tevékenységével kapcsolatos adatokat tartalmaz. Az adatcsatorna szolgál az adatok átviteléhez a helyszíni és felhőalapú adattárak között.    
+A parancssori csatorna lehetővé teszi az adatátviteli szolgáltatások közötti kommunikációt Data Factory és saját üzemeltetésű integrációs modulban. A kommunikáció a tevékenységgel kapcsolatos információkat tartalmaz. Az adatcsatorna a helyszíni adattárak és a Felhőbeli adattárak közötti adatátvitelhez használatos.    
 
-### <a name="on-premises-data-store-credentials"></a>A helyszíni adattár hitelesítő adatait
-A hitelesítő adatokat a helyszíni adattárakban mindig titkosítva, és tárolja. Azok, akár a saját üzemeltetésű integrációs modult tartalmazó számítógépen helyben tárolt vagy az Azure Data Factory által felügyelt storage (ugyanúgy, mint a felhőbeli adattár hitelesítő adatait) tárolja. 
+### <a name="on-premises-data-store-credentials"></a>Helyszíni adattároló hitelesítő adatai
+A hitelesítő adatokat a rendszer az adat-előállítóban tárolhatja, vagy az [adat-előállító](store-credentials-in-key-vault.md) az Azure Key Vault-ból futtatott futtatókörnyezetben hivatkozhat rá. Ha a adat-előállítóban tárolja a hitelesítő adatokat, a rendszer mindig titkosítja a saját üzemeltetésű integrációs modulban. 
+ 
+- **Hitelesítő adatok helyi tárolása**. Ha közvetlenül a **set-AzDataFactoryV2LinkedService** parancsmagot használja a kapcsolati karakterláncokkal és a JSON-ban beágyazott hitelesítő adatokkal, akkor a társított szolgáltatás titkosítva van, és a saját üzemeltetésű integrációs modulban tárolódik.  Ebben az esetben a hitelesítő adatok az Azure háttér-szolgáltatáson keresztül futnak, amely rendkívül biztonságos a saját üzemeltetésű integrációs géphez, ahol végül encrpted és tárolva van. A saját üzemeltetésű integrációs modul a Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) használatával titkosítja a bizalmas adatokat és a hitelesítő adatokat.
 
-- **Hitelesítő adatok helyben Store**. Ha azt szeretné, titkosítására és a saját üzemeltetésű integrációs modulban helyileg tárolja a hitelesítő adatait, hajtsa végre a lépéseit [adattárak az Azure Data Factory a helyszíni hitelesítő adatok titkosításához](encrypt-credentials-self-hosted-integration-runtime.md). Összekötők támogatják ezt a beállítást. A saját üzemeltetésű integrációs modult használja a Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) titkosíthatja a bizalmas adatokat és hitelesítő adatokat. 
+- **Hitelesítő adatok tárolása Azure Key Vaultban**. Az adattár hitelesítő adatait [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)is tárolhatja. Data Factory lekéri a hitelesítő adatot egy tevékenység végrehajtása során. További információ: [a hitelesítő adatok tárolása Azure Key Vaultban](store-credentials-in-key-vault.md).
 
-   Használja a **New-AzDataFactoryV2LinkedServiceEncryptedCredential** parancsmag társított szolgáltatás hitelesítő adatai és a hivatkozott szolgáltatásban található bizalmas adatainak titkosításához. Ezután használhatja a visszaadott JSON-(az a **EncryptedCredential** elemet a kapcsolati karakterlánc) használatával egy társított szolgáltatás létrehozásához a **Set-AzDataFactoryV2LinkedService** parancsmagot.  
+- A hitelesítő **adatokat helyileg tárolhatja anélkül, hogy a hitelesítő adatokat a saját üzemeltetésű integrációs modulra kellene átadnia az Azure-háttér**használatával. Ha a hitelesítő adatokat a saját üzemeltetésű integrációs modulban helyileg kívánja titkosítani és tárolni anélkül, hogy a hitelesítő adatokat a adat-előállító háttérrendszer használatával kellene elvégeznie, kövesse a [hitelesítő adatok titkosítása a helyszíni adattárakhoz Azure Data Factory-ben](encrypt-credentials-self-hosted-integration-runtime.md)című témakört. Az összes összekötő támogatja ezt a beállítást. A saját üzemeltetésű integrációs modul a Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) használatával titkosítja a bizalmas adatokat és a hitelesítő adatokat. 
 
-- **Az Azure Data Factory által felügyelt tárolási Store**. Ha közvetlenül a **Set-AzDataFactoryV2LinkedService** parancsmag és a kapcsolati sztringeket, és hitelesítő adatokat beágyazva a JSON-fájlban, a társított szolgáltatás titkosított, az Azure Data Factory által felügyelt storage tárolja. A bizalmas adatok továbbra is titkosítja a tanúsítványt, és a Microsoft felügyeli ezeket a tanúsítványokat.
+   A **New-AzDataFactoryV2LinkedServiceEncryptedCredential** parancsmag használatával Titkosítsa a társított szolgáltatás hitelesítő adatait és a bizalmas adatokat a társított szolgáltatásban. Ezután a visszaadott JSON-t (a kapcsolati karakterlánc **EncryptedCredential** eleme) használva hozzon létre egy társított szolgáltatást a **set-AzDataFactoryV2LinkedService** parancsmag használatával.  
 
 
+#### <a name="ports-used-when-encrypting-linked-service-on-self-hosted-integration-runtime"></a>A társított szolgáltatás saját üzemeltetésű integrációs modulban való titkosításához használt portok
+Alapértelmezés szerint a PowerShell az 8060-as portot használja a gépen a saját üzemeltetésű integrációs modul használatával a biztonságos kommunikáció érdekében. Ha szükséges, ez a port módosítható.  
 
-#### <a name="ports-used-when-encrypting-linked-service-on-self-hosted-integration-runtime"></a>Saját üzemeltetésű integrációs modult a társított szolgáltatás titkosításához használt portok
-Alapértelmezés szerint a PowerShell 8050 portot használja a gépen a saját üzemeltetésű integrációs modul a biztonságos kommunikáció érdekében. Ha szükséges, a port megváltoztatható.  
-
-![Az átjáró HTTPS-portja](media/data-movement-security-considerations/https-port-for-gateway.png)
+![HTTPS-port az átjáróhoz](media/data-movement-security-considerations/https-port-for-gateway.png)
 
  
 
 
-### <a name="encryption-in-transit"></a>Titkosítás az átvitel során
-Zajló teljes adatforgalom biztonságos csatornán keresztül HTTPS és a TLS man-in-the-middle támadások megelőzése érdekében az Azure-szolgáltatásokkal folytatott kommunikáció során a TCP-n keresztül.
+### <a name="encryption-in-transit"></a>Titkosítás átvitel közben
+Az adatátvitel a biztonságos csatorna HTTPS protokollon és a TLS protokollon keresztül történik az Azure-szolgáltatásokkal folytatott kommunikáció során.
 
-Is [IPSec VPN](../vpn-gateway/vpn-gateway-about-vpn-devices.md) vagy [Azure ExpressRoute](../expressroute/expressroute-introduction.md) további védelméhez a kommunikációs csatornát a helyszíni hálózat és az Azure között.
+Az [IPSec VPN](../vpn-gateway/vpn-gateway-about-vpn-devices.md) -t vagy az [Azure ExpressRoute](../expressroute/expressroute-introduction.md) -t is használhatja a kommunikációs csatorna további biztonságossá tételéhez a helyszíni hálózat és az Azure között.
 
-Az Azure virtuális hálózat a felhőbeli hálózatának logikai megfelelője. A virtuális hálózat egy helyszíni hálózat csatlakozhat IPSec VPN (site-to-site) vagy az ExpressRoute (privát társviszony-létesítés) beállításával.    
+Az Azure Virtual Network a hálózat logikai ábrázolása a felhőben. A helyszíni hálózatot a virtuális hálózathoz az IPSec VPN (helyek közötti) vagy a ExpressRoute (privát társ) beállításával lehet összekapcsolni.    
 
-A következő táblázat összefoglalja a hálózaton, és eltérő kombinációja a forrás- és helyek az adatok hibrid áthelyezése alapján saját üzemeltetésű integrációs modul konfigurációs javaslatokat.
+A következő táblázat összefoglalja a hálózat és a saját üzemeltetésű integrációs modul konfigurációs javaslatait a hibrid adatáthelyezéshez használt forrás-és célhelyek különböző kombinációi alapján.
 
-| Forrás      | Cél                              | Hálózati konfiguráció                    | Integrációs modul telepítése                |
+| Source      | Cél                              | Hálózati konfiguráció                    | Integrációs modul telepítése                |
 | ----------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Helyszíni követelmények | Virtuális gépek és felhőszolgáltatások üzembe helyezett virtuális hálózatok | IPSec VPN (pont – hely vagy site-to-site) | A saját üzemeltetésű integrációs modul egy Azure virtuális gépen a virtuális hálózatban kell telepíteni.  |
-| Helyszíni követelmények | Virtuális gépek és felhőszolgáltatások üzembe helyezett virtuális hálózatok | ExpressRoute (privát társviszony-létesítés)           | A saját üzemeltetésű integrációs modul egy Azure virtuális gépen a virtuális hálózatban kell telepíteni.  |
-| Helyszíni követelmények | Egy nyilvános végponttal rendelkező Azure-alapú szolgáltatások | ExpressRoute (a Microsoft társviszony-létesítés)            | A saját üzemeltetésű integrációs modult is lehet a telepített helyszíni vagy Azure virtuális géphez. |
+| Helyszíni követelmények | Virtuális hálózatokban üzembe helyezett virtuális gépek és felhőalapú szolgáltatások | IPSec VPN (pont – hely vagy hely – hely) | A saját üzemeltetésű integrációs modult egy Azure-beli virtuális gépre kell telepíteni a virtuális hálózaton.  |
+| Helyszíni követelmények | Virtuális hálózatokban üzembe helyezett virtuális gépek és felhőalapú szolgáltatások | ExpressRoute (privát társ)           | A saját üzemeltetésű integrációs modult egy Azure-beli virtuális gépre kell telepíteni a virtuális hálózaton.  |
+| Helyszíni követelmények | Nyilvános végponttal rendelkező Azure-alapú szolgáltatások | ExpressRoute (Microsoft-társ)            | A saját üzemeltetésű integrációs modult a helyszínen vagy egy Azure-beli virtuális gépen lehet telepíteni. |
 
-Az alábbi képeken az adatok áthelyezése egy helyszíni adatbázisból és az Azure-szolgáltatások között ExpressRoute- és IPSec VPN (az Azure Virtual Network) a saját üzemeltetésű integrációs modul használata:
+Az alábbi képek a saját üzemeltetésű integrációs modul használatát mutatják be a helyszíni adatbázis és az Azure-szolgáltatások közötti adatáthelyezéshez a ExpressRoute és az IPSec VPN használatával (Azure Virtual Network):
 
 **ExpressRoute**
 
-![Használja az ExpressRoute-átjáróval](media/data-movement-security-considerations/express-route-for-gateway.png) 
+![ExpressRoute használata az átjáróval](media/data-movement-security-considerations/express-route-for-gateway.png) 
 
 **IPSec VPN**
 
-![IPSec VPN-átjáróval](media/data-movement-security-considerations/ipsec-vpn-for-gateway.png)
+![IPSec VPN átjáróval](media/data-movement-security-considerations/ipsec-vpn-for-gateway.png)
 
-### <a name="firewall-configurations-and-whitelisting-ip-address-of-gateway"></a> Tűzfal-konfigurációk és engedélyezési IP-címek
+### <a name="firewall-configurations-and-whitelisting-ip-address-of-gateway"></a>Tűzfal-konfigurációk és engedélyezési IP-címek
 
-#### <a name="firewall-requirements-for-on-premisesprivate-network"></a>A helyi/InPrivate-hálózat tűzfalkövetelményei  
-Vállalati vállalati tűzfal fut, a szervezet a központi útválasztón. Windows tűzfal démonként fut, a helyi gépen, amely a saját üzemeltetésű integrációs modul telepítve van. 
+#### <a name="firewall-requirements-for-on-premisesprivate-network"></a>A tűzfalra vonatkozó követelmények helyszíni/magánhálózati hálózatokhoz  
+A vállalatokban a vállalati tűzfal a szervezet központi útválasztóján fut. A Windows tűzfal démonként fut azon a helyi gépen, amelyben a saját üzemeltetésű integrációs modul telepítve van. 
 
-A következő táblázat tartalmazza a kimenő port és tartományokra vonatkozó követelmények a vállalati tűzfal:
+A következő táblázat a vállalati tűzfalak kimenő portokra és tartományokra vonatkozó követelményeit tartalmazza:
 
 | Tartománynevek                  | Kimenő portok | Leírás                              |
 | ----------------------------- | -------------- | ---------------------------------------- |
-| `*.servicebus.windows.net`    | 443            | A saját üzemeltetésű integrációs modul adatátviteli szolgáltatások a Data Factoryban való kapcsolódáshoz szükséges. |
-| `*.frontend.clouddatahub.net` | 443            | A Data Factory szolgáltatás kapcsolódni a saját üzemeltetésű integrációs modul szükséges. |
-| `download.microsoft.com`    | 443            | A saját üzemeltetésű integrációs modult a frissítések letöltéséhez szükséges. Ha letiltotta az automatikus frissítés majd, kihagyhatja ezt. |
-| `*.core.windows.net`          | 443            | Csatlakozhat a saját üzemeltetésű integrációs modul által az Azure storage-fiók használata esetén a [szakaszos Másolás](copy-activity-performance.md#staged-copy) funkció. |
-| `*.database.windows.net`      | 1433           | (Nem kötelező) Szükséges, vagy az Azure SQL Database vagy Azure SQL Data Warehouse másolásakor. A szakaszos másolás funkció segítségével az adatok másolása az Azure SQL Database vagy Azure SQL Data Warehouse az 1433-as port megnyitása nélkül. |
-| `*.azuredatalakestore.net`<br>`login.microsoftonline.com/<tenant>/oauth2/token`    | 443            | (Nem kötelező) Szükséges, vagy az Azure Data Lake Store másolásakor. |
+| `*.servicebus.windows.net`    | 443            | A saját üzemeltetésű integrációs modul számára szükséges a Data Factory adatátviteli szolgáltatásaihoz való csatlakozáshoz. |
+| `*.frontend.clouddatahub.net` | 443            | A saját üzemeltetésű integrációs modul számára szükséges a Data Factory szolgáltatáshoz való csatlakozáshoz. |
+| `download.microsoft.com`    | 443            | A frissítések letöltéséhez a saját üzemeltetésű Integration Runtime szükséges. Ha letiltotta az automatikus frissítést, kihagyhatja ezt. |
+| `*.core.windows.net`          | 443            | A saját üzemeltetésű integrációs modul használja az Azure Storage-fiókhoz való csatlakozásra az [előkészített másolási](copy-activity-performance.md#staged-copy) szolgáltatás használatakor. |
+| `*.database.windows.net`      | 1433           | Választható Azure SQL Database vagy Azure SQL Data Warehouse másolásakor szükséges. Az előkészített másolási szolgáltatással az 1433-as port megnyitása nélkül másolhatja az Adatmásolást Azure SQL Databaseba vagy Azure SQL Data Warehouseba. |
+| `*.azuredatalakestore.net`<br>`login.microsoftonline.com/<tenant>/oauth2/token`    | 443            | Választható A vagy a rendszerből Azure Data Lake Store történő másoláskor szükséges. |
 
 > [!NOTE] 
-> Előfordulhat, hogy portok vagy engedélyezési tartományok szinten vállalati tűzfalon, szükség szerint a megfelelő adatforrások kezelhetők. Ez a tábla használja Azure SQL Database, Azure SQL Data Warehouse és az Azure Data Lake Store csak példaként.   
+> Előfordulhat, hogy a megfelelő adatforrások által megkövetelt portokat vagy engedélyezési tartományokat a vállalati tűzfal szintjén kell kezelnie. Ez a táblázat csak Azure SQL Database, Azure SQL Data Warehouse és Azure Data Lake Storeeket használ példaként.   
 
-A következő táblázat tartalmazza a Windows tűzfal bejövő port követelményei:
+A következő táblázat a Windows tűzfal bejövő portokra vonatkozó követelményeit tartalmazza:
 
 | Bejövő portok | Leírás                              |
 | ------------- | ---------------------------------------- |
-| 8060 (TCP)    | A PowerShell-parancsmag titkosítás szükséges leírtak szerint [adattárak az Azure Data Factory a helyszíni hitelesítő adatok titkosításához](encrypt-credentials-self-hosted-integration-runtime.md), és a hitelesítőadat-kezelő alkalmazást biztonságosan a helyszíni adattárak hitelesítő adatok beállítása a saját üzemeltetésű integrációs modulban. |
+| 8060 (TCP)    | A PowerShell-titkosítási parancsmag szükséges a [helyi adattárakhoz tartozó hitelesítő adatok titkosítása Azure Data Factoryban](encrypt-credentials-self-hosted-integration-runtime.md), valamint a Hitelesítőadat-kezelő alkalmazás által a helyi adattárakhoz tartozó hitelesítő adatok biztonságos beállítása a saját üzemeltetésű rendszeren integrációs modul. |
 
-![Átjáró-port követelményei](media/data-movement-security-considerations/gateway-port-requirements.png) 
+![Az átjáró portjának követelményei](media/data-movement-security-considerations/gateway-port-requirements.png) 
 
-#### <a name="ip-configurations-and-whitelisting-in-data-stores"></a>IP-konfigurációk és engedélyezés az adattárak
-Néhány adattár a felhőben is megkövetelheti, hogy Ön engedélyezett a tároló eléréséhez a gép IP-címét. Győződjön meg arról, hogy a saját üzemeltetésű integrációs modult tartalmazó számítógépen IP-címe szerepel az engedélyezési listán, vagy megfelelően konfigurálva a tűzfal.
+#### <a name="ip-configurations-and-whitelisting-in-data-stores"></a>IP-konfigurációk és engedélyezési listák az adattárakban
+A felhőben lévő egyes adattárakhoz a tárolóhoz hozzáférő számítógép IP-címét is meg kell adni. Győződjön meg arról, hogy a saját üzemeltetésű integrációs modul számítógépének IP-címe engedélyezett vagy a tűzfalon megfelelően van konfigurálva.
 
-A következő felhőalapú adattárak van szükség, hogy Ön engedélyezett IP-címét a saját üzemeltetésű integrációs modult tartalmazó számítógépen. Alapértelmezés szerint ezek adattárak némelyike nem igénylik az engedélyezés. 
+A következő felhőalapú adattárakhoz a saját üzemeltetésű Integration Runtime-gép IP-címének engedélyezési helye szükséges. Az adattárak némelyike alapértelmezés szerint nem igényel engedélyezési listát. 
 
 - [Azure SQL Database](../sql-database/sql-database-firewall-configure.md) 
 - [Azure SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
@@ -191,16 +192,16 @@ A következő felhőalapú adattárak van szükség, hogy Ön engedélyezett IP-
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-**Különböző adat-előállítók között megosztható a saját üzemeltetésű integrációs modul?**
+**Megoszthatók a saját üzemeltetésű integrációs modul a különböző adatüzemek között?**
 
 Igen. További részleteket [itt](https://azure.microsoft.com/blog/sharing-a-self-hosted-integration-runtime-infrastructure-with-multiple-data-factories/) talál.
 
-**Mik azok a saját üzemeltetésű integrációs modul működjön a port követelményei?**
+**Milyen portokra vonatkozó követelmények vonatkoznak a saját üzemeltetésű Integration Runtime működésére?**
 
-A saját üzemeltetésű integrációs modul lehetővé teszi a HTTP-alapú kapcsolatokat az internet eléréséhez. A saját üzemeltetésű integrációs modult, hogy ezt a kapcsolatot a 443-as kimenő portokat kell megnyitni. Nyissa meg a bejövő portot 8050 csak a gépek szintjén (nem a vállalati tűzfalon szint) a hitelesítőadat-kezelő alkalmazást. Ha az Azure SQL Database vagy Azure SQL Data Warehouse a forrás vagy cél használják, meg kell nyitnia az 1433-as portot is. További információkért lásd: a [tűzfal-konfigurációk és IP-címek engedélyezési](#firewall-configurations-and-whitelisting-ip-address-of-gateway) szakaszban. 
+A saját üzemeltetésű integrációs modul lehetővé teszi, hogy a HTTP-alapú kapcsolatok hozzáférjenek az internethez. A kapcsolódáshoz a saját üzemeltetésű integrációs modul 443 kimenő portjait kell megnyitni. Nyissa meg a 8060-es bejövő portot csak a számítógép szintjén (nem a vállalati tűzfal szintjén) a Hitelesítőadat-kezelő alkalmazáshoz. Ha Azure SQL Database vagy Azure SQL Data Warehouse a forrásként vagy a célhelyként van használatban, akkor a 1433-es portot is meg kell nyitnia. További információ: a [tűzfal beállításai és az IP-címek engedélyezési](#firewall-configurations-and-whitelisting-ip-address-of-gateway) listája szakasz. 
 
 
 ## <a name="next-steps"></a>További lépések
-Az Azure Data Factory másolási tevékenység teljesítményével kapcsolatos információkért lásd: [másolási tevékenységek teljesítményéről és finomhangolásáról szóló útmutató](copy-activity-performance.md).
+A másolási tevékenység teljesítményének Azure Data Factory a [másolási tevékenység teljesítményének és hangolásának útmutatója](copy-activity-performance.md)című témakörben talál további információt.
 
  

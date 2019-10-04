@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: a3ccf76b2722c04a9353fcc7020ff1387bc454c6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58125018"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179322"
 ---
 #### <a name="to-install-an-update-from-the-azure-portal"></a>Frissítés telepítése az Azure Portalról
 
 1. A StorSimple szolgáltatás oldalán válassza ki az eszközét.
 
-    ![Válasszon eszközt](./media/storsimple-8000-install-update4-via-portal/update1.png)
+    ![Eszköz kiválasztása](./media/storsimple-8000-install-update4-via-portal/update1.png)
 
 2. Navigáljon a **eszközbeállítások** > **Eszközfrissítések**.
 

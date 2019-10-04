@@ -4,12 +4,12 @@ ms.service: container-instances
 ms.topic: include
 ms.date: 03/01/2019
 ms.author: danlep
-ms.openlocfilehash: d5491784dd27843ebbb13f692d8426c2b7edeec5
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 48d25427d68f9da4cfe3f25b155f81d801e30fa2
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57552260"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179680"
 ---
 ### <a name="supported-regions"></a>Támogatott régiók
 
@@ -17,6 +17,5 @@ ms.locfileid: "57552260"
 * USA nyugati régiója, 2. 
 * USA déli középső régiója 
 * Nyugat-Európa 
-* Észak-Európa 
-* Kelet-Ázsia 
+* Észak-Európa
 * Közép-India 

@@ -1,23 +1,24 @@
 ---
-title: A servicenow segítségével az Azure service health-riasztások konfigurálása |} A Microsoft Docs
+title: Az Azure service health-riasztások küldése a ServiceNow-webhookok használata
 description: A Szolgáltatásállapot-események, a ServiceNow-példány kapcsolatos személyre szabott értesítések küldése.
 author: stephbaron
 ms.author: stbaron
 ms.topic: article
 ms.service: service-health
-ms.date: 11/14/2017
-ms.openlocfilehash: f17215a5695128bf2ea507efa0c12fdbba9467d2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 06/10/2019
+ms.openlocfilehash: e32a32e4961043e0cd967247c8c13420ca8a1969
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55858858"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67067117"
 ---
-# <a name="configure-service-health-alerts-with-servicenow"></a>Service health-riasztások beállítása a ServiceNow
+# <a name="send-azure-service-health-alerts-with-servicenow-using-webhooks"></a>Az Azure service health-riasztások küldése a ServiceNow-webhookok használata
 
 Ez a cikk bemutatja, hogyan integrálható az Azure service health-riasztások a servicenow segítségével egy webhook használatával. Miután beállította a ServiceNow-példány a webhook-integrációt, is számíthat riasztások keresztül a meglévő értesítési infrastruktúra Önt érintő problémái az Azure szolgáltatás. Minden alkalommal, amikor egy Azure Service Health-riasztások aktiválásáról, a ServiceNow parancsfájlalapú REST API-val egy webhookot hív meg.
 
 ## <a name="creating-a-scripted-rest-api-in-servicenow"></a>A ServiceNow parancsfájlalapú REST API létrehozásával
+
 1.  Győződjön meg arról, hogy regisztrált-, és bejelentkezett, a [ServiceNow](https://www.servicenow.com/) fiókot.
 
 1.  Keresse meg a **System webszolgáltatások** a ServiceNow, és válassza a szakasz **parancsfájlalapú REST API-k**.

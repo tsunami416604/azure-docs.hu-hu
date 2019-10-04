@@ -1,25 +1,18 @@
 ---
-title: Általános SAS URL-cím problémákat, és javítja az Azure Marketplace-en |} A Microsoft Docs
+title: Általános SAS URL-cím problémákat, és javítja az Azure Marketplace-en
 description: Közös hozzáférésű jogosultságkód URI-k és a lehetséges megoldások szolgáltatással kapcsolatos gyakori problémák listája.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: pbutlerm
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 09/27/2018
-ms.author: pbutlerm
-ms.openlocfilehash: abb29cd0d31288ba7bfab7024cf7657ab6b9a3d3
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: pabutler
+ms.openlocfilehash: 4f2770312624e1ca4c939ade458a451eb03f9d20
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58879216"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64938377"
 ---
 # <a name="common-sas-url-issues-and-fixes"></a>Általános SAS URL-cím problémákat és javítások
 

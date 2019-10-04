@@ -1,112 +1,111 @@
 ---
-title: SQL Server on Linux Azure Virtual Machines – gyakori kérdések |} A Microsoft Docs
-description: Ez a cikk a Linux Azure virtuális gépeken futó SQL Server kapcsolatos gyakori kérdésekre adott válaszokat ismerteti.
+title: SQL Server on Linux Azure Virtual Machines GYIK | Microsoft Docs
+description: Ez a cikk a SQL Server on Linux Azure-beli virtuális gépek futtatásával kapcsolatos gyakori kérdésekre adott válaszokat tartalmazza.
 services: virtual-machines-linux
 documentationcenter: ''
 author: MashaMSFT
 manager: craigg
 tags: azure-service-management
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: troubleshooting
 ms.workload: iaas-sql-server
 ms.date: 12/13/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: fb1cafcf9405576749ea91aeea033c6ee783a026
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 1e729c608a2cad28c810f8d5236360c909a496b0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330432"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70082037"
 ---
-# <a name="frequently-asked-questions-for-sql-server-on-linux-azure-virtual-machines"></a>Gyakori kérdések az SQL Server Linux Azure Virtual Machines gépeken
+# <a name="frequently-asked-questions-for-sql-server-on-linux-azure-virtual-machines"></a>Gyakori kérdések a SQL Server on Linux Azure-Virtual Machines
 
 > [!div class="op_single_selector"]
 > * [Windows](../../windows/sql/virtual-machines-windows-sql-server-iaas-faq.md)
 > * [Linux](sql-server-linux-faq.md)
 
-Ez a cikk ismerteti a futó kapcsolatos leggyakoribb kérdésekre adott válaszokat [Linux rendszerű Azure virtuális gépeken futó SQL Server](sql-server-linux-virtual-machines-overview.md).
+Ez a cikk a [SQL Server on Linux Azure Virtual Machines](sql-server-linux-virtual-machines-overview.md)futtatásával kapcsolatos leggyakoribb kérdésekre ad választ.
 
 > [!NOTE]
-> Ez a cikk a Linux rendszerű virtuális gépeken futó SQL Serverre konkrét problémák összpontosít. Ha az SQL Server Windows virtuális gépeken futnak, tekintse meg a [Windows – gyakori kérdések](../../windows/sql/virtual-machines-windows-sql-server-iaas-faq.md).
+> Ez a cikk SQL Server on Linux virtuális gépekre vonatkozó problémákra koncentrál. Ha Windows rendszerű virtuális gépeken futtat SQL Server, tekintse meg a [Windows gyakori kérdések](../../windows/sql/virtual-machines-windows-sql-server-iaas-faq.md)című témakört.
 
 [!INCLUDE [support-disclaimer](../../../../includes/support-disclaimer.md)]
 
-## <a id="images"></a> Képek
+## <a id="images"></a>Képek
 
-1. **Milyen az SQL Server virtuálisgép-katalógus rendszerképek érhetők el?**
+1. **Milyen SQL Server virtuálisgép-katalógus lemezképei érhetők el?**
 
-   Az Azure SQL Server összes kiadásában az összes támogatott fő kiadásához tartozó virtuálisgép-rendszerképek Linux és Windows tart. További részletekért tekintse meg a teljes listáját [Linuxos Virtuálisgép-rendszerkép](sql-server-linux-virtual-machines-overview.md#create) és [Windows Virtuálisgép-rendszerképek](../../windows/sql/virtual-machines-windows-sql-server-iaas-overview.md#payasyougo).
+   Az Azure a Linux és a Windows összes kiadásában a SQL Server összes támogatott főbb kiadásához biztosít virtuálisgép-lemezképeket. További részletekért tekintse meg a Linux rendszerű [virtuális](sql-server-linux-virtual-machines-overview.md#create) gépek rendszerképeinek és a Windowsos virtuálisgép-rendszerképeknek a teljes listáját. [](../../windows/sql/virtual-machines-windows-sql-server-iaas-overview.md#payasyougo)
 
-1. **Frissülnek a meglévő SQL Server virtuálisgép-katalógus rendszerképek?**
+1. **Frissültek a meglévő SQL Server virtuálisgép-katalógus rendszerképei?**
 
-   Minden két hónapra, SQL Server-rendszerképeket a virtuálisgép-katalógus frissülnek a legújabb Linux és Windows-frissítések. Linux-lemezképekhez ilyenek például a rendszerek legújabb frissítéseit. Windows-rendszerképeket ilyenek például a Windows Update, beleértve a fontos az SQL Server biztonsági frissítések és szervizcsomagok fontosként megjelölt frissítéseket. SQL Server összegző frissítések a Linux és Windows másképp kezeli. A Linux SQL Server összegző frissítései is megtalálhatók a frissítést. Azonban jelenleg Windows virtuális gépek nem frissíti az SQL Server vagy Windows Server összegző frissítései.
+   A virtuális gép galériájában SQL Server rendszerképek a legújabb Linux-és Windows-frissítésekkel frissülnek. Linux-rendszerképek esetén ez tartalmazza a legújabb rendszerfrissítéseket. Windows-rendszerképek esetén ide tartoznak a Windows Update fontosként megjelölt frissítések, beleértve a fontos SQL Server biztonsági frissítéseket és szervizcsomagokat is. SQL Server kumulatív frissítések kezelése a Linux és a Windows rendszerben eltérően történik. A Linux esetében SQL Server kumulatív frissítések is szerepelnek a frissítésben. Ebben az esetben azonban a Windows rendszerű virtuális gépek nem frissülnek SQL Server vagy a Windows Server összesítő frissítéseivel.
 
-1. **Mi a kapcsolódó SQL Server-csomagok is telepítve van?**
+1. **Milyen kapcsolódó SQL Server csomagokat is telepíteni kell?**
 
-   Az SQL Server Linux rendszerű virtuális gépek alapértelmezés szerint az SQL Server-csomagokat, olvassa el [telepített csomagokat](sql-server-linux-virtual-machines-overview.md#packages).
+   A SQL Server Linux rendszerű virtuális gépeken alapértelmezés szerint telepített SQL Server csomagok megtekintéséhez lásd: [telepített csomagok](sql-server-linux-virtual-machines-overview.md#packages).
 
-1. **Az SQL Server virtuálisgép-rendszerképek lekérése távolíthatók el a katalógusban?**
+1. **El SQL Server tudja távolítani a virtuális gépek lemezképeit a katalógusból?**
 
-   Igen. Az Azure csak egy kép / fő verziójú és kiadású tart fenn. Például amikor egy új SQL Server szervizcsomag megjelenik, az Azure ad hozzá egy új rendszerképet a katalógusban, hogy a service Pack. Az SQL Server-lemezképet az előző service Pack azonnal törlődik az Azure Portalról. Azonban továbbra is elérhető, a következő három hónapban a Powershellből kiépítéshez. Három hónap elteltével az előző képen a service pack már nem érhető el. Ez a házirend eltávolítása is alkalmazni, ha egy SQL Server-verzió nem támogatott válik, amikor az életciklusa végére ér.
+   Igen. Az Azure csak egy rendszerképet tart fenn főverzióként és kiadásként. Ha például új SQL Server szervizcsomagot szabadít fel, az Azure új rendszerképet hoz létre az adott szervizcsomaghoz tartozó galériához. Az előző szervizcsomag SQL Server rendszerképét a rendszer azonnal eltávolítja a Azure Portalból. A következő három hónapban azonban továbbra is elérhető a PowerShellből való kiépítés. Három hónap elteltével az előző szervizcsomag-rendszerkép már nem érhető el. Ez az eltávolítási szabályzat akkor is érvényes, ha a SQL Server verziója nem támogatott, amikor eléri az életciklusának végét.
 
-## <a name="creation"></a>Létrehozás
+## <a name="creation"></a>Létrehozása
 
-1. **Hogyan hozhatok létre Linux rendszerű Azure virtuális gép az SQL Server?**
+1. **Hogyan linuxos Azure-beli virtuális gépet SQL Server-vel?**
 
-   A legegyszerűbb megoldás az, amely tartalmazza az SQL Server Linux rendszerű virtuális gép létrehozása. Az Azure-regisztráció és a egy SQL virtuális gép létrehozása a portálról, olvassa el [az Azure Portalon az SQL Server Linux rendszerű virtuális gép kiépítése](provision-sql-server-linux-virtual-machine.md). Emellett lehetősége manuálisan az SQL Server telepítése a virtuális gép mindkettővel szabadon licenccel rendelkező kiadásra (Developer és Express) vagy az a helyi licencek újrafelhasználásával. Ha a saját licenc használata, rendelkeznie kell [az Azure frissítési garancián keresztüli Licenchordozhatóság](https://azure.microsoft.com/pricing/license-mobility).
+   A legegyszerűbb megoldás egy olyan linuxos virtuális gép létrehozása, amely SQL Server tartalmaz. Az Azure-regisztrációra és az SQL virtuális gép portálról való létrehozására vonatkozó oktatóanyagért lásd: [Linux SQL Server virtuális gép létesítése a Azure Portal](provision-sql-server-linux-virtual-machine.md). Lehetősége van arra is, hogy manuálisan telepítse a SQL Servert egy olyan virtuális gépre, amely vagy egy ingyenes licenccel rendelkező kiadás (Developer vagy Express), vagy egy helyszíni licenc újrafelhasználásával. Ha saját licencet használ, rendelkeznie kell [licenchordozhatóság frissítési garancia keretében az Azure](https://azure.microsoft.com/pricing/license-mobility)-ban.
 
-1. **Miért nem helyezhető üzembe egy RHEL vagy SLES SQL Server rendszerű virtuális gép az Azure-előfizetéssel, amely rendelkezik a költségkeret?**
+1. **Miért nem tudok kiépíteni egy RHEL vagy SLES SQL Server VM egy költségkerettel rendelkező Azure-előfizetéssel?**
 
-   RHEL és SLES virtuális gépek nem vonatkozik költségkeret, és a egy ellenőrzött fizetési mód (általában hitelkártya) az előfizetéshez tartozó előfizetés szükséges. A költségkeret eltávolítása nélkül üzembe egy RHEL vagy SLES VM, ha az előfizetése le lekérése tiltva, és minden virtuális gép vagy szolgáltatás leállt. Ha ebbe az állapotba, hogy az előfizetés újbóli engedélyezéséhez futtatásakor [el kell távolítania a költségkeretet](https://account.windowsazure.com/subscriptions). A fennmaradó kreditjeit visszaáll a az aktuális elszámolási időszakban, de ha úgy dönt, hogy indítsa újra, és folytatja annak futtatását egy RHEL vagy SLES VM kép felár kerül a hitelkártyáját terhelni.
+   A RHEL és a SLES virtuális gépekhez a költségkeret nélküli előfizetés, valamint az előfizetéshez társított ellenőrzött fizetési mód (általában bankkártyás) szükséges. Ha kiépít egy RHEL vagy SLES virtuális gépet a költségkeret eltávolítása nélkül, az előfizetés le lesz tiltva, és az összes virtuális gép/szolgáltatás leállt. Ha ezt az állapotot futtatja, az előfizetés újbóli engedélyezésével [távolítsa el a](https://account.windowsazure.com/subscriptions)költségkeretet. A fennmaradó kreditek vissza lesznek állítva az aktuális számlázási időszakra, de a RHEL vagy SLES virtuálisgép-lemezkép felára a hitelkártyára kerül, ha úgy dönt, hogy újraindul, és folytatja a futtatását.
 
-## <a name="licensing"></a>Licencek
+## <a name="licensing"></a>Licencelés
 
-1. **Hogyan telepíthetem saját licenccel rendelkező példány az SQL Server-beli virtuális gépen?**
+1. **Hogyan telepíthetem az SQL Server egy licencelt példányát egy Azure-beli virtuális gépen?**
 
-   Először hozzon létre egy Linux operációs rendszer csak a virtuális gép. Ezután futtassa a [SQL Server telepítési lépéseket](https://docs.microsoft.com/sql/linux/sql-server-linux-setup#platforms) a Linux-disztribúció. Kivéve, ha telepíti az SQL Server szabadon licenccel rendelkező kiadásainak egyikét, az SQL Server licenccel is rendelkeznie kell és [az Azure frissítési garancián keresztüli Licenchordozhatóság](https://azure.microsoft.com/pricing/license-mobility/).
+   Először hozzon létre egy csak Linux RENDSZERű virtuális gépet. Ezután futtassa a [SQL Server telepítési lépéseket](https://docs.microsoft.com/sql/linux/sql-server-linux-setup#platforms) a Linux-disztribúcióhoz. Ha nem a SQL Server ingyenes licenccel rendelkező kiadását telepíti, akkor az [Azure](https://azure.microsoft.com/pricing/license-mobility/)-ban SQL Server licenccel és licenchordozhatóság frissítési garancia keretébental is rendelkeznie kell.
 
-1. **Vannak-e Bring-Your-saját licenc használata (BYOL) Linux virtuálisgép-lemezképek az SQL Server?**
+1. **Van-e a SQL Server saját licencű (BYOL) linuxos virtuálisgép-lemezképei?**
 
-   Jelenleg nincsenek az SQL Server nincs BYOL Linux virtuálisgép-lemezképeket. Azonban manuálisan telepítheti az SQL Server csak Linux rendszerű virtuális gépen a fenti kérdések leírt módon.
+   Jelenleg nincsenek BYOL linuxos virtuálisgép-lemezképek SQL Server számára. Azonban manuálisan is telepítheti a SQL Servert egy linuxos virtuális gépre az előző kérdésekben tárgyalt módon.
 
-1. **Módosíthatja a saját SQL Server-licencét használja, ha létrehozták a használatalapú fizetéses katalógus rendszerképek közül egy virtuális Gépet?**
+1. **Módosíthatok egy virtuális gépet, hogy a saját SQL Server-licencemet használja, ha az a használatalapú fizetéses katalógus egyik rendszerképéből lett létrehozva?**
 
-   Nem. Másodpercenkénti használatalapú licencelés saját licenc használata nem válthat. Kell új Linux rendszerű virtuális gép létrehozása, az SQL Server telepítése és az adatok áttelepítését. Tekintse meg az előző kérdésnél saját licence kapcsolatos további részletekért.
+   Nem. A fizetések másodpercenkénti licencelését nem lehet a saját licenc használatára váltani. Létre kell hoznia egy új linuxos virtuális gépet, telepítenie SQL Servert, és át kell telepítenie az adatait. A saját licencek létrehozásával kapcsolatos további részletekért tekintse meg az előző kérdést.
 
-## <a name="administration"></a>Adminisztráció
+## <a name="administration"></a>Felügyelet
 
-1. **Kezelheti a Linux rendszerű SQL Server virtuális gép az SQL Server Management Studio (SSMS)?**
+1. **Kezelhetem a Linux SQL Server virtuális gépet SQL Server Management Studio (SSMS) használatával?**
 
-   Igen, de az ssms-ben jelenleg csak Windows eszköz. Meg kell távoli csatlakozás SSMS használata Linux rendszerű SQL Server virtuális gépek Windows gépről. Helyileg, Linux az új [mssql-conf](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf) eszköz számos rendszergazdai feladatot végrehajthatnak. Platformfüggetlen adatbázis felügyeleti eszköz, lásd: [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is).
+   Igen, de a SSMS jelenleg csak Windows-eszköz. A SSMS Linux SQL Server virtuális gépekkel való használatához távolról kell csatlakoznia egy Windows rendszerű gépről. A Linuxon helyileg az új [MSSQL-conf](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf) eszköz számos felügyeleti feladatot képes végrehajtani. Platformfüggetlen adatbázis-kezelő eszköz esetén tekintse meg a következőt: [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is).
 
-1. **Eltávolítható az SQL Server teljesen az SQL virtuális gép?**
+1. **Eltávolíthatom teljesen az SQL Servert egy SQL-alapú virtuális gépről?**
 
-   Igen, de továbbra is az SQL virtuális gép kell fizetnie, leírtak szerint [az SQL Server Azure virtuális gépek díjszabási útmutatóját](../../windows/sql/virtual-machines-windows-sql-server-pricing-guidance.md?toc=%2fazure%2fvirtual-machines%2flinux%2fsql%2ftoc.json). Ha már nincs szüksége az SQL Server, az új virtuális gépek üzembe helyezése, és az adatai és alkalmazásai számára az új virtuális gép áttelepítése. Az SQL Server virtuális gép távolíthatja el.
+   Igen, de továbbra is díjat kell fizetnie az SQL-alapú virtuális gép számára a [SQL Server Azure-beli virtuális gépek díjszabási útmutatójában](../../windows/sql/virtual-machines-windows-sql-server-pricing-guidance.md?toc=%2fazure%2fvirtual-machines%2flinux%2fsql%2ftoc.json)leírtak szerint. Ha már nincs szüksége az SQL Serverre, üzembe helyezhet egy új virtuális gépet, majd oda migrálhatja az adatokat és az alkalmazásokat. Ezt követően már eltávolíthatja az SQL Servert futtató virtuális gépet.
 
-## <a name="updating-and-patching"></a>Frissítések és javítások
+## <a name="updating-and-patching"></a>Frissítés és javítás
 
-1. **Hogyan frissíthetem az SQL Server egy Azure-beli virtuális gépen új verzióra vagy kiadásra?**
+1. **Hogyan frissíteni egy Azure-beli virtuális gépen lévő SQL Server új verziójára/kiadására?**
 
-   Jelenleg nincs Azure-beli virtuális gépen futó SQL Server helyszíni frissítését. Egy új Azure virtuális gép létrehozása a kívánt SQL Server verziójához/kiadásához, és ezután adatbázisok migrálása az új kiszolgálóra történő [szokásos adatáttelepítési eljárásokkal](https://docs.microsoft.com/sql/linux/sql-server-linux-migrate-overview).
+   Jelenleg nincs helyszíni frissítés az Azure-beli virtuális gépeken futtatott SQL Serverhez. Hozzon létre egy új Azure-beli virtuális gépet a kívánt SQL Server-verzióval vagy -kiadással, majd migrálja az adatbázisait az új kiszolgálóra [a szokásos adatmigrálási eljárásokkal](https://docs.microsoft.com/sql/linux/sql-server-linux-migrate-overview).
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
-1. **Az SQL Server magas rendelkezésre állású megoldások Azure-beli virtuális gépeken támogatottak?**
+1. **Az Azure-beli virtuális gépeken támogatott magas rendelkezésre állású megoldások SQL Server?**
 
-   Jelenleg nem. Always On rendelkezésre állási csoportok és a Feladatátvételi fürtszolgáltatást mindkét Linux rendszeren, például a támasztja fürtözési megoldásra van szüksége. A támogatott Linux-disztribúciók az SQL Server nem támogatja a magas rendelkezésre állású bővítmények a felhőben.
+   Jelenleg nem. Az Always On rendelkezésre állási csoportok és a feladatátvételi fürtszolgáltatás is szükség van egy Linux-alapú fürtözési megoldásra, például a pacemakerre. A SQL Server támogatott Linux-disztribúciói nem támogatják a magas rendelkezésre állású bővítményeket a felhőben.
 
 ## <a name="resources"></a>További források
 
 **Linux rendszerű virtuális gépek**:
 
-* [Linux rendszerű virtuális gép az SQL Server használatának áttekintése](sql-server-linux-virtual-machines-overview.md)
-* [Az SQL Server Linux virtuális gép kiépítése](provision-sql-server-linux-virtual-machine.md)
+* [Linux rendszerű virtuális gépen lévő SQL Server áttekintése](sql-server-linux-virtual-machines-overview.md)
+* [SQL Server Linux rendszerű virtuális gép kiépítése](provision-sql-server-linux-virtual-machine.md)
 * [A Linux rendszeren futó SQL Server dokumentációja](https://docs.microsoft.com/sql/linux/sql-server-linux-overview)
 
-**Windows virtuális gépek**:
+**Windows rendszerű virtuális gépek**:
 
-* [Egy Windows virtuális gép az SQL Server használatának áttekintése](../../windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)
-* [Egy SQL Server Windows virtuális gép kiépítése](../../windows/sql/virtual-machines-windows-portal-sql-server-provision.md)
+* [Windows rendszerű virtuális gépek SQL Server áttekintése](../../windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)
+* [SQL Server Windows rendszerű virtuális gép kiépítése](../../windows/sql/virtual-machines-windows-portal-sql-server-provision.md)
 * [Gyakori kérdések (Windows)](../../windows/sql/virtual-machines-windows-sql-server-iaas-faq.md)

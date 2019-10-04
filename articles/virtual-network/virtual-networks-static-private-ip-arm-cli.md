@@ -3,8 +3,8 @@ title: Magánhálózati IP-címek konfigurálása virtuális gépek – Azure CL
 description: Ismerje meg, hogyan konfigurálhatja az Azure parancssori felület (CLI) használó virtuális gépek magánhálózati IP-címek.
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 40b03a1a-ea00-454c-b716-7574cea49ac0
@@ -14,14 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/16/2017
-ms.author: jdial
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 06016cf7a8ba10a9a8f49f90da99a26aaa072441
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.author: kumud
+ms.openlocfilehash: 1b39196c489927474c0912b316de5ff3b3dbb956
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55695514"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64681407"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>Az Azure CLI használatával virtuális gép magánhálózati IP-címek konfigurálása
 

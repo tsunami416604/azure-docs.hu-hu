@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
 ms.openlocfilehash: a69df0cc9ea14a2c9fa172c77663afb1d6861f9b
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50133744"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179619"
 ---
 #### <a name="configure-the-ios-project-in-xamarin-studio"></a>Az iOS-projekt konfigurálása a Xamarin Studióban
 1. Xamarin.Studio, nyissa meg **Info.plist**, és frissítse a **Bundle Identifier** az új app ID azonosítójával korábban létrehozott alkalmazásköteg-azonosító
@@ -23,7 +23,7 @@ ms.locfileid: "50133744"
 
    ![](./media/app-service-mobile-xamarin-ios-configure-project/mobile-services-ios-push-20.png)
 
-   Ez biztosítja, hogy a projektet az új profil használ a kód aláírása. A hivatalos Xamarin eszközregisztrációs dokumentációja, lásd: [Xamarin-eszköz kiépítése].
+   Ez biztosítja, hogy a projektet az új profil használ a kód aláírása. A hivatalos Xamarin eszközregisztrációs dokumentációja, lásd: [Xamarin Device Provisioning].
 
 #### <a name="configure-the-ios-project-in-visual-studio"></a>Az iOS-projekt konfigurálása a Visual Studióban
 1. A Visual Studióban kattintson a jobb gombbal a projektre, és kattintson **tulajdonságok**.
@@ -34,7 +34,7 @@ ms.locfileid: "50133744"
 
     ![](./media/app-service-mobile-xamarin-ios-configure-project/mobile-services-ios-push-24.png)
 
-    Ez biztosítja, hogy a projektet az új profil használ a kód aláírása. A hivatalos Xamarin eszközregisztrációs dokumentációja, lásd: [Xamarin-eszköz kiépítése].
+    Ez biztosítja, hogy a projektet az új profil használ a kód aláírása. A hivatalos Xamarin eszközregisztrációs dokumentációja, lásd: [Xamarin Device Provisioning].
 4. Kattintson duplán a megnyitásához, és engedélyez Info.plist **RemoteNotifications** alatt **háttérbeli üzemmódok**.
 
-[Xamarin-eszköz kiépítése]: http://developer.xamarin.com/guides/ios/getting_started/installation/device_provisioning/
+[Xamarin Device Provisioning]: http://developer.xamarin.com/guides/ios/getting_started/installation/device_provisioning/

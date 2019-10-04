@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: spelluru
 ms.openlocfilehash: b7cd6bb1fd0377ca1440d9c667453df922aacbd4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698656"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60561455"
 ---
 # <a name="about-azure-devtest-labs"></a>Tudnivalók az Azure DevTest Labs szolgáltatásban
 Az Azure DevTest Labs lehetővé teszi a fejlesztők a munkacsoportok hatékonyabban önálló kezelhetők a virtuális gépek (VM) és a PaaS-erőforrásokhoz jóváhagyások várakozás nélkül.

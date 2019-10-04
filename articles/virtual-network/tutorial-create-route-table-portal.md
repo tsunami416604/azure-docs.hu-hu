@@ -4,8 +4,8 @@ titlesuffix: Azure Virtual Network
 description: Ez az oktatóanyag azt ismerteti, hogyan irányítható a hálózati forgalom egy útválasztási táblázattal az Azure Portalon.
 services: virtual-network
 documentationcenter: virtual-network
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 Customer intent: I want to route traffic from one subnet, to a different subnet, through a network virtual appliance.
@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/12/2018
-ms.author: jdial
+ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 855adccf036f731de12810fe0f5287186048ddb0
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 153c692a8fb0fa538ec49c6eafa11815dd794b5d
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55095957"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64681541"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>Oktatóanyag: Hálózati forgalom továbbítása egy útválasztási táblázathoz, az Azure portal használatával
 
@@ -57,8 +57,8 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
     | Name (Név) | Adja meg *myRouteTablePublic*. |
     | Előfizetés | Válassza ki előfizetését. |
     | Erőforráscsoport | Válassza ki **új létrehozása**, adja meg *myResourceGroup*, és válassza ki *OK*. |
-    | Hely | Hagyja meg az alapértelmezett **USA keleti Régiójában**.
-    | BGP-útvonalpropagálás | Hagyja meg az alapértelmezett **engedélyezve**. |
+    | Location egység | Hagyja meg az alapértelmezett **USA keleti Régiójában**.
+    | BGP-útvonal-propagálás | Hagyja meg az alapértelmezett **engedélyezve**. |
 
 1. Kattintson a **Létrehozás** gombra.
 
@@ -99,7 +99,7 @@ Mielőtt hozzárendelhetne egy útválasztási táblázatot egy alhálózathoz, 
     | Címtér | Adja meg *10.0.0.0/16*. |
     | Előfizetés | Válassza ki előfizetését. |
     | Erőforráscsoport | Válassza ki ***válasszon meglévő*** > **myResourceGroup**. |
-    | Hely | Hagyja meg az alapértelmezett **USA keleti Régiójában**. |
+    | Location egység | Hagyja meg az alapértelmezett **USA keleti Régiójában**. |
     | Alhálózat - név | Adja meg *nyilvános*. |
     | Alhálózat – címtartomány | Adja meg *10.0.0.0/24*. |
 
@@ -160,7 +160,7 @@ Az nva-k, virtuális gépek, amelyek segítenek az útválasztó és tűzfal opt
     | Virtuális gép neve | Enter *myVmNva*. |
     | Régió | Válassza az **USA keleti régiója** lehetőséget. |
     | Rendelkezésre állási beállításai | Hagyja meg az alapértelmezett **szükséges infrastruktúra redundancia**. |
-    | Kép | Hagyja meg az alapértelmezett **Windows Server 2016 Datacenter**. |
+    | Image | Hagyja meg az alapértelmezett **Windows Server 2016 Datacenter**. |
     | Méret | Hagyja meg az alapértelmezett **Standard DS1 v2**. |
     | **RENDSZERGAZDAI FIÓK** |  |
     | Felhasználónév | Adjon meg egy tetszőleges felhasználónevet. |
@@ -241,7 +241,7 @@ Hozzon létre egy nyilvános virtuális gép és a egy privát virtuális Gépet
 | Nyilvános bejövő portok | Válassza ki **lehetővé teszi a kiválasztott portok**. |
 | Bejövő portok kiválasztása | Válassza ki **HTTP** és **RDP**. |
 | FELÜGYELETI | |
-| Storage-fiók diagnosztikája | Hagyja meg az alapértelmezett **mynvastorageaccount**. |
+| Diagnosztikai tárfiók | Hagyja meg az alapértelmezett **mynvastorageaccount**. |
 | **PRIVÁT VIRTUÁLIS GÉP** | |
 | BASICS |  |
 | Virtuális gép neve | Adja meg *myVmPrivate*. |
@@ -251,7 +251,7 @@ Hozzon létre egy nyilvános virtuális gép és a egy privát virtuális Gépet
 | Nyilvános bejövő portok | Válassza ki **lehetővé teszi a kiválasztott portok**. |
 | Bejövő portok kiválasztása | Válassza ki **HTTP** és **RDP**. |
 | FELÜGYELETI | |
-| Storage-fiók diagnosztikája | Hagyja meg az alapértelmezett **mynvastorageaccount**. |
+| Diagnosztikai tárfiók | Hagyja meg az alapértelmezett **mynvastorageaccount**. |
 
 Létrehozhatja a *myVmPrivate* virtuális gépet, miközben az Azure létrehozza a *myVmPublic* virtuális gépet. Ne folytassa a további lépésekkel mindkét virtuális gép létrehozása Azure befejezéséig.
 

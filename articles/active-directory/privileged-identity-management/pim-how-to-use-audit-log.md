@@ -1,68 +1,74 @@
 ---
-title: A PIM - Azure Active Directory Azure AD-szerepkörökhöz tartozó naplózási előzmények megtekintése |} A Microsoft Docs
-description: Ismerje meg az Azure AD-szerepkörökhöz tartozó naplózási előzmények megtekintése az Azure AD Privileged Identity Management (PIM).
+title: Azure AD-szerepkörök naplózási előzményeinek megtekintése a PIM-Azure Active Directoryban | Microsoft Docs
+description: Megtudhatja, hogyan tekintheti meg Azure AD Privileged Identity Management (PIM) Azure AD-szerepkörök naplózási előzményeit.
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 02/14/2017
-ms.author: rolyon
+ms.date: 06/10/2019
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c080173af8ddd31b077bb820ea19d82eb2b29300
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 3547ff218e9a15151e4abe2ceff53292d3f01ac0
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576140"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804322"
 ---
-# <a name="view-audit-history-for-azure-ad-roles-in-pim"></a>Az Azure AD-szerepköröket a PIM naplózási előzmények megtekintése
-Az Azure Active Directory (Azure AD) Privileged Identity Management (PIM) naplózási előzmények segítségével tekintse meg a felhasználó-hozzárendelés és aktiválás minden a kiemelt szerepkörökhöz tartozó megadott időtartamon belül. Ha meg szeretné tekinteni a teljes naplózási előzmények tevékenység a saját bérlőjében, beleértve a rendszergazda, a végfelhasználó és a szinkronizálási tevékenység, használhatja a [Azure Active Directory hozzáférési és használati jelentéseket.](../reports-monitoring/overview-reports.md)
+# <a name="view-audit-history-for-azure-ad-roles-in-pim"></a>Azure AD-szerepkörök naplózási előzményeinek megtekintése a PIM-ben
 
-## <a name="navigate-to-audit-history"></a>Keresse meg a naplózási előzmények
-Az a [az Azure portal](https://portal.azure.com) irányítópulton válassza a **Azure AD Privileged Identity Management** alkalmazást. Itt kattintva férhet hozzá a naplózási előzmények **kiemelt szerepkörök kezelése** > **naplózási előzmények** a PIM-irányítópulton.
+A Azure Active Directory (Azure AD) Privileged Identity Management (PIM) naplózási előzményeivel megtekintheti az elmúlt 30 napban található összes szerepkör-hozzárendelést és aktiválást az összes Kiemelt szerepkör esetében. Ha szeretné megtekinteni a címtárban található tevékenységek teljes naplózási előzményeit, beleértve a rendszergazdai, a végfelhasználói és a szinkronizálási tevékenységet, használhatja a [Azure Active Directory biztonsági és tevékenységi jelentéseket](../reports-monitoring/overview-reports.md).
 
-![Előzménynapló](media/azure-ad-pim-approval-workflow/image021.png)
+## <a name="view-audit-history"></a>Naplózási előzmények megtekintése
 
-> [!NOTE]
-> Rendezze az adatokat a művelet, és keressen az "Aktiválás Approved"
+Kövesse az alábbi lépéseket az Azure AD-szerepkörök naplózási előzményeinek megtekintéséhez.
 
+1. Jelentkezzen be [Azure Portalba](https://portal.azure.com/) egy olyan felhasználóval, aki tagja a [Kiemelt szerepkörű rendszergazda](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) szerepkörnek.
 
-## <a name="audit-history-graph"></a>Naplózási előzmények diagram
-A naplózási előzmények használatával megtekintheti az összes aktiválás maximális aktiválások száma / nap és átlagos aktiválások száma / nap vonaldiagramon.  Szűrhet emellett az adatok szerepkör Ha egynél több szerepkört a naplózási előzmények.
+1. Nyissa meg **Azure ad Privileged Identity Management**.
 
-Használja a **idő**, **művelet**, és **szerepkör** gombok segítségével rendezze az előzményeket.
+1. Kattintson az **Azure ad-szerepkörök**elemre.
 
-## <a name="audit-history-list"></a>Naplózási előzmények listája
-A naplózási Előzmények listában az oszlopok a következők:
+1. Kattintson a **címtár-szerepkörök naplózási előzményei**elemre.
 
-* **A kérelmező** – a felhasználó, aki kérte a szerepkör aktiválása vagy módosítása.  Ha az érték "Azure rendszer", ellenőrizze a további információ az Azure naplózási előzmények.
-* **Felhasználói** -aktivál, vagy egy olyan szerepkörhöz hozzárendelt felhasználó.
-* **Szerepkör** -a szerepkör hozzárendelése, vagy a felhasználó aktiválása.
-* **A művelet** – a kérelmező által végrehajtott műveletek. Ez magában foglalhatja hozzárendelés, ügyfelek, aktiválása vagy deaktiválása.
-* **Idő** – Ha a művelet történt.
-* **Mintafelismerési** – Ha a szöveg az aktiválás során megadott az oka mező, azt itt fognak megjelenni.
-* **Lejárati** – csak akkor érvényes, a szerepkörök aktiválásához.
+    A naplózási előzményektől függően egy oszlopdiagram jelenik meg az összes aktiválással, a napi maximális aktiválással és napi átlagos aktiválással együtt.
 
-## <a name="filter-audit-history"></a>Szűrő naplózási előzmények
-Az adatokat, hogy megjelenik-e a naplózási előzmények kattintva szűrheti a **szűrő** gombra.  A **frissítés diagram paraméterei panelen** jelenik meg.
+    ![Címtárbeli szerepkörök naplózási előzményei](media/pim-how-to-use-audit-log/directory-roles-audit-history.png)
 
-Miután beállította a szűrőket, kattintson a **frissítés** , szűrje az adatokat az előzmények.  Ha az adatok nem jelennek meg azonnal, frissítse az oldalt.
+    A lap alján egy tábla jelenik meg, amely a rendelkezésre álló naplózási előzményekben szereplő egyes műveletekkel kapcsolatos információkat tartalmazza. Az oszlopok a következő jelentésekkel rendelkeznek:
 
-### <a name="change-the-date-range"></a>A dátumtartomány módosítása
-Használja a **Ma**, **múlt héten**, **elmúlt hónap**, vagy **egyéni** gombokkal módosíthatja az időtartományt, a naplózási előzmények.
+    | Oszlop | Leírás |
+    | --- | --- |
+    | Time | Ha a művelet bekövetkezett. |
+    | Kérelmező | A szerepkör aktiválását vagy módosítását kérő felhasználó. Ha az érték az **Azure System**, további információért tekintse meg az Azure naplózási előzményeit. |
+    | Action | A kérelmező által végrehajtott műveletek. A műveletek lehetnek például a hozzárendelés, a hozzárendelés megszüntetése, az aktiválás, az inaktiválás vagy a AddedOutsidePIM. |
+    | Tag | Az a felhasználó, aki aktivál vagy hozzárendel egy szerepkörhöz. |
+    | Role | A felhasználó által hozzárendelt vagy aktivált szerepkör. |
+    | Magyarázat | Az aktiválás során az OK mezőbe beírt szöveg |
+    | Lejárat | Ha egy aktivált szerepkör lejár. Csak a jogosult szerepkör-hozzárendelésekre vonatkozik. |
 
-Ha úgy dönt a **egyéni** gomb, egyúttal egy **a** dátum mező és a egy **való** dátum mezőben adja meg a dátum az előzmények.  Adja meg a dátumot hh/nn/éééé formátumban, vagy kattintson a a **naptár** ikonra, és válassza ki a dátumot egy naptárból.
+1. A naplózási előzmények rendezéséhez kattintson az **idő**, a **művelet**és a **szerepkör** gombokra.
 
-### <a name="change-the-roles-included-in-the-history"></a>Az előzményekben található szerepköreinek módosítása
-Jelölje be vagy a **szerepkör** egyes szerepkörök vagy kizárja a az előzményekből melletti jelölőnégyzetet.
+## <a name="filter-audit-history"></a>Naplózási előzmények szűrése
 
-<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
+1. A naplózási Előzmények lap tetején kattintson a **szűrő** gombra.
+
+    Megjelenik a **frissítési diagram paramétereinek** panelje.
+
+1. Az **időtartomány**területen válassza ki az időtartományt.
+
+1. A **szerepkörök**területen jelölje be a megtekinteni kívánt szerepkörök jelölőnégyzeteit.
+
+    ![Diagram paramétereinek frissítése panel](media/pim-how-to-use-audit-log/update-chart-parameters.png)
+
+1. A szűrt naplózási előzmények megtekintéséhez kattintson a **kész** gombra.
+
 ## <a name="next-steps"></a>További lépések
 
-- [A PIM az Azure-erőforrások szerepköreihez tartozó tevékenység és a naplózási előzmények megtekintése](azure-pim-resource-rbac.md)
+- [Az Azure-erőforrás szerepköreinek tevékenység-és naplózási előzményeinek megtekintése a PIM-ben](azure-pim-resource-rbac.md)

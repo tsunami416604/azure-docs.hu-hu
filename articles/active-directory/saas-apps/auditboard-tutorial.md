@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5a54fb179b9baac9e72e003b1f9b0c6697ae74b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 0b91c0e55ba3400d4d601556d214bb2c9d6ff170
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59258793"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67106574"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-auditboard"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező AuditBoard
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a AuditBoard konfigurálásához hozzá kell AuditBoar
 
 **AuditBoard hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

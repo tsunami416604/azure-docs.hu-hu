@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: tutorial
-ms.date: 03/04/2019
+ms.date: 07/12/2019
 ms.author: aahi
-ms.openlocfilehash: 353641c514c9171e211221b84b13c5f09a413a48
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 7b530b3d415761956cbdb45fdc92bfed55a1bae5
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57341222"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868262"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>Oktatóanyag: Hozzon létre egy egyoldalas alkalmazást, a Bing Image Search API használatával
 
@@ -116,7 +116,7 @@ Az `onsubmit` kezelő alapértelmezésként `false` értéket ad vissza, ami meg
 
 ![[Bing Image Search űrlap]](media/cognitive-services-bing-images-api/image-search-spa-form.png)
 
-A Bing Image Search API több [szűrőlekérdezési paramétert](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#filter-query-parameters) kínál a találatok szűkítéséhez és szűréséhez. Ebben az alkalmazásban a HTML-űrlap az alábbi paraméteres beállításokat használja és jeleníti meg:
+A Bing Image Search API több [szűrőlekérdezési paramétert](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#filter-query-parameters) kínál a találatok szűkítéséhez és szűréséhez. Ebben az alkalmazásban a HTML-űrlap az alábbi paraméteres beállításokat használja és jeleníti meg:
 
 |              |                                                                                                                                                                                    |
 |--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -369,7 +369,7 @@ Az `index` és a `count` paraméter az eredmények számozására, gyűjteménye
     }, // relatedSearches renderer omitted
 ```
 
-A miniatűr `height` és `width` tulajdonságát az `<img>` címke, illetve a miniatűr URL-címének `h` és `w` mezője is használja. A Bing ezáltal pontosan ekkora méretű [miniatűrt](resize-and-crop-thumbnails.md) tud visszaadni.
+A miniatűr `height` és `width` tulajdonságát az `<img>` címke, illetve a miniatűr URL-címének `h` és `w` mezője is használja. A Bing ezáltal pontosan ekkora méretű [miniatűrt](../bing-web-search/resize-and-crop-thumbnails.md) tud visszaadni.
 
 ## <a name="persisting-client-id"></a>Ügyfél-azonosító megőrzése
 
@@ -386,7 +386,7 @@ A böngészők biztonsági szabályzatai (CORS) megakadályozhatják, hogy a Jav
 > [!NOTE]
 > Éles webalkalmazásban a kérést ettől függetlenül is kiszolgálói oldalról érdemes végrehajtani. Ellenkező esetben a weboldalnak tartalmaznia kell a Bing Search API-kulcsot, ahol a forrást megtekintők is hozzáférhetnek. Az API előfizetési kulcsával történő összes használatért Ön fizet, még az illetéktelen felek által létrehozott kérésekért is, ezért fontos, hogy a kulcsot ne tegye elérhetővé.
 
-Fejlesztési célokból a Bing Web Search API-kérést egy CORS-proxyn keresztül is végrehajthatja. Az ilyen proxyk válasza rendelkezik egy `Access-Control-Expose-Headers` fejléccel, amely engedélyezési listára teszi a válaszfejléceket, és elérhetővé teszi őket a JavaScript számára.
+Fejlesztési célokból a Bing Web Search API-kérést egy CORS-proxyn keresztül is végrehajthatja. Ilyen proxyn válasza rendelkezik egy `Access-Control-Expose-Headers` fejlécet, amely lehetővé teszi, hogy a válaszfejlécek, és elérhetővé teszi azokat a JavaScript.
 
 CORS-proxyt könnyedén telepíthet annak érdekében, hogy oktatóalkalmazásunk hozzáférhessen az ügyfél-azonosító fejlécéhez. Első lépésként [telepítse a Node.js-t](https://nodejs.org/en/download/), ha még nem tette meg. Ezután hajtsa végre egy parancsablakban a következő parancsot:
 

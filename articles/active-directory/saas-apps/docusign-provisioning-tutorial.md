@@ -16,11 +16,11 @@ ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 121d147a3f8c91f17e955120b2c14f7dbd3da592
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191843"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60280116"
 ---
 # <a name="tutorial-configure-docusign-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása DocuSign konfigurálása
 
@@ -70,7 +70,7 @@ Ez a szakasz célja engedélyezése a felhasználó kiépítése az Active Direc
 
 1. Állítsa be a **Kiépítési mód** való **automatikus**. 
 
-    ![kiépítés folyamatban](./media/docusign-provisioning-tutorial/provisioning.png)
+    ![Kiépítés](./media/docusign-provisioning-tutorial/provisioning.png)
 
 1. Alatt a **rendszergazdai hitelesítő adataival** területén adja meg a következő beállításokat:
    

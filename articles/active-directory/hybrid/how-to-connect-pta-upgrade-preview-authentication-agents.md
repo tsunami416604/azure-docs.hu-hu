@@ -18,11 +18,11 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 494ccc3b90b8c249ee935087dcf0f0b5264b02ca
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56172250"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60386771"
 ---
 # <a name="azure-active-directory-pass-through-authentication-upgrade-preview-authentication-agents"></a>Az Azure Active Directory átmenő hitelesítés: Előzetes verziójú hitelesítési ügynökök frissítése
 
@@ -35,7 +35,7 @@ Ez a cikk az egyelőre csak előzetes verzióként az Azure AD átmenő hiteles�
 
 ## <a name="check-versions-of-your-authentication-agents"></a>Ellenőrizze a hitelesítési ügynökök verziói
 
-### <a name="step-1-check-where-your-authentication-agents-are-installed"></a>1. lépés: Ellenőrizze, ahol a hitelesítési ügynökök telepítése
+### <a name="step-1-check-where-your-authentication-agents-are-installed"></a>1\. lépés: Ellenőrizze, ahol a hitelesítési ügynökök telepítése
 
 Kövesse az alábbi lépéseket, ellenőrizze, amelyen telepítve vannak-e az a hitelesítési ügynökök:
 
@@ -46,7 +46,7 @@ Kövesse az alábbi lépéseket, ellenőrizze, amelyen telepítve vannak-e az a 
 
 ![Az Azure Active Directory felügyeleti központ – átmenő hitelesítés panel](./media/how-to-connect-pta-upgrade-preview-authentication-agents/pta8.png)
 
-### <a name="step-2-check-the-versions-of-your-authentication-agents"></a>2. lépés: A hitelesítési ügynökök verziójának ellenőrzéséhez
+### <a name="step-2-check-the-versions-of-your-authentication-agents"></a>2\. lépés: A hitelesítési ügynökök verziójának ellenőrzéséhez
 
 A hitelesítési ügynökök minden kiszolgálón, az előző lépésben azonosított verziójának ellenőrzéséhez kövesse az alábbi utasításokat:
 
@@ -69,7 +69,7 @@ A hitelesítési ügynök ugyanazon a kiszolgálón a frissítés előtt frissí
 
 1. **Azure AD Connect frissítése**: Kövesse ezt [cikk](how-to-upgrade-previous-version.md) , frissítsen az Azure AD Connect legújabb verziójára.
 2. **Távolítsa el az előzetes verzióját, a hitelesítési ügynök**: Töltse le [a PowerShell-szkript](https://aka.ms/rmpreviewagent) , és futtassa rendszergazdaként a kiszolgálón.
-3. **Töltse le a hitelesítési ügynök legújabb verzióját (1.5.389.0 verzió vagy újabb)**: Jelentkezzen be a [Azure Active Directory felügyeleti központ](https://aad.portal.azure.com) a bérlő globális rendszergazdai hitelesítő adataival. Válassza ki **Azure Active Directory -> az Azure AD Connect -> az átmenő hitelesítés ügynök letöltése ->**. Fogadja el a [szolgáltatási feltételeit](https://aka.ms/authagenteula) , és töltse le a hitelesítési ügynök legújabb verzióját. Is letöltheti a hitelesítési ügynök a [Itt](https://aka.ms/getauthagent).
+3. **Töltse le a hitelesítési ügynök legújabb verzióját (1.5.389.0 verzió vagy újabb)** : Jelentkezzen be a [Azure Active Directory felügyeleti központ](https://aad.portal.azure.com) a bérlő globális rendszergazdai hitelesítő adataival. Válassza ki **Azure Active Directory -> az Azure AD Connect -> az átmenő hitelesítés ügynök letöltése ->** . Fogadja el a [szolgáltatási feltételeit](https://aka.ms/authagenteula) , és töltse le a hitelesítési ügynök legújabb verzióját. Is letöltheti a hitelesítési ügynök a [Itt](https://aka.ms/getauthagent).
 4. **Telepítse a legújabb verzióját, a hitelesítési ügynök**: A 3. lépésben letöltött végrehajtható fájl futtatásához. Adja meg a bérlő globális rendszergazdai hitelesítő adatait, amikor a rendszer kéri.
 5. **Győződjön meg arról, hogy a legújabb verziója telepítve van-e**: Ahogyan előtt, lépjen **Vezérlőpult -> Programok -> Programok és szolgáltatások** , és ellenőrizze, hogy nincs-e egy bejegyzés "**a Microsoft Azure AD Connect hitelesítési ügynökének**".
 
@@ -81,7 +81,7 @@ A hitelesítési ügynök ugyanazon a kiszolgálón a frissítés előtt frissí
 Kövesse az alábbi lépéseket a többi kiszolgáló hitelesítési ügynökök frissítése (Ha nincs telepítve az Azure AD Connect):
 
 1. **Távolítsa el az előzetes verzióját, a hitelesítési ügynök**: Töltse le [a PowerShell-szkript](https://aka.ms/rmpreviewagent) , és futtassa rendszergazdaként a kiszolgálón.
-2. **Töltse le a hitelesítési ügynök legújabb verzióját (1.5.389.0 verzió vagy újabb)**: Jelentkezzen be a [Azure Active Directory felügyeleti központ](https://aad.portal.azure.com) a bérlő globális rendszergazdai hitelesítő adataival. Válassza ki **Azure Active Directory -> az Azure AD Connect -> az átmenő hitelesítés ügynök letöltése ->**. Fogadja el a szolgáltatási feltételeket, és a legújabb verzió letöltéséhez.
+2. **Töltse le a hitelesítési ügynök legújabb verzióját (1.5.389.0 verzió vagy újabb)** : Jelentkezzen be a [Azure Active Directory felügyeleti központ](https://aad.portal.azure.com) a bérlő globális rendszergazdai hitelesítő adataival. Válassza ki **Azure Active Directory -> az Azure AD Connect -> az átmenő hitelesítés ügynök letöltése ->** . Fogadja el a szolgáltatási feltételeket, és a legújabb verzió letöltéséhez.
 3. **Telepítse a legújabb verzióját, a hitelesítési ügynök**: A 2. lépésben letöltött végrehajtható fájl futtatásához. Adja meg a bérlő globális rendszergazdai hitelesítő adatait, amikor a rendszer kéri.
 4. **Győződjön meg arról, hogy a legújabb verziója telepítve van-e**: Ahogyan előtt, lépjen **Vezérlőpult -> Programok -> Programok és szolgáltatások** , és ellenőrizze, hogy nincs-e bejegyzés **a Microsoft Azure AD Connect hitelesítési ügynökének**.
 

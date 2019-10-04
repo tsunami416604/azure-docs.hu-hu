@@ -2,24 +2,25 @@
 title: Ismerkedés az Azure Security Center (ASC) használatával for IoT-előzetes verzió |} A Microsoft Docs
 description: Ismerkedés az IoT-szolgáltatások és a szolgáltatás az Azure Security Center az alapvető munkafolyamat ismertetése.
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
-manager: barbkess
+manager: rkarlin
 editor: ''
 ms.assetid: 55c8d3b6-3126-4246-8d07-ef88fe5ea84f
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: aac15d766439a725f593ca421cbdc6da496f29f4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 39f448f258923d23bdcba75a0a1987777ce0492e
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58862692"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67616865"
 ---
 # <a name="get-started-with-azure-security-center-for-iot"></a>IoT az Azure Security Center használatának első lépései 
 

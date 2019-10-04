@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: d6d6517a85997265021573b2f9d481c81283c216
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
-ms.translationtype: HT
+ms.openlocfilehash: fbe299088a7a2edb5319d217defb7c7c00ecfa22
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60148832"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090043"
 ---
 # <a name="copy-data-from-marketo-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával Marketo
 
@@ -28,12 +28,17 @@ Ez a cikk ismerteti az Azure Data Factory a másolási tevékenység használat�
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
+Ez a Marketo-összekötő a következő tevékenységek esetén támogatott:
+
+- [Másolási tevékenység](copy-activity-overview.md) [támogatott forrás/fogadó mátrixtal](copy-activity-overview.md)
+- [Keresési tevékenység](control-flow-lookup-activity.md)
+
 A Marketo szoftveréből származó adatok másolhatja bármely támogatott fogadó adattárba. A másolási tevékenység által, források és fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
 
 Az Azure Data Factory kapcsolat beépített illesztőprogramot tartalmaz, ezért nem kell manuálisan telepítenie az összes illesztőprogram ezzel az összekötővel.
 
 >[!NOTE]
->A Marketo-összekötő a Marketo REST API épül. Vegye figyelembe, hogy rendelkezik-e a Marketo [egyidejű kérelmeinek maximális száma](https://developers.marketo.com/rest-api/) szolgáltatás oldalán. Ha eléri közli, hogy hibákat "hiba történt a REST API-val kísérlet során: Maximális sebesség túllépte a korlátot "100" a "20" másodperc (606) "vagy" hiba történt a REST API-val kísérlet során: Egyidejű hozzáférés korlátozása '10' (615) elérte ", próbálják meg csökkenteni a kérések száma a szolgáltatás egyidejű másolási tevékenység-végrehajtás csökkentése érdekében érdemes lehet.
+>A Marketo-összekötő a Marketo REST API épül. Vegye figyelembe, hogy rendelkezik-e a Marketo [egyidejű kérelmeinek maximális száma](https://developers.marketo.com/rest-api/) szolgáltatás oldalán. Ha a "hiba" hibaüzenet jelenik meg a REST API használatának megkísérlése során: A maximálisan megengedett "100" érték túllépte a "20" másodperces (606) "vagy" hibát a REST API használatának megkísérlése során: A rendszer elérte az egyidejű hozzáférési korlátot (615) ", érdemes lehet csökkenteni az egyidejű másolási tevékenységek futtatását, hogy csökkentse a szolgáltatásra irányuló kérések számát.
 
 ## <a name="getting-started"></a>Első lépések
 
@@ -47,13 +52,13 @@ A Marketo-beli társított szolgáltatás a következő tulajdonságok támogato
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot kell beállítani: **Marketo** | Igen |
+| type | A Type tulajdonságot a következőre kell beállítani: **Marketo** | Igen |
 | endpoint | A végpont a Marketo-kiszolgáló. (i.e. 123-ABC-321.mktorest.com)  | Igen |
 | clientId | Az ügyfél a Marketo-szolgáltatás azonosítója.  | Igen |
 | clientSecret | Ügyfélkulcs a Marketo-szolgáltatás. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
-| useEncryptedEndpoints | Megadja, hogy a data source végpontok HTTPS segítségével titkosítja. Az alapértelmezett érték: igaz.  | Nem |
-| useHostVerification | Megadja a kiszolgálói tanúsítvány a kiszolgáló állomásneve megfelelően, ha SSL-kapcsolaton keresztül kapcsolódik az állomás neve kötelező legyen-e. Az alapértelmezett érték: igaz.  | Nem |
-| usePeerVerification | Megadja, hogy ellenőrizze a kiszolgáló identitását, ha SSL-kapcsolaton keresztül kapcsolódik. Az alapértelmezett érték: igaz.  | Nem |
+| useEncryptedEndpoints | Megadja, hogy a data source végpontok HTTPS segítségével titkosítja. Az alapértelmezett érték: true.  | Nem |
+| useHostVerification | Megadja a kiszolgálói tanúsítvány a kiszolgáló állomásneve megfelelően, ha SSL-kapcsolaton keresztül kapcsolódik az állomás neve kötelező legyen-e. Az alapértelmezett érték: true.  | Nem |
+| usePeerVerification | Megadja, hogy ellenőrizze a kiszolgáló identitását, ha SSL-kapcsolaton keresztül kapcsolódik. Az alapértelmezett érték: true.  | Nem |
 
 **Példa**
 
@@ -82,7 +87,7 @@ Adatok másolása a Marketo szoftveréből származó, állítsa be a type tulaj
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot az adatkészlet értékre kell állítani: **MarketoObject** | Igen |
+| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **MarketoObject** | Igen |
 | tableName | A tábla neve. | Nem (Ha a tevékenység forrása az "query" van megadva) |
 
 **Példa**
@@ -92,11 +97,12 @@ Adatok másolása a Marketo szoftveréből származó, állítsa be a type tulaj
     "name": "MarketoDataset",
     "properties": {
         "type": "MarketoObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Marketo linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -111,10 +117,10 @@ Adatok másolása a Marketo, állítsa be a forrás típusaként a másolási te
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **MarketoSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM Activitiy_Types"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
+| type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **MarketoSource** | Igen |
+| query | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM Activitiy_Types"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
-**Példa**
+**Példa:**
 
 ```json
 "activities":[
@@ -145,6 +151,11 @@ Adatok másolása a Marketo, állítsa be a forrás típusaként a másolási te
     }
 ]
 ```
+
+## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
+
+A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
+
 
 ## <a name="next-steps"></a>További lépések
 A másolási tevékenység az Azure Data Factory által forrásként és fogadóként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

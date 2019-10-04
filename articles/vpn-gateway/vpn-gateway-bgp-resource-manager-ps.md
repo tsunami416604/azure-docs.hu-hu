@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: yushwang
-ms.openlocfilehash: c65ea038fc39702affae93cb68b8cf644393c62e
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: d7a84bfda06b5db30afff6322c63a056a414357b
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415612"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626579"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways-using-powershell"></a>BGP konfigurálása Azure VPN Gateway PowerShell-lel
 Ez a cikk végigvezeti a BGP engedélyezéséhez a létesítmények közötti Site-to-Site (S2S) VPN-kapcsolat és VNet – VNet kapcsolat a Resource Manager üzemi modell és a PowerShell használatával.
@@ -28,7 +28,7 @@ Ez a cikk végigvezeti a BGP engedélyezéséhez a létesítmények közötti Si
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="about-bgp"></a>A BGP ismertetése
-A BGP az interneten gyakran használt szabványos útválasztási protokoll az útválasztási és elérhetőségi információcserére két vagy több hálózat között. A BGP lehetővé teszi, hogy az Azure VPN Gateway és a helyszíni VPN-eszközök, BGP-társak vagy -szomszédok, az "útvonalakat", amely tájékoztatja a rendelkezésre állási és útválasztókon keresztül az átjárók és az érintett útválasztók előtagok mindkét átjáró néven. A BGP lehetővé teszi a több hálózat közötti tranzit útválasztást azon útvonalak propagálásával az összes többi BGP-társ számára, amelyeket a BGP-átjáró az egyik BGP-társtól vesz át.
+A BGP az interneten gyakran használt szabványos útválasztási protokoll az útválasztási és elérhetőségi információcserére két vagy több hálózat között. A BGP lehetővé teszi az Azure VPN Gateway átjárók és a helyszíni VPN-eszközök (más néven BGP-társak vagy -szomszédok) számára az információcserét az „útvonalakat” illetően. Ezáltal mindkét átjáró ismerni fogja az érintett átjárókon és útválasztókon áthaladó előtagok rendelkezésre állási és elérhetőségi információit. A BGP lehetővé teszi a több hálózat közötti tranzit útválasztást azon útvonalak propagálásával az összes többi BGP-társ számára, amelyeket a BGP-átjáró az egyik BGP-társtól vesz át.
 
 Lásd: [BGP áttekintése az Azure VPN-átjárókkal](vpn-gateway-bgp-overview.md) további vitafórum a előnyeiről BGP és technikai követelményeket és szempontokat kell figyelembe vennie a BGP használatával.
 
@@ -37,7 +37,7 @@ Lásd: [BGP áttekintése az Azure VPN-átjárókkal](vpn-gateway-bgp-overview.m
 Ez a cikk végigvezeti a lépéseken, a következő feladatokat végezheti el:
 
 * [1. rész – az Azure VPN gateway a BGP engedélyezése](#enablebgp)
-* 2. rész – a BGP létesítmények közötti kapcsolat létrehozása
+* 2\. rész – a BGP létesítmények közötti kapcsolat létrehozása
 * [3. rész – a BGP VNet – VNet kapcsolat létrehozása](#v2vbgp)
 
 Az egyes részek az utasításokat a hálózati kapcsolatot a BGP engedélyezéséhez építőeleme képezi. Ha elvégezte az összes három részből áll, létre a topológia az alábbi ábrán látható módon:
@@ -55,7 +55,7 @@ A konfigurációs lépések az Azure VPN gateway a BGP paramétereket állíthat
 * Győződjön meg arról, hogy rendelkezik Azure-előfizetéssel. Ha még nincs Azure-előfizetése, aktiválhatja [MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/).
 * Telepítse az Azure Resource Manager PowerShell-parancsmagokat. További információ a PowerShell-parancsmagok telepítéséről: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview). 
 
-### <a name="step-1---create-and-configure-vnet1"></a>1. lépés – létrehozása és konfigurálása a VNet1
+### <a name="step-1---create-and-configure-vnet1"></a>1\. lépés – létrehozása és konfigurálása a VNet1
 #### <a name="1-declare-your-variables"></a>1. A változók deklarálása
 Ehhez a gyakorlathoz módszertan változók deklarálásával. Az alábbi példában használt deklarálja a változókat az értékeket a gyakorlatban. Az éles konfigurációhoz ne felejtse el ezeket az értékeket a saját értékeire cserélni. Ezeket a változókat akkor használhatja, ha azért hajtja végre a lépéseket, hogy megismerje ezt a konfigurációtípust. Módosítsa a változókat, majd másolja és illessze be őket a PowerShell-konzolra.
 
@@ -102,7 +102,7 @@ $gwsub1 = New-AzVirtualNetworkSubnetConfig -Name $GWSubName1 -AddressPrefix $GWS
 New-AzVirtualNetwork -Name $VNetName1 -ResourceGroupName $RG1 -Location $Location1 -AddressPrefix $VNetPrefix11,$VNetPrefix12 -Subnet $fesub1,$besub1,$gwsub1
 ```
 
-### <a name="step-2---create-the-vpn-gateway-for-testvnet1-with-bgp-parameters"></a>2. lépés – a VPN-átjáró létrehozása a testvnet1-hez a BGP-paraméterekkel
+### <a name="step-2---create-the-vpn-gateway-for-testvnet1-with-bgp-parameters"></a>2\. lépés – a VPN-átjáró létrehozása a testvnet1-hez a BGP-paraméterekkel
 #### <a name="1-create-the-ip-and-subnet-configurations"></a>1. Hozza létre az IP-cím és alhálózat-konfigurációit
 Kérje egy nyilvános IP-cím kiosztását a virtuális hálózat számára létrehozni kívánt átjáróhoz. A szükséges alhálózatot és IP-konfigurációk is meghatározhatja.
 
@@ -118,7 +118,7 @@ $gwipconf1 = New-AzVirtualNetworkGatewayIpConfig -Name $GWIPconfName1 -Subnet $s
 Hozza létre a TestVNet1 virtuális hálózati átjáróját. BGP szükséges Útvonalalapú VPN-átjáró, valamint emellett paraméter - ASN-t, az ASN (AS-szám) beállítása a testvnet1-hez. Ha nincs beállítva az ASN-t paraméterrel, 65515 ASN szám van hozzárendelve. Az átjáró létrehozása akár 30 percet vagy hosszabb időt is igénybe vehet.
 
 ```powershell
-New-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1 -Location $Location1 -IpConfigurations $gwipconf1 -GatewayType Vpn -VpnType RouteBased -GatewaySku HighPerformance -Asn $VNet1ASN
+New-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1 -Location $Location1 -IpConfigurations $gwipconf1 -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw1 -Asn $VNet1ASN
 ```
 
 #### <a name="3-obtain-the-azure-bgp-peer-ip-address"></a>3. Az Azure BGP-Társgép IP-cím beszerzése
@@ -150,7 +150,7 @@ Létesítmények közötti kapcsolatot létesíteni, szüksége a helyszíni VPN
 
 Mielőtt folytatná, győződjön meg arról, hogy befejezte [1. rész](#enablebgp) ebben a gyakorlatban.
 
-### <a name="step-1---create-and-configure-the-local-network-gateway"></a>1. lépés – létrehozása és a helyi hálózati átjáró konfigurálása
+### <a name="step-1---create-and-configure-the-local-network-gateway"></a>1\. lépés – létrehozása és a helyi hálózati átjáró konfigurálása
 
 #### <a name="1-declare-your-variables"></a>1. A változók deklarálása
 
@@ -184,7 +184,7 @@ New-AzResourceGroup -Name $RG5 -Location $Location5
 New-AzLocalNetworkGateway -Name $LNGName5 -ResourceGroupName $RG5 -Location $Location5 -GatewayIpAddress $LNGIP5 -AddressPrefix $LNGPrefix50 -Asn $LNGASN5 -BgpPeeringAddress $BGPPeerIP5
 ```
 
-### <a name="step-2---connect-the-vnet-gateway-and-local-network-gateway"></a>2. lépés – a virtuális hálózati átjáró és a helyi hálózati átjáró csatlakoztatása
+### <a name="step-2---connect-the-vnet-gateway-and-local-network-gateway"></a>2\. lépés – a virtuális hálózati átjáró és a helyi hálózati átjáró csatlakoztatása
 
 #### <a name="1-get-the-two-gateways"></a>1. A két átjáró beolvasása
 
@@ -224,7 +224,7 @@ Ez a szakasz ad hozzá egy VNet – VNet kapcsolat BGP-vel, az alábbi ábrán l
 
 Az alábbi utasításokat a leírt lépések folytatása. Meg kell adnia a [i. rész](#enablebgp) létrehozása és konfigurálása a TestVNet1 és a VPN Gateway a BGP. 
 
-### <a name="step-1---create-testvnet2-and-the-vpn-gateway"></a>1. lépés – TestVNet2 és a VPN-átjáró létrehozása
+### <a name="step-1---create-testvnet2-and-the-vpn-gateway"></a>1\. lépés – TestVNet2 és a VPN-átjáró létrehozása
 
 Fontos győződjön meg arról, hogy az IP-címtér az új TestVNet2, virtuális hálózat nem átfedésben a VNet-címtartományok.
 
@@ -282,10 +282,10 @@ $gwipconf2 = New-AzVirtualNetworkGatewayIpConfig -Name $GWIPconfName2 -Subnet $s
 Hozzon létre a VPN-átjáró az AS-számot. Az Azure VPN Gateway átjárókról felül kell bírálnia az alapértelmezett ASN-t. Az ASN-eket a csatlakoztatott virtuális hálózat számára ahhoz, hogy a BGP és a tranzit útválasztást különbözőnek kell lennie.
 
 ```powershell
-New-AzVirtualNetworkGateway -Name $GWName2 -ResourceGroupName $RG2 -Location $Location2 -IpConfigurations $gwipconf2 -GatewayType Vpn -VpnType RouteBased -GatewaySku Standard -Asn $VNet2ASN
+New-AzVirtualNetworkGateway -Name $GWName2 -ResourceGroupName $RG2 -Location $Location2 -IpConfigurations $gwipconf2 -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw1 -Asn $VNet2ASN
 ```
 
-### <a name="step-2---connect-the-testvnet1-and-testvnet2-gateways"></a>2. lépés – a TestVNet1 és TestVNet2 átjárók csatlakoztatása
+### <a name="step-2---connect-the-testvnet1-and-testvnet2-gateways"></a>2\. lépés – a TestVNet1 és TestVNet2 átjárók csatlakoztatása
 
 Ebben a példában mindkét átjáró ugyanabban az előfizetésben vannak. Ebben a lépésben a PowerShell-munkamenetben hajthatja végre.
 

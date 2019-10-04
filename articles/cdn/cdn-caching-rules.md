@@ -6,19 +6,19 @@ documentationcenter: ''
 author: mdgattuso
 manager: danielgi
 editor: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: magattus
-ms.openlocfilehash: 3a94b8252feb7c5c345d678579c477fce02d6e03
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: d4ab3ca32f229e92ae6bae5906c6c70593e9f9d3
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259737"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594038"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-caching-rules"></a>Az Azure CDN gyorsítótárazási viselkedésének gyorsítótár-szabályokkal vezérlése
 
@@ -75,7 +75,7 @@ A globális és egyéni gyorsítótárszabályok megadhatja a gyorsítótár lej
 
 Egyéni gyorsítótárazási szabályok két egyezési feltételei érhetők el:
  
-- **Elérési út**: Ez az állapot megegyezik az elérési útját az URL-címet, kivéve a tartomány nevét, és támogatja a helyettesítő karakter és szimbólum (\*). Ha például _/myfile.html_, _/saját/mappa / *_, és _/my/images/*.jpg_. A hossza legfeljebb 260 karakter hosszúságú lehet.
+- **Elérési út**: Ez az állapot megegyezik az elérési útját az URL-címet, kivéve a tartomány nevét, és támogatja a helyettesítő karakter és szimbólum (\*). Ha például _/myfile.html_, _/saját/mappa / *_ , és _/my/images/*.jpg_. A hossza legfeljebb 260 karakter hosszúságú lehet.
 
 - **Bővítmény**: Ez az állapot a kért fájl kiterjesztése megegyezik. Megadhatja azon fájlkiterjesztések vesszővel elválasztott megfelelően listáját. Ha például _.jpg_, _.mp3_, vagy _.png_. Bővítmények maximális száma érték az 50, a bővítmény karakterek maximális száma pedig 16. 
 
@@ -92,7 +92,7 @@ A globális és egyéni gyorsítótárazási szabályok feldolgozása a követke
    - Gyorsítótár elévülési ideje: 1 nap
 
 - Az egyéni szabály #1 gyorsítótárazást:
-   - Az állapotot meg: **Elérési út**
+   - Az állapotot meg: **Path**
    - Érték egyezik:   _/home / *_
    - A gyorsítótárazási viselkedés: **felülbírálás**
    - Gyorsítótár elévülési ideje: 2 nap
@@ -103,7 +103,7 @@ A globális és egyéni gyorsítótárazási szabályok feldolgozása a követke
    - A gyorsítótárazási viselkedés: **Beállítás hiányzó érték esetén**
    - Gyorsítótár elévülési ideje: 3 nap
 
-Ha ezek a szabályok vannak beállítva, a kérelem  _&lt;végpont gazdaneve&gt;_.azureedge.net/home/index.html eseményindítók egyedi gyorsítótárazás szabály #2, amely van beállítva: **Beállítás hiányzó érték esetén** és három napon belül. Ezért ha a *index.html* fájl `Cache-Control` vagy `Expires` HTTP-fejléceket, figyelembe véve azok; ellenkező esetben, ha nincsenek beállítva ezek a fejlécek, a fájl tárolja a rendszer 3 napig.
+Ha ezek a szabályok vannak beállítva, a kérelem  _&lt;végpont gazdaneve&gt;_ .azureedge.net/home/index.html eseményindítók egyedi gyorsítótárazás szabály #2, amely van beállítva: **Beállítás hiányzó érték esetén** és három napon belül. Ezért ha a *index.html* fájl `Cache-Control` vagy `Expires` HTTP-fejléceket, figyelembe véve azok; ellenkező esetben, ha nincsenek beállítva ezek a fejlécek, a fájl tárolja a rendszer 3 napig.
 
 > [!NOTE] 
 > Fájlok, amelyek lettek gyorsítótárazva, mielőtt a szabályt úgy módosítják a forrás cache időtartama beállítás karbantartása. A gyorsítótár időtartamok alaphelyzetbe állításához kell [végleges törlése a fájl](cdn-purge-endpoint.md). 

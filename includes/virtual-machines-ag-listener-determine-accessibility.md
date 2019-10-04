@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 8861396db6f6b680ddb55ce020e5579dc25b118e
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50226913"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179072"
 ---
 Fontos vegye figyelembe, hogy egy rendelkezésre állási csoport kérésfigyelőjének konfigurálása az Azure-ban két módja van. A módszer a figyelő létrehozásakor használja az Azure load balancer típusú térnek el egymástól. A következő táblázat ismerteti a különbségeket:
 
 | Terheléselosztó típusa | Megvalósítás | Használat: |
 | --- | --- | --- |
-| **Külső** |Használja a *nyilvános virtuális IP-cím* a felhőalapú szolgáltatás, amely a virtuális gépek (VM) üzemelteti. |A figyelő a többek között az internetről, a virtuális hálózaton kívül eléréséhez szükséges. |
+| **External** |Használja a *nyilvános virtuális IP-cím* a felhőalapú szolgáltatás, amely a virtuális gépek (VM) üzemelteti. |A figyelő a többek között az internetről, a virtuális hálózaton kívül eléréséhez szükséges. |
 | **Belső** |Használja az *belső load balancer* a figyelő a magán-címmel. |A figyelő csak az adott virtuális hálózaton belül is elérheti. A site-to-site VPN hozzátartozik a hibrid környezetek. |
 
 > [!IMPORTANT]

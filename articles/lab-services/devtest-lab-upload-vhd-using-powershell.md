@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 56a66c3eb1dad93fad3ad1572989dc0c0aa14632
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56326528"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60622761"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-powershell"></a>VHD-fájl feltöltése PowerShell használatával tesztkörnyezet tárfiókba
 
@@ -39,7 +39,7 @@ A következő lépések végigvezetik egy VHD-fájl feltöltése a PowerShell-le
 
 1. A labor paneljén válassza ki a **konfigurációs**. 
 
-1. A laborgyakorlat **konfigurációs** panelen válassza ki **egyéni lemezképeket (VHD)**.
+1. A laborgyakorlat **konfigurációs** panelen válassza ki **egyéni lemezképeket (VHD)** .
 
 1. Az a **egyéni lemezképek** panelen válasszon ki **+ Hozzáadás**. 
 

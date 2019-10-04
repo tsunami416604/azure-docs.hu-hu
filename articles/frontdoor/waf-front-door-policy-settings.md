@@ -1,6 +1,6 @@
 ---
-title: Webalkalmazási tűzfal az Azure bejárati ajtó a házirend-beállítások
-description: Ismerje meg a webalkalmazási tűzfal (WAF).
+title: A webalkalmazási tűzfal házirend-beállításai az Azure bejárati ajtaján
+description: A webalkalmazási tűzfal (WAF) megismerése.
 services: frontdoor
 author: KumudD
 ms.service: frontdoor
@@ -9,50 +9,51 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/08/2019
-ms.author: tyao;kumud
-ms.openlocfilehash: 4c2f070e9b3c972f063008df8880b196ddb069cc
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.author: kumud
+ms.reviewer: tyao
+ms.openlocfilehash: 8f51cb6944221416b098a9b953db417053155f1e
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59797463"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849108"
 ---
-# <a name="policy-settings-for-web-application-firewall-with-azure-front-door"></a>Webalkalmazási tűzfal az Azure bejárati ajtó a házirend-beállítások
+# <a name="policy-settings-for-web-application-firewall-with-azure-front-door"></a>A webalkalmazási tűzfal házirend-beállításai az Azure bejárati ajtaján
 
-A webalkalmazási tűzfal (WAF) házirend lehetővé teszi a webes alkalmazásokhoz való hozzáférés szabályozásához, egyéni és felügyelt szabályai szerint. A WAF-szabályzat nevének egyedinek kell lennie. Érvényesítési hiba fog kapni, ha egy meglévő nevét használja. Ebben a cikkben leírtak szerint a házirendhez tartozó meghatározott összes szabály vonatkozó több szintű házirend-beállításokat a rendszer.
+A webalkalmazási tűzfal (WAF) házirendje lehetővé teszi, hogy egyéni és felügyelt szabályok alapján vezérelje a webalkalmazásokhoz való hozzáférést. A WAF-szabályzat nevének egyedinek kell lennie. Ha meglévő nevet próbál használni, a rendszer érvényesítési hibát fog kapni. Az ebben a cikkben leírtak szerint több házirendi szintű beállítás is érvényes az adott szabályzathoz megadott összes szabályra.
 
-## <a name="waf-state"></a>WAF-állapot
+## <a name="waf-state"></a>WAF állapota
 
-A WAF házirendet bejárati ajtajának a következő két állapotok egyike lehet:
-- **Engedélyezve:** Egy szabályzat engedélyezésekor a WAF aktívan van vizsgálatához a bejövő kéréseket, és megfelelően szabálydefiníciók megfelelő műveleteket hajtja végre
-- **Letiltva:** – Ha a házirend le van tiltva, WAF vizsgálat szüneteltetve van. Bejövő kérelmek WAF fog kerülni, és háttéralkalmazások bejárati ajtajának útválasztás alapján küldött.
+A WAF házirendje a következő két állapot egyike lehet:
+- **Engedélyezve** Ha egy házirend engedélyezve van, a WAF aktívan ellenőrzi a bejövő kérelmeket, és a szabályok definíciói szerint végrehajtja a megfelelő műveleteket.
+- **Letiltva:** – ha egy házirend le van tiltva, a WAF-ellenőrzés szünetel. A bejövő kérések megkerülik a WAF, és a rendszer az előtér-útválasztás alapján küldi el a háttér-végpontoknak.
 
-## <a name="waf-mode"></a>WAF-mód
+## <a name="waf-mode"></a>WAF mód
 
-WAF házirend beállítható úgy, hogy futtassa a következő két módban:
+A WAF házirend a következő két módban való futtatásra konfigurálható:
 
-- **Észlelés üzemmód** észlelési módban fusson, amikor nem-e bármilyen műveletet eltérő figyelő WAF, és jelentkezzen a kérelmet, és az egyező WAF szabálya WAF-naplókban. Kapcsolja be a diagnosztikai naplózás bejárati ajtajának (portál használata esetén ez érhető el a a **diagnosztikai** szakaszban az Azure Portalon).
+- **Észlelési mód** Az észlelési módban való futtatáskor a WAF nem hajt végre semmilyen műveletet a figyeléstől, és naplózza a kérést és a megegyező WAF szabályt a WAF-naplókhoz. A naplózási diagnosztika bekapcsolása a bejárati ajtóhoz (a portál használata esetén ez a **diagnosztika** szakaszban érhető el a Azure Portal).
 
-- **Megelőzés üzemmód** megelőzési módban történő futtatására konfigurálásakor WAF a megadott művelet tart, ha a kérelem megfelel a szabálynak. Egyeztetett kérések is naplózza a WAF-naplókban.
+- **Megelőzési mód** Ha a beállítás a megelőzési módban való futtatásra van konfigurálva, a WAF végrehajtja a megadott műveletet, ha egy kérelem megfelel egy szabálynak. A rendszer a WAF-naplókban is naplózza a megfeleltetett kérelmeket.
 
-## <a name="waf-response-for-blocked-requests"></a>A blokkolt kérelmek WAF-válasza
+## <a name="waf-response-for-blocked-requests"></a>WAF válasz a blokkolt kérelmekhez
 
-Alapértelmezés szerint ha WAF blokkol egy kérelem egy egyező szabály miatt, adja vissza az - 403-as állapotkódot **a kérelem le van tiltva** üzenet. A referencia-karakterlánc is naplózási adja vissza.
+Alapértelmezés szerint, ha a WAF egy egyeztetett szabály miatt blokkol egy kérést, a egy 403-as állapotkódot ad vissza – **a kérés blokkolva** üzenet. A rendszer a naplózáshoz is visszaadja a hivatkozási karakterláncot.
 
-A kérelem le van tiltva a WAF által során meghatározható a egy egyéni válasz állapotkódja és válaszüzenet. A következő egyéni állapotkódok támogatottak:
+Megadhat egy egyéni válasz állapotkódot és válaszüzenetet, ha a WAF letiltotta a kérelmet. A következő egyéni állapotkódok támogatottak:
 
-- 200    OK
-- 403    Forbidden
-- 405 Metoda není povolena
-- 406 nem megfelelő
-- 429 túl sok kérelem
+- 200 OK
+- 403 Tiltott
+- 405 metódus nem engedélyezett
+- 406 nem fogadható el
+- 429 túl sok kérés
 
-Egyéni válasz állapota és a válaszidő üzenetet szintű házirend-beállítás kötelező. Ha konfigurálva van, minden a blokkolt kérelmek beolvasása az ugyanazon egyéni válasz állapota és a válaszüzenet.
+Az egyéni válasz állapotkód és a válaszüzenet egy házirendi szintű beállítás. Miután konfigurálta, az összes letiltott kérelem ugyanazt az egyéni választ kapja és válaszüzenetet kap.
 
-## <a name="uri-for-redirect-action"></a>Művelet átirányítási URI
+## <a name="uri-for-redirect-action"></a>Átirányítási művelet URI-ja
 
-Egy URI-t, hogy átirányítsa a kéréseket, ha meg kell a **ÁTIRÁNYÍTÁSI** művelet van kiválasztva a szabály a WAF-házirend található. Az átirányítási URI-t kell lennie egy érvényes HTTP (S) helyet, és beállítások konfigurálása után "ÁTIRÁNYÍTÁSI" művelettel egyező szabályok irányítja át a megadott hely összes kérelem.
+Meg kell határoznia egy URI-t, hogy átirányítsa a kérelmeket, ha az **átirányítás** művelet be van JELÖLVE a WAF szabályzatban foglalt szabályok bármelyikéhez. Az átirányítási URI-nak érvényes HTTP (S) helynek kell lennie, és a konfigurálást követően az "átirányítás" művelettel egyező szabályokat tartalmazó kérelmeket a rendszer átirányítja a megadott helyre.
 
 
 ## <a name="next-steps"></a>További lépések
-- Ismerje meg, hogyan adhat meg a WAF [egyéni válaszok](waf-front-door-configure-custom-response-code.md)
+- Ismerje meg, hogyan határozhatja meg a WAF [Egyéni válaszait](waf-front-door-configure-custom-response-code.md)

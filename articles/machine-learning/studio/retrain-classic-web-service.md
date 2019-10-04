@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: peterlu
+author: peterclu
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/14/2019
-ms.openlocfilehash: fa4448c2a44a3c56548120bd04abf53df9a85ba0
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: b636883ee1f08fa0fb6d080b6980cd07553dde1b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56822019"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65234041"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-web-service"></a>Újratanítás PowerShell és a egy klasszikus Studio-webszolgáltatás üzembe helyezése
 
@@ -46,7 +46,7 @@ Adhat hozzá azzal a mintakóddal ebben pontozási végpontok [GitHub-adattár](
 
 1. Machine Learning Studio a bal oldali navigációs oszlopban kattintson a Web Services.
 1. A webszolgáltatás irányítópultján alján kattintson **kezelés végpontok előzetes**.
-1. Kattintson a **Hozzáadás** parancsra.
+1. Kattintson a **Hozzáadás**lehetőségre.
 1. Írjon be egy nevet és leírást az új végpont. Válassza ki a naplózási szint, és hogy engedélyezve van-e a mintaadatok. A naplózás további információkért lásd: [naplózás engedélyezése a Machine Learning-webszolgáltatások](web-services-logging.md).
 
 ## <a name="update-the-added-endpoints-trained-model"></a>A hozzáadott végpont betanított modell frissítése

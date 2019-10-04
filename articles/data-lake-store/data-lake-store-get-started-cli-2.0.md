@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
 ms.openlocfilehash: 9431cc7fa12b86371ce6b2325aca8e13d264442e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58880576"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60885347"
 ---
 # <a name="get-started-with-azure-data-lake-store-using-azure-cli"></a>Azure CLI-vel az Azure Data Lake Store használatának első lépései
 
@@ -40,7 +40,7 @@ A cikk elkezdéséhez az alábbiakkal kell rendelkeznie:
 
 * **Az Azure CLI** – lásd: [Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli) útmutatást.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Hitelesítés
 
 Ez a cikk egy egyszerűbb hitelesítési módszert használ a Data Lake Storage Gen1 hol jelentkezik be végfelhasználóként. A hozzáférési szintet a Data Lake Storage Gen1 fiók és egy fájlrendszert, majd szolgáltatás a bejelentkezett felhasználó hozzáférési szintjét. Előfordulhatnak azonban olyan egyéb megközelítések is lehet hitelesíteni a Data Lake Storage Gen1, amelyek **végfelhasználói hitelesítés** vagy **szolgáltatások közötti hitelesítés**. A hitelesítéssel kapcsolatban a [Végfelhasználói hitelesítés](data-lake-store-end-user-authenticate-using-active-directory.md) vagy a [Szolgáltatások közötti hitelesítés](data-lake-store-authenticate-using-active-directory.md) című témakörben talál útmutatást és további tudnivalókat.
 

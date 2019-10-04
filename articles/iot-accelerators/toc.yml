@@ -61,7 +61,7 @@
             - name: Node.js Raspberry Pi-on
               href: iot-accelerators-connecting-pi-node.md
             - name: MXChip IoT DevKit
-              href: iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2.md
+              href: iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoring-v2.md
         - name: Eszköz szimulálása
           items:
             - name: Szimulált eszköz létrehozása
@@ -133,36 +133,30 @@
       items:
         - name: Mi az az Ipari IoT?
           href: overview-iot-industrial.md
-        - name: OPC-iker
-          items:
-            - name: Mi az az OPC-iker?
-              href: overview-opc-twin.md
-            - name: OPC-ikerarchitektúra
-              href: overview-opc-twin-architecture.md
-        - name: OPC-tároló
-          items:
-            - name: Mi az az OPC-tároló?
-              href: overview-opc-vault.md
-        - name: Csatlakoztatott gyár
-          items:
-            - name: Csatlakoztatott gyár – Áttekintés
-              href: iot-accelerators-connected-factory-features.md
-            - name: Csatlakoztatott gyár – Architektúra
-              href: iot-accelerators-connected-factory-sample-walkthrough.md
+        - name: Mi az az OPC-iker?
+          href: overview-opc-twin.md
+        - name: Mi az az OPC-tároló?
+          href: overview-opc-vault.md
+        - name: Mi az az OPC Publisher?
+          href: overview-opc-publisher.md
+        - name: Mi az a csatlakoztatott gyár?
+          href: iot-accelerators-connected-factory-features.md
     - name: Gyors útmutatók
       items:
         - name: Csatlakoztatottgyár-megoldás kipróbálása
           href: quickstart-connected-factory-deploy.md
+    - name: Alapelvek
+      items:
+        - name: OPC-ikerarchitektúra
+          href: overview-opc-twin-architecture.md
+        - name: OPC-tárolóarchitektúra
+          href: overview-opc-vault-architecture.md
     - name: Útmutatók
       items:
         - name: Csatlakoztatott gyár
           items:
             - name: Az irányítópult használata
               href: iot-accelerators-connected-factory-dashboard.md
-            - name: Átjáró üzembe helyezése
-              href: iot-accelerators-connected-factory-gateway-deployment.md
-            - name: Az OPC-közzétevő használata
-              href: 'https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md'
             - name: A megoldásgyorsító konfigurálása
               href: iot-accelerators-connected-factory-configure.md
             - name: A megoldásgyorsító testreszabása
@@ -177,14 +171,20 @@
               href: howto-opc-twin-deploy-dependencies.md
         - name: OPC-tároló
           items:
-            - name: OPC-tároló hozzáadása meglévő projekthez
-              items:
-                - name: Az OPC-ügyfél és az OPC PLC kommunikációjának biztonságossá tétele
-                  href: howto-opc-vault-deploy-existing-client-plc-communication.md
-                - name: Az OPC UA-ügyfél és az OPC UA-kiszolgálóalkalmazások biztonságossá tétele
-                  href: howto-opc-vault-deploy-existing-client-server-communication.md
-            - name: OPC-tároló létrehozása az alapoktól
-              href: howto-opc-vault-deploy-scratch.md
+            - name: OPC-tárolószolgáltatás üzembe helyezése
+              href: howto-opc-vault-deploy.md
+            - name: OPC-tárolószolgáltatás kezelése
+              href: howto-opc-vault-manage.md
+            - name: Az OPC UA-eszköz és az OPC-tároló közötti kommunikáció védelme
+              href: howto-opc-vault-secure.md
+            - name: Az OPC-tárolószolgáltatás biztonságos működtetése
+              href: howto-opc-vault-secure-ca.md
+        - name: OPC Publisher
+          items:
+            - name: Az OPC Publisher konfigurálása
+              href: howto-opc-publisher-configure.md
+            - name: Az OPC Publisher futtatása
+              href: howto-opc-publisher-run.md
     - name: További források
       items:
         - name: GitHub-adattár
@@ -213,7 +213,7 @@
           href: iot-accelerators-device-simulation-advanced-device.md
         - name: Telemetria vizualizációja a Time Series Insights használatával
           href: iot-accelerators-device-simulation-time-series-insights.md
-        - name: Telemetria szerializálása Protobuf használatával
+        - name: Telemetria szerializálása a Protobuf használatával
           href: iot-accelerators-device-simulation-protobuf.md
         - name: Egyéni Docker-rendszerkép üzembe helyezése
           href: iot-accelerators-device-simulation-deploy-image.md
@@ -238,9 +238,7 @@
 - name: Referenciaarchitektúra
   items:
     - name: Áttekintés
-      href: iot-accelerators-architecture-overview.md
-    - name: Letöltés
-      href: 'https://aka.ms/iotrefarchitecture'
+      href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/iot/'
     - name: Partnerimplementációk
       items:
         - name: Intel Connected Logistics Platform
@@ -253,14 +251,16 @@
   items:
     - name: Megoldások
       items:
-        - name: IoT-megoldásgyorsítók
-          href: /azure/iot-accelerators
         - name: IoT-központ
           href: 'https://docs.microsoft.com/microsoft-iot-central/'
+        - name: IoT-megoldásgyorsítók
+          href: /azure/iot-accelerators
     - name: Platformszolgáltatások
       items:
         - name: IoT Hub
           href: /azure/iot-hub
+        - name: IoT Plug and Play
+          href: /azure/iot-pnp
         - name: IoT Hub Device Provisioning Service
           href: /azure/iot-dps
         - name: IoT szolgáltatásoldali SDK-k
@@ -269,18 +269,12 @@
           href: /azure/azure-maps
         - name: Time Series Insights
           href: /azure/time-series-insights
-    - name: Edge
+    - name: IoT Edge
       items:
-        - name: IoT Edge
+        - name: Azure IoT Edge
           href: /azure/iot-edge
         - name: IoT eszközoldali SDK-k
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
-    - name: Stream Analytics
-      href: /azure/stream-analytics/
-    - name: Event Hubs
-      href: /azure/event-hubs/
-    - name: Machine Learning
-      href: /azure/machine-learning/
 - name: További források
   items:
     - name: Azure-ütemterv

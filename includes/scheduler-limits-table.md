@@ -9,29 +9,29 @@ ms.date: 08/16/2016
 ms.author: deli
 ms.custom: include file
 ms.openlocfilehash: b3788ede23a423bebf96661ea88b227bfb5fdf4c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553537"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "67179495"
 ---
-Az alábbi táblázat ismerteti a fő kvóták, korlátozások, alapértékek és az Azure Schedulerben szabályozások.
+A következő táblázat ismerteti az Azure Scheduler főbb kvótáit, korlátozásait, alapértelmezéseit és szabályozásait.
 
-| Erőforrás | Korlát leírása |
+| Resource | Korlát leírása |
 | -------- | ----------------- |
-| **Feladat mérete** | A feladat maximális mérete 16000. Ha egy PUT vagy PATCH művelet eredménye egy feladat ennél nagyobb méretű, 400 Hibás kérés állapotkódot adott vissza. | 
-| **Feladatgyűjtemények** | Feladatgyűjtemények Azure-előfizetésenként legfeljebb 200 000. | 
-| **Feladatok száma gyűjteményenként** | Alapértelmezés szerint a feladatok maximális száma öt feladatok az ingyenes feladatgyűjtemények és a egy standard feladatgyűjtemény 50 feladatok. <p>Módosíthatja a feladatgyűjtemények feladatok maximális számát. A feladatgyűjtemény minden feladata a feladatgyűjtemény a beállított érték korlátozódnak. Ha tárolórétegeket próbál létrehozni, mint a maximális feladatok kvóta feladatot, a kérelem meghiúsul, az ütközés 409 állapotkódot. | 
-| **Kezdés ideje** | A legnagyobb "idő, kezdési idő" 18 hónap. |
-| **Ismétlődési tartomány** | A maximális ismétlődési span 18 hónap. | 
-| **Gyakoriság** | Alapértelmezés szerint a maximális gyakoriság kvóta, az ingyenes feladatgyűjtemények egy óra és a egy percet a standard feladatgyűjtemény. <p>Hogy a maximális gyakorisága a feladatgyűjtemények alacsonyabb, mint a maximális érték. A feladatgyűjtemény minden feladata a feladatgyűjtemény a beállított érték korlátozódnak. Ha létrehoz egy feladatot egy nagyobb gyakorisággal, mint a feladatgyűjtemény maximális gyakoriságát megpróbálja, a kérelem meghiúsul, az ütközés 409 állapotkódot. | 
-| **Szervezet mérete** | A kérés maximális törzs mérete 8192 karaktert. |
-| **Kérelem URL-cím mérete** | A kérelem URL-cím maximális mérete 2048 karakter. |
-| **Fejléc száma** | A fejléc maximális száma 50 fejlécek. | 
-| **Összesített fejléc mérete** | A maximális összesített fejléc mérete 4096 karakter. |
-| **Időtúllépés** | Az egyes kérelmek időkorlátját je statická, vagyis nem konfigurálható. és a HTTP-műveletek esetében 60 másodperc. A hosszabb ideig futó műveletek kövesse a HTTP-aszinkron protokollokat. Például egy 202 azonnal vissza, de közben tovább dolgozhat a háttérben. | 
-| **Feladatelőzmények** | A maximális választörzs feladatelőzmények tárolt érték 2048 bájt. |
-| **Feladat Előzmények megőrzése** | Feladatelőzmények legfeljebb két hónapra, vagy a legutóbbi 1000 végrehajtások legfeljebb másolatok. | 
-| **A befejeződött vagy meghiúsult feladatok megőrzése** | A befejeződött vagy meghiúsult feladatok 60 napig őrzi meg. |
+| **Feladatok mérete** | A feladatok maximális mérete 16 000. Ha egy PUT vagy egy javítási művelet a korlátnál nagyobb méretű feladatot eredményez, a rendszer a 400 hibás kérelem állapotkódot adja vissza. | 
+| **Feladatok gyűjteményei** | Az Azure-előfizetések száma legfeljebb 200 000. | 
+| **Feladatok gyűjtemény szerint** | Alapértelmezés szerint a feladatok maximális száma öt feladat az ingyenes és a 50-es feladatok esetében egy normál feladatban. <p>A feladatütemezés feladatainak maximális számát módosíthatja. A feladatütemezés összes feladata a feladat-gyűjteményben beállított értékre van korlátozva. Ha a feladatok maximális kvótája helyett több feladatot próbál létrehozni, a kérelem 409-as ütközési állapotkód esetén meghiúsul. | 
+| **Kezdési idő** | A "kezdési idő" legfeljebb 18 hónap lehet. |
+| **Ismétlődési tartomány** | A maximális ismétlődési időtartam 18 hónap. | 
+| **Gyakoriság** | Alapértelmezés szerint a maximális gyakorisági kvóta egy óra az ingyenes feladatokban, és egy perc a standard szintű webhelycsoportban. <p>A maximális gyakoriságot a feladatokhoz a maximálisnál alacsonyabb értékre teheti. A feladat-gyűjteményben lévő összes feladat csak a feladat gyűjteményében beállított értékre korlátozódik. Ha a feladathoz a maximális gyakoriságnál nagyobb gyakorisággal próbál felvenni egy feladatot, a kérelem a 409-as ütközési állapotkód miatt meghiúsul. | 
+| **Törzs mérete** | Egy kérelem maximális törzsének mérete 8 192 karakter. |
+| **Kérelem URL-mérete** | A kérelem URL-címének maximális mérete 2 048 karakter. |
+| **Fejlécek száma** | A fejlécek maximális száma 50 fejléc. | 
+| **Összesített fejléc mérete** | Az összesített fejléc maximális mérete 4 096 karakter. |
+| **Időtúllépés** | A kérés időtúllépése statikus, azaz nem konfigurálható. és 60 másodperc a HTTP-műveleteknél. A már futó műveletekhez kövesse a HTTP aszinkron protokollokat. Tegyük fel például, hogy a 202 azonnal visszaküldi, de a háttérben folytatja a munkát. | 
+| **Feladatelőzmények** | A feladatok előzményeiben tárolt maximális válasz törzse 2 048 bájt. |
+| **Feladatok előzményeinek megőrzése** | A feladatok előzményeit legfeljebb két hónapig, vagy akár az utolsó 1 000-végrehajtásig őrzi meg a rendszer. | 
+| **Befejezett és hibás feladatok megőrzése** | A befejezett és a hibás feladatok 60 napig tartanak. |
 ||| 
 

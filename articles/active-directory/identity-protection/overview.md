@@ -1,141 +1,114 @@
 ---
-title: Az Azure Active Directory Identity Protection |} A Microsoft Docs
-description: Ismerje meg, hogyan Azure AD Identity Protection segítségével is korlátozhatja, hogy a támadó biztonsági rés kiaknázása elleni egy sérült biztonságú identitás vagy egy eszközt, és biztonságos identitás vagy egy eszköz, amely korábban gyanús vagy ismert legyen feltörni.
+title: Azure Active Directory Identity Protection | Microsoft Docs
+description: Ismerje meg, hogy Azure AD Identity Protection lehetővé teszi a támadók számára a feltört identitások vagy eszközök kihasználása, illetve az olyan identitások vagy eszközök biztonságossá tételét, amelyekről korábban gyanúba esett vagy ismertek.
 services: active-directory
-keywords: az Azure active directory identity protection a következőket cloud app discovery szolgáltatást, alkalmazások, biztonság, kockázati, kockázati szint, biztonsági rést, biztonsági házirend kezelése
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: overview
 ms.date: 01/29/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 304e23ec76a2f79d0ab3852efe2a483cf86c51b8
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 8b89cab41061376fc1d8b4cbffc8fe87b9677688
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520700"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125678"
 ---
 # <a name="what-is-azure-active-directory-identity-protection"></a>Mi az Azure Active Directory Identity Protection?
 
-Az Azure Active Directory Identity Protection az Azure AD Premium P2 kiadás egyik szolgáltatása, amely lehetővé teszi a következőket:
-
-- A szervezet identitásait érintő esetleges biztonsági rések észlelése
-
-- Automatikus válaszok észlelt gyanús tevékenységeket, a szervezet identitásait kapcsolódó konfigurálása  
-
-- Gyanús incidensek kivizsgálása, és a szükséges intézkedések megtétele azok megoldásához   
-
+Azure Active Directory [Identity](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology) Protection lehetővé teszi, hogy a szervezetek automatizált válaszokat konfiguráljanak a felhasználói identitásokkal kapcsolatos gyanús műveletekre.
 
 ## <a name="get-started"></a>Bevezetés
 
-A Microsoft több mint egy évtizede nyújt védelmet a felhőalapú Identitások biztonságos vannak. Az Azure Active Directory Identity Protection a környezetben használhatja ugyanezeket a védelmi rendszereket Microsoft identitások védelmére használja.
+A Microsoft több mint egy évtizede biztosította a felhőalapú identitások védelmét. A Azure Active Directory Identity Protection a környezetében ugyanazokat a védelmi rendszereket használhatja, amelyeket a Microsoft az identitások védelmére használ.
 
-Biztonsági rések túlnyomó többsége kerül sor, amikor a támadók próbál a jeggyel hozzáférést egy környezethez lopásának megjelölése a felhasználó identitását. Az évek során a támadók egyre inkább hatékony kihasználva külső illetéktelen behatolásokat és adathalászati támadások használatával váltak. Amint egy támadó hozzáférést még alacsony jogosultsági szintű felhasználó fiókok, viszonylag egyszerű, az oldalirányú mozgás keresztül fontos vállalati erőforrásokhoz való hozzáférést nyerhetnek a hozzájuk.
+A biztonsági rések túlnyomó többsége akkor kerül sor, amikor a támadók a felhasználó identitásának ellopásával hozzáférnek a környezetekhez. Az évek során a támadók egyre hatékonyabban hasznosítják a harmadik féltől származó szabálysértéseket és kifinomult adathalászat-támadásokat használnak. Amint egy támadó még az alacsony jogosultsági szintű felhasználói fiókokhoz is hozzáfér, viszonylag könnyen hozzáférhet a fontos vállalati erőforrásokhoz az oldalirányú mozgással.
 
-Ennek következtében kell tennie:
+Ennek következményeként a következőket kell tennie:
 
-- Függetlenül attól, hogy jogosultsági szint összes identitások védelme
+- Az összes identitás biztosítása a jogosultsági szintjétől függetlenül
+- Proaktív módon megakadályozhatja a feltört identitások visszaélését
 
-- Proaktív módon megakadályozza, hogy feltört identitásokat visszaélt folyamatban
+A feltört identitások feltárása nem egyszerű feladat. A Azure Active Directory adaptív gépi tanulási algoritmusokat és heurisztikus használatot alkalmaz a potenciálisan feltört identitást jelző rendellenességek és gyanús incidensek észlelésére. Ezeknek az adatoknak a használatával az Identity Protection jelentéseket és riasztásokat hoz létre, amelyek lehetővé teszik az észlelt problémák kiértékelését, valamint a megfelelő kockázatcsökkentő vagy szervizelési műveletek elvégzését.
 
-Feltört identitásokat felderítése nem könnyű feladat. Az Azure Active Directory adaptív gépi tanulási algoritmusokat használ, és heurisztikus észlelheti a rendellenességeket és gyanús incidensek felderíthetik a vélhetően feltört identitásokat. Ezen adatok alapján Identity Protection állít elő, jelentéseket és riasztásokat, amelyek lehetővé teszik, hogy kiértékelhetik az észlelt problémákat, és a megfelelő kockázatcsökkentési, illetve a szervizelési műveletek végrehajtása.
+Azure Active Directory Identity Protection több, mint egy figyelési és jelentéskészítési eszköz. A szervezet identitásának megóvása érdekében olyan kockázatalapú házirendeket állíthat be, amelyek automatikusan válaszolnak az észlelt problémákra, amikor a rendszer elérte az adott kockázati szintet. Ezek a szabályzatok a Azure Active Directory és [Enterprise Mobility + Security](https://docs.microsoft.com/enterprise-mobility-security/) (EMS) által biztosított egyéb feltételes hozzáférés-vezérlések mellett automatikusan letilthatják vagy elindíthatják az adaptív szervizelési műveleteket, beleértve a jelszavak alaphelyzetbe állítását és többtényezős hitelesítés kényszerítése.
 
-Az Azure Active Directory Identity Protection több mint egy olyan figyelési és jelentéskészítési eszköz. Védelme érdekében a szervezet identitásait, konfigurálhatja a kockázatalapú szabályzatok, amelyek az automatikusan észlelt problémák reagálnak adott kockázati szint elérésekor. Ezek a szabályzatok mellett más feltételes hozzáférés-vezérlés az Azure Active Directory által biztosított és [Enterprise Mobility + Security](https://docs.microsoft.com/enterprise-mobility-security/) (EMS), automatikusan letiltja, vagy kezdeményezzen adaptív szervizelési műveletek, beleértve a Új jelszó kérésekor és a többtényezős hitelesítés kényszerítése.
+### <a name="identity-protection-capabilities"></a>Identity Protection-képességek
 
+**Biztonsági rések és kockázatos fiókok észlelése:**  
 
-#### <a name="identity-protection-capabilities"></a>Identitásvédelmi képességeket
+- Egyéni javaslatok nyújtása a biztonsági rések kiemelésével az általános biztonsági helyzet javításához
+- A bejelentkezési kockázati szintek kiszámítása
+- Felhasználói kockázati szintek kiszámítása
 
-**Biztonsági rések és a kockázatos fiókok észlelése:**  
+**A kockázati észlelések kivizsgálása:**
 
-* Így egyéni kapcsolatos ajánlásokat átfogó biztonsági rendszer kialakításához biztonsági rések kiemelésével
-* Bejelentkezési kockázati szintek kiszámítása
-* Felhasználói kockázati szintek kiszámítása
-
-
-**Kockázati események vizsgálata:**
-
-* Kockázati események értesítések küldése
-* Megfelelő és környezetfüggő adatok felhasználásával kockázati események vizsgálata
-* Biztosít a vizsgálatokhoz nyomon követéséhez alapvető munkafolyamatok
-* Szervizelési műveleteket hajthat végre, például a jelszó-visszaállítás könnyű hozzáférést biztosít
+- A kockázatok észlelésére vonatkozó értesítések küldése
+- A kockázatelemzések kivizsgálása a releváns és a környezetfüggő információk használatával
+- Alapvető munkafolyamatok biztosítása a vizsgálatok nyomon követéséhez
+- Egyszerű hozzáférés biztosítása a hibajavítási műveletekhez, például a jelszó-visszaállításhoz
 
 **Kockázatalapú feltételes hozzáférési szabályzatok:**
 
-* Szabályzat blokkolja a bejelentkezéseket, vagy a multi-factor authentication kihívások igénylő csökkentése érdekében a kockázatos bejelentkezések
-* Szabályzat letiltása vagy biztonságos kockázatos felhasználói fiókok
-* Felhasználók regisztráljanak a multi-factor Authentication hitelesítést megkövetelő szabályzata
+- Házirend a kockázatos bejelentkezések enyhítéséhez a bejelentkezések blokkolásával vagy a többtényezős hitelesítési kihívások megkövetelésével
+- Kockázatos felhasználói fiókok blokkolására vagy biztonságossá tételére vonatkozó szabályzat
+- A többtényezős hitelesítéshez szükséges felhasználók regisztrálására szolgáló szabályzat
 
+## <a name="identity-protection-roles"></a>Identity Protection-szerepkörök
 
+Ha terheléselosztást szeretne végrehajtani a felügyeleti tevékenységek között az Identity Protection megvalósításán, több szerepkört is hozzárendelhet. A Azure AD Identity Protection 3 címtárbeli szerepkört támogat:
 
-## <a name="identity-protection-roles"></a>Identity Protection szerepkörök
+| Role | Elvégezhető | Nem hajtható végre |
+| :-- | --- | --- |
+| Globális rendszergazda | Teljes hozzáférés az Identity Protection szolgáltatáshoz, a személyazonosság védelme| |
+| Biztonsági rendszergazda | Teljes hozzáférés az Identity Protection szolgáltatáshoz | A felhasználók jelszavainak alaphelyzetbe állítása |
+| Biztonsági olvasó | Írásvédett hozzáférés az Identity Protectionhez | A személyazonosság védelme, a felhasználók szervizelése, a házirendek konfigurálása, a jelszavak alaphelyzetbe állítása |
 
-Terheléselosztás a felügyeleti tevékenységek körül az Identity Protection implementáció számos szerepköröket rendelhet. Az Azure AD Identity Protection 3 címtárszerepkört támogat:
-
-| Szerepkör                         | Teheti meg                          | Nem hajtható végre
-| :--                          | ---                                |  ---   |
-| Globális rendszergazda         | Teljes hozzáférés az Identity Protection előkészítése Identity Protection| |
-| Biztonsági rendszergazda       | Teljes hozzáférés az Identity Protection | Identity Protection előkészítése, a felhasználó a jelszavak alaphelyzetbe állítása |
-| Biztonsági olvasó              | Csak olvasási hozzáférés az Identity Protection | Identity Protection előkészítése, felhasználók szervizelése, a szabályzatok konfigurálására, jelszavak alaphelyzetbe állítása |
-
-
-
-
-További részletekért lásd: [rendszergazdai szerepkörök hozzárendelése az Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md)
-
-
+További részletekért lásd: [rendszergazdai szerepkörök hozzárendelésének Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md)
 
 ## <a name="detection"></a>Észlelés
 
 ### <a name="vulnerabilities"></a>Biztonsági rések
 
-Az Azure Active Directory Identity Protection elemzi a konfigurációt, és észleli a sérülékenységeket, amelyek hatással lehetnek a felhasználói identitásokat. További részletekért lásd: [Azure Active Directory Identity Protection által észlelt biztonsági rések](vulnerabilities.md).
+Azure Active Directory Identity Protection elemzi a konfigurációt, és észleli azokat a biztonsági réseket, amelyek hatással lehetnek a felhasználó identitására. További részletekért tekintse meg a [Azure Active Directory Identity Protection által észlelt biztonsági réseket](vulnerabilities.md).
 
-### <a name="risk-events"></a>Kockázati események
+### <a name="risk-detections"></a>Kockázati észlelések
 
-Az Azure Active Directory adaptív gépi tanulási algoritmusok és heurisztika segítségével észleli a felhasználói identitások kapcsolódó gyanús tevékenységeket. A rendszer létrehoz egy rekordot észlelt gyanús műveletek. Ezeket a rekordokat kockázati események is ismertek.  
-További részletek: [Az Azure Active Directory kockázati eseményei](../active-directory-identity-protection-risk-events.md).
-
+Azure Active Directory adaptív gépi tanulási algoritmusokat és heurisztikus műveleteket használ a felhasználó identitásával kapcsolatos gyanús műveletek észlelésére. A rendszer létrehoz egy rekordot minden észlelt gyanús művelethez. Ezeket a rekordokat kockázati észlelésnek is nevezzük.  
+További részletek: [Azure Active Directory kockázati észlelések](../active-directory-identity-protection-risk-events.md).
 
 ## <a name="investigation"></a>Vizsgálat
 
-Identity Protection örömét általában az Identity Protection irányítópultjának kezdődik.
+Az Identity Protection szolgáltatással való utazás általában az Identity Protection irányítópulttal kezdődik.
 
-![Szervizelési](./media/overview/1000.png "szervizelés")
+![Szervizelés](./media/overview/1000.png "Szervizelés")
 
 Az irányítópult hozzáférést biztosít a következőkhöz:
 
-* Például a jelentések **kockázatosként megjelölt felhasználók**, **kockázati események** és **biztonsági rések**
-* Beállítások, például konfigurációját a **biztonsági házirendek**, **értesítések** és **többtényezős hitelesítési regisztráció**
+- Jelentések, például **a kockázatra megjelölt felhasználók**, **kockázati észlelések** és **biztonsági rések**
+- Beállítások, például **biztonsági házirendek**konfigurációja, **értesítések** és **multi-Factor Authentication-regisztráció**
 
-Általában célszerű a vizsgálat, amely azt a folyamatot, tekintse át a tevékenységeket, naplók és egyéb releváns információkkal kapcsolatos egy kockázati esemény eldönteni, hogy szervizelési vagy kockázatcsökkentési lépések szükségesek, és milyen a identitása volt a kiindulási pont biztonsága sérült, és megismerheti, hogyan lett megadva a feltört identitását.
+Általában a vizsgálat kiindulási pontja, amely a kockázatkezeléssel kapcsolatos tevékenységek, naplók és egyéb releváns információk áttekintését mutatja be, hogy szükség van-e a szervizelésre vagy a kockázatcsökkentő lépésekre, és hogy az identitás milyen módon volt megsérült, és megértette, hogyan használták a feltört identitást.
 
-A vizsgálat tevékenységek köthet a [értesítések](notifications.md) Azure Active Directory Protection küld egy e-mailt.
-
-
+A vizsgálati tevékenységeket összekapcsolhatja az [értesítések](notifications.md) Azure Active Directory a védelem küldése e-mailben.
 
 ## <a name="policies"></a>Házirendek
 
-Automatikus válaszok implementálásához az Azure Active Directory Identity Protection nyújt három olyan szabályzatot:
+Az automatikus válaszok megvalósításához a Azure Active Directory Identity Protection három szabályzatot biztosít:
 
-- [A multi-factor authentication regisztrációs szabályzat](howto-mfa-policy.md)
-
+- [Multi-Factor Authentication regisztrációs szabályzat](howto-mfa-policy.md)
 - [Felhasználói kockázati házirend](howto-user-risk-policy.md)
-
 - [Bejelentkezési kockázati házirend](howto-sign-in-risk-policy.md)
 
+## <a name="license-requirements"></a>Licenckövetelmények
+
+[!INCLUDE [Active Directory P2 license](../../../includes/active-directory-p2-license.md)]
 
 ## <a name="next-steps"></a>További lépések
 
-- [Channel 9-on: Az Azure AD és az identitás megjelenítése: Identity Protection előzetes verziója](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
-
-- [Az Azure Active Directory Identity Protection engedélyezése](enable.md)
-
+- [Channel 9: Azure AD-és identitás-megjelenítés: Identity Protection – előzetes verzió](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
+- [Azure Active Directory Identity Protection engedélyezése](enable.md)

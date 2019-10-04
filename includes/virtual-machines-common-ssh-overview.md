@@ -2,29 +2,29 @@
 title: fájl belefoglalása
 description: fájl belefoglalása
 services: virtual-machines-linux
-author: dlepow
+author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: include
 ms.date: 12/21/2018
-ms.author: danlep
+ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: bca78e2963f19b60071b1b27c8dc65c76818e10e
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 3f9b86dd3716a25ab95265cf46b616144f57163b
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54029301"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71168646"
 ---
-## <a name="overview-of-ssh-and-keys"></a>Az SSH és a kulcsok – áttekintés
+## <a name="overview-of-ssh-and-keys"></a>Az SSH és a kulcsok áttekintése
 
-[SSH](https://www.ssh.com/ssh/) titkosított kapcsolatot protokoll, amely lehetővé teszi, hogy a biztonságos bejelentkezés nem biztonságos kapcsolatokon keresztül. SSH olyan Azure-ban üzemeltetett Linuxos virtuális gépek alapértelmezett kapcsolat protokollja. Habár maga SSH titkosított kapcsolatot biztosít, jelszavak használata SSH-kapcsolatok továbbra is védtelen a virtuális gép a találgatásos támadásokkal vagy a jelszavak találgatást. Biztonságosabb és előnyben részesített módszer egy virtuális Gépre SSH használatával csatlakozhat egy nyilvános-titkos kulcspárt, más néven használatával van *SSH-kulcsok*. 
+Az [SSH](https://www.ssh.com/ssh/) egy titkosított kapcsolati protokoll, amely biztonságos bejelentkezéseket tesz lehetővé a nem biztonságos kapcsolatokon keresztül. Az SSH az Azure-ban üzemeltetett Linux rendszerű virtuális gépek alapértelmezett kapcsolati protokollja. Bár az SSH titkosított kapcsolatot biztosít, az SSH-kapcsolatokkal rendelkező jelszavak használatával továbbra is sebezhetővé válik a virtuális gép a találgatásos támadásokkal vagy a jelszavak kitalálása ellen. A virtuális gépek SSH-val való összekapcsolásának biztonságosabb és előnyben részesített módja egy nyilvános titkos kulcspár, más néven *SSH*-kulcs használata. 
 
-* A *nyilvános kulcs* helyezkedik el, a Linux virtuális Gépre, vagy bármely más szolgáltatást, amelyet használata a nyilvános kulcsú titkosítással kíván.
+* A *nyilvános kulcs* a linuxos virtuális gépre, vagy bármely más olyan szolgáltatásra kerül, amelyet nyilvános kulcsú titkosítással kíván használni.
 
-* A *titkos kulcs* marad, a helyi számítógépen. Védje a titkos kulcsot. Ne ossza meg senkivel.
+* A *titkos kulcs* a helyi rendszeren marad. Védje a titkos kulcsot. Ne ossza meg senkivel.
 
-Az ügyfél számára, ellenőrizze, hogy rendelkezik a titkos kulcs egy SSH-ügyfél használhatja a Linux rendszerű virtuális Géphez való csatlakozáshoz (amely a nyilvános kulccsal rendelkezik), a távoli virtuális teszteli. Ha az ügyfél a titkos kulccsal rendelkezik, akkor kap a virtuális Géphez való hozzáférés. 
+Amikor SSH-ügyféllel csatlakozik a Linux rendszerű virtuális géphez (amely a nyilvános kulccsal rendelkezik), a távoli virtuális gép teszteli az ügyfelet, hogy biztosítsa a titkos kulcs használatát. Ha az ügyfél rendelkezik titkos kulccsal, a rendszer hozzáférést kap a virtuális géphez. 
 
-Attól függően, a szervezet biztonsági szabályzatokat újra felhasználhatja egy egyetlen nyilvános-titkos kulcspárt több Azure virtuális gépek és szolgáltatások eléréséhez. Nem kell külön kulcspár minden virtuális gép vagy szolgáltatás el szeretné érni. 
+A szervezet biztonsági házirendjeitől függően a több Azure-beli virtuális gép és szolgáltatás eléréséhez egyetlen nyilvános titkos kulcspár is felhasználható. Az elérni kívánt virtuális gépekhez vagy szolgáltatásokhoz nem kell külön kulcspárt. 
 
-A nyilvános kulcs bárkivel megosztható, azonban csak Ön (vagy a helyi biztonsági infrastruktúra) rendelkezik a titkos kulccsal kell.
+A nyilvános kulcs bárkivel megosztható, de csak Ön (vagy a helyi biztonsági infrastruktúra) rendelkezhet a titkos kulccsal.

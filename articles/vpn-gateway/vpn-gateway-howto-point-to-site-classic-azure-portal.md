@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 12/11/2018
 ms.author: cherylmc
 ms.openlocfilehash: 74940f3b89237233acd575aa5df441163e00d178
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58000934"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60845603"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>Pont – hely kapcsolat konfigurálása a Tanúsítványalapú hitelesítés (klasszikus) használatával
 
@@ -85,7 +85,7 @@ A következő értékek használatával létrehozhat egy tesztkörnyezetet, vagy
 
 Mielőtt elkezdené, győződjön meg arról, hogy egy Azure-előfizetést. Ha még nincs Azure-előfizetése, aktiválhatja [MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details), vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial).
 
-### <a name="part-1-create-a-virtual-network"></a>1. rész: Virtuális hálózat létrehozása
+### <a name="part-1-create-a-virtual-network"></a>1\. rész: Virtuális hálózat létrehozása
 
 Ha már nincs virtuális hálózat (VNet), hozzon létre egyet. A képernyőképek csak példaként szolgálnak. Ne felejtse el ezeket az értékeket a saját értékeire cserélni. Az alábbi lépésekkel hozhat létre virtuális hálózatokat az Azure portállal:
 
@@ -113,7 +113,7 @@ Ha már nincs virtuális hálózat (VNet), hozzon létre egyet. A képernyőkép
 
     DNS-kiszolgáló hozzáadásához válassza **DNS-kiszolgálók** a virtuális hálózat lapján. Ezután írja be a DNS-kiszolgáló, amelyet szeretne használni, és válassza ki az IP-cím **mentése**.
 
-### <a name="part-2-create-a-gateway-subnet-and-a-dynamic-routing-gateway"></a>2. rész: Egy átjáró-alhálózatot és egy dinamikus útválasztású átjáró létrehozása
+### <a name="part-2-create-a-gateway-subnet-and-a-dynamic-routing-gateway"></a>2\. rész: Egy átjáró-alhálózatot és egy dinamikus útválasztású átjáró létrehozása
 
 Ebben a lépésben egy átjáró-alhálózatot és egy dinamikus útválasztású átjárót hoz létre. Az Azure Portalon a klasszikus üzemi modellhez az átjáró-alhálózat és az átjáró ugyanazokkal a konfigurációs lapokkal keresztül hoz létre. Az átjáró-alhálózat használata kizárólag az átjárószolgáltatásokhoz. Semmit ne helyezzen üzembe közvetlenül az átjáróalhálózaton (például virtuális gépeket vagy más szolgáltatásokat).
 

@@ -1,130 +1,129 @@
 ---
-title: Az értékkorlátozó szűrők az alkalmazások – Azure Search a Keresés a navigációban
-description: Szűrési feltétel felhasználó biztonsági azonosítóját, földrajzihely-vagy numerikus értékek keresési eredményei között az Azure Search szolgáltatásban a Microsoft Azure-ban üzemeltetett felhőalapú keresési szolgáltatás lekérdezések csökkentése érdekében.
+title: Az alkalmazásokban való keresési Navigálás dimenziós szűrése – Azure Search
+description: A feltételeket a felhasználói biztonsági identitás, a földrajzi hely vagy a numerikus értékek alapján szűrheti, így csökkenthető a keresési eredmények Azure Search, egy üzemeltetett felhőalapú keresési szolgáltatás a Microsoft Azure.
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 10/13/2017
+ms.date: 5/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 8793f6f4d135d6099541d24aa5f5cfc0b6c21b30
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: a2fe29cf1d7c183aa62e6b86a4b29479d1f34ff8
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339431"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69649884"
 ---
-# <a name="how-to-build-a-facet-filter-in-azure-search"></a>Az Azure Search értékkorlátozás szűrő létrehozása 
+# <a name="how-to-build-a-facet-filter-in-azure-search"></a>Dimenziós szűrő létrehozása Azure Search 
 
-Jellemzőalapú navigáció szolgál a lekérdezési eredmények keresési alkalmazásban, ahol az alkalmazás felhasználói felületi vezérlők hatókörkezelési keresés csoportokhoz dokumentumok (például kategóriák vagy márkái) kínál, és az Azure Search biztosít az adatok struktúrája biztonsági önállóan Irányított szűrés a felhasználói élményt. Ez a cikk gyors áttekintését egy jellemzőalapú navigációs struktúrát a keresési élményt szeretne biztosítani biztonsági létrehozásának alapvető lépéseit. 
+A részletes Navigálás a lekérdezés eredményeinek önálló irányított szűrésére szolgál, ahol az alkalmazás felhasználói felületi vezérlőket biztosít a dokumentumok csoportjaihoz (például kategóriákhoz vagy márkákhoz) való kereséshez, és Azure Search biztosítja az adatszerkezetet a élmény. Ebből a cikkből megtudhatja, hogyan hozhat létre részletes navigációs struktúrát a megadható keresési felület létrehozásához szükséges alapvető lépésekkel. 
 
 > [!div class="checklist"]
-> * A szűréshez és a jellemzőalapú mezők kiválasztása
-> * A mező attribútumainak beállítása
-> * Hozhat létre az index és az adatok betöltése
-> * Az értékkorlátozó szűrők lekérdezés hozzáadása
+> * Szűrési és aspektusi mezők kiválasztása
+> * Attribútumok beállítása a mezőben
+> * Az index létrehozása és az adatterhelés
+> * Dimenziós szűrők hozzáadása egy lekérdezéshez
 > * Az eredmények kezelése
 
-Értékkorlátozással dinamikus és a egy lekérdezést a visszaadott. Search válaszai a értékkorlátozó kategóriákat ad vissza az eredmények használt bring velük. Ha nem ismeri az aspektusokat, az alábbi példában egy jellemzőalapú navigációs szerkezetben ábrája.
+A dimenziók dinamikusak, és egy lekérdezésen keresztül lesznek visszaadva. A keresési válaszok bemutatják azokat az eredmények eléréséhez használt aspektus-kategóriákat. Ha nem ismeri a dimenziókat, a következő példa egy dimenziós navigációs struktúra szemléltetése.
 
   ![](./media/search-filters-facets/facet-nav.png)
 
-További részletek új, a jellemzőalapú navigáció, és szeretné? Lásd: [jellemzőalapú navigáció megvalósítása az Azure Search](search-faceted-navigation.md).
+Új a csiszolatlan navigációhoz, és további részletekre van szüksége? Tekintse meg, [hogyan valósítható meg a részletes Navigálás a Azure Searchban](search-faceted-navigation.md).
 
 ## <a name="choose-fields"></a>Mezők kiválasztása
 
-Egyetlen érték mezők, valamint a gyűjtemények értékkorlátozással is vetítve. Mezőkkel, amelyek működnek a legjobban a jellemzőalapú navigáció alacsony Számosság rendelkezik: egy kis számú különböző értékeket, amelyek ismételje meg a keresési forrásgyűjteményébe (például egy lista a színeket, országok vagy márkanevek) található dokumentumok teljes. 
+Az aspektusok az egyértékű mezőkön és a gyűjteményeken is kiszámíthatók. A leghatékonyabban felhasználható navigációs mezőkben kevés a különbség: kis számú különböző érték, amely megismétli a keresés során a dokumentumok között (például a színek, országok/régiók vagy márkanevek listája). 
 
-Jellemzőalapú mező szerint alapon engedélyezve van, az index létrehozásakor a következő attribútumok igaz értékre állításával: `filterable`, `facetable`. Csak a szűrhető mezők értéke korlátozható.
+Ha az `facetable` `true`attribútumot a (z) értékre állítja, akkor a rendszer mező alapján, az index létrehozásakor engedélyezve van. `filterable` Az`true` attribútumot általában úgy kell beállítania, hogy az ilyen mezőkhöz a keresési alkalmazás a végfelhasználó által kiválasztott aspektusok alapján szűrheti ezeket a mezőket. 
 
-Bármely [mezőbe írja be](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) , amelyek esetleg használható lenne a jellemzőalapú navigáció "kategorizálható" van megjelölve:
+Ha a REST API használatával hoz létre egy indexet, a rendszer a felhasználható [mezők bármely típusát](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) alapértelmezés szerint megjelöli `facetable` :
 
-+ Edm.String
-+ Edm.DateTimeOffset
-+ Edm.Boolean
-+ Edm.Collections
-+ A mező numerikus típusok: Edm.Int32, Edm.Int64, Edm.Double
++ `Edm.String`
++ `Edm.DateTimeOffset`
++ `Edm.Boolean`
++ Numerikus mezők típusai: `Edm.Int32`, `Edm.Int64`,`Edm.Double`
++ A fenti típusok (például `Collection(Edm.String)` vagy `Collection(Edm.Double)`) gyűjteményei
 
-Jellemzőalapú navigáció Edm.GeographyPoint nem használhat. Értékkorlátozással emberi olvasható szöveget vagy számokat és változóból tevődnek. Értékkorlátozással mint ilyen, a földrajzi koordináták nem támogatottak. Egy hely szerint értékkorlátozás vagy régiót mezőt kell lennie.
+Nem használhatók `Edm.GeographyPoint` vagy `Collection(Edm.GeographyPoint)` mezők a csiszolatlan navigálásban. Az aspektusok a legjobban a kis-és nagyszámú mezőkben működnek. A földrajzi koordináták feloldása miatt ritkán fordul elő, hogy a két közös koordinációs csoport egy adott adatkészletben egyenlő lesz. Ezért az aspektusok nem támogatottak a földrajzi koordináták esetében. Egy város vagy régió mezőre lesz szüksége a következő helyen: Face.
 
-## <a name="set-attributes"></a>Attribútumainak beállítása
+## <a name="set-attributes"></a>Attribútumok beállítása
 
-Vezérelheti a mező használatát index attribútumairól az index egyedi Meződefiníciók kerülnek. A következő példában alacsony számosságú, értékkorlátozás, hasznos, ha a mezők állhat: kategória (Szálloda, amelyben, hostel), eszközök és besorolás. 
-
-A .NET API-t, a szűrési attribútumokhoz explicit módon kell beállítani. A REST API-t, a többnyelvűséget és a szűrés alapértelmezés szerint engedélyezve vannak, ami azt jelenti, hogy csak kell explicit módon attribútumainak beállítása, ha szeretné kikapcsolni őket. Bár ez nem szükséges technikailag, bemutatjuk az adatok az alábbi REST-példában oktatási célokra. 
+Indexelő attribútumok, amelyek azt szabályozzák, hogy a rendszer hogyan használja a mezőket az index egyes mezőihez. A következő példában a kis-és nagybetűket tartalmazó mezők a következők: `category` (Hotel, Motel, Hostel), `tags`és `rating`. Ezeknek a mezőknek `filterable` a `facetable` és attribútumai explicit módon vannak megadva a következő példában szemléltető célokra. 
 
 > [!Tip]
-> Ajánlott eljárásként a teljesítmény- és tárolási optimalizálása kikapcsolása jellemzőkezelés értékkorlátozásként soha nem használt mezőket. Különösen a singleton értékek, például egy azonosító vagy a termék nevét, a karakterlánc-mezők "Kategorizálható"-ra kell állítani: False (hamis), hogy azok véletlen (és hatástalan) használja a jellemzőalapú navigáció.
+> A teljesítmény és a tárolás optimalizálásának ajánlott eljárása, ha olyan mezőkhöz kapcsolja ki a dimenziókat, amelyek soha nem használhatók dimenzióként. Az egyedi értékekhez (például azonosítóhoz vagy terméknévhoz) tartozó karakterlánc-mezőket úgy kell beállítani `"facetable": false` , hogy megakadályozza a véletlen (és nem hatékony) használatát a sokoldalú navigációban.
 
 
-```http
+```json
 {
-    "name": "hotels",  
-    "fields": [
-        {"name": "hotelId", "type": "Edm.String", "key": true, "searchable": false, "sortable": false, "facetable": false},
-        {"name": "baseRate", "type": "Edm.Double"},
-        {"name": "description", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false},
-        {"name": "description_fr", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false, "analyzer": "fr.lucene"},
-        {"name": "hotelName", "type": "Edm.String", "facetable": false},
-        {"name": "category", "type": "Edm.String", "filterable": true, "facetable": true},
-        {"name": "tags", "type": "Collection(Edm.String)", "filterable": true, "facetable": true},
-        {"name": "parkingIncluded", "type": "Edm.Boolean",  "filterable": true, "facetable": true, "sortable": false},
-        {"name": "smokingAllowed", "type": "Edm.Boolean", "filterable": true, "facetable": true, "sortable": false},
-        {"name": "lastRenovationDate", "type": "Edm.DateTimeOffset"},
-        {"name": "rating", "type": "Edm.Int32", "filterable": true, "facetable": true},
-        {"name": "location", "type": "Edm.GeographyPoint"}
-    ]
+  "name": "hotels",  
+  "fields": [
+    { "name": "hotelId", "type": "Edm.String", "key": true, "searchable": false, "sortable": false, "facetable": false },
+    { "name": "baseRate", "type": "Edm.Double" },
+    { "name": "description", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false },
+    { "name": "description_fr", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false, "analyzer": "fr.lucene" },
+    { "name": "hotelName", "type": "Edm.String", "facetable": false },
+    { "name": "category", "type": "Edm.String", "filterable": true, "facetable": true },
+    { "name": "tags", "type": "Collection(Edm.String)", "filterable": true, "facetable": true },
+    { "name": "parkingIncluded", "type": "Edm.Boolean",  "filterable": true, "facetable": true, "sortable": false },
+    { "name": "smokingAllowed", "type": "Edm.Boolean", "filterable": true, "facetable": true, "sortable": false },
+    { "name": "lastRenovationDate", "type": "Edm.DateTimeOffset" },
+    { "name": "rating", "type": "Edm.Int32", "filterable": true, "facetable": true },
+    { "name": "location", "type": "Edm.GeographyPoint" }
+  ]
 }
 ```
 
 > [!Note]
-> Az index definícióját átmásolva [létrehozása az Azure Search-index REST API használatával](https://docs.microsoft.com/azure/search/search-create-index-rest-api). Ez megegyezik a Meződefiníciók felületi eltérések kivételével. Filterable és kategorizálható attribútumok explicit módon hozzáadódnak a kategória, címkék, parkingIncluded, smokingAllowed és minősítés mezőket. A gyakorlatban szűrhető kap, és a kategorizálható Edm.String Edm.Boolean és Edm.Int32 mezőtípusok az ingyenes. 
+> Az index definícióját a rendszer átmásolja a [Azure Search index létrehozása a REST API használatával](https://docs.microsoft.com/azure/search/search-create-index-rest-api). Ez a mező-definíciók esetében azonos, kivéve a felületi különbségeket. A `filterable` és `category` attribútumokexplicitmódon`smokingAllowed`hozzáadódnak a `parkingIncluded`,,, és`rating` mezőkhöz. `tags` `facetable` A gyakorlatban, `filterable` és `facetable` alapértelmezés szerint engedélyezve lesznek ezeken a mezőkön a REST API használatakor. A .NET SDK használatakor ezeket az attribútumokat explicit módon kell engedélyezni.
 
-## <a name="build-and-load-an-index"></a>Hozhat létre és index betöltése
+## <a name="build-and-load-an-index"></a>Index létrehozása és betöltése
 
-Egy közbenső (és talán nyilvánvaló) lépés az kell, hogy [hozhat létre, és töltse fel az index](https://docs.microsoft.com/azure/search/search-create-index-dotnet#3---construct-index) mielőtt egy lekérdezést. Ebben a lépésben Itt a teljesség megemlíteni azt. Egyik módja határozza meg, hogy rendelkezésre áll-e az index, indexeket lista ellenőrzésével a [portál](https://portal.azure.com).
+Egy közbenső (és talán nyilvánvaló) lépés az, hogy az indexet fel kell építenie és fel kell [töltenie a](https://docs.microsoft.com/azure/search/search-get-started-dotnet#1---create-index) lekérdezés kialakítása előtt. Ez a lépés a teljesség kedvéért van megemlítve. Az indexek elérhetővé tételének egyik módja a [portál](https://portal.azure.com)indexek listájának ellenőrzése.
 
-## <a name="add-facet-filters-to-a-query"></a>Az értékkorlátozó szűrők lekérdezés hozzáadása
+## <a name="add-facet-filters-to-a-query"></a>Dimenziós szűrők hozzáadása egy lekérdezéshez
 
-Az alkalmazás kódjában hozhatnak létre egy lekérdezést, amely meghatározza egy érvényes lekérdezést, beleértve a keresési kifejezéseket, értékkorlátozással, szűrőket, pontozási profilok – semmi állítson össze egy kérelmet használt minden része. Az alábbi példa egy kérelmet, amely létrehozza az értékkorlátozó navigációs vendéglátóipar, besorolásával és egyéb készülékek típusa alapján hoz létre.
+Az alkalmazás kódjában állítson össze egy olyan lekérdezést, amely egy érvényes lekérdezés összes részét megadja, beleértve a keresési kifejezéseket, a dimenziókat, a szűrőket, a pontozási profilokat – bármit, ami a kérés összeállításához használatos. Az alábbi példa egy olyan kérést készít, amely dimenziós navigálást hoz létre a szállás, a minősítés és más kényelmi szolgáltatások típusa alapján.
 
 ```csharp
-SearchParameters sp = new SearchParameters()
+var sp = new SearchParameters()
 {
-  ...
-  // Add facets
-  Facets = new List<String>() { "category", "rating", "parkingIncluded", "smokingAllowed" },
+    ...
+    // Add facets
+    Facets = new[] { "category", "rating", "parkingIncluded", "smokingAllowed" }.ToList()
 };
 ```
 
-### <a name="return-filtered-results-on-click-events"></a>A visszaadott eredmény kattintási események
+### <a name="return-filtered-results-on-click-events"></a>Szűrt eredmények visszaküldése a kattintási eseményekre
 
-A szűrőkifejezés kezeli a kattintás eseményt, értékkorlátozás értéke. Adja meg a kategória értékkorlátozás, kattintson a "amelyben" kategória biztosítják a `$filter` kifejezés, amely az adott típusú szálláshelyigényt kiválasztja. Ha egy felhasználó "motelek" jelzi, hogy megjelenjen-e csak motelek kattint, a következő lekérdezés az alkalmazás elküld tartalmazza-e a $filter = kategória eq 'motelek".
+Ha a végfelhasználó egy dimenzióérték-értékre kattint, a click esemény kezelőjének egy szűrési kifejezést kell használnia a felhasználó szándékának felismeréséhez. Az adott `$filter` aspektusban a "Motel" kategóriára kattintva olyan kifejezéssel valósul meg, amely kiválasztja az adott típusú szállást. `category` Ha a felhasználó a "Motel" gombra kattint, jelezve, hogy csak a motelek jelennek meg, az `$filter=category eq 'motel'`alkalmazás által küldött következő lekérdezés tartalmazza a-t.
 
-A következő kódrészletet, ha a felhasználó kiválaszt egy értéket a kategória aspektus ad hozzá a szűrő kategória.
+A következő kódrészlet hozzáadja a szűrőt a szűrőhöz, ha a felhasználó egy értéket választ ki a kategória dimenzióból.
 
 ```csharp
-if (categoryFacet != "")
-  filter = "category eq '" + categoryFacet + "'";
+if (!String.IsNullOrEmpty(categoryFacet))
+    filter = $"category eq '{categoryFacet}'";
 ```
-A REST API-val, a kérelem kellene lennie csuklós `$filter=category eq 'c1'`. Ahhoz, hogy a kategória több érték mező, használja a következő szintaxist: `$filter=category/any(c: c eq 'c1')`
+
+Ha a felhasználó a gyűjtemény mezőjéhez hasonló `tags`, például a "pool" értékre kattint, az alkalmazásnak a következő szűrési szintaxist kell használnia:`$filter=tags/any(t: t eq 'pool')`
 
 ## <a name="tips-and-workarounds"></a>Tippek és megkerülő megoldások
 
-### <a name="initialize-a-page-with-facets-in-place"></a>Helyben értékkorlátozással tartalmazó oldalt inicializálása
+### <a name="initialize-a-page-with-facets-in-place"></a>Oldal inicializálása a helyi dimenziókkal
 
-Szeretné inicializálni a helyen értékkorlátozással tartalmazó oldalt, ha a lekérdezés használatával ültet be az oldal egy kezdeti értékkorlátozás struktúrával se inicializace stránky részeként küldhet.
+Ha egy olyan oldalt szeretne inicializálni, amelynek a helyén dimenziók vannak, akkor a lap inicializálásának részeként küldhet lekérdezést, amely kezdeti dimenziós struktúrával rendelkezik.
 
-### <a name="preserve-a-facet-navigation-structure-asynchronously-of-filtered-results"></a>A szűrt eredmények aszinkron módon jellemzőalapú navigációs szerkezetben megőrzése
+### <a name="preserve-a-facet-navigation-structure-asynchronously-of-filtered-results"></a>Dimenziós navigációs struktúra aszinkron módon történő megőrzése szűrt eredmények alapján
 
-Az értékkorlátozó navigációs az Azure Search szolgáltatásban a legnagyobb kihívás, hogy létezik-e értékkorlátozással csak az aktuális eredményt. A gyakorlatban szokás megőrzése értékkorlátozással statikus készletét, hogy a felhasználó navigálhat fordított, a Visszalépés lépések végrehajtásával Fedezze fel az alternatív útvonalait a tartalom keresése. 
+Azure Search az egyik kihívás az, hogy az aktuális eredményekhez csak az adott dimenziók találhatók. A gyakorlatban gyakori a dimenziók statikus készletének megtartása, hogy a felhasználó visszafelé Tudjon navigálni, és újra nyomon követheti az alternatív útvonalakat a keresési tartalmakon. 
 
-Bár ez egy gyakori alkalmazási helyzet, már nem valami a jellemzőalapú navigációs szerkezetben jelenleg nyújt a-beépített. A fejlesztők számára statikus értékkorlátozással általában két szűrt lekérdezések kiállításával megkerüléséhez a korlátozás: egyet az eredmények hatóköre, a másik hozzon létre egy statikus értékkorlátozással navigációs célokra használt.
+Bár ez egy gyakori használati eset, nem az, hogy a facet navigációs struktúra jelenleg azonnal elérhető. A statikus aspektusokat szeretnéő fejlesztők általában két szűrt lekérdezés kiadásával használják a korlátozásokat: egy hatókört az eredményekre, a másik pedig a dimenziók statikus listáját hozza létre navigációs célokra.
 
 ## <a name="see-also"></a>Lásd még
 
-+ [Szűrők az Azure Search szolgáltatásban](search-filters.md)
-+ [Index REST API létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-index)
-+ [REST API-val dokumentumok keresése](https://docs.microsoft.com/rest/api/searchservice/search-documents)
++ [Szűrők a Azure Searchban](search-filters.md)
++ [Index létrehozása REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)
++ [Dokumentumok keresése REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)

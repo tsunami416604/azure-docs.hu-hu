@@ -3,8 +3,8 @@ title: Csomagrögzítés kezelése az Azure Network Watcher – Azure CLI-vel |}
 description: Jelen lap bemutatja, hogyan kezelheti a packet capture funkciójának a Network Watcher az Azure CLI használatával
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: timlt
+author: KumudD
+manager: twooley
 editor: ''
 ms.assetid: cb0c1d10-f7f2-4c34-b08c-f73452430be8
 ms.service: network-watcher
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: jdial
-ms.openlocfilehash: cf03872607546f38d19a280f65f641abf627268b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: kumud
+ms.openlocfilehash: 7e6b1d77d002b8c1ed32a4e7adbdd1a46cf65668
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57857725"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64687088"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-azure-cli"></a>A csomagrögzítés kezelése az Azure Network Watcher az Azure CLI használatával
 
@@ -52,7 +52,7 @@ Ez a cikk feltételezi, hogy az alábbi forrásanyagokat:
 
 ## <a name="install-vm-extension"></a>Virtuálisgép-bővítmény telepítése
 
-### <a name="step-1"></a>1. lépés
+### <a name="step-1"></a>1\. lépés
 
 Futtassa a `az vm extension set` parancsmag a csomag rögzítési ügynök telepítéséhez a Vendég virtuális gépen.
 
@@ -68,7 +68,7 @@ Linux rendszerű virtuális gépek:
 az vm extension set --resource-group resourceGroupName --vm-name virtualMachineName --publisher Microsoft.Azure.NetworkWatcher --name NetworkWatcherAgentLinux--version 1.4
 ```
 
-### <a name="step-2"></a>2. lépés
+### <a name="step-2"></a>2\. lépés
 
 Győződjön meg arról, hogy az ügynök telepítve van-e, futtassa a `vm extension show` parancsmagot, és adja át azt az erőforrás-csoport és a virtuális gép nevét. Ellenőrizze a megjelenő listában, annak érdekében, hogy az ügynök telepítve van.
 
@@ -102,7 +102,7 @@ Az alábbi minta egy példa a válasz futását `az vm extension show`
 
 Ha az előző lépések befejeződött, a csomag rögzítési ügynök telepítve van a virtuális gépen.
 
-### <a name="step-1"></a>1. lépés
+### <a name="step-1"></a>1\. lépés
 
 A következő lépés, hogy a Network Watcher-példány beolvasása. A Network Watcher Helyrendszerszerepkörre nevére átadott a `az network watcher show` parancsmag a 4. lépésben.
 
@@ -110,7 +110,7 @@ A következő lépés, hogy a Network Watcher-példány beolvasása. A Network W
 az network watcher show --resource-group resourceGroup --name networkWatcherName
 ```
 
-### <a name="step-2"></a>2. lépés
+### <a name="step-2"></a>2\. lépés
 
 Storage-fiók beolvasása. Ez a tárfiók a packet capture fájl tárolására szolgál.
 
@@ -118,7 +118,7 @@ Storage-fiók beolvasása. Ez a tárfiók a packet capture fájl tárolására s
 azure storage account list
 ```
 
-### <a name="step-3"></a>3. lépés
+### <a name="step-3"></a>3\. lépés
 
 Szűrők a csomagrögzítés által tárolt adatok korlátozására használható. Az alábbi példa a több szűrőt beállítja a csomagrögzítés.  Az első három szűrők összegyűjtéséhez kimenő TCP-forgalom csak a helyi IP-cím 10.0.0.3 célportok 20, a 80-as és 443-as porton.  Az utolsó szűrő gyűjti csak az UDP-forgalmat.
 

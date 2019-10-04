@@ -2,18 +2,19 @@
 title: Engedélyezze a biztonságos TLS-ügyfél Azure Storage |} A Microsoft Docs
 description: Ismerje meg, hogy a TLS 1.2 engedélyezése az Azure Storage-ügyfél.
 services: storage
-author: fhryo-msft
+author: tamram
 ms.service: storage
 ms.topic: article
 ms.date: 06/25/2018
-ms.author: fryu
+ms.author: tamram
+ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 4af86b570dfb24f990f1d8b4ff501d1a222bd21d
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 218708ffc9a680150d7b6bf559a00ca87054bbe8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55494289"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65152972"
 ---
 # <a name="enable-secure-tls-for-azure-storage-client"></a>Biztonságos TLS engedélyezése az Azure Storage-ügyfélnek
 

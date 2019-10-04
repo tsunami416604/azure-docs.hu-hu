@@ -9,11 +9,11 @@ ms.date: 02/16/2018
 ms.author: dukek
 ms.subservice: alerts
 ms.openlocfilehash: 638dd8efba5e86bb7e8abb78a41196bfac9524df
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54421861"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60709966"
 ---
 # <a name="create-an-action-group-with-a-resource-manager-template"></a>Műveletcsoport létrehozása a Resource Manager-sablonnal
 Ez a cikk bemutatja, hogyan használható egy [Azure Resource Manager-sablon](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) Műveletcsoportok konfigurálása. Sablonok használatával automatikusan állíthat be, amelyek felhasználhatók a meghatározott típusú riasztások Műveletcsoportok. A Műveletcsoportok győződjön meg arról, hogy a megfelelő felek értesítést kapnak, ha a riasztás aktiválódik.

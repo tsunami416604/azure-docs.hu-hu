@@ -4,12 +4,12 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 02/11/2019
 ms.author: kromerm
-ms.openlocfilehash: ac07373bcdf4bbf0f7bfc5b131ffe4eb26bc3ac4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: aaa8908f5b05ae4c4523760c3c12a077ac1a09d5
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59804160"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "67509858"
 ---
 > [!NOTE] 
-> Adatfolyam-leképezés funkciója egy új Azure Data Factory. Ez jelenleg korlátozott nyilvános előzetes verzióként érhető el és nem Azure-ügyfél SLA rendelkezések vonatkoznak. [Regisztráció az előzetes verzióra, kérjen hozzáférési Itt](https://aka.ms/dataflowpreview).
+> Azure Data Factory a leképezési folyamat jelenleg nyilvános előzetes verzióként érhető el, és nem vonatkozik az Azure Customer SLA-céltartalékokra. Jelenleg a leképezési adatfolyamatok nem érhetők el ezekben az Azure-régiókban: USA nyugati középső régiója, Dél-Brazília, Közép-Németország, Közép-Korea.

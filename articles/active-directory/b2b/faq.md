@@ -8,16 +8,16 @@ ms.topic: reference
 ms.date: 04/10/2019
 ms.author: mimart
 author: msmimart
-manager: celested
+manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d361a40e2efa80a677255c02c7e9cf155af09ffb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 523f1adc94870f79d198366059f33ad52f5dad68
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59496301"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67293070"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Az Azure Active Directory B2B-együttműködés – gyakori kérdések
 
@@ -42,7 +42,7 @@ Igen. Vendégfelhasználók alaphelyzetbe állíthatja a multi-factor authentica
 A meghívó szervezetet a multi-factor Authentication hitelesítést hajt végre. A meghívó szervezetet ellenőrizze, hogy a szervezete rendelkezik-e elegendő licenccel a B2B-felhasználók számára a többtényezős hitelesítés használata esetén.
 
 ### <a name="what-if-a-partner-organization-already-has-multi-factor-authentication-set-up-can-we-trust-their-multi-factor-authentication-and-not-use-our-own-multi-factor-authentication"></a>Mi történik, ha egy fiókpartner-szervezet már rendelkezik multi-factor authentication szolgáltatás beállítása? Is azt a multi-factor authentication megbízható, és nem a saját multi-factor authentication használata?
-Ez a funkció egy későbbi kiadásban tervezünk, akkor választhatja ki kizárandó konkrét partnerek, a többtényezős hitelesítés (a meghívó szervezetet meg).
+Ez a funkció jelenleg nem támogatott. Ha a szervezet erőforrásaihoz való hozzáférés többtényezős hitelesítést igényel, a fiókpartner-szervezet regisztrálhat a multi-factor authentication szolgáltatás kell-e a (a fióknevet) szervezet.
 
 ### <a name="how-can-i-use-delayed-invitations"></a>Hogyan használható a késleltetett felkérések?
 Egy szervezet hozzáadása a B2B-együttműködés felhasználók, alkalmazások szükség szerint építse és majd a Meghívók küldése kíván. A B2B-együttműködés meghívó API segítségével testre szabhatja a regisztrációs munkafolyamat.

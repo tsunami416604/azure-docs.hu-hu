@@ -1,112 +1,118 @@
 ---
-title: Mik az Azure Cognitive Services?
-description: Az Azure Cognitive Services olyan API-k, SDK-k és szolgáltatások, amelyek a Microsoft Azure használatával intelligens alkalmazásokat hozhat létre.
+title: Mi az Azure Cognitive Services?
+titleSuffix: Azure Cognitive Services
+description: Az Azure Cognitive Services olyan API-k, SDK-k és szolgáltatások, amelyek az Microsoft Azure használatával intelligens alkalmazások készítésére használhatók.
 services: cognitive-services
 author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ''
-ms.topic: article
-ms.date: 03/19/2019
+ms.topic: overview
+ms.date: 04/19/2019
 ms.author: nitinme
-ms.openlocfilehash: 2464424b537f6187542fb612626cff115711d6e5
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 5337f2d3df395650c65ae4a12cbdf4f8ba90ca3d
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336286"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840395"
 ---
-# <a name="what-are-azure-cognitive-services"></a>Mik az Azure Cognitive Services?
+# <a name="what-are-azure-cognitive-services"></a>Mi az Azure Cognitive Services?
 
-Az Azure Cognitive Services olyan API-k, SDK-k és szolgáltatások segítségével a fejlesztők intelligens alkalmazásokat hozhat létre közvetlen AI vagy adattudományos előismeretekkel engedélye vagy tudomása nélkül érhető el. Az Azure Cognitive Services segítségével a fejlesztők könnyedén bővíthetik a kognitív szolgáltatások, például érzelem- és video észlelési; engedélyezése videofelismerést, arc, beszédfelismerési és vizuális felismerés; és a beszéd- és beszédfelismerés – az alkalmazásaikba. Az Azure Cognitive Services célja, hogy segítségével a fejlesztők számára látható alkalmazások létrehozása hall, beszéljenek, ismertetése és egyáltalán elkezdhessék OK. A katalógus az Azure Cognitive Services szolgáltatások osztályozhatók öt alappillérre - vizuális, beszéd, nyelvi, keresési és ismeretek.
+Az Azure Cognitive Services olyan API-k, SDK-k és szolgáltatások, amelyek segítségével a fejlesztők intelligens alkalmazásokat hozhatnak létre anélkül, hogy közvetlen AI-vagy adatelemzési ismeretekkel vagy ismeretekkel rendelkeznek Az Azure Cognitive Services lehetővé teszi a fejlesztők számára, hogy az alkalmazásaikban egyszerűen vegyenek fel kognitív funkciókat. Az Azure Cognitive Services célja, hogy segítse a fejlesztőket az olyan alkalmazások létrehozásában, amelyek megtekinthetik, meghallgatják, megértik, megértették és megkezdik az okot. Az Azure Cognitive Servicesban található szolgáltatások katalógusa öt fő pillérbe osztható – jövőkép, beszéd, nyelv, Web Search és döntés.
 
 ## <a name="vision-apis"></a>Vision APIs
 
-|Szolgáltatásnév|A szolgáltatás leírása|
+|Szolgáltatás neve|A szolgáltatás leírása|
 |:-----------|:------------------|
-|[Számítógépes Látástechnológia](https://docs.microsoft.com/azure/cognitive-services/computer-vision/ "Computer Vision")|A Computer Vision service képek feldolgozása és információk korszerű algoritmusokat hozzáférést biztosít.|
-|[Custom Vision Service](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/home "Custom Vision Service") (előzetes verzió)|A Custom Vision Service lehetővé teszi, hogy egyéni rendszerképet deklarációkkal hozhat létre.|
-|[Content Moderator](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview "Content Moderator")|A Content Moderator lehetséges sértő, nemkívánatos és kockázatos tartalmak figyelését teszi lehetővé.|
-|[Face API](https://docs.microsoft.com/azure/cognitive-services/face/ "Face API")|A Face API fejlett face algoritmusok, attribútum arcfelismerés és felismerése engedélyezése hozzáférést biztosít.|
-| [A video Indexer](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview "Video Indexer")|A video Indexer segítségével adatokat nyerhet ki a videót.|
+|[Computer Vision] (https://docs.microsoft.com/azure/cognitive-services/computer-vision/ "Computer Vision")|A Computer Vision szolgáltatás a rendszerképek feldolgozásához és a visszaadott adatokhoz való hozzáférést biztosít a speciális algoritmusokhoz.|
+|[Custom Vision Service] (https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/home "Custom Vision Service")|A Custom Vision Service segítségével egyéni rendszerkép-osztályozók hozhatók létre.|
+|[Face API] (https://docs.microsoft.com/azure/cognitive-services/face/ "Face API")|Face API hozzáférést biztosít a speciális arc-algoritmusokhoz, lehetővé téve a Face attribútumok észlelését és felismerését.|
+|[Űrlap-felismerő] (https://docs.microsoft.com/azure/cognitive-services/form-recognizer/ "Űrlap-felismerő") Előnézet|Az űrlap-felismerő azonosítja és kigyűjti a kulcs-érték párokat és a táblák adatait az űrlap dokumentumaiból. Ezután a a strukturált adatokat is megjeleníti, beleértve az eredeti fájlban lévő kapcsolatokat is.|
+|[Kézírás-felismerő] (https://docs.microsoft.com/azure/cognitive-services/ink-recognizer/ "Kézírás-felismerő") Előnézet|A kézírás-felismerő lehetővé teszi a digitális tollvonási adat, az alakzatok és a kézírásos tartalom felismerését és elemzését, valamint a dokumentum-struktúra kimenetét az összes felismert entitással.|
+|[Video Indexer] (https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview "Video Indexer")|A Video Indexer lehetővé teszi a videóból származó adatok kinyerését.|
 
 ## <a name="speech-apis"></a>Beszédfelismerő API-k
 
-|Szolgáltatásnév|A szolgáltatás leírása|
+|Szolgáltatás neve|A szolgáltatás leírása|
 |:-----------|:------------------|
-|[Beszédszolgáltatás](https://docs.microsoft.com/azure/cognitive-services/speech-service/ "beszédszolgáltatás") (előzetes verzió)|Beszédszolgáltatás beszédfeldolgozó funkciókat ad hozzá alkalmazásokat.|
-|[Bing Speech API](https://docs.microsoft.com/azure/cognitive-services/speech/home "Bing Speech API")|A Bing Speech API segítségével egyszerűen beszédfeldolgozó funkciók létrehozása az alkalmazásokban.|
-|[Fordítói beszéd](https://docs.microsoft.com/azure/cognitive-services/translator-speech/ "fordítói beszéd")|Fordítói beszéd egy olyan gépi fordítási szolgáltatás.|
-|[Speaker Recognition API](https://docs.microsoft.com/azure/cognitive-services/speaker-recognition/home "Speaker Recognition API") (előzetes verzió)|A Speaker Recognition API algoritmusokat biztosít a beszélő felismerése és ellenőrzése.|
+|[Beszédfelismerési szolgáltatások] (https://docs.microsoft.com/azure/cognitive-services/speech-service/ "Beszédfelismerési szolgáltatások")|A beszédfelismerési szolgáltatás lehetővé teszi a beszédfelismerést támogató funkciók használatát az alkalmazásokhoz.|
+|[Speaker Recognition API] (https://docs.microsoft.com/azure/cognitive-services/speaker-recognition/home "Speaker Recognition API") Előnézet|A Speaker Recognition API algoritmusokat biztosít a hangszórók azonosításához és ellenőrzéséhez.|
+|[Bing Speech] (https://docs.microsoft.com/azure/cognitive-services/speech/home "Bing Speech") Visszavonult|A Bing Speech API segítségével egyszerűen hozhat létre beszédfelismerést támogató szolgáltatásokat az alkalmazásaiban.|
+|[Translator Speech] (https://docs.microsoft.com/azure/cognitive-services/translator-speech/ "Translator Speech") Visszavonult|Translator Speech egy gépi fordítási szolgáltatás.|
 
 ## <a name="language-apis"></a>Nyelvi API-k
 
-|Szolgáltatásnév|A szolgáltatás leírása|
+|Szolgáltatás neve|A szolgáltatás leírása|
 |:-----------|:------------------|
-|[A Bing Spell Check](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/ "Bing helyesírás-ellenőrzés")|A Bing helyesírás-ellenőrzés lehetővé teszi a környezetfüggő nyelvtani végez, és helyesírás-ellenőrzés.|
-|[Language Understanding, LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/ "hangfelismerés")|Hangfelismerési szolgáltatás (LUIS) lehetővé teszi, hogy az alkalmazás tudja, hogy ember szándékának megértésére a saját szavaival.|
-|[Szövegelemzés](https://docs.microsoft.com/azure/cognitive-services/text-analytics/ "Szövegelemzés")|Szövegelemzés a természetes nyelvi feldolgozási hangulatelemzést, kulcsszókeresést és nyelvfelismerést a nyers szöveg biztosít.|
-|[Fordítói szöveg](https://docs.microsoft.com/azure/cognitive-services/translator/ "fordítói szöveg")|Számítógép-alapú szövegfordítás a közel valós idejű szövegfordítás biztosít.|
+|[Language UNDERSTANDING Luis] (https://docs.microsoft.com/azure/cognitive-services/luis/ "Language Understanding")|A Language Understanding Service (LUIS) lehetővé teszi az alkalmazás számára, hogy megtudja, mit szeretne a saját szavaiban.|
+|[QnA Maker] (https://docs.microsoft.com/azure/cognitive-services/qnamaker/index "QnA Maker")|QnA Maker lehetővé teszi, hogy a félig strukturált tartalomból hozzon létre egy kérdés-válasz szolgáltatást.|
+|[Text Analytics] (https://docs.microsoft.com/azure/cognitive-services/text-analytics/ "Text Analytics")|A Text Analytics természetes nyelvi feldolgozást tesz lehetővé a nyers szövegekben az érzelmek elemzése, a fő kifejezés kinyerése és a nyelvfelismerés terén.|
+|[Translator Text] (https://docs.microsoft.com/azure/cognitive-services/translator/ "Translator Text")|A fordítói szöveg a gépi alapú szöveges fordítást biztosítja közel valós időben.|
+|[Video Indexer] (https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview "Video Indexer")|A Video Indexer lehetővé teszi a videóból származó adatok kinyerését.|
 
 ## <a name="search-apis"></a>Keresési API-k
 
-|Szolgáltatásnév|A szolgáltatás leírása|
+|Szolgáltatás neve|A szolgáltatás leírása|
 |:-----------|:------------------|
-|[Bing – Hírkeresés](https://docs.microsoft.com/azure/cognitive-services/bing-news-search/ "Bing – Hírkeresés")|Bing – Hírkeresés határozza meg a felhasználó lekérdezése fontos hírek listáját adja vissza.|
-|[Bing – Videókeresés](https://docs.microsoft.com/azure/cognitive-services/Bing-Video-Search/ "Bing – Videókeresés")|A Bing Video Search minősül, a felhasználó lekérdezése a videók listáját adja vissza.|
-|[Bing – internetes keresés](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/ "a Bing webes keresés")|A Bing webes keresés adja vissza, a fontos lehet a felhasználó lekérdezése a keresési eredmények listájában határozza meg.|
-|[Bing automatikus kiegészítés](https://docs.microsoft.com/azure/cognitive-services/Bing-Autosuggest "Bing automatikus kiegészítés")|Bing automatikus kiegészítés lehetővé teszi egy részleges keresési lekérdezés kifejezés küldeni a Bing, majd a javasolt lekérdezések listája.|
-|[Bing egyéni keresés](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search "Bing egyéni keresés")|Bing Custom Search lehetővé teszi, hogy a témakörök, amelyek az Ön számára személyre szabott keresési funkciókkal.|
-|[A Bing Entity Search](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/ "Bing – Entitáskeresés")|A Bing Entity Search, amely meghatározza a Bing, a felhasználó lekérdezése a entitásokkal kapcsolatos információkat ad vissza.|
-|[Bing – Képkeresés](https://docs.microsoft.com/azure/cognitive-services/bing-image-search "Bing – Képkeresés")|Bing – Képkeresés minősül, a felhasználó lekérdezése a lemezképek megjelenítési adja vissza.|
-|[A Bing Visual Search](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search "Bing vizuális keresés")|A Bing Visual Search vásárlási forrás a termék a lemezképben található kapcsolódó keresések értéket ad vissza információival, például a vizuálisan hasonló képek képet biztosít.|
-|[Helyi vállalati keresési Bing](https://docs.microsoft.com/azure/cognitive-services/bing-local-business-search/ "helyi vállalati keresési Bing")| Helyi üzleti keresési Bing-API lehetővé teszi, hogy a keresési lekérdezések alapján helyi üzletek ügyfél és a hely információkat találhat az alkalmazások.|
+|[Bing News Search] (https://docs.microsoft.com/azure/cognitive-services/bing-news-search/ "Bing News Search")|Bing News Search a felhasználó lekérdezéséhez kapcsolódó Hírek listáját adja vissza.|
+|[Bing Video Search] (https://docs.microsoft.com/azure/cognitive-services/Bing-Video-Search/ "Bing Video Search")|Bing Video Search a felhasználó lekérdezéséhez tartozó videók listáját adja vissza.|
+|[Bing Web Search] (https://docs.microsoft.com/azure/cognitive-services/bing-web-search/ "Bing Web Search")|Bing Web Search a felhasználó lekérdezéséhez szükséges keresési eredmények listáját adja vissza.|
+|[Bing AutoSuggest] (https://docs.microsoft.com/azure/cognitive-services/Bing-Autosuggest "Bing AutoSuggest")|Bing Autosuggest lehetővé teszi részleges keresési lekérdezési kifejezés küldését a Bing számára, és a javasolt lekérdezések listájának visszaadása.|
+|[Bing Custom Search] (https://docs.microsoft.com/azure/cognitive-services/bing-custom-search "Bing Custom Search")|Bing Custom Search lehetővé teszi, hogy testreszabott keresési funkciókat hozzon létre az Ön számára fontos témakörökhöz.|
+|[Bing Entity Search] (https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/ "Bing Entity Search")|Bing Entity Search a Bing által megadott entitásokra vonatkozó információkat ad vissza a felhasználó lekérdezéséhez.|
+|[Bing Image Search] (https://docs.microsoft.com/azure/cognitive-services/bing-image-search "Bing Image Search")|Bing Image Search visszaadja a felhasználó lekérdezéséhez szükséges képek megjelenítését.|
+|[Bing Visual Search] (https://docs.microsoft.com/azure/cognitive-services/bing-visual-search "Bing Visual Search")|A Bing Visual Search a képekkel kapcsolatos információkat ad vissza, például vizuálisan hasonló képeket, a lemezképben található termékek vásárlási forrásait és a kapcsolódó kereséseket.|
+|[Bing – helyi üzleti keresés] (https://docs.microsoft.com/azure/cognitive-services/bing-local-business-search/ "Bing – helyi üzleti keresés")| A Bing local Business Search API lehetővé teszi az alkalmazások számára, hogy a keresési lekérdezések alapján megtalálják a helyi vállalkozások kapcsolattartási és tartózkodási információit.|
+|[Bing Spell Check] (https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/ "Bing Spell Check")|Bing Spell Check lehetővé teszi a kontextusos nyelvtan és a helyesírás-ellenőrzés végrehajtását.|
 
-## <a name="knowledge-apis"></a>Információs API-k
+## <a name="decision-apis"></a>Döntési API-k
 
-|Szolgáltatásnév|A szolgáltatás leírása|
+|Szolgáltatás neve|A szolgáltatás leírása|
 |:-----------|:------------------|
-|[A QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/index "a QnA Maker")|A QnA Maker egy kérdést és választ a szolgáltatás a szolgáltatásban tárolt részben strukturált tartalomból teszi lehetővé.|
+|[Anomália detektor] (https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/ "Anomália detektor") Előnézet|Az anomáliák detektorral figyelheti és azonosíthatja a rendellenességeket az idősorozat-adataiban.|
+|[Content moderator] (https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview "Content moderator")|Content Moderator a lehetséges sértő, nemkívánatos és kockázatos tartalmak figyelését teszi lehetővé.|
+|[Személyre szabás] (https://docs.microsoft.com/azure/cognitive-services/personalizer/ "Személyre szabás") Előnézet|A személyre szabás lehetővé teszi, hogy kiválassza a legjobb élményt, amelyet a felhasználók láthatnak, valós idejű viselkedésük alapján.|
 
-## <a name="use-free-trials"></a>Használhatja az ingyenes próbaverzió
+## <a name="use-free-trials"></a>Ingyenes próbaverziók használata
 
-[Történő regisztráció az ingyenes próbaverziókat is](https://azure.microsoft.com/try/cognitive-services/ "Sign-up súgó") mindössze egy e-mailt, és néhány egyszerű lépésben. Ha még nem rendelkezik egy Microsoft-Account kell. Minden API-hoz a kért kap egy egyedi kulcspárra. A másikat pedig a csak egy tartalék. A titkos kulcsok nem ossza meg senkivel. Kísérletek rendelkezik egy korlátozni, tranzakció / másodperc vagy perc, és a egy havi használati korlátot. Egy tranzakció egyszerűen csak egy API-hívás. A korlátozások feloldásához a fizetős szintek válthat.
+[Regisztrálás az ingyenes próbaverzióra] A (https://azure.microsoft.com/try/cognitive-services/ "regisztrációs Súgó") csak egy e-mailt és néhány egyszerű lépést hajt végre. Ha még nem rendelkezik ilyennel, Microsoft-fiókra van szüksége. Minden kért API-hoz egyedi kulcspárt fog kapni. A második egy csak tartalék. A titkos kulcsokat Ne ossza meg senkivel. A kísérletek esetében a díjszabás, a tranzakciók másodpercenkénti száma és a havi használati korlát is érvényes. Egy tranzakció egyszerűen egy API-hívás. A korlátozások feloldásához frissíthet a fizetős csomagokra.
 
-## <a name="subscription-management"></a>Előfizetés-kezelés
+## <a name="subscription-management"></a>Előfizetések kezelése
 
-Miután jelentkezett be Microsoft-Account, elérheti [saját előfizetések](https://www.microsoft.com/cognitive-services/en-us/subscriptions "saját előfizetések") megjelenítéséhez használja a termékeket, a kvóta fennmaradó és lehetővé teszi, hogy további termékek az előfizetéshez.
+Miután bejelentkezett a Microsoft-fiókjával, elérheti [saját](https://www.microsoft.com/cognitive-services/subscriptions "") előfizetéseit, hogy megjelenjenek a használt termékek, a fennmaradó kvóta, valamint az előfizetéshez további termékek is hozzáadhatók.
 
-## <a name="upgrade-to-unlock-limits"></a>Frissítés korlátok zárolásának feloldása
+## <a name="upgrade-to-unlock-limits"></a>Frissítés feloldási korlátokra
 
-Minden API-kkal rendelkezik egy ingyenes próbaverziós csomag.  Amint fizetős ajánlatok az egyes API elérhetővé válnak, akkor jut el az Azure Portalra a beszerzés befejezéséhez.  Annak *vásárlása* hivatkozásokat az előfizetések lapon, ha már használja őket, vagy a próbaverzió érvényesítette kihagyhatja, és vásároljon az megadott hivatkozások [díjszabási](https://www.microsoft.com/cognitive-services/en-us/pricing "díjszabás").  Szüksége lesz egy Azure-előfizető-fiók egy hitelkártya és telefonszám. Ha speciális követelmény, vagy egyszerűen szeretne beszélgetni értékesítés, kattintson a "Lépjen kapcsolatba velünk" gombra a díjszabási lap tetején.
+Minden API-nak van egy ingyenes próbaverziója, amely a használat és az átviteli sebesség korlátozásával rendelkezik.  A korlátokat fizetős ajánlat használatával növelheti, és kiválaszthatja a megfelelő díjszabási csomag lehetőséget a szolgáltatás Azure Portal történő telepítésekor. [További információ az ajánlatokról és a díjszabásról] (https://azure.microsoft.com/pricing/details/cognitive-services/ "ajánlatok és díjszabás"). Be kell állítania egy Azure-előfizetői fiókot egy bankkártyával és egy telefonszámmal. Ha különleges követelménye van, vagy egyszerűen csak szeretne kommunikálni a Sales szolgáltatással, kattintson a "Kapcsolatfelvétel" gombra a díjszabás oldal tetején.
 
 ## <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
 
-A Cognitive Services API-k a Microsoft által felügyelt adatközpontok egyre növekvő hálózatában üzemel. A régiónkénti rendelkezésre állás találhat meg minden egyes API-t [az Azure-régió lista](https://azure.microsoft.com/regions).
+A Cognitive Services API-jai a Microsoft által felügyelt adatközpontok egyre növekvő hálózatán futnak. Az egyes API-k regionális elérhetőségét az [Azure-régiók listájában](https://azure.microsoft.com/regions)találja.
 
-Keres egy régió nem támogatjuk a még? Ossza meg velünk az ügyfélszolgálatunknak küldött szolgáltatással kapcsolatos kéréseit az [UserVoice fórumot](https://cognitive.uservoice.com/).
+Olyan régiót keresünk, amely még nem támogatott? Tudassa velünk, ha beküld egy szolgáltatási kérelmet a [UserVoice](https://cognitive.uservoice.com/)-fórumba.
 
-## <a name="supported-cultural-languages"></a>A támogatott kulturális nyelvek
+## <a name="supported-cultural-languages"></a>Támogatott kulturális nyelvek
 
- A cognitive Services szolgáltatási szintű kulturális nyelvek széles skáláját támogatja. Minden API-hoz, a rendelkezésre állási nyelv is megtalálhatja a [támogatott nyelvek listája](language-support.md).
+ Cognitive Services számos kulturális nyelvet támogat a szolgáltatási szinten. Az egyes API-k nyelvi elérhetőségét a [támogatott nyelvek listájában](language-support.md)találja.
 
 ## <a name="container-support"></a>Tárolótámogatás
 
- A cognitive Services tárolók biztosít az Azure-felhőben vagy helyszíni üzemelő példány számára. Tudjon meg többet [Cognitive Services-tárolók](cognitive-services-container-support.md).
+ A Cognitive Services tárolókat biztosít az Azure-felhőben vagy a helyszínen történő üzembe helyezéshez. További információ a [Cognitive Services tárolóról](cognitive-services-container-support.md).
 
-## <a name="certifications-and-compliance"></a>Tanúsítványok és -megfelelőség
+## <a name="certifications-and-compliance"></a>Minősítések és megfelelőség
 
-A cognitive Services például a CSA STAR hitelesítő, a FedRAMP mérsékelt és a HIPAA BAA minősítések megkapta. 
+Cognitive Services olyan minősítéseket kapott, mint például a CSA STAR minősítés, a FedRAMP mérsékelt és a HIPAA BAA.
 
-Is [letöltése](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) tanúsítványaival kapcsolatban a saját eseményeket és a biztonsági értékelések. 
+A saját [](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) auditokra és biztonsági felülvizsgálatokra vonatkozó tanúsítványokat is letöltheti.
 
-Szeretné megtudni, adatvédelmi és adatkezelési, nyissa meg a [biztonsági és adatkezelési központ](https://servicetrust.microsoft.com/). 
+Az adatvédelem és az adatkezelés megismeréséhez nyissa [](https://servicetrust.microsoft.com/)meg a megbízhatósági központot.
 
 ## <a name="support"></a>Támogatás
 
-* A támogatást és technikai kérdésekkel kapcsolatos, tegye közzé a [Stack overflow-n](https://stackoverflow.com/questions/tagged/microsoft-cognitive)
-* A visszajelzések és a szolgáltatás kéréseket, nyissa meg [uservoice-on](https://cognitive.uservoice.com/)
+* Támogatási és technikai kérdésekben a post on [stack overflow](https://stackoverflow.com/questions/tagged/microsoft-cognitive)
+* A visszajelzések és a szolgáltatások iránti kérelmek esetében lépjen a következőre: [UserVoice](https://cognitive.uservoice.com/)
 
 ## <a name="next-steps"></a>További lépések
 
-* [Cognitive Services-fiók létrehozása](cognitive-services-apis-create-account.md)
+* [Cognitive Services fiók létrehozása](cognitive-services-apis-create-account.md)

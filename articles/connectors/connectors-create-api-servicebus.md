@@ -1,147 +1,165 @@
 ---
-title: Az Azure Service Bus – Azure Logic Apps üzenetek küldése és fogadása |} A Microsoft Docs
-description: Állítsa be a vállalati felhőalapú üzenetkezelés az Azure Service Bus, az Azure Logic Appsben
+title: Üzenetek küldése és fogadása Azure Service Bus-Azure Logic Apps
+description: Vállalati felhőalapú üzenetkezelés beállítása Azure Service Bus és Azure Logic Apps használatával
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
+ms.topic: conceptual
+ms.date: 09/19/2019
 ms.assetid: d6d14f5f-2126-4e33-808e-41de08e6721f
-ms.topic: article
 tags: connectors
-ms.date: 08/25/2018
-ms.openlocfilehash: 68378c87e18df874059579445352b8fd1b2b6c13
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: f2034686e4a8de5e1ccc246f49337a6600bf441f
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232715"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71120915"
 ---
-# <a name="exchange-messages-in-the-cloud-with-azure-service-bus-and-azure-logic-apps"></a>A felhőben az Azure Service Bus és az Azure Logic Apps, az Exchange-üzenetek
+# <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-with-azure-service-bus"></a>Exchange-üzenetek a felhőben a Azure Logic Apps és a Azure Service Bus használatával
 
-Az Azure Logic Apps és az Azure Service Bus-összekötő automatikus feladatokkal és munkafolyamatokkal, például a sales adatátvitelt, és rendeléseket, naplók és a készlet áthelyezések száma – megvásárlása a szervezet alkalmazások hozhat létre. Az összekötő nem csupán figyeli, küld, és kezeli az üzeneteket, de összehasonlítást is végez műveleteket a várólisták, munkamenetek, témakörök, előfizetések és így tovább, például:
+A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és az [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) -összekötővel automatizált feladatokat és munkafolyamatokat hozhat létre, amelyek adatátvitelt, például értékesítési és beszerzési rendeléseket, naplókat és leltározási mozgásokat végeznek a szervezete alkalmazásaiban. Az összekötő nem csak az üzenetek figyelését, küldését és kezelését végzi, hanem a várólistákkal, munkamenetekkel, témakörökkel, előfizetésekkel és egyéb műveletekkel is végrehajtja a műveleteket, például:
 
-* Figyelő, ha az üzenetek érkezésekor (automatikus lezárás), vagy fogadott (betekintési zárolás) az üzenetsorok, témakörök és előfizetések. 
+* A várólisták, témakörök és témakör-előfizetések fogadásának figyelése, amikor az üzenetek érkeznek (automatikusan befejeződik) vagy érkeznek (betekintési zárolás).
 * Üzenetek küldése.
-* Hozzon létre, és előfizetések törlése.
-* Üzenet-üzenetsorok és -előfizetések kezelése, például beolvasása, késleltetett beolvasása, végezze el, késleltetése, megszakítási vagy a kézbesítetlen levelek.
-* Újítsa meg az üzeneteket és az üzenetsorok és -előfizetések munkamenetek a zárolását.
-* Zárja be az üzenetsorok és témakörök-munkamenetekben.
+* Témakör-előfizetések létrehozása és törlése.
+* Kezelheti a várólisták és a témakör-előfizetések üzeneteit, például a Get, a késleltetett, a teljes, a késleltetés, a lemondás és a kézbesítetlen levelek.
+* Üzenetek és munkamenetek zárolásának megújítása a várólistákban és a témakör-előfizetésekben.
+* Munkamenetek lezárása a várólistákban és témakörökben.
 
-Eseményindítókat, amelyek választ kaphat a Service Bus, és elérhetővé a kimenetben egyéb műveleteket hajthat végre a logic Apps is használhatja. A Service Bus-műveletek kimenetét használják más műveletek is rendelkezhet. Ha most ismerkedik a Service Bus és a Logic Apps, tekintse át [Mi az Azure Service Bus?](../service-bus-messaging/service-bus-messaging-overview.md) és [Mi az Azure Logic Apps?](../logic-apps/logic-apps-overview.md).
+Olyan eseményindítókat is használhat, amelyek Service Bus válaszokat kapnak, és elérhetővé teszik a kimenetet a logikai alkalmazások más műveletei számára. Más műveletek is használhatók Service Bus műveletek kimenetének használatával. Ha most ismerkedik Service Bus és Logic Apps, tekintse át a [Mi az Azure Service Bus?](../service-bus-messaging/service-bus-messaging-overview.md) és [Mi az Azure Logic apps](../logic-apps/logic-apps-overview.md)?
+
+[!INCLUDE [Warning about creating infinite loops](../../includes/connectors-infinite-loops.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, <a href="https://azure.microsoft.com/free/" target="_blank">regisztráljon egy ingyenes Azure-fiókra</a>. 
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
 
-* A Service Bus-névtér és üzenetküldési entitás, például egy üzenetsorba. Ha ezek az elemek nincs, megtudhatja, hogyan [létrehozása a Service Bus-névtér és üzenetsor](../service-bus-messaging/service-bus-create-namespace-portal.md). 
+* Egy Service Bus névtér és üzenetküldési entitás, például egy üzenetsor. Ezeknek az elemeknek és a logikai alkalmazásnak ugyanazt az Azure-előfizetést kell használnia. Ha nem rendelkezik ezekkel az elemekkel, megtudhatja, hogyan [hozhatja létre a Service Bus névteret és a várólistát](../service-bus-messaging/service-bus-create-namespace-portal.md).
 
-  Ezek az elemek léteznie kell az Azure-előfizetéshez, a logic apps, amely ezekre az adatokra.
+* Alapvető ismeretek a [logikai alkalmazások létrehozásáról](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Alapvető ismeretek szerezhetők [logikai alkalmazások létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)
-
-* A logikai alkalmazás, ahol a Service Bus szeretné. A logikai alkalmazás az Azure-előfizetéshez, a service bus léteznie kell. Szeretne kezdeni egy Service Bus-trigger [hozzon létre egy üres logikai alkalmazás](../logic-apps/quickstart-create-first-logic-app-workflow.md). Egy Service Bus-műveletet használja, indítsa el a logikai alkalmazás egy másik eseményindítóval, például a **ismétlődési** eseményindító.
+* Az a logikai alkalmazás, amelyben a Service Bus névteret és az üzenetküldési entitást használja. A logikai alkalmazásnak és a Service Bus-nek ugyanazt az Azure-előfizetést kell használnia. Ha Service Bus triggerrel szeretné elindítani a munkafolyamatot, [hozzon létre egy üres logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md). Ha Service Bus műveletet szeretne használni a munkafolyamatban, indítsa el a logikai alkalmazást egy másik eseményindítóval, például az [ismétlődési eseményindítóval](../connectors/connectors-native-recurrence.md).
 
 <a name="permissions-connection-string"></a>
 
-## <a name="check-permissions"></a>Ellenőrizze az engedélyeket
+## <a name="check-permissions"></a>Engedélyek keresése
 
-Győződjön meg róla, hogy a logikai alkalmazás a Service Bus-névtér való hozzáférésre vonatkozó engedélyeket. 
+Győződjön meg arról, hogy a logikai alkalmazás rendelkezik a Service Bus névtér eléréséhez szükséges engedélyekkel.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. Nyissa meg a Service Bus *névtér*. A névtér lapon alatt **beállítások**válassza **megosztott elérési házirendek**. Alatt **jogcímek**, ellenőrizze, hogy rendelkezik **kezelés** engedélyeket a névtér számára
+1. Lépjen a Service Bus *névtérhez*. A névtér lap **Beállítások**területén válassza a **megosztott elérési házirendek**elemet. A **jogcímek**területen győződjön meg arról, hogy rendelkezik az adott névtérhez **tartozó jogosultságokkal** .
 
-   ![A Service Bus-névtér engedélyeinek kezelése](./media/connectors-create-api-azure-service-bus/azure-service-bus-namespace.png)
+   ![Service Bus névtér engedélyeinek kezelése](./media/connectors-create-api-azure-service-bus/azure-service-bus-namespace.png)
 
-3. A kapcsolati sztring lekérése a Service Bus-névtér. Ez a karakterlánc a logikai alkalmazás a kapcsolati adatok beírásakor kell.
+1. A Service Bus névtérhez tartozó kapcsolatok karakterláncának beolvasása. Erre a karakterláncra akkor van szükség, amikor megadja a kapcsolódási adatokat a logikai alkalmazásban.
 
-   1. Válassza ki **RootManageSharedAccessKey**. 
+   1. A **megosztott hozzáférési házirendek** panelen válassza a **RootManageSharedAccessKey**lehetőséget.
    
-   1. Az elsődleges kapcsolati karakterlánc mellett válassza a Másolás gombra. A kapcsolati karakterlánc későbbi használatra mentse.
+   1. Az elsődleges kapcsolódási karakterlánc mellett kattintson a Másolás gombra. Mentse a kapcsolatok karakterláncát későbbi használatra.
 
-      ![A Service Bus-névtér kapcsolati karakterlánc másolása](./media/connectors-create-api-azure-service-bus/find-service-bus-connection-string.png)
+      ![Service Bus névtérbeli kapcsolatok karakterláncának másolása](./media/connectors-create-api-azure-service-bus/find-service-bus-connection-string.png)
 
    > [!TIP]
-   > Győződjön meg arról, hogy a kapcsolati karakterlánc vagy társítva a Service Bus-névtér egy üzenetküldési entitásra, például egy üzenetsort, keresse meg a kapcsolati karakterláncát a `EntityPath`  paraméter. Ha ezt a paramétert, a kapcsolati karakterláncot egy adott entitás van, és nem a megfelelő karakterlánc, a logikai alkalmazás használata.
+   > Annak ellenőrzéséhez, hogy a kapcsolódási karakterlánc társítva van-e a Service Bus névteréhez vagy egy üzenetküldési entitáshoz, például egy várólistához, keresse meg a `EntityPath`  paraméterhez tartozó kapcsolódási karakterláncot. Ha megtalálta ezt a paramétert, a kapcsolódási karakterlánc egy adott entitásra vonatkozik, és nem a megfelelő karakterláncot használja a logikai alkalmazáshoz.
 
-## <a name="add-trigger-or-action"></a>Adja hozzá az eseményindítót vagy műveletet
+## <a name="add-service-bus-trigger"></a>Service Bus trigger hozzáadása
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com), és nyissa meg a logikai alkalmazás a Logikaialkalmazás-Tervező, ha nem, nyissa meg a már.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és nyissa meg az üres logikai alkalmazást a Logic app Designerben.
 
-1. Hozzáadása egy *eseményindító* üres logikai alkalmazás, a Keresés mezőbe írja be "Az Azure Service Bus" szűrőként. Eseményindítók listája alatt válassza ki a kívánt az eseményindító. 
+1. A keresőmezőbe írja be szűrőként az "Azure Service Bus" kifejezést. Az eseményindítók listából válassza ki a kívánt eseményindítót.
 
-   A logikai alkalmazás elindításához, ha új elem a Service Bus-üzenetsorba küldi, jelölje be például a trigger: **amikor üzenet érkezik egy üzenetsorban (automatikus lezárás)**
+   Például a logikai alkalmazás aktiválásához, amikor új elem érkezik egy Service Bus várólistára, jelölje be az **üzenet fogadása egy várólistában (automatikus Befejezés)** triggert.
 
-   ![A Service Bus-trigger kiválasztása](./media/connectors-create-api-azure-service-bus/select-service-bus-trigger.png)
+   ![Service Bus trigger kiválasztása](./media/connectors-create-api-azure-service-bus/select-service-bus-trigger.png)
 
-   > [!NOTE]
-   > Egyes eseményindítók egy visszaadó vagy üzenetek, például az eseményindító **egy vagy több üzenet érkezésekor (automatikus lezárás) üzenetsor**. Ezek az eseményindítók aktiválódik, amikor az eseményindító által megadott üzenetek száma és a egy között vissza **maximális üzenetszám** tulajdonság.
+   Az összes Service Bus eseményindító *hosszú lekérdezési* eseményindítók. Ez a Leírás azt jelenti, hogy az eseményindító indításakor az eseményindító feldolgozza az összes üzenetet, majd 30 másodpercet vár, hogy további üzenetek jelenjenek meg a várólista vagy a témakör előfizetésében. Ha 30 másodpercen belül nem jelenik meg üzenet, a rendszer kihagyja a trigger futtatását. Ellenkező esetben az trigger folytatja az üzenetek olvasását, amíg a várólista vagy a témakör-előfizetés üres. A következő eseményindító-lekérdezés az eseményindító tulajdonságaiban megadott ismétlődési intervallumon alapul.
 
-   *Az összes Service Bus-eseményindítók hosszú lekérdezéseket eseményindítók*, ami azt jelenti, ha akkor aktiválódik, a trigger az összes üzenetet feldolgozza, és megjelenik az üzenetsor vagy témakör-előfizetésben található további üzenetek 30 másodpercet vár, majd. 
-   Ha nem jelenik meg üzenet 30 másodperc, a rendszer kihagyta a trigger futtatása. 
-   Ellenkező esetben az eseményindító továbbra is fennáll, az üzenetek olvasásához, amíg az üzenetsor vagy témakör-előfizetés nem üres. A következő eseményindító-lekérdezésének az eseményindító tulajdonságaiban megadott ismétlődési időköze alapul.
+   Egyes eseményindítók, például **Ha egy vagy több üzenet érkezik egy várólistába (automatikusan befejeződött)** , egy vagy több üzenetet adhat vissza. Ha ezek az eseményindítók tüzet adnak vissza, a rendszer az eseményindítók **maximális** száma tulajdonsága által megadott számú üzenetet adja vissza.
 
-1. Hozzáadása egy *művelet* egy meglévő logikai alkalmazást, tegye a következőket: 
+1. Ha az trigger első alkalommal csatlakozik a Service Bus-névtérhez, kövesse az alábbi lépéseket, amikor a Logic app Designer kéri a kapcsolódási adatok megadását.
 
-   1. Válassza ki az utolsó lépésnél, ahová a művelet hozzáadása, **új lépés**. 
+   1. Adja meg a kapcsolatok nevét, és válassza ki a Service Bus névteret.
 
-      Lépések közötti művelet hozzáadása, helyezze az egérmutatót a nyíl lépések között. 
-      Válassza a plusz jelre (**+**), amely akkor jelenik meg, és válassza ki **művelet hozzáadása**.
+      ![Service Bus kapcsolat létrehozása, 1. rész](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-trigger-1.png)
 
-   1. A keresőmezőbe írja be szűrőként "Az Azure Service Bus". 
-   Műveletek listája alatt válassza ki a kívánt művelet. 
- 
-      Jelölje be például, hogy ez a művelet: **üzenet küldése**
+      Ha ehelyett manuálisan szeretné megadni a kapcsolódási karakterláncot, válassza a **kapcsolódási adatok manuális megadása**lehetőséget. Ha nem rendelkezik a kapcsolódási karakterlánccal, Ismerje meg, [hogyan keresheti meg a kapcsolódási karakterláncot](#permissions-connection-string).
 
-      ![Válassza ki a Service Bus-műveletet](./media/connectors-create-api-azure-service-bus/select-service-bus-send-message-action.png) 
+   1. Válassza ki a Service Bus szabályzatot, majd válassza a **Létrehozás**lehetőséget.
 
-1. Ha a logikai alkalmazás a Service Bus-névteret első alkalommal csatlakoztatja, a Logic App Designerben most kéri a kapcsolati adatokat. 
+      ![Service Bus kapcsolat létrehozása, 2. rész](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-trigger-2.png)
 
-   1. Adja meg a kapcsolat nevét, és válassza ki a Service Bus-névtér.
-
-      ![Hozzon létre a Service Bus-kapcsolat, 1. rész](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-1.png)
-
-      Inkább manuálisan adja meg a kapcsolati karakterláncot, válassza a **kapcsolatadatok manuális megadása**. 
-      Ha nem rendelkezik a kapcsolati karakterláncot, további [a kapcsolati karakterlánc megkeresése](#permissions-connection-string).
-
-   1. Most válassza ki a Service Bus-szabályzat, és válassza **létrehozás**.
-
-      ![Hozzon létre a Service Bus-kapcsolat, a 2. rész](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-2.png)
-
-1. Ebben a példában válassza ki az üzenetkezelési entitás azt szeretné, például egy üzenetsorba vagy témakörbe. Ebben a példában válassza ki a Service Bus-üzenetsorba. 
+   1. Válassza ki a kívánt üzenetküldési entitást, például egy várólistát vagy egy témakört. Ebben a példában válassza ki a Service Bus várólistát.
    
-   ![Válassza ki a Service Bus-üzenetsorba](./media/connectors-create-api-azure-service-bus/service-bus-select-queue.png)
+      ![Service Bus üzenetsor kiválasztása](./media/connectors-create-api-azure-service-bus/service-bus-select-queue-trigger.png)
 
-1. Adja meg a szükséges adatokat az eseményindítót vagy műveletet. Ebben a példában a trigger vagy művelet esetén a megfelelő lépéseket kövesse: 
+1. Adja meg a szükséges információkat a kiválasztott triggerhez. Ha más elérhető tulajdonságokat szeretne hozzáadni a művelethez, nyissa meg az **új paraméter hozzáadása** listát, és válassza ki a kívánt tulajdonságokat.
 
-   * **A minta eseményindító**: lekérdezési időköz és az üzenetsor-ellenőrzési gyakoriságának beállítása.
+   Ehhez a példához tartozó trigger esetében válassza ki a lekérdezési időközt és a várólista ellenőrzésének gyakoriságát.
 
-     ![Lekérdezési időköz beállítása](./media/connectors-create-api-azure-service-bus/service-bus-trigger-details.png)
+   ![Lekérdezési időköz beállítása](./media/connectors-create-api-azure-service-bus/service-bus-trigger-details.png)
 
-     Ha elkészült, folytassa a logikai alkalmazás munkafolyamat létrehozásához adja hozzá a kívánt műveleteket. Például hozzáadhat egy műveletet, amely e-mailt küld, ha új üzenet érkezik.
-     Ha a trigger ellenőrzi az üzenetsor, és egy új üzenetet talál, a logikai alkalmazás fut a kiválasztott műveletek az található üzenet.
+   Az elérhető eseményindítókkal és tulajdonságokkal kapcsolatos további információkért tekintse meg az összekötő [hivatkozási oldalát](/connectors/servicebus/).
 
-   * **A mintául szolgáló művelet**: Adja meg az üzenet tartalmának és összes többi részletet. 
+1. A kívánt műveletek hozzáadásával folytassa a logikai alkalmazás összeállítását.
 
-     ![Adja meg az üzenet tartalma és a részletek](./media/connectors-create-api-azure-service-bus/service-bus-send-message-details.png)
+   Hozzáadhat például egy olyan műveletet, amely e-mailt küld, amikor új üzenet érkezik. Amikor a trigger ellenőrzi a várólistát, és új üzenetet talál, a logikai alkalmazás futtatja az észlelt üzenethez kiválasztott műveleteket.
 
-     Ha elkészült, folytassa a hozzáadásával bármely más műveleteket, amelyeket a logikai alkalmazás munkafolyamat létrehozásához. Például hozzáadhat egy műveletet, amely megerősíti, hogy az üzenet el lett küldve e-mailt küld.
+## <a name="add-service-bus-action"></a>Service Bus művelet hozzáadása
 
-1. Mentse a logikai alkalmazást. A tervező eszköztárán válassza a **Mentés** parancsot.
+[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
+
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és nyissa meg a logikai alkalmazást a Logic app Designerben.
+
+1. Válassza ki azt a lépést, amelyben a műveletet hozzá szeretné adni, majd kattintson az **új lépés**gombra.
+
+   Vagy a lépések közötti művelet hozzáadásához vigye a mutatót a fenti lépések között látható nyíl fölé. Válassza ki a megjelenő pluszjelet ( **+** ), majd válassza a **művelet hozzáadása**lehetőséget.
+
+1. A **válasszon műveletet**területen a keresőmezőbe írja be szűrőként az "Azure Service Bus" kifejezést. A műveletek listából válassza ki a kívánt műveletet. 
+
+   Ebben a példában válassza az **üzenet küldése** műveletet.
+
+   ![Service Bus művelet kiválasztása](./media/connectors-create-api-azure-service-bus/select-service-bus-send-message-action.png) 
+
+1. Ha a művelet első alkalommal csatlakozik a Service Bus-névtérhez, kövesse az alábbi lépéseket, amikor a Logic app Designer kéri a kapcsolati információk megadását.
+
+   1. Adja meg a kapcsolatok nevét, és válassza ki a Service Bus névteret.
+
+      ![Service Bus kapcsolat létrehozása, 1. rész](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-action-1.png)
+
+      Ha ehelyett manuálisan szeretné megadni a kapcsolódási karakterláncot, válassza a **kapcsolódási adatok manuális megadása**lehetőséget. Ha nem rendelkezik a kapcsolódási karakterlánccal, Ismerje meg, [hogyan keresheti meg a kapcsolódási karakterláncot](#permissions-connection-string).
+
+   1. Válassza ki a Service Bus szabályzatot, majd válassza a **Létrehozás**lehetőséget.
+
+      ![Service Bus kapcsolat létrehozása, 2. rész](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-action-2.png)
+
+   1. Válassza ki a kívánt üzenetküldési entitást, például egy várólistát vagy egy témakört. Ebben a példában válassza ki a Service Bus várólistát.
+
+      ![Service Bus üzenetsor kiválasztása](./media/connectors-create-api-azure-service-bus/service-bus-select-queue-action.png)
+
+1. Adja meg a kiválasztott művelethez szükséges adatokat. Ha más elérhető tulajdonságokat szeretne hozzáadni a művelethez, nyissa meg az **új paraméter hozzáadása** listát, és válassza ki a kívánt tulajdonságokat.
+
+   Válassza ki például a **tartalom** és a **tartalomtípus** tulajdonságokat, hogy hozzáadja őket a művelethez. Ezután adja meg az elküldeni kívánt üzenet tartalmát.
+
+   ![Üzenet tartalmának és részleteinek megadása](./media/connectors-create-api-azure-service-bus/service-bus-send-message-details.png)
+
+   Az elérhető műveletekkel és azok tulajdonságaival kapcsolatos további információkért tekintse meg az összekötő [hivatkozási oldalát](/connectors/servicebus/).
+
+1. Folytassa a logikai alkalmazás kiépítése a kívánt egyéb műveletek hozzáadásával.
+
+   Hozzáadhat például egy olyan műveletet, amely e-mailt küld, hogy erősítse meg az üzenet elküldését.
+
+1. Mentse a logikai alkalmazást. A tervező eszköztárán válassza a **Mentés**lehetőséget.
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-További technikai részletek korlátok, eseményindítók és műveletek, amely ismerteti az összekötő OpenAPI által (korábbi nevén Swagger) leírását, tekintse át az összekötő [referencialapja](/connectors/servicebus/).
-
-## <a name="get-support"></a>Támogatás kérése
-
-* A kérdéseivel látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* A funkciókkal kapcsolatos ötletek elküldéséhez vagy megszavazásához látogasson el a [Logic Apps felhasználói visszajelzéseinek oldalára](https://aka.ms/logicapps-wish).
+A Service Bus-összekötő egyszerre akár 1 500 egyedi munkamenetet is megtakaríthat a Service Bus és az összekötő gyorsítótára között. Ha a munkamenetek száma meghaladja ezt a korlátot, a rendszer eltávolítja a régi munkameneteket a gyorsítótárból. Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos egyéb technikai részletekért lásd az összekötő OpenAPI (korábban: hencegés) leírását, tekintse át az összekötő [hivatkozási oldalát](/connectors/servicebus/).
 
 ## <a name="next-steps"></a>További lépések
 
-* További információk egyéb [Logic Apps-összekötők](../connectors/apis-list.md)
+* További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

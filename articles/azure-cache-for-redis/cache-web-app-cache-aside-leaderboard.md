@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
 ms.author: yegu
-ms.openlocfilehash: 9cfb320f0623f5a93527a4dc0e8d82096980cc2c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: bf4eb817bb1705c6af6d4e7e9e28e5789f49a906
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58893741"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65873030"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Oktatóanyag: Az ASP.NET egy gyorsítótár-feltöltési ranglista létrehozása
 
@@ -41,7 +41,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 Az oktatóanyag elvégzéséhez az alábbi előfeltételekkel kell rendelkeznie:
 
 * Ebben az oktatóanyagban továbbra is fennáll, ahol abbahagyta a [ASP.NET a rövid útmutató az Azure Cache redis](cache-web-app-howto.md). Ha még nem tette meg, kövesse a rövid útmutató utasításait.
-* Telepítse a [Visual Studio 2017](https://www.visualstudio.com/downloads/) szoftvert a következő számítási feladatokkal:
+* Telepítés [Visual Studio 2019](https://www.visualstudio.com/downloads/) a következő számítási feladatokkal:
     * ASP.NET és webfejlesztés
     * Azure-fejlesztés
     * .NET asztali fejlesztés az SQL Server Express LocalDB vagy az [SQL Server 2017 Express kiadásának](https://www.microsoft.com/sql-server/sql-server-editions-express) használatával.
@@ -154,9 +154,9 @@ A csomaggal kapcsolatos további információt az [EntityFramework](https://www.
 
     ![Web.config](./media/cache-web-app-cache-aside-leaderboard/cache-web-config.png)
 
-1. A `configuration` szakaszon belül adja hozzá a következő `connectionStrings` szakaszt. A kapcsolati karakterlánc nevének meg kell egyeznie az Entity Framework-adatbáziskörnyezet osztályának nevével, amely a következő: `TeamContext`.
+1. A `configuration` szakaszon belül adja hozzá a következő `connectionStrings` szakaszt. A kapcsolati sztring nevének meg kell egyeznie az Entity Framework-adatbáziskörnyezet osztályának nevével, amely a következő: `TeamContext`.
 
-    Ez a kapcsolati karakterlánc feltételezi, hogy teljesítette az [előfeltételeket](#prerequisites), és telepítette az SQL Server Express LocalDB-t, amely része a Visual Studio 2017-tel együtt telepített *.NET asztali fejlesztési* számítási feladatnak.
+    Ez a kapcsolati karakterlánc feltételezi, hogy teljesül-e a [Előfeltételek](#prerequisites) és a telepített SQL Server Express LocalDB, amely részét képezi, a *.NET asztali fejlesztés* számítási feladattal együtt a Visual Studio 2019.
 
     ```xml
     <connectionStrings>
@@ -678,13 +678,13 @@ Ebben a szakaszban egy új SQL Azure-adatbázist fog üzembe helyezni az Azure-b
 
 1. Kattintson a **Rögzítés az irányítópulton** elemre, majd a **Létrehozás** gombra az új adatbázis és kiszolgáló létrehozásához.
 
-1. Ha az új adatbázis létrejött, kattintson az **Adatbázis kapcsolati karakterláncainak megjelenítése** elemre, és másolja az **ADO.NET** kapcsolati karakterláncot.
+1. Ha az új adatbázis létrejött, kattintson az **Adatbázis kapcsolati sztringjeinek megjelenítése** elemre, és másolja az **ADO.NET** kapcsolati sztringet.
 
     ![Kapcsolati sztringek megjelenítése](./media/cache-web-app-cache-aside-leaderboard/cache-show-connection-strings.png)
 
-1. Az Azure Portalon navigáljon az App Service-hez, és kattintson az **Alkalmazásbeállítások**, majd az **Új kapcsolati karakterlánc hozzáadása** elemre a Kapcsolati karakterláncok szakaszban.
+1. Az Azure Portalon navigáljon az App Service-hez, és kattintson az **Alkalmazásbeállítások**, majd az **Új kapcsolati sztring hozzáadása** elemre a Kapcsolati sztringek szakaszban.
 
-1. Adjon hozzá egy *TeamContext* nevű kapcsolati karakterláncot, amely megegyezik az Entity Framework-adatbáziskörnyezet osztályának nevével. Illessze be az új adatbázis kapcsolati karakterláncát az értékként. Cserélje le az alábbi helyőrzőket a kapcsolati karakterláncban, majd kattintson a **Mentés** elemre:
+1. Adjon hozzá egy *TeamContext* nevű kapcsolati sztringet, amely megegyezik az Entity Framework-adatbáziskörnyezet osztályának nevével. Illessze be az új adatbázis kapcsolati sztringjét az értékként. Cserélje le az alábbi helyőrzőket a kapcsolati sztringben, majd kattintson a **Mentés** elemre:
 
     | Helyőrző | Ajánlott érték |
     | --- | --- |

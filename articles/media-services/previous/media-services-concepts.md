@@ -13,14 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 3b7b821227478d8c6b5859f24c50407f9eb213fe
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 2b28dde812dcce120c951730c27809f7f024e122
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58312342"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64681560"
 ---
 # <a name="azure-media-services-concepts"></a>Az Azure Media Services – alapelvek 
+
+> [!NOTE]
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még [v3 a v2 migrálási útmutató](../latest/migrate-from-v2-to-v3.md)
 
 Ez a témakör áttekintést nyújt a Media Services legfontosabb fogalmakat.
 
@@ -105,7 +108,7 @@ A Media Services ebben a cikkben a következő igény szerinti kódolók ismerte
 
 További információ a támogatott kódolók: [kódolók](media-services-encode-asset.md).
 
-## <a name="live-streaming"></a>Élő adások online közvetítése
+## <a name="live-streaming"></a>Élő streamelés
 Az Azure Media Services esetén a csatorna egy olyan folyamatot jelent élőben közvetített tartalmak feldolgozása. Egy csatorna bemeneti élő Streamek kap a két módszer egyikével:
 
 * A helyszíni élő kódoló és többféle sávszélességű RTMP vagy Smooth Streaming (töredékes MP4) küld a csatornát. Használhatja a következő élő kódolók, és többféle sávszélességű Smooth Streaming-kimenetre: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco és Elemental. A következő élő kódolók RTMP-kimenetre: Az Adobe Flash Live Encoder, Telestream Wirecast, Teradek, Haivision és Tricaster kódolókkal történő továbbítását. A feldolgozott adatfolyamok további átkódolása és kódolás nélkül csatornákon keresztül adja át. Kérés esetén a Media Services továbbítja az adatfolyamot az ügyfeleknek.
@@ -156,7 +159,7 @@ További információkért tekintse át a következő cikkeket:
 - [AES-128 védelme](media-services-protect-with-aes128.md)
 - [PlayReady/Widevine védelme](media-services-protect-with-playready-widevine.md)
 
-## <a name="delivering"></a>Kézbesítés
+## <a name="delivering"></a>Továbbítása
 ### <a name="a-iddynamicpackagingdynamic-packaging"></a><a id="dynamic_packaging"/>A dinamikus csomagolás
 Ha a Media Services dolgozik, javasoljuk, hogy a "mezzanine" formátumú fájlok kódolandó egy adaptív sávszélességű MP4-készletet, és alakítsa át a készlet a kívánt formátumban történő a [dinamikus csomagolási](media-services-dynamic-packaging-overview.md).
 
@@ -191,7 +194,7 @@ Biztosíthatja a felhasználók számára a progresszív letöltési URL-címeke
 
 http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
 
-### <a name="streaming-urls"></a>Streamelési URL-ek
+### <a name="streaming-urls"></a>Streamelési URL-címek
 Az ügyfeleknek a tartalom streamelésének. Streamelési URL-címek biztosíthatja a felhasználók számára, hogy először hozzon létre egy OnDemandOrigin lokátort. A lokátor létrehozása, biztosít az alapútvonal adatfolyam kívánt tartalmat tartalmazó objektumot. Azonban képesek lesznek streamelni az ehhez a tartalomhoz szüksége további az elérési út módosítása. A teljes URL-címe a streamelési jegyzékfájlt létrehozására, a lokátor elérési útjának értéke és a jegyzékfájlt (filename.ism) kell összefűzni fájl nevét. A lokátor elérési útja, majd hozzáfűzése /Manifest és a egy megfelelő formátumú (ha szükséges).
 
 SSL-kapcsolaton keresztül is streamelheti a tartalmat. Ehhez ellenőrizze, hogy a streamelési URL-címek indítsa el a HTTPS. Jelenleg az AMS nem támogatja az SSL egyéni tartománnyal rendelkező.  

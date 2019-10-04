@@ -5,18 +5,15 @@ services: azure-resource-manager
 documentationcenter: ''
 author: mumian
 ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 9245d4c01816d26e262b1c8bd35015e2a6a9558c
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: c50a96b2598b89d5072a9441162d198163156c8d
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650734"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296270"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-cli"></a>Azure Resource Manager-erőforráscsoportok kezelése az Azure CLI-vel
 
@@ -27,7 +24,7 @@ Más cikkek erőforráscsoportok kezeléséről:
 - [Az Azure-erőforráscsoportok kezelése az Azure portal használatával](./manage-resources-portal.md)
 - [Azure-erőforráscsoportok kezelése az Azure PowerShell használatával](./manage-resources-powershell.md)
 
-## <a name="what-is-a-resource-group"></a>Az erőforráscsoportok ismertetése
+## <a name="what-is-a-resource-group"></a>Mi az erőforráscsoport
 
 Az erőforráscsoport egy tároló, amely Azure-megoldásokhoz kapcsolódó erőforrásokat tárol. Az erőforráscsoport tartalmazhatja a megoldás összes erőforrását, vagy csak azokat az erőforrásokat, amelyeket Ön egy csoportként szeretne kezelni. A szervezet számára legideálisabb elosztás alapján eldöntheti, hogyan szeretné elosztani az erőforrásokat az erőforráscsoportok között. Általánosságban elmondható adjon hozzá erőforrásokat, azonos életciklussal ugyanabban az erőforráscsoportban, így könnyen telepítése, frissítése és csoportként törölheti őket.
 
@@ -47,7 +44,7 @@ read location &&
 az group create --name $resourceGroupName --location $location
 ```
 
-## <a name="list-resource-groups"></a>Erőforráscsoportok listázása
+## <a name="list-resource-groups"></a>Erőforráscsoportok listázásához
 
 A következő CLI-példaszkript az előfizetéshez tartozó erőforráscsoportok listája.
 
@@ -142,7 +139,7 @@ az group export --name $resourceGroupName
 
 A parancsfájl a sablon a konzolon jeleníti meg.  Másolja a JSON-, és mentse a fájlt.
 
-További információkért lásd: [exportálási erőforráscsoport](./manage-resource-groups-portal.md#export-resource-groups-to-templates).
+További információkért lásd: [sablont az Azure Portalon egyetlen vagy több erőforrás exportálási](./export-template-portal.md).
 
 ## <a name="manage-access-to-resource-groups"></a>Erőforráscsoportok való hozzáférés kezelése
 

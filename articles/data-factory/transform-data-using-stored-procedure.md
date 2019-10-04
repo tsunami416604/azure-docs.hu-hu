@@ -1,6 +1,6 @@
 ---
-title: Adatok átalakítása a tárolt eljárási tevékenység használatával az Azure Data Factoryban |} A Microsoft Docs
-description: Azt ismerteti, hogyan használhatja az SQL Server tárolt eljárási tevékenység egy tárolt eljárást az Azure SQL Database/Data Warehouse a Data Factory-folyamatok meghívásához.
+title: Adatátalakítás a tárolt eljárási tevékenységgel Azure Data Factoryban | Microsoft Docs
+description: A cikk azt ismerteti, hogyan használható SQL Server tárolt eljárás tevékenység egy Data Factory folyamat Azure SQL Database/adattárházában tárolt eljárás meghívásához.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -10,38 +10,38 @@ ms.date: 11/27/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 806654b7586895b62b014a49b8b3a00fb18f008f
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: e063875e4c619b65290511d61923fd7c715aba49
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57575891"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742179"
 ---
-# <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>Adatok átalakítása az Azure Data Factoryban az SQL Server tárolt eljárási tevékenység használatával
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+# <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>Az adatátalakítást az SQL Server tárolt eljárási tevékenység használatával Azure Data Factory
+> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-stored-proc-activity.md)
 > * [Aktuális verzió](transform-data-using-stored-procedure.md)
 
-Adat-átalakítási tevékenységeket használ egy Data factoryben [folyamat](concepts-pipelines-activities.md) átalakításához, és a nyers adatok feldolgozása az előrejelzési díjat és az elemzések. A tárolt eljárási tevékenység, amely támogatja a Data Factory az Adatátalakítási tevékenységek egyike. Ez a cikk épül, amely a [adatátalakítás](transform-data.md) című cikket, amely megadja az adatok átalakítását és a támogatott Adatátalakítási tevékenységek a Data Factory általános áttekintése.
+Az Adatátalakítási tevékenységek egy Data Factory folyamaton keresztül alakíthatók át és feldolgozhatók az előrejelzések és az elemzések során. [](concepts-pipelines-activities.md) A tárolt eljárási tevékenység az Data Factory által támogatott átalakítási tevékenységek egyike. Ez a cikk az Adatátalakítási cikkre épül, amely általános áttekintést nyújt az adattranszformációról és a Data Factory támogatott átalakítási tevékenységeiről. [](transform-data.md)
 
 > [!NOTE]
-> Ha most ismerkedik az Azure Data Factory, olvassa el az [az Azure Data Factory bemutatását](introduction.md) és végezze el az oktatóanyag: [Oktatóanyag: adatok átalakítása](tutorial-transform-data-spark-powershell.md) Ez a cikk elolvasása előtt. 
+> Ha még nem Azure Data Factory, olvassa el a [Azure Data Factory](introduction.md) bevezetését, és végezze el az oktatóanyagot: [Oktatóanyag:](tutorial-transform-data-spark-powershell.md) az adatátalakítás a cikk elolvasása előtt. 
 
-A tárolt eljárási tevékenység használatával a következő adattárakat egyikét a tárolt eljárás meghívása a vállalati vagy egy Azure virtuális gépen (VM): 
+A tárolt eljárási tevékenységgel egy tárolt eljárást hívhat meg a vállalat vagy egy Azure-beli virtuális gép (VM) alábbi adattárainak egyikében: 
 
 - Azure SQL Database
 - Azure SQL Data Warehouse
-- Az SQL Server-adatbázis.  Ha SQL Servert használ, telepítse a saját üzemeltetésű integrációs modul ugyanarra a gépre, amelyen az adatbázis vagy egy külön számítógépen, amely hozzáféréssel rendelkezik az adatbázishoz. Saját üzemeltetésű integrációs modul, egy összetevő, amely kapcsolódik az adatokat a helyszíni és az Azure VM cloud services használatával adatforrások egy biztonságos és felügyelt módon. Lásd: [saját üzemeltetésű integrációs modul](create-self-hosted-integration-runtime.md) részleteivel.
+- SQL Server adatbázis.  Ha SQL Server használ, telepítse a saját üzemeltetésű integrációs modult ugyanarra a gépre, amely az adatbázist üzemelteti, vagy egy különálló gépen, amely hozzáfér az adatbázishoz. A saját üzemeltetésű integrációs modul egy olyan összetevő, amely biztonságos és felügyelt módon csatlakoztatja a helyszíni/Azure-beli virtuális gépen lévő adatforrásokat a Cloud Services szolgáltatással. További részleteket a [saját](create-self-hosted-integration-runtime.md) üzemeltetésű integrációs modulról szóló cikkben talál.
 
 > [!IMPORTANT]
-> Ha az adatok másolása az Azure SQL Database vagy SQL Server, konfigurálhatja úgy a **SqlSink** a másolási tevékenység meghívni egy tárolt eljárás használatával a **sqlWriterStoredProcedureName** tulajdonság. A tulajdonság kapcsolatos információkért lásd az alábbi összekötő cikkek: [Az Azure SQL Database](connector-azure-sql-database.md), [az SQL Server](connector-sql-server.md). Tárolt eljárás meghívása közben az adatok másolása az Azure SQL Data Warehouse-bA a másolási tevékenység használatával nem támogatott. De a tárolt eljárási tevékenység használatával egy SQL Data Warehouse a tárolt eljárás meghívása. 
+> Az adatok Azure SQL Database vagy SQL Serverba való másolása során beállíthatja, hogy a **SqlSink** a másolási tevékenységben egy tárolt eljárást hívjanak a **sqlWriterStoredProcedureName** tulajdonság használatával. A tulajdonsággal kapcsolatos részletekért tekintse meg a következő összekötő-cikkeket: [Azure SQL Database](connector-azure-sql-database.md), [SQL Server](connector-sql-server.md). Tárolt eljárás meghívása az adatok egy Azure SQL Data Warehouseba másolási tevékenységgel történő másolása során nem támogatott. Azonban a tárolt eljárási tevékenység használatával meghívhat egy tárolt eljárást egy SQL Data Warehouseban. 
 >
-> Ha az adatok másolása az Azure SQL Database vagy SQL Server vagy az Azure SQL Data Warehouse, konfigurálhatja a **SqlSource** a másolási tevékenység használatával adatokat olvasni a forrásadatbázis tárolt eljárás meghívása a  **sqlReaderStoredProcedureName** tulajdonság. További információkért tekintse meg a következő összekötő cikkeket: [Az Azure SQL Database](connector-azure-sql-database.md), [az SQL Server](connector-sql-server.md), [az Azure SQL Data warehouse-bA](connector-azure-sql-data-warehouse.md)          
+> Az adatok Azure SQL Database vagy SQL Server vagy Azure SQL Data Warehouseból való másolása esetén a másolási tevékenységben **SqlSource** konfigurálhatja a tárolt eljárás meghívásához, hogy a **sqlReaderStoredProcedureName** használatával beolvassa a forrásadatbázis adatait. tulajdonság. További információt a következő összekötő cikkeiben talál: [Azure SQL Database](connector-azure-sql-database.md), [SQL Server](connector-sql-server.md), [Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md)          
 
  
 
 ## <a name="syntax-details"></a>Szintaxis részletei
-Itt látható a JSON-formátumban, egy tárolt eljárási tevékenység definiálása:
+Itt látható a tárolt eljárási tevékenység definiálásának JSON-formátuma:
 
 ```json
 {
@@ -63,30 +63,41 @@ Itt látható a JSON-formátumban, egy tárolt eljárási tevékenység definiá
 }
 ```
 
-A következő táblázat ismerteti a JSON-tulajdonságokról:
+A következő táblázat ismerteti ezeket a JSON-tulajdonságokat:
 
-| Tulajdonság                  | Leírás                              | Szükséges |
+| Tulajdonság                  | Leírás                              | Kötelező |
 | ------------------------- | ---------------------------------------- | -------- |
-| név                      | A tevékenység neve                     | Igen      |
-| leírás               | Mire használható a tevékenységet leíró szöveg | Nem       |
-| type                      | A tárolt eljárási tevékenység, a tevékenység típusa van **SqlServerStoredProcedure** | Igen      |
-| linkedServiceName         | Hivatkozás a **Azure SQL Database** vagy **Azure SQL Data Warehouse** vagy **SQL Server** regisztrálva a Data Factory társított szolgáltatásként. Ezt a társított szolgáltatást kapcsolatos további információkért lásd: [társított szolgáltatások számítása](compute-linked-services.md) cikk. | Igen      |
-| storedProcedureName       | Adja meg a tárolt eljárás meghívása nevét. | Igen      |
-| storedProcedureParameters | Adja meg a tárolt eljárás paraméterértékeinek értékeit. Használat `"param1": { "value": "param1Value","type":"param1Type" }` átadni a paraméterértékeket, és a a típusuk, az adatforrás által támogatott. Ha át az egyik paraméter null értékű van szüksége, használja a `"param1": { "value": null }` (csupa kisbetű). | Nem       |
+| name                      | A tevékenység neve                     | Igen      |
+| description               | A tevékenység által használt szöveg leírása | Nem       |
+| type                      | A tárolt eljárási tevékenységnél a tevékenység típusa **SqlServerStoredProcedure** . | Igen      |
+| linkedServiceName         | Hivatkozás Azure SQL Databasera , vagy **SQL Server** **Azure SQL Data Warehouse** társított szolgáltatásként regisztrálva van Data Factoryban. A társított szolgáltatással kapcsolatos további információkért lásd: [számítási társított szolgáltatások](compute-linked-services.md) cikk. | Igen      |
+| storedProcedureName       | Adja meg a meghívott tárolt eljárás nevét. | Igen      |
+| storedProcedureParameters | A tárolt eljárás paramétereinek értékeinek megadása. A `"param1": { "value": "param1Value","type":"param1Type" }` paraméter értékének és az adatforrás által támogatott típusnak a továbbítására használható. Ha egy paraméternél null értéket kell átadnia, `"param1": { "value": null }` használja a (minden kisbetű) lehetőséget. | Nem       |
 
-## <a name="error-info"></a>Hibainformáció
+## <a name="parameter-data-type-mapping"></a>Paraméter adattípusának leképezése
+A paraméterhez megadott adattípus a Azure Data Factory típus, amely a használt adatforrásban lévő adattípushoz van leképezve. Az adattípushoz tartozó leképezések az adatforráshoz az összekötők területen találhatók. Néhány példa
 
-Tárolt eljárás sikertelen lesz, és hiba adatait adja vissza, ha a hiba adatait közvetlenül a tevékenység kimenete nem rögzíti. Azonban a Data Factory szivattyúk az összes hozzá tartozó tevékenységet a Azure Monitor események. Többek között az eseményeket, hogy a Data Factory az Azure monitornak szivattyúk leküldi a hiba részletei van. Például beállíthat is e-mailes riasztásokhoz származó események. További információ: [riasztás megjelenítése és figyelése az Azure Monitor használatával adat-előállítók](monitor-using-azure-monitor.md).
+| Adatforrás          | Adattípus-leképezés |
+| ---------------------|-------------------|
+| Azure SQL Data Warehouse | https://docs.microsoft.com/en-us/azure/data-factory/connector-azure-sql-data-warehouse#data-type-mapping-for-azure-sql-data-warehouse |
+| Azure SQL Database   | https://docs.microsoft.com/en-us/azure/data-factory/connector-azure-sql-database#data-type-mapping-for-azure-sql-database | 
+| Oracle               | https://docs.microsoft.com/en-us/azure/data-factory/connector-oracle#data-type-mapping-for-oracle |
+| SQL Server           | https://docs.microsoft.com/en-us/azure/data-factory/connector-sql-server#data-type-mapping-for-sql-server |
+
+
+## <a name="error-info"></a>Hiba adatai
+
+Ha egy tárolt eljárás meghiúsul, és a hiba részleteit adja vissza, nem tudja közvetlenül rögzíteni a hibaüzenetet a tevékenység kimenetében. Data Factory pumpálja azonban az összes tevékenységét, hogy Azure Monitor. A szivattyúk Azure Monitor Data Factorya között a hibák részleteit küldi el a rendszer. Beállíthat például e-mailes riasztásokat ezekből az eseményekről. További információ: a riasztás és az adat-előállítók [figyelése Azure monitor használatával](monitor-using-azure-monitor.md).
 
 ## <a name="next-steps"></a>További lépések
-Tekintse meg a következő cikkek, amelyek bemutatják, hogyan alakíthat át adatokat, egyéb módon: 
+A következő cikkekből megtudhatja, hogyan alakíthat át más módon az adatátalakítást: 
 
 * [U-SQL Activity](transform-data-using-data-lake-analytics.md)
-* [Hive-tevékenység](transform-data-using-hadoop-hive.md)
+* [Struktúra tevékenysége](transform-data-using-hadoop-hive.md)
 * [Pig-tevékenység](transform-data-using-hadoop-pig.md)
-* [MapReduce-tevékenység](transform-data-using-hadoop-map-reduce.md)
-* [Hadoop Streamelési tevékenységben](transform-data-using-hadoop-streaming.md)
+* [MapReduce tevékenység](transform-data-using-hadoop-map-reduce.md)
+* [Hadoop streaming-tevékenység](transform-data-using-hadoop-streaming.md)
 * [Spark-tevékenység](transform-data-using-spark.md)
 * [.NET egyéni tevékenység](transform-data-using-dotnet-custom-activity.md)
-* [Machine Learning Bach végrehajtási tevékenység](transform-data-using-machine-learning.md)
+* [Machine Learning Bach-végrehajtási tevékenység](transform-data-using-machine-learning.md)
 * [Tárolt eljárási tevékenység](transform-data-using-stored-procedure.md)

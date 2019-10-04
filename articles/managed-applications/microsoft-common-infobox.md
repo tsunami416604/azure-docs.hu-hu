@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2018
 ms.author: tomfitz
-ms.openlocfilehash: abd1329f2ebac90bf846dfd5fc5b307ddb5e52bd
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 2330197b4512dfdd72de3529145103b644594e25
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47095480"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64711216"
 ---
-# <a name="microsoftcommoninfobox-ui-element"></a>Microsoft.Common.InfoBox felhasználói felületi elemben
+# <a name="microsoftcommoninfobox-ui-element"></a>Microsoft.Common.InfoBox UI element
 Egy olyan vezérlőelem, amely hozzáad egy információs mező. A box fontos szöveget tartalmaz, vagy figyelmeztetések, amelyek segítségével a felhasználók a tartalmat értékek ismertetése. Azt is kapcsolat egy URI-t további információt.
 
 ## <a name="ui-sample"></a>Felhasználói felület minta

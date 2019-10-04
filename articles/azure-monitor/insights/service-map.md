@@ -1,5 +1,5 @@
 ---
-title: A Service Map megoldást használ az Azure-ban |} A Microsoft Docs
+title: Service Map megoldás használata az Azure-ban | Microsoft Docs
 description: A Service Map az Azure egyik megoldása, amely automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. Ez a cikk részletesen központi telepítése a Service Map a környezetben, és a számos célra használja.
 services: azure-monitor
 documentationcenter: ''
@@ -11,447 +11,499 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/28/2018
+ms.date: 07/24/2019
 ms.author: magoedte
-ms.openlocfilehash: 0c654070e2bbeb8ee5dbc64fe9b4f58ee97f2e47
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 98bf38a6c293f6d339413b5395bb32d74bcb30c0
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60000725"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905721"
 ---
-# <a name="using-service-map-solution-in-azure"></a>A Service Map megoldást használ az Azure-ban
+# <a name="using-service-map-solution-in-azure"></a>Service Map megoldás használata az Azure-ban
+
 A Szolgáltatástérkép automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. A Service Map használatával a kiszolgálókat úgy tekintheti meg, ahogyan azt el szoktuk képzelni: egymással összekapcsolt rendszereket, amelyek kritikus fontosságú szolgáltatásokat tesznek elérhetővé. A Service Map megmutatja a kiszolgálók közötti kapcsolatokat, a folyamatokat, a bejövő és a kimenő kapcsolatok késéseit, valamint minden TCP-vel csatlakoztatott architektúra portjait, és ehhez konfigurációra sincs szükség, csupán telepíteni kell az ügynököt.
 
-Ez a cikk bevezetése és használata a Service Map részleteit ismerteti. A Service Map és bevezetési ügynökök konfigurálásával kapcsolatos további információkért lásd: [konfigurálása a Service Map megoldás az Azure-ban]( service-map-configure.md).
+Ez a cikk a Service Map bevezetésének és használatának részleteit ismerteti. További információ a megoldás előfeltételeinek konfigurálásáról: [a Azure monitor for VMS áttekintésének engedélyezése](vminsights-enable-overview.md#prerequisites). Az összegzéshez a következőkre lesz szüksége:
+
+* Log Analytics munkaterület a megoldás engedélyezéséhez.
+
+* A Windows rendszerű számítógépre vagy Linux-kiszolgálóra telepített Log Analytics ügynök, amely ugyanazt a munkaterületet jelenti, amelyhez a megoldást engedélyezte.
+
+* A Windows rendszerű számítógépre vagy Linux-kiszolgálóra telepített függőségi ügynök.
 
 >[!NOTE]
->Ha már telepítette a Service Map, most is megtekintheti a maps az Azure monitorban a virtuális gépek esetében kiegészítő szolgáltatást a virtuális gép állapotának és teljesítményének figyeléséhez tartalmaz. További tudnivalókért lásd: [virtuális gépek – áttekintés az Azure Monitor](../../azure-monitor/insights/vminsights-overview.md).
-
+>Ha már telepítette Service Map, mostantól megtekintheti a térképeit Azure Monitor for VMsban is, amely a virtuális gépek állapotának és teljesítményének figyelésére szolgáló további funkciókat is tartalmaz. További információ: [Azure monitor for VMS Overview (áttekintés](../../azure-monitor/insights/vminsights-overview.md)). Ha többet szeretne megtudni a Service Map megoldás és a Azure Monitor for VMs Térkép funkció közötti különbségekről, tekintse meg az alábbi [gyakori kérdéseket](vminsights-faq.md#how-is-azure-monitor-for-vms-map-feature-different-from-service-map).
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
+
 Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 
-## <a name="enable-service-map"></a>A Service Map engedélyezése
-1. Az Azure Portalon kattintson a **+ erőforrás létrehozása**.
-2. A keresősávba írja be a **Service Map** nyomja le az ENTER **Enter**.
-3. A piactér keresési eredmények oldalon válassza ki a **Service Map** a listából.<br><br> ![Azure Marketplace-en keresési eredmények közül válassza ki a Service Map megoldás](./media/service-map/marketplace-search-results.png)<br>
-4. Az a **Service Map** áttekintés ablaktábláján, tekintse meg a megoldás részleteit, és kattintson a **létrehozás** a Log Analytics-munkaterülethez a bevezetési folyamat megkezdéséhez.<br><br> ![Előkészítése a Service Map megoldás](./media/service-map/service-map-onboard.png).
-5. Az a **megoldás konfigurálása** panelen válasszon egy meglévő, vagy hozzon létre egy új Log Analytics-munkaterületet.  Hogyan hozhat létre egy új munkaterületet kapcsolatban további információért lásd: [Log Analytics-munkaterület létrehozása az Azure Portalon](../../azure-monitor/learn/quick-create-workspace.md). Miután megadta a szükséges adatokat, kattintson a **létrehozás**.  
+## <a name="enable-service-map"></a>Service Map engedélyezése
 
-Bár az adatokat a rendszer ellenőrzi, és a megoldást már telepítették, nyomon követheti a folyamat állapotát **értesítések** a menüből. 
+1. Engedélyezze a Service Map megoldást az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ServiceMapOMS?tab=Overview) -en, vagy használja a figyelési [megoldások hozzáadása a Solutions Galleryból](solutions.md)című témakörben ismertetett eljárást.
+1. [Telepítse a függőségi ügynököt a Windows rendszerre](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-windows) , vagy [telepítse a függőségi ügynököt Linux](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-linux) rendszeren minden olyan számítógépen, amelyen le szeretné kérni az adatgyűjtést. A függőségi ügynök képesek a közvetlen szomszédaikkal való kapcsolatok monitorozására, így lehetséges, hogy nem kell minden egyes számítógépre ügynököt telepíteni.
 
-A Service Map elérése a Log Analytics-munkaterület az Azure Portalon, és válassza a **megoldások** a bal oldali ablaktáblán.<br><br> ![Válassza ki a munkaterület megoldások beállítást](./media/service-map/select-solution-from-workspace.png).<br> Megoldások listájából válassza ki a **ServiceMap(workspaceName)** és a Service Map megoldás áttekintése lapon kattintson az összefoglalás csempére a Service Map.<br><br> ![A Service Map-összefoglaló csempe](./media/service-map/service-map-summary-tile.png).
+Service Map a Log Analytics munkaterületen található Azure Portal, és a bal oldali panelen válassza a **megoldások** lehetőséget.<br><br> ![Válassza a megoldások lehetőséget a](./media/service-map/select-solution-from-workspace.png)munkaterületen.<br> A megoldások listájában válassza a **ServiceMap (workspaceName)** lehetőséget, majd a Service Map megoldás áttekintése lapon kattintson a Service Map összefoglaló csempére.<br><br> ![Service Map összefoglaló csempe](./media/service-map/service-map-summary-tile.png)
 
-## <a name="use-cases-make-your-it-processes-dependency-aware"></a>Használati esetek: Győződjön meg arról, az informatikai folyamatok függőségi figyelembe
+## <a name="use-cases-make-your-it-processes-dependency-aware"></a>Használati esetek: Az informatikai folyamatok függőségének elkészítése
 
-### <a name="discovery"></a>Detektálás
-A Service Map automatikusan felépít egy közös függőségek térképe referencia a kiszolgálók, folyamatok és a külső szolgáltatások. Felderíti és a térképek összes TCP függőséget, meglepő kapcsolatok, a távoli külső rendszerek függenek, és a hagyományos sötét területeihez, a hálózaton, például az Active Directory függőségek azonosításához. A Service Map felderíti a sikertelen hálózati kapcsolatokat, a felügyelt rendszerekről létesíteni, segítve a potenciális server Virtual Network szolgáltatás hibás, a szolgáltatás-kimaradás és a hálózati problémák azonosítását.
+### <a name="discovery"></a>Felderítés
+
+A Service Map a kiszolgálókon, folyamatokon és harmadik féltől származó szolgáltatások függőségeinek általános hivatkozási térképét hozza létre. Feltérképezi és leképezi az összes TCP-függőséget, azonosíthatja a meglepetésekkel létesített kapcsolatokat, a külső gyártótól származó rendszereket, és a hálózat hagyományos sötét területeire (például Active Directory) való függőségeket. Service Map felderíti a felügyelt rendszerek által megkísérelt hálózati kapcsolatokat, így azonosíthatja a lehetséges kiszolgálók helytelen konfigurálását, a szolgáltatás leállását és a hálózati problémákat.
 
 ### <a name="incident-management"></a>incidenskezelés
-A Service Map segítségével bemutatja, hogyan rendszerekhez kapcsolódó és egymással érintő esetlegességét a probléma kiküszöbölése. Mellett azonosítása sikertelen kapcsolatok, és biztonságosabbá teszi a helytelenül konfigurált terheléselosztók, kritikus szolgáltatások knál vagy túlzott terhelés azonosítása és a támadó ügyfelek, például a fejlesztői gépek legtöbbet beszélgető éles rendszereket. Integrált munkafolyamatok a Change Tracking segítségével is megjelenik-e egy esemény egy háttér-gépen, vagy szolgáltatás egy incidens gyökérokának ismerteti.
+
+Service Map segít megelőzni a probléma elkülönítésének találgatását azáltal, hogy megmutatja, hogy a rendszerek hogyan kapcsolódnak egymáshoz, és hogyan hatnak egymásra. A sikertelen kapcsolatok azonosításán kívül segít azonosítani a helytelenül konfigurált terheléselosztó, a meglepő vagy túlzott terhelést a kritikus fontosságú szolgáltatásokban, valamint a rosszindulatú ügyfeleket, például a fejlesztői gépeket, amelyeken az éles rendszerek is beszélnek. Change Tracking használatával integrált munkafolyamatok segítségével azt is megtudhatja, hogy egy háttérrendszer vagy szolgáltatás változási eseménye az incidens kiváltó okát magyarázza-e.
 
 ### <a name="migration-assurance"></a>Áttelepítési garancia
-A Service Map használatával hatékony tervezéséhez programot, gyorsabban, és a ellenőrzése Azure áttelepítések, ami segít, győződjön meg arról, hogy semmi sem marad, és nem fordulhat elő, meglepő valamilyen okból kimaradás lép. Felfedezheti, hogy az összes saját rendszerek esetében, amelyek együtt áttelepítése, felmérheti a Rendszerkonfiguráció és a kapacitás és adja meg, hogy a futó rendszerek továbbra is szolgálja ki felhasználók, illetve egy jelölt helyett áttelepítési leszerelése. Az Áthelyezés befejezése után ellenőrizheti az ügyfél által generált terhelést, és az identitás ellenőrzése, hogy tesztelési rendszerek és az ügyfelek csatlakoznak. Ha az alhálózat tervezési és a tűzfal-meghatározások problémákba ütközik, a Service Map maps sikertelen kapcsolatok mutat, a rendszerek esetében, amelyek kapcsolat.
+
+A Service Map használatával hatékonyan megtervezheti, felgyorsíthatja és érvényesítheti az Azure-áttelepítéseket, így biztosítva, hogy semmi ne maradjon le, és ne legyen meglepő kimaradás. Felderítheti az összes olyan egymástól függő rendszert, amelyeknek együtt kell lenniük, értékelniük kell a rendszerkonfigurációt és a kapacitást, és meg kell határozniuk, hogy egy futó rendszer továbbra is a felhasználókat szolgálja-e, vagy az áttelepítés helyett a leszerelésre jelölt Az áthelyezés befejezése után ellenőrizheti az ügyfelek terhelését és identitását, és ellenőrizheti, hogy a tesztelési rendszerek és az ügyfelek csatlakoznak-e. Ha az alhálózat megtervezése és a tűzfal definíciója problémákba ütközik, a Service Map Maps-ben lévő kapcsolatok sikertelenek arra a rendszerre, amelyhez kapcsolat szükséges.
 
 ### <a name="business-continuity"></a>Az üzletmenet folytonossága
-Ha használja az Azure Site Recovery és kell a helyreállítás során alkalmazás környezetében, a Service Map meghatározása segítséget automatikusan jeleníti meg, hogyan használja a rendszerek egymástól annak érdekében, hogy a helyreállítási terv megbízható. Egy kritikus fontosságú kiszolgáló vagy csoport kiválasztása, és az ügyfelek megtekintése, mely előtér-rendszerek helyreállítása után a kiszolgáló visszaállítása, és elérhető azonosíthatja. Ezzel szemben kritikus fontosságú kiszolgálók háttér-függőségek megnézzük, azonosíthatja mely rendszerek, hogy helyreálljon, mielőtt a rendszer visszaállítja a fókusz rendszerek.
 
-### <a name="patch-management"></a>Javítások kezelése
-A Service Map fokozza a rendszerfrissítési felmérés használatát megjelenítésével, attól függően más csapatok és a kiszolgálók a szolgáltatáshoz, így képes értesíteni őket előre Pro opravy rendszereit lenyomva végrehajtása előtt. A Service Map is fokozza a javítások kezelését ismerheti meg, hogy a szolgáltatás elérhető, és megfelelően csatlakoztatott után legyenek-e javítani, és újraindul.
+Ha Azure Site Recovery használ, és segítségre van szüksége az alkalmazási környezet helyreállítási sorrendjének meghatározásához, Service Map automatikusan megmutathatja, hogy a rendszerek hogyan támaszkodnak egymásra a helyreállítási terv megbízhatóságának biztosítása érdekében. Kritikus kiszolgáló vagy csoport kiválasztásával és az ügyfelek megtekintésével azonosíthatja, hogy mely előtér-rendszerek legyenek helyreállítva a kiszolgáló visszaállítása és rendelkezésre állása után. Ezzel szemben a kritikus fontosságú kiszolgálók háttérbeli függőségeinek megtekintésével meghatározhatja, hogy mely rendszerek legyenek helyreállítva a fókuszrendszer visszaállítása előtt.
 
-## <a name="mapping-overview"></a>Leképezés – áttekintés
-A Service Map ügynökök gyűjtse össze a kiszolgálón, amelyen telepítve van az összes TCP-kapcsolattal rendelkező-folyamatokkal kapcsolatos információkat és a bejövő és kimenő kapcsolatok számára az egyes folyamatok részleteit.
+### <a name="patch-management"></a>Javítási felügyelet
 
-A bal oldali ablaktáblán a listából kiválaszthatja a gépek vagy csoportokat, amelyeknek a Service Map függősége megjelenítése a megadott időtartomány keresztül. Gép függőségi leképezi egy adott gép koncentrálhat, és azok megjelenítése, amelyek közvetlen TCP-ügyfelek vagy kiszolgálók, hogy a gép az összes gép.  Számítógépcsoport maps kiszolgálók és a Függőségek megjelenítése.
+Service Map fokozza a rendszerfrissítés-értékelés használatát azáltal, hogy megmutatja, hogy mely más csapatok és kiszolgálók függenek a szolgáltatástól, így előzetesen értesítheti őket, mielőtt lekéri a rendszereit a javítások elvégzésére. A Service Map javítja a javítások kezelését is, ha azt mutatja, hogy a szolgáltatások elérhetők és megfelelően csatlakoznak-e a javításuk és újraindításaik után.
 
-![A Service Map áttekintése](media/service-map/service-map-overview.png)
+## <a name="mapping-overview"></a>Leképezés áttekintése
 
-Gépek a leképezés megjelenítéséhez a futó bővíthetők ki csoportokat és az aktív hálózati kapcsolatokkal rendelkező folyamatokat feldolgozni a kijelölt időtartományban. Ha egy távoli gépen a Service Map ügynökkel folyamat részleteinek megjelenítéséhez ki van bontva, csak a fókusz gép kommunikáló folyamatokat jelennek meg. Ügynök nélküli kivételfigyelés előtér-, a fókusz géphez csatlakozó gépek száma a bal oldalon, a folyamatokat, amelyekhez csatlakoznak jelzi. A fókusz gépet, hogy így olyan háttér-gépen, amelyen nincs ügynök kapcsolatot, ha a háttérkiszolgáló-szerepel egy Port kiszolgálócsoportot, és egyéb kapcsolatok ugyanazt a portszámot.
+Service Map ügynökök információt gyűjtenek az összes TCP-csatlakozású folyamatról azon a kiszolgálón, amelyen telepítve vannak, valamint az egyes folyamatok bejövő és kimenő kapcsolatainak részleteit.
 
-Alapértelmezés szerint a Service Map maps megjelenítése a függőségi adatokat az elmúlt 30 percben. Bal felső idő vezérlők használatával lekérdezheti a maps múltbéli porttartományok akár egy óráig bemutatják, hogyan függőségek kikeresi az elmúlt (például az incidens alatt vagy előtt történt változás). Fizetős munkaterületek 30 napig, és a munkaterületek 7 napig a Service Map adatokat tárolja.
+A bal oldali ablaktábla listájában kiválaszthatja azokat a gépeket vagy csoportokat, amelyeken Service Map ügynökök láthatók a függőségek megjelenítéséhez egy adott időtartományon belül. A számítógép-függőségi térképek egy adott gépre összpontosítanak, és megjelenítik az összes olyan gépet, amely közvetlen TCP-ügyfél vagy-kiszolgáló.  A számítógép-csoport a kiszolgálók és függőségeik készleteit jeleníti meg.
 
-## <a name="status-badges-and-border-coloring"></a>Állapot jelvények és szegély színezés
-A térképen minden kiszolgáló alján lehet a kiszolgáló állapotinformációról igényinek állapot jelvények listáját. A jelvény jelzi, hogy a kiszolgáló a megoldáshoz való integrációt közül néhány vonatkozó adatot. Egy jelvény kattintva megnyílik a közvetlenül a jobb oldali panelen az állapot részleteit. A jelenleg rendelkezésre álló állapot jelvények közé tartozik a riasztások, Service Desk, módosítások, biztonsági és frissítéseket.
+![Service Map áttekintése](media/service-map/service-map-overview.png)
 
-Az állapot jelvények súlyosságát, attól függően gép csomópont szegélyek, színes piros (kritikus), sárga (figyelmeztetés) vagy kék (tájékoztató). A szín bármilyen jelvények állapot legsúlyosabb állapotát jelöli. Szürke szegélyt megadni egy csomópont, amelynek nincs Állapotjelzők jelzi.
+A gépek kiterjeszthetők a térképen, hogy megjelenjenek a futó folyamatok csoportjai és folyamatai az aktív hálózati kapcsolatokkal a kiválasztott időtartományban. Ha egy Service Map ügynökkel rendelkező távoli gép ki van bontva a folyamat részleteinek megjelenítésére, akkor csak azok a folyamatok jelennek meg, amelyek a fókusszal rendelkező géppel kommunikálnak. A fókusszal rendelkező géphez csatlakozó ügynök nélküli előtér-gépek száma a folyamatok azon folyamatainak bal oldalán van megadva, amelyhez csatlakoznak. Ha a fókuszban lévő gép olyan háttér-számítógéphez csatlakozik, amely nem rendelkezik ügynökkel, a háttér-kiszolgáló beletartozik egy kiszolgálói portba, és más, azonos portszámú kapcsolatokkal is rendelkezik.
 
-![Jelvények állapota](media/service-map/status-badges.png)
+Alapértelmezés szerint a Service Map Maps a függőségi adatok utolsó 30 percét jeleníti meg. A bal felső sarokban lévő idő vezérlőelemekkel lekérdezheti a térképeket a korábbi időtartományokra akár egy óráig is, hogy megmutassa, hogyan nézett ki a függőségek a múltban (például egy incidens vagy egy változás előtt). A Service Map az adattárolási munkaterületeken 30 napig, az ingyenes munkaterületeken pedig 7 napig tárolja a rendszer.
 
-## <a name="process-groups"></a>Folyamat csoportok
-Csoportosítja kombinálásával egyetlen folyamat csoportba tartozó közös termék vagy szolgáltatás folyamatokat.  Ha egy gép csomópont önálló folyamatok csoportosítja együtt jelenik meg.  Ha egy folyamat egy folyamat csoportban bejövő és kimenő kapcsolatok majd a kapcsolat nem sikerült akkor jelenik meg, mert nem sikerült a teljes folyamat csoportot.
+## <a name="status-badges-and-border-coloring"></a>Állapot-jelvények és szegélyek színe
+
+A Térkép minden egyes kiszolgálójának alján az állapot-jelvények listája látható, amely a-kiszolgálóval kapcsolatos állapotinformációkat közvetít. A jelvények azt jelzik, hogy a-kiszolgáló a megoldás-integrációk egyikével kapcsolatos lényeges információkkal szolgál. A jelvényre kattintva közvetlenül a jobb oldali ablaktáblában található állapot adataihoz juthat. A jelenleg elérhető status jelvények közé tartoznak a riasztások, az ügyfélszolgálat, a módosítások, a biztonság és a frissítések.
+
+Az állapot-jelvények súlyossága függvényében a számítógép-csomópontok szegélyei piros (kritikus), sárga (figyelmeztetés) vagy kék (tájékoztató) színűek lehetnek. A szín az állapot-jelvények legsúlyosabb állapotát jelöli. A szürke szegély olyan csomópontot jelöl, amely nem tartalmaz állapotjelzőket.
+
+![Állapot jelvényei](media/service-map/status-badges.png)
+
+## <a name="process-groups"></a>Feldolgozható csoportok
+
+A feldolgozási csoportok egy közös termékhez vagy szolgáltatáshoz társított folyamatokat egyesítenek egy folyamat csoportba.  A számítógép-csomópontok kibontásakor a rendszer önálló folyamatokat jelenít meg a folyamat csoportjaival együtt.  Ha egy folyamaton belül egy folyamathoz tartozó bejövő és kimenő kapcsolat meghiúsult, akkor a kapcsolat a teljes feldolgozási csoport esetében sikertelenként jelenik meg.
 
 ## <a name="machine-groups"></a>Számítógépcsoportok
-Gépcsoportok lehetővé teszi több kiszolgáló, ne csak egyet láthatja az összes tagját egy többrétegű alkalmazást vagy kiszolgálófürt egy térképen Eszközkezelőre maps.
 
-Felhasználók válassza ki, mely kiszolgálók együtt egy csoporthoz tartozik, és válassza ki a csoport nevét.  Ezután kiválaszthatja a csoport összes kapcsolatok és folyamatok megtekintése, illetve megtekinteni azt csak a folyamatok és a kapcsolatok közvetlenül kapcsolódik az a csoport más tagjai.
+A számítógép-csoportok lehetővé teszik, hogy a térképeket a kiszolgálók körére központilag megtekintse, nem csak egy, így egyetlen térképen láthatja egy többrétegű alkalmazás vagy kiszolgálófürt összes tagját.
+
+A felhasználók kiválaszthatják, hogy mely kiszolgálók tartoznak egy csoporthoz, és kiválasztják a csoport nevét.  Ezután megtekintheti a csoportot az összes folyamatával és kapcsolatával, vagy megtekintheti a csoport többi tagjához közvetlenül kapcsolódó folyamatokkal és kapcsolatokkal.
 
 ![Számítógépcsoport](media/service-map/machine-group.png)
 
-### <a name="creating-a-machine-group"></a>Egy számítógépcsoport létrehozása
-Hozzon létre egy csoportot, válassza ki a gépet, vagy a gépek a listában, és kattintson a kívánt gépekre **Hozzáadás csoporthoz**.
+### <a name="creating-a-machine-group"></a>Számítógép-csoport létrehozása
+
+Csoport létrehozásához válassza ki a kívánt gépet vagy gépeket a gépek listájában, és kattintson a **Hozzáadás a csoporthoz**lehetőségre.
 
 ![Csoport létrehozása](media/service-map/machine-groups-create.png)
 
-Itt választhat **új létrehozása** , és adja meg a csoport nevét.
+Itt választhatja ki az **új létrehozása** lehetőséget, és megadhatja a csoport nevét.
 
 ![Csoport neve](media/service-map/machine-groups-name.png)
 
 >[!NOTE]
->Gépcsoportok 10 kiszolgálók korlátozódnak.
+>A gépi csoportok legfeljebb 10 kiszolgálóval rendelkeznek.
 
-### <a name="viewing-a-group"></a>Egy csoport megtekintése
-Miután létrehozott néhány csoportot, válassza ki a csoportok lapon megtekintheti őket.
+### <a name="viewing-a-group"></a>Csoport megtekintése
 
-![Csoportok lapon](media/service-map/machine-groups-tab.png)
+Miután létrehozott néhány csoportot, megtekintheti őket a csoportok lapon.
 
-Ezután válassza ki a csoport nevét, a térkép megtekintéséhez az adott gép csoporthoz.
-![Számítógépcsoport](media/service-map/machine-group.png) a gépeket a csoporthoz tartozó a fehér a térképen foglaltaknak.
+![Csoportok lap](media/service-map/machine-groups-tab.png)
 
-A csoport kiterjesztése a gépeken a gép csoportot alkotó listázza.
+Ezután válassza ki a csoport nevét az adott számítógépcsoport térképének megtekintéséhez.
+![](media/service-map/machine-group.png) Számítógépcsoport a csoporthoz tartozó gépek a térképen fehéren jelennek meg.
 
-![Gépek csoportosítása a gépek](media/service-map/machine-groups-machines.png)
+A csoport kibontásakor a rendszer felsorolja a számítógépcsoport alkotó gépeket.
 
-### <a name="filter-by-processes"></a>Szűrés folyamatok szerint
-Itt válthat a térképnézet folyamatok és a kapcsolatok megjelenítése a csoport és csak a közvetlenül kapcsolódik az a gép csoport között.  Az alapértelmezett nézet az összes folyamat megjelenítéséhez.  A térkép felett a szűrő ikonjára kattintva módosíthatja a nézetet.
+![Machine Group-gépek](media/service-map/machine-groups-machines.png)
 
-![Szűrőcsoport](media/service-map/machine-groups-filter.png)
+### <a name="filter-by-processes"></a>Szűrés folyamat szerint
 
-Amikor **összes folyamat** van kijelölve, a térkép tartalmazza az összes olyan folyamatokat és kapcsolatok az egyes gépek a csoportban.
+A Térkép nézetet a csoport összes folyamatának és kapcsolatának, valamint a számítógép csoportra közvetlenül kapcsolódók megjelenítésének a bekapcsolásával állíthatja be.  Az alapértelmezett nézet az összes folyamat megjelenítése.  A nézet módosításához kattintson a Térkép feletti szűrő ikonra.
 
-![Minden számítógépcsoport dolgozza fel.](media/service-map/machine-groups-all.png)
+![Szűrő csoport](media/service-map/machine-groups-filter.png)
 
-Ha módosítja a nézet csak **csoporthoz kapcsolódó folyamatok**, a térkép fog leszűkül, hogy csak ezen folyamatok és a kapcsolatok közvetlenül csatlakoztatott más számítógépekre, a csoport létrehozása egy egyszerűsített nézetet.
+Ha az **összes folyamat** ki van választva, a Térkép a csoport összes számítógépén a folyamatokat és a kapcsolatokat is tartalmazza.
 
-![A szűrt folyamatok számítógépcsoport](media/service-map/machine-groups-filtered.png)
+![Számítógép csoport minden folyamat](media/service-map/machine-groups-all.png)
+
+Ha úgy módosítja a nézetet, hogy csak a **csoporthoz csatlakoztatott folyamatokat**jelenítse meg, a Térkép csak azokra a folyamatokra és kapcsolatokra lesz szűkítve, amelyek közvetlenül kapcsolódnak a csoport többi számítógépéhez, így egyszerűbb nézet jön létre.
+
+![Gépi csoport szűrt folyamatai](media/service-map/machine-groups-filtered.png)
  
 ### <a name="adding-machines-to-a-group"></a>Gépek felvétele egy csoportba
-Egy meglévő csoporthoz hozzáadni, jelölje be azoknak a gépeket, majd kattintson a **Hozzáadás csoporthoz**.  Ezután válassza ki a gépeket hozzáadni kívánt csoport.
+
+Ha gépeket szeretne hozzáadni egy meglévő csoporthoz, jelölje be a kívánt gépek melletti jelölőnégyzeteket, majd kattintson a **Hozzáadás a csoporthoz**lehetőségre.  Ezután válassza ki azt a csoportot, amelyhez hozzá szeretné adni a gépeket.
  
 ### <a name="removing-machines-from-a-group"></a>Gépek eltávolítása egy csoportból
-A csoportok listájában bontsa ki a csoport nevét, az a gép csoportban található gépek listáját.  Kattintson a három pont menü mellett a távolítsa el, és válassza a kívánt gépet **eltávolítása**.
 
-![Gép eltávolítása a csoportból](media/service-map/machine-groups-remove.png)
+A csoportok listában bontsa ki a csoport nevét a Machines csoportban lévő gépek listázásához.  Ezután kattintson az eltávolítani kívánt gép melletti három pont menüre, és válassza az **Eltávolítás**lehetőséget.
 
-### <a name="removing-or-renaming-a-group"></a>Távolítsa el, vagy egy csoport átnevezése
-Kattintson a három pont menü mellett a csoport nevét, a csoport listában.
+![Számítógép eltávolítása a csoportból](media/service-map/machine-groups-remove.png)
 
-![Gép csoport menü](media/service-map/machine-groups-menu.png)
+### <a name="removing-or-renaming-a-group"></a>Csoport eltávolítása vagy átnevezése
+
+Kattintson a csoport neve melletti három pont menüre a csoport listában.
+
+![Számítógép-csoport menü](media/service-map/machine-groups-menu.png)
 
 
-## <a name="role-icons"></a>Szerepkör ikon
-Bizonyos folyamatok szolgál adott szerepkörök gépeken: webalkalmazás-kiszolgálók, az alkalmazáskiszolgálók, adatbázis és így tovább. A Service Map jelzi a folyamatok és a gépek négyzeteken szerepkör ikonok a szerepkör egy folyamatot, vagy a kiszolgáló fontos szerepet játszik az egyetlen pillantással azonosításának megkönnyítése érdekében.
+## <a name="role-icons"></a>Szerepkör ikonjai
 
-| Szerepkör ikon | Leírás |
+Bizonyos folyamatok adott szerepköröket szolgálnak ki a gépeken: webkiszolgálók, alkalmazáskiszolgáló, adatbázis stb. A Service Map megjegyzésekkel láthatja el a folyamatokat és a számítógépeket a szerepkörök ikonjaival, így könnyebben azonosíthatja a folyamat vagy a kiszolgáló szerepét.
+
+| Szerepkör ikonja | Leírás |
 |:--|:--|
 | ![Webkiszolgáló](media/service-map/role-web-server.png) | Webkiszolgáló |
-| ![Alkalmazáskiszolgáló](media/service-map/role-application-server.png) | Alkalmazáskiszolgáló |
+| ![App Server](media/service-map/role-application-server.png) | Alkalmazáskiszolgáló |
 | ![Adatbázis-kiszolgáló](media/service-map/role-database.png) | Adatbázis-kiszolgáló |
-| ![LDAP server](media/service-map/role-ldap.png) | LDAP server |
-| ![SMB-kiszolgálón](media/service-map/role-smb.png) | SMB-kiszolgálón |
+| ![LDAP-kiszolgáló](media/service-map/role-ldap.png) | LDAP-kiszolgáló |
+| ![SMB-kiszolgáló](media/service-map/role-smb.png) | SMB-kiszolgáló |
 
-![Szerepkör ikon](media/service-map/role-icons.png)
+![Szerepkör ikonjai](media/service-map/role-icons.png)
 
 
 ## <a name="failed-connections"></a>Sikertelen kapcsolatok
-Sikertelen kapcsolatok együtt jelennek meg a folyamatok és a számítógépek, a Service Map maps piros szaggatott vonal jelzi, hogy egy ügyfél rendszer érhetők el egy folyamat és a port nem működik. Ha a rendszer a sikertelen kapcsolódás kísérlet egy sikertelen kapcsolatok a Service Map telepített ügynökkel bármely rendszerből jelenti. A Service Map ezt a folyamatot nem sikerült kapcsolatot létesíteni a TCP-szoftvercsatornák megfigyelésével méri. Ez a hiba hatására a tűzfal, melyek a helytelen konfiguráció az ügyfél vagy kiszolgáló vagy egy távoli szolgáltatás nem volt elérhető.
+
+A sikertelen kapcsolatok Service Map Maps for folyamatok és számítógépek esetében jelennek meg, és szaggatott piros vonallal jelzi, hogy az ügyfélrendszer nem tud elérni egy folyamatot vagy portot. A sikertelen kapcsolatok bármely rendszerből származnak, egy telepített Service Map ügynökkel, ha ez a rendszer a sikertelen csatlakozást kísérli meg. Service Map méri ezt a folyamatot azáltal, hogy megfigyeli a kapcsolat létesítését sikertelen TCP-szoftvercsatornát. Ez a hiba a tűzfal, az ügyfél vagy a kiszolgáló helytelen konfigurációja, vagy a távoli szolgáltatás nem érhető el.
 
 ![Sikertelen kapcsolatok](media/service-map/failed-connections.png)
 
-Sikertelen kapcsolatok segítségére lehetnek a hibakeresésben, migrálásának ellenőrzése, biztonsági elemzés és a teljes architekturális ismertetése ismertetése. Sikertelen kapcsolatok néha érintetlen, de gyakran közvetlenül a problémát, például egy feladatátvételi környezetet hirtelen váljon nem érhető el, vagy éppen nem lehet felvenni a kapcsolatot a felhőbe történő migrálás után két alkalmazásrétegek mutassanak.
+A sikertelen kapcsolatok ismertetése segíthet a hibaelhárításban, az áttelepítési ellenőrzésben, a biztonsági elemzésben és a teljes építészeti ismeretekben. A sikertelen kapcsolatok néha ártalmatlanok, de gyakran közvetlenül a problémára mutatnak, például egy feladatátvételi környezet, amely hirtelen elérhetetlenné válik, vagy két alkalmazási réteg nem tud kommunikálni a felhő áttelepítése után.
 
 ## <a name="client-groups"></a>Ügyfélcsoportok
-Ügyfél csoportjai mezőkbe a térképen, amelyek az ügyfélgépek, amelyek nem rendelkeznek a függőségi ügynököt. Egyetlen ügyfél csoport jelöli az ügyfelek egy egyedi folyamat vagy a gépen.
+
+Az ügyféltanúsítványok olyan mezők a térképen, amelyek nem rendelkeznek függőségi ügynökökkel. Egyetlen ügyféloldali csoport az egyes folyamatokhoz vagy gépekhez tartozó ügyfeleket jelöli.
 
 ![Ügyfélcsoportok](media/service-map/client-groups.png)
 
-Tekintse meg a kiszolgálók egy ügyfélcsoportba tartozó IP-címét, válassza ki a csoportot. A csoport tartalmát szerepelnek a **ügyfél tulajdonságai** ablaktáblán.
+Ha meg szeretné tekinteni az ügyféloldali kiszolgálók IP-címeit, válassza ki a csoportot. A csoport tartalma megjelenik az **ügyféloldali tulajdonságok** ablaktáblán.
 
-![Ügyfél tulajdonságai](media/service-map/client-group-properties.png)
+![Ügyfél csoportjának tulajdonságai](media/service-map/client-group-properties.png)
 
-## <a name="server-port-groups"></a>Kiszolgálóport csoportok
-Kiszolgálóport csoportok olyan kiszolgálók, amelyek nem rendelkeznek a függőségi ügynökök kiszolgáló portjait képviselő be. A mezőbe a kiszolgálóport és a kiszolgálókat erre a portra kapcsolatokkal darabszámát tartalmazza. Bontsa ki az egyes kiszolgálók és a kapcsolatok a mezőbe. Ha a mezőben csak egy kiszolgálót, a nevét vagy IP-cím szerepel.
+## <a name="server-port-groups"></a>Kiszolgálói portok csoportjai
 
-![Kiszolgálóport csoportok](media/service-map/server-port-groups.png)
+A kiszolgálói portok a függőségi ügynökkel nem rendelkező kiszolgálókon lévő kiszolgálói portokat jelképező mezők. A mező tartalmazza a kiszolgáló portszámát és az adott porttal létesített kapcsolattal rendelkező kiszolgálók számát. Bontsa ki a mezőt az egyes kiszolgálók és kapcsolatok megtekintéséhez. Ha a mezőben csak egy kiszolgáló található, a rendszer a nevet vagy az IP-címet listázza.
+
+![Kiszolgálói portok csoportjai](media/service-map/server-port-groups.png)
 
 ## <a name="context-menu"></a>Helyi menü
-A felül látható a három pontra (...) kattint jobb oldalán található bármely olyan kiszolgálóra a helyi menüben a kiszolgálóhoz tartozó jeleníti meg.
+
+A kiszolgálók jobb felső sarkában található három pontra (...) kattintva megjelenik az adott kiszolgáló helyi menüje.
 
 ![Sikertelen kapcsolatok](media/service-map/context-menu.png)
 
-### <a name="load-server-map"></a>Kiszolgálótérkép betöltése
-Kattintson a **Kiszolgálótérkép betöltése** megnyílik egy új térkép a kiválasztott kiszolgálón, az új fókusz gép.
+### <a name="load-server-map"></a>Kiszolgálói Térkép betöltése
 
-### <a name="show-self-links"></a>Önmagukra mutató hivatkozások megjelenítése
-Kattintson a **megjelenítése Self-Links** újrarajzolja a kiszolgáló-csomópontot, így azokat is önmagukra mutató hivatkozások, amelyek, amely a kezdő és záró folyamatok belül a kiszolgáló TCP-kapcsolatokat. Ha önmagukra mutató hivatkozások jelennek meg, a menü módosításokat **elrejtése Self-Links**, így kikapcsolhatja azokat.
+A **betöltési kiszolgáló leképezése** lehetőségre kattintva új térképre juthat a kiválasztott kiszolgálóval az új fókuszként szolgáló számítógépként.
 
-## <a name="computer-summary"></a>A számítógép összefoglaló
-A **gép összefoglalás** ablaktáblán egy kiszolgáló operációs rendszer, a függőség számát és a többi megoldásaiból származó adatok áttekintését tartalmazza. Az adatok közé tartozik a teljesítmény-mérőszámok, ügyfélszolgálati szolgáltatásjegyek, változáskövetés, biztonsági és frissítéseket.
+### <a name="show-self-links"></a>Önálló hivatkozások megjelenítése
 
-![Gép összefoglalás panel](media/service-map/machine-summary.png)
+Az **önálló hivatkozások megjelenítése** lehetőségre kattintva újrarajzolja a kiszolgáló csomópontját, beleértve az olyan önálló hivatkozásokat is, amelyek TCP-kapcsolatok, amelyek a kiszolgálón belüli folyamatokkal kezdődnek és végződik. Ha az önálló hivatkozások jelennek meg, a menüparancsok az **önálló hivatkozások elrejtésére**is módosulnak, így kikapcsolhatja őket.
 
-## <a name="computer-and-process-properties"></a>Számítógép és a folyamat tulajdonságai
-Navigálás a Service Map térképet, kiválaszthatja a gépek és azok tulajdonságaival kapcsolatos további környezet próbál a jeggyel folyamatokat. Machines provide information about DNS name, IPv4 addresses, CPU and memory capacity, VM type, operating system and version, last reboot time, and the IDs of their OMS and Service Map agents.
+## <a name="computer-summary"></a>Számítógép összegzése
 
-![Gép Tulajdonságok ablaktábla](media/service-map/machine-properties.png)
+A **számítógép összegzése** panel a kiszolgáló operációs rendszerének, függőségi számának és más megoldásokból származó adatoknak a áttekintését tartalmazza. Ilyen adatok például a teljesítmény-mérőszámok, a ügyfélszolgálati jegyek, a változások nyomon követése, a biztonság és a frissítések.
 
-Folyamat részletei gyűjthet az operációs rendszer metaadatokat, eljárások, beleértve a folyamat neve, folyamat leírása, felhasználónév és a tartomány (a Windows), Cégnév, terméknév, termékverzió, munkakönyvtár, parancssor és folyamat fut kezdő időpontja.
+![Számítógép összegzése panel](media/service-map/machine-summary.png)
 
-![Tulajdonságok ablaktábla feldolgozása](media/service-map/process-properties.png)
+## <a name="computer-and-process-properties"></a>Számítógép és folyamat tulajdonságai
 
-A **kapcsolatos eljárás összefoglalása** panel további információkat találhat a folyamat kapcsolatot, beleértve a kötött portok, a bejövő és kimenő kapcsolatokat, és a kapcsolatok meghiúsultak.
+Service Map térképen való navigálás esetén kiválaszthatja a gépeket és a folyamatokat, hogy további kontextust szerezzenek a tulajdonságaik számára. A gépek információt nyújtanak a DNS-nevekről, az IPv4-címekről, a PROCESSZORról és a memóriáról, a virtuálisgép-típusról, az operációs rendszerről és a verzióról, a legutóbbi újraindításról, valamint a OMS és a Service Map ügynökök
 
-![Folyamat összefoglalás panel](media/service-map/process-summary.png)
+![Számítógép tulajdonságai panel](media/service-map/machine-properties.png)
 
-## <a name="alerts-integration"></a>Riasztások-integráció
-A Service Map integrálható az Azure-riasztások a kiválasztott kiszolgálóhoz tartozó aktivált riasztások megjelenítéséhez a kijelölt időtartományban található. A kiszolgáló ikont jelenít meg, ha vannak az aktuális riasztásokat, és a **gép riasztások** panel felsorolja a riasztásokat.
+Az operációs rendszer metaadataiból adatokat gyűjthet a futó folyamatokról, beleértve a folyamat nevét, a folyamat leírását, a felhasználónevet és a tartományt (Windows rendszeren), a vállalat nevét, a termék nevét, a termék verziószámát, a munkakönyvtárat, a parancssort és a folyamatot. Kezdési idő.
+
+![Folyamat tulajdonságai ablaktábla](media/service-map/process-properties.png)
+
+A **folyamat összegzése** panel további információkat biztosít a folyamat kapcsolatáról, beleértve a hozzá tartozó portokat, a bejövő és kimenő kapcsolatokat, valamint a sikertelen kapcsolatokat.
+
+![Folyamat összegzése panel](media/service-map/process-summary.png)
+
+## <a name="alerts-integration"></a>Riasztások integrációja
+
+A Service Map integrálható az Azure-riasztásokkal, hogy megjelenjenek a kijelölt kiszolgáló kilőtt riasztásai a kiválasztott időtartományban. A kiszolgáló egy ikont jelenít meg, ha vannak aktuális riasztások, és a **számítógép riasztások** ablaktáblája felsorolja a riasztásokat.
 
 ![Számítógép-riasztások panel](media/service-map/machine-alerts.png)
 
-Ahhoz, hogy a kapcsolódó riasztások megjelenítése a Service Map, hozzon létre egy riasztási szabályt, amely akkor aktiválódik, egy adott számítógépen. Megfelelő riasztások létrehozásához:
-- Számítógép csoporthoz záradékot tartalmazni (például **számítógép időköze 1 perces**).
-- Válasszon riasztást metrikus egység alapján.
+Ha engedélyezni szeretné a Service Map a releváns riasztások megjelenítéséhez, hozzon létre egy riasztási szabályt, amely egy adott számítógép számára aktiválódik. Megfelelő riasztások létrehozása:
+- Adjon meg egy záradékot a számítógép szerinti csoportosításhoz (például **1 perc számítógép**-intervallummal).
+- Válassza ki a riasztást a metrika mértékének alapján.
 
-## <a name="log-events-integration"></a>Események naplóintegráció
-A Service Map integrálható a naplóbeli keresés megjelenítése a kiválasztott kiszolgálóhoz tartozó összes elérhető napló események száma a kijelölt időtartományban. Kattintson bármelyik sorra a listában a naplóbeli keresés ugorhat, és az egyes alkalmazásnapló-események események számát.
+## <a name="log-events-integration"></a>Naplózási események integrációja
 
-![Gép alkalmazásnapló-események ablak](media/service-map/log-events.png)
+A Service Map a naplóbeli kereséssel integrálva megjeleníti a kijelölt kiszolgáló összes elérhető naplózási eseményének számát a kijelölt időtartományban. Az események listájának bármelyik sorára kattintva megtekintheti a naplóbeli keresést, és megtekintheti az egyes naplózási eseményeket.
 
-## <a name="service-desk-integration"></a>Ügyfélszolgálat-integráció
-Az IT Service Management-összekötő a Service Map integráció akkor automatikus, ha mindkét megoldás engedélyezve van, és a Log Analytics-munkaterületen konfigurált. Az integráció a Service Map feliratú "Ügyfélszolgálat". További információkért lásd: [központilag kezelheti az IT Service Management-összekötő használatával ITSM munkadarabok](https://docs.microsoft.com/azure/log-analytics/log-analytics-itsmc-overview).
+![A számítógép naplójának eseményei panel](media/service-map/log-events.png)
 
-A **gép ügyfélszolgálat** panel felsorolja a kijelölt időtartományban található a kiválasztott kiszolgálóhoz tartozó összes IT Service Management-eseményt. A kiszolgáló ikont jelenít meg, ha nincsenek aktuális elemek, és a gép ügyfélszolgálat ablaktábla sorolja fel őket.
+## <a name="service-desk-integration"></a>Az ügyfélszolgálat integrációja
 
-![Gép ügyfélszolgálat panel](media/service-map/service-desk.png)
+Ha mindkét megoldás engedélyezve van és konfigurálva van a Log Analytics munkaterületen, Service Map az IT-szolgáltatásmenedzsmenti csatoló integrációja automatikusan megtörténik. A Service Map integrációja a "Service Desk" címkével van ellátva. További információ: központilag felügyelheti a [ITSM munkaelemeit it-szolgáltatásmenedzsmenti csatoló használatával](https://docs.microsoft.com/azure/log-analytics/log-analytics-itsmc-overview).
 
-A cikk a csatlakoztatott ITSM-megoldás megnyitásához kattintson a **munkaelem megtekintése**.
+A **számítógép-szolgáltatási** tábla ablaktábla a kiválasztott időtartományban lévő összes IT Service Management-eseményt listázza. A kiszolgáló egy ikont jelenít meg, ha vannak aktuális elemek, és a Machine Service Desk ablaktábla felsorolja őket.
 
-Az elem részleteinek megtekintése a Naplókeresésben, kattintson a **megjelenítés a Naplókeresésben**.
-A Log Analytics két új táblázat írt kapcsolati metrika 
+![Machine Service Desk-ablaktábla](media/service-map/service-desk.png)
 
-## <a name="change-tracking-integration"></a>Módosítsa a Híváskövetés-integráció
-A Service Map-integráció a Change Tracking akkor automatikus, ha mindkét megoldás engedélyezve van, és a Log Analytics-munkaterületen konfigurált.
+Az elemnek a csatlakoztatott ITSM-megoldásban való megnyitásához kattintson a **munkaelem megtekintése**elemre.
 
-A **gép Change Tracking** panel felsorolja az összes módosítást, és a legutóbbi van legelöl, valamint lefúrhat a naplóbeli keresés további részleteket mutató hivatkozást.
+Ha meg szeretné tekinteni az elem részleteit a naplóbeli keresésben, kattintson a **Megjelenítés a naplóban keresés**lehetőségre.
+A kapcsolódási metrikákat két új táblázatba írja a rendszer Log Analytics 
 
-![Gép Change Tracking panel](media/service-map/change-tracking.png)
+## <a name="change-tracking-integration"></a>Change Tracking integráció
 
-Az alábbi képen, amelyeket láthat ConfigurationChange esemény részletes nézet kiválasztása után **megjelenítése a Log Analytics**.
+Ha mindkét megoldás engedélyezve van és be van állítva a Log Analytics munkaterületen, akkor a Change Tracking Service Map integrációja automatikusan megtörténik.
+
+A **gép Change Tracking** panel felsorolja az összes módosítást, a legutóbbi elsővel együtt, valamint egy hivatkozást, amely részletesen ismerteti a naplóbeli keresés részleteit.
+
+![Számítógép Change Tracking panel](media/service-map/change-tracking.png)
+
+Az alábbi képen egy olyan konfigurációváltozás-esemény részletes nézete látható, amelyet a **log Analytics megjelenítésének**kiválasztása után láthat.
 
 ![Konfigurációváltozás esemény](media/service-map/configuration-change-event-01.png)
 
 ## <a name="performance-integration"></a>Teljesítmény-integráció
-A **gép teljesítményét** ablaktábla megjeleníti a kiválasztott kiszolgálóhoz tartozó szabványos teljesítmény-mérőszámok. A metrikák által küldött és fogadott hálózati bájtok CPU kihasználtságát, a memóriahasználat, küldött és fogadott hálózati bájtok és a felső folyamatok listáját tartalmazza.
 
-![Számítógép teljesítménye paneljén](media/service-map/machine-performance.png)
+A **gép teljesítménye** ablaktábla a kiválasztott kiszolgálóhoz tartozó normál teljesítménymutatókat jeleníti meg. A metrikák közé tartoznak a processzor kihasználtsága, a memóriahasználat, a küldött és fogadott hálózati bájtok, valamint a legfontosabb folyamatok listája a küldött és fogadott hálózati bájtok alapján.
 
-Teljesítményadatok megjelenítéséhez szükség lehet [engedélyezése a Log Analytics megfelelő teljesítményszámlálók](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-performance-counters).  Az engedélyezni kívánt számlálókat:
+![Gépi teljesítmény panel](media/service-map/machine-performance.png)
+
+A teljesítményadatok megjelenítéséhez szükség lehet [a megfelelő log Analytics teljesítményszámlálók engedélyezésére](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-performance-counters).  Az engedélyezni kívánt számlálók:
 
 Windows:
-- Processor(*)\\processzoridő
-- Memória\\előjegyzett kihasználtsága (%)
-- Hálózati Adapter(*)\\küldött bájtok/s
-- Hálózati Adapter(*)\\fogadott bájtok/mp
+- Processzor (*)\\processzoridő (%)
+- Memória\\%-ban előjegyzett bájtok használatban
+- Hálózati adapter (*)\\elküldési sebesség (bájt/s)
+- Hálózati adapter (*)\\másodpercenként fogadott bájtok száma
 
 Linux:
-- Processor(*)\\processzoridő
-- Memory(*)\\foglalt memória %
-- Hálózati Adapter(*)\\küldött bájtok/s
-- Hálózati Adapter(*)\\fogadott bájtok/mp
+- Processzor (*)\\processzoridő (%)
+- Memória (*)\\%-ban használt memória
+- Hálózati adapter (*)\\elküldési sebesség (bájt/s)
+- Hálózati adapter (*)\\másodpercenként fogadott bájtok száma
 
-A hálózati teljesítményadatok lekéréséhez kell is engedélyezve van a Wire Data 2.0 megoldás a munkaterület.
+A hálózati teljesítményadatok beszerzéséhez az Wire Data 2.0 megoldást is engedélyeznie kell a munkaterületen.
  
-## <a name="security-integration"></a>Biztonsági integrálása
-Biztonsági és auditálási megoldás a Service Map integráció akkor automatikus, ha mindkét megoldás engedélyezve van, és a Log Analytics-munkaterületen konfigurált.
+## <a name="security-integration"></a>Biztonsági integráció
 
-A **gépi biztonsági** panelen a kiválasztott kiszolgálóhoz tartozó a biztonsági és auditálási megoldás adatait jeleníti meg. A panelen a kiválasztott időtartományban sorolja fel a kiszolgáló szálankénti függőben lévő biztonsági problémák összefoglalása. A biztonsági problémák gyakorlatokat bármelyikét le tárolóiba kattintva egy Naplókeresés velük kapcsolatos részleteket.
+Ha mindkét megoldás engedélyezve van és be van állítva a Log Analytics munkaterületen, akkor a Security and Audit Service Map integrációja automatikusan megtörténik.
 
-![Gép biztonsági panel](media/service-map/machine-security.png)
+A **számítógép biztonsági** paneljén a kiválasztott kiszolgálóhoz tartozó Security and Audit megoldás adatait jeleníti meg. A panel felsorolja a kiszolgáló összes, a kijelölt időtartományban fennálló biztonsági problémájának összegzését. A biztonsági problémák bármelyikére kattintva részletesen megtalálhatja a naplóbeli keresés részleteit.
 
-## <a name="updates-integration"></a>Frissítések integráció
-Az Update Management Service Map integrációs akkor automatikus, ha mindkét megoldás engedélyezve van, és a Log Analytics-munkaterületen konfigurált.
+![Számítógép biztonsági panelje](media/service-map/machine-security.png)
 
-A **Machine-frissítések** ablaktábla a kijelölt kiszolgálón az Update Management megoldás adatait jeleníti meg. A panelen a kiválasztott időtartományban sorolja fel a kiszolgáló hiányzó frissítésekkel összegzését.
+## <a name="updates-integration"></a>Frissítések integrációja
 
-![Gép Change Tracking panel](media/service-map/machine-updates.png)
+Ha mindkét megoldás engedélyezve van és be van állítva a Log Analytics munkaterületen, akkor a Update Management Service Map integrációja automatikusan megtörténik.
+
+A **számítógép frissítései** ablaktábla a kiválasztott kiszolgálóhoz tartozó Update Management megoldás adatait jeleníti meg. A panel felsorolja a kiszolgáló hiányzó frissítéseinek összegzését a kijelölt időtartományban.
+
+![Számítógép Change Tracking panel](media/service-map/machine-updates.png)
 
 ## <a name="log-analytics-records"></a>Log Analytics-rekordok
-A Service Map-számítógép és a folyamat leltáradatok érhető el [keresési](../../azure-monitor/log-query/log-query-overview.md) a Log Analyticsben. Ezeket az adatokat, beleértve az áttelepítés megtervezése, kapacitáselemzési, felderítési és igény szerinti teljesítménnyel kapcsolatos hibaelhárítás forgatókönyveket is alkalmazhat.
 
-Egy rekord minden egyedi számítógép és a folyamat a rekordokat, amelyek akkor jönnek létre egy folyamatot, vagy a számítógép indításakor vagy bevezetve a Service Map mellett óránként jön létre. Ezek a rekordok tulajdonságait az alábbi táblázatban rendelkezik. A mezők és értékek a mezők a ServiceMap Azure Resource Manager API-ban a gép erőforrás ServiceMapComputer_CL események leképezés. A mezők és értékek a ServiceMapProcess_CL események leképezés a mezőket a folyamat erőforrás a ServiceMap Azure Resource Manager API-ban. A ResourceName_s mezője megegyezik a megfelelő Resource Manager-erőforrás neve mezőjében. 
+Service Map számítógép-és feldolgozási leltári adatként [kereshetők](../../azure-monitor/log-query/log-query-overview.md) a log Analytics. Ezeket az információkat olyan forgatókönyvekre alkalmazhatja, amelyek tartalmazzák az áttelepítés megtervezését, a kapacitás elemzését, a felderítést és az igény szerinti teljesítménnyel kapcsolatos hibaelhárítást.
+
+A rendszer óránként létrehoz egy rekordot minden egyedi számítógéphez és folyamathoz, továbbá a folyamat vagy számítógép indításakor vagy a Service Mapba való bevezetéskor generált rekordokon kívül. Ezek a rekordok a következő táblákban található tulajdonságokkal rendelkeznek. A ServiceMapComputer_CL-események mezői és értékei a ServiceMap Azure Resource Manager API-ban lévő számítógép-erőforrás mezőire képezhetők le. A ServiceMapProcess_CL-események mezői és értékei a ServiceMap Azure Resource Manager API-ban a folyamat erőforrás mezőire mutatnak. A ResourceName_s mező megegyezik a megfelelő Resource Manager-erőforrásban található Name mezővel. 
 
 >[!NOTE]
->A Service Map funkciók növekedésével ezek a mezők változhatnak.
+>A Service Map-funkciók növekedésével ezek a mezők változhatnak.
 
-Belsőleg generált tulajdonságaiként segítségével egyedi folyamatokat és a számítógépek azonosításához:
+Az egyedi folyamatok és számítógépek azonosításához belsőleg generált tulajdonságok tartoznak:
 
-- Számítógép: Használat *ResourceId* vagy *ResourceName_s* egy számítógépen belül a Log Analytics-munkaterület egyedi azonosításához.
-- Folyamat: Használat *ResourceId* egy folyamatot egy Log Analytics-munkaterületen belül egyedi azonosításához. *ResourceName_s* egyedi, a gép, amelyen a folyamatot futtató (MachineResourceName_s) környezetében 
+- Számítógép A *ResourceId* vagy a *ResourceName_s* használatával egyedileg azonosíthatja a számítógépeket egy log Analytics munkaterületen belül.
+- Folyamat: A *ResourceId* használatával egyedileg azonosíthatja a folyamatokat egy log Analytics munkaterületen belül. A *ResourceName_s* egyedi azon számítógép kontextusában, amelyen a folyamat fut (MachineResourceName_s) 
 
-Több rekord megadott folyamat és a egy adott időtartományban számítógép is létezik, mivel a lekérdezések adhat vissza ugyanazon a számítógépen vagy folyamat egynél több rekordot. Adja meg a legújabb bejegyzést, adja hozzá a "|} a deduplikáció erőforrás-azonosító"a lekérdezéshez.
+Mivel a megadott időtartományban több rekord is létezhet egy adott folyamat és számítógép esetében, a lekérdezések több rekordot is visszaadhatnak ugyanahhoz a számítógéphez vagy folyamathoz. Ha csak a legújabb rekordot szeretné felvenni, adja hozzá a következőt: "| deduplikáció ResourceId "a lekérdezéshez.
 
 ### <a name="connections"></a>Kapcsolatok
-A Log Analytics - VMConnection új tábla kapcsolati metrika kerüljenek. Ez a táblázat ismerteti a kapcsolatokat a gép (bejövő és kimenő). Kapcsolati metrika is ki vannak téve az API-kkal, amelyek biztosítják az eszközöket egy adott metrika beszerzése egy adott időszakban.  TCP-kapcsolatok eredő "*fogadja el*- ing figyel-e szoftvercsatorna bejövő, míg a által létrehozott *csatlakozás*- ing, hogy egy adott IP-cím és port kimenő. A kapcsolat irányát képviseli a iránya tulajdonság, amely lehet megadni **bejövő** vagy **kimenő**. 
 
-Ezeknek a tábláknak rögzíti a függőségi ügynök által küldött adatokból jönnek létre. Minden rekord egy megfigyelési egy egy perces időszakra jelöli. A TimeGenerated tulajdonság az időintervallum kezdetét jelzi. Minden rekord tartalmazza a megfelelő entitás, amely azonosító adatokat, kapcsolat vagy a port, valamint az adott entitás kapcsolódó metrikák. Jelenleg csak akkor fordul elő, a TCP-val IPv4 hálózati aktivitás jelentett.
+A kapcsolódási metrikák a Log Analytics-VMConnection új táblájába íródnak. Ez a táblázat a gépek kapcsolatairól nyújt információkat (bejövő és kimenő). A kapcsolódási metrikák olyan API-kkal is elérhetők, amelyek biztosítják egy adott metrika egy adott időszakra vonatkozó beszerzését.  Az "*elfogadás*egy figyelő szoftvercsatornán" típusú TCP-kapcsolatok bejövőek, míg a *Kapcsolódás*egy adott IP-címhez és porthoz a kimenő. A kapcsolatok irányát az Direction tulajdonság jelképezi, amely beállítható **bejövő** vagy **kimenő**értékre. 
 
-Kezelheti a költségeket és összetettséget, csatlakozási rekordjainak nem felelnek meg az egyes fizikai hálózati kapcsolatokat. Több fizikai hálózati kapcsolatot, amely megjelenik majd a megfelelő tábla logikai kapcsolatot vannak csoportosítva.  Ez azt jelenti, rögzíti a *VMConnection* tábla felel meg a logikai csoportosítása és nem az egyes fizikai kapcsolatokat betartását. Egyetlen logikai rekord összesíti ugyanazt az értéket a következő attribútumok megosztása során egy adott egyperces időszakban, a fizikai hálózati kapcsolatot a rendszer *VMConnection*. 
+A táblázatokban szereplő rekordok a függőségi ügynök által jelentett adatokból jönnek létre. Minden rekord egy egyperces időszakra vonatkozó megfigyelést jelöl. A TimeGenerated tulajdonság az időintervallum kezdetét jelzi. Minden rekord tartalmaz információt a megfelelő entitás, azaz a csatlakozás vagy a port, valamint az entitáshoz társított metrikák azonosítására. Jelenleg csak a TCP protokollt használó hálózati tevékenységek jelentik a jelentést.
+
+A költségeket és a bonyolultságot a kapcsolati rekordok nem jelölik az egyes fizikai hálózati kapcsolatokat. A fizikai hálózati kapcsolatok több logikai kapcsolatba vannak csoportosítva, amely az adott táblázatban látható.  Ez azt jelenti, hogy a *VMConnection* táblában lévő rekordok logikai csoportosítást jelölnek, nem pedig a megfigyelt egyedi fizikai kapcsolatokat. A fizikai hálózati kapcsolatok, amelyek ugyanazt az értéket használják a következő attribútumok esetében egy adott perc intervallumban, egyetlen logikai rekordba vannak összesítve a *VMConnection*-ben. 
 
 | Tulajdonság | Leírás |
 |:--|:--|
-| `Direction` |A kapcsolat irányát, értéke *bejövő* vagy *kimenő* |
-| `Machine` |A számítógép teljes Tartományneve |
-| `Process` |Identitáskezelési folyamat vagy a csoportok a folyamatok, a kapcsolat kezdeményezése és elfogadása |
+| `Direction` |A kapcsolatok iránya, az érték *bejövő* vagy *kimenő* . |
+| `Machine` |A számítógép teljes tartományneve |
+| `Process` |Folyamatok vagy csoportok identitása, a kapcsolatok kezdeményezése/elfogadása |
 | `SourceIp` |A forrás IP-címe |
-| `DestinationIp` |A cél-IP-cím |
-| `DestinationPort` |A cél-port száma |
-| `Protocol` |A kapcsolathoz használt protokoll.  Értékek *tcp*. |
+| `DestinationIp` |A cél IP-címe |
+| `DestinationPort` |A célhely portszáma |
+| `Protocol` |A kapcsolathoz használt protokoll.  Az értékek a *TCP*. |
 
-A fiókra a csoportosítás a hatását, csoportosított fizikai kapcsolatok számával kapcsolatos információkat a rekord a következő tulajdonságok:
+A csoportosítás hatásának kiszámításához a csoportosított fizikai kapcsolatok számával kapcsolatos információk a rekord következő tulajdonságaiban vannak megadva:
 
 | Tulajdonság | Leírás |
 |:--|:--|
-| `LinksEstablished` |A jelentéskészítési időszakban létesített fizikai hálózati kapcsolatok száma |
-| `LinksTerminated` |A jelentéskészítési időszakban le lett állítva fizikai hálózati kapcsolatok száma |
-| `LinksFailed` |A jelentéskészítési időszakban sikertelenül fizikai hálózati kapcsolatok száma. Ez az információ érhető el jelenleg csak a kimenő kapcsolatok számára. |
-| `LinksLive` |Volt megnyitva a jelentéskészítési időtartomány végén található fizikai hálózati kapcsolatok száma|
+| `LinksEstablished` |A jelentéskészítési idő ablakában létrehozott fizikai hálózati kapcsolatok száma |
+| `LinksTerminated` |A jelentéskészítési idő ablakában leállított fizikai hálózati kapcsolatok száma |
+| `LinksFailed` |Azon fizikai hálózati kapcsolatok száma, amelyek sikertelenek voltak a jelentéskészítési idő ablakában. Ez az információ jelenleg csak a kimenő kapcsolatok esetében érhető el. |
+| `LinksLive` |A jelentéskészítési idő ablakának végén megnyitott fizikai hálózati kapcsolatok száma|
 
 #### <a name="metrics"></a>Mérőszámok
 
-Mellett száma kapcsolati metrika adatmennyiség kapcsolatos információkat küldött, és a egy adott logikai kapcsolat fogadott, vagy hálózati port is szerepelnek a rekord a következő tulajdonságokat:
+A kapcsolatok számának mérőszámai mellett az adott logikai kapcsolatban vagy hálózati porton küldött és fogadott adatok mennyiségére vonatkozó információk is szerepelni fog a rekord alábbi tulajdonságaiban:
 
 | Tulajdonság | Leírás |
 |:--|:--|
-| `BytesSent` |A jelentéskészítési időszakban elküldött bájtok száma |
-| `BytesReceived` |A jelentéskészítési időszakban fogadott bájtok teljes száma |
-| `Responses` |A jelentéskészítési időszakban megfigyelt válaszok száma. 
-| `ResponseTimeMax` |A legnagyobb válaszideje (ezredmásodperc) észlelt a jelentéskészítési időszakban.  Ha nincs érték a tulajdonság értéke üres.|
-| `ResponseTimeMin` |A legkisebb válaszideje (ezredmásodperc) észlelt a jelentéskészítési időszakban.  Ha nincs érték a tulajdonság értéke üres.|
-| `ResponseTimeSum` |Az összes válaszidők összege a jelentéskészítési időszakban megfigyelt (ezredmásodperc).  Ha nincs érték a tulajdonság üres|
+| `BytesSent` |A jelentéskészítési idő ablakában elküldhető bájtok teljes száma |
+| `BytesReceived` |A jelentéskészítési idő ablakában fogadott bájtok teljes száma |
+| `Responses` |A jelentéskészítési idő ablakában megfigyelt válaszok száma. 
+| `ResponseTimeMax` |A jelentéskészítési idő ablakában megfigyelt legnagyobb válaszidő (ezredmásodpercben).  Ha nincs érték, a tulajdonság üres.|
+| `ResponseTimeMin` |A jelentéskészítési idő ablakában megfigyelt legkisebb válaszidő (ezredmásodpercben).  Ha nincs érték, a tulajdonság üres.|
+| `ResponseTimeSum` |A jelentéskészítési idő ablakában megfigyelt összes válaszidő (ezredmásodperc) összege.  Ha nincs érték, a tulajdonság üres|
 
-A jelentett adatokat harmadik típus a válaszidő - mennyi ideig does egy hívó költségek feldolgozni és a távoli végpont célzottól kapcsolaton keresztül küldött kérés vár. A válaszidő jelentett igaz válaszideje, az alapul szolgáló protokoll becslése. Számított heurisztika alapján a megfigyelési adatok között a forrás és cél végén egy fizikai hálózati kapcsolatot a flow használatával. Elméleti szinten a kérelem utolsó bájtját elhagyja a küldő, és az idő a válasz utolsó bájtját érkezésekor vissza közötti különbség. E két időbélyegek ábrázolni a kérések és válaszok események egy adott fizikai kapcsolathoz szolgálnak. A különbség a kettő válaszideje, egyetlen kérelem jelöli. 
+A jelentett harmadik adattípus a válaszidő – mennyi időt vesz igénybe a hívó a kapcsolaton keresztül küldött kérések feldolgozására, és a távoli végpont által válaszol. A jelentett válaszidő az alapul szolgáló alkalmazás protokolljának valós válaszideje. A rendszer a heurisztikus használatával számítja ki a fizikai hálózati kapcsolat forrás-és cél vége közötti adatáramlás megfigyelése alapján. Elméletileg az a különbség, hogy a kérelem utolsó bájtja mikor hagyja el a küldőt, valamint azt az időpontot, amikor a válasz utolsó bájtja vissza fog érkezni. Ez a két időbélyeg a kérések és válaszok eseményeinek egy adott fizikai kapcsolatban való kiválasztására szolgál. A kettő közötti különbség az egyetlen kérelem válaszideje. 
 
-Ez a szolgáltatás első verziójában az algoritmus sikeres, a tényleges protokoll egy adott hálózati kapcsolathoz használt függően különböző fokú feltétlenül közelítés. Például az aktuális módszer jól működik a kérés-válasz alapú protokollokat, például a HTTP (S), de nem dolgozhat egyirányú, illetve üzenetet az üzenetsor-alapú protokollokat.
+A szolgáltatás ezen első kiadásában az algoritmus egy olyan közelítés, amely az adott hálózati kapcsolathoz használt tényleges alkalmazási protokolltól függően különböző sikereket eredményezhet. Például az aktuális megközelítés jól működik a kérelem-válasz alapú protokollok, például a HTTP (S) esetében, de nem működik egyirányú vagy üzenetsor-alapú protokollokkal.
 
-Az alábbiakban néhány fontos tudnivalók:
+Néhány fontos szempontot figyelembe kell venni:
 
-1. Ha egy folyamat ugyanazon IP-címen, de több hálózati adapterrel kapcsolatokat fogad, minden egyes kapcsolathoz külön rekord lesz jelentve. 
-2. Helyettesítő karaktert tartalmazó IP-Címmel rendelkező rekordokat tartalmazni fogja nincs tevékenység. Nem foglalja azokat, amelyek arra, hogy a gépen port nyitott a bejövő forgalmat.
-3. Részletességi és adatmennyiség csökkentése érdekében helyettesítő karaktert tartalmazó IP-Címmel rendelkező rekordok kimarad egy egyező rekordot (az ugyanabban a folyamatban, port és protokoll) esetén egy adott IP-címmel. Amikor egy helyettesítő karaktert tartalmazó IP-címrekordot, a rendszer a IsWildcardBind rekord tulajdonságot az adott IP-címmel rendelkező fog beállítani "True" jelzi, hogy a port van-e téve a jelentéskészítési gép minden felületen keresztül történik.
-4. Csak egy adott illesztő a kötött portok beállítása "False" IsWildcardBind rendelkezik.
+1. Ha egy folyamat ugyanazon az IP-címen, de több hálózati adapteren keresztül fogad kapcsolatokat, a rendszer minden egyes csatolóhoz külön rekordot fog jelenteni. 
+2. A helyettesítő karakteres IP-címmel rendelkező rekordok nem tartalmaznak tevékenységet. A szolgáltatás tartalmazza azt a tényt, hogy a gépen lévő port nyitva van a bejövő forgalom számára.
+3. A részletesség és az adatmennyiség csökkentése érdekében a helyettesítő karakteres IP-címekkel rendelkező rekordok kimaradnak, ha egy adott IP-címmel rendelkező egyező rekord van (ugyanahhoz a folyamathoz, porthoz és protokollhoz). Ha nincs megadva helyettesítő IP-rekord, a IsWildcardBind Record tulajdonsága az adott IP-címmel "true" (igaz) értékre lesz állítva, amely jelzi, hogy a port a jelentéskészítő gép összes felületén elérhetővé válik.
+4. Azok a portok, amelyek csak egy adott csatolón vannak kötve, IsWildcardBind "false" értékre vannak állítva.
 
-#### <a name="naming-and-classification"></a>Elnevezési és besorolása
-Az egyszerűség kedvéért egy kapcsolat a távoli vég IP-címét a RemoteIp tulajdonság szerepel. A bejövő kapcsolatok esetében RemoteIp megegyezik SourceIp, mint a kimenő kapcsolatokhoz megegyezik a DestinationIp. A RemoteDnsCanonicalNames tulajdonság jelöli a canonical DNS-nevek, a gép által jelentett RemoteIp. A RemoteDnsQuestions és RemoteClassification tulajdonság későbbi használatra vannak fenntartva. 
+#### <a name="naming-and-classification"></a>Elnevezés és besorolás
+
+A kényelem érdekében a kapcsolatok távoli végének IP-címét a RemoteIp tulajdonság tartalmazza. A bejövő kapcsolatok esetében a RemoteIp ugyanaz, mint a SourceIp, míg a kimenő kapcsolatok esetében ugyanaz, mint a DestinationIp. A RemoteDnsCanonicalNames tulajdonság a gép által a RemoteIp számára jelentett DNS-kanonikus neveket jelöli. A RemoteDnsQuestions és a RemoteClassification tulajdonságok későbbi használatra vannak fenntartva. 
 
 #### <a name="geolocation"></a>Földrajzi hely
-*VMConnection* is tartalmaz földrajzi adatokat a távoli kapcsolat rekordokban végén a rekord a következő tulajdonságai: 
+
+A *VMConnection* az egyes kapcsolatok távoli végére vonatkozó térinformatikai információkat is tartalmaz a rekord alábbi tulajdonságaiban: 
 
 | Tulajdonság | Leírás |
 |:--|:--|
-| `RemoteCountry` |Az üzemeltető RemoteIp ország neve.  Ha például *Egyesült Államok* |
-| `RemoteLatitude` |A földrajzi szélesség.  Ha például *47.68* |
-| `RemoteLongitude` |A földrajzi hosszúság.  Ha például *-122.12* |
+| `RemoteCountry` |A RemoteIp üzemeltető ország/régió neve.  Például *Egyesült Államok* |
+| `RemoteLatitude` |A térinformatikai szélesség.  Például *47,68* |
+| `RemoteLongitude` |A térinformatikai hosszúság.  Például: *-122,12* |
 
 #### <a name="malicious-ip"></a>Kártékony IP-cím
-Minden RemoteIp tulajdonság *VMConnection* tábla be van jelölve IP-címek összevetéssel az ismert kártékony tevékenységek. Ha a RemoteIp kártevőként azonosított a következő tulajdonságok lesz kitöltve (azok üres, ha a IP-cím nem számít rosszindulatú) a rekord a következő tulajdonságai:
+
+A *VMConnection* táblában lévő összes RemoteIp-tulajdonságot a rendszer az ismert kártékony tevékenységgel rendelkező IP-címek készletében ellenőrzi. Ha a RemoteIp rosszindulatúként van azonosítva, a következő tulajdonságok lesznek feltöltve (ezek üresek, ha az IP nem minősül rosszindulatúnak) a rekord következő tulajdonságaiban:
 
 | Tulajdonság | Leírás |
 |:--|:--|
 | `MaliciousIp` |A RemoteIp címe |
-| `IndicatorThreadType` |Észlelt fenyegetés mutató a következő értékek egyike *Botnet*, *C2*, *CryptoMining*, *Darknet*, *DDos* , *MaliciousUrl*, *kártevő*, *adathalász*, *Proxy*, *elleni*, *Megnézendők*.   |
-| `Description` |Az észlelt fenyegetés leírása. |
-| `TLPLevel` |Közlekedési lámpa protokoll (TLP) szint egyike a meghatározott értékeknek *fehér*, *zöld*, *sárga*, *Red*. |
-| `Confidence` |Értékek a következők *0 – 100*. |
-| `Severity` |Értékek a következők *0 – 5*, ahol *5* van a legsúlyosabb és *0* nem súlyos egyáltalán. Alapértelmezett érték *3*.  |
-| `FirstReportedDateTime` |Először a szolgáltató jelenteni a kijelző. |
-| `LastReportedDateTime` |A kijelző Interflow által látott utolsó időpontját. |
-| `IsActive` |Azt jelzi, hogy a mutatók vannak inaktiválása az *igaz* vagy *hamis* értéket. |
-| `ReportReferenceLink` |Egy adott rendszernek megfigyelhetőnek kapcsolatos jelentéseket mutató hivatkozásokat tartalmaz. |
-| `AdditionalInformation` |További információkat biztosít, ha van ilyen, az észlelt fenyegetés kapcsolatban. |
+| `IndicatorThreadType` |Az észlelt veszélyforrás az alábbi értékek egyike, a *botnet*, a *C2*, a *CryptoMining*, a *Darknet*, a *DDos*, a *MaliciousUrl*, a *malware*, az adathalászat, a *proxy*, a *PUA*, a  *List*.   |
+| `Description` |A megfigyelt fenyegetés leírása. |
+| `TLPLevel` |A forgalmi lámpa protokoll (TLP) szintje az egyik definiált érték, a *fehér*, a *zöld*, a *sárga*és a *vörös*. |
+| `Confidence` |Az értékek *0 – 100*. |
+| `Severity` |Az értékek *0 – 5*, ahol az *5* a legsúlyosabb, a *0* pedig egyáltalán nem súlyos. Az alapértelmezett érték *3*.  |
+| `FirstReportedDateTime` |Az első alkalommal, amikor a szolgáltató jelentette a kijelzőt. |
+| `LastReportedDateTime` |A mutató a folyamat utolsó időpontjában volt látható. |
+| `IsActive` |Azt jelzi, hogy a kijelzők inaktiválva vannak-e *igaz* vagy *hamis* értékkel. |
+| `ReportReferenceLink` |Egy adott megfigyelhető jelentéshez kapcsolódó jelentések hivatkozásai. |
+| `AdditionalInformation` |További információkat biztosít a megfigyelt fenyegetésről. |
 
-### <a name="servicemapcomputercl-records"></a>ServiceMapComputer_CL records
-Típussal rendelkező rekordok *ServiceMapComputer_CL* rendelkezik a kiszolgálókat a Szolgáltatástérkép-ügynökökkel Hardverleltár-adatait. Ezeket a rekordokat az alábbi táblázatban az jellemzőkkel rendelkeznek:
+### <a name="servicemapcomputer_cl-records"></a>ServiceMapComputer_CL records
+
+A *ServiceMapComputer_CL* rendelkező rekordok a Service Map-ügynökökkel rendelkező kiszolgálók leltározási adataival rendelkeznek. Ezeket a rekordokat az alábbi táblázatban az jellemzőkkel rendelkeznek:
 
 | Tulajdonság | Leírás |
 |:--|:--|
 | `Type` | *ServiceMapComputer_CL* |
 | `SourceSystem` | *OpsManager* |
-| `ResourceId` | A munkaterületen belül a gépek egyedi azonosítója |
-| `ResourceName_s` | A munkaterületen belül a gépek egyedi azonosítója |
-| `ComputerName_s` | A számítógép teljes Tartományneve |
-| `Ipv4Addresses_s` | Listáját a kiszolgáló az IPv4-címek |
-| `Ipv6Addresses_s` | Listáját a kiszolgáló az IPv6-címek |
+| `ResourceId` | A munkaterületen belüli gép egyedi azonosítója |
+| `ResourceName_s` | A munkaterületen belüli gép egyedi azonosítója |
+| `ComputerName_s` | A számítógép teljes tartományneve |
+| `Ipv4Addresses_s` | A kiszolgáló IPv4-címeinek listája |
+| `Ipv6Addresses_s` | A kiszolgáló IPv6-címeinek listája |
 | `DnsNames_s` | DNS-nevek tömbje |
-| `OperatingSystemFamily_s` | Windows vagy Linux rendszeren |
+| `OperatingSystemFamily_s` | Windows vagy Linux |
 | `OperatingSystemFullName_s` | Az operációs rendszer teljes neve  |
-| `Bitness_s` | Bitszámértékének a gép (32 bites vagy 64 bites)  |
+| `Bitness_s` | A gép bitszáma (32 bites vagy 64 bites)  |
 | `PhysicalMemory_d` | A fizikai memória (MB) |
-| `Cpus_d` | Processzorok száma |
-| `CpuSpeed_d` | A CPU-sebesség MHz-ben|
-| `VirtualizationState_s` | *ismeretlen*, *fizikai*, *virtuális*, *hipervizor* |
-| `VirtualMachineType_s` | *Hyper-v*, *vmware*, és így tovább |
-| `VirtualMachineNativeMachineId_g` | A hipervizor által hozzárendelt virtuális gép azonosítója |
+| `Cpus_d` | A processzorok száma |
+| `CpuSpeed_d` | A processzor sebessége (MHz)|
+| `VirtualizationState_s` | *ismeretlen*, *fizikai*, *virtuális*, *hypervisor* |
+| `VirtualMachineType_s` | *HyperV*, *VMware*stb. |
+| `VirtualMachineNativeMachineId_g` | A virtuális gép azonosítója, amelyet a hypervisor rendel hozzá |
 | `VirtualMachineName_s` | A virtuális gép neve |
-| `BootTime_t` | A rendszerindítás ideje |
+| `BootTime_t` | A rendszerindítási idő |
 
-### <a name="servicemapprocesscl-type-records"></a>ServiceMapProcess_CL Type records
-Típussal rendelkező rekordok *ServiceMapProcess_CL* rendelkezik TCP-kapcsolattal rendelkező folyamatokat a Hardverleltár-adatait a Service Map-ügynökökkel kiszolgálókon. Ezeket a rekordokat az alábbi táblázatban az jellemzőkkel rendelkeznek:
+### <a name="servicemapprocess_cl-type-records"></a>ServiceMapProcess_CL Type records
+
+A *ServiceMapProcess_CL* rendelkező rekordok a TCP-kapcsolattal rendelkező, Service Map ügynökökkel rendelkező kiszolgálókon tárolt folyamatokra vonatkozó leltározási adatokkal rendelkeznek. Ezeket a rekordokat az alábbi táblázatban az jellemzőkkel rendelkeznek:
 
 | Tulajdonság | Leírás |
 |:--|:--|
 | `Type` | *ServiceMapProcess_CL* |
 | `SourceSystem` | *OpsManager* |
-| `ResourceId` | A munkaterületen belül a folyamat egyedi azonosítója |
-| `ResourceName_s` | A gépen, amelyen fut a folyamat egyedi azonosítója|
-| `MachineResourceName_s` | Az erőforrás nevét a gép |
-| `ExecutableName_s` | A folyamat végrehajtható fájl neve |
-| `StartTime_t` | A folyamat készlet kezdő időpont |
-| `FirstPid_d` | Az első PID folyamatkészletben |
+| `ResourceId` | A munkaterületen belüli folyamat egyedi azonosítója |
+| `ResourceName_s` | Egy folyamat egyedi azonosítója azon a gépen belül, amelyen fut|
+| `MachineResourceName_s` | A gép erőforrásának neve |
+| `ExecutableName_s` | A folyamat végrehajtható fájljának neve |
+| `StartTime_t` | A folyamat készletének kezdési ideje |
+| `FirstPid_d` | A folyamat első PID-je |
 | `Description_s` | A folyamat leírása |
 | `CompanyName_s` | A vállalat neve |
 | `InternalName_s` | A belső név |
-| `ProductName_s` | A termék nevét |
-| `ProductVersion_s` | A termék verziója |
+| `ProductName_s` | A termék neve |
+| `ProductVersion_s` | A termék verziószáma |
 | `FileVersion_s` | A fájl verziója |
-| `CommandLine_s` | A parancssorból |
+| `CommandLine_s` | A parancssor |
 | `ExecutablePath _s` | A végrehajtható fájl elérési útja |
-| `WorkingDirectory_s` | A munkakönyvtárban |
-| `UserName` | A fiók, amely alatt a folyamat végrehajtása |
-| `UserDomain` | A tartományhoz, amelyben a folyamat végrehajtása |
+| `WorkingDirectory_s` | A munkakönyvtár |
+| `UserName` | Az a fiók, amelyben a folyamat végre van hajtva |
+| `UserDomain` | Az a tartomány, amelyben a folyamat végrehajtás alatt áll |
 
 ## <a name="sample-log-searches"></a>Naplókeresési minták
 
-### <a name="list-all-known-machines"></a>Az összes ismert gépek listája
-ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId
+### <a name="list-all-known-machines"></a>Az összes ismert gép listázása
 
-### <a name="list-the-physical-memory-capacity-of-all-managed-computers"></a>A fizikai memória-kapacitás az összes felügyelt számítógép listája.
-ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project PhysicalMemory_d, ComputerName_s
+ServiceMapComputer_CL | arg_max (TimeGenerated, *) összegzése ResourceId szerint
 
-### <a name="list-computer-name-dns-ip-and-os"></a>Számítógép neve, DNS, IP és az operációs rendszer.
+### <a name="list-the-physical-memory-capacity-of-all-managed-computers"></a>Az összes felügyelt számítógép fizikai memória-kapacitásának listázása.
+
+ServiceMapComputer_CL | arg_max összegzése (TimeGenerated, *) a ResourceId alapján | projekt PhysicalMemory_d, ComputerName_s
+
+### <a name="list-computer-name-dns-ip-and-os"></a>A számítógép nevének, DNS-címének, IP-címének és operációs rendszerének listázása.
+
 ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project ComputerName_s, OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s
 
-### <a name="find-all-processes-with-sql-in-the-command-line"></a>A parancssorban keresse meg az "sql" összes folyamat
-ServiceMapProcess_CL |} ahol CommandLine_s contains_cs "sql" |} Összegzés arg_max(TimeGenerated, *) erőforrás-azonosító szerint
+### <a name="find-all-processes-with-sql-in-the-command-line"></a>Az összes folyamat megkeresése az "SQL" paranccsal a parancssorban
 
-### <a name="find-a-machine-most-recent-record-by-resource-name"></a>Keresse meg a gép (legutóbbi rekord) erőforrás szerint
-search in (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | summarize arg_max(TimeGenerated, *) by ResourceId
+ServiceMapProcess_CL | where CommandLine_s contains_cs "SQL" | arg_max (TimeGenerated, *) összegzése ResourceId szerint
 
-### <a name="find-a-machine-most-recent-record-by-ip-address"></a>Keresse meg a gép (legutóbbi rekord) IP-cím alapján
-Keresés a (ServiceMapComputer_CL) "10.229.243.232" |} Összegzés arg_max(TimeGenerated, *) erőforrás-azonosító szerint
+### <a name="find-a-machine-most-recent-record-by-resource-name"></a>Számítógép (legfrissebb rekord) keresése erőforrás neve alapján
 
-### <a name="list-all-known-processes-on-a-specified-machine"></a>Egy megadott számítógép összes ismert folyamat listázása
-ServiceMapProcess_CL |} ahol MachineResourceName_s == "m-559dbcd8-3130-454d-8d1d-f624e57961bc" |} Összegzés arg_max(TimeGenerated, *) erőforrás-azonosító szerint
+Keresés a következőben: (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | arg_max (TimeGenerated, *) összegzése ResourceId szerint
 
-### <a name="list-all-computers-running-sql"></a>Az SQL futtató számítógépek listája
-ServiceMapComputer_CL |} ahol a ResourceName_s (((ServiceMapProcess_CL) lévő keresése "\*sql\*" |} különböző MachineResourceName_s)) |} különböző ComputerName_s
+### <a name="find-a-machine-most-recent-record-by-ip-address"></a>Számítógép keresése (legfrissebb rekord) IP-cím szerint
 
-### <a name="list-all-unique-product-versions-of-curl-in-my-datacenter"></a>Saját adatközpontban curl összes egyedi termék verziója listázása
-ServiceMapProcess_CL |} ahol ExecutableName_s == "curl" |} különböző ProductVersion_s
+Keresés a következőben: (ServiceMapComputer_CL) "10.229.243.232" | arg_max (TimeGenerated, *) összegzése ResourceId szerint
 
-### <a name="create-a-computer-group-of-all-computers-running-centos"></a>Az összes számítógép CentOS rendszerű számítógépcsoport létrehozása
+### <a name="list-all-known-processes-on-a-specified-machine"></a>A megadott gépen lévő összes ismert folyamat listázása
+
+ServiceMapProcess_CL | where MachineResourceName_s = = "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | arg_max (TimeGenerated, *) összegzése ResourceId szerint
+
+### <a name="list-all-computers-running-sql"></a>Az összes SQL-t futtató számítógép listázása
+
+ServiceMapComputer_CL | ahol a ResourceName_s ((Keresés itt (ServiceMapProcess_CL) "\*SQL\*" | DISTINCT MachineResourceName_s)) | eltérő ComputerName_s
+
+### <a name="list-all-unique-product-versions-of-curl-in-my-datacenter"></a>A curl összes egyedi termék-verziójának listázása az adatközpontban
+
+ServiceMapProcess_CL | where ExecutableName_s = = "curl" | különböző ProductVersion_s
+
+### <a name="create-a-computer-group-of-all-computers-running-centos"></a>A CentOS-t futtató összes számítógép számítógépcsoport létrehozása
+
 ServiceMapComputer_CL | where OperatingSystemFullName_s contains_cs "CentOS" | distinct ComputerName_s
 
-### <a name="summarize-the-outbound-connections-from-a-group-of-machines"></a>A kimenő kapcsolatok a gépek csoportból összefoglalója
+### <a name="summarize-the-outbound-connections-from-a-group-of-machines"></a>A kimenő kapcsolatok összefoglalása a számítógépek csoportjából
+
 ```
 // the machines of interest
 let machines = datatable(m: string) ["m-82412a7a-6a32-45a9-a8d6-538354224a25"];
@@ -494,21 +546,67 @@ let remoteMachines = remote | summarize by RemoteMachine;
 ```
 
 ## <a name="rest-api"></a>REST API
-A kiszolgáló, a folyamat és a függőségi adatokat a Szolgáltatástérkép keresztül érhető el az összes a [Service Map REST API](https://docs.microsoft.com/rest/api/servicemap/).
+
+Service Map összes kiszolgáló-, folyamat-és függőségi értéke a [Service Map REST API](https://docs.microsoft.com/rest/api/servicemap/)keresztül érhető el.
 
 ## <a name="diagnostic-and-usage-data"></a>Diagnosztika és használati adatok
-A Microsoft automatikusan gyűjt használatának és teljesítményének adatokat a Szolgáltatástérkép szolgáltatás használata. A Microsoft ezeket az adatokat adja meg, és a minőségének, biztonságának és integritásának a Szolgáltatástérkép szolgáltatás javítására használja. Adja meg a pontos és hatékony hibaelhárítási képességeket kínál, az adatok például az operációs rendszer és verzió, IP-cím, DNS-nevet és munkaállomás-neve, a szoftver konfigurációjára vonatkozó információkat tartalmaz. A Microsoft nem gyűjti a neveket, címeket és egyéb kapcsolattartási adatait.
+
+A Microsoft automatikusan gyűjt használatának és teljesítményének adatokat a Szolgáltatástérkép szolgáltatás használata. A Microsoft ezeket az adatokat adja meg, és a minőségének, biztonságának és integritásának a Szolgáltatástérkép szolgáltatás javítására használja. A pontos és hatékony hibaelhárítási lehetőségek biztosításához az adatok tartalmazzák a szoftver konfigurációjával kapcsolatos információkat, például az operációs rendszert és a verziót, az IP-címet, a DNS-nevet és a munkaállomás nevét. A Microsoft nem gyűjt neveket, címeket és más kapcsolattartási adatokat.
 
 Az adatok gyűjtésével és használatával kapcsolatos további információkért tekintse meg a [Microsoft Online Services adatvédelmi nyilatkozata](https://go.microsoft.com/fwlink/?LinkId=512132).
 
-
 ## <a name="next-steps"></a>További lépések
-Tudjon meg többet [naplókereséseket](../../azure-monitor/log-query/log-query-overview.md) a Log Analytics által a Service Map összegyűjtött adatok lekéréséhez.
 
+További információ a [](../../azure-monitor/log-query/log-query-overview.md) log Analytics naplóbeli keresésekről Service Map által összegyűjtött adatok lekéréséhez.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
-Tekintse meg a [hibaelhárítás szakaszhoz a konfigurálása a Service Map dokumentum]( service-map-configure.md#troubleshooting).
 
+Ha problémába ütközik telepítését és futtatását a Service Map, ez a szakasz segítségével. Ha még mindig nem tudja megoldani a problémát, forduljon a Microsoft Support.
+
+### <a name="dependency-agent-installation-problems"></a>Függőségi ügynök telepítési problémák
+
+#### <a name="installer-prompts-for-a-reboot"></a>Telepítő kérni fogja a számítógép újraindítása
+A függőségi ügynök *általában* nem igényel újraindítást a telepítés vagy az eltávolítás után. Egyes ritka esetekben azonban a Windows Server-telepítés folytatásához újraindítás szükséges. Ez akkor fordulhat elő, ha egy függőség, általában C++ a Microsoft vizualizáció újraterjeszthető könyvtára egy zárolt fájl miatt újraindítást igényel.
+
+#### <a name="message-unable-to-install-dependency-agent-visual-studio-runtime-libraries-failed-to-install-code--code_number-appears"></a>Üzenet: "nem sikerült telepíteni a függőségi ügynököt: A Visual Studio futásidejű kódtárai nem telepíthetők (code = [code_number])
+
+A Microsoft Dependency agent a Microsoft Visual Studio modul kódtárak épül. Egy üzenetet fog kapni, ha probléma van a kódtárak telepítése során. 
+
+A futásidejű kódtár telepítőcsomagokat %LOCALAPPDATA%\temp mappában hozzon létre naplókat. A `dd_vcredist_arch_yyyymmddhhmmss.log`fájl az, ahol az *Arch* `x86` vagy `amd64` a, a *yyyymmddhhmmss* pedig az a dátum és idő (24 órás óra), amikor a napló létrejött. A napló a probléma, amely blokkolja a telepítési részletesen ismerteti.
+
+Hasznos lehet először telepíteni a [legújabb futásidejű kódtárakat](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) .
+
+A következő táblázat felsorolja a kód számokat és a javasolt megoldások.
+
+| Kód | Leírás | Megoldás: |
+|:--|:--|:--|
+| 0x17 | A könyvtár telepítő szükséges a Windows update, amely nem lett telepítve. | Tekintse meg a legutóbbi könyvtár installer naplójának.<br><br>Ha egy hivatkozást `Windows8.1-KB2999226-x64.msu` egy olyan vonal `Error 0x80240017: Failed to execute MSU package,` követ, amely nem rendelkezik a KB2999226 telepítéséhez szükséges előfeltételekkel. Kövesse az [univerzális C futtatókörnyezet](https://support.microsoft.com/kb/2999226) előfeltételek szakaszának útmutatásait a Windows-cikkben. Szükség lehet, futtassa a Windows Update, és indítsa újra a többször annak érdekében, hogy telepítse az előfeltételeket.<br><br>Futtassa újra a Microsoft Dependency agent telepítő. |
+
+### <a name="post-installation-issues"></a>Telepítés utáni kapcsolatos problémák
+
+#### <a name="server-doesnt-appear-in-service-map"></a>Kiszolgáló nem jelenik meg a Service Map
+
+Ha a függőségi ügynök telepítése sikeres volt, de nem látja a gépet a Service Map megoldásban:
+* A függőségi ügynök sikeres telepítését? Ellenőrzi, hogy ha a szolgáltatás telepítve van és fut ellenőrizheti.<br><br>
+**Windows**: Keresse meg a **Microsoft függőségi ügynök**nevű szolgáltatást.
+**Linux**: Keresse meg a futó folyamatot a **Microsoft-függőség-ügynöknek**.
+
+* A [log Analytics ingyenes szintet](https://azure.microsoft.com/pricing/details/monitor/)választja? Az ingyenes csomag legfeljebb öt egyedi Service Map gépet tesz lehetővé. Minden további gép nem jelenik meg Service Mapban, még akkor sem, ha az előző öt már nem küld adatokat.
+
+* A kiszolgáló napló-és teljesítményadatok-adatokat küld Azure Monitor naplókba? Nyissa meg az Azure Monitor\Logs, és futtassa a következő lekérdezést a számítógépen: 
+
+    ```kusto
+    Usage | where Computer == "admdemo-appsvr" | summarize sum(Quantity), any(QuantityUnit) by DataType
+    ```
+
+Jutott el a különféle eseményekre az eredmények között? Az adatok legutóbbi? Ha igen, a Log Analytics ügynök megfelelően működik, és kommunikál a munkaterülettel. Ha nem, ellenőrizze az ügynököt a gépen: [Log Analytics ügynök a Windows hibaelhárításához](../platform/agent-windows-troubleshoot.md) vagy [log Analytics ügynök a Linux rendszerhez – hibaelhárítás](../platform/agent-linux-troubleshoot.md).
+
+#### <a name="server-appears-in-service-map-but-has-no-processes"></a>Kiszolgáló megjelenik a Szolgáltatástérkép, de nincs folyamatokat
+
+Ha a gép Service Mapban jelenik meg, de nem rendelkezik folyamat-vagy adatforrással, az azt jelzi, hogy a függőségi ügynök telepítve van és fut, de a kernel-illesztőprogram nem töltődött be. 
+
+Győződjön meg `C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file` a (Windows) `/var/opt/microsoft/dependency-agent/log/service.log file` vagy (Linux) rendszerről. Az utolsó sort jeleznie kell, miért nem töltődtek be a kernelbe. Például a kernel előfordulhat, hogy nem támogatja a linuxon futó Ha frissítette a kernel.
 
 ## <a name="feedback"></a>Visszajelzés
-Van bármilyen visszajelzése szolgáltatást, mert a Service Map vagy ez a dokumentáció?  Látogasson el a [User Voice lap](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map), ahol javaslattétel szolgáltatásokra, illetve szavazhat fel meglévő javaslatokat.
+
+Visszajelzést szeretne kapni a Service Mapről vagy a dokumentációról?  Látogasson el a felhasználói hangvételi [oldalra](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map), ahol javaslatot tehet a funkciókra, vagy megszavazhatja a meglévő javaslatokat.

@@ -10,17 +10,17 @@ ms.reviewer: klam
 ms.assetid: e69542ec-d10f-4f17-9b7a-2ee441ee7d68
 ms.topic: conceptual
 ms.date: 09/17/2018
-ms.openlocfilehash: 3b2cfc932c6322df8237ec7cdf820fc4242bfa72
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 48e03f41fa0a39642330288fc05ef709179b4c62
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57887221"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300988"
 ---
 # <a name="create-and-schedule-your-first-job-with-azure-scheduler---azure-portal"></a>Az első feladat létrehozása és ütemezése az Azure Scheduler használatával az Azure Portalon
 
 > [!IMPORTANT]
-> A kivezetésre kerülő Azure Scheduler helyébe az [Azure Logic Apps](../logic-apps/logic-apps-overview.md) lép. Feladatok ütemezéséhez [próbálja ki inkább az Azure Logic Apps szolgáltatást](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
+> [Azure Logic apps](../logic-apps/logic-apps-overview.md) az Azure Scheduler cseréje [folyamatban](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)van. Ha továbbra is szeretne dolgozni a Feladatütemezőben beállított feladatokkal, akkor a lehető leghamarabb [telepítse át Azure Logic apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) .
 
 Ebből az oktatóanyagból megtudhatja, milyen egyszerűen hozhat létre és ütemezhet feladatot, majd monitorozhatja és kezelheti a feladatot. 
 
@@ -40,7 +40,7 @@ Ha nem rendelkezik Azure-előfizetéssel, <a href="https://azure.microsoft.com/f
 
    | Tulajdonság | Példaérték | Leírás |
    |----------|---------------|-------------| 
-   | **Name (Név)** | getMicrosoft | A feladat neve | 
+   | **Name** | getMicrosoft | A feladat neve | 
    | **Feladatgyűjtemény** | <*feladatgyűjtemény-neve*> | Hozzon létre egy feladatgyűjteményt, vagy válasszon ki egy meglévő gyűjteményt. | 
    | **Előfizetés** | <*Azure-előfizetés-neve*> | Az Azure-előfizetés neve | 
    |||| 
@@ -93,7 +93,7 @@ Ezekről a területekről további információért jelöljön ki egy területet
 
 <a name="properties"></a>
 
-### <a name="properties"></a>Tulajdonságok
+### <a name="properties"></a>properties
 
 A kezelési metaadatokat leíró, csak olvasható tulajdonságok megtekintéséhez a feladatnál válassza a **Tulajdonságok** lehetőséget.
 

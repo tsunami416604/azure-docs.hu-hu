@@ -1,21 +1,21 @@
 ---
 title: Csatlakozás az Azure SQL Data Warehouse-hoz az sqlcmd használatával | Microsoft Docs
-description: Sqlcmd parancssori segédprogram használatával csatlakozhat, és az Azure SQL Data Warehouse lekérdezéséhez.
+description: A Sqlcmd parancssori segédprogram használatával csatlakozhat egy Azure SQL Data Warehousehoz, és lekérdezheti azokat.
 services: sql-data-warehouse
-author: KavithaJonnakuti
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: consume
+ms.subservice: development
 ms.date: 04/17/2018
-ms.author: kavithaj
+ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: e0e423ef0503bc4d23fddf4e1b9ff985636d2ec2
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f3b93660fb9f8f3b0bfdddc37105b9e998ed9eee
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463514"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479506"
 ---
 # <a name="connect-to-sql-data-warehouse-with-sqlcmd"></a>Csatlakozás az SQL Data Warehouse-hoz az sqlcmd használatával
 > [!div class="op_single_selector"]
@@ -27,19 +27,19 @@ ms.locfileid: "55463514"
 > 
 > 
 
-Az [sqlcmd][sqlcmd] parancssori segédprogramot az Azure SQL Data Warehouse lekérdezéséhez és az ahhoz való csatlakozáshoz használhatja.  
+A [Sqlcmd][sqlcmd] parancssori segédprogram használatával csatlakozhat egy Azure SQL Data Warehousehoz, és lekérdezheti azokat.  
 
 ## <a name="1-connect"></a>1. Kapcsolódás
 Az [sqlcmd][sqlcmd] használatának megkezdéséhez nyissa meg a parancssort, és írja be az **sqlcmd** kifejezést, majd a saját SQL Data Warehouse-adatbázisának kapcsolati sztringjét. A kapcsolati sztringben a következő paraméterekre van szükség:
 
-* **Server (-S):** Az űrlap-kiszolgáló `<`kiszolgálónév`>`. database.windows.net
+* **Kiszolgáló (-S):** Kiszolgáló a (z)`>` kiszolgálóneve.database.Windows.net`<`
 * **Database (-d):** Az adatbázis neve.
-* **Enable Quoted azonosítók (-I):** Egy SQL Data Warehouse-példányhoz való csatlakozáshoz engedélyezni kell a határolójeles azonosítókat.
+* **Idézett azonosítók engedélyezése (-I):** A SQL Data Warehouse-példányhoz való kapcsolódáshoz engedélyezni kell az idézőjelben lévő azonosítókat.
 
 Az SQL Server-hitelesítés használatához meg kell adnia a felhasználónév/jelszó paramétereit:
 
-* **User (-U):** Az űrlap a kiszolgálói felhasználó `<`felhasználó`>`
-* **Jelszó (-P):** A felhasználóhoz tartozó jelszót.
+* **Felhasználó (-U):** A kiszolgáló felhasználója az `<`űrlap felhasználója`>`
+* **Jelszó (-P):** A felhasználóhoz tartozó jelszó.
 
 A kapcsolati sztring például a következőképpen nézhet ki:
 
@@ -83,7 +83,7 @@ sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@sswor
 ```
 
 ## <a name="next-steps"></a>További lépések
-Az sqlcmd-ben elérhető további lehetőségek részleteit az [sqlcmd dokumentációjában][sqlcmd] tekintheti meg.
+A Sqlcmd-ben elérhető beállításokkal kapcsolatos további információkért tekintse meg a [Sqlcmd dokumentációját][sqlcmd] .
 
 <!--Image references-->
 

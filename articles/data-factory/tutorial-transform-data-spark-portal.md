@@ -11,12 +11,12 @@ ms.date: 01/10/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: de99d1a58cac12c80748b34ef4a1b07c9fb2a78e
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: d13e0b95d57e3063292319961d5e1138f994076e
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576854"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812278"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>Adatátalakítás a felhőben egy Spark-tevékenység az Azure Data Factoryban való használatával
 Ebben az oktatóanyagban egy Azure Data Factory-folyamatot hoz létre az Azure Portal használatával. Ez a folyamat egy Spark-tevékenységgel és egy igény szerinti Azure HDInsight társított szolgáltatással alakítja át az adatokat. 
@@ -104,7 +104,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 1. A **Verzió** résznél válassza a **V2** értéket.
 1. **Hely:** válassza ki az adat-előállító helyét. 
 
-   Azure-régióban, amelyben a Data Factory jelenleg listája, válassza ki a régiók, amelyek a következő oldalon érdeklődésére számot tartó, és bontsa ki **Analytics** található **adat-előállító**: [Régiónként elérhető termékek](https://azure.microsoft.com/global-infrastructure/services/). A Data Factory által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
+   Azon Azure-régiók listájáért, amelyekben Data Factory jelenleg elérhető, válassza ki a következő oldalon megtekinteni kívánt régiókat, majd bontsa ki az **elemzés** elemet a **Data Factory**megkereséséhez: [Régiónként elérhető termékek](https://azure.microsoft.com/global-infrastructure/services/). A Data Factory által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
 
 1. Kattintson a **Létrehozás** gombra.
 
@@ -147,13 +147,13 @@ Ebben a szakaszban két társított szolgáltatást hoz létre:
    
    b. Győződjön meg arról, hogy az **On-demand HDInsight** (Igény szerinti HDInsight) van kiválasztva a **Típus** elemnél.
    
-   c. Az **Azure Storage társított szolgáltatás** mezőben válassza az **AzureStorage1** lehetőséget. Ezt a társított szolgáltatást korábban hozta létre. Ha másik nevet használt, adja meg a megfelelő nevet. 
+   c. Az **Azure Storage-beli társított szolgáltatás**esetében válassza a **AzureBlobStorage1**lehetőséget. Ezt a társított szolgáltatást korábban hozta létre. Ha másik nevet használt, adja meg a megfelelő nevet. 
    
    d. Válasza a **spark** **fürttípust**.
    
    e. Adja meg annak az **egyszerű szolgáltatásnak az azonosítóját**, amely rendelkezik a HDInsight-fürt létrehozásához szükséges engedéllyel. 
    
-      A szolgáltatásnévnek az előfizetés vagy a létrejövő fürtnek helyet adó erőforráscsoport Közreműködő szerepkörének tagjának kell lennie. További információk: [Egy Azure Active Directory-alkalmazás és egyszerű szolgáltatás létrehozása](../active-directory/develop/howto-create-service-principal-portal.md).
+      A szolgáltatásnévnek az előfizetés vagy a létrejövő fürtnek helyet adó erőforráscsoport Közreműködő szerepkörének tagjának kell lennie. További információk: [Egy Azure Active Directory-alkalmazás és egyszerű szolgáltatás létrehozása](../active-directory/develop/howto-create-service-principal-portal.md). Az **egyszerű szolgáltatásnév azonosítója** egyenértékű az alkalmazás- *azonosítóval*, és az **egyszerű szolgáltatásnév kulcsa** megegyezik az *ügyfél titkos*kódjának értékével.
    
    f. A **Szolgáltatásnév kulcsa** mezőben adja meg a kulcsot. 
    
@@ -189,7 +189,7 @@ Ebben a szakaszban két társított szolgáltatást hoz létre:
    ![Az HDInsight kapcsolódó szolgáltatás megadása](./media/tutorial-transform-data-spark-portal/select-hdinsight-linked-service.png)
 1. Váltson a **Szkript/Jar** lapra, és végezze el az alábbi lépéseket: 
 
-   a. A **Feladathoz társított szolgáltatás** mezőben válassza az **AzureStorage1** lehetőséget.
+   a. A **feladatok társított szolgáltatásnál**válassza a **AzureBlobStorage1**lehetőséget.
    
    b. Kattintson a **Tallózás a tárolóban** lehetőségre.
 
@@ -206,7 +206,7 @@ Ebben a szakaszban két társított szolgáltatást hoz létre:
 
 
 ## <a name="trigger-a-pipeline-run"></a>Folyamat futtatásának aktiválása
-Kattintson az **Aktiválás** gombra az eszköztáron, majd válassza az **Aktiválás most** lehetőséget. 
+Válassza az **aktiválás hozzáadása** lehetőséget az eszköztáron, majd válassza az **aktiválás most**lehetőséget. 
 
 ![Az „Aktiválás” és az „Aktiválás most” gomb](./media/tutorial-transform-data-spark-portal/trigger-now-menu.png)
 
@@ -222,7 +222,7 @@ Kattintson az **Aktiválás** gombra az eszköztáron, majd válassza az **Aktiv
 
    ![Folyamat futási állapota](./media/tutorial-transform-data-spark-portal/pipeline-run-succeeded.png) 
 
-   A fenti **Folyamatok** elemre kattintva visszaválthat a folyamatfuttatások nézetre.
+   Visszaválthat a folyamat futtatási nézetére úgy, hogy kiválasztja az **összes folyamat futtatása** hivatkozást a felső részen.
 
    ![„Tevékenységfuttatások” nézet](./media/tutorial-transform-data-spark-portal/activity-runs.png)
 
@@ -253,7 +253,7 @@ A mintában szereplő folyamat egy Spark-tevékenységgel és egy igény szerint
 A következő oktatóanyagra lépve megtudhatja, hogyan alakíthat át adatokat egy Hive-szkript a virtuális hálózatban lévő Azure HDInsight-fürtön való futtatásával. 
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Adatok átalakítása a Hive, az Azure Virtual Network használatával](tutorial-transform-data-hive-virtual-network-portal.md).
+> [Oktatóanyag: Az adatátalakítást a kaptár használatával](tutorial-transform-data-hive-virtual-network-portal.md)az Azure Virtual Networkban.
 
 
 

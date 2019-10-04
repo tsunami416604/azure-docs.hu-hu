@@ -1,46 +1,46 @@
 ---
-title: Párosítás és -igazításának – egyéni a fordítót Mondatkezdő
+title: Mondat párosítása és igazítása – egyéni fordító
 titleSuffix: Azure Cognitive Services
-description: A betanítási futtatás során mondatokat párhuzamos dokumentumokban található a párosított vagy igazítva. Egyéni a fordítót fordítások egy mondatban tanul, egyszerre egy mondatát, a fordítás ezt a mondatot, olvassa el. Ezután azt igazítja szavak és kifejezések ezen két mondatokban egymáshoz.
-author: rajdeep-in
-manager: christw
+description: A betanítás végrehajtása során a párhuzamos dokumentumokban lévő mondatok párosítva vannak vagy igazíthatók. Az egyéni fordító egyszerre tanul egy mondatot a mondatok beolvasásával, a mondat fordításával. Ezután a két mondatban található szavakat és kifejezéseket egymáshoz igazítja.
+author: swmachan
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-rada
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 8d2933f6a3bbab792acb708f2a59cad4eb2cabf7
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: e9bc5c876da6bd2be1b22b389b819e51330b2e50
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57777158"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595461"
 ---
-# <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>Mondat párosítási és párhuzamos dokumentumokban igazítása
+# <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>Mondat párosítása és igazítása párhuzamos dokumentumokban
 
-A képzés során mondatokat párhuzamos dokumentumokban található a párosított vagy igazítva. Egyéni a fordítót a mondatok tudta párosítsa az egyes adatkészletek a igazítva mondatokat, számát jelenti.
+A képzés során a párhuzamos dokumentumokban lévő mondatok párosítva vannak vagy illeszkednek egymáshoz. Az egyéni fordító jelentést készít az egyes adatkészletek igazított mondatait tartalmazó mondatok számáról.
 
-## <a name="pairing-and-alignment-process"></a>Párosítás és -igazításának folyamat
+## <a name="pairing-and-alignment-process"></a>Párosítási és igazítási folyamat
 
-Egyéni a fordítót megtanulja a mondatok egy mondatot fordításának egyszerre. Ez a forrás, és a fordítás célról a mondat mondat olvasmányok. Ezután azt igazítja szavak és kifejezések ezen két mondatokban egymáshoz. Ez a folyamat lehetővé teszi, hogy egy mondatban az egyenértékű szavak és kifejezések a fordítás a mondat a szavak és kifejezések térkép létrehozásához. Győződjön meg arról, hogy a rendszer a mondatokat, amelyek minden más fordítások betanítja megpróbálja igazítását.
+Az egyéni fordító egyszerre tanulja meg a mondatok egy mondatának fordítását. Beolvasott egy mondatot a forrástól, majd a mondat fordítását a célhelyről. Ezután a két mondatban található szavakat és kifejezéseket egymáshoz igazítja. Ez a folyamat lehetővé teszi, hogy egy mondatban hozza létre a szavakat és kifejezéseket tartalmazó térképet az ennek a mondatnak a fordításában szereplő egyenértékű szavakra és kifejezésekre. Az igazítás megkísérli biztosítani, hogy a rendszer olyan mondatokat használjon, amelyek egymást fordítanak.
 
 ## <a name="pre-aligned-documents"></a>Előre igazított dokumentumok
 
-Ha ismeri a párhuzamos dokumentumok rendelkezik, felülbírálhatja a mondat zarovnání előre igazított szöveges fájlok listájának megadásával. Kibonthatja összes mondatokat mindkét dokumentum a szövegfájlba, egy vonal- és feltöltés a szervezett egy mondatban egy `.align` bővítmény. A `.align` bővítmény jelzi a egyéni a fordítót, hogy azt ki kell hagyni az mondat igazítását.
+Ha tudja, hogy rendelkezik párhuzamos dokumentumokkal, felülbírálhatja a mondatok igazítását az előre igazított szövegfájlok beszerzésével. Mindkét mondatot kinyerheti szövegfájlba, soronként egy mondatot, és egy `.align` kiterjesztéssel feltöltheti a fájlt. A `.align` bővítmény egyéni fordítóként jelzi, hogy ki kell hagyni a mondatok igazítását.
 
-A legjobb eredmények érdekében próbálja meg ahhoz, hogy, hogy a fájl minden sorában egy mondatot. Nem rendelkezik a sortörés karakterek mondaton belül, ennek hatására a gyenge illesztését.
+A legjobb eredmények érdekében érdemes meggyőződni arról, hogy soronként egy mondat van a fájlokban. Egy mondaton belül ne legyen sortörés karakter, mert ez gyenge igazítást okoz.
 
-## <a name="suggested-minimum-number-of-extracted-and-aligned-sentences"></a>Kivont és igazított mondatokat javasolt minimális száma
+## <a name="suggested-minimum-number-of-extracted-and-aligned-sentences"></a>A kinyert és igazított mondatok minimális száma javasolt
 
-Sikeres képzéshez az alábbi táblázat a kinyert mondatokat, majd minden egyes adatkészlethez szükséges igazított mondatokat minimális számát. Kivont mondatokat javasolt minimális számát, sokkal nagyobb figyelembe kell venni a tény, hogy mondat zarovnání nem feltétlenül tudja sikeresen igazítása minden kinyert mondatokat igazított mondatokat javasolt minimális számánál.
+Ahhoz, hogy egy képzés sikeres legyen, az alábbi táblázat a kinyert mondatok és az egyes adatkészletekben szükséges igazított mondatok minimális számát mutatja. A kinyert mondatok javasolt minimális száma sokkal nagyobb, mint a javasolt minimális számú, igazított mondatok, amelyek figyelembe veszik, hogy a mondat igazítása nem képes az összes kinyert mondatot sikeresen összehangolni.
 
-| Adatkészlet   | Ajánlott minimális kinyert mondat száma | Ajánlott minimális igazított mondat száma | Igazított mondat maximális száma |
+| Adathalmaz   | Javasolt minimális kinyert mondatok száma | Javasolt minimálisan igazított mondatok száma | Igazított mondatok maximális száma |
 |------------|--------------------------------------------|------------------------------------------|--------------------------------|
-| Képzés   | 10,000                                     | 2,000                                    | Nincs felső korlátja                 |
-| Hangolás     | 2,000                                      | 500                                      | 2,500                          |
+| Képzés   | 10,000                                     | 2,000                                    | Nincs felső korlát                 |
+| Tuning     | 2,000                                      | 500                                      | 2,500                          |
 | Tesztelés    | 2,000                                      | 500                                      | 2,500                          |
-| Szótár | 0                                          | 0                                        | Nincs felső korlátja                 |
+| Szótár | 0                                          | 0                                        | Nincs felső korlát                 |
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg, hogyan használható egy [szótár](what-is-dictionary.md) az egyéni a fordítót.
+- Megtudhatja, hogyan [](what-is-dictionary.md) használhat szótárt az egyéni fordítóban.

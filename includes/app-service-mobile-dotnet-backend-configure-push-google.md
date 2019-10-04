@@ -4,19 +4,19 @@ ms.author: crdun
 ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
-ms.openlocfilehash: d1dcd7895025ea608e5f6c4db5e0967817934f2a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: 3c6147cc24f285fc32dce145e594f743c9633c20
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59804157"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68857407"
 ---
-A művelet, amely megfelel a háttér-projekt típusa&mdash;vagy [.NET-háttéralkalmazás](#dotnet) vagy [Node.js háttérrendszer](#nodejs).
+Használja a háttér-projekthez tartozó,&mdash; [.net back end](#dotnet) vagy [Node. js háttérrendszer](#nodejs)-típusnak megfelelő eljárást.
 
-### <a name="dotnet"></a>.NET-háttérrendszer projekt
+### <a name="dotnet"></a>.NET háttérrendszer-projekt
 
-1. A Visual Studióban, kattintson a jobb gombbal a kiszolgálói projektet, és kattintson a **NuGet-csomagok kezelése**. Keresse meg `Microsoft.Azure.NotificationHubs`, és kattintson a **telepítése**. Ez telepíti a Notification Hubs ügyféloldali kódtárral.
-2. A tartományvezérlők mappában nyissa meg a TodoItemController.cs, és adja hozzá a következő `using` utasításokat:
+1. A Visual Studióban kattintson a jobb gombbal a kiszolgálói projektre, majd kattintson a **NuGet-csomagok kezelése**elemre. Keresse meg `Microsoft.Azure.NotificationHubs`a kifejezést, majd kattintson a **telepítés**gombra. Ezzel telepíti a Notification Hubs ügyféloldali függvénytárat.
+2. A vezérlők mappában Nyissa meg a TodoItemController.cs, és adja `using` hozzá a következő utasításokat:
 
     ```csharp
     using Microsoft.Azure.Mobile.Server.Config;
@@ -65,12 +65,12 @@ A művelet, amely megfelel a háttér-projekt típusa&mdash;vagy [.NET-háttéra
     }
     ```
 
-4. Tegye közzé újra a kiszolgálói projektet.
+4. A kiszolgálói projekt ismételt közzététele.
 
-### <a name="nodejs"></a>NODE.js háttérrendszer projekt
+### <a name="nodejs"></a>Node. js háttérrendszer-projekt
 
-1. Ha ezt még nem tette meg, [töltse le a gyorsindítási projekt](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart), vagy más használatát a [online szerkesztő az Azure Portalon](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor).
-2. Cserélje le a meglévő kód a todoitem.js fájlban a következőket:
+1. Állítsa be a háttér-projektet.
+2. Cserélje le a todoitem. js fájl meglévő kódját a következőre:
 
     ```javascript
     var azureMobileApps = require('azure-mobile-apps'),
@@ -117,6 +117,6 @@ A művelet, amely megfelel a háttér-projekt típusa&mdash;vagy [.NET-háttéra
     module.exports = table;
     ```
 
-    Ha egy új teendő elem szerepel a item.text tartalmazó GCM értesítést küld a.
+    Ez egy GCM értesítést küld, amely tartalmazza az item. Text karakterláncot új teendő beszúrásakor.
 
-3. Ha szerkeszti a fájlt a helyi számítógépen, tegye közzé újra a kiszolgálói projektet.
+3. Ha a helyi számítógépen szerkeszti a fájlt, tegye közzé újra a kiszolgálói projektet.

@@ -17,6 +17,10 @@
   items:
     - name: Docker-tárolóban futó SQL Server lekérdezése
       href: vnet-injection-sql-server.md
+    - name: Tárterület elérése az Azure Key Vault használatával
+      href: store-secrets-azure-key-vault.md
+    - name: Cosmos DB-szolgáltatásvégpont használata
+      href: service-endpoint-cosmosdb.md
     - name: ETL-műveletek végrehajtása
       href: databricks-extract-load-sql-data-warehouse.md
     - name: Adatok streamelése az Event Hubs használatával

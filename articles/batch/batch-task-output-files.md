@@ -1,62 +1,61 @@
 ---
-title: A Batch szolgáltatásban API – Azure Batch az Azure Storage-feladatok és tevékenységek kimenetének megőrzése |} A Microsoft Docs
-description: Ismerje meg, hogyan kötegelt feladat és a feladat kimenetének az Azure Storage megőrzése Batch szolgáltatás API használatával.
+title: Feladatok és feladatok kimenetének megőrzése az Azure Storage-ban a Batch szolgáltatás API-Azure Batch használatával | Microsoft Docs
+description: Megtudhatja, hogyan használhatja a Batch szolgáltatás API-ját a Batch-feladat és a feladat kimenetének Azure Storage-ba való megőrzéséhez.
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 03/05/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 1d2d53213af34377d23c9ea140bab15822fc1b2e
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e4a2af09b432961211a5f38ecd2d9dacd89d3868
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444769"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70094441"
 ---
-# <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>A feladat adatmegőrzésre, az Azure Storage a Batch szolgáltatás API-val
+# <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Tevékenységadatok megőrzése az Azure Storage-ban a Batch szolgáltatás API-val
 
 [!INCLUDE [batch-task-output-include](../../includes/batch-task-output-include.md)]
 
-A Batch szolgáltatás API támogatja a kimeneti adatok megtartását az Azure Storage-feladatok és a Feladatkezelő tevékenységekről, amely a virtuális gép konfigurációja rendelkező készletek futtassa. Amikor hozzáad egy feladatot, is megadhat egy tárolót az Azure Storage-ban a feladat kimenetének célhelyeként. A Batch szolgáltatás a feladat befejezésekor majd ír kimeneti adatokat tároló.
+A Batch szolgáltatás API támogatja a kimeneti adatok Azure Storage-ba való megőrzését olyan feladatokhoz és Feladatkezelő-feladatokhoz, amelyek a virtuális gép konfigurációjával rendelkező készleteken futnak. Feladat hozzáadásakor megadhat egy tárolót az Azure Storage-ban a feladat kimenetének célhelye. A Batch szolgáltatás ezután az adott tárolóba írja a kimeneti adatokat, ha a feladat befejeződött.
 
-A Batch szolgáltatás API használatával a feladat kimenetének megőrzése előnye, hogy, nem szükséges módosítania az alkalmazást, amelyet a tevékenység fut-e. Ehelyett az ügyfélalkalmazásnak néhány módosításokkal megőrizheti belül ugyanazt a kódot, amely létrehozza a feladat kimenete a feladatot.
+A Batch szolgáltatás API-ját a feladat kimenetének megőrzésére használhatja, így nem kell módosítania az alkalmazást, amelyen a feladat fut. Ehelyett az ügyfélalkalmazás néhány módosításával megtarthatja a feladat kimenetét a feladatot létrehozó kódból.
 
-## <a name="when-do-i-use-the-batch-service-api-to-persist-task-output"></a>Ha használja a Batch szolgáltatás API, a feladat kimenetének megőrzése?
+## <a name="when-do-i-use-the-batch-service-api-to-persist-task-output"></a>Mikor kell használni a Batch szolgáltatás API-ját a feladat kimenetének megőrzéséhez?
 
-Az Azure Batch segítségével több feladat kimenetének megőrzése. A Batch szolgáltatás API-val egy kényelmes megközelítést, amely a leginkább megfelelő megoldást ezekben a forgatókönyvekben a következő:
+Azure Batch több módszert biztosít a feladat kimenetének megőrzéséhez. A Batch szolgáltatás API-ját a legmegfelelőbb módszer a következő forgatókönyvek esetén:
 
-- Szeretné megőrizni az ügyfél alkalmazáson belül a tevékenység kimenetének, hogy a feladat fut az alkalmazás módosítása nélkül kód írása.
-- Szeretné megőrizni a kimenet a Batch-feladatok és a virtuálisgép-konfigurációval létrehozott készletek a Feladatkezelő tevékenységekről.
-- Szeretné megőrizni a kimenet egy Azure Storage-tárolóhoz, az egy tetszőleges nevet.
-- Egy Azure Storage-tárolóba, a következők szerint nevű kimenet megőrzése szeretné a [Batch File Conventions standard](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions). 
+- Kódot szeretne írni a feladat kimenetének megtartásához az ügyfélalkalmazás alapján, a feladat által futtatott alkalmazás módosítása nélkül.
+- A virtuális gép konfigurációjával létrehozott készletekben szeretné megőrizni a Batch-feladatok és a Feladatkezelő-feladatok kimenetét.
+- Egy tetszőleges nevű Azure Storage-tárolóban szeretné megőrizni a kimenetet.
+- Meg szeretné őrizni a kimenetet egy nevű Azure Storage-tárolóba a [Batch file Conventions standard](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions)utasításnak megfelelően. 
 
-Ha a forgatókönyv eltér a fent felsoroltak, szükség lehet érdemes lehet eltérő megközelítést. Például a Batch szolgáltatás API-ja jelenleg nem támogatja az Azure Storage-streamelési kimeneti a feladat futása közben. A kimeneti stream, érdemes lehet a Batch File Conventions-könyvtárral, a .NET-hez elérhető. Más nyelven kell a saját megoldást valósíthat meg. További megőrzése tevékenység kimenetének lehetőségekről további információkért lásd: [az Azure Storage-feladatok és tevékenységek kimenetének megőrzése](batch-task-output.md).
+Ha a forgatókönyv eltér a fent felsorolttól, előfordulhat, hogy más megközelítést kell figyelembe vennie. A Batch szolgáltatás API-je például jelenleg nem támogatja az Azure Storage-ba történő adatfolyam-továbbítást, amíg a feladat fut. A kimenet továbbításához érdemes lehet a .NET-hez elérhető batch file Conventions könyvtárat használni. Más nyelveken a saját megoldását kell megvalósítani. A tevékenységek kimenetének megőrzésével kapcsolatos további információkért lásd: [feladatok és tevékenységek kimenetének megőrzése az Azure Storage](batch-task-output.md)-ban.
 
-## <a name="create-a-container-in-azure-storage"></a>Hozzon létre egy tárolót az Azure Storage-ban
+## <a name="create-a-container-in-azure-storage"></a>Tároló létrehozása az Azure Storage-ban
 
-Az Azure Storage-feladat kimeneti megőrizni, kell hozzon létre egy tároló, amely kiszolgálja a kimeneti fájlok célhelyeként. Hozza létre a tárolót, a feladat, mielőtt a feladat elküldése lehetőleg futtatása előtt. A tároló létrehozásához használja a megfelelő Azure Storage ügyféloldali kódtár vagy az SDK-t. Az Azure Storage API-k kapcsolatos további információkért lásd: a [Azure Storage-dokumentáció](https://docs.microsoft.com/azure/storage/).
+Ahhoz, hogy a feladat kimenete az Azure Storage-ba kerüljön, létre kell hoznia egy tárolót, amely a kimeneti fájlok céljaként szolgál. A feladat futtatása előtt hozza létre a tárolót, lehetőleg a feladat elküldése előtt. A tároló létrehozásához használja a megfelelő Azure Storage ügyféloldali kódtárat vagy SDK-t. Az Azure Storage API-kkal kapcsolatos további információkért tekintse meg az [Azure Storage dokumentációját](https://docs.microsoft.com/azure/storage/).
 
-Például, ha az alkalmazás a C#-ban, használja a [Azure Storage ügyféloldali kódtára a .NET-hez](https://www.nuget.org/packages/WindowsAzure.Storage/). Az alábbi példa bemutatja, hogyan hozhat létre egy tárolót:
+Ha például a alkalmazásban ír egy alkalmazást, használja C#az [Azure Storage ügyféloldali kódtárat a .net-hez](https://www.nuget.org/packages/WindowsAzure.Storage/). Az alábbi példa bemutatja, hogyan hozhat létre egy tárolót:
 
 ```csharp
 CloudBlobContainer container = storageAccount.CreateCloudBlobClient().GetContainerReference(containerName);
 await container.CreateIfNotExists();
 ```
 
-## <a name="get-a-shared-access-signature-for-the-container"></a>A tároló egy közös hozzáférésű jogosultságkód igénylése
+## <a name="get-a-shared-access-signature-for-the-container"></a>Megosztott hozzáférési aláírás beszerzése a tárolóhoz
 
-Miután létrehozta a tárolót, ismerje meg a tároló közös hozzáférésű jogosultságkód (SAS) írási hozzáférése. SAS a tároló delegált hozzáférést biztosít. A SAS egy meghatározott engedélyekkel és a egy adott idő alatt a hozzáférést. A Batch szolgáltatás a feladat kimenetének írni a tároló írási jogosultsággal rendelkező SAS van szüksége. SAS kapcsolatos további információkért lásd: [a közös hozzáférésű jogosultságkódot \(SAS\) az Azure Storage-ban](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+A tároló létrehozása után szerezzen be egy közös hozzáférésű aláírást (SAS), amely írási hozzáféréssel rendelkezik a tárolóhoz. A SAS delegált hozzáférést biztosít a tárolóhoz. Az SAS hozzáférést biztosít a megadott engedélyekkel, és egy adott időintervallumon belül. A Batch szolgáltatásnak szüksége van egy írási engedéllyel rendelkező SAS-re a feladat kimenetének tárolóba írásához. Az SAS-vel kapcsolatos további információkért lásd: a [közös \(hozzáférésű aláírások\) használata az Azure Storage-ban](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
 
-Ha egy SAS-t az Azure Storage API-k, az API-t egy SAS-token karakterláncot adja vissza. A jogkivonat-karakterláncot a SAS, beleértve az engedélyeket és a SAS érvényességi időtartama az összes paramétert tartalmaz. A SAS használatával az Azure Storage-tároló eléréséhez, fűzze hozzá a SAS jogkivonat-karakterláncot az erőforrás URI-t kell. Az erőforrás URI-t, a hozzáfűzött SAS-jogkivonat együtt hitelesített hozzáférést biztosít az Azure Storage.
+Ha az Azure Storage API-k használatával kap SAS-t, az API SAS-jogkivonat karakterláncot ad vissza. Ez a jogkivonat-karakterlánc tartalmazza az SAS összes paraméterét, beleértve az engedélyeket és a SAS érvényességi időtartamát. Ahhoz, hogy az SAS-t egy tároló Azure Storage-beli eléréséhez használja, hozzá kell fűzni az SAS-jogkivonat karakterláncát az erőforrás URI azonosítóhoz. Az erőforrás URI-ja a hozzáfűzött SAS-jogkivonattal együtt hitelesített hozzáférést biztosít az Azure Storage-hoz.
 
-Az alábbi példa bemutatja, hogyan tehet szert egy csak írási SAS jogkivonat-karakterláncot a tároló, majd az SAS fűz a tároló URI:
+Az alábbi példa bemutatja, hogyan kérhető le csak írható SAS-token sztring a tárolóhoz, majd hozzáfűzi az SAS-t a tároló URI-hoz:
 
 ```csharp
 string containerSasToken = container.GetSharedAccessSignature(new SharedAccessBlobPolicy()
@@ -68,11 +67,11 @@ string containerSasToken = container.GetSharedAccessSignature(new SharedAccessBl
 string containerSasUrl = container.Uri.AbsoluteUri + containerSasToken;
 ```
 
-## <a name="specify-output-files-for-task-output"></a>Adja meg a feladat kimenetét a kimeneti fájlok
+## <a name="specify-output-files-for-task-output"></a>Kimeneti fájlok megadása a feladat kimenetéhez
 
-Adja meg a kimeneti fájlokat egy feladathoz, hozzon létre egy gyűjteményt, [OutputFile](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfile) objektumokat, majd rendelje hozzá a [CloudTask.OutputFiles](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles#Microsoft_Azure_Batch_CloudTask_OutputFiles) tulajdonság a feladat létrehozásakor.
+Egy feladat kimeneti fájljainak megadásához hozzon létre egy [OutputFile](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfile) -objektumot, és rendelje hozzá a [CloudTask. OutputFiles](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles#Microsoft_Azure_Batch_CloudTask_OutputFiles) tulajdonsághoz a feladat létrehozásakor.
 
-A következő C# példakód létrehoz egy feladatot, amely véletlenszerű számok nevű fájlba írja `output.txt`. A példa létrehoz egy kimeneti fájl, amely `output.txt` a tárolóra írható. A példában is létrehoz minden fájlminta egyező naplófájl a kimeneti fájlok `std*.txt` (_például_, `stdout.txt` és `stderr.txt`). A tároló URL-címe van szüksége a létrehozott SAS korábban a tárolót. A Batch szolgáltatás a SAS használatával hitelesíti a hozzáférést a tárolóhoz:
+A következő C# mintakód egy olyan feladatot hoz létre, amely véletlenszerű számokat ír egy nevű `output.txt`fájlba. A példa létrehoz egy kimeneti fájlt `output.txt` a tárolóba való íráshoz. A példa `std*.txt` a fájl mintájának megfelelő naplófájlok kimeneti fájljait is létrehozza ( `stdout.txt` például és `stderr.txt`). A tároló URL-címéhez a tárolóhoz korábban létrehozott SAS szükséges. A Batch szolgáltatás az SAS használatával hitelesíti a tárolóhoz való hozzáférést:
 
 ```csharp
 new CloudTask(taskId, "cmd /v:ON /c \"echo off && set && (FOR /L %i IN (1,1,100000) DO (ECHO !RANDOM!)) > output.txt\"")
@@ -98,57 +97,57 @@ new CloudTask(taskId, "cmd /v:ON /c \"echo off && set && (FOR /L %i IN (1,1,1000
 }
 ```
 
-### <a name="specify-a-file-pattern-for-matching"></a>Adjon meg egy Fájlmintát egyeztetéséhez
+### <a name="specify-a-file-pattern-for-matching"></a>A megfelelő fájl mintázatának megadása
 
-Ha megad egy kimeneti fájl, használhatja a [OutputFile.FilePattern](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfile.filepattern#Microsoft_Azure_Batch_OutputFile_FilePattern) tulajdonsággal ad meg egy Fájlmintát egyeztetéséhez. A fájl minta előfordulhat, hogy egyezik nulla fájlokat, egy adott fájl vagy a tevékenység által létrehozott fájlokat.
+Ha kimeneti fájlt ad meg, a [OutputFile. FilePattern](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfile.filepattern#Microsoft_Azure_Batch_OutputFile_FilePattern) tulajdonsággal határozhatja meg a megfeleltetéshez használandó fájl mintázatát. A fájl mintája nulla fájlokhoz, egyetlen fájlhoz vagy a feladat által létrehozott fájlok készletéhez is tartozhat.
 
-A **FilePattern** a tulajdonság támogatja a szabványos fájlrendszer helyettesítő karakterek például `*` (a nem rekurzív megegyezik) és `**` (a rekurzív egyezik). Például adja meg a fenti kódmintában a fájl egyeztetendő mappaminta `std*.txt` nem rekurzív módon:
+A **FilePattern** tulajdonság a standard fájlrendszerbeli helyettesítő karaktereket `*` (például nem rekurzív egyezések esetén) és `**` (rekurzív egyezések esetén) támogatja. A fenti mintakód például a nem rekurzív módon való egyezésre `std*.txt` szolgáló fájl mintát adja meg:
 
 `filePattern: @"..\std*.txt"`
 
-Egyetlen fájl feltöltéséhez, adja meg egy Fájlmintát nincs helyettesítő karaktereket. Például adja meg a fenti kódmintában a fájl egyeztetendő mappaminta `output.txt`:
+Egyetlen fájl feltöltéséhez egy helyettesítő karakter nélküli fájlt kell megadnia. A fenti mintakód például a következőnek megfelelő `output.txt`fájltípust adja meg:
 
 `filePattern: @"output.txt"`
 
-### <a name="specify-an-upload-condition"></a>Adjon meg egy feltöltési feltétel
+### <a name="specify-an-upload-condition"></a>Feltöltési feltétel meghatározása
 
-A [OutputFileUploadOptions.UploadCondition](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfileuploadoptions.uploadcondition#Microsoft_Azure_Batch_OutputFileUploadOptions_UploadCondition) tulajdonság lehetővé teszi, hogy a kimeneti fájlok feltételes feltöltése. Gyakran előfordul, hogy töltse fel egy fájlt, ha a feladat sikeres volt, és fájlokat külön készletét, ha sikertelen. Például érdemes, részletes naplófájlok feltöltése csak akkor lehetséges, ha a feladat sikertelen lesz, és kilép egy nullától eltérő kilépési kódot. Hasonlóképpen érdemes eredmény fájlok feltöltése csak akkor, ha a feladat sikeres volt, mivel ezeket a fájlokat esetleg hiányoznak vagy hiányosak, ha a feladat sikertelen.
+A [OutputFileUploadOptions. UploadCondition](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfileuploadoptions.uploadcondition#Microsoft_Azure_Batch_OutputFileUploadOptions_UploadCondition) tulajdonság a kimeneti fájlok feltételes feltöltését teszi lehetővé. Gyakori eset, ha a feladat sikeres, és egy másik fájl, ha sikertelen, fel kell töltenie egy-egy készletet. Előfordulhat például, hogy csak akkor szeretné feltölteni a részletes naplófájlokat, ha a feladat meghiúsul, és nem nulla kilépési kóddal kilép. Hasonlóképpen előfordulhat, hogy csak akkor szeretné feltölteni az eredményeket, ha a feladat sikeres, mivel előfordulhat, hogy a fájlok hiányoznak vagy hiányosak, ha a feladat meghiúsul.
 
-A fenti csoportok kódmintát a **UploadCondition** tulajdonságot **TaskCompletion**. Ez a beállítás megadja, hogy a fájl tölthető fel. a kilépési kód értékét függetlenül a feladatok befejezése után.
+A fenti mintakód a **UploadCondition** tulajdonságot **TaskCompletion**értékre állítja. Ezzel a beállítással adható meg, hogy a rendszer feltöltse-e a fájlt a feladatok befejeződése után, a kilépési kód értékétől függetlenül.
 
 `uploadCondition: OutputFileUploadCondition.TaskCompletion`
 
-Az egyéb beállításokat, tekintse meg a [OutputFileUploadCondition](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.common.outputfileuploadcondition) enum.
+További beállításokért tekintse meg a [OutputFileUploadCondition](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.common.outputfileuploadcondition) enumerálást.
 
-### <a name="disambiguate-files-with-the-same-name"></a>Elem egyértelműségének biztosításához az azonos nevű fájl
+### <a name="disambiguate-files-with-the-same-name"></a>Azonos nevű egyértelműsítse-fájlok
 
-A feladat tevékenységei készíthetnek, ugyanazzal a névvel rendelkező fájlokat. Ha például `stdout.txt` és `stderr.txt` minden feladat fut egy feladat jön létre. Mivel mindegyik tevékenység a saját környezetében fut, ezeket a fájlokat a fájlrendszerben a csomópont nem ütköznek. Azonban amikor feltölti a fájlokat, ha több tevékenység egy megosztott tárolóba, kell értelmezni az azonos nevű fájl.
+A feladat feladatai létrehozhatnak azonos nevű fájlokat. Például `stdout.txt` a és `stderr.txt` a egy feladatban futó minden feladathoz jönnek létre. Mivel minden egyes feladat a saját környezetében fut, ezek a fájlok nem ütköznek a csomópont fájlrendszerével. Ha azonban több feladatból is tölt fel fájlokat egy megosztott tárolóba, a fájlokat ugyanazzal a névvel kell egyértelműsítse.
 
-A [OutputFileBlobContainerDestination.Path](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfileblobcontainerdestination.path#Microsoft_Azure_Batch_OutputFileBlobContainerDestination_Path) tulajdonság határozza meg a cél blob vagy virtuális könyvtárat a kimeneti fájlokat. Használhatja a **elérési út** tulajdonság a blob vagy úgy, hogy ugyanazzal a névvel a fájlok egyedi neve az Azure Storage szolgáltatásban virtuális könyvtár neve. A feladat azonosítója az elérési út használata segítségével győződjön meg, hogy egyedi neveket, és könnyedén megállapíthatja a fájlokat.
+A [OutputFileBlobContainerDestination. Path](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfileblobcontainerdestination.path#Microsoft_Azure_Batch_OutputFileBlobContainerDestination_Path) tulajdonság a kimeneti fájlok céljának blobját vagy virtuális könyvtárát adja meg. A **path** tulajdonság segítségével úgy nevezheti el a blobot vagy a virtuális könyvtárat, hogy az azonos nevű fájlok egyedi névvel vannak ellátva az Azure Storage-ban. Az elérési úton található feladat-azonosító használata jó módszer az egyedi nevek biztosítására és a fájlok egyszerű azonosítására.
 
-Ha a **FilePattern** tulajdonsága helyettesítő karakteres kifejezést, majd az összes fájl, amely megfelel a mintának a megadott virtuális könyvtár feltöltésekor a rendszer a **elérési út** tulajdonság. Például, ha a tároló `mycontainer`, a feladat-azonosító `mytask`, és a fájl minta `..\std*.txt`, majd a abszolút URI-k, a kimeneti fájlok az Azure Storage hasonló lesz:
+Ha a **FilePattern** tulajdonság egy helyettesítő kifejezésre van beállítva, akkor a mintázatnak megfelelő összes fájl fel lesz töltve a **path** tulajdonság által megadott virtuális könyvtárba. Ha például a tároló `mycontainer`, a feladat `mytask`azonosítója, `..\std*.txt`és a fájl mintája, akkor az Azure Storage-ban a kimeneti fájlok abszolút URI-azonosítói a következőkhöz hasonlóak lesznek:
 
 ```
 https://myaccount.blob.core.windows.net/mycontainer/mytask/stderr.txt
 https://myaccount.blob.core.windows.net/mycontainer/mytask/stdout.txt
 ```
 
-Ha a **FilePattern** tulajdonsága egyezik meg egyetlen fájl nevét, ami azt jelenti, nem tartalmaz helyettesítő karaktereket, majd az értékét a **elérési út** tulajdonság határozza meg a teljes blob neve. Ha várhatóan nem felel meg, ha több tevékenység egyetlen fájl a elnevezési, majd a félreérthetőség ezeket a fájlokat a fájlnév részét képező virtuális könyvtár neve is. Például állítsa be a **elérési út** tulajdonság tartalmazza a feladat azonosítója, az elválasztó karaktert (általában perjellel) és a fájl nevét:
+Ha a **FilePattern** tulajdonság úgy van beállítva, hogy egyetlen fájlnévnek felel meg, ami azt jelenti, hogy nem tartalmaz helyettesítő karaktert, a **path** tulajdonság értéke a teljes blob nevét adja meg. Ha azt tervezi, hogy a rendszer több feladatból származó egyetlen fájllal ütközik az elnevezési feladatokkal, akkor a fájl nevének részeként adja meg a virtuális könyvtár nevét, hogy egyértelműsítse ezeket a fájlokat. Állítsa be például a **path** tulajdonságot úgy, hogy tartalmazza a feladat azonosítóját, a határoló karaktert (általában egy perjelet) és a fájlnevet:
 
 `path: taskId + @"/output.txt"`
 
-Az abszolút URI-k, a kimeneti fájlok feladatokhoz tartozó hasonló lesz:
+A tevékenységek kimeneti fájljainak abszolút URI-azonosítói a következőhöz hasonlóak lesznek:
 
 ```
 https://myaccount.blob.core.windows.net/mycontainer/task1/output.txt
 https://myaccount.blob.core.windows.net/mycontainer/task2/output.txt
 ```
 
-Az Azure Storage szolgáltatásban virtuális könyvtárak kapcsolatos további információkért lásd: [a tárolóban lévő blobok listázása](../storage/blobs/storage-quickstart-blobs-dotnet.md#list-the-blobs-in-a-container).
+További információ az Azure Storage-beli virtuális könyvtárakról: [a tárolóban lévő Blobok listázása](../storage/blobs/storage-quickstart-blobs-dotnet.md#list-the-blobs-in-a-container).
 
-## <a name="diagnose-file-upload-errors"></a>Fájl feltöltése hibák diagnosztizálása
+## <a name="diagnose-file-upload-errors"></a>Fájlfeltöltés-hibák diagnosztizálása
 
-Kimeneti fájlok feltöltése az Azure Storage sikertelen, akkor a tevékenység áthelyezése a **befejezve** állapota és a [TaskExecutionInformation.FailureInformation](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.taskexecutioninformation.failureinformation#Microsoft_Azure_Batch_TaskExecutionInformation_FailureInformation) tulajdonsága. Vizsgálja meg a **FailureInformation** tulajdonság határozza meg, milyen hiba történt. Például a következő hiba, amely a fájl feltöltése akkor fordul elő, ha a tároló nem található:
+Ha a kimeneti fájlok feltöltése az Azure Storage-ba meghiúsul, akkor a feladat **befejeződött** állapotba kerül, és a [TaskExecutionInformation. FailureInformation](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.taskexecutioninformation.failureinformation#Microsoft_Azure_Batch_TaskExecutionInformation_FailureInformation) tulajdonság be van állítva. Ellenőrizze a **FailureInformation** tulajdonságot, hogy milyen hibát észlelt a hiba. Például itt a fájl feltöltésekor felmerülő hiba, ha a tároló nem található:
 
 ```
 Category: UserError
@@ -156,42 +155,42 @@ Code: FileUploadContainerNotFound
 Message: One of the specified Azure container(s) was not found while attempting to upload an output file
 ```
 
-Minden fájl feltöltése a Batch két jelentkezzen be a fájlokat a számítási csomópontra ír `fileuploadout.txt` és `fileuploaderr.txt`. További információ a konkrét hiba a naplófájlok ellenőrizheti. Azokban az esetekben, ahol a fájl feltöltése soha nem kísérlet történt, például mert maga a feladat nem sikerült futtatni majd ezek a naplófájlok nem létezik.
+Minden fájl feltöltésekor a Batch két naplófájlt ír a számítási csomópontba, `fileuploadout.txt` és. `fileuploaderr.txt` Megvizsgálhatja ezeket a naplófájlokat, ha többet szeretne megtudni egy adott hibáról. Azokban az esetekben, amikor a fájlfeltöltés soha nem történt meg, például azért, mert maga a feladat nem tudott futni, akkor ezek a naplófájlok nem fognak létezni.
 
-## <a name="diagnose-file-upload-performance"></a>Fájlok feltöltése teljesítménye diagnosztizálása
+## <a name="diagnose-file-upload-performance"></a>Fájlfeltöltés teljesítményének diagnosztizálása
 
-A `fileuploadout.txt` fájlba naplózza a feltöltési folyamat. Ehhez a fájlhoz, tudjon meg többet arról, hogy mennyi ideig tart a fájlok feltöltése ellenőrizheti. Ne feledje, hogy számos befolyásoló meghatározó tényező feltölteni a teljesítményt, például a csomópont, más tevékenység a csomóponton a feltöltés időpontjában mérete, a cél tároló és a Batch-készlet, hány csomóponttal tölt fel, a stora ugyanabban a régióban van-e a GE-fiókját az egy időben, és így tovább.
+A `fileuploadout.txt` fájl naplófájlok feltöltésének folyamata folyamatban van. Ezt a fájlt megvizsgálva további információkat tudhat meg arról, hogy mennyi ideig tart a fájlfeltöltés. Ne feledje, hogy a teljesítmény feltöltésének számos tényezője van, beleértve a csomópont méretét, a csomópont más tevékenységeit a feltöltés időpontjában, attól függetlenül, hogy a cél tároló ugyanabban a régióban található-e, mint a Batch-készlet, hány csomópontot töltenek fel a Stora-re a GE-fiók egy időben, és így tovább.
 
-## <a name="use-the-batch-service-api-with-the-batch-file-conventions-standard"></a>A Batch szolgáltatás API használata a Batch File Conventions standard
+## <a name="use-the-batch-service-api-with-the-batch-file-conventions-standard"></a>A Batch szolgáltatás API használata a Batch file Conventions standard használatával
 
-Feladat kimenete a Batch szolgáltatás API-val szűnik meg, ha a cél tároló nevet adhat, és azonban, például blobok. Azt is beállíthatja a adja nekik a következők szerint a [Batch File Conventions standard](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions). A File Conventions szabvány meghatározza, hogy a cél tároló és a feladatok és tevékenységek nevei alapján adott kimeneti fájl az Azure Storage-blob neve. Ha a File Conventions standard kimeneti fájlok elnevezési használja, akkor a kimeneti fájlok megtekintését a a [az Azure portal](https://portal.azure.com).
+Ha a Batch szolgáltatás API-val megőrzi a feladatok kimenetét, a cél tárolót és a blobokat azonban Ön is elnevezheti. Azt is megteheti, hogy a [Batch file Conventions standard](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions)alapján nevezi el őket. A file Conventions standard meghatározza a cél tároló és a blob nevét az Azure Storage-ban egy adott kimeneti fájl számára a feladat és a feladat neve alapján. Ha a fájl-konvenciók standardot használja a kimeneti fájlok elnevezéséhez, a kimeneti fájlok megtekinthetők a [Azure Portalban](https://portal.azure.com).
 
-C# nyelven fejleszt, használhatja a beépített módszereket a [Batch File Conventions .NET-kódtára](https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files). Ebben a könyvtárban az Ön hozza létre a megfelelően elnevezett tárolót és a blob elérési útjának. Például meghívhatja az API-t a tároló, a feladat neve alapján a helyes nevét:
+Ha a-ben C#fejleszti a-t, használhatja a [Batch file Conventions Library for .net](https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files)című szakasz beépített módszereit. Ez a kódtár létrehozza a megfelelő névvel ellátott tárolókat és blob-elérési utakat. Meghívhatja például az API-t a tároló helyes nevének beolvasására a feladatnév alapján:
 
 ```csharp
 string containerName = job.OutputStorageContainerName();
 ```
 
-Használhatja a [CloudJobExtensions.GetOutputStorageContainerUrl](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.conventions.files.cloudjobextensions.getoutputstoragecontainerurl) metódussal adja vissza egy közös hozzáférésű jogosultságkód (SAS) URL-címet, amellyel a tároló írni. Ezután továbbíthatja ezt az SAS a [OutputFileBlobContainerDestination](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfileblobcontainerdestination) konstruktor.
+A [CloudJobExtensions. GetOutputStorageContainerUrl](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.conventions.files.cloudjobextensions.getoutputstoragecontainerurl) metódussal olyan közös hozzáférésű aláírási (SAS) URL-címet adhat vissza, amely a tárolóba való íráshoz használható. Ezután átadhatja ezt az SAS-t a [OutputFileBlobContainerDestination](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfileblobcontainerdestination) konstruktornak.
 
-C# nyelven fejleszt, szüksége lesz a File Conventions standard megvalósításához, saját magának.
+Ha a-től eltérő nyelven fejleszt C#, a fájlokra vonatkozó konvenciókat is meg kell valósítania.
 
 ## <a name="code-sample"></a>Kódminta
 
-A [PersistOutputs] [ github_persistoutputs] mintaprojektet az egyik a [Azure Batch-kódminta] [ github_samples] a Githubon. A Visual Studio-megoldás bemutatja, hogyan tartós tárolási, a feladat kimenetének megőrzése a Batch .NET-hez készült ügyféloldali kódtár használatával. A minta futtatásához kövesse az alábbi lépéseket:
+A [PersistOutputs][github_persistoutputs] minta projekt a githubon lévő [Azure batch Code-minták][github_samples] egyike. Ez a Visual Studio-megoldás bemutatja, hogyan használható a Batch ügyféloldali kódtára a .NET-hez a feladat kimenetének tartós tárterületre való megőrzéséhez. A minta futtatásához kövesse az alábbi lépéseket:
 
-1. Nyissa meg a projektet a **Visual Studio 2017**.
-2. Adja hozzá a Batch- és Storage **fiók hitelesítő adatai** való **AccountSettings.settings** Microsoft.Azure.Batch.Samples.Common projektben.
-3. **Build** (de ne futtassa) a megoldás. Ha a rendszer kéri, állítsa vissza a NuGet-csomagok.
-4. Töltse fel az Azure portal használatával egy [alkalmazáscsomag](batch-application-packages.md) a **PersistOutputsTask**. Tartalmazza a `PersistOutputsTask.exe` és annak függő szerelvényei a .zip csomag "PersistOutputsTask" kívánt alkalmazás Azonosítóját és az "1.0" alkalmazáscsomag-verzió.
-5. **Indítsa el** (Futtatás) a **PersistOutputs** projekt.
-6. Amikor a rendszer kéri, válassza ki a minta futtatásához használni, adja meg a megőrzést technológiát **2** , futtassa a mintát, a feladat kimenetének megőrzése a Batch szolgáltatás API segítségével.
-7. Ha szükséges, futtassa újra a mintakódot, belépő **3** megőrizni a kimenet a Batch szolgáltatás API-val és a tároló és blobnév célútvonalat File Conventions szabvány szerinti nevet.
+1. Nyissa meg a projektet a **Visual Studio 2019**-ben.
+2. Adja hozzá a Batch és a Storage- **fiók hitelesítő adatait** a Microsoft. Azure. Batch. Samples. Common projekt **AccountSettings. Settings** eleméhez.
+3. **Build** (de ne fusson) a megoldás. Ha a rendszer kéri, állítsa vissza az NuGet-csomagokat.
+4. A Azure Portal használatával töltse fel a **PersistOutputsTask** [alkalmazási csomagját](batch-application-packages.md) . Adja meg a és a függő szerelvényeit a. zip csomagban, állítsa az alkalmazás azonosítóját "PersistOutputsTask" értékre, az alkalmazáscsomag verzióját pedig "1,0"-re. `PersistOutputsTask.exe`
+5. **Indítás** (futtassa) a **PersistOutputs** projektet.
+6. Amikor a rendszer kéri, hogy válassza ki a minta futtatásához használni kívánt adatmegőrzési technológiát, írja be a **2** értéket a minta futtatásához a Batch szolgáltatás API használatával a feladat kimenetének megőrzése érdekében.
+7. Ha szeretné, futtassa újra a mintát, és a **3** érték megadásával maradjon meg a Batch szolgáltatás API-val, és nevezze el a cél tárolót és a blob elérési útját a file Conventions standard utasításnak megfelelően.
 
 ## <a name="next-steps"></a>További lépések
 
-- A .NET-hez a File Conventions-könyvtárral megőrzése feladat kimenete a további információkért lásd: [megőrizheti a feladatok és tevékenységek adatokat, a Batch File Conventions-könyvtárral az Azure Storage .NET-keretrendszerhez készült](batch-task-output-file-conventions.md).
-- Egyéb megközelítések a kimeneti adatok megtartását az Azure Batchben a további információkért lásd: [az Azure Storage-feladatok és tevékenységek kimenetének megőrzése](batch-task-output.md).
+- További információk a feladatok kimenetének a .NET-hez készült file Conventions Library-vel való [megőrzéséről: feladatok és feladatok adatainak megőrzése az Azure Storage szolgáltatásban a .net-hez készült batch file Conventions Library használatával](batch-task-output-file-conventions.md).
+- További információ a Azure Batch kimeneti adatainak megőrzésével kapcsolatos egyéb módszerekről: [feladatok és tevékenységek kimenetének megőrzése az Azure Storage](batch-task-output.md)-ban.
 
 [github_persistoutputs]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/PersistOutputs
 [github_samples]: https://github.com/Azure/azure-batch-samples

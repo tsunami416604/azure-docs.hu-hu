@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 06/29/2018
 ms.author: pepogors
 ms.openlocfilehash: 7f60371fb533526ef5bdb154d0c08dface9c0d1f
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667752"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60393954"
 ---
 # <a name="develop-java-service-fabric-applications-with-visual-studio-code"></a>A Visual Studio Code-dal Java Service Fabric-alkalmazások fejlesztése
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 2a96364d486ed6c0db2762256798ac56afa69a78
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 872a2daf30a2173c7cde93e534b8e7525c88a4d2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59268455"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67096839"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moconavi"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező moconavi
 
@@ -52,7 +52,7 @@ Az Azure AD integrálása a moconavi konfigurálásához hozzá kell moconavi a 
 
 **Moconavi hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

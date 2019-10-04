@@ -1,10 +1,10 @@
 ---
-title: Szűrők hatókörének beállítása az alkalmazások üzembe helyezése |} A Microsoft Docs
-description: Ismerje meg, hogyan hatókörszűrők használata alkalmazásokkal, amelyek támogatják az automatikus felhasználóátadást készíthet elő, ha egy objektum nem elégíti ki az üzleti követelményeinek kiépítése folyamatban lévő objektumok elkerülése érdekében.
+title: Alkalmazások kiépítése a hatóköri szűrőkkel | Microsoft Docs
+description: Ismerje meg, hogyan használhatók a hatóköri szűrők, hogy megakadályozza az olyan alkalmazásokban lévő objektumok használatát, amelyek támogatják az automatikus felhasználó-kiépítés kiépítési módját, ha egy objektum nem felel meg az üzleti követelményeinek.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,110 +12,110 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
-ms.author: celested
+ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ebc6c1e8a264c5570f3100885c4fca7d0d0d90d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4bb1ed48d501ca3166e0b906c622507b59ef059a
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56208375"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812684"
 ---
-# <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Attribútum-alapú alkalmazások üzembe helyezése és hatókörének beállítása szűrőket
-Ez a cikk célja, hogy azt ismertetik, hogyan hatókörszűrők használata, amelyek meghatározzák, hogy mely felhasználók lesznek kiépítve, egy alkalmazás Attribútumalapú szabályok meghatározásához.
+# <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Attribútum-alapú alkalmazás-kiépítés hatóköri szűrőkkel
+Ennek a cikknek a célja annak ismertetése, hogyan használhatók a hatóköri szűrők olyan attribútum-alapú szabályok definiálásához, amelyek meghatározzák, hogy mely felhasználók legyenek kiépítve egy alkalmazáshoz.
 
-## <a name="scoping-filter-use-cases"></a>Hatókörkezeléshez kapcsolódó szűrő alkalmazási helyzetek
+## <a name="scoping-filter-use-cases"></a>Hatókör-szűrő használati esetei
 
-Egy hatókörszűrőt lehetővé teszi, hogy az Azure Active Directory (Azure AD) regisztrációs szolgáltatási vagy bármely olyan attribútum, amely megfelel egy adott értékkel rendelkező felhasználók kizárja. Ha például egy értékesítési csapat által használt SaaS-alkalmazásokban az Azure AD-ből származó felhasználók kiépítésekor megadhatja, hogy a kiépítés hatókörébe legyen "Értékesítés", "Részleg" attribútuma csak felhasználói.
+A hatóköri szűrők lehetővé teszik, hogy az Azure Active Directory (Azure AD) kiépítési szolgáltatás belefoglaljon vagy kizárjon egy adott értékkel egyező attribútummal rendelkező felhasználókat. Ha például a felhasználók az Azure AD-ből egy értékesítési csapat által használt SaaS-alkalmazásba vannak kiépítve, akkor megadhatja, hogy csak a "Sales" osztály "részleg" attribútummal rendelkező felhasználók legyenek kiépítve.
 
-Hatókörkezeléshez kapcsolódó szűrők használható eltérően kiépítési összekötő típusától függően:
+A hatóköri szűrők a kiépítési összekötő típusától függően eltérő módon is használhatók:
 
-* **Kimenő kiépítése az Azure ad-ből a SaaS-alkalmazásokban**. Ha az Azure AD a forrásrendszerben [felhasználó és csoport-hozzárendelések](assign-user-or-group-access-portal.md) vannak a leggyakrabban használt módszer meghatározásához, hogy mely felhasználók tartoznak a kiépítés hatókörébe. Ezeket a hozzárendeléseket is használhatók az egyszeri bejelentkezés engedélyezése és kezelése, hozzáférés és üzembe helyezését egyetlen módot. Hatókörének beállítása szűrőket segítségével igény szerint hozzárendelések mellett vagy helyett, szűrhetők a felhasználók attribútum értékei alapján.
+* **Kimenő kiépítés az Azure ad-ből az SaaS-alkalmazásokba**. Ha az Azure AD a forrásoldali rendszer, a felhasználók [és csoportok hozzárendelései](assign-user-or-group-access-portal.md) a leggyakoribb módszer annak meghatározására, hogy mely felhasználók tartoznak a kiépítés hatóköréhez. Ezek a hozzárendelések az egyszeri bejelentkezés engedélyezésére is használhatók, és egyetlen módszert biztosítanak a hozzáférés és a kiépítés kezeléséhez. A hatókörhöz tartozó szűrők opcionálisan, a hozzárendelések mellett vagy ahelyett is használhatók, hogy az attribútumok alapján szűrhetik a felhasználókat.
 
     >[!TIP]
-    > Kiépítés alapján a vállalati alkalmazás-hozzárendeléseit a beállítások módosításával letilthatja a [hatókör](user-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application) az üzembe helyezési beállítások menüt **minden felhasználó és csoport szinkronizálása**. Ez opció és attribútum alapján Hatókörszűrő használatával teljesítményt nyújt, gyorsabb, mint biztonságicsoport-alapú hozzárendelések használatával.  
+    > Egy vállalati alkalmazás hozzárendelései alapján letilthatja az üzembe helyezést, ha a [hatókör](user-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application) menü Beállítások elemére módosítja a kiépítési beállítások lehetőséget az **összes felhasználó és csoport szinkronizálásához**. Ha ezt a lehetőséget választja, és az attribútum-alapú hatóköri szűrők gyorsabb teljesítményt biztosítanak, mint a csoport alapú hozzárendelések használata.  
 
-* **Bejövő HCM alkalmazásokat az Azure AD-ből és az Active Directory**. Ha egy [HCM-alkalmazást például a Workday](../saas-apps/workday-tutorial.md) van a forrásrendszerben Hatókörszűrő az elsődleges módszer, mely felhasználókat kell létrehozni az Active Directory vagy az Azure AD HCM-alkalmazás meghatározására.
+* **Bejövő kiépítés a HCM-alkalmazásokból az Azure ad-be és a Active Directoryba**. Ha egy [HCM-alkalmazás, például a munkanap](../saas-apps/workday-tutorial.md) a forrásrendszer, a hatóköri szűrők az elsődleges módszer annak meghatározására, hogy mely felhasználókat kell kiépíteni a HCM-alkalmazásból Active Directory vagy az Azure ad-be.
 
-Alapértelmezés szerint az Azure AD-kiépítési összekötők nem rendelkezik konfigurált hatókörének meghatározásához Attribútumalapú szűrők. 
+Alapértelmezés szerint az Azure AD kiépítési összekötői nem rendelkeznek konfigurált attribútum-alapú hatóköri szűrőkkel. 
 
-## <a name="scoping-filter-construction"></a>Hatókörkezeléshez kapcsolódó szűrő építése
+## <a name="scoping-filter-construction"></a>Hatókör-szűrő kialakítása
 
-Egy vagy több áll egy hatókörszűrőt *záradékok*. Záradékok határozza meg, hogy mely felhasználók jogosultak kiértékelése a minden egyes felhasználói attribútumok a Hatókörszűrő továbbítása. Előfordulhat például, hogy egy záradék szükséges, hogy a felhasználó "State" attribútum megegyezik-e a "Győr", így csak a New York-i felhasználók érvénybe lépnek az alkalmazásba. 
+Egy hatóköri szűrő egy vagy több *záradékból*áll. A záradékok határozzák meg, hogy mely felhasználók számára engedélyezett a hatókör-szűrő átadása az egyes felhasználók attribútumainak kiértékelésével. Előfordulhat például, hogy egy olyan záradékkal rendelkezik, amely megköveteli, hogy a felhasználó "State" attribútuma "New York" legyen, így csak a New York-i felhasználók lettek kiépítve az alkalmazásba. 
 
-Egyetlen záradék egyetlen feltétel egy egyetlen attribútum értéke határozza meg. Több záradékot egy egyetlen hatókörszűrőt jönnek létre, ha Ön értékeli ki őket együtt "És" logic használatával. Ez azt jelenti, hogy az összes záradékok kell értékelnie, ki kell építeni egy felhasználó sorrendben "true".
+Egyetlen záradék egyetlen feltételt határoz meg egyetlen attribútum értékének megadásához. Ha egy hatókör-szűrőben több záradék jön létre, a rendszer a "és a" logikával együtt értékeli ki őket. Ez azt jelenti, hogy az összes záradéknak az "igaz" értéket kell kiértékelnie ahhoz, hogy egy felhasználó kiépíthető legyen.
 
-Végül több Hatókörszűrő egyetlen alkalmazásra vonatkozó hozható létre. Ha több Hatókörszűrő megadva, azok van együtt lett kiértékelve "Vagy" logic használatával. Ez azt jelenti, hogy a konfigurált Hatókörszűrő bármelyikében a záradékok kiértékelni a "true", ha a felhasználó van kiépítve.
+Végül több hatókör-szűrő is létrehozható egyetlen alkalmazáshoz. Ha több hatóköri szűrő van jelen, a rendszer a "vagy" logikával együtt értékeli ki őket. Ez azt jelenti, hogy ha a beállított hatóköri szűrők bármelyikének összes záradéka "true" értékre van kiértékelve, a felhasználó kiépítve.
 
-Minden felhasználó vagy csoport az Azure AD létesítési szolgáltatás által feldolgozott mindig képest értékeli ki külön-külön mindegyik hatókörszűrőt.
+Az Azure AD-létesítési szolgáltatás által feldolgozott minden egyes felhasználót vagy csoportot a rendszer minden egyes hatóköri szűrőnél egyedileg értékel ki.
 
-Tegyük fel fontolja meg a következő Hatókörszűrő:
+Példaként vegye figyelembe a következő hatókör-szűrőt:
 
-![Hatókör-beállítási szűrője](./media/define-conditional-rules-for-provisioning-user-accounts/scoping-filter.PNG) 
+![Hatókör-szűrő](./media/define-conditional-rules-for-provisioning-user-accounts/scoping-filter.PNG) 
 
-A Hatókörszűrő megfelelően felhasználók ki kell építeni a következő feltételeknek kell megfelelnie:
+A hatókör-szűrőnek megfelelően a felhasználóknak meg kell felelniük a következő feltételeknek:
 
-* A New York-i kell lenniük.
-* A műszaki részleg kell működniük.
-* A vállalat alkalmazott azonosítója 1 000 000 és 2,000,000 között kell lennie.
-* A feladat címe nem lehet null értékű vagy üres.
+* A szolgáltatásnak New Yorkban kell lennie.
+* A mérnöki részlegnek kell dolgozniuk.
+* A vállalat alkalmazotti AZONOSÍTÓjának 1 000 000 és 2 000 000 között kell lennie.
+* A beosztás értéke nem lehet null vagy üres.
 
-## <a name="create-scoping-filters"></a>Hatókörszűrő létrehozása
-Hatókörszűrő vannak konfigurálva, az egyes Azure AD-felhasználó kiépítésére összekötő attribútumleképezések részeként. A következő eljárás azt feltételezi, hogy már állított be az Automatikus kiépítés [a támogatott alkalmazások egyik](../saas-apps/tutorial-list.md) és ad hozzá egy hatókörszűrőt rá.
+## <a name="create-scoping-filters"></a>Hatóköri szűrők létrehozása
+A hatóköri szűrők az egyes Azure AD-beli felhasználói létesítési összekötők attribútum-hozzárendeléseinek részeként vannak konfigurálva. Az alábbi eljárás azt feltételezi, hogy már beállította az automatikus kiépítési műveletet az [egyik támogatott alkalmazáshoz](../saas-apps/tutorial-list.md) , és egy hatókör-szűrőt ad hozzá.
 
-### <a name="create-a-scoping-filter"></a>Hozzon létre egy hatókörszűrőt
-1. A a [az Azure portal](https://portal.azure.com), nyissa meg a **Azure Active Directory** > **vállalati alkalmazások** > **mindenalkalmazás** szakaszban.
+### <a name="create-a-scoping-filter"></a>Hatókör-szűrő létrehozása
+1. A [Azure Portal](https://portal.azure.com)nyissa meg a **Azure Active Directory** > **vállalati alkalmazások** > **minden alkalmazás** szakaszt.
 
-2. Válassza ki az alkalmazást, amelynek már konfigurálta az Automatikus kiépítés: például: "ServiceNow".
+2. Válassza ki azt az alkalmazást, amelyhez az automatikus kiépítés konfigurálva van: például "ServiceNow".
 
-3. Válassza ki a **kiépítési** fülre.
+3. Válassza ki a **kiépítés** lapot.
 
-4. Az a **leképezések** területen válassza ki a leképezést, amely egy hatókörszűrőt a konfigurálni kívánt: például "szinkronizálása az Azure Active Directory felhasználók a ServiceNow".
+4. A **leképezések** szakaszban válassza ki azt a leképezést, amelyhez hatókör-szűrőt szeretne konfigurálni: például "Azure Active Directory felhasználók szinkronizálása a ServiceNow".
 
-5. Válassza ki a **Forrásobjektum hatóköre forrás** menü.
+5. Válassza ki a **forrás objektum hatóköre** menüt.
 
-6. Válassza ki **Hatókörszűrő hozzáadása**.
+6. Válassza a **hatókör hozzáadása szűrő**elemet.
 
-7. Adja meg a záradékot egy forrás kiválasztásával **attribútumnév**, egy **operátor**, és a egy **attribútumérték** az egyeztetéshez. A következő operátor használata támogatott:
+7. Definiáljon egy záradékot úgy, hogy kiválasztja a forrás **attribútum nevét**, egy **operátort**és egy **attribútum-értéket** , amely megfelel a következőnek:. A következő operátorok támogatottak:
 
-   a. **EQUALS**. Záradék visszaadja az "true", ha a kiértékelt attribútum a bemeneti karakterlánc pontosan megegyezik (megkülönbözteti a kis-és nagybetűket).
+   a. **EQUALS**. A záradék "igaz" értéket ad vissza, ha a kiértékelt attribútum pontosan egyezik a bemeneti karakterlánc értékével (kis-és nagybetűk megkülönböztetése).
 
-   b. **NEM EGYENLŐ**. Záradék "true", ha a kiértékelt attribútum nem egyezik a bemeneti karakterlánc (megkülönbözteti a kis-és nagybetűket) értéket ad vissza.
+   b. **NEM EGYENLŐ**. A záradék "igaz" értéket ad vissza, ha a kiértékelt attribútum nem egyezik a bemeneti karakterlánc értékével (kis-és nagybetűk megkülönböztetése).
 
-   c. **IGAZ**. Záradék "true", ha a kiértékelt attribútum IGAZ logikai értéket adja vissza.
+   c. **IGAZ**. A záradék "igaz" értéket ad vissza, ha a kiértékelt attribútum értéke TRUE (igaz) logikai érték.
 
-   d. **FALSE (HAMIS)**. Záradék "true", ha a kiértékelt attribútum false logikai értéket adja vissza.
+   d. **HAMIS**. A záradék "igaz" értéket ad vissza, ha a kiértékelt attribútum a hamis logikai értéket tartalmazza.
 
-   e. **NULL ÉRTÉKŰ**. Záradék "true", ha a kiértékelt attribútum üres adja vissza.
+   e. **NULL ÉRTÉKŰ**. A záradék "igaz" értéket ad vissza, ha a kiértékelt attribútum üres.
 
-   f. **NEM NULL**. Záradék adja vissza "true", ha a kiértékelt attribútum nem számít üresnek.
+   f. **NEM NULL**. A záradék "igaz" értéket ad vissza, ha a kiértékelt attribútum nem üres.
 
-   g. **REGULÁRIS KIFEJEZÉS EGYEZTETÉSE**. Záradék "true", ha a kiértékelt attribútuma megfelel a reguláris kifejezési mintája adja vissza. Például: ([1-9][0-9]) megegyezik bármilyen szám 10-es és 99 között.
+   g. **REGEX EGYEZÉS**. A záradék "igaz" értéket ad vissza, ha a kiértékelt attribútum megfelel egy reguláris kifejezési mintának. Például: ([1-9] [0-9]) a 10 és 99 közötti számra illeszkedik.
 
-   h. **REGULÁRIS KIFEJEZÉS EGYEZTETÉSE NEM**. Záradék "true", ha a kiértékelt attribútum nem felel meg a reguláris kifejezési mintája adja vissza.
+   h. **NEM A REGEX EGYEZÉSE**. A záradék "igaz" értéket ad vissza, ha a kiértékelt attribútum nem felel meg a reguláris kifejezési mintának.
 
-8. Válassza ki **hozzáadása új hatókörkezelési záradék**.
+8. Válassza az **Új hatókör hozzáadása záradékot**.
 
-9. Szükség esetén ismételje meg a lépéseket 7-8 több hatókörzáradék hozzáadása.
+9. Szükség esetén ismételje meg a 7-8. lépést további hatókör-záradékok hozzáadásához.
 
-10. A **felmerülő címe**, adja hozzá a Hatókörszűrő nevét.
+10. A **hatóköri szűrő címe**területen adja meg a hatókör-szűrő nevét.
 
 11. Kattintson az **OK** gombra.
 
-12. Válassza ki **OK** újra a **hatókörének beállítása szűrőket** képernyő. Szükség esetén ismételje meg a 6 – 11 egy másik Hatókörszűrő hozzáadása.
+12. Kattintson ismét az **OK gombra** a **hatókör szűrők** képernyőjén. Szükség esetén ismételje meg a 6-11-es lépést egy másik hatókör-szűrő hozzáadásához.
 
-13. Válassza ki **mentése** a a **attribútumleképzés** képernyő. 
+13. Válassza a **Mentés** lehetőséget az **attribútum-leképezési** képernyőn. 
 
 >[!IMPORTANT] 
-> Egy új hatókörkezelési szűrő eseményindítók új teljes szinkronizálás az alkalmazáshoz, ahol a forrásrendszerben lévő összes felhasználó értékeli ki újra az új Hatókörszűrő elleni mentése. Ha egy felhasználó az alkalmazást a korábban hatókörébe tartozó kiépítés, de a hatókörén kívül esik, a fiók le van tiltva vagy – figyelmeztetés megszüntetésről az alkalmazásban.
+> Egy új hatókör-szűrő mentése új teljes szinkronizálást indít az alkalmazáshoz, ahol a rendszer az új hatókör-szűrővel újra kiértékeli a forrásrendszer összes felhasználóját. Ha az alkalmazás egyik felhasználója korábban a kiépítés hatókörében volt, de a hatókörön kívül esik, a fiókja le van tiltva, vagy az alkalmazás nem lesz kiépítve. Az alapértelmezett viselkedés felülbírálásához tekintse meg a [Hatókörön kívüli felhasználói fiókok törlésének kihagyását](skip-out-of-scope-deletions.md)ismertető témakört.
 
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
-* [Felhasználói kiépítésének és megszüntetésének biztosítása az SaaS-alkalmazások automatizálása](user-provisioning.md)
-* [A felhasználók átadásának attribútumleképezések testreszabása](customize-application-attributes.md)
+* [A felhasználók üzembe helyezésének automatizálása és az SaaS-alkalmazások megszüntetése](user-provisioning.md)
+* [Attribútum-hozzárendelések testreszabása a felhasználók üzembe helyezéséhez](customize-application-attributes.md)
 * [Kifejezések írása attribútumleképezésekhez](functions-for-customizing-application-data.md)
-* [Alkalmazáskiépítési értesítések](user-provisioning.md)
-* [SCIM használata a felhasználók és csoportok Azure Active Directoryból származó alkalmazások automatikus kiépítésének engedélyezése](use-scim-to-provision-users-and-groups.md)
-* [Az SaaS-alkalmazások integrálásával foglalkozó oktatóanyagok listája](../saas-apps/tutorial-list.md)
+* [Fiók kiépítési értesítései](user-provisioning.md)
+* [A SCIM használata a felhasználók és csoportok automatikus üzembe helyezésének engedélyezéséhez Azure Active Directoryról alkalmazások számára](use-scim-to-provision-users-and-groups.md)
+* [Az SaaS-alkalmazások integrálásával kapcsolatos oktatóanyagok listája](../saas-apps/tutorial-list.md)
 

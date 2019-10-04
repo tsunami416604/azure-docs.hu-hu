@@ -1,6 +1,6 @@
 ---
-title: Levágása videókat a Media Encoder Standard – Azure |} A Microsoft Docs
-description: Ez a cikk bemutatja, hogyan körülvágása a Media Encoder Standard videókat.
+title: Videók körülvágása a Media Encoder Standard használatával – Azure | Microsoft Docs
+description: Ez a cikk bemutatja, hogyan vágja le a videókat Media Encoder Standard használatával.
 services: media-services
 documentationcenter: ''
 author: anilmur
@@ -12,36 +12,37 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: anilmur;juliako;
-ms.openlocfilehash: 9a81050fca935f688f2ff58cb04a148bf676f04b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: anilmur
+ms.reviewer: juliako
+ms.openlocfilehash: 03d68cc3a60abba8b7189a9d03fbc21d7606f736
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58176650"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "69016614"
 ---
 # <a name="crop-videos-with-media-encoder-standard"></a>Videók körülvágása a Media Encoder Standarddel  
 
-A Media Encoder Standard (MES) használatával a bemeneti videó vágása. Vágás az a folyamat egy téglalap alakú ablakot a képkocka kiválasztásával, és csak az adott időszakon belül képpont kódolás. Az alábbi ábra segítségével ábrázolni a folyamatot.
+A bemeneti videó kivágásához Media Encoder Standard (MES) használható. A vágás a videó keretén belül egy téglalap alakú ablak kiválasztásának, valamint az adott ablakon belüli képpontok kódolásának a folyamata. Az alábbi ábrán a folyamat szemlélteti.
 
-![Videók körülvágása](./media/media-services-crop-video/media-services-crop-video01.png)
+![Videó körülvágása](./media/media-services-crop-video/media-services-crop-video01.png)
 
-Tegyük fel, bemeneti videó felbontása 1920 x 1080 képpont (16:9 oldalarányának megőrzésével), de a bal és jobb, fekete sávok (pillar mezők) rendelkezik, hogy csak egy 4:3 ablakban vagy 1440 x 1080 képpont aktív videót tartalmaz. MES használatával vágja körül, vagy szerkesztheti a fekete sávok ki, és a 1440 x 1080 régió kódolása.
+Tegyük fel, hogy olyan videót használ, amely 1920 × 1080 képpontos felbontással rendelkezik (16:9 oldalarányú), de a bal és a jobb oldali fekete sávokkal (oszlopokkal) rendelkezik, így csak a 4:3-es vagy a 1440x1080 képpont aktív videót tartalmaz. A MES használatával levágja vagy szerkesztheti a fekete sávokat, és kódolhatja a 1440x1080 régiót.
 
-Egy előfeldolgozási fázis, a MES vágása, így a körbevágási paramétereket a kódolási előbeállítás a alkalmazni a bemeneti videó. Kódolás a későbbi szakaszában, és a szélességének és magasságának beállítások vonatkoznak a *előre feldolgozott* videó, nem pedig az eredeti videó. Amikor megtervezi a készletet kell tegye a következőket: (a) a bemeneti videó alapján körülvágása paraméterek (b) válassza ki és a beállítások alapján a körülvágva videó kódolása. Ha nem egyeznek a beállításokat a körülvágva videó kódolásához, a kimenet nem lesz a várt módon.
+A MES-beli levágás egy előfeldolgozási szakasz, ezért a kódolási beállításkészletben lévő levágási paraméterek az eredeti bemeneti videóra érvényesek. A kódolás egy későbbi fázis, és a szélességi/magassági beállítások az *előre feldolgozott* videóra vonatkoznak, és nem az eredeti videóra. Az előre beállított beállítások megtervezésekor a következőket kell tennie: (a) válassza ki a vágási paramétereket az eredeti bemeneti videó alapján, és (b) a bevágott videó alapján válassza ki a kódolási beállításokat. Ha nem felel meg a bevágott videóhoz tartozó kódolási beállításoknak, a kimenet nem a várt módon fog megjelenni.
 
-A [következő](media-services-custom-mes-presets-with-dotnet.md#encoding_with_dotnet) a témakör bemutatja, hogyan kódolási feladat létrehozása a MES használatával és a egy egyedi, a kódolási feladat készletek megadása. 
+A [következő](media-services-custom-mes-presets-with-dotnet.md#encoding_with_dotnet) témakör bemutatja, hogyan hozhat létre egy MES-kódolási feladatot, és hogyan határozhat meg egyéni beállításkészletet a kódolási feladathoz. 
 
-## <a name="creating-a-custom-preset"></a>Egyéni előbeállítás létrehozása
-A példában az ábrán látható:
+## <a name="creating-a-custom-preset"></a>Egyéni beállításkészlet létrehozása
+A ábrán látható példában:
 
-1. Eredeti bemeneti adat 1920 × 1080 képpont
-2. A bemeneti keretben közepén 1440 x 1080 kimenetre csonkolva kell
-3. Ez azt jelenti, hogy egy X eltolását (1920 – 1440) / 2 = 240, és a egy Y eltolás a nulla
-4. A szélességét és magasságát körülvágása téglalap: 1440 és 1080 képpont, illetve
-5. A encode fázisban a három réteg előállítása, megoldások 1440 x 1080, 960 × 720 és 480 x 360, illetve
+1. Az eredeti bemenet 1920 × 1080
+2. A bemeneti keretbe tartozó 1440x1080-kimenetre kell levágva.
+3. Ez azt jelenti, hogy a (1920 – 1440)/2 = 240 X eltolása és a nulla Y eltolása
+4. A körülvágási négyszög szélessége és magassága 1440 és 1080, illetve
+5. A kódolás szakaszban a kérdés, hogy három réteget hoz létre, a 1440x1080, a 960x720 és a 480x360 felbontása
 
-### <a name="json-preset"></a>JSON-előbeállítás
+### <a name="json-preset"></a>JSON-készlet
     {
       "Version": 1.0,
       "Sources": [
@@ -126,20 +127,20 @@ A példában az ábrán látható:
     }
 
 
-## <a name="restrictions-on-cropping"></a>Vágása korlátozásai
-A vágási szolgáltatást helyezni manuális. A bemeneti videó tölthet be egy megfelelő szerkesztési eszköz, amely lehetővé teszi az jelölje ki a lényeges, vigye a kurzort a körbevágási téglalap alakú, a kódolási előbeállítás, amely van hangolva, hogy adott videó, stb. meghatározására tartozó eltolások meghatározásához kell. Ez a funkció nem jelenti azt, hogy többek között: automatikus észlelése és eltávolítása a bemeneti videóhoz a fekete postaláda/pillarbox szegélyek.
+## <a name="restrictions-on-cropping"></a>A levágás korlátozásai
+A levágási funkció manuális. A bemeneti videót egy megfelelő szerkesztési eszközbe kell betölteni, amely lehetővé teszi az érdekes keretek kiválasztását, a kurzort a kivágási négyszög eltolásának meghatározásához, hogy meghatározza az adott videóhoz hangolt kódolási beállításkészletet stb. Ez a funkció nem teszi lehetővé a következő műveleteket: a fekete postafiók/pillarbox szegélyének automatikus észlelése és eltávolítása a bemeneti videóban.
 
-A következő korlátozások vonatkoznak a vágási szolgáltatást. Ha ezek nem teljesülnek, a encode feladat is sikertelen, vagy nem várt kimenetet.
+A következő korlátozások vonatkoznak a levágási szolgáltatásra. Ha ezek nem teljesülnek, a kódolási feladat sikertelen lehet, vagy váratlan kimenetet eredményezhet.
 
-1. A fordítani és körülvágása téglalap mérete kell férnie a bemeneti videó
-2. Amint már említettük, a szélessége és magassága encode beállításaiban kell megegyeznie a körülvágva videó
-3. Vágása fekvő tájolásban rögzített videókra vonatkozik (azaz nem vonatkozik a videók okostelefont rögzített tárolt, függőlegesen vagy álló tájolású módban)
-4. Működik a legjobban, négyzet alakú rögzített fokozatos videó
+1. A körülvágási négyszög összehangolása és mérete a bemeneti videón belül elfér
+2. A fentiekben leírtaknak megfelelően a kódolási beállításokban szereplő szélesség & magasságnak meg kell egyeznie a bevágott videóval
+3. A levágás a tájkép módban rögzített videókra vonatkozik (azaz nem alkalmazható a vertikálisan vagy álló módban tárolt okostelefonokkal rögzített videókra)
+4. A legjobban a szögletes képpontokkal rögzített progresszív videóval működik
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-step"></a>Következő lépés
-Tekintse meg az Azure Media Services képzési tervek segítenek megismerni az AMS által kínált nagyszerű funkciókat.  
+Az AMS által kínált nagyszerű funkciók megismeréséhez tekintse meg Azure Media Services képzési útvonalakat.  
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

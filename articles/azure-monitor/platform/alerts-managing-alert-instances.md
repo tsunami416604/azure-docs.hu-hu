@@ -1,46 +1,58 @@
 ---
-title: Riasztáspéldányok kezelése
-description: Riasztás-példányok felügyeletére az Azure-ban
+title: Riasztási példányok kezelése a Azure Monitorban
+description: Riasztási példányok kezelése az Azure-ban
 author: anantr
 services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: anantr
+ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: cb93f38c05156d7ab5acb89ffff810949583e507
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 91a770b522011f3955ae0956e289886eb204cf47
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58089403"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71702909"
 ---
-# <a name="manage-alert-instances"></a>Riasztáspéldányok kezelése
-Az a [egységes riasztások kezelőfelület](https://aka.ms/azure-alerts-overview) az Azure monitorban, most már megtekintheti a riasztások különböző típusait Azure-on, több előfizetést, egy egyetlen panelen tekinthesse átfedés. Ez a cikk végigvezeti a riasztási példányok megtekintésének és a meghatározott riasztási példányok található hibaelhárítási portálon részletesen.
+# <a name="manage-alert-instances-with-unified-alerts"></a>Riasztási példányok kezelése egyesített riasztásokkal
+A Azure Monitor [egységes riasztások terén](https://aka.ms/azure-alerts-overview) az összes különböző típusú riasztást láthatja az Azure-ban. Ez több előfizetést ölel fel egyetlen ablaktáblán. Ez a cikk bemutatja, hogyan tekintheti meg a riasztási példányokat, és hogyan keresheti meg a hibaelhárításhoz adott riasztási példányokat.
 
-1. A riasztások lapon kerül három módja van
+> [!NOTE]
+   >  Csak az elmúlt 30 napban generált riasztások érhetők el.
 
-   + Az a [portál](https://portal.azure.com/), jelölje be **figyelő** , és válassza ki a Monitor terület - **riasztások**.  
-     ![Monitorozás](media/alerts-managing-alert-instances/monitoring-alerts-managing-alert-instances-toc.jpg)
+## <a name="go-to-the-alerts-page"></a>Ugrás a riasztások oldalra
+
+A riasztások oldal a következő módokon léphet fel:
+
+   + A [Azure Portal](https://portal.azure.com/)válassza a**riasztások** **figyelése** > lehetőséget.  
+     ![Képernyőkép a figyelő riasztásokról](media/alerts-managing-alert-instances/monitoring-alerts-managing-alert-instances-toc.jpg)
   
-   + Egy adott környezetében riasztásai navigálhat **erőforrás**. Miután egy erőforráshoz van megnyitva, haladjon végig a tartalomjegyzékben, a figyelés szakaszban, és válassza **riasztások**, a riasztások az adott erőforráson előre szűrni kívánt kezdőlapjának alkotóelemeit.
+   + Egy adott erőforrás kontextusának használata. Nyisson meg egy erőforrást, nyissa meg a **figyelés** szakaszt, és válassza a **riasztások**lehetőséget. A Kezdőlap előre szűrve van a riasztások számára az adott erőforráson.
    
-     ![Figyelés](media/alerts-managing-alert-instances/alert-resource.JPG)
+     ![Az erőforrás-figyelési riasztások képernyőképe](media/alerts-managing-alert-instances/alert-resource.JPG)
     
-   + Egy adott környezetében riasztásai navigálhat **erőforráscsoport**. Miután megnyílik egy erőforráscsoportot, haladjon végig a tartalomjegyzékben, a figyelés szakaszban, és válassza **riasztások**, az adott erőforráscsoport a riasztásaihoz előre szűrni kívánt kezdőlapja.    
+   + Egy adott erőforráscsoport környezetének használata. Nyisson meg egy erőforráscsoportot, nyissa meg a **figyelés** szakaszt, és válassza a **riasztások**lehetőséget. A Kezdőlap előre szűrve van az adott erőforráscsoporthoz tartozó riasztásokhoz.    
    
-     ![Figyelés](media/alerts-managing-alert-instances/alert-rg.JPG)
+     ![Az erőforráscsoport-figyelési riasztások képernyőképe](media/alerts-managing-alert-instances/alert-rg.JPG)
 
-1. Kerül a **riasztások szerint** oldal, amely áttekintést nyújt az összes riasztás-példányok Azure-ban. Az összefoglaló nézet kiválasztásával módosíthatja **több előfizetést** (legfeljebb 5) vagy különböző szűrésével **erőforráscsoportok**meghatározott **erőforrások**, vagy **címtartományok idő**. Kattintson az értesítések száma vagy a súlyosság sávok bármelyikét nyissa meg a riasztások listanézetének megnyitására.     
-   ![Riasztások szerint](media/alerts-managing-alert-instances/alerts-summary.jpg)
+## <a name="find-alert-instances"></a>Riasztási példányok keresése
+
+A **riasztások összegzése** lap áttekintést nyújt az összes Azure-beli riasztási példányról. Az összegző nézetet úgy módosíthatja, hogy **több előfizetést** választ ki (legfeljebb 5), vagy az **erőforráscsoportok**, adott **erőforrások**vagy **időtartományok**szűrésével. Válassza ki az **összes riasztást**, vagy a súlyossági sávok bármelyikét, hogy megnyissa a riasztások listájának nézetét.     
+   ![A riasztások összegzése lap képernyőképe](media/alerts-managing-alert-instances/alerts-summary.jpg)
  
-1. Kerül a **minden riasztás** oldal, ahol láthatja a riasztási példányok ki felsorolt Azure-ban. Ha a riasztási értesítéshez hamarosan még a portálra, használhatja a rendelkezésre álló szűkítheti a a meghatározott riasztási eseményről a szűrők. (**Megjegyzés**: Ha bármelyik súlyossági sávra kattintva a lap kapott, a lista lesz az adott súlyossági előre szűrt megnyitja, ha). A szűrők érhető el az előző lapon szereplőkkel most is szűrheti a beállítási szolgáltatás figyelése (például metrikák Platform), figyelési feltétel (aktivált vagy feloldása), súlyosság, (új/nyugtázva/zárt) riasztás állapota vagy az intelligens csoport azonosítója.
+A **minden riasztás** oldalon az összes Azure-beli riasztási példány megjelenik. Ha riasztási értesítésből érkezik a portálra, az adott riasztási példányon elérhető szűrők használatával szűkítheti a rendelkezésre álló szűrőket.
 
-   ![Minden riasztás](media/alerts-managing-alert-instances/all-alerts.jpg)
+> [!NOTE]
+>  Ha a súlyossági sávok bármelyikét kiválasztva az oldalra került, a lista az adott súlyossági szinthez előre szűrve lesz.
+
+Az előző oldalon elérhető szűrőktől eltekintve a figyelési szolgáltatás (például a mérőszámok platformja), a figyelési feltétel (kilőtt vagy feloldott), a súlyosság, a riasztási állapot (új/visszaigazolt/lezárt), vagy az intelligens csoport azonosítója alapján is szűrhető.
+
+   ![Képernyőkép az összes riasztás oldalról](media/alerts-managing-alert-instances/all-alerts.jpg)
 
    > [!NOTE]
-   >  Ha bármelyik súlyossági sávra kattintva a lap kapott, a lista lesz előre szűrt esetében, amikor ezen az oldalon, megnyitja.
+   >  Ha a súlyossági sávok bármelyikét kiválasztva az oldalra került, a lista az adott súlyossági szinthez előre szűrve lesz.
  
-1. Bármelyik figyelmeztetési példányra kattintva megnyílik a **riasztás részletei** lap, amely lehetővé teszi a részletes leírása a meghatározott riasztási eseményről kapcsolatos információkat az.   
-   ![Riasztás részletei](media/alerts-managing-alert-instances/alert-details.jpg)  
+Bármelyik riasztási példány kiválasztásával megnyílik a **riasztás részletei** lap, amely lehetővé teszi az adott riasztási példányra vonatkozó további részletek megtekintését.   
+   ![A riasztás részletei lap képernyőképe](media/alerts-managing-alert-instances/alert-details.jpg)  
 

@@ -4,20 +4,21 @@ titlesuffix: Azure Virtual Network
 description: Ismerje meg, hogy több IP-cím hozzárendelése a virtuális gépek az Azure parancssori felület (CLI) segítségével.
 services: virtual-network
 documentationcenter: na
-author: jimdial
+author: KumudD
+manager: twooley
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/17/2016
-ms.author: jimdial
-ms.openlocfilehash: b693500e785d41b2ad3339e26dd9fd3505891bc0
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.author: kumud
+ms.openlocfilehash: 3b00bbb5903156da625b7caaca9b1a2cff212421
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648333"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64699348"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-cli"></a>Több IP-cím hozzárendelése a virtuális gépek az Azure CLI használatával
 

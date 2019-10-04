@@ -1,6 +1,6 @@
 ---
-title: Forgalmi lefedettség Azure Maps-|} A Microsoft Docs
-description: További tudnivalók az Azure Maps forgalmi lefedettség
+title: Forgalom lefedettsége Azure Mapsban | Microsoft Docs
+description: Tudnivalók a forgalom lefedettségéről Azure Maps
 author: walsehgal
 ms.author: v-musehg
 ms.date: 09/22/2018
@@ -8,22 +8,22 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: ad7d4dceefcaa06effa6b2974b0a8a03ad641372
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: f9a3c4875f01c650485034fe46f53bb5aa1fd75b
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372248"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68722658"
 ---
-# <a name="azure-maps-traffic-coverage"></a>Az Azure Maps forgalmi lefedettség
+# <a name="azure-maps-traffic-coverage"></a>Azure Maps forgalom lefedettsége
 
-Az Azure Maps nyújt gazdag forgalomra vonatkozó információkat a forgalom formájában **folyamat** és **incidensek**. Ezek az adatok térképen ábrázolt vagy vezetési feltételek valós kéttényezős intelligensebb útvonalak létrehozásához használt is.
+A Azure Maps a **forgalom és az** incidensek formájában biztosít részletes forgalmiinformációkat. Ezek az adathalmazok megjeleníthetők a térképeken, vagy olyan intelligensebb útvonalak előállítására használhatók, amelyek valós vezetési körülmények között számítanak.
 
-A Maps azonban nem rendelkezik azonos szintű információkat és a pontosság minden régió esetében. Az alábbi táblázat ismerteti, milyen típusú forgalomra vonatkozó információkat is kérhet minden egyes régió: 
+A Maps azonban nem rendelkezik azonos szintű információval és pontossággal az összes régióban. Az alábbi táblázat az egyes régiókban kérhető forgalmi információkról nyújt információt: 
 
 ## <a name="americas"></a>Amerika
 
-|Ország/régió  |Incidensek  |Folyamat  |
+|Ország/régió  |Események  |Folyamat  |
 |---------|:---------:|:---------:|
 |Argentína      |✓         |✓         |
 |Brazília     |✓         |✓         |
@@ -39,7 +39,7 @@ A Maps azonban nem rendelkezik azonos szintű információkat és a pontosság m
 
 ## <a name="asia-pacific"></a>Ázsia és a Csendes-óceáni térség
 
-|Ország/régió   |Incidensek  |Folyamat  |
+|Ország/régió   |Események  |Folyamat  |
 |---------|:---------:|:---------:|
 |Ausztrália     |✓         |✓        |
 |Brunei   |✓         |✓        |
@@ -58,18 +58,20 @@ A Maps azonban nem rendelkezik azonos szintű információkat és a pontosság m
 
 ## <a name="europe"></a>Európa
 
-|Ország/régió   |Incidensek  |Folyamat  |
+|Ország/régió   |Események  |Folyamat  |
 |---------|:---------:|:---------:|
 |Andorra   |✓         |✓         |
 |Ausztria     |✓         |✓         |
+|Belarusz    |✓         |✓         |
 |Belgium     |✓         |✓         |
+|Bosznia-Hercegovina    |✓         |✓         |
 |Bulgária     |✓         |✓         |
 |Horvátország     |✓         |✓         |
-|Cseh Köztársaság     |✓         |✓         |
+|Csehország     |✓         |✓         |
 |Dánia     |✓         |✓         |
 |Észtország     |         | ✓        |
 |Finnország     |✓         |✓         |
-|+ Aland-szigetek      |✓         |✓         |
+|\+ Åland-szigetek      |✓         |✓         |
 |Franciaország     |✓         |✓         |
 |Monaco     |✓         |✓         |
 |Németország     |✓         |✓         |
@@ -78,6 +80,7 @@ A Maps azonban nem rendelkezik azonos szintű információkat és a pontosság m
 |Izland     |✓         |✓         |
 |Írország     |✓         |✓         |
 |Olaszország     |✓         |✓        |
+|Kazahsztán    |✓         |✓        |
 |Lettország     |✓         |✓         |
 |Lesotho     |✓         |✓         |
 |Liechtenstein      |✓         |✓         |
@@ -89,30 +92,31 @@ A Maps azonban nem rendelkezik azonos szintű információkat és a pontosság m
 |Norvégia     |✓         |✓         |
 |Lengyelország     |✓         |✓         |
 |Portugália     |✓         |✓         |
-|+ Azori-szigetek és Madeira     |✓         |✓         |
+|\+ Azori-szigetek és Madeira     |✓         |✓         |
 |Románia     |✓         |✓         |
 |Orosz Föderáció     |✓         |✓         |
 |San Marino    |✓         |✓         |
+|Szerbia   |✓         |✓         |
 |Szlovákia     |✓         |✓         |
 |Szlovénia     |✓         |✓         |
 |Spanyolország     |✓         |✓         |
 |+Andorra     |✓         |✓         |
-|+ Baleárok     |✓         |✓         |
-|+ Kanári-szigetek     |✓         |✓         |
+|\+ Baleár-szigetek     |✓         |✓         |
+|\+ Kanári-szigetek     |✓         |✓         |
 |Svédország     |✓         |✓         |
 |Svájc     |✓         |✓        |
 |Törökország     |✓         |✓         |
 |Ukrajna     |✓         |✓         |
 |Egyesült Királyság     |✓         |✓         |
-|+ Gibraltár     |✓         |✓         |
-|+ Guernsey & mez     |✓         |✓         |
-|+ Man-sziget     |✓         |✓         |
+|\+ Gibraltár     |✓         |✓         |
+|\+ Guernsey & Jersey     |✓         |✓         |
+|\+ Man-sziget     |✓         |✓         |
 |Vatikánváros   |✓         |✓         |
 
 
 ## <a name="middle-east-and-africa"></a>Közel-Kelet és Afrika
 
-|Ország/régió |Incidensek  |Folyamat  |
+|Ország/régió |Események  |Folyamat  |
 |---------|:---------:|:---------:|
 |Bahrein     |✓         |✓         |
 |Egyiptom     |✓         |✓         |
@@ -130,4 +134,4 @@ A Maps azonban nem rendelkezik azonos szintű információkat és a pontosság m
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure Maps forgalmi adatok kapcsolatos további információkért lásd: a [forgalom](https://docs.microsoft.com/rest/api/maps/traffic) oldalak hivatkozhat.
+Azure Maps forgalmi adatokkal kapcsolatos további információkért tekintse meg a [forgalmi](https://docs.microsoft.com/rest/api/maps/traffic) útmutató lapjait.

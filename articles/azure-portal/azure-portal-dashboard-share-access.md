@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: tomfitz
-ms.openlocfilehash: c07a9d92cac13d6325e66f44426f1a64e8ac53cb
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: fbbc8a4f636a95d18baa0dc5de541279ce36789b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47096200"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60552000"
 ---
 # <a name="share-azure-dashboards-by-using-role-based-access-control"></a>Azure-irányítópultok megosztása szerepköralapú hozzáférés-vezérlés használatával
 Miután egy irányítópultot, tegye közzé, és megoszthatja más felhasználók a szervezetben. Engedélyezi másoknak, hogy az irányítópult megtekintéséhez használja az Azure [szerepköralapú hozzáférés-vezérlés](../role-based-access-control/role-assignments-portal.md). Egy felhasználó vagy felhasználók csoportja rendelhet egy szerepkört, és a szerepkör határozza meg, hogy ezek a felhasználók megtekintheti vagy módosíthatja a közzétett irányítópultot. 
@@ -36,7 +36,7 @@ A szerepköralapú hozzáférés vezérlése (RBAC), hozzárendelheti felhaszná
 
 * előfizetést
 * erőforráscsoport
-* erőforrás
+* resource
 
 Az engedélyek hozzárendelése a erőforrás le előfizetés öröklődnek. A közzétett irányítópultot egy erőforráshoz. Emiatt előfordulhat, hogy már rendelkezik tartozó felhasználók számára a közzétett irányítópultot is működnek szerepkört az előfizetés. 
 
@@ -75,6 +75,6 @@ Az irányítópult most már közzé van téve. Ha az előfizetés az örökölt
      ![hozzárendelt szerepkörök](./media/azure-portal-dashboard-share-access/assigned-roles.png)
 
 ## <a name="next-steps"></a>További lépések
-* Szerepkörök listáját lásd: [RBAC: beépített szerepkörök](../role-based-access-control/built-in-roles.md).
+* Szerepkörök listáját lásd: [RBAC: Beépített szerepkörök](../role-based-access-control/built-in-roles.md).
 * Erőforrások kezelésével kapcsolatos további információkért lásd: [Azure-erőforrások a portál](resource-group-portal.md).
 

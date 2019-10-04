@@ -1,7 +1,6 @@
 ---
 title: MapReduce használata és az Apache hadooppal a HDInsight - Azure Curl
 description: Ismerje meg, hogyan lehet távolról futtatni a Curl használatával HDInsight az Apache Hadoop MapReduce-feladatok.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: b422074c33f52a6819d2a05144a85768a2e484a0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: e4968310459097fc6a00f7c453846fe61726c3d5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58011914"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64716119"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>Az Apache Hadoop MapReduce feladatok futtatása HDInsight REST használatával
 
@@ -78,7 +77,7 @@ Megtudhatja, hogyan használható az Apache Hive-WebHCat REST API egy HDInsight-
    * **-u**: Azt jelzi, hogy a felhasználónév és a kérés hitelesítésére használt jelszó
    * **-G**: Azt jelzi, hogy ez a művelet egy GET kéréssel
 
-   Az URI-t, az elején **https://CLUSTERNAME.azurehdinsight.net/templeton/v1**, összes kérelem esetében azonos.
+   Az URI-t, az elején **https://CLUSTERNAME.azurehdinsight.net/templeton/v1** , összes kérelem esetében azonos.
 
 4. MapReduce feladatok elküldéséhez használja a következő parancsot:
 

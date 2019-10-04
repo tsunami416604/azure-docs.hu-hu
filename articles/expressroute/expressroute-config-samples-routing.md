@@ -9,11 +9,11 @@ ms.date: 12/06/2018
 ms.author: cherylmc
 ms.custom: seodec18
 ms.openlocfilehash: 2d7fb060896de8df266489451a11ba343760c747
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53079959"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60367472"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-routing"></a>Kezeli az útválasztást és útválasztó-konfigurációs minták
 Ez az oldal nyújt felület és az útválasztási konfigurációs minták Cisco IOS-XE-és a Juniper MX-sorozatú útválasztó az ExpressRoute használata során. Ezek a minták az útmutató csak nem, és nem használható, mert. Használhatja, így kapja meg a hálózat megfelelő konfigurációk a tárolóeszközök gyártójával egyeztetve. 

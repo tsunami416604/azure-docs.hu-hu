@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 01/22/2019
 ms.author: kgremban
 ms.custom: include file
-ms.openlocfilehash: 8693c48905155ed757bb727e42f4180f36c015f1
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: f88f6aa6daec342b24d165c4c4cc0a89a0805f7a
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55513987"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69558473"
 ---
-## <a name="associate-an-azure-storage-account-to-iot-hub"></a>Társítsa Azure Storage-fiókot, az IoT hubhoz
+## <a name="associate-an-azure-storage-account-to-iot-hub"></a>Azure Storage-fiók hozzárendelése IoT Hubhoz
 
-Mivel a szimulált eszközalkalmazás feltölt egy fájlt egy blobba, rendelkeznie kell egy [Azure Storage](../articles/storage/common/storage-quickstart-create-account.md) társított az IoT hub-fiók. Ha egy Azure Storage-fiókot társítja az IoT hub, az IoT hub egy SAS URI-t hoz létre. Egy eszköz a SAS URI használatával biztonságosan fájl feltöltése a blob-tárolóba. Az IoT Hub szolgáltatás és az eszköz SDK-kat koordinálja a folyamat, amely létrehozza az SAS URI-t, és lehetővé teszi az eszköz egy fájlt tölthet fel.
+Mivel a szimulált eszköz alkalmazás feltölt egy fájlt egy blobba, rendelkeznie kell egy [Azure Storage](../articles/storage/common/storage-quickstart-create-account.md) -fiókkal, amely az IoT hubhoz van társítva. Ha egy Azure Storage-fiókot társít egy IoT hubhoz, az IoT hub létrehoz egy SAS URI-t. Az eszköz ezt az SAS URI-t használva biztonságosan tölthet fel egy fájlt egy blob-tárolóba. A IoT Hub szolgáltatás és az eszköz SDK-k összehangolják a SAS URI-t létrehozó folyamatot, és elérhetővé teszik azt egy olyan eszköz számára, amelyet a fájlok feltöltésére használhatnak.
 
-Kövesse a [fájlfeltöltések konfigurálása az Azure portal használatával](../articles/iot-hub/iot-hub-configure-file-upload.md). Győződjön meg arról, hogy az IoT hub társítva-e a blobtárolót és, hogy a fájl értesítések engedélyezve vannak-e.
+Kövesse a [fájlfeltöltés konfigurálása a Azure Portal használatával](../articles/iot-hub/iot-hub-configure-file-upload.md)című témakör utasításait. Győződjön meg arról, hogy a blob-tároló társítva van az IoT hubhoz, és a fájl értesítései engedélyezve vannak.
 
-![Fájl értesítések engedélyezése a portálon](./media/iot-hub-associate-storage/enable-file-notifications.png)
+![Fájlok értesítéseinek engedélyezése a portálon](./media/iot-hub-associate-storage/file-notifications-vs2019.png)

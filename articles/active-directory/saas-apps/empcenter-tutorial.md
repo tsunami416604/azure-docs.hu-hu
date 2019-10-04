@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12eb3c9bc011a6dd0af2054d8a0f3b1568d0ed21
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 241f1aa1ab9588802fab92bdfcc2258ec866d308
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57850836"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67103499"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-empcenter"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező EmpCenter
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a EmpCenter konfigurálásához hozzá kell EmpCenter 
 
 **EmpCenter hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

@@ -9,11 +9,11 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.openlocfilehash: 84e1f57175d772ad281c18b67fa1be484c0cac69
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59793163"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66116085"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>Hogyan helyezhet üzembe több-bérlős módhoz 
 
@@ -134,7 +134,7 @@ Győződjön meg a karbantartás egyszerűbb, ezek a virtuális gépek, a rendsz
 
     **– felügyeleti-username**: A saját rendszergazdai felhasználónév használata.
 
-    **– a rendszergazdai jelszó-**: Használja a saját rendszergazdai jelszót.
+    **– a rendszergazdai jelszó-** : Használja a saját rendszergazdai jelszót.
 
     ```azurecli-interactive
     az vm create \
@@ -155,7 +155,7 @@ Győződjön meg a karbantartás egyszerűbb, ezek a virtuális gépek, a rendsz
 
     **– felügyeleti-username**: A saját rendszergazdai felhasználónév használata.
 
-    **– a rendszergazdai jelszó-**: Használja a saját rendszergazdai jelszót.
+    **– a rendszergazdai jelszó-** : Használja a saját rendszergazdai jelszót.
 
     ```azurecli-interactive
     az vm create \
@@ -193,7 +193,7 @@ Győződjön meg a karbantartás egyszerűbb, ezek a virtuális gépek, a rendsz
 Ebben a szakaszban az egyes virtuális Gépeken az Azure IoT C SDK fogja klónozni. Az SDK tartalmaz egy mintát, amely minden régióból egy bérlő eszközregisztrációs szimulálni fogja.
 
 
-1. Minden virtuális gép telepítése **Cmake**, **g ++**, **gcc**, és [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) a következő parancsokkal:
+1. Minden virtuális gép telepítése **Cmake**, **g ++** , **gcc**, és [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) a következő parancsokkal:
 
     ```bash
     sudo apt-get update

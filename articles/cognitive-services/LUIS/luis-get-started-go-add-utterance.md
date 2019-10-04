@@ -1,7 +1,7 @@
 ---
-title: Változás, train alkalmazást, a Go
+title: 'Gyors útmutató: Módosítás, betanítási alkalmazás, go-LUIS'
+titleSuffix: Azure Cognitive Services
 description: Ebben a rövid Go nyelvi útmutatóban kimondott példaszövegeket ad egy otthonautomatizálási alkalmazáshoz, és betanítja az alkalmazást.
-titleSuffix: Language Understanding - Microsoft Cognitive Services
 author: diberry
 manager: nitinme
 services: cognitive-services
@@ -9,20 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 01/23/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: 60594137306bfe58024877947959f2865fffe019
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 84704e000688c6681773b14542d80a1046228c3f
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961805"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307627"
 ---
-# <a name="quickstart-change-model-using-go"></a>Gyors útmutató: Modell módosítása a Go használatával
+# <a name="quickstart-change-model-using-go"></a>Gyors útmutató: Modell módosítása a go használatával
 
-Ebben a rövid útmutatóban átadhat kimondott szövegeket egy LUIS-végpontnak, majd visszakaphatja a szándékot és az entitásokat.
-
-[!INCLUDE [Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
+[!INCLUDE [Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-change-model-intro-para.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 

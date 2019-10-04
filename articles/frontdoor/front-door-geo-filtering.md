@@ -11,17 +11,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/21/2019
-ms.author: kumud;tyao
-ms.openlocfilehash: 1d6343705e8d27fb2d22827cf792de332861456e
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.author: kumud
+ms.reviewer: tyao
+ms.openlocfilehash: 7ad2d181b6343644205c58ab1d5fe83dc25542d4
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60007967"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846414"
 ---
 # <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>Mi az a földrajzi szűrés Azure bejárati ajtajának tartomány?
 
-Alapértelmezés szerint az Azure Front Door Service a kérelmet küldő felhasználó a tartózkodási helytől függetlenül válaszol a felhasználói kérelmekre. Bizonyos esetekben azonban érdemes ország alapján korlátozni a webalkalmazásokhoz való hozzáférést. Webes alkalmazás tűzfal (WAF) szolgáltatás bejárati ajtajának, lehetővé teszi meghatározhat egy olyan szabályzatot, a végpont a megadott elérési úthoz tartozó egyéni hozzáférési szabályok segítségével engedélyezheti vagy letilthatja a hozzáférést a megadott országok. 
+Alapértelmezés szerint az Azure Front Door Service a kérelmet küldő felhasználó a tartózkodási helytől függetlenül válaszol a felhasználói kérelmekre. Azonban bizonyos esetekben előfordulhat, hogy szeretné a webes alkalmazásokhoz való hozzáférés korlátozása ország/régió szerint. Webes alkalmazás tűzfal (WAF) szolgáltatás, bejárati ajtajának lehetővé teszi egy adott elérési úthoz, a végpont egyéni hozzáférési szabályok segítségével engedélyezheti vagy letilthatja a hozzáférést a megadott országok/régiók szabályzat meghatározása. 
 
 A WAF-szabályzat általában egyéni szabályok készletét tartalmazza. A szabályok egy egyeztetési feltételből, egy műveletből és egy prioritásból állnak. Az egyeztetési feltételben egy egyeztetési változót, egy operátort és egy egyeztetési értéket kell megadni.  A geoszűrési szabályok esetében az egyeztetési változó a REMOTE_ADDR, az operátor a GeoMatch, az érték pedig az érintett kétbetűs országkód. Egy GeoMatch feltételt és egy REQUEST_URI sztringegyeztetési feltételt kombinálva elérésiút-alapú geoszűrési szabályokat hozhat létre.
 
@@ -72,7 +73,7 @@ Konfigurálhatja a földrajzi szűrés házirend számára a bejárati ajtajána
 | CO | Kolumbia|
 | CR | Costa Rica|
 | CU | Kuba|
-| CV | Cabo Verde Köztársaság|
+| CV | Cabo Verde|
 | CY | Ciprus|
 | CZ | Cseh Köztársaság|
 | DE | Németország|
@@ -102,7 +103,7 @@ Konfigurálhatja a földrajzi szűrés házirend számára a bejárati ajtajána
 | HR | Horvátország|
 | HT | Haiti|
 | HU | Magyarország|
-| ID (Azonosító) | Indonézia|
+| id | Indonézia|
 | IE | Írország|
 | IL | Izrael|
 | IN | India|

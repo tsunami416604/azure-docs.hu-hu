@@ -1,89 +1,92 @@
 ---
-title: Operációs rendszer biztonsági mentéséhez és visszaállításához az SAP HANA az Azure-ban (nagyméretű példányok) írja be a II termékváltozatok |} A Microsoft Docs
-description: Hajtsa végre az operációs rendszer biztonsági mentés és visszaállítás Azure-ban (nagyméretű példányok) típusú II SKU-k az SAP Hana
+title: Az SAP HANA operációs rendszer biztonsági mentése és helyreállítása az Azure-ban (nagyméretű példányok) II-es típusú SKU-ban | Microsoft Docs
+description: Operációs rendszer biztonsági mentésének és visszaállításának elvégzése az Azure-beli SAP HANA (nagyméretű példányok) II. típusú SKU-ban
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/27/2018
-ms.author: saghorpa
+ms.date: 07/12/2019
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c82c5c74fe13bad99528486be69089df5f477457
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 046daed4f548d24010c3d3bef177cee8cf24a55e
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57436340"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098725"
 ---
-# <a name="os-backup-and-restore-for-type-ii-skus"></a>Az operációs rendszer biztonsági mentési és visszaállítási II. típusú termékváltozatokhoz
+# <a name="os-backup-and-restore-for-type-ii-skus-of-revision-3-stamps"></a>Az operációs rendszer biztonsági mentése és visszaállítása a 3. típusú bélyegzők II. típusához
 
-Ez a dokumentum ismerteti, hogyan hajtsa végre az operációs rendszer fájlszintű biztonsági mentés, és visszaállíthatja a **típus II termékváltozatok** , a nagyméretű HANA-példányokhoz. 
+Ez a dokumentum ismerteti az operációsrendszer-fájlok biztonsági mentésének és visszaállításának lépéseit a 3. típusú HANA nagyméretű példányainak **II** . típusára vonatkozóan. 
+
+>[!Important]
+> **Ez a cikk nem vonatkozik a II. típusú, nagyméretű HANA-példányok esetében a 2. változatra.** A 2. típusú Hana nagyméretű példányú, 4 HANA nagyméretű példányú bélyegekkel üzembe helyezett rendszerindító LUN-lemezekről biztonsági mentés készíthető a Storage-pillanatképekkel, mivel ez a helyzet a 3. változatban már használatos
+
 
 >[!NOTE]
->Az operációs rendszer biztonsági mentés parancsprogramjai használ a hátsó szoftvert, amely a kiszolgáló előzetesen már telepítve van.  
+>Az operációs rendszer biztonsági mentési parancsfájljai a hátsó szoftvert használják, amely előre telepítve van a-kiszolgálón.  
 
-A kiépítés befejezése után a Microsoft szolgáltatás-kezelési csapatunk, alapértelmezés szerint a kiszolgáló biztonsági mentése a fájlrendszer két biztonsági mentést ütemezés van konfigurálva az operációs rendszer szintű biztonsági mentése. Az ütemezés a biztonsági mentési feladat a következő paranccsal ellenőrizheti:
+Miután a Microsoft `Service Management` csapata elvégezte a kiépítés befejezését, alapértelmezés szerint a kiszolgáló két biztonsági mentési ütemtervtel van konfigurálva, hogy biztonsági másolatot készítsen az operációs rendszer fájlrendszeri szintjéről. A biztonsági mentési feladatok ütemezett listáját a következő paranccsal tekintheti meg:
 ```
 #crontab –l
 ```
-A biztonsági mentési ütemezés a következő paranccsal bármikor módosíthatja:
+A biztonsági mentés ütemtervét bármikor módosíthatja a következő parancs használatával:
 ```
 #crontab -e
 ```
-## <a name="how-to-take-a-manual-backup"></a>Manuális biztonsági mentés készítése hogyan?
+## <a name="how-to-take-a-manual-backup"></a>Manuális biztonsági mentés készítése
 
-Az operációs rendszer biztonsági másolat a helyrendszerről használatával ütemezhető egy **cron feladat** már. Azonban az operációs rendszer fájlszintű biztonsági mentés manuálisan is elvégezheti. Manuális biztonsági mentés végrehajtásához futtassa a következő parancsot:
+Az operációs rendszer fájlrendszerének biztonsági mentése már egy **cron-feladat** használatával van ütemezve. Az operációs rendszer fájljának biztonsági mentését azonban manuálisan is végrehajthatja. Manuális biztonsági mentés végrehajtásához futtassa a következő parancsot:
 
 ```
 #rear -v mkbackup
 ```
-A következő képernyő show látható a minta manuális biztonsági mentés:
+A következő képernyőn látható a manuális biztonsági mentés:
 
 ![Hogyan](media/HowToHLI/OSBackupTypeIISKUs/HowtoTakeManualBackup.PNG)
 
 
-## <a name="how-to-restore-a-backup"></a>A biztonsági másolat visszaállítási módját?
+## <a name="how-to-restore-a-backup"></a>Biztonsági másolat visszaállítása
 
-A biztonsági mentésből visszaállíthatja egy teljes biztonsági mentést, illetve egy adott fájl. Szeretne visszaállítani, használja a következő parancsot:
+A biztonsági másolatból visszaállíthat egy teljes biztonsági mentést vagy egy különálló fájlt. A visszaállításhoz használja a következő parancsot:
 
 ```
 #tar  -xvf  <backup file>  [Optional <file to restore>]
 ```
-A visszaállítás után helyreállított a fájl az aktuális munkakönyvtár.
+A visszaállítást követően a fájl helyreáll a jelenlegi munkakönyvtárban.
 
-A következő parancs bemutatja a visszaállítást egy fájl */etc/fstabfrom* a biztonságimásolat-fájl *backup.tar.gz*
+A következő parancs egy fájl visszaállítását mutatja be a Backup *. tar. gz* */etc/fstabfrom* .
 ```
 #tar  -xvf  /osbackups/hostname/backup.tar.gz  etc/fstab 
 ```
 >[!NOTE] 
->Másolja a fájlt a kívánt helyre a biztonsági másolatból történt visszaállítása után kell.
+>A biztonsági másolatból való visszaállítás után a fájlt a kívánt helyre kell másolnia.
 
-Az alábbi képernyőképen látható egy teljes biztonsági másolat visszaállítása:
+A következő képernyőfelvétel a teljes biztonsági mentés visszaállítását mutatja be:
 
-![HowtoRestoreaBackup.PNG](media/HowToHLI/OSBackupTypeIISKUs/HowtoRestoreaBackup.PNG)
+![HowtoRestoreaBackup. PNG](media/HowToHLI/OSBackupTypeIISKUs/HowtoRestoreaBackup.PNG)
 
-## <a name="how-to-install-the-rear-tool-and-change-the-configuration"></a>Telepítse a hátsó eszközt, és a konfiguráció módosítása hogyan? 
+## <a name="how-to-install-the-rear-tool-and-change-the-configuration"></a>Hogyan kell telepíteni a hátsó eszközt, és módosítani a konfigurációt? 
 
-A Relax és-helyreállítás (hátsó) csomagok **előre telepített** a a **típus II termékváltozatok** nagyméretű HANA-példányokhoz, és nincs további teendője. A hátsó használatával az operációs rendszer biztonsági mentés közvetlenül megkezdése.
-A körülmények között kell telepítenie a csomagokat a saját, követheti a felsorolt lépéseket annak telepítése és konfigurálása a hátsó eszköz.
+A relaxációs és helyreállító (hátsó) csomagok **előre telepítve** vannak a HANA nagyméretű példányainak **II. típusú SKU** -ban, és nincs szükség beavatkozásra. Közvetlenül megkezdheti az operációs rendszer biztonsági mentésének hátsó használatát.
+Azonban abban az esetben, ha a csomagokat saját maga is telepítenie kell, kövesse a felsorolt lépéseket a hátsó eszköz telepítéséhez és konfigurálásához.
 
-Telepítése a **hátsó** csomagok biztonsági mentése, használja a következő parancsokat:
+A **hátsó** biztonsági mentési csomagok telepítéséhez használja a következő parancsokat:
 
-A **SLES** operációs rendszer, használja a következő parancsot:
+**SLES** operációs rendszer esetén használja a következő parancsot:
 ```
 #zypper install <rear rpm package>
 ```
-A **RHEL** operációs rendszer, használja a következő parancsot: 
+**RHEL** operációs rendszer esetén használja a következő parancsot: 
 ```
 #yum install rear -y
 ```
-A hátsó eszköz konfigurálásához frissítenie paraméterek **OUTPUT_URL** és **BACKUP_URL** a a */etc/rear/local.conf fájl*.
+A hátsó eszköz konfigurálásához frissítenie kell a **OUTPUT_URL** és a **BACKUP_URL** paramétereket a */etc/Rear/local.conf fájlban*.
 ```
 OUTPUT=ISO
 ISO_MKISOFS_BIN=/usr/bin/ebiso
@@ -96,4 +99,4 @@ EXCLUDE_VG=( vgHANA-data-HC2 vgHANA-data-HC3 vgHANA-log-HC2 vgHANA-log-HC3 vgHAN
 BACKUP_PROG_EXCLUDE=("${BACKUP_PROG_EXCLUDE[@]}" '/media' '/var/tmp/*' '/var/crash' '/hana' '/usr/sap'  ‘/proc’)
 ```
 
-Az alábbi képernyőképen látható egy teljes biztonsági másolat visszaállítása: ![RearToolConfiguration.PNG](media/HowToHLI/OSBackupTypeIISKUs/RearToolConfiguration.PNG)
+A következő képernyőfelvétel a teljes biztonsági mentés visszaállítását mutatja be: ![RearToolConfiguration. PNG](media/HowToHLI/OSBackupTypeIISKUs/RearToolConfiguration.PNG)

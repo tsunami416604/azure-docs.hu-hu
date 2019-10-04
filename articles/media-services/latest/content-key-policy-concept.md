@@ -9,37 +9,52 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/03/2019
+ms.date: 07/26/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: d9e86c45d535862e0c3d02b3f331bc40ebb7f6c7
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 8809bf25c3bcfb26fb0ad251a2b09dfdca2a3e04
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745121"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68679190"
 ---
 # <a name="content-key-policies"></a>Tartalomkulcsszabályok
 
-A Media Services élő és igény szerinti tartalmait az Advanced Encryption Standard (AES-128) vagy a három fő digitális jogkezelési (technológia DRM) felügyeleti rendszerek bármelyikét dinamikusan titkosított juttathat el: A Microsoft PlayReady, a Google Widevine és az Apple fairplay által. Media Services is biztosít a modult az AES-kulcsok és a DRM (PlayReady, Widevine és FairPlay) licenceket az arra jogosult ügyfelek.
+A Media Services használatával dinamikusan titkosíthatja az élő és igény szerinti tartalmat Advanced Encryption Standard (AES-128) vagy a három jelentős digitális jogkezelési (DRM) rendszerből: Microsoft PlayReady, Google Widevine és Apple FairPlay. Media Services is biztosít a modult az AES-kulcsok és a DRM (PlayReady, Widevine és FairPlay) licenceket az arra jogosult ügyfelek. 
 
-A stream a titkosítási beállítások megadásához szeretne létrehozni a [tartalom kulcs házirend](https://docs.microsoft.com/rest/api/media/contentkeypolicies) társítsa a **Streamelési lokátor**. A **tartalom kulcs házirend** konfigurálja a tartalomkulcsot a rendszer hogyan továbbítja a Media Services kulcs kézbesítési összetevője keresztül végfelhasználók. A Media Services engedélyezheti a automatikus létrehozása a tartalomkulcsot. Általában lenne hosszú élettartamú van szükség, és a Get-szabályzatok megléte ellenőrzése. A kulcs lekéréséhez kell beolvasni a titkos kódok vagy hitelesítő adatokat, tekintse meg a következő példában egy külön művelet metódust hívja.
+Az adatfolyam titkosítási beállításainak megadásához létre kell hoznia egy [adatfolyam](streaming-policy-concept.md) -szabályzatot, és hozzá kell rendelnie a [folyamatos átviteli lokátorhoz](streaming-locators-concept.md). Hozza létre a [tartalmi kulcs házirendjét](https://docs.microsoft.com/rest/api/media/contentkeypolicies) annak konfigurálásához, hogy a tartalom kulcsa (amely biztonságos hozzáférést [](assets-concept.md)biztosít az eszközeihez) a végfelhasználók számára legyen továbbítva. Meg kell adnia a tartalmi kulcs házirendjének követelményeit (korlátozásait), amelyeknek teljesülniük kell ahhoz, hogy a megadott konfigurációval rendelkező kulcsok eljussanak az ügyfeleknek. A tartalmi kulcsra vonatkozó házirend nem szükséges a folyamatos átvitelhez vagy a letöltéshez. 
 
-**Tartalom-kulcs házirendjei** frissíthetők. Például előfordulhat, hogy szeretné frissíteni a szabályzatot, ha kell tennie egy kulcsrotálás. Frissítheti az elsődleges ellenőrzőkulcs és a meglévő házirendben alternatív ellenőrzőkulcsok listáját. A kulcs kézbesítési gyorsítótárak frissítése, és vegye fel a frissített szabályzatot esetében akár 15 percet is igénybe vehet. 
+A tartalmi kulcs házirendjét általában a [folyamatos átviteli lokátorhoz](streaming-locators-concept.md)társítja. Azt is megteheti, hogy a tartalmi kulcsra vonatkozó házirendet egy [folyamatos átviteli házirenden](streaming-policy-concept.md) belül is megadhatja (ha speciális forgatókönyvekhez egyéni adatfolyam-szabályzatot hoz létre) 
+
+> [!NOTE]
+> A `Datetime` típusú tartalmi kulcsokra vonatkozó házirendek tulajdonságai mindig UTC formátumban jelennek meg.
+
+## <a name="best-practices-and-considerations"></a>Ajánlott eljárások és szempontok
 
 > [!IMPORTANT]
-> * Tulajdonságainak **Tartalomszabályzat kulcs** a DateTime típusú állandóan UTC formátumban vannak.
-> * Házirendek korlátozott számú tervezzen a Media Services-fiókja és újra alkalmazza őket a Streamelési Lokátorok, amikor szükség van a ugyanazokkal a beállításokkal. 
+> Kérjük, tekintse át a következő javaslatokat.
+
+* A Media Service-fiókhoz korlátozott számú szabályzatot kell terveznie, és újra fel kell használni őket a streaming-lokátorok számára, amikor ugyanazok a beállítások szükségesek. További információ: kvóták [és korlátozások](limits-quotas-constraints.md).
+* A tartalmi kulcs házirendjei frissíthető. Akár 15 percet is igénybe vehet, amíg a kulcsok kézbesítési gyorsítótárai frissülnek, és felveszik a frissített szabályzatot. 
+
+   A szabályzat frissítésével felülírja a meglévő CDN-gyorsítótárat, ami lejátszási problémát okozhat a gyorsítótárazott tartalmat használó ügyfelek számára.  
+* Azt javasoljuk, hogy az egyes eszközökhöz ne hozzon létre új tartalmi kulcsokra vonatkozó házirendet. A legfontosabb előnye, hogy ugyanazokat a tartalmi kulcsokra vonatkozó szabályzatokat osztják meg egymás között, amelyek ugyanazokat a házirend-beállításokat igényelik:
+   
+   * Könnyebben kezelhető kis mennyiségű szabályzat.
+   * Ha frissítenie kell a tartalmi kulcsra vonatkozó házirendet, a módosítások szinte azonnal érvénybe lépnek az összes új licencelési kérelemben.
+* Ha új szabályzatot kell létrehoznia, létre kell hoznia egy új adatfolyam-keresőt az eszközhöz.
+* Javasoljuk, hogy Media Services automatikusan létrehozza a tartalmi kulcsot. 
+
+   Általában hosszú élettartamú kulcsot kell használnia, és ellenőriznie kell, hogy létezik-e a tartalmi kulcs házirendje a [Get](https://docs.microsoft.com/rest/api/media/contentkeypolicies/get)paranccsal. A kulcs lekéréséhez külön műveleti módszert kell meghívnia a titkok és a hitelesítő adatok beszerzéséhez. lásd az alábbi példát.
 
 ## <a name="example"></a>Példa
 
-A kulcs lekéréséhez használja **GetPolicyPropertiesWithSecretsAsync**, az alábbi példában látható módon.
-
-[!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#GetOrCreateContentKeyPolicy)]
+A kulcs eléréséhez használja `GetPolicyPropertiesWithSecretsAsync`a alkalmazást, ahogy az az [aláíró kulcs beolvasása a meglévő házirendből](get-content-key-policy-dotnet-howto.md#get-contentkeypolicy-with-secrets) című példa mutatja.
 
 ## <a name="filtering-ordering-paging"></a>Szűrési, rendezési, stránkování
 
-Lásd: [szűrése, rendezése, a Media Services entitások lapozás](entities-overview.md).
+Lásd: [Media Services entitások szűrése, rendezése](entities-overview.md)és lapozása.
 
 ## <a name="next-steps"></a>További lépések
 

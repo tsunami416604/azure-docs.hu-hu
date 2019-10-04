@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 12/07/2018
 ms.author: alkohli
-ms.openlocfilehash: 0a9aaa86d44e71e429f2bfff13a56ddcb1ee2071
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: e4b366075cb16f62a0e16b5b06da6fb19ffefdb9
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53550539"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179784"
 ---
 1. Jelentkezzen be a Data Box-eszközre. Győződjön meg arról, hogy fel oldva.
 
@@ -19,7 +19,7 @@ ms.locfileid: "53550539"
 
     ![Data Box-irányítópult](media/data-box-add-device-ip/data-box-connect-via-rest-2.png)
 
-3. Lépjen a **csatlakozás és másolás** kattintson **Rest (előzetes verzió)**.
+3. Lépjen a **csatlakozás és másolás** kattintson **Rest**.
 
     ![Data Box-irányítópult](media/data-box-add-device-ip/data-box-connect-via-rest-3.png)
 

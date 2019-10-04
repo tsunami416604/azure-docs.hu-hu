@@ -4,20 +4,21 @@ titlesuffix: Azure Virtual Network
 description: Információk a nyilvános és privát IP-címekről az Azure-ban.
 services: virtual-network
 documentationcenter: na
-author: jimdial
+author: KumudD
+manager: twooley
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
-ms.author: jdial
-ms.openlocfilehash: 929c8808721140d5275cba4bcf3fbaa567f961e0
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.author: kumud
+ms.openlocfilehash: 73b185eabc77d293328b1251a4af1aafffc5f319
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652025"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65236355"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>IP-cím-típusok és lefoglalási módszerek az Azure-ban
 
@@ -79,6 +80,9 @@ A standard termékváltozatú nyilvános IP-címek jellemzői:
 > [!NOTE]
 > A Standard Termékváltozatú erőforrás bejövő kommunikáció meghiúsul, amíg nem hoz létre, és társíthatja egy [hálózati biztonsági csoport](security-overview.md#network-security-groups) és explicit módon engedélyezi a kívánt bejövő forgalmat.
 
+> [!NOTE]
+> Csak az alapszintű Termékváltozat nyilvános IP-címek használata esetén érhető el [példány-metaadat szolgáltatás IMDS](../virtual-machines/windows/instance-metadata-service.md). A standard Termékváltozat nem támogatott.
+
 ### <a name="allocation-method"></a>Lefoglalási módszer
 
 Mind az alapszintű, mind a standard SKU nyilvános IP-címek támogatják a *statikus* kiosztási módszert.  A rendszer egy erőforrást rendel az IP-címhez a létrehozásakor, és az erőforrás törlésekor az IP-cím felszabadul.
@@ -101,11 +105,14 @@ Statikus nyilvános IP-címeket általában a következő esetekben szoktak hasz
 >
 
 ### <a name="dns-hostname-resolution"></a>DNS-állomásnév feloldása
-Megadhat egy DNS-tartománynév címkét a nyilvános IP-cím erőforráshoz, amely hozzárendelést hoz létre a *domainnamelabel*.*location*.cloudapp.azure.com és a nyilvános IP-cím között az Azure által felügyelt DNS-kiszolgálókon. Ha például nyilvános IP-cím erőforrást hoz létre a **contoso** *domainnamelabel* értékkel a **West US** *Azure-helyen*, akkor a rendszer a **contoso.westus.cloudapp.azure.com** teljes tartománynevet (FQDN) az erőforrás nyilvános IP-címére oldja fel. A teljes tartománynevet az Azure-ban lévő nyilvános IP-címre mutató egyéni tartományi CNAME rekord létrehozásához használhatja. Ahelyett vagy amellett, hogy az alapértelmezett utótaggal használná a DNS-név címkét, az Azure DNS szolgáltatással konfigurálhatja a DNS-nevet egy egyéni utótaggal, amelynek feloldása a nyilvános IP-címmé történik. További információt [az Azure DNS szolgáltatásnak nyilvános Azure IP-címmel történő használatával](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address) foglalkozó témakörben tekinthet meg.
+Megadhat egy DNS-tartománynév címkét a nyilvános IP-cím erőforráshoz, amely hozzárendelést hoz létre a *domainnamelabel*.*location*.cloudapp.azure.com és a nyilvános IP-cím között az Azure által felügyelt DNS-kiszolgálókon. Ha például nyilvános IP-cím erőforrást hoz létre a **contoso** *domainnamelabel* értékkel a **West US** *Azure-helyen*, akkor a rendszer a **contoso.westus.cloudapp.azure.com** teljes tartománynevet (FQDN) az erőforrás nyilvános IP-címére oldja fel.
 
 > [!IMPORTANT]
 > Minden egyes létrehozott tartománynév-címkének egyedinek kell lennie az Azure-helyen.  
 >
+
+### <a name="dns-best-practices"></a>DNS-ajánlott eljárások
+Ha minden eddiginél szeretne áttelepíteni egy másik régióba, nem telepíthetők át a nyilvános IP-cím teljes Tartománynevét. Ajánlott eljárásként a teljes tartománynév használatával hozzon létre egy Azure-beli nyilvános IP-címre mutató egyéni tartományi CNAME-rekord. Ha szeretne váltani egy másik nyilvános IP-cím van szüksége, ehhez szükség lesz a CNAME-rekord manuálisan frissíteni az új címmel a teljes tartománynév helyett egy frissítést. Használhat [Azure DNS](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address) vagy egy külső DNS-szolgáltatót a DNS-rekord. 
 
 ### <a name="virtual-machines"></a>Virtual machines (Virtuális gépek)
 
@@ -130,7 +137,7 @@ A következő táblázat bemutatja azokat a konkrét tulajdonságokat, amelyekke
 | --- | --- | --- | --- |
 | Virtuális gép |Hálózati illesztő |Igen |Igen |
 | Internetkapcsolattal rendelkező terheléselosztó |Előtér-konfiguráció |Igen |Igen |
-| VPN-átjáró |Átjáró IP-konfigurációja |Igen |Igen |
+| VPN-átjáró |Átjáró IP-konfigurációja |Igen |Nem |
 | Alkalmazásátjáró |Előtér-konfiguráció |Igen (csak V1) |Igen (csak V2) |
 
 ## <a name="private-ip-addresses"></a>Magánhálózati IP-címek
@@ -180,7 +187,7 @@ A következő táblázat bemutatja azokat a konkrét tulajdonságokat, amelyekke
 | Terheléselosztó |Előtér-konfiguráció |Igen |Igen |
 | Alkalmazásátjáró |Előtér-konfiguráció |Igen |Igen |
 
-## <a name="limits"></a>Korlátok
+## <a name="limits"></a>Limits
 Az IP-címkezelésre vonatkozó korlátokat a [hálózati korlátok](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) teljes csomagjában jelezzük az Azure-ban. A korlátok régiónként és előfizetésenként értendőek. [Lépjen kapcsolatba a támogatással](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade), ha növelni szeretné az alapértelmezett korlátot üzleti igényei szerint – akár a maximális korlátig.
 
 ## <a name="pricing"></a>Díjszabás

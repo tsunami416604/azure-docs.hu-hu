@@ -9,14 +9,14 @@ ms.reviewer: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 03/19/2019
+ms.date: 05/22/2019
 ms.author: jingwang
-ms.openlocfilehash: 9a123ed45b5857aa40fc9853a95c528833ba8aa9
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 3c846ab3e81e7ab8a4948aa4ed96cfa75e8eb3f4
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523188"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449686"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>Adatmásolás az SAP Business warehouse-hoz az Azure Data Factory használatával
 
@@ -29,7 +29,7 @@ Ez a cikk bemutatja, hogyan lehet Azure Data Factory segítségével az SAP Busi
 
 - **Az Azure Data Factory**: Ha még nincs fiókja, kövesse a lépéseket [adat-előállító létrehozása](quickstart-create-data-factory-portal.md#create-a-data-factory).
 
-- **Az SAP BW Open Hub cél (OHD) a cél típusa "Adatbázistábla"**: Hozzon létre egy OHD, vagy ellenőrizze, hogy a OHD megfelelően van konfigurálva a Data Factory-integráció, tekintse meg a [SAP BW Open Hub cél konfigurációk](#sap-bw-open-hub-destination-configurations) című szakaszát.
+- **Az SAP BW Open Hub cél (OHD) a cél típusa "Adatbázistábla"** : Hozzon létre egy OHD, vagy ellenőrizze, hogy a OHD megfelelően van konfigurálva a Data Factory-integráció, tekintse meg a [SAP BW Open Hub cél konfigurációk](#sap-bw-open-hub-destination-configurations) című szakaszát.
 
 - **Az SAP BW-felhasználó a következő engedélyeket kell**:
 
@@ -125,7 +125,7 @@ Az Azure Portalon nyissa meg az adat-előállítóhoz. Válassza ki **létrehoz�
 
     ![Tevékenység kimeneti részleteinek megtekintése](media/load-sap-bw-data/activity-output-details.png)
 
-## <a name="do-an-incremental-copy-from-sap-bw-open-hub"></a>Hajtsa végre a növekményes SAP BW Open hubról
+## <a name="incremental-copy-from-sap-bw-open-hub"></a>Az SAP BW Open Hub növekményes másolását.
 
 > [!TIP]
 > Lásd: [SAP BW Open Hub összekötő különbözeti kinyerési folyamat](connector-sap-business-warehouse-open-hub.md#delta-extraction-flow) megtudhatja, hogyan adat-előállítóban az SAP BW Open Hub összekötő növekményes adatokat másol az SAP BW. Ez a cikk is segíthet alapszintű összekötő-konfiguráció ismertetése.
@@ -162,7 +162,7 @@ Az adat-előállító **első lépések** lapon jelölje be **folyamat létrehoz
 
    - **HighWatermarkBlobName**: Adja meg a blob nevét, a felső küszöbértékek tárolására például `requestIdCache.txt`. A Blob storage-ban nyissa meg a megfelelő elérési útját HighWatermarkBlobPath + HighWatermarkBlobName, mint például *container/path/requestIdCache.txt*. Hozzon létre egy blob tartalmát 0.
 
-      ![Blob tartalma](media/load-sap-bw-data/blob.png)
+      ![BLOB tartalma](media/load-sap-bw-data/blob.png)
 
    - **LogicAppURL**: Ez a sablon használatával WebActivity hívja az Azure Logic Apps felső küszöbbel rendelkező érték beállításához a Blob storage-ban. Másik lehetőségként használhatja az Azure SQL Database tárolja azt. A tárolt eljárási tevékenység használatával frissítse az értéket.
 
@@ -179,9 +179,9 @@ Az adat-előállító **első lépések** lapon jelölje be **folyamat létrehoz
             "properties": {
                "sapOpenHubMaxRequestId": {
                   "type": "string"
-               },
-               "type": "object"
-            }
+               }
+            },
+            "type": "object"
          }
          ```
 

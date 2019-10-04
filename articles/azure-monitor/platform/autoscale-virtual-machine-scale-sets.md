@@ -9,11 +9,11 @@ ms.date: 02/22/2016
 ms.author: ancav
 ms.subservice: autoscale
 ms.openlocfilehash: 6da653bc94c8b549282ab9124dba23b08771c5f1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58080777"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60787782"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Automatikus méretezés speciális konfigurálása Resource Manager-sablonok használata Virtuálisgép-méretezési csoportok
 Horizontális le- és a Virtual Machine Scale Sets alapuló teljesítmény-mérőszám küszöbértékén, ismétlődő ütemezés szerint, vagy egy adott dátumot kibővített is. Skálázási műveletek értesítései e-mailt és webhookot is konfigurálhatja. Ez az útmutató bemutatja egy példa az összes ezeket az objektumokat a Virtuálisgép-méretezési Resource Manager-sablon használatával.
@@ -31,7 +31,7 @@ Ez az útmutató használjuk [Azure erőforrás-kezelő](https://resources.azure
 
     ![Azure Explorer](media/autoscale-virtual-machine-scale-sets/azure_explorer_navigate.png)
 
-    A sablon végrehajtása hozott létre egy alapértelmezett automatikus skálázási beállítás neve **"autoscalewad"**. A jobb oldalon tekintheti meg az automatikus méretezési beállítás a teljes meghatározását. Ebben az esetben az alapértelmezett automatikus skálázási beállítás együttműködik a CPU-alapú % horizontális felskálázást és a horizontális leskálázási szabály.  
+    A sablon végrehajtása hozott létre egy alapértelmezett automatikus skálázási beállítás neve **"autoscalewad"** . A jobb oldalon tekintheti meg az automatikus méretezési beállítás a teljes meghatározását. Ebben az esetben az alapértelmezett automatikus skálázási beállítás együttműködik a CPU-alapú % horizontális felskálázást és a horizontális leskálázási szabály.  
 
 3. Most már hozzáadhat további profilok és szabályokat azt az ütemezést, vagy konkrét követelmények alapján. Három profilt az automatikus skálázási beállítás hozunk létre. Profilok és az automatikus skálázási szabályok kapcsolatban tekintse át [automatikus méretezés ajánlott eljárásairól](autoscale-best-practices.md).  
 

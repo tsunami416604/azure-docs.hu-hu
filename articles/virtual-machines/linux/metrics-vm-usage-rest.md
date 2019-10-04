@@ -4,18 +4,18 @@ description: Az Azure REST API-k használatával kihasználtsági mérőszámoka
 services: virtual-machines
 author: rloutlaw
 ms.reviewer: routlaw
-manager: jeconnoc
+manager: gwallace
 ms.service: load-balancer
 ms.custom: REST
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: routlaw
-ms.openlocfilehash: 924154a64673b4ff646f3b6ece373b278ee37181
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 53e93d20f4a8c4877374d8242521ca97d481e15d
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754846"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67667455"
 ---
 # <a name="get-virtual-machine-usage-metrics-using-the-rest-api"></a>A REST API-val a virtuális gép használati metrikák beolvasása
 
@@ -37,8 +37,8 @@ A következő fejléceket szükség:
 
 |Kérelem fejléce|Leírás|  
 |--------------------|-----------------|  
-|*A Content-Type:*|Kötelező. Állítsa be `application/json`.|  
-|*Hitelesítés:*|Kötelező. Egy érvényes értékre `Bearer` [hozzáférési jogkivonat](/rest/api/azure/#authorization-code-grant-interactive-clients). |  
+|*Content-Type:*|Kötelező. Állítsa be `application/json`.|  
+|*Authorization:*|Kötelező. Egy érvényes értékre `Bearer` [hozzáférési jogkivonat](/rest/api/azure/#authorization-code-grant-interactive-clients). |  
 
 ### <a name="uri-parameters"></a>URI-paraméterek
 
@@ -48,8 +48,8 @@ A következő fejléceket szükség:
 | resourceGroupName | Az erőforrás társított Azure-erőforráscsoport nevére. Ez az érték lekérése az Azure Resource Manager API, a CLI vagy a portálon. |
 | vmname | Az Azure virtuális gép neve. |
 | metricnames | Vesszővel tagolt listája érvényes [Load Balancer metrikái](/azure/load-balancer/load-balancer-standard-diagnostics). |
-| API-verzió | A használandó a kérelem API-verzió.<br /><br /> Ez a dokumentum ismerteti az api-version `2018-01-01`, a fenti URL-címe megtalálható.  |
-| Időtartam | A következő formátumú karakterlánc- `startDateTime_ISO/endDateTime_ISO` , amely meghatározza, hogy a visszaadott metrikák időtartománya. Ez nem kötelező paraméter értéke a példában egy nap alatt az adatok visszaadása. |
+| api-version | A használandó a kérelem API-verzió.<br /><br /> Ez a dokumentum ismerteti az api-version `2018-01-01`, a fenti URL-címe megtalálható.  |
+| TimeSpan | A következő formátumú karakterlánc- `startDateTime_ISO/endDateTime_ISO` , amely meghatározza, hogy a visszaadott metrikák időtartománya. Ez nem kötelező paraméter értéke a példában egy nap alatt az adatok visszaadása. |
 | &nbsp; | &nbsp; |
 
 ### <a name="request-body"></a>A kérés törzse

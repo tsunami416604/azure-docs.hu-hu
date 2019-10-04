@@ -1,0 +1,186 @@
+### YamlMime:Hub
+title: Az Azure Cognitive Services dokumentációja
+summary: Megtudhatja, hogy intelligens és támogatott algoritmusokkal hogyan teheti képessé az alkalmazásokat, webhelyeket és robotokat a látásra, hallásra, beszédre és szövegértésre, valamint a felhasználói szükségleteinek értelmezésére.
+metadata:
+  title: Az Azure Cognitive Services dokumentációja
+  description: Megtudhatja, hogy intelligens és támogatott algoritmusokkal hogyan teheti képessé az alkalmazásokat, webhelyeket és robotokat a látásra, hallásra, beszédre és szövegértésre, valamint a felhasználói szükségleteinek értelmezésére.
+  ms.service: cognitive-services
+  ms.topic: hub-page
+  brand: azure
+  author: nitinme
+  ms.author: nitinme
+  manager: nitinme
+  ms.date: 09/16/2019
+  ms.openlocfilehash: 9071de52e97a041c9769f6c93fa36f39aff4e4fe
+  ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 09/26/2019
+  ms.locfileid: "71316417"
+highlightedContent:
+  items:
+  - title: Mi a Cognitive Services?
+    itemType: overview
+    url: ./welcome.md
+  - title: Cognitive Services és gépi tanulás
+    itemType: concept
+    url: ./cognitive-services-and-machine-learning.md
+  - title: Cognitive Services-erőforrás létrehozása
+    itemType: how-to-guide
+    url: ./cognitive-services-apis-create-account.md
+  - title: Nyelvek támogatása a Cognitive Servicesben
+    itemType: reference
+    url: ./language-support.md
+  - title: A Cognitive Services használata a Containersben
+    itemType: concept
+    url: ./cognitive-services-container-support.md
+  - title: Kérelem hitelesítése
+    itemType: how-to-guide
+    url: ./authentication.md
+conceptualContent:
+  items:
+  - title: Látás
+    summary: Felismerheti, azonosíthatja, feliratozhatja, indexelheti és moderálhatja képeit, videóit és digitális szabadkézi tartalmait.
+    links:
+    - url: ./computer-vision/index.yml
+      itemType: overview
+      text: Számítógépes látástechnológia
+    - url: ./Custom-Vision-Service/index.yml
+      itemType: overview
+      text: Custom Vision
+    - url: ./face/index.yml
+      itemType: overview
+      text: Arcfelismerés
+    - url: ./form-recognizer/index.yml
+      itemType: overview
+      text: Form Recognizer (előzetes verzió)
+    - url: ./ink-recognizer/index.yml
+      itemType: overview
+      text: Ink Recognizer (előzetes verzió)
+    - url: ../media-services/video-indexer/index.yml
+      itemType: overview
+      text: Video Indexer
+  - title: Nyelv
+    summary: Engedélyezheti alkalmazásai számára a természetes nyelv előre beépített szkriptekkel történő feldolgozását, kiértékelheti a hangulatot, valamint megtudhatja, hogyan ismerheti fel, hogy mit szeretnének a felhasználók.
+    links:
+    - url: ./immersive-reader/index.yml
+      itemType: overview
+      text: Modern olvasó (előzetes verzió)
+    - url: ./luis/index.yml
+      itemType: overview
+      text: Language Understanding (LUIS)
+    - url: ./qnamaker/index.yml
+      itemType: overview
+      text: QnA Maker
+    - url: ./text-analytics/index.yml
+      itemType: overview
+      text: Szövegelemzés
+    - url: ./translator/index.yml
+      itemType: overview
+      text: Fordítói szöveg
+  - title: Beszéd
+    summary: A beszédet szöveggé, a szöveget pedig természetesen hangzó beszéddé alakíthatja. Egyik nyelvtől a másikra fordíthat, valamint engedélyezheti a beszélő ellenőrzését és felismerését.
+    links:
+    - url: ./speech-service/index.yml
+      itemType: overview
+      text: Beszédszolgáltatások
+    - url: ./speaker-recognition/home.md
+      itemType: overview
+      text: Speaker Recognition (előzetes verzió)
+    - url: ./speech/home.md
+      itemType: overview
+      text: Bing Speech (kivonás alatt)
+    - url: ./translator-speech/overview.md
+      itemType: overview
+      text: Translator Speech (kivonás alatt)
+  - title: Döntés
+    summary: Olyan alkalmazásokat hozhat létre, amelyek javaslatokat jelenítenek meg a megalapozott és hatékony döntéshozatalhoz.
+    links:
+    - url: ./anomaly-detector/index.yml
+      itemType: overview
+      text: Anomaly Detector (előzetes verzió)
+    - url: ./content-moderator/index.yml
+      itemType: overview
+      text: Tartalommoderátor
+    - url: ./personalizer/index.yml
+      itemType: overview
+      text: Personalizer (előzetes verzió)
+  - title: Keresés
+    summary: A Bing Search API-jait az alkalmazásaihoz adva több milliárd weboldalt, képet, videót és hírt fésülhet át egyetlen API-hívással.
+    links:
+    - url: ./Bing-Autosuggest/index.yml
+      itemType: overview
+      text: Keresés automatikus kiegészítése
+    - url: ./bing-custom-search/index.yml
+      itemType: overview
+      text: Egyéni keresés
+    - url: ./bing-entities-search/index.yml
+      itemType: overview
+      text: Entity Search
+    - url: ./bing-image-search/index.yml
+      itemType: overview
+      text: Image Search
+    - url: ./bing-local-business-search/index.yml
+      itemType: overview
+      text: Local Business Search (előzetes verzió)
+    - url: ./bing-news-search/index.yml
+      itemType: overview
+      text: News Search
+    - url: ./bing-spell-check/index.yml
+      itemType: overview
+      text: Spell Check
+    - url: ./Bing-Video-Search/index.yml
+      itemType: overview
+      text: Video Search
+    - url: ./bing-visual-search/index.yml
+      itemType: overview
+      text: Visual Search
+    - url: ./bing-web-search/index.yml
+      itemType: overview
+      text: Web Search
+  - title: Cognitive Services-tárolók
+    summary: A tárolók támogatása az Azure Cognitive Servicesben lehetővé teszi a fejlesztőknek, hogy ugyanazokat a tartalomban gazdag API-kat használják, amelyek az Azure-ban is elérhetők, valamint rugalmasságot kínál azon a téren, hogy hol lehet üzembe helyezni és üzemeltetni a Docker-tárolókkal rendelkező szolgáltatásokat.
+    links:
+    - url: ./cognitive-services-container-support.md
+      itemType: overview
+      text: Cognitive Services-tárolók
+    - url: ./containers/container-reuse-recipe.md
+      itemType: learn
+      text: Tárolók létrehozása újbóli felhasználáshoz
+    - url: ./containers/azure-container-instance-recipe.md
+      itemType: how-to-guide
+      text: Tároló üzembe helyezése és futtatása az Azure Container Instancesben
+    - url: ./containers/azure-kubernetes-recipe.md
+      itemType: deploy
+      text: Üzembe helyezés az Azure Kubernetes Service-ben
+    - url: ./containers/docker-compose-recipe.md
+      itemType: get-started
+      text: A Docker Compose használata több tároló üzembe helyezéséhez
+    - url: ./containers/container-faq.md
+      itemType: reference
+      text: Cognitive Services-tárolók GYIK
+additionalContent:
+  sections:
+  - items:
+    - title: További források
+      links:
+      - text: Azure CLI
+        url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest
+      - text: PowerShell
+        url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/?view=azps-2.5.0#cognitive_services
+    - title: REST API-k
+      links:
+      - text: A Cognitive Services felügyelete
+        url: https://docs.microsoft.com/rest/api/cognitiveservices/
+    - title: SDK-k
+      links:
+      - text: .NET
+        url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client?view=azure-dotnet
+      - text: Indítás
+        url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices
+      - text: Java
+        url: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client?view=azure-java-stable
+      - text: Node.js
+        url: https://docs.microsoft.com/javascript/api/overview/azure/cognitive-services?view=azure-node-latest
+      - text: Python
+        url: https://docs.microsoft.com/python/api/overview/azure/cognitive-services?view=azure-python

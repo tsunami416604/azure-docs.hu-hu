@@ -4,24 +4,23 @@ description: Azure PowerShell-példaszkript – Linux rendszerű virtuális gép
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 595496fd6756c2d42b5eabed8a463ca7c702590c
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 25032cc4d4e3fb857e319c9303d042dd5b4f677b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55983304"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70090877"
 ---
 # <a name="create-a-fully-configured-virtual-machine-with-powershell"></a>Teljes konfigurációjú virtuális gép létrehozása a PowerShell segítségével
 
@@ -31,7 +30,7 @@ Ez a szkript egy Ubuntu operációs rendszert futtató Azure-beli virtuális gé
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="sample-script"></a>Példaszkript
 

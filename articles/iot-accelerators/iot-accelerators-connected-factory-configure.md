@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 3fd160fbccfb5298cefed6a731797ca6962b997c
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 3ddbf5832424cdafad2c29254f51754203c7f079
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602273"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67428323"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>Az Okosgyár-megoldásgyorsító konfigurálása
 
@@ -29,7 +29,7 @@ Minden egyes Contoso factoryban három állomások álló gyártósorok rendelke
 * Tesztelő állomásból
 * Csomagoló állomásból
 
-Ezek az OPC UA-kiszolgálók rendelkeznek OPC UA-csomópontok és [az OPC-közzétevő](https://github.com/Azure/iot-edge-opc-publisher) ezek a csomópontok értékeit küld a csatlakoztatott gyár. Az érintett műveletek közé tartoznak az alábbiak:
+Ezek az OPC UA-kiszolgálók rendelkeznek OPC UA-csomópontok és [az OPC-közzétevő](overview-opc-publisher.md) ezek a csomópontok értékeit küld a csatlakoztatott gyár. Az érintett műveletek közé tartoznak az alábbiak:
 
 * Például az aktuális energiafogyasztás aktuális működési állapotát.
 * Előállított éles adatokat, például a termékek száma.
@@ -266,8 +266,8 @@ Ebbe a kategóriába tartozó tulajdonságok határozzák meg, annak vizuális m
 
 * Name (Név)
 * Leírás
-* Kép
-* Hely
+* Image
+* Location
 * Egység
 * Látható
 
@@ -282,7 +282,7 @@ A csatlakoztatott gyár szimuláció OEE/KPI adatok paraméterezni vannak:
 * OPC UA csomópont értékek kiszámítása szerepelnek.
 * Hogyan ábra számított a telemetriai adatok értékek közül.
 
-Csatlakoztatott gyár használja az oee-mutatója Túllépte a képletek által közzétett a https://www.oeefoundation.org.
+Csatlakoztatott gyár használja az oee-mutatója Túllépte a képletek által közzétett a [ http://www.oeefoundation.org ](http://www.oeefoundation.org).
 
 Az állomás OPC UA objektumok engedélyezze a használat az OEE/KPI számítási címkézést. A **relevancia alapján végzett** a tulajdonság azt jelzi, hogy mely OEE/KPI. ábra az OPC UA-csomópont értéket kell használni. A **Feladatkategóriát** tulajdonság határozza meg, hogyan a számítás értékét tartalmazza.
 
@@ -307,7 +307,7 @@ Az egyes műveletek, például a Time Series Insight-lekérdezések létrehozás
 
   Az OPC UA-kiszolgálóval csomópont értéke azonosítja. A tulajdonság a formátumnak kell lennie az OPC UA-specifikáció megadottak szerint. A feldolgozott üzenetek, ez a tulajdonság legyen elküldve, **NodeId**.
 
-Ellenőrizze [ez](https://github.com/Azure/iot-edge-opc-publisher) további információ a telemetriai adatokat a csatlakoztatott gyár az OPC-közzétevő használatával betöltött hogyan GitHub-oldalon.
+Lásd: [Mi az az OPC-közzétevő](overview-opc-publisher.md) hogyan lett töltve a telemetriai adatokat a csatlakoztatott gyár további tájékoztatást.
 
 ## <a name="example-how-kpi1-is-calculated"></a>Példa: Hogyan kerül kiszámításra KPI1
 
@@ -340,4 +340,4 @@ A **Feladatkategóriát** a konfiguráció konfigurálja a számítási logika a
 
 ## <a name="next-steps"></a>További lépések
 
-A javasolt következő lépésre az, hogy ismerje meg, hogyan [átjáró üzembe helyezése Windows vagy Linux rendszeren az az Okosgyár-megoldásgyorsító](iot-accelerators-connected-factory-gateway-deployment.md).
+A javasolt következő lépésre az, hogy ismerje meg, hogyan [testre szabhatja a csatlakoztatott gyár megoldás](iot-accelerators-connected-factory-customize.md).

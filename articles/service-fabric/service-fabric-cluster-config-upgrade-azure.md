@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/09/2018
 ms.author: dekapur
 ms.openlocfilehash: 77b9b20f99f00ef87c4907c2890cb3a21d20ec75
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59789771"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62096266"
 ---
 # <a name="upgrade-the-configuration-of-a-cluster-in-azure"></a>Az Azure-ban a fürt konfigurációjának frissítése 
 
@@ -36,7 +36,7 @@ Ez a cikk ismerteti, hogyan szabhatja testre a különböző hálóbeállításo
 Az Azure-fürtök a JSON-Resource Manager-sablon konfigurálható. A különböző beállításokkal kapcsolatos további információkért lásd: [fürtök konfigurációs beállításai](service-fabric-cluster-fabric-settings.md). Tegyük fel, az alábbi lépéseket egy új beállítás hozzáadása megjelenítése *MaxDiskQuotaInMB* , a *diagnosztikai* szakaszban az Azure Resource Explorer használatával.
 
 1. Nyissa meg a következőt: https://resources.azure.com
-2. Keresse meg az előfizetés által bővítése **előfizetések** -> **\<előfizetését >** -> **resourceGroups**  ->   **\<Az erőforráscsoport >** -> **szolgáltatók** -> **Microsoft.ServiceFabric**  ->  **fürtök** -> **\<saját fürt neve >**
+2. Keresse meg az előfizetés által bővítése **előfizetések** ->  **\<előfizetését >**  -> **resourceGroups**  ->   **\<Az erőforráscsoport >**  -> **szolgáltatók** -> **Microsoft.ServiceFabric**  ->  **fürtök** ->  **\<saját fürt neve >**
 3. A jobb felső sarokban, válassza ki **olvasási/írási.**
 4. Válassza ki **szerkesztése** és frissítheti a `fabricSettings` JSON-elem és a egy új elem hozzáadása:
 

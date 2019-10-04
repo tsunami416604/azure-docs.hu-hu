@@ -2,20 +2,20 @@
 title: Mik azok a Power BI munkaterületi gyűjtemények?
 description: Power BI Embedded lehetővé teszi a Power BI-jelentések integrálása a webes vagy mobilalkalmazásaiba, így nem kell egyéni megoldásokat hozhat létre.
 services: power-bi-embedded
-author: markingmyname
+author: rkarlin
 ROBOTS: NOINDEX
 ms.assetid: 03649b72-b7d7-40ca-b077-12356d72d4f3
 ms.service: power-bi-embedded
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: maghan
-ms.openlocfilehash: 6650eed6bf2559e9fb76b573189179a7f5df81ca
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: rkarlin
+ms.openlocfilehash: 7f23856363b337a361f329ed54e2152842faf26e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57896704"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64705128"
 ---
 # <a name="what-are-power-bi-workspace-collections"></a>Mik azok a Power BI munkaterületi gyűjtemények?
 
@@ -60,7 +60,7 @@ Gyorsítótárazott adatkészletek is használható.  Azonban nem lehet frissít
 
 ## <a name="authentication-and-authorization-with-app-tokens"></a>Hitelesítés és engedélyezés az alkalmazás-jogkivonatokról
 
-**A Microsoft Power BI-Munkaterületcsoportok** megfelel az alkalmazásnak, hogy az összes szükséges felhasználói hitelesítés és engedélyezés a. Esetében nem explicit követelmény, hogy a végfelhasználók számára legyen-e az ügyfelek az Azure Active Directory (Azure AD).  Ehelyett az alkalmazás fejezi ki, hogy **a Microsoft Power BI-Munkaterületcsoportok** megjelenítése a Power BI-jelentések használatával engedélyezési **alkalmazás hitelesítési jogkivonatok (alkalmazás-Jogkivonatokról)**.  Ezek **alkalmazási jogkivonatok** jönnek létre, akkor az alkalmazás szeretne megjeleníteni a jelentést.
+**A Microsoft Power BI-Munkaterületcsoportok** megfelel az alkalmazásnak, hogy az összes szükséges felhasználói hitelesítés és engedélyezés a. Esetében nem explicit követelmény, hogy a végfelhasználók számára legyen-e az ügyfelek az Azure Active Directory (Azure AD).  Ehelyett az alkalmazás fejezi ki, hogy **a Microsoft Power BI-Munkaterületcsoportok** megjelenítése a Power BI-jelentések használatával engedélyezési **alkalmazás hitelesítési jogkivonatok (alkalmazás-Jogkivonatokról)** .  Ezek **alkalmazási jogkivonatok** jönnek létre, akkor az alkalmazás szeretne megjeleníteni a jelentést.
 
 ![Alkalmazás tokenek használatát a diagram](media/what-are-power-bi-workspace-collections/app-tokens.png)
 

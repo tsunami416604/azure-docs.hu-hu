@@ -11,11 +11,11 @@ ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
 ms.openlocfilehash: f4d94536a8c1b509e0ce435a764e69984b5d415e
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58499301"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60425544"
 ---
 # <a name="interoperability-in-azure-back-end-connectivity-features-data-plane-analysis"></a>Együttműködés az Azure háttér-kapcsolati funkciók: Adatsík adatelemzés
 
@@ -66,7 +66,7 @@ Ugyanazt a kapcsolatot a rácsnézet az alábbi ábra a Network Watcher láthat�
 
 [![3]][3]
 
-### <a name="path-to-on-premises-location-1"></a>1. a helyszíni hely elérési útja
+### <a name="path-to-on-premises-location-1"></a>1\. a helyszíni hely elérési útja
 
 A traceroute kimenete egy agyi virtuális hálózat egy virtuális géphez a helyszíni hely 1 az itt látható:
 
@@ -84,7 +84,7 @@ A traceroute kimenete egy agyi virtuális hálózat egy virtuális géphez a hel
 A traceroute a az első Ugrás az Azure ExpressRoute átjáró bújtatás végpontjához, a Microsoft vállalati peremhálózati útválasztó (MSEE) a. A második és harmadik útválasztók ugrásainak a következők: az ügyfél (CE) peremhálózati útválasztója és a helyszíni hely 1 helyi hálózati IP-címek. Ezen IP-címek nincsenek meghirdetve az agyi virtuális hálózat. A negyedik Ugrás a helyszíni hely 1. a virtuális gép.
 
 
-### <a name="path-to-on-premises-location-2"></a>2. a helyszíni hely elérési útja
+### <a name="path-to-on-premises-location-2"></a>2\. a helyszíni hely elérési útja
 
 A traceroute kimenete egy agyi virtuális hálózat egy virtuális géphez a helyszíni hely 2 az itt látható:
 
@@ -149,7 +149,7 @@ A traceroute a küllő virtuális hálózatok közötti kimenete egy virtuális 
 
 Az első Ugrás a traceroute a VPN-átjárót, az agyi virtuális hálózat. A második Ugrás a virtuális hálózatok közötti ág a VPN-átjáró. Az ág virtuális hálózatok közötti VPN-átjáró IP-címét a hub/küllő virtuális hálózatok közötti belül nem hirdetni. A harmadik Ugrás a virtuális Gépet a virtuális hálózatok közötti ág a rendszer.
 
-### <a name="path-to-on-premises-location-1"></a>1. a helyszíni hely elérési útja
+### <a name="path-to-on-premises-location-1"></a>1\. a helyszíni hely elérési útja
 
 A traceroute kimenete a küllő virtuális hálózat egy virtuális géphez a helyszíni hely 1 az itt látható:
 
@@ -166,7 +166,7 @@ A traceroute kimenete a küllő virtuális hálózat egy virtuális géphez a he
 
 A traceroute a az első Ugrás az agyi virtuális hálózat ExpressRoute átjáró alagút végpont egy egyet msee-hez. A második és harmadik útválasztók ugrásainak a CE útválasztó és a helyszíni hely 1 helyi hálózati IP-címek. Ezen IP-címek nem hirdetésre a hub/küllő virtuális hálózat. A negyedik Ugrás a helyszíni hely 1. a virtuális gép.
 
-### <a name="path-to-on-premises-location-2"></a>2. a helyszíni hely elérési útja
+### <a name="path-to-on-premises-location-2"></a>2\. a helyszíni hely elérési útja
 
 A traceroute kimenete a küllő virtuális hálózat egy virtuális géphez, a helyszíni hely 2 itt jelenik meg:
 
@@ -234,7 +234,7 @@ A traceroute a küllő virtuális hálózatok közötti Itt láthatók a virtuá
 
 Az első Ugrás a traceroute a VPN-átjáró a virtuális hálózatok közötti ág. A második Ugrás végrehajtása a az agyi virtuális hálózat VPN-átjáróra. Az agyi virtuális hálózat, a VPN-átjáró IP-címét a távoli virtuális hálózat nincs meghirdetve. A harmadik Ugrás a küllő virtuális hálózat a virtuális gép.
 
-### <a name="path-to-on-premises-location-1"></a>1. a helyszíni hely elérési útja
+### <a name="path-to-on-premises-location-1"></a>1\. a helyszíni hely elérési útja
 
 A traceroute kimenete az ág virtuális hálózat egy virtuális géphez, a helyszíni hely 1 itt jelenik meg:
 
@@ -354,7 +354,7 @@ A traceroute a helyszíni hely 1 kimenete egy virtuális géphez az ág VNet itt
 
     Trace complete.
 
-### <a name="path-to-on-premises-location-2"></a>2. a helyszíni hely elérési útja
+### <a name="path-to-on-premises-location-2"></a>2\. a helyszíni hely elérési útja
 
 A ismertetésén a [szabályozhatja az adatsík elemzési][Control-Analysis], a helyszíni hely 1 rendelkezik a helyszíni hely 2 / a hálózati konfiguráció nem láthatóságát. Erősítse meg a következő ping eredmények: 
 
@@ -456,7 +456,7 @@ A traceroute a küllő virtuális hálózatok közötti Itt láthatók a virtuá
 
 A ismertetésén a [szabályozhatja az adatsík elemzési][Control-Analysis], a távoli virtuális hálózat nem látható-e az ág virtuális hálózat vagy a helyszíni hely 2 / a hálózati konfigurációs van. 
 
-### <a name="path-to-on-premises-location-1"></a>1. a helyszíni hely elérési útja
+### <a name="path-to-on-premises-location-1"></a>1\. a helyszíni hely elérési útja
 
 A traceroute kimenete a távoli virtuális hálózat egy virtuális géphez a helyszíni hely 1 az itt látható:
 

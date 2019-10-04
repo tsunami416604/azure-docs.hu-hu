@@ -14,15 +14,15 @@ ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: ec8c58e4ced0d8df958e242b9c1671aeed8c2ee6
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812089"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60488220"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Másolási tevékenységek teljesítményéhez és finomhangolási útmutató
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
 > * [1-es verzió](data-factory-copy-activity-performance.md)
 > * [2-es verzió (aktuális verzió)](../copy-activity-performance.md)
 
@@ -312,7 +312,7 @@ Az adatok másolása **a Blob storage-** való **SQL Data Warehouse**, fontolja 
 
 * **Másolja a viselkedés**: Ha adatokat másolja egy másik fájl alapú adatokat az adattárból, a másolási tevékenység keresztül három pontot tartalmaz az **copyBehavior** tulajdonság. Ez a megőrzi a hierarchia, simítja egybe a hierarchia, vagy egyesíti a fájlokat. Az egybesimítás hierarchia vagy megőrzi az rendelkezik alig vagy egyáltalán nem teljesítménybeli terhelést, de a fájlok egyesítése növelése teljesítménybeli terhelést okoz.
 * **A fájl formátuma és tömörítés**: Tekintse meg a [szerializálást és deszerializálást szempontjai](#considerations-for-serialization-and-deserialization) és [tömörítési szempontjai](#considerations-for-compression) szakaszokban talál további részleteket a teljesítmény javítása.
-* **A BLOB storage-**: A Blob storage jelenleg csak blokkblobokat támogat optimalizált az adatátviteli és átviteli sebesség.
+* **A BLOB storage-** : A Blob storage jelenleg csak blokkblobokat támogat optimalizált az adatátviteli és átviteli sebesség.
 * A **fájlrendszerekhez a helyi** használatát igénylő forgatókönyvek **adatkezelési átjáró**, tekintse meg a [adatkezelési átjáró szempontjai](#considerations-for-data-management-gateway) szakaszban.
 
 ### <a name="relational-data-stores"></a>Relációs adattárak
@@ -400,19 +400,19 @@ Ebben az esetben az adattömörítés bzip2 előfordulhat, hogy lehet lelassítj
 
 **Elemzés és a teljesítmény-finomhangolási**: Például, ha telepítette az átjárót egy négyportos core gépen Data Factory használatával 16 párhuzamos másolja át a fájlrendszerből a Blob storage egyidejűleg. A párhuzamos végrehajtás kell eredményeznie, nagy átviteli sebességet. Emellett explicit módon megadhatja a párhuzamos másolatok száma. Párhuzamos másolatok sok kis méretű fájlt másol, jelentősen segítenek átviteli erőforrások hatékonyabban használatával.
 
-![1. forgatókönyv](./media/data-factory-copy-activity-performance/scenario-1.png)
+![1\. forgatókönyv](./media/data-factory-copy-activity-performance/scenario-1.png)
 
 **A forgatókönyv II**: 500 MB-os 20 blobok másolása Blob storage-ból a Data Lake Store Analytics, és ezután a teljesítmény hangolására.
 
 **Elemzés és a teljesítmény-finomhangolási**: Ebben a forgatókönyvben a Data Factory a adatokat másol a Blob storage Data Lake Store egy másolási használatával (**parallelCopies** állítsa 1-re) és a egy a felhőbe irányuló adatáthelyezési egységek. Az átviteli sebességet, figyelje meg, amely közel leírását a [teljesítmény referenciaszakasz](#performance-reference).
 
-![2. forgatókönyv](./media/data-factory-copy-activity-performance/scenario-2.png)
+![2\. forgatókönyv](./media/data-factory-copy-activity-performance/scenario-2.png)
 
 **A forgatókönyv III**: Egyedi fájl mérete nagyobb, több tucat MB-nál, és a teljes kötet mérete nagy.
 
 **Elemzés és a teljesítmény bekapcsolása folyamatban**: Növelje a **parallelCopies** egy egyetlen a felhőbe DMU az erőforrás-korlátozások miatt nem eredményez jobb másolási teljesítmény érdekében. Ehelyett adjon meg további felhőalapú DMUs az adatmozgás végrehajtásához további erőforrásokat lekérni. Ne adjon meg egy értéket a **parallelCopies** tulajdonság. A Data Factory, a párhuzamosság kezeli. Ebben az esetben, ha **cloudDataMovementUnits** kell 4, egy átviteli sebessége körülbelül négy alkalommal fordul elő.
 
-![3. forgatókönyv](./media/data-factory-copy-activity-performance/scenario-3.png)
+![3\. forgatókönyv](./media/data-factory-copy-activity-performance/scenario-3.png)
 
 ## <a name="reference"></a>Leírások
 Teljesítmény figyelése és hangolása hivatkozásokat a támogatott adattárak némelyikét a következők:

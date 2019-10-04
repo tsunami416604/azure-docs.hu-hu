@@ -2,32 +2,32 @@
 title: Azure Active Directory - csoport törléséhez |} A Microsoft Docs
 description: Útmutatás az Azure Active Directory csoport törlése.
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
 ms.date: 08/29/2018
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9543908aafbb4ecd8f642f766f656f780706a36
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: bdba55e0655a13e65e403f5da73fcb69db5dbca5
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207211"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561913"
 ---
 # <a name="delete-a-group-using-azure-active-directory"></a>Az Azure Active Directory csoport törlése
 Az Azure Active Directory (Azure AD) csoportot számtalan törölheti, de általában mert lesz-e meg:
 
-- Helytelenül állította a **csoporttípust** , rossz lehetőséget.
+- A **csoport típusának** helytelen beállítása nem megfelelő.
 
-- Létrehozott véletlenül nem a megfelelő vagy a duplikált csoportokhoz. 
+- Helytelen vagy ismétlődő csoportot hozott létre tévedésből. 
 
-- A csoport már nincs szüksége.
+- Már nincs szüksége a csoportra.
 
 ## <a name="to-delete-a-group"></a>Csoport törlése
 1. A címtár eléréséhez globális rendszergazdai fiókkal jelentkezzen be az [Azure portálra](https://portal.azure.com).

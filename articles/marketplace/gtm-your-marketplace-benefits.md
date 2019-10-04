@@ -1,83 +1,112 @@
 ---
-title: Piaci megjelenést Services – a piactéren előnyeit |} Az Azure
-description: Piaci megjelenést szolgáltatások - közzétevők használhatják a Microsoft erőforrások Ez a szakasz ismerteti.
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
+title: Piaci megjelenést segítő szolgáltatások – a kereskedelmi piactér előnyei | Azure
+description: Piaci megjelenést segítő szolgáltatások – ebben a szakaszban a közzétevők által használható Microsoft-erőforrások szerepelnek.
+services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security, Partner Center
 author: qianw211
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
-ms.date: 01/12/2019
-ms.author: ellacroi
-ms.openlocfilehash: 896e5a3f3b5c9f7d217340c396707718adf93dbb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 09/10/2019
+ms.author: v-qiwe
+ms.openlocfilehash: c09e685d10764470d328e7c66293551287b5b1b2
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59788595"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962701"
 ---
-# <a name="your-marketplace-benefits"></a>A piactér előnyeit
+# <a name="your-commercial-marketplace-benefits"></a>A kereskedelmi piactér előnyei
 
-A közzétételi világába részeként szeretne létrehozni az ajánlatban technikai és marketinganyagokat eszközök. Ennek eredményeképpen előnyökkel technikai és marketinganyagokat, amely az Azure Marketplace és AppSource közzétevők használhatják, annak érdekében, hogy az ajánlatot az ügyfelek aktivitásának javítását. Előfordulhat, hogy az alábbi hasznos technikai erőforrásokat.
+Ön közzétette a piactéren, most szeretné látni, hogy az ajánlata sikeres volt-e. Az előnyök – értékesítés, technikai és marketing – révén felgyorsíthatja az ajánlat növekedését.
 
-## <a name="technical-resources-provided-by-microsoft"></a>A Microsoft által biztosított technikai erőforrások
+Ha az ajánlatával él, a Marketplace jutalmazási csapata felveszi Önnel a munkát, és megkezdheti Önt a jogosult előnyökkel. A Piactéri előnyök a kereskedelmi piactéren való részvétel és az értékesítések alapján keletkeznek. Minél többet vesznek fel, annál többet kap vissza.
 
-Az ajánlat létrehozásakor a Microsoft-erőforrások, például konzultációt folytasson egy műszaki szakértővel, vagy a piactér-specifikus megoldás tesztelési támogatás igénybevétele több előnye is igénybe vehet.
+## <a name="marketplace-rewards"></a>Marketplace-jutalmak
 
-Technikai erőforrások bármikor használható.  Az alábbi táblázat felsorolja az előnyöket:
+A Piactéri juttatások célja, hogy támogassa Önt a növekedés adott fázisában, kezdve a tudatosságnövelő tevékenységekkel, amelyek segítenek az első ügyfeleinek beszerzésében. A piactéren való növekedéssel új előnyökkel járhat, amelyek segítenek az ügyfelek átalakításában és az ajánlatok bezárásában. 
 
-![](./media/marketplace-publishers-guide/technical-benefit-table.png)
+A program létrehoz egy pozitív visszajelzési ciklust: a növekedés minden szakaszának előnyeit úgy tervezték, hogy a következő szakaszra haladjon, ami lehetővé teszi, hogy a Microsoft ügyfeleinek, a Microsoft és a Microsoft csatornáján keresztül növelje üzleti tevékenységét kereskedelmi piactér platformként. 
 
-## <a name="how-to-access-microsoft-resources"></a>A Microsoft-erőforrások elérése
+Az Ön által kínált előnyök a következők alapján különböztethetők meg, hogy az ajánlat [lista, próbaverzió vagy Transact](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type#choose-a-publishing-option).
 
-A piaci megjelenést előnyöket a partnerek számára, akik nemrég tette közzé egy ajánlatot érhetők el. 
+A jutalmak csapatának egy tagja fogja felvenni Önnel a kapcsolatot, ha az ajánlata életbe lép, a jogosultsága alapján. 
 
-1. Előkészítés: [Regisztráljon](https://azuremarketplace.microsoft.com/sell) férhetnek hozzá a Cloud Partner portálra, és a bevezetési támogatás erőforrások.
-2. A Microsoft Piacterein konzultáció: Ez előnyeit [ingyenes konzultáció](https://support.microsoft.com/help/4010317/microsoft-marketplaces-consultation) megtervezése az architektúra a Marketplace-en az alkalmazás segítségével.
-3. Marketplace-en fórumok: Közvetlenül a Microsoft-alkalmazottak és más Piactéri partnerek számára a kérdéseket a [piactér fórumát](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222).
-4. Technikai támogatás: Használja a Súgó menü [Cloud Partner Portalon](https://cloudpartner.azure.com/) való segítség kérése a Marketplace-en kapcsolatos támogatási kérdésekre. 
-5. Fejlesztési-tesztelési szponzorálási: Tekintse át az alábbi jogosultsági, és küldje el a szponzorálási kérelmét a [regisztrációs űrlap](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR3omd2bW7etLoEoufw2-vMdUNUkxSjQ5V0hJOEtZSks3ME45TDJNTkVUTi4u):
-    * Fejlesztési és tesztelési vannak az Azure Marketplace-en való közzététel céljából.
-    * A támogatás semmilyen más célra nem használható.
-    * A díjjal járó $5000 használja, amikor az első műveletet a hozzárendelt előfizetés kezdve 90 nap.
-    * Az alkalmazás tesztelt kell élesben az Azure Marketplace-en az utolsó nappal finanszírozási számított 30 napon belül: Például ha az ilyen finanszírozást használja a December 1-től kezdődően, majd az alkalmazás kell lennie élő. március 31-edik által.
+A Transact-partnerek esetében, ahogy a Piactéri platformon keresztül növeli a számlázott értékesítést, a magasabb szintű előnyök feloldhatók. 
 
-## <a name="go-to-market-gtm-benefits-in-the-marketplace"></a>Piaci (GTM) előnyeit a Marketplace-en
+A kirakatokban való közzététel minimális követelménye egy MPNID, így ezek az előnyök minden partner számára elérhetők, függetlenül az MPN kompetenciás állapottól vagy a partner típusától. Minden partner számára lehetővé teszi, hogy platformként növelje üzleti tevékenységét a piactéren. 
 
-Az Azure Marketplace és appsource-ban is az új listaelemek ingyenes marketplace GTM juttatások keresztül a Microsoft GTM Services csapatunk jogosultak. Ennek a csapatnak segít optimalizálni a listaelemek és nagyobb figyelem irányuljon a megoldások a Microsoft Marketplace-en.
+Támogatást kaphat az Ön számára elérhető erőforrások megismeréséhez és az ajánlott eljárások megvalósításához, amelyeket [saját maga is megtekintheti](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/). 
 
-| Storefront | További elérhető előnyöket és juttatásokat |
-|:--- |:--- |
-| AppSource |  A Microsoft Gold partnerek <br> Próbaverziós alkalmazások |
-| Az Azure Marketplace-en | A Transact-ajánlatok <br> Próbaverziós |
+A program előnyeinek részletes leírása a [Marketplace jutalmazási program fedélzeten](https://aka.ms/marketplacerewards)található.
 
-A GTM-támogatás magában foglalja a sablonok, webes tartalom, képzés és eszközöket népszerűsítse cégét.
+A kezdéshez szükséges lépések egyszerűek:
 
-Szeretné elérni ezeket az előnyöket, meg kell:
+1. Ajánlat közzététele Microsoft AppSource vagy Azure piactéren.
+2. A csapat eléri a "tulajdonos" vagy az "elsődleges kapcsolat" Piactéri ajánlatot. Az ajánlott eljárás az, ha az Ön által rendszeresen ellenőrzött személyt vagy aliast adja meg: az aliasoknak küldött üzenetek info@company.com , például a gyakran elvesznek.
 
-1. Az ajánlat közzététele az Azure Marketplace-en vagy az appsource-ban.
-2. Győződjön meg arról, egy marketing névjegyet adta meg a **kapcsolattartási adatok** az ajánlat része. Ez egy dedikált marketing erőforrást, egy kevésbé alias figyelésekor legyen. (azaz, kerülje a "támogatási\@", "info\@", "marketing\@" stb.)
+>[!Note]
+>Ha az ajánlata több mint négy hetet tartalmaz, és nem kapott üzenetet, ellenőrizze a szervezeten belül, hogy a kérdéses ajánlat tulajdonosa-e, vagy Cloud Partner Portal vagy a partner Centerben. A kommunikációhoz és a következő lépésekhez kell tartoznia. <br> <br> Ha nem tudja megállapítani a tulajdonost, vagy ha a tulajdonos elhagyta a vállalatot, támogatási jegyet emelhet a következő https://aka.ms/marketplacepublishersupport címen:.
 
-A megoldás állapota, folyamatban van a listában, próbaverziós programok vagy Transact, ajánlat alapján kap egy e-mailt az önsegítő erőforrások, vagy a konzultációs hívást egy dedikált Engagement Manager meghívót. Nem kell tennie semmit sem kell a hívás indításához, a Marketplace-en bevezetési csapata kapcsolatba fog lépni az információk alapján a [Cloud Partner Portalon](https://cloudpartner.azure.com/).
+Az Ön számára elérhető tevékenységek köre a piactéren kibővíthető ajánlatokkal bővül. Az összes lista az optimalizálási javaslatok és a promóció alapszintű, az erőforrások és az ajánlott eljárások önkiszolgáló e-mail-címének részeként jelenik meg.
 
-Az Ön számára elérhető tevékenységek hatókörét kibővíti az Ön ajánlatainak a piactéren növekedésével. Az összes listaelem optimalizálási javaslatok és a promóciós alapszinten kapnak.  Ezek a listák megoldás állapota (lista, próba vagy Transact) kiválasztása a Marketplace-en, és a Microsoft Partner kompetencia elérését alapján további gazdasági előnyeit is jogosultak.
+## <a name="list-trial-and-consulting-benefits"></a>A lista, a próbaverzió és a tanácsadás előnyei
 
-Az alábbi táblázat a jogosultsági előírásoknak összefoglalásképpen:
+Ha közzétesz egy próbaverziót vagy egy tanácsadót a koncepcióval, a megvalósítással vagy a workshoptal kapcsolatban, három hónapig lesz hozzárendelve egy engagement Managerhez, amely segítséget nyújt a sikeres piaci megjelenéshez. Minden alkalommal megismételheti ezt a három hónapos részvételt, amikor új ajánlatot tesz közzé, hogy segítse az új ajánlatok sikeres elindítását.
 
-![](./media/marketplace-publishers-guide/gtm-activities-table.png)
+Az alábbi táblázat összefoglalja a listára és próbaverzióra vonatkozó ajánlatok támogathatósági követelményeit:
 
-\* Silver vagy gold kompetencia szükséges. <br>
-\*\* Gold kompetencia szükséges. <br>
-\*\*\* Gold kompetenciaszintű és közös értékesítési program készen áll a Partner listaelemek van szükség. <br>
-^ Transact csak alkalmazható az Azure Marketplace-en.
+![Piacra jutási előnyök](./media/marketplace-publishers-guide/gtm-eligibility-requirements.png)
+
+Ezen előnyök részletes leírását a [Marketplace jutalmazási programjának paklijában](https://aka.ms/marketplacerewards)találja.
+
+## <a name="marketplace-rewards-for-transact-partners"></a>Piactéri előnyök a Transact-partnerek számára
+
+Ha az Azure Marketplace-en vagy a Microsoft AppSourceban is elérhetővé teheti a tranzakciós ajánlatokat, akkor további kedvezményekhez férhet hozzá, amikor a kereskedelmi Piactéren keresztül fejleszti a számlázott értékesítési tranzakciókat. 
+
+Ezek az előnyök a marketing, az értékesítés és a technikai tevékenységek támogatásához szükségesek, így több látogatót kaphat, több érdeklődőt kaphat, és több üzletet is átalakíthat.
+
+Minden olyan partner, aki élő ajánlattal rendelkezik, egy dedikált engagement-kezelővel dolgozhat, és kiválaszthatja a Piactéri ajánlatok portfóliójának legmagasabb értékű tevékenységeit. Ez az ajánlat örökzöld, ami azt jelenti, hogy kiválaszthatja a tevékenységeket és a tevékenységek időzítését, hogy illeszkedjen a vállalat szélesebb körű marketing-és értékesítési stratégiáinak időzítéséhez. 
+
+![Marketing előnyei](./media/marketplace-publishers-guide/marketing-benefit.png)
+
+![Értékesítési előnyök](./media/marketplace-publishers-guide/sales-benefit.png)
+
+![Műszaki előnyök](./media/marketplace-publishers-guide/technical-benefit.png)
+
+Ezen előnyök részletes leírását a [Marketplace jutalmazási programjának paklijában](https://aka.ms/marketplacerewards)találja.
+
+A jutalmak előnyei mellett a Dynamics-ajánlatokat tartalmazó üzleti alkalmazások partnerei számára is közzé vannak téve a Microsoft AppSource az ISV- [kapcsolaton](https://partner.microsoft.com/solutions/business-applications/isv-overview)keresztül elérhető kiegészítő programozással. Ez magában foglalja a technikai, a marketing és az értékesítés támogatását, amely az üzleti alkalmazásokhoz kapcsolódó partnereink igényeire specializálódott.
+
+## <a name="marketplace-rewards-requirements-and-restrictions"></a>A Marketplace jutalmazási követelményei és korlátozásai
+
+### <a name="publisher-agreement"></a>Kiadói szerződés
+
+Az ezen a lapon bemutatott összes tevékenységet a [Marketplace kiadói szerződés](https://docs.microsoft.com/legal/marketplace/terms) szabályozza, és a kereskedelmi juttatások program kiegészítése alapján történik.
+
+### <a name="cancellation-policy"></a>Lemondási irányelvek
+
+A [lista-és próbaverzió](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type) -közzétevők az ajánlati kiadványokban választhatnak vagy lefoglalhatnak tevékenységeket. A partnerek bármikor lefoglalhatják a részvételt. 
+
+A Microsoft fenntartja a jogot arra, hogy visszavonja és leállítsa a Marketplace jutalmazási előnyeit a kiadók számára, akik: 
+
+* a Piactéri lista használatával illegális tevékenységeket végezhet.
+* nem szerepelnek a kereskedelmi piactéren. 
+* a szerzői jogi vagy a védjegyekre vonatkozó törvényeket sértő, marketinget vagy egyéb tartalmakat bemutató ajánlatunk.
+* megsértheti az [Azure szponzorálási program](https://azure.microsoft.com/offers/ms-azr-0036p/)szabályzatait, beleértve a saját belső műveletei vagy Bitcoin-adatbányászata esetében az Azure szponzorálási támogatását. 
+
+### <a name="offer-availability"></a>Az ajánlat érvényessége
+
+Ezt az ajánlatot angol nyelven, az Azure Marketplace-en vagy Microsoft AppSourceban élő ajánlatokkal rendelkező partnereink számára ajánljuk.
+
+A megtévesztőnek bizonyuló tranzakciók nem számítanak bele a kiadó által [számlázott értékesítési program szintjébe](https://aka.ms/marketplacepublisherrewards), ahogy azt a [listában, a próbaverzióban, a Consulting](#list-trial-and-consulting-benefits) szakaszban, a [Transact partner előnyei](#marketplace-rewards-for-transact-partners) részben és a [részletes program fedélzetén említik. ](https://aka.ms/marketplacepublisherrewards). A csalás eltávolítását követően a Microsoft kiosztja a partnereket a jogosultsági szintek szerint a tényleges számlázott értékesítések alapján. 
 
 ## <a name="next-steps"></a>További lépések
 
-Jelentkezzen be a [Cloud Partner Portalon](https://cloudpartner.azure.com/) hozhat létre és konfigurálja az ajánlatát.
+Ha az ajánlatot a [Cloud Partner Portalban](https://cloudpartner.azure.com)hozta létre, jelentkezzen be az ajánlat létrehozásához vagy konfigurálásához.
+
+Ha az ajánlatot a [partner Centerben](https://partner.microsoft.com/en-us/dashboard/commercial-marketplace/overview)hozta létre, jelentkezzen be az ajánlat létrehozásához vagy konfigurálásához.
+
+Tekintse át az [Ön számára elérhető](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)önkiszolgáló erőforrásokat.
+
+Regisztráljon a [Microsoft AppSource és az Azure Marketplace közösségi fórumára](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222) , és ismerkedjen meg a kapcsolódó témakörökkel, vagy csatlakozzon a vitafórumhoz.
 
 ---

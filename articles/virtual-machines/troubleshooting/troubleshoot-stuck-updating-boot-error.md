@@ -1,62 +1,61 @@
 ---
-title: Az Azure virtuális gép indítási megakadt Windows Update |} A Microsoft Docs
-description: Ismerje meg a hiba elhárításához, ha egy Azure virtuális gép indítási megakadt Windows update.
+title: Az Azure-beli virtuális gép indítása beragadt Windows Update | Microsoft Docs
+description: Megtudhatja, hogyan lehet elhárítani a problémát, ha egy Azure-beli virtuális gép indításakor beragad a Windows Update szolgáltatásba.
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: v-jesits
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: genli
-ms.openlocfilehash: 7c516781f7d0c80dc7185585a29278820ab9a46e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 226151d81319dc4e6f132e76ce2d310f88a484e8
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57777566"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71087021"
 ---
-# <a name="azure-vm-startup-is-stuck-at-windows-update"></a>Az Azure virtuális gép indítási megakadt Windows update
+# <a name="azure-vm-startup-is-stuck-at-windows-update"></a>Az Azure-beli virtuális gép indítása a Windows Update szolgáltatásban megakadt
 
-Ez a cikk segít megoldani a problémát, ha a virtuális gép (VM) a Windows Update szakaszban elakadt indítása során. 
+Ez a cikk segítséget nyújt a probléma megoldásában, ha a virtuális gép (VM) a Windows Update fázisban az indítás során megakad. 
 
 > [!NOTE] 
-> Az Azure az erőforrások létrehozásához és használatához két különböző üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk ismerteti a Resource Manager üzemi modell használatával. Azt javasoljuk, hogy az új központi telepítéseknél a klasszikus üzemi modell helyett ezt a modellt használja.
+> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk a Resource Manager-alapú üzemi modell használatát ismerteti. Javasoljuk, hogy ezt a modellt a klasszikus üzemi modell használata helyett új központi telepítések esetén használja.
 
 ## <a name="symptom"></a>Jelenség
 
- Windows virtuális gép nem indul el. Amikor ellenőrizheti a képernyőképek a a [rendszerindítási diagnosztika](../troubleshooting/boot-diagnostics.md) ablakban megtekintheti, hogy az indítási elakadt a frissítési folyamat során. A következő példák üzeneteket kaphat:
+ Egy Windows rendszerű virtuális gép nem indul el. Amikor bejelöli a képernyőképeket a [rendszerindítási diagnosztika](../troubleshooting/boot-diagnostics.md) ablakban, láthatja, hogy az indítás megakadt a frissítési folyamat során. Az alábbi példákban megjelenhetnek az üzenetek:
 
-- Telepítése Windows ##% ne kapcsolja ki a Számítógéphez. Ez eltarthat egy ideig a számítógép többször újraindul.
-- Amíg ez történik, hogy az a számítógépen. A # # telepítése frissítése... 
-- Módosítások visszavonása nem kapcsolja ki a számítógépet a frissítések nem lehetett végrehajtani
-- Hiba konfigurálása Windows-frissítések Reverting módosítások ne kapcsolja ki a számítógépet
-- Hiba történt < hibakód > frissítési műveletek alkalmazásakor ### a ### (\Regist...)
-- Végzetes hiba < hibakód > frissítési műveletek alkalmazása ##, ## ($$...)
+- A Windows # #% telepítése nem kapcsolja ki a számítógépet. Ez eltarthat egy ideig, amíg a számítógép többször is újraindul
+- Tartsa SZÁMÍTÓGÉPét, amíg ez megtörténik. A # (#) frissítésének telepítése... 
+- Nem sikerült befejezni a frissítések visszavonásának módosításait, ne kapcsolja ki a számítógépet
+- Sikertelen volt a Windows-frissítések visszavonási beállításainak konfigurálása a számítógép kikapcsolásakor
+- Hiba < hibakód > a frissítési műveletek alkalmazása # # # # # # # # # # # # # # # # # # # # # #
+- Végzetes hiba történt < hibakód > a frissítési műveletek alkalmazása # # # # # # # # # # # # ($ $...)
 
 
 ## <a name="solution"></a>Megoldás
 
-Frissítések, amelyekre a számától függően telepítve, vagy biztonsági állítva, a frissítési folyamat eltarthat egy ideig. A virtuális gép ebben az állapotban hagyja a 8 óra. Ha a virtuális gép továbbra is ebben az állapotban az időszak elteltével, indítsa újra a virtuális Gépet az Azure Portalról, és tekintse meg, ha, megkezdheti a szokásos módon. Ha ez a lépés nem működik, próbálja ki a következő megoldást.
+Attól függően, hogy hány frissítést telepít vagy állít vissza, a frissítési folyamat eltarthat egy ideig. A virtuális gépet 8 órán keresztül hagyja ebben az állapotban. Ha a virtuális gép az adott időszak után még mindig ebben az állapotban van, indítsa újra a virtuális gépet a Azure Portalból, és ellenőrizze, hogy elindulhat-e a szokásos módon. Ha ez a lépés nem működik, próbálja ki a következő megoldást.
 
-### <a name="remove-the-update-that-causes-the-problem"></a>Távolítsa el a hibát okozó frissítés
+### <a name="remove-the-update-that-causes-the-problem"></a>A problémát okozó frissítés eltávolítása
 
-1. Pillanatkép készítése az operációsrendszer-lemez az érintett virtuális gépek biztonsági mentéséhez. További információkért lásd: [lemez pillanatképének elkészítése](../windows/snapshot-copy-managed-disk.md). 
+1. Készítsen pillanatképet az érintett virtuális gép operációsrendszer-lemezéről biztonsági másolatként. További információkért lásd: [lemez pillanatképének elkészítése](../windows/snapshot-copy-managed-disk.md). 
 2. [Csatlakoztassa az operációsrendszer-lemezt egy helyreállítási virtuális Géphez](troubleshoot-recovery-disks-portal-windows.md).
-3. Miután az operációsrendszer-lemez a helyreállítási virtuális Géphez van csatolva, futtassa **diskmgmt.msc** nyissa meg a Lemezkezelés eszközben, és győződjön meg arról, a csatlakoztatott lemez **ONLINE**. Jegyezze fel a meghajtóbetűjelet, amely a csatlakoztatott operációsrendszer-lemez a \windows mappát tároló van rendelve. Ha a lemez titkosítva vannak, visszafejteni a lemez ebben a dokumentumban a következő lépések végrehajtása előtt.
+3. Ha az operációsrendszer-lemez a helyreállítási virtuális gépen van csatlakoztatva, futtassa a **diskmgmt. msc fájlt** a Lemezkezelés eszköz megnyitásához, és győződjön meg arról, hogy a csatlakoztatott lemez **online állapotban**van. Jegyezze fel a \Windows mappát tároló csatlakoztatott operációsrendszer-lemezhez rendelt meghajtóbetűjelet. Ha a lemez titkosítva van, a rendszer visszafejti a lemezt a dokumentum következő lépéseinek folytatása előtt.
 
-4. Nyissa meg a rendszergazda jogú parancssort (Futtatás rendszergazdaként). A következő parancsot a csatlakoztatott operációsrendszer-lemez a frissítési csomagok listájának beolvasása:
+4. Nyisson meg egy rendszergazda jogú parancssor-példányt (Futtatás rendszergazdaként). Futtassa a következő parancsot a csatolt operációsrendszer-lemezen található frissítési csomagok listájának lekéréséhez:
 
         dism /image:<Attached OS disk>:\ /get-packages > c:\temp\Patch_level.txt
 
-    Például ha a csatlakoztatott operációsrendszer-lemez meghajtó F, futtassa a következő parancsot:
+    Ha például a csatlakoztatott operációsrendszer-lemez a F meghajtó, futtassa a következő parancsot:
 
         dism /image:F:\ /get-packages > c:\temp\Patch_level.txt
-5. Nyissa meg a C:\temp\Patch_level.txt fájlt, és ezután olvassa el, a lista aljáról. Keresse meg a frissítést, amely a **telepítés függőben** vagy **függőben lévő eltávolítása** állapota.  Az alábbiakban látható a frissítés állapotának mintáira érvényesek:
+5. Nyissa meg a C:\temp\Patch_level.txt fájlt, majd olvassa el az alulról. Keresse meg a **telepítés függőben** vagy az **Eltávolítás függőben** állapotú frissítést.  Az alábbi példa a frissítési állapotot mutat be:
 
      ```
     Package Identity : Package_for_RollupFix~31bf3856ad364e35~amd64~~17134.345.1.5
@@ -64,7 +63,7 @@ Frissítések, amelyekre a számától függően telepítve, vagy biztonsági á
     Release Type : Security Update
     Install Time :
     ```
-6. Távolítsa el a frissítést, amelyiket okozta a problémát:
+6. Távolítsa el a problémát okozó frissítést:
     
     ```
     dism /Image:<Attached OS disk>:\ /Remove-Package /PackageName:<PACKAGE NAME TO DELETE>
@@ -76,6 +75,6 @@ Frissítések, amelyekre a számától függően telepítve, vagy biztonsági á
     ```
 
     > [!NOTE] 
-    > A csomag méretétől függően a a DISM eszköz eltarthat egy ideig, az eltávolítási feldolgozásához. Általában a folyamat 16 percen belül befejeződik.
+    > A csomag méretétől függően a DISM eszköz eltarthat egy ideig, amíg feldolgozza az eltávolítást. Általában a folyamat 16 percen belül befejeződik.
 
-7. [Az operációsrendszer-lemez leválasztása, és hozza létre újra a virtuális gép](troubleshoot-recovery-disks-portal-windows.md#unmount-and-detach-original-virtual-hard-disk). Ezután ellenőrizze, hogy a probléma megoldódott-e.
+7. [Az operációsrendszer-lemez leválasztása, és hozza létre újra a virtuális gép](troubleshoot-recovery-disks-portal-windows.md#unmount-and-detach-original-virtual-hard-disk). Ezután győződjön meg arról, hogy a probléma megoldódott-e.

@@ -9,11 +9,11 @@ ms.date: 01/30/2017
 ms.author: ganesr
 ms.custom: seodec18
 ms.openlocfilehash: 3e49a1da0e8ea83faf5fc5a10d4c01a41d62fa88
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57439638"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60883096"
 ---
 # <a name="getting-arp-tables-in-the-classic-deployment-model"></a>ARP-táblák a klasszikus üzemi modellben
 > [!div class="op_single_selector"]
@@ -158,7 +158,7 @@ ARP-táblázat egy társviszony-létesítések használható 2. rétegbeli konfi
 * Nyisson egy támogatási kérelmet a [Microsoft Azure súgó + támogatás](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Adja meg, hogy a 2. rétegbeli kapcsolódási probléma.
 
 ## <a name="next-steps"></a>További lépések
-* 3. rétegbeli konfigurációi az ExpressRoute-kapcsolatcsoport ellenőrzése:
+* 3\. rétegbeli konfigurációi az ExpressRoute-kapcsolatcsoport ellenőrzése:
   * Szerezze be egy útvonalat a BGP-munkamenetek állapotának megállapítása összefoglalását.
   * Határozza meg, melyik előtagokat hirdet meg között ExpressRoute útválasztási táblázat beolvasása.
 * Ellenőrizze az adatátviteli bájt és áttekintésével.

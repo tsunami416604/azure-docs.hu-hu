@@ -14,18 +14,19 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 56077d018c1ae62809d51fc66d7f5aff93fb4c02
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: cf36c233df9f8aaf76333b0add8b1ffce869156b
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60002697"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773235"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Az Azure Event Hubs - Geo-vészhelyreállítás 
 
 Ha a teljes Azure-régióban, vagy az adatközpontok (Ha nincs [rendelkezésre állási zónák](../availability-zones/az-overview.md) használt) leállás következik be, kritikus fontosságú adatok feldolgozásához, eltérő régióban vagy datacenter továbbra is. Emiatt a *Geo-disaster recovery* és *georeplikációs* bármely vállalat számára fontos funkciók. Az Azure Event Hubs geo-vészhelyreállítás és georeplikáció útján, a névterek szintjén is támogatja. 
 
-A Geo-disaster recovery funkció érhető el globálisan az Event Hubs Standard Termékváltozat esetében.
+> [!NOTE]
+> A földrajzi katasztrófa utáni helyreállítási funkció csak a [standard és a dedikált SKU](https://azure.microsoft.com/pricing/details/event-hubs/)esetében érhető el.  
 
 ## <a name="outages-and-disasters"></a>Leállások és katasztrófák kezelése
 
@@ -37,17 +38,32 @@ Az Azure Event Hubs Geo-disaster recovery funkcióját a vészhelyreállítási 
 
 ## <a name="basic-concepts-and-terms"></a>Alapfogalommal és kifejezéssel
 
-A vész-helyreállítási szolgáltatás metaadatainak vész-helyreállítási valósítja meg, és az elsődleges és másodlagos vész-helyreállítási névterek támaszkodik. Vegye figyelembe, hogy a Geo-disaster recovery funkció érhető el a [Standard Termékváltozatú](https://azure.microsoft.com/pricing/details/event-hubs/) csak. Nem kell, végezze el a kapcsolati karakterlánc módosításokat, a kapcsolat alias-n keresztül.
+A vész-helyreállítási szolgáltatás metaadatainak vész-helyreállítási valósítja meg, és az elsődleges és másodlagos vész-helyreállítási névterek támaszkodik. 
+
+A földrajzi katasztrófa utáni helyreállítási funkció csak a [standard és a dedikált SKU](https://azure.microsoft.com/pricing/details/event-hubs/) esetében érhető el. Nem kell, végezze el a kapcsolati karakterlánc módosításokat, a kapcsolat alias-n keresztül.
 
 Ez a cikk a következő kifejezéseket használjuk:
 
--  *Alias*: Az Ön által beállított vészhelyreállítási konfiguráció neve. Az alias egyetlen stabil teljes tartománynévként (FQDN) kapcsolati karakterláncban biztosít. Alkalmazások ez alias a kapcsolati karakterlánc használatával csatlakozni a névtérhez. 
+-  *Alias*: Az Ön által beállított vész-helyreállítási konfiguráció neve. Az alias egyetlen stabil teljes tartománynévként (FQDN) kapcsolati karakterláncban biztosít. Alkalmazások ez alias a kapcsolati karakterlánc használatával csatlakozni a névtérhez. 
 
--  *Elsődleges és másodlagos névtér*: A névterek, amelyek megfelelnek a címre. Az elsődleges névtér "aktív", és fogadja az üzeneteket (Ez lehet egy meglévő vagy új névtér). A másodlagos névtérre "passzív", és nem fogadhat üzeneteket. A metaadatok között is szinkronizálva, így mindkettő is zökkenőmentesen fogadja az üzeneteket alkalmazás kódja vagy kapcsolati karakterlánc módosítása nélkül. Győződjön meg arról, hogy csak az aktív névteret fogadja az üzeneteket, az aliast kell használnia. 
+-  *Elsődleges/másodlagos névtér*: Az aliasnak megfelelő névterek. Az elsődleges névtér "aktív", és fogadja az üzeneteket (Ez lehet egy meglévő vagy új névtér). A másodlagos névtérre "passzív", és nem fogadhat üzeneteket. A metaadatok között is szinkronizálva, így mindkettő is zökkenőmentesen fogadja az üzeneteket alkalmazás kódja vagy kapcsolati karakterlánc módosítása nélkül. Győződjön meg arról, hogy csak az aktív névteret fogadja az üzeneteket, az aliast kell használnia. 
 
--  *metaadatok*: Entitások, például az event hubs és a fogyasztói csoportok; és azok tulajdonságait a névtérhez társított szolgáltatás. Vegye figyelembe, hogy csak az entitások és a beállításaik automatikusan replikálja. Üzenetek és események nem lesznek replikálva. 
+-  *Metaadatok*: Entitások, például az Event hubok és a fogyasztói csoportok; a névtérhez társított szolgáltatás tulajdonságai. Vegye figyelembe, hogy csak az entitások és a beállításaik automatikusan replikálja. Üzenetek és események nem lesznek replikálva. 
 
--  *Feladatátvétel*: Folyamat aktiválása a másodlagos névtér.
+-  *Feladatátvétel*: A másodlagos névtér aktiválásának folyamata.
+
+## <a name="supported-namespace-pairs"></a>Támogatott névtér-párok
+Az elsődleges és a másodlagos névterek következő kombinációi támogatottak:  
+
+| Elsődleges névtér | Másodlagos névtér | Támogatott | 
+| ----------------- | -------------------- | ---------- |
+| Standard | Standard | Igen | 
+| Standard | Dedikált | Igen | 
+| Dedikált | Dedikált | Igen | 
+| Dedikált | Standard | Nem | 
+
+> [!NOTE]
+> Ugyanahhoz a dedikált fürthöz tartozó névtereket nem lehet párosítani. A különálló fürtökben található névtereket is párosíthatja. 
 
 ## <a name="setup-and-failover-flow"></a>A telepítő és a feladatátvételi folyamat
 
@@ -84,7 +100,7 @@ Ha állított be; például, a nem megfelelő régiók párosítva a kezdeti be�
 
 ## <a name="samples"></a>Példák
 
-A [mintát a Githubon](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/GeoDRClient) bemutatja, hogyan állíthatja be, és a feladatátvétel. Ez a minta azt mutatja be, a következő fogalmak:
+A [mintát a Githubon](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/GeoDRClient) bemutatja, hogyan állíthatja be, és a feladatátvétel. Ez a minta azt mutatja be, a következő fogalmak:
 
 - Az Event Hubs Azure Resource Manager használata az Azure Active Directory szükséges beállításokat. 
 - A mintakód végrehajtásához szükséges lépéseket. 
@@ -94,20 +110,26 @@ A [mintát a Githubon](https://github.com/Azure/azure-event-hubs/tree/master/sam
 
 Vegye figyelembe az alábbi szempontokat figyelembe kell venni ebben a kiadásban:
 
-1. A feladatátvételi tervezés során is figyelembe kell venni az idő tényező. Például ha elveszíti a kapcsolatot a 15-20 percnél hosszabb ideig, dönthet, hogy kezdeményezze a feladatátvételt. 
+1. A tervezés szerint Event Hubs geo-vész-helyreállítás nem replikálja az adatait, ezért nem használhatja fel az elsődleges Event hub régi eltolási értékét a másodlagos esemény központján. Javasoljuk, hogy az Event receivert a következők egyikével indítsa újra:
+
+- *EventPosition. FromStart ()* – ha szeretné beolvasni az összes adatközpontot a másodlagos esemény központján.
+- *EventPosition. FromEnd ()* – ha szeretné beolvasni az összes új adatforrást a másodlagos esemény központhoz való kapcsolódáskor.
+- *EventPosition. FromEnqueuedTime (datetime)* – ha szeretné beolvasni a másodlagos Event hub-ban fogadott összes adat egy adott dátumtól és időponttól kezdve.
+
+2. A feladatátvételi tervezés során is figyelembe kell venni az idő tényező. Például ha elveszíti a kapcsolatot a 15-20 percnél hosszabb ideig, dönthet, hogy kezdeményezze a feladatátvételt. 
  
-2. Az a tény, hogy az adatok nem replikálódik, az azt jelenti, hogy jelenleg aktív munkamenetek nem lesznek replikálva. Ezenkívül duplikáltelem-észlelési és ütemezett üzenetek előfordulhat, hogy nem működik. Az új munkamenetek, ütemezett üzenetek és új ismétlődések fog működni. 
+3. Az a tény, hogy az adatok nem replikálódik, az azt jelenti, hogy jelenleg aktív munkamenetek nem lesznek replikálva. Ezenkívül duplikáltelem-észlelési és ütemezett üzenetek előfordulhat, hogy nem működik. Az új munkamenetek, ütemezett üzenetek és új ismétlődések fog működni. 
 
-3. Egy összetett elosztott infrastruktúra feladatátadás kell [kipróbálni](/azure/architecture/resiliency/disaster-recovery-azure-applications#disaster-simulation) legalább egyszer. 
+4. Egy összetett elosztott infrastruktúra feladatátadás kell [kipróbálni](/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan) legalább egyszer. 
 
-4. Entitások szinkronizálása körülbelül 50-100 entitást percenkénti némi időt is igénybe vehet.
+5. Entitások szinkronizálása körülbelül 50-100 entitást percenkénti némi időt is igénybe vehet.
 
 ## <a name="availability-zones"></a>Rendelkezésre állási zónák 
 
-Az Event Hubs Standard Termékváltozat támogatja [rendelkezésre állási zónák](../availability-zones/az-overview.md), így az Azure-régión belüli, meghibásodásoktól elszigetelt helyek. 
+A Event Hubs standard SKU támogatja a [Availability Zones](../availability-zones/az-overview.md), amely az Azure-régiókban a hibáktól elkülönített helyet biztosít. 
 
 > [!NOTE]
-> Az Azure Event Hubs Standard rendelkezésre állási zónák támogatása csak akkor érhető el a [Azure-régiók](../availability-zones/az-overview.md#services-support-by-region) ahol jelen-e rendelkezésre állási zónák.
+> Az Azure Event Hubs standard Availability Zones támogatása csak olyan [Azure-régiókban](../availability-zones/az-overview.md#services-support-by-region) érhető el, ahol elérhetők a rendelkezésre állási zónák.
 
 Engedélyezheti a rendelkezésre állási zónák a csak az új névterek az Azure portal használatával. Az Event Hubs nem támogatja a meglévő névterek áttelepítésének. Miután engedélyezte a a névtérben nem tiltható le a zone redudancy.
 
@@ -115,7 +137,7 @@ Engedélyezheti a rendelkezésre állási zónák a csak az új névterek az Azu
 
 ## <a name="next-steps"></a>További lépések
 
-* A [mintát a Githubon](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/GeoDRClient) bemutatja egy egyszerű munkafolyamatot, amely létrehoz egy geo-párosítás és vész-helyreállítási helyzetekre feladatátvételét kezdeményezi.
+* A [mintát a Githubon](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/GeoDRClient) bemutatja egy egyszerű munkafolyamatot, amely létrehoz egy geo-párosítás és vész-helyreállítási helyzetekre feladatátvételét kezdeményezi.
 * A [REST API-referencia](/rest/api/eventhub/disasterrecoveryconfigs) API-k a Geo-disaster recovery konfigurálást ismerteti.
 
 Ha további információkat szeretne az Event Hubsról, tekintse meg az alábbi hivatkozásokat:

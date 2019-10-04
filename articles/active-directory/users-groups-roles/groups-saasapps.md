@@ -1,6 +1,6 @@
 ---
-title: Egy csoport használatával a SaaS-alkalmazásokban – Azure Active Directory-hozzáférés kezelése |} A Microsoft Docs
-description: Hogyan lehet az Azure Active Directoryban csoportok használata hozzáférések hozzárendelése az Azure Active Directoryval integrált SaaS-alkalmazásokhoz.
+title: SaaS-alkalmazásokhoz való hozzáférés kezelése csoport használatával – Azure Active Directory | Microsoft Docs
+description: A Azure Active Directory csoportok használata a Azure Active Directory integrált SaaS-alkalmazásokhoz való hozzáféréshez.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -9,35 +9,37 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 08/01/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 873863016d6dc54c7439ec1f46180b3c063bda19
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 75fdd0fcd4ceeeb0f680b2cbdb743d30d236c93d
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173627"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736510"
 ---
 # <a name="using-a-group-to-manage-access-to-saas-applications"></a>Hozzáférés kezelése SaaS alkalmazásokhoz egy csoport használatával
 
-Azure Active Directory (Azure AD) használatával egy Azure AD prémium vagy alapszintű Azure AD-licenccel rendelkező, használhatja csoportok hozzáférés hozzárendelése egy Azure AD-vel integrált SaaS-alkalmazáshoz. Például, ha szeretné a marketingosztály öt különböző SaaS-alkalmazásokhoz használandó a hozzáférést, is hozzon létre egy csoportot, amely tartalmazza a marketingrészleg számára, és hozzárendelheti ezeket öt SaaS-alkalmazásokhoz, amelyek szükségesek az adott csoport a a marketingosztály. Ezzel a módszerrel kezelése egy helyen a marketingosztály tagsága használatával időt takaríthat meg. Felhasználók majd vannak rendelve az alkalmazás a marketing csoport tagjai kerül, és azok hozzárendeléseiről eltávolította az alkalmazásból a marketing csoport eltávolításakor. Ez a képesség, amely adhat hozzá az Azure AD Alkalmazásgyűjteményben alkalmazások száz is használható.
+Ha Azure Active Directory (Azure AD) használatával prémium szintű Azure AD-licenccel rendelkezik, akkor a csoportok segítségével hozzáférést rendelhet az Azure AD-vel integrált SaaS-alkalmazásokhoz. Ha például a marketing részlegnek öt különböző SaaS-alkalmazást kell használnia, létrehozhat egy csoportot, amely a marketing részleg felhasználóit tartalmazza, majd ezt a csoportot a következő öt SaaS-alkalmazáshoz rendeli hozzá, amelyekre szükség van a marketing részleg. Így időt takaríthat meg, ha a marketing részleg tagságát egy helyen kezeli. A felhasználók ezután az alkalmazáshoz lesznek rendelve, amikor a marketing csoport tagjaként hozzá lettek adva, és az alkalmazásból eltávolítják a hozzárendeléseiket a marketing csoportból. Ez a funkció több száz alkalmazással is használható, amelyeket hozzáadhat az Azure AD-alkalmazás-katalógusból.
 
 > [!IMPORTANT]
-> Használhatja a funkció csak az Azure AD Premium próbaverziójának elindítása vagy Azure AD prémium vagy alapszintű Azure AD licencet vásárol után. Csoportalapú csak biztonsági csoportok esetében támogatott. A beágyazott csoporttagság az alkalmazásokhoz történő csoportalapú hozzárendeléseknél egyelőre nem támogatott.
+> Ezt a funkciót csak prémium szintű Azure AD próbaverzió elindítása vagy prémium szintű Azure AD-licenc megvásárlása után használhatja.
+> A csoport alapú hozzárendelés csak biztonsági csoportok esetén támogatott.
+> A beágyazott csoporttagság az alkalmazásokhoz történő csoportalapú hozzárendeléseknél egyelőre nem támogatott.
 
-**Hozzáférés egy felhasználó vagy csoport hozzárendelése egy SaaS-alkalmazáshoz**
+## <a name="to-assign-access-for-a-user-or-group-to-a-saas-application"></a>Felhasználó vagy csoport hozzáférésének kiosztása SaaS-alkalmazáshoz
 
-1. Az a [Azure AD felügyeleti központ](https://aad.portal.azure.com)válassza **vállalati alkalmazások**.
-2. Jelöljön ki egy alkalmazást, hogy hozzáadta-e, nyissa meg az alkalmazáskatalógusból.
-3. Válassza ki **felhasználók és csoportok**, majd válassza ki **felhasználó hozzáadása**.
-4. A **hozzárendelés hozzáadása**válassza **felhasználók és csoportok** megnyitásához a **felhasználók és csoportok** választási lista.
-6. Tetszőleges számú csoportok kiválasztása vagy a felhasználók a kívánt, majd kattintson vagy koppintson a **kiválasztása** adja hozzá őket a **hozzárendelés hozzáadása** listája. Ebben a szakaszban egy felhasználóra is hozzárendelhet szerepkört.
-7. Válassza ki **hozzárendelése** azon felhasználók vagy csoportok hozzárendelése a kiválasztott vállalati alkalmazáshoz.
+1. Az [Azure ad felügyeleti központban](https://aad.portal.azure.com)válassza a **vállalati alkalmazások**lehetőséget.
+2. Válassza ki azt az alkalmazást, amelyet az alkalmazás-katalógusból adott hozzá a megnyitásához.
+3. Válassza a **felhasználók és csoportok**lehetőséget, majd válassza a **felhasználó hozzáadása**elemet.
+4. A **hozzárendelés hozzáadása**lapon válassza a **felhasználók és csoportok** lehetőséget a **felhasználók és csoportok** kiválasztási listájának megnyitásához.
+6. Válassza ki a kívánt számú csoportot vagy felhasználót, majd kattintson vagy koppintson a **kiválasztás** lehetőségre a **hozzárendelés hozzáadása** listához való hozzáadáshoz. Ezen a ponton a felhasználóhoz is hozzárendelhet szerepkört.
+7. Válassza a **hozzárendelés** lehetőséget a felhasználók vagy csoportok kiválasztott vállalati alkalmazáshoz való hozzárendeléséhez.
 
-### <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>További lépések
 E cikkekben további információk találhatók az Azure Active Directoryval kapcsolatban.
 
 * [Erőforráshozzáférés-kezelés Azure Active Directory-csoportokkal](../fundamentals/active-directory-manage-groups.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 05/01/2017
 ms.author: yegu
-ms.openlocfilehash: 4a51040ecdbf22af03ce1e6edaaa0ff577bbc076
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7333fa51da1cd5bbd9175d56571ec1d17cbbe33f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792200"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65203933"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>Redis Azure Cache for ASP.NET munkamenetállapot-szolgáltatója
 
@@ -81,6 +81,7 @@ A NuGet-csomag letölti és hozzáadja a szükséges szerelvényhivatkozásokat,
          host=""
          accessKey=""
          ssl="true" />
+  </providers>
 </sessionState>
 ```
 

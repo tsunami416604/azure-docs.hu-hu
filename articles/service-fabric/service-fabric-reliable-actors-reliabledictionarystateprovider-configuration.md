@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 10/2/2017
 ms.author: sumukhs
 ms.openlocfilehash: 4e39357a765ec85aa64055b1aa422d8d7a01c116
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669401"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60727131"
 ---
 # <a name="configuring-reliable-actors--reliabledictionaryactorstateprovider"></a>A Reliable Actors – ReliableDictionaryActorStateProvider konfigurálása
 A reliabledictionaryactorstateprovider alapértelmezett konfigurációjának a settings.xml fájlt hoz létre a Visual Studio csomag gyökérkönyvtárába a Config mappában található a megadott aktor módosításával módosíthatja.
@@ -41,11 +41,11 @@ A fürtjegyzék egy egyetlen XML-fájl, amely tartalmazza a beállítások és k
 ### <a name="configuration-names"></a>Konfigurációs nevek
 | Name (Név) | Unit (Egység) | Alapértelmezett érték | Megjegyzések |
 | --- | --- | --- | --- |
-| WriteBufferMemoryPoolMinimumInKB |kilobájt |8388608 |A naplózó írási memória pufferkészlet rendszermag módban lefoglalni KB minimális száma. Gyorsítótárazás lemezre írás előtt állapotinformációkat a memóriakészletben használható. |
-| WriteBufferMemoryPoolMaximumInKB |kilobájt |Korlátlan |Amelyhez a naplózó írási pufferkészletben memória maximális mérete növelhető. |
+| WriteBufferMemoryPoolMinimumInKB |Kilobájt |8388608 |A naplózó írási memória pufferkészlet rendszermag módban lefoglalni KB minimális száma. Gyorsítótárazás lemezre írás előtt állapotinformációkat a memóriakészletben használható. |
+| WriteBufferMemoryPoolMaximumInKB |Kilobájt |Korlátlan |Amelyhez a naplózó írási pufferkészletben memória maximális mérete növelhető. |
 | SharedLogId |GUID |"" |Adja meg egy egyedi GUID Azonosítót az alapértelmezett megosztott naplófájl a fürt összes csomópontja, amely a szolgáltatás adott konfigurációban a SharedLogId nem adja meg az összes megbízható szolgáltatások által használt azonosítására használható. Ha SharedLogId van megadva, majd SharedLogPath is kötelező. |
 | SharedLogPath |Teljes elérési útja |"" |Itt adhatja meg a teljes elérési útja, ahol a megosztott naplófájlban a fürt összes csomópontja, amely a szolgáltatás adott konfigurációban a SharedLogPath nem adja meg az összes megbízható szolgáltatás használja. Azonban ha SharedLogPath van megadva, majd SharedLogId is kötelező. |
-| SharedLogSizeInMB |megabájt |8192 |Ennyi statikusan lefoglalni a közös naplók MB szabad lemezterület. Az értéknek kell lennie, 2048 vagy nagyobb. |
+| SharedLogSizeInMB |(MB) |8192 |Ennyi statikusan lefoglalni a közös naplók MB szabad lemezterület. Az értéknek kell lennie, 2048 vagy nagyobb. |
 
 ### <a name="sample-cluster-manifest-section"></a>Minta cluster manifest szakasz
 ```xml
@@ -73,14 +73,14 @@ Alapértelmezés szerint egy üres biztonsági konfigurációs szakasz megakadá
 > A Linux-csomópontokat a tanúsítványok kell PEM-formátumú. További információk megkeresése és tanúsítványok konfigurálása Linux kapcsolatban lásd: [tanúsítványok konfigurálása Linux](./service-fabric-configure-certificates-linux.md). 
 > 
 
-### <a name="section-name"></a>Szakasz neve
+### <a name="section-name"></a>A szakasz nevét
 &lt;ActorName&gt;ServiceReplicatorSecurityConfig
 
 ## <a name="replicator-configuration"></a>Replikációs konfiguráció
 A replikáló konfigurációk segítségével konfigurálhatja a replikátor, amely feladata, hogy az Aktor Riasztásiállapot-szolgáltató állapota magas megbízhatóságú replikál, és az állapot helyi megőrzése.
 Az alapértelmezett konfiguráció a Visual Studio-sablon által létrehozott és elegendőnek kell lennie. Ez a szakasz ismerteti a replikátor finomhangolása elérhető további konfigurációs.
 
-### <a name="section-name"></a>Szakasz neve
+### <a name="section-name"></a>A szakasz nevét
 &lt;ActorName&gt;ServiceReplicatorConfig
 
 ### <a name="configuration-names"></a>Konfigurációs nevek
@@ -93,7 +93,7 @@ Az alapértelmezett konfiguráció a Visual Studio-sablon által létrehozott é
 | MaxSecondaryReplicationQueueSize |Műveletek száma |16384 |A másodlagos üzenetsor-műveletek maximális száma. Egy művelet fel nem szabadul, az állapot megőrzése révén magas rendelkezésre állású elvégzése után. Ez az érték nagyobb, mint 64 és 2 hatványának kell lennie. |
 | CheckpointThresholdInMB |MB |200 |Az állapot alkulcsaihoz log-fájl terület mennyiségét. |
 | MaxRecordSizeInKB |KB |1024 |Legnagyobb rekord méretet, amely a replikátor írhatnak a naplóban. Ez az érték 4 és 16-nál nagyobb többszörösének kell lennie. |
-| OptimizeLogForLowerDiskUsage |Logikai |true |TRUE érték esetén a napló van konfigurálva, hogy a replika dedikált naplófájlt hoz létre egy ritka NTFS-fájl használatával. Ez csökkenti a tényleges lemezterület-használat a fájlt. Hamis érték esetén a fájl jön létre a rögzített értékesítjük, ami a legjobb írási teljesítményt biztosítanak. |
+| OptimizeLogForLowerDiskUsage |Boolean |true |TRUE érték esetén a napló van konfigurálva, hogy a replika dedikált naplófájlt hoz létre egy ritka NTFS-fájl használatával. Ez csökkenti a tényleges lemezterület-használat a fájlt. Hamis érték esetén a fájl jön létre a rögzített értékesítjük, ami a legjobb írási teljesítményt biztosítanak. |
 | SharedLogId |GUID azonosítója |"" |Adja meg egy egyedi GUID azonosítót a megosztott naplófájlban, és a replika használt azonosítására használható. Szolgáltatások általában, ne használja ezt a beállítást. Azonban ha SharedLogId van megadva, majd SharedLogPath is kötelező. |
 | SharedLogPath |Teljes elérési útja |"" |Itt adhatja meg a teljes elérési útja, ahol létrejön a megosztott naplófájlt a replika. Szolgáltatások általában, ne használja ezt a beállítást. Azonban ha SharedLogPath van megadva, majd SharedLogId is kötelező. |
 

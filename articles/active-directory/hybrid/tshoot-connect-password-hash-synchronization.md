@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6feed11fcfc597658f3ec148b5dd18bb7e3f8f83
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58793322"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60383268"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>A Jelszókivonat-szinkronizálás és az Azure AD Connect-szinkronizálás hibaelhárítása
 
@@ -351,9 +351,9 @@ Jelszó Jelszókivonat szinkronizálása problémák objektum állapotának megt
 
 Az Állapot oszlopban a következő értékeket veheti fel:
 
-| status | Leírás |
+| Állapot | Leírás |
 | --- | --- |
-| Sikeres |Jelszó szinkronizálása sikerült. |
+| Siker |Jelszó szinkronizálása sikerült. |
 | FilteredByTarget |Jelszó beállítása **kell változtatni a jelszót a következő bejelentkezéskor**. Jelszó nem lett szinkronizálva. |
 | NoTargetConnection |Nincs objektum tartozik a metaverzumba, vagy az Azure ad-ben összekötőtérben. |
 | SourceConnectorNotPresent |Nem található a helyszíni Active Directory-összekötő-térben található objektum. |

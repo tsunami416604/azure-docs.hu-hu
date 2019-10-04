@@ -1,22 +1,17 @@
 ---
-title: Ultranagy lemezek a Windows virtuális gépek – az Azure Managed Disks |} A Microsoft Docs
-description: Ismerje meg az Azure virtuális gépek ultranagy SSD
-services: virtual-machines-windows
+title: Windows rendszerű virtuális gépekhez használható ultravékony lemezek – Azure Managed Disks | Microsoft Docs
+description: Tudnivalók az Azure-beli virtuális gépekhez használható Ultra-lemezekről
 author: roygara
 ms.service: virtual-machines-windows
-ms.workload: storage
-ms.tgt_pltfrm: vm-windows
-ms.devlang: na
-ms.topic: article
-ms.date: 09/24/2018
+ms.topic: conceptual
+ms.date: 08/15/2019
 ms.author: rogarana
-ms.custom: seodec18
 ms.subservice: disks
-ms.openlocfilehash: c5eaac4766bec2c4666e2a533d0d771237cbde53
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 787f24389baff96c94c0bb6af415e083dfaa591c
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428278"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69510335"
 ---
 [!INCLUDE [virtual-machines-disks-ultra-ssd](../../../includes/virtual-machines-disks-getting-started-ultra-ssd.md)]

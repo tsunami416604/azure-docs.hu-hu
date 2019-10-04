@@ -1,89 +1,89 @@
 ---
-title: Az Azure Active Directory hitelesítési Kódtárai |} A Microsoft Docs
-description: Az Azure AD Authentication Library (ADAL) lehetővé teszi az ügyfél segítségével könnyedén hitelesítheti a felhasználókat a felhőbe az alkalmazásfejlesztők vagy a helyszíni Active Directory (AD), és ezután szerezze be a hozzáférési jogkivonatok az API-hívások biztonságossá tételéhez.
+title: Azure Active Directory hitelesítési kódtárak | Microsoft Docs
+description: Az Azure AD Authentication Library (ADAL) lehetővé teszi az ügyfélalkalmazások fejlesztői számára, hogy egyszerűen hitelesítsék a felhasználókat a felhőben vagy a helyszíni Active Directory (AD), majd hozzáférési jogkivonatokat szerezzenek be az API-hívások biztonságossá tételéhez.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 2e4fc79a-0285-40be-8c77-65edee408a22
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2018
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
-ms.custom: aaddev
+ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e90a2fc0bb5e040e0c1a3179df1e4bef758d7ee
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: bb1cd062384bf75e6f83380c172f43244e737db0
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173011"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853480"
 ---
-# <a name="azure-active-directory-authentication-libraries"></a>Az Azure Active Directory hitelesítési Kódtárai
+# <a name="azure-active-directory-authentication-libraries"></a>Azure Active Directory hitelesítési kódtárak
 
-Az Azure Active Directory Authentication Library (ADAL) 1.0-s verzió lehetővé teszi az alkalmazásfejlesztők a felhőalapú felhasználók hitelesítéséhez és a helyszíni Active Directory (AD), és szerezze be jogkivonatok az API-hívások biztonságossá tételéhez. ADAL hitelesítési egyszerűbbé teszi a funkciók révén a fejlesztők például:
+A Azure Active Directory Authentication Library (ADAL) 1.0-s verziója lehetővé teszi az alkalmazások fejlesztői számára, hogy hitelesítsék a felhasználókat a felhőben vagy a helyszíni Active Directoryban (AD), valamint jogkivonatokat szerezzenek be az API-hívások biztonságossá tételéhez. A ADAL megkönnyíti a fejlesztők számára a következő funkciókat:
 
-- Konfigurálható jogkivonatok gyorsítótárát, hogy a tárolók hozzáférési jogkivonatokat, és frissítési jogkivonatok
-- Automatikus token frissítést, ha a hozzáférési jogkivonat lejár, és a egy frissítési jogkivonat érhető el
-- Aszinkron metódust hívja támogatása
+- A hozzáférési jogkivonatokat tároló konfigurálható jogkivonat-gyorsítótár és a jogkivonatok frissítése
+- Automatikus jogkivonat-frissítés, ha egy hozzáférési jogkivonat lejár, és rendelkezésre áll egy frissítési jogkivonat.
+- Aszinkron metódus-hívások támogatása
 
 > [!NOTE]
-> Az Azure AD v2.0-kódtárak (MSAL) keres? Kivétel a [MSAL könyvtár útmutató](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-libraries).
+> Az Azure AD v 2.0 kódtárait (MSAL) keresi? A [MSAL-függvénytár útmutatójának](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-libraries)kifizetése.
 >
 >
 
-## <a name="microsoft-supported-client-libraries"></a>A Microsoft által támogatott Ügyfélkódtárak
+## <a name="microsoft-supported-client-libraries"></a>Microsoft által támogatott ügyféloldali kódtárak
 
-| Platform | Kódtár | Letöltés | Forráskód | Sample | Leírások
+| Platform | Erőforrástár | Letöltés | Forráskód | Minta | Hivatkozás
 | --- | --- | --- | --- | --- | --- |
-| .NET-ügyfél Windows Store, az UWP, Xamarin iOS és Android rendszerhez |ADAL .NET v3 |[NuGet](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory) |[GitHubon](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet) | [Asztali alkalmazás](https://docs.microsoft.com/azure/active-directory/active-directory-devquickstarts-dotnet) |[Referencia](https://docs.microsoft.com/dotnet/api/microsoft.identitymodel.clients.activedirectory?view=azure-dotnet) |
-| .NET-ügyfél Windows Store, Windows Phone 8.1 |ADAL .NET v2 |[NuGet](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/2.28.4) |[GitHubon](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/releases/tag/v2.28.4) | [Asztali alkalmazás](https://github.com/AzureADQuickStarts/NativeClient-DotNet/releases/tag/v2.X) | |
+| .NET-ügyfél, Windows áruház, UWP, Xamarin iOS és Android |ADAL .NET v3 |[NuGet](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory) |[GitHubon](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet) | [Asztali alkalmazás](https://docs.microsoft.com/azure/active-directory/active-directory-devquickstarts-dotnet) |[Referencia](https://docs.microsoft.com/dotnet/api/microsoft.identitymodel.clients.activedirectory?view=azure-dotnet) |
+| .NET-ügyfél, Windows áruház, Windows Phone-telefon 8,1 |ADAL .NET v2 |[NuGet](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/2.28.4) |[GitHubon](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/releases/tag/v2.28.4) | [Asztali alkalmazás](https://github.com/AzureADQuickStarts/NativeClient-DotNet/releases/tag/v2.X) | |
 | JavaScript |ADAL.js |[GitHubon](https://github.com/AzureAD/azure-activedirectory-library-for-js) |[GitHubon](https://github.com/AzureAD/azure-activedirectory-library-for-js) |[Egyoldalas alkalmazás](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi) | |
 | iOS, macOS |ADAL |[GitHubon](https://github.com/AzureAD/azure-activedirectory-library-for-objc/releases) |[GitHubon](https://github.com/AzureAD/azure-activedirectory-library-for-objc) |[iOS app](https://docs.microsoft.com/azure/active-directory/active-directory-devquickstarts-ios) | [Referencia](http://cocoadocs.org/docsets/ADAL/2.5.1/)|
-| Android |ADAL |[A központi tárházban](http://search.maven.org/remotecontent?filepath=com/microsoft/aad/adal/) |[GitHubon](https://github.com/AzureAD/azure-activedirectory-library-for-android) |[Android-alkalmazás](https://docs.microsoft.com/azure/active-directory/active-directory-devquickstarts-android) | [JavaDocs](https://javadoc.io/doc/com.microsoft.aad/adal/)|
+| Android |ADAL |[Maven 3](https://search.maven.org/search?q=g:com.microsoft.aad+AND+a:adal&core=gav) |[GitHubon](https://github.com/AzureAD/azure-activedirectory-library-for-android) |[Android-alkalmazás](https://docs.microsoft.com/azure/active-directory/active-directory-devquickstarts-android) | [JavaDocs](https://javadoc.io/doc/com.microsoft.aad/adal/)|
 | Node.js |ADAL |[npm](https://www.npmjs.com/package/adal-node) |[GitHubon](https://github.com/AzureAD/azure-activedirectory-library-for-nodejs) | [Node.Js-webalkalmazás](https://github.com/Azure-Samples/active-directory-node-webapp-openidconnect)|[Referencia](https://docs.microsoft.com/javascript/api/adal-node/?view=azure-node-latest) |
 | Java |ADAL4J |[Maven 3](https://search.maven.org/#search%7Cga%7C1%7Ca%3Aadal4j%20g%3Acom.microsoft.azure) |[GitHubon](https://github.com/AzureAD/azure-activedirectory-library-for-java) |[Java webalkalmazások](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect) |[Referencia](https://javadoc.io/doc/com.microsoft.azure/adal4j) |
 | Python |ADAL |[GitHubon](https://github.com/AzureAD/azure-activedirectory-library-for-python) |[GitHubon](https://github.com/AzureAD/azure-activedirectory-library-for-python) |[Python-webalkalmazás](https://github.com/Azure-Samples/active-directory-python-webapp-graphapi) |[Referencia](https://adal-python.readthedocs.io/) |
 
-## <a name="microsoft-supported-server-libraries"></a>A Microsoft által támogatott kiszolgálói kódtárak
+## <a name="microsoft-supported-server-libraries"></a>Microsoft által támogatott kiszolgálói kódtárak
 
-| Platform | Kódtár | Letöltés | Forráskód | Sample | Leírások
+| Platform | Erőforrástár | Letöltés | Forráskód | Minta | Hivatkozás
 | --- | --- | --- | --- | --- | --- |
-| .NET |Az Azure ad OWIN|[NuGet](https://www.nuget.org/packages/Microsoft.Owin.Security.ActiveDirectory/) |[GitHubon](https://github.com/aspnet/AspNetKatana/tree/dev/src/Microsoft.Owin.Security.ActiveDirectory) |[MVC App](https://docs.microsoft.com/azure/active-directory/active-directory-devquickstarts-webapp-dotnet) | |
-| .NET |A OpenIDConnect OWIN |[NuGet](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect) |[GitHubon](https://github.com/aspnet/AspNetKatana/tree/dev/src/Microsoft.Owin.Security.OpenIdConnect) |[Webalkalmazás](https://github.com/AzureADSamples/WebApp-OpenIDConnect-DotNet) | |
-| .NET |OWIN for WS-Federation |[NuGet](https://www.nuget.org/packages/Microsoft.Owin.Security.WsFederation) |[GitHubon](https://github.com/aspnet/AspNetKatana/tree/dev/src/Microsoft.Owin.Security.WsFederation) |[MVC Web App](https://github.com/AzureADSamples/WebApp-WSFederation-DotNet) | |
-| .NET |A .NET 4.5-ös identitás protokoll bővítményei |[NuGet](https://www.nuget.org/packages/Microsoft.IdentityModel.Protocol.Extensions) |[GitHubon](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) | | |
-| .NET |A .NET 4.5-ös JWT-kezelő |[NuGet](https://www.nuget.org/packages/System.IdentityModel.Tokens.Jwt) |[GitHubon](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) | | |
-| Node.js |Az Azure AD-Passport |[npm](https://www.npmjs.com/package/passport-azure-ad) |[GitHubon](https://github.com/AzureAD/passport-azure-ad) | [Webes API](https://docs.microsoft.com/azure/active-directory/active-directory-devquickstarts-webapi-nodejs)| |
+| .NET |OWIN a AzureAD|[NuGet](https://www.nuget.org/packages/Microsoft.Owin.Security.ActiveDirectory/) |[GitHubon](https://github.com/aspnet/AspNetKatana/tree/dev/src/Microsoft.Owin.Security.ActiveDirectory) |[MVC App](https://docs.microsoft.com/azure/active-directory/active-directory-devquickstarts-webapp-dotnet) | |
+| .NET |OWIN a OpenIDConnect |[NuGet](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect) |[GitHubon](https://github.com/aspnet/AspNetKatana/tree/dev/src/Microsoft.Owin.Security.OpenIdConnect) |[Webalkalmazás](https://github.com/AzureADSamples/WebApp-OpenIDConnect-DotNet) | |
+| .NET |A WS-Federation OWIN |[NuGet](https://www.nuget.org/packages/Microsoft.Owin.Security.WsFederation) |[GitHubon](https://github.com/aspnet/AspNetKatana/tree/dev/src/Microsoft.Owin.Security.WsFederation) |[MVC Web App](https://github.com/AzureADSamples/WebApp-WSFederation-DotNet) | |
+| .NET |A .NET 4,5 azonosító protokoll bővítményei |[NuGet](https://www.nuget.org/packages/Microsoft.IdentityModel.Protocol.Extensions) |[GitHubon](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) | | |
+| .NET |JWT kezelő a .NET 4,5-hez |[NuGet](https://www.nuget.org/packages/System.IdentityModel.Tokens.Jwt) |[GitHubon](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) | | |
+| Node.js |Azure AD Passport |[npm](https://www.npmjs.com/package/passport-azure-ad) |[GitHubon](https://github.com/AzureAD/passport-azure-ad) | [Webes API](https://docs.microsoft.com/azure/active-directory/active-directory-devquickstarts-webapi-nodejs)| |
 
 ## <a name="scenarios"></a>Forgatókönyvek
 
-Itt három általános forgatókönyv ügyfél, amely egy távoli erőforráshoz fér hozzá az adal-t a következők:
+Íme három gyakori forgatókönyv a ADAL használatához egy távoli erőforráshoz hozzáférő ügyfélen:
 
-### <a name="authenticating-users-of-a-native-client-application-running-on-a-device"></a>Egy natív ügyfélalkalmazás olyan eszközön fut, a felhasználók hitelesítése
+### <a name="authenticating-users-of-a-native-client-application-running-on-a-device"></a>Eszközön futó natív ügyfélalkalmazás felhasználóinak hitelesítése
 
-Ebben a forgatókönyvben egy fejlesztői mobilügyfél vagy asztali alkalmazás, el kell érnie a távoli erőforrás, például a webes API-k rendelkezik. A webes API-k nem engedélyezi a névtelen hívásokat, és a egy hitelesített felhasználó kontextusában kell meghívni. A webes API egy adott által kiállított hozzáférési jogkivonatok megbízható előre konfigurálva az Azure AD-bérlővel. Az Azure AD egy előre konfigurált meghatározott hozzáférési jogkivonatok kiállításához. Az ügyfél a webes API meghívásához, a fejlesztői használja az adal-t megkönnyítése érdekében az Azure AD-hitelesítés. A legbiztonságosabb adal-t használó módja, hogy a felhasználói felület (a böngésző ablakát, megjelenített) felhasználói hitelesítő adatok gyűjtésére szolgáló jelennek meg.
+Ebben az esetben a fejlesztőnek olyan mobil ügyfél-vagy asztali alkalmazásra van szüksége, amelynek hozzá kell férnie egy távoli erőforráshoz, például egy webes API-hoz. A webes API nem engedélyezi a névtelen hívásokat, és a nevet hitelesített felhasználó kontextusában kell meghívni. A webes API előre konfigurálva van, hogy megbízzon egy adott Azure AD-bérlő által kiadott hozzáférési jogkivonatokban. Az Azure AD előre konfigurálva van, hogy kiadja az adott erőforráshoz tartozó hozzáférési jogkivonatokat. A webes API-nak az ügyféltől való meghívásához a fejlesztő a ADAL használatával könnyíti meg az Azure AD-vel való hitelesítést. A ADAL használatának legbiztonságosabb módja az, hogy a felhasználói felületet a felhasználói hitelesítő adatok összegyűjtésére használja (ez a böngészőablakban jelenik meg).
 
-Adal-t egyszerűen hitelesíteni a felhasználót, egy hozzáférési jogkivonatot, és a frissítési jogkivonat beszerzése az Azure ad-ből, és ezután hívja meg a webes API-t a hozzáférési jogkivonat.
+A ADAL megkönnyíti a felhasználó hitelesítését, hozzáférési jogkivonat beszerzését és frissítési tokent az Azure AD-ből, majd a hozzáférési jogkivonat használatával meghívja a webes API-t.
 
-A kódminta azt mutatja be, ebben a forgatókönyvben az Azure AD-hitelesítés használatával, lásd: [natív ügyfél WPF alkalmazás webes API-nak](https://github.com/azureadsamples/nativeclient-dotnet).
+Az Azure AD-hitelesítéssel ezt a forgatókönyvet bemutató mintakód: [natív ÜGYFÉLOLDALI WPF-alkalmazás a webes API-hoz](https://github.com/azureadsamples/nativeclient-dotnet).
 
-### <a name="authenticating-a-confidential-client-application-running-on-a-web-server"></a>Egy webkiszolgálón futó bizalmas ügyfélalkalmazás hitelesítése
+### <a name="authenticating-a-confidential-client-application-running-on-a-web-server"></a>Webkiszolgálón futó bizalmas ügyfélalkalmazás hitelesítése
 
-Ebben a forgatókönyvben egy fejlesztői rendelkezik, amely a távoli erőforrás, például a webes API-k hozzáférésre van szüksége a kiszolgálón futó alkalmazásokhoz. A webes API-t nem engedélyezi a névtelen hív meg, így a jogosult szolgáltatás kell meghívni. A webes API egy adott által kiállított hozzáférési jogkivonatok megbízható előre konfigurálva az Azure AD-bérlővel. Az Azure AD egy előre konfigurált egy szolgáltatás hozzáférési jogkivonatok az adott erőforráshoz kiadására (ügyfél-azonosítója és kulcsa) ügyfél-hitelesítő adatokkal. Adal-t elősegíti a hitelesítést a szolgáltatás az Azure AD vissza, amely a webes API meghívásához használható hozzáférési jogkivonat. Adal-t is kezeli a gyorsítótárazás, és szükség szerint megújítása, a hozzáférési jogkivonat élettartama kezelését. A kódminta azt mutatja be, ebben a forgatókönyvben, lásd: [démon konzol webes API-alkalmazás](https://github.com/AzureADSamples/Daemon-DotNet).
+Ebben az esetben a fejlesztőnek egy olyan kiszolgálón futó alkalmazásnak kell futnia, amely egy távoli erőforráshoz, például egy webes API-hoz férhet hozzá. A webes API nem engedélyezi a névtelen hívásokat, ezért egy engedélyezett szolgáltatásból kell hívni. A webes API előre konfigurálva van, hogy megbízzon egy adott Azure AD-bérlő által kiadott hozzáférési jogkivonatokban. Az Azure AD előre konfigurálva van, hogy kiadja az adott erőforráshoz tartozó hozzáférési jogkivonatokat az ügyfél hitelesítő adataival (ügyfél-AZONOSÍTÓval és titkos kulccsal). A ADAL megkönnyíti a szolgáltatás hitelesítését az Azure AD-ben, amely a webes API meghívásához használható hozzáférési tokent AD vissza. A ADAL a hozzáférési token élettartamának kezelését is kezeli a gyorsítótárazással, és szükség szerint megújítja azt. A forgatókönyvet bemutató mintakód: [Daemon Console Application to web API](https://github.com/AzureADSamples/Daemon-DotNet).
 
-### <a name="authenticating-a-confidential-client-application-running-on-a-server-on-behalf-of-a-user"></a>A kiszolgáló egy felhasználó nevében futó bizalmas ügyfélalkalmazás hitelesítése
+### <a name="authenticating-a-confidential-client-application-running-on-a-server-on-behalf-of-a-user"></a>Kiszolgálón futó bizalmas ügyfélalkalmazás hitelesítése egy felhasználó nevében
 
-Ebben a forgatókönyvben egy fejlesztői rendelkezik egy olyan kiszolgálóra, amely a távoli erőforrás, például a webes API-k hozzáférésre van szüksége a futó webalkalmazás. A webes API-k nem engedélyezi a névtelen hívások, így egy jogosult szolgáltatás egy hitelesített felhasználó nevében kell meghívni. A webes API-k előre konfigurálva egy adott Azure AD által kiállított hozzáférési jogkivonatok megbízik, és az Azure AD bérlő előre konfigurálva adott erőforrásra vonatkozó hozzáférési jogkivonatainak kiadni egy szolgáltatás ügyfél-hitelesítő adatokkal. A webes alkalmazás a felhasználó hitelesítését követően az alkalmazás képes egy hozzáférési kód lekérése a felhasználó Azure AD-ből. A webes alkalmazás adal-t a hozzáférési jogkivonat beszerzésére és a frissítési jogkivonat egy engedélyezési kód és az ügyfél hitelesítő adatok használatával az Azure ad-ből az alkalmazáshoz társított felhasználó nevében használhatja. Ha a webes alkalmazásba a hozzáférési jogkivonat birtokában van, meghívhatja a webes API mindaddig, amíg a jogkivonat lejár. A jogkivonat lejár, a webes alkalmazás adal-t egy új hozzáférési jogkivonatot beszerezni a a frissítési jogkivonat korábban fogadott használhat. A kódminta azt mutatja be, ebben a forgatókönyvben, lásd: [webes API-nak a webes API a natív ügyfél](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof).
+Ebben az esetben a fejlesztőnek olyan kiszolgálón futó webalkalmazása van, amely egy távoli erőforráshoz, például egy webes API-hoz férhet hozzá. A webes API nem engedélyezi a névtelen hívásokat, ezért a hitelesített felhasználó nevében egy engedélyezett szolgáltatásból kell meghívni. A webes API előre konfigurálva van egy adott Azure AD-bérlő által kiadott hozzáférési jogkivonatok megbízhatóságára, és az Azure AD előre konfigurálva van ahhoz, hogy az adott erőforráshoz hozzáférési jogkivonatokat bocsásson ki egy, az ügyfél hitelesítő adatait tartalmazó szolgáltatáshoz. Miután a felhasználó hitelesítése megtörtént a webalkalmazásban, az alkalmazás megkapja az Azure AD-ben a felhasználóhoz tartozó engedélyezési kódot. A webalkalmazás ezután a ADAL használatával beszerezhet egy hozzáférési jogkivonatot és frissítési jogkivonatot a felhasználó nevében az Azure AD-ből az alkalmazáshoz társított engedélyezési kóddal és ügyfél-hitelesítő adatokkal. Ha a webalkalmazás a hozzáférési jogkivonat birtokában van, akkor a jogkivonat lejárata után meghívhatja a webes API-t. Ha a jogkivonat lejár, a webalkalmazás a ADAL használatával új hozzáférési jogkivonatot kérhet le a korábban kapott frissítési jogkivonat használatával. A forgatókönyvet bemutató mintakód esetében tekintse meg a [natív ügyfél webes API-hoz webes API-hoz](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof)című témakört.
 
 ## <a name="see-also"></a>Lásd még:
 
-- [Az Azure Active Directory fejlesztői útmutatója](v1-overview.md)
-- [Hitelesítési forgatókönyvek az Azure Active Directoryval](authentication-scenarios.md)
-- [Az Azure Active Directory-Kódminták](sample-v1-code.md)
+- [A Azure Active Directory fejlesztői útmutatója](v1-overview.md)
+- [Az Azure Active Directory hitelesítési forgatókönyvei](authentication-scenarios.md)
+- [Azure Active Directory kód mintái](sample-v1-code.md)

@@ -1,6 +1,6 @@
 ---
-title: Horizontális felskálázás az Azure SQL Database |} A Microsoft Docs
-description: A felhőben, ezek az eszközök az Saas-fejlesztők számára nyújtanak a szoftverek rugalmas, skálázható adatbázisok könnyedén hozhat létre
+title: Horizontális felskálázás Azure SQL Databasesal | Microsoft Docs
+description: A szolgáltatott szoftver (SaaS) fejlesztők könnyedén hozhatnak létre rugalmas, méretezhető adatbázisokat a felhőben ezen eszközök használatával
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -10,88 +10,87 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 9f61748a489987bf6c3f38e8ebfdab660198e10a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e5ae56b2050243831f10863bbb4184a9e89f5911
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463021"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568401"
 ---
 # <a name="scaling-out-with-azure-sql-database"></a>Scaling out with Azure SQL Database (Horizontális felskálázás az Azure SQL Database segítségével)
-Könnyedén horizontális felskálázása az Azure SQL-adatbázisok használatával a **Elastic Database** eszközök. Az eszközök és a szolgáltatások lehetővé teszik az adatbázis-erőforrások használata **Azure SQL Database** megoldásokat a tranzakciós munkaterhelések kezelésére, és különösen a szoftverek, mint a szoftverszolgáltatások (SaaS) alkalmazások. Rugalmas adatbázis-szolgáltatások alkotják a:
+Az Azure SQL Database-adatbázisok egyszerűen felméretezhetők a **Elastic Database** eszközök használatával. Ezek az eszközök és szolgáltatások lehetővé teszik a **Azure SQL Database** adatbázis-erőforrásainak használatát a tranzakciós számítási feladatokhoz és különösen a szolgáltatott szoftverekhez (SaaS) készült megoldások létrehozásához. Elastic Database szolgáltatások a következőkből állnak:
 
-* [Elastic Database-ügyfélkódtár](sql-database-elastic-database-client-library.md): Az ügyféloldali kódtár funkciója, amely lehetővé teszi, szilánkokra osztott adatbázisok létrehozásához és kezeléséhez.  Lásd: [Ismerkedés az Elastic Database-eszközök](sql-database-elastic-scale-get-started.md).
-* [Elastic Database felosztási-egyesítési eszközének](sql-database-elastic-scale-overview-split-and-merge.md): szilánkokra osztott adatbázisok között helyez át adatokat. Ez az eszköz számára, amely adatokat helyez át egy több-bérlős adatbázis egy egybérlős adatbázis (vagy fordítva) hasznos. Lásd: [Elastic database felosztási-egyesítési eszközzel oktatóanyag](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
-* [Elastic Database-feladatok](sql-database-elastic-jobs-overview.md) (előzetes verzió): Feladatok használata kezelheti az Azure SQL Database-adatbázisok nagy számú. Könnyen elvégezhet olyan adminisztratív műveleteket, például sémamódosításokat, hitelesítő adatok kezelése, referenciaadatok frissítése, teljesítményadat-gyűjtés vagy bérlő (ügyfél) eszköztelemetria-gyűjtést feladatok használatával.
-* [Elastic Database-lekérdezés](sql-database-elastic-query-overview.md) (előzetes verzió): Lehetővé teszi a több adatbázisra kiterjedő Transact-SQL-lekérdezés futtatásához. Ez lehetővé teszi a jelentéskészítő eszközökkel, például az Excel, a Power BI, Tableau kapcsolatot.
-* [Rugalmas tranzakciók](sql-database-elastic-transactions-overview.md): Ez a funkció lehetővé teszi a tranzakciók, amelyek az Azure SQL Database adatbázisok futtatását. Rugalmas adatbázis-tranzakciók forrásoszlopokat használó .NET-alkalmazások érhetők el, valamint integrálhatja a szolgáltatást a megszokott programozási felület használatával a [System.Transaction osztályok](https://msdn.microsoft.com/library/system.transactions.aspx).
+* [Elastic Database ügyféloldali kódtár](sql-database-elastic-database-client-library.md): Az ügyféloldali kódtár egy olyan szolgáltatás, amely lehetővé teszi a szilánkokra osztott adatbázisok létrehozását és karbantartását.  Lásd: [Elastic Database-eszközök első lépései](sql-database-elastic-scale-get-started.md).
+* [Elastic Database felosztási-egyesítési eszköz](sql-database-elastic-scale-overview-split-and-merge.md): áthelyezi az adatátvitelt a felosztott adatbázisok között. Ez az eszköz akkor hasznos, ha egy több-bérlős adatbázisból egy egybérlős adatbázisba helyezi át az adatáthelyezést (vagy fordítva). Lásd: [rugalmas adatbázis felosztása – egyesítési eszköz oktatóanyaga](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
+* [Rugalmas adatbázis-feladatok](elastic-jobs-overview.md): Feladatok használata nagy számú Azure SQL-adatbázis kezeléséhez. Egyszerűen végezhet olyan adminisztratív műveleteket, mint a séma módosítása, a hitelesítő adatok kezelése, a hivatkozási adatok frissítései, a teljesítményadatok gyűjtése vagy a bérlő (ügyfél) telemetria-gyűjtemény a feladatok használatával.
+* [Elastic Database lekérdezés](sql-database-elastic-query-overview.md) (előzetes verzió): Lehetővé teszi, hogy olyan Transact-SQL-lekérdezést futtasson, amely több adatbázisra is kiterjed. Ez lehetővé teszi, hogy a rendszer olyan jelentéskészítő eszközöket létesítsen, mint például az Excel, a Power BI, a tabló stb.).
+* [Rugalmas tranzakciók](sql-database-elastic-transactions-overview.md): Ez a funkció lehetővé teszi, hogy olyan tranzakciókat futtasson, amelyek a Azure SQL Database több adatbázisára is kiterjednek. A rugalmas adatbázis-tranzakciók az ADO .NET-et használó .NET-alkalmazások számára érhetők el, és az ismerős programozási felülettel integrálhatók a [System. Transaction osztályok](https://msdn.microsoft.com/library/system.transactions.aspx)használatával.
 
-A következő ábrán látható egy olyan architektúra, amely tartalmazza a **rugalmas adatbázis-funkciók** egy adatbázis-gyűjtemény viszonyítva.
+Az alábbi ábra egy olyan architektúrát mutat be, amely tartalmazza az adatbázisok gyűjteményéhez kapcsolódó **Elastic Database funkciókat** .
 
-Az ábrán az adatbázis színek sémák képviseli. Megegyező színre az adatbázisok közösen használják a ugyanazzal a sémával.
+Ebben a grafikában az adatbázis színei a sémákat jelölik. Azonos színnel rendelkező adatbázisok ugyanazt a sémát használják.
 
-1. Egy **Azure SQL Database-adatbázisok** horizontális skálázási architektúra használatával Azure-ban üzemel.
-2. A **Elastic Database-ügyfélkódtár** szegmens kezelésére szolgál.
-3. Az adatbázisok egy részét a rendszer elhelyezi egy **rugalmas készlet**. (Lásd: [Mi a készlet?](sql-database-elastic-pool.md)).
-4. Egy **rugalmas adatbázis-feladatok** ütemezett és alkalmi T-SQL parancsfájlt futtat minden adatbázisokhoz.
-5. A **felosztási-egyesítési eszközének** adatok áthelyezése egyik adatszilánkba író másik szolgál.
-6. A **Elastic Database-lekérdezés** írhat egy lekérdezést, amely átnyúlik a szilánkleképezés-készlet összes adatbázisa.
-7. **Rugalmas tranzakciók** lehetővé teszik a számos adatbázist átfogó tranzakciókat futtatni. 
+1. Az Azure **SQL Database-adatbázisok** horizontális Felskálázási architektúra használatával futnak az Azure-ban.
+2. A **Elastic Database ügyféloldali kódtár** használatával kezelhetők a szegmensek.
+3. Az adatbázisok egy részhalmaza **rugalmas készletbe**kerül. (Lásd: [Mi az a készlet?](sql-database-elastic-pool.md)).
+4. Az **Elastic Database feladatok** ütemezett vagy ad hoc T-SQL-parancsfájlokat futtatnak az összes adatbázison.
+5. A **felosztott egyesítés eszköz** az adatok egyik szegmensből egy másikba való áthelyezésére szolgál.
+6. A **Elastic Database lekérdezés** lehetővé teszi egy olyan lekérdezés írását, amely az összes adatbázisra kiterjed a szegmens készletében.
+7. A **rugalmas tranzakciók** lehetővé teszik, hogy több adatbázisra kiterjedő tranzakciókat futtasson. 
 
 ![Rugalmasadatbázis-eszközök][1]
 
-## <a name="why-use-the-tools"></a>Miért érdemes használni az eszközök?
-Virtuális gépek és a blob storage egyszerű jövedelmezőbb munkát tesznek lehetővé a rugalmasság és a méretezési csoport a felhőalapú alkalmazásokhoz lett – egyszerűen hozzáadása vagy kivonása egységek, vagy növelje power. De a relációs adatbázisok állapot-nyilvántartó adatkezelési kihívást maradt. Kihívások kiderült, a következő használati helyzetekben:
+## <a name="why-use-the-tools"></a>Miért érdemes használni az eszközöket?
+A rugalmasság és a méretezés a felhőalapú alkalmazásokhoz egyszerű a virtuális gépek és a blob Storage számára – egyszerűen hozzáadhat vagy kivonja az egységeket, vagy növelheti a teljesítményt. Azonban továbbra is kihívást jelent az állapot-nyilvántartó adatfeldolgozáshoz a kapcsolódó adatbázisokban. A következő helyzetekben felmerülő kihívások:
 
-* Növekvő, és zsugorításának a relációs adatbázis része a számítási kapacitást.
-* Előfordulhat, hogy ez hatással lenne az adatok – például egy foglalt végfelhasználói (bérlő) egy adott részét felmerülő elérési pontokhoz történő kezelése.
+* A számítási feladathoz tartozó kapcsolati adatbázis részének növekvő és csökkenő kapacitása.
+* Olyan elérési pontok kezelése, amelyek felmerülhetnek az adathalmazok (például a foglalt végfelhasználók) számára.
 
-Hagyományosan az alábbiakhoz hasonló forgatókönyveket rendelkezik emlegetett processzorsebezhetőségről infrastruktúrán végezhetjük nagyobb méretű adatbázist az alkalmazása támogatásához. Azonban ez a beállítás korlátozza a felhőben, ahol az összes feldolgozása történik, előre meghatározott hardvereken. Ehelyett adatok terjesztése, és számos azonos módon strukturált adatbázis között (a horizontális méretezési módszer "horizontális skálázási" néven ismert) egy költséget és rugalmasságára épülő osztályé, mind a hagyományos vertikális felskálázás megközelítések alternatívát kínál.
+A fentiekhez hasonló forgatókönyvek a nagy léptékű adatbázis-kiszolgálók befektetésével foglalkoznak, amelyek támogatják az alkalmazást. Ez a beállítás azonban korlátozott a felhőben, ahol az összes feldolgozás az előre definiált termék hardverén történik. Ehelyett az adatelosztást és a feldolgozást számos azonos módon strukturált adatbázison (a "horizontális felskálázás" néven ismert kibővített mintázat) a hagyományos horizontális Felskálázási megközelítések helyett a Cost és a rugalmasság szempontjából is.
 
-## <a name="horizontal-and-vertical-scaling"></a>Vízszintes és függőleges skálázás
-A következő ábrán látható, a vízszintes és függőleges dimenziók méretezését, amely az alapvető módon, a rugalmas adatbázisok skálázhatók.
+## <a name="horizontal-and-vertical-scaling"></a>Horizontális és vertikális skálázás
+Az alábbi ábra a skálázás horizontális és vertikális dimenzióit mutatja be, amelyek a rugalmas adatbázisok méretezésének alapvető módjai.
 
-![Vízszintes és függőleges horizontális felskálázás][2]
+![Vízszintes és vertikális felskálázás][2]
 
-Horizontális skálázás hozzáadásával vagy eltávolításával adatbázisok annak érdekében, hogy módosítsa a kapacitás vagy a teljes teljesítményt, más néven a "méretezés" hivatkozik. Horizontális skálázási, amelyben adatok particionálása több azonos módon strukturált adatbázisok gyűjteménye gyakori módja a horizontális skálázás végrehajtására.  
+A horizontális skálázás az adatbázisok hozzáadását vagy eltávolítását jelenti a kapacitás vagy az általános teljesítmény módosításához, más néven "horizontális felskálázás". A horizontális skálázás megvalósításának egyik gyakori módja, hogy az adategységek az azonos strukturált adatbázisok gyűjteménye között particionálva legyenek.  
 
-Vertikális skálázás hivatkozik növelésével vagy csökkentésével az egyes adatbázisok számítási mérete, más néven "vertikális felskálázása."
+A vertikális skálázás egy különálló adatbázis számítási méretének növelésére vagy csökkentésére utal, más néven "felskálázás".
 
-A legtöbb felhőalapú adatbázis-alkalmazások ezen két stratégia szerint kombinációját használják. Például egy szoftver alkalmazás használatával új végfelhasználókat kiépítése horizontális skálázást, és a vertikális skálázás lehetővé teszi minden végfelhasználói adatbázisnak megnöveljék vagy csökkentsék a erőforrások által a számítási feladatok igény szerint.
+A legtöbb felhőalapú adatbázis-alkalmazás a két stratégia kombinációját használja. Előfordulhat például, hogy egy szoftver, mint egy szolgáltatásalkalmazás horizontális skálázást használ az új végfelhasználók és vertikális skálázás kiépítéséhez, hogy az egyes végfelhasználói adatbázisok a munkaterhelésnek megfelelően növelje vagy csökkentik az erőforrásokat.
 
-* Horizontális skálázás kezelhetők a [Elastic Database-ügyfélkódtár](sql-database-elastic-database-client-library.md).
-* Függőleges méretezés valósítható meg a szolgáltatásszint módosítása Azure PowerShell-parancsmagok használatával vagy a rugalmas készletben található adatbázisok való elhelyezésével.
+* A horizontális skálázás a [Elastic Database ügyféloldali kódtár](sql-database-elastic-database-client-library.md)használatával felügyelhető.
+* A vertikális skálázás Azure PowerShell parancsmagok segítségével módosítható a szolgáltatási szint módosításához, vagy egy rugalmas készletbe helyezi az adatbázisokat.
 
 ## <a name="sharding"></a>Sharding
-*A horizontális skálázás* technika, azonos módon strukturált adatok nagy mennyiségű szét egy önálló adatbázisok száma. Általában különösen a fejlesztők számára hoz létre szoftverek, a szolgáltatás (SAAS-) ajánlatok kisvállalkozások vagy a végfelhasználók számára. Ezek a végfelhasználókat gyakran "bérlőkkel" nevezik. A horizontális skálázás szükséges bármely számos oka lehet:  
+A horizontális skálázás olyan technika, amellyel nagy mennyiségű, egymástól független adatbázisba tartozó strukturált adategység terjeszthető ki. Ez különösen népszerű a felhőalapú fejlesztők számára a végfelhasználók és a vállalkozások számára szolgáltatott szoftver-(SAAS-) ajánlatok létrehozásához. Ezeket a végfelhasználókat gyakran "bérlőknek" nevezzük. A horizontális skálázás tetszőleges számú okból szükséges lehet:  
 
-* Adatok teljes mennyisége túl nagy ahhoz, hogy az egyes adatbázisok megkötései belül
-* A teljes számítási feladatnak tranzakciós átviteli kapacitást meghaladja az egyes adatbázisok képességeiről
-* Bérlők lehet szükség a fizikai elkülönítését egymástól, így külön adatbázis szükséges ahhoz, hogy minden bérlő
-* Adatbázis különböző szakaszaiban található különböző földrajzi megfelelőség, a teljesítmény vagy a geopolitikai okokból szükségessé.
+* A teljes adatmennyiség túl nagy ahhoz, hogy az egyes adatbázisok korlátain belül elfér
+* A teljes munkaterhelés tranzakciós sebessége meghaladja az egyes adatbázisok képességeit
+* A bérlők fizikai elkülönítést igényelhetnek egymástól, ezért külön adatbázisokra van szükség az egyes bérlők számára
+* Előfordulhat, hogy az adatbázisok különböző részeinek a megfelelőség, a teljesítmény vagy a geopolitikai okokból különböző földrajzi területeken kell lenniük.
 
-Más esetekben az Adatbetöltési elosztott eszközökről származó adatok, például a horizontális skálázás segítségével töltse ki az adatbázis, amely ideiglenesen vannak rendszerezve. Például egy különálló adatbázist dedikálhatja minden nap vagy hét folyamán. Ebben az esetben a horizontális skálázási kulcs (a horizontálisan particionált tábla összes sora szerepel) dátumot jelölő egész szám lehet, és a egy dátumtartomány adatainak lekérése lekérdezéseket át kell irányítani a következő részhalmazt a szóban forgó tartomány lefedő adatbázisok az alkalmazás által.
+Más helyzetekben, például az elosztott eszközök adatainak betöltéséhez a horizontális felskálázással lehet kitölteni egy időben szervezett adatbázisok készletét. Egy külön adatbázis például minden nap vagy hét számára kiválasztható. Ebben az esetben a horizontális Felskálázási kulcs lehet egy egész szám, amely a dátumot jelöli (a szétválasztott táblák összes sorában szerepel), és a dátumtartomány adatait lekérő lekérdezéseket az alkalmazásnak kell átirányítani az adott tartományra kiterjedő adatbázisok részhalmazára.
 
-A horizontális skálázás akkor működik a legjobban, ha az alkalmazások minden egyes tranzakciót korlátozható egy horizontális skálázási kulcs egyetlen értéket. Amely biztosítja, hogy az összes tranzakció helyi egy adott adatbázisban.
+A horizontális skálázás akkor működik a legjobban, ha egy alkalmazás minden tranzakciója egy horizontális Felskálázási kulcs egyetlen értékére korlátozódik. Ez biztosítja, hogy az összes tranzakció egy adott adatbázishoz legyen helyi.
 
 ## <a name="multi-tenant-and-single-tenant"></a>Több-bérlős és egybérlős
-Egyes alkalmazások használata a legegyszerűbb megközelítés, egy önálló adatbázis létrehozása az egyes bérlők számára. Ez a megközelítés a **egybérlős horizontális skálázási minta** elkülönítés, biztonsági mentési és visszaállítási lehetőség és a bérlő részletességgel méretezése resource biztosít. Egyetlen bérlő horizontális skálázási minden adatbázisnak társítva egy adott bérlővel azonosítóérték (vagy a kulcs értéket), de a kulcs nem minden esetben kell magát az adatok tartalmazzák. Az alkalmazás feladata, hogy egyes kérelmek átirányítása a megfelelő adatbázis - és az ügyféloldali kódtár Ez egyszerűbbé teheti.
+Egyes alkalmazások a legegyszerűbb megközelítést használják az egyes bérlők külön adatbázisának létrehozásához. Ez a megközelítés az **egyetlen bérlői** horizontális Felskálázási minta, amely elkülönítést, biztonsági mentési/visszaállítási képességet és erőforrás-méretezést biztosít a bérlő részletessége érdekében. Az egybérlős horizontális felskálázással minden adatbázis egy adott bérlői azonosító értékkel (vagy az ügyfél kulcsának értékével) van társítva, de a kulcsnak nem kell mindig az adataiban lennie. Az alkalmazás feladata, hogy az egyes kérelmeket a megfelelő adatbázishoz irányítsa, és az ügyféloldali kódtár egyszerűsítse ezt.
 
-![Egybérlős és több-bérlős][4]
+![Egyetlen bérlő és több-bérlő][4]
 
-Más forgatókönyvek csomag több bérlő együtt az adatbázisok ahelyett, hogy az önálló adatbázisok elszigetelése őket. Ez a minta akkor tipikus **több-bérlős horizontális skálázási minta** - és vezethetik azt a tényt, hogy egy alkalmazás kezeli a nagy számú kis méretű bérlővel. A több-bérlős horizontális skálázás a sorok az adatbázistáblák összes tervezték, hogy egy kulcs, amely azonosítja a bérlő Azonosítóját vagy a szegmenskulcs megfelelő megválasztása. Ismét az alkalmazásrétegek felelős a bérlőkéréssel útválasztás a megfelelő adatbázishoz, és ez az elastic database-ügyfélkódtár támogatnak. Emellett a sorszintű biztonság használható-e a szűrő mely sorai minden bérlő hozzáférhet – részletekért lásd: [az elastic database-eszközökkel és a sorszintű biztonság több-bérlős alkalmazások](sql-database-elastic-tools-multi-tenant-row-level-security.md). Verziójának terjesztése adatbázisok között olyan adatokat is szükség lehet a több-bérlős horizontális skálázási minta a, és az elastic database felosztási-egyesítési eszközének megkönnyíthető. A rugalmas készleteket használó SaaS-alkalmazások szerkezeti kialakításainak alaposabb megismeréséhez olvassa el a [Tervminták több-bérlős SaaS-alkalmazásokhoz Azure SQL Database esetén](sql-database-design-patterns-multi-tenancy-saas-applications.md) című részt.
+Más forgatókönyvek esetén több bérlőt is becsomagolhat adatbázisokba, és nem kell külön adatbázisba elkülöníteni őket. Ez a minta egy tipikus, **több-bérlős** horizontális Felskálázási minta, és az is előfordulhat, hogy egy alkalmazás nagy számú kis bérlőt kezel. A több-bérlős szegmensekben az adatbázistábla sorai úgy vannak kialakítva, hogy a bérlői azonosítót vagy a horizontális kulcsot azonosító kulcsot használják. Ismét az alkalmazási szinten a bérlői kérésnek a megfelelő adatbázishoz való irányítása felelős, és ezt a rugalmas adatbázis ügyféloldali könyvtára is támogatja. Emellett a soros szintű biztonság használatával szűrheti, hogy az egyes bérlők milyen sorokhoz férhetnek hozzá – részletekért lásd: [több-bérlős alkalmazások rugalmas adatbázis-eszközökkel és a sorok szintjének biztonsága](sql-database-elastic-tools-multi-tenant-row-level-security.md). A több-bérlős horizontális Felskálázási minta segítségével szükség lehet az adatbázisok adatbázisok közötti újraterjesztésére. A rugalmas készleteket használó SaaS-alkalmazások szerkezeti kialakításainak alaposabb megismeréséhez olvassa el a [Tervminták több-bérlős SaaS-alkalmazásokhoz Azure SQL Database esetén](sql-database-design-patterns-multi-tenancy-saas-applications.md) című részt.
 
-### <a name="move-data-from-multiple-to-single-tenancy-databases"></a>Adatok áthelyezése több single-bérlős adatbázis
-Egy SaaS-alkalmazás létrehozása, esetén általában az ajánlat leendő ügyfelek a szoftver próbaverzióját. Ebben az esetben egy több-bérlős adatbázis használata az adatok költséghatékony. Azonban amikor egy potenciális vevő ügyfél, egy egybérlős adatbázis célszerűbb óta jobb teljesítményt biztosít. Ha az ügyfél adatainak hozta létre a próbaidőszak alatt, használja a [felosztási-egyesítési eszközének](sql-database-elastic-scale-overview-split-and-merge.md) a több-bérlős az adatok áthelyezése az új egybérlős adatbázis.
+### <a name="move-data-from-multiple-to-single-tenancy-databases"></a>Adatok áthelyezése többről egybérlős adatbázisokba
+SaaS-alkalmazások létrehozásakor jellemző, hogy a leendő ügyfelek számára a szoftver próbaverzióját kínálja. Ebben az esetben költséghatékony, ha több-bérlős adatbázist használ az adatkezeléshez. Ha azonban az ügyfél válik elérhetővé, akkor egy egybérlős adatbázis jobb, mivel jobb teljesítményt nyújt. Ha az ügyfél a próbaidőszak alatt hozta létre az adatait, a [Split-Merge eszközzel](sql-database-elastic-scale-overview-split-and-merge.md) helyezheti át a több-bérlő adatait az új egybérlős adatbázisba.
 
 ## <a name="next-steps"></a>További lépések
-Egy mintaalkalmazást, amely az ügyféloldali kódtár, lásd: [Ismerkedés az Elastic Database-eszközök](sql-database-elastic-scale-get-started.md).
+Az ügyféloldali függvénytárat bemutató minta alkalmazáshoz lásd: Ismerkedés [a Elastic Database eszközökkel](sql-database-elastic-scale-get-started.md).
 
-Eszközök használata a meglévő adatbázisok konvertálása, lásd: [horizontális felskálázási meglévő adatbázisok Migrálása](sql-database-elastic-convert-to-use-elastic-tools.md).
+Ha a meglévő adatbázisokat az eszközök használatára szeretné átalakítani, tekintse meg a [meglévő adatbázisok](sql-database-elastic-convert-to-use-elastic-tools.md)áttelepítésének felskálázását ismertető témakört.
 
-A rugalmas készlet tulajdonságairól, olvassa el [rugalmas készletek ára és teljesítménye szempontok](sql-database-elastic-pool.md), vagy hozzon létre egy új készletet a [rugalmas készletek](sql-database-elastic-pool-manage-portal.md).  
+A rugalmas készletre vonatkozó részletek megtekintéséhez tekintse meg a [rugalmas készlet árának és teljesítményével kapcsolatos szempontokat](sql-database-elastic-pool.md), vagy hozzon létre egy [rugalmas](sql-database-elastic-pool-manage-portal.md)készletekkel rendelkező új készletet.  
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

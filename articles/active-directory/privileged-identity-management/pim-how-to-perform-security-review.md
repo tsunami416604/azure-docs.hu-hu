@@ -1,9 +1,9 @@
 ---
-title: A saját Azure AD-szerepkörök hozzáférési felülvizsgálat végrehajtása az Azure Active Directory - a PIM |} A Microsoft Docs
-description: Ismerje meg, hogyan hajtsa végre az Azure AD-szerepkörök hozzáférési felülvizsgálat Azure AD Privileged Identity Management (PIM).
+title: Azure AD-szerepkörök hozzáférésének áttekintése a PIM-Azure Active Directoryban | Microsoft Docs
+description: Ismerje meg, hogyan tekintheti át az Azure AD-szerepkörök hozzáférését Azure AD Privileged Identity Management (PIM) alkalmazásban.
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -11,40 +11,41 @@ ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
 ms.date: 06/21/2018
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66f16e02716ceb94d2c8b10bb246a13dc566229c
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 3bd548041b086eef8d788a696497163c756fd5b7
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578312"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804426"
 ---
-# <a name="perform-an-access-review-of-my-azure-ad-roles-in-pim"></a>A PIM a saját Azure AD-szerepkörök hozzáférési felülvizsgálat végrehajtása
-Az Azure Active Directory (AD) Privileged Identity Management (PIM) egyszerűbbé teszi, hogy hogyan kezelhetik a vállalatok számára az erőforrások az Azure AD és más Microsoft online szolgáltatásaihoz, például az Office 365 vagy a Microsoft Intune emelt szintű hozzáférés.  
+# <a name="review-access-to-azure-ad-roles-in-pim"></a>Azure AD-szerepkörök hozzáférésének áttekintése a PIM-ben
 
-Ha egy rendszergazdai szerepkörrel vannak rendelve, a szervezet kiemelt szerepkörű rendszergazda megkérheti, hogy rendszeresen győződjön meg arról, hogy továbbra is szerepkörre van szüksége, hogy a feladatnak. Előfordulhat, hogy kap egy e-mailt, amelyben a hivatkozást, vagy megnyithatja közvetlenül a [az Azure portal](https://portal.azure.com). Kövesse a cikkben egy önálló tekintse át a hozzárendelt szerepkörök végrehajtásához.
+A Azure Active Directory (AD) Privileged Identity Management (PIM) leegyszerűsíti, hogy a vállalatok hogyan kezelhetik az Azure AD-ban és más Microsoft-online szolgáltatások, például az Office 365-ban vagy a-Microsoft Intune lévő erőforrásokhoz való  
 
-Ha Ön kiemelt szerepkörű rendszergazda vagy a globális rendszergazdai hozzáférési felülvizsgálatok iránt, a részletesebb információt kap a [hozzáférési felülvizsgálat indítása](pim-how-to-start-security-review.md).
+Ha rendszergazdai szerepkörhöz van rendelve, a szervezet Kiemelt szerepkörű rendszergazdája megkérheti, hogy rendszeresen erősítse meg, hogy továbbra is szüksége van erre a szerepkörre a feladathoz. Előfordulhat, hogy olyan e-mailt kap, amely hivatkozást tartalmaz, vagy közvetlenül a [Azure Portal](https://portal.azure.com). A cikk lépéseit követve végezze el a hozzárendelt szerepkörök önértékelését.
+
+Ha a hozzáférési felülvizsgálatok érdeklik a Kiemelt szerepkörű rendszergazda vagy a globális rendszergazda, akkor további részleteket tudhat meg a [hozzáférési felülvizsgálat elindításáról](pim-how-to-start-security-review.md).
 
 ## <a name="add-the-privileged-identity-management-application"></a>A Privileged Identity Management alkalmazás felvétele
-Használhatja az Azure AD Privileged Identity Management (PIM) alkalmazás a [az Azure portal](https://portal.azure.com/) a felülvizsgálat végrehajtása.  Ha a portálon az Azure AD Privileged Identity Management alkalmazás nem rendelkezik, kövesse az alábbi lépéseket a kezdéshez.
+A felülvizsgálat végrehajtásához használhatja a [Azure Portal](https://portal.azure.com/) Azure ad PRIVILEGED Identity Management (PIM) alkalmazást.  Ha nem rendelkezik a Azure AD Privileged Identity Management alkalmazással a portálon, kövesse az alábbi lépéseket a kezdéshez.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Kattintson a felhasználónevére a jobb felső sarkában az Azure Portalon, és válassza a könyvtárban, ahol Ön lesz működik.
+2. Válassza ki a felhasználónevet a Azure Portal jobb felső sarkában, és válassza ki azt a könyvtárat, ahol működni fog.
 3. Válassza a **Minden szolgáltatás** lehetőséget, és a Szűrő szövegmezővel keresse meg az **Azure AD Privileged Identity Management** elemet.
 4. Jelölje be a **Rögzítés az irányítópulton** jelölőnégyzetet, majd kattintson a **Létrehozás** gombra. Megnyílik a Privileged Identity Management alkalmazás.
 
-## <a name="approve-or-deny-access"></a>Jóváhagyja vagy megtagadja a hozzáférést
-Jóváhagyja vagy megtagadja a hozzáférést, akkor még csak mondanunk a felülvizsgáló e továbbra is használhatja ezt a szerepkört, vagy nem. Válasszon **jóváhagyás** Ha szeretne maradni a szerepkörhöz vagy **Megtagadás** Ha többé már nincs szüksége a hozzáférést. Az állapot a mindaddig, amíg a felülvizsgáló vonatkozik az eredmények azonnal, nem fognak változni.
-Kövesse az alábbi lépéseket, és a hozzáférési felülvizsgálat befejezése:
+## <a name="approve-or-deny-access"></a>Hozzáférés jóváhagyása vagy megtagadása
+Ha jóváhagyja vagy megtagadja a hozzáférést, csak azt közli a véleményezővel, hogy továbbra is használja-e ezt a szerepkört. Válassza a **jóváhagyás** lehetőséget, ha a szerepkörben szeretne maradni, **vagy ha** nem szeretné, hogy a hozzáférés többé nem szükséges. Az állapot azonnal nem változik, amíg a felülvizsgáló nem alkalmazza az eredményeket.
+Az alábbi lépéseket követve megkeresheti és elvégezheti a hozzáférési felülvizsgálatot:
 
-1. Válassza ki a PIM alkalmazásban **tekintse át a privilegizált hozzáférési jogosultsága**. Ha minden függőben lévő hozzáférési felülvizsgálatokat, azok megjelennek az Azure AD hozzáférési felülvizsgálatok panelen.
-2. Jelölje be a felülvizsgálatot befejezéséhez.
-3. Kivéve, ha a felülvizsgálat hozta létre, akkor a felülvizsgálati kizárólag egyetlen felhasználó tartalomként jelennek meg. Válassza ki a pipa jelre a neve mellett.
-4. Válasszon **jóváhagyása** vagy **megtagadása**. Szükség lehet a döntéseiben okát tartalmazza a **indokolja** szövegmezőben.  
-5. Zárja be a **tekintse át az Azure AD-szerepkörök** panelen.
+1. A PIM alkalmazásban válassza az emelt **szintű hozzáférés áttekintése**elemet. Ha rendelkezik függőben lévő hozzáférési felülvizsgálatokkal, azok megjelennek az Azure AD hozzáférési felülvizsgálatok paneljén.
+2. Válassza ki a végrehajtani kívánt felülvizsgálatot.
+3. Hacsak nem hozta létre a felülvizsgálatot, az egyetlen felhasználóként jelenik meg a felülvizsgálatban. Jelölje be a neve melletti pipa.
+4. Válassza a **jóváhagyás** vagy a **Megtagadás**lehetőséget. Előfordulhat, hogy a döntés okát is meg kell adnia az **indoklás** szövegmezőben.  
+5. Az **Azure ad-szerepkörök áttekintése** panel bezárásához.
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>További lépések

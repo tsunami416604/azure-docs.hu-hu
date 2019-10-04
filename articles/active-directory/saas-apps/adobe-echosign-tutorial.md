@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8942ebf3f006c2e1cc72b322dd243d46bf69f04d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bcb27e24e9b53b734a24304a63c8fd91d5e94f5d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57888127"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67107332"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-sign"></a>Oktatóanyag: Az Azure Active Directory integrációja az Adobe Sign
 
@@ -53,7 +53,7 @@ Az Azure AD-be az Adobe Sign integráció konfigurálásához, hozzá kell Adobe
 
 **Az Adobe Sign hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -128,7 +128,7 @@ Konfigurálja az Azure AD egyszeri bejelentkezés az Adobe Sign, hajtsa végre a
 
 ### <a name="configure-adobe-sign-single-sign-on"></a>Az Adobe Sign egyszeri bejelentkezés konfigurálása
 
-1. Mielőtt konfigurációs, lépjen kapcsolatba a [az Adobe Sign ügyfél-támogatási csapatának](https://helpx.adobe.com/in/contact/support.html) az engedélyezési listára saját tartományt az Adobe Sign az. Íme a tartomány hozzáadása:
+1. Mielőtt konfigurációs, lépjen kapcsolatba a [az Adobe Sign ügyfél-támogatási csapatának](https://helpx.adobe.com/in/contact/support.html) hozzáadása a saját tartományt az Adobe Sign az engedélyezési lista. Íme a tartomány hozzáadása:
 
     a. A [az Adobe Sign ügyfél-támogatási csapatának](https://helpx.adobe.com/in/contact/support.html) küld Önnek egy véletlenszerűen létrehozott tokent. A tartomány a jogkivonat az alábbihoz hasonló lesz: **adobe-bejelentkezés-ellenőrző = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx**
 

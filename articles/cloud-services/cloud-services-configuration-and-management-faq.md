@@ -1,158 +1,157 @@
 ---
-title: Konfigurálással és felügyelettel kapcsolatos problémák a Microsoft Azure Cloud Services – gyakori kérdések |} A Microsoft Docs
-description: Ez a cikk konfigurálása és kezelése a Microsoft Azure Cloud Services – gyakori kérdések listája.
+title: Konfigurációs és felügyeleti problémák a Microsoft Azure Cloud Services GYIK-ban | Microsoft Docs
+description: Ez a cikk a Microsoft Azure Cloud Services konfigurálásával és kezelésével kapcsolatos gyakori kérdéseket sorolja fel.
 services: cloud-services
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
 ms.service: cloud-services
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 85296b4549d7c9499b8d0b815ddf1cd2e85e2b1b
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 0c694ffe6ccd23803fbe16001f54b7c1611635cd
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259584"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154720"
 ---
-# <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Konfigurációs és felügyeleti problémák az Azure Cloud Services: Gyakori kérdések (GYIK)
+# <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Az Azure Cloud Services konfigurálásával és kezelésével kapcsolatos problémák: Gyakori kérdések (GYIK)
 
-Ez a cikk tartalmazza a konfigurációs és felügyeleti kapcsolatos problémák – gyakori kérdések [a Microsoft Azure Cloud Services](https://azure.microsoft.com/services/cloud-services). Is tud kezelni a [Cloud Services Virtuálisgép-méretet lapján](cloud-services-sizes-specs.md) mérete információt.
+Ez a cikk a [Microsoft Azure Cloud Services](https://azure.microsoft.com/services/cloud-services)konfigurálásával és kezelésével kapcsolatos gyakori kérdéseket tartalmazza. A mérettel kapcsolatos információkért tekintse meg a [Cloud Services virtuális gép mérete lapot](cloud-services-sizes-specs.md) .
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 **Tanúsítványok**
 
-- [Miért nem fejeződött be a tanúsítványlánc saját Felhőszolgáltatás SSL-tanúsítvány?](#why-is-the-certificate-chain-of-my-cloud-service-ssl-certificate-incomplete)
-- [Mire használható a "Windows Azure eszközök titkosítási tanúsítványt a Extensions"?](#what-is-the-purpose-of-the-windows-azure-tools-encryption-certificate-for-extensions)
-- [Hogyan tudok generálhatnak-tanúsítvány aláírási kérelem (CSR) nélkül "RDP-ing" a példányhoz?](#how-can-i-generate-a-certificate-signing-request-csr-without-rdp-ing-in-to-the-instance)
-- [A Cloud Service felügyeleti tanúsítvány lejár. Hogyan újíthatja meg?](#my-cloud-service-management-certificate-is-expiring-how-to-renew-it)
-- [Hogyan automatizálhatja az SSL-certificate(.pfx) fő és köztes certificate(.p7b) telepítését?](#how-to-automate-the-installation-of-main-ssl-certificatepfx-and-intermediate-certificatep7b)
-- [Mire használható a "Microsoft Azure Service Management for MachineKey" tanúsítvány?](#what-is-the-purpose-of-the-microsoft-azure-service-management-for-machinekey-certificate)
+- [Miért nem fejeződött be a Cloud Service SSL-tanúsítványának tanúsítványlánc?](#why-is-the-certificate-chain-of-my-cloud-service-ssl-certificate-incomplete)
+- [Mi a célja a "Windows Azure-eszközök titkosítási tanúsítványa bővítmények számára"?](#what-is-the-purpose-of-the-windows-azure-tools-encryption-certificate-for-extensions)
+- [Hogyan hozható elő tanúsítvány-aláírási kérelem (CSR) a példányban "RDP-ing" nélkül?](#how-can-i-generate-a-certificate-signing-request-csr-without-rdp-ing-in-to-the-instance)
+- [A felhőalapú szolgáltatás felügyeleti tanúsítványa lejár. Hogyan újítható meg?](#my-cloud-service-management-certificate-is-expiring-how-to-renew-it)
+- [A fő SSL-tanúsítvány (. pfx) és a köztes tanúsítvány (. p7b) telepítésének automatizálása](#how-to-automate-the-installation-of-main-ssl-certificatepfx-and-intermediate-certificatep7b)
+- [Mi a "Microsoft Azure Service Management for MachineKey" tanúsítvány célja?](#what-is-the-purpose-of-the-microsoft-azure-service-management-for-machinekey-certificate)
 
 **Figyelés és naplózás**
 
-- [Milyen az Azure Portalon, amely megkönnyíti a későbbi Felhőszolgáltatás képességekre kezelése és az alkalmazások figyelése?](#what-are-the-upcoming-cloud-service-capabilities-in-the-azure-portal-which-can-help-manage-and-monitor-applications)
-- [Miért érdemes az IIS a naplózási könyvtár való írás leállítása?](#why-does-iis-stop-writing-to-the-log-directory)
-- [Hogyan engedélyezhetem WAD naplózás a Cloud Services?](#how-do-i-enable-wad-logging-for-cloud-services)
+- [Melyek az Azure Portal közelgő Cloud Service-képességei, amelyek segíthetnek az alkalmazások kezelésében és figyelésében?](#what-are-the-upcoming-cloud-service-capabilities-in-the-azure-portal-which-can-help-manage-and-monitor-applications)
+- [Miért állítja le az IIS a naplózási könyvtárat?](#why-does-iis-stop-writing-to-the-log-directory)
+- [Hogyan a WAD-naplózás engedélyezése a Cloud Serviceshoz?](#how-do-i-enable-wad-logging-for-cloud-services)
 
 **Hálózati konfiguráció**
 
-- [Hogyan állíthatom be az üresjárati időkorlátot az Azure load balancer?](#how-do-i-set-the-idle-timeout-for-azure-load-balancer)
-- [Hogyan társítható egy statikus IP-címet a Cloud Service?](#how-do-i-associate-a-static-ip-address-to-my-cloud-service)
-- [Mik azok a funkciók és képességek, amely az Azure alapszintű IP-CÍMEK/Azonosítók és DDOS biztosít?](#what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides)
-- [Hogyan lehet engedélyezni a HTTP/2 a Cloud Services virtuális Gépen?](#how-to-enable-http2-on-cloud-services-vm)
+- [Hogyan beállítani az Azure Load Balancer üresjárati időkorlátját?](#how-do-i-set-the-idle-timeout-for-azure-load-balancer)
+- [Hogyan statikus IP-címet rendelni a felhőalapú szolgáltatáshoz?](#how-do-i-associate-a-static-ip-address-to-my-cloud-service)
+- [Milyen funkciókat és képességeket biztosít az Azure alapszintű IP-címei/AZONOSÍTÓi és a DDOS?](#what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides)
+- [A HTTP/2 engedélyezése Cloud Services virtuális gépen](#how-to-enable-http2-on-cloud-services-vm)
 
 **Engedélyek**
 
-- [A Microsoft belső mérnökei távoli asztal Felhőszolgáltatás-példányok engedélye nélkül is?](#can-microsoft-internal-engineers-remote-desktop-to-cloud-service-instances-without-permission)
-- [Cloud Service virtuális géphez a távoli asztal nem lehet az RDP-fájl használatával. Követések beolvasása e hiba: Hitelesítési hiba történt (kód: 0x80004005)](#i-cannot-remote-desktop-to-cloud-service-vm--by-using-the-rdp-file-i-get-following-error-an-authentication-error-has-occurred-code-0x80004005)
+- [Jogosult a Microsoft belső mérnökök a Távoli asztalról a Cloud Service-példányokra engedély nélkül?](#can-microsoft-internal-engineers-remote-desktop-to-cloud-service-instances-without-permission)
+- [Az RDP-fájllal nem lehet távoli asztalt használni a Cloud Service virtuális géphez. A következő hibaüzenet jelenik meg: Hitelesítési hiba történt (kód: 0x80004005)](#i-cannot-remote-desktop-to-cloud-service-vm--by-using-the-rdp-file-i-get-following-error-an-authentication-error-has-occurred-code-0x80004005)
 
 **Méretezés**
 
-- [Nem skálázhatók túl az X példányok](#i-cannot-scale-beyond-x-instances)
-- [Hogyan konfigurálhatok automatikus méretezést, memória-metrikák alapján?](#how-can-i-configure-auto-scale-based-on-memory-metrics)
+- [X példányokon túl nem tudom méretezni](#i-cannot-scale-beyond-x-instances)
+- [Hogyan állíthatom be az automatikus méretezést a memória metrikái alapján?](#how-can-i-configure-auto-scale-based-on-memory-metrics)
 
 **Általános**
 
-- [Hogyan adhatok hozzá "nosniff" webhelyem?](#how-do-i-add-nosniff-to-my-website)
-- [Hogyan testre az IIS webkiszolgálói szerepkörökhöz?](#how-do-i-customize-iis-for-a-web-role)
-- [Mi az a kvótakorlát miatt a Cloud Services számára?](#what-is-the-quota-limit-for-my-cloud-service)
-- [Miért jelenik meg nagyon kevés a szabad lemezterület a meghajtón, a virtuális gépemen Cloud Service?](#why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space)
-- [Hogyan adhatom hozzá egy kártevőirtó bővítmény saját felhőszolgáltatások automatikus módon átalakítson?](#how-can-i-add-an-antimalware-extension-for-my-cloud-services-in-an-automated-way)
-- [Hogyan lehet engedélyezni a kiszolgálónév jelzése (SNI) Cloud Services?](#how-to-enable-server-name-indication-sni-for-cloud-services)
-- [Hogyan adhatok hozzá címkéket az Azure Cloud Service?](#how-can-i-add-tags-to-my-azure-cloud-service)
-- [Az Azure Portalon, a Cloud Service SDK-verzió nem jeleníti meg. Hogyan kaphatok, amely?](#the-azure-portal-doesnt-display-the-sdk-version-of-my-cloud-service-how-can-i-get-that)
-- [Állítsa le a Felhőszolgáltatás több hónapig szeretnék. Hogyan csökkenthető a számlázási költségeket felhőszolgáltatás az IP-cím elvesztése nélkül?](#i-want-to-shut-down-the-cloud-service-for-several-months-how-to-reduce-the-billing-cost-of-cloud-service-without-losing-the-ip-address)
+- [Hogyan adja hozzá a "nem szippantás" kifejezést a saját webhelyéhez?](#how-do-i-add-nosniff-to-my-website)
+- [Az IIS webes szerepkörhöz való Hogyan testreszabása](#how-do-i-customize-iis-for-a-web-role)
+- [Mi a felhőalapú szolgáltatás kvótájának korlátja?](#what-is-the-quota-limit-for-my-cloud-service)
+- [Miért jelenik meg a Cloud Service-beli virtuális gép meghajtója nagyon kevés szabad lemezterülettel?](#why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space)
+- [Hogyan adhatok hozzá egy antimalware-bővítményt a Cloud Serviceshoz automatizált módon?](#how-can-i-add-an-antimalware-extension-for-my-cloud-services-in-an-automated-way)
+- [Hogyan engedélyezhető a Kiszolgálónév jelzése (SNI) a Cloud Serviceshoz?](#how-to-enable-server-name-indication-sni-for-cloud-services)
+- [Hogyan adhatok hozzá címkéket az Azure Cloud Service-hez?](#how-can-i-add-tags-to-my-azure-cloud-service)
+- [A Azure Portal nem jeleníti meg a felhőalapú szolgáltatás SDK-verzióját. Hogyan szerezhetem be?](#the-azure-portal-doesnt-display-the-sdk-version-of-my-cloud-service-how-can-i-get-that)
+- [Több hónapig szeretnék leállítani a Cloud Service-t. Hogyan csökkentheti a Cloud Service számlázási költségeit az IP-cím elvesztése nélkül?](#i-want-to-shut-down-the-cloud-service-for-several-months-how-to-reduce-the-billing-cost-of-cloud-service-without-losing-the-ip-address)
 
 
 ## <a name="certificates"></a>Tanúsítványok
 
-### <a name="why-is-the-certificate-chain-of-my-cloud-service-ssl-certificate-incomplete"></a>Miért nem fejeződött be a tanúsítványlánc saját Felhőszolgáltatás SSL-tanúsítvány?
+### <a name="why-is-the-certificate-chain-of-my-cloud-service-ssl-certificate-incomplete"></a>Miért nem fejeződött be a Cloud Service SSL-tanúsítványának tanúsítványlánc?
     
-Azt javasoljuk, hogy telepítsék a teljes tanúsítványlánc (levél cert, köztes tanúsítványok és főtanúsítványt) csak a levél tanúsítvány helyett. A levéltanúsítvány telepítésekor támaszkodik a tanúsítványlánc készítését a megbízható tanúsítványok walking Windows. Ha időszakos hálózati vagy DNS-probléma lép fel az Azure-ban vagy a Windows Update Windows próbál érvényesíteni a tanúsítványt, akkor a tanúsítvány érvénytelen tekinthetők. A teljes tanúsítványlánc telepítése, a probléma elkerülhető. A blog: [kapcsolt SSL-tanúsítvány telepítése](https://blogs.msdn.microsoft.com/azuredevsupport/2010/02/24/how-to-install-a-chained-ssl-certificate/) bemutatja, hogyan teheti ezt.
+Azt javasoljuk, hogy az ügyfél a teljes tanúsítványláncot (levél-tanúsítvány, közbenső tanúsítványok és főtanúsítvány) telepítse a levél-tanúsítvány helyett. Ha csak a levél tanúsítványát telepíti, a Windows rendszerre támaszkodva kiépítheti a tanúsítványláncot a CTL bejárásával. Ha időszakos hálózati vagy DNS-problémák történnek az Azure-ban vagy Windows Update ha a Windows a tanúsítvány érvényesítését kísérli meg, akkor a tanúsítvány érvénytelennek tekintendő. A teljes tanúsítványlánc telepítésével elkerülhető a probléma. A [LÁNCOLT SSL-tanúsítványok telepítéséhez](https://blogs.msdn.microsoft.com/azuredevsupport/2010/02/24/how-to-install-a-chained-ssl-certificate/) szükséges blog bemutatja, hogyan teheti ezt meg.
 
-### <a name="what-is-the-purpose-of-the-windows-azure-tools-encryption-certificate-for-extensions"></a>Mire használható a "Windows Azure eszközök titkosítási tanúsítványt a Extensions"?
+### <a name="what-is-the-purpose-of-the-windows-azure-tools-encryption-certificate-for-extensions"></a>Mi a célja a "Windows Azure-eszközök titkosítási tanúsítványa bővítmények számára"?
 
-Ezek a tanúsítványok automatikusan jönnek létre, amikor bekerül a Felhőszolgáltatás-bővítmény. Leggyakrabban a WAD-bővítmény vagy az RDP-bővítmény, de előfordulhat, hogy mások, például a kártevőirtó vagy naplógyűjtő bővítmény. Ezek a tanúsítványok csak titkosítása és visszafejtése a bővítmény privát konfigurációjának szolgálnak. A lejárati dátum nem érvényesítve, így nem számít, hogy a tanúsítvány lejárt. 
+A rendszer automatikusan létrehozza ezeket a tanúsítványokat, amikor hozzáadnak egy bővítményt a felhőalapú szolgáltatáshoz. Leggyakrabban ez a WAD-bővítmény vagy az RDP-bővítmény, de mások is lehetnek, például a antimalware vagy a log Collector bővítmény. Ezeket a tanúsítványokat csak a bővítmény privát konfigurációjának titkosítására és visszafejtésére használják. A lejárati dátum soha nem lesz ellenőrizve, ezért nem számít, hogy a tanúsítvány lejárt-e. 
 
-Ezek a tanúsítványok figyelmen kívül hagyhatja. Ha azt szeretné, a tanúsítványok megtisztítása, próbálja meg őket az összes törlése. Azure kivételt fogja kijelezni hiba, ha megpróbálja használatban lévő tanúsítvány törlése.
+Ezeket a tanúsítványokat figyelmen kívül hagyhatja. Ha törölni szeretné a tanúsítványokat, próbálja meg az összes törlését. Az Azure hibát jelez, ha olyan tanúsítványt próbál törölni, amely használatban van.
 
-### <a name="how-can-i-generate-a-certificate-signing-request-csr-without-rdp-ing-in-to-the-instance"></a>Hogyan tudok generálhatnak-tanúsítvány aláírási kérelem (CSR) nélkül "RDP-ing" a példányhoz?
+### <a name="how-can-i-generate-a-certificate-signing-request-csr-without-rdp-ing-in-to-the-instance"></a>Hogyan hozható elő tanúsítvány-aláírási kérelem (CSR) a példányban "RDP-ing" nélkül?
 
-Tekintse meg a következő dokumentum:
+Tekintse meg a következő útmutató dokumentumát:
 
-[Egy tanúsítványt a Windows Azure webhelyek (WAWS) beszerzése](https://azure.microsoft.com/blog/obtaining-a-certificate-for-use-with-windows-azure-web-sites-waws/)
+[Tanúsítvány beszerzése a Windows Azure webhelyek (WAWS) használatához](https://azure.microsoft.com/blog/obtaining-a-certificate-for-use-with-windows-azure-web-sites-waws/)
 
-A CSR-fájl egy szövegfájlba. Nincs hozhatók létre a gépen, amelyen a tanúsítványt végső soron fogja használni. Bár ez a dokumentum egy App Service-ben íródott, a CSR-fájl létrehozása általános és a Cloud Serviceshez is vonatkozik.
+A CSR csak szöveges fájl. Nem kell létrehozni azt a gépről, ahol a tanúsítványt végül használni fogjuk. Bár ez a dokumentum egy App Servicere íródott, a CSR létrehozása általános, és a Cloud Services is érvényes.
 
-### <a name="my-cloud-service-management-certificate-is-expiring-how-to-renew-it"></a>A Cloud Service felügyeleti tanúsítvány lejár. Hogyan újíthatja meg?
+### <a name="my-cloud-service-management-certificate-is-expiring-how-to-renew-it"></a>A felhőalapú szolgáltatás felügyeleti tanúsítványa lejár. Hogyan újítható meg?
 
-A következő PowerShell-parancsok segítségével a felügyeleti tanúsítványok megújítása:
+A felügyeleti tanúsítványok megújításához a következő PowerShell-parancsokat használhatja:
 
     Add-AzureAccount
     Select-AzureSubscription -Current -SubscriptionName <your subscription name>
     Get-AzurePublishSettingsFile
 
-A **Get-AzurePublishSettingsFile** létrehoz egy új felügyeleti tanúsítványt **előfizetés** > **felügyeleti tanúsítványok** az Azure Portalon. Az új tanúsítvány neve "YourSubscriptionNam]-[CurrentDate] – hitelesítő adatok" tűnik.
+A **Get-AzurePublishSettingsFile** új felügyeleti tanúsítványt hoz létre az **előfizetés** > -**kezelési tanúsítványokban** a Azure Portalban. Az új tanúsítvány neve a következőhöz hasonló: "YourSubscriptionNam]-[CurrentDate]-hitelesítő adatok".
 
-### <a name="how-to-automate-the-installation-of-main-ssl-certificatepfx-and-intermediate-certificatep7b"></a>Hogyan automatizálhatja az SSL-certificate(.pfx) fő és köztes certificate(.p7b) telepítését?
+### <a name="how-to-automate-the-installation-of-main-ssl-certificatepfx-and-intermediate-certificatep7b"></a>A fő SSL-tanúsítvány (. pfx) és a köztes tanúsítvány (. p7b) telepítésének automatizálása
 
-Automatizálhatja ezt a feladatot egy indítási szkriptet (kötegelt/cmd/PowerShell) segítségével, és regisztrálja az indítási szkript a szolgáltatásdefiníciós fájlban. Adja hozzá az indítási szkript és a tanúsítvány (.p7b kiterjesztésű) a projektmappa fájllistájának az ugyanabban a könyvtárban az indítási szkript.
+Ezt a feladatot indítási parancsfájl (batch/cmd/PowerShell) használatával automatizálhatja, és regisztrálhatja az indítási parancsfájlt a szolgáltatás definíciós fájljában. Adja hozzá az indítási parancsfájlt és a tanúsítványt (. p7b fájl) az indítási parancsfájl ugyanazon könyvtárának projekt mappájához.
 
-### <a name="what-is-the-purpose-of-the-microsoft-azure-service-management-for-machinekey-certificate"></a>Mire használható a "Microsoft Azure Service Management for MachineKey" tanúsítvány?
+### <a name="what-is-the-purpose-of-the-microsoft-azure-service-management-for-machinekey-certificate"></a>Mi a "Microsoft Azure Service Management for MachineKey" tanúsítvány célja?
 
-Ez a tanúsítvány az Azure-alapú webes szerepkörök számítógépkulcsok titkosítására szolgál. További tudnivalókért tekintse meg [a tanácsadó](https://docs.microsoft.com/security-updates/securityadvisories/2018/4092731).
+Ezzel a tanúsítvánnyal titkosíthatja a számítógép kulcsait az Azure web roles szolgáltatásban. További információért tekintse meg [ezt a tanácsadót](https://docs.microsoft.com/security-updates/securityadvisories/2018/4092731).
 
 További információkért tekintse át a következő cikkeket:
-- [Indítási feladatok futtatásának a felhőszolgáltatások és konfigurálása](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks)
-- [Gyakori Felhőszolgáltatás indítási feladatok](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks-common)
+- [Felhőalapú szolgáltatás indítási feladatainak konfigurálása és futtatása](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks)
+- [Gyakori Cloud Service indítási feladatai](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks-common)
 
 ## <a name="monitoring-and-logging"></a>Monitorozás és naplózás
 
-### <a name="what-are-the-upcoming-cloud-service-capabilities-in-the-azure-portal-which-can-help-manage-and-monitor-applications"></a>Milyen az Azure Portalon, amely megkönnyíti a későbbi Felhőszolgáltatás képességekre kezelése és az alkalmazások figyelése?
+### <a name="what-are-the-upcoming-cloud-service-capabilities-in-the-azure-portal-which-can-help-manage-and-monitor-applications"></a>Melyek az Azure Portal közelgő Cloud Service-képességei, amelyek segíthetnek az alkalmazások kezelésében és figyelésében?
 
-Létrehoz egy új tanúsítványt a távoli asztal protokoll (RDP) lehetőség hamarosan elérhető lesz. Másik lehetőségként futtassa ezt a szkriptet:
+Hamarosan új tanúsítvány hozható elő RDP protokoll (RDP) számára. Azt is megteheti, hogy a következő parancsfájlt futtatja:
 
 ```powershell
 $cert = New-SelfSignedCertificate -DnsName yourdomain.cloudapp.net -CertStoreLocation "cert:\LocalMachine\My" -KeyLength 20 48 -KeySpec "KeyExchange"
 $password = ConvertTo-SecureString -String "your-password" -Force -AsPlainText
 Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $password
 ```
-Válassza ki a blob- vagy helyi, a csdef és a szolgáltatáskonfigurációs séma feltöltése hely lehetősége hamarosan elérhető lesz. Használatával [New-AzureDeployment](/powershell/module/servicemanagement/azure/new-azuredeployment?view=azuresmps-4.0.0), minden egyes hely érték között állítható be.
+Kiválaszthatja a blob vagy a helyi lehetőséget a csdef, és a cscfg feltöltési helye hamarosan elérhető lesz. A [New-AzureDeployment](/powershell/module/servicemanagement/azure/new-azuredeployment?view=azuresmps-4.0.0)használatával megadhatja az egyes helyek értékét.
 
-A példány szintjén metrikák monitorozását teszi lehetővé. További figyelési funkciók is elérhetők a [a Cloud Services monitorozása hogyan](cloud-services-how-to-monitor.md).
+A metrikák figyelésének lehetősége a példány szintjén. További figyelési képességek érhetők el a [Cloud Services figyelése](cloud-services-how-to-monitor.md)című témakörben.
 
-### <a name="why-does-iis-stop-writing-to-the-log-directory"></a>Miért érdemes az IIS a naplózási könyvtár való írás leállítása?
-Már kipróbálta a naplózási könyvtár írása a helyi tárolási kvótát. A probléma megoldása három dolgot valamelyikét teheti:
-* Diagnosztika engedélyezése az IIS és a diagnosztika rendszeres időközönként helyezte át a blob storage.
-* Naplófájlok manuálisan távolítsa el a naplózási könyvtárat.
-* Növelje a helyi erőforrások vonatkozó kvótakorlátját.
+### <a name="why-does-iis-stop-writing-to-the-log-directory"></a>Miért állítja le az IIS a naplózási könyvtárat?
+Kimerítette a helyi tárolási kvótát a naplózási könyvtárba való íráshoz. Ennek kijavítania a következő három dolog egyikét teheti:
+* Az IIS-diagnosztika engedélyezése, és a diagnosztika rendszeres időközönként áthelyezhető a blob Storage-ba.
+* Távolítsa el manuálisan a naplófájlokat a naplózási könyvtárból.
+* Növelje a helyi erőforrások kvótájának korlátját.
 
-További információkért tekintse meg a következő dokumentumokat:
+További információ a következő dokumentumokban található:
 * [Diagnosztikai adatok tárolása és megtekintése az Azure Storage-ban](cloud-services-dotnet-diagnostics-storage.md)
-* [IIS-naplók a Cloud Service-ben írás befejezése](https://blogs.msdn.microsoft.com/cie/2013/12/21/iis-logs-stops-writing-in-cloud-service/)
+* [IIS-naplók – írások leállítása a Cloud Service-ben](https://blogs.msdn.microsoft.com/cie/2013/12/21/iis-logs-stops-writing-in-cloud-service/)
 
-### <a name="how-do-i-enable-wad-logging-for-cloud-services"></a>Hogyan engedélyezhetem WAD naplózás a Cloud Services?
-Engedélyezheti a Windows Azure Diagnostics (WAD) naplózás használatával a következő beállításokat:
-1. [A Visual Studióból engedélyezése](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
-2. [.NET-kódon keresztül engedélyezése](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics)
-3. [Powershell-lel engedélyezése](https://docs.microsoft.com/azure/cloud-services/cloud-services-diagnostics-powershell)
+### <a name="how-do-i-enable-wad-logging-for-cloud-services"></a>Hogyan a WAD-naplózás engedélyezése a Cloud Serviceshoz?
+A Windows Azure Diagnostics (WAD) naplózását a következő beállításokkal engedélyezheti:
+1. [Engedélyezés a Visual studióból](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
+2. [Engedélyezés .NET-kóddal](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics)
+3. [Engedélyezés a PowerShell-lel](https://docs.microsoft.com/azure/cloud-services/cloud-services-diagnostics-powershell)
 
-A felhőszolgáltatás az aktuális WAD beállítások eléréséhez használható [Get-AzureServiceDiagnosticsExtensions](https://docs.microsoft.com/azure/cloud-services/cloud-services-diagnostics-powershell#get-current-diagnostics-extension-configuration) ps parancsot, vagy Ön is megtekinthetik az alkalmazást "Cloud Services--> bővítmények" panelen portálon keresztül.
+A Cloud Service jelenlegi WAD-beállításainak beszerzéséhez használja a [Get-AzureServiceDiagnosticsExtensions](https://docs.microsoft.com/azure/cloud-services/cloud-services-diagnostics-powershell#get-current-diagnostics-extension-configuration) PS cmd parancsot, vagy megtekintheti a portálon a "Cloud Services--> Extensions" panelen.
 
 
 ## <a name="network-configuration"></a>Hálózati konfiguráció
 
-### <a name="how-do-i-set-the-idle-timeout-for-azure-load-balancer"></a>Hogyan állíthatom be az üresjárati időkorlátot az Azure load balancer?
-A szolgáltatás definíciós (csdef) fájlban ehhez hasonló az időkorlát adhatja meg:
+### <a name="how-do-i-set-the-idle-timeout-for-azure-load-balancer"></a>Hogyan beállítani az Azure Load Balancer üresjárati időkorlátját?
+A következőhöz hasonló időkorlátot adhat meg a Service Definition (csdef) fájlban:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -170,90 +169,90 @@ A szolgáltatás definíciós (csdef) fájlban ehhez hasonló az időkorlát adh
     </Endpoints>
   </WorkerRole>
 ```
-Lásd: [új: Az Azure Load Balancer konfigurálható üresjárati időkorlát](https://azure.microsoft.com/blog/new-configurable-idle-timeout-for-azure-load-balancer/) további információt.
+Lásd [: új: A Azure Load Balancer](https://azure.microsoft.com/blog/new-configurable-idle-timeout-for-azure-load-balancer/) konfigurálható üresjárati időtúllépés további információért.
 
-### <a name="how-do-i-associate-a-static-ip-address-to-my-cloud-service"></a>Hogyan társítható egy statikus IP-címet a Cloud Service?
-Statikus IP-cím beállításához szeretne létrehozni a fenntartott IP-cím. A fenntartott IP-Címek társíthatók a egy új Felhőszolgáltatást vagy egy meglévő üzemelő példányt. A következő dokumentumokat a részleteket lásd:
+### <a name="how-do-i-associate-a-static-ip-address-to-my-cloud-service"></a>Hogyan statikus IP-címet rendelni a felhőalapú szolgáltatáshoz?
+Statikus IP-cím beállításához létre kell hoznia egy fenntartott IP-címet. Ez a fenntartott IP-cím társítható egy új felhőalapú szolgáltatáshoz vagy egy meglévő üzembe helyezéshez is. A részletekért tekintse meg a következő dokumentumokat:
 * [Fenntartott IP-cím létrehozása](../virtual-network/virtual-networks-reserved-public-ip.md#manage-reserved-vips)
-* [Egy létező felhőszolgáltatás IP-címének fenntartása](../virtual-network/virtual-networks-reserved-public-ip.md#reserve-the-ip-address-of-an-existing-cloud-service)
-* [Új Felhőszolgáltatás fenntartott IP társítása](../virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-new-cloud-service)
-* [Az üzemelő példányban fenntartott IP társítása](../virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-running-deployment)
-* [Felhőszolgáltatás fenntartott IP társítása a szolgáltatás konfigurációs fájl segítségével](../virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
+* [Meglévő felhőalapú szolgáltatás IP-címének lefoglalása](../virtual-network/virtual-networks-reserved-public-ip.md#reserve-the-ip-address-of-an-existing-cloud-service)
+* [Fenntartott IP-cím hozzárendelése egy új felhőalapú szolgáltatáshoz](../virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-new-cloud-service)
+* [Fenntartott IP-cím hozzárendelése futó központi telepítéshez](../virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-running-deployment)
+* [Fenntartott IP-cím hozzárendelése egy felhőalapú szolgáltatáshoz szolgáltatás-konfigurációs fájl használatával](../virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
 
-### <a name="what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides"></a>Mik azok a funkciók és képességek, amely az Azure alapszintű IP-CÍMEK/Azonosítók és DDOS biztosít?
-Az Azure IP-CÍMEK/Azonosítók rendelkezik, az Adatközpont fizikai kiszolgálók fenyegetések elleni védelemre. Emellett ügyfelei külső gyártók biztonsági megoldások, például a webalkalmazás-tűzfalak, hálózati tűzfalakat, kártevőirtó, behatolásérzékelési, megelőzési rendszerek (IDS/IPS) és több üzembe. További információkért lásd: [az adatokat és adategységeket, és a globális biztonsági szabványoknak való megfelelés](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity).
+### <a name="what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides"></a>Milyen funkciókat és képességeket biztosít az Azure alapszintű IP-címei/AZONOSÍTÓi és a DDOS?
+Az Azure az adatközpont-fizikai kiszolgálók IP-címeivel és AZONOSÍTÓkkal rendelkezik a fenyegetések elleni védelemhez. Emellett az ügyfelek telepíthetnek harmadik féltől származó biztonsági megoldásokat, például a webalkalmazási tűzfalakat, a hálózati tűzfalakat, a kártevő szoftvereket, a behatolás észlelését, a megelőzési rendszereket (AZONOSÍTÓk/IP-címek) és egyebeket. További információkért tekintse [meg az adatok és eszközök védelme és a globális biztonsági szabványok](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity)betartása című témakört.
 
-A Microsoft folyamatosan figyeli a kiszolgálók, hálózatok és alkalmazásokat a fenyegetések észlelését. Az Azure multipronged fenyegetés-felügyeleti megközelítést használ behatolásérzékelési, elosztott-szolgáltatásmegtagadásos (DDoS-) támadások megelőzésére, behatolási tesztelési, viselkedési elemzési, anomáliadetektálás, és gépi tanulási folyamatosan megerősítése a defense és csökkentheti a kockázatokat. A Microsoft Antimalware az Azure védi az Azure Cloud Services és virtual machines. Lehetősége van például a webes alkalmazás fire falak, hálózati tűzfalakat, kártevőirtó, a behatolásérzékelő és -megelőző rendszerek (IDS/IPS) és több ezenkívül üzembe helyezéséhez a külső biztonsági megoldásokat.
+A Microsoft folyamatosan figyeli a kiszolgálókat, a hálózatokat és az alkalmazásokat a fenyegetések észlelése érdekében. Az Azure többtényezős fenyegetés-kezelési megközelítése a behatolás észlelését, az elosztott szolgáltatásmegtagadási (DDoS) támadások megelőzését, a behatolások tesztelését, a viselkedés elemzését, a anomáliák észlelését és a gépi tanulást használja a védelem folyamatos erősítéséhez és csökkentse a kockázatokat. Az Azure-hoz készült Microsoft antimalware védi az Azure Cloud Services és a virtuális gépeket. Lehetősége van harmadik féltől származó biztonsági megoldások üzembe helyezésére is, például a webalkalmazási tűzoltó falakra, a hálózati tűzfalakra, az antimalware-ra, a behatolás-észlelésre és a megelőzési rendszerekre (AZONOSÍTÓk/IP-címek) és egyebekre.
 
-### <a name="how-to-enable-http2-on-cloud-services-vm"></a>Hogyan lehet engedélyezni a HTTP/2 a Cloud Services virtuális Gépen?
+### <a name="how-to-enable-http2-on-cloud-services-vm"></a>A HTTP/2 engedélyezése Cloud Services virtuális gépen
 
-Windows 10 és Windows Server 2016 kapható HTTP/2 támogatása ügyfél és a kiszolgáló oldalán. Ha csatlakozik, az ügyfél (böngésző) TLS protokollon keresztüli az IIS-kiszolgálóra, amely egyezteti a HTTP/2 keresztüli TLS-bővítményeket, akkor nem kell semmilyen módosítást a kiszolgálói oldalon. Ez azért, mert a h2-14 fejléc adja meg a HTTP/2 használatát keresztüli TLS, alapértelmezés szerint továbbítja. Ha azonban az ügyfél egy frissítési fejléc frissítése a HTTP/2 küldi, majd szüksége módosítás alatt annak érdekében, hogy a frissítés működését, és végül egy HTTP/2-kapcsolatot a kiszolgálói oldalon. 
+A Windows 10 és a Windows Server 2016 támogatja a HTTP/2-t mind az ügyfél, mind a kiszolgáló oldalon. Ha az ügyfél (böngésző) a TLS protokollon keresztül csatlakozik az IIS-kiszolgálóhoz, amely TLS-bővítményekkel egyeztet a HTTP/2 protokollon keresztül, akkor nem kell módosítania a kiszolgálót. Ennek az az oka, hogy a TLS-n keresztül a HTTP/2 használatát megadó H2-14 fejléc alapértelmezés szerint elküldésre kerül. Ha viszont az ügyfél egy frissítési fejlécet küld a HTTP/2 verzióra való frissítéshez, akkor az alábbi módosítást kell végrehajtania a kiszolgáló oldalon, hogy a frissítés működőképes legyen, és egy HTTP/2-alapú kapcsolatban legyen. 
 
-1. Futtassa a regedit.exe.
+1. Futtassa a Regedit. exe fájlt.
 2. Keresse meg a beállításkulcsot: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HTTP\Parameters.
-3. Hozzon létre egy új DWORD értéket **DuoEnabled**.
+3. Hozzon létre egy új, **DuoEnabled**nevű DWORD értéket.
 4. Állítsa az értékét 1-re.
 5. Indítsa újra a kiszolgálót.
-6. Nyissa meg a **Default Web Site** és **kötések**, hozzon létre egy új TLS-kötést az imént létrehozott önaláírt tanúsítványt. 
+6. Nyissa meg az **alapértelmezett** webhelyet, és a **kötések**területen hozzon létre egy új TLS-kötést az imént létrehozott önaláírt tanúsítvánnyal. 
 
 További információkért lásd:
 
 - [HTTP/2 az IIS-kiszolgálón](https://blogs.iis.net/davidso/http2)
-- [Videó: A Windows 10-es HTTP/2: Böngésző, az alkalmazások és a webalkalmazás-kiszolgáló](https://channel9.msdn.com/Events/Build/2015/3-88)
+- [Videó: HTTP/2 a Windows 10 rendszerben: Böngésző, alkalmazások és webkiszolgáló](https://channel9.msdn.com/Events/Build/2015/3-88)
          
 
-Ezeket a lépéseket sikerült automatikus egy indítási feladaton keresztül, így, amikor új PaaS-példány jön létre, azt megteheti a beállításjegyzék változásainak fent. További információkért lásd: [konfigurálása és a egy felhőalapú szolgáltatás indítási feladatok futtatásának](cloud-services-startup-tasks.md).
+Ezek a lépések egy indítási feladaton keresztül automatizálható, így amikor új Pásti-példányt hoz létre, akkor a fenti módosításokat a beállításjegyzékben végezheti el. További információ: a [felhőalapú szolgáltatás indítási feladatainak konfigurálása és futtatása](cloud-services-startup-tasks.md).
 
  
-Miután ez megtörtént, ellenőrizheti a HTTP/2 engedélyezve van-e, vagy nem a következő módszerek egyikével:
+Ha ez megtörtént, ellenőrizheti, hogy a HTTP/2 engedélyezve van-e, vagy sem a következő módszerek egyikének használatával:
 
-- Engedélyezi az IIS-naplók protokoll verziója, és keresse meg az IIS-naplók. HTTP/2 megjelenik a naplókban. 
-- Engedélyezze a F12 fejlesztői eszközét, az Internet Explorer és Microsoft Edge-ben, és váltson a hálózat lapon ellenőrizze a protokollt. 
+- Engedélyezze a protokoll verzióját az IIS-naplókban, és tekintse meg az IIS-naplókat. A naplókban megjelenik a HTTP/2. 
+- Engedélyezze az F12 fejlesztői eszközt az Internet Explorerben vagy a Microsoft Edge-ben, és váltson a hálózat lapra a protokoll ellenőrzéséhez. 
 
-További információkért lásd: [HTTP/2 az IIS-kiszolgálón](https://blogs.iis.net/davidso/http2).
+További információ: [http/2 az IIS](https://blogs.iis.net/davidso/http2)-ben.
 
 ## <a name="permissions"></a>Engedélyek
 
-### <a name="how-can-i-implement-role-based-access-for-cloud-services"></a>Hogyan lehet megvalósítani a Cloud Services szerepköralapú hozzáférés?
-A cloud Services nem támogatja a szerepköralapú hozzáférés-vezérlés (RBAC) modellben a, mert nem egy Azure Resource Manager-alapú szolgáltatás.
+### <a name="how-can-i-implement-role-based-access-for-cloud-services"></a>Hogyan valósítható meg a Cloud Services szerepköralapú hozzáférés?
+A Cloud Services nem támogatja a szerepköralapú hozzáférés-vezérlési (RBAC) modellt, mert nem Azure Resource Manager-alapú szolgáltatás.
 
-Lásd: [megismerheti az Azure-ban a különféle szerepkörök](../role-based-access-control/rbac-and-directory-admin-roles.md).
+Lásd: [Az Azure különböző szerepköreinek megismerése](../role-based-access-control/rbac-and-directory-admin-roles.md).
 
 ## <a name="remote-desktop"></a>Távoli asztal
 
-### <a name="can-microsoft-internal-engineers-remote-desktop-to-cloud-service-instances-without-permission"></a>A Microsoft belső mérnökei távoli asztal Felhőszolgáltatás-példányok engedélye nélkül is?
-A Microsoft szigorú folyamat, amely nem teszi lehetővé a távoli asztal belső mérnökei azokat a Felhőszolgáltatás (e-mailben vagy egyéb írásbeli kommunikációs) írásos engedélye nélkül a webhely tulajdonosa vagy az általa kijelölt szervet követi.
+### <a name="can-microsoft-internal-engineers-remote-desktop-to-cloud-service-instances-without-permission"></a>Jogosult a Microsoft belső mérnökök a Távoli asztalról a Cloud Service-példányokra engedély nélkül?
+A Microsoft szigorú eljárást követ, amely nem teszi lehetővé a belső mérnökök számára, hogy írásos engedély (e-mail-cím vagy más írásos kommunikáció) nélkül ne engedélyezzék a Távoli asztalt a felhőalapú szolgáltatásban.
 
-### <a name="i-cannot-remote-desktop-to-cloud-service-vm--by-using-the-rdp-file-i-get-following-error-an-authentication-error-has-occurred-code-0x80004005"></a>Cloud Service virtuális géphez a távoli asztal nem lehet az RDP-fájl használatával. Követések beolvasása e hiba: Hitelesítési hiba történt (kód: 0x80004005)
+### <a name="i-cannot-remote-desktop-to-cloud-service-vm--by-using-the-rdp-file-i-get-following-error-an-authentication-error-has-occurred-code-0x80004005"></a>Az RDP-fájllal nem lehet távoli asztalt használni a Cloud Service virtuális géphez. A következő hibaüzenet jelenik meg: Hitelesítési hiba történt (kód: 0x80004005)
 
-Ez a hiba akkor fordulhat elő, ha az Azure Active Directory tartományhoz csatlakozó gépről az RDP-fájlt használ. A probléma megoldásához kövesse az alábbi lépéseket:
+Ez a hiba akkor fordulhat elő, ha az RDP-fájlt egy Azure Active Directoryhoz csatlakoztatott gépről használja. A probléma megoldásához kövesse az alábbi lépéseket:
 
-1. Kattintson a jobb gombbal a letöltött RDP-fájlt, majd **szerkesztése**.
-2. Hozzáadása "&#92;", mielőtt a felhasználónév előtag. Például **. \username** helyett **felhasználónév**.
+1. Kattintson a jobb gombbal a letöltött RDP-fájlra, majd válassza a **Szerkesztés**lehetőséget.
+2. Adja hozzá&#92;a "" előtagot a Felhasználónév előtt. Használja például a **.\username** **nevet a Felhasználónév**helyett.
 
 ## <a name="scaling"></a>Méretezés
 
-### <a name="i-cannot-scale-beyond-x-instances"></a>Nem skálázhatók túl az X példányok
-Az Azure-előfizetés esetében használható Processzormagok száma. Skálázás nem működik, ha az összes rendelkezésre álló magot használja. Például ha a korlát 100 maggal rendelkezik, ez azt jelenti, A1 méretű virtuális gép 100 példány lehet a felhőalapú szolgáltatás, vagy 50 A2 méretű virtuálisgép-példányok.
+### <a name="i-cannot-scale-beyond-x-instances"></a>X példányokon túl nem tudom méretezni
+Az Azure-előfizetése korlátozza a használható magok számát. Ha már használta az összes elérhető magot, a skálázás nem fog működni. Ha például 100 mag van, ez azt jelenti, hogy 100 a1 méretű virtuálisgép-példányok lehetnek a Cloud Service-hez vagy a 50 a2 méretű virtuálisgép-példányokhoz.
 
-### <a name="how-can-i-configure-auto-scale-based-on-memory-metrics"></a>Hogyan konfigurálhatok automatikus méretezést, memória-metrikák alapján?
+### <a name="how-can-i-configure-auto-scale-based-on-memory-metrics"></a>Hogyan állíthatom be az automatikus méretezést a memória metrikái alapján?
 
-Automatikus skálázás memória-metrikák alapján a Cloud Services jelenleg nem támogatott. 
+A Cloud Serviceshoz tartozó memória-metrikák alapján történő automatikus méretezés jelenleg nem támogatott. 
 
-Ez a probléma megoldásához használhatja az Application Insights. Automatikus skálázás támogatja az Application Insights-metrikák forrásként, és skálázhatja a szerepkör-példányok számát, például a "Memória" Vendég mérőszám alapján.  Konfigurálja az Application Insights a Felhőszolgáltatás-projekt csomagfájl (csak *.cspkg), és a szolgáltatás a feat megvalósítása az Azure diagnosztikai bővítmény engedélyezése kell.
+A probléma megkerüléséhez használhatja a Application Insights. Az automatikus méretezés támogatja a Application Insights metrikák forrásaként, és a szerepkör-példányok számának méretezése a vendég metrikája alapján (például "memória").  Be kell állítania Application Insights a Cloud Service Project csomagfájl (*. cspkg) fájljában, és engedélyeznie kell Azure Diagnostics bővítményt a szolgáltatáson a feat megvalósításához.
 
-Hogyan hasznosítható egy egyéni metrika az Application Insights konfigurálása az automatikus méretezés a Cloud Services használatával a további részletekért lásd: [első lépésként az automatikus skálázás egyéni metrika az Azure-ban](../azure-monitor/platform/autoscale-custom-metric.md)
+Ha további információt szeretne arról, hogyan használhatja az egyéni metrikákat a Application Insights segítségével az automatikus skálázás konfigurálásához Cloud Serviceson, tekintse meg az [Azure-beli egyéni metrika automatikus méretezésének](../azure-monitor/platform/autoscale-custom-metric.md) első lépéseit ismertető témakört.
 
-A Cloud Services integrálása az Azure Diagnostics az Application Insights további információkért lásd: [diagnosztikai adatok küldése a felhőalapú szolgáltatás, a virtuális gép vagy a Service Fabric Application Insights](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
+A Azure Diagnostics és a Cloud Services Application Insights integrálásával kapcsolatos további információkért lásd: [felhőalapú szolgáltatás, virtuális gép vagy Service Fabric diagnosztikai adatok küldése Application Insights](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
 
-További információ az Application Insights engedélyezése a Cloud Services szolgáltatáshoz, talál [Application Insights az Azure Cloud Services](https://docs.microsoft.com/azure/application-insights/app-insights-cloudservices)
+További információ a Cloud Services Application Insightsének engedélyezéséről: [Application Insights for Azure Cloud Services](https://docs.microsoft.com/azure/application-insights/app-insights-cloudservices)
 
-Azure diagnosztikai naplózás engedélyezése a Cloud Services kapcsolatos további információkért lásd: [diagnosztika beállítása az Azure Cloud Services és virtual machines](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
+További információ a Cloud Services Azure Diagnostics naplózásának engedélyezéséről: [diagnosztika beállítása az Azure Cloud Services és a Virtual Machines](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them) szolgáltatáshoz
 
 ## <a name="generic"></a>Általános
 
-### <a name="how-do-i-add-nosniff-to-my-website"></a>Hogyan adhatok hozzá "nosniff" webhelyem?
-A beállítás hozzáadásához, hogy megakadályozza a MIME-típusok elemzés, a *web.config* fájlt.
+### <a name="how-do-i-add-nosniff-to-my-website"></a>Hogyan adja hozzá a "nem szippantás" kifejezést a saját webhelyéhez?
+Ha meg szeretné akadályozni, hogy az ügyfelek ne tudják a MIME-típusok elemzését, adjon hozzá egy beállítást a *web. config* fájlban.
 
 ```xml
 <configuration>
@@ -267,60 +266,60 @@ A beállítás hozzáadásához, hogy megakadályozza a MIME-típusok elemzés, 
 </configuration>
 ```
 
-Azt is megteheti ezt az IIS-beállításként. Használja a következő parancsot a [gyakori indítási feladatok](cloud-services-startup-tasks-common.md#configure-iis-startup-with-appcmdexe) cikk.
+Ezt lehetőségként is hozzáadhatja az IIS-ben. Használja az alábbi parancsot a [Common Startup Tasks](cloud-services-startup-tasks-common.md#configure-iis-startup-with-appcmdexe) cikkben.
 
 ```cmd
 %windir%\system32\inetsrv\appcmd set config /section:httpProtocol /+customHeaders.[name='X-Content-Type-Options',value='nosniff']
 ```
 
-### <a name="how-do-i-customize-iis-for-a-web-role"></a>Hogyan testre az IIS webkiszolgálói szerepkörökhöz?
-Az IIS indítási parancsfájlt használja a [gyakori indítási feladatok](cloud-services-startup-tasks-common.md#configure-iis-startup-with-appcmdexe) cikk.
+### <a name="how-do-i-customize-iis-for-a-web-role"></a>Az IIS webes szerepkörhöz való Hogyan testreszabása
+Használja az IIS indítási parancsfájlt a [gyakori indítási feladatok](cloud-services-startup-tasks-common.md#configure-iis-startup-with-appcmdexe) cikkből.
 
-### <a name="what-is-the-quota-limit-for-my-cloud-service"></a>Mi az a kvótakorlát miatt a Cloud Services számára?
-Lásd: [szolgáltatásspecifikus korlátozza](../azure-subscription-service-limits.md#subscription-limits).
+### <a name="what-is-the-quota-limit-for-my-cloud-service"></a>Mi a felhőalapú szolgáltatás kvótájának korlátja?
+Lásd [](../azure-subscription-service-limits.md#subscription-limits)a szolgáltatásra vonatkozó korlátozásokat.
 
-### <a name="why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space"></a>Miért jelenik meg nagyon kevés a szabad lemezterület a meghajtón, a virtuális gépemen Cloud Service?
-Ez az elvárt működés, és azt nem okozhat az alkalmazás bármilyen probléma. Az Azure PaaS virtuális gépeken, amely lényegében használ fel, double, amely fájlok általában foglalnak terület mennyisége a % approot % meghajtót be van kapcsolva a naplózást. Azonban, több szempontot érdemes figyelembe vennie, amely lényegében információkká ez nem probléma.
+### <a name="why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space"></a>Miért jelenik meg a Cloud Service-beli virtuális gép meghajtója nagyon kevés szabad lemezterülettel?
+Ez a várt viselkedés, és nem okoz problémát az alkalmazásában. A naplózás be van kapcsolva a (z)% AppRoot% meghajtóhoz az Azure Pásti virtuális gépeken, ami lényegében a fájlok szokásosan felhasználható területének kétszeres mennyiségét használja fel. Azonban több dolgot is figyelembe kell vennie, amelyek lényegében ezt nem jelentik be.
 
-Meghajtó mérete % approot % számítjuk ki, hogy < mérete .cspkg + napló maximális mérete > + margó szabad terület, vagy 1,5 GB, amelyik érték nagyobb. A virtuális gép mérete nem befolyásolta ehhez a számításhoz. (A Virtuálisgép-méret csak befolyásolja az ideiglenes C: meghajtó méretét.) 
+A (z)% AppRoot% meghajtó mérete \<a méretének megfelelően lesz kiszámítva. cspkg + maximális napló mérete + a szabad terület nagysága >, vagy 1,5 GB, attól függően, hogy melyik a nagyobb. A virtuális gép mérete nem befolyásolja ezt a számítást. (A virtuális gép mérete csak az ideiglenes C: meghajtó méretére vonatkozik.) 
 
-Írni próbált a % approot % meghajtó nem támogatja. Ha az Azure virtuális géphez, kell teheti meg egy ideiglenes LocalStorage erőforrás (vagy a másik lehetőség, például a Blob storage-ban az Azure Files, stb.). Így nincs értelme az approot % % mappában lévő szabad terület mennyisége. Ha nem biztos benne, hogy az alkalmazás a % approot % meghajtóra ír, mindig engedélyezheti, a szolgáltatás néhány napig futtassa, és hasonlítsa össze az "előtte" és "utána" méreteket. 
+A (z)% AppRoot% meghajtóra való írás nem támogatott. Ha az Azure-beli virtuális gépre ír, ezt egy ideiglenes LocalStorage-erőforrásban (vagy más megoldásban, például blob Storage, Azure Files stb.) kell végrehajtania. Így a (z)% AppRoot% mappában lévő szabad terület mennyisége nem értelmezhető. Ha nem biztos abban, hogy az alkalmazás a (z)% AppRoot% meghajtóra ír, bármikor lefuttathatja a szolgáltatást néhány napig, majd összehasonlíthatja a "Before" és a "After" méretet. 
 
-Az Azure nem fog kiírni, semmit a % approot % meghajtóra. Után a virtuális Merevlemezt a .cspkg alapján létrehozott, és azokat az Azure virtuális gép csatlakoztatva van, előfordulhat, hogy a meghajtó írni egyedül az alkalmazás. 
+Az Azure nem fog semmit írni a (z)% AppRoot% meghajtóra. Miután létrehozta a virtuális merevlemezt a. cspkg-ből, és az Azure-beli virtuális gépre van csatlakoztatva, az egyetlen dolog, ami a meghajtóra írni az alkalmazást. 
 
-A napló beállításra nem konfigurálható, így Ön nem kapcsolhatja ki.
+A napló beállításai nem konfigurálhatók, így nem kapcsolhatja ki.
 
-### <a name="how-can-i-add-an-antimalware-extension-for-my-cloud-services-in-an-automated-way"></a>Hogyan adhatom hozzá egy kártevőirtó bővítmény saját felhőszolgáltatások automatikus módon átalakítson?
+### <a name="how-can-i-add-an-antimalware-extension-for-my-cloud-services-in-an-automated-way"></a>Hogyan adhatok hozzá egy antimalware-bővítményt a Cloud Serviceshoz automatizált módon?
 
-A kártevőirtó bővítmény indítási feladat a PowerShell-parancsfájl használatával engedélyezheti. Kövesse ezeket a cikkeket, megvalósításához: 
+Az indítási feladatban a PowerShell-parancsfájl használatával engedélyezheti az antimalware-bővítményt. Az alábbi cikkekben ismertetett lépéseket követve implementálhatja azt: 
  
 - [PowerShell indítási feladat létrehozása](cloud-services-startup-tasks-common.md#create-a-powershell-startup-task)
 - [Set-AzureServiceAntimalwareExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/Set-AzureServiceAntimalwareExtension?view=azuresmps-4.0.0 )
 
-Kártevőirtó központi telepítési forgatókönyvei és engedélyezését a portálról kapcsolatos további információkért lásd: [kártevőirtó központi telepítési forgatókönyv](../security/azure-security-antimalware.md#antimalware-deployment-scenarios).
+A kártevő szoftverek üzembe helyezésével kapcsolatos forgatókönyvekről és a portálról történő engedélyezéséről a kártevők elleni [telepítési forgatókönyvek](../security/fundamentals/antimalware.md#antimalware-deployment-scenarios)című témakörben olvashat bővebben.
 
-### <a name="how-to-enable-server-name-indication-sni-for-cloud-services"></a>Hogyan lehet engedélyezni a kiszolgálónév jelzése (SNI) Cloud Services?
+### <a name="how-to-enable-server-name-indication-sni-for-cloud-services"></a>Hogyan engedélyezhető a Kiszolgálónév jelzése (SNI) a Cloud Serviceshoz?
 
-A Cloud Services SNI engedélyezheti az alábbi módszerek egyikének használatával:
+A SNI a következő módszerek egyikével engedélyezheti Cloud Servicesban:
 
-**1. módszer: PowerShell-lel**
+**1. módszer: A PowerShell használata**
 
-Az SNI-kötés a PowerShell-parancsmag használatával konfigurálható **New-WebBinding** az egy indítási feladat egy felhőalapú szolgáltatás a szerepkörpéldányhoz, az alábbi:
+A SNI kötést a következő PowerShell **-** parancsmaggal konfigurálhatja egy felhőalapú szolgáltatási szerepkör-példány indítási feladatában:
     
     New-WebBinding -Name $WebsiteName -Protocol "https" -Port 443 -IPAddress $IPAddress -HostHeader $HostHeader -SslFlags $sslFlags 
     
-Amint [Itt](https://technet.microsoft.com/library/ee790567.aspx), a $sslFlags az értékek a következők valamelyike lehet:
+Az [itt](https://technet.microsoft.com/library/ee790567.aspx)leírtak szerint a $sslFlags az alábbi értékek egyike lehet:
 
-|Érték|Jelentés|
+|Value|Jelentés|
 ------|------
 |0|Nincs SNI|
 |1|SNI engedélyezve |
-|2 |Kötelező központi tanúsítvány Store használó nem SNI|
-|3|SNI-kötést használó központi tárolására |
+|2 |A központi tanúsítványtárolót használó nem SNI kötés|
+|3|Központi tanúsítványtárolót használó SNI kötés |
  
 **2. módszer: Kód használata**
 
-Az SNI-kötés sikerült is konfigurálni a szerepkör elindítása a kód keresztül ez leírt [blogbejegyzés](https://blogs.msdn.microsoft.com/jianwu/2014/12/17/expose-ssl-service-to-multi-domains-from-the-same-cloud-service/):
+Az SNI-kötés a következő blogbejegyzésben leírtak szerint is konfigurálható kód használatával [](https://blogs.msdn.microsoft.com/jianwu/2014/12/17/expose-ssl-service-to-multi-domains-from-the-same-cloud-service/)a szerepkör indításakor:
 
     
     //<code snip> 
@@ -331,25 +330,25 @@ Az SNI-kötés sikerült is konfigurálni a szerepkör elindítása a kód keres
                     serverManager.CommitChanges(); 
     //</code snip> 
     
-A fenti módszerek bármelyikével a megadott gazdanevek megfelelő tanúsítványának (*.pfx) kell először telepíteni egy indítási feladat segítségével szerepkörpéldányain vagy kódot ahhoz, hogy a hatékony SNI-kötés használatával.
+A fenti módszerek bármelyikének használatával az adott állomásnevek megfelelő tanúsítványait (*. pfx) először telepíteni kell a szerepkör példányain indítási feladattal vagy programkódon keresztül, hogy a SNI-kötés érvénybe kerüljön.
 
-### <a name="how-can-i-add-tags-to-my-azure-cloud-service"></a>Hogyan adhatok hozzá címkéket az Azure Cloud Service? 
+### <a name="how-can-i-add-tags-to-my-azure-cloud-service"></a>Hogyan adhatok hozzá címkéket az Azure Cloud Service-hez? 
 
-Felhőszolgáltatások, a klasszikus erőforrások. Csak erőforrások Azure Resource Manager támogatása a címkék lettek létrehozva. A klasszikus erőforrások, például a felhőalapú szolgáltatás nem tudja címkékkel. 
+A Cloud Service egy klasszikus erőforrás. Csak Azure Resource Manager támogatási címkékkel létrehozott erőforrások. Nem alkalmazhat címkéket olyan klasszikus erőforrásokra, mint a Cloud Service. 
 
-### <a name="the-azure-portal-doesnt-display-the-sdk-version-of-my-cloud-service-how-can-i-get-that"></a>Az Azure Portalon, a Cloud Service SDK-verzió nem jeleníti meg. Hogyan kaphatok, amely?
+### <a name="the-azure-portal-doesnt-display-the-sdk-version-of-my-cloud-service-how-can-i-get-that"></a>A Azure Portal nem jeleníti meg a felhőalapú szolgáltatás SDK-verzióját. Hogyan szerezhetem be?
 
-Dolgozunk, ez a szolgáltatás elérhetővé az Azure Portalon. Eközben segítségével a következő PowerShell-parancsokat az SDK-verzió beolvasása:
+Dolgozunk azon, hogy ezt a funkciót a Azure Portal. Eközben a következő PowerShell-parancsokkal kérheti le az SDK verzióját:
 
     Get-AzureService -ServiceName "<Cloud Service name>" | Get-AzureDeployment | Where-Object -Property SdkVersion -NE -Value "" | select ServiceName,SdkVersion,OSVersion,Slot
 
-### <a name="i-want-to-shut-down-the-cloud-service-for-several-months-how-to-reduce-the-billing-cost-of-cloud-service-without-losing-the-ip-address"></a>Állítsa le a Felhőszolgáltatás több hónapig szeretnék. Hogyan csökkenthető a számlázási költségeket felhőszolgáltatás az IP-cím elvesztése nélkül?
+### <a name="i-want-to-shut-down-the-cloud-service-for-several-months-how-to-reduce-the-billing-cost-of-cloud-service-without-losing-the-ip-address"></a>Több hónapig szeretnék leállítani a Cloud Service-t. Hogyan csökkentheti a Cloud Service számlázási költségeit az IP-cím elvesztése nélkül?
 
-Egy már üzembe helyezett felhőalapú szolgáltatás a számítási és a használt tárolási díjat számítjuk fel. Tehát akkor is, ha az Azure virtuális gép leállítása, továbbra is felszámolt tárolására. 
+Egy már üzembe helyezett felhőalapú szolgáltatás számlázása a felhasznált számítási és tárolási kapacitást terheli. Így még ha leállítja az Azure-beli virtuális gépet, akkor is számlázni fogja a tárterületet. 
 
-Íme, mi mindent csökkentése érdekében a számlázás a szolgáltatás IP-címét elvesztése nélkül:
+A szolgáltatáshoz tartozó IP-cím elvesztése nélkül elvégezhető a számlázás csökkentése:
 
-1. [IP-címének fenntartása](../virtual-network/virtual-networks-reserved-public-ip.md) az üzemelő példányok törlése előtt.  Ön csak kell fizetnie az IP-címet. IP-cím számlázással kapcsolatos további információkért lásd: [IP-címek díjszabása](https://azure.microsoft.com/pricing/details/ip-addresses/).
-2. Törölje a központi telepítéseket. Ne törölje a xxx.cloudapp.net, így a jövőben használhatja.
-3. Ha a Felhőszolgáltatás újra a azonos fenntartott IP-cím használatával szeretné, hogy az előfizetésben lefoglalt, lásd: [fenntartott IP-címek a Cloud Services és Virtual Machines](https://azure.microsoft.com/blog/reserved-ip-addresses/).
+1. A központi telepítések törlése előtt [foglalja le az IP-címet](../virtual-network/virtual-networks-reserved-public-ip.md) .  Ezt az IP-címet csak a számlázás után számítjuk fel. Az IP-cím számlázásával kapcsolatos további információkért lásd: az [IP-címek díjszabása](https://azure.microsoft.com/pricing/details/ip-addresses/).
+2. Törölje az üzemelő példányokat. Ne törölje a xxx.cloudapp.net, hogy később is használhassa.
+3. Ha a Cloud Service-t ugyanazzal a tartalék IP-címmel szeretné telepíteni, amelyet az előfizetésében foglalt le, tekintse meg a [Cloud Services és a Virtual Machines fenntartott IP címei](https://azure.microsoft.com/blog/reserved-ip-addresses/)című témakört.
 

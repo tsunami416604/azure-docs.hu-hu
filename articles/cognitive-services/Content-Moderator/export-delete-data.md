@@ -1,7 +1,7 @@
 ---
-title: Exportálja, vagy törölje a felhasználói adatokat - Content Moderator
-titlesuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan exportálhatja, vagy a Content Moderator-adatok törlése.
+title: Felhasználói adatContent Moderator exportálása vagy törlése –
+titleSuffix: Azure Cognitive Services
+description: Ismerje meg, hogyan exportálhatja vagy törölheti az adatait Content Moderatorban.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,27 +10,27 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: pafarley
-ms.openlocfilehash: 1cd70bee22e56e2580b322b93e0f121261d97a94
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: b18bc2907c00ed1424db440f09c914faff6a9863
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758091"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565570"
 ---
-# <a name="export-or-delete-user-data-in-content-moderator"></a>Exportálja, vagy a Content Moderator a felhasználói adatok törlése
+# <a name="export-or-delete-user-data-in-content-moderator"></a>Felhasználói adatexportálás vagy-törlés Content Moderator
 
-Content Moderator gyűjti a felhasználói adatokat a szolgáltatás, de az ügyfél rendelkezik teljes hozzáférés a megtekintése, exportálását és törlését a saját adatok használatával a [vizsgálóeszköz](https://contentmoderator.cognitive.microsoft.com/) és a [moderálás és a felülvizsgálati API-k](https://docs.microsoft.com/azure/cognitive-services/content-moderator/api-reference).
+A Content Moderator felhasználói adatokat gyűjt a szolgáltatás üzemeltetéséhez, de az ügyfelek teljes hozzáféréssel rendelkeznek az adatok megtekintésére, exportálására és törlésére a [felülvizsgálati eszközzel](https://contentmoderator.cognitive.microsoft.com/) , valamint a [moderálási és felülvizsgálati API](https://docs.microsoft.com/azure/cognitive-services/content-moderator/api-reference)-k használatával.
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
-Hogyan exportálhatja, és törli a felhasználói adatokat a Content Moderator további információkért lásd az alábbi táblázatot.
+A Content Moderator felhasználói adatainak exportálásával és törlésével kapcsolatos további információkért tekintse meg a következő táblázatot.
 
-| Adatok | Az exportálási művelet | Törlési művelet |
+| Data | Exportálási művelet | Törlési művelet |
 | ---- | ---------------- | ---------------- |
-| Fiók adatai (előfizetési kulcsok) | – | Törlés az Azure portal (az Azure-előfizetések) használatával. Vagy használja a **törlése csapat** gombra a [felülvizsgálati felhasználói felület](https://contentmoderator.cognitive.microsoft.com/) Team-beállítások lapon. |
-| Az egyéni egyező képek | Hívja a [Get kép azonosítók API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f676). Rendszerképek tárolása a szellemi tulajdont képező egyirányú kivonat formátumban történik, és nem lehet kibontani a tényleges lemezképeket. | Hívja a [törli az összes lemezképek API-t](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f686). Vagy törli a Content Moderator az erőforrást az Azure portal használatával. |
-| Egyéni egyezési feltételei | CAL a [minden használati API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67e) | Hívja a [összes feltételek API törlése](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67d). Vagy törli a Content Moderator az erőforrást az Azure portal használatával. |
-| Címkék | – | Használja a **törlése** ikon minden címke a tekintse át a felhasználói felület címke beállítások oldalon érhető el. Vagy használja a **törlése csapat** gombra a [felülvizsgálati felhasználói felület](https://contentmoderator.cognitive.microsoft.com/) Team-beállítások lapon. |
-| Felülvizsgálatok | Hívja a [Get felülvizsgálati API](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c2) | Használja a **törlése csapat** gombra a [felülvizsgálati felhasználói felület](https://contentmoderator.cognitive.microsoft.com/) Team-beállítások lapon.
-| Felhasználók | – | Használja a **törlése** ikonra a minden felhasználó számára elérhető a [felülvizsgálati felhasználói felület](https://contentmoderator.cognitive.microsoft.com/) Team-beállítások lapon. Vagy használja a **törlése csapat** gombra a [felülvizsgálati felhasználói felület](https://contentmoderator.cognitive.microsoft.com/) Team-beállítások lapon. |
+| Fiókadatok (előfizetési kulcsok) | – | Törlés a Azure Portal használatával (Azure-előfizetések). Vagy használja a **csapat törlése** gombot a [felhasználói felületi](https://contentmoderator.cognitive.microsoft.com/) csoport beállításainak áttekintése lapon. |
+| Egyéni egyeztetésre szolgáló lemezképek | Hívja meg a képazonosítók beolvasása [API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f676)-t. A lemezképek egyirányú tulajdonosi kivonatoló formátumban tárolódnak, és nem lehet kinyerni a tényleges képeket. | Hívja meg az [összes rendszerkép törlése API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f686)-t. Vagy törölje a Content Moderator erőforrást a Azure Portal használatával. |
+| Az egyéni egyeztetés feltételei | Cal a [minden feltétel beolvasása API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67e) | Hívja meg az [összes feltétel törlése API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67d)-t. Vagy törölje a Content Moderator erőforrást a Azure Portal használatával. |
+| Tags | – | Használja az egyes címkékhez elérhető **delete** ikont a felhasználói felület áttekintése címke beállításai lapon. Vagy használja a **csapat törlése** gombot a [felhasználói felületi](https://contentmoderator.cognitive.microsoft.com/) csoport beállításainak áttekintése lapon. |
+| Értékelések | A [Get felülvizsgálati API](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c2) meghívása | Használja a **csapat törlése** gombot a [felhasználói felületi](https://contentmoderator.cognitive.microsoft.com/) csoport beállításainak áttekintése lapon.
+| Felhasználók | – | Használja az egyes felhasználók számára elérhető **delete** ikont a [felhasználói felületi](https://contentmoderator.cognitive.microsoft.com/) csoport beállításainak áttekintése lapon. Vagy használja a **csapat törlése** gombot a [felhasználói felületi](https://contentmoderator.cognitive.microsoft.com/) csoport beállításainak áttekintése lapon. |
 

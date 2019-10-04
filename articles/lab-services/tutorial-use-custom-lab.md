@@ -14,15 +14,15 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/18/2019
 ms.author: spelluru
-ms.openlocfilehash: b5abb8d4aad7c58bf673aa578255efe12d32ad4b
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: ee9a68df685095244fc9471b7d4ab0f6cee0642d
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54422898"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360263"
 ---
-# <a name="tutorial-access-a-lab-in-azure-devtest-labs"></a>Oktatóanyag: Az Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet elérése
-Ebben az oktatóanyagban létrehozott a labor használata a [oktatóanyag: Labor létrehozása az Azure DevTest Labs](tutorial-create-custom-lab.md) .
+# <a name="tutorial-access-a-lab-in-azure-devtest-labs"></a>Oktatóanyag: Tesztkörnyezet elérése Azure DevTest Labs
+Ebben az oktatóanyagban az [oktatóanyagban létrehozott labort használja: Tesztkörnyezet létrehozása Azure DevTest Labsban](tutorial-create-custom-lab.md) .
 
 Az oktatóanyag során a következő lépéseket hajtja végre:
 
@@ -58,8 +58,15 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
     ![Csatlakozás virtuális géphez](./media/tutorial-use-custom-lab/connect-button.png)
 2. Mentse a letöltött **RDP**-fájlt a merevlemezre, majd a használatával csatlakozzon a virtuális géphez. Adja meg a felhasználónevet és jelszót, amelyeket a virtuális gép létrehozásakor határozott meg. 
 
-    > [!NOTE] 
-    > Linux rendszerű virtuális géphez való csatlakozáshoz a virtuális gép esetében engedélyezni kell az SSH- vagy az RDP-hozzáférést. A Linux rendszerű virtuális gépekhez történő RDP-csatlakozással kapcsolatban lásd: [Távoli asztal telepítése és konfigurálása Azure-beli Linux virtuális géphez való csatlakozáshoz](../virtual-machines/linux/use-remote-desktop.md). 
+    Linux rendszerű virtuális géphez való csatlakozáshoz a virtuális gép esetében engedélyezni kell az SSH- vagy az RDP-hozzáférést. A Linux rendszerű virtuális gépekhez történő RDP-csatlakozással kapcsolatban lásd: [Távoli asztal telepítése és konfigurálása Azure-beli Linux virtuális géphez való csatlakozáshoz](../virtual-machines/linux/use-remote-desktop.md). 
+
+    > [!NOTE]
+    > A virtuális gép virtuálisgép-lapjára más módokon is eljuthat. Íme néhány közülük: 
+    > 
+    > 1. Keresse meg az előfizetésben található összes virtuális gépet. Válassza ki a **virtuális gépet a virtuális gépek** listájából, hogy a virtuális gép oldalra kerüljön.
+    > 2. Navigáljon az **erőforráscsoport oldalához** . Ezután válassza ki a virtuális gépet az erőforráscsoport erőforrásainak listájából, hogy beolvassa a **virtuális gép** lapját. 
+    >
+    > Ne használja a **Kapcsolódás** gombot azon az eszköztáron, amelyet a **virtuális gép** oldalán érhet el, és használja ezeket a beállításokat. Ehelyett keresse meg a **virtuális gép** lapot az **DevTest Labs** lapon a jelen cikkben látható módon, majd használja a **Kapcsolódás** gombot az eszköztáron.
 
 
 ## <a name="unclaim-the-vm"></a>A virtuális gép lefoglalásának feloldása
@@ -68,11 +75,11 @@ Ha már nem használja a virtuális gépet, az alábbi lépéseket követve oldj
 1. A virtuális gép oldalán válassza ki az eszköztár **Feloldás** elemét. 
 
     ![A virtuális gép lefoglalásának feloldása](./media/tutorial-use-custom-lab/unclaim-vm-menu.png)
-1. A virtuális gép a lefoglalás feloldása előtt leáll. Ez a művelet az értesítésekben állapota látható.  
-3. Lépjen vissza a DevTest Lab lap tetején lévő navigációs menüben található a labor nevére kattint. 
+1. A virtuális gép a lefoglalás feloldása előtt leáll. A művelet állapota az értesítésekben látható.  
+3. Váltson vissza a DevTest Lab oldalára úgy, hogy a felső navigációs menüben a labor nevére kattint. 
     
-    ![Lépjen vissza a tesztkörnyezet](./media/tutorial-use-custom-lab/breadcrumb-to-lab.png)
-1. Győződjön meg arról, hogy a virtuális gép listáján **igényelhető virtuális gépek** lista alján.
+    ![Navigáljon vissza a laborba](./media/tutorial-use-custom-lab/breadcrumb-to-lab.png)
+1. Ellenőrizze, hogy a **virtuális** gép megjelenik-e a jogcímek listájának alján.
 
     
 ## <a name="next-steps"></a>További lépések

@@ -1,58 +1,58 @@
 ---
-title: Felhasználó által definiált sémák használata az SQL Data Warehouse |} A Microsoft Docs
-description: Tippek a T-SQL-felhasználó által definiált sémák használata az Azure SQL Data Warehouse-megoldások fejlesztése.
+title: Felhasználó által definiált sémák használata a SQL Data Warehouseban | Microsoft Docs
+description: Tippek a T-SQL felhasználó által definiált sémák használatához Azure SQL Data Warehouse a megoldások fejlesztéséhez.
 services: sql-data-warehouse
-author: ronortloff
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: implement
+ms.subservice: development
 ms.date: 04/17/2018
-ms.author: rortloff
+ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: ae017461767a207deae1d990980258a1f661df3d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e0ae00e0fca5ed4c6fba04444e5c50424462d297
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468444"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479566"
 ---
-# <a name="using-user-defined-schemas-in-sql-data-warehouse"></a>Az SQL Data Warehouse használatával a felhasználó által definiált sémák
-Tippek a T-SQL-felhasználó által definiált sémák használata az Azure SQL Data Warehouse-megoldások fejlesztése.
+# <a name="using-user-defined-schemas-in-sql-data-warehouse"></a>Felhasználó által definiált sémák használata a SQL Data Warehouseban
+Tippek a T-SQL felhasználó által definiált sémák használatához Azure SQL Data Warehouse a megoldások fejlesztéséhez.
 
-## <a name="schemas-for-application-boundaries"></a>A kérelem határok sémák
+## <a name="schemas-for-application-boundaries"></a>Az alkalmazás határaihoz tartozó sémák
 
-Hagyományos data warehouse-adattárházak a különálló adatbázisok gyakran használnak a számítási feladatok, a tartomány vagy a biztonsági alkalmazás határokat kíván létrehozni. Egy hagyományos SQL Server data warehouse tartalmazhat például egy átmeneti adatbázis, adatraktár-adatbázis és néhány adat adatközpont-adatbázis. Ebben a topológiában minden egyes adatbázis számítási feladatok és az architektúra biztonsági határon működik.
+A hagyományos adattárházak gyakran külön adatbázisokat használnak az alkalmazások határainak a munkaterhelés, a tartomány vagy a biztonság alapján történő létrehozásához. Előfordulhat például, hogy egy hagyományos SQL Server adattárház tartalmaz egy átmeneti adatbázist, egy adattárház-adatbázist és néhány data mart-adatbázist. Ebben a topológiában az egyes adatbázisok munkaterhelésként és biztonsági határként működnek az architektúrában.
 
-Ezzel szemben az SQL Data Warehouse fut, a teljes adatraktározás számítási feladatáról egy adatbázison belül. Adatbázis közötti illesztések nem engedélyezettek. Ezért az SQL Data Warehouse az egyetlen adatbázis tárolja az adatraktár által használt összes táblának vár.
+Ezzel szemben a SQL Data Warehouse egy adatbázison belül futtatja a teljes adattárház-munkafolyamatot. Az adatbázisok közötti illesztések nem engedélyezettek. Ezért SQL Data Warehouse elvárja, hogy a raktár által használt összes táblát az egyetlen adatbázisban tárolja.
 
 > [!NOTE]
-> Az SQL Data Warehouse nem támogatja semmiféle adatbázisközi lekérdezések. Ebből következően data warehouse megvalósításokhoz, az ezt a mintát kell vizsgálni.
+> A SQL Data Warehouse nem támogatja a bármilyen típusú adatbázisok lekérdezését. Ennek következtében az ezt a mintát használó adatraktár-implementációkat felül kell vizsgálni.
 > 
 > 
 
 ## <a name="recommendations"></a>Javaslatok
-Ezek a javaslatok számítási feladatok, a biztonság, a tartomány és a működési határok konszolidálása a felhasználó által definiált sémák
+Ezek a számítási feladatok, a biztonság, a tartomány és a funkcionális határok konszolidálása a felhasználó által definiált sémák használatával
 
-1. Egy SQL Data Warehouse-adatbázis használatával futtassa a teljes adatraktározás számítási feladatáról
-2. Egyesíthetők a meglévő data warehouse környezet egy SQL Data Warehouse-adatbázis használatára
-3. Használja ki **felhasználó által definiált sémák** a korábban az adatbázisok használatával implementált határ biztosításához.
+1. Az adatraktár teljes számítási feladatának futtatásához használjon egy SQL Data Warehouse adatbázist
+2. A meglévő adattárház-környezet konszolidálása egy SQL Data Warehouse adatbázis használatára
+3. **Felhasználó által definiált sémák** használata a korábban adatbázisokkal megvalósított határ biztosításához.
 
-Ha a felhasználó által definiált sémák nem korábban már használtak egy tiszta lappal rendelkezik majd. Egyszerűen használja a régi adatbázis neve alapján a felhasználó által definiált sémák, az SQL Data Warehouse-adatbázis.
+Ha a felhasználó által definiált sémákat korábban nem használták, akkor tiszta lappal rendelkezik. Egyszerűen használja a régi adatbázis nevét a felhasználó által definiált sémák alapjául a SQL Data Warehouse adatbázisban.
 
-Ha már használt sémák majd néhány lehetőségek állnak rendelkezésére:
+Ha a sémák már használatban vannak, néhány lehetőség közül választhat:
 
-1. Távolítsa el a régi sémanevek és kezdhet tiszta lappal
-2. A tábla neve a régi sémanév őriznie a régi sémanevek a előre függőben
-3. A régi sémanevek megőrzése a táblán egy extra sémában újra létre kell hoznia a régi séma struktúra nézetek alkalmazásával.
+1. Távolítsa el a régi sémák nevét, és kezdje el a frissen
+2. A régi séma nevének megtartása előre függőben a régi séma nevének a tábla nevére
+3. Tartsa meg a régi sémák nevét úgy, hogy egy további sémában lévő nézeteket implementál, hogy újra létrehozza a régi séma-struktúrát.
 
 > [!NOTE]
-> 3. lehetőség az első vizsgálat a legtöbb viszont lehetőség tűnhet. Azonban az ördögöt, a részleteket. Nézetek az SQL Data Warehouse csak olvasható. Bármilyen adatokat vagy a tábla módosítása kell az alaptábla végre a rendszer. 3. lehetőség nézetek réteget is bevezeti a rendszerbe. Ez néhány további gondolkodási biztosíthat használatakor nézetek az architektúrához már érdemes.
+> Előfordulhat, hogy a 3. első ellenőrzési lehetőség a leginkább vonzó megoldásnak tűnik. Az ördög azonban részletesen szerepel. A nézetek csak SQL Data Warehouse olvashatók. Az alaptáblán minden adat-vagy tábla-módosítást el kell végezni. A 3. lehetőség is bevezeti a nézet rétegét a rendszerbe. Érdemes lehet ezt néhány további gondolatot használni, ha már használja a nézeteket az architektúrában.
 > 
 > 
 
 ### <a name="examples"></a>Példák:
-Felhasználó által definiált sémák alapján adatbázisnevek megvalósítása
+Felhasználó által definiált sémák implementálása az adatbázisok nevei alapján
 
 ```sql
 CREATE SCHEMA [stg]; -- stg previously database name for staging database
@@ -70,7 +70,7 @@ CREATE TABLE [edw].[customer] -- create data warehouse tables in the edw schema
 );
 ```
 
-Megőrizni az örökölt sémanevek előre függőben lévő őket a tábla neve. A számítási feladatok határ sémák használja.
+A régi sémák nevét megtarthatja a tábla nevére való előre függőben. Sémák használata a munkaterhelés határához.
 
 ```sql
 CREATE SCHEMA [stg]; -- stg defines the staging boundary
@@ -88,7 +88,7 @@ CREATE TABLE [edw].[dim_customer] --pre-pend the old schema name to the table an
 );
 ```
 
-Nézetek használata az örökölt sémanevek megőrzése
+Örökölt sémák nevének megőrzése nézetek használatával
 
 ```sql
 CREATE SCHEMA [stg]; -- stg defines the staging boundary
@@ -116,10 +116,10 @@ FROM    [edw].customer
 ```
 
 > [!NOTE]
-> Séma stratégia bármilyen változás van szüksége az adatbázis a biztonsági modell áttekintése. Sok esetben előfordulhat egyszerűsítése érdekében a biztonsági modell által a séma szintű engedélyeket. Ha részletesebb engedélyek szükségesek, ezt követően használhatja az adatbázis-szerepkörökhöz.
+> A séma-stratégiában bekövetkező változásoknak át kell tekinteniük az adatbázis biztonsági modelljét. Sok esetben a séma szintjén rendelheti hozzá az engedélyeket a biztonsági modell egyszerűsítéséhez. Ha további részletességi engedélyekre van szükség, akkor használhatja az adatbázis-szerepköröket.
 > 
 > 
 
 ## <a name="next-steps"></a>További lépések
-További fejlesztési tippek: [fejlesztői áttekintés](sql-data-warehouse-overview-develop.md).
+További fejlesztési tippek: a [fejlesztés áttekintése](sql-data-warehouse-overview-develop.md).
 

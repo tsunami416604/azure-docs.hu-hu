@@ -1,68 +1,82 @@
 ---
-title: Nyelvi támogatás – szövegelemzési API
+title: Nyelvi támogatás – Text Analytics API
 titleSuffix: Azure Cognitive Services
-description: 'A szövegelemzési API által támogatott természetes nyelvek listáját. Ez a cikk ismerteti az egyes műveletek támogatott nyelvek: vélemények elemzése, kulcsszókeresés, nyelvfelismerés és entitások felismerése.'
+description: 'A Text Analytics API által támogatott természetes nyelvek listája. Ez a cikk azt ismerteti, hogy az egyes műveletek milyen nyelveket támogatnak: a hangulat elemzése, a kulcsfontosságú kifejezés kinyerése, a nyelvfelismerés és az entitások felismerése.'
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 06/18/2019
 ms.author: aahi
-ms.openlocfilehash: 4f1ce8fd44a501f594f3093789d1ef03e664d018
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 953699793d81485e3828b9fb46de8523d2b7674e
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60008494"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130007"
 ---
-# <a name="language-and-region-support-for-the-text-analytics-api"></a>A Text Analytics API nyelvéhez és régiójához támogatása
+# <a name="language-and-region-support-for-the-text-analytics-api"></a>A Text Analytics API nyelvi és területi támogatása
 
-Ez a cikk ismerteti az egyes műveletek támogatott nyelvek: vélemények elemzése, kulcsszókeresés, nyelvfelismerés és nevesített entitások felismerése.
+Ez a cikk ismerteti, hogy az egyes műveletek milyen nyelveket támogatnak: a hangulat elemzése, a fő kifejezés kibontása, a nyelvfelismerés és a nevesített entitások felismerése.
 
 ## <a name="language-detection"></a>Nyelvfelismerés
 
-A Text Analytics API felismeri a legfeljebb 120 különböző nyelvekhez. Nyelv észlelése "parancsfájl" egy nyelv adja vissza. Például a kifejezés a "Javaslatom van egy kutya", a rendszer visszaadja `en` helyett `en-US`. A csak speciális funkcióban kínai, ahol a language detection funkció visszalép `zh_CHS` vagy `zh_CHT` Ha képes meghatározni a parancsfájl a megadott szöveg megadott. Olyan esetekben, ahol egy adott parancsfájl nem lehet azonosítani az egy kínai dokumentumot, hogy vissza fogja küldeni egyszerűen `zh`.
+A Text Analytics API számos nyelvet, változatot, dialektust és néhány regionális/kulturális nyelvet képes felderíteni.  Nyelvfelismerés a nyelv "szkriptjét" adja vissza. Ha például a "Nekem van egy kutyám" kifejezés, akkor a `en` `en-US`helyett a értéket fogja visszaadni. Az egyetlen különleges eset a kínai, ahol a nyelvi észlelési képesség vissza `zh_CHS` fog `zh_CHT` térni, vagy ha meg tudja határozni a parancsfájlt a megadott szöveg alapján. Azokban az esetekben, amikor egy kínai dokumentumhoz nem azonosítható egy adott parancsfájl, a rendszer `zh`egyszerűen visszaadja.
 
-## <a name="sentiment-analysis-key-phrase-extraction-and-named-entity-recognition"></a>Hangulatelemzést, Kulcsszókeresést és nevesített entitások felismerése
+Nem tesszük közzé a funkcióhoz tartozó nyelvek pontos listáját, de számos nyelvet, változatot, dialektust és bizonyos regionális/kulturális nyelvet képes felderíteni. 
 
-Hangulatelemzést, kulcsszókeresést és entitások felismerése támogatott nyelvek listáját a rendszer több szelektív, mivel az elemzők számát finomított további nyelveket nyelvi szabályainak megfelelően.
+Ha olyan tartalommal rendelkezik, amely ritkábban használt nyelven van kifejezve, kipróbálhatja, Nyelvfelismerés, hogy visszaadja-e a kódot. A nem észlelhető `unknown`nyelvek válasza a következő:.
 
-## <a name="language-list-and-status"></a>Nyelvek listája és állapota
+## <a name="sentiment-analysis-key-phrase-extraction-and-named-entity-recognition"></a>Hangulatelemzés, Kulcsszókeresés és elnevezett entitások felismerése
 
-Nyelvi támogatás kezdetben integráljuk általánosan elérhető (GA) állapotra, egymástól, és a teljes Text Analytics szolgáltatás előzetes verzióban elérhető jelennek meg. Továbbra is általánosan elérhető a szövegelemzési API átmenetek során még előzetes verzióként elérhető nyelvek lehetőség.
+Az érzelmek elemzéséhez, a kulcsfontosságú kifejezés kinyeréséhez és az entitások felismeréséhez a támogatott nyelvek listája sokkal szelektívebb, mivel az elemzők finomítása a további nyelvek nyelvi szabályainak betartása érdekében történik. Az [entitások](how-tos/text-analytics-how-to-entity-linking.md#supported-types-for-named-entity-recognition) teljes készletének támogatása jelenleg a következő nyelvekre korlátozódik: 
+* Angol
+* Egyszerűsített kínai
+* francia
+* német
+* spanyol
+
+A többi `Person`nyelvhez `Organization` csak a `Location` és a nevesített entitásokat adja vissza a rendszer.
+
+## <a name="language-list-and-status"></a>Nyelvi lista és állapot
+
+A nyelvi támogatást kezdetben előzetes verzióban, az általánosan elérhető (GA) állapotra kell bevezetni, amely egymástól függetlenül, és a Text Analytics szolgáltatás teljes egészében. Lehetséges, hogy a nyelvek előzetes verzióban maradnak, még akkor is, ha a Text Analytics API általánosan elérhetővé vált.
 
 | Nyelv    | Nyelvkód | Hangulat | Kulcskifejezések | Megnevezett entitások felismerése |   Megjegyzések  |
 |:----------- |:-------------:|:---------:|:-----------:|:-----------:|:-----------:
 | arab      | `ar`          |           |             | ✔ \*                     | |
 | cseh       | `cs`          |           |             | ✔ \*                     | |
-| Egyszerűsített kínai | `zh-CN`|           |             | ✔ \*        |    |
+| Egyszerűsített kínai | `zh-hans`| ✔ \***     |             | ✔         |    |
+| Kínai – hagyományos | `zh-hant`| ✔ \***     |             |          |    |
 | dán      | `da`          | ✔ \*     | ✔           | ✔ \*            |     |
 | holland       | `nl`          | ✔ \*     | ✔          |  ✔ \*           |     |
-| Angol     | `en`          | ✔        | ✔           |  ✔ \*\*     |      |
+| Angol     | `en`          | ✔ \***       | ✔           |  ✔ \*\*     |      |
 | finn     | `fi`          | ✔ \*     | ✔           |  ✔ \*           |     |
-| francia      | `fr`          | ✔        | ✔           |  ✔ \*           |     |
-| német      | `de`          | ✔ \*     | ✔           |  ✔ \*          |     |
+| francia      | `fr`          | ✔ \***       | ✔           |  ✔            |     |
+| német      | `de`          | ✔ \*     | ✔           |  ✔           |     |
 | görög       | `el`          | ✔ \*     |             |            |     |
 | magyar   | `hu`          |           |             |  ✔ \*          |     | 
-| olasz     | `it`          | ✔ \*     | ✔           |  ✔ \*           |     |
-| japán    | `ja`          |          | ✔           |  ✔ \*          |     |
+| olasz     | `it`          | ✔ \***     | ✔           |  ✔ \*           |     |
+| japán    | `ja`          | ✔ \***         | ✔           |  ✔ \*          |     |
 | koreai      | `ko`          |          | ✔           |  ✔ \*          |     |
-| Norvég (bokmal) | `no`  | ✔ \*     |  ✔          | ✔ \*            |     |
+| Norvég (nyelven) | `no`  | ✔ \*     |  ✔          | ✔ \*            |     |
 | lengyel      | `pl`          | ✔ \*     |  ✔          |  ✔ \*           |     |
-| portugál (általános) | `pt-PT`| ✔        |  ✔          | ✔ \*      |`pt` Emellett elfogadva|
+| portugál (általános) | `pt-PT`| ✔        |  ✔          | ✔ \*      |`pt`szintén elfogadva|
 | portugál (brazíliai)   | `pt-BR`|          |  ✔   |  ✔ \*       |     |
 | orosz     | `ru`          | ✔ \*     | ✔           |  ✔ \*           |     |
-| spanyol     | `es`          | ✔        |            |   ✔ \*\*      |     | 
+| spanyol     | `es`          | ✔        | ✔           |   ✔ \*\*      |     | 
 | svéd     | `sv`          | ✔ \*     | ✔           |   ✔ \*          |     |
 | török     | `tr`          | ✔ \*     |             |   ✔ \*          |  |
 
-\* Nyelvi támogatás az előzetes verzióban
+\*A nyelvi támogatás előzetes verzióban érhető el
 
-\*\* Megnevezett entitások felismerése és [entitáskapcsolás](how-tos/text-analytics-how-to-entity-linking.md) is ezen a nyelven érhető el.    
+\*\*A [nevesített entitások felismerése](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-ner) és az [entitások összekapcsolása](how-tos/text-analytics-how-to-entity-linking.md#entity-linking) egyaránt elérhető ehhez a nyelvhez.  
+
+\** * Elérhető [Hangulatelemzés v3 nyilvános előzetes](https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis#sentiment-analysis-v3-public-preview) verzióban
 
 ## <a name="see-also"></a>Lásd még
 
-[Cognitive Services – dokumentáció lap](https://docs.microsoft.com/azure/cognitive-services/)   
+[Cognitive Services dokumentációs oldal](https://docs.microsoft.com/azure/cognitive-services/)   
 [A Cognitive Services termékoldala](https://azure.microsoft.com/services/cognitive-services/)

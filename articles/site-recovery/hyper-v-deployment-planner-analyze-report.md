@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 3/20/2019
 ms.author: mayg
 ms.openlocfilehash: 7bfe382ac1a175aafb4944dffa8d12a372f4fb70
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286499"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60772729"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Az Azure Site Recovery Deployment Planner jelentés elemzése
 Ez a cikk az Azure Site Recovery Deployment Planner Hyper-V – Azure forgatókönyvére vonatkozó Excel-jelentés táblázatait ismerteti.
@@ -33,13 +33,13 @@ A Helyszíni összefoglalás munkalap áttekintést nyújt a vizsgált Hyper-V-k
 
 **Átlagos száma kompatibilis virtuális gépenként lemezek**: Minden kompatibilis virtuális gépen alapján számított átlagos száma.
 
-**Átlagos lemezméret (GB)**: Az átlagos alapján számított átlagos lemezméret az összes kompatibilis virtuális gépek.
+**Átlagos lemezméret (GB)** : Az átlagos alapján számított átlagos lemezméret az összes kompatibilis virtuális gépek.
 
-**Desired RPO (perc)**: Vagy az alapértelmezett helyreállításipont-célkitűzés a értéke vagy a "DesiredRPO" paraméterhez szükséges sávszélesség becslése érdekében a jelentés elkészítésekor.
+**Desired RPO (perc)** : Vagy az alapértelmezett helyreállításipont-célkitűzés a értéke vagy a "DesiredRPO" paraméterhez szükséges sávszélesség becslése érdekében a jelentés elkészítésekor.
 
-**Kívánt sávszélesség (Mbps)**: A megadott érték a "Bandwidth" paraméterhez a jelentéskészítéskor az elérhető helyreállítási időkorlát (RPO) becslése érdekében idején.
+**Kívánt sávszélesség (Mbps)** : A megadott érték a "Bandwidth" paraméterhez a jelentéskészítéskor az elérhető helyreállítási időkorlát (RPO) becslése érdekében idején.
 
-**Megfigyelt átlagos adatváltozás naponta (GB)**: Az összes profilkészítési napon megfigyelt átlagos adatváltozás.
+**Megfigyelt átlagos adatváltozás naponta (GB)** : Az összes profilkészítési napon megfigyelt átlagos adatváltozás.
 
 ## <a name="recommendations"></a>Javaslatok 
 A Hyper-V – Azure jelentés javaslati táblázatában a következő részletek találhatók (a kiválasztott RPO szerint):
@@ -197,17 +197,17 @@ Ha például a számítási feladatok jellemzői alapján egy lemez a P20-as vag
 
 **R/W IOPS (növekedési tényezővel)-mel kiugró**: A maximális írási/olvasási iops-t a lemezen (az alapértelmezett érték 95. percentilis) a későbbi növekedési tényezővel (az alapértelmezett érték 30 százalék). Egy virtuális gép teljes írási/olvasási IOPS-értéke nem mindig egyezik meg az egyes virtuálisgép-lemezek írási/olvasási IOPS-értékeinek összegével. A virtuális gép írási/olvasási IOPS-csúcsértéke az egyes lemezeken a profilkészítési időszak alatt percenként mért írási/olvasási IOPS-értékek legmagasabb összege.
 
-**Peak Data Churn MB/s (a növekedési tényezővel)**: A lemez adatváltozásának csúcsértéke (az alapértelmezett érték 95. percentilis) a későbbi növekedési tényezővel (az alapértelmezett érték 30 százalék). A virtuális gép teljes adatváltozása nem mindig egyezik meg az egyes virtuálisgép-lemezek adatváltozásának összegével. A virtuális gép maximális adatváltozása az egyes lemezeken a profilkészítési időszak alatt percenként mért adatváltozások legmagasabb összege.
+**Peak Data Churn MB/s (a növekedési tényezővel)** : A lemez adatváltozásának csúcsértéke (az alapértelmezett érték 95. percentilis) a későbbi növekedési tényezővel (az alapértelmezett érték 30 százalék). A virtuális gép teljes adatváltozása nem mindig egyezik meg az egyes virtuálisgép-lemezek adatváltozásának összegével. A virtuális gép maximális adatváltozása az egyes lemezeken a profilkészítési időszak alatt percenként mért adatváltozások legmagasabb összege.
 
 **Az Azure Virtuálisgép-méret**: A helyszíni virtuális géphez hozzárendelt Azure Cloud Services Virtuálisgép-méretet a ideális. A hozzárendelés a helyszíni virtuális gép memóriáján, a lemezek/magok/hálózati adapterek számán és az olvasási/írási IOPS-értéken alapul. Mindig a legalacsonyabb, a helyszíni virtuális gép összes jellemzőjének megfelelő Azure-beli virtuálisgép-méretet ajánlott használni.
 
 **Lemezek száma**: A virtuális gép lemezeinek (VHD) a virtuális gép teljes száma.
 
-**Lemezméret (GB)**: A virtuális gép összes lemezének teljes mérete. Az eszköz a virtuális gép egyes lemezeinek méretét is megjeleníti.
+**Lemezméret (GB)** : A virtuális gép összes lemezének teljes mérete. Az eszköz a virtuális gép egyes lemezeinek méretét is megjeleníti.
 
 **Magok**: A virtuális gép processzormagjainak száma.
 
-**Memória (MB)**: A virtuális gép RAM.
+**Memória (MB)** : A virtuális gép RAM.
 
 **Hálózati adapterek**: A virtuális gép hálózati adaptereinek száma.
 
@@ -254,15 +254,15 @@ A Site Recovery Deployment Planner által létrehozott Excel-jelentésben az ös
 
 **R/W IOPS (növekedési tényezővel)-mel kiugró**: A lemez IOPS csúcs munkaterhelés (az alapértelmezett érték 95. percentilis) a későbbi növekedési tényezővel (az alapértelmezett érték 30 százalék). A virtuális gép teljes írási/olvasási IOPS-értéke nem mindig egyezik meg az egyes virtuálisgép-lemezek írási/olvasási IOPS-értékeinek összegével. A virtuális gép írási/olvasási IOPS-csúcsértéke az egyes lemezeken a profilkészítési időszak alatt percenként mért írási/olvasási IOPS-értékek legmagasabb összege.
 
-**Peak Data Churn (MB/s) (a növekedési tényezővel)**: A lemez adatváltozásának csúcsértéke (az alapértelmezett érték 95. percentilis) a későbbi növekedési tényezővel (az alapértelmezett érték 30 százalék). Vegye figyelembe, hogy a virtuális gép teljes adatváltozása nem mindig egyezik meg az egyes virtuálisgép-lemezek adatváltozásának összegével. A virtuális gép maximális adatváltozása az egyes lemezeken a profilkészítési időszak alatt percenként mért adatváltozások legmagasabb összege.
+**Peak Data Churn (MB/s) (a növekedési tényezővel)** : A lemez adatváltozásának csúcsértéke (az alapértelmezett érték 95. percentilis) a későbbi növekedési tényezővel (az alapértelmezett érték 30 százalék). Vegye figyelembe, hogy a virtuális gép teljes adatváltozása nem mindig egyezik meg az egyes virtuálisgép-lemezek adatváltozásának összegével. A virtuális gép maximális adatváltozása az egyes lemezeken a profilkészítési időszak alatt percenként mért adatváltozások legmagasabb összege.
 
 **Lemezek száma**: A virtuális gép VHD-inek teljes száma.
 
-**Lemezméret (GB)**: A virtuális gép összes lemezének teljes beállítási mérete. Az eszköz a virtuális gép egyes lemezeinek méretét is megjeleníti.
+**Lemezméret (GB)** : A virtuális gép összes lemezének teljes beállítási mérete. Az eszköz a virtuális gép egyes lemezeinek méretét is megjeleníti.
 
 **Magok**: A virtuális gép processzormagjainak száma.
 
-**Memória (MB)**: A virtuális gép RAM mennyisége.
+**Memória (MB)** : A virtuális gép RAM mennyisége.
 
 **Hálózati adapterek**: A virtuális gép hálózati adaptereinek száma.
 
@@ -298,9 +298,9 @@ A munkalapon szerepelnek a Hyper-V kiszolgálók (amelyeken a VHD-k megtalálhat
 
 **A Hyper-V-gazdagép**: Profilkészítés Hyper-V kiszolgálók listája. Ha egy kiszolgáló egy Hyper-V fürt részét képezi, az összes fürtcsomópont csoportosítva lesz.
 
-**Volume (VHD útvonala)**: Minden olyan kötete, egy Hyper-V-gazdagép, ahol a VHD/vhdx-fájlokat találhatók. 
+**Volume (VHD útvonala)** : Minden olyan kötete, egy Hyper-V-gazdagép, ahol a VHD/vhdx-fájlokat találhatók. 
 
-**Szabad hely (GB)**: A szabad terület a köteten.
+**Szabad hely (GB)** : A szabad terület a köteten.
 
 **Teljes tárterület a köteten (GB) szükséges**: A teljes szabad tárterület a köteten a sikeres kezdeti és változásreplikációhoz szükséges. 
 
@@ -327,9 +327,9 @@ Ha minden kötet esetében megfelelt a javasolt helyszíni tárterület-követel
 
 **Megjegyzések**: Ha bármilyen műveletre szükség egy virtuális gép egy meghatározott kötete esetében, az itt elérhető a megjegyzést. Ha például nem érhető el elegendő szabad terület egy köteten, akkor megjelenik az „Add additional storage to protect this VM” (Adjon hozzá további tárterületet a virtuális gép levédéséhez) megjegyzés.
 
-**Volume (VHD útvonala)**: A kötet neve, a virtuális gép VHD-ket. 
+**Volume (VHD útvonala)** : A kötet neve, a virtuális gép VHD-ket. 
 
-**Szabad hely a köteten (GB)**: A virtuális Géphez tartozó köteten lévő szabad terület. A köteteken lévő elérhető szabad terület kiszámításakor a rendszer figyelembe veszi az előző kötegek virtuális gépei – amelyeknek a VHD-i egyazon köteten találhatók – változásreplikációja által felhasznált lemezterületet is. 
+**Szabad hely a köteten (GB)** : A virtuális Géphez tartozó köteten lévő szabad terület. A köteteken lévő elérhető szabad terület kiszámításakor a rendszer figyelembe veszi az előző kötegek virtuális gépei – amelyeknek a VHD-i egyazon köteten találhatók – változásreplikációja által felhasznált lemezterületet is. 
 
 Például tegyük fel, hogy a VM1, VM2 és VM3 virtuális gép egy köteten található (E:\VHDpath). A replikáció előtt a köteten 500 GB szabad terület van. A VM1 gép az 1. köteg része, a VM2 a 2. kötegé, a VM3 pedig a 3. kötegé. A VM1 által 500 GB szabad terület érhető el. A VM2 esetében a szabad terület 500 GB – ennyire van szükség a VM1 változásreplikációjához. Ha a VM1-nek 300 GB területre van szüksége a változásreplikációhoz, akkor a VM2 számára 500 GB - 300 GB = 200 GB szabad terület lesz elérhető. A VM2-nek hasonló módon 300 GB területre van szüksége a változásreplikációhoz. A VM3 számára 200 GB - 300 GB = -100 GB szabad terület lesz elérhető.
 

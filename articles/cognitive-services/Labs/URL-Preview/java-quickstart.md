@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Projekt URL-cím előnézete, a Java'
+title: 'Gyors útmutató: Projekt URL-címének előnézete, Java'
 titlesuffix: Azure Cognitive Services
 description: Az URL-cím előnézete projekt Java nyelvvel való használatába bevezető szkriptminta.
 services: cognitive-services
@@ -9,25 +9,26 @@ ms.service: cognitive-services
 ms.subservice: url-preview
 ms.topic: quickstart
 ms.date: 04/24/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: f4acab2cb4522048f4a78b12ca41161695a31e18
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.author: rosh
+ROBOTS: NOINDEX
+ms.openlocfilehash: ec9d9757a776601bdf79b796cf6b7b2987411257
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259601"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705175"
 ---
-# <a name="quickstart-url-preview-with-java"></a>Gyors útmutató: Java-URL-cím előnézete
+# <a name="quickstart-url-preview-with-java"></a>Gyors útmutató: URL-előnézet Javával
 
 Az alábbi Java-példa létrehoz egy URL-előnézetet a SwiftKey webhelyhez: https://swiftkey.com/en.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Hozzáférési kulcs lekérése a [Cognitive Services Labs](https://aka.ms/answersearchsubscription) ingyenes próbaverziójához
+Hozzáférési kulcs lekérése a [Cognitive Services Labs](https://labs.cognitive.microsoft.com/en-us/project-answer-search) ingyenes próbaverziójához
 
 ## <a name="request"></a>Kérés 
 
-Az alábbi kód létrehoz egy `WebRequest`, beállítja a hozzáférési kulcs fejléc, és hozzáad egy lekérdezési karakterláncot a "https:\//swiftkey.com/en".  Ezután elküldi a kérést, és hozzárendeli a választ egy sztringhez, hogy az tartalmazza a JSON-szöveget.
+A következő kód létrehoz egy `WebRequest`, beállítja a hozzáférési kulcs fejlécét, és hozzáadja a "https:\//Swiftkey.com/en" lekérdezési karakterláncot.  Ezután elküldi a kérést, és hozzárendeli a választ egy sztringhez, hogy az tartalmazza a JSON-szöveget.
 
 ```
     // construct URL of search request (endpoint + query string)

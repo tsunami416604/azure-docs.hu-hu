@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: robinsh
-ms.openlocfilehash: 21758d112cd7eaf45b8b279cf2a6f6060c44c9c1
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 6f070462dca6e835504a33014a7ed48e9949f874
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515845"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67432632"
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>Hozzon létre egy IoT hubra az Azure portal használatával
 
@@ -36,11 +36,11 @@ A beállítások egy meglévő IoT hub az IoT Hub panel a létrehozása után m�
 
 **Díjszabás és méretezés**: Ez a tulajdonság segítségével migrálása másik tarifacsomagra vagy csak az IoT Hub-egységek. 
 
-**Műveletek figyelése**: a különböző figyelési kategóriák ki- vagy bekapcsolja, például az eszköz a felhőbe irányuló üzenetek vagy a felhőből az eszközre irányuló üzenetek kapcsolatos események naplózását.
+**Műveletek figyelése**: A különböző figyelési kategóriák be és ki, például az eszköz a felhőbe irányuló üzenetek vagy a felhőből az eszközre irányuló üzenetek kapcsolatos események naplózását.
 
 **IP-szűrő**: Adjon meg egy IP-címtartományt, amely elfogadását, vagy az IoT hub által elutasítva.
 
-**Tulajdonságok**: tulajdonságok listáját jeleníti meg, hogy másolja, majd használja máshol, például az erőforrás-azonosító, erőforráscsoport, helye és így tovább.
+**Tulajdonságok**: Tulajdonságok listáját jeleníti meg, hogy másolja, majd használja máshol, például az erőforrás-azonosító, erőforráscsoport, helye és így tovább.
 
 ### <a name="shared-access-policies"></a>Megosztott elérési házirendek
 
@@ -50,13 +50,15 @@ Kattintson a **Hozzáadás** megnyitásához a **hozzáadása egy megosztott el�
 
 ![Képernyőfelvétel: a megosztott elérési szabályzat hozzáadása](./media/iot-hub-create-through-portal/iot-hub-add-shared-access-policy.png)
 
-* A **jegyzék olvasása** és **jegyzék írása** házirendek jogosultságokat olvasási és írási hozzáférést biztosít az identitásjegyzékhez. Az írási lehetőség kiválasztása automatikusan úgy dönt, az olvasási lehetőség.
+* A **jegyzék olvasása** és **jegyzék írása** házirendek jogosultságokat olvasási és írási hozzáférést biztosít az identitásjegyzékhez. Ezek az engedélyek segítségével háttérbeli felhőszolgáltatásokat eszközidentitások kezelése. Az írási lehetőség kiválasztása automatikusan úgy dönt, az olvasási lehetőség.
 
-* A **szolgáltatás csatlakozása** házirend engedélyt ad a Szolgáltatásvégpontok eléréséhez **kap az eszközről a felhőbe**. 
+* A **szolgáltatás csatlakozása** házirend engedélyt ad a Szolgáltatásvégpontok eléréséhez. Ezt az engedélyt az üzenetek küldése és fogadása eszközökön is frissítése és az eszköz iker és modul ikereszköz adatok olvasása a háttér-felhőszolgáltatások használják.
 
-* A **eszköz csatlakozni** házirend engedélyt ad az IoT Hub eszközoldali végpontokon használatával üzenetek küldése és fogadása.
+* A **eszköz csatlakozni** házirend engedélyt ad az IoT Hub eszközoldali végpontokon használatával üzenetek küldése és fogadása. Ez az engedély küld és fogad üzeneteket egy IoT hubot, frissítése és eszköz ikereszköz és modul ikereszköz adatok olvasását és fájlt töltsön fel az eszközök használják.
 
 Kattintson a **létrehozás** hozzáadása az újonnan létrehozott szabályzat a meglévő listára.
+
+További részletes információ a konkrét engedélyeket által biztosított hozzáférést: [az IoT Hub engedélyekkel](./iot-hub-devguide-security.md#iot-hub-permissions).
 
 ## <a name="message-routing-for-an-iot-hub"></a>IoT hub üzenet-útválasztás
 

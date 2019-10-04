@@ -1,25 +1,18 @@
 ---
-title: Közös hozzáférésű jogosultságkód URI Azonosítójának lekérése a Microsoft Azure-alapú Virtuálisgép-lemezkép |} A Microsoft Docs
+title: Közös hozzáférésű jogosultságkód URI Azonosítójának lekérése a Microsoft Azure-alapú Virtuálisgép-lemezkép |} Az Azure Marketplace-en
 description: Azt ismerteti, hogyan tehet szert a közös hozzáférésű jogosultságkód (SAS) URI-azonosítóját a Virtuálisgép-lemezkép.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: pbutlerm
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 10/19/2018
-ms.author: pbutlerm
-ms.openlocfilehash: c21fa3cf819f48dcda46f2d444ed52bc2eb9ae3d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: pabutler
+ms.openlocfilehash: 4da82b2f6aaa3fc664d2e91b80722329533b0cd0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58113520"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64938664"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>A Virtuálisgép-lemezkép közös hozzáférésű jogosultságkód URI Azonosítójának lekérése
 

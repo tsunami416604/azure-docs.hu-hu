@@ -1,6 +1,6 @@
 ---
-title: Azure Stream Analytics-feladat indítása
-description: Ez a cikk ismerteti a Stream Analytics-feladat elindítása.
+title: Azure Stream Analytics-feladatok indítása
+description: Ez a cikk azt ismerteti, hogyan indíthat el egy Stream Analytics feladatot a Azure Portal, a PowerShell és a Visual Studio használatával.
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
@@ -8,43 +8,43 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 9bc3e4132919e5fc5baadc78841e66efd3c34bcd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 1e4cb63accf7e89ac02451e9c25b9902a8a10812
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59005938"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173275"
 ---
-# <a name="how-to-start-an-azure-stream-analytics-job"></a>Azure Stream Analytics-feladat indítása
+# <a name="how-to-start-an-azure-stream-analytics-job"></a>Azure Stream Analytics-feladatok indítása
 
-Az Azure Stream Analytics-feladat az Azure Portalon, a Visual Studio és a PowerShell használatával elindíthatja. Amikor elindít egy feladatot, ki kell választania egy idő, amíg a feladat kimeneti létrehozásának megkezdéséhez. Az Azure portal, a Visual Studio és a PowerShell is állítja a kezdési időpont különböző módszereket. Azokat a módszereket az alábbiakban tekintheti át.
+A Azure Stream Analytics feladatot a Azure Portal, a Visual Studio és a PowerShell használatával indíthatja el. Amikor elindít egy feladatot, ki kell választania egy időpontot a kimenet létrehozásának megkezdéséhez. A Azure Portal, a Visual Studio és a PowerShell mindegyike különböző módszerekkel rendelkezik a kezdési idő beállításához. Ezek a módszerek alább olvashatók.
 
-## <a name="start-options"></a>Indítsa el a beállítások
-A három alábbi beállítások érhetők el a feladat elindításához. Vegye figyelembe, hogy a fentiekben említett mindig címében megadottaktól [TIMESTAMP BY](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics). Ha a TIMESTAMP BY nincs megadva, érkezési ideje lesz használható.
-* **Most már**: Lehetővé teszi a kiindulási pont, a kimeneti esemény streamelése ugyanaz, mint amikor a feladat elindult. A historikus operátor használata esetén (pl. időablak LAG vagy ILLESZTÉSI), az Azure Stream Analytics lesz automatikusan nézze meg az adatokat a bemeneti forrás. Például ha "Most" indít el egy feladatot, és ha a lekérdezés egy 5 percenként Átfedésmentes ablak használ, az Azure Stream Analytics törekszik 5 perccel ezelőtt, a bemeneti adatok.
-Az első lehetséges kimeneti esemény kellene egyenlő vagy nagyobb, mint az aktuális időt egy időbélyeget, és az ASA garantálja, hogy az összes bemeneti események, amelyek logikailag járulhatnak hozzá a kimenetet a létezik-e. Ha például nem részleges ablakos összesítéseket jönnek létre. Mindig a teljes összesített értéket.
+## <a name="start-options"></a>Indítási beállítások
+A feladatok elindításához a következő három lehetőség áll rendelkezésre: Vegye figyelembe, hogy az alább említett időpontok a következő [](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics)időbélyegzővel vannak megadva:. Ha a TIMESTAMP BY paraméter nincs megadva, a rendszer az érkezési időt fogja használni.
+* **Most**: A kimeneti esemény kiindulási pontja ugyanaz, mint a feladatok indításakor. Ha egy időbeli operátort (például időablakot, KÉSÉSt vagy CSATLAKOZÁSt) használ, Azure Stream Analytics automatikusan visszakeresi a bemeneti forrásban lévő adatokat. Ha például elindít egy "Now" feladatot, és ha a lekérdezés 5 perces késleltetési időszakot használ, Azure Stream Analytics 5 perccel ezelőtt keres adatokat a bemenetben.
+Az első lehetséges kimeneti esemény időbélyege az aktuális időpontnál nagyobb vagy annál későbbi, a ASA pedig garantálja, hogy az összes olyan bemeneti esemény, amely logikailag hozzájárulhat a kimenethez, a rendszer elvégezte a számítást. A rendszer például nem hoz létre részleges ablakos összesítéseket. Mindig a teljes aggregált érték.
 
-* **Egyéni**: Kiválaszthatja, hogy a kimenet a kiindulási pont. Hasonlóan a **most** beállítást, az Azure Stream Analytics automatikusan beolvassa az adatokat, ezen időpont előtti historikus operátor használata esetén 
+* **Egyéni**: Kiválaszthatja a kimenet kezdőpontját. A **most** lehetőséghez hasonlóan a Azure stream Analytics automatikusan beolvassa az adott időpontot, ha egy ideiglenes operátor van használatban 
 
-* **Utolsó leállítás időpontjában**. Ez a beállítás érhető el a feladat korábban elindult, de volt leállításakor manuálisan vagy sikertelen volt. Ez a beállítás kiválasztásakor az Azure Stream Analytics használatával a legutóbbi kimeneti indítsa újra a feladatot, így adatvesztés. Ehhez hasonlóan az előző beállítások, az Azure Stream Analytics automatikusan az adatok beolvasása ezen időpont előtti historikus operátor használata esetén. Több bemeneti partíciók előfordulhat, hogy több különböző ideje lesz, mivel a legkorábbi leállási idő, az összes partícióra szolgál, emiatt néhány ismétlődések előfordulhat, hogy látható a kimeneti. További információ a pontosan-egyszeri feldolgozását érhetők el az oldalon [esemény kézbesítési garanciával könnyítik](https://docs.microsoft.com/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics).
+* **Utolsó leállítva**. Ez a beállítás akkor érhető el, ha a feladatot korábban elindították, de manuálisan vagy sikertelenül leállították. Ha ezt a beállítást választja, Azure Stream Analytics fogja használni az utolsó kimeneti időt a feladatok újraindításához, így az adatok nem vesznek el. Az előző beállításokhoz hasonlóan Azure Stream Analytics automatikusan beolvassa az adott időpontot, ha egy időbeli operátor van használatban. Mivel több bemeneti partíció is rendelkezhet különböző időponttal, a rendszer az összes partíció legkorábbi leállítási idejét használja. Ennek eredményeképpen előfordulhat, hogy néhány másodpéldány látható a kimenetben. A pontosan egyszeri feldolgozással kapcsolatos további információk az [esemény](https://docs.microsoft.com/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics)-kézbesítési garanciák lapon érhetők el.
 
 
 ## <a name="azure-portal"></a>Azure Portal
 
-Keresse meg a feladatot az Azure Portalon, és válassza a **Start** az Áttekintés oldalon. Válassza ki a **feladatkimenet kezdési idő** majd **Start**.
+A Azure Portalban navigáljon a feladatokhoz, és válassza a **Start** lehetőséget az Áttekintés oldalon. Válassza ki a **feladatok kimenetének kezdési idejét** , majd kattintson a **Start**gombra.
 
-Válassza a beállítások egyikét a **feladatkimenet kezdési idő**. A lehetőségek a következők *most*, *egyéni*, és ha korábban már futtatták a feladat, *utolsó leállítás időpontjában*. Az alábbi beállításokkal kapcsolatos további információkért lásd a fenti.
+Válassza ki az egyik lehetőséget a **feladatok kimenetének kezdési idejére**. A beállítások *mostantól*, az *Egyéni*és a, ha a feladatot korábban futtatták, a *legutóbbi leállítás*után. A fenti beállításokkal kapcsolatos további információkért lásd a fenti lépéseket.
 
 ## <a name="visual-studio"></a>Visual Studio
 
-A feladatok nézetben válassza ki a zöld nyílra a feladat indításához. Állítsa be a **feladat kimeneti mód indítása** válassza **Start**. A feladat állapota változik **futó**.
+A feladatok nézetben kattintson a zöld nyíl gombra a feladatok elindításához. Állítsa be a **feladatok kimenetének indítási módját** , és válassza az **Indítás**lehetőséget. A feladatok állapota **fut**értékre változik.
 
-A három lehetőség áll rendelkezésre **feladat kimeneti mód indítása**: *JobStartTime*, *CustomTime*, és *LastOutputEventTime*. Ez a tulajdonság hiányzik, ha az alapértelmezett érték *JobStartTime*. Az alábbi beállításokkal kapcsolatos további információkért lásd a fenti.
+A **feladatok kimenetének indítási módja**három lehetőség közül választhat: *JobStartTime*, *CustomTime*és *LastOutputEventTime*. Ha ez a tulajdonság hiányzik, az alapértelmezett érték a *JobStartTime*. A fenti beállításokkal kapcsolatos további információkért lásd a fenti lépéseket.
 
 
 ## <a name="powershell"></a>PowerShell
 
-A PowerShell-lel feladat indításához használja a következő parancsmagot:
+A következő parancsmag használatával indíthatja el a feladatot a PowerShell használatával:
 
 ```powershell
 Start-AzStreamAnalyticsJob `
@@ -53,12 +53,12 @@ Start-AzStreamAnalyticsJob `
   -OutputStartMode 'JobStartTime'
 ```
 
-A három lehetőség áll rendelkezésre **OutputStartMode**: *JobStartTime*, *CustomTime*, és *LastOutputEventTime*. Ez a tulajdonság hiányzik, ha az alapértelmezett érték *JobStartTime*. Az alábbi beállításokkal kapcsolatos további információkért lásd a fenti.
+A **OutputStartMode**három lehetősége van: *JobStartTime*, *CustomTime*és *LastOutputEventTime*. Ha ez a tulajdonság hiányzik, az alapértelmezett érték a *JobStartTime*. A fenti beállításokkal kapcsolatos további információkért lásd a fenti lépéseket.
 
-További információ a `Start-AzStreamAnalyitcsJob` parancsmagot, a nézet a [Start-AzStreamAnalyticsJob referencia](/powershell/module/az.streamanalytics/start-azstreamanalyticsjob).
+A `Start-AzStreamAnalyitcsJob` parancsmaggal kapcsolatos további információkért tekintse meg a [Start-AzStreamAnalyticsJob referenciát](/powershell/module/az.streamanalytics/start-azstreamanalyticsjob).
 
 ## <a name="next-steps"></a>További lépések
 
-* [Rövid útmutató: Stream Analytics-feladat létrehozása az Azure portal használatával](stream-analytics-quick-create-portal.md)
-* [Rövid útmutató: Azure PowerShell-lel a Stream Analytics-feladat létrehozása](stream-analytics-quick-create-powershell.md)
-* [Rövid útmutató: Stream Analytics-feladat létrehozása az Azure Stream Analytics tools for Visual Studio használatával](stream-analytics-quick-create-vs.md)
+* [Rövid útmutató: Stream Analytics-feladatok létrehozása a Azure Portal használatával](stream-analytics-quick-create-portal.md)
+* [Rövid útmutató: Stream Analytics-feladatok létrehozása Azure PowerShell használatával](stream-analytics-quick-create-powershell.md)
+* [Rövid útmutató: Stream Analytics-feladatok létrehozása a Visual studióhoz készült Azure Stream Analytics Tools használatával](stream-analytics-quick-create-vs.md)

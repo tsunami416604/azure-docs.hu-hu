@@ -1,40 +1,41 @@
 ---
-title: Projekt Akusztika Bake felbontás
+title: Project akusztikai sütni-feloldás
 titlesuffix: Azure Cognitive Services
-description: Ez a fogalmi áttekintés közben Akusztika sütés durva és finom megoldások közötti különbség ismerteti.
+description: Ez a fogalmi áttekintés a durva és a kiváló megoldások közötti különbséget ismerteti az akusztikai sütések során.
 services: cognitive-services
-author: KyleStorck
+author: NoelCross
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 04/05/2019
-ms.author: KyleStorck
-ms.openlocfilehash: 7dbf63ba39c5dcdebb363cfc37a45f0216a07497
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: noelc
+ROBOTS: NOINDEX
+ms.openlocfilehash: d8eb3b2cbaf7b4e842d8338eefde756f6d381111
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59789754"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854348"
 ---
-# <a name="project-acoustics-bake-resolution"></a>Projekt Akusztika Bake felbontás
-Ez a fogalmi áttekintés közben Akusztika sütés durva és finom megoldások közötti különbség ismerteti. A munkafolyamat-sütési mintavételek lépés során ezt a beállítást válassza.
+# <a name="project-acoustics-bake-resolution"></a>Project akusztikai sütni-feloldás
+Ez a fogalmi áttekintés a durva és a kiváló megoldások közötti különbséget ismerteti az akusztikai sütések során. Ezt a beállítást a sütési munkafolyamat mintavételek lépése alatt választhatja ki.
 
-## <a name="Coarse-vs-Fine-Resolution"></a>Durva vs finom felbontás
+## <a name="Coarse-vs-Fine-Resolution"></a>Durva és részletes megoldás
 
-Az egyetlen különbség a durva és finom feloldásának beállításai között a gyakoriságot, amellyel a szimuláció történik. Részletes kétszer magas, mint durva gyakoriságot használja. Ez számos következmények az az akusztikai szimuláció:
+Az egyetlen különbség a durva és a részletes feloldási beállítások között a szimuláció végrehajtásának gyakorisága. A finomabb a gyakoriságot kétszer is felhasználja, mint durva. Ennek számos hatása van az akusztikus szimulációra:
 
-* A legnagyobb a durva kétszer finom lehető leghosszabbak, és ezért a voxels kétszer akkora.
-* A szimuláció idő voxel mérete, ami egy durva bake 16-szor gyorsabban finom bake közvetlenül kapcsolódik.
-* Nem lehet a portálok a (például ajtók vagy windows) kisebb, mint voxel szimulált. Durva beállítás okozhat egyes ezek kisebb portáljára, nem kell szimulált; ezért nem haladnak keresztül eredményes futásidőben. Láthatja, ha ez történik a voxels megtekintésével.
-* A szimuláció kisebb gyakorisággal kevesebb diffraction sarkok és élek eredményez.
-* Megbízható forrásból nem található "szürke" voxels (azaz voxels, amely tartalmazza a geometriai) belül. Ennek eredményeképpen nincs hang. Megbízható forrásból helyezi, így azok nem belül a nagyobb voxels durva finom beállítás használata esetén, mint a nagyobb nehézséget jelent.
-* A nagyobb voxels fog végberendezésébe több portálok, az alább látható módon. Az első rendszerkép használatával hoztak durva, míg a második azonos kezdőpanelje finom megoldás használatával. A piros jelöléseket aszinkronitást nincs sokkal kevesebb behatolás kezdőpanelje finom beállítások használatával. A kék vonal kezdőpanelje alapján a geometriai, míg a piros vonalat a hatékony akusztikai portál voxel méretét határozzák meg. Hogyan a behatolás játszik az adott helyzetben függ teljesen hogyan a voxels illeszkedik a geometriai, a portál, amelynek a méretét és az objektumok a jelenetben helyét határozza meg.
+* A durva hullámhossza kétszer annyit, amíg a voxels, és így a két nagy méretű.
+* A szimulációs idő közvetlenül kapcsolódik a Voxel-mérethez, így a durva sütni körülbelül 16-szor gyorsabb, mint a kiváló sütni.
+* A Voxel kisebb méretű portálok (például ajtók vagy ablakok) nem szimulálható. A durva beállítás hatására előfordulhat, hogy a kisebb portálok némelyike nem szimulálható; ezért nem adják át a hangokat futásidőben. Láthatja, hogy ez a voxels megtekintésével történik.
+* Az alsó szimuláció gyakorisága kevesebb diffrakciót eredményez a sarkok és élek körül.
+* A hangforrások nem helyezhetők el "kitöltött" voxels belül (azaz a geometriát tartalmazó voxels). Ennek eredménye nem megfelelő. Nehezebb a hangforrásokat elhelyezni, hogy ne a nagy voxels belül legyenek, mint a megfelelő beállítás használatakor.
+* A nagyobb voxels az alább látható módon több portálon is behatolnak. Az első kép durva használatával lett létrehozva, míg a második a kiváló megoldással megegyező ajtó. Ahogy azt a piros megjelölések is jelzik, a megfelelő beállítással sokkal kevésbé hatol be az ajtóba. A kék vonal a geometriában definiált ajtó, míg a piros vonal a Voxel-méret által definiált hatékony akusztikai portál. A behatolás egy adott helyzetben való kialakulásának módja attól függ, hogy a voxels hogyan épül fel a portál geometriájában, amelyet az objektumok mérete és helye határozza meg a jelenetben.
 
-![Képernyőkép a durva voxels egy kezdőpanelje, az Unreal kitöltése](media/unreal-coarse-bake.png)
+![Képernyőkép a durva voxels kitöltéséről az Unreal-ben](media/unreal-coarse-bake.png)
 
-![Az egy kezdőpanelje, az Unreal finom voxels képernyőképe](media/unreal-fine-bake.png)
+![Képernyőkép a részletes voxels az Unreal-beli ajtóban](media/unreal-fine-bake.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Próbálja ki a durva és finom feloldásának beállításai segítségével saját a [Unreal](unreal-baking.md) vagy [Unity](unity-baking.md) beépülő modulokat.
+Az [Unreal](unreal-baking.md) vagy [Unity](unity-baking.md) beépülő modullal próbálja ki a durva és a kiváló megoldási beállításokat.

@@ -1,31 +1,31 @@
 ---
-title: Kibocsátási megjegyzések a Microsoft Azure Backup Server v3
-description: Ez a cikk az ismert problémák és a lehetséges megoldások a MABS v3 kapcsolatos információkat tartalmazza.
-services: backup
-author: JYOTHIRMAISURI
-manager: vvithal
+title: A Microsoft Azure Backup Server v3 kibocsátási megjegyzései
+description: Ez a cikk a Microsoft Azure Backup Server (MABS) v3 ismert problémáit és megkerülő megoldásait ismerteti.
+ms.reviewer: v-jysur
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 11/22/2018
-ms.author: v-jysur
+ms.author: dacurwin
 ms.asset: 0c4127f2-d936-48ef-b430-a9198e425d81
-ms.openlocfilehash: d37245d7eed39ee9d219578db9e0a50d758ba9a2
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: e9c7d5f79f2af77554122b607aeae470a1145954
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660867"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827291"
 ---
-# <a name="release-notes-for-microsoft-azure-backup-server"></a>Kibocsátási megjegyzések a Microsoft Azure Backup Server
-Ez a cikk a Microsoft Azure Backup Server (MABS) V3 az ismert problémákról és megkerülő megoldásokról nyújt.
+# <a name="release-notes-for-microsoft-azure-backup-server"></a>Microsoft Azure Backup-kiszolgáló kibocsátási megjegyzései
+Ez a cikk az Microsoft Azure Backup Server (MABS) v3 ismert problémáit és megkerülő megoldásait ismerteti.
 
-##  <a name="backup-and-recovery-fails-for-clustered-workloads"></a>Biztonsági mentés és helyreállítás sikertelen lesz, a fürtözött számítási feladatokhoz
+##  <a name="backup-and-recovery-fails-for-clustered-workloads"></a>Fürtözött munkaterhelések esetén a biztonsági mentés és a helyreállítás meghiúsul
 
-**Leírás:** Fürtözött adatforrás, például a Hyper-V-fürt vagy SQL-fürt (SQL Always On) vagy az Exchange adatbázis-elérhetőségi csoportban (DAG) található a biztonsági mentési és visszaállítási MABS V2 MABS V3 való frissítés után sikertelen lesz.
+**Leírás:** A Backup/Restore művelet sikertelen a fürtözött adatforrások, például a Hyper-V-fürt vagy az SQL-fürt (SQL always on) vagy az adatbázis rendelkezésre állási csoportjában (DAG) az MABS v2 MABS v3 verzióra való frissítése után.
 
-**Kerülő:** Ennek megelőzése érdekében nyissa meg az SQL Server Management Studio (SSMS)) és a DPM-adatbázis a következő SQL-parancsfájlt futtathat:
+**Megkerülő megoldás:** Ennek elkerüléséhez nyissa meg SQL Server Management Studio (SSMS)), és futtassa a következő SQL-parancsfájlt a DPM-ADATBÁZISon:
 
-
+```sql
     IF EXISTS (SELECT * FROM dbo.sysobjects
         WHERE id = OBJECT_ID(N'[dbo].[tbl_PRM_DatasourceLastActiveServerMap]')
         AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
@@ -50,31 +50,32 @@ Ez a cikk a Microsoft Azure Backup Server (MABS) V3 az ismert problémákról é
             0
         ) FOR [IsGCed]
     GO
+```
 
 
-##  <a name="upgrade-to-mabs-v3-fails-in-russian-locale"></a>A MABS v3-as frissítés sikertelen lesz, orosz területi beállításai szerint
+##  <a name="upgrade-to-mabs-v3-fails-in-russian-locale"></a>Az MABS v3-re való frissítés meghiúsul az orosz területi beállításban
 
-**Leírás:** MABS V3 orosz területi beállítás a MABS V2 történő frissítés nem sikerül egy hibakódot **4387**.
+**Leírás:** A MABS v2 verzióról a MABS v3-re való frissítés az orosz területi beállításban meghiúsul, hibakód: **4387**.
 
-**Kerülő:** Kövesse az alábbi lépéseket a MABS v3-as frissítés orosz használatával telepítse a csomagot:
+**Megkerülő megoldás:** Az alábbi lépéseket követve frissítsen az MABS v3-re az orosz telepítési csomag használatával:
 
-1.  [Biztonsági mentés](https://docs.microsoft.com/sql/relational-databases/backup-restore/create-a-full-database-backup-sql-server?view=sql-server-2017#SSMSProcedure) az SQL-adatbázis, és távolítsa el a MABS V2 (válassza ki a védett adatok megőrzése az eltávolítás során).
-2.  Frissítse az SQL 2017 (Enterprise), és távolítsa el a verziófrissítés részeként reporting.
+1.  [Készítsen biztonsági másolatot](https://docs.microsoft.com/sql/relational-databases/backup-restore/create-a-full-database-backup-sql-server?view=sql-server-2017#SSMSProcedure) az SQL-adatbázisról, és távolítsa el a MABS v2-et (válassza a védett adat megőrzését az eltávolítás során).
+2.  Frissítsen az SQL 2017 (Enterprise) verzióra, és távolítsa el a jelentéskészítést a frissítés részeként.
 3. [Telepítés](https://docs.microsoft.com/sql/reporting-services/install-windows/install-reporting-services?view=sql-server-2017#install-your-report-server) SQL Server Reporting Services (SSRS).
-4.  [Telepítés](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017#ssms-installation-tips-and-issues-ssms-1791) SQL Server Management Studio (SSMS).
-5.  A paraméterekkel leírtak szerint jelentéskészítés konfigurálásához [SQL 2017 SSRS-konfiguráció](https://docs.microsoft.com/azure/backup/backup-azure-microsoft-azure-backup#upgrade-mabs).
+4.  [Telepítés](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) SQL Server Management Studio (SSMS).
+5.  Konfigurálja a jelentéskészítést a paraméterekkel az [SSRS-konfigurációban az SQL 2017](https://docs.microsoft.com/azure/backup/backup-azure-microsoft-azure-backup#upgrade-mabs)használatával dokumentált módon.
 6.  [Telepítés](backup-azure-microsoft-azure-backup.md) MABS V3.
-7. [Visszaállítás](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms?view=sql-server-2017) SQL használatával az ssms-ben, és futtassa a DPM-Szinkronizáló eszköz leírtak szerint [Itt](https://docs.microsoft.com/previous-versions/system-center/data-protection-manager-2010/ff634215(v=technet.10)).
-8.  Frissítse a "Verziója" tulajdonság dbo.tbl_DLS_GlobalSetting tábla a következő paranccsal:
-
+7. [Visszaállítás](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms?view=sql-server-2017) SQL a SSMS használatával és a DPM-Sync eszköz futtatása az [itt](https://docs.microsoft.com/previous-versions/system-center/data-protection-manager-2010/ff634215(v=technet.10))leírtak szerint.
+8.  Frissítse a "DataBaseVersion" tulajdonságot a dbo. tbl _DLS_GlobalSetting táblában a következő parancs használatával:
+```sql
         UPDATE dbo.tbl_DLS_GlobalSetting
         set PropertyValue = '13.0.415.0'
         where PropertyName = 'DatabaseVersion'
+```
 
-
-9.  Indítsa el az MSDPM szolgáltatást.
+9.  Indítsa el a MSDPM szolgáltatást.
 
 
 ## <a name="next-steps"></a>További lépések
 
-[Újdonságok a MABS V3](backup-mabs-whats-new-mabs.md)
+[Az MABS v3 újdonságai](backup-mabs-whats-new-mabs.md)

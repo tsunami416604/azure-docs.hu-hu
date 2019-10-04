@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/30/2016
-ms.author: annahar
-ms.openlocfilehash: b1873b770a6b4280b7098c68ecb75cc1411fe453
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.author: anavin
+ms.openlocfilehash: fcb9cc817128bce9498312d3fb016761b6382634
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650564"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612756"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>Több IP-cím hozzárendelése a virtuális gépek az Azure portal használatával
 
@@ -55,7 +55,7 @@ Hajtsa végre a következő szakaszokban áttekintendő, valamelyik hozzáadni k
 A következő lépéseket egy új privát IP-cím hozzáadása:
 
 1. A lépések elvégzéséhez a [alapvető lépéseket](#coreadd) című szakaszát.
-2. Kattintson a **Hozzáadás** parancsra. Az a **hozzáadása IP-konfiguráció** panelen megjelenő hozzon létre egy IP-konfiguráció nevű *IPConfig-4* a *10.0.0.7* , egy *statikus* magánhálózati IP-cím, majd kattintson a **OK**.
+2. Kattintson a **Hozzáadás**lehetőségre. Az a **hozzáadása IP-konfiguráció** panelen megjelenő hozzon létre egy IP-konfiguráció nevű *IPConfig-4* a *10.0.0.7* , egy *statikus* magánhálózati IP-cím, majd kattintson a **OK**.
 
     > [!NOTE]
     > Statikus IP-cím hozzáadásakor meg kell adnia egy nem használt, érvényes címet a hálózati adapter csatlakoztatva van az alhálózaton. Ha kiválasztja a cím nem érhető el, a portál megjeleníti az IP-cím X, és jelöljön ki egy másik.
@@ -87,7 +87,7 @@ Nyilvános IP-cím egy nyilvános IP-cím erőforráshoz egy beállítást. Ha e
 #### <a name="associate-the-public-ip-address-resource-to-a-new-ip-configuration"></a>Társítsa a nyilvános IP-cím erőforrás egy új IP-konfigurációhoz
 
 1. A lépések elvégzéséhez a [alapvető lépéseket](#coreadd) című szakaszát.
-2. Kattintson a **Hozzáadás** parancsra. Az a **hozzáadása IP-konfiguráció** panelen megjelenő hozzon létre egy IP-konfiguráció nevű *IPConfig-4*. Engedélyezze a **nyilvános IP-cím** , és válassza ki egy meglévő, elérhető nyilvános IP-cím erőforrás a a **nyilvános IP-cím választása** megjelenő panelen.
+2. Kattintson a **Hozzáadás**lehetőségre. Az a **hozzáadása IP-konfiguráció** panelen megjelenő hozzon létre egy IP-konfiguráció nevű *IPConfig-4*. Engedélyezze a **nyilvános IP-cím** , és válassza ki egy meglévő, elérhető nyilvános IP-cím erőforrás a a **nyilvános IP-cím választása** megjelenő panelen.
 
     Miután kiválasztotta a nyilvános IP-cím erőforrás, kattintson a **OK** és a panel bezárul. Ha nem rendelkezik egy meglévő nyilvános IP-cím, létrehozhat egyet a lépéseket követve a [hozzon létre egy nyilvános IP-cím erőforrás](#create-public-ip) című szakaszát. 
 

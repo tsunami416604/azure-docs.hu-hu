@@ -1,7 +1,7 @@
 ---
-title: A miniatűrök – Computer Vision generálása
+title: Intelligens vágású miniatűrök – Computer Vision
 titleSuffix: Azure Cognitive Services
-description: Képek a Computer Vision API használatával miniatűrök létrehozása a kapcsolódó fogalmak.
+description: A képek bélyegképek létrehozásával kapcsolatos fogalmak a Computer Vision API használatával.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,43 +11,43 @@ ms.topic: conceptual
 ms.date: 03/11/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 8bbc86f5c6fe0f30968a1ba5bd5fa28160ef6963
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 4874910f37b49990a659b48af0cf27921c3fcd5e
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60002442"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945234"
 ---
-# <a name="generating-smart-cropped-thumbnails-with-computer-vision"></a>A Computer Vision intelligens csonkolva miniatűrök létrehozása
+# <a name="generating-smart-cropped-thumbnails-with-computer-vision"></a>Intelligens vágású miniatűrök létrehozása Computer Vision
 
-A miniatűr kép csökkentett méretű reprezentációját. Miniatűr képeket és egyéb adatokat képviselő gazdaságosabb, elrendezés mobilbarát lehetővé szolgálnak. A Computer Vision API használatával intelligens levágás, a kép átméretezése együtt egy adott rendszerképhez intuitív miniatűrök létrehozása.
+A miniatűr a képek csökkentett méretű ábrázolása. A miniatűröket a képek és egyéb adatelemek a könnyebben kezelhető, elrendezésre alkalmas módon jelölik. A Computer Vision API az intelligens levágást és a rendszerkép átméretezését használja egy adott rendszerkép intuitív bélyegképek létrehozásához.
 
-A Computer Vision, miniatűrkép-generálás algoritmus a következőképpen működik:
+A Computer Vision miniatűr létrehozási algoritmus a következőképpen működik:
 
-1. A lemezképből eltávolíthatja a zavaró elemeket, és azonosíthatja a _érdeklődési körét_&mdash;a terület a fő objektumok jelenik meg a kép.
-1. Az azonosított alapján a kép levágása _érdeklődési körét_.
-1. A cél miniatűr dimenziók igazítás oldalarányának módosítása.
+1. Távolítsa el az elemeket a rendszerképből, és azonosítsa&mdash;annak a képnek a területét, amelyben a fő objektum (ok) megjelenik.
+1. A kép levágása az azonosított _terület_ alapján.
+1. Módosítsa a méretarányt úgy, hogy az illeszkedjen a cél miniatűr méreteihez.
 
-## <a name="area-of-interest"></a>Érdeklődési körét
+## <a name="area-of-interest"></a>Érdeklődési terület
 
-Ha feltölt egy képet, a Computer Vision API elemzi azt határozza meg a *érdeklődési körét*. Ebben a régióban használatával, majd határozza meg a kép levágása. A vágási művelet azonban mindig azonos lesz a kívánt oldalarány Ha meg van adva.
+Amikor feltölt egy rendszerképet, a Computer Vision API elemzi a fontos *terület*meghatározásához. Ennek a régiónak a segítségével meghatározhatja, hogyan vágja le a rendszerképet. A levágási művelet azonban mindig megegyezik a kívánt oldalaránysal, ha van ilyen.
 
-Is beszerezheti a nyers határolókeret koordinátái a azonos *érdeklődési körét* meghívásával a **areaOfInterest** API helyette. Ezután használhatja ezeket az adatokat az eredeti lemezkép módosítása azonban kívánja.
+A **areaOfInterest** API meghívásával is lekérheti az azonos *területhez* tartozó nyers határoló mezők koordinátáit. Ezt az információt használhatja, ha szeretné, hogy az eredeti rendszerkép módosítható legyen.
 
 ## <a name="examples"></a>Példák
 
-A létrehozott miniatűr széles körben függően változhat a megadott magasság, szélesség és intelligens levágás, a következő képen látható módon.
+A generált miniatűr az alábbi képen látható módon változhat, attól függően, hogy mit határoz meg a magasság, a szélesség és az intelligens levágás számára.
 
-![A vágási különféle konfigurációk melletti hegyi lemezkép](./Images/thumbnail-demo.png)
+![Egy hegyi rendszerkép a különböző vágási konfigurációk mellett](./Images/thumbnail-demo.png)
 
-Az alábbi táblázat a példában képek a Computer Vision által generált tipikus miniatűrök mutatja be. A miniatűrök a célként megadott magasság generált, és 50 képpontos, intelligens vágása szélessége engedélyezve van.
+Az alábbi táblázat a Computer Vision által generált tipikus miniatűröket mutatja be a képekhez. A bélyegképek egy adott célként megadott magasságra és 50 képpont szélességre lettek létrehozva, és az intelligens vágás engedélyezve van.
 
 | Image | Miniatűr |
 |-------|-----------|
-|![Öltözet hegyi napnyugta, és a egy személy körvonalszerűen:](./Images/mountain_vista.png) | ![Miniatűr képét Outdoor hegyi napnyugta, és a egy személy körvonalszerűen:](./Images/mountain_vista_thumbnail.png) |
-|![Egy zöld hátterű fehér flower](./Images/flower.png) | ![Vizuális elemzése Flower miniatűrje](./Images/flower_thumbnail.png) |
-|![Egy nő a tető egy apartman épület](./Images/woman_roof.png) | ![egy nő egy apartman épület a tető miniatűrképe](./Images/woman_roof_thumbnail.png) |
+|![Kültéri hegyi naplemente, egy személy sziluettje](./Images/mountain_vista.png) | ![A kültéri hegy és a naplemente miniatűrje, a személy sziluettje](./Images/mountain_vista_thumbnail.png) |
+|![Fehér virág Zöld háttérrel](./Images/flower.png) | ![A virág miniatűr nézetének elemzése](./Images/flower_thumbnail.png) |
+|![Egy lakás-épület tetején található nő](./Images/woman_roof.png) | ![egy lakás épületének tetején található nő miniatűrje](./Images/woman_roof_thumbnail.png) |
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg [rendszerképek címkézése](concept-tagging-images.md) és [lemezképek kategorizálásához](concept-categorizing-images.md).
+A [képek címkézésének](concept-tagging-images.md) és a [képek kategorizálásának](concept-categorizing-images.md)megismerése.

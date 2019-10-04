@@ -13,12 +13,12 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
-ms.openlocfilehash: 97309a24c0ab12720f968409856a16cab4ff7ac7
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: c1719064de53b79a127146d0ab034f461657cc64
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60013253"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64714889"
 ---
 # <a name="create-and-train-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Hozzon létre és betanítunk egy prediktív modellt az R az Azure SQL Database, Machine Learning Services (előzetes verzió)
 
@@ -171,7 +171,7 @@ VALUES (
 
 **Results**
 
-![Betanított modell további kimenettel](./media/sql-database-connect-query-r/r-train-model-with-additional-output.png)
+![Betanított modell további kimenettel](./media/sql-database-quickstart-r-train-score-model/r-train-model-with-additional-output.png)
 
 ## <a name="score-new-data-using-the-trained-model"></a>A betanított modell használatával új adatok pontozásához
 
@@ -239,7 +239,7 @@ VALUES (
 
    **Results**
 
-   ![Eredményhalmaz a fékezési távolság előrejelzéséhez](./media/sql-database-connect-query-r/r-predict-stopping-distance-resultset.png)
+   ![Eredményhalmaz a fékezési távolság előrejelzéséhez](./media/sql-database-quickstart-r-train-score-model/r-predict-stopping-distance-resultset.png)
 
 > [!NOTE]
 > Az alábbi példában a `str` függvény bekerül a tesztelési fázisban, nézze meg a sémában az R. a visszaadott adatok Később az utasítással távolíthatja el.
@@ -248,10 +248,9 @@ VALUES (
 
 ## <a name="next-steps"></a>További lépések
 
-A Machine Learning-szolgáltatások további információkért lásd az alábbi cikkeket. Néhány, az alábbi cikkek, amelyek közül az SQL Server legtöbb információ akkor is vonatkozik a Machine Learning-szolgáltatások (az r nyelv) Azure SQL Database-ben.
+További információ az Azure SQL Database Machine Learning Services (előzetes verzió) R-rel tekintse meg a következő cikkekben talál.
 
-- [Az Azure SQL Database Machine Learning-szolgáltatások (az R)](sql-database-machine-learning-services-overview.md)
-- [SQL Server Machine Learning-szolgáltatások](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning)
-- [Oktatóanyag: Ismerje meg, az r nyelv használatát az SQL Server adatbázis-elemzés](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)
-- [Teljes körű adatelemzési útmutató az R-hez és az SQL Serverhez](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough)
-- [Oktatóanyag: RevoScaleR R-függvények használata az SQL Server-adatok](https://docs.microsoft.com/sql/advanced-analytics/tutorials/deepdive-data-science-deep-dive-using-the-revoscaler-packages)
+- [Az Azure SQL Database Machine Learning-szolgáltatások (előzetes verzió) R-rel](sql-database-machine-learning-services-overview.md)
+- [Hozzon létre, és egyszerű R-szkriptek futtatása az Azure SQL Database, Machine Learning Services (előzetes verzió)](sql-database-quickstart-r-create-script.md)
+- [Az Azure SQL Database, Machine Learning-Szolgáltatásokoz (előzetes verzió) használatával speciális R-függvények írása](sql-database-machine-learning-services-functions.md)
+- [R- és SQL adatok használata Azure SQL Database, Machine Learning Services (előzetes verzió)](sql-database-machine-learning-services-data-issues.md)

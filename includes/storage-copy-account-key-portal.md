@@ -8,21 +8,20 @@ ms.topic: include
 ms.date: 11/11/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 13e99f1dc84c5345ba04fcfc412b8ef4237cc581
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 6ffc91a6e01cfb479a4090bcf13f15a7bd20095c
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51285759"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203937"
 ---
 ## <a name="copy-your-credentials-from-the-azure-portal"></a>A hitelesítési adatok másolása az Azure Portalról
 
-A mintaalkalmazásnak hitelesítenie kell a tárfiókhoz való hozzáférést. Adja meg a tárfiók hitelesítő adatait az alkalmazás a kapcsolati karakterlánc formájában. A tárfiók hitelesítő adatainak megtekintéséhez a következőt kell tennie:
+A mintaalkalmazásnak hitelesítenie kell a tárfiókhoz való hozzáférést. Adja meg a Storage-fiók hitelesítő adatait az alkalmazáshoz egy kapcsolódási karakterlánc formájában. A tárfiók hitelesítő adatainak megtekintéséhez a következőt kell tennie:
 
-1. Lépjen az [Azure Portalra](https://portal.azure.com).
-2. Keresse meg a Storage-fiókját.
-3. A tárfiók áttekintésének **Beállítások** szakaszában válassza a **Hozzáférési kulcsok** elemet. Megtekintheti a fiókhoz tartozó hozzáférési kulcsokat és a kapcsolati sztringet.
-4. Jegyezze fel tárfiókja nevét, mert a hitelesítésnél szüksége lesz rá.   
-5. Keresse meg a **Kulcs** értéket a **key1** területen, majd kattintson a **Másolás** gombra a fiókkulcs másolásához.
+1. A [Azure Portal](https://portal.azure.com) nyissa meg a Storage-fiókját.
+1. A Storage-fiók áttekintése **Beállítások** szakaszában válassza a **hozzáférési kulcsok** lehetőséget a fiók hozzáférési kulcsainak és a kapcsolati karakterlánc megjelenítéséhez.
+1. Jegyezze fel tárfiókja nevét, mert a hitelesítésnél szüksége lesz rá.   
+1. Keresse meg a **kulcs** értékét a **key1**alatt, és válassza a **Másolás** elemet a fiók kulcsának másolásához.
 
     ![A fiókkulcs Azure Portalról történő másolását bemutató képernyőkép](media/storage-copy-account-key-portal/portal-account-key.png)

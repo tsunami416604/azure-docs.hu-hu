@@ -15,11 +15,11 @@ ms.date: 02/20/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: ebced83346a7b130598e4a5f49a72d51ffd18e4f
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56584896"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62118773"
 ---
 # <a name="create-custom-roles-for-azure-resources-using-azure-cli"></a>Egyéni szerepkörök az Azure CLI használatával Azure-erőforrások létrehozása
 
@@ -239,5 +239,5 @@ az role definition delete --name "Virtual Machine Operator"
 ## <a name="next-steps"></a>További lépések
 
 - [Oktatóanyag: Az Azure-erőforrások Azure CLI-vel egyéni szerepkör létrehozása](tutorial-custom-role-cli.md)
-- [Egyéni szerepkörök az Azure-erőforrásokhoz](custom-roles.md)
+- [Egyéni szerepkörök Azure-erőforrásokhoz](custom-roles.md)
 - [Az Azure Resource Manager erőforrás-szolgáltatói műveletek](resource-provider-operations.md)

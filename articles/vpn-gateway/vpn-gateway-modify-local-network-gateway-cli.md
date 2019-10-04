@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/29/2017
 ms.author: cherylmc
-ms.openlocfilehash: a8f0c95acf872431fe7538acbd4ff1023c1496c0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 20e8269f0ee7463dcff9a5f66e46ebd81cb3df84
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46961229"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60652854"
 ---
 # <a name="modify-local-network-gateway-settings-using-the-azure-cli"></a>Az Azure CLI használatával a helyi hálózati átjáró beállításainak módosítása
 
@@ -35,7 +35,7 @@ Egyes esetekben a helyi hálózati átjáró címelőtagja vagy az átjáró IP-
 
 ## <a name="before"></a>Előkészületek
 
-Telepítse a CLI-parancsok (2.0-s vagy újabb) legújabb verzióját. A CLI-parancsok telepítéséről további információkért lásd: [az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Telepítse a CLI-parancsok (2.0-s vagy újabb) legújabb verzióját. Információk a CLI-parancsok telepítéséről: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 [!INCLUDE [CLI-login](../../includes/vpn-gateway-cli-login-include.md)]
 

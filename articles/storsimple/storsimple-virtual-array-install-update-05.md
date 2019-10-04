@@ -1,5 +1,5 @@
 ---
-title: 0.5-ös frissítés telepítése a StorSimple Virtual Array |} A Microsoft Docs
+title: 0\.5-ös frissítés telepítése a StorSimple Virtual Array |} A Microsoft Docs
 description: A StorSimple Virtual Array webes felhasználói felület használata az Azure portal és a gyorsjavítások módszerrel frissítés alkalmazása
 services: storsimple
 documentationcenter: NA
@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 05/10/2017
 ms.author: alkohli
 ms.openlocfilehash: e09ff4bcbc141b1a1f80bc278918a291639c1885
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58005406"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61445420"
 ---
 # <a name="install-update-05-on-your-storsimple-virtual-array"></a>A StorSimple Virtual Array 0.5-ös frissítés telepítése
 
@@ -30,9 +30,9 @@ Ez a cikk a StorSimple Virtual Array a 0.5-ös frissítés telepítése a helyi 
 Mielőtt alkalmazná a frissítést, javasoljuk, hogy tegye meg a kötetek vagy megosztások kapcsolat nélküli módban a gazdagépen első és az eszköz majd. Ezzel a lehető legkisebbre csökkenti az adatsérülés esélyét. Miután a kötetek vagy megosztások offline állapotban, akkor kell is manuális biztonsági mentést az eszköz.
 
 > [!IMPORTANT]
-> - 0.5-ös frissítés megfelel **10.0.10290.0** szoftververzió az eszközön. Ez a frissítés újdonsága az információk, [kibocsátási megjegyzései 0.5-ös frissítés](storsimple-virtual-array-update-05-release-notes.md).
+> - 0\.5-ös frissítés megfelel **10.0.10290.0** szoftververzió az eszközön. Ez a frissítés újdonsága az információk, [kibocsátási megjegyzései 0.5-ös frissítés](storsimple-virtual-array-update-05-release-notes.md).
 >
-> - Ha 0.2-es frissítést futtatja, vagy később, akkor javasoljuk, hogy telepítse a frissítéseket az Azure Portalon keresztül. 0.1-es frissítés vagy a GA szoftververziók futtatásakor 0.5-ös frissítés telepítése a helyi webes felhasználói felületen a gyorsjavítás módszert kell használnia.
+> - Ha 0.2-es frissítést futtatja, vagy később, akkor javasoljuk, hogy telepítse a frissítéseket az Azure Portalon keresztül. 0\.1-es frissítés vagy a GA szoftververziók futtatásakor 0.5-ös frissítés telepítése a helyi webes felhasználói felületen a gyorsjavítás módszert kell használnia.
 >
 > - Ne feledje, hogy egy frissítés vagy gyorsjavítás telepítése az eszköz újraindul. Tekintve, hogy a StorSimple Virtual Array egy egyetlen csomóponttal rendelkező eszköz, a folyamatban lévő összes i/o megszakad, és a az eszköz állásidő élményhez.
 

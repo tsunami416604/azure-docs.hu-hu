@@ -1,6 +1,6 @@
 ---
-title: Fájlok feltöltése Azure Media Services-fiók, REST használatával |} A Microsoft Docs
-description: Megtudhatja, hogyan médiatartalmak kerülnek a Media Services létrehozása és feltöltése az eszközök által.
+title: Fájlok feltöltése egy Azure Media Services-fiókba REST használatával | Microsoft Docs
+description: Megtudhatja, hogyan szerezhet be médiatartalmakat Media Servicesba eszközök létrehozásával és feltöltésével.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,54 +13,54 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: a241f66adecbab1d0b1462f379d3765d6c1de252
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 78c07330558241c889f284bcaf7302ce1327b5b8
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55995390"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70389802"
 ---
-# <a name="upload-files-into-a-media-services-account-using-rest"></a>Fájlok feltöltése Media Services-fiók REST használatával
+# <a name="upload-files-into-a-media-services-account-using-rest"></a>Fájlok feltöltése egy Media Services-fiókba REST használatával
 
-A Media Services szolgáltatásban, a digitális fájlok feltöltése az eszközhöz társított blob-tárolóba. A [eszköz](https://docs.microsoft.com/rest/api/media/operations/asset) entitás tartalmazhat videókhoz, audiofájlokhoz, képeket, miniatűröket, szöveges nyomon követi és akadálymentes felirat fájlokat (és mindezen fájlok metaadatait). Ha a fájlok feltöltése az eszközintelligencia-tárolóba, a lesz biztonságosan tárolva a tartalmat a felhő további feldolgozás és streamelés céljából.
+Media Services a digitális fájlokat feltölti egy eszközhöz társított blob-tárolóba. Az [eszköz](https://docs.microsoft.com/rest/api/media/operations/asset) entitás tartalmazhat videó-, hang-, kép-, miniatűr-gyűjtemények, szöveg-és zárt feliratú fájlokat (valamint a fájlokra vonatkozó metaadatokat is). A fájlok az objektum tárolóba való feltöltése után a tartalom biztonságosan tárolódik a felhőben a további feldolgozáshoz és folyamatos átvitelhez.
 
-Ez a cikk bemutatja, hogyan suing REST helyi fájl feltöltése.
+Ez a cikk bemutatja, hogyan tölthet fel egy helyi fájlt a REST használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az ebben a témakörben leírt lépések elvégzéséhez kell:
 
-- Felülvizsgálat [eszköz fogalom](assets-concept.md).
+- Az [eszköz koncepciójának](assets-concept.md)áttekintése.
 - [Postman konfigurálása az Azure Media Services REST API-hívások](media-rest-apis-with-postman.md).
     
-    Kövesse a témakör az utolsó lépés [lekérése az Azure AD-Token](media-rest-apis-with-postman.md#get-azure-ad-token). 
+    Ügyeljen arra, hogy kövesse az [Azure ad-token beszerzése](media-rest-apis-with-postman.md#get-azure-ad-token)című témakör utolsó lépését. 
 
-## <a name="create-an-asset"></a>Hozzon létre egy objektumot
+## <a name="create-an-asset"></a>Eszköz létrehozása
 
-Ez a szakasz bemutatja, hogyan hozzon létre egy új eszközt.
+Ebből a szakaszból megtudhatja, hogyan hozhat létre új eszközt.
 
-1. Válassza ki **eszközök** -> **létrehozás vagy frissítés egy eszköz**.
+1. Válassza az **eszközök** -> **Létrehozás vagy az eszköz frissítése**lehetőséget.
 2. Kattintson a **Küldés** gombra.
 
-    ![Hozzon létre egy objektumot](./media/upload-files/postman-create-asset.png)
+    ![Eszköz létrehozása](./media/upload-files/postman-create-asset.png)
 
-Megjelenik a **válasz** újonnan létrehozott eszköz kapcsolatos információval.
+Ekkor megjelenik a **Válasz** az újonnan létrehozott objektumra vonatkozó információkkal.
 
-## <a name="get-a-sas-url-with-read-write-permissions"></a>Olvasási és írási engedélyekkel egy SAS URL-Címének lekéréséhez 
+## <a name="get-a-sas-url-with-read-write-permissions"></a>SAS URL-cím beszerzése írási és olvasási engedélyekkel 
 
-Ez a szakasz bemutatja, hogyan jött létre SAS URL-cím beszerzése a létrehozott eszköz. Az SAS URL-cím olvasási és írási engedélyekkel készült, és a digitális fájlok feltöltése az Eszközintelligencia-tároló használható.
+Ez a szakasz bemutatja, hogyan szerezhet be egy SAS URL-címet, amelyet a létrehozott eszközhöz generáltak. A SAS URL-cím írási és olvasási engedéllyel lett létrehozva, és a digitális fájlok az objektum tárolóba való feltöltésére használható.
 
-1. Válassza ki **eszközök** -> **eszköz URL-címek listája**.
+1. Válassza az **eszközök** -> lehetőséget**az eszköz URL-címeinek listázásához**.
 2. Kattintson a **Küldés** gombra.
 
     ![Fájl feltöltése](./media/upload-files/postman-create-sas-locator.png)
 
-Megjelenik a **válasz** objektum URL-címek kapcsolatos információval. Másolja az első URL-címet, és ezzel a fájl feltöltéséhez.
+A **Válasz** az eszköz URL-címeivel kapcsolatos információkkal jelenik meg. Másolja ki az első URL-címet, és használja fel a fájl feltöltéséhez.
 
-## <a name="upload-a-file-to-blob-storage-using-the-upload-url"></a>Fájl feltöltése a blob storage a feltöltése URL-cím használatával
+## <a name="upload-a-file-to-blob-storage-using-the-upload-url"></a>Fájl feltöltése a blob Storage-ba a feltöltési URL-cím használatával
 
-Az Azure Storage API-k és SDK-kkal (például a [Storage REST API-val](../../storage/common/storage-rest-api-auth.md), [JAVA SDK](../../storage/blobs/storage-quickstart-blobs-java-v10.md), vagy [.NET SDK-val](../../storage/blobs/storage-quickstart-blobs-dotnet.md).
+Használja az Azure Storage API-jait vagy SDK-kat (például a [Storage REST API](../../storage/common/storage-rest-api-auth.md) vagy a [.net SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)-t.
 
 ## <a name="next-steps"></a>További lépések
 
-[Oktatóanyag: URL-cím alapján egy távoli fájl kódolása és streamelése a videó – REST](stream-files-tutorial-with-rest.md)
+[Oktatóanyag: Távoli fájl kódolása URL-cím alapján és videó streamelése – REST](stream-files-tutorial-with-rest.md)

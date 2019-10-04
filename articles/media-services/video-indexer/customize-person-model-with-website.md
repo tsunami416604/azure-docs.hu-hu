@@ -6,15 +6,16 @@ services: media-services
 author: anikaz
 manager: johndeu
 ms.service: media-services
+ms.subservice: video-indexer
 ms.topic: article
-ms.date: 03/19/2019
+ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: 8dd535d97e40fe1dd4358d782db60940af1dd95d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 37e556ca458a5b0a171664e089d39cfb448d5f96
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58892840"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65800119"
 ---
 # <a name="customize-a-person-model-with-the-video-indexer-website"></a>A Video Indexer webhely személy modell testreszabása
 
@@ -27,14 +28,14 @@ A Video Indexer webhely használatával, amely az észlelt a videó szerkesztés
 1. Megtekintése, szerkesztése, és törölje a személy modellek a fiókjában, a Video Indexer webhelyre navigálhat, és jelentkezzen be.
 2. Kattintson a tartalommodell Testreszabás gombra az oldal jobb felső sarkában.
 
-    ![Tartalommodell testreszabása](./media/customize-face-model/content-model-customization.png)
+    ![Tartalom modell testreszabása](./media/customize-face-model/content-model-customization.png)
 3. Válassza ki a személyek fülre.
 
     Látni fogja az alapértelmezett személy modell-fiókjában található. Az alapértelmezett személy modell bármely arcok, előfordulhat, hogy szerkesztésekor vagy módosításakor a videók, amelyhez nem adott meg egy egyéni személy modell indexelés során az elemzéseket a tárolja. 
 
     Ha más személy modellek hozta létre, azok ezen a lapon megjelenik. 
 
-    ![Tartalommodell testreszabása](./media/customize-face-model/content-model-customization-people-tab.png)
+    ![Tartalom modell testreszabása](./media/customize-face-model/content-model-customization-people-tab.png)
 
 ## <a name="create-a-new-person-model"></a>Hozzon létre egy új személynek modell
 
@@ -90,7 +91,7 @@ Bármely személy modell, amely a fiókban létrehozott törölheti. Az alapért
 
     ![Egy személy törlése](./media/customize-face-model/delete-person.png)
     
-    Egy előugró ablak jelenik meg, és a Önt, hogy a művelet törli a személy modell és az összes a személyek és a benne található fájlokat. A művelet nem vonható vissza. 
+    Egy előugró ablak jelenik meg, és a Önt, hogy a művelet törli a személy modell és az összes a személyek és a benne található fájlokat. Ez a művelet nem vonható vissza. 
 
     ![Egy személy törlése](./media/customize-face-model/delete-person2.png)
 1. Ha biztos abban, kattintson ismét a törlése.
@@ -133,14 +134,14 @@ A személy modellt használ egy új videót, tegye a következőket:
 
 1. Kattintson a **feltöltése** gombra a lap tetején.
 
-    ![Feltöltés](./media/customize-face-model/upload.png)
+    ![Töltsön fel](./media/customize-face-model/upload.png)
 1. A körre a dobja el a videofájl, vagy keresse meg a fájlt.
 1. A Speciális beállítások nyílra.
 
-    ![Feltöltés](./media/customize-face-model/upload2.png)
+    ![Töltsön fel](./media/customize-face-model/upload2.png)
 1. Kattintson a legördülő menüből, és válassza ki a létrehozott személy modellt.
 
-    ![Feltöltés](./media/customize-face-model/upload3.png)
+    ![Töltsön fel](./media/customize-face-model/upload3.png)
 1. A feltöltés lehetőséget az oldal alján kattintson, és az új videót a személy modell indexelését.
 
 Ha nem ad meg egy személy modellt a feltöltés során, a Video Indexer indexeli a videót a fiókjában a személy alapértelmezett modell használatával.

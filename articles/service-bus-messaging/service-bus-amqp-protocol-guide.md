@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: c99f4491af8fe3e5f0f0ed7a264995ae3ec5911f
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658266"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60749391"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Az AMQP 1.0-s verziójában az Azure Service Bus és Event Hubs protokoll – útmutató
 
@@ -212,26 +212,26 @@ Bármely vlastnost alkalmazása szükséges határozza meg kell feleltetni AMQP 
 
 | Mezőnév | Használat | API neve |
 | --- | --- | --- |
-| tartós |- |- |
-| prioritás |- |- |
-| TTL |Az üzenet élettartama |[TimeToLive](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| első-beszerző |- |- |
-| kézbesítések-száma |- |[DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| durable |- |- |
+| priority |- |- |
+| ttl |Az üzenet élettartama |[TimeToLive](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| first-acquirer |- |- |
+| delivery-count |- |[DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 
 #### <a name="properties"></a>properties
 
 | Mezőnév | Használat | API neve |
 | --- | --- | --- |
 | message-id |Ez az üzenet alkalmazás által meghatározott, a szabad formátumú azonosítója. Duplikáltelem-észlelési használja. |[MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| felhasználói azonosító |Alkalmazás által meghatározott felhasználói azonosító, a Service Bus nem értelmezi. |Nem a Service Bus API-n keresztül érhető el. |
-| erre: |Alkalmazás által meghatározott cél azonosítója nem értelmezi a Service Bus. |[Címzett](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| tárgy |Alkalmazás által meghatározott üzenetet célú azonosítója, a Service Bus nem értelmezi. |[Label](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| Válasz címzettje |Alkalmazás által meghatározott válasz-elérési út mutató, a Service Bus nem értelmezi. |[ReplyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| korrelációs azonosító |Alkalmazás által meghatározott korrelációs azonosító, nem értelmezi a Service Bus. |[CorrelationId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| content-type |Alkalmazás által meghatározott tartalomtípus-mutató nem értelmezi a Service Bus, a szervezet számára. |[a contentType](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| user-id |Alkalmazás által meghatározott felhasználói azonosító, a Service Bus nem értelmezi. |Nem a Service Bus API-n keresztül érhető el. |
+| to |Alkalmazás által meghatározott cél azonosítója nem értelmezi a Service Bus. |[To](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| subject |Alkalmazás által meghatározott üzenetet célú azonosítója, a Service Bus nem értelmezi. |[Label](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| reply-to |Alkalmazás által meghatározott válasz-elérési út mutató, a Service Bus nem értelmezi. |[ReplyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| correlation-id |Alkalmazás által meghatározott korrelációs azonosító, nem értelmezi a Service Bus. |[CorrelationId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| content-type |Alkalmazás által meghatározott tartalomtípus-mutató nem értelmezi a Service Bus, a szervezet számára. |[ContentType](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | content-encoding |Alkalmazás által meghatározott tartalom-kódolás mutató nem értelmezi a Service Bus, a szervezet számára. |Nem a Service Bus API-n keresztül érhető el. |
 | absolute-expiry-time |Deklarálja, mely abszolút azonnali üzenet lejár. A bemeneti (fejléc meg TTL), figyelmen kívül hagyja a kimenetet mérvadó. |[ExpiresAtUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| létrehozás – ideje |Kijelenti, hogy mely az üzenet létrehozásának. A Service Bus által nem használt |Nem a Service Bus API-n keresztül érhető el. |
+| creation-time |Kijelenti, hogy mely az üzenet létrehozásának. A Service Bus által nem használt |Nem a Service Bus API-n keresztül érhető el. |
 | group-id |Egy kapcsolódó üzenetkészletet alkalmazás által meghatározott azonosítója. Service Bus-munkamenetekkel használja. |[SessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | group-sequence |A számláló azonosítására az üzenet egy munkamenet belüli relatív sorszáma. A Service Bus figyelmen kívül hagyja. |Nem a Service Bus API-n keresztül érhető el. |
 | reply-to-group-id |- |[ReplyToSessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
@@ -270,7 +270,7 @@ Tranzakciós munka megkezdéséhez. a vezérlő be kell szereznie egy `txn-id` a
 | --- | --- | --- |
 | attach(<br/>név = {link name}.<br/>... ,<br/>role=**sender**,<br/>cél =**koordinátora**<br/>) | ------> |  |
 |  | <------ | attach(<br/>név = {link name}.<br/>... ,<br/>target=Coordinator()<br/>) |
-| átvitel)<br/>delivery-id=0, ...)<br/>{AmqpValue (**Declare()**)}| ------> |  |
+| átvitel)<br/>delivery-id=0, ...)<br/>{AmqpValue (**Declare()** )}| ------> |  |
 |  | <------ | törlése) <br/> első = 0, 0, utolsó = <br/>állapot =**Declared**()<br/>**txn-id**={transaction ID}<br/>))|
 
 #### <a name="discharging-a-transaction"></a>Tranzakciók ellátása
@@ -284,8 +284,8 @@ A vezérlő arra a következtetésre jut a tranzakciós feladatainak küldésév
 | átvitel)<br/>delivery-id=0, ...)<br/>{ AmqpValue (Declare())}| ------> |  |
 |  | <------ | törlése) <br/> első = 0, 0, utolsó = <br/>state=Declared(<br/>txn-id={transaction ID}<br/>))|
 | | . . . <br/>Tranzakciós feladatainak<br/>egyéb hivatkozások<br/> . . . |
-| átvitel)<br/>kézbesítési-id = 57,...)<br/>{ AmqpValue (<br/>**Ideje (tranzakciós-id = 0,<br/>sikertelen = false)**)}| ------> |  |
-| | <------ | törlése) <br/> első = 57, 57, utolsó = <br/>state=**Accepted()**)|
+| átvitel)<br/>kézbesítési-id = 57,...)<br/>{ AmqpValue (<br/>**Ideje (tranzakciós-id = 0,<br/>sikertelen = false)** )}| ------> |  |
+| | <------ | törlése) <br/> első = 57, 57, utolsó = <br/>state=**Accepted()** )|
 
 #### <a name="sending-a-message-in-a-transaction"></a>Üzenet küldése egy tranzakció
 
@@ -295,8 +295,8 @@ A vezérlő arra a következtetésre jut a tranzakciós feladatainak küldésév
 | --- | --- | --- |
 | átvitel)<br/>delivery-id=0, ...)<br/>{ AmqpValue (Declare())}| ------> |  |
 |  | <------ | törlése) <br/> első = 0, 0, utolsó = <br/>state=Declared(<br/>txn-id={transaction ID}<br/>))|
-| átvitel)<br/>kezelni = 1,<br/>delivery-id=1, <br/>**state=<br/>TransactionalState(<br/>txn-id=0)**)<br/>{adattartalom}| ------> |  |
-| | <------ | törlése) <br/> először = 1, legutóbbi = 1, <br/>state=**TransactionalState(<br/>txn-id=0,<br/>outcome=Accepted()**))|
+| átvitel)<br/>kezelni = 1,<br/>delivery-id=1, <br/>**state=<br/>TransactionalState(<br/>txn-id=0)** )<br/>{adattartalom}| ------> |  |
+| | <------ | törlése) <br/> először = 1, legutóbbi = 1, <br/>state=**TransactionalState(<br/>txn-id=0,<br/>outcome=Accepted()** ))|
 
 #### <a name="disposing-a-message-in-a-transaction"></a>Egy üzenet valamely tranzakcióban értékesítésére
 
@@ -307,7 +307,7 @@ A vezérlő arra a következtetésre jut a tranzakciós feladatainak küldésév
 | átvitel)<br/>delivery-id=0, ...)<br/>{ AmqpValue (Declare())}| ------> |  |
 |  | <------ | törlése) <br/> első = 0, 0, utolsó = <br/>state=Declared(<br/>txn-id={transaction ID}<br/>))|
 | | <------ |átvitel)<br/>kezelni = 2,<br/>delivery-id=11, <br/>állapot = null)<br/>{adattartalom}|  
-| törlése) <br/> első = 11, 11, utolsó = <br/>state=**TransactionalState(<br/>txn-id=0,<br/>outcome=Accepted()**))| ------> |
+| törlése) <br/> első = 11, 11, utolsó = <br/>state=**TransactionalState(<br/>txn-id=0,<br/>outcome=Accepted()** ))| ------> |
 
 
 ## <a name="advanced-service-bus-capabilities"></a>A Service Bus speciális képességek
@@ -361,10 +361,10 @@ A kérelemüzenet a következő alkalmazás tulajdonságokkal rendelkezik:
 
 | Kulcs | Optional | Érték típusa | Érték tartalma |
 | --- | --- | --- | --- |
-| művelet |Nem |sztring |**put-token** |
-| type |Nem |sztring |A token használatát típusa. |
-| név |Nem |sztring |A "célközönség", amely a token vonatkozik. |
-| lejárat |Igen |időbélyeg |A jogkivonat lejárati idejét. |
+| A művelet |Nem |string |**put-token** |
+| type |Nem |string |A token használatát típusa. |
+| name |Nem |string |A "célközönség", amely a token vonatkozik. |
+| lejárati |Igen |timestamp |A jogkivonat lejárati idejét. |
 
 A *neve* tulajdonság azonosítja az entitást, amellyel a token társítva kell lennie. A Service Bus az üzenetsorok vagy üzenettémák/előfizetések elérési útját. A *típus* tulajdonság azonosítja a jogkivonat típusa:
 
@@ -380,8 +380,8 @@ A válaszüzenet rendelkezik a következő *alkalmazástulajdonságok* értékek
 
 | Kulcs | Optional | Érték típusa | Érték tartalma |
 | --- | --- | --- | --- |
-| status-code |Nem |int |HTTP-válaszkód **[RFC2616]**. |
-| status-description |Igen |sztring |Az állapot leírása. |
+| status-code |Nem |int |HTTP-válaszkód **[RFC2616]** . |
+| status-description |Igen |string |Az állapot leírása. |
 
 Az ügyfél meghívhat *put-token* ismételt és az üzenetkezelési infrastruktúra bármelyik entitáshoz. A jogkivonatok az aktuális ügyfél hatóköre és az aktuális kapcsolatot, ami azt jelenti, a kiszolgáló megszakítja a megőrzött jogkivonatokat, amikor a kapcsolat csökken a rögzített.
 
@@ -403,7 +403,7 @@ Ezzel a funkcióval, hozzon létre egy küldő és csatolást a `via-entity`. To
 
 | Ügyfél | | Service Bus |
 | --- | --- | --- |
-| attach(<br/>név = {link name}.<br/>role=sender,<br/>forrás = {ügyfél hivatkozás azonosítója},<br/>target=**{via-entity}**,<br/>**Tulajdonságok térkép = [(<br/>com.microsoft:transfer célcím =<br/>{célentitás})]** ) | ------> | |
+| attach(<br/>név = {link name}.<br/>role=sender,<br/>forrás = {ügyfél hivatkozás azonosítója},<br/>target= **{via-entity}** ,<br/>**Tulajdonságok térkép = [(<br/>com.microsoft:transfer célcím =<br/>{célentitás})]** ) | ------> | |
 | | <------ | attach(<br/>név = {link name}.<br/>role=receiver,<br/>forrás = {ügyfél hivatkozás azonosítója},<br/>target={via-entity},<br/>Tulajdonságok térkép [() =<br/>com.microsoft:transfer-destination-address=<br/>{Célentitás})] ) |
 
 ## <a name="next-steps"></a>További lépések

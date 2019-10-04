@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: crdun
 ms.openlocfilehash: eded2d6a9f2c270a2b3ccca296277b0a016733fd
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52440210"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179806"
 ---
 1. Nyissa meg a projekt az Android Studióban.
 
@@ -62,7 +62,7 @@ ms.locfileid: "52440210"
     Ez a kód létrehoz egy metódust a Google-hitelesítési folyamat. Egy párbeszédpanel jelenik meg a hitelesített felhasználó azonosítója. Csak a sikeres hitelesítés folytathatja.
 
     > [!NOTE]
-    > Ha eltérő Google identitásszolgáltatót használja, módosítsa a átadott érték a **bejelentkezési** módszer a következő értékek egyikére: _MicrosoftAccount_, _Facebook_, _Twitter_, vagy _windowsazureactivedirectory_.
+    > Ha eltérő Google identitásszolgáltatót használja, módosítsa a átadott érték a **bejelentkezési** metódust a következő értékek egyikét: _MicrosoftAccount_, _Facebook_, _Twitter_, vagy _windowsazureactivedirectory_.
 
 4. Az a **onCreate** metódus, a következő kódsort hozzáadása után a kódot, amely példányosítja az `MobileServiceClient` objektum.
 

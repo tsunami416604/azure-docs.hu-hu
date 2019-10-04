@@ -1,6 +1,6 @@
 ---
-title: A StorSimple 8000 series eszköz használata összefoglaló |} Microsoft Docs
-description: A StorSimple Device Manager szolgáltatás eszközének összegzése és a storage mérőszámainak és csatlakoztatott kezdeményezők megtekintése, és keresse meg a sorozatszámot és IQN ismerteti.
+title: Használja a StorSimple 8000 sorozatú eszköz összegzésének |} A Microsoft Docs
+description: A StorSimple-Eszközkezelő szolgáltatás eszköz összegzésének és használható a storage-mérőszámok és csatlakoztatott kezdeményezők megtekintheti, és keresse meg a sorozatszám és IQN ismerteti.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,86 +14,86 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 784d3ce9d8f926b00ac1c6fbf48a05c0b04f900a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1d88af2c0739c30b2562bad7660015b890e8159c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23874856"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60578222"
 ---
-# <a name="use-the-device-summary-in-storsimple-device-manager-service"></a>Az eszköz StorSimple Device Manager szolgáltatásban összefoglaló használata
+# <a name="use-the-device-summary-in-storsimple-device-manager-service"></a>Az eszköz StorSimple-Eszközkezelő szolgáltatás összegzésének használata
 
 ## <a name="overview"></a>Áttekintés
-A StorSimple eszköz összefoglaló panel lehetővé teszi az adott StorSimple eszköz, a szolgáltatás összefoglaló panel, amelyen adatokat tartalmaz minden olyan eszközre, amelyet a Microsoft Azure StorSimple megoldásban ellentétben információk áttekintését.
+A StorSimple eszköz összefoglalás panelje áttekintheti az adatokat egy adott StorSimple-eszköz szakembereket a szolgáltatásösszegző panel, amely tartalmazza a Microsoft Azure StorSimple megoldás az összes eszköz adatait jeleníti meg.
 
-Az eszköz összefoglaló panel összegzését jeleníti meg a StorSimple 8000 series eszköz regisztrálva van-e egy adott StorSimple az Eszközkezelő kiemelés egy rendszergazda figyelmet igénylő eszköz ismertetünk. Ez az oktatóanyag vezet be az eszköz összefoglaló panelen, a tartalom és funkcióját ismerteti, és azokat a feladatokat hajthat végre ezen a panelen.
+Az összefoglalás panel a StorSimple 8000 sorozatú eszköz, amely regisztrálva van a megadott StorSimple-Eszközkezelő, összefoglaló áttekintést nyújt a kiemelés eszközt egy rendszergazda figyelmet igénylő problémák. Ebben az oktatóanyagban az összefoglalás panel vezet be, ismerteti a tartalom és a függvény és azokat a feladatokat hajthat végre ezen a panelen.
 
-Az eszköz összefoglaló panel az alábbi információkat jeleníti meg:
+Az összefoglalás panel az alábbi információkat jeleníti meg:
 
-![Eszköz összefoglaló panel](./media/storsimple-8000-device-dashboard/device-summary1.png)
+![Eszköz összefoglalás panelje](./media/storsimple-8000-device-dashboard/device-summary1.png)
 
-## <a name="management-command-bar"></a>Felügyeleti parancssáv
+## <a name="management-command-bar"></a>Felügyeleti parancssávon
 
-A StorSimple eszköz paneljén láthatja a StorSimple eszköz kezelésére szolgáló beállítások. A parancsok látja a panelt és bal oldalán látható. Ezek a beállítások segítségével adja hozzá a megosztások vagy kötetek, vagy frissíteni, vagy az eszköz a feladatátvétel.
+A StorSimple eszköz paneljén kezelése a StorSimple-eszköz beállításainak megjelenítéséhez. A parancsok és a bal oldalon a panel tetején megjelenik. Ezek a beállítások segítségével adja hozzá a megosztások vagy kötetek, vagy frissítse vagy az eszköz feladatainak átadása.
 
-![Felügyeleti parancssáv](./media/storsimple-8000-device-dashboard/device-summary2.png)
+![Felügyeleti parancssávon](./media/storsimple-8000-device-dashboard/device-summary2.png)
 
 ## <a name="essentials"></a>Alapvető erőforrások
 
-Az essentials területen rögzíti, például fontos tulajdonságait, állapotát, modell, cél IQN-Nevének és a szoftververzió. 
+Az essentials területen rögzíti, például a fontos tulajdonságait, állapotát, modell, cél IQN neve és a szoftververzió. 
 
 ![Eszköz alapjai](./media/storsimple-8000-device-dashboard/device-summary3.png)
 
 ## <a name="monitoring"></a>Figyelés
 
-* A **riasztások** csempe pillanatképet az összes aktív riasztás biztosít az eszközt, a riasztás súlyosságát szerint csoportosítva.
+* A **riasztások** csempe egy pillanatkép összes aktív riasztás biztosít az eszközt, a riasztás súlyossága szerint csoportosítva.
 
     ![Riasztások csempe](./media/storsimple-8000-device-dashboard/device-summary4.png)
 
-    Kattintson a csempére kattintva nyissa meg a **riasztások** panel megnyitásához, és kattintson a riasztás, így azokat kapcsolatos további részletek megtekintéséhez egyéni riasztást javasolt műveletek. A riasztás is törölheti, ha a probléma megoldódott.
+    Kattintson a csempére kattintva nyissa meg a **riasztások** panelen, majd kattintson a további információhoz a riasztásokhoz, így minden egyes riasztás javasolt műveleteket. A riasztás is törölheti, ha a probléma megoldódott.
 
-    ![Kattintson a riasztások csempe](./media/storsimple-8000-device-dashboard/device-summary10.png)
+    ![Kattintson a riasztás csempe](./media/storsimple-8000-device-dashboard/device-summary10.png)
 
-* A **állapotát és állapotfigyelő** csempe a hardver összetevő állapota betekintést biztosít egy eszközt, beleértve az eszköz állapotát. Az eszköz állapota lehet offline, online, inaktív vagy készen áll a beállítása.
+* A **állapotának** csempe révén betekintést kaphat a hardver összetevő állapota egy eszközhöz, beleértve az eszköz állapotát. Az eszköz állapota lehet offline állapotban van, online, inaktív vagy beállításra kész.
 
-    ![Állapot és állapota csempe](./media/storsimple-8000-device-dashboard/device-summary5.png)
+    ![Állapot csempe](./media/storsimple-8000-device-dashboard/device-summary5.png)
 
-* A **kötetek** csempe állapot szerint csoportosítva az eszköz a kötetek száma összegzését tartalmazza.
+* A **kötetek** csempe állapot szerint csoportosítja az eszköz a kötetek számát összegzését tartalmazza.
 
-    ![Adatkötetek meghajtóbetűjelei](./media/storsimple-8000-device-dashboard/device-summary6.png)
+    ![Kötetek csempe](./media/storsimple-8000-device-dashboard/device-summary6.png)
 
-    Kattintson a csempére kattintva nyissa meg a **kötetek** listára panelen, majd a tulajdonságainak megtekintéséhez vagy módosításához egy egyéni köteten található.
+    Kattintson a csempére kattintva nyissa meg a **kötetek** panel listában, és kattintson az egyéni kötet megtekintéséhez vagy a hozzá tartozó tulajdonságok módosításával.
     
-    ![Kattintson az adatkötetek meghajtóbetűjelei](./media/storsimple-8000-device-dashboard/device-summary9.png)
+    ![Kattintson a kötetek csempe](./media/storsimple-8000-device-dashboard/device-summary9.png)
     
     További információkért lásd: hogyan [kötetek kezelése](storsimple-8000-manage-volumes-u2.md).
 
-* Az a **használati** diagram, megtekintheti az elsődleges használ, amelyek az eszközt, és a felhő tárolására az elmúlt 7 napban, az alapértelmezett időszak felhasznált.
+* Az a **használati** diagramra, megtekintheti az eszközön használt elsődleges tároló, és a felhőalapú tárolás az elmúlt 7 napban, az alapértelmezett időszakban felhasznált.
 
-     ![Használata csempe](./media/storsimple-8000-device-dashboard/device-summary7.png)
+     ![Használat csempe](./media/storsimple-8000-device-dashboard/device-summary7.png)
     
-     Válasszon egy másik időskálára, használja a **szerkesztése** a diagram jobb felső sarokban lehetőséget.
+     Válasszon egy másik időpontot méretezési, használja a **szerkesztése** a diagram jobb felső sarokban lévő beállítást.
 
      ![Használati diagram szerkesztése](./media/storsimple-8000-device-dashboard/device-summary12.png)
 
-     Ezen a diagramon az összes elsődleges (az állomások számára az eszköz által írt adatok mennyisége) és a teljes felhő tárolására egy meghatározott időtartamra vonatkozóan az eszköz által felhasznált metrikáját tekintheti meg.
+     Ezen a diagramon az összes elsődleges tárhely (a gazdagépeket az eszköz által írt adatok mennyisége) és a egy időszakon belül az eszköz által felhasznált teljes felhőalapú tárolás metrikáinak is megtekintheti.
   
-     Ebben a környezetben *elsődleges tárolási* a gazdagép által írt adatok teljes mennyisége hivatkozik, és a kötet típusa szerint sorolhatók: *elsődleges rétegzett tárolás* egyaránt helyben tárolt adatok és az adatok a rétegzett a felhőben. *Elsődleges helyileg rögzített tárolási* csak helyben tárolja az adatokat tartalmazza. *Felhőbeli tárhely*, másrészt van a felhőben tárolt adatok teljes mennyisége mérését. Ez a tároló rétegzett adatok és a biztonsági mentések tartalmaz. A felhőben tárolt adatok deduplikált, és a tömörített, mivel elsődleges tárolási előtt az adatok deduplikációja és tömörített tárolókapacitást jelzi. (Ha meg szeretne ismerkedni a tömörítés és a két szám összehasonlíthatja). A mind az elsődleges és a felhőalapú tárolást látható összegek konfigurált követési gyakoriságnak alapulnak. Például ha úgy dönt, hogy az egy hét gyakoriságát, majd a diagram adatainak megjelenítése minden az előző hét nap.
+     Ebben a környezetben *elsődleges tárolási* hivatkozik a gazdagép által írt adatok teljes mennyisége, és a kötet típusa szerint kell csoportosítani: *elsődleges rétegzett tárolási* egyaránt helyileg tárolt rétegzett adatok és adatok a felhőben. *Elsődleges helyileg rögzített tároló* csak az helyileg tárolt adatokat is tartalmaz. *Felhőalapú tárolás*, másrészről, van egy mérték, a felhőben tárolt adatok teljes mennyisége. Ez a tároló magában foglalja a rétegzett adatok és a biztonsági mentéseket. A felhőben tárolt adatok deduplikált, és a tömörített, mivel az elsődleges tárolási azt jelzi, hogy a előtt az adatok tömörítve és deduplikált felhasznált tárterület mérete. (A két szám, hogy képet kapjon a tömörítési arány a összehasonlíthatja). Mindkét elsődleges és a felhőalapú tárolást, az összegek alapulnak a nyomon követési gyakoriság konfigurálása. Például ha úgy dönt, hogy az egy hét gyakoriságát, majd a diagram adatai jelennek meg az előző hét naponta.
 
-     Felhő tárolókapacitást időbeli használni, jelölje ki a **FELHŐALAPÚ TÁROLÓT használja a** lehetőséget. A teljes tárterület a gazdagép által írt, jelölje ki a **elsődleges RÉTEGZETT TÁROLÓT használja a** és **elsődleges HELYILEG rögzített TÁROLÓT használja a** beállítások. 
-     További információkért lásd: [a StorSimple Device Manager szolgáltatás segítségével figyelheti a StorSimple eszköz](storsimple-monitor-device.md).
+     Felhőbeli tárhely időszakban felhasznált megtekintéséhez válassza ki a **CLOUD STORAGE használt** lehetőséget. A teljes tárterület a gazdagép által írt, jelölje ki a **elsődleges RÉTEGZETT tárolási használt** és **elsődleges HELYILEG rögzített tárolására használt** beállítások. 
+     További információkért lásd: [a StorSimple-Eszközkezelő szolgáltatás segítségével figyelheti a StorSimple-eszköz](storsimple-monitor-device.md).
 
 
-* A **kapacitás** csempe megjeleníti az elsődleges tárolási kiépített és a fennmaradó tartozik ugyanahhoz a rendelkezésre álló tárhelyet viszonyítva az eszközt. **Kiépített** hivatkozik, amely készített, és használatra, tárolókapacitást **fennmaradó** hivatkozik, amely az eszköz közötti létesíthetők kapacitása. 
+* A **kapacitás** csempe megjeleníti az elsődleges tárolási ugyanahhoz a rendelkezésre álló tárhelyet képest az eszköz kiépítése és a fennmaradó is. **Üzembe helyezett** hivatkozik, amely készített, és használatra, lefoglalt tárhely **fennmaradó** hivatkozik a fennmaradó kapacitás, amelyek kioszthatóak az eszközön. 
 
-    ![Használata csempe](./media/storsimple-8000-device-dashboard/device-summary8.png)
+    ![Használat csempe](./media/storsimple-8000-device-dashboard/device-summary8.png)
 
-    Kattintson a csempe megtekintéséhez, hogy ki van építve a kapacitás rétegzett és helyileg rögzített kötetek között. A **fennmaradó rétegzett** kapacitása a rendelkezésre álló kapacitásból, amelyek többek között a felhő, létesíthetők közben a **fennmaradó helyi** erre az eszközre csatlakoztatott lemezeken maradt kapacitás.
+    Kattintson a csempe megtekintéséhez, hogy ki van építve a kapacitás rétegzett és a helyileg rögzített kötetek között. A **fennmaradó rétegzett** kapacitás a rendelkezésre álló kapacitást, amelyek kioszthatóak többek között a felhőben, amíg a **fennmaradó helyi** erre az eszközre csatlakoztatott lemezen fennmaradó kapacitás.
 
     ![Kattintson a használati diagramon](./media/storsimple-8000-device-dashboard/device-summary13.png)
 
 
-## <a name="next-steps"></a>Következő lépések
-* További információ a [StorSimple szolgáltatás összefoglaló panel](storsimple-8000-service-dashboard.md).
-* További információ [felügyelete a StorSimple eszközt a StorSimple Device Manager szolgáltatással](storsimple-8000-manager-service-administration.md).
+## <a name="next-steps"></a>További lépések
+* Tudjon meg többet a [StorSimple szolgáltatás összefoglalás panelén](storsimple-8000-service-dashboard.md).
+* Tudjon meg többet [a StorSimple-Eszközkezelő szolgáltatás használata a StorSimple-eszköz felügyeletéhez](storsimple-8000-manager-service-administration.md).
 

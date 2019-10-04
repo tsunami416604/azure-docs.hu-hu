@@ -6,15 +6,16 @@ services: media-services
 author: Juliako
 manager: femila
 ms.service: media-services
+ms.subservice: video-indexer
 ms.topic: tutorial
-ms.date: 02/10/2019
+ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: c0c1f9e4b8ed854c562ad7af16222e726b3b4293
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fca8dc31a0f909a1602819a2830d9bebbbda0c88
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57893305"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65799319"
 ---
 # <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>Gyors útmutató: Regisztráljon, és az első videó feltöltése
 
@@ -31,7 +32,7 @@ A Video Indexerrel való fejlesztés megkezdéséhez nyissa meg a [Video Indexer
 1. Jelentkezzen be a [Video Indexer](https://www.videoindexer.ai/) webhelyre.
 2. A videó feltöltéséhez kattintson a **Feltöltés** gombra vagy hivatkozásra.
 
-    ![Feltöltés](./media/video-indexer-get-started/video-indexer-upload.png)
+    ![Töltsön fel](./media/video-indexer-get-started/video-indexer-upload.png)
 
     A videó feltöltése után a Video Indexer elkezdi indexelni és elemezni a videót.
 

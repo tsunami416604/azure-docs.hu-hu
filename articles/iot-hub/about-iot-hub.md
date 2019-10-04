@@ -3,18 +3,17 @@ title: Az Azure IoT Hub bemutatása | Microsoft Docs
 description: Tudnivalók az Azure IoT Hubról. Ez az IoT-szolgáltatás skálázható adatfeldolgozáshoz, eszközkezeléshez és biztonsághoz lett tervezve.
 author: nberdy
 ms.author: nberdy
-ms.date: 07/04/2018
+ms.date: 08/08/2019
 ms.topic: overview
 ms.custom: mvc
 ms.service: iot-hub
 services: iot-hub
-manager: briz
-ms.openlocfilehash: 6dadd746bccd028a2b81a980d99ab47ec9e6e2a3
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: 0dde7bd9bd3372f0f5eddbbd56727eca3ae4a9dd
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57726737"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950467"
 ---
 # <a name="what-is-azure-iot-hub"></a>Mi az Azure IoT Hub?
 
@@ -26,7 +25,7 @@ Az IoT Hub képességei segítenek a skálázható, teljes körű IoT-megoldáso
 
 ## <a name="scale-your-solution"></a>A megoldás méretezése
 
-Az IoT Hub több millió egyszerre csatlakoztatott eszközre és másodpercenként több millió eseményre skálázható az IoT számítási feladatok támogatása érdekében. Az IoT Hub számos szintet nyújt a skálázási igények legjobb kielégítése érdekében. További részletekért tekintse át a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/iot-hub/).
+Az IoT Hub több millió egyszerre csatlakoztatott eszközre és másodpercenként több millió eseményre skálázható az IoT számítási feladatok támogatása érdekében. További információ a IoT Hub skálázásáról: [IoT hub skálázás](iot-hub-scaling.md?branch=release-iotbasic). Ha többet szeretne megtudni a IoT Hub által kínált több rétegről, valamint arról, hogy miként lehet a legjobban megfelelni a méretezhetőségi igényeknek, tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/iot-hub/).
 
 ## <a name="secure-your-communications"></a>Biztonságos kommunikáció
 
@@ -50,7 +49,7 @@ Az IoT Hub biztonságos kommunikációs csatornát nyújt az eszközöknek az ad
 
 A beépített üzenet-útválasztási funkció rugalmasságot biztosít az automatikus, szabályalapú üzenetelosztás beállításához:
 
-* Az üzenet-átirányítással vezérelheti, hová küldje a központ az eszköz telemetriai adatait.
+* Az [üzenet-útválasztás](iot-hub-devguide-messages-d2c.md) használatával szabályozhatja, hogy a hub hová küldi az eszköz telemetria.
 
 * Az üzenetek több végpontra való irányítása nem jár többletköltségekkel.
 
@@ -96,7 +95,7 @@ Az IoT Hub és az eszközoldali SDK-k a következő protokollokat támogatják a
 
 * HTTPS
 * AMQP
-* AMQP WebSocketen keresztül
+* AMQP webes szoftvercsatornákon keresztül
 * MQTT
 * MQTT WebSocketen keresztül
 
@@ -110,7 +109,7 @@ Ha a megoldás nem tudja használni egyik támogatott protokollt sem, kibővíth
 
 ## <a name="quotas-and-limits"></a>Kvóták és korlátok
 
-Minden Azure-előfizetésre alapértelmezett kvótakorlátozások vonatkoznak, amelyek meggátolják a szolgáltatással való visszaélést, és ezek a korlátozások hatással lehetnek az IoT-megoldás hatókörére. A jelenlegi határérték minden előfizetés előfizetésenként 50 IoT-központok. A támogatási részlegtől kérheti a kvóta növelését. További információ a kvótakorlátozásokról:
+Minden Azure-előfizetésre alapértelmezett kvótakorlátozások vonatkoznak, amelyek meggátolják a szolgáltatással való visszaélést, és ezek a korlátozások hatással lehetnek az IoT-megoldás hatókörére. Az előfizetések jelenlegi korlátja a 50 IoT hub/előfizetés. A támogatási részlegtől kérheti a kvóta növelését. További információ: [IoT hub kvóták és szabályozás](iot-hub-devguide-quotas-throttling.md). A kvóta korlátaival kapcsolatos további részletekért tekintse meg a következő cikkek egyikét:
 
 * [Az Azure-előfizetés szolgáltatásokra vonatkozó korlátozásai](../azure-subscription-service-limits.md)
 
@@ -120,4 +119,4 @@ Minden Azure-előfizetésre alapértelmezett kvótakorlátozások vonatkoznak, a
 
 A végpontok közötti IoT-megoldás kipróbálásához tekintse meg az IoT Hub rövid útmutatóit:
 
-* [Rövid útmutató: Telemetria küldése egy eszközről IoT hubra](quickstart-send-telemetry-node.md)
+* [Rövid útmutató: Telemetria küldése egy eszközről egy IoT-hubhoz](quickstart-send-telemetry-node.md)

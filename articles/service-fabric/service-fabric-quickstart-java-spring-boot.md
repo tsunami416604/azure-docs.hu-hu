@@ -1,5 +1,5 @@
 ---
-title: Spring Boot-alkalmazás létrehozása a Service Fabricben az Azure-ban | Microsoft Docs
+title: 'Gyors útmutató: Spring boot-alkalmazás létrehozása az Azure Service Fabric'
 description: Ez a rövid útmutató azt ismerteti, hogyan lehet Spring Boot-alkalmazást telepíteni az Azure Service Fabricre egy Spring Boot-mintaalkalmazás használatával.
 services: service-fabric
 documentationcenter: java
@@ -14,21 +14,21 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/29/2019
 ms.author: suhuruli
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 2c98b069e042f9cbd07ccee643028ac84b3471c6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.custom: mvc, devcenter, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: 4ec6addb348b8c13f124ec225e056d2003a93c38
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57886687"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703523"
 ---
-# <a name="quickstart-deploy-a-java-spring-boot-application-to-service-fabric"></a>Gyors útmutató: A Service Fabric Java Spring Boot-alkalmazás üzembe helyezése
+# <a name="quickstart-deploy-a-java-spring-boot-app-on-azure-service-fabric"></a>Gyors útmutató: Java Spring boot-alkalmazás üzembe helyezése az Azure Service Fabric
 
-Az Azure Service Fabric egy elosztott rendszerplatform, amely mikroszolgáltatások és tárolók üzembe helyezésére és kezelésére szolgál.
+Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe egy Java Spring boot-alkalmazást az Azure Service Fabricban. Az Azure Service Fabric egy elosztott rendszerplatform, amely mikroszolgáltatások és tárolók üzembe helyezésére és kezelésére szolgál. 
 
-Ez a rövid útmutató a Spring Boot-alkalmazás Service Fabricre történő telepítését mutatja be. A rövid útmutató a Spring webhelyének [első lépéseket ismertető](https://spring.io/guides/gs/spring-boot/) útmutatójában található mintát használja. Ez az ismerős parancssori eszközöket alkalmazó rövid útmutató végigvezet a Spring Boot-minta Service Fabric-alkalmazásként történő telepítésének lépésein. A folyamat végén a Spring Boot mintája működőképes állapotban lesz a Service Fabricen.
+A rövid útmutató a Spring webhelyének [első lépéseket ismertető](https://spring.io/guides/gs/spring-boot/) útmutatójában található mintát használja. Ez az ismerős parancssori eszközöket alkalmazó rövid útmutató végigvezet a Spring Boot-minta Service Fabric-alkalmazásként történő telepítésének lépésein. A folyamat végén a Spring Boot mintája működőképes állapotban lesz a Service Fabricen.
 
-![Képernyőkép az alkalmazásról](./media/service-fabric-quickstart-java-spring-boot/springbootsflocalhost.png)
+![Spring boot Service Fabric minta](./media/service-fabric-quickstart-java-spring-boot/spring-boot-service-fabric-sample.png)
 
 Ezen rövid útmutató segítségével megtanulhatja a következőket:
 
@@ -79,7 +79,7 @@ git clone https://github.com/spring-guides/gs-spring-boot.git
 
 1. Az egyes sorokban adja meg a következő adatokat.
 
-    ![Yeoman-bejegyzések](./media/service-fabric-quickstart-java-spring-boot/yeomanspringboot.png)
+    ![Spring boot Yeoman bejegyzései](./media/service-fabric-quickstart-java-spring-boot/yeoman-entries-spring-boot.png)
 
 1. A `SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/code` mappában hozzon létre egy `entryPoint.sh` nevű fájlt. Adja a következőket az `entryPoint.sh` fájlhoz. 
 
@@ -90,7 +90,7 @@ git clone https://github.com/spring-guides/gs-spring-boot.git
     java -jar gs-spring-boot-0.1.0.jar
     ```
 
-1. Adja hozzá az **Endpoints** erőforrást a `gs-spring-boot/SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/ServiceManifest.xml` fájlban:
+1. Adja hozzá a végpontok erőforrást a *GS-Spring-boot/SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/ServiceManifest. xml fájlban.*
 
     ```xml 
         <Resources>
@@ -147,9 +147,9 @@ Mostanra más létrehozta Spring Boot mintájához tartozó Service Fabric-alkal
 
     A helyi fürt elindítása eltarthat egy ideig. A fürt üzembe állásának ellenőrzéséhez nyissa meg a Service Fabric Explorert a **http://localhost:19080** címen. Ha öt kifogástalan csomópontot lát, a fürt megfelelően üzemel. 
     
-    ![A helyi fürt kifogástalan](./media/service-fabric-quickstart-java-spring-boot/sfxlocalhost.png)
+    ![Service Fabric Explorer a kifogástalan csomópontokat jeleníti meg](./media/service-fabric-quickstart-java-spring-boot/service-fabric-explorer-healthy-nodes.png)
 
-1. Navigáljon a `gs-spring-boot/SpringServiceFabric` mappához.
+1. Nyissa meg a `gs-spring-boot/SpringServiceFabric` mappát.
 1. A helyi fürthöz való csatlakozáshoz futtassa a következő parancsot.
 
     ```bash
@@ -161,9 +161,9 @@ Mostanra más létrehozta Spring Boot mintájához tartozó Service Fabric-alkal
     ./install.sh
     ```
 
-1. Nyissa meg a kedvenc webböngészőjét, és az alkalmazás elérése elérésével `http://localhost:8080`.
+1. Nyissa meg a kedvenc webböngészőjét, és nyissa meg az alkalmazást az alkalmazáshoz `http://localhost:8080`való hozzáféréssel.
 
-    ![Helyi alkalmazás kezelőfelülete](./media/service-fabric-quickstart-java-spring-boot/springbootsflocalhost.png)
+    ![Spring boot Service Fabric minta](./media/service-fabric-quickstart-java-spring-boot/spring-boot-service-fabric-sample.png)
 
 Most már elérhető a Service Fabric-fürtre telepített Spring Boot-alkalmazás.
 
@@ -176,13 +176,13 @@ A Service Fabric Explorer az összes Service Fabric-fürtben fut. Az eléréséh
 A webes előtér-szolgáltatás skálázásához tegye a következőket:
 
 1. Nyissa meg a Service Fabric Explorert a fürtben – például: `http://localhost:19080`.
-1. Kattintson a három pontra a fanézetben a **fabric:/SpringServiceFabric/SpringGettingStarted** csomópont mellett, és válassza a **Szolgáltatás méretezése** lehetőséget.
+1. Válassza a fanézetben a **Fabric:/SpringServiceFabric/SpringGettingStarted** csomópont melletti három pontot ( **..** .), és válassza a **méretezési szolgáltatás**elemet.
 
-    ![A Service Fabric Explorer méretezési szolgáltatása](./media/service-fabric-quickstart-java-spring-boot/sfxscaleservicehowto.png)
+    ![Service Fabric Explorer méretezési szolgáltatás mintája](./media/service-fabric-quickstart-java-spring-boot/service-fabric-explorer-scale-sample.png)
 
     Most már méretezheti a szolgáltatás példányainak számát.
 
-1. Módosítsa a számot **3**-ra, és kattintson a **Szolgáltatás méretezése** parancsra.
+1. Módosítsa a számot **3** értékre, majd válassza a **méretezési szolgáltatás**elemet.
 
     A szolgáltatás parancssorral történő skálázása a következőképpen is végrehajtható.
 
@@ -194,9 +194,9 @@ A webes előtér-szolgáltatás skálázásához tegye a következőket:
     sfctl service update --service-id 'SpringServiceFabric~SpringGettingStarted' --instance-count 3 --stateless 
     ``` 
 
-1. Kattintson a **fabric:/SpringServiceFabric/SpringGettingStarted** csomópontra a fanézetben, és bontsa ki a partíciós csomópontot (egy GUID jelöli).
+1. Válassza ki a **Fabric:/SpringServiceFabric/SpringGettingStarted** csomópontot a fanézetben, és bontsa ki a partíciós csomópontot (egy GUID jelöli).
 
-    ![A Service Fabric Explorer skálázási szolgáltatása kész](./media/service-fabric-quickstart-java-spring-boot/sfxscaledservice.png)
+    ![Service Fabric Explorer skálázási szolgáltatás kész](./media/service-fabric-quickstart-java-spring-boot/service-fabric-explorer-partition-node.png)
 
     A szolgáltatás három példányban jelenik meg, a fanézetben pedig látható, hogy a példányok melyik csomópontokon futnak.
 
@@ -207,12 +207,12 @@ Ezzel az egyszerű felügyeleti eljárással megduplázta az előtér-szolgálta
 A szolgáltatás feladatátvételének bemutatásához a Service Fabric Explorerben szimuláljuk egy csomópont újraindítását. Győződjön meg arról, hogy a szolgáltatásnak kizárólag egy példánya fut.
 
 1. Nyissa meg a Service Fabric Explorert a fürtben – például: `http://localhost:19080`.
-1. Kattintson a három pontra a szolgáltatás példányát futtató csomópont mellett, és indítsa újra a csomópontot.
+1. Válassza a szolgáltatás példányát futtató csomópont melletti három pontot ( **..** .), majd indítsa újra a csomópontot.
 
-    ![Csomópont újraindítása a Service Fabric Explorerben](./media/service-fabric-quickstart-java-spring-boot/sfxhowtofailover.png)
+    ![Service Fabric Explorer csomópont újraindítása](./media/service-fabric-quickstart-java-spring-boot/service=fabric-explorer-restart=node.png)
 1. A szolgáltatás példánya egy új csomópontra kerül át anélkül, hogy az alkalmazás leállna.
 
-    ![A csomópont-újraindítás a Service Fabric Explorerben sikeres volt](./media/service-fabric-quickstart-java-spring-boot/sfxfailedover.png)
+    ![Service Fabric Explorer a csomópont újraindítása sikerült](./media/service-fabric-quickstart-java-spring-boot/service-fabric-explorer-service-moved.png)
 
 ## <a name="next-steps"></a>További lépések
 

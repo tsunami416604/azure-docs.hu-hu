@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0bb43f1dad775594e3c3229bc5d69528f055144
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 57d82f669c190528cd8ec88db19645cff38c42b5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57877547"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67107362"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adp-globalview"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező ADP Globalview
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a ADP Globalview konfigurálásához hozzá kell ADP G
 
 **ADP Globalview hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -125,8 +125,8 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés ADP Globalview, hajt
     | Name (Név)  |  Adatforrás-attribútum|
     | ---------------| --------- |
     | personalimmutableid | user.extensionattribute2 |
-    | e-mail               | user.mail |
-    | felhasználói azonosító              | user.userprincipalname|
+    | email               | user.mail |
+    | userid              | user.userprincipalname|
     | | |
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.

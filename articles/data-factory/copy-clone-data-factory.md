@@ -1,51 +1,51 @@
 ---
-title: Másolása vagy klónozása egy data factoryt az Azure Data Factoryban |} A Microsoft Docs
-description: Ismerje meg, hogyan másolása vagy klónozása egy data factoryt az Azure Data Factoryban
+title: Adatelőállító másolása vagy klónozása Azure Data Factoryban | Microsoft Docs
+description: Megtudhatja, hogyan másolhat vagy klónozott egy adatgyárat Azure Data Factory
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 01/09/2019
-author: sharonlo101
-ms.author: shlo
-manager: craigg
-ms.openlocfilehash: 96ea8142e2f7794d3c15c6efb436eafa585bc8fd
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: 6e23cc583c9b403619ad2e47f2085ef7c0149bd2
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57575613"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142372"
 ---
-# <a name="copy-or-clone-a-data-factory-in-azure-data-factory"></a>Másolása vagy klónozása egy data factoryt az Azure Data Factoryban
+# <a name="copy-or-clone-a-data-factory-in-azure-data-factory"></a>Adatfeldolgozó másolása vagy klónozása Azure Data Factory
 
-Ez a cikk ismerteti, hogyan másolása vagy klónozása egy data factoryt az Azure Data Factoryban.
+Ez a cikk bemutatja, hogyan másolhat vagy klónozott egy adatgyárat a Azure Data Factoryban.
 
-## <a name="use-cases-for-cloning-a-data-factory"></a>Adat-előállító Klónozás alkalmazási helyzetei
+## <a name="use-cases-for-cloning-a-data-factory"></a>Az adatfeldolgozó klónozására szolgáló esetek használata
 
-Íme néhány a körülmények, ahol, előfordulhat, hogy hasznosnak másolása vagy klónozása az adat-előállító:
+Íme néhány olyan körülmény, amelyben hasznos lehet egy adatgyár másolása vagy klónozása:
 
--   **Erőforrások átnevezése**. Az Azure nem támogatja az átnevezési erőforrásokat. Ha azt szeretné, adat-előállító átnevezése, klónozza az adat-előállító egy másik névvel, és törölje a meglévő.
+-   **Erőforrások átnevezése**. Az Azure nem támogatja az erőforrások átnevezését. Ha átnevezni szeretne egy adatelőállítót, akkor az adatgyárat más néven is megoszthatja, majd törölheti a meglévőt.
 
--   **Hibakeresés a módosítások** Ha a hibakeresési funkciók nem elegendő. Néha tesztelheti a módosításokat, érdemes egy másik factoryben, mielőtt alkalmazná őket a fő egy tesztelheti a módosításokat. A legtöbb esetben a hibakeresési is használhatja. Eseményindítók, a módosítások azonban, mint például amikor egy eseményindítót a módosítások működése automatikusan hív, vagy adott időtartamra nem lehet testable egyszerűen ellenőrzése nélkül. Ezekben az esetekben a Klónozás a gyári, és ott a módosítások alkalmazása párosítása révén. Mivel az Azure Data Factory elsősorban a futtatások száma alapján számláz, a második gyári nem vezet a további díjakat.
+-   A hibakeresési funkciók nem elégségesek. Időnként előfordulhat, hogy tesztelni kívánja a módosításokat egy másik gyárban, mielőtt alkalmazná azokat a fő számára. A legtöbb esetben használhatja a hibakeresést. Előfordulhat azonban, hogy az eseményindítók változásai, például hogy a módosítások hogyan viselkednek automatikusan, vagy egy időablakban, nem tesztelhető könnyen a bejelentkezés nélkül. Ezekben az esetekben a gyár klónozása és a módosítások alkalmazása sok értelmet tesz lehetővé. Mivel a Azure Data Factory díjat elsősorban a futtatások száma alapján számítjuk fel, a második gyár nem jár további költségekkel.
 
-## <a name="how-to-clone-a-data-factory"></a>Hogyan klónozhatók adat-előállítók
+## <a name="how-to-clone-a-data-factory"></a>Az adatfeldolgozó klónozása
 
-1. A Data Factory felhasználói felülete az Azure Portalon lehetővé teszi a Resource Manager-sablonnal, és a egy alkalmazásparaméter-fájlt, amely lehetővé teszi, hogy akkor sem tudják módosítani az előállító klónozásakor módosítani szeretné azokat a data factory teljes hasznos exportálása.
+1. A Azure Portal Data Factory felhasználói felülete lehetővé teszi az adat-előállító teljes hasznos adatainak exportálását egy Resource Manager-sablonba, valamint egy olyan paramétert, amely lehetővé teszi, hogy a gyár klónozásakor módosítani kívánt értékeket módosítsa.
 
-1. Előfeltételként szükséges a célként megadott adat-előállító létrehozása az Azure Portalról.
+1. Előfeltételként létre kell hoznia a cél adatait előállítót a Azure Portal.
 
-1. Ha a forrás-előállító egy SelfHosted IntegrationRuntime, meg kell előre létre hozni objektumosztállyal, a cél-előállító ugyanazzal a névvel. Ha meg szeretné osztani a különböző előállítók között SelfHosted IRS-nek, használhatja a közzétett minta [Itt](author-visually.md#best-practices-for-git-integration).
+1. Ha rendelkezik SelfHosted-IntegrationRuntime a forrás-előállítóban, előbb létre kell hoznia azt ugyanazzal a névvel a cél gyárban. Ha meg szeretné osztani a SelfHosted IRs-t a különböző gyárak között, használhatja az [itt](source-control.md#best-practices-for-git-integration)közzétett mintát.
 
-1. Ha a GIT módban minden alkalommal, amikor közzéteszi a portálról, az előállító Resource Manager-sablon mentett GIT-adattár az adf_publish ágban található.
+1. Ha GIT módban van, minden alkalommal, amikor közzéteszi a portálon, a gyár Resource Manager-sablonját a rendszer az adattár adf_publish-ágában menti a GIT-ben.
 
-1. Más esetekben a Resource Manager-sablon kattintva letölthető a **Resource Manager sablon exportálása** gomb a portálon.
+1. Más esetekben a Resource Manager-sablon letölthető a portál **Resource Manager-sablon exportálása** gombjára kattintva.
 
-1. Miután letöltötte a Resource Manager-sablon, a standard Resource Manager-sablon üzembe helyezési módszer használatával telepítheti.
+1. A Resource Manager-sablon letöltése után üzembe helyezheti a Resource Manager-sablonok szabványos telepítési módszereivel.
 
-1. Biztonsági okokból a létrehozott Resource Manager-sablon nem tartalmaz minden olyan titkos információk, például jelszavak, a társított szolgáltatások. Ennek eredményeképpen kell adnia ezeket üzembe helyezéshez megadott paraméterek jelszavakat. Ha a paraméterek megadása nem kívánatos, rendelkezik a kapcsolati karakterláncok és a jelszavakat, a társított szolgáltatások beszerzése az Azure Key Vaultban.
+1. Biztonsági okokból a generált Resource Manager-sablon nem tartalmaz titkos adatokat, például a társított szolgáltatások jelszavait. Ennek eredményeképpen ezeket a jelszavakat telepítési paraméterekként kell megadnia. Ha a paraméterek megadása nem kívánatos, akkor a társított szolgáltatások kapcsolati karakterláncait és jelszavát be kell szereznie Azure Key Vault.
 
 ## <a name="next-steps"></a>További lépések
 
-Olvassa el az adat-előállító létrehozása az Azure Portalon található útmutatást [adat-előállító létrehozása az Azure Data Factory felhasználói felületének használatával](quickstart-create-data-factory-portal.md).
+Tekintse át az adatfeldolgozó létrehozásával kapcsolatos útmutatót a Azure Portal az [adatfeldolgozó létrehozása a Azure Data Factory felhasználói felület használatával](quickstart-create-data-factory-portal.md)című témakörben.

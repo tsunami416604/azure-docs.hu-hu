@@ -1,27 +1,26 @@
 ---
 title: A Data Factory nevű adatintegrációs szolgáltatás ismertetése | Microsoft Docs
-description: 'Ismerje meg, mi az Azure Data Factory: Egy felhőalapú adatintegrációs szolgáltatás, amellyel előkészíthető és automatizálható az adatok továbbítása és átalakítása.'
+description: 'Ismerje meg, hogy mi Azure Data Factory: Egy felhőalapú adatintegrációs szolgáltatás, amely összehangolja és automatizálja az adatáthelyezést és-átalakítást.'
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.assetid: cec68cb5-ca0d-473b-8ae8-35de949a009e
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: overview
 ms.date: 01/22/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 9bf8c51fda6985f88ecffa60b32c1c62e364a511
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 2e508839cd343820a36cc715ebde0f47c2ac4ab1
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014930"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70139511"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Az Azure Data Factory bemutatása 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
 > * [1-es verzió](data-factory-introduction.md)
 > * [2-es verzió (aktuális verzió)](../introduction.md)
 
@@ -106,7 +105,7 @@ Minden tevékenység nulla vagy több adatkészletet fogad bemenetként, és egy
 
 Az Azure Blob-adatkészlet például meghatározza a blobtárolót és azt az Azure Blob Storage-mappát, amelyből a folyamat beolvassa az adatokat. Az Azure SQL Table adatkészlet megadhatja, hogy a tevékenység melyik táblára írja a kimeneti adatokat. 
 
-### <a name="linked-services"></a>Társított szolgáltatások
+### <a name="linked-services"></a>Összekapcsolt szolgáltatások
 A társított szolgáltatások nagyon hasonlóak a kapcsolati sztringekhoz, amelyek meghatározzák azokat a kapcsolati információkat, amelyeket a Data Factory a külső erőforrásokhoz történő csatlakozáshoz igényel. Tulajdonképpen a társított szolgáltatás határozza meg az adatforrással való kapcsolatot, míg az adatkészlet jelöli az adatok struktúráját. 
 
 Az Azure Storage társított szolgáltatása például kapcsolati sztringet szolgáltat az Azure Storage-fiókhoz való csatlakozáshoz. Az Azure Blob-adatkészlet meghatározza a blobtárolót és az adatokat tartalmazó mappát.   
@@ -119,7 +118,7 @@ A társított szolgáltatásokat két okból használjuk a Data Factoryban:
 
 ### <a name="relationship-between-data-factory-entities"></a>Data Factory-entitások közötti kapcsolatok
 
-![Ábra: Data Factory egy felhőalapú adatintegrációs szolgáltatás – fő fogalmak](./media/data-factory-introduction/data-integration-service-key-concepts.png)
+![Diagram Data Factory, felhőalapú adatintegrációs szolgáltatás – főbb fogalmak](./media/data-factory-introduction/data-integration-service-key-concepts.png)
 
 ## <a name="supported-regions"></a>Támogatott régiók
 Jelenleg az USA nyugati régiójában, az USA keleti régiójában és az észak-európai régióban hozhat létre data factoryt. Egy adat-előállító azonban más Azure-régiókban lévő adattárakhoz és számítási szolgáltatásokhoz is hozzáférhet az adatok adattárak közötti mozgatása vagy az adatok számítási szolgáltatásokkal történő feldolgozása érdekében.
@@ -133,7 +132,6 @@ Tegyük fel például, hogy számítási környezetei, például az Azure HDInsi
 ## <a name="get-started-with-creating-a-pipeline"></a>Bevezetés a folyamatok létrehozásába
 Az Azure Data Factoryben a következő eszközök és API-k használhatók adatfolyamatok létrehozására: 
 
-- Azure Portal
 - Visual Studio
 - PowerShell
 - .NET API

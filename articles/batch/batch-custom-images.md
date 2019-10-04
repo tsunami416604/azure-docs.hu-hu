@@ -1,115 +1,118 @@
 ---
-title: Egyéni rendszerképpel Azure Batch-készlet kiépítése |} A Microsoft Docs
-description: Hozzon létre egy Batch-készlet egyéni rendszerképpel történő üzembe helyezése számítási csomópontok, amelyek a szoftverek és az alkalmazás számára szükséges adatokat tartalmazzák. Egyéni rendszerképek olyan hatékony módja a Batch számítási feladatok futtatásához a számítási csomópontok konfigurálása.
+title: Hozzon létre egy készletet a megosztott rendszerkép-katalógus használatával – Azure Batch | Microsoft Docs
+description: Hozzon létre egy batch-készletet a megosztott rendszerkép-katalógusban, hogy egyéni rendszerképeket építsen ki az alkalmazásához szükséges szoftvereket és adatokból álló számítási csomópontok számára. Az egyéni lemezképek hatékony módszer a számítási csomópontok konfigurálására a Batch-munkaterhelések futtatásához.
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.service: batch
 ms.topic: article
-ms.date: 10/04/2018
+ms.date: 08/28/2019
 ms.author: lahugh
-ms.openlocfilehash: 0bc43b82a987ab065677bdbb56de73ef341c249d
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 3c2213c25a8fdc6d6545711bd2af9b94662ee609
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752126"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141826"
 ---
-# <a name="use-a-custom-image-to-create-a-pool-of-virtual-machines"></a>Hozzon létre egy virtuálisgép-készletek egyéni rendszerkép használatával 
+# <a name="use-the-shared-image-gallery-to-create-a-pool"></a>Készlet létrehozása a megosztott képtára használatával
 
-Virtuálisgép-konfiguráció használata egy Azure Batch-készlet létrehozásakor meg kell adnia az operációs rendszer biztosít a készlet egyes számítási csomópontok Virtuálisgép-rendszerkép. Létrehozhat egy virtuálisgép-készletek, vagy egy támogatott Azure Marketplace-rendszerképpel, vagy egyéni rendszerképpel (Virtuálisgép-rendszerkép létrehozása és konfigurálása saját maga). Az egyedi képnek kell lennie egy *felügyelt rendszerkép* erőforrás Azure-előfizetéshez és régióban, mint a Batch-fiókot.
+Ha Azure Batch-készletet hoz létre a virtuális gép konfigurációjával, meg kell adnia egy virtuálisgép-rendszerképet, amely a készlet minden számítási csomópontja számára biztosítja az operációs rendszert. Létrehozhatja a virtuális gépek készletét vagy egy támogatott Azure Marketplace-lemezképpel, vagy létrehozhat egy egyéni rendszerképet a [megosztott](../virtual-machines/windows/shared-image-galleries.md)képkatalógus használatával.
 
-## <a name="why-use-a-custom-image"></a>Egyéni rendszerkép miért érdemes használni?
+## <a name="benefits-of-the-shared-image-gallery"></a>A megosztott képgyűjtemény előnyei
 
-Egy egyéni rendszerképet ad meg, ha rendelkezik az operációs rendszer konfigurációs és operációs rendszerének és adatlemezeinek használandó típusát szabályozhatja. Az egyéni rendszerkép alkalmazások és az összes Batch-készlet csomópontjainak elérhetővé válnak, amint kiépítésüket referenciaadatokat is tartalmazhat.
+Ha az egyéni rendszerképhez a megosztott képtárat használja, az operációs rendszer típusát és konfigurációját, valamint az adatlemezek típusát is szabályozhatja. A megosztott rendszerkép tartalmazhat olyan alkalmazásokat és referenciákat, amelyek a Batch-készlet összes csomópontján elérhetővé válnak a kiépítés után.
 
-Egyéni rendszerkép használatával időt takaríthat meg a készlet számítási csomópontjait futtatni a Batch számítási feladatok előkészítésében. Használja az Azure Marketplace-rendszerképpel, és telepítse a szoftver minden számítási csomóponton üzembe helyezés után, hatékonyabb lehet egyéni rendszerkép használatával.
+A környezethez szükség szerint a rendszerkép több verzióját is használhatja. Ha rendszerkép-verziót használ a virtuális gép létrehozásához, a rendszer a rendszerkép verzióját használja a virtuális gép új lemezének létrehozásához.
 
-A forgatókönyv konfigurált egyéni rendszerkép használatával megadhat több előnye is van:
+A megosztott rendszerkép használatával időt takaríthat meg a készlet számítási csomópontjainak előkészítése a Batch-munkaterhelések futtatásához. A kiépítés után egy Azure Marketplace-rendszerkép is használható, és minden számítási csomóponton telepítheti a szoftvereket, de a megosztott rendszerképek használata általában hatékonyabb. Emellett több replikát is megadhat a megosztott rendszerképhez, így ha sok virtuális géppel (több mint 600 virtuális géppel) rendelkező készleteket hoz létre, akkor időt takaríthat meg a készlet létrehozásakor.
 
-- **Az operációs rendszer (OS) konfigurálása**. Testre szabhatja a lemezkép operációsrendszer-lemez konfigurációja. 
-- **A telepítés előtti alkalmazások.** A telepítés előtti az operációsrendszer-lemez, amely hatékonyabb és kisebb hibalehetőséget magában rejtő, alkalmazások telepítése után kiépítése a számítási csomópontok indítási tevékenységet használ, mint az alkalmazások.
-- **Újraindítás időt takaríthat meg a virtuális gépeken.** Alkalmazás telepítése általában igényel, amely időigényes a virtuális gép újraindítása. Újraindítási időpontot előre telepíti az alkalmazásokat mentheti. 
-- **Másolja a nagyon nagy mennyiségű adat egyszer.** Győződjön meg a felügyelt egyéni lemezképek statikus adatok része egy felügyelt rendszerképet adatlemezek másolásával. Ez csak egyszer kell elvégezni, és a készlet minden csomópontján elérhetővé adatokat.
-- **A választott lemeztípusokat.** Választhat, hogy a premium Storage tárolást használ az operációsrendszer-lemez és az adatlemezt.
-- **Készletek növekszik, nagy méretű.** Felügyelt egyéni lemezképek használatával létrehoz egy készletet, ha a készlet a kép blob VHD-k példányát, nem növelhető. 
+A forgatókönyvhöz konfigurált megosztott rendszerkép használata több előnyt is biztosíthat:
 
+* **Ugyanazokat a lemezképeket használja a régiók között.** Létrehozhat megosztott rendszerkép-replikákat különböző régiók között, így az összes készlet ugyanazt a rendszerképet használja.
+* **Konfigurálja az operációs rendszert (operációs rendszer).** Testreszabhatja a lemezkép operációsrendszer-lemezének konfigurációját.
+* **Alkalmazások telepítése előtt.** Az operációsrendszer-lemezen lévő alkalmazások előzetes telepítése hatékonyabb és kevésbé hasonló, mint az alkalmazások telepítése a számítási csomópontok indítási tevékenységgel való kiépítés után.
+* **Nagyméretű adatmennyiségek másolása egyszer.** A felügyelt megosztott rendszerkép statikus adatokból álló részét a felügyelt rendszerkép adatlemezére másolja. Ezt csak egyszer kell elvégezni, és a készlet minden csomópontja számára elérhetővé kell tenni az adatmennyiséget.
+* **Növelje a készleteket nagyobb méretekre.** A megosztott képkatalógussal nagyobb készleteket hozhat létre a testreszabott rendszerképekkel együtt, és több megosztott lemezkép-replikát is használhat.
+* **Jobb teljesítmény, mint az egyéni rendszerkép.** A megosztott rendszerképek használatával a készlethez szükséges idő akár 25%-kal gyorsabb, a virtuális gép üresjárati késése pedig akár 30%-kal rövidebb is lehet.
+* **A képek verziószámozása és csoportosítása az egyszerűbb felügyelet érdekében.** A képcsoportosítási definíció információt tartalmaz arról, hogy miért jött létre a rendszerkép, milyen operációs rendszerre és a rendszerképek használatára vonatkozó információkkal rendelkezik. A képek csoportosítása megkönnyíti a képek kezelését. További információ: képdefiníciók. [](../virtual-machines/windows/shared-image-galleries.md#image-definitions)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- **Egy felügyelt rendszerképet erőforrás**. Egyéni rendszerkép használatával virtuális gépek készletének létrehozása, szüksége van, vagy hozzon létre egy felügyelt rendszerképet erőforrás Azure-előfizetéshez és régióban, mint a Batch-fiók. A kép kell létrehozni a virtuális gép operációsrendszer-lemez, és szükség esetén a csatlakoztatott adatlemezek pillanatképeiből. További információkért és a egy felügyelt rendszerképet előkészületek tekintse meg a következő szakaszban. 
-  - Egy egyedi egyéni lemezkép használata minden egyes készletet hoz létre.
-  - Készlet létrehozása a lemezképet, a Batch API-k használatával, adja meg a **erőforrás-azonosító** a képe, amely az űrlap `/subscriptions/xxxx-xxxxxx-xxxxx-xxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/myImage`. A portál használatához használja a **neve** a kép.  
-  - A felügyelt lemezkép-erőforrás léteznie kell, hogy a vertikális felskálázás a készlet teljes élettartama, és távolíthatja el a készlet törlése után.
+* **Egy Azure Batch-fiók.** Batch-fiók létrehozásához tekintse meg a Batch rövid útmutatóit a [Azure Portal](quick-create-portal.md) vagy az [Azure CLI](quick-create-cli.md)használatával.
 
-- **Az Azure Active Directory (AAD) hitelesítés**. A Batch-ügyfél API-t az AAD-hitelesítést kell használnia. Azure Batch-támogatás az AAD leírása itt található [az Active Directory hitelesítést Batch-szolgáltatási megoldások](batch-aad-auth.md).
-
-## <a name="prepare-a-custom-image"></a>Egyéni lemezkép előkészítése
-
-Az Azure-ban előkészítheti egy felügyelt rendszerképet egy Azure virtuális gép operációsrendszer- és adatlemezek pillanatképeiből, általánosított virtuális gépből az Azure managed disks szolgáltatással vagy feltöltött helyszíni általánosított virtuális merevlemezből. A Batch-készletek egyéni rendszerképpel megbízhatóan méretezheti, javasoljuk, hogy létrehozása egy felügyelt rendszerképet használó *csak* az első módszer: a Virtuálisgép-lemezek pillanatképei. Lásd az alábbi lépéseket egy virtuális gép előkészítése, a pillanatkép készítése és a rendszerkép létrehozása a pillanatképből. 
-
-### <a name="prepare-a-vm"></a>A virtuális gép előkészítése 
-
-A lemezkép egy új virtuális Gépet hoz létre, ha használja az Azure Marketplace-rendszerképpel, mint az alaprendszerképet a felügyelt rendszerkép támogatja a kötegelt és testre szabni.  Azure Batch által támogatott Azure Marketplace-en képhivatkozásokkal listájának lekéréséhez tekintse meg a [lista csomóponti ügynök SKU-k](/rest/api/batchservice/account/listnodeagentskus) műveletet. 
+* **Megosztott Képgyűjteményi rendszerkép** További információ és a megosztott rendszerkép előkészítésének lépései: [megosztott rendszerkép-katalógus létrehozása az Azure CLI-vel](../virtual-machines/linux/shared-images.md) vagy [közös rendszerkép-katalógus létrehozása a Azure Portal használatával](../virtual-machines/linux/shared-images-portal.md).
 
 > [!NOTE]
-> További licenc és az alaplemezkép beszerzési feltételek rendelkező külső lemezképe nem használható. A Marketplace-rendszerképek kapcsolatos információkért tekintse meg az útmutató a [Linux](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
-) vagy [Windows](../virtual-machines/windows/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
-) virtuális gépeket.
+> A megosztott rendszerképnek a Batch-fiókkal megegyező előfizetésben kell lennie. A megosztott rendszerkép különböző régiókban lehet, ha a Batch-fiókkal megegyező régióban vannak replikák.
 
+## <a name="create-a-pool-from-a-shared-image-using-the-azure-cli"></a>Készlet létrehozása megosztott rendszerképből az Azure CLI használatával
 
-* Győződjön meg arról, hogy a virtuális Gépet hozunk létre egy felügyelt lemezt. Ez az alapértelmezett tároló beállítása, a virtuális gép létrehozásakor.
-* Ne telepítse az Azure-bővítmény, az egyéni szkriptek futtatására szolgáló bővítmény, például a virtuális gépen. Ha a rendszerkép előre telepített bővítményt tartalmaz, az Azure problémába ütközhet, a Batch-készlet üzembe helyezésekor.
-* Győződjön meg arról, hogy az alap operációsrendszer-képet, adja meg az alapértelmezett ideiglenes meghajtót használja-e. A Batch-csomópontügynök jelenleg ezt várja az alapértelmezett ideiglenes meghajtót.
-* Ha a virtuális gép fut, a csatlakozás RDP-(a Windows) vagy (Linux) esetén az SSH-n keresztül. Szükséges szoftver telepítését, vagy másolja ki a kívánt adathoz.  
+Ha az Azure CLI használatával szeretne létrehozni egy készletet a megosztott rendszerképből, `az batch pool create` használja az parancsot. Határozza meg a megosztott rendszerkép azonosítóját `--image` a mezőben. Győződjön meg arról, hogy az operációs rendszer típusa és az SKU megfelel a következő által megadott verzióknak:`--node-agent-sku-id`
 
-### <a name="create-a-vm-snapshot"></a>Hozzon létre egy virtuális gép pillanatképét
+```azurecli
+az batch pool create \
+    --id mypool --vm-size Standard_A1_v2 \
+    --target-dedicated-nodes 2 \
+    --image "/subscriptions/{sub id}/resourceGroups/{resource group name}/providers/Microsoft.Compute/galleries/{gallery name}/images/{image definition name}/versions/{version id}" \
+    --node-agent-sku-id "batch.node.ubuntu 16.04"
+```
 
-Pillanatkép egy virtuális merevlemez teljes, a csak olvasható példányát. Pillanatkép létrehozása a virtuális gép operációs rendszer vagy az adatlemezeket, használhatja az Azure portal vagy a parancssori eszközöket. Lépéseket és a beállítások segítségével készít pillanatképet, lásd az útmutató a [Linux](../virtual-machines/linux/snapshot-copy-managed-disk.md) vagy [Windows](../virtual-machines/windows/snapshot-copy-managed-disk.md) virtuális gépeket.
+## <a name="create-a-pool-from-a-shared-image-using-c"></a>Készlet létrehozása megosztott rendszerképből a következő használatával:C#
 
-### <a name="create-an-image-from-one-or-more-snapshots"></a>Rendszerkép létrehozása egy vagy több pillanatképekből
+Azt is megteheti, hogy létrehoz egy készletet egy megosztott C# rendszerképből az SDK használatával.
 
-Létrehozhat egy felügyelt rendszerképet egy pillanatképből, használja az Azure parancssori eszközök például a [az lemezkép létrehozása](/cli/azure/image) parancsot. Adjon meg egy operációsrendszer-lemez pillanatfelvételének és opcionálisan egy vagy több lemez pillanatképeinek rendszerképet hozhat létre.
+```csharp
+private static VirtualMachineConfiguration CreateVirtualMachineConfiguration(ImageReference imageReference)
+{
+    return new VirtualMachineConfiguration(
+        imageReference: imageReference,
+        nodeAgentSkuId: "batch.node.windows amd64");
+}
 
-## <a name="create-a-pool-from-a-custom-image-in-the-portal"></a>Készlet létrehozása egyéni rendszerképből a portálon
+private static ImageReference CreateImageReference()
+{
+    return new ImageReference(
+        virtualMachineImageId: "/subscriptions/{sub id}/resourceGroups/{resource group name}/providers/Microsoft.Compute/galleries/{gallery name}/images/{image definition name}/versions/{version id}");
+}
 
-Miután mentette az egyéni rendszerkép, és ismeri az erőforrás-azonosító vagy név, a Batch-készlet létrehozása a rendszerképből. A következő lépések bemutatják, hogyan hoz létre egy készletet az Azure Portalról.
+private static void CreateBatchPool(BatchClient batchClient, VirtualMachineConfiguration vmConfiguration)
+{
+    try
+    {
+        CloudPool pool = batchClient.PoolOperations.CreatePool(
+            poolId: PoolId,
+            targetDedicatedComputeNodes: PoolNodeCount,
+            virtualMachineSize: PoolVMSize,
+            virtualMachineConfiguration: vmConfiguration);
 
-> [!NOTE]
-> Ha hoz létre a készletet a Batch API-k egyikével, ügyeljen arra, hogy az identitás AAD-hitelesítést használ a jogosult a rendszerkép-erőforráshoz. Lásd: [az Active Directory hitelesítést Batch-szolgáltatási megoldások](batch-aad-auth.md).
->
+        pool.Commit();
+    }
+    ...
+}
+```
 
-1. Az Azure portálon lépjen Batch-fiókjára. Ez a fiók az erőforráscsoport, amely tartalmazza az egyéni rendszerkép azonos előfizetésben és régióban kell lennie. 
-2. Az a **beállítások** ablak bal oldalán válassza ki a **készletek** menüpontot.
-3. Az a **készletek** ablakban válassza ki a **Hozzáadás** parancsot.
-4. Az a **készlet hozzáadása** ablakban válassza **egyéni lemezkép (Linux/Windows)** származó a **képtípus** legördülő listából. Az a **egyéni Virtuálisgép-rendszerkép** legördülő menüben válassza ki a rendszerkép nevének (rövid alak az erőforrás-azonosító).
-5. Válassza ki a megfelelő **közzétevő/ajánlat/Sku** az egyéni rendszerkép.
-6. Adja meg a fennmaradó beállításokat, beleértve a **csomópontméret**, **dedikált csomópontok célszáma**, és **alacsony prioritású csomópontok célszáma**, illetve bármely kívánt, nem kötelező beállítások.
+## <a name="create-a-pool-from-a-shared-image-using-the-azure-portal"></a>Készlet létrehozása megosztott rendszerképből a Azure Portal használatával
 
-    Például a Microsoft Windows Server Datacenter 2016 egyéni lemezkép a **készlet hozzáadása** ablakban a lent látható módon jelenik meg:
+A következő lépésekkel hozhat létre készletet egy megosztott rendszerképből a Azure Portal.
 
-    ![Készlet hozzáadása az egyéni Windows-rendszerképből](media/batch-custom-images/add-pool-custom-image.png)
-  
-Egyéni lemezkép alapján egy meglévő készlet ellenőrzéséhez tekintse meg a **operációs rendszer** tulajdonság az erőforrás összefoglaló szakaszában a **készlet** ablak. Ha a készletet jött létre egyéni rendszerképpel, van-e állítva **egyéni Virtuálisgép-rendszerkép**.
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
+1. Nyissa meg a **Batch** -fiókokat, és válassza ki a fiókját.
+1. Válassza a **készletek** lehetőséget, majd a **Hozzáadás** gombra kattintva hozzon létre egy új készletet.
+1. A **rendszerkép típusa** szakaszban válassza a **megosztott képgyűjtemény**lehetőséget.
+1. Hajtsa végre a többi szakaszt a felügyelt lemezképpel kapcsolatos információkkal.
+1. Kattintson az **OK** gombra.
 
-A készlethez társított összes egyéni lemezképek jelennek meg a készleten **tulajdonságok** ablak.
+![Hozzon létre egy készletet egy megosztott rendszerképből a portálon.](media/batch-custom-images/create-custom-pool.png)
 
-## <a name="considerations-for-large-pools"></a>A készletek nagy méretű szempontjai
+## <a name="considerations-for-large-pools"></a>A nagyméretű készletek szempontjai
 
-Ha azt tervezi, több száz virtuális gép vagy több egyéni lemezkép alapján hoz létre egy készletet, fontos kövesse az előző útmutatás egy VM-pillanatképet készített rendszerkép használatához.
+Ha egy megosztott rendszerkép használatával több száz vagy több ezer virtuális géppel rendelkező készletet szeretne létrehozni, kövesse az alábbi útmutatást.
 
-Vegye figyelembe a következőket is:
+* **A megosztott képgyűjtemény replikáinak száma.**  A legfeljebb 600 példánnyal rendelkező készletek esetében javasoljuk, hogy tartsa meg legalább egy replikát. Ha például egy 3000 virtuális géppel rendelkező készletet hoz létre, akkor legalább 5 replikát kell tartania a rendszerképből. Javasoljuk, hogy a jobb teljesítmény érdekében mindig több replikát őrizzen meg, mint a minimális követelmények.
 
-- **Méretkorlátozásai** – Batch a készlet méretét 2500 dedikált számítási csomópontok vagy 1000 alacsony prioritású csomópontok, korlátozza az egyéni rendszerkép használatával.
-
-  Ha ugyanazt a lemezképet (vagy több lemezképet mögöttes pillanatképeket alapján) több készletet létrehozni, a készletek összesített számítási csomópontjain nem lépik túl az előző. Nem ajánlott, több mint egyetlen kép vagy a mögöttes pillanatkép használata.
-
-  Korlátok csökkenteni lehet, ha a készlet konfigurálása [bejövő NAT-készletek](pool-endpoint-configuration.md).
-
-- **Átméretezés időtúllépése** : Ha a készlet tartalmaz egy rögzített csomópontok száma (nem az automatikus skálázási), növelje a készlet például 20 – 30 perc értékre resizeTimeout tulajdonságát. Ha a készlet nem éri el a cél méretét az időkorláton belül, hajtson végre egy újabb [átméretezési művelet](/rest/api/batchservice/pool/resize).
-
-  Ha több mint 300 számításicsomópont-készlet, szüksége lehet elérni a célméretet többször is feldolgozza a készlet átméretezése.
+* **Átméretezés időtúllépése** Ha a készlet rögzített számú csomópontot tartalmaz (ha nem rendelkezik az autoskálázással), `resizeTimeout` növelje a készlet tulajdonságát a készlet méretétől függően. Minden 1000 virtuális gép esetében az ajánlott átméretezési időkorlát legalább 15 percet vesz igénybe. Például egy 2000 virtuális géppel rendelkező készlet ajánlott átméretezési időtúllépése legalább 30 percet vesz igénybe.
 
 ## <a name="next-steps"></a>További lépések
 
-- A Batch részletesebb áttekintéséért lásd: [Develop nagy léptékű párhuzamos számítási megoldások Batch segítségével történő](batch-api-basics.md).
+* A Batch részletes áttekintése: [nagy léptékű párhuzamos számítási megoldások létrehozása a Batch szolgáltatással](batch-api-basics.md).

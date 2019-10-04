@@ -1,6 +1,6 @@
 ---
-title: Ismerje meg a nyomkövetési naplók az Azure Application Insights Java |} A Microsoft Docs
-description: Az Application Insights keresés Log4J, vagy Logback nyomkövetések
+title: Ismerkedés a Java-nyomkövetési naplókkal az Azure Application Insightsban | Microsoft Docs
+description: Log4J-vagy Logback-nyomkövetés keresése a Application Insightsban
 services: application-insights
 documentationcenter: java
 author: mrbullwinkle
@@ -10,29 +10,47 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 03/14/2019
+ms.date: 05/18/2019
 ms.author: mbullwin
-ms.openlocfilehash: 614f9a44f7c699be38906ac00e12f523490ce112
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ac9bd6021b5fcec36e3aadfdf4c30020971f3be5
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58884295"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299249"
 ---
-# <a name="explore-java-trace-logs-in-application-insights"></a>Nyomkövetési naplók az Application Insights Java felfedezése
-Ha a Logback vagy Log4J használja (1.2-es verzió vagy 2.0-s verzió) nyomkövetés, az automatikusan elküldi az Application Insights, amelyen ismerje meg, és keresse meg azokat a nyomkövetési naplók rendelkezhet.
+# <a name="explore-java-trace-logs-in-application-insights"></a>Ismerkedjen meg a Java-nyomkövetési naplók Application Insights
+Ha a nyomkövetéshez Logback vagy Log4J (v 1.2 vagy v 2.0) használ, a nyomkövetési naplókat automatikusan elküldheti Application Insights ahol megtekintheti és megkeresheti őket.
 
-## <a name="install-the-java-sdk"></a>Telepítse a Java SDK
+## <a name="using-the-application-insights-java-agent"></a>A Application Insights Java-ügynök használata
 
-Kövesse az utasításokat követve telepítse [Javához készült Application Insights SDK][java], ha még nem tette meg.
+Az Application Insights Java-ügynököt beállíthatja úgy, hogy automatikusan rögzítse a naplókat, ha `AI-Agent.xml` engedélyezi a funkciót a fájlban:
 
-## <a name="add-logging-libraries-to-your-project"></a>Naplózás kódtárak hozzáadása a projekthez
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationInsightsAgent>
+   <Instrumentation>
+      <BuiltIn enabled="true">
+         <Logging enabled="true" />
+      </BuiltIn>
+   </Instrumentation>
+   <AgentLogger />
+</ApplicationInsightsAgent>
+```
+
+Azt is megteheti, hogy az alábbi utasításokat követi.
+
+## <a name="install-the-java-sdk"></a>A Java SDK telepítése
+
+Ha még nem tette meg, kövesse az utasításokat a [Java Application INSIGHTS SDK][java]telepítéséhez.
+
+## <a name="add-logging-libraries-to-your-project"></a>Naplózási kódtárak hozzáadása a projekthez
 *Válassza ki a projektnek megfelelő módszert.*
 
 #### <a name="if-youre-using-maven"></a>Ha Mavent használ...
-Ha a projekt már úgy van beállítva, hogy Mavent használ buildként, egyesítse egyet az alábbi kódrészletek kód a pom.xml fájlt.
+Ha a projekt már úgy van beállítva, hogy a Mavent a buildhez használja, egyesítse az alábbi kódrészletek egyikét a Pom. XML fájlba.
 
-Ezután frissítse a projektfüggőségeket, hogy a Projektfüggőségek.
+Ezután frissítse a projekt függőségeit a letöltött bináris fájlok letöltéséhez.
 
 *Logback*
 
@@ -74,9 +92,9 @@ Ezután frissítse a projektfüggőségeket, hogy a Projektfüggőségek.
 ```
 
 #### <a name="if-youre-using-gradle"></a>Ha Gradle-t használ...
-Build használandó gradle-t a projekt már be van állítva, hozzá egyet a következő sorokat a `dependencies` csoportjában a build.gradle fájllal:
+Ha a projekt már be van állítva az Gradle for Build használatára, adja hozzá a következő sorok egyikét a `dependencies` Build. Gradle fájljában található csoporthoz:
 
-Ezután frissítse a projektfüggőségeket, hogy a Projektfüggőségek.
+Ezután frissítse a projekt függőségeit a letöltött bináris fájlok letöltéséhez.
 
 **Logback**
 
@@ -98,17 +116,17 @@ Ezután frissítse a projektfüggőségeket, hogy a Projektfüggőségek.
 ```
 
 #### <a name="otherwise-"></a>Egyéb esetben...
-Kövesse a manuálisan az Application Insights Java SDK telepítése, töltse le a jar megfelelő naplóírói (után érkező Maven központi lapon kattintson a letöltés szakaszban "jar" hivatkozásra), és a letöltött naplóírói jar hozzáadása a projekthez.
+Kövesse az irányelveket a Application Insights Java SDK manuális telepítéséhez, töltse le a jar-t (a Maven Central oldalának megérkezése után kattintson a "jar" hivatkozásra a letöltési szakaszban) a megfelelő hozzáfűzéshez, és adja hozzá a letöltött append jar-t a projekthez.
 
-| Naplózó | Letöltés | Kódtár |
+| Naplózó | Letöltés | Erőforrástár |
 | --- | --- | --- |
-| Logback |[Logback naplóírói Jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-logback%22) |applicationinsights-logging-logback |
-| Log4J v2.0 |[Log4J v2 naplóírói Jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j2%22) |applicationinsights-logging-log4j2 |
-| Log4j v1.2 |[Log4J 1.2-es verzió naplóírói Jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j1_2%22) |applicationinsights-logging-log4j1_2 |
+| Logback |[Logback-hozzáfűző jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-logback%22) |applicationinsights-logging-logback |
+| Log4J v2.0 |[Log4J v2 hozzáfűzése jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j2%22) |applicationinsights-logging-log4j2 |
+| Log4j 2.0-s verzió |[Log4J v 1.2 hozzáfűzése jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j1_2%22) |applicationinsights-logging-log4j1_2 |
 
 
-## <a name="add-the-appender-to-your-logging-framework"></a>Adja hozzá a naplóírót a naplózási keretrendszer
-Nyomkövetés megkezdődik, egyesítse a megfelelő kódrészletét a Log4J, vagy Logback konfigurációs fájl: 
+## <a name="add-the-appender-to-your-logging-framework"></a>A hozzáfűzése hozzáadása a naplózási keretrendszerhez
+A nyomkövetési lépések elindításához egyesítse a megfelelő kódrészletet a Log4J vagy a Logback konfigurációs fájlba: 
 
 *Logback*
 
@@ -153,14 +171,14 @@ Nyomkövetés megkezdődik, egyesítse a megfelelő kódrészletét a Log4J, vag
     </root>
 ```
 
-Az Application Insights appenders lehet rá hivatkozni bármely konfigurált naplózónak, és nem feltétlenül a legfelső szintű naplózó (ahogyan az a fenti Kódminták látható).
+A Application Insights-hozzáfűző hivatkozásokat bármely konfigurált naplózó hivatkozhat, és nem feltétlenül a root naplózó (a fenti mintakód-példákban látható).
 
-## <a name="explore-your-traces-in-the-application-insights-portal"></a>Prozkoumat trasování az Application Insights portálon
-Most, hogy konfigurálta a projekthez, hogy elküldheti az Application Insightsba, megtekintheti és az Application Insights portálon a nyomkövetések keresni a [keresési] [ diagnostic] panelen.
+## <a name="explore-your-traces-in-the-application-insights-portal"></a>A Nyomkövetések megismerése a Application Insights portálon
+Most, hogy úgy konfigurálta a projektet, hogy nyomkövetéseket küldjön a Application Insightsnak, megtekintheti és megkeresheti ezeket a nyomkövetéseket a Application Insights portálon, a [Keresés][diagnostic] panelen.
 
-Kivételek másolása keresztül elküldött fog megjelenni a portálon kivétel telemetriaként.
+A gyűjtők által küldött kivételek a portálon a kivétel telemetria jelennek meg.
 
-![Az Application Insights portálon nyissa meg a keresés](./media/java-trace-logs/01-diagnostics.png)
+![A Application Insights portálon nyissa meg a keresést](./media/java-trace-logs/01-diagnostics.png)
 
 ## <a name="next-steps"></a>További lépések
 [Diagnosztikai keresés][diagnostic]

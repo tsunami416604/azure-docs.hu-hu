@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: automation
 ms.subservice: process-automation
 ms.custom: mvc
-ms.openlocfilehash: 2f6dcbba8da314798b2e8de12a9fc5bf55f67a4a
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 2cbb37b4e93468a42335f40a19baf4c742cb6dbb
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55750273"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098627"
 ---
 # <a name="create-an-azure-automation-runbook"></a>Azure Automation-runbook létrehozása
 
@@ -34,7 +34,7 @@ Először hozzunk létre egy runbookot. Az ebben a rövid útmutatóban létreho
 
 1. Kattintson a **FOLYAMATOK AUTOMATIZÁLÁSA** területen lévő **Runbookok** lehetőségre. Megjelenik a runbookok listája.
 
-1. Kattintson a lista tetején található **Runbook hozzáadása** gombra. A **Runbook hozzáadása** oldalon válassza a **Gyors létrehozás** lehetőséget.
+1. Kattintson a lista tetején található **Runbook létrehozása** gombra.
 
 1. Adja a runbooknak a „Hello-World” **nevet**, és válassza a **PowerShell** lehetőséget a **runbook típusaként**. Kattintson a **Create** (Létrehozás) gombra.
 
@@ -45,7 +45,7 @@ Először hozzunk létre egy runbookot. Az ebben a rövid útmutatóban létreho
     ![PowerShell-parancsprogram készítése a runbookszerkesztőben](./media/automation-quickstart-create-runbook/automation-edit-runbook-empty.png)
 
 1. Írja be vagy másolja és illessze be a következő kódot a szerkesztés panelre. Ez a „Name” nevű opcionális bemeneti paramétert hozza létre a „World” alapértelmezett értékkel, és ezt a bemeneti értéket használó sztringet eredményezi:
-   
+
    ```powershell-interactive
    param
    (
@@ -102,4 +102,3 @@ Ebben a rövid útmutatóban létrehozott, szerkesztett, tesztelt és közzétet
 
 > [!div class="nextstepaction"]
 > [Automation útmutató – Runbooktípusok](./automation-runbook-types.md)
-

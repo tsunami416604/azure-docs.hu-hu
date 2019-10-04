@@ -1,7 +1,6 @@
 ---
-title: Hozzon létre a szakaszok a számla a költségeket – Azure rendszerezéséhez |} A Microsoft Docs
-description: Ismerje meg, a számla szakaszok költségeket rendszerezéséhez.
-services: ''
+title: Szakaszok létrehozása a számlán a költségek rendszerezéséhez – Azure
+description: Megtudhatja, hogyan rendszerezheti költségeit számlázási szakaszokkal.
 author: amberbhargava
 manager: amberb
 editor: banders
@@ -9,54 +8,52 @@ tags: billing
 ms.service: billing
 ms.topic: conceptual
 ms.workload: na
-ms.date: 02/28/2019
+ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 21d6c1671c57341d785c002f360c05cc5c610657
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
-ms.translationtype: MT
+ms.openlocfilehash: ba2a274397aa1941ef2be03ce97b0f0c9ce96a31
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551619"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709563"
 ---
-# <a name="create-sections-on-your-invoice-to-organize-your-costs"></a>A számla a költségek rendszerezéséhez szakaszok létrehozása
+# <a name="create-sections-on-your-invoice-to-organize-your-costs"></a>Szakaszok létrehozása a számlán a költségek rendszerezéséhez
 
-A számla egy részleg, a fejlesztési környezetet, a költségek rendszerezéséhez szakaszok létrehozása vagy a szervezet igényeinek megfelelően. Ezután engedélyt mások a szakasz az Azure-előfizetéseket hozhasson létre. Minden használati díjak vagy a vásárlások az előfizetések tükrözi a számla szakaszban. A szakasz a teljes díjak megtekintése a számlán, az Azure Portalon, vagy tekintsék meg őket az Azure cost analysis. További információkért lásd: [tranzakciók számla szakaszonként megjelenítéséhez](billing-mca-understand-your-bill.md#view-transactions-by-invoice-sections).
+Szakaszokat hozhat létre a számlán a költségek részlegek, fejlesztési környezet vagy a szervezet igényei alapján történő rendszerezéséhez. Ezután engedélyt adhat másoknak a szakaszon keresztül kiszámlázott Azure-előfizetések létrehozására. Ezután az előfizetések használati díjainak és vásárlásainak számlázása az adott szakaszra történik. A számlázási szakasz összes költségét megtekintheti az Azure Portalon, vagy áttekintheti az Azure költségelemzési szolgáltatásában. További információkért lásd [az egyes számlázási szakaszok tranzakcióinak megtekintését](billing-mca-understand-your-bill.md#view-transactions-by-invoice-sections) ismertető szakaszt.
 
-Ez a cikk a Microsoft vevői szerződés számlázási fiók vonatkozik. [Ellenőrizze, hogy egy Microsoft Ügyfélszerződéséhez hozzáférést](#check-access-to-a-microsoft-customer-agreement).
+Ez a cikk a Microsoft-ügyfélszerződéshez tartozó számlázási fiókokra vonatkozik. [Ellenőrizze, hogy rendelkezik-e hozzáféréssel a Microsoft-ügyfélszerződéshez](#check-access-to-a-microsoft-customer-agreement).
 
-## <a name="create-an-invoice-section-in-the-azure-portal"></a>Hozzon létre egy számla szakaszt az Azure Portalon
+## <a name="create-an-invoice-section-in-the-azure-portal"></a>Számlázási szakasz létrehozása az Azure Portalon
 
-Hozzon létre egy számla szakaszt, lennie kell egy **számlázási profiltulajdonossal** vagy egy **számlázási profil közreműködője**. További információkért lásd: [számla szakaszok számlázási profil kezelése](billing-understand-mca-roles.md#manage-invoice-sections-for-billing-profile).
+Számlázási szakasz létrehozásához a **számlázási profil tulajdonosának** vagy a **számlázási profil közreműködőjének** kell lennie. További információkért lásd [a számlázási profil számlázási szakaszainak kezelését](billing-understand-mca-roles.md#manage-invoice-sections-for-billing-profile).
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. A Keresés **Cost Management és számlázás**.
+2. Keressen rá a **Költségkezelés + számlázás** kifejezésre.
 
-   ![Az Azure portál keresési bemutató képernyőkép](./media/billing-mca-section-invoice/billing-search-cost-management-billing.png)
+   ![Képernyőkép az Azure Portal keresőmezőjéről](./media/billing-mca-section-invoice/billing-search-cost-management-billing.png)
 
-3. Válassza ki **szakaszok számlázása** a bal oldali panelen. A hozzáférést, attól függően szükség lehet egy számlázási profilja vagy számlázási fiók válassza, majd **szakaszok számlázása**.
+3. A bal oldali panelen válassza a **Számlázási szakaszok** lehetőséget. A hozzáférésétől függően előfordulhat, hogy csak egy számlázási profil vagy számlázási fiók kiválasztása után tudja kiválasztani a **Számlázási szakaszok** lehetőséget.
 
-   ![Az Azure portál keresési bemutató képernyőkép](./media/billing-mca-section-invoice/billing-mca-list-invoice-sections.png)
+   ![Képernyőkép a számlázási szakaszok listájáról](./media/billing-mca-section-invoice/mca-select-invoice-sections.png)
 
-4. A lap tetején válassza **Hozzáadás**.
+4. Válassza a lap tetején a **Hozzáadás** gombot.
 
-5. Adja meg a számlán szakasz nevét.
+5. Adjon egy nevet a számlázási szakasznak, és válasszon ki egy számlázási profilt. Ekkor megjelenik a számlázási profil számlájának szakasza, amely a szakaszhoz rendelt egyes előfizetések és vásárlások használati adatait mutatja. 
 
-   ![Képernyőkép a számla szakasz létrehozása lap](./media/billing-mca-section-invoice/mca-create-invoice-section.png)
+   ![Képernyőkép a számlázásiszakasz-létrehozási oldalról](./media/billing-mca-section-invoice/mca-create-invoice-section.png)
 
-6. Válassza ki a számlázási profilt. Minden használati díjak vagy a számla szakaszának vásárlások a számlázási profilja számlán jelenik meg.
+6. Kattintson a **Létrehozás** gombra.
 
-7. Kattintson a **Létrehozás** gombra.
-
-## <a name="check-access-to-a-microsoft-customer-agreement"></a>A Microsoft Ügyfélszerződéséhez való hozzáférés ellenőrzése
+## <a name="check-access-to-a-microsoft-customer-agreement"></a>Microsoft-ügyfélszerződéshez való hozzáférés ellenőrzése
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
+
+## <a name="need-help-contact-support"></a>Segítségre van szüksége? Kapcsolatfelvétel a támogatási szolgáltatással
+
+Ha segítségre van szüksége, [vegye fel a kapcsolatot az ügyfélszolgálattal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.
 
 ## <a name="next-steps"></a>További lépések
 
-- [További Azure-előfizetés létrehozása a Microsoft ügyfél-szerződés](billing-mca-create-subscription.md)
-- [Engedélyezze a más Azure-előfizetés létrehozása](billing-mca-create-subscription.md#give-others-permission-to-create-azure-subscriptions)
-- [Az Azure-előfizetések számlázási tulajdonjogának kaphat a számlázási fiókok más felhasználóktól](billing-mca-request-billing-ownership.md)
-
-## <a name="need-help-contact-support"></a>Segítség Kapcsolatfelvétel a támogatási szolgáltatással
-
-Ha segítségre van szüksége, kell [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.
+- [További Azure-előfizetés létrehozása a Microsoft-ügyfélszerződésben](billing-mca-create-subscription.md)
+- [Engedélyek biztosítása másoknak Azure-előfizetések létrehozásához](billing-mca-create-subscription.md#give-others-permission)
+- [Azure-előfizetések számlázási tulajdonjogának beszerzése más számlázási fiókok felhasználóitól](billing-mca-request-billing-ownership.md)

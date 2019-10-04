@@ -1,28 +1,21 @@
 ---
-title: API megfontolások |} A Microsoft Docs
+title: API megfontolások |} Az Azure Marketplace-en
 description: Verziókezelés, hibakezelési és engedélyezési problémák esetén a Marketplace-en API-k használatával.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: c6cfb41cb6254145821ab3fef662e9a5e54f6298
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.author: pabutler
+ms.openlocfilehash: 6bf27db27daee50f78552344ae1b2b116d48a5c0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810659"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64935576"
 ---
-<a name="api-considerations"></a>API kapcsolatos szempontok
-=================
+# <a name="api-considerations"></a>API kapcsolatos szempontok
+
 
 <a name="api-versioning"></a>API-verziószámozás
 --------------

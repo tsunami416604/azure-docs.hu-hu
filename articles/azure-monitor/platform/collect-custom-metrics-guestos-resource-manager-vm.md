@@ -1,6 +1,6 @@
 ---
-title: Küldés a vendég operációs rendszer mérőszámok az Azure Monitor metrika tárolja a Windows virtuális gép Resource Manager-sablon használatával
-description: Küldés a vendég operációs rendszer mérőszámok az Azure Monitor metrika tárolja a Windows virtuális gép Resource Manager-sablon használatával
+title: Vendég operációs rendszer metrikáinak küldése a Azure Monitor metrika-tárolóba egy Resource Manager-sablon használatával a Windows rendszerű virtuális gépekhez
+description: Vendég operációs rendszer metrikáinak küldése a Azure Monitor metrika-tárolóba egy Resource Manager-sablon használatával a Windows rendszerű virtuális gépekhez
 author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,56 +8,58 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 5647802ff383ce046d108f25384df81bcbd08cd3
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: ac8d059c2bcad7aaa005b4afe1fb7814d49f9339
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58484897"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844960"
 ---
-# <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine"></a>Küldés a vendég operációs rendszer mérőszámok az Azure Monitor metrika tárolja a Windows virtuális gép Resource Manager-sablon használatával
+# <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine"></a>Vendég operációs rendszer metrikáinak küldése a Azure Monitor metrika-tárolóba egy Resource Manager-sablon használatával a Windows rendszerű virtuális gépekhez
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Az Azure Monitor használatával [diagnosztikai bővítmény](diagnostics-extension-overview.md), hogy tud gyűjteni a vendég operációs rendszerek (Guest OS), egy virtuális gép, a felhőalapú szolgáltatás vagy a Service Fabric-fürt részeként futó metrikák és naplók. A bővítmény küldhet telemetriát [számos különböző helyeken.](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)
+A Azure Monitor [Diagnostics bővítmény](diagnostics-extension-overview.md)használatával mérőszámokat és naplókat gyűjthet a virtuális gép, a felhőalapú szolgáltatás vagy Service Fabric fürt részeként futó vendég operációs rendszerből (vendég operációs rendszerből). A bővítmény [több különböző helyen](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json) is elküldheti a telemetria.
 
-Ez a cikk azt ismerteti, hogyan Windows virtuális gép vendég operációs rendszer teljesítmény-mérőszámok küldése az Azure Monitor-adattárba. 1.11-es verzió diagnosztikai kezdve írhatja metrikák közvetlenül az Azure Monitor metrikák tárol, ahol már standard platform metrikákat gyűjt.
+Ez a cikk a vendég operációs rendszer teljesítményének mérőszámait ismerteti a Windows rendszerű virtuális gépek Azure Monitor adattárba való küldésének folyamatán. A diagnosztika 1,11-es verziójától kezdődően a metrikák közvetlenül a Azure Monitor metrikák tárolójába írhatók, ahol a standard platform metrikái már begyűjtése megtörtént.
 
-Ezen a helyen tárolja őket lehetővé teszi ugyanazokat a műveleteket tartozó platform metrikák elérését. Műveletek tartalmazzák a közel valós idejű riasztás, a diagram, Útválasztás és érheti el a REST API-t és egyéb. A múltban a diagnosztikai bővítmény írt, az Azure Storage, de nem az Azure Monitor adattár.
+Az ezen a helyen való tárolás lehetővé teszi, hogy ugyanazokat a műveleteket elérje a platform metrikái esetében. A műveletek közé tartoznak a közel valós idejű riasztások, a diagramok, az Útválasztás és a hozzáférés egy REST API és egyebek között. Korábban a diagnosztikai bővítmény az Azure Storage-ba írt, de nem a Azure Monitor adattárba.
 
-Ha most ismerkedik a Resource Manager-sablonokat, további információ [sablon-üzembehelyezések](../../azure-resource-manager/resource-group-overview.md) és azok szerkezetét, és a szintaxis.
+Ha most ismerkedik a Resource Manager-sablonokkal, ismerkedjen meg a [sablonok központi telepítésével](../../azure-resource-manager/resource-group-overview.md) , valamint azok struktúrájával és szintaxisával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Az előfizetés regisztrálva kell lenniük [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services).
+- Az előfizetést regisztrálni kell a [Microsoft.](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)ininsights szolgáltatásban.
 
-- Rendelkeznie kell [Azure PowerShell-lel](/powershell/azure) vagy [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) telepítve.
+- [Azure PowerShell](/powershell/azure) vagy [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) telepítve kell lennie.
+
+- A virtuális gép erőforrásának olyan régióban kell lennie [, amely támogatja az egyéni metrikákat](metrics-custom-overview.md#supported-regions). 
 
 
-## <a name="set-up-azure-monitor-as-a-data-sink"></a>Állítsa be az Azure Monitor fogadására
-Az Azure Diagnostics bővítmény nevű, "data fogadók" útvonal metrikák és naplók különböző helyekre szolgáltatást használja. A következő lépések bemutatják, hogyan üzembe helyezése egy virtuális Gépet az új "Az Azure Monitor" adatfogadó használatával a Resource Manager-sablon és a PowerShell használatával.
+## <a name="set-up-azure-monitor-as-a-data-sink"></a>Azure Monitor beállítása adatfogadóként
+A Azure Diagnostics bővítmény az "adatnyelők" nevű szolgáltatást használja a metrikák és naplók különböző helyszínekre való átirányításához. A következő lépések bemutatják, hogyan használható a Resource Manager-sablon és a PowerShell egy virtuális gép üzembe helyezéséhez az új "Azure Monitor" adatfogadó használatával.
 
-## <a name="author-resource-manager-template"></a>Szerző Resource Manager-sablon
-Ebben a példában egy nyilvánosan elérhető mintasablon is használhatja. A kiindulási sablonok vannak https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows.
+## <a name="author-resource-manager-template"></a>Resource Manager-sablon készítése
+Ebben a példában egy nyilvánosan elérhető minta sablont használhat. A kezdő sablonok a következő https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows helyen találhatók:.
 
-- **Azuredeploy.JSON** egy előre konfigurált Resource Manager-sablon egy virtuális gép központi telepítésére vonatkozóan.
+- A **Azuredeploy. JSON** egy előre konfigurált Resource Manager-sablon egy virtuális gép telepítéséhez.
 
-- **Azuredeploy.Parameters.JSON** paraméterfájl, amely tárolja az adatokat, például milyen felhasználónevet és jelszót szeretne-e beállítva a virtuális gép van. A telepítés során a Resource Manager-sablon paraméterei a, amely ebben a fájlban vannak beállítva.
+- A **Azuredeploy. Parameters. JSON** egy olyan paraméter-fájl, amely olyan adatokat tárol, mint például a virtuális géphez beállítani kívánt Felhasználónév és jelszó. Az üzembe helyezés során a Resource Manager-sablon a fájlban beállított paramétereket használja.
 
-Töltse le és mentse mindkét fájlt helyileg.
+Töltse le és mentse a fájlokat helyileg.
 
-### <a name="modify-azuredeployparametersjson"></a>Azuredeploy.parameters.json módosítása
-Nyissa meg a *azuredeploy.parameters.json* fájl
+### <a name="modify-azuredeployparametersjson"></a>Módosítsa a azuredeploy. Parameters. JSON fájlt
+Nyissa meg az *azuredeploy. Parameters. JSON fájlt.*
 
-1. Adjon meg értéket a **adminUsername** és **adminPassword** a virtuális gép számára. Ezek a paraméterek használhatók a virtuális gép távoli elérését. A virtuális gép eltérített kelljen, nem található értékek használatára Ez a sablon. A robotok vizsgálata az interneten a felhasználói neveket és jelszavakat a nyilvános GitHub-tárházakban. Valószínűleg ezeket az alapértelmezett értékeket a virtuális gépek tesztelését.
+1. Adja meg a virtuális gép **adminUsername** és **adminPassword** értékeit. Ezek a paraméterek a virtuális gép távoli elérésére szolgálnak. Ha el szeretné kerülni, hogy a virtuális gép eltérítve legyen, ne használja a sablonban szereplő értékeket. A robotok a nyilvános GitHub-adattárakban lévő felhasználónevek és jelszavak számára ellenőrzik az interneten. Valószínűleg a virtuális gépeket tesztelik ezekkel az alapértékekkel.
 
-1. Hozzon létre egy egyedi dnsname a virtuális gép számára.
+1. Hozzon létre egy egyedi dnsname a virtuális géphez.
 
-### <a name="modify-azuredeployjson"></a>Modify azuredeploy.json
+### <a name="modify-azuredeployjson"></a>Azuredeploy. JSON módosítása
 
-Nyissa meg a *azuredeploy.json* fájl
+A *azuredeploy. JSON* fájl megnyitása
 
-Egy tárfiók azonosítója, adja hozzá a **változók** szakasz bejegyzésére után a sablon **storageAccountName.**
+A StorageAccountName bejegyzése után vegyen fel egy Storage-fiók AZONOSÍTÓját a sablon **változók** szakaszába **.**
 
 ```json
 // Find these lines.
@@ -68,7 +70,7 @@ Egy tárfiók azonosítója, adja hozzá a **változók** szakasz bejegyzésére
     "accountid": "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
 ```
 
-A Felügyeltszolgáltatás-identitás (MSI) bővítmény hozzáadása a sablonhoz felső részén a **erőforrások** szakaszban. A bővítmény biztosítja, hogy az Azure Monitor elfogadja, hogy a kibocsátott vannak folyamatban.
+Adja hozzá ezt a Managed Service Identity (MSI) bővítményt az **erőforrások** szakasz tetején található sablonhoz. A bővítmény biztosítja, hogy a Azure Monitor elfogadja a kibocsátott metrikákat.
 
 ```json
 //Find this code.
@@ -76,8 +78,8 @@ A Felügyeltszolgáltatás-identitás (MSI) bővítmény hozzáadása a sablonho
 // Add this code directly below.
     {
         "type": "Microsoft.Compute/virtualMachines/extensions",
-        "name": "WADExtensionSetup",
-        "apiVersion": "2015-05-01-preview",
+        "name": "[concat(variables('vmName'), '/', 'WADExtensionSetup')]",
+        "apiVersion": "2017-12-01",
         "location": "[resourceGroup().location]",
         "dependsOn": [
             "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]" ],
@@ -93,7 +95,7 @@ A Felügyeltszolgáltatás-identitás (MSI) bővítmény hozzáadása a sablonho
     },
 ```
 
-Adja hozzá a **identitás** konfigurációját, és győződjön meg arról, hogy az Azure hozzárendeli egy rendszer-identitás az MSI-bővítmény, a VM-erőforrás. Ez a lépés biztosítja, hogy a virtuális gép el tudná küldeni az Azure monitornak saját magáról a Vendég mérőszámok.
+Adja hozzá az **identitás** konfigurációját a virtuálisgép-erőforráshoz, és győződjön meg arról, hogy az Azure rendszeridentitást RENDEL az MSI-bővítményhez. Ez a lépés biztosítja, hogy a virtuális gép saját maga is kibocsáthatja a Azure Monitor.
 
 ```json
 // Find this section
@@ -124,7 +126,7 @@ Adja hozzá a **identitás** konfigurációját, és győződjön meg arról, ho
     ...
 ```
 
-Adja hozzá a Windows virtuális gép a diagnosztikai bővítmény engedélyezése a következő konfigurációt. Egyszerű Resource Manager-alapú virtuális gép hogy a bővítmény konfigurációja a virtuális gép az erőforrások tömb is hozzáadhat. A következő sorban: "fogadóként"&mdash; "AzMonSink" és a megfelelő "SinksConfig" a szakasz későbbi részében&mdash;kibocsátható metrikák közvetlenül az Azure monitornak a bővítmény engedélyezéséhez. Nyugodtan hozzáadni vagy eltávolítani a teljesítményszámlálókat, igény szerint.
+Adja hozzá a következő konfigurációt a diagnosztikai bővítmény Windowsos virtuális gépen való engedélyezéséhez. Egy egyszerű Resource Manager-alapú virtuális gép esetében hozzáadjuk a bővítmény konfigurációját a virtuális gép erőforrás-tömbhöz. A "mosogatók"&mdash; "AzMonSink" és a megfelelő "SinksConfig" vonal a szakasz későbbi&mdash;részében lehetővé teszi, hogy a bővítmény a metrikákat közvetlenül a Azure monitor. Szükség szerint a teljesítményszámlálók hozzáadására vagy eltávolítására van lehetőség.
 
 
 ```json
@@ -145,9 +147,9 @@ Adja hozzá a Windows virtuális gép a diagnosztikai bővítmény engedélyezé
 //Start of section to add
 "resources": [
 {
-            "type": "extensions",
-            "name": "Microsoft.Insights.VMDiagnosticsSettings",
-            "apiVersion": "2015-05-01-preview",
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "name": "[concat(variables('vmName'), '/', 'Microsoft.Insights.VMDiagnosticsSettings')]",
+            "apiVersion": "2017-12-01",
             "location": "[resourceGroup().location]",
             "dependsOn": [
             "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
@@ -227,65 +229,65 @@ Adja hozzá a Windows virtuális gép a diagnosztikai bővítmény engedélyezé
 ```
 
 
-Mentse és zárja be mindkét fájlt.
+Mentse és zárjunk be mindkét fájlt.
 
 
 ## <a name="deploy-the-resource-manager-template"></a>A Resource Manager-sablon üzembe helyezése
 
 > [!NOTE]
-> Az Azure Diagnostics bővítmény verziója fut az 1.5-ös vagy újabb kell és rendelkeznie kell a **autoUpgradeMinorVersion**: tulajdonság értéke "true", a Resource Manager-sablonban. Az Azure majd a rendszer betölti a megfelelő bővítményt a virtuális gép indításakor. Ha ezek a beállítások a sablonban nincs, módosítsa őket, és a sablon újbóli telepítése.
+> Az Azure Diagnostics bővítmény 1,5-es vagy újabb verzióját kell futtatnia, és a **autoUpgradeMinorVersion**: tulajdonság értéke "true" a Resource Manager-sablonban. Az Azure ezután betölti a megfelelő bővítményt, amikor elindítja a virtuális gépet. Ha nem rendelkezik ezekkel a beállításokkal a sablonban, módosítsa őket, és telepítse újra a sablont.
 
 
-A Resource Manager-sablon üzembe helyezéséhez használhatja azt az Azure PowerShell.
+A Resource Manager-sablon üzembe helyezéséhez kihasználjuk a Azure PowerShell.
 
-1. Indítsa el a Powershellt.
-1. Jelentkezzen be Azure-bA `Login-AzAccount`.
-1. Az előfizetések listájának lekérése használatával `Get-AzSubscription`.
-1. Állítsa be az előfizetést, amelyhez a virtuális gépet létrehozni vagy frissíteni használ:
+1. Indítsa el a PowerShellt.
+1. Jelentkezzen be az Azure `Login-AzAccount`-ba a használatával.
+1. Az előfizetések listájának lekérése a használatával `Get-AzSubscription`.
+1. Állítsa be azt az előfizetést, amelyet a virtuális gép létrehozásához vagy frissítéséhez használ:
 
    ```powershell
    Select-AzSubscription -SubscriptionName "<Name of the subscription>"
    ```
-1. Hozzon létre egy új erőforráscsoportot, a telepítés alatt álló virtuális gép, futtassa a következő parancsot:
+1. Ha új erőforráscsoportot szeretne létrehozni az üzembe helyezett virtuális géphez, futtassa a következő parancsot:
 
    ```powershell
     New-AzResourceGroup -Name "<Name of Resource Group>" -Location "<Azure Region>"
    ```
    > [!NOTE]
-   > Ne felejtse el [használata egy Azure-régióban, ahol engedélyezve van az egyéni metrikákat](metrics-custom-overview.md).
+   > Ne felejtse el [használni az egyéni metrikák számára engedélyezett Azure](metrics-custom-overview.md)-régiót.
 
-1. Futtassa az alábbi parancsokat a virtuális gép használata a Resource Manager-sablon üzembe helyezéséhez.
+1. Futtassa a következő parancsokat a virtuális gép Resource Manager-sablonnal történő üzembe helyezéséhez.
    > [!NOTE]
-   > Ha szeretné frissíteni a meglévő virtuális gép, egyszerűen adja hozzá *-mód növekményes* a következő parancs végéhez.
+   > Ha egy meglévő virtuális gépet szeretne frissíteni, egyszerűen adja hozzá a *-Mode növekményt* a következő parancs végéhez.
 
    ```powershell
    New-AzResourceGroupDeployment -Name "<NameThisDeployment>" -ResourceGroupName "<Name of the Resource Group>" -TemplateFile "<File path of your Resource Manager template>" -TemplateParameterFile "<File path of your parameters file>"
    ```
 
-1. Miután az üzembe helyezés sikeres, a virtuális gép kell lennie az Azure Portalon kibocsátó mérőszámok az Azure Monitor használatával.
+1. Miután az üzembe helyezés sikeres volt, a virtuális gépnek a Azure Portal kell lennie, és a metrikákat Azure Monitor kell kiadnia.
 
    > [!NOTE]
-   > Előfordulhat, hogy hibákba ütközik a kiválasztott vmSkuSize körül. Ha ez történik, lépjen vissza az azuredeploy.json fájlt, és frissítse a vmSkuSize paraméter alapértelmezett értékét. Ebben az esetben azt javasoljuk, próbáljon "Standard_DS1_v2").
+   > A kiválasztott vmSkuSize hibákba ütközhet. Ha ez történik, térjen vissza a azuredeploy. JSON fájlhoz, és frissítse a vmSkuSize paraméter alapértelmezett értékét. Ebben az esetben javasolt a "Standard_DS1_v2" kifejezés kipróbálása.
 
-## <a name="chart-your-metrics"></a>A metrikák mutató részletes diagram
+## <a name="chart-your-metrics"></a>A metrikák diagramja
 
 1. Jelentkezzen be az Azure Portalra.
 
-2. A bal oldali menüben válassza ki a **figyelő**.
+2. A bal oldali menüben válassza a **figyelő**lehetőséget.
 
-3. A figyelő oldalon válassza ki a **metrikák**.
+3. A figyelés lapon válassza a **metrikák**lehetőséget.
 
    ![Metrikák lap](media/collect-custom-metrics-guestos-resource-manager-vm/metrics.png)
 
-4. Az összesítési időszak módosításához **elmúlt 30 percben**.
+4. Módosítsa az összesítési időszakot az **elmúlt 30 percre**.
 
-5. A resource legördülő menüben válassza ki a létrehozott virtuális gép. Ha nem módosította a sablon nevét, kell lennie *SimpleWinVM2*.
+5. Az erőforrás legördülő menüben válassza ki a létrehozott virtuális gépet. Ha nem módosította a nevet a sablonban, *SimpleWinVM2*kell lennie.
 
-6. A névterek legördülő menüben válassza ki a **azure.vm.windows.guest**
+6. A névterek legördülő menüben válassza az **Azure. VM. Windows. Guest lehetőséget.**
 
-7. A metrikák legördülő menü, válassza ki a **memória\%előjegyzett memória kihasználtsága**.
+7. A metrikák legördülő menüben válassza a **memória\%által véglegesített bájtok használatban**lehetőséget.
 
 
 ## <a name="next-steps"></a>További lépések
-- Tudjon meg többet [egyéni metrikákat](metrics-custom-overview.md).
+- További információ az [Egyéni metrikákkal](metrics-custom-overview.md)kapcsolatban.
 

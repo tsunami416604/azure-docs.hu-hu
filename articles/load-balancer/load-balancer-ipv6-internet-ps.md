@@ -1,10 +1,10 @@
 ---
-title: Egy internetkapcsolattal rendelkező load balancer létrehozása IPv6 - PowerShell
+title: Internetre irányuló terheléselosztó létrehozása IPv6-PowerShell használatával
 titlesuffix: Azure Load Balancer
-description: Ismerje meg, hogyan hozhat létre egy internetkapcsolattal rendelkező terheléselosztó konfigurálása IPv6-tal PowerShell használatával a Resource Managerhez
+description: Ismerje meg, hogyan hozható létre internetkapcsolattal rendelkező terheléselosztó az IPv6 protokollal a Resource Managerhez készült PowerShell használatával
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 keywords: IPv6-alapú, az azure load balancer, kettős verem, nyilvános IP-cím, natív ipv6, mobil, iot
 ms.service: load-balancer
 ms.custom: seodec18
@@ -13,15 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
-ms.author: kumud
-ms.openlocfilehash: 48552105ddd2defb0f38350c7840cd8ded40ab0f
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.author: allensu
+ms.openlocfilehash: 12f9b8d3031d3b64e2f39f07763f7a75164aad25
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56672831"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274983"
 ---
-# <a name="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager"></a>Internetkapcsolattal rendelkező terheléselosztó konfigurálása IPv6-tal PowerShell használatával a Resource Managerhez létrehozásának első lépései
+# <a name="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager"></a>Bevezetés az internetkapcsolattal rendelkező Load Balancer IPv6-tal való létrehozásához a PowerShell használatával a Resource Managerben
 
 > [!div class="op_single_selector"]
 > * [PowerShell](load-balancer-ipv6-internet-ps.md)
@@ -35,23 +35,23 @@ Az Azure Load Balancer 4. szintű (TCP, UDP) terheléselosztónak minősül. A t
 
 ## <a name="example-deployment-scenario"></a>A példában üzembe helyezési forgatókönyv
 
-A következő ábra szemlélteti a terheléselosztási megoldás üzembe helyezéséhez ebben a cikkben.
+A következő ábra szemlélteti a cikkben üzembe helyezett terheléselosztási megoldást.
 
 ![Terheléselosztói forgatókönyv](./media/load-balancer-ipv6-internet-ps/lb-ipv6-scenario.png)
 
-Ebben a forgatókönyvben a következő Azure-erőforrásokat hoz létre:
+Ebben a forgatókönyvben a következő Azure-erőforrásokat fogja létrehozni:
 
-* egy internetkapcsolattal rendelkező Load Balancer egy IPv4-és IPv6-alapú nyilvános IP-cím
-* Két a nyilvános VIP-címek leképezése a privát végpontok terheléselosztási szabályok betöltése
-* a két virtuális gép rendelkezésre állási csoport, amely tartalmazza.
-* Két virtuális gép (VM)
-* Az egyes virtuális Gépekhez rendelt IPv4- és IPv6-címekkel rendelkező virtuális hálózati adapter
+* egy internetre irányuló Load Balancer IPv4-és IPv6-alapú nyilvános IP-címmel
+* két terheléselosztási szabály a nyilvános VIP-címek a privát végpontokra való leképezéséhez
+* a két virtuális gépet tartalmazó rendelkezésre állási csoport
+* két virtuális gép (VM)
+* virtuális hálózati adapter minden virtuális GÉPHEZ, amelyhez IPv4-és IPv6-címek vannak hozzárendelve
 
-## <a name="deploying-the-solution-using-the-azure-powershell"></a>Az Azure PowerShell használatával a megoldás üzembe helyezése
+## <a name="deploying-the-solution-using-the-azure-powershell"></a>A megoldás üzembe helyezése a Azure PowerShell használatával
 
-A következő lépések bemutatják, hogyan hozhat létre egy internetkapcsolattal rendelkező terheléselosztó az Azure Resource Manager PowerShell. Az Azure Resource Manager az egyes erőforrások létrehozása és konfigurálása egyenként történik, majd put együtt az erőforrás létrehozása.
+Az alábbi lépések bemutatják, hogyan hozható létre internetkapcsolattal rendelkező terheléselosztó a Azure Resource Manager és a PowerShell használatával. A Azure Resource Manager az egyes erőforrások létrehozása és konfigurálása egyenként történik, majd egy erőforrás létrehozásával együtt.
 
-A terheléselosztó üzembe helyezéséhez, hozzon létre, és konfigurálja a következő objektumokat:
+Terheléselosztó üzembe helyezéséhez a következő objektumokat kell létrehoznia és konfigurálnia:
 
 * Előtér-IP-konfiguráció – a nyilvános IP-címeket tartalmazza a bejövő hálózati forgalomhoz.
 * Háttércímkészlet – hálózati adaptereket (NIC) tartalmaz, amelyek segítségével a virtuális gépek fogadhatják a terheléselosztóról érkező hálózati forgalmat.
@@ -63,9 +63,9 @@ A további információkat az [Azure Resource Manager support for Load Balancer]
 
 ## <a name="set-up-powershell-to-use-resource-manager"></a>A PowerShell beállítása a Resource Manager használatához
 
-Győződjön meg arról, hogy a Powershellhez az Azure Resource Manager modul legújabb üzemi verziójával rendelkezik.
+Győződjön meg arról, hogy rendelkezik a PowerShell Azure Resource Manager moduljának legújabb üzemi verziójával.
 
-1. Bejelentkezés az Azure-bA
+1. Bejelentkezés az Azure-ba
 
     ```azurepowershell-interactive
     Connect-AzAccount
@@ -93,14 +93,14 @@ Győződjön meg arról, hogy a Powershellhez az Azure Resource Manager modul le
 
 ## <a name="create-a-virtual-network-and-a-public-ip-address-for-the-front-end-ip-pool"></a>Virtuális hálózat és nyilvános IP-cím létrehozása az előtér-IP-címkészlethez
 
-1. Hozzon létre egy virtuális hálózat alhálózatához.
+1. Hozzon létre egy alhálózattal rendelkező virtuális hálózatot.
 
     ```azurepowershell-interactive
     $backendSubnet = New-AzVirtualNetworkSubnetConfig -Name LB-Subnet-BE -AddressPrefix 10.0.2.0/24
     $vnet = New-AzvirtualNetwork -Name VNet -ResourceGroupName NRP-RG -Location 'West US' -AddressPrefix 10.0.0.0/16 -Subnet $backendSubnet
     ```
 
-2. Azure nyilvános IP-cím (PIP) erőforrások az előtér-IP-címkészlet létrehozása. Ügyeljen arra, hogy módosítsa az értéket a `-DomainNameLabel` a következő parancsok futtatása előtt. Az érték az Azure-régión belül egyedinek kell lennie.
+2. Azure nyilvános IP-cím (PIP) erőforrások létrehozása az előtér-IP-címkészlet számára. Ügyeljen arra, hogy a következő parancsok `-DomainNameLabel` futtatása előtt módosítsa az értéket. Az értéknek egyedinek kell lennie az Azure-régión belül.
 
     ```azurepowershell-interactive
     $publicIPv4 = New-AzPublicIpAddress -Name 'pub-ipv4' -ResourceGroupName NRP-RG -Location 'West US' -AllocationMethod Static -IpAddressVersion IPv4 -DomainNameLabel lbnrpipv4
@@ -108,33 +108,33 @@ Győződjön meg arról, hogy a Powershellhez az Azure Resource Manager modul le
     ```
 
     > [!IMPORTANT]
-    > A terheléselosztó a nyilvános IP-cím tartománycímkéjét használja a teljes Tartományneve előtagként. Ebben a példában a teljes tartománynevek a következők *lbnrpipv4.westus.cloudapp.azure.com* és *lbnrpipv6.westus.cloudapp.azure.com*.
+    > A terheléselosztó a nyilvános IP-cím tartományának címkéjét használja a teljes tartománynévhez előtagként. Ebben a példában a teljes tartománynevek a következők: *lbnrpipv4.westus.cloudapp.Azure.com* és *lbnrpipv6.westus.cloudapp.Azure.com*.
 
-## <a name="create-a-front-end-ip-configurations-and-a-back-end-address-pool"></a>Hozzon létre egy előtérbeli IP-konfigurációk és a egy háttér-címkészlet
+## <a name="create-a-front-end-ip-configurations-and-a-back-end-address-pool"></a>Előtér-IP-konfigurációk és háttérbeli címkészlet létrehozása
 
-1. Hozzon létre az előtér-címének konfigurációja, amely a létrehozott nyilvános IP-címet használ.
+1. A létrehozott nyilvános IP-címeket használó előtér-cím konfigurációjának létrehozása.
 
     ```azurepowershell-interactive
     $FEIPConfigv4 = New-AzLoadBalancerFrontendIpConfig -Name "LB-Frontendv4" -PublicIpAddress $publicIPv4
     $FEIPConfigv6 = New-AzLoadBalancerFrontendIpConfig -Name "LB-Frontendv6" -PublicIpAddress $publicIPv6
     ```
 
-2. Hozzon létre a háttér-címkészletet.
+2. Háttérbeli címkészlet létrehozása
 
     ```azurepowershell-interactive
     $backendpoolipv4 = New-AzLoadBalancerBackendAddressPoolConfig -Name "BackendPoolIPv4"
     $backendpoolipv6 = New-AzLoadBalancerBackendAddressPoolConfig -Name "BackendPoolIPv6"
     ```
 
-## <a name="create-lb-rules-nat-rules-a-probe-and-a-load-balancer"></a>LB szabályok, NAT-szabályok, mintavétel és terheléselosztó létrehozása
+## <a name="create-lb-rules-nat-rules-a-probe-and-a-load-balancer"></a>LB-szabályok, NAT-szabályok, mintavétel és terheléselosztó létrehozása
 
 Ez a példa a következő elemeket hozza létre:
 
-* egy NAT-szabályt, a port 4443 443-as porton bejövő összes forgalmat lefordítja
+* NAT-szabály, amely az 443-es porton bejövő összes forgalmat lefordítja a 4443-es portra
 * egy terheléselosztó-szabályt, amely elosztja a 80-as porton bejövő összes forgalmat a háttér-címkészletben szereplő címekhez tartozó 80-as porton.
-* egy terheléselosztó-szabályt a 3389-es porton lévő virtuális gépek RDP-kapcsolatának engedélyezéséhez.
-* egy mintavételi szabályt, az állapot nevű oldalon *HealthProbe.aspx* vagy egy szolgáltatás a 8080-as porton
-* egy terheléselosztót, amely mindezeket az objektumokat használja
+* egy terheléselosztó-szabályt, amely engedélyezi az RDP-kapcsolat használatát a 3389-es porton lévő virtuális gépeken.
+* a *HealthProbe. aspx* nevű vagy a 8080-es porton található szolgáltatás állapotának ellenőrzését szolgáló mintavételi szabály.
+* egy terheléselosztó, amely az összes ilyen objektumot használja
 
 1. Hozza létre a NAT-szabályokat.
 
@@ -151,14 +151,14 @@ Ez a példa a következő elemeket hozza létre:
     $healthProbe = New-AzLoadBalancerProbeConfig -Name 'HealthProbe-v4v6' -RequestPath 'HealthProbe.aspx' -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
     ```
 
-    vagy a TCP-mintavétel
+    vagy TCP-mintavétel
 
     ```azurepowershell-interactive
     $healthProbe = New-AzLoadBalancerProbeConfig -Name 'HealthProbe-v4v6' -Protocol Tcp -Port 8080 -IntervalInSeconds 15 -ProbeCount 2
     $RDPprobe = New-AzLoadBalancerProbeConfig -Name 'RDPprobe' -Protocol Tcp -Port 3389 -IntervalInSeconds 15 -ProbeCount 2
     ```
 
-    Ebben a példában fogjuk használni a TCP-mintavétel.
+    Ebben a példában a TCP-próbákat fogjuk használni.
 
 3. Hozzon létre egy terheléselosztó-szabályt.
 
@@ -168,22 +168,22 @@ Ez a példa a következő elemeket hozza létre:
     $RDPrule = New-AzLoadBalancerRuleConfig -Name "RDPrule" -FrontendIpConfiguration $FEIPConfigv4 -BackendAddressPool $backendpoolipv4 -Probe $RDPprobe -Protocol Tcp -FrontendPort 3389 -BackendPort 3389
     ```
 
-4. Hozza létre a terheléselosztót, használja a korábban létrehozott objektumokkal.
+4. Hozza létre a terheléselosztó-t a korábban létrehozott objektumok használatával.
 
     ```azurepowershell-interactive
     $NRPLB = New-AzLoadBalancer -ResourceGroupName NRP-RG -Name 'myNrpIPv6LB' -Location 'West US' -FrontendIpConfiguration $FEIPConfigv4,$FEIPConfigv6 -InboundNatRule $inboundNATRule1v6,$inboundNATRule1v4 -BackendAddressPool $backendpoolipv4,$backendpoolipv6 -Probe $healthProbe,$RDPprobe -LoadBalancingRule $lbrule1v4,$lbrule1v6,$RDPrule
     ```
 
-## <a name="create-nics-for-the-back-end-vms"></a>Hálózati adapterek létrehozása a háttér-virtuális gépekhez
+## <a name="create-nics-for-the-back-end-vms"></a>Hálózati adapterek létrehozása a háttérbeli virtuális gépekhez
 
-1. Töltse le a virtuális hálózat és a virtuális hálózati alhálózat, ahol a hálózati adaptereket kell létrehozni.
+1. Szerezze be a Virtual Network és Virtual Network alhálózatot, ahol a hálózati adaptereket létre kell hozni.
 
     ```azurepowershell-interactive
     $vnet = Get-AzVirtualNetwork -Name VNet -ResourceGroupName NRP-RG
     $backendSubnet = Get-AzVirtualNetworkSubnetConfig -Name LB-Subnet-BE -VirtualNetwork $vnet
     ```
 
-2. IP-konfigurációk és a hálózati adapterek létrehozása a virtuális gépekhez.
+2. Hozzon létre IP-konfigurációkat és hálózati adaptereket a virtuális gépek számára.
 
     ```azurepowershell-interactive
     $nic1IPv4 = New-AzNetworkInterfaceIpConfig -Name "IPv4IPConfig" -PrivateIpAddressVersion "IPv4" -Subnet $backendSubnet -LoadBalancerBackendAddressPool $backendpoolipv4 -LoadBalancerInboundNatRule $inboundNATRule1v4
@@ -195,11 +195,11 @@ Ez a példa a következő elemeket hozza létre:
     $nic2 = New-AzNetworkInterface -Name 'myNrpIPv6Nic1' -IpConfiguration $nic2IPv4,$nic2IPv6 -ResourceGroupName NRP-RG -Location 'West US'
     ```
 
-## <a name="create-virtual-machines-and-assign-the-newly-created-nics"></a>Virtuális gépek létrehozása és hozzárendelése az újonnan létrehozott hálózati adapter
+## <a name="create-virtual-machines-and-assign-the-newly-created-nics"></a>Hozzon létre virtuális gépeket, és rendelje hozzá az újonnan létrehozott hálózati adaptereket
 
-Virtuális gép létrehozásával kapcsolatos további információkért lásd: [létrehozása és előkonfigurálása egy Windows virtuális gép a Resource Manager és az Azure PowerShell-lel](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json)
+A virtuális gépek létrehozásával kapcsolatos további információkért lásd: [Windows rendszerű virtuális gép létrehozása és előre konfigurálása Resource Managerrel és Azure PowerShell](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json)
 
-1. Egy rendelkezésre állási csoport és a Tárfiók létrehozása
+1. Rendelkezésre állási csoport és Storage-fiók létrehozása
 
     ```azurepowershell-interactive
     New-AzAvailabilitySet -Name 'myNrpIPv6AvSet' -ResourceGroupName NRP-RG -location 'West US'
@@ -208,7 +208,7 @@ Virtuális gép létrehozásával kapcsolatos további információkért lásd: 
     $CreatedStorageAccount = Get-AzStorageAccount -ResourceGroupName NRP-RG -Name 'mynrpipv6stacct'
     ```
 
-2. Minden virtuális gép létrehozása és hozzárendelése az előzőleg létrehozott hálózati adapter
+2. Hozzon létre minden virtuális gépet, és rendelje hozzá az előző létrehozott hálózati adaptereket
 
     ```azurepowershell-interactive
     $mySecureCredentials= Get-Credential -Message "Type the username and password of the local administrator account."

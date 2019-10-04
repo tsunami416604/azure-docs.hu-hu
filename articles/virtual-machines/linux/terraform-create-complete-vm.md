@@ -1,42 +1,41 @@
 ---
-title: Teljes Linux rendszerű virtuális gép létrehozása az Azure-ban a Terraform használata |} A Microsoft Docs
-description: Ismerje meg, hogyan hozhat létre és kezelhet Linuxos virtuális gép teljes környezet az Azure-ban a Terraform használata
+title: Teljes linuxos virtuális gép létrehozása az Azure-ban a Terraform használatával | Microsoft Docs
+description: Ismerje meg, hogyan hozhat létre és kezelhet teljes linuxos virtuálisgép-környezetet az Azure-ban a Terraform használatával
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: echuvyrov
-manager: jeconnoc
+author: tomarchermsft
+manager: gwallace
 editor: na
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/14/2017
-ms.author: echuvyrov
-ms.openlocfilehash: 8eba59429a3045b929976963b08f33e488055ec7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 09/20/2019
+ms.author: tarcher
+ms.openlocfilehash: b9e379907f28c0d8698eb11aacb88970cf8d6dc4
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57875583"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173854"
 ---
-# <a name="create-a-complete-linux-virtual-machine-infrastructure-in-azure-with-terraform"></a>Hozzon létre egy Linux virtuális gép teljes infrastruktúra a terraform használatával Azure-ban
+# <a name="create-a-complete-linux-virtual-machine-infrastructure-in-azure-with-terraform"></a>Teljes Linuxos virtuálisgép-infrastruktúra létrehozása az Azure-ban a Terraformmal
 
-A Terraform meghatároznunk és létrehoznunk a teljes infrastruktúra-megoldásokat az Azure-ban teszi lehetővé. A Terraform sablonok emberek számára olvasható formátumban, létrehozása és konfigurálása az Azure-erőforrások egységes, reprodukálható módon fejleszt. Ez a cikk bemutatja, hogyan hozhat létre teljes Linux-környezet és a támogató erőforrások a terraform használatával. Azt is megtudhatja, hogyan [telepítse és konfigurálja a Terraform](terraform-install-configure.md).
+A Terraform lehetővé teszi, hogy az Azure-ban teljes infrastruktúra-telepítéseket határozzon meg és hozzon létre. Az Azure-erőforrások egységes, reprodukálható módon történő létrehozásához és konfigurálásához az Terraform-sablonokat egy ember által olvasható formátumban kell létrehoznia. Ebből a cikkből megtudhatja, hogyan hozhat létre teljes linuxos környezetet és támogató erőforrásokat a Terraform. Azt is megtudhatja, hogyan [telepítheti és konfigurálhatja a Terraform](terraform-install-configure.md).
 
 
-## <a name="create-azure-connection-and-resource-group"></a>Azure-kapcsolat és az erőforráscsoport létrehozása
+## <a name="create-azure-connection-and-resource-group"></a>Azure-beli kapcsolatok és erőforráscsoport létrehozása
 
-Vegyük minden szakasza egy Terraform-sablon használatával. Emellett megtekintheti a teljes verzióját a [Terraform sablon](#complete-terraform-script) másolja és illessze be.
+Nézzük végig a Terraform-sablonok egyes szakaszait. Megtekintheti a másolható és beilleszthető [Terraform-sablon](#complete-terraform-script) teljes verzióját is.
 
-A `provider` szakasz utasítja el a Terraformban az Azure-szolgáltatót használják. Használatával lekérjük az értékeket a *subscription_id*, *client_id*, *titkos ügyfélkódot*, és *tenant_id*, lásd: [telepítése és a Terraform konfigurálása](terraform-install-configure.md). 
+A `provider` szakasz azt ismerteti, hogy a Terraform Azure-szolgáltatót használ. A *subscription_id*, a *client_id*, a *client_secret*és a *tenant_id*értékének lekéréséhez lásd: a [Terraform telepítése és konfigurálása](terraform-install-configure.md). 
 
 > [!TIP]
-> Ha az értékek a környezeti változók létrehozásához, vagy használja a [Azure Cloud Shell Bash felület](/azure/cloud-shell/overview) , nem kell tartalmaznia a változódeklarációkat ebben a szakaszban.
+> Ha környezeti változókat hoz létre az értékekhez, vagy az [Azure Cloud SHELL bash-élményt](/azure/cloud-shell/overview) használja, akkor ebben a szakaszban nem kell tartalmaznia a változó deklarációit.
 
-```tf
+```hcl
 provider "azurerm" {
     subscription_id = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
     client_id       = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
@@ -45,40 +44,40 @@ provider "azurerm" {
 }
 ```
 
-A következő szakasz egy nevű erőforráscsoportot hoz létre `myResourceGroup` a a `eastus` helye:
+A következő szakasz létrehoz egy nevű `myResourceGroup` erőforráscsoportot a `eastus` helyen:
 
-```tf
+```hcl
 resource "azurerm_resource_group" "myterraformgroup" {
     name     = "myResourceGroup"
     location = "eastus"
 
-    tags {
+    tags = {
         environment = "Terraform Demo"
     }
 }
 ```
 
-További szakaszaiban az erőforráscsoportot, a hivatkozás *${azurerm_resource_group.myterraformgroup.name}*.
+A további szakaszban a *$ {azurerm_resource_group. myterraformgroup. name} nevű*erőforráscsoport hivatkozik.
 
 ## <a name="create-virtual-network"></a>Virtuális hálózat létrehozása
-A következő szakasz egy nevű virtuális hálózatot hoz létre *myVnet* a a *10.0.0.0/16* címtér:
+A következő szakasz létrehoz egy *myVnet* nevű virtuális hálózatot a *10.0.0.0/16* címtartomány:
 
-```tf
+```hcl
 resource "azurerm_virtual_network" "myterraformnetwork" {
     name                = "myVnet"
     address_space       = ["10.0.0.0/16"]
     location            = "eastus"
     resource_group_name = "${azurerm_resource_group.myterraformgroup.name}"
 
-    tags {
+    tags = {
         environment = "Terraform Demo"
     }
 }
 ```
 
-A következő rész alhálózatot hoz létre nevű *mySubnet* a a *myVnet* virtuális hálózat:
+A következő szakasz létrehoz egy *mySubnet* nevű alhálózatot a *myVnet* virtuális hálózatban:
 
-```tf
+```hcl
 resource "azurerm_subnet" "myterraformsubnet" {
     name                 = "mySubnet"
     resource_group_name  = "${azurerm_resource_group.myterraformgroup.name}"
@@ -89,16 +88,16 @@ resource "azurerm_subnet" "myterraformsubnet" {
 
 
 ## <a name="create-public-ip-address"></a>Nyilvános IP-cím létrehozása
-Erőforrások eléréséhez az interneten keresztül, hozzon létre, és egy nyilvános IP-cím hozzárendelése a virtuális gép. A következő szakaszban létrehoz egy nyilvános IP-címet *myPublicIP*:
+Az erőforrások interneten keresztüli eléréséhez hozzon létre és rendeljen hozzá egy nyilvános IP-címet a virtuális géphez. A következő szakasz egy *myPublicIP*nevű nyilvános IP-címet hoz létre:
 
-```tf
+```hcl
 resource "azurerm_public_ip" "myterraformpublicip" {
     name                         = "myPublicIP"
     location                     = "eastus"
     resource_group_name          = "${azurerm_resource_group.myterraformgroup.name}"
     allocation_method            = "Dynamic"
 
-    tags {
+    tags = {
         environment = "Terraform Demo"
     }
 }
@@ -106,9 +105,9 @@ resource "azurerm_public_ip" "myterraformpublicip" {
 
 
 ## <a name="create-network-security-group"></a>Hálózati biztonsági csoport létrehozása
-Hálózati biztonsági csoportokkal szabályozhatja a hálózati forgalmat a virtuális gép adataikkal. Az alábbi szakasz nevű hálózati biztonsági csoportot hoz létre *myNetworkSecurityGroup* és a egy szabályt, amely engedélyezi az SSH-forgalmat a 22-es TCP-portot határozza meg:
+A hálózati biztonsági csoportok vezérlik a virtuális gépen belüli és kívüli hálózati forgalom folyamatát. A következő szakasz létrehoz egy *myNetworkSecurityGroup* nevű hálózati biztonsági csoportot, és meghatároz egy szabályt, amely engedélyezi az SSH-forgalmat a 22-es TCP-porton:
 
-```tf
+```hcl
 resource "azurerm_network_security_group" "myterraformnsg" {
     name                = "myNetworkSecurityGroup"
     location            = "eastus"
@@ -126,7 +125,7 @@ resource "azurerm_network_security_group" "myterraformnsg" {
         destination_address_prefix = "*"
     }
 
-    tags {
+    tags = {
         environment = "Terraform Demo"
     }
 }
@@ -134,9 +133,9 @@ resource "azurerm_network_security_group" "myterraformnsg" {
 
 
 ## <a name="create-virtual-network-interface-card"></a>Virtuális hálózati kártya létrehozása
-Egy virtuális hálózati kártya (NIC) egy adott virtuális hálózaton, a nyilvános IP-cím és a hálózati biztonsági csoportot a virtuális Géphez csatlakozik. A következő szakasz a Terraform sablonból hoz létre egy virtuális hálózati Adaptert *myNIC* csatlakozik a létrehozott virtuális hálózati erőforrások:
+A virtuális hálózati kártya (NIC) összekapcsolja a virtuális GÉPET egy adott virtuális hálózattal, nyilvános IP-címmel és hálózati biztonsági csoporttal. A Terraform-sablon következő szakasza egy *myNIC* nevű virtuális hálózati adaptert hoz létre, amely a létrehozott virtuális hálózati erőforrásokhoz csatlakozik:
 
-```tf
+```hcl
 resource "azurerm_network_interface" "myterraformnic" {
     name                = "myNIC"
     location            = "eastus"
@@ -150,17 +149,17 @@ resource "azurerm_network_interface" "myterraformnic" {
         public_ip_address_id          = "${azurerm_public_ip.myterraformpublicip.id}"
     }
 
-    tags {
+    tags = {
         environment = "Terraform Demo"
     }
 }
 ```
 
 
-## <a name="create-storage-account-for-diagnostics"></a>Diagnosztikai tárfiók létrehozása
-A rendszerindítási diagnosztika tárolni a virtuális gép, egy tárfiókra van szükség. Ezek a rendszerindítási diagnosztika segíthet a problémák elhárításában, és figyelheti a virtuális gép állapotát. A storage-fiókot hoz létre, csak az, hogy a rendszerindítási diagnosztikai adatok tárolására. Minden tárfióknak egyedi névvel kell rendelkeznie, mert a következő szakaszban néhány véletlenszerű szöveg hoz létre:
+## <a name="create-storage-account-for-diagnostics"></a>Storage-fiók létrehozása a diagnosztika számára
+Egy virtuális gép rendszerindítási diagnosztika tárolásához egy Storage-fiókra van szükség. A rendszerindítási diagnosztika segítségével elháríthatja a problémákat, és figyelheti a virtuális gép állapotát. A létrehozott Storage-fiók csak a rendszerindítási diagnosztikai adatait tárolja. Mivel minden egyes Storage-fióknak egyedi névvel kell rendelkeznie, a következő szakasz egy véletlenszerű szöveget hoz létre:
 
-```tf
+```hcl
 resource "random_id" "randomId" {
     keepers = {
         # Generate a new ID only when a new resource group is defined
@@ -171,9 +170,9 @@ resource "random_id" "randomId" {
 }
 ```
 
-Most egy tárfiókot is létrehozhat. A következő szakaszban az előző lépésben létrehozott véletlenszerű szöveg alapján nevű hoz létre egy storage-fiók:
+Most már létrehozhat egy Storage-fiókot. A következő szakasz egy Storage-fiókot hoz létre, amelynek a neve az előző lépésben létrehozott véletlenszerű szöveg alapján történik:
 
-```tf
+```hcl
 resource "azurerm_storage_account" "mystorageaccount" {
     name                = "diag${random_id.randomId.hex}"
     resource_group_name = "${azurerm_resource_group.myterraformgroup.name}"
@@ -181,7 +180,7 @@ resource "azurerm_storage_account" "mystorageaccount" {
     account_replication_type = "LRS"
     account_tier = "Standard"
 
-    tags {
+    tags = {
         environment = "Terraform Demo"
     }
 }
@@ -190,11 +189,11 @@ resource "azurerm_storage_account" "mystorageaccount" {
 
 ## <a name="create-virtual-machine"></a>Virtuális gép létrehozása
 
-Az utolsó lépés, hogy hozzon létre egy virtuális Gépet, és használni létrehozott összes erőforrást. A következő szakasz egy nevű virtuális Gépet hoz létre *myVM* , és csatolja a virtuális hálózati Adaptert *myNIC*. A legújabb *Ubuntu 16.04-LTS* lemezképet használja, és a egy felhasználó neve *azureuser* jelszavas hitelesítés le van tiltva a rendszer létrehozza.
+Utolsó lépésként hozzon létre egy virtuális gépet, és használja az összes létrehozott erőforrást. Az alábbi szakasz létrehoz egy *myVM* nevű virtuális gépet, és csatolja a *myNIC*nevű virtuális hálózati adaptert. A legújabb *Ubuntu 16,04-LTS* rendszerképet használja a rendszer, és az *azureuser* nevű felhasználó jelszavas hitelesítéssel lett letiltva.
 
- SSH-kulcs adatainak megtalálható a *ssh_keys* szakaszban. Adja meg az érvényes nyilvános SSH-kulcsot a *key_data* mező.
+ Az SSH-kulcsokra vonatkozó információk a *ssh_keys* szakaszban találhatók. Adjon meg egy érvényes nyilvános SSH-kulcsot a *key_data* mezőben.
 
-```tf
+```hcl
 resource "azurerm_virtual_machine" "myterraformvm" {
     name                  = "myVM"
     location              = "eastus"
@@ -234,17 +233,17 @@ resource "azurerm_virtual_machine" "myterraformvm" {
         storage_uri = "${azurerm_storage_account.mystorageaccount.primary_blob_endpoint}"
     }
 
-    tags {
+    tags = {
         environment = "Terraform Demo"
     }
 }
 ```
 
-## <a name="complete-terraform-script"></a>A Terraform teljes szkript
+## <a name="complete-terraform-script"></a>Terraform-szkript befejezése
 
-Ezekben a szakaszokban egyesítik, és tekintse meg a Terraform működés közben, hozzon létre egy fájlt nevű *terraform_azure.tf* , és illessze be az alábbi tartalommal:
+Ha az összes szakaszt együtt szeretné megjeleníteni, és a Terraform működés közben látja, hozzon létre egy *terraform_azure. tf* nevű fájlt, és illessze be az alábbi tartalmat:
 
-```tf
+```hcl
 # Configure the Microsoft Azure Provider
 provider "azurerm" {
     subscription_id = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
@@ -258,7 +257,7 @@ resource "azurerm_resource_group" "myterraformgroup" {
     name     = "myResourceGroup"
     location = "eastus"
 
-    tags {
+    tags = {
         environment = "Terraform Demo"
     }
 }
@@ -270,7 +269,7 @@ resource "azurerm_virtual_network" "myterraformnetwork" {
     location            = "eastus"
     resource_group_name = "${azurerm_resource_group.myterraformgroup.name}"
 
-    tags {
+    tags = {
         environment = "Terraform Demo"
     }
 }
@@ -290,7 +289,7 @@ resource "azurerm_public_ip" "myterraformpublicip" {
     resource_group_name          = "${azurerm_resource_group.myterraformgroup.name}"
     allocation_method            = "Dynamic"
 
-    tags {
+    tags = {
         environment = "Terraform Demo"
     }
 }
@@ -313,7 +312,7 @@ resource "azurerm_network_security_group" "myterraformnsg" {
         destination_address_prefix = "*"
     }
 
-    tags {
+    tags = {
         environment = "Terraform Demo"
     }
 }
@@ -332,7 +331,7 @@ resource "azurerm_network_interface" "myterraformnic" {
         public_ip_address_id          = "${azurerm_public_ip.myterraformpublicip.id}"
     }
 
-    tags {
+    tags = {
         environment = "Terraform Demo"
     }
 }
@@ -355,7 +354,7 @@ resource "azurerm_storage_account" "mystorageaccount" {
     account_tier                = "Standard"
     account_replication_type    = "LRS"
 
-    tags {
+    tags = {
         environment = "Terraform Demo"
     }
 }
@@ -400,29 +399,29 @@ resource "azurerm_virtual_machine" "myterraformvm" {
         storage_uri = "${azurerm_storage_account.mystorageaccount.primary_blob_endpoint}"
     }
 
-    tags {
+    tags = {
         environment = "Terraform Demo"
     }
 }
 ```
 
 
-## <a name="build-and-deploy-the-infrastructure"></a>Hozhat létre, és az infrastruktúra üzembe helyezése
-A Terraform sablonnal létrehozott az első lépéseként a Terraform inicializálása. Ez a lépés biztosítja, hogy a Terraform hozhat létre a sablont az Azure-ban minden előfeltétel.
+## <a name="build-and-deploy-the-infrastructure"></a>Az infrastruktúra kiépítése és üzembe helyezése
+Ha létrehozta a Terraform-sablont, az első lépés a Terraform inicializálása. Ez a lépés biztosítja, hogy a Terraform az összes előfeltételt felkészítse a sablon létrehozásához az Azure-ban.
 
 ```bash
 terraform init
 ```
 
-A következő lépés, hogy a Terraform áttekintése és jóváhagyása a sablont. Ebben a lépésben összehasonlítja a kért erőforrások Terraform által mentett állapot adatait, és majd megjeleníti a tervezett végrehajtási. Erőforrások *nem* létrehozása az Azure-ban.
+A következő lépés a sablon Terraform áttekintése és érvényesítése. Ez a lépés összehasonlítja a kért erőforrásokat a Terraform által mentett állapotadatok között, majd a tervezett végrehajtást adja vissza. Az erőforrások *nem* az Azure-ban jönnek létre.
 
 ```bash
 terraform plan
 ```
 
-Az előző parancs végrehajtása, után kell megjelennie a következő képernyőhöz hasonló:
+Az előző parancs végrehajtása után a következő képernyőhöz hasonlóan kell megjelennie:
 
-```bash
+```console
 Refreshing Terraform state in-memory prior to plan...
 The refreshed state will be used to calculate this plan, but will not be
 persisted to local or remote state storage.
@@ -449,23 +448,23 @@ Note: You didn’t specify an “-out” parameter to save this plan, so when
 Plan: 7 to add, 0 to change, 0 to destroy.
 ```
 
-Ha mindent helyesnek tűnik, és készen áll az Azure-infrastruktúra felépítéséhez, alkalmazza a Terraform-sablon:
+Ha minden helyesnek tűnik, és készen áll az infrastruktúra létrehozására az Azure-ban, alkalmazza a sablont a Terraform-ben:
 
 ```bash
 terraform apply
 ```
 
-Miután befejeződött a Terraform, a Virtuálisgép-infrastruktúra készen áll. Szerezze be a virtuális gép nyilvános IP-címét [az vm show](/cli/azure/vm):
+A Terraform befejezése után a virtuális gép infrastruktúrája készen áll. Szerezze be a virtuális gép nyilvános IP-címét az [az VM show](/cli/azure/vm)paranccsal:
 
-```azurecli
+```azurecli-interactive
 az vm show --resource-group myResourceGroup --name myVM -d --query [publicIps] --o tsv
 ```
 
-Ezek közül az SSH a virtuális géphez:
+Ezután SSH-t használhat a virtuális géphez:
 
 ```bash
 ssh azureuser@<publicIps>
 ```
 
 ## <a name="next-steps"></a>További lépések
-Alapvető infrastruktúra a Terraform használatával létrehozott Azure-ban. Az összetettebb esetekhez, beleértve a példákat, amely használható terheléselosztók és a virtuális gép méretezési csoportokat, lásd: számos [az Azure Terraform példák](https://github.com/hashicorp/terraform/tree/master/examples). Támogatott Azure-szolgáltatók naprakész listáját, tekintse meg a [Terraform dokumentáció](https://www.terraform.io/docs/providers/azurerm/index.html).
+Alapszintű infrastruktúrát hozott létre az Azure-ban a Terraform használatával. Összetettebb forgatókönyvek esetén, beleértve a terheléselosztó és a virtuálisgép-méretezési csoportok használatát is, [Az Azure számos Terraform](https://github.com/hashicorp/terraform/tree/master/examples)-példáját láthatja. A támogatott Azure-szolgáltatók naprakész listája a [Terraform dokumentációjában](https://www.terraform.io/docs/providers/azurerm/index.html)található.

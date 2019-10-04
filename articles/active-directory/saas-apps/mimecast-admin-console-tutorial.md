@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2019c61ccbffa1e68c1ef53c718d4839a604aa44
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0bbbd73d1856ba5d3dc19873c56fce622b272939
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57849958"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67097344"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mimecast-admin-console"></a>Oktatóanyag: Mimecast felügyeleti konzol az Azure Active Directory-integráció
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a Mimecast felügyeleti konzol konfigurálása, hozzá
 
 **Felügyeleti konzol Mimecast hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -164,7 +164,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Mimecast felügyelet
     >[!NOTE]
     >A bejelentkezési URL-cím és a kijelentkezési URL-cím értéke ugyanazok a Mimecast felügyeleti konzolon.
     
-    g. Nyissa meg a Jegyzettömbben, az Azure portálról letöltött a base-64 tanúsítvány, távolítsa el az első sort ("*--*") és az utolsó sort ("*--*"), másolja be azt, a maradék tartalmat a vágólapra, majd illessze be azt a **Identitástanúsítványt szolgáltató (Metadata)** szövegmezőbe.
+    g. Nyissa meg a Jegyzettömbben, az Azure portálról letöltött a base-64 tanúsítvány, távolítsa el az első sort (" *--* ") és az utolsó sort (" *--* "), másolja be azt, a maradék tartalmat a vágólapra, majd illessze be azt a **Identitástanúsítványt szolgáltató (Metadata)** szövegmezőbe.
     
     h. Válassza ki **egyszeri bejelentkezés engedélyezése**.
     

@@ -1,6 +1,6 @@
 ---
 title: Több tábla növekményes másolása az Azure Data Factory használatával | Microsoft Docs
-description: Az oktatóanyag során egy Azure Data Factory-folyamatot hoz létre, amely egy helyszíni SQL Server több táblájának módosított adatait másolja növekményesen egy Azure SQL Database-be.
+description: Az oktatóanyag során egy Azure Data Factory-folyamatot hoz létre, amely egy helyszíni SQL Server több táblájának módosított adatait másolja növekményesen egy Azure SQL-adatbázisba.
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
@@ -8,19 +8,18 @@ manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/20/2018
 ms.author: yexu
-ms.openlocfilehash: b9dafd31ed84298c97932b1cdb5593eb17769ef9
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: d46c460f7158635e520b47517fb3aab005af94a2
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59566005"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140754"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Adatok növekményes betöltése az SQL Server több táblájából egy Azure SQL-adatbázisba
-Az oktatóanyag során egy Azure-beli adat-előállítót hoz létre egy olyan folyamattal, amely változásadatokat tölt be egy helyszíni SQL Server több táblájából egy Azure SQL Database-be.    
+Az oktatóanyag során egy Azure-beli adat-előállítót hoz létre egy olyan folyamattal, amely változásadatokat tölt be egy helyszíni SQL Server több táblájából egy Azure SQL-adatbázisba.    
 
 Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 
@@ -109,8 +108,8 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
     
     ```
 
-### <a name="create-destination-tables-in-your-azure-sql-database"></a>Céltáblák létrehozása az Azure SQL Database-ben
-1. Nyissa meg az SQL Server Management Studio alkalmazást, és csatlakozzon az Azure SQL Database-hez.
+### <a name="create-destination-tables-in-your-azure-sql-database"></a>Céltáblák létrehozása az Azure SQL-adatbázisban
+1. Nyissa meg az SQL Server Management Studio alkalmazást, és csatlakozzon az Azure SQL-adatbázishoz.
 
 1. A **Kiszolgálókezelőben** kattintson a jobb gombbal az adatbázisra, és válassza az **Új lekérdezés** elemet.
 
@@ -132,7 +131,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
     ```
 
-### <a name="create-another-table-in-the-azure-sql-database-to-store-the-high-watermark-value"></a>Egy másik tábla létrehozása az Azure SQL Database-ben a felső küszöbértékek tárolására
+### <a name="create-another-table-in-the-azure-sql-database-to-store-the-high-watermark-value"></a>Egy másik tábla létrehozása az Azure SQL-adatbázisban a felső küszöbértékek tárolására
 1. Futtassa a következő SQL-parancsot az SQL-adatbázison egy `watermarktable` nevű, a küszöbértékek tárolására szolgáló tábla létrehozásához: 
     
     ```sql
@@ -154,7 +153,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
     
     ```
 
-### <a name="create-a-stored-procedure-in-the-azure-sql-database"></a>Tárolt eljárás létrehozása az Azure SQL Database-ben 
+### <a name="create-a-stored-procedure-in-the-azure-sql-database"></a>Tárolt eljárás létrehozása az Azure SQL-adatbázisban 
 
 Az alábbi parancs futtatásával hozzon létre egy tárolt eljárást az SQL-adatbázisban. Ez a tárolt eljárás minden folyamatfuttatás után frissíti a küszöbértéket. 
 
@@ -172,12 +171,12 @@ END
 
 ```
 
-### <a name="create-data-types-and-additional-stored-procedures-in-azure-sql-database"></a>Adattípusok és további tárolt eljárások létrehozása az Azure SQL Database-ben
+### <a name="create-data-types-and-additional-stored-procedures-in-azure-sql-database"></a>Adattípusok és további tárolt eljárások létrehozása az Azure SQL-adatbázisban
 Az alábbi lekérdezés futtatásával hozzon létre két tárolt eljárást és két adattípust az SQL-adatbázisban. Ezek összevonják a forrástáblák adatait a céltáblákba.
 
-Annak érdekében, hogy az utazás egyszerűen a következővel kell kezdődnie, azt közvetlenül a tárolt eljárások a változásadatok a passing táblázatváltozó keresztül használja, és majd céltár egyesíti a azokat. Legyen óvatos, hogy, nem a várt "" nagyszámú (több mint 100). a különbözeti sorok a következő táblaváltozót tárolja.  
+Ahhoz, hogy az utazást könnyen el lehessen kezdeni, közvetlenül használjuk ezeket a tárolt eljárásokat egy tábla változón keresztül, majd összevonjuk őket a célhelyek tárolójába. Legyen óvatos, ha nem vár "nagy" számú különbözeti sort (több mint 100) a Table változóban.  
 
-Ha szeretné a különbözeti sorokat nagy számú egyesítse a céltár, javasoljuk, hogy kell használni a másolási tevékenység a változásadatok másolásához a célhelyen "átmeneti" ideiglenes táblába első tárolja, és majd beépített táblában vari használata nélkül a saját tárolt eljárás lehet egyesíteni őket, a "átmeneti" tábla "záró" táblához. 
+Ha nagy számú különbözeti sort kell egyesíteni a célhelyen, javasoljuk, hogy a másolási tevékenység használatával másolja át az összes különbözeti értéket a cél tárolóban lévő ideiglenes "átmeneti" táblába, majd a Table Vari használata nélkül készítse el saját tárolt eljárását. képes egyesíteni őket az "átmeneti" táblából a "Final" táblába. 
 
 
 ```sql
@@ -228,7 +227,7 @@ END
 
 ```
 
-## <a name="create-a-data-factory"></a>Data factory létrehozása
+## <a name="create-a-data-factory"></a>data factory létrehozása
 
 1. Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
 1. Kattintson az **Új** elemre, majd az **Adatok + analitika**, végül a **Data Factory** elemre. 
@@ -252,7 +251,7 @@ END
 1. Válassza ki a Data Factory **helyét**. A legördülő listán csak a támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
 1. Válassza a **Rögzítés az irányítópulton** lehetőséget.     
 1. Kattintson a **Create** (Létrehozás) gombra.      
-1. Az irányítópulton a következő állapotleírás látható: **Data factory üzembe helyezése**. 
+1. Az irányítópulton a következő csempe jelenik meg az állapottal: **Az adatelőállító üzembe helyezése**. 
 
     ![adat-előállító üzembe helyezése csempe](media/tutorial-incremental-copy-multiple-tables-portal/deploying-data-factory.png)
 1. A létrehozás befejezése után a **Data Factory** lap a képen látható módon jelenik meg.
@@ -281,7 +280,7 @@ Mialatt adatokat helyez át egy magánhálózaton (helyszínen) lévő adattárb
 1. Írja be a **MySelfHostedIR** nevet a **név** mezőjébe, és kattintson a **Next** (Tovább) gombra. 
 
    ![Saját üzemeltetésű integrációs modul neve](./media/tutorial-incremental-copy-multiple-tables-portal/self-hosted-ir-name.png)
-1. Kattintson a **kattintson ide a számítógép Expressz telepítés indításához** a a **1. lehetőség: Expressz telepítés** szakaszban. 
+1. Kattintson ide, ha az 1. **lehetőségnél **szeretné elindítani a számítógép expressz telepítését** : Expressz beállítás** szakasz. 
 
    ![Kattintás az Expressz telepítés hivatkozásra](./media/tutorial-incremental-copy-multiple-tables-portal/click-express-setup.png)
 1. Az **Integrációs modul (Saját üzemeltetésű) – Expressz telepítés** ablakban kattintson a **Bezárás** elemre. 
@@ -305,7 +304,7 @@ Ebben a lépésben a helyszíni SQL Server-adatbázist társítja az adat-előá
     ![Új társított szolgáltatás gomb](./media/tutorial-incremental-copy-multiple-tables-portal/new-sql-server-linked-service-button.png)
 1. A **New Linked Service** (Új társított szolgáltatás) ablakban válassza az **SQL Server** lehetőséget, majd kattintson a **Continue** (Folytatás) gombra. 
 
-    ![Select SQL Server](./media/tutorial-incremental-copy-multiple-tables-portal/select-sql-server.png)
+    ![SQL Server-kiszolgáló választása](./media/tutorial-incremental-copy-multiple-tables-portal/select-sql-server.png)
 1. Az **Új társított szolgáltatás** ablakban végezze el az alábbi lépéseket:
 
     1. A **Név** mezőben adja meg az **SqlServerLinkedService** értéket. 
@@ -321,7 +320,7 @@ Ebben a lépésben a helyszíni SQL Server-adatbázist társítja az adat-előá
         ![SQL Server-beli társított szolgáltatás – beállítások](./media/tutorial-incremental-copy-multiple-tables-portal/sql-server-linked-service-settings.png)
 
 ### <a name="create-the-azure-sql-database-linked-service"></a>Az Azure SQL Database társított szolgáltatás létrehozása
-Az utolsó lépésben létrehoz egy társított szolgáltatást, amely összekapcsolja az SQL Server-adatbázist az adat-előállítóval. Ebben a lépésben a cél/fogadó Azure SQL Database-t az adat-előállítóhoz kapcsolja. 
+Az utolsó lépésben létrehoz egy társított szolgáltatást, amely összekapcsolja az SQL Server-adatbázist az adat-előállítóval. Ebben a lépésben a cél/fogadó Azure SQL-adatbázist az adat-előállítóhoz kapcsolja. 
 
 1. A **Connections** (Kapcsolatok) ablakban váltson az **Integration Runtimes** (Integrációs modulok) lapról a **Linked Services** (Társított szolgáltatások) lapra, és kattintson a **+ New** (+ Új) elemre.
 
@@ -352,7 +351,7 @@ Ebben a lépésben olyan adatkészleteket hoz létre, amelyek az adatforrást, a
    ![Új adatkészlet menü](./media/tutorial-incremental-copy-multiple-tables-portal/new-dataset-menu.png)
 1. A **New Dataset** (Új adatkészlet) ablakban válassza az **SQL Server** lehetőséget, majd kattintson a **Finish** (Befejezés) elemre. 
 
-   ![Select SQL Server](./media/tutorial-incremental-copy-multiple-tables-portal/select-sql-server-for-dataset.png)
+   ![SQL Server-kiszolgáló választása](./media/tutorial-incremental-copy-multiple-tables-portal/select-sql-server-for-dataset.png)
 1. A webböngészőben megjelenik egy új lap, amely az adatkészlet konfigurálására szolgál. Az adatkészlet fanézetben is megjelenik. A Properties (Tulajdonságok) ablak **General** (Általános) lapjának alján a **SourceDataset** értéket adja meg a **Name** (Név) mezőben. 
 
    ![Forrásadatkészlet – név](./media/tutorial-incremental-copy-multiple-tables-portal/source-dataset-general.png)
@@ -491,11 +490,11 @@ A folyamat táblanevek listáját használja paraméterként. A ForEach tevéken
 1. Váltson a **Sink** (Fogadó) lapra, és válassza a **SinkDataset** lehetőséget a **Sink Dataset** (Fogadó adatkészlet) mezőnél. 
         
     ![Másolási tevékenység – fogadóbeállítások](./media/tutorial-incremental-copy-multiple-tables-portal/copy-sink-settings.png)
-1. Kövesse az alábbi lépéseket:
+1. Hajtsa végre a következő lépéseket:
 
-    1. Az a **adatkészlet** tulajdonság, a **SinkTableName** paramétert, adja meg `@{item().TABLE_NAME}`.
-    1. A **tárolt eljárás neve** tulajdonság, adja meg `@{item().StoredProcedureNameForMergeOperation}`.
-    1. A **táblatípus** tulajdonság, adja meg `@{item().TableType}`.
+    1. Az **adatkészlet** tulajdonságában a **SinkTableName** paraméternél adja meg `@{item().TABLE_NAME}`a következőt:.
+    1. A **tárolt eljárás neve** tulajdonságnál adja `@{item().StoredProcedureNameForMergeOperation}`meg a következőt:.
+    1. A **Table Type** tulajdonságnál adja `@{item().TableType}`meg a következőt:.
 
 
         ![Másolási tevékenység – paraméterek](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-parameters.png)
@@ -514,10 +513,10 @@ A folyamat táblanevek listáját használja paraméterként. A ForEach tevéken
     1. Válassza az **Importálási paraméter** lehetőséget. 
     1. Adja meg a következő értékeket a paraméterekhez: 
 
-        | Name (Név) | Típus | Érték | 
+        | Name (Név) | Típus | Value | 
         | ---- | ---- | ----- |
         | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
-        | TableName | String | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
+        | TableName | Sztring | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
     
         ![Tárolt eljárási tevékenység – tárolt eljárás beállításai](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sproc-settings.png)
 1. A bal oldali panelen kattintson a **Publish** (Közzététel) elemre. Ez a művelet közzéteszi a Data Factory szolgáltatásban a létrehozott entitásokat. 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: jaboes
 ms.custom: include file
-ms.openlocfilehash: 6085eb2b520217c4e678a75032e8a1cb4b9343ec
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 904bd884bc09c1e2016f55ffc8e1e9f635974ac7
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58261329"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179054"
 ---
 # <a name="using-managed-disks-in-azure-resource-manager-templates"></a>A felügyelt lemezek az Azure Resource Manager-sablonok használatával
 
@@ -202,7 +202,7 @@ A virtuális gép objektumon belül hivatkozhat a lemez objektum van csatlakozta
 
 ### <a name="create-managed-availability-sets-with-vms-using-managed-disks"></a>A felügyelt lemezeket használó virtuális gépek felügyelt rendelkezésre állási csoportok létrehozása
 
-Felügyelt rendelkezésre állási csoportok a virtuális gépek felügyelt lemezeket használ, adja hozzá a `sku` objektum, melyet a rendelkezésre állási erőforrás, és állítsa be a `name` tulajdonságot `Aligned`. Ez a tulajdonság biztosítja, hogy az egyes virtuális gépek lemezei kellőképpen különítve egymástól a kritikus hibapontok elkerülése érdekében. Azt is vegye figyelembe, hogy a `apiVersion` esetében a rendelkezésre állási csoport erőforrás értéke `2017-03-30`.
+Felügyelt rendelkezésre állási csoportok a virtuális gépek felügyelt lemezeket használ, adja hozzá a `sku` objektum, melyet a rendelkezésre állási erőforrás, és állítsa be a `name` tulajdonságot `Aligned`. Ez a tulajdonság biztosítja, hogy az egyes virtuális gépek lemezei kellőképpen különítve egymástól a kritikus hibapontok elkerülése érdekében. Azt is vegye figyelembe, hogy a `apiVersion` esetében a rendelkezésre állási csoport erőforrás értéke `2018-10-01`.
 
 ```json
 {

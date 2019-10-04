@@ -1,6 +1,6 @@
 ---
-title: Csatlakozhat a Trellóhoz az Azure Logic Apps |} A Microsoft Docs
-description: Automatizálhatja a feladatokat és a munkafolyamatok, amelyek figyelése és felügyelete a listája, a tanácsok és a kártya a Trello-projektek az Azure Logic Apps használatával
+title: Kapcsolódás a Trello-hez Azure Logic Appsról | Microsoft Docs
+description: Automatizálja a Trello-projektekben található listát, táblákat és kártyákat figyelő és kezelő feladatokat és munkafolyamatokat Azure Logic Apps használatával
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -11,61 +11,61 @@ ms.assetid: fe7a4377-5c24-4f72-ab1a-6d9d23e8d895
 ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 31357fa313cfa31c0f8a90c0f7722f627e4394d1
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: ae77488df6ce58d8cab61933f50d24edec35b1ab
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50229332"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050728"
 ---
-# <a name="monitor-and-manage-trello-with-azure-logic-apps"></a>Figyelése és felügyelete az Azure Logic Apps Trello
+# <a name="monitor-and-manage-trello-with-azure-logic-apps"></a>Trello figyelése és kezelése Azure Logic Apps
 
-Az Azure Logic Apps és a Trello-összekötő hozhat létre automatizált feladatokat és a munkafolyamatok, amelyek figyelése és felügyelete a Trello-lista, kártyák, célra szolgáló kártyákat, a csapattagok és így tovább, például:
+A Azure Logic Apps és a Trello-összekötővel automatizált feladatokat és munkafolyamatokat hozhat létre, amelyek figyelik és kezelhetik a Trello-listát, a kártyákat, a táblákat, a csapattagokat stb. például:
 
-* Ez a figyelő hozzáadásakor új kártyák célra szolgáló kártyákat és -listáikhoz. 
-* Hozzon létre, lekérése és kezelheti a célra szolgáló kártyákat, kártyákat és listák.
-* Megjegyzések és a tagok hozzáadása a kártyák.
-* Listázza a célra szolgáló kártyákat, a tábla címkék, a kártyák a célra szolgáló kártyákat, kártya megjegyzések, kártya tagjainak, a csapattagok és a csapatok, ahol Ön a tagja. 
-* Csoportok lekérése.
+* Figyelje meg, hogy mikor kerül be új kártyák a táblákba és a listára. 
+* Táblák, kártyák és címlisták létrehozása, beolvasása és kezelése.
+* Megjegyzéseket és tagokat adhat hozzá a kártyákhoz.
+* Táblák, üzenőfalak, kártyák a lapokon, a kártyák megjegyzései, a kártyák tagjai, a csapattagok és a csapatok névsora, ahol Ön a tag. 
+* Csapatok beolvasása.
 
-Választ kaphat a Trello-fiókjából, és egyéb műveleteket hajthat végre elérhetővé a kimeneti eseményindítók is használhatja. Használhatja a végrehajtandó feladatokat a Trello-fiókjához. Trello-műveletek a kimenetét használják más műveleteket is rendelkezhet. Például tábla vagy a lista egy új kártya hozzáadásakor küldhet üzeneteket a Slack-összekötővel. Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+Használhat olyan eseményindítókat, amelyek válaszokat kapnak a Trello-fiókjából, és más műveletek számára elérhetővé teszik a kimenetet. A Trello-fiókkal feladatokat végrehajtó műveleteket is használhat. Más műveletek is használhatók a Trello műveletek kimenetének használatával. Ha például új kártyát adnak hozzá a táblához vagy a listához, akkor üzeneteket küldhet a Slack-összekötővel. Ha most ismerkedik a Logic apps szolgáltatással, tekintse át [a mi az Azure Logic apps?](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, <a href="https://azure.microsoft.com/free/" target="_blank">regisztráljon egy ingyenes Azure-fiókra</a>. 
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/). 
 
-* A Trello és a felhasználói fiók hitelesítő adatait
+* A Trello-fiók és a felhasználói hitelesítő adatok
 
-  A hitelesítő adatok engedélyezik a logikai alkalmazás, hozzon létre egy kapcsolatot, és a Trello-fiókjába.
+  A hitelesítő adatai engedélyezik a logikai alkalmazásnak, hogy kapcsolatot hozzon létre, és hozzáférhessen a Trello-fiókhoz.
 
-* Alapvető ismeretek szerezhetők [logikai alkalmazások létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Alapvető ismeretek a [logikai alkalmazások létrehozásáról](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* A logikai alkalmazás, ahol szeretné a Trello-fiókjába. Egy Trello-trigger indít el a [hozzon létre egy üres logikai alkalmazás](../logic-apps/quickstart-create-first-logic-app-workflow.md). Egy Trello-művelet használatához a logikai alkalmazást egy trigger indít el, például a **ismétlődési** eseményindító.
+* Az a logikai alkalmazás, amelyhez el szeretné érni a Trello-fiókját. Egy Trello triggerrel való kezdéshez [hozzon létre egy üres logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md). Ha Trello műveletet szeretne használni, indítsa el a logikai alkalmazást egy eseményindítóval, például az **Ismétlődés** eseményindítóját.
 
-## <a name="connect-to-trello"></a>Csatlakozhat a Trellóhoz
+## <a name="connect-to-trello"></a>Kapcsolódás a Trello
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com), és nyissa meg a logikai alkalmazás a Logikaialkalmazás-Tervező, ha nem, nyissa meg a már.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és nyissa meg a logikai alkalmazást a Logic app Designerben, ha már nincs megnyitva.
 
-1. Üres logic Apps a keresőmezőbe írja be szűrőként "trello". Eseményindítók listája alatt válassza ki a kívánt az eseményindító. 
+1. Üres logikai alkalmazások esetén a keresőmezőbe írja be szűrőként a "trello" kifejezést. Válassza ki a kívánt eseményindítót az eseményindítók listából. 
 
    – vagy –
 
-   Meglévő logic Apps alkalmazások, az utolsó lépés, adjon hozzá egy műveletet, amelyre a válasszon **új lépés**. 
-   A Keresés mezőbe írja be szűrőként "trello". 
-   Műveletek listája alatt válassza ki a kívánt művelet.
+   Meglévő Logic apps esetén az utolsó lépésben, amelyhez műveletet szeretne hozzáadni, válassza az **új lépés**lehetőséget. 
+   A keresőmezőbe írja be szűrőként a "trello" kifejezést. 
+   A műveletek listában válassza ki a kívánt műveletet.
 
-   Lépések közötti művelet hozzáadása, helyezze az egérmutatót a nyíl lépések között. 
-   Válassza a plusz jelre (**+**), amely akkor jelenik meg, és válassza ki **művelet hozzáadása**.
+   A lépések közötti művelet hozzáadásához vigye a mutatót a lépések közötti nyíl fölé. 
+   Válassza ki a megjelenő pluszjelet ( **+** ), majd válassza a **művelet hozzáadása**lehetőséget.
 
-1. Ha az kéri, jelentkezzen be a Trello, a logikai alkalmazás hozzáférés engedélyezését, és jelentkezzen be.
+1. Ha a rendszer felszólítja, hogy jelentkezzen be a Trello-be, engedélyezze a hozzáférést a logikai alkalmazáshoz, és jelentkezzen be.
 
-1. Adja meg a szükséges adatokat a kijelölt eseményindítót vagy műveletet, és továbbra is használhatja a logic app-munkafolyamatot.
+1. Adja meg a kiválasztott trigger vagy művelet szükséges adatait, és folytassa a logikai alkalmazás munkafolyamatának összeállítását.
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-További technikai részletek korlátok, eseményindítók és műveletek, amely ismerteti az összekötő OpenAPI által (korábbi nevén Swagger) leírását, tekintse át az összekötő [referencialapja](/connectors/trello/).
+Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos technikai részletekért lásd az összekötő OpenAPI (korábban: hencegés) leírását, tekintse át az összekötő [hivatkozási oldalát](/connectors/trello/).
 
 ## <a name="get-support"></a>Támogatás kérése
 
@@ -74,4 +74,4 @@ További technikai részletek korlátok, eseményindítók és műveletek, amely
 
 ## <a name="next-steps"></a>További lépések
 
-* További információk egyéb [Logic Apps-összekötők](../connectors/apis-list.md)
+* További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

@@ -1,45 +1,44 @@
 ---
-title: SAP Hana az Azure-ban (nagyméretű példányok) hitelesítő |} A Microsoft Docs
-description: Az SAP HANA az Azure-ban (nagyméretű példányok) minősítése.
+title: Az Azure-beli SAP HANA minősítése (nagyméretű példányok) | Microsoft Docs
+description: SAP HANA minősítése az Azure-ban (nagyméretű példányok).
 services: virtual-machines-linux
 documentationcenter: ''
 author: RicksterCDN
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/04/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1346018d99a1c26290ad8928d9794f3b55050910
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 3c2c919d6e85a2b708dc247b1642e7e8987df81b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44028110"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099883"
 ---
 # <a name="certification"></a>Tanúsítvány
 
-Mellett a NetWeaver hitelesítő SAP használatához az SAP Hana, SAP HANA támogatásához egyes infrastruktúrákat, például az Azure IaaS speciális minősítés.
+A NetWeaver minősítés mellett az SAP speciális minősítést igényel a SAP HANA számára bizonyos infrastruktúrák, például az Azure IaaS SAP HANA támogatásához.
 
-Alapvető fontosságú SAP-Jegyzetnek NetWeaver, valamint a párhuzamossági SAP HANA-minősítési program [SAP Megjegyzés #1928533 – SAP alkalmazások az Azure-on: támogatott termékek és Azure-beli Virtuálisgép-típusok](https://launchpad.support.sap.com/#/notes/1928533).
+Az alapvető SAP-Megjegyzés a NetWeaver-on, valamint egy bizonyos fokú SAP HANA [minősítés esetén az SAP Note #1928533 – SAP-alkalmazások az Azure-ban: Támogatott termékek és Azure-beli](https://launchpad.support.sap.com/#/notes/1928533)virtuális gépek típusai.
 
-A minősítési rekordokat az SAP Hana az Azure-ban (nagyméretű példányok) egység megtalálható a [SAP HANA-tanúsítvánnyal rendelkező IaaS-platformon](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) hely. 
+Az Azure-beli (nagyméretű példányok) SAP HANA tanúsítási rekordjai a [SAP HANA Certified IaaS Platforms](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) webhelyen találhatók. 
 
-Az SAP HANA az Azure-ban (nagyméretű példányok) típusú hitelesített IaaS-platformon hely, az SAP HANA említett biztosítja a Microsoft és ügyfeleink helyezheti üzembe az alkalmazásokat nagy SAP Business Suite, az SAP BW, S/4 HANA, BW/4HANA vagy egyéb SAP HANA számítási feladatok Azure-beli SAP. A megoldás az SAP-HANA jóváhagyott dedikált hardver stamp alapul ([SAP HANA szabott data center integráció – TDI](https://scn.sap.com/docs/DOC-63140)). Ha futtatja az SAP HANA TDI-konfigurált megoldást, a hardveres infrastruktúrát használható, az összes, az SAP HANA-alapú alkalmazások (például SAP Business Suite az SAP HANA, SAP BW on SAP HANA, az S4/HANA és BW4/HANA).
+Az Azure-beli (nagyméretű példányok) SAP HANA a SAP HANA Certified IaaS Platforms webhelyen említettek szerint a Microsoft és az SAP ügyfelei számára lehetővé teszi a nagyméretű SAP Business Suite, SAP BW, S/4 HANA, BW/4HANA vagy más SAP HANA számítási feladatok üzembe helyezését az Azure-ban. A megoldás alapja az SAP-HANA Certified dedikált hardver Stamp ([SAP HANA szabott adatközpont-integráció – TDI](https://scn.sap.com/docs/DOC-63140)). Ha SAP HANA TDI-vel konfigurált megoldást futtat, az összes SAP HANA-alapú alkalmazás (például az SAP Business Suite SAP HANA, SAP BW on SAP HANA, S4/HANA és BW4/HANA) a hardveres infrastruktúrán működik.
 
-Virtuális gépeken futó SAP HANA képest, ez a megoldás előnye van. Sokkal nagyobb memória kötetek biztosítja. Ez a megoldás engedélyezéséhez kell tennie a következő főbb szempontok megismerése:
+A virtuális gépeken futó SAP HANAhoz képest ez a megoldás előnyt élvez. Sokkal nagyobb mennyiségű memóriát biztosít. A megoldás engedélyezéséhez ismernie kell a következő kulcsfontosságú szempontokat:
 
-- A SAP alkalmazás réteget és az SAP alkalmazások a szokásos Azure-beli hardveres stampek tárolt virtuális gépek futnak.
-- Ügyfél a helyszíni infrastruktúra, adatközpontok, és alkalmazás-KözpontiTelepítés csatlakozik a cloud platform (ajánlott) expressroute-on keresztül, vagy virtuális magánhálózati (VPN). Az Active Directory és DNS is kibővíti az Azure-bA.
-- Az SAP HANA-adatbázispéldányt HANA számítási futtatja az SAP HANA az Azure-ban (nagyméretű példányok). A nagyméretű szolgáltatáspéldányban be az Azure networking, csatlakoztatva van, így a HANA-példány a nagyméretű HANA-példányt futtató virtuális gépeken futó szoftver használhatják.
-- Hardver-vagy SAP HANA az Azure-ban (nagyméretű példányok) dedikált hardverre, a SUSE Linux Enterprise Server vagy a Red Hat Enterprise Linux előtelepített IaaS megadott. Virtuális gépek, a további frissítések és az operációs rendszer karbantartási feladata a.
-- HANA vagy SAP HANA nagyméretű HANA-példány egységeinek futtatásához szükséges minden olyan további összetevők telepítését a feladata. Minden folyamatban lévő műveletek megfelelő és az SAP HANA az Azure felügyeleti is rendelkezésre állnak a felhasználó felelőssége.
-- Mellett a megoldások az itt leírtak szerint az Azure-előfizetéshez az Azure-ban (nagyméretű példányok) SAP Hana-hoz csatlakozó más összetevők is telepíthető. Példák olyan összetevők, amelyek lehetővé teszik a kommunikációt a, vagy közvetlenül az SAP HANA, helyettesítő kiszolgálókkal, például adatbázis-RDP kiszolgálók, az SAP HANA Studio, a SAP Data Services, az SAP BI forgatókönyvek esetén, vagy hálózati figyelési megoldások.
-- Azure-ban, mint a nagyméretű HANA-példány biztosít magas rendelkezésre állású és vész-helyreállítási funkciók támogatása.
+- Az SAP-alkalmazás rétege és a nem SAP-alkalmazások a szokásos Azure-beli hardveres bélyegeken üzemeltetett virtuális gépeken futnak.
+- A helyszíni infrastruktúra, az adatközpontok és az alkalmazások üzembe helyezése a ExpressRoute (ajánlott) vagy virtuális magánhálózati (VPN) kapcsolaton keresztül csatlakozik a felhőalapú platformhoz. A Active Directory és a DNS is ki van bővítve az Azure-ba.
+- A HANA számítási feladatok SAP HANA adatbázis-példánya az Azure-beli SAP HANA fut (nagyméretű példányok). A nagyméretű példány bélyegzője az Azure hálózatkezeléséhez csatlakozik, így a virtuális gépeken futó szoftverek kezelhetik a HANA Large-példányban futó HANA-példányt.
+- Az Azure-beli SAP HANA (nagyméretű példányok) hardvere dedikált hardvert biztosít az olyan IaaS, amelyeken SUSE Linux Enterprise Server vagy Red Hat Enterprise Linux előre telepített. A virtuális gépekhez hasonlóan az operációs rendszer további frissítései és karbantartása is az Ön felelőssége.
+- A HANA vagy más, a HANA-példányok egységén való SAP HANA futtatásához szükséges további összetevők telepítése az Ön felelőssége. Az Azure-beli SAP HANA összes folyamatban lévő művelete és felügyelete is az Ön felelőssége.
+- Az itt ismertetett megoldásokon kívül telepítheti az Azure-előfizetéshez tartozó egyéb összetevőket is, amelyek az Azure-ban (nagyméretű példányokon) SAP HANAhez kapcsolódnak. Ilyenek például az olyan összetevők, amelyek lehetővé teszik a vagy közvetlenül a SAP HANA adatbázissal való kommunikációt, például a Jump-kiszolgálók, az RDP-kiszolgálók, a SAP HANA Studio, az SAP-Data Services az SAP BI-forgatókönyvekhez vagy a hálózati figyelési megoldások
+- Az Azure-ban a HANA nagyméretű példány támogatja a magas rendelkezésre állást és a vész-helyreállítási funkciókat.
 
 **Következő lépések**
-- Tekintse meg [HLI rendelkezésre álló termékváltozatok](hana-available-skus.md) 
+- [Rendelkezésre álló SKU-HLI](hana-available-skus.md) 

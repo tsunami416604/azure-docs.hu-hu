@@ -4,20 +4,20 @@ titlesuffix: Azure Virtual Network
 description: Ebből a cikkből megtudhatja, hogyan állítható be, és a kapcsolódó szolgáltatásvégpont-szabályzat az Azure portal használatával.
 services: virtual-network
 documentationcenter: virtual-network
-author: anithaa
+author: KumudD
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 09/18/2018
-ms.author: anithaa
-ms.openlocfilehash: aaa07759ed8b10578d024d5838ac1d2658778695
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: kumud
+ms.openlocfilehash: b1d2d04e74828323166810d93c52a60671bf71e8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57999889"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64710912"
 ---
 # <a name="create-change-or-delete-service-endpoint-policy-using-the-azure-portal"></a>Létrehozása, módosítása vagy törlése a szolgáltatásvégpont-szabályzat az Azure portal használatával
 
@@ -73,7 +73,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
  
 ## <a name="view-endpoint-policies"></a>Végpont szabályzatok megtekintése 
 
-1. Az a *minden szolgáltatás* a portál mezőben kezdje el beírni *szolgáltatásvégpont-szabályzatra*. Válassza ki **szolgáltatási végpont Policies(Preview)**.
+1. Az a *minden szolgáltatás* a portál mezőben kezdje el beírni *szolgáltatásvégpont-szabályzatra*. Válassza ki **szolgáltatási végpont Policies(Preview)** .
 2. A **előfizetések**, válassza ki az előfizetést és erőforráscsoportot, a következő képen látható módon
 
    ![A házirend megjelenítése](./media/virtual-network-service-endpoint-policies-portal/virtual-network-endpoint-policies-viewpolicies.PNG)

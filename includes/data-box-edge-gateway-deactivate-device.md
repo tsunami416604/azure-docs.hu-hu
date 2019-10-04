@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: alkohli
 ms.openlocfilehash: aebb82690a7a49aba071ed64349d37d516208cca
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57555162"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179580"
 ---
 Eszköz alaphelyzetbe állításakor biztonságosan az adatlemezt, és az eszköz a rendszerindító lemez található összes adatot törölni kell. 
 

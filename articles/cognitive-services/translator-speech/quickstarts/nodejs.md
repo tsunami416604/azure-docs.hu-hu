@@ -1,24 +1,24 @@
 ---
-title: 'Gyors útmutató: Translator Speech API Node.js'
+title: 'Gyors útmutató: Node. js Translator Speech API'
 titlesuffix: Azure Cognitive Services
 description: Információ és kódminták segítségével ismerkedhet meg a Translator Speech API használatának alapjaival.
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: quickstart
 ms.date: 3/5/2018
-ms.author: v-jaswel
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: b79ca4ed259b561fadc4b7fa644b5c136192bb7f
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: fc5c6fe4040a8f4140cd18ff41373d50f74a6a55
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56671726"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965410"
 ---
-# <a name="quickstart-translator-speech-api-with-nodejs"></a>Gyors útmutató: Translator Speech API a node.js használatával
+# <a name="quickstart-translator-speech-api-with-nodejs"></a>Gyors útmutató: Translator Speech API Node. js-sel
 <a name="HOLTop"></a>
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-translator-speech-deprecation-note.md)]

@@ -1,23 +1,23 @@
 ---
-title: Adatokat importálhat VHD-k és Microsoft Azure Data Box-felügyelt lemezek másolása |} A Microsoft Docs
-description: Ismerje meg, hogyan másolhat adatokat VHD-ből a helyszíni virtuális gépek számítási feladataihoz az Azure Data Box
+title: Oktatóanyag az adatok virtuális merevlemezekről a felügyelt lemezekre történő másolásához Azure Data Box használatával | Microsoft Docs
+description: Útmutató a virtuális merevlemezekről származó adatok másolásához a helyszíni virtuálisgép-munkaterhelésekről a Azure Data Box
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 02/27/2019
+ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: ec2013a793f766221a66912d6de9d8da8b8106dd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 4b7182d1fa70a146da1c01273ffe1032f2982546
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59282559"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240464"
 ---
-# <a name="tutorial-use-data-box-to-import-data-as-managed-disks-in-azure"></a>Oktatóanyag: Ezen adatok mezőbe az adatok importálása a felügyelt lemezek az Azure-ban
+# <a name="tutorial-use-data-box-to-import-data-as-managed-disks-in-azure"></a>Oktatóanyag: Az Azure-beli felügyelt lemezként való importálás Data Box használata
 
-Ez az oktatóanyag leírja, hogyan használhatja az Azure Data Box helyi VHD-k áttelepítése az Azure-ban felügyelt lemezeket. A VHD-fájlokat a helyszíni virtuális gépek lesz másolva a Data Box lapblobként és feltöltése az Azure-ba, felügyelt lemezeket. Ezek a felügyelt lemezek is, majd Azure virtuális gépekhez lehet csatolni.
+Ez az oktatóanyag leírja, hogyan telepítheti át a helyszíni virtuális merevlemezeket a felügyelt lemezekre az Azure-ban a Azure Data Box használatával. A helyszíni virtuális gépekről származó virtuális merevlemezeket a rendszer átmásolja Data Boxba, és az Azure-ba felügyelt lemezként feltölti őket. Ezek a felügyelt lemezek ezután az Azure-beli virtuális gépekhez csatlakoztathatók.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -31,59 +31,59 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
-1. Ön teljesítette a [oktatóanyag: Állítsa be az Azure Data Box](data-box-deploy-set-up.md).
-2. A Data Box kapott, és a rendelés állapota a portálon **kézbesítések**.
-3. Nagy sebességű hálózat csatlakozik. Határozottan javasoljuk, hogy legalább 10 GbE sebességű kapcsolattal rendelkezzen. 10-GbE kapcsolatot nem érhető el, ha 1-GbE adatok hivatkozás használata, de a másolási sebességek érintett.
-4. Áttekintette a:
+1. Elvégezte az [oktatóanyagot: Azure Data Box](data-box-deploy-set-up.md)beállítása.
+2. Megkapta a Data Boxt, és a portálon megjelenő megrendelés állapota **kézbesítve**.
+3. Nagy sebességű hálózathoz csatlakozik. Határozottan javasoljuk, hogy legalább 10 GbE sebességű kapcsolattal rendelkezzen. Ha egy 10 GbE-kapcsolat nem érhető el, használjon 1 GbE adatkapcsolatot, de a másolási sebességet is érinti.
+4. Áttekintette a következőket:
 
-    - Támogatott [felügyelt lemezek méretei az Azure objektum méretbeli korlátokat](data-box-limits.md#azure-object-size-limits).
-    - [Bevezetés az Azure-ba, felügyelt lemezek](/azure/virtual-machines/windows/managed-disks-overview). 
+    - Támogatott [felügyelt lemezek mérete az Azure-objektumok méretének korlátaiban](data-box-limits.md#azure-object-size-limits).
+    - [Bevezetés az Azure Managed Disks](/azure/virtual-machines/windows/managed-disks-overview)használatába. 
 
 ## <a name="connect-to-data-box"></a>Csatlakozás a Data Boxhoz
 
-A megadott erőforrás-csoportok alapján, a Data Box egy megosztást minden társított erőforráscsoportot hoz létre. Például ha `mydbmdrg1` és `mydbmdrg2` jöttek létre, amikor a rendelés helyez, a következő megosztások jön létre:
+A megadott erőforráscsoportok alapján Data Box létrehoz egy megosztást az egyes társított erőforráscsoportok számára. Például ha `mydbmdrg1` a és `mydbmdrg2` a rendelés elhelyezésekor jött létre, a következő megosztások jönnek létre:
 
 - `mydbmdrg1_MDisk`
 - `mydbmdrg2_MDisk`
 
-Belül minden megosztás a következő három mappák jönnek létre, amelyek megfelelnek a tárfiókban lévő tárolók.
+Az egyes megosztásokon belül a következő három mappa jön létre, amelyek a Storage-fiókban lévő tárolóknak felelnek meg.
 
 - Prémium SSD
 - Standard HDD
 - Standard SSD
 
-Az alábbi táblázat mutatja a Data Box az UNC elérési útvonalat a megosztásokat.
+A következő táblázat a Data Box megosztások UNC elérési útját mutatja be.
  
-|        Kapcsolat protokollja           |             A megosztás UNC elérési útja                                               |
+|        Kapcsolati protokoll           |             A megosztás UNC elérési útja                                               |
 |-------------------|--------------------------------------------------------------------------------|
-| SMB |`\\<DeviceIPAddress>\<ResourceGroupName_MDisk>\<Premium SSD>\file1.vhd`<br> `\\<DeviceIPAddress>\<ResourceGroupName_MDisk>\<Standard HDD>\file2.vhd`<br> `\\<DeviceIPAddress>\<ResourceGroupName_MDisk>\<Standard SSD>\file3.vhd` |  
-| NFS |`//<DeviceIPAddress>/<ResourceGroup1_MDisk>/<Premium SSD>/file1.vhd`<br> `//<DeviceIPAddress>/<ResourceGroupName_MDisk>/<Standard HDD>/file2.vhd`<br> `//<DeviceIPAddress>/<ResourceGroupName_MDisk>/<Standard SSD>/file3.vhd` |
+| SMB |`\\<DeviceIPAddress>\<ResourceGroupName_MDisk>\<PremiumSSD>\file1.vhd`<br> `\\<DeviceIPAddress>\<ResourceGroupName_MDisk>\<StandardHDD>\file2.vhd`<br> `\\<DeviceIPAddress>\<ResourceGroupName_MDisk>\<StandardSSD>\file3.vhd` |  
+| NFS |`//<DeviceIPAddress>/<ResourceGroup1_MDisk>/<PremiumSSD>/file1.vhd`<br> `//<DeviceIPAddress>/<ResourceGroupName_MDisk>/<StandardHDD>/file2.vhd`<br> `//<DeviceIPAddress>/<ResourceGroupName_MDisk>/<StandardSSD>/file3.vhd` |
 
-Alapján, hogy használják az SMB vagy NFS szeretne csatlakozni a Data Box-megosztásokat, csatlakozni más lépéseket kell végrehajtania.
+Attól függően, hogy az SMB vagy az NFS használatával csatlakozik-e Data Box megosztásokhoz, a kapcsolódás lépései eltérőek.
 
 > [!NOTE]
-> REST-en keresztül csatlakozó a funkció nem támogatott.
+> A REST-kapcsolaton keresztüli kapcsolódás nem támogatott ehhez a szolgáltatáshoz.
 
-### <a name="connect-to-data-box-via-smb"></a>Csatlakozás a Data Boxba SMB-n keresztül
+### <a name="connect-to-data-box-via-smb"></a>Kapcsolódás Data Box SMB-n keresztül
 
-Ha a gazdagép Windows Server számítógépet használ, kövesse az alábbi lépéseket a Data Box csatlakozni.
+Ha Windows Server rendszert futtató számítógépet használ, a következő lépésekkel csatlakozhat a Data Boxhoz.
 
-1. Az első lépés a hitelesítés elvégzése, majd a munkamenet elindítása. Lépjen a **Connect and copy** (Kapcsolódás és másolás) elemre. Kattintson a **hitelesítő adatainak lekérése** a hozzáférési hitelesítő adatokat lekérni az erőforráscsoporthoz társított megosztásokhoz. A hozzáférési hitelesítő adatokat is beszerezheti a **eszközadatok** az Azure Portalon.
+1. Az első lépés a hitelesítés elvégzése, majd a munkamenet elindítása. Lépjen a **Connect and copy** (Kapcsolódás és másolás) elemre. Kattintson a **hitelesítő adatok beolvasása** elemre az erőforráscsoporthoz társított megosztások hozzáférési hitelesítő adatainak beszerzéséhez. A hozzáférési hitelesítő adatokat a Azure Portalban található **eszköz adatainál** is lekérheti.
 
     > [!NOTE]
-    > Felügyelt lemezek minden megosztás hitelesítő adatai azonosak.
+    > A felügyelt lemezek összes megosztásának hitelesítő adatai azonosak.
 
     ![Megosztások hitelesítő adatainak beszerzése 1](media/data-box-deploy-copy-data-from-vhds/get-share-credentials1.png)
 
-2. A a megosztás hozzáférés és másolás adatok párbeszédpanel, másolási a **felhasználónév** és a **jelszó** a megosztáshoz. Kattintson az **OK** gombra.
+2. A hozzáférés megosztása és adatok másolása párbeszédpanelen másolja a megosztáshoz tartozó **felhasználónevet** és **jelszót** . Kattintson az **OK** gombra.
     
     ![Megosztások hitelesítő adatainak beszerzése 1](media/data-box-deploy-copy-data-from-vhds/get-share-credentials2.png)
 
-3. Az erőforrás társított megosztás eléréséhez (*mydbmdrg1* az alábbi példában) a gazdagép számítógépről, nyisson meg egy parancsablakot. A parancssorba írja be a következőt:
+3. Ha el szeretné érni az erőforráshoz társított megosztásokat (a következő példában szereplő*mydbmdrg1* ), nyisson meg egy parancssori ablakot. A parancssorba írja be a következőt:
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
-    Az UNC-megosztási elérési utak ebben a példában a következők:
+    Az UNC-megosztás elérési útjai ebben a példában a következők:
 
     - `\\169.254.250.200\mydbmdrg1_MDisk`
     - `\\169.254.250.200\mydbmdrg2_MDisk`
@@ -97,16 +97,16 @@ Ha a gazdagép Windows Server számítógépet használ, kövesse az alábbi lé
     C: \>
     ```
 
-4. Nyomja le a Windows + R billentyűkombinációt. A **Futtatás** ablakban adja meg a következőt: `\\<device IP address>\<ShareName>`. Kattintson a **OK** , nyissa meg a Fájlkezelőt.
+4. Nyomja le a Windows + R billentyűkombinációt. A **Futtatás** ablakban adja meg a következőt: `\\<device IP address>\<ShareName>`. A fájlkezelő megnyitásához kattintson **az OK** gombra.
     
     ![Kapcsolódás a megosztáshoz a Fájlkezelővel 2](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer1.png)
 
-    Meg kell jelennie a következő precreated egyes megosztáson belüli mappákhoz.
+    Ekkor a következő előre létrehozott mappákat kell látnia az egyes megosztásokon belül.
     
     ![Kapcsolódás a megosztáshoz a Fájlkezelővel 2](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer2.png)
 
 
-### <a name="connect-to-data-box-via-nfs"></a>Csatlakozhat a Data Box NFS-n keresztül
+### <a name="connect-to-data-box-via-nfs"></a>Kapcsolódás Data Box NFS-en keresztül
 
 Amennyiben Linux rendszerű gazdagépet használ, a következő módon konfigurálhatja a Data Boxot, hogy hozzáférést biztosítson az NFS-ügyelek számára.
 
@@ -131,39 +131,39 @@ Amennyiben Linux rendszerű gazdagépet használ, a következő módon konfigur�
 
 ## <a name="copy-data-to-data-box"></a>Adatok másolása a Data Boxra
 
-Után az kiszolgáló csatlakozott, a következő lépés az adatok másolása. A VHD-fájl, lapblob másolódik az előkészítési tárfiókból. A lapblob ezután alakítani egy felügyelt lemezt és egy erőforráscsoport áthelyezése.
+Miután csatlakozott az adatkiszolgálóhoz, a következő lépés az Adatmásolás. A VHD-fájlt a rendszer átmásolja az átmeneti Storage-fiókba az oldal blob néven. A rendszer ezután a blobot egy felügyelt lemezre konvertálja, és egy erőforráscsoporthoz helyezi át.
 
-Mielőtt elkezdené az adatok másolását, tekintse át az alábbiakat:
+Az Adatmásolás megkezdése előtt tekintse át a következő szempontokat:
 
-- Minden esetben másolja a VHD-k egyik precreated mappát. Másolja a VHD-ken kívüli ezeket a mappákat vagy egy mappában, amelyet Ön hozott létre, ha a virtuális merevlemezeket lapblobként Azure Storage-fiókhoz lesz feltöltve, és nem felügyelt lemezek.
-- Csak a rögzített méretű virtuális merevlemezeket is feltölthetők a felügyelt lemez gyors létrehozásához. A VHDX-fájlok vagy a virtuális dinamikus és különbséglemezek nem támogatottak.
-- Használhat egy felügyelt lemezt egy megadott nevű csak egy erőforráscsoportot a precreated mappák között. Ez azt jelenti, hogy egyedi nevük legyen a VHD-k a precreated mappák feltöltött kell. Győződjön meg arról, hogy a megadott név nem egyezik meg a olyan már meglévő felügyelt lemezről egy erőforráscsoportban.
-- Tekintse át a felügyelt lemez korlátok [Azure objektum méretbeli korlátokat](data-box-limits.md#azure-object-size-limits).
+- Mindig másolja a virtuális merevlemezeket az egyik előlétrehozott mappába. Ha a virtuális merevlemezeket ezen mappákon kívül vagy egy Ön által létrehozott mappában másolja, a VHD-k az Azure Storage-fiókba lesznek feltöltve, és nem felügyelt lemezként.
+- A felügyelt lemezek létrehozásához csak a rögzített VHD-k tölthetők fel. A VHDX-fájlok, illetve a dinamikus és a különbséglemezek VHD-k nem támogatottak.
+- Az összes előlétrehozott mappában csak egy felügyelt lemez tartozhat egy adott névvel. Ez azt jelenti, hogy az előlétrehozott mappákba feltöltött virtuális merevlemezeknek egyedi névvel kell rendelkezniük. Győződjön meg arról, hogy a megadott név nem egyezik egy erőforráscsoport már meglévő felügyelt lemezével.
+- Tekintse át a felügyelt lemezek korlátozásait az [Azure-objektumok méretének korlátaiban](data-box-limits.md#azure-object-size-limits).
 
-Attól függően, hogy csatlakozik az SMB vagy NFS-n keresztül használhatja:
+Attól függően, hogy SMB-n vagy NFS-en keresztül csatlakozik, használhatja a következőt:
 
-- [Adatok másolása az SMB-n keresztül](data-box-deploy-copy-data.md#copy-data-to-data-box)
-- [Adatok másolása az NFS-n keresztül](data-box-deploy-copy-data-via-nfs.md#copy-data-to-data-box)
+- [Az Adatmásolás SMB-n keresztül](data-box-deploy-copy-data.md#copy-data-to-data-box)
+- [Adatmásolás az NFS-en keresztül](data-box-deploy-copy-data-via-nfs.md#copy-data-to-data-box)
 
-Várjon, amíg befejeződik a másolási feladatokat. Győződjön meg arról, hogy a másolási feladatokat végzett hiba nélkül, mielőtt továbblép a következő lépéssel.
+Várjon, amíg a másolási feladatok befejeződik. Győződjön meg arról, hogy a másolási feladatok nem voltak hibák, mielőtt a következő lépéshez ugorjon.
 
-![Nincsenek hibák, a ** csatlakozás és másolás ** lap](media/data-box-deploy-copy-data-from-vhds/verify-no-errors-connect-and-copy.png)
+![Nincsenek hibák * * a kapcsolat és a másolás * * oldal](media/data-box-deploy-copy-data-from-vhds/verify-no-errors-connect-and-copy.png)
 
-Ha a másolási folyamat közben hibák, töltse le a naplók a **csatlakozás és másolás** lapot.
+Ha a másolási folyamat során hibák léptek fel, töltse le a naplókat a **csatlakozás és másolás** lapról.
 
-- Ha egy fájlt, amely nem 512 bájt igazítva másolja, a fájl lapblob a átmeneti tárfiók nem feltöltve. Látni fogja a naplókban hiba. Távolítsa el a fájlt, és másolja át a fájlt, amely pedig 512 bájt igazítva.
+- Ha olyan fájlt másolt, amely nem 512 bájtra van igazítva, a fájl nem töltődik fel lapozófájlként az átmeneti tárolási fiókba. Hibaüzenet jelenik meg a naplókban. Távolítsa el a fájlt, és másolja a 512 bájtra igazított fájlt.
 
-- Ha vhdx-fájlt (ezek a fájlok nem támogatottak) egy hosszú névvel rendelkező másolja, látni fogja a naplókban hiba.
+- Ha egy VHDX másolt (ezek a fájlok nem támogatottak) hosszú névvel, hibaüzenet jelenik meg a naplókban.
 
-    ![Hiba történt a naplók a ** csatlakozás és másolás ** lap](media/data-box-deploy-copy-data-from-vhds/errors-connect-and-copy.png)
+    ![Hiba történt a naplókból a * * kapcsolat és a másolás * * oldalról](media/data-box-deploy-copy-data-from-vhds/errors-connect-and-copy.png)
 
-    Javítsa ki a hibákat, mielőtt továbblép a következő lépéssel.
+    Hárítsa el a hibákat, mielőtt továbblép a következő lépésre.
 
 Az adatok integritásának biztosítása érdekében az ellenőrzőösszeg kiszámítására beágyazva, az adatok másolása közben kerül sor. A másolás befejezése után ellenőrizze, hogy mekkora a felhasznált és a szabad tárhely az eszközén.
     
 ![A szabad és a felhasznált tárhely ellenőrzése az irányítópulton](media/data-box-deploy-copy-data-from-vhds/verify-used-space-dashboard.png)
 
-A másolási feladat befejeződése után nyissa meg **szállításra való**.
+A másolási feladatok befejezése után **szállításra való előkészítés**léphet.
 
 
 ## <a name="next-steps"></a>További lépések
@@ -176,7 +176,7 @@ Ebben az oktatóanyagban az Azure Data Box témaköréből ismerhette meg a köv
 > * Adatok másolása a Data Boxra
 
 
-Folytassa a következő oktatóanyaggal, megtudhatja, hogyan tehetnek a Data Box elküldje a Microsoftnak.
+Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan szállíthatja vissza a Data Boxt a Microsoftnak.
 
 > [!div class="nextstepaction"]
 > [Azure Data Box elküldése a Microsoftnak](./data-box-deploy-picked-up.md)

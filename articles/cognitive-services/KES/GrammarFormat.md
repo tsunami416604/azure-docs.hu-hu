@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
 ms.openlocfilehash: 844bd9a88c52fd398fc66c71e59da513c0d7d90d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544324"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60814874"
 ---
 # <a name="grammar-format"></a>Szintaxisformátum
 
@@ -99,7 +99,7 @@ A `ruleref` elem azt határozza meg az érvényes kiterjesztések keresztül egy
 
 ### <a name="attrref-element"></a>attrref elem
 
-A `attrref` elemre hivatkozik egy index attribútum, lehetővé téve az index megfigyelhető a megfelelő attribútum értékei alapján.  A szükséges `uri` attribútum meghatározza, hogy az index sémát és attribútum nevét, a szintaxis használatával "*%{schemaname/*#*attrName*".  Lennie kell egy előző `import` elem, amely importálja a sémát nevű *%{schemaname/*.  Az attribútum neve a megfelelő sémában meghatározott elemnévvel attribútum neve.
+A `attrref` elemre hivatkozik egy index attribútum, lehetővé téve az index megfigyelhető a megfelelő attribútum értékei alapján.  A szükséges `uri` attribútum meghatározza, hogy az index sémát és attribútum nevét, a szintaxis használatával " *%{schemaname/* #*attrName*".  Lennie kell egy előző `import` elem, amely importálja a sémát nevű *%{schemaname/* .  Az attribútum neve a megfelelő sémában meghatározott elemnévvel attribútum neve.
 
 Egyező felhasználói bevitelt, mellett a `attrref` elem is objektumot ad vissza egy strukturált lekérdezési kimeneteként, amely az objektumok részhalmazát kiválasztja az index a bemeneti érték megfelelő.  A választható `name` attribútum használatával adja meg, ahol a lekérdezési objektum kimenetet kell tárolni a változó nevét.  A lekérdezési objektummal összeállítható kialakításához több más lekérdezési objektummal összetett kifejezések.  Lásd: [szemantikai értelmezés](SemanticInterpretation.md) részleteiről.  
 

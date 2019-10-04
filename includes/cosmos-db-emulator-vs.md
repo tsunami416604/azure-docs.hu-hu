@@ -4,12 +4,11 @@ ms.service: cosmos-db
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: sngun
-ms.openlocfilehash: 6b009c58e15b4e54d0fc405135f077145bf44620
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: e5d0d9ec2bf0c6b2ed8d6f2e2c8730e6ba52d606
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52857138"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326899"
 ---
-Ha már nincs telepítve a Visual Studio 2017, letöltheti és használhatja a **ingyenes** 
-[Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/). Győződjön meg arról, hogy engedélyezze **Azure-fejlesztési** számítási feladatot a Visual Studio telepítése során.
+Töltse le és használja az ingyenes [Visual Studio 2019 Community Edition verziót](https://www.visualstudio.com/downloads/). Győződjön meg arról, hogy engedélyezze a **Azure-fejlesztési** számítási feladatot a Visual Studio telepítése során.

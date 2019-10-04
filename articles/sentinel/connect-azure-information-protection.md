@@ -1,62 +1,80 @@
 ---
-title: Azure Information Protection-adatok csatlakoztatása Azure-on Előzetesben Sentinel-|} A Microsoft Docs
-description: Ismerje meg, hogyan csatlakozhat az Azure Information Protection Azure Sentinel-adatok.
+title: Azure Information Protection-adatkapcsolatok csatlakoztatása az Azure Sentinelhez | Microsoft Docs
+description: Megtudhatja, hogyan csatlakoztatható Azure Information Protection-adatkapcsolat az Azure Sentinelben.
 services: sentinel
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: cabailey
+manager: rkarlin
 ms.assetid: bfa2eca4-abdc-49ce-b11a-0ee229770cdd
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
-ms.author: rkarlin
-ms.openlocfilehash: 2f970910e19b3c1ed9d262d356c49848f4248b09
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 09/24/2019
+ms.author: cabailey
+ms.openlocfilehash: a2760b53dbb9776501cb5e58c681045743471166
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59790841"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261821"
 ---
-# <a name="connect-data-from-azure-information-protection"></a>Adatok csatlakoztatása az Azure Information Protection
+# <a name="connect-data-from-azure-information-protection"></a>Adatok összekapcsolásának Azure Information Protection
 
 > [!IMPORTANT]
-> Az Azure Sentinel jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Az Azure Sentinel Azure Information Protection adatösszekötője jelenleg nyilvános előzetes verzióban érhető el.
+> Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Naplóinak streamelheti [Azure Information Protection](https://docs.microsoft.com/azure/information-protection/reports-aip) be Azure Sentinel-egyetlen kattintással. Azure Information Protection segít az adatok védelme a felhőben vagy a helyszíni infrastruktúra és a vezérlő és a Súgó biztonságos e-mail, dokumentumok és bizalmas adatok vállalaton kívüli megosztott tárolja-e. Könnyű besorolásával, valamint beágyazott címkéivel és engedélyek az Azure Information Protection-mindig adatvédelmi teljesítmény javításához. Ha csatlakozik az Azure Information Protection Azure Sentinel, akkor stream riasztásait az Azure Information Protection az Azure-Sentinel.
+Az Azure Information Protection adatösszekötő konfigurálásával továbbíthatja a naplózási adatokat [Azure Information Protection](https://azure.microsoft.com/services/information-protection/) az Azure sentinelbe. A Azure Information Protection segítségével szabályozhatja és biztonságossá teheti a bizalmas adatokat, függetlenül attól, hogy a felhőben vagy a helyszínen van tárolva.
 
+Ha a [Azure Information Protection központi jelentéskészítése](https://docs.microsoft.com/azure/information-protection/reports-aip) már konfigurálva van, így a szolgáltatás naplózási adatai ugyanabban a log Analytics-munkaterületen tárolódnak, mint az Azure Sentinel esetében, akkor kihagyhatja a következő konfigurációt: Ez az adatösszekötő. A Azure Information Protection naplózási adatai már elérhetők az Azure Sentinel szolgáltatásban.
+
+Ha azonban a Azure Information Protection naplózási adatai egy másik Log Analytics munkaterületre kerülnek, mint amit jelenleg az Azure Sentinel számára választott, tegye a következők egyikét:
+
+- Az Azure Sentinelben kiválasztott munkaterület módosítása.
+
+- Módosítsa Azure Information Protection munkaterület munkaterületét, amelyet az adatösszekötő konfigurálásával végezhet el.
+    
+    Ha módosítja a munkaterületet, a Azure Information Protection új jelentési adatai lesznek tárolva az Azure Sentinelhez használt munkaterületen, és az előzmények nem érhetők el az Azure Sentinelben. Továbbá, ha az előző munkaterület egyéni lekérdezésekhez, riasztásokhoz vagy REST API-khoz van konfigurálva, ezeket újra kell konfigurálni az Azure Sentinel-munkaterületen, ha a Azure Information Protection használatára szeretné használni őket. Azure Information Protection használó ügyfelek és szolgáltatások esetében nincs szükség újrakonfigurálásra.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Globális rendszergazdai, biztonsági rendszergazdának vagy information protection engedélyekkel rendelkező felhasználó
+- A bérlőhöz tartozó alábbi Azure AD-rendszergazdai szerepkörök egyike: 
+    - Azure Information Protection-rendszergazda
+    - Biztonsági rendszergazda
+    - Szabályozási ügyintéző
+    - Megfelelőségi adatok adminisztrátora
+    - Globális rendszergazda
+    
+    > [!NOTE]
+    > Ha a bérlő az [egyesített címkézési platformon](/information-protection/faqs#how-can-i-determine-if-my-tenant-is-on-the-unified-labeling-platform)van, akkor nem használhatja a Azure Information Protection rendszergazdai szerepkört.
+    
+    Ezek a rendszergazdai szerepkörök csak az Azure Information Protection-összekötő konfigurálásához szükségesek, és nem szükségesek, ha az Azure Sentinel Azure Information Protectionhoz csatlakozik.
 
+- Olvasási és írási engedélyek az Azure Sentinelhez és Azure Information Protectionhoz használt Log Analytics munkaterülethez.
 
-## <a name="connect-to-azure-information-protection"></a>Csatlakozás az Azure Information Protection
+- Azure Information Protection hozzá lett adva a Azure Portalhoz. Ha segítségre van szüksége ezzel a lépéssel kapcsolatban, olvassa el [a Azure Information Protection hozzáadása a Azure Portalhoz](https://docs.microsoft.com/azure/information-protection/quickstart-viewpolicy#add-azure-information-protection-to-the-azure-portal)című témakört.
 
-Ha már rendelkezik Azure Information Protection, győződjön meg arról, hogy [engedélyezve van a hálózaton](https://docs.microsoft.com/azure/information-protection/activate-service).
-Ha Azure Information Protection üzembe van helyezve és fogad adatokat, a riasztási adatok egyszerűen továbbítható Azure Sentinel-be.
+## <a name="connect-to-azure-information-protection"></a>Kapcsolódás Azure Information Protectionhoz
 
+Ha nem konfigurált Log Analytics munkaterületet Azure Information Protectionhoz, akkor kövesse az alábbi utasításokat, vagy módosítania kell az Azure Information Protection naplózási adatait tároló munkaterületet.
 
-1. Az Azure-Sentinel, válassza **adatösszekötők** és kattintson a **Azure Information Protection** csempére.
+1. Az Azure Sentinelben válassza az **adatösszekötők**, majd a **Azure Information Protection (előzetes verzió)** lehetőséget.
 
-2. Nyissa meg a [Azure Information Protection-portál](https://portal.azure.com/?ScannerConfiguration=true&EndpointDiscovery=true#blade/Microsoft_Azure_InformationProtection/DataClassGroupEditBlade/quickstartBlade) 
+2. Válassza az **összekötő megnyitása lapot**.
 
-3. A **kapcsolat**, állítsa be a folyamatos átviteli naplók az Azure Information Protection az Azure-Sentinel kattintva [az analytics konfigurálását](https://portal.azure.com/#blade/Microsoft_Azure_InformationProtection/DataClassGroupEditBlade/analyticsOnboardBlade)
+3. Az **Analytics konfigurálása (előzetes verzió) panelen** válassza ki azt a munkaterületet, amelyet jelenleg az Azure sentinelhez használ. Ha másik munkaterületet választ, a Azure Information Protection jelentési adatok nem lesznek elérhetők az Azure Sentinel számára.
 
-4. Válassza ki a munkaterületet, amelybe telepítette az Azure-Sentinel. 
+4. Ha kiválasztott egy munkaterületet, kattintson az **OK gombra** , és az összekötő **állapota** most a **Connected**értékre vált.
 
-5. Kattintson az **OK** gombra.
-
-6. A megfelelő sémát használ a Log Analytics az Azure Information Protection-riasztások, keresse meg **InformationProtectionLogs_CL**.
-
-
-
+5. A Azure Information Protectionból származó jelentéskészítési adatok a kiválasztott munkaterületen lévő **InformationProtectionLogs_CL** táblában tárolódnak. 
+    
+    A jelentéskészítési adatokat Azure Monitor vonatkozó sémájának használatához keresse meg a **InformationProtectionEvents**. Az Event functions szolgáltatással kapcsolatos további információkért tekintse meg a Azure Information Protection dokumentációjának az [Event functions-hez készült rövid séma-referenciája](https://docs.microsoft.com/azure/information-protection/reports-aip#friendly-schema-reference-for-event-functions) című szakaszát.
 
 ## <a name="next-steps"></a>További lépések
-Ebben a dokumentumban megtudhatta, hogyan Azure Sentinel-Azure Information Protection csatlakozni. Azure-Sentinel kapcsolatos további információkért tekintse meg a következő cikkeket:
-- Ismerje meg, hogyan [betekintést nyerhet az adatok és a potenciális fenyegetések](quickstart-get-visibility.md).
-- Első lépések [Azure Sentinel-fenyegetések észlelése](tutorial-detect-threats.md).
+
+Ebből a dokumentumból megtanulta, hogyan csatlakozhat Azure Information Protection az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
+- Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
+- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).

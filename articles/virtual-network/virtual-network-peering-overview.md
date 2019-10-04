@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: anavin
-ms.openlocfilehash: b65bad57a300d941774f5d3e5d01967f0c13d684
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 100bbb6e0ed8e2ea5b35e30e7759a3b11c169b60
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60186825"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077622"
 ---
 # <a name="virtual-network-peering"></a>Társviszony létesítése virtuális hálózatok között
 
@@ -34,7 +34,7 @@ A virtuális társhálózatok akár helyi, akár globális létesítésének el�
 * Létrehozható társviszony az Azure Resource Managerrel létrehozott virtuális hálózatok között, vagy egy, a Resource Managerrel létrehozott virtuális hálózat és egy, a klasszikus üzemi modellel létrehozott virtuális hálózat között. Az Azure üzembehelyezési modellekkel kapcsolatos további információkért lásd: [Az Azure üzemi modelljeinek megismerése](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 * Ez nem okoz leállást egyik virtuális hálózat erőforrásaiban sem a társításkor és azt követően sem.
 
-## <a name="connectivity"></a>Kapcsolatok
+## <a name="connectivity"></a>Kapcsolat
 
 Ha társviszony jött létre a virtuális hálózatok között, akkor a virtuális hálózatokba tartozó erőforrások közvetlenül tudnak kommunikálni a virtuális társhálózat erőforrásaival.
 
@@ -78,7 +78,7 @@ Megpróbálhatja a [virtuális hálózati társviszony-létesítési hibák elh�
 ## <a name="requirements-and-constraints"></a>Követelmények és korlátozások
 
 A következő korlátozások vonatkoznak, csak ha virtuális hálózatok globálisan társviszonyban állnak:
-- Egy virtuális hálózatban lévő erőforrásokra globálisan két társviszonyban álló virtuális hálózatban lévő alapvető belső terheléselosztó előtérbeli IP-címe nem lehet kommunikálni. Alapszintű Load Balancer támogatása csak az azonos régión belüli létezik. A Standard Load Balancer támogatja a globális virtuális társhálózatok létesítésének létezik.
+- Egy virtuális hálózatban lévő erőforrásokra globálisan két társviszonyban álló virtuális hálózatban lévő alapvető belső terheléselosztó előtérbeli IP-címe nem lehet kommunikálni. Alapszintű Load Balancer támogatása csak az azonos régión belüli létezik. A Standard Load Balancer támogatását is, a virtuális hálózatok közötti Társviszony és a globális virtuális társhálózatok létesítésének létezik. Egy alapszintű load balancer, amely nem fog működni a globális virtuális hálózatok közötti társviszony-Létesítésen keresztül használó szolgáltatások vannak dokumentálva [itt.](virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)
 
 További információ a követelményekről és a korlátozásokról: [A virtuális hálózatok közötti társviszony követelményei és korlátozásai](virtual-network-manage-peering.md#requirements-and-constraints). A virtuális hálózatok közötti társviszonyok számának korlátozásairól az [Azure hálózati korlátait](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) ismertető szakaszban talál további információt. 
 
@@ -90,7 +90,7 @@ További információ a virtuális hálózatok közötti társviszonyok létreho
 
 Egy névleges díj vonatkozik a társviszony-kapcsolatot használó bejövő és kimenő forgalomra. A virtuális társhálózatok és a globális virtuális társhálózatok díjszabásával kapcsolatos további tájékoztatás a [díjszabási lapon](https://azure.microsoft.com/pricing/details/virtual-network) olvasható.
 
-Az átjáróval történő átvitel olyan társviszony-létesítési tulajdonság, amely lehetővé teszi egy virtuális hálózat számára egy VPN-átjáró használatát valamely virtuális társhálózaton belül a létesítmények vagy virtuális hálózatok közötti csatlakozáshoz. Ebben a forgatókönyvben a távoli átjárón áthaladó forgalomra a [VPN-átjáró díjai](https://azure.microsoft.com/pricing/details/vpn-gateway/) érvényesek, [virtuális társhálózati díjakat](https://azure.microsoft.com/pricing/details/virtual-network) azonban nem kell fizetni. Például ha hálózattal rendelkezik helyszíni kapcsolatok VPN-átjáró és a b társviszonyban van a hálózattal konfigurált megfelelő tulajdonságok b forgalmát a helyszíni, akkor csak mennyiségre kimenő forgalom VPN gateway díjszabás szerint. Virtuális társhálózati díjak nem lesznek felszámolva. Ismerje meg, hogyan [konfigurálhat VPN-átjáróval történő adatátvitelt virtuális hálózatok közötti társviszony létesítéséhez](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Átjárói átvitel a társviszony-létesítési tulajdona, amely lehetővé teszi a virtuális hálózat társviszonyban lévő virtuális hálózat közötti helyszíni vagy virtuális hálózatok közötti kapcsolat egy VPN/ExpressRoute-átjáró használatához. Ebben a forgatókönyvben egy távoli átjáró áthaladó forgalom státuszban van [VPN gateway díjak](https://azure.microsoft.com/pricing/details/vpn-gateway/) vagy ExpressRoute-átjáró díjat, és nem jár [virtuális hálózatok közötti társviszony-létesítési díjak.](https://azure.microsoft.com/pricing/details/virtual-network) Például ha hálózattal rendelkezik helyszíni kapcsolatok VPN-átjáró és a b társviszonyban van a hálózattal konfigurált megfelelő tulajdonságok b forgalmát a helyszíni, akkor csak mennyiségre kimenő forgalom VPN gateway díjszabás vagy ExpressRoute – díjszabás. Virtuális társhálózati díjak nem lesznek felszámolva. Ismerje meg, hogyan [konfigurálhat VPN-átjáróval történő adatátvitelt virtuális hálózatok közötti társviszony létesítéséhez](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="next-steps"></a>További lépések
 

@@ -1,14 +1,12 @@
 ---
-ms.openlocfilehash: a1a57cbcd9284489e00bf36b25baf7e04fbea9e6
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
-ms.translationtype: MT
+ms.openlocfilehash: 55adc512447160b409af0002a72ec2473409d796
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57572217"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63759509"
 ---
 # <a name="contributing-to-microsoft-azure-documentation"></a>Hozzájárul a Microsoft Azure-dokumentáció
-
-> 2019. március 5. és 9. között a MicrosoftDocs/azure-docs adattár a jelenlegi Markdown-motorból a [Markdig](https://github.com/lunet-io/markdig) Markdown-motorba való áttelepítése fog zajlani. Az áttelepítés végrehajtása érdekében erre az időszakra kikapcsoljuk a nyilvános lekéréses kérelmek egyesítése felfüggesztésének lehetőségét.
 
 Köszönjük, hogy a Microsoft Azure-dokumentációban való közreműködéshez.
 

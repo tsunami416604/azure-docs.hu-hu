@@ -1,23 +1,17 @@
 ---
 title: Az Azure megelőzése érdekében zárolhat erőforrásokat módosítások |} A Microsoft Docs
 description: Hogy a felhasználók frissítése vagy törlése a kritikus fontosságú Azure-erőforrások a zárolást az összes felhasználók és szerepkörök alkalmazásával.
-services: azure-resource-manager
-documentationcenter: ''
 author: tfitzmac
-ms.assetid: 53c57e8f-741c-4026-80e0-f4c02638c98b
 ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 05/14/2019
 ms.author: tomfitz
-ms.openlocfilehash: 8942ae9a24613f7b7896cf7124b344d9d9315954
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 31d77b4ea6e7594cd3ed4dba264f9ea6db4ca290
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59360442"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67155218"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Erőforrások zárolása a váratlan módosítások megelőzése érdekében 
 
@@ -36,7 +30,13 @@ Szerepköralapú hozzáférés-vezérlés, ellentétben a felügyeleti zárolás
 
 Erőforrás-kezelő zárolások csak vonatkozik, amelyek a felügyeleti sík, olyan küldött műveleteket tartalmaz, amely egy operations `https://management.azure.com`. A zárolása nem korlátozza, erőforrások hogyan hajthat végre a saját funkciók. Erőforrás-módosítások korlátozva, de az erőforrás-műveletek nem korlátozott. Például egy SQL-adatbázis írásvédett zárolásának megakadályozza, hogy Ön általi törlését vagy módosítását az adatbázis. Ez nem akadályozza meg a létrehozása, frissítése vagy törlése az adatbázis adatait. Adatok tranzakciója engedélyezettek, mert ezek a műveletek nem küldött `https://management.azure.com`.
 
-Alkalmazása **ReadOnly** váratlan eredményekhez vezethet, mivel bizonyos műveletek, amelyek úgy tűnik, például olvasási műveletekhez ténylegesen szükséges további műveleteket. Például elhelyezése egy **ReadOnly** a storage-fiók zárolása megakadályozza, hogy minden felhasználó a kulcsok listázása. A lista kulcsok művelet POST-kérés történik, mert a visszaadott kulcsok érhetők el írási műveletek. A példában egy másik elhelyezése egy **ReadOnly** egy App Service erőforrás zárolása megakadályozza, hogy a Visual Studio Server Explorer fájl az erőforrás jelenik meg, mert a kapcsolati írási hozzáférésre van szüksége.
+Alkalmazása **ReadOnly** váratlan eredményekhez vezethet, mivel bizonyos műveletek, amelyek nem úgy tűnik, hogy az erőforrás módosítása ténylegesen szükséges műveleteket, amelyeket a zárolás által blokkolt. A **ReadOnly** zárolás is alkalmazható, az erőforrás vagy az erőforrást tartalmazó erőforráscsoportot. A műveletek által blokkolt néhány gyakori példa egy **ReadOnly** zárolás van:
+
+* A **ReadOnly** a storage-fiók zárolása megakadályozza, hogy minden felhasználó a kulcsok listázása. A lista kulcsok művelet POST-kérés történik, mert a visszaadott kulcsok érhetők el írási műveletek.
+
+* A **ReadOnly** egy App Service erőforrás zárolása megakadályozza, hogy a Visual Studio Server Explorer fájl az erőforrás jelenik meg, mert a kapcsolati írási hozzáférésre van szüksége.
+
+* A **ReadOnly** egy virtuális gépet tartalmazó erőforráscsoport zárolása megakadályozza, hogy minden felhasználó, illetve a virtuális gép újraindítása. Ezek a műveletek egy POST-kérelmet kell.
 
 ## <a name="who-can-create-or-delete-locks"></a>Akik létrehozhatja vagy törölheti a zárolások
 Hozzon létre vagy felügyeleti zárolások törlése, hozzáféréssel kell rendelkeznie `Microsoft.Authorization/*` vagy `Microsoft.Authorization/locks/*` műveleteket. A beépített szerepkörök esetén ezek a műveletek csak a **Tulajdonosi** és a **Felhasználói hozzáférés rendszergazdájának** vannak engedélyezve.
@@ -152,7 +152,7 @@ Zárolhatja az erőforráscsoport, adja meg az erőforráscsoport nevét.
 New-AzResourceLock -LockName LockGroup -LockLevel CanNotDelete -ResourceGroupName exampleresourcegroup
 ```
 
-Egy zárolás kapcsolatos információk lekéréséhez használja [Get-AzureRmResourceLock](/powershell/module/az.resources/get-azresourcelock). Az összes a zárolások beolvasása az előfizetésében, használja:
+Egy zárolás kapcsolatos információk lekéréséhez használja [Get-AzResourceLock](/powershell/module/az.resources/get-azresourcelock). Az összes a zárolások beolvasása az előfizetésében, használja:
 
 ```azurepowershell-interactive
 Get-AzResourceLock

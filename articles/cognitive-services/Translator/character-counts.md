@@ -1,43 +1,43 @@
 ---
 title: Karakterek száma – Translator Text API
-titlesuffix: Azure Cognitive Services
-description: A Translator Text API hogyan számolja a karaktereket.
+titleSuffix: Azure Cognitive Services
+description: A Translator Text API karakterek megszámlálása.
 services: cognitive-services
-author: v-pawal
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 02/01/2019
-ms.author: v-jansko
-ms.openlocfilehash: c88eb56288d3a7cf46ce84430a53c12a4ee31c7a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 06/04/2019
+ms.author: swmachan
+ms.openlocfilehash: e3a16d9272e75f9a94f5381c1681c036d177e0f6
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58917413"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595989"
 ---
-# <a name="how-the-translator-text-api-counts-characters"></a>Hogyan számolja a Translator Text API a karakterek
+# <a name="how-the-translator-text-api-counts-characters"></a>A Translator Text API karakterek megszámlálása
 
-A Translator Text API minden Unicode kódpont a bemeneti szöveg számít egy karakter. Minden egyes SMS-t egy nyelv fordítását egy külön fordítási számít, még akkor is, ha a kérés érkezett a egy egyetlen API hívással fordítása több nyelvhez. A válasz hossza nem számít.
+A Translator Text API a bemeneti szöveg minden Unicode-kódját karakterként számítja. Egy szöveg minden fordítása külön fordításként számít, még akkor is, ha a kérést egyetlen API-hívásban adták át, több nyelvre lefordítva. A válasz hossza nem számít.
 
-Mi számít a következő:
+Az alábbiak száma:
 
-* A Translator Text API, a kérelem törzsében szereplő átadott szöveg
-   * `Text` Ha a fordítás Transliterate és szótár keresési módszerekkel
-   * `Text` és `Translation` szótár példák módszer használata esetén
-* Az összes jelölés: HTML, XML-címkéket, a szövegmezőbe, a kérelem törzsében lévő stb. A kérelem létrehozásához használt JSON-jelölés (például "szöveget:") nem vesszük számításba.
-* Az egyes levelek
+* A kérelem törzsében a Translator Text APInek átadott szöveg
+   * `Text`Fordítási, Átbetűzés és szótári keresési módszerek használatakor
+   * `Text`és `Translation` a szótár példái alapján
+* Összes jelölés: HTML, XML-címkék stb. a kérelem törzsének Text (szöveg) mezőjében. A kérelem létrehozásához használt JSON-jelölés (például "text:") nem számít.
+* Egyéni levél
 * Absztrakt
-* Egy szóközt, lapon, markup és bármilyen típusú szóköz karakter
-* Minden Unicode meghatározott kód ponttal
-* Ismétlődő fordítását, akkor is, ha ugyanannak a szövegnek korábban van lefordítva
+* A szóköz, a Tab, a Markup és bármilyen típusú szóköz karakter
+* Minden Unicode-ban definiált kód pont
+* Ismétlődő fordítás, még akkor is, ha korábban már lefordította ugyanazt a szöveget
 
-Parancsprogramok, például a kínai, japán és képírásjelek alapján a Translator Text API továbbra is beleszámít a Unicode kódpontok száma, ideogram egy karaktert. Kivétel: Unicode pótló száma, a kettőt.
+A ideograms (például kínai és Japán kanji) alapuló szkriptek esetében a Translator Text API továbbra is megszámolja az Unicode-kódok számát, a ideogram egy karaktert. Kivétel: Az Unicode-alapú pótlások két karakterből állhatnak.
 
-Kérelmek, szavak, bájt vagy mondatokat száma nincs jelentősége, a karakterek száma. 
+A kérések száma, a szavak, a bájtok vagy a mondatok nem relevánsak a karakterek számában.
 
-A Hibakeresés és BreakSentence metódusok nem számítanak bele a karakter használatalapú. Azonban várhatóan, hogy a hívások a Hibakeresés és BreakSentence módszerek más függvények, amely számításba vesszük a használatával egy megfelelő arányban vannak-e. Ha, győződjön meg arról, hibakeresés vagy BreakSentence hívások száma meghaladja a 100-szor, a Microsoft által leltározott másfajta fenntartja a jogot a Hibakeresés és BreakSentence módszerek használatát korlátozása.
+Az észlelési és BreakSentence metódusokra irányuló hívások nem számítanak bele a karakteres felhasználásba. Azonban azt várjuk, hogy az észlelési és a BreakSentence módszerek meghívása ésszerű arányban van a többi megszámolt függvény használatával. Ha az észlelési vagy BreakSentence hívások száma meghaladja a többi megszámolt módszer 100 alkalommal történő számát, a Microsoft fenntartja a jogot az észlelési és BreakSentence módszerek használatának korlátozására.
 
 
-További információ a karakterszám szerepel a [Microsoft Translator – gyakori kérdések](https://www.microsoft.com/en-us/translator/faq.aspx).
+A Character Count szolgáltatással kapcsolatos további információk a [Microsoft Translator GYIK webhelyén](https://www.microsoft.com/en-us/translator/faq.aspx)találhatók.

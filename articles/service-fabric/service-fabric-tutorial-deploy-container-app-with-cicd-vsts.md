@@ -1,9 +1,9 @@
 ---
 title: Tárolóalkalmazás üzembe helyezése Service Fabric-fürtön CI/CD segítségével
-description: Ebben az oktatóanyagban megismerheti, hogyan állíthat be folyamatos integrációt és üzembe helyezés az Azure Service Fabric-tárolóalkalmazás Visual Studio Azure DevOps használatával.
+description: Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be a folyamatos integrációt és üzembe helyezést egy Azure Service Fabric Container-alkalmazáshoz a Visual Studio Azure DevOps használatával.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: ''
@@ -13,25 +13,25 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/29/2018
-ms.author: aljo
+ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 37305f27203986ce2e3d06276b5169ffd9b41287
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: b686ceace3679d1541e8f1a74bca7e99b81ba932
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58668806"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68598889"
 ---
-# <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>Oktatóanyag: Tároló üzembe helyezése a CI/CD-ről a Service Fabric-fürtön
+# <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>Oktatóanyag: Container-alkalmazás üzembe helyezése CI/CD-vel Service Fabric-fürtön
 
-Ez az oktatóanyag egy sorozat második része, és ismerteti, hogyan lehet folyamatos integrációt és üzembe helyezést egy Visual Studio és az Azure DevOps használatával az Azure Service Fabric-tárolóalkalmazás beállítása.  Szükség van egy már meglévő Service Fabric-alkalmazásra, így példaként a [Windows-tárolóban lévő .NET-alkalmazás telepítése Azure Service Fabricre](service-fabric-host-app-in-a-container.md) című szakaszban létrehozott alkalmazás szolgál.
+Ez az oktatóanyag egy sorozat második része, amely leírja, hogyan állíthat be folyamatos integrációt és üzembe helyezést egy Azure Service Fabric Container alkalmazáshoz a Visual Studio és az Azure DevOps használatával.  Szükség van egy már meglévő Service Fabric-alkalmazásra, így példaként a [Windows-tárolóban lévő .NET-alkalmazás telepítése Azure Service Fabricre](service-fabric-host-app-in-a-container.md) című szakaszban létrehozott alkalmazás szolgál.
 
 A sorozat második részében az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Forráskezelés hozzáadása a projekthez
-> * Builddefiníció létrehozása a Visual Studio Team Explorer
-> * Kiadási definíció létrehozása a Visual Studio Team Explorer
+> * Build definíció létrehozása a Visual Studióban Team Explorer
+> * Kiadási definíció létrehozása a Visual Studióban Team Explorer
 > * Alkalmazás automatikus üzembe helyezése és frissítése
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -51,7 +51,7 @@ Az alkalmazásprojektben válasszon ki egy célprofilt a folyamatos integráció
 
 ## <a name="share-your-visual-studio-solution-to-a-new-azure-devops-git-repo"></a>A Visual Studio-megoldás megosztása egy új Azure DevOps Git-adattárban
 
-Az Azure DevOps csapata a projekt az alkalmazás forrásfájljait megoszthatja buildeket hozhat létre.
+Az alkalmazás forrásfájljait megoszthatja az Azure DevOps, így létrehozhat buildeket.
 
 Hozzon létre egy új helyi Git-adattárat a projekthez. Ehhez válassza ki a Visual Studio jobb alsó sarkában található állapotsoron a **Add to Source Control** -> **Git** (Hozzáadás a forráskezelőhöz > Git) elemet.
 
@@ -59,7 +59,7 @@ A **Team Explorer** **Push** (Leküldés) nézetében válassza ki a **Push to A
 
 ![Leküldéses Git-adattár][push-git-repo]
 
-Ellenőrizze az e-maileket, és válassza ki a szervezet a **fiók** listából. Ha még nem rendelkezik egy szervezet beállítása lehet. Adja meg az adattár nevét, majd válassza ki a **Publish repository** (Adattár közzététele) lehetőséget.
+Ellenőrizze az e-maileket, és válassza ki a szervezetét a **fiók** legördülő menüből. Előfordulhat, hogy be kell állítania egy szervezetet, ha még nem rendelkezik ilyennel. Adja meg az adattár nevét, majd válassza ki a **Publish repository** (Adattár közzététele) lehetőséget.
 
 ![Leküldéses Git-adattár][publish-code]
 
@@ -67,22 +67,22 @@ Az adattár közzétételével egy új csoportprojekt jön létre a fiókjában 
 
 ## <a name="configure-continuous-delivery-with-azure-pipelines"></a>Folyamatos teljesítés konfigurálása az Azure-folyamatok
 
-Az Azure DevOps-build definíció ismerteti egy munkafolyamatot, amely egymás után végrehajtott létrehozási lépések készlete áll. Hozzon létre egy builddefiníciót, amely létrehozza a Service Fabric-alkalmazáscsomagot és más összetevőket egy Service Fabric-fürtben való üzembe helyezéshez. További információ az Azure DevOps [builddefinícióiról](https://www.visualstudio.com/docs/build/define/create). 
+Az Azure DevOps-Build definíciója egy olyan munkafolyamatot ír le, amely egymás után végrehajtott összeállítási lépésekből áll. Hozzon létre egy builddefiníciót, amely létrehozza a Service Fabric-alkalmazáscsomagot és más összetevőket egy Service Fabric-fürtben való üzembe helyezéshez. További információ az Azure DevOps [Build](https://www.visualstudio.com/docs/build/define/create)-definíciókkal kapcsolatban. 
 
-Az Azure DevOps kiadási definíció ismerteti egy munkafolyamatot, amely egy alkalmazáscsomagot telepít egy fürtre. Együttes használatuk esetén a builddefiníció és a kiadási definíció a teljes munkafolyamatot végrehajtja, a forrásfájloktól kezdve a fürtön futó alkalmazásig bezárólag. További információ az Azure DevOps [kiadási definícióiról](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition).
+Az Azure DevOps kiadási definíciója olyan munkafolyamatot ír le, amely egy alkalmazáscsomag központi telepítését végzi a fürtön. Együttes használatuk esetén a builddefiníció és a kiadási definíció a teljes munkafolyamatot végrehajtja, a forrásfájloktól kezdve a fürtön futó alkalmazásig bezárólag. További információ az Azure DevOps [kiadási definíciókkal](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition)kapcsolatban.
 
 ### <a name="create-a-build-definition"></a>Builddefiníció létrehozása
 
-Nyissa meg az új csoportprojektet lépve https://dev.azure.com egy webes böngésző és a szervezete számára, válassza az új projekt követ. 
+Nyissa meg az új csapat projektjét, https://dev.azure.com és navigáljon a webböngészőben, és válassza ki a szervezetét, majd az új projektet. 
 
-Válassza ki a **folyamatok** lehetőséget a bal oldali panelen, majd kattintson a **új adatcsatorna**.
+Válassza a **folyamatok** lehetőséget a bal oldali panelen, majd kattintson az **új folyamat**elemre.
 
 >[!NOTE]
 >Ha nem látja a builddefiníciós sablont, ellenőrizze, hogy a **New YAML pipeline creation experience** (Új YAML-folyamat létrehozása) funkció ki van-e kapcsolva. Ez a funkció a DevOps-fiók **Preview Features** (Előzetes verziójú funkciók) szakaszában konfigurálható.
 
 ![Új folyamat][new-pipeline]
 
-Válassza ki **Azure Git-Adattárakkal** forrásként, a csapat nevét, a projekt adattár, projektre, és **fő** alapértelmezett ág vagy az ütemezett és manuális épít.  Ezután kattintson a **Continue** (Folytatás) gombra.
+Válassza az **Azure Repos git** forrásként, a csapat projekt neve, a projekt tárháza és a **fő** alapértelmezett ág vagy manuális és ütemezett buildek lehetőséget.  Ezután kattintson a **Continue** (Folytatás) gombra.
 
 A **Select a template** (Sablon kiválasztása) területen válassza az **Azure Service Fabric application with Docker support** (Azure Service Fabric-alkalmazás Docker-támogatással) sablont, majd kattintson az **Apply** (Alkalmaz) gombra.
 
@@ -104,7 +104,7 @@ A **Container Registry Type** (Tárolóregisztrációs adatbázis típusa) alatt
 
 ![A Docker Push rendszerképek kiválasztása][select-push-images]
 
-Alatt a **eseményindítók** fülre, engedélyezze a folyamatos integrációt ellenőrzésével **engedélyezze a folyamatos integrációt**. A **Branch filters** (Ágszűrők) területen kattintson az **+ Add** (+ Hozzáadás) elemre, és az alapértelmezés szerint a **Branch specification** (Ágspecifikáció) **master** lesz.
+Az **Eseményindítók** lapon engedélyezze a folyamatos integrációt a **folyamatos integráció engedélyezése**ellenőrzésével. A **Branch filters** (Ágszűrők) területen kattintson az **+ Add** (+ Hozzáadás) elemre, és az alapértelmezés szerint a **Branch specification** (Ágspecifikáció) **master** lesz.
 
 A build manuális elindításához a **Save build pipeline and queue dialog** (A buildfolyamat és az üzenetsor párbeszédpanelének mentése) menüben kattintson a **Save & queue** (Mentés és üzenetsorba helyezés) elemre.
 
@@ -114,7 +114,7 @@ A buildek leküldés vagy bejelentkezés hatására is aktiválódnak. A build f
 
 ### <a name="create-a-release-definition"></a>Kiadási definíció létrehozása
 
-Válassza ki a **folyamatok** lehetőséget a bal oldali panelen, majd **kiadásokban**, majd **+ új adatcsatorna**.  A **Select a template** (Sablon kiválasztása) területen válassza ki az **Azure Service Fabric Deployment** (Üzembe helyezés az Azure Service Fabric használatával) sablont a listából, majd kattintson az **Apply** (Alkalmaz) gombra.
+Válassza a **folyamatok** lehetőséget a bal oldali panelen, majd a **releases**, majd az **+ új folyamat**elemet.  A **Select a template** (Sablon kiválasztása) területen válassza ki az **Azure Service Fabric Deployment** (Üzembe helyezés az Azure Service Fabric használatával) sablont a listából, majd kattintson az **Apply** (Alkalmaz) gombra.
 
 ![Kiadási sablon kiválasztása][select-release-template]
 
@@ -137,7 +137,7 @@ Kattintson a **Docker Settings** (Dockerbeállítások), majd a **Configure Dock
 
 ![A kibocsátási folyamat ügynöke][release-pipeline-agent]
 
-Ezután adja hozzá a buildösszetevőt a folyamathoz, hogy a kiadási definíció megtalálhassa a build kimenetét. Válassza a **Pipeline** (Folyamat), majd az **Artifacts**->**+Add** (Összetevők > +Hozzáadás) lehetőséget.  A **Source (Build definíció)** (Forrás (builddefiníció)) területen válassza ki a korábban létrehozott builddefiníciót.  Kattintson az **Add** (Hozzáadás) gombra a buildösszetevő mentéséhez.
+Ezután adja hozzá a buildösszetevőt a folyamathoz, hogy a kiadási definíció megtalálhassa a build kimenetét. Válassza a **Pipeline** (Folyamat), majd az **Artifacts**-> **+Add** (Összetevők > +Hozzáadás) lehetőséget.  A **Source (Build definíció)** (Forrás (builddefiníció)) területen válassza ki a korábban létrehozott builddefiníciót.  Kattintson az **Add** (Hozzáadás) gombra a buildösszetevő mentéséhez.
 
 ![Összetevő hozzáadása][add-artifact]
 

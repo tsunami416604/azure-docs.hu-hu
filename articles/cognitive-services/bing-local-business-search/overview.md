@@ -1,46 +1,47 @@
 ---
-title: Mi az a Bing Local Business Search API? | Microsoft Docs
+title: Mi az a Bing Local Business Search API?
 titleSuffix: Azure Cognitive Services
 description: A Bing Local Business Search API egy RESTful szolgáltatás, amellyel az alkalmazások a közeli helyekkel és vállalkozásokkal kapcsolatos információkat találhatnak keresési lekérdezések alapján.
 services: cognitive-services
-author: mikedodaro
-manager: rosh
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
-ms.topic: article
-ms.date: 11/01/2018
-ms.author: rosh
-ms.openlocfilehash: fb3b375a66ac9b05ad26287b7c39ce8e748ad699
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.subservice: bing-local-business
+ms.topic: overview
+ms.date: 09/13/2019
+ms.author: aahi
+ms.openlocfilehash: bdada613ef46881bbf051144efded541ac3d0974
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57780320"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996685"
 ---
-# <a name="what-is-bing-local-business-search"></a>Mi az helyi vállalati keresési Bing?
-A helyi vállalati keresési Bing-API egy RESTful szolgáltatás, amely lehetővé teszi az alkalmazások helyi üzletek keresési lekérdezések alapján információ. Ha például `q=<business-name> in Redmond, Washington`, vagy `q=Italian restaurants near me`. 
+# <a name="what-is-bing-local-business-search"></a>Mi a Bing helyi üzleti keresés?
+A Bing local Business Search API egy REST-alapú szolgáltatás, amely lehetővé teszi az alkalmazások számára, hogy keresési lekérdezések alapján megtalálják a helyi vállalkozások adatait. Például `q=<business-name> in Redmond, Washington`:, vagy `q=Italian restaurants near me`. 
 
 ## <a name="features"></a>Szolgáltatások
-| Szolgáltatás | Leírás |  
+| Funkció | Leírás |  
 | -- | -- | 
-| [Keresse meg a helyi üzleteket és helyek](quickstarts/local-quickstart.md) | A helyi vállalati keresési Bing-API honosított eredmények olvas be egy lekérdezést. Eredmények a vállalati webhely URL-címet és szöveget, a telefonszám és a földrajzi hely, többek között: GPS koordinálja, város, utca, házszám |  
-| [A földrajzi határokon helyi eredmények szűréséhez](specify-geographic-search.md) | Keresési paraméterek használatával korlátozza az eredményeket egy adott földrajzi területre, egy kör alakú területen vagy szögletes határolókeret megadott koordinátáit adja hozzá. | 
-| [Helyi üzleti eredmények szűrés kategória szerint](local-categories.md) | Keresse meg a helyi üzleti eredmények kategória szerint. Ez a beállítás a fordított IP-helyre vagy a hívó GPS-koordinátáit honosított találatot, üzleti különböző kategóriákban használja.|
+| [Helyi vállalkozások és helyek keresése](quickstarts/local-quickstart.md) | A Bing local Business keresési API honosított eredményeket kap egy lekérdezésből. Az eredmények közé tartozik a vállalat webhelyének URL-címe, valamint a szöveg, a telefonszám és a földrajzi hely megjelenítése, beleértve a következőket: GPS-koordináták, város, utca címe |  
+| [Helyi eredmények szűrése földrajzi határokkal](specify-geographic-search.md) | Adja hozzá a koordinátákat keresési paraméterekként, hogy az eredményeket egy adott földrajzi területre korlátozza, amely egy kör alakú terület vagy a négyzetes határoló mező alapján van meghatározva. | 
+| [Helyi üzleti eredmények szűrése kategóriánként](local-categories.md) | Keressen helyi üzleti eredményeket kategóriánként. Ez a beállítás a hívó fordított IP-címét vagy GPS-koordinátáit használja a honosított eredmények visszaadásához a különböző üzleti kategóriákban.|
 
 ## <a name="workflow"></a>Munkafolyamat
-A helyi vállalati keresési Bing-API hívása minden programozási nyelvet, amely HTTP-kérelmeket és elemezni a JSON-válaszok. Ez a szolgáltatás érhető el a REST API használatával.
+Hívja meg a Bing local Business Search API-t bármilyen programozási nyelvről, amely HTTP-kéréseket tesz elérhetővé, és elemezheti a JSON-válaszokat. Ez a szolgáltatás a REST API használatával érhető el.
  
-1. Hozzon létre egy [Cognitive Services API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Bing Search APIs-hozzáféréssel rendelkező. Ha nem rendelkezik Azure-előfizetéssel, [létrehozhat egy ingyenes fiókot](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).   
-2. URL-címet a keresési kulcsszavakat kódolása a `q=""` lekérdezési paraméter. Ha például `q=nearby+restaurant` vagy `q=nearby%20restaurant`. Állítsa be a tördelés is, ha szükséges. 
-3. Küldjön egy [kérést a helyi vállalati keresési Bing-API](quickstarts/local-quickstart.md) 
+1. Hozzon létre egy [Cognitive Services API-fiókot](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) , amely hozzáféréssel rendelkezik a Bing Search API-khoz. Ha nem rendelkezik Azure-előfizetéssel, [létrehozhat egy ingyenes fiókot](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).   
+2. Az URL-cím kódolja a keresési `q=""` kifejezéseket a lekérdezési paraméterhez. Ha például `q=nearby+restaurant` vagy `q=nearby%20restaurant`. Szükség esetén állítsa be a tördelést is. 
+3. Kérelem küldése [a Bing helyi üzleti keresési API-](quickstarts/local-quickstart.md) nak 
 4. A JSON-válasz elemzése 
 
 > [!NOTE]
-> Jelenleg a helyi vállalati keresési csak támogatja a `en-US` piacon. 
+> A helyi üzleti keresés jelenleg csak a `en-US` piacot támogatja. 
 > [!NOTE]
-> Helyi üzleti keresés jelenleg nem támogatja az automatikus kiegészítés. 
+> A helyi üzleti keresés jelenleg nem támogatja az automatikus kiegészítést. 
 
 ## <a name="next-steps"></a>További lépések
 - [Lekérdezés és válasz](local-search-query-response.md)
-- [Helyi üzleti keresés a rövid útmutató](quickstarts/local-quickstart.md)
-- [Helyi üzleti keresési API-referencia](local-search-reference.md)
+- [Helyi üzleti keresés – rövid útmutató](quickstarts/local-quickstart.md)
+- [Helyi üzleti keresési API-referenciák](local-search-reference.md)
 - [Használati és megjelenítési követelmények](use-display-requirements.md)

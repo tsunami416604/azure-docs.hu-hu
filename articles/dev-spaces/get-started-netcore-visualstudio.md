@@ -11,12 +11,12 @@ ms.date: 07/09/2018
 ms.topic: tutorial
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Helm, a szolgáltatás háló, a szolgáltatás háló útválasztás, a kubectl, a k8s
-ms.openlocfilehash: e94134a0c7c3b44a2e4734fe1e91a19f3e26851c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 4b37da8d31fc5ac605e59d9aceb456e996df438b
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59425763"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67503059"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core-and-visual-studio"></a>Azure fejlesztői szóközöket a .NET Core és a Visual Studio használatának első lépései
 
@@ -36,7 +36,7 @@ Ebből az útmutatóból a következőket tudhatja meg:
 1. Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 1. Válassza az **Erőforrás létrehozása** lehetőséget > keressen a **Kubernetes** kifejezésre > válassza a **Kubernetes Service** > **Létrehozás** elemet.
 
-   A következő lépéseket minden egyes címsora alatt a *létre Kubernetes-fürt* alkotnak, és ellenőrizze a kiválasztott [régió támogatja az Azure fejlesztési tárolóhelyek](https://docs.microsoft.com/azure/dev-spaces/#a-rapid,-iterative-kubernetes-development-experience-for-teams).
+   A következő lépéseket minden egyes címsora alatt a *létre Kubernetes-fürt* alkotnak, és ellenőrizze a kiválasztott [régió támogatja az Azure fejlesztési tárolóhelyek][supported-regions].
 
    - **A PROJECT DETAILS**: válassza ki az Azure-előfizetés és a egy új vagy meglévő Azure-erőforráscsoportot.
    - **FÜRT ADATAI**: adjon meg egy nevet, régiót, verziót és DNS-névelőtagot az AKS-fürthöz.
@@ -54,10 +54,7 @@ Ebből az útmutatóból a következőket tudhatja meg:
 1. Amikor végzett, válassza az **Áttekintés + létrehozás**, majd a **Létrehozás** lehetőséget.
 
 ## <a name="get-the-visual-studio-tools"></a>A Visual Studio eszközeinek beszerzése
-1. A [Visual Studio 2017](https://www.visualstudio.com/vs/) legújabb verziójának telepítése
-1. Győződjön meg róla, hogy a Visual Studio telepítőjében a következő számítási feladat van kiválasztva:
-    * ASP.NET és webfejlesztés
-1. [A Kuberneteshez készült Visual Studio-eszközök](https://aka.ms/get-azds-visualstudio) telepítése
+Telepítse a legújabb verzióját, [Visual Studio](https://www.visualstudio.com/vs/). A Windows a Visual Studio 2019, telepítenie kell az Azure-fejlesztési számítási feladatot. A Windows a Visual Studio 2017, telepítenie kell az ASP.NET- és fejlesztési számítási feladatot, valamint [Visual Studio Tools for Kubernetes](https://aka.ms/get-azds-visualstudio).
 
 ## <a name="create-a-web-app-running-in-a-container"></a>Egy tárolóban futó webalkalmazás létrehozása
 
@@ -65,7 +62,7 @@ Ebben a szakaszban fog egy ASP.NET Core-webalkalmazás létrehozása és futtat�
 
 ### <a name="create-an-aspnet-web-app"></a>ASP.NET-webapp létrehozása
 
-Hozzon létre egy új projektet a Visual Studio 2017-ben. Jelenleg a projektnek egy **ASP.NET Core-webalkalmazásnak** kell lennie. Adja a projektnek a „**webfrontend**” nevet.
+A Visual studióban hozzon létre egy új projektet. Jelenleg a projektnek egy **ASP.NET Core-webalkalmazásnak** kell lennie. Adja a projektnek a „**webfrontend**” nevet.
 
 ![](media/get-started-netcore-visualstudio/NewProjectDialog1.png)
 
@@ -93,7 +90,7 @@ Ha egy olyan fürtöt választ, amely nincs az Azure Dev Spaceshez konfigurálva
 
 ![](media/get-started-netcore-visualstudio/Add-Azure-Dev-Spaces-Resource.png)
 
-Kattintson az **OK** gombra.
+Válassza az **OK** gombot.
 
 > [!IMPORTANT]
 > Az Azure fejlesztési tárolóhelyek konfigurációs folyamat eltávolítja a `azds` névtér a fürtben, ha az már létezik.
@@ -128,9 +125,16 @@ Kattintson az oldal tetején lévő **About** (Információ) hivatkozásra a tö
 Az Azure Dev Spaces nem csupán a Kubernetesben futó kódok lekérésére szolgál – a segítségével gyorsan és iteratívan lehet megtekinteni a kódmódosítások életbe lépését a felhőben lévő Kubernetes-környezetben.
 
 ### <a name="update-a-content-file"></a>Tartalomfájlok frissítése
-1. Keresse meg a `./Views/Home/Index.cshtml` fájlt, és szerkessze a HTML-kódot. Például módosíthatja a 70. sor korábbi szövegét (`<h2>Application uses</h2>`) egy új szövegre (`<h2>Hello k8s in Azure!</h2>`).
-1. Mentse a fájlt.
-1. Lépjen a böngészőre, és frissítse az oldalt. A weboldalnak meg kell jelenítenie a frissített HTML-tartalmat.
+
+
+1. Keresse meg a `./Views/Home/Index.cshtml` fájlt, és szerkessze a HTML-kódot. Módosítsa például [. sor, amely beolvas 73 `<h2>Application uses</h2>` ](https://github.com/Azure/dev-spaces/blob/master/samples/dotnetcore/getting-started/webfrontend/Views/Home/Index.cshtml#L73) a következőhöz hasonló: 
+  
+    ```html
+    <h2>Hello k8s in Azure!</h2>`
+    ```
+
+2. Mentse a fájlt.
+3. Lépjen a böngészőre, és frissítse az oldalt. A weboldalnak meg kell jelenítenie a frissített HTML-tartalmat.
 
 Mi történt? A tartalomfájlok (például HTML és CSS) módosításait nem szükséges egy .NET Core webalkalmazásban újrafordítani, így az aktív F5-munkamenet automatikusan szinkronizálja a módosított tartalomfájlokat az Azure-ban futó tárolóba, így azonnal megtekintheti a tartalmak módosításait.
 
@@ -150,3 +154,6 @@ Frissítse a webalkalmazást a böngészőben, és lépjen az Információ oldal
 
 > [!div class="nextstepaction"]
 > [További tudnivalók több szolgáltatást fejlesztési](multi-service-netcore-visualstudio.md)
+
+
+[supported-regions]: about.md#supported-regions-and-configurations

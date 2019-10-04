@@ -1,27 +1,20 @@
 ---
-title: Felhasználók oldal az Azure Marketplace-en |} A Microsoft Docs
-description: .
+title: Felhasználók oldal az Azure Marketplace-en
+description: A felhasználók oldal az Azure Marketplace-en, a Cloud Partner portálra áttekintése.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 22768e90a419e7a5c3c9e286953afbf3ba2ab311
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.author: pabutler
+ms.openlocfilehash: 1c420a275efa4bb45ba952a04faafe25e30d64ef
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52266950"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64943410"
 ---
-# <a name="users-page"></a>Felhasználók lapra
+# <a name="users-page"></a>Felhasználók oldal
 
 A [ **felhasználók** ](https://cloudpartner.azure.com/#users) lap a Cloud Partner portálra, az összes regisztrált felhasználók listáját jeleníti meg.  Az oszlopok minden egyes felhasználói e-mail cím, webportál szerepkört, ajánlattípusra és kiadó szervezet tartalmazza. Az eredmények lehet oszlop szerint rendezve vagy a megadott karakterlánc szűrve.  
 
@@ -32,7 +25,7 @@ Ez a lap is megjelenik egy **felhasználó hozzáadása** , hogyan adhat hozzá 
 
 Az alábbi képen látható a **felhasználók** oldal szűrve: a karakterlánc `contoso`.
 
-![Felhasználók lapra](./media/users-page1.png)
+![Felhasználók oldal](./media/users-page1.png)
 
 
 ## <a name="next-steps"></a>További lépések

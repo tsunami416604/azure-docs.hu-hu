@@ -3,26 +3,26 @@ title: Hogyan használja az Elágaztatás és a egy Beszélgetéstanuló modell 
 titleSuffix: Azure
 description: Ismerje meg, hogyan használhatja a Elágaztatás és a egy Beszélgetéstanuló modellel műveletek visszavonásához.
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: cca7b42c83be3ca428509ea48c387a1c35ddb35a
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.author: nitinme
+ms.openlocfilehash: 6ffa0881df07e453c8beb175b8580deebbfc1ec9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55206730"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66389889"
 ---
 # <a name="how-to-use-branching-and-undo-operations"></a>Elágaztatási és visszavonás műveletek használata
 Ebben az oktatóanyagban azt lép, visszavonás és elágazási műveletek.
 
 
 ## <a name="details"></a>Részletek
-### <a name="undo"></a>Visszavonás
+### <a name="undo"></a>A Visszavonás
 Lehetővé teszi, hogy a fejlesztő "Visszavonás" utolsó felhasználói bemenet vagy művelet kiválasztását. A színfalak mögött "Visszavonás" ténylegesen hoz létre egy új párbeszédpanel és visszajátssza, akár az előző lépésben.  Ez azt jelenti, hogy az entitás észlelési visszahívási és API-hívások a párbeszédpanelen a rendszer újra meghívja.
 
 ### <a name="branch"></a>Ág
@@ -38,7 +38,7 @@ Ehhez az oktatóanyaghoz, hogy fut-e a robot, amely a kétpizzás rendelések:
 
 Ha korábban már használta korábban sorbarendezésre kétpizzás az oktatóanyagot, majd nyissa meg a modellek a webes felhasználói felületen a listából. Szüksége lesz ellenkező esetben kattintson a "Oktatóanyagokban importálása", és válassza ki a "Demo-PizzaOrder" nevű modellt.
 
-## <a name="undo"></a>Visszavonás
+## <a name="undo"></a>A Visszavonás
 
 Íme egy példa bemutatja, hogyan tekintse meg a `Undo` szolgáltatást működés közben:
 

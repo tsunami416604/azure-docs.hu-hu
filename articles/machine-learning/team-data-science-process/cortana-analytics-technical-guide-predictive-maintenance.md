@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: e2f0f1e7ac8f510c4ff5be7933c55278fef74694
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 37acd88dbfe8ed1790f1bfa68d5e9762a861ddc7
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57885436"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626408"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace"></a>Technikai útmutató a Cortana Intelligence Megoldássablon prediktív karbantartás a légi közlekedésben
 
@@ -88,7 +88,7 @@ Az Azure Event Hubs szolgáltatás általános; adatok feladható a hub CSV vagy
 
 Ez a dokumentum nem ismerteti, hogy az adatokat, de egyszerűen küldhet eseményeket vagy adatokat egy Azure Event Hub, Event Hub API-val.
 
-### <a name="azure-stream-analytics"></a>Azure Stream Analytics
+### <a name="azure-stream-analytics-1"></a>Az Azure Stream Analytics
 Az Azure Stream Analytics szolgáltatás segítségével közel valós idejű adatstreamek olvasása és ad ki adatokat a forrásból tetszőleges számú.
 
 A karbantartás a légi és Űrközlekedés Megoldássablon, az Azure Stream Analytics-lekérdezés áll négy sub-lekérdezések minden lekérdezés felhasználni az eseményeket az Azure Event Hubs szolgáltatásból a kimenetek négy különböző helyekre. Ezeket a kimeneteket három Power BI-adatkészletek és a egy Azure Storage-helyen állnak.
@@ -103,7 +103,7 @@ Az Azure Stream Analytics-lekérdezés találhatók:
   * ***LEKÉRDEZÉS*** magát a lekérdezés megtekintése
   * ***OUTPUTS*** a különböző kimenetek megtekintése
 
-Az Azure Stream Analytics lekérdezési konstrukció információ található a [Stream Analytics lekérdezési leírása](https://msdn.microsoft.com/library/azure/dn834998.aspx) az MSDN Webhelyén.
+Az Azure Stream Analytics lekérdezési konstrukció információ található a [Stream Analytics lekérdezési leírása](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) az MSDN Webhelyén.
 
 Ebben a megoldásban a lekérdezések kimeneti három adatkészletek a közel valós idejű elemzési információkat a bejövő adatfolyam, ez a megoldássablon részeként a Power BI-irányítópultra. Mivel a bejövő adatok formátumának beállításszolgáltató jellegéből fakadóan ismeri, ezeket a lekérdezéseket módosítani kell az adatok formátum alapján.
 
@@ -171,10 +171,10 @@ Az alábbi lépéseket leírja, hogyan csatlakozhat az SQL-adatbázis, amely a m
    
    Szüksége lesz **adatbázis-kiszolgáló nevét, adatbázisnév, felhasználónév és jelszó** áthelyezése a következő lépések előtt. Az alábbiakban útmutató, hogyan találhatja meg azokat a lépéseket.
    
-   * Egyszer **"Azure SQL Database"** a megoldássablon az ábra a színe zöldre vált, kattintson rá, és kattintson a **"Nyitott"**.
+   * Egyszer **"Azure SQL Database"** a megoldássablon az ábra a színe zöldre vált, kattintson rá, és kattintson a **"Nyitott"** .
    * Egy új böngészőlapon vagy-ablakban, amely megjeleníti az Azure portal oldalán láthatja. Kattintson a **"Erőforráscsoportok"** bal oldali panelen.
-   * Válassza ki az előfizetést, a megoldás üzembe helyezése használja, és válassza **"YourSolutionName\_ResourceGroup"**.
-   * Az új pop ki panelen, kattintson a ![SQL ikon](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-sql.png) ikonra az adatbázis eléréséhez. Ez az ikon mellett van az adatbázis nevét (például **"pmaintenancedb"**), és a **adatbázis-kiszolgáló neve** a Server name tulajdonság van felsorolva, és hasonlóan kell kinéznie  **YourSolutionName.database.windows.net**.
+   * Válassza ki az előfizetést, a megoldás üzembe helyezése használja, és válassza **"YourSolutionName\_ResourceGroup"** .
+   * Az új pop ki panelen, kattintson a ![SQL ikon](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-sql.png) ikonra az adatbázis eléréséhez. Ez az ikon mellett van az adatbázis nevét (például **"pmaintenancedb"** ), és a **adatbázis-kiszolgáló neve** a Server name tulajdonság van felsorolva, és hasonlóan kell kinéznie  **YourSolutionName.database.windows.net**.
    * Az adatbázis **felhasználónév** és **jelszó** ugyanaz, mint a felhasználónév és jelszó korábban rögzíti a megoldás üzembe helyezése során.
 2. Frissítse az adatforrást a ritka elérésű útvonal fájlját a Power BI Desktopban.
    
@@ -182,8 +182,8 @@ Az alábbi lépéseket leírja, hogyan csatlakozhat az SQL-adatbázis, amely a m
      
      ![Lekérdezések szerkesztése](./media/cortana-analytics-technical-guide-predictive-maintenance/edit-queries.png)
    * Látni fogja a két táblázat **RemainingUsefulLife** és **PMResult**. Válassza ki az első táblázat, és kattintson a ![lekérdezési beállítások ikon](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-query-settings.png) melletti **"Forrás"** alatt **alkalmazott lépések** a jobb oldali **"Lekérdezés beállításai"** panel. Hagyja figyelmen kívül a megjelenő figyelmeztető üzeneteket.
-   * Cserélje le a kiugró ablakban **"Kiszolgáló"** és **"Adatbázis"** a saját kiszolgáló és az adatbázis nevét, és kattintson a **"OK"**. A kiszolgáló nevét, győződjön meg arról, adja meg az 1433-as porton (**YourSolutionName.database.windows.net, 1433-as**). Hagyja meg az adatbázis mező **pmaintenancedb**. Figyelmen kívül hagyhatja a figyelmeztetéseket, a képernyőn megjelenő.
-   * A következő kiugró ablakban, a két lehetőség a bal oldali panelen láthatja (**Windows** és **adatbázis**). Kattintson a **"Adatbázis"**, töltse ki a **'Felhasználónév'** és **'Password'** (azt a felhasználónevet és jelszót, amikor először üzembe helyezte a megoldást és létrehozott egy Azure SQL-adatbázis). A ***válassza ki, melyik szintre legyenek érvényesek a beállítások***, ellenőrizze az adatbázis-szintű beállítás. Kattintson a **"Csatlakozás"**.
+   * Cserélje le a kiugró ablakban **"Kiszolgáló"** és **"Adatbázis"** a saját kiszolgáló és az adatbázis nevét, és kattintson a **"OK"** . A kiszolgáló nevét, győződjön meg arról, adja meg az 1433-as porton (**YourSolutionName.database.windows.net, 1433-as**). Hagyja meg az adatbázis mező **pmaintenancedb**. Figyelmen kívül hagyhatja a figyelmeztetéseket, a képernyőn megjelenő.
+   * A következő kiugró ablakban, a két lehetőség a bal oldali panelen láthatja (**Windows** és **adatbázis**). Kattintson a **"Adatbázis"** , töltse ki a **'Felhasználónév'** és **'Password'** (azt a felhasználónevet és jelszót, amikor először üzembe helyezte a megoldást és létrehozott egy Azure SQL-adatbázis). A ***válassza ki, melyik szintre legyenek érvényesek a beállítások***, ellenőrizze az adatbázis-szintű beállítás. Kattintson a **"Csatlakozás"** .
    * Kattintson a második táblázat **PMResult** kattintson ![navigációs ikonja](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-navigation.png) melletti **"Forrás"** alatt **alkalmazott lépések** a jobb oldali **"Lekérdezés beállításai"** panelen, és frissítse a kiszolgáló és az adatbázis nevének, mint a fenti lépéseket, és kattintson az OK gombra.
    * Miután, interaktív van az előző oldalra, zárja be az ablakot. Egy üzenet jelenik meg – kattintson **alkalmaz**. Végül kattintson a **mentése** gombra kattintva mentse a módosításokat. A Power BI-fájl most létesített kapcsolat a kiszolgálóval. Ha a Vizualizációk üres, győződjön meg arról, törölje a jelet a választott beállításokat, a Vizualizációk adatok megjelenítése a jelmagyarázat jobb felső sarkában a radír ikonra kattintva. A frissítés gomb használatával új adatokat tükrözik a vizualizációt. Kezdetben csak látható a kezdőérték-adatok a Vizualizációk az adat-előállító 3 óránként ütemezett módon. 3 óra után látni fogja a Vizualizációk megjelennek, amikor az adatok frissítése új előrejelzéseket.
 3. (Nem kötelező) A ritka elérésű útvonal irányítópult közzététele [online a Power BI](https://www.powerbi.com/). Vegye figyelembe, hogy ezt a lépést kell egy Power BI-fiók (vagy Office 365-fiókkal).

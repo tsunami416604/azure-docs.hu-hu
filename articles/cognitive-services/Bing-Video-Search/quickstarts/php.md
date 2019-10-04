@@ -1,38 +1,38 @@
 ---
-title: 'Gyors útmutató: Keressen videókat a Bing Video Search REST API és a PHP használatával'
-titlesuffix: Azure Cognitive Services
-description: Ez a rövid útmutató segítségével videókeresési-kérelmeket küldjön a Bing Video Search REST API a PHP használatával
+title: 'Gyors útmutató: Videók keresése a Bing Video Search REST API és a PHP használatával'
+titleSuffix: Azure Cognitive Services
+description: Ezzel a rövid útmutatóval küldhet videó-keresési kéréseket a Bing Video Search REST API PHP használatával
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 01/31/2019
+ms.date: 06/26/2019
 ms.author: aahi
-ms.openlocfilehash: 50c39594aeb014860d25b2f2cc791ebfec14b572
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 8ecbba5ef046a284e9b4134f8703580021adb9d8
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535195"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500108"
 ---
-# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-php"></a>Gyors útmutató: Keressen videókat a Bing Video Search REST API és a PHP használatával
+# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-php"></a>Gyors útmutató: Videók keresése a Bing Video Search REST API és a PHP használatával
 
-Ez a rövid útmutató segítségével első hívását, a Bing Videókeresési API és a keresési eredményeket a JSON-válasz megtekintéséhez. Az egyszerű JavaScript-alkalmazás egy HTTP-videókeresési lekérdezést küld az API-t, és a válasz megjeleníti. Bár ez az alkalmazás JavaScript nyelven van megírva, és használja a Node.js, az API-ját egy REST-alapú webszolgáltatás szinte bármelyik programozási nyelvével kompatibilis.
+Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Video Search API, és megtekintheti a JSON-válasz keresési eredményét. Ez az egyszerű JavaScript-alkalmazás egy HTTP-videó keresési lekérdezést küld az API-nak, és megjeleníti a választ. Habár ez az alkalmazás JavaScript nyelven íródott, és a Node. js-t használja, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
 A mintakód úgy lett megírva, hogy PHP 5.6 alatt működjön.
 
-Az API-k technikai részleteit az [API-referencia](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference) című részben tekintheti meg.
+Az API-k technikai részleteit az [API-referencia](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference) című részben tekintheti meg.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A PHP 5.6-os vagy újabb
+* PHP 5,6 vagy újabb
 
 [!INCLUDE [cognitive-services-bing-video-search-signup-requirements](../../../../includes/cognitive-services-bing-video-search-signup-requirements.md)]
 
 ## <a name="running-the-application"></a>Az alkalmazás futtatása
 
-A [Bing Video Search API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) a Bing keresőmotor videótalálatait adja vissza.
+A [Bing Video Search API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) a Bing keresőmotor videótalálatait adja vissza.
 
 1. Gondoskodjon róla, hogy a biztonságos HTTP támogatása a kódhoz tartozó megjegyzésben megadottak szerint engedélyezve legyen a `php.ini` fájlban.
 2. Hozzon létre egy új PHP-projektet a kedvenc IDE-környezetében vagy szerkesztőjében.
@@ -213,8 +213,8 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Egyoldalas webes alkalmazás készítése](../tutorial-bing-video-search-single-page-app.md)
+> [Egyoldalas Webalkalmazás létrehozása](../tutorial-bing-video-search-single-page-app.md)
 
 ## <a name="see-also"></a>Lásd még 
 
- [Mi az a Bing Videókeresési API?](../overview.md)
+ [Mi a Bing Video Search API?](../overview.md)

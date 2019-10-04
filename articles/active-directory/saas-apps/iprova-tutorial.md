@@ -4,23 +4,24 @@ description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 1eaeef9b-4479-4a9f-b1b2-bc13b857c75c
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/24/2018
+ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 395d3887e35d6e9c043d4d947b605e71eb58bd6b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bf685919879a9ee82cbaa3863826c891422d3013
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57897333"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67099825"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iprova"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező iProva
 
@@ -28,61 +29,61 @@ Ebben az oktatóanyagban elsajátíthatja, hogyan iProva integrálása az Azure 
 IProva integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
 * Szabályozhatja, ki férhet hozzá iProva Azure AD-ben.
-* A felhasználók számára, hogy automatikusan jelentkezzenek be az Azure AD-fiókjukkal (egyszeri bejelentkezés) iProva engedélyezheti.
-* A fiókok egyetlen központi helyen, az Azure Portalon kezelheti.
+* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezve iProva (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Az Azure ad-vel szoftverként (saas biztosított) alkalmazás integrációja szoftverrel kapcsolatos további információkért lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 IProva az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, megtekintheti egy hónapos próbaverzió a [Microsoft Azure](https://azure.microsoft.com/pricing/free-trial/) webhelyén.
-* Egy iProva előfizetés SSO engedélyezése.
+* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a [ingyenes fiókkal](https://azure.microsoft.com/free/)
+* iProva egyszeri bejelentkezés engedélyezve van az előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés tesztelési környezetben:
+Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
 
-* iProva SP által kezdeményezett egyszeri Bejelentkezést támogatja.
+* támogatja a iProva **SP** által kezdeményezett egyszeri bejelentkezés
 
-## <a name="add-iprova-from-the-gallery"></a>IProva hozzáadása a katalógusból
+## <a name="adding-iprova-from-the-gallery"></a>IProva hozzáadása a katalógusból
 
-IProva integrálása az Azure AD beállításához adja hozzá a katalógus iProva a felügyelt SaaS-alkalmazások listájában.
+Az Azure AD integrálása a iProva konfigurálásához hozzá kell iProva a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
-A katalógusból iProva hozzáadásához kövesse az alábbi lépéseket:
+**IProva hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a [az Azure portal](https://portal.azure.com), a bal oldali panelen válassza ki a **Azure Active Directory**.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**, majd válassza ki **minden alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
 
     ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához válassza **új alkalmazás** a párbeszédpanel tetején.
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **iProva**. Válassza ki **iProva** az eredmény panelen, és válassza ki a **Hozzáadás** , vegye fel az alkalmazást.
+4. A Keresés mezőbe írja be a **iProva**válassza **iProva** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-     ![az eredmények listájában iProva](common/search-new-app.png)
+    ![az eredmények listájában iProva](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés iProva Britta Simon nevű tesztfelhasználó alapján.
-Az egyszeri bejelentkezés működjön, meg kell hivatkozás közötti kapcsolat létrehozásához egy Azure AD-felhasználót és a kapcsolódó felhasználó iProva a.
+Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az iProva nevű tesztfelhasználó alapján **Britta Simon**.
+Az egyszeri bejelentkezés működjön egy Azure AD-felhasználót és a kapcsolódó felhasználó iProva hivatkozás kapcsolata kell létrehozni.
 
-Az Azure AD egyszeri bejelentkezés az iProva tesztelése és konfigurálása, hajtsa végre a következő építőelemeket:
+Az Azure AD egyszeri bejelentkezés az iProva tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
-- [Konfigurációs adatok lekérését iProva](#retrieve-configuration-information-from-iprova) egy előkészítő lépések szerint.
-- [Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on) ahhoz, hogy ez a funkció használatát a felhasználók számára.
-- [IProva egyszeri bejelentkezés konfigurálása](#configure-iprova-single-sign-on) az egyszeri bejelentkezési beállításainak konfigurálása az alkalmazás oldalán.
-- [Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user) az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-- [Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user) Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-- [Hozzon létre egy iProva tesztfelhasználót](#create-an-iprova-test-user) Britta Simon egy megfelelője a iProva, amely kapcsolódik a felhasználó Azure ad-ben reprezentációja az rendelkeznie.
-- [Egyszeri bejelentkezés tesztelése](#test-single-sign-on) ellenőrzése, hogy működik-e a konfiguráció.
+1. **[Konfigurációs adatok lekérését iProva](#retrieve-configuration-information-from-iprova)**  egy előkészítő lépések szerint.
+2. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+3. **[Egyszeri bejelentkezés iProva konfigurálása](#configure-iprova-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
+4. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+5. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+6. **[Hozzon létre iProva tesztfelhasználót](#create-iprova-test-user)**  – egy megfelelője a Britta Simon a felhasználó Azure ad-ben reprezentációja kapcsolódó iProva rendelkeznie.
+7. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="retrieve-configuration-information-from-iprova"></a>Konfigurációs adatok lekérését iProva
 
@@ -96,7 +97,7 @@ Ebben a szakaszban az adatok lekérését az Azure AD egyszeri bejelentkezés ko
     | `https://SUBDOMAIN.iprova.be/saml2info`|
     | | |
 
-     ![Megtekintheti a iProva egy SAML2 információs oldalán](media/iprova-tutorial/iprova-saml2-info.png)
+    ![Megtekintheti a iProva egy SAML2 információs oldalán](media/iprova-tutorial/iprova-saml2-info.png)
 
 2. Hagyja nyitva a böngészőlapot, miközben, folytassa a következő lépéseket egy új böngészőlapon.
 
@@ -104,21 +105,23 @@ Ebben a szakaszban az adatok lekérését az Azure AD egyszeri bejelentkezés ko
 
 Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
 
-Szeretné konfigurálni az Azure AD egyszeri bejelentkezés iProva, kövesse az alábbi lépéseket.
+Szeretné konfigurálni az Azure AD egyszeri bejelentkezés iProva, hajtsa végre az alábbi lépéseket:
 
 1. Az a [az Azure portal](https://portal.azure.com/), az a **iProva** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza ki a **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
+2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
 
     ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
 
-3. Az a **állítsa be egyszeri bejelentkezést az SAML** lapon válassza ki a **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel bezárásához.
+3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
 
-    ![Az alapszintű SAML-konfigurációja ikonjának szerkesztése](common/edit-urls.png)
+    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az a **alapszintű SAML-konfigurációja** területén kövesse az alábbi lépéseket.
+4. Az a **alapszintű SAML-konfigurációja** szakaszban, hajtsa végre az alábbi lépéseket:
+
+    ![iProva tartomány és URL-címeket egyetlen bejelentkezési adatait](common/sp-identifier-reply.png)
 
     a. Töltse ki a **azonosító** mögött a felirat jelenik meg érték a rendszerrel együtt **EntityID** a a **iProva egy SAML2 info** lapot. Ez a lap megnyitva, a másik böngészőlapon található.
 
@@ -126,38 +129,35 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés iProva, kövesse az 
 
     c. Töltse ki a **bejelentkezési URL-** mögött a felirat jelenik meg érték a rendszerrel együtt **bejelentkezési URL-** a a **iProva egy SAML2 info** lapot. Ez a lap megnyitva, a másik böngészőlapon található.
 
-    ![iProva tartomány és URL-címeket egyetlen bejelentkezési adatait](common/sp-identifier-reply.png)
+5. iProva alkalmazás a SAML helyességi feltételek vár egy megadott formátumban. Konfigurálja a következő jogcímek ehhez az alkalmazáshoz. Ezek az attribútumok értékeinek kezelheti a **felhasználói attribútumok** szakasz alkalmazás integráció lapján. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** gombra kattintva nyissa meg a **felhasználói attribútumok** párbeszédpanel.
 
-5. A iProva alkalmazás a SAML helyességi feltételek vár egy megadott formátumban. Konfigurálja a következő jogcímek ehhez az alkalmazáshoz. Ezek az attribútumok értékeinek kezelheti a **felhasználói attribútumok** szakaszban az alkalmazás integrációs oldalán található. Az a **állítsa be egyszeri bejelentkezést az SAML** lapon válassza ki a **szerkesztése** ikonra kattintva nyissa meg a **felhasználói attribútumok** párbeszédpanel bezárásához.
+    ![image](common/edit-attribute.png)
 
-    ![Felhasználói attribútumok párbeszédpanel](common/edit-attribute.png)
+6. Az a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok** párbeszédpanelen, a jogcímek szerkesztése használatával **Szerkesztés ikon** , vagy adja hozzá a jogcímek használatával **hozzáadása új jogcímet**SAML-jogkivonat attribútum beállítása, a fenti képen látható módon, és hajtsa végre az alábbi lépéseket:
 
-6. Az a **felhasználói jogcímek** szakasz a **felhasználói attribútumok** párbeszédpanelen adja meg az SAML-jogkivonat attribútum az előző képen látható módon. Kövesse az alábbi lépéseket.
-
-    | Name (Név) | Forrásattribútum| Névtér |
+    | Name (Név) | Adatforrás-attribútum| Névtér  |
     | ---------------| -------- | -----|
     | `samaccountname` | `user.onpremisessamaccountname`| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
-    | | |
 
-    a. Válassza ki **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel bezárásához.
+    a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
 
-    ![Felhasználói jogcímek](common/new-save-attribute.png)
+    ![image](common/new-save-attribute.png)
 
-    ![Felhasználói jogcímek párbeszédpanel kezelése](common/new-attribute-details.png)
+    ![image](common/new-attribute-details.png)
 
-    b. Az a **neve** mezőben megadhatja azon attribútum nevét, a sorhoz látható.
+    b. Az a **neve** szövegmezőbe írja be azon attribútum nevét, a sorhoz látható.
 
-    c. Az a **Namespace** listában, adja meg a névtér értéke a sorhoz látható.
+    c. Az a **Namespace** szövegmezőbe írja be a névtér értéke a sorhoz látható.
 
-    d. Válassza ki a **forrás** lehetőséget igény **attribútum**.
+    d. Válassza ki a forrás, **attribútum**.
 
-    e. Az a **forrásattribútum** listában, adja meg az adott sorhoz feltüntetett attribútum értéke.
+    e. Az a **forrásattribútum** list, írja be az adott sorhoz feltüntetett attribútumot értéket.
 
-    f. Kattintson az **OK** gombra.
+    f. Kattintson a **Ok**
 
-    g. Kattintson a **Mentés** gombra.
+    g. Kattintson a **Save** (Mentés) gombra.
 
-7. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** szakaszban jelölje be a **másolási** ikonra kattintva másolja a **alkalmazás összevonási metaadatainak URL-címe**  , és mentse a számítógépre.
+7. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson a Másolás gombra, hogy **alkalmazás összevonási metaadatainak URL-címe** és mentse a számítógép.
 
     ![A tanúsítvány letöltési hivatkozás](common/copy-metadataurl.png)
 
@@ -203,36 +203,35 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés iProva, kövesse az 
 
 18. Ekkor visszatér a **általános beállításainak szerkesztése** képernyő. Görgessen le a lap alján, és válassza ki **OK** kattintva mentse a konfigurációt.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
 
-Ebben a szakaszban hozzon létre egy tesztfelhasználót Britta Simon nevű az Azure Portalon.
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory** > **felhasználók** > **minden felhasználó**.
+1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
 
-    ![A felhasználók és csoportok, valamint minden felhasználói kapcsolat](common/users.png)
+    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
 
 2. Válassza ki **új felhasználó** a képernyő tetején.
 
-    ![Az új felhasználó gomb](common/new-user.png)
+    ![Új felhasználó gomb](common/new-user.png)
 
-3. Az a **felhasználói** párbeszédpanelen kövesse az alábbi lépéseket.
+3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
 
     ![A felhasználó párbeszédpanel](common/user-properties.png)
 
-    a. Az a **neve** mezőben adjon meg egy nevet, például **BrittaSimon**.
+    a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőbe írja be *sajátneve\@yourcompanydomain.extension*. 
-    Például: BrittaSimon@contoso.com.
+    b. Az a **felhasználónév** mezőbe írja be `brittasimon@yourcompanydomain.extension`. Például: BrittaSimon@contoso.com
 
-    c. Válassza ki a **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
 
-    d. Kattintson a **Létrehozás** gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
 Ebben a szakaszban engedélyezze Britta Simon használja az Azure egyszeri bejelentkezés iProva való hozzáférést.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások** > **minden alkalmazás** > **iProva**.
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **iProva**.
 
     ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
 
@@ -242,19 +241,19 @@ Ebben a szakaszban engedélyezze Britta Simon használja az Azure egyszeri bejel
 
 3. A bal oldali menüben válassza **felhasználók és csoportok**.
 
-    ![A felhasználók és csoportok hivatkozás](common/users-groups-blade.png)
+    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-4. Válassza ki **felhasználó hozzáadása**, majd válassza ki **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel bezárásához.
+4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![A hozzárendelés hozzáadása párbeszédpanel](common/add-assign-user.png)
+    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
-5. Az a **felhasználók és csoportok** párbeszédpanelen válassza ki **Britta Simon** a a **felhasználók** listában, és válassza a **válassza** a képernyő alján.
+5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
 
-6. Ha a várt bármely szerepkör értékét az SAML-előfeltétel a **Szerepkörválasztás** párbeszédpanelen jelölje ki a megfelelő szerepkört a felhasználóhoz a listából. Válasszon **kiválasztása** a képernyő alján.
+6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
 
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen jelölje ki **hozzárendelése**.
+7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
 
-### <a name="create-an-iprova-test-user"></a>Hozzon létre egy iProva tesztfelhasználó számára
+### <a name="create-iprova-test-user"></a>IProva tesztfelhasználó létrehozása
 
 1. Jelentkezzen be iProva használatával a **rendszergazda** fiókot.
 
@@ -266,27 +265,26 @@ Ebben a szakaszban engedélyezze Britta Simon használja az Azure egyszeri bejel
 
 5. Válassza a **Hozzáadás** lehetőséget.
 
-6. Az a **felhasználónév** mezőbe írja be *brittasimon\@yourcompanydomain.extension*. 
-    Például: BrittaSimon@contoso.com.
+6. Az a **felhasználónév** mezőbe írja be például a felhasználó felhasználóneve `BrittaSimon@contoso.com`.
 
-7. Az a **teljes fájlvisszaállítási név** mezőbe írja be például a teljes nevet **BrittaSimon**.
+7. Az a **teljes fájlvisszaállítási név** mezőbe írja be például a felhasználó teljes neve **BrittaSimon**.
 
 8. Válassza ki a **(használata egyszeri bejelentkezéshez) jelszavát nem** lehetőséget.
 
-9. Az a **E-mail-cím** mezőbe írja be *sajátneve\@yourcompanydomain.extension*. 
-   Például: BrittaSimon@contoso.com.
+9. Az a **E-mail-cím** mezőbe írja be például a felhasználó e-mail-címe `BrittaSimon@contoso.com`.
 
 10. Görgessen a lap aljára, és válassza ki **Befejezés**.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési Panel segítségével tesztelheti.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-A iProva csempe kiválasztásakor a hozzáférési panelen, kell lennie automatikusan bejelentkezett a iProva, amelynek beállítása egyszeri Bejelentkezést. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ha a hozzáférési panelen a iProva csempére kattint, meg kell lehet automatikusan bejelentkezett a iProva, amelynek beállítása egyszeri bejelentkezés. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
 - [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+
 - [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-- [iProva – egy SAML2 egyszeri bejelentkezés konfigurálása](https://webshare.iprova.nl/0wqwm45yn09f5poh/Document.aspx)

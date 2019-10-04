@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: spelluru
-ms.openlocfilehash: 33604a16f5895e20d4475d1dd8b27c34184feb72
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 6093e1017af2fb8c54eaf1c3192f937172567982
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54478467"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080559"
 ---
 # <a name="event-handlers-in-azure-event-grid"></a>Az Azure Event Grid eseménykezelők
 
@@ -71,6 +71,64 @@ A Logic Apps segítségével automatizálhatja üzleti folyamatait eseményekre 
 | [Oktatóanyag: az Azure Event Grid és a Logic Apps a virtuális gépek módosításainak monitorozása](monitor-virtual-machine-changes-event-grid-logic-app.md) | Egy logikai alkalmazást egy virtuális gép módosításainak figyeli, és ezeket a módosításokat kapcsolatos e-mailt küld. |
 | [Oktatóanyag: küldése e-mailes értesítést az Azure IoT Hub-események Logic Apps használatával](publish-iot-hub-events-to-logic-apps.md) | Egy logikai alkalmazás küld értesítő e-mailt, minden alkalommal, amikor egy eszköz az IoT hubhoz való hozzáadása. |
 | [Oktatóanyag: Azure Service Bus – Azure Event Grid integráció példák](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Event Grid üzeneteket küld a Service Bus-témakörbe, alkalmazás és a logikai alkalmazás működéséhez. |
+
+## <a name="service-bus-queue-preview"></a>Service Bus-üzenetsor (előzetes verzió)
+
+Eseménykezelő, Service Bus használatával az események irányítása az Event Grid közvetlenül a Service Bus-üzenetsorok pufferelés vagy parancs és vezérlés helyzetekben a vállalati alkalmazásokban való használatra. Az előzetes verzió a Service Bus-témakörök és a munkamenetek nem működik, de a Service Bus-üzenetsorok, minden szinten működik.
+
+Kérjük, vegye figyelembe, miközben Service Bus, a kezelő nyilvános előzetes verzióban érhető el az telepítenie kell a parancssori felület vagy PowerShell-bővítmény használata azokat, esemény-előfizetések létrehozása.
+
+### <a name="install-extension-for-azure-cli"></a>Azure CLI-hez a bővítmény telepítése
+
+Azure CLI-vel, szüksége lesz a [Event Grid-bővítmény](/cli/azure/azure-cli-extensions-list).
+
+A [cloud Shell](/azure/cloud-shell/quickstart):
+
+* Ha korábban telepítette a bővítményt, frissítse az `az extension update -n eventgrid`.
+* Ha korábban még nem telepítette a bővítményt, telepítse a `az extension add -n eventgrid`.
+
+Helyi telepítéséhez:
+
+1. [Az Azure CLI telepítése](/cli/azure/install-azure-cli). Győződjön meg arról, hogy rendelkezik-e a legújabb verziót az ellenőrzésével `az --version`.
+1. Távolítsa el a bővítményt a korábbi verzióinak `az extension remove -n eventgrid`.
+1. Telepítse a `eventgrid` bővítmény `az extension add -n eventgrid`.
+
+### <a name="install-module-for-powershell"></a>PowerShell-modul telepítése
+
+PowerShell esetén van szükség a [AzureRM.EventGrid modul](https://www.powershellgallery.com/packages/AzureRM.EventGrid/0.4.1-preview).
+
+A [cloud Shell](/azure/cloud-shell/quickstart-powershell):
+
+* Telepítse a modult a következővel `Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`.
+
+Helyi telepítéséhez:
+
+1. Nyissa meg a PowerShell-konzolt rendszergazdaként.
+1. Telepítse a modult a következővel `Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`.
+
+Ha a `-AllowPrerelease` paraméter nem érhető el, kövesse az alábbi lépéseket:
+
+1. Futtassa az `Install-Module PowerShellGet -Force` parancsot.
+1. Futtassa az `Update-Module PowerShellGet` parancsot.
+1. Zárja be a PowerShell-konzolon.
+1. Indítsa újra a PowerShell rendszergazdaként.
+1. A modul telepítése `Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`.
+
+### <a name="using-cli-to-add-a-service-bus-handler"></a>Parancssori felület használatával a Service Bus-kezelő hozzáadása
+
+Azure CLI-hez az alábbi példa feliratkozik, és a egy Event Grid-témakör csatlakozik a Service Bus-üzenetsorba:
+
+```azurecli-interactive
+# If you haven't already installed the extension, do it now.
+# This extension is required for preview features.
+az extension add --name eventgrid
+
+az eventgrid event-subscription create \
+    --name <my-event-subscription> \
+    --source-resource-id /subscriptions/{SubID}/resourceGroups/{RG}/providers/Microsoft.EventGrid/topics/topic1 \
+    --endpoint-type servicebusqueue \
+    --endpoint /subscriptions/{SubID}/resourceGroups/TestRG/providers/Microsoft.ServiceBus/namespaces/ns1/queues/queue1
+```
 
 ## <a name="queue-storage"></a>Queue Storage
 

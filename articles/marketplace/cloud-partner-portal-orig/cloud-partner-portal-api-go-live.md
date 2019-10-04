@@ -1,27 +1,20 @@
 ---
-title: Az élő esemény indításra |} A Microsoft Docs
+title: Az élő esemény indításra |} Az Azure Marketplace-en
 description: A Go Live API elindítja az ajánlat élő folyamat listázása.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: ea3f26d70c4a4ce07c988612890687504a4cf5ac
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.author: pabutler
+ms.openlocfilehash: ac56f86bad132f3e00a4b5c2507d65c0722c628c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594678"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64935496"
 ---
-<a name="go-live"></a>Go Live
+<a name="go-live"></a>Az élő esemény indításra
 =======
 
 Ez az API elindítja a folyamatot az éles alkalmazások leküldésének. Ez a művelet van általában hosszú ideig futó. Ez a hívás használja az értesítési e-mail lista a [közzététel](./cloud-partner-portal-api-publish-offer.md) API-művelet.
@@ -35,7 +28,7 @@ Ez az API elindítja a folyamatot az éles alkalmazások leküldésének. Ez a m
 |  --------      |   ---------------                                                           | ------------- |
 | publisherId    | Közzétevő-azonosító lekéréséhez, például az ajánlat `contoso`       |  String       |
 | offerId        | Ajánlat azonosítója, az ajánlat lekéréséhez                                   |  String       |
-| API-verzió    | Az API legújabb verziója                                                   |  Dátum         |
+| api-version    | Az API legújabb verziója                                                   |  Dátum         |
 |  |  |  |
 
 

@@ -13,13 +13,13 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
 ms.openlocfilehash: feabd055833e5f0d850138af528cce1da82cae49
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439975"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60622631"
 ---
-# <a name="save-custom-images-and-distribute-to-multiple-labs"></a>Egyéni rendszerképek mentse, és több labs terjesztéséhez
+# <a name="save-custom-images-and-distribute-to-multiple-labs"></a>Egyéni rendszerképek mentése és továbbítása több tesztkörnyezetbe
 Ez a cikk tartalmazza a lépéseket, hogy egyéni lemezképeket menteni a már létrehozott virtuális gépek (VM) biztosít. Azt is bemutatja, hogyan ezek más DevTest Labs szolgáltatásban a szervezet egyéni lemezképek terjesztése.
 
 ## <a name="prerequisites"></a>Előfeltételek

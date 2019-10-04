@@ -1,27 +1,27 @@
 ---
-title: Erőforrás-módosítások beolvasása
+title: Erőforrás-módosítások lekérése
 description: Megismerheti, hogyan találhatja meg, amikor egy erőforrás változott, és a módosított tulajdonságok listája.
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 04/20/2019
+ms.date: 05/10/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: f4618e945db443e8d7cf9fdcc49e20e5a09ebd39
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: b6ef57a3f39c82be30d92aef72c1bbe03b653768
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60014096"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66236507"
 ---
-# <a name="get-resource-changes"></a>Erőforrás-módosítások beolvasása
+# <a name="get-resource-changes"></a>Erőforrás-módosítások lekérése
 
 Erőforrások használ napi újrakonfigurálása és még akkor is, újbóli üzembe helyezés során módosul.
 Változás bármikor visszatérhet, egyéni vagy egy automatikus folyamat alapján. A legtöbb módosítása a rendszer kialakításából fakad, de néha nem. Az elmúlt 14 napban a változások nyomon követése, az Azure-erőforrás Graph teszi lehetővé:
 
-- Ha módosításokat észlelt egy Azure Resource Manager-tulajdonság található.
-- Tekintse meg, milyen tulajdonságok adott esemény részeként megváltozott.
+- Megtudhatja, mikor történtek módosítások az Azure Resource Manager-tulajdonságokban.
+- Megnézheti, mely tulajdonságok változtak meg a módosítási esemény részeként.
 
 Címváltozásának felderítését és a részletek hasznosak az alábbi példák a következők:
 
@@ -29,7 +29,7 @@ Címváltozásának felderítését és a részletek hasznosak az alábbi péld�
 - Konfigurációkezelési adatbázis tartja, más néven a cmdb-JÉBEN, naprakész. Frissítés helyett az összes erőforrás és a egy ütemezett gyakoriságát, a teljes tulajdonság beállítása csak a get mi változott.
 - Milyen egyéb tulajdonságok Módosíthatott erőforrás megfelelőségi állapotok megváltozásakor ismertetése. Ezek a további tulajdonságok kiértékelése is szükség lehet egy Azure szabályzat-definíció kezelendő egyéb tulajdonságok betekintést nyújtson.
 
-Ez a cikk bemutatja, hogyan erőforrás Graph SDK-n keresztül az információk gyűjtésére. Ez az információ az Azure Portalon, olvassa el az Azure Policy [módosítási előzmények](../../policy/how-to/determine-non-compliance.md#change-history-preview).
+Ez a cikk bemutatja, hogyan erőforrás Graph SDK-n keresztül az információk gyűjtésére. Ez az információ az Azure Portalon, olvassa el az Azure Policy [módosítási előzmények](../../policy/how-to/determine-non-compliance.md#change-history-preview) vagy az Azure-tevékenységnapló [módosítási előzmények](../../../azure-monitor/platform/activity-log-view.md#azure-portal).
 
 > [!NOTE]
 > Változások részleteinek Erőforrás-grafikon a Resource Manager-tulajdonságok vannak. A virtuális gépen belüli változásainak követése, tekintse meg az Azure Automation [Change tracking](../../../automation/automation-change-tracking.md) vagy az Azure Policy [Vendég virtuális gépek konfigurációjának](../../policy/concepts/guest-configuration.md).
@@ -39,12 +39,12 @@ Ez a cikk bemutatja, hogyan erőforrás Graph SDK-n keresztül az információk 
 
 ## <a name="find-when-changes-were-detected"></a>Keresse meg, ha módosításokat észlelt
 
-Az első lépés jelenik meg, mi változott, egy erőforráson, hogy az idő időtartamon belül erőforráshoz kapcsolódó események megtalálja. Ebben a lépésben keresztül történik a [resourceChanges](/rest/api/azureresourcegraph/resourceChanges) REST-végpont.
+Az első lépés jelenik meg, mi változott, egy erőforráson, hogy az idő időtartamon belül erőforráshoz kapcsolódó események megtalálja. Ebben a lépésben keresztül történik a **resourceChanges** REST-végpont.
 
 A **resourceChanges** végpont a kérelem törzsében szereplő két paraméter szükséges:
 
 - **resourceId**: Az Azure-erőforráshoz módosításait keressen.
-- **Intervallum**: Tulajdonságot _start_ és _záró_ mikor ellenőrizze a módosítási esemény a dátumokat a **Zulu időzóna (Z)**.
+- **Intervallum**: Tulajdonságot _start_ és _záró_ mikor ellenőrizze a módosítási esemény a dátumokat a **Zulu időzóna (Z)** .
 
 A példában a kérés törzse:
 
@@ -69,7 +69,7 @@ A válasz a példához hasonlóan néz ki:
 ```json
 {
     "changes": [{
-            "changeId": "2db0ad2d-f6f0-4f46-b529-5c4e8c494648",
+            "changeId": "{\"beforeId\":\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\"beforeTime\":'2019-05-09T00:00:00.000Z\",\"afterId\":\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\"beforeTime\":'2019-05-10T00:00:00.000Z\"}",
             "beforeSnapshot": {
                 "timestamp": "2019-03-29T01:32:05.993Z"
             },
@@ -95,7 +95,7 @@ Az esemény történt olyan pont, ebben az ablakban idő.
 
 ## <a name="see-what-properties-changed"></a>Tulajdonságok változott
 
-Az a **changeId** származó a **resourceChanges** végpont, a [resourceChangeDetails](/rest/api/azureresourcegraph/resourceChangeDetails) REST-végpont majd kéri le az esemény tulajdonságairól.
+Az a **changeId** származó a **resourceChanges** végpont, a **resourceChangeDetails** REST-végpont majd kéri le az esemény tulajdonságairól.
 
 A **resourceChangeDetails** végpont a kérelem törzsében szereplő két paraméter szükséges:
 
@@ -107,8 +107,7 @@ A példában a kérés törzse:
 ```json
 {
     "resourceId": "/subscriptions/{subscriptionId}/resourceGroups/MyResourceGroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount",
-    "changeId": "53dc0515-b86b-4bc2-979b-e4694ab4a556"
-    }
+    "changeId": "{\"beforeId\":\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\"beforeTime\":'2019-05-09T00:00:00.000Z\",\"afterId\":\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\"beforeTime\":'2019-05-10T00:00:00.000Z\"}"
 }
 ```
 
@@ -122,7 +121,7 @@ A válasz a példához hasonlóan néz ki:
 
 ```json
 {
-    "changeId": "53dc0515-b86b-4bc2-979b-e4694ab4a556",
+    "changeId": "{\"beforeId\":\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\"beforeTime\":'2019-05-09T00:00:00.000Z\",\"afterId\":\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\"beforeTime\":'2019-05-10T00:00:00.000Z\"}",
     "beforeSnapshot": {
         "timestamp": "2019-03-29T01:32:05.993Z",
         "content": {

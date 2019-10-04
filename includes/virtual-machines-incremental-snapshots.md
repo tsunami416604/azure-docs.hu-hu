@@ -9,11 +9,11 @@ ms.date: 09/15/2018
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 06e6e491fa1e9a047527efb78149855b125771ef
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49960214"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179103"
 ---
 # <a name="back-up-azure-unmanaged-vm-disks-with-incremental-snapshots"></a>Készítsen biztonsági másolatot az Azure nem felügyelt Virtuálisgép-lemezek növekményes pillanatképekkel
 ## <a name="overview"></a>Áttekintés
@@ -58,7 +58,7 @@ A következő feltételek teljesülnek, a megadott
 * A blob a 1 – 2016. január, vagy később hozta létre.
 * A blob nem írja felül a [PutPage](https://docs.microsoft.com/rest/api/storageservices/Put-Page) vagy [a Blob másolásához](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) két-pillanatképek közötti.
 
-**Megjegyzés:**: Ez a funkció a prémium és standard szintű Azure-Lapblobokkal érhető el.
+**Megjegyzés**: Ez a funkció a prémium és standard szintű Azure-Lapblobokkal érhető el.
 
 Ha egy egyéni biztonsági mentési stratégia pillanatképekkel rendelkezik, másol a pillanatképek egyik tárfiókból a másikba lassú lehet, és mennyi tárhelyet használhatnak. Helyett a teljes pillanatkép másolása egy biztonsági mentési tárfiókot, írhat egy biztonsági mentési lapblob egymást követő pillanatképek közötti különbség. Ily módon a másolás és a biztonsági mentések tárolására szolgáló terület idő jelentősen csökken.
 

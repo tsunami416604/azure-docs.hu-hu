@@ -1,123 +1,117 @@
 ---
-title: Gyakori felhőszolgáltatás-felügyeleti feladatok |} A Microsoft Docs
-description: Ismerje meg, hogyan kezelheti a Cloud Services az Azure Portalon. Ezekben a példákban az Azure Portalon.
+title: Gyakori Cloud Service-kezelési feladatok | Microsoft Docs
+description: Megtudhatja, hogyan kezelheti Cloud Services a Azure Portalban. Ezek a példák a Azure Portal használják.
 services: cloud-services
 documentationcenter: ''
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: cb218ad9-77d4-4149-83db-71159c00767e
+author: georgewallace
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
-ms.author: jeconnoc
-ms.openlocfilehash: e9f4153c68f0a2a4ce83f900ff63152311163ff6
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.author: gwallace
+ms.openlocfilehash: 8ec7784fb51d0fa4de2563f76444b0b5e5f34902
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42055707"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359600"
 ---
-# <a name="manage-cloud-services-in-the-azure-portal"></a>Cloud Services kezelése az Azure Portalon
-Az a **Cloud Services** az Azure portal területén is:
+# <a name="manage-cloud-services-in-the-azure-portal"></a>Cloud Services kezelése a Azure Portal
+A Azure Portal **Cloud Services** területén a következőket teheti:
 
-* Egy szolgáltatási szerepkör vagy a központi telepítés frissítése.
-* Az éles környezetbe szakaszos telepítés támogatása.
-* Erőforrások összekapcsolása a cloud service, hogy tekintse meg az erőforrás-függőségek, és az erőforrások méretezése együtt.
-* Törölje a felhőszolgáltatás és a egy központi telepítést.
+* Egy szolgáltatás szerepkörének vagy központi telepítésének frissítése.
+* Az előkészített üzembe helyezés előléptetése éles környezetbe.
+* Erőforrások összekapcsolása a felhőalapú szolgáltatással, így megtekintheti az erőforrás-függőségeket, és méretezheti az erőforrásokat.
+* Felhőalapú szolgáltatás vagy központi telepítés törlése.
 
-A cloud Services méretezése kapcsolatos további információkért lásd: [konfigurálása az automatikus skálázást egy felhőszolgáltatáshoz a portálon](cloud-services-how-to-scale-portal.md).
+A felhőalapú szolgáltatás méretezésével kapcsolatos további információkért lásd: [az automatikus skálázás konfigurálása felhőalapú szolgáltatásokhoz a portálon](cloud-services-how-to-scale-portal.md).
 
-## <a name="update-a-cloud-service-role-or-deployment"></a>Felhőszolgáltatási szerepkör vagy telepítés frissítése
-Ha a felhőszolgáltatás az alkalmazáskódot frissíteni kell, használja a **frissítése** cloud service panelén. Egyetlen szerepkör vagy az összes szerepkör frissítheti. Ha frissíteni szeretné, tölthet fel egy új service-csomag vagy a szolgáltatás konfigurációs fájlja.
+## <a name="update-a-cloud-service-role-or-deployment"></a>Cloud Service-szerepkör vagy-telepítés frissítése
+Ha frissítenie kell az alkalmazás kódját a Cloud Service-hez, használja a **frissítés** lehetőséget a Cloud Service panelen. Egyetlen szerepkört vagy az összes szerepkört is frissítheti. A frissítéshez feltöltheti az új szervizcsomagot vagy a szolgáltatás konfigurációs fájlját.
 
-1. Az a [az Azure portal][Azure portal], válassza ki a frissíteni kívánt felhőszolgáltatást. Ebben a lépésben a cloud service példány panel nyílik meg.
+1. A [Azure Portal][Azure portal]válassza ki a frissíteni kívánt felhőalapú szolgáltatást. Ez a lépés megnyitja a Cloud Service-példány panelt.
 
-2. A panelen válassza ki a **frissítés**.
+2. A panelen válassza a **frissítés**lehetőséget.
 
     ![Frissítés gomb](./media/cloud-services-how-to-manage-portal/update-button.png)
 
-3. Frissíti az üzemelő példányt egy új felhőszolgáltatás csomagfájlját (.cspkg) és a szolgáltatás konfigurációs fájlját (.cscfg).
+3. Frissítse a központi telepítést egy új csomagfájl-fájllal (. cspkg) és a szolgáltatás konfigurációs fájljával (. cscfg).
 
     ![UpdateDeployment](./media/cloud-services-how-to-manage-portal/update-blade.png)
 
-4. Szükség esetén frissítse a tárfiók és az üzemelő példány címkéje.
+4. Szükség esetén a Storage-fiókot és a telepítési címkét is frissítheti.
 
-5. Ha szerepköröket csak egy szerepkörpéldány rendelkezik, válassza ki a **telepítse, még akkor is, ha egy vagy több szerepkör egyetlen példányt tartalmaz** jelölőnégyzetet ahhoz, hogy folytatja a frissítést.
+5. Ha bármelyik szerepkör csak egy szerepkör-példánnyal rendelkezik, jelölje be az **üzembe helyezés akkor is, ha egy vagy több szerepkör egyetlen példányt tartalmaz** jelölőnégyzetet a frissítés folytatásához.
 
-    Ha minden egyes szerepkörhöz legalább két szerepkörpéldányt (virtuális gépek) az Azure csak a 99,95 %-os szolgáltatás rendelkezésre állása is garantálja felhőalapú szolgáltatás frissítése során. A két szerepkörpéldányt egy virtuális gép ügyfélkérelmek dolgozza fel, míg a másik frissül.
+    Az Azure a Cloud Service frissítése során csak a 99,95%-os rendelkezésre állást garantálhatja, ha az egyes szerepkörökhöz legalább két szerepkör-példány (Virtual machines) tartozik. Az egyik virtuális gép két szerepkör-példánnyal dolgozza fel az ügyfelek kéréseit, miközben a másik frissül.
 
-6. Válassza ki a **üzembe helyezésének megkezdéséhez** melletti jelölőnégyzetet, hogy a frissítés alkalmazására, a csomag a feltöltés befejeződése után.
+6. Jelölje be a **központi telepítés indítása** jelölőnégyzetet a frissítés alkalmazásához a csomag feltöltésének befejeződése után.
 
-7. Válassza ki **OK** megkezdéséhez a szolgáltatás frissítése.
+7. A szolgáltatás frissítésének megkezdéséhez kattintson **az OK gombra** .
 
-## <a name="swap-deployments-to-promote-a-staged-deployment-to-production"></a>Példányok előléptetése éles környezetbe szakaszos telepítés
-Ha úgy dönt, hogy üzembe helyezése egy felhőalapú szolgáltatás, a fázis egy új verzióját, és a felhőalapú szolgáltatás átmeneti környezetben az új verziók teszteléséhez. Használat **felcserélése** az URL-címeket, amellyel a két üzembe helyezés foglalkozik, és elősegítik az új kiadás az éles környezetbe váltás.
+## <a name="swap-deployments-to-promote-a-staged-deployment-to-production"></a>Üzembe helyezések cseréje az éles környezetben történő üzembe helyezés elősegítése érdekében
+Ha úgy dönt, hogy új kiadást helyez üzembe a Cloud Service-ben, az új kiadást a Cloud Service átmeneti környezetében teszteli és teszteli. A **swap** használatával váltson át a két üzemelő példány által kezelt URL-címekre, és léptesse elő az új kiadást az éles környezetbe.
 
-Telepítések kicserélheti az **Cloud Services** oldalán vagy az irányítópulton.
+A központi telepítéseket a **Cloud Services** vagy az irányítópulton cserélheti le.
 
-1. Az a [az Azure portal][Azure portal], válassza ki a frissíteni kívánt felhőszolgáltatást. Ebben a lépésben a cloud service példány panel nyílik meg.
+1. A [Azure Portal][Azure portal]válassza ki a frissíteni kívánt felhőalapú szolgáltatást. Ez a lépés megnyitja a Cloud Service-példány panelt.
 
-2. A panelen válassza ki a **felcserélése**.
+2. A panelen válassza a **Csere**lehetőséget.
 
-    ![Cloud Services felcserélése gomb](./media/cloud-services-how-to-manage-portal/swap-button.png)
+    ![Cloud Services csere gomb](./media/cloud-services-how-to-manage-portal/swap-button.png)
 
 3. Megnyílik a következő megerősítő üzenet:
 
-    ![Cloud Services Swap](./media/cloud-services-how-to-manage-portal/swap-prompt.png)
+    ![Cloud Services swap](./media/cloud-services-how-to-manage-portal/swap-prompt.png)
 
-4. Miután ellenőrizte az üzembe helyezési adatokat, válassza ki a **OK** a példányok.
+4. Az üzembe helyezési információk ellenőrzése után kattintson az **OK gombra** az üzemelő példányok kicseréléséhez.
 
-    A központi telepítési felcserélés gyorsan mert, hogy módosítja a virtuális IP-címek (VIP) esetében történik a központi telepítéseket.
+    Az üzemelő példányok cseréje gyorsan történik, mert az egyetlen dolog, ami megváltoztatja az üzemelő példányok virtuális IP-címeit (VIP).
 
-    Szeretné menteni a számítási költségeket, törölheti az átmeneti üzembe helyezés után, győződjön meg arról, hogy a várt módon működik-e az éles környezet.
+    A számítási költségek mentéséhez törölheti az előkészítési telepítést, miután meggyőződött róla, hogy az éles környezet a várt módon működik-e.
 
-### <a name="common-questions-about-swapping-deployments"></a>Központi telepítések felcserélése kapcsolatos gyakori kérdésekre
+### <a name="common-questions-about-swapping-deployments"></a>Gyakori kérdések az üzemelő példányok cseréjével kapcsolatban
 
-**Mik azok a telepítések felcserélése előfeltételei?**
+**Mik az üzembe helyezések cseréjének előfeltételei?**
 
-Van egy sikeres üzembe helyezés felcserélés két fő előfeltételei:
+A sikeres üzembe helyezési felcserélés két fő előfeltétele:
 
-- Ha szeretne statikus IP-címet használja az éles üzembe helyezési pont, le kell egyet az előkészítési ponton. Ellenkező esetben a felcserélés sikertelen lesz.
+- Ha statikus IP-címet szeretne használni az üzemi tárolóhelyhez, le kell foglalni egyet az előkészítési tárolóhelyhez is. Ellenkező esetben a swap sikertelen lesz.
 
-- A szerepkörök összes példánya futnia kell a felcserélés végrehajtása előtt. A példányok állapotának ellenőrzéséhez a **áttekintése** panel az Azure Portal. Másik lehetőségként használhatja a [Get-AzureRole](/powershell/module/servicemanagement/azure/get-azurerole?view=azuresmps-3.7.0) parancsot a Windows PowerShellben.
+- A felcserélés végrehajtása előtt a szerepkörök összes példányának futnia kell. A példányok állapotát a Azure Portal **Áttekintés** paneljén tekintheti meg. Azt is megteheti, hogy a [Get-AzureRole](/powershell/module/servicemanagement/azure/get-azurerole?view=azuresmps-3.7.0) parancsot használja a Windows PowerShellben.
 
-Vegye figyelembe, hogy Vendég operációs rendszer frissítése és a szolgáltatás is javítási műveletek telepítési cseréje sikertelen okozhatnak. További információkért lásd: [felhőalapú szolgáltatás üzembe helyezési problémák elhárítása](cloud-services-troubleshoot-deployment-problems.md).
+Vegye figyelembe, hogy a vendég operációs rendszer frissítései és a szolgáltatás-javító műveletek miatt a telepítési swap-feladatok sikertelenek lehetnek. További információ: a [Cloud Service üzembe helyezési problémáinak elhárítása](cloud-services-troubleshoot-deployment-problems.md).
 
-**Nem a lapozófájl-kapacitás fel az alkalmazásomhoz tartozó állásidő? Hogyan tudok kezelni azt?**
+**Felmerül a swap-állásidő az alkalmazásom esetében? Hogyan kezelhető?**
 
-Az előző szakaszban leírtak a központi telepítési lapozófájl-kapacitás használata általában gyors, mert az csak egy konfigurációmódosítás az Azure load balancerben. Bizonyos esetekben is eltarthat, 10 vagy a további másodpercek és eredmény az átmeneti kapcsolati hibákat. Szeretné korlátozni a hatása az ügyfelek számára, vegye fontolóra [ügyfél újrapróbálkozási logikát](../best-practices-retry-general.md).
+Az előző szakaszban leírtaknak megfelelően a rendszer általában gyors üzembe helyezést végez, mert csak az Azure Load Balancer konfigurációjának változása. Bizonyos esetekben 10 vagy több másodpercet is igénybe vehet, és átmeneti csatlakoztatási hibákat eredményezhet. Az ügyfelekre gyakorolt hatás korlátozásához érdemes lehet megvalósítani az [ügyfél](../best-practices-retry-general.md)újrapróbálkozási logikáját.
 
-## <a name="delete-deployments-and-a-cloud-service"></a>Központi telepítések és a egy felhőalapú szolgáltatás törlése
-Egy felhőalapú szolgáltatás törlése előtt törölnie kell minden meglévő telepítés.
+## <a name="delete-deployments-and-a-cloud-service"></a>Központi telepítések és felhőalapú szolgáltatások törlése
+A felhőalapú szolgáltatások törléséhez minden meglévő telepítést törölnie kell.
 
-Szeretné menteni a számítási költségeket, törölheti az átmeneti üzembe helyezés után, győződjön meg arról, hogy a várt módon működik-e az éles környezet. Telepített szerepkör példányai, amelyek le vannak állítva a számítási költségek számlázzuk ki.
+A számítási költségek mentéséhez törölheti az előkészítési telepítést, miután meggyőződött róla, hogy az éles környezet a várt módon működik-e. A leállított, telepített szerepkör-példányok számítási költségeiért számítunk fel díjat.
 
-Az alábbi eljárás segítségével törölheti a központi telepítés vagy a felhőszolgáltatás.
+A központi telepítés vagy a felhőalapú szolgáltatás törléséhez kövesse az alábbi eljárást.
 
-1. Az a [az Azure portal][Azure portal], válassza ki a törölni kívánt felhőszolgáltatást. Ebben a lépésben a cloud service példány panel nyílik meg.
+1. A [Azure Portal][Azure portal]válassza ki a törölni kívánt felhőalapú szolgáltatást. Ez a lépés megnyitja a Cloud Service-példány panelt.
 
-2. A panelen válassza ki a **törlése**.
+2. A panelen válassza a **Törlés**lehetőséget.
 
-    ![Cloud Services törlése gombra](./media/cloud-services-how-to-manage-portal/delete-button.png)
+    ![Cloud Services törlés gomb](./media/cloud-services-how-to-manage-portal/delete-button.png)
 
-3. A teljes felhőalapú szolgáltatás törléséhez válassza ki a **Cloud service és a központi telepítései** jelölőnégyzetet. Vagy választhat a **éles környezet** vagy a **átmeneti üzembe helyezés** jelölőnégyzetet.
+3. A teljes felhőalapú szolgáltatás törléséhez jelölje be a **Cloud Service és a központi telepítések** jelölőnégyzetet. Vagy kiválaszthatja az **éles üzembe helyezést** vagy az **átmeneti üzembe helyezés** jelölőnégyzetet is.
 
     ![Cloud Services Delete](./media/cloud-services-how-to-manage-portal/delete-blade.png)
 
-4. Válassza ki **törlése** alján.
+4. Válassza a **Törlés** elemet a lap alján.
 
-5. A felhőalapú szolgáltatás törléséhez válassza ki **felhőszolgáltatás törlése**. Majd a megerősítési kérést válassza **Igen**.
+5. A Cloud Service törléséhez válassza a **Cloud Service törlése**lehetőséget. Ezután a megerősítő üzenetben válassza az **Igen**lehetőséget.
 
 > [!NOTE]
-> Ha törli egy felhőalapú szolgáltatást, és részletes ellenőrzésére van beállítva, törölnie kell az adatokat manuálisan a tárfiókból. Hol található a tabulky metrik kapcsolatos információkért lásd: [Bevezetés a felhőalapú szolgáltatás figyelési](cloud-services-how-to-monitor.md).
+> Ha a felhőalapú szolgáltatás törlődik, és a részletes figyelés konfigurálva van, akkor manuálisan kell törölnie az adatait a Storage-fiókból. További információ a metrikák táblázatának helyéről: Bevezetés a [Cloud Service monitorozásba](cloud-services-how-to-monitor.md).
 
 
-## <a name="find-more-information-about-failed-deployments"></a>További információ a sikertelen üzembe helyezés
-A **áttekintése** panelen egy állapotsávval tetején. Amikor kiválasztja a sáv, egy új panel megnyílik, és bármely hibaadatokat jelenít meg. Az üzemelő példány nem tartalmazhat hibaüzeneteket, ha az információk panel érték üres.
+## <a name="find-more-information-about-failed-deployments"></a>További információ a sikertelen üzembe helyezésekről
+Az **Áttekintés** panel tetején egy állapotsor található. Amikor kiválasztja a sávot, megnyílik egy új panel, és megjeleníti a hiba adatait. Ha a központi telepítés nem tartalmaz hibákat, az információ panel üres.
 
 ![Cloud Services áttekintése](./media/cloud-services-how-to-manage-portal/status-info.png)
 
@@ -126,7 +120,7 @@ A **áttekintése** panelen egy állapotsávval tetején. Amikor kiválasztja a 
 [Azure portal]: https://portal.azure.com
 
 ## <a name="next-steps"></a>További lépések
-* [A felhőszolgáltatás általános konfigurációs](cloud-services-how-to-configure-portal.md).
-* Ismerje meg, hogyan [egy felhőalapú szolgáltatás üzembe helyezése](cloud-services-how-to-create-deploy-portal.md).
-* Konfigurálja a [egyéni tartománynév](cloud-services-custom-domain-name-portal.md).
-* Konfigurálása [SSL-tanúsítványok](cloud-services-configure-ssl-certificate-portal.md).
+* [A felhőalapú szolgáltatás általános konfigurációja](cloud-services-how-to-configure-portal.md).
+* Ismerje meg, hogyan [helyezhet üzembe egy felhőalapú szolgáltatást](cloud-services-how-to-create-deploy-portal.md).
+* Konfigurálja az [Egyéni tartománynevet](cloud-services-custom-domain-name-portal.md).
+* Konfigurálja az [SSL](cloud-services-configure-ssl-certificate-portal.md)-tanúsítványokat.

@@ -1,44 +1,49 @@
 ---
-title: Az Azure Time Series Insights-környezet C# referencia-adatok kezelése |} A Microsoft Docs
-description: Ez a cikk ismerteti az Azure Time Series Insights-környezet referenciaadatok kezelése a C# (c-éles) .NET nyelven írt egyéni alkalmazás létrehozásával.
+title: A Azure Time Series Insights-környezetben található referenciák C# kezelése a használatával | Microsoft Docs
+description: Ez a cikk bemutatja, hogyan kezelheti az Azure Time Series Insights-környezetek hivatkozási információit úgy, hogy létrehoz C# egy (c-Sharp) .net nyelven írt egyéni alkalmazást.
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
-ms.reviewer: jasonh, kfile, anshan
+ms.reviewer: jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 03/23/2018
+ms.date: 08/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: d15e229595ded0f814ebc4048d428f044b59e16d
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 2b9bd4b3516ee03ce78fcf255eba011f86f9c29c
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55295729"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883937"
 ---
-# <a name="manage-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>Az Azure Time Series Insights-környezet referenciaadatok kezelése a C# használatával
+# <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>Azure Time Series Insights-környezethez tartozó GA-referenciák kezelése a használatávalC#
 
-Ez a cikk ismerteti egy példa C#-projektben a referencia-adatok az Azure Time Series Insights-környezet kezelése állíthat össze.
+Ez a cikk egy példaként C# szolgáló projektet ismertet, amely a Azure Time Series Insights-környezetek hivatkozási adatkezeléséhez használható.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Fordítsa le és futtassa a mintakód előtt, kövesse az alábbi lépéseket:
-1. [Hozzon létre egy referencia-adatkészlet](time-series-insights-add-reference-data-set.md).
 
-2. Állítsa be az alkalmazás a hitelesítési hozzáférési jogkivonat. Győződjön meg arról, hogy a jogkivonat igényelve, a Azure Active Directory API-n keresztül. Meg kell átadnia a tokent a `Authorization` minden query API-kérelem fejléce. 
- 
-   Nem interaktív alkalmazások beállításával kapcsolatos további információkért lásd: [hitelesítési és engedélyezési](time-series-insights-authentication-and-authorization.md).
+A mintakód fordítása és futtatása előtt végezze el a következő lépéseket:
 
-3. A mintakód cserélje le a példában állandókat, a kijelölt szerkesztése **DUMMY #**, a kód kezdetét közelében. 
+1. [Hozzon létre egy hivatkozási](time-series-insights-add-reference-data-set.md)adatkészletet.
 
-Ez a példa kód is érhető el: [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights)
+1. Konfigurálja az alkalmazáshoz tartozó engedélyezési hozzáférési tokent. Győződjön meg arról, hogy a jogkivonat a Azure Active Directory API-n keresztül szerezhető be. Ezt a tokent minden lekérdezési `Authorization` API-kérelem fejlécében át kell adni.
 
-## <a name="project-references"></a>Projekt Referenciáihoz
-Adja hozzá a NuGet-csomagok `Microsoft.IdentityModel.Clients.ActiveDirectory` és `Newtonsoft.Json` ebben a példában. 
+   A nem interaktív alkalmazások beállításával kapcsolatos további információkért lásd: [hitelesítés és engedélyezés](time-series-insights-authentication-and-authorization.md).
 
-## <a name="c-sample-code"></a>C#-mintakód 
+1. Szerkessze a mintakód értékét, hogy lecserélje a (z) **#DUMMY #** , a kód elején megjelenő – példa konstansokat.
+
+> [!NOTE]
+> Tekintse meg a GA minta [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample)kódját a következő címen:.
+
+## <a name="project-dependencies"></a>Projekt függőségei
+
+Adja hozzá a `Microsoft.IdentityModel.Clients.ActiveDirectory` NuGet `Newtonsoft.Json` -csomagokat, és ehhez a példához.
+
+## <a name="c-sample-code"></a>C#mintakód
+
 ```csharp
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 
@@ -134,7 +139,7 @@ namespace TimeSeriesInsightsReferenceDataSampleApp
     ""deleteproperties"": [{
         ""key"": {
             ""DeviceId"": ""Fan1""
-        },
+    },
         ""properties"": [""BladeCount""]
     }]
 }";
@@ -241,4 +246,5 @@ namespace TimeSeriesInsightsReferenceDataSampleApp
 ```
 
 ## <a name="next-steps"></a>További lépések
-[Referenciaadatok API](/rest/api/time-series-insights/ga-reference-data-api)
+
+- Olvassa el a [hivatkozási ADATapi](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)-t.

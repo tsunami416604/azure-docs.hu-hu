@@ -11,11 +11,11 @@ ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: robinsh
 ms.openlocfilehash: ffc2e5fb588ce6861f5df6cefdf810c1a015c043
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59684038"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61441014"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>Időjárás-előrejelzés az IoT hub érzékelői adatainak használatával az Azure Machine Learningben
 
@@ -114,7 +114,7 @@ Megismerheti, hogyan használhatja az Azure Machine Learning időjárás előrej
 
    **Kimeneti alias**: A kimeneti egyedi aliast.
 
-   **Fogadó**: Válassza ki **a Blob Storage-**.
+   **Fogadó**: Válassza ki **a Blob Storage-** .
 
    **Storage-fiók**: A tárfiók a blob storage. Hozzon létre egy tárfiókot, vagy használjon egy meglévőt.
 
@@ -184,7 +184,7 @@ Futtassa az ügyfélalkalmazást, összegyűjtése és hőmérséklettel és pá
 
    ![Az Azure Machine Learning időjárás-előrejelzés eredményének beolvasása](media/iot-hub-weather-forecast-machine-learning/12_get-weather-forecast-result-azure-machine-learning.png)
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Az Azure Machine Learning sikeresen felhasználta az esélye, hogy az IoT hub által fogadott hőmérséklettel és páratartalommal kapcsolatos adatok alapján esőfelhő előállításához.
 

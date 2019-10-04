@@ -1,36 +1,36 @@
 ---
-title: Műveletek tömeges végrehajtása a BulkExecutor .NET-gráfkódtár használatával az Azure Cosmos DB Gremlin API-ban
-description: Ismerje meg, hogyan importálhat tömegesen gráfadatokat egy Azure Cosmos DB Gremlin API-tárolóba a BulkExecutor-kódtár használatával.
+title: A Graph tömeges végrehajtó .NET-kódtár használata tömeges műveletek végrehajtásához Azure Cosmos DB Gremlin API-ban
+description: Megtudhatja, hogyan használhatja a tömeges végrehajtó függvénytárat a Graph-beli adatAzure Cosmos DB Gremlin API-tárolóba való tömeges importálásához.
 author: luisbosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: tutorial
-ms.date: 08/14/2018
+ms.date: 05/28/2019
 ms.author: lbosq
 ms.reviewer: sngun
-ms.openlocfilehash: 5e88602aa3b983e1533248253d53967f39e6b5eb
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 51bd14c536e46291c8720e6c22e2e03a30243ddf
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57837524"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827268"
 ---
-# <a name="using-the-graph-bulkexecutor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>Műveletek tömeges végrehajtása a BulkExecutor .NET-gráfkódtár használatával az Azure Cosmos DB Gremlin API-ban
+# <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>A Graph tömeges végrehajtó .NET-kódtár használata tömeges műveletek végrehajtásához Azure Cosmos DB Gremlin API-ban
 
-Ez az oktatóanyag azt ismerteti, hogy hogyan importálhat és frissíthet gráfobjektumokat egy Azure Cosmos DB Gremlin API-tárolóban az Azure Cosmos DB BulkExecutor .NET-kódtára használatával. Ezzel az eljárással programozott módon hozhatók létre Csúcspont és Él objektumok a [BulkExecutor-kódtár](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-overview) Graph osztályával, amelyekből ezután hálózati kérelmenként több is beilleszthető. Ez a viselkedés a BulkExecutor-kódtárban konfigurálható az adatbázis és a helyi memória-erőforrások optimális kihasználása érdekében.
+Ez az oktatóanyag a Graph-objektumok Azure Cosmos DB Gremlin API-tárolóba történő importálásához és frissítéséhez nyújt útmutatást az Azure CosmosDB tömeges végrehajtó .NET-függvénytárának használatáról. Ez a folyamat a [tömeges végrehajtó függvénytárában](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-overview) lévő Graph osztályt használja a csúcspont-és Edge-objektumok programozott módon történő létrehozásához, majd a hálózatra irányuló kérelmek több példányának beszúrásához. Ez a viselkedés a tömeges végrehajtó könyvtárán keresztül állítható be, hogy az adatbázis és a helyi memória erőforrásai optimálisan használhatók legyenek.
 
-A Gremlin-lekérdezések az adatbázisnak való küldésével ellentétben (ahol a parancsok kiértékelése és végrehajtása egyesével történik), a BulkExecutor-kódtár használatakor az objektumokat helyileg kell létrehozni és ellenőrizni. Az objektumok létrehozását követően a kódtár használatával a gráfobjektumokat szekvenciálisan küldheti az adatbázis-szolgáltatásba. Ezzel a módszerrel az adatfeldolgozási sebesség akár a százszorosára növelhető, ami ideális módszerré teszi a kezdeti adatmigrálásokhoz és az időszakos adatátviteli műveletekhez. További információért látogasson el a GitHub [az Azure Cosmos DB Graph BulkExecutor mintaalkalmazást tartalmazó oldalára](https://aka.ms/graph-bulkexecutor-sample).
+Ahelyett, hogy a Gremlin-lekérdezéseket egy adatbázisba küldi, ahol a rendszer kiértékeli a parancsot, majd egyszerre hajt végre egyet, a tömeges végrehajtó függvénytár használatával Ehelyett az objektumok helyi létrehozásához és ellenőrzéséhez szükséges. Az objektumok létrehozását követően a kódtár használatával a gráfobjektumokat szekvenciálisan küldheti az adatbázis-szolgáltatásba. Ezzel a módszerrel az adatfeldolgozási sebesség akár a százszorosára növelhető, ami ideális módszerré teszi a kezdeti adatmigrálásokhoz és az időszakos adatátviteli műveletekhez. További információért látogasson el a [Azure Cosmos db Graph tömeges végrehajtó minta alkalmazás](https://aka.ms/graph-bulkexecutor-sample)GitHub oldalára.
 
 ## <a name="bulk-operations-with-graph-data"></a>Tömeges gráfadatműveletek
 
-A [BulkExecutor-kódtár](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?view=azure-dotnet) egy `Microsoft.Azure.CosmosDB.BulkExecutor.Graph` névteret tartalmaz a gráfobjektumok létrehozásával és importálásával kapcsolatos funkciók biztosításához. 
+A [tömeges végrehajtó függvénytár](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?view=azure-dotnet) `Microsoft.Azure.CosmosDB.BulkExecutor.Graph` névteret tartalmaz a Graph-objektumok létrehozásához és importálásához szükséges funkciók biztosításához. 
 
 Az alábbi folyamat bemutatja, hogyan használható az adatmigrálás a Gremlin API-tárolók esetében:
 1. Rekordok lekérése az adatforrásból.
 2. Hozzon létre `GremlinVertex`- és `GremlinEdge`-objektumokat a beszerzett rekordokból, és adja hozzá őket egy `IEnumerable`-adatstruktúrához. Az alkalmazásnak ebben a részében kell megvalósítani a kapcsolatok észlelését és hozzáadását végző logikát, arra az esetre, ha az adatforrás nem egy gráfadatbázis.
 3. A [Graph BulkImportAsync metódus](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph.graphbulkexecutor.bulkimportasync?view=azure-dotnet) használatával szúrhatja be a gráfobjektumokat a gyűjteménybe.
 
-Ezzel a mechanizmussal jobb adatmigrálási hatékonyság érhető el, mint a Gremlin-ügyfél használata esetében. Azért tapasztalható ez a javulás, mert a Gremlin használata esetén az alkalmazás egyszerre egy lekérdezést küld le, amelyet ellenőrizni kell, ki kell értékelni, majd végre kell hajtani az adatok létrehozásához. A BulkExecutor-kódtár az ellenőrzést az alkalmazásban végzi el, és mindegyik hálózati kérelem esetében egyszerre több gráfobjektumot küld el.
+Ezzel a mechanizmussal jobb adatmigrálási hatékonyság érhető el, mint a Gremlin-ügyfél használata esetében. Azért tapasztalható ez a javulás, mert a Gremlin használata esetén az alkalmazás egyszerre egy lekérdezést küld le, amelyet ellenőrizni kell, ki kell értékelni, majd végre kell hajtani az adatok létrehozásához. A tömeges végrehajtó függvénytár kezeli az érvényesítést az alkalmazásban, és minden hálózati kérelem esetében egyszerre több gráf-objektumot fog küldeni.
 
 ### <a name="creating-vertices-and-edges"></a>Csúcsok és élek létrehozása
 
@@ -73,7 +73,7 @@ catch (Exception e)
 }
 ```
 
-A BulkExecutor-kódtár paramétereivel kapcsolatos további információért tekintse meg [az adatok az Azure Cosmos DB-be való tömeges importálását (BulkImportData) ismertető témakört](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-dot-net#bulk-import-data-to-azure-cosmos-db).
+A tömeges végrehajtó könyvtár paramétereivel kapcsolatos további információkért tekintse meg a [BulkImportData Azure Cosmos db témakört](bulk-executor-dot-net.md#bulk-import-data-to-an-azure-cosmos-account).
 
 A hasznos adatokat példányosítani kell `GremlinVertex`- és `GremlinEdge`-objektumokba. Ezeket az objektumokat így lehet létrehozni:
 
@@ -109,18 +109,18 @@ e.AddProperty("customProperty", "value");
 ```
 
 > [!NOTE]
-> A BulkExecutor segédprogram az Élek hozzáadása előtt nem ellenőrzi automatikusan a Csúcspontok meglétét. Ezt az alkalmazásban kell ellenőrizni a BulkImport feladatok futtatása előtt.
+> A tömeges végrehajtó segédprogram nem keresi automatikusan a meglévő csúcspontokat a szegélyek hozzáadása előtt. Ezt az alkalmazásban kell ellenőrizni a BulkImport feladatok futtatása előtt.
 
 ## <a name="sample-application"></a>Mintaalkalmazás
 
 ### <a name="prerequisites"></a>Előfeltételek
-* Az Azure-fejlesztési számítási feladatot is tartalmazó Visual Studio 2017. Ingyenesen elkezdheti a [Visual Studio 2017 Community Edition](https://visualstudio.microsoft.com/downloads/) használatát.
-* Azure-előfizetés. Itt hozhat létre [ingyenes Azure-fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cosmos-db). Alternatív lehetőségként [ingyenesen kipróbálhatja az Azure Cosmos DB-t](https://azure.microsoft.com/try/cosmosdb/), és Azure-előfizetés nélkül hozhat létre egy Cosmos DB-adatbázisfiókot.
+* Visual Studio 2019 az Azure-fejlesztési számítási feladattal. A [Visual Studio 2019 Community Edition](https://visualstudio.microsoft.com/downloads/) ingyenes használatba veheti az első lépéseket.
+* Azure-előfizetés. Itt hozhat létre [ingyenes Azure-fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cosmos-db). Azt is megteheti, hogy az Azure-előfizetés nélkül is létrehozhat egy Cosmos-adatbázis-fiókot, amely [ingyenes kipróbálási Azure Cosmos db biztosít](https://azure.microsoft.com/try/cosmosdb/) .
 * Azure Cosmos DB Gremlin API-adatbázis **korlátlan gyűjteménnyel**. Ez az útmutató bemutatja, hogy hogyan foghat neki [az Azure Cosmos DB Gremlin API használatának a .NET környezetben](https://docs.microsoft.com/azure/cosmos-db/create-graph-dotnet).
 * Git. További információért tekintse meg a [Git letöltési oldalát](https://git-scm.com/downloads).
 
 ### <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
-Ebben az oktatóanyagban a kezdő lépéseket a GitHubon elérhető [Azure Cosmos DB Graph BulkExecutor minta](https://aka.ms/graph-bulkexecutor-sample) használatával követjük végig. Ez az alkalmazás egy .NET-megoldást tartalmaz, amely véletlenszerűen állít elő csúcspont és él objektumokat, majd tömeges beszúrásokat hajt végre a megadott gráfadatbázis-fiókba. Az alkalmazás lekéréséhez futtassa az alábbi `git clone` parancsot:
+Ebben az oktatóanyagban az első lépések lépéseit követjük a GitHubon üzemeltetett [Azure Cosmos db gráf tömeges végrehajtó minta](https://aka.ms/graph-bulkexecutor-sample) használatával. Ez az alkalmazás egy .NET-megoldást tartalmaz, amely véletlenszerűen állít elő csúcspont és él objektumokat, majd tömeges beszúrásokat hajt végre a megadott gráfadatbázis-fiókba. Az alkalmazás lekéréséhez futtassa az alábbi `git clone` parancsot:
 
 ```bash
 git clone https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dotnet-getting-started.git
@@ -131,7 +131,7 @@ Ez az adattár tartalmazza a GraphBulkExecutor mintát a következő fájlokkal:
 Fájl|Leírás
 ---|---
 `App.config`|Itt vannak megadva az alkalmazás- és adatbázis-specifikus paraméterek. Ezt a fájlt előbb módosítani kell, hogy a céladatbázishoz és -gyűjteményekhez csatlakozzon.
-`Program.cs`| Ez a fájl tartalmazza a mögöttes logikát, amely a `DocumentClient` gyűjtemény létrehozását, a karbantartások kezelését és a BulkExecutor-kérések küldését végzi.
+`Program.cs`| Ez a fájl tartalmazza a `DocumentClient` gyűjtemény létrehozását, a tisztítások kezelését és a tömeges végrehajtó kérések küldését.
 `Util.cs`| Ez a fájl egy segítőosztályt tartalmaz, amely a tesztadatok létrehozásához szükséges mögöttes logikát biztosítja, valamint az adatbázis és a gyűjtemények meglétének ellenőrzését végzi.
 
 Az `App.config` fájlban az alábbi konfigurációs értékek adhatók meg:
@@ -155,6 +155,6 @@ Beállítás|Leírás
 3. Ellenőrizze az eredményeket a gráfadatbázis lekérdezésével. Ha a `ShouldCleanupOnFinish` beállítás értéke true (igaz), az adatbázis automatikusan törölve lesz.
 
 ## <a name="next-steps"></a>További lépések
-* Kibocsátási megjegyzések tömeges végrehajtó .NET könyvtár és Nuget csomag részletes ismertetése: [végrehajtó SDK részletek tömeges](sql-api-sdk-bulk-executor-dot-net.md). 
-* A BulkExecutor használatának további optimalizálásával kapcsolatban lásd [a teljesítménnyel kapcsolatos tippeket](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-dot-net#performance-tips).
+* További információ a Nuget csomag részleteiről és a tömeges végrehajtó .NET-függvénytár kibocsátási megjegyzéséről: [tömeges végrehajtó SDK – részletek](sql-api-sdk-bulk-executor-dot-net.md). 
+* Tekintse át a [teljesítménnyel kapcsolatos tippeket](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-dot-net#performance-tips) a tömeges végrehajtó használatának további optimalizálása érdekében.
 * Az ebben a névtérben definiált osztályokkal és névterekkel kapcsolatos további információért olvassa el [a BulkExecutor.Graph áttekintését tartalmazó cikket](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?view=azure-dotnet).

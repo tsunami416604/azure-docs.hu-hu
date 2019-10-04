@@ -1,6 +1,6 @@
 ---
-title: Metrikák, a Azure NetApp-fájlok |} A Microsoft Docs
-description: Metrikák Azure NetApp fájlokat ismerteti.
+title: A Azure NetApp Files metrikái | Microsoft Docs
+description: A Azure NetApp Files metrikáinak leírása.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,41 +12,60 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/15/2019
+ms.date: 08/07/2019
 ms.author: b-juche
-ms.openlocfilehash: 1563b60ef26ac5e4d40f45095d0109dd9dd71570
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 7cf382f511d2ba8452d77bf207f36b749cb31e94
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56672576"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848795"
 ---
 # <a name="metrics-for-azure-netapp-files"></a>Az Azure NetApp Files metrikái
 
-NetApp Azure Files mérőszámait lefoglalt tároló, tényleges tárterület-használat, kötet átviteli sebesség, IOPS és a késés. Ezek a metrikák elemzésével szerezhet a NetApp fiókok használati mintáját és mennyiségi teljesítményét jobb megértése.  
+Azure NetApp Files metrikákat biztosít a lefoglalt tárolóban, a tényleges tárterület-használatot, a kötet átviteli sebességét, a IOPS és a késést. A metrikák elemzésével jobban megismerheti a NetApp-fiókok használati mintáját és a kötet teljesítményét.  
 
-## <a name="capacity_pools"></a>Kapacitás készletek használati metrikái
+## <a name="capacity_pools"></a>A kapacitási készletek használati metrikái
 
-- *Kötet lefoglalt készlet mérete*  
-    Ez az a kiosztott kapacitást készlet mérete (GiB).  
-- *Lefoglalt kötet készlet használt*  
-    Ez az a teljes kötet kvóta (GB) a megadott kapacitás készletben (azt jelenti, a teljes kiosztott méretek a kötet a kapacitás a készletben található). Ez a kötet létrehozása során kiválasztott méretét.  
-- *Kötet készlet teljes logikai mérete*  
-    Ez az a teljes kapacitás készletben található kötetek között használt logikai terület (GB).  
-- *Kötet készlet teljes pillanatkép mérete*  
-    Ez az az összes növekményes, a pillanatképek által használt logikai területet.  
+<!-- 
+- *Volume pool allocated size*  
+    The size (GiB) of the provisioned capacity pool  
+--> 
+- *Lefoglalt kötet-készlet*  
+    Az adott kapacitási készletben lévő mennyiségi kvóta (GiB) összege (azaz a kötetek kiosztott méretei összesen)  
+    A kötet létrehozása során kiválasztott méret.  
+- *Kötet készletének teljes logikai mérete*  
+    A kapacitási készlet kötetei között használt logikai terület teljes mérete (GiB)  
+<!-- 
+- *Volume pool total snapshot size*  
+    The total of incremental logical space used by the snapshots  
+-->
 
-## <a name="volumes"></a>Kötetek használati metrikái
+## <a name="volumes"></a>A kötetek használati metrikái
 
-- *Kötet lefoglalt méret*   
-    Ez az a kötet méretétől (kvóta) GiB-ban.  
-- *A kötet logikai mérete*   
-    Ez az a teljes logikai terület egy köteten (GB) használt. Ez a méret aktív fájlrendszerek és pillanatképek által használt logikai terület tartalmazza.  
-- *Kötet-pillanatképek mérete*   
-    Ez az a növekményes, a pillanatképek a kötet által használt logikai területet.  
+<!-- 
+- *Volume allocated size*   
+    The volume size (quota) provisioned in GiB  
+--> 
+- *Kötet logikai mérete*   
+    A kötetben használt teljes logikai terület (GiB)  
+    Ez a méret magában foglalja az aktív fájlrendszerek és Pillanatképek által használt logikai teret.  
+- *Kötet pillanatképének mérete*   
+   A pillanatképek által a köteten használt növekményes logikai terület  
+
+## <a name="performance-metrics-for-volumes"></a>A kötetek teljesítmény-mérőszámai
+
+- *AverageReadLatency*   
+    A kötet olvasási idejének átlagos ideje ezredmásodpercben
+- *AverageWriteLatency*   
+    A kötet írási idejének átlagos ideje ezredmásodpercben
+- *ReadIops*   
+    A kötetre irányuló olvasási műveletek száma másodpercenként
+- *WriteIops*   
+    A kötetbe való írások másodpercenkénti száma
 
 ## <a name="next-steps"></a>További lépések
 
-* [Megismerheti a NetApp Azure-fájlok hierarchiája](azure-netapp-files-understand-storage-hierarchy.md)
+* [A Azure NetApp Files tárolási hierarchiájának megismerése](azure-netapp-files-understand-storage-hierarchy.md)
 * [Kapacitáskészlet beállítása](azure-netapp-files-set-up-capacity-pool.md)
 * [Kötet létrehozása Azure NetApp Files-hoz](azure-netapp-files-create-volumes.md)

@@ -1,21 +1,17 @@
 ---
 title: Az Azure Managed Applications áttekintése | Microsoft Docs
 description: Az Azure Managed Applications fogalmainak ismertetése
-services: managed-applications
 author: tfitzmac
-manager: timlt
 ms.service: managed-applications
-ms.devlang: na
 ms.topic: overview
-ms.tgt_pltfrm: na
-ms.date: 10/04/2018
+ms.date: 07/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: da6c9bb6cbd94ab5078641f25e42ad2203ff7a53
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 97d6a229651f1c3fbcdbb79c7ae7d1c1f855882b
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402354"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234758"
 ---
 # <a name="azure-managed-applications-overview"></a>Az Azure Managed Applications áttekintése
 
@@ -33,7 +29,7 @@ Habár az ügyfelek saját maguk telepítik az előfizetésükhöz tartozó fel�
 
 A felügyelt alkalmazások lehetővé teszik, hogy az informatikai részleg előre jóváhagyott megoldásokat nyújtson a vállalat felhasználói számára. Így biztos lehet abban, hogy a megoldások megfelelnek a vállalati szabványoknak.
 
-Felügyelt alkalmazások jelenleg nem támogatja a [felügyelt identitások az Azure-erőforrások](../active-directory/managed-identities-azure-resources/overview.md).
+A felügyelt alkalmazások támogatják [Az Azure-erőforrások felügyelt identitásait](./publish-managed-identity.md).
 
 ## <a name="types-of-managed-applications"></a>A felügyelt alkalmazások típusai
 
@@ -55,7 +51,9 @@ A felügyelt alkalmazások Azure Marketplace-en való közzétételével kapcsol
 
 ## <a name="resource-groups-for-managed-applications"></a>Felügyelt alkalmazások erőforráscsoportjai
 
-A felügyelt alkalmazások erőforrásai általában két erőforráscsoportban találhatók. Ezek közül egyet az ügyfél kezel, a másikat pedig a közzétevő felügyeli. A felügyelt alkalmazás meghatározásakor a közzétevő határozza meg a hozzáférési szinteket. Az [adatműveletekhez](../role-based-access-control/role-definitions.md) való hozzáférés korlátozása jelenleg nem támogatott az Azure összes adatszolgáltatójánál.
+A felügyelt alkalmazás erőforrásai általában két erőforráscsoporthoz tartoznak. Ezek közül egyet az ügyfél kezel, a másikat pedig a közzétevő felügyeli. A felügyelt alkalmazás meghatározásakor a közzétevő határozza meg a hozzáférési szinteket. A közzétevő egy állandó szerepkör-hozzárendelést igényelhet, vagy igény szerinti [hozzáférést](request-just-in-time-access.md) biztosíthat egy adott időszakra korlátozott hozzárendeléshez.
+
+Az [adatműveletekhez](../role-based-access-control/role-definitions.md) való hozzáférés korlátozása jelenleg nem támogatott az Azure összes adatszolgáltatójánál.
 
 Az alábbi képen egy olyan forgatókönyv látható, ahol a közzétevő a felügyelt erőforráscsoport tulajdonosi szerepkörét kéri. A közzétevő az ügyfél számára csak olvashatóvá tette az erőforráscsoportot. A kezelt erőforráscsoporthoz hozzáféréssel rendelkező közzétevői identitások mentesítve vannak a zárolás alól.
 
@@ -69,7 +67,9 @@ Az ügyfél teljes hozzáféréssel rendelkezik az erőforráscsoporthoz, így k
 
 ### <a name="managed-resource-group"></a>Felügyelt erőforráscsoportok
 
-Ez az erőforráscsoport a felügyelt alkalmazáshoz szükséges összes erőforrást tartalmazza. Ez az erőforrás például a megoldáshoz szükséges virtuális gépeket, tárfiókokat és virtuális hálózatokat is tartalmazza. Az ügyfél korlátozott hozzáféréssel rendelkezik ehhez az erőforráscsoporthoz, mivel nem az ügyfél kezeli a felügyelt alkalmazás különálló erőforrásait. A közzétevő hozzáférése az erőforráscsoporthoz megfelel a felügyelt alkalmazás definíciójában megadott szerepkörnek. Például a közzétevő kérheti a tulajdonosi vagy közreműködői szerepkört az erőforráscsoporthoz.
+Ez az erőforráscsoport a felügyelt alkalmazáshoz szükséges összes erőforrást tartalmazza. Ez az erőforrás például a megoldáshoz szükséges virtuális gépeket, tárfiókokat és virtuális hálózatokat is tartalmazza. Az ügyfél korlátozott hozzáféréssel rendelkezik ehhez az erőforráscsoporthoz, mivel nem az ügyfél kezeli a felügyelt alkalmazás különálló erőforrásait. A közzétevő hozzáférése az erőforráscsoporthoz megfelel a felügyelt alkalmazás definíciójában megadott szerepkörnek. Például a közzétevő kérheti a tulajdonosi vagy közreműködői szerepkört az erőforráscsoporthoz. A hozzáférés vagy állandó, vagy egy adott időre korlátozódik.
+
+Amikor közzéteszi a [felügyelt alkalmazást a piactéren](publish-marketplace-app.md), a közzétevő engedélyezheti a felhasználók számára, hogy meghatározott műveleteket hajtsanak végre a felügyelt erőforráscsoport erőforrásain. A közzétevő például megadhatja, hogy a felhasználók újra tudják indítani a virtuális gépeket. Az olvasási műveleteken túl minden más művelet is megtagadva.
 
 Ha az ügyfél törli a felügyelt alkalmazást, az erőforráscsoport is törlődik.
 
@@ -82,4 +82,4 @@ A felügyelt alkalmazásra [Azure-szabályzatot](../governance/policy/overview.m
 Ebben a cikkben megismerkedett a felügyelt alkalmazások használatának előnyeivel. A következő cikkben egy felügyelt alkalmazás definícióját hozza létre.
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: Azure-beli közzététel felügyeltalkalmazás-definíció](publish-managed-app-definition-quickstart.md)
+> [Rövid útmutató: Azure-beli felügyelt alkalmazás definíciójának közzététele](publish-managed-app-definition-quickstart.md)

@@ -1,137 +1,137 @@
 ---
-title: Létrehozása, megtekintése és kezelése napló használatával az Azure Monitor riasztások |} A Microsoft Docs
-description: Az Azure Monitor használatával hozhat létre, megtekintése és kezelése az Azure-beli naplóriasztási szabály.
-author: msvijayn
+title: Naplózási riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával | Microsoft Docs
+description: Használja a Azure Monitor az Azure-beli naplózási riasztási szabályok létrehozásához, megtekintéséhez és kezeléséhez.
+author: yanivlavi
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/15/2018
-ms.author: vinagara
+ms.date: 07/29/2019
+ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: d3285a6b2aa09dd78bbb63c384bd1f65c17034ff
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d540912d280302d2ae2166b75fb2d163458d7a61
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59006951"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677828"
 ---
-# <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Létrehozása, megtekintése és kezelése az Azure Monitor használatával riasztások
+# <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Naplózási riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával
 
 ## <a name="overview"></a>Áttekintés
-Ez a cikk bemutatja, hogyan állítható be a riasztások felhasználói felületén belül az Azure portal riasztások. Riasztási szabály definíciója van három részből áll:
-- Cél: Adott Azure-erőforrás, amely figyelni
-- Feltételek: Adott feltétel, vagy logikai, amely jel látható, ha indíthat el művelet
-- Művelet: Az értesítés - egyetlen külső eseményfogyasztó adott hívás küldött e-mailben, SMS, webhook stb.
+Ebből a cikkből megtudhatja, hogyan állíthatja be a naplózási riasztásokat az Azure Portal riasztások felületének használatával. A riasztási szabályok definíciója három részből áll:
+- Cél: A figyelni kívánt Azure-erőforrás
+- Feltételek: A jelet a művelet elindítására szolgáló konkrét feltételnek vagy logikának kell megjelennie.
+- Művelet: Értesítés küldése e-mailben, SMS-ben, webhookban stb.
 
-Az előfizetési időszak **Naplóriasztások** írja le a riasztásokhoz, ahol a naplólekérdezés jel egy [Log Analytics-munkaterület](../learn/tutorial-viewdata.md) vagy [Application Insights](../app/analytics.md). További információ funkciót, terminológiája és származó típust [Naplóriasztások – áttekintés](alerts-unified-log.md).
+A naplókban szereplő riasztások olyan riasztások leírására szolgálnak, amelyekben a jel egy [log Analytics](../learn/tutorial-viewdata.md) munkaterületen vagy [Application Insights](../app/analytics.md). További információ a naplózási riasztások funkcióival, terminológiával és típusaival kapcsolatban [– Áttekintés](alerts-unified-log.md).
 
 > [!NOTE]
-> Népszerű naplóadatait [Log Analytics-munkaterület](../../azure-monitor/learn/tutorial-viewdata.md) is már elérhető az Azure monitorban metrika-platformon. A Részletek nézetben [naplók riasztási metrika](alerts-metric-logs.md)
+> A [log Analytics munkaterület](../../azure-monitor/learn/tutorial-viewdata.md) népszerű naplózási adatai mostantól a Azure monitor metrika platformján is elérhetők. Részletek nézetben a [naplók metrikai riasztása](alerts-metric-logs.md)
 
-## <a name="managing-log-alerts-from-the-azure-portal"></a>Riasztások kezelése az Azure Portalról
+## <a name="managing-log-alerts-from-the-azure-portal"></a>A naplózási riasztások kezelése a Azure Portalból
 
-Részletes tovább lépésenkénti útmutató, amellyel az Azure portal felületén riasztások használatával.
+A következő részletes útmutató a log-riasztások Azure Portal felülettel való használatának lépései.
 
-### <a name="create-a-log-alert-rule-with-the-azure-portal"></a>A riasztási szabály létrehozása az Azure portal használatával
-1. Az a [portál](https://portal.azure.com/), jelölje be **figyelő** , és válassza ki a MONITOR terület - **riasztások**.
+### <a name="create-a-log-alert-rule-with-the-azure-portal"></a>Napló-riasztási szabály létrehozása a Azure Portal
+
+1. A [portálon](https://portal.azure.com/)kattintson a **figyelés** elemre, és a figyelés szakaszban válassza a **riasztások**lehetőséget.
 
     ![Figyelés](media/alerts-log/AlertsPreviewMenu.png)
 
-1. Válassza ki a **Új riasztási szabály** gombra kattintva hozzon létre egy új értesítés az Azure-ban.
+1. Az új riasztási **szabály** gomb kiválasztásával új riasztást hozhat létre az Azure-ban.
 
-    ![Riasztás beállítása](media/alerts-log/AlertsPreviewOption.png)
+    ![Riasztás hozzáadása](media/alerts-log/AlertsPreviewOption.png)
 
-1. A riasztás létrehozása szakaszt a három részből álló mellett látható: *Riasztási feltétel megadása*, *riasztás részleteinek megadása*, és *definiálása műveletcsoport*.
+1. A riasztás létrehozása szakasz az alábbi három részből áll: A *riasztási feltétel meghatározása*, a *riasztás részleteinek*meghatározása és a *műveleti csoport*definiálása.
 
     ![Szabály létrehozása](media/alerts-log/AlertsPreviewAdd.png)
 
-1. A riasztási feltétel megadása használatával a **erőforrás kiválasztása** hivatkozásra, és adja meg a cél erőforrás kijelölésével. Válassza ki a szűrő a _előfizetés_, _erőforrástípus_, és a szükséges _erőforrás_.
+1. Adja meg a riasztási feltételt az **erőforrás kiválasztása** hivatkozásra kattintva, és adja meg a célt egy erőforrás kiválasztásával. A szűréshez válasszaki az előfizetést, az _erőforrástípust_és a szükséges _erőforrást_.
 
    > [!NOTE]
-   > 
-   > A napló létrehozása a riasztás – ellenőrzése a **log** jel a kiválasztott erőforrás érhető el, mielőtt továbblépne.
+   > A naplózási riasztások létrehozásához – ellenőrizze, hogy a naplózási jel elérhető-e a kiválasztott erőforráshoz a folytatás előtt.
    >  ![Erőforrás kiválasztása](media/alerts-log/Alert-SelectResourceLog.png)
 
-1. *Naplóriasztások*: Győződjön meg arról **erőforrástípus** van egy analytics-forrásokhoz, például *Log Analytics* vagy *Application Insights* és típusa, jelezze **Log**, majd egyszer megfelelő **erőforrás** van kiválasztva, kattintson a *kész*. Következő az a **adja meg a feltételeket** érhető el, az erőforrás és a jel listából jel beállítások listájának megtekintése gombra **egyéni naplóbeli keresés** beállítást a kiválasztott log figyelő szolgáltatásokhoz, mint az *napló Analytics* vagy *az Application Insights*.
+1. *Naplók riasztásai*: Győződjön meg arról, hogy az **Erőforrás típusa** egy elemzési forrás, például *log Analytics* vagy *Application Insights* és a jel típusa **naplóként**, majd a megfelelő **erőforrás** választása után kattintson a *kész*gombra. Ezután a **feltételek hozzáadása** gomb használatával megtekintheti az erőforráshoz rendelkezésre álló jel-beállításokat, valamint a Szignál **lista egyéni naplók keresése** lehetőségét a kiválasztott naplózási figyelő szolgáltatáshoz (például *log Analytics* vagy *Application Insights*).
 
-   ![Válasszon ki egy erőforrást – egyéni keresés](media/alerts-log/AlertsPreviewResourceSelectionLog.png)
+   ![Erőforrás kiválasztása – egyéni naplók keresése](media/alerts-log/AlertsPreviewResourceSelectionLog.png)
 
    > [!NOTE]
    > 
-   > Lista importálhat analytics-lekérdezéshez, mivel jel típusa – riasztások **Log (mentett lekérdezés)**, a fenti ábrán látható módon. Így a felhasználók tökéletes a lekérdezést az Analyticsben és mentheti későbbi használatra, a riasztások – olvashat részletesebben használatával érhető el lekérdezés mentése [Azure Monitor log-lekérdezéssel](../log-query/log-query-overview.md) vagy [megosztott application insights-elemzési lekérdezés ](../log-query/log-query-overview.md).
+   > A riasztások listája a fenti ábrán látható módon importálhatja az elemzési lekérdezést jel Type- **log (mentett lekérdezés)** néven. Így a felhasználók tökéletesítheti a lekérdezést az elemzésekben, majd a riasztások későbbi használatba vételével megtakaríthatja őket – további részletek a lekérdezés az Application ininsights Analyticsben [való Azure monitor](../log-query/log-query-overview.md) vagy [megosztott lekérdezésben](../app/app-insights-overview.md)való használatával történő mentéséről.
 
-1. *Naplóriasztások*: A kijelölt riasztási lekérdezés is fel kell tüntetni **keresési lekérdezés** mező; Ha a lekérdezés szintaxisa helytelen a mezőben az hiba vörös színnel jelenik meg. Ha a lekérdezés szintaxisa helyes - referenciaként előzményadatok a megadott lekérdezés látható gráfként kapcsolóval, hogy a Teljesítménybeállítások az időtartomány utolsó 6 óra múlt héten.
+1. *Naplók riasztásai*: A kiválasztást követően a riasztás lekérdezése a **keresési lekérdezés** mezőben adható meg; Ha a lekérdezés szintaxisa helytelen, a mező piros színnel jeleníti meg a hibát. Ha a lekérdezés szintaxisa helyes – a megadott lekérdezéshez tartozó korábbi adatok hivatkozása diagramként jelenik meg, amely az utolsó hat óra és a múlt hét közötti időintervallumot mutatja.
 
     ![Riasztási szabály konfigurálása](media/alerts-log/AlertsPreviewAlertLog.png)
 
    > [!NOTE]
    > 
-   > Előzményadatok vizualizációt a lekérdezés eredményében van-e idő – részletek csak látható. Ha a lekérdezés eredménye összegzett adatok vagy az adott oszlop értékének - azonos jelenik meg egyes számú rajzot.
-   > Az Application Insights használatával Naplóriasztások Metrikamérés típusú vagy [átállítja az új API-t](alerts-log-api-switch.md), megadhatja, hogy melyik konkrét változó használatával az adatok csoportosításához a **az összesített** lehetőséget; ahogyan alább:
+   > A korábbi adatmegjelenítés csak akkor jeleníthető meg, ha a lekérdezés eredményeinek ideje részletes. Ha a lekérdezés összegzett vagy adott oszlopos értékeket eredményez, akkor az azonos számú mintaterületként jelenik meg.
+   > A naplózási riasztások metrikai típusához Application Insights vagy [az új API](alerts-log-api-switch.md)-ra való áttéréskor megadhatja, hogy melyik változót kell az adatok csoportosítására használni az **Összesítés** lehetőség használatával. az alábbi ábrán látható módon:
    > 
-   > ![a beállítás az összesítés](media/alerts-log/aggregate-on.png)
+   > ![Összesítés lehetőség szerint](media/alerts-log/aggregate-on.png)
 
-1. *Naplóriasztások*: A helyen, a Vizualizáció **riasztási logika** kiválaszthatók a megjelenített beállítások a feltétel, az összesítés, végül a küszöbértéket. Végül adja meg a logikai időt a megadott feltétel értékelése használatával **időszak** lehetőséget. Milyen gyakran fusson a riasztás a kiválasztásával együtt **gyakorisága**. **Naplóriasztások** alapulhatnak:
-    - [Rekordok száma](../../azure-monitor/platform/alerts-unified-log.md#number-of-results-alert-rules): Riasztás akkor jön létre, ha a lekérdezés által visszaadott rekordok számát vagy nagyobb vagy kisebb, mint a megadott érték.
-    - [Metrikus egység](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules): Riasztás jön létre, ha egyes *összesített érték* az eredmények között meghaladja a megadott küszöbérték és *szerint csoportosítva* választott érték. Az aktivista álláspontokkal riasztás a küszöbérték elérése esetén a választott időszakban hányszor. Összes incidens bármely kombinációjával adatszivárgás is megadhat az eredménykészletet vagy egymás utáni incidensek megkövetelése, hogy az illetéktelen behatolásokat fel kell a rendszer egymást követő minták között.
+1. *Naplók riasztásai*: A vizualizáció a helyén a **riasztási logikát** kiválaszthatja a feltételnek, az összesítésnek és a végső küszöbértéknek a megjelenített lehetőségei közül. Végül adja meg a logikát a megadott feltételnek az **időtartam** beállítással való értékeléséhez szükséges idő alapján. A **gyakoriság**lehetőség kiválasztásával együtt, hogy milyen gyakran kell futtatni a riasztást. A naplózási riasztások a következőeken alapulhatnak:
+    - [Rekordok száma](../../azure-monitor/platform/alerts-unified-log.md#number-of-results-alert-rules): A rendszer riasztást hoz létre, ha a lekérdezés által visszaadott rekordok száma nagyobb vagy kisebb, mint a megadott érték.
+    - [Metrika mértékegysége](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules): A rendszer riasztást hoz létre, ha az eredményekben szereplő összes *összesített érték* meghaladja a megadott küszöbértéket, és a kiválasztott érték *szerint* van csoportosítva. A riasztások megszegésének száma a kiválasztott időszakra vonatkozó küszöbérték túllépése. Megadhatja az összes, az eredményekben vagy egymást követő szabálysértésben előforduló jogsértés kombinációjának teljes megszegését annak érdekében, hogy a szabálysértéseknek egymást követő mintákban is szerepelniük kell.
 
 
-1. A második lépésben adja meg a riasztás a nevét a **riasztási szabály neve** mezőt, valamint egy **leírása** -a riasztás adatait részletezve és **súlyossági** értéket a a megadott beállításokat. Ezeket az adatokat az összes értesítő e-mailek, értesítések és az Azure Monitor által végzett leküldéses újra felhasználhatók. Ezenkívül felhasználó dönthet azonnal aktiválni a riasztási szabály létrehozása a megfelelő átállításával **engedélyezése a szabály létrehozásakor** lehetőséget.
+1. Második lépésként adjon meg egy nevet a riasztáshoz a riasztási **szabály neve** mezőben, valamint egy leírást, amely részletesen **ismerteti** a riasztásra vonatkozó jellemzőket, valamint a **súlyossági** értéket a megadott beállítások alapján. Ezeket az adatokat a rendszer minden riasztási e-mailben, értesítésben vagy Azure Monitor által végzett küldéssel újra felhasználja. A felhasználó emellett dönthet úgy is, hogy azonnal aktiválja a riasztási szabályt a létrehozáshoz, ha a létrehozási beállítással megfelelően bekapcsolja az engedélyezési **szabályt** .
 
-    A **Naplóriasztások** csak néhány további funkcióval érhető el a riasztás részleteit:
+    Csak **naplózási riasztások** esetén a riasztás részleteiben további funkciók érhetők el:
 
-    - **Riasztások mellőzésének időtartama**: Bekapcsolja a riasztási szabály letiltásra, amikor a szabályhoz tartozó műveleteket egy meghatározott ideig új riasztás létrehozása után le vannak tiltva. A szabály továbbra is fut, és riasztási rekordokat hoz létre a megadott feltétel teljesülése. Ami lehetővé teszi, ideje a probléma javításához ismétlődő műveletek futtatása nélkül.
+    - **Riasztások mellőzése**: Ha bekapcsolja a riasztási szabály letiltását, a szabály műveletei le lesznek tiltva egy új riasztás létrehozása után meghatározott időtartamra. A szabály továbbra is fut, és riasztási rekordokat hoz létre, amelyeket a feltételek teljesítenek. Lehetővé teszi, hogy az ismétlődő műveletek futtatása nélkül javítsa a problémát.
 
-        ![Naplóriasztásokra vonatkozó figyelmeztetések mellőzése](media/alerts-log/AlertsPreviewSuppress.png)
+        ![Riasztások mellőzése a naplózási riasztásokhoz](media/alerts-log/AlertsPreviewSuppress.png)
 
         > [!TIP]
-        > Adjon meg egy mellőzése riasztási érték nagyobb, mint a riasztásból értesítéseket le lesz állítva, átfedés nélkül gyakorisága
+        > A riasztás gyakorisága nagyobb, mint az értesítéseknek az átfedések nélküli leállítását biztosító riasztási érték megadása
 
-1. A harmadik és egyben utolsó lépésként adja meg az esetleges **műveletcsoport** aktiválódik a riasztási szabály a riasztási feltétel teljesülése esetén kell. Válassza ki alert bármely meglévő műveletcsoport, vagy hozzon létre egy új művelet. A következők szerint kiválasztva műveletcsoportot, eseményindító Azure rendszer riasztás esetén: email(s) küldése, SMS(s) küldeni, webhook meghívása, javíthatja a használatával az Azure-forgatókönyvek, leküldéses az ITSM-eszközhöz, stb. Tudjon meg többet [Műveletcsoportok](action-groups.md).
+1. A harmadik és utolsó lépésként határozza meg, hogy a riasztási szabályhoz kell-e indítani valamilyen **műveleti csoportot** , ha a riasztási feltétel teljesül. Bármelyik meglévő műveleti csoportot kiválaszthatja riasztással, vagy létrehozhat egy új műveleti csoportot. A kiválasztott műveleti csoport szerint a riasztás indításakor az Azure a következő lesz: e-mailek küldése, SMS-ek küldése, hívás webhook (ok), szervizelés az Azure Runbookok, leküldés a ITSM eszközre stb. További információ a [műveleti csoportokról](action-groups.md).
 
     > [!NOTE]
-    > Tekintse meg a [az Azure-előfizetési szolgáltatási korlátok](../../azure-subscription-service-limits.md) a Runbook által aktivált Azure action groups általi keresztül naplóriasztásokra vonatkozó is észleltünk adattartalmakat vonatkozó korlátozások
+    > Tekintse meg az [Azure-előfizetési szolgáltatási](../../azure-subscription-service-limits.md) korlátokat az Azure-műveleti csoportokon keresztül a naplózási riasztásokra váltott Runbook-hasznos adatokra
 
-    A **Naplóriasztások** néhány további funkcióval érhető el az alapértelmezett műveletek felülbírálása:
+    A **naplózási riasztások** esetében néhány további funkció is elérhető az alapértelmezett műveletek felülbírálásához:
 
-    - **E-mailes értesítés**: Felülbírálások *e-mail tárgya* az e-mailben küldött műveletcsoport; Ha egy vagy több e-mail-művelet az említett műveleti csoport létezik. Az üzenet törzsét nem módosítható, és ez a mező **nem** e-mail-cím.
-    - **Egyéni Json-adattartalom tartalmaznak**: Felülbírálja a webhook Műveletcsoportok; által használt JSON-ban Ha egy vagy több webhook-műveletek az említett műveletcsoport szerepel. Felhasználó úgy adhat meg a JSON társított műveletcsoport; konfigurált összes webhookok használandó formátumát a webhook-formátumokról további információkért lásd: [Naplóriasztásokra vonatkozó webhook művelettel](../../azure-monitor/platform/alerts-log-webhook.md). Nézet Webhook lehetőséget biztosítunk formátumú JSON-mintafájl adatairól használatával ellenőrizheti.
+    - **Értesítő e-mail**: Felülbírálja az *e-mail tárgyát* az e-mailben, a műveleti csoporton keresztül elküldve; Ha egy vagy több e-mail művelet szerepel az említett műveleti csoportban. Nem módosíthatja a levél törzsét, és ez a mező **nem** az e-mail-cím.
+    - **Egyéni JSON**-adattartalom belefoglalása: Felülbírálja a műveleti csoportok által használt webhook JSON-t. Ha egy vagy több webhook-művelet létezik az említett műveleti csoportban. A felhasználó megadhatja a JSON formátumát, amelyet a társított műveleti csoportban konfigurált összes webhookhoz használni kíván. a webhook-formátumokkal kapcsolatos további információkért lásd: [webhook művelet a naplózási riasztásokhoz](../../azure-monitor/platform/alerts-log-webhook.md). A webhook beállítás megadásával ellenőrizhető a minta JSON-adatként használt formátum.
 
-        ![Naplóriasztásokra vonatkozó művelet felülbírálások](media/alerts-log/AlertsPreviewOverrideLog.png)
+        ![Műveletek felülbírálásai a naplók Értesítéseinél](media/alerts-log/AlertsPreviewOverrideLog.png)
 
 
-1. Ha érvényes az összes mező kitöltése és a zöld osztásjelek a **riasztási szabály létrehozása** gombra, ha rájuk kattint, és a egy riasztás jön létre az Azure Monitor - riasztásokat. A riasztások irányítópult minden riasztás is megtekinthetők.
+1. Ha az összes mező érvényes, és a zöld pipa jelenik meg, a **riasztási szabály létrehozása** gomb rákattinthat, és a rendszer riasztást hoz létre Azure monitor-riasztásokban. Minden riasztás a riasztások irányítópultról tekinthető meg.
 
-     ![A szabály létrehozása](media/alerts-log/AlertsPreviewCreate.png)
+     ![Szabály létrehozása](media/alerts-log/AlertsPreviewCreate.png)
 
-     Néhány percen belül a riasztás aktív, és elindítja a fent leírtaknak megfelelően.
+     Néhány percen belül a riasztás aktív, és a korábban leírt módon aktiválódik.
 
-Felhasználók is fejeződik be, a saját elemzési lekérdezés [log analytics](../log-query/portals.md) és majd leküldeni a keresztül beállítva riasztás gomb - riasztás létrehozása, majd a következő utasításokat a 6. lépés és újabb verziók esetében a fenti oktatóanyagban.
+A felhasználók a [log Analyticsben](../log-query/portals.md) is véglegesítették Analytics-lekérdezését, majd a riasztások beállítása gomb használatával elküldhetik a riasztást, majd a fenti oktatóanyag 6. lépésében szereplő utasításokat követve.
 
- ![Log Analytics - riasztás beállítása](media/alerts-log/AlertsAnalyticsCreate.png)
+ ![Log Analytics riasztás beállítása](media/alerts-log/AlertsAnalyticsCreate.png)
 
-### <a name="view--manage-log-alerts-in-azure-portal"></a>Megtekinthet és az Azure Portalon riasztások kezelése
+### <a name="view--manage-log-alerts-in-azure-portal"></a>Tekintse meg & a naplózási riasztások kezelése Azure Portal
 
-1. Az a [portál](https://portal.azure.com/), jelölje be **figyelő** , és válassza ki a MONITOR terület - **riasztások**.
+1. A [portálon](https://portal.azure.com/)kattintson a **figyelés** elemre, és a figyelés szakaszban válassza a **riasztások**lehetőséget.
 
-1. A **riasztások irányítópult** jelenik meg – viselkedésmintáit jelennek meg minden Azure Alerts (riasztások is beleértve) egy egyetlen táblára; beleértve minden példányát, ha a napló a riasztási szabály aktiválva van. További tudnivalókért lásd: [Riasztáskezelés](https://aka.ms/managealertinstances).
+1. Megjelenik a riasztások irányítópultja – amelyben az összes Azure-riasztás (beleértve a naplózási riasztásokat is) egy adott számú táblán jelenik meg. a napló riasztási szabályának minden példányát tartalmazza. További információ: [Alert Management](https://aka.ms/managealertinstances).
     > [!NOTE]
-    > Naplóriasztási szabály foglalja magában a felhasználó által megadott egyéni lekérdezés alapú logika és így olyan megoldott állapotban nélkül. Miatt, amely minden alkalommal, amikor a napló a riasztási szabályban megadott feltételek teljesülnek, akkor lép működésbe.
+    > A naplózási riasztási szabályok a felhasználók által megadott egyéni lekérdezési logikák, és így feloldási állapot nélkül állnak. Mivel a riasztási szabályban megadott feltételek minden alkalommal teljesülnek, a rendszer kirúgták.
 
-1. Válassza ki a **szabályok kezelése** gombot a felső sávon, nyissa meg a szabály felügyeleti szakaszra - létrehozott összes riasztási szabályt listázó; többek között a riasztásokat, amelyek le vannak tiltva.
-    ![ Riasztási szabályok kezelése](media/alerts-log/manage-alert-rules.png)
+1. A felső sávon a **szabályok kezelése** gombra kattintva navigáljon a szabály kezelése szakaszhoz, ahol az összes létrehozott riasztási szabály fel van sorolva; a letiltott riasztásokat is beleértve.
+    ![riasztási szabályok kezelése](media/alerts-log/manage-alert-rules.png)
 
-## <a name="managing-log-alerts-using-azure-resource-template"></a>Azure Resource-sablonnal riasztások kezelése
+## <a name="managing-log-alerts-using-azure-resource-template"></a>A naplózási riasztások kezelése az Azure Resource template használatával
 
-Az Azure Monitor riasztások rendelt erőforrástípus `Microsoft.Insights/scheduledQueryRules/`. Az erőforrástípus további információkért lásd: [Azure Monitor - ütemezett lekérdezési szabály API-referencia](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/). Naplóriasztások az Application Insights vagy a Log Analytics, hozható létre [ütemezett lekérdezési szabály API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/).
+A Azure Monitor-beli naplózási riasztások erőforrás `Microsoft.Insights/scheduledQueryRules/`-típussal vannak társítva. További információ erről az erőforrás típusáról: [Azure monitor-ütemezett lekérdezési szabályok API-referenciája](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/). Application Insights vagy Log Analytics naplózási riasztásai az [ütemezett lekérdezési szabályok API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)használatával hozhatók létre.
 
 > [!NOTE]
-> Riasztások a Log Analytics használatával az örökölt is kezelhetők [Log Analytics Alert API](api-alerts.md) és az örökölt sablonok [Log Analytics mentett keresések és a riasztások](../insights/solutions-resources-searches-alerts.md) is. Az új alapértelmezés szerint itt részletes ScheduledQueryRules API segítségével további információkért lásd: [átkapcsolni új API-t a Log Analytics-riasztásokkal](alerts-log-api-switch.md).
+> Log Analytics esetén a naplózási riasztások a régi [log Analytics a riasztási API](api-alerts.md) -val és a [log Analytics mentett keresések és riasztások](../insights/solutions-resources-searches-alerts.md) örökölt sablonjaival is kezelhetők. Az új ScheduledQueryRules API alapértelmezés szerinti részletes használatával kapcsolatos további információkért lásd: [váltás új API](alerts-log-api-switch.md)-ra log Analytics riasztások esetén.
 
 
-### <a name="sample-log-alert-creation-using-azure-resource-template"></a>Példa Log riasztás létrehozása Azure Resource-sablonnal
+### <a name="sample-log-alert-creation-using-azure-resource-template"></a>Példa naplóbeli riasztás létrehozására az Azure Resource template használatával
 
-Az alábbiakban található az struktúráját [ütemezett lekérdezési szabály létrehozása](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate) resource-sablon használatával a szokásos naplóbeli keresési lekérdezés alapú [típusú riasztás eredmények száma](alerts-unified-log.md#number-of-results-alert-rules), változókként minta adatkészlet.
+Az alábbi példa az [ütemezett lekérdezési szabályok létrehozásán](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate) alapuló erőforrás-sablonjának szerkezete, amely az [eredmények típusú naplóbeli riasztások számának](alerts-unified-log.md#number-of-results-alert-rules)szabványos naplóbeli keresési lekérdezését használja, a minta adatkészlete változóként.
 
 ```json
 {
@@ -142,7 +142,6 @@ Az alábbiakban található az struktúráját [ütemezett lekérdezési szabál
     "variables": {
         "alertLocation": "southcentralus",
         "alertName": "samplelogalert",
-        "alertTag": "hidden-link:/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/myRG/providers/microsoft.insights/components/sampleAIapplication",
         "alertDescription": "Sample log search alert",
         "alertStatus": "true",
         "alertSource":{
@@ -172,7 +171,6 @@ Az alábbiakban található az struktúráját [ütemezett lekérdezési szabál
         "type":"Microsoft.Insights/scheduledQueryRules",
         "apiVersion": "2018-04-16",
         "location": "[variables('alertLocation')]",
-        "tags":{"[variables('alertTag')]": "Resource"},
         "properties":{
             "description": "[variables('alertDescription')]",
             "enabled": "[variables('alertStatus')]",
@@ -204,15 +202,12 @@ Az alábbiakban található az struktúráját [ütemezett lekérdezési szabál
 
 ```
 
-> [!IMPORTANT]
-> És rejtett hivatkozás a célként megadott erőforrás címke mezőt kötelező kitölteni, igénybe veszik a [ütemezett lekérdezési szabály](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) API-hívás vagy az erőforrás-sablon.
-
-A fenti json-mintaadatok menthető, ez az útmutató céljából (például:) sampleScheduledQueryRule.json és telepíthetők [Azure Resource Manager az Azure Portalon](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template).
+A fenti JSON-minta menthető a (Say) sampleScheduledQueryRule. JSON néven, és a [Azure Resource Manager Azure Portal](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template)használatával is üzembe helyezhető.
 
 
-### <a name="log-alert-with-cross-resource-query-using-azure-resource-template"></a>Az Azure Resource-sablonnal erőforrások közötti lekérdezési riasztás
+### <a name="log-alert-with-cross-resource-query-using-azure-resource-template"></a>Riasztás naplózása az erőforrások közötti lekérdezéssel az Azure Resource template használatával
 
-Az alábbiakban található az struktúráját [ütemezett lekérdezési szabály létrehozása](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate) -alapú erőforrás-sablon használatával [erőforrások közötti naplóbeli keresési lekérdezés](../../azure-monitor/log-query/cross-workspace-query.md) , [metrikamérési típusú riasztás](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules), minta adatkészlet változóként.
+A következő példa az [ütemezett lekérdezési szabályok létrehozásán](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate) alapuló erőforrás-sablonjának struktúrája a metrikai [mérőszám típusú log](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules)-riasztást használó többerőforrásos [naplóbeli keresési lekérdezéssel](../../azure-monitor/log-query/cross-workspace-query.md) , a mintavételi adatok változóként való beállításával.
 
 ```json
 
@@ -226,7 +221,6 @@ Az alábbiakban található az struktúráját [ütemezett lekérdezési szabál
         "alertName": "sample log alert",
         "alertDescr": "Sample log search alert",
         "alertStatus": "true",
-        "alertTag": "hidden-link:/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.OperationalInsights/workspaces/servicews",
         "alertSource":{
             "Query":"union workspace(\"servicews\").Update, app('serviceapp').requests | summarize AggregatedValue = count() by bin(TimeGenerated,1h), Classification",
             "Resource1": "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.OperationalInsights/workspaces/servicews",
@@ -263,7 +257,6 @@ Az alábbiakban található az struktúráját [ütemezett lekérdezési szabál
         "type":"Microsoft.Insights/scheduledQueryRules",
         "apiVersion": "2018-04-16",
         "location": "[variables('alertLocation')]",
-        "tags":{"[variables('alertTag')]": "Resource"},
         "properties":{
             "description": "[variables('alertDescr')]",
             "enabled": "[variables('alertStatus')]",
@@ -304,35 +297,67 @@ Az alábbiakban található az struktúráját [ütemezett lekérdezési szabál
 ```
 
 > [!IMPORTANT]
-> És rejtett hivatkozás a célként megadott erőforrás címke mezőt kötelező kitölteni, igénybe veszik a [ütemezett lekérdezési szabály](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) API-hívás vagy az erőforrás-sablon. Erőforrások közötti lekérdezési napló használatakor riasztási, felhasználásának [authorizedResources](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate#source) kötelező és felhasználói erőforrások conditions stated above listájában hozzáféréssel kell rendelkeznie.
+> Ha a naplózási riasztásban több erőforrást használó lekérdezést használ, a [authorizedResources](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate#source) használata kötelező, és a felhasználónak hozzáféréssel kell rendelkeznie a megadott erőforrások listájához.
 
-A fenti json-mintaadatok menthető, ez az útmutató céljából (például:) sampleScheduledQueryRule.json és telepíthetők [Azure Resource Manager az Azure Portalon](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template).
+A fenti JSON-minta menthető a (Say) sampleScheduledQueryRule. JSON néven, és a [Azure Resource Manager Azure Portal](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template)használatával is üzembe helyezhető.
 
-## <a name="managing-log-alerts-using-powershell-cli-or-api"></a>A PowerShell, a parancssori felület vagy az API riasztások kezelése
+## <a name="managing-log-alerts-using-powershell"></a>A naplózási riasztások kezelése a PowerShell használatával
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Az Azure Monitor - ütemezett lekérdezési szabály API] (https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) egy REST API-t, és teljes mértékben kompatibilisek az Azure Resource Manager REST API-val. Ezért azt is használható a Powershell használatával a Resource Manager egy parancsmagjához, valamint az Azure CLI-n keresztül.
+Azure Monitor – az [ütemezett lekérdezési szabályok API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) egy REST API, és teljes mértékben kompatibilis Azure Resource Manager Rest APIokkal. Az alább felsorolt PowerShell-parancsmagok az [ütemezett lekérdezési szabályok API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)kihasználása érdekében érhetők el.
+
+1. [New-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule) : PowerShell-parancsmag új naplózási riasztási szabály létrehozásához.
+1. [Set-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) : PowerShell-parancsmag egy meglévő naplózási riasztási szabály frissítéséhez.
+1. [New-AzScheduledQueryRuleSource](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrulesource) : PowerShell-parancsmag olyan objektum létrehozásához vagy frissítéséhez, amely megadja a naplózási riasztás forrásának paramétereit. A [New-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule) és a [set-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) parancsmag bemenetként használja.
+1. [New-AzScheduledQueryRuleSchedule](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleSchedule): PowerShell-parancsmag az objektum létrehozásához vagy frissítéséhez, amely meghatározza a naplózási riasztások ütemezett paramétereit. A [New-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule) és a [set-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) parancsmag bemenetként használja.
+1. [New-AzScheduledQueryRuleAlertingAction](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleAlertingAction) : PowerShell-parancsmag olyan objektum létrehozásához vagy frissítéséhez, amely a naplózási riasztás műveleti paramétereit határozza meg. A [New-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule) és a [set-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) parancsmag bemenetként használja.
+1. [New-AzScheduledQueryRuleAznsActionGroup](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryruleaznsactiongroup) : PowerShell-parancsmag olyan objektum létrehozásához vagy frissítéséhez, amely megadja a műveleti csoportok paramétereit a naplózási riasztásokhoz. A [New-AzScheduledQueryRuleAlertingAction](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleAlertingAction) parancsmag bemenetként használja.
+1. [New-AzScheduledQueryRuleTriggerCondition](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition) : PowerShell-parancsmag az objektum létrehozásához vagy frissítéséhez, amely megadja a riasztási feltétel paramétereit a naplózási riasztáshoz. A [New-AzScheduledQueryRuleAlertingAction](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleAlertingAction) parancsmag bemenetként használja.
+1. [New-AzScheduledQueryRuleLogMetricTrigger](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrulelogmetrictrigger) : PowerShell-parancsmag olyan objektum létrehozásához vagy frissítéséhez, amely metrika-trigger feltételi paramétereit adja meg a [metrika mértékének típusú napló riasztásához](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules). A [New-AzScheduledQueryRuleTriggerCondition](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition) parancsmag bemenetként használja.
+1. [Get-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/get-azscheduledqueryrule) : PowerShell-parancsmag meglévő naplózási riasztási szabályok vagy egy adott napló-riasztási szabály listázásához
+1. [Update-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/update-azscheduledqueryrule) : PowerShell-parancsmag a napló riasztási szabályának engedélyezéséhez vagy letiltásához
+1. [Remove-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/remove-azscheduledqueryrule): PowerShell-parancsmag meglévő naplózási riasztási szabály törléséhez
+
+> [!NOTE]
+> A ScheduledQueryRules PowerShell-parancsmagok csak saját maguk által létrehozott és a Azure Monitor [ütemezett lekérdezési szabályok API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)-val kezelhetik a szabályokat. A örökölt [log Analytics riasztási API](api-alerts.md) -val és [log Analytics a mentett keresések és](../insights/solutions-resources-searches-alerts.md) a riasztások örökölt sablonjaival létrehozott naplózási riasztási szabályok csak a ScheduledQueryRules PowerShell-parancsmagokkal kezelhetők, csak a bejelentkezéshez használt felhasználói kapcsolók API-beállításai után [ Elemzési riasztások](alerts-log-api-switch.md).
+
+A következő ábrán a scheduledQueryRules PowerShell-parancsmagok használatával végezhető el a minta napló riasztási szabályának létrehozása.
+```powershell
+$source = New-AzScheduledQueryRuleSource -Query 'Heartbeat | summarize AggregatedValue = count() by bin(TimeGenerated, 5m), _ResourceId' -DataSourceId "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.OperationalInsights/workspaces/servicews"
+
+$schedule = New-AzScheduledQueryRuleSchedule -FrequencyInMinutes 15 -TimeWindowInMinutes 30
+
+$metricTrigger = New-AzScheduledQueryRuleLogMetricTrigger -ThresholdOperator "GreaterThan" -Threshold 2 -MetricTriggerType "Consecutive" -MetricColumn "_ResourceId"
+
+$triggerCondition = New-AzScheduledQueryRuleTriggerCondition -ThresholdOperator "LessThan" -Threshold 5 -MetricTrigger $metricTrigger
+
+$aznsActionGroup = New-AzScheduledQueryRuleAznsActionGroup -ActionGroup "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.insights/actiongroups/sampleAG" -EmailSubject "Custom email subject" -CustomWebhookPayload "{ \"alert\":\"#alertrulename\", \"IncludeSearchResults\":true }"
+
+$alertingAction = New-AzScheduledQueryRuleAlertingAction -AznsAction $aznsActionGroup -Severity "3" -Trigger $triggerCondition
+
+New-AzScheduledQueryRule -ResourceGroupName "contosoRG" -Location "Region Name for your Application Insights App or Log Analytics Workspace" -Action $alertingAction -Enabled $true -Description "Alert description" -Schedule $schedule -Source $source -Name "Alert Name"
+```
+
+## <a name="managing-log-alerts-using-cli-or-api"></a>A naplózási riasztások kezelése a parancssori felület vagy az API használatával
+
+Azure Monitor – az [ütemezett lekérdezési szabályok API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) egy REST API, és teljes mértékben kompatibilis Azure Resource Manager Rest APIokkal. Ezért használhatja a PowerShellt a Resource Manager-parancsok használatával az Azure CLI-hez.
 
 
 > [!NOTE]
-> Riasztások a Log Analytics használatával az örökölt is kezelhetők [Log Analytics Alert API](api-alerts.md) és az örökölt sablonok [Log Analytics mentett keresések és a riasztások](../insights/solutions-resources-searches-alerts.md) is. Az új alapértelmezés szerint itt részletes ScheduledQueryRules API segítségével további információkért lásd: [átkapcsolni új API-t a Log Analytics-riasztásokkal](alerts-log-api-switch.md).
+> Log Analytics esetén a naplózási riasztások a régi [log Analytics a riasztási API](api-alerts.md) -val és a [log Analytics mentett keresések és riasztások](../insights/solutions-resources-searches-alerts.md) örökölt sablonjaival is kezelhetők. Az új ScheduledQueryRules API alapértelmezés szerinti részletes használatával kapcsolatos további információkért lásd: [váltás új API](alerts-log-api-switch.md)-ra log Analytics riasztások esetén.
 
-Riasztások jelenleg nem rendelkezik dedikált PowerShell vagy parancssori felület parancsai jelenleg; azonban az alábbi képen szemléltetett módon használható az Azure Resource Manager PowerShell-parancsmag használatával a minta a korábban bemutatott erőforrás sablon (sampleScheduledQueryRule.json) az erőforrás-sablon szakaszban:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName "contosoRG" -TemplateFile "D:\Azure\Templates\sampleScheduledQueryRule.json"
-```
-
-Az alábbi ábra szemlélteti a használati minta erőforrás sablon korábban bemutatott (sampleScheduledQueryRule.json) az Azure CLI Azure Resource Manager parancs-n keresztül az erőforrás-sablon szakaszban:
+A naplózási riasztások jelenleg nem rendelkeznek dedikált CLI-parancsokkal. az alábbi ábrán látható módon azonban Azure Resource Manager CLI-paranccsal használhatja a korábban (sampleScheduledQueryRule. JSON) nevű minta-erőforrást az erőforrás-sablon szakaszban:
 
 ```azurecli
 az group deployment create --resource-group contosoRG --template-file sampleScheduledQueryRule.json
-On successful operation, 201 will be returned to state new alert rule creation or 200 will be returned if an existing alert rule was modified.
+```
 
-## Next steps
+Sikeres művelet esetén a rendszer visszaadja a 201 új riasztási szabály létrehozásához, vagy ha egy meglévő riasztási szabályt módosított, a 200 értéket adja vissza a rendszer.
 
-* Learn about [Log Alerts in Azure Alerts](../../azure-monitor/platform/alerts-unified-log.md)
-* Understand [Webhook actions for log alerts](../../azure-monitor/platform/alerts-log-webhook.md)
-* Learn more about [Application Insights](../../azure-monitor/app/analytics.md)
-* Learn more about [log queries](../log-query/log-query-overview.md).
+## <a name="next-steps"></a>További lépések
+
+* Tudnivalók a [riasztásokról az Azure-riasztásokban](../../azure-monitor/platform/alerts-unified-log.md)
+* [A log](../../azure-monitor/platform/alerts-log-webhook.md) -riasztások webhook-műveleteinek ismertetése
+* További információ a [Application Insights](../../azure-monitor/app/analytics.md)
+* További információ a [naplók lekérdezéséről](../log-query/log-query-overview.md).

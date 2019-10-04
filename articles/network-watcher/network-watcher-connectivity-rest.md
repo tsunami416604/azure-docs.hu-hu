@@ -1,10 +1,10 @@
 ---
-title: Az Azure Network Watcher – Azure REST API-kapcsolatok hibaelhárítása |} A Microsoft Docs
-description: Ismerje meg, hogyan használható a kapcsolat hibaelhárítása az Azure REST API használatával az Azure Network Watcher képességét.
+title: Az Azure Network Watcher – Azure REST API kapcsolatának megoldása | Microsoft Docs
+description: Ismerje meg, hogyan használhatja az Azure Network Watcher kapcsolódási hibáit az Azure REST API használatával.
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 ms.service: network-watcher
 ms.devlang: na
@@ -12,37 +12,37 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/02/2017
-ms.author: jdial
-ms.openlocfilehash: 45fbdac3c099b44f8f12a54f5bde147524f10458
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.author: kumud
+ms.openlocfilehash: 82dd77e8ea36610244b97c1701209d5aa3be2869
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482640"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69017769"
 ---
-# <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-rest-api"></a>Az Azure Network Watcher használatával az Azure REST API-kapcsolatok hibaelhárítása
+# <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-rest-api"></a>Az Azure Network Watcher-vel való kapcsolatok hibáinak megoldása az Azure-REST API használatával
 
 > [!div class="op_single_selector"]
 > - [Portál](network-watcher-connectivity-portal.md)
 > - [PowerShell](network-watcher-connectivity-powershell.md)
 > - [Azure CLI](network-watcher-connectivity-cli.md)
-> - [Azure REST API](network-watcher-connectivity-rest.md)
+> - [Azure-REST API](network-watcher-connectivity-rest.md)
 
-Ismerje meg, hogyan használja a kapcsolat ellenőrzése, hogy közvetlen TCP-kapcsolatot a virtuális gépről egy adott végpontot is létesíthető hibaelhárítása.
+Megtudhatja, hogyan hozhatja meg a kapcsolódási hibák megoldását annak ellenőrzéséhez, hogy egy virtuális gépről egy adott végpontra irányuló közvetlen TCP-kapcsolódás létesíthető-e.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ez a cikk feltételezi, hogy az alábbi forrásanyagokat:
+Ez a cikk feltételezi, hogy rendelkezik a következő erőforrásokkal:
 
-* A Network Watcher-kapcsolat hibaelhárítása szeretné a régióban egy példányát.
-* Virtuális gépek a kapcsolatok hibaelhárítása.
+* Network Watcher egy példánya abban a régióban, ahol a kapcsolódást szeretné elhárítani.
+* Virtuális gépek a szolgáltatással való kapcsolódási hibák megoldásához.
 
 > [!IMPORTANT]
-> Kapcsolódási hibák elhárítása megköveteli, hogy rendelkezik-e a virtuális gép a hibaelhárítás a `AzureNetworkWatcherExtension` Virtuálisgép-bővítmény telepítve van. A bővítmény telepítését egy Windows virtuális gépen látogasson el [Azure Network Watcher-ügynök virtuálisgép-bővítmény Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) és Linux rendszerű virtuális gép látogasson el a [Azure Network Watcher-ügynök virtuálisgép-bővítmény Linuxhoz](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). A bővítmény nem szükséges a cél-végponton.
+> A kapcsolati hibákhoz az szükséges, hogy a rendszer `AzureNetworkWatcherExtension` a virtuálisgép-bővítményt telepítse. A bővítmény Windows rendszerű virtuális gépen való telepítéséhez látogasson el az [azure Network Watcher Agent virtuálisgép-bővítmény a Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) rendszerhez és a Linux rendszerű virtuális gépekhez látogasson el az [Azure Network Watcher Agent virtuálisgép-bővítménye Linuxra](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). A cél végponton nem szükséges a kiterjesztés.
 
-## <a name="log-in-with-armclient"></a>Jelentkezzen be ARMClient
+## <a name="log-in-with-armclient"></a>Bejelentkezés a ARMClient
 
-Jelentkezzen be Azure hitelesítő adataival armclient.
+Jelentkezzen be a armclient az Azure-beli hitelesítő adataival.
 
 ```powershell
 armclient login
@@ -50,12 +50,12 @@ armclient login
 
 ## <a name="retrieve-a-virtual-machine"></a>Virtuális gép beolvasása
 
-Futtassa a következő szkriptet egy virtuális gép adja vissza. Ezek az információk szükségesek a kapcsolat futó. 
+Futtassa a következő szkriptet egy virtuális gép visszaküldéséhez. Ezek az információk a kapcsolat futtatásához szükségesek.
 
-A következő kódot a következő változók értéket kell tartalmaznia:
+A következő kódok értékeit kell megfelelnie a következő változók számára:
 
-- **subscriptionId** – az előfizetés-azonosító használata.
-- **resourceGroupName** -egy virtuális gépeket tartalmazó erőforráscsoport nevét.
+- **subscriptionId** – a használandó előfizetés-azonosító.
+- **resourceGroupName** – a virtuális gépeket tartalmazó erőforráscsoport neve.
 
 ```powershell
 $subscriptionId = '<subscription id>'
@@ -64,7 +64,7 @@ $resourceGroupName = '<resource group name>'
 armclient get https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Compute/virtualMachines?api-version=2015-05-01-preview
 ```
 
-A következő kimenetből az alábbi példában a virtuális gép azonosítója szolgál ki:
+A következő kimenetből a virtuális gép AZONOSÍTÓját a következő példa használja:
 
 ```json
 ...
@@ -79,9 +79,9 @@ A következő kimenetből az alábbi példában a virtuális gép azonosítója 
 }
 ```
 
-## <a name="check-connectivity-to-a-virtual-machine"></a>Ellenőrizze a kapcsolatot a virtuális géphez
+## <a name="check-connectivity-to-a-virtual-machine"></a>Virtuális géphez való csatlakozás ellenőrzése
 
-Ebben a példában a cél virtuális gép kapcsolatának ellenőrzi a 80-as porton keresztül.
+Ez a példa az 80-es porton keresztül ellenőrzi a cél virtuális géphez való kapcsolódást.
 
 ### <a name="example"></a>Példa
 
@@ -90,7 +90,7 @@ $subscriptionId = "00000000-0000-0000-0000-000000000000"
 $resourceGroupName = "NetworkWatcherRG"
 $networkWatcherName = "NetworkWatcher_westcentralus"
 $sourceResourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ContosoRG/providers/Microsoft.Compute/virtualMachines/MultiTierApp0"
-$destinationAddress = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ContosoRG/providers/Microsoft.Compute/virtualMachines/Database0"
+$destinationResourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ContosoRG/providers/Microsoft.Compute/virtualMachines/Database0"
 $destinationPort = "0"
 $requestBody = @"
 {
@@ -99,7 +99,7 @@ $requestBody = @"
     'port': 0
   },
   'destination': {
-    'resourceId': '${destinationAddress}',
+    'resourceId': '${destinationResourceId}',
     'port': ${destinationPort}
   }
 }
@@ -108,11 +108,11 @@ $requestBody = @"
 $response = armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/connectivityCheck?api-version=2017-03-01" $requestBody
 ```
 
-Mivel ez a művelet hosszú futtatása után a az URI-t az eredményt adja vissza a fejlécet, ahogyan az a következő választ:
+Mivel ez a művelet hosszú ideig fut, az eredmény URI-ja a válasz fejlécében a következő válaszban látható módon lesz visszaadva:
 
-**Fontos értéket**
+**Fontos értékek**
 
-* **Hely** – Ez a tulajdonság tartalmazza az URI-t, hol találhatók az eredmények, a művelet befejezésekor
+* **Hely** – ez a tulajdonság tartalmazza azt az URI-t, amelyben az eredmények a művelet befejezésekor teljesülnek.
 
 ```
 HTTP/1.1 202 Accepted
@@ -133,7 +133,7 @@ null
 
 ### <a name="response"></a>Válasz
 
-A következő választ az előző példában van.  A válaszban a `ConnectionStatus` van **nem elérhető**. Láthatja, hogy minden a mintavételezők küldött sikertelen. A kapcsolat a virtuális készülék egy felhasználó által konfigurált miatt nem sikerült `NetworkSecurityRule` nevű **UserRule_Port80**, a 80-as porton bejövő forgalom blokkolására konfigurált. Ez az információ a kapcsolódási problémák kutatás használható.
+A következő válasz az előző példából származik.  Ebben a válaszban az `ConnectionStatus` nem **érhető el**. Láthatja, hogy az összes eljuttatott mintavétel sikertelen volt. A kapcsolat a virtuális berendezésen meghiúsult, mert egy **UserRule_Port80**nevű `NetworkSecurityRule` felhasználó konfigurálta, amely letiltja a bejövő forgalmat a 80-es porton. Ezek az adatok a kapcsolódási problémák kutatására használhatók.
 
 ```json
 {
@@ -197,7 +197,7 @@ A következő választ az előző példában van.  A válaszban a `ConnectionSta
 
 ## <a name="validate-routing-issues"></a>Útválasztási problémák ellenőrzése
 
-A példa egy virtuális gép és a egy távoli végpont közötti kapcsolatot ellenőrzi.
+A példa egy virtuális gép és egy távoli végpont közötti kapcsolatot ellenőrzi.
 
 ### <a name="example"></a>Példa
 
@@ -206,7 +206,7 @@ $subscriptionId = "00000000-0000-0000-0000-000000000000"
 $resourceGroupName = "NetworkWatcherRG"
 $networkWatcherName = "NetworkWatcher_westcentralus"
 $sourceResourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ContosoRG/providers/Microsoft.Compute/virtualMachines/MultiTierApp0"
-$destinationAddress = "13.107.21.200"
+$destinationResourceId = "13.107.21.200"
 $destinationPort = "80"
 $requestBody = @"
 {
@@ -215,7 +215,7 @@ $requestBody = @"
     'port': 0
   },
   'destination': {
-    'address': '${destinationAddress}',
+    'address': '${destinationResourceId}',
     'port': ${destinationPort}
   }
 }
@@ -224,11 +224,11 @@ $requestBody = @"
 $response = armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/connectivityCheck?api-version=2017-03-01" $requestBody
 ```
 
-Mivel ez a művelet hosszú futtatása után a az URI-t az eredményt adja vissza a fejlécet, ahogyan az a következő választ:
+Mivel ez a művelet hosszú ideig fut, az eredmény URI-ja a válasz fejlécében a következő válaszban látható módon lesz visszaadva:
 
-**Fontos értéket**
+**Fontos értékek**
 
-* **Hely** – Ez a tulajdonság tartalmazza az URI-t, hol találhatók az eredmények, a művelet befejezésekor
+* **Hely** – ez a tulajdonság tartalmazza azt az URI-t, amelyben az eredmények a művelet befejezésekor teljesülnek.
 
 ```
 HTTP/1.1 202 Accepted
@@ -249,7 +249,7 @@ null
 
 ### <a name="response"></a>Válasz
 
-A következő példában a `connectionStatus` jelenik meg, mint **nem elérhető**. Az a `hops` alatt látható részletes `issues` , amely a forgalom miatt le lett tiltva a `UserDefinedRoute`.
+A következő példában a `connectionStatus` látható, hogy nem **érhető el**. A `hops` részletek között `issues` látható, hogy a forgalom le lett tiltva, mert egy `UserDefinedRoute`.
 
 ```json
 {
@@ -291,9 +291,9 @@ A következő példában a `connectionStatus` jelenik meg, mint **nem elérhető
 }
 ```
 
-## <a name="check-website-latency"></a>Ellenőrizze a webhely késés
+## <a name="check-website-latency"></a>Webhely késésének keresése
 
-Az alábbi példa ellenőrzi a kapcsolatot egy webhelyre.
+A következő példa egy webhelyhez való kapcsolódást ellenőrzi.
 
 ### <a name="example"></a>Példa
 
@@ -302,7 +302,7 @@ $subscriptionId = "00000000-0000-0000-0000-000000000000"
 $resourceGroupName = "NetworkWatcherRG"
 $networkWatcherName = "NetworkWatcher_westcentralus"
 $sourceResourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ContosoRG/providers/Microsoft.Compute/virtualMachines/MultiTierApp0"
-$destinationAddress = "https://bing.com"
+$destinationResourceId = "https://bing.com"
 $destinationPort = "0"
 $requestBody = @"
 {
@@ -311,7 +311,7 @@ $requestBody = @"
     'port': 0
   },
   'destination': {
-    'address': '${destinationAddress}',
+    'address': '${destinationResourceId}',
     'port': ${destinationPort}
   }
 }
@@ -320,11 +320,11 @@ $requestBody = @"
 $response = armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/connectivityCheck?api-version=2017-03-01" $requestBody
 ```
 
-Mivel ez a művelet hosszú futtatása után a az URI-t az eredményt adja vissza a fejlécet, ahogyan az a következő választ:
+Mivel ez a művelet hosszú ideig fut, az eredmény URI-ja a válasz fejlécében a következő válaszban látható módon lesz visszaadva:
 
-**Fontos értéket**
+**Fontos értékek**
 
-* **Hely** – Ez a tulajdonság tartalmazza az URI-t, hol találhatók az eredmények, a művelet befejezésekor
+* **Hely** – ez a tulajdonság tartalmazza azt az URI-t, amelyben az eredmények a művelet befejezésekor teljesülnek.
 
 ```
 HTTP/1.1 202 Accepted
@@ -345,7 +345,7 @@ null
 
 ### <a name="response"></a>Válasz
 
-A következő választ, láthatja a `connectionStatus` állapota **elérhető**. Ha a kapcsolat létrejött, késés fel van tüntetve.
+A következő válaszban láthatja, hogy a `connectionStatus` láthatók **elérhetők**. Ha a csatlakozás sikeres, a késési értékek megadására kerül sor.
 
 ```json
 {
@@ -378,9 +378,9 @@ A következő választ, láthatja a `connectionStatus` állapota **elérhető**.
 }
 ```
 
-## <a name="check-connectivity-to-a-storage-endpoint"></a>Ellenőrizze a kapcsolatot egy storage-végponthoz
+## <a name="check-connectivity-to-a-storage-endpoint"></a>A tárolási végponttal létesített kapcsolat ellenőrzése
 
-Az alábbi példa ellenőrzi a kapcsolatot a virtuális gépről blog storage-fiókba.
+Az alábbi példa egy virtuális gép és egy blog Storage-fiók közötti kapcsolatot ellenőrzi.
 
 ### <a name="example"></a>Példa
 
@@ -389,7 +389,7 @@ $subscriptionId = "00000000-0000-0000-0000-000000000000"
 $resourceGroupName = "NetworkWatcherRG"
 $networkWatcherName = "NetworkWatcher_westcentralus"
 $sourceResourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ContosoRG/providers/Microsoft.Compute/virtualMachines/MultiTierApp0"
-$destinationAddress = "https://build2017nwdiag360.blob.core.windows.net/"
+$destinationResourceId = "https://build2017nwdiag360.blob.core.windows.net/"
 $destinationPort = "0"
 $requestBody = @"
 {
@@ -398,7 +398,7 @@ $requestBody = @"
     'port': 0
   },
   'destination': {
-    'address': '${destinationAddress}',
+    'address': '${destinationResourceId}',
     'port': ${destinationPort}
   }
 }
@@ -407,11 +407,11 @@ $requestBody = @"
 $response = armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/connectivityCheck?api-version=2017-03-01" $requestBody
 ```
 
-Mivel ez a művelet hosszú futtatása után a az URI-t az eredményt adja vissza a fejlécet, ahogyan az a következő választ:
+Mivel ez a művelet hosszú ideig fut, az eredmény URI-ja a válasz fejlécében a következő válaszban látható módon lesz visszaadva:
 
-**Fontos értéket**
+**Fontos értékek**
 
-* **Hely** – Ez a tulajdonság tartalmazza az URI-t, hol találhatók az eredmények, a művelet befejezésekor
+* **Hely** – ez a tulajdonság tartalmazza azt az URI-t, amelyben az eredmények a művelet befejezésekor teljesülnek.
 
 ```
 HTTP/1.1 202 Accepted
@@ -432,7 +432,7 @@ null
 
 ### <a name="response"></a>Válasz
 
-Az alábbi példa az előző API-hívás futtatása válasza. Az ellenőrzés sikeres, mivel a `connectionStatus` tulajdonság állapota **elérhető**.  A részleteket az ugrások számát, a storage blob és a késés eléréséhez szükséges kapcsolatban állnak rendelkezésre.
+A következő példa az előző API-hívás futtatásának válasza. Az ellenőrzések sikeressége esetén a `connectionStatus` tulajdonság **elérhetőként**jelenik meg.  A tárolási blob és a késés eléréséhez szükséges ugrások számával kapcsolatos részletek.
 
 ```json
 {
@@ -467,20 +467,6 @@ Az alábbi példa az előző API-hívás futtatása válasza. Az ellenőrzés si
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg, hogyan automatizálhatja a virtuális gép riasztások csomagrögzítés megtekintésével [hozzon létre egy aktivált riasztás csomagrögzítés](network-watcher-alert-triggered-packet-capture.md).
+Ismerje meg, hogyan automatizálható a csomagok rögzítése a virtuális gépi riasztásokkal a riasztások által [aktivált csomagok létrehozásával](network-watcher-alert-triggered-packet-capture.md).
 
-Keresse meg, ha bizonyos van engedélyezi a forgalmat a virtuális gép vagy a funkcionáló [ellenőrizze IP-folyamat ellenőrzésével](diagnose-vm-network-traffic-filtering-problem.md).
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Annak megállapítása, hogy az [IP-](diagnose-vm-network-traffic-filtering-problem.md)forgalom ellenőrzésének meglátogatása esetén engedélyezett-e a virtuális gépen belüli vagy kimenő forgalom.

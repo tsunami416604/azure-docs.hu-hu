@@ -11,11 +11,11 @@ ms.topic: reference
 ms.date: 10/16/2018
 ms.author: mbullwin
 ms.openlocfilehash: 3ad2f4788a765366066023724772f5432d0d56eb
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54108341"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60699205"
 ---
 # <a name="application-insights-nuget-packages"></a>Application Insights NuGet-csomagok
 
@@ -33,7 +33,7 @@ Alább látható stabil kiadási NuGet-csomagok az Application Insights jelenleg
 | Microsoft.ApplicationInsights.WindowsServer | 2.8.0 | Application Insights Windows Server NuGet-csomag automatikus gyűjtését az application insights telemetria a .NET-alkalmazásokban biztosít. Ez a csomag használható az Application Insights platformspecifikus csomagokat egy függő csomagot vagy a .NET-alkalmazásokban, amelyek nem tartoznak platformspecifikus csomagokat (például a .NET-feldolgozói szerepkörök) egy különálló csomagként. | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/)  
 | Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel | 2.8.0 | Révén a telemetria az Application Insights Windows Server SDK, amely megőrzi az telemetriát, offline forgatókönyvekben. | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel/) |
 
-## <a name="common-packages-for-aspnet-core"></a>ASP.NET Core közös csomagjai
+## <a name="common-packages-for-aspnet-core"></a>Common packages for ASP.NET Core
 
 | Csomag neve | Poslední stabilní Verze. | Leírás | Letöltés |
 |-------------------------------|-----------------------|------------|----|

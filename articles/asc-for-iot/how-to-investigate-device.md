@@ -2,24 +2,25 @@
 title: Azure Security Center az IoT device vizsgálat útmutató előzetes verzió |} A Microsoft Docs
 description: Ennek módjáról útmutató ismerteti, hogyan segítségével egy gyanús IoT-eszközzel a Log Analytics az Azure Security Center az IoT.
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
-manager: barbkess
+manager: rkarlin
 editor: ''
 ms.assetid: b18b48ae-b445-48f8-9ac0-365d6e065b64
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/18/2019
 ms.author: mlottner
-ms.openlocfilehash: 6182662cb0da7fa5bcd3f329ada9ca5851490724
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 884d001a65962d5e7e6e52dd47ce6ad7e02e1057
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60007882"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67618119"
 ---
 # <a name="investigate-a-suspicious-iot-device"></a>Vizsgálja meg a gyanús IoT-eszköz
 

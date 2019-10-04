@@ -13,11 +13,11 @@ ms.reviewer: martincoetzer
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3a3a57fbe5df690e4dbdba8cbab85e62648bb298
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192574"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60295372"
 ---
 # <a name="factors-influencing-the-performance-of-azure-ad-connect"></a>Az Azure AD Connect teljesítményét befolyásoló tényezők
 
@@ -29,7 +29,7 @@ Az Azure AD Connect szinkronizálja az Active Directory, az Azure ad-hez. Ez a k
 | Méretezés| A felhasználók, csoportok és szervezeti egységek, az Azure AD Connect által kezelt, például az objektumok száma. |
 | Hardver| A hardver (fizikai vagy virtuális) az Azure AD Connect és minden hardverösszetevő, többek között a CPU, memória, hálózati és merevlemez-meghajtó konfigurációja függő teljesítmény kapacitását. |
 | Konfiguráció| Az Azure AD Connect folyamatok a könyvtárak és információkat. |
-| Betöltés| Objektum módosítása gyakorisága. A terhelések egy óra, nap vagy hét folyamán eltérőek lehetnek. Az összetevőtől függően tervezhet a csúcsterheléssel vagy az átlagos terhelés is rendelkezik. |
+| betöltés| Objektum módosítása gyakorisága. A terhelések egy óra, nap vagy hét folyamán eltérőek lehetnek. Az összetevőtől függően tervezhet a csúcsterheléssel vagy az átlagos terhelés is rendelkezik. |
 
 A jelen dokumentum célja, hogy az az Azure AD Connect-kiépítés motor teljesítményét befolyásoló tényezőket ismerteti. Nagy vagy összetett (a szervezetek több mint 100 000 objektumra kiépítése) is alakíthatók a javaslatok optimalizálása az Azure AD Connect végrehajtásuk esetén az itt vázolt okoznak teljesítményproblémákat. Az Azure AD Connect, a többi összetevő például [az Azure AD Connect health](how-to-connect-health-agent-install.md) és az ügynökök nem terjed ki itt.
 
@@ -104,7 +104,7 @@ A szinkronizálási folyamat modul a következő teljesítmény jellemzőkkel re
 * Exportálás az is lineáris.
 * A szinkronizálás más objektumok hivatkozó objektumok száma alapján exponenciálisan növekszik. Csoport tagságát, beágyazott csoportokat kell a fő teljesítményre gyakorolt hatás, mert a tagjaik tekintse meg a felhasználói objektumok vagy más csoportokhoz. Ezeket a hivatkozásokat kell található, és a befejezéséhez a szinkronizálási ciklus MV a tényleges objektumra hivatkozik.
 
-### <a name="filtering"></a>Szűrés
+### <a name="filtering"></a>Filtering
 
 Az importálni kívánt Active Directory-topológia mérete a szám egy tényező befolyásolta a teljesítményt és a teljes időtartama a kiépítési motor belső összetevőinek vesz igénybe.
 

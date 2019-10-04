@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 2/20/2019
 ms.author: erhopf
-ms.openlocfilehash: 8a8611218f47e5600fc02efef24aa7912b630522
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: d6ee5f432321753b9a09749ccf45c9a5bda5300d
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59804170"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802471"
 ---
 1. Indítsa el az Eclipse-et.
 
@@ -45,7 +45,7 @@ ms.locfileid: "59804170"
 
      [!code-xml[POM Repositories](~/samples-cognitive-services-speech-sdk/quickstart/java-jre/pom.xml#repositories)]
 
-   * Is hozzáadhat egy `dependencies` elem, a beszéd SDK 1.4.0-s függőségként verziója:
+   * Adjon hozzá egy `dependencies` elemet is, amely a Speech SDK verziójának 1.7.0 függ:
 
      [!code-xml[POM Dependencies](~/samples-cognitive-services-speech-sdk/quickstart/java-jre/pom.xml#dependencies)]
 

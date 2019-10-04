@@ -8,7 +8,9 @@
   items:
     - name: Új tudásbázis létrehozása
       href: How-To/create-knowledge-base.md
-    - name: Válaszadás tudásbázisból
+    - name: Metaadatokkal rendelkező kérdések felvétele
+      href: quickstarts/add-question-metadata-portal.md
+    - name: Válasz kérése
       items:
         - name: A Postman használata
           href: Quickstarts/get-answer-from-kb-using-postman.md
@@ -25,7 +27,7 @@
             - name: Java
               href: Quickstarts/create-new-kb-java.md
             - name: Node.js
-              href: Quickstarts/create-new-kb-nodejs.md
+              href: Quickstarts/create-knowledge-rest-api-nodejs.md
             - name: Python
               href: Quickstarts/create-new-kb-python.md
         - name: Tudásbázis közzététele
@@ -37,10 +39,10 @@
             - name: Java
               href: Quickstarts/publish-kb-java.md
             - name: Node.js
-              href: Quickstarts/publish-kb-nodejs.md
+              href: 'Quickstarts/create-knowledge-rest-api-nodejs.md##publish-a-knowledge-base'
             - name: Python
               href: Quickstarts/publish-kb-python.md
-        - name: Válaszadás tudásbázisból
+        - name: Válasz kérése
           items:
             - name: 'C#'
               href: Quickstarts/get-answer-from-knowledge-base-csharp.md
@@ -52,6 +54,14 @@
               href: Quickstarts/get-answer-from-knowledge-base-nodejs.md
             - name: Python
               href: Quickstarts/get-answer-from-knowledge-base-python.md
+    - name: SDK-k használata
+      items:
+        - name: 'C#'
+          href: ./Quickstarts/create-publish-kb-csharp-sdk.md
+        - name: Node.js
+          href: ./Quickstarts/create-publish-kb-nodejs-sdk.md
+        - name: Python
+          href: ./Quickstarts/python-sdk.md
 - name: Oktatóanyagok
   items:
     - name: Létrehozás és válaszküldés egy tudásbázisból
@@ -66,8 +76,11 @@
     - name: Tudásbázis
       href: Concepts/knowledge-base.md
       displayName: 'metadata, pair'
+    - name: A LUIS és a QnA Maker használata
+      href: ../luis/choose-natural-language-processing-service.md?toc=/azure/cognitive-services/qnamaker/toc.json
     - name: A tudásbázisok fejlesztési életciklusa
       href: Concepts/development-lifecycle-knowledge-base.md
+      displayName: 'version control, test, index, publish, monitor usage, create'
     - name: Ajánlott eljárások
       href: Concepts/best-practices.md
       displayName: 'tag, rank, score, threshold, question, alternate, filter, synonym, answer, active learning, collaborate, alteration, metadata, bot, personality, extraction, chit-chat'
@@ -79,100 +92,104 @@
       displayName: 'metadata, pair, sharepoint, authentication, permissions, faq, pdf, excel, xls, rtf, html, txt, tsv, url, end of line, new line, carriage return, markdown, commonmark, format, standard'
 - name: Útmutatók
   items:
+    - name: Tudásbázis szerkesztése
+      items:
+        - name: Tudásbázis szerkesztése
+          href: How-To/edit-knowledge-base.md
+        - name: Többlépéses beszélgetések létrehozása követő kérdésekkel
+          href: How-To/multiturn-conversation.md
+          displayName: 'multi-turn dialogs, parent question, child question, filtering, metadata, state, context, prompt, follow-up, followup, flow, conversation, previous question'
+        - name: Csevegés hozzáadása
+          href: How-to/chit-chat-knowledge-base.md
+        - name: Védett SharePoint-fájl hozzáadása
+          href: How-To/add-sharepoint-datasources.md
+          displayName: 'Sharepoint, secure, AAD, azure directory, admin, permission, authorization, file, authentication'
     - name: A tudásbázis kezelése
       items:
         - name: Tudásbázis létrehozása és közzététele
           href: Quickstarts/create-publish-knowledge-base.md
           displayName: 'create bot, bot, publish to bot, test, edit'
-        - name: Párbeszéd hozzáadása a tudásbázishoz
-          href: How-to/chit-chat-knowledge-base.md
-        - name: Tudásbázis migrálása
-          href: Tutorials/migrate-knowledge-base.md
-        - name: Tudásbázis szerkesztése
-          href: How-To/edit-knowledge-base.md
-          displayName: 'metadata, pair'
-        - name: Védett SharePoint-fájl hozzáadása
-          href: How-To/add-sharepoint-datasources.md
-          displayName: 'Sharepoint, secure, AAD, azure directory, admin, permission, authorization, file, authentication'
-        - name: Együttműködés a tudásbázison
-          href: How-To/collaborate-knowledge-base.md
+        - name: Válasz kérése metaadatok használatával
+          href: How-To/metadata-generateanswer-usage.md
+          displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
+        - name: Robot létrehozása a QnA Maker és a LUIS használatával
+          href: Tutorials/integrate-qnamaker-luis.md
         - name: Más nyelvű tudásbázis létrehozása
           href: How-To/language-knowledge-base.md
+        - name: Tudásbázis migrálása
+          href: Tutorials/migrate-knowledge-base.md
+          displayName: 'metadata, pair'
+        - name: Együttműködés a tudásbázison
+          href: How-To/collaborate-knowledge-base.md
         - name: Tudásbázis tesztelése
           href: How-To/test-knowledge-base.md
         - name: Aktív tanulás használata a tudásbázis továbbfejlesztéséhez
           href: How-to/improve-knowledge-base.md
-          displayName: 'active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting, accept, reject, filter by suggestion, filter active learning'
-    - name: Tudásbázis használata
-      items:
-        - name: Metaadatok használata a GenerateAnswer API-val
-          href: How-To/metadata-generateanswer-usage.md
-          displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters'
-        - name: Robottal
-          href: Tutorials/integrate-qnamaker-luis.md
+          displayName: 'active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting, accept, reject, filter by suggestion, filter active learning, clusterHead, totalAutoSuggestedCount, totalUserSuggestedCount, autoSuggestedCount, userSuggestedCount'
     - name: Szolgáltatás kezelése
       items:
-        - name: QnA Maker-szolgáltatás beállítása
+        - name: Erőforrások kezelése
           href: How-To/set-up-qnamaker-service-azure.md
-        - name: Tudásbázis elemzésének lekérése
+          displayName: 'azure, resource, key, upgrade, pricing, tier,'
+        - name: Adatelemzés beszerzése
           href: How-To/get-analytics-knowledge-base.md
-        - name: Kulcsok kezelése
-          href: How-To/key-management.md
-        - name: Kapacitás kiválasztása a QnA Maker üzemelő példányához
+        - name: Kapacitás kiválasztása
           href: Tutorials/choosing-capacity-qnamaker-deployment.md
-        - name: QnA Maker-szolgáltatás frissítése
-          href: How-To/upgrade-qnamaker-service.md
-        - name: Üzletmenet-folytonossági terv kidolgozása a QnA Maker szolgáltatáshoz
+        - name: Üzletmenet-folytonossági terv létrehozása
           href: How-To/business-continuity-plan.md
-        - name: A QnAMaker futtatókörnyezetének hibaelhárítása és frissítése
-          href: How-To/troubleshooting-runtime.md
-    - name: A REST API használata
-      items:
-        - name: 'C#'
-          href: Quickstarts/csharp.md
-        - name: Java
-          href: Quickstarts/java.md
-        - name: Node.js
-          href: Quickstarts/nodejs.md
-        - name: Python
-          href: Quickstarts/python.md
-        - name: Indítás
-          href: Quickstarts/go.md
 - name: Referencia
   items:
     - name: REST API-referencia
-      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff'
-    - name: GYIK
-      href: faqs.md
+      items:
+        - name: API-k készítése
+          href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase'
+        - name: GenerateAnswer API
+          href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer'
+        - name: API betanítása
+          href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train'
+      href: 'https://go.microsoft.com/fwlink/?linkid=2092179'
+    - name: Hibaelhárítás
+      href: troubleshooting.md
     - name: Korlátok
       href: limits.md
-    - name: Szószedet
-      href: glossary.md
-    - name: HTTP-válaszkódok
-      displayName: '200, 2xx, 400, 401, 403, 404'
-      href: http-response-codes.md
     - name: Példák
       items:
         - name: QnA Maker-súgórobot
-          href: 'https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/csharp_dotnetcore/qnamaker-support-bot'
+          href: 'https://aka.ms/qnamakerhelpbotsample'
     - name: SDK-k
       items:
         - name: 'C#'
           items:
-            - name: NuGet
+            - name: Referenciadokumentáció
+              href: 'https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker?view=azure-dotnet'
+            - name: NuGet-csomag
               href: 'https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker/'
+            - name: Példák
+              href: 'https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp'
         - name: Indítás
           items:
+            - name: Referenciadokumentáció
+              href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v4.0/qnamaker'
             - name: SDK
               href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v4.0/qnamaker'
+            - name: Példák
+              href: 'https://github.com/Azure-Samples/cognitive-services-qnamaker-go'
         - name: Node.js
           items:
+            - name: Referenciadokumentáció
+              href: 'https://docs.microsoft.com/en-us/javascript/api/%40azure/cognitiveservices-qnamaker/index?view=azure-node-latest'
             - name: NPM
               href: 'https://www.npmjs.com/package/azure-cognitiveservices-qnamaker'
+            - name: Példák
+              href: 'https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs'
         - name: Python
           items:
+            - name: Referenciadokumentáció
+              href: 'https://docs.microsoft.com/en-us/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker?view=azure-python'
             - name: Pip
               href: 'https://pypi.org/project/azure-cognitiveservices-knowledge-qnamaker/'
+            - name: Példák
+              href: 'https://github.com/Azure-Samples/cognitive-services-qnamaker-python'
         - name: Ruby
           items:
             - name: Gem
@@ -181,6 +198,8 @@
   items:
     - name: Régiónkénti rendelkezésre állás
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: Megfelelőség
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Díjszabás és korlátok
@@ -190,8 +209,10 @@
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/QnAMaker'
     - name: UserVoice
-      href: 'https://aka.ms/qnamaker-uservoice'
+      href: 'https://cognitive.uservoice.com/forums/578689-qna-maker-api'
     - name: Keresés
       href: 'https://docs.microsoft.com/search/index?search=QnAMaker'
     - name: Blog
       href: 'https://blog.botframework.com/category/QnAMaker/'
+- name: QnA Maker portál
+  href: 'https://www.qnamaker.ai'

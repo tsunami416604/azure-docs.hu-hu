@@ -1,10 +1,10 @@
 ---
-title: Mi az, hogy a 168.63.129.16 IP-cím? | Microsoft Docs
-description: Ismerje meg a 168.63.129.16 IP-címet, és hogyan működik az erőforrásokhoz.
+title: Mi az IP-168.63.129.16? | Microsoft Docs
+description: Ismerje meg az IP-168.63.129.16, valamint azt, hogy miként működik az erőforrásaival.
 services: virtual-network
 documentationcenter: na
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: v-jesits
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,29 +13,32 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/21/2019
+ms.date: 05/15/2019
 ms.author: genli
-ms.openlocfilehash: 7f0539e7c2f7e5ae8847b35b47d3708c6c5d6a09
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 0ea8a8ec1a92a7dbc01dddc175f7116825ba00f9
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55296038"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067779"
 ---
-# <a name="what-is-ip-address-1686312916"></a>Mi az, hogy a 168.63.129.16 IP-cím?
+# <a name="what-is-ip-address-1686312916"></a>Mi az IP-168.63.129.16?
 
-168.63.129.16 IP-cím virtuális nyilvános IP-címet, amely a kommunikációs csatornát, az Azure platform erőforrásainak megkönnyítésére szolgál. Ügyfelek definiálhat bármilyen címteret a saját privát virtuális hálózatot az Azure-ban. Ezért az Azure-platform-erőforrások egyedi, nyilvános IP-címet kell bemutatni. A nyilvános virtuális IP-cím lehetővé teszi az alábbiakat:
+Az IP-168.63.129.16 egy virtuális nyilvános IP-cím, amely az Azure platform erőforrásainak kommunikációs csatornájának megkönnyítésére szolgál. Az ügyfelek meghatározhatnak bármilyen címtartományt az Azure-beli magánhálózati virtuális hálózathoz. Ezért az Azure platform-erőforrásokat egyedi nyilvános IP-címként kell megjeleníteni. Ez a virtuális nyilvános IP-cím a következő dolgokat teszi lehetővé:
 
-- Lehetővé teszi, hogy a Virtuálisgép-ügynök kommunikálni az Azure platformon, hogy jelezze, hogy a "Kész" állapotban van.
-- Lehetővé teszi a kommunikációt a DNS-kiszolgáló az erőforrások (például a virtuális gép), amelyek nem rendelkeznek egy egyéni DNS-kiszolgáló szűrt névfeloldást biztosítanak. Ez a szűrés gondoskodik arról, hogy a felhasználók is csak az erőforrások állomásnevét feloldani.
-- Lehetővé teszi egy elosztott terhelésű készlet virtuális gépek állapota határozza meg, hogy a terheléselosztó állapot-mintavételei.
-- Lehetővé teszi a Vendégügynök szívverés a PaaS-szerepkör.
+- Lehetővé teszi, hogy a virtuálisgép-ügynök kommunikáljon az Azure platformmal, és jelezze, hogy "kész" állapotban van.
+- Engedélyezi a kommunikációt a DNS virtuális kiszolgálóval, hogy a szűrt névfeloldást biztosítson az olyan erőforrásokra (például virtuális gépre), amelyek nem rendelkeznek egyéni DNS-kiszolgálóval. Ez a szűrés gondoskodik arról, hogy az ügyfelek csak az erőforrásaik állomásnevét tudják feloldani.
+- A virtuális gépek állapotának meghatározásához engedélyezi az [Azure Load Balancer állapot-](../load-balancer/load-balancer-custom-probe-overview.md) mintavételét.
+- Lehetővé teszi, hogy a virtuális gép dinamikus IP-címet szerezzen be a DHCP szolgáltatásból az Azure-ban.
+- A vendég ügynök szívverési üzeneteinek engedélyezése a Pásti szerepkörhöz.
 
-## <a name="scope-of-ip-address-1686312916"></a>Hatókör a 168.63.129.16 IP-cím
+## <a name="scope-of-ip-address-1686312916"></a>IP-168.63.129.16 hatóköre
 
-Virtuális nyilvános IP-cím 168.63.129.16 minden régióban, és minden országos felhők használatban van. Ez speciális nyilvános IP-cím nem változik. Ez az alapértelmezett hálózati biztonsági csoportszabály által engedélyezett. Azt javasoljuk, hogy lehetővé tegye az IP-címet a bármilyen helyi tűzfal-házirendek. Ez speciális IP-cím és az erőforrások közötti kommunikáció biztonságos-e, mert csak a belső Azure platformon is forrás IP-cím üzenetét. Ha ez a cím le van tiltva, nem várt viselkedést számos forgatókönyv esetében fordul elő.
+A nyilvános IP-168.63.129.16 minden régióban és minden nemzeti felhőben használatos. Ez a speciális nyilvános IP-cím a Microsoft tulajdonában van, és nem fog változni. Ezt az alapértelmezett hálózati biztonsági csoport szabálya engedélyezi. Azt javasoljuk, hogy engedélyezze ezt az IP-címet bármely helyi tűzfal-házirendben a bejövő és kimenő irányban is. A speciális IP-cím és az erőforrások közötti kommunikáció biztonságos, mert csak a belső Azure-platform tud üzenetet kiszolgálni ebből az IP-címről. Ha ez a címe le van tiltva, a váratlan viselkedés különböző helyzetekben fordulhat elő.
 
-Ezenkívül várható, hogy a végponthoz konfigurált virtuális nyilvános IP-címről érkező 168.63.129.16 haladjon a forgalom egy [terheléselosztó állapotmintát](../load-balancer/load-balancer-custom-probe-overview.md). A nem virtuális hálózat a forgatókönyvben az állapotminta forrása egy magánhálózati IP-címet. 
+[Azure Load Balancer állapot](../load-balancer/load-balancer-custom-probe-overview.md) -mintavétel ebből az IP-címről származik. Ha letiltja ezt az IP-címet, a mintavétel sikertelen lesz.
+
+A nem virtuális hálózati forgatókönyvek (klasszikus) esetében az állapot-mintavétel egy magánhálózati IP-címről származik, és a rendszer nem használja a 168.63.129.16.
 
 ## <a name="next-steps"></a>További lépések
 

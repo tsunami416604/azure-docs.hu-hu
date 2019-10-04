@@ -1,25 +1,18 @@
 ---
-title: Közzététel a Dynamics 365 for Customer Engagement alkalmazást offer – Azure Marketplace-en |} A Microsoft Docs
+title: Közzététel a Dynamics 365 for Customer Engagement alkalmazásra vonatkozó ajánlat |} Az Azure Marketplace-en
 description: A folyamat és a egy Dynamics 365 Customer Engagement-alkalmazás ajánlat az AppSource-piactér közzétételi lépéseit ismerteti.
 services: Azure, AppSource, Marketplace, Cloud Partner Portal, Dynamics 365 for Customer Engagement
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/28/2018
-ms.author: pbutlerm
-ms.openlocfilehash: eeb0fa84e8cd5ac6a499e02edd5879c5bbdd8ead
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.author: pabutler
+ms.openlocfilehash: 65df08d5fa2b7e4e7f6654f520f9caacc696f7c3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54082926"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64942280"
 ---
 # <a name="publish-a-dynamics-365-for-customer-engagement-offer"></a>A Dynamics 365 Customer Engagement-ajánlat közzététele
 

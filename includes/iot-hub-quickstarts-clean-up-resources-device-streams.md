@@ -1,36 +1,36 @@
 ---
-title: adatfájl (eszköz Streamek)
+title: fájl belefoglalása (eszköz streamek)
 description: fájl belefoglalása
 services: iot-hub
-author: rezas
+author: robinsh
 ms.service: iot-hub
 ms.topic: include
 ms.date: 01/15/2019
-ms.author: rezas
+ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 979ca857a4410a8efd1b211afc09a0563d76a1ba
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 46ab75f161692dd048c19698af7027d0e0622b37
+ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54830149"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "67446034"
 ---
-Ha azt tervezi, hogy a következő ajánlott cikkel folytatja, megtarthatja és újból felhasználhatja a már létrehozott erőforrásokat.
+Ha azt tervezi, hogy folytatja a következő javasolt cikket, megtarthatja és újra használhatja a már létrehozott erőforrásokat.
 
-Ellenkező esetben, a díjak elkerülése érdekében törölheti a jelen cikkben létrehozott Azure-erőforrásokat. 
+Ellenkező esetben a költségek elkerülése érdekében törölheti a cikkben létrehozott Azure-erőforrásokat.
 
 > [!IMPORTANT]
-> Az erőforráscsoport törlése nem vonható vissza. Az erőforráscsoport és a benne foglalt erőforrások véglegesen törlődnek. Figyeljen arra, hogy ne töröljön véletlenül erőforráscsoportot vagy erőforrásokat. Ha az IoT Hubot egy meglévő, megtartani kívánt erőforrásokat tartalmazó erőforráscsoportban hozta létre, az erőforráscsoport törlése helyett törölheti csak magát az IoT Hub-erőforrást.
+> Az erőforráscsoport törlése nem vonható vissza. Az erőforráscsoport és a benne foglalt erőforrások véglegesen törlődnek. Figyeljen, nehogy véletlenül rossz erőforráscsoportot vagy erőforrásokat töröljön. Ha a IoT hub-t egy meglévő erőforráscsoport belsejében hozta létre, amely a megőrizni kívánt erőforrásokat tartalmazza, akkor csak a IoT hub-erőforrást törölje, nem az erőforráscsoportot.
 >
 
 Erőforráscsoport törlése név alapján:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com), és kattintson az **Erőforráscsoportok** elemre.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com), és válassza az **Erőforráscsoportok** elemet.
 
-2. A **Szűrés név alapján...** mezőbe írja be az IoT Hubot tartalmazó erőforráscsoport nevét. 
+1. A **szűrés név alapján** mezőbe írja be az IoT hubot tartalmazó erőforráscsoport nevét.
 
-3. Az eredménylistában kattintson az erőforráscsoporttól jobbra lévő **…** ikonra, majd kattintson az **Erőforráscsoport törlése** elemre.
+1. Az eredmény listán az erőforráscsoport jobb oldalán válassza a három pontot ( **..** .), majd válassza az **erőforráscsoport törlése**lehetőséget.
 
-    ![Törlés](./media/iot-hub-quickstarts-clean-up-resources-device-streams/iot-hub-delete-resource-group.png)
+    ![Az "erőforráscsoport törlése" gomb](./media/iot-hub-quickstarts-clean-up-resources-device-streams/iot-hub-delete-resource-group.png)
 
-4. A rendszer az erőforráscsoport törlésének megerősítését fogja kérni. A megerősítéshez írja be újra az erőforráscsoport nevét, majd kattintson a **Törlés** elemre. A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne foglalt erőforrásokat.
+1. Az erőforráscsoport törlésének megerősítéséhez írja be újra az erőforráscsoport nevét, majd válassza a **Törlés**lehetőséget. Néhány pillanat elteltével töröljük az erőforráscsoportot és az összes benne foglalt erőforrást.

@@ -1,52 +1,84 @@
 ---
-title: Notification Hubs biztonsági
-description: Ez a témakör ismerteti a biztonság az Azure notification hubs szolgáltatásban.
+title: Notification Hubs biztonság
+description: Ez a témakör az Azure Notification Hubs biztonságát ismerteti.
 services: notification-hubs
 documentationcenter: .net
-author: jwargo
-manager: patniko
-editor: spelluru
-ms.assetid: 6506177c-e25c-4af7-8508-a3ddca9dc07c
+author: sethmanheim
+manager: femila
+editor: jwargo
+ms.assetid: ''
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: bd9df12cbe941b868c769daccd02c1d81b39f7bd
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.date: 09/23/2019
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 09/23/2019
+ms.openlocfilehash: a9598f6a01e5536351fb20b7c352a5eaf5746042
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54465360"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71273618"
 ---
-# <a name="security-model-of-azure-notification-hubs"></a>Biztonsági modell az Azure Notification hubs használatával
+# <a name="notification-hubs-security"></a>Notification Hubs biztonság
 
 ## <a name="overview"></a>Áttekintés
 
-Ez a témakör ismerteti a biztonsági modell az Azure Notification hubs használatával. Mivel a Notification Hubs egy Service Bus entitásban, mint a Service Bus ugyanazt a biztonsági modellt valósítják meg. További információkért lásd: a [Service Bus-hitelesítés](https://msdn.microsoft.com/library/azure/dn155925.aspx) témaköröket.
+Ez a témakör az Azure Notification Hubs biztonsági modelljét ismerteti.
 
-## <a name="shared-access-signature-security-sas"></a>Közös hozzáférésű Jogosultságkód biztonsági (SAS)
+## <a name="shared-access-signature-security"></a>Közös hozzáférésű aláírás biztonsága
 
-A Notification Hubs valósít meg egy entitás-szintű biztonsági rendszer SAS (közös hozzáférésű Jogosultságkód) néven. Ez a séma lehetővé teszi, hogy a leírás legfeljebb 12 olyan engedélyezési szabályok, amelyek az adott entitástól jogosultságokat deklarálnia üzenetküldési entitások.
+Notification Hubs megvalósítja a *közös hozzáférésű aláírás* (SAS) nevű entitás szintű biztonsági sémát. Minden szabály tartalmaz egy nevet, egy kulcs értéket (közös titkos kulcsot) és a jogosultságok egy készletét, ahogy azt a [biztonsági jogcímek](#security-claims)később ismertették. 
 
-Minden szabály nevét, a kulcs értékét (közös titkos kódot) és olyan jogokkal, tartalmazza a "Biztonsági jogcímeinek." szakaszban leírtak szerint Egy értesítési központ létrehozása esetén a rendszer automatikusan létrehozza két szabályt: egy figyelési jogosultsággal (az ügyfél alkalmazás által használt) és egy, az összes jogosultságokkal (azaz a háttéralkalmazás használja).
+Egy központ létrehozásakor a rendszer automatikusan két szabályt hoz létre: egyet a **figyelési** jogokkal (az ügyfélalkalmazás által használt), és egyet az **összes** jogosultsággal (amelyet az alkalmazás-háttér használ):
 
-Végrehajtásakor regisztrációkezelés ügyfél alkalmazásokból, ha az adatokat küldött értesítések nem érzékeny (például az időjárás frissítések), gyakori módja egy értesítési központ eléréséhez a kulcs értékét a szabály-figyelési hozzáférés biztosítása az ügyfélalkalmazás számára és a kulcs értékét a szabály teljes hozzáférés biztosítása a háttéralkalmazás számára.
+- **DefaultListenSharedAccessSignature**: csak a **figyelési** engedélyt engedélyezi.
+- **DefaultFullSharedAccessSignature**: a **figyelési**, **kezelési**és **küldési** engedélyeket biztosít. Ezt a szabályzatot csak az alkalmazási háttérrendszer használja. Ne használja az ügyfélalkalmazások számára; olyan házirendet használjon, amely csak a **figyelési** hozzáféréssel rendelkezik. Az új SAS-tokent tartalmazó új egyéni hozzáférési házirend létrehozásához tekintse meg a jelen cikk későbbi, a [hozzáférési szabályzatok sas-jogkivonatait](#sas-tokens-for-access-policies) ismertető cikket.
 
-Nem javasoljuk, hogy a kulcs értékét a Windows Store ügyfélalkalmazások ágyazhat be. Beágyazás a kulcsérték elkerülése érdekében úgy, hogy az ügyfélalkalmazás beolvasni a rendszerindításkor alkalmazási háttérrendszerből rendelkezzen.
+Ha az ügyfélalkalmazások regisztrációs felügyeletet végeznek, ha az értesítéseken keresztül küldött információk nem érzékenyek (például időjárás-frissítések), az értesítési központ elérésének közös módja, ha a szabály kulcsfontosságú értékét figyeli, hogy csak az ügyfélalkalmazás férhessen hozzá. a szabály kulcsfontosságú értékeként pedig teljes hozzáférést biztosíthat az alkalmazási háttérhez.
 
-Fontos megérteni, hogy a figyelési hozzáféréssel rendelkező kulcs lehetővé teszi, hogy egy ügyfélalkalmazás bármely címke regisztrálhat. Ha az alkalmazás regisztrációk kell korlátozni meghatározott címkéket, hogy bizonyos ügyfelek (például, ha a címkék képviselik a felhasználói azonosítók), majd az alkalmazás háttérrendszere a regisztrációk kell elvégeznie. További információkért lásd: Regisztrációkezelés. Vegye figyelembe, hogy így az ügyfél alkalmazás nem tartalmaz a Notification Hubs közvetlen hozzáférést.
+Az alkalmazások nem ágyazzák be a kulcs értékét a Windows áruházbeli ügyfélalkalmazásokba; Ehelyett az ügyfélalkalmazás az indításkor lekéri az alkalmazás-háttérből.
+
+A **figyelési** hozzáféréssel rendelkező kulcs lehetővé teszi, hogy az ügyfélalkalmazás bármely címkére regisztrálhat. Ha az alkalmazásnak meghatározott felhasználóknak kell korlátoznia a regisztrációkat adott címkékre (például ha a címkék felhasználói azonosítókat jelölnek), az alkalmazás-háttérnek el kell végeznie a regisztrációt. További információ: [regisztráció kezelése](notification-hubs-push-notification-registration-management.md). Vegye figyelembe, hogy az ügyfélalkalmazás így nem lesz közvetlen hozzáférése Notification Hubshoz.
 
 ## <a name="security-claims"></a>Biztonsági jogcímek
 
-Más entitásokhoz hasonlóan Notification Hub-műveletek engedélyezett három biztonsági jogcímek: Figyeljen, küldése és kezelése.
+A többi entitáshoz hasonlóan a Notification hub műveletei három biztonsági jogcímet is használhatnak: **Figyelés**, **Küldés**és **kezelés**.
 
-| Jogcím   | Leírás                                          | Engedélyezett műveletek |
+| Igénylés   | Leírás                                          | Engedélyezett műveletek |
 | ------- | ---------------------------------------------------- | ------------------ |
-| Figyelés  | Létrehozni vagy frissíteni, olvassa el, és egyetlen regisztrációkat törölhet | Regisztrációs létrehozása vagy frissítése<br><br>Regisztráció olvasása<br><br>Olvassa el a vonatkozó leírót az összes regisztrációk<br><br>Regisztráció törlése |
-| Küldés    | Üzenetek küldése az értesítési központhoz                | Üzenet küldése |
-| Kezelés  | A Notification Hubs (beleértve a PNS hitelesítő adatainak és a biztonsági kulcsok frissítése) és a címkék alapján olvasási regisztrációk cRUDs |Létrehozása/frissítése/olvasása/törlése a notification hubs<br><br>Olvassa el a regisztrációk címke szerint |
+| Figyelés  | Egyszeri regisztrációk létrehozása/frissítése, olvasása és törlése | Regisztráció létrehozása/frissítése<br><br>Regisztráció beolvasása<br><br>Egy leíró összes regisztrációjának olvasása<br><br>Regisztráció törlése |
+| Küldés    | Üzenetek küldése az értesítési központnak                | Üzenet küldése |
+| Felügyelet  | Notification Hubs (beleértve a PNS hitelesítő adatainak frissítését és a biztonsági kulcsokat), valamint a címkék alapján történő regisztrációk beolvasása |Hubok létrehozása/frissítése/olvasása/törlése<br><br>Regisztrációk beolvasása címke szerint |
 
-A Notification Hubs nyújtani a Microsoft Azure hozzáférés-vezérlés tokeneket, és hozza létre az értesítési központ közvetlenül a konfigurált megosztott kulcsokat jogosultságkódok jogkivonataival jogcímeket fogadjon el.
+A Notification Hubs fogadja a közvetlenül a központban konfigurált megosztott kulcsokkal generált SAS-jogkivonatokat.
+
+Nem lehet értesítést küldeni több névtérnek. A névterek a Notification Hubs logikai tárolói, és nem vesznek részt az értesítések küldésében.
+
+Névtér szintű műveletekhez használja a névtér szintű hozzáférési házirendeket (hitelesítő adatokat); például: csomópontok listázása, hubok létrehozása vagy törlése stb. Csak a hub szintű hozzáférési házirendek teszik lehetővé az értesítések küldését.
+
+### <a name="sas-tokens-for-access-policies"></a>Hozzáférési szabályzatok SAS-jogkivonatai
+
+Új biztonsági jogcím létrehozásához vagy a meglévő SAS-kulcsok megtekintéséhez tegye a következőket:
+
+1. Jelentkezzen be az Azure portálra.
+2. Válassza az **Összes erőforrás** elemet.
+3. Válassza ki az értesítési központ nevét, amelyhez létre kívánja hozni a jogcímet, vagy tekintse meg az SAS-kulcsot.
+4. A bal oldali menüben válassza a **hozzáférési szabályzatok**lehetőséget.
+5. Új biztonsági jogcím létrehozásához válassza az **új szabályzat** lehetőséget. Adja meg a szabályzat nevét, és válassza ki a megadni kívánt engedélyeket. Ezután kattintson az **OK** gombra.
+6. A hozzáférési házirendek ablakban megjelenik a teljes kapcsolati karakterlánc (az új SAS-kulccsal együtt). Ezt a karakterláncot a vágólapra másolhatja későbbi használatra.
+
+Ha az SAS-kulcsot egy adott szabályzatból szeretné kibontani, kattintson a kívánt SAS-kulcsot tartalmazó házirend melletti **Másolás** gombra. Illessze be ezt az értéket egy ideiglenes helyre, majd másolja a kapcsolatok karakterlánc SAS-kulcs részét. Ez a példa egy **mytestnamespace1**nevű Notification Hubs névteret és egy **policy2**nevű szabályzatot használ. Az SAS-kulcs a karakterlánc végén található, a **SharedAccessKey**által megadott érték:
+
+```shell
+Endpoint=sb://mytestnamespace1.servicebus.windows.net/;SharedAccessKeyName=policy2;SharedAccessKey=<SAS key value here>
+```
+
+![SAS-kulcsok beszerzése](media/notification-hubs-push-notification-security/access1.png)
+
+## <a name="next-steps"></a>További lépések
+
+- [Notification Hubs áttekintése](notification-hubs-push-notification-overview.md)

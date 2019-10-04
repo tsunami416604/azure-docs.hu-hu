@@ -3,7 +3,7 @@ title: A Service Fabric-futtatókörnyezet frissítése az Azure-ban | Microsoft
 description: Ez az oktatóanyag bemutatja, hogyan frissíthető egy Azure-ban tárolt Service Fabric-fürt futtatókörnyezetének frissítése a PowerShell segítségével.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: ''
@@ -12,24 +12,24 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/28/2017
-ms.author: aljo
+ms.date: 07/22/2019
+ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 7e48684024d370d64f44b55cb4df0efb8f16cd3b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 5bb3760879682f9fc828d2a43690d34afb110403
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59046240"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598743"
 ---
-# <a name="tutorial-upgrade-the-runtime-of-a-service-fabric-cluster-in-azure"></a>Oktatóanyag: Az Azure Service Fabric-fürt futtatókörnyezetének frissítése
+# <a name="tutorial-upgrade-the-runtime-of-a-service-fabric-cluster-in-azure"></a>Oktatóanyag: Service Fabric-fürt futtatókörnyezetének frissítése az Azure-ban
 
-Ez az oktatóanyag része, amely egy sorozat negyedik, és bemutatja, hogyan frissítse a Service Fabric-futtatókörnyezet, az Azure Service Fabric-fürtön. Az oktatóanyag ezen része az Azure-ban futó Service Fabric-fürtökhöz készült, és nem vonatkozik a különálló Service Fabric-fürtökre.
+Ez az oktatóanyag egy sorozat negyedik része, és bemutatja, hogyan frissítheti az Service Fabric futtatókörnyezetet egy Azure Service Fabric-fürtön. Ez az oktatóanyag-rész az Azure-on futó Service Fabric-fürtökre íródott, és nem vonatkozik az önálló Service Fabric-fürtökre.
 
 > [!WARNING]
 > Az oktatóanyag jelen részéhez PowerShell szükséges. Az Azure CLI-eszközök még nem támogatják a fürt-futtatókörnyezet frissítésének támogatását. Másik lehetőségként a fürt a portálon is frissíthető. További információkért lásd az [Azure Service Fabric-fürt frissítését](service-fabric-cluster-upgrade.md).
 
-Ha a fürt már a Service Fabric-futtatókörnyezet legfrissebb verzióját futtatja, ezt a lépést nem kell elvégeznie. Azonban ez a cikk az Azure Service Fabric-fürtön található bármely támogatott futtatókörnyezet telepítéséhez használható.
+Ha a fürt már futtatta a legújabb Service Fabric futtatókörnyezetet, ezt a lépést nem kell végrehajtania. Azonban ez a cikk az Azure Service Fabric-fürtön található bármely támogatott futtatókörnyezet telepítéséhez használható.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -39,8 +39,8 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 > [!div class="checklist"]
-> * Hozzon létre egy biztonságos [Windows-fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) az Azure-ban sablon használatával
-> * [-Fürt monitorozása](service-fabric-tutorial-monitor-cluster.md)
+> * Biztonságos Windows- [fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) létrehozása az Azure-ban sablon használatával
+> * [Fürt figyelése](service-fabric-tutorial-monitor-cluster.md)
 > * [Fürt horizontális fel- és leskálázása](service-fabric-tutorial-scale-cluster.md)
 > * Fürt futtatókörnyezetének frissítése
 > * [Fürt törlése](service-fabric-tutorial-delete-cluster.md)
@@ -53,9 +53,9 @@ Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 Az oktatóanyag elkezdése előtt:
 
 * Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Telepítés [az Azure Powershell](https://docs.microsoft.com/powershell/azure/install-Az-ps) vagy [az Azure CLI](/cli/azure/install-azure-cli).
-* Hozzon létre egy biztonságos [Windows-fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) az Azure-ban
-* Egy Windows fejlesztési környezet beállítása. Telepítse a [Visual Studio 2017](https://www.visualstudio.com) szoftvert, valamint az **Azure-fejlesztési**, **ASP.NET- és webes fejlesztési**, továbbá a **.NET Core platformfüggetlen fejlesztési** számítási feladatokat.  Ezután hozzon létre egy [.NET fejlesztési környezet](service-fabric-get-started.md).
+* Telepítse az [Azure PowerShellt](https://docs.microsoft.com/powershell/azure/install-Az-ps) vagy az [Azure CLI](/cli/azure/install-azure-cli)-t.
+* Biztonságos Windows- [fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) létrehozása az Azure-ban
+* Windows fejlesztési környezet beállítása. Telepítse a [Visual Studio 2019](https://www.visualstudio.com) -es és az **Azure development**, a **ASP.net és a Web Development**, valamint a **.net Core platformfüggetlen fejlesztési** számítási feladatokat.  Ezután hozzon létre egy [.NET fejlesztési környezet](service-fabric-get-started.md).
 
 ### <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -69,14 +69,14 @@ Set-AzContext -SubscriptionId <guid>
 
 ## <a name="get-the-runtime-version"></a>Futtatókörnyezet verziójának lekérése
 
-Miután csatlakozott az Azure-hoz, és kiválasztotta a Service Fabric-fürtöt tartalmazó előfizetést, lekérheti a fürt futtatókörnyezetének verzióját.
+Miután csatlakozott az Azure-hoz, válassza ki a Service Fabric fürtöt tartalmazó előfizetést, lekérheti a fürt futásidejű verzióját.
 
 ```powershell
 Get-AzServiceFabricCluster -ResourceGroupName SFCLUSTERTUTORIALGROUP -Name aztestcluster `
     | Select-Object ClusterCodeVersion
 ```
 
-Vagy egyszerűen lekérheti az előfizetésében lévő összes fürt listáját az alábbiak segítségével:
+Vagy tekintse meg az előfizetéshez tartozó összes fürt listáját a következő példával:
 
 ```powershell
 Get-AzServiceFabricCluster | Select-Object Name, ClusterCodeVersion
@@ -207,8 +207,7 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * A fürt futtatókörnyezetének frissítése
 > * A frissítés figyelése
 
-[!div class="checklist"]
-> * A fürt-futtatókörnyezet verziójának lekérése
-> * A fürt futtatókörnyezetének frissítése
-> * A frissítés figyelése
+Folytassa a következő oktatóanyaggal:
 
+> [!div class="nextstepaction"]
+> [Fürt törlése](service-fabric-tutorial-delete-cluster.md)

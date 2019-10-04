@@ -3,8 +3,8 @@ title: Hibaelhárítás Azure Network Watcher VPN-átjárók figyelése |} A Mic
 description: Ez a cikk azt ismerteti, hogyan a az Azure Automation és a Network Watcher helyszíni kapcsolatok diagnosztizálása
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: timlt
+author: KumudD
+manager: twooley
 editor: ''
 ms.service: network-watcher
 ms.devlang: na
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: jdial
-ms.openlocfilehash: 4995d7ae846652c374a289603f29f88f6f56dfef
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.author: kumud
+ms.openlocfilehash: d3a09ee83d4a1f05781c885eaa708e6e024b7f97
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58485493"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "64719784"
 ---
 # <a name="monitor-vpn-gateways-with-network-watcher-troubleshooting"></a>A Network Watcher troubleshooting VPN-átjárók figyelése
 
@@ -54,31 +54,31 @@ Ebben a forgatókönyvben a Kezdés előtt az alábbi előfeltételekkel kell re
 
 Az első lépés a példa konfigurálása, ha a runbook. Ebben a példában egy futtató fiókot használja. Futtató fiókok kapcsolatos további információkért látogasson el a [Runbookok hitelesítése Azure-beli futtató fiókkal](../automation/automation-create-runas-account.md)
 
-### <a name="step-1"></a>1. lépés
+### <a name="step-1"></a>1\. lépés
 
 Az Azure Automationt, keresse meg a [az Azure portal](https://portal.azure.com) kattintson **Runbookok**
 
 ![Automation-fiókok áttekintése][1]
 
-### <a name="step-2"></a>2. lépés
+### <a name="step-2"></a>2\. lépés
 
 Kattintson a **forgatókönyv hozzáadása** a runbook létrehozásának megkezdéséhez.
 
 ![runbookok panel][2]
 
-### <a name="step-3"></a>3. lépés
+### <a name="step-3"></a>3\. lépés
 
 A **Gyorslétrehozás**, kattintson a **hozzon létre egy új runbookot** hozza létre a runbookot.
 
 ![Adjon hozzá egy runbook panel][3]
 
-### <a name="step-4"></a>4. lépés
+### <a name="step-4"></a>4\. lépés
 
 Ebben a lépésben azt adja meg a runbook nevét, a példában nevű **Get-VPNGatewayStatus**. Ez nem lényeges, hogy a runbook egy leíró nevet, és javasolt nevezi el a következő PowerShell szabványos elnevezési szabványait. Ebben a példában a runbook típusa **PowerShell**, a többi beállítást a rendszer grafikus, PowerShell-munkafolyamat, és a grafikus PowerShell-munkafolyamat.
 
 ![forgatókönyv panel][4]
 
-### <a name="step-5"></a>5. lépés
+### <a name="step-5"></a>5\. lépés
 
 Ebben a lépésben a runbook létrehozása a következő példakód a példában a szükséges összes kódot biztosít az. Az elemek, amelyek tartalmazzák a kódban \<érték\> kell cserélni az értékeket az előfizetésből.
 
@@ -144,25 +144,25 @@ else
     }
 ```
 
-### <a name="step-6"></a>6. lépés
+### <a name="step-6"></a>6\. lépés
 
 A runbook a mentés után ütemezés szerint kell társítani, hogy a kezdete a forgatókönyv automatizálása. A folyamat elindításához kattintson **ütemezés**.
 
-![6. lépés][6]
+![6\. lépés][6]
 
 ## <a name="link-a-schedule-to-the-runbook"></a>Ütemezés összekapcsolása a runbook
 
 Létre kell hozni egy új ütemezést. Kattintson a **összekapcsolhat egy ütemezést a runbook**.
 
-![7. lépés][7]
+![7\. lépés][7]
 
-### <a name="step-1"></a>1. lépés
+### <a name="step-1"></a>1\. lépés
 
 Az a **ütemezés** panelen kattintson a **új ütemezés létrehozása**
 
-![8. lépés][8]
+![8\. lépés][8]
 
-### <a name="step-2"></a>2. lépés
+### <a name="step-2"></a>2\. lépés
 
 Az a **új ütemezés** panelen töltse ki az ütemezési információkat. A megadható értékek a következők:
 
@@ -176,9 +176,9 @@ Az a **új ütemezés** panelen töltse ki az ütemezési információkat. A meg
 > [!NOTE]
 > Egy runbook minden órában gyakoribb futtatásához rendelkeznie kell, ha több ütemezés kell létrehozni, különböző időközönként (azaz, 15, 30, 45 perc minden óra után)
 
-![9. lépés][9]
+![9\. lépés][9]
 
-### <a name="step-3"></a>3. lépés
+### <a name="step-3"></a>3\. lépés
 
 Kattintson a Mentés gombra az ütemezés a runbookhoz.
 

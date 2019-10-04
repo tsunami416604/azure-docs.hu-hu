@@ -16,17 +16,17 @@ ms.topic: article
 ms.date: 02/14/2018
 ms.author: manayar
 ms.openlocfilehash: 71899a9d6782c4700c287458c85ec83bd1516a4b
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56873627"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60803136"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Virtuális gép méretezési csoportok módosítása
 
 Az alkalmazások életciklusa során szükség lehet módosítására vagy frissítésére a virtuálisgép-méretezési csoportot. Ezek a frissítések tartalmazhatnak frissítse a konfigurációt a méretezési, vagy módosítsa az alkalmazás konfigurációját. Ez a cikk ismerteti, hogyan módosíthatja egy meglévő méretezési csoportot a REST API-k, az Azure PowerShell vagy az Azure CLI.
 
-## <a name="fundamental-concepts"></a>Alapvető fogalmak
+## <a name="fundamental-concepts"></a>Alapfogalmak
 
 ### <a name="the-scale-set-model"></a>A méretezési csoport modelljéből
 Egy méretezési csoportot tartalmaz egy "méretezési csoport modelljéből", amely rögzíti a *kívánt* mint egészként beállítását a méretezési csoport állapotát. A méretezési csoportok modell lekérdezésére, használhatja a 

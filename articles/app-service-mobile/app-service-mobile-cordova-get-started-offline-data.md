@@ -2,7 +2,7 @@
 title: Offline szinkronizálás engedélyezése az Azure Mobile App (Cordova) |} A Microsoft Docs
 description: Ismerje meg, hogyan App Service Mobile Apps segítségével a Cordova-alkalmazás cache és a szinkronizálási kapcsolat nélküli adatokat
 documentationcenter: cordova
-author: conceptdev
+author: elamalani
 manager: crdun
 editor: ''
 services: app-service\mobile
@@ -12,18 +12,23 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-cordova-ios
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/30/2016
-ms.author: crdun
-ms.openlocfilehash: 44c54b570a38eb1a3b9ca773893599d1d497dfa2
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: 04c8e7b2b60a60f17c49862d5c17793c16456032
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972150"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443524"
 ---
 # <a name="enable-offline-sync-for-your-cordova-mobile-app"></a>A Cordova-mobilalkalmazás offline szinkronizálásának engedélyezése
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
+> [!NOTE]
+> A Visual Studio App Center fektet a mobilalkalmazás-fejlesztés központi új, integrált szolgáltatások. A fejlesztők a **hozhat létre**, **teszt** és **terjesztése** állíthat be folyamatos integrációt és teljesítést folyamat szolgáltatások. Az alkalmazás telepítve van, a fejlesztők monitorozható az állapot és az alkalmazás használatával használatát a **Analytics** és **diagnosztikai** -szolgáltatásokat, és kapcsolatba léphet a felhasználókat a **leküldéses** a szolgáltatás. A fejlesztők is kihasználhatják a **Auth** azok a felhasználók hitelesítéséhez és **adatok** szolgáltatás és a felhőbeli alkalmazások adatainak szinkronizálása. Tekintse meg [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-cordova-get-started-offline-data) még ma.
+>
+
+## <a name="overview"></a>Áttekintés
 Ebben az oktatóanyagban a kapcsolat nélküli szinkronizálás – a szolgáltatás az Azure Mobile Apps Cordova számára mutatja be. Kapcsolat nélküli szinkronizálás lehetővé teszi, hogy a végfelhasználók számára, hogy kommunikáljanak a mobilalkalmazás&mdash;megtekintését, hozzáadását és módosítását adatok&mdash;akkor is, ha nincs hálózati kapcsolat. Változások a helyi adatbázisban vannak tárolva.  Miután az eszköz újra online állapotba kerül, ezeket a módosításokat a távoli szolgáltatással vannak szinkronizálva.
 
 Ebben az oktatóanyagban alapul a Cordova rövid megoldás hoz létre, amikor az oktatóanyag befejezése Mobile Apps-alkalmazáshoz [Az Apache Cordova – gyorsútmutató]. Ebben az oktatóanyagban a rövid útmutató megoldást, az Azure Mobile Apps offline funkciók hozzáadása, frissítése.  Azt is ki a kapcsolat nélküli tartozó kódot az alkalmazásban.
@@ -128,7 +133,7 @@ A kapcsolat nélküli szinkronizálás – kód hozzá kell adni az alkalmazásh
           syncContext.pull(new WindowsAzure.Query('todoitem'));
         }
 
-    Úgy dönt, hogy mikor változásainak leküldése a Mobile Apps-háttéralkalmazás meghívásával **syncContext.push()**. Például hívhatja **syncBackend** egy gomb eseménykezelőt a szinkronizálás gomb kötve.
+    Úgy dönt, hogy mikor változásainak leküldése a Mobile Apps-háttéralkalmazás meghívásával **syncContext.push()** . Például hívhatja **syncBackend** egy gomb eseménykezelőt a szinkronizálás gomb kötve.
 
 ## <a name="offline-sync-considerations"></a>Kapcsolat nélküli szinkronizálás – szempontok
 

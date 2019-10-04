@@ -1,73 +1,87 @@
 ---
 title: SharePoint-fájlok – QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Védett Sharepoint-adatforrások hozzáadása a Tudásbázis feldúsítani a Tudásbázis kérdésekkel és válaszokkal, előfordulhat, hogy az Active Directoryban kell védeni.
+description: Biztonságos SharePoint-adatforrásokat adhat hozzá a tudásbázishoz, hogy a tudásbázist a Active Directory által védett kérdésekkel és válaszokkal gazdagítsa.
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
-ms.date: 04/05/2019
-ms.author: tulasim
-ms.openlocfilehash: 671d76b6c0a5a2cdac5797668fb0e5651b5823e0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.topic: conceptual
+ms.date: 06/24/2019
+ms.author: diberry
+ms.openlocfilehash: da73f42c17a3688e7f1f464ec4a3bbe77cbc9229
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59281743"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68955209"
 ---
-# <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>A Tudásbázis egy védett Sharepoint-adatforrás hozzáadása
+# <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>Biztonságos SharePoint-adatforrás hozzáadása a tudásbázishoz
 
-Védett Sharepoint-adatforrások hozzáadása a Tudásbázis feldúsítani a Tudásbázis kérdésekkel és válaszokkal, előfordulhat, hogy az Active Directoryban kell védeni. 
+Biztonságos SharePoint-adatforrásokat adhat hozzá a tudásbázishoz, hogy a tudásbázist a Active Directory által védett kérdésekkel és válaszokkal gazdagítsa. 
 
-A Tudásbázis, mint a QnA Maker manager védett Sharepoint-dokumentum hozzáadásakor kérje meg az Active Directory számára a QnA Maker. Miután ezt az engedélyt kap az Active Directory managerből QnA Maker hozzáférés a Sharepointhoz, nem kell újra kell megadni. Minden ezt követő dokumentum Hozzáadás a Tudásbázis következő, nem kell engedélyezési, amennyiben az ugyanazon a Sharepoint-erőforrás található. 
+Amikor biztonságos SharePoint-dokumentumot ad hozzá a tudásbázishoz, a QnA Maker Managernek Active Directory engedélyt kell kérnie QnA Maker. Ha ezt az engedélyt a Active Directory managerből QnA Maker a SharePointhoz való hozzáféréshez, azt nem kell újból megadni. A Tudásbázis minden további dokumentuma nem igényel hitelesítést, ha ugyanazon a SharePoint-erőforráson van. 
 
-Ha a QnA Maker Tudásbázis-kezelő nem az Active Directory-kezelőt, szüksége lesz az Active Directory-kezelővel, ez a folyamat befejezéséhez kommunikációhoz.
+Ha a QnA Maker Tudásbázis-kezelő nem a Active Directory Manager, akkor a folyamat befejezéséhez kommunikálni kell a Active Directory kezelőjével.
 
-## <a name="add-supported-file-types-to-knowledge-base"></a>Támogatott fájltípusok Tudásbázis hozzáadása
+## <a name="add-supported-file-types-to-knowledge-base"></a>Támogatott fájltípusok hozzáadása a tudásbázishoz
 
-Adhat hozzá az összes QnA Maker által támogatott [fájltípusok](../Concepts/data-sources-supported.md) a Sharepoint-kiszolgáló a tudásbázist. Előfordulhat, hogy biztosítania [engedélyek](#permissions) Ha a fájl erőforrás védett.
+A SharePoint-webhelyekről minden [](../Concepts/data-sources-supported.md) QnA Maker által támogatott fájltípust hozzáadhat a tudásbázishoz. Előfordulhat, hogy [engedélyeket](#permissions) kell megadnia, ha a fájl erőforrása védett.
 
-1. A Sharepoint server, válassza ki a Fájl menü három pontot ábrázoló `...`.
-1. A fájl URL-Címének másolása.
+1. A könyvtár és a SharePoint-webhely között válassza ki a fájl három pont menüjét `...`.
+1. Másolja a fájl URL-címét.
 
-    ![A fájl három pont menü, majd másolja az URL-címet kapni a Sharepoint-fájl URL-címe.](../media/add-sharepoint-datasources/get-sharepoint-file-url.png)
+   ![A SharePoint-fájl URL-címének lekéréséhez válassza ki a fájl három pont menüjét, majd másolja az URL-címet.](../media/add-sharepoint-datasources/get-sharepoint-file-url.png)
 
-1. A QnA Maker Portal a a **beállítások** lapon [adja hozzá az URL-cím](edit-knowledge-base.md#add-datasource) a Tudásbázisban. 
+1. A QnA Maker portál **Beállítások** lapján [adja hozzá az URL-címet](edit-knowledge-base.md#add-datasource) a tudásbázishoz. 
+
+### <a name="images-with-sharepoint-files"></a>Képek SharePoint-fájlokkal
+
+Ha a fájlok tartalmaznak képeket, azok nincsenek kibontva. A képet a QnA Maker-portálról is hozzáadhatja a fájl QnA-párokba való kibontása után.
+
+Adja hozzá a képet a következő Markdown szintaxissal: 
+
+```markdown
+![Explanation or description of image](URL of public image)
+```
+
+A szögletes zárójelben `[]`lévő szöveg, amely ismerteti a képet. A zárójelben `()`lévő URL-cím a közvetlen hivatkozás a képre. 
+
+Ha teszteli a QnA pár az interaktív teszt panelen, a QnA Maker portálon megjelenik a rendszerkép a Markdown szövege helyett. Ez ellenőrzi, hogy a rendszerkép nyilvánosan lekérhető-e az ügyfél-alkalmazásból.
 
 ## <a name="permissions"></a>Engedélyek
 
-Engedélyek megadása történik, ha a Sharepoint-kiszolgáló egy védett fájlt adnak hozzá egy Tudásbázis. Attól függően, hogyan van beállítva a Sharepoint fel és az engedélyeket ehhez szükség volt a fájl hozzáadása a személy:
+Engedélyek megadása akkor történik, ha egy SharePoint-kiszolgálóról származó biztonságos fájlt ad hozzá egy tudásbázishoz. Attól függően, hogy a SharePoint hogyan van beállítva, és a fájlt hozzáadó személy engedélyei a következőket tehetik szükségessé:
 
-* Nincsenek további lépések szükségesek: a fájl hozzáadása a személy rendelkezik a szükséges összes engedélyt.
-* mindkét lépést [Tudásbázis-kezelő](#knowledge-base-manager-add-sharepoint-data-source-in-qna-maker-portal) és [Active Directory kezelő](#active-directory-manager-grant-file-read-access-to-qna-maker).
+* nincs további lépés – a fájlt hozzáadó személy rendelkezik a szükséges engedélyekkel.
+* a Tudásbázis- [kezelő](#knowledge-base-manager-add-sharepoint-data-source-in-qna-maker-portal) és a [Active Directory Manager](#active-directory-manager-grant-file-read-access-to-qna-maker)lépései.
 
-Tekintse meg az alábbi lépéseket. 
+Tekintse meg az alább felsorolt lépéseket. 
 
-### <a name="knowledge-base-manager-add-sharepoint-data-source-in-qna-maker-portal"></a>Tudásbázis-kezelő: a QnA Maker portál Sharepoint-adatforrás hozzáadása
+### <a name="knowledge-base-manager-add-sharepoint-data-source-in-qna-maker-portal"></a>Tudásbázis-kezelő: SharePoint-adatforrás hozzáadása a QnA Maker portálon
 
-Ha a **QnA Maker manager** ad hozzá egy védett Sharepoint-dokumentum Tudásbázis, a Tudásbázis-kezelő kezdeményezi, amely az Active Directory kezelő el kell végeznie engedélyt kér.
+Ha a **QnA Maker-kezelő** biztonságos SharePoint-dokumentumot ad hozzá egy tudásbázishoz, a Tudásbázis-kezelő egy, a Active Directory Manager által elvégzendő engedély kérését kezdeményezi.
 
-A kérelem egy előugró ablak, Active Directory-fiókkal történő hitelesítést kezdődik. 
+A kérelem egy előugró ablaktal kezdődik, hogy hitelesítse Active Directory-fiókját. 
 
-![Felhasználói fiók hitelesítéséhez](../media/add-sharepoint-datasources/authenticate-user-account.png)
+![Felhasználói fiók hitelesítése](../media/add-sharepoint-datasources/authenticate-user-account.png)
 
-A QnA Maker kezelő kiválasztja a fiókot, ha az Active Directory-rendszergazda kap egy üzenetet arról, hogy ő kell hozzáférnie a QnA Maker app (nem a QnA Maker manager) a Sharepoint-erőforrás. Az Active Directory kezelő kell ehhez a minden Sharepoint-erőforrás, de nem minden dokumentum az adott erőforráshoz. 
+Miután a QnA Maker Manager kiválasztja a fiókot, a Azure Active Directory rendszergazdája értesítést kap arról, hogy engedélyezni kell a QnA Maker alkalmazást (nem a QnA Maker Managert) a SharePoint-erőforráshoz való hozzáféréshez. A Azure Active Directory Managernek ezt minden SharePoint-erőforráshoz el kell végeznie, de az adott erőforrásban nem minden dokumentumhoz. 
 
-### <a name="active-directory-manager-grant-file-read-access-to-qna-maker"></a>Az Active directory kezelő: fájl olvasási jogot a QnA Maker
+### <a name="active-directory-manager-grant-file-read-access-to-qna-maker"></a>Active Directory Manager: olvasási hozzáférés biztosítása a fájlhoz QnA Maker
 
-Az Active Directory-kezelő (nem a QnA Maker manager) van szüksége a hozzáférési jogot a Sharepoint-erőforrás eléréséhez kiválasztásával a QnA Maker [ezt a hivatkozást](https://login.microsoftonline.com/common/oauth2/v2.0/authorize?response_type=id_token&scope=Files.Read%20Files.Read.All%20Sites.Read.All%20User.Read%20User.ReadBasic.All%20profile%20openid%20email&client_id=c2c11949-e9bb-4035-bda8-59542eb907a6&redirect_uri=https%3A%2F%2Fwww.qnamaker.ai%3A%2FCreate&state=68) engedélyezéséhez a QnA Maker Portal Sharepoint nagyvállalati alkalmazás fájl olvasása engedélyek. 
+A Active Directory Managernek (nem a QnA Maker Managernek) hozzáférést kell biztosítania a QnA Makerhoz a SharePoint-erőforrás eléréséhez. Ehhez válassza [ezt a hivatkozást](https://login.microsoftonline.com/common/oauth2/v2.0/authorize?response_type=id_token&scope=Files.Read%20Files.Read.All%20Sites.Read.All%20User.Read%20User.ReadBasic.All%20profile%20openid%20email&client_id=c2c11949-e9bb-4035-bda8-59542eb907a6&redirect_uri=https%3A%2F%2Fwww.qnamaker.ai%3A%2FCreate&state=68) , hogy engedélyezze a QnA Maker Portal SharePoint Enterprise alkalmazásnak a fájl olvasási engedélyeit. 
 
-![Az Azure Active Directory manager engedélyt ad a interaktív módon](../media/add-sharepoint-datasources/aad-manager-grants-permission-interactively.png)
+![Azure Active Directory Manager engedélyezi az engedélyt interaktív módon](../media/add-sharepoint-datasources/aad-manager-grants-permission-interactively.png)
 
 <!--
-The Active Directory manager must grant QnA Maker access either by application name, `QnAMakerPortalSharepoint`, or by application ID, `c2c11949-e9bb-4035-bda8-59542eb907a6`. 
+The Active Directory manager must grant QnA Maker access either by application name, `QnAMakerPortalSharePoint`, or by application ID, `c2c11949-e9bb-4035-bda8-59542eb907a6`. 
 -->
 <!--
 ### Grant access from the interactive pop-up window 
 
-The Active Directory manager will get a pop-up window requesting permissions to the `QnAMakerPortalSharepoint` app. The pop-up window includes the QnA Maker Manager email address that initiated the request, an `App Info` link to learn more about **QnAMakerPortalSharepoint**, and a list of permissions requested. Select **Accept** to provide those permissions. 
+The Active Directory manager will get a pop-up window requesting permissions to the `QnAMakerPortalSharePoint` app. The pop-up window includes the QnA Maker Manager email address that initiated the request, an `App Info` link to learn more about **QnAMakerPortalSharePoint**, and a list of permissions requested. Select **Accept** to provide those permissions. 
 
 ![Azure Active Directory manager grants permission interactively](../media/add-sharepoint-datasources/aad-manager-grants-permission-interactively.png)
 -->
@@ -77,7 +91,7 @@ The Active Directory manager will get a pop-up window requesting permissions to 
 
 1. The Active Directory manager signs in to the Azure portal and opens **[App registrations list](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ApplicationsListBlade)**. 
 
-1. Search for and select the **QnAMakerPortalSharepoint** app. Change the second filter box from **My apps** to **All apps**. The app information will open on the right side.
+1. Search for and select the **QnAMakerPortalSharePoint** app. Change the second filter box from **My apps** to **All apps**. The app information will open on the right side.
 
     ![Select QnA Maker app in App registrations list](../media/add-sharepoint-datasources/select-qna-maker-app-in-app-registrations.png)
 
@@ -97,31 +111,31 @@ The Active Directory manager will get a pop-up window requesting permissions to 
 
     ![Grant required permissions](../media/add-sharepoint-datasources/grant-required-permissions.png)
 -->
-### <a name="grant-access-from-the-azure-active-directory-admin-center"></a>Az Azure Active Directory felügyeleti központban való hozzáférés engedélyezése
+### <a name="grant-access-from-the-azure-active-directory-admin-center"></a>Hozzáférés biztosítása a Azure Active Directory felügyeleti központból
 
-1. Az Active Directory-kezelő jelentkezik be az Azure Portalon, és megnyílik  **[vállalati alkalmazások](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps)**. 
+1. A Active Directory Manager bejelentkezik a Azure Portalba, és megnyitja a **[vállalati alkalmazásokat](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps)** . 
 
-1. Keresse meg `QnAMakerPortalSharepoint` válassza ki a QnA Maker alkalmazást. 
+1. Keresse meg `QnAMakerPortalSharePoint` a válassza ki a QnA Maker alkalmazást. 
 
-    [![Vállalati alkalmazások listájában QnAMakerPortalSharepoint keresése](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png)](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png#lightbox)
+    [![QnAMakerPortalSharePoint keresése a vállalati alkalmazások listájában](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png)](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png#lightbox)
 
-1. A **biztonsági**, lépjen a **engedélyek**. Válassza ki **biztosítson rendszergazdai jóváhagyás szervezet**. 
+1. A **Biztonság**területen lépjen az **engedélyek**elemre. Válassza **a rendszergazdai jóváhagyás megadása a szervezet számára**lehetőséget. 
 
-    [![Válassza ki a hitelesített felhasználó az Active Directory-rendszergazda](../media/add-sharepoint-datasources/grant-aad-permissions-to-enterprise-app.png)](../media/add-sharepoint-datasources/grant-aad-permissions-to-enterprise-app.png#lightbox)
+    [![Active Directory rendszergazda számára válassza a hitelesített felhasználó lehetőséget.](../media/add-sharepoint-datasources/grant-aad-permissions-to-enterprise-app.png)](../media/add-sharepoint-datasources/grant-aad-permissions-to-enterprise-app.png#lightbox)
 
-1. Válassza ki a jogosult engedélyeket az Active Directory bejelentkezési fiókot. 
+1. Válasszon olyan bejelentkezési fiókot, amely jogosult a Active Directory engedélyeinek megadására. 
 
 
   
 <!--
 
-## Add Sharepoint data source with APIs
+## Add SharePoint data source with APIs
 
-You need to get the Sharepoint file's URI before adding it to QnA Maker. 
+You need to get the SharePoint file's URI before adding it to QnA Maker. 
 
-## Get Sharepoint File URI
+## Get SharePoint File URI
 
-Use the following steps to transform the Sharepoint URL into a sharing token.
+Use the following steps to transform the SharePoint URL into a sharing token.
 
 1. Encode the URL using [base64](https://en.wikipedia.org/wiki/Base64). 
 
@@ -140,9 +154,9 @@ Use the following steps to transform the Sharepoint URL into a sharing token.
 
     Get the **@microsoft.graph.downloadUrl** and use this as `fileuri` in the QnA Maker APIs.
 
-### Add or update a Sharepoint File URI to your knowledge base
+### Add or update a SharePoint File URI to your knowledge base
 
-Use the **@microsoft.graph.downloadUrl** from the previous section as the `fileuri` in the QnA Maker API for [adding a knowledge base](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff) or [updating a knowledge base](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600). The following fields are mandatory: name, fileuri, filename, source.
+Use the **@microsoft.graph.downloadUrl** from the previous section as the `fileuri` in the QnA Maker API for [adding a knowledge base](https://go.microsoft.com/fwlink/?linkid=2092179) or [updating a knowledge base](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update). The following fields are mandatory: name, fileuri, filename, source.
 
 ```
 {
@@ -151,7 +165,7 @@ Use the **@microsoft.graph.downloadUrl** from the previous section as the `fileu
         {
             "fileUri": "<@microsoft.graph.downloadURL>",
             "fileName": "filename.xlsx",
-            "source": "<sharepoint link>"
+            "source": "<SharePoint link>"
         }
     ],
     "urls": [],
@@ -163,10 +177,10 @@ Use the **@microsoft.graph.downloadUrl** from the previous section as the `fileu
 
 
 
-## Remove QnA Maker app from Sharepoint authorization
+## Remove QnA Maker app from SharePoint authorization
 
 1. Use the steps in the previous section to find the Qna Maker app in the Active Directory admin center. 
-1. When you select the **QnAMakerPortalSharepoint**, select **Overview**. 
+1. When you select the **QnAMakerPortalSharePoint**, select **Overview**. 
 1. Select **Delete** to remove permissions. 
 
 -->
@@ -174,4 +188,4 @@ Use the **@microsoft.graph.downloadUrl** from the previous section as the `fileu
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [A tudásbázist másokkal közös használatához](collaborate-knowledge-base.md)
+> [Együttműködés a Tudásbázisban](collaborate-knowledge-base.md)

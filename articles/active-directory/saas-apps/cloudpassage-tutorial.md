@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22d24b62532190ebd4d119b4ced03ddbd9dde8f8
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3b94d852ec5e0cba133fc1e141a5695e1c898f16
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57852768"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67105348"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cloudpassage"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező CloudPassage
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a CloudPassage konfigurálásához hozzá kell CloudPa
 
 **CloudPassage hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -124,7 +124,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés CloudPassage, hajtsa
     | ---------------| --------------- |
     | Keresztnév |user.givenname |
     | Vezetéknév |user.surname |
-    | e-mail |user.mail |
+    | email |user.mail |
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
 
@@ -265,7 +265,7 @@ Ez a szakasz célja CloudPassage Britta Simon nevű felhasználó létrehozásá
   
     d. Mint **hozzáférés típusa**válassza **Halo portál hozzáférés engedélyezése**.
   
-    e. Kattintson a **Hozzáadás** parancsra.
+    e. Kattintson a **Hozzáadás**lehetőségre.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 

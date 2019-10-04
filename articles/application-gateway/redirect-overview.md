@@ -14,22 +14,22 @@ ms.workload: infrastructure-services
 ms.date: 3/19/2018
 ms.author: amsriva
 ms.openlocfilehash: 8e88e0e11b3ccab7cc2c68b2617df2d588680780
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58170054"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60715800"
 ---
 # <a name="application-gateway-redirect-overview"></a>Application Gateway átirányítás áttekintése
 
-Az application gateway segítségével forgalom átirányítása.  Rendelkezik egy általános átirányítás mechanizmust, amely lehetővé teszi, hogy egy figyelőt egy másik figyelővel vagy egy külső helyre, fogadott forgalom átirányítása. Ez egyszerűbbé teszi az alkalmazás konfigurációja, optimalizálja az erőforrás-felhasználás, és többek között a globális és -alapú átirányítás új átirányítás forgatókönyveket teszi lehetővé.
+Az application gateway segítségével forgalom átirányítása.  Általános átirányítási mechanizmusa lehetővé teszi, hogy egy figyelő által fogadott forgalmat egy másik figyelőre vagy egy külső webhelyre lehessen átirányítani. Ez egyszerűbbé teszi az alkalmazás konfigurációja, optimalizálja az erőforrás-felhasználás, és többek között a globális és -alapú átirányítás új átirányítás forgatókönyveket teszi lehetővé.
 
 Számos webes alkalmazás átirányítási gyakran előfordul, hogy támogatja az automatikus HTTP – HTTPS átirányításról, győződjön meg arról, alkalmazás és a felhasználók között minden kommunikáció titkosított elérési útnak keresztül történik. Múltbeli időpont az ügyfél már felhasználta technikák, például létrehozhat egy dedikált, amelynek egyetlen célja, hogy megkapja a HTTP – HTTPS kérelmek átirányítása a háttérkészlethez. Átirányítás támogatása az Application Gatewayben, és úgy lehet megvalósítani, ez egyszerűen egy útválasztási szabályt ad hozzá egy új átirányítási konfiguráció, és a egy másik figyelő megadása a célfigyelőt, HTTPS protokollal.
 
 Átirányítás a következő típusú támogatottak:
 
 - 301 Permanent Redirect
-- 302 – Megtalálva
+- 302 Found
 - 303 zobrazit Jiné
 - 307 Temporary Redirect
 

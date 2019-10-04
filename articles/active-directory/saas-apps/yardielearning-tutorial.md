@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a23b024737f6af1f6361983045037b325783518a
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: 2555c0040c1f2b587adb57e808ed122a4d4ce808
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59564900"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67086717"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-yardi-elearning"></a>Oktatóanyag: Az Azure Active Directory integrációja az Yardi tanulás
 
@@ -56,7 +56,7 @@ Az Azure AD integrálása a Yardi tanulási konfigurálásához hozzá kell Yard
 
 **Yardi tanulási hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

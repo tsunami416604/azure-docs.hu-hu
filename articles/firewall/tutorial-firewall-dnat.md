@@ -5,19 +5,19 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 11/28/2018
+ms.date: 08/29/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: df57faad770b252228b6c55d4caff775acfe3594
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: f0a58382b9825a7b32aee69c00b9801d1c77251a
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57531164"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114635"
 ---
 # <a name="tutorial-filter-inbound-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>Oktatóanyag: Bejövő forgalom szűrése az Azure Firewall DNAT-tal az Azure Portalon
 
-Az Azure Firewall DNAT (Destination Network Address Translation, célhálózati címfordítás) funkciójának konfigurálásával lefordíthatja és szűrheti az alhálózatokra bejövő forgalmat. DNAT konfigurálásakor a NAT-szabály gyűjtemény céljának beállítása **Dnat**. A NAT-szabálygyűjtemény minden szabálya használható arra, hogy lefordítsa a tűzfal nyilvános IP-címét és portját egy magánhálózati IP-címre és portra. A DNAT-szabályok implicit módon hozzáadnak egy kapcsolódó hálózati szabályt a lefordított adatforgalom engedélyezéséhez. Ezt a viselkedést felülírhatja, ha explicit módon hozzáad egy hálózatiszabály-készletet, amely megtagadja azokat a szabályokat, amelyek a lefordított adatforgalomhoz tartoznak. Az Azure Firewall szabályfeldolgozási logikájával kapcsolatos további információkért tekintse meg az [Azure Firewall szabályfeldolgozási logikájával](rule-processing.md) kapcsolatos cikket.
+Az Azure Firewall DNAT (Destination Network Address Translation, célhálózati címfordítás) funkciójának konfigurálásával lefordíthatja és szűrheti az alhálózatokra bejövő forgalmat. A DNAT konfigurálásakor a NAT-szabálygyűjtemény művelete **DNAT**értékre van állítva. A NAT-szabálygyűjtemény minden szabálya használható arra, hogy lefordítsa a tűzfal nyilvános IP-címét és portját egy magánhálózati IP-címre és portra. A DNAT-szabályok implicit módon hozzáadnak egy kapcsolódó hálózati szabályt a lefordított adatforgalom engedélyezéséhez. Ezt a viselkedést felülírhatja, ha explicit módon hozzáad egy hálózatiszabály-készletet, amely megtagadja azokat a szabályokat, amelyek a lefordított adatforgalomhoz tartoznak. Az Azure Firewall szabályfeldolgozási logikájával kapcsolatos további információkért tekintse meg az [Azure Firewall szabályfeldolgozási logikájával](rule-processing.md) kapcsolatos cikket.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -52,7 +52,7 @@ Először hozza létre a virtuális hálózatokat, és társítsa őket.
 
 1. Az Azure Portal kezdőlapján kattintson a **Minden szolgáltatás** elemre.
 2. A **Hálózat** területen kattintson a **Virtuális hálózatok** elemre.
-3. Kattintson a **Hozzáadás** parancsra.
+3. Kattintson a **Hozzáadás**lehetőségre.
 4. A **Név** mezőbe írja be a következőt: **VN-Hub**.
 5. A **Címtér** mezőbe írja be a következőt: **10.0.0.0/16**.
 6. Az **Előfizetés** beállításnál válassza ki az előfizetését.
@@ -62,15 +62,16 @@ Először hozza létre a virtuális hálózatokat, és társítsa őket.
 
      Ezen az alhálózaton lesz a tűzfal. Az alhálózat neve **kizárólag** AzureFirewallSubnet lehet.
      > [!NOTE]
-     > A AzureFirewallSubnet alhálózat minimális mérete/26-os.
-10. A **Címtartomány** mezőbe írja be a következőt: **10.0.1.0/24**.
+     > A AzureFirewallSubnet-alhálózat mérete/26. További információ az alhálózat méretétől: [Azure Firewall GYIK](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size).
+
+10. A **címtartomány**mezőbe írja be a következőt: **10.0.1.0/26**.
 11. Használja a többi alapértelmezett beállítást, és kattintson a **Létrehozás** elemre.
 
 ### <a name="create-a-spoke-vnet"></a>Küllő virtuális hálózat létrehozása
 
 1. Az Azure Portal kezdőlapján kattintson a **Minden szolgáltatás** elemre.
 2. A **Hálózat** területen kattintson a **Virtuális hálózatok** elemre.
-3. Kattintson a **Hozzáadás** parancsra.
+3. Kattintson a **Hozzáadás**lehetőségre.
 4. A **Név** mezőbe írja be a következőt: **VN-Spoke**.
 5. A **Címtér** mezőbe írja be a következőt: **192.168.0.0/16**.
 6. Az **Előfizetés** beállításnál válassza ki az előfizetését.
@@ -90,7 +91,7 @@ Most társítsa a két virtuális hálózatot.
 
 1. Kattintson a **VN-Hub** virtuális hálózatra.
 2. A **Beállítások** területen kattintson a **Társviszonyok** lehetőségre.
-3. Kattintson a **Hozzáadás** parancsra.
+3. Kattintson a **Hozzáadás**lehetőségre.
 4. Adja meg a **Peer-HubSpoke** nevet.
 5. A virtuális hálózatnál válassza a **VN-Spoke** lehetőséget.
 6. Kattintson az **OK** gombra.
@@ -99,7 +100,7 @@ Most társítsa a két virtuális hálózatot.
 
 1. Kattintson a **VN-Spoke** virtuális hálózatra.
 2. A **Beállítások** területen kattintson a **Társviszonyok** lehetőségre.
-3. Kattintson a **Hozzáadás** parancsra.
+3. Kattintson a **Hozzáadás**lehetőségre.
 4. Adja meg a **Peer-SpokeHub** nevet.
 5. A virtuális hálózatnál válassza a **VN-Hub** lehetőséget.
 6. Kattintson a **Továbbított forgalom engedélyezése** elemre.
@@ -151,10 +152,10 @@ Az üzembe helyezés befejeztével jegyezze fel a virtuális gép magánhálóza
    |Beállítás  |Érték  |
    |---------|---------|
    |Name (Név)     |FW-DNAT-test|
-   |Előfizetés     |\<az Ön előfizetése\>|
-   |Erőforráscsoport     |**Meglévő használata**: RG-DNAT-Test |
-   |Hely     |Válassza a korábban használt helyet|
-   |Válasszon egy virtuális hálózatot     |**Meglévő használata**: VN-Hub|
+   |Subscription     |\<az Ön előfizetése\>|
+   |Resource group     |**Meglévő használata**: RG-DNAT-Test |
+   |Location     |Válassza a korábban használt helyet|
+   |Virtuális hálózat választása     |**Meglévő használata**: VN-Hub|
    |Nyilvános IP-cím     |**Új létrehozása**. A nyilvános IP-címnek standard termékváltozat típusúnak kell lennie.|
 
 5. Kattintson az **Áttekintés + létrehozás** elemre.
@@ -170,7 +171,7 @@ Az **SN-Workload** alhálózatot konfigurálja úgy, hogy a kimenő alapértelme
 
 1. Az Azure Portal kezdőlapján kattintson a **Minden szolgáltatás** elemre.
 2. A **Hálózat** területen kattintson az **Útválasztási táblázatok** elemre.
-3. Kattintson a **Hozzáadás** parancsra.
+3. Kattintson a **Hozzáadás**lehetőségre.
 4. A **Név** mezőbe írja be a következőt: **RT-FWroute**.
 5. Az **Előfizetés** beállításnál válassza ki az előfizetését.
 6. Az **Erőforráscsoport** mezőben válassza a **Meglévő használata**, majd az **RG-DNAT-Test** lehetőséget.
@@ -190,11 +191,11 @@ Az **SN-Workload** alhálózatot konfigurálja úgy, hogy a kimenő alapértelme
 18. A **Következő ugrás címe** mezőbe írja be a tűzfal magánhálózati IP-címét, amelyet korábban feljegyzett.
 19. Kattintson az **OK** gombra.
 
-## <a name="configure-a-nat-rule"></a>Egy NAT-szabály konfigurálása
+## <a name="configure-a-nat-rule"></a>NAT-szabály konfigurálása
 
 1. Nyissa meg az **RG-DNAT-Test** erőforráscsoportot, majd kattintson az **FW-DNAT-test** tűzfalra. 
 2. Az **FW-DNAT-test** oldal **Beállítások** területén kattintson a **Szabályok** elemre. 
-3. Kattintson a **hozzáadása NAT-szabályok gyűjteményéhez**. 
+3. Kattintson a **NAT-szabálygyűjtemény hozzáadása**elemre. 
 4. A **Név** mezőbe írja be a következőt: **RC-DNAT-01**. 
 5. A **Prioritás** mezőbe írja be a következőt: **200**. 
 6. A **Szabályok** területen a **Név** mezőbe írja be a következőt: **RL-01**.
@@ -204,7 +205,7 @@ Az **SN-Workload** alhálózatot konfigurálja úgy, hogy a kimenő alapértelme
 10. A **Célportok** mezőbe írja be a következőt: **3389**. 
 11. A **Lefordított cím** mezőbe írja be az Srv-Workload virtuális gép magánhálózati IP-címét. 
 12. A **Lefordított port** mezőben adja meg a **3389** értéket. 
-13. Kattintson a **Hozzáadás** parancsra. 
+13. Kattintson a **Hozzáadás**lehetőségre. 
 
 ## <a name="test-the-firewall"></a>A tűzfal tesztelése
 
@@ -229,4 +230,4 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 A következő lépésben monitorozhatja az Azure Firewall naplóit.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: A figyelő Azure tűzfal-naplókon](./tutorial-diagnostics.md)
+> [Oktatóanyag: Azure Firewall naplók figyelése](./tutorial-diagnostics.md)

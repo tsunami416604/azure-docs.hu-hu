@@ -10,11 +10,11 @@ ms.date: 08/26/2016
 ms.author: saudas
 ms.custom: mvc
 ms.openlocfilehash: 3e4ba15fa1925ca40ad7760acbd14331fbdd1343
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52996602"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61457328"
 ---
 # <a name="deprecated-enable-public-access-to-an-azure-container-service-application"></a>(ELAVULT) Egy Azure Container Service-alkalmazás nyilvános hozzáférésének engedélyezése
 
@@ -40,7 +40,7 @@ Először létre kell a kívánt port megnyitásához.
    | Name (Név) |A mintavétel egy leíró nevet. |
    | Port |A portja a tároló tesztelése. |
    | Útvonal |(Ha a HTTP-módban) A webhely relatív elérési útja mintavételi. A HTTPS nem támogatott. |
-   | Intervallum |Mintavétel közötti idő másodpercben megkísérli. |
+   | Interval |Mintavétel közötti idő másodpercben megkísérli. |
    | Nem kifogástalan állapot küszöbértéke |Egymást követő számát megkísérli, mielőtt a tároló nem megfelelő állapotú. |
 6. Vissza az ügynök terheléselosztó tulajdonságait, kattintson **terheléselosztási szabályok** , majd **Hozzáadás**.
    
@@ -54,7 +54,7 @@ Először létre kell a kívánt port megnyitásához.
    | Háttérport |A tároló irányíthatja a forgalmat a belső nyilvános port. |
    | Háttérkészlet |A tárolók a készlet lesz a cél ehhez a terheléselosztóhoz. |
    | Mintavétel |A mintavétel határozza meg, ha a cél a **háttérkészlet** állapota kifogástalan. |
-   | Munkamenet megőrzését |Meghatározza, hogy egy ügyféltől érkező forgalmat a munkamenet időtartamának kezelésének módját.<br><br>**Nincs**: egyetlen tárolója sem tudja kezelni az ugyanazon ügyféltől érkező későbbi kérelmeket.<br>**Ügyfél IP**: az azonos ügyfél IP-címről egymást követő kéréseket kezeli ugyanazt a tárolót.<br>**Ügyfél IP protokoll és**: az azonos ügyfél IP-protokoll kombináció az egymást követő kéréseket kezeli ugyanazt a tárolót. |
+   | Munkamenet megőrzését |Meghatározza, hogy egy ügyféltől érkező forgalmat a munkamenet időtartamának kezelésének módját.<br><br>**Nincs**: Egyetlen tárolója sem lehet kezelni, az ugyanazon ügyféltől érkező későbbi kérelmeket.<br>**Ügyfél IP**: Az azonos ügyfél IP-címről egymást követő kéréseket kezeli ugyanazt a tárolót.<br>**Ügyfél IP protokoll és**: Az azonos ügyfél IP-protokoll kombináció az egymást követő kéréseket kezeli ugyanazt a tárolót. |
    | Üresjárat időkorlátja |(Csak a TCP) Percek alatt az idő, így egy TCP/HTTP-alapú nyissa meg a anélkül, hogy az *életben tartási* üzeneteket. |
 
 ## <a name="add-a-security-rule-portal"></a>Adjon meg egy biztonsági szabályt (portál)
@@ -74,9 +74,9 @@ Következő lépésként hozzá kell adnunk a biztonsági szabály, amely a megn
    | --- | --- |
    | Name (Név) |A tűzfalszabály leíró nevével. |
    | Prioritás |A szabály prioritását rang. Minél kisebb számra annál magasabb a prioritás. |
-   | Forrás |A bejövő IP-címtartományt engedélyez vagy tilt Ez a szabály a korlátozása. Használat **bármely** korlátozás megadása. |
+   | source |A bejövő IP-címtartományt engedélyez vagy tilt Ez a szabály a korlátozása. Használat **bármely** korlátozás megadása. |
    | Szolgáltatás |Válassza ki a biztonsági szabály előre meghatározott szolgáltatások. Ellenkező esetben használjon **egyéni** hozhat létre saját. |
-   | Protokoll |Korlátozza a forgalmat a alapján **TCP** vagy **UDP**. Használat **bármely** korlátozás megadása. |
+   | Protocol |Korlátozza a forgalmat a alapján **TCP** vagy **UDP**. Használat **bármely** korlátozás megadása. |
    | Porttartomány |Amikor **szolgáltatás** van **egyéni**, érinti ez a szabály-portok tartományát határozza meg. Használhatja például egy portot **80-as**, vagy egy tartományt, például **1024 – 1500**. |
    | Műveletek |Adatforgalom engedélyezéséhez vagy letiltásához, amely megfelel a feltételeknek. |
 

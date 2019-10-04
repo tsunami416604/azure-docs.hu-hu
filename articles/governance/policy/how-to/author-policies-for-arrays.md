@@ -7,12 +7,12 @@ ms.date: 03/06/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 38cf6decb8e61768faa9680058f6366e1550ba40
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 479f77791a0b035f2d1de6085dfb12f5196288ee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59793272"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65979331"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Az Azure-erőforrások tárolótömb tulajdonságainak Szerző házirendek
 
@@ -189,9 +189,9 @@ Az alábbi eredmények a következők a feltétel és a példa szabály és a me
 |-|-|-|
 |`{<field>,"notEquals":"127.0.0.1"}` |Semmi |Egy tömbelem hamisnak (127.0.0.1! = 127.0.0.1) és a egy igaz (127.0.0.1! = 192.168.1.1), így a **notEquals** feltétel _false (hamis)_ és nem indul el attól a hatást. |
 |`{<field>,"notEquals":"10.0.4.1"}` |Szabályzat hatása |Mindkét tömbelemek rekordsémáját kiértékelése igaz (10.0.4.1! = 127.0.0.1 és 10.0.4.1! = 192.168.1.1), így a **notEquals** feltétel _igaz_ és akkor indul el, a hatás. |
-|`"not":{<field>,"Equals":"127.0.0.1"}` |Szabályzat hatása |Egy tömbelem kiértékeli a true (127.0.0.1 == 127.0.0.1) és a egy hamis (127.0.0.1 == 192.168.1.1), így a **egyenlő** feltétel _hamis_. A logikai operátor kiértékeli a true (**nem** _false (hamis)_), így a hatás aktiválódik. |
-|`"not":{<field>,"Equals":"10.0.4.1"}` |Szabályzat hatása |Mindkét tömbelemek rekordsémáját használja inkább a false (10.0.4.1 127.0.0.1 és 10.0.4.1 == == 192.168.1.1), így a **egyenlő** feltétel _hamis_. A logikai operátor kiértékeli a true (**nem** _false (hamis)_), így a hatás aktiválódik. |
-|`"not":{<field>,"notEquals":"127.0.0.1" }` |Szabályzat hatása |Egy tömbelem hamisnak (127.0.0.1! = 127.0.0.1) és a egy igaz (127.0.0.1! = 192.168.1.1), így a **notEquals** feltétel _hamis_. A logikai operátor kiértékeli a true (**nem** _false (hamis)_), így a hatás aktiválódik. |
+|`"not":{<field>,"Equals":"127.0.0.1"}` |Szabályzat hatása |Egy tömbelem kiértékeli a true (127.0.0.1 == 127.0.0.1) és a egy hamis (127.0.0.1 == 192.168.1.1), így a **egyenlő** feltétel _hamis_. A logikai operátor kiértékeli a true (**nem** _false (hamis)_ ), így a hatás aktiválódik. |
+|`"not":{<field>,"Equals":"10.0.4.1"}` |Szabályzat hatása |Mindkét tömbelemek rekordsémáját használja inkább a false (10.0.4.1 127.0.0.1 és 10.0.4.1 == == 192.168.1.1), így a **egyenlő** feltétel _hamis_. A logikai operátor kiértékeli a true (**nem** _false (hamis)_ ), így a hatás aktiválódik. |
+|`"not":{<field>,"notEquals":"127.0.0.1" }` |Szabályzat hatása |Egy tömbelem hamisnak (127.0.0.1! = 127.0.0.1) és a egy igaz (127.0.0.1! = 192.168.1.1), így a **notEquals** feltétel _hamis_. A logikai operátor kiértékeli a true (**nem** _false (hamis)_ ), így a hatás aktiválódik. |
 |`"not":{<field>,"notEquals":"10.0.4.1"}` |Semmi |Mindkét tömbelemek rekordsémáját kiértékelése igaz (10.0.4.1! = 127.0.0.1 és 10.0.4.1! = 192.168.1.1), így a **notEquals** feltétel _igaz_. A logikai operátor hamisnak (**nem** _igaz_), ezért nem indul el attól a hatást. |
 |`{<field>,"Equals":"127.0.0.1"}` |Semmi |Egy tömbelem kiértékeli a true (127.0.0.1 == 127.0.0.1) és a egy hamis (127.0.0.1 == 192.168.1.1), így a **egyenlő** feltétel _hamis_ és a hatás nem indul el attól. |
 |`{<field>,"Equals":"10.0.4.1"}` |Semmi |Mindkét tömbelemek rekordsémáját kiértékelni a hamis értéket (10.0.4.1 127.0.0.1 és 10.0.4.1 == == 192.168.1.1), így a **egyenlő** feltétel _hamis_ és nem indul el attól a hatás. |
@@ -207,9 +207,9 @@ További információkért lásd: a [példák hozzáfűzése](../concepts/effect
 
 ## <a name="next-steps"></a>További lépések
 
-- Tekintse át a következő példák [Azure Policy-minták](../samples/index.md)
-- Tekintse át a [szabályzatdefiníciók struktúrája](../concepts/definition-structure.md)
-- Felülvizsgálat [házirend hatások ismertetése](../concepts/effects.md)
-- Megismerheti, hogyan [szabályzatok létrehozása programozott módon](programmatically-create.md)
-- Ismerje meg, hogyan [javítani a nem megfelelő erőforrások](remediate-resources.md)
-- A felügyeleti csoportok áttekintéséért lásd [az erőforrások az Azure Felügyeleti csoportok segítségével való rendszerezését](../../management-groups/overview.md) ismertető részt.
+- Tekintse át a következő példák [Azure Policy minták](../samples/index.md).
+- Tekintse meg az [Azure szabályzatdefiníciók struktúrája](../concepts/definition-structure.md) szakaszt.
+- A [Szabályzatok hatásainak ismertetése](../concepts/effects.md).
+- Megismerheti, hogyan [szabályzatok létrehozása programozott módon](programmatically-create.md).
+- Ismerje meg, hogyan [javítani a nem megfelelő erőforrások](remediate-resources.md).
+- Tekintse át a felügyeleti csoport van [az erőforrások rendszerezéséhez az Azure felügyeleti csoportok](../../management-groups/overview.md).

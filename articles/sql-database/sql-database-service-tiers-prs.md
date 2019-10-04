@@ -12,22 +12,22 @@ ms.author: sstein
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: f8fc1f7e338f69b42df69d9a8983e8ce3bb409e3
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7f184178343f69f522148777752c51afc5c5dcb6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59359650"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65790415"
 ---
 # <a name="azure-sql-database-premium-rs-service-tier-preview-is-being-retired---options-for-migration"></a>Az Azure SQL adatbázis Premium RS szolgáltatási szint (előzetes verzió) kivezetjük - áttelepítési lehetőségek
 
-2018 Februárjától a Microsoft bejelentette, hogy az Azure SQL Database, a prémium RS szolgáltatási rétegben elérhetőség nem lenne elérhető, és a 2019. január 31. után már nem szeretne támogatott. A támogatási határidő végén 2019. június 30. most már elérhető. Ez a cikk ismerteti az áttelepítés a Premium RS szolgáltatási rétegben egy másik szolgáltatási szinten a lehetőségei. 2019. június 30. után a Microsoft lesz automatikusan az adatbázisokat a prémium RS, amely a legjobban illik a prémium RS adatbázis teljesítmény-követelmények általánosan elérhető a szolgáltatási réteg.
+2018 Februárjától a Microsoft bejelentette, hogy az Azure SQL Database, a prémium RS szolgáltatási rétegben elérhetőség nem lenne elérhető, és a 2019. január 31. után már nem szeretne támogatott. A támogatási határidő végén 2019. június 30. most már elérhető. Ez a cikk ismerteti az áttelepítés a Premium RS szolgáltatási rétegben egy másik szolgáltatási szinten a lehetőségei. 2019\. június 30. után a Microsoft lesz automatikusan az adatbázisokat a prémium RS, amely a legjobban illik a prémium RS adatbázis teljesítmény-követelmények általánosan elérhető a szolgáltatási réteg.
 
 A migrálás célhelyek és díjszabási lehetőségeit, amely lehet prémium RS ügyfelek alkalmas a következők:
 
 - szolgáltatásszintek virtuális mag
 
-  A **általános célú** és **üzletileg kritikus fontosságú** a szolgáltatáshoz a [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md). Ezek a két szolgáltatási csomagok lehet az általánosan elérhető. A Virtuálismag-alapú vásárlási modell is kínál a **nagy kapacitású** szolgáltatásréteg (nyilvános előzetes verzióban elérhető), amely alkalmazkodik a számítási feladat igényeinek megfelelően az automatikus skálázást adatbázisonként legfeljebb 100 TB-os igény. A nagy kapacitású szolgáltatásszint összehasonlítható a prémium szintű szolgáltatási rétegben lévő i/o-teljesítményt nyújt a [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) áron közelebb a prémium RS szolgáltatási szintre.
+  A **általános célú** és **üzletileg kritikus fontosságú** a szolgáltatáshoz a [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md). Ezek a két szolgáltatási csomagok lehet az általánosan elérhető. A Virtuálismag-alapú vásárlási modell is kínál a **nagy kapacitású** szolgáltatási rétegben, amely alkalmazkodik a számítási feladat igényeinek megfelelően az automatikus skálázást adatbázisonként legfeljebb 100 TB-os igény. A nagy kapacitású szolgáltatásszint összehasonlítható a prémium szintű szolgáltatási rétegben lévő i/o-teljesítményt nyújt a [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) áron közelebb a prémium RS szolgáltatási szintre.
 - Dev/Test-díjszabás
 
   [Dev/test díjszabása](https://azure.microsoft.com/pricing/dev-test/) és díjszabás licenccel akár 55 % megtakarítás biztosít a Visual Studio-előfizetésében.
@@ -51,7 +51,7 @@ A nagy számítási igényű a prémium RS számítási feladatokhoz javasoljuk,
 |**Ha jelenleg...**|**Át összehasonlítható Virtuálismag-alapú...**|**Át összehasonlítható DTU-alapú...**|
 |---|---|---|
 |1 prémium RS|Általános célú 1 virtuális mag (Gen4)|Standard 3|
-|2. prémium RS|Általános célú, 2 virtuális mag (Gen4)|Standard 4|
+|2\. prémium RS|Általános célú, 2 virtuális mag (Gen4)|Standard 4|
 |Prémium RS 4|Általános célú, 4 virtuális magra jogosult (Gen4)|Standard 6|
 |Prémium RS 6|Általános célú 6 virtuális magra jogosult (Gen4)|Standard 7|
 
@@ -70,10 +70,10 @@ Azt javasoljuk, hogy az i/o-igényes egyetlen adatbázisok migrálását a Virtu
 
 |**Ha jelenleg...**|**Át összehasonlítható Virtuálismag-alapú...**|**Át összehasonlítható DTU-alapú...**|
 |---|---|---|
-|1 prémium RS|(Előzetes verzió) Nagy kapacitású 1 virtuális mag (Gen4) vagy a kritikus fontosságú üzleti-1 virtuális mag (Gen4)|1 prémium|
-|2. prémium RS|(Előzetes verzió) Nagy kapacitású 2 virtuális mag (Gen4) vagy üzleti kritikus 2 virtuális mag (Gen4|Premium 2|
-|Prémium RS 4|(Előzetes verzió) Nagy kapacitású 4 virtuális magra jogosult (Gen4) vagy üzleti kritikus 4 virtuális magra jogosult (Gen4)|Prémium szintű 4
-|Prémium RS 6|(Előzetes verzió) Nagy kapacitású 6 virtuális magra jogosult (Gen4) vagy a kritikus fontosságú üzleti-6 virtuális magra jogosult (Gen4)|Prémium szintű 6|
+|1 prémium RS| Nagy kapacitású 1 virtuális mag (Gen4) vagy a kritikus fontosságú üzleti-1 virtuális mag (Gen4)|1 prémium|
+|2\. prémium RS| Nagy kapacitású 2 virtuális mag (Gen4) vagy üzleti kritikus 2 virtuális mag (Gen4|Premium 2|
+|Prémium RS 4| Nagy kapacitású 4 virtuális magra jogosult (Gen4) vagy üzleti kritikus 4 virtuális magra jogosult (Gen4)|Prémium szintű 4
+|Prémium RS 6| Nagy kapacitású 6 virtuális magra jogosult (Gen4) vagy a kritikus fontosságú üzleti-6 virtuális magra jogosult (Gen4)|Prémium szintű 6|
 
 |**Ha jelenleg...**|**Át összehasonlítható Virtuálismag-alapú...**|**Át összehasonlítható DTU-alapú...**|
 |---|---|---|
@@ -100,5 +100,5 @@ Bármilyen számítási méretű prémium RS adatbázis egy adatbázis DTU-alap�
 
 ## <a name="next-steps"></a>További lépések
 
-- Részletek az adott számítási méretek és a tároló mérete lehetőségek önálló adatbázis elérhető, lásd: [SQL Database Virtuálismag-alapú erőforráskorlátok az önálló adatbázisok](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-storage-sizes-and-compute-sizes)
-- Részletek az adott számítási méretek és a tároló mérete választható rugalmas készletek számára elérhető, lásd: [SQL Database Virtuálismag-alapú erőforráskorlátok a rugalmas készletek](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose-service-tier-storage-sizes-and-compute-sizes).
+- Részletek az adott számítási méretek és a tároló mérete lehetőségek önálló adatbázis elérhető, lásd: [SQL Database Virtuálismag-alapú erőforráskorlátok az önálló adatbázisok](sql-database-vcore-resource-limits-single-databases.md)
+- Részletek az adott számítási méretek és a tároló mérete választható rugalmas készletek számára elérhető, lásd: [SQL Database Virtuálismag-alapú erőforráskorlátok a rugalmas készletek](sql-database-vcore-resource-limits-elastic-pools.md).

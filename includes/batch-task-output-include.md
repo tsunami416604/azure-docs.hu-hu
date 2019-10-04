@@ -2,19 +2,19 @@
 title: fájl belefoglalása
 description: fájl belefoglalása
 services: batch
-author: dlepow
+author: laurenhughes
 ms.service: batch
 ms.topic: include
 ms.date: 04/06/2018
-ms.author: danlep
+ms.author: lahugh
 ms.custom: include file
-ms.openlocfilehash: 0dcb608553d4455403c073e34e83bccb81cc64db
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7ba4c90811bd8051ed9c307d9f9fa33e08e69dc7
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38750097"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "67179472"
 ---
-Az Azure Batch szolgáltatásban futó feladat lehet, hogy kimeneti adatok előállításához, futtatásakor. A kimeneti adatokat gyakran kell más tevékenységek a feladat által lekérés kell tárolni, az ügyfélalkalmazás, amely a feladat vagy mindkettő végrehajtott feladat. Feladatok kimeneti adatokat írni a fájlrendszer, a Batch számítási csomópont, de a csomópont minden adat elveszik, amikor rendszerképének, vagy amikor a csomópont elhagyja-e a készlet. Feladatok is előfordulhat, hogy egy fájl megőrzési időtartamot, amely után a rendszer törli a feladat által létrehozott fájlokat. Ebből kifolyólag, fontos, hogy később szüksége lesz egy adattárba, mint például a feladat kimenetének megőrzése [Azure Storage](https://docs.microsoft.com/azure/storage/).
+A Azure Batch futó feladatok a futásakor kimeneti adatokat hozhatnak létre. A feladat kimeneti adatait gyakran kell tárolni a feladat egyéb feladatai, a feladatot futtató ügyfélalkalmazás vagy mindkettő között. A tevékenységek a kimeneti adatokat egy batch számítási csomópont fájlrendszerére írják, de a csomóponton lévő összes adat elvész, amikor a rendszer újrarendszerképét végzi, vagy amikor a csomópont elhagyja a készletet. A feladatok is rendelkezhetnek fájl-megőrzési időtartammal, amely után a feladat által létrehozott fájlok törlődnek. Ezen okok miatt fontos a feladat kimenetének megőrzése, amelyre később szüksége lesz egy adattárba, például az [Azure Storage](https://docs.microsoft.com/azure/storage/)-ba.
 
 A Batch szolgáltatásban elérhető tárfiók-lehetőségekről további információt [a Batch funkcióinak áttekintésében](../articles/batch/batch-api-basics.md#azure-storage-account) talál.

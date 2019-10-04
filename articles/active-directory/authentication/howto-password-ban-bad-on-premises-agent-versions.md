@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60ce66b079942944176540826c7f3e7a91b070d2
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c024954053588537ac3363703876f716a38f41d9
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58861862"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67702950"
 ---
 # <a name="azure-ad-password-protection-agent-version-history"></a>Az Azure AD jelszóvédelem ügynök verzióelőzményei
 
@@ -38,7 +38,7 @@ Kiadás dátuma: 3/13/2019
   * Szoftver verziója és az Azure-bérlő adatait is csak DC ügynökök és a proxyk 1.2.116.0 verziójú vagy újabb.
   * Az Azure-bérlő adatai nem jelenthető a proxy Újraregisztrálás (vagy megújítás), vagy az erdő történt.
 * A Proxy szolgáltatás megköveteli, hogy telepítve van-e a .NET 4.7.
-  * .NET 4.7 egy teljesen új Windows Server már telepíthető. Ha nem ez a helyzet, töltse le és futtassa a telepítőt címen található [a .NET-keretrendszer 4.7 offline Windows installer](https://support.microsoft.com/en-us/help/3186497/the-net-framework-4-7-offline-installer-for-windows).
+  * .NET 4.7 egy teljesen új Windows Server már telepíthető. Ha nem ez a helyzet, töltse le és futtassa a telepítőt címen található [a .NET-keretrendszer 4.7 offline Windows installer](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows).
   * A Server Core rendszereken, szükség lehet a /q jelző átadása a .NET 4.7 telepítő sikeres beszerzéséhez.
 * A Proxy szolgáltatás már támogatja az automatikus frissítés. Automatikus frissítés a Microsoft Azure AD Connect az ügynök frissítési szolgáltatás, amelynek van telepített egymás mellett a Proxy szolgáltatással használja. Automatikus frissítés alapértelmezés szerint be van kapcsolva.
 * Automatikus frissítés is engedélyezhető, vagy le van tiltva, a Set-AzureADPasswordProtectionProxyConfiguration parancsmag használatával. A jelenlegi beállítás a Get-AzureADPasswordProtectionProxyConfiguration parancsmaggal lehet lekérdezni.
@@ -119,7 +119,7 @@ Javításokat tartalmaz:
 * Mindkét DC-ügynök és a proxy telepítők mostantól támogatja a helyben frissítés verzióra való későbbi verziókban.
 
 > [!WARNING]
-> 1.1.10.3 verzióból a helybeni frissítést nem támogatott, és a egy telepítési hibát eredményez. A frissítési verzióra 1.2.10 vagy újabb, kell először teljesen távolítsa el a tartományvezérlő-ügynök és a proxy szolgáltatás szoftvert, majd teljesen új az új verzió telepítése. Az Azure AD jelszóvédelem proxyszolgáltatás Újraregisztrálás megadása kötelező.  Regisztrálja újra az erdő nem szükséges.
+> 1\.1.10.3 verzióból a helybeni frissítést nem támogatott, és a egy telepítési hibát eredményez. A frissítési verzióra 1.2.10 vagy újabb, kell először teljesen távolítsa el a tartományvezérlő-ügynök és a proxy szolgáltatás szoftvert, majd teljesen új az új verzió telepítése. Az Azure AD jelszóvédelem proxyszolgáltatás Újraregisztrálás megadása kötelező.  Regisztrálja újra az erdő nem szükséges.
 
 > [!NOTE]
 > Helyben végzett frissítések DC ügynökszoftver követően újra kell indítani.

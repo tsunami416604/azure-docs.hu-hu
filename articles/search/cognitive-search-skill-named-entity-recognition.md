@@ -1,68 +1,67 @@
 ---
-title: Megnevezett entitások felismerése cognitive search szakértelem – Azure Search
-description: Nevesített entitások személy, helyen és szervezeten kigyűjtése a szöveg Azure Search-kognitív keresés folyamatban.
+title: Nevesített entitások felismerése – kognitív keresési képességek – Azure Search
+description: Megnevezett entitások kinyerése a személy, hely és szervezet számára egy Azure Search kognitív keresési folyamat szövege alapján.
 services: search
-manager: pablocas
+manager: nitinme
 author: luiscabrer
 ms.service: search
-ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 02/22/2019
+ms.date: 05/02/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: 28fae27b52ea150c1fa732715212e2f2c9534bc6
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: b152d5a48d49e78818602e7f66574937bebce2ac
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750429"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265765"
 ---
-#    <a name="named-entity-recognition-cognitive-skill"></a>Nevesített entitások felismerése cognitive szakértelem
+#    <a name="named-entity-recognition-cognitive-skill"></a>Elnevezett entitások felismerése – kognitív képesség
 
-A **megnevezett entitások felismerése** szakértelem nevesített entitásokhoz kigyűjti a szöveget. Elérhető entitások közé tartozik a típusok `person`, `location` és `organization`.
+Az **elnevezett entitás-felismerési** képességek nevű entitások szövegből való kibontása. Az elérhető entitások közé `person`tartoznak `location` a `organization`típusok és a.
 
 > [!IMPORTANT]
-> Nevesített entitások felismerése szakértelem elavult, lecserélve [Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md). Támogatja a leállítja a február 15., a 2019. Kövesse a [elavult kognitív keresés](cognitive-search-skill-deprecated.md) migrálása a támogatott műveleteket.
+> Az elnevezett entitás-felismerési képesség már megszűnt a [Microsoft. Skills. Text. EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md)helyett. A támogatás 2019. február 15-én megszűnt, és az API-t a 2019. május 2-án eltávolították a termékből. Kövesse az [elavult kognitív keresési ismeretekben](cognitive-search-skill-deprecated.md) szereplő javaslatokat a támogatott szaktudásra való áttéréshez.
 
 > [!NOTE]
-> 2018. December 21., kezdési is [Cognitive Services-erőforrás csatolása](cognitive-search-attach-cognitive-services.md) és a egy Azure Search-képességek alkalmazási lehetőségét. Ez lehetővé teszi indexmezők végrehajtási díjszabási elindításához. Ezen a napon azt is már díjszabási kép kinyerése a dokumentumfeltörést fázis részeként. A dokumentumok szövegkinyerés továbbra is ingyenesen kínáljuk.
+> Ha a hatókört a feldolgozás gyakoriságának növelésével, további dokumentumok hozzáadásával vagy további AI-algoritmusok hozzáadásával bővíti, akkor [a számlázható Cognitive Services erőforrást](cognitive-search-attach-cognitive-services.md)kell csatolnia. Az API-k Cognitive Services-ben való meghívásakor felmerülő díjak, valamint a képek kinyerése a dokumentum repedési szakaszának részeként Azure Search. A dokumentumokból való szöveg kinyerése díjmentes.
 >
-> [Beépített kognitív szakértelem](cognitive-search-predefined-skills.md) végrehajtás díja a [használatalapú-as-, a Cognitive Services nyissa meg az árat](https://azure.microsoft.com/pricing/details/cognitive-services), azonos értékelje, ha végrehajtotta a feladat közvetlenül. Kép kinyerése nem egy Azure Search költségekkel, jelenleg az előzetes verzió áron érhető el. További információkért lásd: a [díjszabását ismertető oldalt az Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400) vagy [számlázás módját works](search-sku-tier.md#how-billing-works).
+> A beépített készségek elvégzése a meglévő Cognitive Services utólagos elszámolású [díjszabás szerint](https://azure.microsoft.com/pricing/details/cognitive-services/)történik. A rendszerkép kibontásának díjszabását a [Azure Search díjszabási oldalán](https://go.microsoft.com/fwlink/?linkid=2042400)találja.
+
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.NamedEntityRecognitionSkill
 
 ## <a name="data-limits"></a>Adatkorlátok
-Egy rekord maximális mérete 50 000 karakter által mért kell lennie `String.Length`. Ha az adatok tördelésével, mielőtt elküldené a kulcskifejezések információkinyerő van szüksége, fontolja meg a [szöveg felosztása szakértelem](cognitive-search-skill-textsplit.md).
+A rekordok maximális méretének 50 000 karakternek kell lennie, a [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)következőképpen mérve:. Ha meg kell szakítania az adatokat, mielőtt elküldené a kivonó kifejezést, érdemes lehet a [szöveg felosztása képességet](cognitive-search-skill-textsplit.md)használni.
 
-## <a name="skill-parameters"></a>Ismeretek paraméterek
+## <a name="skill-parameters"></a>Szakértelem paraméterei
 
-A paraméterei a kis-és nagybetűket.
+A paraméterek megkülönböztetik a kis-és nagybetűket.
 
 | Paraméter neve     | Leírás |
 |--------------------|-------------|
-| kategóriák    | Ki kell nyerni kategóriákat tömbje.  Lehetséges kategória típusok: `"Person"`, `"Location"`, `"Organization"`. Ha nincs kategória áll rendelkezésre, a rendszer minden adja vissza.|
-|defaultLanguageCode |  A bemeneti szöveg nyelvkódja. A következő nyelvek támogatottak: `de, en, es, fr, it`|
-| minimumPrecision  | Egy 0 és 1 közötti szám. Ha a pontosság kisebb, mint ezt az értéket, az entitás nem jelennek meg. Az alapértelmezett érték a 0.|
+| categories    | A kinyerni kívánt kategóriák tömbje.  Lehetséges kategóriájú típusok: `"Person"`, `"Location"`, `"Organization"`. Ha nincs megadva kategória, a rendszer az összes típust adja vissza.|
+|defaultLanguageCode |  A bemeneti szöveg nyelvi kódja A következő nyelvek támogatottak:`de, en, es, fr, it`|
+| minimumPrecision  | 0 és 1 közötti szám. Ha a pontosság ennél az értéknél kisebb, az entitás nem lesz visszaadva. Az alapértelmezett érték a 0.|
 
-## <a name="skill-inputs"></a>Ismeretek bemenetek
+## <a name="skill-inputs"></a>Szaktudás bemenetei
 
-| Bemeneti név      | Leírás                   |
+| Bemenet neve      | Leírás                   |
 |---------------|-------------------------------|
-| languageCode  | Választható. Az alapértelmezett szint a `"en"`.  |
-| szöveg          | Az elemzendő szöveg.          |
+| languageCode  | Nem kötelező. Az alapértelmezett szint a `"en"`.  |
+| text          | Az elemezni kívánt szöveg.          |
 
-## <a name="skill-outputs"></a>Ismeretek kimenetek
+## <a name="skill-outputs"></a>Szaktudás kimenetei
 
-| Kimeneti név     | Leírás                   |
+| Kimenet neve     | Leírás                   |
 |---------------|-------------------------------|
-| személyek      | Egy karakterlánctömb, ahol minden egyes karakterlánc egy személy nevét jelöli. |
-| helyek  | Egy karakterlánctömb, ahol az egyes sztringek jelenti egy helyre. |
-| organizations  | Ahol az egyes sztringek jelenti egy szervezet karakterláncok tömbje. |
-| entitás | Összetett típusok egy tömbjét. Minden egyes komplex típus a következő mezőket tartalmazza: <ul><li>kategória (`"person"`, `"organization"`, vagy `"location"`)</li> <li>érték (a tényleges entitás neve)</li><li>eltolás (a hely hol található a szövegben)</li><li>(0, 1, amely közötti értéket jelöli, hogy, hogy az érték egy tényleges entitás megbízhatósági) magabiztosan</li></ul> |
+| személyek      | Karakterláncok tömbje, amelyben minden sztring egy személy nevét jelöli. |
+| locations  | Karakterláncok tömbje, amelyben minden sztring egy helyet jelöl. |
+| organizations  | Karakterláncok tömbje, amelyben minden sztring egy szervezetet jelöl. |
+| Szervezetek | Összetett típusok tömbje. Minden összetett típus a következő mezőket tartalmazza: <ul><li>Kategória (`"person"`, `"organization"`, vagy `"location"`)</li> <li>érték (a tényleges entitás neve)</li><li>eltolás (az a hely, ahol a szöveg található)</li><li>megbízhatóság (0 és 1 közötti érték, amely azt jelzi, hogy az érték tényleges entitás)</li></ul> |
 
-##  <a name="sample-definition"></a>Minta-definíció
+##  <a name="sample-definition"></a>Minta definíciója
 
 ```json
   {
@@ -83,7 +82,7 @@ A paraméterei a kis-és nagybetűket.
     ]
   }
 ```
-##  <a name="sample-input"></a>Minta beviteli
+##  <a name="sample-input"></a>Minta bemenet
 
 ```json
 {
@@ -92,7 +91,7 @@ A paraméterei a kis-és nagybetűket.
         "recordId": "1",
         "data":
            {
-             "text": "This is the loan application for Joe Romero, he is a Microsoft employee who was born in Chile and then moved to Australia… Ana Smith is provided as a reference.",
+             "text": "This is the loan application for Joe Romero, a Microsoft employee who was born in Chile and who then moved to Australia… Ana Smith is provided as a reference.",
              "languageCode": "en"
            }
       }
@@ -152,11 +151,11 @@ A paraméterei a kis-és nagybetűket.
 ```
 
 
-## <a name="error-cases"></a>Hibák esetén
-A dokumentum a nyelvkód nem támogatott, ha hibát ad vissza, és nincsenek entitások ki kell olvasni.
+## <a name="error-cases"></a>Hibák esetei
+Ha a dokumentumhoz tartozó nyelvi kód nem támogatott, a rendszer hibát ad vissza, és egyetlen entitás sincs kibontva.
 
 ## <a name="see-also"></a>Lásd még
 
-+ [Előre megadott képesség](cognitive-search-predefined-skills.md)
-+ [Hogyan képességcsoport megadása](cognitive-search-defining-skillset.md)
-+ [Entitások felismerése szakértelem](cognitive-search-skill-entity-recognition.md)
++ [Előre definiált képességek](cognitive-search-predefined-skills.md)
++ [Készségkészlet definiálása](cognitive-search-defining-skillset.md)
++ [Entitás-felismerési szakértelem](cognitive-search-skill-entity-recognition.md)

@@ -16,11 +16,11 @@ ms.date: 03/15/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5104d630e2b4e97b80a6fedfb6d863061c2722fb
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55810541"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61416111"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-hyper-v"></a>A StorSimple Virtual Array – üzembe helyezés Hyper-V rendszerben üzembe helyezése
 ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/hyperv4.png)
@@ -67,7 +67,7 @@ Kiépítése, és csatlakozzon a virtuális tömb, kell hajtsa végre az alábbi
 
 Egyes lépéseket az alábbiakban kifejtett.
 
-## <a name="step-1-ensure-that-the-host-system-meets-minimum-virtual-array-requirements"></a>1. lépés: Győződjön meg arról, hogy a gazdagép rendszere megfelel-e a minimális virtual array – követelmények
+## <a name="step-1-ensure-that-the-host-system-meets-minimum-virtual-array-requirements"></a>1\. lépés: Győződjön meg arról, hogy a gazdagép rendszere megfelel-e a minimális virtual array – követelmények
 Hozzon létre egy virtuális tömböt, az alábbiak szükségesek:
 
 * A Hyper-V szerepkör telepítése a Windows Server 2012 R2, Windows Server 2012 vagy Windows Server 2008 R2 SP1.
@@ -80,7 +80,7 @@ Hozzon létre egy virtuális tömböt, az alábbiak szükségesek:
 * Egy hálózati adapter.
 * 500 GB-os virtuális lemez a rendszer adatokat.
 
-## <a name="step-2-provision-a-virtual-array-in-hypervisor"></a>2. lépés: A hipervizor virtuális tömb létrehozása
+## <a name="step-2-provision-a-virtual-array-in-hypervisor"></a>2\. lépés: A hipervizor virtuális tömb létrehozása
 A következő lépések végrehajtásával helyezzen üzembe egy eszközt a hipervizoron.
 
 #### <a name="to-provision-a-virtual-array"></a>A virtuális tömb létrehozása
@@ -150,7 +150,7 @@ A következő lépések végrehajtásával helyezzen üzembe egy eszközt a hipe
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image20.png)
 
-## <a name="step-3-start-the-virtual-array-and-get-the-ip"></a>3. lépés: A virtuális tömb indítása és az IP-cím kérése
+## <a name="step-3-start-the-virtual-array-and-get-the-ip"></a>3\. lépés: A virtuális tömb indítása és az IP-cím kérése
 Hajtsa végre az alábbi lépéseket a virtuális tömb indítása és csatlakozni hozzá.
 
 #### <a name="to-start-the-virtual-array"></a>A virtuális tömb indítása

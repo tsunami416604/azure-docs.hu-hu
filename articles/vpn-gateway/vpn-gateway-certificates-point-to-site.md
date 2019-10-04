@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: cherylmc
 ms.openlocfilehash: 74639dee6fb548e1c9067cae6fc22f6e3cc872c3
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58096231"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60763891"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-using-powershell"></a>Tanúsítványok létrehozása és exportálása pont – hely a PowerShell használatával
 
@@ -45,7 +45,7 @@ A következő lépések végigvezetik egy önaláírt főtanúsítványból ügy
 
 A példák a New-SelfSignedCertificate parancsmag segítségével hozzon létre egy ügyféltanúsítvány, amely egy év múlva lejár. További paraméter információk, például az ügyféltanúsítvány eltérő lejárati értékét: [New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate).
 
-### <a name="example-1"></a>1. példa
+### <a name="example-1"></a>1\. példa
 
 Ebben a példában használja, ha az önaláírt főtanúsítvány létrehozása után nem bezárta a PowerShell-konzolt. Ebben a példában az előző szakaszban továbbra is fennáll, és a deklarált "$cert" változó. Ha az önaláírt főtanúsítvány létrehozása után a PowerShell-konzol lezárva, vagy egy új PowerShell-konzol munkamenetet ügyféloldali tanúsítványokat készíti, szereplő lépések segítségével [2. példa](#ex2).
 

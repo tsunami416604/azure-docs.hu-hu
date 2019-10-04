@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2018
+ms.date: 05/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 0d1e269a1818f013bc14842bc541216d7f31bc84
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 69b83590fb9b25c68d231b732b985ba633bb6884
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58116826"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66399206"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>A DevTest Labs szolgáltatásban virtuális gép egyéni összetevők létrehozása
 
@@ -56,14 +56,14 @@ Az alábbi példa bemutatja az alapvető szerkezete egy csomagdefiníciós fájl
 | Elem neve | Kötelező? | Leírás |
 | --- | --- | --- |
 | $schema |Nem |A JSON-fájl helyét. A JSON-fájl segítségével ellenőrizheti a csomagdefiníciós fájl érvényességét. |
-| cím |Igen |A lab-ben jelenik meg az összetevő neve. |
-| leírás |Igen |A lehívandó összetevő jelenik meg a labor leírása. |
+| title |Igen |A lab-ben jelenik meg az összetevő neve. |
+| description |Igen |A lehívandó összetevő jelenik meg a labor leírása. |
 | iconUri |Nem |URI-ját az ikon jelenik meg a tesztkörnyezetben. |
 | targetOsType |Igen |Az operációs rendszer a virtuális gép, amelyen telepítve van-e az összetevő. Támogatott kapcsolók a következők: Windows és Linux rendszereken. |
-| paraméterek |Nem |Az összetevő telepítési parancs egy gépen való futtatásakor biztosított értékeket. Ennek segítségével testre szabhatja az összetevő. |
+| parameters |Nem |Az összetevő telepítési parancs egy gépen való futtatásakor biztosított értékeket. Ennek segítségével testre szabhatja az összetevő. |
 | runCommand |Igen |Összetevő telepítése a virtuális gépen végrehajtott parancs. |
 
-### <a name="artifact-parameters"></a>Összetevő paraméterei
+### <a name="artifact-parameters"></a>Összetevő-paraméterek
 A csomagdefiníciós fájl paraméterei területen adja meg, mely értékeket a felhasználó megadhatja egy összetevő telepítésekor. Ezeket az értékeket a összetevő telepítési parancshoz hivatkozhatunk.
 
 Paraméterek megadásához használja az alábbi struktúrával:
@@ -80,7 +80,7 @@ Paraméterek megadásához használja az alábbi struktúrával:
 | --- | --- | --- |
 | type |Igen |A paraméter értékének típusa. Tekintse meg az alábbi lista az engedélyezett típusok esetében. |
 | displayName |Igen |A lab-ben a felhasználó számára megjelenő paraméter neve. |
-| leírás |Igen |A lab-ben megjelenő paraméter leírása. |
+| description |Igen |A lab-ben megjelenő paraméter leírása. |
 
 Engedélyezett típusok a következők:
 
@@ -89,14 +89,39 @@ Engedélyezett típusok a következők:
 * logikai (bármilyen érvényes JSON logikai)
 * tömb (bármilyen érvényes JSON-tömböt)
 
+## <a name="secrets-as-secure-strings"></a>Titkos kulcsok biztonságos karakterláncként
+Deklarálja a titkos kulcsok biztonságos karakterláncként. Íme egy biztonságos karakterláncot paraméter deklaráló szintaxisa a `parameters` szakaszában a **artifactfile.json** fájlt:
+
+```json
+
+    "securestringParam": {
+      "type": "securestring",
+      "displayName": "Secure String Parameter",
+      "description": "Any text string is allowed, including spaces, and will be presented in UI as masked characters.",
+      "allowEmpty": false
+    },
+```
+
+A lehívandó összetevő a telepítési parancs, és futtassa a PowerShell-parancsfájlt, amely a biztonságos karakterláncot hozta létre a ConvertTo-SecureString parancsot. 
+
+```json
+  "runCommand": {
+    "commandToExecute": "[concat('powershell.exe -ExecutionPolicy bypass \"& ./artifact.ps1 -StringParam ''', parameters('stringParam'), ''' -SecureStringParam (ConvertTo-SecureString ''', parameters('securestringParam'), ''' -AsPlainText -Force) -IntParam ', parameters('intParam'), ' -BoolParam:$', parameters('boolParam'), ' -FileContentsParam ''', parameters('fileContentsParam'), ''' -ExtraLogLines ', parameters('extraLogLines'), ' -ForceFail:$', parameters('forceFail'), '\"')]"
+  }
+```
+
+A teljes példát artifactfile.json és a artifact.ps1 (PowerShell-parancsprogram): [ezt a mintát a Githubon](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts/windows-test-paramtypes).
+
+Egy másik fontos megjegyezni, hogy nem a titkos kulcsokat a konzolba való, a kimeneti rögzített felhasználói a hibakereséshez. 
+
 ## <a name="artifact-expressions-and-functions"></a>Összetevő-kifejezések és függvények
 Használhat kifejezéseket, és a függvények létrehozására, az összetevő telepítési parancs.
-Kifejezések parancsfájlblokkjában találhatók a zárójelek közé ([és]), és az összetevő telepítésekor a rendszer értékeli. Kifejezések bárhol megjelenhet egy JSON-karakterlánc értéken. Kifejezések mindig egy másik JSON-értéket ad vissza. Ha szeretné használni a szögletes zárójel ([]) kezdetű konstans sztring, két zárójelek közé ([[) kell használnia.
-Általában használatával kifejezések függvényekkel hozhat létre egy értéket. Ugyanúgy, mint a JavaScript, függvényhívások formázott **functionName (arg1, arg2, arg3)**.
+Kifejezések parancsfájlblokkjában találhatók a zárójelek közé ([és]), és az összetevő telepítésekor a rendszer értékeli. Kifejezések bárhol megjelenhet egy JSON-karakterlánc értéken. Kifejezések mindig egy másik JSON-értéket ad vissza. Ha szeretné használni a szögletes zárójel ([) kezdetű konstans sztring, két zárójelek közé ([[) kell használnia.
+Általában használatával kifejezések függvényekkel hozhat létre egy értéket. Ugyanúgy, mint a JavaScript, függvényhívások formázott **functionName (arg1, arg2, arg3)** .
 
 Az alábbi lista tartalmazza a közös funkciók:
 
-* **parameters(parameterName)**: Az összetevő parancs futtatásakor megadott paraméter értéket ad vissza.
+* **parameters(parameterName)** : Az összetevő parancs futtatásakor megadott paraméter értéket ad vissza.
 * **Concat (arg1, arg2, arg3,...)** : Több karakterlánc-értékek egyesíti. Ez a függvény argumentumainak különböző is igénybe vehet.
 
 Az alábbi példa bemutatja, hogyan hozhat létre egy érték kifejezések és függvények használatával:

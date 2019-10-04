@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/13/2019
+ms.date: 05/21/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: alavital
 ms.custom: ''
-ms.openlocfilehash: feb7fcdd9005ef131acadfc63defbe4caeaca014
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f1bf62596b6edcc6fff6572e431f3a777be93f05
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57991930"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66002087"
 ---
 # <a name="use-cost-alerts-to-monitor-usage-and-spending"></a>Költség riasztások, a használat és költségek monitorozása
 
@@ -39,11 +39,11 @@ Részleg költségkeret kvóta riasztások figyelmeztetik, ha a department költ
 
 Riasztástípusok támogatása (Microsoft ajánlat), hogy rendelkezik Azure-fiók típusú függ. Az alábbi táblázat a riasztási funkciók által támogatott különböző Microsoft-ajánlatok. A Microsoft-ajánlatok teljes listáját megtekintheti [megismerheti a Cost Management adataihoz](understand-cost-mgt-data.md).
 
-| Riasztás típusa | Nagyvállalati szerződés | Microsoft Ügyfélszerződés | Web direct/Pay-As-You-Go |
+| A riasztás típusa | Nagyvállalati Szerződés | Microsoft Ügyfélszerződés | Web direct/Pay-As-You-Go |
 |---|---|---|---|
-| Költségkeret | ✔ | ✔ | ✔ |
-| Kreditösszeg | ✔ |✘ | ✘ |
-| Részleg költségkvótája | ✔ | ✘ | ✘ |
+| Költségvetés | ✔ | ✔ | ✔ |
+| Kredit | ✔ |✘ | ✘ |
+| Részleg vonatkozó költségkvótáját | ✔ | ✘ | ✘ |
 
 
 

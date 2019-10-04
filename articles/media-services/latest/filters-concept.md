@@ -11,18 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 05/23/2019
 ms.author: juliako
-ms.openlocfilehash: 61b877c322fcd58472990c328beea2e309502bce
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: fdf29924da31db0347938df89e698cb258c2336b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652348"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66225413"
 ---
-# <a name="define-account-filters-and-asset-filters"></a>Adja meg a fiók és eszköz szűrőket  
+# <a name="filters"></a>Szűrők
 
-Az ügyfelek számára (események élő vagy igény szerinti Videószolgáltatás) tartalomtovábbításkor az ügyfél az alapértelmezett eszköz jegyzékfájl leírtnál rugalmasabb előfordulhat, hogy kell. Az Azure Media Services lehetővé teszi, hogy meghatározza a fiók és a tartalom eszköz szűrőket. 
+Az ügyfelek számára (események élő vagy igény szerinti Videószolgáltatás) tartalomtovábbításkor az ügyfél az alapértelmezett eszköz jegyzékfájl leírtnál rugalmasabb előfordulhat, hogy kell. Az Azure Media Services által [dinamikus jegyzékfájlok](filters-dynamic-manifest-overview.md) előre definiált szűrők alapján. 
 
 Szűrők kiszolgálóoldali szabályok, amelyek lehetővé teszik az ügyfelek, például a következők: 
 
@@ -32,24 +32,16 @@ Szűrők kiszolgálóoldali szabályok, amelyek lehetővé teszik az ügyfelek, 
 - Csak a megadott beállításkészletben és/vagy a megadott nyelv nyomon követi az eszköz, amellyel a tartalmat ("megjelenítésszűrés") által támogatott kézbesítéséhez. 
 - Módosítsa a megjelenítési ablakot (DVR) annak érdekében, hogy a Windows Media player ("módosításának bemutató időszak") megadott DVR időszak korlátozott hosszát.
 
-Media Services által [dinamikus jegyzékfájlok](filters-dynamic-manifest-overview.md) előre definiált szűrők alapján. Miután meghatározott szűrőket, az ügyfelek lehetett használni őket a streamelési URL-CÍMÉT. Az adaptív sávszélességű streamelési protokollok szűrőket is lehet alkalmazni: Apple HTTP Live Streaming (HLS), MPEG-DASH és Smooth Streaming.
+Media Services lehetővé teszi, hogy hozzon létre **szűrők fiók** és **eszköz szűrők** a tartalomhoz. Emellett az előre létrehozott szűrőket a társíthatja egy **Streamelési lokátor**.
 
-Az alábbi táblázatban néhány példa az URL-címek szűrőket jeleníti meg:
+## <a name="defining-filters"></a>Szűrők megadása
 
-|Protokoll|Példa|
-|---|---|
-|HLS|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=m3u8-aapl,filter=myAccountFilter)`<br/>A v3-as HLS, használja: `format=m3u8-aapl-v3`.|
-|MPEG DASH|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=mpd-time-csf,filter=myAssetFilter)`|
-|Smooth Streaming|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(filter=myAssetFilter)`|
-
-## <a name="define-filters"></a>Szűrők megadása
-
-Az eszközintelligencia szűrők két típusa van: 
+A szűrők két típusa van: 
 
 * [Szűrők fiók](https://docs.microsoft.com/rest/api/media/accountfilters) (globális) – az Azure Media Services-fiókban lévő bármely eszközre is alkalmazható, a fiók élettartama.
 * [Az eszközintelligencia szűrők](https://docs.microsoft.com/rest/api/media/assetfilters) (helyi) – csak egy eszköz, amellyel a szűrő lett társítva létrehozásakor kell alkalmazni, az eszköz élettartama. 
 
-[Szűrő fiók](https://docs.microsoft.com/rest/api/media/accountfilters) és [eszköz szűrő](https://docs.microsoft.com/rest/api/media/assetfilters) típusok definiálása/leíró a szűrő pontosan azonos tulajdonságokkal rendelkezik. Kivéve, amikor létrehozza a **eszköz szűrő**, meg kell adnia az objektum nevét, amelyhez hozzá szeretne rendelni a szűrő.
+**Szűrők fiók** és **eszköz szűrők** típusok definiálása/leíró a szűrő pontosan azonos tulajdonságokkal rendelkezik. Kivéve, amikor létrehozza a **eszköz szűrő**, meg kell adnia az objektum nevét, amelyhez hozzá szeretne rendelni a szűrő.
 
 A forgatókönyvtől függően úgy dönt, hogy milyen típusú szűrő megfelelőbbek, (eszköz szűrő vagy szűrő). Fiókszűrők alkalmasak (megjelenítésszűrés) eszközprofilok ahol eszköz szűrők és a záró szóközöket egy adott eszköz használható.
 
@@ -88,11 +80,9 @@ Szűrő nyomon követése Tulajdonságfeltételek követési típusok, értékek
 |**Name (Név)**|A track nevét használja a szűréshez.|
 |**Típus**|A szám típust használják a szűréshez.<br/><br/>A következő értékek használata engedélyezett: "videó", "hang" vagy "szöveg".|
 
-## <a name="associate-filters-with-streaming-locator"></a>Streamelési lokátor szűrők társítása
+### <a name="example"></a>Példa
 
-Megadhatja, hogy az eszköz vagy a fiók szűrők, a Streamelési lokátor is érvényesek listáját. A [dinamikus packager](dynamic-packaging-overview.md) vonatkozik ez a lista azokat az URL-címet adja meg az ügyfél és-szűrők. Állít elő, ez a kombináció egy [dyanamic jegyzékfájl](filters-dynamic-manifest-overview.md), amely alapján az URL-címben szűrők + szűrők megad a Streamelési lokátor. Azt javasoljuk, hogy a szolgáltatás használata, ha alkalmazza a szűrőket, de nem szeretné elérhetővé tenni az URL-szűrő nevét.
-
-## <a name="definition-example"></a>Definíció példa
+Az alábbi példa egy élő adatfolyam-szűrő határozza meg: 
 
 ```json
 {
@@ -146,6 +136,23 @@ Megadhatja, hogy az eszköz vagy a fiók szűrők, a Streamelési lokátor is é
   }
 }
 ```
+
+## <a name="associating-filters-with-streaming-locator"></a>Streamelési lokátor szűrők társítása
+
+Egy listában megadhatja [eszköz vagy a fiók szűrők](filters-concept.md) a a [Streamelési lokátor](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body). A [dinamikus Packager](dynamic-packaging-overview.md) vonatkozik ez a lista azokat az URL-címet adja meg az ügyfél és-szűrők. Állít elő, ez a kombináció egy [dinamikus Manifest](filters-dynamic-manifest-overview.md), amely alapján az URL-címben szűrők + szűrők a Streamelési lokátor meg kell adnia. 
+
+Lásd az alábbi példákat:
+
+* [Szűrők társítása Streamelési lokátor – .NET](filters-dynamic-manifest-dotnet-howto.md#associate-filters-with-streaming-locator)
+* [Szűrők társítása Streamelési lokátor – CLI](filters-dynamic-manifest-cli-howto.md#associate-filters-with-streaming-locator)
+
+## <a name="updating-filters"></a>Szűrők frissítése
+ 
+**A streamelési Lokátorok** amelyek nem frissíthető, miközben szűrők frissítheti. 
+
+Nem javasoljuk, hogy a szűrők aktívan közzétett társított a definíció frissítésének az **Streamelési lokátor**, különösen akkor, ha a CDN engedélyezve van. Adatfolyam-kiszolgálók és a CDN rendelkezhet a belső gyorsítótárakat, amelyek elavult gyorsítótárazott adatokat vissza kell eredményezhet. 
+
+Ha módosítani kell a szűrő definícióját, fontolja meg egy új szűrő létrehozása és hozzáadása, hogy a **Streamelési lokátor** URL-cím vagy egy új közzétételi **Streamelési lokátor** közvetlenül hivatkozik, amely a szűrőt.
 
 ## <a name="next-steps"></a>További lépések
 

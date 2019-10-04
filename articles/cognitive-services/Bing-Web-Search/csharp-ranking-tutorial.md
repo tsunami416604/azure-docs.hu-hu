@@ -3,20 +3,20 @@ title: Rang használatával a keresési eredmények megjelenítése
 titleSuffix: Azure Cognitive Services
 description: Bemutatja, hogyan használhatja a Bing RankingResponse választ sorrend a keresési eredmények megjelenítéséhez.
 services: cognitive-services
-author: bradumbaugh
+author: aahill
 manager: nitinme
 ms.assetid: 2575A80C-FC74-4631-AE5D-8101CF2591D3
 ms.service: cognitive-services
 ms.subservice: bing-web-search
-ms.topic: conceptual
-ms.date: 05/08/2017
-ms.author: bking
-ms.openlocfilehash: 7c074d5d25453e2b2a1ddfc32422790235815f1c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.topic: tutorial
+ms.date: 06/18/2019
+ms.author: aahi
+ms.openlocfilehash: cfe198352cae95227a76535544d55a6be0c66abc
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55872521"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203252"
 ---
 # <a name="build-a-console-app-search-client-in-c"></a>Hozhat létre egy konzol alkalmazás keresési ügyfélalkalmazást a C#-ban
 
@@ -38,7 +38,7 @@ Követheti az oktatóanyagot, az alábbiak szükségesek:
 
 Hozzon létre egy projektet a Visual Studióban a `Ctrl`+`Shift`+`N` billentyűparancs lenyomásával.
 
-Az a **új projekt** párbeszédpanelen kattintson a **Visual C# > Windows klasszikus Asztalialkalmazás > Console App (.NET Framework)**.
+Az a **új projekt** párbeszédpanelen kattintson a **Visual C# > Windows klasszikus Asztalialkalmazás > Console App (.NET Framework)** .
 
 Adjon nevet az alkalmazásnak **MyConsoleSearchApp**, és kattintson a **OK**.
 
@@ -221,7 +221,7 @@ Mielőtt bemutató rangsorolt sorrendben jelenjenek meg az eredmények, mintául
 }
 ```
 
-A `rankingResponse` JSON-objektum ([dokumentáció](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse)) ismerteti a keresési eredmények kívánt megjelenítési sorrendjét. Legalább egy, a következő, a rangsorolt csoportokat tartalmazza:
+A `rankingResponse` JSON-objektum ([dokumentáció](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse)) ismerteti a keresési eredmények kívánt megjelenítési sorrendjét. Legalább egy, a következő, a rangsorolt csoportokat tartalmazza:
 
 - `pole`: A keresési eredményeket a legfeltűnőbb kezelés lekérése (például a fent a által látható és az oldalsávot).
 - `mainline`: A keresési eredmények megjelennek a által.

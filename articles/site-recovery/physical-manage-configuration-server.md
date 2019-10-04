@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
 ms.openlocfilehash: 10bec01a3b90776c8dd8c32a74ba7754264da131
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59050135"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62119730"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Fizikai kiszolgáló vészhelyreállításhoz használt konfigurációs kiszolgáló kezelése
 
@@ -28,7 +28,7 @@ A táblázat összefoglalja a helyszíni konfigurációs kiszolgáló gép telep
 | --- |---|
 | Processzormagok| 8 |
 | RAM | 16 GB|
-| Lemezek száma | 3., beleértve az operációs rendszer lemez, a folyamatkiszolgálói gyorsítótárlemez és az adatmegőrzési meghajtó a feladat-visszavételhez |
+| Lemezek száma | 3\., beleértve az operációs rendszer lemez, a folyamatkiszolgálói gyorsítótárlemez és az adatmegőrzési meghajtó a feladat-visszavételhez |
 | – Lemez szabad területe (Folyamatkiszolgálói gyorsítótár) | 600 GB
 | Lemez szabad területe (adatmegőrzési lemez) | 600 GB|
 | Operációs rendszer  | Windows Server 2012 R2 <br> Windows Server 2016 |
@@ -108,16 +108,16 @@ Futtassa a telepítőfájlt az alábbiak szerint:
 
 ### <a name="parameters"></a>Paraméterek
 
-|Paraméter neve| Typo | Leírás| Értékek|
+|Paraméter neve| Típus | Leírás| Értékek|
 |-|-|-|-|
-| /ServerMode|Szükséges|Megadja, hogy a konfigurációs és folyamatkiszolgálót is, vagy csak a folyamatkiszolgálót kell-e telepíteni.|CS<br>PS|
-|/InstallLocation|Szükséges|Az összetevők telepítési mappája| A számítógép bármely mappája|
-|/MySQLCredsFilePath|Szükséges|A fájl elérési útja, amelyen a MySQL-kiszolgáló hitelesítő adatai tárolva vannak|A fájlnak az alább megadott formátumúnak kell lennie|
-|/VaultCredsFilePath|Szükséges|A tároló hitelesítőadat-fájljának elérési útja|Érvényes fájlelérési út|
-|/EnvType|Szükséges|Védeni kívánt környezet típusa |VMware<br>NonVMware|
-|/PSIP|Szükséges|A replikációs adatátvitelhez használni kívánt hálózati adapter IP-címe| Bármilyen érvényes IP-cím|
+| /ServerMode|Kötelező|Megadja, hogy a konfigurációs és folyamatkiszolgálót is, vagy csak a folyamatkiszolgálót kell-e telepíteni.|CS<br>PS|
+|/InstallLocation|Kötelező|Az összetevők telepítési mappája| A számítógép bármely mappája|
+|/MySQLCredsFilePath|Kötelező|A fájl elérési útja, amelyen a MySQL-kiszolgáló hitelesítő adatai tárolva vannak|A fájlnak az alább megadott formátumúnak kell lennie|
+|/VaultCredsFilePath|Kötelező|A tároló hitelesítőadat-fájljának elérési útja|Érvényes fájlelérési út|
+|/EnvType|Kötelező|Védeni kívánt környezet típusa |VMware<br>NonVMware|
+|/PSIP|Kötelező|A replikációs adatátvitelhez használni kívánt hálózati adapter IP-címe| Bármilyen érvényes IP-cím|
 |/CSIP|Szükséges|Annak a hálózati adapternek az IP-címe, amelyen a konfigurációs kiszolgáló figyel| Bármilyen érvényes IP-cím|
-|/PassphraseFilePath|Szükséges|A jelszófájl teljes elérési útja|Érvényes fájlelérési út|
+|/PassphraseFilePath|Kötelező|A jelszófájl teljes elérési útja|Érvényes fájlelérési út|
 |/BypassProxy|Optional|Megadja, hogy a konfigurációs kiszolgáló proxy nélkül csatlakozik az Azure-hoz.|Az érték beszerzése innen: Venu|
 |/ProxySettingsFilePath|Optional|Proxybeállítások (Az alapértelmezett proxyhoz hitelesítés vagy egyéni proxy szükséges).|A fájlnak az alább megadott formátumúnak kell lennie|
 |DataTransferSecurePort|Optional|Az adatreplikációhoz használni kívánt PSIP-port száma| Érvényes portszám (az alapértelmezett érték 9433)|
@@ -158,7 +158,7 @@ A konfigurációs kiszolgáló gép proxybeállításainak következőképpen m�
    ![register-configuration-server](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
 5. Adja meg az új proxy adatait, majd kattintson a **regisztrálása** gombra.
 6. Nyisson meg egy rendszergazdai PowerShell-parancsablakot.
-7. Futtassa az alábbi parancsot:
+7. Futtassa a következő parancsot:
 
    ```powershell
    $Pwd = ConvertTo-SecureString -String MyProxyUserPassword

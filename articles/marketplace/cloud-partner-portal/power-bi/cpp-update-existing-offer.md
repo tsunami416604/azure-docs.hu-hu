@@ -1,25 +1,18 @@
 ---
-title: Frissítse a Power BI alkalmazást offer – Azure Marketplace-en |} A Microsoft Docs
+title: A Power BI alkalmazás ajánlat frissítése |} Az Azure Marketplace-en
 description: A Power BI alkalmazás ajánlat frissíteni, miután közzétette a Microsoft AppSource Marketplace-en.
 services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.author: pbutlerm
-ms.openlocfilehash: 953c53b4ef2244b3444abb745f52e125306468f2
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.author: pabutler
+ms.openlocfilehash: aaeb347c5b8ba6cd992054cd6ab5464f44b3a08c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56807116"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64942029"
 ---
 # <a name="update-a-power-bi-app-offer"></a>A Power BI alkalmazás ajánlat frissítése
 

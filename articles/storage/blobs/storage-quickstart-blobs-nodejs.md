@@ -1,36 +1,36 @@
 ---
-title: Blob létrehozása az Azure Storage Node.js v2 esetében az ügyféloldali kódtár használatával
-description: Létre fog hozni egy tárfiókot és egy tárolót egy objektumtárban (Blobtárban). Ezután használja az Azure Storage ügyféloldali kódtára a Node.js v2 feltölt egy blobot az Azure Storage, letölt egy blobot, és a tárolóban lévő blobok listázása.
-services: storage
-author: tamram
-ms.custom: mvc
-ms.service: storage
-ms.topic: conceptual
+title: BLOB létrehozása az Azure Storage-ban a Node. js-hez
+description: Létre fog hozni egy tárfiókot és egy tárolót egy objektumtárban (Blobtárban). Ezután használja az Azure Storage ügyféloldali kódtárat a Node. js v2-hez, és töltsön fel egy blobot az Azure Storage-ba, letölt egy blobot, és kilistázza a tárolóban lévő blobokat.
+author: mhopkins-msft
+ms.author: mhopkins
 ms.date: 02/04/2019
-ms.author: tamram
-ms.openlocfilehash: 182315c705360d254c3bf342cd9c64ffafa0c021
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.service: storage
+ms.subservice: blobs
+ms.topic: conceptual
+ms.custom: seo-javascript-september2019
+ms.openlocfilehash: 8d0afc5a224e752bdd745ab4df0473a134b4180b
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55750074"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71671348"
 ---
-# <a name="how-to-upload-download-and-list-blobs-using-the-client-library-for-nodejs-v2"></a>Hogyan feltöltése, letöltése és az ügyféloldali kódtár használatával Node.js v2 blobok listázása
+# <a name="upload-download-and-list-blobs-using-the-client-library-for-nodejs"></a>Blobok feltöltése, letöltése és listázása a Node. js-hez készült ügyféloldali kódtár használatával
 
-Ez az útmutató útmutatóban megismerheti, hogyan használható az ügyféloldali kódtára a Node.js v2-höz való feltöltése, letöltése és az Azure Blob storage-blobok listázása.
+Ebben a útmutatóban megtudhatja, hogyan használhatja a Node. js v2-hez készült ügyféloldali kódtárat Blobok feltöltésére, letöltésére és listázására az Azure Blob Storage-ban.
 
 > [!TIP]
-> Az Azure Storage ügyféloldali kódtára a Node.js legújabb verzióját a v10. A Microsoft azt javasolja, hogy ha lehetséges, az ügyféloldali kódtár legújabb verzióját használja-e. Használatának megkezdéséhez v10, lásd: [a rövid útmutató: Feltöltése, letöltése, listázása és törlése a blobok Azure Storage ügyféloldali kódtár használatával a JavaScript v10 (előzetes verzió)](storage-quickstart-blobs-nodejs-v10.md).
+> A Node. js-hez készült Azure Storage ügyféloldali kódtár legújabb verziója a V10-es verzió. A Microsoft azt javasolja, hogy ha lehetséges, használja az ügyféloldali kódtár legújabb verzióját. A v10 használatának megkezdéséhez tekintse meg a gyors útmutató [: Blobok feltöltése, letöltése, listázása és törlése az Azure Storage ügyféloldali kódtár használatával a JavaScript v10-](storage-quickstart-blobs-nodejs-v10.md)es verziójához (előzetes verzió).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-Az Azure storage-fiók létrehozása a [az Azure portal](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM). A fiók létrehozásával kapcsolatos útmutatóért lásd a [tárfiók létrehozását](../common/storage-quickstart-create-account.md) ismertető szakaszt.
+Hozzon létre egy Azure Storage-fiókot a [Azure Portal](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM). A fiók létrehozásával kapcsolatos útmutatóért lásd a [tárfiók létrehozását](../common/storage-quickstart-create-account.md) ismertető szakaszt.
 
 ## <a name="download-the-sample-application"></a>A mintaalkalmazás letöltése
 
-A [mintaalkalmazás](https://github.com/Azure-Samples/storage-blobs-node-quickstart.git) egy egyszerű Node.js-Konzolalkalmazás. Első lépésként klónozza az adattárat a gépre a következő paranccsal:
+A [minta alkalmazás](https://github.com/Azure-Samples/storage-blobs-node-quickstart.git) egy egyszerű Node. js-konzolos alkalmazás. Első lépésként klónozza az adattárat a gépre a következő paranccsal:
 
 ```bash
 git clone https://github.com/Azure-Samples/storage-blobs-node-quickstart.git
@@ -77,7 +77,7 @@ Container "demo" is deleted
 Done
 ```
 
-Ebben a példában egy új tárfiókot használ, akkor előfordulhat, hogy nem látja minden felsorolva a címkére a tároló nevének "*tárolók*".
+Ha ehhez a példához új Storage-fiókot használ, akkor előfordulhat, hogy nem jelenik meg a "*tárolók*" címke alatt felsorolt tárolók neve.
 
 ## <a name="understanding-the-code"></a>A kód értelmezése
 Az első kifejezés értékek betöltésére szolgál a környezeti változókba.
@@ -99,7 +99,7 @@ A modulok rendeltetése a következő:
 
 az *.env* fájl betöltése az aktuális végrehajtási környezetbe
 - a *path* a blobtárolóba feltölteni kívánt fájl abszolút elérési útjának meghatározásához szükséges
-- *az Azure-storage* van a [Azure Storage ügyféloldali kódtár](https://docs.microsoft.com/javascript/api/azure-storage) modul a node.js-ben
+- az *Azure-Storage* a Node. js-hez készült [Azure Storage ügyféloldali kódtár](https://docs.microsoft.com/javascript/api/azure-storage) modulja
 
 Ezután a **blobService** változó az Azure Blob service egy új példányaként lesz inicializálva.
 
@@ -323,7 +323,7 @@ response = await listBlobs(containerName);
 response.blobs.forEach((blob) => console.log(` - ${blob.name}`));
 ```
 
-Egy blob letöltéséhez a válasz rögzítve lesz, majd ennek használatával fog a rendszer hozzáférni a blob értékéhez. A válaszból a readableStreamBody érték karakterlánccá alakul, és naplózva lesz a kimeneti ablakban.
+Egy blob letöltéséhez a válasz rögzítve lesz, majd ennek használatával fog a rendszer hozzáférni a blob értékéhez. A válaszból a readableStreamBody érték sztringgé alakul, és naplózva lesz a kimeneti ablakban.
 
 ```javascript
 response = await downloadBlob(containerName, blobName);
@@ -358,7 +358,7 @@ Blob Storage-tárolókat alkalmazó Node.js-alkalmazások fejlesztéséhez tekin
 
 ## <a name="next-steps"></a>További lépések
 
-Ez a cikk bemutatja, hogyan tölthet fel egy fájlt egy helyi lemez és a Node.js használatával az Azure Blob storage között. Ha bővebb információra van szüksége a Blobtárolók használatával kapcsolatban, lépjen tovább a GitHub adattárára.
+Ez a cikk bemutatja, hogyan tölthet fel egy fájlt egy helyi lemez és az Azure Blob Storage között a Node. js használatával. Ha bővebb információra van szüksége a Blobtárolók használatával kapcsolatban, lépjen tovább a GitHub adattárára.
 
 > [!div class="nextstepaction"]
-> [A Microsoft Azure Storage SDK for Node.js és JavaScript-böngészők](https://github.com/Azure/azure-storage-node)
+> [Microsoft Azure Storage SDK a Node. js és a JavaScript böngészőkhöz](https://github.com/Azure/azure-storage-node)

@@ -1,45 +1,45 @@
 ---
-title: Mi az OPC-Ikereszköz – Azure |} A Microsoft Docs
-description: Az OPC-Twin áttekintése
+title: Mi az OPC Twin – Azure | Microsoft Docs
+description: Az OPC Twin áttekintése
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
 ms.topic: overview
-ms.service: iot-industrialiot
+ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 9daf1a7e58af23cb78705691217bf9709359c4d5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c0d824e23a98aa14081fbd21bd6a9fbec5d583e0
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59496811"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815940"
 ---
-# <a name="what-is-azure-iot-open-platform-communications-opc-device-management"></a>Mi az Azure IoT nyílt Platform kommunikáció (OPC) Eszközfelügyelet?
+# <a name="what-is-opc-twin"></a>Mi az OPC Twin?
 
-Az OPC-Twin áll, amelyek az Azure IoT Edge és IoT Hub használata a felhőben és a gyári hálózathoz csatlakozni. Az OPC-Twin felderítési, regisztrációs és távvezérlési ipari eszközök REST API-kon keresztül biztosít. Az OPC-Twin nem szükséges egy OPC egyesített architektúra (OPC UA) SDK-t és a programozási nyelvtől és egy kiszolgáló nélküli munkafolyamatot tartalmazhat. Ez a cikk ismerteti az OPC-Twin több felhasználási eset.
+Az OPC Twin olyan szolgáltatásokból áll, amelyek Azure IoT Edge és IoT Hub használnak a felhő és a gyári hálózat összekapcsolásához. Az OPC Twin a REST API-kon keresztül biztosítja az ipari eszközök felderítését, regisztrálását és távvezérlését. Az OPC Twin nem igényel egy OPC Unified Architecture (OPC UA) SDK-t, a programozási nyelv agnosztikus, és a kiszolgáló nélküli munkafolyamatban is szerepelhet. Ez a cikk több OPC kettős használati esetet ismertet.
 
-## <a name="discovery-and-control"></a>Észlelés és vezérlés
-Az OPC-Twin felderítési és a nyilvántartási egyszerű is használhat.
+## <a name="discovery-and-control"></a>Felderítés és vezérlés
+A felderítéshez és a regisztráláshoz egyszerűen használhatja az OPC Twin-et is.
 
-### <a name="simple-discovery-and-registration"></a>Egyszerű felderítési és regisztráció
-Az OPC-Twin lehetővé teszi a feldolgozó kezelők a gyári hálózati megvizsgálja, hogy az OPC UA-kiszolgálók felderíthető és regisztrálva. Alternatív megoldásként a gyári operátorok manuálisan is regisztrálhatja az OPC UA-eszközök egy ismert felderítési URL-cím használatával. Például az összes OPC UA-eszköz csatlakozik az IoT Edge-átjáró OPC Ikereszköz-modullal a gyárban telepítése után, a gyári operátor távolról aktiválása keresését, a hálózati vizuálisan láthat és az OPC UA-kiszolgálók. 
+### <a name="simple-discovery-and-registration"></a>Egyszerű felderítés és regisztráció
+Az OPC Twin lehetővé teszi, hogy a gyári operátorok beszkennelik a gyári hálózatot, így az OPC UA-kiszolgálókat fel lehet deríteni és regisztrálni kell. Alternatív megoldásként a gyári operátorok manuálisan is regisztrálhatják az OPC UA-eszközöket egy ismert felderítési URL-címmel. Ha például az összes OPC UA-eszközhöz szeretne csatlakozni az OPC Twin modullal rendelkező IoT Edge átjáró után, a gyári operátor távolról elindíthatja a hálózat vizsgálatát, és vizuálisan megtekintheti az összes OPC UA-kiszolgálót. 
 
-### <a name="simple-control"></a>Egyszerű vezérlési
-Az OPC-Twin lehetővé teszi a feldolgozó kezelők reagálhat rájuk, és automatikusan vagy manuálisan konfigurálja újra a felhőből emelet gyári gépeik menet közben. Az OPC-Twin el az OPC UA-kiszolgálóval a szolgáltatásokat, keresse meg a címtér olvasási/írási változók és a metódusok végrehajtása, a REST API-kat biztosít. Például egy gép hőmérséklet KPI-t használ a gyártósor vezérlésére. Hőmérséklet-érzékelő a módosítás közzéteszi az adatokat az OPC-közzétevő használatával. A gyári operátor megkapja a riasztást, hogy a hőmérséklet elérte a küszöbértéket. A gyártósor cools automatikusan az OPC-Twin keresztül. A gyári operátor értesítést kap a ritka elérésű le.
+### <a name="simple-control"></a>Egyszerű vezérlés
+Az OPC Twin lehetővé teszi, hogy a gyári operátorok reagálni tudjanak az eseményekre, és a felhőből automatikusan, vagy menet közben újra konfigurálhatják a gyári padló gépeket. Az OPC Twin olyan REST API-kat biztosít, amelyekkel szolgáltatásokat hívhat meg az OPC UA-kiszolgálón, böngészheti a címtartomány, valamint az írási/olvasási változók és a metódusok végrehajtása. A kazán például hőmérsékleti KPI-t használ az üzemi vonal szabályozására. A hőmérséklet-érzékelő közzéteszi az adatváltozást az OPC-közzétevő használatával. A gyári operátor fogadja a riasztást, hogy a hőmérséklet elérte a küszöbértéket. Az üzemi sor automatikusan lehűti az OPC Twin-en keresztül. A gyári operátor értesítést kap a lehűtésről.
 
 ## <a name="authentication"></a>Authentication
-Egyszerű hitelesítés és a egy egyszerű fejlesztői felületet biztosít az OPC-Twin is használhat.
+Az OPC Twin egyszerű hitelesítésre és egyszerű fejlesztői élményre is használható.
 
 ### <a name="simple-authentication"></a>Egyszerű hitelesítés 
-OPC Ikereszköz használja az Azure Active Directory (AAD) alapú hitelesítést és a teljes körű teljes naplózási. Például az OPC-Twin köszönhetően az alkalmazás kell meghatározni, hogy mi az operátornak hajtott végre egy gépen OPC Ikereszköz épült. A gép oldalon célszerű a naplózás az OPC UA segítségével. A felhő oldalon van való tárolásának egy napló nem módosítható ügyfél és az AAD-hitelesítés a REST API használatával.
+Az OPC Twin Azure Active Directory (HRE) alapú hitelesítést és naplózást használ teljes körűen. Az OPC Twin például lehetővé teszi, hogy az alkalmazás az OPC Twin-re legyen építve, hogy meghatározza, milyen műveletet hajtottak végre a gépen. A gép oldalán az OPC UA-naplózást hajtja végre. A felhős oldalon egy nem módosítható ügyfél-naplózási napló és HRE hitelesítés tárolása a REST API.
 
 ### <a name="simple-developer-experience"></a>Egyszerű fejlesztői élmény 
-Az OPC-Twin REST API-kon keresztül bármilyen programozási nyelven írt alkalmazások is használható. A fejlesztők beépíthetik OPC UA-ügyféllel egy megoldást, mert az OPC UA SDK ismerete már nem szükséges. Az OPC-Twin zökkenőmentesen integrálható az állapot nélküli, kiszolgáló nélküli architektúrák. Például egy teljes verem webfejlesztő, aki egy alkalmazást fejleszt, egy riasztás és az irányítópult a logika válaszadására a JavaScript- vagy TypeScript, C, ismerete nélkül OPC Ikereszköz használatával írhat a C#, vagy a teljes OPC UA-verem megvalósítás. 
+Az OPC Twin a REST API-kon keresztül bármilyen programozási nyelven írt alkalmazásokkal használható. Mivel a fejlesztők egy OPC UA-ügyfelet integrálnak egy megoldásba, nem szükséges az OPC UA SDK ismerete. Az OPC Twin zökkenőmentesen integrálható állapot nélküli, kiszolgáló nélküli architektúrába. Például egy teljes stack webfejlesztő, aki egy riasztási és esemény-irányítópultot fejleszt, megírhatja a logikát, hogy válaszoljon a JavaScript vagy az írógéppel típusú eseményekre, a C C#ismerete nélkül, vagy a teljes OPC ua stack implementációt. 
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy az OPC-Twin és használata ismerkedtünk, Íme a javasolt következő lépésre:
+Most, hogy megismerte az OPC Twin és annak felhasználási lehetőségeit, itt látható a következő lépés:
 
 > [!div class="nextstepaction"]
-> [Mi az OPC-tároló](overview-opc-twin-architecture.md)
+> [Mi az OPC-tároló?](overview-opc-vault.md)

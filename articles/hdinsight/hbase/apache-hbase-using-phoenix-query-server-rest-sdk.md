@@ -1,7 +1,6 @@
 ---
 title: Phoenix-lekérdezéskiszolgáló REST SDK – Azure HDInsight
 description: Telepítse, és az Azure HDInsight Phoenix-lekérdezéskiszolgáló REST SDK-t használni.
-services: hdinsight
 ms.service: hdinsight
 author: ashishthaps
 ms.author: ashishth
@@ -9,14 +8,14 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/04/2017
-ms.openlocfilehash: b7c94fd2372f1d995c50439b2bd5eaefb237e175
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 1f468cac29579d8748f61a47b548a67d36ff8279
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651401"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64695951"
 ---
-# <a name="apache-phoenix-query-server-rest-sdk"></a>Az Apache Phoenix-lekérdezéskiszolgáló REST SDK
+# <a name="apache-phoenix-query-server-rest-sdk"></a>Apache Phoenix Query Server REST SDK
 
 [Az Apache Phoenix](https://phoenix.apache.org/) egy nyílt forráskódú, nagy mértékben párhuzamosított alapuló relációs Adatbázisréteg a [Apache HBase](apache-hbase-overview.md). A Phoenix lehetővé teszi, hogy az SQL-szerű lekérdezéseket a hbase-ben az SSH-eszközök segítségével például [az SQLLine](apache-hbase-phoenix-squirrel-linux.md). A Phoenix nevű Phoenix lekérdezés kiszolgáló (PQS), a vékony ügyfelek, amelyek kétféle átviteli módszer támogatja az ügyfél-kommunikációhoz HTTP-kiszolgáló is biztosít: JSON-t és a Protokollpufferekhez. Protokollpuffereket az olyan alapértelmezett mechanizmus, és JSON-nál több hatékony kommunikációt biztosít.
 
@@ -51,7 +50,7 @@ string connId = Guid.NewGuid().ToString();
 
 Minden példánál először hívást indít a `OpenConnectionRequestAsync` módot, a kapcsolat egyedi azonosítót ad át. Ezt követően adja meg `ConnectionProperties` és `RequestOptions`, átadja azokat az objektumokat és a létrehozott kapcsolat azonosító a `ConnectionSyncRequestAsync` metódust. A PQS `ConnectionSyncRequest` objektum segítségével győződjön meg arról, hogy az ügyfél és a kiszolgáló rendelkezik-e az adatbázis tulajdonságainak egységes megjelenítése.
 
-## <a name="connectionsyncrequest-and-its-connectionproperties"></a>ConnectionSyncRequest és annak ConnectionProperties
+## <a name="connectionsyncrequest-and-its-connectionproperties"></a>ConnectionSyncRequest and its ConnectionProperties
 
 A hívás `ConnectionSyncRequestAsync`, adja át a `ConnectionProperties` objektum.
 

@@ -11,11 +11,11 @@ ms.custom: include file
 ms.date: 08/16/2018
 ms.author: diberry
 ms.openlocfilehash: ef8dae8219eaf1a85a5c112705517b992e25a50f
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56741129"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179430"
 ---
 Az előrejelzési végponthoz való hozzáférés egy végpontkulccsal lehetséges. Ebben a rövid útmutatóban használja a LUIS-fiókjához társított ingyenes indulókulcsot. 
  

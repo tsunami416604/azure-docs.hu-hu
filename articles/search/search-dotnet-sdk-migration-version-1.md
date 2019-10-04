@@ -1,8 +1,8 @@
 ---
-title: Az Azure Search .NET SDK 1.1-es – Azure Search verziójának frissítése
-description: Az Azure Search .NET SDK 1.1-es verziója régebbi API-verziók a kód át. Megtudhatja, Miben változott, és milyen kódot módosításokra szükség.
+title: Frissítsen a Azure Search .NET SDK 1,1-es verziójára Azure Search
+description: Telepítse át a kódot a Azure Search .NET SDK 1,1-es verziójára a régebbi API-verziókból. Ismerje meg az újdonságokat és a szükséges kód változásait.
 author: brjohnstmsft
-manager: jlembicz
+manager: nitinme
 services: search
 ms.service: search
 ms.devlang: dotnet
@@ -10,73 +10,73 @@ ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: 82823bae76521080634d4f7ff285d94ce8495fbf
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 8227e1b372af1eee43db59da2cfad165d67be9ae
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53317287"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70183270"
 ---
-# <a name="upgrading-to-the-azure-search-net-sdk-version-11"></a>Az Azure Search .NET SDK 1.1-es verziójának frissítése
+# <a name="upgrading-to-the-azure-search-net-sdk-version-11"></a>Frissítés a Azure Search .NET SDK 1,1-es verziójára
 
-Verzió 1.0.2-preview használata vagy a régebbi a [Azure Search .NET SDK](https://aka.ms/search-sdk), ez a cikk segít az alkalmazás használhatja az 1.1-es verziójának frissítése.
+Ha a [Azure Search .net SDK](https://aka.ms/search-sdk)-hoz tartozó 1.0.2-Preview vagy régebbi verziót használja, ez a cikk segítséget nyújt az alkalmazás frissítéséhez az 1,1-es verzió használatára.
 
-Az SDK-t, beleértve a példákat általános bemutatóért lásd: [használata az Azure Search .NET-alkalmazásból](search-howto-dotnet-sdk.md).
+Az SDK-val kapcsolatos általános áttekintést a példákat lásd: [Azure Search használata .NET-alkalmazásokból](search-howto-dotnet-sdk.md).
 
 > [!NOTE]
-> Miután az 1.1-es verzió, vagy ha már használja egy közötti 1.1-es és 2.0 – előzetes verzió, frissítenie kell a 3. verzió. Lásd: [az Azure Search .NET SDK 3-as verziójú frissítését](search-dotnet-sdk-migration.md) útmutatást.
+> A 1,1-es verzióra való frissítés után, vagy ha már használ egy 1,1 és 2,0 közötti verziót – előzetes verzió, akkor a 3-as verzióra kell frissítenie. Útmutatásért lásd: [a Azure Search .net SDK 3-as verziójára való frissítés](search-dotnet-sdk-migration.md) .
 >
 
-Először frissítse a NuGet referenciája `Microsoft.Azure.Search` vagy a NuGet Package Manager konzol segítségével vagy a jobb gombbal a projekt hivatkozásait a és a Visual Studióban válassza a "Kezelése NuGet Packages …".
+Először frissítse a NuGet-referenciát `Microsoft.Azure.Search` a NuGet csomagkezelő konzoljának használatára, vagy kattintson a jobb gombbal a projekt hivatkozásaira, és válassza a "NuGet-csomagok kezelése..." lehetőséget. a Visual Studióban.
 
-Miután NuGet töltött le az új csomagok és azok függőségeit, a projekt újraépítéséhez.
+Miután a NuGet letöltötte az új csomagokat és azok függőségeit, építse újra a projektet.
 
-Ha korábban a verzió 1.0.0-preview, 1.0.1-preview vagy 1.0.2-preview, a build sikeres legyen, és készen áll a go!
+Ha korábban már használta a 1.0.0-Preview, a 1.0.1-Preview vagy a 1.0.2-Preview verziót, a buildnek sikeresnek kell lennie, és készen áll arra, hogy eljusson!
 
-Ha korábban a verzió 0.13.0-preview vagy régebbi kiadást használja, megtekintheti az felépítési hibák az alábbi módon:
+Ha korábban már használta a 0.13.0-Preview vagy régebbi verziót, az alábbihoz hasonló Build-hibákat kell látnia:
 
     Program.cs(137,56,137,62): error CS0117: 'Microsoft.Azure.Search.Models.IndexBatch' does not contain a definition for 'Create'
     Program.cs(137,99,137,105): error CS0117: 'Microsoft.Azure.Search.Models.IndexAction' does not contain a definition for 'Create'
     Program.cs(146,41,146,54): error CS1061: 'Microsoft.Azure.Search.IndexBatchException' does not contain a definition for 'IndexResponse' and no extension method 'IndexResponse' accepting a first argument of type 'Microsoft.Azure.Search.IndexBatchException' could be found (are you missing a using directive or an assembly reference?)
     Program.cs(163,13,163,42): error CS0246: The type or namespace name 'DocumentSearchResponse' could not be found (are you missing a using directive or an assembly reference?)
 
-A következő lépés, hogy az Összeállítási hibák egyenként javítása. A legtöbb lesz szükség, módosítás, néhány osztályt és metódust nevek, amelyek az SDK-ban át lett nevezve. [Listáját a parancsban történt használhatatlanná tévő 1.1-es verzió](#ListOfChangesV1) neve módosítások listáját tartalmazza.
+A következő lépés a Build-hibák egyenkénti kijavítása. A legtöbb esetben módosítania kell az SDK-ban átnevezni kívánt osztály-és metódusok nevét. Az [1,1-es verzióban feltört változások listája](#ListOfChangesV1) tartalmazza a nevek változásának listáját.
 
-Ha egyéni osztály használatával modellezheti a dokumentumok, és ezeket az osztályokat lehet egyszerű típusú nem nullázható tulajdonság (például `int` vagy `bool` a C#), a hibajavítás integrálását, amelyek ismernie kell az SDK 1.1-es verziójában van. Lásd: [hibajavítások 1.1-es verzió](#BugFixesV1) további részletekért.
+Ha egyéni osztályokat használ a dokumentumok modellezéséhez, és ezek az osztályok nem null értékű (például `int` vagy `bool` a C#) tulajdonsággal rendelkeznek, az SDK 1,1-es verziójában van egy hibajavítás, amelyről tisztában kell lennie. További részletekért tekintse [meg a 1,1-es verzió hibajavításait](#BugFixesV1) .
 
-Végül felépítési hibák már rögzített, ha módosításokat végezheti el az új funkciók előnyeinek kihasználása, ha szeretné az alkalmazáshoz.
+Végül a felépítési hibák kijavítása után módosíthatja az alkalmazást, és igény szerint kihasználhatja az új funkciókat.
 
 <a name="ListOfChangesV1"></a>
 
-## <a name="list-of-breaking-changes-in-version-11"></a>1.1-es verzió használhatatlanná tévő változásai listája
-Az alábbi lista rendezésére a valószínűsége, hogy a változás érinteni fogja az alkalmazás kódjában.
+## <a name="list-of-breaking-changes-in-version-11"></a>Az 1,1-es verzióban feltört változások listája
+A következő lista a valószínűsége, hogy a módosítás hatással lesz az alkalmazás kódjára.
 
-### <a name="indexbatch-and-indexaction-changes"></a>IndexBatch és IndexAction módosítások
-`IndexBatch.Create` kapott `IndexBatch.New` , és már nem rendelkezik egy `params` argumentum. Használhat `IndexBatch.New` kötegek, amelyek vegyesen különböző típusú műveletek (összevonása, törlés, stb.). Emellett új statikus módszer van a kötegek létrehozása ahol összes műveletet megegyeznek: `Delete`, `Merge`, `MergeOrUpload`, és `Upload`.
+### <a name="indexbatch-and-indexaction-changes"></a>IndexBatch-és IndexAction-változások
+`IndexBatch.Create`a rendszer `IndexBatch.New` `params` átnevezte, és már nem tartalmaz argumentumot. Olyan kötegekhez `IndexBatch.New` használható, amelyek különböző típusú műveleteket (egyesítéseket, törléseket stb.) kevernek. Emellett új statikus metódusok vannak a kötegek létrehozásához, ahol az összes művelet azonos `Delete`:, `Merge`, `MergeOrUpload`és `Upload`.
 
-`IndexAction` már nem rendelkezik a nyilvános konstruktorok és a tulajdonságai már nem módosítható. Különböző felhasználási célokra műveletek létrehozásához használjon új statikus metódusainak: `Delete`, `Merge`, `MergeOrUpload`, és `Upload`. `IndexAction.Create` el lett távolítva. Ha csak egy dokumentumot túlterhelést használt, ügyeljen arra, hogy használjon `Upload` helyette.
+`IndexAction`már nem rendelkezik nyilvános konstruktorokkal, és annak tulajdonságai már nem változtathatók meg. Az új statikus metódusok használatával különböző célokra `Delete`hozhat létre műveleteket: `MergeOrUpload`, `Merge`, és `Upload`. `IndexAction.Create`el lett távolítva. Ha a túlterhelést használta, amely csak a dokumentumot veszi figyelembe, ne `Upload` felejtse el használni.
 
 #### <a name="example"></a>Példa
-Ha a kód a következőhöz hasonló:
+Ha a kód így néz ki:
 
     var batch = IndexBatch.Create(documents.Select(doc => IndexAction.Create(doc)));
     indexClient.Documents.Index(batch);
 
-Módosíthatja a build hibák elhárításához:
+A fordítási hibák kijavításához módosíthatja a következőt:
 
     var batch = IndexBatch.New(documents.Select(doc => IndexAction.Upload(doc)));
     indexClient.Documents.Index(batch);
 
-Ha azt szeretné, tovább egyszerűsítheti, ehhez:
+Ha szeretné, tovább egyszerűsítheti a következőket:
 
     var batch = IndexBatch.Upload(documents);
     indexClient.Documents.Index(batch);
 
-### <a name="indexbatchexception-changes"></a>IndexBatchException módosítások
-A `IndexBatchException.IndexResponse` tevékenységének neve megváltozott hogy `IndexingResults`, és a típus már `IList<IndexingResult>`.
+### <a name="indexbatchexception-changes"></a>IndexBatchException változásai
+A `IndexBatchException.IndexResponse` tulajdonság át `IndexingResults`lett nevezve, és a típusa most `IList<IndexingResult>`.
 
 #### <a name="example"></a>Példa
-Ha a kód a következőhöz hasonló:
+Ha a kód így néz ki:
 
     catch (IndexBatchException e)
     {
@@ -85,7 +85,7 @@ Ha a kód a következőhöz hasonló:
             String.Join(", ", e.IndexResponse.Results.Where(r => !r.Succeeded).Select(r => r.Key)));
     }
 
-Módosíthatja a build hibák elhárításához:
+A fordítási hibák kijavításához módosíthatja a következőt:
 
     catch (IndexBatchException e)
     {
@@ -96,10 +96,10 @@ Módosíthatja a build hibák elhárításához:
 
 <a name="OperationMethodChanges"></a>
 
-### <a name="operation-method-changes"></a>A művelet metódus módosítások
-Egyes műveletek az Azure Search .NET SDK szinkron és aszinkron hívók metódus túlterheléssel készleteként van közzétéve. Az aláírások és az ezen metódus túlterheléssel faktoring 1.1-es verzióban megváltozott.
+### <a name="operation-method-changes"></a>Működési módszer módosításai
+A Azure Search .NET SDK-ban minden művelet elérhetővé vált a szinkron és aszinkron hívók számára. A metódushoz tartozó aláírások és az ezekből való kiszámítások a 1,1-es verzióban módosultak.
 
-Ha például a "Indexstatisztikáit beolvasása" műveletet az SDK korábbi verzióinak elérhetővé tett ezen aláírások:
+Az SDK régebbi verzióiban az "index-statisztika beolvasása" művelet például az alábbi aláírásokat tették elérhetővé:
 
 Az `IIndexOperations` szkriptben:
 
@@ -120,7 +120,7 @@ Az `IndexOperationsExtensions` szkriptben:
         this IIndexOperations operations,
         string indexName);
 
-1.1-es verzió ugyanehhez a művelethez a metódusainak aláírásai néznek ki:
+A metódus aláírásai az 1,1-es verzióban ugyanezen művelethez hasonlóan jelennek meg:
 
 Az `IIndexesOperations` szkriptben:
 
@@ -146,23 +146,23 @@ Az `IndexesOperationsExtensions` szkriptben:
         string indexName,
         SearchRequestOptions searchRequestOptions = default(SearchRequestOptions));
 
-1.1-es verzióval kezdődően az Azure Search .NET SDK rendszerezi műveleti metódusoknál eltérően:
+A 1,1-es verziótól kezdődően a Azure Search .NET SDK különböző műveleti módszereket szervez:
 
-* Választható paraméterek: mostantól modellezése eltér az alapértelmezett inkább a paraméterek, mint a további túlterheléssel. Ez néha jelentősen csökkenti a metódus túlterheléssel, száma.
-* A bővítő metódusokat mostantól elrejtheti a hívó HTTP felesleges adatait rengeteg. Például az SDK korábbi verzióinak adott vissza a választ egy HTTP-állapotkódot, amelyek gyakran nem kell ellenőrizni, mert a műveleti metódusoknál throw objektum `CloudException` számára bármilyen hibát jelző állapotkód. A bővítmény új módszereket csak adatmodell-objektumokat, így nem szükséges kicsomagolása őket a kódban kelljen adja vissza.
-* Ezzel szemben az alapvető felületeihez most adnak a HTTP-szintjén átfogóbb vezérlésre van szüksége, ha fiókszinten elérhető módszerek. Most már beadható foglalandó kérelmeket, illetve az új egyéni HTTP-fejlécek `AzureOperationResponse<T>` visszatérési típussal a közvetlen hozzáférést biztosít a `HttpRequestMessage` és `HttpResponseMessage` a művelethez. `AzureOperationResponse` van definiálva a `Microsoft.Rest.Azure` névteret, és lecseréli azokat `Hyak.Common.OperationResponse`.
+* A választható paraméterek mostantól alapértelmezett paraméterekként lettek modellezve, nem pedig a további metódusok túlterheltsége. Ez csökkenti a metódusok túlterhelésének számát, esetenként drámai módon.
+* A bővítményi metódusok mostantól a hívótól származó HTTP-adatok nagy részét is elrejtik. Az SDK régebbi verziói például egy http-állapotkód által visszaadott Response objektumot adtak vissza, amelyet gyakran nem kell ellenőriznie, mert a műveleti metódusok `CloudException` minden olyan állapotkódot kidobjanak, amely hibát jelez. Az új bővítményi metódusok csak a modell objektumokat adják vissza, így a hiba miatt nem kell kicsomagolni őket a kódban.
+* Ezzel szemben a központi felületek mostantól olyan metódusokat tesznek elérhetővé, amelyekkel hatékonyabban vezérelheti a HTTP-szintet, ha szüksége van rá. Mostantól megadhatja a kérések részét képező egyéni HTTP-fejléceket, `AzureOperationResponse<T>` és az új visszatérési típus közvetlen hozzáférést `HttpRequestMessage` biztosít `HttpResponseMessage` a és a művelethez. `AzureOperationResponse`a `Microsoft.Rest.Azure` névtérben van definiálva, `Hyak.Common.OperationResponse`és lecseréli.
 
-### <a name="scoringparameters-changes"></a>ScoringParameters módosítások
-Egy új osztályt `ScoringParameter` hozzá lett adva a legújabb SDK, hogy egyszerűbb legyen meg a paramétereket a pontozási profilok keresési lekérdezést. Korábban a `ScoringProfiles` tulajdonságát a `SearchParameters` osztály volt megadva, `IList<string>`; Most azt helyazonosítót `IList<ScoringParameter>`.
+### <a name="scoringparameters-changes"></a>ScoringParameters változásai
+A legújabb SDK- `ScoringParameter` ban új nevű osztály lett hozzáadva, amely megkönnyíti a paraméterek megadását a keresési lekérdezésekben. Korábban az `ScoringProfiles` `SearchParameters` osztály tulajdonsága a következőképpen `IList<string>`lett beírva:; Most már be van írva `IList<ScoringParameter>`.
 
 #### <a name="example"></a>Példa
-Ha a kód a következőhöz hasonló:
+Ha a kód így néz ki:
 
     var sp = new SearchParameters();
     sp.ScoringProfile = "jobsScoringFeatured";      // Use a scoring profile
     sp.ScoringParameters = new[] { "featuredParam-featured", "mapCenterParam-" + lon + "," + lat };
 
-Módosíthatja a build hibák elhárításához: 
+A fordítási hibák kijavításához módosíthatja a következőt: 
 
     var sp = new SearchParameters();
     sp.ScoringProfile = "jobsScoringFeatured";      // Use a scoring profile
@@ -173,20 +173,20 @@ Módosíthatja a build hibák elhárításához:
             new ScoringParameter("mapCenterParam", GeographyPoint.Create(lat, lon))
         };
 
-### <a name="model-class-changes"></a>Osztály módosításokat modellje
-A leírt aláírás-módosítások miatt [művelet metódus módosítások](#OperationMethodChanges), a sok osztály a `Microsoft.Azure.Search.Models` névtér átnevezték vagy eltávolítva. Példa:
+### <a name="model-class-changes"></a>Modell osztály változásai
+A [műveleti módszer változásaiban](#OperationMethodChanges)leírt aláírási változások miatt a `Microsoft.Azure.Search.Models` névtér számos osztálya átnevezve lett vagy el lett távolítva. Példa:
 
-* `IndexDefinitionResponse` felváltotta `AzureOperationResponse<Index>`
+* `IndexDefinitionResponse`váltotta fel`AzureOperationResponse<Index>`
 * A `DocumentSearchResponse` új nevet kapott: `DocumentSearchResult`
 * A `IndexResult` új nevet kapott: `IndexingResult`
-* `Documents.Count()` most adja vissza egy `long` a dokumentumok száma helyett a egy `DocumentCountResponse`
+* `Documents.Count()`most visszaadja `long` a-t a dokumentumok száma helyett`DocumentCountResponse`
 * A `IndexGetStatisticsResponse` új nevet kapott: `IndexGetStatisticsResult`
 * A `IndexListResponse` új nevet kapott: `IndexListResult`
 
-Összefoglalva, `OperationResponse`-származtatott osztályokat, amelyek léteztek csak burkolása egy modell objektumot el lettek távolítva. A fennmaradó osztályok kellett volna módosulás a következőről utótag `Response` való `Result`.
+Összefoglalva, `OperationResponse`a-származtatott osztályok, amelyek csak a Model objektum becsomagolásához lettek eltávolítva. A fennmaradó osztályok utótagja a következőre `Response` `Result`változott:.
 
 #### <a name="example"></a>Példa
-Ha a kód a következőhöz hasonló:
+Ha a kód így néz ki:
 
     IndexerGetStatusResponse statusResponse = null;
 
@@ -202,7 +202,7 @@ Ha a kód a következőhöz hasonló:
 
     IndexerExecutionResult lastResult = statusResponse.ExecutionInfo.LastResult;
 
-Módosíthatja a build hibák elhárításához:
+A fordítási hibák kijavításához módosíthatja a következőt:
 
     IndexerExecutionInfo status = null;
 
@@ -219,7 +219,7 @@ Módosíthatja a build hibák elhárításához:
     IndexerExecutionResult lastResult = status.LastResult;
 
 #### <a name="response-classes-and-ienumerable"></a>Válasz osztályok és IEnumerable
-Egy további változás, amely hatással lehet a kód, hogy választ osztályokat tartalmazó gyűjtemények már nem valósítható meg `IEnumerable<T>`. Ehelyett a gyűjtemény tulajdonság közvetlenül is elérheti. Ha például a kód néz ki:
+Egy további változás, amely hatással lehet a kódra, hogy a gyűjteményeket tároló válasz-osztályok `IEnumerable<T>`már nem valósíthatók meg. Ehelyett közvetlenül a Collection tulajdonságot érheti el. Ha például a kód így néz ki:
 
     DocumentSearchResponse<Hotel> response = indexClient.Documents.Search<Hotel>(searchText, sp);
     foreach (SearchResult<Hotel> result in response)
@@ -227,7 +227,7 @@ Egy további változás, amely hatással lehet a kód, hogy választ osztályoka
         Console.WriteLine(result.Document);
     }
 
-Módosíthatja a build hibák elhárításához:
+A fordítási hibák kijavításához módosíthatja a következőt:
 
     DocumentSearchResult<Hotel> response = indexClient.Documents.Search<Hotel>(searchText, sp);
     foreach (SearchResult<Hotel> result in response.Results)
@@ -235,8 +235,8 @@ Módosíthatja a build hibák elhárításához:
         Console.WriteLine(result.Document);
     }
 
-#### <a name="special-case-for-web-applications"></a>Különleges eset webes alkalmazásokhoz
-Ha rendelkezik egy webalkalmazást, amely szerializálja `DocumentSearchResponse` közvetlenül a keresési eredményeket kapjon a böngésző, módosítania kell a kódot kell, vagy az eredmények nebude serializovat megfelelően. Ha például a kód néz ki:
+#### <a name="special-case-for-web-applications"></a>Speciális eset webalkalmazásokhoz
+Ha van olyan webalkalmazása, amely `DocumentSearchResponse` közvetlenül szerializálást végez a keresési eredmények böngészőbe való küldéséhez, akkor módosítania kell a kódot, vagy az eredmények nem lesznek megfelelően szerializálva. Ha például a kód így néz ki:
 
     public ActionResult Search(string q = "")
     {
@@ -251,7 +251,7 @@ Ha rendelkezik egy webalkalmazást, amely szerializálja `DocumentSearchResponse
         };
     }
 
-Úgy módosíthatja a `.Results` javítsa ki a keresési eredmények megjelenítési keresési válasz tulajdonságát:
+A keresési válasz `.Results` tulajdonságának kijavításával módosíthatja a keresési eredmények megjelenítését:
 
     public ActionResult Search(string q = "")
     {
@@ -266,75 +266,75 @@ Ha rendelkezik egy webalkalmazást, amely szerializálja `DocumentSearchResponse
         };
     }
 
-Kell keresni ezekben az esetekben a kódban. **a fordító nem figyelmezteti,** mert `JsonResult.Data` típusú `object`.
+A kódban meg kell keresnie az ilyen eseteket; **A fordító nem figyelmeztet,** mert `JsonResult.Data` típusú `object`.
 
-### <a name="cloudexception-changes"></a>CloudException módosítások
-A `CloudException` osztály át a `Hyak.Common` használni szeretné a `Microsoft.Rest.Azure` névtér. Emellett a `Error` tevékenységének neve megváltozott hogy `Body`.
+### <a name="cloudexception-changes"></a>CloudException változásai
+Az `CloudException` osztály a `Hyak.Common` névtérből `Microsoft.Rest.Azure` a névtérbe került. Továbbá a `Body`tulajdonsága át lett nevezve a következőre:. `Error`
 
-### <a name="searchserviceclient-and-searchindexclient-changes"></a>SearchServiceClient és SearchIndexClient módosítások
-Milyen típusú a `Credentials` tulajdonság megváltozott `SearchCredentials` annak alaposztályát, hogy `ServiceClientCredentials`. Ha hozzá kell férnie a `SearchCredentials` , egy `SearchIndexClient` vagy `SearchServiceClient`, használja az új `SearchCredentials` tulajdonság.
+### <a name="searchserviceclient-and-searchindexclient-changes"></a>SearchServiceClient-és SearchIndexClient-változások
+A `Credentials` tulajdonság típusa az alaposztályra `SearchCredentials` `ServiceClientCredentials`módosult. `SearchCredentials` Ha a `SearchIndexClient` vagy `SearchCredentials` a alkalmazáshoz kell hozzáférnie, használja az új tulajdonságot. `SearchServiceClient`
 
-Az SDK korábbi verzióinak `SearchServiceClient` és `SearchIndexClient` konstruktorok igénybe vett volna egy `HttpClient` paraméter. Ezek a konstruktorok vette egy `HttpClientHandler` és a egy tömbjét `DelegatingHandler` objektumokat. Ez megkönnyíti az egyéni kezelők előzetesen feldolgozni a HTTP-kérések szükség esetén telepítse.
+Az SDK régebbi verzióiban, és `SearchServiceClient` `SearchIndexClient` olyan `HttpClient` konstruktorokkal rendelkezett, amelyek paramétert vettek igénybe. Ezek a helyükön olyan konstruktorok lettek lecserélve, amelyek `DelegatingHandler` elvégzik az `HttpClientHandler` objektumok tömbjét. Ez megkönnyíti az egyéni kezelők telepítését a HTTP-kérések előzetes feldolgozásához, ha szükséges.
 
-Végül az igénybe vett konstruktorok egy `Uri` és `SearchCredentials` megváltoztak. Ha például a következőhöz hasonló kódot rendelkezik:
+Végül a `Uri` és `SearchCredentials` a megváltoztatott konstruktorok. Ha például a következőhöz hasonló kód szerepel:
 
     var client =
         new SearchServiceClient(
             new SearchCredentials("abc123"),
             new Uri("http://myservice.search.windows.net"));
 
-Módosíthatja a build hibák elhárításához:
+A fordítási hibák kijavításához módosíthatja a következőt:
 
     var client =
         new SearchServiceClient(
             new Uri("http://myservice.search.windows.net"),
             new SearchCredentials("abc123"));
 
-Azt is vegye figyelembe, hogy a hitelesítő adatok paraméter típusa megváltozott hogy `ServiceClientCredentials`. Ez nem valószínű, hogy a kódot, mert hatással `SearchCredentials` van származtatva `ServiceClientCredentials`.
+Azt is vegye figyelembe, hogy a hitelesítő adatok paraméter típusa módosult `ServiceClientCredentials`a következőre:. Ez nem valószínű, hogy befolyásolja a kódot, mivel `SearchCredentials` az származik. `ServiceClientCredentials`
 
-### <a name="passing-a-request-id"></a>A kérelem azonosító továbbításához
-Az SDK korábbi verzióinak, a sikerült beállítani a Kérelemazonosító a `SearchServiceClient` vagy `SearchIndexClient` és kellene szerepelnie a REST API-t minden kérés. Ez akkor hasznos, ha van szüksége, forduljon az ügyfélszolgálathoz kapcsolatos hibák elhárításának a keresési szolgáltatás. Azonban hasznos több minden művelet egy egyedi ügyfélkérési Azonosítójának beállítása helyett minden művelet használandó ugyanazzal az Azonosítóval. Ebből kifolyólag a `SetClientRequestId` módszerek `SearchServiceClient` és `SearchIndexClient` el lettek távolítva. Ehelyett átadható egy kérelem azonosítója minden művelet metódus az opcionális keresztül `SearchRequestOptions` paraméter.
+### <a name="passing-a-request-id"></a>Kérelem AZONOSÍTÓjának átadása
+Az SDK régebbi verzióiban megadhatja a kérelem azonosítóját a (z `SearchServiceClient` ) `SearchIndexClient` rendszeren, és a REST API minden kérelemben szerepelni fog. Ez akkor hasznos, ha segítségre van szüksége a keresési szolgáltatással kapcsolatos problémák megoldásához. Azonban hasznos lehet egyedi kérelmeket beállítani minden művelethez ahelyett, hogy ugyanazt az azonosítót szeretné használni az összes művelethez. Emiatt a `SetClientRequestId` `SearchServiceClient` és ametódusaiellettektávolítva.`SearchIndexClient` Ehelyett az opcionális `SearchRequestOptions` paraméterrel átadhatja a kérelmek azonosítóját az egyes műveleti módszerekhez.
 
 > [!NOTE]
-> Az SDK egy későbbi kiadásban hozzáadjuk állítja a Kérelemazonosító globálisan az ügyfélen lévő objektumok egy új mechanizmust, amely megfelel a más Azure SDK-k által használt módszert.
+> Az SDK egy későbbi kiadásában egy új mechanizmust adunk hozzá a kérelem AZONOSÍTÓjának globális beállításához, amely összhangban van a más Azure SDK-k által használt megközelítéssel.
 > 
 > 
 
 ### <a name="example"></a>Példa
-Ha rendelkezik a következőhöz hasonló kódot:
+Ha a következőhöz hasonló kód szerepel:
 
     client.SetClientRequestId(Guid.NewGuid());
     ...
     long count = client.Documents.Count();
 
-Módosíthatja a build hibák elhárításához:
+A fordítási hibák kijavításához módosíthatja a következőt:
 
     long count = client.Documents.Count(new SearchRequestOptions(requestId: Guid.NewGuid()));
 
-### <a name="interface-name-changes"></a>Adapter nevének módosítása
-A művelet csoport illesztőneveket összhangban vannak a megfelelő tulajdonságneveket változásai:
+### <a name="interface-name-changes"></a>Illesztőfelület nevének módosítása
+A műveleti csoport illesztőfelületének nevei mindegyike konzisztensnek felel meg a hozzájuk tartozó tulajdonságnév-nevekkel:
 
-* Milyen típusú `ISearchServiceClient.Indexes` lett `IIndexOperations` való `IIndexesOperations`.
-* Milyen típusú `ISearchServiceClient.Indexers` lett `IIndexerOperations` való `IIndexersOperations`.
-* Milyen típusú `ISearchServiceClient.DataSources` lett `IDataSourceOperations` való `IDataSourcesOperations`.
-* Milyen típusú `ISearchIndexClient.Documents` lett `IDocumentOperations` való `IDocumentsOperations`.
+* A típusának `ISearchServiceClient.Indexes` átnevezve innen `IIndexOperations` : – `IIndexesOperations`.
+* A típusának `ISearchServiceClient.Indexers` átnevezve innen `IIndexerOperations` : – `IIndexersOperations`.
+* A típusának `ISearchServiceClient.DataSources` átnevezve innen `IDataSourceOperations` : – `IDataSourcesOperations`.
+* A típusának `ISearchIndexClient.Documents` átnevezve innen `IDocumentOperations` : – `IDocumentsOperations`.
 
-Ez a változás valószínű, hogy a kód befolyásolja, hacsak az ezeken a felületeken tesztelési célokra mocks létrehozott.
+Ez a módosítás nem valószínű, hogy csak akkor befolyásolja a kódokat, ha tesztelési célból hozta létre a felületek mintáit.
 
 <a name="BugFixesV1"></a>
 
-## <a name="bug-fixes-in-version-11"></a>Hibajavítások 1.1-es verzió
-Hiba történt az Azure Search .NET SDK a egyéni modell osztályok szerializálási régebbi verzióit. A hiba akkor fordulhat elő, ha létrehozott egy egyéni modellosztály értéktípus nullázható tulajdonság.
+## <a name="bug-fixes-in-version-11"></a>Hibajavítások az 1,1-es verzióban
+Hiba történt a Azure Search .NET SDK régebbi verzióiban az egyéni modell osztályainak szerializálásával kapcsolatban. A hiba akkor fordulhat elő, ha egy egyéni modell osztályt hozott létre egy nem null értékű értéktípus tulajdonságával.
 
-### <a name="steps-to-reproduce"></a>Reprodukálás lépései
-Hozzon létre egy egyéni modellosztály tulajdonság nem nullázható érték típusú. Hozzáadhat például egy nyilvános `UnitCount` vlastnost typu `int` helyett `int?`.
+### <a name="steps-to-reproduce"></a>A reprodukálni kívánt lépések
+Hozzon létre egy egyéni modell osztályt nem null értékű értéktípus tulajdonságával. Adjon hozzá például egy típusú `UnitCount` `int` nyilvános tulajdonságot a helyett `int?`.
 
-Ha az alapértelmezett érték az adott típusú dokumentum indexel (például 0- `int`), a mező az Azure Search null értékű lesz. Ha ezt követően a dokumentum, a `Search` hívás kivételt fogja kijelezni `JsonSerializationException` panaszkodik, amely nem konvertálható `null` való `int`.
+Ha egy olyan dokumentumot indexel, amelynek alapértelmezett értéke (például 0 `int`), akkor a mező értéke null Azure Search. Ha ezt követően megkeresi a dokumentumot, `Search` a hívás `JsonSerializationException` arra panaszkodik, `int`hogy nem tud `null` konvertálni.
 
-Emellett szűrők nem működnek, mivel az index a kívánt érték helyett írása null értékű volt.
+Emellett előfordulhat, hogy a szűrők nem a várt módon működnek, mivel a null értéket az indexbe írta a kívánt érték helyett.
 
-### <a name="fix-details"></a>Javítsa ki a részletei
-Hogy megoldottuk a probléma az SDK 1.1-es verziójában. Most, ha rendelkezik egy modellosztályt ehhez hasonló:
+### <a name="fix-details"></a>Javítás részletei
+Ezt a problémát az SDK 1,1-es verziójában javítottuk. Most, ha a következőhöz hasonló modellt tartalmaz:
 
     public class Model
     {
@@ -343,15 +343,15 @@ Hogy megoldottuk a probléma az SDK 1.1-es verziójában. Most, ha rendelkezik e
         public int IntValue { get; set; }
     }
 
-és be `IntValue` 0, ezt az értéket most már megfelelően szerializálni a 0 értéket a keresztülhaladnak a hálózaton és tárolja a 0 értéket az indexben. Round esetén a várt módon is működik.
+Ha pedig 0 `IntValue` értékre van állítva, akkor a rendszer helyesen szerializálja a vezetéken a nulla értéket, és az indexben 0-ként tárolja őket. A ciklikus megbotlás is a várt módon működik.
 
-Vegye figyelembe ezt a módszert használja egy potenciális probléma áll: Ha egy nem nullázható tulajdonság használja egy modell típusa, hogy **garantálni** , hogy az index egyetlen dokumentuma sem tartalmaz az adott mezőben null értékű. Az SDK-t és az Azure Search REST API nem segít, hogy ennek kényszerítéséhez.
+Ennek a megközelítésnek az egyik lehetséges problémája a következő: Ha nem null értékű tulajdonságú modellt használ, garantálnia kell, hogy az indexben egyetlen dokumentum sem tartalmaz null értéket a megfelelő mezőhöz. Sem az SDK, sem a Azure Search REST API nem fogja tudni kikényszeríteni ezt.
 
-Ez nem csupán elméleti szempont: Képzelje el egy forgatókönyvet, ahol hozzáadhat egy új mezőt típusú, meglévő indexhez `Edm.Int32`. Az indexdefiníció frissítését követően ehhez a mezőhöz minden dokumentumban null érték tartozik (mivel az Azure Search szolgáltatásban az összes értéktípus nullázható). Ha ezt követően egy modellosztályt úgy alkalmaz, hogy ehhez a mezőhöz nem nullázható `int` tulajdonságot ad meg, a dokumentumok lekérdezésének megkísérlésekor egy ehhez hasonló `JsonSerializationException` választ kap:
+Ez nem csupán egy feltételezett probléma: Képzelje el, hogy egy új mezőt ad hozzá egy típusú `Edm.Int32`meglévő indexhez. Az indexdefiníció frissítését követően ehhez a mezőhöz minden dokumentumban null érték tartozik (mivel az Azure Search szolgáltatásban az összes értéktípus nullázható). Ha ezt követően egy modellosztályt úgy alkalmaz, hogy ehhez a mezőhöz nem nullázható `int` tulajdonságot ad meg, a dokumentumok lekérdezésének megkísérlésekor egy ehhez hasonló `JsonSerializationException` választ kap:
 
     Error converting value {null} to type 'System.Int32'. Path 'IntValue'.
 
-Ebből kifolyólag továbbra is javasoljuk, hogy használjon nullázható típust a modell tanórák ajánlott eljárás.
+Ezért azt javasoljuk, hogy az ajánlott eljárás szerint a modell osztályaiban is használjon null értékű típusokat.
 
-Ezt a hibát, és a javítás további információkért tekintse meg [ezt a problémát a Githubban](https://github.com/Azure/azure-sdk-for-net/issues/1063).
+A hibával és a javítással kapcsolatos további részletekért tekintse [meg ezt a problémát a githubon](https://github.com/Azure/azure-sdk-for-net/issues/1063).
 

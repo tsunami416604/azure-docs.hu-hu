@@ -1,6 +1,6 @@
 ---
-title: A szervezetek kezelése a saját profil (előzetes verzió) portálról – Azure Active Directory |} A Microsoft Docs
-description: A szervezetek a portál lapján, a saját profil magas szintű áttekintését.
+title: Szervezetek kezelése a saját profil (előzetes verzió) portálján – Azure Active Directory | Microsoft Docs
+description: Magas szintű áttekintés a saját profil portál szervezetek oldaláról.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,49 +12,52 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6053313c6971f1bcf66bc447b4f4f5fe5817666
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 6a0ff4190a1712b91bf58fafd80a03fc2737e7a4
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57339742"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382998"
 ---
-# <a name="manage-your-organizations-from-the-my-profile-preview-portal"></a>A szervezetek kezelése a saját profil (előzetes verzió) portálról
-A szervezetek kezelheti a **szervezetek** lapján a **profilom** portálon.
+# <a name="manage-your-organizations-from-the-my-profile-preview-portal"></a>Szervezetek kezelése a saját profil (előzetes verzió) portálján
 
-A szervezetek látható két típusa van a **szervezetek** oldalon:
+A szervezeteket a **saját profil** portál **szervezetek** lapján kezelheti.
 
-- **Szervezet.** A szervezet a szervezet, amely a munkahelyi vagy iskolai fiók tulajdonosa. A szervezet nem hagyhatja.
+A **szervezetek lapon két** típusú szervezet látható:
 
-- **Más szervezetek.** A más vállalatok, amelyek minden olyan csoportot, amely korábban a munkahelyi vagy iskolai fiókjával bejelentkezett. Ezek a szervezetek bármelyike bármikor hagyhatja.
+- **Otthoni szervezet.** Otthoni szervezete a munkahelyi vagy iskolai fiókját birtokló szervezet. Nem hagyhatja a saját szervezetét.
+
+- **Más szervezetek.** A többi szervezet olyan csoport, amelyet korábban már bejelentkezett a munkahelyi vagy iskolai fiókjával. Ezen szervezetek bármelyikét bármikor elhagyhatja.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-myprofile.md)]
 
 ## <a name="view-your-organizations"></a>A szervezetek megtekintése
-1. Jelentkezzen be munkahelyi vagy iskolai fiókjával, és keresse meg a https://myprofile.microsoft.com/ lapot.
 
-2. Válassza ki **szervezetek** a bal oldali navigációs panelen, vagy válassza ki a **szervezetek kezelése** hivatkozásra a **szervezetek** letiltása.
+1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába, majd lépjen a https://myprofile.microsoft.com/ lapra.
 
-    ![Saját profil lap, amely kiemeli a szervezetek hivatkozások](media/myprofile-portal/myprofile-portal-organizations.png)
+2. A bal oldali navigációs ablaktáblán válassza a **szervezetek** lehetőséget, vagy a **szervezetek blokkban** válassza a **szervezetek kezelése** hivatkozást.
 
-3. Tekintse át az adatait a **szervezet otthoni**. 
+    ![Saját profil lap, amely a Kiemelt szervezetek hivatkozásait mutatja](media/myprofile-portal/myprofile-portal-organizations.png)
 
-    ![Szervezet lap](media/myprofile-portal/myprofile-portal-organization-page.png)
+3. Tekintse át a saját **szervezete**adatait. 
 
-3. Tekintse át az egyéb kapcsolódó szervezetekkel, gondoskodik róla, hogy a szervezet fiókjához kapcsolt összes ismeri fel.
+    ![Szervezetek lap](media/myprofile-portal/myprofile-portal-organization-page.png)
+
+4. Tekintse át a többi társított szervezetet, és győződjön meg arról, hogy ismeri fel a fiókhoz csatlakozó összes szervezetet.
 
 ## <a name="leave-an-organization"></a>Szervezet elhagyása
-Minden olyan szervezet, amely a kezdőlap szervezet nem hagyhatja.
+
+Minden olyan szervezetet meghagyhat, amely nem a saját szervezete.
 
 >[!Important]
->Ha véletlenül egy szervezet hagyja, nincs semmilyen módon nem lehet visszavonni. Adja hozzá a szervezet újra kell.
+>Ha a szervezetet tévedésből hagyja, a visszavonás nem vonható vissza. A szervezetet újra hozzá kell adnia.
 
-1. Jelentkezzen be a fiókjába a **más szervezetek tartalmazó** területen.
+1. Jelentkezzen be a fiókjába a **többi,** a területtel dolgozó szervezettel.
 
-2. Válassza ki **szervezet**, majd válassza ki **Igen** elhagyja a szervezetet megerősítéséhez.
+2. Válassza a **szervezet hagyása**lehetőséget, majd az **Igen** gombot választva erősítse meg, hogy el kívánja hagyni a szervezetet.
 
-    ![Kiemelt hagyja szervezet hivatkozás szervezetek lap](media/myprofile-portal/myprofile-portal-organizations-leave.png)
+    ![Szervezetek lap Kiemelt Kilépés a szervezeti hivatkozással](media/myprofile-portal/myprofile-portal-organizations-leave.png)
 
 ## <a name="next-steps"></a>További lépések
 
-- A szervezetek megtekintése, után kiválaszthatja megtekintéséhez és kezeléséhez a [biztonsági adatok](user-help-security-info-overview.md), csatlakoztatott [eszközök](myprofile-portal-devices-page.md), vagy a nézet hogyan a szervezet [használ az adatok](myprofile-portal-privacy-page.md).
+- A szervezetek megtekintése után megtekintheti vagy kezelheti a [biztonsági](user-help-security-info-overview.md)adatokat, a csatlakoztatott [eszközöket](myprofile-portal-devices-page.md), vagy megtekintheti, hogy a szervezet hogyan [használja az adatokat](myprofile-portal-privacy-page.md).

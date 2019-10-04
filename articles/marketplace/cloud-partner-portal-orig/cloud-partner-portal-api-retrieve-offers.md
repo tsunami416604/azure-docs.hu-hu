@@ -1,25 +1,18 @@
 ---
-title: Lekérése ajánlatok API |} A Microsoft Docs
+title: Lekérése ajánlatok API |} Az Azure Marketplace-en
 description: API összefoglaló listája alapján közzétevő névtér kérdezi le.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: de9261548ec79e206b0db87caabc1fa4c9ad6771
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.author: pabutler
+ms.openlocfilehash: 67109c3605ea96123ff41cb88d5ac328a09991e6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56591550"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64935332"
 ---
 <a name="retrieve-offers"></a>Ajánlatok lekérése
 ===============
@@ -35,7 +28,7 @@ A közzétevő névtérben ajánlatok összesített listájának beolvasása.
 | **Name (Név)**         |  **Leírás**                         |  **Adattípus** |
 | -------------    |  ------------------------------------    |  -----------   |
 |  publisherId     | Például a közzétevő azonosítója `contoso` |   String    |
-|  API-verzió     | API legújabb verziója                    |    Dátum        |
+|  api-version     | API legújabb verziója                    |    Dátum        |
 |  |  |
 
 
@@ -80,7 +73,7 @@ A közzétevő névtérben ajánlatok összesített listájának beolvasása.
 |  status         | Az ajánlat állapotát. A lehetséges értékek listáját lásd: [stav Nabídky](#offer-status) alatt.                         |
 |  id             | GUID azonosítója, amely egyedileg azonosítja az ajánlatot a kiadó névtérben.                                                    |
 |  version        | Az ajánlat jelenlegi verziójával. A verzió tulajdonság nem lehet módosítani az ügyfél által. Azt minden egyes közzététel után. |
-|  definíció     | A számítási feladatok tényleges definíciója összefoglaló nézetét tartalmazza. A részletes definíció lekéréséhez használja a [olvashatók be az adott ajánlat](./cloud-partner-portal-api-retrieve-specific-offer.md) API-t. |
+|  Definíció     | A számítási feladatok tényleges definíciója összefoglaló nézetét tartalmazza. A részletes definíció lekéréséhez használja a [olvashatók be az adott ajánlat](./cloud-partner-portal-api-retrieve-specific-offer.md) API-t. |
 |  changedTime    | Az ajánlat utolsó módosításának időpontja (UTC)                                                                              |
 |  |  |
 
@@ -101,7 +94,7 @@ A közzétevő névtérben ajánlatok összesített listájának beolvasása.
 |  **Name (Név)**                    | **Leírás**                                  |
 |  ------------------------    | -----------------------------------------------  |
 |  NeverPublished              | Az ajánlat soha nem lett közzétéve.                  |
-|  Nincs elindítva                  | Az ajánlat új, de nem indult el.                 |
+|  NotStarted                  | Az ajánlat új, de nem indult el.                 |
 |  WaitingForPublisherReview   | Ajánlat közzétevője jóváhagyásra vár.         |
 |  Fut                     | Az ajánlat küldésének feldolgozása folyamatban van.             |
 |  Sikeres                   | Az ajánlat küldésének feldolgozása befejeződött.       |

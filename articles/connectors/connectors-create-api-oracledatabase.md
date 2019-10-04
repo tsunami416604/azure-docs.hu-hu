@@ -12,11 +12,11 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
 ms.openlocfilehash: 06f65aef203b4f0d765f21b9d17b90081de85c94
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551755"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60453621"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Az Oracle Database-összekötő használatának első lépései
 
@@ -105,13 +105,13 @@ Ez a cikk bemutatja, hogyan használhatja az Oracle Database-összekötő a logi
 
 **Ok**: Az Oracle ügyfél-SDK nincs telepítve a számítógépen, ahol a helyszíni adatátjáró fut.  
 
-**Megoldás**: Töltse le, és az Oracle ügyfél-SDK telepítése a helyszíni adatátjáró ugyanazon a számítógépen.
+**Feloldási**: Töltse le, és az Oracle ügyfél-SDK telepítése a helyszíni adatátjáró ugyanazon a számítógépen.
 
 #### <a name="error-table-tablename-does-not-define-any-key-columns"></a>**Hiba**: A(z) [táblanév] tábla nem definiál kulcsoszlopot
 
 **Ok**: A tábla nem rendelkezik minden olyan elsődleges kulcsot.  
 
-**Megoldás**: Az Oracle Database-összekötő szükséges, hogy egy elsődlegeskulcs-oszlopot tartalmazó táblát használja.
+**Feloldási**: Az Oracle Database-összekötő szükséges, hogy egy elsődlegeskulcs-oszlopot tartalmazó táblát használja.
 
 #### <a name="currently-not-supported"></a>Jelenleg nem támogatott
 

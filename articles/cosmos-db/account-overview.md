@@ -1,45 +1,45 @@
 ---
-title: Az Azure Cosmos DB-fiókok használata
-description: Ez a cikk azt ismerteti, hogyan hozzon létre, és az Azure Cosmos DB-fiókok használata
+title: Azure Cosmos DB-fiókok használata
+description: Ez a cikk a Azure Cosmos DB-fiókok létrehozását és használatát ismerteti
 author: rimman
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 03/31/2019
+ms.date: 07/23/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: da55807d4ca803adf63a1dd2dfe3ce3794cdd509
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 833d8533ff3289693e1744db2d77d4bed6a9ea69
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58762599"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616997"
 ---
 # <a name="work-with-azure-cosmos-account"></a>Azure Cosmos-fiók használata
 
-Az Azure Cosmos DB egy teljes körűen felügyelt platform--szolgáltatásként (PaaS) a. Azure Cosmos DB használatának megkezdéséhez először az Azure-előfizetésében ajánlott létrehozni egy Azure Cosmos-fiókot. Az Azure Cosmos-fiók egy egyedi DNS-nevet tartalmazza, és a egy fiókot az Azure portal, Azure CLI használatával, vagy különböző nyelvfüggő SDK-k használatával kezelheti. További információkért lásd: [kezelése az Azure Cosmos-fiók](how-to-manage-database-account.md).
+A Azure Cosmos DB egy teljes körűen felügyelt platform-szolgáltatás (Péter). A Azure Cosmos DB használatának megkezdéséhez először létre kell hoznia egy Azure Cosmos-fiókot az Azure-előfizetésében. Az Azure Cosmos-fiókja egyedi DNS-nevet tartalmaz, és az Azure Portal, az Azure CLI vagy más nyelvfüggő SDK-k használatával kezelheti a fiókokat. További információ: [Az Azure Cosmos-fiók kezelése](how-to-manage-database-account.md).
 
-Az Azure Cosmos-fiók a globális terjesztés és a magas rendelkezésre állás alapvető egysége. Globális terjesztéséhez az adatok és az átviteli sebesség több Azure-régióban, hozzáadhat és az Azure-régiók az Azure Cosmos-fiókjába bármikor eltávolíthatja. Konfigurálhatja az Azure Cosmos-fiókot, hogy rendelkezik egy vagy több írási régiót. További információkért lásd: [hozzáadása és eltávolítása az Azure-régiók és az Azure Cosmos-fiók](how-to-manage-database-account.md). Konfigurálhatja a [alapértelmezett konzisztencia](consistency-levels.md) szint, az Azure Cosmos-fiók. Az Azure Cosmos DB átfogó SLA-k, amely magában foglalja az átviteli sebesség, a késés a 99. percentilis, a konzisztencia és a magas rendelkezésre állást biztosít. További információkért lásd: [Azure Cosmos DB SLA-k](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/).
+Az Azure Cosmos-fiók a globális terjesztés és a magas rendelkezésre állás alapvető egysége. Az adatok és az átviteli sebesség több Azure-régióban való globális elosztása érdekében bármikor hozzáadhat és eltávolíthat Azure-régiókat az Azure Cosmos-fiókjához. Beállíthatja, hogy az Azure Cosmos-fiók egyetlen vagy több írási régióval rendelkezzen. További információ: Azure- [régiók hozzáadása és eltávolítása Azure Cosmos](how-to-manage-database-account.md)-fiókjához. Beállíthatja az [alapértelmezett konzisztencia](consistency-levels.md) -szintet az Azure Cosmos-fiókban. A Azure Cosmos DB átfogó SLA-kat biztosít, amely magában foglalja az átviteli sebességet, a késést a esetek 99% percentilis, a konzisztencia és a magas rendelkezésre állás érdekében. További információ: [Azure Cosmos db SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)-kat.
 
-Hozzáférés az Azure Cosmos-fiókban lévő összes adatot a biztonságos felügyeletéhez, használhatja a [főkulcsok](secure-access-to-data.md) a fiókjához. További biztonságos hozzáférés az adatokhoz, konfigurálhat egy [szolgáltatásvégpont](vnet-service-endpoint.md) és [IP-tűzfal](firewall-support.md) a Azure Cosmos-fiókjában. 
+Az Azure Cosmos-fiókban lévő összes adathoz való hozzáférés biztonságos kezeléséhez használhatja a fiókjához társított főkulcsokat. [](secure-access-to-data.md) Az adataihoz való további biztonságos hozzáféréshez konfigurálhat egy [VNET-szolgáltatási végpontot](vnet-service-endpoint.md) és egy [IP-tűzfalat](firewall-support.md) az Azure Cosmos-fiókjában. 
 
-## <a name="elements-in-an-azure-cosmos-account"></a>Egy Azure Cosmos-fiókban lévő elemek
+## <a name="elements-in-an-azure-cosmos-account"></a>Elemek egy Azure Cosmos-fiókban
 
-Az Azure Cosmos DB-tárolók méretezhetőség alapvető egysége. Egy tároló gyakorlatilag korlátlan kiosztott átviteli kapacitás (RU/s) és a storage is rendelkezhet. Az Azure Cosmos DB transzparens módon particionálja az Ön által megadott annak érdekében, hogy rugalmasan skálázhatja a kiosztott átviteli sebesség és a tárolási logikai partíciókulccsal tároló. További információkért lásd: [használata az Azure Cosmos-tárolók és elemek](databases-containers-items.md).
+Az Azure Cosmos Container a méretezhetőség alapvető egysége. Gyakorlatilag korlátlan számú kiosztott átviteli sebesség (RU/s) és tárterület található a tárolón. Azure Cosmos DB transzparens módon particionálja a tárolót az Ön által megadott logikai partíciós kulcs használatával, hogy rugalmasan méretezheti a kiosztott átviteli sebességet és tárterületet. További információ: [Az Azure Cosmos-tárolók és-elemek használata](databases-containers-items.md).
 
-Jelenleg legfeljebb 100 Azure Cosmos-fiókok egy Azure-előfizetéshez is létrehozhat. Egy olyan Azure-Cosmos-fiók gyakorlatilag kezelheti korlátlan mennyiségű adat és átviteli sebességet biztosítanak. Az adatok és a létesített átviteli sebesség kezelésére, a fiók alatt és, hogy az adatbázis belül hozhat létre egy vagy több Azure-Cosmos-adatbázis, létrehozhat egy vagy több tárolókat. Az alábbi képen látható a hierarchia elemek egy Azure Cosmos-fiók:
+Jelenleg legfeljebb 100 Azure Cosmos-fiókot hozhat létre az Azure-előfizetések alatt. Egyetlen Azure Cosmos-fiók gyakorlatilag korlátlan számú adatmennyiséget és kiosztott átviteli sebességet tud kezelni. Az adatok és a kiépített átviteli sebesség kezeléséhez létrehozhat egy vagy több Azure Cosmos-adatbázist a fiókjában és az adatbázison belül, létrehozhat egy vagy több tárolót is. Az alábbi képen egy Azure Cosmos-fiók elemeinek hierarchiája látható:
 
-![Egy Azure Cosmos-fiók hierarchiája](./media/account-overview/hierarchy.png)
+![Azure Cosmos-fiók hierarchiája](./media/account-overview/hierarchy.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg, hogyan kezelheti az Azure Cosmos-fiókját és más fogalmakat:
+Ismerje meg, hogyan kezelheti Azure Cosmos-fiókját és egyéb fogalmait:
 
-* [Útmutató az Azure Cosmos-fiók kezelése](how-to-manage-database-account.md)
+* [Útmutató az Azure Cosmos-fiók kezeléséhez](how-to-manage-database-account.md)
 * [Globális terjesztés](distribute-data-globally.md)
-* [Konzisztenciaszint](consistency-levels.md)
-* [Az Azure Cosmos-tárolók és elemek használata](databases-containers-items.md)
-* [Az Azure Cosmos-fiókja szolgáltatásvégpont](vnet-service-endpoint.md)
-* [IP-tűzfal az Azure Cosmos-fiók](firewall-support.md)
-* [Útmutató hozzáadása és eltávolítása az Azure-régiók és az Azure Cosmos-fiók](how-to-manage-database-account.md)
-* [Az Azure Cosmos DB SLA-k](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)
+* [Konzisztencia szintjei](consistency-levels.md)
+* [Azure Cosmos-tárolók és-elemek használata](databases-containers-items.md)
+* [VNET szolgáltatási végpont az Azure Cosmos-fiókhoz](vnet-service-endpoint.md)
+* [IP-tűzfal az Azure Cosmos-fiókhoz](firewall-support.md)
+* [Útmutató Azure-régiók Azure Cosmos-fiókhoz való hozzáadásához és eltávolításához](how-to-manage-database-account.md)
+* [Azure Cosmos DB SLA-kat](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)

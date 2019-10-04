@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: ad5a4981869f992ab6823a13afc2cad0e5252d08
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 38e0983830c540082a915332aa4158d2af84567b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105433"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65408881"
 ---
 # <a name="configure-php-in-azure-app-service"></a>A PHP konfigurálása az Azure App Service-ben
 
@@ -35,15 +35,11 @@ PHP 7.0 és a PHP 7.2-verziók is rendelkezésre állnak rendelkezésre, de alap
 
 ### <a name="azure-portal"></a>Azure Portal
 
-1. Tallózással keresse meg az alkalmazás a [az Azure portal](https://portal.azure.com) , majd kattintson a a **beállítások** gombra.
+1. Tallózással keresse meg az alkalmazás a [az Azure portal](https://portal.azure.com) , és görgessen a **konfigurációs** lapot.
 
-    ![Alkalmazásbeállítások][settings-button]
-2. Az a **beállítások** panelen válassza ki **Alkalmazásbeállítások** , és válassza ki az új PHP-verzió.
+2. A **konfigurációs**válassza **általános beállítások** , és válassza ki az új PHP-verzió.
 
-    ![Alkalmazásbeállítások][application-settings]
-3. Kattintson a **mentése** gombot a felső részén a **Alkalmazásbeállítások** panelen.
-
-    ![Konfigurációs beállítások mentése][save-button]
+3. Kattintson a **mentése** gombot a felső részén a **általános beállítások** panelen.
 
 ### <a name="azure-powershell-windows"></a>Azure PowerShell (Windows)
 
@@ -130,18 +126,12 @@ Az előző szakaszban feljegyzett-e a legjobb módszer az alapértelmezett PHP-v
 ### <a name="configure-via-app-setting"></a>Alkalmazásbeállítás konfigurálás
 
 1. Adjon hozzá egy `bin` könyvtárat a gyökérkönyvtárba.
-1. PUT `.dll` kiterjesztésű fájlokat a `bin` könyvtárat (például `php_xdebug.dll`). Győződjön meg arról, hogy a bővítmények a PHP és a rendszer VC9 és a nem szálbiztos (nts) kompatibilis alapértelmezett verziójával kompatibilis.
-2. Az alkalmazás üzembe helyezése.
-3. Keresse meg az alkalmazás az Azure Portalon, és kattintson a a **beállítások** gombra.
-
-    ![Alkalmazásbeállítások][settings-button]
-4. Az a **beállítások** panelen válassza ki **Alkalmazásbeállítások** , és görgessen a **Alkalmazásbeállítások** szakaszban.
-5. Az a **Alkalmazásbeállítások** szakaszban, hozzon létre egy **PHP_EXTENSIONS** kulcsot. Ez a kulcs értéke lenne a webhely gyökeréhez viszonyítva elérési útja: **bin\your-ext-fájl**.
-
-    ![Az alkalmazásbeállítások bővítmény engedélyezése][php-extensions]
-6. Kattintson a **mentése** gombot a felső részén a **Alkalmazásbeállítások** panelen.
-
-    ![Konfigurációs beállítások mentése][save-button]
+2. PUT `.dll` kiterjesztésű fájlokat a `bin` könyvtárat (például `php_xdebug.dll`). Győződjön meg arról, hogy a bővítmények a PHP és a rendszer VC9 és a nem szálbiztos (nts) kompatibilis alapértelmezett verziójával kompatibilis.
+3. Az alkalmazás üzembe helyezése.
+4. Keresse meg az alkalmazás az Azure Portalon, és kattintson a a **konfigurációs** alatt található **beállítások** szakaszban.
+5. Az a **konfigurációs** panelen válassza ki **Alkalmazásbeállítások**.
+6. Az a **Alkalmazásbeállítások** területén kattintson a **+ új alkalmazás-beállítás** , és hozzon létre egy **PHP_EXTENSIONS** kulcsot. Ez a kulcs értéke lenne a webhely gyökeréhez viszonyítva elérési útja: **bin\your-ext-fájl**.
+7. Kattintson a **frissítés** gombra a lap alján, majd kattintson a **mentése** fent a **Alkalmazásbeállítások** fülre.
 
 A Zend bővítmények használatával is támogatottak egy **PHP_ZENDEXTENSIONS** kulcsot. Ahhoz, hogy több bővítményt, vesszővel elválasztott listáját tartalmazza `.dll` fájlok esetében az alkalmazás-beállítás értékét.
 
@@ -154,15 +144,11 @@ Helyett az alapértelmezett PHP-futtatókörnyezet az App Service használható 
 3. Igény szerint adhat bővítményeket a PHP-futtatókörnyezet, és engedélyezze azokat a `php.ini` fájlt.
 4. Adjon hozzá egy `bin` a gyökérkönyvtár, és a PHP-futtatókörnyezet, az azt tartalmazó könyvtárba put könyvtárat (például `bin\php`).
 5. Az alkalmazás üzembe helyezése.
-6. Keresse meg az alkalmazás az Azure Portalon, és kattintson a a **beállítások** gombra.
-
-    ![Alkalmazásbeállítások][settings-button]
-7. Az a **beállítások** panelen válassza ki **Alkalmazásbeállítások** , és görgessen a **kezelőleképezések** szakaszban. Adjon hozzá `*.php` a bővítménynek mezőben, majd adja hozzá az elérési útját a `php-cgi.exe` végrehajtható. Ha helyezi a PHP-futtatókörnyezet a `bin` könyvtárat az alkalmazás gyökérkönyvtárában, az elérési út `D:\home\site\wwwroot\bin\php\php-cgi.exe`.
-
-    ![Adja meg kezelőleképezések kezelőt][handler-mappings]
-8. Kattintson a **mentése** gombot a felső részén a **Alkalmazásbeállítások** panelen.
-
-    ![Konfigurációs beállítások mentése][save-button]
+6. Keresse meg az alkalmazás az Azure Portalon, és kattintson a a **konfigurációs** panelen.
+8. Az a **konfigurációs** panelen válassza ki **elérési út leképezések**. 
+9. Kattintson a **+ új kezelő** , és adja hozzá `*.php` a bővítménynek mezőben, majd adja hozzá az elérési útját a `php-cgi.exe` végrehajtható a **parancsfájl-feldolgozókhoz**. Ha helyezi a PHP-futtatókörnyezet a `bin` könyvtárat az alkalmazás gyökérkönyvtárában, az elérési út `D:\home\site\wwwroot\bin\php\php-cgi.exe`.
+10. Kattintson a lap alján, **frissítés** kattintott a kezelőtársítás hozzáadásának befejezéséhez.
+11. Kattintson a **Mentés** gombra a módosítások mentéséhez.
 
 <a name="composer" />
 
@@ -195,9 +181,9 @@ További információkért lásd: a [PHP fejlesztői központ](https://azure.mic
 [az ingyenes próbaidőszak]: https://www.windowsazure.com/pricing/free-trial/
 [phpinfo()]: https://php.net/manual/en/function.phpinfo.php
 [select-php-version]: ./media/web-sites-php-configure/select-php-version.png
-[A php.ini fájl irányelvek]: http://www.php.net/manual/en/ini.list.php
-[. user.ini]: http://www.php.net/manual/en/configuration.file.per-user.php
-[ini_set()]: http://www.php.net/manual/en/function.ini-set.php
+[A php.ini fájl irányelvek]: https://www.php.net/manual/en/ini.list.php
+[. user.ini]: https://www.php.net/manual/en/configuration.file.per-user.php
+[ini_set()]: https://www.php.net/manual/en/function.ini-set.php
 [application-settings]: ./media/web-sites-php-configure/application-settings.png
 [settings-button]: ./media/web-sites-php-configure/settings-button.png
 [save-button]: ./media/web-sites-php-configure/save-button.png

@@ -1,56 +1,64 @@
 ---
-title: A VMware-vészhelyreállításhoz az Azure-bA az Azure Site Recovery replikációs szabályzatok konfigurálására és felügyeletére |} A Microsoft Docs
-description: Útmutatás a vész-helyreállítási VMware – Azure replikálás beállításainak konfigurálása az Azure Site Recoveryvel.
+title: Replikációs házirendek konfigurálása és kezelése az Azure-ba történő VMware vész-helyreállításhoz Azure Site Recovery használatával | Microsoft Docs
+description: Ismerteti, hogyan lehet konfigurálni a VMware vész-helyreállítás replikációs beállításait az Azure-ba Azure Site Recovery használatával.
 author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: b60d8a8fb9b9300a6914ad33b2f760fb5adde3b4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 019f9f2019619053f87a7923d656513a419d4675
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792453"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231438"
 ---
-# <a name="configure-and-manage-replication-policies-for-vmware-disaster-recovery-to-azure"></a>Vész-helyreállítási VMware – Azure replikációs szabályzatok konfigurálására és felügyeletére
-Ez a cikk ismerteti a replikációs szabályzat konfigurálása, Ön VMware virtuális gépek replikálása az Azure-ba, amikor használatával [Azure Site Recovery](site-recovery-overview.md).
+# <a name="configure-and-manage-replication-policies-for-vmware-disaster-recovery-to-azure"></a>Replikációs házirendek konfigurálása és kezelése az Azure-ba történő VMware vész-helyreállításhoz
+Ez a cikk azt ismerteti, hogyan konfigurálhat egy replikációs házirendet, ha VMware virtuális gépeket replikál az Azure-ba a [Azure site Recovery](site-recovery-overview.md)használatával.
 
-## <a name="create-a-policy"></a>Szabályzat létrehozása
+## <a name="create-a-policy"></a>Házirend létrehozása
 
 1. Válassza a **Kezelés** > **Site Recovery-infrastruktúra** lehetőséget.
-2. A **a VMware és fizikai gépek**válassza **replikációs házirendek**.
-3. Kattintson a **+ replikációs házirend**, és adja meg a házirend nevét.
-4. Az **RPO küszöbértéke** beállításnál adja meg az RPO-korlátot. Riasztások akkor jönnek létre, ha a folyamatos replikáció túllépi ezt a korlátot.
-5. A **Helyreállítási pont megőrzése** beállításnál azt adhatja meg, hogy milyen hosszú legyen az egyes helyreállítási pontok adatmegőrzési időtartama (a beállítás értéke órákban adható meg). A védelemmel ellátott gépeket az adatmegőrzési időtartamon belüli bármelyik pontra visszaállíthatja. A rendszer a prémium tárolóra replikált gépek esetében 24 órás megőrzést támogat. Akár 72 órát standard tárterület esetén támogatott.
-6. A **alkalmazáskonzisztens pillanatkép gyakorisága**, válassza ki a legördülő listából, milyen gyakran (óra) az alkalmazáskonzisztens pillanatképeket tartalmazó helyreállítási pontokat kell létrehozni. Ha szeretne kapcsolja ki az alkalmazás konzisztenciájának pontok generációja, válassza a "Off" értéket a legördülő listában.
+2. A **VMware és a fizikai gépek esetében**válassza a **replikációs házirendek**lehetőséget.
+3. Kattintson a **+ replikációs házirend**elemre, és adja meg a házirend nevét.
+4. Az **RPO küszöbértéke** beállításnál adja meg az RPO-korlátot. A riasztások akkor jönnek létre, ha a folyamatos replikálás meghaladja ezt a korlátot.
+5. A **Helyreállítási pont megőrzése** beállításnál azt adhatja meg, hogy milyen hosszú legyen az egyes helyreállítási pontok adatmegőrzési időtartama (a beállítás értéke órákban adható meg). A védelemmel ellátott gépeket az adatmegőrzési időtartamon belüli bármelyik pontra visszaállíthatja. A rendszer a prémium tárolóra replikált gépek esetében 24 órás megőrzést támogat. A standard szintű tárolás akár 72 órát is támogat.
+6. Az alkalmazás **-konzisztens Pillanatképek gyakorisága**területen válassza ki azt a legördülő listát, hogy milyen gyakran (órában) szeretné létrehozni az alkalmazás-konzisztens pillanatképeket tartalmazó helyreállítási pontokat. Ha ki szeretné kapcsolni az alkalmazás-konzisztencia-pontok generációját, válassza a legördülő lista "ki" értékét.
 7. Kattintson az **OK** gombra. A házirend létrehozása 30–60 másodpercet vesz igénybe.
 
-Amikor létrehoz egy replikációs házirendet, a megfelelő feladatátvételi replikációs házirend automatikusan létrejön, a "feladat-visszavétel" utótaggal. A szabályzat létrehozása után szerkesztheti ezt, ha kiválasztja > **beállításainak szerkesztése**.
+Replikációs házirend létrehozásakor a rendszer automatikusan létrehoz egy megfelelő feladat-visszavételi replikációs házirendet, a "feladat-visszavétel" utótaggal együtt. A szabályzat létrehozása után szerkesztheti azt > **beállítások szerkesztése**lehetőség kiválasztásával.
 
-## <a name="associate-a-configuration-server"></a>Konfigurációs kiszolgáló társítása
+## <a name="associate-a-configuration-server"></a>Konfigurációs kiszolgáló hozzárendelése
 
-A replikációs házirend társítása a helyszíni konfigurációs kiszolgálót.
+Társítsa a replikációs házirendet a helyszíni konfigurációs kiszolgálóval.
 
-1. Kattintson a **társítása**, és válassza ki a konfigurációs kiszolgálót.
+1. Kattintson a **hozzárendelés**elemre, majd válassza ki a konfigurációs kiszolgálót.
 
-    ![Konfigurációs kiszolgáló társítása](./media/vmware-azure-set-up-replication/associate1.png)
+    ![Konfigurációs kiszolgáló hozzárendelése](./media/vmware-azure-set-up-replication/associate1.png)
 2. Kattintson az **OK** gombra. A konfigurációs kiszolgáló társításának végrehajtása átlagosan 1–2 percet vesz igénybe.
 
     ![A konfigurációs kiszolgáló társítása](./media/vmware-azure-set-up-replication/associate2.png)
 
-## <a name="edit-a-policy"></a>Egy szabályzat szerkesztése
+## <a name="edit-a-policy"></a>Szabályzat szerkesztése
 
-1. Válassza ki **kezelése** > **Site Recovery-infrastruktúra** > **replikációs házirendek**.
+A replikációs házirendet a létrehozása után módosíthatja.
+
+- A házirend módosításait a rendszer a szabályzatot használó összes gépre alkalmazza.
+- Ha a replikált gépeket eltérő replikációs házirenddel szeretné hozzárendelni, le kell tiltania és újra engedélyeznie kell a megfelelő gépek védelmét.
+
+A szabályzatok a következőképpen szerkeszthetők:
+1. Válassza > a**site Recovery**infrastruktúra > -**replikációs házirendek**kezelése lehetőséget.
 2. Válassza ki a módosítani kívánt replikációs házirendet.
-3. Kattintson a **beállításainak szerkesztése**, és frissítse a RPO küszöbértéket/helyreállítási pont megőrzési óra/alkalmazáskonzisztens pillanatkép gyakorisága szükséges mezők.
-4. Ha szeretne kapcsolja ki az alkalmazás konzisztenciájának pontok generációja, válassza a "Off" értéket a legördülő listában, a mező **alkalmazáskonzisztens pillanatkép gyakorisága**.
-5. Kattintson a **Save** (Mentés) gombra. A szabályzat 30 – 60 másodpercet frissíteni kell.
+3. Kattintson a **beállítások szerkesztése**elemre, és frissítse a RPO küszöbértékét/a helyreállítási pont megőrzési idejét, illetve az alkalmazás-konzisztens Pillanatképek gyakorisága mezőket a szükséges módon.
+4. Ha ki szeretné kapcsolni az alkalmazás-konzisztencia-pontok előállítását, válassza ki a "ki" értéket a mező **alkalmazás-konzisztens pillanatkép gyakoriságának**legördülő menüjében.
+5. Kattintson a **Save** (Mentés) gombra. A szabályzatot 30 – 60 másodperc múlva kell frissíteni.
 
-## <a name="disassociate-or-delete-a-replication-policy"></a>Szüntesse meg az vagy egy replikációs házirend törlése
+
+
+## <a name="disassociate-or-delete-a-replication-policy"></a>Replikációs házirend hozzárendelésének vagy törlésének megszüntetése
 
 1. Válassza ki a replikációs házirendet.
-    a. A szabályzatot a konfigurációs kiszolgáló társításának megszüntetése, ellenőrizze, hogy nincsenek olyan replikált gépek használ-e a házirend. Kattintson a **szüntesse**.
-    b. Törli a szabályzatot, ellenőrizze, hogy nem kapcsolódik a konfigurációs kiszolgáló. Kattintson a **törlése**. Érdemes igénybe törlése 30 – 60 másodpercre.
+    a. A szabályzatnak a konfigurációs kiszolgálóról való leválasztásához győződjön meg arról, hogy egyetlen replikált gép sem használja a szabályzatot. Ezután kattintson aLeválasztás elemre.
+    b. A szabályzat törléséhez ellenőrizze, hogy nincs-e társítva konfigurációs kiszolgálóval. Ezután kattintson a **Törlés**gombra. A törléshez 30-60 másodperc szükséges.
 2. Kattintson az **OK** gombra.

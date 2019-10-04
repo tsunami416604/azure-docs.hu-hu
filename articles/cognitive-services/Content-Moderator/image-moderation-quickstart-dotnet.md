@@ -1,25 +1,25 @@
 ---
-title: 'Gyors útmutató: A nemkívánatos tartalmat a képeket elemezhet C# -Content Moderator'
-titlesuffix: Azure Cognitive Services
-description: Kép tartalmának elemzése különböző kifogásolható tartalmak felismeréséhez a Content Moderator SDK for .NET használatával
+title: 'Gyors útmutató: Képek elemzése a kifogásolható tartalomhoz C# Content moderator'
+titleSuffix: Azure Cognitive Services
+description: Különböző kifogásolt anyagok képtartalmának elemzése a .NET-hez készült Content Moderator SDK-val
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 03/20/2019
+ms.date: 08/08/2019
 ms.author: sajagtap
-ms.openlocfilehash: 9cc18ce1fde5de354e3da5e384c08ada1927d097
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 2a4726357e35fa123355d9ba450f7c6d8624fe78
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757233"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946238"
 ---
-# <a name="quickstart-analyze-images-for-objectionable-content-in-c"></a>Gyors útmutató: A nemkívánatos tartalmat a képeket elemezhetC#
+# <a name="quickstart-analyze-images-for-objectionable-content-in-c"></a>Gyors útmutató: A kifogásolt tartalomhoz tartozó képek elemzéseC#
 
-Ez a cikk ahhoz biztosít információt és kódmintákat, hogy megismerkedhessen a [Content Moderator SDK for .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) használatával. Megtanulja, hogyan szűrheti ki a felnőtteknek szóló és kényes tartalmakat, hogyan kereshet kinyerhető szöveget, és hogyan ismerheti fel az emberi arcokat az esetlegesen kifogásolható tartalom moderálása céljából.
+Ez a cikk ahhoz biztosít információt és kódmintákat, hogy megismerkedhessen a [Content Moderator SDK for .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) használatával. Megtudhatja, hogyan vizsgálhatja meg a felnőtt vagy a zamatos tartalmat, a kinyerhető szövegeket és az emberi arcokat a potenciálisan kifogásolt anyagok moderálásának céljával.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt. 
 
@@ -49,22 +49,22 @@ Következő lépésként másolja és illessze be az ebben az útmutatóban tal�
 
 Adja hozzá az alábbi `using` utasításokat a *Program.cs* fájl elejéhez.
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=1-8)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=1-7)]
 
 ### <a name="create-the-content-moderator-client"></a>Content Moderator-ügyfél létrehozása
 
 Adja hozzá a következő kódot a *Program.cs* fájlhoz, hogy létrehozzon egy Content Moderator-ügyfélszolgáltatót az előfizetéséhez. Adja hozzá a kódot a **Program** osztály mellett, ugyanabban a névtérben. Frissítenie kell a régióazonosító és az előfizetői azonosító értékét az **AzureRegion** és a **CMSubscriptionKey** mezőkben.
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=84-107)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=83-106)]
 
 
 ### <a name="set-up-input-and-output-targets"></a>Bemeneti és kimeneti célok beállítása
 
-Adja hozzá a következő statikus mezőket a **Program** osztályhoz a _Program.cs_-ben. Ezek adják meg a bemeneti kép tartalmának és a kimeneti JSON tartalmának fájljait.
+Adja hozzá a következő statikus mezőket a **Program** osztályhoz a _Program.cs_ -ben. Ezek a mezők határozzák meg a bemeneti kép tartalmának és a kimenet JSON-tartalmának fájljait.
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=49-53)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=48-52)]
 
-Létre kell hoznia az *_ImageFiles.txt* bemeneti fájlt, és ennek megfelelően frissítenie kell az elérési útját (a relatív elérési utak a végrehajtási könyvtárhoz képest relatívak). Nyissa meg az _ImageFiles.txt_ fájlt, és adja hozzá a moderálni kívánt képek URL-címét. Ez a rövid útmutató a következő URL-címeket használja bemeneti mintaként.
+Létre kell hoznia a *ImageFiles. txt* bemeneti fájlt, és ennek megfelelően frissítenie kell annak elérési útját (a relatív elérési utak a végrehajtási könyvtárhoz képest relatívak). Nyissa meg az _ImageFiles.txt_ fájlt, és adja hozzá a moderálni kívánt képek URL-címét. Ez a rövid útmutató a következő URL-címeket használja bemeneti mintaként.
 
 ```
 https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg
@@ -75,24 +75,24 @@ https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
 
 Adja hozzá a következő kódot a *Program.cs* fájlhoz a **Program** osztály mellett, ugyanabban a névtérben. Ennek az osztálynak egy-egy példányát fogja használni az egyes ellenőrzött képek moderálási eredményeinek rögzítéséhez.
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=109-124)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=108-123)]
 
 
 ### <a name="define-the-image-evaluation-method"></a>A képértékelő módszer meghatározása
 
 Adja hozzá a **Program** osztályhoz a következő metódust. Ez a módszer három különböző módon értékel egyetlen képet, majd visszaadja az értékelés eredményét. Ha többet szeretne megtudni arról, hogy mit hajtanak végre az egyes műveletek, kattintson a [További lépések](#next-steps) szakaszban található hivatkozásra.
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=55-81)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=54-80)]
 
 ### <a name="load-the-input-images"></a>A bemeneti képek betöltése
 
-Adja hozzá a következő kódot a **Main** metódushoz a **Program** osztályban. Ez beállítja a programot, hogy lekérje a bemeneti fájlban található egyes képek URL-címeinek kiértékelési adatait. Ezután a program ezeket az adatokat egy kimeneti fájlba írja.
+Adja hozzá a következő kódot a **Main** metódushoz a **Program** osztályban. Ez a kód állítja be a programot, hogy beolvassa a bemeneti fájlban található egyes rendszerképek URL-címére vonatkozó értékelési adatokat. Ezután a program ezeket az adatokat egy kimeneti fájlba írja.
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=17-46)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=16-45)]
 
 ## <a name="run-the-program"></a>A program futtatása
 
-A program a JSON-sztringadatokat a _ModerationOutput.json_ fájlba írja. Az ebben a rövid útmutatóban használt mintaképek a következő kimenetet adják. Vegye figyelembe, hogy minden egyes kép külön `ImageModeration`, `FaceDetection` és `TextDetection` szakasszal rendelkezik, amelyek az **EvaluateImage** metódus három API-hívásának felelnek meg.
+A program a JSON-sztringadatokat a _ModerationOutput.json_ fájlba írja. Az ebben a rövid útmutatóban használt mintaképek a következő kimenetet adják. Mindegyik rendszerkép különböző szakasszal rendelkezik a `ImageModeration`, `FaceDetection`a és `TextDetection`a rendszerhez, amelyek a **EvaluateImage** metódus három API-hívásának felelnek meg.
 
 ```json
 [{

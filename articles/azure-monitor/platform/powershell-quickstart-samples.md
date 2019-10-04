@@ -1,6 +1,6 @@
 ---
-title: Az Azure Monitor PowerShell gyors üzembe helyezési minták
-description: Elérhető az Azure Monitor szolgáltatásait, például az automatikus méretezés, a riasztások, a webhookok és tevékenységeket tartalmazó naplók keresése a PowerShell használatával.
+title: Azure Monitor PowerShell – gyors üzembe helyezési minták
+description: A PowerShell használatával férhet hozzá olyan Azure Monitor-funkciókhoz, mint például az autoscale, a riasztások, a webhookok és a keresési tevékenységek naplói.
 author: rboucher
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,195 +8,205 @@ ms.topic: conceptual
 ms.date: 2/14/2018
 ms.author: robb
 ms.subservice: ''
-ms.openlocfilehash: 59cb14c86963d956b0bd63f65b10776dff4aa97f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 886eb8578e004eba3b6fabc1deb42db0fb7fac70
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698076"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350245"
 ---
-# <a name="azure-monitor-powershell-quick-start-samples"></a>Az Azure Monitor PowerShell gyors üzembe helyezési minták
-Ez a cikk mutatja, a minta PowerShell-parancsok segítségével elérheti az Azure Monitor-funkciók.
+# <a name="azure-monitor-powershell-quick-start-samples"></a>Azure Monitor PowerShell – gyors üzembe helyezési minták
+Ebből a cikkből megtudhatja, hogyan érheti el Azure Monitor szolgáltatásait a PowerShell-parancsok segítségével.
 
 > [!NOTE]
-> Az Azure Monitor 2016. Szeptembertől 25. az "Azure Insights" nevezett új neve. Azonban a névterek, és így a következő parancsok továbbra is tartalmaz a szó "elemzések."
+> A Azure Monitor az "Azure-betekintő" nevű új név, 2016. szeptember 25-én. Azonban a névterek és így a következő parancsok továbbra is tartalmazzák az "ismeretek" szót.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="set-up-powershell"></a>Set up PowerShell
-Ha még nem tette, PowerShell beállítása a futást a számítógépen. További információkért lásd: [telepítése és konfigurálása PowerShell](/powershell/azure/overview).
+## <a name="set-up-powershell"></a>A PowerShell beállítása
+Ha még nem tette meg, állítsa be a PowerShellt úgy, hogy a számítógépen fusson. További információ: [a PowerShell telepítése és konfigurálása](/powershell/azure/overview).
 
-## <a name="examples-in-this-article"></a>Ebben a cikkben szereplő példák
-A cikkben szereplő példák bemutatják, hogyan használhatja az Azure Monitor-parancsmagokat. Emellett áttekintheti a teljes listáját, az Azure Monitor PowerShell-parancsmagok [Azure Monitor (elemzés) parancsmagok](https://docs.microsoft.com/powershell/module/az.applicationinsights).
+## <a name="examples-in-this-article"></a>Példák ebben a cikkben
+A cikkben szereplő példák bemutatják, hogyan használhatja Azure Monitor parancsmagokat. Áttekintheti Azure Monitor PowerShell-parancsmagok teljes listáját Azure Monitor (betekintő [) parancsmagok](https://docs.microsoft.com/powershell/module/az.applicationinsights)esetén is.
 
-## <a name="sign-in-and-use-subscriptions"></a>Jelentkezzen be, és előfizetések használata
-Első lépésként jelentkezzen be az Azure-előfizetéshez.
+## <a name="sign-in-and-use-subscriptions"></a>Bejelentkezés és előfizetés használata
+Először jelentkezzen be az Azure-előfizetésbe.
 
 ```powershell
 Connect-AzAccount
 ```
 
-Megjelenik egy bejelentkezési képernyő. Egyszer, jelentkezzen be a fiók a bérlő azonosítója, és alapértelmezett előfizetés-azonosító jelennek meg. Az összes Azure-parancsmagjaival működik az alapértelmezett előfizetést kontextusában. Hozzáfér az előfizetések listájának megtekintéséhez használja a következő parancsot:
+Ekkor megjelenik a bejelentkezési képernyő. Miután bejelentkezett a fiókjába, a TenantID és az alapértelmezett előfizetés-azonosító megjelenik. Az összes Azure-parancsmag az alapértelmezett előfizetés kontextusában működik. A következő parancs használatával tekintheti meg az Ön számára elérhető előfizetések listáját:
 
 ```powershell
 Get-AzSubscription
 ```
 
-A működő környezet másik előfizetésbe való módosításához használja a következő parancsot:
+A következő parancs futtatásával megtekintheti a munkakörnyezetét (mely előfizetéssel futtatja a parancsokat):
+
+```powershell
+Get-AzContext
+```
+Ha módosítani szeretné a munkakörnyezetét egy másik előfizetésre, használja a következő parancsot:
 
 ```powershell
 Set-AzContext -SubscriptionId <subscriptionid>
 ```
 
 
-## <a name="retrieve-activity-log-for-a-subscription"></a>Tevékenységnapló-előfizetéshez tartozó beolvasása
-Használja a `Get-AzLog` parancsmagot.  Az alábbiakban néhány gyakori példa.
+## <a name="retrieve-activity-log-for-a-subscription"></a>Előfizetés tevékenységi naplójának beolvasása
+Használja a [Get-AzLog](https://docs.microsoft.com/powershell/module/az.monitor/get-azlog) parancsmagot.  Az alábbiakban néhány gyakori példát talál. A tevékenység naplójában a műveletek utolsó 90 napja szerepel. Az idő előtti dátumok használata hibaüzenetet eredményez.  
 
-Naplóbejegyzés kérhet az időpontot vagy dátumot, hogy:
-
+Az alábbi parancsokban megtekintheti, hogy az aktuális dátum/idő milyen időpontot használjon:
 ```powershell
-Get-AzLog -StartTime 2016-03-01T10:30
+Get-Date
 ```
 
-Kérje le a naplóbejegyzések között egy dátum/idő tartomány:
+Naplóbejegyzések beolvasása ebből az időpontból/dátumból:
 
 ```powershell
-Get-AzLog -StartTime 2015-01-01T10:30 -EndTime 2015-01-01T11:30
+Get-AzLog -StartTime 2019-03-01T10:30
 ```
 
-Naplózási bejegyzések beolvasása egy adott erőforráscsoporthoz:
+Naplóbejegyzések beolvasása egy idő/dátumtartomány között:
+
+```powershell
+Get-AzLog -StartTime 2019-01-01T10:30 -EndTime 2015-01-01T11:30
+```
+
+Naplóbejegyzések beolvasása egy adott erőforráscsoporthoz:
 
 ```powershell
 Get-AzLog -ResourceGroup 'myrg1'
 ```
 
-Kérje le a naplóbejegyzések egy adott erőforrás-szolgáltató egy dátum/idő tartomány között:
+A naplóbejegyzések beolvasása egy adott erőforrás-szolgáltatótól egy idő/dátumtartomány között:
 
 ```powershell
 Get-AzLog -ResourceProvider 'Microsoft.Web' -StartTime 2015-01-01T10:30 -EndTime 2015-01-01T11:30
 ```
 
-Kérje le egy adott hívónak az összes naplóbejegyzés:
+Minden naplóbejegyzés beolvasása egy megadott hívóval:
 
 ```powershell
 Get-AzLog -Caller 'myname@company.com'
 ```
 
-Az alábbi parancs beolvassa a tevékenységnaplóban a legutóbbi 1000 esemény:
+A következő parancs lekéri az utolsó 1000 eseményt a tevékenység naplójából:
 
 ```powershell
-Get-AzLog -MaxEvents 1000
+Get-AzLog -MaxRecord 10
 ```
 
-`Get-AzLog` sok más paramétereket támogatja. Tekintse meg a `Get-AzLog` további információt.
+a `Get-AzLog` számos más paramétert is támogat. További információért tekintse meg a `Get-AzLog` referenciát.
 
 > [!NOTE]
-> `Get-AzLog` Előzmények 15 napos csak biztosít. Használatával a **– a MaxEvents** paraméter lehetővé teszi, hogy az utolsó N események 15 napos időszak letelte után. Hozzáférési események régebbi, mint 15 napon keresztül használja a REST API vagy SDK-t (C# minta az SDK-val). Ha nem adja meg az **StartTime**, akkor az alapértelmezett érték **EndTime** mínusz egy óra. Ha nem adja meg az **EndTime**, akkor az alapértelmezett érték az aktuális idő. Minden esetben vannak (UTC).
+> a `Get-AzLog` csak 15 napos előzményt biztosít. A **-MaxRecords** paraméter használata lehetővé teszi az utolsó N esemény lekérdezését 15 nap után. A 15 napnál régebbi események eléréséhez használja a REST API vagy az SDK-C# t (minta az SDK használatával). Ha nem tartalmazza az időpontot, az alapértelmezett érték a **befejezési időpont** mínusz egy óra. Ha nem tartalmazza a **befejezési**időt, az alapértelmezett érték az aktuális idő. Minden alkalommal UTC-ben van.
 > 
 > 
 
 ## <a name="retrieve-alerts-history"></a>Riasztások előzményeinek beolvasása
-Minden figyelmeztetési események megtekintéséhez lekérdezheti az Azure Resource Manager naplók segítségével az alábbi példák.
+Az összes riasztási esemény megtekintéséhez a következő példákkal kérdezheti le a Azure Resource Manager naplókat.
 
 ```powershell
 Get-AzLog -Caller "Microsoft.Insights/alertRules" -DetailedOutput -StartTime 2015-03-01
 ```
 
-Az előzmények adott riasztási szabály megtekintéséhez használhatja a `Get-AzAlertHistory` parancsmag, az erőforrás-Azonosítóját a riasztási szabályt ad át.
+Egy adott riasztási szabály előzményeinek megtekintéséhez használhatja a `Get-AzAlertHistory` parancsmagot, amely a riasztási szabály erőforrás-AZONOSÍTÓjában halad.
 
 ```powershell
 Get-AzAlertHistory -ResourceId /subscriptions/s1/resourceGroups/rg1/providers/microsoft.insights/alertrules/myalert -StartTime 2016-03-1 -Status Activated
 ```
 
-A `Get-AzAlertHistory` parancsmag támogatja a különböző paraméterek. További információkért lásd: [Get-AlertHistory](https://msdn.microsoft.com/library/mt282453.aspx).
+A `Get-AzAlertHistory` parancsmag a különböző paramétereket támogatja. További információ: [Get-AlertHistory](https://msdn.microsoft.com/library/mt282453.aspx).
 
-## <a name="retrieve-information-on-alert-rules"></a>Riasztási szabályok az információk lekéréséhez
-Az alábbi parancsokat az összes "montest" nevű erőforráscsoport cselekedhet.
+## <a name="retrieve-information-on-alert-rules"></a>Riasztási szabályokkal kapcsolatos információk lekérése
+A következő parancsok mindegyike egy "legszélesebb" nevű erőforráscsoport esetében működik.
 
-A riasztási szabály az összes tulajdonság megjelenítése:
+A riasztási szabály összes tulajdonságának megtekintése:
 
 ```powershell
 Get-AzAlertRule -Name simpletestCPU -ResourceGroup montest -DetailedOutput
 ```
 
-Az erőforráscsoport összes riasztás lekéréséhez:
+Egy erőforráscsoport összes riasztásának beolvasása:
 
 ```powershell
 Get-AzAlertRule -ResourceGroup montest
 ```
 
-Összes riasztási szabályt beállítani a célként megadott erőforrás lekérése. Például állítsa be a riasztási szabályok az összes virtuális gépen.
+A célként megadott erőforráshoz beállított összes riasztási szabály beolvasása. Például a virtuális gépen beállított összes riasztási szabály.
 
 ```powershell
 Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig
 ```
 
-`Get-AzAlertRule` más paramétereket támogatja. Lásd: [Get-AlertRule](https://msdn.microsoft.com/library/mt282459.aspx) további információt.
+a `Get-AzAlertRule` más paramétereket is támogat. További információ: [Get-AlertRule](https://msdn.microsoft.com/library/mt282459.aspx) .
 
 ## <a name="create-metric-alerts"></a>Metrikákhoz kapcsolódó riasztások létrehozása
-Használhatja a `Add-AlertRule` parancsmag létrehozása, frissítése, vagy tiltsa le egy riasztási szabályt.
+Riasztási szabály létrehozásához, frissítéséhez vagy letiltásához használhatja a `Add-AlertRule` parancsmagot.
 
-E-mailt és webhookot tulajdonságok használatával hozhat létre `New-AzAlertRuleEmail` és `New-AzAlertRuleWebhook`, illetve. A riasztási szabály parancsmag rendelje hozzá ezeket a tulajdonságokat a műveleteket a **műveletek** a riasztási szabály tulajdonságát.
+Az e-mailek és webhook-tulajdonságok a `New-AzAlertRuleEmail` és a `New-AzAlertRuleWebhook` használatával hozhatók létre. A riasztási szabály parancsmagban ezeket a tulajdonságokat adja hozzá műveletként a riasztási szabály **műveletek** tulajdonságához.
 
-A következő táblázat ismerteti a használt paraméterek és értékek metrikával riasztás létrehozásához.
+A következő táblázat a riasztások metrika használatával történő létrehozásához használt paramétereket és értékeket ismerteti.
 
-| paraméter | érték |
+| Paraméter | value |
 | --- | --- |
 | Name (Név) |simpletestdiskwrite |
-| Ez a riasztási szabály helye |USA keleti régiója |
-| ResourceGroup |montest |
+| A riasztási szabály helye |East US |
+| ResourceGroup |legtöbbször |
 | TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
-| A létrehozott riasztás MetricName |\PhysicalDisk (aránya _teljes) \Disk Lemezírások/mp. Tekintse meg a `Get-MetricDefinitions` parancsmaggal kapcsolatos hogyan kérheti le a pontos metrikus nevek |
-| Operátor |GreaterThan |
-| Küszöbérték (száma/s az a mérőszám) |1 |
-| Ablakméret (Igen) |00:05:00 |
-| naplózási gyűjtő (statisztikai mérőszám, amely ebben az esetben használja a átlagos száma) |Átlag |
-| egyéni e-mailek (karakterlánc-tömbben) |'foo@example.com','bar@example.com' |
+| A létrehozott riasztás MetricName |\PhysicalDisk(_Total)\Disk Writes/sec. Tekintse meg a `Get-MetricDefinitions` parancsmaggal kapcsolatos hogyan kérheti le a pontos metrikus nevek |
+| operator |GreaterThan |
+| Küszöbérték (darabszám/mp a metrika esetében) |1 |
+| WindowSize (óó: PP: SS formátum) |00:05:00 |
+| gyűjtő (a metrika statisztikája, amely az átlagot használja, ebben az esetben) |Average |
+| Egyéni e-mailek (karakterlánc-tömb) |'foo@example.com','bar@example.com' |
 | e-mail küldése a tulajdonosoknak, közreműködőknek és olvasóknak |-SendToServiceOwners |
 
-E-mail-művelet létrehozása
+E-mail művelet létrehozása
 
 ```powershell
 $actionEmail = New-AzAlertRuleEmail -CustomEmail myname@company.com
 ```
 
-Hozzon létre egy Webhook művelettel
+Webhook-művelet létrehozása
 
 ```powershell
 $actionWebhook = New-AzAlertRuleWebhook -ServiceUri https://example.com?token=mytoken
 ```
 
-A riasztási szabály létrehozása a klasszikus virtuális gép CPU % metrikája
+Riasztási szabály létrehozása a CPU% metrika szolgáltatásban klasszikus virtuális gépen
 
 ```powershell
 Add-AzMetricAlertRule -Name vmcpu_gt_1 -Location "East US" -ResourceGroup myrg1 -TargetResourceId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.ClassicCompute/virtualMachines/my_vm1 -MetricName "Percentage CPU" -Operator GreaterThan -Threshold 1 -WindowSize 00:05:00 -TimeAggregationOperator Average -Action $actionEmail, $actionWebhook -Description "alert on CPU > 1%"
 ```
 
-A riasztási szabály lekérése
+A riasztási szabály beolvasása
 
 ```powershell
 Get-AzAlertRule -Name vmcpu_gt_1 -ResourceGroup myrg1 -DetailedOutput
 ```
 
-A Hozzáadás riasztási parancsmag frissíti a szabály is, ha a riasztási szabály már létezik a megadott tulajdonságokat. Riasztási szabály letiltása, adjon meg a paraméter **- DisableRule**.
+A riasztás hozzáadása parancsmag szintén frissíti a szabályt, ha már létezik riasztási szabály a megadott tulajdonságokhoz. A riasztási szabályok letiltásához adja meg a **-DisableRule**paramétert.
 
-## <a name="get-a-list-of-available-metrics-for-alerts"></a>A riasztásokhoz rendelkezésre álló metrikák listájának lekérése
-Használhatja a `Get-AzMetricDefinition` parancsmagot, hogy egy adott erőforrás az összes metrikát listájának megtekintéséhez.
+## <a name="get-a-list-of-available-metrics-for-alerts"></a>A riasztásokhoz elérhető metrikák listájának beolvasása
+A `Get-AzMetricDefinition` parancsmaggal megtekintheti egy adott erőforráshoz tartozó összes metrika listáját.
 
 ```powershell
 Get-AzMetricDefinition -ResourceId <resource_id>
 ```
 
-Az alábbi példa egy táblát a metrika neve és a hozzá tartozó egységet állít elő.
+Az alábbi példa egy táblázatot hoz létre a metrika nevével és a hozzá tartozó egységgel.
 
 ```powershell
 Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
 ```
 
-Az elérhető lehetőségek teljes listáját `Get-AzMetricDefinition` mindig elérhető legyen [Get-MetricDefinitions](https://msdn.microsoft.com/library/mt282458.aspx).
+A `Get-AzMetricDefinition` elérhető lehetőségeinek teljes listája a [Get-MetricDefinitions](https://msdn.microsoft.com/library/mt282458.aspx)címen érhető el.
 
-## <a name="create-and-manage-activity-log-alerts"></a>Tevékenységnapló-riasztások létrehozása és felügyelete
-Használhatja a `Set-AzActivityLogAlert` parancsmag egy tevékenységnapló-riasztás beállítása. Tevékenységnapló-riasztás megköveteli, hogy először adja meg a feltételeit tartalmazó feltételek szerint, majd hozzon létre egy riasztást, amely feltételeken használja.
+## <a name="create-and-manage-activity-log-alerts"></a>Műveletnapló-riasztások létrehozása és kezelése
+A `Set-AzActivityLogAlert` parancsmag használatával beállíthatja a műveletnapló riasztását. A műveletnapló riasztásához először meg kell határoznia a feltételeket szótárként, majd létre kell hoznia egy riasztást, amely ezeket a feltételeket használja.
 
 ```powershell
 
@@ -209,182 +219,182 @@ Set-AzActivityLogAlert -Location 'Global' -Name 'alert on VM create' -ResourceGr
 
 ```
 
-A további webhook tulajdonságainak megadása nem kötelező. Visszatérhet a tartalmát egy tevékenység Log riasztási a `Get-AzActivityLogAlert`.
+A további webhook-tulajdonságok nem kötelezőek. @No__t-0 használatával visszaállíthatja a tevékenység naplójának tartalmát.
 
-## <a name="create-and-manage-autoscale-settings"></a>Hozzon létre és automatikus méretezési beállítások kezelése
-Egy erőforrás (webes alkalmazás, virtuális gépek, Felhőszolgáltatás vagy virtuálisgép-méretezési) rendelkezhet beállított csak egy automatikus skálázási beállítás.
-Minden egyes automatikus skálázási beállítás azonban több profilt is rendelkezik. Például az egyik teljesítmény-alapú méretezési profil és a egy másikat ütemezésen alapuló profilok. Az egyes profilok konfigurálva több szabály is rendelkezhet. Automatikus skálázási kapcsolatos további információkért lásd: [az automatikus Skálázáshoz alkalmazás](../../cloud-services/cloud-services-how-to-scale-portal.md).
+## <a name="create-and-manage-autoscale-settings"></a>Az autoskálázási beállítások létrehozása és kezelése
+Egy erőforrás (webalkalmazás, virtuális gép, felhőalapú szolgáltatás vagy virtuálisgép-méretezési csoport) csak egy, a számára konfigurált méretezési beállítással rendelkezhet.
+Az egyes autoskálázási beállítások azonban több profillal is rendelkezhetnek. Például egy a teljesítmény-alapú méretezési profilhoz, egy másik pedig egy ütemezett profilhoz. Minden profilhoz több szabály is konfigurálható. Az autoscale használatával kapcsolatos további információkért lásd az [alkalmazások autoskálázását](../../cloud-services/cloud-services-how-to-scale-portal.md)ismertető témakört.
 
-Használandó lépései a következők:
+A következő lépéseket kell használni:
 
-1. Szabály létrehozásához.
-2. Hozzon létre az Ön által létrehozott szabályok korábban leképezése a profilokat a kívánt módon.
-3. Nem kötelező: Webhookok és e-mailek tulajdonságainak konfigurálása az automatikus skálázási értesítések létrehozásához.
-4. Hozzon létre egy automatikus skálázási beállítás a profilok és az előző lépésekben létrehozott értesítések leképezésével egy nevet a cél erőforráson.
+1. Szabály (ok) létrehozása.
+2. Profil (ok) létrehozása a korábban létrehozott szabályoknak a profilokhoz való hozzárendelésével.
+3. Nem kötelező: Hozzon létre értesítéseket az autoskálázáshoz a webhook és az e-mail-tulajdonságok konfigurálásával.
+4. Az előző lépésekben létrehozott profilok és értesítések leképezésével hozzon létre egy, a cél erőforrásban található névvel rendelkező autoskálázási beállítást.
 
-Az alábbi példák bemutatják, hogyan hozhat létre egy automatikus skálázási beállítás számára a Virtual Machine Scale Set használatával a CPU-kihasználtság mérőszám-alapú Windows operációs rendszer esetén.
+Az alábbi példák bemutatják, hogyan hozhat létre egy virtuálisgép-méretezési csoportra vonatkozó, a CPU-kihasználtság metrikája alapján egy Windows operációs rendszerhez készült, a virtuális gépek méretezésére szolgáló beállítást.
 
-Először hozzon létre egy szabályt, amely a horizontális felskálázás, a példányok száma növelését.
+Először hozzon létre egy szabályt a felskálázáshoz, és növelje a példányszámot.
 
 ```powershell
 $rule1 = New-AzAutoscaleRule -MetricName "Percentage CPU" -MetricResourceId /subscriptions/s1/resourceGroups/big2/providers/Microsoft.Compute/virtualMachineScaleSets/big2 -Operator GreaterThan -MetricStatistic Average -Threshold 60 -TimeGrain 00:01:00 -TimeWindow 00:10:00 -ScaleActionCooldown 00:10:00 -ScaleActionDirection Increase -ScaleActionValue 1
 ```        
 
-Ezután hozzon létre egy szabályt, az egy példány száma csökkenését.
+Ezután hozzon létre egy, a skálázáshoz használandó szabályt a példányszám csökkenésével.
 
 ```powershell
 $rule2 = New-AzAutoscaleRule -MetricName "Percentage CPU" -MetricResourceId /subscriptions/s1/resourceGroups/big2/providers/Microsoft.Compute/virtualMachineScaleSets/big2 -Operator GreaterThan -MetricStatistic Average -Threshold 30 -TimeGrain 00:01:00 -TimeWindow 00:10:00 -ScaleActionCooldown 00:10:00 -ScaleActionDirection Decrease -ScaleActionValue 1
 ```
 
-Ezután hozzon létre egy profilt a szabályokat.
+Ezután hozzon létre egy profilt a szabályokhoz.
 
 ```powershell
 $profile1 = New-AzAutoscaleProfile -DefaultCapacity 2 -MaximumCapacity 10 -MinimumCapacity 2 -Rules $rule1,$rule2 -Name "My_Profile"
 ```
 
-Hozzon létre egy webhook tulajdonságot.
+Hozzon létre egy webhook-tulajdonságot.
 
 ```powershell
 $webhook_scale = New-AzAutoscaleWebhook -ServiceUri "https://example.com?mytoken=mytokenvalue"
 ```
 
-Hozzon létre az automatikus skálázási beállítás, beleértve az e-mailek és a webhookot, amely a korábban létrehozott értesítési tulajdonsága.
+Hozza létre az értesítési tulajdonságot az autoskálázási beállításhoz, beleértve az e-maileket és a korábban létrehozott webhookot.
 
 ```powershell
 $notification1= New-AzAutoscaleNotification -CustomEmails ashwink@microsoft.com -SendEmailToSubscriptionAdministrators SendEmailToSubscriptionCoAdministrators -Webhooks $webhook_scale
 ```
 
-Végül hozza létre az automatikus skálázási beállítás a korábban létrehozott profil hozzáadásához. 
+Végül hozza létre az autoskálázási beállítást a korábban létrehozott profil hozzáadásához. 
 
 ```powershell
 Add-AzAutoscaleSetting -Location "East US" -Name "MyScaleVMSSSetting" -ResourceGroup big2 -TargetResourceId /subscriptions/s1/resourceGroups/big2/providers/Microsoft.Compute/virtualMachineScaleSets/big2 -AutoscaleProfiles $profile1 -Notifications $notification1
 ```
 
-Az automatikus méretezési beállítások kezelésével kapcsolatos további információkért lásd: [Get-AutoscaleSetting](https://msdn.microsoft.com/library/mt282461.aspx).
+Az autoscale-beállítások kezelésével kapcsolatos további információkért lásd: [Get-AutoscaleSetting](https://msdn.microsoft.com/library/mt282461.aspx).
 
-## <a name="autoscale-history"></a>Automatikus skálázási előzmények
-Az alábbi példa bemutatja, hogyan megtekintheti a legutóbbi automatikus méretezést és figyelmeztetési események. A tevékenység naplóbeli keresés használatával az automatikus skálázási előzményeinek megtekintése.
+## <a name="autoscale-history"></a>Az autoskálázás előzményei
+Az alábbi példa bemutatja, hogyan tekintheti meg a legutóbbi méretezési és riasztási eseményeket. A tevékenység naplójának keresési funkciójának használatával megtekintheti az autoskálázási előzményeket.
 
 ```powershell
 Get-AzLog -Caller "Microsoft.Insights/autoscaleSettings" -DetailedOutput -StartTime 2015-03-01
 ```
 
-Használhatja a `Get-AzAutoScaleHistory` automatikus skálázási előzmények beolvasásához.
+A `Get-AzAutoScaleHistory` parancsmag használatával lekérheti az autoskálázási előzményeket.
 
 ```powershell
 Get-AzAutoScaleHistory -ResourceId /subscriptions/s1/resourceGroups/myrg1/providers/microsoft.insights/autoscalesettings/myScaleSetting -StartTime 2016-03-15 -DetailedOutput
 ```
 
-További információkért lásd: [Get-AutoscaleHistory](https://msdn.microsoft.com/library/mt282464.aspx).
+További információ: [Get-AutoscaleHistory](https://msdn.microsoft.com/library/mt282464.aspx).
 
-### <a name="view-details-for-an-autoscale-setting"></a>Az automatikus skálázási beállítás részleteinek megtekintése
-Használhatja a `Get-Autoscalesetting` további információ az automatikus skálázási beállítás beolvasásához.
+### <a name="view-details-for-an-autoscale-setting"></a>Egy autoskálázási beállítás részleteinek megtekintése
+A `Get-Autoscalesetting` parancsmaggal további információkat kérhet le az autoskálázási beállításról.
 
-Az alábbi példa bemutatja az összes automatikus skálázási beállítások részleteit a myrg1"erőforrás csoport".
+Az alábbi példa a "myrg1" erőforráscsoport összes autoskálázási beállításának részleteit mutatja be.
 
 ```powershell
 Get-AzAutoscalesetting -ResourceGroup myrg1 -DetailedOutput
 ```
 
-Az alábbi példa bemutatja az erőforrás "myrg1" csoport az összes automatikus skálázási beállítás és a kifejezetten az automatikus skálázási beállítás "MyScaleVMSSSetting" nevű részleteit.
+Az alábbi példa a "myrg1" erőforráscsoport összes autoskálázási beállításának részleteit mutatja be, pontosabban a "MyScaleVMSSSetting" nevű autoskálázási beállítást.
 
 ```powershell
 Get-AzAutoscalesetting -ResourceGroup myrg1 -Name MyScaleVMSSSetting -DetailedOutput
 ```
 
-### <a name="remove-an-autoscale-setting"></a>Az automatikus skálázási beállítás törlése
-Használhatja a `Remove-Autoscalesetting` parancsmagot, hogy az automatikus skálázási beállítás törlése.
+### <a name="remove-an-autoscale-setting"></a>Egy autoskálázási beállítás eltávolítása
+Az autoskálázási beállítás törléséhez használja a `Remove-Autoscalesetting` parancsmagot.
 
 ```powershell
 Remove-AzAutoscalesetting -ResourceGroup myrg1 -Name MyScaleVMSSSetting
 ```
 
-## <a name="manage-log-profiles-for-activity-log"></a>Naplóprofilok a tevékenységnapló kezelése
-Létrehozhat egy *naplóprofil* és a tevékenységnapló egy tárfiókot, és hogy az adatok exportálása az adatmegőrzés konfigurálhatja azt. Az adatok igény szerint, az Eseményközpont is adatfolyam. Ez a funkció jelenleg előzetes verzióban és csak egy naplóprofil előfizetésenként hozhat létre. Segítségével a következő parancsmagokat az aktuális előfizetéshez log profilok létrehozásához és kezeléséhez. Azt is beállíthatja egy adott előfizetésben. Bár a PowerShell alapértelmezés szerint az aktuális előfizetésben, módosíthatja, hogy az `Set-AzContext`. Konfigurálhatja a tevékenységnapló adatátirányításhoz minden olyan tárfiókhoz vagy az Eseményközpont adott előfizetésen belül. Adatok JSON formátumban blob-fájlok formájában van megírva.
+## <a name="manage-log-profiles-for-activity-log"></a>A műveletnapló profiljainak kezelése
+Létrehozhat egy log- *profilt* , és exportálhatja az adatait a tevékenység naplójából egy Storage-fiókba, és beállíthatja az adatmegőrzést. Igény szerint továbbíthatja az adatait az Event hub-ba is. Ez a szolgáltatás jelenleg előzetes verzióban érhető el, és előfizetéshez csak egy naplózási profilt hozhat létre. A következő parancsmagokat használhatja a jelenlegi előfizetésével a log profilok létrehozásához és kezeléséhez. Kiválaszthat egy adott előfizetést is. Habár a PowerShell alapértelmezés szerint a jelenlegi előfizetést használja, bármikor módosíthatja a `Set-AzContext` használatával. A műveletnapló konfigurálásával az adott előfizetésen belül bármely Storage-fiókra vagy Event hub-ra irányíthatja az adatútvonalat. Az adatfájlok JSON formátumú blob-fájlként íródnak.
 
-### <a name="get-a-log-profile"></a>A napló profil beolvasása
-A meglévő naplóprofilok beolvasni, használja a `Get-AzLogProfile` parancsmagot.
+### <a name="get-a-log-profile"></a>Log-profil beolvasása
+A meglévő log-profilok beolvasásához használja a `Get-AzLogProfile` parancsmagot.
 
-### <a name="add-a-log-profile-without-data-retention"></a>Adatok megőrzése nélkül log profil hozzáadása
+### <a name="add-a-log-profile-without-data-retention"></a>Adatmegőrzés nélküli log-profil hozzáadása
 ```powershell
-Add-AzLogProfile -Name my_log_profile_s1 -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -Locations global,westus,eastus,northeurope,westeurope,eastasia,southeastasia,japaneast,japanwest,northcentralus,southcentralus,eastus2,centralus,australiaeast,australiasoutheast,brazilsouth,centralindia,southindia,westindia
+Add-AzLogProfile -Name my_log_profile_s1 -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -Location global,westus,eastus,northeurope,westeurope,eastasia,southeastasia,japaneast,japanwest,northcentralus,southcentralus,eastus2,centralus,australiaeast,australiasoutheast,brazilsouth,centralindia,southindia,westindia
 ```
 
-### <a name="remove-a-log-profile"></a>Napló profil eltávolítása
+### <a name="remove-a-log-profile"></a>Log-profil eltávolítása
 ```powershell
 Remove-AzLogProfile -name my_log_profile_s1
 ```
 
-### <a name="add-a-log-profile-with-data-retention"></a>Az adatmegőrzési naplót profil hozzáadása
-Megadhatja a **- RetentionInDays** tulajdonságot, amelyben az adott számú napon, egy pozitív egész számot, ahol az adatok megőrződnek.
+### <a name="add-a-log-profile-with-data-retention"></a>Adatmegőrzést biztosító log-profil hozzáadása
+Megadhatja a **-RetentionInDays** tulajdonságot a napok számával, pozitív egészként, ahol az adat megmarad.
 
 ```powershell
-Add-AzLogProfile -Name my_log_profile_s1 -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -Locations global,westus,eastus,northeurope,westeurope,eastasia,southeastasia,japaneast,japanwest,northcentralus,southcentralus,eastus2,centralus,australiaeast,australiasoutheast,brazilsouth,centralindia,southindia,westindia -RetentionInDays 90
+Add-AzLogProfile -Name my_log_profile_s1 -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -Location global,westus,eastus,northeurope,westeurope,eastasia,southeastasia,japaneast,japanwest,northcentralus,southcentralus,eastus2,centralus,australiaeast,australiasoutheast,brazilsouth,centralindia,southindia,westindia -RetentionInDays 90
 ```
 
-### <a name="add-log-profile-with-retention-and-eventhub"></a>Naplóprofil megőrzési és az EventHub hozzáadása
-Az adatok tárfiókba az útválasztáson kívül is streamelheti azt az Eseményközpontba. Ez az előzetes kiadásban a storage-fiók konfigurációjának megadása kötelező, de az Eseményközpont konfigurálása nem kötelező.
+### <a name="add-log-profile-with-retention-and-eventhub"></a>Naplózási profil hozzáadása a megőrzéssel és a EventHub
+Az adatok Storage-fiókba való továbbítása mellett azt is megteheti, hogy egy Event hub-ba is továbbíthatja azt. Ebben az előzetes kiadásban a Storage-fiók konfigurációja kötelező, de az Event hub konfigurációja nem kötelező.
 
 ```powershell
-Add-AzLogProfile -Name my_log_profile_s1 -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Locations global,westus,eastus,northeurope,westeurope,eastasia,southeastasia,japaneast,japanwest,northcentralus,southcentralus,eastus2,centralus,australiaeast,australiasoutheast,brazilsouth,centralindia,southindia,westindia -RetentionInDays 90
+Add-AzLogProfile -Name my_log_profile_s1 -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Location global,westus,eastus,northeurope,westeurope,eastasia,southeastasia,japaneast,japanwest,northcentralus,southcentralus,eastus2,centralus,australiaeast,australiasoutheast,brazilsouth,centralindia,southindia,westindia -RetentionInDays 90
 ```
 
 ## <a name="configure-diagnostics-logs"></a>Diagnosztikai naplók konfigurálása
-Számos Azure-szolgáltatásokat nyújtanak további naplók és a telemetriai adatokból, hogy egy vagy több, a következőket teheti: 
- - úgy konfigurálni, hogy az adatok mentése az Azure Storage-fiókban
- - az Event hubs szolgáltatásba küldött
- - Log Analytics-munkaterület küldi. 
+Számos Azure-szolgáltatás további naplókat és telemetria biztosít, amelyek a következők közül választhatnak: 
+ - konfigurálható az Azure Storage-fiókban tárolt adatmentéshez
+ - elküldve Event Hubs
+ - elküldjük egy Log Analytics munkaterületre. 
 
-A művelet csak egy erőforrás szinten hajtható végre. A storage-fiók vagy eseményközpont ugyanabban a régióban a célként megadott erőforrás, ahol a diagnosztikai beállítás konfigurálva jelen kell lennie.
+A műveletet csak erőforrás szintjén lehet végrehajtani. A Storage-fióknak vagy az Event hub-nek ugyanabban a régióban kell lennie, mint a diagnosztikai beállítást futtató célként megadott erőforrásnak.
 
 ### <a name="get-diagnostic-setting"></a>Diagnosztikai beállítás beolvasása
 ```powershell
 Get-AzDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Logic/workflows/andy0315logicapp
 ```
 
-Diagnosztikai beállítás letiltása
+Diagnosztikai beállítások letiltása
 
 ```powershell
 Set-AzDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Logic/workflows/andy0315logicapp -StorageAccountId /subscriptions/s1/resourceGroups/Default-Storage-WestUS/providers/Microsoft.Storage/storageAccounts/mystorageaccount -Enable $false
 ```
 
-Diagnosztikai beállítás nélkül adatmegőrzés engedélyezése
+Diagnosztikai beállítás engedélyezése megőrzés nélkül
 
 ```powershell
 Set-AzDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Logic/workflows/andy0315logicapp -StorageAccountId /subscriptions/s1/resourceGroups/Default-Storage-WestUS/providers/Microsoft.Storage/storageAccounts/mystorageaccount -Enable $true
 ```
 
-A megőrzési diagnosztikai beállítás engedélyezése
+Diagnosztikai beállítás engedélyezése megőrzéssel
 
 ```powershell
 Set-AzDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Logic/workflows/andy0315logicapp -StorageAccountId /subscriptions/s1/resourceGroups/Default-Storage-WestUS/providers/Microsoft.Storage/storageAccounts/mystorageaccount -Enable $true -RetentionEnabled $true -RetentionInDays 90
 ```
 
-Egy adott naplókategória adatmegőrzési-diagnosztikai beállítás engedélyezése
+Diagnosztikai beállítás engedélyezése egy adott naplózási kategória megőrzésével
 
 ```powershell
 Set-AzDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/insights-integration/providers/Microsoft.Network/networkSecurityGroups/viruela1 -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/sakteststorage -Categories NetworkSecurityGroupEvent -Enable $true -RetentionEnabled $true -RetentionInDays 90
 ```
 
-Az Event Hubs diagnosztikai beállítás engedélyezése
+Diagnosztikai beállítás engedélyezése Event Hubs
 
 ```powershell
 Set-AzDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/insights-integration/providers/Microsoft.Network/networkSecurityGroups/viruela1 -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Enable $true
 ```
 
-A Log Analytics diagnosztikai beállítás engedélyezése
+Diagnosztikai beállítás engedélyezése Log Analytics
 
 ```powershell
 Set-AzDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/insights-integration/providers/Microsoft.Network/networkSecurityGroups/viruela1 -WorkspaceId /subscriptions/s1/resourceGroups/insights-integration/providers/providers/microsoft.operationalinsights/workspaces/myWorkspace -Enabled $true
 
 ```
 
-Vegye figyelembe, hogy a munkaterület azonosítója tulajdonság vesz igénybe a *erőforrás-azonosító* a munkaterület. Az erőforrás-Azonosítóját a Log Analytics-munkaterület a következő paranccsal szerezheti be:
+Vegye figyelembe, hogy a munkaterület azonosítója tulajdonság a munkaterület *erőforrás-azonosítóját* veszi át. Az erőforrás-Azonosítóját a Log Analytics-munkaterület a következő paranccsal szerezheti be:
 
 ```powershell
 (Get-AzOperationalInsightsWorkspace).ResourceId
 
 ```
 
-Ezek a parancsok kombinálható több célhelyre történő adatküldéshez.
+Ezek a parancsok kombinálhatók több célhelyre történő adatküldéshez is.
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 862594797410c19a60bf6cc34ba50868e52148ad
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 220f2d0f857b4626dbadccaf30a7a436bb15f409
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57839372"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67095251"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ou-campus"></a>Oktatóanyag: Szervezeti egység Campus az Azure Active Directory-integráció
 
@@ -52,7 +52,7 @@ Az Azure AD integrálása a szervezeti egység Campus konfigurálásához hozzá
 
 **Szervezeti egység Campus hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

@@ -8,19 +8,19 @@ manager: ''
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
-ms.service: monitoring-and-diagnostics
+ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
-ms.author: ajaycode
-ms.openlocfilehash: 42fb5d69a1f32d669ad5191e342b3f2f880b8c98
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.author: agummadi
+ms.openlocfilehash: 2912488286745bf8d2e567d09e445b0a44dc7c39
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60006672"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672178"
 ---
 # <a name="network-monitoring-solutions"></a>Hálózati megoldások monitorozása 
 
@@ -41,11 +41,11 @@ Teljesítményfigyelő, az ExpressRoute-figyelő és a szolgáltatás Kapcsolatf
 
 A Teljesítményfigyelő az NPM részét képezi, és hálózati felhőalapú, hibrid és helyszíni környezetek figyelése. Fiókirodai és kirendeltségekben, tárolási helyek, az adatközpontok és felhők közötti hálózati kapcsolat követheti nyomon. Hálózati problémák képes észlelni, mielőtt felhasználói panaszok. A fő előnyei a következők:
 
-* Különböző alhálózatokban és beállított riasztásokkal figyelheti a veszteséget és a késést
+* Különböző alhálózatokban és beállított riasztásokkal kimaradások és késések figyelése
 * A hálózaton (beleértve a redundáns elérési utak) összes útvonalának figyelése
 * Átmeneti és időponthoz – hálózati problémák, amelyeket nehéz replikálni
 * A hálózat, teljesítménycsökkenésért felelős konkrét szegmensét meghatározása
-* Anélkül monitorozhatja a hálózat állapotát, hogy az SNMP protokollt kellene használnia
+* Az SNMP protokollt kellene nélkül, a hálózat állapotának figyelése
 
 ![Az NPM-topológia térkép](./media/network-monitoring-overview/npm-topology-map.png) 
 
@@ -53,7 +53,9 @@ További információkért tekintse meg a következő cikkeket:
 
 * [A Network Performance Monitor megoldás konfigurálása az Azure Monitor naplóira](../azure-monitor/insights/network-performance-monitor.md) 
 * [Használati esetek](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/)
-*  Termékfrissítések: [2017 február](https://blogs.technet.microsoft.com/msoms/2017/02/27/oms-network-performance-monitor-is-now-generally-available/), [2017. augusztus](https://blogs.technet.microsoft.com/msoms/2017/08/14/improvements-to-oms-network-performance-monitor/)
+* Termékfrissítések:
+  * [2017. február](https://blogs.technet.microsoft.com/msoms/2017/02/27/oms-network-performance-monitor-is-now-generally-available/)
+  * [2017. augusztus](https://blogs.technet.microsoft.com/msoms/2017/08/14/improvements-to-oms-network-performance-monitor/)
 
 ## <a name="expressroute-monitor"></a>ExpressRoute-figyelő
 

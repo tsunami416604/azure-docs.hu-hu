@@ -1,62 +1,68 @@
 ---
-title: A kognitív keresés dokumentációja erőforrások – Azure Search
-description: Jegyzettel ellátott listája cikkeket, oktatóanyagok, minták és blog kapcsolódó a cognitive search számítási feladatokat az Azure Search tesz közzé.
+title: Kognitív keresési dokumentációs erőforrások – Azure Search
+description: A Azure Searchban található kognitív keresési munkaterhelésekhez kapcsolódó cikkek, oktatóanyagok, minták és blogbejegyzések jegyzetekkel ellátott listája.
 services: search
-manager: cgronlun
+manager: nitinme
 author: HeidiSteen
 ms.service: search
-ms.devlang: NA
 ms.topic: conceptual
-ms.date: 05/04/2018
+ms.date: 05/02/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 609b5d990cffce10733f6fc82e6b1032ad0f06bb
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 7267f40a981b984ab945d956ff3552157267cd43
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314601"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265466"
 ---
-# <a name="documentation-resources-for-cognitive-search-workloads"></a>Dokumentációs forrásanyagot cognitive search számítási feladatokhoz
+# <a name="documentation-resources-for-cognitive-search-workloads"></a>Dokumentációs erőforrások a kognitív keresési munkaterhelésekhez
 
-Cognitive search, mostantól nyilvános előzetes verzióban érhető el, amely a egy új felderítési bővítést az Azure Search-indexelő, amely segít a rejtett információkat talál az nem szöveges forrásokból és magánháztartás szöveg, átalakítja őket az Azure Search teljes szöveges kereshető tartalmakká.
+Az általánosan elérhető kognitív keresés egy új alkoholtartalom-növelési réteg Azure Search indexelésben, amely látens információt keres a nem szöveges forrásokban és a nem differenciált szövegeket, és átalakítja a teljes szöveges kereshető tartalmat a Azure Searchban.
 
-A következő cikkekben talál olyan cognitive search teljes dokumentációját.
+A következő cikkek a kognitív keresés teljes dokumentációját jelentik.
 
 ## <a name="getting-started"></a>Első lépések
-+ [Mi a cognitive search?](cognitive-search-concept-intro.md)
-+ [Gyors útmutató: A portálon a kognitív keresés kipróbálása](cognitive-search-quickstart-blob.md)
-+ [Oktatóanyag: Ismerje meg, a cognitive search API-k](cognitive-search-tutorial-blob.md)
-+ [Példa: egyéni képesség létrehozása](cognitive-search-create-custom-skill-example.md)
++ [Mi a kognitív keresés?](cognitive-search-concept-intro.md)
++ [Rövid útmutató: A kognitív keresés kipróbálása a portálon](cognitive-search-quickstart-blob.md)
++ [Oktatóanyag: Ismerje meg a kognitív keresési API-kat](cognitive-search-tutorial-blob.md)
++ [Példa: Egyéni képesség létrehozása a kognitív kereséshez](cognitive-search-create-custom-skill-example.md)
 
-## <a name="how-to-guidance"></a>Útmutatók
-+ [Hogyan képességcsoport megadása](cognitive-search-defining-skillset.md)
-+ [Hogyan lehet hivatkozni a képességek alkalmazási lehetőségét a jegyzetek](cognitive-search-concept-annotations-syntax.md)
-+ [Mezők leképezése egy index](cognitive-search-output-field-mapping.md)
-+ [Hogyan dolgozza fel, és információt nyerhet ki képekből](cognitive-search-concept-image-scenarios.md)
-+ [Hogyan lehet Azure Search-index újraépítése](search-howto-reindex.md)
-+ [Egy egyéni képesség felületet definiálása](cognitive-search-custom-skill-interface.md)
+## <a name="how-to-guidance"></a>Útmutató
++ [Készségkészlet definiálása](cognitive-search-defining-skillset.md)
++ [Megjegyzések készségkészlet való hivatkozása](cognitive-search-concept-annotations-syntax.md)
++ [Mezők leképezése indexre](cognitive-search-output-field-mapping.md)
++ [Információk feldolgozása és kinyerése képekből](cognitive-search-concept-image-scenarios.md)
++ [Azure Search index újraépítése](search-howto-reindex.md)
++ [Egyéni szaktudás-illesztőfelület definiálása](cognitive-search-custom-skill-interface.md)
 + [Hibaelhárítási tippek](cognitive-search-concept-troubleshooting.md)
 
-## <a name="reference"></a>Leírások
+## <a name="reference"></a>Hivatkozás
 
-+ [Előre megadott képesség](cognitive-search-predefined-skills.md)
-  + [Microsoft.Skills.Text.KeyPhraseSkill](cognitive-search-skill-keyphrases.md)
++ [Előre definiált képességek](cognitive-search-predefined-skills.md)
+  + [Microsoft. Skills. Text. KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md)
   + [Microsoft.Skills.Text.LanguageDetectionSkill](cognitive-search-skill-language-detection.md)
-  + [Microsoft.Skills.Text.NamedEntityRecognitionSkill](cognitive-search-skill-named-entity-recognition.md)
-  + [Microsoft.Skills.Text.MergeSkill](cognitive-search-skill-textmerger.md)
+  + [Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md)
+  + [Microsoft. Skills. Text. MergeSkill](cognitive-search-skill-textmerger.md)
   + [Microsoft.Skills.Text.SplitSkill](cognitive-search-skill-textsplit.md)
   + [Microsoft.Skills.Text.SentimentSkill](cognitive-search-skill-sentiment.md)
+  + [Microsoft. Skills. Text. TranslationSkill](cognitive-search-skill-text-translation.md)
   + [Microsoft.Skills.Vision.ImageAnalysisSkill](cognitive-search-skill-image-analysis.md)
   + [Microsoft.Skills.Vision.OcrSkill](cognitive-search-skill-ocr.md)
+  + [Microsoft. Skills. util. ConditionalSkill](cognitive-search-skill-conditional.md)
   + [Microsoft.Skills.Util.ShaperSkill](cognitive-search-skill-shaper.md)
 
-+ [Előzetes verziójú REST API](search-api-2017-11-11-preview.md)
-  + [Képességcsoport létrehozása (api-version = 2017-11-11-előzetes verzió)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
-  + [Indexelő létrehozása (api-version = 2017-11-11-előzetes verzió)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
++ Egyéni készségek
+  + [Microsoft.Skills.Custom.WebApiSkill](cognitive-search-custom-skill-web-api.md)
+
++ [Elavult képességek](cognitive-search-skill-deprecated.md)
+  + [Microsoft.Skills.Text.NamedEntityRecognitionSkill](cognitive-search-skill-named-entity-recognition.md)
+
++ [REST API](https://docs.microsoft.com/rest/api/searchservice/)
+  + [Készségkészlet létrehozása (API-Version = 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
+  + [Indexelő létrehozása (API-Version = 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
 
 ## <a name="see-also"></a>Lásd még
 
-+ [Az Azure Search REST API-val](https://docs.microsoft.com/rest/api/searchservice/)
-+ [Indexelők az Azure Search szolgáltatásban](search-indexer-overview.md)
++ [Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice/)
++ [Indexelő a Azure Search](search-indexer-overview.md)
 + [Mi az az Azure Search?](search-what-is-azure-search.md)

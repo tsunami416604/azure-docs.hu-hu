@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: e1951a65c48c32f2ce4af722400d03c20dfa684b
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: e624520a9d1f39bc8115ac72e9df0398065928f1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565393"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67102391"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fluxx-labs"></a>Oktatóanyag: Az Azure Active Directory-integráció az Fluxx Labs
 
@@ -53,7 +53,7 @@ Fluxx laborok integrálása az Azure AD beállítása, hozzá kell Fluxx Labs a 
 
 **Fluxx Labs hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -154,7 +154,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása Fluxx tanulhat, hajtsa végr
 
     a. Válassza ki a **SAML SSO** jelölőnégyzetet.
 
-    b. Az a **kérelem elérési útját** szövegmezőbe írja be **saml/auth/**.
+    b. Az a **kérelem elérési útját** szövegmezőbe írja be **saml/auth/** .
 
     c. Az a **visszahívási elérési** szövegmezőbe írja be **/auth/saml/callback**.
 

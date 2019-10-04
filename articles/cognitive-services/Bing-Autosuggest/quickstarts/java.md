@@ -1,30 +1,30 @@
 ---
-title: 'Gyors útmutató: Keresési lekérdezések a Bing Autosuggest REST API és a Java-javaslat'
-titlesuffix: Azure Cognitive Services
-description: Ismerje meg, hogy gyorsan a keresési kifejezéseket javasol a Bing Autosuggest API valós időben.
+title: 'Gyors útmutató: A Bing Autosuggest REST API és a Javához tartozó keresési lekérdezések ajánlása'
+titleSuffix: Azure Cognitive Services
+description: Megtudhatja, hogyan kezdheti el gyorsan a keresési kifejezések feltételeit a Bing Autosuggest API valós időben.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 02/20/2019
+ms.date: 07/26/2019
 ms.author: aahi
-ms.openlocfilehash: 64b6ed680ba0812322d5796debc5edada19bc926
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0a0fb1e8f79587223ae1f25ca8a7e0d6dc7cc5bb
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58118833"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565836"
 ---
-# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-java"></a>Gyors útmutató: Keresési lekérdezések a Bing Autosuggest REST API és a Java-javaslat
+# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-java"></a>Gyors útmutató: A Bing Autosuggest REST API és a Javához tartozó keresési lekérdezések ajánlása
 
 
-Ez a rövid útmutató elindításához, így a Bing Autosuggest API és a JSON-válasz első meghívja használja. Ez egyszerű Java-alkalmazás az API-hoz egy részleges keresési lekérdezést küld, és keresések javaslatokat ad vissza. Bár ez az alkalmazás Java nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel. Ehhez a mintához forráskódja elérhető a [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingAutosuggestv7.java)
+Ezzel a rövid útmutatóval megkezdheti a Bing Autosuggest API hívások kezdeményezését és a JSON-válasz beszerzését. Ez az egyszerű Java-alkalmazás részleges keresési lekérdezést küld az API-nak, és a keresésekre vonatkozó javaslatokat ad vissza. Bár ez az alkalmazás Java nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel. A minta forráskódja elérhető a [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingAutosuggestv7.java)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A [Java fejlesztési Kit(JDK)](https://www.oracle.com/technetwork/java/javase/downloads/)
+* A [Java fejlesztői készlet (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/)
 * A [Gson-kódtár](https://github.com/google/gson)
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-autosuggest-signup-requirements.md)]
@@ -44,7 +44,7 @@ Ez a rövid útmutató elindításához, így a Bing Autosuggest API és a JSON-
     import com.google.gson.JsonParser;
     ```
 
-2. Az előfizetési kulcs API-gazdát és az elérési út, változók létrehozása a [kód piaci](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference#market-codes), és a egy keresési lekérdezést.
+2. Hozzon létre változókat az előfizetési kulcs, az API-állomás és az elérési út, a [piaci kód](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)és a keresési lekérdezés számára.
     
     ```java
     static String subscriptionKey = "enter key here";
@@ -57,7 +57,7 @@ Ez a rövid útmutató elindításához, így a Bing Autosuggest API és a JSON-
 
 ## <a name="format-the-response"></a>A válasz formázása
 
-Hozzon létre egy metódust `prettify()` formázhatja a Bing Video API válasza. A Gson kódtára `JsonParser` számára a JSON-karakterláncot és a egy objektum átalakíthatja. Ezután `GsonBuilder()` és `toJson()` hozhat létre a formázott karakterláncot.
+Hozzon létre egy `prettify()` nevű metódust a Bing video API által visszaadott válasz formázásához. A Gson könyvtárának `JsonParser` használatával egy JSON-karakterláncban végezheti el a konvertálást, és átalakíthatja őket egy objektumba. Ezután a `GsonBuilder()` és `toJson()` a használatával hozza létre a formázott karakterláncot.
 
 ```java
 // pretty-printer for JSON; uses GSON parser to parse and re-serialize
@@ -69,11 +69,11 @@ public static String prettify(String json_text) {
 }
 ```
 
-## <a name="construct-and-send-the-search-request"></a>Hozza létre, és a keresési kérelem küldése
+## <a name="construct-and-send-the-search-request"></a>A keresési kérelem létrehozása és elküldése
 
-1. Hozzon létre egy új metódust `get_suggestions()` , és hajtsa végre az alábbi lépéseket:
+1. Hozzon létre egy nevű `get_suggestions()` új metódust, és hajtsa végre a következő lépéseket:
 
-   1. hozza létre a kérelem URL-címe az API-t kombinálásával gazdagép elérési útja és a keresési lekérdezés kódolás. Ügyeljen arra, hogy url-kódolása a lekérdezés hozzáfűzése, mielőtt. A lekérdezés paraméterei karakterlánc létrehozása a piaci kódot hozzáfűzésével a `mkt=` paraméterhez, és a lekérdezés a `q=` paraméter.
+   1. hozza létre a kérelem URL-címét az API-állomás, az elérési út és a keresési lekérdezés kódolásának kombinálásával. Ügyeljen arra, hogy URL-kódolással kódolja a lekérdezést a Hozzáfűzés előtt. Hozzon létre egy paraméter-karakterláncot a lekérdezéshez úgy, hogy hozzáfűzi a (z) `mkt=` paraméterhez a piaci kódot, és lekérdezi a `q=` paramétert.
     
       ```java
   
@@ -84,7 +84,7 @@ public static String prettify(String json_text) {
       }
       ```
     
-   2. Hozzon létre egy új a kérelem URL-CÍMÉT az API-gazdagép, elérési út és paramétereit a fent létrehozott. 
+   2. Hozzon létre egy új URL-címet a kérelemhez az API-gazdagép, az elérési út és a fent létrehozott paraméterek alapján. 
     
        ```java
        //...
@@ -92,7 +92,7 @@ public static String prettify(String json_text) {
        //...
        ```
     
-   3. Hozzon létre egy `HttpsURLConnection` objektumot, és használjon `openConnection()` kapcsolat létrehozásához. A kérelem módszert állítja be `GET`, és adja hozzá az előfizetési kulcs, a `Ocp-Apim-Subscription-Key` fejléc.
+   3. Hozzon `HttpsURLConnection` létre egy objektumot, `openConnection()` és a használatával hozzon létre egy-egy kapcsolatokat. Állítsa be a kérelem metódusát `GET`, és adja hozzá az előfizetési kulcsot a `Ocp-Apim-Subscription-Key` fejléchez.
 
       ```java
        //...
@@ -103,7 +103,7 @@ public static String prettify(String json_text) {
        //...
       ```
 
-   4. Olvassa el az API válaszként egy `StringBuilder`. Miután a válasz már megtörtént, zárja be a `InputStreamReader` eseménystreamben, és a választ adja vissza.
+   4. Olvassa el az API-választ `StringBuilder`a következőre:. A válasz rögzítése után zárd be a `InputStreamReader` streamet, és adja vissza a választ.
 
        ```java
        //...
@@ -119,7 +119,7 @@ public static String prettify(String json_text) {
        return response.toString();
        ```
 
-2. Az alkalmazás fő függvényét, a hívás `get_suggestions()`, és a válasz operátorral `prettify()`.
+2. Az alkalmazás fő függvényében hívja `get_suggestions()`meg és nyomtassa ki a választ a használatával. `prettify()`
     
     ```java
     public static void main(String[] args) {
@@ -133,7 +133,7 @@ public static String prettify(String json_text) {
     }
     ```
 
-## <a name="example-json-response"></a>Példa JSON-válasz
+## <a name="example-json-response"></a>Példa JSON-válaszra
 
 A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon: 
 
@@ -207,4 +207,4 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 > [Egyoldalas webalkalmazás létrehozása](../tutorials/autosuggest.md)
 
 - [Mi az a Bing Autosuggest?](../get-suggested-search-terms.md)
-- [A Bing Autosuggest API 7-es verziójának referenciája](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference)
+- [A Bing Autosuggest API 7-es verziójának referenciája](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)

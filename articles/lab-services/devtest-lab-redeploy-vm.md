@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/11/2018
 ms.author: spelluru
 ms.openlocfilehash: 4500fcfa6fbfb346a6e5c7fd045ba0046a901b91
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57454255"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60561624"
 ---
 # <a name="redeploy-a-vm-in-a-lab-in-azure-devtest-labs"></a>Ismételt üzembe helyezése egy virtuális Géphez az Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet
 Ha nem tud csatlakozni a virtuális gép (VM) egy távoli asztali kapcsolaton keresztül tesztkörnyezetben, a virtuális gép ismételt üzembe, és próbáljon újra kapcsolódni hozzá. Ha egy virtuális gép újbóli telepítése, DevTest Labs a virtuális gép a csomópont, amelyen fut az Azure infrastruktúráján belül egy új csomópont helyezi át. Ezután elindítja a virtuális gépek megtartja a konfigurációs beállításokat és a kapcsolódó erőforrásokat. Ez a funkció menti, töltött idő a hibaelhárítást a távoli asztali kapcsolat vagy a Windows-alapú virtuális gépeket a tesztkörnyezetben történő alkalmazás-hozzáférés. 

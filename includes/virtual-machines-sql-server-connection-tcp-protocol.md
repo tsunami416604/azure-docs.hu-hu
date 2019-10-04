@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
 ms.openlocfilehash: 8b919608dfc562d8db77619d5215a6828a53a4aa
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51263913"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179061"
 ---
 1. Miközben a távoli asztalról csatlakozik a virtuális géphez, keressen rá a **Configuration Manager** kifejezésre:
 
@@ -21,7 +21,7 @@ ms.locfileid: "51263913"
 
     ![A TCP engedélyezése](./media/virtual-machines-sql-server-connection-tcp-protocol/enable-tcp.png)
 
-1. A konzolablakban kattintson az **SQL Server Services** lehetőségre. A részleteket tartalmazó ablaktáblán kattintson a jobb gombbal **SQL Server (*példánynév*)** (az alapértelmezett példány **SQL Server (MSSQLSERVER)**), és kattintson a **újraindítása**, hogy állítsa le és indítsa újra az SQL Server példányát.
+1. A konzolablakban kattintson az **SQL Server Services** lehetőségre. A részleteket tartalmazó ablaktáblán kattintson a jobb gombbal **SQL Server (*példánynév*)** (az alapértelmezett példány **SQL Server (MSSQLSERVER)** ), és kattintson a **újraindítása**, hogy állítsa le és indítsa újra az SQL Server példányát.
 
     ![Az Adatbázismotor újraindítása](./media/virtual-machines-sql-server-connection-tcp-protocol/restart-sql-server.png)
 

@@ -1,6 +1,6 @@
 ---
-title: Nagyvállalati Java-webalkalmazás létrehozása linuxon – az Azure App Service |} A Microsoft Docs
-description: Ismerje meg, hogyan üzembe a Linuxon futó Azure App Service Wildfly a Java Enterprise-alkalmazást.
+title: Java Enterprise Web App létrehozása Linux rendszeren – Azure App Service | Microsoft Docs
+description: Ismerje meg, hogyan szerezhet be egy Java Enterprise-alkalmazást a Linuxon Azure App Service Wildfly.
 author: JasonFreeberg
 manager: routlaw
 ms.service: app-service-web
@@ -11,38 +11,38 @@ ms.topic: tutorial
 ms.date: 11/13/2018
 ms.author: jafreebe
 ms.custom: seodec18
-ms.openlocfilehash: 472ff85adaf72f91948c4072b12cca3ff8e59f37
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 2d26d9e145030e5972289c224dc2f76078d67527
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545350"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68498487"
 ---
-# <a name="tutorial-build-a-java-ee-and-postgres-web-app-in-azure"></a>Oktatóanyag: A Java EE-alapú és a Postgres-webalkalmazás létrehozása az Azure-ban
+# <a name="tutorial-build-a-java-ee-and-postgres-web-app-in-azure"></a>Oktatóanyag: Java EE-és postgres-alapú Webalkalmazás létrehozása az Azure-ban
 
-Az oktatóanyag bemutatja, hogyan lehet a Java Enterprise Edition (EE) webalkalmazás létrehozása az Azure App Service-ben, és csatlakoztassa a Postgres-adatbázis. Amikor kész, hogy egy [WildFly](https://www.wildfly.org/about/) adattárolásra alkalmazás [, Azure Database for Postgres](https://azure.microsoft.com/services/postgresql/) Azure-on futó [Linuxon futó App Service](app-service-linux-intro.md).
+Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre a Java Enterprise Edition (EE) webalkalmazást Azure App Service és hogyan csatlakoztatható egy postgres-adatbázishoz. Ha elkészült, egy [WildFly](https://www.wildfly.org/about/) -alkalmazás fogja tárolni az [Azure Database](https://azure.microsoft.com/services/postgresql/) -ben tárolt postgres, amely az Azure- [app Service Linux](app-service-linux-intro.md)rendszeren fut.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
-> * Java EE-alapú alkalmazás üzembe helyezése a Maven használatával Azure-bA
+> * Java EE-alkalmazás üzembe helyezése az Azure-ban a Maven használatával
 > * Postgres-adatbázis létrehozása az Azure-ban
-> * A Postgres használandó WildFly kiszolgáló konfigurálása
+> * A WildFly-kiszolgáló konfigurálása a postgres használatára
 > * Az alkalmazás frissítése és ismételt üzembe helyezése
-> * A WildFly futtatni az egységteszteket
+> * Egységbeli tesztek futtatása a WildFly
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 1. [A git letöltése és telepítése](https://git-scm.com/)
-2. [Töltse le és telepítse a Maven 3](https://maven.apache.org/install.html)
-3. [Töltse le és telepítse az Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
+2. [A Maven 3 letöltése és telepítése](https://maven.apache.org/install.html)
+3. [Töltse le és telepítse az Azure CLI-t](https://docs.microsoft.com/cli/azure/install-azure-cli)
 
-## <a name="clone-and-edit-the-sample-app"></a>Klónozza, és szerkesztheti a mintaalkalmazás
+## <a name="clone-and-edit-the-sample-app"></a>A minta alkalmazás klónozása és szerkesztése
 
-Ebben a lépésben klónozza a mintaalkalmazást, és a Maven Project Hálózatiobjektum-modellt (POM vagy pom.xml) konfigurálása a központi telepítés.
+Ebben a lépésben klónozott a minta alkalmazást, és konfigurálja a Maven projekt-objektum modelljét (POM vagy *Pom. XML*) az üzembe helyezéshez.
 
 ### <a name="clone-the-sample"></a>A minta klónozása
 
-A terminálablakban lépjen egy munkakönyvtárra, és a Klónozás [a minta tárház](https://github.com/Azure-Samples/wildfly-petstore-quickstart).
+A terminál ablakban navigáljon egy munkakönyvtárhoz, és [a minta tárház](https://github.com/Azure-Samples/wildfly-petstore-quickstart)klónozásához.
 
 ```bash
 git clone https://github.com/Azure-Samples/wildfly-petstore-quickstart.git
@@ -50,9 +50,9 @@ git clone https://github.com/Azure-Samples/wildfly-petstore-quickstart.git
 
 ### <a name="update-the-maven-pom"></a>A Maven POM frissítése
 
-A kívánt nevére és erőforráscsoportjára csoportot az App Service frissítése a Maven Azure beépülő modult. Nem kell előzetesen létre az App Service-csomag vagy a példány. A Maven bővítménnyel hoz létre az erőforráscsoportot és az App Service-ben, ha azt nem létezik. 
+Frissítse a Maven Azure beépülő modult a App Service kívánt nevével és erőforráscsoporthoz. Nem kell előre létrehoznia a App Service tervet vagy példányt. A Maven beépülő modul létrehozza az erőforráscsoportot, és App Service, ha még nem létezik.
 
-Akkor is görgessen le a `<plugins>` szakaszában _pom.xml_, 200, a módosításokat. sor. 
+A módosítások elvégzéséhez görgessen lefelé a `<plugins>` *Pom. XML*, 200. sor szakaszához.
 
 ```xml
 <!-- Azure App Service Maven plugin for deployment -->
@@ -67,63 +67,70 @@ Akkor is görgessen le a `<plugins>` szakaszában _pom.xml_, 200, a módosítás
   ...
 </plugin>  
 ```
-Cserélje le `YOUR_APP_NAME` és `YOUR_RESOURCE_GROUP` az App Service- és erőforrás-csoport nevére.
+
+Cserélje `YOUR_APP_NAME` le `YOUR_RESOURCE_GROUP` a és a nevet a app Service és az erőforráscsoport nevére.
 
 ## <a name="build-and-deploy-the-application"></a>Az alkalmazás létrehozása és üzembe helyezése
 
-Most használjuk Maven az alkalmazás létrehozása és üzembe helyezése az App Service-ben.
+Most a Maven használatával építjük be az alkalmazást, és üzembe helyezzük a App Service.
 
-### <a name="build-the-war-file"></a>Hozhat létre a .war-fájlt
+### <a name="build-the-war-file"></a>A. War fájl összeállítása
 
-A ki a projekt POM csomagolhatja be az alkalmazást egy Web Archive-(WAR-) fájlba van konfigurálva. A Maven használatával szeretné alkalmazás létrehozása:
+A projekthez tartozó POM úgy van konfigurálva, hogy az alkalmazást egy webarchívum (WAR) fájlba csomagolja. Az alkalmazás létrehozása a Maven használatával:
 
 ```bash
 mvn clean install -DskipTests
 ```
 
-A vizsgálati eset az alkalmazás futtatható, ha az alkalmazás központi telepítése az alakzatot WildFly lettek kialakítva. Hogy kihagyja a tesztek helyileg hozhat létre, és az alkalmazás App Service-ben való üzembe helyezését követően a tesztek futtatásához.
+Az alkalmazásban lévő tesztelési esetek úgy vannak kialakítva, hogy az alkalmazás WildFly történő telepítésekor fusson. A tesztek kihagyása helyileg történik, és a tesztek futtatása után futtatja a teszteket, ha az alkalmazás üzembe helyezése App Service.
 
 ### <a name="deploy-to-app-service"></a>Üzembe helyezés az App Service-ben
 
-Most, hogy a WAR készen áll, az App Service üzembe helyezése az Azure beépülő modul használatával:
+Most, hogy elkészült a háború, az Azure beépülő modullal üzembe helyezhetjük App Service:
 
 ```bash
 mvn azure-webapp:deploy
 ```
 
-Az üzembe helyezést követően folytassa a következő lépéssel.
+A telepítés befejeződése után folytassa a következő lépéssel.
 
 ### <a name="create-a-record"></a>Rekord létrehozása
 
-Nyisson meg egy böngészőt, majd lépjen a következő helyre: `https://<your_app_name>.azurewebsites.net/`. Gratulálunk, központilag telepített a Java EE-alapú alkalmazás az Azure App Service-ben!
+Nyisson meg egy böngészőt, majd lépjen a következő helyre: `https://<your_app_name>.azurewebsites.net/`. Gratulálunk, egy Java EE-alkalmazást helyezett üzembe a Azure App Service!
 
-Ezen a ponton az alkalmazás egy memórián belüli H2-adatbázist használja. Kattintson a navigációs sávban az "admin", és hozzon létre egy új kategóriát. A rekord a memóriában lévő adatbázishoz a elvesznek, ha újraindítja az App Service-példányhoz. Az alábbi lépéseket fogja úgy, hogy az Azure-ban egy Postgres-adatbázis kiépítése és WildFly a használatára konfigurálja.
+Ezen a ponton az alkalmazás egy memóriában tárolt H2-adatbázist használ. Kattintson a navigációs sávon a "rendszergazda" elemre, és hozzon létre egy új kategóriát. A memóriában tárolt adatbázisban lévő rekord el fog veszni, ha újraindítja App Service példányát. A következő lépésekben a postgres-adatbázis Azure-beli üzembe helyezésével és a WildFly használatára történő konfigurálásával javít.
 
 ![Rendszergazdai gomb helye](media/tutorial-java-enterprise-postgresql-app/admin_button.JPG)
 
-## <a name="provision-a-postgres-database"></a>A Postgres-adatbázis kiépítése
+## <a name="provision-a-postgres-database"></a>Postgres-adatbázis kiépítése
 
-Üzembe helyez egy Postgres-kiszolgálót, nyisson meg egy terminált, és futtassa a következő parancsot a kiszolgáló nevét, felhasználónév, jelszó és helyen a kívánt értékekkel. Használja ugyanazt az erőforráscsoportot, amely az App Service. Jegyezze fel a jelszó megtartása későbbi használatra!
+Postgres adatbázis-kiszolgáló kiépítéséhez nyisson meg egy terminált, és használja az az [postgres Server Create](https://docs.microsoft.com/cli/azure/postgres/server) parancsot az alábbi példában látható módon. Cserélje le a helyőrzőket (a szögletes zárójeleket is beleértve) a választott értékekkel, és használja ugyanazt az erőforráscsoportot, amelyet korábban a App Service-példányhoz adott meg. Az Ön által megadott rendszergazdai hitelesítő adatok lehetővé teszik a jövőbeli hozzáférést, ezért ügyeljen arra, hogy a későbbi használat érdekében jegyezze fel őket.
 
 ```bash
-az postgres server create -n <desired-name> -g <same-resource-group> --sku-name GP_Gen4_2 -u <desired-username> -p <desired-password> -l <location>
+az postgres server create \
+    --name <server name> \
+    --resource-group <resource group> \
+    --location <location>
+    --sku-name GP_Gen5_2 \
+    --admin-user <administrator username> \
+    --admin-password <administrator password> \
 ```
 
-Keresse meg a portálon, és keressen rá a Postgres-adatbázis. Ha működik a panel, másolja a "Kiszolgálónév" és "Kiszolgálói rendszergazda bejelentkezési neve" értékeket, később szüksége lesz rájuk.
+A parancs futtatása után keresse meg a Azure Portal, és navigáljon a postgres-adatbázishoz. Ha a panel fel van készítve, másolja a "kiszolgáló neve" és a "kiszolgáló-rendszergazda bejelentkezési név" értékeket, később szüksége lesz rájuk.
 
-### <a name="allow-access-to-azure-services"></a>Az Azure-szolgáltatásokhoz való hozzáférés engedélyezése
+### <a name="allow-access-to-azure-services"></a>Azure-szolgáltatásokhoz való hozzáférés engedélyezése
 
-Az a **kapcsolatbiztonság** panel az Azure-adatbázis panel az "Azure-szolgáltatásokhoz való hozzáférés engedélyezése" gombra kattintva válthat a **ON** pozíciója.
+Az Azure Database panel **kapcsolatbiztonsági** paneljén kapcsolja be az "Azure-szolgáltatások hozzáférésének engedélyezése" gombot a bekapcsolási  pozícióhoz.
 
-![Az Azure-szolgáltatásokhoz való hozzáférés engedélyezése](media/tutorial-java-enterprise-postgresql-app/postgress_button.JPG)
+![Azure-szolgáltatásokhoz való hozzáférés engedélyezése](media/tutorial-java-enterprise-postgresql-app/postgress_button.JPG)
 
-## <a name="update-your-java-app-for-postgres"></a>A Java-alkalmazás frissítéséhez a Postgres
+## <a name="update-your-java-app-for-postgres"></a>A Java-alkalmazás frissítése a postgres-hez
 
-Most már használunk néhány módosítást, a Java-alkalmazás lehetővé teszi, hogy a Postgres-adatbázis használata.
+Most végre fogunk változtatni a Java-alkalmazáson, hogy az a postgres-adatbázis használatát lehetővé tegye.
 
-### <a name="add-postgres-credentials-to-the-pom"></a>A POM Postgres hitelesítő adatok hozzáadása
+### <a name="add-postgres-credentials-to-the-pom"></a>Postgres hitelesítő adatainak hozzáadása a POM-hoz
 
-A _pom.xml_, a nagybetűs helyőrző értékeket cserélje le az Postgres server name, rendszergazdai bejelentkezési nevet és jelszót. Ezek a mezők az Azure-Maven bővítménnyel belül vannak. (Ne felejtse el `YOUR_SERVER_NAME`, `YOUR_PG_USERNAME`, és `YOUR_PG_PASSWORD` a a `<value>` ... címkék nem található a `<name>` címkék!)
+A *Pom. xml fájlban*cserélje le a tőkésített helyőrző értékeket a postgres-kiszolgáló nevére, a rendszergazdai bejelentkezési névre és a jelszóra. Ezek a mezők az Azure Maven beépülő modulján belül találhatók. (Ne felejtse el `YOUR_SERVER_NAME`lecserélni `YOUR_PG_PASSWORD` , `YOUR_PG_USERNAME`és `<value>` a címkére... nem a `<name>` címkéken belül!)
 
 ```xml
 <plugin>
@@ -146,54 +153,52 @@ A _pom.xml_, a nagybetűs helyőrző értékeket cserélje le az Postgres server
 </plugin>
 ```
 
-### <a name="update-the-java-transaction-api"></a>A Java-tranzakció API frissítése
+### <a name="update-the-java-transaction-api"></a>A Java Transaction API frissítése
 
-Következő lépésként a Java tranzakció API (JPA) konfiguráció szerkesztése, hogy a Java-alkalmazás is kommunikálni fognak Postgres helyett a memórián belüli H2 adatbázis korábban használja. Nyissa meg a szerkesztő _src/main/resources/META-INF/persistence.xml_. Cserélje le az `<jta-data-source>` értéket a `java:jboss/datasources/postgresDS` értékre. A JTA XML ezzel a beállítással rendelkezik:
+A következő lépés a Java Transaction API (közös parlamenti) konfigurációjának szerkesztése, hogy a Java-alkalmazás a korábban használt memóriabeli H2-adatbázis helyett a postgres kommunikáljon. Nyisson meg egy szerkesztőt az *src/Main/Resources/META-INF/perzisztencia. xml fájlhoz*. Cserélje le az `<jta-data-source>` értéket a `java:jboss/datasources/postgresDS` értékre. A JTA XML-nek most már a következő beállítással kell rendelkeznie:
 
 ```xml
-...
 <jta-data-source>java:jboss/datasources/postgresDS</jta-data-source>
-...
 ```
 
-## <a name="configure-the-wildfly-application-server"></a>A WildFly-kiszolgáló konfigurálása
+## <a name="configure-the-wildfly-application-server"></a>A WildFly alkalmazás-kiszolgáló konfigurálása
 
-Biztosíthatók az újrakonfigurált alkalmazás üzembe helyezése előtt a WildFly alkalmazáskiszolgáló kell frissítjük a Postgres-modult és annak függőségeit. További konfigurációs információkat tekinthet meg [WildFly konfigurálása server](configure-language-java.md#configure-wildfly-server).
+Az újrakonfigurált alkalmazás üzembe helyezése előtt frissítenie kell a WildFly alkalmazáskiszolgáló a postgres modullal és annak függőségeivel. További konfigurációs információk a [WildFly-kiszolgáló konfigurálása](configure-language-java.md#configure-java-ee-wildfly)című témakörben találhatók.
 
-Konfigurálja a kiszolgálót, szükségünk lesz a négy fájlt a `wildfly_config/` könyvtár:
+A kiszolgáló konfigurálásához a következő négy fájlra lesz szükség a *wildfly_config/* könyvtárban:
 
-- **postgresql-42.2.5.jar**: A JAR-fájlt a Postgres készült JDBC-illesztőprogram. További információkért lásd: a [hivatalos webhely](https://jdbc.postgresql.org/index.html).
-- **postgres-module.xml**: Az XML-fájl deklarálja a Postgres-modul (org.postgres) nevét. Az erőforrások és a használt modul szükséges függőségeket is meghatározza.
-- **jboss_cli_commands.cl**: Ez a fájl tartalmazza a konfigurációs parancsok, amelyek a JBoss CLI való fogja végrehajtani. A parancsok a Postgres-modul hozzáadása a WildFly application server, adja meg a hitelesítő adatokat, deklarálja JNDI nevét, állítsa be az időkorlát küszöbértéke stb. Ha ismeri a JBoss CLI-vel, tekintse meg a [dokumentációs](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.0/html-single/management_cli_guide/#how_to_cli).
-- **startup_script.sh**: Végül Ez a héjparancsfájl fog hajtható végre, amikor elindul az App Service-példányhoz. A parancsfájl csak egy függvényt hajtja végre: szereplő parancsok átirányításával `jboss_cli_commands.cli` JBoss CLI.
+- **PostgreSQL-42.2.5. jar**: Ez a JAR-fájl a postgres JDBC-illesztőprogramja. További információ: [hivatalos webhely](https://jdbc.postgresql.org/index.html).
+- **postgres-Module. XML**: Ez az XML-fájl deklarálja a postgres modul (org. postgres) nevét. Meghatározza továbbá a modul használatához szükséges erőforrásokat és függőségeket is.
+- **jboss_cli_commands. CLI**: Ez a fájl olyan konfigurációs parancsokat tartalmaz, amelyek a JBoss CLI-vel lesznek végrehajtva. A parancsok hozzáadja a postgres modult a WildFly-alkalmazáshoz, megadja a hitelesítő adatokat, deklarálja a JNDI nevét, beállítja az időtúllépési küszöbértéket stb. Ha nem ismeri a JBoss CLI-t, tekintse meg a [hivatalos dokumentációt](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.0/html-single/management_cli_guide/#how_to_cli).
+- **startup_script. sh**: Végezetül ezt a rendszerhéj-parancsfájlt a rendszer a App Service-példány indításakor hajtja végre. A parancsfájl csak egyetlen függvényt hajt végre: a *jboss_cli_commands. CLI* parancsait a JBoss CLI-be.
 
-Erősen javasoljuk, hogy a fájlok tartalmának olvasása különösen _jboss_cli_commands.cli_.
+Javasoljuk, hogy olvassa el ezeknek a fájloknak a tartalmát, különösen a *jboss_cli_commands. CLI*fájlt.
 
-### <a name="ftp-the-configuration-files"></a>FTP-konfigurációs fájl
+### <a name="ftp-the-configuration-files"></a>FTP a konfigurációs fájlok
 
-FTP-tartalmát kell `wildfly_config/` az App Service-példányhoz. Az FTP-hitelesítő adatok lekéréséhez kattintson a **közzétételi profil lekérése** gomb az App Service panel az Azure Portalon. Az FTP-felhasználónév és jelszó lesz a letöltött XML-dokumentumban. A közzétételi profil további információkért lásd: [ebben a dokumentumban](https://docs.microsoft.com/azure/app-service/deploy-configure-credentials).
+A *wildfly_config és* a app Service-példány TARTALMÁnak FTP-re van szükségük. Az FTP-hitelesítő adatok lekéréséhez kattintson a Azure Portal App Service paneljének **közzétételi profil** beolvasása gombjára. Az FTP-Felhasználónév és a jelszó a letöltött XML-dokumentumba kerül. A közzétételi profillal kapcsolatos további információkért tekintse meg [ezt a dokumentumot](https://docs.microsoft.com/azure/app-service/deploy-configure-credentials).
 
-A négy fájlokat átvinni egy FTP-eszközzel a választott `wildfly_config/` való `/home/site/deployments/tools/`. (Vegye figyelembe, hogy nem kell átvinni a címtárban, csak maguknak a fájlokat.)
+Egy tetszőleges FTP-eszköz használatával vigye át a négy fájlt a *wildfly_config vagy* a */Home/site/Deployments/Tools/* . (Vegye figyelembe, hogy ne vigye át a könyvtárat, csak a fájlokat.)
 
-### <a name="finalize-app-service"></a>App Service-ben véglegesítése
+### <a name="finalize-app-service"></a>App Service véglegesítése
 
-Az App Service-ben panelen keresse meg az "Alkalmazás beállítások" panelen. A "Runtime", "Indítási fájl" mező beállítása `/home/site/deployments/tools/startup_script.sh`. Ez biztosítja, hogy a PowerShell-parancsfájlt az App Service-példány jön létre, de a kiszolgáló újraindítása előtt a WildFly azután fut-e.
+A App Service panelen navigáljon az "alkalmazás beállításai" panelre. A "Runtime" alatt állítsa be az "indítási fájl" mezőt a */Home/site/Deployments/Tools/startup_script.sh*értékre. Ezzel biztosíthatja, hogy a rendszerhéj-parancsfájl a App Service példány létrehozása után fusson, de a WildFly-kiszolgáló elindítása előtt.
 
-Végezetül indítsa újra az App Service. A gomb akkor az "Áttekintés" panelen.
+Végezetül indítsa újra a App Service. A gomb az "áttekintés" panelen található.
 
 ## <a name="redeploy-the-application"></a>Az alkalmazás újbóli üzembe helyezése
 
-Egy terminálablakban építse újra, és újból üzembe helyeznie az alkalmazást.
+Egy terminál ablakban építse újra az alkalmazást, majd telepítse újra.
 
 ```bash
 mvn clean install -DskipTests azure-webapp:deploy
 ```
 
-Gratulálunk! Az alkalmazás már használja egy Postgres-adatbázis, és azokat a rekordokat az alkalmazásban létrehozott lesz tárolva Postgres ahelyett, hogy az előző H3 memóriában lévő adatbázishoz. Ennek ellenőrzéséhez egy rekordot, és indítsa újra az App Service. A rekordok továbbra is megtalálhatók az alkalmazás újraindításakor.
+Gratulálunk! Az alkalmazás mostantól egy postgres-adatbázist használ, és az alkalmazásban létrehozott összes rekord a postgres-ben lesz tárolva, az előző H2 memóriában tárolt adatbázis helyett. Ennek megerősítéséhez létrehozhat egy rekordot, és újraindíthatja a App Service. Az alkalmazás újraindításakor a rekordok továbbra is elérhetők lesznek.
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 
-Ha ezek az erőforrásokra már nincs szüksége más oktatóanyagokhoz (lásd a következő lépésekkel), a következő parancs futtatásával törölheti azokat:
+Ha nincs szüksége ezekre az erőforrásokra egy másik oktatóanyaghoz (lásd a következő lépéseket), akkor a következő parancs futtatásával törölheti őket:
 
 ```bash
 az group delete --name <your-resource-group>
@@ -204,18 +209,18 @@ az group delete --name <your-resource-group>
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Java EE-alapú alkalmazás üzembe helyezése a Maven használatával Azure-bA
+> * Java EE-alkalmazás üzembe helyezése az Azure-ban a Maven használatával
 > * Postgres-adatbázis létrehozása az Azure-ban
-> * A Postgres használandó WildFly kiszolgáló konfigurálása
+> * A WildFly-kiszolgáló konfigurálása a postgres használatára
 > * Az alkalmazás frissítése és ismételt üzembe helyezése
-> * A WildFly futtatni az egységteszteket
+> * Egységbeli tesztek futtatása a WildFly
 
-Folytassa a következő oktatóanyaggal, megtudhatja, hogyan képezhet le egyedi DNS-nevet az alkalmazáshoz.
+Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan képezhető le egyéni DNS-név az alkalmazáshoz.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Egyéni DNS-név leképezése az alkalmazás](../app-service-web-tutorial-custom-domain.md)
+> [Oktatóanyag: Egyéni DNS-név leképezése az alkalmazáshoz](../app-service-web-tutorial-custom-domain.md)
 
-Vagy tekintse meg az egyéb erőforrások:
+Vagy tekintse meg a többi erőforrást:
 
 > [!div class="nextstepaction"]
 > [Java-alkalmazás konfigurálása](configure-language-java.md)

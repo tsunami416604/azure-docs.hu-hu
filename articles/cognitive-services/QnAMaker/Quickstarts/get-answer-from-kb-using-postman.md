@@ -1,81 +1,81 @@
 ---
-title: 'Gyors útmutató: Első válasz a Tudásbázis – QnA Maker a Postman használatával'
-titlesuffix: Azure Cognitive Services
-description: Ez a rövid útmutató végigvezeti egy válasz lekérése a Tudásbázis Postman használatával.
+title: 'Gyors útmutató: A Poster használatával kaphat választ a Tudásbázisból – QnA Maker'
+titleSuffix: Azure Cognitive Services
+description: Ez a rövid útmutató végigvezeti Önt a Tudásbázisban a Poster használatával kapott válasz beszerzésén.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 04/16/2019
+ms.date: 01/01/2019
 ms.author: diberry
-ms.openlocfilehash: 24bd6731faa9788dc336db199aa9776813e7348f
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 3df2703ba24091d0d21f06ae55aca389837e93d9
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59683443"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803035"
 ---
-# <a name="quickstart-get-an-answer-from-knowledge-base-using-postman"></a>Gyors útmutató: A kapott eredménynek a Tudásbázis Postman használatával
+# <a name="quickstart-get-an-answer-from-knowledge-base-using-postman"></a>Gyors útmutató: Válasz kérése a Tudásbázisból a Poster használatával
 
-A Postman-alapú rövid útmutató végigvezeti a Tudásbázis-válasz lekérése.
+Ez a Poster-alapú rövid útmutató végigvezeti Önt a Tudásbázisból kapott válasz beszerzésén.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Legújabb [ **Postman**](https://www.getpostman.com/).
-* Rendelkeznie kell egy [QnA Maker szolgáltatást](../How-To/set-up-qnamaker-service-azure.md) , és egy [Tudásbázis kérdésekkel és válaszokkal](../Tutorials/create-publish-query-in-portal.md). 
+* Legújabb [**Poster**](https://www.getpostman.com/).
+* [QnA Maker szolgáltatással](../How-To/set-up-qnamaker-service-azure.md) kell rendelkeznie, és a [Tudásbázisban kérdésekkel és válaszokkal](../Tutorials/create-publish-query-in-portal.md)kell rendelkeznie. 
 
-## <a name="publish-to-get-endpoint"></a>Végpont közzététele
+## <a name="publish-to-get-endpoint"></a>Közzététel a végpont beszerzéséhez
 
-Amikor készen áll egy kérdésre adott válasz a Tudásbázis, a létrehozásához [közzététele](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) a tudásbázist.
+Ha készen áll arra, hogy megválaszolja a Tudásbázis kérdését, [tegye közzé](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) a tudásbázist.
 
-## <a name="use-production-endpoint-with-postman"></a>Éles környezetben a végpontot használja a postman használatával
+## <a name="use-production-endpoint-with-postman"></a>Üzemi végpont használata a Poster használatával
 
-A Tudásbázis közzétételekor a **közzététel** lap megjeleníti a HTTP-kérelem beállítások választ létrehozásához. Az alapértelmezett nézet jeleníti meg a választ a létrehozásához szükséges beállításokat [Postman](https://www.getpostman.com).
+A Tudásbázis közzétételekor a **közzétételi** oldal MEGJELENÍTI a HTTP-kérelmek beállításait a válasz létrehozásához. Az alapértelmezett nézet a [Poster](https://www.getpostman.com)-válasz létrehozásához szükséges beállításokat jeleníti meg.
 
-Az alábbi ábrán a sárga számok jelölik, mely név-érték párokat. a következő lépésekben használni.
+Az alábbi képen látható sárga számok azt jelzik, hogy mely név/érték párokat kell használni a következő lépésekben.
 
-[![Eredmények közzététele](../media/qnamaker-quickstart-get-answer-with-postman/publish-settings.png)](../media/qnamaker-quickstart-get-answer-with-postman/publish-settings.png#lightbox)
+[@no__t – 1Publish eredményei](../media/qnamaker-quickstart-get-answer-with-postman/publish-settings.png)](../media/qnamaker-quickstart-get-answer-with-postman/publish-settings.png#lightbox)
 
-Létrehozás Postman-válasz, hajtsa végre az alábbi lépéseket:
+A Poster-beli válasz létrehozásához hajtsa végre a következő lépéseket:
 
-1. Nyissa meg a Postmant. Ha az kéri, hogy válasszon egy olyan építőelem, válassza ki a **alapszintű kérelem** építőelem. Állítsa be a **kérelem neve** , `Generate QnA Maker answer`és a **gyűjtemény** , `Generate QnA Maker answers`. Ha nem szeretné menteni egy gyűjteményhez, válassza ki a **Mégse** gombra.
-1. A munkaterületen válassza ki a HTTP-metódusa **POST**.
+1. A Poster megnyitása. Ha a rendszer megkéri, hogy válasszon ki egy építőelemet, válassza ki az **alapszintű kérelmek** építőeleme elemet. Adja meg a **kérelem nevét** `Generate QnA Maker answer`and a **gyűjteményt** `Generate QnA Maker answers` értékként. Ha nem szeretne menteni egy gyűjteményt, válassza a **Mégse** gombot.
+1. A munkaterületen válassza ki a **post**http-metódusát.
 
-    [![A Postman beállítása a POST-metódus](../media/qnamaker-quickstart-get-answer-with-postman/postman-select-post-method.png)](../media/qnamaker-quickstart-get-answer-with-postman/postman-select-post-method.png#lightbox)
+    [@no__t – 1In Poster, set POST metódus](../media/qnamaker-quickstart-get-answer-with-postman/postman-select-post-method.png)](../media/qnamaker-quickstart-get-answer-with-postman/postman-select-post-method.png#lightbox)
 
-1. Az URL-fűzze össze a GAZDAGÉP (2-rendszerképből) és a Post értékkel (1-rendszerképből) hozhat létre a teljes URL-CÍMÉT. Egy teljes példát URL-cím hasonlóan néz ki: 
+1. Az URL-cím esetében fűzze össze a GAZDAGÉP értékét (#2 a rendszerképből) és a post értéket (#1 a rendszerképből) a teljes URL-cím létrehozásához. A teljes példa URL-cím A következőképpen néz ki: 
 
     `https://qnamaker-f0.azurewebsites.net/qnamaker/knowledgebases/e1115f8c-d01b-4698-a2ed-85b0dbf3348c/generateAnswer`
 
-    [![A Postman beállítása a teljes URL-címe](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-method-and-url.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-method-and-url.png#lightbox)
+    [@no__t – 1In Poster, a teljes URL-cím beállítása](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-method-and-url.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-method-and-url.png#lightbox)
 
-1. Válassza ki a **fejlécek** lap URL-CÍMÉT, majd válassza a **tömeges szerkesztése**. 
+1. Válassza a **fejlécek** lapot az URL-cím alatt, majd válassza a **tömeges szerkesztés**lehetőséget. 
 
-1. Másolja a fejléceket (#3 és rendszerképből #4) a szöveg területre.
+1. Másolja a fejléceket (#3 és #4 a rendszerképből) a szövegmezőbe.
 
-    [![A Postman beállítása a fejlécek](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-headers.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-headers.png#lightbox)
+    [@no__t – 1In Poster, a fejlécek beállítása](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-headers.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-headers.png#lightbox)
 
-1. Válassza ki a **törzs** fülre.
-1. Válassza ki a **nyers** formázhatja, és adja meg a kérdés képviselő JSON (5-rendszerképből).
+1. Válassza a **törzs** fület.
+1. Válassza ki a **nyers** formátumot, és írja be a kérdést jelölő JSON-t (#5 a rendszerképből).
 
     `{"question":"How do I programmatically update my Knowledge Base?"}`
 
-    [![A Postman beállítása a szervezet JSON-értéket](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-body-json-value.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-body-json-value.png#lightbox)
+    [@no__t – 1In Poster, a törzs JSON-értékének beállítása](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-body-json-value.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-body-json-value.png#lightbox)
 
-1. Válassza ki a **küldése** gombra.
-1. A válasz tartalmazza a választ, amely lehet fontos, hogy az ügyfélalkalmazás más információkkal együtt. 
+1. Kattintson a **Küldés** gombra.
+1. A válasz tartalmazza a választ, valamint azokat az egyéb információkat, amelyek fontosak lehetnek az ügyfélalkalmazás számára. 
 
-    [![A Postman beállítása a szervezet JSON-értéket](../media/qnamaker-quickstart-get-answer-with-postman/receive-postman-response.png)](../media/qnamaker-quickstart-get-answer-with-postman/receive-postman-response.png#lightbox)
+    [@no__t – 1In Poster, a törzs JSON-értékének beállítása](../media/qnamaker-quickstart-get-answer-with-postman/receive-postman-response.png)](../media/qnamaker-quickstart-get-answer-with-postman/receive-postman-response.png#lightbox)
 
-## <a name="use-staging-endpoint"></a>Átmeneti tárolási végpont használata
+## <a name="use-staging-endpoint"></a>Átmeneti végpont használata
 
-Ha azt szeretné, kap választ az átmeneti végpontról, fűzze hozzá az URL-CÍMÉT a `isTest` törzs tulajdonság.
+Ha az átmeneti végponttól választ szeretne kapni, fűzze hozzá az URL-címet a `isTest` Body tulajdonsághoz.
 
 ## <a name="next-steps"></a>További lépések
 
-A közzétételi oldalon olyan információt is tartalmaz [választ készítése](get-answer-from-kb-using-curl.md) a curl használatával. 
+A közzétételi oldalon a cURL használatával kapcsolatos [válaszok](get-answer-from-kb-using-curl.md) is megadhatók. 
 
 > [!div class="nextstepaction"]
-> [Metaadatok használata egy válaszfájl létrehozása közben](../How-to/metadata-generateanswer-usage.md)
+> [Metaadatok használata a válasz létrehozásakor](../How-to/metadata-generateanswer-usage.md)

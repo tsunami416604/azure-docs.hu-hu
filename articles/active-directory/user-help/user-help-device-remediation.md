@@ -15,11 +15,11 @@ ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a317680a39d4594aacdf84ccdf963bb84bfbf07b
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57452026"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60473803"
 ---
 # <a name="potential-reasons-for-the-you-cant-get-there-from-here-error-message"></a>A "Meg nem innen érheti el" hibaüzenetet a lehetséges okok
 Arról, hogy a, hibaüzenetet kaphat közben: a szervezet belső webalkalmazásokat vagy szolgáltatásokat, **nem érheti el itt**. Ez az üzenet azt jelenti, a szervezet rendelkezik egy szabályzatot, amely megakadályozza, hogy az eszköz a szervezet erőforrásaihoz. Bár előfordulhat, hogy végül forduljon az ügyfélszolgálathoz a probléma megoldásához rendelkezik, az alábbiakban néhány dolgot, először próbálja meg.

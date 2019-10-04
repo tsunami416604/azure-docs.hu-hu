@@ -11,11 +11,11 @@ ms.topic: include
 ms.date: 08/17/2018
 ms.author: diberry
 ms.openlocfilehash: a65b075e89180441eecfb420130bfd1e47b277a5
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56740696"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179426"
 ---
 Ahhoz, hogy LUIS-előrejelzéseket kaphasson egy csevegőrobotban vagy más ügyfélalkalmazásban, közzé kell tennie az alkalmazást a végponton. 
 

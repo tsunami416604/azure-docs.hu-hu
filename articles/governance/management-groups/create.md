@@ -1,93 +1,91 @@
 ---
-title: Az Azure-erőforrások – Azure Cégirányítási rendszerezése felügyeleti csoportok létrehozása
-description: Ismerje meg, hogyan kezelhet több olyan erőforrást, a portál, az Azure PowerShell-lel és az Azure CLI használatával az Azure felügyeleti csoportok létrehozása.
+title: Felügyeleti csoportok létrehozása az Azure-erőforrások rendszerezéséhez – Azure-szabályozás
+description: Ismerje meg, hogyan hozhat létre Azure felügyeleti csoportokat több erőforrás kezeléséhez a portál, a Azure PowerShell és az Azure CLI használatával.
 author: rthorn17
 manager: rithorn
-ms.service: azure-resource-manager
+ms.service: governance
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 2dd2a6e071533deef47a6482bfb9ed92953864ba
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7b5ee5bfe4b7498bc13ff0c8582b49fed8478e0a
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59259807"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71337779"
 ---
-# <a name="create-management-groups-for-resource-organization-and-management"></a>Erőforrás-szervezet és felügyeleti felügyeleti csoportok létrehozása
+# <a name="create-management-groups-for-resource-organization-and-management"></a>Felügyeleti csoportok létrehozása az erőforrás-szervezethez és-kezeléshez
 
-Felügyeleti csoportok olyan tárolók, amelyek segítségével kezelheti a hozzáférési házirend és megfelelőség több előfizetést is. Hozzon létre hozhat létre egy leghatékonyabb hierarchia-használható tárolók [Azure Policy](../policy/overview.md) és [Azure szerepkör alapú hozzáférés-vezérlés](../../role-based-access-control/overview.md). A felügyeleti csoport további információkért lásd: [az erőforrások rendszerezéséhez az Azure felügyeleti csoportok](overview.md).
+A felügyeleti csoportok olyan tárolók, amelyek segítségével kezelheti a hozzáférést, a szabályzatot és a megfelelőséget több előfizetés között. Hozza létre ezeket a tárolókat egy olyan hatékony és hatékony hierarchia létrehozásához, amely a [Azure Policy](../policy/overview.md) és az [Azure szerepköralapú hozzáférés-vezérléssel](../../role-based-access-control/overview.md)használható. A felügyeleti csoportokkal kapcsolatos további információkért lásd: [erőforrások rendszerezése az Azure felügyeleti csoportjaival](overview.md).
 
-Az első felügyeleti csoport a címtárban létrehozott akár 15 percet is igénybe vehet. Nincsenek olyan folyamatokat, amelyek a felügyeleti csoportok szolgáltatás beállítása Azure-ban a címtár első bejelentkezésekor futtatni. Amikor elkészült a folyamat értesítést kap.
-
-[!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
+A címtárban létrehozott első felügyeleti csoport akár 15 percet is igénybe vehet. Az Azure-ban a címtárhoz a felügyeleti csoportok szolgáltatás beállításához első alkalommal futó folyamatok futnak. A folyamat befejezésekor értesítést kap.
 
 ## <a name="create-a-management-group"></a>Felügyeleti csoport létrehozása
 
-A felügyeleti csoport a portálon, a PowerShell vagy az Azure CLI használatával hozhat létre. Jelenleg a felügyeleti csoportok létrehozása a Resource Manager-sablonok nem használhat.
+A felügyeleti csoportot a portál, a PowerShell vagy az Azure CLI használatával hozhatja létre. Jelenleg nem használhat Resource Manager-sablonokat felügyeleti csoportok létrehozásához.
 
-### <a name="create-in-portal"></a>A portál létrehozása
+### <a name="create-in-portal"></a>Létrehozás a portálon
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. Válassza ki **minden szolgáltatás** > **felügyeleti csoportok**.
+1. Válassza **a minden szolgáltatás** > **felügyeleti csoportok**lehetőséget.
 
-1. A fő oldalon válassza ki a **új felügyeleti csoport**.
+1. A főoldalon válassza az **új felügyeleti csoport**elemet.
 
-   ![A felügyeleti csoportok kezelése lap](./media/main.png)
+   ![A felügyeleti csoportok használatáról szóló oldal](./media/main.png)
 
-1. Adja meg a felügyeleti csoport azonosító mező.
+1. Töltse ki a felügyeleti csoport azonosítója mezőt.
 
-   - A **felügyeleti csoport azonosítója** directory egyedi azonosítója, amellyel küldje el a felügyeleti csoportra parancsokat. Ez az azonosító nem szerkeszthető a létrehozása után, mivel a Azure rendszerben ez a csoport azonosításához használt. A [gyökérszintű felügyeleti csoport](index.md#root-management-group-for-each-directory) automatikusan létrejön egy azonosítóval, amely az Azure Active Directory-azonosítója. Minden más felügyeleti csoportokhoz rendelje hozzá egy egyedi azonosítót.
-   - A megjelenített név mezőjének Ez a név jelenik meg az Azure Portalon. Egy külön megjelenített név mező kitöltése nem kötelező, ha a felügyeleti csoportot, és bármikor módosítható.  
+   - A **felügyeleti csoport azonosítója** a címtár egyedi azonosítója, amely a parancsok ezen a felügyeleti csoporton való elküldésére szolgál. Ez az azonosító nem szerkeszthető a létrehozás után, mivel az egész Azure-rendszeren a csoport azonosítására szolgál. A rendszer automatikusan létrehozza a [gyökérszintű felügyeleti csoportot](overview.md#root-management-group-for-each-directory) a Azure Active Directory azonosítójaként megadott azonosítóval. Az összes többi felügyeleti csoport esetében rendeljen hozzá egy egyedi azonosítót.
+   - A megjelenítendő név mező a Azure Portal belül megjelenő név. A felügyeleti csoport létrehozásakor egy külön megjelenítendő név nem választható mező, és bármikor módosítható.  
 
-   ![Beállítások ablaktábla az új felügyeleti csoport létrehozása](./media/create_context_menu.png)  
+   ![Beállítások ablaktábla új felügyeleti csoport létrehozásához](./media/create_context_menu.png)  
 
 1. Kattintson a **Mentés** gombra.
 
-### <a name="create-in-powershell"></a>A PowerShell létrehozása
+### <a name="create-in-powershell"></a>Létrehozás a PowerShellben
 
-PowerShell esetén használja a [New-AzManagementGroup](/powershell/module/az.resources/new-azmanagementgroup) parancsmaggal hozzon létre egy új felügyeleti csoporthoz.
+A PowerShell esetében a [New-AzManagementGroup](/powershell/module/az.resources/new-azmanagementgroup) parancsmag használatával hozzon létre egy új felügyeleti csoportot.
 
 ```azurepowershell-interactive
 New-AzManagementGroup -GroupName 'Contoso'
 ```
 
-A **GroupName** létrehozott egyedi azonosítója. Ezt az Azonosítót ehhez a csoporthoz hivatkozhat más parancsok használja, és azt később már nem módosítható.
+A **Csoportnév** egy egyedi azonosítót hoz létre. Ezt az azonosítót más parancsok használják a csoportra való hivatkozáshoz, és később nem módosíthatók.
 
-Ha azt szeretné, hogy a felügyeleti csoport egy másik nevet az Azure Portalon megjelenítendő, hozzáadása a **DisplayName** paraméter. Például a Contoso GroupName és "Contoso csoport" megjelenített neve a felügyeleti csoport létrehozásához használja a következő parancsmagot:
+Ha azt szeretné, hogy a felügyeleti csoport más nevet jelenítsen meg a Azure Portalon belül, adja hozzá a **DisplayName** paramétert. Ha például egy olyan felügyeleti csoportot szeretne létrehozni a contoso csoportnév-vel és a "contoso-csoport" megjelenített nevével, amely a következő parancsmagot használja:
 
 ```azurepowershell-interactive
 New-AzManagementGroup -GroupName 'Contoso' -DisplayName 'Contoso Group'
 ```
 
-A fenti példákban a legfelső szintű felügyeleti csoportban az új felügyeleti csoport jön létre. Adja meg egy másik felügyeleti csoportban, mint a szülő, használja a **ParentId** paraméter.
+Az előző példákban az új felügyeleti csoport a gyökérszintű felügyeleti csoport alatt jön létre. Másik felügyeleti csoport szülőként való megadásához használja a **ParentID** paramétert.
 
 ```azurepowershell-interactive
 $parentGroup = Get-AzManagementGroup -GroupName Contoso
 New-AzManagementGroup -GroupName 'ContosoSubGroup' -ParentId $parentGroup.id
 ```
 
-### <a name="create-in-azure-cli"></a>Hozzon létre az Azure CLI-ben
+### <a name="create-in-azure-cli"></a>Létrehozás az Azure CLI-ben
 
-Azure CLI esetén használja a [az fiók felügyeleti-csoport létrehozása](/cli/azure/account/management-group?view=azure-cli-latest#az-account-management-group-create) paranccsal hozzon létre egy új felügyeleti csoporthoz.
+Az Azure CLI esetében használja az az [Account Management-Group Create](/cli/azure/account/management-group?view=azure-cli-latest#az-account-management-group-create) parancsot egy új felügyeleti csoport létrehozásához.
 
 ```azurecli-interactive
 az account management-group create --name Contoso
 ```
 
-A **neve** létrehozott egyedi azonosítója. Ezt az Azonosítót ehhez a csoporthoz hivatkozhat más parancsok használja, és azt később már nem módosítható.
+A **név** a létrehozandó egyedi azonosító. Ezt az azonosítót más parancsok használják a csoportra való hivatkozáshoz, és később nem módosíthatók.
 
-Ha azt szeretné, hogy a felügyeleti csoport egy másik nevet az Azure Portalon megjelenítendő, hozzáadása a **megjelenítési névvel** paraméter. Például a felügyeleti csoport létrehozása a Contoso GroupName és "Contoso csoport" megjelenített neve, a következő paranccsal:
+Ha azt szeretné, hogy a felügyeleti csoport más nevet jelenítsen meg a Azure Portalon belül, adja hozzá a **Display-Name** paramétert. Ha például egy olyan felügyeleti csoportot szeretne létrehozni a contoso csoportnév-vel és a "contoso Group" névvel, amely a következő parancsot használja:
 
 ```azurecli-interactive
 az account management-group create --name Contoso --display-name 'Contoso Group'
 ```
 
-A fenti példákban a legfelső szintű felügyeleti csoportban az új felügyeleti csoport jön létre. Adja meg egy másik felügyeleti csoportban, mint a szülő, használja a **szülő** paramétert, és adja meg a szülőcsoport nevét.
+Az előző példákban az új felügyeleti csoport a gyökérszintű felügyeleti csoport alatt jön létre. Másik felügyeleti csoport szülőként való megadásához használja a **szülő** paramétert, és adja meg a szülő csoport nevét.
 
 ```azurecli-interactive
 az account management-group create --name ContosoSubGroup --parent Contoso

@@ -21,13 +21,12 @@
     - name: Kapcsolatcsoportok és társviszonyok
       href: expressroute-circuit-peerings.md
     - name: Helyek és partnerek
-      href: expressroute-locations.md
       items:
         - name: Szolgáltatók hely alapján
           href: expressroute-locations-providers.md
         - name: Helyek szolgáltató alapján
           href: expressroute-locations.md
-    - name: A virtuális hálózati átjárók ismertetése
+    - name: Virtuális hálózati átjáró és FastPath
       href: expressroute-about-virtual-network-gateways.md
     - name: Előfeltételek
       href: expressroute-prerequisites.md
@@ -45,6 +44,8 @@
       href: expressroute-erdirect-about.md
     - name: Az ExpressRoute Global Reach ismertetése
       href: expressroute-global-reach.md
+    - name: Kapcsolódás nyilvános felhőkhöz az Azure-ból
+      href: expressroute-connect-azure-to-public-cloud.md
     - name: Háttérkapcsolat együttműködési lehetőségei
       items:
         - name: Előtag- és tesztbeállítások
@@ -57,6 +58,14 @@
           href: ../networking/connectivty-interoperability-data-plane.md?toc=%2fazure%2fexpressroute%2ftoc.json
     - name: Hálózatok közötti kapcsolatok
       href: cross-network-connectivity.md
+    - name: Beépített biztonsági vezérlők
+      href: expressroute-security-controls.md
+    - name: Magas rendelkezésre állás tervezése
+      href: designing-for-high-availability-with-expressroute.md
+    - name: Tervezés a vészhelyreállítást szem előtt tartva
+      items:
+        - name: Magánhálózati társviszony-létesítés
+          href: designing-for-disaster-recovery-with-expressroute-privatepeering.md
 - name: Útmutatók
   items:
     - name: Kapcsolatcsoport létrehozása és módosítása
@@ -67,6 +76,9 @@
           href: expressroute-howto-circuit-arm.md
         - name: Azure CLI
           href: howto-circuit-cli.md
+        - name: Azure Resource Manager-sablon
+          displayName: 'ARM,resource manager template'
+          href: expressroute-howto-circuit-resource-manager-template.md
     - name: Társhálózati konfiguráció létrehozása és módosítása
       items:
         - name: Azure Portal
@@ -183,6 +195,9 @@
       href: 'https://msdn.microsoft.com/library/azure/mt586720'
     - name: REST (klasszikus)
       href: 'https://msdn.microsoft.com/library/azure/dn606310'
+    - name: Resource Manager-sablon
+      displayName: 'ARM,resource manager template'
+      href: /azure/templates/microsoft.network/expressroutecircuits
 - name: További források
   items:
     - name: ExpressRoute – Gyakori kérdések

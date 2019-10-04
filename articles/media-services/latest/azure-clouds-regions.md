@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/17/2019
+ms.date: 05/07/2019
 ms.author: juliako
-ms.openlocfilehash: 4f8851248c395a1f03c46490c8eb5e71221dd133
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 7b2691f543cf38a56eefb1e8521169aeccbf3221
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57549901"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65409287"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>Magánfelhők és régiók, mely az Azure Media Services v3 létezik
 
@@ -24,7 +24,7 @@ Az Azure Media Services v3-as globális Azure-ban, Azure Government, Azure Germa
 
 ## <a name="feature-availability-in-azure-clouds"></a>A szolgáltatás rendelkezésre állása az Azure-felhők
 
-| Szolgáltatás|Globális Azure-régiók | Azure Government|Azure Germany|Azure China 21Vianet|
+| Funkció|Globális Azure-régiók | Azure Government|Azure Germany|Azure China 21Vianet|
 | --- | --- | --- | --- | --- |
 | [Azure EventGrid](reacting-to-media-services-events.md) | Elérhető | Nem érhető el | Nem érhető el | Nem érhető el |
 | [VideoAnalyzerPreset](analyzing-video-audio-files-concept.md) |  Elérhető | Nem érhető el | Nem érhető el | Nem érhető el |
@@ -35,10 +35,7 @@ Az Azure Media Services v3-as globális Azure-ban, Azure Government, Azure Germa
 
 ## <a name="regionsgeographieslocations"></a>Régiók és földrajzi területeken/helyek
 
-* [Azure-régiók](https://azure.microsoft.com/global-infrastructure/regions/)
-* [Termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/)
-* [Azure-régiócsoportok](https://azure.microsoft.com/global-infrastructure/geographies/)
-* [Azure-helyek](https://azure.microsoft.com/global-infrastructure/locations/)
+[Régió, amelyben az Azure Media Services-szolgáltatás üzembe helyezése](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)
 
 ### <a name="region-code-name"></a>Régió neve 
 
@@ -72,7 +69,7 @@ Az alábbi végpontokat is fontos tudni, hogy különböző országos Azure-felh
 |Végpontok ||
 | --- | --- | 
 | Azure Resource Manager |  `https://management.azure.com/` |
-| Authentication | `https://login.microsoftonline.com/` | 
+| Hitelesítés | `https://login.microsoftonline.com/` | 
 | Token célrendszere | `https://management.core.windows.net/` |
 
 ### <a name="azure-government"></a>Azure Government
@@ -80,7 +77,7 @@ Az alábbi végpontokat is fontos tudni, hogy különböző országos Azure-felh
 |Végpontok||
 | --- | --- | 
 | Azure Resource Manager |  `https://management.usgovcloudapi.net/` |
-| Authentication | `https://login.microsoftonline.us/` | 
+| Hitelesítés | `https://login.microsoftonline.us/` | 
 | Token célrendszere | `https://management.core.usgovcloudapi.net/` |
 
 ### <a name="azure-germany"></a>Azure Germany
@@ -88,7 +85,7 @@ Az alábbi végpontokat is fontos tudni, hogy különböző országos Azure-felh
 | Végpontok ||
 | --- | --- |  
 | Azure Resource Manager | `https://management.cloudapi.de/` |
-| Authentication | `https://login.microsoftonline.de/` |
+| Hitelesítés | `https://login.microsoftonline.de/` |
 | Token célrendszere | `https://management.core.cloudapi.de/`|
 
 ### <a name="azure-china-21vianet"></a>Azure China 21Vianet
@@ -96,8 +93,14 @@ Az alábbi végpontokat is fontos tudni, hogy különböző országos Azure-felh
 |Végpontok||
 | --- | --- | 
 | Azure Resource Manager | `https://management.chinacloudapi.cn/` |
-| Authentication | `https://login.chinacloudapi.cn/` |
+| Hitelesítés | `https://login.chinacloudapi.cn/` |
 | Token célrendszere |  `https://management.core.chinacloudapi.cn/` |
+
+## <a name="see-also"></a>Lásd még
+
+* [Azure-régiók](https://azure.microsoft.com/global-infrastructure/regions/)
+* [Azure-régiócsoportok](https://azure.microsoft.com/global-infrastructure/geographies/)
+* [Azure-helyek](https://azure.microsoft.com/global-infrastructure/locations/)
 
 ## <a name="next-steps"></a>További lépések
 

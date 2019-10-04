@@ -1,10 +1,9 @@
 ---
-title: Az Azure Service Bus-hitelesítés és engedélyezés |} A Microsoft Docs
-description: Hitelesítés közös hozzáférésű Jogosultságkód (SAS) hitelesítés a Service Bus az alkalmazások.
+title: Hitelesítés és engedélyezés Azure Service Bus | Microsoft Docs
+description: Az alkalmazások hitelesítése megosztott hozzáférés-aláírási (SAS-) hitelesítéssel Service Bus.
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
-manager: timlt
 editor: spelluru
 ms.assetid: 18bad0ed-1cee-4a5c-a377-facc4785c8c9
 ms.service: service-bus-messaging
@@ -12,47 +11,58 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2019
+ms.date: 08/22/2019
 ms.author: aschhab
-ms.openlocfilehash: 7c5a45504b7c44d97ff2250663ef9c47ef6e3595
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 7234e33c04e742c77630f8d87481c7831fb00bf2
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54851555"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013245"
 ---
 # <a name="service-bus-authentication-and-authorization"></a>Service Bus-hitelesítés és -engedélyezés
 
-Alkalmazások közös hozzáférésű Jogosultságkód (SAS) tokent használó hitelesítés biztosítását az Azure Service Bus-erőforrások eléréséhez. Az SAS-alkalmazások jelenthet egy jogkivonatot a Service Bus az aláírt egy ismert mindkettőt a jogkivonat kibocsátója szimmetrikus kulcsot és a Service Bus (a ezért "megosztott"), és a kulcs közvetlenül egy adott hozzáférési jogok, például a szükséges engedély szabályhoz társított fogadása és figyelés, vagy üzeneteket küldhet. SAS-szabályok a következők vagy konfigurálva, a névteret, vagy közvetlenül entitások, például egy üzenetsorba vagy témakörbe, így részletes hozzáférés-vezérlést.
+Az alkalmazások közös hozzáférésű aláírás (SAS) jogkivonat-hitelesítés használatával férnek hozzá Azure Service Bus erőforrásokhoz. Az SAS-vel az alkalmazások olyan Service Bus jogkivonatot kapnak, amely egy, a jogkivonat-kiállító és a Service Bus (azaz "Shared") által ismert szimmetrikus kulccsal van aláírva, és a kulcs közvetlenül társítva van egy olyan szabállyal, amely konkrét hozzáférési jogokat biztosít, például a következőhöz: üzenetek fogadása/figyelése vagy küldése. A SAS-szabályok a névtérben vannak konfigurálva, vagy közvetlenül olyan entitásokon, mint például a várólista vagy a témakör, ami lehetővé teszi a részletes hozzáférés-vezérlést.
 
-SAS-tokeneket generált, vagy lehet egy Service Bus-ügyfél által közvetlenül, vagy azok hozhat létre néhány köztes jogkivonat kiállítása végpont, amelyhez az ügyfél kommunikál. Például a rendszernek az ügyfél számára egy Active Directory védett engedélyezési webszolgáltatási végpontot az identitása és a rendszer hozzáférési jogosultságokat, és a webszolgáltatás majd értéket ad vissza a megfelelő Service Bus token igazolásához hívja. A SAS-jogkivonat egyszerűen létrehozható használatával a Service Bus jogkivonat-szolgáltatót az Azure SDK-ban található. 
+Az SAS-jogkivonatokat közvetlenül egy Service Bus-ügyfél hozhatja létre, vagy egy olyan közbenső jogkivonat-kiállítói végpont generálhatja, amellyel az ügyfél kommunikál. Előfordulhat például, hogy egy rendszer megköveteli, hogy az ügyfél meghívjon egy Active Directory hitelesítéssel védett webszolgáltatás-végpontot, hogy igazolja az identitását és a rendszer hozzáférési jogosultságát, és a webszolgáltatás ezt követően visszaadja a megfelelő Service Bus tokent. Ez az SAS-token egyszerűen létrehozható az Azure SDK-ban foglalt Service Bus jogkivonat-szolgáltató használatával. 
 
 > [!IMPORTANT]
-> Ha az Azure Active Directory hozzáférés-vezérlés (más néven az Access Control Service szolgáltatást vagy az ACS) használata a Service Bus, vegye figyelembe, hogy ez a módszer támogatása jelenleg korlátozott, és át kell telepítenie az alkalmazást, hogy az SAS. További információkért lásd: [ebben a blogbejegyzésben](https://blogs.msdn.microsoft.com/servicebus/2017/06/01/upcoming-changes-to-acs-enabled-namespaces/) és [Ez a cikk](service-bus-migrate-acs-sas.md).
+> Ha Azure Active Directory Access Controlt (más néven Access Control Service vagy ACS) használ Service Bus, vegye figyelembe, hogy a metódus támogatása már korlátozott, és az alkalmazást az SAS használatára kell áttelepítenie. További információt [ebben](https://blogs.msdn.microsoft.com/servicebus/2017/06/01/upcoming-changes-to-acs-enabled-namespaces/) a blogbejegyzésben és [a cikkben](service-bus-migrate-acs-sas.md)talál.
 
-## <a name="shared-access-signature-authentication"></a>Közös hozzáférésű Jogosultságkód-hitelesítés
+## <a name="azure-active-directory"></a>Azure Active Directory
+A Azure Active Directory (Azure AD) integrációja Service Bus erőforrásokhoz szerepköralapú hozzáférés-vezérlést (RBAC) biztosít az ügyfelek erőforrásaihoz való hozzáférés részletes szabályozásához. A szerepköralapú hozzáférés-vezérlés (RBAC) segítségével engedélyeket biztosíthat a rendszerbiztonsági tag számára, amely lehet egy felhasználó, egy csoport vagy egy egyszerű alkalmazás. A rendszerbiztonsági tag hitelesítése az Azure AD által OAuth 2,0 token visszaküldésével történik. A token használatával engedélyezhető egy Service Bus erőforrás elérésére irányuló kérés (Üzenetsor, témakör stb.).
 
-[SAS hitelesítési](service-bus-sas.md) lehetővé teszi, hogy egy felhasználó hozzáférést biztosít a Service Bus-erőforrások, a megadott jogokat. SAS-hitelesítés a Service Bus magában foglalja egy titkosítási kulcs társított jogosultságokkal a Service Bus erőforrás konfigurációját. Az ügyfelek így az ezekből nyerhető erőforráshoz való hozzáférést egy SAS-token, amely tartalmazza az erőforrás-URI elért szabályzatkérelem, és a egy lejárati aláírva a konfigurált kulcs.
+Az Azure AD-vel történő hitelesítéssel kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-Kulcsok a Service Bus-névtér SAS konfigurálható. A kulcs a névtéren belül minden üzenetküldési entitások vonatkozik. A Service Bus-üzenetsorok és témakörök beállíthatók a kulcsokat. Szintén támogatott az SAS [Azure Relay](../service-bus-relay/relay-authentication-and-authorization.md).
+- [Hitelesítés felügyelt identitásokkal](service-bus-managed-service-identity.md)
+- [Hitelesítés alkalmazásból](authenticate-application.md)
 
-SAS használatával konfigurálhat egy [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) objektum névtér, üzenetsor vagy témakör. Ez a szabály a következő elemekből áll:
+> [!IMPORTANT]
+> Az Azure AD által visszaadott OAuth 2,0 tokent használó felhasználók vagy alkalmazások engedélyezése kiváló biztonságot és egyszerű használatot biztosít a közös hozzáférésű aláírások (SAS) számára. Az Azure AD-ben nincs szükség a jogkivonatok tárolására a kódban, és kockázatos biztonsági réseket. Azt javasoljuk, hogy ha lehetséges, az Azure AD-t használja a Azure Service Bus alkalmazásaihoz. 
 
-* *Kulcsnév*: azonosítja a szabályt.
-* *PrimaryKey*: egy titkosítási kulcs érvényesítéséhez használt bejelentkezési/SAS-tokeneket.
-* *Másodlagos kulcs*: egy titkosítási kulcs érvényesítéséhez használt bejelentkezési/SAS-tokeneket.
-* *Jogok*: gyűjteményét jelölik **figyelésére**, **küldése**, vagy **kezelés** megadott jogokat.
 
-A névterek szintjén konfigurált engedélyezési szabályokat adhat hozzáférést a névtérben lévő összes entitáshoz ügyfelek számára a megfelelő kulcsával aláírt jogkivonatokat. A Service Bus-névtér, üzenetsor vagy témakör legfeljebb 12 ilyen engedélyezési szabályok is beállíthatja. Alapértelmezés szerint egy [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) jogosultságok mindegyikével rendelkező van konfigurálva névtereinek első helyezésekor.
+## <a name="shared-access-signature"></a>Közös hozzáférésű jogosultságkód
+Az [sas-hitelesítés](service-bus-sas.md) lehetővé teszi a felhasználók számára, hogy hozzáférést biztosítson Service Bus erőforrásokhoz adott jogokkal. A Service Bus SAS-hitelesítése egy Service Bus erőforráson társított jogokkal rendelkező titkosítási kulcs konfigurációját foglalja magában. Az ügyfelek ezután egy SAS-token bemutatásával férhetnek hozzá ehhez az erőforráshoz, amely az elérni kívánt erőforrás-URI-t és a beállított kulccsal lejáró lejárati értéket tartalmazza.
 
-Egy entitás eléréséhez az ügyfélnek szüksége van egy adott használatával létrehozott SAS-tokent [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule). A SAS-jogkivonat jön létre a HMAC-SHA256-kivonata egy erőforrás-karakterlánc, amely az erőforrás URI azonosítója, amelyhez hozzáférést igényelnek áll, és a egy lejárati használatával az engedélyezési szabály társított titkosítási kulccsal.
+Az SAS kulcsait Service Bus névtérben is konfigurálhatja. A kulcs az adott névtéren belüli összes üzenetküldési entitásra vonatkozik. A kulcsokat Service Bus várólistákon és témakörökben is konfigurálhatja. Az SAS [Azure Relay](../service-bus-relay/relay-authentication-and-authorization.md)is támogatott.
 
-SAS-hitelesítési támogatás a Service Bus részeként elérhető az Azure .NET SDK-verziók 2.0-s és újabb verziók. SAS-támogatást tartalmaz egy [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule). Minden API-k, amelyek egy kapcsolati karakterlánc paraméterként fogadják közé tartozik a SAS-kapcsolati karakterláncok támogatása.
+Ha SAS-t szeretne használni, konfigurálhat egy [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) -objektumot egy névtérben, egy várólistán vagy egy témakörben. Ez a szabály a következő elemekből áll:
+
+* *Kulcsnév*: a szabályt azonosítja.
+* *PrimaryKey*: a sas-jogkivonatok aláírására/érvényesítésére használt titkosítási kulcs.
+* *Értesítésiközpont*: a sas-jogkivonatok aláírására/érvényesítésére használt titkosítási kulcs.
+* *Rights*: a megadható **figyelési**, **küldési**vagy **kezelési** jogosultságok gyűjteményét jelöli.
+
+A névtér szintjén konfigurált engedélyezési szabályok hozzáférést biztosíthatnak a névtérben lévő összes entitáshoz a megfelelő kulccsal aláírt tokenekkel rendelkező ügyfelek számára. Egy Service Bus névtérben, várólistán vagy témakörön legfeljebb 12 ilyen engedélyezési szabályt állíthat be. Alapértelmezés szerint minden egyes jogosultsággal rendelkező [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) konfigurálva van minden névtérhez, amikor először kiépítik őket.
+
+Egy entitás eléréséhez az ügyfélnek egy adott [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)létrehozott sas-tokent kell használnia. Az SAS-tokent egy olyan erőforrás-karakterlánc HMAC-SHA256 hozza létre, amely a hozzáférést igényelő erőforrás-URI-t, valamint az engedélyezési szabályhoz társított titkosítási kulccsal lejáró lejáratot tartalmaz.
+
+A Service Bus SAS-hitelesítésének támogatása az Azure .NET SDK 2,0-as és újabb verzióiban érhető el. Az SAS a [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)támogatását is támogatja. Minden olyan API-t, amely a paramétert fogadja, az SAS-kapcsolatok karakterláncok támogatását tartalmazza.
 
 ## <a name="next-steps"></a>További lépések
 
-- Olvassa tovább [Service Bus-hitelesítés közös hozzáférésű jogosultságkódokkal](service-bus-sas.md) SAS kapcsolatos további részletekért.
-- Hogyan [áttelepítése az Azure Active Directory Access Control (ACS) közös hozzáférésű Jogosultságkód engedélyezési](service-bus-migrate-acs-sas.md).
-- [Módosítások ACS engedélyezni névterek](https://blogs.msdn.microsoft.com/servicebus/2017/06/01/upcoming-changes-to-acs-enabled-namespaces/).
-- Kapcsolódó információ az Azure Relay-hitelesítés és engedélyezés: [Azure Relay hitelesítési és engedélyezési](../service-bus-relay/relay-authentication-and-authorization.md). 
+- A SAS-vel kapcsolatos további részletekért olvassa [el Service Bus hitelesítés közös hozzáférési aláírásokkal](service-bus-sas.md) című cikkét.
+- Migrálás [Azure Active Directory Access Controlról (ACS) a közös hozzáférésű aláírás engedélyezésére](service-bus-migrate-acs-sas.md).
+- [Az ACS-kompatibilis névterek változásai](https://blogs.msdn.microsoft.com/servicebus/2017/06/01/upcoming-changes-to-acs-enabled-namespaces/).
+- A Azure Relay hitelesítéssel és engedélyezéssel kapcsolatos megfelelő információkért lásd: [Azure Relay hitelesítés és engedélyezés](../service-bus-relay/relay-authentication-and-authorization.md). 
 

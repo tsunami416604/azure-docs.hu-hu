@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/01/2018
 ms.author: kgremban
 ms.custom: include file
-ms.openlocfilehash: 490260a1cda8ed467d3fc7ad0c1020e6e459bd13
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: bad21019607c99964caa1712e50231705689aad2
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38728288"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055315"
 ---
 >[!NOTE]
->Az ebben a cikkben leírt funkciók csak az IoT hub standard szintű csomagjában érhető el. Az alapszintű és standard csomagokról [a megfelelő IoT Hub-csomag kiválasztását](../articles/iot-hub/iot-hub-scaling.md) ismertető cikkben talál további információt.
+>Az ebben a cikkben leírt funkciók csak az IoT Hub standard szintű csomagjában érhető el. Az alapszintű és standard csomagokról kapcsolatos további információkért lásd: [válassza ki a megfelelő IoT Hub-csomag](../articles/iot-hub/iot-hub-scaling.md).

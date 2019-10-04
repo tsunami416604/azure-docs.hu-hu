@@ -1,0 +1,51 @@
+### YamlMime:Landing
+title: Azure Bastion – Dokumentáció (előzetes verzió)
+summary: Megtudhatja, hogy csatlakozhat egy virtuális géphez az Azure Bastionnal. Biztonságos és zökkenőmentes RDP-/SSH-kapcsolatokat konfigurálhat a virtuális gépeihez közvetlenül az Azure Portalon SSL használatával. Ha az Azure Bastionon keresztül csatlakozik, a virtuális gépeinek nincs szüksége nyilvános IP-címre.
+metadata:
+  title: Azure Bastion – Dokumentáció (előzetes verzió)
+  description: Megtudhatja, hogy csatlakozhat egy virtuális géphez az Azure Bastionnal. Biztonságos és zökkenőmentes RDP-/SSH-kapcsolatokat konfigurálhat a virtuális gépeihez közvetlenül az Azure Portalon SSL használatával.
+  services: bastion
+  ms.service: bastion
+  ms.topic: landing-page
+  author: cherylmc
+  ms.author: cherylmc
+  ms.date: 08/29/2019
+  ms.openlocfilehash: 6854e6ec4bd36ea38fa0e1f9cd46f95e11144be6
+  ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 08/28/2019
+  ms.locfileid: "70128118"
+landingContent:
+- title: Az Azure Bastion ismertetése (előzetes verzió)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az Azure Bastion?
+      url: bastion-overview.md
+  - linkListType: concept
+    links:
+    - text: Azure Bastion – gyakori kérdések
+      url: bastion-faq.md
+- title: Bevezetés
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Bastion-gazdagép létrehozása
+      url: bastion-create-host-portal.md
+    - text: Csatlakozás virtuális géphez (Linux)
+      url: bastion-connect-vm-ssh.md
+    - text: Csatlakozás virtuális géphez (Windows)
+      url: bastion-connect-vm-rdp.md
+  - linkListType: video
+    links:
+    - text: Az Azure Bastion használata
+      url: https://go.microsoft.com/fwlink/?linkid=2095517
+- title: Virtuálisgép-munkamenetek használata
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Másolás és beillesztés
+      url: bastion-vm-copy-paste.md
+    - text: Teljes képernyős nézet
+      url: bastion-vm-full-screen.md

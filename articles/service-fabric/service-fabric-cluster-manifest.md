@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2018
 ms.author: dekapur
-ms.openlocfilehash: f94a65e469fdb3cee4f02bc5a8f6f5a4a1ea5a16
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: ae7fbef864634e47866de13384871a98b8ce4675
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662329"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65209705"
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>Egy különálló Windows-fürt konfigurációs beállításai
 Ez a cikk ismerteti, amely megadható önálló Azure Service Fabric-fürt konfigurációs beállításainak a *ClusterConfig.json* fájlt. Ez a fájl lesz használatával adhatja meg a fürt csomópontjai, biztonsági konfigurációkat, valamint a hálózati topológia hibatűrési és frissítési tartományokba tekintetében.  Miután módosítása, vagy a konfigurációs beállítások hozzáadása, választhatja [önálló fürt létrehozása](service-fabric-cluster-creation-for-windows-server.md) vagy [önálló fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-windows-server.md).
 
-Ha Ön [a különálló Service Fabric-csomag letöltése](service-fabric-cluster-creation-for-windows-server.md#downloadpackage), ClusterConfig.json mintákat is szerepelnek. A mintákat, amelyek a nevük "DevCluster" ugyanarra a gépre, logikai csomópontok használatával minden három csomóponttal rendelkező fürt létrehozása. Ezek a csomópontok ki legalább egy kell megjelölni egy elsődleges csomóponthoz. Az ilyen típusú fürt hasznos fejlesztési-tesztelési környezetre. Nem támogatott éles fürtként. A mintákat, amelyek a nevük "MultiMachine" Súgó, termelési szintű fürtök létrehozását, az egyes csomópontok egy külön számítógépen. Az ilyen fürtök elsődleges csomópontok száma alapján a fürt [megbízhatósági szint](#reliability). 5.7, API-verzió 05 – 2017, a kiadásban eltávolítottuk a megbízhatósági szintű tulajdonság. Ehelyett a kód a legtöbb optimalizált megbízhatósági szint a fürthöz tartozó számítja ki. Ne próbálja meg egy értéket ehhez a tulajdonsághoz 5.7-es verzió frissítésétől kezdve.
+Ha Ön [a különálló Service Fabric-csomag letöltése](service-fabric-cluster-creation-for-windows-server.md#downloadpackage), ClusterConfig.json mintákat is szerepelnek. A mintákat, amelyek a nevük "DevCluster" ugyanarra a gépre, logikai csomópontok használatával minden három csomóponttal rendelkező fürt létrehozása. Ezek a csomópontok ki legalább egy kell megjelölni egy elsődleges csomóponthoz. Az ilyen típusú fürt hasznos fejlesztési-tesztelési környezetre. Nem támogatott éles fürtként. A mintákat, amelyek a nevük "MultiMachine" Súgó, termelési szintű fürtök létrehozását, az egyes csomópontok egy külön számítógépen. Az ilyen fürtök elsődleges csomópontok száma alapján a fürt [megbízhatósági szint](#reliability). 5\.7, API-verzió 05 – 2017, a kiadásban eltávolítottuk a megbízhatósági szintű tulajdonság. Ehelyett a kód a legtöbb optimalizált megbízhatósági szint a fürthöz tartozó számítja ki. Ne próbálja meg egy értéket ehhez a tulajdonsághoz 5.7-es verzió frissítésétől kezdve.
 
 * ClusterConfig.Unsecure.DevCluster.json és ClusterConfig.Unsecure.MultiMachine.json bemutatják, hogyan hozhat létre egy nem biztonságos, tesztelési vagy éles fürtöt jelölik.
 
@@ -122,7 +122,7 @@ A biztonsági szakaszban szükség egy biztonságos önálló Service Fabric-fü
 }
 ```
 
-A metaadatok leírását, a biztonságos fürthöz, és a telepítés megfelelően állíthatja be. A ClusterCredentialType és ServerCredentialType meghatározni a biztonsági, amelyek a fürt és a csomópontok valósítanak meg. Beállíthatja azokat termékeken *X509* egy tanúsítványalapú biztonsági vagy *Windows* Azure Active Directory-alapú biztonság. A biztonsági szakasz többi biztonság típusától alapul. Töltse ki a biztonsági szakasz többi módjáról további információkért lásd: [tanúsítványok-alapú biztonság egy önálló fürt](service-fabric-windows-cluster-x509-security.md) vagy [Windows biztonsági önálló fürt](service-fabric-windows-cluster-windows-security.md).
+A metaadatok leírását, a biztonságos fürthöz, és a telepítés megfelelően állíthatja be. A ClusterCredentialType és ServerCredentialType meghatározni a biztonsági, amelyek a fürt és a csomópontok valósítanak meg. Beállíthatja azokat termékeken *X509* egy tanúsítványalapú biztonsági vagy *Windows* Active Directory-alapú biztonság. A biztonsági szakasz többi biztonság típusától alapul. Töltse ki a biztonsági szakasz többi módjáról további információkért lásd: [tanúsítványok-alapú biztonság egy önálló fürt](service-fabric-windows-cluster-x509-security.md) vagy [Windows biztonsági önálló fürt](service-fabric-windows-cluster-windows-security.md).
 
 ### <a name="node-types"></a>Csomóponttípusok
 A NodeType szakasz ismerteti, amely rendelkezik a fürt csomópontjai típusát. Legalább egy csomópont típusa meg kell adni egy fürthöz, az alábbi kódrészletben látható módon: 

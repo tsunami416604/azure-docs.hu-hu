@@ -1,231 +1,208 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező RightAnswers |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és RightAnswers között.
+title: 'Oktatóanyag: Azure Active Directory integráció a RightAnswers-szel | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és RightAnswers között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 7f09e25a-a716-41e1-8ca3-fd00e3d1b8cc
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 06/09/2017
+ms.topic: tutorial
+ms.date: 03/26/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a4f7fef8a1f73bb7c3e19ae32756d13273ddf2d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f242b2e33b50aa955446ae2b1f62421d39e58418
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56208537"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098903"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-rightanswers"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező RightAnswers
+# <a name="tutorial-azure-active-directory-integration-with-rightanswers"></a>Oktatóanyag: Azure Active Directory integráció a RightAnswers
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan RightAnswers integrálása az Azure Active Directory (Azure AD).
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a RightAnswers a Azure Active Directory (Azure AD) szolgáltatással.
+A RightAnswers és az Azure AD integrálásával a következő előnyöket nyújtja:
 
-RightAnswers integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
+* Az Azure AD-ben beállíthatja, hogy ki férhet hozzá a RightAnswers.
+* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a RightAnswers (egyszeri bejelentkezés) az Azure AD-fiókokkal.
+* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-- Szabályozhatja, hogy ki férhet hozzá RightAnswers Azure AD-ben
-- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett RightAnswers (egyszeri bejelentkezés) az Azure AD-fiókjukkal
-- Kezelheti a fiókokat, egyetlen központi helyen – az Azure Portalon
-
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-RightAnswers az Azure AD-integráció konfigurálásához a következőkre van szükség:
+Az Azure AD-integráció RightAnswers való konfigurálásához a következő elemek szükségesek:
 
-- Azure AD-előfizetés
-- Egy RightAnswers egyszeri bejelentkezéses engedélyezett előfizetés
-
-> [!NOTE]
-> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
-
-Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
-
-- Ne használja az éles környezetben, csak szükség esetén.
-- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, beszerezheti a egy egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/).
+* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, [ingyenes fiókot](https://azure.microsoft.com/free/) szerezhet be
+* RightAnswers egyszeri bejelentkezésre engedélyezett előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. RightAnswers hozzáadása a katalógusból
-1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
-## <a name="adding-rightanswers-from-the-gallery"></a>RightAnswers hozzáadása a katalógusból
-Az Azure AD integrálása a RightAnswers konfigurálásához hozzá kell RightAnswers a katalógusból a felügyelt SaaS-alkalmazások listájára.
+* A RightAnswers támogatja az **SP** által KEZDEMÉNYEZett SSO-t
 
-**RightAnswers hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
+## <a name="adding-rightanswers-from-the-gallery"></a>RightAnswers hozzáadása a gyűjteményből
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+A RightAnswers Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a RightAnswers a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-    ![Active Directory][1]
+**Ha RightAnswers szeretne hozzáadni a katalógusból, hajtsa végre a következő lépéseket:**
 
-1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
-    ![Alkalmazások][2]
-    
-1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+    ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-    ![Alkalmazások][3]
+2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
-1. A Keresés mezőbe írja be a **RightAnswers**.
+    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/rightanswers-tutorial/tutorial_rightanswers_search.png)
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
-1. Az eredmények panelen válassza ki a **RightAnswers**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+    ![Az új alkalmazás gomb](common/add-new-app.png)
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/rightanswers-tutorial/tutorial_rightanswers_addfromgallery.png)
+4. A keresőmezőbe írja be a **RightAnswers**kifejezést, válassza a **RightAnswers** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
-Ebben a szakaszban konfigurálja, és a teszt "Britta Simon." nevű felhasználó RightAnswers az Azure AD egyszeri bejelentkezés tesztelése
+     ![RightAnswers az eredmények listájában](common/search-new-app.png)
 
-Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó RightAnswers mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó RightAnswers hivatkozás kapcsolata kell létrehozni.
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-RightAnswers, rendelje hozzá az értékét a **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az RightAnswers-mel konfigurálja és teszteli a **Britta Simon**nevű tesztelési felhasználó alapján.
+Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a RightAnswers kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
-Az Azure AD egyszeri bejelentkezés az RightAnswers tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
+Az Azure AD egyszeri bejelentkezés RightAnswers való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-1. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-1. **[RightAnswers tesztfelhasználó létrehozása](#creating-a-rightanswers-test-user)**  – egy megfelelője a Britta Simon RightAnswers, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-1. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-1. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[RightAnswers egyszeri bejelentkezés konfigurálása](#configure-rightanswers-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. **[Hozzon létre RightAnswers-teszt felhasználót](#create-rightanswers-test-user)** – hogy a RightAnswers Britta, a felhasználó Azure ad-képviseletéhez kapcsolódó partnerrel rendelkezzen.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és RightAnswers alkalmazását az egyszeri bejelentkezés konfigurálása.
+Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
 
-**Szeretné konfigurálni az Azure AD egyszeri bejelentkezés RightAnswers, hajtsa végre az alábbi lépéseket:**
+Az Azure AD egyszeri bejelentkezés RightAnswers való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. Az Azure Portalon az a **RightAnswers** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
+1. A [Azure Portal](https://portal.azure.com/) **RightAnswers** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
 
-    ![Egyszeri bejelentkezés konfigurálása][4]
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
- 
-    ![Egyszeri bejelentkezés konfigurálása](./media/rightanswers-tutorial/tutorial_rightanswers_samlbase.png)
+2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
 
-1. Az a **RightAnswers tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
+    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/rightanswers-tutorial/tutorial_rightanswers_url.png)
+3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
 
-    a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<subdomain>.rightanswers.com/portal/ss/`
+    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-    b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<subdomain>.rightanswers.com:<identifier>/portal`
+4. Az alapszintű **SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
 
-    > [!NOTE] 
-    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL- és azonosító. Kapcsolattartó [RightAnswers ügyfél-támogatási csapatának](https://www.rightanswers.com/contact-us/) beolvasni ezeket az értékeket. 
- 
-1. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
+    ![RightAnswers tartomány és URL-címek egyszeri bejelentkezési adatai](common/sp-identifier.png)
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/rightanswers-tutorial/tutorial_rightanswers_certificate.png) 
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<subdomain>.rightanswers.com/portal/ss/`
 
-1. Kattintson a **mentése** gombra.
+    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<subdomain>.rightanswers.com:<identifier>/portal`
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/rightanswers-tutorial/tutorial_general_400.png)
+    > [!NOTE]
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az értékek lekéréséhez forduljon a [RightAnswers](https://support.rightanswers.com) ügyfélszolgálati csapatához. Az Azure Portal alapszintű **SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-1. Az egyszeri bejelentkezés konfigurálása **RightAnswers** oldalon kell küldenie a letöltött **metaadatainak XML** való [RightAnswers támogatási csoportjának](https://www.rightanswers.com/contact-us/).
+5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
-    >[!NOTE]
-    >A RightAnswers támogatási csapat rendelkezik, a tényleges SSO-konfiguráció beállítása.
-    >Értesítést fog kapni, amikor az egyszeri bejelentkezés az előfizetés engedélyezve van.
+    ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
 
-> [!TIP]
-> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Az Azure AD embedded dokumentációja]( https://go.microsoft.com/fwlink/?linkid=845985)
+6. A **RightAnswers beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények szerint.
 
-### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
+
+    a. Bejelentkezési URL
+
+    b. Azure AD-azonosító
+
+    c. Kijelentkezési URL
+
+### <a name="configure-rightanswers-single-sign-on"></a>RightAnswers egyszeri bejelentkezés konfigurálása
+
+Ha az egyszeri bejelentkezést szeretné konfigurálni a **RightAnswers** oldalon, el kell küldenie a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** és a megfelelő másolt url-címeket a Azure Portal a [RightAnswers támogatási csapatának](https://support.rightanswers.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+
+> [!NOTE]
+> A RightAnswers támogatási csapatának meg kell tennie a tényleges SSO-konfigurációt. Értesítést kap, ha engedélyezve van az egyszeri bejelentkezés az előfizetéséhez.
+
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+
 Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-![Az Azure AD-felhasználó létrehozása][100]
+1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
 
-**Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
+    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
 
-1. Az a **az Azure portal**, a bal oldali navigációs panelén kattintson **Azure Active Directory** ikonra.
+2. Válassza ki **új felhasználó** a képernyő tetején.
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/rightanswers-tutorial/create_aaduser_01.png) 
+    ![Új felhasználó gomb](common/new-user.png)
 
-1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
-    
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/rightanswers-tutorial/create_aaduser_02.png) 
+3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
 
-1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
- 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/rightanswers-tutorial/create_aaduser_03.png) 
+    ![A felhasználó párbeszédpanel](common/user-properties.png)
 
-1. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
- 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/rightanswers-tutorial/create_aaduser_04.png) 
+    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
+  
+    b. A **Felhasználónév** mezőbe írja be a következőt:`brittasimon@yourcompanydomain.extension`  
+    Például: BrittaSimon@contoso.com
 
-    a. Az a **neve** szövegmezőbe írja be **BrittaSimon**.
-
-    b. Az a **felhasználónév** szövegmezőbe írja be a **e-mail-cím** BrittaSimon az.
-
-    c. Válassza ki **jelszó megjelenítése** és jegyezze fel az értékét a **jelszó**.
+    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
- 
-### <a name="creating-a-rightanswers-test-user"></a>RightAnswers tesztfelhasználó létrehozása
 
-Ahhoz, hogy az Azure AD-felhasználók RightAnswers jelentkezzen be, akkor ki kell építeni RightAnswers be. Amikor RightAnswers, kiépítés, egy automatizált tevékenység, így nincs teendő elem az Ön számára.
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Felhasználók automatikusan jönnek létre szükség esetén az első egyszeri bejelentkezési kísérlet során.
+Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a RightAnswers hozzáférésének biztosításával.
 
->[!NOTE]
->Bármely más RightAnswers felhasználói fiók létrehozása eszközöket használhatja, vagy az aad-ben a felhasználói fiókok kiépítését RightAnswers által biztosított API-k.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **RightAnswers**lehetőséget.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés RightAnswers Azure egyszeri bejelentkezés használatára.
+2. Az alkalmazások listában válassza a **RightAnswers**lehetőséget.
 
-![Felhasználó hozzárendelése][200] 
+    ![Az RightAnswers hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-**Britta Simon rendel RightAnswers, hajtsa végre az alábbi lépéseket:**
+3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
 
-1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
+    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-    ![Felhasználó hozzárendelése][201] 
+4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
 
-1. Az alkalmazások listájában jelölje ki a **RightAnswers**.
+    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/rightanswers-tutorial/tutorial_rightanswers_app.png) 
+5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
 
-1. A bal oldali menüben kattintson **felhasználók és csoportok**.
+6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
 
-    ![Felhasználó hozzárendelése][202] 
+7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+### <a name="create-rightanswers-test-user"></a>RightAnswers-tesztelési felhasználó létrehozása
 
-    ![Felhasználó hozzárendelése][203]
+Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a RightAnswers, a RightAnswers kell kiépíteni őket. Ha a RightAnswers, a kiépítés egy automatizált feladat, így nincs művelet elem.
 
-1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+A felhasználók szükség esetén automatikusan létrejönnek az első egyszeri bejelentkezés megkísérlése során.
 
-1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
+> [!NOTE]
+> A RightAnswers által biztosított egyéb RightAnswers-létrehozási eszközöket vagy API-kat a HRE felhasználói fiókjainak kiépítésére használhatja.
 
-1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
-    
-### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
-Ha szeretné az egyszeri bejelentkezési beállításainak tesztelése, nyissa meg a hozzáférési panelen. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md).
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
+
+Ha a hozzáférési panelen a RightAnswers csempére kattint, automatikusan be kell jelentkeznie arra a RightAnswers, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
 ## <a name="additional-resources"></a>További források
 
-* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: ./media/rightanswers-tutorial/tutorial_general_01.png
-[2]: ./media/rightanswers-tutorial/tutorial_general_02.png
-[3]: ./media/rightanswers-tutorial/tutorial_general_03.png
-[4]: ./media/rightanswers-tutorial/tutorial_general_04.png
-
-[100]: ./media/rightanswers-tutorial/tutorial_general_100.png
-
-[200]: ./media/rightanswers-tutorial/tutorial_general_200.png
-[201]: ./media/rightanswers-tutorial/tutorial_general_201.png
-[202]: ./media/rightanswers-tutorial/tutorial_general_202.png
-[203]: ./media/rightanswers-tutorial/tutorial_general_203.png
-
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

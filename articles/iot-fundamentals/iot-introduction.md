@@ -8,15 +8,15 @@ ms.topic: overview
 ms.date: 10/11/2018
 ms.author: robinsh
 ms.openlocfilehash: e1cb588d68153a88d8b55b2696b376c4eb8704f5
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199277"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61232251"
 ---
 # <a name="what-is-azure-internet-of-things-iot"></a>Mi az Azure Internet of Things (IoT)?
 
-Az Azure Internet of Things (IoT) gyűjteménye, csatlakoztatása, figyelése és több milliárd IoT-eszközök felügyelete a Microsoft által felügyelt felhőalapú szolgáltatásokat. Egyszerűbben fogalmazva a IoT-megoldás épül fel egy vagy több IoT-eszközök és a egy vagy több háttér-szolgáltatás a felhőben futó, amely kommunikálni egymással. 
+Az Azure IoT (eszközök internetes hálózata) a Microsoft által felügyelt felhőszolgáltatások gyűjteménye, amelyek az IoT-hez csatlakozó eszközök millióit kötik össze, monitorozzák és irányítják. Egyszerűbben fogalmazva egy IoT-megoldás egy vagy több IoT-eszközből és egy vagy több, a felhőben futó háttérszolgáltatásból áll, amelyek kommunikálnak egymással. 
 
 Ez a cikk bemutatja az alapokat, az IoT, használati esetek megemlít és röviden ismerteti az elérhető nyolc külön szolgáltatás. Megismerni, mi érhető el, hogy ismerhetik fel a forgatókönyv további szorosan tervező segítségével meg szeretné.
 
@@ -55,7 +55,7 @@ Az eszköz tud kommunikálni a háttérszolgáltatások mindkét irányban. Az a
 
 Ezeket a feladatokat, és más segítségével valósítható meg a [IoT eszközoldali SDK-k](../iot-hub/iot-hub-devguide-sdks.md).
 
-#### <a name="connection-considerations"></a>Kapcsolat kapcsolatos szempontok
+#### <a name="connection-considerations"></a>Connection Considerations
 
 Az IoT-megoldások esetében gyakran az eszközök biztonságos és megbízható csatlakoztatása jelenti a legnagyobb kihívást. Ennek oka az, IoT-eszközök más jellemzőkkel ügyfelek, például böngészők vagy mobilalkalmazások képest rendelkeznek. Pontosabban, az IoT-eszközök:
 

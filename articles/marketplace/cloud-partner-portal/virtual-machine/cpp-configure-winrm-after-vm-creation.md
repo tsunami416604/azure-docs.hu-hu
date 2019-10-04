@@ -1,25 +1,18 @@
 ---
-title: A WinRM beállítása után az Azure virtuális gép létrehozása |} A Microsoft Docs
+title: A WinRM beállítása után az Azure virtuális gép létrehozása |} Az Azure Marketplace-en
 description: Azt ismerteti, hogyan konfigurálhatja a Windows Rendszerfelügyeleti (webszolgáltatások WinRM) egy Azure-ban üzemeltetett virtuális gép a létrehozása után.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/27/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 6350d5bde737c46cf14a9aef75a7ec57260a6afa
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.author: pabutler
+ms.openlocfilehash: 4a4248efcfda76dfd8907069e167fdfa144d0365
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53197140"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64938517"
 ---
 # <a name="configure-winrm-after-virtual-machine-creation"></a>A WinRM beállítása után a virtuális gép létrehozása
 
@@ -33,7 +26,7 @@ Ez a cikk ismerteti, hogyan konfigurálhatja egy meglévő Azure-ban üzemeltete
 
 A WinRM HTTPS protokollon keresztül-portot használja 5896, amely az Azure piactéren kínált előre konfigurált Windows virtuális gépek alapértelmezés szerint nincs engedélyezve. Ez a protokoll engedélyezéséhez használja az alábbi lépéseket a hálózati biztonsági csoport (NSG) az új szabály hozzáadása a [az Azure portal](https://portal.azure.com).  NSG-kkel kapcsolatos további információkért lásd: [biztonsági csoportok](https://docs.microsoft.com/azure/virtual-network/security-overview).
 
-1.  A panelre való **virtuális gépek >**  <*virtuális gép neve*>  **> Beállítások/hálózati**.
+1.  A panelre való **virtuális gépek >**   <*virtuális gép neve*>   **> Beállítások/hálózati**.
 2.  Kattintson az NSG neve (ebben a példában **testvm11002**) a tulajdonságainak megjelenítéséhez:
 
     ![Hálózati biztonsági csoport tulajdonságai](./media/nsg-properties.png)

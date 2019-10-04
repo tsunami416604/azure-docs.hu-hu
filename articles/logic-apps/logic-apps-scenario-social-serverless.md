@@ -1,6 +1,6 @@
 ---
-title: Kiszolgáló nélküli forgatókönyv – customer insights irányítópult létrehozása az Azure-szolgáltatásokkal |} A Microsoft Docs
-description: Ügyfeleink visszajelzései, közösségi adatok és egyéb, az Azure Logic Apps és az Azure Functions ügyfél irányítópult létrehozásával kezelése
+title: Kiszolgáló nélküli forgatókönyv – ügyfél-bepillantást tartalmazó irányítópult létrehozása az Azure-szolgáltatásokkal | Microsoft Docs
+description: Felhasználói visszajelzések, közösségi média-és egyéb funkciók kezelése az ügyfél-irányítópult létrehozásával Azure Logic Apps és Azure Functions
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -10,106 +10,109 @@ ms.reviewer: estfan, LADocs
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.topic: article
 ms.date: 03/15/2018
-ms.openlocfilehash: 638b29dd2a15d0467c41e20ecfed9f333b34c04d
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: b8ba341252679a07e50f9b276f7f485b08a6acba
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54061057"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164866"
 ---
-# <a name="create-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Az Azure Logic Apps és az Azure Functions streamelési customer insights irányítópult létrehozása
+# <a name="create-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Streaming Customer-adatáttekintési irányítópult létrehozása Azure Logic Apps és Azure Functions
 
-Azure-ajánlatok [kiszolgáló nélküli](https://azure.microsoft.com/solutions/serverless/) eszközök, amelyek segítségével gyorsan alkalmazásfejlesztést és a felhőben anélkül, hogy az infrastruktúrával foglalkoznia kellene. Ebben az oktatóanyagban létrehozhat egy irányítópultot, amely elindítja az ügyfelek visszajelzései alapján elemzi a machine learning visszajelzés és elemzéseket tesz közzé egy forrás, például a Power bi-ban vagy az Azure Data Lake.
+Az Azure olyan [kiszolgáló](https://azure.microsoft.com/solutions/serverless/) nélküli eszközöket kínál, amelyekkel gyorsan hozhat létre és futtathat alkalmazásokat a felhőben anélkül, hogy az infrastruktúrával kellene gondolkodnia. Ebben az oktatóanyagban létrehozhat egy irányítópultot, amely az ügyfelek visszajelzéseit indítja el, elemzi a gépi tanulással kapcsolatos visszajelzéseket, és információkat tesz közzé a forrásról, például Power BI vagy Azure Data Lake.
 
-Ebben a megoldásban a legfontosabb Azure-összetevőket kiszolgáló nélküli alkalmazásokat használhat: [Az Azure Functions](https://azure.microsoft.com/services/functions/) és [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/).
-Az Azure Logic Apps biztosít egy kiszolgáló nélküli munkafolyamat-motor a felhőben, így a vezénylések létrehozásához a kiszolgáló nélküli összetevői között, és több mint 200 services és API-hoz csatlakozhat. A biztosít az Azure Functions kiszolgáló nélküli számítási feladatokat a felhőben. Ez a megoldás az Azure Functions használ megjelölése ügyfél tweetek előre megadott kulcsszavak alapján.
+Ebben a megoldásban ezeket a kulcsfontosságú Azure-összetevőket használja kiszolgáló nélküli alkalmazásokhoz: [Azure functions](https://azure.microsoft.com/services/functions/) és [Azure Logic apps](https://azure.microsoft.com/services/logic-apps/).
+A Azure Logic Apps kiszolgáló nélküli munkafolyamat-motort biztosít a felhőben, így összehangolhatja a kiszolgáló nélküli összetevőket, és csatlakozhat 200 + szolgáltatáshoz és API-hoz. Azure Functions kiszolgáló nélküli számítástechnikai szolgáltatásokat biztosít a felhőben. Ez a megoldás Azure Functions használ az ügyfelek tweetek megjelölésére előre definiált kulcsszavak alapján.
 
-Ebben a forgatókönyvben egy logikai alkalmazást fog létrehozni, amely visszajelzés keresi az ügyfelektől. Egyes összekötők, hogy az ügyfelek visszajelzései alapján válaszol súgó tartalmazzák Outlook.com-os, az Office 365-höz, a felmérés alfaja, Twitter, és a egy [HTTP-kérelem egy webes űrlap](https://blogs.msdn.microsoft.com/logicapps/2017/01/30/calling-a-logic-app-from-an-html-form/). A munkafolyamat, amely létrehoz egy, a Twitteren hashtag figyeli.
+Ebben a forgatókönyvben egy logikai alkalmazást hoz létre, amely elindítja az ügyfelek visszajelzéseit. Néhány összekötő, amely segítséget nyújt a felhasználói visszajelzések megválaszolásához, például a Outlook.com, az Office 365, a Survey Monkey, a Twitter és egy [webes űrlap http](https://blogs.msdn.microsoft.com/logicapps/2017/01/30/calling-a-logic-app-from-an-html-form/)-kérelme. A létrehozott munkafolyamat a Twitteren lévő hashtag-t figyeli.
 
-Is [a Visual Studióban a teljes megoldás létrehozásához](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md) és [a megoldás az Azure Resource Manager-sablon üzembe helyezéséhez](../logic-apps/logic-apps-create-deploy-template.md). A video-útmutatót, amely bemutatja, hogyan hozhat létre ebben a megoldásban a [tekintse meg a Channel 9 videót](https://aka.ms/logicappsdemo). 
+[A teljes megoldást](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md) felépítheti a Visual Studióban, és [Azure Resource Manager sablonnal is üzembe helyezheti a megoldást](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md). A megoldás létrehozásával kapcsolatos videós bemutatóban tekintse meg [ezt a Channel 9 videót](https://aka.ms/logicappsdemo). 
 
-## <a name="trigger-on-customer-data"></a>Eseményindítás a vásárlói adatok
+## <a name="trigger-on-customer-data"></a>Aktiválás az ügyféladatok alapján
 
-1. Az Azure Portalon vagy a Visual Studióban hozzon létre egy üres logikai alkalmazás. 
+1. Hozzon létre egy üres logikai alkalmazást a Azure Portal vagy a Visual Studióban. 
 
-   Ha most ismerkedik a logic apps, tekintse át a [az Azure Portalon a rövid útmutató](../logic-apps/quickstart-create-first-logic-app-workflow.md) vagy a [rövid útmutató a Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
+   Ha most ismerkedik a Logic apps szolgáltatással, tekintse át a [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md) vagy a [Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)rövid útmutatóját.
 
-2. Logic App Designerben keresse meg és adja hozzá a Twitter-eseményindítót, amely rendelkezik ezzel a művelettel: **Egy új tweet közzétételekor**
+2. A Logic app Designerben keresse meg és adja hozzá a Twitter-triggert, amely a következő művelettel rendelkezik: **Új Tweet közzétételekor**
 
-3. Állítsa be az eseményindító figyelni a tweetek kulcsszó vagy hashtaggel alapján.
+3. Állítsa be úgy a triggert, hogy a tweeteket egy kulcsszó vagy hashtag alapján figyelje.
 
-   A lekérdezés-alapú eseményindítók, például a Twitter-eseményindítót a recurrence tulajdonság határozza meg, hogy a logikai alkalmazás milyen gyakran keres új elemeket.
+   A lekérdezésen alapuló eseményindítók, például a Twitter-eseményindító esetében az ismétlődési tulajdonság határozza meg, hogy a logikai alkalmazás milyen gyakran keressen új elemeket.
 
-   ![Twitter-eseményindítót – példa][1]
+   ![Twitter-trigger – példa][1]
 
-Ez a logikai alkalmazás most már az összes új tweetekről következik be. Ezután igénybe vehet, és a tweet adatok elemzéséhez, így jobban megérthetők a hangulati kifejezve. 
+Ez a logikai alkalmazás most már minden új tweeten bekövetkezik. Ezután elvégezheti és elemezheti a tweet-adatmennyiséget, így jobban megismerheti a kifejezett érzelmeket. 
 
-## <a name="analyze-tweet-text"></a>Tweet szövege elemzése
+## <a name="analyze-tweet-text"></a>Tweet szövegének elemzése
 
-A hangulat felismerése valamilyen szöveget mögött, használhatja [Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/).
+Egy bizonyos szöveg mögötti hangulat észleléséhez használhatja az [Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/).
 
-1. A Logic App Designerben az eseményindító területén válassza a **új lépés**.
+1. A Logic app Designerben az trigger alatt válassza az **új lépés**lehetőséget.
 
-2. Keresse meg a **Szövegelemzés** összekötő.
+2. Keresse meg az **text Analytics** -összekötőt.
 
-3. Válassza ki a **észlelése vélemények** művelet.
+3. Válassza az **érzelmek észlelése** műveletet.
 
-4. Ha a rendszer kéri, adja meg egy érvényes Cognitive Services-kulcsot a Text Analytics szolgáltatás.
+4. Ha a rendszer kéri, adjon meg egy érvényes Cognitive Services kulcsot a Text Analytics szolgáltatáshoz.
 
-5. A **kérelem törzse**, jelölje be a **Tweet szövege** mező, amely biztosítja a tweet szövege bemenetként elemzéshez.
+5. A **kérelem törzse**területen válassza a **Tweet szövege** mezőt, amely a tweet szövegét adja meg az elemzéshez.
 
-Miután a tweet adatait információival és a Twitter-üzenetet kap, számos más releváns összekötők és a lépések most már használhatja:
+Miután megszerezte a tweetek adatait és a tweettel kapcsolatos információkat, mostantól számos más kapcsolódó összekötőt és a műveleteit is használhatja:
 
-* **Power BI - Streamelési adatkészlet sorok hozzáadása**: Bejövő tweetek megtekintése a Power BI-irányítópulton.
-* **Az Azure Data Lake - fájl hozzáfűzése**: Adja hozzá az Azure Data Lake-adatkészlet az analytics-feladatok közé tartozik a vásárlói adatokat.
-* **SQL - sorok hozzáadása**: Data Store adatbázisban a későbbi beolvasásához.
-* **Slack - üzenet küldése**: Értesítés a negatív visszajelzés küldésére, beavatkozást igénylő Slack csatorna.
+* **Power bi – sorok hozzáadása a folyamatos átviteli**adatkészlethez: Power BI-irányítópulton megtekintheti a bejövő tweeteket.
+* **Azure Data Lake – fájl hozzáfűzése**: Adja hozzá az ügyféladatokat egy Azure Data Lake adatkészlethez, amely tartalmazza az elemzési feladatokat.
+* **SQL – sorok hozzáadása**: Adatok tárolása egy adatbázisban a későbbi lekéréshez.
+* **Tartalékidő – üzenet küldése**: Egy Slack-csatorna értesítése olyan negatív visszajelzésekről, amelyekhez szükség lehet a műveletre.
 
-Is létrehozhat, és a egy Azure működik, hogy egyéni feldolgozási végezheti el az adatokat. 
+Létrehozhat egy Azure-függvényt is, amely segítségével egyéni feldolgozást végezhet az adatokon. 
 
-## <a name="process-data-with-azure-functions"></a>Dolgozza fel az adatokat az Azure Functions használatával
+## <a name="process-data-with-azure-functions"></a>Az adatfeldolgozás Azure Functions
 
-Létrehozhat egy függvényt, mielőtt a függvényalkalmazás létrehozása az Azure-előfizetésében. Emellett a logikai alkalmazás közvetlenül egy függvény meghívásához, a függvény rendelkeznie kell egy HTTP-trigger kötést, például, használja a **HttpTrigger** sablont. Ismerje meg, [hogyan hozhat létre az első függvényalkalmazást és függvényt az Azure Portalon](../azure-functions/functions-create-first-azure-function-azure-portal.md).
+A függvények létrehozása előtt hozzon létre egy Function alkalmazást az Azure-előfizetésében. Emellett ahhoz, hogy a logikai alkalmazás közvetlenül hívjon egy függvényt, a függvénynek rendelkeznie kell egy HTTP-trigger kötéssel, például használja a **HttpTrigger** sablont. Ismerje meg, [hogyan hozhatja létre az első Function-alkalmazást és-függvényt a Azure Portalban](../azure-functions/functions-create-first-azure-function-azure-portal.md).
 
-Ebben a forgatókönyvben használni az Azure-függvény, a kérelem törzsében a tweet szövegét. A függvénykód adja meg a logikát, amely meghatározza, hogy a tweet szövegét egy kulcsszót vagy kifejezést tartalmaz-e. Tartsa meg a függvény egyszerű vagy összetett, mint a forgatókönyvhöz szükséges.
-A függvény végén választ a logikai alkalmazás adatokkal, például, egy egyszerű logikai érték például `containsKeyword` vagy egy összetett objektumot.
+Ebben az esetben a tweet szövege legyen az Azure-függvény kérés törzse. A függvény kódjában adja meg azt a logikát, amely meghatározza, hogy a tweet szövege tartalmaz-e kulcsszót vagy kifejezést. A függvényt a forgatókönyvhöz szükséges egyszerűként vagy összetettebbként tartsa meg.
+A függvény végén a logikai alkalmazásra adott válaszként egy adott adatra, például egy egyszerű logikai értékre `containsKeyword` (például vagy egy összetett objektumra) vonatkozó választ ad vissza.
 
 > [!TIP]
-> Összetett választ egy függvény a Logic Apps-alkalmazás elérésére, a **JSON elemzése** művelet.
+> A logikai alkalmazásokban lévő függvények összetett válaszának eléréséhez használja a JSON- **elemzés** műveletet.
 
-Ha elkészült, mentse a függvényt, és hozzáadhatja a függvény létrehozásakor a logikai alkalmazásban műveletként.
+Ha elkészült, mentse a függvényt, majd adja hozzá a függvényt a felépített logikai alkalmazásban.
 
 ## <a name="add-azure-function-to-logic-app"></a>Azure-függvény hozzáadása a logikai alkalmazáshoz
 
-1. Logic App Designerben alatt a **észlelése vélemények** műveletet, válassza a **új lépés**.
+1. A Logic app Designerben az **érzelmek észlelése** művelet alatt válassza az **új lépés**lehetőséget.
 
-2. Keresse meg a **Azure Functions** összekötő, és válassza ki a létrehozott függvényt.
+2. Keresse meg az **Azure functions** -összekötőt, majd válassza ki a létrehozott függvényt.
 
-3. A **kérelem törzse**válassza **Tweet szövege**.
+3. A **kérelem törzse**területen válassza a **Tweet szövege**elemet.
 
-![Konfigurált Azure-függvény. lépés][2]
+![Konfigurált Azure Function lépés][2]
 
-## <a name="run-and-monitor-your-logic-app"></a>Futtathatja és figyelheti a logikai alkalmazás
+## <a name="run-and-monitor-your-logic-app"></a>A logikai alkalmazás futtatása és figyelése
 
-Tekintse át a logikai alkalmazás jelenlegi vagy korábbi futtatásokat, a Hibakeresés és figyelési képességeket, amelyek az Azure Logic Apps biztosít az Azure Portalon, a Visual Studióban vagy az Azure REST API-k és SDK-k gazdag is használhatja.
+A logikai alkalmazás aktuális vagy korábbi futtatásának áttekintéséhez használhatja a Azure Portal, a Visual Studióban vagy az Azure REST API-kon és SDK-kon keresztül Azure Logic Apps által nyújtott részletes hibakeresési és figyelési képességeket.
 
-A logikai alkalmazást, egyszerűen tesztelheti a Logic App Designerben, válassza a **Trigger futtatása**. Az eseményindító lekérdezi a tweeteket, amíg nem talál egy tweet, amely megfelel a feltételeknek a megadott ütemezés alapján. A futtatási különböző fázisokon halad, miközben a tervezőben a futó élő képet jeleníti meg.
+A logikai alkalmazás egyszerű teszteléséhez a Logic app Designerben válassza az **trigger futtatása**lehetőséget. Az trigger a megadott ütemezés alapján kérdezi le a tweeteket, amíg meg nem találja a feltételeknek megfelelő tweetet. A Futtatás előrehaladtával a tervező élő nézetet jelenít meg a futtatáshoz.
 
-Előző nézet futtatási előzmények a Visual Studióban vagy az Azure Portalon: 
+A Visual Studióban vagy a Azure Portalban megtekintheti az előző futtatási előzményeket: 
 
-* Nyissa meg a Visual Studio Cloud Explorer. Keresse meg a logikai alkalmazást, az alkalmazás helyi menü megnyitásához. Válassza ki **nyílt futtatási előzmények**.
+* Nyissa meg a Visual Studio Cloud Explorer alkalmazást. Keresse meg a logikai alkalmazást, és nyissa meg az alkalmazás helyi menüjét. Válassza a **futtatási előzmények megnyitása**lehetőséget.
 
-* Az Azure Portalon keresse meg a logikai alkalmazást. A logikai alkalmazás menüjében válassza **áttekintése**. 
+  > [!TIP]
+  > Ha nem rendelkezik ezzel a paranccsal a Visual Studio 2019-ben, ellenőrizze, hogy rendelkezik-e a legújabb Visual Studio-frissítésekkel.
+
+* A Azure Portal keresse meg a logikai alkalmazást. A logikai alkalmazás menüjében válassza az **Áttekintés**lehetőséget. 
 
 ## <a name="create-automated-deployment-templates"></a>Automatizált üzembehelyezési sablonok létrehozása
 
-Miután létrehozott egy logic app-megoldás, rögzítése, és telepítse az alkalmazást egy [Azure Resource Manager-sablon](../azure-resource-manager/resource-group-overview.md#template-deployment) a világ bármely Azure-régióba. Ez a funkció mindkét segítségével módosítsa a paramétereket az alkalmazás különböző verzióit létrehozása és a megoldás integrálása az Azure-folyamatok. A központi telepítési sablont az Azure Functions is tartalmazza, így a teljes megoldás az összes függőség egyetlen sablonként kezelheti. Ismerje meg, [hogyan hozhat létre a logikai alkalmazás központi telepítési sablonok](../logic-apps/logic-apps-create-deploy-template.md).
+A Logic app-megoldás létrehozása után [Azure Resource Manager sablonként](../azure-resource-manager/template-deployment-overview.md) rögzítheti és telepítheti az alkalmazást a világ bármely Azure-régiójába. Ezzel a képességgel módosíthatók az alkalmazás különböző verzióinak létrehozására és a megoldás Azure-folyamatokra való integrálására szolgáló paraméterek is. A központi telepítési sablonban Azure Functions is megadhat, így egyetlen sablonként kezelheti a teljes megoldást és az összes függőséget. Útmutató a [logikai alkalmazások telepítésének automatizálásához](logic-apps-azure-resource-manager-templates-overview.md).
 
-Egy példa központi telepítési sablont a egy Azure-függvényt, ellenőrizze a [Azure gyors üzembe helyezés sablontár](https://github.com/Azure/azure-quickstart-templates/tree/master/101-function-app-create-dynamic).
+Egy Azure-függvényt tartalmazó központi telepítési sablonhoz az [Azure Gyorsindítás sablon adattárában](https://github.com/Azure/azure-quickstart-templates/tree/master/101-function-app-create-dynamic)tájékozódhat.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Keresse meg az egyéb példák és forgatókönyvek az Azure Logic Apps](logic-apps-examples-and-scenarios.md)
+* [További példák és forgatókönyvek a Azure Logic Apps](logic-apps-examples-and-scenarios.md)
 
 <!-- Image References -->
 [1]: ./media/logic-apps-scenario-social-serverless/twitter.png

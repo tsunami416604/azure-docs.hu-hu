@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 1ad101d209415acdceb0091dba5fbedeb8b0aa4b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d7b5856e76e426d282c5cb0a2e5c90a9983383f2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59280519"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67100050"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insight4grc"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Insight4GRC
 
@@ -54,7 +54,7 @@ Az Azure AD integrálása a Insight4GRC konfigurálásához hozzá kell Insight4
 
 **Insight4GRC hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

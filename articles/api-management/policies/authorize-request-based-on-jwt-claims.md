@@ -1,6 +1,6 @@
 ---
-title: Az Azure API management policy minta – JWT jogcímszolgáltatói alapuló hozzáférés engedélyezése |} A Microsoft Docs
-description: Az Azure API management házirend-minta - mutatja be az API JWT jogcímszolgáltatói alapján meghatározott HTTP-metódusok elérésének hitelesítéséhez.
+title: Azure API Management Policy minta – hozzáférés engedélyezése JWT-jogcímek alapján | Microsoft Docs
+description: Azure API Management-szabályzat – példa – bemutatja, hogyan lehet engedélyezni az adott HTTP-metódusokhoz való hozzáférést az JWT jogcímek alapján.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -9,31 +9,30 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: d656cf7c7bed1d40bbde654f9c2484efcc5df25d
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: dd99d9ed3eebe6ada60511b3f16c53b0d57a65d6
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157921"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70067810"
 ---
-# <a name="authorize-access-based-on-jwt-claims"></a>A JWT jogcímszolgáltatói alapján hozzáférés engedélyezése
+# <a name="authorize-access-based-on-jwt-claims"></a>Hozzáférés engedélyezése JWT jogcímek alapján
 
-Ez a cikk bemutatja egy Azure API management házirend minta azt mutatja be, hogyan engedélyezheti a hozzáférést az API JWT jogcímszolgáltatói alapján meghatározott HTTP-metódusok. Az ismertetett lépéseket követve beállíthatja, vagy szerkesztheti egy szabályzat-kódot, [Set meg vagy szerkessze a szabályzat](../set-edit-policies.md). További példák megtekintéséhez lásd: [házirend minták](../policy-samples.md).
+Ez a cikk egy Azure API Management házirend-mintát mutat be, amely bemutatja, hogyan lehet engedélyezni az adott HTTP-metódusokhoz való hozzáférést az JWT jogcímek alapján. A szabályzatok beállításához vagy szerkesztéséhez kövesse a [szabályzat beállítása vagy szerkesztése](../set-edit-policies.md)című témakörben leírt lépéseket. További példákat a következő témakörben talál: [Policy Samples](../policy-samples.md).
 
 ## <a name="policy"></a>Szabályzat
 
-Illessze be a kódot a **bejövő** letiltása.
+Illessze be a kódot a **bejövő** blokkba.
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Pre-authorize requests based on HTTP method with validate-jwt.policy.xml)]
 
 ## <a name="next-steps"></a>További lépések
 
-További információ az APIM-szabályzatokat:
+További információ a APIM-házirendekről:
 
 + [Átalakítási házirendek](../api-management-transformation-policies.md)
-+ [A házirend-minták](../policy-samples.md)
++ [Házirend-minták](../policy-samples.md)
 

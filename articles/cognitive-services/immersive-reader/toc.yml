@@ -1,0 +1,39 @@
+- name: A Modern olvasó dokumentációja
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Mi az a Modern olvasó?
+      href: Overview.md
+- name: Gyors útmutatók
+  expanded: true
+  items:
+    - name: 'A C# használata'
+      href: Quickstart.md
+    - name: A Swift használata (iOS)
+      href: ios-quickstart.md
+- name: Oktatóanyagok
+  items:
+    - name: A Modern olvasó indítása (Node.js)
+      href: tutorial-nodejs.md
+    - name: A Modern olvasó indítása (Python)
+      href: tutorial-python.md
+    - name: Kép küldése a Modern olvasónak (Swift)
+      href: tutorial-ios-picture-immersive-reader.md
+- name: Útmutató
+  items:
+    - name: Hitelesítés Azure Active Directory-fiókkal
+      href: azure-active-directory-authentication.md
+- name: Referencia
+  items:
+    - name: SDK-referencia
+      href: reference.md
+    - name: iOS SDK-referencia
+      href: ios-reference.md
+- name: További források
+  items:
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/en-us/updates/?product=cognitive-services'
+    - name: Nyelvi támogatás
+      href: 'https://aka.ms/ltlangsupport'
+    - name: Régiónkénti rendelkezésre állás
+      href: 'https://azure.microsoft.com/en-us/global-infrastructure/services/?products=cognitive-services'

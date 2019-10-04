@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 11d0a0a67d1ce5049166cab3d9ca3e4903b6b460
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 05387d2fd9b38ffa8137668e01b6d7cff3346ac8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59277204"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67089012"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamphoria"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Teamphoria
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a Teamphoria konfigurálásához hozzá kell Teamphori
 
 **Teamphoria hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

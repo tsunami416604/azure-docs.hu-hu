@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6661cee8ba6176bd706d31a10a8f20549e29e4d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: 4819c283a136057ad7c3ffd755fd9e157d99a1bf
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59795049"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509451"
 ---
 # <a name="migrate-a-classic-policy-that-requires-multi-factor-authentication-in-the-azure-portal"></a>Áttelepíteni a klasszikus szabályzat megköveteli a multi-factor Authentication hitelesítés az Azure Portalon
 
@@ -28,10 +28,10 @@ Ez a cikk a forgatókönyv bemutatja, hogyan telepíthet át egy klasszikus szab
 
 ![Azure Active Directory](./media/policy-migration/33.png)
 
-Az áttelepítési folyamat a következő lépéseket tartalmazza:
+Az áttelepítési folyamat a következő lépésekből áll:
 
 1. [Nyissa meg a klasszikus szabályzatot](#open-a-classic-policy) beolvasni a konfigurációs beállításokat.
-1. Hozzon létre egy új Azure AD feltételes hozzáférési szabályzat a klasszikus szabályzat helyett. 
+1. Hozzon létre egy új Azure AD feltételes hozzáférési szabályzat cserélje le a klasszikus szabályzatot. 
 1. A klasszikus szabályzat letiltása.
 
 ## <a name="open-a-classic-policy"></a>Nyissa meg a klasszikus szabályzatot
@@ -76,42 +76,32 @@ Az áttelepítési folyamat a következő lépéseket tartalmazza:
 
    1. Ha az összes felhasználó lehetőséget jelölte meg a klasszikus szabályzat van, kattintson a **minden felhasználó**. 
 
-   ![Feltételes hozzáférés](./media/policy-migration/35.png)
+      ![Feltételes hozzáférés](./media/policy-migration/35.png)
 
    1. Ha a klasszikus szabályzatot a kijelölt csoportok, kattintson a **válassza ki a felhasználók és csoportok**, majd válassza ki a szükséges felhasználókat és csoportokat.
 
-   ![Feltételes hozzáférés](./media/policy-migration/36.png)
+      ![Feltételes hozzáférés](./media/policy-migration/36.png)
 
    1. Ha a kizárt csoportok, kattintson a **kizárása** lapra, és válassza ki a szükséges felhasználókat és csoportokat. 
 
-   ![Feltételes hozzáférés](./media/policy-migration/37.png)
+      ![Feltételes hozzáférés](./media/policy-migration/37.png)
 
 1. A a **új** oldal megnyitásához a **Felhőalkalmazások** lap a **hozzárendelés** területén kattintson **Felhőalkalmazások**.
-
 1. Az a **Felhőalkalmazások** lapon, a következő lépésekkel:
-
-   ![Feltételes hozzáférés](./media/policy-migration/08.png)
-
    1. Kattintson a **alkalmazások kiválasztása**.
-
    1. Kattintson a **Kiválasztás** gombra.
-
    1. Az a **kiválasztása** lapon válassza ki a felhőalapú alkalmazás, és kattintson a **kiválasztása**.
-
    1. Az a **Felhőalkalmazások** kattintson **kész**.
-
 1. Ha rendelkezik **többtényezős hitelesítés megkövetelése** kiválasztott:
 
    ![Feltételes hozzáférés](./media/policy-migration/26.png)
 
    1. Az a **hozzáférés-vezérlés** területén kattintson **Grant**.
 
-   ![Feltételes hozzáférés](./media/policy-migration/27.png)
+      ![Feltételes hozzáférés](./media/policy-migration/27.png)
 
    1. Az a **Grant** kattintson **hozzáférést**, és kattintson a **többtényezős hitelesítés megkövetelése**.
-
    1. Kattintson a **Kiválasztás** gombra.
-
 1. Kattintson a **a** a szabályzat engedélyezéséhez.
 
    ![Feltételes hozzáférés](./media/policy-migration/30.png)
@@ -125,5 +115,5 @@ A klasszikus szabályzat letiltásához kattintson **letiltása** a a **részlet
 ## <a name="next-steps"></a>További lépések
 
 - A klasszikus szabályzat áttelepítése kapcsolatos további információkért lásd: [az Azure Portalon klasszikus szabályzatok Migrálása](policy-migration.md).
-- Ha azt szeretné tudni, hogyan lehet feltételes hozzáférési szabályzat konfigurálása, lásd: [többtényezős hitelesítés megkövetelése az Azure Active Directory feltételes hozzáférés az adott alkalmazások](app-based-mfa.md).
-- Ha kész feltételes hozzáférési szabályzatokat konfigurálni a környezetében, tekintse át [az Azure Active Directory feltételes hozzáféréssel kapcsolatos ajánlott eljárásait](best-practices.md).
+- Ha azt szeretné tudni, hogyan lehet feltételes hozzáférési szabályzat konfigurálása, lásd: [megkövetelése MFA konkrét alkalmazások esetén az Azure Active Directory feltételes hozzáférés](app-based-mfa.md).
+- Ha készen áll a környezetre vonatkozó feltételes hozzáférési szabályzatok konfigurálására, tekintse meg a [gyakorlati tanácsok az Azure Active Directory feltételes hozzáférés](best-practices.md).

@@ -1,27 +1,21 @@
 ---
-title: "\"Azure piactér\" és \"Az AppSource\" közzétevő profil kezelése"
-description: "\"Azure piactér\" és \"Az AppSource\" közzétevő profil kezelése"
+title: Az Azure Marketplace és AppSource közzétevő profil kezelése
+description: Az Azure Marketplace és AppSource közzétevő profil kezelése
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: qianw211
 manager: pbutlerm
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/15/2018
-ms.author: pbutlerm
-ms.openlocfilehash: c73c846db4b22d8c19ccdaa2ec99a3fe7fdadf78
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.author: pabutler
+ms.openlocfilehash: a72259e1deb97ca0256de5bfd3b2f6c78d92e3c8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54076705"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64935348"
 ---
-# <a name="manage-azure-marketplace-and-appsource-publisher-profile"></a>"Azure piactér" és "Az AppSource" közzétevő profil kezelése
+# <a name="manage-azure-marketplace-and-appsource-publisher-profile"></a>Manage 'Azure Marketplace' and 'AppSource' publisher profile
 
 Ez a dokumentum megtekintéséhez és a felhasználók számára a regisztrált közzétevő profil kezelése a lépésenkénti.
 

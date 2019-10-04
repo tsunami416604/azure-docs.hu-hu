@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 10/19/2018
 ms.author: yushwang
 ms.openlocfilehash: e575fac61a1c5d9351391d39d200b87e34ff26cd
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817240"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60648743"
 ---
 # <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>Minta-konfiguráció: Minta: Cisco ASA-eszköz (IKEv2/nincs BGP)
 Ez a cikk az Azure VPN Gateway átjárókhoz kapcsolódó Cisco adaptív biztonsági berendezés (ASA) eszközöknél minta konfigurációi. A példa az IKEv2 nélkül a Border Gateway Protocol (BGP) futtató Cisco ASA-eszközökre vonatkozik. 

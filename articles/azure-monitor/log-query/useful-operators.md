@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: bwren
 ms.openlocfilehash: d11445c3f31f9aced6fdb9783575d10a026de1f0
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56000148"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61424138"
 ---
 # <a name="useful-operators-in-azure-monitor-log-queries"></a>Az Azure monitorban hasznos operátorok lekérdezések naplózását.
 
@@ -26,7 +26,7 @@ Az alábbi táblázat a különböző helyzetekhez, az Azure Monitor log-lekérd
 
 ## <a name="useful-operators"></a>Hasznos operátorok
 
-Kategória                                |Megfelelő analitikai függvény
+Category                                |Megfelelő analitikai függvény
 ----------------------------------------|----------------------------------------
 Kijelölés és oszlop aliasok            |`project`, `project-away`, `extend`
 Az ideiglenes táblák és állandók          |`let scalar_alias_name = …;` <br> `let table_alias_name =  …  …  … ;`| 

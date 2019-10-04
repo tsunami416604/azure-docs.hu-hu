@@ -1,63 +1,53 @@
-### YamlMime:YamlDocument
-ms.openlocfilehash: 4428bf710df5eae3b06c8abd38eb85d6128a574d
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56959425"
-documentType: LandingData
-title: A Machine Learning Studio dokumentációja
+### YamlMime:Landing
+title: Az Azure Machine Learning Studio dokumentációja
+summary: A Machine Learning Studio olyan egérrel kezelhető eszköz, amellyel prediktív elemzési megoldások hozhatók létre, tesztelhetők és helyezhetők üzembe.
 metadata:
-  title: Az Azure Machine Learning Studio dokumentációja – oktatóanyagok és referencia | Microsoft Docs
-  description: A Machine Learning Studio olyan, az együttműködést támogató, egérrel kezelhető eszköz, amellyel az adataihoz prediktív elemzési megoldások hozhatók létre, tesztelhetők és helyezhetők üzembe. Az oktatóanyagok, videók és példamodellek bemutatják a Machine Learning-modellek felépítését és üzembe helyezését a Studio használatával.
+  title: A Machine Learning Studio dokumentációja – Azure
+  description: A Machine Learning Studio olyan egérrel kezelhető eszköz, amellyel prediktív elemzési megoldások hozhatók létre, tesztelhetők és helyezhetők üzembe.
   services: machine-learning
   ms.service: machine-learning
   ms.subservice: studio
   ms.topic: landing-page
+  ms.collection: collection
   author: j-martens
   ms.author: jmartens
-  ms.tgt_pltfrm: na
-  ms.devlang: na
-  ms.date: 02/24/2019
-abstract:
-  description: Az Azure Machine Learning Studio olyan, az együttműködést támogató, egérrel kezelhető eszköz, amellyel az adataihoz prediktív elemzési megoldások hozhatók létre, tesztelhetők és helyezhetők üzembe. Az oktatóanyagok, videók és példamodellek bemutatják a Machine Learning-modellek felépítését és üzembe helyezését a Studio használatával.
-sections:
-- title: Részletes útmutatók
-  items:
-  - type: paragraph
-    text: 'Ezek a kiterjesztett oktatóanyagok részletesen bemutatják a modellek létrehozásának és üzembe helyezésének lépéseit:'
-  - type: list
-    style: unordered
-    items:
-    - html: <a href="create-experiment">Az első Studio-kísérlet létrehozása</a>
-    - html: <a href="tutorial-part1-credit-risk">Prediktív megoldás létrehozása és üzembe helyezése a hitelkockázat kiszámításához</a>
-- title: Referencia
-  items:
-  - type: list
-    style: cards
-    className: cardsD
-    items:
-    - title: Parancssor
-      html: <p><a href="powershell-module">PowerShell-modulok</a></p>
-    - title: Modulok
-      html: <p><a href="https://msdn.microsoft.com/library/azure/dn905974.aspx">Algoritmusokra és modulokra vonatkozó referenciák</a></p>
-    - title: REST
-      html: <p><a href="https://docs.microsoft.com/rest/api/machinelearning/">REST-felügyeleti API-k</a></p><p><a href="web-service-error-codes">Webszolgáltatás hibakódjai</a></p>
-- title: További Azure Machine Learning-technológiák
-  items:
-  - type: paragraph
-    text: 'Az Azure Machine Learningben elérhető további technológiák:'
-  - type: list
-    style: cards
-    className: cardsFTitle
-    items:
-    - title: Azure Machine Learning szolgáltatás
-      href: /azure/machine-learning/service/
-      image:
-        src: media/index/i_machine-learning.svg
-        href: /azure/machine-learning/service/
-    - title: Adatelemzési virtuális gép
-      href: /azure/machine-learning/data-science-virtual-machine/
-      image:
-        src: media/index/virtual-machines.svg
-        href: /azure/machine-learning/data-science-virtual-machine/
+  ms.date: 09/04/2019
+  ms.openlocfilehash: b6c9013d61df1a0076817af5baab0e0af6375083
+  ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 09/04/2019
+  ms.locfileid: "70309188"
+landingContent:
+- title: A Studio használatának első lépései
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Mi az a Studio?
+      url: what-is-ml-studio.md
+    - text: Az első gépi tanulási kísérlet létrehozása
+      url: create-experiment.md
+    - text: Prediktív megoldás létrehozása
+      url: tutorial-part1-credit-risk.md
+- title: A referencia tartalmának áttekintése
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: PowerShell-modulok
+      url: powershell-module.md
+    - text: Algoritmusok és modulok
+      url: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/index
+    - text: REST-felügyeleti API-k
+      url: https://docs.microsoft.com/rest/api/machinelearning/
+    - text: Webszolgáltatás hibakódjai
+      url: web-service-error-codes.md
+- title: További Azure ML-technológiák
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure Machine Learning szolgáltatás
+      url: /azure/machine-learning/
+    - text: Adatelemzési virtuális gép
+      url: /azure/machine-learning/data-science-virtual-machine
+    - text: Machine Learning-termékeink összehasonlítása
+      url: https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/studio/context/ml-context

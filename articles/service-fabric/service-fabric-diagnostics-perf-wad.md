@@ -1,6 +1,6 @@
 ---
-title: Az Azure Service Fabric - teljesítmény figyelése a Windows Azure Diagnostics bővítmény |} A Microsoft Docs
-description: Windows Azure Diagnostics használata az Azure Service Fabric-fürtök a teljesítményszámlálók adatainak összegyűjtése.
+title: Azure Service Fabric – Teljesítményfigyelés a Windows Azure Diagnostics bővítménnyel | Microsoft Docs
+description: Az Azure Service Fabric-fürtökhöz tartozó teljesítményszámlálók gyűjtéséhez használja a Windows Azure Diagnostics.
 services: service-fabric
 documentationcenter: .net
 author: srrengar
@@ -14,30 +14,30 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 20fa8945f01a3431d2fd78d545c43d6215c83f56
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e29c32c27e7f6c62eb2c6a9cbe2e4d3f1294f038
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59791507"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155166"
 ---
-# <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>A Windows Azure Diagnostics bővítményt az alkalmazásteljesítmény-figyelés
+# <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>Teljesítményfigyelés a Windows Azure Diagnostics bővítménnyel
 
-Ez a dokumentum ismerteti a rendszerteljesítmény-számlálók a Windows-fürtök a Windows Azure Diagnostics (WAD) bővítményével gyűjteményét beállításához szükséges lépéseket. Linux-fürtöket, állítsa be a [Log Analytics-ügynököket](service-fabric-diagnostics-oms-agent.md) a csomópontok a teljesítményszámlálók adatainak összegyűjtése. 
+Ez a dokumentum a Windows-fürtök Windows Azure Diagnostics (WAD) bővítményének használatával a teljesítményszámlálók gyűjteményének beállításához szükséges lépéseket ismerteti. Linux-fürtök esetében állítsa be a [log Analytics-ügynököt](service-fabric-diagnostics-oms-agent.md) a csomópontok teljesítményszámlálói összegyűjtéséhez. 
 
  > [!NOTE]
-> Az alábbi lépéseket az Ön számára a fürtön a WAD-bővítményt kell telepíteni. Ha nem állította be, látogasson el [esemény összesítésére és a Windows Azure Diagnostics segítségével gyűjteményt](service-fabric-diagnostics-event-aggregation-wad.md).  
+> Ezeknek a lépéseknek a működéséhez a WAD-bővítményt a fürtön kell telepíteni. Ha nincs beállítva, az [események összesítése és gyűjtése a Windows Azure Diagnostics használatával](service-fabric-diagnostics-event-aggregation-wad.md).  
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="collect-performance-counters-via-the-wadcfg"></a>A WadCfg keresztül teljesítményszámlálók gyűjtése
+## <a name="collect-performance-counters-via-the-wadcfg"></a>Teljesítményszámlálók gyűjtése a WadCfg keresztül
 
-Teljesítményszámlálók adatainak összegyűjtése a WAD-n keresztül, akkor kell módosítania a konfiguráció megfelelő a fürt Resource Manager-sablon. Hajtsa végre a következő lépésekkel adhatja hozzá egy teljesítményszámláló gyűjtése a sablonhoz, és a egy Resource Manager-erőforrás frissítése.
+A teljesítményszámlálók WAD használatával történő összegyűjtéséhez a konfigurációt a fürt Resource Manager-sablonjában megfelelően kell módosítani. Kövesse az alábbi lépéseket egy olyan teljesítményszámláló hozzáadásához, amelyet szeretne gyűjteni a sablonhoz, és futtasson egy Resource Manager-erőforrás frissítését.
 
-1. Keresse meg a WAD-konfigurációt a fürt sablonban – keresés `WadCfg`. Fog rendeléseket teljesítményszámlálókat ad a `DiagnosticMonitorConfiguration`.
+1. A WAD-konfiguráció megkeresése a fürt sablonjában `WadCfg`– keresés. A `DiagnosticMonitorConfiguration`következőhöz tartozó teljesítményszámlálók hozzáadására lesz szüksége:.
 
-2. A konfiguráció beállításához adja hozzá a következő szakaszban, a teljesítményszámlálók adatainak összegyűjtése a `DiagnosticMonitorConfiguration`. 
+2. Állítsa be úgy a konfigurációt, hogy a teljesítményszámlálók összegyűjtéséhez a következő `DiagnosticMonitorConfiguration`szakaszt adja hozzá a-hoz. 
 
     ```json
     "PerformanceCounters": {
@@ -46,11 +46,11 @@ Teljesítményszámlálók adatainak összegyűjtése a WAD-n keresztül, akkor 
     }
     ```
 
-    A `scheduledTransferPeriod` határozza meg, hogy milyen gyakran gyűjtött a számlálók értékeit átkerülnek az Azure storage-táblához, és minden konfigurált fogadó. 
+    A `scheduledTransferPeriod` meghatározza, hogy a begyűjtött számlálók milyen gyakran kerülnek át az Azure Storage-táblába és bármely konfigurált fogadóba. 
 
-3. A teljesítményszámlálók, amelyet szeretne gyűjteni a felvétele a `PerformanceCounterConfiguration` , amely az előző lépésben lett deklarálva. Minden egyes gyűjteni kívánt teljesítményszámláló van definiálva egy `counterSpecifier`, `sampleRate`, `unit`, `annotation`, és minden kapcsolódó `sinks`.
+3. Adja hozzá azokat a teljesítményszámlálókat, amelyeket szeretne gyűjteni az `PerformanceCounterConfiguration` előző lépésben deklarált módon. Minden összegyűjteni kívánt számláló a következővel van definiálva `counterSpecifier` `annotation` `sampleRate` `unit`:,,, és minden fontos `sinks`.
 
-Íme egy példa a számláló a konfigurációval a *teljes processzoridő* (mennyi ideig feldolgozó műveletekhez használatban volt a CPU) és *Service Fabric Actors megpróbálkoznimásodpercenként*, egy a Service Fabric egyéni teljesítményszámlálók. Tekintse meg [Reliable Actor-teljesítményszámlálók](service-fabric-reliable-actors-diagnostics.md#list-of-events-and-performance-counters) és [Reliable Service teljesítményszámlálók](service-fabric-reliable-serviceremoting-diagnostics.md#list-of-performance-counters) Service Fabric – teljesítményszámlálók egyéni teljes listáját.
+Íme egy példa egy olyan konfigurációra, amelynek a számlálója a *teljes processzoridő* (a CPU által a feldolgozási műveletekhez használt idő mennyisége) és *Service Fabric színészi metódus meghívása*másodpercenként, az egyik Service Fabric egyéni teljesítményszámlálók. Tekintse meg a [megbízható Actor](service-fabric-reliable-actors-diagnostics.md#list-of-events-and-performance-counters) teljesítményszámlálók és a [megbízható szolgáltatások](service-fabric-reliable-serviceremoting-diagnostics.md#list-of-performance-counters) teljesítményszámlálói című témakört Service Fabric egyéni teljesítményszámláló-számlálók teljes listájáért.
 
  ```json
  "WadCfg": {
@@ -107,9 +107,9 @@ Teljesítményszámlálók adatainak összegyűjtése a WAD-n keresztül, akkor 
        },
   ```
 
- A számláló a mintavételi gyakoriság igényeknek megfelelően módosíthatók. A formátum akkor `PT<time><unit>`, ha azt szeretné, hogy másodpercenként gyűjtött számláló, majd kell beállítania a `"sampleRate": "PT15S"`.
+ A számláló mintavételi sebessége az igényeinek megfelelően módosítható. A formátum a következő: `PT<time><unit>`, ha azt szeretné, hogy a számláló másodpercenként legyen összegyűjtve, akkor `"sampleRate": "PT15S"`állítsa be.
 
- Teljesítményszámlálók, amelyek többféle kivitelűek lehetnek praktikus során gyűjtött teljesítményszámlálók folyamatonként tömbjét gyűjtése az ARM-sablon változókat is használhat. Az az alábbi a példában a processzor és szemétgyűjtő idő folyamatonként dátumok gyűjtése, és ezután 2 teljesítményszámlálók a maguk a csomópontok minden használatával változókat. 
+ Az ARM-sablonban szereplő változók használatával a teljesítményszámlálók tömbjét gyűjthetheti össze, ami hasznos lehet a teljesítményszámlálók egy folyamatból való összegyűjtésekor. Az alábbi példában folyamatban van a processzoridő és a begyűjtő adatok gyűjtési ideje, majd a csomópontokon 2 teljesítményszámláló is minden változót használ. 
 
  ```json
 "variables": {
@@ -192,18 +192,15 @@ Teljesítményszámlálók adatainak összegyűjtése a WAD-n keresztül, akkor 
 ....
 ```
 
- >[!NOTE]
- >Bár használhatja `*` teljesítményszámlálókat hasonlóképpen nevesített csoportok megadásához számlálókat küldése egy fogadó keresztül (az Application Insightsba) szükséges, hogy azok külön-külön deklarált. 
-
-1. Miután hozzáadta a megfelelő teljesítményszámlálókat kell gyűjteni, a fürt erőforrásai frissíteni, hogy ezek a módosítások megjelennek a futó fürt szeretne. Mentse a módosított `template.json` , és nyissa meg a powershellt. A fürt használatával frissítheti `New-AzResourceGroupDeployment`. A hívás szükség van az az erőforráscsoport, a frissített sablon fájlt, és a paramétereket tartalmazó fájlt, és kérni fogja, hogy a megfelelő módosításokat frissített erőforrások Resource Manager. Miután bejelentkezett a fiókjába, és a megfelelő előfizetéshez tartozik, használja a következő parancsot a frissítés futtatásához:
+1. Miután hozzáadta a megfelelő teljesítményszámlálókat, amelyeket össze kell gyűjteni, frissítenie kell a fürterőforrás-t, hogy ezek a változások a futó fürtben is megjelennek. Mentse a módosított `template.json` és nyissa meg a PowerShellt. A fürtöt a használatával `New-AzResourceGroupDeployment`is frissítheti. A híváshoz az erőforráscsoport neve, a frissített sablonfájl és a parameters (paraméterek) fájl szükséges, és a rendszer felszólítja az erőforrás-kezelőt, hogy végezze el a megfelelő módosításokat a frissített erőforrásokon. Miután bejelentkezett a fiókjába, és a megfelelő előfizetéssel rendelkezik, használja a következő parancsot a frissítés futtatásához:
 
     ```sh
     New-AzResourceGroupDeployment -ResourceGroupName <ResourceGroup> -TemplateFile <PathToTemplateFile> -TemplateParameterFile <PathToParametersFile> -Verbose
     ```
 
-1. A frissítés befejeződése után jelennek meg (attól függően, hogy-e az első üzembe helyezés és az erőforráscsoport mérete 15-45 perc között vesz igénybe), WAD kell a teljesítményszámlálók gyűjtése és elküldi azokat a tábla neve A fürthöz társított tárfiókban WADPerformanceCountersTable. Tekintse meg az Application Insights által a teljesítményszámlálók [a Resource Manager-sablon hozzáadása a mesterséges Intelligencia fogadó](service-fabric-diagnostics-event-aggregation-wad.md#add-the-application-insights-sink-to-the-resource-manager-template).
+1. Ha a frissítés befejeződik (15-45 perc között tart, attól függően, hogy az első üzembe helyezés és az erőforráscsoport mérete), a WAD-nek össze kell gyűjtenie a teljesítményszámlálókat, és el kell küldenie azokat a nevű táblába. WADPerformanceCountersTable a fürthöz társított Storage-fiókban. Tekintse meg a teljesítményszámlálók Application Insightsban való [hozzáadásával az AI-gyűjtőt a Resource Manager-sablonhoz](service-fabric-diagnostics-event-aggregation-wad.md#add-the-application-insights-sink-to-the-resource-manager-template).
 
 ## <a name="next-steps"></a>További lépések
-* A fürt több teljesítményszámlálót gyűjt. Lásd: [teljesítmény-mérőszámok](service-fabric-diagnostics-event-generation-perf.md) listája számlálókat kell gyűjteni.
-* [Használat monitorozása és diagnosztizálása egy Windows virtuális gép és az Azure Resource Manager-sablonokkal](../virtual-machines/windows/extensions-diagnostics-template.md) módosításokat továbbá az `WadCfg`, beleértve a diagnosztikai adatok küldése további tárfiókok konfigurálásáról.
-* Látogasson el a [WadCfg builder](https://azure.github.io/azure-diagnostics-tools/config-builder/) hozhat létre egy teljesen új sablont, és ellenőrizze, hogy a szintaxisa helyes. () https://azure.github.io/azure-diagnostics-tools/config-builder/) hozhat létre egy teljesen új sablont, és ellenőrizze, hogy a szintaxisa helyes.
+* Gyűjtsön további teljesítményszámlálókat a fürthöz. A begyűjtött számlálók listáját a [teljesítmény mérőszámai](service-fabric-diagnostics-event-generation-perf.md) részben tekintheti meg.
+* A [monitorozás és diagnosztika szolgáltatás használata Windows rendszerű virtuális gépekkel és Azure Resource Manager-sablonokkal](../virtual-machines/windows/extensions-diagnostics-template.md) további módosításokat végezhet a `WadCfg`alkalmazásban, beleértve a további Storage-fiókok konfigurálását a diagnosztikai információk küldéséhez.
+* Látogasson el a [WadCfg Builder](https://azure.github.io/azure-diagnostics-tools/config-builder/) webhelyre, és győződjön meg arról, hogy a szintaxis helyes. (https://azure.github.io/azure-diagnostics-tools/config-builder/) hozzon létre egy sablont a semmiből, és ellenőrizze, hogy helyes-e a szintaxis.

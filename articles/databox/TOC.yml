@@ -1,130 +1,195 @@
-items:
 - name: Azure Data Box-dokumentáció – Online adatátvitel
   href: /azure/databox
   items:
-  - name: Data Box
-    items:
-    - name: Áttekintés
+    - name: Data Box
       items:
-      - name: Mi a Data Box?
-        href: data-box-overview.md
-    - name: Gyors útmutatók
+        - name: Áttekintés
+          items:
+            - name: Mi a Data Box?
+              href: data-box-overview.md
+        - name: Gyors útmutatók
+          expanded: true
+          items:
+            - name: Beállítás - Azure Portal
+              href: data-box-quickstart-portal.md
+        - name: Oktatóanyagok
+          items:
+            - name: 1 – Rendelés
+              href: data-box-deploy-ordered.md
+            - name: 2 – Beállítás
+              href: data-box-deploy-set-up.md
+            - name: 3 – Csatlakozás és másolás
+              items:
+                - name: SMB-n keresztül
+                  href: data-box-deploy-copy-data.md
+                - name: NFS-en keresztül
+                  href: data-box-deploy-copy-data-via-nfs.md
+                - name: REST-en keresztül
+                  href: data-box-deploy-copy-data-via-rest.md
+                - name: Adatmásolási szolgáltatással
+                  href: data-box-deploy-copy-data-via-copy-service.md
+                - name: Felügyelt lemezekre
+                  href: data-box-deploy-copy-data-from-vhds.md
+            - name: '4 – Visszaküldés, feltöltés, ellenőrzés'
+              href: data-box-deploy-picked-up.md
+        - name: Alapelvek
+          items:
+            - name: Biztonsági irányelvek megtekintése
+              href: data-box-safety.md
+            - name: A nyomon követés és naplózás áttekintése
+              href: data-box-logs.md
+            - name: Követelmények áttekintése
+              items:
+                - name: A Data Boxhoz
+                  href: data-box-system-requirements.md
+                - name: A Data Box Blob Storage-hoz
+                  href: data-box-system-requirements-rest.md
+            - name: A korlátozások ismertetése
+              href: data-box-limits.md
+            - name: Biztonság áttekintése
+              href: data-box-security.md
+            - name: GYIK
+              href: data-box-faq.md
+        - name: Útmutató
+          items:
+            - name: Kezelés az Azure Portalon
+              href: data-box-portal-admin.md
+            - name: Kezelés a helyi webes felhasználói felületen
+              href: data-box-local-web-ui-admin.md
+            - name: Adatok áthelyezése blobszintre
+              href: data-box-how-to-set-data-tier.md
+            - name: Az eszköz bekábelezése
+              href: data-box-cable-options.md
+            - name: Kapcsolatfelvétel a támogatási szolgáltatással
+              href: data-box-disk-contact-microsoft-support.md
+            - name: Migrate (Áttelepítés)
+              items:
+                - name: A SharePoint Online-ba
+                  href: 'https://docs.microsoft.com/sharepointmigration/how-to-migrate-file-share-content-to-spo-using-azuredatabox?context=/azure/databox/context/context'
+                - name: Az Azure File Syncre
+                  href: ../storage/files/storage-sync-offline-data-transfer.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
+                - name: A HDFS-tárolóról
+                  href: ../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
+            - name: Hibaelhárítás
+              items:
+                - name: Data Box-problémák
+                  href: data-box-troubleshoot.md
+                - name: Data Box Blob Storage-problémák
+                  href: data-box-troubleshoot-rest.md
+    - name: Data Box Disk
       items:
-      - name: Beállítás - Azure Portal
-        href: data-box-quickstart-portal.md
-      expanded: true
-    - name: Oktatóanyagok
+        - name: Áttekintés
+          items:
+            - name: Mi a Data Box Disk?
+              href: data-box-disk-overview.md
+        - name: Gyors útmutatók
+          expanded: true
+          items:
+            - name: Beállítás - Azure Portal
+              href: data-box-disk-quickstart-portal.md
+        - name: Oktatóanyagok
+          items:
+            - name: 1 – Rendelés
+              href: data-box-disk-deploy-ordered.md
+            - name: 2 – Beállítás
+              href: data-box-disk-deploy-set-up.md
+            - name: 3 – Másolás és ellenőrzés
+              href: data-box-disk-deploy-copy-data.md
+            - name: 4 – Visszaküldés
+              href: data-box-disk-deploy-picked-up.md
+            - name: 5 – Feltöltés ellenőrzése
+              href: data-box-disk-deploy-upload-verify.md
+        - name: Alapelvek
+          items:
+            - name: Követelmények áttekintése
+              href: data-box-disk-system-requirements.md
+            - name: A korlátozások ismertetése
+              href: data-box-disk-limits.md
+            - name: Biztonság áttekintése
+              href: data-box-disk-security.md
+            - name: GYIK
+              href: data-box-disk-faq.md
+        - name: Útmutató
+          items:
+            - name: Kezelés az Azure Portalon
+              href: data-box-portal-ui-admin.md
+            - name: Hibaelhárítás
+              items:
+                - name: Zárolásfeloldási problémák
+                  href: data-box-disk-troubleshoot-unlock.md
+                - name: Adatmásolási problémák
+                  href: data-box-disk-troubleshoot-data-copy.md
+                - name: Érvényesítési problémák
+                  href: data-box-disk-troubleshoot.md
+                - name: Feltöltési problémák
+                  href: data-box-disk-troubleshoot-upload.md
+            - name: Kapcsolatfelvétel a támogatási szolgáltatással
+              href: data-box-disk-contact-microsoft-support.md
+    - name: Data Box Heavy
       items:
-      - name: 1 – Rendelés
-        href: data-box-deploy-ordered.md
-      - name: 2 – Beállítás
-        href: data-box-deploy-set-up.md
-      - name: 3 – Csatlakozás és másolás
-        items:
-        - name: SMB-n keresztül
-          href: data-box-deploy-copy-data.md
-        - name: NFS-en keresztül
-          href: data-box-deploy-copy-data-via-nfs.md
-        - name: REST-en keresztül
-          href: data-box-deploy-copy-data-via-rest.md
-        - name: Adatmásolási szolgáltatással
-          href: data-box-deploy-copy-data-via-copy-service.md
-        - name: Felügyelt lemezekre
-          href: data-box-deploy-copy-data-from-vhds.md
-      - name: 4 – Visszaküldés, feltöltés, ellenőrzés
-        href: data-box-deploy-picked-up.md
-    - name: Alapelvek
+        - name: Áttekintés
+          items:
+            - name: Mi az a Data Box Heavy?
+              href: data-box-heavy-overview.md
+        - name: Gyors útmutatók
+          items:
+            - name: Beállítás - Azure Portal
+              href: data-box-heavy-quickstart-portal.md
+        - name: Oktatóanyagok
+          items:
+            - name: 1 – Rendelés
+              href: data-box-heavy-deploy-ordered.md
+            - name: 2 – Beállítás
+              href: data-box-heavy-deploy-set-up.md
+            - name: 3 – Csatlakozás és másolás
+              items:
+                - name: SMB-n keresztül
+                  href: data-box-heavy-deploy-copy-data.md
+                - name: NFS-en keresztül
+                  href: data-box-heavy-deploy-copy-data-via-nfs.md
+                - name: REST-en keresztül
+                  href: data-box-heavy-deploy-copy-data-via-rest.md
+                - name: Adatmásolási szolgáltatással
+                  href: data-box-heavy-deploy-copy-data-via-copy-service.md
+                - name: Felügyelt lemezekre
+                  href: data-box-heavy-deploy-copy-data-from-vhds.md
+            - name: '4 – Visszaküldés, feltöltés, ellenőrzés'
+              href: data-box-heavy-deploy-picked-up.md
+        - name: Alapelvek
+          items:
+            - name: Biztonsági irányelvek megtekintése
+              href: data-box-heavy-safety.md
+            - name: A nyomon követés és naplózás áttekintése
+              href: data-box-logs.md
+            - name: Követelmények áttekintése
+              href: data-box-heavy-system-requirements.md
+            - name: A korlátozások ismertetése
+              href: data-box-heavy-limits.md
+        - name: Útmutató
+          items:
+            - name: Kezelés az Azure Portalon
+              href: data-box-portal-admin.md
+            - name: Kezelés a helyi webes felhasználói felületen
+              href: data-box-local-web-ui-admin.md
+            - name: Eszközökkel kapcsolatos problémák elhárítása
+              href: data-box-troubleshoot.md
+            - name: Adatok áthelyezése blobszintre
+              href: data-box-how-to-set-data-tier.md
+            - name: Kapcsolatfelvétel a támogatási szolgáltatással
+              href: data-box-disk-contact-microsoft-support.md
+            - name: Migrate (Áttelepítés)
+              items:
+                - name: A SharePoint Online-ba
+                  href: data-box-heavy-migrate-spo.md
+                - name: Az Azure File Syncre
+                  href: ../storage/files/storage-sync-offline-data-transfer.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
+                - name: A HDFS-tárolóról
+                  href: ../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
+    - name: További források
       items:
-      - name: Biztonsági irányelvek megtekintése
-        href: data-box-safety.md
-      - name: Követelmények áttekintése
-        items:
-        - name: A Data Boxhoz
-          href: data-box-system-requirements.md
-        - name: A Data Box Blob Storage-hoz
-          href: data-box-system-requirements-rest.md
-      - name: A korlátozások ismertetése
-        href: data-box-limits.md
-      - name: Biztonság áttekintése
-        href: data-box-security.md
-      - name: GYIK
-        href: data-box-faq.md
-    - name: Útmutató
-      items:
-      - name: Kezelés az Azure Portalon
-        href: data-box-portal-admin.md
-      - name: Kezelés a helyi webes felhasználói felületen
-        href: data-box-local-web-ui-admin.md
-      - name: Adatok áthelyezése blobszintre
-        href: data-box-how-to-set-data-tier.md
-      - name: Az eszköz bekábelezése
-        href: data-box-cable-options.md
-      - name: Kapcsolatfelvétel a támogatási szolgáltatással
-        href: data-box-disk-contact-microsoft-support.md
-      - name: Migrate (Áttelepítés)
-        items:
-        - name: A SharePoint Online-ba
-          href: https://docs.microsoft.com/sharepointmigration/how-to-migrate-file-share-content-to-spo-using-azuredatabox?context=/azure/databox/context/context
-        - name: Az Azure File Syncre
-          href: ../storage/files/storage-sync-offline-data-transfer.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
-        - name: A HDFS-tárolóról
-          href: ../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
-  - name: Data Box Disk
-    items:
-    - name: Áttekintés
-      items:
-      - name: Mi a Data Box Disk?
-        href: data-box-disk-overview.md
-    - name: Gyors útmutatók
-      items:
-      - name: Beállítás - Azure Portal
-        href: data-box-disk-quickstart-portal.md
-      expanded: true
-    - name: Oktatóanyagok
-      items:
-      - name: 1 – Rendelés
-        href: data-box-disk-deploy-ordered.md
-      - name: 2 – Beállítás
-        href: data-box-disk-deploy-set-up.md
-      - name: 3 – Másolás és ellenőrzés
-        href: data-box-disk-deploy-copy-data.md
-      - name: 4 – Visszaküldés, feltöltés, ellenőrzés
-        href: data-box-disk-deploy-picked-up.md
-    - name: Alapelvek
-      items:
-      - name: Követelmények áttekintése
-        href: data-box-disk-system-requirements.md
-      - name: A korlátozások ismertetése
-        href: data-box-disk-limits.md
-      - name: Biztonság áttekintése
-        href: data-box-disk-security.md
-      - name: GYIK
-        href: data-box-disk-faq.md
-    - name: Útmutató
-      items:
-      - name: Kezelés az Azure Portalon
-        href: data-box-portal-ui-admin.md
-      - name: A lemezzel kapcsolatos problémák elhárítása
-        href: data-box-disk-troubleshoot.md
-      - name: Kapcsolatfelvétel a támogatási szolgáltatással
-        href: data-box-disk-contact-microsoft-support.md
-  - name: Data Box Heavy
-    items:
-    - name: Áttekintés
-      items:
-      - name: Mi az a Data Box Heavy?
-        href: data-box-heavy-overview.md
-  - name: További források
-    items:
-    - name: Data Box-termék
-      href: https://azure.microsoft.com/services/storage/databox/data/
-    - name: A Data Box díjszabása
-      href: https://azure.microsoft.com/pricing/details/storage/databox/
-    - name: A Data Box Disk díjszabása
-      href: https://azure.microsoft.com/pricing/details/storage/databox/disk/
-ms.openlocfilehash: 159fbf5782e51cc316e2b7f4474a5ddc94cf8a59
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59794006"
+        - name: Data Box-termék
+          href: 'https://azure.microsoft.com/services/storage/databox/data/'
+        - name: A Data Box díjszabása
+          href: 'https://azure.microsoft.com/pricing/details/storage/databox/'
+        - name: A Data Box Disk díjszabása
+          href: 'https://azure.microsoft.com/pricing/details/storage/databox/disk/'

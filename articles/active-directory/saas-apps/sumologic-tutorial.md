@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 4edd445fe526b9be5c421b21b25f9b095c734f43
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 07874988c97044ede59c18b8f85a425483679431
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59269894"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67089533"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sumologic"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező SumoLogic
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a SumoLogic konfigurálásához hozzá kell SumoLogic 
 
 **SumoLogic hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -233,7 +233,7 @@ Ahhoz, hogy az Azure AD-felhasználók SumoLogic bejelentkezni, akkor ki kell é
 
     ![Felhasználók](./media/sumologic-tutorial/ic778561.png "felhasználók")
 
-1. Kattintson a **Hozzáadás** parancsra.
+1. Kattintson a **Hozzáadás**lehetőségre.
 
     ![Felhasználók](./media/sumologic-tutorial/ic778562.png "felhasználók")
 

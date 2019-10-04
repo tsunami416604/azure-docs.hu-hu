@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 10/31/2017
 ms.author: jingwang
 ms.openlocfilehash: 5ae6d6ed06aa5734dc601e6e72ba55ec8ddf7bcf
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57440590"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66160627"
 ---
 # <a name="powershell-script---incrementally-load-data-by-using-azure-data-factory"></a>PowerShell-szkript – adatok növekményes betöltése az Azure Data Factory használatával
 A PowerShell-példaszkript tölt be csak az új és frissített rekord egy forrásadattárból egy fogadó adattárba után az adatok a forrásból a fogadóba kezdeti teljes másolata.  

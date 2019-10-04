@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 01/11/2019
 ms.author: annayak
-ms.openlocfilehash: 673101ad7f55969c216adf7e970402a2109f8254
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 35f8a766c6d260e23ff854284d5b8ee047e64b42
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58078159"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64926228"
 ---
 # <a name="troubleshoot-classic-storage-resource-deletion-errors"></a>Hagyományos tároló erőforrás törlésével kapcsolatos hibák elhárítása
 Ez a cikk nyújt hibaelhárítási útmutatót, ha hibák a következők egyike történik az Azure klasszikus tárfiókot, tárolót vagy *.vhd lapozófájl blob törlésének megkísérlésekor. 
@@ -37,7 +37,7 @@ A "Lemez" erőforrás-operációsrendszer-lemez és az adatlemez egy *.vhd page 
 3. A lemez(ek) bérlet megszakad, a lap BLOB(ok) maga törölhetők. A storage-fiók vagy a tároló összes bennük található "Lemez" erőforrás törlése után lehet törölni.
 
 >[!NOTE] 
->Ha a felhasználó törli a virtuális Gépet, de nem a virtuális merevlemez, tárolási díjakat továbbra is elkezdjük számolni a blob *.vhd lapozófájl. A díjak lesznek megfelelően ellenőrizze a tárfiók típusát a [díjszabását ismertető lapon](https://azure.microsoft.com/en-us/pricing/details/storage/) további részletekért. Ha a felhasználó már nem kíván használni a virtuális, törölje a informatikai/azokat későbbi díjak elkerülése érdekében. 
+>Ha a felhasználó törli a virtuális Gépet, de nem a virtuális merevlemez, tárolási díjakat továbbra is elkezdjük számolni a blob *.vhd lapozófájl. A díjak lesznek megfelelően ellenőrizze a tárfiók típusát a [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/storage/) további részletekért. Ha a felhasználó már nem kíván használni a virtuális, törölje a informatikai/azokat későbbi díjak elkerülése érdekében. 
 
 ## <a name="unable-to-delete-storage-account"></a>Nem sikerült törölni a storage-fiók 
 
@@ -99,7 +99,7 @@ A portálon, a két megközelítés a törlésre kijelölt blobok listáját fü
 #### <a name="azure-powershell"></a>Azure PowerShell 
 Ha a felhasználó úgy dönt, hogy törli a PowerShell használatával, azt a következő hibát eredményez. 
 
-> <span style="color:cyan">**Remove-AzureStorageBlob -Context $context -Container vhds -Blob "classicvm-os-8698.vhd"**</span>
+> <span style="color:cyan">**Remove-AzureStorageBlob -Context $context -Container vhds -Blob "classicvm-os-8698.vhd"** </span>
 > 
 > <span style="color:red">Remove-AzureStorageBlob : A távoli kiszolgáló hibát adott vissza: (412) itt jelenleg a BLOB bérletét, és nem a bérlet Azonosítóját a kérésben megadott... HTTP-állapotkód: 412 - HTTP hibaüzenet: Jelenleg a címbérlet a blob és a kérésben megadott nincs bérlet azonosítója.</span>
 

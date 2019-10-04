@@ -2,18 +2,18 @@
 title: Az Azure Files megosztási pillanatképeinek áttekintése |} A Microsoft Docs
 description: Megosztási pillanatkép egy Azure-fájlmegosztási egy időben, arra, hogy készítsen biztonsági másolatot a megosztáshoz készített egy csak olvasható verzióját.
 services: storage
-author: RenaShahMSFT
+author: roygara
 ms.service: storage
 ms.topic: article
 ms.date: 01/17/2018
-ms.author: renash
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 8d6bca12ae1df0cab7be3e1c54467d32063bacaf
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: d83cf20c856d37d337f4eb22c30ee9b6823d096b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195294"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65235814"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Az Azure Files megosztási pillanatképeinek áttekintése 
 Az Azure Files lehetővé teszi, hogy a megosztási pillanatképek a fájlmegosztások. Pillanatképek rögzítése a fájlmegosztási állapot ezen a ponton idő megosztani. Ez a cikk ismertetünk, adja meg a megosztási pillanatképek funkciókról, és hogyan igénybe veheti, az az egyedi használati esetekhez.
@@ -40,7 +40,7 @@ Megosztási pillanatkép-készítés a fájlok megosztási szintjén van megadva
 
 Megosztási pillanatképek egy fájlmegosztás megegyezik a kiindulási fájlmegosztás. Az egyetlen különbség, hogy egy **DateTime** értéket fűzi hozzá a megosztás URI-t, amellyel a megosztási pillanatkép időpontját jelzi. Például ha egy fájlmegosztás URI-t, http://storagesample.core.file.windows.net/myshare, a megosztási pillanatkép URI hasonlít:
 ```
-http://storagesample.file.core.windows.net/myshare?snapshot=2011-03-09T01:42:34.9360000Z
+http://storagesample.core.file.windows.net/myshare?snapshot=2011-03-09T01:42:34.9360000Z
 ```
 
 Megosztási pillanatképek továbbra is fennáll, addig, amíg explicit módon törlődnek. Egy megosztási pillanatképre annak alap fájlmegosztás nem outlive. A pillanatképek a jelenlegi pillanatképek nyomon követéséhez az alap fájlmegosztáshoz társított enumerálása. 
@@ -58,7 +58,7 @@ Annak ellenére, hogy a megosztási pillanatképek Növekményesen lesznek mentv
 
 A pillanatképek nem beleszámítanak a megosztás 5 TB-os korlátot. Mekkora terület megosztási pillanatképek foglalhat el összesen nincs korlátozva van. Tárfiókok korlátai továbbra is érvényesek.
 
-## <a name="limits"></a>Korlátok
+## <a name="limits"></a>Limits
 Az Azure Files lehetővé teszi, hogy még ma megosztási pillanatképek maximális száma 200. Után 200 megosztási pillanatképek hogy régebbi megosztási pillanatképek törlése érdekében hozzon létre újakat. 
 
 A párhuzamos hívások a megosztási pillanatképek létrehozása nincs korlátozva van. Terület mennyisége nincs korlátozva van nem használt megosztást egy adott fájlmegosztás pillanatképeinek használhatnak fel. 

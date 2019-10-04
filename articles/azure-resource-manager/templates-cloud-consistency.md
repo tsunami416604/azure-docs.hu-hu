@@ -12,12 +12,12 @@ ms.workload: na
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: 390e49a09136c21f3fd2f6555c0d56fde6e3b267
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 38da6d39d095ce27cdd26719d9b8b752d2921bc0
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60008215"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164769"
 ---
 # <a name="develop-azure-resource-manager-templates-for-cloud-consistency"></a>Fejlesztés a felhőben konzisztencia az Azure Resource Manager-sablonokkal
 
@@ -47,7 +47,7 @@ Ez az útmutató többi ismerteti a tervezésekor az Azure Stackhez készült ú
 * Győződjön meg arról, a sablon paramétereit, használja a cél-felhő működik.
 * Győződjön meg arról, hogy az erőforrás-specifikus tulajdonságok állnak rendelkezésre az cél-felhőkben.
 
-Bevezetés az Azure Resource Manager-sablonok, lásd: [sablonalapú telepítés](resource-group-overview.md#template-deployment).
+Bevezetés az Azure Resource Manager-sablonok, lásd: [sablonalapú telepítés](template-deployment-overview.md).
 
 ## <a name="ensure-template-functions-work"></a>Győződjön meg, hogy a sablonokban használható függvények használata
 
@@ -61,7 +61,7 @@ Azure Resource Manager-képességek mindig vezetjük be globális Azure-ban elő
 
 1. Ha az adattár helyi klónjával, csatlakozzon a cél Azure Resource Manager PowerShell használatával.
 
-1. Importálja a modult a psm1 kiterjesztésű, és hajtsa végre a Test-AzureRmureRmTemplateFunctions parancsmagot:
+1. Importálja a psm1 modult, és hajtsa végre a test-AzureRmureRmTemplateFunctions parancsmagot:
 
    ```powershell
    # Import the module
@@ -154,7 +154,7 @@ Az alap URI egyesítésével létrehozott hivatkozásokat a sablonban (az a `_ar
 
 Ez a módszer használata esetén az alapértelmezett érték a `_artifactsLocation` paramétert használja. Ha a hivatkozott sablonok kell kérhető le egy másik helyet, a paraméter bemeneti segítségével üzembe helyezéskor felülbírálhatja az alapértelmezett értéket – nem változik a sablon önmagában van szükség.
 
-### <a name="use-artifactslocation-instead-of-hardcoding-links"></a>_ArtifactsLocation hardcoding hivatkozások helyett használjon
+### <a name="use-_artifactslocation-instead-of-hardcoding-links"></a>_ArtifactsLocation hardcoding hivatkozások helyett használjon
 
 Amellett, hogy a beágyazott sablonok, az URL-címet használja a `_artifactsLocation` paraméter alapként szolgál, az összes kapcsolódó összetevők, a központi telepítési sablont. Egyes Virtuálisgép-bővítmények a sablon kívül tárolt parancsfájl mutató hivatkozást. Ezek a bővítmények a kapcsolódó hivatkozásokat kell. Például az egyéni parancsfájl és PowerShell DSC bővítmény kapcsolása előfordulhat, hogy egy külső parancsfájl a Githubon látható módon: 
 
@@ -211,7 +211,7 @@ Egy abszolút URI létrehozásához, az előnyben részesített módszer, hogy a
 }
 ```
 
-Ezt a módszert használja az összes üzembe helyezési összetevők, konfigurációs szkripteket, beleértve magát a sablon ugyanazon a helyen tárolható. A hely összes hivatkozást módosításához csak kell egy másik alap URL-címet adja meg a _artifactsLocation paraméterek_.
+Ezt a módszert használja az összes üzembe helyezési összetevők, konfigurációs szkripteket, beleértve magát a sablon ugyanazon a helyen tárolható. Az összes hivatkozás helyének módosításához csak meg kell adnia egy másik alap URL-címet a _artifactsLocation paraméterekhez_.
 
 ## <a name="factor-in-differing-regional-capabilities"></a>Kéttényezős eltérő regionális képességek
 

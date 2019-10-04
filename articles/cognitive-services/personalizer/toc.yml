@@ -1,0 +1,109 @@
+- name: A Personalizer dokumentációja
+  href: index.yml
+- name: Áttekintés
+  expanded: true
+  items:
+    - name: Mi a Personalizer?
+      href: what-is-personalizer.md
+      displayName: 'loop, context, feature, action, rank, reward, developer, use case'
+    - name: Újdonságok
+      href: whats-new.md
+      displayName: 'release notes, service updates, videos'
+- name: Gyors útmutatók
+  items:
+    - name: 'A C# használata'
+      href: csharp-quickstart-commandline-feedback-loop.md
+      displayName: 'code, sample, quickstart, c#'
+    - name: A Node.js használata
+      href: quickstart-command-line-feedback-loop-nodejs-sdk.md
+      displayName: 'code, sample, quickstart, node, npm, sdk'
+    - name: A Python használata
+      href: python-quickstart-commandline-feedback-loop.md
+      displayName: 'code, sample, quickstart, python'
+- name: Alapelvek
+  items:
+    - name: A Personalizer működése
+      href: how-personalizer-works.md
+      displayName: 'rank, reward, api, explore, exploit, score, design, research, loop, action, context, feature, JSON, event, inactive, model'
+    - name: Hol használhatja a Personalizert?
+      href: where-can-you-use-personalizer.md
+      displayName: 'checklist, considerations, effectiveness, recommendation engine'
+    - name: Etika és felelős használat
+      href: ethics-responsible-use.md
+      displayName: 'best practice, design'
+    - name: Alapfogalmak
+      items:
+        - name: Funkciók – Művelet és környezet
+          href: concepts-features.md
+          displayName: 'action, context, feature, namespace, JSON, best practice, set, ID, guid, event id,'
+        - name: Aktív tanulás
+          href: concept-active-learning.md
+          displayName: 'active, inactive'
+        - name: Jutalmak
+          href: concept-rewards.md
+          displayName: 'reward, wait time, default reward'
+        - name: Megerősítő tanulás
+          href: concepts-reinforcement-learning.md
+          displayName: 'RL, contextual bandits, Vowpal Wabbit'
+        - name: Feltárás
+          href: concepts-exploration.md
+    - name: Elemzés
+      items:
+        - name: Offline értékelés
+          href: concepts-offline-evaluation.md
+          displayName: 'learning policy, Counterfactual, features'
+        - name: Szolgáltatások értékelése
+          href: concept-feature-evaluation.md
+    - name: Méretezhetőség és teljesítmény
+      href: concepts-scalability-performance.md
+- name: Útmutatók
+  items:
+    - name: Személyre szabó létrehozása és konfigurálása
+      href: how-to-settings.md
+      displayName: 'azure, portal, settings, evaluation, offline, policy, export, model'
+    - name: Elemzés
+      items:
+        - name: Offline értékelés
+          href: how-to-offline-evaluation.md
+- name: Referencia
+  items:
+    - name: Példák
+      href: 'https://go.microsoft.com/fwlink/?linkid=2092083'
+    - name: REST API-referencia
+      href: 'https://go.microsoft.com/fwlink/?linkid=2092082'
+    - name: SDK-k
+      items:
+        - name: .NET
+          items:
+            - name: Referencia
+              href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/personalizer?view=azure-dotnet'
+            - name: NuGet-csomag
+              href: 'https://go.microsoft.com/fwlink/?linkid=2092272'
+        - name: Indítás
+          items:
+            - name: SDK
+              href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/personalizer/v1.0/personalizer'
+        - name: Node.js
+          items:
+            - name: NPM
+              href: 'https://www.npmjs.com/package/@azure/cognitiveservices-personalizer/v/1.0.0'
+        - name: Python
+          items:
+            - name: Pypi-csomag
+              href: 'https://pypi.org/project/azure-cognitiveservices-personalizer/'
+- name: További források
+  items:
+    - name: Hibaelhárítás
+      href: troubleshooting.md
+    - name: Régiónkénti rendelkezésre állás
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+    - name: Megfelelőség
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Azure-ütemterv
+      href: 'https://go.microsoft.com/fwlink/?linkid=2092153'
+    - name: Díjszabás
+      href: 'https://go.microsoft.com/fwlink/?linkid=2092154'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/personalizer'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/921562-personalizer'

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 06/09/2018
 ms.author: liydu
 ms.openlocfilehash: 783921009a1668647a238f1c344885ec807d5b8a
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380590"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179774"
 ---
 Ismerkedés az Azure IoT Hub és IoT DevKit használata egyéb IoT-forgatókönyvek megismerése a folytatáshoz tekintse meg a következőket:
 

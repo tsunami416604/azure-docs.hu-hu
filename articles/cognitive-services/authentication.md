@@ -1,58 +1,59 @@
 ---
 title: Authentication
-titleSuffix: Cognitive Services - Azure
-description: 'Hitelesíteni a kérelmet az Azure Cognitive Services-erőforrás három módja van: egy előfizetési kulcsot, tulajdonosi jogkivonattal vagy több szolgáltatásos előfizetést. Ebben a cikkben, ismerteti az egyes módszerek, és hogyan kérheti.'
+titleSuffix: Azure Cognitive Services
+description: 'Az Azure Cognitive Services-erőforrásokra vonatkozó kérések hitelesítésének három módja van: egy előfizetési kulcs, egy tulajdonosi jogkivonat vagy egy több szolgáltatás előfizetése. Ebben a cikkben az egyes módszerekről és a kérések elvégzéséről olvashat.'
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 07/24/2019
 ms.author: erhopf
-ms.openlocfilehash: 90bc2bf4c207f3bb2727d76c2e6b4fd5597539b1
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: ae3530af7741b8ce48e08c2a85589ffae8a83f49
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57240762"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276776"
 ---
-# <a name="authenticate-requests-to-azure-cognitive-services"></a>Az Azure Cognitive Services-kérések hitelesítéséhez
+# <a name="authenticate-requests-to-azure-cognitive-services"></a>Kérelmek hitelesítése az Azure Cognitive Services
 
-Az Azure Cognitive Service minden kérelemhez tartalmaznia kell egy hitelesítési fejlécet. Ez a fejléc továbbítja egy előfizetési kulcsot vagy a hozzáférési jogkivonatot, amely egy szolgáltatás vagy -szolgáltatásokra vonatkozó előfizetés ellenőrzésére szolgál. Ebből a cikkből megismerheti a hitelesíteni a kérelmet, és a követelmények az egyes körülbelül három módon.
+Az Azure kognitív szolgáltatás minden kérésének tartalmaznia kell egy hitelesítési fejlécet. Ez a fejléc egy előfizetési kulcs vagy egy hozzáférési jogkivonat mentén halad át, amely a szolgáltatás vagy a szolgáltatás előfizetésének ellenőrzésére szolgál. Ebből a cikkből megtudhatja, hogyan hitelesítheti a kéréseket és az egyes követelmények követelményeit.
 
-* [Hitelesítés – olyan egyetlen szolgáltatást előfizetési kulccsal](#authenticate-with-a-single-service-subscription-key)
-* [Egy több szolgáltatásos előfizetési kulcsot a hitelesítéshez](#authenticate-with-a-multi-service-subscription-key)
-* [A jogkivonat-hitelesítés](#authenticate-with-an-authentication-token)
+* [Hitelesítés egyetlen szolgáltatású előfizetési kulccsal](#authenticate-with-a-single-service-subscription-key)
+* [Hitelesítés több szolgáltatásból álló előfizetési kulccsal](#authenticate-with-a-multi-service-subscription-key)
+* [Hitelesítés jogkivonat használatával](#authenticate-with-an-authentication-token)
+* [Hitelesítés Azure Active Directorysal (HRE)](#authenticate-with-azure-active-directory)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt a kérést, kell az Azure-fiók és a egy Azure Cognitive Services-előfizetést. Ha már rendelkezik fiókkal, lépjen tovább, és ugorjon a következő szakaszra. Ha nincs fiókja, van egy útmutatót ahhoz, hogy percek alatt beállítható: [Az Azure Cognitive Services-fiók létrehozása](cognitive-services-apis-create-account.md).
+A kérelem elkészítése előtt Azure-fiókra és Azure Cognitive Services-előfizetésre van szükség. Ha már rendelkezik fiókkal, ugorjon a következő szakaszra. Ha még nem rendelkezik fiókkal, néhány perc alatt elsajátíthatja az üzembe helyezést: [Hozzon létre egy Cognitive Services fiókot az Azure-hoz](cognitive-services-apis-create-account.md).
 
-Megtekintheti az előfizetési kulcs, a [az Azure portal](cognitive-services-apis-create-account.md#access-your-resource) létrehozta fiókját, vagy aktiválása után egy [az ingyenes próbaidőszak](https://azure.microsoft.com/try/cognitive-services/my-apis).
- 
-## <a name="authentication-headers"></a>Hitelesítési fejléc
+Az előfizetési kulcsot a fiók létrehozása után, illetve az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/my-apis)aktiválása után is lekérheti a [Azure Portal](cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) .
 
-Tekintsük át gyorsan a hitelesítési fejléceket használható az Azure Cognitive Services használatával.
+## <a name="authentication-headers"></a>Hitelesítési fejlécek
+
+Gyorsan áttekintheti az Azure Cognitive Services használható hitelesítési fejléceket.
 
 | Fejléc | Leírás |
 |--------|-------------|
-| OCP-Apim-Subscription-Key | Ez a fejléc használatával egy előfizetési kulcsot adott szolgáltatásokhoz, vagy egy több szolgáltatásos előfizetési kulcsot a hitelesítéshez. |
-| Ocp-Apim-Subscription-Region | Ez a fejléc csak akkor szükséges, ha egy több szolgáltatásos előfizetési kulccsal rendelkező a [a Translator Text API](./Translator/reference/v3-0-reference.md). Ez a fejléc használatával adja meg az előfizetés régióban. |
-| Engedélyezés | Ha egy hitelesítési tokent használ, használja ezt a fejlécet. Az alábbi szakaszok a jogkivonatcsere végrehajtásához szükséges lépéseket részletezi. A megadott érték ezt a formátumot követi: `Bearer <TOKEN>`. |
+| OCP-Apim-Subscription-Key | Ezt a fejlécet használva hitelesítheti magát egy adott szolgáltatás vagy egy több szolgáltatás előfizetési kulcsának előfizetési kulcsával. |
+| Ocp-Apim-Subscription-Region | Ez a fejléc csak akkor szükséges, ha többszolgáltatásos előfizetési kulcsot használ a [Translator Text API](./Translator/reference/v3-0-reference.md). Ez a fejléc az előfizetési régió megadására használható. |
+| Authorization | Használja ezt a fejlécet, ha hitelesítési jogkivonatot használ. A jogkivonat-csere végrehajtásának lépései a következő fejezetekben találhatók. A megadott érték a következő formátumot követi `Bearer <TOKEN>`:. |
 
-## <a name="authenticate-with-a-single-service-subscription-key"></a>Hitelesítés – olyan egyetlen szolgáltatást előfizetési kulccsal
+## <a name="authenticate-with-a-single-service-subscription-key"></a>Hitelesítés egyetlen szolgáltatású előfizetési kulccsal
 
-Az első lehetőség egy előfizetési kulcsot adott szolgáltatásokhoz, például a Translator Text kérelmet hitelesíteni. A kulcsok az Azure Portalon létrehozott minden erőforrás esetében érhetők el. Egy előfizetési kulcsot használatával hitelesíteni a kérelmet, azt kell átadni mentén, mint a `Ocp-Apim-Subscription-Key` fejléc.
+Az első lehetőség egy adott szolgáltatáshoz tartozó előfizetési kulccsal rendelkező kérelem hitelesítése, például Translator Text. A kulcsok a Azure Portalban érhetők el minden létrehozott erőforráshoz. Ha előfizetési kulcsot szeretne használni egy kérelem hitelesítéséhez, a `Ocp-Apim-Subscription-Key` fejlécnek kell átadnia.
 
-Ezek a kérelmek minta bemutatja, hogyan használja a `Ocp-Apim-Subscription-Key` fejléc. Ne feledje, ez a minta tartalmaznak egy érvényes előfizetési kulcsot kell használatakor.
+Ezek a példák azt mutatják be, hogyan használható `Ocp-Apim-Subscription-Key` a fejléc. Ne feledje, hogy a minta használatakor érvényes előfizetési kulcsot kell tartalmaznia.
 
-Ez a minta a Bing Web Search API hívását:
+Ez egy példa a Bing Web Search APIre:
 ```cURL
 curl -X GET 'https://api.cognitive.microsoft.com/bing/v7.0/search?q=Welsch%20Pembroke%20Corgis' \
 -H 'Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY' | json_pp
 ```
 
-Ez a minta a Translator Text API hívását:
+Ez egy példa a Translator Text APIre:
 ```cURL
 curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de' \
 -H 'Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY' \
@@ -60,26 +61,26 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 --data-raw '[{ "text": "How much for the cup of coffee?" }]' | json_pp
 ```
 
-A következő videó bemutatja a Cognitive Services-kulcs használatával.
+Az alábbi videó egy Cognitive Services kulcs használatát mutatja be.
 
-## <a name="authenticate-with-a-multi-service-subscription-key"></a>Egy több szolgáltatásos előfizetési kulcsot a hitelesítéshez
+## <a name="authenticate-with-a-multi-service-subscription-key"></a>Hitelesítés több szolgáltatásból álló előfizetési kulccsal
 
 >[!WARNING]
-> Jelenleg ezek a szolgáltatások **nem** támogatja több szolgáltatásos kulcsokat: A QnA Maker, beszédszolgáltatások és egyéni vizuális.
+> Ezek a szolgáltatások jelenleg **nem** támogatják a több szolgáltatásból származó kulcsokat: QnA Maker, Speech Services, Custom Vision és anomália detektor.
 
-Ez a beállítás egy előfizetési kulcsot is használja-kérések hitelesítéséhez. A fő különbség az, hogy egy előfizetési kulcsot nem kötődik azonban egy adott szolgáltatáshoz, inkább egy kulcs több Cognitive Services-kérések hitelesítéséhez használható. Lásd: [Cognitive Services díjszabása](https://azure.microsoft.com/pricing/details/cognitive-services/) régiónkénti rendelkezésre állás információ a támogatott szolgáltatások, és a díjszabás.
+Ez a beállítás egy előfizetési kulcsot is használ a kérelmek hitelesítéséhez. A fő különbség az, hogy egy előfizetési kulcs nem kötődik egy adott szolgáltatáshoz, hanem egyetlen kulcsot is használhat több Cognitive Services kérelmek hitelesítéséhez. A regionális rendelkezésre állással, a támogatott funkciókkal és a díjszabással kapcsolatos információkért tekintse meg a [Cognitive Services díjszabását](https://azure.microsoft.com/pricing/details/cognitive-services/) .
 
-Az előfizetési kulcsot kéréseknek, megtalálható a `Ocp-Apim-Subscription-Key` fejléc.
+Az előfizetési kulcsot minden kérelem `Ocp-Apim-Subscription-Key` fejlécként kell megadnia.
 
-[![Több szolgáltatásos előfizetési kulcs bemutató a Cognitive Services számára](./media/index/single-key-demonstration-video.png)](https://www.youtube.com/watch?v=psHtA1p7Cas&feature=youtu.be)
+[![Több szolgáltatás előfizetési kulcsának bemutatása Cognitive Services](./media/index/single-key-demonstration-video.png)](https://www.youtube.com/watch?v=psHtA1p7Cas&feature=youtu.be)
 
 ### <a name="supported-regions"></a>Támogatott régiók
 
-Ha a több szolgáltatásos előfizetési kulcs segítségével kérheti `api.cognitive.microsoft.com`, az URL-címben szerepelnie kell a régióban. Például: `westus.api.cognitive.microsoft.com`.
+Ha a többszolgáltatásos előfizetési kulcsot használja a kérelem `api.cognitive.microsoft.com`elvégzéséhez, a régiót az URL-címben is fel kell vennie. Például: `westus.api.cognitive.microsoft.com`.
 
-A Translator Text API több szolgáltatásos előfizetési kulcs használatakor meg kell adnia az előfizetés-régióhoz a `Ocp-Apim-Subscription-Region` fejléc.
+Ha a Translator Text API több szolgáltatás előfizetési kulcsát használja, meg kell adnia az előfizetési régiót `Ocp-Apim-Subscription-Region` a fejlécben.
 
-Több szolgáltatásos hitelesítési ezekben a régiókban támogatott:
+A többszolgáltatásos hitelesítés a következő régiókban támogatott:
 
 | | | |
 |-|-|-|
@@ -90,16 +91,16 @@ Több szolgáltatásos hitelesítési ezekben a régiókban támogatott:
 | `westeurope` | `westus` | `westus2` |
 
 
-### <a name="sample-requests"></a>Minta kérelmek
+### <a name="sample-requests"></a>Példák a kérelmekre
 
-Ez a minta a Bing Web Search API hívását:
+Ez egy példa a Bing Web Search APIre:
 
 ```cURL
 curl -X GET 'https://YOUR-REGION.api.cognitive.microsoft.com/bing/v7.0/search?q=Welsch%20Pembroke%20Corgis' \
 -H 'Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY' | json_pp
 ```
 
-Ez a minta a Translator Text API hívását:
+Ez egy példa a Translator Text APIre:
 
 ```cURL
 curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de' \
@@ -109,27 +110,27 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 --data-raw '[{ "text": "How much for the cup of coffee?" }]' | json_pp
 ```
 
-## <a name="authenticate-with-an-authentication-token"></a>Egy hitelesítési tokent a hitelesítéshez
+## <a name="authenticate-with-an-authentication-token"></a>Hitelesítés hitelesítési jogkivonattal
 
-Néhány Azure Cognitive Services fogadja el, és bizonyos esetekben szükség, egy hitelesítési tokent. Ezek a szolgáltatások jelenleg hitelesítési jogkivonatokat támogatja:
+Egyes Azure-Cognitive Services elfogadnak, és bizonyos esetekben szükség van egy hitelesítési jogkivonatra. Ezek a szolgáltatások jelenleg támogatják a hitelesítési jogkivonatokat:
 
-* Szövegalapú fordítási API
-* Beszédszolgáltatások: Hang-szöveg transzformációs REST API-val
-* Beszédszolgáltatások: Szöveg-hang transzformációs REST API-val
+* Szöveges fordítási API
+* Speech Services: Beszéd – szöveg REST API
+* Speech Services: Szöveg – beszéd REST API
 
 >[!NOTE]
-> A QnA Maker is az engedélyezési fejléc használja, de a végpont kulcs szükséges. További információkért lásd: [QnA Maker: Első válasz a Tudásbázis](./qnamaker/quickstarts/get-answer-from-kb-using-curl.md).
+> A QnA Maker az engedélyezési fejlécet is használja, de szükség van egy végponti kulcsra. További információkért lásd [: QnA Maker: A Tudásbázisból](./qnamaker/quickstarts/get-answer-from-kb-using-curl.md)kaphat választ.
 
 >[!WARNING]
-> A szolgáltatások, amelyek támogatják a hitelesítési tokenek idővel változhat, kérjük szolgáltatás ellenőrizze az API-referenciája a hitelesítési módszer használata előtt.
+> A hitelesítési jogkivonatokat támogató szolgáltatások idővel változhatnak, mielőtt ezt a hitelesítési módszert használja, ellenőrizze a szolgáltatás API-referenciáját.
 
-Mindkét szolgáltatás egyetlen és több szolgáltatásos előfizetési kulcsok kicserélhetők hitelesítési tokenek. Hitelesítési jogkivonatok érvényesek 10 perc.
+A hitelesítési jogkivonatok esetében az egyszolgáltatásos és a több szolgáltatásra kiterjedő előfizetési kulcsok is kicserélhetők. A hitelesítési jogkivonatok 10 percig érvényesek.
 
-Hitelesítési jogkivonatok szerepelnek egy kérelmet, mint a `Authorization` fejléc. A token megadott értéknek meg kell előznie `Bearer`, például: `Bearer YOUR_AUTH_TOKEN`.
+A hitelesítési jogkivonatok `Authorization` fejlécként szerepelnek a kérelemben. A jogkivonat megadott értékének megelőzve `Bearer`kell lennie, például:. `Bearer YOUR_AUTH_TOKEN`
 
-### <a name="sample-requests"></a>Minta kérelmek
+### <a name="sample-requests"></a>Példák a kérelmekre
 
-Az URL-cím használatával egy előfizetési kulcsot egy hitelesítési tokent: `https://YOUR-REGION.api.cognitive.microsoft.com/sts/v1.0/issueToken`.
+Használja ezt az URL-címet egy hitelesítési jogkivonat előfizetési kulcsának `https://YOUR-REGION.api.cognitive.microsoft.com/sts/v1.0/issueToken`cseréjéhez:.
 
 ```cURL
 curl -v -X POST \
@@ -139,7 +140,7 @@ curl -v -X POST \
 -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY"
 ```
 
-Ezekben a régiókban több szolgáltatásos jogkivonatcsere támogatják:
+Ezek a több szolgáltatási régió támogatja a jogkivonat-Exchange-t:
 
 | | | |
 |-|-|-|
@@ -149,7 +150,7 @@ Ezekben a régiókban több szolgáltatásos jogkivonatcsere támogatják:
 | `southeastasia` | `uksouth` | `westcentralus` |
 | `westeurope` | `westus` | `westus2` |
 
-A hitelesítési jogkivonat beszerzése, miután kell adja át azt az egyes kérelmek, a `Authorization` fejléc. Ez a minta a Translator Text API hívását:
+A hitelesítési jogkivonat beszerzése után a `Authorization` fejlécnek kell átadnia minden kérelemben. Ez egy példa a Translator Text APIre:
 
 ```cURL
 curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de' \
@@ -158,8 +159,10 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 --data-raw '[{ "text": "How much for the cup of coffee?" }]' | json_pp
 ```
 
+[!INCLUDE [](../../includes/cognitive-services-azure-active-directory-authentication.md)]
+
 ## <a name="see-also"></a>Lásd még
 
 * [Mi a Cognitive Services?](welcome.md)
-* [Cognitive Services-díjszabás](https://azure.microsoft.com/pricing/details/cognitive-services/)
-* [Fiók létrehozása](cognitive-services-apis-create-account.md)
+* [A Cognitive Services díjszabása](https://azure.microsoft.com/pricing/details/cognitive-services/)
+* [Egyéni altartományok](cognitive-services-custom-subdomains.md)

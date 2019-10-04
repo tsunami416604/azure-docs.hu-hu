@@ -3,26 +3,26 @@ title: Állítsa be a riasztásokat az Azure Stream Analytics-feladatok figyelé
 description: Ez a cikk ismerteti, hogyan állítsa be a figyelést és riasztásokat az Azure Stream Analytics-feladatok az Azure portal használatával.
 services: stream-analytics
 author: jseb225
-ms.author: jeanb
+ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/05/2019
-ms.custom: seodec18
-ms.openlocfilehash: 52db8217cc1e1f84d25ab896be9b42db3bf6bd81
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.date: 06/21/2019
+ms.openlocfilehash: 0fd489d856a16953a5a450a347c9737fe440ad28
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55769489"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621757"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Állítsa be a riasztásokat az Azure Stream Analytics-feladatok
 
 Fontos figyelése az Azure Stream Analytics-feladat annak érdekében, hogy a feladat folyamatosan futó gond nélkül. Ez a cikk ismerteti a gyakori szituációhoz kínál olyan figyelendő riasztásokat állíthat be. 
 
-Szabályok a metrikák a portálon keresztül is beállítható, és konfigurálhatók [programozott módon](https://code.msdn.microsoft.com/windowsazure/Receive-Email-Notifications-199e2c9a) műveletnaplók adatokon.
+Meghatározhat szabályokat metrikákhoz műveletnaplók adatokból a portálon keresztül, valamint [programozott módon](https://code.msdn.microsoft.com/windowsazure/Receive-Email-Notifications-199e2c9a).
 
 ## <a name="set-up-alerts-in-the-azure-portal"></a>Az Azure Portal értesítések beállítása
+### <a name="get-alerted-when-a-job-stops-unexpectedly"></a>A feldolgozás leállása esetén küldjön riasztást
 
 A következő példa bemutatja, hogyan állítható be a riasztások, a feladat sikertelen állapotba kerül, ha. Ez a riasztás javasolt az összes feladat.
 
@@ -30,7 +30,7 @@ A következő példa bemutatja, hogyan állítható be a riasztások, a feladat 
 
 2. Az a **feladat** lapon, keresse meg a **figyelés** szakaszban.  
 
-3. Válassza ki **metrikák**, és kattintson a **Új riasztási szabály**.
+3. Válassza ki **metrikák**, majd **Új riasztási szabály**.
 
    ![Az Azure portal Stream Analytics riasztások beállítása](./media/stream-analytics-set-up-alerts/stream-analytics-set-up-alerts.png)  
 
@@ -38,7 +38,7 @@ A következő példa bemutatja, hogyan állítható be a riasztások, a feladat 
 
    ![Válassza ki a Stream Analytics-riasztásból jel neve](./media/stream-analytics-set-up-alerts/stream-analytics-condition-signal.png)  
 
-5. Alatt **jellogika konfigurálása**, módosítsa **Eseményszint** való **összes** , és módosítsa **állapota** való **sikertelen** . Hagyja **esemény kezdeményezője** üres, és kattintson a **kész**.
+5. Alatt **jellogika konfigurálása**, módosítsa **Eseményszint** való **összes** , és módosítsa **állapota** való **sikertelen** . Hagyja **esemény kezdeményezője** üres, és válassza ki **kész**.
 
    ![A Stream Analytics-riasztásból jellogika konfigurálása](./media/stream-analytics-set-up-alerts/stream-analytics-configure-signal-logic.png) 
 
@@ -46,7 +46,7 @@ A következő példa bemutatja, hogyan állítható be a riasztások, a feladat 
 
    ![Az Azure Stream Analytics-feladat riasztás beállítása](./media/stream-analytics-set-up-alerts/stream-analytics-add-group-email-action.png)
 
-7. A **erőforrás**, **feltétel**, és **MŰVELETCSOPORTOK** kell minden egyes egy bejegyzést. Ne feledje, hogy ahhoz, hogy a riasztások üzenetszám, a megadott feltételeket, amelyeknek teljesülniük kell. Például akkor mérni tudja átlagos értéke a metrika az elmúlt 15 perc, 5 percenként.
+7. A **erőforrás**, **feltétel**, és **MŰVELETCSOPORTOK** kell minden egyes egy bejegyzést. Ne feledje, hogy ahhoz, hogy a riasztások üzenetszám, a megadott feltételeket, amelyeknek teljesülniük kell. Mérheti például egy metrika átlagos értékét az elmúlt 15 percben 5 percenként.
 
    ![Stream Analytics riasztási szabály létrehozása](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule-2.png)
 
@@ -75,6 +75,6 @@ További segítségre van szüksége, próbálja meg [Azure Stream Analytics-fó
 * [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-get-started.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Scale Azure Stream Analytics jobs](stream-analytics-scale-jobs.md) (Azure Stream Analytics-feladatok méretezése)
-* [Azure Stream Analytics Query Language Reference](https://msdn.microsoft.com/library/azure/dn834998.aspx) (Referencia az Azure Stream Analytics lekérdezési nyelvhez)
+* [Azure Stream Analytics Query Language Reference](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) (Referencia az Azure Stream Analytics lekérdezési nyelvhez)
 * [Az Azure Stream Analytics felügyeleti REST API referenciája](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 

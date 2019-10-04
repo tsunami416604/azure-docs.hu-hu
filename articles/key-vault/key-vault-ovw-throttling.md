@@ -2,22 +2,19 @@
 title: Az Azure Key Vault szabályozási útmutatója
 description: Key Vault-szabályozás korlátozza, hogy az erőforrások túlzott párhuzamos hívások száma.
 services: key-vault
-documentationcenter: ''
 author: msmbaldwin
-manager: barbkess
+manager: rkarlin
 tags: ''
-ms.assetid: 9b7d065e-1979-4397-8298-eeba3aec4792
 ms.service: key-vault
-ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 0f8aafce4c4feeed742504db84664e4dfd472ca6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: f10f40551701cafd94692afc0916972b1fd73aff
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59787549"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883049"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Az Azure Key Vault szabályozási útmutatója
 
@@ -34,7 +31,7 @@ Ha rendelkezik egy újabb szabályozási korlátairól üzleti esetet, lépjen k
 
 ## <a name="how-to-throttle-your-app-in-response-to-service-limits"></a>Az alkalmazás szolgáltatásokra vonatkozó korlátozások válaszul szabályozásának megtervezéséhez
 
-Az alábbi **ajánlott eljárások** kell megvalósítania, ha a szolgáltatás Tranzakciókorlát elérése:
+A szolgáltatás szabályozásakor a következő **ajánlott eljárásokat** kell megvalósítani:
 - Műveletek kérelmenkénti számának csökkentése.
 - Csökkentse a kérelmek gyakoriságát.
 - Azonnali újrapróbálkozás elkerülése érdekében. 
@@ -115,7 +112,7 @@ Exponenciális visszatartással megvalósító kódot alább látható.
 ```
 
 
-A kód használatához az ügyfél C\# alkalmazás nagyon egyszerű. A következő példa bemutatja, hogy a HttpClient osztály használatával.
+A kód használata egy ügyfél C\# alkalmazásban egyszerű. Az alábbi példa bemutatja, hogyan használhatja a HttpClient osztályt.
 
 ```csharp
 public async Task<Cart> GetCartItems(int page)
@@ -134,7 +131,7 @@ public async Task<Cart> GetCartItems(int page)
 }
 ```
 
-Ne feledje, hogy ez a kód csak a koncepció igazolása alkalmas. 
+Ne feledje, hogy ez a kód csak a koncepció igazolása használható. 
 
 ### <a name="recommended-client-side-throttling-method"></a>Ajánlott az ügyféloldali szabályozási módszer
 

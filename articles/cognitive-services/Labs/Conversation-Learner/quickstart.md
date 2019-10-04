@@ -1,55 +1,56 @@
 ---
-title: Hogyan hozhat létre egy Node.js - a Microsoft Cognitive Services használatával Beszélgetéstanuló modell |} A Microsoft Docs
+title: Conversation Learner modell létrehozása Node. js-Microsoft Cognitive Services használatával | Microsoft Docs
 titleSuffix: Azure
-description: Ismerje meg, hogyan hozhat létre a Node.js használatával Beszélgetéstanuló modell.
+description: Megtudhatja, hogyan hozhat létre Conversation Learner modellt a Node. js használatával.
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: 743b4d4888738579a023e879dc7b6e95cd23ccc7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: nitinme
+ROBOTS: NOINDEX
+ms.openlocfilehash: 7ab32fb421a2c0db72652d1bbf12d312bffd5d1e
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57994373"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706537"
 ---
-# <a name="create-a-conversation-learner-model-using-nodejs"></a>Node.js használatával Beszélgetéstanuló modell létrehozása
+# <a name="create-a-conversation-learner-model-using-nodejs"></a>Conversation Learner modell létrehozása a Node. js használatával
 
-Beszélgetéstanuló robotok létrehozása bonyolultságát is csökkenti. Lehetővé teszi a hibrid fejlesztési munka-folyamat lehetővé teszi kézzel írt kód és a gépi tanulás segítségével csökkentheti a robotok írása szükséges kódot. Bizonyos rögzített részei a modellt, például az ellenőrzést, ha a felhasználó be van jelentkezve, vagy egy API-kérelem ellenőrzéséhez árukészlet, így továbbra is kódolható legyen. Egyéb változások állapot-és műveleti megtanult is a tartományi szakértővel vagy fejlesztő által adott példa párbeszédpanelek.
+Conversation Learner csökkenti a robotok létrehozásának összetettségét. Lehetővé teszi a hibrid fejlesztési munkafolyamatot, amely lehetővé teszi a kézzel írt kód és a gépi tanulás számára a robotok írásához szükséges kód mennyiségének csökkentését. A modell bizonyos rögzített részei, például annak ellenőrzése, hogy a felhasználó be van-e jelentkezve, vagy API-kérést készít az áruházbeli leltár ellenőrzéséhez, továbbra is kódolható. Az állapot és a művelet kijelölésének egyéb változásai azonban a tartományi szakértő vagy a fejlesztő által megadott párbeszédablakokból is megtekinthetők.
 
-## <a name="invitation-required"></a>Meghívó szükséges
+## <a name="invitation-required"></a>Meghívás szükséges
 
-*Meghívó projekt Beszélgetéstanuló eléréséhez szükséges.*
+*A Project Conversation Learner eléréséhez meghívás szükséges.*
 
-Projekt Beszélgetéstanuló egy SDK-t ad hozzá a robot és a egy felhőalapú szolgáltatás, amely az SDK fér hozzá a machine Learning áll.  Jelenleg a projekt beszélgetés Leaner felhőszolgáltatás használatához meghívó.  Ha még nem lett már, meghívót [meghívó igénylése](https://aka.ms/conversation-learner-request-invite).  Ha még nem kapott egy meghívást arra, nem érhető el a felhőalapú API-t fogjuk.
+A Project Conversation Learner a robothoz hozzáadott SDK-val, valamint egy felhőalapú szolgáltatással, amelyet az SDK a gépi tanuláshoz fér hozzá.  Jelenleg a Project beszélgetés leaner Cloud Service-hez való hozzáféréshez meghívásra van szükség.  Ha még nem hívta meg, [kérjen meg egy](https://aka.ms/conversation-learner-request-invite)meghívót.  Ha nem kapott meghívót, nem fog tudni hozzáférni a Cloud API-hoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Csomópont 8.5.0-s vagy magasabb szintű és az npm 5.3.0 vagy újabb verziója. Telepítse a [ https://nodejs.org ](https://nodejs.org).
+- Node 8.5.0 vagy magasabb, NPM 5.3.0 vagy újabb. Telepítés innen [https://nodejs.org](https://nodejs.org):.
   
-- A LUIS szerzői kulcs:
+- LUIS szerzői kulcs:
 
-  1. Jelentkezzen be [ https://www.luis.ai ](https://www.luis.ai).
+  1. Jelentkezzen [https://www.luis.ai](https://www.luis.ai)be.
 
-  2. Kattintson a jobb felső sarkában, majd a "beállítások" nevére
+  2. A jobb felső sarokban kattintson a nevére, majd a "beállítások" elemre.
 
-  3. Kulcs létrehozási megjelenik az eredményül kapott oldalon
+  3. A szerzői kulcs megjelenik az eredményül kapott oldalon.
 
-  (A kulcs létrehozási LUIS 2 szerepkörök szolgálja ki.  Először is fog szolgálni a kulcs létrehozási Beszélgetéstanuló.  A második Beszélgetéstanuló használ a LUIS entitások kinyeréséhez; a LUIS szerzői kulcs szerepel az Ön nevében modellek létrehozásának eljárásait a LUIS)
+  (A LUIS authoring Key 2 szerepkört szolgál ki.  Először is a Conversation Learner szerzői kulcsként szolgál majd.  Másodszor, Conversation Learner LUIS-t használ az entitások kinyeréséhez; a LUIS authoring Key használatával LUIS-modelleket hozhat létre az Ön nevében.
 
-- Google Chrome böngésző. Telepítse a [ https://www.google.com/chrome/index.html ](https://www.google.com/chrome/index.html).
+- Google Chrome böngésző. Telepítés innen [https://www.google.com/chrome/index.html](https://www.google.com/chrome/index.html):.
 
-- a git. Telepítse a [ https://git-scm.com/downloads ](https://git-scm.com/downloads).
+- git. Telepítés innen [https://git-scm.com/downloads](https://git-scm.com/downloads):.
 
-- VSCode. Telepítse a [ https://code.visualstudio.com/ ](https://code.visualstudio.com/). Vegye figyelembe, hogy ez javasolt, nem szükséges.
+- VSCode. Telepítés innen [https://code.visualstudio.com/](https://code.visualstudio.com/):. Vegye figyelembe, hogy ez az ajánlott, nem kötelező.
 
-## <a name="quick-start"></a>Első lépések 
+## <a name="quick-start"></a>Gyors üzembe helyezés 
 
-1. Telepítse, és hozhat létre:
+1. Telepítés és létrehozás:
 
     ```bash    
     git clone https://github.com/Microsoft/ConversationLearner-Samples cl-bot-01
@@ -59,41 +60,41 @@ Projekt Beszélgetéstanuló egy SDK-t ad hozzá a robot és a egy felhőalapú 
     ```
 
     > [!NOTE]
-    > Során `npm install`, figyelmen kívül hagyhatja ezt a hibát, akkor fordul elő, ha: `gyp ERR! stack Error: Can't find Python executable`
+    > Ebben az esetben figyelmen kívül hagyhatja ezt a hibát ,haakövetkezőtörténik:`npm install``gyp ERR! stack Error: Can't find Python executable`
 
 2. Konfigurálás:
 
-   Hozzon létre egy fájlt nevű `.env` a címtárban `cl-bot-01`.  A fájl tartalmának kell lennie:
+   Hozzon létre egy `.env` nevű fájlt a `cl-bot-01`címtárban.  A fájl tartalmának a következőket kell tennie:
 
    ```
    NODE_ENV=development
    LUIS_AUTHORING_KEY=<your LUIS authoring key>
    ```
 
-3. Indítsa el a robotot:
+3. Kezdő robot:
 
     ```
     npm start
     ```
 
-    Ez az általános üres bot fut `cl-bot-01/src/app.ts`.
+    Ezzel futtatja az általános üres robotot a alkalmazásban `cl-bot-01/src/app.ts`.
 
-3. Nyissa meg böngészőben `http://localhost:3978`
+3. Böngésző megnyitása a következőhöz`http://localhost:3978`
 
-Beszélgetéstanuló most már használja és hozhat létre és Beszélgetéstanuló modell tanítása.  
+Most már használja a Conversation Learnert, és létrehozhat és megtaníthat egy Conversation Learner modellt.  
 
 > [!NOTE]
-> Indításkor projekt Beszélgetéstanuló kapott meghívóval érhető el.  Ha `http://localhost:3978/ui` bemutatja egy olyan HTTP `403` hiba, ez azt jelenti, hogy a fiók nem kapott meghívót.  Adjon [meghívó igénylése](https://aka.ms/conversation-learner-request-invite).
+> Indításkor a Project Conversation Learner a meghívóval érhető el.  Ha `http://localhost:3978/ui` http`403` -hibát jelez, ez azt jelenti, hogy a fiókja nem lett meghívva.  [Kérje meg a](https://aka.ms/conversation-learner-request-invite)meghívót.
 
-## <a name="tutorials-demos-and-switching-between-bots"></a>Az oktatóanyagok, bemutatók és robotokat közötti váltás
+## <a name="tutorials-demos-and-switching-between-bots"></a>Oktatóanyagok, bemutatók és váltás a botok között
 
-A fenti útmutatást az általános üres bot elindult.  Oktatóanyag futtatásához, vagy inkább bemutató bot:
+A fenti utasítások elindították az általános üres robotot.  Oktatóanyag vagy demó robot futtatása a következő helyett:
 
-1. Ha a felhasználói felület megnyitása Beszélgetéstanuló webes, térjen vissza a modellek listáját `http://localhost:3978/ui/home`.
+1. Ha a Conversation Learner webes KEZELŐFELÜLETe meg van nyitva, térjen vissza a modellek `http://localhost:3978/ui/home`listájához.
     
-2. Ha egy másik bot fut (például `npm start` vagy `npm run demo-pizza`), állítsa le.  Nem kell a felhasználói felület folyamat leállítása, vagy zárja be a webböngészőt.
+2. Ha egy másik robot fut (például `npm start` vagy `npm run demo-pizza`), állítsa le.  Nem kell leállítania a felhasználói felület folyamatát, vagy be kell állítania a böngészőt.
 
-3. A bemutató bot futtassa a parancssorból (2. lépés fent).  Bemutatók a következők:
+3. Futtasson egy demó robotot a parancssorból (2. lépés).  A bemutatók a következők:
 
    ```bash
    npm run tutorial-general
@@ -106,62 +107,62 @@ A fenti útmutatást az általános üres bot elindult.  Oktatóanyag futtatás�
    npm run demo-storage
    ```
 
-4. Ha még nem tette, váltson a Beszélgetéstanuló webes felhasználói Felületére, a Chrome-ban betöltésével `http://localhost:3978/ui/home`. 
+4. Ha még nem tette meg, váltson a Chrome Conversation Learner webes felhasználói felületére a betöltéssel `http://localhost:3978/ui/home`. 
 
-5. Kattintson a "Oktatóanyagokban importálása", és válassza ki a demo modellt a beszélgetés Learner felhasználói felületén, amely megfelel a bemutató-t elindította.
+5. Kattintson az "oktatóanyagok importálása" elemre, és válassza ki a bemutató modellt a Conversation Learner felhasználói felületen, amely megfelel az elindított bemutatónak.
 
-Forrásfájljainak a bemutatók szerepelnek `cl-bot-01/src/demos`
+A bemutatók forrásfájljait a következő címen található:`cl-bot-01/src/demos`
 
-## <a name="create-a-bot-which-includes-back-end-code"></a>Hozzon létre egy robot, amely háttér-kódot tartalmaz
+## <a name="create-a-bot-which-includes-back-end-code"></a>Háttér-kódot tartalmazó robot létrehozása
 
-1. Ha a felhasználói felület megnyitása Beszélgetéstanuló webes, térjen vissza a modellek listáját `http://localhost:3978/ui/home`.
+1. Ha a Conversation Learner webes KEZELŐFELÜLETe meg van nyitva, térjen vissza a modellek `http://localhost:3978/ui/home`listájához.
     
-2. Ha egy robot fut (például `npm run demo-pizza`), állítsa le.  Nem kell a felhasználói felület folyamat leállítása, vagy zárja be a webböngészőt.
+2. Ha egy robot fut (például `npm run demo-pizza`), állítsa le.  Nem kell leállítania a felhasználói felület folyamatát, vagy be kell állítania a böngészőt.
 
-3. Ha szükséges, a kód szerkesztése `cl-bot-01/src/app.ts`.
+3. Ha szükséges, szerkessze a `cl-bot-01/src/app.ts`kódot a alkalmazásban.
 
-4. Építse újra, és indítsa újra a robotot:
+4. A robot újraépítése és újraindítása:
 
     ```bash    
     npm run build
     npm start
     ```
 
-5. Ha még nem tette, váltson a Beszélgetéstanuló webes felhasználói Felületére, a Chrome-ban betöltésével `http://localhost:3978/ui/home`. 
+5. Ha még nem tette meg, váltson a Chrome Conversation Learner webes felhasználói felületére a betöltéssel `http://localhost:3978/ui/home`. 
 
-6. Beszélgetéstanuló új modell létrehozása a felhasználói felületen, és indítsa el a tanítási.
+6. Hozzon létre egy új Conversation Learner modellt a felhasználói felületen, és indítsa el az oktatást.
 
-7. A kód módosításokat `cl-bot-01/src/app.ts`, ismételje meg a fenti lépéseket, kezdve a 2. lépés.
+7. A kód módosításának `cl-bot-01/src/app.ts`végrehajtásához ismételje meg a fenti lépéseket a 2. lépéstől kezdve.
 
 ## <a name="vscode"></a>VSCode
 
-A vscode-ban, nincs futtatása minden bemutató, valamint az "üres bot" konfigurációk `cl-bot-01/src/app.ts`.  Nyissa meg a `cl-bot-01` VSCode mappára.
+A VSCode-ben az egyes demók futtatási konfigurációi, valamint az "üres bot" `cl-bot-01/src/app.ts`szerepel a következőben:.  Nyissa `cl-bot-01` meg a mappát a VSCode-ben.
 
 ## <a name="advanced-configuration"></a>Speciális konfiguráció
 
-Egy sablon `.env.example` fájl bemutatja, milyen környezeti változók adhatja meg a minta konfigurálásához.
+Egy sablonfájl `.env.example` azt mutatja be, hogy milyen környezeti változókat lehet beállítani a minták konfigurálásához.
 
-Ezeket a portokat, adja hozzá a gépen futó egyéb szolgáltatásokra közötti ütközések elkerülésével módosíthatja egy `.env` fájlt a projekt gyökerében:
+Ezeket a portokat úgy módosíthatja, hogy elkerülje a számítógépen futó egyéb szolgáltatások közötti ütközéseket, `.env` ha egy fájlt ad hozzá a projekt gyökeréhez:
 
 ```bash
 cp .env.example .env
 ```
 
-Ez az a szabványos konfigurációt, amely lehetővé teszi a robot helyileg történő futtatása, és vegye használatba Beszélgetéstanuló használ.  (Később az üzembe helyezéséhez a robot a Bot Framework, bizonyos szerkesztések ebbe a fájlba lesz szükség.)
+Ez a szabványos konfigurációt használja, amely lehetővé teszi a robot helyi futtatását, és a Conversation Learner használatának megkezdését.  (Később, a robot a bot-keretrendszerbe való üzembe helyezéséhez a fájl szerkesztésére is szükség lesz.)
 
 ## <a name="support"></a>Támogatás
 
-- Kérdéseit [Stack Overflow](https://stackoverflow.com) az "a microsoft cognitive"
-- A szolgáltatás igénylése a [User Voice lap](https://aka.ms/conversation-learner-uservoice)
-- Nyisson egy problémát a a [GitHub-adattár](https://github.com/Microsoft/ConversationLearner-Samples)
+- Kérdések címkézése [stack overflow](https://stackoverflow.com) a "Microsoft kognitív"
+- Szolgáltatás kérése a [felhasználói hangalapú oldalon](https://aka.ms/conversation-learner-uservoice)
+- Probléma megnyitása a [GitHub](https://github.com/Microsoft/ConversationLearner-Samples) -tárházban
 
-## <a name="contributing"></a>Közreműködő
+## <a name="contributing"></a>Hozzájárul
 
 A projekt a Microsoft nyílt forráskódú projekteket szabályozó etikai kódexe, a [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/) hatálya alá esik. További információért tekintse át a [viselkedési szabályzat GYIK dokumentumát](https://opensource.microsoft.com/codeofconduct/faq/), illetve további kérdések vagy megjegyzések esetén írjon az [opencode@microsoft.com](mailto:opencode@microsoft.com) e-mail-címre.
 
-## <a name="source-repositories"></a>Verziókezelők
+## <a name="source-repositories"></a>Forrás adattárak
 
-- [conversationlearner-samples](https://github.com/Microsoft/ConversationLearner-Samples)
+- [conversationlearner – minták](https://github.com/Microsoft/ConversationLearner-Samples)
 - [conversationlearner-sdk](https://github.com/Microsoft/ConversationLearner-SDK)
 - [conversationlearner-models](https://github.com/Microsoft/ConversationLearner-Models)
 - [conversationlearner-ui](https://github.com/Microsoft/ConversationLearner-UI)

@@ -1,34 +1,52 @@
 ---
-title: Az Azure App Service web Apps alkalmazások méretezése Ansible-lel
-description: Megtudhatja, hogyan hozhat létre az Ansible használatával Linux rendszeren webalkalmazást Java 8-cal és Tomcat-tároló futtatókörnyezettel az App Service-ben.
-ms.service: azure
+title: Oktatóanyag – méretezési alkalmazások az Azure App Service az Ansible-lel |} A Microsoft Docs
+description: 'Útmutató: az Azure App Service alkalmazás vertikális felskálázása'
 keywords: az ansible, azure, a devops, a bash, a forgatókönyv, az Azure App Service, webalkalmazás, méretezhető, a Java
+ms.topic: tutorial
+ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.topic: tutorial
-ms.date: 12/08/2018
-ms.openlocfilehash: 2bafb73afa35c7670ac45f7027545277c70075ef
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.date: 04/30/2019
+ms.openlocfilehash: d63708cd87afa426f2712da6d0fcb11c84590798
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57792276"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65230945"
 ---
-# <a name="scale-azure-app-service-web-apps-by-using-ansible"></a>Az Azure App Service web Apps alkalmazások méretezése Ansible-lel
-[Az Azure App Service Web Apps](https://docs.microsoft.com/azure/app-service/overview) (vagy röviden Web Apps) gazdagépek webes alkalmazások, a REST API-k és a mobil háttérrendszer. Kedvenc nyelvén fejleszthet, legyen az&mdash;.NET, .NET Core, Java, Ruby, Node.js, PHP vagy Python.
+# <a name="tutorial-scale-apps-in-azure-app-service-using-ansible"></a>Oktatóanyag: Méretezhető alkalmazások az Azure App Service az Ansible-lel
 
-Az Ansible-lel automatizálhatja az erőforrások üzembe helyezését és konfigurálását a környezetében. Ez a cikk bemutatja, hogyan skálázhatja őket az Azure App Service-ben az Ansible használatával.
+[!INCLUDE [ansible-27-note.md](../../includes/ansible-27-note.md)]
+
+[!INCLUDE [open-source-devops-intro-app-service.md](../../includes/open-source-devops-intro-app-service.md)]
+
+[!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
+
+> [!div class="checklist"]
+>
+> * Egy meglévő App Service-csomagot a tények beolvasása
+> * Az App Service-csomag vertikális s2 három feldolgozók használata
 
 ## <a name="prerequisites"></a>Előfeltételek
-- **Azure-előfizetés** – Ha nem rendelkezik Azure-előfizetéssel, első lépésként hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
-- **Az Azure App Service Web Apps** – Ha még nem rendelkezik egy Azure app service web appsban, [Azure web Apps alkalmazások létrehozása az Ansible használatával](ansible-create-configure-azure-web-apps.md).
 
-## <a name="scale-up-an-app-in-app-service"></a>Az App Service-alkalmazás vertikális felskálázása
-Akkor is vertikális felskálázáshoz módosítsa az alkalmazáshoz tartozó App Service-csomag tarifacsomagját. Ez a szakasz bemutatja egy minta Ansible-forgatókönyvek, amely meghatározza a művelet a következő:
-- Egy meglévő App Service-csomagot a tények beolvasása
-- Az App service-csomag frissítése s2 három feldolgozók használata
+[!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
+[!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
+- **Az Azure App Service-alkalmazás** – Ha nem rendelkezik az Azure App Service-alkalmazások, [konfigurálhat egy alkalmazást az Azure App Service az Ansible-lel](ansible-create-configure-azure-web-apps.md).
+
+## <a name="scale-up-an-app"></a>Alkalmazás vertikális felskálázása
+
+Két munkafolyamatok skálázásához: *vertikális felskálázás* és *horizontális felskálázása*.
+
+**Vertikális felskálázás:** Vertikális felskálázás azt jelenti, hogy további erőforrást szerez. Ilyen erőforrások többek között a CPU, memória, lemezterület, virtuális gépek és egyéb. Alkalmazás vertikális felskálázáshoz módosítsa az alkalmazást, amelyhez tartozik az App Service-csomag tarifacsomagját. 
+**Horizontális felskálázás:** Horizontális felskálázás azt jelenti, hogy az alkalmazást futtató Virtuálisgép-példányok számának növelése. Az App Service-csomag tarifacsomagját, attól függően, horizontálisan akár 20-példányokhoz. [Az automatikus skálázás](/azure/azure-monitor/platform/autoscale-get-started) példányok száma automatikusan alapján előre meghatározott szabályok és az ütemezések segítségével.
+
+A forgatókönyv ebben a szakaszban határozza meg azt a következő műveletet:
+
+* Egy meglévő App Service-csomagot a tények beolvasása
+* Az App service-csomag frissítése s2 három feldolgozók használata
+
+Mentse a következő forgatókönyvet `webapp_scaleup.yml` néven:
 
 ```yml
 - hosts: localhost
@@ -66,26 +84,26 @@ Akkor is vertikális felskálázáshoz módosítsa az alkalmazáshoz tartozó Ap
       var: facts.appserviceplans[0].sku
 ```
 
-Mentse a forgatókönyvet, *webapp_scaleup.yml*.
+A forgatókönyv segítségével futtassa a `ansible-playbook` parancsot:
 
-A forgatókönyv futtatásához használja az **ansible-playbook** parancsot a következőképpen:
 ```bash
 ansible-playbook webapp_scaleup.yml
 ```
 
-A forgatókönyv futtatása után az alábbi példához hasonló kimenetet jeleníti meg, hogy az App service-csomag frissítése sikerült s2 három feldolgozók használata:
-```Output
-PLAY [localhost] **************************************************************
+A forgatókönyv futtatása után a következő eredményeket hasonló kimenet jelenik meg:
 
-TASK [Gathering Facts] ********************************************************
+```Output
+PLAY [localhost] 
+
+TASK [Gathering Facts] 
 ok: [localhost]
 
-TASK [Get facts of existing App service plan] **********************************************************
+TASK [Get facts of existing App service plan] 
  [WARNING]: Azure API profile latest does not define an entry for WebSiteManagementClient
 
 ok: [localhost]
 
-TASK [debug] ******************************************************************
+TASK [debug] 
 ok: [localhost] => {
     "facts.appserviceplans[0].sku": {
         "capacity": 1,
@@ -96,13 +114,13 @@ ok: [localhost] => {
     }
 }
 
-TASK [Scale up the App service plan] *******************************************
+TASK [Scale up the App service plan] 
 changed: [localhost]
 
-TASK [Get facts] ***************************************************************
+TASK [Get facts] 
 ok: [localhost]
 
-TASK [debug] *******************************************************************
+TASK [debug] 
 ok: [localhost] => {
     "facts.appserviceplans[0].sku": {
         "capacity": 3,
@@ -113,10 +131,11 @@ ok: [localhost] => {
     }
 }
 
-PLAY RECAP **********************************************************************
+PLAY RECAP 
 localhost                  : ok=6    changed=1    unreachable=0    failed=0 
 ```
 
 ## <a name="next-steps"></a>További lépések
+
 > [!div class="nextstepaction"] 
-> [Ansible az Azure-on](https://docs.microsoft.com/azure/ansible/)
+> [Ansible az Azure-on](/azure/ansible/)

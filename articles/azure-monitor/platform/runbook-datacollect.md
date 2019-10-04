@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
 ms.openlocfilehash: 67378a5911e5bd83888342aa3773f7f5ed4ccf29
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58102584"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60454104"
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>Adatgyűjtés, a Log Analytics az Azure Automation-runbook
 
@@ -66,7 +66,7 @@ A PowerShell-galériából, ha lehetővé teszi egy gyors lehetőség, amely kö
 | Tulajdonság | Munkaterület-azonosító értéke | Munkaterület kulcs-érték |
 |:--|:--|:--|
 | Name (Név) | WorkspaceId | WorkspaceKey |
-| Typo | String | String |
+| Típus | String | String |
 | Érték | Illessze be a munkaterület Azonosítóját, a Log Analytics-munkaterületre. | Beillesztés jelentkezzen be az elsődleges vagy másodlagos kulcsot a Log Analytics-munkaterület. |
 | Titkosított | Nem | Igen |
 
@@ -182,7 +182,7 @@ Indítson el egy runbookot, amely monitorozási adatokat gyűjt a leggyakoribb m
 | Tulajdonság | Érték |
 |:--|:--|
 | Name (Név) | AutomationJobs-óránként |
-| Kezdés | Válassza ki, amikor legalább 5 percnek korábbi az aktuális idő. |
+| Útmutatók | Válassza ki, amikor legalább 5 percnek korábbi az aktuális idő. |
 | Ismétlődés | Ismétlődő |
 | Ismétlődés minden | 1 óra |
 | Elévülés beállítása | Nem |

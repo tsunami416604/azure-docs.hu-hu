@@ -1,103 +1,104 @@
 ---
-title: App Service linuxon – gyakori kérdések – Azure |} A Microsoft Docs
-description: Az Azure App Service linuxon – gyakori kérdések.
-keywords: az Azure app service, webalkalmazás, – gyakori kérdések, linux, oss, tárolók, többtárolós, multicontainer webalkalmazás
+title: App Service Linuxon – gyakori kérdések – Azure | Microsoft Docs
+description: Azure App Service Linuxon – gyakori kérdések.
+keywords: Azure app Service, webalkalmazás, GYIK, Linux, OSS, Web App for containers, multi-Container, többtárolós
 services: app-service
 documentationCenter: ''
-author: yili
+author: msangapu-msft
 manager: stefsch
 editor: ''
 ms.assetid: ''
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
-ms.author: yili
+ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: e3b6eed6f70eb2803ef4fa4e6b5d32fb0a4d843a
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: fa7b6a02ba287c7f51284a28ce41b2291317f99c
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59525126"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066903"
 ---
-# <a name="azure-app-service-on-linux-faq"></a>Az Azure App Service linuxon – gyakori kérdések
+# <a name="azure-app-service-on-linux-faq"></a>Azure App Service Linuxon – gyakori kérdések
 
-A Linuxon futó App Service kezdve dolgozunk a platform fejlesztései szolgáltatások hozzáadására és a. Ez a cikk ismerteti, hogy ügyfeleink kérésére USA nemrég kérdésekre kaphat választ.
+A Linuxon App Service kiadásával dolgozunk a funkciók hozzáadásán és a platform tökéletesítésén. Ez a cikk válaszokat ad az ügyfeleinknek a közelmúltban feltett kérdésekre.
 
-Ha kérdése van, ez a cikk fűzni.
+Ha kérdése van, véleményezze ezt a cikket.
 
 ## <a name="built-in-images"></a>Beépített rendszerképek
 
-**Szeretnék ágaztatnia a platform által biztosított beépített Docker-tárolót. Hol találhatok ezeket a fájlokat?**
+**Le szeretném Villa a platform által biztosított beépített Docker-tárolókat. Hol találhatom meg ezeket a fájlokat?**
 
-Az összes Docker-fájlok találhat [GitHub](https://github.com/azure-app-service). Az összes Docker-tárolókban található [Docker Hub](https://hub.docker.com/u/appsvc/).
+A githubon található összes Docker- [](https://github.com/azure-app-service)fájl megtalálható. A [Docker hub](https://hub.docker.com/u/appsvc/)összes Docker-tárolója megtalálható.
 
 <a id="#startup-file"></a>
 
-**Mik azok a várt értékek az indítási fájl szakaszt, ha konfigurálható a futtatókörnyezeti verem?**
+**Mi a várt érték az indítási fájl szakaszban a futásidejű verem konfigurálásakor?**
 
-| Verem     | Várt érték                                                                |
-|-----------|-------------------------------------------------------------------------------|
-| Java SE   | Indítsa el a parancsot a `.jar` alkalmazás                                    |
-| Tomcat    | a parancsfájl végrehajtása a konfigurációkat az alkalmazás helyét          |
-| Node.js   | a PM2-konfigurációs fájl vagy a parancsfájl                                |
-| .Net Core | a lefordított DLL-nevet: `dotnet <myapp>.dll`                                 |
-| Ruby      | a Ruby-szkriptet, amelyet szeretne az alkalmazás inicializálása                     |
+| Verem           | Várt érték                                                                         |
+|-----------------|----------------------------------------------------------------------------------------|
+| Java SE         | a JAR-alkalmazás elindítására szolgáló parancs (például `java -jar my-app.jar --server.port=80`) |
+| Tomcat, Wildfly | egy parancsfájl helye a szükséges konfigurációk végrehajtásához (például `/home/site/deployments/tools/startup_script.sh`)          |
+| Node.js         | a PM2 konfigurációs fájl vagy a parancsfájl                                |
+| .Net Core       | a lefordított DLL-név a következőképpen`dotnet <myapp>.dll`                                 |
+| Ruby            | a Ruby-parancsfájl, amelybe az alkalmazást inicializálni szeretné                     |
+
+Ezeket a parancsokat vagy parancsfájlokat a rendszer a beépített Docker-tároló elindítása után hajtja végre, de az alkalmazás kódjának elindítása előtt.
 
 ## <a name="management"></a>Kezelés
 
-**Mi történik, az Azure Portalon az újraindítás gomb megnyomásakor?**
+**Mi történik, ha lenyomom az újraindítás gombot a Azure Portal?**
 
-Ez a művelet nem ugyanaz, mint a Docker újraindítás.
+Ez a művelet megegyezik a Docker újraindításával.
 
-**Secure Shell (SSH) használatával kapcsolódhat az alkalmazást tároló virtuális gép (VM)?**
+**Használhatom a Secure Shell (SSH) szolgáltatást az App Container virtuális géphez (VM) való kapcsolódáshoz?**
 
-Igen, akkor ehhez a forrás control management (SCM) webhelyen keresztül.
+Igen, ezt megteheti a verziókövetés-kezelő (SCM) webhelyen.
 
 > [!NOTE]
-> Az alkalmazástárolóhoz közvetlenül a helyi fejlesztési számítógépről is csatlakozhat SSH, SFTP vagy Visual Studio Code segítségével (Node.js-alkalmazások élő hibakereséséhez). További információkért tekintse meg a [Linuxon futó App Service-ben elérhető távoli hibakereséssel és SSH-val](https://aka.ms/linux-debug) kapcsolatos cikket.
+> Az alkalmazástárolóhoz közvetlenül a helyi fejlesztési számítógépről is csatlakozhat SSH, SFTP vagy Visual Studio Code segítségével (Node.js-alkalmazások élő hibakereséséhez). További információkért tekintse meg a [Linuxon futó App Service-ben elérhető távoli hibakereséssel és SSH-val](https://azure.github.io/AppService/2018/05/07/New-SSH-Experience-and-Remote-Debugging-for-Linux-Web-Apps.html) kapcsolatos cikket.
 >
 
-**Hogyan hozható létre egy SDK-t vagy az Azure Resource Manager-sablon egy Linux App Service-csomag?**
+**Hogyan hozhatok létre Linux App Service csomagot SDK-n vagy egy Azure Resource Manager sablonon keresztül?**
 
-Állítsa be a **fenntartott** mezőjét, az app service- *igaz*.
+Az App Service **fenntartott** mezőjét állítsa *igaz*értékre.
 
 ## <a name="continuous-integration-and-deployment"></a>Folyamatos integráció és üzembe helyezés
 
-**Webalkalmazás továbbra is használ egy régi Docker-tároló rendszerképét, miután frissítése már megtörtént a rendszerképet a Docker hubon. Támogatják a folyamatos integráció és egyéni tárolók üzembe helyezését?**
+**A webalkalmazásom továbbra is egy régi Docker-tároló rendszerképet használ, miután Frissítettem a rendszerképet a Docker hub-on. Támogatja az egyéni tárolók folyamatos integrációját és üzembe helyezését?**
 
-Igen, állítsa be a folyamatos integráció/üzembe helyezés az Azure Container Registry vagy a DockerHub, a következő [folyamatos üzembe helyezés a Web App for Containers](./app-service-linux-ci-cd.md). Privát beállításjegyzék a tároló frissítéséhez majd a a webalkalmazás elindítása és leállítása. Vagy módosíthatja, vagy adjon hozzá egy helyőrző alkalmazást beállítást a tároló frissítésének kényszerítése.
+Igen, a Azure Container Registry-vagy DockerHub folyamatos integrációjának és üzembe helyezésének beállításához [Web App for containers használatával folytatott folyamatos telepítést](./app-service-linux-ci-cd.md)követve. Privát kibocsátásiegység-forgalmi jegyzékek esetén a tárolót a webalkalmazás leállításával, majd indításával frissítheti. Vagy megváltoztathatja vagy hozzáadhat egy dummy-alkalmazás beállítást a tároló frissítésének kényszerítéséhez.
 
-**Átmeneti környezetek támogatására?**
+**Támogatja az átmeneti környezeteket?**
 
 Igen.
 
-**Használható *WebDeploy/MSDeploy* webalkalmazás üzembe helyezéséhez?**
+**A webalkalmazások üzembe helyezéséhez használhatom a web *Deploy/MSDeploy* szolgáltatást?**
 
-Igen, szükség nevű beállítása alkalmazás `WEBSITE_WEBDEPLOY_USE_SCM` való *hamis*.
+Igen, meg kell adnia egy *false (hamis*) `WEBSITE_WEBDEPLOY_USE_SCM` nevű alkalmazás-beállítást.
 
-**Az alkalmazásom Git üzemelő példánnyal sikertelen, ha a Linuxos web app használatával. Hogyan lehet a probléma megkerüléséhez?**
+**Az alkalmazás git-telepítése meghiúsul a Linux-webalkalmazások használatakor. Hogyan lehet megkerülni a problémát?**
 
-Ha a Linux-webalkalmazás Git-telepítés nem sikerül, válassza ki az alkalmazáskód üzembe helyezéséhez az alábbi lehetőségek közül:
+Ha a git-telepítés nem sikerül a linuxos webalkalmazáshoz, az alkalmazás kódjának üzembe helyezéséhez válasszon az alábbi lehetőségek közül:
 
-- A folyamatos Készregyártás (előzetes verzió) szolgáltatással: Az alkalmazás forráskódjának tárolhatja az Azure DevOps Git-adattár vagy az Azure folyamatos készregyártással GitHub-adattárat. További információkért lásd: [a folyamatos teljesítés konfigurálása Linux-webalkalmazás](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/).
+- A folyamatos teljesítés (előzetes verzió) szolgáltatás használata: Az alkalmazás forráskódját egy Azure DevOps git-tárházban vagy GitHub-adattárban tárolhatja az Azure folyamatos teljesítésének használatához. További információ: a [folyamatos teljesítés konfigurálása a Linux](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/)-webalkalmazásokhoz.
 
-- Használja a [ZIP API üzembe helyezése](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file): Ez az API használatára [SSH-t a webalkalmazás](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-ssh-support) , és keresse meg a mappát, ahol szeretné telepíteni a kódot. Futtassa a következő kódot:
+- A [zip üzembe helyezési API](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file)használata: Ha ezt az API-t szeretné használni, [SSH-t](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-ssh-support) a webalkalmazásba, és lépjen abba a mappába, ahová a kódot telepíteni szeretné. Futtassa a következő kódot:
 
    ```bash
    curl -X POST -u <user> --data-binary @<zipfile> https://{your-sitename}.scm.azurewebsites.net/api/zipdeploy
    ```
 
-   Ha hibaüzenetet kap, amely a `curl` parancs nem található, ellenőrizze, hogy a curl használatával telepítse `apt-get install curl` ahhoz, hogy futtatni az előző `curl` parancsot.
+   Ha hibaüzenet jelenik meg, hogy a `curl` parancs nem található, győződjön meg róla, hogy az előző `curl` parancs `apt-get install curl` futtatása előtt telepíti a curlot.
 
 ## <a name="language-support"></a>Nyelvi támogatás
 
-**Szeretném használni a Node.js alkalmazás, minden olyan speciális beállításokat vagy konfigurációk websockets beállítani?**
+**Webes szoftvercsatornát szeretnék használni a saját Node. js-alkalmazásban, a beállított speciális beállításokban vagy konfigurációkon?**
 
-Igen, tiltsa le `perMessageDeflate` a kiszolgálóoldali Node.js-kódban. Például a Socket.IO kódtár használja, ha használja a következő kódot:
+Igen, tiltsa `perMessageDeflate` le a kiszolgálóoldali Node. js-kódot. Ha például a socket.io-t használja, használja a következő kódot:
 
 ```nodejs
 const io = require('socket.io')(server,{
@@ -105,102 +106,99 @@ const io = require('socket.io')(server,{
 });
 ```
 
-**Támogatja a .NET Core-alkalmazások nem fordított?**
+**Támogatja a lefordított .NET Core-alkalmazásokat?**
 
 Igen.
 
-**Támogatják a Composer függőségi vezető PHP-alkalmazások?**
+**Támogatja a zeneszerzőt a PHP-alkalmazások függőség-kezelője számára?**
 
-Igen, a Git telepítése során a Kudu kell észleli, hogy telepít egy PHP-alkalmazás (köszönhetően a composer.lock-fájljának jelenlétét,), és a Kudu majd aktivál egy zeneszerző telepítése.
+Igen, a git üzembe helyezése során a kudu meg kell állapítania, hogy egy PHP-alkalmazást helyez üzembe (a zeneszerző. Lock fájl jelenlétének köszönhetően), és a kudu elindítja a zeneszerző telepítését.
 
 ## <a name="custom-containers"></a>Egyéni tárolók
 
-**Saját egyéni tároló használok. A platform csatlakoztatni az SMB-megosztáson szeretném a `/home/` könyvtár.**
+**Saját egyéni tárolót használok. Szeretném, hogy a platform csatlakoztatjon egy SMB- `/home/` megosztást a címtárhoz.**
 
-Azt is teheti meg, hogy a `WEBSITES_ENABLE_APP_SERVICE_STORAGE` Alkalmazásbeállítás *igaz*. Ne feledje, hogy ennek hatására tároló újraindul, ha a platform tárolási végighalad a változást.
+Ha `WEBSITES_ENABLE_APP_SERVICE_STORAGE` a beállítás nincs **megadva** , vagy *igaz*értékre van `/home/` állítva, a **rendszer megosztja** a könyvtárat a méretezési példányok között, és a megírt fájlok az újraindítások között megmaradnak. Ha explicit módon `WEBSITES_ENABLE_APP_SERVICE_STORAGE` beállítja a *Hamis értéket* , a rendszer letiltja a csatlakoztatást.
 
->[!NOTE]
->Ha a `WEBSITES_ENABLE_APP_SERVICE_STORAGE` beállítás nincs megadva, vagy állítsa *hamis*, a `/home/` könyvtár nem megoszthatók méretezési példány, és ott írt fájlok nem maradnak meg újraindítások között.
+**Az egyéni tároló hosszú időt vesz igénybe, és a platform újraindítja a tárolót, mielőtt befejezi a kezdést.**
 
-**Saját egyéni tároló indítása hosszú időt vesz igénybe, és a platform újraindítja a tárolót, mielőtt végzett indul el.**
+Beállíthatja azt az időtartamot, ameddig a platform várakozik, mielőtt újraindítja a tárolót. Ehhez állítsa a kívánt értékre `WEBSITES_CONTAINER_START_TIME_LIMIT` az alkalmazás beállítását. Az alapértelmezett érték 230 másodperc, a maximális érték pedig 1800 másodperc.
 
-A platform vár, a tároló újraindítása előtti idő konfigurálhatja. Ehhez állítsa a `WEBSITES_CONTAINER_START_TIME_LIMIT` Alkalmazásbeállítás a kívánt értéket. Az alapértelmezett érték 230 másodperc, a maximális érték pedig 1800 másodperc.
+**Mi a saját beállításjegyzék-kiszolgáló URL-címének formátuma?**
 
-**Mi az a privát tárolójegyzék URL formátuma?**
+Adja meg a beállításjegyzék teljes URL- `http://` címét `https://`, beleértve a vagy a-t.
 
-Adja meg a teljes beállításjegyzék URL-CÍMÉT, beleértve a `http://` vagy `https://`.
+**Mi a rendszerkép nevének formátuma a privát beállításjegyzékben?**
 
-**Mi az a privát beállításjegyzék-beállítás a rendszerkép nevének formátuma?**
+Adja hozzá a teljes rendszerkép nevét, beleértve a privát beállításjegyzék URL-címét (például myacr.azurecr.io/dotnet:latest). Egyéni portot használó képnevek [nem vihetők be a portálon keresztül](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650). A beállításhoz `docker-custom-image-name`használja a [ `az` parancssori eszközt](https://docs.microsoft.com/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set).
 
-Adja hozzá a teljes rendszerképnevet, beleértve a privát tárolójegyzék URL-CÍMÉT (például myacr.azurecr.io/dotnet:latest). Egy egyéni portot használó képnév [nem lehet megadni a portálon keresztül](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650). Beállítása `docker-custom-image-name`, használja a [ `az` parancssori eszköz](https://docs.microsoft.com/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set).
+**Ki lehet-e tenni egynél több portot az egyéni tároló rendszerképén?**
 
-**Tehetők több port is közzé a saját egyéni tároló rendszerképét?**
+Nem támogatunk egynél több portot.
 
-A Microsoft jelenleg nem támogatja egynél több-es port.
+**Használhatom a saját tárhelyet?**
 
-**Hozzáadhatom a saját storage?**
+Igen, [a saját tárterülete](https://docs.microsoft.com/azure/app-service/containers/how-to-serve-content-from-azure-storage) előzetes verzióban érhető el.
 
-Igen, [saját tároló használata](https://docs.microsoft.com/azure/app-service/containers/how-to-serve-content-from-azure-storage) előzetes verzióban érhető el.
+**Miért nem tudok böngészni az egyéni tároló fájlrendszerén, vagy hogyan futnak a folyamatok az SCM-helyről?**
 
-**Miért nem tud tallózni a saját egyéni tároló file system vagy a futó az SCM helyet a folyamatok?**
+Az SCM-hely külön tárolóban fut. Nem lehet megtekinteni az alkalmazás-tároló fájlrendszerét vagy futó folyamatait.
 
-Az SCM helyet fut egy külön tárolót. Az alkalmazás tároló fájlt system vagy a futó folyamatok nem tudja ellenőrizni.
+**Az egyéni tároló a 80-es porttól eltérő portot figyel. Hogyan állíthatom be, hogy az alkalmazásom a kérelmeket a portra irányítsa?**
 
-**Saját egyéni tároló a 80-as porttól eltérő portokat figyeli. Hogyan konfigurálhatok erre a portra irányíthatja a kérelmeket az alkalmazásom?**
+Automatikus portok észlelése. Megadhat egy *WEBSITES_PORT* nevű alkalmazást is, és megadja a várt portszám értékét. Korábban a platform a *port* alkalmazás beállításait használta. Azt tervezzük, hogy az Alkalmazásbeállítások elavultak legyenek, és kizárólag az *WEBSITES_PORT* -t használják.
 
-Port automatikus észlelési van. Azt is megadhatja az alkalmazás nevű beállítása *WEBSITES_PORT* és adjon neki a várt portszám értékét. Korábban, a használt platform a *PORT* alkalmazásbeállítást. Ennek az alkalmazásbeállításnak kivezetjük, és használjon tervezzük *WEBSITES_PORT* kizárólag.
+**Be kell-e hajtani a HTTPS-t az egyéni tárolóban?**
 
-**Kell megvalósítani a HTTPS saját egyéni tárolóban?**
+Nem, a platform kezeli a HTTPS-megszakítást a megosztott előtér-végpontokon.
 
-Nem, a platform kezeli a megosztott előtérrendszerek HTTPS-lezárást.
+## <a name="multi-container-with-docker-compose"></a>Több tároló a Docker-összeállítással
 
-## <a name="multi-container-with-docker-compose-and-kubernetes"></a>Többtárolós docker Compose és a Kubernetes
+**Hogyan konfigurálja a Azure Container Registry (ACR) szolgáltatást több tárolóval való használatra?**
 
-**Hogyan konfigurálhatom az Azure Container Registry (ACR) többtárolós használata?**
+Ahhoz, hogy az ACR-t több tárolóval is használhassa, az **összes tároló lemezképét** ugyanarra az ACR-beállításjegyzék-kiszolgálóra kell üzemeltetni. Ha ugyanezen a beállításjegyzék-kiszolgálón vannak, létre kell hoznia az alkalmazás beállításait, majd frissítenie kell a Docker-összeállítás konfigurációs fájlját, hogy tartalmazza az ACR-rendszerkép nevét.
 
-Többtárolós, az ACR használatához **összes tárolórendszerkép** kell-e üzemeltetni az ACR beállításjegyzék ugyanarra a kiszolgálóra. Ha ugyanarra a beállításjegyzék-kiszolgálóra, szüksége lesz a Alkalmazásbeállítások létrehozása, és frissítse a Docker Compose- vagy Kubernetes konfigurációs fájl ACR rendszerkép neve is.
-
-Hozza létre az alkalmazás következő beállításait:
+Hozza létre az alábbi Alkalmazásbeállítások:
 
 - DOCKER_REGISTRY_SERVER_USERNAME
-- DOCKER_REGISTRY_SERVER_URL (teljes URL-CÍMÉT, például: `https://<server-name>.azurecr.io`)
-- DOCKER_REGISTRY_SERVER_PASSWORD (rendszergazdai hozzáférés engedélyezése az ACR-beállítások)
+- DOCKER_REGISTRY_SERVER_URL (teljes URL-cím, `https://<server-name>.azurecr.io`pl.:)
+- DOCKER_REGISTRY_SERVER_PASSWORD (rendszergazdai hozzáférés engedélyezése az ACR-beállításokban)
 
-A konfigurációs fájlban hivatkozzon az ACR-lemezképet az alábbi példához hasonlóan:
+A konfigurációs fájlon belül az alábbi példához hasonló módon hivatkozhat az ACR-képre:
 
 ```yaml
 image: <server-name>.azurecr.io/<image-name>:<tag>
 ```
 
-**Hogyan tudom, hogy milyen elérhető az internetről?**
+**Hogyan tudni, hogy melyik tároló az Internet elérhető?**
 
-- Csak egy tároló lehet nyissa meg a hozzáféréshez
-- Csak a 80-as és 8080-as portot az elérhető-e (elérhetővé tett port)
+- Csak egy tároló lehet nyitva a hozzáféréshez
+- Csak a 80-es és a 8080-es port érhető el (elérhető portok)
 
-Az alábbiakban a szabályokat, mely tároló érhető el – sorrendjében sorrend meghatározására:
+Az alábbi szabályok határozzák meg, hogy melyik tároló legyen elérhető – elsőbbségi sorrendben:
 
-- Nastavení aplikace `WEBSITES_WEB_CONTAINER_NAME` a tároló nevének beállítása
-- Az első tároló a 80-as és 8080-as port definiálása
-- Ha a fentiek egyike sem teljesül, az első tároló, a fájlban lesz elérhető (elérhető)
+- Az Alkalmazásbeállítás `WEBSITES_WEB_CONTAINER_NAME` beállítása a tároló nevére
+- Az első tároló, amely a 80-as vagy 8080-as portot határozza meg
+- Ha a fentiek egyike sem igaz, a fájlban megadott első tároló elérhető lesz (láthatóvá válik)
 
 ## <a name="pricing-and-sla"></a>Díjszabás és SLA
 
-**Mi az a díjszabás, most, hogy a szolgáltatás általánosan elérhető?**
+**Mi a díjszabás, most, hogy a szolgáltatás általánosan elérhető?**
 
-A számlázás a normál Azure App Service díjszabását, amely az alkalmazás fut órák száma.
+Az alkalmazás által futtatott órák számának normál Azure App Service díjszabását kell fizetnie.
 
 ## <a name="other-questions"></a>Egyéb kérdések
 
-**Mik azok a beállítások alkalmazásnevek támogatott karakterek?**
+**Mik a támogatott karakterek az Alkalmazásbeállítások neveiben?**
 
-Csak betűket (A – Z, a – z), számokat (0 – 9), és az aláhúzás karakterrel (_) használható alkalmazások beállításait.
+Az Alkalmazásbeállítások csak betűk (A-Z, a-z), számok (0-9) és aláhúzás karakter (_) használatával használhatók.
 
-**Hol juthatok új funkciókat?**
+**Hol igényelhetek új szolgáltatásokat?**
 
-Is beküldi egy ötletét, a [Web Apps-visszajelzési fórumon](https://aka.ms/webapps-uservoice). Adja hozzá az ötlet címe "[Linux]".
+Ötleteit a [Web Apps visszajelzési fórumában](https://aka.ms/webapps-uservoice)küldheti el. Adja hozzá a "[Linux]" címet az ötlete címéhez.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Mi az Linuxon futó Azure App Service?](app-service-linux-intro.md)
+- [Mi a Linux Azure App Service?](app-service-linux-intro.md)
 - [Átmeneti környezetek beállítása az Azure App Service-ben](../../app-service/deploy-staging-slots.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
-- [Folyamatos üzembe helyezés a Web App for containers szolgáltatásban](./app-service-linux-ci-cd.md)
+- [Folyamatos üzembe helyezés a Web App for Containers](./app-service-linux-ci-cd.md)

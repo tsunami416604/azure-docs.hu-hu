@@ -1,0 +1,97 @@
+### YamlMime:Landing
+title: Az Azure Blockchain Service dokumentációja
+summary: Megtudhatja, hogyan hozhat létre blokkláncalkalmazásokat. Oktatóanyagok, API-referenciák és egyéb dokumentáció, amelyekből megtudhatja, hogyan használhatja az Azure Blockchain Service-t blokkláncalkalmazások létrehozására, fejlesztésére és felügyeletére az Azure-ban.
+metadata:
+  title: Az Azure Blockchain Service dokumentációja – oktatóanyagok, API-referencia
+  description: Megtudhatja, hogyan hozhat létre blokkláncalkalmazásokat. Oktatóanyagok, API-referenciák és egyéb dokumentáció, amelyekből megtudhatja, hogyan használhatja az Azure Blockchain Service-t blokkláncalkalmazások létrehozására, fejlesztésére és felügyeletére az Azure-ban.
+  services: azure-blockchain
+  ms.service: azure-blockchain
+  ms.topic: landing-page
+  author: PatAltimore
+  ms.author: patricka
+  ms.date: 09/18/2019
+  ms.openlocfilehash: f0abf5d3c81f7bd81c4fef6a15f34f753c1e1a24
+  ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 10/02/2019
+  ms.locfileid: "71718549"
+landingContent:
+- title: Tudnivalók az Azure Blockchain Service-ről
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az Azure Blockchain Service?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Privát konzorciumi blokklánchálózatok
+      url: consortium.md
+    - text: Adathozzáférés és -biztonság
+      url: data-security.md
+    - text: Fejlesztési eszközök
+      url: develop.md
+- title: Bevezetés
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Blokklánctag létrehozása – portál
+      url: create-member.md
+    - text: Blokklánctag létrehozása – parancssori felület
+      url: create-member-cli.md
+  - linkListType: quickstart
+    links:
+    - text: Csatlakozás konzorciumhálózathoz a Visual Studio Code használatával
+      url: connect-vscode.md
+    - text: A MetaMask használata a kapcsolódáshoz és a Remix használata egy intelligens szerződés üzembe helyezéséhez
+      url: connect-metamask.md
+    - text: A Geth használata egy tranzakciós csomóponthoz való kapcsolódáshoz
+      url: connect-geth.md
+    - text: A Truffle használata egy tranzakciós csomóponthoz való kapcsolódáshoz
+      url: connect-truffle.md
+  - linkListType: tutorial
+    links:
+    - text: Intelligens szerződések létrehozása, fordítása és üzembe helyezése a Visual Studio Code használatával
+      url: send-transaction.md
+  - linkListType: video
+    links:
+    - text: Hálózat üzembe helyezése és konfigurálása
+      url: https://channel9.msdn.com/Shows/Blocktalk/Getting-started-with-Azure-Blockchain-Service-Part-I-Deploy-and-configure-your-network
+    - text: Intelligens szerződések írása és tesztelése a VS Code használatával
+      url: https://channel9.msdn.com/Shows/Blocktalk/Getting-started-with-Azure-Blockchain-Service-Part-II-Write-and-test-smart-contracts-with-VS-Code
+    - text: Adatok küldése a főkönyvbe
+      url: https://channel9.msdn.com/Shows/Blocktalk/Getting-started-with-Azure-Blockchain-Service-Part-III-Send-data-to-the-ledger
+    - text: Események és főkönyvi adatok közzététele
+      url: https://channel9.msdn.com/Shows/Blocktalk/Getting-started-with-Azure-Blockchain-Service-Part-IV-Publish-events-and-ledger-data
+- title: Integrálás
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Blokklánc integrálása az Azure Logic Apps használatával
+      url: ethereum-logic-app.md
+  - linkListType: video
+    links:
+    - text: Az Ethereum Blockchain-összekötő használata az Azure Logic Appsszel
+      url: https://channel9.msdn.com/Shows/Blocktalk/Logic-Apps-Connector-to-Ethereum-Blockchain-Networks?term=logic%20apps%20blockchain&lang-en=true
+    - text: Gyakori forgatókönyvek – A blokkláncok összekötése az Azure Logic Apps használatával
+      url: https://channel9.msdn.com/Shows/Blocktalk/Doing-more-with-Logic-Apps?term=logic%20apps%20blockchain&lang-en=true
+    - text: Webszolgáltatások létrehozása intelligens szerződésekből
+      url: https://channel9.msdn.com/Shows/Blocktalk/Generating-Web-Services-from-Smart-Contracts-Based-on-Logic-Apps-Flows-and-Azure-Functions?term=logic%20apps%20blockchain&lang-en=true
+    - text: Az intelligens szerződések eseményinek közzététele az Azure Event Gridbe vagy az Azure Service Busba
+      url: https://channel9.msdn.com/Shows/Blocktalk/Generate-Logic-Apps-and-Flows-to-Publish-Smart-Contract-Events-to-Event-Grid-and-Service-Bus?term=logic%20apps%20blockchain&lang-en=true
+- title: Kezelés
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Blokklánctagok felügyelete – parancssori felület
+      url: manage-cli.md
+    - text: Konzorciumtagok felügyelete – PowerShell
+      url: manage-consortium-powershell.md
+    - text: Tranzakciós csomópontok konfigurálása
+      url: configure-transaction-nodes.md
+    - text: Active Directory-hozzáférés konfigurálása
+      url: configure-aad.md
+  - linkListType: reference
+    links:
+    - text: REST API
+      url: https://docs.microsoft.com/rest/api/blockchain

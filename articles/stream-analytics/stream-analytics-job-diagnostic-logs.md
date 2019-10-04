@@ -7,18 +7,19 @@ ms.author: jeanb
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/19/2019
-ms.custom: seodec18
-ms.openlocfilehash: cc62a6b9f03bdd6dc8671a6cf96113a2234fc092
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.date: 06/21/2019
+ms.openlocfilehash: 68c40cf893bf150756f0a03056473e82cff5754f
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57247154"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620963"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-diagnostics-logs"></a>Az Azure Stream Analytics hibáinak elhárítása a diagnosztikai naplók használatával
 
-Néha előfordul Azure Stream Analytics-feladat váratlanul feldolgozása leáll. Fontos, hogy ilyen esetekben hibaelhárítást tudjon végezni. A hibákat váratlan lekérdezési eredmény, az eszközök kapcsolata vagy váratlan szolgáltatásleállás okozhatja. A diagnosztikai naplók a Stream Analytics segítségével, azonosíthatja az okot, problémák, amikor fordulhat elő, és a helyreállítási idő csökkentése.
+Néha előfordul Azure Stream Analytics-feladat váratlanul feldolgozása leáll. Fontos tudni az ilyen esemény hibaelhárítása. A hibákat váratlan lekérdezési eredmény, az eszközök kapcsolata vagy váratlan szolgáltatásleállás okozhatja. A diagnosztikai naplók a Stream Analytics segítségével, azonosíthatja az okot, problémák, amikor fordulhat elő, és a helyreállítási idő csökkentése.
+
+Erősen ajánlott az összes éles feladat diagnosztikai naplók engedélyezése.
 
 ## <a name="log-types"></a>Napló típusa
 
@@ -47,7 +48,7 @@ Alapértelmezés szerint a tevékenységnaplókat, és a Stream Analytics-felada
 
    ![Stream Analytics tevékenység log művelet összegzése](./media/stream-analytics-job-diagnostic-logs/operation-summary.png)
 
-4. Görgessen le a **tulajdonságok** a JSON-t, amely részletesen ismerteti a sikertelen műveletet okozó hibáról, szakaszában. Ebben a példában a hiba a kötött szélességi értékeknek from out of futásidejű hiba okozta.
+4. Görgessen le a **tulajdonságok** a JSON-t, amely részletesen ismerteti a sikertelen műveletet okozó hibáról, szakaszában. Ebben a példában a hiba a kötött szélességi értékeknek from out of futásidejű hiba okozta. Eltérés van az adatok egy Stream Analytics-feladat által feldolgozott adatok hibát okoz. Megismerkedhet a különböző [bemeneti és kimeneti adatok hibákat, és miért bekövetkezésük](https://docs.microsoft.com/azure/stream-analytics/data-errors).
 
    ![JSON-hiba részletei](./media/stream-analytics-job-diagnostic-logs/error-details.png)
 
@@ -63,7 +64,7 @@ Erősen ajánlott bekapcsolni a diagnosztikai naplókat, és elküldi azokat az 
 
     ![Panel Navigálás a diagnosztikai naplók](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs-monitoring.png)  
 
-2.  Hozzon létre egy **neve** a **diagnosztikai beállítások** melletti jelölőnégyzetet, és **Küldés a Log Analyticsnek**. Ezután adjon hozzá egy meglévő, vagy hozzon létre egy új **Log analytics-munkaterület**. Jelölje be a **végrehajtási** és **szerzői műveletek** alatt **LOG**, és **AllMetrics** alatt **METRIKA** . Kattintson a **Save** (Mentés) gombra.
+2.  Hozzon létre egy **neve** a **diagnosztikai beállítások** melletti jelölőnégyzetet, és **Küldés a Log Analyticsnek**. Ezután adjon hozzá egy meglévő, vagy hozzon létre egy új **Log analytics-munkaterület**. Jelölje be a **végrehajtási** és **szerzői műveletek** alatt **LOG**, és **AllMetrics** alatt **METRIKA** . Kattintson a **Save** (Mentés) gombra. Javasoljuk, hogy használja a Log Analytics-munkaterület ugyanabban a régióban az Azure a Stream Analytics-feladatot, további költségek elkerülése érdekében.
 
     ![Diagnosztikai naplók beállításai](./media/stream-analytics-job-diagnostic-logs/diagnostic-settings.png)
 
@@ -83,7 +84,7 @@ Erősen ajánlott bekapcsolni a diagnosztikai naplókat, és elküldi azokat az 
 
 ## <a name="diagnostics-log-categories"></a>Diagnosztikai naplója kategóriák
 
-Jelenleg a Microsoft két kategóriába diagnosztikai naplók rögzítése:
+Az Azure Stream Analytics rögzíti a diagnosztikai naplók két kategóriája:
 
 * **Szerzői**: A szerzői műveletek, például a hozzáadások és törlések bemeneteit és kimeneteit, hozzáadását és a lekérdezés frissítése és indítása vagy a feladat leállítása feladat létrehozásakor feladat kapcsolódó naplózási eseményeket rögzíti.
 
@@ -110,11 +111,11 @@ properties | Napló bejegyzés-specifikus részletei, szerializált JSON-karakte
 
 ### <a name="execution-log-properties-schema"></a>Végrehajtási napló tulajdonságok séma
 
-Feladatvégrehajtási naplók rendelkezik, amely a Stream Analytics-feladat végrehajtása során történt eseményekkel kapcsolatos információkat. A séma tulajdonságainak az esemény típusát függően változik. Jelenleg a következő típusú feladatvégrehajtási naplók van:
+Feladatvégrehajtási naplók rendelkezik, amely a Stream Analytics-feladat végrehajtása során történt eseményekkel kapcsolatos információkat. A séma tulajdonságok-e az esemény a adathiba vagy egy általános esemény függően változik.
 
 ### <a name="data-errors"></a>Adathibák
 
-Ez a kategória-naplók van bármilyen hiba, amely, amíg a feladat adatainak feldolgozása folyamatban van. Ezek a naplók általában read, adatok szerializálási, során jönnek létre, és írási műveleteket. Ezek a naplók nem tartalmazzák a csatlakozási hibák. Kapcsolódási hibák általános események kell kezelni.
+Ez a kategória-naplók van bármilyen hiba, amely, amíg a feladat adatainak feldolgozása folyamatban van. Ezek a naplók általában read, adatok szerializálási, során jönnek létre, és írási műveleteket. Ezek a naplók nem tartalmazzák a csatlakozási hibák. Kapcsolódási hibák általános események kell kezelni. További különböző különböző okainak [bemeneti és kimeneti adathibák](https://docs.microsoft.com/azure/stream-analytics/data-errors).
 
 Name (Név) | Leírás
 ------- | -------
@@ -124,10 +125,14 @@ Típus | Hiba típusa. Ha például **DataConversionError**, **CsvParserError**,
 Adatok | Pontosan keresse meg a hiba okának hasznos adatokat tartalmaz. Alá csonkolása méretétől függően.
 
 Attól függően, a **operationName** érték adathibák sémája a következő:
-* **Események szerializálni**. Szerializálható események történnek események az olvasási műveletek során. Ezek fordulhat elő, amikor a bemeneti adatok nem felelnek meg a lekérdezés sémája az alábbi okok valamelyike:
-    * *Adattípus-eltérés (Németország) esemény során szerializálni*: A mező a hibát okozó azonosítja.
-    * *Nem olvasható egy esemény, érvénytelen szerializálási*: Tartalmazza a bemeneti adatokat a hely, ahol a hiba történt. Blob bemeneti eltolás és a egy minta az adatok a blob nevét tartalmazza.
-* **Események küldése**. Írási műveletek során bekövetkező események küldése A streamelési eseményt a hibát okozó azonosítsa azokat.
+
+* **Események szerializálni** esemény olvasási műveletek során. Ezek fordulhat elő, amikor a bemeneti adatok nem felelnek meg a lekérdezés sémája az alábbi okok valamelyike:
+
+   * *Adattípus-eltérés (Németország) esemény során szerializálni*: A mező a hibát okozó azonosítja.
+
+   * *Nem olvasható egy esemény, érvénytelen szerializálási*: Tartalmazza a bemeneti adatokat a hely, ahol a hiba történt. Blob bemeneti eltolás és a egy minta az adatok a blob nevét tartalmazza.
+
+* **Események küldése** írási műveletek során. A streamelési eseményt a hibát okozó azonosítsa azokat.
 
 ### <a name="generic-events"></a>Általános események
 
@@ -136,7 +141,7 @@ Attól függően, a **operationName** érték adathibák sémája a következő:
 Name (Név) | Leírás
 -------- | --------
 Hiba | (nem kötelező) Hiba adatok. Általában Ha ez a kivétel adatai érhető el.
-Üzenet| A fenti üzenet jelenik meg.
+Message| A fenti üzenet jelenik meg.
 Típus | Üzenet típusa. Hibák kategorizálása belső leképezések. Ha például **JobValidationError** vagy **BlobOutputAdapterInitializationFailure**.
 Korrelációs azonosító | [GUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) , amely egyedileg azonosítja a feladat végrehajtása. Az összes végrehajtás naplóbejegyzések kezdve a feladat elindul mindaddig, amíg a feladat leáll rendelkezik azonos **korrelációs azonosító** értéket.
 
@@ -145,5 +150,5 @@ Korrelációs azonosító | [GUID](https://en.wikipedia.org/wiki/Universally_uni
 * [Stream Analytics bemutatása](stream-analytics-introduction.md)
 * [Stream Analytics használatának első lépései](stream-analytics-real-time-fraud-detection.md)
 * [Stream Analytics-feladatok méretezése](stream-analytics-scale-jobs.md)
-* [Stream Analytics lekérdezési nyelv leírása](https://msdn.microsoft.com/library/azure/dn834998.aspx)
-* [Stream Analytics felügyeleti REST API-referencia](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Stream Analytics lekérdezési nyelv leírása](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
+* [Stream Analytics adathibák](https://docs.microsoft.com/azure/stream-analytics/data-errors)

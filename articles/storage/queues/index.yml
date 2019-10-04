@@ -1,0 +1,61 @@
+### YamlMime:Landing
+title: Azure Queue Storage-dokumentáció
+summary: Az Azure Queue Storage szolgáltatás nagy számú üzenet tárolására szolgál. Az üzenetek a világon bárhonnan elérhetők HTTP- vagy HTTPS-kapcsolaton keresztül.
+metadata:
+  title: Azure Queue Storage-dokumentáció
+  description: Az Azure Queue Storage szolgáltatás nagy számú üzenet tárolására szolgál. Az üzenetek a világon bárhonnan elérhetők HTTP- vagy HTTPS-kapcsolaton keresztül.
+  services: storage
+  ms.service: storage
+  ms.subservice: queues
+  ms.topic: landing-page
+  ms.collection: collection
+  author: mhopkins-msft
+  ms.author: mhopkins
+  ms.date: 08/27/2019
+  ms.openlocfilehash: 4dcf6ae4e9a5a65e060b647f02761b2c46238d13
+  ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 09/04/2019
+  ms.locfileid: "70277918"
+landingContent:
+- title: Az Azure-üzenetsorok ismertetése
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mik az Azure-üzenetsorok?
+      url: storage-queues-introduction.md
+- title: Bevezetés
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Üzenetsor létrehozása és üzenet hozzáadása az Azure Portal használatával
+      url: storage-quickstart-queues-portal.md
+    - text: Üzenetsor létrehozása .NET használatával az Azure Storage-ban
+      url: storage-quickstart-queues-dotnet.md
+- title: Fejlesztés üzenetsorok használatával
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Az Azure Queue Storage használatának első lépései a .NET-keretrendszerrel
+      url: storage-dotnet-how-to-use-queues.md
+    - text: How to use Queue Storage from Java (A Queue Storage használata Javával)
+      url: storage-java-how-to-use-queue-storage.md
+    - text: How to use Queue storage from Node.js (A Queue Storage használata Node.js-sel)
+      url: storage-nodejs-how-to-use-queues.md
+    - text: A Queue Storage használata C++-szal
+      url: storage-c-plus-plus-how-to-use-queues.md
+    - text: How to use Queue storage from Python (A Queue Storage használata Pythonnal)
+      url: storage-python-how-to-use-queue-storage.md
+- title: Üzenetsorok kezelése
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure Queue Storage-műveletek végrehajtása az Azure PowerShell-lel
+      url: storage-powershell-how-to-use-queues.md
+- title: Oktatóanyag
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Az Azure Storage-üzenetsorok használata (.NET)
+      url: storage-tutorial-queues.md

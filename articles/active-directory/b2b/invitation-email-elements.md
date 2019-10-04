@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: mimart
 author: msmimart
-manager: daveba
+manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7015abcfe3c53e2180d617bd2c78ecd44c42af7a
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 3f93586d46aa01116990f8f02f344c6952d3c1b1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295623"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65768371"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>A B2B együttműködés meghívót tartalmazó e - Azure Active Directory elemei
 
@@ -28,7 +28,7 @@ Meghívó e-mailek minősítés kulcsfontosságú ahhoz, hogy a partnerek hajón
 ## <a name="explaining-the-email"></a>Az e-mailben tájékoztatja
 Tekintsünk meg néhány elemét az e-mailt, hogy tudja, hogyan lehet a legjobban a képességeinek használata érdekében.
 
-### <a name="subject"></a>Tárgy
+### <a name="subject"></a>Subject
 Az e-mail tárgyában a következő mintát követi: Meghívót kapott a &lt;tenantname&gt; szervezet
 
 ### <a name="from-address"></a>Feladó címe
@@ -37,7 +37,7 @@ A feladó címe LinkedIn-hez hasonló mintát használjuk.  Legyen egyértelmű 
 ### <a name="reply-to"></a>Válasz címzettje
 A válasz az e-mailben, ha elérhető, a meghívót küldő személy e-mail van beállítva, hogy e-mail-válasz egy e-mailt küld vissza a meghívót küldő személy.
 
-### <a name="branding"></a>Védjegyezés
+### <a name="branding"></a>Védjegyzési
 A bérlő használja a meghívói e-mailekről a vállalati arculat megjelenítése, amikor lehetséges, hogy beállította a bérlő számára. Ha azt szeretné, ez a funkció kihasználásához [Itt](https://docs.microsoft.com/azure/active-directory/active-directory-branding-custom-signon-azure-portal) konfigurálásának részleteiért vannak. A szalagcímembléma jelenik meg az e-mailben. Hajtsa végre a lemezkép mérete és minőségi utasítások [Itt](https://docs.microsoft.com/azure/active-directory/active-directory-branding-custom-signon-azure-portal) a legjobb eredmények elérése érdekében. Emellett a vállalat nevét is megjelenik-e a művelet meghívásához.
 
 ### <a name="call-to-action"></a>Művelet hívása

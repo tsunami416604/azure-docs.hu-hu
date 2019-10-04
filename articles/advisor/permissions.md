@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: kasparks
 ms.openlocfilehash: cbd2e456c96dbf8ca01387f0c7c17a1541dbfe55
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59052792"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60467612"
 ---
 # <a name="permissions-in-azure-advisor"></a>Az Azure Advisor engedélyek
 
@@ -30,7 +30,7 @@ Az alábbi táblázat a szerepkörök és a hozzáférést, az Advisor belül ha
 |Erőforráscsoport tulajdonosa|**X**|--|--|**X**|**X**|
 |Erőforráscsoport közreműködő|**X**|--|--|**X**|**X**|
 |Erőforráscsoport-olvasó|**X**|--|--|--|--|
-|Erőforrás tulajdonosa|**X**|--|--|--|**X**|
+|Erőforrás tulajdonosának|**X**|--|--|--|**X**|
 |Erőforrás-közreműködő|**X**|--|--|--|**X**|
 |Erőforrás-olvasó|**X**|--|--|--|--|
 

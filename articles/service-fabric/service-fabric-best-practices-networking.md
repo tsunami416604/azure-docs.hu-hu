@@ -1,6 +1,6 @@
 ---
-title: Hálózatkezelés az ajánlott eljárások az Azure Service Fabric |} A Microsoft Docs
-description: A Service Fabric hálózatkezelés kezelésének ajánlott eljárásai.
+title: Azure Service Fabric hálózatkezelés – ajánlott eljárások | Microsoft Docs
+description: Ajánlott eljárások Service Fabric hálózatkezelés kezeléséhez.
 services: service-fabric
 documentationcenter: .net
 author: peterpogorski
@@ -14,21 +14,21 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 86ad6fce34f323d94f7b9c318ba81f547360d4df
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 317977af9d41163013545a6e5f60bee887da596c
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56804958"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262248"
 ---
 # <a name="networking"></a>Hálózat
 
-Létrehozása és kezelése az Azure Service Fabric-fürtök, a csomópontok és az alkalmazások számára meg van adva hálózati kapcsolat. A hálózati erőforrások közé tartoznak az IP-címtartományok, virtuális hálózatok, terheléselosztók és hálózati biztonsági csoportok. Ebben a cikkben megismerheti az ajánlott eljárások az ezekhez az erőforrásokhoz.
+Az Azure Service Fabric-fürtök létrehozásakor és kezelésekor hálózati kapcsolatot biztosít a csomópontjai és alkalmazásai számára. A hálózati erőforrások közé tartozik az IP-címtartományok, a virtuális hálózatok, a terheléselosztó és a hálózati biztonsági csoportok. Ebben a cikkben az ezen erőforrásokkal kapcsolatos ajánlott eljárásokat ismerheti meg.
 
-Az Azure [Service Fabric-hálózatkezelés minták](https://docs.microsoft.com/azure/service-fabric/service-fabric-patterns-networking) megtudhatja, hogyan hozhat létre fürtöket, amelyek a következő funkciókat használja: Meglévő virtuális hálózat vagy alhálózat, statikus nyilvános IP-címet, csak belső terheléselosztót, vagy a belső és külső terheléselosztó.
+Tekintse át az Azure [Service Fabric hálózatkezelési mintáit](https://docs.microsoft.com/azure/service-fabric/service-fabric-patterns-networking) , és Ismerje meg, hogyan hozhat létre olyan fürtöket, amelyek a következő szolgáltatásokat használják: Meglévő virtuális hálózat vagy alhálózat, statikus nyilvános IP-cím, csak belső terheléselosztó, belső és külső terheléselosztó.
 
-## <a name="infrastructure-networking"></a>Hálózati infrastruktúra
-Gyorsított hálózatkezelésű virtuális gépén teljesítmény maximalizálása, deklarálásával enableAcceleratedNetworking tulajdonságot a Resource Manager-sablonban szereplő, az alábbi kódrészlet egy virtuális gép méretezési beállítása NetworkInterfaceConfigurations, lehetővé teszi a gyorsított Hálózatkezelés:
+## <a name="infrastructure-networking"></a>Infrastruktúra-hálózatkezelés
+Maximalizálja a virtuális gép teljesítményét a gyorsított hálózatkezeléssel azáltal, hogy deklarálja a enableAcceleratedNetworking tulajdonságot a Resource Manager-sablonban, az alábbi kódrészlet egy virtuálisgép-méretezési csoport Networkinterfaceconfigurations szakaszához, amely Gyorsított hálózatkezelés engedélyezése:
 
 ```json
 "networkInterfaceConfigurations": [
@@ -46,36 +46,38 @@ Gyorsított hálózatkezelésű virtuális gépén teljesítmény maximalizálá
   }
 ]
 ```
-Service Fabric-fürt kiépítése a [Linuxos gyorsított hálózatkezelésű](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli), és [gyorsított hálózatkezelésű Windows](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell).
+A Service Fabric-fürt Linux rendszeren is kiépíthető [gyorsított hálózatkezeléssel](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli), a [Windows pedig gyorsított hálózatkezeléssel](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell).
 
-Gyorsított hálózatkezelés az Azure virtuálisgép-sorozat termékváltozatok támogatják: D/DSv2, a DSv3/D, E/ESv3, F/FS, FSv2 és Ms és Mms. Gyorsított hálózatkezelés tesztelés sikeresen az Standard_DS8_v3 Termékváltozat az 1/23/2019-beli Service Fabric Windows-fürt, és a 2019/01/29 Standard_DS12_v2 használatával a Service Fabric Linux-fürt.
+A gyorsított hálózatkezelés támogatott az Azure-beli virtuális gépek Series SKU-ban: D/DSv2, D/DSv3, E/ESv3, F/FS, FSv2 és MS/MMS. A gyorsított hálózatkezelést sikeresen teszteltük a Standard_DS8_v3 SKU 1/23/2019-on való használatával egy Service Fabric Windows-fürthöz, és a 01/29/2019-es Standard_DS12_v2-t használja egy Service Fabric Linux-fürthöz.
 
-Gyorsított hálózatkezelés engedélyezéséhez egy meglévő Service Fabric-fürtre, először szüksége [Service Fabric-fürt kétirányú méretezése hozzáadásával egy virtuálisgép-méretezési csoportban](https://docs.microsoft.com/azure/service-fabric/virtual-machine-scale-set-scale-node-type-scale-out), a következőket hajthatja végre:
-1. A gyorsított hálózatkezelés engedélyezett egy NodeType kiépítése
-2. A szolgáltatások és az állapotuk át a kiépített NodeType gyorsított hálózatkezelésű engedélyezve
+Ha egy meglévő Service Fabric fürtön szeretné engedélyezni a gyorsított hálózatkezelést, először [egy virtuálisgép-méretezési csoport hozzáadásával kell kialakítania egy Service Fabric-fürtöt](https://docs.microsoft.com/azure/service-fabric/virtual-machine-scale-set-scale-node-type-scale-out)a következők elvégzéséhez:
+1. NodeType kiépítése a gyorsított hálózatkezelés engedélyezésével
+2. A szolgáltatások és az állapotuk áttelepítése a kiépített NodeType a gyorsított hálózatkezelés engedélyezésével
 
-Infrastruktúra kiterjesztése szükség a gyorsított hálózatkezelés engedélyezéséhez egy meglévő fürtön, mert engedélyezése a gyorsított hálózatkezelés helyen okozna állásidő, mivel egy rendelkezésre állási csoportban található összes virtuális gép lehet [állítsa le és minden olyan meglévő hálózati adapter a gyorsított hálózatkezelés engedélyezése előtt szabadítsa fel](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli#enable-accelerated-networking-on-existing-vms).
+Az infrastruktúra horizontális felskálázása szükséges a gyorsított hálózatkezelés engedélyezéséhez egy meglévő fürtön, mert a gyorsított hálózatkezelés engedélyezése az állásidőt okozhatja, mivel a rendelkezésre állási csoportokban lévő összes virtuális gép [leállítása és felszabadítása szükséges. a gyorsított hálózatkezelés engedélyezése bármely meglévő hálózati adapteren](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli#enable-accelerated-networking-on-existing-vms).
 
-## <a name="cluster-networking"></a>Fürthálózat
+## <a name="cluster-networking"></a>Fürt hálózatkezelése
 
-* Service Fabric-fürtök ismertetett lépéseket követve telepíthető egy meglévő virtuális hálózatban [hálózatkezelés minták a Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-patterns-networking).
+* Service Fabric fürtöket meglévő virtuális hálózatba lehet telepíteni a [Service Fabric hálózati mintákban](https://docs.microsoft.com/azure/service-fabric/service-fabric-patterns-networking)leírt lépések végrehajtásával.
 
-* Hálózati biztonsági csoportok (NSG), amelyek korlátozzák a bejövő és kimenő forgalmat a fürt csomóponttípusok használata javasolt. Győződjön meg arról, hogy a szükséges portokat az NSG-ben. Példa: ![Service Fabric NSG-szabályok][NSGSetup]
+* A hálózati biztonsági csoportok (NSG-EK) olyan csomópont-típusokhoz ajánlottak, amelyek korlátozzák a bejövő és a kimenő forgalmat a fürtön. Győződjön meg arról, hogy a szükséges portok meg vannak nyitva a NSG. Példa: ![Service Fabric NSG-szabályok][NSGSetup]
 
-* Az elsődleges csomóponttípushoz, amely tartalmazza a Service Fabric-rendszerszolgáltatások nem kell a külső terheléselosztó keresztül, és által elérhetővé tett egy [belső load balancer](https://docs.microsoft.com/azure/service-fabric/service-fabric-patterns-networking#internal-only-load-balancer)
+* A Service Fabric rendszerszolgáltatásokat tartalmazó elsődleges csomópont típusát nem kell a külső terheléselosztó használatával kitenni, és [belső](https://docs.microsoft.com/azure/service-fabric/service-fabric-patterns-networking#internal-only-load-balancer) terheléselosztó is elérhetővé teheti.
 
-* Használja a [statikus nyilvános IP-cím](https://docs.microsoft.com/azure/service-fabric/service-fabric-patterns-networking#static-public-ip-address-1) a fürt számára.
+* Használjon [statikus nyilvános IP-címet](https://docs.microsoft.com/azure/service-fabric/service-fabric-patterns-networking#static-public-ip-address-1) a fürthöz.
 
-## <a name="application-networking"></a>Alkalmazás-hálózatkezelés
+## <a name="application-networking"></a>Alkalmazás hálózatkezelése
 
-* Windows-tárolókhoz kapcsolódó számítási feladatok futtatásához használja [hálózati mód megnyitásához](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode) szolgáltatások közötti kommunikáció megkönnyítése.
+* A Windows-tárolók számítási feladatainak futtatásához használja a [nyílt hálózati módot](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode) a szolgáltatások közötti kommunikáció megkönnyítéséhez.
 
-* Fordított proxyt használ, például [Traefik](https://docs.traefik.io/configuration/backends/servicefabric/) vagy a [Service Fabric fordított proxyja](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy) , például a 80-as vagy 443-as közös alkalmazás-portokat tesz elérhetővé.
+* Használjon fordított proxyt, például [Traefik](https://docs.traefik.io/v1.6/configuration/backends/servicefabric/) vagy a [Service Fabric fordított proxyt](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy) a gyakori alkalmazás-portok (például 80 vagy 443) elérhetővé tétele érdekében.
+
+* Azon gapped gépeken üzemeltetett Windows-tárolók esetében, amelyek nem tudnak lekérni alaprétegeket az Azure Cloud Storage-ból, felülbírálják a külső réteg viselkedését a [--Allow-nem terjeszthető összetevők](https://docs.microsoft.com/virtualization/windowscontainers/about/faq#how-do-i-make-my-container-images-available-on-air-gapped-machines) jelző használatával a Docker-démonban.
 
 ## <a name="next-steps"></a>További lépések
 
-* Fürt létrehozása a virtuális gépek vagy a Windows Server rendszert futtató számítógépeken: [A Service Fabric-fürt létrehozása a Windows Server](service-fabric-cluster-creation-for-windows-server.md)
-* Fürt létrehozása a virtuális gépek vagy a Linux operációs rendszert futtató számítógépeken: [Linux-fürt létrehozása](service-fabric-cluster-creation-via-portal.md)
+* Hozzon létre egy fürtöt a virtuális gépeken vagy a Windows Servert futtató számítógépeken: [Service Fabric fürt létrehozása a Windows Serverhez](service-fabric-cluster-creation-for-windows-server.md)
+* Fürt létrehozása virtuális gépeken vagy Linuxon futó számítógépeken: [Linux-fürt létrehozása](service-fabric-cluster-creation-via-portal.md)
 * A [Service Fabric támogatási lehetőségeinek](service-fabric-support.md) ismertetése
 
 [NSGSetup]: ./media/service-fabric-best-practices/service-fabric-nsg-rules.png

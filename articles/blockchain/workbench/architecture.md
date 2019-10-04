@@ -1,123 +1,123 @@
 ---
-title: Az Azure Blockchain Workbench architektúrája
-description: Az Azure Blockchain Workbench architektúrája és összetevői áttekintése.
+title: Az Azure Blockchain Workbench előzetes verziójának architektúrája
+description: Az Azure Blockchain Workbench előzetes verziójú architektúrájának és összetevőinek áttekintése.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 01/14/2019
+ms.date: 09/05/2019
 ms.topic: article
 ms.service: azure-blockchain
-ms.reviewer: zeyadr
+ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 83c5e1405c402a1c6c98f9dbcaaf74891eb75e6d
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: d50ee0fa06f34167cd4be9e787f6e351d3ef7e3b
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330636"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845214"
 ---
-# <a name="azure-blockchain-workbench-architecture"></a>Az Azure Blockchain Workbench architektúrája
+# <a name="azure-blockchain-workbench-preview-architecture"></a>Az Azure Blockchain Workbench előzetes verziójának architektúrája
 
-Az Azure Blockchain Workbench azáltal, hogy a megoldás több Azure-összetevőből használatával egyszerűbbé teszi a blockchain-alkalmazások fejlesztését. Blockchain Workbenchet megoldás sablon használatával az Azure Marketplace-en is telepíthető. A sablon lehetővé teszi, hogy válassza ki a modulok és összetevők üzembe helyezése, beleértve a blockchain stack, az ügyfél az alkalmazás, és támogatja az IoT-integráció. Miután üzembe helyezte a Blockchain Workbenchet egy webalkalmazás, az iOS-alkalmazás és az Android-alkalmazás hozzáférést biztosít.
+Az Azure Blockchain Workbench előzetes verziója leegyszerűsíti az alkalmazások fejlesztését azáltal, hogy számos Azure-összetevőt használó megoldást biztosít a Blockchain. Az Blockchain Workbench az Azure Marketplace-en is üzembe helyezhető megoldási sablonnal. A sablon lehetővé teszi a telepítendő modulok és összetevők, például a blockchain stack, az ügyfélalkalmazás típusa és a IoT-integráció támogatását. Az üzembe helyezést követően a Blockchain Workbench hozzáférést biztosít egy webalkalmazáshoz, iOS-alkalmazáshoz és Android-alkalmazáshoz.
 
-![Blockchain Workbenchet architektúra](./media/architecture/architecture.png)
+![Blockchain Workbench-architektúra](./media/architecture/architecture.png)
 
 ## <a name="identity-and-authentication"></a>Identitás és hitelesítés
 
-A Blockchain Workbenchet használó konzorcium a vállalati identitások Azure Active Directory (Azure AD) használatával is összevonható. Workbench állít elő a láncban lévő identitásokat az Azure AD-ben tárolt vállalati identitásokat az új felhasználói fiókokat. Az Identitásleképezés elősegíti a hitelesített bejelentkezési ügyfél API-kat és alkalmazásokat, és a hitelesítési házirendek a szervezetek használja. Workbench is lehetővé teszi társítása a vállalati identitások belül egy adott intelligens szerződés szerepkörökhöz. Emellett Workbench is mechanizmust biztosít a műveletek azonosíthatja ezeket a szerepköröket is igénybe vehet, és milyen időpontban.
+A Blockchain Workbench használatával a konzorcium Azure Active Directory (Azure AD) használatával is összevonása vállalati identitásait. A Workbench új felhasználói fiókokat hoz létre a láncbeli identitásokhoz az Azure AD-ben tárolt vállalati identitásokkal. Az identitás-hozzárendelés lehetővé teszi a hitelesített bejelentkezést az ügyfél API-jai és alkalmazásai számára, és a szervezetek hitelesítési házirendjeit használja. A Workbench azt is lehetővé teszi, hogy a vállalati identitásokat egy adott intelligens szerződésben meghatározott szerepkörökhöz rendelje. Emellett a Workbench olyan mechanizmust is biztosít, amely meghatározza, hogy a szerepkörök milyen műveleteket végezhetnek, és milyen időpontban.
 
-Blockchain Workbench telepítése után a felhasználók használják az Blockchain Workbench használatával vagy az ügyfélalkalmazások, REST-alapú ügyfél-API vagy üzenetküldési API-ja. Minden esetben interakciók kell hitelesíteni, vagy Azure Active Directory (Azure AD) vagy az eszközre vonatkozó hitelesítő adatok használatával.
+A Blockchain Workbench üzembe helyezése után a felhasználók az ügyfélalkalmazások, a REST-alapú ügyfél-API vagy az üzenetkezelési API használatával kommunikálhatnak a Blockchain Workbench szolgáltatással. Az interakciókat minden esetben hitelesíteni kell, Azure Active Directory (Azure AD) vagy az eszközre vonatkozó hitelesítő adatok használatával.
 
-Felhasználók az Azure ad-ben konzorcium identitásuk küldött e-mailes meghívót a résztvevők e-mail-címükkel, vonhat össze. Ha jelentkezik be, ezek a felhasználók hitelesítése a neve, a jelszó és a házirendek használatával. Ha például kétfaktoros hitelesítést a szervezet.
+A felhasználók összevonása a konzorcium Azure AD-beli identitását úgy, hogy e-mailben meghívót küldenek a résztvevőknek e-mail-címére. Bejelentkezéskor ezeket a felhasználókat a név, a jelszó és a házirendek alapján hitelesíti a rendszer. Például a szervezet kétfaktoros hitelesítése.
 
-Az Azure AD minden olyan felhasználó, akik hozzáférhetnek a Blockchain Workbenchet kezelésére szolgál. Minden egyes eszköz csatlakozik egy intelligens szerződést is az Azure AD társítva.
+Az Azure AD az összes olyan felhasználó felügyeletére szolgál, akik hozzáférnek a Blockchain Workbenchhez. Az intelligens szerződéshez csatlakozó összes eszköz az Azure AD-vel is társítva van.
 
-Az Azure AD felhasználók hozzárendelése egy külön felügyeleti csoportot is szolgál. A rendszergazda csoporthoz tartozó felhasználók hozzáférési jogok és a Blockchain Workbench, beleértve a szerződések üzembe helyezése és engedélyeket ad egy felhasználónak műveletek eléréséhez egy szerződés engedéllyel. Ezen a csoporton kívüli felhasználók nem rendelkeznek rendszergazdai műveleteket a hozzáférést.
+Az Azure AD-t a felhasználók egy speciális rendszergazdai csoportba való hozzárendelésére is használják. A rendszergazda csoportba tartozó felhasználók hozzáférést kapnak a Blockchain Workbenchben található jogokhoz és műveletekhez, beleértve a szerződések telepítését és a felhasználók számára a szerződések eléréséhez szükséges engedélyeket. A csoporton kívüli felhasználók nem férhetnek hozzá a rendszergazdai műveletekhez.
 
 ## <a name="client-applications"></a>Ügyfélalkalmazások
 
-Workbench biztosít az automatikusan létrehozott ügyfélalkalmazások webes és mobil (iOS, Android), amely ellenőrzése, tesztelése és blockchain-alkalmazások megtekintéséhez használható. Az alkalmazás felület intelligens szerződés metaadatok alapján dinamikusan generált, és képes kezelni bármilyen használati eset. Az ügyfélalkalmazások számára a felhasználói kezelőfelület továbbítására az a Blockchain Workbenchet által generált teljes blockchain-alkalmazások. Ügyfélalkalmazások hitelesítheti a felhasználókat az Azure Active Directory (Azure AD) segítségével, és ezután jelentenek a felhasználói élmény személyre szabott intelligens kontraktu üzleti környezetével. A felhasználói élmény lehetővé teszi az arra jogosult személyek új intelligens szerződés példányok létrehozását, és hajtsa végre a bizonyos típusú tranzakciók megfelelő pontokon jelöli az intelligens szerződés üzleti folyamatot lehetővé teszi majd megjelenít.
+A Workbench automatikusan generált ügyfélalkalmazások számára biztosít webes és mobil (iOS, Android) alkalmazásokat, amelyek segítségével ellenőrizheti, tesztelheti és tekintheti meg a blockchain-alkalmazásokat. Az alkalmazás felülete dinamikusan jön létre az intelligens szerződés metaadatai alapján, és bármilyen használati esetet képes fogadni. Az ügyfélalkalmazások felhasználói kezelőfelületet továbbítanak a Blockchain Workbench által generált teljes blockchain-alkalmazásokhoz. Az ügyfélalkalmazások Azure Active Directory (Azure AD) segítségével hitelesítik a felhasználókat, majd az intelligens szerződés üzleti környezetéhez igazított felhasználói élményt nyújtanak. A felhasználói élmény lehetővé teszi az új, intelligens szerződéssel rendelkező példányok létrehozását a jogosult személyek számára, majd bemutatják bizonyos típusú tranzakciók végrehajtását az üzleti folyamat megfelelő pontjaiban az intelligens szerződés által képviselt módon.
 
-A webalkalmazás a jogosult felhasználók férhessenek a felügyeleti konzolon. A konzol az Azure ad-ben a rendszergazdák csoportjának a felhasználók számára érhető el, és férhet hozzá a következő funkciókat:
+A webalkalmazásban a jogosult felhasználók hozzáférhetnek a felügyeleti konzolhoz. A konzol az Azure AD-ben a rendszergazda csoport tagjai számára érhető el, és a következő funkciókhoz biztosít hozzáférést:
 
-* Telepítse a Microsoft által biztosított az intelligens szerződések népszerű forgatókönyvek esetén. Például egy eszköz átviteli forgatókönyvet.
-* Töltse fel, és üzembe helyezése saját smart contracts.
-* Felhasználói hozzáférés hozzárendelése a intelligens szerződés keretén belül egy adott szerepkörrel.
+* A Microsoft által biztosított intelligens szerződések központi telepítése népszerű forgatókönyvekhez. Például egy adatátviteli forgatókönyv.
+* Saját intelligens szerződések feltöltése és üzembe helyezése.
+* Egy adott szerepkör kontextusában rendeljen hozzá egy felhasználói hozzáférést az intelligens szerződéshez.
 
-További információkért lásd: a [Azure Blockchain Workbench minta a Githubon ügyfélalkalmazások](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-development-kit/connect/mobile/blockchain-workbench/workbench-client).
+További információkért tekintse meg az [Azure Blockchain Workbench minta ügyfélalkalmazások a githubon](https://github.com/Azure-Samples/blockchain-devkit/tree/master/connect/mobile)című témakört.
 
-## <a name="gateway-service-api"></a>Átjáró szolgáltatás API
+## <a name="gateway-service-api"></a>Az átjáró szolgáltatás API-ját
 
-Blockchain Workbenchet egy REST-alapú átjáró szolgáltatás API-t tartalmaz. A blockchain írásakor az API-t állít elő, és továbbítja az üzeneteket egy eseményközvetítőből. Az API-t kér adatokat, amikor küldi el a láncon kívüli SQL Database-adatbázishoz. Az SQL-adatbázis a láncban lévő adatok és a metaadatokat, amelyek támogatott smart contracts kontextus és konfigurációs információkat nyújt egy replika tartalmazza. Lekérdezések a szükséges adatok visszaadása a láncon kívüli replika figyelmeztet a metaadatokat a szerződéshez tartozó formátumban.
+A Blockchain Workbench egy REST-alapú átjárószolgáltatás API-t tartalmaz. Egy blockchain írásakor az API létrehoz és kézbesít üzeneteket egy esemény-közvetítőnek. Ha az API kéri az adatkérést, a rendszer a lekérdezéseket a távoli láncú SQL-adatbázisba küldi. Az SQL Database tartalmaz egy replikát a láncban lévő adatokról és metaadatokról, amelyek környezeti és konfigurációs adatokat biztosítanak a támogatott intelligens szerződések számára. A lekérdezések a nem Láncos replikából származó szükséges adatokat a szerződés metaadatainak által tájékozott formátumban adják vissza.
 
-A fejlesztők hozzáférhetnek az átjáró szolgáltatás API-t összeállítania és integrálni a blockchain-megoldások anélkül, hogy az ügyfélalkalmazások Blockchain Workbenchet.
+A fejlesztők hozzáférhetnek az átjáró szolgáltatás API-hoz a blockchain-megoldások létrehozásához és integrálásához anélkül, hogy a Blockchain Workbench ügyfélalkalmazások támaszkodnak.
 
 > [!NOTE]
-> Ahhoz, hogy a hitelesített hozzáférést az API-hoz, két ügyfélalkalmazások az Azure Active Directoryban regisztrált. Az Azure Active Directory igényel különálló alkalmazást az alkalmazásregisztrációk minden alkalmazástípus (natív és webes). 
+> Az API hitelesített hozzáférésének engedélyezéséhez két ügyfélalkalmazás van regisztrálva Azure Active Directoryban. Azure Active Directory külön alkalmazás-regisztrációt igényel minden egyes alkalmazás-típushoz (natív és webes). 
 
-## <a name="message-broker-for-incoming-messages"></a>Bejövő üzenetek közvetítő
+## <a name="message-broker-for-incoming-messages"></a>Üzenetküldés a bejövő üzenetekhez
 
-A fejlesztők számára küldhet üzeneteket közvetlenül az Blockchain Workbench használatával üzeneteket küldhetnek közvetlenül a Service Bus. Például üzenetek API használható operációs rendszerek integrációja, vagy IoT-eszközök.
+Azok a fejlesztők, akik közvetlenül az Blockchain Workbenchbe szeretnének üzeneteket küldeni, közvetlenül a Service Bus küldhetnek üzeneteket. Például az üzenetek API-t a rendszerek közötti integrációhoz vagy IoT eszközökhöz lehet használni.
 
-## <a name="message-broker-for-downstream-consumers"></a>Az alsóbb rétegbeli fogyasztók közvetítő
+## <a name="message-broker-for-downstream-consumers"></a>Üzenetsor a továbbfelhasználó számára
 
-Az alkalmazás élettartama során a következő események következnek be. Események aktiválhatja a Gateway API vagy a Főkönyv. Eseményértesítések kezdeményezhet az alsóbb rétegbeli kódot az események alapján.
+Az alkalmazás életciklusa során események történnek. Az eseményeket az átjáró API vagy a Főkönyv is aktiválhatja. Az eseményekre vonatkozó értesítések az alárendelt kódokat az esemény alapján indíthatják el.
 
-Blockchain Workbenchet automatikusan telepíti az eseményfelhasználók két típusú. Egy fogyasztói a láncon kívüli SQL-tároló feltöltése blockchain események által aktivált. A többi fogyasztó, hogy a feltöltés és tárolás dokumentumok API által előállított eseményeket metaadatainak rögzítése.
+Az Blockchain Workbench automatikusan két típusú eseményt helyez üzembe. Az blockchain-események egy fogyasztót aktiválnak a távoli láncú SQL-tárolók feltöltéséhez. A másik felhasználó a dokumentumok feltöltésével és tárolásával kapcsolatos API-k által generált események metaadatait rögzíti.
 
-## <a name="message-consumers"></a>Üzenetfogyasztó
+## <a name="message-consumers"></a>Üzenet fogyasztói
 
- Üzenetfogyasztó üzenetek a Service Bus igénybe vehet. Az alapul szolgáló modell eseménykezelési üzenetfogyasztó bővítményei további szolgáltatásokat és rendszereket tesz lehetővé. Például hozzáadhat támogatási töltse fel a cosmos DB vagy az Azure Stream Analytics használatával üzeneteket kiértékeléséhez. A következő szakaszok ismertetik az üzenetfogyasztó Blockchain Workbenchet szerepel.
+ Az üzenet felhasználója Service Bus üzeneteket fogad. Az üzenetek felhasználói számára az alapul szolgáló eseményvezérelt modell lehetővé teszi a további szolgáltatások és rendszerek kiterjesztését. Például hozzáadhat támogatást az CosmosDB feltöltéséhez vagy az üzenetek kiértékeléséhez az Azure streaming Analytics használatával. A következő szakaszok ismertetik az Blockchain Workbenchben található üzenetekhez tartozó felhasználókat.
 
-### <a name="distributed-ledger-consumer"></a>Az elosztott Főkönyv fogyasztói
+### <a name="distributed-ledger-consumer"></a>Elosztott Főkönyv fogyasztója
 
-Az elosztott Főkönyv technológiával (DLT) üzenetek tranzakciók lehet írni a blockchain a metaadatokat tartalmaznak. Az ügyfél lekéri az üzeneteket, és leküldi az adatokat egy tranzakció builder, az aláíró és útválasztó.
+Az elosztott Főkönyv technológiájának (DLT) üzenetei tartalmazzák a blockchain írni kívánt tranzakciók metaadatait. A fogyasztó lekéri az üzeneteket, és leküldi az adatait egy Transaction Builder, aláíró és útválasztó számára.
 
-### <a name="database-consumer"></a>Adatbázis fogyasztói
+### <a name="database-consumer"></a>Adatbázis-fogyasztó
 
-Az adatbázis fogyasztói veszi azokat az üzeneteket a Service Bus, és leküldéses értesítések az adatokat egy csatolt például az SQL database-adatbázissal.
+Az adatbázis felhasználója Service Bus üzeneteket fogad, és leküldi az adatok egy csatolt adatbázisba, például az SQL Database-be.
 
-### <a name="storage-consumer"></a>Tárolási fogyasztói
+### <a name="storage-consumer"></a>Storage-fogyasztó
 
-A storage fogyasztói veszi azokat az üzeneteket a Service Bus, és adatokat leküldi egy csatolt Storage-tárolóba. Például az Azure Storage-ban tárolja a kivonatolt dokumentumok.
+A tároló fogyasztó üzenetet küld a Service Busről, és egy csatolt tárolóba küldi le az adatait. Például a kivonatoló dokumentumok tárolása az Azure Storage-ban.
 
-## <a name="transaction-builder-and-signer"></a>Tranzakció builder és az aláíró
+## <a name="transaction-builder-and-signer"></a>Transaction Builder és aláíró
 
-Ha a bejövő közvetítő egy üzenetet kell írni a blockchain, feldolgozása DLT fogyasztója. A DLT fogyasztói egy szolgáltatást, amely lekéri a végrehajtani kívánt tranzakció metaadatokat tartalmazó üzenet, és ezután elküldi az információkat a *tranzakció builder és az aláíró*. A *tranzakció builder és az aláíró* alapján az adatok és a kívánt blockchain cél blockchain tranzakció tartalomkiszolgálójáról. Ha kész, a tranzakció van aláírva. Titkos kulcsok Azure Key Vault vannak tárolva.
+Ha a bejövő üzenet-átvitelszervezőn lévő üzenetet a blockchain kell írni, azt a DLT fogyasztó dolgozza fel. A DLT fogyasztó egy szolgáltatás, amely a metaadatokat tartalmazó üzenetet kérdezi le egy végrehajtandó kívánt tranzakcióhoz, majd elküldi az információt a *Transaction Builder és az aláíró*számára. A *Transaction Builder és az aláíró* egy blockchain-tranzakciót állít össze az adathalmaz és a kívánt blockchain-cél alapján. Az összeállítás után a tranzakció aláírása megtörtént. A titkos kulcsok tárolása Azure Key Vault történik.
 
- Blockchain Workbench használatával kérdezi le a megfelelő titkos kulcsot a Key Vaultból, és aláírja a Key Vault-en kívül a tranzakciót. Miután regisztrált, a tranzakció tranzakció útválasztók és főkönyvek érkezik.
+ A Blockchain Workbench lekéri a megfelelő titkos kulcsot a Key Vaultból, és a Key Vaulton kívül aláírja a tranzakciót. Az aláírást követően a tranzakció a tranzakciós útválasztók és a főkönyvek számára lesz elküldve.
 
-## <a name="transaction-routers-and-ledgers"></a>Tranzakció útválasztók és főkönyvek
+## <a name="transaction-routers-and-ledgers"></a>Tranzakciós útválasztók és főkönyvek
 
-Tranzakció útválasztók és főkönyvek aláírt tranzakciók igénybe vehet, és továbbítják őket a megfelelő blockchain. Jelenleg Blockchain Workbenchet Ethereum támogatja a céloldali blockchain.
+A tranzakciós útválasztók és a főkönyvek aláírt tranzakciókat készítenek, és a megfelelő blockchain irányítják azokat. Az Blockchain Workbench jelenleg Ethereum támogatja a célként megadott Blockchain.
 
-## <a name="dlt-watcher"></a>DLT figyelője
+## <a name="dlt-watcher"></a>DLT-figyelő
 
-Egy elosztott Főkönyv technológiával (DLT) figyelője a Blockchain Workbenchet csatolt blokk láncok bekövetkező események figyeli.
-Események tükrözik az egyéni felhasználók és rendszerek vonatkozó információt. Például létrehozása új szerződés példányok, a tranzakciók végrehajtása, állapotváltozások. Az események feladatműveletet rögzít és elküldhetők a kimenő közvetítő, így azok alsóbb rétegbeli fogyasztók felhasználhassák.
+Az elosztott Főkönyv technológiája (DLT) figyelő figyeli a Blockchain Workbenchhez csatolt blokk-láncokban előforduló eseményeket.
+Az események az egyéni felhasználókra és rendszerekre vonatkozó információkat tükrözik. Például az új szerződési példányok létrehozása, a tranzakciók végrehajtása és az állapot változásai. Az eseményeket a rendszer rögzíti és elküldi a kimenő üzenet-közvetítőnek, így azokat a továbbfelhasználó is felhasználhatja.
 
-Például az SQL fogyasztói eseményeket figyeli, használ fel őket, és tölti fel az SQL-adatbázis foglalt értékek közé. A példány lehetővé teszi, hogy újra létrehozhatja a láncban lévő data láncon kívüli tárolóban replikáját.
+Az SQL-felhasználó például figyeli az eseményeket, felhasználja őket, és feltölti az SQL-adatbázist a belefoglalt értékekkel. A másolás lehetővé teszi, hogy az adatláncban lévő adattárak replikáját egy láncon kívüli tárolóban tárolja.
 
 ## <a name="azure-sql-database"></a>Azure SQL-adatbázis
 
-Az Azure SQL database Blockchain Workbenchet csatolt szerződés definíciókat, konfigurációs metaadatok és a blockchain-ban tárolt adatok elérhető SQL replikáját tárolja. Ezeket az adatokat is könnyen lekérdezve, formájában jelenik meg, vagy elemezheti az adatbázis közvetlen elérésével. A fejlesztők és más felhasználók használhatja az adatbázis reporting, analytics, vagy más adatközpontú integrációkkal. Ha például felhasználók tranzakciós adatokat a Power BI használatával jelenítheti meg.
+A Blockchain Workbenchhez csatolt Azure SQL Database a Blockchain tárolt adatokhoz tartozó szerződés-definíciókat, konfigurációs metaadatokat és SQL-alapú replikát tárolja. Ezeket az adatok könnyen lekérdezhető, megjeleníthető vagy elemezhető az adatbázishoz való közvetlen hozzáféréssel. A fejlesztők és más felhasználók az adatbázist jelentéskészítési, elemzési vagy egyéb adatközpontos integrációhoz használhatják. Például a felhasználók megjeleníthetik a tranzakciós adataikat Power BI használatával.
 
-A láncon kívüli tárolók szolgáltatás lehetővé teszi a vállalati szervezetek számára, hogy az SQL-ben, nem pedig a blockchain Főkönyv adatokat lekérdezni. Is a standard szintű sémát, amely nem tartalmaz olyan blokklánc-technológiai veremhez szabványosításával a láncon kívüli tárolók lehetővé teszi a jelentések és más összetevők ismételt projektek, a forgatókönyvek és a szervezetek számára.
+Ez a távoli láncú tárterület lehetővé teszi, hogy a nagyvállalati szervezetek SQL-alapú lekérdezéseket blockchain-főkönyvben ne kelljen lekérdezni. Emellett azáltal, hogy a standard sémán alapuló, a blockchain-alapú technológiákat is támogatja, a láncon kívüli tárolók lehetővé teszik a jelentések és egyéb összetevők újrafelhasználását a projektek, forgatókönyvek és szervezetek között.
 
 ## <a name="azure-storage"></a>Azure Storage
 
-Az Azure Storage szerződések és -szerződések tartozó metaadatok tárolására szolgál.
+Az Azure Storage a szerződésekhez kapcsolódó szerződések és metaadatok tárolására szolgál.
 
-A megrendelések és szerződések, a híreket és orvosi képanyag szerepel egy egészében rendőrségi törzs kamerák és fő képek mozgásban lévő adatoknak egyaránt, beleértve a videó származó lemezképek a dokumentumok szerepet játszik a blockchain-központú helyzetekben. Dokumentumok nem megfelelőek közvetlenül a blockchain helyezi.
+A beszerzési megrendelések és a hajóraklevél, a hírekben és az orvosi képekben használt képekig a folytonosságot, beleértve a rendőrségi szervek kameráit és a főbb mozgóképeket, a dokumentumok sok blockchain-központú forgatókönyvben játszanak szerepet. A dokumentumok nem alkalmasak közvetlenül a blockchain való elhelyezésre.
 
-Blockchain Workbench használatával támogatja a dokumentumok és egyéb médiatartalmak blockchain üzleti logikával rendelkező hozzáadása. A dokumentum vagy adathordozó a tartalom kivonatát a blockchain tárolja, és a tényleges dokumentum vagy a médiatartalmak az Azure Storage tárolja. A társított tranzakció információ a bejövő közvetítő kézbesíti, csomagolt, aláírt, és a blockchain irányítja. Ez a folyamat aktiválása, események, amelyek a kimenő közvetítő keresztül megosztott. Az SQL DB használ fel ezeket az információkat, és elküldi a DB később lekérdezéséhez. Sikerült generáló rendszerek üzenetkézbesítési igényeit is használhatják fel ezeket az eseményeket, hogy a megfelelő módon működjön.
+Az Blockchain Workbench lehetővé teszi dokumentumok vagy más médiatartalmak hozzáadását a Blockchain üzleti logikával. A dokumentum vagy a médiatartalom kivonata a blockchain tárolódik, és a tényleges dokumentum-vagy médiatartalom az Azure Storage-ban tárolódik. A rendszer a kapcsolódó tranzakciós adatokat a bejövő üzenet-átvitelszervezőbe továbbítja, becsomagolja, aláírja és átirányítja a blockchain. Ez a folyamat elindítja az eseményeket, amelyek a kimenő üzenet-átvitelszervezőben vannak megosztva. Az SQL-adatbázis felhasználja ezeket az információkat, és az ADATBÁZISba küldi a későbbi lekérdezéshez. Az alárendelt rendszerek ezeket az eseményeket is felhasználhatják, hogy a megfelelő módon működjenek.
 
 ## <a name="monitoring"></a>Figyelés
 
-Workbench biztosít az Application Insights és az Azure Monitor használatával alkalmazásnaplózás. Az Application Insights Blockchain Workbenchet naplózott adatainak tárolására szolgál, és tartalmazza a hibákat, figyelmeztetéseket és sikeres műveletek. Az Application Insights segítségével a fejlesztők az Blockchain Workbench használatával kapcsolatos problémák megoldásában. 
+A Workbench Application Insights és Azure Monitor használatával biztosítja az alkalmazások naplózását. Application Insights a Blockchain Workbench összes naplózott adatának tárolására szolgál, és hibákat, figyelmeztetéseket és sikeres műveleteket tartalmaz. A fejlesztők a Blockchain Workbenchtel kapcsolatos problémák hibakereséséhez használhatják a Application Insights. 
 
-Az Azure Monitor a blockchain-hálózat állapotának nyújt tájékoztatást. 
+Azure Monitor információt nyújt a blockchain-hálózat állapotáról. 
 
 ## <a name="next-steps"></a>További lépések
 

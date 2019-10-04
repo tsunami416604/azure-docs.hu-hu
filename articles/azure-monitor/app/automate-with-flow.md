@@ -1,6 +1,6 @@
 ---
-title: Az Azure Application Insights Microsoft Flow-folyamatok automatizálása
-description: Ismerje meg, hogyan használhatja fel a Microsoft Flow megismételhető folyamatok gyors automatizálása az Application Insights-összekötő használatával.
+title: Az Azure Application Insights folyamatainak automatizálása Microsoft Flow
+description: Megtudhatja, hogyan használhatja a Microsoft Flow az ismételhető folyamatok gyors automatizálására az Application Insights-összekötő használatával.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -9,70 +9,75 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 03/12/2019
+ms.date: 08/29/2019
 ms.author: mbullwin
-ms.openlocfilehash: 15299be83758c157bf3bc7d9fb27b50763b9148e
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 541d5b70ee56d62831f0947e64b9522e17a07dd9
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438937"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194942"
 ---
-# <a name="automate-azure-application-insights-processes-with-the-connector-for-microsoft-flow"></a>Az összekötő Azure Application Insights folyamatok automatizálása a Microsoft Flow
+# <a name="automate-azure-application-insights-processes-with-the-connector-for-microsoft-flow"></a>Az Azure Application Insights folyamatainak automatizálása a Microsoft Flow-összekötővel
 
-Tegye észre magát ismételten ugyanazon lekérdezéseket futtat, ellenőrizze, hogy a szolgáltatás megfelelően működik-e a telemetriai adatok? Kíváncsi, ezeket a lekérdezéseket, a trendek és rendellenességek keresése automatizálását, és ezután hozzon létre a saját munkafolyamatokat őket? Az Azure Application Insights-összekötő a Microsoft Flow egy a megfelelő eszköz ezekből a célokból.
+A telemetria-adatain többször is futtatja ugyanazokat a lekérdezéseket, hogy ellenőrizze, hogy a szolgáltatás megfelelően működik-e? Szeretné automatizálni ezeket a lekérdezéseket a trendek és rendellenességek felderítése érdekében, majd saját munkafolyamatokat felépíteni róluk? Az Azure Application Insights-összekötő a Microsoft Flow számára a megfelelő eszköz ezekhez a célokhoz.
 
-Ez az integráció, mostantól automatizálhatja számos olyan folyamatokat egyetlen kódsor megírása nélkül. Az Application Insights művelet használatával hoz létre egy folyamatot, miután a folyamat automatikusan futtatja az Application Insights-elemzési lekérdezés. 
+Ezzel az integrációval számos folyamat automatizálható egyetlen sor kód írása nélkül is. Miután egy Application Insights művelettel létrehozott egy folyamatot, a folyamat automatikusan futtatja a Application Insights Analytics-lekérdezést.
 
-További műveleteket is hozzáadhat. Microsoft Flow elérhetővé több száz műveleteket. Használhatja például a Microsoft Flow automatikusan e-mail-értesítés küldése vagy hibajelentés létrehozása az Azure DevOps. Használhatja egy a többhöz [sablonok](https://ms.flow.microsoft.com/en-us/connectors/shared_applicationinsights/?slug=azure-application-insights) , melyek a Microsoft Flow-összekötő érhetőek el. Ezek a sablonok gyorsítsa fel a folyamat létrehozásának folyamatán. 
+További műveleteket is hozzáadhat. Microsoft Flow több száz műveletet tesz elérhetővé. A Microsoft Flow használatával például automatikusan küldhet e-mailes értesítést, vagy létrehozhat egy hibát az Azure DevOps. Használhatja a Microsoft Flow-összekötőhöz elérhető számos [sablon](https://ms.flow.microsoft.com/connectors/shared_applicationinsights/?slug=azure-application-insights) egyikét is. Ezek a sablonok felgyorsítják a folyamatok létrehozásának folyamatát.
 
-<!--The Application Insights connector also works with [Azure Power Apps](https://powerapps.microsoft.com/en-us/) and [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/?v=17.23h). --> 
+<!--The Application Insights connector also works with [Azure Power Apps](https://powerapps.microsoft.com/) and [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/?v=17.23h). -->
 
-## <a name="create-a-flow-for-application-insights"></a>Folyamat létrehozása az Application Insights
+## <a name="create-a-flow-for-application-insights"></a>Folyamat létrehozása a Application Insightshoz
 
-Ebben az oktatóanyagban megtudhatja, hogyan hozhat létre egy folyamatot, amely a csoport attribútumok Analytics az auto-fürt algoritmust használja az adatok egy webalkalmazás. A folyamat automatikusan elküldi az eredményeket e-mailhez, csupán egy példa, hogyan használhatja a Microsoft Flow és az Application Insights-elemzési együtt. 
+Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre olyan folyamatot, amely az analitikai autocluster algoritmus használatával csoportosítja az attribútumokat egy webalkalmazásban. A folyamat automatikusan e-mailben küldi el az eredményeket, csupán egy példát arra, hogyan használhatja a Microsoft Flow és a Application Insights elemzéseket együtt.
 
-### <a name="step-1-create-a-flow"></a>1. lépés: Folyamat létrehozása
-1. Jelentkezzen be a [Microsoft Flow](https://flow.microsoft.com), majd válassza ki **saját folyamatok**.
-2. Kattintson a **új** majd **üres folyamat létrehozása**.
+### <a name="step-1-create-a-flow"></a>1\. lépés: Folyamat létrehozása
 
-    ![Új folyamat létrehozása az alapoktól](./media/automate-with-flow/1createflow.png)
+1. Jelentkezzen be [Microsoft Flowba](https://flow.microsoft.com), majd válassza **a saját folyamatok**lehetőséget.
+2. Kattintson az új **, majd ütemezett – üres**lehetőségre.
 
-### <a name="step-2-create-a-trigger-for-your-flow"></a>2. lépés: A folyamat eseményindító létrehozása
-1. A Build modulban lapon válassza **ütemezés**, majd válassza ki **ütemezés – ismétlődés**.
+    ![Új folyamat létrehozása ütemezett üresből](./media/automate-with-flow/1-create.png)
 
-    ![Válassza ki az ütemezési területen hozhat létre](./media/automate-with-flow/2schedule.png)
+### <a name="step-2-create-a-trigger-for-your-flow"></a>2\. lépés: Trigger létrehozása a folyamathoz
 
-1. Az a **időköz** mezőbe írja be **1**, majd a a **gyakorisága** jelölje ki **nap**.
-2. Kattintson a **új lépés**
+1. Az előugró ablakban **hozzon létre egy ütemezett folyamatot**, adja meg a folyamat nevét, és azt, hogy milyen gyakran szeretné futtatni a folyamatot.
 
-    ![Állítsa be a belépő gyakorisággal és időközzel ütemezése ismétlődésének](./media/automate-with-flow/3schedulerecurrence.png)
+    ![Ütemterv ismétlődésének beállítása a gyakoriság és az intervallum beírásával](./media/automate-with-flow/2-schedule.png)
 
+1. Kattintson a **Create** (Létrehozás) gombra.
 
-### <a name="step-3-add-an-application-insights-action"></a>3. lépés: Az Application Insights művelet hozzáadása
-1. Keresse meg **Azure Application Insights**.
-2. Kattintson a **Azure Application Insights - megjelenítése elemzési lekérdezés**.
- 
-    ![Válasszon ki egy műveletet: Az Azure Application Insights megjelenítése Analytics-lekérdezés](./media/automate-with-flow/4visualize.png)
+### <a name="step-3-add-an-application-insights-action"></a>3\. lépés: Application Insights művelet hozzáadása
 
-### <a name="step-4-connect-to-an-application-insights-resource"></a>4. lépés: Csatlakozás az Application Insights-erőforrás
+1. **Application Insights**keresése.
+2. Kattintson az **Azure Application Insights – elemzési lekérdezés megjelenítése**lehetőségre.
 
-E lépés elvégzése után szükség van egy Alkalmazásazonosítót és a egy API-kulcsot az erőforrás. Kérheti le azokat az Azure Portalról, az alábbi ábrán látható módon:
+    ![Válasszon műveletet: Azure Application Insights az elemzési lekérdezés megjelenítése](./media/automate-with-flow/3-visualize.png)
 
-![Alkalmazás azonosítója az Azure Portalon](./media/automate-with-flow/5apiaccess.png)
+3. Válassza az **Új lépés** lehetőséget.
 
-![API-kulcsot az Azure Portalon](./media/automate-with-flow/6apikey.png)
+### <a name="step-4-connect-to-an-application-insights-resource"></a>4\. lépés: Kapcsolódás Application Insights erőforráshoz
 
-- Adjon meg egy nevet a hálózati kapcsolatot, valamint az alkalmazás-azonosító és API-kulcsát.
+A lépés elvégzéséhez szüksége lesz egy alkalmazás-AZONOSÍTÓra és egy API-kulcsra az erőforráshoz. A Azure Portal a következő ábrán látható módon kérheti le:
 
-    ![Microsoft Flow-kapcsolat ablak](./media/automate-with-flow/7connection.png)
+![Alkalmazás azonosítója a Azure Portal](./media/automate-with-flow/5apiaccess.png)
 
-### <a name="step-5-specify-the-analytics-query-and-chart-type"></a>5. lépés: Adja meg az elemzési lekérdezés és a diagram típusát
-Ez a példa lekérdezés a sikertelen kérelmek kiválasztja az elmúlt napon belül, és azokat utal. a művelet részeként előforduló kivételek. Analytics hátterében őket műveletazonosítója azonosítója alapján. A lekérdezés és a szegmensek az eredményeket a autocluster algoritmus használatával. 
+![API-kulcs a Azure Portal](./media/automate-with-flow/6apikey.png)
 
-A saját lekérdezések létrehozásakor győződjön meg arról, hogy megfelelően működnek az Analyticsben előtt hozzáadása a folyamathoz.
+Adja meg a kapcsolatok nevét, valamint az alkalmazás AZONOSÍTÓját és az API-kulcsot.
 
-- Adja hozzá a következő elemzési lekérdezés, és válassza ki a HTML-táblázat diagram típusát. Válassza ki **új lépés**.
+   ![Microsoft Flow a kapcsolatok ablak](./media/automate-with-flow/4-connection.png)
+
+Ha a kapcsolati mező nem jelenik meg azonnal, hanem közvetlenül a lekérdezés beírására kerül, kattintson a mező jobb felső sarkában található három pontra. Ezután válassza a saját kapcsolatok lehetőséget, vagy használjon egy meglévőt.
+
+Kattintson a **Create** (Létrehozás) gombra.
+
+### <a name="step-5-specify-the-analytics-query-and-chart-type"></a>5\. lépés: Az elemzési lekérdezés és a diagram típusának megadása
+Ez a példában szereplő lekérdezés kiválasztja a sikertelen kérelmeket az elmúlt napon, és korrelálja azokat a művelet részeként előforduló kivételekkel. Az elemzések a Műveletazonosítója-azonosító alapján korrelálnak. A lekérdezés ezután az autocluster algoritmus használatával csoportosítja az eredményeket.
+
+Amikor létrehoz egy saját lekérdezést, ellenőrizze, hogy megfelelően működnek-e az Analyticsben, mielőtt hozzáadja azt a folyamathoz.
+
+- Adja hozzá a következő elemzési lekérdezést, és válassza ki a HTML-táblázat típusú diagramot. Ezután válassza az **új lépés**lehetőséget.
 
     ```
     requests
@@ -85,59 +90,53 @@ A saját lekérdezések létrehozásakor győződjön meg arról, hogy megfelel�
     | evaluate autocluster()
     ```
     
-    ![Elemzési lekérdezés konfigurációs ablaka](./media/automate-with-flow/8query.png)
+    ![Elemzési lekérdezés konfigurációs ablaka](./media/automate-with-flow/5-query.png)
 
-### <a name="step-6-configure-the-flow-to-send-email"></a>6. lépés: E-mail küldése a flow konfigurálása
+### <a name="step-6-configure-the-flow-to-send-email"></a>6\. lépés: A folyamat konfigurálása e-mailek küldéséhez
 
-1. Keresse meg **az Office 365 Outlook**.
-2. Kattintson a **Office 365 Outlook – e-mail küldése**.
+1. Keresse meg az **Office 365 Outlook alkalmazást**.
+2. Kattintson **az Office 365 Outlook – E-mail küldése**elemre.
 
-    ![Az Office 365 Outlook-kiválasztási ablaka](./media/automate-with-flow/9outlookaction.png)
+    ![Office 365 Outlook kiválasztási ablak](./media/automate-with-flow/6-outlook.png)
 
-1. Az a **e-mail küldése** ablakban tegye a következőket:
+1. Az **E-mail küldése** ablakban:
 
-   a. Írja be a címzett e-mail-címét.
+   a. Adja meg a címzett e-mail-címét.
 
    b. Írja be az e-mail tárgyát.
 
-   c. Kattintson bárhová a **törzs** mezőbe, majd ezt követően válassza a dinamikus tartalom menü, a jobb oldalon megnyíló **törzse**.
+   c. Kattintson bárhová a **törzs** mezőben, majd a jobb oldalon megnyíló dinamikus tartalom menüben válassza a **törzs**lehetőséget.
 
-   d. Kattintson a **speciális beállítások megjelenítése**.
+   e. Válassza a **Speciális beállítások megjelenítése** lehetőséget.
 
-    ![Az Office 365 Outlook-konfiguráció](./media/automate-with-flow/10sendemailbody.png)
+1. A dinamikus tartalom menüben:
 
-1. A dinamikus tartalom menü tegye a következőket:
+    a. Válassza ki a **melléklet nevét**.
 
-    a. Válassza ki **melléklet neve**.
-
-    b. Válassza ki **melléklet tartalma**.
+    b. Válassza ki a **melléklet tartalmát**.
     
-    c. Az a **HTML** jelölje ki **Igen**.
+    c. A **HTML** mezőben válassza az **Igen**lehetőséget.
 
-    ![Az Office 365 e-mailek konfigurációs ablaka](./media/automate-with-flow/11emailattachment.png)
+    ![Office 365 Outlook-konfiguráció](./media/automate-with-flow/7-email.png)
 
-### <a name="step-7-save-and-test-your-flow"></a>7. lépés: Mentés és a folyamat tesztelése
-- Az a **Folyamatnév** mezőben, adja hozzá a folyamat nevét, és kattintson **mentése**.
+### <a name="step-7-save-and-test-your-flow"></a>7\. lépés: A folyamat mentése és tesztelése
 
-    ![Folyamat elnevezése és mentése](./media/automate-with-flow/12nameflow.png)
+Kattintson a **Save** (Mentés) gombra.
 
-Várja meg az eseményindító, futtassa ezt a műveletet, vagy azonnal, futtathatja a folyamatot [a trigger futtatása igény szerinti](https://flow.microsoft.com/blog/run-now-and-six-more-services/).
+Megvárhatja, hogy az trigger futtassa ezt a műveletet, vagy kattintson ![a felső részen a fõzõpohárba test Icon test (főzőpohár tesztelése ikon ](./media/automate-with-flow/testicon.png) tesztelése) lehetőségre.
 
-A folyamat futtatásakor a címzettek e-mailek listájában megadott kap egy e-mail-üzenet, amely a következőhöz hasonlóan néz ki:
+A **teszt**kiválasztása után:
 
-![Példa e-mailre](./media/automate-with-flow/flow9.png)
+1. Jelölje be **az trigger művelet végrehajtása műveletet**.
+2. Válassza a **folyamat futtatása**lehetőséget.
 
+A folyamat futásakor az e-mail-listán megadott címzettek egy e-mail-üzenetet kapnak, amely az alábbihoz hasonló.
+
+![Minta e-mail](./media/automate-with-flow/flow9.png)
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ a létrehozásával [elemzési lekérdezések](../../azure-monitor/log-query/get-started-queries.md).
-- Tudjon meg többet [Microsoft Flow](https://ms.flow.microsoft.com).
-
-
+- További információ az [elemzési lekérdezések](../../azure-monitor/log-query/get-started-queries.md)létrehozásáról.
+- További információ a [Microsoft Flowról](https://ms.flow.microsoft.com).
 
 <!--Link references-->
-
-
-
-
-

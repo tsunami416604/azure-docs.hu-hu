@@ -1,18 +1,19 @@
 ---
 title: A Microsoft Azure Data Box Gateway használati esetek |} A Microsoft Docs
-description: A használati esetek ismerteti az Azure Data Box átjáró, egy virtuális készülék tárolási megoldás, amely lehetővé teszi az adatok átviteléhez az Azure-bA
+description: A használati esetek ismerteti az Azure Data Box Gateway, egy virtuális készülék tárolási megoldás, amely lehetővé teszi az adatok átvitele az Azure
 services: databox
 author: alkohli
 ms.service: databox
+ms.subservice: gateway
 ms.topic: article
-ms.date: 03/2/2019
+ms.date: 03/02/2019
 ms.author: alkohli
-ms.openlocfilehash: 37ec1d05d07f33343b9ff21380a277d00b242b7c
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: e9092fb91ad98e6147647717e11d1a64bcff580e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403799"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66754176"
 ---
 # <a name="use-cases-for-azure-data-box-gateway"></a>Az Azure Data Box Gateway alkalmazási helyzetei
 
@@ -49,7 +50,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy a Data Box futó átjáróesz
 - Az adatok követően kell helyezze át az archív tárolási szintről. A blob szintjének két módon állíthatja be: Az Azure PowerShell-parancsfájl vagy egy Azure Storage életciklus-felügyeleti szabályzat.  
     - Ha az Azure powershellel, kövesse az alábbi [lépéseket](/azure/databox/data-box-how-to-set-data-tier#use-azure-powershell-to-set-the-blob-tier) az adatok áthelyezése az archív tárolási szintről.
     - Ha használja az Azure-életciklus-felügyelet, kövesse az alábbi lépéseket az adatok áthelyezése az archív tárolási szintről.
-        - [Regisztráljon](/azure/storage/common/storage-lifecycle-management-concepts#register-for-preview) előzetes verziójának Blob életciklus management szolgáltatás használatához az archív szinten.
+        - [Regisztráljon](/azure/storage/common/storage-lifecycle-management-concepts) előzetes verziójának Blob életciklus management szolgáltatás használatához az archív szinten.
         - A következő házirendet, amellyel [az archívum az adatok betöltését](/azure/storage/blobs/storage-lifecycle-management-concepts#archive-data-at-ingest).
 - A blobok archív vannak megjelölve, ha azok már nem módosítható az átjáró, kivéve, ha gyakori vagy ritka elérésű szintre áthelyezett. Ha a fájl a helyi tárolóban, a helyi példány (beleértve a törlések) végzett módosítások nem frissíti a rendszer archív szint.
 - A blob szintről gyakori vagy ritka elérésű módosításával rehydrated kell lennie az archív tárolóban lévő adatok olvasása. [A megosztás frissítése](data-box-gateway-manage-shares.md#refresh-shares) az átjáró nem rehidratálási a blobot.

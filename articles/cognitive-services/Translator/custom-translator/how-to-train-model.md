@@ -1,72 +1,72 @@
 ---
-title: Egyéni a fordítót - modell betanítása
+title: Modell betanítása – egyéni fordító
 titleSuffix: Azure Cognitive Services
-description: A modell tanítása egy fontos lépés, létrehozását, a fordítási modellben. Képzési választott ki, hogy betanítások dokumentumok alapján történik.
-author: rajdeep-in
-manager: christw
+description: A modell betanítása fontos lépés a fordítási modellek létrehozásakor. Betanítás az adott képzésekhez kiválasztott dokumentumok alapján történik.
+author: swmachan
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-rada
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 2045041a9ee4872e4510e5ee0deba258b0342557
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: a875cc8f5e69be8b940f9d177d3b915bfaa2c973
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437288"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595680"
 ---
 # <a name="train-a-model"></a>Modell betanítása
 
-A fordítási modellben fejlesztéséhez fontos lépés a modell tanítása azért, mert a nélkül, egy tanítási modell nem hozható létre. Képzési választott ki a betanítások dokumentumok alapján történik.
+A modell betanítása fontos lépés a fordítási modellek létrehozásához, mert képzés nélkül nem lehet létrehozni a modellt. Betanítás a képzésekhez kiválasztott dokumentumok alapján történik.
 
-A modell betanításához:
+Modell betanítása:
 
-1.  Válassza ki a projektet, ahová a modell létrehozása.
+1.  Válassza ki azt a projektet, amelyben modellt kíván létrehozni.
 
-2.  A projekt az adatok lapon jelennek meg a projekt nyelvi pár vonatkozó összes dokumentumot. Manuálisan válassza ki a dokumentumok, a modell betanításához használandó. Kiválaszthatja a képzés, a beállítás, és a tesztelés dokumentumok ezen a képernyőn. Is, csak a betanítási készletének kiválasztása, és egyéni Translator létrehozása, a hangolási és tesztelése a csoportok az Ön számára.
+2.  A projekthez tartozó adatlapon megjelenik a Project Language pár releváns dokumentuma. Manuálisan válassza ki a modell betanításához használni kívánt dokumentumokat. Kiválaszthatja a képernyőn megjelenő dokumentumok tanítását, finomhangolását és tesztelését. Azt is megteheti, hogy kiválasztja a betanítási készletet, és egyéni fordítóval létrehozta a hangolási és tesztelési készleteket.
 
-    -  Dokumentum neve: A dokumentum nevét.
+    -  Dokumentum neve: A dokumentum neve.
 
-    -  Párosítás: Ha ez a dokumentum egy párhuzamos vagy monolingual dokumentumot. Monolingual dokumentumok jelenleg nem támogatottak a betanításhoz.
+    -  Párosítás Ha ez a dokumentum egy párhuzamos vagy egynyelvű dokumentum. Az egynyelvű dokumentumok jelenleg nem támogatottak a betanításhoz.
 
-    -  A dokumentum típusa: Képzés, hangolása, tesztelési vagy szótár lehet.
+    -  Dokumentum típusa: Képzés, hangolás, tesztelés vagy szótár lehet.
 
-    -  Nyelvi párt: Ez mutatja a forrás- és a projekt Célnyelv.
+    -  Nyelvi pár: Itt látható a projekt forrás-és célként megadott nyelve.
 
-    -  Forrás mondatokat: A forrásfájl kinyert mondatokat számát jeleníti meg.
+    -  Forrás mondatok: A forrásfájlban kinyert mondatok számát jeleníti meg.
 
-    -  Cél mondatokat: A célfájl kinyert mondatokat számát jeleníti meg.
+    -  Cél mondatok: A célfájlből kinyert mondatok számát jeleníti meg.
 
-    ![Tanítási modell](media/how-to/how-to-train-model.png)
+    ![Betanítási modell](media/how-to/how-to-train-model.png)
 
-3.  Train gombra.
+3.  Kattintson a betanítás gombra.
 
 4.  A párbeszédpanelen adja meg a modell nevét.
 
-5.  Kattintson a tanítási modell.
+5.  Kattintson a tanítási modell elemre.
 
-    ![Train model párbeszédpanel](media/how-to/how-to-train-model-2.png)
+    ![A tanítási modell párbeszédablaka](media/how-to/how-to-train-model-2.png)
 
-6.  Egyéni a fordítót a képzést nyújt, és állapotát jelenítik meg a képzés a modellek lapon.
+6.  Az egyéni fordító beküldi a képzést, és megjeleníti a képzés állapotát a modellek lapon.
 
-    ![Train model lap](media/how-to/how-to-train-model-3.png)
+    ![Modell betanítása lap](media/how-to/how-to-train-model-3.png)
 
 >[!Note]
->Egyéni a fordítót belül bármikor munkaterület 10 egyidejű betanítások időben támogatja.
+>Az egyéni fordító egyszerre 10 egyidejű betanítást támogat egy adott munkaterületen belül.
 
 
 ## <a name="edit-a-model"></a>Modell szerkesztése
 
-A Szerkesztés hivatkozásra használó modell részleteit megjelenítő oldalon modell szerkesztheti.
+A modelleket a modell részletei oldalon található szerkesztés hivatkozás használatával szerkesztheti.
 
 1.  Kattintson a ceruza ikonra.
 
     ![Modell szerkesztése](media/how-to/how-to-edit-model.png)
 
-2.  A párbeszédpanelen módosítsa a
+2.  A párbeszédpanelen módosítsa a következőt:
 
-    1.  Modell neve (kötelező): Adjon meg egy kifejező nevet a modellt.
+    1.  Modell neve (kötelező): Adjon egy értelmes nevet a modellnek.
 
         ![További párbeszédpanel szerkesztése](media/how-to/how-to-edit-model-dialog.png)
 
@@ -75,4 +75,4 @@ A Szerkesztés hivatkozásra használó modell részleteit megjelenítő oldalon
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg, [modell részleteinek megtekintése](how-to-view-model-details.md).
+- Megtudhatja [, hogyan tekintheti meg a modell részleteit](how-to-view-model-details.md).

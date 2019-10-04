@@ -1,51 +1,51 @@
 ---
-title: Hogyan alkalmazni a Foglalás kedvezmények az Azure SQL Data Warehouse |} A Microsoft Docs
-description: Ismerje meg, hogyan a Foglalás kedvezmények az Azure SQL Data Warehouse, pénz megtakarítása érdekében érvényesek.
+title: A foglalási kedvezmények alkalmazása az Azure SQL Data Warehouse-ban | Microsoft Docs
+description: Megtudhatja, hogyan vannak alkalmazva a foglalási kedvezmények az Azure SQL Data Warehouse-ban, hogy Ön pénzt takaríthasson meg.
 services: billing
 author: yashesvi
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 04/13/2019
+ms.date: 09/30/2019
 ms.author: banders
-ms.openlocfilehash: 10e19377d31489cd19465fe6171ffb530bd58c28
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 9016c054b9a92b09836f10286eb0da18e4dc701a
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60014216"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71701827"
 ---
-# <a name="how-reservation-discounts-apply-to-azure-sql-data-warehouse"></a>Hogyan a Foglalás kedvezmények az Azure SQL Data Warehouse érvényesek
+# <a name="how-reservation-discounts-apply-to-azure-sql-data-warehouse"></a>A foglalási kedvezmények alkalmazása az Azure SQL Data Warehouse-ban
 
-Miután az Azure SQL Data Warehouse szolgáltatás számára fenntartott kapacitást vásárol, a rendszer automatikusan alkalmazza a foglalási kedvezményt adattárházak, amely az adott régióban található. Az SQL Data Warehouse cDWU mérőszám alapján kibocsátott használat alkalmazza a foglalási kedvezményt. Tárolási és hálózatkezelési utólagos elszámolású díjszabás szerint számoljuk el.
+A fenntartott Azure SQL Data Warehouse-kapacitás megvásárlása után automatikusan alkalmazva lesz a foglalási kedvezmény az adott régióban található adattárházakra. A foglalási kedvezmény az SQL Data Warehouse cDWU-mérője által megjelenített használatra érvényes. A tárolásért és a hálózatkezelésért használatalapú díjat kell fizetnie.
 
-## <a name="reservation-discount-application"></a>Foglalás vonatkozó kedvezmény alkalmazása
+## <a name="reservation-discount-application"></a>A foglalási kedvezmény alkalmazása
 
-Adattárházak óránként fut az SQL Data Warehouse tartalékkapacitást kedvezmény érvényes. Ha nem rendelkezik egy adattárház üzembe helyezett egy órára, majd a lefoglalt kapacitás az adott órára van adattisztítást. Ez nem jelenik meg.
+A fenntartott SQL Data Warehouse-kapacitásokra érvényes kedvezményt a rendszer óránként alkalmazza a futó adattárházakra. Ha egy bizonyos órában nem rendelkezik üzembe helyezett adattárházzal, akkor arra az órára elveszíti a fenntartott kapacitást. A fenntartott kapacitás nem vihető tovább.
 
-Miután megvásárolta a foglalást, amely a vásárlás megfeleltetett futtatásával adattárházakhoz bármikor időben kibocsátott az SQL Data Warehouse-használat. Fel, ha bizonyos adattárházakhoz, Foglalás kedvezmények automatikusan alkalmazhatja bármely más egyező adattárházakhoz.
+A vásárlás után a megvásárolt foglalást a rendszer bármely időpontban megfelelteti a futó adattárházak általi SQL Data Warehouse-használatnak. Ha leállít egyes adattárházakat, a foglalási kedvezmények automatikusan más egyező adattárházakra lesznek alkalmazva.
 
-A adattárházaknál ne egy teljes órányi a Foglalás rendszer automatikusan alkalmazza többi egyező példány tartalmaz az adott órában.
+Azon adattárházak esetében, amelyek nem futnak egy teljes órán át, az adott órában automatikusan egyéb egyező példányokra lesz alkalmazva a foglalás.
 
-## <a name="discount-examples"></a>Példák kedvezmény
+## <a name="discount-examples"></a>Példák a kedvezmény alkalmazására
 
-Az alábbi példák bemutatják, hogyan az SQL Data Warehouse lefoglalt kapacitás kedvezményes vonatkozik, attól függően, a központi telepítéseket.
+Az alábbi példák bemutatják, hogy a rendszer hogyan alkalmazza a fenntartott SQL Data Warehouse-kapacitásokra érvényes kedvezményt az üzemelő példányoktól függően.
 
-- **1. példa**: 100 fenntartott cDWU kapacitás 5 egység vásárolható meg. Egy óráig futtat egy DW1500c SQL Data Warehouse-példányhoz. Ebben az esetben kihasználtsága 100 cDWU használati 15 egység bocsásson ki. A foglalási kedvezményt a 5 egységek használt vonatkozik. Akkor kell fizetnie, a fennmaradó 10 egység 100 cDWU használati használt utólagos elszámolású díjszabás szerint használatával.
+- **1. példa**: Vásárol 5 egységnyi 100 cDWU fenntartott kapacitást. Egy DW1500c SQL Data Warehouse-példányt futtat egy órán át. Ebben az esetben a használat 15 egységnyi 100 cDWU kapacitás. A foglalási kedvezmény az 5 felhasznált egységre vonatkozik. A fennmaradó 10 egységnyi 100 cDWU kapacitásért, amelyet felhasznált használatalapú díjat fizet.
 
-- **2. példa**: 100 fenntartott cDWU kapacitás 5 egység vásárolható meg. Két DW100c az SQL Data Warehouse-példányt futtat egy óra. Ebben az esetben a két használati események kibocsátott 100 cDWU használati 1 egység. Mindkét használati események lekérése tartalékkapacitást kedvezményeket jelentenek. A fennmaradó 3 egységet a 100 fenntartott cDWU kapacitás adattisztítást vannak, és nem jelenik meg későbbi használat céljából.
+- **2. példa**: Vásárol 5 egységnyi 100 cDWU fenntartott kapacitást. Két DW100c SQL Data Warehouse-példányt futtat egy órán át. Ebben az esetben két használati esemény jön létre egyenként 1 egységnyi 100 cDWU használattal. Mindkét használati esemény megkapja a fenntartott kapacitásra érvényes kedvezményt. A fennmaradó 3 egységnyi 100 cDWU fenntartott kapacitás elveszik, és nem vihető tovább jövőbeli használatra.
 
-- **3. példa**: 1 egység 100 fenntartott cDWU-kapacitást vásárolhat. Két DW100c az SQL Data Warehouse-példányt futtat. Minden 30 percig fut. Ebben az esetben mindkét használati események lekérése tartalékkapacitást kedvezményeket jelentenek. Nem kell fizetni használatalapú fizetési díjszabás vonatkozik.
+- **3. példa**: Vásárol 1 egységnyi 100 cDWU fenntartott kapacitást. Két DW100c SQL Data Warehouse-példányt futtat. Mindkettő 30 percig fut. Ebben az esetben mindkét használati esemény megkapja a fenntartott kapacitásra érvényes kedvezményt. Nincs olyan használat, amelyért használatalapú díjat kellene fizetnie.
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolat
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Kapcsolat
 
 - Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>További lépések
 
-Azure-foglalások kapcsolatos további információkért tekintse meg a következő cikkeket:
+Az Azure Reservationszel kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-- [Mik az Azure-foglalásokat?](billing-save-compute-costs-reservations.md)
-- [Foglalás tranzakciók megtekintése](billing-view-reservations.md)
-- [Foglalás tranzakciók és a kihasználtság API-n keresztül](billing-reservation-apis.md)
+- [Mi az az Azure Reservations?](billing-save-compute-costs-reservations.md)
+- [Foglalási tranzakciók megtekintése](billing-view-reservations.md)
+- [Foglalási tranzakciók és kihasználtság lekérése API-n keresztül](billing-reservation-apis.md)
 - [Foglalások kezelése](billing-manage-reserved-vm-instance.md)

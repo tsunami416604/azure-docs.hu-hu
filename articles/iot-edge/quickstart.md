@@ -4,35 +4,32 @@ description: Ebben a rövid útmutató egy IoT Edge-eszköz létrehozása és ü
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 03/19/2019
+ms.date: 08/16/2019
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: bc859dc1e33abfee765a8f5b0f2a65bc24b7c2dc
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 0c397ca630dffb7671f84919c1e86cbcef645572
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226946"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69873614"
 ---
-# <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>Gyors útmutató: Az első IoT Edge-modul az Azure Portalon, egy Windows-eszköz üzembe helyezése – előzetes verzió
+# <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>Gyors útmutató: Az első IoT Edge-modul üzembe helyezése egy virtuális Windows-eszközön
 
-Ebben a rövid útmutatóban előre összeállított kódokat fog távolról üzembe helyezni egy IoT Edge-eszközön az Azure IoT Edge felhőalapú interfészével. Ez a feladat elvégzését, először létrehozhat és a Windows virtuális gép működjön, az IoT Edge-eszköz konfigurálása, majd telepíthet egy modul rá.
+Kipróbálhatja Azure IoT Edge ebben a rövid útmutatóban, ha egy virtuális IoT Edge eszközre helyez üzembe tároló kódot. IoT Edge lehetővé teszi a kódok távoli kezelését az eszközökön, így több számítási feladatot is elküldhet a peremhálózat számára. Ebben a rövid útmutatóban azt javasoljuk, hogy használjon egy Azure-beli virtuális gépet a IoT Edge eszközhöz, amellyel gyorsan létrehozhat egy tesztelési gépet, telepítheti az előfeltételeket, majd törölheti azt, ha elkészült. 
 
 Ennek a rövid útmutatónak a segítségével megtanulhatja az alábbiakat:
 
 1. IoT Hub létrehozása
 2. IoT Edge-eszköz regisztrálása az IoT Hubon
-3. Az IoT Edge-futtatókörnyezet telepítése és elindítása az eszközén.
+3. Telepítse és indítsa el a IoT Edge futtatókörnyezetet a virtuális eszközön.
 4. Modul távoli üzembe helyezése IoT Edge-eszközön és Telemetria küldése az IoT Hubnak
 
 ![Diagram – rövid útmutató architektúra eszközhöz és a felhő](./media/quickstart/install-edge-full.png)
 
-A jelen rövid útmutatóban üzembe helyezett modul egy szimulált érzékelő, amely hőmérséklet-, páratartalom- és nyomásadatokat állít elő. A további Azure IoT Edge-oktatóanyagok az itt elvégzett munkára építkeznek olyan modulok üzembe helyezésével, amelyek a szimulált adatok elemzésével üzleti megállapításokat hoznak létre.
-
-> [!NOTE]
-> Windows rendszeren az IoT Edge-futtatókörnyezet [nyilvános előzetes verzióban](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) érhető el.
+Ez a rövid útmutató végigvezeti a Windows rendszerű virtuális gépek létrehozásának és a IoT Edge eszközre való konfigurálásának lépésein. Ezután egy modult helyezhet üzembe az eszközén az Azure Portalról. A jelen rövid útmutatóban üzembe helyezett modul egy szimulált érzékelő, amely hőmérséklet-, páratartalom- és nyomásadatokat állít elő. A további Azure IoT Edge-oktatóanyagok az itt elvégzett munkára építkeznek olyan modulok üzembe helyezésével, amelyek a szimulált adatok elemzésével üzleti megállapításokat hoznak létre.
 
 Ha nem rendelkezik aktív Azure-előfizetéssel, kezdetnek hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free).
 
@@ -58,23 +55,29 @@ Felhőerőforrások:
 
 IoT Edge-eszköz:
 
-* Egy Windows virtuális gépet ügyfélgépként az IoT Edge-eszköz. Ezt a következő parancsot, és cserélje le a virtuális gépet hozhat létre *{password}* biztonságos jelszó:
+* Egy Windows rendszerű virtuális gép, amely IoT Edge eszközként működik. Ezt a virtuális gépet a következő parancs használatával hozhatja létre, a *{Password}* helyére pedig biztonságos jelszót:
 
   ```azurecli-interactive
   az vm create --resource-group IoTEdgeResources --name EdgeVM --image MicrosoftWindowsDesktop:Windows-10:rs5-pro:latest --admin-username azureuser --admin-password {password} --size Standard_DS1_v2
   ```
 
-  Hozzon létre, és az új virtuális gép elindítása néhány percig is eltarthat. Ezután letöltheti egy RDP-fájl, amely a virtuális géphez való csatlakozáskor:
+  Az új virtuális gép létrehozása és elindítása néhány percet is igénybe vehet. Ezután letöltheti a virtuális géphez való csatlakozáskor használandó RDP-fájlt:
 
-  1. Keresse meg az új Windows virtuális gépet az Azure Portalon.
+  1. Navigáljon az új Windowsos virtuális géphez a Azure Portal.
   1. Kattintson a **Csatlakozás** gombra.
-  1. Az a **RDP** lapon jelölje be **RDP-fájl letöltése**.
+  1. Az **RDP** lapon válassza az **RDP-fájl letöltése**lehetőséget.
 
-  Nyissa meg ezt a fájlt a Windows virtuális gép használata a rendszergazdai felhasználónevét és jelszavát a megadott kapcsolódni a távoli asztali kapcsolat a `az vm create` parancsot.
+  Nyissa meg ezt a fájlt a távoli asztali kapcsolat használatával a Windows rendszerű virtuális géphez való kapcsolódáshoz a `az vm create` paranccsal megadott rendszergazdai névvel és jelszóval.
+
+
+> [!NOTE]
+> Ez a rövid útmutató az egyszerűség kedvéért egy Windows rendszerű virtuális gépet használ. További információ arról, hogy mely Windows operációs rendszerek érhetők el általánosan az éles környezetekben: [Azure IoT Edge támogatott rendszerek](support.md).
+>
+> Ha készen áll a IoT Edgehoz tartozó saját Windows-eszköz konfigurálására, beleértve az IoT Core-ot futtató eszközöket, kövesse a [Azure IoT Edge futtatókörnyezet telepítése Windows rendszeren](how-to-install-iot-edge-windows.md)című témakör lépéseit.
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
-Először a rövid útmutató egy IoT hub létrehozása az Azure CLI használatával.
+A rövid útmutató elindításához hozzon létre egy IoT hubot az Azure CLI-vel.
 
 ![Diagram – a felhőben az IoT hub létrehozása](./media/quickstart/create-iot-hub.png)
 
@@ -111,49 +114,59 @@ IoT Edge-eszközök viselkednek, és működnek, mint a tipikus IoT-eszközök f
    az iot hub device-identity show-connection-string --device-id myEdgeDevice --hub-name {hub_name}
    ```
 
-3. Másolja az értéket, a `connectionString` a JSON-kimeneteket a kulcsát, és mentse azt. Ezt az értéket az eszköz kapcsolati karakterláncának. Ez a kapcsolati karakterlánc használatával fog az IoT Edge-futtatókörnyezet konfigurálása a következő szakaszban.
+3. Másolja a `connectionString` kulcs értékét a JSON-kimenetből, és mentse. Ez az érték az eszköz-kapcsolatok karakterlánca. Ezt a kapcsolódási karakterláncot fogja használni a IoT Edge futtatókörnyezet konfigurálásához a következő szakaszban.
 
-   ![Kapcsolati karakterlánc lekérése a CLI-kimenetből](./media/quickstart/retrieve-connection-string.png)
+   ![A CLI-kimenetből származó kapcsolatok karakterláncának beolvasása](./media/quickstart/retrieve-connection-string.png)
 
 ## <a name="install-and-start-the-iot-edge-runtime"></a>Az IoT Edge-futtatókörnyezet telepítése és elindítása
 
 Telepítse az Azure IoT Edge-futtatókörnyezetet az IoT Edge-eszközön, és a konfigurálást eszközkapcsolati sztring használatával végezze el.
 ![Diagram - indítása a futtatókörnyezet az eszközön](./media/quickstart/start-runtime.png)
 
-Az IoT Edge-futtatókörnyezet minden IoT Edge-eszközön üzembe van helyezve. Három összetevőből áll. A **IoT Edge biztonsági démon** minden alkalommal, amikor egy IoT Edge-eszköz indul el, és csatlakoztatja az eszközt az IoT Edge-ügynök elindításával kezdődik. A **IoT Edge-ügynök** kezeli a központi telepítési és a modulok IoT Edge-eszközön, beleértve az IoT Edge hubot a figyelését. A **IoT Edge hubot** modulok az IoT Edge-eszköz között, és az eszköz és az IoT Hub közötti kommunikációt kezeli.
+Az IoT Edge-futtatókörnyezet minden IoT Edge-eszközön üzembe van helyezve. Három összetevőből áll. A **IoT Edge biztonsági démon** minden alkalommal elindul, amikor egy IoT Edge-eszköz elindul, és elindítja az eszközt a IoT Edge ügynök elindításával. A **IoT Edge ügynök** kezeli a IoT Edge eszközön található modulok telepítését és figyelését, beleértve az IoT Edge hubot is. Az **IoT Edge hub** kezeli a IoT Edge eszközön található modulok közötti kommunikációt, valamint az eszköz és a IoT hub között.
 
-A telepítési parancsfájlt is tartalmaz, amely kezeli a tárolórendszerképeket az IoT Edge-eszközön Moby nevű container-motor.
+A telepítési parancsfájl tartalmaz egy Moby nevű tároló motort is, amely a IoT Edge eszközön lévő tároló lemezképeit kezeli.
 
 A futtatókörnyezet telepítése során a rendszer rá fog kérdezni az eszközkapcsolati sztringre. Ez esetben az Azure CLI-ről lekért sztringet használja. Ez a sztring társítja a fizikai eszközt az IoT Edge-eszköz identitásához az Azure-ban.
 
 ### <a name="connect-to-your-iot-edge-device"></a>Csatlakozás az IoT Edge-eszköz
 
-A lépéseket ebben a szakaszban az összes kerül sor az IoT Edge-eszközön, így a virtuális gép most már a távoli asztalon keresztül csatlakozni szeretne.
+Az ebben a szakaszban foglalt lépések mindegyike a IoT Edge eszközön történik, így most a Távoli asztalról szeretne csatlakozni a virtuális géphez.
 
-### <a name="prepare-your-device-for-containers"></a>Az eszköz előkészítése for containers szolgáltatásban
-
-A telepítési parancsfájl automatikusan telepíti a Moby motor az eszköz IoT Edge telepítése előtt. Az eszköz előkészítése a tárolók funkció bekapcsolásával.
-
-1. A kezdő sávban keresse meg **kapcsolja be Windows-szolgáltatások be- és kikapcsolása** , és nyissa meg a Vezérlőpult programjában.
-1. Keresse meg és jelölje ki **tárolók**.
-1. Kattintson az **OK** gombra.
-
-Ha elkészült, újra kell indítania a Windows a módosítások érvénybe léptetéséhez, de helyett az Azure Portalon a virtuális gép újraindítása a távoli asztali munkamenetből megteheti.
-
-### <a name="download-and-install-the-iot-edge-service"></a>Az IoT Edge-szolgáltatás letöltése és telepítése
+### <a name="install-and-configure-the-iot-edge-service"></a>A IoT Edge szolgáltatás telepítése és konfigurálása
 
 Az IoT Edge-futtatókörnyezet letöltése és telepítése a PowerShell használatával történik. Az eszköz konfigurálásához az IoT Hubról lekért eszközkapcsolati sztringet használja.
 
-1. IoT Edge-eszközén futtassa a PowerShellt rendszergazdaként.
+1. Ha még nem tette meg, kövesse az [új Azure IoT Edge eszköz regisztrálása](how-to-register-device-portal.md) az eszköz regisztrálásához és az eszköz kapcsolódási karakterláncának beolvasásához című témakör lépéseit. 
 
-2. Töltse le és telepítse az IoT Edge-szolgáltatást az eszközre.
+2. Futtassa a PowerShellt rendszergazdaként.
+
+   >[!NOTE]
+   >A PowerShell AMD64-munkamenetének használatával telepítse a IoT Edge, nem a PowerShellt (x86). Ha nem biztos abban, hogy melyik munkamenet-típust használja, futtassa a következő parancsot:
+   >
+   >```powershell
+   >(Get-Process -Id $PID).StartInfo.EnvironmentVariables["PROCESSOR_ARCHITECTURE"]
+   >```
+
+3. Az **Deploy-IoTEdge** parancs ellenőrzi, hogy a Windows rendszerű számítógép támogatott verziójú-e, bekapcsolja a tárolók szolgáltatást, letölti a Moby Runtime-t, majd letölti a IoT Edge futtatókörnyezetet.
 
    ```powershell
    . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
-   Install-SecurityDaemon -Manual -ContainerOs Windows
+   Deploy-IoTEdge -ContainerOs Windows
    ```
 
-3. Ha a rendszer a **DeviceConnectionString** megadására kéri, akkor illessze be az előző szakaszból átmásolt sztringet. A kapcsolati sztring elé és után ne írjon idézőjeleket.
+4. Előfordulhat, hogy a gép automatikusan újraindul. Ha a Deploy-IoTEdge parancs kéri az újraindítást, tegye meg most. 
+
+5. Futtassa újra a PowerShellt rendszergazdaként.
+
+6. Az **inicializálás-IoTEdge** parancs konfigurálja a IoT Edge futtatókörnyezetet a gépen. A parancs alapértelmezett értéke a Windows-tárolók manuális kiépítés. 
+
+   ```powershell
+   . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
+   Initialize-IoTEdge -ContainerOs Windows
+   ```
+
+7. Ha a rendszer a **DeviceConnectionString** megadására kéri, akkor illessze be az előző szakaszból átmásolt sztringet. A kapcsolati sztring elé és után ne írjon idézőjeleket.
 
 ### <a name="view-the-iot-edge-runtime-status"></a>Az IoT Edge-futtatókörnyezet állapotának megtekintése
 
@@ -168,14 +181,7 @@ Ellenőrizze, hogy a futtatókörnyezet megfelelően lett-e telepítve és konfi
 2. Ha hibaelhárításra van szükség, kérje le a szolgáltatás naplóit.
 
    ```powershell
-   # Displays logs from today, newest at the bottom.
-
-   Get-WinEvent -ea SilentlyContinue `
-    -FilterHashtable @{ProviderName= "iotedged";
-      LogName = "application"; StartTime = [datetime]::Today} |
-    select TimeCreated, Message |
-    sort-object @{Expression="TimeCreated";Descending=$false} |
-    format-table -autosize -wrap
+   . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
    ```
 
 3. Tekintse meg az IoT Edge-eszközön futó összes modult. Mivel első alkalommal indította el ezt a szolgáltatást, csak az **edgeAgent** modulnak szabad futnia. Az edgeAgent alapértelmezés szerint fut, és segíti az eszközön esetlegesen üzembe helyezett további modulok telepítését és indítását.
@@ -186,22 +192,22 @@ Ellenőrizze, hogy a futtatókörnyezet megfelelően lett-e telepítve és konfi
 
    ![Egy modul megtekintése az eszközön](./media/quickstart/iotedge-list-1.png)
 
-Igénybe vehet néhány percet, amíg a telepítés befejeződik, és az IoT Edge-ügynök modul elindításához.
+Eltarthat néhány percig, amíg a telepítés befejeződik, és elindul a IoT Edge Agent modul.
 
 Ezzel konfigurálta az IoT Edge-eszközt. Az eszköz készen áll a felhőben üzembe helyezett modulok futtatására.
 
 ## <a name="deploy-a-module"></a>Modul üzembe helyezése
 
-Az Azure IoT Edge-eszköz felügyelete a felhőből, üzembe helyezéséhez a modul, amely telemetriai adatokat küld az IoT hubnak.
+Felügyelheti Azure IoT Edge eszközét a felhőből egy olyan modul üzembe helyezéséhez, amely telemetria adatokat küld IoT Hub.
 ![Diagram - eszközre a felhőből modul üzembe helyezése](./media/quickstart/deploy-module.png)
 
 [!INCLUDE [iot-edge-deploy-module](../../includes/iot-edge-deploy-module.md)]
 
 ## <a name="view-generated-data"></a>A létrejött adatok megtekintése
 
-Ebben a rövid útmutatóban IoT Edge-eszköz regisztrálása, és az IoT Edge-futtatókörnyezet telepíthető. Az Azure Portalon, majd az eszköz maga az eszköz módosításához nélkül futtathat egy IoT Edge-modul telepítéséhez használt.
+Ebben a rövid útmutatóban regisztrált egy IoT Edge eszközt, és telepítette a IoT Edge futtatókörnyezetet. Ezt követően a Azure Portal használatával telepítheti az eszközön a IoT Edge modult anélkül, hogy magát az eszközt kellene módosítania.
 
-Ebben az esetben a modul, amely a leküldött teszteléshez használható mintaadatokat hoz létre. A szimulált hőmérsékleti érzékelő modul újabb teszteléséhez használható környezeti adatok állít elő. A szimulált érzékelő által figyelt, a gép körül a környezet és a egy gép. Az érzékelő Előfordulhat például, egy kiszolgáló szobában, egy gyárban, vagy egy szélturbina sürgősségi. Az üzenet tartalmazza a környezeti hőmérséklet és páratartalom, gép hőmérséklet és nyomás és a egy időbélyegző. Az IoT Edge-oktatóanyagok a Tesztadatok elemzéshez, a modul által létrehozott adatokat használja.
+Ebben az esetben a lekért modul a teszteléshez használható mintaadatok létrehozását hozza létre. A szimulált hőmérséklet-érzékelő modul olyan környezeti adattípusokat hoz létre, amelyeket később tesztelésre használhat. A szimulált érzékelő a gépet és a környezetet is figyeli a gép körül. Előfordulhat például, hogy ez az érzékelő egy kiszolgálói helyiségben, egy gyári emeleten vagy egy szélturbina található. Az üzenet tartalmazza a környezeti hőmérsékletet, a páratartalomot, a gépi hőmérsékletet és a nyomást, valamint egy időbélyeget. A IoT Edge oktatóanyagok a modul által létrehozott adatelemzési adatként használják.
 
 Győződjön meg arról, hogy a felhőből üzembe helyezett modul fut az IoT Edge-eszközön.
 
@@ -211,49 +217,36 @@ iotedge list
 
    ![Három modul megtekintése az eszközön](./media/quickstart/iotedge-list-2.png)
 
-A hőmérséklet-érzékelő modulból a felhőbe küldött üzenetek megjelenítése.
+Megtekintheti a hőmérséklet-érzékelő modulból a felhőbe küldött üzeneteket.
 
 ```powershell
 iotedge logs SimulatedTemperatureSensor -f
 ```
 
    >[!TIP]
-   >IoT Edge-parancsok modulneveket kontextusban való megnevezésekor nagybetűk között.
+   >IoT Edge parancsok a kis-és nagybetűk megkülönböztetésére szolgálnak a modulok neveire való hivatkozáskor.
 
    ![A modulból származó adatok megtekintése](./media/quickstart/iotedge-logs.png)
 
-Az üzeneteket az IoT hub kiszolgálófarmban használatával is megtekintheti a [Azure IoT Hub-eszközkészlet bővítmény a Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (korábbi nevén Azure IoT-eszközkészlet bővítmény).
+Megtekintheti az IoT hub-ra érkező üzeneteket a [Visual Studio Code-hoz készült azure IoT hub Toolkit bővítménnyel](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (korábbi nevén Azure IoT Toolkit Extension) is.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha tovább szeretne dolgozni az IoT Edge-oktatóanyagokkal, használhatja az ebben a rövid útmutatóban regisztrált és létrehozott eszközt. Ha nem, törölheti a létrehozott Azure-erőforrásokat, és eltávolíthatja az IoT Edge-futtatókörnyezetet az eszközről.
-
-### <a name="delete-azure-resources"></a>Azure-erőforrások törlése
+Ha tovább szeretne dolgozni az IoT Edge-oktatóanyagokkal, használhatja az ebben a rövid útmutatóban regisztrált és létrehozott eszközt. Ellenkező esetben törölheti a létrehozott Azure-erőforrásokat a díjak elkerülése érdekében.
 
 Ha a virtuális gépet és az IoT Hubot egy új erőforráscsoportban hozta létre, törölheti azt a csoportot és az összes társított erőforrást. Ellenőrizze a győződjön meg arról, hogy ott az erőforráscsoportot, amelybe a tartalmát a semmi meg szeretné tartani. A teljes csoport törlése nem szeretné, ha ehelyett törölheti az egyes erőforrásokat.
 
 Távolítsa el az **IoTEdgeResources** csoportot.
 
-   ```azurecli-interactive
-   az group delete --name IoTEdgeResources
-   ```
-
-### <a name="remove-the-iot-edge-runtime"></a>Az IoT Edge-futtatókörnyezet eltávolítása
-
-Ha el szeretné távolítani a telepítéseket az eszközéről, azt a következő parancsokkal teheti meg.  
-
-Távolítsa el az IoT Edge-futtatókörnyezetet. Ha az IoT Edge újratelepítését tervezi, hagyja ki a `-DeleteConfig` és `-DeleteMobyDataRoot` paramétereket, hogy ugyanazzal a konfigurációval, amely az imént beállított telepítse újra.
-
-   ```powershell
-   . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
-   Uninstall-SecurityDaemon -DeleteConfig -DeleteMobyDataRoot
-   ```
+```azurecli-interactive
+az group delete --name IoTEdgeResources
+```
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban létrehozott egy IoT Edge-eszközön, és az eszközre kód üzembe helyezése az Azure IoT Edge felhőalapú interfésze használt. Most már van egy teszteszköze, amely nyers adatokat állít elő a környezetéről.
+Ebben a rövid útmutatóban létrehozott egy IoT Edge eszközt, és a Azure IoT Edge Cloud Interface használatával helyezi üzembe a kódot az eszközön. Most már van egy teszteszköze, amely nyers adatokat állít elő a környezetéről.
 
-Továbbléphet bármely másik oktatóanyagra, és megtudhatja, hogyan alakíthatja üzleti megállapításokká ezeket az adatokat a peremhálózaton az Azure IoT Edge segítségével.
+A következő lépés a helyi fejlesztési környezet beállítása, amelynek segítségével megkezdheti az üzleti logikát futtató IoT Edge-modulok létrehozását. 
 
 > [!div class="nextstepaction"]
-> [Érzékelők adatainak szűrése Azure Functions-függvényekkel](tutorial-deploy-function.md)
+> [IoT Edge-modulok fejlesztésének megkezdése Windows-eszközökön](tutorial-develop-for-windows.md)

@@ -6,14 +6,14 @@ manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 07/03/2017
+ms.date: 05/11/2019
 ms.author: robinsh
-ms.openlocfilehash: 274b77644326cbf73696aae77b48afcbc63aa4c2
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 5dd93af7deec2b0c8c90f6a8586de905207ad0a6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59049972"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65796363"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>Importálása és exportálása az IoT Hub-eszközidentitásokat tömeges
 
@@ -84,6 +84,10 @@ while(true)
   await Task.Delay(TimeSpan.FromSeconds(5));
 }
 ```
+
+## <a name="device-importexport-job-limits"></a>Importálási/exportálási feladat eszközkorlátok
+
+1 aktív eszközök importálása, vagy exportálási feladatot minden IoT Hub-szint esetében egyszerre engedélyezett. Az IoT Hub is feladatok műveletek sebessége korlátokkal rendelkeznek. További tudnivalókért lásd: [referencia az IoT Hub kvótái és szabályozása](iot-hub-devguide-quotas-throttling.md).
 
 ## <a name="export-devices"></a>Eszközök exportálása
 
@@ -390,7 +394,7 @@ while(true)
 
 ## <a name="get-the-container-sas-uri"></a>A tároló SAS URI-JÁNAK beolvasása
 
-Az alábbi példakód bemutatja, hogyan hozhat létre egy [SAS URI-t](../storage/blobs/storage-dotnet-shared-access-signature-part-2.md) az olvasási, írási és törlési engedélyek blob tárolóhoz:
+Az alábbi példakód bemutatja, hogyan hozhat létre egy [SAS URI-t](../storage/common/storage-dotnet-shared-access-signature-part-1.md) az olvasási, írási és törlési engedélyek blob tárolóhoz:
 
 ```csharp
 static string GetContainerSasUri(CloudBlobContainer container)
@@ -420,7 +424,7 @@ static string GetContainerSasUri(CloudBlobContainer container)
 Ebben a cikkben megtanulta, hogyan az IoT hub szemben az eszközidentitás-jegyzék tömeges műveletek végrehajtásához. Az alábbi hivatkozásokból tudhat meg többet az Azure IoT Hub kezelése:
 
 * [Az IoT Hub-metrikák](iot-hub-metrics.md)
-* [Műveletek figyelése](iot-hub-operations-monitoring.md)
+* [IoT Hub-naplók](iot-hub-monitor-resource-health.md)
 
 Részletesebb megismerése az IoT Hub képességeit, tekintse meg:
 

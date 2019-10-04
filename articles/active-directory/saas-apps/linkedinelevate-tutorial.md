@@ -1,261 +1,257 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integráció, a LinkedIn-szintjének emelése |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a LinkedIn jogosultságszint-emelés között.
+title: 'Oktatóanyag: Azure Active Directory a LinkedIn emelt szintű integrációval | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és a LinkedIn jogosultságszint-emelése között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 2ad9941b-c574-42c3-bd0f-5d6ec68537ef
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 05/16/2018
+ms.topic: tutorial
+ms.date: 04/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ca8e537f261b59fb4e069d47d24e21abbdeca46
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5b7cb8d6ab34a632e36ea2fd1c87005a038bc523
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56202010"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68823715"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-linkedin-elevate"></a>Oktatóanyag: Az Azure Active Directory-integráció, a LinkedIn-szintjének emelése
+# <a name="tutorial-azure-active-directory-integration-with-linkedin-elevate"></a>Oktatóanyag: Azure Active Directory a LinkedIn-jogosultságszint-integrációval
 
-Ebben az oktatóanyagban elsajátíthatja a jogosultságszint-emelés LinkedIn integrálása az Azure Active Directory (Azure AD).
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a LinkedIn-t a Azure Active Directory (Azure AD) szolgáltatással.
+A LinkedIn emelt szintű Azure AD-vel való integrálásával az alábbi előnyökkel jár:
 
-Jogosultságszint-emelés LinkedIn integrálása az Azure ad-vel nyújt a következő előnyökkel jár:
+* Az Azure AD-ben beállíthatja, hogy ki férhet hozzá a LinkedIn jogosultságszint-emeléshez.
+* Engedélyezheti a felhasználók számára, hogy automatikusan bejelentkezzenek a LinkedIn-jogosultságszint (egyszeri bejelentkezés) szolgáltatásba az Azure AD-fiókkal.
+* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-- Szabályozhatja, hogy ki férhet hozzá a LinkedIn jogosultságszint-emelés Azure AD-ben
-- Az Azure AD-fiókjukat engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett a LinkedIn jogosultságszint-emelés (egyszeri bejelentkezés)
-- A fiókok egyetlen központi helyen – az Azure felügyeleti portálján kezelheti.
-
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció konfigurálása a jogosultságszint-emelés LinkedIn, a következőkre van szükség:
+Az Azure AD-integráció a LinkedIn jogosultságszint-vel való konfigurálásához a következő elemek szükségesek:
 
-- Azure AD-előfizetés
-- A LinkedIn jogosultságszint-emelés egyszeri bejelentkezéses engedélyezett előfizetés
-
-> [!NOTE]
-> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
-
-Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
-
-- Az éles környezetben ne használjon, ha erre szükség.
-- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, beszerezheti a egy egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/).
+* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, [ingyenes fiókot](https://azure.microsoft.com/free/) szerezhet be
+* LinkedIn emelt szintű egyszeri bejelentkezésre alkalmas előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
-Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. LinkedIn jogosultságszint-emelés hozzáadása a katalógusból
-1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
-## <a name="adding-linkedin-elevate-from-the-gallery"></a>LinkedIn jogosultságszint-emelés hozzáadása a katalógusból
-Az Azure AD integrálása a LinkedIn jogosultságszint-emelés konfigurálásához hozzá kell LinkedIn jogosultságszint-emelés a katalógusból a felügyelt SaaS-alkalmazások listájára.
+* A LinkedIn Jogosultságszint-emelés támogatja **az SP és a identitásszolgáltató** által kezdeményezett SSO-t
 
-**Adja hozzá a LinkedIn-szintjének emelése a katalógusból, hajtsa végre az alábbi lépéseket:**
+* A LinkedIn jogosultságszint-emelési **szolgáltatás csak időben támogatja a** felhasználók üzembe helyezését
 
-1. Az a  **[Azure felügyeleti portálján](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+* A LinkedIn jogosultságszint-emelése támogatja az [ **automatikus** felhasználó-kiépítés használatát](linkedinelevate-provisioning-tutorial.md)
 
-    ![Active Directory][1]
+## <a name="adding-linkedin-elevate-from-the-gallery"></a>LinkedIn-jogosultságszint hozzáadása a katalógusból
 
-1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+A LinkedIn emelt szintű Azure AD-integrációjának konfigurálásához hozzá kell adnia a LinkedIn-t a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-    ![Alkalmazások][2]
+**A következő lépések végrehajtásával adhatja hozzá a LinkedIn-jogosultságszint-emelést a gyűjteményhez:**
 
-1. Kattintson a **Hozzáadás** gombra a párbeszédpanel tetején.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
-    ![Alkalmazások][3]
+    ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-1. A Keresés mezőbe írja be a **LinkedIn jogosultságszint-emelés**. Az eredmények panelen kattintson a **LinkedIn jogosultságszint-emelés** , vegye fel az alkalmazást.
+2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/linkedinelevate-tutorial/tutorial-linkedinElevate_000.png)
+    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
-Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés LinkedIn jogosultságszint-emelés a "Britta Simon" nevű tesztelési felhasználó.
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
-Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó LinkedIn jogosultságszint-emelés mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó jogosultságszintjének LinkedIn hivatkozás kapcsolata kell létrehozni.
+    ![Az új alkalmazás gomb](common/add-new-app.png)
 
-Ez a hivatkozás-kapcsolat létesítéséhez értéket rendeli az **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** a LinkedIn jogosultságszint-emelés.
+4. A keresőmezőbe írja be a **LinkedIn jogosultságszint**-emelést, válassza a **LinkedIn Jogosultságszint-emelés** az eredmények panelen lehetőséget, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-Az Azure AD egyszeri bejelentkezés a LinkedIn jogosultságszint-emelés tesztelése és konfigurálása, hajtsa végre a következő építőelemeit kell:
+    ![LinkedIn-Jogosultságszint-emelés az eredmények listájában](common/search-new-app.png)
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-1. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-1. **[LinkedIn jogosultságszint-emelés tesztfelhasználó létrehozása](#creating-a-linkedin-elevate-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-1. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-1. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja és teszteli a LinkedIn megemelésével a **Britta Simon**nevű teszt felhasználó alapján.
+Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a LinkedIn-jogosultságszint kapcsolódó felhasználója közötti kapcsolat létesítésére van szükség.
 
-Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure felügyeleti portálon és a LinkedIn jogosultságszint-emelés alkalmazását az egyszeri bejelentkezés konfigurálása.
+Az Azure AD egyszeri bejelentkezés a LinkedIn jogosultságszint-vel való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
-**LinkedIn jogosultságszint-emelés konfigurálni az Azure AD egyszeri bejelentkezés, hajtsa végre az alábbi lépéseket:**
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. A **[LinkedIn emelt szintű egyszeri bejelentkezés beállítása](#configure-linkedin-elevate-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. A **[LinkedIn jogosultságszint-emelési teszt felhasználójának létrehozása](#create-linkedin-elevate-test-user)** – hogy rendelkezzen egy, a felhasználó Azure ad-képviseletéhez kapcsolódó, a LinkedIn-beli Britta.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-1. Az Azure felügyeleti portálon a a **LinkedIn jogosultságszint-emelés** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-    ![Egyszeri bejelentkezés konfigurálása][4]
+Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
 
-1. Az a **egyszeri bejelentkezési** párbeszédpanelen, **mód** kiválasztása **SAML-alapú bejelentkezés** való egyszeri bejelentkezés engedélyezése.
+Ha az Azure AD egyszeri bejelentkezést a LinkedIn jogosultságszint-emeléssel szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/linkedinelevate-tutorial/tutorial-linkedin_01.png)
+1. A [Azure Portal](https://portal.azure.com/)a **LinkedIn jogosultságszint** -emelése alkalmazás-integráció lapon válassza az **egyszeri bejelentkezés**lehetőséget.
 
-1. Egy másik böngészőablakban bejelentkezés, a LinkedIn jogosultságszint-emelés bérlői rendszergazdaként.
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-1. A **Account Center**, kattintson a **globális beállítások** alatt **beállítások**. Jelölje be **jogosultságszint-emelés – AAD-teszt jogosultságszint-emelés** a legördülő listából.
+2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
+
+    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
+
+3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
+
+    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+
+4. Az alapszintű **SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
+
+    ![A LinkedIn tartomány és az URL-címek egyszeri bejelentkezési információi](common/idp-intiated.png)
+
+    a. Az **azonosító** szövegmezőbe írja be az **entitás azonosítójának** értékét, majd másolja a LinkedIn-portál entitás-azonosító értékét az oktatóanyag későbbi részében ismertetett értékre.
+
+    b. A **Válasz URL-címe** szövegmezőbe írja be az " **ügyfél-hozzáférési (ACS-) URL-cím** " értéket, amely az oktatóanyag későbbi részében ismertetett, a LinkedIn-portálon megjelenő URL-cím értékét másolja.
+
+5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
+
+    ![A LinkedIn tartomány és az URL-címek egyszeri bejelentkezési információi](common/metadata-upload-additional-signon.png)
+
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://www.linkedin.com/checkpoint/enterprise/login/<AccountId>?application=elevate&applicationInstanceId=<InstanceId>`
+
+6. A LinkedIn jogosultságszint-emelési alkalmazás meghatározott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőfelvételen az alapértelmezett attribútumok listája látható, ahol a **NameIdentifier** a **User. userPrincipalName**leképezéssel van leképezve. A LinkedIn jogosultságszint-emelési alkalmazás azt várja, hogy a NameIdentifier a **User. mail**használatával legyen leképezve, ezért az attribútum-hozzárendelést úgy kell módosítania, hogy a Szerkesztés ikonra kattint, és megváltoztatja az attribútumok leképezését.
+
+    ![image](common/edit-attribute.png)
+
+7. A fentieken kívül a LinkedIn jogosultságszint-emelési alkalmazás néhány további attribútumot vár az SAML-válaszban. A **felhasználó attribútumai** párbeszédpanel felhasználói jogcímek szakaszában a következő lépésekkel adja hozzá az SAML-jogkivonat attribútumát az alábbi táblázatban látható módon:
+
+    | Name (Név) | Forrás attribútum|
+    | -------| -------------|
+    | Szervezeti egység | felhasználó. részleg |
+
+    a. Kattintson az **új jogcím hozzáadása** elemre a **felhasználói jogcímek kezelése** párbeszédpanel megnyitásához.
+
+    ![image](common/new-save-attribute.png)
+
+    ![image](common/new-attribute-details.png)
+
+    b. A **név** szövegmezőbe írja be az adott sorhoz megjelenített attribútum nevét.
+
+    c. Hagyja üresen a **névteret** .
+
+    d. Válassza a forrás **attribútumként**lehetőséget.
+
+    e. A **forrás attribútum** listáról írja be az adott sorhoz megjelenő attribútum értékét.
+
+    f. Kattintson a **Ok**
+
+    g. Kattintson a **Save** (Mentés) gombra.
+
+8. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
+
+    ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
+
+9. A **LinkedIn-jogosultságszint beállítása** szakaszban adja meg a megfelelő URL (eke) t a követelménynek megfelelően.
+
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
+
+    a. Bejelentkezési URL
+
+    b. Azure AD-azonosító
+
+    c. Kijelentkezési URL
+
+### <a name="configure-linkedin-elevate-single-sign-on"></a>A LinkedIn emelt szintű egyszeri bejelentkezés konfigurálása
+
+1. Egy másik böngészőablakban jelentkezzen be a LinkedIn emelt szintű bérlőre rendszergazdaként.
+
+1. A **Account Centerben**kattintson a **globális beállítások** elemre a **Beállítások**területen. A legördülő listából válassza az emelt szintű **HRE teszt** lehetőséget.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/linkedinelevate-tutorial/tutorial_linkedin_admin_01.png)
 
-1. Kattintson a **, vagy kattintson ide betöltése, és másolja ki az egyes mezők az űrlap** és másolási **entitásazonosító** és **helyességi feltétel fogyasztói Access (ACS) URL-címe**
+1. Kattintson **vagy kattintson ide az egyes mezők az űrlapról való betöltéséhez és másolásához** , majd hajtsa végre a következő lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/linkedinelevate-tutorial/tutorial_linkedin_admin_03.png)
 
-1. Az Azure Portalon alatt **LinkedIn jogosultságszint-emelés tartomány és URL-címek**, kövesse az alábbi lépéseket, ha szeretné az egyszeri bejelentkezést **identitásszolgáltató által kezdeményezett** mód
+    a. Másolja ki az **entitás azonosítóját** , és illessze be a Azure Portal alapszintű **SAML** -konfigurációjának **azonosító** szövegmezőbe.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/linkedinelevate-tutorial/tutorial_linkedin_signon_01.png)
+    b. Másolja ki az alkalmazás **-hozzáférési (ACS) URL-címet** , és illessze be az alapszintű **SAML-konfiguráció** **Válasz URL-címe** szövegmezőbe a Azure Portal.
 
-    a. Az a **azonosító** szövegmezőbe írja be a **Entitásazonosító** LinkedIn Portalról másolt 
-
-    b. Az a **válasz URL-cím** szövegmezőbe írja be a **helyességi feltétel fogyasztói Access (ACS) URL-cím** LinkedIn Portalról másolt
-
-1. Ha szeretné az egyszeri bejelentkezést **SP által kezdeményezett**, majd kattintson a speciális URL-cím megjelenítése beállítás a konfigurációs szakaszban, és konfigurálja a bejelentkezési URL-cím a következő mintának:
-
-    `https://www.linkedin.com/checkpoint/enterprise/login/<AccountId>?application=elevate&applicationInstanceId=<InstanceId>` 
-
-    ![Egyszeri bejelentkezés konfigurálása](./media/linkedinelevate-tutorial/tutorial_linkedin_signon_02.png) 
-
-1. LinkedIn jogosultságszint-emelés alkalmazását a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőfelvételen látható erre egy példa látható. Az alapértelmezett érték **felhasználóazonosító** van **user.userprincipalname** , de ezt képezhető le a felhasználó e-mail-címmel a LinkedIn jogosultságszint-emelés vár. Használhatja, amely **user.mail** attribútumot a listából, vagy használja a megfelelő attribútum értéket, a szervezet konfiguráció alapján.
-
-    ![Egyszeri bejelentkezés konfigurálása](./media/linkedinelevate-tutorial/updateusermail.png)
-
-1. A **felhasználói attribútumok** területén kattintson **megtekintése és egyéb felhasználói attribútumok szerkesztése** és attribútumainak beállítása. Egy másik jogcím nevű hozzá kell adnia **részleg** értékét le kell képezni, és **user.department**.
-
-    | Attribútum neve | Attribútum értéke |
-    | --- | --- |
-    | Szervezeti egység| user.department |
-
-      ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/linkedinelevate-tutorial/userattribute.png)
-
-      a. A megnyitásához az attribútum részleteit megjelenítő oldalon attribútum hozzáadása gombra kattintva adja hozzá a részleg attribútumot, ahogyan az alábbi-
-
-      ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/linkedinelevate-tutorial/adduserattribute.png)
-
-      b. Kattintson a **Ok** attribútum mentése.
-
-      c. Módosítsa a nevet a attribútum **emailaddress** való **e-mail**.
-
-1. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse az XML-fájlt a számítógépen.
-
-    ![Egyszeri bejelentkezés konfigurálása](./media/linkedinelevate-tutorial/tutorial-linkedinElevate_certificate.png) 
-
-1. Kattintson a **Save** (Mentés) gombra.
-
-    ![Egyszeri bejelentkezés konfigurálása](./media/linkedinelevate-tutorial/tutorial_general_400.png)
-
-1. Lépjen a **LinkedIn adminisztrátori beállítások** szakaszban. Töltse fel az imént letöltött az Azure Portalon kattintson a feltöltés XML beállítást XML-fájlt.
+1. Ugrás a **LinkedIn admin Settings** szakaszra. Töltse fel a Azure Portal letöltött XML-fájlt az XML-fájl feltöltése lehetőségre kattintva.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/linkedinelevate-tutorial/tutorial_linkedin_metadata_03.png)
 
-1. Kattintson a **a** egyszeri bejelentkezés engedélyezéséhez. Egyszeri bejelentkezés állapota változik **nincs csatlakoztatva** való **csatlakoztatva**
+1. Az egyszeri bejelentkezés engedélyezéséhez kattintson **a be** gombra. Az SSO-állapot **nem** kapcsolódik kapcsolathoz
 
     ![Egyszeri bejelentkezés konfigurálása](./media/linkedinelevate-tutorial/tutorial_linkedin_admin_05.png)
 
-### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása
-Ez a szakasz célja az Azure felügyeleti portálján, Britta Simon nevű hozzon létre egy tesztfelhasználót.
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-![Az Azure AD-felhasználó létrehozása][100]
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-**Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
+1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
 
-1. Az a **Azure Management portal**, a bal oldali navigációs panelén kattintson **Azure Active Directory** ikonra.
+    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/linkedinelevate-tutorial/create_aaduser_01.png) 
+2. Válassza ki **új felhasználó** a képernyő tetején.
 
-1. Lépjen a **felhasználók és csoportok** kattintson **minden felhasználó** felhasználók listájának megjelenítéséhez.
+    ![Új felhasználó gomb](common/new-user.png)
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/linkedinelevate-tutorial/create_aaduser_02.png) 
+3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
 
-1. Kattintson a párbeszédpanel tetején **Hozzáadás** megnyitásához a **felhasználói** párbeszédpanel.
+    ![A felhasználó párbeszédpanel](common/user-properties.png)
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/linkedinelevate-tutorial/create_aaduser_03.png) 
+    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
+  
+    b. A **Felhasználónév** mezőbe írja be `brittasimon@yourcompanydomain.extension`a nevet. Például: BrittaSimon@contoso.com
 
-1. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
-
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/linkedinelevate-tutorial/create_aaduser_04.png) 
-
-    a. Az a **neve** szövegmezőbe írja be **BrittaSimon**.
-
-    b. Az a **felhasználónév** szövegmezőbe írja be a **e-mail-cím** BrittaSimon az.
-
-    c. Válassza ki **jelszó megjelenítése** és jegyezze fel az értékét a **jelszó**.
+    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
 
-### <a name="creating-a-linkedin-elevate-test-user"></a>LinkedIn jogosultságszint-emelés tesztfelhasználó létrehozása
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-LinkedIn jogosultságszint-emelés alkalmazás támogatja a csak az idő felhasználókiépítés, miután a felhasználók hitelesítésére, az alkalmazás automatikusan létrejön. A rendszergazda a beállítások lapon a portál tükrözés LinkedIn szintjének emelése a kapcsoló **rendelhet hozzá licenceket** az aktív igény szerinti üzembe helyezést, és ez lesz is rendeljen egy licencet a felhasználó. LinkedIn jogosultságszintjének emeléséhez is támogatja a felhasználók automatikus átadása, további részleteket talál [Itt](linkedinelevate-provisioning-tutorial.md) konfigurálásának a felhasználók automatikus átadása.
+Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a LinkedIn jogosultságszint-emeléshez való hozzáférés biztosításával.
+
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **LinkedIn Jogosultságszint-emelés**lehetőséget.
+
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
+
+2. Az alkalmazások listában válassza a **LinkedIn Jogosultságszint-emelés**lehetőséget.
+
+    ![A LinkedIn jogosultságszint-emelési hivatkozása az alkalmazások listájában](common/all-applications.png)
+
+3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+
+    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+
+4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
+
+    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
+
+5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
+
+6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+
+7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+
+### <a name="create-linkedin-elevate-test-user"></a>LinkedIn jogosultságszint-emelési teszt felhasználó létrehozása
+
+A LinkedIn jogosultságszint-emelési alkalmazás a felhasználók üzembe helyezését támogatja, és a hitelesítéssel rendelkező felhasználók automatikusan jönnek létre az alkalmazásban. A LinkedIn jogosultságszint-emelési portál rendszergazdai beállítások lapján a kapcsoló **automatikusan hozzárendeli** a licenceket az aktív üzembe helyezéshez, és ez a felhasználóhoz is hozzárendel egy licencet. A LinkedIn Jogosultságszint-emelés a felhasználók automatikus üzembe helyezését is támogatja. további részletekért tekintse meg az automatikus felhasználó-kiépítés konfigurálását ismertető témakört. [](linkedinelevate-provisioning-tutorial.md)
 
    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/linkedinelevate-tutorial/LinkedinUserprovswitch.png)
 
-### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
-
-Ebben a szakaszban engedélyezze Britta Simon számára a hozzáférés biztosításával LinkedIn megszereznie Azure egyszeri bejelentkezés használatára.
-
-![Felhasználó hozzárendelése][200] 
-
-**Britta Simon rendel LinkedIn jogosultságszint-emelés, hajtsa végre az alábbi lépéseket:**
-
-1. Az Azure felügyeleti portálon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
-
-    ![Felhasználó hozzárendelése][201]
-
-1. Az alkalmazások listájában jelölje ki a **LinkedIn jogosultságszint-emelés**.
-
-    ![Egyszeri bejelentkezés konfigurálása](./media/linkedinelevate-tutorial/tutorial-linkedinElevate_0001.png) 
-
-1. A bal oldali menüben kattintson **felhasználók és csoportok**.
-
-    ![Felhasználó hozzárendelése][202] 
-
-1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
-
-    ![Felhasználó hozzárendelése][203]
-
-1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
-
-1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
-
-1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
-
-### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen a LinkedIn jogosultságszint-emelés csempére kattint, szerezheti be az Azure bejelentkezési oldalra, és a sikeres bejelentkezést követően szerezheti be a jogosultságszint-emelés LinkedIn alkalmazásba.
+Ha a hozzáférési panelen a LinkedIn Jogosultságszint-emelés csempére kattint, automatikusan be kell jelentkeznie arra a LinkedIn-jogosultságszint-emelésre, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-* [Oktatóanyag: A felhasználók automatikus átadása az Azure Active Directory konfigurálása a LinkedIn szintjének emelése](linkedinelevate-provisioning-tutorial.md)
-* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
-* [Felhasználók átadásának konfigurálása](linkedinelevate-provisioning-tutorial.md)
+- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: ./media/linkedinElevate-tutorial/tutorial_general_01.png
-[2]: ./media/linkedinElevate-tutorial/tutorial_general_02.png
-[3]: ./media/linkedinElevate-tutorial/tutorial_general_03.png
-[4]: ./media/linkedinElevate-tutorial/tutorial_general_04.png
-
-[100]: ./media/linkedinElevate-tutorial/tutorial_general_100.png
-
-[200]: ./media/linkedinElevate-tutorial/tutorial_general_200.png
-[201]: ./media/linkedinElevate-tutorial/tutorial_general_201.png
-[202]: ./media/linkedinElevate-tutorial/tutorial_general_202.png
-[203]: ./media/linkedinElevate-tutorial/tutorial_general_203.png
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

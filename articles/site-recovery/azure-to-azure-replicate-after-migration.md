@@ -1,87 +1,87 @@
 ---
-title: Vészhelyreállítás beállítása az Azure virtuális gépek az Azure-bA az Azure Site Recovery szolgáltatással az áttelepítés után |} A Microsoft Docs
-description: Ez a cikk ismerteti, hogyan készíti elő a gépek állíthat be vészhelyreállítást az Azure Site Recovery használatával való migrálás után Azure-régiók között.
+title: Azure-beli virtuális gépek vész-helyreállításának beállítása az Azure-ba való Migrálás után Azure Site Recovery
+description: Ez a cikk bemutatja, hogyan készítheti elő a gépeket az Azure-régiók közötti vész-helyreállítás beállításához az Azure-ba való Migrálás után Azure Site Recovery használatával.
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 04/16/2019
+ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 019c6ec776277a9102cb95cd685bbae0fc660d66
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: ff35c5e23c5d8a448d62a3eeb8d15ba8d5a531e4
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59615914"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814531"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>Az Azure-beli virtuális gépek vészhelyreállításának beállítása Azure-ba történő migrálás után 
 
 
-Ez a cikk kövesse, ha [a helyszíni gépek áttelepítése az Azure virtuális gépeire](tutorial-migrate-on-premises-to-azure.md) használatával a [Site Recovery](site-recovery-overview.md) szolgáltatás, és most szeretné, hogy a virtuális gépek egy másodlagos Azure régióra vész-helyreállítási beállítása. A cikk ismerteti, hogyan ellenőrizhető, hogy az Azure-beli Virtuálisgép-ügynök telepítve van-e az áttelepített virtuális gépeken, és hogyan távolítsa el a Site Recovery mobilitási szolgáltatást, amely az áttelepítés után már nem szükséges.
+Kövesse ezt a cikket, ha a [site Recovery](site-recovery-overview.md) szolgáltatás használatával [áttelepítette a helyszíni gépeket az Azure-beli virtuális gépekre](tutorial-migrate-on-premises-to-azure.md) , és most szeretné lekérni azokat a virtuális gépeket, amelyek a másodlagos Azure-régióba való helyreállításhoz lettek beállítva. A cikk azt ismerteti, hogyan biztosítható, hogy az Azure-beli virtuálisgép-ügynök telepítve legyen az áttelepített virtuális gépekre, és hogy miként távolítható el az áttelepítés után már nem szükséges Site Recovery mobilitási szolgáltatás.
 
 
 
 ## <a name="verify-migration"></a>Áttelepítés ellenőrzése
 
-Vészhelyreállítás beállítása előtt győződjön meg arról, hogy a várt módon áttelepítés befejeződött. Az áttelepítés sikeres, a feladatátvétel után kell választania a **az áttelepítés befejezése** beállítást, az egyes gépek, amelyeket szeretné áttelepíteni. 
+A vész-helyreállítás beállítása előtt győződjön meg arról, hogy az áttelepítés a várt módon fejeződött be. Az áttelepítés sikeres befejezéséhez a feladatátvétel után válassza a **teljes áttelepítési** lehetőséget minden áttelepíteni kívánt gépen. 
 
-## <a name="verify-the-azure-vm-agent"></a>Az Azure-beli Virtuálisgép-ügynök ellenőrzése
+## <a name="verify-the-azure-vm-agent"></a>Az Azure VM-ügynök ellenőrzése
 
-Minden egyes Azure virtuális Gépen kell rendelkeznie a [Azure Virtuálisgép-ügynök](../virtual-machines/extensions/agent-windows.md) telepítve. Az Azure-beli virtuális gépek replikálása, a Site Recovery egy kiterjesztést telepít az ügynökön.
+Minden egyes Azure-beli virtuális gépnek telepítve kell lennie az Azure virtuálisgép- [ügynöknek](../virtual-machines/extensions/agent-windows.md) . Az Azure-beli virtuális gépek replikálásához Site Recovery telepít egy bővítményt az ügynökön.
 
-- Ha a gép 9.7.0.0 verziója fut, vagy később a Site Recovery mobilitási szolgáltatást, az Azure-beli Virtuálisgép-ügynök automatikusan telepíti a mobilitási szolgáltatást a Windows virtuális gépek. A mobilitási szolgáltatás régebbi verzióin kell automatikusan telepítse az ügynököt.
-- Linux rendszerű virtuális gépekhez manuálisan kell telepíteni az Azure-beli Virtuálisgép-ügynök. Csak telepítenie kell az Azure-beli Virtuálisgép-ügynök v9.6 a mobilitási szolgáltatást a migrált gépen telepítve van-e vagy annál régebbi.
+- Ha a gép a Site Recovery mobilitási szolgáltatás 9.7.0.0 vagy újabb verzióját futtatja, a mobilitási szolgáltatás automatikusan telepíti az Azure-beli virtuálisgép-ügynököt a Windows rendszerű virtuális gépeken. A mobilitási szolgáltatás korábbi verzióiban az ügynököt automatikusan kell telepíteni.
+- Linux rendszerű virtuális gépek esetén manuálisan kell telepítenie az Azure virtuálisgép-ügynököt. Csak akkor kell telepítenie az Azure virtuálisgép-ügynököt, ha az áttelepített gépen telepített mobilitási szolgáltatás a v 9.6 vagy régebbi verzió.
 
 
-### <a name="install-the-agent-on-windows-vms"></a>Telepítse az ügynököt a Windows virtuális gépek
+### <a name="install-the-agent-on-windows-vms"></a>Az ügynök telepítése Windows rendszerű virtuális gépekre
 
-Ha egy korábban 9.7.0.0 a Site Recovery mobilitási szolgáltatás verzióját futtatja, vagy valamilyen más szükséges telepítse kézzel az ügynököt, tegye a következőket:  
+Ha a 9.7.0.0-nál korábbi Site Recovery mobilitási szolgáltatás verzióját futtatja, vagy az ügynököt manuálisan kell telepítenie, tegye a következőket:  
 
-1. Győződjön meg arról, hogy a rendszergazdai engedélyekkel rendelkezik a virtuális gépen.
-2. Töltse le a [Virtuálisgép-ügynök telepítőjének](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409).
-3. Futtassa a telepítő fájlt.
+1. Győződjön meg arról, hogy rendszergazdai jogosultságokkal rendelkezik a virtuális gépen.
+2. Töltse le a [VM-ügynök telepítőjét](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409).
+3. Futtassa a telepítőfájlt.
 
 #### <a name="validate-the-installation"></a>A telepítés ellenőrzése
-Ellenőrizze, hogy az ügynök telepítve van:
+Az ügynök telepítésének ellenőrzését:
 
-1. Az Azure virtuális gépen, a C:\WindowsAzure\Packages mappába megtekintheti a WaAppAgent.exe fájlt.
-2. Kattintson jobb gombbal a fájlra, majd a **tulajdonságok**, jelölje be a **részletei** fülre.
-3. Ellenőrizze, hogy a **termékverzió** mezőben látható 2.6.1198.718 vagy újabb.
+1. Az Azure-beli virtuális gépen a C:\WindowsAzure\Packages mappában látnia kell az WaAppAgent. exe fájlt.
+2. Kattintson a jobb gombbal a fájlra, majd a **Tulajdonságok**területen válassza a **részletek** lapot.
+3. Ellenőrizze, hogy a **termék verziója** mezőben a 2.6.1198.718 vagy a magasabb érték látható-e.
 
-[További](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) kapcsolatban a Windows-ügynök telepítését.
+[További](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) információ a Windows rendszerhez készült ügynök telepítéséről.
 
-### <a name="install-the-agent-on-linux-vms"></a>Telepítse az ügynököt a Linux rendszerű virtuális gépek
+### <a name="install-the-agent-on-linux-vms"></a>Az ügynök telepítése Linux rendszerű virtuális gépekre
 
-Telepítse a [Azure Linux rendszerű virtuális gép](../virtual-machines/extensions/agent-linux.md) ügynök manuálisan az alábbiak szerint:
+Telepítse manuálisan az [Azure Linux VM](../virtual-machines/extensions/agent-linux.md) -ügynököt az alábbiak szerint:
 
-1. Ellenőrizze, hogy rendszergazdai engedélye van a gépen.
-2. Javasoljuk, hogy az a terjesztési csomag adattárból az RPM- vagy DEB-csomag használatával Linux rendszerű virtuális gép-ügynök telepítése. Az összes a [terjesztési szolgáltatók által támogatott](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) integrálhatja az Azure-beli Linuxos ügynök csomag adattárak, valamint a lemezképek.
-    - Javasoljuk, hogy frissítse az ügynök csak egy terjesztési tárház keresztül.
-    - A Linux rendszerű Virtuálisgép-ügynök telepítésével közvetlenül a githubból, és frissítéskor nem ajánlott.
-    -  Ha a legújabb ügynököt a disztribúció nem érhető el, forduljon terjesztési támogatása útmutatást a telepítéshez. 
+1. Győződjön meg arról, hogy rendszergazdai jogosultságokkal rendelkezik a gépen.
+2. Javasoljuk, hogy a Linux rendszerű virtuális gép ügynökét egy RPM vagy egy DEB-csomag használatával telepítse a terjesztési csomag adattárában. Az összes [támogatott terjesztési szolgáltató](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) integrálja az Azure Linux-ügynök csomagját a lemezképbe és a tárházba.
+    - Javasoljuk, hogy csak terjesztési tárházon keresztül frissítse az ügynököt.
+    - Nem javasoljuk, hogy közvetlenül a GitHubról telepítse a Linux VM-ügynököt, és frissítse azt.
+    -  Ha a disztribúcióhoz tartozó legújabb ügynök nem érhető el, a telepítésével kapcsolatos útmutatásért forduljon az elosztási támogatáshoz. 
 
 #### <a name="validate-the-installation"></a>A telepítés ellenőrzése 
 
-1. Futtassa a következő parancsot: **ps -e** , győződjön meg arról, hogy az Azure-ügynököt a Linux rendszerű virtuális gépen fut-e.
-2. Ha a folyamat nem fut, indítsa újra a következő parancsokat:
-    - Az ubuntu rendszeren: **walinuxagent kezdő szolgáltatás**
-    - Egyéb-disztribúciókra vonatkozó: **waagent kezdő szolgáltatás**
+1. Futtassa ezt a parancsot: **PS-e** , és győződjön meg arról, hogy az Azure-ügynök fut a Linux rendszerű virtuális gépen.
+2. Ha a folyamat nem fut, indítsa újra a következő parancsok használatával:
+    - Ubuntu esetén: **Service walinuxagent Start**
+    - Egyéb disztribúciók esetén: **szolgáltatás waagent indítása**
 
 
 ## <a name="uninstall-the-mobility-service"></a>A mobilitási szolgáltatás eltávolítása
 
-1. A virtuális gépről az Azure, az alábbi módszerek valamelyikével távolítsa el manuálisan a mobilitási szolgáltatást. 
-    - A Windows, a Vezérlőpult > **programok**, távolítsa el **a Microsoft Azure Site Recovery mobilitási szolgáltatás vagy fő célkiszolgálóként kiszolgáló**. Egy rendszergazda jogú parancssorból futtassa a következő:
+1. Manuálisan távolítsa el a mobilitási szolgáltatást az Azure-beli virtuális gépről az alábbi módszerek egyikének használatával. 
+    - Windows esetén a Vezérlőpulton > Programok telepítése **/törlése**, **Microsoft Azure site Recovery mobilitási szolgáltatás/fő célkiszolgáló**eltávolítása. Futtassa a következő parancsot egy rendszergazda jogú parancssorban:
         ```
         MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\ASRSetupLogs\UnifiedAgentMSIUninstall.log"
         ```
-    - Linux esetén jelentkezzen be gyökérszintű felhasználóként. A parancsot egy terminálban váltson **/user/local/ASR**, és futtassa a következő parancsot:
+    - Linux esetén jelentkezzen be root felhasználóként. A terminálban nyissa meg a **/User/local/ASR**, és futtassa a következő parancsot:
         ```
         ./uninstall.sh -Y
         ```
-2. Indítsa újra a virtuális Gépet, mielőtt a replikáció konfigurálása.
+2. A replikáció konfigurálása előtt indítsa újra a virtuális gépet.
 
 ## <a name="next-steps"></a>További lépések
 
-[Tekintse át a hibaelhárítási](site-recovery-extension-troubleshoot.md) a Site Recovery-bővítmény, az Azure-beli Virtuálisgép-ügynök.
-[Gyorsan replikálja](azure-to-azure-quickstart.md) egy Azure virtuális Gépen egy másodlagos régióba.
+[Tekintse át](site-recovery-extension-troubleshoot.md) az Azure virtuálisgép-ügynök site Recovery bővítményének hibaelhárítását.
+[Gyorsan replikálhat](azure-to-azure-quickstart.md) egy Azure-beli virtuális gépet egy másodlagos régióba.

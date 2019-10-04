@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/13/2019
+ms.date: 05/30/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 8471ae8ed0b391df11d81569b5660a2b098f5793
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9306e44655bd172343f20ac4fda2b2c56afcfb88
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58000920"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164489"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>Oktatóanyag: A javaslatok a költségek optimalizálása
 
@@ -49,7 +49,17 @@ A felügyeleti csoport javaslatok megtekintéséhez nyissa meg a kívánt hatók
 
 A javaslatok listája a használat hatékonysági hiányosságainak azonosítja, vagy további pénzt takaríthat meg, amelyek segítségével vásárlási javaslatok megjelenítése. Az összegzett **lehetséges éves megtakarítások** takaríthat meg, állítsa le vagy szabadítsa fel a virtuális gépeket, amelyek megfelelnek a javaslat szabályokat az összes összegét mutatja. Ha nem szeretné leállíthatja őket, érdemes egy kevésbé költséges, Virtuálisgép-termékváltozatra méretezheti azokat.
 
-A **hatás** kategória, és a **lehetséges éves megtakarítások**, úgy tervezték, hogy könnyebben azonosítsák a javaslatok, amelyek a lehető legnagyobb mértékben mentése lehetséges. A nagy jelentőségű javaslatok láthatók, [vásárlás megtakarítást érhet el a használatalapú fizetéses költségekhez képest virtuálisgép-példányok lefoglalva](../advisor/advisor-cost-recommendations.md#buy-reserved-virtual-machine-instances-to-save-money-over-pay-as-you-go-costs) és [optimalizálása a virtuális gép átméretezése, vagy azokat az alacsony kihasználtságú példányokleállításafelhőköltéseiket](../advisor/advisor-cost-recommendations.md#optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances). Közepes hatású javaslatok [nem kiosztott ExpressRoute-Kapcsolatcsoportok kiküszöbölése révén csökkentheti a költségeket](../advisor/advisor-cost-recommendations.md#reduce-costs-by-eliminating-unprovisioned-expressroute-circuits) és [csökkentheti a költségeket törlése vagy újrakonfigurálása inaktív virtuális hálózati átjárók](../advisor/advisor-cost-recommendations.md#reduce-costs-by-deleting-or-reconfiguring-idle-virtual-network-gateways).
+A **hatás** kategória, és a **lehetséges éves megtakarítások**, úgy tervezték, hogy könnyebben azonosítsák a javaslatok, amelyek a lehető legnagyobb mértékben mentése lehetséges.
+
+Nagy hatású javaslatok:
+- [Megtakarítást érhet el a használatalapú fizetéses költségekhez képest fenntartott virtuálisgép-példányok vásárlásával](../advisor/advisor-cost-recommendations.md#buy-reserved-virtual-machine-instances-to-save-money-over-pay-as-you-go-costs)
+- [Optimalizálhatja a virtuális gép felhőköltéseiket kihasználatlan példányok leállítása és átméretezése](../advisor/advisor-cost-recommendations.md#optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances)
+- [Standard szintű tárolást használnak a Managed Disks pillanatképek tárolásához](../advisor/advisor-cost-recommendations.md#use-standard-snapshots-for-managed-disks)
+
+Közepes hatású javaslatok:
+- [Az Azure Data Factory-folyamatok, amelyek nem törlése](../advisor/advisor-cost-recommendations.md#delete-azure-data-factory-pipelines-that-are-failing)
+- [Nem kiosztott ExpressRoute-Kapcsolatcsoportok kiküszöbölése révén csökkentheti a költségeket](../advisor/advisor-cost-recommendations.md#reduce-costs-by-eliminating-unprovisioned-expressroute-circuits)
+- [Csökkentheti a költségeket törlése vagy újrakonfigurálása inaktív virtuális hálózati átjárók](../advisor/advisor-cost-recommendations.md#reduce-costs-by-deleting-or-reconfiguring-idle-virtual-network-gateways)
 
 ## <a name="act-on-a-recommendation"></a>Reagálás a javaslat
 

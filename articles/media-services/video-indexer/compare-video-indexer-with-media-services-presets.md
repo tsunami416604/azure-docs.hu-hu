@@ -7,18 +7,19 @@ author: juliako
 manager: femila
 editor: ''
 ms.service: media-services
+ms.subservice: video-indexer
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/07/2019
+ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: 2c98f6d12f4868e5f90874fe3210fe5368f7ca2d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 275178998948e357a6a72fbe5d0b3c9c01485a3a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59270336"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65800162"
 ---
 # <a name="compare-azure-media-services-v3-presets-and-video-indexer"></a>Hasonlítsa össze az Azure Media Services v3 készletek és a Video Indexer 
 
@@ -28,7 +29,7 @@ Jelenleg nincs által nyújtott szolgáltatások között átfedés a [Video Ind
 
 ## <a name="compare"></a>Összehasonlítás
 
-|Szolgáltatás|A video Indexer API-k |Videó Analyzer és hang Analyzer készletek<br/>a Media Services v3 API-k|
+|Funkció|A video Indexer API-k |Videó Analyzer és hang Analyzer készletek<br/>a Media Services v3 API-k|
 |---|---|---|
 |Media Insights|[Továbbfejlesztett](video-indexer-output-json-v2.md) |[Alapok](../latest/intelligence-concept.md)|
 |Élményeket|Támogatott szolgáltatások teljes listáját lásd: <br/> [Áttekintés](video-indexer-overview.md)|Csak a videó insights adja vissza|

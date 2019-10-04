@@ -1,7 +1,7 @@
 ---
-title: Színsémák – Computer Vision észlelése
+title: Színséma észlelése – Computer Vision
 titleSuffix: Azure Cognitive Services
-description: A Computer Vision API használatával képeken színsémáját észlelése kapcsolatos fogalmakat.
+description: A rendszerképek színsémájának észlelésével kapcsolatos fogalmak a Computer Vision API használatával.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,26 +11,26 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: ff7af2204f9e05a1ba4ef800c63c3ad462242350
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: e0fa85b8a90ea57d9b81bd2eeaa6d080b7582acd
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59998617"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945278"
 ---
-# <a name="detect-color-schemes-in-images"></a>Észlelheti a színsémákat képek
+# <a name="detect-color-schemes-in-images"></a>Képek színsémáinak észlelése
 
-Computer Vision elemzi a képen három különböző attribútumainak megadásához a színek: a domináns előtérszín, a domináns háttérszín és domináns színek a lemezkép teljes készletét. A készlethez tartozó színek visszaadott: fekete, kék, brown, szürke, zöld, orange, rózsaszínre, lila, vörös, pávakék, fehér és sárga. 
+Computer Vision elemzi a képen látható színeket, hogy három különböző attribútumot adjon meg: a domináns előtéri színt, a domináns háttérszínt, valamint a kép domináns színeit egészként. A visszaadott színek a készlethez tartoznak: fekete, kék, barna, szürke, zöld, narancssárga, rózsaszín, lila, piros, kékeszöld, fehér és sárga. 
 
-Számítógépes Látástechnológia is az a képen domináns színek és színtelítettség kombinációja alapján a legtöbb élénk szín jelöli Kiemelőszín adja eredményül. A gombszöveg színét, egy HTML-színt hexadecimális kódot adja vissza. 
+A Computer Vision egy ékezetes színt is Kinyer, amely a képen a legélénkebb színt jelöli, a domináns színek és a telítettség kombinációja alapján. A rendszer a kiejtés színét hexadecimális HTML színkóddal adja vissza. 
 
-Számítógépes Látástechnológia is egy logikai érték, amely a kép fekete-fehér e adja vissza.
+A Computer Vision egy logikai értéket ad vissza, amely azt jelzi, hogy a képek fekete-fehérben vannak-e.
 
-## <a name="color-scheme-detection-examples"></a>Szín séma észlelési példák
+## <a name="color-scheme-detection-examples"></a>Példák a színséma észlelésére
 
-Az alábbi példában látható a JSON-választ adott vissza, Computer Vision által a példaképen színsémájának észlelése. Ebben az esetben a példaképen nem egy fekete-fehér-rendszerképet, de a domináns előtérbeli és a háttérszínek feketék, és a domináns színek egészére a kép fekete-fehér.
+Az alábbi példa a Computer Vision által visszaadott JSON-választ mutatja be, amikor észleli a képsémát a képen. Ebben az esetben a kép nem fekete-fehér kép, de a domináns előtér-és háttérszínek fekete színűek, a kép domináns színei pedig fekete és fehérek.
 
-![Öltözet hegyi napnyugta, és a egy személy körvonalszerűen:](./Images/mountain_vista.png)
+![Kültéri hegyi naplemente, egy személy sziluettje](./Images/mountain_vista.png)
 
 ```json
 {
@@ -50,34 +50,34 @@ Az alábbi példában látható a JSON-választ adott vissza, Computer Vision á
 }
 ```
 
-### <a name="dominant-color-examples"></a>Színig példák
+### <a name="dominant-color-examples"></a>Domináns szín példák
 
-Az alábbi táblázat a visszaadott előtér, háttér és az egyes minta lemezképek lemezkép színeket.
+A következő táblázat az egyes mintaképek előtérbeli, háttérszínét és képének színét mutatja be.
 
 | Image | Domináns színek |
 |-------|-----------------|
-|![Egy zöld hátterű fehér flower](./Images/flower.png)| Előtér: Fekete<br/>Háttér: Fehér<br/>Színek: Fekete, a fehér, a zöld|
-![Állomás keresztül futtató vonaton](./Images/train_station.png) | Előtér: Fekete<br/>Háttér: Fekete<br/>Színek: Fekete |
+|![Fehér virág Zöld háttérrel](./Images/flower.png)| Előtér Fekete<br/>Háttér Fehér<br/>Színek Fekete, fehér, zöld|
+![Állomáson futó vonat](./Images/train_station.png) | Előtér Fekete<br/>Háttér Fekete<br/>Színek Fekete |
 
-### <a name="accent-color-examples"></a>Gombszöveg színét példák
+### <a name="accent-color-examples"></a>Kiejtési színek példái
 
- Az alábbi táblázat a visszaadott Kiemelés színe hexadecimális értékként HTML szín, az egyes példa lemezképek.
+ A következő táblázat a visszaadott hangsúlyozási színt jeleníti meg hexadecimális HTML színértékként az egyes képképeknél.
 
 | Image | Kiegészítő szín |
 |-------|--------------|
-|![Egy személy állandó az egy Hegyi rock napnyugta:](./Images/mountain_vista.png) | #BB6D10 |
-|![Egy zöld hátterű fehér flower](./Images/flower.png) | #C6A205 |
-|![Állomás keresztül futtató vonaton](./Images/train_station.png) | #474A84 |
+|![A napnyugtakor egy hegyi sziklán álló személy](./Images/mountain_vista.png) | #BB6D10 |
+|![Fehér virág Zöld háttérrel](./Images/flower.png) | #C6A205 |
+|![Állomáson futó vonat](./Images/train_station.png) | #474A84 |
 
-### <a name="black--white-detection-examples"></a>Fekete-fehér észlelési példák
+### <a name="black--white-detection-examples"></a>Fekete & White észlelési példák
 
-Az alábbi táblázat számítógépes Látástechnológiai fekete-fehér kiértékelése a minta képeket.
+A következő táblázat Computer Vision fekete-fehér kiértékelését mutatja a minta lemezképekben.
 
-| Image | Fekete-fehér? |
+| Image | Fekete & fehér? |
 |-------|----------------|
-|![Épületek Manhattan a kép fekete-fehér](./Images/bw_buildings.png) | true |
-|![Egy kék ház és az első yard](./Images/house_yard.png) | false |
+|![A Manhattanben található épületek fekete-fehér képe](./Images/bw_buildings.png) | true |
+|![Egy kék ház és az első udvar](./Images/house_yard.png) | false |
 
 ## <a name="next-steps"></a>További lépések
 
-Tudnivalók a fogalmak [képtípussal észlelése](concept-detecting-image-types.md).
+A képtípusok [észlelésével](concept-detecting-image-types.md)kapcsolatos fogalmak megismerése.

@@ -1,6 +1,6 @@
 ---
-title: Az Azure Service Fabric-alkalmazások tanúsítványok konfigurálása Linux rendszeren |} A Microsoft Docs
-description: Az alkalmazás tanúsítványok konfigurálása a Service Fabric-futtatókörnyezet, a Linux-fürt
+title: Azure Service Fabric-alkalmazások tanúsítványainak konfigurálása Linux rendszeren | Microsoft Docs
+description: Tanúsítványok konfigurálása az alkalmazáshoz a Linux-fürtön futó Service Fabric futtatókörnyezettel
 services: service-fabric
 documentationcenter: NA
 author: JimacoMS2
@@ -8,44 +8,43 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/26/2018
-ms.author: v-jamebr
-ms.openlocfilehash: c0580b75544a9613bc8caf2faaac11ba1ba6708e
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.date: 09/06/2019
+ms.author: chackdan
+ms.openlocfilehash: 9599d59f7f23de4e54ce323aa4a2ad837d8ed074
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667140"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773257"
 ---
 # <a name="certificates-and-security-on-linux-clusters"></a>Tanúsítványok és biztonság Linux-fürtökön
 
-Ez a cikk ismerteti, X.509-tanúsítványok konfigurálása Linux-fürtökön.
+Ez a cikk az X. 509 tanúsítványok Linux-fürtökön való konfigurálásával kapcsolatos információkat tartalmaz.
 
-## <a name="location-and-format-of-x509-certificates-on-linux-nodes"></a>Hely és a Linux-csomópontokat az X.509-tanúsítványokat formátumát
+## <a name="location-and-format-of-x509-certificates-on-linux-nodes"></a>X. 509 tanúsítványok helye és formátuma Linux-csomópontokon
 
-A Service Fabric általánosan vár X.509 tanúsítványok megtalálható a */var/lib/sfcerts* Linux-fürtcsomópontokon könyvtárába. Ez a fürt tanúsítványok, az ügyféltanúsítványok, stb. Néhány esetben megadhat egy helyet más, a *var/lib/sfcerts* tanúsítványok mappáját. Ha például a Reliable Services a Service Fabric Java SDK használatával jönnek létre, megadhatja egy másik helyet a egyes alkalmazás-specifikus tanúsítványokat a konfigurációs csomagot (Settings.xml) keresztül. További tudnivalókért lásd: [a konfigurációs csomag (Settings.xml) hivatkozott tanúsítványok](#certificates-referenced-in-the-configuration-package-settingsxml).
+A Service Fabric általában X. 509 tanúsítványokat vár a Linux-fürtcsomópontok */var/lib/sfcerts* könyvtárában. Ez a fürt tanúsítványainak, Ügyféltanúsítványok stb. esetében igaz. Bizonyos esetekben a *var/lib/sfcerts* mappától eltérő helyet is megadhat a tanúsítványokhoz. A Service Fabric Java SDK-val létrehozott Reliable Services például megadhat egy másik helyet a konfigurációs csomagban (Settings. xml) az alkalmazásspecifikus tanúsítványok számára. További információ: [a konfigurációs csomagban hivatkozott tanúsítványok (Settings. xml)](#certificates-referenced-in-the-configuration-package-settingsxml).
 
-A Linux-fürtök esetén a Service Fabric vár a tanúsítványok jelen, vagy egy .pem-fájlt, amely tartalmazza a tanúsítványt és a titkos kulcsot, vagy .crt fájl tartalmaz, a tanúsítvány és a egy .key a titkos kulcsot tartalmazó fájlt. Minden fájl PEM formátumban kell megadni. 
+Linux-fürtök esetén Service Fabric a tanúsítványokat olyan. PEM fájlként kell megadnia, amely tartalmazza a tanúsítványt és a titkos kulcsot, vagy egy. CRT-fájlt, amely tartalmazza a tanúsítványt és a titkos kulcsot tartalmazó. Key fájlt. Minden fájlnak PEM formátumúnak kell lennie. 
 
-Ha a tanúsítvány Azure Key vault használatával telepíti egy [Resource Manager-sablon](./service-fabric-cluster-creation-create-template.md) vagy [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.servicefabric/?view=latest#service_fabric) parancsokat, a tanúsítvány telepítve van a megfelelő formátumban vannak a */var/ lib/sfcerts* könyvtárat minden egyes csomóponton. Ha egy tanúsítvány egy másik módszerrel telepít, győződjön meg arról, hogy a tanúsítvány helyesen van-e telepítve a fürtcsomópontokon.
+Ha a tanúsítványt egy [Resource Manager-sablonnal](./service-fabric-cluster-creation-create-template.md) vagy [PowerShell](https://docs.microsoft.com/powershell/module/az.servicefabric/?view=azps-2.6.0) -parancsokkal telepíti Azure Key Vaultból, a tanúsítványt a */var/lib/sfcerts* könyvtárban, az egyes csomópontokon a megfelelő formátumban kell telepíteni. Ha a tanúsítványt egy másik módszerrel telepíti, meg kell győződnie arról, hogy a tanúsítvány megfelelően van telepítve a fürtcsomópontokon.
 
-## <a name="certificates-referenced-in-the-application-manifest"></a>Az alkalmazásjegyzékben hivatkozott tanúsítványok
+## <a name="certificates-referenced-in-the-application-manifest"></a>Az alkalmazás jegyzékfájljában hivatkozott tanúsítványok
 
-A kérelemben megadott tanúsítványok manifest, például keresztül a [ **SecretsCertificate** ](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-model-schema-elements#secretscertificate-element) vagy [ **EndpointCertificate** ](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-model-schema-elements#endpointcertificate-element)elemek, a jelen kell lennie a */var/lib/sfcerts* könyvtár. Az elemek, amelyek adja meg a tanúsítványok az alkalmazásjegyzékben, a tanúsítványok szerepelnie kell az alapértelmezett címtár nem lépnek egy elérési út attribútumban. Ezek az elemek igénybe egy nem kötelező **X509StoreName** attribútum. Az alapértelmezett érték a "My" kifejezést, amely a */var/lib/sfcerts* Linux-csomópontok könyvtárába. Bármely más érték nincs definiálva egy Linux-fürtön. Azt javasoljuk, hogy kihagyja a **X509StoreName** attribútum a Linux-fürtökön futó alkalmazások. 
+Az alkalmazás jegyzékfájljában megadott tanúsítványoknak (például a [**SecretsCertificate**](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-model-schema-elements#secretscertificate-element) vagy a [**EndpointCertificate**](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-model-schema-elements#endpointcertificate-element) elemnek) szerepelniük kell a */var/lib/sfcerts* könyvtárban. Az alkalmazás jegyzékfájljában a tanúsítványok megadásához használt elemek nem rendelkeznek elérésiút-attribútummal, ezért a tanúsítványoknak jelen kell lenniük az alapértelmezett könyvtárban. Ezek az elemek nem kötelező **X509StoreName** attribútumot is igénybe vehetnek. Az alapértelmezett érték a "My", amely a Linux-csomópontok */var/lib/sfcerts* könyvtárára mutat. Bármely más érték nem definiált Linux-fürtön. Azt javasoljuk, hogy hagyja ki a **X509StoreName** attribútumot a Linux-fürtökön futó alkalmazásokhoz. 
 
-## <a name="certificates-referenced-in-the-configuration-package-settingsxml"></a>A konfigurációs csomag (Settings.xml) hivatkozott tanúsítványok
+## <a name="certificates-referenced-in-the-configuration-package-settingsxml"></a>A konfigurációs csomagban hivatkozott tanúsítványok (Settings. xml)
 
-Bizonyos szolgáltatások esetén az X.509-tanúsítványokat konfigurálhatja a [ConfigPackage](./service-fabric-application-and-service-manifests.md) (alapértelmezés szerint Settings.xml). Például ez a helyzet RPC csatornák Reliable Services szolgáltatásokhoz készült Service Fabric .NET Core vagy a Java SDK-k védelmére szolgáló tanúsítványok deklarálásakor. A referencia-tanúsítványok a konfigurációs csomag két módja van. Támogatja a .NET Core és a Java SDK-k közé esik.
+Egyes szolgáltatások esetében X. 509 tanúsítványokat állíthat be a [ConfigPackage](./service-fabric-application-and-service-manifests.md) (alapértelmezés szerint a Settings. xml fájl). Ilyen eset például, ha deklarálja a Service Fabric .NET Core vagy Java SDK-val létrehozott Reliable Services szolgáltatások RPC-csatornáinak biztonságossá tételéhez használt tanúsítványokat. A konfigurációs csomagban kétféleképpen hivatkozhat tanúsítványokra. A támogatás a .NET Core és a Java SDK-k között változhat.
 
-### <a name="using-x509-securitycredentialstype"></a>X509 használatával SecurityCredentialsType
+### <a name="using-x509-securitycredentialstype"></a>A X509 SecurityCredentialsType használata
 
-A .NET vagy Java SDK-k is megadhat **X509** számára a **SecurityCredentialsType**. Ez megfelel a `X509Credentials` ([.NET](https://msdn.microsoft.com/library/system.fabric.x509credentials.aspx)/[Java](https://docs.microsoft.com/java/api/system.fabric.x509credentials)) típusú `SecurityCredentials` ([.NET](https://msdn.microsoft.com/library/system.fabric.securitycredentials.aspx)/[Java](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)).
+A .NET-vagy Java SDK-k segítségével megadhatja a **SecurityCredentialsType** **X509** . Ez `X509Credentials` megfelel[](https://msdn.microsoft.com/library/system.fabric.securitycredentials.aspx)a/[](https://docs.microsoft.com/java/api/system.fabric.x509credentials) `SecurityCredentials` [](https://msdn.microsoft.com/library/system.fabric.x509credentials.aspx)/(.net Java) típusának (.net[Java](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)).
 
-A **X509** referencia megkeresi a tanúsítványt a tanúsítványtárolóban. A következő XML formátumú a tanúsítvány helyének megadásához használt paraméterek látható:
+A **X509** -hivatkozás megkeresi a tanúsítványt a tanúsítványtárolóban. A következő XML a tanúsítvány helyének megadásához használt paramétereket mutatja be:
 
 ```xml
     <Parameter Name="SecurityCredentialsType" Value="X509" />
@@ -53,11 +52,11 @@ A **X509** referencia megkeresi a tanúsítványt a tanúsítványtárolóban. A
     <Parameter Name="CertificateStoreName" Value="My" />
 ```
 
-A Linux rendszeren futó szolgáltatásban **LocalMachine**/**saját** a tanúsítványok esetében az alapértelmezett helyre mutat a */var/lib/sfcerts* könyvtár. A Linux rendszerre, bármely egyéb kombinációit **CertificateStoreLocation** és **Tanúsítványtároló_neve** nincs definiálva. 
+A Linux rendszeren futó szolgáltatások esetében a **LocalMachine**/a tanúsítványok alapértelmezett helyére, a */var/lib/sfcerts* könyvtárra**mutatnak** . Linux esetén a **CertificateStoreLocation** és a **CertificateStoreName** bármely más kombinációja nincs meghatározva. 
 
-Mindig adja meg **LocalMachine** számára a **CertificateStoreLocation** paraméter. Nem kell megadnia a **Tanúsítványtároló_neve** paraméter, mert a rendszer alapértelmezés szerint a "My"kifejezést. Az egy **X509** hivatkozást, a fájlokat tartalmazó tárolójában kell lennie a */var/lib/sfcerts* a fürtcsomópont könyvtárába.  
+Mindig **LocalMachine** megadása a **CertificateStoreLocation** paraméterhez. Nem kell megadnia a **CertificateStoreName** paramétert, mert az alapértelmezett értéke "My". **X509** -hivatkozás esetén a tanúsítványfájl a fürtcsomópont */var/lib/sfcerts* könyvtárában kell, hogy legyen.  
 
-A következő XML-mutatja egy **TransportSettings** szakasz alapján ez a stílus:
+A következő XML egy **TransportSettings** szakaszt mutat be a stílus alapján:
 
 ```xml
 <Section Name="HelloWorldStatefulTransportSettings">
@@ -72,18 +71,18 @@ A következő XML-mutatja egy **TransportSettings** szakasz alapján ez a stílu
 </Section>
 ```
 
-### <a name="using-x5092-securitycredentialstype"></a>X509_2 SecurityCredentialsType használatával
+### <a name="using-x509_2-securitycredentialstype"></a>A X509_2 SecurityCredentialsType használata
 
-A Java SDK-t is megadhat **X509_2** számára a **SecurityCredentialsType**. Ez megfelel a `X509Credentials2` ([Java](https://docs.microsoft.com/java/api/system.fabric.x509credentials2)) típusú `SecurityCredentials` ([Java](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)). 
+A Java SDK segítségével megadhatja a **SecurityCredentialsType** **X509_2** . Ez `X509Credentials2` megfelel a (Java[) (](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)[Java](https://docs.microsoft.com/java/api/system.fabric.x509credentials2)) `SecurityCredentials` típusának. 
 
-Az egy **X509_2** hivatkozás, megad egy elérésiút-paraméter, így megkeresheti a tanúsítványt más, a címtárban */var/lib/sfcerts*.  A következő XML formátumú a tanúsítvány helyének megadásához használt paraméterek látható: 
+**X509_2** -hivatkozás esetén meg kell adnia egy Path paramétert, így a tanúsítvány a */var/lib/sfcerts*-től eltérő könyvtárban is megkereshető.  A következő XML a tanúsítvány helyének megadásához használt paramétereket mutatja be: 
 
 ```xml
      <Parameter Name="SecurityCredentialsType" Value="X509_2" />
      <Parameter Name="CertificatePath" Value="/path/to/cert/BD1C71E248B8C6834C151174DECDBDC02DE1D954.crt" />
 ```
 
-A következő XML-mutatja egy **TransportSettings** szakasz alapján ez a stílus.
+A következő XML egy **TransportSettings** szakaszt mutat be ezen stílus alapján.
 
 ```xml
 <!--Section name should always end with "TransportSettings".-->
@@ -98,13 +97,13 @@ A következő XML-mutatja egy **TransportSettings** szakasz alapján ez a stílu
 ```
 
 > [!NOTE]
-> A tanúsítvány előző XML-fájlként .crt van megadva. Ez azt jelenti, hogy nincs-e is ugyanazon a helyen a titkos kulcsot tartalmazó .key fájlt.
+> A tanúsítvány. CRT-fájlként van megadva az előző XML-fájlban. Ez azt jelenti, hogy létezik egy. key fájl is, amely tartalmazza a titkos kulcsot ugyanazon a helyen.
 
-## <a name="configure-a-reliable-services-app-to-run-on-linux-clusters"></a>A Reliable Services-alkalmazás Linux-fürtökön futó konfigurálása
+## <a name="configure-a-reliable-services-app-to-run-on-linux-clusters"></a>Reliable Services alkalmazás konfigurálása Linux-fürtökön való futtatásra
 
-A Service Fabric SDK-k lehetővé teszik a Service Fabric-futtatókörnyezet API-kat használhatja a platform folytatott kommunikációhoz. Biztonságos Linux-fürtökön ezt a funkciót használó összes alkalmazásra futtatásakor kell az alkalmazás konfigurálása egy tanúsítvánnyal, ezáltal az ellenőrzés a Service Fabric-futtatókörnyezet. Service Fabric Reliable Services-szolgáltatások, a .NET Core vagy a Java SDK-k használatával írt tartalmazó alkalmazásoknak ezt a konfigurációt. 
+A Service Fabric SDK-k lehetővé teszik a Service Fabric Runtime API-kkal való kommunikációt a platform kihasználása érdekében. Ha olyan alkalmazást futtat, amely ezt a funkciót a biztonságos Linux-fürtökön használja, konfigurálnia kell az alkalmazást egy olyan tanúsítvánnyal, amelyet a Service Fabric futtatókörnyezettel való ellenőrzéshez használhat. A .NET Core vagy Java SDK-k használatával írt Service Fabric megbízható szolgáltatási szolgáltatásokat tartalmazó alkalmazások esetén ehhez a konfigurációhoz szükség van. 
 
-Alkalmazások konfigurálása, adjon hozzá egy [ **SecretsCertificate** ](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-model-schema-elements#secretscertificate-element) elemet a **tanúsítványok** címke, amely alatt található a **ApplicationManifest**  a címke a *ApplicationManifest.xml* fájlt. A következő XML-kódot mutatja be egy tanúsítványt az ujjlenyomat által hivatkozott: 
+Egy alkalmazás konfigurálásához adjon hozzá egy [**SecretsCertificate**](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-model-schema-elements#secretscertificate-element) elemet a **tanúsítványok** címkében, amely a *ApplicationManifest. XML* fájl **ApplicationManifest** címkéjén található. A következő XML az ujjlenyomata által hivatkozott tanúsítványt jeleníti meg: 
 
 ```xml
    <Certificates>
@@ -112,7 +111,7 @@ Alkalmazások konfigurálása, adjon hozzá egy [ **SecretsCertificate** ](https
    </Certificates>   
 ```
 
-A fürttanúsítvány és a egy tanúsítványt, amely a fürt minden csomópontján telepítenie hivatkozhat. Linux rendszeren a tanúsítványfájlokat szerepelniük kell a */var/lib/sfcerts* könyvtár. További tudnivalókért lásd: [helyét és a Linux-csomópontokat az X.509-tanúsítványokat formátumát](#location-and-format-of-x509-certificates-on-linux-nodes).
+Hivatkozhat a fürt tanúsítványára vagy a fürt egyes csomópontjaira telepített tanúsítványokra. Linux rendszeren a tanúsítvány fájljainak jelen kell lenniük a */var/lib/sfcerts* könyvtárban. További információért lásd: [X. 509 tanúsítványok helye és formátuma Linux-csomópontokon](#location-and-format-of-x509-certificates-on-linux-nodes).
 
 
 

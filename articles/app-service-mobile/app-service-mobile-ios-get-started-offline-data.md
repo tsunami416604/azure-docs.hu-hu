@@ -2,7 +2,7 @@
 title: IOS-mobilalkalmazásokban offline szinkronizálás engedélyezése |} A Microsoft Docs
 description: Ismerje meg a mobilalkalmazások az Azure App Service-ben a cache és a szinkronizálási offline adatok használata az iOS-alkalmazások.
 documentationcenter: ios
-author: conceptdev
+author: elamalani
 manager: crdun
 editor: ''
 services: app-service\mobile
@@ -12,17 +12,21 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 10/01/2016
-ms.author: crdun
-ms.openlocfilehash: 1283f812799fe71ef6987dbc7fab092aed4d3417
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: f7ae3e7a33ae7df70214ed171b00cc2accbaccb5
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57435133"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446371"
 ---
 # <a name="enable-offline-syncing-with-ios-mobile-apps"></a>IOS-mobilalkalmazásokban offline szinkronizálás engedélyezése
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
+
+> [!NOTE]
+> A Visual Studio App Center fektet a mobilalkalmazás-fejlesztés központi új, integrált szolgáltatások. A fejlesztők a **hozhat létre**, **teszt** és **terjesztése** állíthat be folyamatos integrációt és teljesítést folyamat szolgáltatások. Az alkalmazás telepítve van, a fejlesztők monitorozható az állapot és az alkalmazás használatával használatát a **Analytics** és **diagnosztikai** -szolgáltatásokat, és kapcsolatba léphet a felhasználókat a **leküldéses** a szolgáltatás. A fejlesztők is kihasználhatják a **Auth** azok a felhasználók hitelesítéséhez és **adatok** szolgáltatás és a felhőbeli alkalmazások adatainak szinkronizálása. Tekintse meg [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-ios-get-started-offline-data) még ma.
+>
 
 ## <a name="overview"></a>Áttekintés
 Ez az oktatóanyag bemutatja, hogy a kapcsolat nélküli szinkronizálás iOS-hez készült Azure App Service Mobile Apps szolgáltatással. A kapcsolat nélküli szinkronizálja végfelhasználók használhatják a megtekintése, hozzáadása és módosíthassanak adatokat, akkor is, ha nincs hálózati kapcsolat rendelkeznek egy mobilalkalmazást. Változások a helyi adatbázisban vannak tárolva. Miután az eszköz ismét online, a rendszer szinkronizálja a módosításokat, a távoli háttérrendszerrel.
@@ -147,7 +151,7 @@ Nyissa meg **QSDataModel.xcdatamodeld**. A négy tábla meghatározott--három, 
   * TodoItem: A teendők tárolja. A rendszer oszlopok **createdAt**, **updatedAt**, és **verzió** nem kötelező tulajdonságai vannak.
 
 > [!NOTE]
-> A Mobile Apps SDK fenntartja az oszlopnevek kezdődő "**``**". A rendszer oszlopok csakis ne használja ezt az előtagot. Ellenkező esetben az oszlopnevek módosítják a távoli háttérrendszer használata esetén.
+> A Mobile Apps SDK fenntartja az oszlopnevek kezdődő " **``** ". A rendszer oszlopok csakis ne használja ezt az előtagot. Ellenkező esetben az oszlopnevek módosítják a távoli háttérrendszer használata esetén.
 >
 >
 
@@ -159,46 +163,46 @@ A kapcsolat nélküli szinkronizálás – a szolgáltatás használatakor a ren
 
 ![MS_TableOperations tábla attribútumai][defining-core-data-tableoperations-entity]
 
-| Attribútum | Typo |
+| Attribútum | Típus |
 | --- | --- |
-| id | Egész 64 |
+| id | Integer 64 |
 | itemId | String |
-| properties | A bináris adatok |
-| tábla | String |
-| tableKind | Egész 16 |
+| properties | Binary Data |
+| table | String |
+| tableKind | Integer 16 |
 
 
 **MS_TableOperationErrors**
 
  ![MS_TableOperationErrors tábla attribútumai][defining-core-data-tableoperationerrors-entity]
 
-| Attribútum | Typo |
+| Attribútum | Típus |
 | --- | --- |
 | id |String |
-| operationId |Egész 64 |
-| properties |A bináris adatok |
-| tableKind |Egész 16 |
+| operationId |Integer 64 |
+| properties |Binary Data |
+| tableKind |Integer 16 |
 
  **MS_TableConfig**
 
  ![][defining-core-data-tableconfig-entity]
 
-| Attribútum | Typo |
+| Attribútum | Típus |
 | --- | --- |
 | id |String |
-| kulcs |String |
-| keyType |Egész 64 |
-| tábla |String |
-| érték |String |
+| key |String |
+| keyType |Integer 64 |
+| table |String |
+| value |String |
 
 ### <a name="data-table"></a>Adattábla
 
 **TodoItem**
 
-| Attribútum | Typo | Megjegyzés |
+| Attribútum | Típus | Megjegyzés |
 | --- | --- | --- |
 | id | Karakterlánc, kötelezőként megjelölt |Távoli tároló az elsődleges kulcs |
-| Hajtsa végre | Logikai | TEENDŐ elem mező |
+| Hajtsa végre | Boolean | TEENDŐ elem mező |
 | szöveg |String |TEENDŐ elem mező |
 | createdAt | Dátum | (nem kötelező) A Maps **createdAt** rendszertulajdonság |
 | updatedAt | Dátum | (nem kötelező) A Maps **updatedAt** rendszertulajdonság |
@@ -261,7 +265,7 @@ Egy folyamat folyamatjelző jelenik meg.
 
 7. Nézet a **TodoItem** újra adatokat. Az új és módosított teendők meg kell jelennie.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 A kapcsolat nélküli szinkronizálás – a szolgáltatás támogatása érdekében használjuk a `MSSyncTable` felületet, és inicializálva `MSClient.syncContext` a helyi tárolóból. Ebben az esetben a helyi tároló volt a legfontosabb adatainak-alapú adatbázis.
 
 A legfontosabb adatainak helyi tároló használata esetén meg kell adnia a több táblát a [javítsa ki a rendszer tulajdonságai](#review-core-data).

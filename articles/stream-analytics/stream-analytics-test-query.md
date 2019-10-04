@@ -1,51 +1,109 @@
 ---
-title: Azure Stream Analytics-feladat, mintaadatokkal tesztelése
-description: Ez a cikk ismerteti, hogyan használhatja az Azure Portalon egy Azure Stream Analytics-feladat, a minta bemenet tesztelése, és töltse fel a mintaadatokat.
+title: Azure Stream Analytics-feladatok tesztelése mintaadatok
+description: Ez a cikk azt ismerteti, hogyan használható a Azure Portal a Azure Stream Analytics feladatok teszteléséhez, a minta bemenetekhez és a mintaadatok feltöltéséhez.
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: fca76b632e9bcc27ed762886eaea696a5696ad3f
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 9c67d511f6c94c8b9af034835e149875304e2235
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557632"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918965"
 ---
-# <a name="test-a-stream-analytics-query-with-sample-data"></a>A Stream Analytics lekérdezési mintaadatokkal tesztelése
+# <a name="test-an-azure-stream-analytics-job-with-sample-data"></a>Azure Stream Analytics-feladatok tesztelése mintaadatok
 
-Az Azure Stream Analytics használatával indítása és feladat leállítása nélkül tölthet fel adatokat, valamint mintalekérdezések az Azure Portalon.
+A Azure Stream Analytics a feladatok elindítása vagy leállítása nélkül is tesztelheti a lekérdezést. A bejövő adatok lekérdezéseit tesztelheti a bemeneti fogadóból, vagy feltöltötte a mintaadatok egy helyi fájlból az Azure Portalon. A lekérdezéseket helyileg is tesztelheti a helyi mintaadatok vagy élő adatok alapján a [Visual Studióban](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-live-data-local-testing) és a [Visual Studio Code](https://docs.microsoft.com/en-us/azure/stream-analytics/vscode-local-run)-ban. 
 
-## <a name="upload-sample-data-and-test-the-query"></a>Mintaadatok feltöltése és a lekérdezés tesztelése
+## <a name="sample-incoming-data-from-input"></a>Bejövő adatok mintája bemenetből
 
-1. Jelentkezzen be az Azure portálra. 
+Azure Stream Analytics automatikusan beolvassa az eseményeket a folyamatos átviteli bemenetből. Futtathat lekérdezéseket az alapértelmezett mintán, vagy beállíthatja a minta egy adott időkeretét.
 
+1. Jelentkezzen be az Azure portálra.
+
+2. Keresse meg és válassza ki a meglévő Stream Analytics feladatot.
+
+3. A Stream Analytics-feladatok lap **feladatok topológiájának** fejlécében válassza a **lekérdezés** lehetőséget a lekérdezés-szerkesztő ablak megnyitásához. 
+
+4. Ha szeretné megtekinteni a bejövő események mintáját, válassza a bevitel fájl ikont, és a minta eseményei automatikusan megjelennek a **bemeneti előnézetben**. 
+
+   a. A rendszer automatikusan észleli az adataihoz tartozó szerializálási típust, ha a JSON-vagy CSV-fájlja. A legördülő menüben lévő lehetőség módosításával manuálisan is módosíthatja a JSON-t, a CSV-t és a AVRO.
+    
+   b. A választóval megtekintheti az adatait **táblázatos** vagy **nyers** formátumban.
+    
+   c. Ha a megjelenített adatai nem aktuálisak, válassza a **frissítés** lehetőséget a legújabb események megtekintéséhez.
+
+   A következő táblázat a **táblázatos formátumú**adatmennyiségeket szemlélteti:
+
+   ![Azure Stream Analytics minta bemenet táblázatos formátumban](./media/stream-analytics-test-query/asa-sample-table.png)
+
+   A következő táblázat a **nyers formátumú**adatmennyiségeket szemlélteti:
+
+   ![Azure Stream Analytics minta bemenete nyers formátumban](./media/stream-analytics-test-query/asa-sample-raw.png)
+
+5. A lekérdezés a bejövő adatértékekkel való teszteléséhez válassza a **lekérdezés tesztelése**lehetőséget. Az eredmények a **test Results (eredmények** ) lapon jelennek meg. Az eredmények letöltéséhez kiválaszthatja az **eredmények** letöltése lehetőséget is.
+
+   ![Azure Stream Analytics minta teszt lekérdezés eredményei](./media/stream-analytics-test-query/asa-test-query.png)
+
+6. Ha a lekérdezéseket a bejövő események adott időtartományára szeretné tesztelni, válassza az **időtartomány kiválasztása**lehetőséget.
+   
+   ![Azure Stream Analytics időtartomány a bejövő minták eseményeihez](./media/stream-analytics-test-query/asa-select-time-range.png)
+
+7. Állítsa be a lekérdezés teszteléséhez használni kívánt események időtartományát, és válassza a **minta**lehetőséget. Az adott időkereten belül akár 1000 eseményt, vagy 1 MB-ot is megadhat, attól függően, hogy melyik érkezik először.
+
+   ![Azure Stream Analytics időtartomány beállítása a bejövő minták eseményeihez](./media/stream-analytics-test-query/asa-set-time-range.png)
+
+8. Ha az eseményeket a kiválasztott időtartományra vonatkozóan mintavételnek tekinti, a **bemeneti előnézet** lapon jelennek meg.
+
+   ![Azure Stream Analytics a tesztek eredményeinek megtekintése](./media/stream-analytics-test-query/asa-view-test-results.png)
+
+9. A bejövő események mintájának megtekintéséhez válassza az **Alaphelyzetbe állítás** lehetőséget. Ha az **Alaphelyzetbe állítás**lehetőséget választja, az időtartomány kiválasztása el fog veszni. Válassza a **lekérdezés tesztelése** lehetőséget a lekérdezés teszteléséhez, és tekintse át az eredményeket a **teszteredmények** lapon.
+
+10. Amikor módosításokat végez a lekérdezésben, válassza a **lekérdezés mentése** lehetőséget az új lekérdezési logika teszteléséhez. Ez lehetővé teszi a iteratív módosítását és újbóli tesztelését, hogy megtekintse a kimenet változásait.
+
+11. A böngészőben megjelenő eredmények ellenőrzése után készen áll a művelet **elindítására** .
+
+## <a name="upload-sample-data-from-a-local-file"></a>Mintaadatok feltöltése helyi fájlból
+
+Az élő adatok helyett helyi fájlokból származó mintaadatok használatával tesztelheti a Azure Stream Analytics lekérdezést.
+
+1. Jelentkezzen be az Azure portálra.
+   
 2. Keresse meg a meglévő Stream Analytics-feladatot, és válassza ki azt.
 
-3. A Stream Analytics a feladat oldal, a a **Feladattopológia** szakaszban kattintson **lekérdezés** a lekérdezés szerkesztő ablak megnyitásához. 
+3. A Stream Analytics-feladatok lap **feladatok topológiájának** fejlécében válassza a **lekérdezés** lehetőséget a lekérdezés-szerkesztő ablak megnyitásához.
 
-4. Bemeneti mintaadatok a lekérdezés teszteléséhez kattintson a jobb gombbal bármelyik a bemeneteket.  Válassza ki **fájlból mintaadatok feltöltése**. Az adatok JSON-, CSV-vagy AVRO szerializálni kell. Minta beviteli UTF-8 kódolású legyen, és nem tömöríti. Csak a vessző (,) elválasztó a portálon a fürt megosztott kötetei szolgáltatás bemenet tesztelése esetén támogatott.
+4. A lekérdezés helyi fájllal való teszteléséhez válassza a **minta bemenet feltöltése** a **bemeneti előnézet** lapon lehetőséget. 
 
-    ![Stream analytics query editor testovat dotaz](media/stream-analytics-test-query/stream-analytics-test-query-editor-upload.png)
+   ![Minta Azure Stream Analytics feltöltése](./media/stream-analytics-test-query/asa-upload-sample-file.png)
 
-5. Válassza a feltöltés befejeződése után **tesztelése** a lekérdezést a mintaadatokkal tesztelheti.
+5. Töltse fel a helyi fájlt a lekérdezés teszteléséhez. Csak a JSON-, CSV-vagy AVRO-formátumokkal tölthet fel fájlokat. Kattintson az **OK** gombra.
 
-    ![Stream analytics-lekérdezés szerkesztő teszt mintaadatok](media/stream-analytics-test-query/stream-analytics-test-query-editor-test.png)
+   ![Minta Azure Stream Analytics feltöltése](./media/stream-analytics-test-query/asa-upload-sample-json-file.png)
 
-6. A teszt eredménye későbbi használatra van szükség, ha a lekérdezés kimenete a böngészőt a letöltés eredményeit mutató hivatkozást tartalmazó jelenik meg. 
+6. Amint feltölti a fájlt, a fájl tartalma táblázatként vagy nyers formátumban is megtekinthető az űrlapon. Ha az **Alaphelyzetbe állítás**lehetőséget választja, a mintaadatok visszatérnek az előző szakaszban ismertetett bejövő bemeneti adatokhoz. Bármilyen más fájlt is feltölthet a lekérdezés teszteléséhez.
 
-7. Iteratív módosítsa a lekérdezést, és a tesztelés közben ismételt használatával ellenőrizheti, hogyan változik a kimenet.
+7. A lekérdezés **tesztelése** lehetőség kiválasztásával tesztelheti a lekérdezést a feltöltött minta fájljával.
 
-   ![Stream Analytics query editor kimeneti](media/stream-analytics-test-query/stream-analytics-test-query-editor-samples-output.png)
+8. A tesztek eredményei a lekérdezés alapján jelennek meg. Módosíthatja a lekérdezést, és a lekérdezés **mentése** lehetőségre kattintva tesztelheti az új lekérdezési logikát. Ez lehetővé teszi a iteratív módosítását és újbóli tesztelését, hogy megtekintse a kimenet változásait.
 
-   Amikor lekérdezést használ több kimenetek, az eredményeket külön lapokra jelennek meg, és könnyedén válthat közöttük.
+9. Ha több kimenetet használ a lekérdezésben, az eredmények a kiválasztott kimenet alapján jelennek meg. 
 
-8. Miután meggyőződött a böngészőben megjelenített eredményekre **mentése** a lekérdezést. Ezután **Start** a feladatot, és biztosítani, hogy a bejövő események feldolgozására.
+   ![Azure Stream Analytics kiválasztott kimenet](./media/stream-analytics-test-query/asa-sample-test-selected-output.png)
+
+10. A böngészőben megjelenített eredmények ellenőrzése után **elindíthatja** a feladatot.
 
 ## <a name="next-steps"></a>További lépések
-> [!div class="nextstepaction"]
-> [Azure Stream Analytics Query Language Reference](https://msdn.microsoft.com/library/azure/dn834998.aspx) (Referencia az Azure Stream Analytics lekérdezési nyelvhez)
+
+* [Azure Stream Analytics Query Language Reference](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) (Referencia az Azure Stream Analytics lekérdezési nyelvhez)
+
+* [Példák a gyakori Stream Analytics használati mintákra](stream-analytics-stream-analytics-query-patterns.md)
+
+* [Azure Stream Analytics-bemenetek ismertetése](stream-analytics-add-inputs.md)
+
+* [Kimenő adatait az Azure Stream Analytics ismertetése](stream-analytics-define-outputs.md)

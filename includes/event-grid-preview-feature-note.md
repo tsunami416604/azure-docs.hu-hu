@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/06/2018
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: 85a1579e32b4c216f234f77c76316bedeaea77b0
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: d32beb2d799a60cb9c5be061c39e4ec834da8dcf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51285706"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66814831"
 ---
 Ez a funkció előzetes verzióban érhető el. A használatához telepítenie kell egy minta-kiterjesztés vagy a modul.
 
@@ -28,11 +28,9 @@ A [cloud Shell](/azure/cloud-shell/quickstart):
 
 Helyi telepítéséhez:
 
-1. Azure CLI helyileg eltávolítását.
-1. Telepítse a [legújabb verzió](/cli/azure/install-azure-cli) Azure parancssori felület.
-1. Indítsa el a parancssori ablakban.
+1. [Az Azure CLI telepítése](/cli/azure/install-azure-cli). Győződjön meg arról, hogy rendelkezik-e a legújabb verziót az ellenőrzésével `az --version`.
 1. A bővítmény korábbi verzióinak eltávolítása `az extension remove -n eventgrid`
-1. A bővítmény telepítése `az extension add -n eventgrid`
+1. Telepítse a `eventgrid` bővítmény `az extension add -n eventgrid`
 
 ### <a name="install-module-for-powershell"></a>PowerShell-modul telepítése
 

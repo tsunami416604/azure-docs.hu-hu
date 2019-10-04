@@ -1,144 +1,148 @@
 ---
-title: Az Azure AD SSPR és a multi-factor Authentication (előzetes verzió) – az Azure Active Directory eszközregisztrációs kombinált
-description: Az Azure AD multi-factor Authentication és az önkiszolgáló jelszó-átállítási regisztrációk (előzetes verzió)
+title: Az Azure AD SSPR és a Multi-Factor Authentication együttes regisztrálása (előzetes verzió) – Azure Active Directory
+description: Az Azure AD Multi-Factor Authentication és az önkiszolgáló jelszó-visszaállítási regisztráció (előzetes verzió)
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/18/2019
+ms.date: 08/29/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cf8d5cb13b39d58920555ff9d99a4949e1bfc20
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 65f3490e9cb62aa2d5c18b8fd564796dd6d3946c
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59521433"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70162421"
 ---
-# <a name="combined-security-information-registration-preview"></a>Egyesített biztonsági információk regisztrációs (előzetes verzió)
+# <a name="combined-security-information-registration-preview"></a>Kombinált biztonsági információk regisztrálása (előzetes verzió)
 
-Mielőtt kombinált regisztrációs regisztrált felhasználók hitelesítési módszerek az Azure multi-factor Authentication és az önkiszolgáló jelszó-visszaállítás (SSPR) külön-külön. Személyek is összetéveszteni őket, hogy a hasonló módszerek multi-factor Authentication és az SSPR használták, de mindkét funkció regisztrálása rendelkeztek. Most a kombinált regisztrációs felhasználók regisztrálása után, és kihasználni a multi-factor Authentication és az SSPR.
+A kombinált regisztráció előtt a felhasználók az Azure Multi-Factor Authentication és az önkiszolgáló jelszó-visszaállítás (SSPR) hitelesítési módszereit külön-külön regisztrálták. Az emberek zavarosak voltak, hogy hasonló módszerek voltak használatban Multi-Factor Authentication és SSPR, de mindkét szolgáltatáshoz regisztrálniuk kellett őket. A kombinált regisztráció révén a felhasználók egyszer regisztrálhatnak, és a Multi-Factor Authentication és a SSPR előnyeit is igénybe vehetik.
 
-![Saját profil ábrázoló regisztrálva a felhasználó biztonsági adatai](media/concept-registration-mfa-sspr-combined/combined-security-info-defualts-registered.png)
+![Saját profil, amely egy felhasználó regisztrált biztonsági adatait jeleníti meg](media/concept-registration-mfa-sspr-combined/combined-security-info-defualts-registered.png)
 
-Mielőtt engedélyezné az új felhasználói felületre, tekintse át a rendszergazda témájú dokumentáció és a felhasználó témájú dokumentációját, hogy biztosan megismerje az a funkciók és a hatását, hogy ez a funkció. A felhasználói dokumentációra készítheti elő a felhasználók az új felhasználói felületre, és annak biztosítása érdekében a sikeres bevezetése érdekében a képzési alapjául.
+Az új felület engedélyezése előtt tekintse át ezt a rendszergazda által irányított dokumentációt és a felhasználó által irányított dokumentációt, hogy megértse a funkció funkcióit és hatását. A [felhasználói dokumentáció](../user-help/user-help-security-info-overview.md) alapján felkészítheti a felhasználókat az új élményre, és segítheti a sikeres bevezetést.
 
-Az Azure AD biztonsági információk regisztrációs jelenleg nem áll rendelkezésre az országos felhők, mint például az Azure US Government, Azure Germany és Azure China 21Vianet együtt.
+Az Azure AD kombinált biztonsági információinak regisztrációja jelenleg nem érhető el olyan nemzeti felhők számára, mint az Azure US government, az Azure Germany vagy az Azure China 21Vianet.
 
 |     |
 | --- |
-| Egyesített biztonsági információkat regisztráció a multi-factor Authentication és az Azure Active Directory (Azure AD) önkiszolgáló jelszó-visszaállítás az az Azure ad-ben nyilvános előzetes verziójú funkció. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
+| A Multi-Factor Authentication és Azure Active Directory (Azure AD) önkiszolgáló jelszó-visszaállítási szolgáltatásának együttes biztonsági információinak regisztrálása az Azure AD nyilvános előzetes verziója. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
 |     |
 
 > [!IMPORTANT]
-> Felhasználók, akik az eredeti előzetes verziójának és a továbbfejlesztett kombinált regisztrációs felületet is engedélyezett az új algoritmus jelenik meg. Felhasználók, akik mindkét élmény engedélyezve vannak az új profil felület jelenik meg. Az új profil igazodik a kombinált regisztrációs megjelenését és működését, és a felhasználók számára zökkenőmentes élményt nyújt. Felhasználók megtekinthetik a saját profil a [ https://myprofile.microsoft.com ](https://myprofile.microsoft.com).
+> Azok a felhasználók, akik számára engedélyezve van az eredeti előzetes verzió és a bővített kombinált regisztrációs élmény, az új viselkedést fogják látni. Azok a felhasználók, akik mindkét élmény esetében engedélyezve vannak, csak az új saját profilt fogják látni. Az új saját profil a közös regisztráció megjelenésével és működésével igazodik, és zökkenőmentes felhasználói élményt nyújt a felhasználóknak. A felhasználók a következő címen érhetik el [https://myprofile.microsoft.com](https://myprofile.microsoft.com)a profilt:.
 
-Saját profil lapok vannak honosított, a számítógép elérése a lap a nyelvi beállítások alapján. A Microsoft legújabb nyelve a böngésző gyorsítótárát, így továbbra is ezt követő kísérletek eléréséhez a lapok jelennek meg a legutóbbi használt nyelv tárolja. Ha törli a gyorsítótár, a lapok újra jelenik meg. Ha egy adott nyelven kényszeríteni kívánja, hozzáadhat `?lng=<language>` az URL-cím végéhez ahol `<language>` megjeleníteni kívánt nyelv kódja.
+A saját profil oldalai honosítva vannak az oldalt elérő számítógép nyelvi beállításai alapján. A Microsoft a böngésző gyorsítótárában használt legújabb nyelvet tárolja, így a lapok elérésére irányuló próbálkozások továbbra is az utolsó használt nyelven jelennek meg. Ha törli a gyorsítótárat, az oldalak újra megjelennek. Ha egy adott nyelvet szeretne kényszeríteni, hozzáadhat `?lng=<language>` az URL végéhez, ahol `<language>` a a megjeleníteni kívánt nyelv kódja.
 
-![SSPR vagy más biztonsági ellenőrzési módszerek beállítása](media/howto-registration-mfa-sspr-combined/combined-security-info-my-profile.png)
+![SSPR vagy egyéb biztonsági ellenőrzési módszerek beállítása](media/howto-registration-mfa-sspr-combined/combined-security-info-my-profile.png)
 
-## <a name="methods-available-in-combined-registration"></a>A kombinált regisztrációs módszerek
+## <a name="methods-available-in-combined-registration"></a>A kombinált regisztrációban elérhető módszerek
 
-Kombinált regisztrációs támogatja a következő hitelesítési módszerek és a műveletek:
+A kombinált regisztráció a következő hitelesítési módszereket és műveleteket támogatja:
 
-|   | Regisztráljon | Módosítás | Törlés |
+|   | Regisztrálás | Módosítás | Törlés |
 | --- | --- | --- | --- |
 | Microsoft Authenticator | Igen (legfeljebb 5) | Nem | Igen |
-| Más hitelesítő alkalmazást | Igen (legfeljebb 5) | Nem | Igen |
+| Egyéb hitelesítő alkalmazás | Igen (legfeljebb 5) | Nem | Igen |
 | Hardvertoken | Nem | Nem | Igen |
-| Telefonszám | Igen | Igen | Igen |
+| Phone | Igen | Igen | Igen |
 | Másodlagos telefon | Igen | Igen | Igen |
 | Irodai telefon | Nem | Nem | Nem |
-| E-mail | Igen | Igen | Igen |
+| Email | Igen | Igen | Igen |
 | Biztonsági kérdések | Igen | Nem | Igen |
-| Alkalmazásjelszók | Igen | Nem | Igen |
+| Alkalmazásjelszavak | Igen | Nem | Igen |
 
 > [!NOTE]
-> Alkalmazásjelszók csak a felhasználók számára, akik kényszerítve lett, a multi-factor Authentication érhetők el. Az alkalmazásjelszavak nem érhetők el a felhasználók számára a multi-factor Authentication egy feltételes hozzáférési szabályzat engedélyezve vannak.
+> Az alkalmazás jelszavai csak az Multi-Factor Authentication számára kikényszerített felhasználók számára érhetők el. Az alkalmazás jelszavai nem érhetők el azokhoz a felhasználókhoz, akik számára engedélyezett a Multi-Factor Authentication egy feltételes hozzáférési szabályzaton keresztül.
 
-Felhasználók állíthatják be alapértelmezett multi-factor Authentication módszer a következő lehetőségek közül:
+A felhasználók a következő beállítások egyikét állíthatják be alapértelmezett Multi-Factor Authentication metódusként:
 
-- A Microsoft Authenticator – értesítés.
-- Hitelesítő alkalmazás vagy a hardveres token – kód.
+- Microsoft Authenticator – értesítés.
+- Hitelesítő alkalmazás vagy hardver-jogkivonat – kód.
 - Telefonhívás.
 - Szöveges üzenet.
 
-Az Azure AD további hitelesítési módszerek hozzáadása folyamatosan történik, azokat a módszereket kombinált regisztrációs elérhető lesz.
+Mivel továbbra is további hitelesítési módszereket adunk az Azure AD-hez, ezek a módszerek a kombinált regisztrációban lesznek elérhetők.
 
-## <a name="combined-registration-modes"></a>Egyesített regisztrációs módok
+## <a name="combined-registration-modes"></a>Kombinált regisztrációs módok
 
-Egyesített regisztrációs két módban: megszakítás és kezelése.
+A kombinált regisztrációnak két módja van: megszakítás és felügyelet.
 
-- **Megszakítási mód** varázsló-szerű felület, a felhasználók számára jelennek meg, ha regisztráció vagy bejelentkezés biztonsági adataikat frissítése.
+- A **megszakítási mód** egy varázsló-szerű élmény, amely a felhasználók számára jelenik meg, amikor regisztrálnak vagy frissítenek biztonsági adataikat a bejelentkezéskor.
 
-- **Mód kezelése** a felhasználói profil részeként van, és lehetővé teszi a felhasználók saját biztonsági adatok kezeléséhez.
+- A **kezelési mód** a felhasználói profil része, és lehetővé teszi a felhasználók számára a biztonsági adatok kezelését.
 
-Két mód esetében a felhasználók, akik korábban regisztrált olyan módszer, amely a multi-factor Authentication használható kell a multi-factor Authentication végrehajtása a biztonsági adatok eléréséhez.
+Mindkét mód esetében a felhasználók, akik korábban regisztráltak a Multi-Factor Authenticationhoz használható metódust, Multi-Factor Authentication kell végrehajtaniuk, mielőtt hozzá tudnak férni a biztonsági adataihoz.
 
 ### <a name="interrupt-mode"></a>Megszakítási mód
 
-Egyesített regisztrációs figyelembe veszi a multi-factor Authentication és az SSPR-házirendek, ha mindkettő a bérlő számára engedélyezve van. Ezek a szabályzatok az e egy felhasználó megszakad a regisztrációhoz bejelentkezés során, és milyen módszerek érhetők el a regisztrációs szabályozzák.
+A kombinált regisztráció a Multi-Factor Authentication és a SSPR szabályzatot egyaránt figyelembe veszi, ha mindkettő engedélyezve van a bérlő számára. Ezek a szabályzatok határozzák meg, hogy a rendszer megszakítja-e a felhasználók regisztrációját a bejelentkezés során, és hogy mely módszerek érhetők el a regisztrációhoz.
 
-Az alábbiakban számos forgatókönyv, ahol előfordulhat, hogy a rendszer kérni fogja regisztrálni vagy frissíteni a biztonsági adatok:
+Az alábbiakban néhány olyan forgatókönyv látható, amelyben a felhasználók a biztonsági adatok regisztrálására vagy frissítésére kérhetnek:
 
-* A multi-factor Authentication regisztrációs Identity Protection segítségével kényszeríthető ki: Regisztrálja a bejelentkezés során rendszer kéri a felhasználóktól. (Ha a felhasználó engedélyezve van az SSPR) multi-factor Authentication és az SSPR módszereket regisztrálják.
-* A multi-factor Authentication regisztrációs felhasználónkénti multi-factor Authentication segítségével kényszeríthető ki: Regisztrálja a bejelentkezés során rendszer kéri a felhasználóktól. (Ha a felhasználó engedélyezve van az SSPR) multi-factor Authentication és az SSPR módszereket regisztrálják.
-* A multi-factor Authentication regisztrációs feltételes hozzáférési vagy egyéb házirendek segítségével kényszeríthető ki: Felhasználók regisztrálása egy erőforrás, amely megköveteli a multi-factor Authentication szolgáltatás használatakor a rendszer felkéri. (Ha a felhasználó engedélyezve van az SSPR) multi-factor Authentication és az SSPR módszereket regisztrálják.
-* SSPR regisztrációs kényszerítése: Regisztrálja a bejelentkezés során rendszer kéri a felhasználóktól. Csak az SSPR módszerek regisztrálják.
-* SSPR-frissítés kényszerítése: Tekintse át a biztonsági adataikat a rendszergazda által beállított egy intervallumot, a felhasználóknak kell Felhasználók jelennek meg az adatokat, és erősítse meg a jelenlegi adatait vagy szükség esetén végezze el a módosításokat.
+- Multi-Factor Authentication regisztráció a személyazonosság védelme révén kényszerítve: A rendszer megkéri a felhasználókat, hogy regisztráljanak a bejelentkezés során. Regisztrálják Multi-Factor Authentication metódusokat és SSPR metódusokat (ha a felhasználó engedélyezve van a SSPR).
+- Multi-Factor Authentication regisztráció a felhasználónkénti Multi-Factor Authentication használatával: A rendszer megkéri a felhasználókat, hogy regisztráljanak a bejelentkezés során. Regisztrálják Multi-Factor Authentication metódusokat és SSPR metódusokat (ha a felhasználó engedélyezve van a SSPR).
+- Multi-Factor Authentication a regisztrációt a feltételes hozzáférés vagy más szabályzatok segítségével érvényesítjük: A rendszer akkor kéri a felhasználókat, hogy regisztráljanak, ha Multi-Factor Authenticationt igénylő erőforrást használnak. Regisztrálják Multi-Factor Authentication metódusokat és SSPR metódusokat (ha a felhasználó engedélyezve van a SSPR).
+- SSPR-regisztráció érvénybe léptetése: A rendszer megkéri a felhasználókat, hogy regisztráljanak a bejelentkezés során. Csak SSPR metódusokat regisztráljanak.
+- SSPR-frissítés kényszerítve: A felhasználóknak a biztonsági adataikat a rendszergazda által beállított időközönként kell áttekinteniük. A felhasználók megtekinthetik az adataikat, és szükség esetén ellenőrizhetik a jelenlegi adatokat, vagy módosíthatják azokat.
 
-Regisztrációs van érvényben, amikor a felhasználók meg kell felelnie a multi-factor Authentication és az SSPR-házirendek a legkevésbé biztonságos leginkább szükséges minimális többféle jelennek meg.
+A regisztráció érvénybe léptetése esetén a felhasználók a lehető legkevesebb módszert mutatják be a Multi-Factor Authentication és a SSPR szabályzatoknak való megfeleléshez.
 
 Példa:
 
-* A felhasználó az SSPR engedélyezve van. Az SSPR-szabályzat két módszer alaphelyzetbe állítása szükséges, és engedélyezte a mobilalkalmazás-kód, e-mailben és telefonon.
-   * Ez a felhasználó két módszer regisztrálásához szükséges.
-      * A felhasználó alapértelmezés szerint authenticator alkalmazás és a telefon látható.
-      * A felhasználó kiválaszthatja a hitelesítő alkalmazás vagy a telefon helyett e-mail regisztrálni.
+- A SSPR engedélyezve van egy felhasználó. A SSPR házirendben két módszer szükséges az alaphelyzetbe állításhoz, és engedélyezte a Mobile App Code, az e-mail és a Phone használatát.
+   - Ez a felhasználó két módszer regisztrálásához szükséges.
+      - A felhasználó alapértelmezés szerint a hitelesítő alkalmazás és a telefon beállítást jeleníti meg.
+      - A felhasználó megadhatja, hogy a hitelesítő alkalmazás vagy a telefon helyett e-maileket regisztráljon.
 
-Ez a folyamatábra ismerteti, milyen módszerek regisztrálása a bejelentkezés során egy felhasználónak, amikor megszakad látható:
+Ez a folyamatábra azt ismerteti, hogy mely metódusok jelennek meg a felhasználó számára a bejelentkezés során megszakított regisztráció során:
 
-![Egyesített biztonsági adatai folyamatábrája](media/concept-registration-mfa-sspr-combined/combined-security-info-flow-chart.png)
+![Kombinált biztonsági adatok folyamatábrája](media/concept-registration-mfa-sspr-combined/combined-security-info-flow-chart.png)
 
-Ha multi-factor Authentication és az SSPR engedélyezve van, azt javasoljuk, hogy a többtényezős hitelesítési regisztráció érvényesítése.
+Ha a Multi-Factor Authentication és a SSPR is engedélyezve van, javasoljuk, hogy érvényesítse Multi-Factor Authentication regisztrációját.
 
-Az SSPR-házirend megköveteli a felhasználóktól tekintse át a biztonsági adatok rendszeres időközönként, ha a felhasználók bejelentkezés során megszakad és a regisztrált módszereket látható. A jelenlegi adatait, ellenőrizheti, ha a naprakész adatok, vagy olyan módosításokat, ha szükségük van.
+Ha a SSPR-szabályzat megköveteli, hogy a felhasználók rendszeres időközönként vizsgálják felül a biztonsági adataikat, a rendszer a bejelentkezés során megszakítja a felhasználókat, és megjeleníti az összes regisztrált módszerét. Megerősítik az aktuális információt, ha naprakészek, vagy ha szükséges, módosításokat végezhetnek.
 
-### <a name="manage-mode"></a>Mód kezelése
+### <a name="manage-mode"></a>Kezelés módja
 
-A felhasználók mód kezelése a [ https://aka.ms/mysecurityinfo ](https://aka.ms/mysecurityinfo) vagy kiválasztásával **biztonsági adatok** a saját profil. Itt felhasználók is módszerek hozzáadása, törlése, vagy módosítsa a meglévő módszerek, módosítsa az alapértelmezett mód és más.
+A felhasználók a saját profil [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) **biztonsági adatainak** kiválasztásával érhetik el a kezelési módot. A felhasználók hozzáadhatnak metódusokat, törölhetik vagy módosíthatják a meglévő metódusokat, módosíthatják az alapértelmezett metódust és egyebeket.
 
-## <a name="key-usage-scenarios"></a>Fő használati forgatókönyvek
+## <a name="key-usage-scenarios"></a>Kulcshasználat forgatókönyvek
 
 ### <a name="set-up-security-info-during-sign-in"></a>Biztonsági adatok beállítása a bejelentkezés során
 
-Egy rendszergazda regisztrációs van kényszerítve.
+A rendszergazda kényszerített regisztrációt.
 
-A felhasználó nem állította be az összes szükséges biztonsági adatait, és az Azure Portalra kerül. Miután megadta a felhasználónevét és jelszavát, a rendszer kéri a felhasználótól állítsa be a biztonsági adatok. A felhasználó ezután állíthatja be a szükséges biztonsági adatait a varázslóban látható lépéseket követi. A beállításokban engedélyezve van, ha a felhasználó választhat módszereket, amelyek nem jelenik meg alapértelmezés szerint beállításához. A varázsló befejezése után felhasználók tekintse át a módszereket, állítsa be, és az alapértelmezett módszer a multi-factor Authentication hitelesítéshez. A telepítési folyamatot elvégezni, a felhasználó megerősíti, hogy az adatokat, és továbbra is az Azure Portalon.
+Egy felhasználó nem állította be az összes szükséges biztonsági adatot, és a Azure Portalra kerül. A Felhasználónév és a jelszó megadása után a rendszer felszólítja a felhasználót a biztonsági adatok beállítására. A felhasználó ezután a varázslóban látható lépéseket követve beállíthatja a szükséges biztonsági adatokat. Ha a beállítások lehetővé teszik, a felhasználó dönthet úgy, hogy az alapértelmezés szerint nem látható módszereket is beállít. A varázsló befejezése után a felhasználók áttekintik az általuk beállított metódusokat és a Multi-Factor Authentication alapértelmezett módszerét. A telepítési folyamat befejezéséhez a felhasználó megerősíti az adatokat, és folytatja a Azure Portal.
 
-### <a name="set-up-security-info-from-my-profile"></a>Saját profil a biztonsági adatok beállítása
+### <a name="set-up-security-info-from-my-profile"></a>Biztonsági információk beállítása a saját profilból
 
-Egy rendszergazda nem rendelkezik érvényesíti a regisztráció.
+Egy rendszergazda nem kényszerített regisztrációt.
 
-Ugrás a felhasználó, aki még nem beállítása az összes szükséges biztonsági adatok [ https://myprofile.microsoft.com ](https://myprofile.microsoft.com). A felhasználó kiválasztja **biztonsági adatok** a bal oldali panelen. Itt a felhasználó úgy dönt, hogy adjon meg egy metódust, kiválasztja az elérhető módszerek bármelyikét és a lépések a módszer beállítása. Amikor végzett, a felhasználó látja a módszert, amelyet csak be lett állítva a biztonsági adatok lapján.
+Egy olyan felhasználó, aki még nem állította be az összes szükséges biztonsági [https://myprofile.microsoft.com](https://myprofile.microsoft.com)adatot, a következőre lép:. A felhasználó a bal oldali panelen kiválasztja a **biztonsági adatokat** . Onnan a felhasználó úgy dönt, hogy hozzáad egy metódust, kiválasztja az elérhető módszerek bármelyikét, és az adott metódus beállításának lépéseit követi. Ha elkészült, a felhasználó az imént beállított módszert látja el a biztonsági adatok lapon.
 
-### <a name="delete-security-info-from-my-profile"></a>Biztonsági adat törlése a saját profil
+### <a name="delete-security-info-from-my-profile"></a>Biztonsági adatok törlése a saját profilból
 
-A felhasználók, akik korábban már beállított legalább egy módszert [ https://aka.ms/mysecurityinfo ](https://aka.ms/mysecurityinfo). A felhasználó úgy dönt, hogy törli a korábban regisztrált módszerekkel. Amikor végzett, a felhasználó többé nem látja a módszer a biztonsági adatok lapján.
+Az a felhasználó, aki korábban beállított legalább egy metódust, navigál a [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)következőhöz:. A felhasználó úgy dönt, hogy törli a korábban regisztrált módszerek egyikét. Ha elkészült, a felhasználó már nem látja ezt a metódust a biztonsági adatok lapon.
 
-### <a name="change-the-default-method-from-my-profile"></a>Az alapértelmezett módszer módosításához a profil
+### <a name="change-the-default-method-from-my-profile"></a>A saját profil alapértelmezett módszerének módosítása
 
-A felhasználók, akik korábban már beállított legalább egy olyan módszer, amelyet a multi-factor Authentication [ https://aka.ms/mysecurityinfo ](https://aka.ms/mysecurityinfo). A felhasználó egy másik alapértelmezett metódus az aktuális alapértelmezett módszer változik. Amikor végzett, a felhasználó látja az új alapértelmezett módszer a biztonsági adatok lapján.
+Az a felhasználó, aki korábban beállított legalább egy olyan metódust, amelyet Multi-Factor Authentication [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)használhat a alkalmazásban. A felhasználó az aktuális alapértelmezett metódust egy másik alapértelmezett metódusra módosítja. Ha elkészült, a felhasználó az új alapértelmezett metódust látja a biztonsági adatok lapon.
 
 ## <a name="next-steps"></a>További lépések
 
-[A bérlő kombinált regisztrációs engedélyezése](howto-registration-mfa-sspr-combined.md)
+[A felhasználók számára a hitelesítési módszerek ismételt regisztrálásának kényszerítése](howto-mfa-userdevicesettings.md#manage-authentication-methods)
 
-[A multi-factor Authentication és az SSPR elérhető módszerek](concept-authentication-methods.md)
+[Kombinált regisztráció engedélyezése a bérlőben](howto-registration-mfa-sspr-combined.md)
 
-[Új jelszó önkiszolgáló kérésének konfigurálása](howto-sspr-deployment.md)
+[SSPR és MFA-használati és-bejelentési jelentések](howto-authentication-methods-usage-insights.md)
 
-[Az Azure multi-factor Authentication konfigurálása](howto-mfa-getstarted.md)
+[A Multi-Factor Authentication és a SSPR elérhető módszerei](concept-authentication-methods.md)
+
+[Önkiszolgáló jelszó-visszaállítás konfigurálása](howto-sspr-deployment.md)
+
+[Az Azure Multi-Factor Authentication konfigurálása](howto-mfa-getstarted.md)

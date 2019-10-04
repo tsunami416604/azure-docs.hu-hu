@@ -4,9 +4,9 @@ description: Ebből az oktatóanyagból elsajátíthatja, hogy miként használh
 services: notification-hubs
 documentationcenter: ios
 keywords: leküldéses értesítés,leküldéses értesítések,ios leküldéses értesítések
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: b7fcd916-8db8-41a6-ae88-fc02d57cb914
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,18 +14,23 @@ ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 520d01327b5809d453bb777165899770ea4c130b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 05/21/2019
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 05/21/2019
+ms.openlocfilehash: 0335f5c71f99e6c7a90ce920c25e6bb7e9b4a08f
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57885033"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71211946"
 ---
-# <a name="tutorial-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Oktatóanyag: Leküldéses értesítések küldése iOS-alkalmazások Azure Notification Hubs használatával
+# <a name="tutorial-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Oktatóanyag: Leküldéses értesítések iOS-alkalmazásokba az Azure Notification Hubs
 
-[!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
+> [!div class="op_single_selector"]
+> * [Objective-C](notification-hubs-ios-apple-push-notification-apns-get-started.md)
+> * [Swift](notification-hubs-ios-push-notifications-swift-apps-get-started.md)
+
 
 Ebben az oktatóanyagban az Azure Notification Hubs használatával küld leküldéses értesítéseket egy iOS-alkalmazásba. Létre fog hozni egy üres iOS-alkalmazást, amely leküldéses értesítéseket fogad az [Apple Push Notification szolgáltatás (APNs)](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html#//apple_ref/doc/uid/TP40008194-CH8-SW1) használatával.
 
@@ -40,11 +45,11 @@ Ebben az oktatóanyagban a következő lépéseket hajtja végre:
 > * Teszt leküldéses értesítések küldése
 > * Annak ellenőrzése, hogy az alkalmazás fogad-e értesítéseket
 
-Az oktatóanyag teljes kódja megtalálható a [GitHubon](https://github.com/Azure/azure-notificationhubs-samples/tree/master/iOS/GetStartedNH/GetStarted). 
+Az oktatóanyag teljes kódja megtalálható a [GitHubon](https://github.com/Azure/azure-notificationhubs-ios/tree/master/Samples). 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Aktív Azure-fiók. Ha nincs fiókja, akkor az [hozzon létre egy ingyenes Azure-fiókkal](https://azure.microsoft.com/free) mindössze néhány perc alatt.
+* Aktív Azure-fiók. Ha nem rendelkezik fiókkal, mindössze néhány perc alatt [létrehozhat egy ingyenes Azure-fiókot](https://azure.microsoft.com/free) .
 * [Microsoft Azure üzenetkezelési keretrendszer]
 * Az [Xcode] legújabb verziója
 * Az iOS 10-zel (vagy újabb verzióval) kompatibilis eszköz
@@ -56,25 +61,6 @@ Az oktatóanyag teljes kódja megtalálható a [GitHubon](https://github.com/Azu
 Ennek az oktatóanyagnak az elvégzése előfeltétel minden további, iOS-alkalmazásokkal kapcsolatos Notification Hubs-oktatóanyag elvégzéséhez.
 
 [!INCLUDE [Notification Hubs Enable Apple Push Notifications](../../includes/notification-hubs-enable-apple-push-notifications.md)]
-
-## <a name="configure-your-notification-hub-for-ios-push-notifications"></a>Az értesítési központ konfigurálása iOS leküldéses értesítésekhez
-
-Ebben a szakaszban létrehoz egy új értesítési központot, valamint konfigurálja az APNs-hitelesítést a korábban létrehozott **.p12** leküldéses tanúsítvánnyal. Ha egy már korábban létrehozott értesítési központot kíván használni, egyből az 5. lépésre ugorhat.
-
-[!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
-
-### <a name="configure-your-notification-hub-with-apns-information"></a>Az értesítési központ konfigurálása APNs-információkkal
-
-1. Az **Értesítési szolgáltatások** területen válassza az **Apple (APNS)** lehetőséget.
-2. Válassza a **Tanúsítvány** elemet.
-3. Válassza a **fájl ikont**.
-4. Válassza ki a korábban exportált **.p12** fájlt.
-5. Adja meg a helyes **jelszót**.
-6. Válassza a **Védőfal** módot. Az **Éles** beállítást kizárólag akkor használja, ha olyan felhasználóknak szeretne leküldéses értesítéseket küldeni, akik megvásárolták az alkalmazást az áruházból.
-
-    ![APNS-tanúsítvány konfigurálása az Azure Portalon][7]
-
-Konfigurálta az értesítési központot az APNS-sel való együttműködésre, és rendelkezik a kapcsolati sztringekkel az alkalmazás regisztrálásához és leküldéses értesítések küldéséhez.
 
 ## <a name="connect-your-ios-app-to-notification-hubs"></a>iOS-alkalmazás összekapcsolása a Notification Hubs szogáltatással
 
@@ -96,42 +82,42 @@ Konfigurálta az értesítési központot az APNS-sel való együttműködésre,
 
     ![Xcode – leküldési képességek][12]
 
-5. Az Azure Notification Hubs SDK-modulok hozzáadása.
+5. Adja hozzá az Azure Notification Hubs SDK-modulokat.
 
-   Integrálható az Azure Notification Hubs SDK az alkalmazás használatával [Cocoapods](https://cocoapods.org) vagy manuálisan adja hozzá a bináris fájlokat a projekthez.
+   Az Azure Notification Hubs SDK-t integrálhatja az alkalmazásba a [Cocoapods](https://cocoapods.org) használatával, vagy manuálisan is hozzáadhatja a bináris fájlokat a projekthez.
 
-   - Integráció a Cocoapods segítségével
+   - Integráció a Cocoapods-on keresztül
 
-     Adja hozzá a következő függőségeket a `podfile` tartalmazza az Azure Notification Hubs SDK az alkalmazásba.
+     Adja hozzá az alábbi függőségeket `podfile` a alkalmazáshoz, hogy tartalmazza az Azure Notification Hubs SDK-t az alkalmazásba.
 
      ```ruby
      pod 'AzureNotificationHubs-iOS'
      ```
 
-     Futtatás `pod install` az újonnan definiált pod telepítéséhez, és nyissa meg a `.xcworkspace`.
+     Futtassa `pod install` az parancsot az újonnan definiált Pod telepítéséhez, `.xcworkspace`és nyissa meg a következőt:.
 
      > [!NOTE]
-     > Ha például a hibaüzenet jelenik meg ```[!] Unable to find a specification for `AzureNotificationHubs-iOS` ``` futtatása során `pod install`, futtassa a `pod repo update` a legújabb podok a Cocoapods adattárból, és futtassa `pod install`.
+     > Ha ```[!] Unable to find a specification for `AzureNotificationHubs-iOS` ``` a futás `pod install`közben hiba jelenik meg, futtassa a parancsot `pod repo update` a Cocoapods-adattár legújabb hüvelyének lekéréséhez, majd `pod install`futtassa a parancsot.
 
-   - Integráció Carthage keresztül
+   - Integráció a Carthage használatával
 
-     Adja hozzá a következő függőségeket a `Cartfile` tartalmazza az Azure Notification Hubs SDK az alkalmazásba.
+     Adja hozzá az alábbi függőségeket `Cartfile` a alkalmazáshoz, hogy tartalmazza az Azure Notification Hubs SDK-t az alkalmazásba.
 
      ```ruby
      github "Azure/azure-notificationhubs-ios"
      ```
 
-     Ezután frissítse, és a build-függőségeket:
+     Következő, frissítési és létrehozási függőségek:
 
      ```shell
      $ carthage update
      ```
 
-     Carthage használatával kapcsolatos további információkért lásd: a [Carthage GitHub-adattár](https://github.com/Carthage/Carthage).
+     A Carthage használatával kapcsolatos további információkért tekintse meg a [Carthage GitHub-tárházat](https://github.com/Carthage/Carthage).
 
-   - Integráció a bináris fájlok másolása a projektbe
+   - Integráció a bináris fájlok a projektbe való másolásával
 
-     1. Töltse le a [Azure Notification Hubs SDK](https://github.com/Azure/azure-notificationhubs-ios/releases) keretrendszer megadott zip-fájlként, és bontsa ki azt.
+     1. Töltse le a zip-fájlként megadott [Azure Notification HUBS SDK](https://github.com/Azure/azure-notificationhubs-ios/releases) -keretrendszert, és csomagolja ki.
 
      2. Az Xcode-ban kattintson a jobb gombbal a projektjére, majd kattintson az **Add Files to** (Fájlok hozzáadása a következőhöz:) lehetőségre a **WindowsAzureMessaging.framework** mappa az Xcode-projektjéhez adásához. Válassza a **Beállítások** lehetőséget, és győződjön meg arról, hogy az **Elemek másolása, ha szükséges** elem be van jelölve, majd kattintson a **Hozzáadás** elemre.
 
@@ -156,7 +142,7 @@ Konfigurálta az értesítési központot az APNS-sel való együttműködésre,
     #import <UserNotifications/UserNotifications.h>
     #import "HubInfo.h"
     ```
-8. Az a `AppDelegate.m` fájlt, adja hozzá a következő kódot a `didFinishLaunchingWithOptions` metódus az IOS-es verziójától függően. Ez a kód regisztrálja az eszközleíróját az APNs szolgáltatással:
+8. A fájlban adja hozzá a következő kódot `didFinishLaunchingWithOptions` a metódushoz az iOS-verzió alapján. `AppDelegate.m` Ez a kód regisztrálja az eszközleíróját az APNs szolgáltatással:
 
     ```objc
     UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeSound |

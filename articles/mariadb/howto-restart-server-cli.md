@@ -7,11 +7,11 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/28/2019
 ms.openlocfilehash: a6e0509d941d9bfdfe6db7a8b93ee49c5bece1a6
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58623078"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66171439"
 ---
 # <a name="restart-azure-database-for-mariadb-server-using-the-azure-cli"></a>Indítsa újra a Azure Database for MariaDB-kiszolgálóhoz az Azure CLI használatával
 Ez a témakör ismerteti, hogyan egy Azure Database for MariaDB server újraindításával. Indítsa újra a kiszolgálót, a kiszolgáló a műveletet hajt végre egy rövid kimaradás okozó karbantartási okokból szükségessé.

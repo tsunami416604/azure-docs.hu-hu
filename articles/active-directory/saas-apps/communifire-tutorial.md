@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb82c3112634163328e08b330083f5b4942798ab
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: afa8c451790331e81a96485c7965110c968fe249
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57880957"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67104990"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-communifire"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Communifire
 
@@ -55,7 +55,7 @@ Az Azure AD integrálása a Communifire konfigurálásához hozzá kell Communif
 
 **Communifire hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -130,7 +130,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Communifire, hajtsa 
 
     a. Válassza ki **bejelentkezési SAML-válasz és -előfeltétel** származó a **aláírási beállítás**.
     
-    b. Kattintson a **Mentés** gombra.
+    b. Kattintson a **Save** (Mentés) gombra
 
     ![Communifire aláírási beállítás](./media/communifire-tutorial/tutorial-communifire-signing-option.png)
  

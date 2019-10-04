@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 04/19/2019
 ms.author: alkohli
-ms.openlocfilehash: ee2820d78e95924e09a0219753f87d6910c0e736
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: c5ceeb2e6419cab7945454087edd4c821db28343
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60014126"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65204220"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-blob-storage"></a>Az Azure Data Box Blob storage-kapcsolatos problémák elhárítása
 
@@ -55,7 +55,7 @@ Ebben a szakaszban egy Linux-ügyfél használata az adatok másolása a Data Bo
 |Hibaüzenet  |Javasolt művelet |
 |---------|---------|
 |Az egyik a HTTP-fejléceket az érték nem szerepel a megfelelő formátumban. |A Microsoft Azure Storage-kódtára a Pythonhoz telepített verziója nem támogatott a Data Box. Tekintse meg az Azure Data Box Blob storage követelményeit a támogatott verziók.|
-|… [SSL: CERTIFICATE_VERIFY_FAILED]...|Mielőtt futtatná a Python, a Base64-kódolású SSL-tanúsítvány fájl elérési útja a REQUESTS_CA_BUNDLE környezeti változó beállítása (lásd: hogyan [töltse le a tanúsítványt]()). <br>Példa:<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer` <br>`python` <br>Azt is megteheti hozzáadta a tanúsítványt a rendszer tanúsítványtárolójába, és majd állítsa be ezt a környezeti változót az elérési úthoz, ezt a tárolót. <br> Például az Ubuntu rendszeren: <br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt` <br>`python`|
+|… [SSL: CERTIFICATE_VERIFY_FAILED]...|Mielőtt futtatná a Python, a Base64-kódolású SSL-tanúsítvány fájl elérési útja a REQUESTS_CA_BUNDLE környezeti változó beállítása (lásd: hogyan [töltse le a tanúsítványt](data-box-deploy-copy-data-via-rest.md#download-certificate)). <br>Példa:<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer` <br>`python` <br>Azt is megteheti hozzáadta a tanúsítványt a rendszer tanúsítványtárolójába, és majd állítsa be ezt a környezeti változót az elérési úthoz, ezt a tárolót. <br> Például az Ubuntu rendszeren: <br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt` <br>`python`|
 
 
 ## <a name="common-errors"></a>Gyakori hibák

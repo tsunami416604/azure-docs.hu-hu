@@ -1,29 +1,29 @@
 ---
-title: Az Azure Container Instances szolgáltatásban liveness mintavétel konfigurálása
-description: Ismerje meg, indítsa újra a nem megfelelő állapotú tárolók az Azure Container Instances szolgáltatásban liveness mintavételek konfigurálása
+title: Az élettartam-mintavétel konfigurálása Azure Container Instances
+description: Megtudhatja, hogyan konfigurálhat élő mintavételt a nem megfelelő állapotú tárolók újraindításához Azure Container Instances
 services: container-instances
 author: dlepow
-manager: jeconnoc
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 06/08/2018
 ms.author: danlep
-ms.openlocfilehash: 89b76fc68c113b7931894c0cf003ffd846c646ab
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 28205d6db85d7a5051f283445d95dd2375e174c8
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57899723"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325874"
 ---
 # <a name="configure-liveness-probes"></a>Üzemelési tesztek konfigurálása
 
-Megszakadt az államok lehet javítani kell, a tároló újraindításával eredményez hosszabb ideig is futhat, tárolóalapú alkalmazásokat. Az Azure Container Instances támogatja liveness mintavételek konfigurációkat tartalmazza, hogy a tároló újraindíthatja, ha kritikus funkció nem működik.
+A tároló alkalmazások hosszabb ideig futhatnak, így a tároló újraindításával megsérült állapotokat okozhatnak. Azure Container Instances támogatja az élettartam-mintavételt a konfigurációk belefoglalásához, hogy a tároló újraindítható legyen, ha a kritikus funkció nem működik.
 
-Ez a cikk azt ismerteti, hogyan helyezhet üzembe egy tárolócsoport, amely tartalmazza a működőképesség bemutatásához az automatikus újraindítást egy szimulált nem megfelelő tároló.
+Ez a cikk azt ismerteti, hogyan helyezhet üzembe olyan tároló csoportot, amely tartalmaz egy élő vizsgálatot, amely egy szimulált, nem kifogástalan állapotú tároló automatikus újraindítását szemlélteti.
 
-## <a name="yaml-deployment"></a>YAML-telepítés
+## <a name="yaml-deployment"></a>YAML üzembe helyezése
 
-Hozzon létre egy `liveness-probe.yaml` fájlt a következő kódrészletre. Ez a fájl határozza meg egy tárolócsoport, amely egy NGNIX tároló, amely végül sérült áll.
+Hozzon `liveness-probe.yaml` létre egy fájlt a következő kódrészlettel. Ez a fájl egy olyan NGNIX-tárolót határoz meg, amely végül sérült állapotba kerül.
 
 ```yaml
 apiVersion: 2018-06-01
@@ -55,53 +55,53 @@ tags: null
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-Futtassa a következő parancsot az a tárolócsoportot a fenti YAML-konfiguráció üzembe helyezése:
+Futtassa a következő parancsot a tároló csoport a fenti YAML-konfigurációval való üzembe helyezéséhez:
 
 ```azurecli-interactive
 az container create --resource-group myResourceGroup --name livenesstest -f liveness-probe.yaml
 ```
 
-### <a name="start-command"></a>Indítási parancs
+### <a name="start-command"></a>Start parancs
 
-A központi telepítés kezdési parancsot futtatja, amikor a tároló első elindításakor fut, által meghatározott határozza meg a `command` tulajdonság, amely elfogadja a karakterláncok tömbje. Ebben a példában azt elindítja egy bash-munkamenetet, és hozzon létre egy fájlt nevű `healthy` belül a `/tmp` könyvtárat adja át ezzel a paranccsal:
+Az üzemelő példány azt a kiindulási parancsot határozza meg, amely akkor fut le, amikor `command` a tároló először fut, és a tulajdonság határozza meg, amely karakterláncok tömbjét fogadja el. Ebben a példában egy bash-munkamenetet indít el, és létrehoz egy nevű `healthy` fájlt a `/tmp` címtárban a következő parancs átadásával:
 
 ```bash
 /bin/sh -c "touch /tmp/healthy; sleep 30; rm -rf /tmp/healthy; sleep 600"
 ```
 
- Majd a fájl törlése előtt 30 másodpercig fog alvó állapotba, majd egy 10 perces alvó állapotra váltana.
+ Ezután 30 másodpercig alvó állapotba kerül, mielőtt törölné a fájlt, majd 10 perces alvó állapotba lép.
 
-### <a name="liveness-command"></a>Liveness parancs
+### <a name="liveness-command"></a>Az élettartam parancs
 
-A telepítés határozza meg, egy `livenessProbe` támogatja egy `exec` liveness parancsot, amely a liveness ellenőrzés funkcionál. Ez a parancs kilép, nem nulla értékű, ha a tároló leállított és újraindul, jelzés a `healthy` fájl nem található. Ha ez a parancs sikeresen kilép a 0 kilépési kóddal, semmilyen művelet nem lesz végrehajtva.
+Ez az üzemelő `livenessProbe` példány egy olyan `exec` élet-ellenőrzési parancsot támogat, amely az élő ellenőrzések során működik. Ha a parancs nem nulla értékkel kilép, a rendszer leállítja és újraindítja a tárolót, és nem találta meg a `healthy` fájlt. Ha a parancs sikeresen kilép a 0. kilépési kóddal, a rendszer nem végez műveletet.
 
-A `periodSeconds` tulajdonság jelöli meg a liveness parancsot kell végrehajtani, 5 másodpercenként.
+Ha `periodSeconds` a tulajdonságot kijelöli, a Lives parancsot 5 másodpercenként végre kell hajtani.
 
-## <a name="verify-liveness-output"></a>Liveness kimenet ellenőrzése
+## <a name="verify-liveness-output"></a>Az élettartam kimenetének ellenőrzése
 
-Az első 30 másodpercen belül a `healthy` az indítási paranccsal létrehozott fájl létezik-e. Ha a liveness parancs ellenőrzi a `healthy` fájl létezik-e az állapotkódot adja vissza egy nulla jelzés sikeres, így nincs újraindítás történik.
+Az első 30 másodpercen `healthy` belül a Start parancs által létrehozott fájl létezik. Ha az élettartam parancs megkeresi a `healthy` fájl létezését, az állapotkód nulla értéket ad vissza, ami sikeres, ezért nem történik újraindítás.
 
-30 másodperc elteltével a `cat /tmp/healthy` elkezdi sikertelenek lesznek, nem megfelelő állapotú és leölését esemény előfordulása okozó.
+30 másodperc elteltével a megkezdi a `cat /tmp/healthy` hibát, ami nem megfelelő állapotba kerül, és az események megölése történik.
 
-Az Azure Portalon vagy az Azure CLI ezeket az eseményeket is megtekinthetők.
+Ezek az események a Azure Portal vagy az Azure CLI-ből is megtekinthetők.
 
-![Portál sérült állapotot jelző esemény][portal-unhealthy]
+![Portál sérült eseménye][portal-unhealthy]
 
-Az események megtekintése az Azure Portalon, az események típus szerint `Unhealthy` a liveness parancs sikertelen után aktiválódik. Az ezt követő esemény lesz típusú `Killing`, a tároló törléséhez hangsúlyozva, így megkezdheti az újraindítást. A tároló újraindítási számát növeli minden alkalommal, amikor ez akkor fordul elő.
+Ha megtekinti az eseményeket a Azure Portalban, a `Unhealthy` típusú események az élettartam parancs meghibásodása után lesznek aktiválva. A következő esemény típusa `Killing`lesz, és a tároló törlését jelzi, hogy az újraindítás megkezdődhet. A tároló újraindítási száma minden alkalommal megnövekszik.
 
-Újraindítást végezhető el helyben, az erőforrások, például a nyilvános IP-címek és a rendszer megőrzi a konkrét csomóponthoz tartozó tartalom.
+Az újraindítások helyben, így az erőforrások, például a nyilvános IP-címek és a csomópont-specifikus tartalmak is megmaradnak.
 
-![Portál újraindítása számláló][portal-restart]
+![Portál újraindítási számlálója][portal-restart]
 
-Ha a működőképesség folyamatosan meghiúsul, és túl sok újraindítást kezdeményez, a tároló egy exponenciális visszatartási késleltetés adja meg.
+Ha az élettartam-mintavétel folyamatosan leáll, és túl sok újraindítást indít el, a tároló exponenciális visszalépési késleltetést ad meg.
 
-## <a name="liveness-probes-and-restart-policies"></a>Liveness mintavételek és újraindítási házirendek
+## <a name="liveness-probes-and-restart-policies"></a>Élettartam-vizsgálatok és újraindítási szabályzatok
 
-Újraindítási házirendek felülírják az újraindítási viselkedés liveness mintavételek váltott. Például, ha egy `restartPolicy = Never` *és* végrehajtandó működőképességi egy, a tárolócsoport nem indítja újra egy sikertelen liveness ellenőrzés esetén. A tárolócsoport helyett csatlakozhat a tárolócsoport újraindítási szabályzata `Never`.
+Az újraindítási szabályzatok felülírják az élő tesztek által aktivált újraindítási viselkedést. Ha például beállít egy `restartPolicy = Never` *és* egy élő mintavételt, akkor a rendszer nem indítja újra a tároló csoportot a sikertelenség-ellenőrzések esetén. A tároló csoport Ehelyett a tároló csoport újraindítási szabályzatát `Never`fogja követni.
 
 ## <a name="next-steps"></a>További lépések
 
-A feladat-alapú forgatókönyvek lehet szükség a működőképesség automatikus újraindításának engedélyezéséhez, ha egy előfeltételként függvény nem működik megfelelően. Futó tárolók feladataival kapcsolatos további információkért lásd: [tárolóalapú feladatok futtatása az Azure Container Instances szolgáltatásban](container-instances-restart-policy.md).
+A feladaton alapuló forgatókönyvek esetében szükség lehet az automatikus újraindításra, ha az előfeltételként szükséges függvény nem működik megfelelően. A Task-alapú tárolók futtatásával kapcsolatos további információkért lásd: [tárolós feladatok futtatása Azure Container Instancesban](container-instances-restart-policy.md).
 
 <!-- IMAGES -->
 [portal-unhealthy]: ./media/container-instances-liveness-probe/unhealthy-killing.png

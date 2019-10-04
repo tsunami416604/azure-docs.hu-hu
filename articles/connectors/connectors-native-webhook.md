@@ -1,158 +1,143 @@
 ---
-title: Hozzon létre munkafolyamatokat eseményalapú vagy a műveletek – Azure Logic Apps |} A Microsoft Docs
-description: Automatizálja az eseményalapú munkafolyamatokat és műveleteket webhookok és Azure Logic Apps használatával
+title: Esemény-alapú feladatok és a munkafolyamatok létrehozása az Azure Logic Appsben
+description: Aktiválja, szüneteltetése és folytatása automatizált feladatokat, folyamatok és munkafolyamatok, amelyek egy végponton fordulhat elő, az Azure Logic Apps-események alapján
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
-ms.reviewer: klam, jehollan, LADocs
-ms.assetid: 71775384-6c3a-482c-a484-6624cbe4fcc7
-ms.topic: article
+ms.reviewer: klam, LADocs
+ms.topic: conceptual
+ms.date: 07/05/2019
 tags: connectors
-ms.date: 07/21/2016
-ms.openlocfilehash: c3047000843e054e71ec1a80313118a25e7c4905
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c2658df185d4836210c496d2c46a00a3541257a2
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58895579"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67541335"
 ---
-# <a name="create-event-based-workflows-or-actions-by-using-webhooks-and-azure-logic-apps"></a>Hozzon létre eseményalapú munkafolyamatokat és műveleteket webhookok és az Azure Logic Apps használatával
+# <a name="automate-event-based-tasks-and-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>Az Azure Logic Appsben a HTTP-webhookok használatával eseményalapú feladatok és a munkafolyamatok automatizálása
 
-A webhook művelet és eseményindító elindítása, szüneteltetése, és folytathatja a következő feladatok végrehajtására folyamatok:
+A [Azure Logic Apps](../logic-apps/logic-apps-overview.md) és a beépített HTTP-Webhook-összekötőt, akkor automatizálhatja, várjon, és fognak futni az adott eseményeket egy HTTP vagy HTTPS-végpontján logikai alkalmazások létrehozásával. Például létrehozhat egy logikai alkalmazást, amely figyeli egy szolgáltatásvégpont várakozással előtt a munkafolyamatot kiváltó, és a megadott műveletek futtatása ahelyett, hogy rendszeresen ellenőrzi egy adott esemény vagy *lekérdezési* , hogy a végpont.
 
-* A trigger egy [Azure Event Hub](https://github.com/logicappsio/EventHubAPI) érkezésekor egy elem
-* Várjon, amíg egy jóváhagyási munkafolyamat folytatása előtt
+Az alábbiakban néhány példa eseményalapú munkafolyamat:
 
-Tudjon meg többet [egyéni API-k, amelyek támogatják a webhook létrehozása](../logic-apps/logic-apps-create-api-app.md).
+* Várjon, amíg az elemek érkeznek a egy [Azure Event Hub](https://github.com/logicappsio/EventHubAPI) egy logikai alkalmazás futtatásának indítása előtt.
+* Várjon, amíg egy jóváhagyási munkafolyamat folytatása előtt.
 
-## <a name="use-the-webhook-trigger"></a>A webhook eseményindítóhoz használata
+## <a name="how-do-webhooks-work"></a>Hogyan működik a webhookok?
 
-A [ *eseményindító* ](../connectors/apis-list.md) olyan esemény, amely elindítja a logikai alkalmazás munkafolyamatának. A webhook eseményindítóhoz eseményalapú, amely új elemeket a lekérdezése nem függ. Ha menti a logikai alkalmazás a webhook eseményindítóként, illetve ha módosítja a logikai alkalmazás le van tiltva, hogy engedélyezve van, a webhook eseményindítóhoz *feliratkozik* a megadott szolgáltatás vagy a végpont regisztrálásával egy *visszahívási URL-Címének* szolgáltatás vagy a végpont. Az eseményindító URL-CÍMRE használja fel a logikai alkalmazás futtatása szükséges. Például a [kérelem típusú trigger](connectors-native-reqres.md), a logikai alkalmazás akkor aktiválódik, ha a várt esemény történik, azonnal. Az eseményindító *lemondja az előfizetést* Ha eltávolítja az eseményindítót, a logikai alkalmazás mentése, illetve amikor megváltozik a logikai alkalmazást engedélyezett.
+Egy HTTP-webhook eseményindító eseményalapú, amely nem függ az ellenőrzés vagy lekérdezési rendszeresen új elemeket. Egy logikai alkalmazást, amely egy webhook eseményindítóval indul, vagy ha módosítja a logikai alkalmazás le van tiltva, hogy engedélyezve van, a webhook eseményindítóhoz mentésekor *feliratkozik* egy adott szolgáltatás vagy a végpont regisztrálásával egy *visszahívási URL-Címének* szolgáltatás vagy a végpont. Az eseményindító majd megvárja, amíg a szolgáltatás vagy a végpont hívja meg az URL-cím, amely a logikai alkalmazás futtatásának megkezdése. Hasonló a [kérelem típusú trigger](connectors-native-reqres.md), a logikai alkalmazás akkor következik be, azonnal, ha a megadott esemény történik. Az eseményindító *lemondja az előfizetést* a szolgáltatás vagy a végpont Ha eltávolítja az eseményindítót, a logikai alkalmazás mentéséhez, vagy ha módosítja a logikai alkalmazást engedélyezett.
 
-A következő példa bemutatja, hogyan állítható be a HTTP-trigger, a Logic App Designerben. A lépések azt feltételezik, hogy már üzembe helyezte, vagy fér hozzá a következő API-k a [webhook előfizetés, és a logic apps minta mondja](../logic-apps/logic-apps-create-api-app.md#webhook-triggers). 
-
-**A webhook-eseményindító hozzáadása**
-
-1. Adja hozzá a **HTTP-Webhook** eseményindítót a logikai alkalmazás első lépéseként.
-2. Adja meg a paramétereket, a webhook előfizetés, és mondja hívások.
-
-   Ezt a lépést, ugyanezt a mintát követi a [HTTP-művelet](connectors-native-http.md) formátumban.
-
-     ![HTTP-trigger](./media/connectors-native-webhook/using-trigger.png)
-
-3. Adjon hozzá legalább egy műveletet.
-4. Kattintson a **mentése** a logikai alkalmazás közzétételére. Ebben a lépésben az előfizetési végpont meghívja a visszahívási URL-címet, a logikai alkalmazás aktiválásához szükséges.
-5. Minden alkalommal, amikor a szolgáltatás lehetővé teszi egy `HTTP POST` visszahívási URL-címre, a logikai alkalmazás akkor aktiválódik, és a kérés átadott adatokat tartalmazza.
-
-## <a name="use-the-webhook-action"></a>A webhook művelettel
-
-Egy [ *művelet* ](../connectors/apis-list.md) egy meghatározott műveletet, és futtassa a logikai alkalmazás munkafolyamat által. Mikor fusson a logikai alkalmazás a webhook művelettel, a művelet *feliratkozik* a megadott szolgáltatás vagy a végpont regisztrálja a *visszahívási URL-Címének* szolgáltatás vagy a végpont. A webhook művelettel, majd megvárja, amíg, amely a szolgáltatás hívást az URL-cím a logikai alkalmazás folytatja futtatása előtt. A logikai alkalmazás lemondja az előfizetést a szolgáltatás vagy a végpont ezekben az esetekben: 
+Egy HTTP-webhook művelettel is, eseményalapú és *feliratkozik* egy adott szolgáltatás vagy a végpont regisztrálja a *visszahívási URL-Címének* szolgáltatás vagy a végpont. A webhook művelettel megszakítja a logic app-munkafolyamatot, és megvárja, amíg a szolgáltatás vagy az endpoint hívásokat az URL-cím a logikai alkalmazás folytatja futtatása előtt. A művelet logikai alkalmazás *lemondja az előfizetést* a szolgáltatás vagy a végpont ezekben az esetekben:
 
 * Ha a webhook művelet sikeres befejezését követően
 * Ha a logikai alkalmazás futtatásának megszakítása válaszra való várakozás közben
 * Mielőtt a logikai alkalmazás túllépi az időkorlátot
 
-Ha például a [ **jóváhagyó e-mail küldése** ](connectors-create-api-office365-outlook.md) beavatkozásra egy webhook művelettel ezt a mintát a következő példát. Ez a minta kiterjesztheti az minden olyan szolgáltatáshoz, a webhook művelettel keresztül. 
+Ha például az Office 365 Outlook-összekötő a [ **jóváhagyó e-mail küldése** ](connectors-create-api-office365-outlook.md) beavatkozásra egy webhook művelettel ezt a mintát a következő példát. Ez a minta a webhook művelet használatával kiterjesztheti az bármely szolgáltatás.
 
-A következő példa bemutatja, hogyan állítható be a Logic App Designerben webhook művelettel. Ezek a lépések feltételezik, hogy már üzembe helyezte, vagy fér hozzá a következő API-k a [webhook előfizetés, és a logic apps használt minta mondja](../logic-apps/logic-apps-create-api-app.md#webhook-actions). 
+További információkért lásd az alábbi témakörök:
 
-**Egy webhook művelet hozzáadása**
+* [HTTP-Webhook eseményindító paraméterei](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger)
+* [Webhookok és -előfizetések](../logic-apps/logic-apps-workflow-actions-triggers.md#webhooks-and-subscriptions)
+* [Egyéni API-k, amelyek támogatják a webhook létrehozása](../logic-apps/logic-apps-create-api-app.md)
 
-1. Válasszon **új lépés** > **művelet hozzáadása**.
+## <a name="prerequisites"></a>Előfeltételek
 
-2. A Keresés mezőbe írja be az "webhook" található a **HTTP-Webhook** művelet.
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
 
-    ![Válassza ki a lekérdezési műveletet](./media/connectors-native-webhook/using-action-1.png)
+* Egy már üzembe helyezett végpont URL-CÍMÉT vagy az API, amely támogatja a webhook előfizetés, és mondja mintája [webhook eseményindítók a logic apps](../logic-apps/logic-apps-create-api-app.md#webhook-triggers) vagy [webhook-műveletek a logic apps](../logic-apps/logic-apps-create-api-app.md#webhook-actions) szükség szerint
 
-3. Adja meg a paraméterek, a webhook előfizetés, és mondja hívások
+* Alapvető ismeretek szerezhetők [létrehozása a logic apps](../logic-apps/quickstart-create-first-logic-app-workflow.md). Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
-   Ezt a lépést, ugyanezt a mintát követi a [HTTP-művelet](connectors-native-http.md) formátumban.
+* A logikai alkalmazás, ahol szeretné várja meg, a céloldali végpont adott esemény. A HTTP-Webhook eseményindító használatbavételéhez [hozzon létre egy üres logikai alkalmazás](../logic-apps/quickstart-create-first-logic-app-workflow.md). A HTTP-Webhook művelettel, indítsa el a logikai alkalmazás minden olyan eseményindítóval, amelyeket szeretne. A példa első lépéseként a HTTP-eseményindítóval.
 
-     ![Teljes lekérdezési művelet](./media/connectors-native-webhook/using-action-2.png)
-   
-   Futásidőben a logikai alkalmazás az előfizetési végpont meghívja ezt a lépést elérése után.
+## <a name="add-an-http-webhook-trigger"></a>Egy HTTP-Webhook eseményindító hozzáadása
 
-4. Kattintson a **mentése** a logikai alkalmazás közzétételére.
+A beépített trigger regisztrálja a megadott szolgáltatás egy visszahívási URL-címet, és megvárja, amíg a szolgáltatás URL-CÍMRE egy HTTP POST-kérelmet küldeni. Ez az esemény akkor fordul elő, amikor a trigger akkor aktiválódik, majd azonnal futtatja a logikai alkalmazás.
 
-## <a name="technical-details"></a>Technikai részletek
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Nyissa meg az üres logikai alkalmazás a Logikaialkalmazás-tervezőben.
 
-További részletek eseményindítók és műveletek kapcsolatban, hogy a webhook támogat.
+1. A tervezőben a keresőmezőbe írja be szűrőként "http-webhook". Az a **eseményindítók** listáról válassza ki a **HTTP-Webhook** eseményindító.
 
-## <a name="webhook-triggers"></a>Webhook triggers
+   ![Válassza ki a HTTP-Webhook eseményindító](./media/connectors-native-webhook/select-http-webhook-trigger.png)
 
-| Műveletek | Leírás |
-| --- | --- |
-| HTTP Webhook |Az előfizetés egy szolgáltatás, amely az URL-cím a logikai alkalmazás igény szerint üzenetszám meghívhatja egy visszahívási URL-címe. |
+   Ebben a példában a "HTTP-Webhook eseményindító" eseményindító átnevezése, úgy, hogy a lépés egy leíró nevet. Ezenkívül a példa későbbi ad hozzá a HTTP-Webhook művelet, és mindkét egyedieknek kell lenniük.
 
-### <a name="trigger-details"></a>A trigger részletei
+1. Adja meg az értékeket a [HTTP-Webhook eseményindító paraméterei](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger) , hogy szeretné-e az előfizetés használata és előfizetés lemondása hívásokat, például:
 
-#### <a name="http-webhook"></a>HTTP Webhook
+   ![Adja meg a HTTP-Webhook eseményindító paraméterei](./media/connectors-native-webhook/http-webhook-trigger-parameters.png)
 
-Az előfizetés egy szolgáltatás, amely az URL-cím a logikai alkalmazás igény szerint üzenetszám meghívhatja egy visszahívási URL-címe.
-Egy * azt jelenti, hogy kötelező mező.
+1. Egyéb elérhető paraméterek hozzáadásához nyissa meg a **új paraméter hozzáadása** listában, és válassza ki a kívánt paramétereket.
 
-| Megjelenítendő név | Tulajdonság neve | Leírás |
-| --- | --- | --- |
-| Feliratkozás metódus * |method |Előfizetési kérés használandó HTTP-metódus |
-| Feliratkozás URI * |uri azonosító |Előfizetési kérés használandó HTTP URI |
-| Előfizetés lemondása metódus * |method |Leiratkozás kérelem használandó HTTP-metódus |
-| Előfizetés lemondása URI * |uri azonosító |A HTTP URI unsubscribe kérelem használata |
-| Fizessen elő a törzs |törzs |Az előfizetés HTTP-kérés törzse |
-| Fizessen elő a fejlécek |A fejlécek |HTTP-kérelmek fejléceinek előfizetés |
-| Fizessen elő a hitelesítés |hitelesítés |Az előfizetés használandó HTTP-hitelesítést. [Tekintse meg a HTTP-összekötő](connectors-native-http.md#authentication) részletekért |
-| Előfizetés lemondása törzse |törzs |A leiratkozási HTTP-kérés törzse |
-| Leiratkozás a fejlécek |A fejlécek |HTTP-kérelmek fejléceinek unsubscribe |
-| Előfizetés lemondása hitelesítés |hitelesítés |A leiratkozási használandó HTTP-hitelesítést. [Tekintse meg a HTTP-összekötő](connectors-native-http.md#authentication) részletekért |
+   HTTP-webhook elérhető hitelesítési típusok kapcsolatos további információkért lásd: [hitelesítéshez a HTTP-eseményindítók és műveletek](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication).
 
-**Kimenet részletei**
+1. Folytassa a logikai alkalmazás munkafolyamat-műveletek, amelyek futtatását, amikor az eseményindító aktiválódik.
 
-Webhook-kérelmet
+1. Ha elkészült, kész, ne felejtse el menteni a logikai alkalmazást. A Tervező eszköztárán válassza **mentése**.
 
-| Tulajdonság neve | Adattípus | Leírás |
-| --- | --- | --- |
-| Fejlécek |objektum |Webhook-kérelemfejlécek |
-| Törzs |objektum |Webhook támogatásikérelem-objektum |
-| Állapotkód |int |Webhook kérésállapotkódot |
+   A logikai alkalmazás mentése meghívja az előfizetési végpont, és regisztrálja a visszahívási URL-cím a logikai alkalmazás indítására.
 
-## <a name="webhook-actions"></a>Webhook-műveletek
+1. Most már minden alkalommal, amikor a célként megadott szolgáltatás elküldi egy `HTTP POST` kérése a visszahívási URL-címre, a logikai alkalmazás akkor aktiválódik, és a kérés átadott adatokat tartalmazza.
 
-| Műveletek | Leírás |
-| --- | --- |
-| HTTP Webhook |Az előfizetés egy szolgáltatás, amely igény szerint egy munkafolyamat-lépés folytatásához az URL-cím segítségével meghívhatja a visszahívási URL-címe. |
+## <a name="add-an-http-webhook-action"></a>HTTP-Webhook művelet hozzáadása
 
-### <a name="action-details"></a>Művelet részletei
+A beépített művelet regisztrálja a megadott szolgáltatás egy visszahívási URL-címet, a logikai alkalmazás munkafolyamat felfüggesztése és megvárja, amíg a szolgáltatás URL-CÍMRE egy HTTP POST-kérelmet küldeni. Ha ez az esemény történik, a művelet folytatja, a logikai alkalmazás futtatása.
 
-#### <a name="http-webhook"></a>HTTP Webhook
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Nyissa meg a logikai alkalmazás a Logikaialkalmazás-tervezőben.
 
-Az előfizetés egy szolgáltatás, amely igény szerint egy munkafolyamat-lépés folytatásához az URL-cím segítségével meghívhatja a visszahívási URL-címe.
-Egy * azt jelenti, hogy kötelező mező.
+   Ez a példa első lépéseként a HTTP-Webhook eseményindító használja.
 
-| Megjelenítendő név | Tulajdonság neve | Leírás |
-| --- | --- | --- |
-| Feliratkozás metódus * |method |Előfizetési kérés használandó HTTP-metódus |
-| Feliratkozás URI * |uri azonosító |Előfizetési kérés használandó HTTP URI |
-| Előfizetés lemondása metódus * |method |Leiratkozás kérelem használandó HTTP-metódus |
-| Előfizetés lemondása URI * |uri azonosító |A HTTP URI unsubscribe kérelem használata |
-| Fizessen elő a törzs |törzs |Az előfizetés HTTP-kérés törzse |
-| Fizessen elő a fejlécek |A fejlécek |HTTP-kérelmek fejléceinek előfizetés |
-| Fizessen elő a hitelesítés |hitelesítés |Az előfizetés használandó HTTP-hitelesítést. [Tekintse meg a HTTP-összekötő](connectors-native-http.md#authentication) részletekért |
-| Előfizetés lemondása törzse |törzs |A leiratkozási HTTP-kérés törzse |
-| Leiratkozás a fejlécek |A fejlécek |HTTP-kérelmek fejléceinek unsubscribe |
-| Előfizetés lemondása hitelesítés |hitelesítés |A leiratkozási használandó HTTP-hitelesítést. [Tekintse meg a HTTP-összekötő](connectors-native-http.md#authentication) részletekért |
+1. Válassza ki a lépés, ha szeretné a HTTP-Webhook művelet hozzáadása, alatt **új lépés**.
 
-**Kimenet részletei**
+   Lépések közötti művelet hozzáadása, helyezze az egérmutatót a nyíl lépések között. Válassza a pluszjelet ( **+** ), amely akkor jelenik meg, és válassza ki **művelet hozzáadása**.
 
-Webhook-kérelmet
+1. A tervezőben a keresőmezőbe írja be szűrőként "http-webhook". Az a **műveletek** listáról válassza ki a **HTTP-Webhook** művelet.
 
-| Tulajdonság neve | Adattípus | Leírás |
-| --- | --- | --- |
-| Fejlécek |objektum |Webhook-kérelemfejlécek |
-| Törzs |objektum |Webhook támogatásikérelem-objektum |
-| Állapotkód |int |Webhook kérésállapotkódot |
+   ![HTTP-Webhook művelet kiválasztása](./media/connectors-native-webhook/select-http-webhook-action.png)
+
+   Ebben a példában a "HTTP-Webhook művelettel" művelet átnevezi, úgy, hogy a lépés egy leíró nevet.
+
+1. Adja meg a HTTP Webhook műveleti paraméterek, amelyek hasonlóak a [HTTP-Webhook eseményindító paraméterei](../logic-apps/logic-apps-workflow-actions-triggers.md##http-webhook-trigger) , hogy szeretné-e az előfizetés használata és előfizetés lemondása hívásokat, például:
+
+   ![Adja meg a HTTP-Webhook műveleti paraméterek](./media/connectors-native-webhook/http-webhook-action-parameters.png)
+
+   Futásidőben a logikai alkalmazás az előfizetési végpont hívja, ez a művelet futtatásakor. A logikai alkalmazás ezután felfüggeszti a munkafolyamatot, és megvárja, amíg a célszolgáltatás küldése egy `HTTP POST` kérelem a visszahívási URL-CÍMRE. Ha a művelet sikeresen befejeződik, a művelet lemondja az előfizetést a végpontról és a logikai alkalmazás folytatja a munkafolyamatot futtató.
+
+1. Egyéb elérhető paraméterek hozzáadásához nyissa meg a **új paraméter hozzáadása** listában, és válassza ki a kívánt paramétereket.
+
+   HTTP-webhook elérhető hitelesítési típusok kapcsolatos további információkért lásd: [hitelesítéshez a HTTP-eseményindítók és műveletek](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication).
+
+1. Ha elkészült, ne felejtse el menteni a logikai alkalmazást. A Tervező eszköztárán válassza **mentése**.
+
+## <a name="connector-reference"></a>Összekötő-referencia
+
+Az eseményindító és művelet paramétereket, amelyek hasonlít egymáshoz, további információ: [HTTP-Webhook paramétereinek](../logic-apps/logic-apps-workflow-actions-triggers.md##http-webhook-trigger).
+
+### <a name="output-details"></a>Kimenet részletei
+
+További információ a kimenetek HTTP-Webhook eseményindító vagy egy műveletet, amely ezeket az információkat adja vissza a következő:
+
+| Tulajdonság neve | Típus | Leírás |
+|---------------|------|-------------|
+| A fejlécek | object | A kérelemből a fejlécek |
+| Törzs | object | JSON-objektum | Az objektum a kérelem törzsében tartalommal |
+| Állapotkód | int | A kérelem az állapotkód: |
+|||
+
+| Állapotkód | Leírás |
+|-------------|-------------|
+| 200 | OK |
+| 202 | Elfogadva |
+| 400 | Hibás kérés |
+| 401 | Nem engedélyezett |
+| 403 | Tiltott |
+| 404 | Nem található |
+| 500 | Belső kiszolgálóhiba. Ismeretlen hiba történt. |
+|||
 
 ## <a name="next-steps"></a>További lépések
 
-* [Logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)
-* [Más összekötők keresése](apis-list.md)
+* További információk egyéb [Logic Apps-összekötők](../connectors/apis-list.md)

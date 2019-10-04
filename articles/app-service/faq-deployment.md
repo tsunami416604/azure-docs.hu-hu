@@ -1,103 +1,102 @@
 ---
-title: Üzembe helyezés – gyakori kérdések – az Azure App Service |} A Microsoft Docs
-description: Üzembe az Azure App Service Web Apps szolgáltatásával kapcsolatos gyakori kérdésekre adott válaszok.
+title: Üzembe helyezéssel kapcsolatos gyakori kérdések – Azure App Service | Microsoft Docs
+description: Választ kaphat a Azure App Service Web Apps funkciójának üzembe helyezésével kapcsolatos gyakori kérdésekre.
 services: app-service\web
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 9d38e3caf3d835eaf73df90282157eed76c5ea25
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 0a01f25894d1226466473dec7333859c7415f1fd
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58350640"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71121205"
 ---
-# <a name="deployment-faqs-for-web-apps-in-azure"></a>Üzembe helyezés – gyakori kérdések az Azure Web Apps esetében
+# <a name="deployment-faqs-for-web-apps-in-azure"></a>Az Azure-Web Apps üzembe helyezésével kapcsolatos gyakori kérdések
 
-Ez a cikk gyakori kérdések (GYIK) választ rendelkezik kapcsolatban felmerülő üzembehelyezési hibák a [Azure App Service Web Apps funkciójával](https://azure.microsoft.com/services/app-service/web/).
+Ez a cikk a [Azure App Service Web Apps funkciójának](https://azure.microsoft.com/services/app-service/web/)üzembe helyezésével kapcsolatos gyakori kérdésekre (GYIK) ad válaszokat.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="i-am-just-getting-started-with-app-service-web-apps-how-do-i-publish-my-code"></a>E vagyok még csak most ismerkedik az App Service web Apps alkalmazások. Hogyan tehetők közzé a kódomat?
+## <a name="i-am-just-getting-started-with-app-service-web-apps-how-do-i-publish-my-code"></a>Most App Service Web Apps-t használom. Hogyan közzétenni a kódot?
 
-Íme néhány lehetőség a közzététele a webalkalmazás kódját:
+Íme néhány lehetőség a webalkalmazás kódjának közzétételéhez:
 
-*   Üzembe helyezése a Visual Studio használatával. Ha a Visual studióban, kattintson a jobb gombbal a webes projektre, és válassza **közzététel**.
-*   Az FTP-ügyfél központi telepítését. Az Azure Portalon a webalkalmazás üzembe helyezése a kódokat a kívánt a közzétételi profil letöltése. Ezt követően a fájlok feltöltése \site\wwwroot közzétételi profil FTP azonos hitelesítő adatok használatával.
+*   Üzembe helyezés a Visual Studióval. Ha a Visual Studio-megoldással rendelkezik, kattintson a jobb gombbal a webalkalmazás-projektre, majd válassza a **Közzététel**lehetőséget.
+*   Üzembe helyezés FTP-ügyfél használatával. A Azure Portal töltse le a webalkalmazás közzétételi profilját, amelyre telepíteni kívánja a kódot. Ezután töltse fel a fájlokat a \site\wwwroot-re ugyanazzal a közzétételi profil FTP-hitelesítő adataival.
 
-További információkért lásd: [telepítse az alkalmazást az App Service-ben](deploy-local-git.md).
+További információ: [az alkalmazás üzembe helyezése app Service](deploy-local-git.md).
 
-## <a name="i-see-an-error-message-when-i-try-to-deploy-from-visual-studio-how-do-i-resolve-this"></a>Egy hibaüzenet jelenik meg a Visual Studióból üzembe látható. Hogyan oldhatom fel ez?
+## <a name="i-see-an-error-message-when-i-try-to-deploy-from-visual-studio-how-do-i-resolve-this-error"></a>Hibaüzenet jelenik meg, amikor megpróbálok üzembe helyezni a Visual studióból. Hogyan a hiba elhárítása?
 
-Ha a következő üzenetet látja, akkor előfordulhat, hogy használja az SDK egy régebbi verziója: "Hiba"YourResourceName"erőforrás 'YourResourceGroup' erőforráscsoportban üzembe helyezés során: MissingRegistrationForLocation: Az előfizetés nincs regisztrálva az erőforrástípus "összetevő" a következő helyen: "USA középső RÉGIÓJA". Regisztrálja újra a szolgáltató annak érdekében, hogy ezen a helyen érheti el." 
+Ha a következő üzenet jelenik meg, lehetséges, hogy az SDK egy régebbi verzióját használja: "Hiba történt a (z)" YourResourceGroup "erőforráscsoport" YourResourceName "erőforrásának üzembe helyezése során: MissingRegistrationForLocation: Az előfizetés nincs regisztrálva az "Components" erőforrástípus számára az "USA középső régiója" helyen. Regisztrálja újra a szolgáltatót ahhoz, hogy hozzáférhessen ehhez a helyhez. " 
 
-A probléma megoldásához frissítse a [legújabb SDK](https://azure.microsoft.com/downloads/). Ha az üzenet, és a legújabb SDK rendelkezik, küldjön egy támogatási kérést.
+A hiba megoldásához frissítsen a [legújabb SDK](https://azure.microsoft.com/downloads/)-ra. Ha ezt az üzenetet látja, és rendelkezik a legújabb SDK-val, küldjön be egy támogatási kérést.
 
-## <a name="how-do-i-deploy-an-aspnet-application-from-visual-studio-to-app-service"></a>Hogyan helyezhetek üzembe egy ASP.NET alkalmazás a Visual Studio App Service-ben?
+## <a name="how-do-i-deploy-an-aspnet-application-from-visual-studio-to-app-service"></a>Hogyan üzembe helyezhet egy ASP.NET-alkalmazást a Visual studióból a App Serviceba?
 <a id="deployasp"></a>
 
-Az oktatóanyag [hozzon létre az első ASP.NET-webalkalmazását öt perc alatt az Azure-ban](app-service-web-get-started-dotnet.md) bemutatja, hogyan helyezhet üzembe egy ASP.NET-alkalmazás az App Service webalkalmazásba a Visual Studio 2017 használatával.
+Az oktatóanyag [öt perc alatt hozza létre első ASP.net-webalkalmazását az Azure-](app-service-web-get-started-dotnet.md) ban, amely bemutatja, hogyan helyezhet üzembe egy ASP.net-webalkalmazást egy webalkalmazásban app Service a Visual Studio használatával.
 
-## <a name="what-are-the-different-types-of-deployment-credentials"></a>Mik azok az üzembe helyezési hitelesítő adatokat a különböző típusú?
+## <a name="what-are-the-different-types-of-deployment-credentials"></a>Mik a különböző típusú telepítési hitelesítő adatok?
 
-App Service-ben FTP/S telepítéséhez és a Git helyi üzemelő példányának kétféle típusú hitelesítő adatokat támogatja. Üzembe helyezési hitelesítő adatok konfigurálásával kapcsolatos további információkért lásd: [üzembe helyezési hitelesítő adatok konfigurálása az App Service](deploy-configure-credentials.md).
+A App Service kétféle hitelesítő adatot támogat a helyi git üzembe helyezéséhez és az FTP/S környezethez. További információ a központi telepítési hitelesítő adatok konfigurálásáról: [a app Service telepítési hitelesítő adatainak konfigurálása](deploy-configure-credentials.md).
 
-## <a name="what-is-the-file-or-directory-structure-of-my-app-service-web-app"></a>Mi az App Service webalkalmazás fájl vagy könyvtár szerkezete?
+## <a name="what-is-the-file-or-directory-structure-of-my-app-service-web-app"></a>Mi a App Service webalkalmazás fájl-vagy címtár-szerkezete?
 
-Az App Service-alkalmazás fájl szerkezete kapcsolatos információkért lásd: [struktúra fájlt az Azure-ban](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure).
+További információ a App Service alkalmazásának struktúrájáról: a [fájl szerkezete az Azure-ban](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure).
 
-## <a name="how-do-i-resolve-ftp-error-550---there-is-not-enough-space-on-the-disk-when-i-try-to-ftp-my-files"></a>Hogyan oldhatom fel a "FTP hiba – 550 itt nem elég hely a lemezen" FTP-fájlok meg?
+## <a name="how-do-i-resolve-ftp-error-550---there-is-not-enough-space-on-the-disk-when-i-try-to-ftp-my-files"></a>Hogyan feloldása "FTP-hiba 550 – nincs elég hely a lemezen" a fájlok FTP-n való kipróbálásakor?
 
-Ha ezt az üzenetet látja, valószínű, hogy futtatja, lemezkvóta a service-csomagban a webalkalmazás számára. Szüksége lehet a vertikális felskálázás a lemezterület-szükséglet alapján magasabb szolgáltatási szintre. Csomagok és erőforráskorlátok díjszabással kapcsolatos további információkért lásd: [App Service díjszabását](https://azure.microsoft.com/pricing/details/app-service/).
+Ha ezt az üzenetet látja, akkor valószínű, hogy a webalkalmazásához tartozó szolgáltatási csomagban lemezes kvótát használ. Előfordulhat, hogy a lemezterület igénye alapján fel kell mérnie egy magasabb szolgáltatási szintet. A díjszabással és az erőforrás-korlátokkal kapcsolatos további információkért tekintse meg a [app Service díjszabását](https://azure.microsoft.com/pricing/details/app-service/).
 
-## <a name="how-do-i-set-up-continuous-deployment-for-my-app-service-web-app"></a>Hogyan állíthatok be a folyamatos üzembe helyezés az App Service webalkalmazás?
+## <a name="how-do-i-set-up-continuous-deployment-for-my-app-service-web-app"></a>Hogyan beállítani a folyamatos üzembe helyezést a saját App Service webalkalmazáshoz?
 
-Beállíthat folyamatos üzembe helyezést az több erőforrás, beleértve az Azure DevOps, onedrive vállalati verzió, GitHub, Bitbucket, Dropbox és más Git-tárházakat. Ezek a lehetőségek érhetők el a portálon. [Folyamatos üzembe helyezés az App Service-](deploy-continuous-deployment.md) hasznos oktatóanyag, amely azt ismerteti, hogyan állítható be a folyamatos üzembe helyezés van.
+Több erőforrásból is beállíthat folyamatos üzembe helyezést, többek között az Azure DevOps, a OneDrive, a GitHub, a bitbucket, a Dropbox és más git-Tárházak használatával. Ezek a lehetőségek a portálon érhetők el. A [app Service folyamatos üzembe helyezése](deploy-continuous-deployment.md) hasznos oktatóanyag, amely leírja, hogyan állítható be a folyamatos üzembe helyezés.
 
-## <a name="how-do-i-troubleshoot-issues-with-continuous-deployment-from-github-and-bitbucket"></a>Hogyan háríthatom el a problémákat a GitHub és Bitbucket folyamatos üzembe helyezéssel?
+## <a name="how-do-i-troubleshoot-issues-with-continuous-deployment-from-github-and-bitbucket"></a>Hogyan a GitHubról és a bitbucket folytatott folyamatos üzembe helyezéssel kapcsolatos problémákat.
 
-Segítségre van szüksége a GitHub vagy bitbucket-alapú folyamatos üzembe helyezéssel kapcsolatos problémák kivizsgálása, lásd: [vizsgálja a folyamatos üzembe helyezés](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment).
+A GitHub-vagy bitbucket-alapú folyamatos üzembe helyezéssel kapcsolatos problémák kivizsgálásához tekintse meg a [folyamatos üzembe helyezés kivizsgálása](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment)című témakört.
 
-## <a name="i-cant-ftp-to-my-site-and-publish-my-code-how-do-i-resolve-this"></a>E nem FTP-ról saját helyre, és tegye közzé saját kód. Hogyan oldhatom fel ez?
+## <a name="i-cant-ftp-to-my-site-and-publish-my-code-how-do-i-resolve-this-issue"></a>Nem tudok FTP-t a webhelyemre, és közzétenni a kódot. Hogyan a probléma megoldásához?
 
-FTP-problémák megoldása:
+FTP-hibák elhárítása:
 
-1. Győződjön meg arról, hogy a helyes állomásnevet és hitelesítő adatok megadása. Különböző típusú hitelesítő adatok és a használatukkal kapcsolatos részletes információkért lásd: [üzembe helyezési hitelesítő adatok](https://github.com/projectkudu/kudu/wiki/Deployment-credentials).
-2. Győződjön meg arról, hogy az FTP-portok nem blokkolja tűzfal. A portok rendelkeznie kell ezeket a beállításokat:
-    * FTP-vezérlőkapcsolati port: 21
+1. Ellenőrizze, hogy a helyes állomásnevet és hitelesítő adatokat adta-e meg. További információk a hitelesítő adatok különböző típusairól és használatáról: [telepítési hitelesítő adatok](https://github.com/projectkudu/kudu/wiki/Deployment-credentials).
+2. Ellenőrizze, hogy a tűzfal nem blokkolja-e az FTP-portokat. A portoknak a következő beállításokkal kell rendelkezniük:
+    * FTP-vezérlő kapcsolati portja: 21
     * FTP-adatkapcsolati port: 989, 10001-10300
 
-## <a name="how-do-i-publish-my-code-to-app-service"></a>Hogyan tehetők közzé saját kód App Service-ben?
+## <a name="how-do-i-publish-my-code-to-app-service"></a>Hogyan közzétenni a kódot a App Service?
 
-Az Azure-Gyorssablonok segítséget az alkalmazás üzembe helyezése az üzembe helyezési vermek és a választott módszerrel tervezték. A rövid útmutatóhoz az Azure Portal használatához nyissa meg az app service-ben a **központi telepítési**, jelölje be **rövid**.
+Az Azure rövid útmutató úgy lett kialakítva, hogy segítséget nyújtson az alkalmazás üzembe helyezéséhez az üzembe helyezési verem és a választott módszer használatával. A rövid útmutató használatához a Azure Portal nyissa meg az App Service-t az **üzembe helyezés**alatt,majd válassza a rövid útmutató lehetőséget.
 
-## <a name="why-does-my-app-sometimes-restart-after-deployment-to-app-service"></a>Miért nem az alkalmazás időnként telepítést követően újraindítható az App Service?
+## <a name="why-does-my-app-sometimes-restart-after-deployment-to-app-service"></a>Miért indítja újra az alkalmazást az üzembe helyezés után App Service?
 
-A körülmények, amelyben egy alkalmazás központi telepítésének azt eredményezheti, hogy a számítógép újraindítását kapcsolatos további információkért lásd: [memóriafelhasználás problémákat és üzembe helyezési](https://github.com/projectkudu/kudu/wiki/Deployment-vs-runtime-issues#deployments-and-web-app-restarts"). A cikk azt ismerteti, mivel az App Service fájlok a wwwroot mappája üzembe helyezi. Ez soha nem közvetlenül újraindítja az alkalmazást.
+Ha meg szeretné tudni, hogy az alkalmazás központi telepítése milyen körülmények között okozhat újraindítást, tekintse meg az [üzembe helyezési és futásidejű problémák](https://github.com/projectkudu/kudu/wiki/Deployment-vs-runtime-issues#deployments-and-web-app-restarts")című témakört. Ahogy a cikk leírja, App Service telepíti a fájlokat a WWWroot mappába. Soha nem indítja el közvetlenül az alkalmazást.
 
-## <a name="how-do-i-integrate-azure-devops-code-with-app-service"></a>Hogyan integrálhatja az Azure DevOps-kódot az App Service?
+## <a name="how-do-i-integrate-azure-devops-code-with-app-service"></a>Hogyan integrálja az Azure DevOps-kódot App Servicekal?
 
-A folyamatos üzembe helyezés az Azure DevOps két lehetősége van:
+Az Azure DevOps két lehetősége van a folyamatos üzembe helyezés használatára:
 
-*   Használjon egy Git-projektet. Az App Service-n keresztül csatlakozzon az üzembe helyezési központ segítségével.
-*   A Team Foundation verzió Control (TFVC) projekt használja. Telepítheti a fordító-ügynökhöz az App Service használatával.
+*   Használjon git-projektet. Kapcsolódjon App Serviceon keresztül a Deployment Center használatával.
+*   A Team Foundation verziókövetés (TFVC) projekt használata. A App Service létrehozásához használja a Build ügynököt.
 
-Folyamatos kód üzembe helyezése mindkét ezek a beállítások a meglévő fejlesztői munkafolyamatokba, és hogy az eljárások függ. További információval a következő cikkek szolgálnak: 
+Mindkét lehetőséghez tartozó folyamatos programkód-telepítés a meglévő fejlesztői munkafolyamatok és bejelentkezési eljárások függvénye. További információval a következő cikkek szolgálnak: 
 
-*   [Az alkalmazás Azure-webhelyen való folyamatos üzembe helyezés végrehajtása](https://www.visualstudio.com/docs/release/examples/azure/azure-web-apps-from-build-and-release-hubs)
-*   [Úgy is, egy webalkalmazás üzembe helyezése az Azure DevOps szervezet beállítása](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App)
+*   [Az alkalmazás folyamatos üzembe helyezésének megvalósítása Azure-webhelyeken](https://www.visualstudio.com/docs/release/examples/azure/azure-web-apps-from-build-and-release-hubs)
+*   [Azure DevOps-szervezet beállítása, hogy üzembe helyezhető legyen egy webalkalmazásban](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App)
 
-## <a name="how-do-i-use-ftp-or-ftps-to-deploy-my-app-to-app-service"></a>Hogyan használhatom FTP- vagy FTPS az alkalmazás üzembe helyezése az App Service-ben?
+## <a name="how-do-i-use-ftp-or-ftps-to-deploy-my-app-to-app-service"></a>Hogyan FTP-t vagy FTPS-t használ az alkalmazásom App Service való üzembe helyezéséhez?
 
-Az App Service-ben a webes alkalmazás üzembe helyezése FTP- vagy FTPS használatával kapcsolatos információkért lásd: [telepítse az alkalmazást az App Service-ben FTP/S használatával](deploy-ftp.md).
+Az FTP-vagy FTPS a webalkalmazás App Service való üzembe helyezésével kapcsolatos információkért lásd: [az alkalmazás telepítése app Service az FTP/S használatával](deploy-ftp.md).

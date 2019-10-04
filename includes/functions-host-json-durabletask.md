@@ -4,17 +4,17 @@ description: fájl belefoglalása
 services: functions
 author: ggailey777
 manager: jeconnoc
-ms.service: functions
+ms.service: azure-functions
 ms.topic: include
 ms.date: 03/14/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: d79d1bd5ec244ad4399a02c349e2504516d06ccd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2e30184c7273fad2f9bc8adb34834ee14840733b
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58137639"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67608221"
 ---
 A konfigurációs beállítások [Durable Functions](../articles/azure-functions/durable-functions-overview.md).
 
@@ -38,7 +38,7 @@ A konfigurációs beállítások [Durable Functions](../articles/azure-functions
     "eventGridKeySettingName":  "EventGridKey",
     "eventGridPublishRetryCount": 3,
     "eventGridPublishRetryInterval": "00:00:30",
-    "eventGridPublishEventTypes": ["Started", "Pending", "Failed", "Terminated"]
+    "eventGridPublishEventTypes": ["Started", "Completed", "Failed", "Terminated"]
   }
 }
 ```
@@ -47,7 +47,7 @@ A feladat értesítésiközpont-nevek kell betűvel kezdődhet, és csak betűkb
 
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------|
-|HubName|DurableFunctionsHub|Alternatív [feladat hub](../articles/azure-functions/durable-functions-task-hubs.md) nevek segítségével elkülönítheti egymástól, több Durable Functions-alkalmazás akkor is, ha az általuk használt tároló ugyanazzal a háttérrendszerrel.|
+|hubName|DurableFunctionsHub|Alternatív [feladat hub](../articles/azure-functions/durable-functions-task-hubs.md) nevek segítségével elkülönítheti egymástól, több Durable Functions-alkalmazás akkor is, ha az általuk használt tároló ugyanazzal a háttérrendszerrel.|
 |controlQueueBatchSize|32|A vezérlő várólista lekéréshez egyszerre üzenetek száma.|
 |partitionCount |4|A partíciók száma az ellenőrzési várólista. Egy 1 és 16 közötti pozitív egész lehet.|
 |controlQueueVisibilityTimeout |5 perc|A várólistából kivéve vezérlés üzenetsorbeli üzenetek láthatósági időkorlátot.|

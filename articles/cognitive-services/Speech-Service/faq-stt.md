@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 06/11/2018
+ms.date: 07/05/2019
 ms.author: panosper
-ms.openlocfilehash: 29ec50a1d2e0aebb1aeb73b38c662f4a18624754
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: a437927f6ad43f4c3a90433faa5b9fa6f964aa5c
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431988"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839231"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Beszédfelismerés – gyakori kérdések
 
 Ha nem találja a kérdésekre adott válaszok a gyakori kérdések, tekintse meg az [más támogatási lehetőségeket](support.md).
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 **K: Mi a különbség egy alapkonfiguráció modell és a egy egyéni beszéd szöveges modellre?**
 
@@ -69,7 +69,7 @@ Ha módosítani, és a telepített alapkonfiguráció 1.0-s verziójú modell, a
 
 **A**: A modell 20 egyidejű kérelmek egységnyi növekményekben vertikálisan felskálázhatja.
 
-Lépjen kapcsolatba velünk, ha szüksége van egy nagyobb méreteket.
+Kapcsolattartó [Speech támogatási](mailto:speechsupport@microsoft.com?subject=Request%20for%20higher%20concurrency%20for%20Speech-to-text) Ha szüksége van egy nagyobb méreteket.
 
 **K: A modell letöltheti és helyileg futtatja az alkalmazást?**
 
@@ -83,7 +83,12 @@ Lépjen kapcsolatba velünk, ha szüksége van egy nagyobb méreteket.
 
 **A**: A REST API-25, 5 másodpercenként kérelmek korlátozza. Részletek tekintheti meg az oldalak [beszédfelismerés](speech-to-text.md).
 
-Ha további adatvédelmi megfontolások, amelyek nem engedik a custom Speech service használatával, lépjen kapcsolatba a támogatási csatornáit egyikét.
+**K: Hogyan fizetni kettős channel hangot?**
+
+**A**: Ha külön-külön küldje el az egyes csatornák (minden csatorna a saját fájlban), akkor az egyes fájlok időtartama szerint lesznek kiszámlázva. Egyetlen fájl elküldése az egyes csatornák multiplexed együtt, majd meg kell fizetni az egyetlen fájl időtartamán.
+
+> [!IMPORTANT]
+> Ha további adatvédelmi megfontolások, amelyek nem engedik a custom Speech service használatával, lépjen kapcsolatba a támogatási csatornáit egyikét.
 
 ## <a name="importing-data"></a>Adatok importálása
 
@@ -151,5 +156,5 @@ Ha további adatvédelmi megfontolások, amelyek nem engedik a custom Speech ser
 
 ## <a name="next-steps"></a>További lépések
 
-* [hibaelhárítással](troubleshooting.md)
+* [Hibaelhárítás](troubleshooting.md)
 * [Kibocsátási megjegyzések](releasenotes.md)

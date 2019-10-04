@@ -1,228 +1,170 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integráció a Cloud Security fabrickel |} A Microsoft Docs'
+title: 'Oktatóanyag: Azure Active Directory integráció a felhőalapú biztonsági hálóval | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a Felhőbeli biztonsági háló között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 549e8810-1b3b-4351-bf4b-f07de98980d1
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 06/20/2018
+ms.topic: tutorial
+ms.date: 07/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a556b38ca4947b71555ba7b023607b392900bdaf
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c0b1471abd7e057af919ed274547daf94d356c2b
+ms.sourcegitcommit: ac29357a47cc05afdf0f84834de5277598f4d87c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210390"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70213607"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-the-cloud-security-fabric"></a>Oktatóanyag: Az Azure Active Directory-integráció a Cloud Security fabrickel
+# <a name="tutorial-integrate-the-cloud-security-fabric-with-azure-active-directory"></a>Oktatóanyag: A Felhőbeli biztonsági háló integrálása a Azure Active Directory
 
-Ebben az oktatóanyagban elsajátíthatja a felhőalapú biztonsági Fabric integrálása az Azure Active Directory (Azure AD).
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a felhőalapú biztonsági hálót Azure Active Directory (Azure AD) használatával. A Felhőbeli biztonsági háló Azure AD-vel való integrálásával a következőket teheti:
 
-A Felhőbeli biztonsági Fabric integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
+* A Felhőbeli biztonsági hálóhoz hozzáférő Azure AD-beli vezérlés.
+* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a Cloud Security-hálóba az Azure AD-fiókjával.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-- Szabályozhatja, ki férhet hozzá a Felhőbeli biztonsági háló Azure AD-ben.
-- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett a Felhőbeli biztonsági hálóhoz (egyszeri bejelentkezés) az Azure AD-fiókjukat.
-- A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
-
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció konfigurálása a Cloud Security fabrickel, a következőkre van szükség:
+Első lépésként a következő elemeket kell megadnia:
 
-- Azure AD-előfizetés
-- Egy a Felhőbeli biztonsági háló egyszeri bejelentkezés engedélyezve van az előfizetés
-
-> [!NOTE]
-> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
-
-Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
-
-- Ne használja az éles környezetben, csak szükség esetén.
-- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* A Felhőbeli biztonsági háló egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. A Felhőbeli biztonsági háló hozzáadása a katalógusból
-1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
+
+* A Felhőbeli biztonsági háló támogatja az **SP** által KEZDEMÉNYEZett SSO-t
 
 ## <a name="adding-the-cloud-security-fabric-from-the-gallery"></a>A Felhőbeli biztonsági háló hozzáadása a katalógusból
+
 Az Azure AD-be a felhő biztonsági háló integráció konfigurálásához, hozzá kell a Felhőbeli biztonsági háló a galériából a felügyelt SaaS-alkalmazások listájára.
 
-**A Felhőbeli biztonsági háló hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
+1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be **a Cloud Security Fabric** kifejezést a keresőmezőbe.
+1. Válassza ki **a Cloud Security** -hálót az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
-
-    ![Az Azure Active Directory gomb][1]
-
-1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
-
-    ![A vállalati alkalmazások panelen][2]
-    
-1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
-
-    ![Az új alkalmazás gomb][3]
-
-1. A Keresés mezőbe írja be a **a Felhőbeli biztonsági háló**, jelölje be **a Felhőbeli biztonsági háló** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
-
-    ![A Felhőbeli biztonsági háló a találatok listájában](./media/ciscocloudlock-tutorial/tutorial_ciscocloudlock_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés a Felhőbeli biztonsági háló a teszt "Britta Simon" nevű felhasználó.
+Konfigurálja és tesztelje az Azure AD SSO-t a Felhőbeli biztonsági hálóval a **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Felhőbeli biztonsági hálóban.
 
-Egyszeri bejelentkezés működjön, az Azure ad-ben kell tudja, hogy mi a Felhőbeli biztonsági háló tartozó felhasználó egy felhasználó Azure AD-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó a Felhőbeli biztonsági háló hivatkozás kapcsolata kell létrehozni.
+Az Azure AD SSO és a felhőalapú biztonsági háló konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
-Az Azure AD egyszeri bejelentkezés a Felhőbeli biztonsági fabrickel tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
+1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+2. **[A Felhőbeli biztonsági háló egyszeri bejelentkezésének konfigurálása](#configure-the-cloud-security-fabric-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+4. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+5. **[Hozzon létre egy Felhőbeli biztonsági hálót](#create-the-cloud-security-fabric-test-user)** , amely a felhasználó Azure ad-képviseletéhez kapcsolódó, a Felhőbeli biztonsági hálóban található B. Simon-nek megfelelő.
+6. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-1. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-1. **[A Felhőbeli biztonsági háló tesztfelhasználó létrehozása](#create-a-the-cloud-security-fabric-test-user)**  - a-megfelelője a Britta Simon rendelkezik, amely kapcsolódik az Azure AD felhasználói ábrázolása a Felhőbeli biztonsági hálóban.
-1. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-1. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+### <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és a Felhőbeli biztonsági a Fabric-alkalmazás az egyszeri bejelentkezés konfigurálása.
+1. A [Azure Portal](https://portal.azure.com/)a **Cloud Security Fabric** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az alapszintű **SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
-**Az Azure AD egyszeri bejelentkezés konfigurálása a Cloud Security fabrickel, hajtsa végre az alábbi lépéseket:**
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az Azure Portalon az a **a Felhőbeli biztonsági háló** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
+4. Az alapszintű **SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
-
-1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
-
-    ![Egyszeri bejelentkezési párbeszédpanel](./media/ciscocloudlock-tutorial/tutorial_ciscocloudlock_samlbase.png)
-
-1. Az a **a Felhőbeli biztonsági háló tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
-
-    ![A Felhőbeli biztonsági háló tartomány és URL-címek egyszeri bejelentkezési adatait](./media/ciscocloudlock-tutorial/tutorial_ciscocloudlock_url.png)
-
-    a. Az a **bejelentkezési URL-** szövegmezőbe írja be egy URL-címe:
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet:
 
     | |
     |--|
     | `https://platform.cloudlock.com` |
     | `https://app.cloudlock.com` |
 
-    b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe:
-    
+    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:
+
     | |
     |--|
     | `https://platform.cloudlock.com/gate/saml/sso/<subdomain>` |
     | `https://app.cloudlock.com/gate/saml/sso/<subdomain>` |
 
     > [!NOTE]
-    > Az azonosító értéke nem valódi. Frissítse az értéket a tényleges azonosítója. Kapcsolattartó [a Felhőbeli biztonsági háló ügyfél-támogatási csapatának](mailto:support@cloudlock.com) a gépkulcsengedélyek értékének. 
+    > Az azonosító értéke nem valódi. Frissítse az értéket a tényleges azonosítója. Kapcsolattartó [a Felhőbeli biztonsági háló ügyfél-támogatási csapatának](mailto:support@cloudlock.com) a gépkulcsengedélyek értékének. Az Azure Portal alapszintű **SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-1. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
+4. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML** -fájlját, és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
 
-    ![A tanúsítvány letöltési hivatkozás](./media/ciscocloudlock-tutorial/tutorial_ciscocloudlock_certificate.png)
+    ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
 
-1. Kattintson a **mentése** gombra.
+5. Ha módosítani szeretné az aláírási beállításokat a követelmény szerint, kattintson a **Szerkesztés** gombra az **SAML aláíró tanúsítvány** párbeszédpanel megnyitásához.
 
-    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/ciscocloudlock-tutorial/tutorial_general_400.png)
+    ![SAML-válasz](./media/ciscocloudlock-tutorial/saml.png)
 
-1. Az egyszeri bejelentkezés konfigurálása **a Felhőbeli biztonsági háló** oldalon kell küldenie a letöltött **metaadatainak XML** való [támogatási csapatával a Felhőbeli biztonsági háló](mailto:support@cloudlock.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+    a. Jelölje be az **SAML-válasz aláírása és** az érvényesítési beállítás az **aláíráshoz lehetőséget**.
 
+    b. Válassza ki az **SHA-256** kapcsolót az **aláírási algoritmushoz**.
+
+    c. Kattintson a **Save** (Mentés) gombra.  
+
+6. A **felhő biztonsági hálójának beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmény alapján.
+
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
+
+### <a name="configure-the-cloud-security-fabric-sso"></a>A Felhőbeli biztonsági háló egyszeri bejelentkezésének konfigurálása
+
+Ha az egyszeri bejelentkezést **a felhőalapú biztonsági háló** oldalon szeretné konfigurálni, el kell küldenie a letöltött **összevonási METAADATOKat tartalmazó XML** -fájlt és a megfelelő másolt URL-címeket a [Felhőbeli biztonsági háló támogatási csapatának](mailto:support@cloudlock.com)a Azure Portalból. Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-   ![Hozzon létre egy Azure ad-ben tesztfelhasználó számára][100]
-
-**Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
-
-1. Az Azure Portalon, a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
-
-    ![Az Azure Active Directory gomb](./media/ciscocloudlock-tutorial/create_aaduser_01.png)
-
-1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
-
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/ciscocloudlock-tutorial/create_aaduser_02.png)
-
-1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
-
-    ![A Hozzáadás gombra.](./media/ciscocloudlock-tutorial/create_aaduser_03.png)
-
-1. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
-
-    ![A felhasználó párbeszédpanel](./media/ciscocloudlock-tutorial/create_aaduser_04.png)
-
-    a. Az a **neve** mezőbe írja be **BrittaSimon**.
-
-    b. Az a **felhasználónév** mezőbe írja be a felhasználó Britta Simon e-mail-címét.
-
-    c. Válassza ki a **jelszó megjelenítése** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
-
-    d. Kattintson a **Create** (Létrehozás) gombra.
-
-### <a name="create-a-the-cloud-security-fabric-test-user"></a>A Felhőbeli biztonsági háló tesztfelhasználó létrehozása
-
-Ebben a szakaszban egy felhasználói Britta Simon meghívta a Felhőbeli biztonsági háló hoz létre. Együttműködve [támogatási csapatával a Felhőbeli biztonsági háló](mailto:support@cloudlock.com) a felhasználók hozzáadása a Felhőbeli biztonsági háló platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva. 
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. Válassza ki **új felhasználó** a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
+   1. A **Név** mezőbe írja a következőt: `B.Simon`.  
+   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon Azure egyszeri bejelentkezéses hozzáférést biztosít a Felhőbeli biztonsági háló használja.
+Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít a felhőalapú biztonsági hálóhoz.
 
-![A felhasználói szerepkör hozzárendelése][200]
-
-**Britta Simon rendel a Felhőbeli biztonsági háló, hajtsa végre az alábbi lépéseket:**
-
-1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
-
-    ![Felhasználó hozzárendelése][201]
-
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
 1. Az alkalmazások listájában jelölje ki a **a Felhőbeli biztonsági háló**.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-    ![Az alkalmazások listáját a Felhőbeli biztonsági háló hivatkozás](./media/ciscocloudlock-tutorial/tutorial_ciscocloudlock_app.png)  
+   ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-1. A bal oldali menüben kattintson **felhasználók és csoportok**.
+1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
-    ![A "Felhasználók és csoportok" hivatkozásra][202]
+    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-    ![A hozzárendelés hozzáadása panel][203]
+### <a name="create-the-cloud-security-fabric-test-user"></a>A Felhőbeli biztonsági háló tesztelési felhasználójának létrehozása
 
-1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+Ebben a szakaszban létrehoz egy B. Simon nevű felhasználót a Cloud Security-hálóban. A Felhőbeli biztonsági háló [támogatási csapatával](mailto:support@cloudlock.com) a felhasználókat felveheti a Felhőbeli biztonsági háló platformba. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
-
-1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
-
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen a Felhőbeli biztonsági háló csempére kattint, meg kell lekérése automatikusan bejelentkezett a a Felhőbeli biztonsági Fabric-alkalmazáshoz.
-A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md).
+Ha a hozzáférési panelen a felhő biztonsági háló csempére kattint, automatikusan be kell jelentkeznie a felhőalapú biztonsági hálóba, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: ./media/ciscocloudlock-tutorial/tutorial_general_01.png
-[2]: ./media/ciscocloudlock-tutorial/tutorial_general_02.png
-[3]: ./media/ciscocloudlock-tutorial/tutorial_general_03.png
-[4]: ./media/ciscocloudlock-tutorial/tutorial_general_04.png
-
-[100]: ./media/ciscocloudlock-tutorial/tutorial_general_100.png
-
-[200]: ./media/ciscocloudlock-tutorial/tutorial_general_200.png
-[201]: ./media/ciscocloudlock-tutorial/tutorial_general_201.png
-[202]: ./media/ciscocloudlock-tutorial/tutorial_general_202.png
-[203]: ./media/ciscocloudlock-tutorial/tutorial_general_203.png
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

@@ -11,11 +11,11 @@ ms.author: zarhoads
 ms.custom: mvc
 keywords: A cosmos DB, nyissa meg a Service Brokert, az Open Service Broker for Azure
 ms.openlocfilehash: 46fa5564e5dd3429f812b263295044d867a8511c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57991982"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61028428"
 ---
 # <a name="integrate-existing-mongodb-application-with-azure-cosmos-db-api-for-mongodb-and-open-service-broker-for-azure-osba"></a>Integrálható meglévő MongoDB-alkalmazások Azure Cosmos DB API a mongodb-hez és az Open Service Broker for Azure (OSBA)
 
@@ -267,7 +267,7 @@ press Ctrl+C to detach
 ...
 ```
 
-Keresse meg az URL-cím jelenik meg a naplókat. Használja az előző példában *http://spring-music.1234567890abcdef1234.eastus.aksapp.io/*. 
+Keresse meg az URL-cím jelenik meg a naplókat. Használja az előző példában *http://spring-music.1234567890abcdef1234.eastus.aksapp.io/* . 
 
 Ellenőrizze, hogy megjelenik az alkalmazás mellett a módosításokat.
 

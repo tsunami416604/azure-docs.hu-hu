@@ -14,11 +14,11 @@ ms.reviewer: kexia
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2d26ff0f9259e3531259673f94fe477444cc786b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59491595"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60468206"
 ---
 # <a name="sign-in-options-for-microsoft-accounts-in-azure-active-directory"></a>Microsoft-fiókok az Azure Active Directory bejelentkezési lehetőségek
 

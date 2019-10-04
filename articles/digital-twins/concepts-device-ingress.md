@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: alinast
 ms.openlocfilehash: 35d12d0114f9677905c85a9df94ecd074e5f8f75
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729523"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60926078"
 ---
 # <a name="device-connectivity-and-telemetry-ingress"></a>Eszközkapcsolatok és bemenő telemetriaadatok
 
@@ -53,7 +53,7 @@ YOUR_MANAGEMENT_API_URL/devices/YOUR_DEVICE_GUID?includes=ConnectionString
 YOUR_MANAGEMENT_API_URL/devices?hardwareIds=YOUR_DEVICE_HARDWARE_ID&includes=ConnectionString
 ```
 
-| Paraméter értéke | Csere erre |
+| Hodnota parametru | Csere erre |
 | --- | --- |
 | *YOUR_DEVICE_HARDWARE_ID* | Az eszköz hardveres azonosítója |
 
@@ -67,7 +67,7 @@ Az eszköz üzenet formátuma és a hasznos adat a megoldás igényei szerint sz
 
  A hasznos adat tartalmát egy **üzenet** tetszőleges adatokat lehet akár 256 KB-nál. Néhány követelmények tulajdonságait a várt a [ `Message.Properties` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.message.properties?view=azure-dotnet) típusa. A táblázat tartalmazza a szükséges és választható tulajdonságait a rendszer által támogatott.
 
-| Tulajdonság neve | Érték | Szükséges | Leírás |
+| Tulajdonság neve | Érték | Kötelező | Leírás |
 |---|---|---|---|
 | **DigitalTwins-Telemetry** | 1.0 | Igen | Állandó érték, amely azonosítja a rendszer üzenetet. |
 | **DigitalTwins-SensorHardwareId** | `string(72)` | Igen | Az érzékelők által küldött egyedi azonosítója a **üzenet**. Ezt az értéket meg kell egyeznie egy objektum **HardwareId** tulajdonság esetében a rendszer feldolgozza azt. Például: `00FF0643BE88-CO2`. |

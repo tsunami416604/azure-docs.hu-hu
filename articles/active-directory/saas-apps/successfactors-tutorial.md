@@ -1,111 +1,89 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező SuccessFactors |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és SuccessFactors között.
+title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a SuccessFactors | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és SuccessFactors között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 32bd8898-c2d2-4aa7-8c46-f1f5c2aa05f1
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 1/3/2019
+ms.date: 08/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2281fb046ca9b96aa5800150d630b9086236c5c5
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 38d40a2f72e73dde0f99ebbc9701e02c8d03738b
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57846922"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989494"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-successfactors"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező SuccessFactors
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-successfactors"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a SuccessFactors
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan SuccessFactors integrálása az Azure Active Directory (Azure AD).
-SuccessFactors integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a SuccessFactors a Azure Active Directory (Azure AD) szolgáltatással. Ha integrálja az SuccessFactors-t az Azure AD-vel, a következőket teheti:
 
-* Szabályozhatja, ki férhet hozzá SuccessFactors Azure AD-ben.
-* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezve SuccessFactors (egyszeri bejelentkezés) az Azure AD-fiókjukat.
-* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* A SuccessFactors-hez hozzáférő Azure AD-beli vezérlés.
+* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a SuccessFactors az Azure AD-fiókjával.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-SuccessFactors az Azure AD-integráció konfigurálásához a következőkre van szükség:
+Első lépésként a következő elemeket kell megadnia:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
-* SuccessFactors egyszeri bejelentkezéses engedélyezett előfizetés
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* SuccessFactors egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-* Támogatja a SuccessFactors **SP** által kezdeményezett egyszeri bejelentkezés
+* A SuccessFactors támogatja az **SP** által KEZDEMÉNYEZett SSO-t
 
-## <a name="adding-successfactors-from-the-gallery"></a>SuccessFactors hozzáadása a katalógusból
+## <a name="adding-successfactors-from-the-gallery"></a>SuccessFactors hozzáadása a gyűjteményből
 
-Az Azure AD integrálása a SuccessFactors konfigurálásához hozzá kell SuccessFactors a katalógusból a felügyelt SaaS-alkalmazások listájára.
+A SuccessFactors Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a SuccessFactors a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**SuccessFactors hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
+1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **SuccessFactors** kifejezést a keresőmezőbe.
+1. Válassza ki a **SuccessFactors** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
+## <a name="configure-and-test-azure-ad-sso-for-successfactors"></a>Azure AD SSO konfigurálása és tesztelése a SuccessFactors-hez
 
-2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
+Konfigurálja és tesztelje az Azure AD SSO-t a SuccessFactors a **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a SuccessFactors-ben.
 
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+Az Azure AD SSO és a SuccessFactors konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+    1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+    1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+2. **[SUCCESSFACTORS SSO konfigurálása](#configure-successfactors-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+    1. **[Hozzon létre SuccessFactors-teszt felhasználót](#create-successfactors-test-user)** – ha a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-SuccessFactors rendelkezik.
+3. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-4. A Keresés mezőbe írja be a **SuccessFactors**válassza **SuccessFactors** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-     ![Az eredmények listájában SuccessFactors](common/search-new-app.png)
+1. A [Azure Portal](https://portal.azure.com/) **SuccessFactors** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az alapszintű **SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az SuccessFactors nevű tesztfelhasználó alapján **Britta Simon**.
-Az egyszeri bejelentkezés működjön egy Azure AD-felhasználót és a kapcsolódó felhasználó SuccessFactors hivatkozás kapcsolata kell létrehozni.
+1. Az alapszintű **SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
 
-Az Azure AD egyszeri bejelentkezés az SuccessFactors tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
-
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[SuccessFactors egyszeri bejelentkezés konfigurálása](#configure-successfactors-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre SuccessFactors tesztfelhasználót](#create-successfactors-test-user)**  – egy megfelelője a Britta Simon SuccessFactors, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
-
-Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
-
-Szeretné konfigurálni az Azure AD egyszeri bejelentkezés SuccessFactors, hajtsa végre az alábbi lépéseket:
-
-1. Az a [az Azure portal](https://portal.azure.com/), az a **SuccessFactors** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
-
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
-
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
-
-    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
-
-3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
-
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
-
-4. Az a **alapszintű SAML-konfigurációja** szakaszban, hajtsa végre az alábbi lépéseket:
-
-    ![SuccessFactors tartomány és URL-címeket egyetlen bejelentkezési adatait](common/sp-identifier-reply.png)
-
-    a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe:
+    a. A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
     | |
     |--|
@@ -128,7 +106,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés SuccessFactors, hajt
     | `https://www.successfactors.cn`|
     | `https://www.successfactors.cn/<companyname>`|
 
-    c. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe:
+    c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
     | |
     |--|
@@ -144,159 +122,134 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés SuccessFactors, hajt
     | `https://<companyname>.sapsf.cn/<companyname>`|
 
     > [!NOTE]
-    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL-, azonosítóját és válasz URL-cím. Kapcsolattartó [SuccessFactors ügyfél-támogatási csapatának](https://www.successfactors.com/content/ssf-site/en/support.html) beolvasni ezeket az értékeket.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel, azonosítóval és válasz URL-címmel. Az értékek lekéréséhez forduljon a [SuccessFactors](https://www.successfactors.com/content/ssf-site/en/support.html) ügyfélszolgálati csapatához.
 
-5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+4. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
 
-6. Az a **SuccessFactors beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+6. A **SuccessFactors beállítása** szakaszban másolja a megfelelő URL-címeket a követelmények alapján.
 
-    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-    a. Bejelentkezési URL
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-    b. Azure Ad Identifier
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-    c. Kijelentkezési URL
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. Válassza ki **új felhasználó** a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
+    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
+    1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+    1. Kattintson a **Create** (Létrehozás) gombra.
 
-### <a name="configure-successfactors-single-sign-on"></a>SuccessFactors egyszeri bejelentkezés konfigurálása
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-1. Egy másik böngészőablakban, jelentkezzen be a **SuccessFactors felügyeleti portál** rendszergazdaként.
+Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a SuccessFactors.
 
-2. Látogasson el **alkalmazásbiztonsági** natívan **egyszeri bejelentkezést a szolgáltatás**.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. Az alkalmazások listában válassza a **SuccessFactors**lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-3. Helyezze el az értéket a **Token alaphelyzetbe** kattintson **Token mentése** SAML SSO engedélyezése.
+    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-    ![Egyszeri bejelentkezés az alkalmazás oldalán konfigurálása][11]
+1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+
+    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
+
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+
+## <a name="configure-successfactors-sso"></a>SuccessFactors SSO konfigurálása
+
+1. Egy másik böngészőablakban jelentkezzen be a **SuccessFactors felügyeleti portálra** rendszergazdaként.
+
+2. Látogasson el az **alkalmazás biztonságára** és a natív az **egyszeri bejelentkezés funkcióra**.
+
+3. Helyezzen be bármilyen értéket az alaphelyzetbe állítási tokenbe, és kattintson a **jogkivonat mentése** lehetőségre az SAML SSO engedélyezéséhez.
+
+    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán][11]
 
     > [!NOTE]
-    > Ez az érték a be-és kikapcsolása kapcsoló szolgál. Bármilyen érték mentette, a SAML SSO-e be. Ha egy üres értéket a rendszer menti a SAML SSO OFF állásban.
+    > Ezt az értéket használja be-és kikapcsoló kapcsolóként. Ha a rendszer bármilyen értéket ment, az SAML egyszeri bejelentkezés be van kapcsolva. Ha a rendszer üres értéket ment, az SAML SSO ki van kapcsolva.
 
-4. Az alábbi képernyőfelvétel natív, és hajtsa végre a következő műveleteket:
+4. A lenti képernyőre, és hajtsa végre a következő műveleteket:
 
-    ![Egyszeri bejelentkezés az alkalmazás oldalán konfigurálása][12]
+    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán][12]
   
-    a. Válassza ki a **SAML SSO-v2** választógomb
+    a. Válassza ki az **SAML v2 SSO** választógombot
   
-    b. Állítsa be a **SAML, amely azt mutatja, entitás neve**(például az SAML-kibocsátó + vállalat neve).
+    b. Állítsa be az **SAML-érvényesítő fél nevét**(például SAML-kiállító + vállalat neve).
 
-    c. Az a **kiállítójának URL-címe** szövegmezőjébe illessze be a **az Azure AD-azonosító** az Azure Portalról másolt érték.
+    c. A **kiállító URL-címe** szövegmezőbe illessze be a Azure Portalból másolt **Azure ad-azonosító** értékét.
 
-    d. Válassza ki **helyességi feltétel** , **kötelező kötelező aláírás**.
+    d. Válassza az érvényesítés **kötelező aláírás**megkövetelése lehetőséget.
 
-    e. Válassza ki **engedélyezve** , **SAML jelző engedélyezése**.
+    e. Válassza az **engedélyezve** lehetőséget az **SAML-jelző engedélyezése**lehetőséggel.
 
-    f. Válassza ki **nem** , **bejelentkezési kérelem-aláírás (SF generált/SP/RP)**.
+    f. Válassza a nem **bejelentkezési kérelem aláírása lehetőséget (SF által generált/SP/RP)** .
 
-    g. Válassza ki **böngésző/Post profil** , **SAML-alapú profilban**.
+    g. Válassza ki a **Browser/post profilt** **SAML**-profilként.
 
-    h. Válassza ki **nem** , **kényszerítése a tanúsítvány érvényes időtartama**.
+    h. Válassza a nem **kényszerített tanúsítvány érvényességi időtartamát**.
 
-    i. Másolja a letöltött tanúsítvány-fájl tartalmát az Azure Portalról, és illessze be azt a **SAML-tanúsítvány ellenőrzése** szövegmezőbe.
+    i. Másolja a letöltött tanúsítványfájl tartalmát a Azure Portalból, majd illessze be az **SAML-ellenőrzési tanúsítvány** szövegmezőbe.
 
     > [!NOTE] 
-    > A tanúsítványok tartalmát kell kezdődnie tanúsítvány és a záró tanúsítvány címkéket.
+    > A tanúsítvány tartalmának meg kell kezdődnie a tanúsítvány és a záró tanúsítvány címkéit.
 
-5. Keresse meg az SAML-V2, és hajtsa végre az alábbi lépéseket:
+5. Navigáljon az SAML v2-re, majd hajtsa végre a következő lépéseket:
 
-    ![Egyszeri bejelentkezés az alkalmazás oldalán konfigurálása][13]
+    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán][13]
 
-    a. Válassza ki **Igen** , **támogatja az SP által kezdeményezett globális kijelentkezési**.
+    a. Válassza az **Igen** lehetőséget az **SP által kezdeményezett globális kijelentkezés támogatásához**.
 
-    b. Az a **globális kijelentkezési szolgáltatás URL-címe (LogoutRequest cél)** szövegmezőjébe illessze be a **kijelentkezéses URL-cím** érték, amely másolta űrlapon az Azure Portalon.
+    b. A **globális kijelentkezési szolgáltatás URL-címe (LogoutRequest-cél)** szövegmezőbe illessze be azt a kijelentkezési **URL-címet** , amelyet a Azure Portal másolt.
 
-    c. Válassza ki **nem** , **sp titkosítani kell az összes NameID elem megkövetelése**.
+    c. Ha a **nem** lehetőséget választja, az **SP-nek titkosítania kell az összes NameID elemet**.
 
-    d. Válassza ki **meghatározatlan** , **nameid-formátumához**.
+    d. Válassza ki a **meghatározatlan értéket** **NameID formátumban**.
 
-    e. Válassza ki **Igen** , **engedélyezése sp által kezdeményezett bejelentkezési (AuthnRequest)**.
+    e. Válassza az **Igen** lehetőséget az **SP által kezdeményezett bejelentkezés engedélyezése (AuthnRequest)** beállításnál.
 
-    f. Az a **küldési kérelmek, mint a céges szintű kiállító** szövegmezőjébe illessze be **bejelentkezési URL-cím** az Azure Portalról másolt érték.
+    f. A **küldési kérelem vállalati szintű kiállítóként** szövegmezőbe illessze be a **bejelentkezési URL-cím** értékét, amelyet a Azure Portal másolt.
 
-6. Hajtsa végre ezeket a lépéseket, ha azt szeretné, hogy a bejelentkezési felhasználónevek megkülönbözteti a kis-és nagybetű nincs megkülönböztetve.
+6. Hajtsa végre ezeket a lépéseket, ha a bejelentkezési felhasználónevek kis-és nagybetűk megkülönböztetését szeretné elvégezni.
 
     ![Egyszeri bejelentkezés konfigurálása][29]
 
-    a. Látogasson el **vállalati beállítások**(aljának közelében).
+    a. Látogasson el a **Vállalati beállítások**oldalra (az alsó sarokban).
 
-    b. Jelölje be a jelölőnégyzetet közel **engedélyezése eset – bizalmas adatokkal nem rendelkező felhasználónév**.
+    b. Válassza a jelölőnégyzetet a **nem kis-és nagybetűket megkülönböztető Felhasználónév engedélyezése**mellett.
 
     c. Kattintson a **Save** (Mentés) gombra.
 
     > [!NOTE]
-    > Ha ezt engedélyezni szeretné, a rendszer ellenőrzi, ha létrehoz egy ismétlődő SAML-bejelentkezési név. Például ha az ügyfél a felhasználó1, user1 felhasználónevek rendelkezik. Kis-és nagybetűk azonnal véve teszi ezeket az ismétlődéseket. A rendszer nem engedélyezi a szolgáltatást, és a egy hibaüzenetet kínálja. Az ügyfél kell módosítani a felhasználónevek egyikét, így más van írva.
+    > Ha megpróbálja engedélyezni ezt, a rendszer ellenőrzi, hogy létrehoz-e ismétlődő SAML-bejelentkezési nevet. Például ha az ügyfél rendelkezik a Felhasználó1 és a Felhasználó1 felhasználónévvel. A kis-és nagybetűk megkülönböztetése az ismétlődéseket is lehetővé teszi. A rendszer hibaüzenetet küld, és nem engedélyezi a szolgáltatást. Az ügyfélnek meg kell változtatnia az egyik felhasználónevet, hogy az a különböző módon legyen elnevezve.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+### <a name="create-successfactors-test-user"></a>SuccessFactors-tesztelési felhasználó létrehozása
 
-Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
+Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a SuccessFactors, a SuccessFactors kell kiépíteni őket. SuccessFactors esetén a kiépítés manuális feladat.
 
-1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
+A SuccessFactors-ben létrehozott felhasználók beszerzéséhez kapcsolatba kell lépnie a [SuccessFactors-támogatási csapattal](https://www.successfactors.com/content/ssf-site/en/support.html).
 
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
-
-2. Válassza ki **új felhasználó** a képernyő tetején.
-
-    ![Új felhasználó gomb](common/new-user.png)
-
-3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
-
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
-
-    a. Az a **neve** mezőbe írja be **BrittaSimon**.
-  
-    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
-    Például: BrittaSimon@contoso.com
-
-    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
-
-    d. Kattintson a **Create** (Létrehozás) gombra.
-
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
-
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés SuccessFactors Azure egyszeri bejelentkezés használatára.
-
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **SuccessFactors**.
-
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
-
-2. Az alkalmazások listájában jelölje ki a **SuccessFactors**.
-
-    ![Az alkalmazások listáját a SuccessFactors hivatkozásra](common/all-applications.png)
-
-3. A bal oldali menüben válassza **felhasználók és csoportok**.
-
-    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
-
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
-
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
-
-5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
-
-6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
-
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
-
-### <a name="create-successfactors-test-user"></a>SuccessFactors tesztfelhasználó létrehozása
-
-Ahhoz, hogy az Azure AD-felhasználók SuccessFactors jelentkezzen be, akkor ki kell építeni SuccessFactors be. SuccessFactors, esetén kiépítése a manuális feladat.
-
-SuccessFactors létrehozott felhasználók lekéréséhez lépjen kapcsolatba kell a [SuccessFactors támogatási csoportjának](https://www.successfactors.com/content/ssf-site/en/support.html).
-
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen a SuccessFactors csempére kattint, meg kell lehet automatikusan bejelentkezett a SuccessFactors, amelynek beállítása egyszeri bejelentkezés. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ha a hozzáférési panelen a SuccessFactors csempére kattint, automatikusan be kell jelentkeznie arra a SuccessFactors, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [A SuccessFactors kipróbálása az Azure AD-vel](https://aad.portal.azure.com)
 
 <!--Image references-->
 

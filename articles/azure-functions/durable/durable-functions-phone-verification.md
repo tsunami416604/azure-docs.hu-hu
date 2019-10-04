@@ -1,103 +1,102 @@
 ---
-title: Időtúllépés a Durable Functions – Azure és az emberi beavatkozás
-description: Megtudhatja, hogyan képes kezelni az emberi beavatkozás időtúllépések a Durable Functions bővítmény az Azure Functions.
+title: Emberi interakció és időtúllépés a Durable Functions-ben – Azure
+description: Ismerje meg, hogyan kezelheti az emberi interakciókat és időtúllépéseket a Azure Functions Durable Functions bővítményében.
 services: functions
 author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: cf43e29e967ee6f920eb38feb9c73d70f9621ea4
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: 4d8955517450ce3b4efdf30e2790e4be678dfc7b
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59609336"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735181"
 ---
-# <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Durable Functions - Phone minta az emberi beavatkozást igényel
+# <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Emberi interakció Durable Functions – telefonos ellenőrzési minta
 
-Ez a minta azt ismerteti, hogyan hozhat létre egy [Durable Functions](durable-functions-overview.md) vezénylési, amely magában foglalja az emberi beavatkozást igényel. Mindig, amikor egy valódi személy regisztrál egy automatikus folyamat, a folyamat értesítések küldése a személy, és aszinkron módon válaszokat kaphatnak képesnek kell lennie. Azt is lehetővé kell annak lehetőségét, hogy a személy nem érhető el. (Az utolsó rész az, ahol időtúllépések válnak fontossá.)
+Ez a példa azt mutatja be, hogyan hozhat létre olyan [Durable functions](durable-functions-overview.md) -előkészítést, amely emberi beavatkozást is magában foglal. Amikor egy valós személy részt vesz egy automatizált folyamatban, a folyamatnak képesnek kell lennie értesítéseket küldeni a személynek, és aszinkron módon fogadnia a válaszokat. Azt is lehetővé kell tenni, hogy a személy nem érhető el. (Ez utóbbi részben az időtúllépések fontosak lesznek.)
 
-Ez a minta egy SMS-alapú phone ellenőrzési rendszerétől valósítja meg. Az ilyen típusú folyamatok gyakran használják a felhasználó telefonszám ellenőrzésekor, vagy a multi-factor authentication (MFA). Ennek oka egy hatékony példa a teljes megvalósítás történik, néhány kisebb függvények használatával. Nincsenek külső adattár, például egy adatbázisba, nem szükséges.
+Ez a példa egy SMS-alapú telefonos ellenőrzési rendszert valósít meg. Az ilyen típusú folyamatokat gyakran használják az ügyfél telefonszámának vagy a többtényezős hitelesítés (MFA) ellenőrzéséhez. Ez egy hatékony példa, mivel a teljes implementáció pár kis függvény használatával történik. Nincs szükség külső adattárra, például egy adatbázisra.
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
 ## <a name="scenario-overview"></a>Forgatókönyv áttekintése
 
-Telefonos ellenőrzés, hogy a végfelhasználók az alkalmazás nem levélszemétküldők és azok, akik mondják ellenőrzésére szolgál. A multi-factor authentication szolgáltatás egy gyakori alkalmazási helyzet védelme érdekében felhasználói fiókokat a támadókat. A saját telefonos ellenőrzés végrehajtása az a kihívás abban áll, hogy igényel egy **állapot-nyilvántartó interakció** a viselkedjünk kulturáltan. A végfelhasználó általában biztosított néhány kódot (például 4 számjegyből szám), és válaszolnia kell **ésszerű időn belül**.
+A telefonos ellenőrzés segítségével ellenőrizheti, hogy az alkalmazás végfelhasználói nem levélszemétek-e, és hogy kik azok, akik azt mondják. A többtényezős hitelesítés gyakori használati eset a felhasználói fiókok támadók általi védelméhez. A saját telefonos ellenőrzés megvalósításának kihívása az, hogy a rendszer **állapot-nyilvántartó interakciót** igényel egy emberi lényrel. A végfelhasználók általában bizonyos kódokat (például egy 4 számjegyű számot) adnak meg, és **ésszerű**időn belül válaszolni kell rájuk.
 
-Normál Azure Functions állapot nélküli (mint sok más felhőbeli végpont más platformokon is), ezért az ilyen típusú kapcsolati járnak, explicit módon kezelése külsőleg állapota egy adatbázisban vagy valamilyen más állandó tárolja. A kapcsolati emellett több függvényt, amely koordinált együtt kell felosztani. Például szüksége legalább egy függvény meghatározza az egy kódot, valahol megőrzése, és a felhasználó telefonja és küldi el. Emellett szüksége lesz legalább egy másik függvényt válasz érkezik a felhasználó és valamilyen módon hozzárendelheti az eredeti függvény hívásához szükséges ahhoz, hogy hajtsa végre a kódérvényesítést. Időtúllépés az is fontos elemét alkotják biztonsága érdekében. Ez is gyorsan viszonylag összetett.
+A szokásos Azure Functions állapot nélküliek (mint a más platformokon futó más Felhőbeli végpontok), ezért az ilyen típusú interakciók az adatbázisban vagy valamilyen más állandó tárolóban kifejezetten az állapot felügyeletét vonják maguk után. Emellett az interakciót több, egymással koordinálható függvénybe kell bontani. Például szükség van legalább egy függvényre a kód kiválasztásához, a megtartáshoz és a felhasználó telefonjára való elküldéséhez. Emellett szükség van legalább egy másik függvényre, hogy választ kapjon a felhasználótól, és valahogy vissza kell képeznie az eredeti függvény hívására, hogy el lehessen végezni a kód érvényesítését. Az időkorlát szintén fontos szempont a biztonság biztosításához. Ez elég bonyolult lehet.
 
-Durable Functions használatakor ez a forgatókönyv bonyolultságát jelentősen csökken. Ebben a példában láthatja, ahogy egy orchestrator-függvényt az állapot-nyilvántartó interakció kezelheti, egyszerűen és bármilyen külső adattárolók bevonása nélkül. Mivel az orchestrator funkciók *tartós*, egyúttal magas megbízhatóságú ezeket interaktív folyamatokat.
+A forgatókönyv összetettsége nagy mértékben csökkent a Durable Functions használatakor. Ahogy az ebben a példában is látható, egy Orchestrator-függvény egyszerűen, külső adattárak nélkül kezelheti az állapot-nyilvántartó interakciókat. Mivel a Orchestrator függvények *tartósak*, az interaktív folyamatok is nagyon megbízhatóak.
 
 ## <a name="configuring-twilio-integration"></a>Twilio-integráció konfigurálása
 
 [!INCLUDE [functions-twilio-integration](../../../includes/functions-twilio-integration.md)]
 
-## <a name="the-functions"></a>Az funkciók
+## <a name="the-functions"></a>A függvények
 
-Ez a cikk végigvezeti a mintaalkalmazást a következő funkciókat:
+Ez a cikk végigvezeti a minta alkalmazás következő funkcióiról:
 
 * **E4_SmsPhoneVerification**
 * **E4_SendSmsChallenge**
 
-Az alábbi szakaszok ismertetik a konfiguráció és a C# a parancsfájlkezelést, és a JavaScript által használt kódot. A Visual Studio fejlesztési kód a cikk végén található meg.
+A következő szakaszokban ismertetjük a C# parancsfájlok és a JavaScriptek konfigurációját és kódját. A Visual Studio-fejlesztés kódja a cikk végén látható.
 
-## <a name="the-sms-verification-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>Az SMS ellenőrzési vezénylési (Visual Studio Code és az Azure portal minta kód)
+## <a name="the-sms-verification-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>Az SMS-ellenőrzés összehangolása (Visual Studio Code és Azure Portal mintakód)
 
-A **E4_SmsPhoneVerification** a funkció a standard *function.json* az orchestrator-funkciók.
+A **E4_SmsPhoneVerification** függvény a standard *function. JSON* fájlt használja a Orchestrator függvényekhez.
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E4_SmsPhoneVerification/function.json)]
 
-A kód, amely megvalósítja a függvény a következő:
+Itt látható a függvényt megvalósító kód:
 
-### <a name="c"></a>C#
+### <a name="c-script"></a>C#Parancsfájl
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E4_SmsPhoneVerification/run.csx)]
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2.x függvények)
+### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2. x függvény)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SmsPhoneVerification/index.js)]
 
-Megkezdése után az orchestrator-funkció a következőket teszi:
+Az indítás után a Orchestrator függvény a következő műveleteket végzi el:
 
-1. Lekérdezi egy telefonszámot, amelyre fog *küldése* az SMS-értesítést.
-2. Hívások **E4_SendSmsChallenge** küldjön SMS-t, hogy a felhasználó és az értéket ad vissza biztonsági másolatot a várt 4 jegyű ellenőrző kódot.
-3. Hoz létre egy tartós időzítőt, hogy az eseményindítók 90 másodperc alatt az aktuális idő.
-4. Az időzítő párhuzamosan, megvárja, amíg egy **SmsChallengeResponse** esemény a felhasználó elől.
+1. Beolvas egy telefonszámot, amelyre az SMS-értesítést *küldi* .
+2. Meghívja a **E4_SendSmsChallenge** , hogy SMS-üzenetet küldjön a felhasználónak, és visszaadja a várt 4 számjegyű Challenge-kódot.
+3. Egy tartós időzítőt hoz létre, amely az aktuális időpontból 90 másodpercet indít el.
+4. Az időzítővel párhuzamosan vár egy **SmsChallengeResponse** eseményt a felhasználótól.
 
-A felhasználó kap egy SMS-üzenet egy négyjegyű kóddal. 90 másodperc alatt, hogy ugyanolyan 4 számjegyű kód küldi vissza az orchestrator függvény példány az ellenőrzési folyamat elvégzéséhez rendelkeznek. Ha ezek a hibás kódot küldenek, kapnak egy további három megpróbálja beolvasni a jobb oldali (belül ugyanebben a 90 másodperces ablakban).
+A felhasználó egy négyjegyű kóddal rendelkező SMS-üzenetet kap. Az ellenőrzési folyamat elvégzéséhez 90 másodperc áll rendelkezésre, hogy ugyanazt a 4 számjegyű kódot vissza lehessen küldeni a Orchestrator függvény példányára. Ha nem a megfelelő kódot küldi el, a rendszer további három kísérletet tesz arra, hogy jobbat kapjon (ugyanazon a 90-másodperces ablakban).
 
 > [!NOTE]
-> Nem lehet első, de az orchestrator nyilvánvaló függvény teljesen determinisztikus. Ennek az az oka az `CurrentUtcDateTime` (.NET) és `currentUtcDateTime` (JavaScript) tulajdonságok rendszer kiszámítja az időzítő lejárati időt, és ezek a Tulajdonságok ugyanazt az értéket ad vissza minden egyes ismétlés ezen a ponton az orchestrator-kódban. Ez fontos annak érdekében, hogy azonos `winner` eredménye minden ismétlődő meghívásához `Task.WhenAny` (.NET) vagy `context.df.Task.any` (JavaScript).
+> Előfordulhat, hogy először nem nyilvánvaló, de ez a Orchestrator függvény teljesen determinisztikus. Ennek az az oka `CurrentUtcDateTime` , hogy a ( `currentUtcDateTime` .net) és a (JavaScript) tulajdonságokat használja az időzítő lejárati idejének kiszámításához, és ezek a tulajdonságok ugyanazt az értéket adják vissza a Orchestrator-kód ezen pontján lévő összes visszajátszás esetében. Ez fontos annak biztosítása érdekében, hogy a `winner` `Task.WhenAny` (.net) vagy `context.df.Task.any` a (JavaScript) minden ismétlődő hívása ugyanaz legyen.
 
 > [!WARNING]
-> Fontos, hogy [időzítők Mégse](durable-functions-timers.md) Ha már nincs szükség van rájuk jár le, amikor egy kérdés-válasz elfogadja a fenti példában látható módon.
+> Fontos [megszakítani az időzítőt](durable-functions-timers.md) , ha már nincs rájuk szükség a lejárathoz, ahogy a fenti példában a kérdéses válasz elfogadásakor is.
 
-## <a name="send-the-sms-message"></a>Az SMS-üzenet küldése
+## <a name="send-the-sms-message"></a>SMS-üzenet küldése
 
-A **E4_SendSmsChallenge** függvény a Twilio-kötést használja a 4-jegyű kódot tartalmazó SMS-üzenet küldése a végfelhasználónak. A *function.json* a következők:
+A **E4_SendSmsChallenge** függvény a Twilio kötés használatával küldi el az SMS-üzenetet a 4 számjegyű kóddal a végfelhasználónak. A *function. JSON* a következőképpen van definiálva:
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E4_SendSmsChallenge/function.json)]
 
-Ez pedig a kódot, amely a 4-jegyű ellenőrző kódot állít elő, és az SMS-üzenet küldése:
+Itt látható a 4 számjegyből álló hibakódot generáló kód, amely az SMS-üzenetet küldi el:
 
-### <a name="c"></a>C#
+### <a name="c-script"></a>C#Parancsfájl
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E4_SendSmsChallenge/run.csx)]
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2.x függvények)
+### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2. x függvény)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SendSmsChallenge/index.js)]
 
-Ez **E4_SendSmsChallenge** függvény beolvassa volat pouze jednou, még akkor is, ha a folyamat leáll vagy visszajátszani beolvasása. Ez a jó, mert nem szeretné a felhasználó több SMS-üzenet beolvasása. A `challengeCode` vissza az értéket a rendszer automatikusan megőrzi, így az orchestrator függvény mindig tudja, mit jelent a helyes kódot.
+Ez a **E4_SendSmsChallenge** függvény csak egyszer hívható meg, még akkor is, ha a folyamat összeomlik vagy újra le lesz játszva. Ez azért hasznos, mert nem szeretné, hogy a végfelhasználó több SMS-üzenetet is beolvasson. A `challengeCode` visszatérési érték automatikusan megmarad, így a Orchestrator függvény mindig tudja, hogy mi a helyes kód.
 
 ## <a name="run-the-sample"></a>Minta futtatása
 
-Használja a HTTP-eseményindítókkal aktivált függvényeket, a mintában szereplő, elkezdheti a vezénylési a következő HTTP POST-kérelem küldésével:
+A mintában szereplő HTTP-triggerű függvények használatával a következő HTTP POST-kérelem elküldésével elindíthatja a koordinálást:
 
 ```
 POST http://{host}/orchestrators/E4_SmsPhoneVerification
@@ -116,9 +115,9 @@ Location: http://{host}/admin/extensions/DurableTaskExtension/instances/741c6565
 {"id":"741c65651d4c40cea29acdd5bb47baf1","statusQueryGetUri":"http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}","sendEventPostUri":"http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}","terminatePostUri":"http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1/terminate?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}"}
 ```
 
-Az orchestrator függvény kap a megadott telefonszámot, és azonnal elküldi egy véletlenszerűen létrehozott 4 jegyű ellenőrző kódot tartalmazó SMS-ben &mdash; például *2168*. A függvény majd vár 90 másodpercet a válaszra.
+A Orchestrator függvény a megadott telefonszámot fogadja, és azonnal SMS-üzenetet küld egy véletlenszerűen generált 4 számjegyű ellenőrző kóddal &mdash; , például *2168*. A függvény ezután 90 másodpercet vár a válaszra.
 
-Válasz a kóddal, használhatja [ `RaiseEventAsync` (.NET) vagy `raiseEvent` (JavaScript)](durable-functions-instance-management.md) másik függvényt, vagy hívja a **sendEventUrl** a 202-es válaszban a fenti hivatkozott HTTP POST-webhook , és cserélje le `{eventName}` az esemény nevét `SmsChallengeResponse`:
+A kóddal való válaszadáshoz használhatja `{eventName}` [ `RaiseEventAsync` a (.net) vagy `raiseEvent` a (JavaScript)](durable-functions-instance-management.md) függvényt egy másik függvényen belül, vagy meghívhatja a fenti 202-válaszban hivatkozott **sendEventUrl** http post webhookot, a helyére pedig a `SmsChallengeResponse`esemény:
 
 ```
 POST http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1/raiseEvent/SmsChallengeResponse?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
@@ -128,7 +127,7 @@ Content-Type: application/json
 2168
 ```
 
-Küld ez az időzítő lejárata előtt, ha a vezénylési befejezése és a `output` mező értéke `true`, jelezve sikeres ellenőrzés.
+Ha ezt az időzítő lejárata előtt küldi el, a rendszer `output` `true`befejeződik, és a mező értéke, amely sikeres ellenőrzést jelez.
 
 ```
 GET http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
@@ -142,7 +141,7 @@ Content-Type: application/json; charset=utf-8
 {"runtimeStatus":"Completed","input":"+1425XXXXXXX","output":true,"createdTime":"2017-06-29T19:10:49Z","lastUpdatedTime":"2017-06-29T19:12:23Z"}
 ```
 
-Ha hagyja, hogy az időzítő lejár, vagy ha négyszer ad meg a megfelelő code, az állapot lekérdezése, és tekintse meg a `false` vezénylési függvény kimeneti, jelezve, hogy telefonos ellenőrzés sikertelen volt.
+Ha engedélyezte az időzítő érvényességét, vagy ha négyszer adja meg a kódot, akkor lekérdezheti az állapotot, és megtekintheti `false` az előkészítési függvény kimenetét, ami azt jelzi, hogy a telefon ellenőrzése nem sikerült.
 
 ```
 HTTP/1.1 200 OK
@@ -152,18 +151,18 @@ Content-Length: 145
 {"runtimeStatus":"Completed","input":"+1425XXXXXXX","output":false,"createdTime":"2017-06-29T19:20:49Z","lastUpdatedTime":"2017-06-29T19:22:23Z"}
 ```
 
-## <a name="visual-studio-sample-code"></a>A Visual Studio-mintakód
+## <a name="visual-studio-sample-code"></a>Visual Studio-mintakód
 
-Az orchestration-fájlként egyetlen C# Visual Studio-projektet a következő:
+Íme egy Visual Studio-projekt egyetlen C# fájlja:
 
 > [!NOTE]
-> Telepítenie kell a `Microsoft.Azure.WebJobs.Extensions.Twilio` Nuget-csomagot az alábbi mintakód futtatásához.
+> Az alábbi mintakód futtatásához telepítenie kell a `Microsoft.Azure.WebJobs.Extensions.Twilio` Nuget csomagot.
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/PhoneVerification.cs)]
 
 ## <a name="next-steps"></a>További lépések
 
-Ez a példa bemutatta, Durable Functions, a fejlett funkciói többek között `WaitForExternalEvent` és `CreateTimer`. Megtudhatta, hogyan ezek kombinálható `Task.WaitAny` egy megbízható időtúllépési rendszer, amely valódi személyek fogják folytatott interakcióra szolgáló gyakran hasznos. Durable Functions használata egy konkrét témakörök részletes lefedettséget kínáló cikksorozat olvasásával többet tudhat meg.
+Ez a példa a Durable functions speciális képességeit mutatja be, például `WaitForExternalEvent` és. `CreateTimer` Megismerte, hogy ezek hogyan kombinálhatók a `Task.WaitAny` szolgáltatással egy megbízható időtúllépési rendszer megvalósításához, ami gyakran hasznos a valós emberekkel való interakcióhoz. Ha többet szeretne megtudni a Durable Functions használatáról, tekintse meg az egyes témakörök részletes lefedettségét biztosító cikkek sorozatát.
 
 > [!div class="nextstepaction"]
-> [Ugrás a sorozat első cikkében](durable-functions-bindings.md)
+> [Ugrás a sorozat első cikkére](durable-functions-bindings.md)

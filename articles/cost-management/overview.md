@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/13/2019
+ms.date: 05/14/2019
 ms.topic: overview
 ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 08a1980a8855fc119a5066e058e9bb4d2df6646e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 8b989e5cf5b66d21c19d58f2f64fbba1927f5d69
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57998869"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65792802"
 ---
 # <a name="what-is-the-cloudyn-service"></a>Mi a Cloudyn szolgáltatás?
 
@@ -24,6 +24,10 @@ A Microsoft leányvállalata, a Cloudyn lehetővé teszi az Azure-erőforrások 
 Bevezető videó: [Az Azure Cloudyn bemutatása](https://azure.microsoft.com/resources/videos/azure-cost-management-overview-and-demo).
 
 Az Azure Cost Management a Cloudynhez hasonló funkcionalitást kínál. Az Azure Cost Management egy natív Azure költségkezelő megoldás. Segít kezelni a költségvetéseket, exportálni az adatokat, valamint áttekinteni és végrehajtani az optimalizálási javaslatokat pénzmegtakarítás céljából. További információ: [Azure Cost Management](overview-cost-mgt.md).
+
+Tekintse meg a [Azure Cost Management és a Cloudyn videó](https://www.youtube.com/watch?v=PmwFWwSluh8) javaslatok megtekintéséhez, mikor használja az Azure Cost Management vagy a Cloudyn, a üzleti igények alapján.
+
+>[!VIDEO https://www.youtube.com/embed/PmwFWwSluh8]
 
 ## <a name="cloudyn-features-moving-to-azure-cost-management"></a>A Cloudyn funkciókat áthelyezi az Azure Cost Management
 

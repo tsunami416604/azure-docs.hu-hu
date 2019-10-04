@@ -1,6 +1,6 @@
 ---
-title: Az Azure virtual network KOPPINTSON – áttekintés |} A Microsoft Docs
-description: Ismerje meg a virtuális hálózati TAP. KOPPINTSON a virtuális hálózat nyújt, amely továbbítható egy csomag gyűjtő virtuális gép hálózati forgalom mély másolatát.
+title: Azure Virtual Network – KOPPINTson az Áttekintés | Microsoft Docs
+description: További tudnivalók a virtuális hálózatok KOPPINTÁSáról. A virtuális hálózat KOPPINTÁSsal a virtuális gép hálózati forgalmának részletes másolatát nyújtja, amely továbbítható egy csomag gyűjtője számára.
 services: virtual-network
 documentationcenter: na
 author: karthikananth
@@ -15,60 +15,61 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/14/2019
 ms.author: kaanan
-ms.openlocfilehash: ff5c8c4d3f6a0c87afae67404a5a39d4fe3757d9
-ms.sourcegitcommit: e89b9a75e3710559a9d2c705801c306c4e3de16c
+ms.openlocfilehash: 3ea1b97855e5c060b6cbb6c43ce5111506bf4c20
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59571084"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676912"
 ---
 # <a name="virtual-network-tap"></a>Virtuális hálózat TAP-jai
 
-Az Azure virtuális hálózati TAP (Terminálszolgáltatások hozzáférési pont) lehetővé teszi folyamatosan stream a virtuális gép hálózati forgalmat egy hálózati csomag adatgyűjtőnek vagy az analytics eszközt. A gyűjtő vagy analytics eszközt által biztosított egy [hálózati virtuális berendezésen](https://azure.microsoft.com/solutions/network-appliances/) partner. Dolgozunk a virtuális hálózati TAP érvényesített partneri megoldások listáját lásd: [partneri megoldások](#virtual-network-tap-partner-solutions).
+Az Azure Virtual Network (terminál-hozzáférési pont) funkció lehetővé teszi a virtuális gép hálózati forgalmának folyamatos továbbítását egy hálózati csomag gyűjtője vagy analitikai eszköze számára. A gyűjtő vagy az elemzési eszközt egy [hálózati virtuális berendezési](https://azure.microsoft.com/solutions/network-appliances/) partner kapja meg. A virtuális hálózati KOPPINTÁSsal való együttműködéshez ellenőrzött partneri megoldások listáját a [partneri megoldások](#virtual-network-tap-partner-solutions)című témakörben találja.
 
 > [!IMPORTANT]
-> Virtuális hálózati TAP jelenleg előzetes verzióban az összes Azure-régióban. Virtuális hálózati TAP használatához regisztrálnia kell az előzetes verzióban érhető el az e-mail <azurevnettap@microsoft.com> az előfizetés-azonosítóval. Az előfizetés regisztrációja után egy e-mailt fog kapni. Ön nem használhatja a funkció, amíg nem kap egy megerősítő e-mailt. Ebben az előzetes verzióban egy szolgáltatásiszint-szerződés nélkül, és nem használható éles számítási feladatok esetében. Előfordulhat, hogy néhány funkció nem támogatott, korlátozott képességekkel rendelkezik, vagy nem érhető el minden Azure-helyen. Tekintse meg a [kiegészítő használati feltételek a Microsoft Azure Előzetesekre vonatkozó](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) részleteiről.
+> A Virtual Network TAP jelenleg előzetes verzióban érhető el az összes Azure-régióban. A virtuális hálózati KOPPINTÁS használatához regisztrálnia kell az előzetes verzióban egy e-mailt a @ no__t-0 címre az előfizetés-azonosítójával. Az előfizetés regisztrációja után egy e-mailt fog kapni. Nem használhatja a funkciót, amíg meg nem kap egy megerősítő e-mailt. Ez az előzetes verzió szolgáltatói szerződés nélkül van megadva, és nem használható éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, korlátozott képességekkel rendelkezik, vagy nem érhető el minden Azure-helyen. Tekintse meg a Microsoft Azure  for részleteinek [kiegészítő használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="virtual-network-tap-partner-solutions"></a>Virtuális hálózati TAP partnermegoldások
+## <a name="virtual-network-tap-partner-solutions"></a>Virtuális hálózati KOPPINTson partneri megoldások
 
-### <a name="network-packet-brokers"></a>Hálózati csomag közvetítők
+### <a name="network-packet-brokers"></a>Hálózati csomagok közvetítői
 
-- [Big Data típusú kapcsoló big Data típusú a Fabric figyelése](https://www.bigswitch.com/products/big-monitoring-fabric/public-cloud/microsoft-azure)
+- [Big Switch – Big monitoring-háló](https://www.bigswitch.com/products/big-monitoring-fabric/public-cloud/microsoft-azure)
 - [Gigamon GigaSECURE](https://blog.gigamon.com/2018/09/13/why-microsofts-new-vtap-service-works-even-better-with-gigasecure-for-azure)
 - [Ixia CloudLens](https://www.ixiacom.com/cloudlens/cloudlens-azure)
-- [Nubeva Prizmákkal](https://www.nubeva.com/azurevtap)
+- [Nubeva Prizmák](https://www.nubeva.com/azurevtap)
 
-### <a name="security-analytics-networkapplication-performance-management"></a>Biztonsági elemzés, hálózati és alkalmazásteljesítmény-felügyelet
+### <a name="security-analytics-networkapplication-performance-management"></a>Biztonsági elemzés, hálózat/alkalmazás teljesítményének kezelése
 
-- [Biztonsági ébren](https://awakesecurity.com/technology-partners/microsoft-azure/)
-- [Cisco Stealthwatch felhő](https://blogs.cisco.com/security/cisco-stealthwatch-cloud-and-microsoft-azure-reliable-cloud-infrastructure-meets-comprehensive-cloud-security)
+- [Biztonság – ébren](https://awakesecurity.com/technology-partners/microsoft-azure/)
+- [Cisco Stealthwatch-felhő](https://blogs.cisco.com/security/cisco-stealthwatch-cloud-and-microsoft-azure-reliable-cloud-infrastructure-meets-comprehensive-cloud-security)
 - [Darktrace](https://www.darktrace.com/en/azure/)
-- [ExtraHop Reveal(x)](https://www.extrahop.com/company/tech-partners/microsoft/)
-- [Fidelis Kiberbiztonsági](https://www.fidelissecurity.com/technology-partners/microsoft-azure )
+- [ExtraHop-megjelenítés (x)](https://www.extrahop.com/company/tech-partners/microsoft/)
+- [Fidelis kiberbiztonsági](https://www.fidelissecurity.com/technology-partners/microsoft-azure )
 - [Flowmon](https://www.flowmon.com/blog/azure-vtap)
 - [NetFort LANGuardian](https://www.netfort.com/languardian/solutions/visibility-in-azure-network-tap/)
-- [Netscout vSTREAM]( https://www.netscout.com/technology-partners/microsoft/azure-vtap)
+- [NetScout vSTREAM]( https://www.netscout.com/technology-partners/microsoft/azure-vtap)
+- [Riverbed SteelCentral AppResponse]( https://www.riverbed.com/products/steelcentral/steelcentral-appresponse-11.html)
 - [RSA NetWitness® Platform](https://www.rsa.com/azure)
 - [Vectra Cognito](https://vectra.ai/microsoftazure)
 
-A következő kép bemutatja hogyan virtuális hálózati TAP működik. Egy KOPPINTÁSSAL konfigurációt adhat meg egy [hálózati adapter](virtual-network-network-interface.md) , amely a virtuális hálózaton üzembe helyezett virtuális géphez van csatolva. A célja az azonos virtuális hálózatba, a figyelt hálózati adaptert egy virtuális hálózati IP-címet vagy egy [virtuális Társhálózat](virtual-network-peering-overview.md) hálózati. A gyűjtő megoldást a virtuális hálózati TAP is üzembe helyezhetők mögött egy [Azure belső terheléselosztó](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#concepts) magas rendelkezésre állás érdekében. Kiértékelése egyéni megoldás üzembe helyezési lehetőségeit, tekintse meg a [partneri megoldások](#virtual-network-tap-partner-solutions).
+Az alábbi képen látható, hogyan működik a virtuális hálózati KOPPINTÁS. A virtuális hálózatban üzembe helyezett virtuális gépekhez csatlakoztatott [hálózati adapterekre](virtual-network-network-interface.md) koppinthat. A cél egy virtuális hálózati IP-cím ugyanabban a virtuális hálózatban, mint a figyelt hálózati adapter vagy egy [társ virtuális](virtual-network-peering-overview.md) hálózat. A virtuális hálózatra KOPPINTó gyűjtő megoldás a magas rendelkezésre állás érdekében üzembe helyezhető egy [Azure belső terheléselosztó](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#concepts) mögött. Az egyes megoldások üzembe helyezési lehetőségeinek kiértékeléséhez tekintse meg a [partneri megoldások](#virtual-network-tap-partner-solutions)című témakört.
 
-![Hogyan virtuális hálózati TAP működik](./media/virtual-network-tap/architecture.png)
+![A virtuális hálózat KOPPINTÁSának működése](./media/virtual-network-tap/architecture.png)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt létrehozna egy virtuális hálózati TAP, kell érkezett, hogy regisztrált az előzetes verzióban érhető el, és a egy vagy több virtuális gép használatával létrehozott megerősítést kérő e [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) üzembe helyezési modell és a egy partner ugyanazon azure-régióban a KOPPINTSON a forgalom összesítéséhez szükséges megoldás. Ha a virtuális hálózat nem rendelkezik egy partneri megoldás, [partneri megoldások](#virtual-network-tap-partner-solutions) üzembe helyez egyet. Az azonos virtuális hálózatban a forgalom összesítéséhez erőforrás KOPPINTSON az azonos vagy eltérő előfizetésekben lévő több hálózati adapterrel is használhatja. Ha a figyelt hálózati adapterek különböző előfizetésekhez tartoznak, az előfizetések ugyanahhoz az Azure Active Directory-bérlőhöz társított kell lennie. Ezenkívül a figyelt hálózati adapterek és a cél-végpont, KOPPINTSON a forgalom összesítéséhez szükséges lehet az ugyanazon régióban lévő virtuális társhálózaton belüli. Az üzemi modell használatakor győződjön meg arról, hogy a [virtuális hálózatok közötti társviszony](virtual-network-peering-overview.md) engedélyezve van a virtuális hálózati TAP konfigurálása előtt.
+A virtuális hálózati KOPPINTÁS létrehozása előtt meg kell kapnia egy megerősítő e-mailt, amelyet az előzetes verzióban regisztrált, és egy vagy több, [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) üzemi modellel és egy partneri megoldással létrehozott virtuális géppel rendelkezik a következő összesítéséhez: KOPPINTson az azonos Azure-régióban található forgalom lehetőségre. Ha nem rendelkezik partneri megoldással a virtuális hálózaton, tekintse meg a következő témakörben található [partneri megoldásokat](#virtual-network-tap-partner-solutions) :. Ugyanazt a virtuális hálózati KOPPINTÁS erőforrást használhatja az azonos vagy különböző előfizetésekben található több hálózati adapterről érkező forgalom összesítésére. Ha a figyelt hálózati adapterek különböző előfizetésekben találhatók, az előfizetéseket ugyanahhoz a Azure Active Directory bérlőhöz kell társítani. Emellett a figyelt hálózati adapterek és a TAP-forgalom összesítéséhez használt cél végpont is lehet ugyanabban a régióban lévő, egymástól független virtuális hálózatokban. Ha ezt a telepítési modellt használja, ellenőrizze, hogy a virtuális [hálózat](virtual-network-peering-overview.md) társítása engedélyezve van-e a virtuális hálózati koppintás konfigurálása előtt.
 
 ## <a name="permissions"></a>Engedélyek
 
-A alkalmazni, KOPPINTSON a konfigurációt a hálózati adaptereken használja fiókokat hozzá kell rendelni a [hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) szerepkör vagy egy [egyéni szerepkör](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) rendelt a szükséges lépéseket a következő táblázatból:
+A hálózati adapterekre vonatkozó KOPPINTó beállítások alkalmazásához használt fiókokat hozzá kell rendelni a [hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) szerepkörhöz vagy egy [Egyéni szerepkörhöz](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , amely a következő táblázat szükséges műveleteihez van rendelve:
 
-| Műveletek | Name (Név) |
+| Action | Name (Név) |
 |---|---|
-| Microsoft.Network/virtualNetworkTaps/* | Kell létrehoznia, frissíteni, olvassa el és egy virtuális hálózati TAP-erőforrás törlése |
-| Microsoft.Network/networkInterfaces/read | A hálózati adapter erőforrás, amelyen a KOPPINTSON konfigurálandó olvasásához szükséges |
-| Microsoft.Network/tapConfigurations/* | Szükséges létrehozása, frissítése, olvassa el és a hálózati adapteren KOPPINTSON konfigurációjának törlése |
+| Microsoft.Network/virtualNetworkTaps/* | Virtuális hálózati KOPPINTó erőforrás létrehozásához, frissítéséhez, olvasásához és törléséhez szükséges. |
+| Microsoft.Network/networkInterfaces/read | A hálózati adapter azon erőforrásának olvasásához szükséges, amelyen a KOPPINTÁS konfigurálva lesz |
+| Microsoft. Network/tapConfigurations/* | A TAP-konfiguráció hálózati adapteren való létrehozásához, frissítéséhez, olvasásához és törléséhez szükséges. |
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg, hogyan [hozzon létre egy virtuális hálózati TAP](tutorial-tap-virtual-network-cli.md).
+- Ismerje meg, hogyan [hozhat létre virtuális hálózatokat](tutorial-tap-virtual-network-cli.md).

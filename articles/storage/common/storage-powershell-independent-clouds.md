@@ -2,18 +2,18 @@
 title: Az Azure PowerShell Storage kezelése az Azure használatától függetlenül a felhők |} A Microsoft Docs
 description: Tárhelykezelés a kínai felhőben, a kormányzati felhő és a német felhőben az Azure PowerShell-lel
 services: storage
-author: roygara
+author: tamram
 ms.service: storage
 ms.topic: article
 ms.date: 10/24/2017
-ms.author: rogarana
+ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 6a3fe8c7235a0cf475f188a3379e372cd777ce8c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 69707eec0ea1f2260ee50a48ce1dcb82dc9ddd8f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477641"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65145866"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>Az Azure-PowerShell-lel független felhőkben tárolás kezelése
 
@@ -59,7 +59,7 @@ Get-AzLocation | select Location, DisplayName
 
 Az alábbi táblázat a helyek, a Németországi felhőhöz készült adja vissza.
 
-|Hely | Megjelenítendő név |
+|Location egység | displayName |
 |----|----|
 | germanycentral | Közép-Németország|
 | germanynortheast | Északkelet-Németország | 
@@ -81,7 +81,7 @@ Get-AzEnvironment | select Name, StorageEndpointSuffix
 
 Ez a parancs az alábbi eredményeket adja vissza.
 
-| Name (Név)| StorageEndpointSuffix|
+| Name| StorageEndpointSuffix|
 |----|----|
 | AzureChinaCloud | core.chinacloudapi.cn|
 | AzureCloud | core.windows.net |
@@ -98,7 +98,7 @@ Az eredmények a következőhöz hasonlóak:
 
 |Tulajdonság neve|Érték|
 |----|----|
-| Name (Név) | AzureGermanCloud |
+| Name | AzureGermanCloud |
 | EnableAdfsAuthentication | False (Hamis) |
 | ActiveDirectoryServiceEndpointResourceI | http://management.core.cloudapi.de/ |
 | GalleryURL | https://gallery.cloudapi.de/ |

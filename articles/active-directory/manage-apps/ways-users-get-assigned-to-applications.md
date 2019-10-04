@@ -3,8 +3,8 @@ title: Felhasználók hozzárendelése az alkalmazások hogyan |} A Microsoft Do
 description: Megismerheti, hogyan lesznek hozzárendelve felhasználók egy alkalmazáshoz, a bérlőben
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: celested
+ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be36bfeb0991dc4a4b7fce723cadb6b508c0d6a3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b818fe1d8b6bbc9d2d8c5b460b4d71dccdd39366
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56198721"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65825980"
 ---
 # <a name="how-to-assign-users-to-applications"></a>Felhasználók hozzárendelése alkalmazások
 

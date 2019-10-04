@@ -1,42 +1,41 @@
 ---
-title: Windows - memóriát az Azure virtuális gépek méretei |} A Microsoft Docs
-description: Az Azure-beli Windows virtuális gépek számára elérhető különböző memóriaoptimalizált méretek sorolja fel. Tartalmazza a vcpu-k, az adatlemezeket és a hálózati adapterek, valamint tárolási átviteli sebesség és a hálózati sávszélesség-sorozat méretei száma.
+title: Azure-beli virtuálisgép-méretek Windows-memóriához | Microsoft Docs
+description: Felsorolja az Azure-beli Windows rendszerű virtuális gépekhez elérhető különböző memória-optimalizált méreteket. A vCPU, adatlemezek és hálózati adapterek számával, valamint az ebben a sorozatban lévő méretek sávszélességével kapcsolatos információkat sorolja fel.
 services: virtual-machines-windows
 documentationcenter: ''
 author: jonbeck7
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
-keywords: Virtuális gépek elkülönítés, elszigetelt virtuális gép, elkülönítés, elkülönített
+keywords: VM-elkülönítés, elkülönített virtuális gép, elkülönítés, elkülönített
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 07/06/2018
+ms.date: 08/08/2019
 ms.author: jonbeck
-ms.openlocfilehash: a81ce010e2d31a9852ca24a0ac45f6b4f60ab480
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 3920160a4550cc81c250b99cb0b5bdd78b42c770
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428198"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102298"
 ---
-# <a name="memory-optimized-virtual-machine-sizes"></a>Memóriahasználatra optimalizált virtuális gépek méretei
+# <a name="memory-optimized-virtual-machine-sizes"></a>Memória-optimalizált virtuális gépek méretei
 
 
 [!INCLUDE [virtual-machines-common-sizes-memory](../../../includes/virtual-machines-common-sizes-memory.md)]
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../../includes/virtual-machines-common-sizes-table-defs.md)]
 
-## <a name="other-sizes"></a>További méretek
+## <a name="other-sizes"></a>Egyéb méretek
 - [Általános célú](sizes-general.md)
 - [Számításra optimalizált](sizes-compute.md)
 - [Tárolásra optimalizált](sizes-storage.md)
 - [GPU-optimalizált](sizes-gpu.md)
 - [Nagy teljesítményű számítás](sizes-hpc.md)
-- [Előző generációs szoftvereknél jobban](sizes-previous-gen.md)
+- [Előző generációk](sizes-previous-gen.md)
 
 ## <a name="next-steps"></a>További lépések
-Tudjon meg többet [Azure számítási egységek (ACU)](acu.md) Azure-termékváltozatok hasonlítsa össze a számítási teljesítményt nyújt segítséget.
+További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

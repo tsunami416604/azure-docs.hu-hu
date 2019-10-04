@@ -1,40 +1,59 @@
 ---
-title: Az Azure Data Factory-folyamat válassza átalakítását leképezése
-description: Az Azure Data Factory-folyamat válassza átalakítását leképezése
+title: Azure Data Factory leképezési adatfolyam kiválasztása – átalakítás
+description: Azure Data Factory leképezési adatfolyam kiválasztása – átalakítás
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: bc83b41067d587adce41658a2c4b3d68969750ba
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 3c81ec5e213364ed6f159fd20e12879a098caad4
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729338"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774991"
 ---
-# <a name="azure-data-factory-mapping-data-flow-select-transformation"></a>Az Azure Data Factory-folyamat válassza átalakítását leképezése
-
+# <a name="mapping-data-flow-select-transformation"></a>Adatforgalom leképezése válassza az átalakítás lehetőséget
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Az átalakítás használni (az oszlopok számának csökkentése) oszlop szelektivitás vagy alias oszlopokra és adatfolyam-neveket.
+Használja ezt az átalakítást az oszlopok szelektivitásához (oszlopok számának csökkentése), alias-oszlopokhoz és adatfolyam-nevekhez, valamint az oszlopok átrendezéséhez.
 
-A Select átalakítás lehetővé teszi, hogy egy teljes stream alias, vagy a Stream oszlopok rendelje hozzá a különböző neveket (aliasok), és ezután hivatkozhat az új nevére később az adatok folyamatban. Az átalakítási önillesztést forgatókönyvek esetén hasznos. Önillesztés megvalósításához az ADF adatfolyam módja egy streamet, az "Új ág", majd ezt követően azonnal hozzáadni ág "Select" átalakító igénybe. A stream egy új nevet, amely segítségével csatlakozzon az eredeti adatfolyam önillesztés tartozik:
+## <a name="how-to-use-select-transformation"></a>Az átalakítás kiválasztása
+Az átalakítás lehetőséget választva a teljes adatfolyamot vagy az adott adatfolyamban lévő oszlopokat, különböző neveket (aliasokat) rendelhet hozzá, majd az új neveket az adatfolyamatban később is hivatkozhat. Ez az átalakítás az önillesztési forgatókönyvek esetében hasznos. Ha önillesztést szeretne megvalósítani az ADF-adatforgalomban, egy streamet kell létrehoznia, amely az "új ág", majd közvetlenül ezt követően a "Select" átalakítás hozzáadásával történik. A stream ekkor egy új névvel fog rendelkezni, amellyel visszatérhet az eredeti streamhez, és létrehozhat egy önillesztést:
 
-![Önillesztés](media/data-flow/selfjoin.png "Önillesztés")
+![Önálló csatlakozás](media/data-flow/selfjoin.png "Önálló csatlakozás")
 
-A fenti ábrán a Select transformaci tetején. Ez az alias "OrigSourceBatting" az eredeti adatfolyam. Az alatta higlighted illesztési átalakítás láthatja, hogy vesszük a Select alias stream a jobb oldali illesztési lehetővé teszi számunkra, hogy ugyanazzal a kulccsal az bal és jobb oldalán a belső illesztéssel hivatkozhat.
+A fenti ábrán az átalakító kijelölése felül van. Ez a "OrigSourceBatting" eredeti adatfolyamának aliasa. Az alatta lévő összekapcsolási átalakítóban láthatja, hogy a kiválasztott alias streamet használja a jobb oldali illesztéshez, ami lehetővé teszi, hogy ugyanarra a kulcsra hivatkozzon a belső illesztés bal & jobb oldalán.
 
-Válassza ki is használható, úgy megszüntetéséhez jelölje ki az adatfolyama oszlopokat. Például ha a fogadó definiált 6 oszlopok rendelkezik, de csak szeretné egy adott 3 átalakításához, és a fogadó majd flow válasszon, kiválaszthatja csak a megadott 3 a select átalakító használatával.
+A Select (kijelölés) lehetőséggel kiválaszthatja az adatfolyamatból az oszlopok kiválasztására szolgáló oszlopokat is. Ha például 6 oszlop van definiálva a fogadóban, de csak egy adott 3 értéket szeretne átalakítani, majd a fogadóba befolyni, akkor a Select átalakító használatával kiválaszthatja a csak a 3 értéket.
+
+![Átalakítás kiválasztása](media/data-flow/newselect1.png "Alias kiválasztása")
+
+## <a name="options"></a>Beállítások
+* A "Select" alapértelmezett beállítása az összes bejövő oszlop belefoglalása, és az eredeti nevek megtartása. A streamet aliasként adhatja meg a Select átalakító nevének beállításával.
+* Az egyes oszlopok aliasához törölje az "összes kijelölése" lehetőséget, és használja a lenti oszlop-hozzárendelést.
+* Válassza az ismétlődések kihagyása lehetőséget az ismétlődő oszlopok a bemeneti vagy kimeneti metaadatokból való eltávolításához.
+
+![Ismétlődések] kihagyása (media/data-flow/select-skip-dup.png "Ismétlődések") kihagyása
+
+* Ha úgy dönt, hogy kihagyja a duplikált elemeket, az eredmények megjelennek a vizsgálat lapon. Az ADF megtartja az oszlop első előfordulását, és látni fogja, hogy az adott oszlop minden további előfordulása el lett távolítva a folyamatból.
 
 > [!NOTE]
-> "Összes" csak az adott oszlopot válasszon ki kell váltania
+> A leképezési szabályok törléséhez nyomja le az alaphelyzetbe **állítás** gombot.
 
-Beállítások
+## <a name="mapping"></a>Társítás
+Alapértelmezés szerint a Select transzformáció automatikusan leképezi az összes oszlopot, amely továbbítja az összes bejövő oszlopot a kimeneten megegyező névre. A kimeneti adatfolyam neve, amely a Select Settings (beállítások) beállításban be van állítva, a stream új aliasnevét fogja meghatározni. Ha megtartja az automatikus leképezés beállítása beállítást, akkor a teljes adatfolyamot az összes oszlophoz társíthatja.
 
-Az alapértelmezett beállítás a "Kiválasztás", hogy az összes bejövő oszlop tartalmazza, és tartsa az eredeti nevére. Így alias a streamet a Select átalakító név beállítása.
+![Átalakítási szabályok kiválasztása](media/data-flow/rule2.png "Szabály alapú leképezés")
 
-Alias egyes oszlopain törölje "Az összes kijelölése" és az oszlopleképezés használja a lap alján.
+Ha aliast szeretne használni, távolítsa el, nevezze át, vagy átrendezi az oszlopokat, először ki kell kapcsolni az "automatikus leképezés" lehetőséget. Alapértelmezés szerint az "összes bemeneti oszlop" nevű alapértelmezett szabályt fogja látni. Ezt a szabályt akkor hagyhatja érvénybe, ha az összes bejövő oszlop számára engedélyezni szeretné, hogy a kimenete azonos névre legyen hozzárendelve.
 
-![Válassza ki az átalakítási](media/data-flow/select001.png "Alias kiválasztása")
+Ha azonban egyéni szabályokat szeretne felvenni, kattintson a "leképezés hozzáadása" gombra. A mező-hozzárendeléssel megadhatja a leképezéshez és az aliashoz a bejövő és a kimenő oszlopnevek listáját. Válassza a "szabály alapú leképezés" lehetőséget a mintázattal egyező szabályok létrehozásához.
+
+## <a name="rule-based-mapping"></a>Szabály alapú leképezés
+Ha a szabály alapú leképezést választja, akkor a rendszer az ADF-et arra utasítja, hogy értékelje a megfelelő kifejezést a bejövő mintázat szabályainak megfelelően, és adja meg a kimenő mezők nevét. A mezők és a szabályokon alapuló leképezések tetszőleges kombinációját felveheti. A mezőneveket a forrástól érkező bejövő metaadatok alapján, az ADF futásidőben generálja a rendszer. A generált mezők neve a hibakeresés során és az adatelőnézet panelen tekinthető meg.
+
+A minták megfeleltetésével kapcsolatos további részletek az [oszlop mintájának dokumentációjában](concepts-data-flow-column-pattern.md)olvashatók.
+
+## <a name="next-steps"></a>További lépések
+* Miután a Select paranccsal átnevezi, átrendezi és alias oszlopokat, a fogadó [transzformáció](data-flow-sink.md) használatával az adatait egy adattárba helyezheti.

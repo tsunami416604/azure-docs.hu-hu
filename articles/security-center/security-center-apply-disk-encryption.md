@@ -1,11 +1,10 @@
 ---
-title: Az Azure Security Centerben lemeztitkosítás alkalmazása |} A Microsoft Docs
-description: Ez a dokumentum bemutatja, hogyan valósíthat meg az Azure Security Center javaslatait **lemeztitkosítás alkalmazása**.
+title: Lemez titkosításának alkalmazása a Azure Security Centerban | Microsoft Docs
+description: Ebből a dokumentumból megtudhatja, hogyan valósítja meg a Azure Security Center a **lemez titkosítását**.
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 6cc7824a-8d6b-4a5f-ab40-e3bbaebc4a91
 ms.service: security-center
 ms.devlang: na
@@ -13,55 +12,55 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
-ms.author: rkarlin
-ms.openlocfilehash: d285461aef1e56dfd08a162e51ada0340d6eeae4
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.author: memildin
+ms.openlocfilehash: b3d05e71726ae37dd30bbb68ceb84b67a3bef0e5
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56108275"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71822277"
 ---
-# <a name="apply-disk-encryption-in-azure-security-center"></a>Az Azure Security Centerben lemeztitkosítás alkalmazása
-Az Azure Security Center javasolja lemeztitkosítás alkalmazása Windows vagy Linux rendszerű virtuális gép lemez nem az Azure Disk Encryption használatával titkosított. Disk Encryption lehetővé teszi a Windows és Linux rendszerű IaaS VM-lemezek titkosítása.  A titkosítás elvégzése az operációs rendszer és az adatkötetek esetében egyaránt javasolt a virtuális gépen.
+# <a name="apply-disk-encryption-in-azure-security-center"></a>Lemez titkosításának alkalmazása Azure Security Center
+Azure Security Center azt javasolja, hogy a lemez titkosítását akkor alkalmazza, ha olyan Windows vagy Linux rendszerű virtuálisgép-lemezekkel rendelkezik, amelyek nincsenek titkosítva Azure Disk Encryption használatával. A lemezek titkosítása lehetővé teszi a Windows-és Linux-IaaS virtuálisgép-lemezek titkosítását.  A titkosítás elvégzése az operációs rendszer és az adatkötetek esetében egyaránt javasolt a virtuális gépen.
 
-Lemeztitkosítás használja az iparági szabvány [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) Windows szolgáltatása és a [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) Linux-szolgáltatás. Ezeket a funkciókat biztosítja, védelme és az adatok biztonságos, valamint biztonsági és megfelelőségi követelmények kielégítésével operációsrendszer- és titkosítását. Lemeztitkosítás integrálva van [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) segítségével vezérelheti és felügyelheti a lemeztitkosítási kulcsokat és titkos kulcsokat a Key Vault-előfizetésből, miközben biztosítva, hogy a Virtuálisgép-lemezeken lévő összes adat található, aktívan a titkosítottak[Az azure Storage](https://azure.microsoft.com/documentation/services/storage/).
+A lemezes titkosítás a Windows iparági szabvány [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) szolgáltatását és a Linux [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) szolgáltatását használja. Ezek a funkciók az operációs rendszer és az adattitkosítás biztosítására szolgálnak, amelyek segítenek megvédeni és védeni az adatait, és megfelelnek a szervezeti biztonsági és megfelelőségi kötelezettségeknek. A lemezes titkosítás integrálva van [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) a lemezes titkosítási kulcsok és a titkos kódok kezeléséhez a Key Vault-előfizetésben, miközben biztosítja, hogy a virtuálisgép-lemezeken lévő összes adatok titkosítva legyenek az [Azure Storage](https://azure.microsoft.com/documentation/services/storage/)-ban.
 
 > [!NOTE]
-> Az Azure Disk Encryption a következő Windows server operációs rendszerek – Windows Server 2008 R2, Windows Server 2012 és Windows Server 2012 R2 esetében támogatott. Lemeztitkosítás támogatott a következő Linux server operációs rendszerek – Ubuntu, a CentOS, SUSE és SUSE Linux Enterprise Server (SLES).
+> A Azure Disk Encryption a következő Windows Server operációs rendszereken támogatott: Windows Server 2008 R2, Windows Server 2012 és Windows Server 2012 R2. A lemez titkosítása a következő Linux Server operációs rendszereken támogatott: Ubuntu, CentOS, SUSE és SUSE Linux Enterprise Server (SLES).
 >
 >
 
-## <a name="implement-the-recommendation"></a>A javaslatok megvalósítása
-1. Az a **javaslatok** panelen válassza ki **lemeztitkosítás alkalmazása**.
-2. Az a **lemeztitkosítás alkalmazása** panelen láthatja, amelynek lemeztitkosítás javasolt virtuális gépek listáját.
-3. Kövesse az utasításokat, ezek a virtuális gépek titkosítási alkalmazandó.
+## <a name="implement-the-recommendation"></a>A javaslat implementálása
+1. A **javaslatok** panelen válassza a **lemez titkosításának alkalmazása**lehetőséget.
+2. A **lemez titkosításának alkalmazása** panelen megtekintheti azoknak a virtuális gépeknek a listáját, amelyekhez ajánlott a lemez titkosítása.
+3. A virtuális gépek titkosításának alkalmazásához kövesse az utasításokat.
 
 ![][1]
 
-Titkosítási kellene, mint a Security Center által azonosított Azure virtuális gépek titkosításához, a következő lépéseket javasoljuk:
+A Security Center által azonosított Azure-Virtual Machines titkosításhoz való titkosításához a következő lépéseket javasoljuk:
 
-* Az Azure PowerShell telepítése és konfigurálása. Ez lehetővé teszi, hogy az Azure virtuális gépek titkosításához szükséges előfeltételek beállításához szükséges PowerShell-parancsok futtatásával.
-* Parancsprogram beszerzése és futtatása az Azure Disk Encryption Előfeltételek Azure PowerShell.
-* A virtuális gépek titkosítása.
+* Az Azure PowerShell telepítése és konfigurálása. Ez lehetővé teszi az Azure-Virtual Machines titkosításához szükséges előfeltételek beállításához szükséges PowerShell-parancsok futtatását.
+* Szerezze be és futtassa a Azure Disk Encryption előfeltételek Azure PowerShell parancsfájlt.
+* Titkosítsa a virtuális gépeket.
 
-[Az Azure PowerShell használatával Windows IaaS virtuális gép titkosítása](../security/quick-encrypt-vm-powershell.md) ezeket a lépéseket mutatja be. Ez a témakör feltételezi, hogy egy Windows ügyfél gép, amelyről a lemeztitkosítás konfigurálásához használ.
+[A Windows IAAS virtuális gépek titkosítása Azure PowerShell](../virtual-machines/linux/disk-encryption-powershell-quickstart.md) végigvezeti Önt ezen lépések végrehajtásán. Ez a témakör azt feltételezi, hogy olyan Windows-ügyfélszámítógépet használ, amelyről a lemez titkosítását konfigurálja.
 
-Nincsenek az Azure Virtual Machines segítségével számos különböző módszer. Ha Ön jól ismeri az Azure PowerShell vagy az Azure parancssori felületét, érdemes lehet más megközelítést választani. Ezek a módszerek kapcsolatos további információkért lásd: [az Azure disk encryption](../security/azure-security-disk-encryption.md).
+Számos módszer használható az Azure Virtual Machines. Ha Ön jól ismeri az Azure PowerShell vagy az Azure parancssori felületét, érdemes lehet más megközelítést választani. További információ ezekről az egyéb megközelítésekről: az [Azure Disk Encryption](../security/azure-security-disk-encryption.md).
 
 ## <a name="see-also"></a>Lásd még
-Ez a dokumentum láthatta, hogyan valósíthat meg a Security Center javaslatait "Alkalmaz lemeztitkosítás." Lemeztitkosítás kapcsolatos további információkért tekintse meg a következőket:
+Ebből a dokumentumból megtudhatta, hogyan implementálhatja a "lemez titkosításának alkalmazása" Security Center javaslatot. A lemezek titkosításával kapcsolatos további tudnivalókért tekintse meg a következőket:
 
-* [Az Azure Key Vault titkosítási és kulcskezelési](https://azure.microsoft.com/documentation/videos/azurecon-2015-encryption-and-key-management-with-azure-key-vault/) (videó, 36 perc 39 mp-ben) – ismerje meg, hogyan használja a titkosítási IaaS virtuális gépek és az Azure Key Vault segítségével az adatok biztonságos megőrzésében.
-* [Az Azure disk encryption](../security/azure-security-disk-encryption-overview.md) (dokumentum) – a Windows és Linux rendszerű virtuális gépek lemeztitkosítás engedélyezhető.
+* [Titkosítás és kulcskezelő Azure Key Vault](https://azure.microsoft.com/documentation/videos/azurecon-2015-encryption-and-key-management-with-azure-key-vault/) (videó, 36 perc 39 másodperc) – megtudhatja, hogyan használhatja a IaaS-alapú virtuális gépek és Azure Key Vault lemezes titkosítását az adatai védelméhez és védelméhez.
+* [Azure Disk Encryption](../security/azure-security-disk-encryption-overview.md) (dokumentum) – megtudhatja, hogyan engedélyezheti a lemezek titkosítását Windows és Linux rendszerű virtuális gépeken.
 
 A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
-* [Biztonsági szabályzatok beállítása az Azure Security Center](tutorial-security-policy.md) – ismerje meg, hogyan konfigurálhat biztonsági házirendeket.
-* [Biztonsági állapotfigyelés az Azure Security Center](security-center-monitoring.md) – útmutató az Azure-erőforrások állapotának monitorozásához.
+* [Biztonsági szabályzatok beállítása Azure Security Centerban](tutorial-security-policy.md) – útmutató a biztonsági házirendek konfigurálásához.
+* [Biztonsági állapot figyelése Azure Security Centerban](security-center-monitoring.md) – megtudhatja, hogyan figyelheti az Azure-erőforrások állapotát.
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) – A biztonsági riasztások kezelése és az azokra való reagálás.
-* [Biztonsági javaslatok kezelése az Azure Security Center](security-center-recommendations.md) – megtudhatja, hogyan javaslatok az Azure-erőforrások védelme.
+* [Biztonsági javaslatok kezelése Azure Security Centerban](security-center-recommendations.md) – megtudhatja, hogyan segítheti az ajánlásokat az Azure-erőforrások védelmében.
 * [Azure Security Center – gyakran ismételt kérdések](security-center-faq.md) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
-* [Az Azure Security blog](https://blogs.msdn.com/b/azuresecurity/) – blogbejegyzések az Azure biztonsági és megfelelőségi.
+* [Azure Security Blog](https://blogs.msdn.com/b/azuresecurity/) – blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
 
 <!--Image references-->
 [1]: ./media/security-center-apply-disk-encryption/apply-disk-encryption.png

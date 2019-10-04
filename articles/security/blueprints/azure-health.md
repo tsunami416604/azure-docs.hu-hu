@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 07/23/2018
 ms.author: rarangap
 ms.openlocfilehash: 70721b8bfbecaf554a9502b9ec3417fc8e561b3f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58885944"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60609668"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Azure biztonsági és megfelelőségi terv – a HIPAA/HITRUST-állapotadatok és mesterséges Intelligencia
 
@@ -358,7 +358,7 @@ A megoldás az Azure Event Grid, egy egyetlen szolgáltatás kezelése, az össz
 ### <a name="application-insights"></a>Application Insights
 - [Az Application Insights](/azure/application-insights/app-insights-overview) egy bővíthető alkalmazásteljesítmény-felügyeleti (APM) szolgáltatás webfejlesztőknek, több platformon. Az élő webalkalmazásának figyelésére használhatja. Teljesítménnyel kapcsolatos anomáliák észlel. Hatékony elemzőeszközöket tartalmaz, amelyek segítenek a problémák felismerésében, és annak a megértésében, hogy a felhasználók mire használják ténylegesen az alkalmazást. Úgy tervezték, hogy használatával folyamatosan javíthassa a teljesítményt és a használhatóságot.
 
-### <a name="azure-alerts"></a>Azure-riasztások
+### <a name="azure-alerts"></a>Azure Alerts
 - [Riasztások](/azure/azure-monitor/platform/alerts-metric) kínálnak az Azure-szolgáltatások figyelésére szolgáló módszer, és lehetővé teszi, hogy feltételeket konfiguráljon az adatok. Riasztások értesítések is biztosítanak, amikor egy riasztási feltétel megfelel a monitorozási adatok.
 
 ### <a name="azure-monitor-logs"></a>Azure Monitor-naplók

@@ -2,26 +2,27 @@
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 03/23/2019
 ms.author: sngun
-ms.openlocfilehash: 30efb963f34ff567c70d845a4a8891ead285b178
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seo-java-september2019
+ms.openlocfilehash: d5a0e8412b928aea83670ad9f7c99a892a058c70
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51572220"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71210234"
 ---
-Ha nem használja tovább az alkalmazást, akkor a következő lépésekkel a mintaalkalmazás által létrehozott összes erőforrást törölheti a költségek elkerülése érdekében:
+Ha elkészült a webalkalmazással és a Azure Cosmos DB fiókkal, törölheti a létrehozott Azure-erőforrásokat, így nem számít fel további díjat. Az erőforrások törlése:
 
-1. Az Azure Portalon válassza az **Erőforráscsoportok** lehetőséget a bal szélen, majd a létrehozott erőforráscsoport.  
+1. Az Azure Portalon válassza az **Erőforráscsoportok** lehetőséget a bal szélen. Ha a bal oldali menü be van csukva ![, válassza](./media/cosmos-db-delete-resource-group/expand.png) ki a Kibontás gombot a kibontásához.
 
-    Ha a bal oldali menü összecsukódott, kattintson a ![Kibontás gombra](./media/cosmos-db-delete-resource-group/expand.png) a kinyitásához.
+2. Válassza ki az ehhez a rövid útmutatóhoz létrehozott erőforráscsoportot.  
 
-   ![Mérőszámok az Azure Portalon](./media/cosmos-db-delete-resource-group/delete-resources-select.png)
+   ![Válassza ki a törölni kívánt erőforráscsoportot](./media/cosmos-db-delete-resource-group/delete-resources-select.png)
 
-2. Az új ablakban válassza ki az erőforráscsoportot, és kattintson az **Erőforráscsoport törlése** elemre.
+2. Az új ablakban válassza az **erőforráscsoport törlése**elemet.
 
-   ![Mérőszámok az Azure Portalon](./media/cosmos-db-delete-resource-group/delete-resources.png)   
+   ![Az erőforráscsoport törlése](./media/cosmos-db-delete-resource-group/delete-resources.png)   
 
-3. Az új ablakban írja be a törölni kívánt erőforráscsoport nevét, majd kattintson a **Törlés**  elemre.
+3. A következő ablakban adja meg a törölni kívánt erőforráscsoport nevét, majd válassza a **Törlés**lehetőséget.
 

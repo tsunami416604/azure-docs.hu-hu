@@ -1,6 +1,6 @@
 ---
-title: 'SaaS-alkalmazások: Az Azure SQL-adatbázis georedundáns biztonsági mentések vész-helyreállítási |} A Microsoft Docs'
-description: Ismerje meg, hogyan használhatja az Azure SQL-adatbázis georedundáns biztonsági mentések egy több-bérlős SaaS-alkalmazás helyreállítása meghibásodás esetére
+title: 'SaaS-alkalmazások: Azure SQL Database geo-redundáns biztonsági másolatok a vész-helyreállításhoz | Microsoft Docs'
+description: Megtudhatja, hogyan használhat Azure SQL Database geo-redundáns biztonsági mentést egy több-bérlős SaaS-alkalmazás helyreállításához leállás esetén
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
@@ -8,374 +8,373 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: AyoOlubeko
-ms.author: ayolubek
+ms.author: craigg
 ms.reviewer: sstein
-manager: craigg
 ms.date: 01/14/2019
-ms.openlocfilehash: c96f2dc2b44ea2118d9f0dd6c988017efcba5800
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: c8990e5183d09e8f530fdef952a80a09104d3617
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58116775"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570488"
 ---
-# <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>Adatbázisok biztonsági mentése egy több-bérlős SaaS-alkalmazás helyreállítása geo-visszaállítás használatával
+# <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>Geo-visszaállítás használata több-bérlős SaaS-alkalmazás helyreállításához az adatbázis biztonsági másolatainak használatával
 
-Ez az oktatóanyag bemutatja egy több-bérlős SaaS-alkalmazás az egyes bérlői modellek az adatbázis valósítja meg a teljes vész-helyreállítási helyzetekre. Használhat [geo-visszaállítás](sql-database-recovery-using-backups.md) automatikusan karbantartott georedundáns biztonsági másolatból az alkalmazáskatalógus és a bérlői adatbázisok helyreállítani egy másodlagos helyreállítási régióba. A szolgáltatáskiesés megszüntetése után nem oldódik meg, miután [georeplikációs](sql-database-geo-replication-overview.md) , azok eredeti régióba módosított adatbázisok települni.
+Ez az oktatóanyag egy teljes vész-helyreállítási forgatókönyvet mutat be egy több-bérlős SaaS-alkalmazáshoz, amely egy bérlői modellben van megvalósítva. A [geo-visszaállítással](sql-database-recovery-using-backups.md) helyreállíthatja a katalógust és a bérlői adatbázisokat, így automatikusan megőrizheti a Geo-redundáns biztonsági mentéseket egy másodlagos helyreállítási régióban. A leállás feloldása után a [geo-replikációval](sql-database-geo-replication-overview.md) szabadon hazautalhatnak a megváltozott adatbázisokat az eredeti régiójába.
 
-![GEO-visszaállítás-architektúra](media/saas-dbpertenant-dr-geo-restore/geo-restore-architecture.png)
+![Geo-visszaállítás – architektúra](media/saas-dbpertenant-dr-geo-restore/geo-restore-architecture.png)
 
-A GEO-visszaállítás a legalacsonyabb költségű vész-helyreállítási megoldást az Azure SQL Database. Azonban az georedundáns biztonsági másolatokból való visszaállítással eredményezhet az adatvesztést, akár egy óráig. Minden egyes adatbázis méretétől függően hosszabb időt is igénybe vehet. 
+A Geo-visszaállítás a Azure SQL Database legalacsonyabb díjas helyreállítási megoldása. Azonban a Geo-redundáns biztonsági mentésből való visszaállítás akár egy óra adatvesztést eredményezhet. Az egyes adatbázisok méretétől függően jelentős időt is igénybe vehet. 
 
 > [!NOTE]
-> A geo-visszaállítás helyett georeplikáció használatával állíthatja helyre az alkalmazások a lehető legalacsonyabb RPO és RTO.
+> A legkevesebb lehetséges RPO és RTO rendelkező alkalmazásokat a Geo-visszaállítás helyett geo-replikáció használatával állíthatja helyre.
 
-Ez az oktatóanyag bemutatja, visszaállítási és a hazatelepítési munkafolyamatokat. Az alábbiak végrehajtásának módját ismerheti meg:
+Ez az oktatóanyag a visszaállítási és a visszalépési munkafolyamatokat vizsgálja. Az alábbiak végrehajtásának módját ismerheti meg:
 > [!div class="checklist"]
 > 
-> * Sync-adatbázis és rugalmas tárolókészlet konfigurációs adatait a bérlő-katalógusba.
-> * Állítsa be egy tükrözött lemezképét környezetet, amely tartalmazza az alkalmazás, a kiszolgálók és a készletek helyreállítási régióban.   
-> * A geo-visszaállítás használatával állíthatja helyre az alkalmazáskatalógus és a bérlői adatbázisok.
-> * Georeplikáció használatával települni a bérlői katalógus és a módosított bérlői adatbázisok a szolgáltatáskiesés megszüntetése után.
-> * A katalógus frissíteni, mivel minden adatbázis a visszaállított (vagy fogalommeghatározás) nyomon követéséhez az aktív másolata, minden bérlői adatbázis aktuális helyét.
-> * Győződjön meg arról, hogy az alkalmazás és a bérlői adatbázis mindig közös találhatók ugyanabban a régióban az Azure a késés csökkentése érdekében. 
+> * Szinkronizálja az adatbázist és a rugalmas készlet konfigurációs adatait a bérlői katalógusba.
+> * Hozzon létre egy tükrözési képkörnyezetet egy olyan helyreállítási régióban, amely alkalmazásokat, kiszolgálókat és készleteket tartalmaz.   
+> * Állítsa helyre a katalógust és a bérlői adatbázisokat a Geo-visszaállítás használatával.
+> * A földrajzi replikálás használatával szabadon hazautalhatnak a bérlői katalógust, és megváltoztathatja a bérlői adatbázisokat a leállás feloldása után.
+> * Frissítse a katalógust úgy, hogy minden adatbázis helyreáll (vagy haza), hogy nyomon követhesse az egyes bérlői adatbázisok aktív példányának aktuális helyét.
+> * Győződjön meg arról, hogy az alkalmazás és a bérlői adatbázis mindig ugyanabban az Azure-régióban található, hogy csökkentse a késést. 
  
 
-Ebben az oktatóanyagban a Kezdés előtt végezze el az alábbiakat:
-* Az egyes bérlői alkalmazások a Wingtip Tickets SaaS-adatbázis üzembe helyezése. Kevesebb mint öt perc alatt üzembe helyezéséhez lásd: [üzembe helyezése és felfedezése a Wingtip Tickets SaaS adatbázis bérlői alkalmazásonként](saas-dbpertenant-get-started-deploy.md). 
-* Az Azure PowerShell telepítése. További információkért lásd: [Ismerkedés az Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/get-started-azureps).
+Az oktatóanyag elkezdése előtt végezze el a következő előfeltételeket:
+* Telepítse a Wingtip tickets SaaS-adatbázist egy bérlői alkalmazásban. Ha kevesebb, mint öt perc alatt kíván üzembe helyezni, tekintse meg [a Wingtip tickets SaaS-adatbázis üzembe helyezését és felfedezését bérlői alkalmazásokban](saas-dbpertenant-get-started-deploy.md) 
+* Az Azure PowerShell telepítése. Részletekért lásd: [a Azure PowerShell első lépései](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
-## <a name="introduction-to-the-geo-restore-recovery-pattern"></a>A geo-visszaállítás helyreállítási mintáját bemutatása
+## <a name="introduction-to-the-geo-restore-recovery-pattern"></a>Bevezetés a Geo-visszaállítás helyreállítási mintába
 
-A vészhelyreállítás (DR) sok alkalmazás esetén fontos szempont a megfelelőségi okokból, vagy az üzletmenet folytonosságának. Hosszan tartó szolgáltatáskimaradás esetén egy jól felkészültnek Vészhelyreállítási terv minimalizálhatja az üzletmenet megszakadása. A Vészhelyreállítási terv alapján a geo-visszaállítás különböző célok kell elvégezni:
- * Győződjön meg arról, hogy legyen elérhető a bérlői adatbázisok visszaállítása a lehető leggyorsabban lefoglalni az összes szükséges kapacitás a kiválasztott helyreállítási régióban.
- * Egy tükrözött lemezképét helyreállítási környezet, amely tükrözi az eredeti készlet és az adatbázis-konfigurációt hoz létre. 
- * Lehetővé teszi a visszaállítási folyamat közben továbbított megszakításának, ha az eredeti régió visszatér online állapotba.
- * Engedélyezze a bérlő kiépítésének gyorsan, így az új bérlő regisztrációs a lehető leghamarabb újraindíthatja.
- * Bérlők prioritási sorrendben visszaállítására lehet optimalizálni.
- * Párhuzamos lépések végrehajtásával, ahol gyakorlati minél hamarabb beolvasni a bérlők online optimalizálni.
- * Hiba, újraindítható, és idempotens rugalmasak lehetnek.
- * Csak minimális hatással van a bérlők számára saját eredeti régióba adatbázisok települni, ha a szolgáltatás újraindulása után.  
+A vész-helyreállítási (DR) fontos szempont számos alkalmazás számára, legyen szó megfelelőségi okokról vagy üzletmenet folytonosságáról. Ha hosszabb a szolgáltatás, egy jól előkészített DR-csomaggal csökkentheti az üzleti fennakadást. A Geo-visszaállításon alapuló DR-tervnek számos célt kell végrehajtania:
+ * A lehető leggyorsabban foglalja le az összes szükséges kapacitást a kiválasztott helyreállítási régióban, hogy az elérhető legyen a bérlői adatbázisok visszaállításához.
+ * Hozzon létre egy tükrözési rendszerkép-helyreállítási környezetet, amely az eredeti készletet és az adatbázis konfigurációját tükrözi. 
+ * A visszaállítási folyamat megszakításának engedélyezése a repülés közepére, ha az eredeti régió ismét online állapotba kerül.
+ * A bérlői kiépítés gyors engedélyezése, hogy az új bérlői bevezetést a lehető leghamarabb újra lehessen indítani.
+ * A bérlők prioritási sorrendben történő visszaállításához optimalizálni kell.
+ * Legyen optimalizálva, hogy a lehető leghamarabb elérhetővé tegye a bérlők online állapotba lépéseit a gyakorlati lépések végrehajtásával.
+ * Legyen rugalmas a hiba, az újraindítási és a idempotens.
+ * Szabadon hazautalhatnak az adatbázisokat az eredeti régiójába, és minimális hatással van a bérlők számára a leállás feloldásakor.  
 
 > [!NOTE]
-> Az alkalmazás hasznosítják a régió, amelyben az alkalmazás központi telepítése a párosított régióba. További információkért lásd: [Azure párosított régióiról](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).   
+> Az alkalmazást annak a régiónak a párosított régiójában kell helyreállítani, amelyben az alkalmazás telepítve van. További információ: [Azure párosított régiók](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).   
 
-Ebben az oktatóanyagban az Azure SQL Database és az Azure platform szolgáltatásait használja ezek a kihívások megoldása érdekében:
+Ez az oktatóanyag a Azure SQL Database funkcióit és az Azure platformot használja az alábbi problémák megoldásához:
 
-* [Az Azure Resource Manager-sablonok](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template), az összes szükséges kapacitás, a lehető leggyorsabban fenntartására. Az Azure Resource Manager-sablonok segítségével üzembe helyezése egy tükrözött lemezképét az eredeti kiszolgálók és a rugalmas készletek a helyreállítási régióban. Egy önálló kiszolgáló és a készlet is hoz létre az új bérlők kiépítésének folyamatát.
-* [Elastic Database-Ügyfélkódtár](sql-database-elastic-database-client-library.md) (EDCL), a bérlői adatbázis katalógus létrehozásához és kezeléséhez. A kiterjesztett catalog rendszeres időközönként frissülnek készlet és az adatbázis-konfigurációs adatokat tartalmaz.
-* [Szilánkleképezés helyreállítási funkciókat](sql-database-elastic-database-recovery-manager.md) , az EDCL, helyreállítási és hazatelepítési során adatbázis helye bejegyzéseket a katalógus fenntartásához.  
-* [A GEO-visszaállítás](sql-database-disaster-recovery.md), automatikusan karbantartott georedundáns biztonsági másolatból az alkalmazáskatalógus és a bérlői adatbázisok helyreállítani. 
-* [Aszinkron visszaállítási műveletek](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations), bérlő-prioritási sorrendben küldött, a rendszer minden egyes készlethez helyezi várólistára és feldolgozott kötegekben, így a készlet nem túlterhelt. Ezek a műveletek előtt, vagy ha szükséges, a végrehajtás során szakadhatnak meg.   
-* [Georeplikáció](sql-database-geo-replication-overview.md), hogy az eredeti régióba adatbázisok települni a szolgáltatáskiesés megszüntetése után. Nem érkezik nincs adatvesztés és a lehető legkisebb hatással legyen a bérlő Ha georeplikációt használ.
-* [SQL-kiszolgáló DNS-aliasokat](dns-alias-overview.md), hogy a katalógus szinkronizálási folyamat során, függetlenül az, hogy az aktív katalógusban való kapcsolódáshoz.  
+* [Azure Resource Manager sablonokat](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template), hogy a lehető leggyorsabban lefoglalja a szükséges kapacitást. Azure Resource Manager sablonokkal a helyreállítási régióban található eredeti kiszolgálók és rugalmas készletek tükörképét lehet kiépíteni. Az új bérlők üzembe helyezéséhez külön-kiszolgáló és-készlet is létrejön.
+* [Elastic Database ügyféloldali kódtár](sql-database-elastic-database-client-library.md) (EDCL) a bérlői adatbázis-katalógus létrehozásához és karbantartásához. A kiterjesztett katalógus rendszeres időközönként frissített készletet és adatbázis-konfigurációs adatokat tartalmaz.
+* A EDCL szegmensek közötti [felügyeleti helyreállítási funkciói](sql-database-elastic-database-recovery-manager.md) a helyreállítás és a visszaállítás során a katalógusban található adatbázis-helyek bejegyzéseinek fenntartásához.  
+* A [geo-visszaállítással](sql-database-disaster-recovery.md)helyreállíthatja a katalógust és a bérlői adatbázisokat, így automatikusan megőrizheti a Geo-redundáns biztonsági mentéseket. 
+* A bérlői prioritású sorrendben eljuttatott [aszinkron visszaállítási műveleteket](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)a rendszer az egyes készletekhez várólistára helyezi, és a kötegekben dolgozza fel, hogy a készlet ne legyen túlterhelve. Ezek a műveletek a végrehajtás előtt vagy közben is megvonhatók, ha szükséges.   
+* [Geo-replikáció](sql-database-geo-replication-overview.md), hogy a leállás után szabadon hazautalhatnak az adatbázisokat az eredeti régióba. Földrajzi replikálás használata esetén nincs adatvesztés és a bérlő minimális hatása.
+* Az [SQL Server DNS-aliasai](dns-alias-overview.md)lehetővé teszik, hogy a katalógus szinkronizálási folyamata a helytől függetlenül csatlakozhasson az aktív katalógushoz.  
 
-## <a name="get-the-disaster-recovery-scripts"></a>A vészhelyreállítási szkripteket beolvasása
+## <a name="get-the-disaster-recovery-scripts"></a>A vész-helyreállítási parancsfájlok beszerzése
 
-A Vészhelyreállítási szkripteket a jelen oktatóanyagban használt érhetők el a [bérlőnként GitHub-adattárat a Wingtip Tickets SaaS adatbázis](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant). Tekintse meg a [általános útmutatást](saas-tenancy-wingtip-app-guidance-tips.md) töltse le és feloldása a Wingtip Tickets felügyeleti parancsfájlokat.
+Az oktatóanyagban használt DR szkriptek a [Wingtip tickets SaaS-adatbázisban](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant)találhatók a bérlői GitHub-tárházban. Tekintse meg az Wingtip tickets felügyeleti parancsfájlok letöltéséhez és feloldásához szükséges lépéseket ismertető [általános útmutatót](saas-tenancy-wingtip-app-guidance-tips.md) .
 
 > [!IMPORTANT]
-> Minden a Wingtip Tickets felügyeleti parancsfájlokat, például a Vészhelyreállítási szkripteket minta minőségi és, nem éles környezetben használható.
+> A Wingtip jegyek felügyeleti parancsfájljaihoz hasonlóan a DR szkriptek is minőségi minta, ezért nem használhatók éles környezetben.
 
 ## <a name="review-the-healthy-state-of-the-application"></a>Az alkalmazás kifogástalan állapotának áttekintése
-A helyreállítási folyamat megkezdése előtt tekintse át az alkalmazás normál kifogástalan állapotát.
+A helyreállítási folyamat megkezdése előtt tekintse át az alkalmazás rendeltetésszerű kifogástalan állapotát.
 
-1. A böngészőben nyissa meg a Wingtip Tickets eseményközpontot (http://events.wingtip-dpt.&lt; felhasználó&gt;. trafficmanager.net, cserélje le &lt;felhasználói&gt; az üzemelő példány felhasználói értékkel).
+1. A böngészőben nyissa meg a Wingtip tickets Events hubot http://events.wingtip-dpt.&lt (;&gt; user. trafficmanager.net, &lt; cserélje&gt; le a felhasználót a telepítés felhasználói értékére).
     
-   Görgessen a lap aljára, és figyelje meg, hogy a katalógus-kiszolgáló nevét és helyét a láblécben. A hely az a régió, amelyben az alkalmazás üzembe helyezésekor.    
+   Görgessen a lap aljára, és figyelje meg a katalógus kiszolgálójának nevét és helyét a láblécben. A hely az a régió, amelyben üzembe helyezte az alkalmazást.    
 
    > [!TIP]
-   > Vigye az egérmutatót megjelenítéséhez nagyítsa fel a helyet.
+   > Vigye az egérmutatót a hely fölé a kijelző nagyításához.
 
-   ![Események központ megfelelő állapotba eredeti régióban](media/saas-dbpertenant-dr-geo-restore/events-hub-original-region.png)
+   ![Az Events hub kifogástalan állapota az eredeti régióban](media/saas-dbpertenant-dr-geo-restore/events-hub-original-region.png)
 
-2. Válassza ki a Contoso Concert Hall bérlőt, és nyissa meg az események lapján.
+2. Válassza ki a contoso Concert Hall-bérlőt, és nyissa meg az esemény lapját.
 
-   A láblécben figyelje meg a bérlő kiszolgáló nevét. A hely a ugyanaz, mint a katalóguskiszolgálón helye.
+   Figyelje meg a bérlő kiszolgálójának nevét a láblécben. A hely megegyezik a Catalog kiszolgáló helyével.
 
-   ![Contoso Concert Hall eredeti régió](media/saas-dbpertenant-dr-geo-restore/contoso-original-location.png) 
+   ![Contoso Concert Hall – eredeti régió](media/saas-dbpertenant-dr-geo-restore/contoso-original-location.png) 
 
-3. Az a [az Azure portal](https://portal.azure.com), tekintse át, és nyissa meg az erőforráscsoport, amelyben az alkalmazás üzembe helyezésekor.
+3. A [Azure Portal](https://portal.azure.com)tekintse át, majd nyissa meg azt az erőforráscsoportot, amelyben üzembe helyezte az alkalmazást.
 
-   Figyelje meg, hogy az erőforrások és a régiót, amelyben az app service-összetevők és az SQL Database-kiszolgálók üzembe vannak helyezve.
+   Figyelje meg az erőforrásokat és a régiót, amelyben az App Service-összetevők és a SQL Database-kiszolgálók telepítve vannak.
 
-## <a name="sync-the-tenant-configuration-into-the-catalog"></a>A bérlő konfigurációjához a katalógusba való szinkronizálása
+## <a name="sync-the-tenant-configuration-into-the-catalog"></a>A bérlő konfigurációjának szinkronizálása a katalógusba
 
-Ebben a feladatban egy szinkronizálni a konfigurációt a bérlő-katalógusba a kiszolgálók, rugalmas készletek és adatbázisok folyamat elindítása. Ez az információ segítségével később egy tükrözött lemezképét környezet konfigurálása a helyreállítási régióban.
+Ebben a feladatban elindít egy folyamatot, amely a kiszolgálók, a rugalmas készletek és az adatbázisok konfigurációját szinkronizálja a bérlői katalógusba. Ezt az információt később a rendszer a helyreállítási régióban a tükrözési képkörnyezet konfigurálásához használja.
 
 > [!IMPORTANT]
-> Az egyszerűség kedvéért a szinkronizálási folyamat és egyéb hosszú futású helyreállítási és hazatelepítési folyamatokat az ezeket a mintákat a helyi PowerShell-feladatok vagy az ügyfél-felhasználói bejelentkezés alatt futó munkamenetek van megvalósítva. A hitelesítési tokenek bejelentkezéskor kiadott több óra után lejárnak, és a feladat sikertelen lesz, majd. Éles forgatókönyvekben hosszú futású folyamatok, a megbízható Azure-szolgáltatások bizonyos típusú, egyszerű szolgáltatás alatt futó kell végrehajtani. Lásd: [tanúsítvánnyal egyszerű szolgáltatás létrehozása az Azure PowerShell használatával](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal). 
+> Az egyszerűség kedvéért a szinkronizálási folyamat és az egyéb hosszan futó helyreállítási és újratelepítési folyamatok a helyi PowerShell-feladatok vagy az ügyfél-felhasználói bejelentkezés alatt futó munkamenetek keretében valósulnak meg. A bejelentkezéskor kiállított hitelesítési tokenek több óra elteltével lejárnak, és a feladatok sikertelenek lesznek. Éles környezetben a hosszan futó folyamatokat olyan megbízható Azure-szolgáltatásként kell megvalósítani, amely egy egyszerű szolgáltatásnév keretében fut. Lásd: a [Azure PowerShell használata egy egyszerű szolgáltatásnév létrehozásához tanúsítvánnyal](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal). 
 
-1. A PowerShell ISE-ben nyissa meg a ...\Learning Modules\UserConfig.psm1 fájlt. Cserélje le `<resourcegroup>` és `<user>` sorok 10-es és 11 az alkalmazás üzembe helyezésekor használt értékkel. Mentse a fájlt.
+1. A PowerShell ISE-ben nyissa meg a. ..\Learning Modules\UserConfig.psm1 fájlt. Cserélje `<resourcegroup>` le `<user>` a és a értéket a 10-es és a 11-es vonalakra az alkalmazás üzembe helyezésekor használt értékkel. Mentse a fájlt.
 
-2. A PowerShell ISE-ben nyissa meg a ...\Learning Modules\Business üzletmenet-folytonossági és vészhelyreállítási Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 parancsfájlt.
+2. A PowerShell ISE-ben nyissa meg a. ..\Learning Modules\Business folytonosságát és a katasztrófa-Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 parancsfájlt.
 
-    Ebben az oktatóanyagban a PowerShell parancsfájl futtatása az egyes a forgatókönyvek esetében tehát ne zárja be ezt a fájlt.
+    Ebben az oktatóanyagban futtatja az egyes forgatókönyveket ebben a PowerShell-parancsfájlban, ezért ne nyissa meg a fájlt.
 
-3. Állítsa be a következőt:
+3. Állítsa be a következőket:
 
-    $DemoScenario = 1: Indítsa el a háttérfeladat, mely szinkronizálja a bérlői kiszolgálóhoz és a tárolókészlet konfigurációs adatait a katalógusba.
+    $DemoScenario = 1: Indítson el egy olyan háttér-feladatot, amely szinkronizálja a bérlői kiszolgálót és a készlet konfigurációs adatait a katalógusba.
 
-4. A sync-szkript futtatásához válassza ki az F5 billentyűt. 
+4. A szinkronizálási parancsfájl futtatásához nyomja le az F5 billentyűt. 
 
-    Ez az információ segítségével később győződjön meg arról, hogy recovery létrehoz egy tükrözött lemezképét a kiszolgálókat, készleteket és adatbázisokat a helyreállítási régióban.  
+    Ezt az információt később a rendszer a helyreállítási régióban található kiszolgálók, készletek és adatbázisok tükörképének létrehozásához használja.  
 
     ![Szinkronizálási folyamat](media/saas-dbpertenant-dr-geo-restore/sync-process.png)
 
-Hagyja meg a PowerShell ablakban fut a háttérben, és ez az oktatóanyag további részeinek folytatásához.
+Hagyja meg a háttérben futó PowerShell-ablakot, és folytassa az oktatóanyag további részével.
 
 > [!NOTE]
-> A szinkronizálási folyamat során a katalógus egy DNS-alias-n keresztül csatlakozik. Az alias visszaállítása és az aktív katalógus átirányítása hazatelepítési során is módosul. A szinkronizálási folyamat naprakészen tarthatja a katalógus-adatbázis vagy készlet konfigurációs módosítások a helyreállítási régióban. A hazatelepülés során ezeket a módosításokat az azonos erőforrásokat az eredeti régióban lépnek.
+> A szinkronizálási folyamat egy DNS-alias használatával csatlakozik a katalógushoz. Az alias a visszaállítás és a visszaléptetés során módosul, hogy az aktív katalógusra mutasson. A szinkronizálási folyamat naprakészen tartja a katalógust a helyreállítási régióban végrehajtott adatbázis-vagy készlet-konfigurációval. A visszaléptetés során ezeket a módosításokat az eredeti régióban található egyenértékű erőforrásokra alkalmazza a rendszer.
 
-## <a name="geo-restore-recovery-process-overview"></a>A GEO-visszaállítás helyreállítási folyamat áttekintése
+## <a name="geo-restore-recovery-process-overview"></a>A helyreállítási folyamat földrajzi visszaállításának áttekintése
 
-A geo-visszaállítás helyreállítási folyamat üzembe helyezi az alkalmazást, és visszaállítja a adatbázisok a biztonsági mentések a helyreállítási régióba.
+A Geo-visszaállítási helyreállítási folyamat telepíti az alkalmazást, és visszaállítja az adatbázisokat a biztonsági másolatokból a helyreállítási régióba.
 
-A helyreállítási folyamat a következőket teszi:
+A helyreállítási folyamat a következő műveleteket végzi el:
 
-1. A webalkalmazás az eredeti régióban az Azure Traffic Manager végpont letiltása. A végpont letiltása megakadályozza, hogy a felhasználók csatlakozzanak az alkalmazás érvénytelen állapotban kell az eredeti régió online állapotba a helyreállítás során.
+1. Letiltja az Azure Traffic Manager végpontot a webalkalmazáshoz az eredeti régióban. A végpont letiltása megakadályozza, hogy a felhasználók érvénytelen állapotban csatlakozzanak az alkalmazáshoz, ha az eredeti régió online állapotba kerül a helyreállítás során.
 
-2. Egy helyreállítási építi ki a katalógus-adatbázis a kiszolgáló a helyreállítási régióban, geo-visszaállítás katalógus, és frissíti a activecatalog alias, hogy a visszaállított kiszolgáló mutasson. Az alkalmazáskatalógus alias módosítása biztosítja, hogy a katalógus szinkronizálási folyamat mindig szinkronizálja az aktív katalógushoz.
+2. Kiépíti a helyreállítási katalógus kiszolgálóját a helyreállítási régióban, Geo-visszaállítja a katalógus-adatbázist, és frissíti a activecatalog aliast, hogy az a visszaállított katalógus-kiszolgálóra mutasson. A katalógus-alias módosítása biztosítja, hogy a katalógus szinkronizálási folyamata mindig szinkronban legyen az aktív katalógussal.
 
-3. Az összes meglévő bérlők számára a helyreállítási katalógus offline állapotúként, hogy megakadályozza a hozzáférést a bérlői adatbázisok visszaállítását végzi előtt jelöli meg.
+3. A helyreállítási katalógusban lévő összes meglévő bérlőt kapcsolat nélküli állapotban jelöli, hogy megakadályozza a bérlői adatbázisokhoz való hozzáférést a visszaállításuk előtt.
 
-4. A helyreállítási régióban az alkalmazás egy példányát építi ki, és konfigurálja, hogy a visszaállított katalógus használata az adott régióban. Legkisebb késés megtartásához a mintaalkalmazás célja mindig kapcsolódik egy bérlői adatbázis ugyanabban a régióban.
+4. Kiépíti az alkalmazás egy példányát a helyreállítási régióban, és konfigurálja azt a visszaállított katalógus használatára a régióban. A minimális késleltetés érdekében a minta alkalmazás úgy van kialakítva, hogy mindig ugyanahhoz a régióhoz kapcsolódjon egy bérlői adatbázishoz.
 
-5. Látja el a kiszolgáló és a rugalmas készletben, amelyben az új bérlők kiépítése történik. Ezek az erőforrások létrehozását biztosítja, hogy új bérlők kiépítése nem zavarja meg a helyreállítás a meglévő bérlők számára.
+5. Egy olyan kiszolgálót és rugalmas készletet hoz létre, amelyben új bérlők vannak kiépítve. Az erőforrások létrehozása biztosítja, hogy az új bérlők üzembe helyezése ne zavarja a meglévő bérlők helyreállítását.
 
-6. Frissíti az új bérlő alias az kiszolgálóra, az új bérlői adatbázisokat a helyreállítási régióban. Ezt az aliast módosítása biztosítja, hogy minden olyan új bérlők adatbázisok helyreállítási régióban vannak kiépítve.
+6. Frissíti az új bérlői aliast, hogy a helyreállítási régióban lévő új bérlői adatbázisok kiszolgálójára mutasson. Az alias módosítása biztosítja, hogy az új bérlők adatbázisai a helyreállítási régióban legyenek kiépítve.
         
-7. Látja a kiszolgálók és a rugalmas készletek a bérlői adatbázisok visszaállítását a helyreállítási régióban. Ezek a kiszolgálók és -készletek egy tükrözött lemezképét, a konfiguráció az eredeti régióban. Az összes adatbázis visszaállításához szükséges kapacitás kiépítése készletek meghozni fenntart.
+7. Kiépíti a kiszolgálókat és a rugalmas készleteket a helyreállítási régióban a bérlői adatbázisok visszaállításához. Ezek a kiszolgálók és készletek az eredeti régióban lévő konfiguráció tükrözési képe. A kiépítési készletek elöl foglalják az összes adatbázis helyreállításához szükséges kapacitást.
 
-    Egy régióban leállás előfordulhat, hogy helyezze a párosított régióban elérhető erőforrások jelentős nyomás. Ha a Vészhelyreállításhoz támaszkodnak geo-visszaállítás, majd gyorsan az erőforrások lefoglalását ajánlott. Fontolja meg georeplikációs Ha rendkívül fontos, hogy egy alkalmazás helyreállított-e egy adott régióban. 
+    A régiókban a leállás jelentős nyomást eredményezhet a párosított régióban elérhető erőforrásokra. Ha a DR-re vonatkozó geo-visszaállításra támaszkodik, akkor az erőforrások gyors megőrzése ajánlott. Vegye fontolóra a Geo-replikációt, ha kritikus fontosságú, hogy egy adott alkalmazás egy adott régióban legyen helyreállítva. 
 
-8. Lehetővé teszi, hogy a Traffic Manager-végpont a webalkalmazás a helyreállítási régióban. Ez a végpont lehetővé teszi, hogy az alkalmazás új bérlők kiépítése. Ebben a szakaszban a meglévő bérlők számára még mindig offline állapotban van.
+8. Engedélyezi a webalkalmazás Traffic Manager végpontját a helyreállítási régióban. A végpont engedélyezése lehetővé teszi az alkalmazás számára új bérlők kiépítését. Ebben a szakaszban a meglévő bérlők továbbra is offline állapotban vannak.
 
-9. Adatbázisok prioritási sorrendben visszaállítására irányuló kérelmekre váró küldi el. 
+9. Beküldi a kérelmek kötegeit az adatbázisok prioritási sorrendben történő visszaállításához. 
 
-    * Kötegek vannak rendezve, hogy az adatbázisok párhuzamos visszaállnak az összes készletek között.  
+    * A kötegek úgy vannak rendszerezve, hogy az adatbázisok az összes készletben párhuzamosan legyenek visszaállítva.  
 
-    * Visszaállítás kérelmek aszinkron módon nyújtják, így gyorsan elküldve, és a készlet minden egyes végrehajtási várólistára.
+    * A visszaállítási kérelmeket aszinkron módon küldi el a rendszer, így azokat gyorsan elküldik, és az egyes készleteken való végrehajtásra várólistára kerülnek
 
-    * Visszaállítási kérések feldolgozása párhuzamosan történik az összes készletek között, mert éppen számos készletek között oszthatja el a fontos bérlők számára. 
+    * Mivel a visszaállítási kérelmeket a rendszer párhuzamosan dolgozza fel az összes készletben, jobb megoldás a fontos bérlők elosztása számos különböző készleten keresztül. 
 
-10. Figyeli az SQL Database szolgáltatás meghatározni, hogy amikor adatbázis visszaállítását végzi. A bérlői adatbázis visszaállítása után a katalógus online van megjelölve, és a bérlői adatbázis rowversion összeg rögzíti. 
+10. Figyeli a SQL Database szolgáltatást, hogy meghatározza, mikor állítják vissza az adatbázisokat. A bérlői adatbázis visszaállítása után a katalógusban online állapotba kerül, és a bérlői adatbázis ROWVERSION összegét rögzíti a rendszer. 
 
-    * Bérlői adatbázisok az alkalmazás által hozzáférhető, amint online, a katalógus van megjelölve.
+    * A bérlői adatbázisokat az alkalmazás érheti el, amint online állapotban vannak a katalógusban.
 
-    * A bérlői adatbázis rowversion értékek összege a katalógus tárolja. Ez a sum, amely lehetővé teszi a hazatelepítési folyamat határozza meg, ha az adatbázis frissítve lett-e a helyreállítási régióban ujjlenyomattal funkcionál.       
+    * A bérlői adatbázisban található ROWVERSION-értékek összege a katalógusban van tárolva. Ez az összeg ujjlenyomatként működik, amely lehetővé teszi a rehalasztott folyamat számára annak meghatározását, hogy az adatbázis frissítve lett-e a helyreállítási régióban.       
 
-## <a name="run-the-recovery-script"></a>A helyreállítási szkript futtatása
+## <a name="run-the-recovery-script"></a>A helyreállítási parancsfájl futtatása
 
 > [!IMPORTANT]
-> Ebben az oktatóanyagban visszaállítja az adatbázis georedundáns biztonsági másolatokból. Bár a másolatokat jellemzően elérhető 10 percen belül, is igénybe vehet egy órát. A parancsfájl felfüggeszti, amíg el nem érhető el.
+> Ez az oktatóanyag visszaállítja az adatbázisokat a Geo-redundáns biztonsági mentésből. Habár ezek a biztonsági másolatok általában 10 percen belül elérhetők, akár egy óráig is eltarthat. A parancsfájl addig szünetel, amíg elérhetővé nem válik.
 
-Képzelje el, szolgáltatáskimaradás van a régióban, amelyben az alkalmazás telepítve, és futtassa a helyreállítási szkriptet:
+Képzelje el, hogy a régióban az alkalmazás központi telepítése történik, és futtassa a helyreállítási parancsfájlt:
 
-1. A PowerShell ISE-ben a ...\Learning Modules\Business üzletmenet-folytonossági és vészhelyreállítási Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 parancsfájlt, állítsa be a következő értéket:
+1. A PowerShell ISE-ben a. ..\Learning Modules\Business folytonossága és a katasztrófa-Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 parancsfájlban állítsa be a következő értéket:
 
-    $DemoScenario = 2: Állítsa helyre az alkalmazás olyan helyreállítási régió szerint georedundáns biztonsági másolatokból való visszaállítással.
+    $DemoScenario = 2: Állítsa helyre az alkalmazást egy helyreállítási régióban a Geo-redundáns biztonsági másolatokből való visszaállítással.
 
-2. A szkript futtatásához válassza ki az F5.  
+2. A parancsfájl futtatásához válassza az F5 lehetőséget.  
 
-    * A parancsfájl egy új PowerShell-ablakban nyílik meg, és elindít egy PowerShell-feladatok párhuzamosan futó készletét. Ezek a feladatok kiszolgálók, készletek és adatbázisok visszaállítása a helyreállítási régióban.
+    * A parancsfájl egy új PowerShell-ablakban nyílik meg, majd elindítja a párhuzamosan futó PowerShell-feladatok készletét. Ezek a feladatok visszaállítják a kiszolgálókat, készleteket és adatbázisokat a helyreállítási régióba.
 
-    * A helyreállítási régióban az Azure-régió, amelyben az alkalmazás üzembe helyezett társított párosított régió. További információkért lásd: [Azure párosított régióiról](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). 
+    * A helyreállítási régió az az Azure-régióhoz társított párosított régió, amelyben az alkalmazást üzembe helyezte. További információ: [Azure párosított régiók](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). 
 
-3. A PowerShell-ablakban a helyreállítási folyamat állapotának monitorozásához.
+3. Figyelje a helyreállítási folyamat állapotát a PowerShell-ablakban.
 
-    ![A helyreállítási folyamat](media/saas-dbpertenant-dr-geo-restore/dr-in-progress.png)
+    ![Helyreállítási folyamat](media/saas-dbpertenant-dr-geo-restore/dr-in-progress.png)
 
 > [!NOTE]
-> Ismerje meg a helyreállítási feladatok kódja, tekintse át a PowerShell-parancsprogramok a ...\Learning Modules\Business üzletmenet-folytonossági és vészhelyreállítási Recovery\DR-RestoreFromBackup\RecoveryJobs mappában.
+> A helyreállítási feladatok kódjának megismeréséhez tekintse át a PowerShell-szkripteket a. ..\Learning Modules\Business folytonossága és a katasztrófa-Recovery\DR-RestoreFromBackup\RecoveryJobs mappában.
 
-## <a name="review-the-application-state-during-recovery"></a>A helyreállítás során az alkalmazás állapotának áttekintése
-Az alkalmazás végpont le van tiltva a Traffic Managerben, amíg az alkalmazás nem érhető el. A katalógus visszaállítása, és a bérlők számára vannak megjelölve az offline állapotban van. Az alkalmazás végpontjának a helyreállítási régióban majd engedélyezve van, és az alkalmazás újra online állapotba kerül. Bár az alkalmazás elérhető-e, bérlők jelennek meg offline állapotban az eseményközpontot adatbázisaikat visszaállításáig. Fontos tervezze alkalmazását úgy, hogy kapcsolat nélküli bérlői adatbázisok kezelésére.
+## <a name="review-the-application-state-during-recovery"></a>Az alkalmazás állapotának áttekintése a helyreállítás során
+Amíg az alkalmazás végpontja le van tiltva a Traffic Managerban, az alkalmazás nem érhető el. A katalógus vissza lett állítva, és az összes bérlő offline állapotban van megjelölve. Ekkor a helyreállítási régióban az alkalmazás-végpont engedélyezve lesz, és az alkalmazás ismét online állapotba kerül. Bár az alkalmazás elérhető, a bérlők offline állapotban jelennek meg az események központban, amíg az adatbázisok vissza nem állnak. Fontos, hogy megtervezze az alkalmazást az offline bérlői adatbázisok kezeléséhez.
 
-* Után a katalógus-adatbázis helyreállítása megtörtént, de mielőtt online állapotba a bérlők számára, frissítse a Wingtip Tickets események központ a böngészőben.
+* A katalógus-adatbázis helyreállítását, de a bérlők online állapotba való visszaállítását követően frissítse a Wingtip tickets Events hubot a böngészőben.
 
-  * A láblécben, figyelje meg, hogy rendelkezik-e már a katalógus kiszolgálónév - helyreállítási utótaggal, és a helyreállítási régióban található.
+  * A láblécben figyelje meg, hogy a katalógus-kiszolgáló neve most már rendelkezik egy helyreállítási utótaggal, és a helyreállítási régióban található.
 
-  * Figyelje meg, hogy a bérlők számára, amely még nem állítja vissza offline állapotban van megjelölve, és amelyek nem választható.   
+  * Figyelje meg, hogy a még nem visszaállított bérlők kapcsolat nélküli állapotban vannak megjelölve, és nem választhatók ki.   
  
-    ![A helyreállítási folyamat](media/saas-dbpertenant-dr-geo-restore/events-hub-tenants-offline-in-recovery-region.png)    
+    ![Helyreállítási folyamat](media/saas-dbpertenant-dr-geo-restore/events-hub-tenants-offline-in-recovery-region.png)    
 
-  * Ha megnyit egy bérlő események lapot közvetlenül a bérlő kapcsolat nélküli módban, az oldal egy bérlő offline értesítés jeleníti meg. Ha például a Contoso Concert Hall offline állapotban, ha megpróbálja megnyitni http://events.wingtip-dpt.&lt; felhasználó&gt;.trafficmanager.net/contosoconcerthall.
+  * Ha közvetlenül a bérlő offline állapotban nyitja meg a bérlői események lapot, a lap egy bérlő offline értesítését jeleníti meg. Ha például a contoso Concert Hall offline állapotban van, próbálja meg http://events.wingtip-dpt.&lt megnyitni a&gt; következőt:. user. trafficmanager.net/contosoconcerthall.
 
-    ![A helyreállítási folyamat](media/saas-dbpertenant-dr-geo-restore/dr-in-progress-offline-contosoconcerthall.png)
+    ![Helyreállítási folyamat](media/saas-dbpertenant-dr-geo-restore/dr-in-progress-offline-contosoconcerthall.png)
 
-## <a name="provision-a-new-tenant-in-the-recovery-region"></a>A helyreállítási régióban új bérlő kiépítése
-Bérlői adatbázisok visszaállítását végzi, előtt is telepíthet az új bérlők számára a helyreállítási régióban. A helyreállítási régióban üzembe helyezett új bérlői adatbázisokat vannak fogalommeghatározás a helyreállított adatbázisokkal később.   
+## <a name="provision-a-new-tenant-in-the-recovery-region"></a>Új bérlő kiépítése a helyreállítási régióban
+Még a bérlői adatbázisok visszaállítása előtt is kiépítheti az új bérlőket a helyreállítási régióban. A helyreállítási régióban kiépített új bérlői adatbázisok haza a helyreállított adatbázisokkal.   
 
-1. A PowerShell ISE-ben a ...\Learning Modules\Business üzletmenet-folytonossági és vészhelyreállítási Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 parancsfájlt, állítsa be a következő tulajdonság:
+1. A PowerShell ISE-ben, a. ..\Learning Modules\Business folytonossága és a katasztrófa-Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 parancsfájlban állítsa be a következő tulajdonságot:
 
-    $DemoScenario = 3: A helyreállítási régióban új bérlő kiépítése.
+    $DemoScenario = 3: Hozzon létre egy új bérlőt a helyreállítási régióban.
 
-2. A szkript futtatásához válassza ki az F5.
+2. A parancsfájl futtatásához válassza az F5 lehetőséget.
 
-3. Az Hawthorn Hall események lapot a böngészőben megnyílik, amikor a kiépítés befejeztét. 
+3. A galagonya Hall eseményei oldal megnyílik a böngészőben a kiépítés befejezésekor. 
 
-    Figyelje meg, hogy a helyreállítási régióban található-e a Hawthorn adatbázisra.
+    Figyelje meg, hogy a Hawthorn Hall adatbázisa a helyreállítási régióban található.
 
-    ![A helyreállítási régióban üzembe helyezett hawthorn Hall](media/saas-dbpertenant-dr-geo-restore/hawthorn-hall-provisioned-in-recovery-region.png)
+    ![A helyreállítási régióban kiépített Hawthorn Hall](media/saas-dbpertenant-dr-geo-restore/hawthorn-hall-provisioned-in-recovery-region.png)
 
-4. A böngészőben frissítse a Wingtip Tickets események kezdőoldala megtekintéséhez Hawthorn Hall tartalmazza. 
+4. A böngészőben frissítse a Wingtip tickets Events hub oldalát, és tekintse meg a galagonya csarnokot is. 
 
-    Hawthorn Hall visszaállítása a többi bérlő várakozás nélkül üzembe helyezése, más bérlők továbbra is lehet offline állapotban van.
+    Ha a galagonya-csarnokot a többi bérlő visszaállítására való várakozás nélkül kiépített, akkor a többi bérlő továbbra is offline állapotba kerülhet.
 
-## <a name="review-the-recovered-state-of-the-application"></a>Tekintse át az alkalmazást a helyreállított állapotát
+## <a name="review-the-recovered-state-of-the-application"></a>Az alkalmazás helyreállított állapotának áttekintése
 
-A helyreállítási folyamat befejeződése után, az alkalmazás és az összes bérlőre is teljesen működőképes a helyreállítási régióban. 
+A helyreállítási folyamat befejeződése után az alkalmazás és az összes bérlő teljes mértékben működőképes a helyreállítási régióban. 
 
-1. Miután a PowerShell-konzolablakot megjelenítését jelzi, hogy a rendszer visszaállítja az összes bérlőre vonatkozóan, frissítse az eseményközpontot. 
+1. Miután a PowerShell-konzol ablakában megjelenik az összes bérlő, frissítse az Events hubot. 
 
-    A bérlő összes online-hoz, beleértve az új bérlő Hawthorn Hall jelennek meg.
+    A bérlők mind online állapotban jelennek meg, beleértve az új bérlőt, a Hawthorn hallt is.
 
-    ![az eseményközpont helyreállított és az új bérlők](media/saas-dbpertenant-dr-geo-restore/events-hub-with-hawthorn-hall.png)
+    ![Helyreállított és új bérlők az Events hub-ban](media/saas-dbpertenant-dr-geo-restore/events-hub-with-hawthorn-hall.png)
 
-2. Kattintson a Contoso Concert Hall, és az események lap megnyitásához. 
+2. Kattintson a contoso Concert Hall elemre, és nyissa meg az események lapját. 
 
-    A láblécben figyelje meg, hogy az adatbázist a helyreállítási kiszolgálón a helyreállítási régióban található.
+    A láblécben figyelje meg, hogy az adatbázis a helyreállítási régióban található helyreállítási kiszolgálón található.
 
-    ![A helyreállítási régióban contoso](media/saas-dbpertenant-dr-geo-restore/contoso-recovery-location.png)
+    ![Contoso a helyreállítási régióban](media/saas-dbpertenant-dr-geo-restore/contoso-recovery-location.png)
 
-3. Az a [az Azure portal](https://portal.azure.com), az erőforráscsoportok listájának megnyitásához.  
+3. A [Azure Portal](https://portal.azure.com)nyissa meg az erőforráscsoportok listáját.  
 
-    Figyelje meg, hogy az erőforráscsoport üzembe helyezett, valamint a helyreállítási erőforráscsoport, a - helyreállítási utótaggal. A helyreállítási erőforráscsoportba tartozó összes a helyreállítási folyamat során létrehozott erőforrásokat, valamint a szolgáltatáskimaradás közben létrehozott új erőforrásokat tartalmaz. 
+    Figyelje meg a telepített erőforráscsoportot, valamint a helyreállítási erőforráscsoportot a-Recovery utótaggal. A helyreállítási erőforráscsoport tartalmazza a helyreállítási folyamat során létrehozott összes erőforrást, valamint a leállás során létrehozott új erőforrásokat is. 
 
-4. Nyissa meg a helyreállítási erőforráscsoportot, és figyelje meg a következő elemek:
+4. Nyissa meg a helyreállítási erőforráscsoportot, és figyelje meg a következő elemeket:
 
-   * A katalógus és tenants1-kiszolgálókat, a helyreállítási verziói az - helyreállítási utótaggal. A visszaállított katalógus és a bérlői adatbázisok ezeken a kiszolgálókon az összes az eredeti régióban használt nevekkel rendelkeznek.
+   * A katalógus és a tenants1-kiszolgálók helyreállítási verziói a-Recovery utótaggal. Ezen kiszolgálókon a visszaállított katalógus és bérlői adatbázisok mindegyike az eredeti régióban használt neveket tartalmazza.
 
-   * A tenants2-dpt -&lt;felhasználói&gt;– SQL server helyreállítása. Új bérlők kiépítése során a szolgáltatáskimaradás elhárítása után ez a kiszolgáló használható.
+   * A tenants2-DPT-&lt;User&gt;-Recovery SQL Server. Ez a kiszolgáló új bérlők kiépítési felállítására szolgál a leállás során.
 
-   * Az app service nevű események – a wingtip-dpt -&lt;recoveryregion&gt;-&lt;felhasználói&gt;, azaz a helyreállítási példány az események alkalmazás.
+   * Az App Service nevű Events-Wingtip-DPT&lt;-&gt;recoveryregion&gt;-&lt;felhasználó, amely az Events alkalmazás helyreállítási példánya.
 
-     ![A helyreállítási régióban contoso-erőforrások](media/saas-dbpertenant-dr-geo-restore/resources-in-recovery-region.png) 
+     ![Contoso-erőforrások a helyreállítási régióban](media/saas-dbpertenant-dr-geo-restore/resources-in-recovery-region.png) 
     
-5. Nyissa meg a tenants2-dpt -&lt;felhasználói&gt;– SQL server helyreállítása. Figyelje meg, hogy az adatbázis hawthornhall és a rugalmas készlet Pool1 tartalmazza. A hawthornhall adatbázis egy rugalmas adatbázist a Pool1 rugalmas készletben van konfigurálva.
+5. Nyissa meg a tenants2-&lt;DPT&gt;-User-Recovery SQL Servert. Figyelje meg, hogy az adatbázis hawthornhall és a rugalmas készlet Pool1 tartalmazza. A hawthornhall-adatbázis rugalmas adatbázisként van konfigurálva a Pool1 rugalmas készletben.
 
-## <a name="change-the-tenant-data"></a>A bérlő adatainak módosítása 
-Ebben a feladatban frissítenie a visszaállított bérlői adatbázisok közül. A hazatelepítési folyamat másolatokat úgy módosítottuk, hogy az eredeti régió-adatbázisok visszaállítása. 
+## <a name="change-the-tenant-data"></a>Bérlői adatértékek módosítása 
+Ebben a feladatban frissíti a visszaállított bérlői adatbázisok egyikét. A rehazatérési folyamat átmásolja a visszaállított adatbázisokat, amelyek az eredeti régióra módosultak. 
 
-1. A böngészőben események listájában keresése a Contoso Concert Hall, görgessen végig az eseményeket, és figyelje meg, hogy az utolsó esemény, komolyan Strauss.
+1. A böngészőben keresse meg a contoso Concert Hall eseményeinek listáját, Görgesse végig az eseményeket, és figyelje meg az utolsó eseményt, amely súlyosan Strauss.
 
-2. A PowerShell ISE-ben a ...\Learning Modules\Business üzletmenet-folytonossági és vészhelyreállítási Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 parancsfájlt, állítsa be a következő értéket:
+2. A PowerShell ISE-ben a. ..\Learning Modules\Business folytonossága és a katasztrófa-Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 parancsfájlban állítsa be a következő értéket:
 
-    $DemoScenario = 4: Töröljön egy eseményt egy bérlő, a helyreállítási régióban.
+    $DemoScenario = 4: Egy esemény törlése a helyreállítási régióban lévő bérlőből.
 
-3. Hajtsa végre a parancsfájlt, válassza ki az F5.
+3. A szkript végrehajtásához válassza az F5 lehetőséget.
 
-4. Frissítse a Contoso Concert Hall események lapot (http://events.wingtip-dpt.&lt; felhasználó&gt;.trafficmanager.net/contosoconcerthall), és figyelje meg, hogy az esemény komolyan Strauss hiányzik.
+4. Frissítse a contoso Concert Events- http://events.wingtip-dpt.&lt események oldalát (; User&gt;. trafficmanager.net/contosoconcerthall), és figyelje meg, hogy az esemény súlyos Strauss-hiánya hiányzik.
 
-Ezen a ponton az oktatóanyagban helyreállította az alkalmazásról, így most már fut a helyreállítási régióban. Kiépített egy új bérlőt a helyreállítási régióban, és a módosított adatokat a visszaállított bérlők valamelyikének.  
+Az oktatóanyag ezen pontján visszaállította az alkalmazást, amely már fut a helyreállítási régióban. Kiépített egy új bérlőt a helyreállítási régióban, és módosította az egyik visszaállított bérlőt.  
 
 > [!NOTE]
-> Egyéb oktatóanyagok a minta nem tervezték, hogy helyreállítási állapotban az alkalmazás futtatásához. Ha azt szeretné, hogy böngészhet az oktatóanyagok között, mindenképpen először települni a kérelmet.
+> A mintában szereplő egyéb oktatóanyagok nem úgy lettek kialakítva, hogy a helyreállítási állapotban fussanak az alkalmazással. Ha más oktatóanyagokat szeretne felfedezni, ügyeljen arra, hogy először szabadon hazautalhatnak az alkalmazást.
 
-## <a name="repatriation-process-overview"></a>Hazatelepítési folyamat áttekintése
+## <a name="repatriation-process-overview"></a>A rehazatérési folyamat áttekintése
 
-A hazatelepítési folyamat visszaállítja az alkalmazás és a hozzá tartozó adatbázisok annak eredeti régióba után egy újraindulása után.
+A rehazatérési folyamat a leállás után visszaállít egy alkalmazást és annak adatbázisait az eredeti régiójába.
 
-![A GEO-visszaállítás hazatelepítési](media/saas-dbpertenant-dr-geo-restore/geo-restore-repatriation.png) 
+![Geo-visszaállítás visszautasítása](media/saas-dbpertenant-dr-geo-restore/geo-restore-repatriation.png) 
 
 A folyamat:
 
-1. Minden folyamatban lévő visszaállítás tevékenység leáll, és megszakítja a szálankénti függőben lévő vagy szükségszerű adatbázis visszaállítási kérések eredményéről.
+1. Leállítja az összes folyamatban lévő visszaállítási tevékenységet, és megszakítja az adatbázis-visszaállítási kérelmeket.
 
-2. Újraaktiválja az az eredeti régió bérlői adatbázisban, amely a szolgáltatáskiesés megszüntetése után óta nem módosult. Ezek az adatbázisok a következők: még nincs helyreállítva, valamint azok helyre, de ezt követően nem változott. Az újraaktivált adatbázisok megegyeznek a legutóbbi által elért bérlőik számára.
+2. Újraaktiválja az eredeti régióbeli bérlői adatbázisokat, amelyek a leállás óta nem változtak. Ezek az adatbázisok a még nem visszaállított és a helyreállított, de utána nem módosított adatbázisokat tartalmazzák. Az újraaktivált adatbázisok pontosan a bérlők által utoljára elértek.
 
-3. Egy tükrözött lemezképét az eredeti régióban az új bérlő kiszolgáló és a rugalmas készlet kiépítése. Ez a művelet befejezése után az új bérlő alias frissül, hogy a kiszolgáló mutasson. Az alias frissítése hatására az új bérlő regisztrációs történjen a helyreállítási régióban helyett az eredeti régióban.
+3. Kiépíti az új bérlő kiszolgálójának és rugalmas készletének tükrözési képét az eredeti régióban. A művelet befejezése után az új bérlői alias frissül, hogy erre a kiszolgálóra mutasson. Az alias frissítése azt eredményezi, hogy az új bérlő beléptetése az eredeti régióban történik a helyreállítási régió helyett.
 
-3. Georeplikáció használatával helyezze át a katalógust az eredeti régióba helyreállítási régióban.
+3. A Geo-Replication használatával helyezi át a katalógust az eredeti régióba a helyreállítási régióból.
 
-4. Frissítések készletkonfigurációt az eredeti régióban, hogy a helyreállítási régióban leállás során végrehajtott változtatásokat konzisztens legyen.
+4. Frissíti a készlet konfigurációját az eredeti régióban, így összhangban van a helyreállítási régióban a leállás során végrehajtott változásokkal.
 
-5. A szükséges kiszolgálókat és az adatbáziskészletek üzemeltetésére leállás során létrehozott új adatbázisokat hoz létre.
+5. Létrehozza a szükséges kiszolgálókat és készleteket a leállás során létrehozott új adatbázisok üzemeltetéséhez.
 
-6. Georeplikációs adatbázisok frissítve lett-e visszaállítás utáni települni a visszaállított bérlő és a szolgáltatáskimaradás elhárítása után kiépített összes új bérlői adatbázisokat használ. 
+6. A Geo-replikációval olyan visszaállított bérlői adatbázisokat szabadon hazautalhatnak, amelyek frissítve lettek a visszaállítás után, valamint az összes új bérlői adatbázis, amelyet a leállás során kiosztottak. 
 
-7. A helyreállítási régióban a visszaállítási folyamat során létrehozott erőforrások törlése.
+7. A helyreállítási régióban létrehozott erőforrások tisztítása a visszaállítási folyamat során.
 
-A bérlői adatbázisokat kell fogalommeghatározás igénylő számának korlátozásához, 1 – 3. lépéseket az azonnal kell elvégezni.  
+A haza bérlői adatbázisok számának korlátozásához az 1 – 3. lépést azonnal végrehajtjuk.  
 
-4. lépés csak akkor történik meg, ha a katalógust a helyreállítási régióban leállás során nem módosított. A katalógus frissül, ha új bérlők számára, vagy ha bármilyen adatbázis vagy készlet konfigurációjának módosításakor a helyreállítási régióban.
+A 4. lépés csak akkor hajtható végre, ha a helyreállítási régióban lévő katalógus módosult a leállás során. A katalógus akkor frissül, ha új bérlők jönnek létre, vagy ha a helyreállítási régióban bármely adatbázis vagy készlet konfigurációja módosul.
 
-Fontos, hogy a 7. lépés minimális hatására a bérlők és nem történik adatvesztés. E cél eléréséhez, a folyamat a georeplikációt használ.
+Fontos, hogy a 7. lépés a bérlők számára minimális fennakadást okoz, és ne vesszenek el az adatvesztés. A cél elérése érdekében a folyamat geo-replikálást használ.
 
-Minden adatbázisa georeplikált, mielőtt a rendszer törli a megfelelő adatbázist az eredeti régióban. A helyreállítási régióban adatbázisa majd georeplikált, az eredeti régióban másodlagos replika létrehozásához. Replikáció befejezése után a bérlő offline állapotban van, a katalógus, amely minden, az adatbázishoz létesített kapcsolatokhoz a helyreállítási régióban van megjelölve. Az adatbázis majd feladatátvétele, függőben lévő tranzakciók a másodlagos feldolgozandó adatok így nem okoz elvész. 
+Az egyes adatbázisok földrajzilag replikálása előtt a rendszer törli az eredeti régióban található megfelelő adatbázist. A helyreállítási régióban található adatbázist ezután földrajzilag replikálja a rendszer, és másodlagos replikát hoz létre az eredeti régióban. A replikáció befejezése után a bérlő offline állapotban van megjelölve a katalógusban, amely megszakítja a kapcsolatot az adatbázissal a helyreállítási régióban. Ezt követően a rendszer átadja az adatbázist, és feldolgozza a függőben lévő tranzakciókat a másodlagos módon, így az adatvesztés nem történik meg. 
 
-Feladatátvétel esetén az adatbázis-szerepkörök fordított irányú. A másodlagos az eredeti régióban lesz az elsődleges írási-olvasási adatbázis, az adatbázist a helyreállítási régióban pedig egy csak olvasható másodlagos. Az adatbázis az eredeti régióban hivatkozni a bérlő-bejegyzést a katalógus frissül, és a bérlő online van megjelölve. Ezen a ponton hazatelepítési az adatbázis számára befejeződött. 
+Feladatátvételkor az adatbázis szerepkörei fordítottak. A másodlagos az eredeti régióban az elsődleges írható-olvasható adatbázis lesz, a helyreállítási régióban lévő adatbázis pedig csak olvasható másodlagos lesz. A katalógusban lévő bérlői bejegyzés frissül, hogy az eredeti régióban lévő adatbázisra hivatkozzon, és a bérlő online állapotban van megjelölve. Ezen a ponton befejeződött az adatbázis visszajuttatása. 
 
-Alkalmazások kell írni az újrapróbálkozási logika, győződjön meg arról, hogy azok újracsatlakozás automatikusan amikor a kapcsolat nem működik. Az újracsatlakozás közvetítse a katalógust használnak, csatlakoznak a repatriated adatbázis az eredeti régióban. Bár a rövid bontása gyakran nem észrevette, választhatja a munkaidőn kívüli adatbázisok települni.
+Az alkalmazásokat újra kell írni, hogy a kapcsolatok megszakadásakor az Újracsatlakozás automatikusan megtörténjen. Amikor a katalógus használatával közvetítik az újracsatlakozást, az eredeti régióban csatlakoznak a haza-adatbázishoz. Habár a rövid leválasztást gyakran nem észlelték, dönthet úgy, hogy a munkaidőn kívülről is szabadon hazautalhatnak az adatbázisokat.
 
-Miután egy adatbázis fogalommeghatározás van, a másodlagos adatbázist a helyreállítási régióban lehet törölni. Az adatbázis az eredeti régióban majd támaszkodik újra geo-visszaállítás a DR-védelem.
+Az adatbázis haza követően a helyreállítási régióban található másodlagos adatbázis törölhető. Az eredeti régióban található adatbázis újra támaszkodik a DR-védelem geo-visszaállítására.
 
-8. lépésben a helyreállítási régióban, így a helyreállítási és -készletek, erőforrások törlődnek.
+A 8. lépésben a helyreállítási régióban lévő erőforrásokat, köztük a helyreállítási kiszolgálókat és a készleteket is törli a rendszer.
 
-## <a name="run-the-repatriation-script"></a>A hazatelepítési parancsfájl futtatása
-Tegyük fel, a szolgáltatáskimaradás elhárítása után fog állni, és a hazatelepítési parancsfájl futtatásához.
+## <a name="run-the-repatriation-script"></a>A kivezetés parancsfájl futtatása
+Képzelje el, hogy a leállás megoldódott, és futtatja a rehazatérési parancsfájlt.
 
-Ha követte az oktatóanyag, a a parancsfájl azonnali újraaktiválja a Fabrikam Jazz Club és az eredeti régióban somfát Dojo annak mivel korábban már változatlan. Ezután repatriates Hawthorn Hall, és a Contoso Concert Hall az új bérlőhöz, mert módosítva lett. A parancsfájl is repatriates a katalógus, amely Hawthorn Hall lett üzembe helyezve frissítve lett.
+Ha követte az oktatóanyagot, a szkript azonnal újraaktiválja a fabrikam jazz Clubot és a Som Dojot az eredeti régióban, mert változatlanok maradnak. Ezután repatriates az új bérlőt, a Hawthorn hallt és a contoso Concert hallt, mert módosították. A szkript a katalógust is repatriates, amely a Hawthorn Hall üzembe helyezésekor frissült.
   
-1. A PowerShell ISE-ben, a ...\Learning Modules\Business üzletmenet-folytonossági és vészhelyreállítási Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 parancsfájl, a győződjön meg arról, hogy a katalógus szinkronizálási folyamat továbbra is fut a PowerShell-példányban. Szükség esetén indítsa újra beállításával:
+1. A PowerShell ISE-ben, a. ..\Learning Modules\Business folytonossága és a katasztrófa-Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 parancsfájlban ellenőrizze, hogy a katalógus szinkronizálási folyamata továbbra is fut-e a PowerShell-példányában. Szükség esetén indítsa újra a beállítást:
 
-    $DemoScenario = 1: Indítsa el a bérlői kiszolgálóhoz, készletek és adatbázis-konfigurációs adatainak szinkronizálása a katalógusba.
+    $DemoScenario = 1: Megkezdheti a bérlői kiszolgáló, a készlet és az adatbázis-konfigurációs adatok szinkronizálását a katalógusba.
 
-    A szkript futtatásához válassza ki az F5.
+    A parancsfájl futtatásához válassza az F5 lehetőséget.
 
-2.  Ezután a hazatelepítési megkezdéséhez beállítása:
+2.  Ezután állítsa be a következőt:
 
-    $DemoScenario = 5: Az alkalmazás települni az eredeti régióba.
+    $DemoScenario = 5: Szabadon hazautalhatnak az alkalmazást az eredeti régiójába.
 
-    A helyreállítási szkript futtatásához egy új PowerShell-ablakban válassza ki az F5. Hazatelepítési több percet vesz igénybe, és a PowerShell-ablakban figyelhető.
+    Ha a helyreállítási parancsfájlt egy új PowerShell-ablakban szeretné futtatni, válassza az F5 lehetőséget. A rehazatérés több percet is igénybe vehet, és a PowerShell-ablakban figyelhető.
 
-3. A parancsfájl futása közben az események eseményközpontba oldal frissítése (http://events.wingtip-dpt.&lt; felhasználó&gt;. trafficmanager.net).
+3. A parancsfájl futása közben frissítse az Events hub oldalt (http://events.wingtip-dpt.&lt ; User&gt;. trafficmanager.net).
 
-    Figyelje meg, hogy a bérlők számára online állapotúak és elérhetők a folyamat során.
+    Figyelje meg, hogy az összes bérlő online állapotban van, és elérhető a folyamat során.
 
-4. Válassza ki a Fabrikam Jazz Club való megnyitásához. Ha nem módosítja ezt a bérlőt, figyelje meg, hogy a lábléc az, hogy a kiszolgáló már vissza lett vonva, az eredeti kiszolgálón.
+4. Válassza ki a fabrikam jazz Clubot a megnyitásához. Ha nem módosította a bérlőt, figyelje meg a láblécet, hogy a kiszolgáló már visszaállt az eredeti kiszolgálóra.
 
-5. Nyissa meg, vagy frissítse a Contoso Concert Hall események lapot. Figyelje meg, az élőláb, hogy kezdetben, az adatbázis továbbra is – a helyreállítási kiszolgálón. 
+5. Nyissa meg vagy frissítse a contoso Concert Events oldalát. Figyelje meg, hogy a láblécből kezdetben az adatbázis még mindig a-Recovery kiszolgálón van. 
 
-6. Frissítse a Contoso Concert Hall események lapot a hazatelepítési folyamat befejeződése után, és figyelje meg, hogy az adatbázis jelenleg az eredeti régióban.
+6. Frissítse a contoso Concert Events-események oldalát a rehazatérési folyamat befejeződése után, és figyelje meg, hogy az adatbázis most már az eredeti régióban van.
 
-7. Frissítse újra az eseményközpontot, és nyissa meg a Hawthorn Hall. Figyelje meg, hogy az adatbázis az eredeti régióban is található. 
+7. Frissítse újra az események hubot, és nyissa meg a Hawthorn hallt. Figyelje meg, hogy az adatbázisa az eredeti régióban is található. 
 
-## <a name="clean-up-recovery-region-resources-after-repatriation"></a>Helyreállítási régió erőforrások törlése után hazatelepítési
-Hazatelepítési befejezése után, biztonságos-e törölni az erőforrásokat a helyreállítási régióban. 
+## <a name="clean-up-recovery-region-resources-after-repatriation"></a>Helyreállítási régió erőforrásainak törlése a rehazatérés után
+A rehazatérés befejezése után biztonságos törölni a helyreállítási régióban lévő erőforrásokat. 
 
 > [!IMPORTANT]
-> Törli ezeket az erőforrásokat, azonnal őket az összes számlázási művelet leállításához.
+> Ezeket az erőforrásokat azonnal törölje az összes számlázási művelet leállításához.
 
-A visszaállítási folyamat összes helyreállítási erőforrás létrehoz egy helyreállítási erőforráscsoportban. A kitakarítási folyamatot magát az erőforráscsoportot, és eltávolít minden hivatkozás, amelyben az erőforrások a katalógusból. 
+A visszaállítási folyamat létrehozza a helyreállítási erőforráscsoport összes helyreállítási erőforrását. A karbantartási folyamat törli ezt az erőforráscsoportot, és eltávolítja az erőforrásokra mutató összes hivatkozást a katalógusból. 
 
-1. A PowerShell ISE-ben a szkriptben ...\Learning Modules\Business üzletmenet-folytonossági és vészhelyreállítási Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1, állítsa be:
+1. A PowerShell ISE-ben, a. ..\Learning Modules\Business folytonossági és katasztrófa-Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 parancsfájljában állítsa be a következőket:
     
-    $DemoScenario = 6: Törli az elavult erőforrást helyreállítási régióban.
+    $DemoScenario = 6: Törölje az elavult erőforrásokat a helyreállítási régióból.
 
-2. A szkript futtatásához válassza ki az F5.
+2. A parancsfájl futtatásához válassza az F5 lehetőséget.
 
-A szkriptjeinek törlésével, miután a az alkalmazás vissza ahol használatába. Ezen a ponton futtassa a parancsprogramot, vagy próbálja ki más oktatóanyagokat.
+A szkriptek tisztítása után az alkalmazás visszatér, ahol elindult. Ezen a ponton újra futtathatja a szkriptet, vagy más oktatóanyagokat is kipróbálhat.
 
-## <a name="designing-the-application-to-ensure-that-the-app-and-the-database-are-co-located"></a>Az alkalmazás annak érdekében, hogy az alkalmazás és az adatbázis közös elhelyezésű tervezése 
-Az alkalmazás mindig kapcsolódik egy példányával, és a bérlői adatbázis ugyanabban a régióban a célja. Ez a kialakítás csökkenti a késést az alkalmazás és az adatbázis között. Az optimalizálás feltételezi, hogy az alkalmazás-adatbázis kapcsolati chattier, mint a felhasználó alkalmazás interakció.  
+## <a name="designing-the-application-to-ensure-that-the-app-and-the-database-are-co-located"></a>Az alkalmazás megtervezése annak biztosítására, hogy az alkalmazás és az adatbázis közös elhelyezésű legyen 
+Az alkalmazás úgy van kialakítva, hogy mindig a bérlő adatbázisával azonos régióban lévő példányról kapcsolódjon. Ez a kialakítás csökkenti az alkalmazás és az adatbázis közötti késleltetést. Ez az optimalizálás feltételezi, hogy az alkalmazás és az adatbázis közötti interakció chattier, mint a felhasználó és az alkalmazás közötti interakció.  
 
-Bérlői adatbázisok hazatelepítési során egy kis ideig recovery és az eredeti régiók között lehetnek elosztva. Minden adatbázis esetében az alkalmazás megkeresi a régiót, amelyben az adatbázis található egy DNS-címkeresés a bérlő kiszolgáló nevére végrehajtásával. SQL Database-ben a kiszolgálónév szerepel aliasként. Az alias-kiszolgáló neve a régió nevét tartalmazza. Ha az alkalmazás nem ugyanabban a régióban, mint az adatbázis, átirányítja a példány és az adatbázis-kiszolgáló ugyanabban a régióban. Átirányítás, a példány ugyanabban a régióban, mint az adatbázis minimalizálja a késleltetést, az alkalmazás és az adatbázis között.  
+Előfordulhat, hogy a bérlői adatbázisok a helyreállítás és az eredeti régiók között is elterjednek. Az alkalmazás minden adatbázisnál megkeresi a régiót, amelyben az adatbázis található, a DNS-címkeresés a bérlői kiszolgáló nevében. SQL Database a kiszolgálónév egy alias. Az alias-kiszolgáló neve tartalmazza a régió nevét. Ha az alkalmazás nem ugyanabban a régióban található, mint az adatbázis, a rendszer az adatbázis-kiszolgálóval megegyező régióban lévő példányra irányítja át. Az alkalmazás és az adatbázis közötti késleltetést az adott régióban lévő példányra irányítja át.  
 
 ## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > [!div class="checklist"]
 > 
-> * A bérlői katalógus használata, amely a rendszeres időközönként frissülnek konfigurációs adatokat, amely lehetővé teszi egy tükrözött lemezképét helyreállítási környezet hozható létre egy másik régióban tárolja.
-> * A geo-visszaállítás használatával állíthatja helyre az Azure SQL Database-adatbázisok a helyreállítási régióba.
-> * A bérlői katalógus, hogy a visszaállított bérlői adatbázis helyek frissítése. 
-> * DNS-alias használatával engedélyezheti egy alkalmazás számára a bérlői katalógus egész újrakonfigurálása nélkül csatlakozhat.
-> * Georeplikáció használatával helyreállított adatbázis az eredeti régióba települni a szolgáltatáskiesés megszüntetése után.
+> * A bérlői katalógus segítségével rendszeres időközönként frissítheti a konfigurációs adatokat, amelyek lehetővé teszik a tükrözési rendszerkép helyreállítási környezetének létrehozását egy másik régióban.
+> * Állítsa helyre az Azure SQL-adatbázisokat a helyreállítási régióban a Geo-visszaállítás használatával.
+> * Frissítse a bérlői katalógust, hogy tükrözze a visszaállított bérlői adatbázis helyét. 
+> * DNS-alias használatával engedélyezheti, hogy az alkalmazások újrakonfigurálás nélkül csatlakozzanak a bérlői katalógushoz.
+> * A Geo-Replication használatával szabadon hazautalhatnak a helyreállított adatbázisokat az eredeti régióba egy kimaradás feloldása után.
 
-Próbálja ki a [egy több-bérlős SaaS-alkalmazás, adatbázis-replikációval geo-vészhelyreállítás](saas-dbpertenant-dr-geo-replication.md) oktatóanyagból megtudhatja, hogyan georeplikáció használatával jelentősen csökkentheti a nagyméretű több-bérlős alkalmazások helyreállításához szükséges időt.
+Próbálja ki [egy több-bérlős SaaS-alkalmazás vész-helyreállítását az adatbázis geo-replikálási](saas-dbpertenant-dr-geo-replication.md) oktatóanyagával, amelyből megtudhatja, hogyan használhatja a Geo-replikálást, hogy jelentősen csökkentse a nagyméretű több-bérlős alkalmazások helyreállításához szükséges időt.
 
 ## <a name="additional-resources"></a>További források
 
-[A Wingtip SaaS-alkalmazás épülő további oktatóanyagok](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
+[További oktatóanyagok a Wingtip SaaS-alkalmazásra építve](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)

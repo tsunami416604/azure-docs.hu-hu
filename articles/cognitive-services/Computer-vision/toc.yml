@@ -7,6 +7,16 @@
       href: Home.md
 - name: Gyors útmutatók
   items:
+    - name: Az ügyfél-SDK használata
+      items:
+        - name: .NET SDK
+          href: quickstarts-sdk/csharp-sdk.md
+        - name: Python SDK
+          href: quickstarts-sdk/python-sdk.md
+        - name: Java SDK
+          href: quickstarts-sdk/java-sdk.md
+        - name: Node.js SDK
+          href: quickstarts-sdk/node-sdk.md
     - name: A REST API használata
       items:
         - name: Távoli rendszerkép elemzése
@@ -21,12 +31,8 @@
               href: QuickStarts/javascript-analyze.md
             - name: Node.js
               href: QuickStarts/node-analyze.md
-            - name: PHP
-              href: QuickStarts/php-analyze.md
             - name: Python
               href: QuickStarts/python-analyze.md
-            - name: Ruby
-              href: QuickStarts/ruby-analyze.md
         - name: Helyi rendszerkép elemzése
           items:
             - name: 'C#'
@@ -47,13 +53,19 @@
               href: QuickStarts/javascript-thumb.md
             - name: Node.js
               href: QuickStarts/node-thumb.md
-            - name: PHP
-              href: QuickStarts/php-thumb.md
             - name: Python
               href: QuickStarts/python-thumb.md
-            - name: Ruby
-              href: QuickStarts/ruby-thumb.md
-        - name: Nyomtatott szöveg kinyerése
+        - name: Szöveg kinyerése (Read API)
+          items:
+            - name: 'C#'
+              href: QuickStarts/CSharp-hand-text.md
+            - name: Java
+              href: QuickStarts/java-hand-text.md
+            - name: JavaScript
+              href: QuickStarts/javascript-hand-text.md
+            - name: Python
+              href: QuickStarts/python-hand-text.md
+        - name: Nyomtatott szöveg kinyerése (OCR)
           items:
             - name: 'C#'
               href: QuickStarts/CSharp-print-text.md
@@ -67,86 +79,60 @@
               href: QuickStarts/javascript-print-text.md
             - name: Node.js
               href: QuickStarts/node-print-text.md
-            - name: PHP
-              href: QuickStarts/php-print-text.md
             - name: Python
               href: QuickStarts/python-print-text.md
-            - name: Ruby
-              href: QuickStarts/ruby-print-text.md
-        - name: Kézzel írt szöveg kinyerése
-          items:
-            - name: 'C#'
-              href: QuickStarts/CSharp-hand-text.md
-            - name: Java
-              href: QuickStarts/java-hand-text.md
-            - name: JavaScript
-              href: QuickStarts/javascript-hand-text.md
-            - name: Python
-              href: QuickStarts/python-hand-text.md
         - name: Tartománymodell használata
           items:
-            - name: PHP
-              href: QuickStarts/php-domain.md
             - name: Python
               href: QuickStarts/python-domain.md
-    - name: A .NET SDK használata
-      items:
-        - name: Rendszerkép elemzése
-          href: quickstarts-sdk/csharp-analyze-sdk.md
-        - name: Miniatűr létrehozása
-          href: quickstarts-sdk/csharp-thumb-sdk.md
-        - name: Szöveg kinyerése
-          href: quickstarts-sdk/csharp-hand-text-sdk.md
-    - name: A Python SDK használata
-      href: quickstarts-sdk/python-sdk.md
 - name: Oktatóanyagok
   items:
     - name: Képek metaadatainak előállítása
       href: Tutorials/storage-lab-tutorial.md
 - name: Alapelvek
   items:
-    - name: Képek címkézése
+    - name: Tartalomcímkék
       href: concept-tagging-images.md
-    - name: Objektumok észlelése
+    - name: Objektumészlelés
       href: concept-object-detection.md
-    - name: Márkák észlelése
+    - name: Márkaészlelés
       href: concept-brand-detection.md
     - name: Képek kategorizálása
       href: concept-categorizing-images.md
-    - name: Képek leírása
+    - name: Képleírások
       href: concept-describing-images.md
     - name: Arcfelismerés
       href: concept-detecting-faces.md
-    - name: Képek típusának észlelése
+    - name: Képtípus észlelése
       href: concept-detecting-image-types.md
-    - name: Tartományspecifikus tartalom észlelése
+    - name: Tartományspecifikus tartalom
       href: concept-detecting-domain-content.md
-    - name: Színsémák észlelése
+    - name: Színséma észlelése
       href: concept-detecting-color-schemes.md
-    - name: Miniatűrök létrehozása
+    - name: Intelligens körbevágású miniatűrök
       href: concept-generating-thumbnails.md
     - name: Nyomtatott és kézzel írt szöveg felismerése
       href: concept-recognizing-text.md
-    - name: Felnőtteknek szóló és kényes tartalom észlelése
+    - name: Felnőtteknek szóló tartalom észlelése
       href: concept-detecting-adult-content.md
 - name: Útmutatók
   items:
-    - name: A Computer Vision használata
-      items:
-        - name: Java
-          href: Tutorials/java-tutorial.md
-        - name: JavaScript
-          href: Tutorials/javascript-tutorial.md
-        - name: Python
-          href: Tutorials/PythonTutorial.md
     - name: A Computer Vision API meghívása
       href: Vision-API-How-to-Topics/HowToCallVisionAPI.md
     - name: Tárolók használata
       items:
         - name: Tárolók telepítése és futtatása
           href: computer-vision-how-to-install-containers.md
+          displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, on-premises'
         - name: Tárolók konfigurálása
           href: computer-vision-resource-container-config.md
+          displayName: 'docker, container, billing, apikey, pull, logging, on-premises'
+        - name: Használat Kubernetesszel és Helmmel
+          href: deploy-computer-vision-on-premises.md
+          displayName: 'kubectl, docker, helm, kubernetes, K8s, tiller, container, image, on-prem, on-premises'
+        - name: A Container Instances használata
+          href: deploy-computer-vision-on-container-instances.md
+          displayName: 'container instances, container, containers, images'
     - name: A Computer Vision csatlakoztatott szolgáltatás használata
       href: vs-computer-vision-connected-service.md
     - name: Videók valós idejű elemzése
@@ -171,10 +157,8 @@
           href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/computervision?view=azure-python'
         - name: Indítás
           href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/computervision'
-        - name: Android (Java)
+        - name: Java
           href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable'
-        - name: Swift
-          href: 'https://github.com/DanilaVladi/Microsoft-Cognitive-Services-Swift-SDK'
 - name: További források
   items:
     - name: Példák
@@ -199,3 +183,5 @@
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
     - name: Régiónkénti rendelkezésre állás
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+    - name: Megfelelőség
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

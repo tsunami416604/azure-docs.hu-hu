@@ -1,0 +1,91 @@
+### YamlMime:Landing
+title: Az Azure Data Lake Analytics dokumentációja
+summary: Az Azure Data Lake Analytics használatával big data-elemzési feladatokat futtathat, amelyek akár hatalmas adatkészletekre is skálázhatók.
+metadata:
+  title: Azure Data Lake Analytics
+  description: Az Azure Data Lake Analytics használatával big data-elemzési feladatokat futtathat, amelyek akár hatalmas adatkészletekre is skálázhatók.
+  services: data-lake-analytics
+  ms.service: data-lake-analytics
+  ms.subservice: subservice
+  ms.topic: landing-page
+  ms.collection: collection
+  author: hrasheed-msft
+  ms.author: hrasheed
+  ms.date: 09/13/2019
+  ms.openlocfilehash: 789144730d99a0686856cee29f77227698154cbc
+  ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 09/24/2019
+  ms.locfileid: "71220017"
+landingContent:
+- title: Tudnivalók a Data Lake Analyticsről
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az Azure Data Lake Analytics?
+      url: data-lake-analytics-overview.md
+  - linkListType: quickstart
+    links:
+    - text: U-SQL-feladatok létrehozása az Azure Portalon
+      url: data-lake-analytics-get-started-portal.md
+    - text: U-SQL-feladatok létrehozása az Azure CLI-vel
+      url: data-lake-analytics-get-started-cli.md
+    - text: U-SQL-feladatok létrehozása a Visual Studio Code-ban
+      url: data-lake-analytics-data-lake-tools-for-vscode.md
+- title: A U-SQL nyelv megismerése
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: U-SQL – első lépések
+      url: data-lake-analytics-u-sql-get-started.md
+    - text: U-SQL nyelvi referencia
+      url: https://docs.microsoft.com/u-sql/
+    - text: Ismerkedés a U-SQL-katalógussal
+      url: data-lake-analytics-u-sql-catalog.md
+    - text: Felhasználó által definiált operátorok használata
+      url: data-lake-analytics-u-sql-develop-user-defined-operators.md
+- title: U-SQL-programok fejlesztése
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: A Visual Studióhoz készült Data Lake-eszközök használata
+      url: data-lake-analytics-data-lake-tools-get-started.md
+    - text: U-SQL-adatbázisprojekt használata a Visual Studióban
+      url: data-lake-analytics-data-lake-tools-develop-usql-database.md
+    - text: A feladatböngésző és a Feladat nézet használata
+      url: data-lake-analytics-data-lake-tools-view-jobs.md
+    - text: Felhasználó által definiált C#-kód hibaelhárítása
+      url: data-lake-analytics-debug-u-sql-jobs.md
+    - text: A Visual Studio Code-hoz készült Azure Data Lake-eszközök használata
+      url: data-lake-analytics-data-lake-tools-for-vscode.md
+    - text: Egyéni kód használata a U-SQL-lel a Visual Studio Code-ban
+      url: data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md
+    - text: Feladatok üzemelése az SSIS használatával
+      url: data-lake-analytics-schedule-jobs-ssis.md
+- title: A Data Lake Analytics kezelése
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Kezelés az Azure Portal használatával
+      url: data-lake-analytics-manage-use-portal.md
+    - text: Kezelés az Azure CLI használatával
+      url: data-lake-analytics-manage-use-cli.md
+    - text: Kezelés .NET-alkalmazással
+      url: data-lake-analytics-manage-use-dotnet-sdk.md
+    - text: Felhasználó hozzáadása az Azure Portalon
+      url: data-lake-analytics-add-users.md
+    - text: Az Azure Data Lake Analytics kezelése szabályzatokkal
+      url: data-lake-analytics-policies.md
+- title: Folyamatos integráció és folyamatos üzembe helyezés
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: CI-/CD-folyamat beállítása
+      url: data-lake-analytics-cicd-overview.md
+    - text: U-SQL-szerelvények kezelése
+      url: data-lake-analytics-cicd-manage-assemblies.md
+    - text: U-SQL-szkriptek tesztelése
+      url: data-lake-analytics-cicd-test.md
+    - text: U-SQL SDK használata
+      url: data-lake-analytics-u-sql-sdk.md

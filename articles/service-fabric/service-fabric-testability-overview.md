@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 06/15/2017
 ms.author: anmola
 ms.openlocfilehash: 3581550779b2387515b4f300d211b4e0a894edc7
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662353"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60544814"
 ---
 # <a name="introduction-to-the-fault-analysis-service"></a>A Fault Analysis Service bemutatása
 A Fault Analysis Service tesztelése a Microsoft Azure Service Fabric beépített szolgáltatás lett tervezve. A Fault Analysis Service is idéz elő a jelentéssel bíró hibák és a teljes teszt forgatókönyvek az alkalmazások futtatásához. Ezek a hibák és a forgatókönyvek gyakorolja, és ellenőrizze a számos állapotok és átmenetek, amely egy szolgáltatás teljes élettartamuk, az összes olyan ellenőrzött, megbízható és konzisztens módon fog tapasztalni.

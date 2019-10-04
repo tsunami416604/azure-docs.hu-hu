@@ -1,21 +1,20 @@
 ---
-title: Azure CLI-vel az első lekérdezés futtatása
+title: Az első lekérdezés futtatása az Azure CLI használatával
 description: Ez a cikk végigvezeti az Azure CLI-hez szükséges Resource Graph bővítmény aktiválásának lépésein és az első lekérdezése futtatásán.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/22/2018
+ms.date: 07/26/2019
 ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 188733266c15bf214c0177762b9d10aecd05223b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 6fffd9e0bbaea47bfeac56a7972a38df0cbef351
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792244"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164695"
 ---
-# <a name="run-your-first-resource-graph-query-using-azure-cli"></a>Az első Resource Graph-lekérdezés futtatása az Azure CLI használatával
+# <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>Gyors útmutató: Az első Resource Graph-lekérdezés futtatása az Azure CLI használatával
 
 Az Azure Resource Graph használatához először is meg kell győződnie arról, hogy az [Azure CLI-hez](/cli/azure/) szükséges bővítmény telepítve van. E rövid útmutató segítségével hozzáadhatja a bővítményt a telepített Azure CLI-hez. A bővítményt helyileg telepített Azure CLI-vel vagy az [Azure Cloud Shellen](https://shell.azure.com) keresztül is használhatja.
 
@@ -36,7 +35,7 @@ Ahhoz, hogy az Azure CLI lekérdezhesse az Azure Resource Graph-ot, el kell vég
    az extension add --name resource-graph
    ```
 
-1. Ellenőrizze, hogy a bővítmény telepítve van-e, és a várt verziójú-e (legalább **0.1.7-es**):
+1. Ellenőrizze, hogy a bővítmény telepítve van-e, és a várt verzió-e (legalább **1.0.0**):
 
    ```azurecli-interactive
    # Check the extension list (note that you may have other extensions installed)
@@ -81,7 +80,7 @@ Miután az Azure CLI-bővítmény hozzá lett adva a választott környezethez, 
 
 Miután a végső lekérdezés többször is futott, és feltéve, hogy a környezetben semmi sem változik, a visszaadott találatok konzisztensek és a vártnak megfelelőek lesznek – a **Name** tulajdonság szerint lesznek rendezve, és csak az első öt eredmény jelenik meg.
 
-## <a name="cleanup"></a>Felesleges tartalmak törlése
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha el szeretné távolítani a Resource Graph bővítményt az Azure CLI környezetből, ezt a következő paranccsal teheti meg:
 
@@ -89,9 +88,6 @@ Ha el szeretné távolítani a Resource Graph bővítményt az Azure CLI környe
 # Remove the Resource Graph extension from the Azure CLI environment
 az extension remove -n resource-graph
 ```
-
-> [!NOTE]
-> Ezzel nem törli a korábban letöltött bővítményfájlt, csak eltávolítja a futó Azure CLI-környezetből.
 
 ## <a name="next-steps"></a>További lépések
 

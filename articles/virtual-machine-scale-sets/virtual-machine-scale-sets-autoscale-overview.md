@@ -17,11 +17,11 @@ ms.date: 05/29/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 610f3073594f73f04a68865593be6bfb4188d4f1
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54883296"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60883670"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Beállítja az Azure virtuálisgép-méretezési csoport automatikus méretezés áttekintése
 Egy Azure-beli virtuálisgép-méretezési csoportot automatikusan növelheti vagy csökkentheti az alkalmazást futtató Virtuálisgép-példányok számát. Az automatikus és rugalmas viselkedést csökkenti a kezelési megfigyelése és optimalizálása az alkalmazás teljesítményét. Létrehozhat szabályokat, amelyek meghatározzák az elfogadható teljesítményt egy pozitív felhasználói élmény. Teljesülnek a meghatározott küszöbértékeket, az automatikus skálázási szabályok beletelhet művelet a méretezési csoport kapacitásának módosításához. Események automatikusan növelhető vagy csökkenését, a méretezési készlet kapacitásának rögzített többször is ütemezheti. Ez a cikk áttekintést, amelyek metrikák érhetők el, és milyen műveletek automatikus méretezési funkciójával hajthat végre.
@@ -66,14 +66,14 @@ A következő mérőszámok automatikus skálázási szabályok létrehozása es
 | Metrika neve               |
 |---------------------------|
 | Százalékos processzorhasználat            |
-| Hálózat bejövő adatforgalma                |
-| Hálózat kimenő adatforgalma               |
+| Bejövő hálózat                |
+| Kimenő hálózat               |
 | Lemezről beolvasott bájtok           |
 | Lemezre írt bájtok          |
-| Lemezolvasási művelet/s  |
-| Lemezre írási művelet/s |
-| Fennmaradó processzorkreditek     |
-| Felhasznált processzorkreditek      |
+| Lemezolvasási művelet/mp  |
+| Lemezre írási művelet/mp |
+| Fennmaradó Processzorkreditek     |
+| Felhasznált Processzorkreditek      |
 
 Egy metrika figyelése az automatikus skálázási szabályok létrehozásakor a szabályok tekintse meg a következő metrikák összesítési műveletek egyikét:
 
@@ -84,16 +84,16 @@ Egy metrika figyelése az automatikus skálázási szabályok létrehozásakor a
 | Maximum          |
 | Összes            |
 | Vezetéknév             |
-| Darabszám            |
+| Count            |
 
 Az automatikus skálázási szabályok vannak majd aktiválódik, ha a metrikák összehasonlítja a meghatározott küszöbértéket a következő operátorokat egyikével:
 
 | Művelet                 |
 |--------------------------|
 | Nagyobb, mint             |
-| Nagyobb vagy egyenlő |
-| Kisebb mint                |
-| Kisebb vagy egyenlő    |
+| Nagyobb, vagy egyenlő |
+| Kisebb, mint                |
+| Kisebb, vagy egyenlő    |
 | Egyenlő                 |
 | Nem egyenlő             |
 
@@ -103,12 +103,12 @@ Ha az automatikus skálázási szabály aktiválásakor a méretezési automatik
 
 | Skálázási művelet     | Használati eset                                                                                                                               |
 |---------------------|----------------------------------------------------------------------------------------------------------------------------------------|
-| Mennyiség növelése a következővel:   | Hozzon létre Virtuálisgép-példányok rögzített számú. A kisebb számú virtuális gépek méretezési hasznos.                                           |
-| Százalék növelése a következővel: | Virtuálisgép-példányok százalékskálájú növelését. Megfelelő választás a nagyobb léptékben állítja be, ahol egy rögzített növekedése nem észrevehetően javíthatja a teljesítményt. |
-| Mennyiség növelése a következőre:   | Hozzon létre több Virtuálisgép-példányok egy kívánt maximális összeg elérni kötelezőként.                                                            |
-| Mennyiség csökkentése a következővel:   | Az eltávolítandó Virtuálisgép-példányok rögzített számú. A kisebb számú virtuális gépek méretezési hasznos.                                           |
-| Százalék csökkentése a következővel: | Virtuálisgép-példányok százalékskálájú csökkentheti. Megfelelő választás a nagyobb léptékben állítja be, ahol egy rögzített növekedése nem észrevehetően csökkenthetik erőforrás-használat és költségek. |
-| Mennyiség csökkentése a következőre:   | Távolítsa el a Virtuálisgép-példányok elérni kívánt minimálisan szükséges.                                                            |
+| Mennyiség növelése a következővel   | Hozzon létre Virtuálisgép-példányok rögzített számú. A kisebb számú virtuális gépek méretezési hasznos.                                           |
+| Százalék szerint növelése | Virtuálisgép-példányok százalékskálájú növelését. Megfelelő választás a nagyobb léptékben állítja be, ahol egy rögzített növekedése nem észrevehetően javíthatja a teljesítményt. |
+| Mennyiség növelése a következővel   | Hozzon létre több Virtuálisgép-példányok egy kívánt maximális összeg elérni kötelezőként.                                                            |
+| Mennyiség csökkentése a következővel   | Az eltávolítandó Virtuálisgép-példányok rögzített számú. A kisebb számú virtuális gépek méretezési hasznos.                                           |
+| Százalék szerint csökkentése a következővel | Virtuálisgép-példányok százalékskálájú csökkentheti. Megfelelő választás a nagyobb léptékben állítja be, ahol egy rögzített növekedése nem észrevehetően csökkenthetik erőforrás-használat és költségek. |
+| Mennyiség csökkentése a   | Távolítsa el a Virtuálisgép-példányok elérni kívánt minimálisan szükséges.                                                            |
 
 
 ## <a name="in-guest-vm-metrics-with-the-azure-diagnostics-extension"></a>A Vendég virtuális gép metrikák az Azure diagnosztikai bővítmény

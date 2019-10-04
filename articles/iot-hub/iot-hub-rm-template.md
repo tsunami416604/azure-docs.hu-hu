@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: 84446090da2feaee3005b4ef90ace77b468a3f1a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b0a647fe3499590c0307b89d45d662ecf7e53392
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792590"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65827777"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-net"></a>Hozzon létre egy IoT hub (.NET) az Azure Resource Manager-sablon használatával
 
@@ -29,7 +29,7 @@ Használhatja az Azure Resource Manager hozhat létre, és az Azure IoT hubs pro
 
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
-* Visual Studio 2015 vagy Visual Studio 2017.
+* Visual Studio.
 * Aktív Azure-fiók. <br/>Ha nincs fiókja, néhány perc alatt létrehozhat egy [ingyenes fiókot][lnk-free-trial].
 * Egy [Azure Storage-fiók] [ lnk-storage-account] az Azure Resource Manager-sablon fájlok tárolására szolgál.
 * [Az Azure PowerShell 1.0] [ lnk-powershell-install] vagy újabb.

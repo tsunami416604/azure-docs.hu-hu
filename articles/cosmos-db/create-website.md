@@ -4,14 +4,14 @@ description: Ismerje meg, hogyan helyezhet üzembe az Azure Cosmos DB-fiók, az 
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 02/23/2018
+ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: 1a63de4642850e425cc785e0d89197178ceec1a6
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 93cdea453050df8899abf9233991715ae237bcd4
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041016"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66257241"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>Azure Cosmos DB és az Azure App Service Web Apps használatával egy Azure Resource Manager-sablon üzembe helyezése
 Az oktatóanyag bemutatja, hogyan használhatja az Azure Resource Manager-sablon üzembe helyezése és integrálása [a Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/), egy [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) web app és a egy minta-webalkalmazáshoz.
@@ -41,7 +41,7 @@ Először töltse le a sablonfájlokat, amely ehhez az oktatóanyaghoz.
 
 <a id="Build"></a>
 
-## <a name="step-2-deploy-the-azure-cosmos-db-account-app-service-web-app-and-demo-application-sample"></a>2. lépés: Az Azure Cosmos DB-fiókot, az App Service web app és bemutató példa-alkalmazás üzembe helyezése
+## <a name="step-2-deploy-the-azure-cosmos-db-account-app-service-web-app-and-demo-application-sample"></a>2\. lépés: Az Azure Cosmos DB-fiókot, az App Service web app és bemutató példa-alkalmazás üzembe helyezése
 Most már az első saját sablon üzembe helyezni.
 
 > [!TIP]
@@ -78,7 +78,7 @@ Most már az első saját sablon üzembe helyezni.
 
 <a id="Build"></a> 
 
-## <a name="step-3-deploy-the-document-account-and-web-app-sample"></a>3. lépés: A dokumentum-fiók és a web app minta üzembe helyezése
+## <a name="step-3-deploy-the-document-account-and-web-app-sample"></a>3\. lépés: A dokumentum-fiók és a web app minta üzembe helyezése
 Most már a második sablon üzembe helyezni.  Ez a sablon hasznos bemutatják, hogyan lehet szúr be az Azure Cosmos DB kapcsolati információkat, például a fiók végpontját és a főkulcs egy webalkalmazásba Alkalmazásbeállítások vagy egyéni kapcsolati karakterláncként. Például például hogy saját webes alkalmazás üzembe helyezése az Azure Cosmos DB-fiókot, és a kapcsolati adatok automatikusan kitölti az üzembe helyezés során szeretné.
 
 > [!TIP]

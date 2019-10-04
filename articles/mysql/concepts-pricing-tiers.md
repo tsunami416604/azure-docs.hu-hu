@@ -5,13 +5,13 @@ author: jan-eng
 ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/01/2019
-ms.openlocfilehash: 21ddeb9cb0621f0f11ca23a7b12a82df0b7aa8ca
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.date: 06/27/2019
+ms.openlocfilehash: aab3aaafd410c4f85eba7a246d0922128908bf93
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57546672"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445434"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL-hez tarifacsomagok
 
@@ -38,54 +38,7 @@ Miután létrehozott egy kiszolgálót, a virtuális magok, a hardver generáci�
 
 ## <a name="compute-generations-and-vcores"></a>Számítási generáció és a virtuális magok
 
-A számítási erőforrások szolgálnak, amelyek jelölik az alapul szolgáló hardver logikai CPU, a virtuális magok. Jelenleg két számítási generáció, 4. generációs és a Gen 5 közül választhat. Gen 4 logikai CPU k Intel E5-2673 v3 (Haswell) 2,4 GHz-es processzorral. Gen 5 logikai CPU k Intel E5-2673 v4 (Broadwell) 2.3 GHz-es processzorral. A gen 4 és a Gen 5 ("X" azt jelzi, hogy elérhető), a következő régiókban érhetők el.
-
-> [!IMPORTANT]
-> 2018. December 12., kezdve új ügyfeleket nem helyezhetik üzembe a számítási generáció 4 kiszolgálók Dél-Brazília, közép-Kanada, kelet-Kanada, Kelet-Ázsia, USA 2. keleti régiója, közép-India, Nyugat-India, Nyugat-japán, USA északi középső Régiója, USA nyugati RÉGIÓJA. Korábban létrehozott számítási generáció 4 kiszolgáló számítási generáció 5-től 2019. február 1. ezekben a régiókban migrálása.
->
-> [!IMPORTANT]
-> 2019. február 15., kezdve új ügyfelek nem tudják üzembe a számítási generáció 4 kiszolgálókat az USA középső RÉGIÓJA, USA keleti RÉGIÓJA, kelet-japán, Észak-Európa, USA déli középső Régiója, Délkelet-Ázsia, Nyugat-Európa. Korábban létrehozott számítási generáció 4 kiszolgáló számítási generáció 5-től 2019. április 1. ezekben a régiókban migrálása.
-
-| **Az Azure-régió** | **A gen 4** | **A gen 5** |
-|:---|:----------:|:--------------------:|
-| USA középső régiója |  | X |
-| USA keleti régiója |  | X |
-| USA 2. keleti régiója |  | X |
-| USA északi középső régiója |  | X |
-| USA déli középső régiója | X | X |
-| USA nyugati régiója |  | X |
-| USA nyugati régiója, 2. |  | X |
-| Dél-Brazília |  | X |
-| Közép-Kanada |  | X |
-| Kelet-Kanada |  | X |
-| Észak-Európa | X | X |
-| Nyugat-Európa |  | X |
-| Közép-Franciaország |  | X |
-| Az Egyesült Királyság déli régiója |  | X |
-| Az Egyesült Királyság nyugati régiója |  | X |
-| Kelet-Ázsia |  | X |
-| Délkelet-Ázsia | X | X |
-| Kelet-Ausztrália |  | X |
-| Ausztrália középső régiója |  | X |
-| Ausztrália 2. középső régiója |  | X |
-| Délkelet-Ausztrália |  | X |
-| Közép-India |  | X |
-| Dél-India |  | X |
-| Nyugat-India |  | X |
-| Kelet-Japán | X | X |
-| Nyugat-Japán |  | X |
-| Korea középső régiója |  | X |
-| Korea déli régiója |  | X |
-| Kelet-Kína 1 | X |  |
-| Kelet-Kína 2 |  | X |
-| Észak-Kína 1 | X |  |
-| Észak-Kína 2 |  | X |
-| Közép-Németország |  | X |
-| US DoD – Középső régió  | X |  |
-| US DoD – Kelet  | X |  |
-| USA-beli államigazgatás – Arizona |  | X |
-| USA-beli államigazgatás – Texas |  | X |
-| USA-beli államigazgatás – Virginia |  | X |
+A számítási erőforrások szolgálnak, amelyek jelölik az alapul szolgáló hardver logikai CPU, a virtuális magok. Kína kelet 1, Kína Észak 1, USA védelmi Minisztériuma – középső régiója és USA védelmi Minisztériuma – keleti kihasználhassák a Gen 4 logikai CPU alapuló Intel E5-2673 v3 (Haswell) 2,4 GHz-es processzorral. Minden más régiókban kihasználhassák a Gen 5 logikai CPU alapuló Intel E5-2673 v4 (Broadwell) 2.3 GHz-es processzorral.
 
 ## <a name="storage"></a>Storage
 
@@ -98,17 +51,44 @@ A tároló üzembe helyezi az érték a tárolási kapacitás érhető el az Azu
 | Növekmény tárméret | 1 GB | 1 GB | 1 GB |
 | IO | Változó |3 IOPS/GB<br/>Minimum 100 IOPS<br/>Max 6000 IOPS | 3 IOPS/GB<br/>Minimum 100 IOPS<br/>Max 6000 IOPS |
 
-Hozzáadhat további tárolókapacitás alatt és a kiszolgáló létrehozása után. Az alapszintű csomag nem biztosítanak az iops-t. Az általános célú és memóriahasználatra optimalizált tarifacsomagok az iops-t a kiépített tárhely méretére vonatkozik egy 3:1 arányt a skálázás.
+Alatt és a kiszolgáló létrehozása után adja hozzá a további tárolókapacitás, és lehetővé teszi a rendszer storage tárolófelhasználásának a számítási feladat alapján automatikusan nő. Az alapszintű csomag nem biztosítanak az iops-t. Az általános célú és memóriahasználatra optimalizált tarifacsomagok az iops-t a kiépített tárhely méretére vonatkozik egy 3:1 arányt a skálázás.
 
 Az i/o-használat az Azure Portalon vagy Azure CLI-parancsok használatával követheti nyomon. A releváns metrikákat kíván monitorozni vannak [tárhelykorlátozás, tárolási százalékos aránya, felhasznált tárterület és i/o-százalék](concepts-monitoring.md).
 
+### <a name="large-storage-preview"></a>Nagy storage (előzetes verzió)
+
+A tárfiókok korlátai növeljük az általános célú és memóriahasználatra optimalizált szinten. Az újonnan létrehozott kiszolgálót, hogy vehetnek részt a preview helyezhet üzembe akár 16 TB tárhely. Az iops-t méretezni egy 3:1 arányban legfeljebb 20 000 iops-t. Az aktuális általánosan rendelkezésre álló tárhelyet, az annak a kiszolgálónak a létrehozása után adja hozzá a további tárolókapacitás, és lehetővé teszi a rendszer storage tárolófelhasználásának a számítási feladat alapján automatikusan nő.
+
+|              | **Általános célú** | **Memóriahasználatra optimalizált** |
+|:-------------|:--------------------|:---------------------|
+| Tárolási típus | Azure Premium Storage | Azure Premium Storage |
+| Tároló mérete | 32 GB és 16 TB| 32 GB és 16 TB |
+| Növekmény tárméret | 1 GB | 1 GB |
+| IO | 3 IOPS/GB<br/>Minimum 100 IOPS<br/>Legfeljebb 20 000 iops-érték| 3 IOPS/GB<br/>Minimum 100 IOPS<br/>Legfeljebb 20 000 iops-érték |
+
+> [!IMPORTANT]
+> Nagy méretű tároló jelenleg nyilvános előzetes verzióban elérhető a következő régióban: USA keleti RÉGIÓJA, USA keleti RÉGIÓJA 2, USA középső RÉGIÓJA, USA nyugati RÉGIÓJA, Észak-Európa, Nyugat-Európa, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Délkelet-Ázsia, Kelet-Ázsiában, japán, kelet-japán nyugati régiója, Korea középső régiója, Korea déli régiója, Kelet-Ausztrália, Kelet-Ausztrália Dél-India.
+>
+> A nagy méretű tároló előzetes jelenleg nem támogatja:
+>
+> * Georedundáns biztonsági mentés
+> * Adatbázisközi régió replikáció
+
 ### <a name="reaching-the-storage-limit"></a>Skálázhatósági méretkorlátot
 
-A kiszolgáló csak olvashatóként lesz megjelölve, amikor a szabad tárterület 5 GB alá vagy a kiépített tárterület 5%-a alá csökken (amelyik kisebb). Ha például 100 GB tárhelyet kiépítése, és a tényleges használat halad 95 GB, a kiszolgáló van megjelölve, csak olvasható. Ha 5 GB tárterületet osztott ki, a kiszolgáló akkor lesz megjelölve csak olvashatóként, amikor a szabad tárterület 250 MB alá csökken.  
+Kevesebb mint 100 GB-os kiépített tároló kiszolgálók csak olvasható, ha a szabad tárhely kisebb, mint 512 MB-ot vagy a felhasznált tárterület mérete 5 %-át lesznek megjelölve. Több mint 100 GB-os kiépített tároló kiszolgálók lesznek megjelölve olvasási, csak akkor, ha a szabad tárterületre 5 GB-nál kisebb.
+
+Például, ha ellátta 110 GB tárhelyet igényel, és a tényleges használat keresztül haladnak 105 GB, a kiszolgáló van megjelölve, csak olvasható. Azt is megteheti, ha 5 GB adattárolás kiépítése, a kiszolgáló van megjelölve csak olvasható 512 MB-nál kevesebb a szabad tárhely elérésekor.
 
 Mialatt a szolgáltatás csak olvashatóvá próbálja tenni a kiszolgálót, minden új írási tranzakció kérését blokkolja a rendszer, és a meglévő aktív tranzakciók végrehajtása folytatódik. A kiszolgáló csak olvashatóként való beállításakor minden későbbi írási művelet és tranzakció meghiúsul. Az olvasási lekérdezések továbbra is zavartalanul működnek. A kiépített tárterület növelése után a kiszolgáló ismét készen fog állni az írási tranzakciók elfogadására.
 
-Azt javasoljuk, hogy beállította egy riasztás arra az esetre, ha a kiszolgáló tárhelyét hamarosan eléri a küszöbértéket a csak olvasható állapotba első elkerülése érdekében. További információkért lásd a dokumentációt [riasztást beállítása](howto-alert-on-metric.md).
+Azt javasoljuk, hogy kapcsolja be a storage automatikus növekedést vagy riasztás beállításához arra az esetre, ha a kiszolgáló tárhelyét hamarosan eléri a küszöbértéket így elkerülheti a csak olvasható állapotának beolvasása. További információkért lásd a dokumentációt [riasztást beállítása](howto-alert-on-metric.md).
+
+### <a name="storage-auto-grow"></a>Tárolási auto-növekedés
+
+Ha a tárolási automatikus növekedés engedélyezve van, a storage automatikusan nő a terhelés befolyásolása nélkül. Kevesebb mint 100 GB-os kiépített tároló kiszolgálók esetében a felhasznált tárterület mérete eléri 5 GB-tal, amint a szabad tárhely nem éri el a nagyobb, mint 1 GB vagy 10 %-a felhasznált tárterület. Több mint 100 GB-os kiépített tároló kiszolgálók esetében a felhasznált tárterület mérete növekszik 5 % 5 %-a kiépített tárhely méretére alatt rendelkezésre álló szabad tárhely esetén. A fenti maximális tárolási korlátokhoz a alkalmazni.
+
+Például ha 1000 GB tárhely kiépítése, és a tényleges használat keresztül haladnak 950 GB, a kiszolgáló tárméret 1050 GB-ra emelkedett. Azt is megteheti Ha 10 GB tárhelyet kiépítése, a tároló mérete esetén 15 GB-os növelését kevesebb mint 1 GB tárhelyet díjmentes.
 
 ## <a name="backup"></a>Backup
 

@@ -6,14 +6,14 @@ ms.author: wmeng
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: tutorial
-ms.date: 11/15/2017
+ms.date: 05/21/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 28e9b420f3abc972e047af72e1b5bc755e7f9d2b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 161b424c5c89d34eaa55181c0d6ca0515b376168
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58001639"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65978766"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>Oktatóanyag: Azure Cosmos DB lekérdezése a Table API-val
 

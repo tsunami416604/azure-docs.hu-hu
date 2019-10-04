@@ -1,6 +1,6 @@
 ---
-title: A StorSimple virtuális tömb eszköz rendszergazdai jelszó módosítása |} Microsoft Docs
-description: Ismerteti az Azure portálon vagy a StorSimple virtuális tömb webes felhasználói felület segítségével módosíthatja az eszköz rendszergazdai jelszava.
+title: A StorSimple Virtual Array az eszköz rendszergazdai jelszavának módosítása |} A Microsoft Docs
+description: Az eszköz rendszergazdai jelszavának módosítása az Azure portal vagy a StorSimple Virtual Array webes felhasználói felület használatát ismerteti.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,68 +15,68 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 260a23003d705e6598da8c51bb5a96f2539a0014
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5308badf439254062a8aefca1840eb21bc234ace
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23875570"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60580361"
 ---
-# <a name="change-the-storsimple-virtual-array-device-administrator-password-via-storsimple-device-manager"></a>A StorSimple virtuális tömb eszköz rendszergazdai jelszava keresztül StorSimple Device Manager módosítása
+# <a name="change-the-storsimple-virtual-array-device-administrator-password-via-storsimple-device-manager"></a>A StorSimple Virtual Array eszköz rendszergazdai jelszava keresztül a StorSimple Device Manager módosítása
 
 ## <a name="overview"></a>Áttekintés
 
-Használatakor a Windows PowerShell felületet a StorSimple virtuális tömb eléréséhez meg kell írnia egy eszköz rendszergazdai jelszava. A StorSimple eszköz először kiosztásakor és elindítva, az alapértelmezett jelszó az *jelszó1*. Az adatok biztonsága az alapértelmezett jelszó lejár az első alkalommal bejelentkezik, és a jelszó módosításához szükségesek.
+A Windows PowerShell felületét a StorSimple Virtual Array eléréséhez használhatja, amikor szükségesek egy eszközadminisztrátori jelszó megadására kéri. Amikor először kiépítése és indítása a StorSimple-eszköz, az alapértelmezett jelszó az *jelszó1*. Az adatok biztonságát az alapértelmezett jelszó lejár az első alkalommal jelentkezik be, és módosítsa ezt a jelszót kell.
 
-Az eszköz rendszergazdai jelszava az éles környezetben az eszköz telepítését követően bármikor módosíthatja vagy a helyi webes felhasználói felületen, vagy az Azure-portálon is használja. Ezek az eljárások leírását ebben a cikkben.
+A helyi webes felhasználói felületen vagy az Azure portal használatával is az eszköz rendszergazdai jelszava az eszköz az éles környezetben üzembe helyezését követően bármikor módosíthatja. Ezek az eljárások leírását ebben a cikkben.
 
- ![Eszközök panel](./media/storsimple-virtual-array-change-device-admin-password/ova-devices-blade.png)
+ ![Eszközök panelen](./media/storsimple-virtual-array-change-device-admin-password/ova-devices-blade.png)
 
-## <a name="use-the-azure-portal-to-change-the-password"></a>A jelszó módosítása az Azure-portál használatával
+## <a name="use-the-azure-portal-to-change-the-password"></a>A jelszó módosítása az Azure portal használatával
 
-A következő lépésekkel módosíthatja az eszköz rendszergazdai jelszava az Azure portálon keresztül.
+A következő lépésekkel módosítsa az eszköz rendszergazdai jelszava az Azure Portalon keresztül.
 
-#### <a name="to-change-the-device-administrator-password-via-the-azure-portal"></a>Az eszköz rendszergazdai jelszava az Azure-portálon módosítása
+#### <a name="to-change-the-device-administrator-password-via-the-azure-portal"></a>Az eszköz rendszergazdai jelszava az Azure Portalon keresztül módosítása
 
-1. A szolgáltatás követően lapon válassza ki a szolgáltatást, kattintson duplán a szolgáltatás nevére, majd belül a **felügyeleti** területen kattintson **eszközök**. Ekkor megnyílik a **eszközök** panel, amelyen a StorSimple virtuális tömb-eszközeinek felsorolását tartalmazza.
+1. Szolgáltatás kezdőlapján válassza ki a szolgáltatást, kattintson duplán a szolgáltatás nevét, és ezután belül a **felügyeleti** területén kattintson **eszközök**. Ekkor megnyílik a **eszközök** panel, amely felsorolja a StorSimple Virtual Array eszközeit.
 
-2. Az a **eszközök** panelen kattintson duplán az eszközt, hogy a jelszó módosítására van szükség.
+2. Az a **eszközök** panelen kattintson duplán az eszközt, hogy jelszót követel meg.
 
 3. Az a **beállítások** az eszköz paneljén kattintson **biztonsági**.
 
 4. Az a **biztonsági beállítások** panelen tegye a következőket:
    
-   1. Görgessen le a **eszköz rendszergazdai jelszavát** szakasz. Adjon meg egy rendszergazdai jelszót, amely tartalmazza a 8-15 karakter.
+   1. Görgessen le a **eszköz rendszergazdai jelszavát** szakaszban. Adjon meg egy rendszergazdai jelszót, amely tartalmazza a 8 – 15 karakter.
    2. Erősítse meg a jelszót.
-   3. Kattintson a **mentése** a panel tetején.
+   3. Kattintson a panel tetején lévő **Mentés** elemre.
 
-Az eszköz rendszergazdai jelszava most frissül. A módosított jelszó használatával helyileg az eszközhöz való hozzáféréshez.
+Az eszköz rendszergazdai jelszava most frissült. Ez a módosított jelszó használatával helyben az eszköz elérésére.
 
 ![Biztonsági beállítások panel](./media/storsimple-virtual-array-change-device-admin-password/ova-change-device-pwd.png)
 
 ## <a name="use-the-local-web-ui-to-change-the-password"></a>Módosítsa a jelszót a helyi webes felhasználói felület használatával
 
-A következő lépésekkel módosíthatja az eszköz rendszergazdai jelszava a helyi webes felhasználói felületen.
+A következő lépésekkel módosítsa az eszköz rendszergazdai jelszava helyi webes felületén keresztül.
 
-#### <a name="to-change-the-device-administrator-password-via-the-local-web-ui"></a>Az eszköz rendszergazdai jelszava a helyi webes felhasználói felületen keresztül módosítása
+#### <a name="to-change-the-device-administrator-password-via-the-local-web-ui"></a>Módosíthatja a helyi webes felhasználói felületen, az eszköz rendszergazdai jelszava
 
-1. Kattintson a helyi webes felhasználói felület **karbantartási** > **jelszómódosítás** az eszközhöz.
+1. A helyi webes felületén kattintson **karbantartási** > **jelszómódosítás** az eszközhöz.
    
     ![jelszó1 módosítása](./media/storsimple-virtual-array-change-device-admin-password/image40.png)
 2. Adja meg a **jelenlegi jelszó**.
-3. Adjon meg egy **új jelszó**. A jelszónak legalább 8 karakter hosszúságúnak kell lennie. 4. a következő 3 tartalmaznia kell: nagybetűk, nagybetűk, numerikus és speciális karaktereket.
+3. Adjon meg egy **új jelszót**. A jelszónak legalább 8 karakter hosszúságúnak kell lennie. A következő 4, 3 tartalmaznia kell: nagybetű, kisbetű, számjegyeket és speciális karaktereket.
    
-    Vegye figyelembe, hogy a jelszó nem lehet ugyanaz, mint a legutóbbi 24 jelszó.
-4. Adja meg újra a jelszót a megerősítéshez.
+    Vegye figyelembe, hogy a jelszó nem lehet ugyanaz, mint az utolsó 24 jelszavakat.
+4. Írja be ismét a jelszót a megerősítéséhez.
    
     ![jelszó2 módosítása](./media/storsimple-virtual-array-change-device-admin-password/image41.png)
-5. Kattintson a lap alján **alkalmaz**. Az új jelszót a rendszer most alkalmazza. Ha a jelszó módosítása sikertelen, a következő hibát látja:
+5. Kattintson a lap alján **alkalmaz**. Most alkalmazza az új jelszót. Ha a jelszó módosítása nem jár sikerrel, a következő hiba jelenik meg:
    
-    ![jelszó hiba](./media/storsimple-virtual-array-change-device-admin-password/image42.png)
+    ![jelszó típusú hibák](./media/storsimple-virtual-array-change-device-admin-password/image42.png)
    
-    Miután a jelszó frissítése sikeres volt, értesítés jelenik meg. Ezután használhatja a módosított jelszó helyileg az eszköz elérésére.
+    A jelszó sikeres frissítése után értesítést kap. Ezután használhatja a módosított jelszó helyileg az eszköz elérésére.
 
 
-## <a name="next-steps"></a>Következő lépések
-Megtudhatja, hogyan [felügyelete a StorSimple virtuális tömb](storsimple-ova-web-ui-admin.md).
+## <a name="next-steps"></a>További lépések
+Ismerje meg, hogyan [felügyelete a StorSimple Virtual Array](storsimple-ova-web-ui-admin.md).
 

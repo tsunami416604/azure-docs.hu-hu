@@ -3,25 +3,25 @@ title: Közzététel a távoli asztal az Azure AD-alkalmazásproxyval |} A Micro
 description: Az Azure AD-alkalmazásproxy összekötőit alapjait ismerteti.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/27/2018
-ms.author: celested
+ms.date: 05/23/2019
+ms.author: mimart
 ms.custom: it-pro
 ms.reviewer: harshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 295422e0f456c4dfd4166911ef8150e8a896ba1a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d6ca64e2de5734c567173fc735776074f4c87fbc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58111106"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108461"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Az Azure AD-alkalmazásproxy a távoli asztal közzététele
 
@@ -58,6 +58,8 @@ Az RDS-példány üzembe a távoli asztali webes szerepkör és a távoli asztal
 
 - Az Internet Explorer a távoli asztali szolgáltatások ActiveX bővítmény engedélyezéséhez.
 
+- Az Azure ad-ben előhitelesítési folyamat a felhasználók csak csatlakozhatnak hozzájuk a közzétett erőforrások a **RemoteApp- és asztali** ablaktáblán. Felhasználók nem tudnak csatlakozni egy asztali használatával a **csatlakozhat távoli Számítógépekhez** ablaktáblán.
+
 ## <a name="deploy-the-joint-rds-and-application-proxy-scenario"></a>A közös a távoli asztali szolgáltatások és -Proxy forgatókönyv megvalósításához
 
 RDS és Azure AD-alkalmazásproxy a környezetének beállítása után lépésekkel úgy, hogy a két megoldás. Ezek a lépések bemutatják, közzététele a két webes irányuló távoli asztali szolgáltatások végpontot (távoli asztali Web- és az RD átjáró) alkalmazásokként, és ezután irányítja a forgalmat a go alkalmazásproxyn keresztül a távoli asztali szolgáltatások.
@@ -71,8 +73,9 @@ RDS és Azure AD-alkalmazásproxy a környezetének beállítása után lépése
    - Lefordítja az URL-fejlécek: Nem
 2. Felhasználók hozzárendelése a közzétett távoli asztali alkalmazást. Ellenőrizze, hogy az összes férhet hozzá, RDS, túl.
 3. Hagyja, az alkalmazás egyszeri bejelentkezési módszer **az Azure AD egyszeri bejelentkezés le van tiltva**. A felhasználók számára a rendszer felkéri egyszer az Azure ad-hez, és egyszer a távoli asztali webes hitelesítéséhez, de rendelkezik egyszeri bejelentkezéshez, a távoli asztali átjáró.
-4. Lépjen a **Azure Active Directory** > **Alkalmazásregisztrációk** > *az alkalmazás* > **beállításai**.
-5. Válassza ki **tulajdonságok** és frissítheti a **kezdőlap URL-címe** mezőt, mutasson a távoli asztali webes végpontra (például `https://\<rdhost\>.com/RDWeb`).
+4. Válassza ki **az Azure Active Directory**, majd **Alkalmazásregisztrációk**. Válassza ki az alkalmazást a listából.
+5. A **kezelés**válassza **Branding**.
+6. Frissítés a **kezdőlap URL-címe** mezőt, mutasson a távoli asztali webes végpontra (például `https://\<rdhost\>.com/RDWeb`).
 
 ### <a name="direct-rds-traffic-to-application-proxy"></a>Az alkalmazásproxy közvetlen RDS-forgalom
 
@@ -126,7 +129,7 @@ A következő cikkben ismertetett konfigurációs van, a felhasználók számár
 | Előhitelesítés    | Windows 7/10 az Internet Explorer + RDS ActiveX-bővítmény használata |
 | Átengedés | Minden más operációs rendszer, amely támogatja a Microsoft távoli asztal alkalmazás |
 
-Az előhitelesítési folyamat további biztonsági előnyöket kínál, mint a csatlakoztatott folyamatot. Az előhitelesítési használhatja az Azure AD hitelesítési szolgáltatások, mint az egyszeri bejelentkezés, a feltételes hozzáférés és a kétlépéses ellenőrzést a helyszíni erőforrásokhoz. Akkor is győződjön meg arról, hogy csak hitelesített forgalom éri el a hálózat.
+Az előhitelesítési folyamat további biztonsági előnyöket kínál, mint a csatlakoztatott folyamatot. Az előhitelesítési használhatja az Azure AD hitelesítési szolgáltatások, mint az egyszeri bejelentkezést, a feltételes hozzáférés és a kétlépéses ellenőrzés a helyszíni erőforrásokhoz. Akkor is győződjön meg arról, hogy csak hitelesített forgalom éri el a hálózat.
 
 Átmenő hitelesítés használatához van ebben a cikkben felsorolt lépések csak két módosításai:
 1. A [közzététel a távoli asztali állomás végpont](#publish-the-rd-host-endpoint) 1. lépés, állítsa az előhitelesítési módszer **csatlakoztatott**.

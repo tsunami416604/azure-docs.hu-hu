@@ -1,25 +1,25 @@
 ---
-title: IoT-központ kezelése az Azure CLI |} A Microsoft Docs
-description: IoT-központ kezelése az Azure parancssori felület.
+title: IoT Central kezelése az Azure CLI-vel | Microsoft Docs
+description: IoT Central kezelése az Azure CLI-vel.
 services: iot-central
 ms.service: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 02/07/2019
+ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 9e5d842cece316bc9c53e1e8583f40a0f222b91d
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 1ec83541c62d93eee91348531797ecdeb8c9fc6e
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56808626"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873474"
 ---
-# <a name="manage-iot-central-from-azure-cli"></a>IoT-központ kezelése az Azure CLI
+# <a name="manage-iot-central-from-azure-cli"></a>IoT Central kezelése az Azure CLI-vel
 
 [!INCLUDE [iot-central-selector-manage](../../includes/iot-central-selector-manage.md)]
 
-Létrehozásához és IoT-központ alkalmazások kezelése – az IoT-központ [alkalmazáskezelő](https://aka.ms/iotcentral) lapon használhatja [Azure CLI-vel](/cli/azure/) az alkalmazások kezeléséhez.
+IoT Central alkalmazások az [azure IoT Central Application Manager](https://aka.ms/iotcentral) webhelyén való létrehozása és kezelése helyett az [Azure CLI](/cli/azure/) használatával kezelheti az alkalmazásokat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -27,11 +27,11 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha inkább a futtatása az Azure CLI-vel a helyi gépen, [az Azure CLI telepítése](/cli/azure/install-azure-cli). Azure CLI helyi futtatásakor használja a **az bejelentkezési** való bejelentkezéshez az Azure-ba, mielőtt megpróbálná ebben a cikkben szereplő parancsok parancsot.
+Ha a helyi gépen szeretné futtatni az Azure CLI-t, tekintse meg [Az Azure CLI telepítését](/cli/azure/install-azure-cli)ismertető témakört. Amikor helyileg futtatja az Azure CLI-t, az az **login** paranccsal jelentkezzen be az Azure-ba, mielőtt kipróbálja a jelen cikkben szereplő parancsokat.
 
 ## <a name="create-an-application"></a>Alkalmazás létrehozása
 
-Használja a [az iotcentral app létrehozása](/cli/azure/iotcentral/app#az-iotcentral-app-create) parancs IoT központi alkalmazás létrehozása az Azure-előfizetésében. Példa:
+Az az [iotcentral app Create](/cli/azure/iotcentral/app#az-iotcentral-app-create) paranccsal hozzon létre egy IoT Central alkalmazást az Azure-előfizetésében. Példa:
 
 ```azurecli-interactive
 # Create a resource group for the IoT Central application
@@ -48,33 +48,36 @@ az iotcentral app create \
   --display-name "My Custom Display Name"
 ```
 
-Ezek a parancsok a keleti régiójában, az alkalmazás a először hozzon létre egy erőforráscsoportot. A következő táblázat ismerteti a használt paraméterek a **az iotcentral app létrehozása** parancsot:
+Ezek a parancsok először létrehoznak egy erőforráscsoportot az alkalmazáshoz az USA keleti régiójában. Az alábbi táblázat az az **iotcentral app Create** paranccsal használt paramétereket ismerteti:
 
 | Paraméter         | Leírás |
 | ----------------- | ----------- |
-| resource-group    | Az erőforráscsoport, amely tartalmazza az alkalmazást. Ennek az erőforráscsoportnak már léteznie kell az előfizetésben. |
-| location          | Ez a parancs alapértelmezés szerint használja az erőforráscsoport helyét. Jelenleg az IoT Central alkalmazáshoz hozhat létre a **USA keleti RÉGIÓJA**, **USA nyugati RÉGIÓJA**, **Észak-Európa**, vagy **Nyugat-Európa** régióban. |
-| név              | Az Azure Portalon az alkalmazás neve. |
-| subdomain         | Az altartomány az alkalmazás URL-címét. A példában az alkalmazás URL-cím van https://mysubdomain.azureiotcentral.com. |
-| termékváltozat               | Jelenleg az egyetlen érték **S1** (standard szintű). Lásd: [Azure IoT Central díjszabás](https://azure.microsoft.com/pricing/details/iot-central/). |
-| sablon          | Az alkalmazás sablont szeretné használni. További információkért lásd az alábbi táblázatot: |
-| megjelenítendő neve      | Az alkalmazás a felhasználói felületen megjelenített neve. |
+| resource-group    | Az alkalmazást tartalmazó erőforráscsoport. Ez az erőforráscsoport már léteznie kell az előfizetésben. |
+| location          | Alapértelmezés szerint ez a parancs az erőforráscsoport helyét használja. Jelenleg létrehozhat egy IoT Central alkalmazást az **USA keleti**régiójában, az **USA nyugati**régiójában **, Észak**-és **Nyugat-Európában** , illetve az **ausztráliai** földrajzban. |
+| name              | Az alkalmazás neve a Azure Portalban. |
+| subdomain         | Az alkalmazás URL-címében szereplő altartomány. A példában az alkalmazás URL-címe https://mysubdomain.azureiotcentral.com:. |
+| sku               | Jelenleg az egyetlen érték az **S1** (standard szint). Lásd: az [Azure IoT Central díjszabása](https://azure.microsoft.com/pricing/details/iot-central/). |
+| sablon          | A használni kívánt alkalmazás sablonja. További információkért tekintse meg a következő táblázatot: |
+| megjelenítendő név      | Az alkalmazás neve, ahogy az a felhasználói felületen látható. |
 
-**Az alkalmazás**
+**Alkalmazás-sablonok**
 
 | Sablon neve            | Leírás |
 | ------------------------ | ----------- |
 | iotc-default@1.0.0       | Létrehoz egy üres alkalmazást, amelybe a saját eszközsablonjait és eszközeit helyezheti el. |
 | iotc-demo@1.0.0          | Létrehoz egy alkalmazást, amely már tartalmaz egy eszközsablont egy hűtött eladóautomatához. Használja ezt a sablont az Azure IoT Central megismerésének megkezdéséhez. |
-| iotc-devkit-sample@1.0.0 | Létrehoz egy eszközsablonokat tartalmazó alkalmazást, amelyekkel csatlakoztathat egy MXChip vagy Raspberry Pi eszközt. Sablon használata, ha ezek az eszközök bármelyikével kísérletezés eszköz fejlesztők. |
+| iotc-devkit-sample@1.0.0 | Létrehoz egy eszközsablonokat tartalmazó alkalmazást, amelyekkel csatlakoztathat egy MXChip vagy Raspberry Pi eszközt. Akkor használja ezt a sablont, ha egy eszköz fejlesztője ezen eszközök bármelyikével kísérletezik. |
+
+> [!NOTE]
+> Az **előzetes verziójú alkalmazás** sablonja jelenleg csak az **észak-európai** és az **USA középső** régiójában érhető el.
 
 ## <a name="view-your-applications"></a>Saját alkalmazások megtekintése
 
-Használja a [az iotcentral Alkalmazáslista](/cli/azure/iotcentral/app#az-iotcentral-app-list) parancsot az IoT-központ alkalmazások listázása és megtekintése a metaadatokat.
+Az az [iotcentral app List](/cli/azure/iotcentral/app#az-iotcentral-app-list) paranccsal listázhatja IoT Central alkalmazásait, és megtekintheti a metaadatokat.
 
-## <a name="modify-an-application"></a>Módosítsa az alkalmazást
+## <a name="modify-an-application"></a>Alkalmazás módosítása
 
-Használja a [az iotcentral alkalmazásfrissítési](/cli/azure/iotcentral/app#az-iotcentral-app-update) paranccsal frissíteni azokat a metaadatokat az IoT Central alkalmazáshoz. Például módosíthatja az alkalmazás megjelenített neve:
+Az az [iotcentral app Update](/cli/azure/iotcentral/app#az-iotcentral-app-update) paranccsal frissítheti egy IoT Central alkalmazás metaadatait. Például az alkalmazás megjelenítendő nevének módosításához:
 
 ```azurecli-interactive
 az iotcentral app update --name myiotcentralapp \
@@ -84,7 +87,7 @@ az iotcentral app update --name myiotcentralapp \
 
 ## <a name="remove-an-application"></a>Alkalmazás eltávolítása
 
-Használja a [az iotcentral app delete](/cli/azure/iotcentral/app#az-iotcentral-app-delete) parancsot egy IoT-központ alkalmazás törléséhez. Példa:
+IoT Central alkalmazás törléséhez használja az az [iotcentral app delete](/cli/azure/iotcentral/app#az-iotcentral-app-delete) parancsot. Példa:
 
 ```azurecli-interactive
 az iotcentral app delete --name myiotcentralapp \
@@ -93,7 +96,7 @@ az iotcentral app delete --name myiotcentralapp \
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megismerte az Azure IoT Central alkalmazások felügyelete az Azure parancssori felületen, Íme a javasolt következő lépésre:
+Most, hogy megismerte, hogyan kezelheti az Azure IoT Central-alkalmazásait az Azure CLI-vel, itt látható a következő lépés:
 
 > [!div class="nextstepaction"]
 > [Az alkalmazás felügyelete](howto-administer.md)

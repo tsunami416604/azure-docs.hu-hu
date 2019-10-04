@@ -1,35 +1,32 @@
 ---
-title: A nem megfelelő erőforrások szabályzat létrehozása az Azure PowerShell használatával
-description: Azure PowerShell használatával hozzon létre egy Azure szabályzat-hozzárendelést a nem megfelelő erőforrások azonosításához.
+title: Szabályzat létrehozása nem megfelelő erőforrásokhoz Azure PowerShell
+description: A Azure PowerShell használatával hozzon létre egy Azure Policy-hozzárendelést a nem megfelelő erőforrások azonosításához.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/11/2019
 ms.topic: quickstart
 ms.service: azure-policy
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: f07a760153c4ec15cec5c5bc1348e23152c59cb8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c18e48d76381bf40e6177feb389a0197aace081d
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59258334"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000846"
 ---
-# <a name="create-a-policy-assignment-to-identify-non-compliant-resources-using-azure-powershell"></a>Azure PowerShell-lel a nem megfelelő erőforrások azonosítására a szabályzat-hozzárendelés létrehozása
+# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-azure-powershell"></a>Gyors útmutató: Szabályzat-hozzárendelés létrehozása a nem megfelelő erőforrások azonosításához Azure PowerShell használatával
 
-Az Azure-ral való megfelelőség megértéséhez szükséges első lépés a saját erőforrásai állapotának megállapítása. Ebben a rövid útmutatóban egy felügyelt lemezeket nem használó virtuális gépek azonosítására szolgáló szabályzat-hozzárendelést hoz létre. Amikor végzett, azonosítania kell a virtuális gépek, amelyek *nem megfelelő*.
+Az Azure-ral való megfelelőség megértéséhez szükséges első lépés a saját erőforrásai állapotának megállapítása. Ebben a rövid útmutatóban egy felügyelt lemezeket nem használó virtuális gépek azonosítására szolgáló szabályzat-hozzárendelést hoz létre. Ha elkészült, azonosíthatja azokat a virtuális gépeket, amelyek *nem megfelelőek*.
 
-Az Azure PowerShell-modul az Azure-erőforrások kezelhetők a parancssorból vagy szkriptekkel szolgál.
-Ez az útmutató ismerteti, hogyan hozhat létre szabályzat-hozzárendelés Az modul.
+A Azure PowerShell modul az Azure-erőforrások parancssorból vagy parancsfájlokból való kezelésére szolgál.
+Ez az útmutató ismerteti, hogyan használható az az modul egy szabályzat-hozzárendelés létrehozásához.
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
-[!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
-
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Mielőtt elkezdené, győződjön meg arról, hogy telepítve van-e az Azure PowerShell legújabb verzióját. Lásd: [Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) részletes információkat.
-- Regisztrálja a Policy Insights erőforrás-szolgáltatót az Azure PowerShell használatával. Az erőforrás-szolgáltató regisztrálásával biztosítja, hogy az előfizetése működni fog vele. Erőforrás-szolgáltató regisztrálásához rendelkeznie kell engedéllyel az erőforrás-szolgáltató regisztrálása művelet. Ezt a műveletet a Közreműködői és Tulajdonosi szerepkörök magukba foglalják. Az erőforrás-szolgáltató regisztrálásához futtassa az alábbi parancsot:
+- Mielőtt elkezdené, győződjön meg arról, hogy a Azure PowerShell legújabb verziója van telepítve. Részletes információkért lásd: [Azure PowerShell modul telepítése](/powershell/azure/install-az-ps) .
+- Regisztrálja a Azure Policy bepillantást erőforrás-szolgáltatót a Azure PowerShell használatával. Az erőforrás-szolgáltató regisztrálásával biztosítja, hogy az előfizetése működni fog vele. Erőforrás-szolgáltató regisztrálásához rendelkeznie kell engedéllyel az erőforrás-szolgáltató regisztrálása művelet. Ezt a műveletet a Közreműködői és Tulajdonosi szerepkörök magukba foglalják. Az erőforrás-szolgáltató regisztrálásához futtassa az alábbi parancsot:
 
   ```azurepowershell-interactive
   # Register the resource provider if it's not already registered
@@ -40,7 +37,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 ## <a name="create-a-policy-assignment"></a>Szabályzat-hozzárendelés létrehozása
 
-Ebben a rövid útmutatóban létrehozhat egy szabályzat-hozzárendelést a a *felügyelt lemezek nélküli virtuális gépek naplózása* definíciója. Ez a szabályzat-definíció azonosítja a felügyelt lemezeket nem használó virtuális gépeket.
+Ebben a rövid útmutatóban egy szabályzat-hozzárendelést hoz létre a *felügyelt lemezek definíciója nélküli naplózási virtuális gépek* számára. Ez a házirend-definíció a felügyelt lemezeket nem használó virtuális gépeket azonosítja.
 
 Futtassa a következő parancsokat egy új szabályzat-hozzárendelés létrehozásához:
 
@@ -62,7 +59,7 @@ Az előző parancsok a következő információkat használják:
 - **Definíció** – A szabályzatdefiníció, amely alapján létre fogja hozni a hozzárendelést. Ebben az esetben a szabályzatdefiníció azonosítója *felügyelt lemezeket nem használó virtuális gépek naplózása*.
 - **Hatókör** – A hatókör határozza meg, hogy a szabályzat-hozzárendelés milyen erőforrások vagy erőforráscsoportok esetében lesz kényszerítve. Ez egyetlen előfizetéstől teljes erőforráscsoportokig terjedhet. Győződjön meg arról, hogy a &lt;scope&gt; helyett az erőforráscsoport neve szerepel.
 
-Most már készen áll a nem megfelelő erőforrások azonosítására a környezet megfelelési állapotának megismerése céljából.
+Most már készen áll a nem megfelelő erőforrások azonosítására a környezet megfelelőségi állapotának megismerése érdekében.
 
 ## <a name="identify-non-compliant-resources"></a>Nem megfelelő erőforrások azonosítása
 
@@ -73,7 +70,7 @@ A következő információkkal azonosíthatja a létrehozott szabályzat-hozzár
 Get-AzPolicyState -ResourceGroupName $rg.ResourceGroupName -PolicyAssignmentName 'audit-vm-manageddisks' -Filter 'IsCompliant eq false'
 ```
 
-Szabályzat állapota első kapcsolatos további információkért lásd: [Get-AzPolicyState](/powershell/module/az.policyinsights/Get-AzPolicyState).
+A házirend állapotának beolvasásával kapcsolatos további információkért lásd: [Get-AzPolicyState](/powershell/module/az.policyinsights/Get-AzPolicyState).
 
 Az eredmények a következő példához hasonlók:
 
@@ -95,7 +92,7 @@ PolicyDefinitionCategory    : Compute
 ManagementGroupIds          : {managementGroupId}
 ```
 
-A Keresés eredménye megfelel, megjelenik a **erőforrás megfelelőségi** lapján az Azure portal nézetében a szabályzat-hozzárendelés.
+Az eredmények megegyeznek a szabályzat-hozzárendelés **erőforrás-megfelelőség** lapján látható Azure Portal nézetben.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

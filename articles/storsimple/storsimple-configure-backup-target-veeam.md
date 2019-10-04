@@ -1,6 +1,6 @@
 ---
-title: A StorSimple 8000 sorozat veeammel biztonsági mentési célként |} A Microsoft Docs
-description: A StorSimple biztonsági mentési cél konfiguráció veeammel ismerteti.
+title: StorSimple 8000 sorozat biztonsági mentési célként a Veeam | Microsoft Docs
+description: Ismerteti a StorSimple biztonsági mentési cél konfigurációját a Veeam.
 services: storsimple
 documentationcenter: ''
 author: harshakirank
@@ -13,510 +13,510 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2016
-ms.author: hkanna
-ms.openlocfilehash: e7659cca9081834d41f64ef0fbd8ea3686044bfd
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: matd
+ms.openlocfilehash: 3ebf464fed1480e7452f246f04f3906faf0dd219
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58012011"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "67875303"
 ---
-# <a name="storsimple-as-a-backup-target-with-veeam"></a>Biztonsági mentési célként StorSimple veeammel
+# <a name="storsimple-as-a-backup-target-with-veeam"></a>StorSimple biztonsági mentési célként a Veeam
 
 ## <a name="overview"></a>Áttekintés
 
-Az Azure StorSimple hibrid felhőalapú tárolási megoldást a Microsoft a. A StorSimple használatával egy Azure Storage-fiók kiterjesztése a helyszíni megoldás, és automatikusan rétegezési adatokat, mint a helyszíni tárolók és a felhőalapú tárolás az exponenciális Adatnövekedés kiküszöböli címek.
+Az Azure StorSimple egy hibrid felhőalapú tárolási megoldás a Microsofttól. A StorSimple az exponenciális Adatnövekedés bonyolultságát az Azure Storage-fióknak a helyszíni megoldás kiterjesztéseként, valamint a helyszíni tárterület és a Felhőbeli tárolók közötti automatikus adatmennyiség-növelésével foglalkozik.
 
-Ebben a cikkben bemutatjuk a StorSimple-integráció a Veeam, és a két megoldás integrálására vonatkozó ajánlott eljárásokat. Azt is ajánlásokat a legjobb integrálása a StorSimple Veeam beállítása. Hogy késlelteti a Veeam ajánlott eljárásokat, a biztonsági mentési tervezőket és a rendszergazdák a Veeam beállítása az egyes biztonsági mentési követelményeknek és a szolgáltatásiszint-szerződések (SLA) a legjobb módszer.
+Ebben a cikkben a StorSimple és a Veeam integrációját tárgyaljuk, valamint a megoldások integrálásának ajánlott eljárásait. Javaslatot teszünk arra is, hogyan állíthatja be a Veeam-t a StorSimple-nal való legjobb integrációhoz. Az ajánlott eljárások, a biztonsági mentési tervezők és a rendszergazdák Veeam az egyéni biztonsági mentési követelmények és a szolgáltatói szerződések (SLA-EK) megfelelő Veeam beállításához.
 
-Azt illusztrálja, konfigurációs lépésekkel és alapfogalmait, bár ez a cikk semmiképpen sem részletes konfigurációs vagy telepítési útmutató. Feltételezzük, hogy az alapszintű összetevőkre és infrastruktúrákra működő sorrendben, és készen áll a fogalmakat, amelyek ismertetünk támogatja.
+Bár bemutatjuk a konfigurációs lépéseket és a legfontosabb fogalmakat, ez a cikk nem jelent részletes konfigurációs vagy telepítési útmutatót. Feltételezzük, hogy az alapszintű összetevők és az infrastruktúra üzemképes állapotban van, és készen áll arra, hogy támogassa a leírt fogalmakat.
 
-### <a name="who-should-read-this"></a>Ez célközönsége?
+### <a name="who-should-read-this"></a>Kinek érdemes ezt elolvasni?
 
-Ebben a cikkben található információk a biztonsági mentési rendszergazdák, tárolási rendszergazdák és tárolási architects ismerő, storage, a Windows Server 2012 R2, a Ethernet, a cloud services és a Veeam hasznos lesz.
+A cikkben található információk a rendszergazdák, a Storage-rendszergazdák és a Storage, a Windows Server 2012 R2, az Ethernet, a Cloud Services és a Veeam ismeretével rendelkező tároló-építészek számára nyújtanak segítséget.
 
 ### <a name="supported-versions"></a>Támogatott verziók
 
 -   Veeam 9 és újabb verziók
--   [A StorSimple Update 3 és újabb verziók](storsimple-overview.md#storsimple-workload-summary)
+-   [StorSimple 3. frissítés és újabb verziók](storsimple-overview.md#storsimple-workload-summary)
 
 
-## <a name="why-storsimple-as-a-backup-target"></a>Miért érdemes a StorSimple mint biztonsági mentési cél?
+## <a name="why-storsimple-as-a-backup-target"></a>Miért StorSimple biztonsági mentési célként?
 
-A StorSimple megfelelő választás az olyan biztonsági mentési cél azért, mert:
+A StorSimple jó választás a biztonsági mentési célra, mert:
 
--   A biztonsági mentési alkalmazások módosítása nélkül a gyors biztonsági mentési célként használni standard, helyi tárolást biztosít. Is használhatja a StorSimple a legújabb biztonsági mentések egy gyors helyreállítás.
--   A felhőbeli rétegezés zökkenőmentesen integrálódik az költséghatékony Azure Storage használatát egy Azure cloud storage-fiókot.
--   Külső helyszíni tárolás vészhelyreállításhoz automatikusan biztosít.
+-   Szabványos, helyi tárterületet biztosít a biztonsági mentési alkalmazások számára, amely a gyors biztonsági mentési célhelyként használható a módosítások nélkül. A legutóbbi biztonsági mentések gyors visszaállításához használhatja a StorSimple-t is.
+-   A felhőalapú rétegek zökkenőmentesen integrálva vannak egy Azure Cloud Storage-fiókkal a költséghatékony Azure Storage használatához.
+-   A szolgáltatás automatikusan kihelyezett tárhelyet biztosít a vész-helyreállításhoz.
 
 
 ## <a name="key-concepts"></a>Fő fogalmak
 
-Csakúgy, mint bármely tárolási megoldás, a megoldás tárolási teljesítményt, SLA-k, gondosan értékelése a változások és kapacitásigények növekedési aránya, kritikus fontosságú sikeres. Lényege, hogy a felhő szintjén, az elérés időpontját és a felhő Play alapvető szerepet ehhez a StorSimple lehetővé teszi a termékváltozatot bevezetésével.
+A tárolási megoldásokhoz hasonlóan a megoldás tárolási teljesítményére, SLA-ra, a változás mértékére és a kapacitás növekedésére vonatkozó igények alapos kiértékelése elengedhetetlen a sikerhez. A fő elképzelés az, hogy a felhőalapú rétegek bevezetésével a felhőbe való hozzáférési idő és az átviteli sebesség alapvető szerepet játszik a StorSimple a feladatához.
 
-A StorSimple célja egy jól definiált munkakészletének (gyakori elérésű) adatokat a tárolás olyan alkalmazások, amelyek működéséhez. Ebben a modellben a helyi rétegeken tárolt adatok munkakészletének, és a fennmaradó Szabadnap, ritka elérésű és archivált adatok készletét többszintű a felhőbe. Ez a modell az alábbi ábrán jelölt. Az egyszerű szinte zöld vonal a helyi rétegeken, a StorSimple-eszközön tárolt adatokat jelöli. A piros vonal minden csomag a StorSimple megoldás a tárolt adatok teljes mennyisége jelenti. A fix keretösszegek zöld vonal és az exponenciális piros görbe közötti távolságot a felhőben tárolt teljes adatmennyiség jelöli.
+A StorSimple úgy lett kialakítva, hogy olyan alkalmazások számára biztosítson tárhelyet, amelyek jól meghatározott munkakészleten (forró adatokon) működnek. Ebben a modellben a munkakészletet a helyi szinten tárolja a rendszer, és a fennmaradó nem működő/hideg/archivált adathalmazt a felhőbe tömöríti. Ez a modell a következő ábrán látható. A közel lapos zöld vonal a StorSimple-eszköz helyi szintjein tárolt adatmennyiséget jelöli. A piros vonal a StorSimple-megoldásban tárolt összes adatmennyiséget jelenti az összes szinten. A Flat zöld vonal és az exponenciális piros görbe közötti térköz a felhőben tárolt összes adatmennyiséget jelöli.
 
-**A StorSimple-rétegezést**
-![StorSimple rétegezési diagramja](./media/storsimple-configure-backup-target-using-veeam/image1.jpg)
+**StorSimple-rétegű**
+![StorSimple-rétegek diagramja](./media/storsimple-configure-backup-target-using-veeam/image1.jpg)
 
-Ezzel az architektúrával szem előtt láthatja, hogy a StorSimple biztonsági mentési célként a művelethez használandó kiválóan alkalmazható. A StorSimple használhatja:
+Ebben az architektúrában azt tapasztalhatja, hogy a StorSimple ideális megoldás biztonsági mentési célként való működésre. A StorSimple a következőre használhatja:
 
--   Az adatok helyi munkakészletének hajtsa végre a leggyakoribb visszaállítások.
--   Visszaállítás esetén ritkábban forduljanak a felhő segítségével a külső helyszíni vészhelyreállításra és a régebbi adatokat.
+-   Végezze el a leggyakoribb visszaállításokat a helyi munkakészletből.
+-   A felhőben a telephelyen kívüli vész-helyreállítást és a régebbi adatmennyiségeket is használhatja, ahol a visszatárolás kevésbé gyakori.
 
 ## <a name="storsimple-benefits"></a>A StorSimple előnyei
 
-A StorSimple-helyszíni megoldást nyújt, amely zökkenőmentesen integrálódik a Microsoft Azure-ral zökkenőmentes hozzáférést előnyeit kihasználva a helyszíni és felhőbeli tárhelyén.
+A StorSimple olyan helyszíni megoldást biztosít, amely zökkenőmentesen integrálható Microsoft Azureekkel a helyszíni és a Felhőbeli tárolás zökkenőmentes elérésének kihasználásával.
 
-A StorSimple használ a helyszíni eszköz, amely tartós állapotú eszköz (SSD) és a soros csatlakozású SCSI (SAS) tárolók rendelkezik, és az Azure Storage között az automatikus rétegezést. Automatikus rétegezést tartja a gyakran használt adatok helyi, az SSD és a SAS rétegeken. Az Azure Storage áthelyezi ritkán használt adatokhoz.
+A StorSimple a helyszíni eszköz (SSD) és a soros csatlakozású SCSI (SAS) tároló, valamint az Azure Storage közötti automatikus adatréteget használ. Az automatikus rétegek az SSD-és SAS-rétegek gyakran hozzáférnek a helyi adatterületekhez. A ritkán használt adatátvitelt az Azure Storage-ba helyezi át.
 
-A StorSimple ezeket az előnyöket kínálja:
+A StorSimple az alábbi előnyöket kínálja:
 
--   A felhő páratlan deduplikáció szintek eléréséhez használó egyedi deduplikáció és a tömörítés algoritmusok
+-   Egyedi deduplikált és tömörítési algoritmusok, amelyek a felhőben használják a példátlanul megkettőzési szintek elérését
 -   Magas rendelkezésre állás
--   Georeplikáció az Azure georeplikáció használatával
--   Az Azure-integráció
+-   Geo-replikáció az Azure geo-Replication használatával
+-   Azure-integráció
 -   Adattitkosítás a felhőben
--   Továbbfejlesztett vész-helyreállítási és megfelelőség
+-   A vész-helyreállítás és-megfelelőség javítása
 
-Bár a StorSimple alapvetően a két fő üzembe helyezési forgatókönyvet (elsődleges biztonsági mentési cél és a másodlagos biztonsági mentési cél) mutat be, egy egyszerű, block storage eszköz. A StorSimple does minden a tömörítés és a deduplikáció. Zökkenőmentesen küld, és lekéri az adatokat a felhőben és az alkalmazások és a fájlrendszer között.
+Bár a StorSimple két fő telepítési forgatókönyvet mutat be (elsődleges biztonsági mentési cél és másodlagos biztonsági mentési cél), alapvetően egyszerű, blokkos tárolóeszköz. A StorSimple végzi a tömörítést és a demásolást. Zökkenőmentesen küldi és kéri le az adatokat a felhő és az alkalmazás és a fájlrendszer között.
 
-További információ a StorSimple: [a StorSimple 8000 sorozat: Hibrid felhőalapú tárolási megoldást](storsimple-overview.md). Emellett áttekintheti a [StorSimple 8000 sorozat műszaki specifikációk](storsimple-technical-specifications-and-compliance.md).
+További információ a StorSimple [: StorSimple 8000 sorozat: Hibrid felhőalapú tárolási megoldás](storsimple-overview.md). Emellett áttekintheti a [technikai StorSimple 8000 sorozatának specifikációit](storsimple-technical-specifications-and-compliance.md).
 
 > [!IMPORTANT]
-> A StorSimple eszköz biztonsági mentési cél használata támogatott csak az a StorSimple 8000-es Update 3 és újabb verziókban.
+> A StorSimple-eszköz biztonsági mentési célként való használata csak a StorSimple 8000 Update 3 és újabb verziók esetében támogatott.
 
 ## <a name="architecture-overview"></a>Az architektúra áttekintése
 
-Az alábbi táblázatokban a modell-architektúra kezdeti útmutató eszközök.
+Az alábbi táblázatok az eszköz modell-architektúra kezdeti útmutatóját mutatják be.
 
-**A helyi StorSimple-kapacitások és a felhőalapú tárolás**
+**StorSimple-kapacitások helyi és Felhőbeli tároláshoz**
 
 | Tárkapacitás | 8100 | 8600 |
 |---|---|---|
 | Helyi tárolási kapacitás | &lt; 10 TiB\*  | &lt; 20 TiB\*  |
 | Felhőalapú tárolási kapacitás | &gt; 200 TiB\* | &gt; 500 TiB\* |
 
-\* Tárméret azt feltételezi, nem a deduplikáció és a tömörítést.
+\*A tárterület mérete feltételezi, hogy nincs ismétlődés vagy tömörítés.
 
-**A StorSimple kapacitások elsődleges és másodlagos biztonsági mentések tiltása**
+**StorSimple kapacitások elsődleges és másodlagos biztonsági mentésekhez**
 
 | Biztonsági mentési forgatókönyv  | Helyi tárolási kapacitás  | Felhőalapú tárolási kapacitás  |
 |---|---|---|
-| Elsődleges biztonsági mentési  | Legutóbbi biztonsági másolatokat készítenie, a gyors helyreállításra helyi tárban tárolt helyreállítási időkorlátot (RPO) | A biztonsági mentési előzményeit (RPO) elfér a felhő kapacitása |
-| Másodlagos biztonsági mentések | Másodlagos példány biztonsági mentési adatok tárolhatók a felhő kapacitása  | –  |
+| Elsődleges biztonsági mentés  | A helyi tárterületen tárolt legutóbbi biztonsági másolatok a helyreállítási időkorlát (RPO) kielégítése érdekében a gyors helyreállítás érdekében | A biztonsági mentési előzmények (RPO) a Felhőbeli kapacitásban is elférnek |
+| Másodlagos biztonsági mentés | A biztonsági mentési adatmennyiség másodlagos másolata a Felhőbeli kapacitásban tárolható  | –  |
 
-## <a name="storsimple-as-a-primary-backup-target"></a>A StorSimple mint elsődleges biztonsági mentési cél
+## <a name="storsimple-as-a-primary-backup-target"></a>StorSimple elsődleges biztonsági mentési célként
 
-Ebben a forgatókönyvben a StorSimple-köteteket a biztonsági mentési alkalmazásnak, mint a biztonsági mentések egyetlen tárház jelennek meg. A következő ábrán látható a megoldás architektúrája, amelyben az összes biztonsági mentés használata a StorSimple rétegzett kötetek biztonsági mentéseket és helyreállításokat.
+Ebben a forgatókönyvben a StorSimple-kötetek a biztonsági mentési alkalmazásba kerülnek, mint a biztonsági mentések egyetlen tárháza. Az alábbi ábra egy megoldási architektúrát mutat be, amelyben az összes biztonsági mentés StorSimple rétegű köteteket használ a biztonsági mentéshez és a visszaállításhoz.
 
-![A StorSimple mint egy elsődleges biztonsági mentési cél logikai diagramja](./media/storsimple-configure-backup-target-using-veeam/primarybackuptargetlogicaldiagram.png)
+![StorSimple elsődleges biztonsági mentési cél logikai diagramként](./media/storsimple-configure-backup-target-using-veeam/primarybackuptargetlogicaldiagram.png)
 
-### <a name="primary-target-backup-logical-steps"></a>A cél elsődleges biztonsági mentési logikai lépésekre
+### <a name="primary-target-backup-logical-steps"></a>Elsődleges cél biztonsági mentési logikai lépései
 
-1.  A biztonsági mentési kiszolgálóra kapcsolatba lép a biztonsági mentési célügynököt a számítógépre, és a biztonsági mentési ügynök továbbítja az adatokat a biztonsági mentési kiszolgálóra.
-2.  A biztonsági mentési kiszolgálóra írja az adatokat a StorSimple a rétegzett köteteket.
-3.  A biztonsági mentési kiszolgálóra frissíti a katalógus-adatbázisban, és ezután befejezi a biztonsági mentési feladat.
-4.  A pillanatkép-parancsfájl elindítja a StorSimple snapshot felhőkezelő (kezdő vagy törlés).
-5.  A biztonsági mentési kiszolgálóra törli a lejárt biztonsági mentés a megőrzési házirend alapján.
+1.  A biztonsági mentési kiszolgáló kapcsolatba lép a cél biztonsági mentési ügynökkel, és a biztonsági mentési ügynök adatokat küld a biztonsági mentési kiszolgálónak.
+2.  A biztonsági mentési kiszolgáló beírja az adatot a StorSimple rétegű kötetekre.
+3.  A biztonsági mentési kiszolgáló frissíti a katalógus-adatbázist, majd befejezi a biztonsági mentési feladatot.
+4.  A pillanatkép-parancsfájlok elindítja a StorSimple Cloud Snapshot Managert (Indítás vagy törlés).
+5.  A biztonsági mentési kiszolgáló egy adatmegőrzési házirend alapján törli a lejárt biztonsági másolatokat.
 
-### <a name="primary-target-restore-logical-steps"></a>Elsődleges cél visszaállítási logikai lépésekre
+### <a name="primary-target-restore-logical-steps"></a>Elsődleges cél visszaállításának logikai lépései
 
-1.  A biztonsági mentési kiszolgálóra indítja el a megfelelő adatok visszaállítása a storage-adattárból.
-2.  A backup-ügynök az adatokat fogad a biztonsági mentési kiszolgálóra.
-3.  A biztonsági mentési kiszolgálóra a visszaállítási feladat befejeződik.
+1.  A biztonsági mentési kiszolgáló elindítja a megfelelő adatok visszaállítását a tároló adattárból.
+2.  A biztonságimásolat-készítő ügynök fogadja az adatait a biztonsági mentési kiszolgálóról.
+3.  A biztonsági mentési kiszolgáló befejezi a visszaállítási feladatot.
 
-## <a name="storsimple-as-a-secondary-backup-target"></a>A StorSimple mint másodlagos biztonsági mentési cél
+## <a name="storsimple-as-a-secondary-backup-target"></a>StorSimple másodlagos biztonsági mentési célként
 
-Ebben a forgatókönyvben StorSimple-kötetek vannak elsősorban a hosszú távú megőrzés és archiválása.
+Ebben az esetben a StorSimple-köteteket elsősorban hosszú távú adatmegőrzésre vagy archiválásra használják.
 
-Az alábbi ábra az architektúra látható melyik kezdeti biztonsági mentés, és visszaállítja a célkötet egy nagy teljesítményű. Ezeket a biztonsági másolatokat másolják és a egy StorSimple archivált rétegzett kötet egy beállított ütemezés szerint.
+Az alábbi ábra egy olyan architektúrát mutat be, amelyben a kezdeti biztonsági mentések és visszaállítja a cél nagy teljesítményű kötetet. Ezeket a biztonsági másolatokat a rendszer átmásolja és archiválja egy StorSimple rétegű kötetre egy beállított ütemezés szerint.
 
-Fontos a nagy teljesítményű kötet méretezéséhez, így képes kezelni a megőrzési házirend kapacitás és teljesítmény követelményeinek.
+Fontos a nagy teljesítményű kötet méretezése, hogy kezelni tudja az adatmegőrzési házirend kapacitását és a teljesítményre vonatkozó követelményeket.
 
-![A StorSimple mint egy másodlagos biztonsági mentési cél logikai diagramja](./media/storsimple-configure-backup-target-using-veeam/secondarybackuptargetlogicaldiagram.png)
+![StorSimple másodlagos biztonsági mentési célként szolgáló logikai diagramként](./media/storsimple-configure-backup-target-using-veeam/secondarybackuptargetlogicaldiagram.png)
 
-### <a name="secondary-target-backup-logical-steps"></a>Másodlagos cél biztonsági mentési logikai lépésekre
+### <a name="secondary-target-backup-logical-steps"></a>Másodlagos cél biztonsági mentési logikai lépései
 
-1.  A biztonsági mentési kiszolgálóra kapcsolatba lép a biztonsági mentési célügynököt a számítógépre, és a biztonsági mentési ügynök továbbítja az adatokat a biztonsági mentési kiszolgálóra.
-2.  A biztonsági mentési kiszolgálóra írja az adatokat a nagy teljesítményű tárolást.
-3.  A biztonsági mentési kiszolgálóra frissíti a katalógus-adatbázisban, és ezután befejezi a biztonsági mentési feladat.
-4.  A biztonsági mentési kiszolgálóra másol adatmegőrzési alapuló StorSimple biztonsági mentéseket.
-5.  A pillanatkép-parancsfájl elindítja a StorSimple snapshot felhőkezelő (kezdő vagy törlés).
-6.  A biztonsági mentési kiszolgálóra törli a lejárt biztonsági mentés a megőrzési házirend alapján.
+1.  A biztonsági mentési kiszolgáló kapcsolatba lép a cél biztonsági mentési ügynökkel, és a biztonsági mentési ügynök adatokat küld a biztonsági mentési kiszolgálónak.
+2.  A biztonsági mentési kiszolgáló a nagy teljesítményű tárolóba írja az adatot.
+3.  A biztonsági mentési kiszolgáló frissíti a katalógus-adatbázist, majd befejezi a biztonsági mentési feladatot.
+4.  A biztonsági mentési kiszolgáló egy adatmegőrzési házirend alapján másolja a biztonsági másolatokat a StorSimple.
+5.  A pillanatkép-parancsfájlok elindítja a StorSimple Cloud Snapshot Managert (Indítás vagy törlés).
+6.  A biztonsági mentési kiszolgáló egy adatmegőrzési házirend alapján törli a lejárt biztonsági másolatokat.
 
-### <a name="secondary-target-restore-logical-steps"></a>Másodlagos cél visszaállítási logikai lépésekre
+### <a name="secondary-target-restore-logical-steps"></a>Másodlagos cél visszaállításának logikai lépései
 
-1.  A biztonsági mentési kiszolgálóra indítja el a megfelelő adatok visszaállítása a storage-adattárból.
-2.  A backup-ügynök az adatokat fogad a biztonsági mentési kiszolgálóra.
-3.  A biztonsági mentési kiszolgálóra a visszaállítási feladat befejeződik.
+1.  A biztonsági mentési kiszolgáló elindítja a megfelelő adatok visszaállítását a tároló adattárból.
+2.  A biztonságimásolat-készítő ügynök fogadja az adatait a biztonsági mentési kiszolgálóról.
+3.  A biztonsági mentési kiszolgáló befejezi a visszaállítási feladatot.
 
 ## <a name="deploy-the-solution"></a>A megoldás üzembe helyezése
 
-A megoldás üzembe helyezése három lépésből áll:
+A megoldás üzembe helyezéséhez három lépés szükséges:
 
 1. Készítse elő a hálózati infrastruktúrát.
-2. A StorSimple eszköz üzembe helyezése egy biztonsági mentési célként.
-3. Helyezze üzembe a Veeam.
+2. Telepítse a StorSimple-eszközt biztonsági mentési célként.
+3. Telepítse a Veeam.
 
-Az egyes lépések a következő szakaszokban részletesen tárgyalja.
+A következő szakaszokban részletesen ismertetjük az egyes lépéseket.
 
 ### <a name="set-up-the-network"></a>A hálózat beállítása
 
-Mivel a StorSimple olyan megoldás, amely integrálva van az Azure-felhőben, a StorSimple szükséges egy aktív és az Azure-felhőben működő kapcsolatot. Ehhez a kapcsolathoz a műveletek, mint például a felhőbeli pillanatképekkel, a felügyeletéhez és a metaadatok adatforgalom szolgál, és a régebbi szintre, kisebb használt adatokat pedig az Azure felhőalapú tárolást.
+Mivel a StorSimple olyan megoldás, amely integrálva van az Azure-felhővel, a StorSimple aktív és működő kapcsolattal kell rendelkeznie az Azure-felhővel. Ez a kapcsolat olyan műveletekhez használatos, mint a Felhőbeli Pillanatképek, az adatkezelés és a metaadatok átvitele, valamint a régebbi, kevésbé elérhető adatok leválasztása az Azure Cloud Storage-ba.
 
-A megoldás optimális működéséhez javasoljuk, hogy kövesse az ajánlott eljárások követésével hálózati:
+A megoldás optimális végrehajtása érdekében javasoljuk, hogy kövesse ezeket a hálózatkezelési ajánlott eljárásokat:
 
--   A hivatkozás, amely a StorSimple rétegezés szolgáltatással az Azure-meg kell felelnie a sávszélesség-követelmények. Ennek érdekében a szolgáltatásminőség (QoS) szükséges szintű alkalmaz az infrastruktúra vált felel meg a helyreállítási Időkorlát és a helyreállítási idő célkitűzése (RTO) SLA-k.
--   Maximális Azure Blob storage hozzáférési késések körülbelül 80 ms kell lennie.
+-   A StorSimple-rétegek Azure-hoz való csatlakoztatására szolgáló hivatkozásnak meg kell felelnie a sávszélességre vonatkozó követelményeknek. Ezt úgy érheti el, ha a szükséges szolgáltatásminőség (QoS) szintet alkalmazza az infrastruktúra-kapcsolókra, hogy megfeleljen a RPO és a helyreállítási idő célkitűzésének (RTO) SLA-nak.
+-   Az Azure Blob Storage-hozzáférési késések maximális száma 80 MS lehet.
 
-### <a name="deploy-storsimple"></a>A StorSimple üzembe helyezése
+### <a name="deploy-storsimple"></a>StorSimple üzembe helyezése
 
-A StorSimple üzembe helyezési útmutatót lépésről lépésre, lásd: [a helyszíni StorSimple eszköz üzembe helyezése](storsimple-deployment-walkthrough-u2.md).
+A részletes StorSimple üzembe helyezési útmutató: a helyszíni [StorSimple-eszköz üzembe helyezése](storsimple-deployment-walkthrough-u2.md).
 
 ### <a name="deploy-veeam"></a>Veeam üzembe helyezése
 
-Veeam gyakorlati tanácsok a telepítéshez, lásd: [Veeam biztonsági mentés és replikáció ajánlott eljárások](https://bp.veeam.expert/), és olvassa el a felhasználói útmutatójának következő [Veeam súgóközpont (műszaki dokumentáció)](https://www.veeam.com/documentation-guides-datasheets.html).
+A Veeam-telepítéssel kapcsolatos ajánlott eljárásokért tekintse meg a [Veeam biztonsági mentése & replikáció ajánlott eljárásai](https://bp.veeam.expert/)című témakört, és olvassa el a felhasználói útmutatót a [Veeam súgójában (technikai dokumentáció)](https://www.veeam.com/documentation-guides-datasheets.html).
 
 ## <a name="set-up-the-solution"></a>A megoldás beállítása
 
-Ebben a szakaszban bemutatjuk, hogyan konfigurációs példákat. A következő példák és javaslatok bemutatják az alapszintű és a alapvető végrehajtására. Ez a megvalósítás nem feltétlenül vonatkoznak közvetlenül az adott biztonsági mentés követelményeinek.
+Ebben a szakaszban néhány konfigurációs példát mutatunk be. Az alábbi példák és javaslatok a legalapvetőbb és alapvető implementációt szemléltetik. Előfordulhat, hogy ez a megvalósítás nem vonatkozik közvetlenül az adott biztonsági mentési követelményekre.
 
-### <a name="set-up-storsimple"></a>A StorSimple beállítása
+### <a name="set-up-storsimple"></a>StorSimple beállítása
 
-| A StorSimple üzembe helyezési feladatok  | További megjegyzések |
+| StorSimple üzembe helyezési feladatai  | További megjegyzések |
 |---|---|
-| A helyszíni StorSimple eszköz üzembe helyezése. | Támogatott verziók: 3. frissítés és újabb verziókban. |
-| Kapcsolja be a biztonsági mentési cél. | A parancsok használatához kapcsolja be, vagy kapcsolja ki a biztonsági mentési cél módot, és állapotának beolvasása. További információkért lásd: [távolról csatlakozhat a StorSimple eszköz](storsimple-remote-connect.md).</br> Kapcsolja be a biztonsági mentés módja: `Set-HCSBackupApplianceMode -enable`. </br> Tiltsa le a biztonsági mentés módja: `Set-HCSBackupApplianceMode -disable`. </br> A biztonsági mentési beállításainak aktuális állapotának: `Get-HCSBackupApplianceMode`. |
-| A kötet, amely tárolja a biztonsági mentési adatok közös kötettároló létrehozása. A kötettároló összes adat deduplikált. | A StorSimple-kötettároló deduplikáció tartományok definiálása.  |
-| A StorSimple-köteteket hozhat létre. | Hozzon létre köteteket méretű, a várható használati közeli lehetséges, mert a kötet mérete befolyásolja a felhőbeli pillanatkép időtartamát. A kötet méretének kapcsolatos információkért olvassa el [adatmegőrzési szabályzatok](#retention-policies).</br> </br> Az StorSimple rétegzett köteteket, és válassza ki a **kötet használata ritkábban használt archív adatokhoz** jelölőnégyzetet. </br> Csak a helyileg rögzített kötetekről használata nem támogatott. |
-| A biztonsági mentési cél-kötetek egyedi StorSimple biztonsági mentési szabályzat létrehozása. | A StorSimple biztonsági mentési szabályzat határozza meg a kötet konzisztencia csoport. |
-| Tiltsa le az ütemezés a, a pillanatképek lejár. | A pillanatképek utófeldolgozási műveletként aktiválódnak. |
+| A helyszíni StorSimple-eszköz üzembe helyezése. | Támogatott verziók: A 3. és újabb verziók frissítése. |
+| Kapcsolja be a biztonsági mentési célt. | Ezekkel a parancsokkal bekapcsolhatja vagy kikapcsolhatja a biztonsági mentési cél üzemmódot, és lekérheti az állapotot. További információ: [távoli kapcsolódás StorSimple-eszközhöz](storsimple-remote-connect.md).</br> A biztonsági mentési mód bekapcsolása: `Set-HCSBackupApplianceMode -enable`. </br> A biztonsági mentési mód kikapcsolásához: `Set-HCSBackupApplianceMode -disable`. </br> A biztonsági mentési mód beállításainak aktuális állapotának beolvasása: `Get-HCSBackupApplianceMode`. |
+| Hozzon létre egy közös mennyiségi tárolót a kötethez, amely a biztonsági mentési adatait tárolja. A mennyiségi tárolóban lévő összes érték deduplikált. | A StorSimple mennyiségi tárolók a deduplikáló tartományokat határozzák meg.  |
+| Hozzon létre StorSimple-köteteket. | Hozzon létre a méretekkel rendelkező köteteket a lehető leghamarabb a várt használathoz, mert a kötet mérete befolyásolja a Felhőbeli pillanatkép időtartamát. További információ a kötetek méretének megtartásáról: adatmegőrzési [szabályzatok](#retention-policies).</br> </br> Használjon StorSimple rétegű köteteket, és jelölje be a **kötet használata a ritkábban** használt archiválási mezőkhöz jelölőnégyzetet. </br> Csak a helyileg rögzített kötetek használata nem támogatott. |
+| Hozzon létre egy egyedi StorSimple biztonsági mentési szabályzatot az összes biztonsági mentési cél kötethez. | A StorSimple biztonsági mentési szabályzata határozza meg a kötet konzisztencia-csoportját. |
+| Tiltsa le az ütemtervet, mivel a pillanatképek lejárnak. | A pillanatképek feldolgozás utáni műveletként lesznek aktiválva. |
 
-### <a name="set-up-the-host-backup-server-storage"></a>A gazdagép kiszolgáló biztonsági mentési tároló beállítása
+### <a name="set-up-the-host-backup-server-storage"></a>A gazdagép biztonsági mentési kiszolgáló tárterületének beállítása
 
-Állítsa be a kiszolgáló biztonsági mentési tárolók szerint ezeket az irányelveket:  
+Állítsa be a gazdagép biztonsági mentési kiszolgálójának tárolóját az alábbi irányelvek szerint:  
 
-- Ne használjon átnyúló kötetek (a Windows Lemezkezelés által létrehozott). Átnyúló kötetek nem támogatottak.
-- Formázza a köteteket, az NTFS Fájlrendszerrel rendelkező 64 KB-os foglalási egység méretét.
-- Közvetlenül a Veeam kiszolgáló képezze le a StorSimple-köteteket.
-    - ISCSI használata a fizikai kiszolgálók számára.
+- Ne használjon átfedő köteteket (amelyet a Windows Lemezkezelés hozott létre). Az átfedő kötetek nem támogatottak.
+- Formázza a köteteket az NTFS használatával a 64-KB kiosztási egység méretével.
+- Rendelje hozzá a StorSimple-köteteket közvetlenül a Veeam-kiszolgálóhoz.
+    - Használjon iSCSI-t fizikai kiszolgálókhoz.
 
 
-## <a name="best-practices-for-storsimple-and-veeam"></a>A StorSimple és a Veeam ajánlott eljárásai
+## <a name="best-practices-for-storsimple-and-veeam"></a>Ajánlott eljárások a StorSimple és a Veeam
 
-Állítsa be a megoldás az Guidelines irányelveinek megfelelően a következő néhány szakaszban.
+A megoldást a következő néhány szakaszban található irányelvek alapján állíthatja be.
 
-### <a name="operating-system-best-practices"></a>Operációs rendszer ajánlott eljárások
+### <a name="operating-system-best-practices"></a>Az operációs rendszerre vonatkozó ajánlott eljárások
 
-- Tiltsa le a Windows Server titkosítás és az adatdeduplikáció az NTFS fájlrendszerhez.
-- Tiltsa le a StorSimple-köteteket a Windows Server töredezettségmentesítése.
-- A StorSimple-köteteket a Windows Server-indexelés letiltása.
-- (Nem a StorSimple-kötetek) szemben a forrás gazdagép víruskeresést futtatni.
-- Kapcsolja ki az alapértelmezett [Windows Server karbantartási](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx) a Feladatkezelő. Ehhez a következő módszerek valamelyikével:
-  - Kapcsolja ki a karbantartási konfiguráló a Windows Feladatütemező.
-  - Töltse le [PsExec](https://technet.microsoft.com/sysinternals/bb897553.aspx) a Windows Sysinternals. PsExec a letöltés után futtassa a Windows PowerShell, rendszergazdaként, majd írja be:
+- Tiltsa le a Windows Server-titkosítást és a deduplikált fájlrendszert az NTFS fájlrendszerben.
+- Tiltsa le a Windows Server töredezettségmentesítését a StorSimple köteteken.
+- Tiltsa le a Windows Server-indexelést a StorSimple köteteken.
+- Futtasson víruskereső-vizsgálatot a forrás gazdagépen (ne a StorSimple-köteteken).
+- A [Windows Server](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx) alapértelmezett karbantartásának kikapcsolása a Feladatkezelő eszközben. Ezt a következő módszerek egyikével teheti meg:
+  - Kapcsolja ki a karbantartási konfigurátort a Windows Feladatütemezőben.
+  - Töltse le a [PsExec](https://technet.microsoft.com/sysinternals/bb897553.aspx) a Windows Sysinternals webhelyről. A PsExec letöltése után futtassa a Windows PowerShellt rendszergazdaként, és írja be a következőt:
     ```powershell
     psexec \\%computername% -s schtasks /change /tn “MicrosoftWindowsTaskSchedulerMaintenance Configurator" /disable
     ```
 
-### <a name="storsimple-best-practices"></a>A StorSimple-ajánlott eljárások
+### <a name="storsimple-best-practices"></a>StorSimple ajánlott eljárások
 
--   Győződjön meg, hogy a StorSimple-eszköz frissül, és [Update 3 vagy újabb](storsimple-install-update-3.md).
--   Elkülönítheti az iSCSI és a felhőalapú forgalom. Dedikált iSCSI-kapcsolatok használata a StorSimple és a biztonsági mentési kiszolgálóra közötti adatforgalmat.
--   Győződjön meg arról, hogy a StorSimple-eszköz-e a biztonsági mentési cél dedikált. Vegyes számítási feladatok nem támogatottak, mert ezek hatással az RTO és RPO.
+-   Győződjön meg arról, hogy a StorSimple-eszköz frissült a [3. vagy újabb frissítéssel](storsimple-install-update-3.md).
+-   Az iSCSI-és a Felhőbeli forgalom elkülönítése. Dedikált iSCSI-kapcsolatok használata a StorSimple és a biztonsági mentési kiszolgáló közötti adatforgalomhoz.
+-   Győződjön meg arról, hogy a StorSimple-eszköz dedikált biztonsági mentési cél. A vegyes munkaterhelések nem támogatottak, mert hatással vannak a RTO és a RPO.
 
 ### <a name="veeam-best-practices"></a>Veeam ajánlott eljárások
 
--   A Veeam adatbázis kell elhelyezkednie, a kiszolgáló és a StorSimple-kötet nem található.
--   Vész-helyreállítási adatbázis biztonsági mentése a Veeam a StorSimple-kötet.
--   Ebben a megoldásban támogatjuk a Veeam teljes és növekményes biztonsági mentéseket. Azt javasoljuk, hogy nem használja szintetikus és különbségi biztonsági mentés.
--   Biztonsági mentési adatok fájljaihoz tartalmaznia kell egy adott feladat csak az adatokat. Nincs adathordozó például fűzi hozzá több különböző feladatok használata engedélyezett.
--   Kapcsolja ki az ellenőrzési feladat. Ha szükséges, ellenőrzése után a legújabb biztonsági mentési feladat lehet ütemezni. Fontos megérteni, hogy ez a feladat a biztonsági mentés időszakának érinti-e.
--   Kapcsolja be a media előzetes lefoglalás.
--   Győződjön meg arról, hogy párhuzamos feldolgozási be van kapcsolva.
--   Kikapcsolja a tömörítést.
--   Kapcsolja ki a deduplikáció a biztonsági mentési feladat.
--   Optimalizálás beállítása **LAN cél**.
--   Kapcsolja be a **létrehozás aktív teljes biztonsági mentés** (minden második héten).
--   A biztonsági mentési tárházban beállítása **VM-enkénti biztonságimásolat-fájlok használata**.
--   Állítsa be **feladatonként több feltöltési adatfolyam használata** való **8** (engedélyezett egy legfeljebb 16). Állítsa be ezt az értéket felfelé vagy lefelé a StorSimple-eszközön a processzorhasználat alapján.
+-   A Veeam-adatbázisnak helyinek kell lennie a kiszolgálón, és nem StorSimple-köteten található.
+-   Vész-helyreállítás esetén a Veeam-adatbázis biztonsági mentése egy StorSimple-köteten.
+-   A megoldás Veeam teljes és növekményes biztonsági mentéseket támogatunk. Javasoljuk, hogy ne használjon szintetikus és különbözeti biztonsági mentést.
+-   A biztonsági mentési adatfájloknak csak egy adott feladattípushoz tartozó adatoknak kell szerepelniük. Például a különböző feladatokhoz tartozó adathordozók nem adhatók hozzá.
+-   A feladatok ellenőrzésének kikapcsolása. Ha szükséges, az ellenőrzést a legutóbbi biztonsági mentési feladatot követően kell ütemezni. Fontos tisztában lenni azzal, hogy ez a művelet hatással van a biztonsági mentés ablakára.
+-   Az adathordozó előzetes kiosztásának bekapcsolása.
+-   Győződjön meg arról, hogy a párhuzamos feldolgozás be van kapcsolva.
+-   Kapcsolja ki a tömörítést.
+-   Kapcsolja ki a deduplikálás szolgáltatást a biztonsági mentési feladatokon.
+-   A LAN- **cél**optimalizálásának beállítása.
+-   Kapcsolja be az **aktív teljes biztonsági mentést** (2 hetente).
+-   A biztonsági mentési tárházban állítsa be a virtuális gépeken futó **biztonságimásolat-fájlok használatát**.
+-   Állítsa be a **több feltöltési streamet** a feladatokhoz a **8** értékre (legfeljebb 16 engedélyezett). Állítsa be vagy le ezt a számot a StorSimple-eszköz CPU-kihasználtsága alapján.
 
 ## <a name="retention-policies"></a>Adatmegőrzési házirendek
 
-A leggyakrabban használt biztonsági másolatok megőrzési házirend-típusainak egyikét egy, a Nagyapa Father és Lányomtól (GFS) szabályzat. GFS házirendben a növekményes biztonsági mentés naponta történik, és teljes biztonsági mentés heti és havi végzett. A csoportházirend-eredményhez hat StorSimple-ben rétegzett köteteket: egy kötetet tartalmaz a heti, havi és éves teljes biztonsági másolatokat; a többi öt kötetek napi növekményes biztonsági másolatok tárolására.
+Az egyik leggyakoribb biztonsági mentési adatmegőrzési szabály a nagyapa, az Atya és a Son (GFS) szabályzat. A GFS-szabályzatokban a növekményes biztonsági mentés naponta történik, és a teljes biztonsági mentés hetente és havonta történik. Ez a házirend hat StorSimple rétegbeli kötetet eredményez: az egyik kötet a hetente, havonta és évenként teljes biztonsági mentést tartalmaz. a másik öt kötet napi növekményes biztonsági mentéseket tárol.
 
-A következő példában egy GFS Elforgatás használjuk. A példa feltételezi, hogy a következő:
+A következő példában egy GFS rotációt használunk. A példa a következőket feltételezi:
 
--   A nem deduplikált vagy tömörített adatok szolgál.
--   Teljes biztonsági mentés olyan minden 1 Tib-ra.
--   Napi növekményes biztonsági mentések 500 GiB.
--   Négy heti biztonsági mentései egy hónapig őrzi meg.
--   12 havi biztonsági mentések egy évig őrzi meg.
--   Egy éves biztonsági másolatok 10 évig.
+-   A nem deduplikált vagy tömörített adatértékek használatban vannak.
+-   A teljes biztonsági mentések mindegyike 1 TiB.
+-   A napi növekményes biztonsági mentések a 500 GiB.
+-   Négy heti biztonsági mentést tartanak egy hónapig.
+-   A tizenkét havi biztonsági mentés egy évig tart.
+-   Egy éves biztonsági mentés 10 évig tart.
 
-Az előző Előfeltevések alapján hozzon létre egy 26-TiB StorSimple rétegzett kötet a havi és éves teljes biztonsági mentéseket. Hozzon létre egy 5 TiB StorSimple rétegzett kötet a napi növekményes biztonsági mentések mindegyike esetében.
+Az előző feltételezések alapján hozzon létre egy 26 TiB-es StorSimple-rétegbeli kötetet a havi és az éves teljes biztonsági mentéshez. Hozzon létre egy 5 TiB-es StorSimple a növekményes napi biztonsági mentésekhez.
 
-| Biztonsági másolat megőrzése | Méret (TiB) | GFS szorzó\* | Teljes kapacitás (TiB)  |
+| Biztonságimásolat-típus megőrzése | Méret (TiB) | GFS szorzó\* | Teljes kapacitás (TiB)  |
 |---|---|---|---|
-| Heti teljes | 1 | 4  | 4 |
-| Napi növekményes | 0,5 | 20 (ciklusok egyenlő hetek száma / hó) | 12 (2 további kvótáért.) |
-| Teljes havi | 1 | 12 | 12 |
-| Éves teljes | 1  | 10 | 10 |
+| Hetente megtelt | 1 | 4  | 4 |
+| Napi növekmény | 0,5 | 20 (ciklusban egyenlő számú hét havonta) | 12 (2 a további kvóta esetében) |
+| Havi teljes | 1 | 12 | 12 |
+| Évenként megtelt | 1  | 10 | 10 |
 | GFS követelmény |   | 38 |   |
-| További kvótát  | 4  |   | 42 teljes GFS követelmény  |
+| További kvóta  | 4  |   | 42 teljes GFS-követelmény  |
 
-\* GFS szorzó példányszám történő védelme, és a biztonsági mentési szabályzat követelményeinek szüksége.
+\*A GFS-szorzó a védelemhez szükséges másolatok száma, és megtartja a biztonsági mentési szabályzat követelményeinek teljesítését.
 
-## <a name="set-up-veeam-storage"></a>Veeam tárolás beállítása
+## <a name="set-up-veeam-storage"></a>Veeam-tároló beállítása
 
-### <a name="to-set-up-veeam-storage"></a>A Veeam tárolás beállítása
+### <a name="to-set-up-veeam-storage"></a>Veeam-tároló beállítása
 
-1.  A Veeam biztonsági mentésének és replikációjának-konzolon a **tárház eszközök**, lépjen a **biztonsági mentési infrastruktúra**. Kattintson a jobb gombbal **Backup Tárházak**, majd válassza ki **Backup-adattár hozzáadása**.
+1.  A Veeam biztonsági mentési és replikációs konzoljának **adattár eszközei**területén lépjen a **biztonsági mentési infrastruktúra**elemre. Kattintson a jobb gombbal a **biztonsági másolatok**tárházai elemre, majd válassza a **biztonsági mentési adattár hozzáadása**elemet.
 
-    ![Veeam felügyeleti konzolt, biztonsági mentési adattár oldalát](./media/storsimple-configure-backup-target-using-veeam/veeamimage1.png)
+    ![Veeam felügyeleti konzol, biztonsági mentési adattár lapja](./media/storsimple-configure-backup-target-using-veeam/veeamimage1.png)
 
-2.  Az a **új Backup-tárház** párbeszédpanelen adja meg egy nevet és leírást a tárházban. Kattintson a **Tovább** gombra.
+2.  Az **új biztonsági másolat adattára** párbeszédpanelen adja meg az adattár nevét és leírását. Kattintson a **Tovább** gombra.
 
-    ![Veeam felügyeleti konzolt, neve és leírása lap](./media/storsimple-configure-backup-target-using-veeam/veeamimage2.png)
+    ![Veeam felügyeleti konzol, név és leírás lap](./media/storsimple-configure-backup-target-using-veeam/veeamimage2.png)
 
-3.  Válassza ki a típus **Microsoft Windows server**. Válassza ki a Veeam kiszolgálót. Kattintson a **Tovább** gombra.
+3.  A típushoz válassza a **Microsoft Windows Server**lehetőséget. Válassza ki a Veeam-kiszolgálót. Kattintson a **Tovább** gombra.
 
-    ![Veeam felügyeleti konzolt, biztonsági mentési tárház select típusa](./media/storsimple-configure-backup-target-using-veeam/veeamimage3.png)
+    ![Veeam felügyeleti konzol, válassza ki a biztonsági mentési adattár típusát](./media/storsimple-configure-backup-target-using-veeam/veeamimage3.png)
 
-4.  Adja meg a **hely**, keresse meg és válassza ki a kötetet. Válassza ki a **korlátozza az egyidejű feladatok maximális:** négyzet jelölését, majd állítsa az értékét **4**. Ez biztosítja, hogy csak négy virtuális lemezek feldolgozott egyidejű, amíg minden virtuális gép (VM) feldolgozása. Válassza ki a **speciális** gombra.
+4.  A **hely**megadásához keresse meg és válassza ki a kötetet. Jelölje be az **egyidejű feladatok maximális száma a** következőre: jelölőnégyzetet, és állítsa be az értéket **4**-re. Ez biztosítja, hogy az egyes virtuális gépek (VM-EK) feldolgozása során egyszerre csak négy virtuális lemez legyen feldolgozva. Kattintson a **speciális** gombra.
 
-    ![Veeam felügyeleti konzolon válassza a kötet](./media/storsimple-configure-backup-target-using-veeam/veeamimage4.png)
+    ![Veeam felügyeleti konzol, kötet kiválasztása](./media/storsimple-configure-backup-target-using-veeam/veeamimage4.png)
 
 
-5.  Az a **tárolási kompatibilitási beállítások** párbeszédpanelen válassza ki a **VM-enkénti biztonságimásolat-fájlok használata** jelölőnégyzetet.
+5.  A **tárolási kompatibilitási beállítások** párbeszédpanelen jelölje be a virtuális gépekre vonatkozó **biztonságimásolat-fájlok használata** jelölőnégyzetet.
 
-    ![Veeam felügyeleti konzolt, tárolási kompatibilitási beállítások](./media/storsimple-configure-backup-target-using-veeam/veeamimage5.png)
+    ![Veeam felügyeleti konzol, tárolási kompatibilitási beállítások](./media/storsimple-configure-backup-target-using-veeam/veeamimage5.png)
 
-6.  Az a **új Backup-tárház** párbeszédpanelen válassza ki a **vPower NFS szolgáltatást a (javasolt) csatlakoztatási kiszolgálón engedélyezze** jelölőnégyzetet. Kattintson a **Tovább** gombra.
+6.  Az **új biztonsági másolat tárháza** párbeszédpanelen jelölje be a **vPower NFS-szolgáltatás engedélyezése a csatlakoztatási kiszolgálón (ajánlott)** jelölőnégyzetet. Kattintson a **Tovább** gombra.
 
-    ![Veeam felügyeleti konzolt, biztonsági mentési adattár oldalát](./media/storsimple-configure-backup-target-using-veeam/veeamimage6.png)
+    ![Veeam felügyeleti konzol, biztonsági mentési adattár lapja](./media/storsimple-configure-backup-target-using-veeam/veeamimage6.png)
 
-7.  Tekintse át a beállításokat, és válassza ki **tovább**.
+7.  Tekintse át a beállításokat, majd kattintson a **tovább**gombra.
 
-    ![Veeam felügyeleti konzolt, biztonsági mentési adattár oldalát](./media/storsimple-configure-backup-target-using-veeam/veeamimage7.png)
+    ![Veeam felügyeleti konzol, biztonsági mentési adattár lapja](./media/storsimple-configure-backup-target-using-veeam/veeamimage7.png)
 
-    Egy adattár a Veeam kiszolgálóra kerül.
+    A rendszer felvesz egy adattárat a Veeam-kiszolgálóra.
 
-## <a name="set-up-storsimple-as-a-primary-backup-target"></a>Állítsa be a StorSimple elsődleges biztonsági mentési cél
+## <a name="set-up-storsimple-as-a-primary-backup-target"></a>A StorSimple beállítása elsődleges biztonsági mentési célként
 
 > [!IMPORTANT]
-> Adatok visszaállítása biztonsági tartozik a felhőben lett rétegzett felhőbeli sebességgel következik be.
+> A felhőbe felkészített biztonsági mentésből származó adatok visszaállítása Felhőbeli sebességgel történik.
 
-Az alábbi ábrán egy tipikus kötetet a biztonsági mentési feladat hozzárendelését. Ebben az esetben a heti biztonsági mentések leképezése a szombat teljes lemezt, és a növekményes biztonsági mentések leképezése hétfőtől péntekig növekményes lemezeket. A biztonsági mentéseket és helyreállításokat vannak a storsimple-kötet összes rétegzett kötet.
+Az alábbi ábra egy tipikus kötet hozzárendelését mutatja be egy biztonsági mentési feladathoz. Ebben az esetben az összes heti biztonsági mentés a szombat teljes lemezre mutat, a növekményes biztonsági mentések pedig a hétfő péntekig növekményes lemezeket képeznek. Az összes biztonsági mentés és visszaállítás egy StorSimple rétegű kötetről származik.
 
-![Elsődleges biztonsági mentési célként megadott konfigurációs logikai diagramja](./media/storsimple-configure-backup-target-using-veeam/primarybackuptargetdiagram.png)
+![Elsődleges biztonsági mentési cél konfigurációjának logikai diagramja](./media/storsimple-configure-backup-target-using-veeam/primarybackuptargetdiagram.png)
 
-### <a name="storsimple-as-a-primary-backup-target-gfs-schedule-example"></a>A StorSimple mint elsődleges biztonsági mentési cél GFS példa ütemezése
+### <a name="storsimple-as-a-primary-backup-target-gfs-schedule-example"></a>StorSimple elsődleges biztonsági mentési cél GFS – példa
 
-Íme egy példa négy hét, havi és évi GFS Elforgatás ütemezését:
+Íme egy példa egy GFS-rotációs ütemezésre négy hétig, havonta és évente:
 
-| Gyakorisága, illetve biztonsági mentési típusa | Korlátlan | Növekményes (1-5 nap)  |   
+| Gyakoriság/biztonsági mentés típusa | Teljes | Növekményes (nap 1-5)  |   
 |---|---|---|
-| Heti (1 – 4 hét) | Szombat | Hétfőtől péntekig |
-| Havonta  | Szombat  |   |
+| Hetente (1-4 hét) | Szombat | Hétfő – péntek |
+| Havi  | Szombat  |   |
 | Évente | Szombat  |   |
 
 
-### <a name="assign-storsimple-volumes-to-a-veeam-backup-job"></a>StorSimple-kötetek hozzárendelése a Veeam biztonsági mentési feladat
+### <a name="assign-storsimple-volumes-to-a-veeam-backup-job"></a>StorSimple-kötetek kiosztása Veeam biztonsági mentési feladatokhoz
 
-Elsődleges biztonsági mentési cél forgatókönyvhöz hozzon létre egy napi feladat az elsődleges Veeam StorSimple-kötet. A forgatókönyvhöz egy másodlagos biztonsági mentési cél hozzon létre egy napi feladat közvetlenül csatlakoztatott tároló (DAS), a hálózathoz csatlakoztatott tárolás (NAS) vagy közvetlenül a lemezek kötegnek (JBOD) storage.
+Az elsődleges biztonsági mentési cél forgatókönyvhöz hozzon létre egy napi feladatot az elsődleges Veeam StorSimple-kötettel. Másodlagos biztonsági mentési cél forgatókönyv esetén hozzon létre egy napi feladatot közvetlenül csatlakoztatott tároló (DAS), hálózati csatlakoztatott tároló (NAS) vagy csak egy több JBOD-tároló használatával.
 
-#### <a name="to-assign-storsimple-volumes-to-a-veeam-backup-job"></a>StorSimple-kötetek hozzárendelése a Veeam biztonsági mentési feladat
+#### <a name="to-assign-storsimple-volumes-to-a-veeam-backup-job"></a>StorSimple-kötetek társítása egy Veeam biztonsági mentési feladatokhoz
 
-1.  Válassza ki a Veeam biztonsági mentésének és replikációjának konzolon **biztonsági mentés és replikáció**. Kattintson a jobb gombbal **Backup**, majd válassza ki **VMware** vagy **Hyper-V**, attól függően, a környezetben.
+1.  A Veeam biztonsági mentési és replikációs konzolján válassza a **biztonsági másolat & replikáció**lehetőséget. A környezettől függően kattintson a jobb gombbal a **biztonsági mentés**elemre, majd válassza a **VMware** vagy a **Hyper-V**lehetőséget.
 
-    ![Veeam felügyeleti konzolt, új biztonsági mentési feladat](./media/storsimple-configure-backup-target-using-veeam/veeamimage8.png)
+    ![Veeam felügyeleti konzol, új biztonsági mentési feladatok](./media/storsimple-configure-backup-target-using-veeam/veeamimage8.png)
 
-2.  Az a **új biztonsági mentési feladat** párbeszédpanelen adja meg egy nevet és leírást a napi biztonsági mentési feladat.
+2.  Az **új biztonsági mentési feladatok** párbeszédpanelen adja meg a napi biztonsági mentési feladatokhoz tartozó nevet és leírást.
 
-    ![Veeam felügyeleti konzolt, új biztonsági mentési feladat lap](./media/storsimple-configure-backup-target-using-veeam/veeamimage9.png)
+    ![Veeam felügyeleti konzol, új biztonsági mentési feladatok lap](./media/storsimple-configure-backup-target-using-veeam/veeamimage9.png)
 
-3.  Válassza ki a virtuális gép biztonsági másolat.
+3.  Válassza ki a virtuális gépet, amelyről biztonsági másolatot szeretne készíteni.
 
-    ![Veeam felügyeleti konzolt, új biztonsági mentési feladat lap](./media/storsimple-configure-backup-target-using-veeam/veeamimage10.png)
+    ![Veeam felügyeleti konzol, új biztonsági mentési feladatok lap](./media/storsimple-configure-backup-target-using-veeam/veeamimage10.png)
 
-4.  Válassza ki a használni kívánt értékeket **biztonsági mentési proxy** és **Backup tárház**. Adja meg a **visszaállítási pontok megőrzése lemezen való** RPO és RTO definíciókat a helyileg csatlakoztatott tárolón környezetének megfelelően. Válassza az **Advanced** (Speciális) lehetőséget.
+4.  Válassza ki a **biztonsági mentési proxyhoz** és a **biztonsági mentési tárházhoz**használni kívánt értékeket. A **visszaállítási pontok** értékének kiválasztásával megtarthatja a lemezen a helyileg csatlakoztatott tárolón a környezet RPO és RTO-definícióinak megfelelően. Válassza az **Advanced** (Speciális) lehetőséget.
 
-    ![Veeam felügyeleti konzolt, új biztonsági mentési feladat lap](./media/storsimple-configure-backup-target-using-veeam/veeamimage11.png)
+    ![Veeam felügyeleti konzol, új biztonsági mentési feladatok lap](./media/storsimple-configure-backup-target-using-veeam/veeamimage11.png)
 
-5. Az a **speciális beállítások** párbeszédpanel a **Backup** lapon jelölje be **növekményes**. Ügyeljen arra, hogy a **hozzon létre rendszeres időközönként szintetikus teljes biztonsági mentések** jelölőnégyzet nincs bejelölve. Válassza ki a **aktív teljes biztonsági mentés létrehozása rendszeres időközönként** jelölőnégyzetet. A **aktív teljes biztonsági mentés**, jelölje be a **hetente kijelölt napjain** szombat jelölőnégyzetét.
+5. A **Speciális beállítások** párbeszédpanel **biztonsági mentés** lapján válassza a növekményes lehetőséget. Győződjön meg arról, hogy a **szintetikus teljes biztonsági mentések rendszeres létrehozása** jelölőnégyzet be van jelölve. Jelölje be az **aktív teljes biztonsági mentések rendszeres létrehozása** jelölőnégyzetet. Az **aktív teljes biztonsági mentés**területen jelölje be a **hetente bejelölt napok** jelölőnégyzetét.
 
-    ![Veeam felügyeleti konzolt, új biztonsági mentési feladat speciális beállítások lap](./media/storsimple-configure-backup-target-using-veeam/veeamimage12.png)
+    ![Veeam felügyeleti konzol, új biztonsági mentési feladatok speciális beállítások lapja](./media/storsimple-configure-backup-target-using-veeam/veeamimage12.png)
 
-6. Az a **tárolási** lapra, győződjön meg arról, hogy a **beágyazott adatok deduplikációjának engedélyezése** jelölőnégyzet nincs bejelölve. Válassza ki a **kizárási lapozófájl-kapacitás fájlblokkokat** jelölőnégyzetet, majd válassza ki a **kizárási törölt fájlblokkokat** jelölőnégyzetet. Állítsa be **tömörítési szint** való **None**. Elosztott terhelésű teljesítmény és a deduplikáció, állítsa be **tárolóoptimalizálás** való **LAN cél**. Kattintson az **OK** gombra.
+6. A **tárterület** lapon törölje a jelet a **beágyazott adattörlés engedélyezése** jelölőnégyzetből. Jelölje be a **fájlok zárolásának** kihagyása jelölőnégyzetet, majd jelölje be a **törölt blokkok kizárása** jelölőnégyzetet. A **tömörítési szint** beállítása **none**értékre A kiegyensúlyozott teljesítmény és a deduplikálás érdekében állítsa be a **tárolási optimalizálást** a **LAN-célra**. Kattintson az **OK** gombra.
 
-    ![Veeam felügyeleti konzolt, új biztonsági mentési feladat speciális beállítások lap](./media/storsimple-configure-backup-target-using-veeam/veeamimage13.png)
+    ![Veeam felügyeleti konzol, új biztonsági mentési feladatok speciális beállítások lapja](./media/storsimple-configure-backup-target-using-veeam/veeamimage13.png)
 
-    Veeam deduplikáció és a tömörítés beállításaival kapcsolatos további információkért lásd: [az adattömörítés és a Deduplikáció](https://helpcenter.veeam.com/backup/vsphere/compression_deduplication.html).
+    További információ a Veeam-deduplikálás és a tömörítési beállításokról: adattömörítés [és](https://helpcenter.veeam.com/backup/vsphere/compression_deduplication.html)deduplikálás.
 
-7.  Az a **biztonsági mentési feladat szerkesztése** párbeszédpanelen kiválaszthatja a **alkalmazásbarát feldolgozásának engedélyezése** (nem kötelező) jelölőnégyzetet.
+7.  A **biztonsági mentési feladatok szerkesztése** párbeszédpanelen bejelölheti az **Application-Aware feldolgozás engedélyezése** jelölőnégyzetet (nem kötelező).
 
-    ![Veeam felügyeleti konzolt, új biztonsági mentési feladat Vendég feldolgozási lap](./media/storsimple-configure-backup-target-using-veeam/veeamimage14.png)
+    ![Veeam felügyeleti konzol, új biztonsági mentési feladatok vendég feldolgozási lapja](./media/storsimple-configure-backup-target-using-veeam/veeamimage14.png)
 
-8.  Állítsa az ütemezést is megadhat egyszerre napi egyszeri futtatásra.
+8.  Beállíthatja, hogy az ütemterv naponta egyszer fusson, a megadható időpontban.
 
-    ![Veeam felügyeleti konzolt, új biztonsági mentési feladat ütemezési oldalán](./media/storsimple-configure-backup-target-using-veeam/veeamimage15.png)
+    ![Veeam felügyeleti konzol, új biztonsági mentési feladatok ütemezett lapja](./media/storsimple-configure-backup-target-using-veeam/veeamimage15.png)
 
-## <a name="set-up-storsimple-as-a-secondary-backup-target"></a>A StorSimple beállítása másodlagos biztonsági mentési cél
+## <a name="set-up-storsimple-as-a-secondary-backup-target"></a>A StorSimple beállítása másodlagos biztonsági mentési célként
 
 > [!NOTE]
-> Adatok visszaállítása a felhőbe tartozik lett rétegzett biztonsági felhőbeli sebességgel fordulhat elő.
+> Az adatok olyan biztonsági másolatból állnak vissza, amely a felhőre van bontva.
 
-Ebben a modellben egy átmeneti gyorsítótárban egyikükön rendelkeznie kell egy adathordozó (nem a StorSimple). Használhatja például a kötet (RAID) független lemezek redundáns tömbjének terület, a bemeneti/kimeneti (I/O) és a sávszélesség. A RAID 10, 5 és 50 használatát javasoljuk.
+Ebben a modellben a (StorSimple-től eltérő) tároló adathordozót kell kiszolgálni ideiglenes gyorsítótárként. Használhatja például a független lemezek (RAID) kötetének redundáns tömbjét a tárhely, a bemeneti/kimeneti (I/O) és a sávszélesség befogadásához. A RAID 5, a 50 és a 10 használatát javasoljuk.
 
-A következő ábrán látható, tipikus rövid távú megőrzési helyi (a kiszolgáló) és a hosszú távú megőrzési archív kötetek. Ebben a forgatókönyvben minden biztonsági mentés futtatása a helyi (a kiszolgáló) RAID-köteten. Ezeket a biztonsági másolatokat időszakosan ismétlődő és az archív kötetek archiválva. Fontos a helyi (a kiszolgáló) RAID kötetre méretezéséhez, így képes kezelni a rövid távú adatmegőrzési kapacitást és teljesítményre vonatkozó követelményeknek.
+Az alábbi ábrán a tipikus rövid távú adatmegőrzés helyi (a kiszolgáló) és a hosszú távú megőrzési archiválási kötetek láthatók. Ebben a forgatókönyvben minden biztonsági mentés a helyi (a kiszolgáló) RAID köteten fut. Ezeket a biztonsági másolatokat a rendszer rendszeres időközönként duplikálja, és archiválja az archív kötetre. Fontos a helyi (a kiszolgáló) RAID-kötetre méretezni, hogy az képes legyen kezelni a rövid távú adatmegőrzési kapacitást és a teljesítményre vonatkozó követelményeket.
 
-![A StorSimple mint másodlagos biztonsági mentési cél logikai diagramja](./media/storsimple-configure-backup-target-using-veeam/secondarybackuptargetdiagram.png)
+![StorSimple másodlagos biztonsági mentési cél logikai diagramként](./media/storsimple-configure-backup-target-using-veeam/secondarybackuptargetdiagram.png)
 
-### <a name="storsimple-as-a-secondary-backup-target-gfs-example"></a>A StorSimple mint egy másodlagos biztonsági mentési cél GFS példa
+### <a name="storsimple-as-a-secondary-backup-target-gfs-example"></a>StorSimple másodlagos biztonsági mentési célként megadott GFS-példa
 
-Az alábbi táblázat bemutatja, hogyan futtathatók a helyi és a StorSimple-lemezek biztonsági mentések beállításához. Egyéni és teljes kapacitásigények tartalmazza.
+A következő táblázat bemutatja, hogyan állíthatja be a biztonsági mentéseket a helyi és StorSimple lemezeken való futtatáshoz. Magában foglalja az egyéni és a teljes kapacitásra vonatkozó követelményeket.
 
-| Biztonsági mentés típusát és megőrzés | Konfigurált tároló | Méret (TiB) | GFS szorzó | Teljes kapacitás\* (TiB) |
+| Biztonsági mentés típusa és megőrzése | Konfigurált tároló | Méret (TiB) | GFS szorzó | Teljes kapacitás\* (TiB) |
 |---|---|---|---|---|
-| (Teljes és növekményes) 1 hét |Helyi lemez (rövid távú)| 1 | 1 | 1 |
-| A StorSimple hét 2 – 4 |A StorSimple-lemez (hosszú távú) | 1 | 4 | 4 |
-| Teljes havi |A StorSimple-lemez (hosszú távú) | 1 | 12 | 12 |
-| Éves teljes |A StorSimple-lemez (hosszú távú) | 1 | 1 | 1 |
-|GFS kötetek méretkövetelményt |  |  |  | 18*|
+| 1\. hét (teljes és növekményes) |Helyi lemez (rövid távú)| 1 | 1 | 1 |
+| StorSimple hét 2-4 |StorSimple lemez (hosszú távú) | 1 | 4 | 4 |
+| Havi teljes |StorSimple lemez (hosszú távú) | 1 | 12 | 12 |
+| Évenként megtelt |StorSimple lemez (hosszú távú) | 1 | 1 | 1 |
+|GFS-kötetek méretére vonatkozó követelmény |  |  |  | 18*|
 
-\* Teljes kapacitás 17 Tib-ra a StorSimple-lemezek és a helyi RAID kötetre 1 TiB tartalmaz.
+\*A teljes kapacitás magában foglalja a 17 TiB StorSimple-lemezeket és 1 TiB helyi RAID-kötetet.
 
 
-### <a name="gfs-example-schedule"></a>Példa ütemezési GFS
+### <a name="gfs-example-schedule"></a>GFS – példa
 
-Elforgatás GFS heti, havi és éves ütemterv
+GFS rotációs hetente, havonta és évenkénti ütemezés szerint
 
-| Hét | Korlátlan | 1. nap növekményes | 2. napon növekményes | Növekményes naponta 3 | Növekményes naponta 4 | Növekményes nap 5 |
+| Hét | Teljes | 1\. növekményes nap | 2\. növekményes nap | 3\. növekményes nap | 4\. növekményes nap | 5\. növekményes nap |
 |---|---|---|---|---|---|---|
-| 1 hét | Helyi RAID kötetre  | Helyi RAID kötetre | Helyi RAID kötetre | Helyi RAID kötetre | Helyi RAID kötetre | Helyi RAID kötetre |
-| 2 hét | A StorSimple hét 2 – 4 |   |   |   |   |   |
-| 3 hét | A StorSimple hét 2 – 4 |   |   |   |   |   |
-| 4 hét | A StorSimple hét 2 – 4 |   |   |   |   |   |
-| Havonta | A StorSimple havi |   |   |   |   |   |
+| 1\. hét | Helyi RAID-kötet  | Helyi RAID-kötet | Helyi RAID-kötet | Helyi RAID-kötet | Helyi RAID-kötet | Helyi RAID-kötet |
+| 2\. hét | StorSimple hét 2-4 |   |   |   |   |   |
+| 3\. hét | StorSimple hét 2-4 |   |   |   |   |   |
+| 4\. hét | StorSimple hét 2-4 |   |   |   |   |   |
+| Havi | StorSimple havonta |   |   |   |   |   |
 | Évente | StorSimple évente  |   |   |   |   |   |
 
-### <a name="assign-storsimple-volumes-to-a-veeam-copy-job"></a>StorSimple-kötetek hozzárendelése a Veeam másolási feladat
+### <a name="assign-storsimple-volumes-to-a-veeam-copy-job"></a>StorSimple-kötetek kiosztása Veeam másolási feladatokhoz
 
-#### <a name="to-assign-storsimple-volumes-to-a-veeam-copy-job"></a>StorSimple-kötetek hozzárendelése a Veeam másolási feladat
+#### <a name="to-assign-storsimple-volumes-to-a-veeam-copy-job"></a>StorSimple-kötetek társítása Veeam másolási feladatokhoz
 
-1.  Válassza ki a Veeam biztonsági mentésének és replikációjának konzolon **biztonsági mentés és replikáció**. Kattintson a jobb gombbal **Backup**, majd válassza ki **VMware** vagy **Hyper-V**, attól függően, a környezetben.
+1.  A Veeam biztonsági mentési és replikációs konzolján válassza a **biztonsági másolat & replikáció**lehetőséget. A környezettől függően kattintson a jobb gombbal a **biztonsági mentés**elemre, majd válassza a **VMware** vagy a **Hyper-V**lehetőséget.
 
-    ![Veeam felügyeleti konzolt, új biztonsági másolat feladat lap](./media/storsimple-configure-backup-target-using-veeam/veeamimage16.png)
+    ![Veeam felügyeleti konzol, új biztonságimásolat-másolási feladatok lapja](./media/storsimple-configure-backup-target-using-veeam/veeamimage16.png)
 
-2.  Az a **új biztonsági mentési másolási feladat** párbeszédpanelen adja meg egy nevet és leírást a feladathoz.
+2.  Az **új biztonsági mentési feladatok** párbeszédpanelen adja meg a feladatokhoz tartozó nevet és leírást.
 
-    ![Veeam felügyeleti konzolt, új biztonsági másolat feladat lap](./media/storsimple-configure-backup-target-using-veeam/veeamimage17.png)
+    ![Veeam felügyeleti konzol, új biztonságimásolat-másolási feladatok lapja](./media/storsimple-configure-backup-target-using-veeam/veeamimage17.png)
 
-3.  Válassza ki a feldolgozni kívánt virtuális gépeket. Válassza ki a biztonsági mentésekből, és válassza ki a korábban létrehozott napi biztonsági mentés.
+3.  Válassza ki a feldolgozni kívánt virtuális gépeket. Válasszon a biztonsági másolatok közül, majd válassza ki a korábban létrehozott napi biztonsági mentést.
 
-    ![Veeam felügyeleti konzolt, új biztonsági másolat feladat lap](./media/storsimple-configure-backup-target-using-veeam/veeamimage18.png)
+    ![Veeam felügyeleti konzol, új biztonságimásolat-másolási feladatok lapja](./media/storsimple-configure-backup-target-using-veeam/veeamimage18.png)
 
-4.  Objektumok kizárása a biztonsági másolat feladatot, ha szükséges.
+4.  Ha szükséges, zárja ki az objektumokat a biztonsági másolati másolási feladatokból.
 
-5.  Válassza ki a biztonsági mentési tárházzal, és beállítható egy érték **visszaállítási pontok tartani**. Ügyeljen arra, hogy válassza ki a **tartsa a következő visszaállítási archiválási célokból** jelölőnégyzetet. Adja meg a biztonsági mentés gyakoriságát, és válassza ki **speciális**.
+5.  Válassza ki a biztonsági mentési tárházat, és állítsa be az értéket a **visszaállítási pontok**értékének megőrzéséhez. Ügyeljen arra, hogy a **következő visszaállítási pontok megtartása archiválási célokra** jelölőnégyzet be legyen állítva. Adja meg a biztonsági mentés gyakoriságát, majd válassza a **speciális**lehetőséget.
 
-    ![Veeam felügyeleti konzolt, új biztonsági másolat feladat lap](./media/storsimple-configure-backup-target-using-veeam/veeamimage19.png)
+    ![Veeam felügyeleti konzol, új biztonságimásolat-másolási feladatok lapja](./media/storsimple-configure-backup-target-using-veeam/veeamimage19.png)
 
-6.  Adja meg a következő speciális beállításokat:
+6.  A következő speciális beállítások megadása:
 
-    * Az a **karbantartási** fülre, kapcsolja ki a tárolási szint sérülés guard.
+    * A **karbantartás** lapon kapcsolja ki a tárolási szint sérülése elleni védelmet.
 
-    ![Veeam felügyeleti konzolt, új biztonsági másolat feladat speciális beállítások lap](./media/storsimple-configure-backup-target-using-veeam/veeamimage20.png)
+    ![Veeam felügyeleti konzol, új biztonsági mentési feladatokhoz tartozó speciális beállítások lap](./media/storsimple-configure-backup-target-using-veeam/veeamimage20.png)
 
-    * Az a **tárolási** lapra, győződjön meg, hogy a deduplikáció és a tömörítést be vannak kapcsolva.
+    * A **tárterület** lapon győződjön meg arról, hogy a deduplikálás és a tömörítés ki van kapcsolva.
 
-    ![Veeam felügyeleti konzolt, új biztonsági másolat feladat speciális beállítások lap](./media/storsimple-configure-backup-target-using-veeam/veeamimage21.png)
+    ![Veeam felügyeleti konzol, új biztonsági mentési feladatokhoz tartozó speciális beállítások lap](./media/storsimple-configure-backup-target-using-veeam/veeamimage21.png)
 
-7.  Adja meg, hogy az adatátvitel közvetlen.
+7.  Adja meg, hogy az adatátvitel közvetlen legyen.
 
-8.  Adja meg a biztonsági másolat időszak ütemezése igény szerint, és ezután fejezze be a varázslót.
+8.  Az igényeinek megfelelően adja meg a biztonsági másolati ablak ütemezett ütemtervét, majd fejezze be a varázslót.
 
-További információkért lásd: [biztonsági másolat feladatok létrehozása](https://helpcenter.veeam.com/backup/hyperv/backup_copy_create.html).
+További információ: Backup- [másolási feladatok létrehozása](https://helpcenter.veeam.com/backup/hyperv/backup_copy_create.html).
 
-## <a name="storsimple-cloud-snapshots"></a>A StorSimple a felhőbeli pillanatképek
+## <a name="storsimple-cloud-snapshots"></a>StorSimple Felhőbeli Pillanatképek
 
-A StorSimple a felhőbeli pillanatképek a StorSimple-eszköz lévő adatok védelmét. Felhőbeli pillanatkép létrehozásának megegyezik egy külső létesítmény helyi másolatot tartalmazó szalagok szállítási. Ha az Azure georedundáns tárolást használ, felhőbeli pillanatkép létrehozásának megegyezik szállítási szalagot több helyhez. Ha egy eszköz visszaállítása egy vészhelyzetet követően van szüksége, előfordulhat, hogy csatlakoztassa egy másik StorSimple eszközt, és hajtsa végre a feladatátvételt. A feladatátvétel után meg tudják elérheti az adatokat (felhőbeli sebességgel), a legutóbbi felhőbeli pillanatkép.
+A StorSimple-Felhőbeli Pillanatképek védik a StorSimple-eszközön található összes adatát. A Felhőbeli pillanatképek létrehozása egyenértékű a helyi biztonsági mentési szalagok egy külső létesítménybe való szállításával. Ha az Azure geo-redundáns tárterületet használja, a Felhőbeli pillanatkép létrehozása egyenértékű a biztonsági mentési szalagok több helyre történő szállításával. Ha vészhelyzet után vissza kell állítania egy eszközt, lehet, hogy egy másik StorSimple-eszközt online, és feladatátvételt hajt végre. A feladatátvételt követően a legutóbbi Felhőbeli pillanatképből férhet hozzá az adatokhoz (a Felhőbeli sebességgel).
 
-Az alábbi szakasz elindításához és a StorSimple a felhőbeli pillanatképek törlése során a biztonsági mentés utáni feldolgozási rövid parancsfájl létrehozása.
-
-> [!NOTE]
-> A pillanatképek manuálisan vagy programon keresztül létrehozott ne hajtsa végre a StorSimple snapshot elévülési szabályzatot. Ezek a pillanatképek manuálisan vagy programon keresztül törölni kell.
-
-### <a name="start-and-delete-cloud-snapshots-by-using-a-script"></a>Indítsa el, és a felhőbeli pillanatképek törlése egy parancsfájl használatával
+A következő szakasz azt ismerteti, hogyan hozhat létre egy rövid parancsfájlt a StorSimple Felhőbeli Pillanatképek elindításához és törléséhez a biztonsági mentés utáni feldolgozás során.
 
 > [!NOTE]
-> Gondosan mérje fel a megfelelőség és az adatok megőrzési következményekkel StorSimple pillanatkép törlése előtt. A biztonsági mentés utáni parancsfájl futtatásával kapcsolatos további információkért a Veeam dokumentációjában talál.
+> A manuálisan vagy programozott módon létrehozott Pillanatképek nem követik a StorSimple-pillanatkép elévülési szabályzatát. Ezeket a pillanatképeket manuálisan vagy programozott módon kell törölni.
+
+### <a name="start-and-delete-cloud-snapshots-by-using-a-script"></a>Felhőbeli Pillanatképek elindítása és törlése parancsfájl használatával
+
+> [!NOTE]
+> A StorSimple-pillanatkép törlése előtt gondosan mérje fel a megfelelőségi és az adatmegőrzési hatásokat. A biztonsági mentés utáni parancsfájlok futtatásával kapcsolatos további információkért tekintse meg a Veeam dokumentációját.
 
 
-### <a name="backup-lifecycle"></a>Biztonsági mentési életciklusa
+### <a name="backup-lifecycle"></a>Biztonsági mentés életciklusa
 
-![Biztonsági mentési életciklus-diagram](./media/storsimple-configure-backup-target-using-veeam/backuplifecycle.png)
+![Biztonsági mentési életciklus diagramja](./media/storsimple-configure-backup-target-using-veeam/backuplifecycle.png)
 
 ### <a name="requirements"></a>Követelmények
 
--   A kiszolgáló, amely futtatja a szkriptet az Azure felhőbeli erőforrások hozzáféréssel kell rendelkeznie.
--   A felhasználói fióknak a szükséges engedélyekkel kell rendelkeznie.
--   A társított StorSimple-kötetek a StorSimple biztonsági mentési szabályzat kell beállítani, de nincs bekapcsolva.
--   Szüksége lesz a StorSimple-erőforrás neve, a regisztrációs kulcsot, eszközazonosítót nevénél, és a biztonsági mentési szabályzat.
+-   A parancsfájlt futtató kiszolgálónak hozzá kell férnie az Azure felhőalapú erőforrásaihoz.
+-   A felhasználói fióknak rendelkeznie kell a szükséges engedélyekkel.
+-   Be kell állítania egy StorSimple biztonsági mentési szabályzatot a társított StorSimple-kötetekkel, de nincs bekapcsolva.
+-   Szüksége lesz a StorSimple erőforrás nevére, a regisztrációs kulcsra, az eszköz nevére és a biztonsági mentési szabályzat AZONOSÍTÓra.
 
-### <a name="to-start-or-delete-a-cloud-snapshot"></a>Indítsa el, vagy a felhőbeli pillanatkép törlése
+### <a name="to-start-or-delete-a-cloud-snapshot"></a>Felhőbeli pillanatkép elindítása vagy törlése
 
 1. [Telepítse az Azure PowerShellt](/powershell/azure/overview).
-2. Letöltési és telepítési [kezelés – CloudSnapshots.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Manage-CloudSnapshots.ps1) PowerShell-parancsfájlt.
-3. A kiszolgálón, amely futtatja a szkriptet, futtassa a Powershellt rendszergazdaként. Győződjön meg arról, hogy a parancsfájl futtatása a `-WhatIf $true` győződjön meg, mi változik a parancsfájlt. Az érvényesítés befejezése után át `-WhatIf $false`. Futtassa az alábbi parancsot:
+2. Töltse le és állítsa be a [Manage-CloudSnapshots. ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Manage-CloudSnapshots.ps1) PowerShell-szkriptet.
+3. A parancsfájlt futtató kiszolgálón futtassa a PowerShellt rendszergazdaként. Győződjön meg arról, hogy a parancsfájl `-WhatIf $true` futtatásával megtekintheti, hogy a parancsfájl milyen módosításokat hajt végre. Az ellenőrzés befejezése után adja át `-WhatIf $false`a t. Futtassa az alábbi parancsot:
    ```powershell
    .\Manage-CloudSnapshots.ps1 -SubscriptionId [Subscription Id] -TenantId [Tenant ID] -ResourceGroupName [Resource Group Name] -ManagerName [StorSimple Device Manager Name] -DeviceName [device name] -BackupPolicyName [backup policyname] -RetentionInDays [Retention days] -WhatIf [$true or $false]
    ```
-4. Adja hozzá a parancsfájlt a biztonsági mentési feladat, szerkessze a Speciális beállítások Veeam feladat.
+4. Ha hozzá szeretné adni a parancsfájlt a biztonsági mentési feladatokhoz, szerkessze a Veeam-feladatok speciális beállításait.
 
-    ![Veeam speciális beállítások biztonsági mentési szkriptek lap](./media/storsimple-configure-backup-target-using-veeam/veeamimage22.png)
+    ![Veeam biztonsági mentés speciális beállítások parancsfájljai lap](./media/storsimple-configure-backup-target-using-veeam/veeamimage22.png)
 
-Azt javasoljuk, hogy a StorSimple felhőalapú pillanatkép biztonsági mentési szabályzat utófeldolgozási parancsfájlként a napi biztonsági mentési feladat végén. Biztonsági mentése és visszaállítása a biztonsági mentést végző alkalmazás környezet segítséget nyújtanak az RPO és RTO kapcsolatos további információkért tekintse meg a biztonsági mentési mérnök együtt.
+Javasoljuk, hogy a napi biztonsági mentési feladatok végén a StorSimple Cloud Snapshot biztonsági mentési szabályzatát post-Processing szkriptként futtassa. Ha további információt szeretne arról, hogyan készíthet biztonsági mentést és visszaállítást a biztonságimásolat-alkalmazási környezetből, hogy az megfeleljen a RPO és a RTO, forduljon a biztonsági mentési építészhez.
 
-## <a name="storsimple-as-a-restore-source"></a>A StorSimple-helyreállítás forrásaként
+## <a name="storsimple-as-a-restore-source"></a>StorSimple visszaállítási forrásként
 
-Visszaállítja a StorSimple eszköz munkahelyi például visszaállítás bármely block storage eszközről. Visszaállítás a felhőbe a rétegzett adatok felhőbeli sebességgel következik be. A helyi adatok esetében a visszaállítás fordulhat elő, az eszköz helyi lemez sebességével.
+Visszaállít egy StorSimple-eszközről, például helyreállítja az összes blokk Storage-eszközről. A felhőbe felkészített, Felhőbeli adattárolók visszaállnak. Helyi adatmennyiség esetén a rendszer az eszköz helyi lemezének sebességét állítja vissza.
 
-Veeam a következőket kínálja gyors, részletes, fájlszintű helyreállítási keresztül a StorSimple a beépített explorer nézeteket a Veeam konzolon keresztül. A Veeam tallózók használatával helyreállítani az egyes elemeket, például e-mailek, az Active Directory-objektumok és a SharePoint-elemek biztonsági másolatokból. A helyreállítás a helyszíni virtuális gép megszakítása nélkül elvégezhető. Az Azure SQL Database és Oracle-adatbázisok időponthoz helyreállítás is teheti. Veeam és a StorSimple megkönnyítik az elemszintű helyreállítás gyors és egyszerű Azure-ból. Hajtson végre visszaállítást kapcsolatos információkért lásd: a Veeam dokumentáció:
+A Veeam használatával gyors, szemcsés, StorSimple-alapú helyreállítást érhet el a Veeam-konzol beépített Explorer-nézeteivel. Az egyes elemek, például az e-mail-üzenetek, a Active Directory objektumok és a SharePoint-elemek biztonsági másolatokból történő helyreállításához használja a Veeam-kezelőt. A helyreállítás a helyszíni virtuális gépek megszakítása nélkül végezhető el. Azure SQL Database-és Oracle-adatbázisokhoz is végezhet időponthoz való helyreállítást. A Veeam és a StorSimple a gyors és egyszerű elemszintű helyreállítás folyamatát teszi elérhetővé az Azure-ban. A visszaállítás végrehajtásáról a Veeam dokumentációjában talál további információt:
 
-- A [Exchange-kiszolgáló](https://www.veeam.com/microsoft-exchange-recovery.html)
-- A [az Active Directory](https://www.veeam.com/microsoft-active-directory-explorer.html)
-- A [az SQL Server](https://www.veeam.com/microsoft-sql-server-explorer.html)
-- A [SharePoint](https://www.veeam.com/microsoft-sharepoint-recovery-explorer.html)
-- A [Oracle](https://www.veeam.com/oracle-backup-recovery-explorer.html)
+- [Exchange Server](https://www.veeam.com/microsoft-exchange-recovery.html) esetén
+- [Active Directory](https://www.veeam.com/microsoft-active-directory-explorer.html)
+- [SQL Server](https://www.veeam.com/microsoft-sql-server-explorer.html)
+- A [sharepointhoz](https://www.veeam.com/microsoft-sharepoint-recovery-explorer.html)
+- [Oracle](https://www.veeam.com/oracle-backup-recovery-explorer.html) esetén
 
 
-## <a name="storsimple-failover-and-disaster-recovery"></a>A StorSimple feladatátvétel és a katasztrófa utáni helyreállítás
+## <a name="storsimple-failover-and-disaster-recovery"></a>StorSimple feladatátvétel és vész-helyreállítás
 
 > [!NOTE]
-> A biztonsági mentési cél esetben a StorSimple Cloud Appliance nem támogatott visszaállítási célként.
+> A biztonsági mentési cél forgatókönyvek esetében a StorSimple Cloud Appliance nem támogatott visszaállítási célként.
 
-Katasztrófa számos tényező okozhatja. Az alábbi táblázat általános vész-helyreállítási helyzetekben.
+A katasztrófák számos tényezőt okozhatnak. A következő táblázat az általános vész-helyreállítási forgatókönyveket ismerteti.
 
-| Forgatókönyv | Hatás | Helyreállítása | Megjegyzések |
+| Forgatókönyv | Hatás | Helyreállítás | Megjegyzések |
 |---|---|---|---|
-| A StorSimple eszköz hiba | Biztonsági mentési és visszaállítási műveletek megszakadnak. | Cserélje le a sikertelen eszközt, és hajtsa végre [StorSimple feladatátvétel és a katasztrófa utáni helyreállítás](storsimple-device-failover-disaster-recovery.md). | Ha eszköz helyreállítása után a helyreállítás végrehajtásához szüksége, működő teljes adatkészletek lekért a felhő az új eszközhöz. Az összes műveletekre felhőbeli sebességgel. Az index és a katalógus újbóli vizsgálata folyamatban okozhat a beolvasott és a helyi eszközön szintre, ami időigényes eljárás lehet, hogy a felhő szintjén lekért összes biztonságimásolat-készleteket. |
-| Veeam kiszolgálóhiba | Biztonsági mentési és visszaállítási műveletek megszakadnak. | Építse újra a biztonsági mentési kiszolgálóra, és végezze el az adatbázis-visszaállítás leírt módon [Veeam súgóközpont (műszaki dokumentáció)](https://www.veeam.com/documentation-guides-datasheets.html).  | Építse újra, vagy állítsa vissza a vész-helyreállítási webhelyként, a Veeam kiszolgálót kell. Állítsa vissza az adatbázist a legutóbbi pontnak. Ha a Veeam visszaállított adatbázis nem a legújabb biztonsági mentési feladatok szinkronban, indexelési és katalogizálása megadása kötelező. Az index és a katalógus újbóli vizsgálata folyamatban okozhat a beolvasott és a felhő szintjén a helyi eszközön szintre lekért összes biztonságimásolat-készleteket. Így további időigényes. |
-| Hely hiba, amely a biztonsági mentési kiszolgálóra és a StorSimple elvesztését eredményezi | Biztonsági mentési és visszaállítási műveletek megszakadnak. | Először állítsa vissza a StorSimple, és helyreállíthatja a Veeam. | Először állítsa vissza a StorSimple, és helyreállíthatja a Veeam. Hajtson végre visszaállítást eszköz helyreállítása után van szüksége, ha a teljes működő adatkészletek a vannak a felhőből az új eszköz beolvasni. Az összes műveletekre felhőbeli sebességgel. |
+| StorSimple-eszköz meghibásodása | A biztonsági mentési és visszaállítási műveletek megszakadnak. | Cserélje le a meghibásodott eszközt, és hajtsa végre a [StorSimple feladatátvételt és a vész-helyreállítást](storsimple-device-failover-disaster-recovery.md). | Ha az eszköz helyreállítása után visszaállítást kell végeznie, a teljes adathalmazok beolvasása a felhőből az új eszközre történik. Minden művelet Felhőbeli sebességgel történik. Az index és a katalógus újraellenőrzésének folyamata okozhatja az összes biztonságimásolat-készlet vizsgálatát és lekérését a felhő szintjéről a helyi eszköz rétegre, amely időigényes folyamat lehet. |
+| Veeam-kiszolgáló meghibásodása | A biztonsági mentési és visszaállítási műveletek megszakadnak. | Hozza létre újra a biztonsági mentési kiszolgálót, és végezze el az adatbázis-visszaállítást a [Veeam súgójában (technikai dokumentáció)](https://www.veeam.com/documentation-guides-datasheets.html).  | A Veeam-kiszolgálót újra kell építenie vagy visszaállítani a vész-helyreállítási helyen. Állítsa vissza az adatbázist a legutóbbi pontra. Ha a visszaállított Veeam-adatbázis nincs szinkronban a legújabb biztonsági mentési feladatokkal, az indexelés és a katalogizálás szükséges. Az index és a katalógus újraellenőrzésének folyamata okozhatja, hogy az összes biztonságimásolat-készlet beolvasható, és a felhő szintjéről a helyi eszköz szintjére kell húzni. Ez további időigényesvé teszi. |
+| A hely meghibásodása, amely a biztonsági mentési kiszolgáló és a StorSimple elvesztését eredményezi | A biztonsági mentési és visszaállítási műveletek megszakadnak. | Először állítsa vissza a StorSimple, majd állítsa vissza a Veeam. | Először állítsa vissza a StorSimple, majd állítsa vissza a Veeam. Ha az eszköz helyreállítása után visszaállítást kell végeznie, a teljes adatfeldolgozási készletek a felhőből az új eszközre lesznek beolvasva. Minden művelet Felhőbeli sebességgel történik. |
 
 
 ## <a name="references"></a>Referencia
 
-Ez a cikk a hivatkozott az alábbi dokumentumokat:
+Ehhez a cikkhez a következő dokumentumok hivatkoznak:
 
-- [A StorSimple-a többutas i/o-telepítő](storsimple-configure-mpio-windows-server.md)
-- [Storage-forgatókönyv esetében: A dinamikus kiosztás](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
-- [Meghajtók GPT használata](https://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD)
-- [Állítsa be a megosztott mappák árnyékmásolatai](https://technet.microsoft.com/library/cc771893.aspx)
+- [StorSimple többutas I/O-telepítés](storsimple-configure-mpio-windows-server.md)
+- [Tárolási helyzetek: Dinamikus kiépítés](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
+- [GPT-meghajtók használata](https://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD)
+- [Árnyékmásolatok beállítása megosztott mappákhoz](https://technet.microsoft.com/library/cc771893.aspx)
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg, hogyan [biztonságimásolat-készlet visszaállítási](storsimple-restore-from-backup-set-u2.md).
-- További információk a végrehajtása [eszközön feladatátvétel és vészhelyreállítás helyreállítási](storsimple-device-failover-disaster-recovery.md).
+- További információ a [biztonságimásolat-készletből](storsimple-restore-from-backup-set-u2.md)való visszaállításról.
+- További információ az [eszközök feladatátvételének és](storsimple-device-failover-disaster-recovery.md)a vész-helyreállításnak a végrehajtásáról.

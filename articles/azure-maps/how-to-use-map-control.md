@@ -1,51 +1,51 @@
 ---
-title: Az Azure Maps térkép vezérlőelem használata |} A Microsoft Docs
-description: Ismerje meg, hogyan használható az Azure Maps térkép vezérlőelem ügyféloldali Javascript-függvénytárat.
-author: dsk-2015
-ms.author: dkshir
+title: Bevezetés a web Map Control használatába a Azure Mapsban | Microsoft Docs
+description: Ismerje meg, hogyan használhatja a Azure Maps Map Control ügyféloldali JavaScript-függvénytárat.
+author: walsehgal
+ms.author: v-musehg
 ms.date: 10/08/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 9e3a442a3d6c420c548979327c193628efbee5aa
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: fa6a3af7893830eba2f4a5c43184991bff68d8a8
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549218"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69898207"
 ---
-# <a name="use-the-azure-maps-map-control"></a>Az Azure Maps térkép vezérlőelem használata
+# <a name="use-the-azure-maps-map-control"></a>A Azure Maps Térkép vezérlőelem használata
 
-A térkép vezérlőelem ügyféloldali Javascript-kódtár térképeket és beágyazott Azure Maps-funkciók jelennek meg a webes vagy mobilalkalmazás segítségével.
+A térképkezelés ügyféloldali JavaScript-kódtár lehetővé teszi a Maps és a Embedded Azure Maps funkcióinak megjelenítését a webes vagy mobil alkalmazásban.
 
-## <a name="create-a-new-map-in-a-web-page"></a>Egy weblapon egy új térkép létrehozása
+## <a name="create-a-new-map-in-a-web-page"></a>Új Térkép létrehozása egy weblapon
 
-A térkép vezérlőelem ügyféloldali Javascript-kódtár használatával egy térkép is beágyazható egy weblapon.
+A weblapokon a térképkezelés ügyféloldali JavaScript-kódtár segítségével ágyazhat be térképet.
 
 1. Hozzon létre egy új HTML-fájlt.
 
-2. Töltse be az Azure Maps webes SDK-t. Ezt megteheti egy két lehetőség közül választhat;
+2. Töltse be a Azure Maps web SDK-t. Ezt két lehetőség egyikének használatával teheti meg.
 
-    a. Az URL-végpontot a stíluslap és parancsfájl útmutatót hozzáadásával az Azure Maps Web SDK globálisan üzemeltetett CDN verzióját használja a `<head>` elem a fájl:
+    a. Használja a Azure Maps web SDK globálisan üzemeltetett CDN-verzióját úgy, hogy hozzáadja az URL-végpontokat a stíluslaphoz és `<head>` a parancsfájl-hivatkozásokhoz a fájl elemében:
 
     ```HTML
     <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
     <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
     ```
 
-    b. Azt is megteheti, betöltése az Azure Maps Web SDK forráskódját használatával helyben a [azure maps-ellenőrző](https://www.npmjs.com/package/azure-maps-control) NPM csomag, és tárolja azt az alkalmazást. Ez a csomag is TypeScript definíciókat tartalmazza.
+    b. Azt is megteheti, hogy helyileg betölti a Azure Maps web SDK forráskódját az [Azure-Maps-Control](https://www.npmjs.com/package/azure-maps-control) NPM csomag használatával, és üzemelteti azt az alkalmazással. Ez a csomag írógéppel kapcsolatos definíciókat is tartalmaz.
 
-    > az npm telepítése azure-maps-vezérlő
+    > NPM telepítése Azure-Maps-Control
 
-    Ezután adja hozzá hivatkozásokat az Azure Maps stíluslap és parancsfájl forrás mutató hivatkozásokat a `<head>` elem a fájl:
+    Ezután vegyen fel hivatkozásokat az Azure Maps stíluslapra és a parancsfájl `<head>` forrására mutató hivatkozásokra a fájl elemére:
 
     ```HTML
     <link rel="stylesheet" href="node_modules/azure-maps-control/dist/css/atlas.min.css" type="text/css">
     <script src="node_modules/azure-maps-control/dist/js/atlas.min.js"></script>
     ```
 
-3. A térkép megjelenítési, hogy az kitöltse a teljes szervezet lap, adja hozzá a következő `<style>` elem a `<head>` elemet.
+3. Ha a térképet úgy szeretné megjeleníteni, hogy az kitöltse az oldal teljes törzsét, adja `<style>` hozzá a következő `<head>` elemet a elemhez.
 
     ```HTML
     <style>
@@ -60,7 +60,7 @@ A térkép vezérlőelem ügyféloldali Javascript-kódtár használatával egy 
     </style>
     ```
 
-4. Az oldal törzsében, adjon hozzá egy `<div>` elemet, és adjon neki egy `id` , **myMap**.
+4. A lap törzsében adjon hozzá egy `<div>` elemet, és adjon neki egy `id` myMap.
 
     ```HTML
     <body>
@@ -68,7 +68,7 @@ A térkép vezérlőelem ügyféloldali Javascript-kódtár használatával egy 
     </body>
     ```
 
-5. A térkép vezérlőelem inicializálása, új definiálására a html törzsében, és hozzon létre egy parancsfájlt. A saját Azure Maps-fiók kulcsára vagy Azure Active Directory (AAD) hitelesítő adatokat használja a térkép használatával történő hitelesítéshez [hitelesítési beállítások](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions). Ha hozzon létre egy fiókot, vagy keresse meg a, tekintse meg kell [az Azure Maps-fiók és kulcsok kezelése](how-to-manage-account-keys.md). A **nyelvi** beállítás megadja a térkép címkék és a vezérlők használt nyelv. A támogatott nyelvek további információkért lásd: [támogatott nyelvek](supported-languages.md). Ha egy előfizetési kulcsot használ a hitelesítéshez.
+5. A Térkép vezérlőelem inicializálásához adjon meg egy új szakaszt a HTML-szövegtörzsben, és hozzon létre egy parancsfájlt. `<div>` `HTMLElement` Adja át a térképet vagy`document.getElementById('myMap')`egy ( például`Map` ) az első paraméterként az osztály egy példányának létrehozásakor. `id` Használja a saját Azure Maps fiók kulcsát vagy a Azure Active Directory (HRE) hitelesítő adatait a leképezés hitelesítésére a [hitelesítési beállítások](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions)használatával. Ha létre kell hoznia egy fiókot, vagy meg kell találnia a kulcsot, tekintse meg a [Azure Maps-fiók és-kulcsok kezelése](how-to-manage-account-keys.md)című témakört. A **Language (nyelv** ) beállítás határozza meg a címkék és vezérlőelemek leképezéséhez használandó nyelvet. További információ a támogatott nyelvekről: [támogatott nyelvek](supported-languages.md). Ha előfizetés-kulcsot használ a hitelesítéshez.
 
     ```HTML
     <script type="text/javascript">
@@ -84,7 +84,7 @@ A térkép vezérlőelem ügyféloldali Javascript-kódtár használatával egy 
     </script>
     ```
 
-    Az Azure Active Directory (AAD) használata a hitelesítéshez:
+    Ha Azure Active Directoryt (HRE) használ a hitelesítéshez:
 
     ```HTML
     <script type="text/javascript">
@@ -96,15 +96,15 @@ A térkép vezérlőelem ügyféloldali Javascript-kódtár használatával egy 
                 authType: 'aad',
                 clientId: '<Your AAD Client Id>',
                 aadAppId: '<Your AAD App Id>',
-                aadTenant: 'msft.ccsctp.net'
+                aadTenant: '<Your AAD Tenant Id>'
             }
         });
     </script>
     ```
 
-    További információkért lásd: [hitelesítés az Azure Maps](azure-maps-authentication.md) további részletekért.
+    További információ: [hitelesítés Azure Maps](azure-maps-authentication.md) dokumentummal.
 
-6. Igény szerint hasznosnak találhatja, a következő meta tag elemeket ad hozzá a fő az oldal hasznos:
+6. Szükség esetén a következő meta kódelem-elemek hozzáadását is megtalálhatja az oldal Head eleméhez:
 
     ```HTML
     <!-- Ensures that IE and Edge uses the latest version and doesn't emulate an older version -->
@@ -114,7 +114,7 @@ A térkép vezérlőelem ügyféloldali Javascript-kódtár használatával egy 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     ```
 
-7. A teljes kép a HTML-fájl hasonlóan kell kinéznie a következő kódot:
+7. A HTML-fájl összevonásával a következő kódhoz hasonlóan kell kinéznie:
 
     ```HTML
     <!DOCTYPE html>
@@ -164,19 +164,61 @@ A térkép vezérlőelem ügyféloldali Javascript-kódtár használatával egy 
     </html>
     ```
 
-8. A böngészőben nyissa meg a fájlt, és megtekintheti a megjelenített térképen. A következő kódhoz hasonlóan kell kinéznie:
+8. Nyissa meg a fájlt a böngészőben, és tekintse meg a megjelenített térképet. A következő kódhoz hasonlóan kell kinéznie:
 
-    <iframe height="700" style="width: 100%;" scrolling="no" title="A térkép vezérlőelem használata" src="//codepen.io/azuremaps/embed/yZpEYL/?height=557&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">Tekintse meg a toll típusú <a href='https://codepen.io/azuremaps/pen/yZpEYL/'>a térkép vezérlőelem használata</a> által az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
+    <iframe height="700" style="width: 100%;" scrolling="no" title="A Térkép vezérlőelem használata" src="//codepen.io/azuremaps/embed/yZpEYL/?height=557&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">Tekintse meg a tollat a <a href='https://codepen.io'>CodePen</a> <a href='https://codepen.io/azuremaps/pen/yZpEYL/'>-</a> on Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) használatával.
     </iframe>
+
+## <a name="localizing-the-map"></a>A Térkép honosítása
+
+Azure Maps két különböző módszert biztosít a Térkép nyelvének és regionális nézetének beállításához. Az első lehetőség, hogy hozzáadja ezt az információt a globális `atlas` névtérhez, ami az alkalmazás összes leképezés-vezérlési példányát az alapértelmezett beállítások alapján fogja eredményezni. A következő nyelvre állítja be a franciát ("fr-FR") és a regionális nézetet az "Auto" értékre:
+
+```javascript
+atlas.setLanguage('fr-FR');
+atlas.setView('auto');
+```
+
+A második lehetőség az, hogy ezeket az információkat a térképi beállításokba adja át a Térkép betöltése során, például:
+
+```javascript
+map = new atlas.Map('myMap', {
+    language: 'fr-FR',
+    view: 'auto',
+
+    authOptions: {
+        authType: 'aad',
+        clientId: '<Your AAD Client Id>',
+        aadAppId: '<Your AAD App Id>',
+        aadTenant: '<Your AAD Tenant Id>'
+    }
+});
+```
+
+> [!Note]
+> A web SDK-val több térképes példányt is betölthet ugyanazon az oldalon különböző nyelvi és területi beállításokkal. Ezeket a beállításokat a Térkép `setStyle` funkciójának használatával is frissítheti a Térkép betöltését követően. 
+
+Itt látható egy példa arra, hogy a "fr-FR", a regionális nézet pedig az "Auto" értékre van beállítva Azure Maps.
+
+![Térkép ábrázolása a feliratokról francia nyelven](./media/how-to-use-map-control/websdk-localization.png)
+
+A támogatott nyelvek és regionális nézetek teljes listáját [itt](supported-languages.md)dokumentáljuk.
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg, hogyan hozhat létre, és a egy térkép interakcióba:
+Ismerje meg, hogyan hozhat létre és kezelhet egy térképet:
 
 > [!div class="nextstepaction"]
 > [Térkép létrehozása](map-create.md)
 
-Ismerje meg, hogyan térkép stílus:
+A Térkép stílusa:
 
 > [!div class="nextstepaction"]
-> [Térkép stílus kiválasztása](choose-map-style.md)
+> [Válasszon egy leképezési stílust](choose-map-style.md)
+
+További információ hozzáadása a térképhez:
+
+> [!div class="nextstepaction"]
+> [Térkép létrehozása](map-create.md)
+
+> [!div class="nextstepaction"]
+> [Kódminták](https://docs.microsoft.com/samples/browse/?products=azure-maps)

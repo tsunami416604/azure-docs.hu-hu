@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 02/19/2018
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: 0b3af1bd7b3ab48074432d9e39552d72c6664b98
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d1e7fa1ed1649508f0d4923db8817d17ad556ca1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58124731"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179049"
 ---
 Amikor erőforrásokat helyez üzembe az Azure-ban, elképesztően rugalmasan dönthet arról, milyen típusú erőforrásokat szeretne üzembe helyezni, hol legyenek és hogyan állítja be őket. Előfordulhat azonban, hogy ez a rugalmasság több lehetőséget teremt, mint amennyit a szervezeten belül engedélyezni szeretne. Amikor erőforrások Azure-ban való üzembe helyezését mérlegeli, esetleg felmerülhetnek az alábbi kérdések:
 
-* Hogyan felelhetek meg az egyes országokban az adatok elkülönítésére vonatkozó jogi követelményeknek?
+* Hogyan felelnek meg az adatok elkülönítése a bizonyos országokban vagy régiókban jogi követelményei?
 * Hogyan szabályozhatom a költségeket?
 * Hogyan biztosíthatom, hogy senki ne módosítson akarata ellenére egy kritikus rendszert?
 * Hogyan követhetem nyomon és számlázhatom pontosan a költségeket?

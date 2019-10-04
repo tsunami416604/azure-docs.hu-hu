@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc
 ms.date: 04/01/2018
-ms.openlocfilehash: ff8e61c53774429087ffe1a9137d40b155eb3f68
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: c7414ee159303465d6698ce9c47d04ba37c0c46e
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57192275"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329375"
 ---
 # <a name="tutorial-azure-stream-analytics-javascript-user-defined-functions"></a>Oktatóanyag: Az Azure Stream Analytics JavaScript felhasználó által definiált függvények
  
@@ -33,7 +33,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 A felhasználói JavaScript-függvények támogatják a külső kapcsolatokat nem igénylő, állapot nélküli, csak számítási skaláris függvényeket. Egy függvény visszaadott értéke csak skaláris (egyetlen) érték lehet. Miután hozzáadott egy felhasználói JavaScript-függvényt egy feladathoz, bárhol használhatja a függvényt a lekérdezésben, egy beépített skaláris függvényhez hasonlóan.
 
 Az alábbiakban bemutatunk néhány forgatókönyvet, amelyekben hasznosnak találhatja a felhasználói JavaScript-függvényeket:
-* Reguláriskifejezés-függvényeket (például: **Regexp_Replace()** és **Regexp_Extract()**) tartalmazó sztringek elemzése és módosítása.
+* Reguláriskifejezés-függvényeket (például: **Regexp_Replace()** és **Regexp_Extract()** ) tartalmazó sztringek elemzése és módosítása.
 * Adatok dekódolása és kódolása, például bináris adatok átalakítása hexadecimális adatokká.
 * Matematikai számítások végrehajtása JavaScript **Math** függvényekkel.
 * Tömbműveletek, például rendezés, összekapcsolás, keresés és kitöltés végrehajtása.
@@ -120,6 +120,8 @@ Objektum | Record
 Tömb | Tömb
 Null, nem definiált | NULL
 Bármely más típus (például függvény vagy hiba) | Nem támogatott (futásidejű hibát eredményez)
+
+JavaScript language kis-és nagybetűket, és kis-és JavaScript-kódba objektum mezőt meg kell egyeznie a kis-és a bejövő adatok mezőit. Vegye figyelembe, hogy-es kompatibilitási szintű 1.0 feladatok mezők konvertálja a kisbetűket SQL SELECT utasítást. 1\.1-es vagy magasabb kompatibilitási szinten a azonos kis-és az SQL-lekérdezésben megadott mezőket a SELECT utasítás lesz.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 A JavaScript futásidejű hibái végzetesnek minősülnek, és a tevékenységnaplóban tekinthetők meg. A napló lekéréséhez lépjen a feladatra az Azure Portalon, és válassza a **Tevékenységnapló** elemet.

@@ -8,26 +8,24 @@ ms.topic: include
 ms.date: 01/22/2019
 ms.author: yegu
 ms.custom: include file
-ms.openlocfilehash: a02144914e73ca1788976d8b01ccd95d1b9e9a1b
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 8f2e956603fbb9aec81b08260eade846eb6a622c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58227150"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66393326"
 ---
 Ha azt tervezi, folytassa a következő oktatóanyaggal, tartsa meg ebben a rövid útmutatóban létrehozott erőforrásokat. Újból felhasználhatja őket a következő oktatóanyagban.
 
 Ha elkészült, a rövid útmutató mintaalkalmazás, törölje az Azure-erőforrások díjak elkerülése érdekében ebben a rövid útmutatóban létrehozott.
 
 > [!IMPORTANT]
-> Az erőforráscsoport törlése nem vonható vissza. Az erőforráscsoport és a benne lévő erőforrás véglegesen törlődnek. Figyeljen, nehogy véletlenül rossz erőforráscsoportot vagy erőforrásokat töröljön. Talán hozott létre az erőforrások egy meglévő erőforráscsoportot, amely tartalmazza a megtartani kívánt erőforrások jelen minta üzemeltetését. Minden erőforrás külön-külön törölheti az erőforráscsoport törlése helyett megfelelő panelekről.
->
->
+> Az erőforráscsoport törlése nem vonható vissza. Az erőforráscsoport és a benne lévő erőforrás véglegesen törlődnek. Figyeljen, nehogy véletlenül rossz erőforráscsoportot vagy erőforrásokat töröljön. Létrehozta az erőforrások a megtartani kívánt erőforrásokat tartalmazó erőforráscsoportot jelen minta üzemeltetését, törölje az egyes erőforrások külön-külön annak megfelelő panelen az erőforráscsoport törlése helyett.
 
-Jelentkezzen be a [az Azure portal](https://aka.ms/azconfig/portal), és válassza ki **erőforráscsoportok**.
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com), és válassza ki **erőforráscsoportok**.
+1. Az a **Szűrés név alapján** mezőbe írja be az erőforráscsoport nevét. A következő útmutatót: Ebben a rövid útmutatóban használt nevű erőforráscsoport *AppConfigTestResources*.
+1. A találatok listájában válassza ki az erőforráscsoportot, és vagy kattintson a jobb gombbal a sor vagy használja a **három** ( **...** ) gombra kattintva nyissa meg a helyi menüből.
+1. Válassza az **Erőforráscsoport törlése** elemet.
+1. A rendszer az erőforráscsoport törlésének megerősítését kéri. Adja meg a nevét, erősítse meg, és válassza ki az erőforráscsoport **törlése**.
 
-Az a **Szűrés név alapján** mezőbe írja be az erőforráscsoport nevét. A következő útmutatót: Ebben a rövid útmutatóban használt nevű erőforráscsoport *AppConfigTestResources*. Válassza ki az erőforráscsoport, a találatok listájában, **...**  majd **erőforráscsoport törlése**.
-
-A rendszer az erőforráscsoport törlésének megerősítését kéri. Adja meg a nevét, erősítse meg, és válassza ki az erőforráscsoport **törlése**.
-
-A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne foglalt erőforrásokat.
+Néhány pillanat múlva az erőforráscsoportot és az ahhoz tartozó összes erőforrást törlődnek.

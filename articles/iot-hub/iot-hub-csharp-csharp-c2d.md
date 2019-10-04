@@ -1,6 +1,6 @@
 ---
-title: Felhőből az eszközre irányuló üzeneteket az Azure IoT Hub (.NET) |} A Microsoft Docs
-description: Annak a felhőből az eszközre irányuló üzeneteket küld egy eszköz az Azure IoT SDK-k használata a .NET-hez készült Azure IoT hubról. Módosítja egy eszközalkalmazásnak, hogy a felhőből az eszközre irányuló üzenetek fogadása és módosíthat egy háttér-alkalmazást a felhőből az eszközre irányuló üzenetek küldéséhez.
+title: Felhőből az eszközre irányuló üzenetek az Azure IoT Hub (.NET) szolgáltatással | Microsoft Docs
+description: Felhőből az eszközre irányuló üzenetek küldése egy Azure IoT hub-eszközről az Azure IoT SDK-k használatával a .NET-hez. A felhőből az eszközre irányuló üzenetek fogadásához és a háttérbeli alkalmazások módosításához a felhőből az eszközre irányuló üzenetek küldéséhez módosítania kell egy eszköz alkalmazást.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -9,54 +9,52 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: robinsh
-ms.openlocfilehash: d16f57db6a3c39be34c13663db62d7be50749f57
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 99acd43128bedcf3dba470f84c0a406861d77e2d
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59786693"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147794"
 ---
-# <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>Üzenetküldés a felhőből az eszközre az IoT Hub (.NET)
+# <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>Üzenetek küldése a felhőből az eszközre IoT Hub (.NET) használatával
 
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
-## <a name="introduction"></a>Bevezetés
-
-Az Azure IoT Hub egy teljes körűen felügyelt szolgáltatás, amellyel engedélyezheti a megbízható és biztonságos kétirányú kommunikációt több millió eszköz között, és megoldást biztosít a háttérrendszer. [Telemetria küldése egy eszközről IoT hubra... ](quickstart-send-telemetry-dotnet.md) bemutatja, hogyan hozzon létre egy IoT hubot, azt az eszközidentitás létrehozását és egy eszköz – felhő üzeneteket eszközalkalmazás code.
+Az Azure IoT Hub egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi a megbízható és biztonságos kétirányú kommunikációt több millió eszköz és egy megoldás hátterében. Az [eszközről az IoT hub-ra való telemetria küldése](quickstart-send-telemetry-dotnet.md) azt mutatja be, hogyan lehet létrehozni egy IoT hubot, kiépíteni egy eszköz identitását, és az eszközről a felhőbe irányuló üzeneteket küldő eszköz-alkalmazást.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-Ebben az oktatóanyagban ez a rövid útmutató számos tekintetben [telemetriát küldjön az eszközről az IoT hub... ](quickstart-send-telemetry-dotnet.md). Ez bemutatja, hogyan hajtsa végre a következő lépéseket:
+Ez az oktatóanyag a [telemetria küldött eszközről egy IoT hubhoz](quickstart-send-telemetry-dotnet.md)épít. A következő feladatok elvégzését mutatja be:
 
-* A megoldás háttérrendszerének, a felhőből az eszközre irányuló üzenetek küldése IoT hubon keresztül egy adott eszköz.
+* A megoldás hátterében a felhőből az eszközre irányuló üzeneteket a IoT Hub használatával egyetlen eszközre küldheti.
 
-* Az eszközön a felhőből az eszközre irányuló üzeneteket fogadni.
+* A felhőből az eszközre irányuló üzenetek fogadása az eszközön.
 
-* A megoldás háttérrendszerének, a kérelmek kézbesítési nyugtázás (*visszajelzés*) az IoT Hub az eszközökre küldött üzenetek.
+* A megoldási háttérből kérjen kézbesítési visszaigazolást (*visszajelzés*) a IoT hub eszközről küldött üzenetekhez.
 
-További információ a felhőből az eszközre irányuló üzenetek annak [D2C és az IoT Hub üzenetküldési C2D](iot-hub-devguide-messaging.md).
+A felhőből az eszközre irányuló üzenetekkel kapcsolatos további információk a [D2C és a C2D üzenetküldés IoT hub](iot-hub-devguide-messaging.md)használatával című témakörben találhatók.
 
-Ez az oktatóanyag végén két .NET-konzolalkalmazással fogja futtatni.
+Az oktatóanyag végén két .NET-konzol alkalmazást futtat.
 
-* **SimulatedDevice**, a létrehozott alkalmazás egy módosított verziója [telemetriát küldjön az eszközről az IoT hub... ](quickstart-send-telemetry-dotnet.md), amely csatlakozik az IoT hubhoz, és megkapja a felhőből az eszközre.
+* **SimulatedDevice**. Ez az alkalmazás csatlakozik az IoT hubhoz, és fogadja a felhőből az eszközre irányuló üzeneteket. Ez az alkalmazás a [telemetria küldése eszközről egy IoT hubhoz](quickstart-send-telemetry-dotnet.md)létrehozott alkalmazás módosított verziója.
 
-* **SendCloudToDevice**, amely a felhőből az eszközre üzenetet küld az IoT hubon keresztül az eszköz alkalmazás, és annak kézbesítési nyugtázási majd kap.
+* **SendCloudToDevice**. Ez az alkalmazás egy felhőből az eszközre irányuló üzenetet küld az eszköz alkalmazásnak IoT Hubon keresztül, majd megkapja a kézbesítési visszaigazolást.
 
 > [!NOTE]
-> Az IoT Hub SDK számos eszközplatformok és nyelveken (például a C, Java és Javascript) támogatással rendelkezik az keresztül [Azure IoT eszközoldali SDK-k](iot-hub-devguide-sdks.md). Az eszköz csatlakoztatása, ebben az oktatóanyagban a kódot, és általában az Azure IoT hubba a részletes útmutatót lásd: a [IoT Hub fejlesztői útmutatójának](iot-hub-devguide.md).
-> 
+> A IoT Hub számos eszköz-platformhoz és nyelvhez rendelkezik SDK-támogatással, beleértve a C, Java, Python és JavaScript eszközöket az [Azure IoT Device SDK](iot-hub-devguide-sdks.md)-k segítségével. Az eszköznek az oktatóanyag kódjához való csatlakoztatásának részletes ismertetését, és általában az Azure IoT Hubt a [IoT hub fejlesztői útmutatójában](iot-hub-devguide.md)találja.
+>
 
-Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
+## <a name="prerequisites"></a>Előfeltételek
 
-* Visual Studio 2017
+* Visual Studio
 
-* Aktív Azure-fiók. (Ha nincs fiókja, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) mindössze néhány perc alatt.)
+* Aktív Azure-fiók. Ha nem rendelkezik fiókkal, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) .
 
-## <a name="receive-messages-in-the-device-app"></a>Üzenetek fogadása az eszköz alkalmazásban
+## <a name="receive-messages-in-the-device-app"></a>Üzenetek fogadása az eszköz alkalmazásában
 
-Ebben a szakaszban módosítását fogja elvégezni az eszköz alkalmazás létrehozott [telemetriát küldjön az eszközről az IoT hub... ](quickstart-send-telemetry-dotnet.md) felhőből az eszközre irányuló üzenetek fogadása az IoT hubról.
+Ebben a szakaszban a [telemetria küldése az eszközről az IoT hub](quickstart-send-telemetry-dotnet.md) -ra létrehozott alkalmazásban módosítsa a felhőből az eszközre irányuló üzeneteket az IoT hub-ból.
 
-1. A Visual Studióban az a **SimulatedDevice** projektre, adja hozzá a következő metódust a **Program** osztály.
+1. A Visual Studióban a **SimulatedDevice** projektben adja hozzá a következő metódust a **program** osztályhoz.
 
    ```csharp
     private static async void ReceiveC2dAsync()
@@ -77,81 +75,71 @@ Ebben a szakaszban módosítását fogja elvégezni az eszköz alkalmazás létr
     }
    ```
 
-   A `ReceiveAsync` metódus aszinkron módon visszaadja, amelyek az eszköz megkapta a fogadott üzenethez. Adja vissza, *null* specifiable időtúllépési idő után (ebben az esetben egy perc az alapértelmezett szerepel). Ha az alkalmazás megkapja egy *null*, az új üzenetek várakozási továbbra is. Ez a követelmény nem az az oka az `if (receivedMessage == null) continue` sor.
-
-    A hívás `CompleteAsync()` értesítést küld az IoT Hub, hogy az üzenet feldolgozása sikeresen megtörtént. Az üzenet biztonságosan eltávolítható az eszköz üzenetsorból. Hiba történt, amely ebben az esetben az eszköz alkalmazást az üzenetek feldolgozásának befejezése, ha az IoT Hub elküldi azt újra. Ezután fontos, hogy az üzenet az eszközalkalmazás lévő logika feldolgozási *idempotens*, így ugyanazt az eredményt adja ugyanazt az üzenetet fogadó több alkalommal. 
-
-    Egy alkalmazás ideiglenesen elvetheti a egy üzenetet, amely az IoT hub, az üzenet a várólistában a jövőbeli fogyasztás megőrzése eredményez. Vagy az alkalmazás képes utasítsa el egy üzenetet, amely véglegesen eltávolítja az üzenetet az üzenetsorból. A felhőből az eszközre irányuló üzenetek életciklusának kapcsolatos további információkért lásd: [D2C és C2D az IoT Hub üzenetküldési](iot-hub-devguide-messaging.md).
-
-   > [!NOTE]
-   > Helyett MQTT, AMQP vagy HTTPS-en keresztül szolgáltatást átviteli eszközként, amikor a `ReceiveAsync` metódus azonnal visszatér. A támogatott a HTTPS-felhőből eszközre irányuló üzenetek egyik csak időszakosan kapcsolódó eszközök, amelyek ellenőrzik ritkán üzenetek (kevesebb mint 25 percenként). Eredmények további HTTPS kiállító kap az IoT Hub a kérelmek szabályozása. MQTT, AMQP és a HTTPS-támogatás és az IoT Hub szabályozás közötti különbségekkel kapcsolatos további információkért lásd: [D2C és C2D az IoT Hub üzenetküldési](iot-hub-devguide-messaging.md).
-   >
-
-2. Adja hozzá a következő metódust a **fő** metódus, mielőtt a jobb oldalon a `Console.ReadLine()` sor:
+1. Adja hozzá a következő metódust a **Main** metódushoz, közvetlenül `Console.ReadLine()` a sor előtt:
 
    ```csharp
    ReceiveC2dAsync();
    ```
 
-## <a name="get-the-iot-hub-connection-string"></a>Az IoT Hub kapcsolati karakterláncának beszerzése
+A `ReceiveAsync` metódus aszinkron módon visszaadja a kapott üzenetet, amikor az eszköz megkapja azt. Egy megadható időtúllépési időszak után *Null* értéket ad vissza. Ebben a példában az alapértelmezett érték egy perc. Ha az alkalmazás *Null értéket*kap, akkor továbbra is várnia kell az új üzeneteket. Ez a követelmény a `if (receivedMessage == null) continue` sor oka.
 
-Először lekérni a portálon az IoT Hub kapcsolati karakterláncra.
+Az üzenet sikeres `CompleteAsync()` feldolgozását IoT hub értesítési hívás. Az üzenet biztonságosan eltávolítható az eszköz várólistáról. Ha valami történt, amely meggátolta, hogy az eszköz nem teljesíti az üzenet feldolgozását, IoT Hub a szolgáltatás újra elérhetővé válik. Az *idempotens*logikának kell lennie az eszköz alkalmazásában, hogy ugyanazt az üzenetet kapja többször is ugyanez az eredmény.
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com)válassza **erőforráscsoportok**.
+Egy alkalmazás átmenetileg is kihagyhat egy üzenetet, ami azt eredményezi, hogy a IoT hub a jövőbeli felhasználás érdekében megőrzi az üzenetet a várólistában. Vagy az alkalmazás elutasíthat egy üzenetet, amely véglegesen eltávolítja az üzenetet a várólistából. A felhőből az eszközre irányuló üzenetek életciklusával kapcsolatos további információkért lásd: [D2C és C2D-üzenetküldés a IoT hub használatával](iot-hub-devguide-messaging.md).
 
-2. Válassza ki az ebben az útmutatóban használt erőforráscsoportot.
+   > [!NOTE]
+   > Ha MQTT vagy AMQP helyett HTTPS protokollt használ, a `ReceiveAsync` metódus azonnal visszaadja. A HTTPS-alapú felhőből az eszközre irányuló üzenetek támogatott mintája időnként olyan eszközökhöz csatlakozik, amelyek ritkán keresik az üzeneteket (kevesebb, mint 25 percenként). Ha több HTTPS-t ad meg, a kérések szabályozása IoT Hub eredményez. A MQTT, a AMQP és a HTTPS támogatásával, valamint a szabályozás IoT Hubával kapcsolatos további információkért lásd: [D2C és C2D üzenetküldés a IoT hub](iot-hub-devguide-messaging.md).
+   >
 
-3. Válassza ki az IoT Hub használ.
+## <a name="get-the-iot-hub-connection-string"></a>Az IoT hub-beli kapcsolatok karakterláncának beolvasása
 
-4. Jelölje ki a hub ablaktáblán **megosztott elérési házirendek**.
+Ebben a cikkben egy háttér-szolgáltatást hoz létre a felhőből az eszközre irányuló üzenetek küldéséhez a IoT hub használatával, amelyet a [telemetria küldése eszközről egy IoT hubhoz](quickstart-send-telemetry-dotnet.md)hozott létre. A felhőből az eszközre irányuló üzenetek küldéséhez a szolgáltatásnak szüksége van a **szolgáltatás kapcsolódási** engedélyére. Alapértelmezés szerint minden IoT Hub a **szolgáltatás** nevű közös hozzáférési házirenddel jön létre, amely megadja ezt az engedélyt.
 
-5. Válassza ki **iothubowner**. Azt jeleníti meg a kapcsolati karakterláncokkal az **iothubowner** panel. Válassza a Másolás ikonjára a **kapcsolati karakterlánc – elsődleges kulcs**. A kapcsolati karakterlánc későbbi használatra mentse.
-
-   ![Az IoT Hub kapcsolati karakterláncának beszerzése](./media/iot-hub-csharp-csharp-c2d/get-iot-hub-connection-string.png)
+[!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
 ## <a name="send-a-cloud-to-device-message"></a>Felhőből az eszközre irányuló üzenet küldése
 
-Most már írhat olyan .NET-konzolalkalmazást, amely a felhőből az eszközre irányuló üzeneteket küld az eszköz alkalmazás.
+Most ír egy .NET-konzol alkalmazást, amely a felhőből az eszközre irányuló üzeneteket küld az eszköz alkalmazásnak.
 
-1. A jelenlegi Visual Studio-megoldásban kattintson a jobb gombbal a megoldásra, majd válassza a Hozzáadás > Új projekt. Válassza ki **Windows asztali** , majd **Console App (.NET Framework)**. Adja a projektnek **SendCloudToDevice** , és válassza ki a .NET-keretrendszer legújabb verzióját, majd válassza ki **OK** a projekt létrehozásához.
+1. Az aktuális Visual Studio-megoldásban válassza a **fájl** > **új** > **projekt**lehetőséget. Az **új projekt létrehozása**területen válassza a **konzol alkalmazás (.NET-keretrendszer)** lehetőséget, majd kattintson a **tovább**gombra.
 
-   ![A Visual Studio új projekt](./media/iot-hub-csharp-csharp-c2d/create-identity-csharp1.png)
+1. Nevezze el a projekt *SendCloudToDevice*. A **megoldás**területen válassza a **Hozzáadás a megoldáshoz** lehetőséget, és fogadja el a .NET-keretrendszer legújabb verzióját. A projekt létrehozásához válassza a **Létrehozás** lehetőséget.
 
-2. A Megoldáskezelőben kattintson a jobb gombbal a megoldás, és kattintson **NuGet-csomagok kezelése megoldáshoz...** .
+   ![Új projekt konfigurálása a Visual Studióban](./media/iot-hub-csharp-csharp-c2d/sendcloudtodevice-project-configure.png)
 
-   Ez a művelet megnyitja a **NuGet-csomagok kezelése** ablak.
+1. A Megoldáskezelőban kattintson a jobb gombbal az új megoldásra, majd válassza a **NuGet-csomagok kezelése**lehetőséget.
 
-3. Keresse meg **Microsoft.Azure.Devices**, válassza a Tallózás lapon. Ha megtalálta a csomagot, kattintson a **telepítése**, és fogadja el a használati feltételeket.
+1. A **NuGet-csomagok kezelése**lapon válassza a **Tallózás**lehetőséget, majd keresse meg és válassza ki a **Microsoft. Azure. Devices**elemet. Válassza a **telepítés**lehetőséget.
 
-   Ez letölti, telepíti, és hozzáad egy hivatkozást a [Azure IoT szolgáltatás SDK NuGet-csomagot](https://www.nuget.org/packages/Microsoft.Azure.Devices/).
+   Ez a lépés letölti, telepíti és hozzáadja az [Azure IoT Service SDK NuGet csomagra](https://www.nuget.org/packages/Microsoft.Azure.Devices/)mutató hivatkozást.
 
-4. Adja hozzá a következő `using` nyilatkozat tetején a **Program.cs** fájlt.
+1. Adja hozzá a `using` következő utasítást a **program.cs** fájl elejéhez.
 
    ``` csharp
    using Microsoft.Azure.Devices;
    ```
 
-5. Adja hozzá a **Program** osztályhoz a következő mezőket: Cserélje le a helyőrző értékét az ebben a szakaszban korábban mentett IoT hub kapcsolati karakterláncra. 
+1. Adja hozzá a **Program** osztályhoz a következő mezőket: Cserélje le a helyőrző értékét a korábban átmásolt IoT hub-beli [IoT hub-kapcsolatok karakterláncának](#get-the-iot-hub-connection-string)lekérése elemre.
 
    ``` csharp
    static ServiceClient serviceClient;
    static string connectionString = "{iot hub connection string}";
    ```
 
-6. Adja hozzá a **Program** osztályhoz a következő metódust. Állítsa be az eszköz nevét, mire az eszköz meghatározásakor a [telemetriát küldjön az eszközről az IoT hub... ](quickstart-send-telemetry-dotnet.md).
+1. Adja hozzá a **Program** osztályhoz a következő metódust. Állítsa be az eszköz nevét arra az értékre, amelyet az eszköznek az eszközről az [IoT hubhoz való telemetria](quickstart-send-telemetry-dotnet.md)való megadásakor használt.
 
    ``` csharp
    private async static Task SendCloudToDeviceMessageAsync()
    {
         var commandMessage = new
          Message(Encoding.ASCII.GetBytes("Cloud to device message."));
-        await serviceClient.SendAsync("myDevice", commandMessage);
+        await serviceClient.SendAsync("myFirstDevice", commandMessage);
    }
    ```
 
-   Ez a módszer új felhőből az eszközre irányuló üzenetet küld az ID, az eszköz `myFirstDevice`. Módosítsa ezt a paramétert csak akkor, ha a használt a módosított [telemetriát küldjön az eszközről az IoT hub... ](quickstart-send-telemetry-dotnet.md).
+   Ez a metódus egy új, `myFirstDevice`a felhőből az eszközre irányuló üzenetet küld az eszköznek a következő azonosítóval:. Ezt a paramétert csak akkor módosítsa, ha módosította a [telemetria küldése az eszközről egy IoT hubhoz](quickstart-send-telemetry-dotnet.md).
 
-7. Végül adja hozzá a következő sorokat a **fő** metódust.
+1. Végül adja hozzá a következő sorokat a **Main** metódushoz.
 
    ``` csharp
    Console.WriteLine("Send Cloud-to-Device message\n");
@@ -163,19 +151,21 @@ Most már írhat olyan .NET-konzolalkalmazást, amely a felhőből az eszközre 
    Console.ReadLine();
    ```
 
-8. A Visual studióban kattintson a jobb gombbal a megoldás, és válassza **állítsa be indítási projektek...** . Válassza ki **több kezdőprojekt**, majd válassza ki a **Start** műveletet **ReadDeviceToCloudMessages**, **SimulatedDevice**, és **SendCloudToDevice**.
+1. A Solutions Explorerben kattintson a jobb gombbal a megoldásra, majd válassza az **indítási projektek beállítása**lehetőséget.
 
-9. Nyomja meg **F5**. Mindhárom alkalmazás kell kezdenie. Válassza ki a **SendCloudToDevice** windows, majd nyomja meg **Enter**. Az eszköz alkalmazás által fogadott üzenetnek kell megjelennie.
+1. Az **Általános tulajdonságok** > **indítási projekt**területen válassza a **több indítási projekt**elemet, majd válassza a **ReadDeviceToCloudMessages**, a **SimulatedDevice**és a SendCloudToDevice **indítási** műveletét.. Válassza ki **OK** a módosítások mentéséhez.
 
-   ![Alkalmazás fogadó üzenet](./media/iot-hub-csharp-csharp-c2d/sendc2d1.png)
+1. Nyomja le az **F5**billentyűt. Mindhárom alkalmazásnak el kell indulnia. Válassza ki a **SendCloudToDevice** Windowst, majd nyomja le az **ENTER**billentyűt. Ekkor meg kell jelennie az eszköz által fogadott üzenetnek.
 
-## <a name="receive-delivery-feedback"></a>Kézbesítési visszajelzéseket kap
+   ![Üzenet fogadása](./media/iot-hub-csharp-csharp-c2d/sendc2d1.png)
 
-Lehetőség arra kérelem kézbesítési (vagy lejárati) nyugtázás az IoT hubról felhőből az eszközre irányuló üzenetek. Ez a beállítás lehetővé teszi, hogy újra, vagy a kompenzációs logika egyszerűen tájékoztatja a megoldás háttérrendszere. Felhőből az eszközre visszajelzés kapcsolatos további információkért lásd: [D2C és az IoT Hub üzenetküldési C2D](iot-hub-devguide-messaging.md).
+## <a name="receive-delivery-feedback"></a>Kézbesítési visszajelzés fogadása
 
-Ebben a szakaszban módosítsa a **SendCloudToDevice** alkalmazás visszajelzést, és fogadjon, az IoT hubról.
+Az egyes felhőből az eszközre irányuló üzenetek esetében a IoT Hub kézbesítési (vagy lejárati) nyugták is igényelhetők. Ez a beállítás lehetővé teszi, hogy a megoldás háttérrendszer egyszerűen tájékoztassa az újrapróbálkozási vagy a kompenzációs logikát. További információ a felhőből az eszközre irányuló visszajelzésekről: a [D2C és a C2D üzenetküldés a IoT hub használatával](iot-hub-devguide-messaging.md).
 
-1. A Visual Studióban az a **SendCloudToDevice** projektre, adja hozzá a következő metódust a **Program** osztály.
+Ebben a szakaszban a **SendCloudToDevice** alkalmazást úgy módosítja, hogy visszajelzést kérjen, és megkapja az IoT hub-ból.
+
+1. A Visual Studióban a **SendCloudToDevice** projektben adja hozzá a következő metódust a **program** osztályhoz.
 
    ```csharp
    private async static void ReceiveFeedbackAsync()
@@ -198,32 +188,32 @@ Ebben a szakaszban módosítsa a **SendCloudToDevice** alkalmazás visszajelzés
     }
     ```
 
-    Vegye figyelembe a receive minta a felhőből az eszközre irányuló üzenetek fogadása az eszközalkalmazástól érkező ugyanaz.
+    Megjegyzés: Ez a fogadási minta ugyanaz, mint a felhőből az eszközre irányuló üzenetek fogadása az eszköz alkalmazásból.
 
-2. Adja hozzá a következő metódust a **fő** metódus után jobb a `serviceClient = ServiceClient.CreateFromConnectionString(connectionString)` sor.
+1. Adja hozzá a következő sort a **Main** metódushoz, közvetlenül `serviceClient = ServiceClient.CreateFromConnectionString(connectionString)`utána.
 
    ``` csharp
    ReceiveFeedbackAsync();
    ```
 
-3. A felhőből az eszközre irányuló üzenet kézbesítése visszajelzés kéréséhez, meg kell adnia a tulajdonságot a **SendCloudToDeviceMessageAsync** metódust. A következő sorban hozzáadása után a `var commandMessage = new Message(...);` sor.
+1. Ha visszajelzést szeretne küldeni a felhőből az eszközre irányuló üzenet kézbesítéséről, meg kell adnia egy tulajdonságot a **SendCloudToDeviceMessageAsync** metódusban. Adja hozzá a következő sort a `var commandMessage = new Message(...);` sor után jobbra.
 
    ``` csharp
    commandMessage.Ack = DeliveryAcknowledgement.Full;
    ```
 
-4. Az alkalmazások futtatása lenyomásával **F5**. Indítsa el az összes három alkalmazást kell megjelennie. Válassza ki a **SendCloudToDevice** windows, majd nyomja meg **Enter**. Az üzenet, fogadja az eszközalkalmazások által, és néhány másodperc elteltével a visszajelzés üzenet fogadja a **SendCloudToDevice** alkalmazás.
+1. Futtassa az alkalmazásokat az **F5**billentyű lenyomásával. Mindhárom alkalmazást meg kell kezdeni. Válassza ki a **SendCloudToDevice** Windowst, majd nyomja le az **ENTER**billentyűt. Ekkor meg kell jelennie az eszköz által fogadott üzenetnek, és néhány másodperc elteltével a **SendCloudToDevice** -alkalmazás fogadja a visszajelzési üzenetet.
 
-   ![Alkalmazás fogadó üzenet](./media/iot-hub-csharp-csharp-c2d/sendc2d2.png)
+   ![Üzenet fogadása](./media/iot-hub-csharp-csharp-c2d/sendc2d2.png)
 
 > [!NOTE]
-> Az egyszerűség kedvéért a rizspálinkát Ez az oktatóanyag nem valósít meg semmilyen újrapróbálkozási házirendet. Az éles kódban újrapróbálkozási házirendeket (például egy exponenciális leállítást), a cikkben leírtak implementálandó [átmeneti hibák kezelésével](/azure/architecture/best-practices/transient-faults).
+> Az egyszerűség kedvéért ez az oktatóanyag nem valósít meg újrapróbálkozási házirendet. A termelési kódban az [átmeneti hibák kezelésére](/azure/architecture/best-practices/transient-faults)szolgáló újrapróbálkozási házirendeket (például exponenciális leállítási) kell végrehajtania.
 >
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az útmutatóban megismerkedhetett a felhőből az eszközre irányuló üzenetek küldése és fogadása.
+Ebben a útmutatóban megtanulta, hogyan küldhet és fogadhat üzeneteket a felhőből az eszközre.
 
-Példák teljes, végpontok közötti megoldások, amely az IoT Hub használata a megtekintéséhez lásd: [Azure IoT távoli figyelési megoldásgyorsító](https://docs.microsoft.com/azure/iot-suite/).
+Ha szeretné megtekinteni a IoT Hubt használó teljes körű megoldásokat, tekintse meg az [Azure IoT távoli monitorozási megoldásának gyorsítása](https://docs.microsoft.com/azure/iot-suite/)című témakört.
 
-Az IoT Hub megoldások fejlesztésével kapcsolatos további tudnivalókért tekintse meg a [IoT Hub fejlesztői útmutatójának](iot-hub-devguide.md).
+Ha többet szeretne megtudni a IoT Hub-megoldások fejlesztéséről, tekintse meg a [IoT hub fejlesztői útmutatót](iot-hub-devguide.md).

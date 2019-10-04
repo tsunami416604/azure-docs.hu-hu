@@ -1,19 +1,19 @@
 ---
-title: Oktatóanyag az Azure Database for PostgreSQL monitoringjához és finomhangolásához
-description: Ez az oktatóanyag végigvezeti az Azure Database for PostgreSQL monitoringján és finomhangolásán.
+title: Az oktatóanyag figyelése és finomhangolása az Azure Database for PostgreSQL – egyetlen kiszolgáló
+description: Ez az oktatóanyag végigvezeti azon figyelése és finomhangolása az Azure Database for PostgreSQL – egyetlen kiszolgáló.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: tutorial
-ms.date: 09/24/2018
-ms.openlocfilehash: f05e0eef7680b08ce116cc0243d944f6a1db597c
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 5/6/2019
+ms.openlocfilehash: dcd8363db33809e2a33885f43e570c53807505fd
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53536441"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65073090"
 ---
-# <a name="tutorial-monitor-and-tune-azure-database-for-postgresql"></a>Oktatóanyag: Monitorozásakor és finomhangolásakor Azure Database for postgresql-hez
+# <a name="tutorial-monitor-and-tune-azure-database-for-postgresql---single-server"></a>Oktatóanyag: Figyelése és finomhangolása az Azure Database for PostgreSQL - kiszolgáló egyetlen
 
 Az Azure Database for PostgreSQL olyan funkciókkal rendelkezik, amelyek segítenek megérteni és javítani a kiszolgálója teljesítményét. Ezen oktatóanyag segítségével megtanulhatja a következőket:
 > [!div class="checklist"]

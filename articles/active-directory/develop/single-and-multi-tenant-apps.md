@@ -3,8 +3,8 @@ title: Az Azure Active Directoryban egyetlen és több-bérlős alkalmazások
 description: Ismerje meg a szolgáltatásokat és egybérlős és több-bérlős alkalmazások az Azure AD közötti különbségeket.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/24/2018
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: justhu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57ec1939dd1f5445583200776e489f7596f572f0
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 9035cc629a11c125c1b6351bd4bff9f5576f7baf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178447"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111068"
 ---
 # <a name="tenancy-in-azure-active-directory"></a>Az Azure Active Directoryban bérlős
 
@@ -38,8 +38,8 @@ Az Azure Portalon konfigurálhatja úgy az alkalmazását az egybérlős vagy t�
 
 | Célközönség | Egyetlen/több-tenant | Ki jelentkezhet be | 
 |----------|--------| ---------|
-| A fiókok csak ebben a címtárban | Egybérlős alkalmazás | A címtárában található összes felhasználói és vendégfiók használhatja az alkalmazást vagy az API-t.<br>*Használja ezt a beállítást, ha a cégen belüli használatra, a célközönséget.* |
-| Tetszőleges Azure AD-címtárban található fiókok | Több-bérlős | Minden felhasználó és a vendégek egy munkahelyi vagy iskolai fiókkal, a Microsoft API-t vagy az alkalmazás használhatja. Ez magában foglalja az iskolák és az Office 365 használó vállalatok.<br>*Használja ezt a beállítást, ha a célközönséget üzleti vagy oktatási ügyfelek.* |
+| A fiókok csak ebben a címtárban | Egybérlős alkalmazás | Minden felhasználó és a címtárban lévő vendégfiókok API-t vagy az alkalmazás használhatja.<br>*Használja ezt a beállítást, ha a cégen belüli használatra, a célközönséget.* |
+| Minden olyan Azure AD-címtárban lévő fiókok | Több-bérlős | Minden felhasználó és a vendégek egy munkahelyi vagy iskolai fiókkal, a Microsoft API-t vagy az alkalmazás használhatja. Ez magában foglalja az iskolák és az Office 365 használó vállalatok.<br>*Használja ezt a beállítást, ha a célközönséget üzleti vagy oktatási ügyfelek.* |
 | Minden olyan Azure AD-címtár és a személyes Microsoft-fiókok (például a Skype, Xbox és Outlook.com) fiókok | Több-bérlős | A munkahelyi, iskolai vagy személyes Microsoft-fiókkal rendelkező felhasználókat az alkalmazás- vagy API-t használhatja. Az iskolák és az Office 365-höz, valamint a személyes fiókok, mint az Xbox és a Skype-szolgáltatásokhoz való bejelentkezéshez használt használó vállalatok tartalmazza.<br>*Ezt a beállítást használja, amelyekre a Microsoft-fiókok legszélesebb készletét.* | 
 
 ## <a name="best-practices-for-multi-tenant-apps"></a>Ajánlott eljárások a több-bérlős alkalmazások

@@ -9,7 +9,7 @@
     - name: Tudnivalók az App Service-környezetekről
       href: environment/intro.md
     - name: Az üzemeltetési lehetőségek összehasonlítása
-      href: overview-compare.md
+      href: /azure/architecture/guide/technology-choices/compute-decision-tree
 - name: Gyors útmutatók
   expanded: true
   items:
@@ -63,21 +63,30 @@
       href: samples-resource-manager-templates.md
 - name: Alapelvek
   items:
-    - name: Az App Service működése
-      href: app-service-how-works-readme.md
     - name: App Service-csomagok
       href: overview-hosting-plans.md
     - name: OS-funkciók
       href: operating-system-functionality.md
+    - name: Ajánlott üzembe helyezési eljárások
+      href: deploy-best-practices.md
     - name: Biztonság
-      href: overview-security.md
       items:
+        - name: Javaslatok
+          href: security-recommendations.md
         - name: Hitelesítés és engedélyezés
           href: overview-authentication-authorization.md
         - name: Az operációs rendszer és a futtatókörnyezet javítása
           href: overview-patch-os-runtime.md
+        - name: Beépített biztonsági vezérlők
+          href: app-service-security-controls.md
+        - name: Biztonsági áttekintés
+          href: overview-security.md
+    - name: Hálózatkezelési funkciók
+      href: networking-features.md
     - name: Bemeneti és kimeneti IP-címek
       href: overview-inbound-outbound-ips.md
+    - name: Virtuális hálózat integrációja
+      href: web-sites-integrate-with-vnet.md
     - name: Hibrid kapcsolatok
       href: app-service-hybrid-connections.md
     - name: A Traffic Manager integrálása
@@ -90,14 +99,16 @@
   items:
     - name: Alkalmazás konfigurálása
       items:
-        - name: Alkalmazásbeállítások használata
-          href: web-sites-configure.md
+        - name: Általános beállítások konfigurálása
+          href: configure-common.md
         - name: A PHP konfigurálása
           href: web-sites-php-configure.md
-        - name: Java-fejlesztői útmutató
+        - name: A Java konfigurálása
           href: configure-language-java.md
         - name: Csatlakozás helyszíni erőforrásokhoz
           href: web-sites-integrate-with-vnet.md
+        - name: Azure Storage konfigurálása (tároló)
+          href: configure-connect-to-azure-storage.md
     - name: Üzembe helyezés az Azure-ban
       items:
         - name: Az alkalmazás üzembe helyezése
@@ -159,7 +170,7 @@
     - name: Az alkalmazás méretezése
       items:
         - name: Kiszolgálókapacitás vertikális felskálázása
-          href: web-sites-scale.md
+          href: manage-scale-up.md
         - name: PremiumV2 szintű csomag konfigurálása
           href: app-service-configure-premium-tier.md
         - name: Horizontális felskálázás több példányra
@@ -208,6 +219,8 @@
       href: /azure/templates/microsoft.web/allversions
 - name: További források
   items:
+    - name: App Service blog
+      href: 'https://aka.ms/appserviceblog'
     - name: Fejlessze a készségeit a Microsoft Learnnel
       href: /learn/browse/
     - name: Azure-ütemterv
@@ -218,6 +231,8 @@
       href: '../azure-subscription-service-limits.md#app-service-limits'
     - name: Szolgáltatási hírek
       href: 'https://azure.microsoft.com/updates/?product=app-service'
+    - name: Migration Assistant-útmutatók
+      href: 'https://github.com/Azure/App-Service-Migration-Assistant/tree/master/MigrationDocs'
     - name: Ajánlott eljárások
       href: app-service-best-practices.md
     - name: Példák
@@ -227,7 +242,7 @@
     - name: Részletes útmutatók
       items:
         - name: Referenciaarchitektúrák
-          href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/#web-applications'
+          href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/basic-web-app'
         - name: Üzembehelyezési szkriptek
           href: 'https://azure.microsoft.com/documentation/scripts/'
     - name: Hibaelhárítás

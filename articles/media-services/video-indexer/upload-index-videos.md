@@ -6,38 +6,39 @@ services: media-services
 author: Juliako
 manager: femila
 ms.service: media-services
+ms.subservice: video-indexer
 ms.topic: article
-ms.date: 03/05/2019
+ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: e6dead0f08f50b32dd963832824d9166ff2467c0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7233bea4a030b814a5332284a80f07a71f288dba
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58893452"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128203"
 ---
 # <a name="upload-and-index-your-videos"></a>Videók feltöltése és indexelése  
 
-Amikor a Video Indexer API videók feltöltését, akkor a következő feltöltési beállítások: 
+Videók Video Indexer API-val való feltöltésekor a következő feltöltési lehetőségek közül választhat: 
 
 * videó feltöltése egy URL-címről (előnyben részesített),
-* küldje el a videó fájlt, egy bájttömböt a kérelem törzsében szereplő
-* Használja meglévő Azure Media Services eszköz azáltal, hogy a [Eszközazonosító](https://docs.microsoft.com/azure/media-services/latest/assets-concept) (fizetős fiókok csak a támogatott).
+* a videofájl elküldése byte-tömbként a kérelem törzsében
+* Meglévő Azure Media Services eszköz használata az [eszköz azonosítójának](https://docs.microsoft.com/azure/media-services/latest/assets-concept) megadásával (csak a fizetett fiókok esetében támogatott).
 
 A cikk bemutatja, hogyan használhatja a [Videó feltöltése](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) API-t a videók URL-cím alapján történő feltöltéséhez és indexeléséhez. A cikkben található kódminta tartalmazza a megjegyzésként szereplő kódot, amely bemutatja, hogyan lehet feltölteni a bájttömböt. <br/>A cikk emellett ismertet néhányat az API-ban beállítható paraméterek közül, amelyekkel módosíthatja az API folyamatát és kimenetét.
 
-A videó feltöltése után a Video Indexer, igény szerint kódolja a videó (a cikkben tárgyalt). A Video Indexer-fiók létrehozásakor választhat egy ingyenes próbafiókot (ahol egy bizonyos számú ingyenes indexelési percet kap) vagy egy fizetős lehetőséget (ahol nincs kvótakorlát). Az ingyenes próbaverzióval a Video Indexer akár 600 perc ingyenes indexelést biztosít a webhely felhasználói számára, és akár 2400 perc ingyenes indexelést biztosít az API-felhasználóknak. A fizetős lehetőség a Video Indexer-fiókot, amely létrehozhat [csatlakozik az Azure-előfizetés és az Azure Media Services-fiók](connect-to-azure.md). Ön az indexelt perceket és a Media Accounttal kapcsolatos díjakat fizeti ki. 
+A videó feltöltése után Video Indexer, opcionálisan kódolja a videót (a cikkben ismertetett módon). A Video Indexer-fiók létrehozásakor választhat egy ingyenes próbafiókot (ahol egy bizonyos számú ingyenes indexelési percet kap) vagy egy fizetős lehetőséget (ahol nincs kvótakorlát). Az ingyenes próbaverzióval a Video Indexer akár 600 perc ingyenes indexelést biztosít a webhely felhasználói számára, és akár 2400 perc ingyenes indexelést biztosít az API-felhasználóknak. A fizetős megoldással olyan Video Indexer fiókot hozhat létre, amely az [Azure-előfizetéshez és egy Azure Media Services-fiókhoz csatlakozik](connect-to-azure.md). Ön az indexelt perceket és a Media Accounttal kapcsolatos díjakat fizeti ki. 
 
 ## <a name="uploading-considerations"></a>Feltöltési szempontok
-
-- A videó URL-cím alapján történő feltöltésekor (előnyben részesített) a végpontot a TLS 1.2-es (vagy újabb) verziójával kell védeni
-- Az URL-cím beállítással feltöltési mérete legfeljebb 30GB
-- A legtöbb böngésző URL-cím hossza legfeljebb 2000 karakter hosszúságú lehet
-- A feltöltés a byte tömb lehetőséggel mérete legfeljebb 2GB
-- A bájt tömb beállítás túllépi az időkorlátot 30 perc után
-- A `videoURL` paraméterben megadott URL-címet kódolni kell
-- Media Services objektumai indexelő is, az indexelés URL-címről korlátozások
-- A video Indexer esetében a maximális időtartama 4 óra egyetlen fájl
+ 
+- Ha a videót az URL-cím alapján tölti fel (előnyben részesített), a végpontot a TLS 1,2-as (vagy újabb) titkosítással kell védeni.
+- A feltöltési méret és az URL-cím beállítás a 30 GB-ra van korlátozva.
+- A kérelem URL-címének hossza legfeljebb 6144 karakter hosszúságú lehet, ahol a lekérdezési karakterlánc URL-címe legfeljebb 4096 karakter hosszúságú lehet.
+- A byte Array kapcsolóval rendelkező feltöltési méret 2 GB-ra van korlátozva.
+- A bájtos tömb beállítása 30 percnél hosszabb időt vesz igénybe.
+- A `videoURL` paraméterben megadott URL-címet kódolni kell.
+- Az indexelési Media Servicesi eszközök ugyanazzal a korlátozással rendelkeznek, mint az URL-cím indexelése.
+- A Video Indexer legfeljebb 4 órát tartalmaz egyetlen fájlra vonatkozóan.
 
 > [!Tip]
 > Javasoljuk, hogy a .NET-keretrendszer 4.6.2-es vagy újabb verzióját használja, mivel a régebbi verziók nem a TLS 1.2-t használják alapértelmezés szerint.
@@ -54,32 +55,32 @@ Ezzel a paraméterrel megadhat egy azonosítót, amely társítva lesz a videóh
 
 ### <a name="callbackurl"></a>callbackUrl
 
-Egy URL-címet, amellyel az ügyfél (a POST-kérés használatával) a következő eseményekről kaphat értesítést:
+Egy URL-cím, amely az ügyfél (POST-kérelem használatával) értesítésére szolgál az alábbi eseményekről:
 
-- Az indexelő állapot módosítása: 
-    - Tulajdonságok:    
+- Az indexelési állapot változása: 
+    - Tulajdonságok    
     
         |Name (Név)|Leírás|
         |---|---|
         |id|A videó azonosítója|
         |state|A videó állapota|  
-    - Például: https://test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed
+    - Például: https:\//test.com/Notifyme?projectName=MyProject&id=1234abcd&State=Processed
 - A videóban azonosított személy:
-  - Tulajdonságok
+  - properties
     
       |Name (Név)|Leírás|
       |---|---|
       |id| A videó azonosítója|
-      |faceId|A face ID, hogy megjelenik a videók indexe|
-      |knownPersonId|A egy oldallal modellen belül egyedi személy azonosítója|
-      |PersonName|Annak a személynek a nevét|
+      |faceId|A videó indexében megjelenő Arcfelismerés|
+      |knownPersonId|Az arc-modellen belül egyedi személy azonosítója|
+      |personName|A személy neve|
         
-    - Például: https://test.com/notifyme?projectName=MyProject&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
+    - Például: https:\//test.com/Notifyme?projectName=MyProject&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
 
 #### <a name="notes"></a>Megjegyzések
 
-- A video Indexer adja vissza az eredeti URL-címben megadott bármely meglévő paraméterek.
-- A megadott URL-címet kell kódolni.
+- Video Indexer az eredeti URL-címben megadott meglévő paramétereket adja vissza.
+- A megadott URL-címet kódolni kell.
 
 ### <a name="indexingpreset"></a>indexingPreset
 
@@ -91,11 +92,11 @@ Akkor használja ezt a paramétert, ha a nyers vagy külső felvételek háttér
 
 Az árat a kiválasztott indexelési lehetőség határozza meg.  
 
-### <a name="priority"></a>prioritás
+### <a name="priority"></a>priority
 
-Videók a Video Indexer által indexelt prioritásuk szerint. Használja a **prioritású** paraméterrel adja meg az index prioritás. A következő értékek érvényesek: **Alacsony**, **normál** (alapértelmezett), és **magas**.
+A videók indexelése Video Indexer a prioritásuk szerint történik. Az index prioritásának megadásához használja a **priority** paramétert. A következő értékek érvényesek: **Alacsony**, **normál** (alapértelmezett) és **magas**.
 
-**Prioritás** paraméter csak a díjköteles fiók támogatott.
+A **priority** paraméter csak a fizetős fiókok esetében támogatott.
 
 ### <a name="streamingpreset"></a>streamingPreset
 
@@ -158,9 +159,9 @@ public async Task Sample()
     // as an alternative to specifying video URL, you can upload a file.
     // remove the videoUrl parameter from the query params below and add the following lines:
     //FileStream video =File.OpenRead(Globals.VIDEOFILE_PATH);
-    //byte[] buffer =newbyte[video.Length];
+    //byte[] buffer =new byte[video.Length];
     //video.Read(buffer, 0, buffer.Length);
-    //content.Add(newByteArrayContent(buffer));
+    //content.Add(new ByteArrayContent(buffer));
 
     queryParams = CreateQueryString(
         new Dictionary<string, string>()
@@ -290,4 +291,4 @@ A Feltöltés művelet által visszaadott lehetséges állapotkódok az alábbi 
 
 ## <a name="next-steps"></a>További lépések
 
-[Az Azure-Videóindexelő kimenetének API által előállított vizsgálata](video-indexer-output-json-v2.md)
+[Az API által létrehozott Azure Video Indexer-kimenet vizsgálata](video-indexer-output-json-v2.md)

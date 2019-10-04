@@ -1,55 +1,53 @@
 ---
-ms.assetid: ''
-title: Az Azure Key Vault-tűzfalak és virtuális hálózatok – Azure Key Vault beállítása
-description: Részletes útmutatás a Key Vault-tűzfalak és virtuális hálózatok konfigurálása
+title: Azure Key Vault tűzfalak és virtuális hálózatok konfigurálása – Azure Key Vault
+description: Részletes útmutató Key Vault tűzfalak és virtuális hálózatok konfigurálásához
 services: key-vault
 author: amitbapat
-manager: barbkess
+manager: rkarlin
 ms.service: key-vault
-ms.topic: conceptual
-ms.workload: identity
-ms.date: 01/02/2019
+ms.topic: tutorial
+ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: c54b78a24068758fabb0918cfeb7d6516fd1bce5
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 60378632a55fe4578bb376a3a00de5efffc5d275
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487236"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976957"
 ---
-# <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Az Azure Key Vault-tűzfalak és virtuális hálózatok konfigurálása
+# <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Azure Key Vault tűzfalak és virtuális hálózatok konfigurálása
 
-Ebben a cikkben részletes útmutatást nyújt az Azure Key Vault-tűzfalak és virtuális hálózatok hozzáférés korlátozása a key vault konfigurálásához. A [virtuális hálózati Szolgáltatásvégpontok a Key vault](key-vault-overview-vnet-service-endpoints.md) lehetővé teszi a hozzáférés korlátozása egy adott virtuális hálózatban és IPv4-címtartományokat (az internet protocol version 4) készletét.
+Ez a cikk részletes útmutatást nyújt Azure Key Vault tűzfalak és virtuális hálózatok konfigurálásához a kulcstartóhoz való hozzáférés korlátozásához. A [Key Vault virtuális hálózati szolgáltatási végpontok](key-vault-overview-vnet-service-endpoints.md) lehetővé teszik, hogy korlátozza a hozzáférést egy adott virtuális hálózathoz, és IPv4 (Internet Protocol Version 4) címtartományt állítson be.
 
 > [!IMPORTANT]
-> Tűzfalszabályok vannak érvényben, miután a felhasználók csak hajthat végre a Key Vault [adatsík](../key-vault/key-vault-secure-your-key-vault.md#data-plane-access-control) műveleteket, ha az ügyfélkérések az engedélyezett virtuális hálózatok vagy IPv4-címtartományokat. Ez vonatkozik a Key Vault elérése az Azure Portalról. Bár az Azure Portalon, egy kulcstárolóba is böngésző felhasználók számára, akkor előfordulhat, hogy nem tudják kulcsok listázása, titkos kódok és tanúsítványok, ha az ügyfélszámítógép nem szerepel az engedélyezési listán. Ez is hatással van a Key Vault-választó más Azure-szolgáltatások. Lehet, hogy a felhasználók tudni kulcstartók listája látható, de nem kulcsok, listázását, ha a tűzfal-szabályok megakadályozzák fejlesztőkörnyezetükben.
+> A tűzfalszabályok érvénybe léptetése után a felhasználók csak akkor hajthatják [](../key-vault/key-vault-secure-your-key-vault.md#data-plane-access-control) végre Key Vault adatsík-műveleteket, ha a kérésük engedélyezett virtuális hálózatokból vagy IPv4-címtartományok származnak. Ez a Azure Portal Key Vault elérésére is vonatkozik. Bár a felhasználók megkereshetik a kulcstartót a Azure Portalból, előfordulhat, hogy nem tudják listázni a kulcsokat, titkokat vagy tanúsítványokat, ha az ügyfélszámítógépük nem szerepel az engedélyezési listán. Ez hatással van a más Azure-szolgáltatások Key Vault választóra is. Előfordulhat, hogy a felhasználók megtekinthetik a kulcstárolók listáját, de nem listázják a kulcsokat, ha a tűzfalszabályok megakadályozzák az ügyfélszoftvert.
 
 ## <a name="use-the-azure-portal"></a>Az Azure Portal használata
 
-Íme a Key Vault-tűzfalak és virtuális hálózatok konfigurálása az Azure portal használatával:
+A Key Vault tűzfalak és virtuális hálózatok konfigurálása a Azure Portal használatával:
 
-1. Keresse meg a key vault szeretné biztonságossá tenni.
-2. Válassza ki **tűzfalak és virtuális hálózatok**.
-3. A **engedélyezze a hozzáférést**válassza **kiválasztott hálózatok**.
-4. Meglévő virtuális hálózatok tűzfalak és virtuális hálózati szabályok hozzáadásához válassza **+ meglévő virtuális hálózatok hozzáadása**.
-5. A megnyíló új panelen válassza ki az előfizetést, virtuális hálózatok és alhálózatok, amelyet szeretne ehhez a kulcstartóhoz való hozzáférés engedélyezése. Ha a virtuális hálózatok és alhálózatok választja, nincs engedélyezve a Szolgáltatásvégpontok, győződjön meg róla, engedélyezze a szolgáltatásvégpontokat, és válassza ki a kívánt **engedélyezése**. Az érvénybe lépéséhez akár 15 percet igénybe vehet.
-6. A **IP hálózatokra**, adja hozzá az IPv4-címtartományokat IPv4-címtartományokat beírásával [(Classless Inter-Domain Routing) CIDR-jelölés](https://tools.ietf.org/html/rfc4632) vagy egyedi IP-címek.
+1. Keresse meg a védeni kívánt Key vaultot.
+2. Válassza **a tűzfalak és virtuális hálózatok**lehetőséget.
+3. **A hozzáférés engedélyezése lehetőségnél**válassza a **kiválasztott hálózatok**elemet.
+4. Ha meglévő virtuális hálózatokat szeretne hozzáadni a tűzfalakhoz és a virtuális hálózati szabályokhoz, válassza a **+ meglévő virtuális hálózatok hozzáadása**elemet.
+5. A megnyíló új panelen válassza ki azt az előfizetést, virtuális hálózatot és alhálózatot, amely számára engedélyezni kívánja a kulcstartó elérését. Ha a kiválasztott virtuális hálózatok és alhálózatok nem rendelkeznek engedélyezett szolgáltatási végpontokkal, erősítse meg, hogy engedélyezni szeretné a szolgáltatási végpontokat, majd válassza az **Engedélyezés**lehetőséget. Az érvénybe léptetés akár 15 percet is igénybe vehet.
+6. Az **IP-hálózatok**területen adja hozzá az IPv4-címtartományokat az IPv4-címtartományok beírásával a [CIDR (osztály nélküli tartományok közötti útválasztás) jelöléssel](https://tools.ietf.org/html/rfc4632) vagy az egyes IP-címekkel.
 7. Kattintson a **Mentés** gombra.
 
-Új virtuális hálózatok és alhálózatok is hozzáadhat, és, majd engedélyezze a szolgáltatásvégpontokat az újonnan létrehozott virtuális hálózatok és alhálózatok kiválasztásával **+ új virtuális hálózat hozzáadása**. Ezután kövesse az utasításokat.
+Új virtuális hálózatokat és alhálózatokat is hozzáadhat, majd engedélyezheti az újonnan létrehozott virtuális hálózatok és alhálózatok szolgáltatási végpontját az **+ új virtuális hálózat hozzáadása**lehetőség kiválasztásával. Ezután kövesse az utasításokat.
 
 ## <a name="use-the-azure-cli"></a>Az Azure parancssori felületének használata 
 
-Íme a Key Vault-tűzfalak és virtuális hálózatok konfigurálása az Azure CLI-vel
+A következőképpen konfigurálhatja Key Vault tűzfalakat és virtuális hálózatokat az Azure CLI használatával
 
-1. [Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli) és [jelentkezzen be a](https://docs.microsoft.com/cli/azure/authenticate-azure-cli).
+1. [Telepítse az Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) -t, és [Jelentkezzen be](https://docs.microsoft.com/cli/azure/authenticate-azure-cli).
 
-2. Elérhető a virtuális hálózati szabályok listája. A kulcstartó szabályok nem állított be, ha a lista üres lesz.
+2. A rendelkezésre álló virtuális hálózati szabályok listázása. Ha nem állított be szabályokat ehhez a kulcstartóhoz, a lista üres lesz.
    ```azurecli
    az keyvault network-rule list --resource-group myresourcegroup --name mykeyvault
    ```
 
-3. A Key vault szolgáltatásvégpont engedélyezése a egy meglévő virtuális hálózatot és alhálózatot.
+3. Egy meglévő virtuális hálózat és alhálózat Key Vaultának engedélyezése a szolgáltatási végpont számára.
    ```azurecli
    az network vnet subnet update --resource-group "myresourcegroup" --vnet-name "myvnet" --name "mysubnet" --service-endpoints "Microsoft.KeyVault"
    ```
@@ -60,17 +58,17 @@ Ebben a cikkben részletes útmutatást nyújt az Azure Key Vault-tűzfalak és 
    az keyvault network-rule add --resource-group "demo9311" --name "demo9311premium" --subnet $subnetid
    ```
 
-5. Adjon hozzá egy IP-címtartományt, ahonnan a forgalom engedélyezéséhez.
+5. Adjon hozzá egy IP-címtartományt, amelyből engedélyezi a forgalmat.
    ```azurecli
    az keyvault network-rule add --resource-group "myresourcegroup" --name "mykeyvault" --ip-address "191.10.18.0/24"
    ```
 
-6. Ha ezt a kulcstartót kell lennie minden olyan megbízható szolgáltatások által elérhető, állítsa be `bypass` való `AzureServices`.
+6. Ha a kulcstárolónak bármely megbízható szolgáltatás számára elérhetőnek kell lennie `bypass` , `AzureServices`állítsa a következőre:.
    ```azurecli
    az keyvault update --resource-group "myresourcegroup" --name "mykeyvault" --bypass AzureServices
    ```
 
-7. Kapcsolja be a hálózati szabályokat úgy, hogy az alapértelmezett művelet a `Deny`.
+7. Állítsa be a hálózati szabályokat úgy, hogy `Deny`az alapértelmezett műveletet állítja be.
    ```azurecli
    az keyvault update --resource-group "myresourcegroup" --name "mekeyvault" --default-action Deny
    ```
@@ -79,16 +77,16 @@ Ebben a cikkben részletes útmutatást nyújt az Azure Key Vault-tűzfalak és 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Íme a Key Vault-tűzfalak és virtuális hálózatok konfigurálása a PowerShell használatával:
+A következőképpen konfigurálhatja Key Vault tűzfalakat és virtuális hálózatokat a PowerShell használatával:
 
-1. Telepítse a legújabb [Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/install-az-ps), és [jelentkezzen be a](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
+1. Telepítse a legújabb [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps), és [Jelentkezzen be](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
 
-2. Elérhető a virtuális hálózati szabályok listája. Ha nem állított be ehhez a kulcstartóhoz tartozó szabályokat, a lista üres lesz.
+2. A rendelkezésre álló virtuális hálózati szabályok listázása. Ha nem állított be szabályokat ehhez a kulcstartóhoz, a lista üres lesz.
    ```powershell
    (Get-AzKeyVault -VaultName "mykeyvault").NetworkAcls
    ```
 
-3. Szolgáltatásvégpont engedélyezése a Key vault a egy meglévő virtuális hálózatot és alhálózatot.
+3. A szolgáltatás végpontjának engedélyezése meglévő virtuális hálózat és alhálózat Key Vaultához.
    ```powershell
    Get-AzVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Set-AzVirtualNetworkSubnetConfig -Name "mysubnet" -AddressPrefix "10.1.1.0/24" -ServiceEndpoint "Microsoft.KeyVault" | Set-AzVirtualNetwork
    ```
@@ -99,27 +97,27 @@ Ebben a cikkben részletes útmutatást nyújt az Azure Key Vault-tűzfalak és 
    Add-AzKeyVaultNetworkRule -VaultName "mykeyvault" -VirtualNetworkResourceId $subnet.Id
    ```
 
-5. Adjon hozzá egy IP-címtartományt, ahonnan a forgalom engedélyezéséhez.
+5. Adjon hozzá egy IP-címtartományt, amelyből engedélyezi a forgalmat.
    ```powershell
    Add-AzKeyVaultNetworkRule -VaultName "mykeyvault" -IpAddressRange "16.17.18.0/24"
    ```
 
-6. Ha ezt a kulcstartót kell lennie minden olyan megbízható szolgáltatások által elérhető, állítsa be `bypass` való `AzureServices`.
+6. Ha a kulcstárolónak bármely megbízható szolgáltatás számára elérhetőnek kell lennie `bypass` , `AzureServices`állítsa a következőre:.
    ```powershell
    Update-AzKeyVaultNetworkRuleSet -VaultName "mykeyvault" -Bypass AzureServices
    ```
 
-7. Kapcsolja be a hálózati szabályokat úgy, hogy az alapértelmezett művelet a `Deny`.
+7. Állítsa be a hálózati szabályokat úgy, hogy `Deny`az alapértelmezett műveletet állítja be.
    ```powershell
    Update-AzKeyVaultNetworkRuleSet -VaultName "mykeyvault" -DefaultAction Deny
    ```
 
 ## <a name="references"></a>Referencia
 
-* Az Azure CLI-parancsok: [az keyvault hálózati-szabály](https://docs.microsoft.com/cli/azure/keyvault/network-rule?view=azure-cli-latest)
-* Az Azure PowerShell-parancsmagokat: [Get-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/get-azkeyvault), [Add-AzKeyVaultNetworkRule](https://docs.microsoft.com/powershell/module/az.KeyVault/Add-azKeyVaultNetworkRule), [Remove-AzKeyVaultNetworkRule](https://docs.microsoft.com/powershell/module/az.KeyVault/Remove-azKeyVaultNetworkRule), [Update-AzKeyVaultNetworkRuleSet](https://docs.microsoft.com/powershell/module/az.KeyVault/Update-azKeyVaultNetworkRuleSet)
+* Azure CLI-parancsok: [az Key Vault Network-Rule](https://docs.microsoft.com/cli/azure/keyvault/network-rule?view=azure-cli-latest)
+* Azure PowerShell parancsmagok: [Get-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/get-azkeyvault), [Add-AzKeyVaultNetworkRule](https://docs.microsoft.com/powershell/module/az.KeyVault/Add-azKeyVaultNetworkRule), [Remove-AzKeyVaultNetworkRule](https://docs.microsoft.com/powershell/module/az.KeyVault/Remove-azKeyVaultNetworkRule), [Update-AzKeyVaultNetworkRuleSet](https://docs.microsoft.com/powershell/module/az.KeyVault/Update-azKeyVaultNetworkRuleSet)
 
 ## <a name="next-steps"></a>További lépések
 
-* [A Key vault virtuális hálózati Szolgáltatásvégpontok](key-vault-overview-vnet-service-endpoints.md)
+* [Virtuális hálózati szolgáltatás végpontjai Key Vault](key-vault-overview-vnet-service-endpoints.md)
 * [Kulcstartó védelme](key-vault-secure-your-key-vault.md)

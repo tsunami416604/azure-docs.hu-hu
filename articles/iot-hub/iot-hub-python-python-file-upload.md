@@ -1,73 +1,68 @@
 ---
-title: Fájlok feltöltése eszközökről az Azure IoT hubra Python használatával |} A Microsoft Docs
-description: Hogyan tölthetők fel fájlok egy eszközről a felhőbe a Pythonhoz készült Azure IoT eszközoldali SDK használatával. Feltöltött fájlok vannak tárolva egy Azure storage blob-tárolóba.
-author: kgremban
-manager: philmea
+title: Fájlok feltöltése az eszközökről az Azure IoT Hubba a Python használatával | Microsoft Docs
+description: Fájlok feltöltése egy eszközről a felhőbe a Pythonhoz készült Azure IoT Device SDK-val. A feltöltött fájlok tárolása egy Azure Storage blob-tárolóban történik.
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
-ms.date: 01/22/2019
-ms.author: kgremban
-ms.openlocfilehash: 6195c37780acaf8c8f432fa09c5ac01a75363c04
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 07/30/2019
+ms.author: robinsh
+ms.openlocfilehash: 6dfbcc7a3e76842546326742d801c913451855f3
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59265526"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001129"
 ---
-# <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>Töltse fel a fájlokat az eszközről a felhőbe, az IoT hubbal
+# <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-python"></a>Fájlok feltöltése az eszközről a felhőbe IoT Hub (Python)
 
 [!INCLUDE [iot-hub-file-upload-language-selector](../../includes/iot-hub-file-upload-language-selector.md)]
 
-Ez a cikk bemutatja, hogyan használhatja a [fájl feltöltése IoT Hub képességeiről](iot-hub-devguide-file-upload.md) feltölteni egy fájlt [az Azure blob storage-bA](../storage/index.yml). Ez az oktatóanyag a következőket mutatja be:
+Ez a cikk bemutatja, hogyan tölthet fel egy fájlt az [Azure Blob Storage](../storage/index.yml)-ba a [IoT hub fájlfeltöltés funkciójának](iot-hub-devguide-file-upload.md) használatával. Ez az oktatóanyag a következőket mutatja be:
 
-* Biztonságosan adja meg a storage-tároló feltölt egy fájlt.
+* Biztonságos tárolási tárolót biztosít a fájlok feltöltéséhez.
 
-* A Python-kliens használatával feltölthet egy fájlt az IoT hub segítségével.
+* A Python-ügyféllel feltöltheti a fájlokat az IoT hub használatával.
 
-A [telemetriát küldjön az IoT Hub](quickstart-send-telemetry-python.md) a rövid útmutató ismerteti az IoT Hub alapvető eszköz-felhő üzenetkezelési funkcióit. Bizonyos esetekben azonban leképezése nem tudja az eszközöket az IoT Hub elfogad viszonylag kis eszköz – felhő üzenetek küldése az adatok egyszerűen. Ha egy eszközről kell felvidéki fájlok, biztonságának és megbízhatóságának IoT-központ továbbra is használhatja.
-
-> [!NOTE]
-> IoT Hub Python SDK jelenleg csak a támogatja például szöveges fájlok feltöltése **.txt** fájlokat.
-
-Ez az oktatóanyag végén a Python-Konzolalkalmazás futtatása:
-
-* **FileUpload.py**, amely feltölt egy fájlt a Python eszközoldali SDK használatával.
+Az [eszközről az IoT hub-ra való telemetria küldése](quickstart-send-telemetry-python.md) az eszközről a felhőbe irányuló alapszintű üzenetküldési funkciókat mutatja be IoT hub. Bizonyos helyzetekben azonban nem lehet könnyedén leképezni az eszközök által a IoT Hub által elfogadott viszonylag kis eszközről a felhőbe küldött üzeneteket. Ha egy eszközről szeretne fájlokat felvenni, továbbra is használhatja IoT Hub biztonságát és megbízhatóságát.
 
 > [!NOTE]
-> IoT Hub által támogatott számos eszközplatformok és nyelveken (például a C, .NET, Javascript, Python és Java) az Azure IoT eszközoldali SDK-k használatával. Tekintse meg a [Azure IoT fejlesztői központ](https://azure.microsoft.com/develop/iot) részletesen ismerteti, hogy az eszköz csatlakoztatása Azure IoT Hub számára.
+> IoT Hub Python SDK jelenleg csak a karakteres fájlok, például **. txt** fájlok feltöltését támogatja.
 
-Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
+Az oktatóanyag végén futtassa a Python-konzol alkalmazást:
 
-* [Python 2.x vagy 3.x](https://www.python.org/downloads/). Mindenképp a rendszernek megfelelő, 32 vagy 64 bites telepítést használja. Amikor a rendszer erre kéri, mindenképp adja hozzá a Pythont a platformspecifikus környezeti változóhoz. Ha a Python 2.x verziót használja, előfordulhat, hogy [telepítenie vagy frissítenie kell a *pip*-et, a Python csomagkezelő rendszerét](https://pip.pypa.io/en/stable/installing/).
+* **FileUpload.py**, amely a Python-eszköz SDK-val feltölt egy fájlt a tárolóba.
 
-* Ha Windows operációs rendszert használ, a [Visual C++ terjeszthető csomagra](https://www.microsoft.com/download/confirmation.aspx?id=48145) van szükség a Python natív DLL-jei használatához.
+[!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-* Aktív Azure-fiók. Ha nincs fiókja, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) mindössze néhány perc alatt.
+> [!NOTE]
+> Ez az útmutató az elavult v1 Python SDK-t használja, mivel a fájlfeltöltés funkció még nem lett implementálva az új v2 SDK-ban.
 
-* Azure-fiókjába, a fájlfeltöltési funkcióval tesztelési egy eszközidentitást az IoT hubot. 
+## <a name="prerequisites"></a>Előfeltételek
+
+[!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
 
-## <a name="upload-a-file-from-a-device-app"></a>Töltsön fel egy fájlt egy eszköz alkalmazásból
+## <a name="upload-a-file-from-a-device-app"></a>Fájl feltöltése egy eszköz alkalmazásból
 
-Ebben a szakaszban az eszközalkalmazás feltölthet egy fájlt az IoT hub létrehozása.
+Ebben a szakaszban létrehozza az eszköz alkalmazást, hogy feltöltse a fájlt az IoT hub-ba.
 
-1. A parancssorban futtassa a telepítéséhez a következő parancsot a **azure-iothub-device-client** csomag:
+1. A parancssorban futtassa a következő parancsot az **Azure-iothub-Device-Client** csomag telepítéséhez:
 
     ```cmd/sh
     pip install azure-iothub-device-client
     ```
 
-2. Egy szövegszerkesztővel hozzon létre egy blobtárolóba feltölteni kívánt fájl tesztelése.
+2. Egy szövegszerkesztővel hozzon létre egy tesztoldalt, amelyet fel fog tölteni a blob Storage-ba.
 
     > [!NOTE]
-    > IoT Hub Python SDK jelenleg csak a támogatja például szöveges fájlok feltöltése **.txt** fájlokat.
+    > IoT Hub Python SDK jelenleg csak a karakteres fájlok, például **. txt** fájlok feltöltését támogatja.
 
-3. Egy szövegszerkesztővel hozzon létre egy **FileUpload.py** fájlt a munkamappában.
+3. Egy szövegszerkesztővel hozzon létre egy **FileUpload.py** -fájlt a munkamappában.
 
-4. Adja hozzá a következő `import` utasításokat és változókat elején a **FileUpload.py** fájlt. 
+4. Adja hozzá a `import` következő utasításokat és változókat a **FileUpload.py** fájl elejéhez. 
 
     ```python
     import time
@@ -83,9 +78,9 @@ Ebben a szakaszban az eszközalkalmazás feltölthet egy fájlt az IoT hub létr
     FILENAME = "[File name for storage]"
     ```
 
-5. A fájlban cserélje le `[Device Connection String]` a kapcsolati karakterlánccal, IoT hub-eszközök. Cserélje le `[Full path to file]` az Ön által létrehozott fájl tesztelése, vagy bármely, az eszközön, a feltölteni kívánt fájl elérési útját. Cserélje le `[File name for storage]` a névre, kíván adni a fájl után a blob storage fel van töltve. 
+5. A fájlban cserélje le a `[Device Connection String]` helyére az IoT hub-eszközhöz tartozó kapcsolatok sztringjét. Cserélje `[Full path to file]` le a helyére a létrehozott tesztüzenet elérési útját, vagy bármely olyan fájlt, amelyet fel szeretne tölteni az eszközön. A `[File name for storage]` helyére írja a nevet, amelyet a blob Storage-ba való feltöltés után szeretne megadni a fájl számára. 
 
-6. Hozzon létre egy visszahívást a **upload_blob** függvény:
+6. Visszahívás létrehozása a **upload_blob** függvényhez:
 
     ```python
     def blob_upload_conf_callback(result, user_context):
@@ -95,7 +90,7 @@ Ebben a szakaszban az eszközalkalmazás feltölthet egy fájlt az IoT hub létr
             print ( "...file upload callback returned: " + str(result) )
     ```
 
-7. Adja hozzá a következő kódot az ügyfél csatlakozhat, és töltse fel a fájlt. Emellett tartalmazza a `main` rutin:
+7. Adja hozzá a következő kódot az ügyfél összekapcsolásához és a fájl feltöltéséhez. Adja meg a `main` rutint is:
 
     ```python
     def iothub_file_upload_sample_run():
@@ -131,32 +126,32 @@ Ebben a szakaszban az eszközalkalmazás feltölthet egy fájlt az IoT hub létr
         iothub_file_upload_sample_run()
     ```
 
-8. Mentse és zárja be a **UploadFile.py** fájlt.
+8. Mentse és zárjuk be a **UploadFile.py** fájlt.
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-Most már készen áll az alkalmazás futtatásához.
+Most már készen áll az alkalmazás futtatására.
 
-1. A munkamappában egy parancssorban futtassa a következő parancsot:
+1. Futtassa a következő parancsot egy parancssorban a munkamappájában:
 
     ```cmd/sh
     python FileUpload.py
     ```
 
-2. Az alábbi képernyőfelvételen a kimenete a **FileUpload** alkalmazás:
+2. Az alábbi képernyőképen a **FileUpload** alkalmazás kimenete látható:
 
-    ![A szimulált eszközalkalmazás kimenete](./media/iot-hub-python-python-file-upload/1.png)
+    ![Szimulált eszköz alkalmazás kimenete](./media/iot-hub-python-python-file-upload/1.png)
 
-3. A portál használatával beállított storage-tárolót a feltöltött fájl megtekintése:
+3. A portál használatával megtekintheti a feltöltött fájlt a konfigurált tárolóban:
 
-    ![A feltöltött fájl](./media/iot-hub-python-python-file-upload/2.png)
+    ![Feltöltött fájl](./media/iot-hub-python-python-file-upload/2.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtudhatta, hogyan egyszerűsítheti a fájlok feltöltése eszközökről a fájl feltöltése képességeit az IoT Hub használatával. Folytathatja az IoT hub szolgáltatásainak, és az ezekben a cikkekben forgatókönyvek megismerése:
+Ebben az oktatóanyagban megtanulta, hogyan használhatja a IoT Hub fájlfeltöltés funkcióit az eszközökről történő fájlfeltöltés egyszerűsítése érdekében. A IoT hub funkcióit és forgatókönyveit továbbra is megismerheti a következő cikkekkel:
 
-* [IoT hub létrehozása programozott módon](iot-hub-rm-template-powershell.md)
+* [IoT hub programozott módon történő létrehozása](iot-hub-rm-template-powershell.md)
 
-* [Bevezetés a C SDK-t](iot-hub-device-sdk-c-intro.md)
+* [A C SDK bemutatása](iot-hub-device-sdk-c-intro.md)
 
 * [Azure IoT SDK-k](iot-hub-devguide-sdks.md)

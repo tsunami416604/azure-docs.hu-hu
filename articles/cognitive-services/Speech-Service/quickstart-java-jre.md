@@ -1,27 +1,30 @@
 ---
-title: 'Gyors útmutató: Recognize speech, Java (Windows, Linux) - Speech Services'
+title: 'Gyors útmutató: Beszédfelismerés, Java (Windows, Linux, macOS) – beszédfelismerési szolgáltatás'
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban megismerheti, egyszerű Java-alkalmazás létrehozása, amely rögzíti, és felhasználói beszéd, a számítógép mikrofon transcribes.
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy egyszerű Java-alkalmazást, amely a számítógép mikrofonjának felhasználói beszédét rögzíti és átírja.
 services: cognitive-services
 author: fmegen
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 2/20/2019
+ms.date: 07/05/2019
 ms.author: fmegen
-ms.openlocfilehash: fe565d63e72b5ec2798dde03ba4f4bd9ff4f48a7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 9438cd1345d324b068db8837216afb39241cb2a2
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59009399"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802461"
 ---
-# <a name="quickstart-recognize-speech-with-the-speech-sdk-for-java"></a>Gyors útmutató: Beszédfelismerés, beszédfelismerési SDK for Java felismerése
+# <a name="quickstart-recognize-speech-with-the-speech-sdk-for-java"></a>Gyors útmutató: Beszéd felismerése a Javához készült Speech SDK-val
 
+A gyors üzembe helyezési útmutató a beszéd- [beszéd fordításhoz](quickstart-translate-speech-java-jre.md), a [hangvezérelt virtuális asszisztenshez](quickstart-virtual-assistant-java-jre.md)és a [beszédfelismeréshez](quickstart-text-to-speech-java-jre.md)is elérhető.
+
+Ha szükséges, válasszon másik programozási nyelvet és/vagy környezetet:<br/>
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-Ebben a cikkben létre fog hozni egy Java-konzolalkalmazást a [Speech SDK](speech-sdk.md) használatával. A számítógép mikrofonjába beszélve valós időben konvertálhat át beszédet szöveggé. Az alkalmazást a létrehozása a Speech SDK Maven-csomag és az Eclipse a Java IDE (v4.8) a Windows 64 bites, 64 bites Ubuntu Linux 16.04 / 18.04 vagy macOS 10.13 vagy újabb rendszeren. és 64 bites Java 8 futtatókörnyezetben (JRE) fut.
+Ebben a cikkben létre fog hozni egy Java-konzolalkalmazást a [Speech SDK](speech-sdk.md) használatával. A számítógép mikrofonjába beszélve valós időben konvertálhat át beszédet szöveggé. Az alkalmazás a Speech SDK Maven-csomaggal, valamint az Eclipse Java IDE (v 4.8) a 64 bites Windows, 64 bites Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9), illetve macOS 10,13 vagy újabb rendszeren készült. és 64 bites Java 8 futtatókörnyezetben (JRE) fut.
 
 > [!NOTE]
 > A Speech Devices SDK-ról és a Roobo eszközről lásd: [Speech Devices SDK](speech-devices-sdk.md).
@@ -30,21 +33,29 @@ Ebben a cikkben létre fog hozni egy Java-konzolalkalmazást a [Speech SDK](spee
 
 Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
-* Operációs rendszer: (64 bites) Windows, Ubuntu Linux 16.04/18.04 (64 bites) vagy a macOS 10.13 vagy újabb
+* Operációs rendszer: 64 bites Windows, 64 bites Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9) vagy macOS 10,13 vagy újabb verzió
 * [Eclipse Java IDE](https://www.eclipse.org/downloads/)
 * [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) vagy [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
-* A beszédfelismerési szolgáltatás egy Azure-előfizetés kulcs. [Igényeljen ingyenesen egy](get-started.md).
+* Egy Azure-előfizetési kulcs a beszédfelismerési szolgáltatáshoz. [Szerezze be az egyiket ingyenesen](get-started.md).
 
-Ha Ubuntu 16.04/18.04 rendszert használ, győződjön meg arról, ezek a függősége telepítve van az Eclipse indítása előtt.
+Ha Linux rendszert futtat, győződjön meg arról, hogy ezek a függőségek telepítve vannak az Eclipse elindítása előtt.
 
-```console
-sudo apt-get update
-sudo apt-get install build-essential libssl1.0.0 libasound2 wget
-```
+* On Ubuntu:
 
-Ha Windows (64 bites) Győződjön meg arról, telepítve van a Microsoft Visual C++ újraterjeszthető csomag a platformhoz.
-* [A Microsoft Visual C++ terjeszthető csomag Visual Studio 2017 letöltése](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
+  ```sh
+  sudo apt-get update
+  sudo apt-get install libssl1.0.0 libasound2
+  ```
 
+* Debian 9 rendszeren:
+
+  ```sh
+  sudo apt-get update
+  sudo apt-get install libssl1.0.2 libasound2
+  ```
+
+Ha Windows rendszert futtat (64 bites), győződjön meg arról, hogy telepítette a C++ platformhoz a Microsoft vizualizációs terjeszthető csomagját.
+* [A Visual Studio C++ 2019-hoz készült Microsoft vizualizációs terjeszthető csomag letöltése](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
 
 ## <a name="create-and-configure-project"></a>Projekt létrehozása és konfigurálása
 
@@ -77,13 +88,14 @@ A mikrofonból érkező következő 15 másodpercnyi beszédet a rendszer felism
 
 ## <a name="next-steps"></a>További lépések
 
-További példákat, például a beszéd beolvasása egy hangfájlt a Githubon érhetők el.
+A GitHubon további minták is elérhetők, például a hangfájlok beszédének olvasása.
 
 > [!div class="nextstepaction"]
-> [Ismerkedés a Java-példák a Githubon](https://aka.ms/csspeech/samples)
+> [A Java-minták megismerése a GitHubon](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>Lásd még
 
-- [Rövid útmutató: Translate speech, Java (Windows, Linux)](quickstart-translate-speech-java-jre.md)
+- [Rövid útmutató: Beszéd fordítása, Java (Windows, Linux, macOS) ](quickstart-translate-speech-java-jre.md)
+- [Rövid útmutató: Beszédfelismerési beszéd, Java (Windows, Linux, macOS) ](quickstart-text-to-speech-java-jre.md)
 - [Akusztikai modellek testreszabása](how-to-customize-acoustic-models.md)
 - [Nyelvi modellek testreszabása](how-to-customize-language-model.md)

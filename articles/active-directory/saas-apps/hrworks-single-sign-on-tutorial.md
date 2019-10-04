@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 06a10cab81b1253658f505b3cd3f2c520ef9cea8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 790df60f973e6f86bd4424173909159fdd81ee0d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59266341"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67100855"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hrworks-single-sign-on"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező HRworks egyszeri bejelentkezés
 
@@ -53,7 +53,7 @@ Az integráció az Azure AD-be, HRworks egyszeri bejelentkezés konfigurálásá
 
 **Adhat hozzá HRworks egyszeri bejelentkezést a katalógusban, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -108,7 +108,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása az HRworks egyszeri bejelent
     Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím:  `https://login.hrworks.de/?companyId=<companyId>&directssologin=true`
 
     > [!NOTE]
-    > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-CÍMÉT. Kapcsolattartó [HRworks egyszeri bejelentkezéses ügyfél-támogatási csapatának](mailto:nadja.sommerfeld@hrworks.de) a gépkulcsengedélyek értékének. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-CÍMÉT. Kapcsolattartó [HRworks egyszeri bejelentkezéses ügyfél-támogatási csapatának](mailto:support@hrworks.de) a gépkulcsengedélyek értékének. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
 5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **összevonási metaadatainak XML**  a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 
@@ -130,7 +130,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása az HRworks egyszeri bejelent
 
 2. Kattintson a **rendszergazda** > **alapjai** > **biztonsági** > **egyszeri bejelentkezési** a a bal oldali menü sávot, és hajtsa végre az alábbi lépéseket:
 
-       ![Egyszeri bejelentkezés konfigurálása](./media/hrworks-single-sign-on-tutorial/configure01.png)
+    ![Egyszeri bejelentkezés konfigurálása](./media/hrworks-single-sign-on-tutorial/configure01.png)
 
     a. Ellenőrizze a **használata egyszeri bejelentkezéshez** mezőbe.
 
@@ -138,7 +138,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása az HRworks egyszeri bejelent
 
     c. Válassza ki **egyes NameID azonosító** , **NameID értéke**.
 
-    d. A Jegyzettömbben, nyissa meg a metaadatok XML-t az Azure Portalról letöltött, másolja a tartalmat, és illessze be azt a **metaadatok** szövegmezőbe.
+    d. A Jegyzettömbben, nyissa meg a metaadatok XML-t az Azure Portalról letöltött, másolja a tartalmat, és illessze be azt a **metaadatok** szövegmezőbe.
 
     e. Kattintson a **Save** (Mentés) gombra.
 
@@ -202,7 +202,7 @@ Engedélyezi az Azure AD-felhasználók, jelentkezzen be a való HRworks egyszer
 
 2. Kattintson a **rendszergazda** > **személyek** > **személyek** > **új személy** származó a a menüsávon bal oldalán.
 
-     ![Egyszeri bejelentkezés konfigurálása](./media/hrworks-single-sign-on-tutorial/configure02.png)
+     ![Egyszeri bejelentkezés konfigurálása](./media/hrworks-single-sign-on-tutorial/configure02.png)
 
 3. Az előugró ablakban kattintson a **tovább**.
 

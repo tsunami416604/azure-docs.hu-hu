@@ -1,33 +1,33 @@
 ---
-title: Tudásbázis létrehozása
-titleSuffix: QnA Maker API - Azure Cognitive Services
-description: A QnA Maker API szolgáltatás hozzáadása portál használatához Tudásbázis chit csevegési hozhat létre. Ez lehetővé teszi, hogy az alkalmazás vonzó. A robot chit csevegési kiindulási pontjaként adja hozzá a felső chit csevegési előre megadott készlete a KB, és időt takaríthat meg a teljesen új rögzíti őket költsége.
+title: 'Gyors útmutató: Tudásbázis létrehozása – QnA Maker'
+titleSuffix: Azure Cognitive Services
+description: A QnA Maker API Service Portal használatával hozzáadhat egy tudásbázist a Chit-Chat segítségével. Így az alkalmazás bevonása zajlik. Adja hozzá a Top Chit-Chat előre feltöltött készletét a KB-hoz, amely kiindulási pontként szolgál a robot Chit-csevegéséhez, és megtakarítja az időt és a költségeket a semmiből való íráshoz.
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
-ms.date: 03/25/2019
-ms.author: tulasim
+ms.topic: quickstart
+ms.date: 09/04/2019
+ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: ae278ac3e0fd9f93e080da8f52b9728e9c22a436
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 798bbb725d4764c5ec7a1d69770e9508af0fdf5a
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439243"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376214"
 ---
-# <a name="quickstart-create-a-knowledge-base-using-the-qna-maker-api-service-portal"></a>Gyors útmutató: A QnA Maker API-portál használatával Tudásbázis létrehozása
+# <a name="quickstart-create-a-knowledge-base-using-the-qna-maker-api-service-portal"></a>Gyors útmutató: Tudásbázis létrehozása a QnA Maker API Service Portal használatával
 
-A QnA Maker API portál segítségével egyszerűen adhat hozzá meglévő adatforrásokat, például egy Tudásbázis létrehozásakor. A QnA Maker új Tudásbázis hozhat létre a következő dokumentum-típusok közül:
+A QnA Maker API Service Portal használatával egyszerűen hozzáadhatja meglévő adatforrásait Tudásbázis létrehozásakor. A QnA Maker új Tudásbázis hozhat létre a következő dokumentum-típusok közül:
 
 <!-- added for scanability -->
 * Gyakori kérdéseket tartalmazó oldalak
 * Termékek kézikönyvek
 * Strukturált dokumentumok
 
-Például egy chit csevegési felhőszerepkör felel, hogy a felhasználó tudta további vonzó a felhasználóival.
+Egy Chit-Chat-személyiséggel is elvégezheti a tudását, így jobban megtarthatja a felhasználókat.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt. 
 
@@ -45,32 +45,29 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
     ![Set-adatforrások](../media/qnamaker-how-to-create-kb/set-data-sources.png)
 
-    - Adja meg a szolgáltatás egy **nevét.** Ismétlődő nevek és speciális karakterek támogatottak.
-    - Adja hozzá az URL-címek kinyert adatok számára. További információ a támogatott adatforrásokról típusú [Itt](../Concepts/data-sources-supported.md).
-    - A kívánt kinyert adatokat tölt fel. Tekintse meg a [díjszabási információk](https://aka.ms/qnamaker-pricing) megtekintéséhez, hogy hány dokumentumok adhat hozzá.
-    - Ha szeretné manuálisan adja hozzá a QnA-tudásbázisok, akkor kihagyhatja **4. lépés** az előző képen látható.
+1. Adja meg a szolgáltatás **nevét** , `my first kb`például:. Ismétlődő nevek és speciális karakterek támogatottak.
 
-1. Adjon hozzá **Chit csevegési** a KB. Válassza ki a robot chit csevegési támogatásának hozzáadása a 3 személyiséghez egyik kiválasztásával. 
+1. Adja hozzá a QnA Maker hibaelhárítási oldalt URL- `https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/troubleshooting`címként:, `+ Add URL`majd válassza a elemet. További információ a támogatott adatforrásokról típusú [Itt](../Concepts/data-sources-supported.md). Ebben a rövid útmutatóban **ne töltsön fel fájlokat** a kinyerni kívánt adatokra. Tekintse meg a [díjszabási információk](https://aka.ms/qnamaker-pricing) megtekintéséhez, hogy hány dokumentumok adhat hozzá.
 
-    ![Adja hozzá a csevegési chit KB](../media/qnamaker-how-to-create-kb/create-kb-chit-chat.png)
+1. Vegyen fel  **_professzionális_ Chit-csevegést** a kb-ra. 
 
 1. Válassza ki **létrehozása a KB-os**.
 
     ![Tudásbázis létrehozása](../media/qnamaker-how-to-create-kb/create-kb.png)
 
-1. Az adatok kinyerhetők néhány percet vesz igénybe.
+1. Az adat kinyerése néhány percet is igénybe vehet.
 
     ![Kinyerés](../media/qnamaker-how-to-create-kb/hang-tight-extraction.png)
 
-1. A Tudásbázis sikeres létrehozása után a rendszer átirányítja a **Tudásbázis** lapot.
+1. A Tudásbázis sikeres létrehozása után a rendszer átirányítja a **Tudásbázis** oldalára.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Amikor elkészült, a Tudásbázis segítségével, távolítsa el a QnA Maker portálra.
+Ha elkészült a tudásbázissal, távolítsa el a QnA Maker portálon.
 
 ## <a name="next-steps"></a>További lépések
 
-Költség megtakarítás mértékek, is [megosztása](upgrade-qnamaker-service.md?#share-existing-services-with-qna-maker) némelyikét, de nem minden Azure-erőforrások készült a QnA Maker.
+A költségmegtakarítási mértékek esetében [megoszthat](set-up-qnamaker-service-azure.md#share-existing-services-with-qna-maker) néhányat, de nem minden QnA Makerhoz létrehozott Azure-erőforrást.
 
 > [!div class="nextstepaction"]
-> [Csevegési chit személyes hozzáadása](./chit-chat-knowledge-base.md)
+> [Metaadatokkal kapcsolatos kérdések hozzáadása](../quickstarts/add-question-metadata-portal.md)

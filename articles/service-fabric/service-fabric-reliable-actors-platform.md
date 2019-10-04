@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 3/9/2018
 ms.author: vturecek
 ms.openlocfilehash: bc7569c9f230abb7677a8df9fc0cc0268e57296f
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58661173"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60725906"
 ---
 # <a name="how-reliable-actors-use-the-service-fabric-platform"></a>Így használja a Reliable Actors a Service Fabric platformot
 Ez a cikk bemutatja, hogyan Reliable Actors működnek az Azure Service Fabric-platformon. A Reliable Actors futtatása egy keretrendszer, amely egy állapotalapú reliable Services megvalósítását üzemeltetett nevű a *aktorszolgáltatás*. Aktorszolgáltatás életciklus és a szereplők az elküldési üzenet kezeléséhez szükséges összes összetevőt tartalmazza:
@@ -69,7 +69,7 @@ Aktorszolgáltatások a particionált állapotalapú szolgáltatások. Mindegyik
 
 A Reliable Services partíció kulcstartományokkal és különböző partíciósémák hozható létre. Aktorszolgáltatás actors leképezése partíciók Int64 particionálási sémát használ a teljes Int64 kulcstartományhoz.
 
-### <a name="actor-id"></a>Szereplő azonosítója
+### <a name="actor-id"></a>Aktor azonosítója
 A szolgáltatásban létrehozott minden egyes színész rendelkezik egy egyedi azonosító tartozik, képviseli a `ActorId` osztály. `ActorId` érték nem átlátszó azonosítója, amely használható az actors egyenletes elosztása a szolgáltatáspartíciók véletlenszerű azonosítók létrehozásával:
 
 ```csharp

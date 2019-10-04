@@ -1,144 +1,146 @@
 ---
-title: Méretezési csoport partíciókat és -lekérdezési és indexelési - replikákat Azure keresése
-description: Módosítsa a partíció- és a replika számítógépes erőforrások az Azure Search szolgáltatásban, ahol az egyes erőforrások a számlázható keresési egységek díjszabása.
+title: Partíciók és replikák skálázása lekérdezésekhez és indexeléshez – Azure Search
+description: A partíciós és a replika számítógép erőforrásainak módosítása a Azure Searchban, ahol az egyes erőforrások díjszabása számlázható keresési egységekben történik.
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/22/2019
+ms.date: 07/01/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 6879dd975f97ba2746165e87a135e5d90e8b229f
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: c048dcf31d8f434f742d2da9351ef9b46f0a71d4
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620636"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650063"
 ---
-# <a name="scale-partitions-and-replicas-for-query-and-indexing-workloads-in-azure-search"></a>Méretezési csoport partíciókat és -replikákat a lekérdezés és a számítási feladatok indexeléséhez az Azure Search
-Miután [válasszon egy tarifacsomagot](search-sku-tier.md) és [egy keresési szolgáltatás kiépítése](search-create-service-portal.md), a következő lépés az, hogy szükség esetén a replikákat és partíciókat, a szolgáltatás által használt számának növelésére. Minden egyes számlázási egységek rögzített számú kínálja. Ez a cikk ismerteti azokat az egységeket optimális konfigurációt, amely elosztja a lekérdezés-végrehajtás, indexelési és tárolási követelményeinek elérésére lefoglalása.
+# <a name="scale-partitions-and-replicas-for-query-and-indexing-workloads-in-azure-search"></a>Partíciók és replikák méretezése a lekérdezési és indexelési feladatokhoz Azure Search
+Miután [kiválasztotta a díjszabási szintet](search-sku-tier.md) , és kiépít [egy keresési szolgáltatást](search-create-service-portal.md), a következő lépés a szolgáltatás által használt replikák vagy partíciók számának megadása. Az egyes szintek rögzített számú számlázási egységet biztosítanak. Ez a cikk bemutatja, hogyan oszthatja ki ezeket az egységeket olyan optimális konfiguráció eléréséhez, amely kiegyenlíti a lekérdezések végrehajtásához, indexeléséhez és tárolásához szükséges követelményeket.
 
-Erőforrás-konfigurációban érhető el a szolgáltatás üzembe helyezésekor meg a [alapszintű csomag](https://aka.ms/azuresearchbasic) vagy az egyik a [Standard vagy a tárolásra optimalizált szint](search-limits-quotas-capacity.md). Ezek a csomagok, szolgáltatások, előállításának egységnyi növekményekben *keresési egységek* (su) Ha mindegyik partíciót és a replika számít-e egy SU. 
+Az erőforrás-konfiguráció akkor érhető el, ha az alapszintű vagy a [standard vagy a Storage optimalizált szintjein](search-limits-quotas-capacity.md)állít be szolgáltatást. [](https://aka.ms/azuresearchbasic) Ezen rétegek szolgáltatásai esetében a kapacitás a *keresési egységek* (SUs) növekményei között vásárolható meg, ahol az egyes partíciók és replikák egy Su-ként számítanak. 
 
-SUs kevesebb találatot használata egy arányosan alacsonyabb számlákat. A számlázás érvényben a mindaddig, amíg a szolgáltatás be van állítva. Átmenetileg nem használ olyan szolgáltatást, ha az egyetlen lehetőség a számlázás elkerülése érdekében a a szolgáltatás törlése, és ezután hozza létre újra szükség esetén.
+Ha kevesebb SUs-eredményt kíván használni, egy arányosan alacsonyabb számlán kell lennie. A számlázás mindaddig érvényes, amíg a szolgáltatás be van állítva. Ha átmenetileg nem használ szolgáltatást, a számlázás elkerülésének egyetlen módja, ha törli a szolgáltatást, majd újra létrehozza azt, amikor szüksége van rá.
 
 > [!Note]
-> Szolgáltatás törlése töröl minden rajta. Nincs a létesítmény biztonsági mentése az Azure Search belül van, és a keresési adatok visszaállítása megőrzött. Ismételt üzembe helyezése egy új szolgáltatás a meglévő index, hozhat létre és feltöltheti azokat eredetileg program kell futtatásakor. 
+> A szolgáltatás törlésével mindent töröl. A megőrzött keresési adatbiztonsági mentéshez és helyreállításhoz nincs lehetőség Azure Searchon belül. Egy meglévő index új szolgáltatáson való újbóli üzembe helyezéséhez futtassa az eredeti létrehozásához és betöltéséhez használt programot. 
 
-## <a name="terminology-replicas-and-partitions"></a>Terminológiai: replikák és partíciók
-Replikák és partíciók olyan biztonsági másolatot egy keresési szolgáltatás elsődleges-erőforrásokat.
+## <a name="terminology-replicas-and-partitions"></a>Terminológia: replikák és partíciók
+A replikák és partíciók a keresési szolgáltatást támogató elsődleges erőforrások.
 
-| Erőforrás | Meghatározás |
+| Resource | Meghatározás |
 |----------|------------|
-|*Partíciók* | Indexelt tárolási és i/o biztosít olvasási és írási műveletek (például amikor újraépítése vagy egy index frissítése).|
-|*Replikák* | A keresési szolgáltatás elsősorban az egyenleg lekérdezési műveletek betöltéséhez használt példánya. Minden egyes replikának mindig futtatja az index egy példányát. Ha 12 replikákat, kell betölteni a szolgáltatás minden egyes indexnek 12 példányait.|
+|*Partíciók* | Az írási és olvasási műveletekhez (például az indexek újraépítésekor vagy frissítésekor) index-tárolót és I/O-t biztosít.|
+|*Replikák* | A keresési szolgáltatás azon példányai, amelyek elsődlegesen a lekérdezési műveletek terheléselosztására szolgálnak. Minden replika mindig az index egy példányát tárolja. 12 replika esetén a szolgáltatásban betöltött összes index 12 példánya lesz.|
 
 > [!NOTE]
-> Nincs közvetlenül módosítására vagy kezelésére, mely indexek futtatunk egy replika mód. Minden egyes minden replika indexe egy példányát a service-architektúra része.
+> A replikán futtatott indexek közvetlen módosítása és kezelése nem végezhető el. Az egyes replikák egy példánya a szolgáltatási architektúra részét képezi.
 >
 
 
 ## <a name="how-to-allocate-replicas-and-partitions"></a>Replikák és partíciók lefoglalása
-Az Azure Search szolgáltatás eredetileg lefoglalt egy partíciót és a egy replika erőforrások megadott minimális szintjét. Az azt támogató szolgáltatásaihoz fokozatosan módosíthatja számítási erőforrást növeli a partíciók számát, ha szükség van további tárolási és i/o, vagy nagyobb lekérdezési kötetek vagy a jobb teljesítmény érdekében több replika hozzáadása. Egy egyetlen szolgáltatást kell rendelkezik elegendő erőforrással (indexelése és lekérdezések) az összes számítási feladatok kezelésére. Több szolgáltatás számítási feladatokat nem feloszthatja.
+Azure Search a szolgáltatás kezdetben egy partíciót és egy replikát tartalmazó minimális szintű erőforrást foglal le. Az azt támogató rétegek esetén a partíciók növelésével fokozatosan állíthatja be a számítási erőforrásokat, ha több tárterületre és I/O-ra van szüksége, vagy további replikákat ad hozzá a nagyobb lekérdezési kötetekhez vagy jobb teljesítményhez. Egyetlen szolgáltatásnak elegendő erőforrással kell rendelkeznie az összes számítási feladat (indexelés és lekérdezések) kezeléséhez. A számítási feladatok több szolgáltatás között nem oszthatók ki.
 
-Szeretné növelni, vagy a lefoglalást a replikák és partíciók, javasoljuk, az Azure portal használatával. A portál megköveteli a megengedett maximális korlát alatti maradjon kombinációk vonatkozó korlátozások. Ha szüksége van egy parancsprogram-alapú vagy a kód-alapú üzembe helyezési módszert használja, a [Azure PowerShell-lel](search-manage-powershell.md) vagy a [felügyeleti REST API](https://docs.microsoft.com/rest/api/searchmanagement/services) alternatív megoldás.
+A replikák és partíciók kiosztásának növeléséhez vagy módosításához javasolt a Azure Portal használata. A portál a maximális határértékek alatti megengedett kombinációk korlátozásait kényszeríti ki. Ha parancsfájl-vagy programkód-alapú létesítési megközelítésre van szüksége, akkor a [Azure PowerShell](search-manage-powershell.md) vagy a [felügyeleti REST API](https://docs.microsoft.com/rest/api/searchmanagement/services) alternatív megoldás.
 
-Általában az alkalmazások keresése, mint a partíciók több replika kell, különösen akkor, ha a szolgáltatási műveletek vannak torzítatlan lekérdezési számítási feladatok felé. A szakasz a [magas rendelkezésre állású](#HA) ismerteti az okokat.
+Általában a keresési alkalmazásoknak több replikára van szükségük, mint a partíciók, különösen akkor, ha a szolgáltatási műveletek a lekérdezési munkaterhelések szempontjából elfogultak. A [magas rendelkezésre állásról](#HA) szóló szakasz ismerteti, hogy miért.
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) , és válassza ki a keresési szolgáltatást.
-2. A **beállítások**, nyissa meg a **méretezési** lap használatával módosíthatja a replikák és partíciók. 
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) , és válassza ki a keresési szolgáltatást.
 
-   Az alábbi képernyőfelvételen egy standard szintű service, egy replikát, illetve a partíciót. A képlet alsó azt jelzi, hogy hány keresési egységek éppen használt (1). Ha azt az Egységár 100 USD (nem a tényleges díj) volt, ez a szolgáltatás futtatásának havi díja lesz 100 USD átlagosan.
+2. A **Beállítások**területen nyissa meg a **skálázás** lapot a replikák és partíciók módosításához. 
 
-   ![Méretezés oldal aktuális értékek megjelenítése](media/search-capacity-planning/1-initial-values.png "méretezés oldal aktuális értékek megjelenítése")
+   Az alábbi képernyőfelvételen egy replikával és partícióval kiépített szabványos szolgáltatás látható. A lenti képlet azt jelzi, hogy hány keresési egység van használatban (1). Ha az egység ára $100 (nem valós díj), akkor a szolgáltatás futtatásának havi költsége átlagosan $100.
 
-3. A csúszka segítségével növelje vagy csökkentse a partíciók számát. A képlet alsó azt jelzi, hogy hány keresési egységet használ.
+   Az ![aktuális értékeket mutató méretezési oldal] Az (media/search-capacity-planning/1-initial-values.png "aktuális értékeket mutató méretezési oldal")
 
-   Ebben a példában kapacitás, a két replika megduplázódik, és minden egyes partíciók. Figyelje meg, hogy a keresési egység száma; Ez azért most négy a számlázási képlete megszorozza (2 x 2) a partíciók replikáit. Kapacitás kétszeresére több, mint a szolgáltatás költségének kétszeresére nő. Ha a keresés egységköltség 100 USD volt, az új havi számla most lenne 400 USD.
+3. A csúszka használatával növelheti vagy csökkentheti a partíciók számát. A lenti képlet azt jelzi, hogy hány keresési egységet használ a rendszer.
 
-   Az egyes csomagok költségek a jelenlegi, látogasson el a [díjszabási oldalunkon](https://azure.microsoft.com/pricing/details/search/).
+   Ez a példa dupla kapacitást, két replikával és partícióval rendelkezik. Figyelje meg a keresési egységek darabszámát; most négy, mert a számlázási képlet a replikák szorozza a partíciókkal (2 x 2). A kapacitás megkettőzése több, mint megduplázza a szolgáltatás futtatásának költségeit. Ha a keresési egység díja $100 volt, az új havi számla mostantól $400 lesz.
 
-   ![Adja hozzá a replikák és partíciók](media/search-capacity-planning/2-add-2-each.png "adja hozzá a replikák és partíciók")
+   Az egyes szintek aktuális egységenkénti költségeiért látogasson el a [díjszabási oldalra](https://azure.microsoft.com/pricing/details/search/).
 
-3. Kattintson a **mentése** , hagyja jóvá a módosításokat.
+   ![Replikák és partíciók hozzáadása](media/search-capacity-planning/2-add-2-each.png "Replikák és partíciók hozzáadása")
 
-   ![Hagyja jóvá a módosításokat a méretezés és a számlázási](media/search-capacity-planning/3-save-confirm.png "hagyja jóvá a módosításokat a méretezés és számlázás")
+3. Kattintson a **Save (Mentés** ) gombra a módosítások megerősítéséhez.
 
-   Kapacitás a módosítások végrehajtásához több órába telhet. A folyamat elindult, és a hiba nem a replika és a partíció korrekciókhoz nincs valós idejű figyelés nem szakítható meg. Azonban a következő üzenet marad látható, miközben a módosítások vannak folyamatban.
+   ![A skálázás és a számlázás változásainak megerősítése](media/search-capacity-planning/3-save-confirm.png "A skálázás és a számlázás változásainak megerősítése")
 
-   ![A portálon állapotüzenet](media/search-capacity-planning/4-updating.png "állapotüzenet a portálon")
+   A kapacitás változásai több órát is igénybe vehetik. A folyamat elindítása után nem lehet megszakítani a műveletet, és nincs valós idejű figyelés a replika és a partíciók beállításaihoz. A következő üzenet azonban továbbra is látható, amíg megváltozik.
+
+   ![Állapotjelző üzenet a portálon](media/search-capacity-planning/4-updating.png "Állapotjelző üzenet a portálon")
 
 
 > [!NOTE]
-> Egy szolgáltatás kiépítése, után azt egy magasabb szintű termékváltozatra nem frissíthető. A search szolgáltatás létrehozása az új rétegben kell, és töltse be újra az indexek. Lásd: [Azure Search szolgáltatás létrehozása a portálon](search-create-service-portal.md) segítség a szolgáltatás üzembe helyezését.
+> A szolgáltatás üzembe helyezését követően nem lehet magasabb SKU-ra frissíteni. Létre kell hoznia egy keresési szolgáltatást az új szinten, és újra kell töltenie az indexeket. A szolgáltatás kiépítési támogatásához lásd: [Azure Search szolgáltatás létrehozása a portálon](search-create-service-portal.md) .
 >
 >
 
 <a id="chart"></a>
 
-## <a name="partition-and-replica-combinations"></a>Partíció és a replika kombinációk
+## <a name="partition-and-replica-combinations"></a>Partíció-és replika-kombinációk
 
-Egy egyszerű szolgáltatást is pontosan egy partícióval rendelkezik, és legfeljebb három replika, legfeljebb korlátozhatja három SUS. A csak állítható erőforrás a replikákat. A lekérdezések magas rendelkezésre állás érdekében legalább két replika van szüksége.
+Az alapszintű szolgáltatásoknak pontosan egy partíciójuk és legfeljebb három replikájuk lehet, legfeljebb három SUs esetén. Az egyetlen állítható erőforrás replika. A lekérdezésekben a magas rendelkezésre állás érdekében legalább két replikára van szükség.
 
-Minden standard szintű és tárolásra optimalizált keresési szolgáltatások feltételezheti, hogy a következő fájlattribútumok replikákat és partíciókat, a 36-SU korlát vonatkozik. 
+A standard és a Storage-alapú optimalizált keresési szolgáltatások a 36-SU korlátnak megfelelő replikák és partíciók következő kombinációit vehetik igénybe. 
 
-|   | **1 partíció** | **2 partíció** | **3 partíció** | **4 partíciók** | **6 partíciók** | **12 partícióra** |
+|   | **1 partíció** | **2 partíció** | **3 partíció** | **4 partíció** | **6 partíció** | **12 partíció** |
 | --- | --- | --- | --- | --- | --- | --- |
 | **1 replika** |1 SU |2 SU |3 SU |4 SU |6 SU |12 SU |
 | **2 replika** |2 SU |4 SU |6 SU |8 SU |12 SU |24 SU |
 | **3 replika** |3 SU |6 SU |9 SU |12 SU |18 SU |36 SU |
-| **4 replikák** |4 SU |8 SU |12 SU |16 SU |24 SU |– |
-| **5 replikák** |5 SU |10 SU |15 SU |20 SU |30 SU |– |
+| **4 replika** |4 SU |8 SU |12 SU |16 SU |24 SU |– |
+| **5 replika** |5 SU |10 SU |15 SU |20 SU |30 SU |– |
 | **6 replika** |6 SU |12 SU |18 SU |24 SU |36 SU |– |
-| **12 replikák** |12 SU |24 SU |36 SU |– |N/A |– |
+| **12 replika** |12 SU |24 SU |36 SU |– |N/A |– |
 
-SUS-t, a díjszabást és a kapacitás részletesen az Azure webhelyén. További információkért lásd: [díjszabása](https://azure.microsoft.com/pricing/details/search/).
+Az SUs, a díjszabás és a kapacitás részletes ismertetését az Azure webhelyén találja. További információkért tekintse meg a [díjszabás részleteit](https://azure.microsoft.com/pricing/details/search/).
 
 > [!NOTE]
-> 12 egyenletesen osztja a replikák és partíciók száma (pontosabban 1, 2, 3, 4, 6, 12). Ennek az oka az Azure Search előre osztja fel minden index 12 szegmensekre, hogy azt is között lehetnek elosztva egyenlő részeket az összes partíciót. Például ha a szolgáltatás három partícióval rendelkezik, és az index létrehozása, mindegyik partíció az index négy szegmensek fog tartalmazni. Egy index Azure Search-szegmensek egy implementálási részlete, hogy a későbbiekben változhat. Bár a szám 12 még ma, nem várt 12 mindig lesz a jövőben ezt a számot.
+> A replikák és partíciók száma egyenletesen oszlik el a 12 (pontosabban, 1, 2, 3, 4, 6, 12). Ennek az az oka, hogy a Azure Search az egyes indexeket 12 szegmensre osztja, hogy az összes partíción egyenlő arányban legyen elosztva. Ha például a szolgáltatás három partícióval rendelkezik, és létrehoz egy indexet, minden partíció az index négy szegmensét fogja tartalmazni. Hogyan Azure Search az indexek egy implementációs részletességgel, amely a jövőbeli kiadásokban változhat. Bár a szám 12 ma, nem várható, hogy ez a szám mindig 12 lesz a jövőben.
 >
 
 
 <a id="HA"></a>
 
 ## <a name="high-availability"></a>Magas rendelkezésre állás
-Mivel a szolgáltatás egyszerűen és viszonylag gyorsan vertikális, általában javasoljuk, hogy először a több partíciót és a egy vagy két replika, majd vertikális felskálázási lekérdezés kötetek létrehozása. Lekérdezési számítási feladatok futtatásához, elsősorban a replikákon. Ha további kapacitás vagy a magas rendelkezésre állású van szüksége, további replikák valószínűleg szüksége lesz.
+Mivel a méretezés egyszerűen és viszonylag gyorsan megoldható, általában azt javasoljuk, hogy először egy partíciót és egy vagy két replikát válasszon, majd a skálázási folyamat létrehozásakor. A lekérdezési feladatok elsődlegesen a replikákat futtatják. Ha nagyobb átviteli sebességre vagy magas rendelkezésre állásra van szüksége, valószínűleg további replikákat kell megadnia.
 
-Általános javaslatok a magas rendelkezésre állás érdekében a következők:
+A magas rendelkezésre állásra vonatkozó általános javaslatok a következők:
 
-* Csak olvasható munkaterhelések (lekérdezések) magas rendelkezésre álláshoz két replika
-* Három vagy több replikát, a magas rendelkezésre állású olvasási és írási számítási feladatok (lekérdezések és az indexelés, egyes dokumentumok hozzáadása, frissített vagy törölt)
+* Két replika a csak olvasási terhelések magas rendelkezésre állásához (lekérdezések)
 
-Szolgáltatói szerződések (SLA) az Azure Search lekérdezési műveletek vagy egy index frissítéseit hozzáadása, frissítése vagy törlése a dokumentumok álló célozzák meg.
+* Három vagy több replika az olvasási/írási munkaterhelések magas rendelkezésre állásához (lekérdezések és az indexelés egyéni dokumentumok hozzáadása, frissítése vagy törlése)
 
-Alapszintű csomag korona egy partíciót és három replika készül. Ha azt szeretné, hogy az indexelés és a lekérdezési teljesítmény iránti igény ingadozása azonnal reagálni a rugalmasságot, fontolja meg a Standard csomagok valamelyikére.  Ha megtalálta a tárolási igényei folyamatosan nőnek sokkal gyorsabban, mint a lekérdezési teljesítmény, fontolja meg a tárolásra optimalizált csomagok valamelyikére.
+A Azure Search szolgáltatói szerződése (SLA) a lekérdezési műveletekre és a dokumentumok hozzáadását, frissítését vagy törlését tartalmazó index-frissítésekre irányul.
 
-### <a name="index-availability-during-a-rebuild"></a>Index elérhetőségére újjáépítést során
+Az alapszintű csomag egy partíción és három replikán található. Ha azt szeretné, hogy a rugalmasság azonnal reagáljon az indexelési és a lekérdezési átviteli sebesség igény szerinti ingadozására, vegye figyelembe az egyik standard szintet is.  Ha úgy találja, hogy a tárolási követelmények sokkal gyorsabban növekednek, mint a lekérdezési átviteli sebesség, vegye figyelembe a tárterület optimalizált szintjeinek egyikét.
 
-Magas rendelkezésre állás az Azure Search lekérdezések és az index újraépítése nem érintő frissítések index tartozik. Ha egy mező törölhető, adatok típusának módosítása, vagy nevezze át a mezőt, szüksége lesz az index újraépítése. Az index újraépítése kell törli az indexet, hozza létre újból az indexet, és töltse be újra az adatokat.
+### <a name="index-availability-during-a-rebuild"></a>Az index rendelkezésre állása Újraépítés közben
+
+A Azure Search magas rendelkezésre állása olyan lekérdezésekhez és index-frissítésekhez tartozik, amelyek nem járnak az indexek újraépítésekor. Ha töröl egy mezőt, módosít egy adattípust, vagy átnevez egy mezőt, újra létre kell hoznia az indexet. Az index újraépítéséhez törölnie kell az indexet, újra létre kell hoznia az indexet, és újra kell töltenie az adatfájlokat.
 
 > [!NOTE]
-> Új mezőket adhat az Azure Search-index, anélkül, hogy az index újraépítése. Az új mező értéke null a következőnél az indexben már szereplő összes dokumentumot lesz.
+> Az index újraépítése nélkül új mezőket adhat hozzá egy Azure Search indexhez. Az új mező értéke NULL lesz az indexben már szereplő összes dokumentum esetében.
 
-Az index rendelkezésre állás fenntartása újjáépítést során, az index egy másik névvel, az ugyanazt a szolgáltatást egy példányát, vagy az index ugyanazzal a névvel, egy másik Service egy példányát, és átirányítása vagy feladatátvételi logika adja meg a kódban.
+Ahhoz, hogy az index rendelkezésre álljon az Újraépítés során, az index egy másik névvel kell rendelkeznie ugyanazon a szolgáltatáson, vagy az index egy másolata ugyanazzal a névvel egy másik szolgáltatáson, majd a kódban át kell adni az átirányítási vagy feladatátvételi logikát.
 
 ## <a name="disaster-recovery"></a>Vészhelyreállítás
-Jelenleg nincs katasztrófa utáni helyreállítás esetén nincs beépített mechanizmus. Partíciók vagy a replikák hozzáadásával a nem megfelelő stratégiát, a vész-helyreállítási célok teljesítése lenne. A leggyakrabban használt módszer, amelyek a redundancia szolgáltatási szintű beállításával egy második keresési szolgáltatás egy másik régióban. Csakúgy, mint a rendelkezésre állás az indexkészítés során, az átirányítás vagy feladatátvételi logika kell származnia a kódot.
+Jelenleg nincs beépített mechanizmus a vész-helyreállításhoz. Partíciók vagy replikák hozzáadása nem megfelelő stratégiát jelentene a vész-helyreállítási célkitűzések teljesítéséhez. A leggyakoribb módszer a redundancia a szolgáltatási szinten való hozzáadása egy másik régióban található második keresési szolgáltatás beállításával. Az indexek újraépítése során a rendelkezésre álláshoz hasonlóan az átirányítás vagy a feladatátvételi logikának a kódból kell származnia.
 
-## <a name="increase-query-performance-with-replicas"></a>Növelje a lekérdezési teljesítmény replikákkal rendelkező
-Lekérdezés késései azt jelzi, hogy további replikák van szükség. Általában a lekérdezési teljesítmény javításához első lépését, hogy adjon hozzá további ehhez az erőforráshoz. Replikák hozzáadásakor, további másolatot készít az index online állapotba nagyobb lekérdezési számítási feladatok és betölteni a kérelmeket elosztja a több replika keresztül.
+## <a name="increase-query-performance-with-replicas"></a>A lekérdezési teljesítmény fokozása replikákkal
+A lekérdezés késése azt jelzi, hogy további replikák szükségesek. Általánosságban elmondható, hogy a lekérdezési teljesítmény javításának első lépése a további erőforrás hozzáadása. A replikák hozzáadásakor az index további példányai online állapotba kerülnek a nagyobb lekérdezési feladatok támogatásához és a több replikán keresztüli kérelmek elosztásához.
 
-Nehéz a becslések nem biztosítunk a lekérdezések másodpercenkénti (lekérdezési QPS): a lekérdezési teljesítmény függ a lekérdezés és a konkurens számítási feladatokhoz összetettségétől. Egyértelműen replikák hozzáadásával jobb teljesítményt eredményez, de az eredménye nem feltétlenül lineáris: három replika hozzáadása nem garantálja a háromszoros átviteli sebességet.
+A lekérdezések másodpercenkénti számát (QPS) nem lehet megbecsülni: a lekérdezési teljesítmény a lekérdezés és a versengő számítási feladatok összetettsége alapján változhat. Bár a replikák hozzáadása egyértelműen jobb teljesítményt eredményez, az eredmény nem feltétlenül lineáris: három replika hozzáadása nem garantálja a háromszoros átviteli sebességet.
 
-A számítási feladatok QPS becslése útmutatásért lásd: [Azure Search-teljesítmény és optimalizálás szempontok](search-performance-optimization.md).
+A számítási feladatok QPS becslésével kapcsolatos útmutatásért lásd: [Azure Search teljesítmény-és optimalizálási megfontolások](search-performance-optimization.md).
 
-## <a name="increase-indexing-performance-with-partitions"></a>A partíciók az indexelési teljesítmény növelése
-Közel valós idejű adatok frissítése igénylő alkalmazások keresése, mint a replikák arányosan több partíciót kell. Partíciók hozzáadásával terjeszti az olvasási és írási műveletek nagyobb mennyiségű számítási erőforrások között. Azt is lehetővé teszi szabadítson fel több lemezterületet további indexek és dokumentumok tárolására.
+## <a name="increase-indexing-performance-with-partitions"></a>Az indexelési teljesítmény javítása a partíciókkal
+A közel valós idejű adatfrissítést igénylő alkalmazások kereséséhez a replikák több partícióra van szükségük. A partíciók hozzáadásával az írási/olvasási műveletek nagyobb számú számítási erőforráson keresztül terjednek ki. Emellett további lemezterületet biztosít a további indexek és dokumentumok tárolásához.
 
-A lekérdezés hosszabb ideig nagyobb indexeket. Mint ilyen Észreveheti, hogy minden egyes partíciók növekményes növekedése igényel a replikák kisebb, de arányos növekedése. A lekérdezések és a lekérdezés kötet összetettsége be, hogy mennyi idő alatt be van kapcsolva a lekérdezés végrehajtása lesz tényező.
+A nagyobb indexek lekérése hosszabb időt vesz igénybe. Ezért előfordulhat, hogy a partíciók növekményes növekedésének a replikák kisebb, de arányos növekedése szükséges. A lekérdezések és a lekérdezési kötetek összetettsége azt eredményezi, hogy milyen gyorsan történik a lekérdezés végrehajtása.
 
 
 ## <a name="next-steps"></a>További lépések
 
-[Válasszon egy tarifacsomagot az Azure Search](search-sku-tier.md)
+[Válasszon árképzési szintet Azure Search](search-sku-tier.md)

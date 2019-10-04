@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e48e353df6c14ec24a01fe3b1852de2c6a0a3155
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8b1e2baa2cdaee511ecff614406a0e4c25d553c8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57843691"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67106835"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appneta-performance-monitor"></a>Oktatóanyag: Az Azure Active Directory integrációja az AppNeta Teljesítményfigyelő
 
@@ -54,7 +54,7 @@ Konfigurálása az Azure AD integrálása a Teljesítményfigyelő AppNeta, hozz
 
 **Teljesítményfigyelő AppNeta hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -123,11 +123,11 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés AppNeta Teljesítmé
     | --------| ----------------|
     | Keresztnév| user.givenname|
     | Vezetéknév| user.surname|
-    | e-mail| user.userprincipalname|
-    | név| user.userprincipalname|
-    | csoportok  | user.assignedroles |
-    | telefon| user.telephonenumber |
-    | cím| user.jobtitle|
+    | email| user.userprincipalname|
+    | name| user.userprincipalname|
+    | groups  | user.assignedroles |
+    | Telefonszám| user.telephonenumber |
+    | title| user.jobtitle|
     | | |
 
     > [!NOTE]

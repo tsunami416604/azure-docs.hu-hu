@@ -1,19 +1,20 @@
 ---
-title: 'Az Azure HDInsight: .NET-minták'
-description: Keresés C# gyakori feladatok a HDInsight SDK-val .NET-hez készült .NET-példáit a Githubon.
+title: 'Azure HDInsight: .NET-minták'
+description: C# .Net-példák a githubon gyakori feladatokhoz a HDInsight SDK for .NET használatával.
 author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: sample
 ms.date: 04/15/2019
-ms.author: hrasheed
-ms.openlocfilehash: f589c5e23be105086d2908fb7db72e69c781e726
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: c1365b39385a3dfb684628214765269ea3a225e9
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678258"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076878"
 ---
-# <a name="azure-hdinsight-net-samples"></a>Az Azure HDInsight: .NET-minták
+# <a name="azure-hdinsight-net-samples"></a>Azure HDInsight: .NET-minták
 
 > [!div class="op_single_selector"]
 > * [.NET-példák](hdinsight-sdk-dotnet-samples.md)
@@ -23,26 +24,26 @@ ms.locfileid: "59678258"
 
 Ez a cikk a következő információkat tartalmazza:
 
-* Szereplő hivatkozások a fürt létrehozási feladatok.
-* Segédanyagok a többi felügyeleti feladat mutató hivatkozásokat tartalmaz.
+* A fürtök létrehozására szolgáló feladatokhoz kapcsolódó mintákra mutató hivatkozások.
+* Hivatkozások a más felügyeleti feladatokra vonatkozó hivatkozási tartalomra.
 
-Is [aktiválhatja a Visual Studio előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio): A Visual Studio-előfizetésében kreditek minden hónapban biztosít Önnek, hogy a fizetős Azure-szolgáltatásokat is használhat.
+Aktiválhatja a [Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)előfizetői előnyeit: A Visual Studio-előfizetése minden hónapban biztosít Önnek krediteket, amelyekkel fizetős Azure-szolgáltatásokat használhat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-- [Az Azure HDInsight SDK for .NET csomaggal](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight#sdk-installation)
+- [Azure HDInsight SDK a .NET-hez](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight#sdk-installation)
 
-## <a name="cluster-management---creation"></a>Fürtkezelés - létrehozás
+## <a name="cluster-management---creation"></a>Fürt kezelése – létrehozás
 
 * [Kafka-fürt létrehozása](https://github.com/Azure-Samples/hdinsight-dotnet-sdk-samples/blob/master/Management/Microsoft.Azure.Management.HDInsight.Samples/Microsoft.Azure.Management.HDInsight.Samples/CreateKafkaClusterSample.cs)
 * [Spark-fürt létrehozása](https://github.com/Azure-Samples/hdinsight-dotnet-sdk-samples/blob/master/Management/Microsoft.Azure.Management.HDInsight.Samples/Microsoft.Azure.Management.HDInsight.Samples/CreateSparkClusterSample.cs)
-* [Spark-fürt létrehozása az Azure Data Lake Storage Gen2](https://github.com/Azure-Samples/hdinsight-dotnet-sdk-samples/blob/master/Management/Microsoft.Azure.Management.HDInsight.Samples/Microsoft.Azure.Management.HDInsight.Samples/CreateHadoopClusterWithAdlsGen2Sample.cs)
-* [Spark-fürt létrehozása a vállalati biztonsági csomag (ESP)](https://github.com/Azure-Samples/hdinsight-dotnet-sdk-samples/blob/master/Management/Microsoft.Azure.Management.HDInsight.Samples/Microsoft.Azure.Management.HDInsight.Samples/CreateEspClusterSample.cs)
+* [Spark-fürt létrehozása Azure Data Lake Storage Gen2](https://github.com/Azure-Samples/hdinsight-dotnet-sdk-samples/blob/master/Management/Microsoft.Azure.Management.HDInsight.Samples/Microsoft.Azure.Management.HDInsight.Samples/CreateHadoopClusterWithAdlsGen2Sample.cs)
+* [Spark-fürt létrehozása Enterprise Security Package (ESP)](https://github.com/Azure-Samples/hdinsight-dotnet-sdk-samples/blob/master/Management/Microsoft.Azure.Management.HDInsight.Samples/Microsoft.Azure.Management.HDInsight.Samples/CreateEspClusterSample.cs)
 
-Klónozásával a .NET-hez ezeket a mintákat is kap a [hdinsight-dotnet-sdk-minták](https://github.com/Azure-Samples/hdinsight-dotnet-sdk-samples) GitHub-adattárban.
+Ezeket a mintákat a .NET-hez a [hdinsight-DotNet-SDK-Samples](https://github.com/Azure-Samples/hdinsight-dotnet-sdk-samples) GitHub-tárház klónozásával érheti el.
 
 [!INCLUDE [hdinsight-sdk-additional-functionality](../../includes/hdinsight-sdk-additional-functionality.md)]
 
-Kódrészletek a tekintheti meg a további SDK-funkciók esetében a [HDInsight SDK for .NET-referenciák dokumentációiba](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet).
+Ehhez a további SDK-funkciókhoz tartozó kódrészletek a [HDINSIGHT SDK for .net dokumentációjában](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet)találhatók.

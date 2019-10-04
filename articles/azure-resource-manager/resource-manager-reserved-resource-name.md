@@ -1,6 +1,6 @@
 ---
-title: Azure fenntartott erőforrás utat |} Microsoft Docs
-description: Javítsa a hibákat, erőforrás nevét, amely tartalmaz egy fenntartott szó nyújtásakor ismerteti.
+title: Fenntartott Azure-erőforrás neve hibák |} A Microsoft Docs
+description: Ismerteti, hogyan lehet javítsa ki a hibákat, ha egy erőforrás-nevet, amely tartalmaz egy fenntartott szó.
 services: azure-resource-manager
 documentationcenter: ''
 author: tfitzmac
@@ -13,20 +13,20 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/08/2017
 ms.author: tomfitz
-ms.openlocfilehash: b91a53d17d64afb0a56f745505f10e8cabbc22cc
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 922389b7c6c1bb7ad1d9b8f6ec35ccc1c5656723
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34357061"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64683935"
 ---
-# <a name="resolve-reserved-resource-name-errors"></a>Hárítsa el a hibákat a lefoglalt erőforrás neve
+# <a name="resolve-reserved-resource-name-errors"></a>Fenntartott erőforrás neve ki a hibákat
 
-Ez a cikk ismerteti az egy erőforrást, a név egy fenntartott szó tartalmazó telepítése során előforduló hiba.
+Ez a cikk ismerteti a hibát tapasztal egy erőforrást a név egy fenntartott szó tartalmazó telepítésekor.
 
 ## <a name="symptom"></a>Jelenség
 
-Egy erőforrást egy nyilvános végpontot keresztül elérhető való telepítésekor a következő hibaüzenet jelenhet meg:
+Egy erőforrás, amely elérhető egy nyilvános végpontot üzembe helyezésekor, a következő hiba jelenhet meg:
 
 ```
 Code=ReservedResourceName;
@@ -35,43 +35,43 @@ Message=The resource name <resource-name> or a part of the name is a trademarked
 
 ## <a name="cause"></a>Ok
 
-Erőforrásokat, amelyek egy nyilvános végpontot a név nem használható célra fenntartott szavakat vagy védjegye.
+Egy nyilvános végponttal rendelkező erőforrások a név nem használható célra fenntartott szavakat vagy védjegyei.
 
-A következő szavak számára vannak fenntartva:
+A következő szavak vannak fenntartva:
 
 * HOZZÁFÉRÉS
-* AZURE
+* AZ AZURE
 * BING
 * BIZSPARK
 * BIZTALK
-* A CORTANA
+* CORTANA
 * DIRECTX
 * DOTNET
 * DYNAMICS
 * EXCEL
-* EXCHANGE
+* AZ EXCHANGE
 * FOREFRONT
 * GROOVE
-* HOLOLENSRE
-* HYPER-V
+* HOLOLENS
+* HYPERV
 * KINECT
 * LYNC
 * MSDN
 * O365
 * OFFICE
 * OFFICE365
-* ONEDRIVE VÁLLALATI VERZIÓ
+* ONEDRIVE
 * ONENOTE-BAN
 * OUTLOOK
-* POWERPOINT
-* SHAREPOINT
+* A POWERPOINT
+* A SHAREPOINT
 * SKYPE
-* A VISIO
+* VISIO
 * VISUALSTUDIO
 
-A következő szavak szavakat vagy a substring nevében nem használható:
+A következő szöveg teljes szavankénti vagy a név egy karakterláncrészletet nem használható:
 
-* BEJELENTKEZÉS
+* LOGIN
 * MICROSOFT
 * WINDOWS
 * XBOX

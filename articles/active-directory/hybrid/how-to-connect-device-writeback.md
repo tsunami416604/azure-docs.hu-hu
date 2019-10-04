@@ -16,12 +16,12 @@ ms.date: 05/08/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7ed6fd0a4a1de3fb02b3d8583c0e5c0cecac211
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 632f6f80184c6ba3409bd30ae070cbaefc77f036
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56205511"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67109507"
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect: Eszközvisszaírás engedélyezése
 > [!NOTE]
@@ -31,6 +31,7 @@ ms.locfileid: "56205511"
 
 A következő dokumentáció arról nyújt tájékoztatást az Azure AD Connect eszköz visszaírási funkciójának engedélyezése. Eszközvisszaírás szolgál a következő esetekben:
 
+* Engedélyezése [Windows Hello for Business hibrid tanúsítvány megbízhatósági üzemelő példány használatával](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-hybrid-cert-trust-prereqs#device-registration)
 * Feltételes hozzáférési házirend alapján AD FS-eszközök engedélyezése (2012 R2 vagy újabb) által védett alkalmazások (függő entitások megbízhatóságainak).
 
 Ez biztosítja a további biztonsági és biztosítható, hogy csak a megbízható eszközökhöz való engedélyezett alkalmazásokhoz való hozzáférést a rendszer. Feltételes hozzáféréssel kapcsolatos további információkért lásd: [kockázat kezelése feltételes hozzáféréssel](../active-directory-conditional-access-azure-portal.md) és [helyszíni feltételes hozzáférés beállítása az Azure Active Directory Eszközregisztrációs](../../active-directory/active-directory-device-registration-on-premises-setup.md).
@@ -39,10 +40,10 @@ Ez biztosítja a további biztonsági és biztosítható, hogy csak a megbízhat
 > <li>Eszközök a felhasználók ugyanabban az erdőben kell működnie. Eszközök kell visszaírása az egyetlen erdővel, mivel ez a funkció jelenleg nem támogatja a több felhasználó erdő telepítésben.</li>
 > <li>Csak egy eszköz regisztrációs konfigurációs objektumot a helyi Active Directory-erdőben lehet hozzáadni. Ez a funkció szoftvere nem kompatibilis, ahol a helyszíni Active Directory több Azure AD-címtár szinkronizált topológiákkal.</li>
 
-## <a name="part-1-install-azure-ad-connect"></a>1. rész: Az Azure AD Connect telepítése
+## <a name="part-1-install-azure-ad-connect"></a>1\. rész: Az Azure AD Connect telepítése
 Telepítse az Azure AD Connect használatával egyéni vagy Gyorsbeállítások. A Microsoft azt javasolja, a kezdéshez minden felhasználó és csoport szinkronizálása sikeres-eszközvisszaírás engedélyezése előtt.
 
-## <a name="part-2-enable-device-writeback-in-azure-ad-connect"></a>2. rész: Az Azure AD Connectben eszközvisszaírás engedélyezése
+## <a name="part-2-enable-device-writeback-in-azure-ad-connect"></a>2\. rész: Az Azure AD Connectben eszközvisszaírás engedélyezése
 1. Futtassa újra a telepítővarázslót. Válassza ki **eszközbeállítások konfigurálása** további műveletek az oldalon, és kattintson **tovább**. 
 
     ![Eszközbeállítások konfigurálása](./media/how-to-connect-device-writeback/deviceoptions.png)
@@ -81,7 +82,7 @@ Eszközvisszaírás most kell megfelelően működik. Vegye figyelembe, hogy az 
 
    ![Az Active Directory felügyeleti központ regisztrált eszközök listája](./media/how-to-connect-device-writeback/devicewriteback6.png)
 
-## <a name="enable-conditional-access"></a>Feltételes hozzáférés engedélyezése
+## <a name="enable-conditional-access"></a>Feltételes hozzáférési házirend engedélyezése
 Részletes útmutatás a forgatókönyv engedélyezésének érhető el, [helyszíni feltételes hozzáférés beállítása az Azure Active Directory Eszközregisztrációs](../../active-directory/active-directory-device-registration-on-premises-setup.md).
 
 ## <a name="troubleshooting"></a>Hibaelhárítás

@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/31/2018
 ms.author: sharadag
-ms.openlocfilehash: 39e7626e6b4c545649e39ff2120d1f1fd105d764
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 6bcd5bcc2463ec1ab9dcc97644d5046c31bfc78b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46994666"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61461986"
 ---
-# <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application"></a>Rövid útmutató: Front Door létrehozása magas rendelkezésre állású globális webalkalmazásokhoz
+# <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application"></a>Gyors útmutató: Magas rendelkezésre állású globális webalkalmazás számára a bejárati ajtajának létrehozása
 
 Ez a rövid útmutató bemutatja, hogyan hozhat létre egy Front Door-profilt, amely magas rendelkezésre állást és nagy teljesítményt biztosít globális webalkalmazása számára. 
 
@@ -42,7 +42,7 @@ A rövid útmutatóhoz üzembe kell helyeznie egy webalkalmazás két példány�
      | Name (Név)           | Adja meg a webalkalmazás egyedi nevét.  |
      | Erőforráscsoport          | Válassza az **Új** lehetőséget, majd írja be a *myResourceGroupFD1* nevet. |
      | App Service-csomag/hely         | Válassza az **Új** lehetőséget.  Az App Service-csomag mezőben adja meg a *myAppServicePlanEastUS* nevet, majd kattintson az **OK** gombra. 
-     |      Hely  |   USA keleti régiója        |
+     |      Location egység  |   USA keleti régiója        |
     |||
 
 3. Kattintson a **Létrehozás** gombra.
@@ -54,7 +54,7 @@ A rövid útmutatóhoz üzembe kell helyeznie egy webalkalmazás két példány�
      | Name (Név)           | Adja meg a webalkalmazás egyedi nevét.  |
      | Erőforráscsoport          | Válassza az **Új** lehetőséget, majd írja be a *myResourceGroupFD2* nevet. |
      | App Service-csomag/hely         | Válassza az **Új** lehetőséget.  Az App Service-csomag mezőben adja meg a *myAppServicePlanWestEurope* nevet, majd kattintson az **OK** gombra. 
-     |      Hely  |   Nyugat-Európa      |
+     |      Location egység  |   Nyugat-Európa      |
     |||
 
 

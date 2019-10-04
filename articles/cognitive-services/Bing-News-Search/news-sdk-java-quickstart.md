@@ -1,22 +1,22 @@
 ---
-title: 'Gyors útmutató: Hajtsa végre a hírkeresési – a Bing News Search SDK a Javához készült'
+title: 'Gyors útmutató: Hajtsa végre egy hírkeresés a Bing News Search SDK használata Javához'
 titleSuffix: Azure Cognitive Services
 description: Ez a rövid útmutató segítségével hírkeresés a Bing News Search SDK használata Javához készült, és a válasz feldolgozása.
 services: cognitive-services
-author: mikedodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 01/10/2019
-ms.author: v-gedod
+ms.date: 06/18/2019
+ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 648e1701154c725a0645bd520045238030a71ea9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d84b47feb91a9165a4bc03b20b0b7d079aa8f6ae
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58108695"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203372"
 ---
 # <a name="quickstart-search-for-news-with-the-bing-news-search-sdk-for-java"></a>Gyors útmutató: A Javához készült Bing News Search SDK hírkeresés
 

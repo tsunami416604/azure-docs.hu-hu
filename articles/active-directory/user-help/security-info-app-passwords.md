@@ -1,6 +1,6 @@
 ---
-title: Alkalmazásjelszavak beállítása a Security info (előzetes verzió) lap – Azure Active Directory-ből |} A Microsoft Docs
-description: Állítsa be automatikusan generált jelszót (alkalmazásjelszók) használja a semmilyen böngészőn kívüli alkalmazáshoz, vagy minden olyan alkalmazás, amely nem támogatja a kétfaktoros ellenőrzési, a szervezetben. Ezzel az alkalmazásjelszóval elkülönül megváltoztathassák egy saját jelszóra, és a biztonsági adatok lapján állíthatja.
+title: Alkalmazás jelszavának beállítása a biztonsági adatok (előzetes verzió) lapon – Azure Active Directory | Microsoft Docs
+description: Állítson be automatikusan generált jelszavakat (alkalmazás-jelszavakat) a böngészőn kívüli alkalmazásokhoz, illetve bármely olyan alkalmazáshoz, amely nem támogatja a kétfaktoros ellenőrzést a szervezetében. Ez az alkalmazás jelszava különálló a normál jelszótól, és a biztonsági adatok lapról állítható be.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,74 +12,77 @@ ms.topic: conceptual
 ms.date: 02/13/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55dfab0c60e77b86157a005db34c37917a5e08d2
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 9638893c707757cb520acdf18e8e89a6cdf13f08
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57341102"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915982"
 ---
-# <a name="manage-app-passwords-from-your-security-info-preview-page"></a>A biztonsági adatok (előzetes verzió) lapján az alkalmazásjelszók kezelése
-Bizonyos alkalmazások, például az Outlook 2010, nem támogatják a kétlépéses ellenőrzést. Támogatás hiánya, az azt jelenti, hogy a szervezet használja kétlépéses ellenőrzést, ha az alkalmazás nem fog működni. A probléma megoldásához lekéréséhez egy automatikusan létrehozott jelszó használata minden egyes böngészőn kívüli alkalmazással, elkülönítve a normál jelszavát is létrehozhat.
+# <a name="manage-app-passwords-from-your-security-info-preview-page"></a>Alkalmazások jelszavainak kezelése a biztonsági adatok (előzetes verzió) lapján
+
+Bizonyos alkalmazások, például az Outlook 2010, nem támogatják a kétlépéses ellenőrzést. Ez a támogatás hiánya azt jelenti, hogy ha kétlépéses ellenőrzést használ a szervezetében, az alkalmazás nem fog működni. A probléma megkerüléséhez létrehozhat egy automatikusan generált jelszót, amelyet az egyes nem böngésző alkalmazásokhoz használhat, a normál jelszótól eltérő módon.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
 >[!Important]
->A rendszergazda nem engedélyezi az alkalmazásjelszavak használata. Ha nem lát **alkalmazásjelszók** szükség esetén azok még nem érhető el a szervezetben.
+>Előfordulhat, hogy a rendszergazda nem teszi lehetővé az alkalmazás jelszavának használatát. Ha nem látja az **alkalmazás jelszavait** lehetőségként, azok nem érhetők el a szervezetben.
 
-Alkalmazásjelszavak használata esetén ne feledje:
+Az alkalmazások jelszavainak használatakor fontos megjegyezni:
 
-- Alkalmazásjelszók a automatikusan létrehozott és csak egyszer megadott alkalmazásonként.
+- Automatikusan létrejönnek az alkalmazások jelszavai, és egy alkalmazásban egyszer kell létrehozni és beírni.
 
-- Nincs egy legfeljebb 40 jelszó felhasználónként. Ha megpróbál létrehozni egyet, miután ezt a korlátot, kérni fogja az új létrehozásához engedélyezése előtt törli a meglévő jelszó.
-
-- Eszközönként, nem alkalmazásonként egy alkalmazásjelszót használni. Hozzon létre például a laptopján az alkalmazások egyszeri jelszót és a egy másik egyetlen jelszóval, asztali számítógépeken az alkalmazások.
+- Felhasználónként legfeljebb 40 jelszó adható meg. Ha a korlát után megpróbál létrehozni egyet, a rendszer arra kéri, hogy töröljön egy meglévő jelszót, mielőtt az újat hozna létre.
 
     >[!Note]
-    >Office 2013 ügyfelek (beleértve az Outlook) támogatja az új hitelesítési protokollok és használható a kétlépcsős ellenőrzéshez. Ez a támogatás, az azt jelenti, hogy után a kétlépéses ellenőrzés be van kapcsolva, már nem kell az alkalmazásjelszavak Office 2013-ügyfelek számára. További információ: a [modern hitelesítés működéséről, az Office 2013 és az Office 2016 ügyfélalkalmazások](https://support.office.com/article/how-modern-authentication-works-for-office-2013-and-office-2016-client-apps-e4c45989-4b1a-462e-a81b-2a13191cf517) cikk.
+    >Az Office 2013-ügyfelek (beleértve az Outlookot is) támogatják az új hitelesítési protokollokat, és kétlépéses ellenőrzéssel használhatók. Ez a támogatás azt jelenti, hogy a kétlépéses ellenőrzés bekapcsolása után már nem lesz szükség az Office 2013-ügyfelekhez tartozó alkalmazások jelszavára. További információ: a [modern hitelesítés működése az office 2013 és az office 2016 Client apps](https://support.office.com/article/how-modern-authentication-works-for-office-2013-and-office-2016-client-apps-e4c45989-4b1a-462e-a81b-2a13191cf517) cikkhez.
 
-## <a name="create-new-app-passwords"></a>Hozzon létre új alkalmazásjelszavakat
-Ha a kétlépéses ellenőrzést használja a munkahelyi vagy iskolai fiókjával, és a rendszergazda bekapcsolta az adatok felhasználói élmény, létrehozhat és törölni az alkalmazásjelszók használatával a **biztonsági adatok** lap.
+## <a name="create-new-app-passwords"></a>Új alkalmazás jelszavának létrehozása
+
+Ha kétlépéses ellenőrzést használ a munkahelyi vagy iskolai fiókjával, és a rendszergazda bekapcsolta a biztonsági információk felületét, a **biztonsági adatok** lapon hozhatja létre és törölheti az alkalmazáshoz tartozó jelszavakat.
 
 >[!Note]
->Ha a biztonsági adatok élményt a rendszergazda még nem aktív, kövesse az utasításokat és az információkat a a [alkalmazásjelszavakat a kétlépéses ellenőrzés kezelése](multi-factor-authentication-end-user-app-passwords.md) szakaszban.
+>Ha a rendszergazda nem kapcsolta be a biztonsági adatokkal kapcsolatos felhasználói élményt, kövesse az [alkalmazás jelszavainak kezelése kétlépéses ellenőrzéshez](multi-factor-authentication-end-user-app-passwords.md) című szakaszban található utasításokat és információkat.
 
-### <a name="to-create-a-new-app-password"></a>Alkalmazásjelszó létrehozása
-1. Jelentkezzen be munkahelyi vagy iskolai fiókjával, és keresse meg a https://myprofile.microsoft.com/ lapot.
+### <a name="to-create-a-new-app-password"></a>Új alkalmazás jelszavának létrehozása
 
-    ![Saját profil lapot, amely a kijelölt biztonsági adatai hivatkozások](media/security-info/securityinfo-myprofile-page.png)
+1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába, majd lépjen a https://myprofile.microsoft.com/ lapra.
 
-2. Válassza ki **biztonsági adatok** a bal oldali navigációs ablaktáblán vagy a hivatkozás a **biztonsági adatok** letiltása, és válassza ki **metódus hozzáadása** a a **biztonsági adatai**  lapot.
+    ![Saját profil oldal, kiemelt biztonsági információs hivatkozások megjelenítése](media/security-info/securityinfo-myprofile-page.png)
 
-    ![Biztonsági adatok weblapját a kiemelt Hozzáadás metódus beállítás](media/security-info/securityinfo-myprofile-addmethod-page.png)
+2. Válassza a bal oldali navigációs ablaktábla **biztonsági adatok** elemét, vagy a biztonsági **információ** blokkban található hivatkozásra, majd válassza a **metódus hozzáadása** elemet a **biztonsági adatok** lapon.
 
-3. Az a **adjon meg egy metódust** lapon jelölje be **alkalmazásjelszót** a legördülő listából válassza ki, és válassza ki a **Hozzáadás**.
+    ![Biztonsági adatok lap Kiemelt hozzáadási módszer lehetőséggel](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
-    ![A kiválasztott alkalmazás jelszavának metódus mezőben hozzáadása](media/security-info/securityinfo-myprofile-addpassword.png)
+3. A **metódus hozzáadása** lapon válassza ki az **alkalmazás jelszava** elemet a legördülő listából, majd kattintson a **Hozzáadás**gombra.
 
-4. Adja meg az alkalmazást, amelyet az alkalmazás jelszó szükséges a, és válassza **tovább**.
+    ![Hozzáadás a Method Box-hoz, az alkalmazás jelszava kiválasztva](media/security-info/securityinfo-myprofile-addpassword.png)
 
-    ![Alkalmazásjelszavak lapon, az alkalmazás neve](media/security-info/securityinfo-myprofile-password-appname.png)
+4. Írja be annak az alkalmazásnak a nevét, amelyhez az alkalmazás jelszava szükséges, majd kattintson a **tovább**gombra.
 
-5. A szöveg másolása a **jelszó** mezőbe, majd válassza ki és illessze be a jelszót az alkalmazást (az ebben a példában az Outlook 2010) jelszó területén **kész**.
+    ![Alkalmazás jelszava lap az alkalmazás nevével](media/security-info/securityinfo-myprofile-password-appname.png)
 
-    ![Alkalmazásjelszavak lapon, az alkalmazás neve](media/security-info/securityinfo-myprofile-password-copytext.png)
-    
-    A jelszó kerül, és sikeresen bejelentkezhet az alkalmazásba, a jövőben.
+5. Másolja a jelszót a **jelszó** mezőbe, illessze be a jelszót az alkalmazás jelszó területére (ebben a példában az Outlook 2010), majd válassza a **kész**gombot.
 
-## <a name="delete-your-app-passwords"></a>Az alkalmazásjelszavak törlése
-Ha már nincs szüksége egy alkalmazást, amely egy alkalmazásjelszót kell használni, törölheti a társított alkalmazás jelszót. Az alkalmazásjelszó törlése szabadít fel az elérhető alkalmazás jelszóval kritikus pontok elkerülése érdekében használható egyik a jövőben.
+    ![Alkalmazás jelszava lap az alkalmazás nevével](media/security-info/securityinfo-myprofile-password-copytext.png)
+
+    A rendszer hozzáadja a jelszót, és sikeresen bejelentkezhet az alkalmazásba.
+
+## <a name="delete-your-app-passwords"></a>Az alkalmazás jelszavainak törlése
+
+Ha már nincs szüksége az alkalmazás jelszavát igénylő alkalmazás használatára, törölheti a társított alkalmazás jelszavát. Az alkalmazás jelszava törlésével felszabadítja az elérhető alkalmazás jelszavas helyeinek egyikét a jövőben való használatra.
 
 >[!Important]
->Ha véletlenül töröl egy alkalmazásjelszót, nincs semmilyen módon nem lehet visszavonni. Kell új jelszót létrehozni, és adja meg újra az alkalmazásba, a lépések a [új Alkalmazásjelszavakat](#create-new-app-passwords) című szakaszát.
+>Ha tévedésből törli az alkalmazás jelszavát, nem vonható vissza. Létre kell hoznia egy új alkalmazás jelszavát, majd újra be kell írnia az alkalmazásba, a jelen cikk [új alkalmazás jelszavainak létrehozása](#create-new-app-passwords) című szakaszában ismertetett lépéseket követve.
 
-### <a name="to-delete-an-app-password"></a>Alkalmazásjelszó törlése
+### <a name="to-delete-an-app-password"></a>Alkalmazás jelszavának törlése
 
-1. Az a **biztonsági adatok** lapon válassza ki a **törlése** mellett kapcsolni a **alkalmazásjelszót** lehetőség az adott alkalmazás.
+1. A **biztonsági adatok** lapon válassza a **Törlés** hivatkozást az alkalmazás **jelszava** lehetőség mellett az adott alkalmazáshoz.
 
-    ![Hivatkozás törlése a jelszó használata a biztonsági adatok](media/security-info/securityinfo-myprofile-password-appdelete.png)
+    ![Az alkalmazás jelszava módszerének törlésére szolgáló hivatkozás a biztonsági adatokból](media/security-info/securityinfo-myprofile-password-appdelete.png)
 
-2. Válassza ki **Igen** a megerősítés mezőben törlése a **alkalmazásjelszót**. Miután a rendszer törli az alkalmazásjelszót, a rendszer eltávolítja a biztonsági adatait és, eltűnik a **biztonsági adatok** lapot.
+2. Az **alkalmazás jelszavának**törléséhez válassza az **Igen** lehetőséget a megerősítő mezőben. Az alkalmazás jelszavának törlése után a rendszer eltávolítja a biztonsági adatokból, és eltűnik a **biztonsági adatok** lapról.
 
 ## <a name="for-more-information"></a>További tudnivalók
-- További információ a **biztonsági adatok** lapot, és állítsa be, olvassa el [biztonsági adatok áttekintése](user-help-security-info-overview.md)
+
+- További információ a **biztonsági adatok** lapról és a beállításáról: [biztonsági információk áttekintése](user-help-security-info-overview.md)

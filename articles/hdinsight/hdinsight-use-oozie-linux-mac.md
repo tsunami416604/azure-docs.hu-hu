@@ -1,125 +1,117 @@
 ---
-title: A Linux-alapú Azure HDInsight Hadoop Oozie munkafolyamatok használata
-description: Linux-alapú HDInsight a Hadoop az Oozie használata. Megtudhatja, hogyan Oozie munkafolyamatokat, és az Oozie-feladatok elküldéséhez.
-services: hdinsight
-ms.service: hdinsight
-ms.custom: hdinsightactive
+title: Hadoop Oozie-munkafolyamatok használata Linux-alapú Azure-HDInsight
+description: Hadoop Oozie használata Linux-alapú HDInsight. Ismerje meg, hogyan határozhat meg egy Oozie-munkafolyamatot, és hogyan küldhet el egy Oozie-feladatot.
 author: omidm1
 ms.author: omidm
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 02/28/2019
-ms.openlocfilehash: daee7ddd0a09d43132bbcf0f4553601846d31433
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.date: 05/06/2019
+ms.openlocfilehash: b0cb5f9fa0a0bc64b38225fba03568cf31021572
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58448238"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71181093"
 ---
-# <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Az Apache Hadoop megadásához és a munkafolyamat futtatása a Linux-alapú Azure HDInsight Apache Oozie használata
+# <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Az Apache Oozie és a Apache Hadoop használata munkafolyamatok definiálásához és futtatásához Linux-alapú Azure-HDInsight
 
-Ismerje meg, hogyan lehet Apache Oozie használata Azure HDInsight az Apache Hadoop. Az Oozie egy rendszer munkafolyamat és összehangoláshoz, amely a Hadoop-feladatokat kezeli. Az Oozie integrálva van a Hadoop-veremmel, és támogatja a következő feladatokat:
+Ismerje meg, hogyan használhatja az Apache Oozie-t az Apache Hadoop Azure HDInsight. A Oozie olyan munkafolyamat-és koordinációs rendszer, amely a Hadoop-feladatokat kezeli. A Oozie integrálva van a Hadoop-verembe, és a következő feladatokat támogatja:
 
 * Apache Hadoop MapReduce
 * Apache Pig
 * Apache Hive
 * Apache Sqoop
 
-Az Oozie használatával a rendszer, például Java programok vagy héjparancsfájlok ütemezésére adott feladatok ütemezéséhez.
+A Oozie segítségével a rendszerre vonatkozó feladatokat is ütemezhet, például a Java-programokat vagy a rendszerhéj-parancsfájlokat.
 
 > [!NOTE]  
-> HDInsight munkafolyamatok meghatározásához egy másik lehetőség, hogy az Azure Data Factory használata. A Data Factory kapcsolatos további információkért lásd: [Apache Pig használata és az Apache Hive, a Data Factory][azure-data-factory-pig-hive]. Használja a vállalati biztonsági csomaggal fürtökön Oozie lásd [Apache Oozie futtatása HDInsight Hadoop-fürt a vállalati biztonsági csomag](domain-joined/hdinsight-use-oozie-domain-joined-clusters.md).
+> A munkafolyamatok HDInsight való definiálásának másik lehetősége a Azure Data Factory használata. Ha többet szeretne megtudni a Data Factoryről, tekintse meg [az Apache Pig és a Apache Hive használata a Data Factory használatával][azure-data-factory-pig-hive]című témakört. Ha Enterprise Security Package Oozie szeretné használni a fürtökön, tekintse meg a következőt: [Apache Oozie futtatása a HDInsight Hadoop-fürtökön a Enterprise Security Package](domain-joined/hdinsight-use-oozie-domain-joined-clusters.md)használatával.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **A HDInsight Hadoop-fürt**. Lásd: [HDInsight Linux első lépések](hadoop/apache-hadoop-linux-tutorial-get-started.md).
+* **Hadoop-fürt a HDInsight-on**. Lásd: Ismerkedés [a HDInsight Linux rendszeren](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
-* **Egy SSH-ügyfél**. Lásd: [HDInsight (az Apache Hadoop) SSH-val csatlakozhat](hdinsight-hadoop-linux-use-ssh-unix.md).
+* **Egy SSH-ügyfél**. Lásd: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* **Az Azure SQL Database**.  Lásd: [egy Azure SQL database létrehozása az Azure Portalon](../sql-database/sql-database-get-started.md).  Ebben a cikkben egy adatbázist `oozietest`.
+* **Egy Azure SQL Database**.  Lásd: [Azure SQL Database létrehozása a Azure Portalban](../sql-database/sql-database-get-started.md).  Ez a cikk egy nevű `oozietest`adatbázist használ.
 
-* **Tárolási konfiguráció lehetséges módosítása.**  Lásd: [tárolási konfigurációt](#storage-configuration) a tárfiók típusának használatakor `BlobStorage`.
+* A fürtök elsődleges tárolójának [URI-sémája](./hdinsight-hadoop-linux-information.md#URI-and-scheme) . Ez az Azure `wasb://` `abfs://` Storage számára lenne Azure Data Lake Storage Gen2 vagy `adl://` Azure Data Lake Storage Gen1 esetén. Ha a biztonságos átvitel engedélyezve van az Azure Storage-hoz, az `wasbs://`URI a következő lesz:. Lásd még: [biztonságos átvitel](../storage/common/storage-require-secure-transfer.md).
 
-## <a name="storage-configuration"></a>Tároló konfigurálása
-Semmit nem kell, ha a használt tárfiók típusú `Storage (general purpose v1)` vagy `StorageV2 (general purpose v2)`.  A cikk a folyamat legalább állítja elő a kimeneti `/mapreducestaging`.  Alapértelmezett konfigurációja a hadoop tartalmazni fogja `/mapreducestaging` a a `fs.azure.page.blob.dir` konfigurációs változó `core-site.xml` szolgáltatás `HDFS`.  Ez a konfiguráció hatására a kimeneti könyvtárba kell a lapblobokat, ez a tárfióktípus nem támogatott `BlobStorage`.  Használandó `BlobStorage` ebben a cikkben eltávolítása `/mapreducestaging` származó a `fs.azure.page.blob.dir` konfigurációs változó.  A konfiguráció elérhető a [Ambari felhasználói felületén](hdinsight-hadoop-manage-ambari.md).  Ellenkező esetben kapja meg a hibaüzenet: `Page blob is not supported for this account type.`
+## <a name="example-workflow"></a>Példa munkafolyamat
 
-> [!NOTE]  
-> A jelen cikkben használt tárfiók rendelkezik [biztonságos átvitelre](../storage/common/storage-require-secure-transfer.md) engedélyezve van, és így `wasbs` helyett `wasb` a cikk használja.
+A dokumentumban használt munkafolyamat két műveletet tartalmaz. A műveletek olyan tevékenységek definíciói, mint például a kaptár, a Sqoop, a MapReduce vagy más folyamatok futtatása:
 
-## <a name="example-workflow"></a>Példa-munkafolyamat
+![HDInsight oozie munkafolyamat-diagramja](./media/hdinsight-use-oozie-linux-mac/oozie-workflow-diagram.png)
 
-Az itt bemutatott munkafolyamat két műveleteket tartalmaz. A műveletek olyan feladatokhoz, például a Hive, Sqoop, a MapReduce vagy egyéb folyamatok futtatása definíciókat:
-
-![A munkafolyamat diagramja][img-workflow-diagram]
-
-1. Egy Hive-művelet bontsa ki a rekordok egy HiveQL-parancsfájlt futtat a `hivesampletable` , amely HDInsight foglalt. Minden egyes sorára adatokat egy adott mobileszközzel meglátogatása ismerteti. A rekord formátumban jelenik meg, például a következő szöveget:
+1. A kaptárak egy HiveQL parancsfájlt futtatnak a `hivesampletable` HDInsight-ben található rekordok kinyeréséhez. Az egyes adatsorok egy adott mobileszköz egy látogatását írják le. A rekord formátuma az alábbi szöveghez hasonlóan jelenik meg:
 
         8       18:54:20        en-US   Android Samsung SCH-i500        California     United States    13.9204007      0       0
         23      19:19:44        en-US   Android HTC     Incredible      Pennsylvania   United States    NULL    0       0
         23      19:19:46        en-US   Android HTC     Incredible      Pennsylvania   United States    1.4757422       0       1
 
-    A Hive-parancsfájl ebben a dokumentumban használt egyes platformokon, például Android vagy iPhone-on, a teljes látogatások száma, és a számát, az új Hive tábla tárolja.
+    A dokumentumban használt struktúra-szkript megszámolja az egyes platformok, például az Android vagy az iPhone összes látogatását, és a leltárt egy új struktúrás táblára tárolja.
 
-    Hive-ról további információkért lásd: [Apache Hive használata a HDInsight][hdinsight-use-hive].
+    További információ a Kaptárról: [Apache Hive használata a HDInsight][hdinsight-use-hive].
 
-2. A Sqoop művelet exportálja az új Hive tábla tartalmát egy Azure SQL Database-ben létrehozott tábla. Sqoop használatával kapcsolatos további információkért lásd: [használata Apache sqoop használatával HDInsight][hdinsight-use-sqoop].
+2. A Sqoop művelet az új struktúra táblázatának tartalmát exportálja Azure SQL Databaseban létrehozott táblába. További információ a Sqoop: az [Apache Sqoop használata a HDInsight][hdinsight-use-sqoop].
 
 > [!NOTE]  
-> Tekintse meg a HDInsight-fürtökön támogatott Oozie verziók [a HDInsight által biztosított Hadoop-fürtverziók újdonságai][hdinsight-versions].
+> A HDInsight-fürtök támogatott Oozie-verzióiért lásd: [Újdonságok a Hadoop-fürt HDInsight által biztosított verzióiban][hdinsight-versions].
 
-## <a name="create-the-working-directory"></a>A munkakönyvtárban létrehozása
+## <a name="create-the-working-directory"></a>A munkakönyvtár létrehozása
 
-Az Oozie vár, hogy ugyanabban a címtárban a feladat végrehajtásához szükséges összes erőforrást tárolja. Ez a példa `wasbs:///tutorials/useoozie`. Ez a könyvtár létrehozásához hajtsa végre az alábbi lépéseket:
+A Oozie arra vár, hogy a feladatokhoz szükséges összes erőforrást ugyanabban a könyvtárban tárolja. Ez a példa `wasbs:///tutorials/useoozie`a következőt használja:. A könyvtár létrehozásához hajtsa végre a következő lépéseket:
 
-1. Cserélje le az alábbi kód szerkesztése `sshuser` az SSH-felhasználó a fürt nevét, és cserélje le `clustername` a fürt nevére.  Adja meg a kódot, amellyel csatlakozhat a HDInsight-fürt [SSH-val](hdinsight-hadoop-linux-use-ssh-unix.md).  
+1. Szerkessze az alábbi kódot, `sshuser` hogy lecserélje a fürt SSH-felhasználónevét, `clustername` és a helyére a fürt nevét írja.  Ezután írja be a kódot, hogy az [SSH használatával](hdinsight-hadoop-linux-use-ssh-unix.md)csatlakozzon a HDInsight-fürthöz.  
 
     ```bash
     ssh sshuser@clustername-ssh.azurehdinsight.net
     ```
 
-2. A címtár létrehozásához használja a következő parancsot:
+2. A könyvtár létrehozásához használja a következő parancsot:
 
     ```bash
     hdfs dfs -mkdir -p /tutorials/useoozie/data
     ```
 
     > [!NOTE]  
-    > A `-p` paraméter okoz az összes könyvtár létrehozása az elérési utat. A `data` könyvtárat a által használt adatok tárolásához használja a `useooziewf.hql` parancsfájlt.
+    > A `-p` paraméter az összes könyvtár létrehozását okozza az elérési úton. A `data` könyvtár a `useooziewf.hql` parancsfájl által használt adattárolásra szolgál.
 
-3. Cserélje le az alábbi kód szerkesztése `username` az SSH-felhasználónévvel.  Győződjön meg arról, hogy az Oozie megszemélyesíthet-e a felhasználói fiók, használja a következő parancsot:
+3. Szerkessze az alábbi kódot, `username` és cserélje le az SSH-felhasználónevét.  Annak érdekében, hogy a Oozie megszemélyesítse a felhasználói fiókját, használja a következő parancsot:
 
     ```bash
     sudo adduser username users
     ```
 
     > [!NOTE]  
-    > Hibák, amelyek jelzik, hogy a felhasználó tagja már figyelmen kívül hagyhatja a `users` csoport.
+    > Figyelmen kívül hagyhatja azokat a hibákat, amelyek azt jelzik, hogy `users` a felhasználó már tagja a csoportnak.
 
-## <a name="add-a-database-driver"></a>Egy adatbázis-illesztőprogram hozzáadása
+## <a name="add-a-database-driver"></a>Adatbázis-illesztőprogram hozzáadása
 
-Mivel ez a munkafolyamat Sqoop segítségével exportál adatokat az SQL database, meg kell adnia a JDBC-illesztővel kommunikál az SQL database egy példányát. A JDBC-illesztőprogram a munkakönyvtárban történő másolásához használja az SSH-munkamenetből a következő parancsot:
+Mivel ez a munkafolyamat az Sqoop-t használja az SQL Database-be való exportáláshoz, meg kell adnia az SQL Database szolgáltatással való kommunikációhoz használt JDBC-illesztőprogram másolatát. A JDBC-illesztő munkakönyvtárba való másolásához használja az alábbi parancsot az SSH-munkamenetből:
 
 ```bash
 hdfs dfs -put /usr/share/java/sqljdbc_7.0/enu/mssql-jdbc*.jar /tutorials/useoozie/
 ```
 
 > [!IMPORTANT]  
-> Győződjön meg arról, hogy a létezik tényleges JDBC-illesztőprogram `/usr/share/java/`.
+> Ellenőrizze, hogy a jelenlegi JDBC-illesztőprogram `/usr/share/java/`létezik-e.
 
-Ha a munkafolyamat más erőforrások, például egy jar, amely tartalmaz egy MapReduce-alkalmazást használja, hozzá kell ezeket az erőforrásokat is.
+Ha a munkafolyamata más erőforrásokat (például egy MapReduce-alkalmazást tartalmazó jar) használ, ezeket az erőforrásokat is fel kell vennie.
 
-## <a name="define-the-hive-query"></a>A Hive-lekérdezés megadása
+## <a name="define-the-hive-query"></a>A kaptár lekérdezésének megadása
 
-A következő lépések segítségével hozzon létre egy Hive lekérdezés (HiveQL) nyelvi parancsfájlt, amely meghatározza egy lekérdezést. A lekérdezés az Oozie-munkafolyamatokkal, ez a dokumentum későbbi szakaszában fogja használni.
+A következő lépésekkel hozhat létre egy, a-lekérdezést definiáló kaptár-lekérdezési nyelvi (HiveQL) parancsfájlt. A lekérdezést a dokumentum későbbi részében egy Oozie-munkafolyamatban fogja használni.
 
-1. Az SSH-kapcsolatot, a következő parancs használatával hozzon létre egy fájlt `useooziewf.hql`:
+1. Az SSH-kapcsolatban használja a következő parancsot egy nevű `useooziewf.hql`fájl létrehozásához:
 
     ```bash
     nano useooziewf.hql
     ```
 
-3. Miután megnyílik a GNU nano szerkesztő, használja a fájl tartalmát a következő lekérdezést:
+3. A GNU Nano Editor megnyitása után használja a következő lekérdezést a fájl tartalmaként:
 
     ```hiveql
     DROP TABLE ${hiveTableName};
@@ -128,35 +120,35 @@ A következő lépések segítségével hozzon létre egy Hive lekérdezés (Hiv
     INSERT OVERWRITE TABLE ${hiveTableName} SELECT deviceplatform, COUNT(*) as count FROM hivesampletable GROUP BY deviceplatform;
     ```
 
-    Nincsenek a szkriptben használt két változót:
+    A parancsfájlban két változó szerepel:
 
    * `${hiveTableName}`: A létrehozandó tábla nevét tartalmazza.
 
-   * `${hiveDataFolder}`: A tábla az adatfájlok tárolására helyét tartalmazza.
+   * `${hiveDataFolder}`: A tábla adatfájljainak tárolására szolgáló helyet tartalmazza.
 
-     A munkafolyamat-definíciós fájlt, ebben az oktatóanyagban workflow.xml továbbítja ezeket az értékeket a futásidőben HiveQL-parancsfájlt.
+     A munkafolyamat-definíciós fájl (workflow. xml) ebben a cikkben a futtatáskor átadja ezeket az értékeket erre a HiveQL-parancsfájlra.
 
-4. Mentse a fájlt, jelölje ki a Ctrl + X, adja meg `Y`, majd válassza ki **Enter**.  
+4. A fájl mentéséhez válassza a CTRL + X billentyűkombinációt, `Y`írja be a következőt:, majd válassza az **ENTER**billentyűt.  
 
-5. Másolja a következő paranccsal `useooziewf.hql` való `wasbs:///tutorials/useoozie/useooziewf.hql`:
+5. A következő parancs használatával másolhatja `useooziewf.hql`: `wasbs:///tutorials/useoozie/useooziewf.hql`
 
     ```bash
     hdfs dfs -put useooziewf.hql /tutorials/useoozie/useooziewf.hql
     ```
 
-    Ezzel a paranccsal tárolhatók a `useooziewf.hql` a fürt HDFS-kompatibilis a tárterületen található fájl.
+    Ez a parancs a `useooziewf.hql` fürt HDFS-kompatibilis tárolójában tárolja a fájlt.
 
-## <a name="define-the-workflow"></a>Határozhat meg munkafolyamatot
+## <a name="define-the-workflow"></a>A munkafolyamat definiálása
 
-Oozie munkafolyamat-meghatározások a Hadoop folyamat adatdefiníciós nyelv (hPDL), amely folyamat XML-definíció nyelven íródtak. A következő lépések használatával határozhat meg munkafolyamatot:
+A Oozie munkafolyamat-definíciókat Hadoop Process Definition Language (hPDL) nyelven írták, amely egy XML-folyamat definíciós nyelve. A munkafolyamat definiálásához kövesse az alábbi lépéseket:
 
-1. A következő utasítás használatával hozhat létre és módosíthat egy új fájlt:
+1. Új fájl létrehozásához és szerkesztéséhez használja az alábbi utasítást:
 
     ```bash
     nano workflow.xml
     ```
 
-2. Miután megnyílik a nano szerkesztő, adja meg a következő XML formátumú, a fájl tartalmát:
+2. A nano Editor megnyitása után írja be a következő XML-fájlt a fájl tartalmába:
 
     ```xml
     <workflow-app name="useooziewf" xmlns="uri:oozie:workflow:0.2">
@@ -211,19 +203,19 @@ Oozie munkafolyamat-meghatározások a Hadoop folyamat adatdefiníciós nyelv (h
     </workflow-app>
     ```
 
-    Nincsenek definiálva a munkafolyamat két műveletet:
+    A munkafolyamatban két művelet van definiálva:
 
-   * `RunHiveScript`: Ez a művelet a kezdő művelet és futtat az `useooziewf.hql` Hive-szkriptet.
+   * `RunHiveScript`: Ez a művelet az indítási művelet, és futtatja a `useooziewf.hql` kaptár parancsfájlt.
 
-   * `RunSqoopExport`: Ez a művelet exportálja az adatokat a Hive-parancsfájl alapján létrehozott SQL-adatbázishoz a Sqoop használatával. Ez a művelet csak akkor fut, ha a `RunHiveScript` művelet létrejött.
+   * `RunSqoopExport`: Ez a művelet a Sqoop használatával exportálja a struktúra-parancsfájlból létrehozott adatait egy SQL-adatbázisba. Ez a művelet csak akkor fut `RunHiveScript` , ha a művelet sikeres.
 
-     A munkafolyamat tartozik több bejegyzést, például `${jobTracker}`. Ezek a bejegyzések azokra az értékekre, használhatja a feladatdefiníciót le fogja cserélni. Ez a dokumentum későbbi szakaszában a feladatdefiníciót fog létrehozni.
+     A munkafolyamat több bejegyzést tartalmaz, például `${jobTracker}`:. Ezeket a bejegyzéseket a feladatdefiníció által használt értékekkel helyettesíti. A feladattípust a dokumentum későbbi részében fogja létrehozni.
 
-     Azt is vegye figyelembe a `<archive>mssql-jdbc-7.0.0.jre8.jar</archive>` bejegyzést a Sqoop szakaszban. Ez a bejegyzés arra utasítja a Oozie elérhetővé archívum Sqoop számára ez a művelet futtatásakor.
+     Jegyezze fel a `<archive>mssql-jdbc-7.0.0.jre8.jar</archive>` bejegyzést is a Sqoop szakaszban. Ez a bejegyzés arra utasítja a Oozie, hogy ezt az archívumot a Sqoop számára elérhetővé tegye a művelet futtatásakor.
 
-3. Mentse a fájlt, jelölje ki a Ctrl + X, adja meg `Y`, majd válassza ki **Enter**.  
+3. A fájl mentéséhez válassza a CTRL + X billentyűkombinációt, `Y`írja be a következőt:, majd válassza az **ENTER**billentyűt.  
 
-4. A következő parancs használatával másolja a `workflow.xml` fájlt `/tutorials/useoozie/workflow.xml`:
+4. A következő parancs használatával másolja a `workflow.xml` `/tutorials/useoozie/workflow.xml`fájlt a következőre:
 
     ```bash
     hdfs dfs -put workflow.xml /tutorials/useoozie/workflow.xml
@@ -232,21 +224,21 @@ Oozie munkafolyamat-meghatározások a Hadoop folyamat adatdefiníciós nyelv (h
 ## <a name="create-a-table"></a>Tábla létrehozása
 
 > [!NOTE]  
-> Számos módon csatlakozhat az SQL-adatbázist hozzon létre egy táblát. A következő lépések során a [FreeTDS](http://www.freetds.org/) eszközt használjuk a HDInsight-fürtről.
+> A SQL Databasehoz való kapcsolódás számos módon lehetséges a tábla létrehozásához. A következő lépések során a [FreeTDS](https://www.freetds.org/) eszközt használjuk a HDInsight-fürtről.
 
-1. A következő paranccsal pedig a freetds a HDInsight-fürtön:
+1. Használja a következő parancsot a FreeTDS telepítéséhez a HDInsight-fürtön:
 
     ```bash
     sudo apt-get --assume-yes install freetds-dev freetds-bin
     ```
 
-2. Cserélje le az alábbi kód szerkesztése `<serverName>` az Azure SQL-kiszolgáló nevével és `<sqlLogin>` az Azure SQL server bejelentkezéssel.  Adja meg a parancsot az előfeltételként szükséges SQL-adatbázishoz csatlakozhat.  Adja meg a jelszót a parancssorba.
+2. Szerkessze az alábbi kódot, `<serverName>` és cserélje le az Azure SQL-kiszolgáló `<sqlLogin>` nevét és az Azure SQL Server-bejelentkezést.  Adja meg az előfeltételként szükséges SQL-adatbázishoz való kapcsolódáshoz szükséges parancsot.  Adja meg a jelszót a parancssorban.
 
     ```bash
     TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <sqlLogin> -p 1433 -D oozietest
     ```
 
-    A következő szöveg hasonló kimenet jelenhet meg:
+    Az alábbi szöveghez hasonló kimenetet kap:
 
         locale is "en_US.UTF-8"
         locale charset is "UTF-8"
@@ -265,33 +257,33 @@ Oozie munkafolyamat-meghatározások a Hadoop folyamat adatdefiníciós nyelv (h
     GO
     ```
 
-    A `GO` utasítás megadásakor a rendszer kiértékeli az előző utasításokat. Ezek az utasítások, hozzon létre egy táblát `mobiledata`, a munkafolyamat által használt.
+    A `GO` utasítás megadásakor a rendszer kiértékeli az előző utasításokat. Ezek az utasítások létrehoznak egy nevű `mobiledata`táblát, amelyet a munkafolyamat használ.
 
-    Győződjön meg arról, hogy a táblázat létrejött, használja a következő parancsokat:
+    A tábla létrejöttének ellenőrzéséhez használja a következő parancsokat:
 
     ```sql
     SELECT * FROM information_schema.tables
     GO
     ```
 
-    A következő szöveg hasonló kimenet jelenik meg:
+    Az alábbi szöveghez hasonló kimenet jelenik meg:
 
         TABLE_CATALOG   TABLE_SCHEMA    TABLE_NAME      TABLE_TYPE
         oozietest       dbo             mobiledata      BASE TABLE
 
-4. Lépjen ki a tsql-segédprogram megadásával `exit` , a `1>` parancssort.
+4. Lépjen ki a TSQL segédprogramból `exit` a `1>` parancssorba való beírásával.
 
 ## <a name="create-the-job-definition"></a>A feladatdefiníció létrehozása
 
-A feladat definíciója, hogy hol található a workflow.xml ismerteti. Azt is bemutatja, hogy hol található egyéb fájlok, például a munkafolyamat által használt `useooziewf.hql`. Ezenkívül azt határozza meg a munkafolyamat és a hozzájuk társított fájlokat belül használt tulajdonságok értékeit.
+A feladatdefiníció leírja, hol található a munkafolyamat. xml fájl. Azt is leírja, hogy hol található a munkafolyamat által használt egyéb fájlok, például `useooziewf.hql`:. Emellett meghatározza a munkafolyamatban és a társított fájlokban használt tulajdonságok értékeit is.
 
-1. Az alapértelmezett tároló teljes címének lekéréséhez használja az alábbi parancsot. Ezzel a címmel a konfigurációs fájlban a következő lépésben létrehozott.
+1. Az alapértelmezett tárterület teljes címe az alábbi paranccsal kérhető le. Ezt a címeket a következő lépésben létrehozott konfigurációs fájlban fogja használni a rendszer.
 
     ```bash
     sed -n '/<name>fs.default/,/<\/value>/p' /etc/hadoop/conf/core-site.xml
     ```
 
-    Ez a parancs visszaadja az információkat, például a következő XML-kódot:
+    Ez a parancs a következő XML-hez hasonló adatokat ad vissza:
 
     ```xml
     <name>fs.defaultFS</name>
@@ -299,19 +291,19 @@ A feladat definíciója, hogy hol található a workflow.xml ismerteti. Azt is b
     ```
 
     > [!NOTE]  
-    > Ha a HDInsight-fürt az alapértelmezett tárolóként használja az Azure Storage a `<value>` elem tartalmát kezdődhet `wasbs://`. Ha az Azure Data Lake Storage Gen1 helyette használja, akkor kezdődik `adl://`. Az Azure Data Lake Storage Gen2 használata esetén kezdődik, `abfs://`.
+    > Ha a HDInsight-fürt az Azure Storage-t használja alapértelmezett tárolóként, az `<value>` elem tartalma a következőképpen `wasbs://`kezdődik:. Ha a Azure Data Lake Storage Gen1 használja helyette, azzal kezdődik `adl://`. Ha Azure Data Lake Storage Gen2 van használatban, azzal kezdődik `abfs://`.
 
-    Mentse a tartalmát a `<value>` elem, ahogy a következő lépésben szolgál.
+    Mentse az `<value>` elem tartalmát, ahogy azt a következő lépésekben is használják.
 
-2. Az XML-fájl az alábbi módon szerkesztése:
+2. Szerkessze az alábbi XML-t az alábbiak szerint:
 
-    |Helyőrző értékét| Érték felülírva|
+    |Helyőrző értéke| Lecserélt érték|
     |---|---|
-    |wasbs://mycontainer\@mystorageaccount.blob.core.windows.net| 1. lépésben kapott érték.|
-    |admin| A bejelentkezési neve, a HDInsight-fürt nem rendszergazda.|
-    |Kiszolgálónév| Az Azure SQL database kiszolgáló neve.|
-    |sqlLogin| Az Azure SQL database server bejelentkezés.|
-    |sqlPassword| Az Azure SQL database kiszolgáló bejelentkezési jelszava.|
+    |wasbs://mycontainer\@mystorageaccount.blob.core.windows.net| Az 1. lépésből kapott érték.|
+    |felügyeleti| A HDInsight-fürt bejelentkezési neve, ha a rendszergazda nem.|
+    |Kiszolgálónév| Az Azure SQL Database-kiszolgáló neve.|
+    |sqlLogin| Azure SQL Database-kiszolgáló bejelentkezése.|
+    |sqlPassword| Azure SQL Database-kiszolgáló bejelentkezési jelszava.|
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>
@@ -374,63 +366,63 @@ A feladat definíciója, hogy hol található a workflow.xml ismerteti. Azt is b
     </configuration>
     ```
 
-    A legtöbb információ a fájlban a workflow.xml vagy ooziewf.hql fájlok, például a használt értékek feltöltésére használt `${nameNode}`.  Ha az elérési út egy `wasbs` elérési útja, teljes elérési útját kell használnia. Nem Rövidítse le, hogy csak `wasbs:///`. A `oozie.wf.application.path` a bejegyzés határozza meg, hogy hol található a workflow.xml fájlt. Ez a fájl tartalmazza a feladat által futtatott munkafolyamat.
+    A fájlban található információk többsége a Workflow. XML vagy ooziewf. HQL fájlokban használt értékek feltöltésére szolgál, például `${nameNode}`:.  Ha az elérési út `wasbs` egy elérési út, akkor a teljes elérési utat kell használnia. Ne rövidítse le egyszerűen `wasbs:///`. A `oozie.wf.application.path` bejegyzés határozza meg, hogy hol található a munkafolyamat. xml fájlja. Ez a fájl tartalmazza a feladatok által futtatott munkafolyamatot.
 
-3. Hozza létre az Oozie feladat definíciójának konfigurációt, használja a következő parancsot:
+3. A Oozie-feladatdefiníció konfigurációjának létrehozásához használja a következő parancsot:
 
     ```bash
     nano job.xml
     ```
 
-4. Miután megnyílik a nano szerkesztő, a fájl tartalmát, illessze be a szerkesztett XML.
+4. A nano Editor megnyitása után illessze be a szerkesztett XML-fájlt a fájl tartalmába.
 
-5. Mentse a fájlt, jelölje ki a Ctrl + X, adja meg `Y`, majd válassza ki **Enter**.
+5. A fájl mentéséhez válassza a CTRL + X billentyűkombinációt, `Y`írja be a következőt:, majd válassza az **ENTER**billentyűt.
 
-## <a name="submit-and-manage-the-job"></a>Küldje el és kezelheti a feladat
+## <a name="submit-and-manage-the-job"></a>A feladatok elküldése és kezelése
 
-Az alábbi lépéseket az Oozie-munkafolyamatok a fürtön kezelheti és beküldheti az Oozie parancs segítségével. Az Oozie parancs egy egyszerű felületen keresztül a [Oozie REST API-val](https://oozie.apache.org/docs/4.1.0/WebServicesAPI.html).
+A következő lépések a Oozie parancs használatával küldenek és kezelhetnek Oozie munkafolyamatokat a fürtön. A Oozie parancs egy felhasználóbarát felület a [Oozie REST API](https://oozie.apache.org/docs/4.1.0/WebServicesAPI.html).
 
 > [!IMPORTANT]  
-> Az Oozie parancs használatakor a HDInsight fő csomópont teljes Tartománynevét kell használnia. Ez a teljes tartománynév csak érhető el a fürtöt, vagy ha a fürt ugyanazon a hálózaton lévő más gépről egy Azure virtuális hálózaton.
+> A Oozie parancs használatakor a HDInsight-fej csomópontjának teljes tartománynevét kell használnia. Ez a teljes tartománynév csak a fürtből érhető el, vagy ha a fürt egy Azure-beli virtuális hálózaton található, ugyanazon a hálózaton lévő más gépekről.
 
-1. Az Oozie-szolgáltatás URL-Címének megszerzéséhez használja a következő parancsot:
+1. A Oozie szolgáltatás URL-címének beszerzéséhez használja a következő parancsot:
 
     ```bash
     sed -n '/<name>oozie.base.url/,/<\/value>/p' /etc/oozie/conf/oozie-site.xml
     ```
 
-    Ez visszaadja az információkat, például a következő XML-kódot:
+    Ez a következő XML-hez hasonló adatokat ad vissza:
 
     ```xml
     <name>oozie.base.url</name>
     <value>http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:11000/oozie</value>
     ```
 
-    A `http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:11000/oozie` rész nem az URL-cím, az Oozie-parancs használata.
+    A `http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:11000/oozie` rész a Oozie paranccsal használandó URL-cím.
 
-2. Szerkessze az URL-CÍMÉT cserélje le a korábban kapott egy kódot. Az URL-környezeti változó létrehozásához használja a következőt, így nem kell minden parancshoz meg:
+2. Szerkessze a kódot, és cserélje le a korábban kapott URL-címet. Az URL-cím környezeti változójának létrehozásához használja a következőt, így nem kell megadnia az összes parancshoz:
 
     ```bash
     export OOZIE_URL=http://HOSTNAMEt:11000/oozie
     ```
 
-3. A feladat elküldéséhez használja a következő:
+3. A feladatok elküldéséhez használja a következőt:
 
     ```bash
     oozie job -config job.xml -submit
     ```
 
-    Ez a parancs betölti a feladat adatainak `job.xml` és elküldi az Oozie, de nem futtatja a programot.
+    Ez a parancs betölti a feladatra vonatkozó adatokat `job.xml` , és elküldi azt a Oozie, de nem futtatja azt.
 
-    A parancs befejeződését követően kell visszaadnia a feladat azonosítója például `0000005-150622124850154-oozie-oozi-W`. Ez az azonosító segítségével kezelheti a feladat.
+    A parancs befejeződése után vissza kell adni a feladatokhoz tartozó azonosítót, például `0000005-150622124850154-oozie-oozi-W`:. Ez az azonosító a feladatok kezelésére szolgál.
 
-4. Cserélje le az alábbi kód szerkesztése `<JOBID>` adja vissza az előző lépésben azonosítóval.  A feladat állapotának megtekintéséhez használja a következő parancsot:
+4. Az alábbi kód szerkesztésével cserélje `<JOBID>` le az előző lépésben visszaadott azonosítót.  A feladatok állapotának megtekintéséhez használja a következő parancsot:
 
     ```bash
     oozie job -info <JOBID>
     ```
 
-    Ez visszaadja az információkat, például a következő szöveget:
+    Ez a következő szöveghez hasonló adatokat ad vissza:
 
         Job ID : 0000005-150622124850154-oozie-oozi-W
         ------------------------------------------------------------------------------------------------------------------------------------
@@ -447,30 +439,30 @@ Az alábbi lépéseket az Oozie-munkafolyamatok a fürtön kezelheti és beküld
         CoordAction ID: -
         ------------------------------------------------------------------------------------------------------------------------------------
 
-    Ez a feladat állapota `PREP`. Ez az állapot azt jelzi, hogy a feladat lett létrehozva, de nem indult el.
+    A feladattípus állapota `PREP`:. Ez az állapot azt jelzi, hogy a feladatot létrehozták, de nem indult el.
 
-5. Cserélje le az alábbi kód szerkesztése `<JOBID>` a korábban visszaadott azonosítója.  Indítsa el a feladatot, használja a következő parancsot:
+5. Szerkessze az alábbi kódot, `<JOBID>` és cserélje le a értéket a korábban visszaadott azonosítóra.  A feladatok elindításához használja a következő parancsot:
 
     ```bash
-    oozie job -start JOBID
+    oozie job -start <JOBID>
     ```
 
-    Ez a parancs után ellenőrizze az állapotot, ha egy futó állapotban van, és információk jelennek-e a műveletek a feladaton belül.  A feladat befejezése néhány percet vesz igénybe.
+    Ha a parancs után bejelöli az állapotot, a rendszer futó állapotba kerül, és a feladatban szereplő műveletekhez adatokat ad vissza.  A feladatok elvégzése eltarthat néhány percig.
 
-6. Cserélje le az alábbi kód szerkesztése `<serverName>` az Azure SQL-kiszolgáló nevével és `<sqlLogin>` az Azure SQL server bejelentkezéssel.  A feladat sikeres befejeződése után ellenőrizheti, hogy az adatok jön létre, és a következő parancs használatával az SQL-adatbázistáblába exportálni.  Adja meg a jelszót a parancssorba.
+6. Szerkessze az alábbi kódot, `<serverName>` és cserélje le az Azure SQL-kiszolgáló `<sqlLogin>` nevét és az Azure SQL Server-bejelentkezést.  A feladat sikeres befejeződése után ellenőrizheti, hogy az adatok létrejöttek és exportálhatók az SQL Database-táblázatba az alábbi parancs használatával.  Adja meg a jelszót a parancssorban.
 
     ```bash
     TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <sqlLogin> -p 1433 -D oozietest
     ```
 
-    Jelenleg a `1>` kéri, írja be a következő lekérdezést:
+    A `1>` parancssorba írja be a következő lekérdezést:
 
     ```sql
     SELECT * FROM mobiledata
     GO
     ```
 
-    A visszaadott információ olyan, mint a következő szöveget:
+    A visszaadott információ az alábbi szöveghez hasonló:
 
         deviceplatform  count
         Android 31591
@@ -481,79 +473,79 @@ Az alábbi lépéseket az Oozie-munkafolyamatok a fürtön kezelheti és beküld
         Windows Phone   1791
         (6 rows affected)
 
-Az Oozie parancs további információkért lásd: [Apache Oozie parancssori eszköz](https://oozie.apache.org/docs/4.1.0/DG_CommandLineTool.html).
+További információ a Oozie parancsról: [Apache Oozie parancssori eszköz](https://oozie.apache.org/docs/4.1.0/DG_CommandLineTool.html).
 
 ## <a name="oozie-rest-api"></a>Oozie REST API
 
-Az Oozie REST API-val hozhat létre a saját eszközök, amelyek együttműködnek az Oozie. A következő egy HDInsight-specifikus az Oozie REST API használatával kapcsolatos információt:
+A Oozie REST API segítségével saját eszközöket hozhat létre, amelyek a Oozie használatával működnek. Az alábbi HDInsight-specifikus információk a Oozie REST API használatával kapcsolatban:
 
-* **URI-T**: A REST API, a fürtön kívülről is elérheti `https://CLUSTERNAME.azurehdinsight.net/oozie`.
+* **URI**: A REST API a fürtön `https://CLUSTERNAME.azurehdinsight.net/oozie`kívülről is elérheti.
 
-* **Hitelesítési**: Hitelesítést végezni, használja az API-t a fürt HTTP-fiókjának (rendszergazda) és a jelszót. Példa:
+* **Hitelesítés**: A hitelesítéshez használja az API-t a fürt HTTP-fiókjával (admin) és a jelszóval. Példa:
 
     ```bash
     curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/oozie/versions
     ```
 
-Az Oozie REST API használatáról további információkért lásd: [Apache Oozie Web Services API-val](https://oozie.apache.org/docs/4.1.0/WebServicesAPI.html).
+További információ a Oozie REST API használatáról: [Apache Oozie Web Services API](https://oozie.apache.org/docs/4.1.0/WebServicesAPI.html).
 
-## <a name="oozie-web-ui"></a>Az Oozie webes felhasználói felületen
+## <a name="oozie-web-ui"></a>Oozie webes felhasználói felület
 
-Az Oozie webes felület lehetővé teszi a webes az Oozie-feladat állapotát a fürtön. A webes felhasználói felületének tekintheti meg a következő információkat:
+A Oozie webes felhasználói felülete webes nézetet biztosít a fürt Oozie-feladatai állapotához. A webes felhasználói felülettel a következő információkat tekintheti meg:
 
    * Feladat állapota
    * Feladat definíciója
    * Konfiguráció
-   * A műveletek a feladat grafikonja
-   * A feladathoz tartozó naplók
+   * A feladatokban szereplő műveletek gráfja
+   * A feladatokhoz tartozó naplók
 
-A tevékenységek a feladat részleteit is megtekintheti.
+Megtekintheti egy adott feladaton belüli műveletek részleteit is.
 
-Hozzáférhet a Oozie webes felhasználói felületen, a következő lépéseket:
+A Oozie webes felhasználói felületének eléréséhez hajtsa végre a következő lépéseket:
 
-1. A HDInsight-fürthöz az SSH-alagút létrehozása. További információkért lásd: [SSH-bújtatással való HDInsight](hdinsight-linux-ambari-ssh-tunnel.md).
+1. Hozzon létre egy SSH-alagutat a HDInsight-fürthöz. További információ: az [SSH-alagút használata a HDInsight](hdinsight-linux-ambari-ssh-tunnel.md).
 
-2. Miután létrehozott egy alagúton, nyissa meg az Ambari webes Felülettel URI-val webböngészőben `http://headnodehost:8080`.
+2. Az alagút létrehozása után nyissa meg a Ambari webes felhasználói felületét a böngészőben az URI `http://headnodehost:8080`használatával.
 
-3. Válassza a lap bal oldalán, **Oozie** > **Gyorshivatkozások** > **Oozie webes felhasználói felület**.
+3. A lap bal oldalán válassza a **Oozie** > **Gyorshivatkozások** > **Oozie webes felhasználói felület**lehetőséget.
 
-    ![A menük képe](./media/hdinsight-use-oozie-linux-mac/ooziewebuisteps.png)
+    ![Apache Ambari oozie webes felhasználói felületének lépései](./media/hdinsight-use-oozie-linux-mac/hdi-oozie-web-ui-steps.png)
 
-4. Az Oozie webes felület alapértelmezés szerint megjeleníti a futó munkafolyamat-feladatot. A munkafolyamat-feladatok megtekintéséhez válasszon **az összes feladat**.
+4. A Oozie webes felhasználói felülete alapértelmezés szerint megjeleníti a futó munkafolyamat-feladatokat. A munkafolyamat összes feladatának megtekintéséhez válassza a **minden feladat**lehetőséget.
 
-    ![Minden feladat jelenik meg](./media/hdinsight-use-oozie-linux-mac/ooziejobs.png)
+    ![Oozie web Console munkafolyamat-feladatok](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-jobs.png)
 
-5. Egy feladattal kapcsolatos további információk megtekintéséhez válassza ki a feladatot.
+5. A feladattal kapcsolatos további információk megtekintéséhez válassza ki a feladatot.
 
-    ![Munkakör adatai](./media/hdinsight-use-oozie-linux-mac/jobinfo.png)
+    ![HDInsight Apache Oozie-feladatok adatai](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-info.png)
 
-6. Az a **feladat adatainak** lapon láthatja a feladat alapvető információkat és az egyes műveletek a feladaton belül. Használhatja a lap tetején megtekintéséhez a **feladatdefiníció**, **feladat konfigurációs**, hozzáférés a **Job Log**, vagy megtekintheti az egy irányított aciklikus diagramhoz (DAG) a feldolgozás alatt **DAG feladat**.
+6. A feladat **adatai** lapon megtekintheti az alapszintű feladatok adatait és a feladaton belüli egyes műveleteket. A felül található lapfülek segítségével megtekintheti **a feladatdefiníció, a** **feladatok konfigurációja**, a **Projektnapló**hozzáférése vagy a feladathoz tartozó aciklikus gráf (Dag) megtekintését **.**
 
-   * **Feladat-napló**: Válassza ki a **naplók lekérése** gombra kattint, hogy a feladat összes naplójának beolvasása, vagy használja a **adja meg a keresési szűrő** mezőt, a naplók szűrése.
+   * **Projektnapló**: Kattintson a **naplók beolvasása** gombra a feladatokhoz tartozó összes napló beolvasásához, vagy használja a **keresési szűrő megadása** mezőt a naplók szűréséhez.
 
-       ![Job Log](./media/hdinsight-use-oozie-linux-mac/joblog.png)
+       ![HDInsight Apache Oozie-feladatok naplója](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-log.png)
 
-   * **Feladat-DAG**: A DAG, az adatútvonalakat venni a munkafolyamaton keresztül egy grafikus áttekintése.
+   * **Dag-feladatok**: A DAG a munkafolyamaton keresztül végrehajtott adatelérési utak grafikus áttekintése.
 
-       ![Feladat DAG](./media/hdinsight-use-oozie-linux-mac/jobdag.png)
+       ![HDInsight Apache Oozie-feladatok Dag](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-dag.png)
 
-7. Ha kiválaszt egy a művelet a **feladat adatainak** lap lehetővé teszi adatait. a műveletet. Jelölje be például a **RunSqoopExport** művelet.
+7. Ha a **Job info (feladatok** ) lapon a műveletek egyikét választja, akkor a műveletre vonatkozó információkat hoz létre. Válassza ki például a **RunSqoopExport** műveletet.
 
-    ![A művelet adatai](./media/hdinsight-use-oozie-linux-mac/action.png)
+    ![HDInsight oozie-feladatok adatai](./media/hdinsight-use-oozie-linux-mac/oozie-job-action-info.png)
 
-8. A művelet, például mutató hivatkozás részleteit láthatja a **konzol URL-címe**. A hivatkozás segítségével a feladat feladat tracker információinak megtekintése.
+8. Láthatja a művelet részleteit, például a **konzol URL-címére**mutató hivatkozást. Ezzel a hivatkozással megtekintheti a feladathoz tartozó feladatok követési adatait.
 
 ## <a name="schedule-jobs"></a>Feladatok ütemezése
 
-A koordinátor segítségével adja meg egy kezdő, a vége és a feladatok előfordulási gyakoriságát. A munkafolyamat ütemezés meghatározása, hajtsa végre az alábbi lépéseket:
+A koordinátor használatával megadhatja a feladatok kezdési, befejezési és előfordulási gyakoriságát. A munkafolyamat ütemtervének definiálásához hajtsa végre a következő lépéseket:
 
-1. A következő paranccsal hozzon létre egy fájlt **coordinator.xml**:
+1. A következő parancs használatával hozzon létre egy **koordinátor. XML**nevű fájlt:
 
     ```bash
     nano coordinator.xml
     ```
 
-    A fájl tartalmát a következő XML-kódot használja:
+    Használja a következő XML-fájlt a fájl tartalmához:
 
     ```xml
     <coordinator-app name="my_coord_app" frequency="${coordFrequency}" start="${coordStart}" end="${coordEnd}" timezone="${coordTimezone}" xmlns="uri:oozie:coordinator:0.4">
@@ -566,23 +558,23 @@ A koordinátor segítségével adja meg egy kezdő, a vége és a feladatok elő
     ```
 
     > [!NOTE]  
-    > A `${...}` változók futásidőben a feladatdefiníciót szereplő értékek helyébe. A változók az alábbiak:
+    > A `${...}` változókat a feladatütemezés értékeit lecseréli futásidőben. A változók a következők:
     >
-    > * `${coordFrequency}`: A feladat példányait közötti időt.
-    > * `${coordStart}`: A feladat megkezdési ideje.
-    > * `${coordEnd}`: A feladat befejezési ideje.
-    > * `${coordTimezone}`: Egy rögzített időzóna nem nyári időszámításra, az általában képviseli az UTC koordinátor feladatok vannak. Ezt az időzónát nevezik a *Oozie feldolgozási időzóna.*
-    > * `${wfPath}`: A workflow.xml elérési útja.
+    > * `${coordFrequency}`: A feladatokhoz tartozó futó példányok közötti idő.
+    > * `${coordStart}`: A feladatok kezdési ideje.
+    > * `${coordEnd}`: A feladatok befejezési időpontja.
+    > * `${coordTimezone}`: A koordinátori feladatok olyan rögzített időzónában vannak, amely nem rendelkezik a nyári időszámítás idejével, jellemzően UTC használatával. Ezt az időzónát a *Oozie feldolgozási időzónájának nevezzük.*
+    > * `${wfPath}`: A munkafolyamat. XML fájljának elérési útja.
 
-2. Mentse a fájlt, jelölje ki a Ctrl + X, adja meg `Y`, majd válassza ki **Enter**.
+2. A fájl mentéséhez válassza a CTRL + X billentyűkombinációt, `Y`írja be a következőt:, majd válassza az **ENTER**billentyűt.
 
-3. Másolja a fájlt a munkakönyvtárban történő a feladatot, használja a következő parancsot:
+3. Ha a fájlt a feladatokhoz tartozó munkakönyvtárba szeretné másolni, használja a következő parancsot:
 
     ```bash
     hadoop fs -put coordinator.xml /tutorials/useoozie/coordinator.xml
     ```
 
-4. Módosíthatja a `job.xml` korábban létrehozott fájl a következő paranccsal:
+4. A korábban létrehozott `job.xml` fájl módosításához használja a következő parancsot:
 
     ```bash
     nano job.xml
@@ -590,9 +582,9 @@ A koordinátor segítségével adja meg egy kezdő, a vége és a feladatok elő
 
     Hajtsa végre a következő módosításokat:
 
-   * Utasíthatja az Oozie-koordinátor fájl helyett a munkafolyamat futtatásához, módosítsa `<name>oozie.wf.application.path</name>` való `<name>oozie.coord.application.path</name>`.
+   * Ha arra utasítja a Oozie, hogy futtassa a koordinátori fájlt a munkafolyamat `<name>oozie.wf.application.path</name>` helyett `<name>oozie.coord.application.path</name>`, váltson a következőre:.
 
-   * Beállítása a `workflowPath` a koordinátor által használt, adja hozzá a következő XML formátumú változó:
+   * A koordinátor által `workflowPath` használt változó beállításához adja hozzá a következő XML-kódot:
 
         ```xml
         <property>
@@ -601,9 +593,9 @@ A koordinátor segítségével adja meg egy kezdő, a vége és a feladatok elő
         </property>
         ```
 
-       Cserélje le a `wasbs://mycontainer@mystorageaccount.blob.core.windows` SMS-t a job.xml fájlban tételek használt érték.
+       Cserélje le `wasbs://mycontainer@mystorageaccount.blob.core.windows` a szöveget a job. xml fájl egyéb bejegyzéseiben használt értékre.
 
-   * Határozza meg a kezdő, végfelhasználók és a koordinátor gyakoriságát, adja hozzá a következő XML-kódot:
+   * A koordinátor indításának, befejezésének és gyakoriságának meghatározásához adja hozzá a következő XML-t:
 
         ```xml
         <property>
@@ -627,87 +619,87 @@ A koordinátor segítségével adja meg egy kezdő, a vége és a feladatok elő
         </property>
         ```
 
-       Ezeket az értékeket a 12:00-kor 2018. május 10., a kezdési időpontot, és 2018. május 12., a befejezési idő beállítása. A feladat futtatásához időköze napi. Gyakoriság van percek alatt, így a 24 óra × 60 perc = 1440 perc. Végül az adott időzóna UTC van beállítva.
+       Ezek az értékek a kezdési időpontot 12:00 PM-re, 2018-ra, a befejezési időt pedig 2018-ra állítja. A feladatok futtatásának időköze napi értékre van állítva. A gyakoriság percben, tehát 24 óra x 60 perc = 1440 perc. Végül az időzóna az UTC értékre van állítva.
 
-5. Mentse a fájlt, jelölje ki a Ctrl + X, adja meg `Y`, majd válassza ki **Enter**.
+5. A fájl mentéséhez válassza a CTRL + X billentyűkombinációt, `Y`írja be a következőt:, majd válassza az **ENTER**billentyűt.
 
-6. Küldje el, majd indítsa el a feladatot, használja a következő parancsot:
+6. A művelet elküldéséhez és elindításához használja a következő parancsot:
 
     ```bash
     oozie job -config job.xml -run
     ```
 
-7. Ha az Oozie webes felhasználói Felületet, és válassza ki a **koordinátor feladatok** lapon információkat, például az alábbi képen látható:
+7. Ha a Oozie webes felhasználói felületére kattint, és kiválasztja a **koordinátori feladatok** lapot, a következő képen látható információk jelennek meg:
 
-    ![Koordinátor feladatok lap](./media/hdinsight-use-oozie-linux-mac/coordinatorjob.png)
+    ![Oozie webkonzol-koordinátori feladatok lap](./media/hdinsight-use-oozie-linux-mac/coordinator-jobs-tab.png)
 
-    A **tovább Materialization** bejegyzést tartalmaz, amelyek a feladat fut, amikor legközelebb.
+    A **következő megvalósításának gyakorlatban** -bejegyzés a művelet következő futási idejét tartalmazza.
 
-8. Például a korábbi munkafolyamat-feladatot Ha a feladat-bejegyzés a webes felhasználói felületen, információkat jeleníti meg a feladat:
+8. A korábbi munkafolyamat-feladathoz hasonlóan, ha a webes felhasználói felületen kiválasztja a feladathoz tartozó bejegyzést, akkor a feladattal kapcsolatos információkat jeleníti meg:
 
-    ![Koordinátor feladat adatai](./media/hdinsight-use-oozie-linux-mac/coordinatorjobinfo.png)
+    ![Apache Oozie-koordinátor feladatának adatai](./media/hdinsight-use-oozie-linux-mac/coordinator-job-info.png)
 
     > [!NOTE]  
-    > Ez a rendszerkép csak a feladat sikeres futtatások nem ütemezett a munkafolyamaton belüli egyes műveleteket jeleníti meg. Az egyes műveletek megtekintéséhez válasszon ki egy, a **művelet** bejegyzéseket.
+    > Ez a rendszerkép csak a feladatok sikeres futtatását mutatja, nem az ütemezett munkafolyamaton belüli egyes műveleteket. Az egyes műveletek megtekintéséhez válassza ki az egyik **műveleti** bejegyzést.
 
-    ![A művelet adatai](./media/hdinsight-use-oozie-linux-mac/coordinatoractionjob.png)
+    ![A OOzie webkonzoljának Job info lapja](./media/hdinsight-use-oozie-linux-mac/coordinator-action-job.png)
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Az Oozie felhasználói felületén az Oozie-naplók használatával megtekintheti. Az Oozie felhasználói felületén a JobTracker naplókat, a MapReduce-feladatok a munkafolyamat által elindított hivatkozásokat is tartalmaz. A minta hibaelhárítási kell lennie:
+A Oozie felhasználói felületén megtekintheti a Oozie naplókat. A Oozie felhasználói felülete a munkafolyamat által elindított MapReduce-feladatok JobTracker-naplóira mutató hivatkozásokat is tartalmaz. A hibaelhárítási minta a következő lehet:
 
-   1. Tekintse meg a feladatot az Oozie webes felhasználói felületen.
+   1. Tekintse meg a feladatot a Oozie webes felhasználói felületén.
 
-   2. Ha egy hiba vagy egy bizonyos művelet sikertelen volt, válassza ki annak ellenőrzéséhez, hogy a művelet a **hibaüzenet** mező a hibával kapcsolatban további információkat biztosít.
+   2. Ha egy adott művelet hibával vagy hibával rendelkezik, válassza ki a műveletet, és ellenőrizze, hogy a **hibaüzenet** mezője tartalmaz-e további információt a hibáról.
 
-   3. Ha elérhető, az URL-címet a művelet segítségével további részleteket, például a JobTracker naplókat, a művelet.
+   3. Ha elérhető, a művelet URL-címével megtekintheti a művelethez tartozó további részleteket, például a JobTracker naplókat.
 
-Az alábbiakban a találkozhat bizonyos hibákat és azok megoldását.
+A következő konkrét hibák merülhetnek fel, és a megoldásuk módja.
 
-### <a name="ja009-cannot-initialize-cluster"></a>JA009: Nem lehet inicializálni a fürt
+### <a name="ja009-cannot-initialize-cluster"></a>JA009: Nem lehet inicializálni a fürtöt
 
-**A jelenség**: A feladat állapota **FELFÜGGESZTETT**. A feladat megjelenítése a részletek a `RunHiveScript` állapotjelentése **START_MANUAL**. Kiválasztja a műveletet a következő hibaüzenet jelenik meg:
+**Tünetek**: A feladatok állapota **felfüggesztve**értékre változik. A feladathoz tartozó részletek `RunHiveScript` a **START_MANUAL**állapotot jelenítik meg. A művelet kiválasztásakor a következő hibaüzenet jelenik meg:
 
     JA009: Cannot initialize Cluster. Please check your configuration for map
 
-**Ok**: Az Azure Blob storage használt címek a **job.xml** fájl nem tartalmaz, a storage-tároló vagy tárfiók neve. A Blob storage-cím formátumú lehet `wasbs://containername@storageaccountname.blob.core.windows.net`.
+**Ok**: A **job. XML** fájlban használt Azure Blob Storage-címek nem tartalmazzák a Storage-tárolót vagy a Storage-fiók nevét. A blob Storage-címnek a formátumnak kell lennie `wasbs://containername@storageaccountname.blob.core.windows.net`.
 
-**Megoldás**: Módosítsa a Blob storage címeket, amelyek a feladat használ.
+**Feloldási**: Módosítsa a feladatok által használt BLOB Storage-címeket.
 
-### <a name="ja002-oozie-is-not-allowed-to-impersonate-ltusergt"></a>JA002: Az Oozie nem engedélyezett a megszemélyesíteni &lt;felhasználó&gt;
+### <a name="ja002-oozie-is-not-allowed-to-impersonate-ltusergt"></a>JA002: A Oozie nem engedélyezett a &lt;felhasználó megszemélyesítése&gt;
 
-**A jelenség**: A feladat állapota **FELFÜGGESZTETT**. A feladat megjelenítése a részletek a `RunHiveScript` állapotjelentése **START_MANUAL**. Ha a művelet, a következő hibaüzenetet jeleníti meg:
+**Tünetek**: A feladatok állapota **felfüggesztve**értékre változik. A feladathoz tartozó részletek `RunHiveScript` a **START_MANUAL**állapotot jelenítik meg. Ha a műveletet választja, a következő hibaüzenet jelenik meg:
 
     JA002: User: oozie is not allowed to impersonate <USER>
 
-**Ok**: Az aktuális engedély-beállítások a megadott felhasználói fiók megszemélyesítése Oozie tiltása.
+**Ok**: Az aktuális engedélyezési beállítások nem teszik lehetővé, hogy a Oozie megszemélyesítse a megadott felhasználói fiókot.
 
-**Megoldás**: Az Oozie tudja megszemélyesíteni a felhasználók a **felhasználók** csoport. Használja a `groups USERNAME` a csoportokat, amelyek a felhasználói fiók tagja megtekintheti. Ha a felhasználó nem tagja a **felhasználók** csoportjában adja hozzá a felhasználót a csoporthoz a következő paranccsal:
+**Feloldási**: A Oozie megszemélyesítheti a felhasználókat a **felhasználók** csoportban. A használatával megtekintheti azokat a csoportokat, amelyeknek a felhasználói fiók tagja. `groups USERNAME` Ha a felhasználó nem tagja a **felhasználók** csoportnak, használja a következő parancsot a felhasználó a csoportba való felvételéhez:
 
     sudo adduser USERNAME users
 
 > [!NOTE]  
-> HDInsight felismeri, hogy a felhasználó hozzáadta-e a csoport előtt több percet is igénybe vehet.
+> Több percet is igénybe vehet, mielőtt a HDInsight észleli, hogy a felhasználó hozzá lett adva a csoporthoz.
 
-### <a name="launcher-error-sqoop"></a>Hiba (Sqoop) indítója
+### <a name="launcher-error-sqoop"></a>Indító hiba (Sqoop)
 
-**A jelenség**: A feladat állapota **KILLED**. A feladat megjelenítése a részletek a `RunSqoopExport` állapotjelentése **hiba**. Ha a művelet, a következő hibaüzenetet jeleníti meg:
+**Tünetek**: A feladatok állapotának **leölése**megtörtént. A feladathoz tartozó részletek `RunSqoopExport` az állapotot **hibaként**jelenítik meg. Ha a műveletet választja, a következő hibaüzenet jelenik meg:
 
     Launcher ERROR, reason: Main class [org.apache.oozie.action.hadoop.SqoopMain], exit code [1]
 
-**Ok**: Sqoop nem tudja betölteni az adatbázis eléréséhez szükséges adatbázis-illesztőprogramját.
+**Ok**: A Sqoop nem tudja betölteni az adatbázis eléréséhez szükséges adatbázis-illesztőt.
 
-**Megoldás**: Az Oozie-feladatok a Sqoop használata esetén meg kell adnia az adatbázis-illesztőt is a további erőforrások, például a workflow.xml, a feladat által használt. Az archívumot, amely tartalmazza az adatbázis-illesztőprogramot az is hivatkozhat a `<sqoop>...</sqoop>` a workflow.xml szakaszában.
+**Feloldási**: Ha a Sqoop-t egy Oozie-feladatokból használja, az adatbázis-illesztőprogramot a többi erőforrással együtt kell szerepeltetni, például a Workflow. xml fájlt, amelyet a rendszer a feladatokhoz használ. Továbbá hivatkozzon arra az archívumra, amely az adatbázis-illesztőprogramot `<sqoop>...</sqoop>` tartalmazza a Workflow. xml fájl szakaszában.
 
-Például a feladat ebben a dokumentumban, akkor használja az alábbi lépéseket:
+A jelen dokumentumban szereplő feladatokhoz például a következő lépéseket kell használni:
 
-1. Másolás a `mssql-jdbc-7.0.0.jre8.jar` fájlt a **/oktatóprogramok/useoozie** könyvtár:
+1. Másolja a `mssql-jdbc-7.0.0.jre8.jar` fájlt a **/tutorials/useoozie** könyvtárba:
 
     ```bash
     hdfs dfs -put /usr/share/java/sqljdbc_7.0/enu/mssql-jdbc-7.0.0.jre8.jar /tutorials/useoozie/mssql-jdbc-7.0.0.jre8.jar
     ```
 
-2. Módosítsa a `workflow.xml` hozzáadásához egy új sort a következő XML formátumú `</sqoop>`:
+2. Módosítsa a `workflow.xml` t a következő XML-kód hozzáadásához a fenti `</sqoop>`új sorban:
 
     ```xml
     <archive>mssql-jdbc-7.0.0.jre8.jar</archive>
@@ -715,13 +707,13 @@ Például a feladat ebben a dokumentumban, akkor használja az alábbi lépések
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtudhatta, az Oozie-munkafolyamatokkal definiálása és az Oozie-feladatok futtatása. További információ a HDInsight használatáról, tekintse meg a következő cikkeket:
+Ebben a cikkben megtanulta, hogyan határozhat meg egy Oozie-munkafolyamatot, és hogyan futtathat egy Oozie-feladatot. Ha többet szeretne megtudni a HDInsight használatáról, tekintse meg a következő cikkeket:
 
-* [A HDInsight Apache Hadoop-feladatok adatok feltöltése][hdinsight-upload-data]
-* [A HDInsight az Apache Hadoop Apache Sqoop használata][hdinsight-use-sqoop]
-* [Apache Hive használata a HDInsight Apache Hadoop-keretrendszerrel][hdinsight-use-hive]
-* [Az Apache Pig használata a HDInsight Apache Hadoop-keretrendszerrel][hdinsight-use-pig]
-* [Java MapReduce programok fejlesztése a HDInsight][hdinsight-develop-mapreduce]
+* [Adatok feltöltése Apache Hadoop feladatok számára a HDInsight-ben][hdinsight-upload-data]
+* [Az Apache Sqoop használata Apache Hadoop a HDInsight][hdinsight-use-sqoop]
+* [Apache Hive használata a HDInsight Apache Hadoop használatával][hdinsight-use-hive]
+* [Az Apache Pig használata a Apache Hadoop on HDInsight][hdinsight-use-pig]
+* [Java MapReduce-programok fejlesztése a HDInsight][hdinsight-develop-mapreduce]
 
 [hdinsight-cmdlets-download]: https://go.microsoft.com/fwlink/?LinkID=325563
 [azure-data-factory-pig-hive]: ../data-factory/transform-data.md
@@ -754,7 +746,6 @@ Ebben az oktatóanyagban megtudhatta, az Oozie-munkafolyamatokkal definiálása 
 
 [cindygross-hive-tables]: https://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
 
-[img-workflow-diagram]: ./media/hdinsight-use-oozie-linux-mac/HDI.UseOozie.Workflow.Diagram.png
 [img-preparation-output]: ./media/hdinsight-use-oozie-linux-mac/HDI.UseOozie.Preparation.Output1.png
 [img-runworkflow-output]: ./media/hdinsight-use-oozie/HDI.UseOozie.RunWF.Output.png
 

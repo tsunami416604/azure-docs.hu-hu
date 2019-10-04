@@ -1,69 +1,69 @@
 ---
-title: Az Azure Change Tracking kapcsolatos hibák elhárítása
-description: Ez a cikk információkat a Change Tracking hibaelhárítása
+title: Az Azure Change Tracking hibáinak elhárítása
+description: Ez a cikk a hibaelhárítással kapcsolatos információkat tartalmaz Change Tracking
 services: automation
 ms.service: automation
 ms.subservice: change-inventory-management
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 01/31/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2a6610b5cb3f01fc70b1737fc4492e09d9a7637b
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: beb0b89bdbf143c89a83c0813313a8bbda7235d4
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55507334"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564854"
 ---
-# <a name="troubleshoot-change-tracking-and-inventory"></a>A Change Tracking és Inventory hibaelhárítása
+# <a name="troubleshoot-change-tracking-and-inventory"></a>A Change Tracking és az Inventory hibaelhárítása
 
 ## <a name="windows"></a>Windows
 
-### <a name="records-not-showing-windows"></a>Forgatókönyv: Változáskövetési rekordok nem jelennek meg a Windows-gépeken
+### <a name="records-not-showing-windows"></a>Forgatókönyv Change Tracking a rekordok nem jelennek meg a Windows rendszerű gépeken
 
 #### <a name="issue"></a>Probléma
 
-Windows-gépek, amelyek előkészíteni a Change Tracking megoldásba készlet vagy a Change Tracking eredményt nem jelenik meg.
+Change Tracking számára készült Windows-gépekhez nem jelenik meg leltár-vagy Change Tracking-találat.
 
 #### <a name="cause"></a>Ok
 
-Ez a hiba oka lehet a következő okok miatt:
+Ezt a hibát a következő okok okozhatják:
 
-1. A **Microsoft Monitoring Agent** nem fut.
-2. Térjen vissza az Automation-fiók kommunikációja blokkolva van folyamatban.
-3. A felügyeleti csomagokat a Change Tracking megoldásba nincsenek letöltve.
-4. A virtuális gép típusától függenek előfordulhat, hogy a klónozott gép, amelynek nem a Microsoft Monitoring Agent telepítése a Sysprep használatával előkészített kell származnia.
+1. A **Microsoft monitoring Agent** nem fut
+2. A rendszer blokkolja az Automation-fiókkal való kommunikációt.
+3. A Change Tracking felügyeleti csomagjai nem tölthetők le.
+4. Előfordulhat, hogy a bevezetésben lévő virtuális gép olyan klónozott gépről származott, amely nem volt telepítve a Microsoft monitoring Agent Sysprep használatával létrehozott.
 
 #### <a name="resolution"></a>Megoldás:
 
-1. Ellenőrizze a **Microsoft Monitoring Agent** (HealthService.exe) fut a gépen.
-1. Ellenőrizze **Eseménynapló** a gépre, és keresse a más eseményeket, amelyek szó szerepel `changetracking` bennük.
-1. Látogasson el, [hálózattervezés](../automation-hybrid-runbook-worker.md#network-planning) további információt arról, hogy mely címeket és portokat engedélyezni kell, a Change Tracking megoldásba működjön.
-1. Győződjön meg arról, hogy a Change Tracking and Inventory felügyeleti csomagokat létezik helyileg:
+1. Ellenőrizze, hogy a számítógépen fut-e a **Microsoft monitoring Agent** (HealthService. exe).
+1. Ellenőrizze **Eseménynapló** a gépen, és keresse meg azokat az eseményeket, amelyekben `changetracking` szó van bennük.
+1. Látogasson el a [Network Planning](../automation-hybrid-runbook-worker.md#network-planning) webhelyre, ahol megtudhatja, mely címeket és portokat kell engedélyezni a Change Tracking működéséhez.
+1. Győződjön meg arról, hogy a következő Change Tracking és leltár-felügyeleti csomagok helyileg léteznek:
     * Microsoft.IntelligencePacks.ChangeTrackingDirectAgent.*
     * Microsoft.IntelligencePacks.InventoryChangeTracking.*
     * Microsoft.IntelligencePacks.SingletonInventoryCollection.*
-1. Ha egy klónozott lemezképét, a sysprep lemezkép használatával először, és a Microsoft Monitoring Agent ügynök telepítése után az a tény.
+1. Klónozott rendszerkép használata esetén először a rendszerképet kell telepíteni, és a Microsoft monitoring Agent ügynököt a tény után kell telepíteni.
 
-Ha ezek a megoldások nem sikerül megoldani a problémát, és kapcsolatba lép a támogatással, futtathatja az alábbi parancsokat a diagnosztikai gyűjtése az ügynökön
+Ha ezek a megoldások nem oldják meg a problémát, és felvesszük a kapcsolatot a támogatási szolgálattal, a következő parancsok futtatásával összegyűjtheti a diagnosztikai adatokat az ügynökön.
 
-Lépjen az ügynökgépen futó `C:\Program Files\Microsoft Monitoring Agent\Agent\Tools` , és futtassa a következő parancsokat:
+Az ügynök gépen navigáljon `C:\Program Files\Microsoft Monitoring Agent\Agent\Tools` a következő parancsokra, és futtassa az alábbi parancsokat:
 
 ```cmd
-set stop healthservice
+net stop healthservice
 StopTracing.cmd
 StartTracing.cmd VER
 net start healthservice
 ```
 
 > [!NOTE]
-> Alapértelmezett hibaüzenet szerint nyomkövetés engedélyezve van, ha engedélyezi a részletes hibaüzeneteket, például az előző példában használja `VER` paraméter. A nyomkövetési adatokat, használja `INF` meghívásakor `StartTracing.cmd`.
+> Alapértelmezés szerint a hibák nyomon követése engedélyezve van, ha az előző példához hasonlóan szeretné engedélyezni a részletes hibaüzeneteket `VER` , használja a paramétert. Az információs nyomkövetésekhez használja `INF` a meghívásakor. `StartTracing.cmd`
 
 ## <a name="next-steps"></a>További lépések
 
-Ha nem jelenik meg a problémát, vagy nem lehet megoldani a problémát, látogasson el a következő csatornák további támogatás:
+Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 
 * Az [Azure fórumain](https://azure.microsoft.com/support/forums/) Azure-szakértőktől kaphat válaszokat.
 * Az [@AzureSupport](https://twitter.com/azuresupport) a Microsoft Azure hivatalos Twitter-fiókja, amelyen keresztül a jobb felhasználói élmény érdekében igyekszünk az Azure-felhasználók közösségét ellátni a megfelelő forrásokkal: válaszokkal, támogatással és szakértői segítséggel.
-* Ha további segítségre van szüksége, akkor is fájl egy Azure-támogatási esemény. Nyissa meg a [Azure támogatási webhelyén](https://azure.microsoft.com/support/options/) válassza **támogatja az első**.
+* Ha további segítségre van szüksége, egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási](https://azure.microsoft.com/support/options/) webhelyét, és válassza a **támogatás kérése**lehetőséget.

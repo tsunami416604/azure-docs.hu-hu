@@ -1,68 +1,64 @@
 ---
 title: Tanúsítvány-létrehozási módszerek
-description: Hozzon létre egy tanúsítványt a Key Vaultban módjai.
+description: A tanúsítvány létrehozásának módjai Key Vaultban.
 services: key-vault
-documentationcenter: ''
 author: msmbaldwin
-manager: barbkess
+manager: rkarlin
 tags: azure-resource-manager
-ms.assetid: e17b4c9b-4ff3-472f-8c9d-d130eb443968
 ms.service: key-vault
-ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 53b4d03ac8f5d22595d3a4e840a04583f7ec963d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 908f02807d5a3f7c2c1391c3c59a54fc88bbd831
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57995520"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70884143"
 ---
 # <a name="certificate-creation-methods"></a>Tanúsítvány-létrehozási módszerek
 
- A Key Vault (KV) tanúsítvány vagy létrehozása vagy importálása egy kulcstartóba. Ha KV tanúsítvány jön létre a titkos kulcs hozhatók létre a key vault és sosem hagyja el a tanúsítvány tulajdonosának. Hozzon létre egy tanúsítványt a Key Vaultban módjai a következők:  
+ Egy Key Vault (KV) tanúsítvány hozható létre vagy importálható egy kulcstartóba. Egy KV-os tanúsítvány létrehozásakor a titkos kulcs a kulcstartón belül jön létre, és soha nem lesz kitéve a tanúsítvány tulajdonosának. A következő módszerekkel hozhat létre tanúsítványt Key Vaultban:  
 
--   **Hozzon létre egy önaláírt tanúsítványt:** Ez egy nyilvános-titkos kulcspár létrehozása, és társíthatja azt egy tanúsítványt. A tanúsítvány a saját kulcs alá fogja írni.  
+-   **Önaláírt tanúsítvány létrehozása:** Ezzel létrehoz egy nyilvános titkos kulcspárt, és hozzárendeli egy tanúsítványhoz. A tanúsítványt a saját kulcsa fogja aláírni.  
 
--    **Manuálisan hozzon létre egy új tanúsítványt:** Ez egy nyilvános-titkos kulcspár létrehozása, és hozzon létre egy X.509 tanúsítvány-aláírási kérelmet. Az aláírási kérelmet a regisztrációszolgáltató vagy hitelesítésszolgáltató által írhatók alá. A tanúsítvány egyesíthető a függőben lévő kulccsal aláírt x509 párosítsa a KV tanúsítványt a Key Vaultban végrehajtásához. Bár ez a módszer további lépéseket igényel, azt biztosítja a nagyobb biztonságot, mert a titkos kulcs létrehozott, és a Key Vault korlátozott. Ennek az az alábbi ábrán a magyarázatát.  
+-    **Hozzon létre egy új tanúsítványt manuálisan:** Ezzel létrehoz egy nyilvános titkos kulcspárt, és létrehoz egy X. 509 tanúsítvány-aláírási kérelmet. Az aláírási kérelmet a regisztrációs hatóság vagy a hitelesítésszolgáltató aláírhatja. Az aláírt x509-tanúsítvány egyesíthető a függőben lévő kulcspár használatával, hogy elvégezze a KV-os tanúsítványt Key Vaultban. Bár ez a módszer több lépést igényel, nagyobb biztonságot nyújt, mivel a titkos kulcsot a-ben hozza létre, és a Key Vaultre korlátozódik. Ezt az alábbi ábra ismerteti.  
 
-![A saját hitelesítésszolgáltató-tanúsítvány létrehozása](media/certificate-authority-1.png)  
+![Tanúsítvány létrehozása saját hitelesítésszolgáltatóval](media/certificate-authority-1.png)  
 
-Az alábbi leírásokat felel meg a fenti ábrán a zöld betűkkel lépéseket.
+Az alábbi leírások az előző ábrán látható zöld betűs lépéseknek felelnek meg.
 
-1. A fenti ábrán az alkalmazás létrehozása egy tanúsítványt, amely belsőleg megkezdi a hozzon létre egy kulcsot tárol a kulcstárolóban.
-2. A Key Vault és az alkalmazás ad vissza egy tanúsítvány-aláírási kérelem (CSR)
-3. Az alkalmazás a választott hitelesítésszolgáltató továbbítja a CSR-fájl.
-4. Egy X509 fűzi hozzá a választott Hitelesítésszolgáltatói tanúsítvány.
-5. Az alkalmazás befejezi az egyesülés a X509 új tanúsítvány létrehozása a hitelesítésszolgáltató tanúsítványa.
+1. A fenti ábrán az alkalmazás olyan tanúsítványt hoz létre, amely belsőleg kezdődik a Key vaultban lévő kulcs létrehozásával.
+2. Key Vault visszaadja az alkalmazásnak a tanúsítvány-aláírási kérelmet (CSR)
+3. Az alkalmazás továbbítja a CSR-t a kiválasztott HITELESÍTÉSSZOLGÁLTATÓhoz.
+4. A kiválasztott HITELESÍTÉSSZOLGÁLTATÓ egy X509-tanúsítvánnyal válaszol.
+5. Az alkalmazás befejezi az új tanúsítvány létrehozását a HITELESÍTÉSSZOLGÁLTATÓ X509-tanúsítványának egyesítésével.
 
--   **Hozzon létre egy tanúsítványt egy ismert kibocsátó szolgáltatót:** Ennél a módszernél a kibocsátó objektum létrehozása egy egyszeri feladat. Kiállító objektum létrehozása után a key vault, a neve a házirendben a KV tanúsítvány lehet rá hivatkozni. KV tanúsítvány létrehozására irányuló kérelem fog kulcspár létrehozása a tárolóban, és a kommunikációt a kibocsátó szolgáltató szolgáltatással a hivatkozott kibocsátó objektum szereplő információk segítségével egy x509 beolvasni tanúsítványt. A tanúsítvány veszi át a kibocsátó szolgáltatás és a kulcspárt a KV végrehajtásához az egyesített x509 tanúsítványok létrehozásához.  
+-   **Hozzon létre egy ismert kiállító szolgáltatót tartalmazó tanúsítványt:** Ehhez a metódushoz egyszeri feladatot kell létrehozni egy kiállító objektum létrehozásához. Miután létrehozta a kiállítói objektumot a Key vaultban, a neve a KV-os tanúsítvány házirendjében hivatkozhat rá. Egy ilyen KV-tanúsítvány létrehozásához szükséges kérelem létrehoz egy kulcspárt a tárolóban, és kommunikál a kiállító szolgáltató szolgáltatással a hivatkozott kiállító objektumban található információk használatával egy x509-tanúsítvány beszerzéséhez. A rendszer beolvassa a x509-tanúsítványt a kiállító szolgáltatásból, és egyesíti a kulcspárt a KV-tanúsítvány létrehozásának befejezéséhez.  
 
-![Hozzon létre egy tanúsítványt a Key Vault termékekért felelős csoportokkal együttműködésben hitelesítésszolgáltató](media/certificate-authority-2.png)  
+![Tanúsítvány létrehozása Key Vault partnerrel rendelkező hitelesítésszolgáltatóval](media/certificate-authority-2.png)  
 
-Az alábbi leírásokat felel meg a fenti ábrán a zöld betűkkel lépéseket.
+Az alábbi leírások az előző ábrán látható zöld betűs lépéseknek felelnek meg.
 
-1. A fenti ábrán az alkalmazás létrehozása egy tanúsítványt, amely belsőleg megkezdi a hozzon létre egy kulcsot tárol a kulcstárolóban.
-2. A Key Vault küld, és SSL tanúsítvány kérelmet a hitelesítésszolgáltatónak.
-3. Az alkalmazás lekérdezi, egy hurkot, és várja meg a folyamatban, a Key Vault tanúsítvány befejezésére. A tanúsítvány létrehozása befejeződött, amikor a Key Vault-x509 a CA-válasz fogadása tanúsítványt.
-4. A hitelesítésszolgáltató reagáljon a Key Vault SSL tanúsítvány kérése egy X509 az SSL-tanúsítványt.
-5. Az új tanúsítvány létrehozása befejeződik, a X509 az egyesülés az a Hitelesítésszolgáltatóhoz tartozó tanúsítványt.
+1. A fenti ábrán az alkalmazás olyan tanúsítványt hoz létre, amely belsőleg kezdődik a Key vaultban lévő kulcs létrehozásával.
+2. Key Vault küldési és SSL-tanúsítványkérelem küldése a HITELESÍTÉSSZOLGÁLTATÓNAK.
+3. Az alkalmazás egy hurokban és várakozási folyamatban kérdezi le a Key Vault a tanúsítványok befejezéséhez. A tanúsítvány létrehozása akkor fejeződik be, amikor Key Vault megkapja a HITELESÍTÉSSZOLGÁLTATÓ válaszát az x509-tanúsítvánnyal.
+4. A HITELESÍTÉSSZOLGÁLTATÓ válaszol a Key Vault SSL-tanúsítványára vonatkozó kérelemre egy X509 SSL-tanúsítvánnyal.
+5. Az új tanúsítvány létrehozása a HITELESÍTÉSSZOLGÁLTATÓ X509-tanúsítványának egyesítésével fejeződik be.
 
 ## <a name="asynchronous-process"></a>Aszinkron folyamat
-KV tanúsítvány létrehozása a egy aszinkron folyamat. Ez a művelet KV tanúsítványkérelem létrehozására, és a egy 202 (elfogadva) HTTP-állapotkódot adja vissza. A kérés állapotát nyomon követhetők a függőben lévő, ez a művelet által létrehozott objektum lekérdezésével. A teljes URI-ját a függőben lévő objektum a LOCATION fejlécet adja vissza.  
+A KV-tanúsítvány létrehozása egy aszinkron folyamat. A művelet egy KV-os tanúsítványkérelmet hoz létre, és egy 202-es HTTP-állapotkódot ad vissza (elfogadva). A kérelem állapota nyomon követhető a művelet által létrehozott függő objektum lekérdezésével. A függő objektum teljes URI-ja a LOCATION (hely) fejlécben lesz visszaadva.  
 
-KV tanúsítvány létrehozására irányuló kérelem befejeződése után a függőben lévő objektum állapota változik "kész" a "inprogress"lehet, és a egy új verziója a KV tanúsítvány jön létre. Ez lesz a jelenlegi verziót.  
+Ha egy KV-tanúsítvány létrehozására vonatkozó kérelem befejeződik, a függőben lévő objektum állapota a "befejezve" értékre változik, és a rendszer létrehozza a KV-tanúsítvány új verzióját. Ez lesz a jelenlegi verzió.  
 
-## <a name="first-creation"></a>Első létrehozása
- KV tanúsítványt első alkalommal hoz létre, amikor egy címezhető kulcs és titkos kulcs is létrejön a neve megegyezik a tanúsítvány, amely. Ha a név már használatban van, majd a művelet sikertelen lesz, és egy http-állapotkód: 409 (Ütközés).
-A megcímezhető kulcs és titkos kulcs lekérése a KV tanúsítvány attribútumok attribútumaik. A megcímezhető kulcsot és titkos kulcsot, így létrehozott felügyelt kulcsok és titkos kódokat, amelynek élettartamát a Key Vault kezeli vannak megjelölve. Felügyelt kulcsok és titkos kulcsok írásvédettek. Megjegyzés: Ha KV tanúsítvány lejár, vagy le van tiltva, a megfelelő kulcsot és titkos kulcs lesz működésképtelenné válik.  
+## <a name="first-creation"></a>Első létrehozás
+ Ha első alkalommal hoz létre egy KV-os tanúsítványt, a rendszer a tanúsítvány nevével megegyező névvel létrehoz egy címezhető kulcsot és titkos kulcsot is. Ha a név már használatban van, a művelet sikertelen lesz, és a http-állapotkód 409 (ütközés).
+A megcímezhető kulcs és titkos kód az attribútumokat a KV tanúsítvány attribútumaiból kapja meg. Az ily módon létrehozott címezhető kulcs és titkos kód felügyelt kulcsoknak és titoknak van megjelölve, amelynek élettartamát Key Vault kezeli. A felügyelt kulcsok és titkos kódok csak olvashatók. Megjegyzés: Ha egy KV-tanúsítvány lejár vagy le van tiltva, akkor a megfelelő kulcs és titok működésképtelenné válik.  
 
- Ha ez az első művelet KV tanúsítvány létrehozása egy házirend szükség.  Egy házirend is is meg kell adni az egymást követő műveletek cserélje le a házirend-erőforrás létrehozásához. Ha a házirend nincs megadva, a szolgáltatásban a szabályzat erőforrás használatos KV tanúsítvány következő verzióját. Vegye figyelembe, hogy közben a következő verzió létrehozására irányuló kérelem folyamatát, az aktuális KV tanúsítványt, és a megfelelő címmel rendelkező kulcs és titkos kulcsot, továbbra is változatlan marad.  
+ Ha ez az első művelet egy KV-os tanúsítvány létrehozásához, akkor szükség van egy házirendre.  Egy házirendet a házirend-erőforrás cseréjére szolgáló, egymást követő létrehozási műveletekkel is meg lehet adni. Ha nem adja meg a szabályzatot, a rendszer a szolgáltatáshoz tartozó házirend-erőforrást használja a KV-os tanúsítvány következő verziójának létrehozásához. Vegye figyelembe, hogy míg a következő verzió létrehozásához szükséges kérelem folyamatban van, a jelenlegi KV-tanúsítvány és a hozzá tartozó címezhető kulcs és titkos kód változatlan marad.  
 
-## <a name="self-issued-certificate"></a>Önálló kiállított tanúsítvány
- Hozzon létre egy önálló kiállított tanúsítványt, állítsa be a kibocsátó neve szerint "Self", a tanúsítvány házirendben tanúsítási szabályzat az alábbi kódrészletben látható módon.  
+## <a name="self-issued-certificate"></a>Önmagát kiállított tanúsítvány
+ Önkiszolgáló tanúsítvány létrehozásához állítsa a kiállító nevét "saját" értékre a tanúsítvány-házirendben, ahogy az a tanúsítvány-házirendben szereplő következő kódrészletben látható.  
 
 ```  
 "issuer": {  
@@ -71,7 +67,7 @@ A megcímezhető kulcs és titkos kulcs lekérése a KV tanúsítvány attribút
 
 ```  
 
- Ha a kiállító neve nincs megadva, a kiállító neve "Ismeretlen" van beállítva. Ha kibocsátó "Ismeretlen", a tanúsítvány tulajdonosának kell manuálisan beolvasása egy x509 a kibocsátó eltávolíthatják a választott tanúsítvány, akkor a nyilvános x509 egyesítési tanúsítvány függőben lévő tanúsítvány létrehozásának befejezéséhez objektum a key vault-tanúsítvánnyal.
+ Ha nincs megadva a kiállító neve, akkor a kiállító neve "Unknown" (ismeretlen) értékre van állítva. Ha a kiállító "ismeretlen", a tanúsítvány tulajdonosának manuálisan be kell szereznie egy x509-tanúsítványt a választott kibocsátótól, majd egyesíteni kell a nyilvános x509-tanúsítványt a Key Vault-tanúsítvánnyal függő objektummal a tanúsítvány létrehozásának befejezéséhez.
 
 ```  
 "issuer": {  
@@ -80,19 +76,19 @@ A megcímezhető kulcs és titkos kulcs lekérése a KV tanúsítvány attribút
 
 ```  
 
-## <a name="partnered-ca-providers"></a>Termékekért felelős csoportokkal együttműködésben CA-szolgáltatók
-Tanúsítvány létrehozása manuálisan befejezett vagy használatát a "Self" kibocsátó is lehet. A Key Vault partnereknek bizonyos kibocsátó szolgáltatók tanúsítványok létrehozását is. A következő típusú tanúsítványt a key vaulthoz rendelhető ezen partner kibocsátó szolgáltatók.  
+## <a name="partnered-ca-providers"></a>Partneri HITELESÍTÉSSZOLGÁLTATÓI szolgáltatók
+A tanúsítvány létrehozása manuálisan vagy "saját" kibocsátó használatával végezhető el. Key Vault az egyes kiállító szolgáltatókhoz tartozó partnereket is, hogy leegyszerűsítsék a tanúsítványok létrehozását. A Key Vault a következő típusú tanúsítványokat rendelheti ezekhez a partner kiállító szolgáltatókhoz.  
 
 |Szolgáltató|Tanúsítvány típusa|  
 |--------------|----------------------|  
-|DigiCert|Key Vault kínál a DigiCert a OV vagy Bővített SSL-tanúsítványokkal|
-|GlobalCert|Key Vault kínál a GlobalSign a OV vagy Bővített SSL-tanúsítványokkal|
+|DigiCert|A Key Vault OV vagy EV SSL-tanúsítványokat kínál a DigiCert|
+|GlobalSign|A Key Vault OV vagy EV SSL-tanúsítványokat kínál a GlobalSign|
 
- A tanúsítvány kiállítója jelöli az Azure Key Vault (KV) CertificateIssuer erőforrásként entitás. A forrás-KV tanúsítvány; kapcsolatos információk megadására szolgál kiállító neve, szolgáltató, hitelesítő adatok és egyéb felügyeleti adatait.
+ A tanúsítvány kiállítója Azure Key Vault (KV) CertificateIssuer erőforrásként jelölt entitás. A rendszer a KV-tanúsítvány forrására vonatkozó információk megadására szolgál. kiállító neve, szolgáltatója, hitelesítő adatai és egyéb rendszergazdai részletek.
 
-Vegye figyelembe, hogy amikor egy megrendeléskor kibocsátó-szolgáltatóval, előfordulhat, hogy tartsa tiszteletben, vagy felülbírálás a x509 Tanúsítványmezők és a tanúsítvány érvényességi időtartama alapján a tanúsítvány típusát.  
+Vegye figyelembe, hogy ha rendelést helyez el a kiállító szolgáltatóval, az a tanúsítvány típusától függően megbecsülheti vagy felülbírálhatja a x509 tanúsítvány-kiterjesztéseit és a tanúsítvány érvényességi időtartamát.  
 
- Hitelesítés: A tanúsítványok/létrehozás engedélyt igényel.
+ Engedély A tanúsítványok/létrehozási engedély szükséges.
 
 ## <a name="see-also"></a>Lásd még:
  - [Kulcsok, titkos kódok és tanúsítványok](about-keys-secrets-and-certificates.md)

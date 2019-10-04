@@ -1,25 +1,18 @@
 ---
-title: Dynamics 365 Customer Engagement-alkalmazás ajánlat Test Drive lap – Azure Marketplace-en |} A Microsoft Docs
+title: Dynamics 365 Customer Engagement-alkalmazás Tesztverziós lapon ajánlat |} Az Azure Marketplace-en
 description: Hogyan konfigurálható a tesztverziós az egy Dynamics 365 Customer Engagement-alkalmazás ajánlat az appsource-ban Marketplace-en.
 services: Azure, Marketplace, AppSource, Cloud Partner Portal, Dynamics 365 for Customer Engagement
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
-ms.date: 12/25/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 373312b4c7f05fe41c9ca8165b8ff6f1b0e56f1b
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.date: 04/24/2019
+ms.author: pabutler
+ms.openlocfilehash: 5bb5f39ef5f5bce09a8639ba9eedc6d042e60c1d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57454969"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64942352"
 ---
 # <a name="dynamics-365-for-customer-engagement-application-test-drive-tab"></a>Dynamics 365 Customer Engagement-alkalmazás Tesztverziós lap
 
@@ -41,12 +34,12 @@ Az alapvető Test Drive-információkat biztosít a **részletek** szakaszban.
 
 ![Részletek szakaszának kipróbálása](./media/test-drive-tab-details.png)
 
-A következő táblázat ismerteti a test drive, Dynamics 365 alkalmazás beállításához szükséges mezőket.
+A következő táblázat ismerteti a test drive, Dynamics 365 alkalmazás beállításához szükséges mezőket. Kötelező mezőt csillag (*) rendszer feltehetően.
 
 |      Mező                    |    Leírás                  |
 |    ---------                  |  ---------------                |
-|      Leírás              |   Ismerteti, mi a Test Drive teheti. Alapszintű HTML-címkék használatával formázhatja a leírás. Ha például &lt;p&gt;, &lt;em&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;ol&gt;, és fejlécben.  |
-|  Felhasználói kézikönyv                  |   Töltse fel, hogy az ügyfelek segítségével megtudhatja, hogyan Test Drive felhasználói manuális. Ez a dokumentum .pdf fájlnak kell lennie.              |
+|      Leírás\*            |   Ismerteti, mi a Test Drive teheti. Alapszintű HTML-címkék használatával formázhatja a leírás. Ha például &lt;p&gt;, &lt;em&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;ol&gt;, és fejlécben.  |
+|  Felhasználói kézikönyv\*                |   Töltse fel, hogy az ügyfelek segítségével megtudhatja, hogyan Test Drive felhasználói manuális. Ez a dokumentum .pdf fájlnak kell lennie. |
 |  Test Drive – bemutató videó (nem kötelező) |  Megadhat egy, a Test Drive bemutató videó. Egy ügyfél is ebben a videóban előtt kipróbálás azokat. Adja meg a Videó URL-CÍMÉT a YouTube vagy Vimeo. Ha **+ hozzáadni a videót**, kérni fogja a következő információkat biztosítja:<ul><li>Name (Név)</li><li>URL-cím</li><li>Miniatűr (PNG formátumban, 533 x 324 képpont)</li></ul>  |
 |   |   |
 
@@ -57,20 +50,20 @@ Ebben a szakaszban biztosítja a test drive vonatkozó technikai részleteket.
 
 ![Részletek szakaszának kipróbálása](./media/test-drive-tab-tech-config.png)
 
-Ha a mezők rendelkezik a következő célokra:
+Ha a mezők rendelkezik a következő célokra.  Kötelező mezőt csillag (*) rendszer feltehetően.
 
 |      Mező                    |    Leírás                  |
 |    ---------                  |  ---------------                |
-| Test Drive típusa            | Válasszon **Microsoft üzemeltetett (Dynamics 365 for Customer Engagement)**.  |
-| Max. egyidejű tesztverziók    | Egy aktív Test Drive time lekérdezhet egyidejű példányainak számát. Minden felhasználó fog felhasználni a Dynamics-licenc, amíg a Test Drive aktív, így biztosíthatja, hogy a felhasználók a Test Drive legalább ennyi Dynamics licenceket kell. Ajánlott érték 3 – 5.  |
-| Tesztelje a meghajtó időtartama (óra)   | Órák maximális száma a felhasználó Test Drive-példány lesz aktív. Miután ez az időszak túllépése esetén a példány – a bérlőről figyelmeztetés megszüntetésről. Javasolt érték 2 – 24 óra alkalmazásához összetettségétől függően. A felhasználó mindig kérheti egy másik Test Drive, ha elfogy a ideje, és újra ki kell számítani.  |
-| Példány URL-címe                  | URL-cím a Test Drive először nyitja meg. Ez általában a Dynamics 365-példány, amelyen az alkalmazás URL-CÍMÉT és mintaadatok telepítve.  |
-| Az Azure AD-bérlő azonosítója            | A Dynamics 365-példány az Azure-bérlő GUID Azonosítóját. Lekérje ezt az értéket, jelentkezzen be az Azure Portalon, és keresse meg a **Azure Active Directory** > **tulajdonságok kiválasztása** > **másolja ki a címtár-azonosító**.  |
-| Azure AD App ID               | Az Azure AD-alkalmazás GUID azonosítója  |
-| Azure AD App Key              | A titkos kulcsot az Azure AD alkalmazás, például: `IJUgaIOfq9b9LbUjeQmzNBW4VGn6grr1l/n3aMrnfdk=` |
-| Az Azure AD-bérlő neve          | Az Azure-bérlőhöz, a Dynamics 365-példány neve. Például használja a < tenantname. > onmicrosoft.com, formátuma: `testdrive.onmicrosoft.com`  |
-| Példány webes API URL-címe          | Webes API URL-címe a Dynamics 365-példány. Ezt az értéket lekérheti azokat a Microsoft Dynamics 365-példány, és ellenőrizheti, hogy **beállítások** > **testreszabási** > **fejlesztői Erőforrások** > **webes API-t (az URL-cím másolása) példány**. Példaérték: `https://testdrive.crm.dynamics.com/api/data/v9.0`  |
-| Szerepkörnév                     | Az egyéni Dynamics 365-biztonsági szerepkör a Test Drive hozott létre, és hozzá lesz rendelve a felhasználók futnak, például amikor `testdriveuser`. |
+| Test Drive típusa\*            | Válasszon **Microsoft üzemeltetett (Dynamics 365 for Customer Engagement)** .  |
+| Max. egyidejű tesztverziók\*    | Egy aktív Test Drive time lekérdezhet egyidejű példányainak számát. Minden felhasználó fog felhasználni a Dynamics-licenc, amíg a Test Drive aktív, így biztosíthatja, hogy a felhasználók a Test Drive legalább ennyi Dynamics licenceket kell. Ajánlott érték 3 – 5.  |
+| Tesztelje a meghajtó időtartama (óra)\*   | Órák maximális száma a felhasználó Test Drive-példány lesz aktív. Miután ez az időszak túllépése esetén a példány – a bérlőről figyelmeztetés megszüntetésről. Javasolt érték 2 – 24 óra alkalmazásához összetettségétől függően. A felhasználó mindig kérheti egy másik Test Drive, ha elfogy a ideje, és újra ki kell számítani.  |
+| Példány URL-címe\*                  | URL-cím a Test Drive először nyitja meg. Ez általában a Dynamics 365-példány, amelyen az alkalmazás URL-CÍMÉT és mintaadatok telepítve.  |
+| Az Azure AD-bérlő azonosítója\*            | A Dynamics 365-példány az Azure-bérlő GUID Azonosítóját. Lekérje ezt az értéket, jelentkezzen be az Azure Portalon, és keresse meg a **Azure Active Directory** > **tulajdonságok kiválasztása** > **másolja ki a címtár-azonosító**.  |
+| Azure AD-alkalmazás azonosítója\*               | Az Azure AD-alkalmazás GUID azonosítója  |
+| Az Azure AD alkalmazás-kulcs\*              | A titkos kulcsot az Azure AD alkalmazás, például: `IJUgaIOfq9b9LbUjeQmzNBW4VGn6grr1l/n3aMrnfdk=` |
+| Az Azure AD-bérlő neve\*          | Az Azure-bérlőhöz, a Dynamics 365-példány neve. Például használja a < tenantname. > onmicrosoft.com, formátuma: `testdrive.onmicrosoft.com`  |
+| Példány webes API URL-címe\*          | Webes API URL-címe a Dynamics 365-példány. Ezt az értéket lekérheti azokat a Microsoft Dynamics 365-példány, és ellenőrizheti, hogy **beállítások** > **testreszabási** > **fejlesztői Erőforrások** > **webes API-t (az URL-cím másolása) példány**. Példaérték: `https://testdrive.crm.dynamics.com/api/data/v9.0`  |
+| Szerepkör neve\*                     | Az egyéni Dynamics 365-biztonsági szerepkör a Test Drive hozott létre, és hozzá lesz rendelve a felhasználók futnak, például amikor `testdriveuser`. |
 |  |  |
 
 Miután megadta a szükséges adatokat, válassza ki a **mentése**.

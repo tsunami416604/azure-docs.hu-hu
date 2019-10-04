@@ -1,81 +1,89 @@
 ---
-title: Nyelvi testreszabás az Azure Active Directory B2C |} A Microsoft Docs
-description: További információ a nyelvi testreszabása.
+title: Nyelvi Testreszabás a Azure Active Directory B2Cban
+description: Ismerje meg a felhasználói folyamatok nyelvi élményének testreszabását.
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
-ms.author: davidmu
+ms.date: 08/13/2019
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 040f9b00b7f282789d8a63b9bbeb8ee7edfc779e
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: bced7a4b994172a1a2076149d6f25adb39c99b54
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55164147"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69015566"
 ---
-# <a name="language-customization-in-azure-active-directory-b2c"></a>Az Azure Active Directory B2C a nyelvi testreszabás
+# <a name="language-customization-in-azure-active-directory-b2c"></a>Nyelvi Testreszabás a Azure Active Directory B2Cban
 
-Nyelvi testreszabás az Azure Active Directory B2C (Azure AD B2C-vel) lehetővé teszi, hogy a felhasználói folyamat különböző nyelvekhez az ügyfelek igényeinek megfelelően.  A Microsoft biztosít a fordításainak [36 nyelvet](#supported-languages), de is megadhatja a saját fordításokat bármely nyelven. Akkor is, ha a felhasználói élmény csak egyetlen nyelven áll rendelkezésre, testre szabható a lapokon szöveg.  
+A Azure Active Directory B2C (Azure AD B2C) nyelvi testreszabása lehetővé teszi, hogy a felhasználói folyamat különböző nyelveket biztosítson az ügyfelek igényeinek megfelelően. A Microsoft a [36 nyelvekhez](#supported-languages)biztosít fordításokat, de bármilyen nyelven saját fordításokat is megadhat. Ha a felhasználói élmény csak egyetlen nyelven érhető el, testreszabhatja a lapokon található bármely szöveget.
 
-## <a name="how-language-customization-works"></a>Hogyan működik a nyelvi testreszabás
-Milyen nyelveken érhető el a felhasználói folyamat kiválasztása a nyelvi testreszabás használatával. Miután a szolgáltatás engedélyezve van, megadhatja a lekérdezési karakterlánc paramétereként `ui_locales`, az alkalmazásból. Amikor kapcsolatba lép az Azure AD B2C-be, a lap a területi beállítás, amely jelezte, hogy le. Ezt a konfigurációtípust biztosít teljes körű, a nyelveket a felhasználói folyamat, és figyelmen kívül hagyja az ügyfél böngésző a nyelvi beállításokat. 
+## <a name="how-language-customization-works"></a>A nyelvi Testreszabás működése
 
-Milyen nyelveket, az ügyfél látja, hogy szintű nincs szüksége lehet. Ha nem ad meg egy `ui_locales` paramétert, a felhasználói élmény szabja meg a böngésző beállításait.  Továbbra is szabályozhatja, hogy a felhasználói folyamat fordítja le egy támogatott nyelvre úgy nyelveket. Ha a felhasználó böngészőben megjelenítése nyelv, amelyet szeretne támogatására van beállítva, akkor ehelyett alapértelmezés szerint a támogatott kulturális környezetek a kiválasztott nyelv jelenik meg.
+A nyelvi testreszabással kiválaszthatja, hogy a felhasználói folyamat mely nyelveken érhető el a alkalmazásban. A szolgáltatás engedélyezése után megadhatja az alkalmazásból a lekérdezési karakterlánc `ui_locales`paraméterét. Amikor behívja a Azure AD B2Ct, a rendszer lefordítja a lapot a jelzett területi beállításra. Ez a típusú konfiguráció lehetővé teszi a felhasználói folyamat nyelveinek teljes körű ellenőrzését, és figyelmen kívül hagyja az ügyfél böngészőjének nyelvi beállításait.
 
-- **felhasználói felület – területi beállításokhoz megadott nyelvi**: Miután engedélyezte a nyelvi testreszabás, a felhasználói folyamatot az itt megadott nyelv fordítja le.
-- **Böngésző által kért nyelv**: Ha nincs `ui_locales` paraméter van megadva, a felhasználói folyamat fordítja le a böngésző által kért nyelv *, ha a nyelv támogatott*.
-- **A házirend alapértelmezett nyelve**: Ha a böngésző nem adja meg a nyelvet, vagy adja meg, amely nem támogatott, a felhasználói folyamatot a felhasználó flow alapértelmezett nyelvét fordítja le.
+Előfordulhat, hogy nincs szüksége arra, hogy milyen nyelveken látja az ügyfelet. Ha nem ad `ui_locales` meg paramétert, az ügyfél felhasználói élményét a böngésző beállításai határozzák meg. Továbbra is szabályozhatja, hogy a felhasználói folyamat mely nyelveket fordítsa le, ha azt támogatott nyelvként adja hozzá. Ha egy ügyfél böngészője olyan nyelvet mutat be, amelyet nem szeretne támogatni, akkor a támogatott kultúrákban alapértelmezettként kiválasztott nyelv jelenik meg.
+
+* **felhasználói felület – a megadott nyelv területi beállítása**: A nyelvi Testreszabás engedélyezése után a felhasználói folyamat az itt megadott nyelvre lesz lefordítva.
+* **Böngésző által kért nyelv**: Ha nem `ui_locales` adta meg a paramétert, a rendszer lefordítja a felhasználói folyamatot a böngésző által kért nyelvre, *Ha a nyelv támogatott*.
+* **Házirend alapértelmezett nyelve**: Ha a böngésző nem ad meg nyelvet, vagy egy nem támogatott értéket ad meg, a felhasználói folyamat fordítása a felhasználói folyamat alapértelmezett nyelvére történik.
+
+> [!NOTE]
+> Ha egyéni felhasználói attribútumokat használ, saját fordításokat kell megadnia. További információ: [a karakterláncok testreszabása](#customize-your-strings).
+
+## <a name="support-requested-languages-for-ui_locales"></a>A ui_locales által kért nyelvek támogatása
+
+A nyelvi Testreszabás általánosan elérhetővé tétele előtt létrehozott szabályzatoknak először engedélyeznie kell ezt a funkciót. Az azt követően létrehozott házirendek és felhasználói folyamatok, hogy a nyelvi Testreszabás alapértelmezés szerint engedélyezve van.
+
+Ha engedélyezi a nyelvi testreszabást egy felhasználói folyamaton, a `ui_locales` paraméter hozzáadásával szabályozhatja a felhasználói folyamat nyelvét.
+
+1. A Azure AD B2C-bérlőben válassza a **felhasználói folyamatok**lehetőséget.
+1. Kattintson arra a felhasználói folyamatra, amelyet engedélyezni szeretne a fordítások számára.
+1. Válassza a **nyelvek**lehetőséget.
+1. Válassza a **nyelvi Testreszabás engedélyezése**lehetőséget.
+
+## <a name="select-which-languages-in-your-user-flow-are-enabled"></a>Válassza ki, hogy a felhasználói folyamat mely nyelveken legyen engedélyezve
+
+Lehetővé teheti a felhasználói folyamat fordítását, ha a böngésző a `ui_locales` paraméter nélkül kéri le.
+
+1. Győződjön meg arról, hogy a felhasználói folyamat rendelkezik a korábbi utasításokban engedélyezett nyelvi testreszabással.
+1. A felhasználói folyamat **nyelvek** lapján válassza ki a támogatni kívánt nyelvet.
+1. A Tulajdonságok ablaktáblán az **enabled** ( **Igen**) értékre vált.
+1. Válassza a **Mentés** lehetőséget a Tulajdonságok ablaktábla tetején.
 
 >[!NOTE]
->Ha felhasználói egyéni attribútumok használata esetén meg kell adnia saját fordításait. További információkért lásd: [testre szabhatja a karakterláncok](#customize-your-strings).
->
-
-## <a name="support-requested-languages-for-uilocales"></a>Az ui_locales paraméter a kért nyelv támogatása 
-Ez a funkció először engedélyeznie kell a nyelvi testreszabás általános elérhetősége előtt létrehozott házirendek. Szabályzatok és a felhasználói folyamatok után létrehozott rendelkezik a nyelvi testreszabás alapértelmezés szerint engedélyezve van. 
-
-Ha engedélyezi a felhasználói folyamat a nyelvi testreszabás, a nyelv, a felhasználói folyamat hozzáadásával szabályozhatja a `ui_locales` paraméter.
-1. Válassza ki az Azure AD B2C-bérlőben **felhasználókövetési adatai**.
-2. Kattintson a felhasználói folyamatot, amely a fordítások engedélyezni kívánja.
-3. Válassza ki **nyelvek**.  
-4. Válassza ki **nyelvi testreszabás engedélyezése**.
-
-## <a name="select-which-languages-in-your-user-flow-are-enabled"></a>Válassza ki a felhasználói folyamat nyelveket engedélyezve vannak 
-Engedélyezi a nyelvek a felhasználói folyamat fordítandó nélkül a böngésző által kért készletét a `ui_locales` paraméter.
-1. Győződjön meg arról, hogy a felhasználói folyamat rendelkezik-e a nyelvi testreszabás engedélyezve van az előző utasítások.
-2. Az a **nyelvek** a felhasználói folyamat lapon, válassza ki a támogatni kívánt nyelv.
-3. A Tulajdonságok panelen módosítsa **engedélyezve** való **Igen**.  
-4. Válassza ki **mentése** tulajdonságpanel tetején.
-
->[!NOTE]
->Ha egy `ui_locales` paraméter nincs megadva, az oldalra fordítja le az ügyfél a böngésző nyelve csak akkor, ha engedélyezve van.
+>Ha a `ui_locales` paraméter nincs megadva, a lap csak akkor lesz lefordítva az ügyfél böngésző nyelvére, ha engedélyezve van.
 >
 
 ## <a name="customize-your-strings"></a>A karakterláncok testreszabása
-Nyelvi testreszabás lehetővé teszi a felhasználói folyamat bármilyen karakterlánc testreszabása.
-1. Győződjön meg arról, hogy rendelkezik-e a felhasználói folyamat engedélyezve van az előző utasítások a nyelvi testreszabás.
-2. Az a **nyelvek** a felhasználói folyamat oldalára, válassza ki a nyelvet, amelyet testre szeretne.
-3. A **lap szint erőforrásfájlok**, jelölje ki a szerkeszteni kívánt lapot.
-4. Válassza ki **Alapértelmezések letöltése** (vagy **felülbírálások letöltése** Ha korábban szerkesztése ezen a nyelven).
 
-Ezeket a lépéseket, amelyek segítségével szerkessze a karakterláncok egy JSON-fájlt ad.
+A nyelvi Testreszabás lehetővé teszi a felhasználói folyamat bármely karakterláncának testreszabását.
 
-### <a name="change-any-string-on-the-page"></a>A lapon bármilyen karakterlánc módosítása
-1. Nyissa meg a JSON-fájl letölthető a JSON-szerkesztővel előző utasításait.
-2. Keresse meg az elem, amelyet módosítani szeretne.  Annak `StringId` a karakterláncot keres, vagy keresse meg a `Value` attribútum, amelyet módosítani szeretne.
-3. Frissítés a `Value` attribútummal, amelyeket meg szeretne.
-4. Minden karakterlánc, amelyet módosítani szeretne, módosítsa `Override` való `true`.
-5. Mentse a fájlt, és töltse fel a módosításokat. (Megtalálhatja a feltöltési vezérlő ugyanazon a helyen, ahonnan letöltötte a JSON-fájl.) 
+1. Győződjön meg arról, hogy a felhasználói folyamat rendelkezik az előző utasításokban engedélyezett nyelvi testreszabással.
+1. A felhasználói folyamat **nyelvek** lapján válassza ki a testreszabni kívánt nyelvet.
+1. Az **oldal szintű erőforrások fájljai**területen válassza ki a szerkeszteni kívánt oldalt.
+1. Válassza az Alapértelmezések **letöltése** (vagy a **felülbírálások letöltése** lehetőséget, ha korábban már szerkesztette ezt a nyelvet).
 
->[!IMPORTANT]
->Ha bírálja felül egy karakterlánc van szüksége, ellenőrizze, hogy állítsa be a `Override` értéket a következőre `true`.  Ha az érték nem módosul, a rendszer figyelmen kívül hagyja a bejegyzést. 
->
+Ezek a lépések egy JSON-fájlt biztosítanak a karakterláncok szerkesztésének megkezdéséhez.
 
-### <a name="change-extension-attributes"></a>A bővítményattribútumok módosítása
-Ha meg szeretné változtatni a karakterlánc egy egyéni felhasználói attribútum, vagy szeretne hozzáadni egy JSON-, a következő formátumban van:
+### <a name="change-any-string-on-the-page"></a>Az oldalon lévő bármelyik sztring módosítása
+
+1. Nyissa meg a JSON-szerkesztő korábbi utasításait letöltő JSON-fájlt.
+1. Keresse meg a módosítani kívánt elemet. Keresse `StringId` meg a keresett karakterláncot, vagy keresse meg a `Value` módosítani kívánt attribútumot.
+1. Frissítse az `Value` attribútumot, hogy mit szeretne megjeleníteni.
+1. Minden módosítani kívánt sztring esetében váltson `Override` a `true`következőre:.
+1. Mentse a fájlt, és töltse fel a módosításokat. (A feltöltési vezérlőt a JSON-fájl letöltésével megegyező helyen találja.)
+
+> [!IMPORTANT]
+> Ha felül kell bírálnia egy karakterláncot, ügyeljen arra, hogy `Override` a `true`értékre állítsa be a értéket. Ha az érték nem változik, a rendszer figyelmen kívül hagyja a bejegyzést.
+
+### <a name="change-extension-attributes"></a>Bővítmény attribútumainak módosítása
+
+Ha módosítani szeretné egy egyéni felhasználói attribútumhoz tartozó karakterláncot, vagy az egyiket szeretné hozzáadni a JSON-hoz, a következő formátumban kell megadnia:
+
 ```JSON
 {
   "LocalizedStrings": [
@@ -90,18 +98,19 @@ Ha meg szeretné változtatni a karakterlánc egy egyéni felhasználói attrib�
 }
 ```
 
-Cserélje le `<ExtensionAttribute>` az egyéni felhasználói attribútum nevével.  
+A `<ExtensionAttribute>` helyére írja be az egyéni felhasználói attribútum nevét.
 
-Cserélje le `<ExtensionAttributeValue>` megjelenő új karakterlánccal.
+Cserélje `<ExtensionAttributeValue>` le a szöveget a megjelenítendő új sztringre.
 
-### <a name="provide-a-list-of-values-by-using-localizedcollections"></a>Adja meg az értékek listáját a LocalizedCollections
-Set értékek listáját adja meg a válaszok szeretne, ha szeretne létrehozni egy `LocalizedCollections` attribútum.  `LocalizedCollections` tömbje `Name` és `Value` párokat. Az elemek sorrendjét lesz a sorrendben jelennek meg.  Hozzáadandó `LocalizedCollections`, használja a következő formátumot:
+### <a name="provide-a-list-of-values-by-using-localizedcollections"></a>Adja meg az értékek listáját a LocalizedCollections használatával
+
+Ha meg szeretné adni a válaszok értékeinek listáját, létre kell hoznia egy `LocalizedCollections` attribútumot. `LocalizedCollections`a `Name` és`Value` a párok tömbje. Az elemek sorrendje a megjelenő sorrendben jelenik meg. A hozzáadáshoz `LocalizedCollections`használja a következő formátumot:
 
 ```JSON
 {
   "LocalizedStrings": [...],
   "LocalizedCollections": [{
-      "ElementType":"ClaimType", 
+      "ElementType":"ClaimType",
       "ElementId":"<UserAttribute>",
       "TargetCollection":"Restriction",
       "Override": true,
@@ -119,101 +128,131 @@ Set értékek listáját adja meg a válaszok szeretne, ha szeretne létrehozni 
 }
 ```
 
-* `ElementId` a felhasználói attribútumot, hogy ez a `LocalizedCollections` attribútum esetén adott válasz.
-* `Name` az érték a felhasználó számára.
-* `Value` a mi adja vissza a jogcímet, ha ezt a beállítást.
+* `ElementId`a felhasználó attribútuma, amelyhez `LocalizedCollections` ez az attribútum válaszol.
+* `Name`a felhasználó számára megjelenített érték.
+* `Value`Ha ez a beállítás be van jelölve, a rendszer a jogcímben visszaadott értéket adja vissza.
 
-### <a name="upload-your-changes"></a>Töltse fel a módosítások
-1. Miután elvégezte a módosításokat a JSON-fájl, lépjen vissza a B2C-bérlőben.
-2. Válassza ki **felhasználókövetési adatai** , és kattintson a felhasználói folyamatot, amely a fordítások engedélyezni kívánja.
-3. Válassza ki **nyelvek**.
-4. Válassza ki a kívánt fordítás.
-5. Jelölje ki a lapot, ahol a fordítások szeretné.
-6. Válassza ki a mappa ikont, és válassza ki a JSON-fájlt a feltöltéshez.
- 
-Menti a felhasználói folyamathoz automatikusan.
+### <a name="upload-your-changes"></a>A módosítások feltöltése
 
-## <a name="customize-the-page-ui-by-using-language-customization"></a>A lap felhasználói felület testreszabása a nyelvi testreszabás
+1. A JSON-fájl módosításainak befejezése után lépjen vissza a B2C-bérlőre.
+1. Válassza a **felhasználói folyamatok** lehetőséget, majd kattintson arra a felhasználói folyamatra, amelyet engedélyezni szeretne a fordítások számára.
+1. Válassza a **nyelvek**lehetőséget.
+1. Válassza ki a nyelvet, amelyet le szeretne fordítani.
+1. Válassza ki azt a lapot, amelyen a fordításokat meg szeretné adni.
+1. Válassza ki a mappa ikont, és válassza ki a feltölteni kívánt JSON-fájlt.
 
-A HTML-tartalom honosítása két módon lehet. Egyik módja az, hogy kapcsolja be a [nyelvi testreszabás](active-directory-b2c-reference-language-customization.md). Ez a funkció lehetővé teszi, hogy az Azure AD B2C-vel továbbítja az Open ID Connect paraméter `ui-locales`, a végponthoz.  A webtartalom-kiszolgáló a paraméter használatával adja meg a testre szabott HTML-lapok nyelvspecifikus.
+A módosításokat a rendszer automatikusan menti a felhasználói folyamatba.
 
-Azt is megteheti a használt területi beállítása alapján különböző helyekről származó tartalom kérheti le. A CORS-kompatibilis végponthoz az állíthat be egy mappaszerkezet gazdagép tartalom bizonyos nyelveken. Felhívjuk a megfelelőt, ha a helyettesítő karaktert tartalmazó értéket használja `{Culture:RFC5646}`.  Például tegyük fel, hogy ez az egyéni oldal URI-ja:
+## <a name="customize-the-page-ui-by-using-language-customization"></a>Az oldal felhasználói felületének testreszabása a nyelvi Testreszabás használatával
+
+A HTML-tartalmak honosítása kétféleképpen lehetséges. Az egyik módszer a [nyelvi Testreszabás](active-directory-b2c-reference-language-customization.md)bekapcsolása. A funkció engedélyezése lehetővé teszi, hogy Azure ad B2C továbbítsa az OpenID `ui-locales`Connect paramétert a végpontnak. A tartalom-kiszolgáló ezzel a paraméterrel testreszabott, nyelvspecifikus HTML-lapokat adhat meg.
+
+Azt is megteheti, hogy a használt területi beállítás alapján más helyekről is lehívhatja a tartalmat. A CORS-kompatibilis végponton beállíthatja, hogy a mappa szerkezete bizonyos nyelvekhez biztosítson tartalmat. Ha a helyettesítő karaktert `{Culture:RFC5646}`használja, hívja meg a megfelelőt. Tegyük fel például, hogy ez az egyéni oldal URI-ja:
 
 ```
 https://wingtiptoysb2c.blob.core.windows.net/{Culture:RFC5646}/wingtip/unified.html
 ```
-Az oldal betöltése `fr`. Az oldal HTML és CSS tartalmat kér le, amikor azt a van lehetőség:
+
+A lapot betöltheti a `fr`alkalmazásban. Amikor az oldal lekéri a HTML-és CSS-tartalmakat, a következőről indul:
+
 ```
 https://wingtiptoysb2c.blob.core.windows.net/fr/wingtip/unified.html
 ```
 
-## <a name="add-custom-languages"></a>Egyéni nyelv hozzáadása
+## <a name="add-custom-languages"></a>Egyéni nyelvek hozzáadása
 
-A Microsoft jelenleg nem biztosít a fordítások nyelveket is hozzáadhat. Adja meg a felhasználói folyamat minden karakterlánc a fordításokat kell.  Nyelvi és területi beállítás kódok korlátozva, az ISO 639-1 szabvány lévőket. 
+Hozzáadhat olyan nyelveket is, amelyeket a Microsoft jelenleg nem biztosít fordításokat a szolgáltatáshoz. A felhasználói folyamat összes karakterláncához meg kell adnia a fordításokat. A nyelvi és területi beállítási kódok az ISO 639-1 szabványban foglalt értékekre korlátozódnak.
 
-1. Válassza ki az Azure AD B2C-bérlőben **felhasználókövetési adatai**.
-2. Kattintson a felhasználói folyamatot, ahol egyéni nyelv hozzáadása, és kattintson a kívánt **nyelvek**.
-3. Válassza ki **egyéni nyelv hozzáadása** az oldal tetején.
-4. A megnyíló helyi ablaktáblán azonosítsa a nyelvét, adja-e a fordítások adjon meg egy érvényes területi kódot.
-5. Minden olyan lap töltse le a felülbírálások egy készletét az angol nyelvű tájékoztatáshoz, és a fordítások dolgozhat.
-6. Miután végzett, az a JSON-fájlok, feltöltheti őket minden egyes laphoz.
-7. Válassza ki **engedélyezése**, és a felhasználói folyamat most már jeleníti meg ezt a nyelvet, a felhasználók számára.
+1. A Azure AD B2C-bérlőben válassza a **felhasználói folyamatok**lehetőséget.
+2. Kattintson arra a felhasználói folyamatra, amelyhez egyéni nyelveket kíván hozzáadni, majd kattintson a **nyelvek**elemre.
+3. Válassza az **Egyéni nyelv hozzáadása** lehetőséget az oldal tetején.
+4. A megnyíló környezet ablaktáblán azonosítsa, hogy egy érvényes területi beállítás megadásával melyik nyelvet használja a fordítások számára.
+5. Minden oldalon letöltheti az angol nyelvű felülbírálások készletét, és dolgozhat a fordításokon is.
+6. Miután elkészült a JSON-fájlokkal, feltöltheti őket az egyes lapokra.
+7. Válassza az **Engedélyezés**lehetőséget, és a felhasználói folyamat mostantól megjelenítheti a felhasználók számára a nyelvet.
 8. Mentse a nyelvet.
 
 >[!IMPORTANT]
->Felülbírálások feltöltése a hozzá tartozó mentése előtt vagy a egyéni nyelveket kell.
->
+>A Mentés előtt engedélyeznie kell az egyéni nyelveket, vagy fel kell töltenie a felülbírálásokat.
 
 ## <a name="additional-information"></a>További információ
 
-### <a name="page-ui-customization-labels-as-overrides"></a>Oldal-UI testreszabása címkékre, felülbírálások
-Ha engedélyezi a nyelvi testreszabás, a címkék használatával az oldal-UI testreszabása a korábbi módosítások megmaradnak az egy JSON-fájlt az angol (en). Továbbra is módosíthatja a címkék és egyéb karakterláncokat a nyelvi testreszabás nyelvi erőforrás feltöltése.
+### <a name="page-ui-customization-labels-as-overrides"></a>Oldal felhasználói felületének testreszabása feliratok felülbírálásként
+
+Ha engedélyezi a nyelvi testreszabást, az oldal felhasználói felületének testreszabását használó címkék korábbi szerkesztési adatai megmaradnak az angol (en) JSON-fájlban. A nyelvi testreszabási nyelvi erőforrások feltöltésével továbbra is módosíthatja a címkéket és más karakterláncokat.
+
 ### <a name="up-to-date-translations"></a>Naprakész fordítások
-A Microsoft elkötelezett a szolgáltató a legfrissebb fordításokat használható. A Microsoft folyamatosan javítja a Fordítások és tartja őket a felel meg. A Microsoft lesz azonosítani a hibák és változások a globális terminológia és zökkenőmentesen győződjön meg a frissítéseket, amelyek működnek a felhasználói folyamat.
+
+A Microsoft elkötelezte magát arra, hogy a legnaprakészebb fordításokat biztosítson a használathoz. A Microsoft folyamatosan fejleszti a fordításokat, és megfelel az Ön számára. A Microsoft azonosítja a hibákat és a globális terminológiában bekövetkező változásokat, és olyan frissítéseket tesz elérhetővé, amelyek zökkenőmentesen fognak működni a felhasználói folyamat során.
+
 ### <a name="support-for-right-to-left-languages"></a>Jobbról balra író nyelvek támogatása
-A Microsoft jelenleg nem biztosít támogatást jobbról balra író nyelveket. Ez elvégezhető egyéni nyelv használatával, és CSS használatával megváltoztatni a karakterláncok jelennek meg.  Ha ez a funkció van szüksége, kérjük szavazzon rá a [Azure visszajelzési](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/19393000-provide-language-support-for-right-to-left-languag).
-### <a name="social-identity-provider-translations"></a>Közösségi szolgáltató fordítások
-A Microsoft biztosít a `ui_locales` közösségi bejelentkezések OIDC paramétert. De néhány közösségi identitásszolgáltató, többek között a Facebookhoz és a Google, ne fogadja el őket. 
-### <a name="browser-behavior"></a>Böngésző viselkedés
-Chrome és a Firefox beállított nyelvet is kérhetnek. Ha egy támogatott nyelvre, mielőtt az alapértelmezett jelenik meg. A Microsoft Edge jelenleg nem kér egy nyelvet, és rögtön az alapértelmezett nyelv kerül.
 
-### <a name="supported-languages"></a>Támogatott nyelvek
+A Microsoft jelenleg nem nyújt támogatást a jobbról balra író nyelvekhez. Ezt az egyéni területi beállítások és a CSS használatával végezheti el a karakterláncok megjelenítésének megváltoztatásához. Ha erre a szolgáltatásra van szüksége, szavazzon rá az [Azure](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/19393000-provide-language-support-for-right-to-left-languag)-visszajelzésre.
 
-| Nyelv              | Nyelvkód |
-|-----------------------|---------------|
-| Bengáli                | BN            |
-| cseh                 | cs            |
-| dán                | da            |
-| német                | de            |
-| görög                 | el            |
-| Angol               | hu            |
-| spanyol               | es            |
-| finn               | fi            |
-| francia                | fr            |
-| gudzsaráti              | Gu            |
-| hindi                 | hi            |
-| horvát              | óra            |
-| magyar             | hu            |
-| olasz               | it            |
-| japán              | ja            |
-| kannada               | kn            |
-| koreai                | ko            |
-| malajálam             | ml            |
-| maráthi               | MR            |
-| maláj                 | ms            |
-| Norvég (nynorsk)      | nb            |
-| holland                 | nl            |
-| pandzsábi               | Pa            |
-| lengyel                | pl            |
-| Portugál – Brazília   | pt-br         |
-| Portugál – Portugália | pt-pt         |
-| román              | ro            |
-| orosz               | ru            |
-| szlovák                | sk            |
-| svéd               | sv            |
-| tamil                 | TA            |
-| telugu                | Te            |
-| thai                  | .            |
-| török               | TR            |
-| Egyszerűsített kínai –  | zh-hans       |
-| Kínai – hagyományos | zh-hant       |
+### <a name="social-identity-provider-translations"></a>Közösségi identitás-szolgáltatói fordítások
+
+A Microsoft biztosítja `ui_locales` a OIDC paramétert a közösségi bejelentkezésekhez. De egyes közösségi identitás-szolgáltatók, például a Facebook és a Google is, ne tartsák tiszteletben őket.
+
+### <a name="browser-behavior"></a>Böngésző viselkedése
+
+A Chrome és a Firefox is a beállított nyelvre irányuló kérelem. Ha ez egy támogatott nyelv, az alapértelmezés szerint megjelenik. A Microsoft Edge jelenleg nem kér nyelvet, és egyenesen az alapértelmezett nyelvre lép.
+
+## <a name="supported-languages"></a>Támogatott nyelvek
+
+A Azure AD B2C a következő nyelvek támogatását tartalmazza. A felhasználói folyamat nyelveit Azure AD B2C biztosítjuk. A multi-Factor Authentication (MFA) értesítési nyelveit az [Azure MFA](../active-directory/authentication/concept-mfa-howitworks.md)nyújtja.
+
+| Nyelv              | Nyelvkód | Felhasználói folyamatok         | MFA-értesítések  |
+|-----------------------| :-----------: | :----------------: | :----------------: |
+| arab                | AR            | x                | :heavy_check_mark: |
+| bolgár             | BG            | x                | :heavy_check_mark: |
+| Bengáli                | Mrd USD            | :heavy_check_mark: | x                |
+| katalán               | CA            | x                | :heavy_check_mark: |
+| cseh                 | cs            | :heavy_check_mark: | :heavy_check_mark: |
+| dán                | da            | :heavy_check_mark: | :heavy_check_mark: |
+| német                | de            | :heavy_check_mark: | :heavy_check_mark: |
+| görög                 | el            | :heavy_check_mark: | :heavy_check_mark: |
+| Angol               | hu-HU            | :heavy_check_mark: | :heavy_check_mark: |
+| spanyol               | es            | :heavy_check_mark: | :heavy_check_mark: |
+| észt              | et            | x                | :heavy_check_mark: |
+| baszk                | EU            | x                | :heavy_check_mark: |
+| finn               | fi            | :heavy_check_mark: | :heavy_check_mark: |
+| francia                | fr            | :heavy_check_mark: | :heavy_check_mark: |
+| galíciai              | GL            | x                | :heavy_check_mark: |
+| gudzsaráti              | Gu            | :heavy_check_mark: | x                |
+| héber                | ő            | x                | :heavy_check_mark: |
+| hindi                 | szia            | :heavy_check_mark: | :heavy_check_mark: |
+| horvát              | óra            | :heavy_check_mark: | :heavy_check_mark: |
+| magyar             | hu            | :heavy_check_mark: | :heavy_check_mark: |
+| indonéz            | id            | x                | :heavy_check_mark: |
+| olasz               | it            | :heavy_check_mark: | :heavy_check_mark: |
+| japán              | ja            | :heavy_check_mark: | :heavy_check_mark: |
+| kazak                | KK            | x                | :heavy_check_mark: |
+| kannada               | KN            | :heavy_check_mark: | x                |
+| koreai                | ko            | :heavy_check_mark: | :heavy_check_mark: |
+| litván            | lt            | x                | :heavy_check_mark: |
+| lett               | lv            | x                | :heavy_check_mark: |
+| malajálam             | ml            | :heavy_check_mark: | x                |
+| maráthi               | Mr            | :heavy_check_mark: | x                |
+| maláj                 | ms            | :heavy_check_mark: | :heavy_check_mark: |
+| Norvég bokmal      | nb            | :heavy_check_mark: | x                |
+| holland                 | nl            | :heavy_check_mark: | :heavy_check_mark: |
+| norvég             | nem            | x                | :heavy_check_mark: |
+| pandzsábi               | PA            | :heavy_check_mark: | x                |
+| lengyel                | pl            | :heavy_check_mark: | :heavy_check_mark: |
+| Portugál – Brazília   | pt-br         | :heavy_check_mark: | :heavy_check_mark: |
+| Portugál – Portugália | pt-pt         | :heavy_check_mark: | :heavy_check_mark: |
+| román              | ro            | :heavy_check_mark: | :heavy_check_mark: |
+| orosz               | ru            | :heavy_check_mark: | :heavy_check_mark: |
+| szlovák                | sk            | :heavy_check_mark: | :heavy_check_mark: |
+| szlovén             | SL            | x                | :heavy_check_mark: |
+| Szerb – cirill betűs    | SR-cryl-cs    | x                | :heavy_check_mark: |
+| Szerb – latin betűs       | SR-Latn-cs    | x                | :heavy_check_mark: |
+| svéd               | sv            | :heavy_check_mark: | :heavy_check_mark: |
+| tamil                 | ta            | :heavy_check_mark: | x                |
+| telugu                | ttelepítése            | :heavy_check_mark: | x                |
+| thai                  | .            | :heavy_check_mark: | :heavy_check_mark: |
+| török               | TR            | :heavy_check_mark: | :heavy_check_mark: |
+| ukrán             | uk            | x                | :heavy_check_mark: |
+| vietnami            | VI            | x                | :heavy_check_mark: |
+| Egyszerűsített kínai  | zh-Hans       | :heavy_check_mark: | :heavy_check_mark: |
+| Kínai – hagyományos | zh-Hant       | :heavy_check_mark: | :heavy_check_mark: |

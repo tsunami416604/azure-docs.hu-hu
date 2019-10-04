@@ -1,25 +1,18 @@
 ---
-title: Ajánlat közzétételének |} A Microsoft Docs
+title: Ajánlat közzétételének |} Az Azure Marketplace-en
 description: API-t az adott ajánlat közzététele.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: cb1293a771a137f4df7e36a2b412f68b384f16ef
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.author: pabutler
+ms.openlocfilehash: 117a4e5e238e754524ff813ce25ebc1105e2153c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810947"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64934979"
 ---
 <a name="publish-an-offer"></a>Ajánlat közzététele
 ================
@@ -33,9 +26,9 @@ A megadott ajánlat a közzétételi folyamat elindul. Ez a hívás egy olyan ho
 
 |  **Name (Név)**      |    **Leírás**                               |  **Adattípus** |
 |  ------------- |  ------------------------------------            |   -----------  |
-|  publisherId   | Például a közzétevő azonosítója `contoso`      |   Sztring       |
-|  OfferId       | Ajánlat azonosítója                                 |   Sztring       |
-|  API-verzió   | Az API legújabb verziója                        |   Dátum         |
+|  publisherId   | Például a közzétevő azonosítója `contoso`      |   String       |
+|  offerId       | Ajánlat azonosítója                                 |   String       |
+|  api-version   | Az API legújabb verziója                        |   Dátum         |
 |  |  |
 
 

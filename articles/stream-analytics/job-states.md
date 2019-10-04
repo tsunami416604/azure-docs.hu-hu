@@ -1,32 +1,32 @@
 ---
-title: Az Azure Stream Analytics-feladat állapotok
-description: Ez a cikk ismerteti egy Stream Analytics-feladat különböző állapotok
+title: Azure Stream Analytics feladatok állapota
+description: Ez a cikk a Stream Analytics feladatok négy különböző állapotát ismerteti; futó, leállított, csökkentett teljesítményű és sikertelen.
 services: stream-analytics
 author: sidram
 ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/06/2019
-ms.openlocfilehash: 28e0e69d3a6a4d3a38146cbf2c49426b3b16c784
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.date: 06/21/2019
+ms.openlocfilehash: c533463ff544dc315142f7fb95c34c67933f9614
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55961584"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444251"
 ---
-# <a name="azure-stream-analytics-job-states"></a>Az Azure Stream Analytics-feladat állapotok
+# <a name="azure-stream-analytics-job-states"></a>Azure Stream Analytics feladatok állapota
 
-Stream Analytics-feladat egy adott időpontban négy állapota lehet. A Stream Analytics-feladat áttekintése lapon a feladat állapotát az Azure Portalon találhatja meg. 
+Egy Stream Analytics feladatnak a négy állam egyikében lehet egy adott időpontban: futó, leállított, csökkentett teljesítményű vagy sikertelen. A feladatok állapotát a Azure Portal Stream Analytics feladatok Áttekintés oldalán találja. 
 
 | Állapot | Leírás | Javasolt műveletek |
 | --- | --- | --- |
-| **Fut** | A feladat fut az Azure-ban meghatározott bemeneti forrás érkező, feldolgozását és írása az eredményeket a konfigurált kimeneti fogadóinak események olvasását. | Nyomon követheti a feladat teljesítményét a figyelési szolgáltatás által az ajánlott eljárás [kulcsfontosságú metrikát](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-set-up-alerts#scenarios-to-monitor). |
-| **Stopped** | A feladat le van állítva, és nem dolgozza fel az eseményeket. | NA | 
-| **Csökkentett teljesítményű** | Átmeneti hibák valószínűleg negatív hatással vannak a feladatot. Stream Analytics azonnal megpróbálja az ilyen hibák, és térjen vissza a futási állapota (néhány percen belül). Ezek a hibák sikerült történik hálózati problémák, egyéb Azure-erőforrások rendelkezésre állása miatt deszerializálási hibák stb. A feladat teljesítményét negatív lehet, ha feladat csökkentett teljesítményű állapotban van.| Tekintse meg a [diagnosztikai vagy tevékenység naplók](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-job-diagnostic-logs#debugging-using-activity-logs) átmeneti hibák okának tájékozódhat. Azokban az esetekben, például a deszerializálás hibák ajánlott annak biztosítására, események nem hibás korrekciós műveletek végrehajtására. Ha a feladat tartja erőforrás felhasználási korlát elérése, próbálja meg a SU számának növeléséhez vagy [párhuzamosíthatja a feladat](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization). Más esetekben, ahol semmilyen műveletet nem lehet végrehajtani, a Stream Analytics megpróbálja helyreállítani kívánt egy *futó* állapota.  |
-| **Nem sikerült** | A feladat kritikus hibát eredményez a hibás állapotban. Események nem olvasása és feldolgozása. Futásidejű hibák általában az okozza a feladat befejezési sikertelen állapotban. | Is [riasztások konfigurálása](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-set-up-alerts#set-up-alerts-in-the-azure-portal) úgy, hogy Ön értesítést kaphat, amikor a feladat sikertelen állapotba kerül. <br> <br>Is hibakeresést [tevékenységnaplóinak és diagnosztikai naplóinak](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-job-diagnostic-logs#debugging-using-activity-logs) okát, és a probléma.|
+| **Fut** | A feladatnak a megadott bemeneti forrásokból érkező, az Azure-beli olvasási eseményeken kell futnia, és fel kell dolgoznia azokat, és az eredményeket a konfigurált kimeneti mosdóba kell írni | Az ajánlott eljárás a feladatok teljesítményének nyomon követése a [fő mérőszámok](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-set-up-alerts#scenarios-to-monitor)figyelésével. |
+| **Megállt** | A rendszer leállítja a feladatot, és nem dolgozza fel az eseményeket. | NA | 
+| **Leromlott** | Előfordulhat, hogy a bemeneti és kimeneti kapcsolatokban időnként problémák léptek fel. Ezeket a hibákat átmeneti hibáknak nevezzük, amelyekkel a feladatok csökkentett teljesítményű állapotba kerülhetnek. Stream Analytics azonnal megkísérli visszaállítani az ilyen hibákat, és visszatér egy futó állapotba (néhány percen belül). Ezek a hibák hálózati problémák, más Azure-erőforrások rendelkezésre állása, deszerializálási hibák stb. miatt fordulnak elő. A feladatok teljesítményének romlása befolyásolhatja, ha a feladatnak csökkentett állapotban van.| Az átmeneti hibák okának megismeréséhez tekintse meg a [diagnosztikai vagy a tevékenység naplóit](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-job-diagnostic-logs#debugging-using-activity-logs) . Olyan esetekben, mint például a deszerializálási hibák, javasolt a javítási művelet végrehajtása annak biztosítása érdekében, hogy az események ne legyenek helytelenek. Ha a feladatokban továbbra is eléri az erőforrás-kihasználtsági korlátot, próbálja meg megnövelni a integrálással számát vagy a [feladatot](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization). Más esetekben, amikor nem végez semmilyen műveletet, Stream Analytics megkísérli a helyreállítást egy *futó* állapotba. <br> A küszöbértékek [késleltetésének](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-set-up-alerts#scenarios-to-monitor) mérőszáma segítségével megtudhatja, hogy ezek az átmeneti hibák hatással vannak-e a feladatok teljesítményére.|
+| **Sikertelen** | A feladatainak kritikus hibába ütközött, ami sikertelen állapotot eredményezett. Az események nincsenek beolvasva és feldolgozva. A futásidejű hibák gyakori oka, hogy a feladatok sikertelen állapotban vannak. | A [riasztásokat konfigurálhatja](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-set-up-alerts#set-up-alerts-in-the-azure-portal) úgy, hogy értesítést kapjon, ha a feladatot sikertelen állapotba kerül. <br> <br>A hibakereséshez [tevékenység-és diagnosztikai naplókat](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-job-diagnostic-logs#debugging-using-activity-logs) használhat a kiváltó ok azonosításához és a probléma megoldásához.|
 
 ## <a name="next-steps"></a>További lépések
-* [Az Azure Stream Analytics-feladatok riasztások beállítása](stream-analytics-set-up-alerts.md)
-* [A metrikák elérhető a Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-monitoring#metrics-available-for-stream-analytics)
-* [Hibaelhárítás a tevékenység és a diagnosztikai naplók használatával](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-job-diagnostic-logs)
+* [Riasztások beállítása Azure Stream Analytics feladatokhoz](stream-analytics-set-up-alerts.md)
+* [Stream Analytics elérhető metrikák](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-monitoring#metrics-available-for-stream-analytics)
+* [Hibakeresés a tevékenység-és diagnosztikai naplók használatával](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-job-diagnostic-logs)

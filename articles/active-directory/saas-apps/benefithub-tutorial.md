@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f70bfbac98904752baa093076ce66f0de4993ea2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 54a215701538bd95e8fddcef270d6ca6f957343f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57849941"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67106332"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-benefithub"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező BenefitHub
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a BenefitHub konfigurálásához hozzá kell BenefitHu
 
 **BenefitHub hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

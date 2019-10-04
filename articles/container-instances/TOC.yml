@@ -29,6 +29,10 @@
           href: container-instances-multi-container-yaml.md
         - name: Tárolócsoport üzembe helyezése – Resource Manager
           href: container-instances-multi-container-group.md
+    - name: Integráció az Azure-szolgáltatásokkal
+      items:
+        - name: Aktiválás az Azure Functions szolgáltatással
+          href: container-instances-tutorial-azure-function-trigger.md
 - name: Példák
   items:
     - name: Kódminták
@@ -45,6 +49,8 @@
       href: container-instances-region-availability.md
     - name: Vezénylőkkel fennálló kapcsolat
       href: container-instances-orchestrator-relationship.md
+    - name: Biztonsági szempontok
+      href: container-instances-image-security.md
 - name: Útmutatók
   items:
     - name: Üzembe helyezés
@@ -59,7 +65,7 @@
           href: container-instances-restart-policy.md
         - name: Környezeti változók beállítása (env)
           href: container-instances-environment-variables.md
-        - name: Tároló belépési pontjának felülbírálása
+        - name: Tárolóindítási parancs beállítása (entrypoint)
           href: container-instances-start-command.md
         - name: Parancs végrehajtása (exec)
           href: container-instances-exec.md
@@ -69,6 +75,8 @@
           href: container-instances-managed-identity.md
         - name: GPU-erőforrások használata (előzetes verzió)
           href: container-instances-gpu.md
+        - name: SSL-végpont engedélyezése
+          href: container-instances-container-group-ssl.md
     - name: Adatkötetek csatlakoztatása
       items:
         - name: Azure-fájlmegosztás
@@ -93,7 +101,7 @@
           href: container-instances-monitor.md
         - name: Tároló naplóinak és eseményeinek lekérése
           href: container-instances-get-logs.md
-        - name: Naplózás az Azure Log Analytics használatával
+        - name: Naplózás Azure Monitor-naplókkal
           href: container-instances-log-analytics.md
     - name: Hibaelhárítás
       items:
@@ -117,6 +125,10 @@
       href: /javascript/api/overview/azure/containerinstances
     - name: Resource Manager-sablon
       href: /azure/templates/microsoft.containerinstance/containergroups
+    - name: YAML
+      href: container-instances-reference-yaml.md
+    - name: Összekötő
+      href: /connectors/aci
 - name: További források
   items:
     - name: Fejlessze a készségeit a Microsoft Learnnel
@@ -133,3 +145,5 @@
       href: 'https://stackoverflow.com/questions/tagged/azure-container-instances'
     - name: Videók
       href: 'https://azure.microsoft.com/resources/videos/index/?services=container-instances&sort=newest'
+    - name: GYIK
+      href: container-instances-faq.md

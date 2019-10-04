@@ -1,10 +1,10 @@
 ---
-title: Alkalmazás konfigurálása webes API-k közzétételére (előzetes verzió) | Azure
+title: Alkalmazás konfigurálása webes API-k elérhetővé tétele érdekében – Microsoft Identity platform
 description: Megtudhatja, hogyan konfigurálhat alkalmazást új engedély/hatókör és szerepkör közzétételére, hogy elérhetővé tegye az alkalmazást az ügyfélalkalmazások számára.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/25/2018
-ms.author: celested
+ms.date: 08/14/2019
+ms.author: ryanwi
 ms.custom: aaddev
-ms.reviewer: lenalepa, sureshja
+ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a8ff17656978e6e4e8741c19cda79743560481a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f9c8e4a2e5dadf64312481f33993911177c90bc7
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58080845"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989275"
 ---
-# <a name="quickstart-configure-an-application-to-expose-web-apis-preview"></a>Gyors útmutató: Egy alkalmazást úgy teszi közzé a webes API-k (előzetes verzió)
+# <a name="quickstart-configure-an-application-to-expose-web-apis"></a>Gyors útmutató: Alkalmazás konfigurálása webes API-k elérhetővé tétele érdekében
 
 Fejleszthet saját webes API-kat,és [engedélyek/hatókörök](developer-glossary.md#scopes) és [szerepkörök](developer-glossary.md#roles) közzétételével elérhetővé teheti azokat az ügyfélalkalmazások számára. A megfelelően konfigurált webes API-k a Microsoft többi webes API-jához hasonlóan érhetők el, mint például a Graph API vagy az Office 365 API-k.
 
@@ -37,7 +37,6 @@ Először is győződjön meg arról, hogy az alábbi előfeltételek teljesüln
 * Megismerte a támogatott [engedélyekkel és hozzájárulással](v2-permissions-and-consent.md) kapcsolatos tudnivalókat, mivel fontos szem előtt tartania őket olyan alkalmazások készítésekor, amelyeket más felhasználóknak vagy alkalmazásoknak is használniuk kell.
 * Rendelkezik olyan bérlővel, amelyhez regisztrált alkalmazások tartoznak.
   * Ha nincsenek regisztrált alkalmazásai, [ismerje meg, hogyan regisztrálhat alkalmazásokat a Microsoft Identity Platformon](quickstart-register-app.md).
-* Hagyja jóvá az előzetes verzió használatát az alkalmazások Azure Portalon való regisztrálására. E rövid útmutató lépései az új felhasználói felületen alapulnak, és csak akkor működnek, ha Ön jóváhagyta az előzetes verzió használatát.
 
 ## <a name="sign-in-to-the-azure-portal-and-select-the-app"></a>Bejelentkezés az Azure Portalra és az alkalmazás kiválasztása
 
@@ -45,7 +44,7 @@ Mielőtt konfigurálhatná az alkalmazást, végre kell hajtania az alábbi lép
 
 1. Jelentkezzen be [Azure Portalra](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, illetve személyes Microsoft-fiókjával.
 1. Ha a fiókja több bérlőhöz is biztosít hozzáférést, válassza ki a fiókot az oldal jobb felső sarkában, és állítsa a portálmunkamenetét a kívánt Azure AD-bérlőre.
-1. A bal oldali navigációs panelen válassza az **Azure Active Directory** szolgáltatást, majd az **Alkalmazásregisztrációk (előzetes verzió)** lehetőséget.
+1. A bal oldali navigációs ablaktáblán válassza ki a **Azure Active Directory** szolgáltatást, majd válassza a **Alkalmazásregisztrációk**lehetőséget.
 1. Keresse meg és jelölje ki a konfigurálni kívánt alkalmazást. Miután kijelölte az alkalmazást, az alkalmazás **Áttekintés** lapja vagy regisztrációs főoldala jelenik meg.
 1. Válassza ki az új hatókör közzétételéhez használni kívánt módszert (felhasználói felület vagy alkalmazásjegyzék):
     * [Új hatókör közzététele a felhasználói felületen](#expose-a-new-scope-through-the-ui)
@@ -53,7 +52,7 @@ Mielőtt konfigurálhatná az alkalmazást, végre kell hajtania az alábbi lép
 
 ## <a name="expose-a-new-scope-through-the-ui"></a>Új hatókör közzététele a felhasználói felületen
 
-[![API közzététele a felhasználói felületen](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png)](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png#lightbox)
+[![Bemutatja, hogyan tehet elérhetővé egy API-t a felhasználói felületen](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png)](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png#lightbox)
 
 Ha a felhasználói felületen kíván közzétenni új hatókört:
 
@@ -117,8 +116,9 @@ Ha az alkalmazásjegyzékben kívánja közzétenni új hatókört:
 ## <a name="verify-the-web-api-is-exposed-to-other-applications"></a>A webes API többi alkalmazás számára való közzétételének ellenőrzése
 
 1. Lépjen vissza az Azure AD-bérlőre, válassza az **Alkalmazásregisztrációk** lehetőséget, majd keresse meg és válassza ki a konfigurálni kívánt ügyfélalkalmazást.
-1. Ismételje meg a konfigurálása egy webes API-k eléréséhez ügyfélalkalmazás leírt lépéseket.
-1. Amikor az **API kiválasztása** lépéshez ér, válassza ki az erőforrást. Meg kell jelennie az új hatókörnek, amely így már elérhető az ügyfelek engedélykéréseihez.
+1. Hajtsa végre ismét az [Ügyfélalkalmazás konfigurálása webes API-k elérésére](quickstart-configure-app-access-web-apis.md) című cikkben leírt lépéseket.
+1. Ha egy API [](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis
+)kiválasztására szolgáló lépésre lép, válassza ki az erőforrást. Meg kell jelennie az új hatókörnek, amely így már elérhető az ügyfelek engedélykéréseihez.
 
 ## <a name="more-on-the-application-manifest"></a>További információk az alkalmazásjegyzékről
 

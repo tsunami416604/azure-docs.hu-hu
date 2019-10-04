@@ -1,59 +1,59 @@
 ---
-title: Használja a vizsgálóeszközt - Content Moderator keresztül tartalom értékelések
-titlesuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan a felülvizsgálati eszköz lehetővé teszi, hogy az emberi moderátorok egy web portal-rendszerképeket áttekintéséhez.
+title: Tartalom-felülvizsgálatok használata a felülvizsgálati eszközön – Content Moderator
+titleSuffix: Azure Cognitive Services
+description: Ismerje meg, hogy a felülvizsgálati eszköz hogyan teszi lehetővé az emberi moderátorok számára a képek áttekintését egy webes portálon.
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: sajagtap
-ms.openlocfilehash: a482ecf4a0d321525ab7e392695d2c4c0eebeadc
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 065d3cd80f93753eb91571d4ada4fe7151258ec0
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758486"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882658"
 ---
-# <a name="create-human-reviews"></a>Emberi ellenőrző létrehozása
+# <a name="create-human-reviews"></a>Emberi felülvizsgálatok létrehozása
 
-Ebben az útmutatóban megtudhatja, hogyan állíthat be [felülvizsgálatok](../review-api.md#reviews) a felülvizsgálati eszköz webhelyen. Értékelések tárolja, és az emberi moderátorok mérje fel a tartalom megjelenítése. A moderátorok is az alkalmazott címkék alter és szükség szerint a saját egyéni címkék alkalmazása. Amikor egy felhasználó a felülvizsgálat befejeződött, az eredményeket egy megadott visszahívási végpont érkeznek, és a tartalmat a webhely törlődik.
+Ebből az útmutatóból megtudhatja, hogyan állíthat be [](../review-api.md#reviews) felülvizsgálatokat a felülvizsgálati eszköz webhelyén. A értékelések az emberi moderátorok számára az értékelés céljából tárolják és jelenítik meg a tartalmakat. A moderátorok módosíthatják az alkalmazott címkéket, és szükség szerint alkalmazhatják a saját egyéni címkéit. Amikor a felhasználó befejezi a felülvizsgálatot, a rendszer elküldi az eredményeket egy megadott visszahívási végpontnak, és eltávolítja a tartalmat a helyről.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Jelentkezzen be, vagy hozzon létre egy fiókot a Content Moderator [vizsgálóeszköz](https://contentmoderator.cognitive.microsoft.com/) hely.
+- Jelentkezzen be, vagy hozzon létre egy fiókot a Content Moderator [felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com/) webhelyén.
 
 ## <a name="image-reviews"></a>Képekre vonatkozó vélemények
 
-1. Nyissa meg a [vizsgálóeszköz](https://contentmoderator.cognitive.microsoft.com/), jelölje be a **próbálja** lapra, és tekintse át az egyes rendszerképek feltöltése.
-1. Miután a feltöltött képek végzett feldolgozás, nyissa meg a **tekintse át** lapra, és válassza **lemezkép**.
+1. Lépjen a [felülvizsgálati eszközre](https://contentmoderator.cognitive.microsoft.com/), válassza a **Try (kipróbálás** ) fület, és töltsön fel néhány képet az áttekintéshez.
+1. A feltöltött lemezképek feldolgozásának befejeződése után lépjen a **felülvizsgálat** lapra, és válassza a **kép**lehetőséget.
 
-    ![Chrome böngészőben a vizsgálóeszközt látható az a képen tekintse át opció kiemelésével](images/review-images-1.png)
+    ![Chrome böngésző, amely a felülvizsgálati eszközt jeleníti meg a kép áttekintése lehetőség kiemelésével](images/review-images-1.png)
 
-    A képek megjelenítése minden olyan címkét, az automatikus moderálási folyamat hozzá van rendelve. A lemezképek, a felülvizsgálati eszköz keresztül beküldött más részt vevő felülvizsgálóknak nem láthatók el.
+    A képek az automatikus moderálási folyamat által hozzárendelt címkékkel jelennek meg. A felülvizsgálati eszközön keresztül elküldött rendszerképek nem láthatók más felülvizsgálók számára.
 
-1. Szükség esetén, helyezze át a **megjeleníthető értékelések** a lemezképek, a képernyőn megjelenő számát csúszka (1). Kattintson a **címkézett** vagy **címkézetlen** gombok (2) a képek rendezése ennek megfelelően. Kattintson a Váltás a be- vagy kikapcsolása címke panel (3).
+1. A képernyőn megjelenő képek számának beállításához áthelyezheti az értékeléseket (1). Kattintson a **címkézett** vagy **címkézetlen** gombokra (2) a képek megfelelő rendezéséhez. Kattintson a címke panelre (3) a be-vagy kikapcsolásához.
 
-    ![Chrome böngészőben a vizsgálóeszközt felülvizsgálatra megcímkézett képek megjelenítése](images/review-images-2.png)
+    ![Chrome-böngésző, amely a felülvizsgálati eszközt tartalmazza a címkézett rendszerképekkel a felülvizsgálathoz](images/review-images-2.png)
 
-1. További részletek egy rendszerkép, kattintson a miniatűr, és válassza a három pontra a **részleteinek megtekintéséhez**. Kép egy a csapaton rendelhet a **áthelyezése** beállítás (lásd: a [csapatok](./configure.md#manage-team-and-subteams) szakaszban tudhat meg többet az alcsoportok).
+1. Ha további információkat szeretne látni egy képpel kapcsolatban, kattintson a három pontra a miniatűrben, és válassza a **részletek megtekintése**lehetőséget. Hozzáadhat egy rendszerképet egy alcsapathoz az **Áthelyezés** lehetőséggel (lásd a [csapatok](./configure.md#manage-team-and-subteams) szakaszt az alcsoportok megismeréséhez).
 
-    ![Egy olyan rendszerképre a nézet részletei lehetőség kiemelésével](images/review-images-3.png)
+    ![Egy, a részletek megtekintése lehetőséget kiemelő rendszerkép](images/review-images-3.png)
 
-1. Tallózással keresse meg a kép moderálás adatait részleteit megjelenítő oldalon.
+1. A Részletek lapon keresse meg a képek moderálásával kapcsolatos információkat.
 
-    ![A jóváhagyás részleteit egy külön panelen felsorolt kép](images/review-images-4.png)
+    ![Egy külön ablaktáblán felsorolt moderálási részleteket tartalmazó rendszerkép](images/review-images-4.png)
 
-1. Miután ellenőrizte és a címke hozzárendeléseinek frissítése, igény szerint, kattintson a **tovább** az értékelések elküldéséhez. Miután elküldött, öt másodpercen belül kell kattintania a **előző** gombra kattintva térjen vissza az előző képernyőre, és tekintse át a lemezképeket újra. Ezt követően a képek nem lesznek a küldési várólista és a **előző** gombot már nem érhető el.
+1. Miután áttekintette és frissítette a címke-hozzárendeléseket, kattintson a **tovább** gombra a felülvizsgálatok elküldéséhez. A beküldést követően öt másodpercre van szüksége, hogy az előző gombra kattintva térjen vissza az előző képernyőre, és tekintse át a lemezképeket. Ezt követően a lemezképek már nem szerepelnek a küldési várólistában, és az **előző** gomb már nem érhető el.
 
 ## <a name="text-reviews"></a>Szövegekre vonatkozó vélemények
 
-Szöveg áttekinti a lemezkép felülvizsgálatok hasonlóan működnek. Helyett tartalmat tölt fel, egyszerűen írja vagy illessze be a szöveget (legfeljebb 1024 karakter). Ezután a Content Moderator elemzi a szöveget, és alkalmazza a címkéket (mellett egyéb moderálás információkat, például TRÁGÁR és a személyes adatok). Szövegekre vonatkozó vélemények, az alkalmazott címkék bekapcsolására, illetve egyéni címkék alkalmazásához a felülvizsgálat elküldése előtt.
+A szöveges értékelések hasonlóan működnek a képelemzésekhez. A tartalom feltöltése helyett egyszerűen írhat vagy beilleszthet szöveget (legfeljebb 1 024 karakter). Ezután Content Moderator elemzi a szöveget, és alkalmazza a címkéket (az egyéb moderálási információk, például a káromkodás és a személyes adatok mellett). A szöveges felülvizsgálatok során a felülvizsgálat elküldése előtt válthat az alkalmazott címkéket és/vagy alkalmazhat egyéni címkéket.
 
-![A felülvizsgálati eszköz ábrázoló képernyőkép megjelölt szöveget a Chrome böngésző ablakában](../images/reviewresults_text.png)
+![Képernyőkép a megjelöléssel ellátott szövegről egy Chrome-böngészőablakban](../images/reviewresults_text.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az útmutatóban útmutatóból megtudhatta, hogyan állíthatja be, és használja a Content Moderator felülvizsgálatok [vizsgálóeszköz](https://contentmoderator.cognitive.microsoft.com). Ezután tekintse meg a [REST API-útmutató](../try-review-api-review.md) vagy a [.NET SDK útmutatóját](../moderation-reviews-quickstart-dotnet.md) megtudhatja, hogyan hozhat létre programozott módon az értékelések.
+Ebben az útmutatóban megtanulta, hogyan állíthat be és használhat felülvizsgálatokat a Content Moderator [felülvizsgálati eszközből](https://contentmoderator.cognitive.microsoft.com). Ezután tekintse meg a [REST API útmutatót](../try-review-api-review.md) vagy a [.net SDK útmutatóját](../moderation-reviews-quickstart-dotnet.md) , amelyből megtudhatja, hogyan hozhat létre programozott módon az értékeléseket.

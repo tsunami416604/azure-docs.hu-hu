@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 529c8d74b6e0a63a7969f31d5b5e8073ecb79411
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58665746"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60543223"
 ---
 # <a name="service-fabric-testability-scenarios-service-communication"></a>A Service Fabric testability alkalmazási helyzetek: A szolgáltatások közötti kommunikáció
 Mikroszolgáltatások és architekturális stílusok szolgáltatásorientált felülete természetes módon az Azure Service Fabricben. Az elosztott architektúrák az ilyen típusú componentized épülő alkalmazások általában több szolgáltatás, amely egymáshoz beszélnie állnak. Még a legegyszerűbb esetben általában rendelkezik legalább egy állapot nélküli webes szolgáltatás és a egy állapotalapú tárolási szolgáltatás, amely kell kommunikálniuk.

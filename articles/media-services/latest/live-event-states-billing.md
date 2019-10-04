@@ -13,18 +13,18 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 01/28/2019
 ms.author: juliako
-ms.openlocfilehash: 17fead25840e45f98478a6eb6c146bcc261dfe75
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 2907b5be7f8d5fda3d510484179e80b065ab64b0
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55158009"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67074892"
 ---
 # <a name="live-event-states-and-billing"></a>Élő esemény állapotok és számlázás
 
 Az Azure Media Services egy élő eseményt megkezdődik, amint állapotában átkerül számlázási **futó**. Az élő esemény, a számlázás megszüntetéséhez akkor állítsa le az élő esemény.
 
-Amikor **LiveEventEncodingType** a a [élő esemény](https://docs.microsoft.com/rest/api/media/liveevents) automatikus után állítja le minden olyan élő eseményt, amely továbbra is a Media Services Standard értékre van állítva a **futó** állapot 12 óra után a bemeneti hírcsatorna elvész, és nincsenek nincs **élő kimeneti**futó s. Azonban továbbra is díjköteles volt az élő esemény indításakor a **futó** állapota.
+Amikor **LiveEventEncodingType** a a [élő esemény](https://docs.microsoft.com/rest/api/media/liveevents) van beállítva, a Standard vagy Premium1080p, automatikus után állítja le minden olyan élő eseményt, amely továbbra is a Media Services a **futó** 12 állapot óra után a bemeneti hírcsatorna elvész, és nincsenek nincs **élő kimeneti**futó s. Azonban továbbra is díjköteles volt az élő esemény indításakor a **futó** állapota.
 
 ## <a name="states"></a>Állapotok
 

@@ -1,177 +1,838 @@
 ---
-title: Ismerkedés az Azure Search Java – Azure Search szolgáltatással
-description: Üzemeltetett felhőalapú keresőalkalmazás felépítése az Azure rendszerben a Java programozási nyelv használatával.
-services: search
-author: jj09
-manager: jlembicz
-ms.service: search
-ms.topic: conceptual
-ms.date: 08/26/2018
+title: 'Gyors útmutató: Keresési index létrehozása javában REST API-k használatával – Azure Search'
+description: Ismerteti, hogyan lehet indexet létrehozni, adatok betöltésére és lekérdezéseket futtatni a Java és a Azure Search REST API-k használatával.
+author: lisaleib
+manager: nitinme
 ms.author: jjed
-ms.custom: seodec2018
-ms.openlocfilehash: d16f20e3c2dfa3d670006e44f0072a3871d41c3f
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+tags: azure-portal
+services: search
+ms.service: search
+ms.custom: seodec2018, seo-java-july2019, seo-java-august2019
+ms.devlang: java
+ms.topic: quickstart
+ms.date: 09/10/2019
+ms.openlocfilehash: 455f3dfdce93d0b39960f9ec87b0938060f87687
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53629901"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881573"
 ---
-# <a name="get-started-with-azure-search-in-java"></a>Bevezetés az Azure Search használatába Java nyelven
+# <a name="quickstart-create-an-azure-search-index-in-java-using-rest-apis"></a>Gyors útmutató: Azure Search index létrehozása javában a REST API-k használatával
 > [!div class="op_single_selector"]
+> * [JavaScript](search-get-started-nodejs.md)
+> * [C#](search-get-started-dotnet.md)
+> * [Java](search-get-started-java.md)
 > * [Portál](search-get-started-portal.md)
-> * [.NET](search-howto-dotnet-sdk.md)
-> 
-> 
+> * [PowerShell](search-create-index-rest-api.md)
+> * [Python](search-get-started-python.md)
+> * [Postman](search-get-started-postman.md)
 
-Ismerje meg, hogyan hozhat létre olyan egyéni Java keresőalkalmazást, amely az Azure Search szolgáltatást használja a keresésekhez. Ez az oktatóanyag az [Azure Search szolgáltatás REST API](https://msdn.microsoft.com/library/dn798935.aspx)-ját használja ebben a gyakorlatban az objektumok és műveletek összeállításához.
+Hozzon létre egy Azure Search-indexet létrehozó, betöltési és lekérdezési Java-konzolos alkalmazást a [IntelliJ](https://www.jetbrains.com/idea/), a [Java 11 SDK](/java/azure/jdk/?view=azure-java-stable)és a [Azure Search Service REST API](/rest/api/searchservice/)használatával. Ez a cikk részletes útmutatást nyújt az alkalmazás létrehozásához. Azt is megteheti, hogy [letölti és futtatja a teljes alkalmazást](/samples/azure-samples/azure-search-java-samples/java-sample-quickstart/).
 
-A minta futtatásához rendelkeznie kell egy Azure Search szolgáltatással, amelyre az [Azure portálon](https://portal.azure.com) regisztrálhat. A részletes utasításokat lásd: [Azure Search szolgáltatás létrehozása a portálon](search-create-service-portal.md).
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-A minta összeállításához és teszteléséhez a következő szoftvereket használtuk:
+## <a name="prerequisites"></a>Előfeltételek
 
-* [Eclipse IDE for Java EE Developers](https://www.eclipse.org/downloads/packages/release/photon/r/eclipse-ide-java-ee-developers). Ügyeljen arra, hogy az EE-verziót töltse le. Az ellenőrzési lépések egyikének olyan funkcióra van szüksége, amely csak ebben a kiadásban található.
-* [JDK 8u181](https://aka.ms/azure-jdks)
-* [Az Apache Tomcat 8.5.33](https://tomcat.apache.org/download-80.cgi#8.5.33)
+A következő szoftvereket és szolgáltatásokat használtuk a minta összeállításához és teszteléséhez:
 
-## <a name="about-the-data"></a>Tudnivalók az adatokról
-A mintaalkalmazás az [Amerikai Egyesült Államok geológiai szolgáltatásainak (United States Geological Services, USGS)](https://geonames.usgs.gov/domestic/download_data.htm) adatait használja, az adatkészlet méretének csökkentése érdekében Rhode Island államra szűrve. Ezeket az adatokat fogjuk használni egy olyan keresőalkalmazás létrehozásához, amely jellegzetes épületeket, például kórházakat és iskolákat, valamint geológiai jellegzetességeket, például folyókat, tavakat és hegycsúcsokat ad vissza eredményül.
++ [IntelliJ ötlet](https://www.jetbrains.com/idea/)
 
-Ebben az alkalmazásban a **SearchServlet.java** program egy [indexelő](https://msdn.microsoft.com/library/azure/dn798918.aspx) szerkezet segítségével létrehozza és betölti az indexet, amelyhez egy nyilvános Azure SQL-adatbázisból kéri le a szűrt USGS-adatkészletet. Az előre meghatározott hitelesítő adatokat és az online adatforrás kapcsolódási adatait a programkód tartalmazza. Az adatelérés szempontjából nincs szükség további konfigurációra.
++ [Java 11 SDK](/java/azure/jdk/?view=azure-java-stable)
 
-> [!NOTE]
-> Az adatkészlethez olyan szűrőt alkalmaztunk, hogy az ingyenes tarifacsomag 10 000 dokumentumos korlátja alatt maradjunk. Ha a standard csomagot használja, arra nem vonatkozik ez a korlátozás, és módosíthatja úgy a kódot, hogy nagyobb adatkészletet használhasson. Az egyes tarifacsomagok kapacitásával kapcsolatos részletes információkat lásd: [Korlátozások és megkötések](search-limits-quotas-capacity.md).
-> 
-> 
++ [Hozzon létre egy Azure Search szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a jelenlegi előfizetése alatt. Ehhez a rövid útmutatóhoz ingyenes szolgáltatást is használhat.
 
-## <a name="about-the-program-files"></a>Tudnivalók a programfájlokról
-Az alábbi lista a példához kapcsolódó fájlokat ismerteti.
+<a name="get-service-info"></a>
 
-* Search.jsp: A felhasználói felületet biztosítja
-* SearchServlet.java: (Az MVC-vezérlőhöz hasonló) módszert is biztosít
-* SearchServiceClient.java: HTTP-kérelmeket kezeli
-* SearchServiceHelper.java: Egy statikus módszereket biztosító segítőosztály
-* Document.Java: Az adatmodellt biztosítja
-* a Config.Properties: Beállítja a Search szolgáltatás URL-CÍMÉT és api-kulcsát
-* pom.XML: Maven-függőség
+## <a name="get-a-key-and-url"></a>Kulcs és URL-cím lekérése
 
-<a id="sub-2"></a>
+A szolgáltatás felé irányuló hívások URL-végpontot és hozzáférési kulcsot igényelnek minden kérelemben. Mindkettőhöz létrejön egy keresési szolgáltatás, így ha hozzáadta az előfizetéséhez az Azure Searchöt, kövesse az alábbi lépéseket a szükséges információk beszerzéséhez:
 
-## <a name="find-the-service-name-and-api-key-of-your-azure-search-service"></a>Az Azure Search szolgáltatás szolgáltatásnevének és API-kulcsának megkeresése
-Az Azure Search szolgáltatásba történő minden REST API-hívás esetében meg kell adnia a szolgáltatás URL-címét és API-kulcsát. 
+1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/), és a keresési szolgáltatás **Áttekintés** lapján töltse le az URL-címet. A végpontok például a következőképpen nézhetnek ki: `https://mydemo.search.windows.net`.
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
-2. Az ugrás sávon kattintson a **Keresési szolgáltatás** elemre, hogy megjelenjen az előfizetéséhez kapcsolódó összes Azure Search szolgáltatás.
-3. Válassza ki a használni kívánt szolgáltatást.
-4. A szolgáltatás irányítópultján megjelennek az alapvető információkat tartalmazó csempék, valamint az adminisztrációs kulcsok eléréséhez szükséges kulcs ikon.
-   
-      ![][3]
-5. Másolja át a szolgáltatás URL-címét és egy adminisztrációs kulcsot. Később lesz rájuk szüksége, amikor hozzáadja őket a **config.properties** fájlhoz.
+2. A **Beállítások** > **kulcsaiban**kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
 
-## <a name="download-the-sample-files"></a>A mintafájlok letöltése
-1. Lépjen a GitHubon található [search-node-indexer-demo](https://github.com/Azure-Samples/search-java-indexer-demo) elemre.
-2. Kattintson a **Download ZIP** (ZIP-fájl letöltése) elemre, mentse a .zip-fájlt a lemezre, és bontsa ki a benne található összes fájlt. A Java-munkaterületére csomagolja ki a fájlokat, hogy később könnyebben megtalálja a projektet.
-3. A mintafájlok csak olvashatók. Kattintson a jobb gombbal a mappa tulajdonságaira, és törölje a csak olvasható attribútumot.
+   Hozzon létre egy lekérdezési kulcsot is. Ajánlott a lekérdezési kérelmeket csak olvasási hozzáféréssel kibocsátani.
 
-Minden további fájlmódosítás és utasításfuttatás az ebben a mappában lévő fájlokra vonatkozóan fog történni.  
+![A szolgáltatás nevének és a rendszergazda és a lekérdezési kulcsok beszerzése](media/search-get-started-nodejs/service-name-and-keys.png)
 
-## <a name="import-project"></a>Projekt importálása
-1. Az Eclipse-ben válassza ki a **File** (Fájl)  > **Import** (Importálás)  > **General** (Általános)  > **Existing Projects into Workspace** (Meglévő projekteket a munkaterületre) lehetőséget.
-   
-    ![][4]
-2. A **Select root directory** (Gyökérkönyvtár kiválasztása) ablakban keresse meg a mintafájlokat tartalmazó mappát. Válassza ki a .project mappát tartalmazó mappát. A projektnek kiválasztott elemként meg kell jelennie a **Projects** (Projektek) listán.
-   
-    ![][12]
-3. Kattintson a **Befejezés** gombra.
-4. A **Project Explorer** (Projektböngésző) segítségével megtekintheti és szerkesztheti a fájlokat. Ha az még nincs megnyitva, kattintson a **Window** (Ablak)  > **Show View** (Nézet megjelenítése)  > **Project Explorer** (Projektböngésző) lehetőségre, vagy nyissa meg a megfelelő parancsikonnal.
+A szolgáltatásnak eljuttatott minden kérelemhez API-kulcs szükséges. Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
 
-## <a name="configure-the-service-url-and-api-key"></a>A szolgáltatás URL-címének és API-kulcsának konfigurálása
-1. A **Project Explorer** (Projektböngésző) nézetben kattintson duplán a **config.properties** elemre, hogy szerkeszthesse a kiszolgáló nevét és az API-kulcsot tartalmazó konfigurációs beállításokat.
-2. Tekintse meg a jelen cikkben korábban ismertetett lépéseket, ahol a szolgáltatás URL-címét és API-kulcsát megtalálhatta az [Azure portálon](https://portal.azure.com), és az adott értékeket írja be **config.properties** fájlba.
-3. A **config.properties** fájlban található „API-kulcsot” cserélje ki a szolgáltatásához tartozó API-kulcsra. Következő, a szolgáltatás nevét (az URL-cím első összetevője https://servicename.search.windows.net) cserél "szolgáltatás neve" ugyanabban a fájlban.
-   
-    ![][5]
+## <a name="set-up-your-environment"></a>A környezet kialakítása
 
-## <a name="configure-the-project-build-and-runtime-environments"></a>A projekt, a build és a futtatókörnyezetek konfigurálása
-1. Az Eclipse Project Explorer (Projektböngésző) nézetében kattintson a jobb gombbal a Project (Projekt) > **Properties** (Tulajdonságok)  > **Project Facets** (A projekt aspektusai) elemre.
-2. Válassza ki a **Dynamic Web Module** (Dinamikus webmodul), a **Java** és a **JavaScript** elemet.
-   
-    ![][6]
-3. Kattintson az **Apply** (Alkalmaz) gombra.
-4. Válassza ki a **Window** (Ablak)  > **Preferences** (Beállítások)  > **Server** (Kiszolgáló)  > **Runtime Environments** (Futtatókörnyezetek)  > **Add..** (Hozzáadás) lehetőséget.
-5. Bontsa ki az Apache elemet, és válassza ki az Apache Tomcat-kiszolgáló korábban telepített verzióját. Mi a 8-as verziót telepítettük a rendszerünkre.
-   
-    ![][7]
-6. A következő oldalon adja meg a Tomcat telepítési könyvtárát. Windows rendszerű számítógépeken ez valószínűleg a következő lesz: C:\Program Files\Apache Software Foundation\Tomcat *verzió*.
-7. Kattintson a **Befejezés** gombra.
-8. Válassza ki a **Window** (Ablak)  > **Preferences** (Beállítások)  > **Java** > **Installed JREs** (Telepített JRE-k)  > **Add** (Hozzáadás) lehetőséget.
-9. Az **Add JRE** (JRE hozzáadása) panelen válassza ki a **Standard VM** elemet.
-10. Kattintson a **tovább**.
-11. A JRE Definition (JRE_definíció) ablakban, a JRE kezdőlapján kattintson a **Directory** (Könyvtár) elemre.
-12. Navigáljon a **Program Files** (Programfájlok)  > **Java** könyvtárra, és válassza ki a korábban telepített JDK-t. Fontos, hogy a JDK-t JRE-ként válassza ki.
-13. Az Installed JREs (Telepített JRE-k) panelen válassza ki a **JDK** elemet. A beállításainak az alábbi képernyőfelvételhez hasonlóan kell kinéznie.
+Első lépésként nyissa meg a IntelliJ IDEA-t, és állítson be egy új projektet.
+
+### <a name="create-the-project"></a>A projekt létrehozása
+
+1. Nyissa meg a IntelliJ ÖTLETET, és válassza az **új projekt létrehozása**lehetőséget.
+1. Válassza a **Maven**lehetőséget.
+1. A **Project SDK** listában válassza ki a Java 11 SDK-t.
+
+    ![Maven-projekt létrehozása](media/search-get-started-java/java-quickstart-create-new-maven-project.png) 
+
+1. A **GroupID** és a **ArtifactId**mezőbe `AzureSearchQuickstart`írja be a következőt:.
+1. Fogadja el a fennmaradó alapértékeket a projekt megnyitásához.
+
+### <a name="specify-maven-dependencies"></a>Maven-függőségek meghatározása
+
+1. Válassza a **fájl** > **beállításai**lehetőséget.
+1. A **Beállítások** ablakban válassza a **Létrehozás, végrehajtás, üzembe helyezés** > **eszközök** > **Maven** > -**Importálás**lehetőséget.
+1. Jelölje be a **Maven-projektek automatikus importálása** jelölőnégyzetet, majd kattintson az **OK** gombra az ablak bezárásához. A Maven beépülő modulok és egyéb függőségek mostantól automatikusan szinkronizálhatók, amikor a következő lépésben frissíti a Pom. xml fájlt.
+
+    ![A Maven importálási lehetőségei a IntelliJ-beállításokban](media/search-get-started-java/java-quickstart-settings-import-maven-auto.png)
+
+1. Nyissa meg a Pom. xml fájlt, és cserélje le a tartalmát a következő Maven-konfigurációs részletekre. Ezek közé tartoznak az [exec Maven beépülő modulra](https://www.mojohaus.org/exec-maven-plugin/) és egy [JSON Interface API](https://javadoc.io/doc/org.glassfish/javax.json/1.0.2) -ra vonatkozó hivatkozások
+
+    ```xml
+    <?xml version="1.0" encoding="UTF-8"?>
+    <project xmlns="http://maven.apache.org/POM/4.0.0"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+        <modelVersion>4.0.0</modelVersion>
     
-    ![][9]
-14. Ha az alkalmazást egy külső böngészőablakban szeretné megnyitni, válassza ki a **Window** (Ablak)  > **Web Browser** (Webböngésző)  > **Internet Explorer** lehetőséget. Külső böngészővel fokozhatja a webalkalmazás használatának élményét.
+        <groupId>AzureSearchQuickstart</groupId>
+        <artifactId>AzureSearchQuickstart</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <build>
+            <sourceDirectory>src</sourceDirectory>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.1</version>
+                    <configuration>
+                        <source>11</source>
+                        <target>11</target>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>exec-maven-plugin</artifactId>
+                    <version>1.6.0</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>exec</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <mainClass>main.java.app.App</mainClass>
+                        <cleanupDaemonThreads>false</cleanupDaemonThreads>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </build>
+        <dependencies>
+            <dependency>
+                <groupId>org.glassfish</groupId>
+                <artifactId>javax.json</artifactId>
+                <version>1.0.2</version>
+            </dependency>
+        </dependencies>   
+    </project>
+    ```
+
+### <a name="set-up-the-project-structure"></a>A projekt szerkezetének beállítása
+
+1. Válassza a **fájl** > **projekt szerkezete**lehetőséget.
+1. Válassza ki a **modulokat**, és bontsa ki a forrás fát a `src` `main` mappa tartalmának  >   eléréséhez.
+1. A mappában `src` adja hozzá  >   `main`  >  aés`java` a mappákat. `service` `app` Ehhez válassza ki a `java` mappát, nyomja le az ALT + INSERT billentyűkombinációt, majd adja meg a mappa nevét.
+1. A mappában `src` adja hozzá  >   `main`  > aés`resources` a mappákat. `service` `app`
+
+    Ha elkészült, a projekt fájának az alábbi képhez hasonlóan kell kinéznie.
+
+    ![Projekt könyvtárának szerkezete](media/search-get-started-java/java-quickstart-basic-code-tree.png)
+
+1. Az ablak bezárásához kattintson **az OK** gombra.
+
+### <a name="add-azure-search-service-information"></a>Azure Search szolgáltatás adatainak hozzáadása
+
+1. A **projekt** ablakban `src` bontsa ki a forrás fát a `resources` `main`  >  >   >   mappa`app` eléréséhez, és adjon hozzá `config.properties` egy fájlt. Ehhez válassza ki a mappát, `app` nyomja le az ALT + INSERT billentyűkombinációt, válassza a **fájl**lehetőséget, majd adja meg a fájl nevét.
+
+1. Másolja a következő beállításokat az új fájlba, `<YOUR-SEARCH-SERVICE-NAME>` `<YOUR-ADMIN-KEY>`és cserélje le a, `<YOUR-QUERY-KEY>` a és a nevet a szolgáltatás nevére és kulcsaira. Ha a szolgáltatás végpontja `https://mydemo.search.windows.net`, a szolgáltatás neve "mydemo" lesz.
+
+    ```java
+        SearchServiceName=<YOUR-SEARCH-SERVICE-NAME>
+        SearchServiceAdminKey=<YOUR-ADMIN-KEY>
+        SearchServiceQueryKey=<YOUR-QUERY-KEY>
+        IndexName=hotels-quickstart
+        ApiVersion=2019-05-06
+    ```
+
+### <a name="add-the-main-method"></a>A Main metódus hozzáadása
+
+1. `src` A mappábanadjon >  hozzá egy`App` osztályt.  >   `main`  >  `java` `app` Ehhez válassza ki a mappát, `app` nyomja le az ALT + INSERT billentyűkombinációt, válassza a **Java-osztály**lehetőséget, majd adja meg az osztály nevét.
+1. Nyissa `App` meg az osztályt, és cserélje le a tartalmat a következő kódra. Ez a kód tartalmazza `main` a metódust. 
+
+    A nem kommentált kód beolvassa a keresési szolgáltatás paramétereit, és a segítségével létrehozza a keresési szolgáltatás ügyfelének egy példányát. A Search szolgáltatás ügyfelének kódját a következő szakaszban adja hozzá a rendszer.
+
+    Az ebben az osztályban található megjegyzési kódot a rövid útmutató egy későbbi szakaszában törli a rendszer.
+
+    ```java
+    package main.java.app;
     
-    ![][8]
+    import main.java.service.SearchServiceClient;
+    import java.io.IOException;
+    import java.util.Properties;
+    
+    public class App {
+    
+        private static Properties loadPropertiesFromResource(String resourcePath) throws IOException {
+            var inputStream = App.class.getResourceAsStream(resourcePath);
+            var configProperties = new Properties();
+            configProperties.load(inputStream);
+            return configProperties;
+        }
+    
+        public static void main(String[] args) {
+            try {
+                var config = loadPropertiesFromResource("/app/config.properties");
+                var client = new SearchServiceClient(
+                        config.getProperty("SearchServiceName"),
+                        config.getProperty("SearchServiceAdminKey"),
+                        config.getProperty("SearchServiceQueryKey"),
+                        config.getProperty("ApiVersion"),
+                        config.getProperty("IndexName")
+                );
+    
+    
+    //Uncomment the next 3 lines in the 1 - Create Index section of the quickstart
+    //            if(client.indexExists()){ client.deleteIndex();}
+    //            client.createIndex("/service/index.json");
+    //            Thread.sleep(1000L); // wait a second to create the index
+    
+    //Uncomment the next 2 lines in the 2 - Load Documents section of the quickstart
+    //            client.uploadDocuments("/service/hotels.json");
+    //            Thread.sleep(2000L); // wait 2 seconds for data to upload
+    
+    //Uncomment the following 5 search queries in the 3 - Search an index section of the quickstart
+    //            // Query 1
+    //            client.logMessage("\n*QUERY 1****************************************************************");
+    //            client.logMessage("Search for: Atlanta'");
+    //            client.logMessage("Return: All fields'");
+    //            client.searchPlus("Atlanta");
+    //
+    //            // Query 2
+    //            client.logMessage("\n*QUERY 2****************************************************************");
+    //            client.logMessage("Search for: Atlanta");
+    //            client.logMessage("Return: HotelName, Tags, Address");
+    //            SearchServiceClient.SearchOptions options2 = client.createSearchOptions();
+    //            options2.select = "HotelName,Tags,Address";
+    //            client.searchPlus("Atlanta", options2);
+    //
+    //            //Query 3
+    //            client.logMessage("\n*QUERY 3****************************************************************");
+    //            client.logMessage("Search for: wifi & restaurant");
+    //            client.logMessage("Return: HotelName, Description, Tags");
+    //            SearchServiceClient.SearchOptions options3 = client.createSearchOptions();
+    //            options3.select = "HotelName,Description,Tags";
+    //            client.searchPlus("wifi,restaurant", options3);
+    //
+    //            // Query 4 -filtered query
+    //            client.logMessage("\n*QUERY 4****************************************************************");
+    //            client.logMessage("Search for: all");
+    //            client.logMessage("Filter: Ratings greater than 4");
+    //            client.logMessage("Return: HotelName, Rating");
+    //            SearchServiceClient.SearchOptions options4 = client.createSearchOptions();
+    //            options4.filter="Rating%20gt%204";
+    //            options4.select = "HotelName,Rating";
+    //            client.searchPlus("*",options4);
+    //
+    //            // Query 5 - top 2 results, ordered by
+    //            client.logMessage("\n*QUERY 5****************************************************************");
+    //            client.logMessage("Search for: boutique");
+    //            client.logMessage("Get: Top 2 results");
+    //            client.logMessage("Order by: Rating in descending order");
+    //            client.logMessage("Return: HotelId, HotelName, Category, Rating");
+    //            SearchServiceClient.SearchOptions options5 = client.createSearchOptions();
+    //            options5.top=2;
+    //            options5.orderby = "Rating%20desc";
+    //            options5.select = "HotelId,HotelName,Category,Rating";
+    //            client.searchPlus("boutique", options5);
+    
+            } catch (Exception e) {
+                System.err.println("Exception:" + e.getMessage());
+                e.printStackTrace();
+            }
+        }
+    }
+    ```
 
-Ezzel befejezte a konfigurálási feladatokat. A következő lépésben felépíti és futtatja a projektet.
+### <a name="add-the-http-operations"></a>HTTP-műveletek hozzáadása
 
-## <a name="build-the-project"></a>A projekt felépítése
-1. A projekt konfigurálásához a Project Explorer (Projektböngésző) nézetben kattintson a jobb gombbal a projekt nevére, és válassza ki a **Run As** (Futtatás másként)  > **Maven build...** elemet.
-   
-    ![][10]
-2. Az Edit Configuration (Konfiguráció szerkesztése) panelen a Goals (Célok) mezőbe írja be a „clean install” („tiszta telepítés”) kifejezést, majd kattintson a **Run** (Futtatás) gombra.
+1. `src` A mappábanadjon >  hozzáegy`SearchServiceClient` osztályt.  >   `main`  >  `java` `service` Ehhez válassza ki a mappát, `service` nyomja le az ALT + INSERT billentyűkombinációt, válassza a **Java-osztály**lehetőséget, majd adja meg az osztály nevét.
+1. Nyissa `SearchServiceClient` meg az osztályt, és cserélje le a tartalmát a következő kódra. Ez a kód biztosítja a Azure Search REST API használatához szükséges HTTP-műveleteket. Az index létrehozásának, a dokumentumok feltöltésének és az index lekérdezésének további módszerei egy későbbi szakaszban lesznek hozzáadva.
 
-Az állapotüzenetek kimenetként a konzolablakban jelennek meg. A BUILD SUCCESS (Sikeres felépítés) üzenetnek kell megjelennie, amely azt jelzi, hogy a projekt hibák nélkül felépült.
+    ```java
+    package main.java.service;
 
-## <a name="run-the-app"></a>Az alkalmazás futtatása
-Utolsó lépésként futtassa le az alkalmazást egy helyi kiszolgáló futtatókörnyezetében.
+    import javax.json.Json;
+    import javax.net.ssl.HttpsURLConnection;
+    import java.io.IOException;
+    import java.io.StringReader;
+    import java.net.HttpURLConnection;
+    import java.net.URI;
+    import java.net.http.HttpClient;
+    import java.net.http.HttpRequest;
+    import java.net.http.HttpResponse;
+    import java.nio.charset.StandardCharsets;
+    import java.util.Formatter;
+    import java.util.function.Consumer;
+    
+        /* This class is responsible for implementing HTTP operations for creating the index, uploading documents and searching the data*/
+        public class SearchServiceClient {
+            private final String _adminKey;
+            private final String _queryKey;
+            private final String _apiVersion;
+            private final String _serviceName;
+            private final String _indexName;
+            private final static HttpClient client = HttpClient.newHttpClient();
+    
+        public SearchServiceClient(String serviceName, String adminKey, String queryKey, String apiVersion, String indexName) {
+            this._serviceName = serviceName;
+            this._adminKey = adminKey;
+            this._queryKey = queryKey;
+            this._apiVersion = apiVersion;
+            this._indexName = indexName;
+        }
 
-Ha az Eclipse keretrendszerben még nem határozta meg egy kiszolgáló futtatókörnyezetét, először azt kell elvégeznie.
+        private static HttpResponse<String> sendRequest(HttpRequest request) throws IOException, InterruptedException {
+            logMessage(String.format("%s: %s", request.method(), request.uri()));
+            return client.send(request, HttpResponse.BodyHandlers.ofString());
+        }
 
-1. A Project Explorer (Projektböngésző) nézetben bontsa ki a **WebContent** elemet.
-2. Kattintson a jobb gombbal a **Search.jsp** fájlra, majd kattintson a  > **Run As** (Futtatás másként)  > **Run on Server** (Futtatás a kiszolgálón) elemre. Válassza ki az Apache Tomcat kiszolgálót, majd kattintson a **Run** (Futtatás) gombra.
+        private static URI buildURI(Consumer<Formatter> fmtFn)
+                {
+                    Formatter strFormatter = new Formatter();
+                    fmtFn.accept(strFormatter);
+                    String url = strFormatter.out().toString();
+                    strFormatter.close();
+                    return URI.create(url);
+        }
+    
+        public static void logMessage(String message) {
+            System.out.println(message);
+        }
+    
+        public static boolean isSuccessResponse(HttpResponse<String> response) {
+            try {
+                int responseCode = response.statusCode();
+    
+                logMessage("\n Response code = " + responseCode);
+    
+                if (responseCode == HttpURLConnection.HTTP_OK || responseCode == HttpURLConnection.HTTP_ACCEPTED
+                        || responseCode == HttpURLConnection.HTTP_NO_CONTENT || responseCode == HttpsURLConnection.HTTP_CREATED) {
+                    return true;
+                }
+    
+                // We got an error
+                var msg = response.body();
+                if (msg != null) {
+                    logMessage(String.format("\n MESSAGE: %s", msg));
+                }
+    
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+    
+            return false;
+        }
+    
+        public static HttpRequest httpRequest(URI uri, String key, String method, String contents) {
+            contents = contents == null ? "" : contents;
+            var builder = HttpRequest.newBuilder();
+            builder.uri(uri);
+            builder.setHeader("content-type", "application/json");
+            builder.setHeader("api-key", key);
+    
+            switch (method) {
+                case "GET":
+                    builder = builder.GET();
+                    break;
+                case "HEAD":
+                    builder = builder.GET();
+                    break;
+                case "DELETE":
+                    builder = builder.DELETE();
+                    break;
+                case "PUT":
+                    builder = builder.PUT(HttpRequest.BodyPublishers.ofString(contents));
+                    break;
+                case "POST":
+                    builder = builder.POST(HttpRequest.BodyPublishers.ofString(contents));
+                    break;
+                default:
+                    throw new IllegalArgumentException(String.format("Can't create request for method '%s'", method));
+            }
+            return builder.build();
+        }
+    }
+    
+    ```
 
-> [!TIP]
-> Ha nem alapértelmezett munkaterületen tárolja a projektet, a kiszolgálóindítási hiba elkerülése érdekében úgy kell módosítania a **Run Configuration** (Konfiguráció futtatása) beállítást, hogy a projekt helyére mutasson. A Project Explorer (Projektböngésző) nézetben kattintson a jobb gombbal a **Search.jsp** fájlra, majd kattintson a  > **Run As** (Futtatás másként)  > **Run Configurations** (Konfigurációk futtatása) elemre. Válassza ki az Apache Tomcat kiszolgálót. Kattintson az **Arguments** (Argumentumok) elemre. A projektet tartalmazó mappa beállításához kattintson a **Workspace** (Munkaterület) vagy a **File System** (Fájlrendszer) elemre.
-> 
-> 
+### <a name="build-the-project"></a>A projekt felépítése
 
-Az alkalmazás futtatásakor egy keresőmezőt tartalmazó böngészőablaknak kell megjelennie, ahová beírhatja a kifejezéseket.
+1. Ellenőrizze, hogy a projekt a következő szerkezettel rendelkezik-e.
 
-Várjon körülbelül egy percet, mielőtt a **Search** (Keresés) gombra kattintana, hogy a szolgáltatásnak legyen elég ideje az index létrehozására és betöltésére. Ha a HTTP 404 hibaüzenet jelenik meg, csak egy kicsit tovább kell várnia az újrapróbálkozás előtt.
+    ![Projekt könyvtárának szerkezete](media/search-get-started-java/java-quickstart-basic-code-tree-plus-classes.png)
 
-## <a name="search-on-usgs-data"></a>USGS-adatok keresése
-Az USGS-adatkészlet a Rhode Island államra vonatkozó rekordokat tartalmaz. Ha rákattint egy üres keresőmező **Search** (Keresés) gombjára, megjelenik az 50 legfontosabb bejegyzés; ez az alapértelmezett viselkedés.
+1. Nyissa meg a **Maven** eszköz ablakát, és hajtsa végre a következő Maven-célt: `verify exec:java`
+![Maven végrehajtása cél: az exec ellenőrzése: Java](media/search-get-started-java/java-quickstart-execute-maven-goal.png)
 
-A keresett kifejezés beírása elindítja a keresőmotort. Próbáljon meg a helyhez kötődő nevet beírni. „Roger Williams” volt Rhode Island első kormányzója. Számos parkot, épületet és iskolát neveztek el róla.
+A feldolgozás befejezésekor keressen egy sikeres BUILD-üzenetet, amelyet egy nulla (0) kilépési kód követ.
 
-![][11]
+## <a name="1---create-index"></a>1 – index létrehozása
 
-Megpróbálhatja beírni az alábbi kifejezések bármelyikét is:
+A Hotels index definíciója egyszerű mezőket és egy összetett mezőt tartalmaz. Egyszerű mező például a "pezsgő" vagy a "Description". A "címe" mező egy összetett mező, mert almezővel rendelkezik, például "utca címe" és "város". Ebben a rövid útmutatóban az index definíciója a JSON használatával van megadva.
 
-* Pawtucket
-* Pembroke
-* goose+cape
+1. A **projekt** ablakban `src` bontsa ki a forrás fát a `resources` `main`  >  >   >   mappa`service` eléréséhez, és adjon hozzá `index.json` egy fájlt. Ehhez válassza ki a mappát, `app` nyomja le az ALT + INSERT billentyűkombinációt, válassza a **fájl**lehetőséget, majd adja meg a fájl nevét.
+
+1. Nyissa `index.json` meg a fájlt, és szúrja be a következő index-definíciót.
+
+    ```json
+    {
+      "name": "hotels-quickstart",
+      "fields": [
+        {
+          "name": "HotelId",
+          "type": "Edm.String",
+          "key": true,
+          "filterable": true
+        },
+        {
+          "name": "HotelName",
+          "type": "Edm.String",
+          "searchable": true,
+          "filterable": false,
+          "sortable": true,
+          "facetable": false
+        },
+        {
+          "name": "Description",
+          "type": "Edm.String",
+          "searchable": true,
+          "filterable": false,
+          "sortable": false,
+          "facetable": false,
+          "analyzer": "en.lucene"
+        },
+        {
+          "name": "Description_fr",
+          "type": "Edm.String",
+          "searchable": true,
+          "filterable": false,
+          "sortable": false,
+          "facetable": false,
+          "analyzer": "fr.lucene"
+        },
+        {
+          "name": "Category",
+          "type": "Edm.String",
+          "searchable": true,
+          "filterable": true,
+          "sortable": true,
+          "facetable": true
+        },
+        {
+          "name": "Tags",
+          "type": "Collection(Edm.String)",
+          "searchable": true,
+          "filterable": true,
+          "sortable": false,
+          "facetable": true
+        },
+        {
+          "name": "ParkingIncluded",
+          "type": "Edm.Boolean",
+          "filterable": true,
+          "sortable": true,
+          "facetable": true
+        },
+        {
+          "name": "LastRenovationDate",
+          "type": "Edm.DateTimeOffset",
+          "filterable": true,
+          "sortable": true,
+          "facetable": true
+        },
+        {
+          "name": "Rating",
+          "type": "Edm.Double",
+          "filterable": true,
+          "sortable": true,
+          "facetable": true
+        },
+        {
+          "name": "Address",
+          "type": "Edm.ComplexType",
+          "fields": [
+            {
+              "name": "StreetAddress",
+              "type": "Edm.String",
+              "filterable": false,
+              "sortable": false,
+              "facetable": false,
+              "searchable": true
+            },
+            {
+              "name": "City",
+              "type": "Edm.String",
+              "searchable": true,
+              "filterable": true,
+              "sortable": true,
+              "facetable": true
+            },
+            {
+              "name": "StateProvince",
+              "type": "Edm.String",
+              "searchable": true,
+              "filterable": true,
+              "sortable": true,
+              "facetable": true
+            },
+            {
+              "name": "PostalCode",
+              "type": "Edm.String",
+              "searchable": true,
+              "filterable": true,
+              "sortable": true,
+              "facetable": true
+            },
+            {
+              "name": "Country",
+              "type": "Edm.String",
+              "searchable": true,
+              "filterable": true,
+              "sortable": true,
+              "facetable": true
+            }
+          ]
+        }
+      ]
+    }
+    ```
+
+    Az index neve "Hotels-Gyorsindítás" lesz. Az index mezők attribútumai határozzák meg, hogy az indexelt adat hogyan kereshető meg egy alkalmazásban. Az `IsSearchable` attribútumot például minden olyan mezőhöz hozzá kell rendelni, amelynek szerepelnie kell egy teljes szöveges keresésben. Az attribútumokkal kapcsolatos további tudnivalókért tekintse meg a [mezők gyűjteménye és a mező attribútumai](search-what-is-an-index.md#fields-collection)című témakört.
+    
+    Az `Description` indexben lévő mező a választható `analyzer` tulajdonságot használja az alapértelmezett Lucene nyelvi elemző felülbírálásához. A `Description_fr` mező a francia Lucene Analyzert `fr.lucene` használja, mert francia nyelvű szöveget tárol. A `Description` a választható Microsoft Language Analyzer en. Lucene használja. További információ az elemzők használatáról: a [Azure Searchban lévő szöveg-feldolgozásra szolgáló elemzők](search-analyzers.md).
+
+1. Adja hozzá a következő kódot a `SearchServiceClient` osztályhoz. Ezek a módszerek olyan Azure Search REST-szolgáltatás URL-címeinek kiépítése, amelyek indexet hoznak létre és törölnek, és amelyek meghatározzák, hogy létezik-e index A metódusok a HTTP-kérést is elvégzik.
+
+    ```java
+    public boolean indexExists() throws IOException, InterruptedException {
+        logMessage("\n Checking if index exists...");
+        var uri = buildURI(strFormatter -> strFormatter.format(
+                "https://%s.search.windows.net/indexes/%s/docs?api-version=%s&search=*",
+                _serviceName,_indexName,_apiVersion));
+        var request = httpRequest(uri, _adminKey, "HEAD", "");
+        var response = sendRequest(request);
+        return isSuccessResponse(response);
+    }
+    
+    public boolean deleteIndex() throws IOException, InterruptedException {
+        logMessage("\n Deleting index...");
+        var uri = buildURI(strFormatter -> strFormatter.format(
+                "https://%s.search.windows.net/indexes/%s?api-version=%s",
+                _serviceName,_indexName,_apiVersion));
+        var request = httpRequest(uri, _adminKey, "DELETE", "*");
+        var response = sendRequest(request);
+        return isSuccessResponse(response);
+    }
+    
+    
+    public boolean createIndex(String indexDefinitionFile) throws IOException, InterruptedException {
+        logMessage("\n Creating index...");
+        //Build the search service URL
+        var uri = buildURI(strFormatter -> strFormatter.format(
+                "https://%s.search.windows.net/indexes/%s?api-version=%s",
+                _serviceName,_indexName,_apiVersion));
+        //Read in index definition file
+        var inputStream = SearchServiceClient.class.getResourceAsStream(indexDefinitionFile);
+        var indexDef = new String(inputStream.readAllBytes(), StandardCharsets.UTF_8);
+        //Send HTTP PUT request to create the index in the search service
+        var request = httpRequest(uri, _adminKey, "PUT", indexDef);
+        var response = sendRequest(request);
+        return isSuccessResponse(response);
+    }
+    ```
+
+1. A következő kód `App` megjegyzésének visszaírása a osztályban. Ez a kód törli a "Hotels-Gyorsindítás" indexet, ha létezik, és létrehoz egy új indexet az "index. JSON" fájl index definíciója alapján. 
+
+    Az index-létrehozási kérelem után egy másodperces szünet van beszúrva. Ez a Szüneteltetés biztosítja, hogy az index a dokumentumok feltöltése előtt legyen létrehozva.
+
+    ```java
+        if (client.indexExists()) { client.deleteIndex();}
+          client.createIndex("/service/index.json");
+          Thread.sleep(1000L); // wait a second to create the index
+    ```
+
+1. Nyissa meg a **Maven** eszköz ablakát, és hajtsa végre a következő Maven-célt:`verify exec:java`
+
+    A kód futtatásakor keresse meg az "index létrehozása" üzenetet, majd egy 201-es hibakódot. Ez a válasz kód megerősíti, hogy az index létrejött. A futtatásnak egy BUILD SIKERESSÉGi üzenettel és egy nulla (0) kilépési kóddal kell végződnie.
+    
+## <a name="2---load-documents"></a>2 – dokumentumok betöltése
+
+1. A **projekt** ablakban `src` bontsa ki a forrás fát a `resources` `main`  >  >   >   mappa`service` eléréséhez, és adjon hozzá `hotels.json` egy fájlt. Ehhez válassza ki a mappát, `app` nyomja le az ALT + INSERT billentyűkombinációt, válassza a **fájl**lehetőséget, majd adja meg a fájl nevét.
+1. Szúrja be a következő szállodai dokumentumokat a fájlba.
+
+    ```json
+    {
+      "value": [
+        {
+          "@search.action": "upload",
+          "HotelId": "1",
+          "HotelName": "Secret Point Motel",
+          "Description": "The hotel is ideally located on the main commercial artery of the city in the heart of New York. A few minutes away is Time's Square and the historic centre of the city, as well as other places of interest that make New York one of America's most attractive and cosmopolitan cities.",
+          "Description_fr": "L'hôtel est idéalement situé sur la principale artère commerciale de la ville en plein cœur de New York. A quelques minutes se trouve la place du temps et le centre historique de la ville, ainsi que d'autres lieux d'intérêt qui font de New York l'une des villes les plus attractives et cosmopolites de l'Amérique.",
+          "Category": "Boutique",
+          "Tags": [ "pool", "air conditioning", "concierge" ],
+          "ParkingIncluded": "false",
+          "LastRenovationDate": "1970-01-18T00:00:00Z",
+          "Rating": 3.60,
+          "Address": {
+            "StreetAddress": "677 5th Ave",
+            "City": "New York",
+            "StateProvince": "NY",
+            "PostalCode": "10022",
+            "Country": "USA"
+          }
+        },
+        {
+          "@search.action": "upload",
+          "HotelId": "2",
+          "HotelName": "Twin Dome Motel",
+          "Description": "The hotel is situated in a  nineteenth century plaza, which has been expanded and renovated to the highest architectural standards to create a modern, functional and first-class hotel in which art and unique historical elements coexist with the most modern comforts.",
+          "Description_fr": "L'hôtel est situé dans une place du XIXe siècle, qui a été agrandie et rénovée aux plus hautes normes architecturales pour créer un hôtel moderne, fonctionnel et de première classe dans lequel l'art et les éléments historiques uniques coexistent avec le confort le plus moderne.",
+          "Category": "Boutique",
+          "Tags": [ "pool", "free wifi", "concierge" ],
+          "ParkingIncluded": "false",
+          "LastRenovationDate": "1979-02-18T00:00:00Z",
+          "Rating": 3.60,
+          "Address": {
+            "StreetAddress": "140 University Town Center Dr",
+            "City": "Sarasota",
+            "StateProvince": "FL",
+            "PostalCode": "34243",
+            "Country": "USA"
+          }
+        },
+        {
+          "@search.action": "upload",
+          "HotelId": "3",
+          "HotelName": "Triple Landscape Hotel",
+          "Description": "The Hotel stands out for its gastronomic excellence under the management of William Dough, who advises on and oversees all of the Hotel’s restaurant services.",
+          "Description_fr": "L'hôtel est situé dans une place du XIXe siècle, qui a été agrandie et rénovée aux plus hautes normes architecturales pour créer un hôtel moderne, fonctionnel et de première classe dans lequel l'art et les éléments historiques uniques coexistent avec le confort le plus moderne.",
+          "Category": "Resort and Spa",
+          "Tags": [ "air conditioning", "bar", "continental breakfast" ],
+          "ParkingIncluded": "true",
+          "LastRenovationDate": "2015-09-20T00:00:00Z",
+          "Rating": 4.80,
+          "Address": {
+            "StreetAddress": "3393 Peachtree Rd",
+            "City": "Atlanta",
+            "StateProvince": "GA",
+            "PostalCode": "30326",
+            "Country": "USA"
+          }
+        },
+        {
+          "@search.action": "upload",
+          "HotelId": "4",
+          "HotelName": "Sublime Cliff Hotel",
+          "Description": "Sublime Cliff Hotel is located in the heart of the historic center of Sublime in an extremely vibrant and lively area within short walking distance to the sites and landmarks of the city and is surrounded by the extraordinary beauty of churches, buildings, shops and monuments. Sublime Cliff is part of a lovingly restored 1800 palace.",
+          "Description_fr": "Le sublime Cliff Hotel est situé au coeur du centre historique de sublime dans un quartier extrêmement animé et vivant, à courte distance de marche des sites et monuments de la ville et est entouré par l'extraordinaire beauté des églises, des bâtiments, des commerces et Monuments. Sublime Cliff fait partie d'un Palace 1800 restauré avec amour.",
+          "Category": "Boutique",
+          "Tags": [ "concierge", "view", "24-hour front desk service" ],
+          "ParkingIncluded": "true",
+          "LastRenovationDate": "1960-02-06T00:00:00Z",
+          "Rating": 4.60,
+          "Address": {
+            "StreetAddress": "7400 San Pedro Ave",
+            "City": "San Antonio",
+            "StateProvince": "TX",
+            "PostalCode": "78216",
+            "Country": "USA"
+          }
+        }
+      ]
+    }
+    ```
+
+1. Szúrja be a következő kódot `SearchServiceClient` a osztályba. Ez a kód létrehozza a REST-szolgáltatás URL-címét, hogy feltöltse a szállodai dokumentumokat az indexbe, majd végrehajtja a HTTP POST kérelmet.
+
+    ```java
+    public boolean uploadDocuments(String documentsFile) throws IOException, InterruptedException {
+        logMessage("\n Uploading documents...");
+        //Build the search service URL
+        var endpoint = buildURI(strFormatter -> strFormatter.format(
+                "https://%s.search.windows.net/indexes/%s/docs/index?api-version=%s",
+                _serviceName,_indexName,_apiVersion));
+        //Read in the data to index
+        var inputStream = SearchServiceClient.class.getResourceAsStream(documentsFile);
+        var documents = new String(inputStream.readAllBytes(), StandardCharsets.UTF_8);
+        //Send HTTP POST request to upload and index the data
+        var request = httpRequest(endpoint, _adminKey, "POST", documents);
+        var response = sendRequest(request);
+        return isSuccessResponse(response);
+    }
+    ```
+
+1. A következő kód `App` megjegyzésének visszaírása a osztályban. Ez a kód a "Hotels. JSON" fájlban lévő dokumentumokat tölti fel az indexbe.
+
+    ```java
+    client.uploadDocuments("/service/hotels.json");
+    Thread.sleep(2000L); // wait 2 seconds for data to upload
+    ```
+
+    A feltöltési kérelem után a rendszer két másodperces szünetet szúr be, amely biztosítja, hogy a dokumentum betöltési folyamata befejeződjön, mielőtt lekérdezi az indexet.
+
+1. Nyissa meg a **Maven** eszköz ablakát, és hajtsa végre a következő Maven-célt:`verify exec:java`
+
+    Mivel az előző lépésben létrehozta a "Hotels-Gyorsindítás" indexet, a kód törli, majd újra létrehozza újból a szállodai dokumentumok betöltése előtt.
+
+    A kód futtatásakor keresse meg a "dokumentumok feltöltése" üzenetet, majd egy 200-es hibakódot. Ez a válasz kód megerősíti, hogy a dokumentumokat feltöltötte az indexbe. A futtatásnak egy BUILD SIKERESSÉGi üzenettel és egy nulla (0) kilépési kóddal kell végződnie.
+
+## <a name="3---search-an-index"></a>3 – Keresés az indexekben
+
+Most, hogy betöltötte a szállodák dokumentumait, létrehozhat keresési lekérdezéseket a szállások eléréséhez.
+
+1. Adja hozzá a következő kódot a `SearchServiceClient` osztályhoz. Ez a kód Azure Search REST-szolgáltatás URL-címeit hozza létre az indexelt adatokban való kereséshez és a keresési eredmények kinyomtatásához.
+
+    Az `SearchOptions` osztály és `createSearchOptions` a metódus lehetővé teszi az elérhető Azure Search REST API lekérdezési beállítások részhalmazának megadását. További információ a REST API lekérdezési lehetőségekről: [dokumentumok keresése (Azure Search Service REST API)](/rest/api/searchservice/search-documents).
+
+    A `SearchPlus` metódus létrehozza a keresési lekérdezés URL-címét, végrehajtja a keresési kérelmet, majd kinyomtatja az eredményeket a-konzolra. 
+
+    ```java
+    public SearchOptions createSearchOptions() { return new SearchOptions();}
+
+    //Defines available search parameters that can be set
+    public static class SearchOptions {
+
+        public String select = "";
+        public String filter = "";
+        public int top = 0;
+        public String orderby= "";
+    }
+
+    //Concatenates search parameters to append to the search request
+    private String createOptionsString(SearchOptions options)
+    {
+        String optionsString = "";
+        if (options != null) {
+            if (options.select != "")
+                optionsString = optionsString + "&$select=" + options.select;
+            if (options.filter != "")
+                optionsString = optionsString + "&$filter=" + options.filter;
+            if (options.top != 0)
+                optionsString = optionsString + "&$top=" + options.top;
+            if (options.orderby != "")
+                optionsString = optionsString + "&$orderby=" +options.orderby;
+        }
+        return optionsString;
+    }
+    
+    public void searchPlus(String queryString)
+    {
+        searchPlus( queryString, null);
+    }
+    
+    public void searchPlus(String queryString, SearchOptions options) {
+    
+        try {
+            String optionsString = createOptionsString(options);
+            var uri = buildURI(strFormatter -> strFormatter.format(
+                    "https://%s.search.windows.net/indexes/%s/docs?api-version=%s&search=%s%s",
+                    _serviceName, _indexName, _apiVersion, queryString, optionsString));
+            var request = httpRequest(uri, _queryKey, "GET", null);
+            var response = sendRequest(request);
+            var jsonReader = Json.createReader(new StringReader(response.body()));
+            var jsonArray = jsonReader.readObject().getJsonArray("value");
+            var resultsCount = jsonArray.size();
+            logMessage("Results:\nCount: " + resultsCount);
+            for (int i = 0; i <= resultsCount - 1; i++) {
+                logMessage(jsonArray.get(i).toString());
+            }
+    
+            jsonReader.close();
+    
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    
+    }
+    ```
+
+1. `App` A osztályban írja be a következő kódot a megjegyzésbe: Ez a kód öt különböző lekérdezést állít be, beleértve a keresendő szöveget, a lekérdezési paramétereket és az adatmezőket. 
+
+    ```java
+    // Query 1
+    client.logMessage("\n*QUERY 1****************************************************************");
+    client.logMessage("Search for: Atlanta");
+    client.logMessage("Return: All fields'");
+    client.searchPlus("Atlanta");
+
+    // Query 2
+    client.logMessage("\n*QUERY 2****************************************************************");
+    client.logMessage("Search for: Atlanta");
+    client.logMessage("Return: HotelName, Tags, Address");
+    SearchServiceClient.SearchOptions options2 = client.createSearchOptions();
+    options2.select = "HotelName,Tags,Address";
+    client.searchPlus("Atlanta", options2);
+
+    //Query 3
+    client.logMessage("\n*QUERY 3****************************************************************");
+    client.logMessage("Search for: wifi & restaurant");
+    client.logMessage("Return: HotelName, Description, Tags");
+    SearchServiceClient.SearchOptions options3 = client.createSearchOptions();
+    options3.select = "HotelName,Description,Tags";
+    client.searchPlus("wifi,restaurant", options3);
+
+    // Query 4 -filtered query
+    client.logMessage("\n*QUERY 4****************************************************************");
+    client.logMessage("Search for: all");
+    client.logMessage("Filter: Ratings greater than 4");
+    client.logMessage("Return: HotelName, Rating");
+    SearchServiceClient.SearchOptions options4 = client.createSearchOptions();
+    options4.filter="Rating%20gt%204";
+    options4.select = "HotelName,Rating";
+    client.searchPlus("*",options4);
+
+    // Query 5 - top 2 results, ordered by
+    client.logMessage("\n*QUERY 5****************************************************************");
+    client.logMessage("Search for: boutique");
+    client.logMessage("Get: Top 2 results");
+    client.logMessage("Order by: Rating in descending order");
+    client.logMessage("Return: HotelId, HotelName, Category, Rating");
+    SearchServiceClient.SearchOptions options5 = client.createSearchOptions();
+    options5.top=2;
+    options5.orderby = "Rating%20desc";
+    options5.select = "HotelId,HotelName,Category,Rating";
+    client.searchPlus("boutique", options5);
+    ```
+
+
+
+    A kifejezéseket [](search-query-overview.md#types-of-queries)kétféleképpen lehet egyeztetni a lekérdezésekben: teljes szöveges keresés és szűrők. A teljes szöveges keresési lekérdezés egy vagy több kifejezést `IsSearchable` keres az index mezőiben. A szűrő egy logikai kifejezés, amely egy index `IsFilterable` mezőin van kiértékelve. A teljes szöveges keresést és a szűrőket együtt vagy külön is használhatja.
+
+1. Nyissa meg a **Maven** eszköz ablakát, és hajtsa végre a következő Maven-célt:`verify exec:java`
+
+    Keresse meg az egyes lekérdezések összegzését és eredményeit. A futtatásnak SIKERESnek kell lennie a BUILD SIKERe üzenettel és egy nulla (0) kilépési kóddal.
+
+## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
+
+Ha a saját előfizetésében dolgozik, a projekt végén érdemes lehet eltávolítani a már nem szükséges erőforrásokat. A már futó erőforrások pénzbe kerülnek. Az erőforrásokat egyenként is törölheti, vagy az erőforráscsoport törlésével törölheti a teljes erőforrás-készletet.
+
+A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscsoport** hivatkozás használatával megkeresheti és kezelheti az erőforrásokat a portálon.
+
+Ha ingyenes szolgáltatást használ, ne feledje, hogy Ön legfeljebb három indexet, indexelő és adatforrást használhat. A portálon törölheti az egyes elemeket, hogy a korlát alatt maradjon. 
 
 ## <a name="next-steps"></a>További lépések
-Ez az Azure Search első oktatóanyaga, amely Java és USGS-adatkészlet alapján készült. Idővel majd tovább bővítjük oktatóanyagunkat, és olyan kiegészítő keresési funkciókat fogunk bemutatni, amelyeket esetleg szívesen használna egyéni megoldásaiban.
 
-Ha már rendelkezik bizonyos tapasztalattal az Azure Search használatában, ezt a mintát akár ugródeszkaként is használhatja a további kísérletezéshez, például bővítheti a [keresőoldalt](search-pagination-page-layout.md) vagy [jellemzőalapú navigációt](search-faceted-navigation.md) valósíthat meg. A keresési eredmények oldalát is tovább fejlesztheti számok és kötegelt dokumentumok hozzáadásával úgy, hogy a felhasználók lapozhassanak az eredmények között.
+Ebben a Java-rövid útmutatóban egy sor feladatot dolgozott ki egy index létrehozásához, a dokumentumok betöltéséhez és a lekérdezések futtatásához. Ha a legfontosabb fogalmakkal rendelkezik, javasoljuk, hogy a mélyebb tanuláshoz a következő cikkeket ajánljuk.
 
-Mik az Azure Search újdonságai? Azt javasoljuk, próbáljon ki más oktatóanyagokat is, hogy jobban megismerhesse, mit hozhat létre. További forrásokat a [dokumentációs oldalunkon](https://azure.microsoft.com/documentation/services/search/) talál. 
++ [Indexelési műveletek](/rest/api/searchservice/index-operations)
 
-<!--Image references-->
-[1]: ./media/search-get-started-java/create-search-portal-1.PNG
-[2]: ./media/search-get-started-java/create-search-portal-21.PNG
-[3]: ./media/search-get-started-java/create-search-portal-31.PNG
-[4]: ./media/search-get-started-java/AzSearch-Java-Import1.PNG
-[5]: ./media/search-get-started-java/AzSearch-Java-config1.PNG
-[6]: ./media/search-get-started-java/AzSearch-Java-ProjectFacets1.PNG
-[7]: ./media/search-get-started-java/AzSearch-Java-runtime1.PNG
-[8]: ./media/search-get-started-java/AzSearch-Java-Browser1.PNG
-[9]: ./media/search-get-started-java/AzSearch-Java-JREPref1.PNG
-[10]: ./media/search-get-started-java/AzSearch-Java-BuildProject1.PNG
-[11]: ./media/search-get-started-java/rogerwilliamsschool1.PNG
-[12]: ./media/search-get-started-java/AzSearch-Java-SelectProject.png
++ [Dokumentumok műveletei](/rest/api/searchservice/document-operations)
+
++ [Indexelő műveletei](/rest/api/searchservice/indexer-operations)

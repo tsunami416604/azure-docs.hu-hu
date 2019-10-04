@@ -1,10 +1,10 @@
 ---
-title: Táveszközök használata Azure virtuális gép hibáinak elhárítása |} A Microsoft Docs
+title: Távoli eszközök használata az Azure-beli virtuális gépekkel kapcsolatos problémák elhárításához | Microsoft Docs
 description: ''
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: ''
 ms.service: virtual-machines
@@ -14,54 +14,54 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 01/11/2018
 ms.author: delhan
-ms.openlocfilehash: dc27ea0552c6135d01256586b1746219caac17f1
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 70d777fe2e939c1871bc318eed439214fd3e3f60
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58539870"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155736"
 ---
-# <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>Távoli eszközök használata az Azure virtuális gép hibáinak elhárítása
+# <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>Távoli eszközök használata az Azure-beli virtuális gépekkel kapcsolatos problémák elhárításához
 
-Egy Azure virtuális gépen (VM) problémák elhárításakor csatlakozhat a virtuális Géphez a távoli asztal protokoll (RDP) használata helyett ebben a cikkben ismertetett eszközök segítségével.
+Ha egy Azure-beli virtuális gép (VM) hibáit elhárítja, akkor a RDP protokoll (RDP) használata helyett a cikkben tárgyalt távoli eszközök használatával csatlakozhat a virtuális géphez.
 
 ## <a name="serial-console"></a>Soros konzol
 
-Használat [virtuális gépek soros konzolja](serial-console-windows.md) parancsokat futtatni a távoli Azure virtuális gépen.
+A [virtuális gép soros konzoljának](serial-console-windows.md) használatával parancsokat futtathat a távoli Azure-beli virtuális gépen.
 
 ## <a name="remote-cmd"></a>Távoli CMD
 
-Töltse le [PsExec](https://docs.microsoft.com/sysinternals/downloads/psexec). Csatlakozzon a virtuális Gépet a következő parancs futtatásával:
+Töltse le a [PsExec](https://docs.microsoft.com/sysinternals/downloads/psexec). Kapcsolódjon a virtuális géphez a következő parancs futtatásával:
 
 ```cmd
 psexec \\<computer>-u user -s cmd
 ```
 
 >[!Note]
->* A parancs, amely ugyanabban a vnetben számítógépen kell futtatni.
->* Dedikált IP-CÍMMEL vagy állomásnév helyett használható \<számítógép >.
->* Az -s paraméter gondoskodik arról, hogy a parancs hív (rendszergazdának) rendszer fiók használatával.
->* PsExec 135-ös és a 445-ös TCP-portot használja. Ezért a két portokat kell nyitva a tűzfalon.
+>* A parancsot egy olyan számítógépen kell futtatni, amely ugyanabban a VNET található.
+>* A DIP vagy a hostname használható a számítógép \<> lecserélésére.
+>* A-s paraméter gondoskodik arról, hogy a parancs a rendszerfiók (rendszergazdai engedély) használatával legyen meghívva.
+>* A PsExec a 135-es és 445-es TCP-portot használja. Ezért a két portot meg kell nyitni a tűzfalon.
 
 ## <a name="run-commands"></a>Parancsok futtatása
 
-Lásd: [futtatása PowerShell-parancsfájlokat a a Windows virtuális gép futtatása paranccsal](../windows/run-command.md) parancsfájlok futtatásához a virtuális gépen a parancsok futtatása a szolgáltatás használatával kapcsolatos további információt.
+A parancsfájloknak a virtuális gépen való futtatásával kapcsolatos további információkért lásd: [PowerShell-parancsfájlok futtatása a Windows rendszerű virtuális gépen a Run paranccsal](../windows/run-command.md) .
 
-## <a name="customer-script-extension"></a>Ügyfél parancsprogramok futtatására szolgáló bővítmény
+## <a name="customer-script-extension"></a>Customer script bővítmény
 
-Az egyéni szkriptek futtatására szolgáló bővítmény funkció segítségével egyéni parancsfájl futtatása a cél virtuális Gépen. Ez a funkció használatához a következő feltételeknek kell teljesülniük:
+Az egyéni szkriptek bővítményének használatával egyéni parancsfájlokat futtathat a cél virtuális gépen. A szolgáltatás használatához a következő feltételeknek kell teljesülniük:
 
-* A virtuális gép kapcsolódik.
+* A virtuális gép rendelkezik kapcsolattal.
 
-* Az Azure-ügynök telepítve van, és a virtuális gép a vártnak megfelelően működik.
+* Az Azure-ügynök telepítve van, és a várt módon működik a virtuális gépen.
 
-* A bővítményt korábban nem telepítette a virtuális gépen.
+* A bővítmény korábban nem lett telepítve a virtuális gépre.
  
-  A bővítmény csak az első alkalommal használt azt fogja tölteni a parancsfájl. Ha később használja ezt a szolgáltatást, a bővítmény felismeri, hogy már használta azt, és nem tölti fel az új parancsfájl.
+  A bővítmény csak az első használat során adja meg a parancsfájlt. Ha később ezt a szolgáltatást használja, a bővítmény felismeri, hogy már használatban van, és nem tölti fel az új parancsfájlt.
 
-A szkript feltöltése a storage-fiókba, és hozzon létre saját tárolót kell. Ezután futtassa a következő szkriptet az Azure PowerShell egy számítógépen, amely kapcsolódik a virtuális géphez.
+Fel kell töltenie a szkriptet egy Storage-fiókba, és saját tárolót kell előállítania. Ezután futtassa a következő parancsfájlt Azure PowerShell egy olyan számítógépen, amely kapcsolódik a virtuális géphez.
 
-### <a name="for-v1-vms"></a>A V1-beli virtuális gépek
+### <a name="for-v1-vms"></a>V1-es virtuális gépek esetén
 
 ```powershell
 #Setup the basic variables
@@ -89,9 +89,9 @@ $vm = Get-AzureVM -ServiceName $vmCloudService -Name $vmName
 Set-AzureVMCustomScriptExtension "CustomScriptExtension" -VM $vm -StorageAccountName $storageAccount -StorageAccountKey $storagekey -ContainerName $container -FileName $blobName -Run $blobName | Update-AzureVM
 ```
 
-### <a name="for-v2-vms"></a>A V2 virtuális gép
+### <a name="for-v2-vms"></a>V2-es virtuális gépek esetén
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ```powershell
 #Setup the basic variables
@@ -119,18 +119,18 @@ Set-AzureStorageBlobContent -File $localScript -Container $container -Blob $blob
 Set-AzVMCustomScriptExtension -Name "CustomScriptExtension" -ResourceGroupName $vmResourceGroup -VMName $vmName -Location $vmLocation -StorageAccountName $storageAccount -StorageAccountKey $storagekey -ContainerName $container -FileName $blobName -Run $blobName
 ```
 
-## <a name="remote-powershell"></a>Remote PowerShell
+## <a name="remote-powershell"></a>Távoli PowerShell
 
 >[!Note]
->TCP-Port 5986-os (HTTPS) nyitva kell lennie, hogy ezt a lehetőséget is használhatja.
+>Az 5986-as (HTTPS) TCP-portnak nyitva kell lennie, hogy használhassa ezt a lehetőséget.
 >
->ARM-beli virtuális gépek a hálózati biztonsági csoport (NSG) az 5986-os portot kell megnyitni. További információkért tekintse meg a biztonsági csoportokat. 
+>ARM virtuális gépek esetén a hálózati biztonsági csoport (NSG) 5986-es portját kell megnyitnia. További információ: biztonsági csoportok. 
 >
->Az RDFE-beli virtuális gépek, rendelkeznie kell egy végpontot, amely rendelkezik egy magánhálózati portot (5986-os) és a egy nyilvános port. Majd hogy az NSG-t a nyilvános irányuló-portot is megnyithatja.
+>RDFE virtuális gépek esetén olyan végponttal kell rendelkeznie, amely rendelkezik privát porttal (5986) és egy nyilvános porttal. Ezután meg kell nyitnia a nyilvános elérésű portot is a NSG.
 
 ### <a name="set-up-the-client-computer"></a>Az ügyfélszámítógép beállítása
 
-A PowerShell használatával távolról csatlakozhat a virtuális Gépet, először akkor állítsa be az ügyfélszámítógépen a kapcsolat engedélyezéséhez. Ehhez a szükség szerint a következő parancs futtatásával adja hozzá a virtuális Gépet a PowerShell megbízható gazdagépek listájához.
+Ahhoz, hogy a PowerShell használatával távolról csatlakozhasson a virtuális géphez, először be kell állítania az ügyfélszámítógépet, hogy engedélyezze a kapcsolatot. Ehhez a következő parancs futtatásával adja hozzá a virtuális gépet a PowerShell megbízható gazdagépek listájához.
 
 Egy virtuális gép hozzáadása a megbízható gazdagépek listájához:
 
@@ -144,15 +144,15 @@ Több virtuális gép hozzáadása a megbízható gazdagépek listájához:
 Set-Item wsman:\localhost\Client\TrustedHosts -value <ComputerName1>,<ComputerName2>
 ```
 
-Minden számítógép felvétele a megbízható gazdagépek listájához:
+Az összes számítógép hozzáadása a megbízható gazdagépek listájához:
 
 ```powershell
 Set-Item wsman:\localhost\Client\TrustedHosts -value *
 ```
 
-### <a name="enable-remoteps-on-the-vm"></a>A virtuális gép RemotePS engedélyezése
+### <a name="enable-remoteps-on-the-vm"></a>RemotePS engedélyezése a virtuális gépen
 
-Klasszikus virtuális gépeket, az egyéni szkriptek futtatására szolgáló bővítmény használatával futtassa a következő szkriptet:
+A klasszikus virtuális gépek esetében az egyéni szkriptek bővítmény használatával futtassa a következő parancsfájlt:
 
 ```powershell
 Enable-PSRemoting -Force
@@ -162,31 +162,31 @@ $command = "winrm create winrm/config/Listener?Address=*+Transport=HTTPS @{Hostn
 cmd.exe /C $command
 ```
 
-ARM-beli virtuális gépek parancsok futtatása a portálról parancsfájl futtatásához használhatja a EnableRemotePS:
+ARM virtuális gépek esetén a portálon futtassa a futtatási parancsokat a EnableRemotePS parancsfájl futtatásához:
 
 ![Parancs futtatása](./media/remote-tools-troubleshoot-azure-vm-issues/run-command.png)
 
 ### <a name="connect-to-the-vm"></a>Kapcsolódás a virtuális géphez
 
-Futtassa a következő parancsot, az ügyfél függően számítógép helye:
+Futtassa az alábbi parancsot az ügyfélszámítógép helyétől függően:
 
-* A virtuális hálózat vagy a központi telepítési kívül
+* A VNET vagy az üzemelő példányon kívül
 
-  * Egy klasszikus virtuális gép futtassa a következő parancsot:
+  * Klasszikus virtuális gép esetén futtassa a következő parancsot:
 
     ```powershell
     $Skip = New-PSSessionOption -SkipCACheck -SkipCNCheck
     Enter-PSSession -ComputerName  "<<CLOUDSERVICENAME.cloudapp.net>>" -port "<<PUBLIC PORT NUMBER>>" -Credential (Get-Credential) -useSSL -SessionOption $Skip
     ```
 
-  * Egy ARM virtuális Géphez tartozó első DNS-név hozzáadása a nyilvános IP-címre. Részletes lépéseiért lásd: [teljesen minősített tartománynév létrehozása az Azure Portalon Windows virtuális gép](../windows/portal-create-fqdn.md). Ezután futtassa a következő parancsot:
+  * ARM virtuális gép esetén először adjon hozzá egy DNS-nevet a nyilvános IP-címhez. A részletes lépésekért lásd: [teljes tartománynév létrehozása a Azure Portal a Windows rendszerű virtuális](../windows/portal-create-fqdn.md)gépekhez. Ezután futtassa a következő parancsot:
 
     ```powershell
     $Skip = New-PSSessionOption -SkipCACheck -SkipCNCheck
     Enter-PSSession -ComputerName "<<DNSname.DataCenter.cloudapp.azure.com>>" -port "5986" -Credential (Get-Credential) -useSSL -SessionOption $Skip
     ```
 
-* Belül a virtuális hálózatok közötti vagy az üzembe helyezés futtassa a következő parancsot:
+* Futtassa a következő parancsot a VNET vagy az üzemelő példányon belül:
   
   ```powershell
   $Skip = New-PSSessionOption -SkipCACheck -SkipCNCheck
@@ -194,68 +194,68 @@ Futtassa a következő parancsot, az ügyfél függően számítógép helye:
   ```
 
 >[!Note] 
->A SkipCaCheck jelző megkerüli a vonatkozó követelményt a tanúsítvány importálása a virtuális géphez, ha a munkamenet elindításához.
+>A SkipCaCheck jelző beállítása megkerüli a tanúsítványnak a virtuális gépre való importálásának követelményét a munkamenet indításakor.
 
-Parancsfájl futtatása a virtuális gép távolról is használhatja az Invoke-Command parancsmagot:
+A Meghívási parancs parancsmag használatával távolról is futtathat parancsfájlokat a virtuális gépen:
 
 ```powershell
 Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 ```
 
-## <a name="remote-registry"></a>Remote Registry
+## <a name="remote-registry"></a>Távoli beállításjegyzék
 
 >[!Note]
->135-ös vagy a 445-ös TCP-portot meg kell nyitni annak érdekében, hogy ezt a beállítást használja.
+>A beállítás használatához a 135-es vagy a 445-es TCP-portnak nyitva kell lennie.
 >
->ARM-beli virtuális gépek akkor nyissa meg az NSG-t az 5986-os portot. További információkért tekintse meg a biztonsági csoportokat. 
+>ARM-alapú virtuális gépek esetén az 5986-es portot kell megnyitnia a NSG. További információ: biztonsági csoportok. 
 >
->Az RDFE-beli virtuális gépek rendelkeznie kell egy végpontot, amely rendelkezik egy privát 5986-os portot és a egy nyilvános port. Akkor is megnyithatja az NSG-t a nyilvános portot.
+>RDFE virtuális gépek esetén olyan végponttal kell rendelkeznie, amely rendelkezik 5986-es privát porttal és egy nyilvános porttal. Meg kell nyitnia a nyilvános elérésű portot is a NSG.
 
-1. Egy másik virtuális Géphez ugyanazon a VNETEN nyissa meg a Beállításszerkesztőt (regedit.exe).
+1. Az azonos VNET lévő másik virtuális gépről nyissa meg a Beállításszerkesztőt (Regedit. exe).
 
-2. Válassza ki **fájl** >**csatlakozás hálózati beállításjegyzék**.
+2. Válassza a **fájl** >**összekötése hálózati beállításjegyzék**lehetőséget.
 
-   ![Távoli lehetőség](./media/remote-tools-troubleshoot-azure-vm-issues/remote-registry.png) 
+   ![Távoli beállítás](./media/remote-tools-troubleshoot-azure-vm-issues/remote-registry.png) 
 
-3. Keresse meg a cél virtuális gép által **állomásnév** vagy **dinamikus IP** (előnyösebb), a "Írja be a kijelölendő objektum nevét" beírásával.
+3. Keresse meg a cél virtuális gépet az **állomásnév** vagy a **dinamikus IP-cím** (lehetőleg) megadásával az "adja meg a kijelölendő objektum nevét" mezőben.
 
-   ![Távoli lehetőség](./media/remote-tools-troubleshoot-azure-vm-issues/input-computer-name.png) 
+   ![Távoli beállítás](./media/remote-tools-troubleshoot-azure-vm-issues/input-computer-name.png) 
  
-4. Adja meg a hitelesítő adatokat a céloldali virtuális Gépet.
+4. Adja meg a cél virtuális gép hitelesítő adatait.
 
-5. Végezze el a szükséges módosításokat.
+5. Végezze el a beállításjegyzék szükséges módosításait.
 
-## <a name="remote-services-console"></a>Távoli szolgáltatások konzol
+## <a name="remote-services-console"></a>Távoli szolgáltatások konzolja
 
 >[!Note]
->A 135-ös vagy a 445-ös TCP-portok nyitva annak érdekében, hogy ezzel a beállítással kell lennie.
+>A beállítás használatához a 135-es vagy a 445-es TCP-portnak nyitva kell lennie.
 >
->ARM-beli virtuális gépek akkor nyissa meg az NSG-t az 5986-os portot. További információkért tekintse meg a biztonsági csoportokat. 
+>ARM-alapú virtuális gépek esetén az 5986-es portot kell megnyitnia a NSG. További információ: biztonsági csoportok. 
 >
->Az RDFE-beli virtuális gépek rendelkeznie kell egy végpontot, amely rendelkezik egy privát 5986-os portot és a egy nyilvános port. Ezt követően kell az NSG-t a nyilvános portot is megnyithatja.
+>RDFE virtuális gépek esetén olyan végponttal kell rendelkeznie, amely rendelkezik 5986-es privát porttal és egy nyilvános porttal. Ezután meg kell nyitnia a nyilvános elérésű portot is a NSG.
 
-1. Az azonos virtuális hálózaton egy másik virtuális gépről nyissa meg a **Services.msc**.
+1. Egy másik virtuális gépről ugyanazon a VNET nyissa meg a **Services. msc**egy példányát.
 
-2. Kattintson a jobb gombbal **szolgáltatások (helyi)**.
+2. Kattintson a jobb gombbal a **szolgáltatások (helyi)** elemre.
 
-3. Válassza ki **Csatlakozás másik számítógéphez**.
+3. Válassza **a Kapcsolódás másik számítógéphez**lehetőséget.
 
-   ![A távoli szolgáltatás](./media/remote-tools-troubleshoot-azure-vm-issues/remote-services.png)
+   ![Távoli szolgáltatás](./media/remote-tools-troubleshoot-azure-vm-issues/remote-services.png)
 
-4. Adja meg a dinamikus IP-címét a cél virtuális Gépen.
+4. Adja meg a cél virtuális gép dinamikus IP-címét.
 
-   ![Bemeneti dedikált IP-CÍMMEL](./media/remote-tools-troubleshoot-azure-vm-issues/input-ip-address.png)
+   ![Bemeneti DIP](./media/remote-tools-troubleshoot-azure-vm-issues/input-ip-address.png)
 
-5. Végezze el a szükséges módosításokat a szolgáltatásokhoz.
+5. Végezze el a szükséges módosításokat a szolgáltatásokban.
 
 ## <a name="next-steps"></a>További lépések
 
 [Enter-PSSession](https://technet.microsoft.com/library/hh849707.aspx)
 
-[Egyéni parancsfájl kiterjesztése a Windows a klasszikus üzemi modell használatával](../extensions/custom-script-classic.md)
+[Egyéni parancsfájl-bővítmény a Windows rendszerhez a klasszikus üzemi modell használatával](../extensions/custom-script-classic.md)
 
-PsExec része a [PSTools Suite](https://download.sysinternals.com/files/PSTools.zip).
+A PsExec a [PsTools csomag](https://download.sysinternals.com/files/PSTools.zip)része.
 
-A PSTools csomaggal kapcsolatos további információkért lásd: [PSTools Suite](https://docs.microsoft.com/sysinternals/downloads/pstools).
+További információ az PSTools Suite-ról: [PsTools Suite](https://docs.microsoft.com/sysinternals/downloads/pstools).
 
 

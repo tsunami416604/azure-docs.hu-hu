@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: zarhoads
-ms.openlocfilehash: aebade14f3a8a1095925d17325ce99b78031dc32
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 69f60036bd718264174bf1befe832305e250e77c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757245"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65073951"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások az alkalmazások fejlesztői az Azure Kubernetes Service (AKS)-erőforrások kezeléséhez
 
@@ -74,6 +74,8 @@ Az Azure fejlesztési szóközöket fejlesztése, hibakeresése, és tesztelheti
 
 Az integrált fejlesztési és tesztelési folyamat fejlesztői, szóközök csökkenti a szükségességét helyi tesztelési környezetek, például [minikube][minikube]. Ehelyett fejleszti és teszteli az AKS-fürt ellen. Ez a fürt biztonságossá tehetők és elkülönített fürt logikailag el névterek használatát az előző szakaszban leírtaknak megfelelően. Amikor az alkalmazásokat telepítésre készek az éles környezetben, ahogy a fejlesztés minden történt egy valódi AKS-fürtön hajtja magabiztosan telepítheti.
 
+Az Azure fejlesztési tárolóhelyek célja a Linux-podok és -csomópontokon futó alkalmazásokhoz való használatra.
+
 ## <a name="use-the-visual-studio-code-extension-for-kubernetes"></a>A Kubernetes esetében a Visual Studio Code-bővítmény használata
 
 **Ajánlott eljárásokkal kapcsolatos útmutatás** – akkor jelentkezik, telepítése és használata a VS Code-bővítménnyel, a Kubernetes YAML írásakor. A bővítmény használhatja az integrált központi telepítési megoldás, így ritkán kommunikáló alkalmazástulajdonosok az AKS-fürtöt is.
@@ -87,6 +89,8 @@ A [Visual Studio Code-bővítmény a Kubernetes] [ vscode-kubernetes] segítség
 **Ajánlott eljárásokkal kapcsolatos útmutatás** – rendszeresen, a legújabb verzióját futtató `kube-advisor` nyílt forráskódú eszköz, a hibák észleléséhez a fürtben. Ha egy meglévő AKS-fürtre erőforráskvóták alkalmaz, futtassa `kube-advisor` először, amelyek nem rendelkeznek, erőforrás-kérelmek és a meghatározott podok kereséséhez.
 
 A [kube-advisor] [ kube-advisor] eszköz egy társított AKS nyílt forráskódú projekt, amely megvizsgálja egy Kubernetes-fürtöt, és jelentést készít a talált problémákat. Egy hasznos, ellenőrizze, hogy azonosítsa a podok nem rendelkező erőforrás-kérelmek és korlátozások érvényben.
+
+A kube-advisor eszköz jelentései erőforrás kérelem és a hiányzó PodSpecs a Windows-alkalmazások, valamint a Linuxos alkalmazások korlátai, de a kube-advisor eszköz magát egy Linux-pod ütemezése. Egy adott operációs rendszer használatával egy csomópont készleten való futtatáshoz podot ütemezhet egy [csomópont választó] [ k8s-node-selector] a pod-konfigurációban.
 
 Az AKS-fürt, amelyen számos fejlesztői csapatok és alkalmazásokat azok visszakövetését, hogy podok nélkül ezeket az erőforrás-kérelmek, és korlátozza a készlet. Ajánlott eljárásként rendszeresen futtassa `kube-advisor` az AKS-fürtökön.
 
@@ -110,3 +114,4 @@ Néhány ajánlott eljárások végrehajtásához a következő cikkekben talál
 [dev-spaces]: ../dev-spaces/get-started-netcore.md
 [operator-best-practices-isolation]: operator-best-practices-cluster-isolation.md
 [resource-quotas]: operator-best-practices-scheduler.md#enforce-resource-quotas
+[k8s-node-selector]: concepts-clusters-workloads.md#node-selectors

@@ -1,6 +1,6 @@
 ---
-title: Az Azure Service Fabric és az API Management áttekintése |} A Microsoft Docs
-description: Ez a cikk az Azure API Management használatát, a Service Fabric-alkalmazások átjáróként.
+title: Az Azure Service Fabric és az API Management áttekintése | Microsoft Docs
+description: Ez a cikk bemutatja, hogyan használhatja az Azure API Management-t a Service Fabric alkalmazásaihoz tartozó átjáróként.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,108 +14,108 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/22/2017
 ms.author: vturecek
-ms.openlocfilehash: 0dac2730bcc13b979de6a8faaaa53c0aaf15e902
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 52f9584a2f793ff513100afcb7b7bd6acd2a4742
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669350"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900498"
 ---
-# <a name="service-fabric-with-azure-api-management-overview"></a>Service Fabric és Azure API Management áttekintése
+# <a name="service-fabric-with-azure-api-management-overview"></a>Service Fabric az Azure API Management áttekintése
 
-A felhőalapú alkalmazásokhoz általában előtér-átjáró szükséges, amely egyetlen belépési pontként szolgálhat a felhasználók, eszközök és egyéb alkalmazások számára. A Service Fabricben átjáró lehet bármely állapotmentes szolgáltatás például egy [ASP.NET Core-alkalmazás](service-fabric-reliable-services-communication-aspnetcore.md), vagy egy másik szolgáltatás, például a bejövő forgalomra tervezett [az Event Hubs](https://docs.microsoft.com/azure/event-hubs/), [az IoT Hub](https://docs.microsoft.com/azure/iot-hub/), vagy [az Azure API Management](https://docs.microsoft.com/azure/api-management/).
+A felhőalapú alkalmazásokhoz általában előtér-átjáró szükséges, amely egyetlen belépési pontként szolgálhat a felhasználók, eszközök és egyéb alkalmazások számára. Service Fabric az átjáró bármilyen állapot nélküli szolgáltatás lehet, például [ASP.net Core alkalmazás](service-fabric-reliable-services-communication-aspnetcore.md)vagy más, a bejövő forgalomra tervezett szolgáltatás, például [Event Hubs](https://docs.microsoft.com/azure/event-hubs/), [IoT hub](https://docs.microsoft.com/azure/iot-hub/)vagy [Azure API Management](https://docs.microsoft.com/azure/api-management/).
 
-Ez a cikk az Azure API Management használatát, a Service Fabric-alkalmazások átjáróként. Az API Management közvetlenül integrálható a Service Fabric lehetővé teszi, hogy tegye közzé az API-k az útválasztási szabályokat a háttér-Service Fabric-szolgáltatások széles skáláját. 
+Ez a cikk bemutatja, hogyan használhatja az Azure API Management-t a Service Fabric alkalmazásaihoz tartozó átjáróként. A API Management közvetlenül integrálható Service Fabricekkel, így lehetővé teszi az API-k széles körű útválasztási szabályokkal történő közzétételét a háttérbeli Service Fabric-szolgáltatásokhoz. 
 
 ## <a name="availability"></a>Rendelkezésre állás
 
 > [!IMPORTANT]
-> Ez a funkció érhető el a **prémium** és **fejlesztői** szinten az API Management miatt a szükséges virtuális hálózati támogatás.
+> Ez a funkció a szükséges virtuális hálózatok támogatásának köszönhetően a API Management **prémium** és **fejlesztői** szintjein érhető el.
 
 ## <a name="architecture"></a>Architektúra
 
-Egy közös Service Fabric-architektúra egy egyoldalas webalkalmazást, amely lehetővé teszi a HTTP-hívások háttér-HTTP API-jainak elérhetővé tevő használ. A [Service Fabric-bevezető mintaalkalmazás](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started) Ez az architektúra egy példát mutat be.
+Egy közös Service Fabric architektúra egy egyoldalas webalkalmazást használ, amely HTTP-hívásokat tesz elérhetővé HTTP API-kat használó háttér-szolgáltatásokhoz. A [Service Fabric első lépéseket](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started) bemutató példa erre az architektúrára mutat példát.
 
-Ebben a forgatókönyvben egy állapot nélküli webes szolgáltatás szolgál az átjáró a Service Fabric-alkalmazásba. E módszerhez szükség van egy webszolgáltatás, amelyet a proxy HTTP-kéréseket a háttér-szolgáltatásaikhoz, is írhat az alábbi ábrán látható módon:
+Ebben az esetben az állapot nélküli webszolgáltatás átjáróként szolgál a Service Fabric alkalmazásban. Ehhez a megközelítéshez olyan webszolgáltatást kell írnia, amely HTTP-kéréseket tud a háttér-szolgáltatásokhoz adni, az alábbi ábrán látható módon:
 
-![Service Fabric és Azure API Management a topológia áttekintése][sf-web-app-stateless-gateway]
+![Service Fabric az Azure API Management topológia áttekintése][sf-web-app-stateless-gateway]
 
-Alkalmazások egyre összetettebbé válnak, mivel így tegye az átjárók, amelyek egy API-t számtalan háttérszolgáltatások elé kell. Az Azure API Management-útválasztási szabályok, hozzáférés-vezérlést, sebességkorlátozást, figyelési, eseménynaplózás és válaszok gyorsítótárazását, minimális befektetett munkával az összetett API-k kezelésére szolgál. Az Azure API Management szolgáltatás felderítése a Service Fabric, partíció megoldás és a replika kiválasztása intelligensen irányíthatja a kérelmeket közvetlenül a Service Fabric háttérszolgáltatások így nem kell írni a saját állapot nélküli API-átjáró támogatja. 
+Mivel az alkalmazások összetettséget mutatnak, ezért olyan átjáróknak kell lenniük, amelyeknek a számtalan háttér-szolgáltatás előtt API-t kell tartalmazniuk. Az Azure API Management úgy lett kialakítva, hogy összetett API-kat kezeljen az útválasztási szabályokkal, a hozzáférés-vezérléssel, a ráta korlátozásával, a figyeléssel, az események naplózásával és a válasz gyorsítótárazásával, és minimális Az Azure API Management támogatja Service Fabric szolgáltatások felderítését, a partíciók feloldását és a replika kiválasztását, hogy a kéréseket közvetlenül a háttérbeli szolgáltatásokhoz irányítsa a Service Fabric, így nem kell saját állapot nélküli API-átjárót írnia. 
 
-Ebben a forgatókönyvben a webes felhasználói felület továbbra is biztosítja egy webszolgáltatással, miközben HTTP API-hívások felügyelt és Azure API Management keresztül irányítja át az alábbi ábrán látható módon:
+Ebben az esetben a webes felhasználói felületet továbbra is egy webszolgáltatáson keresztül kézbesítjük, míg a HTTP API-hívásokat az Azure API Management felügyeli és irányítja át, ahogy az a következő ábrán látható:
 
-![Service Fabric és Azure API Management a topológia áttekintése][sf-apim-web-app]
+![Service Fabric az Azure API Management topológia áttekintése][sf-apim-web-app]
 
 ## <a name="application-scenarios"></a>Alkalmazáshasználati helyzetek
 
-A Service Fabric Services lehet állapot nélküli vagy állapotalapú, és azok particionálható három sémák egyikével: egyedülálló, int-64 tartományt, és a nevesített. Végpont-hozzárendelésre van szükség, egy adott partícióra konkrét példányok azonosítása. A szolgáltatás, mind a service-példány nevét a végpont feloldásakor (például `fabric:/myapp/myservice`), valamint a szolgáltatás az adott partíció meg kell adni, kivéve a singleton partíció.
+A Service Fabric szolgáltatásai lehetnek állapot nélküliek vagy állapotok, és a három séma egyikével particionálva lehetnek: egyszeres, int-64 tartomány és névvel ellátott. A szolgáltatás végpontjának feloldásához egy adott szolgáltatási példány egy adott partícióját kell azonosítani. Egy szolgáltatás végpontjának feloldásakor a szolgáltatás példányának nevét (például `fabric:/myapp/myservice`:), valamint a szolgáltatás adott partícióját is meg kell adni, kivéve az egyedi partíciók esetében.
 
-Az Azure API Management állapotmentes szolgáltatások, állapotalapú szolgáltatások és bármilyen particionálási sémát bármely kombinációja használható.
+Az Azure API Management az állapot nélküli szolgáltatások, az állapot-nyilvántartó szolgáltatások és a particionálási sémák bármilyen kombinációjával használható.
 
-## <a name="send-traffic-to-a-stateless-service"></a>Küldeni a forgalmat a állapotmentes szolgáltatás
+## <a name="send-traffic-to-a-stateless-service"></a>Forgalom elküldése állapot nélküli szolgáltatásba
 
-A legegyszerűbb esetben a forgalom állapotmentes szolgáltatáspéldány lesznek továbbítva. Ennek érdekében egy API Management műveletet tartalmaz egy bejövő feldolgozás szabályzat egy Service Fabric-háttérrendszert, amely leképezi a Service Fabric háttérbeli egy adott állapotmentes szolgáltatás-példányában. A szolgáltatásnak küldött kérések érkeznek az állapotmentes szolgáltatás példányának véletlenszerű replika.
-
-#### <a name="example"></a>Példa
-A következő esetben egy Service Fabric-alkalmazás tartalmaz egy állapotmentes szolgáltatás nevű `fabric:/app/fooservice`, amely közzéteszi a belső HTTP-API. A szolgáltatás-példány neve jól ismert, és lehet változtatható közvetlenül a bejövő feldolgozás az API Management házirendben. 
-
-![Service Fabric és Azure API Management a topológia áttekintése][sf-apim-static-stateless]
-
-## <a name="send-traffic-to-a-stateful-service"></a>Az állapotalapú szolgáltatások forgalmat küldeni
-
-Az állapotmentes szolgáltatás forgatókönyv hasonló, forgalom továbbítható egy állapotalapú service-példányt. Ebben az esetben az API Management-műveletet tartalmazza, egy bejövő feldolgozás szabályzat egy Service Fabric-háttérrendszert, amely egy kérelem egy adott partíció egy adott *állapotalapú* szolgáltatáspéldány. A partíció leképezni egy lambda módszer használatával a bejövő HTTP-kérelem, például egy értéket az URL-címet a bemeneti adatokat keresztül számított minden kérelemhez. A szabályzat csak az elsődleges másodpéldány, vagy az olvasási műveletek esetében egy véletlenszerű replika kérelmek küldésére konfigurálhatók.
+A legegyszerűbb esetben a rendszer továbbítja a forgalmat egy állapot nélküli szolgáltatási példányra. Ennek eléréséhez egy API Management művelet egy olyan Service Fabric háttérbeli bejövő feldolgozási szabályzatot tartalmaz, amely egy adott állapot nélküli Service-példányhoz van leképezve a Service Fabric háttérbe. A szolgáltatásnak küldött kérelmeket a szolgáltatás egy véletlenszerűen kiválasztott példánya továbbítja.
 
 #### <a name="example"></a>Példa
+A következő forgatókönyvben egy Service Fabric alkalmazás tartalmaz egy nevű `fabric:/app/fooservice`állapot nélküli szolgáltatást, amely egy belső http API-t tesz elérhetővé. A szolgáltatás példányának neve jól ismert, és a API Management bejövő feldolgozási házirendben közvetlenül is kódolható. 
 
-A következő esetben a Service Fabric-alkalmazás tartalmazza a nevű particionált az állapotalapú szolgáltatások `fabric:/app/userservice` , amely elérhetővé teszi a belső HTTP-API. A szolgáltatás-példány neve jól ismert, és lehet változtatható közvetlenül a bejövő feldolgozás az API Management házirendben.  
+![Service Fabric az Azure API Management topológia áttekintése][sf-apim-static-stateless]
 
-A szolgáltatás particionálása az Int64 partícióséma használatával két partíció és kiterjedő kulcstartományhoz `Int64.MinValue` való `Int64.MaxValue`. A háttér-szabályzat kiszámítja egy partíciókulcsot, hogy a tartományában átalakításával a `id` bár bármely algoritmus itt is használható a partíciókulcs számítási egy 64 bites egész számot, hogy a kérelem URL-cím a megadott érték. 
+## <a name="send-traffic-to-a-stateful-service"></a>Forgalom küldése állapot-nyilvántartó szolgáltatásnak
 
-![Service Fabric és Azure API Management a topológia áttekintése][sf-apim-static-stateful]
-
-## <a name="send-traffic-to-multiple-stateless-services"></a>Küldeni a forgalmat a több állapotmentes szolgáltatások
-
-A speciális esetben megadhatja egy API Management művelet, amely kérelmek egynél több szolgáltatáspéldány van leképezve. Ebben az esetben minden műveletet tartalmaz egy szabályzatot, amely a kérések képez le egy adott szolgáltatáspéldány, a bejövő HTTP-kérelemben szereplő, például az URL-cím elérési út vagy a lekérdezési karakterláncokat, és az állapotalapú szolgáltatások esetén egy partíción belül a szolgáltatáspéldány értékei alapján. 
-
-Ennek érdekében egy API Management műveletet tartalmaz egy bejövő feldolgozás szabályzat egy Service Fabric-háttérrendszert, amely leképezi a Service Fabric háttér-a bejövő HTTP-kérelem lekért értékek alapján egy állapotmentes szolgáltatás-példányában. A szolgáltatás példánya egy véletlenszerű replikája szolgáltatáspéldány kérések érkeznek.
+Az állapot nélküli szolgáltatási forgatókönyvhöz hasonlóan a forgalom is továbbítható egy állapot-nyilvántartó szolgáltatási példányba. Ebben az esetben egy API Management művelet egy olyan Service Fabric háttérbeli bejövő feldolgozási szabályzatot tartalmaz, amely egy adott *állapot-nyilvántartó* példány egy adott partíciójának egy kérését képezi le. Az egyes kérések hozzárendelésére szolgáló partíciót lambda módszerrel kell kiszámítani a bejövő HTTP-kérésből származó bizonyos adatokkal, például az URL-cím elérési útjában szereplő értékkel. A házirend úgy konfigurálható, hogy csak az elsődleges replikára, vagy az olvasási műveletek véletlenszerű replikára küldje a kérelmeket.
 
 #### <a name="example"></a>Példa
 
-Ebben a példában egy új állapot nélküli szolgáltatáspéldány létrehozása az alkalmazás minden felhasználóhoz egy dinamikusan előállított nevű használatával a következő képletre:
+A következő forgatókönyvben a Service Fabric alkalmazás egy nevű `fabric:/app/userservice` particionált állapot-nyilvántartó szolgáltatást tartalmaz, amely egy belső http API-t tesz elérhetővé. A szolgáltatás példányának neve jól ismert, és a API Management bejövő feldolgozási házirendben közvetlenül is kódolható.  
+
+A szolgáltatás particionálva van a Int64 partíciós séma használatával két partícióval és egy, a `Int64.MinValue` - `Int64.MaxValue`ra kiterjedő kulcs tartománnyal. A háttérrendszer-házirend kiszámítja az adott tartományon belüli partíciós kulcsot `id` úgy, hogy az URL-kérelem útvonalán megadott értéket egy 64 bites egész számra konvertálja, de a partíciós kulcs kiszámításához itt bármely algoritmus használható. 
+
+![Service Fabric az Azure API Management topológia áttekintése][sf-apim-static-stateful]
+
+## <a name="send-traffic-to-multiple-stateless-services"></a>Forgalom küldése több állapot nélküli szolgáltatásba
+
+A fejlettebb forgatókönyvekben olyan API Management műveletet határozhat meg, amely több szolgáltatási példányra is leképezi a kérelmeket. Ebben az esetben minden művelet egy olyan házirendet tartalmaz, amely a bejövő HTTP-kérelemből származó értékek alapján leképezi a kérelmeket egy adott szolgáltatási példányra, például az URL-cím vagy a lekérdezési karakterláncot, valamint az állapot-nyilvántartó szolgáltatások esetében a szolgáltatás példányán belüli partíciót. 
+
+Ennek eléréséhez egy API Management művelet egy olyan Service Fabric háttérrel rendelkező bejövő feldolgozási szabályzatot tartalmaz, amely a bejövő HTTP-kérelemből beolvasott értékek alapján leképezi a Service Fabric háttér nélküli szolgáltatási példányát. A szolgáltatásnak küldött kéréseket a szolgáltatás egy véletlenszerűen kiválasztott példánya továbbítja.
+
+#### <a name="example"></a>Példa
+
+Ebben a példában egy új állapot nélküli szolgáltatási példány jön létre a dinamikusan generált névvel rendelkező alkalmazás minden felhasználója számára a következő képlet használatával:
  
 - `fabric:/app/users/<username>`
 
-  Minden szolgáltatásnak van egy egyedi nevet, de a nevek nem ismertek induló, mert a szolgáltatások létrehozott felhasználói válaszul, vagy rendszergazdai adjon meg, és így nem módosítható az APIM-házirendek vagy útválasztási szabályokat. Ehelyett a nevét, amelyhez a kérés küldése a szolgáltatás a háttér-szabályzat-definíció létrehozása a `name` a kérelem URL-cím a megadott érték. Példa:
+  Minden szolgáltatás egyedi névvel rendelkezik, de a nevek nem ismertek, mert a szolgáltatások felhasználói vagy rendszergazdai bevitelre válaszul jönnek létre, ezért nem lehet a APIM-házirendekben vagy útválasztási szabályokban rögzített módon kódolni. Ehelyett annak a szolgáltatásnak a neve jelenik meg, amelyre a kérést küldeni kívánja a háttér-házirend definíciójában az `name` URL-kérelem elérési útján megadott érték alapján. Példa:
 
-  - Kérelem `/api/users/foo` szolgáltatáspéldány irányítja a rendszer `fabric:/app/users/foo`
-  - Kérelem `/api/users/bar` szolgáltatáspéldány irányítja a rendszer `fabric:/app/users/bar`
+  - A szolgáltatás példányára irányuló kérelem `/api/users/foo` átirányítva`fabric:/app/users/foo`
+  - A szolgáltatás példányára irányuló kérelem `/api/users/bar` átirányítva`fabric:/app/users/bar`
 
-![Service Fabric és Azure API Management a topológia áttekintése][sf-apim-dynamic-stateless]
+![Service Fabric az Azure API Management topológia áttekintése][sf-apim-dynamic-stateless]
 
-## <a name="send-traffic-to-multiple-stateful-services"></a>Küldeni a forgalmat a több állapotalapú szolgáltatások
+## <a name="send-traffic-to-multiple-stateful-services"></a>Forgalom küldése több állapot-nyilvántartó szolgáltatásnak
 
-Az állapotmentes szolgáltatás példához hasonló, az API Management művelet leképezhet kérelmek egynél több **állapotalapú** szolgáltatás példány, ebben az esetben akkor is előfordulhat, hogy kell végrehajtani a partíció feloldási állapot-nyilvántartó minden szolgáltatáspéldány.
+Az állapot nélküli szolgáltatás példájának megfelelően egy API Management művelet több **állapot-nyilvántartó** szolgáltatási példányra is leképezheti a kérelmeket, ebben az esetben előfordulhat, hogy a partíciók feloldását is el kell végeznie az egyes állapot-nyilvántartó szolgáltatás példányai esetében.
 
-Ennek érdekében egy API Management műveletet tartalmaz egy bejövő feldolgozás szabályzat egy Service Fabric-háttérrendszert, amely leképezi a Service Fabric háttér-a bejövő HTTP-kérelem lekért értékek alapján egy állapotalapú szolgáltatás-példányában. Mellett egy kérelem leképezése az adott szolgáltatáspéldány, a kérelem is is le lehet képezni egy adott partíción belül a szolgáltatáspéldány, és szükség esetén az elsődleges másodpéldány, vagy egy véletlenszerű másodlagos replikát a partíción belül.
+Ennek eléréséhez egy API Management művelet egy olyan Service Fabric háttérbeli bejövő feldolgozási szabályzatot tartalmaz, amely a bejövő HTTP-kérelemből beolvasott értékek alapján leképez egy állapot-nyilvántartó szolgáltatási példányt a Service Fabric háttérbe. Az adott szolgáltatási példányra vonatkozó kérések leképezése mellett a kérést a szolgáltatási példányon belül egy adott partícióra is lehet hozzárendelni, és opcionálisan az elsődleges replikára vagy a partíción belüli másodlagos replikára is.
 
 #### <a name="example"></a>Példa
 
-Ebben a példában egy új állapot-nyilvántartó szolgáltatáspéldány létrehozása az alkalmazás minden felhasználó egy dinamikusan előállított nevű használatával a következő képletre:
+Ebben a példában egy új állapot-nyilvántartó szolgáltatási példány jön létre az alkalmazás minden felhasználója számára egy dinamikusan generált névvel a következő képlet használatával:
  
 - `fabric:/app/users/<username>`
 
-  Minden szolgáltatásnak van egy egyedi nevet, de a nevek nem ismertek induló, mert a szolgáltatások létrehozott felhasználói válaszul, vagy rendszergazdai adjon meg, és így nem módosítható az APIM-házirendek vagy útválasztási szabályokat. Ehelyett a nevét, amelyhez a kérés küldése a szolgáltatás a háttér-szabályzat-definíció létrehozása a `name` értéket megadva a kérelem URL-címet. Példa:
+  Minden szolgáltatás egyedi névvel rendelkezik, de a nevek nem ismertek, mert a szolgáltatások felhasználói vagy rendszergazdai bevitelre válaszul jönnek létre, ezért nem lehet a APIM-házirendekben vagy útválasztási szabályokban rögzített módon kódolni. Ehelyett annak a szolgáltatásnak a neve jelenik meg, amelyre a kérést küldeni kívánja a háttér-házirend definíciójában az `name` URL-kérelem elérési útjának megadott érték alapján. Példa:
 
-  - Kérelem `/api/users/foo` szolgáltatáspéldány irányítja a rendszer `fabric:/app/users/foo`
-  - Kérelem `/api/users/bar` szolgáltatáspéldány irányítja a rendszer `fabric:/app/users/bar`
+  - A szolgáltatás példányára irányuló kérelem `/api/users/foo` átirányítva`fabric:/app/users/foo`
+  - A szolgáltatás példányára irányuló kérelem `/api/users/bar` átirányítva`fabric:/app/users/bar`
 
-Minden szolgáltatáspéldány is particionálva van, az Int64 partícióséma használatával két partíció és kiterjedő kulcstartományhoz `Int64.MinValue` való `Int64.MaxValue`. A háttér-szabályzat kiszámítja egy partíciókulcsot, hogy a tartományában átalakításával a `id` bár bármely algoritmus itt is használható a partíciókulcs számítási egy 64 bites egész számot, hogy a kérelem URL-cím a megadott érték. 
+A Int64 partíciós séma két partícióval és egy, a rendszerre kiterjedő kulcstároló `Int64.MinValue` `Int64.MaxValue`használatával is particionálva van. A háttérrendszer-házirend kiszámítja az adott tartományon belüli partíciós kulcsot `id` úgy, hogy az URL-kérelem útvonalán megadott értéket egy 64 bites egész számra konvertálja, de a partíciós kulcs kiszámításához itt bármely algoritmus használható. 
 
-![Service Fabric és Azure API Management a topológia áttekintése][sf-apim-dynamic-stateful]
+![Service Fabric az Azure API Management topológia áttekintése][sf-apim-dynamic-stateful]
 
 ## <a name="next-steps"></a>További lépések
 
-Kövesse a [oktatóanyag](service-fabric-tutorial-deploy-api-management.md) állíthatja be az API Management és a flow szolgáltatásokra irányuló kérések API Management szolgáltatáson keresztül az első Service Fabric-fürtben.
+Kövesse az [oktatóanyagot](service-fabric-tutorial-deploy-api-management.md) , és állítsa be az első Service Fabric-fürtöt API Management és flow-kérelmekkel a szolgáltatásokra API Managementon keresztül.
 
 <!-- links -->
 

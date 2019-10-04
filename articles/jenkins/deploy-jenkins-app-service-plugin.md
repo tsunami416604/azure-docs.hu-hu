@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: 58835b66824d55b64b77e34df64d34c8da1c269a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9f7e0e23a04c6b141c6e0c5ff88b3d5ff2d76e1d
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57864813"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840431"
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>Üzembe helyezés az Azure App Service-ben a Jenkins beépülő modullal 
 
@@ -35,7 +35,7 @@ Ha még nem rendelkezik Jenkins-főkiszolgálóval, kezdje a [megoldássablonnal
 * [Azure Credentials](https://plugins.jenkins.io/azure-credentials), 1.2-es verzió
 * [Azure App Service](https://plugins.jenkins.io/azure-app-service), 0.1-es verzió
 
-A Jenkins beépülő modullal a Web Apps által támogatott bármelyik nyelvvel (például C#, PHP, Java és Node.js) üzembe helyezhetők a webalkalmazások. Ebben az oktatóanyagban egy, [az Azure-hoz készült egyszerű Java-webalkalmazást](https://github.com/azure-devops/javawebappsample) használunk. Ahhoz, hogy elágaztassa az adattárat a saját GitHub-fiókja felé, kattintson a **Fork** (Elágaztatás) gombra a GitHub-felület jobb felső sarkában.  
+A Jenkins beépülő modullal webalkalmazásokat telepíthet a Web Apps által támogatott nyelveken, például C#a PHP, a Python, a Java és a Node. js segítségével. Ebben az oktatóanyagban egy, [az Azure-hoz készült egyszerű Java-webalkalmazást](https://github.com/azure-devops/javawebappsample) használunk. Ahhoz, hogy elágaztassa az adattárat a saját GitHub-fiókja felé, kattintson a **Fork** (Elágaztatás) gombra a GitHub-felület jobb felső sarkában.  
 
 > [!NOTE]
 > A Java-projekt létrehozásához szükség van a Java JDK-ra és a Mavenre. Ezeket az összetevőket a Jenkins-főkiszolgálón telepítse, vagy a virtuálisgép-ügynökön, ha az ügynököt folyamatos integráláshoz használja. Ha Java SE alkalmazást helyez üzembe, a ZIP-re is szükség lesz a buildkiszolgálón.
@@ -55,7 +55,7 @@ A Web App for Containers szolgáltatásban való üzembe helyezéshez telepítse
 Az Azure-ban való üzembe helyezéshez Azure-szolgáltatásnévre van szükség. 
 
 
-1. Az Azure egyszerű szolgáltatás létrehozásához használja a [Azure CLI-vel](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json) vagy a [az Azure portal](/azure/azure-resource-manager/resource-group-create-service-principal-portal).
+1. Azure-szolgáltatásnév létrehozásához használja az [Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json) -t vagy a [Azure Portal](/azure/azure-resource-manager/resource-group-create-service-principal-portal).
 2. A Jenkins irányítópultján válassza a **Credentials** > **System** (Hitelesítő adatok, Rendszer) lehetőséget. Ezután válassza a **Global credentials (unrestricted)** (Globális hitelesítő adatok (korlátlan)) elemet.
 3. Microsoft Azure-szolgáltatásnév hozzáadásához válassza az **Add Credentials** (Hitelesítő adatok hozzáadása) lehetőséget. Adja meg a következő mezők értékét: **Subscription ID** (Előfizetés azonosítója), **Client ID** (Ügyfél-azonosító), **Client Secret** (Titkos ügyfélkód) és **OAuth 2.0 Token Endpoint** (Jogkivonatcserélő OAuth 2.0-végpont). Az **ID** (Azonosító) mezőt állítsa **mySp** értékre. Ezt az azonosítót fogja használni a cikk következő lépéseiben.
 
@@ -72,7 +72,7 @@ Mielőtt beállítaná a feladatot a Jenkinsben, szüksége van egy Azure App Se
 
 
 1. Az `az appservice plan create` [Azure CLI-paranccsal](/cli/azure/appservice/plan#az-appservice-plan-create) hozzon létre egy Azure App Service-csomagot **INGYENES** tarifacsomaggal. Az App Service-csomag határozza meg az alkalmazások üzemeltetéséhez használt fizikai erőforrásokat. Az App Service-csomaghoz rendelt összes alkalmazás ugyanezeket az erőforrásokat használja. A megosztott erőforrásokkal csökkenthetők a költségek, ha több alkalmazást is üzemeltet.
-2. Hozzon létre egy webalkalmazást. Ehhez használhatja az [Azure Portalt](/azure/app-service-web/web-sites-configure) vagy az alábbi `az` Azure CLI-parancsot:
+2. Hozzon létre egy webalkalmazást. Ehhez használhatja az [Azure Portalt](/azure/app-service/configure-common) vagy az alábbi `az` Azure CLI-parancsot:
     ```azurecli-interactive 
     az webapp create --name <myAppName> --resource-group <myResourceGroup> --plan <myAppServicePlan>
     ```
@@ -90,7 +90,7 @@ Mielőtt beállítaná a feladatot a Jenkinsben, szüksége van egy Azure App Se
 ### <a name="set-up-the-jenkins-job"></a>A Jenkins-feladat beállítása
 
 1. Hozzon létre egy új **szabad stílusú** projektet a Jenkins irányítópultján.
-2. Konfigurálja a **Source code management** (Forráskódkezelés) mezőt az [Azure-hoz készült egyszerű Java-webalkalmazás](https://github.com/azure-devops/javawebappsample) helyi elágazásának használatára. Adja meg az **adattár URL-címét**. Például: http:\//github.com/&lt;your_ID > / javawebappsample.
+2. Konfigurálja a **Source code management** (Forráskódkezelés) mezőt az [Azure-hoz készült egyszerű Java-webalkalmazás](https://github.com/azure-devops/javawebappsample) helyi elágazásának használatára. Adja meg az **adattár URL-címét**. Például: http:\//GitHub.com/&lt;your_ID >/javawebappsample.
 3. Az **Execute shell** (Felület futtatása) paranccsal adjon hozzá egy lépést, amely létrehozza a projektet a Mavennel. Ehhez a példához egy további parancsra van szükség, amely a \*.war fájlt átnevezi **ROOT.war** fájlra a célmappában:   
     ```bash
     mvn clean package
@@ -100,7 +100,7 @@ Mielőtt beállítaná a feladatot a Jenkinsben, szüksége van egy Azure App Se
 4. Adjon hozzá egy létrehozás utáni műveletet a **Publish an Azure Web App** (Azure-webalkalmazás közzététele) lehetőség kiválasztásával.
 5. Adja meg a **mySp** értéket Azure-szolgáltatásnévként. Ez a szolgáltatásnév lett [Azure-beli hitelesítő adatként](#service-principal) tárolva az előző lépésben.
 6. Az **alkalmazáskonfigurációs** szakaszban válassza az előfizetésében szereplő erőforráscsoportot és webalkalmazást. A Jenkins beépülő modul automatikusan megállapítja, hogy a webalkalmazás Windows- vagy Linux-alapú. Windows-webalkalmazás esetében megjelenik a **Publish Files** (Fájlok közzététele) lehetőség.
-7. Adja meg a fájlokat, amelyeket üzembe szeretne helyezni. Ha például Javát használ, adja meg a WAR-csomagot. A választható **Source Directory** (Forráskönyvtár) és **Target Directory** (Célkönyvtár) paraméterekkel megadhatja a fájlfeltöltéshez használandó forrás- és célmappát. Az Azure-on található Java-webalkalmazás egy Tomcat-kiszolgálón fut. Ezért a Java, feltöltheti a WAR-csomag a webapps mappát. Ebben a példában a **forráskönyvtár** értéke legyen **target**, a **célkönyvtáré** pedig **webapps**.
+7. Adja meg a fájlokat, amelyeket üzembe szeretne helyezni. Ha például Javát használ, adja meg a WAR-csomagot. A választható **Source Directory** (Forráskönyvtár) és **Target Directory** (Célkönyvtár) paraméterekkel megadhatja a fájlfeltöltéshez használandó forrás- és célmappát. Az Azure-on található Java-webalkalmazás egy Tomcat-kiszolgálón fut. A Javához tehát a WAR-csomagot a webapps mappába kell feltölteni. Ebben a példában a **forráskönyvtár** értéke legyen **target**, a **célkönyvtáré** pedig **webapps**.
 8. Ha a termelési helytől eltérő helyre szeretne üzembe helyezni, a **Slot** (Hely) nevét is megadhatja.
 9. Mentse a projektet, és hozza létre. A webalkalmazás akkor helyeződik üzembe az Azure-on, ha a létrehozás befejeződött.
 
@@ -131,7 +131,7 @@ Az Azure App Service Jenkins beépülő modulja készen áll a folyamatok elvég
 
 ## <a name="configure-jenkins-to-deploy-web-app-for-containers"></a>A Jenkins konfigurálása Web App for Containers üzembe helyezéséhez
 
-A Web Apps on Linux támogatja a Dockerrel végzett üzembe helyezést. A webes alkalmazás üzembe helyezése a Docker használatával, egy docker-fájlban, amely egy Docker-rendszerképet a web Apps, és a futtatókörnyezet csomagokat van szükség. A Jenkins beépülő modul ezután létrehozza a rendszerképet, leküldi a Docker-beállításjegyzékbe, majd üzembe helyezi a rendszerképet a webalkalmazásban.
+A Web Apps on Linux támogatja a Dockerrel végzett üzembe helyezést. A webalkalmazás Docker használatával történő üzembe helyezéséhez meg kell adnia egy olyan Docker, amely a webalkalmazást egy szolgáltatás-futtatókörnyezetbe csomagolja egy Docker-rendszerképbe. A Jenkins beépülő modul ezután létrehozza a rendszerképet, leküldi a Docker-beállításjegyzékbe, majd üzembe helyezi a rendszerképet a webalkalmazásban.
 
 A Web Apps on Linux a hagyományos üzembehelyezési módszereket is támogatja, például a Gitet és a fájlfeltöltést, de csak a beépített nyelvek esetében (.NET Core, Node.js, PHP, Ruby). Ha más nyelvet használ, be kell csomagolnia az alkalmazás kódját és a szolgáltatási futtatókörnyezetet egy Docker-rendszerképbe, és a Dockert kell használnia az üzembe helyezéshez.
 
@@ -143,7 +143,7 @@ Mielőtt beállítaná a feladatot a Jenkinsben, szüksége vagy egy webalkalmaz
 ### <a name="set-up-the-jenkins-job-for-docker"></a>A Jenkins-feladat beállítása a Dockerhez
 
 1. Hozzon létre egy új **szabad stílusú** projektet a Jenkins irányítópultján.
-2. Konfigurálja a **Source code management** (Forráskódkezelés) mezőt az [Azure-hoz készült egyszerű Java-webalkalmazás](https://github.com/azure-devops/javawebappsample) helyi elágazásának használatára. Adja meg az **adattár URL-címét**. Például: http:\//github.com/&lt;your_ID > / javawebappsample.
+2. Konfigurálja a **Source code management** (Forráskódkezelés) mezőt az [Azure-hoz készült egyszerű Java-webalkalmazás](https://github.com/azure-devops/javawebappsample) helyi elágazásának használatára. Adja meg az **adattár URL-címét**. Például: http:\//GitHub.com/&lt;your_ID >/javawebappsample.
 3. Az **Execute shell** (Felület futtatása) paranccsal adjon hozzá egy lépést, amely létrehozza a projektet a Mavennel. Adja hozzá az alábbi sort a parancshoz:
     ```bash
     mvn clean package
@@ -161,7 +161,7 @@ A **Docker-beállításjegyzék URL-címeként** adja meg az URL-címet a követ
     az acr credential show -n <yourRegistry>
     ```
 
-10. Eldöntheti, hogy megadja-e a Docker-rendszerkép nevét és címkéjét az **Advanced** (Speciális) lapon. Alapértelmezés szerint a rendszerkép neve az Azure Portalon, a **Docker-tároló** beállításainál konfigurált rendszerképnévvel fog megegyezni. A címke $BUILD_NUMBER alapján jön létre.
+10. Eldöntheti, hogy megadja-e a Docker-rendszerkép nevét és címkéjét az **Advanced** (Speciális) lapon. Alapértelmezés szerint a rendszerkép neve az Azure Portalon, a **Docker-tároló** beállításainál konfigurált rendszerképnévvel fog megegyezni. A címke $BUILD _NUMBER jön létre.
     > [!NOTE]
     > Mindenképpen adja meg rendszerkép nevét az Azure Portalon, vagy adja meg a **Docker-rendszerkép** értékét az **Advanced** (Speciális) lapon. Ebben a **Docker-rendszerkép** értéke legyen &lt;saját_Beállításjegyzék>.azurecr.io/calculator értékre, a **Docker-rendszerkép címkéjét** pedig hagyja üresen.
 
@@ -206,7 +206,7 @@ A **Docker-beállításjegyzék URL-címeként** adja meg az URL-címet a követ
     Sun Jun 17 16:39:10 UTC 2017
     ```
 
-3. Lépjen a http://&lt;your_app_name>.azurewebsites.net/api/calculator/add?x=&lt;x>&y=&lt;y> helyre. Cserélje le az &lt;x> és az &lt;y> értékeket bármely számra, hogy megkapja az x + y összegét. A kalkulátor összegét mutatja: ![A Számológép: hozzáadása](./media/execute-cli-jenkins-pipeline/calculator-add.png)
+3. Lépjen a http://&lt;your_app_name>.azurewebsites.net/api/calculator/add?x=&lt;x>&y=&lt;y> helyre. Cserélje le az &lt;x> és az &lt;y> értékeket bármely számra, hogy megkapja az x + y összegét. A számológép az összeget mutatja: ![Számológép: Hozzáadás](./media/execute-cli-jenkins-pipeline/calculator-add.png)
 
 ### <a name="for-azure-app-service-on-linux"></a>Azure App Service on Linux esetén
 

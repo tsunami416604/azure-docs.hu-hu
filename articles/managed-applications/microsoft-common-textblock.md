@@ -1,6 +1,6 @@
 ---
-title: Az Azure TextBlock felhasználói felületi elem |} Microsoft Docs
-description: Azure-portálon a Microsoft.Common.TextBlock felhasználói felületi elem ismerteti.
+title: Az Azure TextBlock felhasználói felületi elemben |} A Microsoft Docs
+description: Az Azure portal a Microsoft.Common.TextBlock felhasználói felületi elem ismerteti.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: cd4d1aed666b2c64ade700a768df0525029b392c
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 0dcd8ba1b1bacd990c91ce90ef0013caac446cdc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062740"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64722547"
 ---
-# <a name="microsoftcommontextblock-ui-element"></a>Microsoft.Common.TextBlock felhasználói felületi elem
-Ez a vezérlő szöveg hozzáadása a portál felület is használható.
+# <a name="microsoftcommontextblock-ui-element"></a>Microsoft.Common.TextBlock UI element
+Szöveg hozzáadása a portál felületén használható vezérlő.
 
 ## <a name="ui-sample"></a>Felhasználói felület minta
 ![Microsoft.Common.TextBox](./media/managed-application-elements/microsoft.common.textblock.png)
@@ -49,5 +49,5 @@ Ez a vezérlő szöveg hozzáadása a portál felület is használható.
 ```
 
 ## <a name="next-steps"></a>További lépések
-* A bevezetést UI-definíciók létrehozásáról lásd: [Ismerkedés a CreateUiDefinition](create-uidefinition-overview.md).
-* Általános tulajdonságok felhasználói felületi elemei ismertetését lásd: [CreateUiDefinition elemek](create-uidefinition-elements.md).
+* Felhasználóifelület-definíciók létrehozása bevezetésért lásd: [CreateUiDefinition használatának első lépései](create-uidefinition-overview.md).
+* Egy felhasználói felületi elemeket általános tulajdonságok leírásáért lásd: [CreateUiDefinition elemek](create-uidefinition-elements.md).

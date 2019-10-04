@@ -1,6 +1,6 @@
 ---
-title: Media Encoder Standard-formátumok és -kodekek – Azure
-description: Ez a témakör áttekintést nyújt a Media Encoder Standard-formátumok és -kodekek.
+title: Media Encoder Standard formátumok és kodekek – Azure
+description: Ez a témakör áttekintést nyújt Media Encoder Standard formátumokról és kodekekről.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -12,98 +12,99 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: juliako;anilmur
-ms.openlocfilehash: c862de2eec4e6c116218457a20b567dc02778685
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.author: juliako
+ms.reviewer: anilmur
+ms.openlocfilehash: 8fd68269f73506c2d605c0cb4560e6a57e1a2128
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58190022"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "69016541"
 ---
 # <a name="media-encoder-standard-formats-and-codecs"></a>Media Encoder Standard-formátumok és -kodekek
 
-> [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki a használt Media Services verzióját:"]
 > * [2-es verzió](media-services-media-encoder-standard-formats.md)
 > * [3-as verzió](../latest/media-encoder-standard-formats.md)
 
-Ez a dokumentum a legismertebb importálható és exportálható fájlformátumokat is használhatja a Media Encoder Standard listáját tartalmazza.
+Ez a dokumentum a leggyakoribb importálási és exportálási fájlformátumok listáját tartalmazza, amelyeket Media Encoder Standard használhat.
 
-## <a name="input-containerfile-formats"></a>Bemeneti tároló/fájlformátum
-| Fájlformátum (fájlkiterjesztés) | Támogatott |
+## <a name="input-containerfile-formats"></a>Bemeneti tároló/fájlformátumok
+| Fájlformátumok (fájlkiterjesztések) | Támogatott |
 | --- | --- |
-| FLV (H.264 és AAC kodekkel) (.flv) |Igen |
+| FLV (H. 264 és AAC kodekekkel) (. flv) |Igen |
 | MXF    (.mxf) |Igen |
 | GXF    (.gxf) |Igen |
-| MPEG2 PS, MPEG2-TS, 3GP (.ts, .ps, .3gp, .3gpp, .mpg) |Igen |
-| Windows Media Video (WMV) / ASP (.wmv, .asf) |Igen |
-| AVI (tömörítetlen 8 bites/10 bit) (.avi) |Igen |
-| MP4 (.mp4, .m4a, .m4v) / ISMV (.isma, .ismv) |Igen |
-| [A Microsoft Digital Video Recording(DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984) (.dvr ms) |Igen |
-| Matroska/WebM (.mkv) |Igen |
+| MPEG2-PS, MPEG2-TS, 3GP (. TS,. ps,. 3GP,. 3GPP,. mpg) |Igen |
+| Windows Media Video (WMV)/ASF (. wmv,. asf) |Igen |
+| AVI (tömörítetlen 8bit/10bit) (. avi) |Igen |
+| MP4 (. MP4,. M4A,. m4v)/ISMV (. ISMA,. ISMV) |Igen |
+| [Microsoft digitális videó rögzítése (DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984) (. DVR-MS) |Igen |
+| Matroska/WebM (. mkv) |Igen |
 | WAVE/WAV (.wav) |Igen |
-| QuickTime (.mov) |Igen |
+| QuickTime (. mov) |Igen |
 
 > [!NOTE]
-> Egy lista a leggyakrabban előforduló fájlkiterjesztéseket újabb verziója. Media Encoder Standard támogatja sokan mások is (például: .m2ts, .mpeg2video és .qt formátumokat). Ha egy fájl kódolása próbál, és a formátum nem támogatott kapcsolatos hibaüzenet kap, adjon visszajelzéseket [Itt](https://feedback.azure.com/forums/169396-media-services/category/144411-encoding-and-processing/).
+> A fenti lista a gyakrabban előforduló fájlkiterjesztések listáját tartalmazza. A Media Encoder Standard számos más támogatást támogat (például:. m2ts,. mpeg2video,. Qt). Ha egy fájlt próbál kódolni, és a nem támogatott formátumra vonatkozó hibaüzenetet kap, [itt](https://feedback.azure.com/forums/169396-media-services/category/144411-encoding-and-processing/)adja meg a visszajelzését.
 > 
 > 
 
-### <a name="audio-formats-in-input-containers"></a>Hangformátumok a bemeneti tárolók
-Media Encoder Standard támogatja a következő hangformátumok a bemeneti tárolók végrehajtása:
+### <a name="audio-formats-in-input-containers"></a>Hangformátumok bemeneti tárolókban
+Media Encoder Standard támogatja a következő hangformátumok átvitelét a bemeneti tárolókban:
 
-* MXF, GXF és QuickTime fájlok, amelyek hangsávval rendelkező időosztásos sztereó vagy 5.1 minták
+* MXF-, GXF-és QuickTime-fájlok, amelyek hang-és hangsávokat tartalmazhatnak az összekapcsolt sztereó vagy 5,1-mintákkal
 
 vagy
 
-* MXF, GXF és QuickTime-fájlok, a hanganyag van külön PCM nyomon követi, de a csatornaleképezés (sztereó vagy 5.1) a fájlok metaadataiból kitűnő
+* MXF-, GXF-és QuickTime-fájlok, amelyekben a hang különálló PCM-sávokként van elvégezve, de a csatorna leképezése (sztereó vagy 5,1) a fájl metaadataiból következtethető le.
 
-## <a name="input-video-codecs"></a>Bemeneti videókodekek
-| Bemeneti videókodekek | Támogatott |
+## <a name="input-video-codecs"></a>Bemeneti videó codec-je
+| Bemeneti videó codec-je | Támogatott |
 | --- | --- |
-| AVC 8 bites/10 bites-, akár 4:2:2, ideértve az avcintrát is |8 bites 4:2:0. és 4:2:2 |
-| Avid DNxHD (MXF-ben) |Igen |
+| AVC 8 bites/10 bites, legfeljebb 4:2:2, beleértve a következőt: AVCIntra |8 bites 4:2:0 és 4:2:2 |
+| Avid DNxHD (MXF) |Igen |
 | DVCPro/DVCProHD (in MXF) |Igen |
-| Digital video (DV) (a AVI-fájlokban) |Igen |
+| Digitális videó (DV) (AVI-fájlokban) |Igen |
 | JPEG 2000 |Igen |
-| MPEG-2 (akár a 422-es Profilig és a magas szintig; az XDCAM, XDCAM HD, XDCAM IMX, CableLabs® és D10 például) |Akár 422-es Profilig |
+| MPEG-2 (akár 422-es profil és magas szintű, beleértve a XDCAM, a XDCAM HD, a XDCAM IMX, a CableLabs® és a D10 változatokat) |Akár 422-es profil |
 | MPEG-1 |Igen |
 | VC-1/WMV9 |Igen |
 | Canopus HQ/HQX |Nem |
-| MPEG-4 Part 2 |Igen |
+| 2\. MPEG-4 rész |Igen |
 | [Theora](https://en.wikipedia.org/wiki/Theora) |Igen |
-| Tömörítetlen YUV420 vagy mezzanine |Igen |
-| Az Apple ProRes 422 |Igen |
-| Az Apple ProRes 422 LT |Igen |
-| Az Apple ProRes 422 HQ |Igen |
-| Az Apple ProRes Proxy |Igen |
-| Az Apple ProRes 4444 |Igen |
-| Az Apple ProRes 4444 XQ |Igen |
-| HEVC/H.265| Elsődleges és a 10-es főbb (&#42;) profilok<br/>Fő 10-es profil használatát támogató célja a 8 bites 4:2:0 tartalmat. |
+| YUV420 tömörítetlen vagy köztes |Igen |
+| Apple ProRes 422 |Igen |
+| Apple ProRes 422 LT |Igen |
+| Apple ProRes 422 – HQ |Igen |
+| Apple ProRes proxy |Igen |
+| Apple ProRes 4444 |Igen |
+| Apple ProRes 4444 XQ |Igen |
+| HEVC/H. 265| Fő és fő 10 (&#42;) profilok<br/>A 10 fő profil támogatása a 8bit 4:2:0-tartalomhoz készült. |
 
 ## <a name="input-audio-codecs"></a>Bemeneti hangkodekek
 | Bemeneti hangkodekek | Támogatott |
 | --- | --- |
-| AAC (AAC-LC, AAC-HE és AAC-HEv2; akár 5.1) |Igen |
-| MPEG Layer 2 |Igen |
-| MP3 (MPEG-1-3 hangréteg) |Igen |
+| AAC (AAC-LC, AAC-s és AAC-HEv2; akár 5,1) |Igen |
+| 2\. MPEG-réteg |Igen |
+| MP3 (MPEG-1 hangréteg 3) |Igen |
 | Windows Media Audio |Igen |
 | WAV/PCM |Igen |
 | [FLAC](https://en.wikipedia.org/wiki/FLAC)</a> |Igen |
 | [Opus](https://go.microsoft.com/fwlink/?LinkId=822667) |Igen |
 | [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a> |Igen |
-| AMR (adaptív Többsebességű) |Igen |
-| AES (SMPTE 331 M és 302 M, AES3-2003) |Nem |
+| AMR (adaptív Multi-Rate) |Igen |
+| AES (SMPTE 331M és 302M, AES3-2003) |Nem |
 | Dolby® E |Nem |
-| Dolby® digitális (AC3) |Nem |
-| Dolby® digitális plusz (E-AC3) |Nem |
+| Dolby® Digital (AC3) |Nem |
+| Dolby® Digitális Plus (E-AC3) |Nem |
 
-## <a name="output-formats-and-codecs"></a>Kimeneti formátumai és kodekei
-Az alábbi táblázat a kodekeket és fájlformátumot exportálási által támogatott.
+## <a name="output-formats-and-codecs"></a>Kimeneti formátumok és kodekek
+A következő táblázat az exportáláshoz támogatott kodekeket és fájlformátumokat sorolja fel.
 
-| Fájlformátum | Videó kodek | Hang kodek |
+| Fájlformátum | Videó kodek | Hangkodek |
 | --- | --- | --- |
-| MP4 <br/><br/>(beleértve a többszörös átviteli sebességű MP4-tárolók) |A H.264 (magas, fő és alapkonfiguráció-profilok) |AAC-LC, HE-AAC v1, HE-AAC v2 |
-| MPEG2-TS |A H.264 (magas, fő és alapkonfiguráció-profilok) |AAC-LC, HE-AAC v1, HE-AAC v2 |
+| MP4 <br/><br/>(többek között a többszörös sávszélességű MP4-tárolók) |H. 264 (magas, fő és alapkonfigurációs profilok) |AAC-LC, HE-AAC v1, HE-AAC v2 |
+| MPEG2-TS |H. 264 (magas, fő és alapkonfigurációs profilok) |AAC-LC, HE-AAC v1, HE-AAC v2 |
 
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -112,7 +113,7 @@ Az alábbi táblázat a kodekeket és fájlformátumot exportálási által tám
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Lásd még
-[Az Azure Media Services az igény szerinti Tartalomterjesztésről kódolás](media-services-encode-asset.md)
+[Igény szerinti tartalom kódolása Azure Media Services](media-services-encode-asset.md)
 
-[Kódolása a Media Encoder standarddel](media-services-dotnet-encode-with-media-encoder-standard.md)
+[Kódolás a Media Encoder Standard használatával](media-services-dotnet-encode-with-media-encoder-standard.md)
 

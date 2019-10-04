@@ -1,5 +1,5 @@
 ---
-title: Minták
+title: 'Oktatóanyag: Minták – LUIS'
 titleSuffix: Azure Cognitive Services
 description: Minták használata a szándék- és entitás-előrejelzések pontosságának javításához kevesebb kimondottszöveg-példa megadásával. A minta egy sablonként szolgáló kimondottszöveg-példán alapul, amelynek a szintaxisával azonosíthatók az entitások és a figyelmen kívül hagyható szövegek.
 services: cognitive-services
@@ -9,23 +9,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 02/22/2019
+ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 33541d2a61c52476f6e314f6981a623390de8fa9
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 69f853b77e3fbab149dbf163ed5cccb08578aa4e
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193738"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390337"
 ---
-# <a name="tutorial-add-common-pattern-template-utterance-formats"></a>Oktatóanyag: Gyakori minta sablon utterance (kifejezés) formátumok hozzáadása
+# <a name="tutorial-add-common-pattern-template-utterance-formats"></a>Oktatóanyag: Általános minta sablon-megadási formátumok hozzáadása
 
 Az oktatóanyagban mintákat használunk a szándék- és entitás-előrejelzések pontosságának javításához kevesebb kimondottszöveg-példa megadásával. A minta egy sablonként szolgáló kimondottszöveg-példán alapul, amelynek a szintaxisával azonosíthatók az entitások és a figyelmen kívül hagyható szövegek. A minta a kifejezések egyeztetését gépi tanulással ötvözi.  A sablonként szolgáló kimondottszöveg-példa a szándékot tartalmazó kimondott szövegekkel együtt segít megérteni a LUIS számára, hogy milyen kimondott szövegek felelnek meg a szándéknak. 
 
 **Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
 > [!div class="checklist"]
-> * Példa-alkalmazás importálása 
+> * Alkalmazás importálása – példa 
 > * Szándék létrehozása
 > * Betanítás
 > * Közzététel
@@ -37,7 +37,7 @@ Az oktatóanyagban mintákat használunk a szándék- és entitás-előrejelzés
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="import-example-app"></a>Példa-alkalmazás importálása
+## <a name="import-example-app"></a>Alkalmazás importálása – példa
 
 Folytassa az előző oktatóanyagban létrehozott **EmberiErőforrások** nevű alkalmazással. 
 
@@ -221,7 +221,7 @@ Ahhoz, hogy egy mintát egyeztetni lehessen egy kimondott szöveggel, a kimondot
 
 **Habár a minták lehetővé teszik, hogy kevesebb kimondottszöveg-példát adjunk meg, ha a rendszer nem észleli az entitásokat, akkor a mintát nem lehet megfeleltetni.**
 
-## <a name="add-the-patterns-for-the-orgchart-manager-intent"></a>Adja hozzá a minták a szervezeti diagram – vezető célja
+## <a name="add-the-patterns-for-the-orgchart-manager-intent"></a>A szervezeti diagram – Manager leképezés mintáinak hozzáadása
 
 1. A felső menüben válassza a **Build** (Létrehozás) elemet.
 
@@ -244,9 +244,9 @@ Ahhoz, hogy egy mintát egyeztetni lehessen egy kimondott szöveggel, a kimondot
 
     [![Szándék kimondottszöveg-sablonjai megadásának képernyőképe](./media/luis-tutorial-pattern/hr-pattern-missing-entity.png)](./media/luis-tutorial-pattern/hr-pattern-missing-entity.png#lightbox)
 
-4. Miközben továbbra is a minták lapon, válassza ki a **szervezeti diagram – jelentések** szándékot, majd adja meg a következő sablon kimondott szöveg:
+4. Miközben továbbra is a minták lapon válassza a **szervezeti diagram – jelentések** szándék lehetőséget, majd adja meg a következő sablon hosszúságú kimondott szöveg:
 
-    |Kimondottszöveg-sablonok|
+    |Kimondottszöveg-sablon|
     |:--|
     |Who are {Employee}['s] subordinates[?] (Kik {Alkalmazott} beosztottjai[?])|
     |Who reports to {Employee}[?] (Ki tartozik {Alkalmazott} alá[?])|
@@ -257,7 +257,7 @@ Ahhoz, hogy egy mintát egyeztetni lehessen egy kimondott szöveggel, a kimondot
 
 ## <a name="query-endpoint-when-patterns-are-used"></a>Végpont lekérdezése minták használata esetén
 
-Most, hogy az alkalmazás hozzá vannak adva a mintákat, betanítása, közzététele és lekérdezése az alkalmazás az előrejelzési futásidejű végponton.
+Most, hogy a mintákat hozzáadja az alkalmazáshoz, a betanításhoz, a közzétételhez és az alkalmazás lekérdezéséhez az előrejelzési futtatókörnyezet végpontján.
 
 1. Tanítsa be és tegye ismét közzé az alkalmazást.
 
@@ -349,11 +349,11 @@ Most, hogy az alkalmazás hozzá vannak adva a mintákat, betanítása, közzét
     }
     ```
 
-A leképezési előrejelzési már jelentősen sokkal magabiztosabb a munkában.
+A szándék előrejelzése mostantól jelentősen megbízik.
 
 ## <a name="working-with-optional-text-and-prebuilt-entities"></a>Elhagyható szövegek és előre összeállított entitások használata
 
-Az oktatóanyag előző, mintául szolgáló kimondottszöveg-sablonjaiban alkalmaztunk néhány elhagyható szövegelemet, például az angol birtokos toldalékot (`'s`) és a kérdőjelet (`?`). Tegyük fel, hogy az utterance (kifejezés) szöveget a jelenlegi és jövőbeli dátumok engedélyeznie kell.
+Az oktatóanyag előző, mintául szolgáló kimondottszöveg-sablonjaiban alkalmaztunk néhány elhagyható szövegelemet, például az angol birtokos toldalékot (`'s`) és a kérdőjelet (`?`). Tegyük fel, hogy engedélyezni kell a jelenlegi és a jövőbeli dátumokat a teljes szövegben.
 
 Példák kimondott szövegekre:
 
@@ -366,7 +366,7 @@ Példák kimondott szövegekre:
 
 A példák mindegyikében szerepel egy igeidő (`was`, `is` vagy `will be`) és egy dátum (`March 3`, `now` vagy `in a month`), amelyeket a LUIS-nak megfelelően kell tudnia előrejelezni. Figyelje meg, hogy az utolsó két példában a szövegek szinte teljesen azonosak, az `in` és az `on` prepozíciótól eltekintve.
 
-A példában a sablon utterances, amelyek lehetővé teszik a nem kötelező információkat: 
+Példa a sablon hosszúságú kimondott szöveg, amely a következő opcionális információkat engedélyezi: 
 
 |Szándék|Kimondottszöveg-példák elhagyható szövegelemekkel és előre összeállított entitásokkal|
 |:--|:--|
@@ -377,11 +377,11 @@ A példában a sablon utterances, amelyek lehetővé teszik a nem kötelező inf
 A szögletes zárójeles (`[]`) szintaxis használatával az elhagyható szövegek könnyen hozzáadhatók a kimondottszöveg-sablonhoz, továbbá két szinten is beágyazhatók (`[[]]`), valamint entitásokat vagy szövegeket tartalmazhatnak.
 
 
-**Kérdés: Miért érdemes-e minden a `w` betűk, minden sablon kimondásakor, kis első betűje? Nem lehet ezeket választhatóan kis- és nagybetűvel is szerepeltetni?** A lekérdezésvégpontra az ügyfélalkalmazás által küldött kimondott szöveg kisbetűssé lesz alakítva. A sablonszöveg lehet kis- és nagybetűs is, ugyanúgy, ahogy a végponti kimondott szöveg is. Az összehasonlítás minden esetben a kisbetűssé alakítást követően megy végbe.
+**Kérdés Miért van az `w` összes betű, a sablon első betűje, kisbetűs? Nem lehet ezeket választhatóan kis- és nagybetűvel is szerepeltetni?** A lekérdezésvégpontra az ügyfélalkalmazás által küldött kimondott szöveg kisbetűssé lesz alakítva. A sablonszöveg lehet kis- és nagybetűs is, ugyanúgy, ahogy a végponti kimondott szöveg is. Az összehasonlítás minden esetben a kisbetűssé alakítást követően megy végbe.
 
-**Kérdés: Miért nem előre összeállított számát a sablon része utterance (kifejezés) Ha a 3. március előre jelzett mindkét számot `3` és dátum `March 3`?** A kimondottszöveg-sablon környezetileg egy dátumot használ, vagy kifejezetten (`March 3`) vagy elvontan (`in a month`). A dátumok tartalmazhatnak számokat, a számok azonban nem szükségszerűen értelmezendők dátumként. Mindig használja azt az entitást, amely a leginkább megfelel az előrejelzés JSON-eredményeiben visszaküldeni kívánt típusnak.  
+**Kérdés Miért nem a sablon alapértékének előre összeépített része, ha március 3-án a szám `3` és a `March 3`dátum is meg van jósolva?** A kimondottszöveg-sablon környezetileg egy dátumot használ, vagy kifejezetten (`March 3`) vagy elvontan (`in a month`). A dátumok tartalmazhatnak számokat, a számok azonban nem szükségszerűen értelmezendők dátumként. Mindig használja azt az entitást, amely a leginkább megfelel az előrejelzés JSON-eredményeiben visszaküldeni kívánt típusnak.  
 
-**Kérdés: Mi a helyzet a rosszul phrased utterances például `Who will {Employee}['s] manager be on March 3?`.** A nyelvtanilag eltérő szerkezetű igeidőket – ahogy itt a `will` és a `be` például egymástól elszakítva szerepelnek – új kimondottszöveg-sablonként kell szerepeltetni. A meglévő kimondottszöveg-sablon nem fog egyezni ezzel. Bár a kimondott szöveg szándéka nem változott, a szavak elhelyezkedése igen. Ez a változás kihat az előrejelzésre a LUIS-ban. Is [csoport és vagy](#use-the-or-operator-and-groups) igeidőt úgy, hogy ezek a kimondott szöveg. 
+**Kérdés Mi a helyzet a rosszul megfogalmazott `Who will {Employee}['s] manager be on March 3?`hosszúságú kimondott szöveg, például:.** A nyelvtanilag eltérő szerkezetű igeidőket – ahogy itt a `will` és a `be` például egymástól elszakítva szerepelnek – új kimondottszöveg-sablonként kell szerepeltetni. A meglévő kimondottszöveg-sablon nem fog egyezni ezzel. Bár a kimondott szöveg szándéka nem változott, a szavak elhelyezkedése igen. Ez a változás kihat az előrejelzésre a LUIS-ban. Ezeket a hosszúságú kimondott szöveg egyesítheti [és](#use-the-or-operator-and-groups) elvégezheti a műveletekben. 
 
 **Ne feledje: a rendszer először az entitásokat keresi meg, aztán egyezteti a mintát.**
 
@@ -389,7 +389,7 @@ A szögletes zárójeles (`[]`) szintaxis használatával az elhagyható szöveg
 
 1. A LUIS-webhelyen válassza a felső menü **Build** (Összeállítás), majd a bal oldali menü **Patterns** (Minták) elemét. 
 
-1. Keresse meg a meglévő sablon utterance `Who is {Employee}['s] manager[?]`, és kattintson a három pontra (***...*** ) a jobb oldalon, majd válassza ki **szerkesztése** az előugró menüben. 
+1. Keresse meg a sablon meglévő elemét `Who is {Employee}['s] manager[?]`, és kattintson a jobb oldalon a három pontra (***...***), majd válassza a **Szerkesztés** lehetőséget a felugró menüből. 
 
 1. Módosítsa a sablonszöveget a következőre: `who is {Employee}['s] manager [[on]{datetimeV2}?]`
 
@@ -409,7 +409,7 @@ A szögletes zárójeles (`[]`) szintaxis használatával az elhagyható szöveg
 
 4. Adjon meg több kimondott tesztszöveget, és ellenőrizze, hogy a minta egyezik-e, illetve hogy a szándék pontszáma jelentősen magasabb-e. 
 
-    Az első kimondott szöveg bevitele után válassza az **Inspect** (Vizsgálat) lehetőséget az eredmény alatt, hogy megtekinthesse az összes előrejelzési eredményt. Minden kimondásakor kell rendelkeznie a **szervezeti diagram – vezető** szándékot és az entitások az alkalmazottak és datetimeV2 értékeit kell csomagolja ki.
+    Az első kimondott szöveg bevitele után válassza az **Inspect** (Vizsgálat) lehetőséget az eredmény alatt, hogy megtekinthesse az összes előrejelzési eredményt. Minden részletnek a **szervezeti diagram-kezelő** szándékkal kell rendelkeznie, és ki kell bontania az alkalmazott és a datetimeV2 entitások értékeit.
 
     |Kimondott szöveg|
     |--|
@@ -422,38 +422,38 @@ A szögletes zárójeles (`[]`) szintaxis használatával az elhagyható szöveg
 
 Az összes fenti kimondott szövegben megtalálhatók az entitások, így ugyanazzal a mintával egyeznek, és magas előrejelzési pontszámmal rendelkeznek.
 
-## <a name="use-the-or-operator-and-groups"></a>Használja a vagy operátor és a csoportok
+## <a name="use-the-or-operator-and-groups"></a>A vagy a operátor és a csoportok használata
 
-Az előző sablon utterances számos olyan nagyon közel. Használja a **csoport** `()` és **vagy** `|` szintaxis sablon megcímkézzen csökkentése érdekében. 
+Az előző sablon hosszúságú kimondott szöveg közül több nagyon közel van. A **csoport** `()` és **a szintaxis használatával** csökkentseasablonhosszúságúkimondottszöveg.`|` 
 
-A csoport használata egyetlen mintát a következő 2 minták kombinálható `()` és vagy `|` szintaxist.
+A következő két minta egyetlen mintával kombinálható a csoport `()` `|` és a szintaxis használatával.
 
 |Szándék|Kimondottszöveg-példák elhagyható szövegelemekkel és előre összeállított entitásokkal|
 |--|--|
 |OrgChart-Manager|`who will be {Employee}['s] manager [[in]{datetimeV2}?]`|
 |OrgChart-Manager|`who will be {Employee}['s] manager [[on]{datetimeV2}?]`|
 
-Az új sablon utterance (kifejezés) a következő lesz: 
+Az új sablon kimondása a következőket eredményezi: 
 
 `who ( was | is | will be ) {Employee}['s] manager [([in]|[on]){datetimeV2}?]`. 
 
-Használja a **csoport** a szükséges művelet igeidőt és az opcionális `in` és `on` az egy **vagy** cső közöttük. 
+Ez egy **csoportot** használ a szükséges műveleti idő körül, és a `in` választható `on` , **illetve egy vagy** több közötti adatcsatornával. 
 
-1. Az a **minták** lapon válassza ki a **szervezeti diagram – vezető** szűrőt. Keressen rá a lista szűkítéséhez `manager`. 
+1. A **minták** lapon válassza a **szervezeti diagram – kezelő** szűrőt. Szűkítse a listát a keresésével `manager`. 
 
-    ![Szervezeti diagram – vezető szándék minták a "manager" kifejezés keresése](./media/luis-tutorial-pattern/search-patterns.png)
+    ![Keresés a szervezeti diagramban – felettesi leképezési minták a "Manager" kifejezéshez](./media/luis-tutorial-pattern/search-patterns.png)
 
-1. (A következő lépésben szerkesztése) sablon utterance (kifejezés) egyik verziójának megőrzése és az egyéb változatok törlése. 
+1. Tartsa meg a sablon teljes verziójának egy verzióját (a következő lépésben való szerkesztéshez), és törölje a többi változatot. 
 
-1. Módosítsa a sablon utterance (kifejezés): 
+1. A sablon teljes értékének módosítása a következőre: 
 
     `who ( was | is | will be ) {Employee}['s] manager [([in]|[on]){datetimeV2}?]`.
 
 1. Tanítsa be az alkalmazást.
 
-1. A teszt panel segítségével tesztelheti az utterance (kifejezés) verziói:
+1. A teszt panel használatával tesztelheti a teljes verzió verzióját:
 
-    |Adja meg a teszt panel kimondott szöveg|
+    |Hosszúságú kimondott szöveg a teszt ablaktáblán|
     |--|
     |`Who is Jill Jones manager this month`|
     |`Who is Jill Jones manager on July 5th`|
@@ -463,9 +463,9 @@ Használja a **csoport** a szükséges művelet igeidőt és az opcionális `in`
     |`Who will be Jill Jones manager on July 5th`|
 
 
-## <a name="use-the-utterance-beginning-and-ending-anchors"></a>Az utterance (kifejezés) nyitó és záró horgonyok használata
+## <a name="use-the-utterance-beginning-and-ending-anchors"></a>A kezdő és záró horgonyok használata
 
-A minta szintaxist biztosít a nyitó és záró utterance (kifejezés) forráshorgony szintaxisát a kalap `^`. A kezdő és záró utterance (kifejezés) horgonyok a cél jellemző, és valószínűleg szövegkonstans utterance (kifejezés) együtt használható, vagy használt külön-külön cél szándék fog vonatkozni. 
+A minta szintaxisa egy kalap `^`elejének és végének kiírási horgonyának szintaxisát tartalmazza. A kezdő és a záró kilépési horgonyok együtt használhatók a nagyon konkrét és valószínűleg literál kifejezésekre, vagy a cél szándékok külön történő használatára. 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

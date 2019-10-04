@@ -11,12 +11,12 @@ manager: carmonm
 ms.topic: article
 ms.assetid: 90f5cfc4-46b2-4ef7-8ac4-486bb0e3f289
 ms.date: 02/06/2019
-ms.openlocfilehash: f6d778ddbce16c223945d4683bd7a950bd2a0cb0
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: d0d40ca0ae6ccd4f709d7d94d52764d4affcc215
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57455802"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66244697"
 ---
 # <a name="transform-xml-with-maps-in-azure-logic-apps-with-enterprise-integration-pack"></a>Az Azure Logic Apps Enterprise Integration Pack-leképezések XML-átalakítás
 
@@ -28,11 +28,11 @@ Integrációs fiókok és összetevőket, például a maps kapcsolódó korláto
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha még nincs előfizetése, <a href="https://azure.microsoft.com/free/" target="_blank">regisztráljon egy ingyenes Azure-fiókra</a>.
+* Azure-előfizetés. Ha még nincs előfizetése, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
 
 * Egy [integrációs fiók](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) , ahol tárolja a maps és más összetevőket, vállalati integráció és a vállalatközi (B2B) megoldásokat.
 
-* Ha a leképezés egy külső szerelvény hivatkozik, hogy feltöltése *a szerelvényt és a térkép* az integrációs fiókba. Győződjön meg arról, hogy *először töltse fel a szerelvény*, majd töltse fel a térképet, amely a szerelvény hivatkozik.
+* Ha a leképezés egy külső szerelvény hivatkozik, hogy feltöltése *a szerelvényt és a térkép* az integrációs fiókba. Győződjön meg arról, hogy [ *először töltse fel a szerelvény*](#add-assembly), majd töltse fel a térképet, amely a szerelvény hivatkozik.
 
   Ha a szerelvény 2 MB vagy annál kisebb, adhat hozzá a szerelvényt az integrációs fiók *közvetlenül* az Azure Portalról. Azonban a szerelvényt vagy a térkép-e 2 MB-nál nagyobb méretű, de nem nagyobb, mint a [mérete legfeljebb szerelvényeknek vagy a térképek](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits), a következőket teheti:
 
@@ -50,9 +50,11 @@ Integrációs fiókok és összetevőket, például a maps kapcsolódó korláto
 
 Logic Apps-alkalmazás létrehozásakor, és a maps hozzáadása nem szükséges. Szeretne használni egy térképet, azonban a logikai alkalmazás kell létrehozhatja, ha integrációs fiókot, ahol azt tárolja. Ismerje meg, [a logic apps és integrációs fiókok összekapcsolása](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account). Ha még nem rendelkezik egy logikai alkalmazást, további [létrehozása a logic apps](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
+<a name="add-assembly"></a>
+
 ## <a name="add-referenced-assemblies"></a>Odkazovaná sestavení hozzáadása
 
-1. Jelentkezzen be az <a href="https://portal.azure.com" target="_blank">Azure Portalra</a> az Azure-fiókja hitelesítő adataival.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókja hitelesítő adataival.
 
 1. Keresse meg és nyissa meg az integrációs fiók az Azure fő menüjéből válassza **minden szolgáltatás**. 
    A Keresés mezőbe írja be az "integrációs fiók". 
@@ -74,6 +76,9 @@ Logic Apps-alkalmazás létrehozásakor, és a maps hozzáadása nem szükséges
 
 A szerelvényfájl mérete alapján, kövesse a lépéseket, amelyek vagy szerelvény feltöltése [akár 2 MB](#smaller-assembly) vagy [több mint 2 MB, de csak legfeljebb 8 MB](#larger-assembly).
 A szerelvény integrációs fiókok mennyiségek korlátozásairól lásd: [korlátozások és konfiguráció az Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits).
+
+> [!NOTE]
+> Ha módosítja a szerelvény, is frissítenie kell a térkép-e a térkép módosításokat tartalmaz.
 
 <a name="smaller-assembly"></a>
 
@@ -99,7 +104,7 @@ A szerelvény integrációs fiókok mennyiségek korlátozásairól lásd: [korl
 
 ### <a name="add-assemblies-more-than-2-mb"></a>2 MB-nál több szerelvények hozzáadása
 
-Nagyobb szerelvények hozzáadásához a szerelvény feltölthet egy Azure blob-tárolóba az Azure storage-fiókban. A szerelvények hozzáadásának lépései eltér a blobtárolót nyilvános olvasási hozzáféréssel rendelkezik-e. Ezért először ellenőrizze-e a blob-tároló nyilvános olvasási hozzáféréssel rendelkezik az alábbi lépéseket: [Blob-tároló nyilvános hozzáférési szintjének beállítása](../vs-azure-tools-storage-explorer-blobs.md#set-the-public-access-level-for-a-blob-container)
+Nagyobb szerelvények hozzáadásához a szerelvény feltölthet egy Azure blob-tárolóba az Azure storage-fiókban. A szerelvények hozzáadásának lépései a licenctár-e a blobtárolót nyilvános olvasási hozzáféréssel rendelkezik. Ezért először ellenőrizze-e a blob-tároló nyilvános olvasási hozzáféréssel rendelkezik az alábbi lépéseket: [Blob-tároló nyilvános hozzáférési szintjének beállítása](../vs-azure-tools-storage-explorer-blobs.md#set-the-public-access-level-for-a-blob-container)
 
 #### <a name="check-container-access-level"></a>Ellenőrizze a tároló hozzáférési szint
 
@@ -128,7 +133,7 @@ Nagyobb szerelvények hozzáadásához a szerelvény feltölthet egy Azure blob-
 
 1. Térjen vissza az Azure Portalon, a **szerelvény hozzáadása** panel meg nyitva. 
    Adja meg a szerelvény nevét. 
-   Válasszon **nagy fájlok (2 MB-nál nagyobb)**.
+   Válasszon **nagy fájlok (2 MB-nál nagyobb)** .
 
    A **tartalom URI-JÁT** be most már megjelenik, helyett a **szerelvény** mezőbe.
 
@@ -153,7 +158,7 @@ Az integrációs fiók **áttekintése** lap **összetevők**, a **szerelvények
 
 1. Térjen vissza az Azure Portalon, a **szerelvény hozzáadása** panel meg nyitva. 
    Adja meg a szerelvény nevét. 
-   Válasszon **nagy fájlok (2 MB-nál nagyobb)**.
+   Válasszon **nagy fájlok (2 MB-nál nagyobb)** .
 
    A **tartalom URI-JÁT** be most már megjelenik, helyett a **szerelvény** mezőbe.
 
@@ -170,7 +175,7 @@ A térkép mennyiségeket az integrációs fiókok korlátozásairól lásd: [ko
 
 Miután feltölti a térkép hivatkozó bármely szerelvényeket, a térkép most tölthet fel.
 
-1. Ha Ön még nem tette meg, jelentkezzen be a <a href="https://portal.azure.com" target="_blank">az Azure portal</a> az Azure-fiók hitelesítő adataival. 
+1. Ha Ön még nem tette meg, jelentkezzen be a [az Azure portal](https://portal.azure.com) az Azure-fiók hitelesítő adataival. 
 
 1. Ha az integrációs fiók még nincs megnyitva, az Azure fő menüjéből, válassza ki a **minden szolgáltatás**. 
    A Keresés mezőbe írja be az "integrációs fiók". 
@@ -310,7 +315,7 @@ the map appears in the **Maps** list.
 
 Egy meglévő térkép frissíteni, akkor töltse fel egy új térkép fájlt, amely rendelkezik a szükséges módosításokat. Azonban először töltheti le a meglévő térkép szerkesztésre.
 
-1. Az a <a href="https://portal.azure.com" target="_blank">az Azure portal</a>, keresse meg és nyissa meg az integrációs fiók, ha nem már megnyitásához.
+1. Az a [az Azure portal](https://portal.azure.com), keresse meg és nyissa meg az integrációs fiók, ha nem már megnyitásához.
 
 1. Az Azure fő menüjéből válassza **minden szolgáltatás**. A Keresés mezőbe írja be az "integrációs fiók". Válassza ki **integrációs fiókok**.
 
@@ -328,7 +333,7 @@ Egy meglévő térkép frissíteni, akkor töltse fel egy új térkép fájlt, a
 
 ## <a name="delete-maps"></a>A maps törlése
 
-1. Az a <a href="https://portal.azure.com" target="_blank">az Azure portal</a>, keresse meg és nyissa meg az integrációs fiók, ha nem már megnyitásához.
+1. Az a [az Azure portal](https://portal.azure.com), keresse meg és nyissa meg az integrációs fiók, ha nem már megnyitásához.
 
 1. Az Azure fő menüjéből válassza **minden szolgáltatás**. 
    A Keresés mezőbe írja be az "integrációs fiók". 

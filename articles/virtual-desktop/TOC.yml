@@ -8,47 +8,109 @@
   items:
     - name: 1. Bérlő létrehozása a Windows Virtual Desktopon
       href: tenant-setup-azure-active-directory.md
-    - name: 2. Gazdagépcsoport létrehozása az Azure Marketplace-en
-      href: create-host-pools-azure-marketplace.md
-    - name: 3. Alkalmazáscsoportok kezelése
-      href: manage-app-groups.md
-    - name: 4. Szolgáltatásnevek létrehozása és szerepkörök hozzárendelése a PowerShell-lel
+    - name: 2. Szolgáltatásnevek és szerepkör-hozzárendelések létrehozása a PowerShell-lel
       href: create-service-principal-role-powershell.md
+    - name: 3. Gazdagépkészlet létrehozása az Azure Marketplace használatával
+      href: create-host-pools-azure-marketplace.md
+    - name: 4. Alkalmazáscsoportok kezelése
+      href: manage-app-groups.md
+    - name: 5. Gazdagépcsoport létrehozása a szolgáltatásfrissítések érvényesítéséhez
+      href: create-validation-host-pool.md
+    - name: 6. Felügyeleti eszköz üzembe helyezése
+      href: manage-resources-using-ui.md
+    - name: 7. Szolgáltatásriasztások beállítása
+      href: set-up-service-alerts.md
 - name: Használati útmutató
   items:
     - name: Csatlakozás Windows Virtual Desktop erőforrásaihoz
       items:
-        - name: Kapcsolódás Windows 7-en és Windows 10-en
+        - name: Kapcsolódás a Windows asztali ügyféllel
           href: connect-windows-7-and-10.md
         - name: Kapcsolódás a webügyféllel
           href: connect-web.md
+        - name: Kapcsolódás az Android-ügyféllel
+          href: connect-android.md
+        - name: Kapcsolódás a macOS-ügyfélhez
+          href: connect-macos.md
+        - name: Kapcsolódás az iOS-ügyfélhez
+          href: connect-ios.md
     - name: Gazdagépcsoport létrehozása Azure Resource Manager-sablonnal
       href: create-host-pools-arm-template.md
     - name: Gazdagépcsoport létrehozása a PowerShell-lel
       href: create-host-pools-powershell.md
-    - name: Felhasználói profil megosztásának beállítása a gazdagépcsoporton
+    - name: Windows 7 rendszerű virtuális gép üzembe helyezése a Windows Virtual Desktopban
+      href: deploy-windows-7-virtual-machine.md
+    - name: Windows-licenc alkalmazása Windows Virtual Desktop munkamenetgazdákra
+      href: apply-windows-license.md
+    - name: Profiltároló létrehozása gazdagépkészlet számára fájlmegosztás használatával
       href: create-host-pools-user-profile.md
+    - name: Profiltároló létrehozása gazdagépkészlet számára az Azure NetApp Files használatával
+      href: create-fslogix-profile-container.md
     - name: A Windows Virtual Desktop terheléselosztási módjának beállítása
       href: configure-host-pool-load-balancing.md
-    - name: A diagnosztikai funkcióval kapcsolatos problémák azonosítása
-      href: diagnostics-role-service.md
     - name: Fő VHD-rendszerkép létrehozása és testreszabása
       href: set-up-customize-master-image.md
+    - name: Az Office telepítése egy fő virtuálisgép-rendszerképre
+      href: install-office-on-wvd-master-image.md
+    - name: GPU beállítása a Windows Virtual Desktophoz
+      href: configure-vm-gpu.md
     - name: Munkamenetgazdák automatikus méretezése
       href: set-up-scaling-script.md
+    - name: Csatorna személyre szabása Windows Virtual Desktop-felhasználók számára
+      href: customize-feed-for-virtual-desktop-users.md
+    - name: RDP-tulajdonságok testreszabása
+      href: customize-rdp-properties.md
+    - name: A diagnosztikai eszköz üzembe helyezése
+      href: deploy-diagnostics.md
 - name: Alapelvek
   items:
     - name: A Windows Virtual Desktop környezete
       href: environment-setup.md
+    - name: Sávszélességgel kapcsolatos javaslatok távoli munkamenetekhez
+      href: bandwidth-recommendations.md
     - name: Delegált hozzáférés a Windows Virtual Desktopon
       href: delegated-access-virtual-desktop.md
     - name: Gazdagépcsoport terheléselosztási módszerei
       href: host-pool-load-balancing.md
+    - name: FSLogix-profiltárolók és Azure Files
+      href: fslogix-containers-azure-files.md
+    - name: Partnerintegrációk
+      href: partners.md
+    - name: A Windows 10 Enterprise több munkamenetes használata – gyakori kérdések
+      href: windows-10-multisession-faq.md
+    - name: Adatok helye
+      href: data-locations.md
+- name: Hibaelhárítás
+  items:
+    - name: 'Hibaelhárítási áttekintés, visszajelzés és támogatás'
+      href: troubleshoot-set-up-overview.md
+    - name: A diagnosztikai funkcióval kapcsolatos problémák azonosítása
+      href: diagnostics-role-service.md
+    - name: Bérlői és gazdagépcsoport létrehozása
+      href: troubleshoot-set-up-issues.md
+    - name: Munkamenetgazda virtuális gép konfigurációja
+      href: troubleshoot-vm-configuration.md
+    - name: Windows 7 rendszerű virtuális gép hibaelhárítása a Windows Virtual Desktopban
+      href: troubleshoot-windows-7-vm.md
+    - name: Távoli asztali ügyfélkapcsolatok
+      href: troubleshoot-client-connection.md
+    - name: Windows Virtual Desktop – PowerShell
+      href: troubleshoot-powershell.md
+    - name: Grafikai teljesítményproblémák diagnosztizálása
+      href: remotefx-graphics-performance-counters.md
 - name: Referencia
   items:
     - name: PowerShell
       href: /powershell/windows-virtual-desktop/overview
+    - name: REST API
+      href: /rest/api/virtual-desktop/
 - name: További források
   items:
+    - name: Élménybecslő
+      href: 'https://azure.microsoft.com/services/virtual-desktop/assessment/'
+    - name: Díjkalkulátor
+      href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Tech Community támogatási csoportja
       href: 'https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop'
+    - name: UserVoice-fórum
+      href: 'https://windowsvirtualdesktop.uservoice.com/forums/921118-general'

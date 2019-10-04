@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 04/19/2019
 ms.author: alkohli
 ms.openlocfilehash: 71e0ebf7d7851ae65a6fba67a1695d755fd98bb1
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60004567"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61436494"
 ---
 # <a name="azure-data-box-blob-storage-requirements"></a>Az Azure Data Box Blob tárolási követelményei
 
@@ -24,7 +24,7 @@ Azt javasoljuk, hogy tekintse át az információkat gondosan előtt a Data Box 
 
 ## <a name="storage-differences"></a>Tárolási különbségek
 
-|     Szolgáltatás                                             |     Azure Storage                                     |     Data Box-Blob storage |
+|     Funkció                                             |     Azure Storage                                     |     Data Box-Blob storage |
 |---------------------------------------------------------|-------------------------------------------------------|---------------------------|
 |    Az Azure File storage                                   |    Felhőalapú SMB-fájlmegosztások támogatott              |    Nem támogatott      |
 |    Inaktív adatok titkosítását                  |    256 bites AES-titkosítás                             |    256 bites AES-titkosítás |
@@ -57,7 +57,7 @@ A Data Box Blob storage-ban vannak adott klienskódtárak és adott végpont ut�
 |--------------------|--------------------------------------------|--------|---------------------------------|
 |    .NET                |    9.2.0                                           |    Nuget-csomagot:   https://www.nuget.org/packages/WindowsAzure.Storage/9.2.0    <br>GitHub-verzió:   https://github.com/Azure/azure-storage-net/releases/tag/v9.2.0                                                                                                                                                                                               |    app.config file                 |
 |    Java                |    7.0.0                                           |    Maven-csomag:   https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/6.1.0   <br>GitHub-verzió:   https://github.com/Azure/azure-storage-java/releases/tag/v7.0.0                                                                                                                                                                              |    Kapcsolati karakterlánc beállítása         |
-|    Node.js             |    2.8.3                                           |    Az NPM-hivatkozás:   https://www.npmjs.com/package/azure-storage   (Futtatás: `npm install azure-storage@2.7.0`)   <br>GitHub-verzió:   https://github.com/Azure/azure-storage-node/releases/tag/v2.8.3                                                                                                                                                                        |    Szolgáltatás deklarációjában    |
+|    Node.js             |    2.8.3                                           |    Az NPM-hivatkozás:   https://www.npmjs.com/package/azure-storage   (Futtatás: `npm install azure-storage@2.7.0` )   <br>GitHub-verzió:   https://github.com/Azure/azure-storage-node/releases/tag/v2.8.3                                                                                                                                                                        |    Szolgáltatás deklarációjában    |
 |    C++                 |    5.2.0                                           |    Nuget-csomagot:   https://www.nuget.org/packages/wastorage.v140/5.2.0   <br>GitHub-verzió:   https://github.com/Azure/azure-storage-cpp/releases/tag/v5.2.0                                                                                                                                                                                                     |    Kapcsolati karakterlánc beállítása         |
 |    PHP                 |    1.2.0                                           |    GitHub-verzió:<br>Közös: https://github.com/Azure/azure-storage-php/releases/tag/v1.2.0-common   <br>Blob: https://github.com/Azure/azure-storage-php/releases/tag/v1.2.0-blob      <br>Szerkesztő (a "további, az alábbi részletek megtekintéséhez.) keresztül telepítése                                                                                                             |    Kapcsolati karakterlánc beállítása         |
 |    Python              |    1.1.0                                           |    GitHub-verzió:<br>Közös:   https://github.com/Azure/azure-storage-python/releases/tag/v1.0.0-common <br>BLOB:   https://github.com/Azure/azure-storage-python/releases/tag/v1.1.0-blob                                                                                                                                                                          |    Szolgáltatás deklarációjában    |

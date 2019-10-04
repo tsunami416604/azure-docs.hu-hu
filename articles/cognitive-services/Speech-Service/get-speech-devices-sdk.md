@@ -1,98 +1,40 @@
 ---
 title: Beszédeszközök SDK letöltése
 titleSuffix: Azure Cognitive Services
-description: A beszédszolgáltatások együttműködve számos hang forrásai és eszközei. Most a következő szintre való megfelelést kiváltó hardver- és beszédfelismerés alkalmazásait is igénybe vehet. Ebben a cikkben fogja elsajátíthatja a beszédfelismerési Devices SDK-val való hozzáférést, és kezdje el a fejlesztést.
+description: A beszédfelismerési szolgáltatás együttműködik számos különböző hang forrásai és eszközei. Most a következő szintre való megfelelést kiváltó hardver- és beszédfelismerés alkalmazásait is igénybe vehet. Ebből a cikkből megtudhatja, hogyan érheti el a Speech Devices SDK-t, és megkezdheti a fejlesztést.
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.custom: seodec18
-ms.openlocfilehash: 3c5874625ee9d1932c401238c1586ad89d5d206d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b60c8735833c3012523c5cc0d7eea6a50e9d10b6
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57856722"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559690"
 ---
 # <a name="get-the-cognitive-services-speech-devices-sdk"></a>A Cognitive Services beszédfelismerő eszközök SDK beszerzése
 
-A beszédfelismerés Devices SDK-val a korlátozott előzetes verzióban érhető el, és megköveteli, hogy a programba. Jelenleg a Microsoft a termékre hozzáférés csatolásával nagy vállalatok részesíti előnyben.
+A Speech Devices SDK egy előre összehangolt könyvtár, amelynek célja, hogy a célnak megfelelően kialakított fejlesztői készletekkel működjön, és a mikrofonos tömbök különböző konfigurációit használják.
 
-## <a name="request-access"></a>Hozzáférés kérése
+## <a name="choose-a-development-kit"></a>Fejlesztői csomag kiválasztása
 
-A beszédfelismerés Devices SDK-val eléréséhez:
-
-1. Nyissa meg a Microsoft beszédfelismerési Devices SDK-val [bejelentkezési űrlap kitöltése](https://aka.ms/sdsdk-signup).
-1. Olvassa el a [licencszerződésének](speech-devices-sdk-license.md).
-1. Ha elfogadja a licencszerződés feltételeit, jelölje be **elfogadom**.
-1. Válaszoljon a kérdésekre, a képernyőn.
-1. A kérdőív beküldése.
-1. Ha az e-mail-címét még nem része az Azure Active Directory (Azure AD), az alábbi példához hasonlóan meghívó e-mail kap hozzáférés jóváhagyásakor van. Ha az e-mail cím már az Azure ad-ben, kap egy e-mailt a Microsoft Speech-csapattól, még a hozzáféréshez jóváhagyott, és áttérhet a [töltse le a Speech Devices SDK-val](#download-the-speech-devices-sdk).
-
-## <a name="approval-e-mail"></a>Jóváhagyási e-mail
-
-```
-From: Microsoft Speech Team from Microsoft (via Microsoft) <invites@microsoft.com>
-Subject: You're invited to the Microsoft organization
-```
-
-![e-mail-üzenet](media/speech-devices-sdk/get-sdk-1.png)
-
-## <a name="accept-access"></a>Fogadja el a hozzáférést
-
-A következő lépéseket az Azure AD a regisztráció során megadott e-mail-címmel csatlakozzon. Ez a folyamat a Speech Devices SDK-val hozzáférést biztosít [letöltőwebhelyéről](https://shares.datatransfer.microsoft.com/).
-
-1. Válassza ki az e-mail-üzenetet kapott **Ismerkedés**. Ha a szervezet már Office 365-felhasználó, jelentkezzen be a rendszer kéri, és áttérhet a 7. lépés.
-
-2. A böngészőben megjelenő ablakban válassza **tovább**.
-
-    ![hitelesítési ablak](media/speech-devices-sdk/get-sdk-2.png)
-
-3. Ha még nem rendelkezik egy Microsoft-fiók létrehozásához. Adja meg ugyanazt az e-mail címet, amelyen a meghívó e-mailben kapott.
-
-    ![Microsoft-fiók regisztrálása](media/speech-devices-sdk/get-sdk-3.png)
-
-4. Válassza ki **tovább** jelszót.
-
-5. Amikor a rendszer kéri, ellenőrizze az e-mailek, az ellenőrző kód le a meghívó e-mailben kapott.
-
-7. Illessze be, vagy írja be a biztonsági kódot az e-mail-üzenet, a párbeszédpanel bezárásához. Ebben a példában a biztonsági kódot az **8406**. Kattintson a **Tovább** gombra.
-
-    ![E-mail cím visszaigazolása](media/speech-devices-sdk/get-sdk-6.png)
-
-8. A hozzáférési Panel alkalmazás a böngészőben jelenik meg, ha meggyőződött róla, hogy az e-mail-címét az Azure AD részét képezi. Most már elérhetők a Speech eszközök SDK letöltési helyre.
+|Eszközök|Specifikáció|Leírás|Forgatókönyvek|
+|--|--|--|--|
+|[Roobo Smart audio dev Kit](https://ddk.roobo.com)</br>[A telepítő](speech-devices-sdk-roobo-v1.md) / rövid útmutatója[](speech-devices-sdk-android-quickstart.md)RooboSmartaudio![dev Kit](media/speech-devices-sdk/device-roobo-v1.jpg)|7 MIC-tömb, ARM SOC, WIFI, audiokimenet, IO. </br>[Android](speech-devices-sdk-android-quickstart.md)|Az első Speech Devices SDK a Microsoft MIC Array és az első feldolgozó SDK hozzáigazításához a kiváló minőségű átírási és beszédfelismerési forgatókönyvek fejlesztéséhez|Beszélgetés átirata, intelligens hangszóró, hangvezérelt ügynök, hordható|
+|[Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/)</br>[A telepítő](https://docs.microsoft.com/azure/Kinect-dk/set-up-azure-kinect-dk) / rövid útmutatója[](speech-devices-sdk-windows-quickstart.md)Azure![Kinect DK](media/speech-devices-sdk/device-azure-kinect-dk.jpg)|7 MIC-tömb RGB és mélységmérő kamerák. </br>[Windows](speech-devices-sdk-windows-quickstart.md)/[Linux](speech-devices-sdk-linux-quickstart.md)|Fejlett mesterséges intelligencia (AI) érzékelőkkel rendelkező fejlesztői készlet kifinomult számítógépes jövőkép és beszédfelismerési modellek létrehozásához. Kombinálja a legjobb minőségű térbeli mikrofon tömbjét és részletes kameráját egy videokamera és tájolás érzékelővel – mindezt egyetlen kis eszközön, több mód, lehetőség és SDK használatával, amelyek számos számítási típust biztosítanak.|Beszélgetés átirata, robotika, intelligens kialakítás|
+|Roobo Smart audio dev Kit 2![Roobo Smart audio dev Kit 2](media/speech-devices-sdk/device-roobo-v2.jpg)|7 MIC-tömb, ARM SOC, WIFI, Bluetooth, IO. </br>Linux|A 2. generációs Speech Devices SDK, amely alternatív operációs rendszert és további funkciókat biztosít a költséghatékony hivatkozási tervben.|Beszélgetés átirata, intelligens hangszóró, hangvezérelt ügynök, hordható|
+|URbetter T11 fejlesztési Tanács![URbetter DDK](media/speech-devices-sdk/device-urbetter.jpg)|7 MIC-tömb, ARM SOC, WIFI, Ethernet, HDMI, USB kamera. </br>Linux|Iparági szintű Speech Devices SDK, amely alkalmazkodik a Microsoft MIC-tömbhöz, és támogatja a kiterjesztett I/O-t, például a HDMI/Ethernet és a több USB-perifériát|Beszélgetések átírása, oktatás, kórház, robotok, OTT Box, hangvezérelt ügynök, Drive Thru|
 
 ## <a name="download-the-speech-devices-sdk"></a>A beszédfelismerés eszközök SDK letöltése
 
-Nyissa meg a [Speech eszközök SDK letöltési hely](https://shares.datatransfer.microsoft.com/). Jelentkezzen be a korábban létrehozott Microsoft-fiókjával.
-
-![SDK-letöltési helye](media/speech-devices-sdk/get-sdk-7.png)
-
-Töltse le a Speech tartozó SDK-t és eszközöket mintakód és referenciaanyagok:
-
-1. Töltse le és telepítse az Aspera Connect eszközzel, amikor a rendszer kéri a böngészőben.
-
-    ![Töltse le az Aspera-csatlakozás](media/speech-devices-sdk/get-sdk-8.png)
-
-1. Válassza ki **Igen** Aspera Connect alkalmazások váltani.
-
-    ![Váltson át az Aspera-csatlakozás](media/speech-devices-sdk/get-sdk-9.png)
-
-1. Válassza ki **engedélyezése** Aspera Connect használatával a fájlok letöltését.
-
-    ![Töltse le az Aspera-csatlakozás](media/speech-devices-sdk/get-sdk-10.png)
-
-1. Az Aspera csatlakozás adatátvitel ablak bezárásához, a fájlok letöltése után.
-
-    ![Aspera csatlakozás adatátvitel ablak](media/speech-devices-sdk/get-sdk-11.png)
-
-Alapértelmezés szerint a fájlokat a rendszer letölti a **letölti** mappát. Akkor is jelentkezzen ki a hely most.
+Töltse le a [Speech Devices SDK](https://aka.ms/sdsdk-download)-t.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [A beszédfelismerés eszközök SDK használatának első lépései](speech-devices-sdk-qsg.md)
+> [A beszédfelismerés eszközök SDK használatának első lépései](https://aka.ms/sdsdk-quickstart)

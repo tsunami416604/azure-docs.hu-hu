@@ -11,11 +11,11 @@ ms.author: amlstudiodocs
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
 ms.openlocfilehash: 37ab56c377bc53a7300b51ffc709ea8d1b9d6f9b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57891586"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60750452"
 ---
 # <a name="how-to-evaluate-model-performance-in-azure-machine-learning-studio"></a>Hogyan modellek teljesítményének kiértékelése az Azure Machine Learning Studióban
 
@@ -56,7 +56,7 @@ Csatlakozás a portokat, 1. ábra az alábbiak szerint, és állítsa be a címk
 
 ![Egy regressziós modell értékelése](./media/evaluate-model-performance/1.png)
 
-1. ábra Egy regressziós modell kiértékelése.
+1\. ábra Egy regressziós modell kiértékelése.
 
 ### <a name="inspecting-the-evaluation-results"></a>A kiértékelés eredményeinek vizsgálata
 Miután a kísérletet, kattintson a kimeneti portjára, a a [Evaluate Model] [ evaluate-model] modul, és válassza ki *Visualize* az értékelési eredmények megtekintéséhez. Az értékelési mérőszámok rendelkezésre regressziós modellek a következők: *Mean Absolute Error*, *Mean Absolute Error kiváltó*, *relatív abszolút hiba*, *relatív négyzet hiba*, és a *együttható Meghatározása*.
@@ -67,20 +67,20 @@ A relatív meghatározása, amely más néven az R-négyzet, is mérési arról,
 
 ![Lineáris regresszió értékelési mérőszámok](./media/evaluate-model-performance/2.png)
 
-2. ábra Lineáris regresszió értékelési mérőszámok.
+2\. ábra Lineáris regresszió értékelési mérőszámok.
 
 ### <a name="using-cross-validation"></a>Közötti érvényesítése
 Ahogy korábban említettük, végezhet ismételt betanítási, pontozási és értékelések használatával automatikusan a [Halmazokra modell] [ cross-validate-model] modul. Ebben az esetben szüksége egy adatkészletet, egy kellő modell, és a egy [Halmazokra modell] [ cross-validate-model] modul (lásd az alábbi ábrát). Állítsa a felirat oszlopban kell *ár* a a [Halmazokra modell] [ cross-validate-model] -modulhoz tartozó tulajdonságok.
 
 ![Egy regressziós modell közötti érvényesítése](./media/evaluate-model-performance/3.png)
 
-3. ábra Kereszt-ellenőrzése egy regressziós modellt.
+3\. ábra Kereszt-ellenőrzése egy regressziós modellt.
 
 Miután a kísérletet, vizsgálhatja meg a kiértékelési eredményeket kattintson a jobb oldali kimeneti portjával a [Halmazokra modell] [ cross-validate-model] modul. A metrikák részletes képet biztosít minden egyes ismétléskor (modellrészek) és a metrikák (4. ábra) mindegyike átlagolt eredményeit.
 
 ![Kereszt-ellenőrzési eredmények a regressziós modell](./media/evaluate-model-performance/4.png)
 
-4. ábra Kereszt-ellenőrzési eredmények a regressziós modell.
+4\. ábra Kereszt-ellenőrzési eredmények a regressziós modell.
 
 ## <a name="evaluating-a-binary-classification-model"></a>Egy bináris osztályozási modell értékelése
 A bináris osztályozási forgatókönyvekben a célváltozó rendelkezik csak két lehetséges kimenetek, például: {0, 1} vagy {FALSE (hamis), true}, {negatív, pozitív}. Tegyük fel, kapnak egy adatkészlet néhány felnőtt az alkalmazottak demográfiai és alkalmazási változók és, hogy a rendszer felkéri a bevétel szintjét, azokra az értékekre bináris változó előrejelzése {"< = 50 K", "> 50 K"}. Más szóval a negatív osztály jelöli a személyeket, akik győződjön meg, legfeljebb 50 k évenként, és a pozitív osztály minden alkalmazott jelöli. Hasonlóan a regressziós a forgatókönyvben azt lenne a modell betanítását, bizonyos adatok pontozása és eredmények értékelése. A fő különbség az, kiszámítja az Azure Machine Learning Studio metrikák és kimenetek kiválasztása. A bevétel szintű előrejelzési forgatókönyvet mutatja be, ezzel a [felnőtt](https://archive.ics.uci.edu/ml/datasets/Adult) adatkészlet Studio kísérlet létrehozása és a egy két osztályú logisztikai regressziós modell, egy gyakran használt bináris osztályozó teljesítményének értékeléséhez.
@@ -98,7 +98,7 @@ Csatlakozás a portokat, 5. ábra az alábbiak szerint, és állítsa be a címk
 
 ![Egy bináris osztályozási modell értékelése](./media/evaluate-model-performance/5.png)
 
-5. ábra Egy bináris osztályozási modell kiértékelése.
+5\. ábra Egy bináris osztályozási modell kiértékelése.
 
 ### <a name="inspecting-the-evaluation-results"></a>A kiértékelés eredményeinek vizsgálata
 Miután a kísérletet, kattintson a kimeneti portjára, a a [Evaluate Model] [ evaluate-model] modul, és válassza ki *Visualize* megtekintéséhez a kiértékelésének eredménye (7. ábra). A bináris osztályozási modell érhető el értékelési mérőszámok a következők: *Pontosság*, *pontosság*, *visszahívása*, *F1 pontszám*, és *AUC*. Emellett a modul adja vissza egy keveredési mátrixot azokról a valódi pozitívok, a téves negatív, a vakriasztások és a true negatív, valamint *ROC*, *pontosság/visszaírási*, és  *Átemelés* görbék.
@@ -109,13 +109,13 @@ Pontosság egyszerűen az időarány, amíg megfelelően osztályozott példány
 
 ![Bináris osztályozás keveredési mátrix](./media/evaluate-model-performance/6a.png)
 
-6. ábra Bináris osztályozás keveredési mátrixot.
+6\. ábra Bináris osztályozás keveredési mátrixot.
 
 Visszatérve a bevételek besorolása problémát, akkor szeretnénk tehet fel és számos értékelési kérdést, hogy segítsen megérteni a használt besorolás teljesítményét. Nagyon természetes kérdése van: "Ki az egyéni felhasználók számára, akikkel a modell meghalad kell megszerzéséhez > 50 ezer (TP + pi), hány sorolták megfelelően (TP)?" Erre a kérdésre választ megnézzük a **pontosság** a modell, amely megfelelően besorolt pozitívok az időarány, amíg: TP/(TP+FP). Egy másik gyakori kérdés az "kívül az összes nagy megszerzéséhez jövedelem az alkalmazottak > 50 ezer (TP + FN), hány volt az osztályozó által igénybe vett besorolása megfelelően (TP)". Ez valójában a **visszahívása**, vagy a valódi pozitív gyakorisága: Az osztályozó TP/(TP+FN). Észreveheti, hogy nincs-e egy nyilvánvaló kompromisszum pontosság és a visszahívás közötti. Például adja meg egy viszonylag elosztott terhelésű adatkészletet, besorolás, amely előrejelzi a leginkább pozitív példányok kell magas visszaírási, de sok téves eredményez a negatív példányok annyi meglehetősen alacsony pontossága lenne misclassified. Egy diagram, hogyan változnak a két metrikák megtekintéséhez rákattinthat a a **PONTOSSÁG/VISSZAÍRÁSI** görbe az értékelés eredmény kimeneti oldalon (7. ábra bal felső része).
 
 ![Bináris osztályozás kiértékelésének eredménye](./media/evaluate-model-performance/7.png)
 
-7. ábra Bináris osztályozás kiértékelésének eredménye.
+7\. ábra Bináris osztályozás kiértékelésének eredménye.
 
 Egy másik kapcsolatos gyakran használják a metrika a **F1 pontszám**, amely a pontosság és a visszaírási figyelembe veszi. 2 metrikák közepének, és mint ilyen számított: F1 = 2 (pontosság x visszaírási) / (pontosság + visszahívása). Az F1 pontszám összefoglalva az értékelés egyetlen szám a jó módszer, de a rendszer mindig jó megoldás a pontosság és a visszaírási együtt jobban megismerheti, hogyan viselkedik a besorolás, tekintse meg.
 
@@ -126,11 +126,11 @@ A regressziós példához hasonlóan a keresztellenőrzési ismételten betanít
 
 ![Egy bináris osztályozási modell közötti érvényesítése](./media/evaluate-model-performance/8.png)
 
-8. ábra Kereszt-ellenőrzése egy bináris osztályozási modell.
+8\. ábra Kereszt-ellenőrzése egy bináris osztályozási modell.
 
 ![Kereszt-ellenőrzési eredmények egy bináris osztályozó](./media/evaluate-model-performance/9.png)
 
-9. ábra Bináris osztályozó kereszt-ellenőrzési eredményeit.
+9\. ábra Bináris osztályozó kereszt-ellenőrzési eredményeit.
 
 ## <a name="evaluating-a-multiclass-classification-model"></a>Többosztályos osztályozási modell értékelése
 Az ezzel a kísérlettel azt fogja használni a népszerű [Iris](https://archive.ics.uci.edu/ml/datasets/Iris "Iris") 3 különböző típusú (osztály) az iris üzem példányait tartalmazó adatkészletet. 4 funkció értékek vannak (csészelevél hossza/szélességét és szirom hossza/szélessége) minden példány esetében. Az előző kísérletek hozunk betanított és a modellek az azonos adatkészleteket használó tesztelése. Itt, ezzel a [Split Data] [ split] létrehozása a data 2 részhalmazainak, az első, betanítását és pontozását és kiértékelheti a második modult. Az Írisz adatkészletet a rendszer a [UCI Machine Learning-tárház](https://archive.ics.uci.edu/ml/index.html), és segítségével lehet letölteni egy [adatok importálása] [ import-data] modul.
@@ -155,25 +155,25 @@ Példányok képzési használandó értékének beállítása a [Split Data] [ 
 
 ![A Multiclass osztályozó kiértékelése](./media/evaluate-model-performance/10.png)
 
-10. ábra A Multiclass osztályozó kiértékelése
+10\. ábra A Multiclass osztályozó kiértékelése
 
 ### <a name="inspecting-the-evaluation-results"></a>A kiértékelés eredményeinek vizsgálata
 Futtassa a kísérletet, majd kattintson a kimeneti portjával [Evaluate Model][evaluate-model]. Az értékelési eredmények ebben az esetben egy keveredési mátrixot formájában mutatnak. A mátrix tartalmazza a tényleges és az összes 3 osztályok példányok előre jelzett száma.
 
 ![Többosztályos osztályozási kiértékelésének eredménye](./media/evaluate-model-performance/11.png)
 
-11. ábra Többosztályos osztályozási kiértékelésének eredménye.
+11\. ábra Többosztályos osztályozási kiértékelésének eredménye.
 
 ### <a name="using-cross-validation"></a>Közötti érvényesítése
 Ahogy korábban említettük, végezhet ismételt betanítási, pontozási és értékelések használatával automatikusan a [Halmazokra modell] [ cross-validate-model] modul. Kell egy adatkészletet, egy kellő modell, és a egy [Halmazokra modell] [ cross-validate-model] modul (lásd az alábbi ábrát). Újra be kell állítania a címke oszlopban található a [Halmazokra modell] [ cross-validate-model] modul (oszlopindex 5 ebben az esetben). A kísérlet futtatásával, és kattintson a jobb oldalon kimeneti portjára, miután a [Halmazokra modell][cross-validate-model], vizsgálhatja meg az egyes modellrészek, valamint a mean- és standard szórása a metrikaértékek. Az itt látható metrikák hasonlóak a bináris osztályozási esetben tárgyalt azokat. Vegye azonban figyelembe, hogy a többosztályos osztályozási számítási a valódi pozitív vagy negatív és a hamis pozitív vagy negatív végzi el leltározási osztály alapon, nincs átfogó pozitív vagy negatív osztály nem. Például a pontosság vagy az "Iris-setosa" osztály visszaírási számítási feladatokat, ha feltételezzük, hogy ez az a pozitív és minden más negatív.
 
 ![Többosztályos osztályozási modell közötti érvényesítése](./media/evaluate-model-performance/12.png)
 
-12. ábra. Kereszt-ellenőrzése egy Többosztályos osztályozási modell.
+12\. ábra. Kereszt-ellenőrzése egy Többosztályos osztályozási modell.
 
 ![Kereszt-ellenőrzési eredmények Többosztályos osztályozási modell](./media/evaluate-model-performance/13.png)
 
-13. ábra. Kereszt-ellenőrzési eredmények Többosztályos osztályozási modell.
+13\. ábra. Kereszt-ellenőrzési eredmények Többosztályos osztályozási modell.
 
 <!-- Module References -->
 [cross-validate-model]: https://msdn.microsoft.com/library/azure/75fb875d-6b86-4d46-8bcc-74261ade5826/

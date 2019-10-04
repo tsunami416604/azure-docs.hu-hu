@@ -3,17 +3,17 @@ title: Azure Automation-runbookok a metrikákhoz kapcsolódó riasztások figyel
 description: Ez a cikk végigvezeti a figyelési metrikákat engedményt-alapú Azure Automation-runbookok
 services: automation
 ms.service: automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 11/01/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 7932d057a348957d369ba325044055ac8dfe3428
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 142fb84624c2b0d3d92868aae5794792ed90b577
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58170190"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67478007"
 ---
 # <a name="monitoring-runbooks-with-metric-alerts"></a>Figyelési forgatókönyvek az metrikákhoz kapcsolódó riasztások
 

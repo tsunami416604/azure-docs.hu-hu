@@ -1,124 +1,123 @@
 ---
-title: Ajánlott eljárások az Azure Functions |} A Microsoft Docs
-description: Ismerje meg, ajánlott eljárások és minták az Azure Functions szolgáltatáshoz.
+title: Ajánlott eljárások a Azure Functionshoz | Microsoft Docs
+description: A Azure Functions ajánlott eljárásainak és mintáinak megismerése.
 services: functions
 documentationcenter: na
 author: wesmc7777
 manager: jeconnoc
-keywords: az Azure functions, minták, ajánlott eljárás, függvények, eseményfeldolgozás, webhookok, dinamikus számítás, kiszolgáló nélküli architektúra
+keywords: Azure functions, Patterns, ajánlott eljárások, függvények, események feldolgozása, webhookok, dinamikus számítás, kiszolgáló nélküli architektúra
 ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 30b187676f0c1fb03b7124d93b3991b0e32d61ae
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 2782781fdfd560c0c8f322e362fcf74c796664bd
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57848949"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933055"
 ---
-# <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>A teljesítmény-és az Azure Functions megbízhatóság
+# <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Azure Functions teljesítményének és megbízhatóságának optimalizálása
 
-Ez a cikk nyújt útmutatást a teljesítményének és megbízhatóságának javítása érdekében a [kiszolgáló nélküli](https://azure.microsoft.com/solutions/serverless/) alkalmazások működik. 
+Ez a cikk útmutatást nyújt a [kiszolgáló](https://azure.microsoft.com/solutions/serverless/) nélküli Function-alkalmazások teljesítményének és megbízhatóságának javításához. 
 
 ## <a name="general-best-practices"></a>Általános ajánlott eljárások
 
-Az alábbi táblázat az ajánlott eljárásokat, hogyan hozhat létre, és az Azure Functions használatával kiszolgáló nélküli megoldások tervezhet.
+Az alábbiakban az ajánlott eljárások azt ismertetik, hogyan hozhat létre és alakíthat ki kiszolgáló nélküli megoldásokat Azure Functions használatával.
 
-### <a name="avoid-long-running-functions"></a>Kerülje a hosszú ideig futó függvények
+### <a name="avoid-long-running-functions"></a>A hosszan futó függvények elkerülése
 
-Nagyméretű, hosszú lefutású funkciók váratlan időtúllépés problémákat okozhat. Egy függvény nagy számos Node.js-függőségek miatt válhat. Függőségek importálása megnövekedett betöltési időt, amelyek váratlan időtúllépéseket is okozhatnak. Függőségek töltődnek be mindkét explicit és implicit módon. A kód által betöltött egyetlen modul betöltése előfordulhat, hogy a saját további modulok.  
+A nagyméretű, hosszan futó függvények váratlan időtúllépési problémákhoz vezethetnek. A függvények sok Node. js-függőség miatt nagy méretűek lehetnek. A függőségek importálása nagyobb betöltési időt is okozhat, ami váratlan időtúllépéseket eredményezhet. A függőségeket explicit módon és implicit módon kell betölteni. A kód által betöltött egyetlen modul a saját további moduljait is betöltheti.  
 
-Amikor csak lehetséges, újrabontása nagy funkciók kisebb függvény együtt beállítja, hogy a munkahelyi és a válaszok gyors. Ha például egy webhooknak vagy egy HTTP által aktivált függvény szükség lehet egy bizonyos időkorláton; belül nyugtázása választ szokás a webhookok, az azonnali válasz igényelnek. A HTTP-eseményindító hasznos egy üzenetsorba üzenetsor eseményindító függvény által feldolgozandó adhat át. Ez a megközelítés lehetővé teszi a tényleges munka késleltetése, és azonnal választ adja vissza.
-
-
-### <a name="cross-function-communication"></a>Adatbázisközi függvény kommunikáció
-
-[Durable Functions](durable/durable-functions-concepts.md) és [Azure Logic Apps](../logic-apps/logic-apps-overview.md) beépített állapotváltásra és több functions közötti kommunikáció kezelését.
-
-Ha nem használ több függvények integrálása Durable Functions vagy a Logic Apps, általában közötti kommunikáció függvény a storage-üzenetsorok használata ajánlott.  A fő oka, tároló-üzenetsorok olcsóbb, és sokkal egyszerűbb üzembe helyezni. 
-
-Az üzenetsor-tárolóba az egyes üzenetek mérete legfeljebb 64 KB-os korlátozott. Kell továbbítani tudja a nagyobb üzenetek funkciók között, ha egy Azure Service Bus üzenetsor felhasználható támogatja az üzenet mérete a Standard szintű, legfeljebb 256 KB-os és a prémium szintű legfeljebb 1 MB.
-
-Service Bus-témakörök hasznosak, ha szüksége van az üzenetek szűrése feldolgozás előtt.
-
-Az Event hubs hasznosak, nagy mennyiségű kommunikáció támogatásához.
+Amikor csak lehetséges, a nagyméretű függvények újrabontása kisebb functions-készletekbe, amelyek együtt működnek, és a válaszokat gyorsan adják vissza. Előfordulhat például, hogy egy webhook vagy egy HTTP trigger függvény egy bizonyos időkorláton belül visszaigazolási választ kér. gyakori, hogy a webhookok azonnali választ igényelnek. A HTTP-trigger hasznos adatait átadhatja egy, a várólista-trigger függvény által feldolgozandó várólistába. Ezzel a megközelítéssel késleltetheti a tényleges munkát, és azonnali választ adhat vissza.
 
 
-### <a name="write-functions-to-be-stateless"></a>Állapot nélkülire kell függvények írása 
+### <a name="cross-function-communication"></a>Cross Function kommunikáció
 
-Függvények állapotmentesnek kell lennie, és ha lehetséges idempotens. Minden szükséges állapotinformációkat társítása az adatokat. Például egy megrendelés feldolgozása folyamatban valószínűleg egy társított `state` tag. Egy függvény alapján adott állapotot, amíg magát a függvény marad az állapot nélküli egy megrendelés feldolgozása sikerült. 
+A [Durable functions](durable/durable-functions-overview.md) és a [Azure Logic apps](../logic-apps/logic-apps-overview.md) az állapot-váltások és a több függvény közötti kommunikáció kezelésére készült.
 
-Idempotens funkciók különösen az időzítő eseményindító használata ajánlott. Például ha valami feltétlenül naponta egyszer kell futtatni, írja, ugyanazokat az eredményeket az a nap folyamán bármikor futtathatja azt. A függvény egy adott napja nem munka esetén kiléphet. Emellett ha egy korábbi futtatása nem sikerült befejezni, a következő futtatáskor kell vegyen fel, ahol abbahagyta.
+Ha nem használ Durable Functions vagy Logic Apps több függvénybe való integrálásra, általában ajánlott a tárolási várólisták használata a több funkciós kommunikációhoz.  A fő ok a tárolási várólisták olcsóbb és sokkal könnyebben kiépíthető. 
+
+A tárolási várólistán lévő egyes üzenetek mérete 64 KB-ra van korlátozva. Ha nagyobb üzeneteket kell átadnia a függvények között, egy Azure Service Bus üzenetsor használható a standard szinten 256 KB-ig, a prémium szinten legfeljebb 1 MB-ra.
+
+Service Bus témakörök akkor hasznosak, ha a feldolgozás előtt üzenet-szűrésre van szükség.
+
+Az Event hubok hasznosak a nagy mennyiségű kommunikáció támogatásához.
 
 
-### <a name="write-defensive-functions"></a>Védelmi vonalként függvények írása
+### <a name="write-functions-to-be-stateless"></a>Az írási függvények állapot nélküliek lesznek 
 
-Tegyük fel, a függvény kivételt bármikor sikerült észlel. Tervezése az funkciók egy adott múltbeli időpontból sikertelen a következő végrehajtása közben is használhatja. Érdemes lehet szükség a következő műveleteket:
+A függvények állapot nélküliek és idempotens, ha lehetséges. Társítson minden szükséges állapotinformációkat az adataihoz. Például egy feldolgozandó megrendelés valószínűleg egy társított `state` taggal fog rendelkezni. Egy függvény az adott állapot alapján feldolgozhat egy rendelést, miközben maga a függvény állapota változatlan marad. 
 
-1. 10 000 sort az adatbázis lekérdezése.
-2. Hozzon létre üzenetsori üzenet összes feldolgozni további sorokat le a sort.
+A idempotens functions használata különösen ajánlott időzítő eseményindítókkal. Ha például olyan dolog van, amely naponta egyszer kell futnia, írja meg, hogy a nap folyamán bármikor fusson ugyanazzal az eredménnyel. A függvény akkor léphet ki, ha egy adott nap nem működik. Ha egy korábbi Futtatás nem fejeződött be, a következő futtatásnak kell megadnia, ahol abbahagyta.
+
+
+### <a name="write-defensive-functions"></a>Védelmi függvények írása
+
+Tegyük fel, hogy a függvényt bármikor felmerülhet. Tervezze meg a függvényeket úgy, hogy a következő végrehajtás során egy korábbi sikertelen pontról folytassanak. Vegyünk egy olyan forgatókönyvet, amely a következő műveleteket igényli:
+
+1. Egy adatbázis 10 000-sorainak lekérdezése.
+2. Hozzon létre egy üzenetsor-üzenetet az egyes sorokhoz a sor további feldolgozásához.
  
-Attól függően, hogyan összetett a rendszert van, előfordulhat, hogy rendelkezik: érintett alárendelt szolgáltatásokkal rosszul viselkedik, hálózati kimaradások vagy a kvóta korlátozza elérte, stb. A függvény bármikor befolyásolhatja ezek mindegyikét. A függvények, elő kell készíteni, a Tervező kell.
+Attól függően, hogy milyen összetett a rendszer, lehetséges, hogy: a kapcsolódó alsóbb szintű szolgáltatások rosszul viselkednek, a hálózati kimaradások, vagy a kvóta korlátai is megszülettek. Ezek mindegyike bármikor hatással lehet a függvényre. Meg kell terveznie a feladatait.
 
-Hogyan reagál a kódját a után azok az elemek 5000 beszúrása egy üzenetsorba feldolgozási hiba esetén? Egy csoportot, amely végzett az elemek nyomon követése Ellenkező esetben előfordulhat, hogy be őket ismét legközelebb. Ez lehet egy komoly hatással a munkafolyamatot. 
+Hogyan reagál a kód, ha hiba lép fel az elemek 5 000-es beszúrását követően a feldolgozáshoz? Egy megadott készlet elemeinek nyomon követése. Ellenkező esetben a következő alkalommal is beszúrhatja őket. Ez komoly hatással lehet a munkahelyi folyamatra. 
 
-Egy elem feldolgozása már, ha engedélyezi a függvényre kattintva műveletvégzés lehet.
+Ha egy üzenetsor-elem már fel lett dolgozva, a függvény nem lehet op.
 
-Használhatja az Azure Functions platformon összetevők nyújtott védelmi intézkedéseket előnyeit. Lásd a **ártalmas üzenetek kezelése** dokumentációját [Azure Storage-üzenetsor eseményindítók és kötések](functions-bindings-storage-queue.md#trigger---poison-messages). 
+Használja ki a Azure Functions platformon használt összetevőkhöz már megadott védelmi mértékeket. Tekintse meg például az [Azure Storage üzenetsor-eseményindítók és-kötések](functions-bindings-storage-queue.md#trigger---poison-messages)dokumentációjában található **méreg üzenetsor-üzeneteinek kezelését** ismertető részt. 
 
-## <a name="scalability-best-practices"></a>Méretezhetőség ajánlott eljárások
+## <a name="scalability-best-practices"></a>Méretezhetőség – ajánlott eljárások
 
-Nincsenek hatással a módját a függvényalkalmazás példánya méretezése tényező. A részletek a dokumentációban szerepelnek [függvény méretezése](functions-scale.md).  Az alábbiakban néhány ajánlott eljárást annak biztosítása érdekében a függvényalkalmazás optimális méretezhetőségét.
+Számos tényező befolyásolja a Function app-méretezési példányait. A részletek a [függvények skálázására](functions-scale.md)szolgáló dokumentációban találhatók.  Az alábbiakban néhány ajánlott eljárás használható a functions-alkalmazások optimális méretezhetőségének biztosításához.
 
-### <a name="share-and-manage-connections"></a>Megosztás és a kapcsolatok kezelése
+### <a name="share-and-manage-connections"></a>Kapcsolatok megosztása és kezelése
 
-Újra felhasználhatja a külső erőforrásokhoz, amikor csak lehetséges.  Lásd: [kezelése az Azure Functions kapcsolatok](./manage-connections.md).
+Ha lehetséges, használja újra a külső erőforrásokhoz való kapcsolódást.  Lásd: [kapcsolatok kezelése Azure Functionsban](./manage-connections.md).
 
-### <a name="dont-mix-test-and-production-code-in-the-same-function-app"></a>Ne keverje a tesztelési és éles kód ugyanaz a függvényalkalmazás
+### <a name="dont-mix-test-and-production-code-in-the-same-function-app"></a>Ne keverje a tesztet és a termelési kódot ugyanabban a Function alkalmazásban
 
-Függvényalkalmazás-függvényei ossza meg erőforrásait. Ha például memória van osztva. Ha éles környezetben használja a függvényalkalmazást, nem hozzáadni teszt kapcsolatos funkciók és erőforrások. Éles kód végrehajtása során váratlan többletterhelést okozhat.
+Functions-megosztási erőforrásokon belüli függvények. A memória például meg van osztva. Ha éles környezetben használ egy Function alkalmazást, ne adjon hozzá teszttel kapcsolatos függvényeket és erőforrásokat. Váratlan terhelést okozhat a termelési kód végrehajtása során.
 
-Legyen óvatos a termelési függvényalkalmazások betöltése. Memória van átlagolja az egyes függvények az alkalmazásban.
+Ügyeljen arra, hogy milyen terhelést kell betöltenie az üzemi függvények alkalmazásaiba. A memória átlaga az alkalmazás egyes funkciói között.
 
-Ha egy megosztott hivatkozott több .NET-es függvényeket, helyezzen egy közös megosztott mappába. Az alábbi példához hasonló utasítást a szerelvény hivatkozhat, ha szkriptekkel C# (.csx): 
+Ha a megosztott szerelvény több .NET-függvényben is szerepel, akkor egy közös megosztott mappában kell elhelyeznie. Az alábbi példához hasonló utasítással hivatkozhat a szerelvényre, ha C# parancsfájlokat (. CSX) használ: 
 
     #r "..\Shared\MyAssembly.dll". 
 
-Ellenkező esetben ördöngösség véletlenül üzembe helyezése több teszt verziója ugyanaz a bináris másképp viselkednek a funkciók között.
+Ellenkező esetben a függvények közötti eltérő működést biztosító bináris fájlok véletlen üzembe helyezése könnyen elvégezhető.
 
-Ne használja az éles kódban részletes naplózás. Rendelkezik csökkenti a teljesítményt.
+Ne használja a részletes naplózást az éles kódban. Negatív hatással van a teljesítményre.
 
-### <a name="use-async-code-but-avoid-blocking-calls"></a>Aszinkron kóddal, de elkerülni hívások
+### <a name="use-async-code-but-avoid-blocking-calls"></a>Aszinkron kód használata, de ne blokkolja a hívásokat
 
-Aszinkron programozás az ajánlott eljárás. Azonban mindig elkerülése hivatkozik a `Result` tulajdonság, vagy a hívó `Wait` metódust egy `Task` példány. Ez a megközelítés szál Erőforrásfogyás vezethet.
+Az aszinkron programozás ajánlott eljárás. Azonban mindig ne hivatkozzon a `Result` tulajdonságra vagy a hívási `Wait` metódusra egy `Task` példányon. Ez a módszer a szál kimerülését eredményezheti.
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
-### <a name="receive-messages-in-batch-whenever-possible"></a>Üzenetek fogadása, amikor csak lehetséges, a batch szolgáltatásban
+### <a name="receive-messages-in-batch-whenever-possible"></a>Üzenetek fogadása kötegben, amikor csak lehetséges
 
-Néhány eseményindítók, például Eseményközpontnak engedélyezése egy üzenetköteget egy egyszeri hívás fogadása.  Sokkal jobb teljesítményt üzenetek kötegelése rendelkezik.  Beállíthatja, hogy az a maximális kötegméret a `host.json` leírt módon fájlt a [host.json dokumentációja](functions-host-json.md)
+Egyes eseményindítók, például az Event hub lehetővé teszik egy köteg üzenet fogadását egyetlen meghíváskor.  A kötegelt üzenetek sokkal jobb teljesítményt biztosítanak.  A maximális batch- `host.json` méret a fájlban a [Host. JSON dokumentációjában](functions-host-json.md) részletesen is konfigurálható.
 
-C#-függvényekre módosíthatja a típust egy szigorú típusmegadású tömbhöz.  Például, nem pedig `EventData sensorEvent` a podpis metody lehet `EventData[] sensorEvent`.  Más nyelven kell explicit módon beállíthat egy cardinality tulajdonsága a `function.json` való `many` , és engedélyezze a kötegelés [itt látható módon](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10).
+A C# függvények esetében a típust erősen gépelt tömbre módosíthatja.  Például `EventData sensorEvent` a metódus aláírása helyett lehet `EventData[] sensorEvent`.  Más nyelvek esetében explicit módon be kell állítania a kardinális tulajdonságot `function.json` `many` a-ben, hogy az [itt látható módon](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10)engedélyezze a kötegelt feldolgozást.
 
-### <a name="configure-host-behaviors-to-better-handle-concurrency"></a>Gazdagép viselkedésmódok egyidejűségi a hatékonyabb hibakezelést konfigurálása
+### <a name="configure-host-behaviors-to-better-handle-concurrency"></a>A gazdagép viselkedésének konfigurálása a Egyidejűség jobb kezelésére
 
-A `host.json` fájlt a függvényalkalmazás a gazdagép-futtatókörnyezet és az eseményindító jelenségeket konfigurálását teszi lehetővé.  Kötegelés viselkedéseket, mellett eseményindítók számos egyidejű kezelheti.  Gyakran módosításával ezek a beállítások értékei a meghívott függvényeket az igényeinek megfelelően a minden példány méretezési segítségével.
+A `host.json` Function alkalmazásban található fájl lehetővé teszi a gazdagép-futtatókörnyezet és az aktiválási viselkedés konfigurációját.  A Batch-viselkedésen kívül számos eseményindító esetében is kezelheti a párhuzamosságot.  Az ilyen beállításokban szereplő értékek gyakran módosítják az egyes példányok megfelelő méretezését a meghívott függvények igényei szerint.
 
-A hosts fájl a beállításokat az alkalmazáson belüli összes függvényt alkalmazza a belül egy *egypéldányos* a függvény. Például ha egy függvényalkalmazáshoz 2 HTTP-függvényekkel kellett, egyidejű kérelmek 25, vagy HTTP-eseményindító kérést lenne beleszámít a megosztott 25 párhuzamos kérés.  Ha a függvényalkalmazás 10 példányra van ellátva, a 2-funkciók hatékonyan engedélyezése 250 egyidejű kérelmek (10 példányra * 25 párhuzamos kérés példányonként).
+A Hosts fájlban lévő beállítások a függvény *egyetlen példányán* belül az alkalmazáson belüli összes függvényre érvényesek. Ha például 2 HTTP-függvénnyel rendelkező Function-alkalmazással és egyidejű kéréssel 25-re van beállítva, akkor a HTTP-triggerre irányuló kérelem a közös 25 egyidejű kérelemre is beleszámít.  Ha a Function alkalmazás 10 példányra van méretezve, a 2 függvény gyakorlatilag lehetővé teszi a 250 egyidejű kérések használatát (10 példány * 25 egyidejű kérelem/példány).
 
-**HTTP egyidejűségi gazdagép beállításai**
+**HTTP-egyidejűségi gazdagép beállításai**
 
 [!INCLUDE [functions-host-json-http](../../includes/functions-host-json-http.md)]
 
-Más gazdagép-konfigurációs beállítások található [az állomás konfigurációs dokumentum](functions-host-json.md).
+[A gazdagép konfigurációs dokumentumában](functions-host-json.md)más gazdagép-konfigurációs beállítások is megtalálhatók.
 
 ## <a name="next-steps"></a>További lépések
 
 További információkért lásd a következőket:
 
-* [Az Azure Functions kapcsolatok kezelése](manage-connections.md)
-* [Azure App Service – ajánlott eljárások](../app-service/app-service-best-practices.md)
+* [Kapcsolatok kezelése a Azure Functionsban](manage-connections.md)
+* [Azure App Service ajánlott eljárások](../app-service/app-service-best-practices.md)

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 760bb5b62e9bba9b7a83f99760f7fe5d8c399dfb
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50226704"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179070"
 ---
 1. A Feladatátvevőfürt-kezelőben bontsa ki a **szerepkörök**, és jelölje ki a rendelkezésre állási csoport.  
 
@@ -31,7 +31,7 @@ ms.locfileid: "50226704"
 
 8. Indítsa el az SQL Server Management Studiót, és kapcsolódjon az elsődleges replika.
 
-9. Lépjen a **AlwaysOn magas rendelkezésre állás** > **rendelkezésre állási csoportok** > **\<AvailabilityGroupName\>**   >  **Rendelkezésre állási csoport figyelője**.  
+9. Lépjen a **AlwaysOn magas rendelkezésre állás** > **rendelkezésre állási csoportok** >  **\<AvailabilityGroupName\>**   >  **Rendelkezésre állási csoport figyelője**.  
     A figyelő nevét, amelyet a Feladatátvevőfürt-kezelő hozott üzenetnek kell megjelennie.
 
 10. Kattintson a jobb gombbal a figyelő nevét, és kattintson **tulajdonságok**.

@@ -1,250 +1,255 @@
-items:
 - name: Az Azure API Management dokumentációja
   href: index.yml
 - name: Áttekintés
   items:
-  - name: Az API Management ismertetése
-    href: api-management-key-concepts.md
-  - name: Az API Management-funkciók rendelkezésre állása
-    href: api-management-features.md
+    - name: Az API Management ismertetése
+      href: api-management-key-concepts.md
+    - name: Az API Management-funkciók rendelkezésre állása
+      href: api-management-features.md
 - name: Gyors útmutatók
-  items:
-  - name: Példány létrehozása – Portal
-    href: get-started-create-service-instance.md
-  - name: Példány létrehozása – PowerShell
-    href: powershell-create-service-instance.md
   expanded: true
+  items:
+    - name: Példány létrehozása – Portal
+      href: get-started-create-service-instance.md
+    - name: Példány létrehozása – PowerShell
+      href: powershell-create-service-instance.md
 - name: Oktatóanyagok
   items:
-  - name: 1 – Az első API importálása
-    href: import-and-publish.md
-  - name: 2 – Termékek létrehozása és közzététele
-    href: api-management-howto-add-products.md
-  - name: 3 – API-válaszok utánzása
-    href: mock-api-responses.md
-  - name: 4 – Az API védelme
-    href: transform-api.md
-  - name: 5 – A közzétett API-k monitorozása
-    href: api-management-howto-use-azure-monitor.md
-  - name: 6 – API-k hibakeresése
-    href: api-management-howto-api-inspector.md
-  - name: 7 – Változatok hozzáadása
-    href: api-management-get-started-revise-api.md
-  - name: 8 – Több verzió hozzáadása
-    href: api-management-get-started-publish-versions.md
-  - name: 9 – A fejlesztői portál testreszabása
-    href: api-management-customize-styles.md
+    - name: 1 – Az első API importálása
+      href: import-and-publish.md
+    - name: 2 – Termékek létrehozása és közzététele
+      href: api-management-howto-add-products.md
+    - name: 3 – API-válaszok utánzása
+      href: mock-api-responses.md
+    - name: 4 – Az API védelme
+      href: transform-api.md
+    - name: 5 – A közzétett API-k monitorozása
+      href: api-management-howto-use-azure-monitor.md
+    - name: 6 – API-k hibakeresése
+      href: api-management-howto-api-inspector.md
+    - name: 7 – Változatok hozzáadása
+      href: api-management-get-started-revise-api.md
+    - name: 8 – Több verzió hozzáadása
+      href: api-management-get-started-publish-versions.md
+    - name: 9 – A fejlesztői portál testreszabása
+      href: api-management-customize-styles.md
 - name: Példák
   items:
-  - name: Házirendek
-    href: policy-samples.md
-  - name: Azure PowerShell
-    href: powershell-samples.md
+    - name: Házirendek
+      href: policy-samples.md
+    - name: Azure PowerShell
+      href: powershell-samples.md
 - name: Alapelvek
   items:
-  - name: Terminológia
-    href: api-management-terminology.md
-  - name: Házirendek
-    items:
-    - name: Áttekintés
-      href: api-management-howto-policies.md
-    - name: Szabályzati segédlet indexe
-      href: api-management-policies.md
-  - name: Előfizetések
-    href: api-management-subscriptions.md
-  - name: Kezelés automatizálással
-    href: automation-manage-api-management.md
-  - name: Hibakezelés
-    href: api-management-error-handling-policies.md
-  - name: API-importálási korlátozások
-    href: api-management-api-import-restrictions.md
+    - name: Terminológia
+      href: api-management-terminology.md
+    - name: Házirendek
+      items:
+        - name: Áttekintés
+          href: api-management-howto-policies.md
+        - name: Szabályzati segédlet indexe
+          href: api-management-policies.md
+    - name: Biztonság
+      items:
+        - name: Beépített biztonsági vezérlők
+          href: api-management-security-controls.md
+    - name: Előfizetések
+      href: api-management-subscriptions.md
+    - name: Kezelés automatizálással
+      href: automation-manage-api-management.md
+    - name: Hibakezelés
+      href: api-management-error-handling-policies.md
+    - name: API-importálási korlátozások
+      href: api-management-api-import-restrictions.md
 - name: Útmutatók
   items:
-  - name: API-k meghatározása
-    items:
-    - name: API hozzáadása manuálisan
-      href: add-api-manually.md
-    - name: OpenAPI-specifikáció importálása
-      href: import-api-from-oas.md
-    - name: SOAP API importálása
-      href: import-soap-api.md
-    - name: SOAP API importálása és konvertálása REST-té
-      href: restify-soap-api.md
-    - name: API-alkalmazás importálása
-      href: import-api-app-as-api.md
-    - name: Függvényalkalmazás importálása
-      href: import-function-app-as-api.md
-    - name: Logikai alkalmazás importálása
-      href: import-logic-app-as-api.md
-    - name: Service Fabric-alkalmazás importálása
-      href: ../service-fabric/service-fabric-tutorial-deploy-api-management.md
-    - name: API szerkesztése
-      href: edit-api.md
-  - name: Kiépítés és skálázás
-    items:
-    - name: Kapacitási mérőszám
-      href: api-management-capacity.md
-    - name: Frissítés és skálázás
-      href: upgrade-and-scale.md
-    - name: Automatikus skálázás konfigurálása
-      href: api-management-howto-autoscale.md
-    - name: Egyéni tartomány konfigurálása
-      href: configure-custom-domain.md
-  - name: Gyorsítótár
-    items:
-    - name: Gyorsítótárazás hozzáadása a hatékonyabb működés érdekében
-      href: api-management-howto-cache.md
-    - name: Külső gyorsítótár használata
-      href: api-management-howto-cache-external.md
-  - name: Az API-k védelme
-    items:
-    - name: Előfizetések létrehozása
-      href: api-management-howto-create-subscriptions.md
-    - name: API-k biztonságossá tétele ügyféltanúsítvány-alapú hitelesítés használatával
-      href: api-management-howto-mutual-certificates-for-clients.md
-  - name: A háttérmodul védelme
-    items:
-    - name: Az API védelme az Azure AD-vel
-      href: api-management-howto-protect-backend-with-aad.md
-    - name: Csatlakozás virtuális hálózathoz
-      href: api-management-using-with-vnet.md
-    - name: Csatlakozás belső virtuális hálózathoz
-      href: api-management-using-with-internal-vnet.md
-    - name: Az Application Gateway integrálása belső VNET-en
-      href: api-management-howto-integrate-internal-vnet-appgateway.md
-    - name: Kölcsönös tanúsítványhitelesítés
-      href: api-management-howto-mutual-certificates.md
-    - name: Hitelesítésszolgáltatói tanúsítványok kezelése
-      href: api-management-howto-ca-certificates.md
-    - name: Protokollok és titkosítások kezelése
-      href: api-management-howto-manage-protocols-ciphers.md
-  - name: A fejlesztői élmény testreszabása
-    items:
-    - name: Lap tartalmának és elrendezésének módosítása
-      href: api-management-modify-content-layout.md
-    - name: Rendszerlapok testreszabása sablonok használatával
-      href: api-management-developer-portal-templates.md
-    - name: Hitelesítés az Azure AD-vel
-      href: api-management-howto-aad.md
-    - name: Hitelesítés az Azure AD B2C-vel
-      href: api-management-howto-aad-b2c.md
-    - name: Delegált hitelesítés
-      href: api-management-howto-setup-delegation.md
-    - name: E-mail-értesítések és sablonok
-      href: api-management-howto-configure-notifications.md
-    - name: OAuth-támogatás engedélyezése a konzolon
-      href: api-management-howto-oauth2.md
-  - name: Házirendek meghatározása
-    items:
-    - name: Házirendek beállítása vagy szerkesztése
-      href: set-edit-policies.md
-    - name: Házirend-kifejezések
-      href: api-management-policy-expressions.md
-    - name: Egyedi gyorsítótárazás
-      href: api-management-sample-cache-by-key.md
-    - name: Speciális figyelés
-      href: api-management-log-to-eventhub-sample.md
-    - name: Speciális kérelemszabályozás
-      href: api-management-sample-flexible-throttling.md
-    - name: Külső szolgáltatások használata
-      href: api-management-sample-send-request.md
-    - name: Titkok kezelése tulajdonságokkal
-      href: api-management-howto-properties.md
-    - name: Hozzáférés-korlátozási szabályzatok
-      href: api-management-access-restriction-policies.md
-    - name: Speciális szabályzatok
-      href: api-management-advanced-policies.md
-    - name: Hitelesítési szabályzatok
-      href: api-management-authentication-policies.md
-    - name: Gyorsítótárazási házirendek
-      href: api-management-caching-policies.md
-    - name: Tartományok közötti szabályzatok
-      href: api-management-cross-domain-policies.md
-    - name: Átalakítási szabályzatok
-      href: api-management-transformation-policies.md
-  - name: Sablonreferencia
-    items:
-    - name: Sablonok
-      href: api-management-developer-portal-templates-reference.md
-    - name: API-k
-      href: api-management-api-templates.md
-    - name: Termékek
-      href: api-management-product-templates.md
-    - name: Alkalmazások
-      href: api-management-application-templates.md
-    - name: Hibák
-      href: api-management-issue-templates.md
-    - name: Felhasználói profil
-      href: api-management-user-profile-templates.md
-    - name: Oldalak
-      href: api-management-page-templates.md
-    - name: Sablonerőforrások
-      href: api-management-template-resources.md
-  - name: Adatmodell-referencia
-    href: api-management-template-data-model-reference.md
-  - name: Oldalvezérlők
-    href: api-management-page-controls.md
-  - name: Kezelés éles környezetben
-    items:
-    - name: Csoportok kezelése
-      href: api-management-howto-create-groups.md
-    - name: Üzembe helyezés több Azure-régióban
-      href: api-management-howto-deploy-multi-region.md
-    - name: Eseménynaplózás az Azure Event Hubs segítségével
-      href: api-management-howto-log-event-hubs.md
-    - name: Kérések naplózása az Azure Application Insights segítségével
-      href: api-management-howto-app-insights.md
-    - name: Vészhelyreállítás biztonsági mentéssel és visszaállítással
-      href: api-management-howto-disaster-recovery-backup-restore.md
-    - name: Felhasználói fiókok kezelése
-      href: api-management-howto-create-or-invite-developers.md
-    - name: Konfigurálás a Git használatával
-      href: api-management-configuration-repository-git.md
-    - name: Szerepköralapú hozzáférés-vezérlés alkalmazása
-      href: api-management-role-based-access-control.md
-    - name: Felügyelt identitások használata Azure-erőforrások eléréséhez
-      href: api-management-howto-use-managed-service-identity.md
-    - name: Integrálás a Service Fabric platformmal
+    - name: API-k meghatározása
       items:
-      - name: Áttekintés
-        href: ../service-fabric/service-fabric-api-management-overview.md
-      - name: Oktatóanyag
-        href: ../service-fabric/service-fabric-tutorial-deploy-api-management.md
+        - name: API hozzáadása manuálisan
+          href: add-api-manually.md
+        - name: OpenAPI-specifikáció importálása
+          href: import-api-from-oas.md
+        - name: SOAP API importálása
+          href: import-soap-api.md
+        - name: SOAP API importálása és konvertálása REST-té
+          href: restify-soap-api.md
+        - name: API-alkalmazás importálása
+          href: import-api-app-as-api.md
+        - name: Függvényalkalmazás importálása
+          href: import-function-app-as-api.md
+        - name: Logikai alkalmazás importálása
+          href: import-logic-app-as-api.md
+        - name: Service Fabric-alkalmazás importálása
+          href: ../service-fabric/service-fabric-tutorial-deploy-api-management.md
+        - name: API szerkesztése
+          href: edit-api.md
+    - name: Kiépítés és skálázás
+      items:
+        - name: Kapacitási mérőszám
+          href: api-management-capacity.md
+        - name: Frissítés és skálázás
+          href: upgrade-and-scale.md
+        - name: Automatikus skálázás konfigurálása
+          href: api-management-howto-autoscale.md
+        - name: Egyéni tartomány konfigurálása
+          href: configure-custom-domain.md
+    - name: Gyorsítótár
+      items:
+        - name: Gyorsítótárazás hozzáadása a hatékonyabb működés érdekében
+          href: api-management-howto-cache.md
+        - name: Külső gyorsítótár használata
+          href: api-management-howto-cache-external.md
+    - name: Az API-k védelme
+      items:
+        - name: Előfizetések létrehozása
+          href: api-management-howto-create-subscriptions.md
+        - name: API-k biztonságossá tétele ügyféltanúsítvány-alapú hitelesítés használatával
+          href: api-management-howto-mutual-certificates-for-clients.md
+    - name: A háttérmodul védelme
+      items:
+        - name: Az API védelme az Azure AD-vel
+          href: api-management-howto-protect-backend-with-aad.md
+        - name: Csatlakozás virtuális hálózathoz
+          href: api-management-using-with-vnet.md
+        - name: Csatlakozás belső virtuális hálózathoz
+          href: api-management-using-with-internal-vnet.md
+        - name: Az Application Gateway integrálása belső VNET-en
+          href: api-management-howto-integrate-internal-vnet-appgateway.md
+        - name: Kölcsönös tanúsítványhitelesítés
+          href: api-management-howto-mutual-certificates.md
+        - name: Hitelesítésszolgáltatói tanúsítványok kezelése
+          href: api-management-howto-ca-certificates.md
+        - name: Protokollok és titkosítások kezelése
+          href: api-management-howto-manage-protocols-ciphers.md
+    - name: A fejlesztői élmény testreszabása
+      items:
+        - name: Az új fejlesztői portál elérése és testreszabása
+          href: api-management-howto-developer-portal.md
+        - name: Lap tartalmának és elrendezésének módosítása
+          href: api-management-modify-content-layout.md
+        - name: Rendszerlapok testreszabása sablonok használatával
+          href: api-management-developer-portal-templates.md
+        - name: Hitelesítés az Azure AD-vel
+          href: api-management-howto-aad.md
+        - name: Hitelesítés az Azure AD B2C-vel
+          href: api-management-howto-aad-b2c.md
+        - name: Delegált hitelesítés
+          href: api-management-howto-setup-delegation.md
+        - name: E-mail-értesítések és sablonok
+          href: api-management-howto-configure-notifications.md
+        - name: OAuth-támogatás engedélyezése a konzolon
+          href: api-management-howto-oauth2.md
+    - name: Házirendek meghatározása
+      items:
+        - name: Házirendek beállítása vagy szerkesztése
+          href: set-edit-policies.md
+        - name: Házirend-kifejezések
+          href: api-management-policy-expressions.md
+        - name: Egyedi gyorsítótárazás
+          href: api-management-sample-cache-by-key.md
+        - name: Speciális figyelés
+          href: api-management-log-to-eventhub-sample.md
+        - name: Speciális kérelemszabályozás
+          href: api-management-sample-flexible-throttling.md
+        - name: Külső szolgáltatások használata
+          href: api-management-sample-send-request.md
+        - name: Titkok kezelése tulajdonságokkal
+          href: api-management-howto-properties.md
+        - name: Hozzáférés-korlátozási szabályzatok
+          href: api-management-access-restriction-policies.md
+        - name: Speciális szabályzatok
+          href: api-management-advanced-policies.md
+        - name: Hitelesítési szabályzatok
+          href: api-management-authentication-policies.md
+        - name: Gyorsítótárazási házirendek
+          href: api-management-caching-policies.md
+        - name: Tartományok közötti szabályzatok
+          href: api-management-cross-domain-policies.md
+        - name: Átalakítási szabályzatok
+          href: api-management-transformation-policies.md
+    - name: Sablonreferencia
+      items:
+        - name: Sablonok
+          href: api-management-developer-portal-templates-reference.md
+        - name: API-k
+          href: api-management-api-templates.md
+        - name: Termékek
+          href: api-management-product-templates.md
+        - name: Alkalmazások
+          href: api-management-application-templates.md
+        - name: Hibák
+          href: api-management-issue-templates.md
+        - name: Felhasználói profil
+          href: api-management-user-profile-templates.md
+        - name: Oldalak
+          href: api-management-page-templates.md
+        - name: Sablonerőforrások
+          href: api-management-template-resources.md
+    - name: Adatmodell-referencia
+      href: api-management-template-data-model-reference.md
+    - name: Oldalvezérlők
+      href: api-management-page-controls.md
+    - name: Kezelés éles környezetben
+      items:
+        - name: Csoportok kezelése
+          href: api-management-howto-create-groups.md
+        - name: Üzembe helyezés több Azure-régióban
+          href: api-management-howto-deploy-multi-region.md
+        - name: IP-címek lekérése
+          href: api-management-howto-ip-addresses.md
+        - name: Eseménynaplózás az Azure Event Hubs segítségével
+          href: api-management-howto-log-event-hubs.md
+        - name: Kérések naplózása az Azure Application Insights segítségével
+          href: api-management-howto-app-insights.md
+        - name: Vészhelyreállítás biztonsági mentéssel és visszaállítással
+          href: api-management-howto-disaster-recovery-backup-restore.md
+        - name: Felhasználói fiókok kezelése
+          href: api-management-howto-create-or-invite-developers.md
+        - name: Konfigurálás a Git használatával
+          href: api-management-configuration-repository-git.md
+        - name: Szerepköralapú hozzáférés-vezérlés alkalmazása
+          href: api-management-role-based-access-control.md
+        - name: API Management-példányok migrálása
+          href: api-management-howto-migrate.md
+        - name: Felügyelt identitások használata Azure-erőforrások eléréséhez
+          href: api-management-howto-use-managed-service-identity.md
+        - name: Integrálás a Service Fabric platformmal
+          items:
+            - name: Áttekintés
+              href: ../service-fabric/service-fabric-api-management-overview.md
+            - name: Oktatóanyag
+              href: ../service-fabric/service-fabric-tutorial-deploy-api-management.md
 - name: Referencia
   items:
-  - name: Azure PowerShell
-    href: /powershell/azure/overview
-  - name: REST
-    href: /rest/api/apimanagement/
-  - name: REST (eredeti)
-    href: /rest/api/apimanagement/ApiManagementREST/api-management-REST
-  - name: Resource Manager-sablon
-    href: /azure/templates/microsoft.apimanagement/allversions
+    - name: Azure PowerShell
+      href: /powershell/module/az.apimanagement/?view=azps-2.6.0
+    - name: REST
+      href: /rest/api/apimanagement/
+    - name: REST (eredeti)
+      href: /rest/api/apimanagement/ApiManagementREST/api-management-REST
+    - name: Resource Manager-sablon
+      href: /azure/templates/microsoft.apimanagement/allversions
 - name: További források
   items:
-  - name: GYIK
-    href: api-management-faq.md
-  - name: Díjszabás
-    href: https://aka.ms/apimpricing
-  - name: Régiónkénti rendelkezésre állás
-    href: https://azure.microsoft.com/regions/services/
-  - name: Ütemterv
-    href: https://aka.ms/apimroadmap
-  - name: Funkciókérések
-    href: https://aka.ms/apimwish
-  - name: Videók
-    href: https://azure.microsoft.com/documentation/videos/index/?services=api-management
-  - name: MSDN-fórum
-    href: https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureapimgmt
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/azure-api-management
-  - name: API-tervezési segédlet
-    href: https://docs.microsoft.com/azure/architecture/best-practices/api-design?toc=%2Fazure%2Fapi-management%2Ftoc.json
-  - name: API-implementálási segédlet
-    href: https://docs.microsoft.com/azure/architecture/best-practices/api-implementation?toc=%2Fazure%2Fapi-management%2Ftoc.json
-ms.openlocfilehash: 637671ae4e85a7f3ed4f71af5caf580660c2b6ce
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58260213"
+    - name: GYIK
+      href: api-management-faq.md
+    - name: Díjszabás
+      href: 'https://aka.ms/apimpricing'
+    - name: Régiónkénti rendelkezésre állás
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Ütemterv
+      href: 'https://aka.ms/apimroadmap'
+    - name: Funkciókérések
+      href: 'https://aka.ms/apimwish'
+    - name: Videók
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=api-management'
+    - name: MSDN-fórum
+      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureapimgmt'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-api-management'
+    - name: API-tervezési segédlet
+      href: 'https://docs.microsoft.com/azure/architecture/best-practices/api-design?toc=%2Fazure%2Fapi-management%2Ftoc.json'
+    - name: API-implementálási segédlet
+      href: 'https://docs.microsoft.com/azure/architecture/best-practices/api-implementation?toc=%2Fazure%2Fapi-management%2Ftoc.json'
+    - name: „A hibaelhárítás nem tudta frissíteni a gazdagépneveket” hiba
+      href: api-management-troubleshoot-cannot-add-custom-domain.md

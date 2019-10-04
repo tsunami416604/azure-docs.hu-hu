@@ -1,5 +1,5 @@
 ---
-title: Azure fejlesztői tárolóhelyek eszközök frissítése
+title: Az Azure dev Spaces-eszközök frissítése
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
@@ -8,46 +8,43 @@ ms.author: zarhoads
 ms.date: 07/03/2018
 ms.topic: conceptual
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
-keywords: Docker, Kubernetes, Azure, az AKS, az Azure Container Service, tárolók
-ms.openlocfilehash: 4e0a3c5aa849799872371ef1c5ac0867babffebb
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+keywords: Docker, Kubernetes, Azure, AK, Azure Container Service, tárolók
+ms.openlocfilehash: 24a66c5218bb75672ae784b19213116efdb83690
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791902"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232447"
 ---
-# <a name="how-to-upgrade-azure-dev-spaces-tools"></a>Azure fejlesztői tárolóhelyek eszközök frissítése
+# <a name="how-to-upgrade-azure-dev-spaces-tools"></a>Az Azure dev Spaces-eszközök frissítése
 
-Ha új kiadása és használata az Azure fejlesztési tárolóhelyek, szüksége lehet az Azure fejlesztési tárolóhelyek ügyfél eszközök frissítéséhez.
+Ha van új kiadás, és már használja az Azure dev Spaces-t, lehet, hogy frissítenie kell az Azure dev Spaces-ügyféleszközök eszközeit.
 
-## <a name="update-the-azure-cli"></a>Az Azure parancssori felület frissítése
+## <a name="update-the-azure-cli"></a>Az Azure CLI frissítése
 
-Azure CLI legújabb verziójára frissíti, is kap a fejlesztési tárolóhelyek CLI-bővítmény legújabb verziója.
+Amikor frissíti a legújabb Azure CLI-t, a dev Spaces CLI bővítmény legújabb verzióját is letöltheti.
 
-Távolítsa el a korábbi verziót, csak keresse meg a megfelelő letölthető innen nem kell [Azure CLI-vel](/cli/azure/install-azure-cli?view=azure-cli-latest).
+Nem kell eltávolítania a korábbi verziót, csak keresse meg a megfelelő letöltést az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)-ben.
 
 
-## <a name="update-the-dev-spaces-cli-extension-and-command-line-tools"></a>A fejlesztői, szóközök CLI-bővítmény és a parancssori eszközök frissítése
+## <a name="update-the-dev-spaces-cli-extension-and-command-line-tools"></a>A dev Spaces CLI bővítmény és a parancssori eszközök frissítése
 
-Futtassa az alábbi parancsot:
+Futtassa a következő parancsot:
 
 ```cmd
 az aks use-dev-spaces -n <your-aks-cluster> -g <your-aks-cluster-resource-group> --update
 ```
 
-## <a name="update-the-vs-code-extension"></a>A VS Code-bővítmény frissítése
+## <a name="update-the-vs-code-extension"></a>A VS Code bővítmény frissítése
 
-A telepítést követően automatikusan frissíti a bővítményt. Előfordulhat, hogy kell újra betölti a bővítményt, az új szolgáltatások használatához. A VS Code-ban nyissa meg a **bővítmények** ablaktáblán válassza ki a **Azure fejlesztési tárolóhelyek** bővítményeket, és válassza **Újrabetöltés**.
+A telepítés után a bővítmény automatikusan frissül. Előfordulhat, hogy újra kell töltenie a bővítményt az új funkciók használatához. A VS Code-ban nyissa meg a **bővítmények** ablaktáblát, válassza ki az **Azure dev Spaces** bővítményeket, és válassza az Újratöltés lehetőséget.
 
-## <a name="update-the-visual-studio-extension"></a>A Visual Studio-bővítmény frissítése
+## <a name="update-the-visual-studio-extension"></a>A Visual Studio bővítmény frissítése
 
-Például a más bővítmények és frissítések, a Visual Studio értesíteni fogjuk, ha egy frissítés érhető el, a Visual Studio Tools for Kubernetes, az Azure fejlesztési szóközt is tartalmaz. A jelző ikonra a felső keresse meg a képernyő.
+A többi bővítményhez és frissítéshez hasonlóan a Visual Studio is értesíti Önt, ha rendelkezésre áll egy frissítés a Visual Studio Tools for Kubernetes, amely tartalmazza az Azure dev Spaces szolgáltatást. A képernyő jobb felső részén keresse meg a jelölő ikont.
 
-Frissítése az eszközök a Visual Studióban, válassza ki a **eszközök > bővítmények és frissítések** menü elem és a bal oldalon válassza a **frissíti**. Keresés **Visual Studio Tools for Kubernetes** , és válassza a **frissítés** gombra.
+Az eszközök a Visual Studióban való frissítéséhez válassza az **eszközök > bővítmények és frissítések** menüpontot, és a bal oldalon válassza a **frissítések**lehetőséget. Keresse meg a **Kubernetes Visual Studio-eszközöket** , és kattintson a **frissítés** gombra.
 
 ## <a name="next-steps"></a>További lépések
 
-Az új eszközök teszteléséhez hozzon létre egy új fürtöt. Próbálja ki a rövid útmutatók és oktatóanyagok, [Azure fejlesztési tárolóhelyek](/azure/dev-spaces).
-
-> [!WARNING]
-> Az Azure fejlesztési tárolóhelyek meglévő fürtökön lesz azonnal javítható, és ellenőrizze, hogy az összes legújabb verzióját használja az Azure-környezetek, új fürt létrehozása az eszközök a frissítés után.
+Tesztelje az új eszközöket új fürt létrehozásával. Próbálja ki a gyors útmutatókat és oktatóanyagokat az [Azure dev Spaces](/azure/dev-spaces)webhelyen.

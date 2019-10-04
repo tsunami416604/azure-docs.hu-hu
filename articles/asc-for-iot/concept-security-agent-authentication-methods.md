@@ -2,24 +2,25 @@
 title: Hitelesítési módszerek az Azure Security Center az IoT-előzetes verzió |} A Microsoft Docs
 description: Ismerje meg az elérhető különböző hitelesítési módszereit IoT-szolgáltatás az Azure Security Center használata esetén.
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
-manager: barbkess
+manager: rkarlin
 editor: ''
 ms.assetid: 10b38f20-b755-48cc-8a88-69828c17a108
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: d1f9d77d1f87e8d201e2cb034401bb3cae14f41b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d5701ae37d64e25fba981cd85deed2c4e4d87a15
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58862913"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67618341"
 ---
 # <a name="security-agent-authentication-methods"></a>Biztonsági ügynök hitelesítési módszerek 
 

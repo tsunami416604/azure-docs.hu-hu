@@ -3,8 +3,8 @@ title: Az Azure Access Control Service (ACS) letiltott névterek újraaktiválá
 description: Megtudhatja, hogyan kereshet és engedélyezése az Azure Access Control Service (ACS) névteret, és láthatóan tartja őket engedélyezve van, amíg 2019. február 4. hosszabbítsa meg.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/21/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: jlu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 534c0463cd8aee9fccfa183586b946032dada722
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 1cb17109d53c6e08c8607959207e367086032f6d
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58094558"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482709"
 ---
 # <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>Útmutató: Letiltott Access Control Service-névterek újraaktiválása
 
@@ -102,7 +102,7 @@ További bővítmények már nem lesz automatikusan jóváhagyja. Ha áttelepít
     | **Probléma típusa** | `ACS to SAS Migration` |
     | **Tárgy** | A probléma leírása |
 
-   ![Új műszaki támogatási kérelem](./media/howto-reactivate-disabled-acs-namespaces/new-technical-support-request.png)
+   ![Új műszaki támogatási kérelem egy példát mutat be](./media/howto-reactivate-disabled-acs-namespaces/new-technical-support-request.png)
 
 <!--
 

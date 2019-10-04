@@ -1,5 +1,4 @@
 ---
-ms.assetid: ''
 title: Az Azure Key Vault helyreállítható törlés |} A Microsoft Docs
 ms.service: key-vault
 ms.topic: conceptual
@@ -7,12 +6,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: barbkess
 ms.date: 03/19/2019
-ms.openlocfilehash: f222b37e8ca6efcfe28146ee948511d887f547a4
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 330337620f1732b9ccecfb2c95a0b4495476f97b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339142"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64720526"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Az Azure Key Vault helyreállítható törlés áttekintése
 

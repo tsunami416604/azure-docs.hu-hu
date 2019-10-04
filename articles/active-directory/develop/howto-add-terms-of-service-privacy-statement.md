@@ -3,8 +3,8 @@ title: Az alkalmazások és az adatvédelmi nyilatkozat feltételeit |} Az Azure
 description: Ismerje meg, hogy hogyan konfigurálhat a regisztrált Azure AD használata az alkalmazások és az adatvédelmi nyilatkozat feltételeit.
 services: active-directory
 documentationcenter: dev-center-name
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
-ms.author: celested
+ms.date: 05/22/2019
+ms.author: ryanwi
 ms.reviwer: lenalepa, sureshja
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97728fa70f0c5f58510e0e68d27a379b20887703
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b0a01b50573405964b09339d03e84c62dbdd8582
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59500297"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482866"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>Útmutató: Az alkalmazás és az adatvédelmi nyilatkozat feltételeit konfigurálása
 
@@ -56,33 +56,20 @@ Példák: `https://myapp.com/terms-of-service` és `https://myapp.com/privacy-st
 
 Amikor készen áll a szolgáltatás és az adatvédelmi nyilatkozat feltételeit, adhat hozzá hivatkozásokat ezeket a dokumentumokat az alkalmazásban az alábbi módszerek egyikének használatával:
 
-* [Az Azure Portalon keresztül](#registered-in-azure-portal)
-* [Az alkalmazásregisztrációs portálon vagy a fejlesztői központ](#registered-in-app-reg-portal)
+* [Az Azure Portalon keresztül](#azure-portal)
 * [Az alkalmazás objektum JSON használatával](#app-object-json)
 * [Az MSGraph beta REST API használatával](#msgraph-beta-rest-api)
 
-### <a name="registered-in-azure-portal"></a>Ha regisztrálta az alkalmazást az Azure Portalon
-
-Ha regisztrálta az alkalmazást az Azure Portalon, kövesse az alábbi lépéseket.
+### <a name="azure-portal"></a>Az Azure portal használatával
+Kövesse az alábbi lépéseket az Azure Portalon.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Keresse meg a **Alkalmazásregisztrációk** szakaszt, és válassza ki az alkalmazást.
-3. Nyissa meg a **tulajdonságok** szakaszában.
+3. Nyissa meg a **Branding** ablaktáblán.
 4. Töltse ki a **feltételek az URL-címe** és **adatvédelmi nyilatkozatának URL-címe** mezőket.
 5. Mentse a módosításokat.
 
-    ![Alkalmazás Tulajdonságok szakaszában feltételeket és adatvédelmi nyilatkozat URL-címek](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
-
-### <a name="registered-in-app-reg-portal"></a>Ha regisztrálta az alkalmazást az alkalmazás regisztrációs portálon
-
-Ha alkalmazását az alkalmazásregisztrációs portálon vagy a fejlesztői központban regisztrált, kövesse az alábbi lépéseket.
-
-1. Jelentkezzen be a [alkalmazásregisztrációs portálon](https://apps.dev.microsoft.com/).
-2. Válassza ki az alkalmazást, és görgessen a **profil** szakaszban.
-3. Töltse ki a **feltételek az URL-címe** és **adatvédelmi nyilatkozatának URL-címe** mezőket.
-4. Mentse a módosításokat.
-
-    ![Alkalmazás profil szakaszában feltételeket és adatvédelmi nyilatkozat URL-címek](./media/howto-add-terms-of-service-privacy-statement/app-registration-portal-profile-terms-service-privacy-statement-urls.png)
+    ![Alkalmazás tulajdonságainak tartalmaz feltételeit és adatvédelmi nyilatkozat URL-címek](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
 
 ### <a name="app-object-json"></a>Az alkalmazás objektum JSON használatával
 

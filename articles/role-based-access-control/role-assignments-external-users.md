@@ -1,6 +1,6 @@
 ---
-title: A külső felhasználók számára az RBAC használatával Azure-erőforrásokhoz való hozzáférés kezelése |} A Microsoft Docs
-description: Ismerje meg, hogyan kezelheti az Azure-erőforrásokhoz való hozzáférést szerepköralapú hozzáférés-vezérlés (RBAC) használatával egy szervezeten kívüli felhasználók számára.
+title: Az Azure-erőforrásokhoz való hozzáférés kezelése külső vendég felhasználók számára a RBAC használatával | Microsoft Docs
+description: Ismerje meg, hogyan kezelheti az Azure-erőforrásokhoz való hozzáférést a szervezeten kívüli felhasználók számára a szerepköralapú hozzáférés-vezérlés (RBAC) használatával.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -12,123 +12,198 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 03/20/2018
+ms.date: 09/12/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 91548a4df4a77623978ea4bcb214b76427c026a6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 5ed9088bcc5776fe1fb0d09e6ae771adabb1b879
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58012023"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802688"
 ---
-# <a name="manage-access-to-azure-resources-for-external-users-using-rbac"></a>A külső felhasználók számára az RBAC használatával Azure-erőforrásokhoz való hozzáférés kezelése
+# <a name="manage-access-to-azure-resources-for-external-guest-users-using-rbac"></a>Az Azure-erőforrásokhoz való hozzáférés kezelése külső vendég felhasználók számára a RBAC használatával
 
-Szerepköralapú hozzáférés-vezérlés (RBAC) lehetővé teszi a nagy szervezetek számára, és az SMB-khez jobb biztonságkezelés külső közreműködők, a beszállítóknak meghatározott erőforrásoknak a környezetben, de nem feltétlenül a teljes hozzáférést igénylő freelancers használata infrastruktúra- vagy bármely számlázással kapcsolatos hatókörök. Az RBAC lehetővé teszi, hogy a rendszergazdai fiók (szolgáltatás-rendszergazda szerepkörrel előfizetés szintjén) által kezelt a rugalmas tulajdonos egy Azure-előfizetéssel, és több felhasználó meghívott egy előfizetésen belül, de bármilyen rendszergazdai jogosultságok nélkül működjenek .
+A szerepköralapú hozzáférés-vezérlés (RBAC) nagyobb biztonsági felügyeletet tesz lehetővé a nagyméretű szervezetek számára, valamint a kis-és közepes méretű vállalkozások számára, akik olyan külső közreműködők, szállítók vagy szabadúszók számára készültek, akiknek szükségük van a környezet adott erőforrásaihoz való hozzáférésre, de nem feltétlenül a teljes infrastruktúrára vagy a számlázással kapcsolatos hatókörökre vonatkozik. A [Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md) funkciói a külső vendég felhasználóival való együttműködéshez használhatók, és a RBAC használatával csak azokat az engedélyeket adhatja meg, amelyekre a vendég felhasználóknak szüksége van a környezetében.
 
-> [!NOTE]
-> Az Office 365-előfizetések vagy az Azure Active Directory-licencek (például: A Microsoft 365 felügyeleti központban nem megfelelőek az RBAC használatával üzembe helyezett Azure Active Directoryban való hozzáférés).
+## <a name="when-would-you-invite-guest-users"></a>Mikor hívja meg a vendég felhasználókat?
 
-## <a name="assign-rbac-roles-at-the-subscription-scope"></a>Rendeljen RBAC-szerepköröket egy előfizetésre
+Íme néhány példa arra, hogy a vendég felhasználóinak meghívása a szervezet számára, és engedélyek megadása:
 
-Ha az RBAC használja (de nem kizárólag), van két gyakori példa:
+- A projekthez tartozó Azure-erőforrásokhoz való hozzáféréshez csak egy e-mail-fiókkal rendelkező külső önálló szolgáltató engedélyezése.
+- Lehetővé teszi, hogy egy külső partner bizonyos erőforrásokat vagy teljes előfizetést kezeljen.
+- Lehetővé teszi, hogy a szervezeten kívüli támogatási mérnökök (például a Microsoft támogatási szolgálata) átmenetileg hozzáférjenek az Azure-erőforráshoz a hibák elhárítása érdekében.
 
-* Hogy a szervezetek a külső felhasználók (nem a rendszergazda felhasználó Azure Active Directory-bérlő része) meghívott bizonyos erőforrásokhoz, vagy a teljes előfizetés kezelése
-* A felhasználók a szervezet (részei a felhasználó Azure Active Directory-bérlő), de a különböző csapatok vagy csoportokat, amelyeknek az egyes erőforráscsoportokhoz vagy erőforrás-hatóköröket a környezetben vagy a teljes előfizetés részletes hozzáférés belüli használata
+## <a name="permission-differences-between-member-users-and-guest-users"></a>Jogosultsági különbségek a tagok és a vendég felhasználók között
 
-## <a name="grant-access-at-a-subscription-level-for-a-user-outside-of-azure-active-directory"></a>Hozzáférés engedélyezése egy előfizetési szinten egy felhasználó Azure Active Directoryn kívül
+A címtár (member Users) natív tagjai eltérő engedélyekkel rendelkeznek, mint a többi címtárból VÁLLALATKÖZI együttműködési vendégként (vendég felhasználók) meghívott felhasználók. A tagok felhasználója például szinte minden címtári információt beolvashat, amíg a vendég felhasználók korlátozott címtárbeli engedélyekkel rendelkeznek. További információ a tagok és a vendég felhasználókról: [Mik az alapértelmezett felhasználói engedélyek a Azure Active Directory-ben?](../active-directory/fundamentals/users-default-permissions.md).
 
-RBAC-szerepkörök kizárólag a kaphatnak **tulajdonosok** az előfizetés. Ezért a rendszergazdának kell bejelentkeznie, ezzel a szerepkörrel rendelkező felhasználóként előre hozzárendelt vagy az Azure-előfizetést hozott létre.
+## <a name="add-a-guest-user-to-your-directory"></a>Vendégfelhasználó hozzáadása a címtárhoz
 
-Az Azure Portalról után jelentkezzen be rendszergazdaként, válassza ki "az előfizetések", és válassza a kívántra.
-![az Azure portal előfizetés paneljén](./media/role-assignments-external-users/0.png) alapértelmezés szerint a rendszergazda felhasználó megvásárolta az Azure-előfizetéssel, ha a felhasználó fog megjelenni **Fiókadminisztrátor**, ez az előfizetés szerepkör alatt. Az Azure-előfizetési szerepkörökhöz kapcsolatos további információkért lásd: [hozzáadása vagy módosítása az Azure-előfizetés rendszergazdái](../billing/billing-add-change-azure-subscription-administrator.md).
+A következő lépésekkel adhat hozzá egy vendég felhasználót a címtárhoz a Azure Active Directory oldalon.
 
-Ebben a példában a felhasználó "alflanigan@outlook.com" van a **tulajdonos** az "ingyenes próbaverzió" előfizetést, az AAD bérlői "Alapértelmezett bérlőt Azure". Mivel ez a felhasználó kezdeti Microsoft Account "Outlook" az Azure-előfizetés létrehozója (a Microsoft Account = az Outlook, élő stb.) az alapértelmezett tartomány nevét, ezen a bérlőn hozzáadott összes többi felhasználó számára lesz **"\@ alflaniganuoutlook.onmicrosoft.com"**. A kialakításból fakadóan az új tartomány szintaxisa a következő bármik lehetnek, a felhasználó, aki létrehozta a bérlő nevét felhasználónevét és tartományát, és vegye fel a bővítmény megfelelő **". onmicrosoft.com"**.
-Ezenkívül felhasználók is után kell bejelentkeznie a bérlőben lévő egyéni tartománynév hozzáadása és ellenőrzi az új bérlőhöz. Az Azure Active Directory-bérlő egyéni tartománynév ellenőrzése További információkért lásd: [egyéni tartománynév hozzáadása a címtárhoz](../active-directory/fundamentals/add-custom-domain.md).
+1. Győződjön meg arról, hogy a szervezet külső együttműködési beállításai úgy vannak konfigurálva, hogy Ön is meghívja vendégeit. További információkért tekintse meg a [külső B2B-együttműködés engedélyezése és a vendégek meghívására alkalmas személyek kezelése](../active-directory/b2b/delegate-invitations.md)című témakört.
 
-Ebben a példában a "Alapértelmezett bérlőt Azure" könyvtárban található csak azok a felhasználók, a tartomány nevét "\@alflanigan.onmicrosoft.com".
+1. A Azure Portal kattintson **Azure Active Directory** > **felhasználók** > **új vendég felhasználó**elemre.
 
-Az előfizetés kiválasztása után a rendszergazda felhasználónak kell kattintson **hozzáférés-vezérlés (IAM)** , majd **adjon hozzá egy új szerepkör**.
+    ![Új vendég felhasználói szolgáltatás a Azure Portal](./media/role-assignments-external-users/invite-guest-user.png)
 
-![hozzáférés-vezérlés IAM szolgáltatás az Azure Portalon](./media/role-assignments-external-users/1.png)
+1. Kövesse a lépéseket egy új vendég felhasználó hozzáadásához. További információ: [Azure Active Directory B2B együttműködéssel rendelkező felhasználók hozzáadása a Azure Portal](../active-directory/b2b/add-users-administrator.md#add-guest-users-to-the-directory).
 
-![Új felhasználó hozzáadása a hozzáférés-vezérlés IAM szolgáltatás az Azure Portalon](./media/role-assignments-external-users/2.png)
+Miután hozzáadta a vendég felhasználót a címtárhoz, elküldheti a vendég felhasználó közvetlen hivatkozását egy megosztott alkalmazásra, vagy a vendég felhasználó a meghívót tartalmazó e-mailben a beváltási URL-címre is kattinthat.
 
-A következő lépés, hogy válassza ki a szerepkör hozzárendelését és a felhasználó, akinek az RBAC-szerepkört rendel. Az a **szerepkör** legördülő menüben a rendszergazda felhasználó látja csak a beépített RBAC-szerepkör, amely elérhető az Azure-ban. További részletes magyarázatát minden szerepkör és a hozzárendelhető hatókörökkel,: [beépített szerepkörök az Azure-erőforrások](built-in-roles.md).
+![Vendég felhasználó meghívó e-mail-címe](./media/role-assignments-external-users/invite-email.png)
 
-A rendszergazdai felhasználót kell majd adja hozzá a külső felhasználó e-mail-címét. A várt működése a külső felhasználó számára nem jelenik meg a meglévő bérlőhöz. Után a külső felhasználó kapott meghívót, ő lesz látható a **előfizetések > hozzáférés-vezérlés (IAM)** az összes aktuális felhasználóval, amely már hozzá vannak rendelve az RBAC-szerepkör az előfizetések szintjén.
+Ahhoz, hogy a vendég felhasználó hozzáférhessen a címtárhoz, el kell végeznie a meghívás folyamatát.
 
-![engedélyek hozzáadása új RBAC-szerepkör](./media/role-assignments-external-users/3.png)
+![Vendég felhasználói meghívás-felülvizsgálati engedélyek](./media/role-assignments-external-users/invite-review-permissions.png)
 
-![előfizetési szinten RBAC-szerepkörök listája](./media/role-assignments-external-users/4.png)
+További információ a Meghívási folyamatról: [Azure Active Directory B2B együttműködés meghívásának beváltása](../active-directory/b2b/redemption-experience.md).
 
-A felhasználó "chessercarlton@gmail.com" kell kapott meghívót egy **tulajdonos** az "Ingyenes próbaverzió" előfizetéshez. A meghívó küldése, után a külső felhasználót egy aktiválási hivatkozás egy megerősítő e-mailt kapja.
-![e-mailben kapott RBAC szerepkör](./media/role-assignments-external-users/5.png)
+## <a name="grant-access-to-a-guest-user"></a>Hozzáférés biztosítása vendég felhasználó számára
 
-Folyamatban van a szervezeten kívüli, az új felhasználó nincs meglévő attribútumokat a címtárban "Alapértelmezett bérlőt Azure". Ezek létrehozása után a külső felhasználó hozzájárult rögzítsen a rendszer a címtárban, az előfizetéshez társított rendelt szerepkör.
+A RBAC a hozzáférés biztosításához rendeljen hozzá egy szerepkört. Ha hozzáférést szeretne biztosítani egy vendég felhasználóhoz, [ugyanazokat a lépéseket](role-assignments-portal.md#add-a-role-assignment) kell követnie, mint a felhasználó, a csoport, az egyszerű szolgáltatásnév vagy a felügyelt identitás esetében. Kövesse az alábbi lépéseket, ha hozzáférést szeretne biztosítani egy vendég felhasználóhoz különböző hatókörökben.
 
-![meghívó e-mailt az RBAC-szerepkör](./media/role-assignments-external-users/6.png)
+1. Az Azure Portalon kattintson a **Minden szolgáltatás** lehetőségre.
 
-A külső felhasználó azt mutatja be az Azure Active Directory-bérlő mostantól külső felhasználóként, és ez az Azure Portalon is megtekinthetők.
+1.  Válassza ki azon erőforrások készletét, amelyekre a hozzáférés vonatkozik, más néven hatókör. Kiválaszthatja például a **felügyeleti csoportokat**, **előfizetéseket**, **erőforráscsoportokat**vagy egy erőforrást.
 
-![felhasználók panel az azure active Directoryval az Azure portal](./media/role-assignments-external-users/7.png)
+1. Kattintson az adott erőforrásra.
 
-Az a **felhasználók** megtekintése, a külső felhasználók felismeri a különböző ikontípust, az Azure Portalon.
+1. Kattintson a **hozzáférés-vezérlés (IAM)** .
 
-Azonban megadásának **tulajdonosa** vagy **közreműködői** , külső felhasználó a hozzáférést a **előfizetés** hatókörét, nem engedélyezi a hozzáférést a rendszergazdai felhasználót a címtárban, kivéve, ha a **Globális rendszergazdai** lehetővé teszi ezt. A felhasználó képernyőhöz a **felhasználótípus**, két általános paramétert, amelynek **tag** és **vendég** azonosíthatók. Egy tag egy felhasználó regisztrált a címtárban a címtár egy külső forrásból meghívott felhasználó pedig a vendég nem. További információkért lásd: [hogyan Azure Active Directory-rendszergazdák hozzá B2B együttműködési felhasználókat](../active-directory/active-directory-b2b-admin-add-users.md).
+    Az alábbi képernyőfelvételen az erőforráscsoport hozzáférés-vezérlés (IAM) paneljén látható egy példa. Ha itt bármilyen hozzáférés-vezérlési változást hajt végre, az csak az erőforráscsoporthoz fog vonatkozni.
 
-> [!NOTE]
-> Győződjön meg arról, hogy miután megadta a hitelesítő adatait a portálon, a külső felhasználó kiválasztja a megfelelő címtárba való bejelentkezéshez. Ugyanaz a felhasználó így is rendelkezik több címtár hozzáféréssel és is egyikét őket az Azure Portal jobb felső felhasználónév kattintva válassza ki, és a legördülő listából válassza ki a megfelelő könyvtárra.
+    ![Egy erőforráscsoport hozzáférés-vezérlés (IAM) panelje](./media/role-assignments-external-users/access-control-resource-group.png)
 
-Ugyanakkor a Vendég a címtárban, a külső felhasználó kezelheti az Azure-előfizetéshez tartozó összes erőforrást, de a könyvtár nem hozzáférhető.
+1. A **szerepkör-hozzárendelések** lapra kattintva megtekintheti az összes szerepkör-hozzárendelést ezen a hatókörön.
 
-![az azure active Directoryval az Azure Portalra korlátozott hozzáférés](./media/role-assignments-external-users/9.png)
+1. Kattintson a szerepkör-hozzárendelés hozzáadása lehetőségre a szerepkör-hozzárendelés hozzáadása ablaktábla megnyitásához. > 
 
-Az Azure Active Directory és az Azure-előfizetés nem rendelkezik a szülő-gyermek kapcsolat például a más Azure-erőforrások (például: virtuális gépek, virtuális hálózatok, webalkalmazások, tárolás stb.) az Azure-előfizetéssel rendelkezik. Minden az utóbbi létrehozott, felügyelt, és egy Azure-előfizetéshez számlázzuk, míg a egy Azure-előfizetést egy Azure-címtárhoz a hozzáférés kezelésére szolgál. További információkért lásd: [módját az Azure-előfizetések kapcsolata az Azure AD](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
+    Ha nem rendelkezik jogosultsággal a szerepkörök hozzárendeléséhez, a szerepkör-hozzárendelés hozzáadása lehetőség le lesz tiltva.
 
-Az összes a beépített RBAC-szerepkörök **tulajdonosa** és **közreműködői** kínálnak a teljes felügyeleti erőforrásokhoz való teljes hozzáférés a környezetben, a különbség az, hogy egy munkatárs nem hozható létre, és új RBAC-szerepkörök törlése . A beépített szerepkörök, például **virtuális gépek Közreműködője** csak az erőforrásokat, függetlenül attól, hogy a név által jelzett összes felügyeleti hozzáférést nyújtanak a **erőforráscsoport** az éppen létrehozott.
+    ![Menü hozzáadása](./media/role-assignments-external-users/add-menu.png)
 
-A beépített RBAC-szerepkör-hozzárendelés **virtuális gépek Közreműködője** előfizetés szintjén, azt jelenti, hogy a felhasználó a szerepkörrel:
+1. A **Szerepkör** legördülő listájában válasszon ki egy szerepkört, például a **Virtuális gépek közreműködője** szerepkört.
 
-* Megtekintheti az összes virtuális gép függetlenül attól, hogy azok telepítési dátumát és az erőforráscsoportok részei
-* A virtuális gépek teljes felügyeleti hozzáféréssel rendelkezik az előfizetés
-* Bármilyen más típusú erőforrásokat nem tekintheti meg az előfizetés
-* Nem működik, számlázási szempontból a módosításokat
+1. A **Select (kiválasztás** ) listából válassza ki a vendég felhasználót. Ha nem látja a felhasználót a listában, beírhatja a **kijelölés** szövegmezőbe a megjelenítendő nevek, e-mail-címek és objektumazonosítók kereséséhez.
 
-## <a name="assign-a-built-in-rbac-role-to-an-external-user"></a>Beépített RBAC szerepkör hozzárendelése a külső felhasználó
+   ![Szerepkör-hozzárendelési ablaktábla hozzáadása](./media/role-assignments-external-users/add-role-assignment.png)
 
-Az ebben a tesztben a külső felhasználók más-más forgatókönyvet "alflanigan@gmail.com" kerülnek be egy **virtuális gépek Közreműködője**.
+1. Kattintson a **Mentés** gombra a szerepkör a kiválasztott hatókörhöz való hozzárendeléséhez.
 
-![virtuális gép közreműködő beépített szerepkört](./media/role-assignments-external-users/11.png)
+    ![Szerepkör-hozzárendelés a virtuális gép közreműködői számára](./media/role-assignments-external-users/access-control-role-assignments.png)
 
-A külső felhasználó a beépített szerepkörrel rendelkező normál viselkedését, hogy megjelenítheti és kezelheti a csak a virtuális gépek és azok szomszédos erőforrás-kezelő csak szükséges erőforrások üzembe helyezése során. A kialakításból fakadóan ezen korlátozott szerepkörök ajánlat csak a hozzáférést az Azure Portalon létrehozott levelező erőforrásaikat.
+## <a name="grant-access-to-a-guest-user-not-yet-in-your-directory"></a>Hozzáférés biztosítása egy vendég felhasználó számára még nem a címtárban
 
-![virtuális gép közreműködő szerepkör áttekintése az Azure Portalon](./media/role-assignments-external-users/12.png)
+A RBAC a hozzáférés biztosításához rendeljen hozzá egy szerepkört. Ha hozzáférést szeretne biztosítani egy vendég felhasználóhoz, [ugyanazokat a lépéseket](role-assignments-portal.md#add-a-role-assignment) kell követnie, mint a felhasználó, a csoport, az egyszerű szolgáltatásnév vagy a felügyelt identitás esetében.
 
-## <a name="grant-access-at-a-subscription-level-for-a-user-in-the-same-directory"></a>Hozzáférés engedélyezése egy előfizetési szinten egy felhasználó ugyanabban a címtárban
+Ha a vendég felhasználó még nem szerepel a címtárban, a felhasználót közvetlenül a szerepkör-hozzárendelés hozzáadása panelen hívhatja meg.
 
-A folyamat megegyezik a külső felhasználók hozzáadása, biztosítása az RBAC-szerepkör, valamint a felhasználó rendszergazdai szempontjából egyaránt hozzáférést megkapják a szerepkörhöz. A különbség az, hogy a meghívott felhasználó nem fog kapni minden e-mailben meghívást, a bejelentkezés után az előfizetésen belüli összes erőforrás hatókör az irányítópult elérhető lesz.
+1. Az Azure Portalon kattintson a **Minden szolgáltatás** lehetőségre.
 
-## <a name="assign-rbac-roles-at-the-resource-group-scope"></a>Rendeljen RBAC-szerepköröket az erőforrás-csoport hatóköre:
+1.  Válassza ki azon erőforrások készletét, amelyekre a hozzáférés vonatkozik, más néven hatókör. Kiválaszthatja például a **felügyeleti csoportokat**, **előfizetéseket**, **erőforráscsoportokat**vagy egy erőforrást.
 
-Az RBAC szerepkör hozzárendelése egy **erőforráscsoport** hatókör van egy azonos folyamat hozzárendeléséhez a szerepkört az előfizetés szintjén mindkét típusú felhasználók – külső vagy belső (ugyanabban a címtárban része). A felhasználók, az RBAC-szerepkör, hogy tekintse meg a környezetben csak az erőforráscsoportot, van hozzájuk rendelve a hozzáférés a **erőforráscsoportok** ikonra az Azure Portalon.
+1. Kattintson az adott erőforrásra.
 
-## <a name="assign-rbac-roles-at-the-resource-scope"></a>Rendeljen RBAC-szerepköröket az erőforrás-hatókörben
+1. Kattintson a **hozzáférés-vezérlés (IAM)** .
 
-Egy erőforrás hatókörre az Azure-beli RBAC szerepkör hozzárendelése van egy azonos folyamat hozzárendeléséhez a szerepkört az előfizetés szintjén vagy az erőforráscsoport szintjén, a következő ugyanabban a munkafolyamatban mindkét forgatókönyvet támogatja. Újra, a felhasználók, az RBAC-szerepkör csak akkor lett hozzárendelve hozzáférés vagy a cikkek látható a **összes erőforrás** lapján vagy közvetlenül az irányítópulton.
+1. A **szerepkör-hozzárendelések** lapra kattintva megtekintheti az összes szerepkör-hozzárendelést ezen a hatókörön.
 
-Fontos elemét alkotják a RBAC egyaránt csoporthatókör erőforrás vagy erőforráscsoport hatókörrel van, ügyeljen arra, hogy jelentkezzen be a megfelelő címtárba, hogy a felhasználók számára.
+1. Kattintson a szerepkör-hozzárendelés hozzáadása lehetőségre a szerepkör-hozzárendelés hozzáadása ablaktábla megnyitásához. > 
 
-![Directory-bejelentkezés az Azure Portalon](./media/role-assignments-external-users/13.png)
+    ![Menü hozzáadása](./media/role-assignments-external-users/add-menu.png)
 
-## <a name="assign-rbac-roles-for-an-azure-active-directory-group"></a>Rendeljen RBAC-szerepköröket egy Azure Active Directory-csoport
+1. A **Szerepkör** legördülő listájában válasszon ki egy szerepkört, például a **Virtuális gépek közreműködője** szerepkört.
 
-Az RBAC használatával, az Azure-ban három különböző hatókör összes forgatókönyv kínálnak a jogosultság felügyelete, üzembe helyezésének és különböző erőforrások felügyelete a hozzárendelt felhasználók nincs szükség személyes előfizetés kezelése. Függetlenül az RBAC-szerepkör az olyan előfizetés, erőforráscsoport vagy erőforrás hatókör van hozzárendelve, a hozzárendelt felhasználók a további létrehozott összes erőforrást számlázzuk, ahol a felhasználók férhetnek hozzá egy Azure-előfizetéshez. Ezzel a módszerrel számlázási a teljes Azure-előfizetés rendszergazdai engedélyekkel rendelkező felhasználók rendelkezik teljes áttekintése a használat, függetlenül attól, hogy az erőforrások kezelését.
+1. A **Select (kiválasztás** ) listán írja be annak a személynek az e-mail-címét, akit meg szeretne hívni, és válassza ki az adott személyt.
 
-A nagyobb vállalatok számára az Azure Active Directory-csoportokat a mérlegeli, hogy a rendszergazdai felhasználó hozzáférést szeretne biztosítani a részletes csapatoknál vagy részlegeknél teljes, nem külön-külön minden felhasználó számára, így a mérlegeli szempontjából azonos módon alkalmazható RBAC-szerepkörök Ez rendkívül idő- és felügyeleti hatékony beállítás. Ez a példa szemléltetéséhez a **közreműködői** szerepkör van adva egy csoporthoz a bérlő az előfizetés szintjén.
+   ![Vendég felhasználó meghívása a szerepkör-hozzárendelés hozzáadása panelen](./media/role-assignments-external-users/add-role-assignment-new-guest.png)
 
-![AAD-csoportokat az RBAC-szerepkör hozzáadása](./media/role-assignments-external-users/14.png)
+1. A **Mentés** gombra kattintva adja hozzá a vendég felhasználót a címtárhoz, rendeljen hozzá egy szerepkört, és küldjön egy meghívást.
 
-Ezek a csoportok biztonsági csoportokat, amelyek kiépített és felügyelt csak az Azure Active Directoryn belüli.
+    Néhány pillanat elteltével megjelenik a szerepkör-hozzárendelésről és a meghívásról szóló információ.
 
+    ![Szerepkör-hozzárendelés és meghívott felhasználói értesítés](./media/role-assignments-external-users/invited-user-notification.png)
+
+1. A vendég felhasználó manuális meghívásához kattintson a jobb gombbal, és másolja a Meghívási hivatkozást az értesítésbe. Ne kattintson a meghívás hivatkozásra, mert elindítja a Meghívási folyamatot.
+
+    A meghívó hivatkozás formátuma a következő lesz:
+
+    `https://invitations.microsoft.com/redeem/...`
+
+1. Küldje el a Meghívási hivatkozást a vendég felhasználónak a meghívás folyamatának befejezéséhez.
+
+    További információ a Meghívási folyamatról: [Azure Active Directory B2B együttműködés meghívásának beváltása](../active-directory/b2b/redemption-experience.md).
+
+## <a name="remove-a-guest-user-from-your-directory"></a>Vendég felhasználó eltávolítása a címtárból
+
+Mielőtt eltávolít egy vendég felhasználót egy címtárból, először el kell távolítania a szerepkör-hozzárendeléseket a vendég felhasználó számára. Az alábbi lépéseket követve távolíthatja el a vendég felhasználót egy címtárból.
+
+1. Nyissa meg a **hozzáférés-vezérlést (iam)** egy hatókörön, például a felügyeleti csoport, az előfizetés, az erőforráscsoport vagy az erőforrás területen, ahol a vendég felhasználó szerepkör-hozzárendeléssel rendelkezik.
+
+1. Kattintson a **szerepkör-hozzárendelések** lapra az összes szerepkör-hozzárendelés megtekintéséhez.
+
+1. A szerepkör-hozzárendelések listájában vegyen fel egy pipát a vendég felhasználó mellett az eltávolítani kívánt szerepkör-hozzárendeléssel.
+
+   ![Szerepkör-hozzárendelés eltávolítása](./media/role-assignments-external-users/remove-role-assignment-select.png)
+
+1. Kattintson az **Eltávolítás**gombra.
+
+   ![Szerepkör-hozzárendelés eltávolítási üzenete](./media/role-assignments-external-users/remove-role-assignment.png)
+
+1. A megjelenő szerepkör-hozzárendelés eltávolítása üzenetben kattintson az **Igen**gombra.
+
+1. A bal oldali navigációs sávon kattintson **Azure Active Directory** > **felhasználók**elemre.
+
+1. Kattintson az eltávolítani kívánt vendég felhasználóra.
+
+1. Kattintson a **Törlés** gombra.
+
+   ![Vendég felhasználó törlése](./media/role-assignments-external-users/delete-guest-user.png)
+
+1. A megjelenő törlési üzenetben kattintson az **Igen**gombra.
+
+## <a name="troubleshoot"></a>Hibaelhárítás
+
+### <a name="guest-user-cannot-browse-the-directory"></a>A vendég felhasználó nem tallózhat a címtárban
+
+A vendég felhasználók korlátozott címtárbeli engedélyekkel rendelkeznek. A vendég felhasználók például nem tallózhatnak a címtárban, és nem kereshetnek csoportokat vagy alkalmazásokat. További információ: [Mik az alapértelmezett felhasználói engedélyek a Azure Active Directory-ben?](../active-directory/fundamentals/users-default-permissions.md).
+
+![A vendég felhasználó nem tallózhat a címtárban lévő felhasználók között](./media/role-assignments-external-users/directory-no-users.png)
+
+Ha egy vendég felhasználónak további jogosultságokra van szüksége a címtárban, hozzárendelhet egy címtárbeli szerepkört a vendég felhasználóhoz. Ha szeretné, hogy a vendég felhasználó teljes olvasási hozzáféréssel rendelkezzen a címtárhoz, hozzáadhatja a vendég felhasználót az Azure AD [címtár-olvasói](../active-directory/users-groups-roles/directory-assign-admin-roles.md) szerepköréhez. További információkért lásd: [engedélyek megadása a Azure Active Directory bérlőben található partnerszervezetek felhasználói számára](../active-directory/b2b/add-guest-to-role.md).
+
+![Directory-olvasók szerepkörének kiosztása](./media/role-assignments-external-users/directory-roles.png)
+
+### <a name="guest-user-cannot-browse-users-groups-or-service-principals-to-assign-roles"></a>A vendég felhasználó nem tallózhat a felhasználók, csoportok vagy egyszerű szolgáltatások között a szerepkörök hozzárendeléséhez
+
+A vendég felhasználók korlátozott címtárbeli engedélyekkel rendelkeznek. Akkor is, ha a vendég felhasználó egy hatókör [tulajdonosa](built-in-roles.md#owner) , ha olyan szerepkör-hozzárendelést próbálnak létrehozni, amely hozzáférést biztosít valaki másnak, nem tallózhatják a felhasználók, csoportok vagy egyszerű szolgáltatások listáját.
+
+![A vendég felhasználó nem tallózhat a rendszerbiztonsági tag számára szerepkörök hozzárendeléséhez](./media/role-assignments-external-users/directory-no-browse.png)
+
+Ha a vendég felhasználó tudja, hogy valaki pontosan bejelentkezik a címtárba, hozzáférést biztosíthat. Ha szeretné, hogy a vendég felhasználó teljes olvasási hozzáféréssel rendelkezzen a címtárhoz, hozzáadhatja a vendég felhasználót az Azure AD [címtár-olvasói](../active-directory/users-groups-roles/directory-assign-admin-roles.md) szerepköréhez. További információkért lásd: [engedélyek megadása a Azure Active Directory bérlőben található partnerszervezetek felhasználói számára](../active-directory/b2b/add-guest-to-role.md).
+
+### <a name="guest-user-cannot-register-applications-or-create-service-principals"></a>A vendég felhasználó nem regisztrálhat alkalmazásokat, és nem hozhat létre egyszerű szolgáltatásokat
+
+A vendég felhasználók korlátozott címtárbeli engedélyekkel rendelkeznek. Ha egy vendég felhasználónak képesnek kell lennie az alkalmazások regisztrálására vagy egyszerű szolgáltatásnév létrehozására, a vendég felhasználót hozzáadhatja az [alkalmazás fejlesztői](../active-directory/users-groups-roles/directory-assign-admin-roles.md) szerepköréhez az Azure ad-ben. További információkért lásd: [engedélyek megadása a Azure Active Directory bérlőben található partnerszervezetek felhasználói számára](../active-directory/b2b/add-guest-to-role.md).
+
+![A vendég felhasználó nem tud regisztrálni alkalmazásokat](./media/role-assignments-external-users/directory-access-denied.png)
+
+### <a name="guest-user-does-not-see-the-new-directory"></a>A vendég felhasználó nem látja az új könyvtárat
+
+Ha a vendég felhasználó hozzáférést kapott egy címtárhoz, de nem látja a Azure Portalban felsorolt új könyvtárat, amikor megpróbálnak váltani a **címtár + előfizetés** ablaktáblán, győződjön meg arról, hogy a vendég felhasználó befejezte a Meghívási folyamatot. További információ a Meghívási folyamatról: [Azure Active Directory B2B együttműködés meghívásának beváltása](../active-directory/b2b/redemption-experience.md).
+
+### <a name="guest-user-does-not-see-resources"></a>A vendég felhasználó nem látja az erőforrásokat
+
+Ha a vendég felhasználó hozzáférést kapott egy címtárhoz, de nem látja azokat az erőforrásokat, amelyekhez hozzáférést kapott a Azure Portal, győződjön meg arról, hogy a vendég felhasználó a megfelelő könyvtárat választotta. Előfordulhat, hogy A vendég felhasználó több könyvtárat is elérhet. A címtárak váltásához kattintson a bal felső sarokban található **könyvtár + előfizetés**elemre, majd kattintson a megfelelő könyvtárra.
+
+![Könyvtárak és előfizetések panel a Azure Portal](./media/role-assignments-external-users/directory-subscription.png)
+
+## <a name="next-steps"></a>További lépések
+
+- [Azure Active Directory B2B együttműködés felhasználók hozzáadása az Azure Portalon](../active-directory/b2b/add-users-administrator.md)
+- [Egy Azure Active Directory B2B csoportmunka-felhasználó tulajdonságai](../active-directory/b2b/user-properties.md)
+- [A B2B együttműködés meghívójának e-mail-Azure Active Directory elemei](../active-directory/b2b/invitation-email-elements.md)
+- [Vendég felhasználó hozzáadása társ-rendszergazdaként](classic-administrators.md#adding-a-guest-user-as-a-co-administrator)

@@ -1,133 +1,131 @@
 ---
-title: Tartalom elszigetelése egyetlen szolgáltatásban – Azure Search a több-bérlős modellezés
-description: További információ a gyakori tervezési minták több-bérlős SaaS-alkalmazások Azure Search használata során.
-manager: jlembicz
+title: Bérlős modellezése egy szolgáltatásbeli tartalom elkülönítéséhez – Azure Search
+description: Ismerje meg a több-bérlős SaaS-alkalmazások általános kialakítási mintáit Azure Search használata közben.
+manager: nitinme
 author: LiamCavanagh
 services: search
 ms.service: search
-ms.devlang: NA
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: liamca
-ms.custom: seodec2018
-ms.openlocfilehash: 58d7ca65a14f9f774b19796c9beae2a7c84102ad
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 8b7538da41241f005298537c2969e5fce72b3c38
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632925"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70182230"
 ---
-# <a name="design-patterns-for-multitenant-saas-applications-and-azure-search"></a>Tervezési minták több-bérlős SaaS-alkalmazások és az Azure Search az
-Egy több-bérlős alkalmazás, amelyik azonos szolgáltatásokat és képességeket biztosít a bérlők számára, akik nem látható, vagy ossza meg az adatokat semmilyen más bérlővel, tetszőleges számú. Ez a dokumentum ismerteti a bérlő elkülönítési stratégiák az Azure Search-alapú több-bérlős alkalmazásokhoz.
+# <a name="design-patterns-for-multitenant-saas-applications-and-azure-search"></a>Tervezési minták több-bérlős SaaS-alkalmazásokhoz és Azure Search
+Egy több-bérlős alkalmazás az egyik, amely ugyanazokat a szolgáltatásokat és képességeket biztosítja a bérlők számára, akik nem láthatják és nem oszthatják meg más bérlők információit. Ez a dokumentum a Azure Search-vel létrehozott több-bérlős alkalmazások bérlői elkülönítési stratégiáit tárgyalja.
 
-## <a name="azure-search-concepts"></a>Az Azure Search-fogalmak
-Azure Search keresési--szolgáltatásként megoldás, lehetővé teszi a segítségével a fejlesztők sokoldalú keresési funkciókkal bővíthetik az alkalmazások bármely-infrastruktúra kezelésére, és láthatja az információk kiolvasásához nélkül. Adatok feltöltődtek a szolgáltatásra és a felhőben tárolja. Egyszerű kérelmek Azure Search API használata esetén az adatok ezután módosíthatók és keres. A szolgáltatás áttekintése található [Ez a cikk](https://aka.ms/whatisazsearch). Tervezési minták ismertetése, előtt fontos fontos tudni, hogy néhány olyan fogalmat, az Azure Search szolgáltatásban.
+## <a name="azure-search-concepts"></a>Azure Search fogalmak
+A szolgáltatásként nyújtott keresési megoldás lehetővé teszi Azure Search, hogy a fejlesztők gazdag keresési funkciókat adjanak az alkalmazásokhoz anélkül, hogy bármilyen infrastruktúrát kellene kezelniük, vagy az adatok lekérése nélkül kellene foglalkoznia. A szolgáltatás feltölti az adattárat, majd a felhőben tárolja azokat. A Azure Search API-hoz egyszerű kérelmeket használva az adatai módosíthatók és kereshetők. A szolgáltatás áttekintése [ebben a cikkben](https://aka.ms/whatisazsearch)található. A tervezési minták megtárgyalása előtt fontos megérteni, hogy milyen fogalmakat Azure Search.
 
 ### <a name="search-services-indexes-fields-and-documents"></a>Szolgáltatások, indexek, mezők és dokumentumok keresése
-Azure Search használata esetén az egyik feliratkozik egy *keresési szolgáltatás*. Adatfeltöltés az Azure Search, kerülnek a egy *index* a keresési szolgáltatásban. Indexek egyetlen szolgáltatáson belül számos lehet. A jól ismert fogalmakat,-adatbázisok használatához a közben az indexek a szolgáltatáson belül is lehet likened adatbázisban lévő táblák adatbázishoz a keresési szolgáltatás is likened.
+Azure Search használatakor az egyik a *keresési szolgáltatásra*van előfizetve. Az adatAzure Searchba való feltöltéskor a rendszer a keresési szolgáltatás egy indexében tárolja azt. Egy szolgáltatáson belül több index is lehet. Az adatbázisok ismerős fogalmait használva a keresési szolgáltatás egy adatbázishoz hasonlítható, míg a szolgáltatásban lévő indexek az adatbázisban lévő táblákhoz is hasonlóvá lehetnek.
 
-Minden egyes index belül egy keresési szolgáltatás rendelkezik a saját sémáját, testre szabható számos által definiált *mezők*. Azure Search-index, az egyéni űrlap az adatok bekerülnek *dokumentumok*. Minden egyes dokumentum adott index fel kell tölteni, és adott indexsémát el kell férnie. Ha adatokat az Azure Search használatával keres, a teljes szöveges keresési lekérdezések egy adott index vannak állították.  Hasonlítsa össze ezeket a fogalmakat és az érintett adatbázis, mezők is likened, a táblázatban levő oszlopkészleteket, és a dokumentumok is likened, sorokra.
+A keresési szolgáltatásban található minden egyes index saját sémával rendelkezik, amelyet számos testreszabható *mező*határoz meg. Az adatmennyiséget külön *dokumentumok*formájában adja hozzá a rendszer egy Azure Search indexhez. Minden dokumentumot fel kell tölteni egy adott indexbe, és hozzá kell férnie az index sémájának. Amikor Azure Search használatával keres adatokat, a teljes szöveges keresési lekérdezések egy adott indexre lesznek kibocsátva.  Ha össze szeretné hasonlítani ezeket a fogalmakat egy adatbázishoz, a mezőket a táblázat oszlopaihoz lehet hasonlítani, és a dokumentumok a sorokhoz is összehasonlíthatók.
 
 ### <a name="scalability"></a>Méretezhetőség
-Minden olyan Azure Search szolgáltatásra a szabványos [tarifacsomag](https://azure.microsoft.com/pricing/details/search/) két dimenzióban méretezheti: tárolás és rendelkezésre állás.
+A standard szintű díjszabásban Azure Search [](https://azure.microsoft.com/pricing/details/search/) szolgáltatások két dimenzióban méretezhetők: tárterület és rendelkezésre állás.
 
-* *A partíciók* növelni a keresési szolgáltatás tárolására is hozzáadhatók.
-* *Replikák* növelhető a kérések a search service képes kezelni egy szolgáltatás lehet hozzáadni.
+* A partíciók hozzáadhatók a keresési szolgáltatás tárterületének növeléséhez.
+* A replikák hozzáadhatók a szolgáltatásokhoz, így növelhetik a keresési szolgáltatás által kezelhető kérelmek átviteli sebességét.
 
-Partíciók és a replikán hozzáadása és eltávolítása lehetővé teszi a kapacitás, a keresési szolgáltatásnak az adatok mennyisége növekszik és a forgalom az alkalmazások számára. Ahhoz, hogy egy keresési szolgáltatás egy olvasási eléréséhez [SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/), két replika van szükség. Ahhoz, hogy egy szolgáltatás eléréséhez egy olvasási és írási [SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/), három replika van szükség.
+A partíciók és replikák hozzáadásával és eltávolításával lehetővé válik a keresési szolgáltatás kapacitása, hogy az adatok mennyisége és az alkalmazás által igényelt forgalom növekedni fog. Ahhoz, hogy egy keresési szolgáltatás elér egy olvasási [SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/)-t, két replikára van szükség. Ahhoz, hogy egy szolgáltatás olvasási és írási [SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/)-t érjen el, három replikára van szükség.
 
-### <a name="service-and-index-limits-in-azure-search"></a>Az Azure Search szolgáltatás és az index korlátok
-Van néhány másik [tarifacsomagok](https://azure.microsoft.com/pricing/details/search/) az Azure Search szolgáltatásban a rétegek mindegyike rendelkezik másik [korlátok és kvóták](search-limits-quotas-capacity.md). Ezek a korlátozások némelyike a szolgáltatási szintű, az index szintjén néhány és néhány, a partíció-szinten.
+### <a name="service-and-index-limits-in-azure-search"></a>A szolgáltatás és az index korlátai a Azure Search
+Azure Search különböző [díjszabási szintjei](https://azure.microsoft.com/pricing/details/search/) vannak, a rétegek mindegyike különböző [korlátozásokkal és kvótákkal](search-limits-quotas-capacity.md)rendelkezik. A korlátozások némelyike a szolgáltatás szintjén van, néhány pedig az index szintjén, néhány pedig a partíció szintjén.
 
-|  | Alapszintű | Standard1 | Standard (2) | Standard (3) | Standard3 HD |
+|  | Alapszintű | Standard1 | Standard2 | Standard3 | Standard3 HD |
 | --- | --- | --- | --- | --- | --- |
-| Maximális replikák szolgáltatásonként |3 |12 |12 |12 |12 |
-| Maximális partíciók szolgáltatásonként |1 |12 |12 |12 |3 |
-| Maximális keresési egységekre (replikák * partíciók) szolgáltatásonként |3 |36 |36 |36 |36 (legfeljebb 3 partíció) |
-| Maximális tárhely szolgáltatásonként |2 GB |300 GB |1,2 TB |2,4 TB |600 GB |
-| Maximális tárterület partíciónként |2 GB |25 GB |100 GB |200 GB |200 GB |
-| Indexek maximális száma szolgáltatásonként |5 |50 |200 |200 |3000 (maximum 1000 indexek/partíció) |
+| Replikák maximális száma szolgáltatás szerint |3 |12 |12 |12 |12 |
+| Partíciók maximális száma szolgáltatás szerint |1 |12 |12 |12 |3 |
+| Keresési egységek (replikák * partíciók) maximális száma szolgáltatásban |3 |36 |36 |36 |36 (legfeljebb 3 partíció) |
+| Tárterület maximális száma szolgáltatás alapján |2 GB |300 GB |1,2 TB |2,4 TB |600 GB |
+| Tárolók maximális száma partíción |2 GB |25 GB |100 GB |200 GB |200 GB |
+| Indexek maximális száma (szolgáltatás) |5 |50 |200 |200 |3000 (max. 1000 indexek/partíció) |
 
-#### <a name="s3-high-density"></a>S3 Nagy kapacitású "
-Az Azure Search S3 tarifacsomagra nincs lehetőség a nagy sűrűségű (HD) üzemmód kifejezetten a több-bérlős helyzetekben készült. Sok esetben fontos az egyszerűség és költséget hatékonyság előnyeinek eléréséhez egy egyetlen szolgáltatást a kisebb bérlők nagy számú támogatásához szükséges.
+#### <a name="s3-high-density"></a>Nagy sűrűségű S3
+Azure Search S3 árképzési szinten a nagy sűrűségű (HD) üzemmódot kifejezetten több-bérlős forgatókönyvek számára tervezték. Sok esetben az egyszerűség és a költséghatékonyság előnyeinek elérése érdekében számos kisebb bérlőt kell támogatni egyetlen szolgáltatásban.
 
-S3 HD lehetővé teszi a sok kis indexet horizontális felskálázása az indexek használata lehetővé teszi a partíciók egy szolgáltatásban több index üzemeltetésére képes kereskedelmi szerint kell becsomagolni, egyetlen keresési szolgáltatás a felügyeleti csoportban.
+Az S3 HD lehetővé teszi, hogy a sok kisméretű indexet egyetlen keresési szolgáltatás felügyelete alá lehessen csomagolni azáltal, hogy a partíciók használatával kibővíti az indexeket, így több indexet is tárolhat egyetlen szolgáltatásban.
 
-Az S3 szintű szolgáltatáscsomagban konkrétan, 1 és 200 indexeket, amelyek együtt sikerült akár 1,4 milliárd dokumentumok között lehet. Az S3 HD azonban lehetővé teszik, hogy csak a legfeljebb 1 millió dokumentumot go egyedi indexek, de a teljes számát a 200 millió partíciónként (legfeljebb 3000 szolgáltatásonként) partíciónként akár 1000 indexet is képes kezelni (legfeljebb 600 millió szolgáltatásonként).
+Konkrétan egy S3-szolgáltatásnak 1 és 200 index között kell lennie, amelyek együttesen akár 1 400 000 000 dokumentumot is tárolhatnak. Az S3 HD viszont lehetővé teszi, hogy az egyes indexek csak a 1 000 000-es dokumentumokra lépjenek, de a partíción (akár 3000-ig) akár 1000 indexeket is kezelhetnek, a teljes összegű 200 000 000-összeggel (legfeljebb 600 000 000).
 
-## <a name="considerations-for-multitenant-applications"></a>Szempontok a több-bérlős alkalmazásokban
-Több-bérlős alkalmazások hatékony el kell juttatnia a erőforrások a bérlők közötti adatvédelmi a különböző bérlők között bizonyos fokú megőrzése mellett. Ilyen alkalmazás architektúrájának tervezése során, van néhány szempont:
+## <a name="considerations-for-multitenant-applications"></a>Több-bérlős alkalmazások szempontjai
+A több-bérlős alkalmazásoknak hatékonyan kell kiosztaniuk az erőforrásokat a bérlők között, miközben a különböző bérlők között bizonyos fokú adatvédelemre van szükség. Az ilyen alkalmazások architektúrájának tervezésekor néhány szempontot figyelembe kell venni:
 
-* *Bérlő elszigetelése:* Alkalmazás a fejlesztőknek kell a megfelelő intézkedéseket annak érdekében, hogy nem a bérlők számára nem engedélyezett vagy nemkívánatos más bérlők adataihoz való hozzáférés. Túl az adatvédelem szempontjából a bérlő elkülönítési stratégiák szükség a megosztott erőforrások és a védelem a zajos szomszédok hatékony kezelése.
-* *Felhőalapú erőforrások költség:* Mint minden más alkalmazás, a szoftveres megoldások költség versenyképes egy több-bérlős alkalmazás részeként kell maradnia.
-* *A könnyű műveletek:* Egy több-bérlős architektúra fejlesztésével, az alkalmazás-műveletek és összetettségi gyakorolt esetén fontos szempont. Az Azure Search rendelkezik egy [99,9 %-os SLA-t](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
-* *Globális lefedettséggel:* Több-bérlős alkalmazások hatékony szolgálja ki a bérlők számára, amely a világ különböző pontjain szükségessé.
-* *Méretezhetőség:* Az alkalmazásfejlesztők kell figyelembe venni, hogyan azok egyeztetése karbantartása elég alacsony szintű alkalmazás összetettségét és az alkalmazás méretezése a bérlők száma és a bérlők adatok méretétől és számítási feladatot tervez között.
+* *Bérlő elkülönítése:* Az alkalmazás fejlesztőknek megfelelő intézkedéseket kell tenniük annak biztosításához, hogy a bérlők ne legyenek jogosulatlan vagy nemkívánatos hozzáférésük más bérlők adatához. Az adatvédelem szempontjából a bérlők elkülönítési stratégiái a megosztott erőforrások hatékony kezelését és a zajos szomszédok elleni védelmet igénylik.
+* *Felhőalapú erőforrás díja:* A többi alkalmazáshoz hasonlóan a szoftveres megoldásoknak is versenyképesnek kell lenniük a több-bérlős alkalmazások összetevőjeként.
+* *Egyszerű műveletek:* Több-bérlős architektúra fejlesztésekor fontos szempont az alkalmazás működésére és összetettségére gyakorolt hatás. A Azure Search [99,9%](https://azure.microsoft.com/support/legal/sla/search/v1_0/)-os SLA-val rendelkezik.
+* *Globális helyigény:* Előfordulhat, hogy a több-bérlős alkalmazásoknak hatékonyan kell kiszolgálni a világ bármely részén elosztott bérlőket.
+* *Méretezhetőség* Az alkalmazás-fejlesztőknek meg kell fontolniuk, hogyan egyeztethetők össze az alkalmazások kellően alacsony szintjének fenntartása és az alkalmazás megtervezése között a bérlők számával, valamint a bérlők adatai és a számítási feladatok méretétől függően.
 
-Az Azure Search kínál néhány határok bérlők adatait és a számítási feladatok elkülönítése használható.
+Azure Search a bérlők adatai és a számítási feladatok elkülönítésére szolgáló néhány határt biztosít.
 
-## <a name="modeling-multitenancy-with-azure-search"></a>Az Azure Search szolgáltatással a több-bérlős modellezés
-Egy több-bérlős forgatókönyvben az alkalmazás fejlesztőjének egy vagy több keresési szolgáltatást használ fel, és felosztani a bérlőik számára többek között a szolgáltatások, az indexek vagy mindkettőt. Az Azure Search rendelkezik néhány gyakori minták, ha egy több-bérlős forgatókönyvben modellezés:
+## <a name="modeling-multitenancy-with-azure-search"></a>Bérlős modellezése Azure Search
+Több-bérlős forgatókönyv esetén az alkalmazás fejlesztői egy vagy több keresési szolgáltatást használnak, és a bérlőket a szolgáltatások, az indexek vagy mindkettő között osztják el. Azure Search a több-bérlős forgatókönyv modellezésének néhány gyakori mintája van:
 
-1. *Index bérlőnként:* Minden bérlőnek a saját index belül egy keresési szolgáltatás, amely a többi bérlő van megosztva.
-2. *Bérlőnként szolgáltatás:* Minden bérlő rendelkezik a saját dedikált Azure Search szolgáltatást kínál az adatok és a számítási feladatok elkülönítése legmagasabb szintű.
-3. *Mindkét vegyesen:* Nagyobb, több aktív bérlők dedikált szolgáltatások vannak rendelve, amíg a kisebb bérlőknek vannak hozzárendelve a megosztott szolgáltatások az egyedi indexek.
+1. *Index/bérlő:* Minden bérlő saját indexet tartalmaz a más Bérlővel megosztott keresési szolgáltatáson belül.
+2. *Szolgáltatás/bérlő:* Minden bérlő saját dedikált Azure Search szolgáltatást kínál, amely a legmagasabb szintű adatmennyiséget és a munkaterhelések elkülönítését kínálja.
+3. *Kettő kombinációja:* Nagyobb, aktívabb bérlők dedikált szolgáltatásokat kapnak, míg a kisebb bérlők egyedi indexeket kapnak a megosztott szolgáltatásokon belül.
 
-## <a name="1-index-per-tenant"></a>1. Bérlőnként indexelése
-![Az index bérlőnkénti modell egy portrayal](./media/search-modeling-multitenant-saas-applications/azure-search-index-per-tenant.png)
+## <a name="1-index-per-tenant"></a>1. Index/bérlő
+![Az index/bérlői modell ábrázolása](./media/search-modeling-multitenant-saas-applications/azure-search-index-per-tenant.png)
 
-Az index bérlőnkénti modell több bérlő foglalhat el egyetlen Azure Search szolgáltatás ahol minden egyes bérlő saját indexszel rendelkezik-e.
+Egy index/bérlői modellben több bérlő is foglal le egyetlen Azure Search szolgáltatást, ahol minden egyes bérlő saját indextel rendelkezik.
 
-Bérlők számára az adatok elkülönítését érhet el, mivel minden keresési kérelmek és a dokumentum műveletek adják ki az Azure Search-index szintjén. Az alkalmazási rétegre van a szükséges figyelése is kezelni az erőforrásokat a szolgáltatási szinten az összes bérlőre kiterjedő irányítani a forgalmat a különböző bérlők számára a megfelelő indexek.
+A bérlők az adatok elkülönítését érik el, mivel az összes keresési kérelem és dokumentum-művelet Azure Search index szintjén van kiállítva. Az alkalmazási rétegben arra van szükség, hogy a különböző bérlők forgalmát a megfelelő indexekre irányítsa, miközben a szolgáltatási szinten lévő erőforrásokat is az összes bérlőn keresztül kezeli.
 
-A bérlőnkénti index modell kulcsattribútum arra, hogy az az alkalmazás fejlesztőjének túlléphető a kapacitás, a keresési szolgáltatásnak az alkalmazás bérlők között. Ha a bérlők a számítási feladatok eloszlása egyenletlen rendelkezik, a bérlők számára optimális kombinációja egy keresési szolgáltatás indexek magas aktív, az erőforrás-igényes a bérlőknek számos befogadásához közben egyszerre egy hosszú tail kisebb szét lehetnek osztva aktív bérlők számára. Kompromisszumot kötni a rendszer a modell a nem képes kezelni az olyan helyzetekben, ahol minden egyes bérlő egyidejűleg nagyon aktív.
+Az index/bérlői modell egyik fő attribútuma az, hogy az alkalmazás fejlesztője előfizesse a keresési szolgáltatás kapacitását az alkalmazás bérlői között. Ha a bérlők a számítási feladatok egyenlőtlen eloszlásával rendelkeznek, a bérlők optimális kombinációja a keresési szolgáltatás indexei között terjeszthető ki, így számos igen aktív, erőforrás-igényes bérlőt használhat, miközben a hosszú farok kevesebb aktív bérlők. A kikapcsolás a modell nem képes olyan helyzetek kezelésére, amikor az egyes bérlők egyidejűleg igen aktívak.
 
-Az index bérlőnkénti modell alapjául szolgáló változót a költségmodell, ahol az egész Azure Search szolgáltatást vásárolt induló, majd ezt követően kitöltését bérlőkkel. Ez lehetővé teszi a fel nem használt kapacitás kísérletek és az ingyenes fiók ki kell jelölni.
+Az index/bérlői modell a változó szintű modell alapját képezi, ahol a teljes Azure Search szolgáltatás megvásárolható, és ezt követően a bérlők töltik fel. Ez lehetővé teszi, hogy a fel nem használt kapacitás kijelölhető legyen a próbaverziók és az ingyenes fiókok számára.
 
-Egy globális lefedettséggel rendelkező alkalmazások a bérlőnkénti index modell nem lehet a leghatékonyabban. Ha egy alkalmazás bérlők vannak elosztva a világ, egy különálló szolgáltatás szükséges minden olyan régióhoz, ami előfordulhat, hogy ismétlődő költségek azok között lehet.
+Globális helyigényű alkalmazások esetében előfordulhat, hogy az index/bérlői modell nem a leghatékonyabb. Ha egy alkalmazás bérlői szét vannak osztva a világ bármely régiójában, külön szolgáltatásra lehet szükség az egyes régiók esetében, amelyek mindegyike megismétli a költségeket.
 
-Az Azure Search szolgáltatással a méretezési csoport, az egyedi indexek és az indexek száma nő. Ha egy megfelelő árképzési szint ki van választva, partíciókat és -replikákat is hozzáadhatók a teljes keresési szolgáltatást, amikor egy egyedi index a szolgáltatásban túl hosszúvá, storage és a forgalom tekintetében.
+Azure Search lehetővé teszi az egyéni indexek és a növekedő indexek teljes számának méretezését. Ha a megfelelő árképzési szintet választja, akkor a partíciók és a replikák a teljes keresési szolgáltatásba felvehetők, ha a szolgáltatáson belüli egyes indexek túl nagy mennyiségű tárterületet vagy forgalmat foglalnak magukban.
 
-Indexek száma túl hosszúvá egy egyetlen szolgáltatást, ha egy másik szolgáltatásnak van, úgy kell létrehozni, hogy megfeleljen az új bérlők számára. Ha az indexek a keresési szolgáltatások helyezhetők át, az új szolgáltatással bővül, az adatokat az indexből manuálisan átmásolni egy index a másik, mert az Azure Search nem engedélyezett egy index áthelyezésének rendelkezik.
+Ha az indexek teljes száma túl nagyra nő egyetlen szolgáltatás esetében, egy másik szolgáltatást kell kiépíteni az új bérlők befogadásához. Ha az indexeket új szolgáltatások hozzáadásakor kell áthelyezni a keresési szolgáltatások között, az indexből származó adatoknak kézzel kell átmásolnia az egyik indexből a másikba, mivel a Azure Search nem teszi lehetővé az index áthelyezését.
 
-## <a name="2-service-per-tenant"></a>2. Bérlőnként szolgáltatás
-![A szolgáltatás bérlőnkénti modell egy portrayal](./media/search-modeling-multitenant-saas-applications/azure-search-service-per-tenant.png)
+## <a name="2-service-per-tenant"></a>2. Szolgáltatás/bérlő
+![A szolgáltatás/bérlői modell ábrázolása](./media/search-modeling-multitenant-saas-applications/azure-search-service-per-tenant.png)
 
-A szolgáltatás bérlőnként felügyelt architektúrában minden bérlő rendelkezik a saját keresési szolgáltatás.
+A szolgáltatás-bérlői architektúrában minden bérlő saját keresési szolgáltatással rendelkezik.
 
-Ebben a modellben az alkalmazás eléri-e a legnagyobb szintű a bérlők elkülönítését. Minden szolgáltatáshoz rendelkezik dedikált dokumentumtárolási és adattovábbítási kapacitással keresési kérelmet, valamint a különálló API-kulcsok kezelésére.
+Ebben a modellben az alkalmazás a bérlők számára a maximális elkülönítési szintet éri el. Minden szolgáltatás dedikált tárterületet és átviteli sebességet biztosít a keresési kérések kezelésére, valamint különálló API-kulcsokra.
 
-Alkalmazások, ahol minden egyes bérlő rendelkezik egy nagy erőforrás-igényű, vagy a számítási feladatok kis változékonyságát bérlő bérlői rendelkezik a bérlőnkénti szolgáltatási modell különböző bérlők számítási feladatok nem megosztott erőforrások, akkor egy hatékony választani.
+Azokban az alkalmazásokban, amelyekben az egyes bérlők nagy helyigénysel rendelkeznek, vagy a munkaterhelésnek a bérlőtől a bérlőig kevés a változékonysága, a szolgáltatás-bérlői modell olyan hatékony megoldás, mint a különböző bérlők munkaterhelései között.
 
-Egy bérlő modell szolgáltatást is kínál az előnye, hogy egy előre jelezhető, rögzített költségmodellt. Csak akkor adja meg, a bérlő azonban a cost bérlőnkénti magasabb, mint az index bérlőnkénti modell, nincs nincs kezdeti beruházást, egy teljes search-szolgáltatásban.
+A bérlői modelleken alapuló szolgáltatás a kiszámítható és rögzített költségtakarékos modell előnyeit is biztosítja. A teljes keresési szolgáltatásban nincs kezdeti beruházás, amíg a bérlő kitölti azt, azonban a bérlői díj magasabb, mint az index-bérlői modell.
 
-A bérlőnkénti szolgáltatási modell egy-egy globális erőforrás-igényű alkalmazásokhoz hatékony lehetőség. Földrajzilag elosztott bérlőkkel könnyedék minden bérlő szolgáltatás rendelkezik a megfelelő régióban található.
+A szolgáltatás/bérlő modell hatékony választás a globális helyigényű alkalmazások számára. Földrajzilag elosztott bérlők esetében a bérlők szolgáltatásait egyszerűen megoszthatja a megfelelő régióban.
 
-A legnagyobb kihívás méretezése, ez a minta akkor keletkezik, amikor az egyes bérlők elszaporodó szolgáltatást. Az Azure Search jelenleg nem támogatja a tarifacsomagot a keresési szolgáltatás frissítése, ezért minden adatot meg kell manuálisan kell átmásolni egy új szolgáltatás.
+A minta skálázásának kihívásai akkor jelentkeznek, amikor az egyes bérlők kibővítik a szolgáltatást. A Azure Search jelenleg nem támogatja a keresési szolgáltatás díjszabási szintjét, ezért az összes adatmennyiséget manuálisan kell átmásolni egy új szolgáltatásba.
 
-## <a name="3-mixing-both-models"></a>3. Mindkét modellt keverése
-Egy másik minta a több-bérlős modellezés van keverése bérlőnkénti index és a szolgáltatás bérlőnkénti stratégiák.
+## <a name="3-mixing-both-models"></a>3. Mindkét modell keverése
+A modellezési bérlős egy másik mintázata a bérlői és a szolgáltatás-bérlői stratégiák keveredését is felkeveri.
 
-A két mintát úgy, egy alkalmazás legnagyobb bérlők lefoglalhatja dedikált szolgáltatások közben a hosszú kisebb, kevésbé aktív, kisebb bérlők indexek lefoglalhatja a megosztott szolgáltatáshoz. Ez a modell biztosítja, hogy a legnagyobb bérlők számára a kisebb bérlőknek szembeni bármely zajos szomszédok a szolgáltatás folyamatosan magas teljesítmény.
+A két minta összekeverésével az alkalmazás legnagyobb bérlői dedikált szolgáltatásokat foglalhatnak el, míg a kevésbé aktív, kisebb bérlők egy megosztott szolgáltatásban foglalhatnak le indexeket. Ez a modell biztosítja, hogy a legnagyobb bérlők következetesen nagy teljesítményt biztosítanak a szolgáltatástól, miközben a kisebb bérlők számára a zajos szomszédoktól való védekezést segítik.
 
-Azonban ez a stratégia megvalósításához támaszkodik előretekintés előrejelzésére, mely a bérlők és a egy indexet a megosztott szolgáltatáshoz dedikált szolgáltatás lesz szükség. Alkalmazás összetettségét is több-bérlős modellek felügyelnie egyenes arányban növekszik.
+Ennek a stratégiának a megvalósítása azonban előrelátó módon feltételezi, hogy mely bérlők igényelnek dedikált szolgáltatást, illetve egy megosztott szolgáltatásbeli indexet. Az alkalmazások összetettsége a két bérlős-modell kezelésének szükségességével nő.
 
-## <a name="achieving-even-finer-granularity"></a>Még nagyobb részletességgel elérése
-A fenti tervezési minták több-bérlős forgatókönyvek az Azure Search modellezésére azt feltételezik, hogy egy egységes hatókörhöz, ahol minden egyes bérlő egy alkalmazás egy teljes példánya. Alkalmazások azonban néha kezelhetik a sok kisebb hatókörét.
+## <a name="achieving-even-finer-granularity"></a>Még finomabb részletesség elérése
+A fenti tervezési minták több-bérlős forgatókönyvek modellezésére Azure Search feltételezik, hogy az egyes bérlők egy alkalmazás teljes példánya. Az alkalmazások azonban néha több kisebb hatókört is kezelhetnek.
 
-Ha bérlőnkénti szolgáltatás és a bérlőnkénti index modellek nem elég kis hatókörök, egy granularitási még nagyobb fokú eléréséhez index modellezésére.
+Ha a szolgáltatás-/bérlői és az index/bérlői modellek nem eléggé kis hatókörű, az index modellezése még finomabb részletességi fokú részletességgel valósítható meg.
 
-Ahhoz, hogy egy egyetlen index eltérően viselkednek a különböző ügyfél-végpontok, egy mezőt az indexbe, amely egy bizonyos értéket minden lehetséges ügyfél is hozzáadhatók. Minden alkalommal, amikor egy ügyfél hívja lekérdezésére és módosítására index, Azure Search a kódot az ügyfélalkalmazás, adja meg a megfelelő értéket a mezőhöz, használja az Azure Search [szűrő](https://msdn.microsoft.com/library/azure/dn798921.aspx) képesség a lekérdezések során.
+Ahhoz, hogy egyetlen index eltérő módon viselkedjen a különböző ügyféloldali végpontok esetében, egy mező hozzáadható egy olyan indexhez, amely minden lehetséges ügyfél esetében egy bizonyos értéket jelöl ki. Minden alkalommal, amikor egy ügyfél meghívja a Azure Search egy index lekérdezésére vagy módosítására, az ügyfélalkalmazás kódja megadja a mező megfelelő értékét az Azure Search [szűrési](https://msdn.microsoft.com/library/azure/dn798921.aspx) funkciója alapján a lekérdezési időpontnál.
 
-Ezzel a módszerrel külön felhasználói fiókok, külön jogosultsági szintek esetén funkció eléréséhez használható, és akár teljesen különálló alkalmazásokat.
+Ezzel a módszerrel különböző felhasználói fiókok, különálló jogosultsági szintek és akár teljesen különálló alkalmazások funkciói is elérhetők.
 
 > [!NOTE]
-> A fent leírt módszer használatával több bérlő kiszolgálására egy egyetlen index konfigurálása hatással van az a relevancia alapján végzett keresés eredményeit. Keresés relevancia alapján végzett pontszámok arra az esetre vonatkoznak az index-szintű hatókörben, nem bérlői szintű hatókör, így az összes bérlő adatait a relevancia alapján végzett pontszámok alapul szolgáló statisztikáit, például a kifejezés gyakoriság a részét képezik.
+> A fent ismertetett módszer használatával egyetlen indexet állíthat be több bérlő kiszolgálására, ami befolyásolja a keresési eredmények relevanciáját. A keresés relevanciás pontszámait index-szintű hatókörre számítjuk ki, nem pedig a bérlői szintű hatókörre, így az összes bérlő adatai bekerülnek a releváns pontszámok alapjául szolgáló statisztikai adatokba, például a kifejezés gyakoriságával.
 > 
 > 
 
 ## <a name="next-steps"></a>További lépések
-Az Azure Search számos alkalmazás, meggyőző döntés, [találhat további információt a szolgáltatási hatékony képesség](https://aka.ms/whatisazsearch). A különböző kialakítási minták a több-bérlős alkalmazások kiértékelését, vegye figyelembe a [különböző tarifacsomagok](https://azure.microsoft.com/pricing/details/search/) és a megfelelő [szolgáltatási korlátozásaival](search-limits-quotas-capacity.md) leginkább megfelelő Azure Search-alkalmazás igazítás számítási feladatok és architektúrákat, bármilyen méretűek.
+Azure Search számos alkalmazás számára meggyőző választás, [További információ a szolgáltatás robusztus képességeiről](https://aka.ms/whatisazsearch). A több-bérlős alkalmazások különböző tervezési mintáinak kiértékelése során vegye figyelembe a [különböző díjszabási](https://azure.microsoft.com/pricing/details/search/) csomagokat és a megfelelő [szolgáltatási korlátokat](search-limits-quotas-capacity.md) a legmegfelelőbb személyre szabott Azure Search az alkalmazások számítási feladatainak és architektúráinak méretének megfelelően.
 
-Minden olyan kérdések az Azure Search és a több-bérlős helyzetekben lehet irányítani azuresearch_contact@microsoft.com.
+Azure Search és több-bérlős forgatókönyvekkel kapcsolatos kérdések a azuresearch_contact@microsoft.comkövetkezőre irányíthatók:.
 

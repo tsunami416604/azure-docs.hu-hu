@@ -7,16 +7,18 @@ ms.date: 04/01/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 729e9fe749212942c6dc18fc7d6301934e7dd184
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d04f46dbc60a7242e44d76915e15281cc6248d20
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59788238"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786534"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Azure-erőforrások nagy adatkészletek használata
 
 Az Azure erőforrás-Graph úgy lett kialakítva, használata és erőforrásaival kapcsolatos információk lekérése az Azure-környezetben. Erőforrás-grafikon teszi, hogy ezek az adatok gyors, első akár több ezer olyan rekordok lekérdezésekor. Erőforrás-grafikon rendelkezik-e nagy adatkészletek használata számos lehetőség közül választhat.
+
+A nagy gyakorisággal lekérdezések való használatáról további útmutatóért lásd: [szabályozott kérelmeinek útmutatást](./guidance-for-throttled-requests.md).
 
 ## <a name="data-set-result-size"></a>Adatkészlet eredményének mérete
 
@@ -67,13 +69,23 @@ Szükséges egy eredményhalmazt bemásolja a feldolgozáshoz kisebb rekordhalma
 
 Amikor **resultTruncated** van **igaz**, a **$skipToken** tulajdonság értéke a válaszban. Ez az érték szolgál ugyanazon lekérdezés és az előfizetés értékekkel lekérése a következő rekordkészletet, amely megfelel a lekérdezést.
 
-> [!IMPORTANT]
-> A lekérdezés kell **projekt** a **azonosító** ahhoz, hogy működjön tördelés mezőt. Hiányzik a lekérdezésből, ha a REST API-válasz nem tartalmazza a **$skipToken**.
+Az alábbi példák mutatják hogyan **kihagyása** az első 3000 rekordok, és lépjen vissza a **első** 1000 rekordot ezek után kihagyja az Azure CLI és az Azure PowerShell-lel:
 
-Egy vonatkozó példáért lásd: [következő lap lekérdezés](/rest/api/azureresourcegraph/resources/resources#next_page_query) a REST API-dokumentumokhoz.
+```azurecli-interactive
+az graph query -q "project id, name | order by id asc" --first 1000 --skip 3000
+```
+
+```azurepowershell-interactive
+Search-AzGraph -Query "project id, name | order by id asc" -First 1000 -Skip 3000
+```
+
+> [!IMPORTANT]
+> A lekérdezés kell **projekt** a **azonosító** ahhoz, hogy működjön tördelés mezőt. Hiányzik a lekérdezésből, ha a válasz nem tartalmazza a **$skipToken**.
+
+Egy vonatkozó példáért lásd: [következő lap lekérdezés](/rest/api/azureresourcegraph/resources/resources#next-page-query) a REST API-dokumentumokhoz.
 
 ## <a name="next-steps"></a>További lépések
 
-- Tekintse meg a használt nyelv [alapszintű lekérdezések](../samples/starter.md)
-- Tekintse meg a speciális használ [összetettebb lekérdezésekhez](../samples/advanced.md)
-- Információ az [erőforrások felfedezéséről](explore-resources.md)
+- Tekintse meg a használt nyelv [alapszintű lekérdezéseket](../samples/starter.md).
+- Tekintse meg a speciális használ [összetettebb lekérdezésekhez](../samples/advanced.md).
+- Ismerje meg, hogyan [források](explore-resources.md).

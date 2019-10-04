@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
 ms.date: 03/14/2019
-ms.author: juliako;cenkdin;anilmur
-ms.openlocfilehash: d0da69601bfc6fd09c10b30d45195722781d87d6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: juliako
+ms.reviewer: cenkdin;anilmur
+ms.openlocfilehash: be3c75680599c07a3cebe3dcf0436884958e1706
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57890049"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "69016664"
 ---
 # <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>Használja a Wirecast kódoló egyféle sávszélességű élő adatfolyamot küldeni 
 > [!div class="op_single_selector"]
@@ -69,22 +70,22 @@ A csatorna indítása folyamatban van, amíg is [a kódoló](media-services-conf
 >
 >
 
-## <a name="a-idconfigurewirecastrtmp-configure-the-telestream-wirecast-encoder"></a><a id="configure_wirecast_rtmp" />A Telestream Wirecast kódoló konfigurálása
+## <a name="a-idconfigure_wirecast_rtmp-configure-the-telestream-wirecast-encoder"></a><a id="configure_wirecast_rtmp" />A Telestream Wirecast kódoló konfigurálása
 Ebben az oktatóanyagban a következő kimeneti beállításokat használják. Ez a szakasz a többi konfigurációs lépések részletesebben ismerteti.
 
 **A videó**:
 
-* Kodek: H.264
-* Profil: Nagy (4.0-s szint)
-* Átviteli sebesség: 5000 KB/s
-* Kulcsképkocka: 2 másodperc (60 másodperc)
-* Képkockasebesség: 30
+* Codec H.264
+* Profil Magas (4,0-as szint)
+* Sávszélességű 5000 kbps
+* Keyframe 2 másodperc (60 másodperc)
+* Keret sebessége: 30
 
 **Hang**:
 
-* Kodek: AAC (LC)
-* Átviteli sebesség: 192 Kb/s
-* Mintavételi gyakoriság: 44,1 kHz
+* Codec AAC (LC)
+* Sávszélességű 192 kbps
+* Mintavételezési arány: 44,1 kHz
 
 ### <a name="configuration-steps"></a>Konfigurációs lépések
 1. Nyissa meg a Telestream Wirecast alkalmazást, az a gép, használja, és állítsa be az RTMP-streameléshez.
@@ -94,7 +95,7 @@ Ebben az oktatóanyagban a következő kimeneti beállításokat használják. E
 3. Kattintson az **OK** gombra.
 4. A beállítások lapon állítsa be a **cél** mezőre, amely **Azure Media Services**.
 
-    A kódolás profil az előre kiválasztott **Azure H.264 720 p 16:9 (1280 x 720)**. Ezek a beállítások testreszabásához kattintson a fogaskerék ikonra a jobb oldalán a listából, és válassza **új készletet**.
+    A kódolás profil az előre kiválasztott **Azure H.264 720 p 16:9 (1280 x 720)** . Ezek a beállítások testreszabásához kattintson a fogaskerék ikonra a jobb oldalán a listából, és válassza **új készletet**.
 
     ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast3.png)
 5. Kódoló készletek beállítása.
@@ -103,16 +104,16 @@ Ebben az oktatóanyagban a következő kimeneti beállításokat használják. E
 
     **Video**
 
-   * Kódoló: MainConcept H.264
-   * A képkockák másodpercenkénti: 30
-   * Átlagos átviteli sebesség: 5000 kbit/s (módosítható hálózati korlátai alapján)
-   * Profil: Elsődleges
-   * Kulcs keret minden: 60 keretek
+   * Encoder MainConcept H. 264
+   * Képkockák másodpercenként: 30
+   * Átlagos átviteli sebesség: 5000 kbit/s (a hálózati korlátozások alapján módosítható)
+   * Profil Elsődleges
+   * Kulcstároló minden: 60 keret
 
      **Audio**
 
-   * Cél átviteli sebesség: 192 Kbit/s
-   * Mintavételi gyakoriság: 44.100 kHz
+   * Cél átviteli sebessége: 192 kbit/s
+   * Mintavételezési arány: 44,100 kHz
 
      ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast4.png)
 6. Kattintson a **Mentés** gombra.

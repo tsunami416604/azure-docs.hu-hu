@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: overview
 ms.date: 04/04/2019
 ms.author: aahi
-ms.openlocfilehash: d8f8d110a13e768d93f0be3c4baaf5715436f2ed
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d8d2aed16b5af60c44501e6d72332783a164ff91
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59502482"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67478388"
 ---
 # <a name="example-user-scenarios-for-the-text-analytics-api"></a>Felhasználói bemutató példák a szövegelemzési API
 
@@ -29,7 +29,7 @@ Hasznos információkhoz juthat az ügyfelek és alkalmazottak bizalmas felmér�
 
 ## <a name="analyze-recorded-inbound-customer-calls"></a>Rögzített bejövő ügyfelek hívásainak elemzése
 
-Elemzési adatokat nyerhet ki a vásárlói szolgáltatások szöveg-beszéd átalakítás, Hangulatelemzés és Kulcskifejezések kulcs használatával. Az eredmények megjelenítése a Power BI-irányítópultra vagy jobban megismerheti ügyfelei, jelölje ki a vásárlói szolgáltatás trendeket és a meghajtó customer engagement portálon. Küldje el API-kérések egy kötegelt jelentéskészítéshez vagy a valós idejű beavatkozás. 
+Elemzési adatokat nyerhet ki a vásárlói szolgáltatások szöveg-beszéd átalakítás, Hangulatelemzés és Kulcskifejezések kulcs használatával. Az eredmények megjelenítése a Power BI-irányítópultra vagy jobban megismerheti ügyfelei, jelölje ki a vásárlói szolgáltatás trendeket és a meghajtó customer engagement portálon. Küldje el API-kérések egy kötegelt jelentéskészítéshez vagy a valós idejű beavatkozás. Lásd: [mintakód](https://github.com/rlagh2/callcenteranalytics).
 
 ![Egy képet arról, hogyan automatizálhatja származó ügyfélszolgálati hívások hangulatelemzés használatával](media/use-cases/azure-inbound.svg)
 

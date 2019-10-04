@@ -1,58 +1,57 @@
 ---
-title: Az Azure Analytics nyilvános adatkészletek |} A Microsoft Docs
-description: Nyilvános adatkészletek ismerje meg, hogy prototípus használ, és Azure elemzési szolgáltatások és -megoldások teszteléséhez.
+title: Nyilvános adatkészletek az Azure Analytics szolgáltatáshoz | Microsoft Docs
+description: Ismerje meg az Azure Analytics-szolgáltatások és-megoldások prototípusához és teszteléséhez használható nyilvános adatkészleteket.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
 ms.custom: ''
 ms.devlang: ''
 ms.topic: reference
-author: CarlRabeler
-ms.author: carlrab
+author: stevestein
+ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 10/01/2018
-ms.openlocfilehash: e7d01a6512c2d39c86da9f7020aa3988c9680c6b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a16f6d6b0bf8600270fdf4e00cfa379ee4422fd0
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57995224"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566993"
 ---
-# <a name="public-data-sets-for-testing-and-prototyping"></a>Nyilvános adatkészletek a teszteléshez és prototípus-készítés
+# <a name="public-data-sets-for-testing-and-prototyping"></a>Nyilvános adatkészletek teszteléshez és prototípusokhoz
 
-Tallózással keresse meg az adatok esetén, amelyek segítségével készíthet prototípusokat és tesztelési tárolási és analitikai szolgáltatásokat és megoldásokat nyilvános adatkészletek listájával.
+Tallózással keresse meg a nyilvános adatkészletek azon listáját, amely használható a tárolási és elemzési szolgáltatások és megoldások prototípusára és tesztelésére.
 
-## <a name="us-government-and-agency-data"></a>USA Kormányzati és ügynökség adatok
+## <a name="us-government-and-agency-data"></a>USA Kormányzati és az Ügynökség adatai
 
-| Adatforrás | Tudnivalók az adatokról | A fájlokkal kapcsolatos |
+| Adatforrás | Tudnivalók az adatokról | Tudnivalók a fájlokról |
 |---|---|---|
-| [Egyesült Államok kormányzati adatok](https://www.census.gov/data.html) | Mezőgazdaság, oktatásra, fogyasztói, rendszereit, education, energiát, amelyek több mint 190,000 adatkészletek pénzügyi, egészségügyi, helyi kormányzati, gyártási, hajózási, óceán, közbiztonsági megfontolásokból és adatelemzési oktatási és kutatási az Egyesült Államokban | Különböző méretű HTML, XML, CSV, JSON, az Excel és sokan mások is beleértve különböző formátumú fájlok. Rendelkezésre álló adatkészletek formátum szerint szűrheti. |
-| [Egyesült Államok népszámlálási adatok](https://www.census.gov/data.html) | A US kapcsolatos statisztikai adatokat | Adatkészletek többféle formátumban vannak. |
-| [Earth science data from NASA](https://earthdata.nasa.gov/) | Mezőgazdaság, légköri, bioszféra, oktatásra, cryosphere, emberi dimenziók, hidroszféra, föld surface, tenger, sun-earth interakciók, és további több mint 32 000 adatok gyűjteményeket. | Adatkészletek többféle formátumban vannak. |
-| [A járatok késésének légitársaság és egyéb szállítási adatok](https://www.transtats.bts.gov/OT_Delay/OT_DelayCause1.asp) | "Az Egyesült Államok Minisztériumának a szállítás statisztika (BTS) számok belföldi repülőjáratok időben teljesítményének üzemeltetett részéről nagy Hivatala (pont). Összefoglaló információkat az idő, késleltetett, törölt és forgalomelterelés repülőjáratok száma jelenik meg... a webhelyen közzétett összegzési táblázatok." | CSV-formátumú fájlok. |
-| [Forgalom kontrollcsoportban - USA Fatality elemzési Reporting System (FARS)](https://www.nhtsa.gov/FARS) | "FARS NHTSA, kongresszusa, így egy országos népszámlálási és az American nyilvános éves adatokat végzetes sérülések kapcsolatban érte a gépjármű forgalom szoftverleállások." | "Létrehozása a FARS lekérdezés rendszer használatával futtassa online fatality adatainak Ön a tulajdonosa. Vagy az összes FARS adatokat letölteni az FTP-hely a nyújtjuk 1975." |
-| [Toxikus kémiai adat - EPA toxicitás ForeCaster (ToxCast™)](https://www.epa.gov/chemical-research/toxicity-forecaster-toxcasttm-data) | "Chemicals ezer EPA legtöbb frissíthetők, a nyilvánosan elérhető nagy átviteli sebességű toxicitás adatok. Ezek az adatok jön létre a EPA ToxCast kutatási erőfeszítéseket keresztül." | Adatkészletek különböző formátumúak, beleértve a táblázatok, R-csomagok és MySQL-adatbázis fájlok érhetők el. |
-| [Toxikus kémiai adatok - NIH Tox21 adatok Challenge 2014](https://tripod.nih.gov/tox21/challenge/) | "A 2014 Tox21 adatok kihívás célja a chemicals és keresztül a Toxicology biológiai átvételére mérgezést eredményezhet módon akadályozza a 21-kezdeményezéshez a tesztelt vegyületek tisztában az adatszakértők." | Adatkészletek érhetők el a SMILES és SDF formátumokat. Az adatok biztosít "-tevékenységi adatait és a ~ 10 000 összetevők Tox21 gyűjtemény kémiai struktúrák assay (Tox21 10K)." |
-| [A NCBI biotechnológia és a genome adatait](https://www.ncbi.nlm.nih.gov/guide/data-software/) | Több adatkészletek gének, a genomok díját és a fehérjék. | Adatkészletek szöveg, XML, NAGYOLVASZTÓ és más formátumban vannak. Egy NAGYOLVASZTÓ alkalmazás érhető el. |
+| [USA kormányzati adatszolgáltatások](https://www.census.gov/data.html) | Több mint 190 000 adathalmaz, amely a mezőgazdaság, az éghajlat, a fogyasztó, az ökoszisztémák, az oktatás, az energia, a pénzügy, az egészségügy, a helyi kormányzat, a gyártás, a tengerészeti, az óceán, a közbiztonság, valamint az Egyesült Államok területén | Különböző formátumú fájlok különböző formátumokban, például HTML, XML, CSV, JSON, Excel és sok más méretben. A rendelkezésre álló adatkészleteket fájlformátum alapján szűrheti. |
+| [Egyesült államokbeli népszámlálási adatai](https://www.census.gov/data.html) | Az Egyesült Államok lakosságának statisztikai adatainak ismertetése | Az adatkészletek különböző formátumokban vannak. |
+| [A NASA Earth Science-adatai](https://earthdata.nasa.gov/) | Több mint 32 000 adatgyűjtemény a mezőgazdaság, a környezet, a bioszféra, az éghajlat, a cryosphere, az emberi méretek, a hidroszféra, a földterületek, az óceánok, a Sun-Earth interakciók és egyebek terén. | Az adatkészletek különböző formátumokban vannak. |
+| [Repülőjegy-repülési késések és egyéb szállítási adatszolgáltatások](https://www.transtats.bts.gov/OT_Delay/OT_DelayCause1.asp) | "Az Egyesült Államok A Közlekedési Minisztérium (DOT) Bureau of közlekedési statisztikái (BTS) nyomon követi a nagyméretű légifuvarozók által üzemeltetett belföldi járatok időbeli teljesítményét. Megjelenik az időponthoz, a késleltetett, a megszakított és a lefordított járatok számával kapcsolatos összegző információ... a webhelyen közzétett összefoglaló táblákban. | A fájlok CSV formátumúak. |
+| [Forgalomra vonatkozó halálesetek – US Fatality Analysis Reporting System (a szolgáltatás)](https://www.nhtsa.gov/FARS) | "A NHTSA-t, a Kongresszust és az amerikai közelmúltbeli adatokat, amelyek a gépjárművek forgalmának összeomlása miatt elszenvedett végzetes sérülésekkel kapcsolatosak." | "Hozzon létre saját halálozási adatait online a szolgáltatással a (z) a (z) rendszerhez. Vagy töltse le az 1975-ből származó összes, az FTP-helyről beérkező összes szolgáltatás adatait. " |
+| [Mérgező vegyianyag-adatközponti toxicitás-előrejelző (ToxCast™)](https://www.epa.gov/chemical-research/toxicity-forecaster-toxcasttm-data) | "Az EPA legutóbb frissített, nyilvánosan elérhető, nagy adatátvitelt okozó toxicitási adatok több ezer vegyi anyagban. Ezeket az adatmennyiséget az EPA ToxCast kutatási tevékenysége hozza létre. | Az adatkészletek különböző formátumokban érhetők el, többek között a táblázatok, az R-csomagok és a MySQL-adatbázisfájlok. |
+| [Mérgező vegyianyag-adat – NIH Tox21-adatkihívás 2014](https://tripod.nih.gov/tox21/challenge/) | "A 2014 Tox21 adatra vonatkozó kihívás úgy lett kialakítva, hogy segítse a tudósokat abban, hogy a 21. századi kezdeményezésben a toxikológiai módszerekkel tesztelt vegyi anyagok és összetevők milyen hatással lehetnek a toxikus hatásokra." | Az adathalmazok a SMILEs és az SDF formátumokban érhetők el. Az adatelemzési tevékenységek és a kémiai struktúrák a ~ 10 000-es vegyületek Tox21-gyűjteményében (Tox21 10K) is elérhetők. " |
+| [Biotechnológiai és genom-adatok a NCBI](https://www.ncbi.nlm.nih.gov/guide/data-software/) | Több adathalmaz, amely a génekre, a genomokra és a fehérjékre terjed ki. | Az adathalmazok szöveg, XML, BLAST és más formátumúak. A BLAST-alkalmazás elérhető. |
 
-## <a name="other-statistical-and-scientific-data"></a>Egyéb statisztikai és tudományos adatok
+## <a name="other-statistical-and-scientific-data"></a>Egyéb statisztikai és tudományos adatszolgáltatások
 
-| Adatforrás | Tudnivalók az adatokról | A fájlokkal kapcsolatos |
+| Adatforrás | Tudnivalók az adatokról | Tudnivalók a fájlokról |
 |---|---|---|
-| [New York City-i taxik adatait](http://www.nyc.gov/html/tlc/html/about/trip_record_data.shtml) | "Taxi trip rekordok tartalmazzák a mezők rögzítése felvétel és dropoff dátumok vagy időpontok, felvétel és dropoff helyek trip távokat, tételes vitel, forgalmi típusok, fizetési típusait, és utasforgalmat illesztőprogram jelentett száma." | CSV-fájlok találhatók adatkészletek hónap szerint. |
-| [A Microsoft Research adatkészletek – "Data Science a kutatási"](https://www.microsoft.com/research/academic-program/data-science-microsoft-research/) | Több adatkészletek ember és számítógép-interakció, hang/kép, adatbányászati/információk adatlekérés, a földrajzi helye, természetes nyelvi feldolgozás és robotika/számítógépes látástechnológiai kiterjedő. | Adatkészletek letölthető zip többféle formátumban vannak. |
-| [Nyilvános genom adatok](https://www.completegenomics.com/public-data/) | "Adatok kezébe a különböző emberi teljes genomok díját is szabadon nyilvánosan elérhető bármely részfeladatának tanulmány javítása..." A szolgáltató, a teljes Genomics egy privát profitorientált corporation. | Adatkészletek, miután kinyerési, a program UNIX szöveges formátumban. Elemzési eszközök is érhetők el. |
-| [Nyissa meg tudományos adatok Felhőbeli adatok](https://www.opensciencedatacloud.org/) | "Nyílt tudományos adatok Felhőbeli biztosítja a tudományos Közösség, az erőforrások tárolásához, megosztása és terabájt, petabájtszintű és tudományos adatkészletek elemzése."| Adatkészletek többféle formátumban vannak. |
-| [Globális hőmérséklet-adatok – WorldClim](https://worldclim.org/) | "WorldClim olyan készlete, globális éghajlatváltozás rétegek (berácsozott éghajlati adatokat), körülbelül 1 km2 térbeli pontossággal. Ezen adatok használhatók a leképezési és a térbeli modellezési." | Ezek a fájlok tartalmazzák a földrajzi adatok. További információ: [adatformátum](https://worldclim.org/formats1). |
-| [Emberi társadalom – a GDELT projekt adatait](https://www.gdeltproject.org/data.html) | "A GDELT projekt a legnagyobb, legteljesebb és legnagyobb felbontást emberi társadalom minden eddiginél létrehozott adatbázis megnyitása." | A nyers adatok fájlok CSV formátumban. |
-| [Hirdetés kattintson a machine Learning Criteo az előrejelzési adatok](https://labs.criteo.com/2013/12/download-terabyte-click-logs/) | "A legnagyobb minden eddiginél nyilvánosan elérhető gépi Tanulási adatkészlet." További információ: [Criteo az 1 TB-os kattintson előrejelzési adatkészlet](https://blogs.technet.microsoft.com/machinelearning/20../../now-available-on-azure-ml-criteos-1tb-click-prediction-dataset/). | |
-| [ClueWeb09 szöveg adatbányászati adatkészlet Lemur a projektből](https://www.lemurproject.org/clueweb09.php/) | "A ClueWeb09 adatkészlet létrehozása kutatás támogatására információk lekéréséhez és a kapcsolódó emberi nyelvi technológiákról. Folyamatautomatizálást körülbelül 1 milliárd weblapok 10 nyelven a január és február 2009 összegyűjtött." | Lásd: [adatkészlet adatai](https://www.lemurproject.org/clueweb09/datasetInformation.php).|
+| [New York-i taxi-adatgyűjtés](http://www.nyc.gov/html/tlc/html/about/trip_record_data.shtml) | "A taxiban nyilvántartott rekordok közé tartoznak a pick-up és a lemorzsolódási dátum/idő, a pick-up és a lemorzsolódási Locations, az utazási távolságok, a részletezett viteldíjak, a díjszabási típusok, a fizetési típusok és a járművezető által jelentett utasok száma." | Az adatkészletek havonta CSV-fájlokban vannak. |
+| [Microsoft kutatási adatkészletek – "adatelemzés kutatási célokra"](https://www.microsoft.com/research/academic-program/data-science-microsoft-research/) | Több adathalmaz, amely az emberi számítógépekkel való interakciót, hang/videó, adatbányászat/információ beolvasását, földrajzi elhelyezkedését, a természetes nyelvi feldolgozást, valamint a robotika/számítógép jövőképét fedi le. | Az adathalmazok formátuma különböző formátumú, a tömörített fájlok letölthetők. |
+| [Nyilvános genom-adatszolgáltatások](https://www.completegenomics.com/public-data/) | "A teljes emberi genomok változatos adathalmaza szabadon elérhető nyilvános használatra a genomikai tanulmányok fejlesztése érdekében..." A szolgáltató, a teljes genomika, egy privát nonprofit cég. | Az adatkészletek a kinyerést követően UNIX Text formátumban vannak. Az elemzési eszközök is elérhetők. |
+| [A Science Cloud-adatfelhőbeli adatfeldolgozás megnyitása](https://www.opensciencedatacloud.org/) | "A nyílt tudományos adatfelhő biztosítja a tudományos közösség számára a terabájt és petabyte szintű tudományos adatkészletek tárolásához, megosztásához és elemzéséhez szükséges erőforrásokat."| Az adatkészletek különböző formátumokban vannak. |
+| [Globális klíma-WorldClim](https://worldclim.org/) | "A WorldClim a globális éghajlati rétegek (kockás Climate-adathalmazok) készlete, amelynek térbeli felbontása körülbelül 1 km2. Ezek az adatleképezések és a térbeli modellezések is használhatók. " | Ezek a fájlok térinformatikai adatkészletet tartalmaznak. További információ: adatformátum [](https://worldclim.org/formats1). |
+| [Az emberi társadalommal kapcsolatos információk – a GDELT projekt](https://www.gdeltproject.org/data.html) | "A GDELT projekt az emberi társadalom legnagyobb, legátfogóbb és legnagyobb felbontású nyílt adatbázisa, amelyet valaha hoztak létre." | A nyers adatfájlok CSV formátumúak. |
+| [Reklám – a Criteo származó gépi tanulásra vonatkozó előrejelzési adatok](https://labs.criteo.com/2013/12/download-terabyte-click-logs/) | "A legnagyobb valaha nyilvánosan kiadott ML-adatkészlet." További információ: [Criteo 1 TB Click Jóslás DataSet](https://blogs.technet.microsoft.com/machinelearning/20../../now-available-on-azure-ml-criteos-1tb-click-prediction-dataset/). | |
+| [ClueWeb09 a maki projektből](https://www.lemurproject.org/clueweb09.php/) | "A ClueWeb09 adatkészlet azért jött létre, hogy támogassa az információk lekérésével és a kapcsolódó emberi nyelvi technológiákkal kapcsolatos kutatásokat. A szolgáltatás körülbelül 1 000 000 000 weboldalt tartalmaz, amelyek 10 nyelven, a januári és február 2009-ban gyűjtöttek. " | Lásd: [adatkészlet adatai](https://www.lemurproject.org/clueweb09/datasetInformation.php).|
 
-## <a name="online-service-data"></a>Online szolgáltatás adatai
+## <a name="online-service-data"></a>Online szolgáltatási adatszolgáltatások
 
-| Adatforrás | Tudnivalók az adatokról | A fájlokkal kapcsolatos |
+| Adatforrás | Tudnivalók az adatokról | Tudnivalók a fájlokról |
 |---|---|---|
-| [GitHub-archívum](https://www.githubarchive.org/) | "GitHub archív érhető el nyilvános GitHub idővonalát [események] rögzítésére, archiválhatja, és győződjön meg arról, hogy könnyen elérhető további elemzés céljából." | Töltse le a webes ügyfél JSON-kódolású esemény archívumok .gz (Gzip) formátumban. |
-| [A GHTorrent projekt GitHub-tevékenység adatainak](http://ghtorrent.org/) | "A GHTorrent projekt [a] annak érdekében, hogy hozzon létre egy skálázható, lekérdezhető, offline tükrözött az adatok a GitHub REST API-n keresztül érhető el. GHTorrent figyeli a GitHub nyilvános esemény idősorán. Az egyes eseményekhez lekéri a tartalmát, és azok függőségeit, teljes körűen." | MySQL-adatbázis memóriaképek CSV formátumban vannak. |
-| [Stack Overflow adatok memóriakép](https://archive.org/details/stackexchange) | "Ez a felhasználó által biztosított összes tartalom, a Stack Exchange hálózaton [többek között a Stack overflow-n] egy anonimizált memóriakép." | "[Például a Stack overflow-n] minden hely formázott XML-fájlok, amelyek egy külön archív zip-n keresztül 7-zip bzip2 tömörítéssel. Minden hely archív tartalmaz bejegyzések, a felhasználók, a szavazatok, a megjegyzéseket, a PostHistory és a PostLinks." |
+| [GitHub-Archívum](https://www.githubarchive.org/) | "A GitHub Archive egy olyan projekt, amely rögzíti a nyilvános GitHub-idővonalat [az események], archiválja, és könnyen elérhetővé teszi a további elemzéseket." | A JSON-kódolású események archívumait. gz (gzip) formátumban töltheti le egy webes ügyfélprogramból. |
+| [A GitHub tevékenységi adatok a GHTorrent projektből](http://ghtorrent.org/) | "A GHTorrent projekt [is] arra törekszik, hogy a GitHub-REST API segítségével méretezhető, lekérdezhető, offline tükrözést hozzon létre. A GHTorrent figyeli a GitHub nyilvános eseményének időpontját. Minden eseménynél lekéri annak tartalmát és függőségeit. " | A MySQL-adatbázis-memóriaképek CSV formátumúak. |
+| [Adatmemóriakép Stack Overflow](https://archive.org/details/stackexchange) | "Ez az összes felhasználó által a verem Exchange-hálózaton [beleértve a Stack Overflowokat] is." | "Az egyes helyek [például a Stack Overflow] külön archívumként vannak formázva, amely a 7-zip használatával tömörített XML-fájlokból áll. Minden hely archiválása tartalmazza a bejegyzéseket, a felhasználókat, a szavazatokat, a megjegyzéseket, a PostHistory és a PostLinks. " |

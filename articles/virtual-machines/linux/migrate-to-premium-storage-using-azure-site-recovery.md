@@ -11,11 +11,11 @@ ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
 ms.openlocfilehash: ffcc2f46a30569979879ff302cde1e3b146d3b50
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57992026"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60543693"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Migrálás prémium szintű tárolóba az Azure Site Recovery használatával
 
@@ -74,13 +74,13 @@ Az Azure-áttelepítési forgatókönyvhöz követelmények a következők:
 
 A Site Recovery segítségével Azure IaaS virtuális gépek migrálása,-régiók között, vagy ugyanazon régión belül. Ez a cikk az áttelepítési forgatókönyv az alábbi utasításokat is lefednek [replikálni a VMware virtuális gépek vagy fizikai kiszolgálók Azure-bA](../../site-recovery/vmware-walkthrough-overview.md). Kövesse a részletes lépésekről lásd a jelen cikkben lévő utasítások mellett a hivatkozásokat.
 
-### <a name="step-1-create-a-recovery-services-vault"></a>1. lépés: Recovery Services-tároló létrehozása
+### <a name="step-1-create-a-recovery-services-vault"></a>1\. lépés: Recovery Services-tároló létrehozása
 
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
-2. Válassza ki **erőforrás létrehozása** > **felügyeleti** > **Backup** és **Site Recovery (OMS)**. Másik lehetőségként kiválaszthatja **Tallózás** > **Recovery Services-tároló** > **Hozzáadás**. 
+2. Válassza ki **erőforrás létrehozása** > **felügyeleti** > **Backup** és **Site Recovery (OMS)** . Másik lehetőségként kiválaszthatja **Tallózás** > **Recovery Services-tároló** > **Hozzáadás**. 
 3. Adjon meg egy régióban, amely a virtuális gépeket replikálja. Áttelepítéshez ugyanabban a régióban válassza ki a régiót, ahol a forrás virtuális gépek és a forrás-tárfiókok vannak. 
 
-### <a name="step-2-choose-your-protection-goals"></a>2. lépés: Védelmi célok megválasztása 
+### <a name="step-2-choose-your-protection-goals"></a>2\. lépés: Védelmi célok megválasztása 
 
 1. A virtuális gép, ahol szeretné telepíteni a konfigurációs kiszolgálót, nyissa meg a [az Azure portal](https://portal.azure.com).
 2. Lépjen a **Recovery Services-tárolók** > **beállítások** > **Site Recovery** > **1. lépés: Az infrastruktúra előkészítése** > **védelmi cél**.
@@ -91,7 +91,7 @@ A Site Recovery segítségével Azure IaaS virtuális gépek migrálása,-régi�
 
    ![Védelmi cél panelről mezők ki vannak töltve][3]
 
-### <a name="step-3-set-up-the-source-environment-configuration-server"></a>3. lépés: A forráskörnyezet (konfigurációs kiszolgáló) beállítása
+### <a name="step-3-set-up-the-source-environment-configuration-server"></a>3\. lépés: A forráskörnyezet (konfigurációs kiszolgáló) beállítása
 
 1. Töltse le **Azure Site Recovery egyesített telepítőjének** , és nyissa meg a tárregisztrációs kulcsot a **infrastruktúra előkészítése** > **forrás előkészítése**  >  **-Kiszolgáló hozzáadása** ablaktáblái. 
  
@@ -124,7 +124,7 @@ A Site Recovery segítségével Azure IaaS virtuális gépek migrálása,-régi�
 
       ![Tár regisztrálási lapját][9]
 
-### <a name="step-4-set-up-the-target-environment"></a>4. lépés: A célkörnyezet beállítása
+### <a name="step-4-set-up-the-target-environment"></a>4\. lépés: A célkörnyezet beállítása
 
 Válassza ki **infrastruktúra előkészítése** > **cél**, és adja meg a feladatátvételt követően a virtuális gépekhez használni kívánt üzemi modellhez. Választhat **klasszikus** vagy **Resource Manager**, attól függően, a forgatókönyv.
 
@@ -135,18 +135,18 @@ A Site Recovery ellenőrzi, hogy rendelkezik-e legalább egy kompatibilis Azure-
 > [!NOTE]
 > Ha prémium szintű tárfiókot használ a replikált adatok, állítsa be egy további standard szintű tárfiók replikációs naplóinak tárolásához szeretné.
 
-### <a name="step-5-set-up-replication-settings"></a>5. lépés: Replikációs beállítások megadása
+### <a name="step-5-set-up-replication-settings"></a>5\. lépés: Replikációs beállítások megadása
 
 Győződjön meg arról, hogy a konfigurációs kiszolgáló sikeresen társítva a replikációs házirendet, Ön által létrehozott, hajtsa végre a [replikációs beállítások megadása](../../site-recovery/vmware-walkthrough-overview.md).
 
-### <a name="step-6-plan-capacity"></a>6. lépés: Kapacitás tervezése
+### <a name="step-6-plan-capacity"></a>6\. lépés: Kapacitás megtervezése
 
 1. Használja a [kapacitás planner](../../site-recovery/site-recovery-capacity-planner.md) sávszélességel a hálózati sávszélesség, tárolási és egyéb követelményeket, a replikációs kell rendelkeznie. 
-2. Ha elkészült, válassza ki a **Igen, elvégeztem** a **rendelkeznie végrehajtotta kapacitástervezés?**.
+2. Ha elkészült, válassza ki a **Igen, elvégeztem** a **rendelkeznie végrehajtotta kapacitástervezés?** .
 
    ![Be megerősíti, hogy elvégezte kapacitásának megtervezése][11]
 
-### <a name="step-7-install-the-mobility-service-and-enable-replication"></a>7. lépés: A mobilitási szolgáltatás telepítése és a replikáció engedélyezése
+### <a name="step-7-install-the-mobility-service-and-enable-replication"></a>7\. lépés: A mobilitási szolgáltatás telepítése és a replikáció engedélyezése
 
 1. Dönthet úgy [leküldéses telepítése](../../site-recovery/vmware-walkthrough-overview.md) a forrás virtuális gépeket vagy [manuálisan a mobilitási szolgáltatás telepítése](../../site-recovery/site-recovery-vmware-to-azure-install-mob-svc.md) a forrás virtuális gépeket. Megtalálhatja a követelménynek, telepítés és a manuális telepítő elérési útját leküldése a hivatkozásra. Ha a manuális telepítés, szüksége lehet a konfigurációs kiszolgáló belső IP-címet használ.
 
@@ -160,7 +160,7 @@ Győződjön meg arról, hogy a konfigurációs kiszolgáló sikeresen társítv
    3. A 2. lépésben adja meg a feladatátvételt követő üzembe helyezési modellt, migrálása a premium storage-fiók, egy standard szintű tárfiókot a naplók és sikertelen lesz, virtuális hálózat mentése.
    4. A 3. lépésben adja hozzá a védett virtuális gépek IP-cím alapján. (Belső IP-cím megtalálni, szüksége lehet.)
    5. A 4. lépésben a fiókok, akkor állítsa be a korábban, a folyamatkiszolgáló kiválasztásával tulajdonságainak konfigurálása.
-   6. 5. lépésben pedig válassza ki a replikációs házirendet, a korábban létrehozott "5. lépés: Replikációs beállítások megadása."
+   6. 5\. lépésben pedig válassza ki a replikációs házirendet, a korábban létrehozott "5. lépés: Replikációs beállítások megadása."
    7. Kattintson az **OK** gombra.
 
    > [!NOTE]
@@ -174,7 +174,7 @@ Ha a virtuális gépek rendelkezésre állási csoport, az összes virtuális g�
  
 Feladatátvétel utáni telepítési modell kiválaszthatja az igényeknek megfelelően. Ha úgy dönt, az Azure Resource Manager, a feladatátvétel utáni telepítési modell, átadhatja a virtuális géphez (Resource Manager) egy virtuális Géphez (Resource Manager), vagy átadhatja a virtuális géphez (Resource Manager) (klasszikus) virtuális gép.
 
-### <a name="step-8-run-a-test-failover"></a>8. lépés: Feladatátvételi teszt futtatása
+### <a name="step-8-run-a-test-failover"></a>8\. lépés: Feladatátvételi teszt futtatása
 
 Annak ellenőrzéséhez, hogy a replikálás is befejeződik, válassza ki a Site Recovery-példány majd **beállítások** > **replikált elemek**. Látni fogja az állapot és a replikációs folyamat százalékos aránya. 
 
@@ -185,7 +185,7 @@ Kezdeti replikáció befejeződése után futtasson egy feladatátvételi teszte
 
 Láthatja, hogy a teszt feladatátvétel állapotának **beállítások** > **feladatok** > *YOUR_FAILOVER_PLAN_NAME*. A panelen megjelenik egy bontása a lépéseket és a sikeres/sikertelen eredményt. Ha a feladatátvételi tesztet bármely lépése meghiúsul, válassza ki a lépés a hibaüzenetben. 
 
-### <a name="step-9-run-a-failover"></a>9. lépés: Feladatátvétel futtatása
+### <a name="step-9-run-a-failover"></a>9\. lépés: Feladatátvétel futtatása
 
 A teszt feladatátvételi futása befejeződött, feladatátvételt végez a lemezek áttelepítése a Premium Storage és a Virtuálisgép-példányok replikálni. Kövesse a részletes lépéseket [feladatátvételt](../../site-recovery/site-recovery-failover.md#run-a-failover). 
 

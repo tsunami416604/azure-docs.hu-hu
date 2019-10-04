@@ -1,31 +1,30 @@
 ---
-title: Zónázott Windows virtuális gép létrehozása az Azure Portallal |} A Microsoft Docs
-description: Windows virtuális gép létrehozása egy rendelkezésre állási zónában az Azure portal használatával
+title: Zónában lévő Windows rendszerű virtuális gép létrehozása a Azure Portal | Microsoft Docs
+description: Windows rendszerű virtuális gép létrehozása rendelkezésre állási zónában a Azure Portal
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: dlepow
-manager: jeconnoc
+author: cynthn
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 03/27/2018
-ms.author: danlep
+ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: e813b26a91d25fbaa1298acd455f27d2cac705f6
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 90c6f7106cbc885c513d47bf80a7b1ec218d8c6c
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59997053"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71168557"
 ---
-# <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-the-azure-portal"></a>Windows virtuális gép létrehozása egy rendelkezésre állási zónában az Azure portal használatával
+# <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-the-azure-portal"></a>Windows rendszerű virtuális gép létrehozása rendelkezésre állási zónában a Azure Portal
 
-Ez a cikk részletesen bemutatja egy virtuális gép létrehozása az Azure rendelkezésre állási zónában az Azure portal használatával. A [rendelkezésre állási zónák](../../availability-zones/az-overview.md) egy Azure-régió fizikailag elkülönített zónáit jelentik. Az alkalmazások és az adatok védelmét rendelkezésre állási zónákkal biztosíthatja nem várt hibák bekövetkezése, illetve a teljes adatközpont elérhetetlenné válása esetére.
+Ez a cikk végigvezeti a virtuális gép Azure-beli rendelkezésre állási zónában való létrehozásához szükséges Azure Portal használatával. A [rendelkezésre állási zónák](../../availability-zones/az-overview.md) egy Azure-régió fizikailag elkülönített zónáit jelentik. Az alkalmazások és az adatok védelmét rendelkezésre állási zónákkal biztosíthatja nem várt hibák bekövetkezése, illetve a teljes adatközpont elérhetetlenné válása esetére.
 
 Rendelkezésre állási zóna használatához egy [támogatott Azure-régióban](../../availability-zones/az-overview.md#services-support-by-region) hozza létre a virtuális gépet.
 
@@ -39,40 +38,40 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 2. Válassza a **Számítás**, majd a **Windows Server 2016 Datacenter** elemet. 
 
-3. Adja meg a virtuális gép adatait. Az itt megadott felhasználónévvel és jelszóval bejelentkezhet a virtuális gépbe. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](faq.md#what-are-the-password-requirements-when-creating-a-vm). Válasszon egy helyet, például az USA keleti RÉGIÓJA 2, amely támogatja a rendelkezésre állási zónák. Amikor végzett, kattintson az **OK** gombra.
+3. Adja meg a virtuális gép adatait. Az itt megadott felhasználónévvel és jelszóval bejelentkezhet a virtuális gépbe. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](faq.md#what-are-the-password-requirements-when-creating-a-vm). Válasszon olyan helyet, mint az USA 2. keleti régiója, amely támogatja a rendelkezésre állási zónákat. Amikor végzett, kattintson az **OK** gombra.
 
     ![Írja be a virtuális gép alapvető adatait a portálpanelen](./media/create-portal-availability-zone/create-windows-vm-portal-basic-blade.png)
 
-4. Válasszon méretet a virtuális gép számára. Válasszon ki egy ajánlott méretet, vagy szűrő szolgáltatások alapján. Győződjön meg arról, a méret érhető el a zóna is használni szeretné.
+4. Válasszon méretet a virtuális gép számára. Válasszon egy ajánlott méretet, vagy a funkciók alapján szűrje a szűrőt. Ellenőrizze, hogy a méret elérhető-e a használni kívánt zónában.
 
-    ![Válassza ki a virtuális gép méretét](./media/create-portal-availability-zone/create-windows-vm-portal-sizes.png)  
+    ![Virtuális gép méretének kiválasztása](./media/create-portal-availability-zone/create-windows-vm-portal-sizes.png)  
 
-5. Alatt **beállítások** > **magas rendelkezésre állású**, válasszon ki egy, a számozott zónákat a **rendelkezésre állási zónában** legördülő menüből, hagyja változatlanul a többi alapértelmezett beállításokat, és Kattintson a **OK**.
+5. A **Beállítások** > **magas rendelkezésre állása**területen válassza ki az egyik számú zónát a **rendelkezésre állási zóna** legördülő listából, tartsa meg a fennmaradó alapértékeket, majd kattintson **az OK**gombra.
 
-    ![Válassza ki a rendelkezésre állási zónában](./media/create-portal-availability-zone/create-windows-vm-portal-availability-zone.png)
+    ![Rendelkezésre állási zóna kiválasztása](./media/create-portal-availability-zone/create-windows-vm-portal-availability-zone.png)
 
-6. Az összefoglalás lapon kattintson a **létrehozás** a virtuális gép üzembe helyezésének megkezdéséhez.
+6. Az összefoglalás lapon kattintson a **Létrehozás** elemre a virtuális gép telepítésének elindításához.
 
 7. A virtuális gép rögzítve lesz az Azure Portal irányítópultján. Az üzembe helyezés befejeztével a virtuális gép összefoglalás panelje automatikusan megnyílik.
 
-## <a name="confirm-zone-for-managed-disk-and-ip-address"></a>IP-cím és a felügyelt lemez zónájának megerősítése
+## <a name="confirm-zone-for-managed-disk-and-ip-address"></a>A felügyelt lemez és az IP-cím zónájának megerősítése
 
-Ha a virtuális gép egy rendelkezésre állási zónában, egy felügyelt lemezt a virtuális gép ugyanabban a rendelkezésre állási zónában jön létre. Alapértelmezés szerint egy nyilvános IP-címet is létrejön a zóna.
+Ha a virtuális gép rendelkezésre állási zónában van telepítve, a virtuális gép felügyelt lemeze ugyanabban a rendelkezésre állási zónában jön létre. Alapértelmezés szerint a rendszer a zónában is létrehoz egy nyilvános IP-címet.
 
-A zóna beállításait a portálon erőforrások ellenőrizheti.  
+Ezen erőforrások zónájának beállításait a portálon ellenőrizheti.  
 
-1. Kattintson a **erőforráscsoportok** , és ezután az erőforrás nevének csoportosíthatja a virtuális gép például *myResourceGroup*.
+1. Kattintson az **erőforráscsoportok** elemre, majd a virtuális géphez tartozó erőforráscsoport nevére, például *myResourceGroup*.
 
-2. Kattintson a lemez erőforrás nevét. A **áttekintése** lap tartalmazza a hely és a rendelkezésre állási zónában az erőforrás részleteit.
+2. Kattintson a lemez erőforrásának nevére. Az **Áttekintés** oldalon az erőforrás hely-és rendelkezésre állási zónájának adatai szerepelnek.
 
-    ![Felügyelt lemez a rendelkezésre állási zónában](./media/create-portal-availability-zone/create-windows-vm-portal-disk.png)
+    ![A felügyelt lemez rendelkezésre állási zónája](./media/create-portal-availability-zone/create-windows-vm-portal-disk.png)
 
-3. Kattintson a nyilvános IP-cím erőforrás nevére. A **áttekintése** lap tartalmazza a hely és a rendelkezésre állási zónában az erőforrás részleteit.
+3. Kattintson a nyilvános IP-cím erőforrás nevére. Az **Áttekintés** oldalon az erőforrás hely-és rendelkezésre állási zónájának adatai szerepelnek.
 
-    ![IP-cím rendelkezésre állási zónában](./media/create-portal-availability-zone/create-windows-vm-portal-ip.png)
+    ![IP-cím rendelkezésre állási zónája](./media/create-portal-availability-zone/create-windows-vm-portal-ip.png)
 
 
 
 ## <a name="next-steps"></a>További lépések
 
-Ebből a cikkből megtudhatta, hogyan hozható létre virtuális gép egy rendelkezésre állási zónában. Itt további információkat talál az Azure-beli virtuális gépek [régióiról és rendelkezésre állásáról](regions-and-availability.md).
+Ebből a cikkből megtudhatta, hogyan hozható létre virtuális gép egy rendelkezésre állási zónában. További információ az Azure-beli virtuális gépek [rendelkezésre állásáról](availability.md) .

@@ -10,12 +10,13 @@ ms.subservice: answer-search
 ms.topic: overview
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: ac1717a8e8a08fcfedc3bc21bb0f03b3e3ca2511
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ROBOTS: NOINDEX
+ms.openlocfilehash: 676b7f63b82a0e7c06264cb6dcbead8c1344a076
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57548081"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707114"
 ---
 # <a name="what-is-project-answer-search"></a>Mi a Válaszkeresés projekt?
 A Project Answer Search API a Bing v7 végpontot használja a válaszokat váró lekérdezések megválaszolására. Például a „Mekkora a Föld kerülete?” kérdésre a rendszer tényekkel válaszol.  A személyekkel, helyekkel vagy dolgokkal kapcsolatos lekérdezések a lekérdezésben azonosított entitásokkal kapcsolatos információkat adnak vissza. Ezek a forgatókönyvek olyan alkalmazások esetén lehetnek hasznosnak, amilyenek a csevegőrobotok, az üzenőalkalmazások, az olvasók stb.  
@@ -25,7 +26,7 @@ A lekérdezések a lekérdezési forgatókönyvtől függő válaszokat adnak vi
 ## <a name="endpoint"></a>Végpont
 A személyekkel, helyekkel vagy dolgokkal kapcsolatos információk lekéréséhez küldjön egy kérést az Answer Search API-végpontra. A különféle specifikációkat a fejlécekkel és az URL-paraméterekkel adhatja meg.  Szerepeltesse az *Ocp-Apim-Subscription-Key* fejlécet egy érvényes jogkivonattal.  A piac paraméter megadása kötelező. Jelenleg csak az `en-us` piac támogatott.
 
-Az alábbi lekérdezés lekérdezi a kérdésekre adott válaszok: "Mi az a föld kerület?"
+A következő lekérdezés választ kap a kérdésre: "Mi a föld kerülete?"
 
 GET:
 ```

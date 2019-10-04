@@ -1,262 +1,255 @@
 ---
-title: Valós idejű Twitter-vélemények elemzése az Azure Stream Analytics
-description: Ez a cikk ismerteti a Stream Analytics használata valós idejű Twitter-vélemények elemzése. Adatok az irányítópulton az élő esemény létrehozása a lépésekre bontott útmutatót.
+title: A Twitter hangulatának valós idejű elemzése Azure Stream Analytics
+description: Ez a cikk azt ismerteti, hogyan használható a Stream Analytics a valós idejű Twitter-hangulat elemzéséhez. Lépésenkénti útmutató az események generálásához az élő irányítópulton lévő adatokhoz.
 services: stream-analytics
-author: jseb225
-ms.author: jeanb
+author: mamccrea
+ms.author: mamccrea
 ms.reviewer: jasonh
-manager: kfile
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/29/2017
-ms.openlocfilehash: abb2a89f41340e8e2e26fa36cc20b790341618d0
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.date: 07/09/2019
+ms.openlocfilehash: 8561789d53c3c1b00ac1477909bcbe356fe6a85d
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60003700"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173120"
 ---
-# <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Valós idejű Twitter-vélemények elemzése az Azure Stream Analytics szolgáltatásban
+# <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>A Twitter hangulatának valós idejű elemzése Azure Stream Analytics
 
-> [!IMPORTANT] 
-> Twitter-alkalmazás létrehozása már nem érhető el – [apps.twitter.com](https://apps.twitter.com/). Ebben az oktatóanyagban tartalmazza az új Twitter API frissítése folyamatban van.
+Megtudhatja, hogyan hozhat létre a közösségi média elemzésére szolgáló hangulat-elemzési megoldást azáltal, hogy valós idejű Twitter-eseményeket helyez el az Azure Event Hubsba. Ezután írjon egy Azure Stream Analytics lekérdezést, hogy elemezze az adatelemzést, és tárolja az eredményeket későbbi használatra, vagy hozzon létre egy [Power bi](https://powerbi.com/) irányítópultot, hogy valós időben szolgáltasson betekintést.
 
-Ismerje meg, hogyan hozhat létre egy közösségi médiaelemzés sentiment analysis megoldást, és valós idejű Twitter-események Azure Event hubsba. Ezután elemezheti az adatokat, és egy Azure Stream Analytics lekérdezési később tárolja az eredményeket az írási vagy használhatja egy irányítópultot és [Power BI](https://powerbi.com/) valós idejű elemzéseket biztosít.
+A közösségi média elemzési eszközei segítenek a szervezeteknek a trendek megismerésében. A Kiemelt témakörök olyan témák és hozzáállások, amelyek nagy mennyiségű bejegyzéssel rendelkeznek a közösségi médiában. A *vélemény*-és adatbányászati elemzések, valamint a közösségi média-elemzési eszközök segítségével határozzák meg a termékre vagy ötletre vonatkozó hozzáállást. 
 
-Közösségi média elemzőeszközök megkönnyíti a szervezetek számára a népszerű témakörök ismertetése. Népszerű témakörök olyan témákat és szokások, amelyek nagy mennyiségű bejegyzések, a közösségi médiában. Hangulatelemzés, más néven *vélemény adatbányászati*, közösségi média analitikai eszközök segítségével határozza meg, szokások felé egy termék, idea és így tovább. 
+A valós idejű Twitter trend elemzése nagyszerű példa egy elemzési eszközre, mert a hashtag-előfizetési modell lehetővé teszi, hogy bizonyos kulcsszavakat (hashtageket) Hallgasson meg, és fejlessze a hírcsatornát.
 
-Twitter-trendek valós idejű elemzése egy remek példa egy elemzőeszköz azért a hashtag előfizetési modell lehetővé teszi meghatározott kulcsszavakat (hashtageket) figyelésére és a hírcsatorna hangulatelemzés fejlesztése.
+## <a name="scenario-social-media-sentiment-analysis-in-real-time"></a>Forgatókönyv: Közösségi média hangulatának elemzése valós időben
 
-## <a name="scenario-social-media-sentiment-analysis-in-real-time"></a>Forgatókönyv: Közösségi média vélemények elemzése valós időben
+A legfrissebb hírekkel rendelkező vállalatok számára hasznos, hogy az olvasók számára azonnal releváns webhely-tartalmakat szerezzenek a versenytársakkal szemben. A vállalat a közösségi média-elemzést olyan témakörökre használja, amelyek az olvasóknak a Twitter-adatokat valós időben elemezve használják.
 
-A vállalat, amely rendelkezik egy sajtóbeli híradásoknál webhely olyan így versenytársai használhatóságát teljes tartalmát, amely közvetlenül kapcsolódik az olvasók által iránt. A vállalati közösségimédia-elemzés, amely a olvasók, Twitter-adatok valós idejű hangulatelemzés végrehajtásával témakörök használja.
-
-Népszerű valós idejű Twitter-témakörök azonosításához, a vállalati tweet kötet és vélemények valós idejű elemzések a legfontosabb témakörök van szüksége. Más szóval szükség egy sentiment analysis elemzési motorjára a közösségimédia-hírcsatorna alapján.
+A Twitteren valós időben azonosított trendek felismeréséhez a vállalatnak valós idejű elemzésre van szüksége a tweetek mennyiségéről és a legfontosabb témakörökről.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ebben az oktatóanyagban, amely kapcsolódik a Twitteren, és a tweeteket, amelyek bizonyos (amely beállíthatja) hashtageket keres egy ügyfélalkalmazás használhat. Annak érdekében, hogy az alkalmazás futtatásához, és az Azure Stream Analytics használatával tweetek elemzése, az alábbiakkal kell rendelkeznie:
+Ebben a útmutatóban egy, a Twitterhez csatlakozó ügyfélalkalmazás és olyan tweetek megkeresi, amelyek bizonyos hashtagekkel rendelkeznek (amelyet beállíthat). Az alkalmazás futtatásához és a tweetek Azure streaming Analytics használatával történő elemzéséhez a következőkre van szükség:
 
-* Azure-előfizetés
-* Twitter-fiók 
-* Twitter-alkalmazás és a [OAuth-jogkivonat](https://dev.twitter.com/oauth/overview/application-owner-access-tokens) az adott alkalmazáshoz. Később egy Twitter-alkalmazás létrehozása magas szintű útmutatást biztosítunk.
-* A TwitterWPFClient alkalmazás, amely beolvassa a Twitter-hírcsatorna. Ez az alkalmazás első, töltse le a [TwitterWPFClient.zip](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/TwitterClient/TwitterWPFClient.zip) GitHub-fájlt, majd csomagolja ki a csomagot egy mappába a számítógépen. Ha meg szeretné tekinteni a kódot, és futtassa az alkalmazást a hibakeresőt a forrás, beszerezheti a forráskódot a [GitHub](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TwitterClient). 
+* Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
+* Egy [Twitter](https://twitter.com) -fiók.
+* A TwitterWPFClient alkalmazás, amely beolvassa a Twitter-hírcsatornát. Az alkalmazás beszerzéséhez töltse le a [TwitterWPFClient. zip](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/TwitterClient/TwitterWPFClient.zip) fájlt a githubról, majd csomagolja ki a csomagot a számítógép egyik mappájába. Ha szeretné megtekinteni a forráskódot, és futtatni az alkalmazást egy hibakeresőben, a forráskódot a Githubról szerezheti [](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TwitterClient)be. 
 
-## <a name="create-an-event-hub-for-streaming-analytics-input"></a>A Stream Analytics beviteli eseményközpont létrehozása
+## <a name="create-an-event-hub-for-streaming-analytics-input"></a>Event hub létrehozása a streaming Analytics bemenetéhez
 
-A mintaalkalmazás eseményeket hoz létre, és leküldi azokat egy Azure-eseményközpont. Az Azure event hubs a Stream Analytics eseményfogadás előnyben részesített módja. További információkért lásd: a [Azure Event Hubs dokumentációja](../event-hubs/event-hubs-what-is-event-hubs.md).
+A minta alkalmazás eseményeket hoz létre, és leküldi őket egy Azure Event hub-ba. Az Azure Event hubok előnyben részesített módja az események betöltésének a Stream Analytics. További információkért tekintse meg az [Azure Event Hubs dokumentációját](../event-hubs/event-hubs-what-is-event-hubs.md).
 
+### <a name="create-an-event-hub-namespace-and-event-hub"></a>Event hub-névtér és Event hub létrehozása
+Hozzon létre egy Event hub-névteret, majd adjon hozzá egy Event hub-t a névtérhez. Az Event hub-névterek a kapcsolódó Event Bus-példányok logikai csoportosítására szolgálnak. 
 
-### <a name="create-an-event-hub-namespace-and-event-hub"></a>Eseményközpont-névtér és eseményközpont létrehozása
-Ebben az eljárásban először hozzon létre egy eseményközpont-névteret, és ezután hozzáadhat új eseményközpont adott névtérhez. Eseményközpont-névtér logikailag csoportosítják a kapcsolódó esemény bus példányok szolgálnak. 
+1. Jelentkezzen be a Azure Portalba, és kattintson az **erőforrás** > létrehozása**eszközök internetes hálózata** > **Event hub**elemre. 
 
-1. Jelentkezzen be az Azure Portalon, és kattintson a **erőforrás létrehozása** > **IOT-** > **Eseményközpont**. 
-
-2. Az a **névtér létrehozása** panelen adja meg például a névtér nevét `<yourname>-socialtwitter-eh-ns`. A névtér bármilyen nevet használhat, de a név érvényes URL-cím lehet, és Azure-ban egyedinek kell lennie. 
+2. A **névtér létrehozása** panelen adja meg a névtér nevét, például `<yourname>-socialtwitter-eh-ns`:. Bármilyen nevet használhat a névtérhez, de a névnek érvényesnek kell lennie az URL-címhez, és egyedinek kell lennie az Azure-ban. 
     
-3. Válasszon ki egy előfizetést, és hozzon létre vagy válasszon ki egy erőforráscsoportot, majd kattintson **létrehozás**. 
+3. Válasszon ki egy előfizetést, hozzon létre vagy válasszon ki egy erőforráscsoportot, majd kattintson a **Létrehozás**gombra. 
 
     ![Eseményközpont-névtér létrehozása](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-eventhub-namespace.png)
  
-4. Ha a névtér telepítése befejeződött, az eseményközpont-névtér található az Azure-erőforrások listája. 
+4. Ha a névtér befejezte a telepítést, keresse meg az Event hub-névteret az Azure-erőforrások listájában. 
 
-5. Kattintson az új névtéren, és a névtér panelen kattintson a  **+ &nbsp;Eseményközpont**. 
+5. Kattintson az új névtérre, majd a névtér panelen kattintson az **+&nbsp;Event hub**elemre. 
 
-    ![Az Eseményközpont felvétele gombra egy új eseményközpont létrehozása](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-eventhub-button.png)    
+    ![Az Event hub hozzáadása gomb új Event hub létrehozásához](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-eventhub-button.png)    
  
-6. Nevezze el az új event hubs `socialtwitter-eh`. Más nevet is használhat. Ha így tesz, jegyezze fel, mert később szüksége lesz a neve. Nem kell minden olyan egyéb beállítások megadása az event hubs.
+6. Nevezze el az új Event `socialtwitter-eh`hubot. Más nevet is használhat. Ha így tesz, jegyezze fel, mert később szüksége lesz erre a névre. Az Event hub egyéb beállításait nem kell beállítania.
 
-    ![Egy új eseményközpont létrehozása panel](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-eventhub.png)
+    ![Új Event hub létrehozásának panelje](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-eventhub.png)
  
 7. Kattintson a **Create** (Létrehozás) gombra.
 
 
-### <a name="grant-access-to-the-event-hub"></a>Az event hubs hozzáférés engedélyezése
+### <a name="grant-access-to-the-event-hub"></a>Hozzáférés biztosítása az Event hub számára
 
-Egy folyamat küldhet adatokat egy eseményközpontba, mielőtt az event hubs egy szabályzatot, amely lehetővé teszi, hogy a megfelelő hozzáféréssel kell rendelkeznie. A hozzáférési szabályzat egy kapcsolati sztringet hoz létre, amelyben megtalálhatók az engedélyezési információk.
+Ahhoz, hogy egy folyamat hozzáférhessen az adatközponthoz, az Event hub-nak rendelkeznie kell egy olyan házirenddel, amely lehetővé teszi a megfelelő hozzáférést. A hozzáférési szabályzat egy kapcsolati sztringet hoz létre, amelyben megtalálhatók az engedélyezési információk.
 
-1.  Az esemény névtér panelen kattintson a **az Event Hubs** és kattintson az új eseményközpont neve.
+1.  Az esemény-névtér panelen kattintson a **Event Hubs** elemre, majd kattintson az új Event hub nevére.
 
-2.  Az event hub panelen kattintson a **megosztott elérési házirendek** majd  **+ &nbsp;Hozzáadás**.
+2.  Az Event hub panelen kattintson a **megosztott elérési házirendek** elemre, majd a **+&nbsp;Hozzáadás**gombra.
 
     >[!NOTE]
-    >Ellenőrizze, hogy az event hubs, nem az eseményközpont-névtér dolgozik.
+    >Győződjön meg arról, hogy az Event hub-t használja, nem az Event hub-névteret.
 
-3.  Nevű szabályzat hozzáadása `socialtwitter-access` és **jogcím**válassza **kezelés**.
+3.  Adja hozzá a és `socialtwitter-access` a **jogcím**nevű szabályzatot, majd válassza a **kezelés**lehetőséget.
 
-    ![Event hub új hozzáférési szabályzat létrehozására szolgáló panelt](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-shared-access-policy-manage.png)
+    ![Új Event hub hozzáférési szabályzat létrehozásának panelje](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-shared-access-policy-manage.png)
  
 4.  Kattintson a **Create** (Létrehozás) gombra.
 
-5.  A házirend telepítése után kattintson rá a megosztott elérési szabályzatok listájában.
+5.  Miután telepítette a házirendet, kattintson rá a megosztott hozzáférési házirendek listájában.
 
-6.  Keresse meg a be az **KAPCSOLATI karakterlánc – elsődleges kulcs** , és kattintson a Másolás gombra a kapcsolati karakterlánc mellett. 
+6.  Keresse meg a kapcsolódási **karakterlánc – elsődleges kulcs** jelölőnégyzetet, és kattintson a kapcsolódási karakterlánc melletti Másolás gombra. 
     
-    ![A hozzáférési szabályzatot az elsődleges kapcsolati karakterlánc kulcs másolása](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-shared-access-policy-copy-connection-string.png)
+    ![Az elsődleges kapcsolati sztring kulcsának másolása a hozzáférési házirendből](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-shared-access-policy-copy-connection-string.png)
  
-7.  Illessze be a kapcsolati sztringet egy szövegszerkesztőbe. Szükség van a kapcsolati karakterlánc a következő szakaszban rá néhány kisebb módosítások végrehajtása után.
+7.  Illessze be a kapcsolati sztringet egy szövegszerkesztőbe. A következő szakaszhoz szükség van erre a kapcsolódási sztringre, miután elvégezte néhány kis módosítást.
 
-    A kapcsolati karakterláncot a következőhöz hasonló:
+    A következőhöz hasonló a kapcsolatok karakterlánca:
 
         Endpoint=sb://YOURNAME-socialtwitter-eh-ns.servicebus.windows.net/;SharedAccessKeyName=socialtwitter-access;SharedAccessKey=Gw2NFZw6r...FxKbXaC2op6a0ZsPkI=;EntityPath=socialtwitter-eh
 
-    Figyelje meg, hogy a kapcsolati karakterláncot tartalmazza-e több kulcs-érték párok, pontosvesszővel elválasztva: `Endpoint`, `SharedAccessKeyName`, `SharedAccessKey`, és `EntityPath`.  
+    Figyelje meg, hogy a kapcsolatok karakterlánca több kulcs-érték párokat tartalmaz, pontosvesszővel elválasztva `EntityPath`: `Endpoint` `SharedAccessKey`, `SharedAccessKeyName`, és.  
 
     > [!NOTE]
-    > A biztonság érdekében a rendszer eltávolítja a példában a kapcsolati karakterlánc részei.
+    > A biztonság érdekében a példában szereplő, a kapcsolatok karakterláncának egyes részei el lettek távolítva.
 
-8.  A szöveges szerkesztő, távolítsa el a `EntityPath` párt a kapcsolati karakterláncból (ne felejtse el eltávolítani a pontosvesszőt is). Ha elkészült, a kapcsolati karakterláncot a következőhöz hasonló:
+8.  A szövegszerkesztőben távolítsa el a `EntityPath` pár elemet a kapcsolódási karakterláncból (ne felejtse el törölni a pontosvesszőt, amely megelőzi azt). Ha elkészült, a kapcsolódási sztring a következőképpen néz ki:
 
         Endpoint=sb://YOURNAME-socialtwitter-eh-ns.servicebus.windows.net/;SharedAccessKeyName=socialtwitter-access;SharedAccessKey=Gw2NFZw6r...FxKbXaC2op6a0ZsPkI=
 
 
-## <a name="configure-and-start-the-twitter-client-application"></a>Konfigurálja és indítsa el a Twitter-ügyfélalkalmazás
-Az ügyfélalkalmazás lekéri a tweet események közvetlenül a Twitteren. Ehhez szükséges engedélyt a Twitter-Streamelési API-jainak hívására. Adja meg az engedélyt, létrehozhat egy alkalmazást a Twitteren, amely állít elő, egyedi hitelesítő adatokat (például az OAuth-jogkivonatának). Konfigurálhatja az ügyfélalkalmazás ezeket a hitelesítő adatokat használja, ha azt az API-hívást hajt végre. 
+## <a name="configure-and-start-the-twitter-client-application"></a>A Twitter-ügyfélalkalmazás konfigurálása és elindítása
+Az ügyfélalkalmazás közvetlenül a Twitterről szerzi be a tweetek eseményeit. Ennek érdekében engedélyre van szüksége a Twitter streaming API-k meghívásához. Az engedély konfigurálásához létre kell hoznia egy alkalmazást a Twitteren, amely egyedi hitelesítő adatokat (például OAuth tokent) generál. Ezután beállíthatja, hogy az ügyfélalkalmazás ezeket a hitelesítő adatokat használja, amikor API-hívásokat végez. 
 
 ### <a name="create-a-twitter-application"></a>Twitter-alkalmazás létrehozása
-Ha Ön még nem rendelkezik egy Twitter-alkalmazás, amely ebben az oktatóanyagban használhatja, létrehozhat egyet. Twitter-fiókja már rendelkeznie kell.
+Ha még nem rendelkezik olyan Twitter-alkalmazással, amelyet ehhez a útmutatóhoz használhat, létrehozhat egyet. Már rendelkeznie kell egy Twitter-fiókkal.
 
 > [!NOTE]
-> A Twitter-alkalmazás létrehozása és lekérdezése, a kulcsok, titkos kódok és jogkivonat-pontos folyamat módosulhat. Ha ezek az utasítások nem egyezik meg a Twitter webhelyen megjelenő, tekintse meg a Twitter-fejlesztői dokumentáció.
+> Az alkalmazások létrehozásához és a kulcsok, titkok és tokenek beszerzéséhez szükséges pontos folyamat a Twitteren változhat. Ha ezek az utasítások nem egyeznek meg a Twitter webhelyén láthatókkal, tekintse meg a Twitter fejlesztői dokumentációját.
 
-1. Nyissa meg a [Twitter-alkalmazás felügyeleti oldala](https://apps.twitter.com/). 
+1. A böngészőben nyissa meg a [Twitter fejlesztőket](https://developer.twitter.com/en/apps), és válassza **az alkalmazás létrehozása**lehetőséget. Előfordulhat, hogy megjelenik egy üzenet, amely azt jelzi, hogy egy Twitter fejlesztői fiókra van szüksége. Nyugodtan megteheti, és az alkalmazás jóváhagyását követően meg kell jelennie egy megerősítő e-mailben. Több napot is igénybe vehet egy fejlesztői fiók jóváhagyása.
 
-2. Hozzon létre egy új alkalmazást. 
+   ![Twitter fejlesztői fiók megerősítése](./media/stream-analytics-twitter-sentiment-analysis-trends/twitter-dev-confirmation.png "Twitter fejlesztői fiók megerősítése")
 
-   * A webhely URL-CÍMÉT adja meg egy érvényes URL-címet. Nincs élő helyként. (Nem adható meg csak `localhost`.)
-   * A visszahívási mezőt hagyja üresen. Az ebben az oktatóanyagban használt ügyfélalkalmazás visszahívások nem igényel.
+   ![Twitter-alkalmazás részletei](./media/stream-analytics-twitter-sentiment-analysis-trends/provide-twitter-app-details.png "Twitter-alkalmazás részletei")
 
-     ![Twitter-alkalmazás létrehozása](./media/stream-analytics-twitter-sentiment-analysis-trends/create-twitter-application.png)
+2. Az **Alkalmazás létrehozása** oldalon adja meg az új alkalmazás adatait, majd válassza a **Twitter-alkalmazás létrehozása** parancsot.
 
-3. Igény szerint módosítsa az alkalmazás engedélyeit a csak olvasható.
+   ![Twitter-alkalmazás részletei](./media/stream-analytics-twitter-sentiment-analysis-trends/provide-twitter-app-details-create.png "Twitter-alkalmazás részletei")
 
-4. Az alkalmazás létrehozását követően nyissa meg a **kulcsok és hozzáférési tokenek** lapot.
+3. Az alkalmazás lapon válassza a **kulcsok és tokenek** fület, és másolja a **fogyasztói API-kulcs** és a **fogyasztói API titkos kulcsa**értékeit. A hozzáférési tokenek létrehozásához a hozzáférési jogkivonat **és a hozzáférési jogkivonat titka** területen válassza a **Létrehozás** lehetőséget. Másolja a **Hozzáférési token** és a **Hozzáférési token titkos kulcsa** mező értékeit.
 
-5. Kattintson a gombra kattintva hozzon létre egy hozzáférési jogkivonatot, és a hozzáférési jogkivonat titkos kulcsa.
+    ![Twitter-alkalmazás részletei](./media/stream-analytics-twitter-sentiment-analysis-trends/twitter-app-key-secret.png "Twitter-alkalmazás részletei")
 
-Tartsa praktikus, ezt az információt, mert szüksége lesz rá a következő eljárásban.
+Mentse a Twitter-alkalmazáshoz lekért értékeket. Az értékeket a útmutatóban később kell megadnia.
 
 >[!NOTE]
->A kulcsok és titkos kulcsokat, a Twitter-alkalmazás számára adja meg a Twitter-fiókja elérését. Kezelje ezt az információt érzékeny, ugyanaz, mint a Twitter-jelszavát. Például ne ágyazza be ezt az információt, amelyet mások átadhat egy alkalmazásban. 
+>A Twitter-alkalmazás kulcsai és titkai biztosítják a Twitter-fiók elérését. Ezeket az adatokat bizalmasként kell kezelni, ugyanúgy, mint a Twitter-jelszót. Például ne ágyazza be ezeket az adatokat egy olyan alkalmazásba, amelyet másoknak adnak meg. 
 
 
 ### <a name="configure-the-client-application"></a>Az ügyfélalkalmazás konfigurálása
-Létrehoztunk egy Twitter-adatok a csatlakozó ügyfélalkalmazás [Twitter a Streamelési API-k](https://dev.twitter.com/streaming/overview) tweet események kapcsolatos témaköröket egy meghatározott készletének gyűjtéséhez. Az alkalmazás használja a [Sentiment140](http://help.sentiment140.com/) nyílt forráskódú eszköz, amely a következő vélemények értéket rendel minden tweetnek:
+Létrehoztunk egy olyan ügyfélalkalmazás-alkalmazást, amely Twitter-adatokhoz csatlakozik a [Twitter streaming API](https://dev.twitter.com/streaming/overview) -kkal a témakörök adott készletével kapcsolatos Tweet-események összegyűjtéséhez. Az alkalmazás a [Sentiment140](http://help.sentiment140.com/) nyílt forráskódú eszközt használja, amely a következő érzelmi értéket rendeli hozzá az egyes tweetekhez:
 
 * 0 = negatív
-* 2 = neutral
+* 2 = semleges
 * 4 = pozitív
 
-Miután a tweet események értékű véleményt rendeltek, azok a korábban létrehozott event hubs kerüljenek.
+Miután a tweet-események hozzá lettek rendelve egy hangulati értékhez, a rendszer leküldi azokat a korábban létrehozott Event hubhoz.
 
-Mielőtt az alkalmazás fut, bizonyos adatait, például a Twitter-kulcsokat és az eseményközpont kapcsolati karakterláncával van szükség. Megadhatja, hogy a konfigurációs adatokat a következő lehetőségeket biztosítva:
+Az alkalmazás futtatása előtt szükség van bizonyos információkra, például a Twitter-kulcsokra és az Event hub kapcsolati karakterláncára. A konfigurációs adatokat az alábbi módokon adhatja meg:
 
-* Futtassa az alkalmazást, és az alkalmazás felhasználói felület használatával a kulcsokat, titkokat és kapcsolati karakterláncot adja meg. Ha így tesz, a rendszer a konfigurációs adatokat használja az aktuális munkamenet, de nem menti a rendszer.
-* Az alkalmazás .config fájl szerkesztésével, és ott állítsa az értékeket. Ez a módszer továbbra is fennáll, a konfigurációs adatokat, de azt is jelenti, hogy ez feltehetően bizalmas adatok szövegként a számítógépen tárolja.
+* Futtassa az alkalmazást, majd az alkalmazás felhasználói felületén adja meg a kulcsokat, a titkokat és a kapcsolódási karakterláncot. Ha ezt teszi, a rendszer a konfigurációs adatokat használja az aktuális munkamenethez, de nem menti azt.
+* Szerkessze az alkalmazás. config fájlját, és adja meg az értékeket. Ez a megközelítés megőrzi a konfigurációs információkat, de ez azt is jelenti, hogy ez a potenciálisan bizalmas információ tárolása egyszerű szövegként történik a számítógépen.
 
-Az alábbi eljárás mindkét módszerénél dokumentumok. 
+Az alábbi eljárás mindkét megközelítést dokumentálja. 
 
-1. Győződjön meg arról, hogy letöltötte és kicsomagolt a [TwitterWPFClient.zip](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/TwitterClient/TwitterWPFClient.zip) alkalmazás, az az előfeltételek.
+1. Győződjön meg róla, hogy letöltötte és kicsomagolta a [TwitterWPFClient. zip](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/TwitterClient/TwitterWPFClient.zip) alkalmazást az előfeltételek szakaszban felsoroltak szerint.
 
-2. A futási időben (és csak az aktuális munkamenethez tartozó) értékek Futtatás beállítása a `TwitterWPFClient.exe` alkalmazás. Ha az alkalmazás kéri, adja meg a következő értékeket:
+2. Az értékek futási időben történő beállításához (és csak az aktuális munkamenethez) futtassa az `TwitterWPFClient.exe` alkalmazást. Amikor az alkalmazás kéri, adja meg a következő értékeket:
 
     * A Twitter fogyasztói kulcs (API-kulcs).
-    * A Twitter fogyasztói titkos kulcs (API titkos kódot).
-    * A Twitter-hozzáférési jogkivonatot.
-    * A Twitter-hozzáférési Token titkos.
-    * A korábban mentett kapcsolati sztring adatait. Győződjön meg arról, hogy eltávolította a kapcsolati karakterláncot használja-e a `EntityPath` a kulcs-érték pár.
-    * A Twitter kulcsszavak, amelyekre meg szeretné határozni a róluk szóló véleményeket.
+    * A Twitter Consumer Secret (API Secret).
+    * A Twitter hozzáférési jogkivonata.
+    * A Twitter hozzáférési token titka.
+    * A korábban mentett kapcsolatok karakterláncának adatai. Ügyeljen arra, hogy a `EntityPath` kulcs-érték párokat a következőhöz tartozó kapcsolódási karakterláncot használja:.
+    * A Twitter-kulcsszavak, amelyeknek a véleményét meg kívánja határozni.
 
-   ![TwitterWpfClient alkalmazás fut, rejtett beállításainak megjelenítése:](./media/stream-analytics-twitter-sentiment-analysis-trends/wpfclientlines.png)
+   ![TwitterWpfClient-alkalmazás fut, amely rejtett beállításokat mutat be](./media/stream-analytics-twitter-sentiment-analysis-trends/wpfclientlines.png)
 
-3. Tartósan állítsa az értékeket, egy szövegszerkesztő használatával nyissa meg a TwitterWpfClient.exe.config fájlt. Ezt a a `<appSettings>` elem, ehhez:
+3. Az értékek állandó beállításához egy szövegszerkesztővel nyissa meg a TwitterWpfClient. exe. config fájlt. Ezután a `<appSettings>` elemben tegye a következőket:
 
-   * Állítsa be `oauth_consumer_key` a Twitter fogyasztói kulcs (API-kulcs). 
-   * Állítsa be `oauth_consumer_secret` , a Twitter fogyasztói titkos kulcs (API titkos kódot).
-   * Állítsa be `oauth_token` , a Twitter-hozzáférési jogkivonatot.
-   * Állítsa be `oauth_token_secret` , a Twitter hozzáférési Token titkos kulcsot.
+   * Állítsa `oauth_consumer_key` be a Twitter fogyasztói kulcsát (API-kulcs). 
+   * A `oauth_consumer_secret` Twitter Consumer Secret (API Secret) értékre van beállítva.
+   * Állítsa `oauth_token` be a Twitter hozzáférési tokent.
+   * Állítsa `oauth_token_secret` be a Twitter hozzáférési token titkát.
 
-     Későbbi a `<appSettings>` elem, ezeket a módosításokat:
+     A `<appSettings>` elem későbbi részében hajtsa végre a következő módosításokat:
 
-   * Állítsa be `EventHubName` event hub nevét (azt jelenti, az a entitás elérési útja értékre).
-   * Állítsa be `EventHubNameConnectionString` kapcsolati karakterláncot. Győződjön meg arról, hogy eltávolította a kapcsolati karakterláncot használja-e a `EntityPath` a kulcs-érték pár.
+   * Állítsa `EventHubName` az Event hub nevére (azaz az entitás elérési útjának értékére).
+   * Állítsa `EventHubNameConnectionString` be a kapcsolódási karakterláncot. Ügyeljen arra, hogy a `EntityPath` kulcs-érték párokat a következőhöz tartozó kapcsolódási karakterláncot használja:.
 
-     A `<appSettings>` szakaszban a következő példához hasonlóan jelenik meg. (És biztonsági, hogy burkolt be néhány sor és néhány karaktert eltávolítva.)
+     A `<appSettings>` szakasz az alábbi példához hasonlóan néz ki. (Az egyértelműség és a biztonság érdekében néhány sort becsomagoltunk, és eltávolítunk néhány karaktert.)
 
-     ![TwitterWpfClient alkalmazás konfigurációs fájlt egy szövegszerkesztőben, és a Twitter-kulcsok és titkok és az event hub-kapcsolati sztring adatait](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-tiwtter-app-config.png)
+     ![TwitterWpfClient az alkalmazás konfigurációs fájlját egy szövegszerkesztőben, amely megjeleníti a Twitter-kulcsokat és titkos kódokat, valamint az Event hub kapcsolati karakterláncának adatait](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-tiwtter-app-config.png)
  
-4. Ha az alkalmazás már nem indította el, futtassa a TwitterWpfClient.exe most. 
+4. Ha még nem indította el az alkalmazást, futtassa most a TwitterWpfClient. exe fájlt. 
 
-5. A zöld indítása gombra kattintva közösségi vélemények gyűjtése. A Tweet eseményeket a **CreatedAt**, **témakör**, és **SentimentScore** értékek az event hubs felé.
+5. A közösségi hangulat összegyűjtéséhez kattintson a zöld Start gombra. A tweet-események a **CreatedAt**, a **témakörben**és a **SentimentScore** megadott értékekkel jelennek meg az Event hub-ban.
 
-    ![TwitterWpfClient alkalmazást futtató, tweetek listáját megjelenítő](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-twitter-app-listing.png)
+    ![TwitterWpfClient-alkalmazás fut, amely a tweetek listáját jeleníti meg](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-twitter-app-listing.png)
 
     >[!NOTE]
-    >Ha hibába ütközik, és nem jelenik meg az ablak alsó részén megjelenő tweetstream, ellenőrizze a kulcsok és titkos kulcsok. Emellett ellenőrizze a kapcsolati karakterláncot (Győződjön meg arról, hogy ne tartalmazza a `EntityPath` kulcs-érték.)
+    >Ha hibákat lát, és nem látja az ablak alsó részén megjelenő tweeteket, ellenőrizze a kulcsokat és a titkos kulcsokat. Ellenőrizze a kapcsolatok karakterláncát is (ellenőrizze, hogy nem tartalmazza-e `EntityPath` a kulcsot és az értéket).
 
 
 ## <a name="create-a-stream-analytics-job"></a>Stream Analytics-feladat létrehozása
 
-Most, hogy a tweet események vannak twitteren valós idejű streamelési, állíthat be egy Stream Analytics-feladat ezek az események valós idejű elemzését.
+Most, hogy a tweet-események valós időben áramlanak a Twitterről, beállíthat egy Stream Analytics feladatot, amellyel valós időben elemezheti ezeket az eseményeket.
 
-1. Az Azure Portalon kattintson a **erőforrás létrehozása** > **IOT-** > **Stream Analytics-feladat**.
+1. A Azure Portal kattintson az **erőforrás** > létrehozása**eszközök internetes hálózata** > **stream Analytics**feladatokra.
 
-2. Nevezze el a feladat `socialtwitter-sa-job` és a egy előfizetést, erőforráscsoportot és helyet adja meg.
+2. Nevezze el a `socialtwitter-sa-job` feladatot, és adjon meg egy előfizetést, egy erőforráscsoportot és egy helyet.
 
-    Helyezze el a feladat és az eseményközpont ugyanabban a régióban, a legjobb teljesítmény érdekében érdemes, és hogy a régiók közötti adatátvitel után ne fizessen.
+    Érdemes a feladatot és az Event hub-t ugyanabban a régióban elhelyezni a legjobb teljesítmény érdekében, és így nem kell fizetnie a régiók közötti adatátvitel során.
 
-    ![Egy új Stream Analytics-feladat létrehozása](./media/stream-analytics-twitter-sentiment-analysis-trends/newjob.png)
-
-3. Kattintson a **Create** (Létrehozás) gombra.
-
-    A feladat jön létre, és a portál megjeleníti a feladat részleteit.
-
-
-## <a name="specify-the-job-input"></a>Adja meg a feladat bemenete
-
-1. A Stream Analytics-feladatban alatt **Feladattopológia** közepén feladat panelen kattintson a **bemenetek**. 
-
-2. Az a **bemenetek** panelen kattintson a  **+ &nbsp;Hozzáadás** , majd töltse ki a panel ezekkel az értékekkel:
-
-   * **Bemeneti áljel**: A nevet használja `TwitterStream`. Ha más nevet használ, jegyezze fel a, mert később szüksége.
-   * **Forrás típusa**: Válassza ki **adatfolyam**.
-   * **forrás**: Válassza ki **eseményközpont**.
-   * **Importálási beállítás**: Válassza ki **használható event hubs aktuális előfizetésből**. 
-   * **Service bus-névtér**: Válassza ki a korábban létrehozott eseményközpont-névtér (`<yourname>-socialtwitter-eh-ns`).
-   * **Event hubs**: Válassza ki a korábban létrehozott event hubs (`socialtwitter-eh`).
-   * **Eseményközpont szabályzatának neve**: Válassza ki a korábban létrehozott hozzáférési házirend (`socialtwitter-access`).
-
-     ![Hozzon létre új bemeneti Stream Analytics-feladat](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-twitter-new-input.png)
+    ![Új Stream Analytics-feladatok létrehozása](./media/stream-analytics-twitter-sentiment-analysis-trends/newjob.png)
 
 3. Kattintson a **Create** (Létrehozás) gombra.
 
+    A rendszer létrehozza a feladatot, és a portál megjeleníti a feladatok részleteit.
 
-## <a name="specify-the-job-query"></a>Adja meg a feladat-lekérdezés
 
-Stream Analytics egy egyszerű, deklaratív lekérdezési modellel, átalakítások leíró támogatja. A nyelv kapcsolatos további információkért tekintse meg a [Azure Stream Analytics lekérdezési nyelv leírása](https://msdn.microsoft.com/library/azure/dn834998.aspx).  Ez az oktatóanyag segítséget nyújt a hozhat létre, és a Twitter-adatok felett több lekérdezés teszteléséhez.
+## <a name="specify-the-job-input"></a>Adja meg a feladatok bemenetét
 
-Hasonlítsa össze a témakörök közötti említései számát, használhatja a [Átfedésmentes ablak](https://msdn.microsoft.com/library/azure/dn835055.aspx) említései száma beszerezni a témakör öt másodpercenként.
+1. A Stream Analytics-feladatban a feladatok panel közepén található **feladatok topológiája** alatt kattintson a **bemenetek**elemre. 
 
-1. Zárja be a **bemenetek** panelen, ha még nem tette.
+2. A **bemenetek** panelen kattintson a **+&nbsp;Hozzáadás** elemre, majd töltse ki a panelt a következő értékekkel:
 
-2. Az a **áttekintése** panelen kattintson a **lekérdezés szerkesztése** a közelében lekérdezésmező, jobb. Azure bemeneteit és kimeneteit a feladat konfigurált sorolja fel, és a egy lekérdezést, amely a bemeneti stream alakíthatja a kimeneti keresztül küldött létrehozását teszi lehetővé.
+   * **Bemeneti alias**: Használja a nevet `TwitterStream`. Ha más nevet használ, jegyezze fel, mert később szüksége lesz rá.
+   * **Forrás típusa**: Válassza **az adatfolyam**lehetőséget.
+   * **Forrás**: Válassza az **Event hub**elemet.
+   * **Importálási beállítás**: Válassza **az Event hub használata a jelenlegi**előfizetésből lehetőséget. 
+   * **Service Bus-névtér**: Válassza ki a korábban létrehozott Event hub-névteret`<yourname>-socialtwitter-eh-ns`().
+   * **Event hub**: Válassza ki a korábban létrehozott Event hub-t`socialtwitter-eh`().
+   * **Event hub-házirend neve**: Válassza ki a korábban létrehozott hozzáférési szabályzatot (`socialtwitter-access`).
 
-3. Győződjön meg arról, hogy a TwitterWpfClient alkalmazása fut-e. 
+     ![Új bemenet létrehozása a streaming Analytics-feladathoz](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-twitter-new-input.png)
 
-3. Az a **lekérdezés** panelen kattintson a Tovább gombra a pontra a `TwitterStream` adja meg, és válassza ki **mintaadatok bemenetből**.
+3. Kattintson a **Create** (Létrehozás) gombra.
 
-    ![A Stream Analytics feladat "Mintaadatok a bemenetből" kijelölt bejegyzés mintaadatok használandó menü parancsai](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-sample-data-from-input.png)
 
-    Ekkor megnyílik egy panel, amelyen megadhatja a mintaadatok mennyiségét tekintetében, hogy mennyi ideig beolvasása, megadva, hogy a bemeneti adatfolyam olvasása.
+## <a name="specify-the-job-query"></a>A feladatok lekérdezésének meghatározása
 
-4. Állítsa be **perc** 3 majd **OK**. 
+A Stream Analytics egy egyszerű, deklaratív lekérdezési modellt támogat, amely leírja a transzformációkat. Ha többet szeretne megtudni a nyelvről, tekintse meg a [Azure stream Analytics lekérdezés nyelvi referenciáját](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference).  Ez a útmutató segítséget nyújt a Twitter-alapú adatlekérdezések létrehozásához és teszteléséhez.
+
+Ha össze szeretné hasonlítani a témakörök közötti említések számát, egy leválasztó [ablak](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics) használatával lekérheti a témakörben szereplő, öt másodpercenként megjelenő megjegyzések számát.
+
+1. Ha még nem tette meg, zárjuk be a bemenetek panelt.
+
+2. Az **Áttekintés** panelen kattintson a lekérdezés **szerkesztése** lehetőségre a lekérdezési mező jobb felső sarkában. Az Azure felsorolja a feladathoz konfigurált bemeneteket és kimeneteket, és lehetővé teszi egy olyan lekérdezés létrehozását, amely lehetővé teszi a bemeneti adatfolyam átalakítását, ahogy az a kimenetre lesz küldve.
+
+3. Győződjön meg arról, hogy a TwitterWpfClient alkalmazás fut. 
+
+3. A **lekérdezés** panelen kattintson a `TwitterStream` bemenet melletti pontokra, majd válassza a **mintaadatok a bemenetből**lehetőséget.
+
+    ![A streaming Analytics-feladathoz tartozó mintaadatok használatára szolgáló menüpontok, a "mintaadatok a bemenetből" lehetőséggel](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-sample-data-from-input.png)
+
+    Ekkor megnyílik egy panel, amely lehetővé teszi a beolvasott mintaadatok mennyiségének megadását, meghatározva, hogy mennyi ideig kell beolvasni a bemeneti adatfolyamot.
+
+4. Állítsa be a **percet** 3 értékre, majd kattintson **az OK**gombra. 
     
-    ![A bemeneti stream mintavételezi a kiválasztott "3 percig" lehetőségei.](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-input-create-sample-data.png)
+    ![A bemeneti adatfolyam mintavételezésének lehetőségei, 3 perc kiválasztásával.](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-input-create-sample-data.png)
 
-    Az Azure-minták 3 perc alatt az adatokat a bemeneti streamből, és értesíti, amikor készen áll a mintaadatok. (Ez tart egy rövid ideig.) 
+    Az Azure 3 perces adatokat ad a bemeneti adatfolyamból, és értesítést küld, ha a mintaadatok készen állnak. (Ez rövid ideig tart.) 
 
-    A rendszer ideiglenesen tárolja a mintaadatokat, amelyek akkor érhetők el, amikor meg van nyitva a lekérdezési ablak. Ha bezárja a lekérdezési ablakban, a mintaadatok elvesznek, és létre kell hoznia egy új mintaadatkészletet. 
+    A rendszer ideiglenesen tárolja a mintaadatokat, amelyek akkor érhetők el, amikor meg van nyitva a lekérdezési ablak. Ha bezárta a lekérdezési ablakot, a mintaadatok elvesznek, és létre kell hoznia egy új mintaadatok-készletet. 
 
-5. A kódszerkesztőben lekérdezés módosítása a következőhöz:
+5. Módosítsa a lekérdezést a Kódszerkesztő alkalmazásban a következőre:
 
     ```
     SELECT System.Timestamp as Time, Topic, COUNT(*)
@@ -264,99 +257,99 @@ Hasonlítsa össze a témakörök közötti említései számát, használhatja 
     GROUP BY TUMBLINGWINDOW(s, 5), Topic
     ```
 
-    Ha nem a `TwitterStream` a bemeneti alias, helyettesítse be az aliast a `TwitterStream` a lekérdezésben.  
+    Ha nem a `TwitterStream` bemenet aliasát használja, cserélje `TwitterStream` ki az aliast a lekérdezésben.  
 
-    Ez a lekérdezés használ a **TIMESTAMP BY** kulcsszó használatával adjon meg egy időbélyegmezőt a hasznos adatok használhatók a historikus számítás. Ha ez a mező nincs megadva, akkor a leképezési művelet az eseményközpontból érkező minden esemény ideje szerint történik. További információ a "Érkezési ideje és kérelem ideje" szakaszában [Stream Analytics lekérdezési leírása](https://msdn.microsoft.com/library/azure/dn834998.aspx).
+    Ez a lekérdezés a **timestamp by** kulcsszó használatával határozza meg az időbeli számításban használni kívánt adattartalomhoz tartozó timestamp mezőt. Ha ez a mező nincs megadva, a rendszer az ablakkezelő műveletet a következő időpontban hajtja végre, amikor az egyes események megérkeztek az Event hub-ba. További információ: [stream Analytics lekérdezési útmutató](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)"érkezési idő vs alkalmazás ideje" szakaszában.
 
-    Ez a lekérdezés is hozzáfér minden időszak végén az időbélyeg használatával a **System.Timestamp** tulajdonság.
+    A lekérdezés a **System. timestamp** tulajdonság használatával is hozzáfér az egyes ablakok végének időbélyegéhez.
 
-5. Kattintson a **teszt**. A lekérdezés fut, a mintavételezett adatok.
+5. Kattintson a **teszt**gombra. A lekérdezés a mintavételen átadott adathalmazon fut.
     
-6. Kattintson a **Save** (Mentés) gombra. Ez menti a lekérdezés a Streaming Analytics-feladat részeként. (A mintaadatok nem mentse azt.)
+6. Kattintson a **Save** (Mentés) gombra. Ezzel menti a lekérdezést a streaming Analytics-feladatok részeként. (Nem menti a mintaadatok mentését.)
 
 
-## <a name="experiment-using-different-fields-from-the-stream"></a>Kísérletezzen a különböző mezővel a streamből 
+## <a name="experiment-using-different-fields-from-the-stream"></a>Kísérlet a stream különböző mezőinek használatával 
 
-Az alábbi táblázat a mezők, amelyek részei a streamelési adatok JSON. Nyugodtan kísérletezhet a Lekérdezésszerkesztő.
+A következő táblázat felsorolja a JSON-adatfolyamban tárolt adat részét képező mezőket. A lekérdezés-szerkesztőben nyugodtan kísérletezhet.
 
 |JSON-tulajdonság | Meghatározás|
 |--- | ---|
 |CreatedAt | A tweet létrehozásának időpontja|
-|Témakör | A témakör, amely megfelel a megadott kulcsszóval.|
-|SentimentScore | A véleménypontszám a Sentiment140|
-|Szerző | A Twitter-leírót a Twitter-üzenetet küldött|
-|Text | A tweet a teljes szervezet|
+|Témakör | A megadott kulcsszóval egyező témakör|
+|SentimentScore | Az Sentiment140 származó hangulati pontszám|
+|Szerző | A tweetet küldő Twitter-leíró|
+|Text | A tweet teljes törzse|
 
 
-## <a name="create-an-output-sink"></a>Hozzon létre egy kimeneti fogadóba
+## <a name="create-an-output-sink"></a>Kimeneti fogadó létrehozása
 
-Most már definiált az eseménystream egy eseményközpontba, adjon meg, hogy eseményeket és a egy lekérdezést a stream keresztül átalakítás végrehajtásához. Az utolsó lépés, hogy a feladat egy kimeneti fogadó.  
+Már definiált egy esemény-adatfolyamot, egy Event hub-bemenetet az események betöltéséhez, valamint egy lekérdezést, amely az adatfolyamon végzett átalakítást végzi. Az utolsó lépés a feladatokhoz tartozó kimeneti fogadó definiálása.  
 
-Ebben az oktatóanyagban írása az összesített tweet eseményeket a feladat lekérdezésből a az Azure Blob storage.  Az eredmények küldje le az Azure SQL Database, Azure Table storage, az Event Hubs, vagy a Power bi-ban az alkalmazás igényeinek.
+Ebben a útmutatóban az összesített Tweet-eseményeket a feladatsorból az Azure Blob Storage-ba írhatja.  Az eredményeket az alkalmazás igényeitől függően az Azure SQL Database, az Azure Table Storage, a Event Hubs vagy a Power BI használatával is leküldheti.
 
-## <a name="specify-the-job-output"></a>Adja meg a feladat kimenete
+## <a name="specify-the-job-output"></a>Adja meg a feladatok kimenetét
 
-1. Az a **Feladattopológia** területén kattintson a **kimeneti** mezőbe. 
+1. A **feladatok topológiája** szakaszban kattintson a **kimenet** mezőre. 
 
-2. Az a **kimenetek** panelen kattintson a  **+ &nbsp;Hozzáadás** , majd töltse ki a panel ezekkel az értékekkel:
+2. A **kimenetek** panelen kattintson a **+&nbsp;Hozzáadás** elemre, majd töltse ki a panelt a következő értékekkel:
 
-   * **Kimeneti alias**: A nevet használja `TwitterStream-Output`. 
-   * **Fogadó**: Válassza a **Blob Storage** lehetőséget.
-   * **Importálási beállítások**: Válassza ki **a blob storage aktuális előfizetésből**.
-   * **Storage-fiók**. Válassza ki **hozzon létre egy új tárfiókot.**
-   * **Storage-fiók** (második mezőben). Adja meg `YOURNAMEsa`, ahol `YOURNAME` a nevét, vagy egy másik egyedi karakterlánc. Használhatja, hogy a név csak kisbetűket és számokat, és az Azure-ban egyedinek kell lennie. 
+   * **Kimeneti alias**: Használja a nevet `TwitterStream-Output`. 
+   * Fogadó: Válassza a **Blob Storage** lehetőséget.
+   * **Importálási beállítások**: Válassza **a blob Storage használata a jelenlegi**előfizetésből lehetőséget.
+   * **Storage-fiók**. Válassza **az új Storage-fiók létrehozása lehetőséget.**
+   * **Storage-fiók** (második mező). Adja `YOURNAMEsa`meg a `YOURNAME` nevet, ahol a a neve vagy egy másik egyedi karakterlánc. Használhatja, hogy a név csak kisbetűket és számokat, és az Azure-ban egyedinek kell lennie. 
    * **Tároló**. Írja be a `socialtwitter` (igen) kifejezést.
-     A tárfiók nevét és a tároló nevének együttesen arra használják egy URI-t biztosítanak a blob Storage, ehhez hasonló: 
+     A Storage-fiók neve és a tároló neve együtt használható a blob Storage URI-azonosítójának megadásához, például: 
 
      `http://YOURNAMEsa.blob.core.windows.net/socialtwitter/...`
     
-     ![Stream Analytics-feladat "Új kimenet" panel](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-output-blob-storage.png)
+     !["Új kimenet" panel Stream Analytics feladatokhoz](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-output-blob-storage.png)
     
 4. Kattintson a **Create** (Létrehozás) gombra. 
 
-    Az Azure storage-fiókot hoz létre, és automatikusan létrehoz egy kulcsot. 
+    Az Azure létrehozza a Storage-fiókot, és automatikusan generálja a kulcsot. 
 
-5. Zárja be a **kimenetek** panelen. 
+5. Zárjuk be a kimenetek panelt. 
 
 
 ## <a name="start-the-job"></a>A feladat indítása
 
-Egy feladat bemenete, a lekérdezés és a kimeneti vannak megadva. Készen áll a Stream Analytics-feladat elindításához.
+Meg van adva a feladatok bemenete, lekérdezése és kimenete. Készen áll arra, hogy elindítsa a Stream Analytics feladatot.
 
-1. Győződjön meg arról, hogy a TwitterWpfClient alkalmazása fut-e. 
+1. Győződjön meg arról, hogy a TwitterWpfClient alkalmazás fut. 
 
-2. A feladat panelen kattintson a **Start**.
+2. A feladatok panelen kattintson a **Start**gombra.
 
-    ![A Stream Analytics-feladat indítása](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-sa-job-start-output.png)
+    ![A Stream Analytics-feladatok elindítása](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-sa-job-start-output.png)
 
-3. Az a **indítási feladat** panelen a **feladatkimenet kezdési idő**, jelölje be **most** és kattintson a **Start**. 
+3. A **kezdési feladatok** panelen a **feladatok kimenetének kezdési idejéhez**válassza a **most** lehetőséget, majd kattintson az **Indítás**gombra. 
 
-    ![A Stream Analytics-feladat "Feladat indítása" panel](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-sa-job-start-job-blade.png)
+    ![A Stream Analyticsi feladatokhoz tartozó "Start Job" panel](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-sa-job-start-job-blade.png)
 
-    Azure értesíti, ha a feladat elindult, és a feladatok panelen az állapot elemnél **futó**.
+    Az Azure értesíti Önt, ha elindította a feladatot, és a feladatok paneljén **fut**állapot jelenik meg.
 
-    ![Feladat futtatása](./media/stream-analytics-twitter-sentiment-analysis-trends/jobrunning.png)
+    ![Futó művelet](./media/stream-analytics-twitter-sentiment-analysis-trends/jobrunning.png)
 
-## <a name="view-output-for-sentiment-analysis"></a>Hangulatelemzés kimenetének megtekintése
+## <a name="view-output-for-sentiment-analysis"></a>Az érzelmi elemzés kimenetének megtekintése
 
-Miután a feladat elindult, és feldolgozása folyamatban van a valós idejű Twitter-streamet, megtekintheti a hangulatelemzés kimenetét.
+Miután elindította a feladatot, és feldolgozza a valós idejű Twitter streamet, megtekintheti az érzelmek elemzésének eredményét.
 
-Egy hasonló eszközzel [Azure Storage Explorer](https://storageexplorer.com/) vagy [Azure Explorer](https://www.cerebrata.com/products/azure-explorer/introduction) valós időben a feladat kimenetének megtekintéséhez. Itt használható [Power BI](https://powerbi.com/) bővítése az alkalmazás egy testreszabott irányítópulttal, az alábbi képernyőn láthatóhoz hasonló:
+A feladatok kimenetét valós időben tekintheti meg, például [Azure Storage Explorer](https://storageexplorer.com/) vagy az [Azure Explorer](https://www.cerebrata.com/products/azure-explorer/introduction) használatával. Innen [Power bi](https://powerbi.com/) használatával kiterjesztheti az alkalmazást, hogy az tartalmazza a testreszabott irányítópultot, például a következő képernyőképen láthatót:
 
 ![Power BI](./media/stream-analytics-twitter-sentiment-analysis-trends/power-bi.png)
 
 
-## <a name="create-another-query-to-identify-trending-topics"></a>Hozzon létre egy másik lekérdezést Népszerű-témakörök azonosításához
+## <a name="create-another-query-to-identify-trending-topics"></a>Egy másik lekérdezés létrehozása a felnövekvő témakörök azonosításához
 
-Egy másik lekérdezés segítségével megismerheti a Twitter-vélemények alapján egy [késleltetett ablak](https://msdn.microsoft.com/library/azure/dn835051.aspx). Népszerű-témakörök azonosításához, akkor tekintse meg az témakörök, amelyek egy küszöbértéket egy adott időn belül említései adatbázisközi.
+Egy másik lekérdezés, amellyel megismerheti a Twitter hangulatát, egy [csúszó ablakon](https://docs.microsoft.com/stream-analytics-query/sliding-window-azure-stream-analytics)alapul. A kapcsolódó témakörök azonosításához olyan témaköröket kell megkeresnie, amelyek egy adott időtartamon belül megemlítik a küszöbértéket.
 
-Ez az oktatóanyag az alkalmazásában akkor ellenőrizze témakörök, amelyek az elmúlt 5 másodperc alatt több mint 20 alkalommal szerepelnek.
+Ebben a útmutatóban az elmúlt 5 másodpercben több mint 20 alkalommal említett témaköröket keres.
 
-1. A feladat panelen kattintson a **leállítása** leállítani a feladatot. 
+1. A feladatok panelen kattintson a **Leállítás** gombra a művelet leállításához. 
 
-2. Az a **Feladattopológia** területén kattintson a **lekérdezés** mezőbe. 
+2. A **feladatok topológiája** szakaszban kattintson a **lekérdezés** mezőre. 
 
-3. Módosítsa a lekérdezést a következőhöz:
+3. Módosítsa a lekérdezést a következőre:
 
     ```    
     SELECT System.Timestamp as Time, Topic, COUNT(*) as Mentions
@@ -367,9 +360,9 @@ Ez az oktatóanyag az alkalmazásában akkor ellenőrizze témakörök, amelyek 
 
 4. Kattintson a **Save** (Mentés) gombra.
 
-5. Győződjön meg arról, hogy a TwitterWpfClient alkalmazása fut-e. 
+5. Győződjön meg arról, hogy a TwitterWpfClient alkalmazás fut. 
 
-6. Kattintson a **Start** , indítsa újra a feladatot, az új lekérdezés használatával.
+6. A **Start** gombra kattintva indítsa újra a feladatot az új lekérdezés használatával.
 
 
 ## <a name="get-support"></a>Támogatás kérése
@@ -379,5 +372,5 @@ További segítségre van szüksége, próbálja meg [Azure Stream Analytics-fó
 * [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Scale Azure Stream Analytics jobs](stream-analytics-scale-jobs.md) (Azure Stream Analytics-feladatok méretezése)
-* [Azure Stream Analytics Query Language Reference](https://msdn.microsoft.com/library/azure/dn834998.aspx) (Referencia az Azure Stream Analytics lekérdezési nyelvhez)
+* [Azure Stream Analytics Query Language Reference](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) (Referencia az Azure Stream Analytics lekérdezési nyelvhez)
 * [Az Azure Stream Analytics felügyeleti REST API referenciája](https://msdn.microsoft.com/library/azure/dn835031.aspx)

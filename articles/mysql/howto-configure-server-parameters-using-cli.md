@@ -1,55 +1,55 @@
 ---
-title: A szolgáltatás paramétereinek konfigurálása az Azure Database for MySQL-hez
-description: Ez a cikk ismerteti a szolgáltatás paramétereinek konfigurálása az Azure Database for MySQL-hez az Azure CLI parancssori segédprogram használatával.
+title: A szolgáltatás paramétereinek konfigurálása – Azure Database for MySQL
+description: Ez a cikk azt ismerteti, hogyan lehet konfigurálni a szolgáltatás paramétereit Azure Database for MySQL az Azure CLI parancssori segédprogram használatával.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.openlocfilehash: b0d7bbdc3e1dcad6f6cecb57b15e2e5df6b3fd28
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: a107c5130968ca960036d7e0f948cf6ea5d209a8
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53534893"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350330"
 ---
-# <a name="customize-server-configuration-parameters-by-using-azure-cli"></a>Kiszolgáló konfigurációs paramétereinek testreszabása az Azure CLI-vel
-Lista, megjelenítése és konfigurációs paramétereinek frissítése egy Azure Database for MySQL-kiszolgálóhoz az Azure CLI, az Azure parancssori segédprogram használatával. Motor konfigurációk egy részét a kiszolgálói szinten érhető el, és módosíthatók. 
+# <a name="customize-server-configuration-parameters-by-using-azure-cli"></a>Kiszolgáló konfigurációs paramétereinek testreszabása az Azure CLI használatával
+Az Azure CLI, az Azure parancssori segédprogram használatával listázhatja, megjelenítheti és frissítheti az Azure Database for MySQL-kiszolgáló konfigurációs paramétereit. A motor konfigurációjának egy részhalmaza a kiszolgáló szintjén érhető el, és módosítható. 
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez az útmutató lépéseinek, az alábbiak szükségesek:
+A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
 - [Egy Azure Database for MySQL-kiszolgáló](quickstart-create-mysql-server-database-using-azure-cli.md)
-- [Az Azure CLI](/cli/azure/install-azure-cli) parancssori segédprogram, vagy használja az Azure Cloud Shellt a böngészőben.
+- [Azure CLI](/cli/azure/install-azure-cli) parancssori segédprogram, vagy használja a Azure Cloud shellt a böngészőben.
 
-## <a name="list-server-configuration-parameters-for-azure-database-for-mysql-server"></a>Kiszolgáló konfigurációs paramétereinek listázása az Azure Database for MySQL-kiszolgáló
-A kiszolgáló és az értéküket az összes módosíthatóvá paraméter listázásához, futtassa a [az mysql server configuration list](/cli/azure/mysql/server/configuration#az-mysql-server-configuration-list) parancsot.
+## <a name="list-server-configuration-parameters-for-azure-database-for-mysql-server"></a>Azure Database for MySQL kiszolgáló kiszolgáló-konfigurációs paramétereinek listázása
+A kiszolgálók és azok értékei összes módosítható paraméterének listázásához futtassa az az [MySQL Server Configuration List](/cli/azure/mysql/server/configuration#az-mysql-server-configuration-list) parancsot.
 
-A kiszolgáló a kiszolgáló konfigurációs paramétereinek listázhatja **mydemoserver.mysql.database.azure.com** erőforráscsoportba tartozó **myresourcegroup**.
+A kiszolgálói **mydemoserver.mysql.database.Azure.com** tartozó kiszolgálói konfigurációs paramétereket a **myresourcegroup**erőforráscsoport alatt listázhatja.
 ```azurecli-interactive
 az mysql server configuration list --resource-group myresourcegroup --server mydemoserver
 ```
-Definíciója a listán szereplő paraméterek, tekintse meg a MySQL a referenciaszakasz [kiszolgáló rendszerváltozók](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html).
+Az egyes felsorolt paraméterek definícióját a MySQL-referenciával foglalkozó szakaszban találja a [kiszolgálói rendszerváltozók](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html)című részben.
 
-## <a name="show-server-configuration-parameter-details"></a>Kiszolgáló konfigurációs paraméter részletek megjelenítése
-Egy adott konfigurációs paraméter a kiszolgáló részleteinek megjelenítéséhez, futtassa a [az mysql server configuration show](/cli/azure/mysql/server/configuration#az-mysql-server-configuration-show) parancsot.
+## <a name="show-server-configuration-parameter-details"></a>Kiszolgáló konfigurációs paramétereinek megjelenítése – részletek
+A kiszolgálók egy adott konfigurációs paraméterének részleteinek megjelenítéséhez futtassa az az [MySQL Server Configuration show](/cli/azure/mysql/server/configuration#az-mysql-server-configuration-show) parancsot.
 
-Ez a példa bemutatja a részletek a **lassú\_lekérdezés\_log** kiszolgáló konfigurációs paraméter kiszolgáló **mydemoserver.mysql.database.azure.com** erőforráscsoportba tartozó **myresourcegroup.**
+Ez a példa a **lassú @ no__t-1query @ no__t-2log** Server Configuration paraméter részleteit jeleníti meg a kiszolgáló **mydemoserver.mysql.database.Azure.com** az erőforráscsoport **myresourcegroup alatt.**
 ```azurecli-interactive
 az mysql server configuration show --name slow_query_log --resource-group myresourcegroup --server mydemoserver
 ```
-## <a name="modify-a-server-configuration-parameter-value"></a>Módosítsa a kiszolgáló konfigurációs paraméter értéke
-Egy bizonyos kiszolgáló konfigurációs paraméter értékét, amely frissíti az alapul szolgáló konfigurációs értéket az MySQL server motor módosíthatja is. Frissítse a konfigurációt, használja a [az mysql server configuration set](/cli/azure/mysql/server/configuration#az-mysql-server-configuration-set) parancsot. 
+## <a name="modify-a-server-configuration-parameter-value"></a>Kiszolgáló-konfigurációs paraméter értékének módosítása
+Egy bizonyos kiszolgáló-konfigurációs paraméter értékét is módosíthatja, amely frissíti a MySQL-kiszolgáló motorjának alapjául szolgáló konfigurációs értéket. A konfiguráció frissítéséhez használja az az [MySQL Server Configuration set](/cli/azure/mysql/server/configuration#az-mysql-server-configuration-set) parancsot. 
 
-Frissítése az **lassú\_lekérdezés\_log** kiszolgáló konfigurációs paraméter kiszolgáló **mydemoserver.mysql.database.azure.com** erőforráscsoportba tartozó  **myresourcegroup.**
+A **lassú @ no__t-1query @ no__t-2log** Server Configuration paraméterének frissítése a kiszolgáló **mydemoserver.mysql.database.Azure.com** az erőforráscsoport **myresourcegroup alatt.**
 ```azurecli-interactive
 az mysql server configuration set --name slow_query_log --resource-group myresourcegroup --server mydemoserver --value ON
 ```
-Ha szeretne egy konfigurációs paraméter értékének alaphelyzetbe állítása, hagyja el a választható `--value` paraméterhez, és a szolgáltatás az alapértelmezett érték vonatkozik. A fenti példában akkor jelenne meg:
+Ha alaphelyzetbe kívánja állítani egy konfigurációs paraméter értékét, hagyja ki az opcionális `--value` paramétert, és a szolgáltatás alkalmazza az alapértelmezett értéket. A fenti példában a következőképpen fog kinézni:
 ```azurecli-interactive
 az mysql server configuration set --name slow_query_log --resource-group myresourcegroup --server mydemoserver
 ```
-Ez a kód alaphelyzetbe állítása a **lassú\_lekérdezés\_log** konfigurációját, és az alapértelmezett érték **OFF**. 
+Ez a kód visszaállítja a **lassú\_\_lekérdezési napló** konfigurációját azalapértelmezett értékre. 
 
 ## <a name="working-with-the-time-zone-parameter"></a>Időzóna-paraméter használata
 
@@ -72,9 +72,9 @@ SELECT name FROM mysql.time_zone_name;
 
 ### <a name="setting-the-global-level-time-zone"></a>A globális szintű időzóna beállítása
 
-A globális szintű időzóna lze nastavit pomocí vlastností a [az mysql server configuration set](/cli/azure/mysql/server/configuration#az-mysql-server-configuration-set) parancsot.
+A globális szintű időzónát az az [MySQL Server Configuration set](/cli/azure/mysql/server/configuration#az-mysql-server-configuration-set) paranccsal lehet beállítani.
 
-A következő parancsot a frissítések a **idő\_zóna** kiszolgáló konfigurációs paraméter kiszolgáló **mydemoserver.mysql.database.azure.com** erőforráscsoportba tartozó  **myresourcegroup** való **USA / csendes-óceáni térség**.
+A következő parancs frissíti a Server **mydemoserver.mysql.database.Azure.com** **Time @ no__t-1zone** Server konfigurációs paraméterét az **myresourcegroup** az **USA/csendes-óceáni**csoportba.
 
 ```azurecli-interactive
 az mysql server configuration set --name time_zone --resource-group myresourcegroup --server mydemoserver --value "US/Pacific"
@@ -93,4 +93,4 @@ A MySQL dokumentációjában [dátum és időpont függvényeinek](https://dev.m
 
 ## <a name="next-steps"></a>További lépések
 
-- Konfigurálása [kiszolgálóparaméterek az Azure Portalon](howto-server-parameters.md)
+- [Kiszolgáló paramétereinek konfigurálása Azure Portal](howto-server-parameters.md)

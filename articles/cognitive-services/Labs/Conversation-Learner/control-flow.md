@@ -1,44 +1,45 @@
 ---
-title: Beszélgetés Learner átvitelvezérlés – a Microsoft Cognitive Services |} A Microsoft Docs
+title: Conversation Learner vezérlési folyamat – Microsoft Cognitive Services | Microsoft Docs
 titleSuffix: Azure
-description: Ismerje meg a Beszélgetéstanuló vezérlési folyamatában.
+description: Tudnivalók a Conversation Learner vezérlési folyamatáról.
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: e0a0a88e249c0a032e5afaeea14b9b3cfcbdc319
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: nitinme
+ROBOTS: NOINDEX
+ms.openlocfilehash: f28b60d67e84e3e2e39cc647045a6dfca473b810
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58080660"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932091"
 ---
-## <a name="control-flow"></a>Átvitelvezérlés
+# <a name="control-flow"></a>Átvitelvezérlés
 
-Ez a dokumentum ismerteti a vezérlési folyamatában, a beszélgetés Learner (CL) szerint jelenik meg az alábbi ábrán látható.
+Ez a dokumentum a Conversation Learner (CL) vezérlési folyamatát írja le az alábbi ábrán látható módon.
 
 ![](media/controlflow.PNG)
 
-1. Felhasználó sikeresen megadja egy kifejezéssel a robot a például, "Mi az az időjárás, a Seattle?"
-1. CL átadja egy gépi tanulási modellt, amely kinyeri az entitásokat, a felhasználói bevitel
-   - Ez a modell által Beszélgetéstanuló hozhat létre, és www.luis.ai által üzemeltetett
-1. Minden kinyert entitásokat, és a felhasználói bevitel szöveg-, a robot kódban entitás észlelési visszahívási metódus lesznek átadva.
-    - Ez a kód előfordulhat, hogy a set/törlés/módosítására entitásértékek
-1. Neurális hálózat CL elvégzi az entitások kinyeréséhez, és a felhasználói bevitel, és a pontszámok a robot definiált összes művelet kimenete
-   - Ebben a példában a legnagyobb valószínűség műveletet, hogy az időjárás-előrejelzés küldése:
+1. A felhasználó egy kifejezést vagy kifejezést ír be a robotba, például "mi az időjárás Seattle-ben?"
+1. A CL átadja a felhasználói bemenetet egy gépi tanulási modellnek, amely kibontja az entitásokat
+   - Ezt a modellt a Conversation Learner hozza létre, és a www.luis.ai üzemelteti
+1. A robot kódjában a kinyert entitások és a felhasználó bemeneti szövege át lesz adva az entitás-észlelés visszahívási metódusának.
+    - Ez a kód beállíthatja/törölheti vagy módosíthatja az entitások értékeit
+1. A CL neurális hálózat ezután végrehajtja az entitás kinyerését és a felhasználói bevitelt, és a robotban definiált összes műveletet kiadja.
+   - Ebben a példában a legnagyobb valószínűséggel az időjárás-előrejelzést kell megadnia:
 
      ![](media/controlflow_forecast.PNG)
 
-1. A kiválasztott művelet ebben az esetben szükséges egy API-hívások időjárás-előrejelzés beolvasása. 
-1. Ez az API, amely a CL volt regisztrálva. AddCallback módot, majd meghívni.  Az API-t, az eredmény ezután visszaérkezik a felhasználó, egy üzenet – például "Sunny 67-es, a magas."
-1. A majd kezdeményezték a Neurális hálózat alapján az előző lépésben a következő művelet meghatározásához.
-1. A Neurális hálózat majd előrejelzi a lehetséges műveletek következő készletét, és a kiválasztott művelet van a felhasználó számára megjelenő, ebben az esetben "Bármi más?"
+1. A kiválasztott művelet, ebben az esetben egy API-hívást igényel az időjárás-előrejelzés lekéréséhez. 
+1. Ez az API, amelyet a CL használatával regisztráltak. Ezt követően meghívja a AddCallback metódust.  Az API eredményét ezután a rendszer üzenetként adja vissza a felhasználónak, például: "Sunny, magas 67."
+1. A rendszer ezután meghívja a neurális hálózatot, hogy meghatározza a következő műveletet az előző lépés alapján.
+1. A neurális hálózat ezután előre megjósolja a lehetséges műveletek következő készletét, és a kiválasztott művelet a felhasználó számára jelenik meg, ebben az esetben "bármi más?"
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Hogyan, akik a Beszélgetéstanuló](./how-to-teach-cl.md)
+> [A Conversation Learner tanítása](./how-to-teach-cl.md)

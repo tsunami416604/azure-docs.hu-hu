@@ -8,21 +8,21 @@ ms.topic: include
 ms.date: 10/11/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 62eb75ef18d3ac81be65783e57c21c0aefd7a429
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: a2729af6a689daa551fc01f585324d53a8770a9b
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57554659"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "67179482"
 ---
-| Erőforrás | Alapértelmezett korlát |
+| Resource | Alapértelmezett korlát |
 | --- | :--- |
-| Előfizetésenként legfeljebb fürtök | 100 |
-| Csomópontok maximális száma fürtönként | 100 |
-| Csomópontonkénti maximális podok: [Alapszintű hálózatkezelési] [ basic-networking] Kubenet az | 110 |
-| Csomópontonkénti maximális podok: [Speciális hálózatkezelés] [ advanced-networking] az Azure Container hálózati adapter | Az Azure CLI-telepítés: 30<sup>1</sup><br />Az Azure Resource Manager-sablon: 30<sup>1</sup><br />Portál központi telepítése: 30 |
+| Fürtök maximális száma előfizetéskor | 100 |
+| Csomópontok maximális száma fürt szerint | 100 |
+| Hüvelyek maximális száma (csomópont): [Alapszintű hálózatkezelés][basic-networking] a Kubenet | 110 |
+| Hüvelyek maximális száma (csomópont): [Speciális hálózatkezelés][advanced-networking] az Azure Container Network Interface felülettel | Azure CLI üzembe helyezése: 30<sup>1</sup><br />Azure Resource Manager sablon: 30<sup>1</sup><br />Portál üzembe helyezése: 30 |
 
-<sup>1</sup>központi telepítésekor egy Azure Kubernetes Service (AKS)-fürtöt az Azure CLI vagy a Resource Manager-sablonnal, értéke legfeljebb 110 podok száma csomópontonként konfigurálható. Csomópontonkénti maximális podok után már telepített egy AKS-fürtöt, vagy ha a fürt üzembe helyezése az Azure portal használatával nem konfigurálható.<br />
+<sup>1</sup> Ha az Azure CLI-vel vagy egy Resource Manager-sablonnal helyez üzembe egy Azure Kubernetes Service (ak) fürtöt, ez az érték legfeljebb 250 hüvelyre konfigurálható. Ha már üzembe helyezett egy AK-fürtöt, a csomópontok maximális száma nem konfigurálható, vagy ha a Azure Portal használatával helyez üzembe egy fürtöt.<br />
 
 <!-- LINKS - Internal -->
 [basic-networking]: ../articles/aks/concepts-network.md#kubenet-basic-networking

@@ -1,416 +1,333 @@
 ---
 title: A csapat adatelemzési folyamat csapatával az vezethet a csapat feladatok
-description: A feladatok, amelyek egy Csapatvezető egy data science csoportprojektet a Vázlat várhatóan hajtsa végre az adatelemzési csapatával.
+description: Egy csapat adatelemzési folyamatának csapatával kapcsolatos feladatok részletes áttekintése
 author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 09/23/2019
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 45be3d7f865c7b72ae62efbf99dbbb4594b1846f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 9c6d0fcc20afc613094f10e9f3fb7c917ec6fa73
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55465265"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327253"
 ---
-# <a name="tasks-for-the-team-lead-in-the-team-data-science-process-team"></a>A csapat adatelemzési folyamat csapatával az vezethet a csapat feladatok
+# <a name="tasks-for-the-team-lead-on-a-team-data-science-process-team"></a>A Team adatelemzési folyamatának csapatával kapcsolatos feladatok
 
-Ez a témakör ismerteti a feladatokat, amely egy Csapatvezető várható esetében az adatelemzési csapatával. Együttműködő csapat környezet, amely szabványosítja az a célja a [csoportos adatelemzési folyamat](overview.md) (TDSP). Tdsp-vel egy rugalmas és iteratív adatelemzési módszer, amelynek célja prediktív elemzési megoldások és intelligens alkalmazások hatékony. Együttműködés és a csapat learning növelésére tervezték. A folyamat egy szerkezetekből ajánlott eljárást, és mind a Microsofttól, valamint az iparág, hogy elősegítse a cégek teljes adatelemzési kezdeményezések sikeres megvalósítását szükséges struktúrák rejlő előnyöket a analytics programok. Röviden ismerteti a személyzet szerepkörök és hozzájuk kapcsolódó részfeladatokat adatelemzési csapatával által végrehajtott ezt a folyamatot, a szabványosításával lásd [csoportos adatelemzési folyamat szerepkörök és feladatok](roles-tasks.md).
+Ez a cikk azokat a feladatokat ismerteti, amelyekkel a *csapat vezeti* az adatelemzési csapatot. A csapat vezető célja, hogy olyan együttműködő csapatmunka-környezetet hozzon létre, amely a [csoportos adatelemzési folyamat](overview.md) (TDSP) szabványosítására szolgál. A TDSP célja az együttműködés és a csapatmunka fejlesztése. 
 
-A **csapata** egy csapatot, a data science egység a vállalat felügyeli. Egy csoport több adatszakértők áll. Data science egység csak kis számú adatszakértők az **Csoportkezelő** és a **csapata** lehet, hogy ugyanaz a személy vagy azok sikerült engedélyezheti – delegálja a feladatot egy helyettes. De a feladatok ne módosítsa. A munkafolyamat tölti ki a környezetet a csapatvezetők feladatok számára az alábbi ábrán vannak kitaláltak:
+A TDSP egy agilis, ismétlődő adatelemzési módszer a prediktív elemzési megoldások és intelligens alkalmazások hatékony megvalósítása érdekében. A folyamat a Microsoft és az iparág ajánlott eljárásainak és struktúráinak egyike, amely az adatelemzési kezdeményezések sikeres megvalósításához szükséges, így a vállalatok teljes mértékben kihasználhatják az elemzési programjaik előnyeit. A munkatársak szerepköreinek és a TDSP szabványosított adatelemzési csapathoz kapcsolódó feladatoknak a körvonalazása: a [csoportos adatelemzési folyamat szerepkörei és feladatai](roles-tasks.md).
 
-![1](./media/team-lead-tasks/team-leads-1-creating-teams.png)
+A csapat vezetője a vállalat adattudományi egységében számos adatszakértőből álló csapatot kezel. Az adattudományi egység méretétől és struktúrájától függően a [csoportvezető](group-manager-tasks.md) és a csapat vezetője is lehet ugyanaz a személy, vagy a feladataikat helyetteseknek delegálhatja. De a feladatok ne módosítsa. 
 
->[AZURE.NOTE] A feladatokat az 1. és 2. ábra blokkok van szükség, ha az Azure DevOps használja a kód üzemeltetési platformot, és a egy külön Azure DevOps-projekt saját csapat számára legyen. Miután végrehajtotta ezeket a feladatokat a csoport minden tárház a projekt alatt hozható létre. 
+Az alábbi ábrán a csapat által vezetett feladatok munkafolyamata látható a Team-környezet beállításához:
 
-Után a következő szakaszban megadott feladatokat teljesülnek, a csoport-kezelő számos előfeltételnek, nincsenek az öt egyszerű feladatokat (egyes nem kötelező), amely ebben az oktatóanyagban elvégezte. Ezek a feladatok felel meg a fő számozott Ez a témakör szakaszait:
+![Csapat vezető tevékenységének munkafolyamata](./media/team-lead-tasks/team-leads-1-creating-teams.png)
 
-1. Hozzon létre egy **projekt** meg a csoport az Azure DevOps-szolgáltatásokkal, a csoport és a projekt adattárait két csapat:
-    - **ProjectTemplate tárház** 
-    - **TeamUtilities tárház**
-2. Rendezze a csapat **ProjectTemplate** adattárat a **GroupProjectTemplate** tárház, amely be lett állítva a csoport kezelője által. 
-3. Hozza létre a team adatok és analitika erőforrások:
-    - A csapat-specifikus segédprogramok használatával adja hozzá a **TeamUtilities** tárház. 
-    - (Nem kötelező) Hozzon létre egy **az Azure file storage** azon adategységeiről, amelyeket a teljes csoport számára hasznos lehet tárolására használható. 
-4. (Nem kötelező) Csatlakoztassa az Azure file storage-a **adatelemző virtuális gép** (DSVM) a csapat vezethet, és adja hozzá az adategységek rajta.
-5. Állítsa be a **biztonsági ellenőrzést** a csoporttagok felvétele, és konfigurálja a jogosultságait.
+1. Hozzon létre egy **Team-projektet** a csoport szervezetében az Azure DevOps. 
+  
+1. Nevezze át az alapértelmezett **TeamUtilities**a csoportba.
+  
+1. Hozzon létre egy új **TeamTemplate** -tárházat a csapat projektben. 
+  
+1. Importálja a csoport **GroupUtilities** és **GroupProjectTemplate** -tárházának tartalmát a **TeamUtilities** és a **TeamTemplate** -tárházba. 
+  
+1. Állítsa be a **biztonsági vezérlést** a csapattagok hozzáadásával és az engedélyeik konfigurálásával.
+  
+1. Ha szükséges, hozzon létre a csoport és az elemzési erőforrások:
+   - Adja hozzá a **TeamUtilities** -tárházhoz a csoportra jellemző segédprogramokat. 
+   - Hozzon létre **Azure file Storage** -t az adategységek tárolására, amelyek hasznosak lehetnek a teljes csapat számára. 
+   - Csatlakoztassa az Azure file Storage-t a Team Lead **Data Science Virtual Machine** (DSVM), és adja hozzá az adategységeket.
 
->[AZURE.NOTE] Az Azure DevOps használatával a következő utasítások TDSP csoportos környezetben beállításához szükséges lépéseket szerkezeti azt. Azt adja meg, hogyan végezheti el ezeket a feladatokat az Azure DevOps, mivel az a Microsoft TDSP tanfolyamsorozat. Egy másik, a üzemeltetési platform kód a csoport használható, ha a feladatokat kell végrehajtani a csapatvezetők általában, ne módosítsa. Azonban ezeket a feladatokat a módja eltérő lesz.
+Az alábbi oktatóanyag részletesen ismerteti a lépéseket.
 
-## <a name="repositories-and-directories"></a>Adattárak és könyvtárak
+> [!NOTE] 
+> Ez a cikk az Azure DevOps és a DSVM segítségével állítja be a TDSP-csapat környezetét, mert ez a Microsoft-TDSP implementálása. Ha a csapata más kódot üzemeltető vagy fejlesztői platformot használ, a csapat vezető feladatai megegyeznek, de a végrehajtásuk módja eltérő lehet.
 
-Ez a témakör az adattárak és a címtárak rövidített használja. Ezeket a neveket könnyebben hajtsa végre a műveleteket az adattárak és a címtárak között. Ezen jelölés (**R** a Git-tárházak és **D** a dsvm-hez a helyi címtárak) szerepel a következő szakaszokban:
+## <a name="prerequisites"></a>Előfeltételek
 
-- **R1**: A **GroupProjectTemplate** , amely a csoport kezelőjének beállítása az Azure DevOps-csoport kiszolgálón Git a tárház.
-- **R3**: A csapat **ProjectTemplate** beállítása Git a tárház.
-- **R4**: A **TeamUtilities** beállítása Git a tárház.
-- **D1**: A helyi könyvtárban klónozható R1 a, és másolja a D3.
-- **D3**: A helyi könyvtárban klónozható a R3, testreszabása és visszamásolja R3.
-- **D4**: A helyi könyvtárban klónozható R4 a, testre szabhatja, és másolja vissza az R4.
+Ez az oktatóanyag azt feltételezi, hogy a következő erőforrásokat és engedélyeket állította be a [Group Manager](group-manager-tasks.md):
 
-Ebben az oktatóanyagban az adattárak és könyvtárakhoz megadott nevek feltételezve, hogy az a célja egy külön projektet a saját nagyobb data science csoporton belüli csoport létrehozása adtak meg. Azonban más lehetőség van, Csapatvezető megnyitása:
+- Az adategységhez tartozó Azure DevOps- **szervezet**
+- **GroupProjectTemplate** -és **GroupUtilities** -Tárházak, amelyek a Microsoft TDSP-csapat **ProjectTemplate** -és **segédprogram** -tárházának tartalmával vannak feltöltve
+- A céges fiókjához tartozó engedélyek, amelyek segítségével projekteket és adattárakat hozhat létre a csapat számára
 
-- A teljes csoport lehet váltani, egyetlen projekt létrehozása. Ezután minden-projektekhez az összes adat adattudománnyal foglalkozó csapatai Ez egyetlen projekt keretében lenne. Ennek érdekében megadhat egy git-rendszergazdát, hogy kövesse ezeket az utasításokat, egyetlen projekt létrehozásához. Lehet, hogy ez a forgatókönyv érvényes, például:
-    -  egy kis méretű adatok adatelemzési csoport, amelynek nincs több adat adattudománnyal foglalkozó csapatai 
-    -  nagyobb data science csoport több data science csapatok számára, amely mégis szeretne optimalizálja a tevékenységeket, például-szintű sprint tervezési közötti együttműködést. 
-- Csapatok kiválaszthatják a csapat-specifikus projektsablonok vagy csapat-specifikus segédprogramok a a teljes csoport egyetlen projekt keretében. Ebben az esetben a csapatvezetők hozzon létre projekt sablon adattárak és/vagy csapat segédprogramok tárházak ugyanazon a projekten alatt. Nevezze el az alábbi két adattár *< TeamName\>ProjectTemplate* és *< TeamName\>segédprogramok*, például *TeamJohnProjectTemplate*és *TeamJohnUtilities*. 
+A Tárházak klónozásához és a tartalmak helyi gépen vagy DSVM való módosításához, illetve az Azure file Storage beállításához és a DSVM való csatlakoztatásához a következőkre lesz szüksége:
 
-Minden esetben csapatvezetők ahhoz, hogy a csapat tagjai tudja, melyik sablont és segédprogramok tárházak beállítása és a projekt és segédprogramok adattár klónozása alkalmaznia kell. Projekt érdeklődők kell követniük a [feladatok projekt vezethet az adatelemzési csapatával](project-lead-tasks.md) hozhat létre a project-adattárak, külön projektek alatt vagy egy projekt alatt. 
+- Azure-előfizetés.
+- A git telepítve van a gépen. Ha DSVM használ, a git előre telepítve van. Egyéb esetben a [platformok és eszközök függelék](platforms-and-tools.md#appendix).
+- Ha DSVM szeretne használni, az Azure-ban létrehozott és konfigurált Windows-vagy Linux-DSVM. További információt és útmutatást a [Data Science Virtual Machine dokumentációjában](/azure/machine-learning/data-science-virtual-machine/)talál.
+- Windows DSVM esetén a [git Hitelesítőadat-kezelő (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) telepítve van a gépen. A *readme.MD* fájlban görgessen le a **letöltés és telepítés** szakaszban, és válassza ki a **legújabb telepítőt**. Töltse le az *. exe* -telepítőt a telepítő lapról, és futtassa. 
+- Linux DSVM esetében egy nyilvános SSH-kulcs, amely be van állítva a DSVM, és hozzá lett adva az Azure DevOps. További információt és útmutatást az **SSH nyilvános kulcs létrehozása** című szakaszban talál a [platformok és eszközök függelékben](platforms-and-tools.md#appendix). 
 
+## <a name="create-a-team-project-and-repositories"></a>Csapat projekt és adattárak létrehozása
 
-## <a name="0-prerequisites"></a>0. Előfeltételek
+Ebben a szakaszban a következő erőforrásokat hozza létre a csoport Azure DevOps-szervezetében:
 
-Az előfeltételek teljesülnek, a hozzárendelve a csoport kezelőjének ismertetett feladatok végrehajtásával [Csoportkezelő feladatokat egy adatelemzési csapatával](group-manager-tasks.md). Összefoglalva az itt, a következő követelményeknek kell megfelelni a csapat vezető feladatok megkezdése előtt: 
+- A **MyTeam** projekt az Azure DevOps
+- A **TeamTemplate** adattár
+- A **TeamUtilities** adattár
 
-- A **csoportban az Azure DevOps-szolgáltatásokkal** (vagy egyéb üzemeltetési platform kód a fiók) be lett állítva a csoport kezelője által.
-- A **GroupProjectTemplate tárház** (R1) be lett állítva a csoport-fiókjában a csoport-kezelő üzemeltetési platform használatát tervezi a kódba.
-- Rendelkezik-e **jogosult** csoport fiókja csapata tárházak létrehozásához.
-- Git a gépen telepítve kell lennie. Ha egy adatelemzési virtuális gép (DSVM) használ, Git előre telepítve van, és készen áll. Egyéb esetben a [platformok és eszközök függelék](platforms-and-tools.md#appendix).  
-- Ha használ egy **Windows DSVM**, rendelkeznie kell [Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) telepítve van a gépén. A README.md fájl görgessen le a **töltse le és telepítse** szakaszt, és kattintson a *legújabb*. Ezzel továbblép a telepítő legújabb lapra. Töltse le az .exe itt, és futtathatja. 
-- Ha használ **Linuxos DSVM**, egy nyilvános SSH-kulcs létrehozása a dsvm-hez, és adja hozzá a csoport az Azure DevOps-szolgáltatásokkal. SSH kapcsolatos további információkért lásd: a **hozzon létre SSH nyilvános kulcs** című rész a [platformok és eszközök függelék](platforms-and-tools.md#appendix). 
-    
-## <a name="1-create-a-project-and-repositories"></a>1. Hozzon létre egy projektet és adattárak
+Az ebben az oktatóanyagban szereplő adattárakhoz és könyvtárakhoz megadott nevek feltételezik, hogy egy külön projektet kíván létrehozni a saját csapata számára a nagyobb adatelemzési szervezeten belül. A teljes csoport azonban úgy is dönthet, hogy a Group Manager vagy a szervezet rendszergazdája által létrehozott egyetlen projekt keretében dolgozik. Ezután az összes adatelemzési csapat létrehoz egy adattárat ebben az egyetlen projektben. Ez a forgatókönyv a következő esetekben lehet érvényes:
+- Egy kis adattudományi csoport, amely nem rendelkezik több adatelemzési csapattal. 
+- Egy nagyobb adatelemzési csoport több adatelemző csapattal, amelyek ennek ellenére szeretnének optimalizálni a csapaton belüli együttműködést olyan tevékenységekkel, mint a csoport szintű Sprint-tervezés. 
 
-Töltse ki ezt a lépést, ha használja az Azure DevOps, a kódot futtató verziókezelés és Együttműködési platform. Ez a szakasz rendelkezik, hozzon létre három összetevők a csoport az Azure DevOps-szolgáltatásokkal:
+Ha a csapatok úgy döntenek, hogy a csoportra jellemző adattárak egyetlen csoportos projektben vannak, akkor a csapat által létrehozott adattárakat olyan nevekkel kell létrehozni, mint  *\<a csapatnév > a Template* és  *\<a csapatnév > Utilities*. Például: *TeamATemplate* és *TeamAUtilities*. 
 
-- **MyTeam** az Azure DevOps project
-- **MyProjectTemplate** tárház (**R3**) a Git
-- **MyTeamUtilities** tárház (**R4**) a Git
+A csapatnak minden esetben meg kell adnia, hogy a csapat tagjai tudják, hogy mely sablon és segédprogramok tárházat állítanak be a beállításhoz és a klónozáshoz. A projekt-érdeklődőknek követniük kell az [adatelemzési csapat projekt-vezető feladatait](project-lead-tasks.md) a projekt-Tárházak létrehozásához, akár külön projektek, akár egyetlen projekt keretében. 
 
 ### <a name="create-the-myteam-project"></a>A MyTeam-projekt létrehozása
 
-- Nyissa meg a csoport az Azure DevOps-szolgáltatásokkal kezdőlap URL-címen `https://<Azure DevOps Services Name\>.visualstudio.com`. 
-- Kattintson a **új** projekt létrehozásához. 
-
-    ![2](./media/team-lead-tasks/team-leads-2-create-new-team.png)
-
-- Projekt létrehozása ablak kéri, adjon meg a projekt neve (**MyTeam** ebben a példában). Győződjön meg arról, hogy kiválasztotta **Agile** , a **folyamatsablon** és **Git** , a **verziókövetés**. 
-
-    ![3](./media/team-lead-tasks/team-leads-3-create-new-team-2.png)
-
-- Kattintson a **Create project**. A projekt **MyTeam** kevesebb mint 1 percen belül létrejön. 
-
-- A projekt **MyTeam** van hozta létre, kattintson a **nyissa meg a projekt** gombra, a rendszer a projekt kezdőlapjára. 
-
-    ![4](./media/team-lead-tasks/team-leads-4-create-new-team-3.png)
-
-- Ha megjelenik egy **Gratulálunk!** előugró ablakban kattintson a **adja hozzá kódot** (vörös téglalappal gomb). Ellenkező esetben kattintson a **kód** (a sárga mezőben). Ez irányítja a projekt Git-tárház lapján. 
-
-    ![5](./media/team-lead-tasks/team-leads-5-team-project-home.png)
-
-### <a name="create-the-myprojecttemplate-repository-r3-on-git"></a>A Git a MyProjectTemplate tárház (R3) létrehozása
-
-- A projekt Git-tárház lapján kattintson az adattár neve melletti lefelé mutató nyílra **MyTeam**, és válassza ki **tárházak kezelése...** .
-
-    ![6](./media/team-lead-tasks/team-leads-6-rename-team-project-repo.png)
-
-- Az a **verziókövetés** lapon a projekt a Vezérlőpulton kattintson **MyTeam**, majd **átnevezése tárház...** . 
-
-    ![7](./media/team-lead-tasks/team-leads-7-rename-team-project-repo-2.png)
-
-- Adjon meg egy új nevet a tárház a **nevezze át a MyTeam tárház** ablak. Ebben a példában *MyTeamProjectTemplate*. Kiválaszthatja az alábbihoz hasonló *< a Csapatnév\>ProjectTemplate*. Kattintson a **átnevezése** folytatásához.
-
-    ![8](./media/team-lead-tasks/team-leads-8-rename-team-project-repo-3.png)
-
-### <a name="create-the-myteamutilities-repository-r4-on-git"></a>A Git a MyTeamUtilities tárház (R4) létrehozása
-
-- Új adattár létrehozása *< a Csapatnév\>segédprogramok* az-projektben kattintson **új adattár...**  a a **verziókövetés** a projekt Vezérlőpult lapján.  
-
-    ![9](./media/team-lead-tasks/team-leads-9-create-team-utilities.png)
-
-- Az a **hozzon létre egy új adattár** , felugró ablakban adja meg a tárház nevét. Ebben a példában nevet használjuk, *MyTeamUtilities*, amely **R4** a jelöléssel. Válassza ki a következőhöz hasonló *< a Csapatnév\>segédprogramok*. Győződjön meg arról, hogy kiválasztotta **Git** a **típus**. Kattintson a **létrehozás** folytatásához.
-
-    ![10](./media/team-lead-tasks/team-leads-10-create-team-utilities-2.png)
-
-- Győződjön meg arról, hogy a két új Git-tárházakat a projekt alatt létrehozott **MyTeam**. Ebben a példában: 
-
-- **MyTeamProjectTemplate** (R3) 
-- **MyTeamUtilities** (R4).
-
-    ![11](./media/team-lead-tasks/team-leads-11-two-repo-in-team.png)
-
-
-## <a name="2-seed-your-projecttemplate-and-teamutilities-repositories"></a>2. Rendezze az ProjectTemplate és TeamUtilities tárházak
-
-A kiindulási eljárás a könyvtárak a helyi dsvm-hez a köztes átmeneti tárolási helyként használja. Ha testre kell szabnia a **ProjectTemplate** és **TeamUtilities** megfelelnek bizonyos megadott-tárházakról igények kielégítéséhez csapat, így tesz, a következő eljárás az utolsó előtti lépésben. Itt található egy összefoglaló az tartalmának kezdőszámát használt lépéseket a **MyTeamProjectTemplate** és **MyTeamUtilities** tárolóhelyekkel adatelemzési csapatával. Az egyes lépések a struktúrát a kiindulási eljárásban felelnek meg:
-
-- Klónozott csoportba tárház helyi könyvtárba: R1 – helyi D1 -> klónozni csapata
-- Klónozza a csapat tárházak helyi címtárak: R3 & R4 – helyi D3 & D4 -> klónozni csapata
-- Csoport projekt sablon tartalmának másolása a helyi csoport mappa:  A D1 - tartalmát másolta a D3 ->
-- Helyi D3 & D4 (nem kötelező) testreszabása
-- Csapat tárházakba küldje le a helyi könyvtár tartalma: D3 & D4 - tartalom -> hozzá R3 & R4 csapata
-
-
-### <a name="initialize-the-team-repositories"></a>A csapat tárházak inicializálása
-
-Ebben a lépésben a projektadattárat a sablon a csoport projekt sablontár inicializálása:
-
-- **MyTeamProjectTemplate** tárház (**R3**), a **GroupProjectTemplate** (**R1**) tárház
-
-
-### <a name="clone-group-repositories-into-local-directories"></a>Klónozott csoportba tárházak be helyi címtárak
-
-Ez az eljárás a kezdéshez:
-
-- A helyi gépén hozzon létre a könyvtárak:
-    - A **Windows**: **C:\GitRepos\GroupCommon** and **C:\GitRepos\MyTeam**
-    - A **Linux**: **GitRepos\GroupCommon** és **GitRepos\MyTeam** meg a kezdőkönyvtár 
-- A címtár módosítása **GitRepos\GroupCommon**.
-- Futtassa a következő parancsot, szükség esetén a helyi számítógép operációs rendszeren.
-
-**Windows**
-
-    git clone https://<Your Azure DevOps Services name>.visualstudio.com/GroupCommon/_git/GroupProjectTemplate
-    
-
-![12](./media/team-lead-tasks/team-leads-12-create-two-group-repos.png)
-
-**Linux**
-    
-    git clone ssh://<Your Azure DevOps Services name>@<Your Azure DevOps Services name>.visualstudio.com:22/GroupCommon/_git/GroupProjectTemplate
-    
-    
-![13](./media/team-lead-tasks/team-leads-13-clone_two_group_repos_linux.png)
-
-Ezek a parancsok klónozza a **GroupProjectTemplate** a csoport az Azure DevOps-szolgáltatásokkal a helyi könyvtárba (R1) tárházából **GitRepos\GroupCommon** a helyi gépen. A klónozás, directory után **GroupProjectTemplate** (D1) hoznak létre a könyvtár **GitRepos\GroupCommon**. Itt, feltételezzük, hogy a csoport kezelőjének létrehozott egy projektet **GroupCommon**, és a **GroupProjectTemplate** tárház a projekt alatt áll. 
-
-
-### <a name="clone-your-team-repositories-into-local-directories"></a>Klónozza a csapat tárházak helyi címtárak
-
-Ezek a parancsok klónozza a **MyTeamProjectTemplate** (R3) és **MyTeamUtilities** (R4) tárházakat a projekt keretében **MyTeam** meg a csoport az Azure DevOps-szolgáltatásokkal, a **MyTeamProjectTemplate** (D3) és **MyTeamUtilities** (D4) könyvtárak **GitRepos\MyTeam** a helyi gépen. 
-
-- A címtár módosítása **GitRepos\MyTeam**
-- Futtassa a következő parancsokat, szükség esetén a helyi számítógép operációs rendszeren. 
-
-**Windows**
-
-    git clone https://<Your Azure DevOps Services name>.visualstudio.com/<Your Team Name>/_git/MyTeamProjectTemplate
-    git clone https://<Your Azure DevOps Services name>.visualstudio.com/<Your Team Name>/_git/MyTeamUtilities
-
-![14](./media/team-lead-tasks/team-leads-14-clone_two_empty_team_repos.png)
-        
-**Linux**
-    
-    git clone ssh://<Your Azure DevOps Services name>@<Your Azure DevOps Services name>.visualstudio.com:22/<Your Team Name>/_git/MyTeamProjectTemplate
-    git clone ssh://<Your Azure DevOps Services name>@<Your Azure DevOps Services name>.visualstudio.com:22/<Your Team Name>/_git/MyTeamUtilities
-    
-![15](./media/team-lead-tasks/team-leads-15-clone_two_empty_team_repos_linux.png)
-
-A klónozás, két címtár után **MyTeamProjectTemplate** (D3) és **MyTeamUtilities** (D4) könyvtárban jönnek **GitRepos\MyTeam**. A Microsoft rendelkezik feltételezi Itt a projekt sablont és segédprogramok adattárak, nevű **MyTeamProjectTemplate** és **MyTeamUtilities**. 
-
-### <a name="copy-the-group-project-template-content-to-the-local-project-template-directory"></a>Csoport projekt sablon tartalmának másolása a helyi projektkönyvtárára sablon
-
-Másolnia a tartalmat a helyi **GroupProjectTemplate** (D1) mappát a helyi **MyTeamProjectTemplate** (D3), futtassa az alábbi rendszerhéj-parancsfájlok egyikét: 
-
-#### <a name="from-the-powershell-command-line-for-windows"></a>A parancssori a Windows PowerShellben       
-
-    wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/tdsp_local_copy_win.ps1" -outfile "tdsp_local_copy_win.ps1"
-    .\tdsp_local_copy_win.ps1 2
-
-    
-![16](./media/team-lead-tasks/team-leads-16-local_copy_team_lead_new.png)
-
-#### <a name="from-the-linux-shell-for-the-linux-dsvm"></a>A Linux-shellből a **Linuxos dsvm-hez**
-    
-    wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/tdsp_local_copy_linux.sh"
-    bash tdsp_local_copy_linux.sh 2
-    
-![17](./media/team-lead-tasks/team-leads-17-local-copy-team-lead-linux-new.png)
-
-A parancsfájlok kizárása a .git könyvtár tartalmát. A parancsfájl kérni fogja, hogy adja meg a **végezze el az elérési utak** a forráskönyvtár D1, és a célkönyvtárban duplikátum D3.
-        
-
-### <a name="customize-your-project-template-or-team-utilities-optional"></a>Testre szabhatja a projekt sablont vagy csapat segédprogramok (nem kötelező)
-
-Testre szabhatja a **MyTeamProjectTemplate** (D3) és **MyTeamUtilities** (D4), ha szükséges, ezen a ponton a telepítési folyamat. 
-
-- Ha azt szeretné, szabhatja testre a csapat igényeinek kielégítése érdekében D3 tartalmát, módosítsa a sablon dokumentumokat, vagy módosítsa a könyvtárstruktúra.
-
-- Ha a csapata néhány segédprogram, amely teljes munkatársaival megosztani kívánt fejlesztett ki, másolja be ezeket a segédprogramokat könyvtárba: D4. 
-
-
-### <a name="push-local-directory-content-to-team-repositories"></a>Küldje le a helyi könyvtár tartalma csapat tárházakba
-
-D3 és D4 (igény szerint testre szabott) helyi címtárakban a tartalmat ad hozzá a csapat tárházak R3 és R4, futtassa az alábbi git bash-parancsok a Linux-shellből vagy a Windows PowerShell-konzolt. Futtassa a parancsokat a **GitRepos\MyTeam\MyTeamProjectTemplate** könyvtár.
-
-    git status
-    git add .
-    git commit -m"push from DSVM"
-    git push
-    
-![18](./media/team-lead-tasks/team-leads-18-push-to-group-server-2.png)
-
-A fájlok a MyTeamProjectTemplate tárházban, a csoport az Azure DevOps-szolgáltatásokkal szinkronizált szinte azonnal a szkript futása során.
-
-![19](./media/team-lead-tasks/team-leads-19-push-to-group-server-showed-up.png)
-
-Most futtassa a ugyanazokat a négy, a git-parancsok a **GitRepos\MyTeam\MyTeamUtilities** könyvtár. 
-
-> [AZURE.NOTE]Ha ez az első alkalommal egy Git-tárház véglegesítése után, szeretné-e a globális paraméterek konfigurálása *user.name* és *user.email* futtatása előtt a `git commit` parancsot. Futtassa az alábbi két parancsot:
-        
-    git config --global user.name <your name>
-    git config --global user.email <your email address>
- 
-> Ha Ön a véglegesítést használatával több Git-tárházakat, használja ugyanazt a nevet és e-mail cím Ha hozzájuk véglegesítése. Ugyanazt a nevet és e-mail-cím használatával bizonyul kényelmes később több tárházakon a Git tevékenységek nyomon követésére a Power bi-irányítópultok készítése során.
-
-![20](./media/team-lead-tasks/team-leads-20-git-config-name.png)
-
-
-## <a name="3-create-team-data-and-analytics-resources-optional"></a>3. Hozzon létre a team adatok és analitika erőforrások (nem kötelező)
-
-Adatok és analitika erőforrások megosztása a teljes csoport teljesítménnyel és költségekkel előnye van: a csapattagok projektjeikhez hajtsa végre a megosztott erőforrások, költségvetések menti és hatékony együttműködés. Ebben a szakaszban a utasításokat az Azure file storage létrehozásával biztosítunk. A következő szakaszban a utasítást az Azure file storage csatlakoztatása a helyi gépre való biztosítunk. További információk megosztását más erőforrások, például a Azure Data Science Virtual Machines, Azure HDInsight Spark-fürtök: [platformok és eszközök](platforms-and-tools.md). Ez a témakör útmutatást nyújt az Ön data science szempontból kiválasztása az erőforrások, amelyek az igényeinek megfelelő, és termék lapok és egyéb fontos és hasznos oktatóanyagok, amely a Microsoft közzétette hivatkozásokat tartalmaz.
-
->[AZURE.NOTE] Adatokat küldő közötti adatközpontok, amely lassú és költséges lehet, elkerülése érdekében ügyeljen arra, hogy az erőforráscsoport, tárfiók és az Azure virtuális gép (pl. DSVM) az Azure adatközponton. 
-
-Futtassa a következő szkripteket hozhat létre az Azure file storage a csapat számára. Az Azure file storage a csapat számára, amelyek hasznosak a teljes csoport adategységek tárolásához használható. A parancsfájl kérni fogja az Azure fiók és -előfizetés adatait, így ezeket a hitelesítő adatokat adja meg készen kell. 
-
-### <a name="create-azure-file-storage-with-powershell-from-windows"></a>Az Azure file storage létrehozása a Windows PowerShell használatával
-
-Futtassa a parancsfájlt a PowerShell parancssori:
-
-    wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/CreateFileShare.ps1" -outfile "CreateFileShare.ps1"
-    .\CreateFileShare.ps1
-
-![21](./media/team-lead-tasks/team-leads-21-create-fileshare-win.png)   
-
-Jelentkezzen be a Microsoft Azure-fiókot, amikor a rendszer kéri:
-
-![22](./media/team-lead-tasks/team-leads-22-file-create-s1.png)
-
-Válassza ki a használni kívánt Azure-előfizetést:
-
-![23](./media/team-lead-tasks/team-leads-23-file-create-s2.png)
-
-Válassza ki, melyik tárfiókot használja, vagy hozzon létre egy újat a kijelölt előfizetésben:
-
-![24](./media/team-lead-tasks/team-leads-24-file-create-s3.png)
-
-Adja meg a nevét, az Azure file Storage hozhat létre. Csak alsó használatieset-karaktereket, számokat és - fogadja:
-
-![25](./media/team-lead-tasks/team-leads-25-file-create-s4.png)
-
-Csatlakoztatja, és ez a tároló megosztás létrehozása után elősegítése érdekében mentse egy szövegfájlba az Azure file storage információkat, és jegyezze fel az elérési út helyét. Különösen a csatlakoztatása az Azure virtuális gépek a következő szakaszban az Azure file storage-fájl szükséges. 
-
-Tanácsos a szöveges fájl az ProjectTemplate adattárba. Azt javasoljuk, hogy a címtárban put **Docs\DataDictionaries**. Ezért ezt az adategységet hozzáférhet a csapat összes projektet. 
-
-![26](./media/team-lead-tasks/team-leads-26-file-create-s5.png)
-
-
-### <a name="create-azure-file-storage-with-a-linux-script"></a>Az Azure file storage egy Linux parancsfájl létrehozása
-
-Futtassa a parancsfájlt a Linux felületen:
-
-    wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/CreateFileShare.sh"
-    bash CreateFileShare.sh
-
-Jelentkezzen be a Microsoft Azure-fiók ezen a képernyőn megjelenő utasításokat követve:
-
-![27](./media/team-lead-tasks/team-leads-27-file-create-linux-s1.png)
-
-Válassza ki a használni kívánt Azure-előfizetést:
-
-![28](./media/team-lead-tasks/team-leads-28-file-create-linux-s2.png)
-
-Válassza ki, melyik tárfiókot használja, vagy hozzon létre egy újat a kijelölt előfizetésben:
-
-![29](./media/team-lead-tasks/team-leads-29-file-create-linux-s3.png)
-
-Adja meg a nevét, a létrehozásához az Azure file storage, csak kisbetűs karaktereket, számokat és - fogadja:
-
-![30](./media/team-lead-tasks/team-leads-30-file-create-linux-s4.png)
-
-A tárolók elérése során, a létrehozást követően megkönnyítésére mentse egy szövegfájlba az Azure file storage információkat, és jegyezze fel az elérési út helyét. Különösen a csatlakoztatása az Azure virtuális gépek a következő szakaszban az Azure file storage-fájl szükséges.
-
-Tanácsos a szöveges fájl az ProjectTemplate adattárba. Azt javasoljuk, hogy a címtárban put **Docs\DataDictionaries**. Ezért ezt az adategységet hozzáférhet a csapat összes projektet. 
-
-![31](./media/team-lead-tasks/team-leads-31-file-create-linux-s5.png)
-
-
-## <a name="4-mount-azure-file-storage-optional"></a>4. Az Azure file storage csatlakoztatása (nem kötelező)
-
-Az Azure file storage sikeres létrehozása után azt a helyi gépre, az egyik az alábbi PowerShell- vagy Linux-parancsfájlok segítségével csatlakoztathatók.
-
-### <a name="mount-azure-file-storage-with-powershell-from-windows"></a>Az Azure file storage csatlakoztatása a Windows PowerShell használatával
-
-    wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/AttachFileShare.ps1" -outfile "AttachFileShare.ps1"
-    .\AttachFileShare.ps1
-    
-A rendszer felkéri jelentkezzen be az első, ha nincs bejelentkezve. 
-
-Kattintson a **Enter** vagy **y** esetén a rendszer kéri, hogy ha rendelkezik egy Azure-beli tárolási adatainak fájlt, és ezután bemeneti is a ***fejezze be a elérési útja és neve** hoz létre a fájl előző lépésben. Beolvassa a információkat egy az Azure file storage csatlakoztatása közvetlenül az, hogy fájlt, és készen áll, folytassa a következő lépéssel.
-
-![32](./media/team-lead-tasks/team-leads-32-attach-s1.png)
-
-> [AZURE.NOTE] Ha nem rendelkezik az Azure file storage információkat tartalmazó fájl, a lépések bemeneti billentyűzet adatait Ez a szakasz végén található állnak rendelkezésre.
-
-Ezután rendszer adja meg a meghajtót kell hozzáadni a virtuális gép nevét. Egy meglévő meghajtó-nevek listája a képernyő van nyomtatva. Meg kell adnia a meghajtó neve, amely még nem létezik a listában.
-
-![33](./media/team-lead-tasks/team-leads-33-attach-s2.png)
-
-Győződjön meg arról, hogy egy új F meghajtó sikeresen csatlakoztatva lett a gépre.
-
-![34](./media/team-lead-tasks/team-leads-34-attach-s3.png)
-
-**Adja meg manuálisan az Azure file storage adatokat hogyan:** Ha nem rendelkezik az Azure file storage adatait egy szövegfájlt, akkor kövesse az a következő képernyőn írja be az előfizetés szükséges, a storage-fiók és a az Azure file storage információkat:
-
-![35](./media/team-lead-tasks/team-leads-35-attach-s4.png)
-
-Írja be az Azure-előfizetés nevére, válassza ki a tárfiókot, ahol az Azure file storage jön létre, és írja be a az Azure file storage nevét:
-
-![36](./media/team-lead-tasks/team-leads-36-attach-s5.png)
-
-### <a name="mount-azure-file-storage-with-a-linux-script"></a>Azure file storage csatlakoztatása egy Linux-parancsfájllal
-
-    wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/AttachFileShare.sh"
-    bash AttachFileShare.sh
-
-![37](./media/team-lead-tasks/team-leads-37-attach-s1-linux.png)
-
-A rendszer felkéri jelentkezzen be az első, ha nincs bejelentkezve. 
-
-Kattintson a **Enter** vagy **y** esetén a rendszer kéri, hogy ha rendelkezik egy Azure-beli tárolási adatainak fájlt, és ezután bemeneti is a ***fejezze be a elérési útja és neve** hoz létre a fájl előző lépésben. Beolvassa a információkat egy az Azure file storage csatlakoztatása közvetlenül az, hogy fájlt, és készen áll, folytassa a következő lépéssel.
-
-![38](./media/team-lead-tasks/team-leads-38-attach-s2-linux.png)
-
-Ezután rendszer adja meg a meghajtót kell hozzáadni a virtuális gép nevét. Egy meglévő meghajtó-nevek listája a képernyő van nyomtatva. Meg kell adnia a meghajtó neve, amely még nem létezik a listában.
-
-![39](./media/team-lead-tasks/team-leads-39-attach-s3-linux.png)
-
-Győződjön meg arról, hogy egy új F meghajtó sikeresen csatlakoztatva lett a gépre.
-
-![40](./media/team-lead-tasks/team-leads-40-attach-s4-linux.png)
-
-**Adja meg manuálisan az Azure file storage adatokat hogyan:** Ha nem rendelkezik az Azure file storage adatait egy szövegfájlt, akkor kövesse az a következő képernyőn írja be az előfizetés szükséges, a storage-fiók és a az Azure file storage információkat:
-
-- Bemeneti **n**.
-- Válassza ki az előfizetés nevét, ahol az Azure file storage az előző lépésben jött létre index:
-
-    ![41](./media/team-lead-tasks/team-leads-41-attach-s5-linux.png)
-
-- Válassza ki a tárfiókot az előfizetésben, és írja be az Azure file storage nevét:
-
-    ![42](./media/team-lead-tasks/team-leads-42-attach-s6-linux.png)
-
-- Adja meg a gépén, amelyek azonosak minden meglévőket kell hozzáadni a meghajtó neve:
-
-    ![43](./media/team-lead-tasks/team-leads-43-attach-s7-linux.png)
-
-
-## <a name="5-set-up-security-control-policy"></a>5. Állítsa be a biztonsági szabályok 
-
-A csoport az Azure DevOps szolgáltatás kezdőlapján kattintson a **fogaskerék ikont** mellett a jobb felső sarokban a felhasználónevére, majd válassza ki a **biztonsági** fülre. A csapat itt különböző engedélyekkel rendelkező tagokat adhat hozzá.
-
-![44](./media/team-lead-tasks/team-leads-44-add-team-members.png)
+Különálló projekt létrehozása a csapat számára:
+
+1. A böngészőben nyissa meg a csoport Azure DevOps-szervezetének kezdőlapját a *https:\//\<kiszolgáló neve >/\<szervezet neve >* , és válassza az **új projekt**lehetőséget. 
+   
+   ![Új projekt kiválasztása](./media/team-lead-tasks/team-leads-2-create-new-team.png)
+   
+1. A **projekt létrehozása** párbeszédpanelen adja meg a csoport nevét (például *MyTeam*) a **projekt neve**alatt, majd válassza a **speciális**lehetőséget. 
+   
+1. A **verziókövetés**területen válassza a **git**lehetőséget, majd a **munkaelemek feldolgozása**területen válassza az **agilis**lehetőséget. Ezután kattintson a **Létrehozás** elemre. 
+   
+   ![Projekt létrehozása](./media/team-lead-tasks/team-leads-3-create-new-team-2.png)
+   
+Megnyílik a Team Project **Összefoglaló** lapja, amelyen az oldal URL-címe *https:\/\</\<kiszolgálónév\<>/szervezet neve >/csapat neve >* .
+
+### <a name="rename-the-myteam-default-repository-to-teamutilities"></a>A MyTeam alapértelmezett tárházának átnevezése a TeamUtilities
+
+1. A **MyTeam** -projekt **összegzése** lapon válassza ki, **hogy milyen szolgáltatást szeretne kezdeni?** lehetőségnél válassza a **repók**lehetőséget. 
+   
+   ![A repók kiválasztása](./media/team-lead-tasks/team-leads-6-rename-team-project-repo.png)
+   
+1. A **MyTeam** -adattár lapon válassza ki a **MyTeam** -tárházat az oldal tetején, majd válassza a legördülő listából a **tárolók kezelése** lehetőséget. 
+   
+   ![Válassza ki a tárak kezelése elemet](./media/team-lead-tasks/team-leads-7-rename-team-project-repo-2.png)
+1. A **Project Settings (projekt beállításai** ) lapon válassza a **...** lehetőséget a **MyTeam** adattár mellett, majd válassza a **tárház átnevezése**elemet. 
+   
+   ![Adattár átnevezésének kiválasztása](./media/team-lead-tasks/team-leads-8-rename-team-project-repo-3.png)
+   
+1. Az **MyTeam-tárház átnevezése** felugró ablakban adja meg a *TeamUtilities*, majd válassza az **Átnevezés**lehetőséget. 
+
+### <a name="create-the-teamtemplate-repository"></a>A TeamTemplate adattár létrehozása
+
+1. A **Project Settings (projekt beállításai** ) lapon válassza az **új adattár lehetőséget.** 
+   
+   ![Új tárház kiválasztása](./media/team-lead-tasks/team-leads-9-create-team-utilities.png)
+   
+   Vagy válassza az **MyTeam** -projekt **összegzése** lap bal oldali navigációs menüjében található **repók** lehetőséget, válasszon ki egy adattárat a lap tetején, majd válassza ki az **új tárház** elemet a legördülő menüből.
+   
+1. Az **új Tárház létrehozása** párbeszédpanelen győződjön meg róla, hogy a **git** elem van kiválasztva a **típus**területen. Adja meg a *TeamTemplate* a **tárház neve**területen, majd válassza a **Létrehozás**lehetőséget.
+   
+   ![Tárház létrehozása](./media/team-lead-tasks/team-leads-10-create-team-utilities-2.png)
+   
+1. Győződjön meg arról, hogy a **TeamUtilities** és a **TeamTemplate** két tárháza látható a projekt beállításai lapon. 
+   
+   ![Két csapat adattára](./media/team-lead-tasks/team-leads-11-two-repo-in-team.png)
+
+### <a name="import-the-contents-of-the-group-common-repositories"></a>A csoport általános tárházai tartalmának importálása
+
+A csapat adattárainak feltöltése a Group Manager által beállított közös adattárak tartalmával:
+
+1. A **MyTeam** projekt kezdőlapján válassza a **repók** lehetőséget a bal oldali navigációs sávon. Ha egy üzenet jelenik meg arról, hogy a **MyTeam** -sablon nem található, akkor a másik lehetőségnél válassza ki a hivatkozást **, és navigáljon az alapértelmezett TeamTemplate-tárházhoz.** 
+   
+   Megnyílik az alapértelmezett **TeamTemplate** adattár. 
+   
+1. A **TeamTemplate üres** lapon válassza az **Importálás**lehetőséget. 
+   
+   ![Importálás kiválasztása](./media/team-lead-tasks/import-repo.png)
+   
+1. A **git-tárház importálása** párbeszédpanelen válassza a **git** lehetőséget a **forrás típusaként**, majd adja meg a csoport általános sablonjának URL-címét a **klónozott URL-cím**alatt. Az URL-cím *https: \/ @ no__t-2 @ no__t-3server név >/\<organization neve >/_git/\<repository name >* . Például: *https: \//dev. Azure. com/DataScienceUnit/GroupCommon/_git/GroupProjectTemplate*. 
+   
+1. Válassza az **Importálás**lehetőséget. A Group template-tárház tartalmát a rendszer importálja a Team template adattárba. 
+   
+   ![Csoport általános sablonjának importálása adattár](./media/team-lead-tasks/import-repo-2.png)
+   
+1. A projekt **reposs** oldalának tetején válassza a legördülő listát, és válassza ki a **TeamUtilities** -tárházat.
+   
+1. Az importálási folyamat megismétlésével importálja a Group Common Utilities-tárház (például *GroupUtilities*) tartalmát a **TeamUtilities** -tárházba. 
+   
+A két csapat tárháza mostantól tartalmazza a megfelelő csoport közös tárházának fájljait. 
+
+### <a name="customize-the-contents-of-the-team-repositories"></a>A csapat adattárainak tartalmának testreszabása
+
+Ha testre szeretné szabni, hogy a csapata mely tárházait szeretné kielégíteni a csapat konkrét igényeinek megfelelően, ezt most megteheti. Módosíthatja a fájlokat, módosíthatja a címtár szerkezetét, vagy hozzáadhat fájlokat és mappákat.
+
+Fájlok és mappák módosítása, feltöltése vagy létrehozása közvetlenül az Azure DevOps:
+
+1. A **MyTeam** -projekt **összegzése** lapon válassza a **repók**lehetőséget. 
+   
+1. A lap tetején válassza ki a testreszabni kívánt tárházat.
+
+1. A tárház-címtár struktúrájában navigáljon a módosítani kívánt mappához vagy fájlhoz. 
+   
+   - Új mappák vagy fájlok létrehozásához kattintson az **új**elem melletti nyílra. 
+     
+     ![Új fájl létrehozása](./media/team-lead-tasks/new-file.png)
+     
+   - Fájlok feltöltéséhez válassza a **fájl (ok) feltöltése**lehetőséget. 
+     
+     ![Fájlok feltöltése](./media/team-lead-tasks/upload-files.png)
+     
+   - Meglévő fájlok szerkesztéséhez navigáljon a fájlhoz, majd válassza a **Szerkesztés**lehetőséget. 
+     
+     ![Fájl szerkesztése](./media/team-lead-tasks/edit-file.png)
+     
+1. Fájlok hozzáadása vagy szerkesztése után válassza a **véglegesítés**lehetőséget.
+   
+   ![Módosítások véglegesítve](./media/team-lead-tasks/commit.png)
+
+A helyi gépen vagy DSVM lévő adattárakkal való munkavégzéshez először másolja vagy *klónozottan* másolja a tárházat a helyi gépre, majd véglegesítse és küldje el a módosításokat a megosztott csapat adattárainak. 
+
+Tárak klónozása:
+
+1. A **MyTeam** -projekt **összegzése** lapon válassza a **repók**lehetőséget, majd a lap tetején válassza ki a klónozott tárházat.
+   
+1. A tárház lapon kattintson a jobb felső sarokban található **klónozás** elemre.
+   
+1. A **klónozási tárház** párbeszédpanel **parancssor**területén válassza a **https** lehetőséget egy http-kapcsolathoz vagy **SSH** -kapcsolathoz, és másolja a klónozási URL-címet a vágólapra.
+   
+   ![Klón URL-címének másolása](./media/team-lead-tasks/clone.png)
+   
+1. A helyi gépen hozza létre a következő könyvtárakat:
+   
+   - Windows esetén: **C:\GitRepos\MyTeam**
+   - Linux esetén **$Home/gitrepos/myteam** 
+   
+1. Váltson a létrehozott könyvtárba.
+   
+1. A git bashben futtassa a parancsot `git clone <clone URL>`, ahol \<a klónozási URL-cím > a **klón** párbeszédpanelről másolt URL-cím.
+   
+   Ha például a következő parancsok egyikét használja a **TeamUtilities** -tárház klónozásához a helyi számítógép *MyTeam* könyvtárába. 
+   
+   **HTTPS-kapcsolat:**
+   
+   ```bash
+   git clone https://DataScienceUnit@dev.azure.com/DataScienceUnit/MyTeam/_git/TeamUtilities
+   ```
+   
+   **SSH-kapcsolatok:**
+   
+   ```bash
+   git clone git@ssh.dev.azure.com:v3/DataScienceUnit/MyTeam/TeamUtilities
+   ```
+
+Ha bármilyen módosítást szeretne végrehajtani a tárház helyi klónjában, véglegesítse és küldje el a megosztott csapat adattárainak módosításait. 
+
+Futtassa a következő git bash-parancsokat a helyi **GitRepos\MyTeam\TeamTemplate** vagy a **GitRepos\MyTeam\TeamUtilities** könyvtárból.
+
+```bash
+git add .
+git commit -m "push from local"
+git push
+```
+
+> [!NOTE]
+> Ha első alkalommal véglegesít egy git-tárházat, előfordulhat, hogy a parancs futtatása előtt konfigurálnia kell a globális paramétereket a *User.name* és a `git commit` *User. e-mailben.* Futtassa az alábbi két parancsot:
+> 
+> `git config --global user.name <your name>`
+> 
+> `git config --global user.email <your email address>`
+> 
+> Ha több git-tárházat követ el, ugyanazt a nevet és e-mail-címet használja mindegyikhez. Ugyanazt a nevet és e-mail-címet érdemes használni Power BI irányítópultok létrehozásakor, hogy több tárházban nyomon kövessék a git-tevékenységeket.
+
+## <a name="add-team-members-and-configure-permissions"></a>Csoporttagok hozzáadása és engedélyek konfigurálása
+
+Tagok hozzáadása a csapathoz:
+
+1. Az Azure DevOps a **MyTeam** projekt kezdőlapján válassza a **projekt beállításai** lehetőséget a bal oldali navigációs sávon. 
+   
+1. A **projekt beállításai** bal oldali navigációs sávon válassza **a csapatok**lehetőséget, majd a **csapatok** lapon válassza ki a **MyTeam csapatot**. 
+   
+   ![Csapatok konfigurálása](./media/team-lead-tasks/teams.png)
+   
+1. A **csapat profilja** lapon válassza a **Hozzáadás**lehetőséget.
+   
+   ![Hozzáadás a MyTeam csapathoz](./media/team-lead-tasks/add-to-team.png)
+   
+1. A **felhasználók és csoportok hozzáadása** párbeszédpanelen keresse meg és válassza ki a csoporthoz hozzáadni kívánt tagokat, majd kattintson a **módosítások mentése**gombra. 
+   
+   ![Felhasználók és csoportok hozzáadása](./media/team-lead-tasks/add-users.png)
+   
+
+A csapattagok engedélyeinek konfigurálása:
+
+1. A **projekt beállításai** bal oldali navigációs sávon válassza az **engedélyek**lehetőséget. 
+   
+1. Az **engedélyek** lapon válassza ki azt a csoportot, amelyhez hozzá kívánja adni a tagokat. 
+   
+1. Az adott csoport lapján válassza a **tagok**lehetőséget, majd válassza a **Hozzáadás**lehetőséget. 
+   
+1. A **tagok meghívása** felugró ablakban keresse meg és válassza ki a csoportba felvenni kívánt tagokat, majd kattintson a **Mentés**gombra. 
+   
+   ![Engedélyek megadása a tagoknak](./media/team-lead-tasks/grant-permissions.png)
+
+## <a name="create-team-data-and-analytics-resources"></a>Csoport-és elemzési erőforrások létrehozása
+
+Ez a lépés nem kötelező, de az adat-és elemzési erőforrások teljes csapattal való megosztása teljesítménybeli és költséghatékonysági előnyökkel jár. A csapattagok végrehajtják projektjeiket a megosztott erőforrásokon, menthetik a költségvetést, és hatékonyabban dolgozhatnak. Létrehozhat Azure file Storage-t, és csatlakoztathatja azt a DSVM, és megoszthatja azokat a csoporttagokkal. 
+
+További információ a csapattal (például Azure HDInsight Spark-fürtökkel) kapcsolatos egyéb erőforrások megosztásáról: [platformok és eszközök](platforms-and-tools.md). Ez a témakör egy adatelemzési nézőpontból nyújt útmutatást az igényeinek megfelelő erőforrások kiválasztásához, valamint a termékek oldalaira és egyéb releváns és hasznos oktatóanyagokra mutató hivatkozásokat tartalmaz.
+
+>[!NOTE]
+> Az adatközpontok közötti adatátvitel elkerüléséhez, amely lassú és költséges lehet, győződjön meg arról, hogy az Azure-erőforráscsoport, a Storage-fiók és a DSVM mind ugyanabban az Azure-régióban található. 
+
+### <a name="create-azure-file-storage"></a>Azure file Storage létrehozása
+
+1. Futtassa a következő szkriptet az Azure file Storage létrehozásához az adategységekhez, amelyek hasznosak a teljes csapat számára. A szkript felszólítja az Azure-előfizetések adatainak megadására, így azok készen állnak a bevitelre. 
+
+   - Windows rendszerű gépen futtassa a parancsfájlt a PowerShell-parancssorból:
+     
+     ```powershell
+     wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/CreateFileShare.ps1" -outfile "CreateFileShare.ps1"
+     .\CreateFileShare.ps1
+     ```
+     
+   - Linux rendszerű gépen futtassa a szkriptet a Linux-rendszerhéjból:
+     
+     ```shell
+     wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/CreateFileShare.sh"
+     bash CreateFileShare.sh
+     ```
+   
+1. Ha a rendszer kéri, jelentkezzen be Microsoft Azure-fiókjába, és válassza ki a használni kívánt előfizetést.
+   
+1. Válassza ki a használni kívánt Storage-fiókot, vagy hozzon létre egy újat a kiválasztott előfizetéshez. Az Azure file Storage neveként kisbetűket, számokat és kötőjeleket is használhat.
+   
+1. A tárterület csatlakoztatásának és megosztásának megkönnyítéséhez nyomja le az ENTER billentyűt, vagy az *Y* érték megadásával mentse az Azure file Storage-adatokat egy szövegfájlba az aktuális könyvtárban. Ezt a szövegfájlt a **TeamTemplate** adattárba is bejelölheti, ideális esetben a **Docs\DataDictionaries**alatt, így a csapat összes projektje elérheti azt. Az Azure file Storage az Azure-DSVM való csatlakoztatásához a következő szakaszban is szükség van a fájl adataira. 
+   
+### <a name="mount-azure-file-storage-on-your-local-machine-or-dsvm"></a>Az Azure file Storage csatlakoztatása a helyi gépen vagy DSVM
+
+1. Az Azure file Storage helyi gépre vagy DSVM való csatlakoztatásához használja az alábbi parancsfájlt.
+   
+   - Windows rendszerű gépen futtassa a parancsfájlt a PowerShell-parancssorból:
+     
+     ```powershell
+     wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/AttachFileShare.ps1" -outfile "AttachFileShare.ps1"
+     .\AttachFileShare.ps1
+     ```
+     
+   - Linux rendszerű gépen futtassa a szkriptet a Linux-rendszerhéjból:
+     
+     ```shell
+     wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/AttachFileShare.sh"
+     bash AttachFileShare.sh
+     ```
+   
+1. Nyomja le az ENTER billentyűt, vagy a folytatáshoz adja meg az *Y* értéket, ha az előző lépésben mentett egy Azure file Storage-információs fájlt. Adja meg a létrehozott fájl teljes elérési útját és nevét. 
+   
+   Ha nem rendelkezik Azure file Storage-információs fájllal, írja be az *n*értéket, és kövesse az utasításokat az előfizetés, az Azure Storage-fiók és az Azure file Storage-információk megadásához.
+   
+1. Adja meg annak a helyi vagy TDSP-meghajtónak a nevét, amelybe a fájlmegosztást csatlakoztatni szeretné. A képernyőn megjelenik a meglévő meghajtók neveinek listája. Olyan nevet adjon meg, amely még nem létezik.
+   
+1. Győződjön meg arról, hogy az új meghajtó és a tároló sikeresen csatlakoztatva van a gépen.
 
 ## <a name="next-steps"></a>További lépések
 
-Az alábbiakban a hivatkozások a szerepkörök és feladatok határozzák meg a csoportos adatelemzési folyamat részletes ismertetését:
+Az alábbiakban a csoportos adatelemzési folyamat által meghatározott egyéb szerepkörök és feladatok részletes ismertetésére talál hivatkozásokat:
 
 - [Adatelemzési csapatával csoport Manager-feladatok](group-manager-tasks.md)
-- [Csoportos adatelemzési csapatával az érdeklődő feladatok](team-lead-tasks.md)
 - [Érdeklődő tevékenységeket az adatelemzési csapatával](project-lead-tasks.md)
-- [Projektben egyes közreműködők az adatelemzési csapatával](project-ic-tasks.md)
+- [Az adatelemzési csapat egyedi közreműködő feladatainak projektje](project-ic-tasks.md)

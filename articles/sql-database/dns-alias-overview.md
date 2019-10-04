@@ -1,124 +1,117 @@
 ---
-title: DNS-alias az Azure SQL Database |} A Microsoft Docs
-description: Az alkalmazások csatlakozhatnak az Azure SQL Database-kiszolgáló neve alias. Az alias mutat bármikor, és így tovább tesztelés elősegítése érdekében az SQL-adatbázis, módosíthatja.
+title: A Azure SQL Database DNS-aliasa | Microsoft Docs
+description: Az alkalmazások csatlakozni tudnak a Azure SQL Database-kiszolgáló nevéhez. Eközben megváltoztathatja az aliasok SQL Databaseét bármikor, a tesztelés megkönnyítéséhez és így tovább.
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: oslake
-ms.author: moslake
-ms.reviewer: genemi,ayolubek, jrasnick
-manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: 9704acee2ca8bad7437ae22ff5041e2253916dce
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+author: rohitnayakmsft
+ms.author: rohitna
+ms.reviewer: genemi, jrasnick, vanto
+ms.date: 06/26/2019
+ms.openlocfilehash: 5d37b41fa7b51871f9ce1b21c62de1f9ab7f3b82
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57880432"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058567"
 ---
-# <a name="dns-alias-for-azure-sql-database"></a>Az Azure SQL Database DNS-alias
+# <a name="dns-alias-for-azure-sql-database"></a>A Azure SQL Database DNS-aliasa
 
-Az Azure SQL Database tartozik egy tartománynévrendszer (DNS) kiszolgáló. PowerShell és REST API-k elfogadása [hívások hozhat létre és kezelhet a DNS-aliasokat](#anchor-powershell-code-62x) az SQL-adatbázis-kiszolgálójának nevét.
+Azure SQL Database DNS-kiszolgálóval rendelkezik. A PowerShell és a REST API-k fogadják a [DNS-aliasok létrehozásához és kezeléséhez szükséges hívásokat](#anchor-powershell-code-62x) a SQL Database-kiszolgálónévhez.
 
-A *DNS-alias* az Azure SQL Database-kiszolgáló neve helyett használható. A kapcsolati karakterláncok az alias ügyfélprogramok használhatja. A DNS alias, amely a különböző kiszolgálókon átirányíthatja a ügyfélprogramok fordítási réteget biztosít. Ez a réteg megkíméli a nehézségeket, hogy a Keresés és az ügyfelek és a kapcsolati karakterláncok szerkesztése.
+A Azure SQL Database kiszolgáló nevének helyett *DNS-aliast* lehet használni. Az ügyfélalkalmazások használhatják az aliast a kapcsolataik karakterláncában. A DNS-alias olyan fordítási réteget biztosít, amely különböző kiszolgálókra irányítja át az ügyfélszoftvereket. Ebben a rétegben az összes ügyfél és a hozzájuk tartozó kapcsolódási karakterláncok megtalálásának és szerkesztésének nehézségei merülnek fel.
 
-A DNS-alias gyakori használati módjai a következő esetekben:
+A DNS-aliasok gyakori felhasználási módjai a következők lehetnek:
 
-- Hozzon létre egy könnyen megjegyezhető nevet egy Azure SQL Serverhez.
-- Az alias kezdeti fejlesztése során egy SQL Database-kiszolgálók teszt utalhat. Amikor az alkalmazás élesíti, módosíthatja az aliast, tekintse meg az üzemi kiszolgáló. Teszt az éles környezetbe való áttérés nem igényel a konfigurációinak módosításairól számos, az adatbázis-kiszolgálóhoz csatlakozó ügyfelek.
-- Tegyük fel, hogy a csak az alkalmazás-adatbázis áthelyezése egy másik SQL Database-kiszolgálóhoz. Itt módosíthatja a alias konfigurációit több ügyfél módosítása nélkül.
+- Hozzon létre egy könnyen megjegyezhető nevet egy Azure-SQL Server számára.
+- A kezdeti fejlesztés során az alias egy teszt SQL Database-kiszolgálóra is hivatkozhat. Ha az alkalmazás életbe lép, módosíthatja az aliast, hogy az éles kiszolgálóra hivatkozzon. A tesztről a termelésre való áttérés nem igényli a konfigurációk módosítását az adatbázis-kiszolgálóhoz csatlakozó több ügyfél esetében.
+- Tegyük fel, hogy az alkalmazás egyetlen adatbázisát áthelyezi egy másik SQL Database-kiszolgálóra. Itt módosíthatja az aliast anélkül, hogy módosítania kellene számos ügyfél konfigurációját.
+- Regionális leállás esetén a Geo-visszaállítás használatával helyreállíthatja az adatbázist egy másik kiszolgálón és régióban. A meglévő alias módosítható úgy, hogy az új kiszolgálóra mutasson, hogy a meglévő ügyfélalkalmazás újra csatlakozhasson hozzá. 
 
-## <a name="domain-name-system-dns-of-the-internet"></a>Tartománynévrendszer (DNS) az Internet
+## <a name="domain-name-system-dns-of-the-internet"></a>Az Internet Domain Name System (DNS)
 
-Az internetes DNS támaszkodik. A DNS-ben a rövid nevek fordítja le az Azure SQL Database-kiszolgáló nevét.
+Az Internet a DNS-re támaszkodik. A DNS lefordítja a felhasználóbarát neveket a Azure SQL Database-kiszolgáló nevére.
 
-## <a name="scenarios-with-one-dns-alias"></a>Az egy DNS-alias forgatókönyvek
+## <a name="scenarios-with-one-dns-alias"></a>Forgatókönyvek egyetlen DNS-aliassal
 
-Tegyük fel, hogy át kell váltania, a rendszer egy új Azure SQL Database-kiszolgálóhoz. A múltban kellett keresse meg és minden ügyfél programban minden kapcsolati karakterlánc frissítése. De most, ha a kapcsolati karakterláncok DNS-aliast használni, csak egy aliast tulajdonság frissíteni kell.
+Tegyük fel, hogy a rendszerét egy új Azure SQL Database-kiszolgálóra kell váltania. A múltban az összes ügyfélprogram összes kapcsolódási karakterláncának megkereséséhez és frissítéséhez szükséges. Ha azonban a kapcsolatok karakterlánca DNS-aliast használ, csak az alias tulajdonságot kell frissíteni.
 
-A DNS-alias szolgáltatás az Azure SQL Database segítségével a következő esetekben:
+A Azure SQL Database DNS-alias szolgáltatása a következő helyzetekben nyújt segítséget:
 
-### <a name="test-to-production"></a>Ellenőrizze, hogy éles környezetben
+### <a name="test-to-production"></a>Tesztelés éles környezetben
 
-Amikor az ügyfél-programok fejlesztése, rendelkezik a kapcsolati karakterláncokban lévő DNS-aliast használni őket. Az Azure SQL Database-kiszolgáló tesztelése verzióját választja ki az alias pont tulajdonságai között.
+Az ügyfélalkalmazások fejlesztésének megkezdése előtt használjon DNS-aliast a kapcsolódási karakterláncokban. Az alias tulajdonságai a Azure SQL Database-kiszolgáló tesztelési verziójára mutatnak.
 
-Később az új rendszer élesíti éles környezetben, ha az alias átirányítása az éles SQL Database-kiszolgáló tulajdonságainak frissítheti. Nem változik a ügyfélprogramok nem szükséges.
+Később, amikor az új rendszer éles környezetben él, frissítheti az alias tulajdonságait úgy, hogy az éles SQL Database kiszolgálóra mutasson. Nincs szükség az ügyfélalkalmazások módosítására.
 
 ### <a name="cross-region-support"></a>Régiók közötti támogatás
 
-Vész-helyreállítási előfordulhat, hogy az SQL Database-kiszolgáló átvált egy másik földrajzi régióban. A rendszer DNS-alias használta a szolgáltatást, mint a kell megkeresnie és a kapcsolati karakterláncok frissítése az összes ügyfél elkerülhető. Ehelyett egy alias tekintse meg az új SQL Database-kiszolgáló, amely most az adatbázist tároló frissítheti.
+A vész-helyreállítás a SQL Database-kiszolgálót egy másik földrajzi régióra is átválthatja. A DNS-aliast használó rendszerek esetében az összes ügyfél kapcsolódási karakterláncának megkeresése és frissítése elkerülhető. Ehelyett frissítheti az aliast úgy, hogy az új SQL Database-kiszolgálót használja, amely most már az adatbázist futtatja.
 
 ## <a name="properties-of-a-dns-alias"></a>DNS-alias tulajdonságai
 
-Minden DNS-alias az SQL Database-kiszolgálóhoz a következő tulajdonságok vonatkoznak:
+A következő tulajdonságok a SQL Database-kiszolgáló minden DNS-aliasára érvényesek:
 
-- *Egyedi neve:* Minden egyes alias hoz létre név egyedi az összes Azure SQL Database kiszolgálók között, ugyanúgy, mint a kiszolgáló neve.
-- *Kiszolgálóra szükség:* A DNS alias nem hozható létre, ha pontosan egy kiszolgáló hivatkozik, és a kiszolgáló már léteznie kell. Frissített alias mindig kell hivatkoznia pontosan egy meglévő kiszolgáló.
-  - Amikor egy SQL Database-kiszolgálóhoz, az Azure rendszer is csökken, tekintse meg a kiszolgáló összes DNS-aliasokat.
-- *Bármelyik régióban nincs kötve:* DNS-aliasokat nem régióhoz kötött. Bármilyen DNS-aliasokat lehet frissíteni, tekintse meg az Azure SQL Database-kiszolgáló, amely minden olyan földrajzi régióban található.
-  - Azonban amikor frissíti az alias egy másik kiszolgálóra utal, mindkét kiszolgáló léteznie kell az azonos Azure *előfizetés*.
-- *Engedélyek:* Kezelheti a DNS-aliast, a felhasználónak rendelkeznie kell *Server Közreműködője* engedélyeket, vagy újabb verziója. További információkért lásd: [szerepköralapú hozzáférés-vezérlés az Azure Portalon – első lépések](../role-based-access-control/overview.md).
+- *Egyedi név:* Minden létrehozott alias egyedi az összes Azure SQL Database-kiszolgálón, ugyanúgy, mint a kiszolgálók nevei.
+- *A kiszolgáló megadása kötelező:* Nem hozható létre DNS-alias, ha pontosan egy kiszolgálóra hivatkozik, és a kiszolgálónak már léteznie kell. A frissített aliasoknak mindig pontosan egy meglévő kiszolgálóra kell hivatkoznia.
+  - SQL Database-kiszolgáló eldobásakor az Azure-rendszer az összes olyan DNS-aliast is eldobja, amely a kiszolgálóra hivatkozik.
+- *Nincs a régióhoz kötve:* A DNS-aliasok nincsenek régióhoz kötve. Bármely DNS-alias frissíthető úgy, hogy egy Azure SQL Database-kiszolgálóra hivatkozzon, amely bármely földrajzi régióban található.
+  - Ha azonban egy alias frissítése egy másik kiszolgálóra hivatkozik, mindkét kiszolgálónak ugyanabban az Azure-előfizetésbenkell lennie.
+- *Engedélyek:* A DNS-aliasok kezeléséhez a felhasználónak *kiszolgálói közreműködői* engedélyekkel kell rendelkeznie vagy magasabbnak kell lennie. További információ: Bevezetés a [szerepköralapú Access Control használatába a Azure Portal](../role-based-access-control/overview.md).
 
-## <a name="manage-your-dns-aliases"></a>A DNS-aliasainak kezelése
+## <a name="manage-your-dns-aliases"></a>A DNS-aliasok kezelése
 
-Ahhoz, hogy programozott módon kezelheti a DNS-aliasokat REST API-k és a PowerShell-parancsmagok érhetők el.
+A REST API-k és a PowerShell-parancsmagok is elérhetők, így lehetővé válik a DNS-aliasok programozott kezelése.
 
 ### <a name="rest-apis-for-managing-your-dns-aliases"></a>REST API-k a DNS-aliasok kezeléséhez
 
-<!-- TODO
-??2 "soon" in the following live sentence, is not the best situation.
-TODO update this subsection very soon after REST API docu goes live.
-Dev = Magda Bojarska
-Comment as of:  2018-01-26
--->
+A REST API-k dokumentációja a következő webes hely közelében érhető el:
 
-A dokumentáció a REST API-k mellett a következő webes helyen érhető el:
+- [Azure SQL Database REST API](https://docs.microsoft.com/rest/api/sql/)
 
-- [Az Azure SQL Database REST API-val](https://docs.microsoft.com/rest/api/sql/)
+Emellett a REST API-k a GitHubon is megtekinthetők:
 
-Emellett a REST API-k a Githubon található láthatja:
-
-- [Az Azure SQL Database-kiszolgálóhoz, a DNS alias REST API-k](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/sql/resource-manager/Microsoft.Sql/preview/2017-03-01-preview/serverDnsAliases.json)
+- [Azure SQL Database kiszolgáló, DNS-alias REST API-k](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/sql/resource-manager/Microsoft.Sql/preview/2017-03-01-preview/serverDnsAliases.json)
 
 <a name="anchor-powershell-code-62x"/>
 
-#### <a name="powershell-for-managing-your-dns-aliases"></a>A DNS-aliasok kezeléséhez készült PowerShell-lel
+#### <a name="powershell-for-managing-your-dns-aliases"></a>PowerShell a DNS-aliasok kezeléséhez
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> A PowerShell Azure Resource Manager-modul továbbra is támogatja az Azure SQL Database, de minden jövőbeli fejlesztés Az.Sql modul. Ezeket a parancsmagokat lásd: [azurerm.SQL-hez](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). A parancsok a Az modul, és az AzureRm-modulok argumentumainak lényegében megegyeznek.
+> Az Azure SQL Database továbbra is támogatja a PowerShell Azure Resource Manager modult, de a jövőbeli fejlesztés az az. SQL-modulhoz készült. Ezekhez a parancsmagokhoz lásd: [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak.
 
-PowerShell-parancsmagok érhetők el, amely a REST API-jainak hívására.
+A REST API-kat meghívó PowerShell-parancsmagok érhetők el.
 
-Kódrészlet például a DNS-aliasok kezeléséhez használt PowerShell-parancsmagokat dokumentált:
+A DNS-aliasok kezeléséhez használt PowerShell-parancsmagok például a következő címen vannak dokumentálva:
 
-- [Az Azure SQL Database DNS-alias PowerShell](dns-alias-powershell.md)
+- [PowerShell DNS-aliashoz Azure SQL Database](dns-alias-powershell.md)
 
-A példakódban alkalmazott parancsmagok a következők:
+A kódban használt parancsmagok a következők:
 
-- [New-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/New-azSqlServerDnsAlias): Létrehoz egy új DNS-alias az Azure SQL Database szolgáltatás rendszerben. Az alias az Azure SQL Database-kiszolgáló 1 hivatkozik.
-- [Get-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlServerDnsAlias): GET, és az SQL DB kiszolgáló 1 rendelt összes DNS-aliasokat listázása.
-- [Set-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Set-azSqlServerDnsAlias): Módosítja a kiszolgáló nevét az alias konfigurált kiszolgálóról 1, 2. az SQL DB kiszolgáló hivatkoznak.
-- [Remove-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Remove-azSqlServerDnsAlias): SQL DB kiszolgáló 2, a DNS-alias eltávolítása az alias nevének megadásával.
+- [New-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/New-azSqlServerDnsAlias): Új DNS-Alias létrehozása a Azure SQL Database szolgáltatási rendszerben. Az alias az 1. Azure SQL Database kiszolgálóra hivatkozik.
+- [Get-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlServerDnsAlias): Az SQL DB Server 1 rendszerhez rendelt összes DNS-alias beolvasása és listázása.
+- [Set-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Set-azSqlServerDnsAlias): Módosítja annak a kiszolgálónak a nevét, amelyre az alias hivatkozik, az 1. kiszolgálóról az SQL DB Server 2 értékre.
+- [Remove-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Remove-azSqlServerDnsAlias): Távolítsa el a DNS-aliast az SQL DB Server 2-ből az alias nevével.
 
 ## <a name="limitations-during-preview"></a>Korlátozások az előzetes verzióban
 
-Jelenleg a DNS alias a következő korlátozások vonatkoznak:
+A DNS-aliasok jelenléte a következő korlátozásokkal jár:
 
-- *Legfeljebb 2 perces késleltetés:* A DNS-alias, frissíteni vagy eltávolítani legfeljebb 2 percet vesz igénybe.
-  - Minden olyan rövid késleltetés, függetlenül az alias azonnal leállítja az örökölt kiszolgálóra ügyfélkapcsolatok hivatkozó.
-- *A DNS-címkeresés:* Most úgy a csak mérvadó végrehajtásával ellenőrizze, milyen kiszolgálói aliast hivatkozik a megadott DNS- [DNS-címkeresés](https://docs.microsoft.com/windows-server/administration/windows-commands/nslookup).
-- *[Nem támogatott a táblanaplózás](sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md):* DNS-alias nem használható az Azure SQL Database-kiszolgáló, amely rendelkezik *táblanaplózás* egy adatbázison engedélyezve van.
-  - A táblanaplózás elavult.
-  - Azt javasoljuk, hogy áthelyezi [Blobnaplózás](sql-database-auditing.md).
+- *Legfeljebb 2 perc késés:* A DNS-alias frissítése vagy eltávolítása akár 2 percet is igénybe vehet.
+  - A rövid késleltetéstől függetlenül az alias azonnal leállítja a hivatkozó ügyfélkapcsolatokat a régi kiszolgálóval.
+- *DNS-címkeresés:* Egyelőre az egyetlen mérvadó módszer annak ellenőrzéséhez, hogy egy adott DNS-alias melyik kiszolgálóra hivatkozik a [DNS-címkeresés](https://docs.microsoft.com/windows-server/administration/windows-commands/nslookup)végrehajtásával.
+- _A tábla naplózása nem támogatott:_ Nem használhat DNS-aliast olyan Azure SQL Database-kiszolgálón, amelyen engedélyezve van a *tábla naplózása* egy adatbázison.
+  - A tábla naplózása elavult.
+  - Javasoljuk, hogy térjen át a [blob-naplózásra](sql-database-auditing.md).
 
-## <a name="related-resources"></a>Kapcsolódó források (lehet, hogy a cikkek angol nyelvűek)
+## <a name="related-resources"></a>Kapcsolódó erőforrások
 
-- [Az Azure SQL Database üzletmenet-folytonossági funkcióinak áttekintése](sql-database-business-continuity.md), beleértve a vész-helyreállítási.
+- [A Azure SQL Database üzleti folytonosságának áttekintése](sql-database-business-continuity.md), beleértve a vész-helyreállítást is.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az Azure SQL Database DNS-alias PowerShell](dns-alias-powershell.md)
+- [PowerShell DNS-aliashoz Azure SQL Database](dns-alias-powershell.md)

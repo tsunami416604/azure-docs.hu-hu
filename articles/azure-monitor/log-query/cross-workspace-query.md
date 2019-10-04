@@ -1,6 +1,6 @@
 ---
-title: Lekérdezés erőforrásoknak az Azure Monitor szolgáltatással |} A Microsoft Docs
-description: Ez a cikk bemutatja, hogyan végezhet lekérdezéseket erőforrásokat több munkaterületet és az App Insights-alkalmazás az előfizetésében.
+title: Erőforrások lekérdezése Azure Monitorsal | Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan lehet lekérdezéseket lekérdezni több munkaterületről és az App betekintő alkalmazásból származó erőforrásokról az előfizetésben.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -11,94 +11,94 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/15/2018
+ms.date: 06/05/2019
 ms.author: magoedte
-ms.openlocfilehash: b0d12021be5a5dca348ea3ffa3f0b853725812da
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a1ea4012b7cda5b5deab82027e5547a9c9ef786f
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59791301"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650157"
 ---
-# <a name="perform-cross-resource-log-queries-in-azure-monitor"></a>Erőforrások közötti log-lekérdezések végrehajtása az Azure monitorban  
+# <a name="perform-cross-resource-log-queries-in-azure-monitor"></a>Erőforrás-naplózási lekérdezések végrehajtása Azure Monitor  
 
-Korábban az Azure monitorral, csak elemezheti az aktuális munkaterületen belüli adatokat, és az előfizetésben megadott többi munkaterület lekérdezését, korlátozott.  Ezenkívül csak keressen telemetriai elem az Application insights segítségével közvetlenül az Application Insights webes alkalmazását a, vagy a Visual Studióból.  Ez is tette a natív módon elemezheti a működési probléma és az alkalmazásadatok együtt.   
+Korábban a Azure Monitor használatával csak az aktuális munkaterületről elemezheti az adatait, és korlátozhatja az előfizetésben definiált több munkaterületre való lekérdezés lehetőségét.  Ezen kívül csak a webalapú alkalmazásból gyűjtött telemetria-elemeket keresheti meg Application Insights közvetlenül Application Insights vagy a Visual studióból. Ezzel a megoldással az operatív és az alkalmazásadatok natív elemzése is megtörtént.
 
-Most már lekérdezheti a nemcsak a több Log Analytics-munkaterületek, de is ugyanazt az erőforráscsoportot, egy másik erőforráscsoportot, vagy egy másik előfizetést az adott Application Insights alkalmazásból származó adatok között. Ez biztosít a rendszerre kiterjedően megtekintheti az adatokat.  Ezek a lekérdezéstípusok a főadatbázisról csak [Log Analytics](portals.md).
+Most már nem csak több Log Analytics-munkaterületre is lekérdezheti, hanem egy adott Application Insights alkalmazásból is egy adott erőforráscsoport, egy másik erőforráscsoport vagy egy másik előfizetés adatait. Ez teljes körű áttekintést nyújt az adatairól. Az ilyen típusú lekérdezéseket csak [log Analytics](portals.md)lehet elvégezni.
 
 ## <a name="cross-resource-query-limits"></a>Erőforrások közötti lekérdezési korlátok 
 
-* Application Insights-erőforrások, amelyeket megadhat egyetlen lekérdezést számát 100-ra korlátozódik.
-* Erőforrások közötti lekérdezés nem támogatott Az adatforrásnézet-tervezőből. A Log Analytics-lekérdezés létrehozásához, és rögzítheti az Azure-irányítópulton és [Naplókeresés ábrázolása](../../azure-monitor/learn/tutorial-logs-dashboards.md#visualize-a-log-search). 
-* Az új riasztások az erőforrások közötti lekérdezési támogatott [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules). Alapértelmezés szerint az Azure Monitor használja a [örökölt Log Analytics-riasztás API](../platform/api-alerts.md) új naplófájl riasztási szabályok létrehozását az Azure Portalról, kivéve, ha átvált a [örökölt Log riasztások API](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api). A váltás után az új API lesz az alapértelmezett új riasztási szabályok az Azure Portalon, és lehetővé teszi, hogy az erőforrások közötti lekérdezési napló riasztások, szabályok létrehozása. Hozhat létre erőforrások közötti lekérdezési napló riasztási szabályok anélkül, hogy a kapcsoló használatával a [scheduledQueryRules API az ARM-sablon](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) –, de ez a riasztási szabály kezelhető azonban [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) és nem az Azure Portalról.
+* Az egyetlen lekérdezésben felvehető Application Insights-erőforrások és Log Analytics-munkaterületek száma legfeljebb 100.
+* Az erőforrások közötti lekérdezés nem támogatott a Tervező nézetében. Létrehozhat egy lekérdezést a Log Analyticsban, és rögzítheti az Azure-irányítópulton [egy napló lekérdezésének megjelenítéséhez](../learn/tutorial-logs-dashboards.md). 
+* Az új [SCHEDULEDQUERYRULES API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)támogatja a naplózási riasztásokban lévő erőforrás-lekérdezések közötti lekérdezést. Alapértelmezés szerint a Azure Monitor az [örökölt log Analytics riasztási API](../platform/api-alerts.md) -t használja az új naplózási riasztási szabályok létrehozásához Azure Portalból, kivéve, ha az [örökölt naplózási riasztások API](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api)-ból vált. A kapcsoló után az új API lesz az új riasztási szabályok alapértelmezett értéke Azure Portalban, és lehetővé teszi az erőforrások közötti lekérdezési napló riasztási szabályainak létrehozását. Az erőforrás-lekérdezési napló riasztási szabályait anélkül hozhatja létre, hogy a kapcsolót a [SCHEDULEDQUERYRULES API Azure Resource Manager sablonnal](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) használja – ez a riasztási szabály azonban kezelhető, bár a [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) nem Azure Portal .
 
 
-## <a name="querying-across-log-analytics-workspaces-and-from-application-insights"></a>A Log Analytics-munkaterületek között és az Application Insightsból
-Hivatkozhat egy másik munkaterületet, a lekérdezés, használja a [ *munkaterület* ](https://docs.microsoft.com/azure/log-analytics/query-language/workspace-expression) azonosítóját, és a egy alkalmazást az Application Insightsból, használja a [ *alkalmazás* ](https://docs.microsoft.com/azure/log-analytics/query-language/app-expression)azonosítója.  
+## <a name="querying-across-log-analytics-workspaces-and-from-application-insights"></a>Lekérdezés Log Analytics munkaterületeken és a Application Insights
+Ha a lekérdezésben egy másik munkaterületre szeretne hivatkozni, használja a [*munkaterület*](https://docs.microsoft.com/azure/log-analytics/query-language/workspace-expression) -azonosítót, és Application Insights alkalmazásból származó alkalmazáshoz használja az [*alkalmazás*](https://docs.microsoft.com/azure/log-analytics/query-language/app-expression) azonosítóját.  
 
-### <a name="identifying-workspace-resources"></a>A munkaterület erőforrásai azonosítása
-Az alábbi példák bemutatják a lekérdezések összesített száma a naplók a frissítési tábla visszaadása nevű munkaterület a Log Analytics-munkaterületek között *contosoretail-it*. 
+### <a name="identifying-workspace-resources"></a>Munkaterület-erőforrások azonosítása
+Az alábbi példák bemutatják Log Analytics munkaterületek lekérdezéseit, hogy a *contosoretail*nevű munkaterület frissítési táblájában lévő naplók összesített számát adja vissza. 
 
-Munkaterület azonosítása, lehet, hogy számos módon elvégezhető az egyik:
+A munkaterület azonosításához többféleképpen is elvégezhető:
 
-* Erőforrás - név a munkaterület, más néven egy természetes nyelven olvasható neve *összetevőnév*. 
+* Erőforrás neve – a munkaterület egy ember által olvasható neve, más néven az *összetevő neve*. 
 
     `workspace("contosoretail-it").Update | count`
- 
-    >[!NOTE]
-    >A munkaterület azonosítása név alapján feltételezi, hogy az egyedi-e az összes elérhető előfizetés. Ha több alkalmazás a megadott névvel, a lekérdezés a kétértelműség miatt nem sikerült. Ebben az esetben az egyéb azonosítókhoz kötött egyikét kell használnia.
 
-* Minősített - név a "teljes neve" a munkaterületen mikroszolgáltatásokból álló, az előfizetés nevét, az erőforráscsoportot és az összetevő neve a következő formátumban: *subscriptionName/resourceGroup/componentName*. 
+* Minősített név – a munkaterület "teljes neve", amely az előfizetés nevét, az erőforráscsoportot és az összetevő nevét alkotja ebben a formátumban: *subscriptionName/resourceGroup/componentName*. 
 
     `workspace('contoso/contosoretail/contosoretail-it').Update | count`
 
     >[!NOTE]
-    >Azure-előfizetés nevek nem egyediek, mert lehet, hogy ez az azonosító nem egyértelmű. 
+    >Mivel az Azure-előfizetések nevei nem egyediek, lehet, hogy ez az azonosító nem egyértelmű. 
     >
 
-* Munkaterület-azonosító: a munkaterület-azonosító hozzárendelve az egyes munkaterületeken egy globálisan egyedi azonosítóját (GUID) szerinti egyedi, nem módosítható, azonosító érték.
+* Munkaterület-azonosító – a munkaterület-azonosító a globálisan egyedi azonosítóként (GUID) jelölt minden munkaterülethez rendelt egyedi, nem módosítható azonosító.
 
     `workspace("b459b4u5-912x-46d5-9cb1-p43069212nb4").Update | count`
 
-* Az Azure erőforrás-azonosító – az Azure által megadott egyedi identitása a munkaterületen. Erőforrás-Azonosítóját használnia, ha az erőforrás neve nem egyértelmű.  A munkaterületek, formátuma: */subscriptions/subscriptionId/resourcegroups/resourceGroup/providers/microsoft. Az OperationalInsights/munkaterületek/componentName*.  
+* Azure Resource ID – a munkaterület Azure által meghatározott egyedi identitása. Az erőforrás-azonosítót akkor használja, ha az erőforrás neve nem egyértelmű.  A munkaterületek formátuma a következő: */Subscriptions/subscriptionId/resourcegroups/resourceGroup/Providers/Microsoft. OperationalInsights/munkaterületek/componentName*.  
 
     Példa:
     ``` 
     workspace("/subscriptions/e427519-5645-8x4e-1v67-3b84b59a1985/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail-it").Update | count
     ```
 
-### <a name="identifying-an-application"></a>Egy alkalmazás azonosítása
-Az alábbi példák az alkalmazás neve kérelmekre összesített számát adja vissza *fabrikamapp* az Application Insightsban. 
+### <a name="identifying-an-application"></a>Alkalmazás azonosítása
+Az alábbi példák egy *fabrikamapp* nevű alkalmazásra vonatkozó kérelmek összesített számát adják vissza Application Insights. 
 
-Azonosító egy alkalmazást az Application Insights segítségével végezhető a *app(Identifier)* kifejezés.  A *azonosító* argumentum, adja meg az alkalmazást a használatával a következők egyikét:
+Application Insights alkalmazásának azonosítására az alkalmazás *(azonosító)* kifejezés használható.  Az *azonosító* argumentum a következők egyikét használja az alkalmazáshoz:
 
-* Erőforrás - név egy emberi olvasható nevet az alkalmazáshoz, más néven a *összetevőnév*.  
+* Erőforrás neve – az alkalmazás egy ember által olvasható neve, más néven az *összetevő neve*.  
 
     `app("fabrikamapp")`
 
-* Minősített - név a "teljes neve" az alkalmazás mikroszolgáltatásokból álló, az előfizetés nevét, az erőforráscsoportot és az összetevő neve a következő formátumban: *subscriptionName/resourceGroup/componentName*. 
+    >[!NOTE]
+    >Az alkalmazások név szerinti azonosítása feltételezi az összes elérhető előfizetés egyediségét. Ha több alkalmazás is van a megadott névvel, a lekérdezés a kétértelműség miatt meghiúsul. Ebben az esetben a többi azonosító egyikét kell használnia.
+
+* Minősített név – az alkalmazás "teljes neve", amely az előfizetés neve, az erőforráscsoport és az összetevő neve, ebben a formátumban: *subscriptionName/resourceGroup/componentName*. 
 
     `app("AI-Prototype/Fabrikam/fabrikamapp").requests | count`
 
      >[!NOTE]
-    >Azure-előfizetés nevek nem egyediek, mert lehet, hogy ez az azonosító nem egyértelmű. 
+    >Mivel az Azure-előfizetések nevei nem egyediek, lehet, hogy ez az azonosító nem egyértelmű. 
     >
 
-* Azonosító – az alkalmazás az alkalmazás GUID azonosítója.
+* AZONOSÍTÓ – az alkalmazás alkalmazás-GUID azonosítója.
 
     `app("b459b4f6-912x-46d5-9cb1-b43069212ab4").requests | count`
 
-* Az Azure erőforrás-azonosító – az Azure által megadott egyedi az alkalmazás identitását. Erőforrás-Azonosítóját használnia, ha az erőforrás neve nem egyértelmű. A formátum: */subscriptions/subscriptionId/resourcegroups/resourceGroup/providers/microsoft. Az OperationalInsights/components/componentName*.  
+* Azure Resource ID – az alkalmazás Azure-ban meghatározott egyedi identitása. Az erőforrás-azonosítót akkor használja, ha az erőforrás neve nem egyértelmű. A formátum: */Subscriptions/subscriptionId/resourcegroups/resourceGroup/Providers/Microsoft. OperationalInsights/Components/componentName*.  
 
     Példa:
     ```
     app("/subscriptions/b459b4f6-912x-46d5-9cb1-b43069212ab4/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp").requests | count
     ```
 
-### <a name="performing-a-query-across-multiple-resources"></a>A lekérdezés végrehajtása több erőforrás között
-Az erőforrás-példányok bármelyikével tetszőleges irányú lekérdezheti több erőforrást, ezek lehetnek, munkaterületek és alkalmazások kombinált.
+### <a name="performing-a-query-across-multiple-resources"></a>Lekérdezés végrehajtása több erőforrás között
+Bármelyik erőforrás-példányból több erőforrást is lekérdezheti, ezek lehetnek munkaterületek és alkalmazások együttes használata.
     
-Példa a munkaterületeket két lekérdezést:    
+Példa két munkaterületre vonatkozó lekérdezésre:    
 
 ```
 union Update, workspace("contosoretail-it").Update, workspace("b459b4u5-912x-46d5-9cb1-p43069212nb4").Update
@@ -107,10 +107,10 @@ union Update, workspace("contosoretail-it").Update, workspace("b459b4u5-912x-46d
 | summarize dcount(Computer) by Classification
 ```
 
-## <a name="using-cross-resource-query-for-multiple-resources"></a>Erőforrások közötti lekérdezéssel több erőforrás
-Erőforrások közötti lekérdezések használatával több Log Analytics-munkaterületek és Application Insights-erőforrások adatait, amikor a lekérdezés összetett és nehezen fenntartható válhat. Támaszkodjon [funkciók az Azure monitorban lekérdezések naplózását](functions.md) hatókörére a lekérdezés erőforrásokat, amely egyszerűbbé teszi a lekérdezés szerkezete a lekérdezés logikai elkülönítése. A következő példa bemutatja, hogyan figyelheti több Application Insights-erőforrást, és jelenítheti meg a sikertelen kérelmek száma alkalmazásnév szerint. 
+## <a name="using-cross-resource-query-for-multiple-resources"></a>Több erőforrás közötti lekérdezés használata több erőforráshoz
+Ha több Log Analytics munkaterületről származó adatok összekapcsolására és Application Insights erőforrásokra vonatkozó több erőforrás-lekérdezést használ, a lekérdezés bonyolult és nehézkesen kezelhető lesz. A függvények kihasználása [Azure monitor napló lekérdezésekben](functions.md) a lekérdezési logika elkülönítése a lekérdezési erőforrások hatóköréről, ami leegyszerűsíti a lekérdezési struktúrát. Az alábbi példa bemutatja, hogyan figyelhető meg több Application Insights erőforrás, és Hogyan jeleníthető meg a sikertelen kérelmek száma az alkalmazás neve alapján. 
 
-Hozzon létre egy lekérdezést, például a következőképpen, hogy az Application Insights-erőforrások a következő hatókörre hivatkozik. A `withsource= SourceApp` parancs hozzáad egy oszlopot, amely az alkalmazás nevét jelöli meg a napló küldött. [A lekérdezés Mentés másként funkció](functions.md#create-a-function) az aliasszal _applicationsScoping_.
+Hozzon létre egy, az alábbihoz hasonló lekérdezést, amely a Application Insights erőforrások hatókörére hivatkozik. A `withsource= SourceApp` parancs egy oszlopot hoz létre, amely kijelöli a naplót küldő alkalmazás nevét. [Mentse a lekérdezést függvényként](functions.md#create-a-function) az alias _applicationsScoping_.
 
 ```Kusto
 // crossResource function that scopes my Application Insights resources
@@ -124,7 +124,7 @@ app('Contoso-app5').requests
 
 
 
-Mostantól [ezzel a funkcióval](../../azure-monitor/log-query/functions.md#use-a-function) a következő erőforrások közötti lekérdezésben. A függvény aliasa _applicationsScoping_ kérelmek táblázat unióját adja vissza a meghatározott alkalmazások. A lekérdezés és a sikertelen kérelmek szűrése elérhetővé, és a trendek alkalmazás. A _elemezni_ operátor használata nem kötelező ebben a példában. Az alkalmazás nevét a bontja ki _SourceApp_ tulajdonság.
+Ezt a függvényt mostantól egy több erőforrást tartalmazó lekérdezésben is [használhatja](../../azure-monitor/log-query/functions.md#use-a-function) , például a következőhöz. A _applicationsScoping_ függvény alias a kérelmek tábla unióját adja vissza az összes megadott alkalmazásból. A lekérdezés ezután szűri a sikertelen kérelmeket, és alkalmazás szerint jeleníti meg a trendeket. Ebben a példában az _elemzési_ operátor nem kötelező. Kibontja az alkalmazás nevét a _SourceApp_ tulajdonságból.
 
 ```Kusto
 applicationsScoping 
@@ -134,9 +134,14 @@ applicationsScoping
 | summarize count() by applicationName, bin(timestamp, 1h) 
 | render timechart
 ```
-![idődiagramját](media/cross-workspace-query/chart.png)
+
+>[!NOTE]
+>Ez a metódus nem használható a naplózási riasztásokkal, mert a riasztási szabály erőforrásainak, köztük a munkaterületeknek és az alkalmazásoknak a hozzáférés-ellenőrzését a riasztás létrehozási ideje végzi. Új erőforrások hozzáadása a függvényhez a riasztás létrehozása után nem támogatott. Ha az erőforrás-hatókör függvényét szeretné használni a naplózási riasztásokban, szerkesztenie kell a riasztási szabályt a portálon, vagy egy Resource Manager-sablonnal a hatókörrel rendelkező erőforrások frissítéséhez. Azt is megteheti, hogy felveszi az erőforrások listáját a napló riasztási lekérdezésében.
+
+
+![Idődiagramját](media/cross-workspace-query/chart.png)
 
 ## <a name="next-steps"></a>További lépések
 
-- Felülvizsgálat [naplóadatok elemzése az Azure monitorban](log-query-overview.md) naplólekérdezések, és hogyan épül fel az Azure Monitor naplóadatok áttekintését.
-- Felülvizsgálat [Azure Monitor log-lekérdezések](query-language.md) összes erőforrást az Azure Monitor log-lekérdezések megtekintése.
+- Tekintse át a naplófájlok [elemzését Azure monitor](log-query-overview.md) a naplók áttekintését, valamint a Azure monitor naplózási adatai strukturált módját.
+- Tekintse át [Azure monitor a napló lekérdezéseit](query-language.md) , és tekintse meg az összes erőforrást a Azure monitor log lekérdezésekhez.

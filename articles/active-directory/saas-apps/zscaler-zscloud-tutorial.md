@@ -1,155 +1,153 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Zscaler ZSCloud |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a Zscaler ZSCloud között.
+title: 'Oktatóanyag: Azure Active Directory integráció a Zscaler ZSCloud | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Zscaler ZSCloud között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 411d5684-a780-410a-9383-59f92cf569b5
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 12/10/2018
+ms.topic: tutorial
+ms.date: 04/24/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb9c5e359065364a9bc67e5f235a294ea06c2b2f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 43d7e58f0c267afe8a22c217d9800abb041df8cb
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57846854"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68723062"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zscaler-zscloud"></a>Oktatóanyag: Zscaler ZSCloud az Azure Active Directory-integráció
+# <a name="tutorial-azure-active-directory-integration-with-zscaler-zscloud"></a>Oktatóanyag: Azure Active Directory integráció a Zscaler ZSCloud
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan Zscaler ZSCloud integrálható az Azure Active Directory (Azure AD).
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Zscaler-ZSCloud a Azure Active Directory (Azure AD) szolgáltatással.
+A Zscaler ZSCloud és az Azure AD integrálásával az alábbi előnyökkel jár:
 
-Zscaler ZSCloud integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
+* Az Azure AD-ben beállíthatja, hogy ki férhet hozzá a Zscaler ZSCloud.
+* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a Zscaler ZSCloud (egyszeri bejelentkezés) az Azure AD-fiókokkal.
+* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-- Szabályozhatja, ki férhet hozzá Zscaler ZSCloud Azure AD-ben.
-- A felhasználók automatikusan első bejelentkezett Zscaler ZSCloud (egyszeri bejelentkezés), engedélyezheti az Azure AD-fiókjukat.
-- A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
-
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md)
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció konfigurálása a Zscaler ZSCloud, a következőkre van szükség:
+Az Azure AD-integráció Zscaler ZSCloud való konfigurálásához a következő elemek szükségesek:
 
-- Azure AD-előfizetés
-- A Zscaler ZSCloud egyszeri bejelentkezés engedélyezve van az előfizetés
-
-> [!NOTE]
-> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
-
-Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
-
-- Ne használja az éles környezetben, csak szükség esetén.
-- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, [ingyenes fiókot](https://azure.microsoft.com/free/) szerezhet be
+* Zscaler ZSCloud egyszeri bejelentkezésre alkalmas előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
+Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
-1. Zscaler ZSCloud hozzáadása a katalógusból
-2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+* A Zscaler ZSCloud támogatja az **SP** által KEZDEMÉNYEZett SSO-t
 
-## <a name="adding-zscaler-zscloud-from-the-gallery"></a>Zscaler ZSCloud hozzáadása a katalógusból
+* A Zscaler ZSCloud **csak időben támogatja a** felhasználók üzembe helyezését
 
-Az Azure AD integrálása a Zscaler ZSCloud konfigurálásához hozzá kell Zscaler ZSCloud a galériából a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-zscaler-zscloud-from-the-gallery"></a>Zscaler-ZSCloud hozzáadása a gyűjteményből
 
-**Zscaler ZSCloud hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
+A Zscaler-ZSCloud Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Zscaler-ZSCloud a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+**A Zscaler ZSCloud a katalógusból való hozzáadásához hajtsa végre a következő lépéseket:**
 
-    ![Az Azure Active Directory gomb][1]
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+    ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-    ![A vállalati alkalmazások panelen][2]
+2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+
+    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
 3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
-    ![Az új alkalmazás gomb][3]
+    ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **Zscaler ZSCloud**válassza **Zscaler ZSCloud** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A keresőmezőbe írja be a következőt: **Zscaler ZSCloud**, válassza a **Zscaler ZSCloud** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-    ![Zscaler ZSCloud a találatok listájában](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_addfromgallery.png)
+     ![Zscaler ZSCloud az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban konfigurálja, és tesztelés az Azure AD egyszeri bejelentkezés Zscaler ZSCloud "Britta Simon" nevű tesztfelhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az Zscaler ZSCloud-mel konfigurálja és teszteli a **Britta Simon**nevű teszt felhasználó alapján.
+Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Zscaler ZSCloud kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
-Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó Zscaler ZSCloud mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó a Zscaler ZSCloud hivatkozás kapcsolata kell létrehozni.
+Az Azure AD egyszeri bejelentkezés Zscaler-ZSCloud való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
-Az Azure AD egyszeri bejelentkezés a Zscaler ZSCloud tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Zscaler ZSCloud egyszeri bejelentkezés konfigurálása](#configure-zscaler-zscloud-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. **[Zscaler-ZSCloud-teszt felhasználó létrehozása](#create-zscaler-zscloud-test-user)** – a Britta Simon-nek a felhasználó Azure ad-képviseletéhez kapcsolódó Zscaler-ZSCloud.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-3. **[Zscaler ZSCloud tesztfelhasználó létrehozása](#creating-a-zscaler-zscloud-test-user)**  – egy megfelelője a Britta Simon Zscaler ZSCloud, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-4. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
 
-Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és Zscaler ZSCloud alkalmazását az egyszeri bejelentkezés konfigurálása.
+Az Azure AD egyszeri bejelentkezés Zscaler-ZSCloud való konfigurálásához hajtsa végre a következő lépéseket:
 
-**Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Zscaler ZSCloud, hajtsa végre az alábbi lépéseket:**
+1. A [Azure Portal](https://portal.azure.com/) **Zscaler ZSCloud** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
 
-1. Az Azure Portalon az a **Zscaler ZSCloud** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
+2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
 
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen kattintson **kiválasztása** a **SAML** módot az egyszeri bejelentkezés engedélyezése.
-
-    ![Egyszeri bejelentkezés konfigurálása](common/tutorial_general_301.png)
+    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
 3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
 
-    ![Egyszeri bejelentkezés konfigurálása](common/editconfigure.png)
+    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az a **alapszintű SAML-konfigurációja** szakaszban, hajtsa végre az alábbi lépéseket:
+4. Az alapszintű **SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
 
-    ![Zscaler ZSCloud Domain and URLs single sign-on information](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_url.png)
+    ![Zscaler ZSCloud tartomány és URL-címek egyszeri bejelentkezési adatai](common/sp-signonurl.png)
 
-    Az a **bejelentkezési URL-** beviteli mező, írja be az URL-cím való bejelentkezés ZScaler ZSCloud alkalmazását a felhasználók által használt-e.
-
-    > [!NOTE] 
-    > Frissíteni ezt az értéket a tényleges bejelentkezési URL-címmel rendelkezik. Kapcsolattartó [Zscaler két ügyfél-támogatási csapatának](https://help.zscaler.com/) beolvasni ezeket az értékeket.
-
-5. Zscaler ZSCloud alkalmazás a SAML helyességi feltételek vár egy megadott formátumban. Konfigurálja a következő jogcímek ehhez az alkalmazáshoz. Ezek az attribútumok értékeinek kezelheti a **felhasználói attribútumok & jogcímek** szakasz alkalmazás integráció lapján. Az a **állítsa be egyszeri bejelentkezést az SAML lap**, kattintson a **szerkesztése** gombra kattintva nyissa meg **felhasználói attribútumok & jogcímek** párbeszédpanel.
-
-    ![Az attribútumkapcsolat](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_attribute.png)
-
-6. Az a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok** párbeszédpanelen konfigurálja a SAML-jogkivonat attribútum, a fenti képen látható módon, és hajtsa végre az alábbi lépéseket:
-
-    | Name (Név)  | Adatforrás-attribútum  |
-    | ---------| ------------ |
-    | Tagja(Pénzügy)     | user.assignedroles |
-
-    a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
-
-    ![image](./common/new_save_attribute.png)
-    
-    ![image](./common/new_attribute_details.png)
-
-    b. Az a **forrásattribútum** listájában, selelct az attribútum értéke.
-
-    c. Kattintson az **OK** gombra.
-
-    d. Kattintson a **Save** (Mentés) gombra.
+    A **bejelentkezési URL** szövegmezőbe írja be a felhasználók által a ZScaler ZSCloud alkalmazásba való bejelentkezéshez használt URL-címet.
 
     > [!NOTE]
-    > Kattintson a [Itt](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management) tudni, hogy az Azure AD-szerepkör konfigurálása
+    > Frissítenie kell az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez forduljon a [Zscaler ZSCloud](https://help.zscaler.com/) -ügyfélszolgálati csapatához. Az Azure Portal alapszintű **SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-7. Az a **SAML-aláíró tanúsítvány** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez **tanúsítvány (Base64)**, és mentse a tanúsítványfájlt a számítógépen.
+5. A Zscaler ZSCloud-alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható. Kattintson a **Szerkesztés** ikonra a **felhasználói attribútumok** párbeszédpanel megnyitásához.
 
-    ![A tanúsítvány letöltési hivatkozás](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_certificate.png) 
+    ![image](common/edit-attribute.png)
 
-8. Az a **Zscaler ZSCloud beállítása** területén másolja a megfelelő URL-címet a követelmény alapján.
+6. A fentieken kívül a Zscaler ZSCloud alkalmazás néhány további attribútumot vár, amelyeket az SAML-válaszban vissza kell adni. A **felhasználó attribútumai** párbeszédpanel **felhasználói** jogcímek szakaszában a következő lépésekkel adja hozzá az SAML-jogkivonat attribútumát az alábbi táblázatban látható módon:
+    
+    | Name (Név) | Forrás attribútum |
+    | ---------| ------------ |
+    | memberOf     | User. assignedroles |
+
+    a. Kattintson az **új jogcím hozzáadása** elemre a **felhasználói jogcímek kezelése** párbeszédpanel megnyitásához.
+
+    ![image](common/new-save-attribute.png)
+
+    ![image](common/new-attribute-details.png)
+
+    b. A **név** szövegmezőbe írja be az adott sorhoz megjelenített attribútum nevét.
+
+    c. Hagyja üresen a **névteret** .
+
+    d. Válassza a forrás **attribútumként**lehetőséget.
+
+    e. A **forrás attribútum** listáról írja be az adott sorhoz megjelenő attribútum értékét.
+    
+    f. Kattintson a **Save** (Mentés) gombra.
+
+    > [!NOTE]
+    > Ide kattintva [](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management) megtudhatja, hogyan konfigurálhatja a szerepkört az Azure ad-ben
+
+7. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
+
+    ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
+
+8. A **Zscaler ZSCloud beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények szerint.
+
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
     a. Bejelentkezési URL
 
@@ -157,133 +155,134 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     c. Kijelentkezési URL
 
-    ![Zscaler ZSCloud Configuration](common/configuresection.png)
+### <a name="configure-zscaler-zscloud-single-sign-on"></a>Configure Zscaler ZSCloud Single Sign-On
 
-9. Egy másik böngészőablakban jelentkezzen be a Zscaler ZSCloud vállalati hely rendszergazdaként.
+1. A Zscaler-ZSCloud belüli konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése**lehetőségre kattintva.
 
-10. Lépjen a **Adminisztráció > hitelesítés > hitelesítési beállítások** , és hajtsa végre az alábbi lépéseket:
+    ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
+
+2. Miután hozzáadta a bővítményt a böngészőhöz, kattintson a **telepítő Zscaler ZSCloud** lehetőségre a Zscaler ZSCloud alkalmazásra. A Zscaler ZSCloud való bejelentkezéshez adja meg a rendszergazdai hitelesítő adatokat. A böngésző bővítménye automatikusan konfigurálja az alkalmazást, és automatizálja az 3-6-es lépést.
+
+    ![Egyszeri bejelentkezés beállítása](common/setup-sso.png)
+
+3. Ha manuálisan szeretné beállítani a Zscaler ZSCloud, nyisson meg egy új böngészőablakot, és jelentkezzen be a Zscaler ZSCloud vállalati webhelyre rendszergazdaként, és hajtsa végre a következő lépéseket:
+
+4. Lépjen az **adminisztráció > hitelesítés > hitelesítési beállítások** lapra, és hajtsa végre a következő lépéseket:
    
-    ![Felügyeleti](./media/zscaler-zscloud-tutorial/ic800206.png "felügyelete")
+    ![Felügyelet](./media/zscaler-zscloud-tutorial/ic800206.png "Felügyelet")
 
-    a. Hitelesítés típusa alatt válassza ki a **SAML**.
+    a. A hitelesítés típusa területen válassza az **SAML**elemet.
 
-    b. Kattintson a **SAML konfigurálása**.
+    b. Kattintson az **SAML konfigurálása**elemre.
 
-11. Az a **szerkesztése SAML** ablakban hajtsa végre az alábbi lépéseket: kattintson a Mentés gombra.  
+5. Az **SAML szerkesztése** ablakban hajtsa végre a következő lépéseket:, majd kattintson a Mentés gombra.  
             
-    ![Felhasználók és hitelesítés kezeléséhez](./media/zscaler-zscloud-tutorial/ic800208.png "felhasználók és hitelesítés kezeléséhez")
+    ![Felhasználók kezelése & hitelesítéssel](./media/zscaler-zscloud-tutorial/ic800208.png "Felhasználók kezelése & hitelesítéssel")
     
-    a. Az a **SAML portál URL-cím** szövegmezőjébe illessze be a **bejelentkezési URL-cím** Azure Portalról másolt.
+    a. Az **SAML-portál URL-címe** szövegmezőbe illessze be a Azure Portalból másolt **bejelentkezési URL-címet** .
 
-    b. Az a **bejelentkezési név attribútum** szövegmezőbe írja be **NameID**.
+    b. A **bejelentkezési név attribútum** szövegmezőbe írja be a **NameID**nevet.
 
-    c. Kattintson a **feltöltése**töltheti fel az Azure SAML aláíró tanúsítvány az Azure Portalról letöltött a **nyilvános SSL-tanúsítvány**.
+    c. Kattintson a **feltöltés**gombra, és töltse fel a **nyilvános SSL**-tanúsítványban Azure Portal letöltött Azure SAML-aláíró tanúsítványt.
 
-    d. Váltás a **SAML automatikus kiépítés engedélyezése**.
+    d. Az **SAML automatikus kiépítés engedélyezése**.
 
-    e. Az a **felhasználói megjelenítési név attribútum** szövegmezőbe írja be **displayName** szeretné engedélyezni a SAML automatikus kiépítés displayName attribútumok esetén, ha.
+    e. A **felhasználó megjelenített név attribútuma** szövegmezőbe írja be a **DisplayName** értéket, ha engedélyezni szeretné az SAML automatikus kiépítési lehetőséget a DisplayName attribútumokhoz.
 
-    f. Az a **csoport neve attribútum** szövegmezőbe írja be **tagja(Pénzügy)** szeretné engedélyezni a SAML automatikus kiépítés tagja(Pénzügy) attribútumok esetén, ha.
+    f. A **Csoportnév-attribútum** szövegmezőbe írja be a **memberof** értéket, ha engedélyezni szeretné az SAML automatikus kiépítési lehetőséget a memberOf attribútumaihoz.
 
-    g. Az a **részleg neve attribútum** Enter **részleg** Ha engedélyezi a SAML automatikus kiépítés részleg attribútumokat.
+    g. A **részleg neve attribútumban** adja meg a **részleget** , ha engedélyezni szeretné az SAML automatikus kiépítés részleg attribútumait.
 
-    i. Kattintson a **Save** (Mentés) gombra.
+    h. Kattintson a **Save** (Mentés) gombra.
 
-12. Az a **felhasználói hitelesítés konfigurálása** párbeszédpanel lapon, a következő lépésekkel:
+6. A **felhasználói hitelesítés konfigurálása** párbeszédpanelen hajtsa végre a következő lépéseket:
 
-    ![Adminisztráció](./media/zscaler-zscloud-tutorial/ic800207.png)
+    ![Felügyelet](./media/zscaler-zscloud-tutorial/ic800207.png)
 
-    a. A kurzort a **aktiválási** menüjének bal alsó.
+    a. Vigye az egérmutatót a bal alsó sarokban található **aktiválási** menü fölé.
 
-    b. Kattintson a **aktiválása**.
+    b. Kattintson az **aktiválás**gombra.
 
 ## <a name="configuring-proxy-settings"></a>Proxybeállítások konfigurálása
-### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>A Proxybeállítások konfigurálása az Internet Explorerben
+### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>Proxybeállítások konfigurálása az Internet Explorerben
 
-1. Indítsa el **az Internet Explorer**.
+1. Indítsa el az **Internet Explorert**.
 
-1. Válassza ki **Internetbeállítások** származó a **eszközök** nyílt menüje a **Internetbeállítások** párbeszédpanel.   
+2. Az **Internetbeállítások párbeszédpanel** megnyitásához válassza az **eszközök** menü **Internetbeállítások** elemét.   
     
      ![Internetbeállítások](./media/zscaler-zscloud-tutorial/ic769492.png "Internetbeállítások")
 
-1. Kattintson a **kapcsolatok** fülre.   
+3. Kattintson a **kapcsolatok** fülre.   
   
-     ![Kapcsolatok](./media/zscaler-zscloud-tutorial/ic769493.png "kapcsolatok")
+     ![Kapcsolatok] száma (./media/zscaler-zscloud-tutorial/ic769493.png "Kapcsolatok") száma
 
-1. Kattintson a **LAN-beállítások** megnyitásához a **LAN-beállítások** párbeszédpanel.
+4. A LAN- **Beállítások** párbeszédpanel megnyitásához kattintson a **LAN-beállítások** elemre.
 
-1. A Proxy server szakaszban hajtsa végre az alábbi lépéseket:   
+5. A proxykiszolgáló szakaszban hajtsa végre a következő lépéseket:   
    
-    ![Proxykiszolgáló](./media/zscaler-zscloud-tutorial/ic769494.png "proxykiszolgáló")
+    ![Proxykiszolgáló](./media/zscaler-zscloud-tutorial/ic769494.png "Proxykiszolgáló")
 
-    a. Válassza ki **proxykiszolgáló használata a helyi hálózaton**.
+    a. Válassza **a proxykiszolgáló használata a LAN**-hoz lehetőséget.
 
-    b. A cím szövegmezőbe írja be **átjáró. Zscaler ZSCloud.net**.
+    b. A címek szövegmezőbe írja be az **átjáró értéket. Zscaler ZSCloud.net**.
 
-    c. Írja be a Port szövegmező **80-as**.
+    c. A port szövegmezőbe írja be a következőt: **80**.
 
-    d. Válassza ki **proxykiszolgáló kihagyása helyi címek esetén**.
+    d. Válassza **a proxykiszolgáló kihagyása helyi címeknél**lehetőséget.
 
-    e. Kattintson a **OK** gombra kattintva zárja be a **helyi hálózati (LAN) beállításai** párbeszédpanel.
+    e. A **helyi hálózati (LAN) beállítások** párbeszédpanel bezárásához kattintson **az OK** gombra.
 
-1. Kattintson a **OK** gombra kattintva zárja be a **Internetbeállítások** párbeszédpanel.
+6. Az **Internetbeállítások** párbeszédpanel bezárásához kattintson **az OK** gombra.
 
-### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
 
 Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
 1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
 
-    ![Az Azure AD-felhasználó létrehozása][100]
+    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
 
 2. Válassza ki **új felhasználó** a képernyő tetején.
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](common/create_aaduser_01.png) 
+    ![Új felhasználó gomb](common/new-user.png)
 
 3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](common/create_aaduser_02.png)
+    ![A felhasználó párbeszédpanel](common/user-properties.png)
 
-    a. Az a **neve** írja be a következőt **BrittaSimon**.
+    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. Az a **felhasználónév** mezőbe írja be a **brittasimon\@yourcompanydomain.extension**  
-    Például: BrittaSimon@contoso.com
+    b. A **Felhasználónév** mezőbe írja be brittasimon@yourcompanydomain.extensiona nevet. Például: BrittaSimon@contoso.com
 
-    c. Válassza ki **tulajdonságok**, jelölje be a **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
+    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
-### <a name="creating-a-zscaler-zscloud-test-user"></a>Zscaler ZSCloud tesztfelhasználó létrehozása
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ez a szakasz célja a Zscaler ZSCloud Britta Simon nevű felhasználó létrehozásához. Zscaler ZSCloud támogatja a just-in-time-kiépítés, amely alapértelmezésben engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Új felhasználó próbál hozzáférni a Zscaler ZSCloud, ha még nem létezik jön létre.
->[!Note]
->Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [Zscaler ZSCloud támogatási csapatának](https://help.zscaler.com/).
+Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít a Zscaler-ZSCloud.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **Zscaler ZSCloud**elemet.
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Zscaler ZSCloud Azure egyszeri bejelentkezés használatára.
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**válassza **minden alkalmazás**.
+2. Az alkalmazások listában válassza a **Zscaler ZSCloud**elemet.
 
-    ![Felhasználó hozzárendelése][201]
+    ![Az Zscaler ZSCloud hivatkozása az alkalmazások listájában](common/all-applications.png)
 
-2. Az alkalmazások listájában jelölje ki a **Zscaler ZSCloud**.
+3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_app.png)
+    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-3. A bal oldali menüben kattintson **felhasználók és csoportok**.
+4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
 
-    ![Felhasználó hozzárendelése][202]
+    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
-4. Kattintson a **Hozzáadás** gombra, majd válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
-
-    ![Felhasználó hozzárendelése][203]
-
-5. Az a **felhasználók és csoportok** párbeszédpanelen válassza ki a felhasználó **Britta Simon** a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
+5. A **felhasználók és csoportok** párbeszédpanelen válassza ki a **Britta Simon** elemet a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
 
     ![image](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_users.png)
 
-6. A a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő felhasználói szerepkört a listában, majd kattintson a **válassza** gombra a képernyő alján.
+6. A **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő felhasználói szerepkört a listában, majd kattintson a képernyő alján található **kiválasztás** gombra.
 
     ![image](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_roles.png)
 
@@ -291,27 +290,27 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
     ![image](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_assign.png)
 
-### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+    >[!NOTE]
+    >Az alapértelmezett hozzáférési szerepkör nem támogatott, mivel ez megszakítja a kiépítés folyamatát, ezért az alapértelmezett szerepkör nem választható ki a felhasználó kiosztása során.
+
+### <a name="create-zscaler-zscloud-test-user"></a>Zscaler ZSCloud-tesztelési felhasználó létrehozása
+
+Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre a Zscaler ZSCloud-ben. A Zscaler ZSCloud támogatja az igény szerinti felhasználói üzembe helyezést, amely alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Ha a felhasználó még nem létezik a Zscaler ZSCloud, a hitelesítés után létrejön egy új.
+
+>[!Note]
+>Ha manuálisan kell létrehoznia egy felhasználót, lépjen kapcsolatba a [Zscaler ZSCloud támogatási csapatával](https://help.zscaler.com/).
+
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen a Zscaler ZSCloud csempére kattint, meg kell lekérése automatikusan bejelentkezett a Zscaler ZSCloud alkalmazásba.
-A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md).
+Ha a hozzáférési panelen a Zscaler ZSCloud csempére kattint, automatikusan be kell jelentkeznie arra a Zscaler-ZSCloud, amelyhez be szeretné állítani az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: common/tutorial_general_01.png
-[2]: common/tutorial_general_02.png
-[3]: common/tutorial_general_03.png
-[4]: common/tutorial_general_04.png
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-[100]: common/tutorial_general_100.png
-
-[201]: common/tutorial_general_201.png
-[202]: common/tutorial_general_202.png
-[203]: common/tutorial_general_203.png

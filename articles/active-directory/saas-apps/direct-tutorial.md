@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 18519c64e1bba82e60cc431cb5f634a30ad68e92
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: f1e201b5f86311aeaeca4d077140f4dc429a0357
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565614"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67104202"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-direct"></a>Oktatóanyag: Közvetlenül az Azure Active Directory-integráció
 
@@ -53,7 +53,7 @@ Az Azure AD-be közvetlen integráció konfigurálásához, hozzá kell közvetl
 
 **Adjon hozzá közvetlenül a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

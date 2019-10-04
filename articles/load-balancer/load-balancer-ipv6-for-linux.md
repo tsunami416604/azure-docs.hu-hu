@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: Tudnivalók a DHCPv6 konfigurálása Linux rendszerű virtuális gépekhez.
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 keywords: IPv6-alapú, az azure load balancer, kettős verem, nyilvános IP-cím, natív ipv6, mobil, iot
 ms.service: load-balancer
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2019
-ms.author: kumud
-ms.openlocfilehash: 66777ec314e95d81a4be57082f06ef16dc170186
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.author: allensu
+ms.openlocfilehash: 3e987b6718ead6b7014ec302d1a186dabef11126
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369632"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274916"
 ---
 # <a name="configure-dhcpv6-for-linux-vms"></a>A DHCPv6 konfigurálása Linux rendszerű virtuális gépekhez
 
@@ -54,9 +54,9 @@ Ez a dokumentum ismerteti a DHCPv6 engedélyezése, hogy a Linux rendszerű virt
     ```bash
     sudo ifdown eth0 && sudo ifup eth0
     ```
-Az alapértelmezett hálózati konfiguráció mechanizmus az Ubuntu 17.10 kezdve [NETPLAN]( https://netplan.io).  Telepítés/példányosítás időpontban NETPLAN hálózati konfiguráció olvas YAML konfigurációs fájljait ezen a helyen: / {lib,etc,run}/netplan/*.yaml.
+Az Ubuntu 17,10-es verziójától kezdve az alapértelmezett hálózati konfigurációs mechanizmus a [NETPLAN]( https://netplan.io).  A telepítés/létrehozás ideje alatt a NETPLAN beolvassa a hálózati konfigurációt a YAML konfigurációs fájljairól ezen a helyen:/{lib, etc, Run}/netplan/*. YAML.
 
-Adja meg egy *dhcp6:true* utasítás egyes ethernet-adapter konfigurációjában.  Példa:
+Adja meg a *dhcp6: true* utasítást a konfigurációban található minden Ethernet-adapterhez.  Példa:
   
         network:
           version: 2
@@ -64,7 +64,7 @@ Adja meg egy *dhcp6:true* utasítás egyes ethernet-adapter konfigurációjában
             eno1:
               dhcp6: true
 
-Korai rendszerindítás során a netplan "leképező hálózati" konfigurációját, és írja/kéz futtatása ki eszközök felügyelete a megadott hálózati démon további információk NETPLAN, lásd: https://netplan.io/reference.
+A korai rendszerindítás során a "hálózati leképező" netplan úgy írja be a konfigurációt, hogy/Run az eszközök vezérlését a megadott hálózati démonnak a NETPLAN vonatkozó https://netplan.io/reference hivatkozási információkkal kapcsolatban:.
  
 ## <a name="debian"></a>Debian
 

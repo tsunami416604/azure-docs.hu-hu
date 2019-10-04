@@ -1,76 +1,215 @@
-### YamlMime:YamlDocument
-ms.openlocfilehash: f43db52a3fcfef17b56d5053b56e315e81fda27e
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56732585"
-documentType: LandingData
-title: Stream Analytics-dokumentáció
+### YamlMime:Landing
+title: Az Azure Stream Analytics dokumentációja
+summary: Az Azure Stream Analytics egy olyan teljes körűen felügyelt, valós idejű elemzőszolgáltatás, amely olyan gyorsan mozgó adatstreamek elemzésében és feldolgozásában segít, amelyekkel riasztások és műveletek indíthatók. Rövid útmutatóink, oktatóanyagaink és példáink segítségével megismerheti az Azure Stream Analytics használatát.
 metadata:
-  title: Az Azure Stream Analytics dokumentációja – oktatóanyagok és API-referencia
-  meta.description: Learn how to run IoT analytics in the cloud with fully-managed event processing. Analyze data in real time from applications, sensors, devices, and more.
-  services: stream-analytics
-  author: mamccrea
-  ms.author: mamccrea
+  title: Az Azure Stream Analytics dokumentációja
+  description: Az Azure Stream Analytics egy olyan teljes körűen felügyelt, valós idejű elemzőszolgáltatás, amely olyan gyorsan mozgó adatstreamek elemzésében és feldolgozásában segít, amelyekkel riasztások és műveletek indíthatók. Rövid útmutatóink, oktatóanyagaink és példáink segítségével megismerheti az Azure Stream Analytics használatát.
+  services: service
   ms.service: stream-analytics
   ms.topic: landing-page
-  ms.date: 12/06/2018
-  ms.custom: seodec18
-abstract:
-  description: Ismerje meg, hogyan futtathat eszközök internetes hálózata-elemzést (IoT) a felhőben Stream Analytics teljes körűen felügyelt eseményfeldolgozási motorral. Oktatóanyagok és egyéb dokumentációk, amelyek bemutatják, hogyan elemezhet valós időben például alkalmazásokból, érzékelőkből, eszközökből és a közösségi médiából származó adatokat.
-  aside:
-    image:
-      alt: 
-      height: 110
-      src: ./media/index/streaming-analytics-thumbnail.png
-      width: 250
-    title: Valós idejű elemzés és gépi tanulás az Azure Stream Analytics használatával. (1:15:05)
-    href: https://myignite.techcommunity.microsoft.com/sessions/65358?source=sessions#ignite-html-anchor
-    width: 250
-sections:
-- title: 5 perces gyors útmutatók
-  items:
-  - type: paragraph
-    text: 'Ismerje meg, hogyan helyezheti üzembe az első Azure Stream Analytics-feladatát:'
-  - type: list
-    style: icon48
-    items:
-    - image:
-        src: media/index/stream-analytics.svg
-      text: Azure Portal
-      href: https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_powershell.svg
-      text: PowerShell
-      href: https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-powershell
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_visual-studio.svg
-      text: Visual Studio
-      href: https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-vs
-- title: Részletes útmutatók
-  items:
-  - type: paragraph
-    text: 'Megtudhatja, hogyan helyezhet üzembe, kezelhet és monitorozhat Azure Stream Analytics-feladatokat:'
-  - type: list
-    style: ordered
-    items:
-    - html: <a href="stream-analytics-manage-job">Stream Analytics-feladat létrehozása telefonhívás-adatok elemzésére és az eredmények Power BI-irányítópulton való vizualizációjára</a>
-    - html: <a href="stream-analytics-with-azure-functions">Az Azure Functions futtatása Azure Stream Analytics-feladatokból</a>
-    - html: <a href="stream-analytics-javascript-user-defined-functions">Felhasználói JavaScript-függvények futtatása az Azure Stream Analytics-feladatokban</a>
-    - html: <a href="stream-analytics-tools-visual-studio-cicd-vsts">Azure Stream Analytics-feladat üzembe helyezése CI/CD-vel az Azure Pipelines használatával</a>
-    - html: <a href="stream-analytics-edge-csharp-udf">Felhasználói C# függvény írása Azure Stream Analytics Edge-feladathoz (előzetes verzió)</a>
-- title: Referencia
-  items:
-  - type: list
-    style: cards
-    className: cardsD
-    items:
-    - title: Előnézetek
-      html: <p><a href="stream-analytics-previews#public-previews">Nyilvános előzetes verziók</a></p><p><a href="stream-analytics-previews#private-previews">Privát előzetes verziók</a></p>
-    - title: Parancssor
-      html: <p><a href="https://docs.microsoft.com/powershell/module/az.streamanalytics/#stream_analytics">Azure PowerShell</a></p>
-    - title: Nyelvek
-      html: <p><a href="/dotnet/api/microsoft.azure.management.streamanalytics?view=azuremgmtstreamanalytics-1.8.3">.NET</a></p><p><a href="https://msdn.microsoft.com/azure/stream-analytics/reference/stream-analytics-query-language-reference">A Stream Analytics lekérdezési nyelve</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/streamanalytics">REST API-referencia</a></p>
+  author: mamccrea
+  ms.author: mamccrea
+  ms.date: 09/16/2019
+  ms.openlocfilehash: a4573c9f6938db56eba80da084004a620a54e9e4
+  ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 09/16/2019
+  ms.locfileid: "71018863"
+landingContent:
+- title: Az Azure Stream Analytics ismertetése
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Feladat létrehozása az Azure Portal használatával
+      url: stream-analytics-quick-create-portal.md
+  - linkListType: overview
+    links:
+    - text: Mi az az Azure Stream Analytics?
+      url: stream-analytics-introduction.md
+    - text: Az Azure Stream Analytics megoldásmintái
+      url: stream-analytics-solution-patterns.md
+  - linkListType: whats-new
+    links:
+    - text: A Stream Analytics kompatibilitási szintjei
+      url: stream-analytics-compatibility-level.md
+    - text: A Stream Analytics előzetes verziójú funkciói
+      url: stream-analytics-previews.md
+  - linkListType: concept
+    links:
+    - text: Streaming Analytics-technológia kiválasztása
+      url: streaming-technologies.md
+    - text: Fejlesztési eszköz kiválasztása a feladatokhoz
+      url: feature-comparison.md
+- title: Feladat csatlakoztatása adatforrásokhoz
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Információ a bemenettípusokról
+      url: stream-analytics-add-inputs.md
+  - linkListType: concept
+    links:
+    - text: Bemeneti adatok streamelése
+      url: stream-analytics-define-inputs.md
+    - text: Referenciaadatok csatlakoztatása keresésekhez
+      url: stream-analytics-use-reference-data.md
+  - linkListType: how-to-guide
+    links:
+    - text: Referenciaadatok használata SQL-adatbázisból
+      url: sql-reference-data.md
+    - text: Bemeneti kapcsolatok hibaelhárítása
+      url: stream-analytics-troubleshoot-input.md
+    - text: Apache Kafka for Event Hubs-események feldolgozása
+      url: ../event-hubs/event-hubs-kafka-stream-analytics.md
+    - text: Adatok feldolgozása az Azure Event Hubsból
+      url: ../event-hubs/process-data-azure-stream-analytics.md
+- title: Adatok küldése kimeneti fogadóba
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Információ a kimenettípusokról
+      url: stream-analytics-define-outputs.md
+  - linkListType: concept
+    links:
+    - text: Kimenet a Cosmos DB-be
+      url: stream-analytics-documentdb-output.md
+    - text: Kimenet az Azure SQL Database-be
+      url: stream-analytics-sql-output-perf.md
+    - text: Egyéni blobkimenet particionálása
+      url: stream-analytics-custom-path-patterns-blob-storage-output.md
+    - text: Kimeneti hibák kezelési szabályzatai
+      url: stream-analytics-output-error-policy.md
+  - linkListType: how-to-guide
+    links:
+    - text: Kimeneti kapcsolatok hibaelhárítása
+      url: stream-analytics-troubleshoot-output.md
+- title: A feladat monitorozása és hibaelhárítása
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: A monitorozás bemutatása
+      url: stream-analytics-monitoring.md
+    - text: Feladatok monitorozása az Azure PowerShell-lel
+      url: stream-analytics-monitor-and-manage-jobs-use-powershell.md
+    - text: Feladatmonitorozás létrehozása az Azure .NET SDK használatával
+      url: stream-analytics-monitor-jobs.md
+    - text: Feladatok monitorozása és kezelése a Visual Studióból
+      url: stream-analytics-monitor-jobs-use-vs.md
+    - text: Hibaelhárítás diagnosztikai naplókkal
+      url: stream-analytics-job-diagnostic-logs.md
+    - text: Hibakeresés a feladatábra segítségével
+      url: stream-analytics-job-diagram-with-metrics.md
+    - text: Adathibák elhárítása
+      url: data-errors.md
+- title: Időbeli fogalmak áttekintése
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Gyakori lekérdezési minták
+      url: stream-analytics-stream-analytics-query-patterns.md
+    - text: A Stream Analyticsben való időkezelés ismertetése
+      url: stream-analytics-time-handling.md
+    - text: Belső ellenőrzőpont és visszajátszás
+      url: stream-analytics-concepts-checkpoint-replay.md
+- title: Adatok átalakítása Stream Analytics-lekérdezésekkel
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Az ablakkezelési függvények bemutatása
+      url: stream-analytics-window-functions.md
+    - text: A térinformatikai funkciók bemutatása
+      url: stream-analytics-geospatial-functions.md
+    - text: JSON- és Avro-adatok elemzése
+      url: stream-analytics-parsing-json.md
+  - linkListType: how-to-guide
+    links:
+    - text: Lekérdezési logika hibaelhárítása
+      url: stream-analytics-troubleshoot-query.md
+    - text: Felhasználó által meghatározott JavaScript-összesítések írása
+      url: stream-analytics-javascript-user-defined-aggregates.md
+    - text: Felhasználó által meghatározott .NET-függvények fejlesztése IoT Edge-feladatokhoz
+      url: stream-analytics-edge-csharp-udf-methods.md
+  - linkListType: tutorial
+    links:
+    - text: Felhasználó által meghatározott JavaScript-függvény futtatása
+      url: stream-analytics-javascript-user-defined-functions.md
+    - text: Felhasználó által meghatározott C#-függvény futtatása Stream Analytics Edge-feladaton
+      url: stream-analytics-edge-csharp-udf.md
+- title: Elemzés gépi tanulással
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Rendellenességek észlelése gépi tanulással
+      url: stream-analytics-machine-learning-anomaly-detection.md
+    - text: Hangulatelemzés végzése az Azure Machine Learning Studióval
+      url: stream-analytics-machine-learning-integration-tutorial.md
+    - text: Feladatok skálázása a Machine Learning Studio funkcióival
+      url: stream-analytics-scale-with-machine-learning-functions.md
+- title: Feladatok létrehozása és kezelése fejlesztői eszközökkel
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: A feladatok megismerése a Visual Studio Code használatával
+      url: vscode-local-run.md
+    - text: Lekérdezések tesztelése mintaadatokkal a Visual Studio Code-ban
+      url: vscode-local-run.md
+    - text: Eszközök telepítése a Visual Studióhoz
+      url: stream-analytics-tools-for-visual-studio-install.md
+    - text: Lekérdezések tesztelése mintaadatokkal a Visual Studióban
+      url: stream-analytics-vs-tools-local-run.md
+    - text: Lekérdezések tesztelése élő adatokkal a Visual Studióban
+      url: stream-analytics-live-data-local-testing.md
+    - text: Feladatok megtekintése a Visual Studióban
+      url: stream-analytics-tools-for-visual-studio-edge-jobs.md
+    - text: IoT Edge-feladat fejlesztése a Visual Studióban
+      url: stream-analytics-tools-for-visual-studio-edge-jobs.md
+- title: A Stream Analytics-oktatóanyagok és -megoldások kipróbálása
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Feladat létrehozása és kezelése
+      url: stream-analytics-manage-job.md
+    - text: Azure-függvény aktiválása
+      url: stream-analytics-with-azure-functions.md
+  - linkListType: how-to-guide
+    links:
+    - text: Megoldások kiépítése geokerítéssel és térinformatikai összesítéssel
+      url: geospatial-scenarios.md
+    - text: Feladatok futtatása az IoT Edge-en
+      url: stream-analytics-edge.md
+    - text: Hangulatelemzési megoldás kiépítése
+      url: stream-analytics-twitter-sentiment-analysis-trends.md
+    - text: Csalások valós idejű észlelése
+      url: stream-analytics-real-time-fraud-detection.md
+    - text: IoT-megoldás kiépítése
+      url: stream-analytics-build-an-iot-solution-using-stream-analytics.md
+    - text: Nagy gyakoriságú kereskedelmi szimuláció
+      url: stream-analytics-high-frequency-trading.md
+    - text: Módosítható szabályküszöbökön alapuló riasztás
+      url: stream-analytics-threshold-based-rules.md
+- title: Stream Analytics-feladatok üzembe helyezése
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Feladat üzembe helyezése CI/CD-vel az Azure Pipelines használatával
+      url: stream-analytics-tools-visual-studio-cicd-vsts.md
+  - linkListType: how-to-guide
+    links:
+    - text: CI-/CD-folyamat beállítása a Visual Studio Code használatával
+      url: setup-cicd-vs-code.md
+    - text: CI-/CD-folyamat beállítása a Visual Studio használatával
+      url: stream-analytics-tools-for-visual-studio-cicd.md
+    - text: CI/CD beállítása IoT Edge-feladatokhoz REST API-k használatával
+      url: stream-analytics-cicd-api.md
+- title: Stream Analytics-feladatok skálázása
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Skálázás streamelési egységekkel
+      url: stream-analytics-streaming-unit-consumption.md
+    - text: Skálázás párhuzamos lekérdezési folyamatokkal
+      url: stream-analytics-parallelization.md
+    - text: Feladatok skálázása az átviteli sebesség növelése érdekében
+      url: stream-analytics-scale-jobs.md
+    - text: A feldolgozás optimalizálása újraparticionálással
+      url: repartition.md

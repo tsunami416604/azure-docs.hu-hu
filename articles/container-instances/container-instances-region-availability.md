@@ -1,57 +1,70 @@
 ---
-title: Az Azure Container Instances erőforrás rendelkezésre állása
-description: Az Azure Container Instances szolgáltatás különböző Azure-régióban a számítási és memória-erőforrások rendelkezésre állását.
+title: Erőforrás rendelkezésre állásának Azure Container Instances
+description: A Azure Container Instances szolgáltatás számítási és memória-erőforrásainak rendelkezésre állása különböző Azure-régiókban.
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
-ms.topic: overview
-ms.date: 03/01/2019
+ms.topic: article
+ms.date: 05/14/2019
 ms.author: danlep
-ms.openlocfilehash: 1ca23a95c746139963aa70ed20bb888152fd5cd8
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 24edce511c2d07050db1e77edeae4e587fcd79b0
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57554526"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172395"
 ---
-# <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Erőforrás rendelkezésre állása az Azure Container Instances szolgáltatásban az Azure-régióban
+# <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Erőforrások rendelkezésre állása Azure Container Instances Azure-régiókban
 
-Ez a cikk részletesen az Azure Container Instances számítási és memória-erőforrások az Azure-régiók rendelkezésre állását. 
+Ez a cikk részletesen ismerteti Azure Container Instances számítási és memória-erőforrások rendelkezésre állását az Azure-régiókban. 
 
-Értékek jelennek meg az üzemelő példányonként rendelkezésre álló erőforrások maximális száma egy [tárolócsoport](container-instances-container-groups.md). Értékek: jelenlegi időpontjában aktuálisak. Naprakész információkat a [szolgáltatásai](/rest/api/container-instances/listcapabilities/listcapabilities) API-t. 
+A megjelenített értékek a [tároló csoportok](container-instances-container-groups.md)üzembe helyezése során elérhető maximális erőforrások. Az értékek a kiadvány aktuális időpontjában jelennek meg. 
 
 > [!NOTE]
-> Tárolócsoportok ezen belül létrehozott van a központi telepítési régión belül rendelkezésre. Amikor egy régió nagy terhelés alatt áll, hibát észlelhet a példányok üzembe helyezésekor. Az ilyen üzembe helyezési hibák elhárításához, próbálkozzon az üzembe helyezni a példányokat alacsonyabb erőforrás-beállításokat, vagy egy későbbi időpontban a központi telepítés.
+> Az ezen erőforrás-korlátokon belül létrehozott tároló csoportok a telepítési régión belül rendelkezésre állásra vonatkoznak. Amikor egy régió nagy terhelés alatt áll, hibát észlelhet a példányok üzembe helyezésekor. Az ilyen üzembe helyezési hibák enyhítése érdekében próbálja meg alacsonyabb erőforrás-beállításokkal üzembe helyezni a példányokat, vagy próbálja megismételni a telepítést.
 
-További információ a kvótákkal és egyéb korlátok a központi telepítések: [kvóták és korlátozások az Azure Container Instances](container-instances-quotas.md).
+További információ a központi telepítések kvótái és egyéb korlátairól: a [Azure Container instances kvótái és korlátai](container-instances-quotas.md).
 
 ## <a name="availability---general"></a>Rendelkezésre állás – általános
 
-| Hely | Operációs rendszer | CPU | Memória (GB) |
+A következő régiók és erőforrások elérhetők a Linux és a [támogatott](container-instances-faq.md#what-windows-base-os-images-are-supported) Windows Server 2016-alapú tárolók számára.
+
+| Location | OS | CPU | Memória (GB) |
 | -------- | -- | :---: | :-----------: |
-| Kanada középső régiója, USA középső RÉGIÓJA, USA keleti RÉGIÓJA 2, USA déli középső RÉGIÓJA | Linux | 4 | 16 |
-| USA keleti régiója, Észak-Európa, Nyugat-Európa, USA nyugati régiója, USA 2. nyugati régiója | Linux | 4 | 14 |
-| Kelet-Japán | Linux | 2 | 8 |
-| Kelet-Ausztrália, Délkelet-Ázsia | Linux | 2 | 7 |
-| Közép-India, Kelet-Ázsia, USA északi középső RÉGIÓJA, Dél-India | Linux | 2 | 3.5 |
-| Kelet-Európa, Nyugat-Európa, USA nyugati régiója | Windows | 4 | 14 |
-| Kelet-Ausztrália, közép-Kanada, közép-India, USA középső RÉGIÓJA, Kelet-Ázsia, USA keleti RÉGIÓJA 2, kelet-japán, USA északi középső RÉGIÓJA, Észak-Európa, USA déli középső RÉGIÓJA, Dél-India, Délkelet-Ázsia, USA 2. nyugati | Windows | 2 | 3.5 |
+| Közép-Kanada, Közép-India, Közép-USA, Kelet-Ázsia, USA keleti régiója, USA 2. keleti régiója, Észak-Európa, az USA déli középső régiója, Délkelet-Ázsia, Egyesült Királyság déli régiója, USA nyugati | Linux | 4 | 16 |
+| Nyugat-Európa, USA 2. nyugati régiója | Linux | 4 | 14 |
+| Kelet-Ausztrália, Kelet-Japán | Linux | 2 | 8 |
+| USA északi középső régiója, Dél-India | Linux | 2 | 3.5 |
+| Nyugat-Európa | Windows | 4 | 16 |
+| USA keleti régiója, USA nyugati régiója | Windows | 4 | 14 |
+| Kelet-Ausztrália, Közép-Kanada, Közép-India, Közép-USA, Kelet-Ázsia, USA 2. keleti régiója, Kelet-Japán, Észak-Európa, Észak-Európa, az USA déli középső régiója, Délkelet-Ázsia, Dél-India, Egyesült Királyság déli régiója, USA nyugati régiója 2 | Windows | 2 | 3.5 |
 
-## <a name="availability---virtual-network-deployment-preview"></a>Rendelkezésre állás – Virtual network üzembe helyezése (előzetes verzió)
+## <a name="availability---windows-server-2019-ltsc-1809-deployments-preview"></a>Rendelkezésre állás – Windows Server 2019 LTSC, 1809 központi telepítések (előzetes verzió)
 
-A következő régiókban és erőforrások érhetők el egy üzembe helyezett tárolócsoporthoz egy [az Azure virtual network](container-instances-vnet.md) (előzetes verzió)
+A következő régiók és erőforrások elérhetők a Windows Server 2019-alapú tárolókkal (előzetes verzió) rendelkező tárolók csoportjai számára.
+
+| Location | OS | CPU | Memória (GB) |
+| -------- | -- | :---: | :-----------: |
+| Délkelet-Ázsia, Észak-Európa, Nyugat-Európa, USA középső régiója, USA keleti régiója, USA nyugati régiója, USA 2. nyugati régiója | Windows | 4 | 16 |
+| USA 2. keleti régiója | Windows | 2 | 3.5 |
+
+
+## <a name="availability---virtual-network-deployment-preview"></a>Rendelkezésre állás – virtuális hálózat központi telepítése (előzetes verzió)
+
+A következő régiók és erőforrások érhetők el egy Azure-beli [virtuális hálózatban](container-instances-vnet.md) (előzetes verzióban) üzembe helyezett tároló csoport számára.
 
 [!INCLUDE [container-instances-vnet-limits](../../includes/container-instances-vnet-limits.md)]
 
-## <a name="availability---gpu-resources-preview"></a>Rendelkezésre állás – GPU-erőforrások (előzetes verzió)
+## <a name="availability---gpu-resources-preview"></a>Elérhetőség – GPU-erőforrások (előzetes verzió)
 
-A következő régiókban és erőforrások állnak rendelkezésre a együtt üzembe helyezett tárolócsoporthoz [GPU-erőforrások](container-instances-gpu.md) (előzetes verzió)
+A következő régiók és erőforrások elérhetők a [GPU](container-instances-gpu.md) -erőforrásokkal (előzetes verzió) üzembe helyezett tárolók csoportjához.
 
 [!INCLUDE [container-instances-gpu-regions](../../includes/container-instances-gpu-regions.md)]
 [!INCLUDE [container-instances-gpu-limits](../../includes/container-instances-gpu-limits.md)]
 
 ## <a name="next-steps"></a>További lépések
 
-Értesítheti a csapatot tudja, hogy szeretné-e további régiók vagy nagyobb erőforrás rendelkezésre állásáról [aka.ms/aci/feedback](https://aka.ms/aci/feedback).
+Tájékoztassa a csapatot, ha további régiókat szeretne látni, vagy megnövelt erőforrás-elérhetőséget a [aka.MS/ACI/feedback](https://aka.ms/aci/feedback)címen.
 
-A tárolópéldány üzembe helyezésének hibaelhárításáról további információkért lásd: [Azure Container Instances üzembe helyezés hibáinak elhárítása](container-instances-troubleshooting.md).
+A tároló-példányok telepítésével kapcsolatos hibaelhárításról lásd: [üzembe helyezési problémák elhárítása Azure Container instances](container-instances-troubleshooting.md).

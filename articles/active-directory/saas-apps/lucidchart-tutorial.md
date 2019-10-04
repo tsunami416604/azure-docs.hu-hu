@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97bbb6b802f4a7a6378f283efd02cfb74873a903
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e12b5984eb2fe4e54ffec7d6b4a2a6da202c70e4
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59266817"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67097790"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lucidchart"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Lucidchart
 
@@ -54,7 +54,7 @@ Az Azure AD integrálása a Lucidchart konfigurálásához hozzá kell Lucidchar
 
 **Lucidchart hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

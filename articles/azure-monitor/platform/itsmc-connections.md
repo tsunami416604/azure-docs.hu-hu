@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
-ms.openlocfilehash: 0ff73e342a668fef6d405783c130cf216f8003b4
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
-ms.translationtype: HT
+ms.openlocfilehash: ffd9c4bfc934faff1664ff39c0e979a9d6c09487
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149968"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66399780"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>ITSM-termékekkel/szolgáltatásokkal csatlakozzon az IT Service Management-összekötő
 Ez a cikk ismerteti az ITSM-termék vagy szolgáltatás és az IT Service Management Connector (ITSMC) közötti kapcsolat konfigurálása a Log Analytics központilag kezelheti a munkaelemeket. ITSMC kapcsolatos további információkért lásd: [áttekintése](../../azure-monitor/platform/itsmc-overview.md).
@@ -72,8 +72,8 @@ A következő eljárással ITSMC csatlakozni a System Center Service Manager-pé
 | **Kiszolgáló URL-címe**   | Írja be a webalkalmazás URL-címét a Service Manager. További információ a Service Manager webalkalmazás van [Itt](#create-and-deploy-service-manager-web-app-service).
 | **Ügyfél-azonosító**   | Írja be az ügyfél-Azonosítót (az automatikus parancsfájl használatával) létrehozott webalkalmazás hitelesítéséhez. További információ az automatizált szkript van [itt.](../../azure-monitor/platform/itsmc-service-manager-script.md)|
 | **Titkos Ügyfélkód**   | Írja be a titkos ügyfélkulcsot, jön létre a azonosítóval.   |
-| **Adatszinkronizálás hatóköre**   | Válassza ki a Service Manager munkaelemek keresztül ITSMC szinkronizálni kívánt.  Ezen elemek is importálja a Log Analytics munka. **Beállítások:**  Az incidensek, Változáskérések.|
-| **Adatok szinkronizálása** | Írja be az adatokat a kívánt múltbeli napok száma. **Felső korlát**: 120 nap. |
+| **Adatok szinkronizálása**   | Válassza ki a Service Manager munkaelemek keresztül ITSMC szinkronizálni kívánt.  Ezen elemek is importálja a Log Analytics munka. **Beállítások:**  Az incidensek, Változáskérések.|
+| **Adatszinkronizálás hatóköre** | Írja be az adatokat a kívánt múltbeli napok száma. **Felső korlát**: 120 nap. |
 | **Új konfigurációs elem létrehozása az ITSM-megoldással** | Válassza ezt a lehetőséget, ha azt szeretné, a konfigurációelemek létrehozása az ITSM-termékben. Kiválasztásakor a Log Analytics hoz létre az érintett Konfigurációelemek (esetén a nem létező CIs) konfigurációelemként a támogatott ITSM-rendszer. **Alapértelmezett**: le van tiltva. |
 
 ![Service manager-kapcsolat](media/itsmc-connections/service-manager-connection.png)
@@ -185,11 +185,12 @@ A következő szakaszok a ServiceNow-termék csatlakozhat az Azure-ban ITSMC ré
 ### <a name="prerequisites"></a>Előfeltételek
 Ellenőrizze, hogy az alábbi előfeltételek teljesülését:
 - ITSMC telepítve. További információ: [Felvétele az IT Service Management Connector megoldás](../../azure-monitor/platform/itsmc-overview.md#adding-the-it-service-management-connector-solution).
-- A ServiceNow támogatott verziók: London, Kingston, Jakarta, Isztambul, Helsinki, Geneva.
+- A ServiceNow támogatott verziók: Madrid, London, Kingston, Jakarta, Isztambul, Helsinki, Geneva.
 
 **ServiceNow-rendszergazdák tegye a következőket a ServiceNow-példány az**:
 - Ügyfél-Azonosítóját és ügyfélkulcsát a ServiceNow-termék létrehozásához. Hogyan hozhat létre az ügyfél-azonosítója és kulcsa a további információkért lásd: szükség szerint a következő információkat:
 
+    - [OAuth-ot Madrid beállítása](https://docs.servicenow.com/bundle/madrid-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [OAuth-ot London beállítása](https://docs.servicenow.com/bundle/london-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [OAuth-ot Kingston beállítása](https://docs.servicenow.com/bundle/kingston-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [OAuth-ot Dzsakarta beállítása](https://docs.servicenow.com/bundle/jakarta-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)

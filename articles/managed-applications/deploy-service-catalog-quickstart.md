@@ -10,11 +10,11 @@ ms.tgt_pltfrm: na
 ms.date: 10/04/2018
 ms.author: tomfitz
 ms.openlocfilehash: 4d2e8b442f70ee791fe65a32402e5272eda3f209
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809774"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60588921"
 ---
 # <a name="deploy-service-catalog-app-through-azure-portal"></a>Az Azure Portalon keresztül service catalog-alkalmazás üzembe helyezése
 

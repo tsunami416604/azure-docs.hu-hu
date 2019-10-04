@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: kraigb
 ms.openlocfilehash: 0ee0c7162e26b875c74796b6d5379b414981e2d5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59282321"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60237527"
 ---
 # <a name="create-and-clone-projects"></a>Projektek létrehozása és klónozása
 
@@ -78,11 +78,11 @@ A következő fenntartott szavakat azonosítók projektként önmagukban nem has
 
 | | | | | | |
 | --- | --- | --- | --- | --- | --- |
-| névjegy | account | Felügyelet | api-t | Blog | tanterem |
+| tudnivalók | account | Felügyelet | api | Blog | tanterem |
 | content | irányítópult | Fedezze fel | Gyakori kérdések | help | html |
-| kezdőlap | import | könyvtár | felügyelet | új | Notebook |
-| Notebookok | PDF-fájl | előzetes verzió | díjszabás | profil | keresés |
-| status | támogatás | test | | | |
+| Kezdőlap | import | könyvtár | Felügyeleti | új | Notebook |
+| Notebookok | PDF-fájl | előzetes verzió | Díjszabás | Profil | Keresés |
+| status | Támogatás | test | | | |
 
 Ha ezeknek a szavaknak közül a projekt Azonosítóját használja a **új projekt létrehozása** és **Projektbeállítások** ablakok azt jelzik, "könyvtár azonosítója fenntartott azonosító is."
 

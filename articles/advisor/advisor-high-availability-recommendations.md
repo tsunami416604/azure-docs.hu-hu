@@ -8,12 +8,12 @@ ms.author: kasparks
 ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 793c881d08e8feb038cc6e7ac82b7e95384e1b55
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d78d8a689b860162a742e85c155205f072a3667c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59699304"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446779"
 ---
 # <a name="improve-availability-of-your-application-with-azure-advisor"></a>Az Azure Advisorral az alkalmazás rendelkezésre állásának javítása
 
@@ -60,7 +60,7 @@ Ha a Traffic Manager-profil földrajzi útválasztásra van konfigurálva, majd 
 
 ## <a name="use-soft-delete-on-your-azure-storage-account-to-save-and-recover-data-after-accidental-overwrite-or-deletion"></a>Helyreállítható törlés használata az Azure Storage-fiók mentéséhez és helyreállításához véletlen felülírása vagy a törlés után
 
-Engedélyezése [helyreállítható törlési](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) a tárfiókon, hogy a blobok átmenet helyreállíthatóan törölt állapotból helyett folyamatban véglegesen törölve törölve. Amikor a rendszer felülírja azok adatait egy helyreállíthatóan törölt pillanatkép menteni az állapotot a felülírt adatok jön létre. A helyreállítható törlés használata lehetővé teszi, hogy van-e véletlen törlések helyreállítása, vagy felülírja. Az Advisor azonosítja az Azure Storage-fiókok, amelyek nem rendelkeznek engedélyezhető a helyreállítható törlés, és engedélyezi azt javasolja.
+Engedélyezése [helyreállítható törlési](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) a tárfiókon, hogy a blobok átmenet helyreállíthatóan törölt állapotból helyett folyamatban véglegesen törölve törölve. Az adatok felülírásakor a rendszer létrehoz egy helyreállítható módon törölt pillanatképet a felülírt adatok állapotának mentéséhez. A helyreállítható törlés használata lehetővé teszi, hogy van-e véletlen törlések helyreállítása, vagy felülírja. Az Advisor azonosítja az Azure Storage-fiókok, amelyek nem rendelkeznek engedélyezhető a helyreállítható törlés, és engedélyezi azt javasolja.
 
 ## <a name="configure-your-vpn-gateway-to-active-active-for-connection-resiliency"></a>Konfigurálja a VPN-átjáró aktív-aktív, a kapcsolat rugalmassága
 
@@ -69,6 +69,33 @@ Aktív-aktív konfigurációban a VPN-átjáró mindkét példányát meghatáro
 ## <a name="use-production-vpn-gateways-to-run-your-production-workloads"></a>Az éles számítási feladatok futtatása termelési VPN-átjárók használatával
 
 Az Azure Advisor minden VPN-átjárók, amelyek az alapszintű Termékváltozat keressen, és a egy éles Termékváltozat inkább használatát javasoljuk. Az alapszintű Termékváltozat fejlesztési és tesztelési célokra tervezték. Éles termékváltozatok alagút, BGP-támogatás, aktív-aktív konfigurációban lehetőségeket, egyéni Ipsec/IKE-házirendet, és magasabb stabilitását és rendelkezésre állási megnövelt számú kínálnak.
+
+## <a name="repair-invalid-log-alert-rules"></a>Érvénytelen naplóriasztási szabály javítása
+
+Az Azure Advisor észlelni fogja, hogy a feltétel szakaszban megadott érvénytelen lekérdezéseket riasztási szabályok. A naplóriasztási szabályok az Azure Monitorban hozhatók létre, és elemzési lekérdezések adott időközönkénti futtatására szolgálnak. A lekérdezés eredményei határozzák meg, hogy egy riasztást aktiválni kell-e. Az elemzési lekérdezések idővel érvénytelenné válhatnak a hivatkozott erőforrásokban, táblákban vagy parancsokban bekövetkező változások miatt. Az Advisor javasolni fogja, hogy, javítsa ki a riasztási szabály akadályoznia, hogy első automatikus – letiltva, és az Azure-erőforrások figyelési lefedettség biztosítja a lekérdezés. [További tudnivalók a riasztási szabályok](https://aka.ms/aa_logalerts_queryrepair)
+
+## <a name="configure-consistent-indexing-mode-on-your-cosmos-db-collection"></a>A Cosmos DB-gyűjtemények a konzisztens az indexelő módjának konfigurálása
+
+A lusta indexelési mód konfigurálva az Azure Cosmos DB-tárolók hatással lehet a lekérdezési eredmények frissessége. Az Advisor tárolók beállítható úgy érzékeli, és egységes üzemmódra váltás javasoljuk. [További információ a házirendek a Cosmos DB indexelése](https://aka.ms/cosmosdb/how-to-manage-indexing-policy)
+
+## <a name="configure-your-azure-cosmos-db-containers-with-a-partition-key"></a>Azure Cosmos DB-tárolók konfigurálása partíciókulccsal
+
+Azure Cosmos DB nem particionált gyűjteményeket, amelyek a kiépített tárolási kvótája hamarosan eléri az Azure Advisor azonosítja. Ez azt javasolja, hogy ezekhez a gyűjteményekhez-ba való migrálás új gyűjtemények olyan partíció-definícióval, hogy azok automatikusan kiterjeszthető a szolgáltatás által. [További tudnivalók a partíciókulcs választása](https://aka.ms/cosmosdb/choose-partitionkey)
+
+## <a name="upgrade-your-azure-cosmos-db-net-sdk-to-the-latest-version-from-nuget"></a>Az Azure Cosmos DB .NET SDK frissítése a legújabb verzióra a Nugetről
+
+Az Azure Advisor azonosítja, amely a .NET SDK korábbi verzióját használja, és javasolja a nugetről a legújabb verzióra való frissítést a legújabb javításokat, teljesítménnyel kapcsolatos fejlesztések és új funkciók az Azure Cosmos DB-fiókokhoz. [További tudnivalók a Cosmos DB .NET SDK-val](https://aka.ms/cosmosdb/sql-api-sdk-dotnet)
+
+## <a name="upgrade-your-azure-cosmos-db-java-sdk-to-the-latest-version-from-maven"></a>Az Azure Cosmos DB Java SDK frissítése a legújabb verzióra a Mavenről
+
+Az Azure Advisor azonosítja, amely a Java SDK korábbi verzióját használja, és javasolja a Mavenből a legújabb verzióra való frissítést a legújabb javításokat, teljesítménnyel kapcsolatos fejlesztések és új funkciók az Azure Cosmos DB-fiókokhoz. [További tudnivalók a Cosmos DB Java SDK-val](https://aka.ms/cosmosdb/sql-api-sdk-dotnet)
+
+## <a name="upgrade-your-azure-cosmos-db-spark-connector-to-the-latest-version-from-maven"></a>Az Azure Cosmos DB Spark-összekötő frissítése a legújabb verzióra a Mavenről
+
+Az Azure Advisor azonosítja a Cosmos DB Spark-összekötő régi verzióját használja, javasoljuk, hogy a legújabb verzióra való frissítést a Mavenből a legújabb javításokat, teljesítménnyel kapcsolatos fejlesztések és új funkciók az Azure Cosmos DB-fiókokhoz. [További tudnivalók a Cosmos DB Spark-összekötő](https://aka.ms/cosmosdb/spark-connector)
+
+## <a name="enable-virtual-machine-replication"></a>Virtuális gépek replikálásának engedélyezése
+Egy másik régióba engedélyezve van a replikáció nem rendelkező virtuális gépek esetén nem hibatűrőek az regionális üzemkimaradások utáni helyreállításon. Virtuális gépek replikálásához bármely negatív hatás az üzletmenetre csökkenti a az Azure-régióban leállás ideje alatt. Az Advisor észlelni fogja a virtuális gépek, amelyek nem rendelkeznek a replikáció engedélyezve van, és javasoljuk, hogy engedélyezze a replikációt, így leállás esetén gyorsan szakaszhoz a virtuális gépek egy távoli Azure-régióban. [További tudnivalók a virtuálisgép-replikációt](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart)
 
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Magas rendelkezésre állás – javaslatok az Advisor elérése
 

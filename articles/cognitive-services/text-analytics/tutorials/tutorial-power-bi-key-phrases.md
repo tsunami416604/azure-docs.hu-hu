@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Power BI integrálható a Text Analytics Cognitive Service'
+title: 'Oktatóanyag: Power BI integrálása a Text Analytics kognitív szolgáltatással'
 titleSuffix: Azure Cognitive Services
 description: Megismerheti, hogyan nyerhet ki kulcskifejezéseket a Power BI-ban tárolt szövegekből.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: tutorial
-ms.date: 02/13/2019
+ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: 24767f73e3e1409f81262ad57f3fd5152a4ec319
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 97245a10602f763c3269218d87c6b1a5ba309817
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60003468"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71241017"
 ---
-# <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Oktatóanyag: Power BI integrálható a Text Analytics Cognitive Service
+# <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Oktatóanyag: Power BI integrálása a Text Analytics kognitív szolgáltatással
 
 A Microsoft Power BI Desktop ingyenes alkalmazás segítségével csatlakozni, átalakítani és szemléltetni is lehet az adatokat. A Microsoft Azure Cognitive Services részét képező Text Analytics természetes nyelvi feldolgozást kínál. A nyers, szerkezet nélkül megadott szövegből képes kivonatolni a legfontosabb kifejezéseket, elemzi az érzéseket és azonosítani tud olyan jól ismert dolgokat, mint a márkák. Ezekkel az eszközökkel gyors bepillantást nyerhet abba, hogy az ügyfelei miről beszélnek, és milyen érzéseket váltottak ki belőlük.
 
@@ -36,7 +36,7 @@ Az oktatóanyag segítségével megtanulhatja a következőket:
 - Microsoft Power BI Desktop. [Töltse le ingyenesen](https://powerbi.microsoft.com/get-started/).
 - Egy Microsoft Azure-fiók. [Kezdjen egy ingyenes próbaidőszakot](https://azure.microsoft.com/free/), vagy [jelentkezzen be](https://portal.azure.com/).
 - Cognitive Services API fiók a Text Analytics API felülettel. Ha még nincs fiókja, [regisztráljon](../../cognitive-services-apis-create-account.md) és használhatja a havi 5000 tranzakciót tartalmazó ingyenes csomagot (lásd [díjszabás](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)) az oktatóanyag befejezéséhez.
-- Kell még a regisztráció során létrejött [Text Analytics hozzáférési kulcs](../how-tos/text-analytics-how-to-access-key.md).
+- Kell még a regisztráció során létrejött [Text Analytics hozzáférési kulcs](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource).
 - Ügyfelek megjegyzései. Használhatja [a példaadatokat](https://aka.ms/cogsvc/ta), de a saját adatait is. Az oktatóanyagban azt feltételezzük, hogy a példaadatainkat használja.
 
 ## <a name="load-customer-data"></a>Ügyféladatok betöltése
@@ -94,7 +94,7 @@ A Text Analytics szolgáltatás a [Key Phrases API](https://westus.dev.cognitive
 | | |
 | - | - |
 | `id`  | A dokumentum egy egyedi azonosítóját a kérésen belül. Ezt a mezőt a válasz is tartalmazza. Így több dokumentum feldolgozásakor könnyen társítani lehet a kinyert kulcskifejezéseket a dokumentummal, amelyből származnak. Az oktatóanyagban, mivel kérésenként csak egy dokumentumot dolgozunk fel, az `id` értéket fixen rögzítheti, hogy mindegyik kérésre ugyanaz legyen.|
-| `text`  | A feldolgozandó szöveg. Ennek a mezőnek az értéke az [előző részben](#PreparingData) létrehozott `Merged` oszlopból származik, amely a tárgysor és a megjegyzés kombinált szövegét tartalmazza. A kulcs kifejezések API megköveteli, hogy ezeket az adatokat nem lehet hosszabb készül 5,120 karakternél.|
+| `text`  | A feldolgozandó szöveg. Ennek a mezőnek az értéke az [előző részben](#PreparingData) létrehozott `Merged` oszlopból származik, amely a tárgysor és a megjegyzés kombinált szövegét tartalmazza. A legfontosabb kifejezések API-nak szüksége van arra, hogy az adathalmaz ne legyen hosszabb 5 120 karakternél.|
 | `language` | A dokumentum természetes nyelvét jelölő kód. A mintaadatokban minden üzenet angolul van, így a mezőre rögzítheti a `en` értéket.|
 
 ## <a name="create-a-custom-function"></a>Egyéni függvény létrehozása
@@ -103,7 +103,7 @@ A Text Analytics szolgáltatás a [Key Phrases API](https://westus.dev.cognitive
 Most már készen áll az egyéni függvény létrehozására, amely integrálja majd a Power BI-t és a Text Analytics szolgáltatást. A függvény a feldolgozandó szöveget paraméterként kapja meg. Elvégzi az adatok átalakítását a szükséges JSON formára és vissza, és elküldi a HTTP-kérést a Key Phrases API-nak. A függvény elemzi az API válaszát és a kinyert kulcskifejezések vesszővel tagolt listáját tartalmazó sztringet ad vissza.
 
 > [!NOTE]
-> A Power BI Desktop egyéni függvényei a [Power Query M képletnyelven](https://msdn.microsoft.com/library/mt211003.aspx) (röviden „M”) vannak megírva. Az M egy funkcionális programozási nyelv, amelynek az alapját az [F#](https://docs.microsoft.com/dotnet/fsharp/) képezi. Az oktatóanyag elvégzéséhez azonban nem kell programozónak lennie. A szükséges kód alább megtalálható.
+> A Power BI Desktop egyéni függvényei a [Power Query M képletnyelven](https://docs.microsoft.com/powerquery-m/power-query-m-reference) (röviden „M”) vannak megírva. Az M egy funkcionális programozási nyelv, amelynek az alapját az [F#](https://docs.microsoft.com/dotnet/fsharp/) képezi. Az oktatóanyag elvégzéséhez azonban nem kell programozónak lennie. A szükséges kód alább megtalálható.
 
 A Power BI Desktopban ellenőrizze, hogy még a Lekérdezésszerkesztő ablakban van-e. Ha nem, válassza ki a **Kezdőlap** menüszalagot, majd a **Külső adatok** csoportban kattintson a **lekérdezések szerkesztése** elemre.
 
@@ -114,13 +114,14 @@ Az új lekérdezés eredetileg `Query1` névvel megjelenik a Lekérdezések list
 Most a **Kezdőlap** menüszalag **Lekérdezés** csoportjának **Speciális szerkesztő** elemére kattintva nyissa meg a Speciális szerkesztő ablakot. Törölje az eredetileg az ablakban lévő kódot, és illessze be a következőt. 
 
 > [!NOTE]
-> Az alábbi példák azt feltételezik, hogy a Text Analytics API végpont kezdete: `https://westus.api.cognitive.microsoft.com`. A Text Analytics az előfizetések létrehozását 13 különböző régióban támogatja. Ha egy ezektől eltérő régióban regisztrált a szolgáltatásra, mindenképp a kiválasztott régió végpontját használja. A végpont megkereséséhez jelentkezzen be az [Azure portálra](https://azure.microsoft.com/features/azure-portal/) és a Text Analytics előfizetésének kijelölése után válassza az Áttekintés lapot.
+> Cserélje le az alábbi példás végpontot (amely tartalmazza `<your-custom-subdomain>`) a Text Analytics erőforráshoz generált végponttal. Ezt a végpontot megkeresheti a [Azure Portalba](https://azure.microsoft.com/features/azure-portal/)való bejelentkezéssel, a Text Analytics-előfizetés kiválasztásával, majd a lehetőség kiválasztásával `Quick start`.
+
 
 ```fsharp
 // Returns key phrases from the text in a comma-separated list
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
-    endpoint    = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases",
+    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics" & "/v2.1/keyPhrases",
     jsontext    = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody    = "{ documents: [ { language: ""en"", id: ""0"", text: " & jsontext & " } ] }",
     bytesbody   = Text.ToBinary(jsonbody),
@@ -164,7 +165,8 @@ Kattintson a **Hitelesítő adatok szerkesztése** gombra, majd ellenőrizze, ho
 > [!NOTE]
 > Válassza az `Anonymous` elemet, mert a Text Analytics szolgáltatás a hozzáférési kulcs használatával hitelesíti Önt, ezért a Power BI-nak nem kell hitelesítő adatokat megadnia magához a HTTP-kéréshez.
 
-![[a névtelen hitelesítés beállítása]](../media/tutorials/power-bi/access-web-content.png)
+> [!div class="mx-imgBorder"]
+> ![[névtelen hitelesítés beállítása]](../media/tutorials/power-bi/access-web-content.png)
 
 Ha a Hitelesítő adatok szerkesztése értesítés a névtelen hozzáférés beállítása után is látható, elképzelhető, hogy elfelejtette bemásolni a Text Analytics hozzáférési kulcsot az `KeyPhrases` [egyéni függvény](#CreateCustomFunction) kódba.
 
@@ -188,7 +190,7 @@ Most pedig ezzel az oszloppal létrehozunk egy szófelhőt. Első lépésként k
 > [!NOTE]
 > Miért a kivonatolt kulcskifejezéseket használjuk a szófelhő létrehozásához a megjegyzések teljes szövege helyett? A kulcskifejezések az ügyfelek megjegyzéseiből a *fontos* és nem egyszerűen csak a *leggyakoribb* szavakat tartalmazzák. Emellett a szavak méretezését így nem torzítja az, ha valamely szó csak szűk számú megjegyzésben fordul elő nagyon gyakran.
 
-Ha a Word Cloud (Szófelhő) egyéni vizualizációt még nem telepítette, tegye meg. A munkaterület jobb oldalán lévő Vizualizációk panelen kattintson a három pontra (**...**), és válassza az **Importálás az áruházból** lehetőséget. Ezután keressen rá a „cloud” (felhő) kifejezésre, és kattintson a **Hozzáadás** gombra a Word Cloud (Szófelhő) vizualizáció mellett. A Power BI telepíti a szófelhő vizualizációt, és tájékoztatja, amint ez sikeresen megtörtént.
+Ha a Word Cloud (Szófelhő) egyéni vizualizációt még nem telepítette, tegye meg. A munkaterület jobb oldalán lévő Vizualizációk panelen kattintson a három pontra ( **...** ), és válassza az **Importálás az áruházból** lehetőséget. Ezután keressen rá a „cloud” (felhő) kifejezésre, és kattintson a **Hozzáadás** gombra a Word Cloud (Szófelhő) vizualizáció mellett. A Power BI telepíti a szófelhő vizualizációt, és tájékoztatja, amint ez sikeresen megtörtént.
 
 ![[egyéni vizualizáció hozzáadása]](../media/tutorials/power-bi/add-custom-visuals.png)<br><br>
 
@@ -223,7 +225,7 @@ Az alábbi hangulatelemzési függvény egy pontszámot ad vissza, amely a szöv
 // Returns the sentiment score of the text, from 0.0 (least favorable) to 1.0 (most favorable)
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
-    endpoint    = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment",
+    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com" & "/text/analytics/v2.1/sentiment",
     jsontext    = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody    = "{ documents: [ { language: ""en"", id: ""0"", text: " & jsontext & " } ] }",
     bytesbody   = Text.ToBinary(jsonbody),
@@ -240,7 +242,7 @@ in  sentiment
 // Returns the two-letter language code (for example, 'en' for English) of the text
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
-    endpoint    = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/languages",
+    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com" & "/text/analytics/v2.1/languages",
     jsontext    = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody    = "{ documents: [ { id: ""0"", text: " & jsontext & " } ] }",
     bytesbody   = Text.ToBinary(jsonbody),
@@ -254,7 +256,7 @@ in  language
 // Returns the name (for example, 'English') of the language in which the text is written
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
-    endpoint    = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/languages",
+    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com" & "/text/analytics/v2.1/languages",
     jsontext    = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody    = "{ documents: [ { id: ""0"", text: " & jsontext & " } ] }",
     bytesbody   = Text.ToBinary(jsonbody),
@@ -274,7 +276,7 @@ Végezetül íme a korábban bemutatott Key Phrases-függvény egy olyan változ
 // Returns key phrases from the text as a list object
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
-    endpoint    = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases",
+    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com" & "/text/analytics/v2.1/keyPhrases",
     jsontext    = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody    = "{ documents: [ { language: ""en"", id: ""0"", text: " & jsontext & " } ] }",
     bytesbody   = Text.ToBinary(jsonbody),
@@ -294,7 +296,7 @@ További információk a Text Analytics szolgáltatásról, a Power Query M kép
 > [Text Analytics API-referencia](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c6)
 
 > [!div class="nextstepaction"]
-> [Power Query M-referencia](https://msdn.microsoft.com/library/mt211003.aspx)
+> [Power Query M-referencia](https://docs.microsoft.com/powerquery-m/power-query-m-reference)
 
 > [!div class="nextstepaction"]
 > [Power BI-dokumentáció](https://powerbi.microsoft.com/documentation/powerbi-landing-page/)

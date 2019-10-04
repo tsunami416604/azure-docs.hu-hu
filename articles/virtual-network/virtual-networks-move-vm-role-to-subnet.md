@@ -1,10 +1,10 @@
 ---
-title: A virtuális gép (klasszikus) vagy a Cloud Services szerepkör-példány áthelyezése egy másik alhálózat - Azure PowerShell |} Microsoft Docs
-description: Megtudhatja, hogyan helyezi át a virtuális gépek (klasszikus) és a Felhőszolgáltatások szerepkörpéldányokat egy másik alhálózat PowerShell használatával.
+title: Virtuális gép (klasszikus) vagy Cloud Services szerepkör-példány áthelyezése másik alhálózatra – Azure PowerShell | Microsoft Docs
+description: Megtudhatja, hogyan helyezhet át virtuális gépeket (klasszikus) és Cloud Services szerepkör-példányokat egy másik alhálózatra a PowerShell használatával.
 services: virtual-network
 documentationcenter: na
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: tysonn
 ms.assetid: de4135c7-dc5b-4ffa-84cc-1b8364b7b427
 ms.service: virtual-network
@@ -15,31 +15,31 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2016
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: eb1576b7b842537dbdc49e6b9d402ef47ad9fae9
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 275d59a7bddd8b2b609169218afcd15e9a0ce913
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31792647"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058375"
 ---
-# <a name="move-a-vm-classic-or-cloud-services-role-instance-to-a-different-subnet-using-powershell"></a>A virtuális gép (klasszikus) vagy a Cloud Services szerepkör példány áthelyezése egy másik alhálózat PowerShell használatával
-PowerShell használatával helyezze át a virtuális gépek (klasszikus) egy alhálózatból másik ugyanazt a virtuális hálózatot (VNet). Szerepkörpéldányokat helyezheti át a szolgáltatáskonfigurációs SÉMA fájl szerkesztése, hanem a PowerShell használatával.
+# <a name="move-a-vm-classic-or-cloud-services-role-instance-to-a-different-subnet-using-powershell"></a>Virtuális gép (klasszikus) vagy Cloud Services szerepkör-példány áthelyezése másik alhálózatra a PowerShell használatával
+A PowerShell használatával áthelyezheti a virtuális gépeket (klasszikus) az egyik alhálózatból egy másikba ugyanazon a virtuális hálózaton (VNet). A szerepkör-példányok a PowerShell használata helyett a CSCFG fájl szerkesztésével helyezhetők át.
 
 > [!NOTE]
-> Ez a cikk ismerteti, hogyan kívánja áthelyezni a virtuális gépek telepítése csak a klasszikus üzembe helyezési modell használatával.
+> Ez a cikk azt ismerteti, hogyan helyezhetők át a klasszikus üzembe helyezési modellen keresztül üzembe helyezett virtuális gépek.
 > 
 > 
 
-Miért virtuális gépek áthelyezése egy másik alhálózat? Alhálózati áttelepítés akkor hasznos, ha a régebbi alhálózati túl kicsi, és nem bonthatók ki meglévő futó virtuális gépeinek alhálózat miatt. Ebben az esetben hozzon létre egy új, nagyobb alhálózatot, és telepítse át a virtuális gépeket az új alhálózatot, majd áttelepítés befejezése után törölheti a régi üres alhálózat.
+Miért helyezze át a virtuális gépeket egy másik alhálózatra? Az alhálózatok áttelepítése akkor lehet hasznos, ha a régebbi alhálózat túl kicsi, és az adott alhálózat meglévő futó virtuális gépei miatt nem lehet kibontani. Ebben az esetben létrehozhat egy új, nagyobb alhálózatot, és áttelepítheti a virtuális gépeket az új alhálózatra, majd az áttelepítés befejeződése után törölheti a régi üres alhálózatot.
 
-## <a name="how-to-move-a-vm-to-another-subnet"></a>A virtuális gép áthelyezése egy másik alhálózat
-Helyezze át a virtuális Gépet, futtassa a Set-AzureSubnet PowerShell-parancsmag, az alábbi példában egy sablon használatával. Az alábbi példa azt áthelyezi TestVM a jelen alhálózatból az alhálózat-2. Ne felejtse el szerkeszteni a példa a környezetnek megfelelően. Vegye figyelembe, hogy amikor a frissítés-AzureVM parancsmag egy eljárás részeként futtatja, mindig újra lesz indítva a virtuális Gépet a frissítési folyamat részeként.
+## <a name="how-to-move-a-vm-to-another-subnet"></a>Virtuális gép áthelyezése másik alhálózatra
+Egy virtuális gép áthelyezéséhez futtassa a set-AzureSubnet PowerShell-parancsmagot az alábbi példában szereplő sablon alapján. Az alábbi példában a TestVM a jelen alhálózatról a 2. alhálózatra helyezzük át. Ügyeljen arra, hogy a példát a környezetének megfelelően szerkessze. Vegye figyelembe, hogy amikor egy eljárás részeként futtatja az Update-AzureVM parancsmagot, a rendszer újraindítja a virtuális gépet a frissítési folyamat részeként.
 
     Get-AzureVM –ServiceName TestVMCloud –Name TestVM `
     | Set-AzureSubnet –SubnetNames Subnet-2 `
     | Update-AzureVM
 
-Ha megadott egy statikus belső magánhálózati IP-címe a virtuális Gépet, törölje ezt a beállítást, mielőtt a virtuális gép áthelyezése egy új alhálózatot kell. Ebben az esetben az alábbi parancsokat használja:
+Ha a virtuális gép számára statikus belső magánhálózati IP-címet adott meg, akkor törölnie kell ezt a beállítást, mielőtt át tudja helyezni a virtuális gépet egy új alhálózatra. Ebben az esetben használja a következőt:
 
     Get-AzureVM -ServiceName TestVMCloud -Name TestVM `
     | Remove-AzureStaticVNetIP `
@@ -48,8 +48,8 @@ Ha megadott egy statikus belső magánhálózati IP-címe a virtuális Gépet, t
     | Set-AzureSubnet -SubnetNames Subnet-2 `
     | Update-AzureVM
 
-## <a name="to-move-a-role-instance-to-another-subnet"></a>A szerepkör példánya áthelyezése egy másik alhálózat
-Helyezze át a szerepkör-példányt, szerkessze a CSCFG-fájl. Az alábbi példa azt áthelyezi "Role0"-beli virtuális hálózaton *VNETName* a jelen alhálózatból az *alhálózat-2*. A szerepkör példánya már telepítve lett, mert az alhálózat neve csak módosítani fogjuk alhálózat-2 =. Ne felejtse el szerkeszteni a példa a környezetnek megfelelően.
+## <a name="to-move-a-role-instance-to-another-subnet"></a>Szerepkör-példány áthelyezése másik alhálózatra
+Egy szerepkör-példány áthelyezéséhez szerkessze a CSCFG fájlt. Az alábbi példában a "Role0" a virtuális hálózati *VNETName* a meglévő alhálózatról a *2*. alhálózatra kerül. Mivel a szerepkör-példány már telepítve van, csak az alhálózat neve = alhálózat-2 lesz módosítva. Ügyeljen arra, hogy a példát a környezetének megfelelően szerkessze.
 
     <NetworkConfiguration>
         <VirtualNetworkSite name="VNETName" />

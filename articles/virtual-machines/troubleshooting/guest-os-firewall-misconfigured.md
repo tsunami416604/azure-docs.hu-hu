@@ -4,7 +4,7 @@ description: ''
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
-manager: willchen
+manager: dcscontentpm
 editor: ''
 tags: ''
 ms.service: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: fcea5e4e6bb108f1a8d8036e51a5dae8a9e6431b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 8f04d943e1db49beed13c183fbd06e401546fc03
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57839746"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71153898"
 ---
 # <a name="azure-vm-guest-os-firewall-is-misconfigured"></a>Az Azure virtuális gép vendég operációs rendszer tűzfala helytelenül van konfigurálva.
 
@@ -49,13 +49,13 @@ Csatlakozás a [soros konzolon, és nyissa meg egy PowerShell-példány](serial-
 
 A következő szabályokat szerkesztheti vagy a hozzáférés a virtuális géphez (RDP) keresztül történő engedélyezéséhez vagy a könnyebb hibaelhárítás biztosít:
 
-*   Távoli asztal (TCP, bejövő): Ez az a szabványos szabály, amely elsődleges hozzáférést biztosít a virtuális géphez RDP azáltal, hogy az Azure-ban.
+*   Távoli asztal (TCP, bejövő): Ez a szabványos szabály, amely elsődleges hozzáférést biztosít a virtuális géphez az RDP az Azure-ban való engedélyezésével.
 
-*   Windows Rendszerfelügyeleti webszolgáltatások (HTTP, bejövő): Ez a szabály lehetővé teszi, hogy csatlakozzon a virtuális Géphez a PowerShell, az Azure-ban, az ilyen típusú hozzáférés lehetővé teszi a távoli parancsfájl-kezelési és hibaelhárítási parancsfájl-kezelési aspektusa használja.
+*   Rendszerfelügyeleti webszolgáltatások (HTTP, bejövő): Ez a szabály lehetővé teszi, hogy a PowerShell használatával kapcsolódjon a virtuális géphez. az Azure-ban ez a fajta hozzáférés lehetővé teszi a távoli parancsfájlok parancsfájlkezelési aspektusának használatát, valamint a hibaelhárítást.
 
-*   Fájl- és nyomtatómegosztás (SMB, bejövő): Ez a szabály hibaelhárítási lehetőségként lehetővé teszi a hálózati megosztás eléréséhez.
+*   Fájl-és nyomtatómegosztás (SMB, bejövő): Ez a szabály lehetővé teszi a hálózati megosztás elérését hibaelhárítási lehetőségként.
 
-*   Fájl- és nyomtatómegosztási (Echo kérés – ICMPv4-be): Ez a szabály lehetővé teszi a virtuális gép pingelje.
+*   Fájl-és nyomtatómegosztás (ECHO-kérelem – ICMPv4): Ez a szabály lehetővé teszi a virtuális gép pingelését.
 
 A soros konzolhoz példányban lekérdezheti a tűzfalszabályt az aktuális állapotát.
 
@@ -98,7 +98,7 @@ A soros konzolhoz példányban lekérdezheti a tűzfalszabályt az aktuális ál
 
 ### <a name="offline-mitigations"></a>A kapcsolat nélküli megoldások
 
-1.  Engedélyezi vagy letiltja a tűzfalszabályokat, tekintse meg [engedélyezhető vagy tiltható le egy tűzfalszabályt egy Azure virtuális gép vendég operációs rendszeren](enable-disable-firewall-rule-guest-os.md).
+1.  A tűzfalszabályok engedélyezéséhez vagy letiltásához tekintse [meg a tűzfalszabály engedélyezése vagy letiltása Azure-beli virtuális gép vendég operációs rendszeren](enable-disable-firewall-rule-guest-os.md)című témakört.
 
 2.  Ellenőrizze, hogy vannak-e a a [vendég operációs rendszer tűzfala blokkolja a bejövő forgalom forgatókönyv](guest-os-firewall-blocking-inbound-traffic.md).
 

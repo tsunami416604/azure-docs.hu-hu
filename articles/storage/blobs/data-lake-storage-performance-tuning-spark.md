@@ -2,18 +2,19 @@
 title: Az Azure Data Lake Storage Gen2 Spark teljesítmény-finomhangolási útmutató |} A Microsoft Docs
 description: Az Azure Data Lake Storage Gen2 Spark teljesítmény-finomhangolási útmutató
 services: storage
-author: swums
+author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.author: stewu
-ms.openlocfilehash: bfd6e715e907925a1ba3db3b60c0d3eccb637930
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.author: normesta
+ms.reviewer: stewu
+ms.openlocfilehash: feefcf4f9f4448ab2b36c415cb745fd98277eb28
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55866100"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64939338"
 ---
 # <a name="performance-tuning-guidance-for-spark-on-hdinsight-and-azure-data-lake-storage-gen2"></a>Teljesítmény-finomhangolási útmutató a Spark on HDInsight és az Azure Data Lake Storage Gen2
 

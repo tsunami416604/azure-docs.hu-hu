@@ -1,45 +1,43 @@
 ---
-title: Szöveg egyesítési cognitive search szakértelem – Azure Search
-description: A mezők gyűjteménye szöveg egyesítése egy konszolidált mezőt. Cognitive szakértelem használja az Azure Search-felderítési bővítést folyamatban.
+title: Kognitív keresési képességek szövegének egyesítése – Azure Search
+description: Szöveg egyesítése mezők egy összevont mezőjébe Használja ezt a kognitív képességet egy Azure Search alkoholtartalom-növelési folyamat során.
 services: search
-manager: pablocas
+manager: nitinme
 author: luiscabrer
 ms.service: search
-ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 05/02/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: ceda22394aab27f27740bb999b36e2cc46a6bd06
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 1e88fcc13d97d92cf9b35616ecb7d71c2d24db1f
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57568888"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265264"
 ---
-#    <a name="text-merge-cognitive-skill"></a>Szöveg egyesítési cognitive szakértelem
+#    <a name="text-merge-cognitive-skill"></a>Szöveg egyesítése – kognitív képességek
 
-A **szöveg egyesítése** szakértelem összesíti a szöveget a mezők gyűjteménye egyetlen mezőbe. 
+A **szöveges egyesítési** képesség a mezők gyűjteményében lévő szöveget egyetlen mezőben összesíti. 
 
 > [!NOTE]
-> Szakértelem nincs kötve a Cognitive Services API-t, és nem terheli útmutatójához. Továbbra is ajánlott [Cognitive Services-erőforrás csatolása](cognitive-search-attach-cognitive-services.md), azonban felül a **ingyenes** erőforrás beállítás, amely korlátozza, hogy naponta napi végrehajtott információbeolvasás kis számú.
+> Ez a képesség nem kötődik Cognitive Services API-hoz, és nem kell fizetnie a használatért. Továbbra is [csatlakoztatnia kell egy Cognitive Services-erőforrást](cognitive-search-attach-cognitive-services.md), hogy felülírja az **ingyenes** erőforrás-beállítást, amely naponta csak kis mennyiségű napi dúsítást korlátozza.
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft.Skills.Text.MergeSkill
+Microsoft. Skills. Text. MergeSkill
 
-## <a name="skill-parameters"></a>Ismeretek paraméterek
+## <a name="skill-parameters"></a>Szakértelem paraméterei
 
-A paraméterei a kis-és nagybetűket.
+A paraméterek megkülönböztetik a kis-és nagybetűket.
 
 | Paraméter neve     | Leírás |
 |--------------------|-------------|
-| insertPreTag  | Szerepelnie, előtt minden behelyettesítendő karakterlánc. Az alapértelmezett érték `" "`. Hagyja ki a helyet, állítsa az értékét `""`.  |
-| insertPostTag | Karakterlánc minden Beszúrás után fogja tartalmazni. Az alapértelmezett érték `" "`. Hagyja ki a helyet, állítsa az értékét `""`.  |
+| insertPreTag  | Minden Beszúrás előtt szerepeltetni kívánt karakterlánc. Az alapértelmezett érték `" "`. A szóköz kihagyása érdekében állítsa a értéket `""`a következőre:.  |
+| insertPostTag | Az összes beszúrás után szerepeltetni kívánt karakterlánc. Az alapértelmezett érték `" "`. A szóköz kihagyása érdekében állítsa a értéket `""`a következőre:.  |
 
 
-##  <a name="sample-input"></a>Minta beviteli
-JSON-dokumentumok biztosítása használható bemeneti szakértelem lehet:
+##  <a name="sample-input"></a>Minta bemenet
+Az ehhez a képességhez használható, felhasználható bemenetet biztosító JSON-dokumentum a következő lehet:
 
 ```json
 {
@@ -58,7 +56,7 @@ JSON-dokumentumok biztosítása használható bemeneti szakértelem lehet:
 ```
 
 ##  <a name="sample-output"></a>Példa kimenet
-Ez a példa bemutatja a korábbi bemenet, feltéve, hogy a kimenet a *insertPreTag* értékre van állítva `" "`, és *insertPostTag* értékre van állítva `""`. 
+Ez a példa az előző bemenet kimenetét mutatja be, feltéve, hogy a *insertPreTag* be `" "`van állítva, és a *insertPostTag* értékre van állítva `""`. 
 
 ```json
 {
@@ -74,11 +72,11 @@ Ez a példa bemutatja a korábbi bemenet, feltéve, hogy a kimenet a *insertPreT
 }
 ```
 
-## <a name="extended-sample-skillset-definition"></a>A kiterjesztett minta indexmezők definíciója
+## <a name="extended-sample-skillset-definition"></a>Kiterjesztett minta készségkészlet-definíciója
 
-Egy általános forgatókönyv a szöveg egyesítési be egy dokumentumot content mezőjének a képek (-OCR szakértelem, vagy a kép felirata szöveg) értéket képviselő szöveges alak egyesíteni. 
+A szöveges egyesítés használatának gyakori forgatókönyve, hogy egyesítse a képek szöveges megjelenítését (OCR-képességből származó szöveg vagy kép felirata) egy dokumentum tartalom mezőjébe. 
 
-A következő példa indexmezők OCR szakértelem szövegeket nyerhet ki képekből a beágyazása a dokumentumba használ. Ezután létrehoz egy *merged_text* eredeti és az egyes rendszerképek OCRed szöveget tartalmazó mezőbe. Az optikai Karakterfelismerés szakértelem többet tudhat [Itt](https://docs.microsoft.com/en-us/azure/search/cognitive-search-skill-ocr).
+A következő példában a készségkészlet az OCR-képességet használja a dokumentumba ágyazott képek szövegének kinyeréséhez. Ezután létrehoz egy *merged_text* mezőt, amely az eredeti és a OCRed szöveget is tartalmazza az egyes képekből. Az OCR-képességről [itt](https://docs.microsoft.com/azure/search/cognitive-search-skill-ocr)olvashat bővebben.
 
 ```json
 {
@@ -129,7 +127,7 @@ A következő példa indexmezők OCR szakértelem szövegeket nyerhet ki képekb
   ]
 }
 ```
-A fenti példa feltételezi, hogy létezik-e a normalized-lemezképek mező. Normalized-lemezképek mező kapni, állítsa be a *imageAction* az indexelő meghatározását, hogy a konfigurációs *generateNormalizedImages* alább látható módon:
+A fenti példa azt feltételezi, hogy a normalizált lemezképek mező létezik. A normalizált lemezképek mező beszerzéséhez állítsa a *imageAction* -konfigurációt az indexelő definíciójában a *generateNormalizedImages* értékre, ahogy az alábbi ábrán látható:
 
 ```json
 {
@@ -145,6 +143,6 @@ A fenti példa feltételezi, hogy létezik-e a normalized-lemezképek mező. Nor
 
 ## <a name="see-also"></a>Lásd még
 
-+ [Előre megadott képesség](cognitive-search-predefined-skills.md)
-+ [Hogyan képességcsoport megadása](cognitive-search-defining-skillset.md)
-+ [Az indexelő (REST) létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
++ [Előre definiált képességek](cognitive-search-predefined-skills.md)
++ [Készségkészlet definiálása](cognitive-search-defining-skillset.md)
++ [Indexelő létrehozása (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)

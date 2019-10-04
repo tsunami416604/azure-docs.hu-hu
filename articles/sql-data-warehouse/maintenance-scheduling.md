@@ -1,53 +1,56 @@
 ---
-title: Az Azure karbantartási ütemezések (előzetes verzió) |} A Microsoft Docs
-description: Karbantartási ütemezés lehetővé teszi, hogy az ügyfelek számára a szükséges ütemezett karbantartási események az Azure SQL Data Warehouse szolgáltatás által használt vezethet be új funkciók, frissítések és javítások körül megtervezése.
+title: Azure-karbantartási ütemtervek (előzetes verzió) | Microsoft Docs
+description: A karbantartási ütemezés lehetővé teszi, hogy az ügyfelek megtervezzék a Azure SQL Data Warehouse szolgáltatás által az új funkciók, frissítések és javítások elvégzéséhez szükséges ütemezett karbantartási eseményeket.
 services: sql-data-warehouse
 author: antvgski
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
-ms.date: 03/13/2019
+ms.date: 07/16/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: b97e27b86ecad1f7f87a6de4d43b09d69c167c6f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 3875106e8c6301c95bc8d0fbce6a1c0400d07f78
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792034"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68278124"
 ---
-# <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>Szolgáltatási hírek és karbantartási kezelése a karbantartási ütemezések használatával
+# <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>Karbantartási ütemtervek használata a szolgáltatások frissítéseinek és karbantartásának kezeléséhez
 
-Karbantartási ütemezések, mostantól elérhetők az Azure SQL Data Warehouse minden régióban. Ez a funkció együttműködik a Service Health tervezett karbantartásával kapcsolatos értesítések erőforrás állapotának ellenőrzése figyelése és az Azure SQL Data Warehouse karbantartási Feladatütemező szolgáltatás.
+A karbantartási ütemtervek mostantól minden Azure SQL Data Warehouse régióban elérhetők. Ez a szolgáltatás integrálja a Service Health tervezett karbantartási értesítéseket, Resource Health ellenőrző figyelőt és a Azure SQL Data Warehouse karbantartási ütemezési szolgáltatást.
 
-Karbantartási ütemezés kiválasztása egy olyan időkeretet, ha az új funkciók, frissítések és javítások fogadásához kényelmes használhatja. Válasszon egy elsődleges és másodlagos karbantartási időszak egy 7 napos időszakon belül. Például egy elsődleges ablakában szombat, 22:00 vasárnapig 01:00 és a egy másodlagos ablakot, szerda 19:00, 22:00. Az SQL Data Warehouse nem tudja végrehajtani a karbantartási az elsődleges karbantartási időszak alatt, ha azt a karbantartás megpróbálja újra a másodlagos karbantartási időszak alatt. Szolgáltatás-karbantartás során az elsődleges, mind a másodlagos windows fordulhat elő. Ahhoz, hogy az összes karbantartási művelet befejezése után gyors, DW400(c) és alacsonyabb data warehouse szint sikerült végrehajtani a kijelölt karbantartási időszakon kívüli karbantartás.
+A karbantartási ütemezés használatával kiválaszthatja az időablakot, amikor az új funkciók, frissítések és javítások fogadására alkalmas. Egy hét napos időszakon belül kiválaszthatja az elsődleges és a másodlagos karbantartási időszakot. Ilyen például a 22:00 – vasárnap 01:00-es és a 22:00-es, valamint az 19:00-as számú másodlagos ablak. Ha SQL Data Warehouse nem tudja végrehajtani a karbantartást az elsődleges karbantartási időszak alatt, akkor a másodlagos karbantartási időszak alatt újra próbálkozik a karbantartással. A szolgáltatás karbantartása az elsődleges és a másodlagos Windowsban is előfordulhat. Az összes karbantartási művelet gyors befejezésének biztosítása érdekében a DW400 (c) és az alacsonyabb adattárház-rétegek a karbantartási időszakon kívül is elvégezhetik a karbantartást.
 
-Minden újonnan létrehozott Azure SQL Data Warehouse példányok lesz egy rendszer által meghatározott karbantartási ütemezés alkalmaz a telepítés alatt. Az ütemezés szerkesztheti, amint a telepítés nem fejeződik.
+Az újonnan létrehozott Azure SQL Data Warehouse példányok egy rendszer által meghatározott karbantartási ütemtervtel lesznek alkalmazva az üzembe helyezés során. Az ütemtervet az üzembe helyezés befejeződése után is szerkesztheti.
 
-Az egyes karbantartási időszakok 3-8 óra is lehet. Karbantartási az időtartamon belül bármikor fordulhat elő. Egy rövid kapcsolat megszakadása, a szolgáltatás telepíti az új kódot az adattárház számíthat.
+Minden karbantartási időszak három – nyolc óra lehet. A karbantartás az ablakon belül bármikor megtörténhet. A karbantartás megkezdésekor a rendszer minden aktív munkamenetet megszakít, és a nem véglegesített tranzakciókat visszaállítja. A kapcsolatnak több rövid veszteséget kell várnia, mivel a szolgáltatás új kódot telepít az adattárházba. A karbantartás befejezése után azonnal értesítést kap az adattárházban
 
-A funkció használatához szüksége lesz egy elsődleges és másodlagos ablakot különálló nap-címtartományok azonosításához. Az ütemezett karbantartási időszakok belül minden karbantartási művelet befejeződik. Nincs karbantartás előzetes értesítés nélkül a megadott karbantartási időszakon kívül kerül sor. Ha az adattárháza szüneteltetve van egy ütemezett karbantartás során, azt a felfüggesztési művelet során frissülnek.  
+Ennek a funkciónak a használatához külön napi tartományokban kell megadnia egy elsődleges és egy másodlagos ablakot. Minden karbantartási műveletnek az ütemezett karbantartási időszakokon belül kell futnia. Előzetes értesítés nélkül nem kerül sor karbantartásra a megadott karbantartási időszakon kívül. Ha az adattárház egy ütemezett karbantartás során szünetel, a rendszer a folytatási művelet során frissíti.  
 
 ## <a name="alerts-and-monitoring"></a>Riasztások és figyelés
 
-Integráció a Service Health-értesítések és a Resource Health ellenőrzése figyelő értesüljön a közelgő karbantartási tevékenység lehetővé teszi. Az új automation kihasználja az Azure Monitor. Eldöntheti, hogyan szeretne értesítést kapni a közelgő karbantartási események. Is döntse el, melyik automatizált folyamatok segítségével kezelheti az állásidő, és minimalizálja a műveletek.
+Service Health értesítésekkel való integráció és a Resource Health-ellenőrzési figyelő lehetővé teszi, hogy az ügyfelek tájékoztassanak a közelgő karbantartási tevékenységekről. Az új automatizálás kihasználja Azure Monitor. Eldöntheti, hogyan szeretné értesíteni a közelgő karbantartási eseményekről. Azt is eldöntheti, hogy mely automatizált folyamatok segíthetnek az állásidők kezelésében, és csökkentheti a műveletekre gyakorolt hatást.
 
-Egy 24 órás előzetes értesítés megelőzi az összes karbantartási események, az aktuális kivételt DW400c és alacsonyabb szinten. Példány állásidő minimalizálása érdekében győződjön meg arról, hogy az adattárház nincs hosszú ideig futó tranzakció a kiválasztott karbantartási időszak előtt. Amikor elindul a karbantartási, minden aktív munkamenet meg lesz szakítva. A nem véglegesített tranzakció vissza lesz állítva, és az adatraktár fog tapasztalni a kapcsolat rövid adatvesztést. Értesítést is küld az adattárházra karbantartás befejezése után azonnal.
+Egy 24 órás előzetes értesítés az összes karbantartási esemény előtt, a DW400c és az alacsonyabb szintek aktuális kivételével. A példányok leállásának minimalizálásához győződjön meg arról, hogy az adattárház nem rendelkezik hosszan futó tranzakciókkal a választott karbantartási időszak előtt.
 
-Ha karbantartási kerül sor, de az SQL Data Warehouse nem tudja végrehajtani a karbantartási idő alatt előzetes értesítést kapott, kap egy lemondási értesítés. Karbantartási futása ezután úgy folytatódik a következő ütemezett karbantartási időszak során.
+> [!NOTE]
+> Abban az esetben, ha egy kritikus idejű frissítést kell telepíteni, a speciális értesítési idők jelentősen csökkenthetők.
 
-Az összes aktív karbantartási események megjelennek a **Service Health - tervezett karbantartási** szakaszban. A Service Health előzmények magában foglalja egy teljes rekordot a múltban történt eseményekről. Egy aktív események karbantartás az Azure Service Health-ellenőrzés portál irányítópultján keresztül követheti nyomon.
+Ha előzetes értesítés érkezett arról, hogy a karbantartás megtörténik, de SQL Data Warehouse nem tudja végrehajtani a karbantartást, akkor a rendszer lemondási értesítést fog kapni. A karbantartás ekkor folytatódik a következő ütemezett karbantartási időszakban.
 
-### <a name="maintenance-schedule-availability"></a>Karbantartási ütemezés rendelkezésre állása
+Az összes aktív karbantartási esemény megjelenik a **Service Health tervezett karbantartási** szakaszban. A Service Health előzményei a múltbeli események teljes számát tartalmazzák. Az aktív esemény során a Azure Service Health-ellenőrzés portál irányítópultján figyelheti a karbantartást.
 
-Akkor is, ha a karbantartási ütemezés nem érhető el a kiválasztott régióban, megtekintheti, és bármikor a karbantartási ütemezés szerkesztése. Ha a karbantartási ütemezés elérhetővé válik az Ön régiójában, az azonosított ütemezés azonnal aktívvá válik az adattárházra.
+### <a name="maintenance-schedule-availability"></a>Karbantartási ütemterv rendelkezésre állása
+
+Még ha a karbantartási ütemezés nem érhető el a kiválasztott régióban, bármikor megtekintheti és szerkesztheti a karbantartási ütemtervet. Ha a karbantartási ütemezés elérhetővé válik a régióban, az azonosított ütemezés azonnal aktív lesz az adattárházban.
 
 ## <a name="next-steps"></a>További lépések
 
-- [További](viewing-maintenance-schedule.md) karbantartási ütemezés megtekintése.
-- [További](changing-maintenance-schedule.md) karbantartási ütemezés módosítása.
-- [További](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-usage) létrehozása, megtekintése és riasztások kezelése az Azure Monitor használatával kapcsolatban.
-- [További](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook) kapcsolatos naplóriasztási szabály vonatkozó webhook-műveletek.
-- [További](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) létrehozása és kezelése a Műveletcsoportok.
-- [További](https://docs.microsoft.com/azure/service-health/service-health-overview) Azure Service Health szolgáltatással kapcsolatos.
+- [További](viewing-maintenance-schedule.md) információ a karbantartási ütemterv megtekintéséről.
+- [További](changing-maintenance-schedule.md) információ a karbantartási ütemterv módosításáról.
+- [További](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-usage) információ a riasztások létrehozásáról, megtekintéséről és kezeléséről Azure monitor használatával.
+- [További](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook) információ a napló riasztási szabályaival kapcsolatos webhook-műveletekről.
+- [További információ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) Műveleti csoportok létrehozása és kezelése.
+- [További](https://docs.microsoft.com/azure/service-health/service-health-overview) információ a Azure Service Healthról.

@@ -1,21 +1,19 @@
 ---
 title: Azure-beli fájlok helyreállítása Windows Serverre
 description: Ez az oktatóanyag az Azure-beli fájlok Windows Serverre történő helyreállításának részletes bemutatását tartalmazza.
-services: backup
-author: saurabhsensharma
-manager: shivamg
-keywords: windows server biztonsági mentése; fájlok visszaállítása windows serverre; biztonsági mentés és vészhelyreállítás
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: tutorial
-ms.date: 2/14/2018
-ms.author: saurse
+ms.date: 02/14/2018
+ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: e05c80e52605e051bdd6815608ca8c12e1393727
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: e03c085a9671ba84d3af63da658f749f09ebcdef
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34607021"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210086"
 ---
 # <a name="recover-files-from-azure-to-a-windows-server"></a>Azure-beli fájlok helyreállítása Windows Serverre
 

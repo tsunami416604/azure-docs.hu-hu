@@ -3,8 +3,8 @@ title: Hogyan alkalmazások jelennek meg a hozzáférési panelen |} A Microsoft
 description: Egy alkalmazás jelenik-e meg a hozzáférési panelen okozó hibák elhárításához
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: celested
+ms.author: mimart
 ms.reviewr: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fccf671edbc121501a17975be303453a798837e4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8fa8ea75cc7fda05326c802c25a91d025b66b5ce
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58122199"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65784416"
 ---
 # <a name="how-applications-appear-on-the-access-panel"></a>Hogyan alkalmazások jelennek meg a hozzáférési panelen
 

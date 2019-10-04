@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 3c187d104334fe75ec9e0ce41a3fdc14b508dfb2
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59521725"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60623353"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-microsoft-azure-storage-explorer"></a>A Microsoft Azure Storage Explorer használatával tesztkörnyezet tárfiók VHD-fájl feltöltése
 
@@ -43,7 +43,7 @@ A következő lépések végigvezetik egy VHD-fájl feltöltése a DevTest Labs 
     
     1. A labor paneljén válassza ki a **konfigurációs**. 
     
-    1. A laborgyakorlat **konfigurációs** panelen válassza ki **egyéni lemezképeket (VHD)**.
+    1. A laborgyakorlat **konfigurációs** panelen válassza ki **egyéni lemezképeket (VHD)** .
     
     1. Az a **egyéni lemezképek** panelen válasszon ki **+ Hozzáadás**. 
     

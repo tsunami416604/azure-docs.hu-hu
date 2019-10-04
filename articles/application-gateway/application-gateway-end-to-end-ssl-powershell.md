@@ -1,56 +1,56 @@
 ---
-title: Végpontok közötti SSL konfigurálása az Azure Application Gatewayen
-description: Ez a cikk bemutatja, hogyan végpontok közötti SSL konfigurálása az Azure Application Gatewayen a PowerShell használatával
+title: Végpontok közötti SSL konfigurálása az Azure Application Gateway
+description: Ez a cikk bemutatja, hogyan konfigurálható a végpontok közötti SSL az Azure Application Gateway a PowerShell használatával
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.date: 4/8/2019
 ms.author: victorh
-ms.openlocfilehash: 258113f5201ad3d09df6119dec738d528e640c40
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d7b909bf88fde2277aa2a285bbf36916191db1f3
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59269350"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67973393"
 ---
-# <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>Végpontok közötti SSL konfigurálása az Application Gateway a PowerShell használatával
+# <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>Végpontok közötti SSL konfigurálása az Application Gateway és a PowerShell használatával
 
 ## <a name="overview"></a>Áttekintés
 
-Az Azure Application Gateway támogatja a forgalom végpontok közötti titkosítást. Az Application Gateway leállítja az SSL-kapcsolatot az application gatewayben. Az átjáró ezután alkalmazza az útválasztási szabályokat a forgalomra, újratitkosítja a csomagot, és továbbítja azt a megfelelő háttér-kiszolgáló a megadott útválasztási szabályok alapján. A webkiszolgáló esetleges válasza ugyanilyen módon jut el a végfelhasználóhoz.
+Az Azure Application Gateway támogatja a forgalom végpontok közötti titkosítását. Application Gateway leállítja az SSL-kapcsolatot az Application Gateway-ben. Az átjáró Ezután alkalmazza az útválasztási szabályokat a forgalomra, majd újratitkosítja a csomagot, és a megadott útválasztási szabályok alapján továbbítja a csomagot a megfelelő háttér-kiszolgálóra. A webkiszolgáló esetleges válasza ugyanilyen módon jut el a végfelhasználóhoz.
 
-Az Application Gateway támogatja az egyéni SSL-beállítások meghatározása. Emellett támogatja a következő verziójú címprotokollokhoz letiltása: **TLSv1.0**, **TLSv1.1**, és **TLSv1.2**, valamint melyik titkosító csomagok használatához és a sorrend figyelembe vételével. SSL konfigurálható beállításokkal kapcsolatos további tudnivalókért tekintse meg a [SSL-házirend áttekintése](application-gateway-SSL-policy-overview.md).
+Application Gateway támogatja az egyéni SSL-beállítások definiálását. Emellett a következő protokoll-verziók letiltását is támogatja: **TLS 1.0**, **TLS 1.1**és **TLS 1.2**, valamint a használandó titkosítási csomagok meghatározása és a preferencia sorrendje. A konfigurálható SSL-beállításokkal kapcsolatos további tudnivalókért tekintse meg az [SSL-házirend áttekintése](application-gateway-SSL-policy-overview.md)című témakört.
 
 > [!NOTE]
-> Az SSL 2.0 és az SSL 3.0 alapértelmezés szerint le vannak tiltva, és nem lehet engedélyezni. Azok a nem biztonságos tekinti, és nem használható az Application Gateway szolgáltatással.
+> Az SSL 2,0 és az SSL 3,0 alapértelmezés szerint le van tiltva, ezért nem engedélyezhető. Nem biztonságosnak minősülnek, és nem használhatók Application Gateway.
 
-![a forgatókönyv kép][scenario]
+![forgatókönyv képe][scenario]
 
 ## <a name="scenario"></a>Forgatókönyv
 
-Ebben a forgatókönyvben megtudhatja hogyan hozhat létre átjáróalkalmazást teljes körű SSL a PowerShell használatával.
+Ebből a forgatókönyvből megtudhatja, hogyan hozhat létre egy Application Gateway-t a végpontok közötti SSL és a PowerShell használatával.
 
-Ebben a forgatókönyvben lesz:
+Ez a forgatókönyv a következőket teszi:
 
-* Hozzon létre egy erőforráscsoportot **appgw-rg**.
-* Hozzon létre egy virtuális hálózatot nevű **appgwvnet** -címtere a **10.0.0.0/16**.
-* Hozzon létre két alhálózattal nevű **appgwsubnet** és **appsubnet**.
-* Hozzon létre egy kis application gateway támogató végpontok közötti SSL-titkosítást, a korlátok az SSL protokoll verziója és a titkosító csomagok.
+* Hozzon létre egy **appgw-RG**nevű erőforráscsoportot.
+* Hozzon létre egy **appgwvnet** nevű virtuális hálózatot a **10.0.0.0/16**címtartomány megadásával.
+* Hozzon létre két alhálózatot, amelyek neve **appgwsubnet** és **appsubnet**.
+* Hozzon létre egy kisméretű Application Gateway-t, amely támogatja az SSL protokoll verzióit és a titkosítási csomagokat korlátozó, végpontok közötti SSL-titkosítást.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Végpontok közötti SSL konfigurálása az application gateway szolgáltatással, egy tanúsítvány szükséges az átjáró és a háttér-kiszolgálók számára tanúsítványokra szükség. Az átjáró tanúsítványa egy szimmetrikus kulcsot, az SSL protokoll specifikációja alapján az használható. A szimmetrikus kulcs majd használható titkosításához és visszafejtéséhez az átjáró küldött forgalmat. Az átjáró tanúsítványa kell lennie a személyes információcsere (PFX) formátumban. Ez a fájlformátum exportálja a titkos kulcsot, a titkosítási és visszafejtési forgalmat az application gateway által igényelt teszi lehetővé.
+A végpontok közötti SSL az Application Gateway szolgáltatással való konfigurálásához tanúsítvány szükséges ahhoz, hogy az átjáró és a tanúsítványok a háttér-kiszolgálókhoz szükségesek legyenek. Az átjáró tanúsítványa az SSL protokoll specifikációja alapján szimmetrikus kulcs származtatása céljából használható. Ezután a szimmetrikus kulcs titkosítva lesz, és visszafejti az átjárónak eljuttatott forgalmat. Az átjáró tanúsítványának személyes információcsere (PFX) formátumban kell lennie. Ez a fájlformátum lehetővé teszi az Application Gateway által igényelt titkos kulcs exportálását a forgalom titkosításának és visszafejtésének elvégzéséhez.
 
-A végpontok közötti SSL-titkosítás a háttéralkalmazás az Alkalmazásátjáró engedélyezési listán kell lennie. A háttér-kiszolgálók a nyilvános tanúsítvány feltöltése az application gatewayhez. A tanúsítvány hozzáadása biztosítja, hogy az application gateway csak kommunikál a háttér-ismert példányok. Ez további védi a végpontok közötti kommunikációt.
+A végpontok közötti SSL-titkosításhoz az Application Gateway explicit módon engedélyezni kell a háttérrendszer használatát. Töltse fel a háttér-kiszolgálók nyilvános tanúsítványát az Application gatewaybe. A tanúsítvány hozzáadásával biztosítható, hogy az Application Gateway csak az ismert háttérbeli példányokkal kommunikáljon. Ez tovább biztosítja a végpontok közötti kommunikációt.
 
-A konfigurációs folyamat a következő szakaszokban ismertetett.
+A konfigurációs folyamatról a következő szakaszokban olvashat.
 
 ## <a name="create-the-resource-group"></a>Az erőforráscsoport létrehozása
 
-Ez a szakasz végigvezeti egy erőforráscsoport, amely tartalmazza az application gateway létrehozása.
+Ez a szakasz végigvezeti az Application Gatewayt tartalmazó erőforráscsoport létrehozásán.
 
 1. Jelentkezzen be Azure-fiókjába.
 
@@ -58,7 +58,7 @@ Ez a szakasz végigvezeti egy erőforráscsoport, amely tartalmazza az applicati
    Connect-AzAccount
    ```
 
-2. Válassza ki a ebben a forgatókönyvben használni kívánt előfizetést.
+2. Válassza ki a forgatókönyvhöz használni kívánt előfizetést.
 
    ```powershell
    Select-Azsubscription -SubscriptionName "<Subscription name>"
@@ -72,31 +72,31 @@ Ez a szakasz végigvezeti egy erőforráscsoport, amely tartalmazza az applicati
 
 ## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>Virtuális hálózat és alhálózat létrehozása az Application Gateway számára
 
-Az alábbi példa létrehoz egy virtuális hálózatot és két alhálózatra. Egy alhálózatot az application gateway tárolásához. A másik alhálózatot a háttérrendszerek, amelyek a webalkalmazás üzemeltetéséhez.
+A következő példa egy virtuális hálózatot és két alhálózatot hoz létre. Az Application Gateway tárolására egy alhálózat szolgál. A másik alhálózatot a webalkalmazást futtató háttérbeli végpontok használják.
 
-1. Rendeljen hozzá egy használható az application gateway az alhálózat-címtartományt.
+1. Rendeljen hozzá egy címtartományt az Application gatewayhez használni kívánt alhálózathoz.
 
    ```powershell
    $gwSubnet = New-AzVirtualNetworkSubnetConfig -Name 'appgwsubnet' -AddressPrefix 10.0.0.0/24
    ```
 
    > [!NOTE]
-   > Az application Gateway konfigurált alhálózatok megfelelően kell méretezni. Egy application gateway konfigurálható legfeljebb 10-példányokhoz. Minden példány egy IP-címet az alhálózatról vesz igénybe. Túl kicsi alhálózat kedvezőtlen hatással lehet, horizontális felskálázás egy application gateway.
+   > Az Application gatewayhez konfigurált alhálózatokat megfelelően kell méretezni. Az Application Gateway legfeljebb 10 példányra konfigurálható. Az egyes példányok egy IP-címet vesznek fel az alhálózatból. Az alhálózatok túl kis része hátrányosan befolyásolhatja az Application Gateway horizontális felskálázását.
    >
 
-2. A háttér-címkészletet kell használni egy olyan címtartományt rendel.
+2. Rendeljen hozzá egy címtartományt a háttér-címkészlet használatára.
 
    ```powershell
    $nicSubnet = New-AzVirtualNetworkSubnetConfig  -Name 'appsubnet' -AddressPrefix 10.0.2.0/24
    ```
 
-3. Hozzon létre egy virtuális hálózatot az előző lépések során meghatározott alhálózatot.
+3. Hozzon létre egy virtuális hálózatot az előző lépésekben definiált alhálózatokkal.
 
    ```powershell
    $vnet = New-AzvirtualNetwork -Name 'appgwvnet' -ResourceGroupName appgw-rg -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet, $nicSubnet
    ```
 
-4. A virtuális hálózat és alhálózat erőforrást a következő lépések használhatók lekéréséhez.
+4. A következő lépésekben használandó virtuális hálózati erőforrás és alhálózati erőforrások beolvasása.
 
    ```powershell
    $vnet = Get-AzvirtualNetwork -Name 'appgwvnet' -ResourceGroupName appgw-rg
@@ -106,47 +106,47 @@ Az alábbi példa létrehoz egy virtuális hálózatot és két alhálózatra. E
 
 ## <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>Nyilvános IP-cím létrehozása az előtérbeli konfigurációhoz
 
-Hozzon létre egy nyilvános IP-erőforráshoz lehet használni az application gateway számára. A nyilvános IP-cím szerepel a következő lépések egyikét.
+Hozzon létre egy nyilvános IP-erőforrást, amelyet az Application gatewayhez kíván használni. Ez a nyilvános IP-cím az alábbi lépések egyikében használatos.
 
 ```powershell
 $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name 'publicIP01' -Location "West US" -AllocationMethod Dynamic
 ```
 
 > [!IMPORTANT]
-> Az Application Gateway nem támogatja egy meghatározott tartománycímkéjét létrehozott nyilvános IP-cím használatát. Csak egy nyilvános IP-címet egy dinamikusan létrehozott tartománycímkéjét használata támogatott. Ha szüksége van az application gateway DNS egy rövid nevet, javasoljuk, egy CNAME-rekordot használhat aliasként.
+> A Application Gateway nem támogatja a megadott tartományi címkével létrehozott nyilvános IP-cím használatát. Csak a dinamikusan létrehozott tartományi címkével rendelkező nyilvános IP-címek támogatottak. Ha az Application gatewayhez felhasználóbarát DNS-nevet igényel, javasoljuk, hogy CNAME rekordot használjon aliasként.
 
 ## <a name="create-an-application-gateway-configuration-object"></a>Hozzon létre egy Application Gateway konfigurációs objektumot
 
-Minden konfigurációs elemet az application gateway létrehozása előtt vannak beállítva. Az alábbi lépések létrehozzák az Application Gateway erőforráshoz szükséges konfigurációs elemeket.
+Az Application Gateway létrehozása előtt minden konfigurációs elem be van állítva. Az alábbi lépések létrehozzák az Application Gateway erőforráshoz szükséges konfigurációs elemeket.
 
-1. Hozzon létre egy application gateway IP-konfigurációt. Ezzel a beállítással konfigurálható, amely az alhálózatok az application gateway használja. Application gateway elindul, amikor egy IP-címet a konfigurált alhálózatból buildkonfigurációtól és útvonalak hálózati forgalmat a háttérbeli IP-készlet IP-címek. Ne feledje, hogy minden példány egy IP-címet vesz fel.
+1. Hozzon létre egy Application Gateway IP-konfigurációt. Ezzel a beállítással konfigurálható, hogy az Application Gateway mely alhálózatokat használja. Amikor az Application Gateway elindul, a konfigurált alhálózatból felvesz egy IP-címet, és a hálózati forgalmat a háttérbeli IP-készlet IP-címeihez irányítja. Ne feledje, hogy minden példány egy IP-címet vesz fel.
 
    ```powershell
    $gipconfig = New-AzApplicationGatewayIPConfiguration -Name 'gwconfig' -Subnet $gwSubnet
    ```
 
-2. Hozzon létre egy előtérbeli IP-konfigurációhoz. Ez a beállítás egy nyilvános vagy magánhálózati IP-címet az előtér az application Gateway rendeli hozzá. A következő lépés a nyilvános IP-címet az előző lépésben társítja az előtérbeli IP-konfigurációhoz.
+2. Előtér-IP-konfiguráció létrehozása. Ez a beállítás egy privát vagy nyilvános IP-címet képez le az Application Gateway elülső végéhez. A következő lépés társítja a nyilvános IP-címet az előző lépésben az előtér-IP-konfigurációval.
 
    ```powershell
    $fipconfig = New-AzApplicationGatewayFrontendIPConfig -Name 'fip01' -PublicIPAddress $publicip
    ```
 
-3. A háttérbeli IP-címkészletet konfigurálja a háttér-webkiszolgálók IP-címét. Ezek az IP-címek fogadják majd az előtérbeli IP-cím végpontból érkező hálózati forgalmat. Cserélje le a példában szereplő IP-címeket a saját alkalmazása IP cím végpontok.
+3. Konfigurálja a háttérbeli IP-címkészletet a háttér-webkiszolgálók IP-címeivel. Ezek az IP-címek fogadják majd az előtérbeli IP-cím végpontból érkező hálózati forgalmat. Cserélje le a minta IP-címeit a saját alkalmazás IP-címeinek végpontokra.
 
    ```powershell
    $pool = New-AzApplicationGatewayBackendAddressPool -Name 'pool01' -BackendIPAddresses 1.1.1.1, 2.2.2.2, 3.3.3.3
    ```
 
    > [!NOTE]
-   > Egy teljesen minősített tartománynevét (FQDN) is egy érvényes értéket használja az IP-cím helyett a háttér-kiszolgálókhoz. Használatával engedélyezheti a **- BackendFqdns** váltani. 
+   > A teljes tartománynév (FQDN) szintén érvényes érték, amelyet a rendszer a háttér-kiszolgálókhoz tartozó IP-cím helyett használ. Ezt a **-BackendFqdns** kapcsoló használatával engedélyezheti. 
 
-4. Konfigurálja az előtérbeli IP-portot a nyilvános IP-cím végponthoz. A port a port, amelyet a végfelhasználók csatlakozni.
+4. Konfigurálja az előtér-IP-portot a nyilvános IP-végponthoz. Ez a port az a port, amelyhez a végfelhasználók csatlakoznak.
 
    ```powershell
    $fp = New-AzApplicationGatewayFrontendPort -Name 'port01'  -Port 443
    ```
 
-5. Konfigurálja a tanúsítványt az application gateway számára. Ezt a tanúsítványt a forgalmat az application gateway reencrypt és visszafejtésére szolgál.
+5. Konfigurálja az Application Gateway tanúsítványát. Ez a tanúsítvány az Application Gateway forgalmának visszafejtésére és újratitkosítására szolgál.
 
    ```powershell
    $passwd = ConvertTo-SecureString  <certificate file password> -AsPlainText -Force 
@@ -154,70 +154,70 @@ Minden konfigurációs elemet az application gateway létrehozása előtt vannak
    ```
 
    > [!NOTE]
-   > Ez a példa az SSL-kapcsolathoz használt tanúsítványt konfigurálja. A tanúsítvány .pfx formátumúnak kell, és a jelszónak kell lennie 4 és 12 karakter.
+   > Ez a minta konfigurálja az SSL-kapcsolathoz használt tanúsítványt. A tanúsítványnak. pfx formátumúnak kell lennie, és a jelszónak 4 – 12 karakterből kell állnia.
 
-6. Hozzon létre a HTTP-figyelő az application gateway számára. Rendelje hozzá az előtérbeli IP-konfigurációt, egy portszám és egy SSL-tanúsítvány használatára.
+6. Hozza létre a HTTP-figyelőt az Application Gateway számára. Rendelje hozzá a használni kívánt előtér-IP-konfigurációt, portot és SSL-tanúsítványt.
 
    ```powershell
    $listener = New-AzApplicationGatewayHttpListener -Name listener01 -Protocol Https -FrontendIPConfiguration $fipconfig -FrontendPort $fp -SSLCertificate $cert
    ```
 
-7. Töltse fel a tanúsítványt az SSL-kompatibilis háttérkészlet-erőforrásokat kell használni.
+7. Töltse fel az SSL-kompatibilis háttér-készlet erőforrásaihoz használni kívánt tanúsítványt.
 
    > [!NOTE]
-   > Az alapértelmezett mintavétel lekérdezi a nyilvános kulcs a a *alapértelmezett* SSL-kötés van a háttérbeli IP-címet, és összehasonlítja a nyilvános kulcs értékét, kap, a nyilvános kulcs értékét Ön adja meg itt. 
+   > Az alapértelmezett mintavétel lekéri a nyilvános kulcsot az *alapértelmezett* SSL-kötésből a háttér IP-címére, és összehasonlítja az itt megadott nyilvános kulcs értékével kapott nyilvános kulcs értékét. 
    > 
-   > Állomásfejléc és kiszolgálónév jelzése (SNI) a háttérben használja, ha a lekért nyilvános kulcs nem lehet a kívánt helyet, hogy melyik adatforgalmi folyamatokat. Ha kétségei vannak, látogasson el a https://127.0.0.1/ győződjön meg arról, melyik tanúsítványt használják a háttér-kiszolgálókon a *alapértelmezett* SSL-kötés létrehozásához. A kérelemből a nyilvános kulcsot használja az ebben a szakaszban. Ha a HTTPS-kötések használunk állomásfejléc és SNI, és nem jelenik meg egy válasz és a tanúsítvány manuális böngésző kérést a https://127.0.0.1/ a háttér-kiszolgálókon be kell állítania egy alapértelmezett SSL-kötés van a számukra. Ha ezt nem teszi meg, a sikertelen mintavételek és a háttér nem szerepel az engedélyezési listán.
+   > Ha a háttérben használ állomásfejléc-t és Kiszolgálónév jelzése (SNI), akkor előfordulhat, hogy a beolvasott nyilvános kulcs nem az a kívánt hely, ahová a forgalom áramlik. Ha kétségei vannak, látogasson https://127.0.0.1/ el a háttér-kiszolgálók elemre, és erősítse meg, hogy melyik tanúsítványt használja az *alapértelmezett* SSL-kötéshez. Az adott kérelemből származó nyilvános kulcs használata ebben a szakaszban. Ha a gazdagép-fejléceket és a SNI HTTPS-kötéseken használja, és nem kap választ és tanúsítványt a háttér-kiszolgálókon futó kézi https://127.0.0.1/ böngészőtől, akkor a rájuk vonatkozó alapértelmezett SSL-kötést kell beállítania. Ha ezt nem teszi meg, a mintavétel meghiúsul, és a háttér nem rendelkezik engedélyezési listával.
 
    ```powershell
-   $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name 'whitelistcert1' -CertificateFile C:\cert.cer
+   $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name 'allowlistcert1' -CertificateFile C:\cert.cer
    ```
 
    > [!NOTE]
-   > Ebben a lépésben megadott tanúsítvány nyilvános kulcsát a .pfx tanúsítvány megtalálható a háttérrendszer a kell lennie. Exportálja a tanúsítványt (főtanúsítványt nem), a jogcím, tanúsítás és mintafelismerési (CER) formátumban a háttér-kiszolgálóra telepíthető, és használhatja ezt a lépést. Ezen lépés listáinak a háttéralkalmazáshoz a az application gateway.
+   > Az előző lépésben megadott tanúsítványnak a háttérben lévő. pfx-tanúsítvány nyilvános kulcsának kell lennie. Exportálja a tanúsítványt (nem a főtanúsítványt) az igénylés, a bizonyíték és az indoklás (CER) formátumba, és használja azt ebben a lépésben. Ezzel a lépéssel engedélyezheti a háttérben az Application Gateway-t.
 
-   Ha az Application Gateway v2 szintű Termékváltozatot használja, hozzon létre egy megbízható főtanúsítvány-hitelesítési tanúsítvány helyett. További információkért lásd: [az Application Gateway teljes körű SSL áttekintése](ssl-overview.md#end-to-end-ssl-with-the-v2-sku):
+   Ha a Application Gateway v2 SKU-t használja, akkor hitelesítési tanúsítvány helyett hozzon létre egy megbízható főtanúsítványt. További információ: [a végpontok közötti SSL áttekintése Application Gateway használatával](ssl-overview.md#end-to-end-ssl-with-the-v2-sku):
 
    ```powershell
    $trustedRootCert01 = New-AzApplicationGatewayTrustedRootCertificate -Name "test1" -CertificateFile  <path to root cert file>
    ```
 
-8. A application gateway háttér HTTP-beállítások konfigurálása. Rendelje hozzá a a HTTP-beállítások az előző lépésben feltöltött tanúsítványt.
+8. Konfigurálja a HTTP-beállításokat az Application Gateway háttérrendszer számára. Rendelje hozzá az előző lépésben feltöltött tanúsítványt a HTTP-beállításokhoz.
 
    ```powershell
    $poolSetting = New-AzApplicationGatewayBackendHttpSettings -Name 'setting01' -Port 443 -Protocol Https -CookieBasedAffinity Enabled -AuthenticationCertificates $authcert
    ```
 
-   Az Application Gateway v2 szintű Termékváltozatot használja a következő parancsot:
+   A Application Gateway v2 SKU esetében használja a következő parancsot:
 
    ```powershell
    $poolSetting01 = New-AzApplicationGatewayBackendHttpSettings -Name “setting01” -Port 443 -Protocol Https -CookieBasedAffinity Disabled -TrustedRootCertificate $trustedRootCert01 -HostName "test1"
    ```
 
-9. Hozzon létre egy terheléselosztó útválasztási szabályt, amely a terheléselosztó viselkedését konfigurálja. Ebben a példában egy egyszerű ciklikus multiplexelési szabályt jön létre.
+9. Hozzon létre egy terheléselosztó-útválasztási szabályt, amely a terheléselosztó viselkedését konfigurálja. Ebben a példában egy alapszintű ciklikus multiplexelés szabály jön létre.
 
    ```powershell
    $rule = New-AzApplicationGatewayRequestRoutingRule -Name 'rule01' -RuleType basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
    ```
 
-10. Konfigurálja az Application Gateway példányméretét. Az elérhető méretek a következők **Standard\_kis**, **Standard\_Közepes**, és **Standard\_nagy**.  A kapacitást, az elérhető értékek a következők **1** keresztül **10**.
+10. Konfigurálja az Application Gateway példányméretét. A rendelkezésre álló méretek **standard\_** **\_** kisméretű, standard szintű közepes és **standard\_méretűek**.  A kapacitáshoz az elérhető értékek **1** – **10**.
 
     ```powershell
     $sku = New-AzApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
     ```
 
     > [!NOTE]
-    > Tesztelési célokra példányszámnak 1 választható ki. Fontos tudni, hogy bármely példányok száma alapján két példánnyal az SLA nem vonatkozik, és ezért nem ajánlott. Kis átjárók vannak a fejlesztési-tesztelési és nem termelési célra használható.
+    > A példányok száma 1 lehet tesztelési célra kiválasztható. Fontos tudni, hogy a két példány alatti példányszám nem vonatkozik az SLA-ra, ezért nem ajánlott. Kis átjárókat kell használni a fejlesztési teszteléshez, és nem éles környezetben.
 
-11. Az application gateway esetében használható SSL-szabályzat konfigurálása. Az Application Gateway támogatja a minimális verziója az SSL-protokollverziók megadására.
+11. Konfigurálja az Application Gateway-ben használni kívánt SSL-házirendet. Application Gateway támogatja az SSL protokoll verzióinak minimális verziójának megadását.
 
-    A következő értékek közül, amelyek az protokollverziók listája:
+    A következő értékek a definiálható protokoll-verziók listáját jelentik:
 
     - **TLSV1_0**
     - **TLSV1_1**
     - **TLSV1_2**
     
-    Az alábbi példa állítja a minimális protokoll verziója **TLSv1_2** , és lehetővé teszi **TLS\_ECDHE\_ECDSA\_WITH\_AES\_128\_GCM\_SHA256**, **TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384**, és **TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256** csak.
+    Az alábbi példa a protokoll minimális verzióját állítja be a **TLSv1_2** , és engedélyezi a **TLS\_ECDHE\_\_ECDSA\_\_\_AES\_128 GCM sha256**, **TLS\_ECDHE\_ECDSAAES256\_GCM SHA384ésTLS\_RSA és\_\_\_** **\_\_\_ Az\_AES128\_GCM\_csak sha256** .
 
     ```powershell
     $SSLPolicy = New-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -PolicyType Custom
@@ -225,40 +225,109 @@ Minden konfigurációs elemet az application gateway létrehozása előtt vannak
 
 ## <a name="create-the-application-gateway"></a>Application Gateway létrehozása
 
-Az application gateway az előző lépések segítségével hozzon létre. Az átjáró létrehozása az, amely a futtatása hosszú időt vesz igénybe.
+Az összes fenti lépés használatával hozza létre az Application Gatewayt. Az átjáró létrehozása olyan folyamat, amely hosszú időt vesz igénybe.
 
+V1 SKU esetén használja az alábbi parancsot.
 ```powershell
-$appgw = New-AzApplicationGateway -Name appgateway -SSLCertificates $cert -ResourceGroupName "appgw-rg" -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -SSLPolicy $SSLPolicy -AuthenticationCertificates $authcert -Verbose
+$appgw = New-AzApplicationGateway -Name appgateway -SSLCertificates $cert -ResourceGroupName "appgw-rg" -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -SSLPolicy $SSLPolicy -AuthenticationCertificates $authcert -Verbose
 ```
 
-## <a name="limit-ssl-protocol-versions-on-an-existing-application-gateway"></a>A meglévő application gateway SSL-protokollverziók korlátozása
+A v2 SKU esetében használja az alábbi parancsot.
+```powershell
+$appgw = New-AzApplicationGateway -Name appgateway -SSLCertificates $cert -ResourceGroupName "appgw-rg" -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -SSLPolicy $SSLPolicy -TrustedRootCertificate $trustedRootCert01 -Verbose
+```
 
-Az előző lépések végrehajtásának egy alkalmazás létrehozásának teljes körű SSL-lel, és bizonyos SSL-protokollverziók letiltása. A következő példa letiltja az egyes SSL-szabályzatokat egy meglévő alkalmazásátjárón.
+## <a name="apply-a-new-certificate-if-the-back-end-certificate-is-expired"></a>Új tanúsítvány alkalmazása, ha a háttérbeli tanúsítvány lejárt
 
-1. Az Alkalmazásátjáró frissítése lekéréséhez.
+Ezzel az eljárással új tanúsítványt alkalmazhat, ha a háttérbeli tanúsítvány lejárt.
+
+1. Kérje le a frissíteni kívánt Application Gateway-átjárót.
+
+   ```powershell
+   $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
+   ```
+   
+2. Adja hozzá az új tanúsítvány-erőforrást a. cer fájlból, amely tartalmazza a tanúsítvány nyilvános kulcsát, és ugyanezt a tanúsítványt is hozzáadhatja a figyelőhöz az SSL-lezáráshoz az Application gatewayben.
+
+   ```powershell
+   Add-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw -Name 'NewCert' -CertificateFile "appgw_NewCert.cer" 
+   ```
+    
+3. Az új hitelesítési tanúsítvány objektumának beolvasása egy változóba (TypeName: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAuthenticationCertificate).
+
+   ```powershell
+   $AuthCert = Get-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw -Name NewCert
+   ```
+ 
+ 4. Rendelje hozzá az új tanúsítványt a **BackendHttp** -beállításhoz, és tekintse át a $AuthCert változóval. (Adja meg a módosítani kívánt HTTP-beállítás nevét.)
+ 
+   ```powershell
+   $out= Set-AzApplicationGatewayBackendHttpSetting -ApplicationGateway $gw -Name "HTTP1" -Port 443 -Protocol "Https" -CookieBasedAffinity Disabled -AuthenticationCertificates $Authcert
+   ```
+    
+ 5. Véglegesítse a változást az Application gatewayben, és adja át a $out változóban lévő új konfigurációt.
+ 
+   ```powershell
+   Set-AzApplicationGateway -ApplicationGateway $gw  
+   ```
+
+## <a name="remove-an-unused-expired-certificate-from-http-settings"></a>Nem használt lejárt tanúsítvány eltávolítása a HTTP-beállításokból
+
+Ezzel az eljárással távolíthatja el a nem használt lejárt tanúsítványokat a HTTP-beállítások közül.
+
+1. Kérje le a frissíteni kívánt Application Gateway-átjárót.
+
+   ```powershell
+   $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
+   ```
+   
+2. A törölni kívánt hitelesítési tanúsítvány nevének listázása.
+
+   ```powershell
+   Get-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw | select name
+   ```
+    
+3. Távolítsa el a hitelesítési tanúsítványt az Application gatewayből.
+
+   ```powershell
+   $gw=Remove-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw -Name ExpiredCert
+   ```
+ 
+ 4. Véglegesítse a módosítást.
+ 
+   ```powershell
+   Set-AzApplicationGateway -ApplicationGateway $gw
+   ```
+
+   
+## <a name="limit-ssl-protocol-versions-on-an-existing-application-gateway"></a>Az SSL protokoll verzióinak korlátozása meglévő Application Gateway-átjárón
+
+Az előző lépések során elvégezte a teljes körű SSL-alapú alkalmazások létrehozását, valamint az SSL protokoll bizonyos verzióinak letiltását. Az alábbi példa letiltja bizonyos SSL-házirendeket egy meglévő Application gatewayen.
+
+1. Kérje le a frissíteni kívánt Application Gateway-átjárót.
 
    ```powershell
    $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
    ```
 
-2. Egy SSL-szabályzat meghatározása. A következő példában **TLSv1.0** és **TLSv1.1** le van tiltva, és a titkosító csomagok **TLS\_ECDHE\_ECDSA\_WITH\_ AES\_128\_GCM\_SHA256**, **TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384**, és **TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256** csak kiépítettektől engedélyezett.
+2. Adjon meg egy SSL-házirendet. A következő példában a **TLS 1.0** és a **TLS 1.1** le van tiltva, és a titkosító csomagok **\_\_TLS ECDHE\_\_ECDSA\_\_AES\_ 128 GCM Sha256**, **TLS\_ECDHE\_ECDSAAES256\_GCM SHA384 és TLS\_RSA-vel\_\_\_** **\_\_ Az AES128\_GCMsha256\_csak az engedélyezett.\_\_**
 
    ```powershell
    Set-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -PolicyType Custom -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -ApplicationGateway $gw
 
    ```
 
-3. Végül frissítse az átjárót. Az utolsó lépéseként egy hosszan futó feladatot. Amikor kész van, az application gateway teljes körű SSL van konfigurálva.
+3. Végül frissítse az átjárót. Ez az utolsó lépés egy hosszan futó feladat. Ha elkészült, a végpontok közötti SSL az Application Gateway-ben van konfigurálva.
 
    ```powershell
    $gw | Set-AzApplicationGateway
    ```
 
-## <a name="get-an-application-gateway-dns-name"></a>Egy application gateway DNS-nevének lekérése
+## <a name="get-an-application-gateway-dns-name"></a>Application Gateway DNS-név beszerzése
 
-Az átjáró létrehozása után a következő lépés a kommunikációra szolgáló előtér konfigurálása. Az Application Gateway egy dinamikusan hozzárendelt DNS-név szükséges, ha a nyilvános IP-cím, která není rövid. Hogy a végfelhasználók elérjék az application gateway, használhatja, az application Gateway nyilvános végpontjára mutató CNAME rekord. További információkért lásd: [egy egyéni tartománynév konfigurálása az Azure-ban](../cloud-services/cloud-services-custom-domain-name-portal.md). 
+Az átjáró létrehozása után a következő lépés az előtér konfigurálása a kommunikációhoz. A Application Gateway egy nyilvános IP-cím használatakor dinamikusan hozzárendelt DNS-nevet igényel, amely nem barátságos. Annak biztosítása érdekében, hogy a végfelhasználók elérjék az Application Gatewayt, használhat egy CNAME rekordot, amely az Application Gateway nyilvános végpontján mutat. További információ: [Egyéni tartománynév konfigurálása az Azure-ban](../cloud-services/cloud-services-custom-domain-name-portal.md). 
 
-Aliasként beállítandó részleteinek lekérése az application gateway és a kapcsolódó IP/DNS-név használatával a **PublicIPAddress** az application gatewayhez csatolt elem. Az application gateway DNS-név használatával hozzon létre egy CNAME rekordot, a két webalkalmazást, a DNS-névhez. Azt nem-bejegyzések használata ajánlott, mert a virtuális IP-cím is megváltozik az indítsa újra az application Gateway.
+Alias konfigurálásához az Application Gateway és a hozzá tartozó IP/DNS-név adatait az Application gatewayhez csatolt **PublicIPAddress** elem használatával kérheti le. Az Application Gateway DNS-nevének használatával hozzon létre egy olyan CNAME rekordot, amely a két webalkalmazást erre a DNS-névre mutat. Nem javasoljuk a-Records használatát, mert a virtuális IP-cím megváltozhat az Application Gateway újraindításakor.
 
 ```powershell
 Get-AzPublicIpAddress -ResourceGroupName appgw-RG -Name publicIP01
@@ -288,6 +357,6 @@ DnsSettings              : {
 
 ## <a name="next-steps"></a>További lépések
 
-A webalkalmazási tűzfal Application Gatewayen keresztül a webalkalmazások biztonságának megerősítése kapcsolatos további információkért lásd: a [webalkalmazás-tűzfal áttekintése](application-gateway-webapplicationfirewall-overview.md).
+További információ a webalkalmazások biztonságának a webalkalmazási tűzfallal való megkeményedéséről Application Gatewayon keresztül: [webalkalmazási tűzfal – áttekintés](application-gateway-webapplicationfirewall-overview.md).
 
 [scenario]: ./media/application-gateway-end-to-end-SSL-powershell/scenario.png

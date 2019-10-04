@@ -3,9 +3,8 @@ title: Azure Security Center rövid útmutató – Azure-előfizetés felvétele
 description: Ez a rövid útmutató bemutatja, hogyan frissíthet a Security Center Standard tarifacsomagjára a biztonság további erősítése érdekében.
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security-center
 ms.devlang: na
@@ -14,16 +13,16 @@ ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
-ms.author: rkarlin
-ms.openlocfilehash: 37f85afbdd55d3f14638f0833f69bb1992770449
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: memildin
+ms.openlocfilehash: 689949b2b6fea1dcd06741fd3fc19c9371a96784
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58086071"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676383"
 ---
-# <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>Gyors útmutató: Felvétele a Security Center Standard Azure-előfizetése
-Az Azure Security Center egységes biztonsági felügyeletet és fenyegetésvédelmet biztosít a hibrid felhőalapú számítási feladatokhoz. Míg az Ingyenes szint korlátozott biztonságot nyújt, és azt is csak az Azure-erőforrások számára, a Standard szint kiterjeszti ezeket a képességeket a helyszíni és egyéb felhőkre. A Security Center segítségével megtalálhatja és kijavíthatja a biztonsági réseket, hozzáférés- és alkalmazásvezérlőket alkalmazhat a kártékony tevékenységek blokkolásához, észlelheti a fenyegetéseket az analitika és az intelligencia használatával, valamint gyorsan reagálhat, ha a rendszer támadás alatt áll. Megpróbálhatja Security Center Standard költségek nélkül. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/).
+# <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>Gyors útmutató: Azure-előfizetés előkészítése a Security Center Standard csomagra
+Az Azure Security Center egységes biztonsági felügyeletet és fenyegetésvédelmet biztosít a hibrid felhőalapú számítási feladatokhoz. Míg az Ingyenes szint korlátozott biztonságot nyújt, és azt is csak az Azure-erőforrások számára, a Standard szint kiterjeszti ezeket a képességeket a helyszíni és egyéb felhőkre. A Security Center segítségével megtalálhatja és kijavíthatja a biztonsági réseket, hozzáférés- és alkalmazásvezérlőket alkalmazhat a kártékony tevékenységek blokkolásához, észlelheti a fenyegetéseket az analitika és az intelligencia használatával, valamint gyorsan reagálhat, ha a rendszer támadás alatt áll. Security Center Standard díjmentesen is kipróbálható. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/).
 
 Ebben a cikkben frissíteni fog a Standard szintre a további biztonság érdekében, és telepíteni fogja a Microsoft Monitoring Agentet a virtuális gépekre a biztonsági rések és fenyegetések monitorozásához.
 
@@ -51,7 +50,7 @@ A Security Center első indítása után néhány percen belül a következők j
 A Security Center képességeinek teljes körű kihasználása érdekében végre kell hajtania az alábbi lépéseket a Standard szintre való frissítéshez és a Microsoft Monitoring Agent telepítéséhez.
 
 ## <a name="upgrade-to-the-standard-tier"></a>Frissítés a Standard szintre
-A Security Center rövid útmutatóinak és oktatóanyagainak elvégzéséhez frissítenie kell a Standard szintre. Security Center Standard ingyenes próbaverziója van. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/). 
+A Security Center rövid útmutatóinak és oktatóanyagainak elvégzéséhez frissítenie kell a Standard szintre. Security Center Standard ingyenes próbaverziót is rendelkezésre áll. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/). 
 
 1. A Security Center főmenüjében válassza az **Első lépések** elemet.
  
@@ -73,11 +72,11 @@ Ha az automatikus kiépítés engedélyezve van, a Security Center telepíti a M
 
 A Microsoft Monitoring Agent automatikus kiépítésének engedélyezése:
 
-1. A Security Center főmenüjében válassza a **Biztonsági szabályzat** elemet.
-2. Az előfizetést tartalmazó soron kattintson a **Beállítások szerkesztése>** elemre.
+1. A Security Center Főmenüben válassza a **díjszabás & beállítások**lehetőséget.
+2. Az előfizetés sorában kattintson arra az előfizetésre, amelyre módosítani szeretné a beállításokat.
 3. Az **Adatgyűjtés** lapon állítsa az **Automatikus telepítést** **Be** értékre.
 4. Kattintson a **Mentés** gombra.
-****
+---
   ![Automatikus kiépítés engedélyezése][6]
 
 Az Azure-beli virtuális gépekbe való új betekintésnek köszönhetően a Security Center további javaslatokkal láthatja el Önt a rendszerfrissítés állapotával, az operációs rendszer biztonsági konfigurációival és a végpontvédelemmel kapcsolatban, illetve további biztonsági riasztásokat is létrehozhat.
@@ -87,15 +86,15 @@ Az Azure-beli virtuális gépekbe való új betekintésnek köszönhetően a Sec
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 A gyűjtemény részét képező többi rövid útmutató és oktatóanyag erre a rövid útmutatóra épül. Ha azt tervezi, hogy az ezt követő rövid útmutatókkal és oktatóanyagokkal dolgozik tovább, továbbra is a Standard szintet futtassa, és hagyja engedélyezve az automatikus kiépítést. Ha nem folytatja a munkát, vagy vissza szeretne térni az Ingyenes szintre:
 
-1. Térjen vissza a Security Center főmenüjébe, és válassza a **Biztonsági szabályzat** elemet.
-2. Azon a soron, amelyen az ingyenes állapotba visszaállítani kívánt előfizetés található, válassza ki a **Beállítások szerkesztése>** elemet.
+1. Térjen vissza a Security Center főmenüre, és válassza a **díjszabás & beállítások**lehetőséget.
+2. Kattintson arra az előfizetésre, amelyet az ingyenes szintjére szeretne váltani.
 3. A **Tarifacsomag** pont alatt válassza az **Ingyenes** lehetőséget az előfizetés Standard szintről Ingyenes szintre való módosításához.
 5. Kattintson a **Mentés** gombra.
 
 Ha le szeretné tiltani az automatikus kiépítést:
 
-1. Térjen vissza a Security Center főmenüjébe, és válassza a **Biztonsági szabályzat** elemet.
-2. Válassza ki a **Beállítások szerkesztése>** elemet azon a soron, amelyen az az előfizetés található, amelyiknek le szeretné tiltani az automatikus telepítését.
+1. Térjen vissza a Security Center főmenüre, és válassza a **díjszabás & beállítások**lehetőséget.
+2. Tisztítsa meg az előfizetést, amelynél le szeretné tiltani az automatikus kiépítés szolgáltatást.
 3. Az **Adatgyűjtés** lapon állítsa az **Automatikus telepítést** **Ki** értékre.
 4. Kattintson a **Mentés** gombra.
 
@@ -107,7 +106,7 @@ Ha le szeretné tiltani az automatikus kiépítést:
 Ebben a rövid útmutatóban frissített a Standard szintre, és kiépítette a Microsoft Monitoring Agentet, hogy biztosítsa az egységes biztonsági felügyeletet és fenyegetésvédelmet a hibrid felhőalapú számítási feladatokon. Ha többet szeretne megtudni a Security Center használatáról, folytassa a helyszínen és egyéb felhőszolgáltatásokban található Windows rendszerű számítógépek felvételével foglalkozó oktatóanyaggal.
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: Az Azure Security Center Windows számítógépek felvétele](quick-onboard-windows-computer.md)
+> [Rövid útmutató: Windows rendszerű számítógépek előkészítése Azure Security Center](quick-onboard-windows-computer.md)
 
 <!--Image references-->
 [2]: ./media/security-center-get-started/overview.png

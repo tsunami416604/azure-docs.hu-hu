@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: spelluru
 ms.openlocfilehash: 6faf32232c42f863bff52fdfb3c0714aee8e9b88
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58190557"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60702416"
 ---
 # <a name="create-an-environment-with-multiple-vms-inside-a-template-vm-of-a-classroom-lab"></a>Osztályterem-tesztkörnyezet, a virtuális gép sablon belül több virtuális környezet létrehozása
 Jelenleg az Azure Lab Services lehetővé teszi, hogy a sablon egy virtuális gép tesztkörnyezetben, és a egy példányt minden, a felhasználó számára elérhetővé tenni. Azonban ha Ön egy oktatási egy informatikai osztály a tűzfalak vagy kiszolgálók beállítása professzor, szükség lehet egy olyan környezetben, amelyben több virtuális gép kommunikálhassanak egymással a hálózaton keresztül a tanulók minden egyes biztosításához.

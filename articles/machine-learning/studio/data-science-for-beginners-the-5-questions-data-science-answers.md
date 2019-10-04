@@ -11,11 +11,11 @@ ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
 ms.openlocfilehash: d89a701f1d4528e1f3dff08daf31873891778f07
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369190"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60751396"
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>Adatelemzés kezdőknek – 1. Videó: A 5 kérdés adatelemzés választ ad
 Adatelemzés a gyors bevezetést *adatelemzés kezdőknek* az öt rövid videóban a felső adatszakértő. Ezeket a videókat egyszerű, de hasznos,-e Önt érdeklő adatelemzésre vagy dolgozik, az adatszakértők.
@@ -30,11 +30,11 @@ Ez a videó első tárgya bármilyen típusú kérdéseket, amelyeket az adatele
 ## <a name="other-videos-in-this-series"></a>Ez a sorozat egyéb videók
 *Adatelemzés kezdőknek* a data science véve körülbelül 25 perc összesen gyors ismertetést nyújt. Tekintse meg az összes öt videó:
 
-* 1. Videó: A 5 kérdés adatelemzés választ ad
-* 2. Videó: [Az adatelemzés készen áll az adatok?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 perc 56 másodperc)*
-* 3. Videó: [Tegyen fel kérdést az adatok a válasz](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 perc 17 másodperc)*
-* 4. Videó: [Egy egyszerű modellel válasz előrejelzése](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 perc 42 másodperc)*
-* 5. Videó: [Más emberek munkájának lemásolása az adatelemzéshez való másolása](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 perc 18 másodperc)*
+* 1\. Videó: A 5 kérdés adatelemzés választ ad
+* 2\. Videó: [Az adatelemzés készen áll az adatok?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 perc 56 másodperc)*
+* 3\. Videó: [Tegyen fel kérdést az adatok a válasz](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 perc 17 másodperc)*
+* 4\. Videó: [Egy egyszerű modellel válasz előrejelzése](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 perc 42 másodperc)*
+* 5\. Videó: [Más emberek munkájának lemásolása az adatelemzéshez való másolása](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 perc 18 másodperc)*
 
 ## <a name="transcript-the-5-questions-data-science-answers"></a>A szövegben: A 5 kérdés adatelemzés választ ad
 szia! Üdvözli a videósorozat *adatelemzés kezdőknek*.
@@ -57,7 +57,7 @@ Ezek a kérdések mindegyike külön összessége, machine learning módszerek, 
 
 Hasznos lehet a recept, az algoritmus és az adatokat, mint az összetevők állításoknak. Egy algoritmus bemutatja, hogyan lehet egyesíteni, és kombinálhatók az adatok annak érdekében, hogy a válasz. A blender hasonlóak a számítógépeken. A nehezét, az algoritmus a legtöbb ők az Ön számára, és tesznek, lefut.
 
-## <a name="question-1-is-this-a-or-b-uses-classification-algorithms"></a>1. kérdés: Az ebben A vagy B? besorolási algoritmusokat használ
+## <a name="question-1-is-this-a-or-b-uses-classification-algorithms"></a>1\. kérdés: Az ebben A vagy B? besorolási algoritmusokat használ
 Kezdjük a kérdést: Az ebben A vagy B?
 
 ![Besorolási algoritmusok: Az ebben A vagy B?](./media/data-science-for-beginners-the-5-questions-data-science-answers/classification-algorithms.png)
@@ -73,7 +73,7 @@ Példa:
 
 Ezt a kérdést is képes rephrased tartalmazza a több mint két lehetőség közül választhat: Az ebben A vagy B vagy C vagy D, stb.?  Ezt nevezzük többosztályos osztályozási és a hozzá tartozó hasznos, ha több – vagy több ezer – lehetséges válaszokat. Többosztályos osztályozási úgy dönt, hogy a legnagyobb valószínűséggel egy.
 
-## <a name="question-2-is-this-weird-uses-anomaly-detection-algorithms"></a>2. kérdés: Az Ez furcsának? anomáliadetektálási észlelési algoritmusokat használ
+## <a name="question-2-is-this-weird-uses-anomaly-detection-algorithms"></a>2\. kérdés: Az Ez furcsának? anomáliadetektálási észlelési algoritmusokat használ
 A következő kérdésben, az adatelemzés segítségével választ kaphat a következő: Az Ez furcsának? A kérdésre összessége, anomáliadetektálás úgynevezett algoritmusokat.
 
 ![Anomáliadetektálási észlelési algoritmusait: Az Ez furcsának?](./media/data-science-for-beginners-the-5-questions-data-science-answers/anomaly-detection-algorithms.png)
@@ -87,7 +87,7 @@ Ezt a kérdést a sokféleképp hasznos lehet. Például:
 
 Anomáliadetektálás jelzők váratlan vagy szokatlan események vagy viselkedéseket kezdeményezhet. A keresőmotorok biztosít hova kell néznie a problémákat.
 
-## <a name="question-3-how-much-or-how-many-uses-regression-algorithms"></a>3. kérdés: mennyi? vagy hogy sok? regressziós algoritmust használja.
+## <a name="question-3-how-much-or-how-many-uses-regression-algorithms"></a>3\. kérdés: mennyi? vagy hogy sok? regressziós algoritmust használja.
 Sokkal gépi tanulási is tudja jelezni a hogyan választ? vagy hogy sok? Az olyan ezt a kérdést algoritmuscsaládot regressziós nevezzük.
 
 ![Regresszió algoritmus: mennyi? vagy hogy sok?](./media/data-science-for-beginners-the-5-questions-data-science-answers/regression-algorithms.png)
@@ -115,7 +115,7 @@ Fürtözési kérdések gyakori alkalmazási helyzetek:
 
 Megismerése, hogyan vannak rendszerezve, hogy jobban átláthassák - és előrejelzése - viselkedések és események.  
 
-## <a name="question-5-what-should-i-do-now-uses-reinforcement-learning-algorithms"></a>5. kérdés: Mit tegyek most? használja a megerősítő tanulási algoritmus
+## <a name="question-5-what-should-i-do-now-uses-reinforcement-learning-algorithms"></a>5\. kérdés: Mit tegyek most? használja a megerősítő tanulási algoritmus
 Az utolsó kérdés – Mi a teendő most? – használja a megerősítő tanulást nevű algoritmusok összessége.
 
 Hogyan agyából RAT és az emberek választ büntetés és a felhőtechnológia által inspirációt volt a megerősítő tanulást. Ezek az algoritmusok ismerje meg az eredményeket, és döntse el, a következő művelet.

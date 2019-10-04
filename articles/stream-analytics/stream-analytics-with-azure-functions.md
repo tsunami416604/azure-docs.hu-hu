@@ -7,17 +7,17 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
 ms.workload: data-services
-ms.date: 04/09/2018
+ms.date: 06/05/2019
 ms.author: mamccrea
 ms.reviewer: jasonh
-ms.openlocfilehash: 80977c13aa9851ea5df9a15f5b9580dd1a931259
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 5aa2616bfbfd4b31d3e5e5aeee71da8fd511faed
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57569195"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066720"
 ---
-# <a name="run-azure-functions-from-azure-stream-analytics-jobs"></a>Az Azure Functions futtatása Azure Stream Analytics-feladatokból 
+# <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>Oktatóanyag: Az Azure Functions futtatása Azure Stream Analytics-feladatokból 
 
 Az Azure Functions az Azure Stream Analytics szolgáltatásból való futtatásához konfigurálja a Functionst a Stream Analytics-feladat kimeneti fogadóinak egyikeként. A Functions egy eseményvezérelt, számítási igények szerint működtethető szolgáltatás, amellyel az Azure-ban vagy külső szolgáltatásokban bekövetkező események által aktivált kódok implementálhatók. Az eseményindítókra való reagálás képessége a Stream Analytics-feladatok természetes kimenetévé teszi a Functionst.
 
@@ -26,9 +26,10 @@ A Stream Analytics HTTP-eseményindítókkal hívja meg a Functionst. A Function
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Stream Analytics-feladat létrehozása
+> * Hozzon létre, és a egy Stream Analytics-feladat futtatása
+> * A Redis-példányt az Azure Cache létrehozása
 > * Azure-függvény létrehozása
-> * Azure-függvény konfigurálása a feladat kimeneteként
+> * Ellenőrizze az Azure Cache redis eredmények
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -38,16 +39,9 @@ Ez a szakasz bemutatja, hogyan konfigurálhatja a Stream Analytics-feladat, Azur
 
 ![Az Azure-szolgáltatások közötti kapcsolatokat bemutató ábra](./media/stream-analytics-with-azure-functions/image1.png)
 
-A feladat megvalósításához az alábbi lépéseket kell végrehajtani:
-* [Stream Analytics-feladat létrehozása az Event Hubs szolgáltatást megadva bemenetként](#create-a-stream-analytics-job-with-event-hubs-as-input)  
-* A Redis-példányt az Azure Cache létrehozása  
-* Függvény létrehozása az tudjon adatokat írni az Azure Cache Redis az Azure Functions szolgáltatásban    
-* [A Stream Analytics-feladat frissítése a kimenetként megadott függvénnyel](#update-the-stream-analytics-job-with-the-function-as-output)  
-* Ellenőrizze az Azure Cache redis eredmények  
-
 ## <a name="create-a-stream-analytics-job-with-event-hubs-as-input"></a>Stream Analytics-feladat létrehozása az Event Hubs szolgáltatást megadva bemenetként
 
-[Az adathamisítások azonnali felismerése](stream-analytics-real-time-fraud-detection.md) oktatóanyag lépéseit követve hozzon létre egy eseményközpontot, indítsa el az eseménylétrehozó alkalmazást, és hozzon létre egy Stream Analytics-feladatot. (Hagyja ki a lekérdezés és a kimenet létrehozására szolgáló lépéseket. Helyette tekintse meg a Functions-kimenet beállítására vonatkozó alábbi szakaszokat.)
+[Az adathamisítások azonnali felismerése](stream-analytics-real-time-fraud-detection.md) oktatóanyag lépéseit követve hozzon létre egy eseményközpontot, indítsa el az eseménylétrehozó alkalmazást, és hozzon létre egy Stream Analytics-feladatot. A lekérdezés és a kimenet létrehozása a lépés kihagyható. Helyette tekintse meg a következő szakaszok az Azure Functions kimeneti beállításához.
 
 ## <a name="create-an-azure-cache-for-redis-instance"></a>A Redis-példányt az Azure Cache létrehozása
 
@@ -61,7 +55,7 @@ A feladat megvalósításához az alábbi lépéseket kell végrehajtani:
 
 1. Tekintse meg a Functions dokumentációjának [Függvényalkalmazás létrehozása](../azure-functions/functions-create-first-azure-function.md#create-a-function-app) című szakaszát. Ebből megtudhatja, hogyan hozhat létre függvényalkalmazást és egy [HTTP-eseményindítóval aktivált függvényt az Azure Functionsben](../azure-functions/functions-create-first-azure-function.md#create-function) CSharp nyelven.  
 
-2. Keresse meg a **run.csx** függvényt. Frissítse az alábbi kóddal. (Cserélje le "\<ide kerül az Azure Cache Redis kapcsolati karakterlánc\>" az az Azure Cache a Redis az előző szakaszban lekért elsődleges kapcsolati karakterláncot.)  
+2. Keresse meg a **run.csx** függvényt. Frissítse az alábbi kóddal. Cserélje le **"\<ide kerül az Azure Cache Redis kapcsolati karakterlánc\>"** az az Azure Cache a Redis az előző szakaszban lekért elsődleges kapcsolati karakterláncot. 
 
     ```csharp
     using System;
@@ -112,7 +106,7 @@ A feladat megvalósításához az alábbi lépéseket kell végrehajtani:
 
    ```
 
-   Ha a Stream Analytics a „HTTP Request Entity Too Large” (HTTP-kérelemegység túl nagy) kivételt kapja vissza a függvénytől, csökkenti a Functionsbe küldött kötegek méretét. A függvényben az alábbi kód használatával ellenőrizheti, hogy a Stream Analytics nem küld-e túl nagy kötegeket. Ellenőrizze, hogy a függvényben használt maximális kötegszám- és kötegméretértékek egyeznek a Stream Analytics-portálon megadott értékekkel.
+   Ha a Stream Analytics a „HTTP Request Entity Too Large” (HTTP-kérelemegység túl nagy) kivételt kapja vissza a függvénytől, csökkenti a Functionsbe küldött kötegek méretét. Az alábbi kód biztosítja, hogy Stream Analytics nem küld-e túl nagy kötegeket. Ellenőrizze, hogy a függvényben használt maximális kötegszám- és kötegméretértékek egyeznek a Stream Analytics-portálon megadott értékekkel.
 
     ```csharp
     if (dataArray.ToString().Length > 262144)
@@ -121,7 +115,7 @@ A feladat megvalósításához az alábbi lépéseket kell végrehajtani:
         }
    ```
 
-3. Hozzon létre a **project.json** nevű JSON-fájlt egy tetszőleges szövegszerkesztőben. Használja az alábbi kódot, és mentse a helyi számítógépen. Ez a fájl tartalmazza a C#-függvény által igényelt NuGet-csomagfüggőségeket.  
+3. Hozzon létre a **project.json** nevű JSON-fájlt egy tetszőleges szövegszerkesztőben. Az alábbi kódot, és mentse a helyi számítógépen. Ez a fájl tartalmazza a C#-függvény által igényelt NuGet-csomagfüggőségeket.  
    
     ```json
     {
@@ -145,8 +139,6 @@ A feladat megvalósításához az alábbi lépéseket kell végrehajtani:
 
    ![Az App Service Editor képernyőképe](./media/stream-analytics-with-azure-functions/image4.png)
 
- 
-
 ## <a name="update-the-stream-analytics-job-with-the-function-as-output"></a>A Stream Analytics-feladat frissítése a kimenetként megadott függvénnyel
 
 1. Nyissa meg a Stream Analytics-feladatot az Azure Portalon.  
@@ -163,9 +155,9 @@ A feladat megvalósításához az alábbi lépéseket kell végrehajtani:
    |Maximális kötegszám|A függvénybe küldött egyes kötegekben lévő események maximális számának megadására szolgál. Az alapértelmezett érték 100. Ez a tulajdonság nem kötelező.|
    |Kulcs|Más előfizetésből származó függvény használatát teszi lehetővé. A függvény eléréséhez adja meg a kulcs értékét. Ez a tulajdonság nem kötelező.|
 
-3. Adja meg a kimeneti alias nevét. Ebben az oktatóanyagban a **saop1** nevet használjuk (bármilyen tetszőleges nevet használhat). Adja meg az egyéb adatokat.  
+3. Adja meg a kimeneti alias nevét. Ebben az oktatóanyagban nevű **saop1**, de bármilyen tetszőleges nevet használhat. Adja meg az egyéb adatokat.
 
-4. Nyissa meg a Stream Analytics-feladatot, és frissítse a lekérdezést az alábbiakra. (Amennyiben más nevet adott a kimeneti fogadónak, ügyeljen arra, hogy azt a nevet használja a „saop1” helyett.)  
+4. Nyissa meg a Stream Analytics-feladatot, és frissítse a lekérdezést az alábbiakra. Ha Ön nem fejeződött nevezze el a kimeneti fogadó **saop1**, ne felejtse el a lekérdezésben.  
 
    ```sql
     SELECT
@@ -178,9 +170,11 @@ A feladat megvalósításához az alábbi lépéseket kell végrehajtani:
         WHERE CS1.SwitchNum != CS2.SwitchNum
    ```
 
-5. Indítsa el a telcodatagen.exe alkalmazást az alábbi parancs futtatásával a parancssorban (használja a `telcodatagen.exe [#NumCDRsPerHour] [SIM Card Fraud Probability] [#DurationHours]` formátumot):  
+5. A parancssorban a következő parancs futtatásával indítsa el a telcodatagen.exe alkalmazást. A parancs a formátumot használja `telcodatagen.exe [#NumCDRsPerHour] [SIM Card Fraud Probability] [#DurationHours]`.  
    
-   **telcodatagen.exe 1000 .2 2**
+   ```cmd
+   telcodatagen.exe 1000 0.2 2
+   ```
     
 6.  Indítsa el a Stream Analytics-feladatot.
 

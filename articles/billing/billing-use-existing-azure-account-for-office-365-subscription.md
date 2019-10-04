@@ -1,6 +1,6 @@
 ---
-title: Office 365-höz készült Azure-fiókjával regisztráljon |} A Microsoft Docs
-description: Ismerje meg, hogyan hozhat létre az Office 365-előfizetés az Azure-fiók használatával
+title: Regisztrálás az Office 365-be Azure-fiókkal | Microsoft Docs
+description: Tudnivalók Office 365-előfizetés létrehozásáról egy Azure-fiók használatával
 services: ''
 documentationcenter: ''
 author: JiangChen79
@@ -16,60 +16,60 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: banders
 ms.openlocfilehash: b67f3c590be290515329af390b4d3d79a9746112
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339227"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "60369889"
 ---
-# <a name="sign-up-for-an-office-365-subscription-with-your-azure-account"></a>Office 365-előfizetéssel, az Azure-fiókkal regisztrálhat
-Ha Ön Azure-előfizető, használhatja az Azure-fiókjába az Office 365-előfizetéssel regisztrálhat. Ha Ön Azure-előfizetéssel rendelkező egy szervezet része, a felhasználók számára az Office 365-előfizetés a meglévő Azure Active Directoryban (Azure AD) is létrehozhat. Iratkozzon fel az Office 365-fiókkal, amely az Azure Active Directory-bérlő globális rendszergazdai vagy számlázási rendszergazdájának-engedélyekkel rendelkezik. További információkért lásd: [ellenőrizze a saját fiók engedélyeit az Azure ad-ben](#RoleInAzureAD) és [rendszergazdai szerepkörök hozzárendelése az Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
+# <a name="sign-up-for-an-office-365-subscription-with-your-azure-account"></a>Regisztrálás Office 365-előfizetésre Azure-fiókkal
+Ha Ön Azure-előfizető, akkor Azure-fiókjával regisztrálhat Office 365-előfizetésre. Ha Ön egy Azure-előfizetéssel rendelkező szervezet tagja, akkor a meglévő Azure Active Directory (Azure AD) felhasználói számára létrehozhat Office 365-előfizetéseket. Olyan fiókkal regisztráljon az Office 365-be, amely globális rendszergazdai vagy számlázási rendszergazdai engedélyekkel rendelkezik az Azure Active Directory-bérlőben. További információkért lásd [az Azure AD-ben a fiókengedélyek ellenőrzését](#RoleInAzureAD) és [az Azure Active Directoryban a rendszergazdai szerepkörök hozzárendelését](../active-directory/users-groups-roles/directory-assign-admin-roles.md) ismertető cikket.
 
-Ha már rendelkezik Office 365-fiókja és a egy Azure-előfizetést, akkor [egy Office 365-bérlő Azure-előfizetéshez társítja](billing-add-office-365-tenant-to-azure-subscription.md).
+Ha már Office 365-fiókkal és Azure-előfizetéssel is rendelkezik, [hozzárendelhet egy Office 365-bérlőt az Azure-előfizetéshez](billing-add-office-365-tenant-to-azure-subscription.md).
 
 ## <a name="get-an-office-365-subscription-by-using-your-azure-account"></a>Office 365-előfizetés beszerzése az Azure-fiók használatával
 
-1. Nyissa meg a [Office 365 termékoldalán](https://products.office.com/business), és válassza ki azt a csomagot.
-2. Kattintson a **jelentkezzen be a** az oldal jobb felső sarkában.
+1. Lépjen az [Office 365 termékoldalára](https://products.office.com/business), és válasszon ki egy csomagot.
+2. Az oldal jobb felső sarkában kattintson a **Bejelentkezés** lehetőségre.
 
-    ![Office 365-próbaverziós oldalát bemutató képernyőkép](./media/billing-use-existing-azure-account-office-365-subscription/12-office-365-trial-page.png)
-3. Jelentkezzen be Azure-fiók hitelesítő adataival. Előfizetés létrehozásánál szervezete számára, használja az Azure-fiókkal, amely az Azure Active Directory-bérlő globális rendszergazdai vagy számlázási rendszergazdájának címtárbeli szerepkör tagja.
+    ![képernyőkép az Office 365-próbaverzió oldaláról](./media/billing-use-existing-azure-account-office-365-subscription/12-office-365-trial-page.png)
+3. Jelentkezzen be Azure-fiókja hitelesítő adataival. Ha a szervezet számára hoz létre előfizetést, használjon egy olyan Azure-fiókot, amely a globális rendszergazdai vagy számlázási rendszergazdai címtárszerepkörrel rendelkezik az Azure Active Directory-bérlőben.
 
-    ![Képernyőkép az Office 365-bejelentkezés](./media/billing-use-existing-azure-account-office-365-subscription/13-office-365-sign-in.png)
-4. Kattintson a **kipróbálása**.
+    ![Képernyőkép az Office 365-bejelentkezésről](./media/billing-use-existing-azure-account-office-365-subscription/13-office-365-sign-in.png)
+4. Kattintson a **Kipróbálás** lehetőségre.
 
-    ![Képernyőfelvétel:, amely megerősíti, hogy a rendelés az Office 365-höz.](./media/billing-use-existing-azure-account-office-365-subscription/14-office-365-confirm-your-order.png)
-5. Kattintson a rendelés visszaigazolási lapja **Folytatás**.
+    ![Képernyőkép az Office 365 megrendelésének megerősítéséről.](./media/billing-use-existing-azure-account-office-365-subscription/14-office-365-confirm-your-order.png)
+5. A rendelés visszaigazolási oldalán kattintson a **Folytatás** lehetőségre.
 
-    ![Az Office 365 rendelési visszaigazoláson képernyőképe](./media/billing-use-existing-azure-account-office-365-subscription/15-office-365-order-receipt.png)
+    ![Az Office 365 rendelési visszaigazolásának képernyőképe](./media/billing-use-existing-azure-account-office-365-subscription/15-office-365-order-receipt.png)
 
-Most már készen vagyunk.
-Ha a szervezet számára létrehozott az Office 365-előfizetéssel, a következő lépések használatával ellenőrizze, hogy az Azure AD-felhasználók mostantól az Office 365-ben.
+Ezzel készen is van.
+Ha létrehozta az Office 365-előfizetést a szervezet számára, az alábbi lépésekkel ellenőrizheti, hogy az Azure AD-felhasználók már megtalálhatók-e az Office 365-ben.
 
-1. Nyissa meg a Microsoft 365 felügyeleti központot.
-2. Bontsa ki a **felhasználók**, és kattintson a **aktív felhasználók**.
+1. Nyissa meg a Microsoft 365 Felügyeleti központot.
+2. Bontsa ki a **FELHASZNÁLÓK** területet, majd kattintson az **Aktív felhasználók** lehetőségre.
 
-    ![Képernyőkép a Microsoft 365 felügyeleti központ](./media/billing-use-existing-azure-account-office-365-subscription/16-microsoft-365-admin-center-users.png)
+    ![Képernyőkép a Microsoft 365 Felügyeleti központ felhasználókat megjelenítő területéről](./media/billing-use-existing-azure-account-office-365-subscription/16-microsoft-365-admin-center-users.png)
 
-Miután regisztrált, az Office 365-előfizetés Azure Active Directory ugyanazon az Azure-előfizetéshez tartozó kerül. További információkért lásd: [Azure és az Office 365 előfizetési lehetőségekről további](billing-use-existing-office-365-account-azure-subscription.md#more-about-subs) és [kapcsolódnak az Azure-előfizetések az Azure Active Directory](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
+A regisztráció után az Office 365-előfizetés ugyanahhoz az Azure Active Directory-példányhoz lesz hozzáadva, amelyhez az Azure-előfizetés tartozik. További információkért lásd [az Azure- és az Office 365-előfizetésekkel kapcsolatos további tudnivalókat](billing-use-existing-office-365-account-azure-subscription.md#more-about-subs) és [az Azure-előfizetések az Azure Active Directoryhoz társítását](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md) ismertető cikket.
 
-## <a id="RoleInAzureAD"></a>Ellenőrizze a saját fiók engedélyeit az Azure ad-ben
+## <a id="RoleInAzureAD"></a>Fiókengedélyek ellenőrzése az Azure AD-ben
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Kattintson a **minden szolgáltatás**, és keressen **Active Directory**.
+2. Kattintson a **Minden szolgáltatás** elemre, majd keresse meg az **Active Directoryt**.
 
-    ![Képernyőfelvétel: az Active Directory az Azure Portalon](./media/billing-use-existing-azure-account-office-365-subscription/billing-more-services-active-directory.png)
-3. Kattintson a **felhasználók és csoportok** > **minden felhasználó**.
-4. Válassza ki a felhasználó nevét.
+    ![Képernyőkép az Active Directoryról az Azure Portalon](./media/billing-use-existing-azure-account-office-365-subscription/billing-more-services-active-directory.png)
+3. Kattintson a **Felhasználók és csoportok** > **Minden felhasználó** lehetőségre.
+4. Válassza ki a felhasználónevet.
 
-    ![Képernyőkép az Azure Active Directory-felhasználók](./media/billing-use-existing-azure-account-office-365-subscription/billing-users-groups.png)
+    ![Képernyőkép az Azure Active Directory-felhasználókról](./media/billing-use-existing-azure-account-office-365-subscription/billing-users-groups.png)
 
-5. Kattintson a **címtárbeli szerepkör**.
+5. Kattintson a **Címtárszerepkör** lehetőségre.
 
-    ![Képernyőkép az Azure portal címtárbeli szerepkört](./media/billing-use-existing-azure-account-office-365-subscription/billing-user-directory-role.png)
-6.  A szerepkör **globális rendszergazdai** vagy **korlátozott rendszergazda** > **számlázási rendszergazda** kell létrehoznia az Office 365-előfizetéssel, a felhasználók számára a meglévő, az Azure Active Directory.
+    ![Képernyőkép az Azure Portalon található címtárszerepkörről](./media/billing-use-existing-azure-account-office-365-subscription/billing-user-directory-role.png)
+6.  Az Office 365-előfizetés meglévő Azure Active Directory-felhasználók számára történő létrehozásához a **Globális rendszergazda** vagy a **Korlátozott rendszergazda** > **Számlázási adminisztrátor** szerepkörre van szükség.
 
-    ![Képernyőkép az Azure portal címtárszerepkör számlázási rendszergazda](./media/billing-use-existing-azure-account-office-365-subscription/billing-directoryrole-limited.png)
+    ![Képernyőkép az Azure Portalon található Számlázási adminisztrátor címtárszerepkörről](./media/billing-use-existing-azure-account-office-365-subscription/billing-directoryrole-limited.png)
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 
-Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
+Ha kérdése van, vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).

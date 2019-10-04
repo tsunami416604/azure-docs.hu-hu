@@ -1,35 +1,34 @@
 ---
-title: Keresse meg és törölje a nem csatolt Azure hálózati adapterek |} A Microsoft Docs
-description: Keresse meg, és nem csatlakoztatott virtuális gépeket az Azure CLI-vel az Azure-hálózati adapter törlése
+title: A nem csatolt Azure hálózati adapterek keresése és törlése | Microsoft Docs
+description: Virtuális gépekhez nem csatlakoztatott Azure hálózati adapterek keresése és törlése az Azure CLI-vel
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2018
 ms.author: cynthn
-ms.openlocfilehash: 9d8345aacb603a6411fdc693ac9f808778d27333
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1665b5fa8d2bfd63982bcffd1d5251214ff3586b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954330"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70083329"
 ---
-# <a name="how-to-find-and-delete-unattached-network-interface-cards-nics-for-azure-vms"></a>Keresse meg és nem csatolt hálózati adapter törlése kártyák (NIC) az Azure virtuális gépek
-Ha töröl egy virtuális gépet (VM) az Azure-ban, a hálózati adapterek (NIC) nem törlődnek alapértelmezés szerint. Hozzon létre, és több virtuális gép törlése, ha a használaton kívüli hálózati adapterek továbbra is használja a belső IP-címbérleteket. Ahogy a többi virtuális gép hálózati adaptereket hoz létre, nem olvasható be egy IP-címbérletet, az az alhálózat címtartománya a lehet. Ez a cikk bemutatja, hogyan keresse meg és nem csatolt hálózati adapter törlése.
+# <a name="how-to-find-and-delete-unattached-network-interface-cards-nics-for-azure-vms"></a>Nem csatlakoztatott hálózati adapterek (NIC-EK) keresése és törlése Azure-beli virtuális gépekhez
+Ha töröl egy virtuális gépet (VM) az Azure-ban, a hálózati adapterek (NIC) alapértelmezés szerint nem törlődnek. Ha több virtuális gépet hoz létre és töröl, a nem használt hálózati adapterek továbbra is a belső IP-címbérleteket használják. Más virtuálisgép-hálózati adapterek létrehozásakor előfordulhat, hogy nem tudnak IP-címbérletet szerezni az alhálózat címterület számára. Ez a cikk bemutatja, hogyan lehet megkeresni és törölni a nem csatolt hálózati adaptereket.
 
 ## <a name="find-and-delete-unattached-nics"></a>Nem csatolt hálózati adapterek keresése és törlése
 
-A *virtualMachine* egy hálózati adapter a tulajdonság tárolja az Azonosítót és erőforrás csoport a virtuális gép a hálózati adapter csatlakozik. A következő parancsfájl végighalad egy adott előfizetés összes hálózati adapterének, és ellenőrzi, hogy a *virtualMachine* tulajdonság null értékű. Ez a tulajdonság értéke null, ha a hálózati adapter nem egy virtuális Géphez van csatlakoztatva.
+A hálózati adapter *virtualMachine* tulajdonsága tárolja annak a virtuális GÉPNEK az azonosítóját és erőforrás-csoportját, amelyhez a hálózati adapter csatlakozik. Az alábbi szkript hurkokat hajt végre az előfizetésben található összes hálózati adapteren, és ellenőrzi, hogy a *virtualMachine* tulajdonság null értékű-e. Ha ez a tulajdonság null értékű, a hálózati adapter nincs virtuális géphez csatlakoztatva.
 
-Szeretné megtekinteni a nem csatolt hálózati adapterek, azt rendelkezik erősen ajánlott az első alkalommal történő futtatásakor a parancsfájlt a *deleteUnattachedNics* változó *0*. A nem csatolt hálózati adapter kimeneti listában áttekintése után törléséhez futtassa a parancsfájlt *deleteUnattachedNics* való *1*.
+Az összes nem csatolt hálózati adapter megtekintéséhez erősen ajánlott a parancsfájlt a *deleteUnattachedNics* változóval *0-ra*futtatni. Ha törölni szeretné az összes nem csatolt hálózati adaptert a lista kimenetének áttekintése után, futtassa a szkriptet a *deleteUnattachedNics* *1*értékre.
 
 ```azurecli
 # Set deleteUnattachedNics=1 if you want to delete unattached NICs
@@ -53,4 +52,4 @@ done
 
 ## <a name="next-steps"></a>További lépések
 
-Hozhat létre és kezelhet az Azure-beli virtuális hálózatokkal kapcsolatos további információkért lásd: [létrehozása és kezelése a Virtuálisgép-hálózatok](tutorial-virtual-network.md).
+Az Azure-beli virtuális hálózatok létrehozásával és kezelésével kapcsolatos további információkért lásd: virtuálisgép- [hálózatok létrehozása és kezelése](tutorial-virtual-network.md).

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ffc2e8c186ce485f7df19b3f797aaa8982735f5
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: f605398896c93d15b7475c05c79361fdcefcfcab
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60003955"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442776"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bonusly"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Bonusly
 
@@ -54,7 +54,7 @@ Az Azure AD integrálása a Bonusly konfigurálásához hozzá kell Bonusly a ka
 
 **Bonusly hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -148,7 +148,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Bonusly, hajtsa vég
 
     c. A a **identitásszolgáltató kibocsátója** szövegmezőjébe illessze be az értéket, **az Azure AD-azonosító**, az Azure Portalról másolt.
     
-    d. Illessze be a **ujjlenyomat** az Azure Portalról másolt érték a **tanúsítvány-ujjlenyomat** szövegmezőbe.
+    d. Illessze be a **ujjlenyomat** az Azure Portalról másolt érték a **tanúsítvány-ujjlenyomat** szövegmezőbe.
     
     e. Kattintson a **Save** (Mentés) gombra.
 

@@ -1,24 +1,23 @@
 ---
-title: Az Azure Functions-bindings hibáinak kezelése
-description: Ismerje meg, az Azure Functions kötés hibáinak kezelése
+title: Azure Functions kötések hibáinak kezelése
+description: Útmutató Azure Functions kötési hibák kezeléséhez
 services: functions
 documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
-ms.date: 01/14/2019
+ms.date: 09/12/2019
 ms.author: cshoe
-ms.openlocfilehash: d7505b7e5798676730ed9882ca3750351cc5c9ed
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 23aa30a93e5e3820d431afc00aa77071762feb14
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56739586"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155671"
 ---
-# <a name="handle-azure-functions-binding-errors"></a>Az Azure Functions kötés hibáinak kezelése
+# <a name="handle-azure-functions-binding-errors"></a>Azure Functions kötési hibák kezelése
 
 [!INCLUDE [bindings errors intro](../../includes/functions-bindings-errors-intro.md)]
 
-A különböző szolgáltatások, funkciók által támogatott összes kapcsolódó hiba témakörökre mutató hivatkozások: a [hibakódok kötés](functions-bindings-error-pages.md#binding-error-codes) szakaszában a [hibakezelés az Azure Functions](functions-bindings-error-pages.md) áttekintése című témakörben.  
+További információ a függvények által támogatott szolgáltatások által visszaadott hibákról: a [Azure functions hibakezelés](functions-bindings-error-pages.md) áttekintése című cikk [kötési hibák kódjai](functions-bindings-error-pages.md#binding-error-codes) szakasza.  

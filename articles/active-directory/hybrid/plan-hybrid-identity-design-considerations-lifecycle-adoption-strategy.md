@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19b312f284d557c2c1344b82b9fcd570d3392077
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 85f600c8bd46e699e80bf7b596574dc01467ef79
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433739"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67109314"
 ---
 # <a name="determine-hybrid-identity-lifecycle-adoption-strategy"></a>Hibrid identitás-életciklus bevezetési stratégiája határozza meg
 Ebben a feladatban meg fogja definiálni, a hibrid identitáskezelési megoldás az üzleti szükségletek kielégítése céljából, amelyet a megadott identity management stratégiája [határozza meg a hibrid identitáskezelési feladatokat](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md).
@@ -42,7 +42,7 @@ Kifinomult informatikai nagyvállalatok számára fiókjainak tartalmazza a hite
 
 ## <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
 Szerepköralapú hozzáférés-vezérlőelemet használ szerepkörök (RBAC) és kiépítési szabályzatok kiértékelése, tesztelése és az üzleti folyamatokat és a felhasználók hozzáférésének engedélyezésére vonatkozó szabályok. Kulcs rendszergazdák kiépítési szabályzatok létrehozása és a felhasználók szerepkörökhöz rendelése és erőforrásokra vonatkozó ezek a szerepkörök definiáló jogosultságok beállítása. RBAC kibővíti az identitáskezelési megoldás szoftveres folyamatok használhatja, és csökkentheti a felhasználói manuális beavatkozás a kiépítési folyamat során.
-Az Azure AD RBAC lehetővé teszi, hogy a cég, amely egy egyéni teheti meg, ha rendelkezik hozzáféréssel az Azure portal-műveletek számának korlátozása. RBAC használatával férhet hozzá a portálon, a hitelesítésszolgáltatói rendszergazdák hozzáférés delegálása a következő hozzáférés-felügyeleti módszerek használatával:
+Az Azure AD RBAC lehetővé teszi, hogy a vállalat korlátozásához, amelyeket egy személy férhet hozzá az Azure Portalon, ha műveletek száma. RBAC használatával férhet hozzá a portálon, a hitelesítésszolgáltatói rendszergazdák hozzáférés delegálása a következő hozzáférés-felügyeleti módszerek használatával:
 
 * **Csoport alapú szerepkör-hozzárendelés**: Hozzáférés a helyi Active Directoryból hozzárendelheti az Azure AD-csoportokat, ingyeneseket szinkronizálja. Ez lehetővé teszi, hogy a meglévő befektetések által a szervezet tett eszközök és csoportok kezelése a folyamatok. Prémium szintű Azure AD a delegált csoport felügyeleti funkciót is használhatja.
 * **Használja ki a beépített szerepkörök az Azure-ban**: Három szerepkört is használhatja – tulajdonos, közreműködő és olvasó, győződjön meg arról, hogy felhasználók és csoportok engedélye csak a feladataik elvégzéséhez szükséges feladatokat végezheti el.
@@ -80,7 +80,7 @@ Az Azure Active Directory egyszeri bejelentkezést biztosít, és a bővített a
 A helyszíni címtárak és az Azure AD integrálása révén a felhasználók munkája hatékonyabbá válik, mivel a felhőalapú és a helyszíni erőforrások hozzáféréséhez közös identitás áll a rendelkezésükre. Ez az integráció felhasználók és a szervezetek kihasználhatják a következőket:
 
 * Szervezetek számára a helyszíni vagy felhőalapú szolgáltatásokat kihasználva a Windows Server Active Directory, Azure Active Directory majd csatlakozzon a hibrid identitással rendelkező felhasználók biztosíthat.
-* A rendszergazdák feltételes hozzáférést biztosító alkalmazás-erőforrás, eszköz és a felhasználói identitás, hálózati hely és a multi-factor authentication alapján is biztosítanak.
+* A rendszergazdák feltételes hozzáférést biztosító alkalmazás-erőforrás, eszköz és a felhasználói identitás, hálózati hely és a multi-factor authentication alapján biztosít.
 * Felhasználók használhatják a saját közös identitást fiókokon keresztül az Office 365, az Intune-ban, a SaaS-alkalmazásokhoz az Azure AD-ben és a harmadik féltől származó alkalmazások.
 * A fejlesztők fejleszthetnek, az a közös identitás modell alkalmazások alkalmazások integrálása az Active Directoryban a helyszínen vagy az Azure felhőalapú alkalmazások számára
 

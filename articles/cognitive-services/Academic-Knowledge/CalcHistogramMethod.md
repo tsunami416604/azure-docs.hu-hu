@@ -1,7 +1,7 @@
 ---
-title: CalcHistogram metódus - Academic Knowledge API
+title: Számítási hisztogram metódus – Academic Knowledge API
 titlesuffix: Azure Cognitive Services
-description: A terjesztési tanulmány entitásokban attribútumértékei kiszámításához a CalcHistogram módszert használja.
+description: A számítási hisztogram metódus használatával kiszámíthatja az attribútumok eloszlását a papír entitások készletéhez.
 services: cognitive-services
 author: alch-msft
 manager: nitinme
@@ -10,16 +10,17 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: a228c5b90e47c9c24c5da70484a1a28f9a3054b1
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ROBOTS: NOINDEX
+ms.openlocfilehash: 9e84b1ad37b3224ec5553d0a66ba0fc84bc88f55
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58100479"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705079"
 ---
-# <a name="calchistogram-method"></a>CalcHistogram metódus
+# <a name="calchistogram-method"></a>Számítási hisztogram metódus
 
-A **calchistogram** REST API-t a papír entitásokban attribútumértékei terjesztési kiszámítására szolgál.          
+A **számítási hisztogram** -REST API az attribútumok eloszlásának kiszámítására szolgál a papír entitások készlete számára.          
 
 
 **REST-végpont:**
@@ -30,49 +31,49 @@ https:// westus.api.cognitive.microsoft.com/academic/v1.0/calchistogram?
 
 ## <a name="request-parameters"></a>A kérés paraméterei
 
-Name (Név)  |Érték | Kötelező?  |Leírás
+Name (Név)  |Value | Kötelező?  |Leírás
 -----------|----------|--------|----------
-**kifejezés**    |Szöveges karakterlánc | Igen  |A lekérdezési kifejezés, amely meghatározza az entitásokat, amelyen hisztogramok kiszámításához.
-**model** |Szöveges karakterlánc | Nem |Válassza ki a modellt, amely a lekérdezni kívánt nevét.  Jelenleg az alapértelmezett érték *legújabb*.
-**Attribútumok** | Szöveges karakterlánc | Nem<br>alapértelmezett érték: | Egy vesszővel tagolt listája, amely meghatározza az attribútum értékei, amelyek szerepelnek a választ. Attribútumnevek-és nagybetűk.
-**count** |Szám | Nem<br>Alapértelmezett: 10 |Visszaadott eredmények száma.
-**eltolás**  |Szám | Nem<br>Alapértelmezett: 0 |Az első eredmény index való visszatéréshez.
-**Időtúllépés**  |Szám | Nem<br>Alapértelmezett: 1000 |Időkorlát ezredmásodpercben. Csak a az időtúllépési letelte előtt található értelmezés adja vissza.
+**kifejezés**    |Szöveges karakterlánc | Igen  |Egy lekérdezési kifejezés, amely meghatározza azokat az entitásokat, amelyeken a hisztogramok kiszámítása történik.
+**modell** |Szöveges karakterlánc | Nem |Válassza ki a lekérdezni kívánt modell nevét.  Jelenleg az alapértelmezett érték a *legújabb*.
+**attribútumok** | Szöveges karakterlánc | Nem<br>alapértelmezett | Vesszővel tagolt lista, amely meghatározza a válaszban szereplő attribútum-értékeket. Az attribútumok nevei megkülönböztetik a kis-és nagybetűket.
+**count** |Number | Nem<br>Alapértelmezett: 10 |A visszaadni kívánt eredmények száma.
+**eltolás**  |Number | Nem<br>Alapértelmezett: 0 |A visszatérés első eredményének indexe.
+**időtúllépés**  |Number | Nem<br>Alapértelmezett: 1000 |Időtúllépés ezredmásodpercben. A rendszer csak az időtúllépés lejárta előtt talált értelmezéseket adja vissza.
 
 ## <a name="response-json"></a>Válasz (JSON)
 
 Name (Név) | Leírás
 --------|---------
-**kifejezés**  |A kifejezés paraméter a kérelemből.
-**num_entities** | Egyező entitások teljes száma.
-**hisztogramok** |  Hisztogramok, minden attribútum a kérelemben megadott egy tömbje.
-**histograms[x].attribute** | Az attribútum, amelyen számította ki a hisztogramhoz neve.
-**histograms[x].distinct_values** | Megfelelő az attribútum az entitások között különböző értékek száma.
-**histograms[x].total_count** | Teljes száma érték megfelelő az attribútum az entitások között.
-**histograms[x].histogram** | Ez az attribútum hisztogram adatait.
-**histograms[x].histogram[y].value** |  Az attribútum értékét.
-**histograms[x].histogram[y].logprob**  |Az attribútumérték rendelkező entitások megfelelő teljes természetes logaritmusát valószínűségét.
-**histograms[x].histogram[y].count**  |Az attribútumérték egyező entitások száma.
-**aborted** | IGAZ, ha a kérelem túllépte az időkorlátot.
+**kifejezés**  |A kérelemben szereplő kifejezés paraméter.
+**num_entities** | A megfelelő entitások száma összesen
+**hisztogramok** |  Hisztogramok tömbje, a kérelemben megadott egyes attribútumok egyike.
+**hisztogramok [x]. attribútum** | Annak az attribútumnak a neve, amelyen a hisztogram kiszámítására került.
+**histograms[x].distinct_values** | Az attribútumhoz tartozó entitások közötti különböző értékek száma.
+**histograms[x].total_count** | Az attribútumhoz tartozó egyező entitások közötti érték-példányok száma összesen
+**histograms[x].histogram** | Az attribútum hisztogramjának adatterülete
+**histograms[x].histogram[y].value** |  Az attribútum értéke.
+**histograms[x].histogram[y].logprob**  |Az ehhez az attribútumérték-értékkel rendelkező entitások megfeleltetésének teljes természetes naplózási valószínűsége.
+**histograms[x].histogram[y].count**  |Az attribútum értékkel rendelkező egyező entitások száma.
+**megszakadt** | Értéke true, ha a kérelem időtúllépést adott meg.
 
 
 #### <a name="example"></a>Példa:
 ```
 https:// westus.api.cognitive.microsoft.com/academic/v1.0/calchistogram?expr=And(Composite(AA.AuN=='jaime teevan'),Y>2012)&attributes=Y,F.FN&count=4
 ```
-<br>Ebben a példában létrehozása érdekében a kiadványok száma hisztogram év szerint egy adott szerző 2010, mivel azt először generálhat a lekérdezési kifejezés használatával a **értelmezése** API a lekérdezési karakterlánc: *papers szerint 2012 után jaime teevan*.
+<br>Ebben a példában egy, a 2010 óta egy adott szerző számára a publikációk számának egy hisztogramjának létrehozásához először létre kell hozni a lekérdezési kifejezést az értelmező API és a lekérdezési karakterlánc használatával: a 2012-as számú, *Jaime teevan által készített dokumentumokat*.
 
 ```
 https:// westus.api.cognitive.microsoft.com/academic/v1.0/interpret?query=papers by jaime teevan after 2012
 ```
-<br>A kifejezés a értelmezése API által visszaküldött első értelmezésében *és (összetett (AA. AuN == "jaime teevan"), Y > 2012)*.
-<br>A kifejezés értéke kerül majd átadásra a **calchistogram** API-t. A *attributes=Y,F.FN* paraméter azt jelzi, hogy a disztribúciók tanulmány számát kell év és tanulmány mező, pl.:
+<br>A értelmező API által visszaadott első értelmezésben szereplő kifejezés *(kompozit (AA). AuN = = "Jaime teevan"), Y > 2012)* .
+<br>A rendszer ezt a kifejezést adja át a **számítási hisztogram** API-nak. Az *attribútumok = Y, F. FN* paraméter azt jelzi, hogy a papírméret eloszlásának év és tanulmány mezőnek kell lennie, például:
 ```
 https:// westus.api.cognitive.microsoft.com/academic/v1.0/calchistogram?expr=And(Composite(AA.AuN=='jaime teevan'),Y>2012)&attributes=Y,F.FN&count=4
 ```
-<br>A válasz a kérésre először azt jelzi, hogy nincsenek-e 37 tanulmányok, amelyek megfelelnek a lekérdezési kifejezésben.  Az a *év* attribútumot, 3 különböző értékek, egy 2012 (azaz 2013, 2014, és 2015.) a lekérdezésben megadott után minden évben.  Az összes tanulmány 3 különböző értékeket keresztül jelenleg 37.  Az egyes *év*, a hisztogram jeleníti meg az értéket, teljes természetes logaritmusát valószínűség és az egyező entitások száma.     
+<br>A kérelemre adott válasz először azt jelzi, hogy a lekérdezési kifejezésnek megfelelő 37-es papír szerepel.  Az *év* attribútum esetében 3 különböző érték létezik, a lekérdezésben meghatározottak szerint minden évben 2012 (azaz 2013, 2014 és 2015).  A 3 különböző értéknél a teljes papír száma 37.  A hisztogram minden *évben*megjeleníti az értéket, a természetes napló teljes valószínűségét és a megfelelő entitások számát.     
 
-A hisztogram a *tanulmánya mező* jeleníti meg, hogy nincsenek-e tanulmány 34 egyedi mezők. Lehet, hogy a papír több mezőjére vonatkozó tanulmánya társítva, a számuk (53-as) egyező entitások száma nagyobb lehet.  Bár vannak 34 különböző értékeket, a válasz csak tartalmazza a top 4 miatt a *száma = 4* paraméter.
+A tanulmányi *mező* hisztogramja azt mutatja, hogy 34 különböző tanulmányi mező van. Mivel a papír több tanulmányhoz is társítható, a teljes darabszám (53) nagyobb lehet, mint a megfelelő entitások száma.  Bár a 34 különböző értékeket tartalmaz, a válasz csak az első 4 értéket tartalmazza a *Count = 4* paraméter miatt.
 
 ```JSON
 {

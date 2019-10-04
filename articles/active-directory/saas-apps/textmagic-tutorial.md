@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező TextMagic |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és TextMagic között.
+title: 'Oktatóanyag: Azure Active Directory integráció a TextMagic-szel | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és TextMagic között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,50 +15,50 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 66d0d791e4f32fc0828d400db7b59d836d221aee
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 53711a80f35177c911b754a0ce3f189ac106adb2
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59261802"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68943304"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-textmagic"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező TextMagic
+# <a name="tutorial-azure-active-directory-integration-with-textmagic"></a>Oktatóanyag: Azure Active Directory integráció a TextMagic
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan TextMagic integrálása az Azure Active Directory (Azure AD).
-TextMagic integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a TextMagic a Azure Active Directory (Azure AD) szolgáltatással.
+A TextMagic és az Azure AD integrálásával a következő előnyöket nyújtja:
 
-* Szabályozhatja, ki férhet hozzá TextMagic Azure AD-ben.
-* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezve TextMagic (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+* Az Azure AD-ben beállíthatja, hogy ki férhet hozzá a TextMagic.
+* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a TextMagic (egyszeri bejelentkezés) az Azure AD-fiókokkal.
 * A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-TextMagic az Azure AD-integráció konfigurálásához a következőkre van szükség:
+Az Azure AD-integráció TextMagic való konfigurálásához a következő elemek szükségesek:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
-* TextMagic egyszeri bejelentkezés engedélyezve van az előfizetés
+* Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) kérhet egy hónapos próbaverziót
+* TextMagic egyszeri bejelentkezésre engedélyezett előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
-* Támogatja a TextMagic **Identitásszolgáltató** által kezdeményezett egyszeri bejelentkezés
-* Támogatja a TextMagic **igény szerinti** felhasználók átadása
+* A TextMagic támogatja a **identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést
+* A TextMagic **csak időben támogatja a** felhasználók kiépítési folyamatát
 
-## <a name="adding-textmagic-from-the-gallery"></a>TextMagic hozzáadása a katalógusból
+## <a name="adding-textmagic-from-the-gallery"></a>TextMagic hozzáadása a gyűjteményből
 
-Az Azure AD integrálása a TextMagic konfigurálásához hozzá kell TextMagic a katalógusból a felügyelt SaaS-alkalmazások listájára.
+A TextMagic Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a TextMagic a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**TextMagic hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
+**Ha TextMagic szeretne hozzáadni a katalógusból, hajtsa végre a következő lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
+2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
     ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
@@ -66,87 +66,87 @@ Az Azure AD integrálása a TextMagic konfigurálásához hozzá kell TextMagic 
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **TextMagic**válassza **TextMagic** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A keresőmezőbe írja be a **TextMagic**kifejezést, válassza a **TextMagic** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-     ![Az eredmények listájában TextMagic](common/search-new-app.png)
+     ![TextMagic az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az TextMagic nevű tesztfelhasználó alapján **Britta Simon**.
-Az egyszeri bejelentkezés működjön egy Azure AD-felhasználót és a kapcsolódó felhasználó TextMagic hivatkozás kapcsolata kell létrehozni.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az TextMagic-mel konfigurálja és teszteli a **Britta Simon**nevű tesztelési felhasználó alapján.
+Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a TextMagic kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
-Az Azure AD egyszeri bejelentkezés az TextMagic tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
+Az Azure AD egyszeri bejelentkezés TextMagic való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[TextMagic egyszeri bejelentkezés konfigurálása](#configure-textmagic-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
+2. **[TextMagic egyszeri bejelentkezés konfigurálása](#configure-textmagic-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
 3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
 4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre TextMagic tesztfelhasználót](#create-textmagic-test-user)**  – egy megfelelője a Britta Simon TextMagic, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+5. **[Hozzon létre TextMagic-teszt felhasználót](#create-textmagic-test-user)** – hogy a TextMagic Britta, a felhasználó Azure ad-képviseletéhez kapcsolódó partnerrel rendelkezzen.
 6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
+Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
 
-Szeretné konfigurálni az Azure AD egyszeri bejelentkezés TextMagic, hajtsa végre az alábbi lépéseket:
+Az Azure AD egyszeri bejelentkezés TextMagic való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. Az a [az Azure portal](https://portal.azure.com/), az a **TextMagic** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
+1. A [Azure Portal](https://portal.azure.com/) **TextMagic** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
+2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
+    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
 3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az a **alapszintű SAML-konfigurációja** szakaszban, hajtsa végre az alábbi lépéseket:
+4. Az alapszintű **SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
 
-    ![TextMagic tartomány és URL-címeket egyetlen bejelentkezési adatait](common/idp-identifier.png)
+    ![TextMagic tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-identifier.png)
 
-    Az a **azonosító** szövegmezőbe írja be egy URL-címe:  `https://my.textmagic.com/saml/metadata`
+    Az **azonosító** szövegmezőbe írja be az URL-címet:`https://my.textmagic.com/saml/metadata`
 
-5. TextMagic alkalmazását a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg, hol **nameidentifier** le van képezve a **user.userprincipalname**. TextMagic alkalmazás vár **nameidentifier** a leképezendő **user.mail**, így kell szerkesztenie a attribútumleképezés kattintva **szerkesztése** ikonra, és módosítsa a Attribútumleképzés.
+5. A TextMagic-alkalmazás meghatározott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőfelvételen az alapértelmezett attribútumok listája látható, ahol a **NameIdentifier** a **User. userPrincipalName**leképezéssel van leképezve. A TextMagic alkalmazás a **NameIdentifier** a **User. mail**használatával rendeli hozzá, ezért az attribútum-hozzárendelést úgy kell módosítania, hogy rákattint a **Szerkesztés** ikonra, és megváltoztatja az attribútum-hozzárendelést.
 
     ![image](common/edit-attribute.png)
 
-6. Emellett a fentiekben TextMagic alkalmazás vár néhány további attribútumok vissza SAML-válasz átadni. A a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok** párbeszédpanelen a következő lépésekkel adja hozzá a SAML-jogkivonat attribútumot, ahogyan az alábbi táblázatban:
+6. A fentieken kívül a TextMagic alkalmazás néhány további attribútumot vár, amelyeket az SAML-válaszban vissza kell adni. A **felhasználó attribútumai** párbeszédpanel **felhasználói** jogcímek szakaszában a következő lépésekkel adja hozzá az SAML-jogkivonat attribútumát az alábbi táblázatban látható módon:
 
-    | Name (Név) |   Adatforrás-attribútum| Névtér  |
+    | Name (Név) |   Forrás attribútum| Névtér  |
     | --------------- | --------------- | --------------- |
-    | Vállalati | user.companyname | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | Keresztnév               | user.givenname |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | Vezetéknév            | user.surname |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | telefon               | user.telephonenumber |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | Vállalati | felhasználó. cégnév | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | firstName               | User. givenName |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | lastName            | felhasználó. vezetéknév |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | telefon               | User. telephoneNumber |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
     | | |
 
-    a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
+    a. Kattintson az **új jogcím hozzáadása** elemre a **felhasználói jogcímek kezelése** párbeszédpanel megnyitásához.
 
     ![image](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 
-    b. Az a **neve** szövegmezőbe írja be azon attribútum nevét, a sorhoz látható.
+    b. A **név** szövegmezőbe írja be az adott sorhoz megjelenített attribútum nevét.
 
-    c. Az a **Namespace** szövegmezőbe írja be a névtér értéke a sorhoz látható.
+    c. A **névtér** szövegmezőbe írja be az adott sorhoz megjelenő névtér értékét.
 
-    d. Válassza ki a forrás, **attribútum**.
+    d. Válassza a forrás **attribútumként**lehetőséget.
 
-    e. Az a **forrásattribútum** list, írja be az adott sorhoz feltüntetett attribútumot értéket.
+    e. A **forrás attribútum** listáról írja be az adott sorhoz megjelenő attribútum értékét.
 
     f. Kattintson a **Ok**
 
     g. Kattintson a **Save** (Mentés) gombra.
 
-7. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+7. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
 
-8. Az a **TextMagic beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+8. A **TextMagic beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények szerint.
 
-    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
     a. Bejelentkezési URL
 
@@ -156,23 +156,23 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés TextMagic, hajtsa v�
 
 ### <a name="configure-textmagic-single-sign-on"></a>TextMagic egyszeri bejelentkezés konfigurálása
 
-1. Egy másik böngészőablakban jelentkezzen be a TextMagic vállalati hely rendszergazdaként.
+1. Egy másik böngészőablakban jelentkezzen be a TextMagic vállalati webhelyre rendszergazdaként.
 
-2. Válassza ki **Fiókbeállítások** felhasználónév alapján.
+2. Válassza ki a **fiók beállításait** a Felhasználónév alatt.
 
-    ![TextMagic konfiguráció](./media/textmagic-tutorial/config1.png)
+    ![TextMagic-konfiguráció](./media/textmagic-tutorial/config1.png)
 
-3. Kattintson a **egyszeri bejelentkezéses (SSO)** lapra, és töltse ki a következő mezőket:  
+3. Kattintson az **egyszeri bejelentkezés (SSO)** lapra, és töltse ki a következő mezőket:  
 
-    ![TextMagic konfiguráció](./media/textmagic-tutorial/config2.png)
+    ![TextMagic-konfiguráció](./media/textmagic-tutorial/config2.png)
 
-    a. A **identitásszolgáltató Entitásazonosító:** szövegmezőjébe illessze be az értéket, **az Azure AD-azonosító**, Azure Portalról másolt.
+    a. Az **Identity Provider-entitás azonosítója:** szövegmezőben illessze be az **Azure ad-azonosító**értékét, amelyet a Azure Portalból másolt.
 
-    b. A **identitásszolgáltató egyszeri bejelentkezési URL-cím:** szövegmező, illessze be az értéket a **bejelentkezési URL-cím**, az Azure Portalról másolt.
+    b. Az **Identity Provider egyszeri bejelentkezésének URL-címe:** szövegmezőbe illessze be a **bejelentkezési URL-cím**értékét, amelyet a Azure Portalból másolt.
 
-    c. A **identitásszolgáltató SLO URL-cím:** szövegmezőjébe illessze be az értéket, **kijelentkezési URL-címe**, Azure Portalról másolt.
+    c. Az **Identity Provider slo URL-címe:** szövegmezőbe illessze be a kijelentkezési **URL-cím**értékét, amelyet a Azure Portalból másolt.
 
-    d. Nyissa meg a **base-64 kódolású tanúsítvány** a Jegyzettömbben az Azure-portálról letöltött, másolja a tartalmát a vágólapra, és illessze be azt a **x509 nyilvános tanúsítvány:** szövegmezőbe.
+    d. Nyissa meg az **Alap-64 kódolású tanúsítványt** a jegyzettömbben, Azure Portal letöltve, másolja ki a tartalmat a vágólapra, majd illessze be a **nyilvános x509-tanúsítványba:** szövegmezőbe.
 
     e. Kattintson a **Save** (Mentés) gombra.
 
@@ -192,50 +192,50 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     ![A felhasználó párbeszédpanel](common/user-properties.png)
 
-    a. Az a **neve** mezőbe írja be **BrittaSimon**.
+    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. Az a **felhasználónév** mezőbe írja be **brittasimon@yourcompanydomain.extension**. Például: BrittaSimon@contoso.com
+    b. A **Felhasználónév** mezőbe írja be **brittasimon@yourcompanydomain.extension** a nevet. Például: BrittaSimon@contoso.com
 
-    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
+    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés TextMagic Azure egyszeri bejelentkezés használatára.
+Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a TextMagic hozzáférésének biztosításával.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **TextMagic**.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **TextMagic**lehetőséget.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában jelölje ki a **TextMagic**.
+2. Az alkalmazások listában válassza a **TextMagic**lehetőséget.
 
-    ![Az alkalmazások listáját a TextMagic hivatkozásra](common/all-applications.png)
+    ![Az TextMagic hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza **felhasználók és csoportok**.
+3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
 
     ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
+4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
 
     ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
 5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
 
-6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
+6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
 
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-### <a name="create-textmagic-test-user"></a>TextMagic tesztfelhasználó létrehozása
+### <a name="create-textmagic-test-user"></a>TextMagic-tesztelési felhasználó létrehozása
 
-Alkalmazás által támogatott **csak az idő felhasználókiépítés** , miután a felhasználók hitelesítésére, az alkalmazás automatikusan létrejön. Írja be az adatokat a rendszer az alárendelt fiók aktiválására szolgáló első bejelentkezéskor egyszer kell.
-Nincs meg ebben a szakaszban a művelet elem.
+Az alkalmazás a **felhasználó üzembe** helyezését támogatja, és a hitelesítéssel rendelkező felhasználók automatikusan jönnek létre az alkalmazásban. Az első bejelentkezéskor egyszer kell kitöltenie az adatokat az alárendelt fiók rendszerbe való aktiválásához.
+Ez a szakasz nem tartalmaz műveleti elemeket.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen a TextMagic csempére kattint, meg kell lehet automatikusan bejelentkezett a TextMagic, amelynek beállítása egyszeri bejelentkezés. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ha a hozzáférési panelen a TextMagic csempére kattint, automatikusan be kell jelentkeznie arra a TextMagic, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
@@ -243,4 +243,4 @@ Ha a hozzáférési panelen a TextMagic csempére kattint, meg kell lehet automa
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

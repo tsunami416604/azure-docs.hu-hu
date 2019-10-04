@@ -1,6 +1,6 @@
 ---
-title: Automatizálása a PowerShell-lel az Azure Application Insights |} A Microsoft Docs
-description: Automatizálhatja az erőforrást, a riasztás és a rendelkezésre állási tesztek létrehozása a PowerShell egy Azure Resource Manager-sablon használatával.
+title: Azure-Application Insights automatizálása a PowerShell használatával | Microsoft Docs
+description: Automatizálja erőforrás-, riasztási és rendelkezésre állási tesztek létrehozását a PowerShellben egy Azure Resource Manager sablon használatával.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -10,33 +10,33 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 04/02/2017
+ms.date: 06/04/2019
 ms.author: mbullwin
-ms.openlocfilehash: 1c360d60a429f137c4b74ad4afe8ae9bba895b7d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b4f3d2eba70be39b23e86ebde3c71dfc7c19a374
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58883411"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936706"
 ---
 #  <a name="create-application-insights-resources-using-powershell"></a>Hozzon létre egy Application Insights-erőforrást PowerShell használatával
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Ez a cikk bemutatja, hogyan automatizálhatja a létrehozása és frissítése [Application Insights](../../azure-monitor/app/app-insights-overview.md) erőforrások automatikusan az Azure Resource Management használatával. Előfordulhat például, ekkor a buildelési folyamat részeként. Alapszintű Application Insights-erőforrás, valamint létrehozhat [rendelkezésre állási webes tesztek](../../azure-monitor/app/monitor-web-app-availability.md), állítsa be [riasztások](../../azure-monitor/app/alerts.md)állítsa be a [díjszabási séma](pricing.md), és más Azure-erőforrások létrehozása .
+Ez a cikk bemutatja, hogyan automatizálható a [Application Insights](../../azure-monitor/app/app-insights-overview.md) -erőforrások automatikus létrehozása és frissítése az Azure Resource Management használatával. Előfordulhat például, hogy egy összeállítási folyamat részeként ezt megteheti. Az alapszintű Application Insights erőforrás mellett létrehozhat [rendelkezésre állási webes teszteket](../../azure-monitor/app/monitor-web-app-availability.md), riasztásokat állíthat be, és beállíthatja az [árképzési sémát](pricing.md), és más Azure-erőforrásokat is létrehozhat. [](../../azure-monitor/app/alerts.md)
 
-A kulcs létrehozásához ezeket az erőforrásokat: JSON-sablonokat [Azure Resource Manager](../../azure-resource-manager/manage-resources-powershell.md). Legnépszerűbb, a művelet be nem: a meglévő erőforrások; JSON-definíciók letöltése egyes értékek nevét; például paraméterezése és futtassa a sablont, amikor szeretne létrehozni egy új erőforrást. Több erőforrás együtt is csomag, hozza létre őket mindezt egy lépjen – például egy alkalmazás-figyelő rendelkezésre állási tesztek, a riasztások és a tárhelyet a folyamatos exportálás. Nincsenek egyes parameterizations, amely itt elmagyarázzuk, néhány apró.
+Az erőforrások létrehozásának kulcsa a [Azure Resource Manager](../../azure-resource-manager/manage-resources-powershell.md)JSON-sablonjai. Dióhéjban az eljárás a következőképpen érhető el: a meglévő erőforrások JSON-definícióinak letöltése; parametrizálja bizonyos értékeket, például neveket; Ezután futtassa a sablont, amikor új erőforrást szeretne létrehozni. Egyszerre több erőforrást is becsomagolhat, így egyetlen lépéssel létrehozhatja őket, például egy alkalmazás-figyelő rendelkezésre állási tesztekkel, riasztásokkal és tárolással a folyamatos exportáláshoz. A parameterizations néhány finomságot talál, amelyeket itt mutatjuk be.
 
-## <a name="one-time-setup"></a>Egyszeri beállítás
-Ha még nem használta a Powershellt az Azure-előfizetésében előtt:
+## <a name="one-time-setup"></a>Egyszeri telepítés
+Ha még nem használta a PowerShellt az Azure-előfizetéséhez, mielőtt:
 
-Azure Powershell-modul telepítéséhez a számítógépen, ahol szeretné a szkriptek futtatására:
+Telepítse az Azure PowerShell-modult arra a gépre, amelyen futtatni szeretné a parancsfájlokat:
 
-1. Telepítés [Microsoft Webplatform-telepítővel (5-ös verzióját vagy újabb)](https://www.microsoft.com/web/downloads/platform.aspx).
-2. Ezzel a Microsoft Azure Powershell telepítéséhez.
+1. Telepítse a [Microsoft webplatform-telepítőt (V5 vagy újabb)](https://www.microsoft.com/web/downloads/platform.aspx).
+2. Használja a Microsoft Azure PowerShell telepítéséhez.
 
 ## <a name="create-an-azure-resource-manager-template"></a>Az Azure Resource Manager-sablon létrehozása
-Hozzon létre egy új .JSON kiterjesztésű fájlt – neki `template1.json` ebben a példában. Másolja ezt a tartalmat a fájlba:
+Hozzon létre egy új. JSON fájlt – hívjuk meg `template1.json` értéket ebben a példában. Tartalom másolása ide:
 
 ```JSON
     {
@@ -46,7 +46,7 @@ Hozzon létre egy új .JSON kiterjesztésű fájlt – neki `template1.json` ebb
             "appName": {
                 "type": "string",
                 "metadata": {
-                    "description": "Enter the application name."
+                    "description": "Enter the name of your Application Insights resource."
                 }
             },
             "appType": {
@@ -58,20 +58,39 @@ Hozzon létre egy új .JSON kiterjesztésű fájlt – neki `template1.json` ebb
                     "other"
                 ],
                 "metadata": {
-                    "description": "Enter the application type."
+                    "description": "Enter the type of the monitored application."
                 }
             },
             "appLocation": {
                 "type": "string",
-                "defaultValue": "East US",
+                "defaultValue": "eastus",
+                "metadata": {
+                    "description": "Enter the location of your Application Insights resource."
+                }
+            },
+            "retentionInDays": {
+                "type": "int",
+                "defaultValue": 90,
                 "allowedValues": [
-                    "South Central US",
-                    "West Europe",
-                    "East US",
-                    "North Europe"
+                    30,
+                    60,
+                    90,
+                    120,
+                    180,
+                    270,
+                    365,
+                    550,
+                    730
                 ],
                 "metadata": {
-                    "description": "Enter the application location."
+                    "description": "Data retention in days"
+                }
+            },
+            "ImmediatePurgeDataOn30Days": {
+                "type": "bool",
+                "defaultValue": false,
+                "metadata": {
+                    "description": "If set to true when changing retention to 30 days, older data will be immediately deleted. Use this with extreme caution. This only applies when retention is being set to 30 days."
                 }
             },
             "priceCode": {
@@ -82,7 +101,7 @@ Hozzon létre egy új .JSON kiterjesztésű fájlt – neki `template1.json` ebb
                     2
                 ],
                 "metadata": {
-                    "description": "1 = Basic, 2 = Enterprise"
+                    "description": "Pricing plan: 1 = Per GB (or legacy Basic plan), 2 = Per Node (legacy Enterprise plan)"
                 }
             },
             "dailyQuota": {
@@ -141,6 +160,7 @@ Hozzon létre egy új .JSON kiterjesztésű fájlt – neki `template1.json` ebb
                 ],
                 "properties": {
                     "CurrentBillingFeatures": "[variables('pricePlan')]",
+                    "retentionInDays": "[variables('retentionInDays')]",
                     "DataVolumeCap": {
                         "Cap": "[parameters('dailyQuota')]",
                         "WarningThreshold": "[parameters('warningThreshold')]",
@@ -155,10 +175,10 @@ Hozzon létre egy új .JSON kiterjesztésű fájlt – neki `template1.json` ebb
 
 
 ## <a name="create-application-insights-resources"></a>Application Insights-erőforrások létrehozása
-1. A PowerShellben jelentkezzen be az Azure-bA:
+1. Jelentkezzen be az Azure-ba a PowerShellben:
    
     `Connect-AzAccount`
-2. Futtassa egy ehhez hasonló parancsot:
+2. Futtassa az alábbihoz hasonló parancsot:
    
     ```PS
    
@@ -168,14 +188,14 @@ Hozzon létre egy új .JSON kiterjesztésű fájlt – neki `template1.json` ebb
 
     ``` 
    
-   * `-ResourceGroupName` a csoport van, ahol szeretné az új erőforrásokat hozhat létre.
-   * `-TemplateFile` az egyéni paraméter előzheti meg kell.
-   * `-appName` A létrehozandó erőforrás neve.
+   * @no__t – 0: az a csoport, amelyben létre szeretné hozni az új erőforrásokat.
+   * a `-TemplateFile` értéknek az egyéni paraméterek előtt kell történnie.
+   * @no__t – 0 a létrehozandó erőforrás neve.
 
-Más paramétereket adhat hozzá – a sablon a Paraméterek szakaszban ezek leírását találja.
+További paramétereket is hozzáadhat – a sablon paraméterek szakaszában megtalálja a leírásokat.
 
 ## <a name="to-get-the-instrumentation-key"></a>A kialakítási kulcs beszerzése
-Miután létrehozott egy alkalmazás-erőforrást, érdemes a kialakítási kulcsot: 
+Az alkalmazás-erőforrás létrehozása után a kialakítási kulcsot érdemes megtekinteni: 
 
 ```PS
     $resource = Find-AzResource -ResourceNameEquals "<YOUR APP NAME>" -ResourceType "Microsoft.Insights/components"
@@ -185,11 +205,11 @@ Miután létrehozott egy alkalmazás-erőforrást, érdemes a kialakítási kulc
 
 
 <a id="price"></a>
-## <a name="set-the-price-plan"></a>Állítsa be a tarifacsomag
+## <a name="set-the-price-plan"></a>A díjcsomag beállítása
 
-Beállíthatja a [árképzési csomag](pricing.md).
+Megadhatja a [díjcsomag árát](pricing.md).
 
-Az alkalmazás-erőforrás létrehozásához a vállalati ár csomaggal, a fenti sablon használatával:
+Ha a fenti sablonnal szeretne létrehozni egy alkalmazás-erőforrást a nagyvállalati díjszabással, használja a következőt:
 
 ```PS
         New-AzResourceGroupDeployment -ResourceGroupName Fabrikam `
@@ -201,18 +221,18 @@ Az alkalmazás-erőforrás létrehozásához a vállalati ár csomaggal, a fenti
 |priceCode|csomag|
 |---|---|
 |1|Alapszintű|
-|2|Enterprise|
+|2|Vállalati|
 
-* Ha csak szeretné használni az alapértelmezett alapszintű árképzési csomag, kihagyhatja a CurrentBillingFeatures erőforrás a sablonból.
-* Ha azt szeretné, a tarifacsomag módosítása az összetevő-erőforrás létrehozása után, használhatja a sablont, amely a "microsoft.insights/components" erőforrás az áttekinthetőség kedvéért kihagyja. Emellett nincs megadva a `dependsOn` csomópont számlázási erőforrásból. 
+* Ha csak az alapértelmezett alapszintű árat szeretné használni, kihagyhatja a CurrentBillingFeatures erőforrást a sablonból.
+* Ha az összetevő-erőforrás létrehozása után módosítani szeretné az árat, használhat olyan sablont, amely kihagyja a "Microsoft. betekintő/összetevők" erőforrást. Továbbá hagyja ki a `dependsOn` csomópontot a számlázási erőforrásból. 
 
-A frissített ár terv ellenőrzéséhez tekintse meg a **használat és becsült költségek lapon** panel a böngészőben. **Frissítse a böngészőt nézetet** , ellenőrizze, hogy a legutóbbi állapotára.
+A frissített díjcsomag ellenőrzéséhez tekintse meg a böngésző **használati és becsült költségek lapját** . **Frissítse a böngésző nézetét** , és győződjön meg arról, hogy a legutóbbi állapot jelenik meg.
 
 
 
-## <a name="add-a-metric-alert"></a>Metrikariasztás hozzáadása
+## <a name="add-a-metric-alert"></a>Metrikai riasztás hozzáadása
 
-Metrikariasztás beállítása az alkalmazás-erőforrást, egy időben, egyesítse a sablonfájlt ehhez hasonló kódok:
+Ha mérőszám-riasztást szeretne beállítani az alkalmazás-erőforrással megegyező időben, egyesítse a következőhöz hasonló kódot a sablonfájlba:
 
 ```JSON
 {
@@ -274,22 +294,22 @@ Metrikariasztás beállítása az alkalmazás-erőforrást, egy időben, egyesí
 }
 ```
 
-A sablon hívhat meg, amikor azt is megteheti ezt a paramétert:
+A sablon meghívásakor a következő paramétert is hozzáadhatja:
 
     `-responseTime 2`
 
-Ön természetesen parametrizálja, hogy a többi mező. 
+Természetesen parametrizálja más mezőket is. 
 
-Ismerje meg az alkalmazástípus-nevek és más riasztási szabályok konfigurációs adatait, manuálisan hozzon létre egy szabályt, és ezután pedig megvizsgálhatja a [Azure Resource Manager](https://resources.azure.com/). 
+Az egyéb riasztási szabályok típus-és konfigurációs részleteinek megkereséséhez hozzon létre egy szabályt manuálisan, majd vizsgálja [](https://resources.azure.com/)meg Azure Resource Managerban. 
 
 
 ## <a name="add-an-availability-test"></a>Rendelkezésre állási teszt hozzáadása
 
-Ebben a példában a ping a vizsgálat (egy egyoldalas tesztelése).  
+Ez a példa egy pingelési tesztre vonatkozik (egyetlen oldal teszteléséhez).  
 
-**Két részből áll** a rendelkezésre állási teszt: a teszt magát, és a riasztást, amely értesíti, a hibák.
+Egy rendelkezésre állási teszt **két részből** áll: maga a teszt, és a riasztás, amely értesíti a hibákat.
 
-Egyesítse a következő kódot a sablon fájlba, amely létrehozza az alkalmazást.
+Egyesítse a következő kódot az alkalmazást létrehozó sablonfájl számára.
 
 ```JSON
 {
@@ -386,41 +406,41 @@ Egyesítse a következő kódot a sablon fájlba, amely létrehozza az alkalmaz�
 }
 ```
 
-Fedezze fel a kódok, egyéb tesztelési helyeket, vagy összetettebb webes tesztek automatizálhatja, hozza létre manuálisan egy példa, és majd paraméterezni a kódot az [Azure Resource Manager](https://resources.azure.com/).
+Ha más tesztelési helyekhez tartozó kódokat szeretne felderíteni, vagy összetettebb webes tesztek létrehozását szeretné automatizálni, hozzon létre egy példát manuálisan, majd parametrizálja a kódot a [Azure Resource Manager](https://resources.azure.com/).
 
 ## <a name="add-more-resources"></a>További erőforrások hozzáadása
 
-Bármely más bármiféle-erőforrás létrehozását automatizálhatja, hozzon létre például manuálisan, majd másolja és paraméterezni a kódot [Azure Resource Manager](https://resources.azure.com/). 
+Bármilyen más erőforrás létrehozásának automatizálásához hozzon létre egy példát manuálisan, majd másolja és parametrizálja a kódját a [Azure Resource Managerból](https://resources.azure.com/). 
 
-1. Nyissa meg [az Azure Resource Manager](https://resources.azure.com/). Lefelé végignavigál `subscriptions/resourceGroups/<your resource group>/providers/Microsoft.Insights/components`, az alkalmazás-erőforrást. 
+1. Nyissa meg [Azure Resource Manager](https://resources.azure.com/). Navigáljon @no__t – 0 értékre az alkalmazás-erőforráshoz. 
    
-    ![Navigálás az Azure erőforrás-kezelő](./media/powershell/01.png)
+    ![Navigálás Azure Erőforrás-kezelő](./media/powershell/01.png)
    
-    *Összetevők* alkalmazások megjelenítése az alapszintű Application Insights-erőforrások vannak. Nincsenek külön erőforrásokat a kapcsolódó riasztási szabályokat és a rendelkezésre állási webes tesztekről.
-2. Másolja a JSON az összetevő-t a megfelelő helyre `template1.json`.
-3. Törli ezeket a tulajdonságokat:
+    Az *összetevők* az alkalmazások megjelenítésének alapszintű Application Insights erőforrásai. A kapcsolódó riasztási szabályokhoz és a rendelkezésre állási webes tesztekhez külön erőforrások tartoznak.
+2. Másolja az összetevő JSON-fájlját a `template1.json` megfelelő helyére.
+3. Törölje a következő tulajdonságokat:
    
    * `id`
    * `InstrumentationKey`
    * `CreationDate`
    * `TenantId`
-4. Nyissa meg a webteszt és alertrules szakaszokat, és a JSON-t az egyes elemek másolása a sablonhoz. (Nem másolja a webtesztet illetve alertrules csomópontok: Nyissa meg a távoli alatt azokat az elemeket.)
+4. Nyissa meg a webteszteket és az alertrules szakaszt, és másolja a JSON-t az egyes elemekre a sablonba. (Ne másolja a webteszteket vagy a alertrules-csomópontokat: lépjen bele az elemek alá.)
    
-    Minden egyes webes teszt tartozó riasztási szabály, rendelkezik, így a beilleszteni, mindkettő.
+    Mindegyik webes teszthez tartozik egy riasztási szabály, ezért mindkettőt másolni kell.
    
-    Riasztások a metrikák is használható. [Metrikák nevei](powershell-alerts.md#metric-names).
-5. Ez a sor beszúrása az egyes erőforrások:
+    A metrikák riasztásait is felveheti. [Metrikák nevei](powershell-alerts.md#metric-names)
+5. Szúrja be ezt a sort az egyes erőforrásokban:
    
     `"apiVersion": "2015-05-01",`
 
-### <a name="parameterize-the-template"></a>A sablon paraméterezése
-Most már rendelkezik paraméterekkel az egyedi nevek helyett. A [sablon paraméterezni](../../azure-resource-manager/resource-group-authoring-templates.md), kifejezések használatával ír egy [segítő funkciók](../../azure-resource-manager/resource-group-template-functions.md). 
+### <a name="parameterize-the-template"></a>A sablon parametrizálja
+Most le kell cserélnie az adott neveket paraméterekkel. [Egy sablon parametrizálja](../../azure-resource-manager/resource-group-authoring-templates.md)a kifejezéseket [segítő függvények](../../azure-resource-manager/resource-group-template-functions.md)használatával írhatja be. 
 
-Nem lehet paraméterezni a karakterlánc csak része, ezért a `concat()` karakterláncok hozhat létre.
+A karakterláncok csak egy részét parametrizálja, ezért a karakterláncok létrehozásához használja a `concat()` értéket.
 
-Az alábbiakban a helyettesítések továbbá győződjön meg arról, hogy érdemes példái. Nincsenek minden behelyettesítési többszöri felbukkanását. Szükség lehet másokkal a sablonban. Ezek a példák a paramétereket és változókat meghatározott felső részén a sablont.
+Íme néhány példa a használni kívánt helyettesítésekre. Az egyes cserék több előfordulása is van. Előfordulhat, hogy a sablonban másokra is szüksége van. Ezek a példák a sablon tetején definiált paramétereket és változókat használják.
 
-| find | cserélje le |
+| find | Csere erre |
 | --- | --- |
 | `"hidden-link:/subscriptions/.../../components/MyAppName"` |`"[concat('hidden-link:',`<br/>`resourceId('microsoft.insights/components',` <br/> `parameters('appName')))]"` |
 | `"/subscriptions/.../../alertrules/myAlertName-myAppName-subsId",` |`"[resourceId('Microsoft.Insights/alertrules', variables('alertRuleName'))]",` |
@@ -428,28 +448,27 @@ Az alábbiakban a helyettesítések továbbá győződjön meg arról, hogy érd
 | `"myWebTest-myAppName"` |`"[variables(testName)]"'` |
 | `"myTestName-myAppName-subsId"` |`"[variables('alertRuleName')]"` |
 | `"myAppName"` |`"[parameters('appName')]"` |
-| `"myappname"` (kisbetű) |`"[toLower(parameters('appName'))]"` |
-| `"<WebTest Name=\"myWebTest\" ...`<br/>`Url=\"http://fabrikam.com/home\" ...>"` |`[concat('<WebTest Name=\"',` <br/> `parameters('webTestName'),` <br/> `'\" ... Url=\"', parameters('Url'),` <br/> `'\"...>')]"`<br/>Törölje a GUID azonosítót és -azonosítót. |
+| @no__t – 0 (kisbetűs) |`"[toLower(parameters('appName'))]"` |
+| `"<WebTest Name=\"myWebTest\" ...`<br/>`Url=\"http://fabrikam.com/home\" ...>"` |`[concat('<WebTest Name=\"',` <br/> `parameters('webTestName'),` <br/> `'\" ... Url=\"', parameters('Url'),` <br/> `'\"...>')]"`<br/>A GUID és az azonosító törlése. |
 
 ### <a name="set-dependencies-between-the-resources"></a>Az erőforrások közötti függőségek beállítása
-Az Azure az erőforrásokat, szigorú sorrendben kell beállítania. Ahhoz, hogy egy telepítés befejezése előtt a következő kezdődik, adja hozzá a függőség sorokat:
+Az Azure-nak szigorú sorrendben kell beállítania az erőforrásokat. A következő megkezdése előtt győződjön meg arról, hogy az egyik telepítés befejeződik, és adja hozzá a függőségi sorokat:
 
-* A rendelkezésre állási teszt erőforrás:
+* A rendelkezésre állási teszt erőforrásban:
   
     `"dependsOn": ["[resourceId('Microsoft.Insights/components', parameters('appName'))]"],`
-* Az egy rendelkezésre állási teszthez tartozó riasztási erőforrás:
+* Egy rendelkezésre állási teszt esetén a riasztási erőforrásban:
   
     `"dependsOn": ["[resourceId('Microsoft.Insights/webtests', variables('testName'))]"],`
 
 
 
 ## <a name="next-steps"></a>További lépések
-Más automatizálási cikkek:
+Egyéb Automation-cikkek:
 
-* [Hozzon létre egy Application Insights-erőforrást](powershell-script-create-resource.md) -sablon használata nélkül, gyorsan elvégezhető.
+* [Hozzon létre egy Application Insights erőforrás](powershell-script-create-resource.md) -gyors metódust sablon használata nélkül.
 * [Riasztások beállítása](powershell-alerts.md)
-* [Létrehozhat webes teszteket](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/)
+* [Webes tesztek létrehozása](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/)
 * [Az Azure Diagnostics küldése az Application Insights-ba](powershell-azure-diagnostics.md)
-* [Az Azure-bA a Githubról történő üzembe helyezése](https://blogs.msdn.com/b/webdev/archive/2015/09/16/deploy-to-azure-from-github-with-application-insights.aspx)
+* [Üzembe helyezés az Azure-ban a GitHubról](https://blogs.msdn.com/b/webdev/archive/2015/09/16/deploy-to-azure-from-github-with-application-insights.aspx)
 * [Kiadási jegyzetek létrehozása](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)
-

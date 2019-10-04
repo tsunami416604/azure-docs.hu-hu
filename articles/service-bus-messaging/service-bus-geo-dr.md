@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: a0581ef43e8a3c02126612a21122db559a941370
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 24d6658733ea38c15f0673d10db3c0ff5ef51c23
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60009174"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190148"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Az Azure Service Bus Geo-disaster recovery
 
@@ -63,6 +63,17 @@ A telepítési folyamat a következő –
 
 3. Az elsődleges névtér és a másodlagos névtér beszerzése közötti párosítás létrehozása a ***alias***.
 
+    >[!NOTE] 
+    > Ha rendelkezik [az Azure standard szintű Service Bus-névtér áttelepítése az Azure Service Bus prémium szintű](service-bus-migrate-standard-premium.md), majd a vész-helyreállítási létrehozásához kell használnia a már meglévő alias (vagyis a standard szintű Service Bus névtér kapcsolati karakterlánc) konfigurációs keresztül a **PS vagy a parancssori felületen** vagy **REST API-val**.
+    >
+    >
+    > Ez azért, mert az áttelepítés során az Azure Service Bus Standard névtér kapcsolati karakterlánc/DNS-név magát az Azure Service Bus prémium névterekhez egy alias válik.
+    >
+    > Az ügyfélalkalmazásokat, fel kell használniuk az alias (vagyis az Azure Service Bus Standard névtér kapcsolati karakterlánc) való csatlakozáshoz a prémium szintű névteret, ahol a vész-helyreállítási párosítás telepítése befejeződött.
+    >
+    > A portál használatával beállítása a vészhelyreállítási konfigurációban, ha a portálon absztrakt, ez csoportosítani.
+
+
 4. Használja a ***alias*** 3. lépésében beszerzett való csatlakozáshoz az ügyfélalkalmazások a Geo-Dr-beli engedélyezett elsődleges névtér. Kezdetben az alias elsődleges névterére mutat.
 
 5. [Opcionális] Néhány figyelés hozzáadása a észleli, ha szükség-e a feladatátvételt.
@@ -102,7 +113,7 @@ Ha állított be; például, a nem megfelelő régiók párosítva a kezdeti be�
 
 Ha rendelkezik egy olyan forgatókönyvet, amelyben a kapcsolatok előállítók és fogyasztók nem módosítható, aliasneve, felhasználhatja a névtér nevét. Tekintse meg a [mintakód a Githubon Itt](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/SBGeoDR_existing_namespace_name).
 
-## <a name="samples"></a>Példák
+## <a name="samples"></a>Minták
 
 A [példák a Githubon](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/) bemutatják, hogyan állíthatja be, és a feladatátvétel. Ezek a minták a következő fogalmakat mutatják be:
 
@@ -120,7 +131,7 @@ Vegye figyelembe az alábbi szempontokat figyelembe kell venni ebben a kiadásba
 
 2. Az a tény, hogy az adatok nem replikálódik, az azt jelenti, hogy jelenleg aktív munkamenetek nem lesznek replikálva. Ezenkívül duplikáltelem-észlelési és ütemezett üzenetek előfordulhat, hogy nem működik. Az új munkamenetek, új ütemezett üzenetek és új ismétlődések fog működni. 
 
-3. Egy összetett elosztott infrastruktúra feladatátadás kell [kipróbálni](/azure/architecture/resiliency/disaster-recovery-azure-applications#disaster-simulation) legalább egyszer.
+3. Egy összetett elosztott infrastruktúra feladatátadás kell [kipróbálni](/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan) legalább egyszer.
 
 4. Entitások szinkronizálása körülbelül 50-100 entitást percenkénti némi időt is igénybe vehet. Az előfizetések és -szabályok is entitásokat is számítanak.
 

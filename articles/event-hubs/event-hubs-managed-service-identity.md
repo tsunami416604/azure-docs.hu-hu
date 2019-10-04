@@ -9,14 +9,14 @@ ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 05/20/2019
 ms.author: shvija
-ms.openlocfilehash: 784d8c9280aeff7224f90ecee0b16c9c30381aeb
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4e6f16a15547583baab63f452504d36eb2e43b85
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53087728"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65978478"
 ---
 # <a name="managed-identities-for-azure-resources-with-event-hubs"></a>Az Azure-erőforrásokhoz az Event Hubs felügyelt identitásokból
 
@@ -27,8 +27,28 @@ A felügyelt identitásokból az Azure platform kezeli a futtatókörnyezet iden
 Ha egy felügyelt identitás társítva, Event Hubs-ügyfél összes jogosult műveletek teheti meg. Az engedély megadása egy felügyelt identitás, az Event Hubs-szerepkörökhöz való társításával. 
 
 ## <a name="event-hubs-roles-and-permissions"></a>Event Hubs szerepkörök és engedélyek
+Hozzáadhat egy felügyelt identitás a **Event Hubs-adatok tulajdonosa** Event Hubs-névtér szerepe. Ez a szerepkör az identitás, a névtérben lévő összes entitáshoz (a felügyeleti és az üzemeltetés) teljes hozzáférést biztosít.
 
-Egy felügyelt identitás Event Hubs-névtér, amely az identitás a névtérben lévő összes entitáshoz teljes hozzáférést biztosít az "Owner" vagy "Közreműködő" szerepkör csak akkor adhat hozzá. Azonban a névtér topológia módosító műveletekre kezdetben felügyeleti támogatott azonban csak az Azure Resource Manager. Nem áll a natív Event hubs szolgáltatás REST-felügyeleti felületén keresztül. Ez a támogatás azt is jelenti, hogy nem használható a .NET-keretrendszer ügyfél [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) egy felügyelt identitás-objektummal. 
+>[!IMPORTANT]
+> Korábban támogatva a felügyelt identitás hozzáadása a **tulajdonosa** vagy **közreműködői** szerepkör. Azonban, adat-hozzáférési jogosultságokat a **tulajdonosa** és **közreműködői** szerepkör már nem összes régió megfelel. Ha használja a **tulajdonosa** vagy **közreműködői** szerepkör, kapcsolót használó a **Event Hubs-adatok tulajdonosa** szerepkör.
+
+Az új beépített szerepkör használja, kövesse az alábbi lépéseket: 
+
+1. Lépjen az [Azure Portalra](https://portal.azure.com)
+2. Keresse meg az Event Hubs-névtér.
+3. Az a **Event Hubs-Namespace** lapon jelölje be **hozzáférés Control(IAM)** a bal oldali menüből.
+4. Az a **hozzáférés-vezérlés (IAM)** lapon jelölje be **Hozzáadás** a a **egy szerepkör-hozzárendelés hozzáadása** szakaszban. 
+
+    ![Szerepkör-hozzárendelés gomb hozzáadása](./media/event-hubs-managed-service-identity/add-role-assignment-button.png)
+5. Az a **szerepkör-hozzárendelés hozzáadása** lapon, tegye a következőket: 
+    1. A **szerepkör**válassza **Azure Event Hubs-adatok tulajdonosa**. 
+    2. Válassza ki a **identitás** a szerepkörhöz kell hozzáadni.
+    3. Kattintson a **Mentés** gombra. 
+
+        ![Event Hubs-adatok tulajdonosi szerepkör](./media/event-hubs-managed-service-identity/add-role-assignment-dialog.png)
+6. Váltson a **szerepkör-hozzárendelések** lapon, és győződjön meg arról, hogy a felhasználó nincs hozzáadva a **Azure Event Hubs-adatok tulajdonosa** szerepkör. 
+
+    ![Győződjön meg arról, felhasználói adnak a szerepkörhöz](./media/event-hubs-managed-service-identity/role-assignments.png)
  
 ## <a name="use-event-hubs-with-managed-identities-for-azure-resources"></a>Felügyelt identitások használható Event Hubs az Azure-erőforrások
 
@@ -54,7 +74,7 @@ Miután engedélyezte a funkciót, egy új felügyeltszolgáltatás-identitás l
 
 ### <a name="create-a-new-event-hubs-namespace"></a>Hozzon létre egy új Event Hubs-névtér
 
-Ezután [Event Hubs-névtér létrehozása](event-hubs-create.md) előzetes támogatást nyújt az Azure-erőforrások felügyelt identitások az Azure-régiók egyikében: **USA keleti régiójában**, **USA keleti régiója 2**, vagy  **Nyugat-Európa**. 
+Ezután [Event Hubs-névtér létrehozása](event-hubs-create.md). 
 
 Keresse meg a névtér **hozzáférés-vezérlés (IAM)** lapon a portálon, és kattintson a **szerepkör-hozzárendelés hozzáadása** felügyelt identitásnak hozzáadása a **tulajdonosa** szerepkör. Ehhez keresse meg a webalkalmazás nevére a **engedélyek hozzáadása** panel **kiválasztása** mezőben, majd kattintson a bejegyzésre. Ezután kattintson a **Save** (Mentés) gombra. A felügyelt identitás a webes alkalmazás most már hozzáfér az Event Hubs-névtér és az event hubs korábban hozott létre. 
 

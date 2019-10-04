@@ -2,22 +2,22 @@
 title: Application Proxy cookie beállításai – Azure Active Directory |} A Microsoft Docs
 description: Az Azure Active Directory (Azure AD) rendelkezik hozzáférési és munkamenet-cookie-k elérése a helyszíni proxyn keresztül történő alkalmazás. Ebből a cikkből látni fogja, hogyan használhatja, és adja meg a cookie-beállításokat.
 services: active-directory
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/16/2019
-ms.author: celested
+ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06fd83ee815e9e207c1fa5a1c6767280122c4d0c
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: d2e7f1bb54ce316a10eca0d020519779b0536c9e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482691"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65825745"
 ---
 # <a name="cookie-settings-for-accessing-on-premises-applications-in-azure-active-directory"></a>Cookie-k beállításairól a helyszíni alkalmazások az Azure Active Directory eléréséhez
 
@@ -29,9 +29,9 @@ Az Azure Active Directory (Azure AD) rendelkezik hozzáférési és munkamenet-c
 
 | Cookie-k beállítása | Alapértelmezett | Leírás | Javaslatok |
 | -------------- | ------- | ----------- | --------------- |
-| Csak HTTP-cookie használata | **Nem** | **Igen** lehetővé teszi, hogy tartalmazza a HTTPOnly jelző HTTP-válaszfejlécek az alkalmazásproxyt. Ez a jelző további biztonsági előnyökkel, például megakadályozza az ügyféloldali parancsfájl-kezelési (CSS) általi másolása, vagy a cookie-k módosítását.<br></br><br></br>Hogy támogatva a csak HTTP beállítás, az alkalmazásproxy titkosítva, és módosítás ellen védett SSL csatornán keresztül továbbít a cookie-kat. | Használat **Igen** a további biztonsági előnyök miatt.<br></br><br></br>Használat **nem** ügyfelek vagy felhasználói ügynökök, amelyek hozzáférést igényelnek a munkamenetcookie-t. Például **nem** egy RDP-n vagy MTSC ügyfél, amely csatlakozik egy távoli asztali átjárókiszolgálót alkalmazásproxyn keresztül.|
-| Biztonságos cookie használata | **Nem** | **Igen** lehetővé teszi, hogy tartalmazzák a biztonságos Application Proxy HTTP-válaszfejlécek jelölőjét. Biztonságos cookie-k fokozza a biztonságot, például a HTTPS TLS biztonságos csatornán keresztül történő továbbításával a cookie-kat. Ez megakadályozza, hogy a cookie-k szövegként megfigyelésének miatt a cookie-k továbbításának illetéktelen fél által létrehozottat. | Használat **Igen** a további biztonsági előnyök miatt.|
-| Állandó cookie használata | **Nem** | **Igen** lehetővé teszi, hogy a Application Proxy állítsa be a hozzáférési cookie-k nem járnak le, ha a böngésző be van zárva. Az adatmegőrzés tart, amíg a hozzáférési jogkivonat lejár, vagy a felhasználó manuálisan törölheti a maradandó cookie-k. | Használat **nem** miatt a biztonsági veszély a hitelesített felhasználók tartásával.<br></br><br></br>Javasoljuk, hogy csak a **Igen** a régebbi alkalmazásokat, amelyek nem lehet megosztani a folyamatok közötti cookie-kat. Érdemes frissíteni az alkalmazás megosztási cookie-k helyett maradandó cookie-k használatával folyamatok közötti kezeléséhez. Ha például szüksége lehet, hogy a felhasználó az Office-dokumentumok megnyitását az Intézőben egy SharePoint-webhelyről maradandó cookie-k. Maradandó cookie-k nélkül ez a művelet sikertelen lehet, ha a hozzáférési cookie-kat a böngészőben, a kezelő folyamat és az Office-folyamat között nem megosztott. |
+| Csak HTTP cookie-k használata | **Nem** | **Igen** lehetővé teszi, hogy tartalmazza a HTTPOnly jelző HTTP-válaszfejlécek az alkalmazásproxyt. Ez a jelző további biztonsági előnyökkel, például megakadályozza az ügyféloldali parancsfájl-kezelési (CSS) általi másolása, vagy a cookie-k módosítását.<br></br><br></br>Hogy támogatva a csak HTTP beállítás, az alkalmazásproxy titkosítva, és módosítás ellen védett SSL csatornán keresztül továbbít a cookie-kat. | Használat **Igen** a további biztonsági előnyök miatt.<br></br><br></br>Használat **nem** ügyfelek vagy felhasználói ügynökök, amelyek hozzáférést igényelnek a munkamenetcookie-t. Például **nem** egy RDP-n vagy MTSC ügyfél, amely csatlakozik egy távoli asztali átjárókiszolgálót alkalmazásproxyn keresztül.|
+| Biztonságos cookie-k használata | **Nem** | **Igen** lehetővé teszi, hogy tartalmazzák a biztonságos Application Proxy HTTP-válaszfejlécek jelölőjét. Biztonságos cookie-k fokozza a biztonságot, például a HTTPS TLS biztonságos csatornán keresztül történő továbbításával a cookie-kat. Ez megakadályozza, hogy a cookie-k szövegként megfigyelésének miatt a cookie-k továbbításának illetéktelen fél által létrehozottat. | Használat **Igen** a további biztonsági előnyök miatt.|
+| Állandó cookie-k használata | **Nem** | **Igen** lehetővé teszi, hogy a Application Proxy állítsa be a hozzáférési cookie-k nem járnak le, ha a böngésző be van zárva. Az adatmegőrzés tart, amíg a hozzáférési jogkivonat lejár, vagy a felhasználó manuálisan törölheti a maradandó cookie-k. | Használat **nem** miatt a biztonsági veszély a hitelesített felhasználók tartásával.<br></br><br></br>Javasoljuk, hogy csak a **Igen** a régebbi alkalmazásokat, amelyek nem lehet megosztani a folyamatok közötti cookie-kat. Érdemes frissíteni az alkalmazás megosztási cookie-k helyett maradandó cookie-k használatával folyamatok közötti kezeléséhez. Ha például szüksége lehet, hogy a felhasználó az Office-dokumentumok megnyitását az Intézőben egy SharePoint-webhelyről maradandó cookie-k. Maradandó cookie-k nélkül ez a művelet sikertelen lehet, ha a hozzáférési cookie-kat a böngészőben, a kezelő folyamat és az Office-folyamat között nem megosztott. |
 
 ## <a name="set-the-cookie-settings---azure-portal"></a>Állítsa be a cookie-beállítások – Azure portal
 A cookie-k beállításairól az Azure portal használatával beállítása:

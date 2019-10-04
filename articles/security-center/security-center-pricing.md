@@ -1,11 +1,10 @@
 ---
-title: Frissítés a Security Center Standard csomagra váltásával fokozott biztonságot |} A Microsoft Docs
-description: Ez a cikk az Azure Security Center díjszabási információkat nyújt.
+title: A fokozott biztonság érdekében frissítsen Security Center Standard szintjére | Microsoft Docs
+description: Ez a cikk a Azure Security Center díjszabásával kapcsolatos információkat tartalmaz.
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 4d1364cd-7847-425a-bb3a-722cb0779f78
 ms.service: security-center
 ms.devlang: na
@@ -13,59 +12,59 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/17/2019
-ms.author: monhaber
-ms.openlocfilehash: 27acda2496adea39321e498868aebcc2f824df3c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: memildin
+ms.openlocfilehash: 0663e97dabe8b5f50ee9605f0bc9319c7a2aa13c
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58905290"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71201240"
 ---
-# <a name="upgrade-to-security-centers-standard-tier-for-enhanced-security"></a>A Security Center Standard csomagra váltásával fokozott biztonságot érhet
-Az Azure Security Center egységes biztonsági felügyeletet és fejlett fenyegetésvédelmet biztosít az Azure-ban, a helyszínen és egyéb felhőszolgáltatásokban futó számítási feladatokhoz. Átláthatóvá és ellenőrizhetővé hibrid felhőbeli számítási feladatokhoz, amely csökkenti a fenyegetéseket, és intelligens észlelés segít lépést tartani, gyorsan fejlődő kibertámadások aktív védelmet kínál.
+# <a name="upgrade-to-security-centers-standard-tier-for-enhanced-security"></a>A fokozott biztonság érdekében frissítsen Security Center Standard csomagra
+Az Azure Security Center egységes biztonsági felügyeletet és fejlett fenyegetésvédelmet biztosít az Azure-ban, a helyszínen és egyéb felhőszolgáltatásokban futó számítási feladatokhoz. Lehetővé teszi a hibrid Felhőbeli számítási feladatok, az aktív védelem és a fenyegetések kialakulásának csökkentését, valamint az intelligens észlelést, amely megkönnyíti a gyors fejlődést okozó cyber-támadásokkal szembeni lépést.
 
-## <a name="pricing-tiers"></a>Árképzési szintek
+## <a name="pricing-tiers"></a>Tarifacsomagok
 A Security Center két szinten érhető el:
 
-- A **ingyenes** réteg minden Azure-előfizetés automatikusan engedélyezve van, és biztosítja a biztonsági házirend, folyamatos biztonsági értékelés és végrehajtható biztonsági ajánlásokat az Azure-erőforrások védelmére.
-- A **Standard** szint bővíti ki az ingyenes szinten a magán- és más nyilvános felhőkben futó munkaterhelések, így egyesített biztonságkezelést és fenyegetések elleni védelmet a hibrid felhőalapú számítási feladatokhoz. A Standard is tarifacsomag speciális fenyegetésészlelési képességeket tartalmaz, amely a beépített viselkedéselemzés és a gépi tanulás használatával azonosíthatja a támadásokat és a nulladik napi támadások, a hozzáférés- és alkalmazásvezérlőket használ a hálózati támadások és kártevők kitettség csökkentése érdekében, és További. A Standard szintű díjmentesen próbálhatja ki. A Security Center támogatja az Azure erőforrások, többek között a virtuális gép, Virtuálisgép-méretezési csoportok, App Service, az SQL Server-kiszolgálók és a Storage-fiókok. Ha az Azure Security Center Standard választhatják a nem támogatott erőforrástípus alapján. 
+- Az **ingyenes** szintet a rendszer automatikusan engedélyezi az összes Azure-előfizetéshez, és biztonsági házirendet, folyamatos biztonsági értékelést és gyakorlati biztonsági ajánlásokat biztosít az Azure-erőforrások védelméhez.
+- A **standard** szint kiterjeszti az ingyenes szint képességeit a magán-és más nyilvános felhőkben futó számítási feladatokra, így egységes biztonsági felügyeletet és veszélyforrások elleni védelmet biztosít a hibrid felhőalapú számítási feladatokhoz képest. A standard csomag emellett komplex veszélyforrás-észlelési képességeket is biztosít, amelyek beépített viselkedési elemzéseket és gépi tanulást alkalmaznak a támadások és a nulla napi biztonsági rések, hozzáférés-vezérlés és alkalmazás-vezérlőelemek azonosítására a hálózati támadásokkal és kártevő szoftverekkel szembeni kitettség csökkentése érdekében, valamint További. A standard szintű csomag ingyenesen kipróbálható. A Security Center Standard támogatja az Azure-erőforrásokat, beleértve a virtuális gépeket, a virtuálisgép-méretezési csoportokat, a App Service, az SQL-kiszolgálókat és a Storage Ha Azure Security Center standard szintű, az erőforrástípus alapján is letilthatja a támogatást. 
 
 
-További információkért lásd: a Security Center [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/security-center/).
+További információkért tekintse meg a Security Center [díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/).
 
-## <a name="try-standard-free-for-30-days"></a>Próbálja ki 30 napig ingyenesen Standard
-A Standard szint az első 30 napban ingyenesen kínáljuk. 30 nap végén kell kíván használni a szolgáltatást, automatikusan megkezdjük számlázni a használatot.
+## <a name="try-standard-free-for-30-days"></a>30 napig ingyenesen kipróbálható
+A standard csomag az első 30 nap során ingyenesen elérhető. 30 nap elteltével a szolgáltatás használatának folytatását követően automatikusan megkezdjük a használati díjat.
 
-A Standard szintre, amely örökli az előfizetés összes erőforrásának frissítheti teljes Azure-előfizetéssel.
+A teljes Azure-előfizetést a standard szintre frissítheti, amelyet az előfizetésben lévő összes erőforrás örököl.
 
-A standard szintű csomag lekéréséhez:
+A standard szint beszerzése:
 
-1. Válassza ki **biztonsági házirend** a a **a Security Center** főmenü.
-2. A Standard kívánt előfizetés kiválasztásához.
-3. Az a **biztonsági házirend** panelen válassza ki **tarifacsomag**.
-4. Válassza ki **Standard** frissítése.
+1. Válassza a **Security Center** főmenü **díjszabás & beállítások** elemét.
+2. Válassza ki azt az előfizetést, amelyet a standard verzióra szeretne frissíteni.
+3. Válassza ki az **árképzési szintet**.
+4. A frissítéshez válassza a **standard** lehetőséget.
 5. Kattintson a **Save** (Mentés) gombra.
 
-(A képen árak például csak célokat.) ![Security Center Pricing](./media/security-center-pricing/get-standard.png)
+(A rendszerkép árai csak példaként szolgálnak.) ![Díjszabás Security Center](./media/security-center-pricing/get-standard.png)
 
 > [!NOTE]
-> Ahhoz, hogy az összes Security Center-szolgáltatásokat, telepítenie kell a Standard díjcsomag a alkalmazni virtual machines gépet tartalmazó előfizetéshez. Csak a time VM access, az adaptív alkalmazásvezérlők és hálózati észlelések az Azure-erőforrások nem engedélyezi a munkaterülethez tartozó díjszabás konfigurálása.
+> A Security Center összes szolgáltatásának engedélyezéséhez a Standard tarifacsomagot kell alkalmaznia a vonatkozó virtuális gépeket tartalmazó előfizetésen. A díjcsomag munkaterületekre való konfigurálásával a virtuális gépekhez való igény szerinti hozzáférés, az adaptív alkalmazásvezérlés, és az Azure-erőforrások hálózati észlelése nem lesz engedélyezve.
 >
 >
 
-## <a name="why-upgrade-to-standard"></a>Miért frissítsen a standard előfizetésre?
-A Security Center fejlett biztonsági és a hibrid felhőbeli számítási, beleértve a veszélyforrások elleni védelmet kínálja:
+## <a name="why-upgrade-to-standard"></a>Miért érdemes a standard verzióra váltani?
+A Security Center a hibrid Felhőbeli számítási feladatokhoz nyújt fokozott biztonságot és veszélyforrások elleni védelmet, beleértve a következőket:
 
-- **A hibrid biztonsági** – biztonsági egységes képet kaphat az összes helyszíni és felhőbeli számítási feladatok. Biztonsági házirendek vonatkoznak, és folyamatosan értékelni a biztonsági szabványoknak való megfelelőség biztosításához a hibrid felhőbeli számítási feladatok biztonságát. Többféle forrásból, például tűzfalakból és más partneri megoldásból származó biztonsági adatokat gyűjthet, kereshet és elemezhet.
-- **Speciális fenyegetésészlelés** – fejlett analitika és a Microsoft Intelligent Security Graph segítségével kivédheti kibertámadásokat –.  A beépített viselkedéselemzés és a gépi tanulás használatával azonosíthatja a támadásokat és a biztonsági rések nulladik napi kihasználását. Figyelheti a bejövő támadásokat és az incidens utáni tevékenységeket a hálózatokon, a gépeken és a felhőszolgáltatásokon. Interaktív eszközökkel és fenyegetésekkel kapcsolatos környezetalapú tudásbázissal egyszerűsítheti a vizsgálatot.
-- **Hozzáférés- és alkalmazásvezérlőket** -blokkolja a kártevőket és más nemkívánatos alkalmazásokat engedélyezési javaslatok alkalmazásával adott számítási feladatokhoz igazított, és a gépi tanuláson alapuló. A hálózat támadási felület csökkentése – igény szerinti, szabályozott hozzáféréssel rendelkező felügyeleti portjaihoz, az Azure virtuális gépekhez, kevésbé legyen kitéve a találgatásos támadásoknak és más hálózati támadásoknak.
+- **Hibrid biztonság** – az összes helyszíni és Felhőbeli számítási feladatra kiterjedő egységes biztonsági nézet. Alkalmazza a biztonsági házirendeket, és folyamatosan mérje fel a hibrid Felhőbeli számítási feladatok biztonságát a biztonsági normáknak való megfelelés biztosítása érdekében. Többféle forrásból, például tűzfalakból és más partneri megoldásból származó biztonsági adatokat gyűjthet, kereshet és elemezhet.
+- Komplex veszélyforrások észlelése – a speciális elemzések és a Microsoft intelligens biztonsági gráf segítségével megkezdheti a fejlődő cyber-támadások előnyeit.  A beépített viselkedéselemzés és a gépi tanulás használatával azonosíthatja a támadásokat és a biztonsági rések nulladik napi kihasználását. Figyelheti a bejövő támadásokat és az incidens utáni tevékenységeket a hálózatokon, a gépeken és a felhőszolgáltatásokon. Interaktív eszközökkel és fenyegetésekkel kapcsolatos környezetalapú tudásbázissal egyszerűsítheti a vizsgálatot.
+- **Hozzáférés és alkalmazás-vezérlőelemek** – a kártevők és más nemkívánatos alkalmazások letiltása az adott számítási feladatokhoz igazított engedélyezési Javaslatok alkalmazásával és a gépi tanulással. Csökkentse a hálózati támadási felületet az Azure-beli virtuális gépeken futó felügyeleti portok igény szerinti, felügyelt hozzáférésével, drasztikusan csökkentve a találgatásos és más hálózati támadásokkal szembeni kitettséget.
 
 
 ## <a name="next-steps"></a>További lépések
-Ebből a cikkből megismerhette a Security Center díjszabását. A Standard csomag fokozott biztonságot és a komplex veszélyforrások elleni védelem kapcsolatos további információkért lásd:
+Ebben a cikkben a Security Center díjszabását vezették be. Ha többet szeretne megtudni a standard szintű biztonsági és komplex veszélyforrások elleni védelemről, tekintse meg a következőt:
 
 - [Fejlett fenyegetésészlelés](security-center-threat-report.md)
-- [Csak a virtuális gép hozzáférés-vezérlés idő](security-center-just-in-time.md)
+- [VIRTUÁLIS gépekhez való hozzáférés-vezérlés](security-center-just-in-time.md)
 
 <!--Image references-->
 [1]: ./media/security-center-pricing/get-standard.png

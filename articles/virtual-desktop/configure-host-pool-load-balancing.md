@@ -1,49 +1,53 @@
 ---
-title: Windows virtuális asztal előzetes terheléselosztási módszer konfigurálása – Azure
-description: Hogyan lehet egy Windows virtuális asztali környezetben terheléselosztási módszer konfigurálása.
+title: A Windows rendszerű virtuális asztali terheléselosztási módszer konfigurálása – Azure
+description: A terheléselosztási módszer konfigurálása Windows rendszerű virtuális asztali környezetekhez.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 03/21/2019
+ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 0c4702dada17e759d89c33be99b3155f4b15ad9e
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 3a940dbf592087878cb9dd19f856f1a3d94291c5
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58399861"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676785"
 ---
-# <a name="configure-the-windows-virtual-desktop-preview-load-balancing-method"></a>Windows virtuális asztal előzetes terheléselosztási módszer konfigurálása
+# <a name="configure-the-windows-virtual-desktop-load-balancing-method"></a>A Windows Virtual Desktop terheléselosztási módjának beállítása
 
-A gazdagép-készletre vonatkozó terheléselosztási módszer konfigurálása segítségével állítsa be a Windows virtuális asztal előzetes verziójú környezet, hogy jobban megfeleljen az igényeinek.
+A gazdagép terheléselosztási módszerének konfigurálása lehetővé teszi a Windows rendszerű virtuális asztali környezet beállítását, hogy jobban megfeleljen az igényeinek.
 
 >[!NOTE]
-> Ez nem vonatkozik állandó asztali gazdagéphez címkészlethez, mert a felhasználók mindig rendelkezzenek 1:1 leképezés egy munkamenet-gazdagépre a gazdagépen készleten belül.
+> Ez nem vonatkozik egy állandó asztali gazdagépre, mert a felhasználók mindig rendelkeznek 1:1-hozzárendeléssel a gazdagépen belüli munkamenet-gazdagéphez.
 
-## <a name="configure-breadth-first-load-balancing"></a>Szélesség-és felhőközpontú terheléselosztás beállítása
+## <a name="configure-breadth-first-load-balancing"></a>A szélesség beállítása – első terheléselosztás
 
-Szélesség-és felhőközpontú load balancing szolgáltatás az alapértelmezett konfiguráció új állomás nem állandó készletek esetében. Új felhasználói munkamenetek a gazdagép-készlet összes elérhető munkamenet-gazdagépek közötti terheléselosztás szélesség-és felhőközpontú osztja el. Szélesség-és felhőközpontú terheléselosztási konfigurálásakor adhatja meg a maximális munkamenet időkorlátjának munkamenet gazdagépenként a gazdagép-készletben.
+Szélesség – az első terheléselosztás az új, nem állandó gazdagép-készletek alapértelmezett konfigurációja. Szélesség – az első terheléselosztás az új felhasználói munkameneteket az összes elérhető munkamenet-gazdagépen elosztja a gazdagépen. A szélesség – első terheléselosztás konfigurálásakor a gazdagép-készletben beállíthatja a munkamenetek maximális számát.
 
-Először [letöltése és importálása a Windows virtuális asztal PowerShell-modul](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) használatához a PowerShell-munkamenetben, ha még nem tette.
+Először [töltse le és importálja a](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) PowerShell-munkamenetben használni kívánt Windows virtuális asztali PowerShell-modult, ha még nem tette meg. Ezután futtassa a következő parancsmagot a fiókjába való bejelentkezéshez:
 
-Egy gazdagép erőforráskészlet tagjai végzik a maximális munkamenet korlát módosításával anélkül szélesség-és felhőközpontú terheléselosztási konfigurálásához futtassa a következő PowerShell-parancsmagot:
+```powershell
+Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
+```
+
+Ha úgy szeretné konfigurálni a gazdagépet, hogy a maximális munkamenet-korlát módosítása nélkül végezze el az első terheléselosztást, futtassa a következő PowerShell-parancsmagot:
 
 ```powershell
 Set-RdsHostPool <tenantname> <hostpoolname> -BreadthFirstLoadBalancer
 ```
 
-Szélesség-és felhőközpontú terheléselosztás és új maximális munkamenet használja a gazdagép készlet konfigurálásához futtassa a következő PowerShell-parancsmagot:
+A következő PowerShell-parancsmag futtatásával konfigurálhat egy gazdagépet a szélesség – első terheléselosztás végrehajtásához és egy új maximális munkamenet-korlát használatához:
 
 ```powershell
 Set-RdsHostPool <tenantname> <hostpoolname> -BreadthFirstLoadBalancer -MaxSessionLimit ###
 ```
 
-## <a name="configure-depth-first-load-balancing"></a>Várólistamélység-és felhőközpontú terheléselosztás beállítása
+## <a name="configure-depth-first-load-balancing"></a>A mélység beállítása – első terheléselosztás
 
-Terheléselosztás mélysége-és felhőközpontú osztja el egy elérhető munkamenetgazda kapcsolatok számát vesszük figyelembe az új felhasználói munkamenetek, de nem érte el a maximális munkamenet korlát küszöbértéket. Terheléselosztás mélysége-és felhőközpontú, konfigurálásakor, **kell** munkamenet gazdagépenként egy maximális munkamenet-korlátjának beállítása a gazdagép-készletben.
+Mélység – az első terheléselosztás új felhasználói munkameneteket oszt ki egy rendelkezésre álló, a legnagyobb számú kapcsolattal rendelkező munkamenet-gazdagépre, de nem érte el a maximális munkamenet-korlátot. A mélység beállításakor – az első terheléselosztáshoz a gazdagép-készletben **kell** beállítani a munkamenetek maximális számát.
 
-Egy gazdagép erőforráskészlet tagjai végzik a mélység-és felhőközpontú terheléselosztás konfigurálásához futtassa a következő PowerShell-parancsmagot:
+A következő PowerShell-parancsmag futtatásával állíthatja be, hogy a gazdagép mélysége – első terheléselosztást végezzen:
 
 ```powershell
 Set-RdsHostPool <tenantname> <hostpoolname> -DepthFirstLoadBalancer -MaxSessionLimit ###

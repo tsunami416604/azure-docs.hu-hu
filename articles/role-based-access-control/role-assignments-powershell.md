@@ -1,6 +1,6 @@
 ---
-title: Rbac-RÓL és az Azure PowerShell használatával Azure-erőforrásokhoz való hozzáférés kezelése |} A Microsoft Docs
-description: Ismerje meg, hogyan kezelheti a felhasználók, csoportok és alkalmazások szerepköralapú hozzáférés-vezérlés (RBAC) és az Azure PowerShell használatával Azure-erőforrásokhoz való hozzáférését. Ez tartalmazza a hozzáférés felsorolásának, a hozzáférés adásának és a hozzáférés eltávolításának módját.
+title: Azure-erőforrásokhoz való hozzáférés kezelése a RBAC és a Azure PowerShell használatával | Microsoft Docs
+description: Ismerje meg, hogyan kezelheti az Azure-erőforrásokhoz való hozzáférést a felhasználók, csoportok és alkalmazások számára szerepköralapú hozzáférés-vezérlés (RBAC) és Azure PowerShell használatával. Ez tartalmazza a hozzáférés felsorolásának, a hozzáférés adásának és a hozzáférés eltávolításának módját.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,34 +11,34 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/17/2019
+ms.date: 09/11/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 002ebcbe8ba14b9f15ddea6deb21f0f2bc201ab0
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 4eaf59200295a25498d3c8b84196e73a703b055d
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59999042"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995250"
 ---
-# <a name="manage-access-to-azure-resources-using-rbac-and-azure-powershell"></a>Rbac-RÓL és az Azure PowerShell használatával Azure-erőforrásokhoz való hozzáférés kezelése
+# <a name="manage-access-to-azure-resources-using-rbac-and-azure-powershell"></a>Azure-erőforrásokhoz való hozzáférés kezelése a RBAC és a Azure PowerShell használatával
 
-[Szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) van az Azure-erőforrásokhoz való hozzáférés kezelése ugyanúgy. Ez a cikk bemutatja, hogyan kezelheti a felhasználók, csoportok és alkalmazások RBAC és az Azure PowerShell használatával hozzáférését.
+A [szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) az Azure-erőforrásokhoz való hozzáférés kezelésének módja. Ez a cikk azt ismerteti, hogyan kezelheti a felhasználók, csoportok és alkalmazások hozzáférését a RBAC és a Azure PowerShell használatával.
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Hozzáférés kezelése lesz szüksége a következők egyikét:
+A hozzáférés kezeléséhez a következők egyikére van szükség:
 
-* [PowerShell az Azure Cloud Shellben](/azure/cloud-shell/overview)
+* [PowerShell a Azure Cloud Shellban](/azure/cloud-shell/overview)
 * [Azure PowerShell](/powershell/azure/install-az-ps)
 
 ## <a name="list-roles"></a>Szerepkörök felsorolása
 
-### <a name="list-all-available-roles"></a>Elérhető szerepkörök listája
+### <a name="list-all-available-roles"></a>Az összes elérhető szerepkör listázása
 
-A lista RBAC-szerepkörök, amelyek hozzárendelés érhetők el, és vizsgálja meg a műveleteket, amelyre ezek hozzáférést biztosítani, használja a [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition).
+A [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition)használatával listázhatja a hozzárendeléshez rendelkezésre álló RBAC-szerepköröket, és ellenőrizheti azokat a műveleteket, amelyekhez hozzáférést biztosítanak.
 
 ```azurepowershell
 Get-AzRoleDefinition | FT Name, Description
@@ -58,9 +58,9 @@ Automation Operator                               Automation Operators are able 
 ...
 ```
 
-### <a name="list-a-specific-role"></a>Egy adott szerepkör listája
+### <a name="list-a-specific-role"></a>Adott szerepkör listázása
 
-Egy adott szerepkör listájában, használja a [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition).
+Egy adott szerepkör listázásához használja a [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition).
 
 ```azurepowershell
 Get-AzRoleDefinition <role_name>
@@ -81,11 +81,11 @@ NotDataActions   : {}
 AssignableScopes : {/}
 ```
 
-## <a name="list-a-role-definition"></a>A szerepkör-definíciónak listázása
+## <a name="list-a-role-definition"></a>Szerepkör-definíció listázása
 
-### <a name="list-a-role-definition-in-json-format"></a>Egy szerepkör-definíció JSON formátumban listázása
+### <a name="list-a-role-definition-in-json-format"></a>Szerepkör-definíciók listázása JSON formátumban
 
-Egy szerepkör-definíció JSON formátumban listájában, használja a [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition).
+Ha JSON formátumú szerepkör-definíciót szeretne listázni, használja a [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition).
 
 ```azurepowershell
 Get-AzRoleDefinition <role_name> | ConvertTo-Json
@@ -117,9 +117,9 @@ PS C:\> Get-AzRoleDefinition "Contributor" | ConvertTo-Json
 }
 ```
 
-### <a name="list-actions-of-a-role"></a>A szerepkörök listája műveletek
+### <a name="list-actions-of-a-role"></a>Szerepkör műveleteinek listázása
 
-Egy adott szerepkör esetében a műveletek listájában, használja a [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition).
+Egy adott szerepkör műveleteinek listázásához használja a [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition).
 
 ```azurepowershell
 Get-AzRoleDefinition <role_name> | FL Actions, NotActions
@@ -155,11 +155,37 @@ Microsoft.Network/loadBalancers/backendAddressPools/join/action
 
 ## <a name="list-access"></a>Hozzáférések felsorolása
 
-Az RBAC lista hozzáférés listázása a szerepkör-hozzárendeléseket.
+A RBAC-ben a hozzáférés listázásához listázhatja a szerepkör-hozzárendeléseket.
 
-### <a name="list-role-assignments-at-a-specific-scope"></a>Egy adott hatókörnél szerepkör-hozzárendelések listát
+### <a name="list-role-assignments-for-a-user"></a>Felhasználó szerepkör-hozzárendeléseinek felsorolása
 
-A szerepkör-hozzárendeléseit a megadott előfizetés, erőforráscsoport vagy erőforrás megjelenik. Ha például az összes az aktív hozzárendelések erőforráscsoport megtekintéséhez használja [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment).
+Az adott felhasználóhoz rendelt összes szerepkör listázásához használja a [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment).
+
+```azurepowershell
+Get-AzRoleAssignment -SignInName <email_or_userprincipalname>
+```
+
+```Example
+PS C:\> Get-AzRoleAssignment -SignInName isabella@example.com | FL DisplayName, RoleDefinitionName, Scope
+
+DisplayName        : Isabella Simonsen
+RoleDefinitionName : BizTalk Contributor
+Scope              : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales
+```
+
+A [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment)használatával listázhatja az adott felhasználóhoz rendelt összes szerepkört, valamint azokat a csoportokat, amelyekhez a felhasználó tartozik.
+
+```azurepowershell
+Get-AzRoleAssignment -SignInName <email_or_userprincipalname> -ExpandPrincipalGroups
+```
+
+```Example
+Get-AzRoleAssignment -SignInName isabella@example.com -ExpandPrincipalGroups | FL DisplayName, RoleDefinitionName, Scope
+```
+
+### <a name="list-role-assignments-at-a-resource-group-scope"></a>Szerepkör-hozzárendelések listázása erőforráscsoport-hatókörben
+
+Egy erőforráscsoport-hatókör összes szerepkör-hozzárendelésének listázásához használja a [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment).
 
 ```azurepowershell
 Get-AzRoleAssignment -ResourceGroupName <resource_group_name>
@@ -181,35 +207,33 @@ RoleDefinitionName : Virtual Machine Contributor
 Scope              : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales
 ```
 
-### <a name="list-role-assignments-for-a-user"></a>Felhasználó szerepkör-hozzárendeléseinek felsorolása
+### <a name="list-role-assignments-at-a-subscription-scope"></a>Szerepkör-hozzárendelések listázása előfizetési hatókörben
 
-Az adott felhasználóhoz rendelt szerepkörök listájában, használja a [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment).
+Az előfizetési hatókör összes szerepkör-hozzárendelésének listázásához használja a [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment). Az előfizetés-azonosító lekéréséhez keresse meg a Azure Portal **előfizetések** paneljén, vagy használja a [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription).
 
 ```azurepowershell
-Get-AzRoleAssignment -SignInName <email_or_userprincipalname>
+Get-AzRoleAssignment -Scope /subscriptions/<subscription_id>
 ```
 
 ```Example
-PS C:\> Get-AzRoleAssignment -SignInName isabella@example.com | FL DisplayName, RoleDefinitionName, Scope
-
-DisplayName        : Isabella Simonsen
-RoleDefinitionName : BizTalk Contributor
-Scope              : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales
+PS C:\> Get-AzRoleAssignment -Scope /subscriptions/00000000-0000-0000-0000-000000000000
 ```
 
-Használja az adott felhasználóhoz rendelt szerepkörök és a, amelyhez a felhasználó tartozik a csoportokhoz rendelt szerepkörök listáját, [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment).
+### <a name="list-role-assignments-at-a-management-group-scope"></a>Szerepkör-hozzárendelések listázása egy felügyeleti csoport hatókörében
+
+A felügyeleti csoport hatókörében lévő összes szerepkör-hozzárendelés felsorolásához használja a [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment). A felügyeleti csoport AZONOSÍTÓjának beszerzéséhez a Azure Portal **felügyeleti csoportok** paneljén található, vagy a [Get-AzManagementGroup](/powershell/module/az.resources/get-azmanagementgroup)is használható.
 
 ```azurepowershell
-Get-AzRoleAssignment -SignInName <email_or_userprincipalname> -ExpandPrincipalGroups
+Get-AzRoleAssignment -Scope /providers/Microsoft.Management/managementGroups/<group_id>
 ```
 
 ```Example
-Get-AzRoleAssignment -SignInName isabella@example.com -ExpandPrincipalGroups | FL DisplayName, RoleDefinitionName, Scope
+PS C:\> Get-AzRoleAssignment -Scope /providers/Microsoft.Management/managementGroups/marketing-group
 ```
 
-### <a name="list-role-assignments-for-classic-service-administrator-and-co-administrators"></a>Szerepkör-hozzárendelések lista klasszikus szolgáltatás-rendszergazda és társrendszergazdák
+### <a name="list-role-assignments-for-classic-service-administrator-and-co-administrators"></a>Szerepkör-hozzárendelések listázása a klasszikus szolgáltatás-rendszergazda és a társ-rendszergazdák számára
 
-Szerepkör-hozzárendeléseit a klasszikus előfizetés-adminisztrátor és a társadminisztrátorok felsorolásához használja [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment).
+A klasszikus előfizetés-rendszergazda és a társ-rendszergazdák szerepkör-hozzárendeléseinek listázásához használja a [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment).
 
 ```azurepowershell
 Get-AzRoleAssignment -IncludeClassicAdministrators
@@ -219,36 +243,36 @@ Get-AzRoleAssignment -IncludeClassicAdministrators
 
 Az RBAC-ben a hozzáférés biztosítása egy szerepkör-hozzárendelés létrehozásával történik.
 
-### <a name="search-for-object-ids"></a>Objektumazonosítók keresése
+### <a name="search-for-object-ids"></a>Objektum-azonosítók keresése
 
-Szerepkör hozzárendelése, azonosítania kell az objektum (felhasználó, csoport vagy alkalmazás) és a hatókör.
+Szerepkör hozzárendeléséhez meg kell adnia az objektumot (felhasználó, csoport vagy alkalmazás) és a hatókört is.
 
-Ha nem tudja, az előfizetés-azonosító, Észreveheti, hogy az a **előfizetések** panel az Azure Portalon, vagy Ön használhatja [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription).
+Az előfizetés-azonosító lekéréséhez keresse meg a Azure Portal **előfizetések** paneljén, vagy használja a [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription).
 
-Az Azure AD-felhasználó Objektumazonosítójának lekéréséhez használja [Get-AzADUser](/powershell/module/az.resources/get-azaduser).
+Az Azure AD-felhasználóhoz tartozó objektumazonosító beszerzéséhez használja a [Get-AzADUser](/powershell/module/az.resources/get-azaduser).
 
 ```azurepowershell
 Get-AzADUser -StartsWith <string_in_quotes>
 ```
 
-Az Azure AD-csoport Objektumazonosítójának lekéréséhez használja [Get-AzADGroup](/powershell/module/az.resources/get-azadgroup).
+Az Azure AD-csoporthoz tartozó objektumazonosító beszerzéséhez használja a [Get-AzADGroup](/powershell/module/az.resources/get-azadgroup).
 
 ```azurepowershell
 Get-AzADGroup -SearchString <group_name_in_quotes>
 ```
 
-Egy Azure AD egyszerű szolgáltatás vagy alkalmazás Objektumazonosítójának lekéréséhez használja [Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal).
+Egy Azure AD-szolgáltatásnév vagy-alkalmazás objektumazonosító beszerzéséhez használja a [Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal).
 
 ```azurepowershell
 Get-AzADServicePrincipal -SearchString <service_name_in_quotes>
 ```
 
-### <a name="create-a-role-assignment-for-a-user-at-a-resource-group-scope"></a>Egy erőforrás-csoport hatókörben egy felhasználó szerepkör-hozzárendelés létrehozása
+### <a name="create-a-role-assignment-for-a-user-at-a-resource-group-scope"></a>Szerepkör-hozzárendelés létrehozása egy felhasználóhoz erőforráscsoport-hatókörben
 
-Egy felhasználó erőforrás-csoportot a csoporthatókörben, a hozzáférési jogot, használja a [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment).
+Ha egy erőforráscsoport hatókörében szeretne hozzáférést adni egy felhasználóhoz, használja a [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment)parancsot.
 
 ```azurepowershell
-New-AzRoleAssignment -SignInName <email_or_userprincipalname> -RoleDefinitionName <role_name_in_quotes> -ResourceGroupName <resource_group_name>
+New-AzRoleAssignment -SignInName <email_or_userprincipalname> -RoleDefinitionName <role_name> -ResourceGroupName <resource_group_name>
 ```
 
 ```Example
@@ -267,26 +291,26 @@ ObjectType         : User
 CanDelegate        : False
 ```
 
-### <a name="create-a-role-assignment-using-the-unique-role-id"></a>A szerepkör egyedi azonosítója alapján a szerepkör-hozzárendelés létrehozása
+### <a name="create-a-role-assignment-using-the-unique-role-id"></a>Szerepkör-hozzárendelés létrehozása az egyedi szerepkör-azonosító használatával
 
-Van néhány alkalommal, amikor a szerepkör nevét változhatnak, például:
+Néhány alkalommal, amikor a szerepkör neve változhat, például:
 
-- Használja a saját egyéni szerepkört, és úgy dönt, hogy módosítsa a nevet.
-- Használ egy előzetes szerepkörnek **(előzetes verzió)** a nevében. Amikor megjelenik a szerepkört, átnevezése a szerepkört.
+- Saját egyéni szerepkört használ, és úgy dönt, hogy megváltoztatja a nevet.
+- Olyan előzetes verziójú szerepkört használ, amely **(előzetes verzió)** szerepel a névben. A szerepkör megjelenése után a rendszer átnevezi a szerepkört.
 
 > [!IMPORTANT]
-> Egy szolgáltatásiszint-szerződés nélkül biztosított egy előzetes verzióhoz, és nem javasolt éles számítási feladatok esetében. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
+> Az előzetes verzió szolgáltatási szintű szerződés nélkül van megadva, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
 > További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Akkor is, ha a szerepkör át lett nevezve, a szerepkör-azonosítója nem változik. Szkriptek vagy az automation használ a szerepkör-hozzárendelések létrehozására, esetén ajánlott használni, a szerepkör egyedi azonosítója a szerepkör neve helyett. Ezért szerepkör át lett nevezve, ha a parancsfájlok valószínűleg több működik.
+A szerepkör-azonosító nem változik, még akkor is, ha a szerepkör át lett nevezve. Ha parancsfájlokat vagy automationt használ a szerepkör-hozzárendelések létrehozásához, ajánlott az egyedi szerepkör-azonosítót használni a szerepkör neve helyett. Ezért ha egy szerepkört átneveznek, a parancsfájlok nagyobb valószínűséggel fognak működni.
 
-A szerepkör egyedi azonosítója alapján a szerepkör neve helyett a szerepkör-hozzárendelés létrehozásához használja [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment).
+Ha szerepkör-hozzárendelést szeretne létrehozni a szerepkör neve helyett az egyedi szerepkör-azonosító használatával, használja a [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment)parancsot.
 
 ```azurepowershell
 New-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionId <role_id> -ResourceGroupName <resource_group_name>
 ```
 
-Az alábbi példa a [virtuális gépek Közreműködője](built-in-roles.md#virtual-machine-contributor) szerepkör *alain@example.com* felhasználója a *pharma – értékesítés* erőforrás hatóköre. Az egyedi szerepkör-azonosító lekéréséhez használhatja [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) vagy [beépített szerepkörök az Azure-erőforrások](built-in-roles.md).
+A következő példa a [virtuális gépi közreműködő](built-in-roles.md#virtual-machine-contributor) szerepkört *alain@example.com* rendeli a felhasználóhoz a *Pharma-Sales* erőforráscsoport hatókörében. Az egyedi szerepkör-azonosító beszerzéséhez használja a [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) vagy az [Azure-erőforrások beépített szerepköreit](built-in-roles.md).
 
 ```Example
 PS C:\> New-AzRoleAssignment -ObjectId 44444444-4444-4444-4444-444444444444 -RoleDefinitionId 9980e02c-c2be-4d73-94e8-173b1dc7cf3c -Scope /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales
@@ -302,12 +326,12 @@ ObjectType         : User
 CanDelegate        : False
 ```
 
-### <a name="create-a-role-assignment-for-a-group-at-a-resource-scope"></a>Szerepkör-hozzárendelés egy csoport létrehozása egy resource hatókörben
+### <a name="create-a-role-assignment-for-a-group-at-a-resource-scope"></a>Szerepkör-hozzárendelés létrehozása egy erőforrás-hatókörhöz tartozó csoporthoz
 
-Hozzáférés biztosítása a resource hatókörben egy csoporthoz, használja a [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment).
+Ha erőforrás-hatókörben szeretne hozzáférést adni egy csoporthoz, használja a [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment)parancsot.
 
 ```azurepowershell
-New-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionName <role_name_in_quotes> -ResourceName <resource_name> -ResourceType <resource_type> -ParentResource <parent resource> -ResourceGroupName <resource_group_name>
+New-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionName <role_name> -ResourceName <resource_name> -ResourceType <resource_type> -ParentResource <parent resource> -ResourceGroupName <resource_group_name>
 ```
 
 ```Example
@@ -333,12 +357,12 @@ ObjectType         : Group
 CanDelegate        : False
 ```
 
-### <a name="create-a-role-assignment-for-an-application-at-a-subscription-scope"></a>Alkalmazás szerepkör-hozzárendelés létrehozása egy előfizetési hatókörben
+### <a name="create-a-role-assignment-for-an-application-at-a-subscription-scope"></a>Szerepkör-hozzárendelés létrehozása egy alkalmazáshoz előfizetési hatókörben
 
-Az előfizetések szintjén alkalmazásokhoz való hozzáférés biztosításához használja [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment).
+Ha egy alkalmazáshoz hozzáférést szeretne biztosítani egy előfizetési hatókörben, használja a [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment)parancsot.
 
 ```azurepowershell
-New-AzRoleAssignment -ObjectId <application id> -RoleDefinitionName <role_name> -Scope /subscriptions/<subscription_id>
+New-AzRoleAssignment -ObjectId <application_id> -RoleDefinitionName <role_name> -Scope /subscriptions/<subscription_id>
 ```
 
 ```Example
@@ -355,20 +379,54 @@ ObjectType         : ServicePrincipal
 CanDelegate        : False
 ```
 
-## <a name="remove-access"></a>Hozzáférés eltávolítása
+### <a name="create-a-role-assignment-for-a-user-at-a-management-group-scope"></a>Szerepkör-hozzárendelés létrehozása egy felhasználóhoz egy felügyeleti csoport hatókörében
 
-RBAC, a hozzáférést, akkor egy szerepkör-hozzárendelés eltávolítása használatával [Remove-AzRoleAssignment](/powershell/module/az.resources/remove-azroleassignment).
+Ha hozzáférést szeretne adni egy felhasználónak egy felügyeleti csoport hatókörében, használja a [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment)parancsot. A felügyeleti csoport AZONOSÍTÓjának beszerzéséhez a Azure Portal **felügyeleti csoportok** paneljén található, vagy a [Get-AzManagementGroup](/powershell/module/az.resources/get-azmanagementgroup)is használható.
 
 ```azurepowershell
-Remove-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionName <role_name> -Scope <scope_such_as_subscription>
+New-AzRoleAssignment -SignInName <email_or_userprincipalname> -RoleDefinitionName <role_name> -Scope /providers/Microsoft.Management/managementGroups/<group_id>
 ```
+
+```Example
+PS C:\> New-AzRoleAssignment -SignInName alain@example.com -RoleDefinitionName "Billing Reader" -Scope /providers/Microsoft.Management/managementGroups/marketing-group
+
+RoleAssignmentId   : /providers/Microsoft.Management/managementGroups/marketing-group/providers/Microsoft.Authorization/roleAssignments/22222222-2222-2222-2222-222222222222
+Scope              : /providers/Microsoft.Management/managementGroups/marketing-group
+DisplayName        : Alain Charon
+SignInName         : alain@example.com
+RoleDefinitionName : Billing Reader
+RoleDefinitionId   : fa23ad8b-c56e-40d8-ac0c-ce449e1d2c64
+ObjectId           : 44444444-4444-4444-4444-444444444444
+ObjectType         : User
+CanDelegate        : False
+```
+
+## <a name="remove-access"></a>Hozzáférés megszüntetése
+
+A RBAC a hozzáférés eltávolításához távolítsa el a szerepkör-hozzárendelést a [Remove-AzRoleAssignment](/powershell/module/az.resources/remove-azroleassignment)használatával.
+
+A következő példa eltávolítja a *virtuálisgép-közreműködő* szerepkör-hozzárendelést az *Alain\@example.com* -felhasználótól a *Pharma-Sales* erőforráscsoporthoz:
 
 ```Example
 PS C:\> Remove-AzRoleAssignment -SignInName alain@example.com -RoleDefinitionName "Virtual Machine Contributor" -ResourceGroupName pharma-sales
 ```
 
+Az alábbi példa eltávolítja a < role_name > szerepkört a < object_id > egy előfizetési hatókörben.
+
+```azurepowershell
+Remove-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionName <role_name> -Scope /subscriptions/<subscription_id>
+```
+
+A következő példa eltávolítja a < role_name > szerepkört a felügyeleti csoport hatókörének < object_id >.
+
+```azurepowershell
+Remove-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionName <role_name> -Scope /providers/Microsoft.Management/managementGroups/<group_id>
+```
+
+Ha a következő hibaüzenet jelenik meg: "A megadott információ nem képezhető le szerepkör-hozzárendelésre", győződjön meg arról, hogy a vagy `-Scope` `-ResourceGroupName` a paramétereket is megadja. További információ: [Az Azure-erőforrások RBAC kapcsolatos hibák megoldása](troubleshooting.md#role-assignments-without-a-security-principal).
+
 ## <a name="next-steps"></a>További lépések
 
-- [Oktatóanyag: Egy csoport hozzáférést biztosít az Azure-erőforrások RBAC és az Azure PowerShell használatával](tutorial-role-assignments-group-powershell.md)
-- [Oktatóanyag: Hozzon létre egy egyéni szerepkört az Azure-erőforrások Azure PowerShell-lel](tutorial-custom-role-powershell.md)
-- [Az Azure PowerShell-erőforrások kezelése](../azure-resource-manager/manage-resources-powershell.md)
+- [Oktatóanyag: Az Azure-erőforrásokhoz való hozzáférés biztosítása a RBAC és a Azure PowerShell használatával](tutorial-role-assignments-group-powershell.md)
+- [Oktatóanyag: Egyéni szerepkörök létrehozása Azure-erőforrásokhoz az Azure PowerShell használatával](tutorial-custom-role-powershell.md)
+- [Erőforrások kezelése a Azure PowerShell](../azure-resource-manager/manage-resources-powershell.md)

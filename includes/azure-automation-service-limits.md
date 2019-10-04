@@ -8,47 +8,56 @@ ms.topic: include
 ms.date: 12/13/2018
 ms.author: gwallace
 ms.custom: include file
-ms.openlocfilehash: b701183fa270b1aad9a622a21c5ce0795fc8057f
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 2823a33b25812a69ad463433bacd9710655c9176
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60012501"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "67179526"
 ---
 #### <a name="process-automation"></a>Folyamatautomatizálás
 
-| Erőforrás | Felső korlát |Megjegyzések|
+| Resource | Felső korlát |Megjegyzések|
 | --- | --- |---|
-| Így el lehet egy Azure Automation-fiók (nonscheduled feladat) 30 másodpercenként új feladatok maximális száma |100 |Ha eléri ezt a korlátot, sikertelen, hozzon létre egy feladatot a későbbi kérelmeket. Az ügyfél hibaüzenetet kap.|
-| Az Automation-fiók (nonscheduled feladat) ideje példányát, egyidejűleg futó feladatok maximális száma |200 |Ha eléri ezt a korlátot, sikertelen, hozzon létre egy feladatot a későbbi kérelmeket. Az ügyfél hibaüzenetet kap.|
-| Feladat-metaadatok egy 30 napos gördülő időszakra maximális mérete | 10 GB (4 millió feladatok megközelítőleg)|Ha eléri ezt a korlátot, sikertelen, hozzon létre egy feladatot a későbbi kérelmeket. |
-| Maximális stream korlát|1MB|Egyetlen streammel nem lehet nagyobb, mint 1 MB.|
-| Modulok egy Automation-fiók 30 másodpercenként importálható maximális száma |5 ||
-| Modulok maximális mérete |100 MB ||
-| Feladat futási ideje, ingyenes szint |előfizetés naptári hónapban 500 perc ||
-| Lemezterület védőfalat engedélyezett maximális mennyisége<sup>1</sup> |1 GB |Csak Azure próbakörnyezetbe lefordítja vonatkozik.|
-| A védőfal megadott maximális memóriamennyiség<sup>1</sup> |400 MB |Csak Azure próbakörnyezetbe lefordítja vonatkozik.|
-| Maximálisan engedélyezett tesztkörnyezet hálózati szoftvercsatornák számát<sup>1</sup> |1,000 |Csak Azure próbakörnyezetbe lefordítja vonatkozik.|
-| Runbook engedélyezett maximális futásideje<sup>1</sup> |3 óra |Csak Azure próbakörnyezetbe lefordítja vonatkozik.|
-| Egy adott előfizetés az Automation-fiókok maximális száma |Korlátlan ||
+| Azure Automation fiókban 30 másodpercenként elküldhető új feladatok maximális száma (nem ütemezett feladatok esetében) |100 |Ha eléri ezt a korlátot, a feladat létrehozására vonatkozó további kérések sikertelenek lesznek. Az ügyfél hibaüzenetet kap.|
+| Az egyidejű futó feladatok maximális száma egy Automation-fiókon (nem ütemezett feladatok). |200 |Ha eléri ezt a korlátot, a feladat létrehozására vonatkozó további kérések sikertelenek lesznek. Az ügyfél hibaüzenetet kap.|
+| A feladatok metaadatainak maximális tárolási mérete egy 30 napos időszakra | 10 GB (körülbelül 4 000 000 feladat)|Ha eléri ezt a korlátot, a feladat létrehozására vonatkozó további kérések sikertelenek lesznek. |
+| Maximális feladatokhoz tartozó adatfolyam-korlát|1 MB|Egyetlen Stream nem lehet nagyobb 1 MB-nál.|
+| Az Automation-fiókokban 30 másodpercenként importálható modulok maximális száma |5 ||
+| Modul maximális mérete |100 MB ||
+| Feladatok futási ideje, ingyenes szintű |500 perc/előfizetés naptári havonta ||
+| Maximálisan engedélyezett lemezterület a homokozóban<sup>1</sup> |1 GB |Csak az Azure-beli munkapéldányokra vonatkozik.|
+| A sandbox<sup>1</sup> számára megadott maximális memória mennyisége |400 MB |Csak az Azure-beli munkapéldányokra vonatkozik.|
+| A másodpercenként engedélyezett hálózati szoftvercsatornák maximális száma<sup>1</sup> |1,000 |Csak az Azure-beli munkapéldányokra vonatkozik.|
+| Engedélyezett maximális futtatókörnyezet (runbook<sup>1)</sup> |3 óra |Csak az Azure-beli munkapéldányokra vonatkozik.|
+| Az előfizetéshez tartozó Automation-fiókok maximális száma |Korlátlan ||
+| Hibrid feldolgozói csoportok maximális száma Automation-fiókban|4,000||
 |Egyetlen hibrid Runbook-feldolgozón futtatható egyidejű feladatok maximális száma|50 ||
-| Maximális runbook feladat paraméter mérete   | legalább 512 kilobit||
-| Maximális runbook-paraméterek   | 50|Ha eléri az 50-paraméter korlátot, JSON vagy XML-karakterlánc át a paramétert, és elemezni, a runbook.|
-| Maximális webhook hasznos adatainak mérete |  legalább 512 kilobit|
-| Feladat adatainak megőrzött napok maximális száma|30 nap|
-| Maximális PowerShell munkafolyamat-állapot mérete |5 MB| PowerShell munkafolyamat forgatókönyvekkel vonatkozik, ha ellenőrzőpont-munkafolyamat.|
+| Runbook-feladatok maximális mérete   | 512 kilobit||
+| Maximális runbook paraméterek   | 50|Ha eléri a 50-paraméter korlátot, egy JSON-vagy XML-karakterláncot adhat át egy paraméternek, és elemezheti azt a runbook.|
+| Webhook maximális hasznos adatának mérete |  512 kilobit|
+| A feladattal megőrzött napok maximális száma|30 nap|
+| Maximális PowerShell-munkafolyamat állapotának mérete |5 MB| A PowerShell-munkafolyamat runbookok vonatkozik a munkafolyamat ellenőrzőpontja során.|
 
-<sup>1</sup>egy tesztkörnyezet-e, hogy több feladat is lehet megosztott környezetben. Az azonos tesztkörnyezetben használó feladatok által az erőforrás-korlátozások, a védőfal vannak kötve.
+<sup>1</sup> A sandbox egy megosztott környezet, amelyet több feladat is használhat. Azokat a feladatokat, amelyek ugyanazt a Sandboxot használják, a sandbox erőforrás-korlátai kötik.
 
-#### <a name="change-tracking-and-inventory"></a>A Change tracking és inventory
+#### <a name="change-tracking-and-inventory"></a>Change Tracking and Inventory
 
-Az alábbi táblázat a change Tracking szolgáltatáshoz gép követett elemek vonatkozó korlátok.
+A következő táblázat a nyomon követett elemek korlátozását mutatja gépenként a változások nyomon követéséhez.
 
 | **Erőforrás** | **Korlát**| **Megjegyzések** |
 |---|---|---|
 |Fájl|500||
 |Beállításjegyzék|250||
-|Windows szoftverek|250|Nem tartalmazza a szoftverfrissítéseket.|
-|Linux-csomagok|1,250||
+|Windows-szoftver|250|Nem tartalmaz szoftverfrissítéseket.|
+|Linux-csomagok|1 250||
 |Szolgáltatások|250||
 |Démon|250||
+
+#### <a name="update-management"></a>Frissítéskezelés
+
+A következő táblázat a Update Management korlátozásait mutatja be.
+
+| **Erőforrás** | **Korlát**| **Megjegyzések** |
+|---|---|---|
+|Gépek száma frissítési központi telepítéssel|1000||

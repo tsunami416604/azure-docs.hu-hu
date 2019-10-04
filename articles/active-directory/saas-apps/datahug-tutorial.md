@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a72b2c44550c0e481f7be4e37152e3bbe3a22f3
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 1107369f048a006767e4b9bd642df4ffdc0708c9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57889862"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67104346"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-datahug"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Datahug
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a Datahug konfigurálásához hozzá kell Datahug a ka
 
 **Datahug hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -116,7 +116,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Datahug, hajtsa vég
     Az a **bejelentkezési URL-** szövegmezőbe írja be egy URL-címe:  `https://apps.datahug.com/`
 
     > [!NOTE]
-    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges azonosítóját és a válasz URL-cím. Kapcsolattartó [Datahug ügyfél-támogatási csapatának](http://datahug.com/about/contact-us/) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges azonosítóját és a válasz URL-cím. Kapcsolattartó [Datahug ügyfél-támogatási csapatának](https://datahug.com/about/contact-us/) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
 6. Az a **beállítás egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **összevonási metaadatainak XML**  a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 
@@ -130,7 +130,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Datahug, hajtsa vég
 
     b. Válassza ki **SHA-1** származó a **aláíró algoritmus**.
     
-    c. Kattintson a **Mentés** gombra.
+    c. Kattintson a **Save** (Mentés) gombra
 
     ![Communifire aláírási beállítás](./media/datahug-tutorial/tutorial_datahug_signingoption.png)
 
@@ -146,7 +146,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Datahug, hajtsa vég
 
 ### <a name="configure-datahug-single-sign-on"></a>Datahug egyszeri bejelentkezés konfigurálása
 
-Az egyszeri bejelentkezés konfigurálása **Datahug** oldalon kell küldenie a letöltött **összevonási metaadatainak XML** és az Azure Portalról másolt URL-címek megfelelő [Datahug támogatási csapatának](http://datahug.com/about/contact-us/). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+Az egyszeri bejelentkezés konfigurálása **Datahug** oldalon kell küldenie a letöltött **összevonási metaadatainak XML** és az Azure Portalról másolt URL-címek megfelelő [Datahug támogatási csapatának](https://datahug.com/about/contact-us/). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
 

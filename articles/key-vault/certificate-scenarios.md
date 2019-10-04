@@ -1,134 +1,129 @@
 ---
-title: Ismerkedés a Key Vault-tanúsítványok
-description: A következő esetekben felvázolják a Key Vault tanúsítvány management szolgáltatás többek között a további lépéseket az első tanúsítvány létrehozásához a key vaultban lévő szükséges elsődleges használatokban.
+title: Ismerkedés a Key Vault-tanúsítványok használatába
+description: A következő forgatókönyvek felvázolják az Key Vault tanúsítványkezelő szolgáltatásának számos elsődleges használatát, beleértve az első tanúsítvány a kulcstartóban való létrehozásához szükséges további lépéseket.
 services: key-vault
-documentationcenter: ''
 author: msmbaldwin
-manager: barbkess
+manager: rkarlin
 tags: azure-resource-manager
-ms.assetid: a788b958-3acb-4bb6-9c94-4776852aeea1
 ms.service: key-vault
-ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 20c05bddddce4c7748e29551fe78d3e5609b2fa5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 338619a13ec3f5fcd0d4fd62cf387f955c556a7c
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59275895"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70879309"
 ---
-# <a name="get-started-with-key-vault-certificates"></a>Ismerkedés a Key Vault-tanúsítványok
-A következő esetekben felvázolják a Key Vault tanúsítvány management szolgáltatás többek között a további lépéseket az első tanúsítvány létrehozásához a key vaultban lévő szükséges elsődleges használatokban.
+# <a name="get-started-with-key-vault-certificates"></a>Ismerkedés a Key Vault-tanúsítványok használatába
+A következő forgatókönyvek felvázolják az Key Vault tanúsítványkezelő szolgáltatásának számos elsődleges használatát, beleértve az első tanúsítvány a kulcstartóban való létrehozásához szükséges további lépéseket.
 
-Az alábbi eljárásokat:
-- Az első a Key Vault-tanúsítvány létrehozása
-- Tanúsítvány létrehozása a hitelesítésszolgáltató, amely a Key Vault van közreműködésével
-- A Key Vault létrehozása egy tanúsítványt a hitelesítésszolgáltatótól, amely a nem közreműködésével
+A következő lépéseket ismerteti:
+- Az első Key Vault-tanúsítvány létrehozása
+- Tanúsítvány létrehozása Key Vault-partnerrel együttműködő hitelesítésszolgáltatóval
+- Tanúsítvány létrehozása olyan hitelesítésszolgáltatóval, amely nem kapcsolódik Key Vault
 - Tanúsítvány importálása
 
-## <a name="certificates-are-complex-objects"></a>Tanúsítványok olyan összetett objektumok
-Tanúsítványok épülnek fel, a Key Vault-tanúsítvánnyal; egymáshoz kapcsolódó három egymáshoz erőforrások a tanúsítvány metaadatait, a kulcs és a egy titkos kulcsot.
+## <a name="certificates-are-complex-objects"></a>A tanúsítványok összetett objektumok
+A tanúsítványok három egymáshoz kapcsolódó erőforrásból állnak, amelyek Key Vault tanúsítványként vannak társítva. tanúsítvány metaadatai, kulcs és titkos kód.
 
 
-![Tanúsítványok olyan összetett](media/azure-key-vault.png)
+![A tanúsítványok összetettek](media/azure-key-vault.png)
 
 
-## <a name="creating-your-first-key-vault-certificate"></a>Az első a Key Vault-tanúsítvány létrehozása  
- Mielőtt egy tanúsítványt a egy Key Vault (KV) hozható létre, 1. és 2 előfeltételként felsorolt lépéseket kell sikeresen elvégezte, és key vault léteznie kell a felhasználó és szervezet.  
+## <a name="creating-your-first-key-vault-certificate"></a>Az első Key Vault-tanúsítvány létrehozása  
+ Ahhoz, hogy egy tanúsítvány egy Key Vaultban (KV) legyen létrehozva, az 1. és a 2. előfeltételt sikeresen el kell végezni, és léteznie kell egy kulcstárolónak ehhez a felhasználóhoz/szervezethez.  
 
-**1. lépés** -szolgáltatók a hitelesítésszolgáltató (CA) tanúsítvány  
--   Az előkészítési a rendszergazda, nyilvános kulcsokra épülő infrastruktúra-rendszergazda, vagy mindenki számára egy adott vállalat (például a hitelesítésszolgáltatók és a fiókok kezelése Contoso) a Key Vault-tanúsítványok használatának előfeltétele.  
-    A következő CAs a Key Vault használata az aktuális partnered szolgáltatók:  
-    -   A DigiCert – Key Vault kínál OV-SSL DigiCert tanúsítványokat.  
-    -   GlobalSign – Key Vault kínál OV-SSL GlobalSign rendelkező tanúsítványokat  
-    -   WoSign – Key Vault ajánlatok OV-SSL vagy a Bővített SSL-tanúsítványok WoSign az ügyfél WoSign-fiókjukban az WoSign portálon konfigurált beállítás alapján.  
+**1. lépés** – hitelesítésszolgáltatói szolgáltatók  
+-   Az adott vállalat számára az informatikai rendszergazdaként, PKI-rendszergazdaként vagy a hitelesítésszolgáltatókkal rendelkező fiókok kezelésével foglalkozó felhasználó (pl. A contoso) Key Vault tanúsítványok használatának előfeltétele.  
+    A következő hitelesítésszolgáltatók az aktuális partneri szolgáltatók Key Vault:  
+    -   A DigiCert-Key Vault az DigiCert-val rendelkező OV SSL-tanúsítványokat kínál.  
+    -   A GlobalSign-Key Vault az GlobalSign-val rendelkező OV SSL-tanúsítványokat kínál.  
 
-**2. lépés** -rendszergazdai fiók egy hitelesítésszolgáltató-szolgáltató regisztrálásához, a Key Vault által használandó hitelesítő adatokat hoz létre a újítsa meg és SSL-tanúsítványokat bocsát ki a Key Vault használata.
+**2. lépés** – a hitelesítésszolgáltató-szolgáltatóhoz tartozó fiók rendszergazdája létrehozza a hitelesítő adatokat, amelyeket a Key Vault HASZNÁLHAT az SSL-tanúsítványok regisztrálásához, megújításához és használatához Key Vaulton keresztül.
 
-**3. lépés** – A Contoso-rendszergazda, és a egy Contoso-alkalmazott (Key Vault-felhasználó) függően a CA-tanúsítványok birtokló tanúsítvány beszerzéséhez a rendszergazda vagy közvetlenül a fiók a hitelesítésszolgáltatóhoz.  
+**3. lépés** – a contoso rendszergazdája, valamint a tanúsítványokat birtokló contoso-alkalmazott (Key Vault felhasználó) a hitelesítésszolgáltatótól függően beszerezhet egy tanúsítványt a rendszergazdától, vagy közvetlenül a fiókból a hitelesítésszolgáltatótól.  
 
-- A key vault Hozzáadás hitelesítő adatok a művelet megkezdése [tanúsítványának kibocsátója beállítás](/rest/api/keyvault/setcertificateissuer/setcertificateissuer) erőforrás. A tanúsítvány kiállítója jelöli az Azure Key Vault (KV) CertificateIssuer erőforrásként entitás. A forrás-KV tanúsítvány; kapcsolatos információk megadására szolgál kiállító neve, szolgáltató, hitelesítő adatok és egyéb felügyeleti adatait.
+- A [tanúsítvány kiállítói erőforrásának beállításával](/rest/api/keyvault/setcertificateissuer/setcertificateissuer) kezdjen hozzá egy hitelesítő adat hozzáadása a kulcstartóhoz. A tanúsítvány kiállítója Azure Key Vault (KV) CertificateIssuer erőforrásként jelölt entitás. A rendszer a KV-tanúsítvány forrására vonatkozó információk megadására szolgál. kiállító neve, szolgáltatója, hitelesítő adatai és egyéb rendszergazdai részletek.
   - Pl. MyDigiCertIssuer  
     -   Szolgáltató  
-    -   Hitelesítő adatok – a Hitelesítésszolgáltatói fiók hitelesítő adatait. Minden CA a saját konkrét adatokat tartalmaz.  
+    -   Hitelesítő adatok – HITELESÍTÉSSZOLGÁLTATÓI fiók hitelesítő adatai. Minden HITELESÍTÉSSZOLGÁLTATÓ saját konkrét adattal rendelkezik.  
 
-    Hitelesítésszolgáltató szolgáltatók fiókok létrehozásával kapcsolatos további információkért tekintse meg a kapcsolódó bejegyzését a [Key Vault blog](https://aka.ms/kvcertsblog).  
+    A CA-szolgáltatókkal való fiókok létrehozásával kapcsolatos további információkért tekintse meg a kapcsolódó bejegyzést a [Key Vault blogon](https://aka.ms/kvcertsblog).  
 
-**3.1. lépés** -beállítása [tanúsítványt névjegyeket](/rest/api/keyvault/setcertificatecontacts/setcertificatecontacts) az értesítésekhez. Ez az az ügyfél a Key Vault-felhasználó számára. A Key Vault nem kényszeríti ki ezt a lépést.  
+**3,1. lépés** – [tanúsítvány-névjegyek](/rest/api/keyvault/setcertificatecontacts/setcertificatecontacts) beállítása értesítésekhez. Ez a Key Vault felhasználó kapcsolattartója. A Key Vault nem kényszeríti ki ezt a lépést.  
 
-Megjegyzés: ezt a folyamatot, 3.1. lépés egy olyan egyszeri művelet.  
+Megjegyzés: Ez a folyamat az 3,1-es lépéssel egy egyszeri művelet.  
 
-## <a name="creating-a-certificate-with-a-ca-partnered-with-key-vault"></a>Key Vault közreműködésével CA-tanúsítvány létrehozása
+## <a name="creating-a-certificate-with-a-ca-partnered-with-key-vault"></a>Tanúsítvány létrehozása a Key Vault-mel rendelkező HITELESÍTÉSSZOLGÁLTATÓval
 
-![Hozzon létre egy tanúsítványt a Key Vault termékekért felelős csoportokkal együttműködésben hitelesítésszolgáltató](media/certificate-authority-2.png)
+![Tanúsítvány létrehozása Key Vault partnerrel rendelkező hitelesítésszolgáltatóval](media/certificate-authority-2.png)
 
-**4. lépés** – az alábbi leírásokat felel meg a fenti ábrán a zöld számozott lépéseket.  
-  (1) – a fenti ábrán az alkalmazást hoz létre egy tanúsítványt, amely belsőleg megkezdi a hozzon létre egy kulcsot tárol a kulcstárolóban.  
-  (2) – a Key Vault küld egy SSL tanúsítvány kérelmet a hitelesítésszolgáltatónak.  
-  (3) – az alkalmazás lekérdezi, egy hurkot, és várja meg a folyamatban, a Key Vault tanúsítvány befejezésére. A tanúsítvány létrehozása befejeződött, amikor a Key Vault-x509 a CA-válasz fogadása tanúsítványt.  
-  (4) – a hitelesítésszolgáltató reagáljon a Key Vault SSL tanúsítvány kérése egy X509 az SSL-tanúsítványt.  
-  (5) – az új tanúsítvány létrehozása befejeződik, a X509 az egyesülés az a Hitelesítésszolgáltatóhoz tartozó tanúsítványt.  
+**4. lépés** – az alábbi leírások az előző ábrán látható zöld számú lépéseknek felelnek meg.  
+  (1) – a fenti ábrán az alkalmazás olyan tanúsítványt hoz létre, amely belsőleg kezdődik a Key vaultban lévő kulcs létrehozásával.  
+  (2) – Key Vault SSL-tanúsítványkérelmet küld a HITELESÍTÉSSZOLGÁLTATÓNAK.  
+  (3) – az alkalmazás egy hurokban és várakozási folyamatban kérdezi le a Key Vault a tanúsítványok befejezéséhez. A tanúsítvány létrehozása akkor fejeződik be, amikor Key Vault megkapja a HITELESÍTÉSSZOLGÁLTATÓ válaszát az x509-tanúsítvánnyal.  
+  (4) – a HITELESÍTÉSSZOLGÁLTATÓ válaszol az Key Vault SSL-tanúsítványára vonatkozó kérelemre egy X509 SSL-tanúsítvánnyal.  
+  (5) – az új tanúsítvány létrehozása a HITELESÍTÉSSZOLGÁLTATÓ X509-tanúsítványának egyesítésével fejeződik be.  
 
-  A Key Vault felhasználó számára – létrehoz egy tanúsítványt egy házirend
+  Key Vault felhasználó – tanúsítvány létrehozása egy házirend megadásával
 
-  -   Ismételje meg igény szerint  
-  -   A házirend-korlátozások  
+  -   Szükség esetén ismételje meg a műveletet  
+  -   Házirend-korlátozások  
       -   X509 tulajdonságai  
       -   Kulcs tulajdonságai  
-      -   Szolgáltató referencia - > ex. MyDigiCertIssure  
-      -   Megújítási információkat - > ex. a lejárat előtt 90 nappal  
+      -   Szolgáltatói hivatkozás – > ex. MyDigiCertIssure  
+      -   Megújítási információ – > ex. 90 nappal a lejárat előtt  
 
-  - Egy tanúsítvány-létrehozási folyamata általában egy aszinkron folyamat, amely magában foglalja a key vault létrehozása tanúsítványművelet állapotának lekérdezése.  
-[Tanúsítványművelet beolvasása](/rest/api/keyvault/getcertificateoperation/getcertificateoperation)  
-      -   Állapot: befejezett, sikertelen, hiba adataival vagy, a visszavont  
-      -   A késleltetés hozhat létre, mert a művelet megszakítása kezdeményezhetők. Előfordulhat, hogy a Mégse gombra, vagy nem lehet érvényes.  
+  - A tanúsítvány-létrehozási folyamat általában egy aszinkron folyamat, és a tanúsítvány létrehozása művelet állapotára vonatkozó lekérdezéssel kérdezi le a kulcstartót.  
+[Tanúsítvány lekérése művelet](/rest/api/keyvault/getcertificateoperation/getcertificateoperation)  
+      -   Állapot: befejezve, hiba miatt sikertelen, vagy megszakítva  
+      -   A létrehozás késleltetése miatt elindítható egy megszakítási művelet. Előfordulhat, hogy a Mégse nem érvényes.  
 
 ## <a name="import-a-certificate"></a>Tanúsítvány importálása  
- Másik lehetőségként – egy tanúsítványt a Key Vault – a PFX- vagy PEM be importálhatók.  
+ Másik lehetőségként – egy tanúsítvány importálható Key Vault – PFX vagy PEM rendszerbe.  
 
- Tanúsítványok című szakaszában talál további tájékoztatást a PEM-formátumú [kapcsolatos kulcsok, titkos kódok és tanúsítványok](about-keys-secrets-and-certificates.md).  
+ A PEM formátumával kapcsolatos további információkért tekintse meg a [kulcsok, titkos kódok és tanúsítványok](about-keys-secrets-and-certificates.md)című témakör tanúsítványok szakaszát.  
 
- Tanúsítvány importálása – egy PEM vagy PFX lemezen lehetnek, és a titkos kulcs szükséges. 
--   Meg kell adnia: a tároló nevét és a tanúsítvány neve (házirend nem kötelező)
+ Importálási tanúsítvány – egy PEM-vagy PFX-fájlnak kell lennie a lemezen, és rendelkeznie kell titkos kulccsal. 
+-   Meg kell adnia a következőt: tár neve és tanúsítvány neve (a szabályzat nem kötelező)
 
--   PEM / PFX-fájlokat tartalmazza, az attribútumokat, amelyek KV elemzése, és töltse fel a tanúsítvány-házirend használatával. A tanúsítási szabályzat már meg van adva, KV megpróbálja adategyeztetéshez PFX / PEM-fájlt.  
+-   A PEM/PFX-fájlok olyan attribútumokat tartalmaznak, amelyeket a KV képes elemezni és használni a tanúsítvány-házirend feltöltéséhez. Ha már meg van adva egy tanúsítvány-házirend, a KV-ban a PFX/PEM-fájlból származó adatok egyeztetésére kerül.  
 
--   Az importálás után végső későbbi műveletek során fogja használni az új házirend (az új verzió).  
+-   Ha az importálás végleges, a későbbi műveletek az új szabályzatot fogják használni (új verziók).  
 
--   Ha nincsenek további műveletek, a Key Vault végzi, először is, egy lejárati értesítés küldése. 
+-   Ha nincs további művelet, akkor a Key Vault elküld egy lejárati értesítést. 
 
--   Emellett a felhasználó szerkesztheti a szabályzatot, amely importálás idején már működik esetén, de tartalmazza, ahol nem adatok importálása során meghatározott alapértelmezett. Pl. Nincs kibocsátó adatai  
+-   A felhasználó szerkesztheti a szabályzatot is, amely az importálás időpontjában működik, de olyan alapértékeket tartalmaz, amelyekben nincs megadva információ az importáláskor. Pl. nincs kiállítói információ  
 
-### <a name="formats-of-import-we-support"></a>Importálás támogatott formátumok
-Importálás a következő típusú támogatjuk az PEM formátumú. Egyetlen PEM-kódolású tanúsítvány egy PKCS #8 kódolású, nem titkosított kulcs, amely rendelkezik a következő együtt
+### <a name="formats-of-import-we-support"></a>A támogatott importálási formátumok
+A következő típusú importálási típust támogatjuk a PEM-fájlformátum esetében:. Egyetlen PEM-kódolású tanúsítvány, valamint egy PKCS # 8 kódolt, titkosítatlan kulcs, amely a következőkkel rendelkezik
 
----BEGIN TANÚSÍTVÁNY------END TANÚSÍTVÁNY---
+-----A TANÚSÍTVÁNY----------A ZÁRÓ TANÚSÍTVÁNY MEGKEZDÉSE-----
 
----BEGIN PRIVATE KEY-------END PRIVATE KEY----
+-----A TITKOS KULCS MEGKEZDÉSE----------A TITKOS KULCS BEFEJEZÉSE-----
 
-A tanúsítvány egyesítési támogatjuk a 2-alapú PEM-formátumú. Vagy egyesíthet egyetlen PKCS #8 kódolású tanúsítványt, vagy egy base64 kódolású P7B fájlt. ---BEGIN TANÚSÍTVÁNY------END TANÚSÍTVÁNY---
+A tanúsítvány egyesítése során 2 PEM-alapú formátumot támogatunk. Egyesítheti egyetlen PKCS # 8 kódolású tanúsítványt vagy egy Base64 kódolású P7B-fájlt. -----A TANÚSÍTVÁNY----------A ZÁRÓ TANÚSÍTVÁNY MEGKEZDÉSE-----
 
-Jelenleg nem támogatjuk EK kulcsok PEM formátumban.
+Jelenleg nem támogatottak az EC-kulcsok PEM formátumban.
 
-## <a name="creating-a-certificate-with-a-ca-not-partnered-with-key-vault"></a>Key Vault nem közreműködésével CA-tanúsítvány létrehozása  
- Ez a módszer lehetővé teszi, hogy más hitelesítésszolgáltatók, mint a Key Vault termékekért felelős csoportokkal együttműködésben szolgáltatók, tehát a szervezet saját maga által kiválasztott hitelesítésszolgáltató együttműködve dolgozhat.  
+## <a name="creating-a-certificate-with-a-ca-not-partnered-with-key-vault"></a>Tanúsítvány létrehozása olyan HITELESÍTÉSSZOLGÁLTATÓval, amely nem partneri kapcsolatban áll a Key Vault  
+ Ez a módszer lehetővé teszi a más CAs-k használatát, mint a Key Vault partneri szolgáltatói, ami azt jelenti, hogy a szervezete egy tetszőleges HITELESÍTÉSSZOLGÁLTATÓval működik.  
 
-![A saját hitelesítésszolgáltató-tanúsítvány létrehozása](media/certificate-authority-1.png)  
+![Tanúsítvány létrehozása saját hitelesítésszolgáltatóval](media/certificate-authority-1.png)  
 
- A következő lépésben leírások felel meg a fenti ábrán a zöld betűkkel lépéseket.  
+ A következő lépésekben szereplő leírások az előző ábrán látható zöld betűs lépéseknek felelnek meg.  
 
-  (1) – a fenti ábrán az alkalmazást hoz létre egy tanúsítványt, amely belsőleg megkezdi a hozzon létre egy kulcsot tárol a kulcstárolóban.  
+  (1) – a fenti ábrán az alkalmazás létrehoz egy tanúsítványt, amely belsőleg kezdődik a Key vaultban lévő kulcs létrehozásával.  
 
-  (2) – a Key Vault és az alkalmazás ad vissza egy tanúsítvány-aláírási kérelem (CSR).  
+  (2) – Key Vault visszaadja az alkalmazásnak egy tanúsítvány-aláírási kérelmet (CSR).  
 
-  (3) – az alkalmazás a választott hitelesítésszolgáltató továbbítja a CSR-fájl.  
+  (3) – az alkalmazás továbbítja a CSR-t a kiválasztott HITELESÍTÉSSZOLGÁLTATÓhoz.  
 
-  (4) – egy X509 fűzi hozzá a választott Hitelesítésszolgáltatói tanúsítvány.  
+  (4) – a kiválasztott HITELESÍTÉSSZOLGÁLTATÓ válaszol egy X509-tanúsítvánnyal.  
 
-  (5) – az alkalmazás befejezi az egyesülés a X509 új tanúsítvány létrehozása a hitelesítésszolgáltató tanúsítványa.
+  (5) – az alkalmazás befejezi az új tanúsítvány létrehozását a HITELESÍTÉSSZOLGÁLTATÓTÓL származó X509-tanúsítvány egyesítésével.
 
 ## <a name="see-also"></a>Lásd még:
 

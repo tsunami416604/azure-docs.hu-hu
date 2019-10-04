@@ -8,16 +8,16 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 11/07/2018
-ms.openlocfilehash: 217d348eacab30b90e06fe805d9cdb0cf32349ac
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 3ae87523e66ae49d17f198a1f70b0f449ca0a713
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59050730"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080421"
 ---
 # <a name="upload-files-with-iot-hub"></a>Fájlok feltöltése az IoT Hub
 
-A részletes a [IoT Hub-végpontok](iot-hub-devguide-endpoints.md) a cikkben egy eszköz első lépésként feltöltés küld értesítést egy eszközre irányuló végponton keresztül (**/devices/ {deviceId} / fájlok**). Amikor egy eszköz értesíti, hogy a feltöltés befejeződése az IoT Hub, IoT Hub keresztül fájl feltöltése értesítő üzenetet küld a **/messages/servicebound/filenotifications** szolgáltatás felé néző végpont.
+A részletes a [IoT Hub-végpontok](iot-hub-devguide-endpoints.md) a cikkben egy eszköz első lépésként feltöltés küld értesítést egy eszközre irányuló végponton keresztül ( **/devices/ {deviceId} / fájlok**). Amikor egy eszköz értesíti, hogy a feltöltés befejeződése az IoT Hub, IoT Hub keresztül fájl feltöltése értesítő üzenetet küld a **/messages/servicebound/filenotifications** szolgáltatás felé néző végpont.
 
 Helyett kereskedelmi üzeneteket keresztül magát az IoT Hub IoT Hub inkább funkcionál egy dispatcher társított Azure Storage-fiókba. Egy eszközt az IoT Hub, az eszköz felhasználja a feltöltendő fájl adott tárolási tokent kér. Az eszköz az SAS URI-t használja a fájl feltöltése a tárolóba, és a feltöltés befejeztével az eszköz befejezéséről értesítést küld az IoT hubnak. Az IoT Hub ellenőrzi a fájl feltöltése befejeződött, és a szolgáltatás által használt értesítési végpont feltöltési fájlértesítési üzenetek hozzáadja.
 
@@ -95,12 +95,12 @@ A következő referencia-témakörök nyújtanak további információt az eszk�
 
 Igény szerint amikor egy eszköz értesíti, hogy a feltöltés befejeződése az IoT Hub, IoT Hub állít elő, egy értesítési üzenetet. Ez az üzenet tartalmazza a fájl nevét és a tárolási helyét.
 
-A [végpontok](iot-hub-devguide-endpoints.md), az IoT Hub kínál a fájl feltöltése értesítést a szolgáltatás felé néző végpont (**/messages/servicebound/fileuploadnotifications**) üzenetekként. A fájl feltöltése értesítések fogadása szemantikát megegyeznek a felhőből az eszközre irányuló üzenetek, és azonos [üzenet életciklus](iot-hub-devguide-messages-c2d.md#the-cloud-to-device-message-lifecycle). Minden a fájl feltöltése értesítési végpont lekért üzenet egy JSON-rekord a következő tulajdonságokkal:
+A [végpontok](iot-hub-devguide-endpoints.md), az IoT Hub kínál a fájl feltöltése értesítést a szolgáltatás felé néző végpont ( **/messages/servicebound/fileuploadnotifications**) üzenetekként. A fájl feltöltése értesítések fogadása szemantikát megegyeznek a felhőből az eszközre irányuló üzenetek, és azonos [üzenet életciklusának](iot-hub-devguide-messages-c2d.md#the-cloud-to-device-message-life-cycle). Minden a fájl feltöltése értesítési végpont lekért üzenet egy JSON-rekord a következő tulajdonságokkal:
 
 | Tulajdonság | Leírás |
 | --- | --- |
 | EnqueuedTimeUtc |Az értesítés létrehozásának jelző időbélyeg. |
-| Eszközazonosító |**DeviceId** az eszköz, amely a fájl feltöltése. |
+| DeviceId |**DeviceId** az eszköz, amely a fájl feltöltése. |
 | BlobUri |URI-ját a feltöltött fájl. |
 | BlobName |A feltöltött fájl neve. |
 | LastUpdatedTime |Jelzi, ha a fájl utolsó frissítés időbélyege. |
@@ -125,10 +125,10 @@ Minden IoT-központ rendelkezik az alábbi konfigurációs lehetőségeket a fá
 
 | Tulajdonság | Leírás | Tartomány és az alapértelmezett |
 | --- | --- | --- |
-| **enableFileUploadNotifications** |Azt szabályozza, hogy e fájl feltöltése értesítések kerüljenek-e az értesítések végpont. |Logikai. Alapértelmezett: Értéke TRUE. |
-| **fileNotifications.ttlAsIso8601** |Alapértelmezett TTL-fájl feltöltése az értesítésekhez. |ISO_8601 időköz legfeljebb 48 óra (legalább 1 perc). Alapértelmezett: 1 óra. |
-| **fileNotifications.lockDuration** |A fájl feltöltése értesítések várólista Zárolás időtartama. |5 és 300 másodperc (legalább 5 másodperces). Alapértelmezett: 60 másodperc. |
-| **fileNotifications.maxDeliveryCount** |Kézbesítések maximális száma a fájl feltöltése az értesítési várólista. |1 és 100 között. Alapértelmezett: 100. |
+| **enableFileUploadNotifications** |Azt szabályozza, hogy e fájl feltöltése értesítések kerüljenek-e az értesítések végpont. |Logikai. alapértelmezett érték: Értéke TRUE. |
+| **fileNotifications.ttlAsIso8601** |Alapértelmezett TTL-fájl feltöltése az értesítésekhez. |ISO_8601 időköz legfeljebb 48 óra (legalább 1 perc). alapértelmezett érték: 1 óra. |
+| **fileNotifications.lockDuration** |A fájl feltöltése értesítések várólista Zárolás időtartama. |5 és 300 másodperc (legalább 5 másodperces). alapértelmezett érték: 60 másodperc. |
+| **fileNotifications.maxDeliveryCount** |Kézbesítések maximális száma a fájl feltöltése az értesítési várólista. |1 és 100 között. alapértelmezett érték: 100. |
 
 ## <a name="additional-reference-material"></a>További – referenciaanyag
 

@@ -1,47 +1,67 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Az Azure Active Directory alapjainak dokumentációja
+summary: Megismerheti az Azure Active Directory (Azure AD) alapfogalmait és folyamatait, többek között az induláshoz szükséges alapszintű környezetek, alapszintű felhasználók és csoportok létrehozását.
 metadata:
-  document_id: null
   title: Az Azure Active Directory alapjainak dokumentációja
-  description: Megismerheti az alapfogalmakat és az Azure Active Directory használata közben elérhető folyamatokat.
-  services: active-directory
-  ms.subservice: fundamentals
-  author: eross-msft
+  description: Megismerheti az Azure Active Directory (Azure AD) alapfogalmait és folyamatait, többek között az induláshoz szükséges alapszintű környezetek, alapszintű felhasználók és csoportok létrehozását.
   manager: daveba
+  ms.author: ajburnle
+  ms.collection: na
+  ms.date: 08/27/2019
   ms.service: active-directory
+  ms.subservice: na
   ms.topic: landing-page
-  ms.date: 09/07/2018
-  ms.author: lizross
-abstract:
-  description: 'Megismerheti az Azure Active Directory (Azure AD) alapfogalmait és folyamatait, többek között az alapszintű felhasználók és csoportok létrehozását, valamint egy, az induláshoz használható alapszintű környezet létrehozását.'
-sections:
-  - title: 5 perces gyors útmutatók
-    items:
-      - type: paragraph
-        text: Bevezetés az Azure Active Directory portál használatába
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: ./media/index/i_portal.png
-            text: Az Azure AD hozzáférése bérlő létrehozásához
-            href: active-directory-access-create-new-tenant.md
-          - image:
-              src: ./media/index/i_tasks.png
-            text: Csoportok és tagok megtekintése
-            href: active-directory-groups-view-azure-portal.md
-  - title: Lépésenkénti útmutatók
-    items:
-      - type: paragraph
-        text: 'Itt megtudhatja, hogyan hajthat végre alapszintű beállítási feladatokat az Azure Active Directory környezetben.'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/fundamentals/active-directory-get-started-premium">Azure AD Premium-fiók regisztrálása</a>
-          - html: <a href="/azure/active-directory/fundamentals/add-custom-domain">Egyéni tartománynév hozzáadása</a>
-          - html: <a href="/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal">Alapszintű csoport létrehozása és tagok hozzáadása</a>
-          - html: <a href="/azure/active-directory/fundamentals/active-directory-accessmanagement-managing-group-owners">Csoporttulajdonosok hozzáadása</a>
-          - html: <a href="/azure/active-directory/fundamentals/add-users-azure-active-directory">Új felhasználó hozzáadása</a>
-          - html: <a href="/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal">Szerepkörök hozzárendelése a felhasználókhoz</a>
-          - html: <a href="/azure/active-directory/fundamentals/license-users-groups">Licencek hozzárendelése a felhasználókhoz</a>
+  services: active-directory
+  ms.openlocfilehash: c0f85c065a4334f41c7f52a05e2b885f97dde25f
+  ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 08/28/2019
+  ms.locfileid: "70124900"
+landingContent:
+- title: Az Azure AD ismertetése
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az Azure Active Directory?
+      url: active-directory-whatis.md
+    - text: Újdonságok az Azure Active Directoryban
+      url: whats-new.md
+  - linkListType: concept
+    links:
+    - text: Azure AD-architektúra
+      url: active-directory-architecture.md
+- title: Bevezetés
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: A portál hozzáférése és bérlő létrehozása
+      url: active-directory-access-create-new-tenant.md
+    - text: A hozzárendelt tagokkal rendelkező csoportok megtekintése
+      url: active-directory-groups-view-azure-portal.md
+- title: Azure AD-fiók létrehozása
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Prémium szintű Azure Active Directory-kiadások – Regisztráció
+      url: active-directory-get-started-premium.md
+    - text: Regisztráció az Azure AD-be szervezetként
+      url: sign-up-organization.md
+    - text: Egyéni tartománynév hozzáadása
+      url: add-custom-domain.md
+- title: Csoport létrehozása az Azure AD-ben
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Alapszintű csoport létrehozása és tagok hozzáadása
+      url: active-directory-groups-create-azure-portal.md
+    - text: Csoporttulajdonosok hozzáadása és eltávolítása
+      url: active-directory-accessmanagement-managing-group-owners.md
+- title: Felhasználók hozzáadása, szerepkörök és licencek hozzárendelése
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Felhasználók hozzáadása vagy törlése
+      url: add-users-azure-active-directory.md
+    - text: Licencek hozzárendelése felhasználókhoz
+      url: license-users-groups.md

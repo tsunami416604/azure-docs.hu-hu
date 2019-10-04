@@ -8,35 +8,35 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 3dfc72ff0347a93c6c6dce0e7ec763dd8241c55b
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: be71b269e618d13a126e4005754b307e9c6517d7
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29958809"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179113"
 ---
 ## <a name="azure-backup"></a>Azure Backup
 
-Termelési számítási feladatokhoz futtató Azure virtuális gépek biztonsági mentéséről, használja az Azure Backup szolgáltatásnál. Azure biztonsági mentés a Windows és a Linux virtuális gépek alkalmazáskonzisztens biztonsági mentést támogatja. Az Azure Backup georedundáns helyreállítási tárolókban tárolt helyreállítási pontokat hoz létre. Helyreállítási pontról történő visszaállításkor visszaállíthatja a teljes virtuális gépet, vagy csak bizonyos fájlokat. 
+Azure virtuális gépek biztonsági mentésének éles számítási feladatokat futtatnak, az Azure Backup használata. Az Azure Backup a Windows és Linux rendszerű virtuális gépek alkalmazáskonzisztens biztonsági mentést támogatja. Az Azure Backup georedundáns helyreállítási tárolókban tárolt helyreállítási pontokat hoz létre. Helyreállítási pontról történő visszaállításkor visszaállíthatja a teljes virtuális gépet, vagy csak bizonyos fájlokat. 
 
-Az egyszerű, gyakorlati megismerkedhet az Azure Backup Azure virtuális gépekhez, tekintse meg az "Azure virtuális gépek biztonsági mentése" a [Linux](../articles/virtual-machines/linux/tutorial-backup-vms.md) vagy [Windows](../articles/virtual-machines/windows/tutorial-backup-vms.md).
+Lásd az "Azure virtuális gépek biztonsági mentése" oktatóanyag az egyszerű, gyakorlati Bevezetés az Azure Backup szolgáltatásban, az Azure virtuális gépek, [Linux](../articles/virtual-machines/linux/tutorial-backup-vms.md) vagy [Windows](../articles/virtual-machines/windows/tutorial-backup-vms.md).
 
-Azure biztonsági mentési működéséről további információkért lásd: [tervezze meg a virtuális gép biztonsági mentési infrastruktúra az Azure-ban](../articles/backup/backup-azure-vms-introduction.md)
+Azure Backup működésével kapcsolatos további információkért lásd: [az Azure-beli virtuális gép biztonsági infrastruktúrájának megtervezése](../articles/backup/backup-azure-vms-introduction.md)
 
 
 ## <a name="azure-site-recovery"></a>Azure Site Recovery
 
-Az Azure Site Recovery jelentős katasztrófa esetben megakadályozza a virtuális gépek, amikor egy teljes régió miatt jelentős természeti katasztrófa vagy szélesebb körben szolgáltatáskiesést kimaradás. Azure Site Recovery konfigurálhatja a virtuális gépek, így helyreállíthatja az alkalmazás, függetlenül attól, hogy az egyetlen kattintással perc alatt. Az Ön által választott Azure-régióhoz replikálhatja, a nem párhuzamos régiók korlátozni. 
+Az Azure Site Recovery vészhelyzetek forgatókönyv, védi a virtuális gépek, amikor egy teljes régió kimaradás jelentős természeti katasztrófa vagy széles körű szolgáltatás megszakadása miatt. A virtuális gépek Azure Site Recovery úgy, hogy helyre tudja állítani az alkalmazás, függetlenül attól, hogy egyetlen kattintással perc konfigurálható. A választott Azure-régióba replikálhatja, nem korlátozott a társított két régió bármelyikén. 
 
-Az igény szerinti feladatátvételi teszteket, anélkül, hogy befolyásolná a termelési számítási feladatokhoz vagy a folyamatban lévő replikáció futtathatja vész-helyreállítási gyakorlatokat. Hozzon létre helyreállítási terv feladatátvételi és a teljes alkalmazás több virtuális gépeken futó feladat-visszavétel számít. A helyreállítási terv funkció integrálva van az Azure automation-forgatókönyveket.
+Az igény szerinti feladatátvételi teszteket, vészhelyreállítási próbákat anélkül, hogy ez hatással lenne az éles számítási feladatokra vagy a folyamatban lévő replikáció futtathatja. Feladatátvétele és feladat-visszavétel a teljes alkalmazás több virtuális gépen futó helyreállítási terveket hozhat létre. A helyreállítási terv funkció integrálva van az Azure automation-runbookokkal.
 
-Elkezdheti által [a virtuális gépek replikálásához](https://aka.ms/a2a-getting-started). 
+Úgy kezdheti [a virtuális gépek replikálásához](https://aka.ms/a2a-getting-started). 
 
 ## <a name="managed-snapshots"></a>Felügyelt pillanatképek 
 
-Fejlesztési és tesztelési környezetben pillanatképek adjon meg egy gyors és egyszerű beállítása, a felügyelt lemezeket használó virtuális gépek biztonsági mentéséről. Felügyelt pillanatképet egy csak olvasható, teljes másolata egy felügyelt lemezes. A pillanatképek független a forrás lemez létezik, és új kezelt lemezek újbóli létrehozása a virtuális gépek létrehozásához használható. Azok a lemez használt része alapján számlázzuk. Ha például létrehoz egy pillanatképet egy felügyelt lemezről 64 GB kiosztott kapacitással és 10 GB tényleges felhasznált adatmérettel, a pillanatképért csak a felhasznált 10 GB adatméret alapján számolunk fel díjat.  
+Fejlesztési-tesztelési környezetet pillanatképek egy felügyelt lemezeket használó virtuális gépek biztonsági mentésének gyors és egyszerű lehetőséget biztosítanak. Egy felügyelt pillanatkép egy csak olvasható teljes másolatát egy felügyelt lemez. Pillanatképek létezik a forráslemez független, és a virtuális gép újjáépítését új felügyelt lemezek létrehozására használható. Ezek díjszabása a felhasznált alapján a lemez. Ha például létrehoz egy pillanatképet egy felügyelt lemezről 64 GB kiosztott kapacitással és 10 GB tényleges felhasznált adatmérettel, a pillanatképért csak a felhasznált 10 GB adatméret alapján számolunk fel díjat.  
 
-Pillanatképeinek további információkért lásd:
+Pillanatképek létrehozásával kapcsolatos további információkért lásd:
 
 * [Felügyelt lemezként tárolt VHD másolatának létrehozása pillanatképekkel Windows alatt](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md)
 * [Felügyelt lemezként tárolt VHD másolatának létrehozása pillanatképekkel Linux alatt](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
@@ -44,4 +44,4 @@ Pillanatképeinek további információkért lásd:
 
 
 ## <a name="next-steps"></a>További lépések
-Módszer kipróbálásához Azure Backup a "biztonságimásolat-Windows virtuális gépek oktatóanyag" követve a [Linux](../articles/virtual-machines/linux/tutorial-backup-vms.md) vagy [Windows](../articles/virtual-machines/windows/tutorial-backup-vms.md).
+Kipróbálhatja az Azure Backup a következő, a "biztonságimásolat-Windows virtual machines oktatóanyagban" a [Linux](../articles/virtual-machines/linux/tutorial-backup-vms.md) vagy [Windows](../articles/virtual-machines/windows/tutorial-backup-vms.md).

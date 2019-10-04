@@ -3,8 +3,8 @@ title: Az Azure Network Watcher csomagvizsgálatot |} A Microsoft Docs
 description: Ez a cikk bemutatja, hogyan használhatja a Network Watcher mély Csomagvizsgálat gyűjtött egy virtuális gépről
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: timlt
+author: KumudD
+manager: twooley
 editor: ''
 ms.assetid: 7b907d00-9c35-40f5-a61e-beb7b782276f
 ms.service: network-watcher
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: jdial
-ms.openlocfilehash: 1c30e679b250c2d6c6b03a1fe5d70dbd06acf052
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.author: kumud
+ms.openlocfilehash: 7f3fc69bbfd881a26ceb25705852558b66c60153
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818362"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64716901"
 ---
 # <a name="packet-inspection-with-azure-network-watcher"></a>A csomagok vizsgálata az Azure Network Watcher
 
@@ -41,17 +41,17 @@ Ebben a forgatókönyvben azt:
 
 Ebben a forgatókönyvben bemutatjuk, hogyan a Transmission Control Protocol (TCP) témakör két végpontja között előforduló kezdeti Adatváltási időt (RTT) megtekintéséhez.
 
-Ha a TCP-kapcsolat létrejött, az első három, a kapcsolat küldött csomagok gyakran Keresőmezőnek nevezzük a háromutas kézfogás mintát követi. Az első két csomagok küldi el a kézfogás, az eredeti kérést az ügyfél és a kiszolgáló válaszára megvizsgálásával hogy azt is megmutassa a késést, ha létrejött a kapcsolat. Ez a késés a neve, a Adatváltási ideje (Ezredmásodperc). További információ a TCP protokoll és a háromutas kézfogás tekintse meg a következő erőforrás. https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip
+Ha a TCP-kapcsolat létrejött, az első három, a kapcsolat küldött csomagok gyakran Keresőmezőnek nevezzük a háromutas kézfogás mintát követi. Az első két csomagok küldi el a kézfogás, az eredeti kérést az ügyfél és a kiszolgáló válaszára megvizsgálásával hogy azt is megmutassa a késést, ha létrejött a kapcsolat. Ez a késés a neve, a Adatváltási ideje (Ezredmásodperc). További információ a TCP protokoll és a háromutas kézfogás tekintse meg a következő erőforrás. [https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip](https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip )
 
-### <a name="step-1"></a>1. lépés
+### <a name="step-1"></a>1\. lépés
 
 Launch WireShark
 
-### <a name="step-2"></a>2. lépés
+### <a name="step-2"></a>2\. lépés
 
 Betöltés a **.cap** a csomagrögzítés fájlt. Ez a fájl megtalálható a blob mentik el a helyileg a virtuális gépen, attól függően, hogyan konfigurálta.
 
-### <a name="step-3"></a>3. lépés
+### <a name="step-3"></a>3\. lépés
 
 Szeretné megtekinteni a kezdeti Adatváltási időt (RTT) TCP-beszélgetések, azt fogja csak megtekintik a TCP-kézfogás részt vevő első két csomagokat. Hogy fogják használni a háromutas kézfogás meg az első két csomagok, amelyek [SZIN], [SZIN, Nyugtázási] csomagokat. A TCP-fejlécében beállítású néven szerepelnek. A legutóbbi csomagot a kézfogás, a [ACK] csomagot, az ebben a forgatókönyvben nem használható. A [SZIN] csomagot küld a rendszer az ügyfél által. Után érkezik, a kiszolgáló elküldi a [ACK] csomagot a szinkronizálás a mi fogadása az ügyfél jóváhagyva. Kihasználva a tény, hogy a kiszolgáló válasza nagyon kevés többletterhelést igényel-e, kiszámítása a RTT az idő értékének a [SZIN, Nyugtázási] csomag érkezett az ügyfél a következő időpontig: [SZIN] csomagot az ügyfél által küldött.
 
@@ -63,13 +63,13 @@ A szűrő WireShark a alkalmazni, bontsa ki a "Transmission Control Protocol" sz
 
 Mivel tudjuk szeretne szűrjön az összes [SZIN] és [SZIN, Nyugtázási] csomagok jelzők alatt győződjön meg arról, hogy a szinkronizálás a mi bit értéke 1, majd a jobb gombbal kattintva elérhető a szinkronizálás a mi-bit -> alkalmaz, a kijelölt szűrő ->.
 
-![7. ábra][7]
+![7\. ábra][7]
 
-### <a name="step-4"></a>4. lépés
+### <a name="step-4"></a>4\. lépés
 
 Most, hogy az ablakban csak az [SZIN] bittel csomagok szűrését, beszélgetések is érdeklik a kezdeti RTT megtekintéséhez egyszerűen kiválaszthatja. Egy egyszerű módja az RTT megtekintése a WireShark egyszerűen kattintson a legördülő listában megjelölt "SEQ/ACK" elemzése. Ekkor megjelenik a RTT jelenik meg. Ebben az esetben a RTT 0.0022114 másodperc vagy 2.211 ms volt.
 
-![8. ábra][8]
+![8\. ábra][8]
 
 ## <a name="unwanted-protocols"></a>A nem kívánt protokollok
 
@@ -77,7 +77,7 @@ Az Azure-ban telepített virtuálisgép-példányt futtató számos alkalmazáso
 
 Ebben a példában egy korábbi tanulmányozzák csomagrögzítés nemkívánatos, amelyek azt jelzik a gépen futó alkalmazásból való jogosulatlan kommunikációs protokollok futott.
 
-### <a name="step-1"></a>1. lépés
+### <a name="step-1"></a>1\. lépés
 
 Kattintson az előző forgatókönyvben ugyanazt a rögzítési használatával **statisztika** > **protokoll – hierarchiája**
 
@@ -93,21 +93,21 @@ Ahogy az alábbi képernyőfelvételen látható, hiba történt a forgalmat a t
 
 A típusú forgalom, a végpontok és a portok keresztül továbbítani megértése fontos egy figyelése és hibaelhárítása, alkalmazásokat és a hálózati erőforrásokhoz. A fenti csomagok rögzítési fájl használatával, azt segítségével gyorsan megismerkedhet a virtuális gépnél kommunikáló leggyakoribb célhelyek és kihasználtságának portokat.
 
-### <a name="step-1"></a>1. lépés
+### <a name="step-1"></a>1\. lépés
 
 Kattintson az előző forgatókönyvben ugyanazt a rögzítési használatával **statisztika** > **IPv4 statisztika** > **célhelyek és portok**
 
 ![csomagok rögzítése ablak][4]
 
-### <a name="step-2"></a>2. lépés
+### <a name="step-2"></a>2\. lépés
 
 Az eredmények között, egy sor vesz fel, hogy történt több kapcsolat 111 porton. A leggyakrabban használt port volt 3389-es, amely a távoli asztal, és a fennmaradó RPC dinamikus portok.
 
 Amíg ez a forgalom jelentheti semmit, egy portot, amelyet számos kapcsolatokhoz használt és az rendszergazdájának ismeretlen.
 
-![5. ábra][5]
+![5\. ábra][5]
 
-### <a name="step-3"></a>3. lépés
+### <a name="step-3"></a>3\. lépés
 
 Most, hogy eldöntöttük, kívüli szűrheti a port alapján a rögzítési hely port.
 
@@ -119,7 +119,7 @@ tcp.port == 111
 
 Azt adja meg a fenti szűrő szöveget, a szűrő szövegmezőbe, és az enter.
 
-![6. ábra.][6]
+![6\. ábra.][6]
 
 Az eredmények között látható összes forgalom érkezik egy helyi virtuális gép ugyanazon az alhálózaton. Még mindig nem jól tudjuk miért Ez a forgalom történik, ha azt további vizsgálhatja meg a csomagok segítségével állapítja meg, miért azt, hogy, így ezeket a hívásokat a porton 111. Ezen adatok igénybe a megfelelő műveletet.
 

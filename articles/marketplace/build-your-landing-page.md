@@ -2,24 +2,18 @@
 title: Hozhat létre az Azure Marketplace-en a kezdőlapja |} Az Azure
 description: Ismerje meg, hogyan hozhat létre egy kezdőlapja az Azure Marketplace-en és a Microsoft AppSource, alkalmazás és szolgáltatás-közzétevők.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: jm-aditi-ms
 manager: pabutler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 06/04/2018
 ms.author: ellacroi
-ms.openlocfilehash: d3af6484a2c62a0ffa0a21e2df277ef3255ada84
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 1b3f987ff54a4b5eeeb1034d1e99302d0d6d43d6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160858"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64935612"
 ---
 # <a name="build-your-landing-page"></a>Hozhat létre a kezdőlapja
 
@@ -30,7 +24,7 @@ Első lépésként az célok azonosítása. A megoldások válassza ki a cél-ü
 *   A megoldás letöltése
 
 A kezdőlapja között több marketing taktika hivatkozhat. A következő marketing taktika használhatja: 
-*   Események
+*   Events
 *   Webcastok
 *   Közösségi média
 *   Tanulmányok
@@ -43,7 +37,7 @@ Az egységes Ön az üzenetkezelés és a művelet meghívásához minél egysze
 
 Ha egy kampány terv kész van, hozzon létre a kezdőlapja a Marketplace-en. Az alábbi táblázat ismerteti azokat a módszereket segítségével maximalizálhatja a kezdőlapja hatékonysága: 
 
-| Ajánlott eljárás | Elkerülése érdekében |
+| Ajánlott eljárás | Avoid |
 |:--- |:--- |
 | **Milyen ügyfél probléma megoldását megoldást kínál, és hogyan Azure-t használja már meg is valósult kommunikációhoz** | Nem kommunikál a módszereket, amelyben a megoldás együttműködik az Azure-ral. |
 | **Hozzon létre egy rövid, könnyen megjegyezhető URL-címe** | Hosszú URL-címek használatával. Hosszú URL-címek nem könnyen megjegyezhető és biztonságosak megkereséséhez. |

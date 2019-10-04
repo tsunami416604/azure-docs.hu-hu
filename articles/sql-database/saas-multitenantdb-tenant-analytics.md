@@ -1,6 +1,6 @@
 ---
-title: Analytics-lekérdezések futtatásához az Azure SQL Database-adatbázisok |} A Microsoft Docs
-description: Több-bérlős elemzési lekérdezések több Azure SQL Database-adatbázist egy több-bérlős alkalmazásban kinyert adatok segítségével.
+title: Elemzési lekérdezések futtatása az Azure SQL Database-adatbázisokkal | Microsoft Docs
+description: Több-bérlős alkalmazások több Azure SQL Database adatbázisaiból kinyert adatok használatával több-bérlős elemzési lekérdezések.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
@@ -10,59 +10,58 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: anjangsh,billgib,genemi
-manager: craigg
 ms.date: 09/19/2018
-ms.openlocfilehash: 0146f6ca610a25e57771fb21436a70acbdd5a5ef
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: b36911d274a3afb3582d60ea7e85b5afd5f52ece
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58481382"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570285"
 ---
-# <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>Több-bérlős analytics kinyert adatok – több-bérlős app használatával
+# <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>Több-bérlős elemzés a kinyert adatszolgáltatások használatával – több-bérlős alkalmazás
  
-Ebben az oktatóanyagban vezeti végig egy teljes elemzések forgatókönyve egy több-bérlős végrehajtásához. A forgatókönyv azt mutatja be, hogyan engedélyezheti a analytics a cégek számára az intelligens döntések. Szilánkokra osztott adatbázis kinyert adatok segítségével, használhatja analytics betekintést bérlő viselkedése, beleértve azok a Wingtip Tickets SaaS-mintaalkalmazás használatát. Ebben a forgatókönyvben három lépésből áll: 
+Ebben az oktatóanyagban egy teljes elemzési forgatókönyvet ismertetünk a több-bérlős implementációban. A forgatókönyv bemutatja, hogyan teheti lehetővé az elemzés a vállalatok számára az intelligens döntések meghozatalát. A többrétegű adatbázisból kinyert adatok felhasználásával az elemzéssel betekintést nyerhet a bérlők viselkedésére, beleértve a minta Wingtip tickets SaaS-alkalmazás használatát is. Ez a forgatókönyv három lépést foglal magában: 
 
-1.  **Adatok kinyerése** az egyes bérlői adatbázisok egy analytics-tárolójába.
-2.  **A kibontott adatok optimalizálása** analytics feldolgozás céljából.
-3.  Használat **üzleti intelligencia** rajzolja meg a döntéshozatalhoz is útmutató hasznos insights eszközök. 
+1.  **Adatok** kinyerése az egyes bérlői adatbázisokból egy Analytics-tárolóba.
+2.  **Optimalizálja a** kinyert adatelemzési folyamatokat.
+3.  Az **üzleti intelligencia** eszközeivel hasznos elemzéseket készíthet, amelyek útmutatást nyújtanak a döntéshozatalhoz. 
 
 Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
-> - Hozza létre a bérlőt, analytics, az adatokat tárol.
-> - Rugalmas feladatok használatával az adatok kinyerése az egyes bérlői adatbázisok analytics tárolójába.
-> - Optimalizálhatja a kinyert adatok (reorganize csillagséma be).
-> - A lekérdezés az analitikai adatbázis.
-> - Használja a Power BI-adatvizualizáció javaslat javításai, és jelölje ki a bérlő adatainak trendeket.
+> - Hozza létre a bérlői elemzési tárolót az adatok a alkalmazásba való kinyeréséhez.
+> - Rugalmas feladatok használatával kinyerheti az egyes bérlői adatbázisok adatait az Analytics-tárolóba.
+> - Optimalizálja a kinyert adathalmazokat (egy csillag-sémába való átszervezést).
+> - Az elemzési adatbázis lekérdezése.
+> - Az adatvizualizációk Power BI használatával kiemelheti a bérlői adattrendeket, és javaslatokat tehet a tökéletesítésekhez.
 
 ![architectureOverView](media/saas-multitenantdb-tenant-analytics/architectureOverview.png)
 
-## <a name="offline-tenant-analytics-pattern"></a>A kapcsolat nélküli bérlői analitikai mintázat
+## <a name="offline-tenant-analytics-pattern"></a>Offline bérlői elemzési minta
 
-SaaS-alkalmazások fejlesztése a bérlő, a felhőben tárolt adatok hatalmas mennyiségű hozzáférése. Az adatok a művelet és az alkalmazás használatának és a bérlők a működéssel kapcsolatos elemzések gazdag forrását biztosít. Ezen elemzési funkcióinak fejlesztését, használhatóságuk javítását és más befektetéseket az alkalmazás és a platform képes útmutató.
+Az Ön által fejlesztett SaaS-alkalmazások nagy mennyiségű, a felhőben tárolt információhoz férhetnek hozzá. Az adatok széles körű elemzéseket biztosítanak az alkalmazás működéséről és használatáról, valamint a bérlők viselkedéséről. Ezek az ismeretek segítik a funkciók fejlesztését, a használhatóság javítását, valamint az alkalmazás és a platform egyéb befektetéseit.
 
-Az adatokhoz hozzáférő összes bérlőre vonatkozó akkor egyszerű, ha minden adat egyetlen több bérlős adatbázisban. A hozzáférés azonban összetettebb, ha méretezve akár több ezer adatbázis között elosztva. Egy összetettsége eláraszt módja elemzési adatbázis vagy az adattárház az adatok kinyerése érdekében. Ezután lekérdezheti, ha a data warehouse-adattárházat gyűjtsön információt a jegyek adatokból, az összes bérlőre vonatkozóan.
+Az összes bérlőre vonatkozó adatok elérése egyszerű, ha az összes adatok csak egy több-bérlős adatbázisban vannak. A hozzáférés azonban összetettebb, ha több ezer adatbázis között oszlik meg. Az összetettség kinyerésének egyik módja az, hogy kinyeri az adatok elemzését egy elemzési adatbázisba vagy egy adattárházba. Ezután lekérdezheti az adattárházat, hogy bepillantást nyerjen az összes bérlő jegy-adatainak használatával.
 
-Ez az oktatóanyag bemutatja egy teljes körű elemzési forgatókönyv esetében az SaaS-mintaalkalmazás. Először is, a rugalmas feladatok az adatok kivonása az egyes bérlői adatbázisok ütemezésére szolgálnak. A data analytics tárolóhoz zajlik. Az analytics-tároló vagy egy SQL Database vagy az SQL Data Warehouse lehet. A nagy méretű adatok kinyerése [Azure Data Factory](../data-factory/introduction.md) commended van.
+Ez az oktatóanyag egy teljes elemzési forgatókönyvet mutat be ehhez a minta SaaS-alkalmazáshoz. Az első rugalmas feladatok az egyes bérlői adatbázisokból származó adatok kinyerésének a megadására szolgálnak. Az adatküldés egy Analytics-tárolóba történik. Az elemzési tár lehet egy SQL Database vagy egy SQL Data Warehouse. Nagy mennyiségű Adatkiemelés esetén [Azure Data Factory](../data-factory/introduction.md) dicséretet biztosítunk.
 
-Ezután az összesített adatokat t van aprítva [csillagséma-](https://www.wikipedia.org/wiki/Star_schema) táblákat. A táblák egy központi ténytáblát és a kapcsolódó dimenziótábla áll:
+Ezután az összesített adatokat a rendszer a [Star-Schema](https://www.wikipedia.org/wiki/Star_schema) táblákba gyűjti. A táblák egy központi tény tábla és a kapcsolódó dimenzió táblákból állnak:
 
-- A központi ténytáblájából a csillagséma-jegy adatokat tartalmaz.
-- A dimenziótáblák adatainak helyszínek, események, a vásárlók tartalmaz, és a dátumok vásárolhat.
+- A Star-Schema központi tény táblázata a Ticket-adattartalomot tartalmazza.
+- A dimenzió táblák a helyszínekkel, eseményekkel, ügyfelekkel és vásárlási dátumokkal kapcsolatos információkat tartalmaznak.
 
-Együtt a közép- és táblák engedélyezése hatékony elemzési dimenziófeldolgozás. A jelen oktatóanyagban használt csillagséma jelenik meg a következő képen:
+A központi és a dimenzió táblázatok együttesen teszik lehetővé a hatékony analitikai feldolgozást. Az oktatóanyagban használt csillag-séma az alábbi képen látható:
  
 ![StarSchema](media/saas-multitenantdb-tenant-analytics/StarSchema.png)
 
-A csillagséma-táblákat, a rendszer megkérdezi. A lekérdezés eredményeinek vizuálisan megjelennek, jelölje ki a bérlő viselkedése és használata során az alkalmazás. Ez a csillagséma lekérdezések, amelyek segítenek a következőhöz hasonló elemek felderítése futtathat:
+Végül a Star-Schema táblákat kérdezi le. A lekérdezési eredmények vizuálisan jelennek meg, hogy kiemelje a bérlői viselkedést és az alkalmazás használatát. Ezzel a csillag-sémával olyan lekérdezéseket futtathat, amelyek segítenek a következőhöz hasonló elemek felderítésében:
 
-- Akik van vásárlása jegyek és melyik helyszín.
-- Rejtett minták és trendek felismerése, a következő területeken:
-    - Az eladási jegyek.
-    - Minden egyes helyszín relatív népszerűsége.
+- Ki vásárol jegyet és melyik helyszínről.
+- Rejtett minták és trendek a következő területeken:
+    - A jegyek eladása.
+    - Az egyes helyszínek relatív népszerűsége.
 
-Létrehozni a saját igényeinek megfelelő méretformátumok figyelembe vétele service-csomagok ismertetése, hogyan következetesen minden bérlő használja a szolgáltatást biztosít. Ebben az oktatóanyagban, amely a bérlői adatok alapján képes adatokat insights alapszintű példákat.
+Annak megértése, hogy az egyes bérlők milyen konzisztens módon használják a szolgáltatást, lehetővé teszi, hogy szolgáltatási terveket hozzon létre az igényeik kielégítésére. Ez az oktatóanyag a bérlői adatokból begyűjtött elemzések alapvető példáit mutatja be.
 
 ## <a name="setup"></a>Beállítás
 
@@ -70,46 +69,46 @@ Létrehozni a saját igényeinek megfelelő méretformátumok figyelembe vétele
 
 Az oktatóanyag teljesítéséhez meg kell felelnie az alábbi előfeltételeknek:
 
-- A Wingtip Tickets SaaS több-bérlős adatbázis alkalmazás van telepítve. Kevesebb mint öt perc alatt üzembe helyezéséhez lásd: [üzembe helyezés a Wingtip Tickets SaaS több-bérlős adatbázis-alkalmazás és megismerése](saas-multitenantdb-get-started-deploy.md)
-- A Wingtip SaaS-parancsprogramok és az alkalmazás [forráskódját](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDB) letöltődnek a Githubról. Ügyeljen arra, hogy *feloldása a zip-fájl* tartalmának beolvasása előtt. Tekintse meg a [általános útmutatást](saas-tenancy-wingtip-app-guidance-tips.md) töltse le és a Wingtip Tickets SaaS-parancsfájlok feloldása.
-- A Power BI Desktop telepítve van. [A Power BI Desktop letöltése](https://powerbi.microsoft.com/downloads/)
-- További bérlők kötegét kiépítését, tekintse meg a [ **kiépítése katalogizálása oktatóanyag**](saas-multitenantdb-provision-and-catalog.md).
-- Egy feladat az ügynök és a feladat ügynök adatbázis hozták létre. Tekintse meg a megfelelő lépéseket a [ **séma oktatóanyaggal**](saas-multitenantdb-schema-management.md#create-a-job-agent-database-and-new-job-agent).
+- A Wingtip tickets SaaS több-bérlős adatbázis-alkalmazás telepítve van. Ha kevesebb mint öt perc alatt kíván üzembe helyezni, tekintse meg [a Wingtip tickets SaaS több-bérlős adatbázis-alkalmazás üzembe helyezése és megismerése](saas-multitenantdb-get-started-deploy.md) című részt
+- A Wingtip SaaS-parancsfájlok és [](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDB) az alkalmazás forráskódja letölthető a githubról. Győződjön meg arról, hogy *feloldja a zip-fájl zárolását* a tartalom kicsomagolása előtt. Tekintse meg az [általános útmutatót](saas-tenancy-wingtip-app-guidance-tips.md) a Wingtip tickets SaaS-parancsfájlok letöltésének és feloldásának lépéseihez.
+- A Power BI Desktop telepítve van. [Power BI Desktop letöltése](https://powerbi.microsoft.com/downloads/)
+- További bérlők kötegét a bérlők kiépítése oktatóanyagban találhatja [](saas-multitenantdb-provision-and-catalog.md)meg.
+- A rendszer létrehozta A feladatok ügynökét és a Feladatkártya-adatbázist. Tekintse meg a megfelelő lépéseket a [**séma kezelése oktatóanyagban**](saas-multitenantdb-schema-management.md#create-a-job-agent-database-and-new-job-agent).
 
-### <a name="create-data-for-the-demo"></a>A bemutató adatok létrehozása
+### <a name="create-data-for-the-demo"></a>Adatgyűjtés a bemutatóhoz
 
-Ebben az oktatóanyagban az elemzés a jegy értékesítési adatok történik. Az aktuális lépésben a bérlőknek hozhat létre jegyet adatokat.  Később az adatok kinyerésének elemzés céljából. *Győződjön meg arról, ellátta bérlők kötegét a korábban ismertetett módon, hogy rendelkezik egy jelentéssel bíró adatmennyiség*. Egy eléggé nagy mennyiségű adatot számos különböző jegyvásárlási tehetők közzé.
+Ebben az oktatóanyagban az elemzés a Ticket Sales adatain történik. Az aktuális lépésben a bérlők számára is létrehoz jegyet.  Az adatelemzéshez később kinyeri az adatgyűjtést. *Győződjön meg arról, hogy a korábban leírtaknak megfelelően kiépítte a bérlők kötegét, hogy jelentős mennyiségű adattal rendelkezzen*. Egy elég nagy mennyiségű adattal számos különböző jegy-vásárlási minta is elérhető.
 
-1. A **PowerShell ISE-ben**, nyissa meg *...\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1*, és állítsa be a következő értéket:
-    - **$DemoScenario** = **1** jegyek beszerzése minden helyszínen
-2. Nyomja meg **F5** futtassa a szkriptet, és hozzon létre a jegyvásárlások naplóját a minden egyes helyszín minden eseményhez.  A parancsfájl futtatása tickets tízezer létrehozása néhány percig.
+1. A **POWERSHELL ISE**-ben nyissa meg a *. ..\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1*, és állítsa be a következő értéket:
+    - $DemoScenario = **1** vásárlási jegyet az események minden helyszínén
+2. Nyomja le az **F5** billentyűt a szkript futtatásához, és hozzon létre Ticket vásárlási előzményeket minden egyes helyszín eseményeihez.  A szkript több percet is igénybe vehet, hogy több tízezer jegyet lehessen készíteni.
 
-### <a name="deploy-the-analytics-store"></a>Az analytics-tároló üzembe helyezése
-Vannak gyakran számos tranzakciós szilánkokra osztott adatbázisok, amelyek együtt a bérlői adatok tárolásához. A szilánkokra osztott adatbázis egy elemzési tárolójába kell összesíteni a bérlő adatai. Az összesítés lehetővé teszi az adatok hatékony lekérdezések. Ebben az oktatóanyagban egy Azure SQL Database-adatbázis segítségével tárolja az összesített adatokat.
+### <a name="deploy-the-analytics-store"></a>Az Analytics-tároló üzembe helyezése
+Az összes bérlői adattal együtt gyakran több tranzakciós szegmensben lévő adatbázis is található. A bérlői adatokat össze kell összesíteni a szilánkokra osztott adatbázisból egy Analytics-tárolóba. Az Összesítés lehetővé teszi az adatgyűjtés hatékony lekérdezését. Ebben az oktatóanyagban egy Azure SQL Database adatbázis tárolja az összesített adatokat.
 
-A következő lépésekben az analytics tárolóba, amelyet üzembe **tenantanalytics**. Is üzembe helyezheti az előre meghatározott-táblázatot, amely fel van töltve az oktatóanyag későbbi részében:
-1. A PowerShell ISE-ben nyissa meg a *...\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1* 
-2. $DemoScenario változó beállítása az Ön által választott analytics tároló megfelelően a parancsfájl. Tanulási célokra oszlopcentrikus nélkül az SQL database használata javasolt.
-    - SQL-adatbázis nélkül oszlopcentrikus használatához állítsa **$DemoScenario** = **2**
-    - Az oszlopcentrikus SQL database használatához állítsa **$DemoScenario** = **3**  
-3. Nyomja meg **F5** a bemutató-parancsfájl futtatása (amely meghívja a *üzembe helyezés – TenantAnalytics\<XX > .ps1* parancsfájl) a bérlői analitikai tárolóban hoz létre, amely. 
+A következő lépésekben telepíti a **tenantanalytics**nevű Analytics-tárolót. Az oktatóanyagban később feltöltött előre definiált táblákat is üzembe helyezhet:
+1. A PowerShell ISE-ben nyissa meg a *. ..\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1* 
+2. Állítsa be az $DemoScenario változót a parancsfájlban, hogy az megfeleljen a választott elemzési tárolónak. A oszlopcentrikus nélküli SQL Database használata javasolt.
+    - Ha az SQL Database-t oszlopcentrikus nélkül szeretné használni, állítsa be a **$DemoScenario** = **2**
+    - Ha az SQL Database-t az oszlopcentrikus-mel szeretné használni, állítsa be a **$DemoScenario** = **3**  
+3. Nyomja le az **F5** billentyűt a bemutató parancsfájl futtatásához (amely meghívja a *Deploy-TenantAnalytics\<XX >. ps1* parancsfájlt), amely létrehozza a bérlői elemzési tárolót. 
 
-Most, hogy az alkalmazás üzembe helyezése és érdekes bérlői adatok ki vannak töltve, használjon [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) való csatlakozáshoz **tenants1-mt -\<felhasználói\>**  és **katalógus-mt -\<felhasználói\>**  bejelentkezési kiszolgálók = *fejlesztői*, jelszó = *P\@ssword1*.
+Most, hogy telepítette az alkalmazást, és kitöltötte érdekes bérlői adattal, használja a [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) -t a **tenants1\<-\> MT-User** és a **Catalog-MT-\<User\>összekapcsolásához.** a login = *Developer*, Password = *P\@ssword1*használó kiszolgálók.
 
 ![architectureOverView](media/saas-multitenantdb-tenant-analytics/ssmsSignIn.png)
 
-Az Object Explorerben hajtsa végre az alábbi lépéseket:
+A Object Explorer hajtsa végre a következő lépéseket:
 
-1. Bontsa ki a *tenants1-mt -\<felhasználói\>*  kiszolgáló.
-2. Bontsa ki az adatbázisok csomópontot, és tekintse meg *tenants1* több bérlő tartalmazó adatbázis.
-3. Bontsa ki a *katalógus-mt -\<felhasználói\>*  kiszolgáló.
-4. Győződjön meg arról, hogy az analytics-tároló és a feladatfiók nevű adatbázist.
+1. Bontsa ki a *tenants1-\<MT\> -User* kiszolgálót.
+2. Bontsa ki az adatbázisok csomópontot, és tekintse meg a több bérlőt tartalmazó *tenants1* -adatbázist.
+3. Bontsa ki a *katalógus-\<MT\> -User* kiszolgálót.
+4. Ellenőrizze, hogy megjelenik-e az Analytics-tároló és a jobaccount-adatbázis.
 
-Tekintse meg a következő adatbázis-elemek az SSMS Object Explorer az analytics store csomópont kibontásával:
+Az elemzési tár csomópontjának kibontásával tekintse meg a SSMS Object Explorer következő adatbázis-elemeit:
 
-- Táblák **TicketsRawData** és **EventsRawData** a bérlői adatbázisok származó nyers kinyert adatok tárolásához.
-- A csillagséma-táblák **fact_Tickets**, **dim_Customers**, **dim_Venues**, **dim_Events**, és **dim_Dates** .
-- A **sp_ShredRawExtractedData** tárolt eljárás a csillagséma-táblák a nyers adatok táblákból feltöltésére szolgál.
+- A táblák **TicketsRawData** és **EventsRawData** a bérlői adatbázisokból származó nyers kinyert adatokkal rendelkeznek.
+- A Star-Schema táblák a következők: **fact_Tickets**, **dim_Customers**, **dim_Venues**, **dim_Events**és **dim_Dates**.
+- A **sp_ShredRawExtractedData** tárolt eljárás használatával lehet feltölteni a Star-Schema táblákat a nyers adattáblákból.
 
 ![tenantAnalytics](media/saas-multitenantdb-tenant-analytics/tenantAnalytics.png)
 
@@ -117,130 +116,130 @@ Tekintse meg a következő adatbázis-elemek az SSMS Object Explorer az analytic
 
 ### <a name="create-target-groups"></a>Célcsoportok létrehozása 
 
-A folytatás előtt győződjön meg arról, központilag telepített a feladat-fiók és a feladatfiók adatbázisban. A következő lépések készletben az Elastic Jobs adatok kinyerése a bérlők szilánkokra osztott adatbázis, és az analytics-tárolóban lévő adatok tárolásához használatos. Ezután a második feladat shreds az adatokat, és tárolja a csillagséma-táblákba. Ezek a feladatok két nevezetesen futtatásához két különböző célcsoportokhoz, **TenantGroup** és **AnalyticsGroup**. A kinyerési feladat fut a TenantGroup, amely tartalmazza az összes bérlői adatbázison. A aprítási feladat fut a AnalyticsGroup, amely csak az analytics-tároló tartalmazza. Az alábbi lépéseket követve hozzon létre a célcsoportok:
+A folytatás előtt győződjön meg arról, hogy telepítette a projektfeladat-és jobaccount-adatbázist. A következő lépések során a rugalmas feladatok segítségével kinyerheti az adatok kinyerését a horizontálisan használt bérlők adatbázisából, és tárolhatja azokat az elemzési tárolóban. Ezután a második feladatsor felfordítja az adatokra, és a csillag-séma tábláiba tárolja azokat. Ez a két feladat két különböző célcsoporton fut, nevezetesen a **TenantGroup** és a **AnalyticsGroup**. A kinyerési művelet az összes bérlői adatbázist tartalmazó TenantGroup fut. Az aprítási feladatok a AnalyticsGroup futnak, amely csak az Analytics-tárolót tartalmazza. Hozza létre a célcsoportokat a következő lépések végrehajtásával:
 
-1. Csatlakozás az ssms-ben, a **jobaccount** katalógus-adatbázis – mt -\<felhasználói\>.
-2. Nyissa meg az ssms-ben, *...\Learning Modules\Operational Analytics\Tenant Analytics\ TargetGroups.sql* 
-3. Módosítsa a @User változó felső részén a parancsfájlt, és cserélje le `<User>` a felhasználó a Wingtip Tickets SaaS több-bérlős adatbázis-alkalmazás üzembe helyezésekor használt értékkel.
-4. Nyomja meg **F5** , amely létrehozza a két célcsoportok szkript futtatásához.
+1. A SSMS-ben kapcsolódjon a **jobaccount** -adatbázishoz a katalógus\<-\>MT-User-ben.
+2. A SSMS nyissa meg a *. ..\Learning Modules\Operational Analytics\Tenant Analytics \ célcsoportok. SQL* 
+3. Módosítsa a @User változót a parancsfájl tetején, és cserélje le `<User>` a kifejezést a Wingtip tickets SaaS több-bérlős adatbázis-alkalmazás üzembe helyezésekor használt felhasználói értékre.
+4. Nyomja le az **F5** billentyűt a két célcsoportot létrehozó parancsfájl futtatásához.
 
-### <a name="extract-raw-data-from-all-tenants"></a>Az összes bérlő nyers adatokat nyerhet ki
+### <a name="extract-raw-data-from-all-tenants"></a>Nyers adatok kinyerése az összes bérlőről
 
-Tranzakciók gyakrabban fordulhatnak elő a *jegyet, és az ügyfél* adatokat, mint a *esemény és illetékességének* adatokat. Emiatt érdemes lehet jegyet, és a vásárlói adatok kinyerése, külön-külön és gyakrabban beolvashatja az esemény-és illetékességének. Ebben a szakaszban határozza meg, és két külön feladatok ütemezése:
+Előfordulhat, hogy a tranzakciók gyakrabban fordulnak elő a *Ticket és az ügyféladatok* esetében, mint az *esemény-és a helyszín* esetében. Ezért érdemes lehet külön és gyakrabban kinyerni a jegyeket és az ügyféladatokat, mint az Event és a helyszín adatok kinyerését. Ebben a szakaszban két különálló feladatot definiál és ütemezhet:
 
-- Bontsa ki a jegyet, és a vásárlói adatokat.
-- Bontsa ki az esemény-és illetékességének.
+- A jegyek és az ügyféladatok kinyerése.
+- Az esemény-és a helyszín adatok kinyerése.
 
-Minden egyes feladat kinyeri az adatokat, és közzéteszi azt az analytics-tárolóba. Nincs külön feladatot a kinyert adatok shreds az analytics csillagséma-be.
+Az egyes feladatok kinyerik az adataikat, és beolvasják azokat az Analytics-tárolóba. A kinyert adatok az Analytics Star-Schema-ben egy külön feladatsorból állnak.
 
-1. Csatlakozás az ssms-ben, a **jobaccount** katalógus-adatbázis – mt -\<felhasználói\> kiszolgáló.
-2. Nyissa meg az ssms-ben, *...\Learning Modules\Operational Analytics\Tenant Analytics\ExtractTickets.sql*.
-3. Módosítsa @User felső részén a parancsfájlt, és cserélje le `<User>` a Wingtip Tickets SaaS több-bérlős adatbázis-alkalmazás üzembe helyezésekor használt felhasználónévvel. 
-4. Nyomja meg **F5** a parancsfájl, amely létrehoz és futtatja a feladatot, amely a jegyeket, és az ügyfelek adatokat gyűjt mindegyik bérlői adatbázis futtatásához. A feladat menti az adatokat az analytics-tárolóba.
-5. A lekérdezés a TicketsRawData táblát az adatbázisban tenantanalytics, győződjön meg arról, hogy a táblázat az összes bérlő jegyek adatokkal van feltöltve.
+1. A SSMS-ben kapcsolódjon a **jobaccount** -adatbázishoz a Catalog\<-\> MT-User kiszolgálón.
+2. A SSMS-ben nyissa meg a *. ..\Learning Modules\Operational Analytics\Tenant Analytics\ExtractTickets.SQL*.
+3. Módosítsa @User a szkriptet a parancsfájl tetején, és cserélje `<User>` le a nevet a Wingtip tickets SaaS több-bérlős adatbázis-alkalmazás üzembe helyezésekor használt felhasználónévre. 
+4. Az **F5** billentyű lenyomásával futtathatja a parancsfájlt, amely létrehozza és futtatja a jegyeket és az ügyfelek adatait az egyes bérlői adatbázisokból. A művelet elmenti az adatok elemzését az Analytics-tárolóba.
+5. A tenantanalytics-adatbázis TicketsRawData táblájának lekérdezése annak biztosítására, hogy a tábla az összes bérlőről származó jegyek adataival legyen feltöltve.
 
 ![ticketExtracts](media/saas-multitenantdb-tenant-analytics/ticketExtracts.png)
 
-Ismételje meg a fenti lépéseket, kivételével ez idő cserélje le **\ExtractTickets.sql** a **\ExtractVenuesEvents.sql** 2. lépés.
+Ismételje meg az előző lépéseket, a 2. lépésben lecserélve a **\ExtractTickets.SQL** a **\ExtractVenuesEvents.SQL** elemre.
 
-A feladat sikeresen elindítva tölti fel az új események és a helyszínek adatokkal az összes bérlő analytics tároló EventsRawData táblájában. 
+A feladatot sikeresen futtatva az Analytics-tárolóban található EventsRawData-tábla feltölti az összes bérlő új eseményeit és helyszíneit. 
 
-## <a name="data-reorganization"></a>Adatok átszervezési
+## <a name="data-reorganization"></a>Adatátszervezés
 
-### <a name="shred-extracted-data-to-populate-star-schema-tables"></a>Zúzására szolgálnak kinyert adatok feltöltése a csillagséma-táblák
+### <a name="shred-extracted-data-to-populate-star-schema-tables"></a>Kibontott adatok a Star-Schema táblák feltöltéséhez
 
-A következő lépés, hogy zúzására szolgálnak a kinyert nyers adatokat az elemzési lekérdezések optimalizált táblák egy készlete. A csillagséma szolgál. Egy központi ténytábla az egyéni jegy értékesítési rekordokat tartalmazza. Dimenziótáblák helyszínek, események, a vásárlók adatokkal van feltöltve, és a dátumok vásárolhat. 
+A következő lépés a kinyert nyers adatok beillesztése az elemzési lekérdezésekhez optimalizált táblák halmazára. A rendszer csillag-sémát használ. A központi tábla az egyes Ticket Sales rekordokat tartalmazza. A dimenzió táblák a helyszínekkel, eseményekkel, ügyfelekkel és vásárlási dátumokkal kapcsolatos adatokkal vannak feltöltve. 
 
-Az oktatóanyag jelen szakaszában határozza meg, majd futtassa egy feladatot, amely egyesíti a csillagséma-táblázatokban lévő adatok a kinyert nyers adatokat. A merge feladat befejezése után a nyers adatok törlődnek, készen áll a következő bérlői adatok feltölthető a táblákat és csomagolja ki a feladat.
+Az oktatóanyag ezen szakaszában definiálhat és futtathat egy olyan feladatot, amely egyesíti a kinyert nyers adatmennyiséget a Star-Schema táblákban található adatokkal. Az egyesítési feladatok befejezése után a rendszer törli a nyers adatokat, így a táblák készen állnak a következő bérlői adatkivonati feladatokkal való feltöltésre.
 
-1. Csatlakozás az ssms-ben, a **jobaccount** katalógus-adatbázis – mt -\<felhasználói\>.
-2. In SSMS, open *…\Learning Modules\Operational Analytics\Tenant Analytics\ShredRawExtractedData.sql*.
-3. Nyomja meg **F5** futtassa a parancsfájlt egy feladatot, amely meghívja a sp_ShredRawExtractedData meghatározásához tárolt eljárást az analytics-tárolóban.
-4. Hagyjon elegendő időt a feladat sikeresen lefutott.
-    - Ellenőrizze a **életciklus** jobs.jobs_execution táblázat a feladat állapotát. Ellenőrizze, hogy a feladat **sikeres** a folytatás előtt. Sikeres futtatás a következő diagram hasonló adatokat jelenít meg:
+1. A SSMS-ben kapcsolódjon a **jobaccount** -adatbázishoz a katalógus\<-\>MT-User-ben.
+2. A SSMS-ben nyissa meg a *. ..\Learning Modules\Operational Analytics\Tenant Analytics\ShredRawExtractedData.SQL*.
+3. Nyomja le az **F5** billentyűt a szkript futtatásához egy olyan feladat definiálásához, amely meghívja az sp_ShredRawExtractedData tárolt eljárást az Analytics-tárolóban.
+4. A feladatok sikeres futtatásának engedélyezése elég idő.
+    - Tekintse meg a Jobs. jobs_execution tábla **életciklus** oszlopát a feladat állapotához. A folytatás előtt győződjön meg arról, hogy a művelet **sikeres** volt. A sikeres Futtatás az alábbi diagramhoz hasonló adattípust jelenít meg:
 
 ![shreddingJob](media/saas-multitenantdb-tenant-analytics/shreddingJob.PNG)
 
-## <a name="data-exploration"></a>Az adatok feltárása
+## <a name="data-exploration"></a>Adatelemzés
 
-### <a name="visualize-tenant-data"></a>Bérlői adatok megjelenítése
+### <a name="visualize-tenant-data"></a>Bérlői adatmegjelenítés
 
-A csillagséma-táblában lévő adatokat biztosít minden a jegy értékesítési adatokat az elemzéshez szükséges. Könnyebben tekintse meg a nagy méretű adatkészleteket a trendeket, meg kell jelenítheti meg grafikusan.  Ebben a szakaszban megismerheti, hogyan használható **Power BI** feldolgozására, és ki kell olvasni, és megszervezni bérlői adatok vizualizálásához.
+A Star-Schema tábla adatai az elemzéshez szükséges összes Ticket Sales-adatforgalmat biztosítják. A nagyméretű adatkészletek trendjeinek könnyebb megjelenítéséhez grafikusan kell megjelenítenie.  Ebből a szakaszból megtudhatja, hogyan kezelheti és jelenítheti meg a kinyert és szervezett bérlői információkat a **Power bi** használatával.
 
-Csatlakozás a Power bi-ba, illetve importálhatja a korábban létrehozott nézetek, kövesse az alábbi lépéseket:
+A következő lépésekkel csatlakozhat a Power BIhoz, és importálhatja a korábban létrehozott nézeteket:
 
-1. Indítsa el a Power BI desktopban.
-2. A kezdőlap menüszalagon válassza **adatok lekérése**, és válassza ki **több...** a menüből.
-3. Az a **adatok lekérése** ablakban válassza ki az Azure SQL Database.
-4. Az adatbázis bejelentkezési ablakban írja be a kiszolgáló nevét (catalog-mt -\<felhasználói\>. database.windows.net). Válassza ki **importálás** a **adatkapcsolati mód**, majd kattintson az OK gombra. 
+1. Indítsa el Power BI Desktopot.
+2. A Kezdőlap menüszalagon válassza az **adatok**lekérése lehetőséget, és válassza a **továbbiak...** lehetőséget. a menüből.
+3. Az **adatlekérdezés** ablakban válassza a Azure SQL Database lehetőséget.
+4. Az adatbázis-bejelentkezés ablakban adja meg a kiszolgáló nevét (Catalog-MT-\<User\>. database.Windows.net). Válassza az **Importálás** adatkapcsolati **módra**lehetőséget, majd kattintson az OK gombra. 
 
     ![powerBISignIn](media/saas-multitenantdb-tenant-analytics/powerBISignIn.PNG)
 
-5. Válassza ki **adatbázis** a bal oldali panelen, majd adjon meg felhasználónevet = *fejlesztői*, és adja meg a jelszó = *P\@ssword1*. Kattintson a **Connect** (Csatlakozás) gombra.  
+5. Válassza ki az **adatbázist** a bal oldali ablaktáblán, majd írja be a Felhasználónév = *fejlesztő*nevet, majd írja be a Password = *P\@ssword1*értéket. Kattintson a **Csatlakozás** gombra.  
 
     ![DatabaseSignIn](media/saas-multitenantdb-tenant-analytics/databaseSignIn.PNG)
 
-6. Az a **kezelő** az analitikai adatbázis oldali ablaktábla, válassza ki a csillagséma-táblákat: fact_Tickets, dim_Events, dim_Venues, dim_Customers és dim_Dates. Válassza ki **terhelés**. 
+6. A **navigátor** ablaktábla elemzési adatbázis területén válassza ki a csillag-séma táblákat: Fact_Tickets, Dim_Events, Dim_Venues, Dim_Customers és dim_Dates. Ezután válasszaa betöltés lehetőséget. 
 
-Gratulálunk! Az adatok Power BI-bA sikeresen töltött. Most már megkezdheti segítségével betekintést nyerhet a bérlők számára érdekes vizualizációkat. A következő vezeti végig, hogyan analytics engedélyezheti, hogy a Wingtip Tickets üzleti csapatnak adatvezérelt javaslatok. A javaslatok segíthetnek az üzleti modell és a felhasználói élmény optimalizálása.
+Gratulálunk! Sikeresen betöltötte az adatPower BIba. Most már megkezdheti az érdekes vizualizációk megismerését, hogy könnyebben betekintést nyerjen a bérlők felé. A következő lépésekkel megtudhatja, hogyan teheti lehetővé az adatvezérelt ajánlásokat a Wingtip tickets Business csapat számára. A javaslatok segítségével optimalizálható az üzleti modell és a felhasználói élmény.
 
-Első lépésként tekintse meg a szintaxis eltérése a helyszínek között, a jegy értékesítési adatok elemzése. Válassza ki az alábbi beállítások a Power bi-ban minden egyes helyszín által értékesített jegyek száma a sáv diagram megrajzolásához. A jegy generátor véletlenszerű változat, mert az eredmények eltérőek lehetnek.
+Első lépésként elemezze a jegyek értékesítési adatait, hogy megtekintse a különböző helyszíneken használatos változást. Válassza ki az alábbi beállításokat a Power BI az egyes helyszíneken eladott jegyek teljes számát ábrázoló sávdiagram ábrázolásához. A Ticket Generator véletlenszerű variációja miatt előfordulhat, hogy az eredmények eltérőek.
  
 ![TotalTicketsByVenues](media/saas-multitenantdb-tenant-analytics/TotalTicketsByVenues.PNG)
 
-A fenti diagram megerősíti, hogy minden egyes helyszín által értékesített jegyek száma változhat. Helyszínek, amely további jegyek értékesítésére, amelyek kevesebb jegyek értékesítésére helyszínek részletesebben használja a szolgáltatást. Előfordulhat, hogy az erőforrás-elosztás másik bérlőben igényeinek megfelelően testre szabni itt lehetőséget.
+Az előző ábra megerősíti, hogy az egyes helyszínek által eladott jegyek száma változó. A több jegyet értékesítő helyszínek sokkal nagyobb mértékben használják a szolgáltatást, mint a kevesebb jegyet értékesítő helyszíneken. Lehetőség van arra, hogy az erőforrás-kiosztást a különböző bérlői igényeknek megfelelően testre lehessen szabni.
 
-Elemezheti az adatait, hogy lássa, hogyan jegyeladásokkal változnak idővel további. Válassza ki az alábbi beállítások a Power BI 60 nappal minden nap értékesített jegyek száma ábrázolásához.
+Tovább elemezheti az adatelemzést, hogy megtudja, hogyan változnak a jegyek forgalma az idő múlásával. Válassza ki az alábbi beállításokat a Power BIban az egyes napokon a 60 napos időszakra eladott jegyek teljes számának ábrázolásához.
  
 ![SaleVersusDate](media/saas-multitenantdb-tenant-analytics/SaleVersusDate.PNG)
 
-A fenti diagram megjeleníti a jegy értékesítési megnövekedett, az egyes helyszínek. Kedvez a cél, hogy egyes helyszínek lehet, hogy lehet felhasználása rendszererőforrások aránytalanul megerősítése. Amennyiben nem áll sem nyilvánvaló minta esetén fordulhat elő, az adatforgalmi csúcsokhoz.
+Az előző diagramon látható, hogy egyes helyszíneken a Ticket Sales Spike szerepel. Ezek a tüskék erősítik azt a gondolatot, hogy egyes helyszínek aránytalanul nagy mennyiségű rendszererőforrást fogyasztanak. Eddig nem látható mintázat a tüskék előfordulásakor.
 
-Ezután további vizsgálni kívánt ezek csúcsnapok értékesítés jelentőségét. Amikor hajtsa végre ezeket a csúcsok azt követően merülhet fel jegyek árusítása? Jeleníti meg napi értékesített jegyeket, válassza ki az alábbi beállítások a Power bi-ban.
+Ezt követően továbbra is meg kívánja vizsgálni ezeknek a maximális értékesítési napoknak a jelentőségét. Mikor fordulnak elő ezek a csúcsok a jegyek eladása után? A naponta eladott jegyek kiválasztásához válassza a következő lehetőségeket a Power BI.
 
 ![SaleDayDistribution](media/saas-multitenantdb-tenant-analytics/SaleDistributionPerDay.PNG)
 
-A fenti diagram bemutatja, hogy egyes helyszínek értékesítési első napján jegyek rengeteg értékesíteni. Amint a jegyek árusítása, ezek helyszínek, úgy tűnik, hogy mad sürgős. Ez a tevékenység által néhány helyszínek adatlöketek hatással lehet a szolgáltatás más bérlők számára.
+Az előző ábrán látható, hogy egyes helyszínek nagy mennyiségű jegyet árulnak az első napján. Amint a jegyek ezen a helyszíneken kerülnek értékesítésre, úgy tűnik, hogy egy őrült rohanás. Ez a feltört tevékenység néhány helyszín esetében hatással lehet a szolgáltatásra más bérlők esetében.
 
-Az adatok ismételt használatával ellenőrizheti a mad sürgős teljesül-e az összes esemény ezek helyszínek által üzemeltetett részletesen is. Az előző grafikon figyelhető meg, hogy a Contoso Concert Hall értékesít jegyek rengeteg, és hogy Contoso is ugrásszerű jegyeladásokkal az egyes napokon. A Contoso Concert Hall, az események mindegyike értékesítési trendek összpontosító összegző jegyeladásokkal nyomtatandó Power BI beállítások módosításával. Hajtsa végre az összes esemény hajtsa végre az értékesítési minta?
+Az adat részletezésével megtekintheti, hogy ez az őrült rohanás igaz-e az ezen helyszínek által üzemeltetett összes esemény esetében. A korábbi mintaterületeken megfigyelte, hogy a contoso Concert Hall nagy mennyiségű jegyet árul, és a contoso egy adott napon belül is tartalmaz egy tüske-értékesítést. A Power BI lehetőségek közül választhat a contoso Concert-csarnok összesített jegyeladásának ábrázolásához, amely az egyes események értékesítési trendjeire koncentrál. Az összes esemény ugyanazt az eladási mintát követi?
 
 ![ContosoSales](media/saas-multitenantdb-tenant-analytics/EventSaleTrends.PNG)
 
-A Contoso Concert Hall a fenti diagram bemutatja, hogy a mad sürgős sem történik az összes esemény. A szűrési lehetőségek értékesítési trendeket a többi helyszínek módosításával.
+A contoso Concert Hall előző ábrázolása azt mutatja, hogy a Mad Rush nem minden eseménynél fordul elő. A szűrési beállításokkal megtekintheti az értékesítési trendeket más helyszíneken.
 
-Minták jegyárusító betekintést az üzleti modell optimalizálása érdekében a Wingtip Tickets vezethet. Helyett az összes bérlőre vonatkozóan egyaránt díjszabási, például a Wingtip be kell vezetnie a szolgáltatási szintek a különböző számítási méretekre. Nagyobb helyszínek, amely naponta több jegyek értékesítésére kell egy magasabb szintű szolgáltatói szerződést (SLA) a magasabb szintű sikerült kínáljuk. Ezek a helyszínek lehet adatbázisaikat, adatbázis-erőforrás magasabb korlátokkal rendelkező készlet helyezi el. Minden szolgáltatási szint sikerült óránkénti értékesítési adatkeret, további díjakat számítanak fel díjat a meghaladja a lefoglalt rendelkezik. Nagyobb helyszínek, amelyek rendszeres adatlöketekkel értékesítési előnyös a magasabb szintű, és a Wingtip Tickets hatékonyabb szolgáltatást is értékesítheti.
+A jegyek értékesítési mintáinak betekintése Wingtip jegyeket eredményezhet üzleti modelljének optimalizálásához. Az összes bérlő egyforma kitöltése helyett előfordulhat, hogy a Wingtip különböző számítási méretekkel kell bevezetni a szolgáltatási szinteket. A naponta több jegyet értékesítő nagyobb helyszínek magasabb szintű szolgáltatói szerződéssel (SLA) is elérhetők. Ezeknek a helyszíneknek az adatbázisai a készletbe helyezhetők, és az adatbázison belüli erőforrások korlátai magasabbak. Az egyes szolgáltatási szintek óránkénti értékesítési kiosztással rendelkezhetnek, és a foglalást meghaladó költségekkel számoljuk el. Az időszakos értékesítési lehetőségekkel rendelkező nagyobb helyszínek a magasabb szinteken is hasznosak lehetnek, és a Wingtip jegyek hatékonyabban növelhetik a szolgáltatást.
 
-Ugyanakkor az egyes Wingtip Tickets ügyfeleink panaszok, hogy azok kihívást jelent, hogy adja meg a szolgáltatás költsége elegendő jegyek értékesítésére. Talán az ilyen elemzést van lehetőség jegyeladásokkal helyszínek végrehajtása alatt növelése érdekében. Magasabb értékesítési lenne növelje mintavételezéskor a szolgáltatás. Kattintson a jobb gombbal a fact_Tickets, és válassza ki **új mérték**. Adja meg az új mérték neve a következő kifejezést **AverageTicketsSold**:
+Néhány Wingtip-jegy arra is panaszkodik, hogy az ügyfelek nem tudnak elegendő jegyet értékesíteni, hogy igazolják a szolgáltatás költségeit. Előfordulhat, hogy ezekben az elemzésekben lehetőség van a jegyek értékesítésének növelésére a helyszíneken. A magasabb eladások növelhetik a szolgáltatás észlelt értékét. Kattintson jobb gombbal a fact_Tickets elemre, és válassza az **új mérték**lehetőséget. Adja meg a következő kifejezést a **AverageTicketsSold**nevű új mértékhez:
 
 ```
 AverageTicketsSold = DIVIDE(DIVIDE(COUNTROWS(fact_Tickets),DISTINCT(dim_Venues[VenueCapacity]))*100, COUNTROWS(dim_Events))
 ```
 
-Válassza ki az alábbi Vizualizáció lehetőségek a relatív sikerük meghatározásához minden egyes helyszín által értékesített százalékos jegyek ábrázolásához.
+A következő vizualizációs beállítások kiválasztásával ábrázolhatja az egyes helyszíneken eladott jegyek százalékos arányát a relatív sikeresség megállapításához.
 
 ![analyticsViews](media/saas-multitenantdb-tenant-analytics/AvgTicketsByVenues.PNG)
 
-A fenti diagram bemutatja, hogy annak ellenére, hogy a legtöbb helyszínek több mint 80 %-a jegyek értékesítésére, néhány elterjedtek már több mint fele a munkaállomások adja meg. Játsszon egy kicsit az értékeket is minden egyes helyszín értékesített jegyek maximális és minimális aránya kiválasztásához.
+Az előző ábrán látható, hogy bár a legtöbb helyszín több mint 80%-át értékesíti a jegyeket, néhányan azért küzd, hogy több mint felet töltsön ki a helyükre. Az egyes helyszínekre eladott jegyek maximális vagy minimális százalékos arányának kiválasztásához az értékekkel is játszhat.
 
-Korábban, mélyíteni felderíteni, hogy jegyeladásokkal általában a kiszámítható mintázatú hajtsa végre az elemzést. Ez a felderítés előfordulhat, hogy lehetővé teszik a Wingtip Tickets súgó alulteljesítő helyszínek boost jegyeladásokkal dinamikus díjszabás javaslatot. Ez a felderítés lehetőséget a alkalmazni a machine learning-módszerekkel előre jelezni az egyes eseményekhez jegyeladásokkal sikerült felfedéséhez. Előrejelzés is sikerült arról, hogy a bevétel jegyeladásokkal díjára ajánlat gyakorolt hatást. Power BI Embedded sikerült integrálni kell egy event management alkalmazás. Az integráció segíti a jelenítheti meg az előre jelzett értékesítési és a különböző kedvezmények hatását. Az alkalmazás segíti a megtervezi a közvetlenül az analytics megjelenítése a alkalmazni egy optimális kedvezményt.
+Korábban elmélyíti az elemzést, amely felderíti, hogy a jegyek értékesítései általában előre jelezhető mintákat követnek. Ez a felderítés lehetővé teheti, hogy a Wingtip jegyek a dinamikus díjszabásra vonatkozó javaslatokkal növelhetik a jegyek értékesítését. Ez a felderítés felfedi a lehetőséget, hogy gépi tanulási technikákat alkalmazzon az egyes eseményekhez tartozó jegyeladások előrejelzéséhez. Előrejelzéseket is el lehet végezni a jegyek értékesítésével járó kedvezményekre gyakorolt hatás tekintetében. Power BI Embedded integrálható egy eseménykezelő alkalmazásba. Az integráció segíthet az előre jelzett eladások megjelenítésében és a különböző kedvezmények hatásán. Az alkalmazás segíthet kialakítani az optimális kedvezményt, amelyet közvetlenül az elemzési kijelzőből alkalmazhat.
 
-A Wingtip Tickets SaaS több-bérlős adatbázis alkalmazás bérlő adatait a trendeket rendelkezik figyelhető meg. Azt is fontolóra egyéb módon az alkalmazás tájékoztatják a SaaS-tesztjéről alkalmazásszállítók számára üzleti döntéseket hozhasson. Szállítók jobban is biztosíthat a bérlők számára szükséges. Remélhetőleg ebben az oktatóanyagban van szerelve, a cégek számára az adatvezérelt döntések megjelenő új bérlő adatainak elemzés végrehajtásához szükséges eszközöket.
+Megfigyelte a Wingtip tickets SaaS több-bérlős adatbázis-alkalmazás bérlői adatainak tendenciáit. Más módokat is átadhat az alkalmazásnak az SaaS-alkalmazások gyártóinak üzleti döntéseiről. A szállítók jobban ellátják a bérlők igényeit. Remélhetőleg ez az oktatóanyag olyan eszközöket tartalmaz, amelyek szükségesek a bérlői adatok elemzéséhez, hogy a vállalatoknak adatvezérelt döntéseket lehessen hozni.
 
 ## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> - Üzembe helyezett előre definiált csillagsémával táblák bérlői analitikai adatbázis létrehozása
-> - Adatok kinyerése a bérlői adatbázis használt rugalmas feladatok
-> - A kibontott adatok egyesítése analytics tervezett csillagséma lévő táblák
+> - Bérlői elemzési adatbázis üzembe helyezése előre definiált Star Schema Tables-táblázatokkal
+> - Rugalmas feladatok használata az adatok kinyeréséhez az összes bérlői adatbázisból
+> - A kinyert adathalmazok egyesítése az elemzésre tervezett csillag-séma tábláiba
 > - Elemzési adatbázis lekérdezése 
-> - Figyelje meg a bérlő adatainak trendeket adatvizualizáció a Power BI használatával 
+> - A bérlői adatvizualizációk trendjeinek megfigyelése Power BI használatával 
 
 Gratulálunk!
 
 ## <a name="additional-resources"></a>További források
 
-További [oktatóanyagok, amely a Wingtip SaaS-alkalmazás útmutatóra](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials). 
-- [Rugalmas feladatok](sql-database-elastic-jobs-overview.md).
-- [A kinyert adatoknak - egybérlős alkalmazást több-bérlős analytics használatával](saas-tenancy-tenant-analytics.md) 
+[Az Wingtip SaaS](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)-alkalmazásra épülő további oktatóanyagok. 
+- [Rugalmas feladatok](elastic-jobs-overview.md).
+- [Több-bérlős elemzés a kinyert adategységek használatával – egybérlős alkalmazás](saas-tenancy-tenant-analytics.md) 

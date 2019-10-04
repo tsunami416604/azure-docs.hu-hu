@@ -1,5 +1,5 @@
 ---
-title: A Terraform használata az Azure Cloud Shell-lel
+title: A Terraform Azure Cloud Shell konfigurálása
 description: A Terraform Azure Cloud Shell-lel való használatával egyszerűsíthető a hitelesítés és a sablonok konfigurációja.
 services: terraform
 ms.service: azure
@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/19/2017
-ms.openlocfilehash: ab2fd0c7fa546201d6eb19f727053a9ac54fa854
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.date: 09/20/2019
+ms.openlocfilehash: e0a59697a3e4da97cf082c4c771fe93ad33b6035
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57773063"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173557"
 ---
 # <a name="terraform-cloud-shell-development"></a>Cloud Shell-alapú Terraform-fejlesztések 
 
@@ -33,7 +33,7 @@ A Terraform telepítve van, és azonnal elérhető a Cloud Shellben. A Cloud She
 
 Az Azure Terraform-moduloknak hitelesítő adatokra van szükségük az Azure-előfizetésben lévő erőforrások eléréséhez és módosításához. A Cloud Shell használata esetén az Azure Terraform-modulok Cloud Shellben való használatához egészítse ki a szkripteket a következő kóddal:
 
-```tf
+```hcl
 # Configure the Microsoft Azure Provider
 provider "azurerm" {
 }

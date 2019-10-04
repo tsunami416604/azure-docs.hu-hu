@@ -1,6 +1,6 @@
 ---
-title: Diagnosztikai beállítások áttelepítése az Azure IoT Hub |} A Microsoft Docs
-description: Hogyan lehet frissíteni az Azure IoT hubra az Azure diagnosztikai beállítások használata helyett a műveletek, az IoT hub valós idejű műveleti állapotának figyelése.
+title: Azure-IoT Hub áttérni a diagnosztikai beállításokra | Microsoft Docs
+description: Az Azure IoT Hub frissítése az Azure Diagnostics beállításainak az Operations monitoring helyett történő használatára az IoT hub műveleteinek valós idejű figyeléséhez.
 author: kgremban
 manager: philmea
 ms.service: iot-hub
@@ -8,55 +8,55 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: kgremban
-ms.openlocfilehash: b6cde8402c699a7477cd0efc79a44b3f5e150ad0
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 0feca8b477a1d76eae9e3f41de0026a33cc3249d
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57792650"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259333"
 ---
-# <a name="migrate-your-iot-hub-from-operations-monitoring-to-diagnostics-settings"></a>Az IoT Hub át műveletek figyelése a diagnosztikai beállítások
+# <a name="migrate-your-iot-hub-from-operations-monitoring-to-diagnostics-settings"></a>IoT Hub migrálása az Operations monitoringból a diagnosztikai beállításokba
 
-Használó ügyfelek [műveletek figyelése](iot-hub-operations-monitoring.md) műveletek az IoT Hub állapotának nyomon követését is áttelepíthet az adott munkafolyamat [Azure diagnosztikai beállítások](../azure-monitor/platform/diagnostic-logs-overview.md), az Azure Monitor szolgáltatás. Diagnosztikai beállítások adja meg az erőforráscsoport-szintű diagnosztikai adatok számos Azure-szolgáltatásokhoz.
+Azok az ügyfelek, akik az [Operations monitoring](iot-hub-operations-monitoring.md) használatával követik a IoT hub műveleteit, áttelepíthetik ezt a munkafolyamatot az [Azure Diagnostics-beállításokba](../azure-monitor/platform/resource-logs-overview.md), a Azure monitor egy szolgáltatására. A diagnosztikai beállítások számos Azure-szolgáltatás erőforrás-szintű diagnosztikai információit biztosítják.
 
-**A műveletek az IoT Hub figyelési funkció elavult**, és a portál el lett távolítva. Ez a cikk lépéseit a műveletek figyelése a diagnosztikai beállításokba mozgatását. Az elavulással kapcsolatos ütemterv kapcsolatos további információkért lásd: [monitorozása az Azure IoT-megoldások az Azure monitorral és az Azure Resource Health](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health/).
+**A IoT hub Operations monitoring funkciója elavult**, és el lett távolítva a portálról. Ez a cikk azokat a lépéseket ismerteti, amelyekkel áthelyezheti a számítási feladatokat az operatív figyelésből a diagnosztikai beállításokba. Az elavult idővonalról további információt az [Azure IoT-megoldások monitorozása Azure monitor és Azure Resource Health](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health/)című témakörben talál.
 
 ## <a name="update-iot-hub"></a>Update IoT Hub
 
-Az Azure Portalon az IoT Hub frissíteni, először kapcsolja be a diagnosztikai beállítások, majd kapcsolja ki a műveletek figyelése.  
+A Azure Portal IoT Hub frissítéséhez először kapcsolja be a diagnosztikai beállításokat, majd kapcsolja ki a műveletek figyelését.  
 
 [!INCLUDE [iot-hub-diagnostics-settings](../../includes/iot-hub-diagnostics-settings.md)]
 
-### <a name="turn-off-operations-monitoring"></a>Kapcsolja ki a műveletek figyelése
+### <a name="turn-off-operations-monitoring"></a>Műveletek figyelésének kikapcsolása
 
 > [!NOTE]
-> Mint 2019. március 11, a műveletek a figyelési funkció eltávolítják az IoT Hub az Azure portal felületén. Az alábbi lépések már nem érvényesek. Át, győződjön meg róla, hogy a helyes-e kategóriák közül az Azure Monitor diagnosztikai beállítások fenti vannak kapcsolva.
+> 2019. március 11-én az Operations monitoring szolgáltatás el lett távolítva a IoT Hub Azure Portal felületéről. Az alábbi lépések már nem érvényesek. A Migrálás előtt győződjön meg arról, hogy a megfelelő kategóriák be vannak kapcsolva Azure Monitor a fenti diagnosztikai beállításokban.
 
-Után az új diagnosztikai beállítások tesztelni a munkafolyamat, kikapcsolhatja a hálózatfigyelési szolgáltatást műveleteket. 
+Ha teszteli az új diagnosztikai beállításokat a munkafolyamatban, kikapcsolhatja az Operations monitoring funkciót. 
 
-1. Válassza ki az IoT Hub menüben **műveletek figyelése**.
+1. A IoT Hub menüben válassza az **Operations monitoring**elemet.
 
-2. Minden felügyeleti kategória területen válassza ki a **None**.
+2. Az egyes figyelési kategóriák területen válassza a **nincs**lehetőséget.
 
-3. A műveletek figyelése a módosítások mentéséhez.
+3. Mentse az Operations monitoring módosításait.
 
-## <a name="update-applications-that-use-operations-monitoring"></a>Műveletek figyelése használó alkalmazások frissítése
+## <a name="update-applications-that-use-operations-monitoring"></a>Operations monitoringot használó alkalmazások frissítése
 
-Műveletek figyelése és a diagnosztikai beállításokat a sémák némileg eltérőek lehetnek. Fontos, hogy a műveletek figyelése ma leképezése a diagnosztikai beállítások által használt sémát használó alkalmazások frissítéséhez. 
+Az operatív monitorozási és diagnosztikai beállítások sémái némileg eltérőek. Fontos, hogy frissítse azokat az alkalmazásokat, amelyek az Operations monitoring szolgáltatást használják ma a diagnosztikai beállítások által használt sémához való leképezéshez. 
 
-Diagnosztikai beállítások nyújt is, öt új kategóriák is elérhetők a nyomkövetésre. Miután frissítette az alkalmazást a meglévő séma, adja hozzá az új kategóriák:
+Emellett a diagnosztikai beállítások öt új kategóriát biztosítanak a nyomon követéshez. Miután frissítette az alkalmazásokat a meglévő sémához, adja hozzá az új kategóriákat is:
 
-* Felhőalapú ikereszköz műveletek
-* Eszközről a felhőbe – az ikereszköz-műveletek
-* Ikereszköz-lekérdezések
+* A felhőből az eszközre irányuló kettős műveletek
+* Az eszközről a felhőbe irányuló kettős művelet
+* Dupla lekérdezés
 * Feladatműveletek
 * Közvetlen metódusok
 
-Lásd: a megadott séma struktúrák [megismerni a sémát a diagnosztikai beállítások](iot-hub-monitor-resource-health.md#understand-the-logs).
+Az adott séma-struktúrákkal kapcsolatban lásd: [a diagnosztikai beállításokhoz tartozó séma megismerése](iot-hub-monitor-resource-health.md#understand-the-logs).
 
-## <a name="monitoring-device-connect-and-disconnect-events-with-low-latency"></a>Eszköz figyelésének csatlakozhat, és közel valós idejű adateléréssel események leválasztása
+## <a name="monitoring-device-connect-and-disconnect-events-with-low-latency"></a>Az eszközök csatlakoztatásának figyelése és az események leválasztása alacsony késéssel
 
-Figyelése eszköz csatlakoztatása, és éles környezetben események leválasztása, javasoljuk, hogy feliratkozik a [ **eszköz leválasztva** esemény](iot-hub-event-grid.md#event-types) az Event Grid értesítéseket kaphat, és figyelheti az eszköz kapcsolati állapotát. Ezzel [oktatóanyag](iot-hub-how-to-order-connection-state-events.md) megtudhatja, hogyan integrálható a csatlakoztatott eszköz és az eszköz leválasztott események az IoT Hub az IoT-megoldás.
+Ha figyelni szeretné az eszköz csatlakoztatását, és leválasztja az eseményeket az éles üzemben, javasoljuk, hogy a riasztások beszerzéséhez és az eszköz kapcsolati állapotának figyeléséhez az eszközön leválasztott Event Grid [ eseményt](iot-hub-event-grid.md#event-types) . Ebből az [oktatóanyagból](iot-hub-how-to-order-connection-state-events.md) megtudhatja, hogyan integrálhatja a csatlakoztatott eszközök és az eszközök kapcsolatait a IoT-megoldás IoT hub.
 
 ## <a name="next-steps"></a>További lépések
 

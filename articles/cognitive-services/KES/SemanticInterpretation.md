@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
 ms.openlocfilehash: 26f8d885f8cf85ab849ba221392df206e492aac4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860813"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60814474"
 ---
 # <a name="semantic-interpretation"></a>Szemantikai értelmezés
 
@@ -33,7 +33,7 @@ A változó meg van adva, amely betűvel kezdődik, és csak betűket (A – Z),
 
 Az alábbiakban felsoroljuk a jelenleg támogatott adattípusok:
 
-|Typo|Leírás|Példák|
+|Típus|Leírás|Példák|
 |----|----|----|
 |String|0 vagy több karakter sorozata|"Hello World!"<br/>""|
 |Bool|Logikai érték|true<br/>false|

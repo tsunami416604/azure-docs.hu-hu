@@ -1,181 +1,200 @@
 ---
-title: Az Azure IoT Hub (Python) feladatok ütemezéséhez |} A Microsoft Docs
-description: Hogyan lehet a több eszközre közvetlen metódus meghívása egy Azure IoT Hub-feladat ütemezése. Az Azure IoT SDK Pythonhoz készült használatával valósítható meg a szimulált eszközalkalmazások és a egy service-alkalmazás a feladat futtatásához.
-author: kgremban
-manager: philmea
+title: Feladatok ütemezhetnek az Azure IoT Hub (Python) segítségével | Microsoft Docs
+description: Azure IoT Hub-feladatok ütemezésének beütemezés közvetlen metódus több eszközön való meghívásához. A Pythonhoz készült Azure IoT SDK-k segítségével implementálhatja a szimulált eszköz alkalmazásait és egy szolgáltatási alkalmazást a feladatok futtatásához.
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
-ms.date: 02/16/2019
-ms.author: kgremban
-ms.openlocfilehash: c15db0766da3b4c18c306106ffdd5fc75a9143aa
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.date: 08/16/2019
+ms.author: robinsh
+ms.openlocfilehash: f1fbfcaa80a3d1781878fe3d6eb14558a3b298a5
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59608809"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999531"
 ---
-# <a name="schedule-and-broadcast-jobs-python"></a>Feladatok ütemezése és kiküldése (Python)
+# <a name="schedule-and-broadcast-jobs-python"></a>Feladatok ütemezett és szórása (Python)
 
 [!INCLUDE [iot-hub-selector-schedule-jobs](../../includes/iot-hub-selector-schedule-jobs.md)]
 
-Az Azure IoT Hub egy teljesen felügyelt szolgáltatás, amely lehetővé teszi egy háttér-alkalmazást hozhat létre, és nyomon követheti a feladatok ütemezése és több millió eszköz frissítéséhez.  Feladatok is használható a következő műveleteket:
+Az Azure IoT Hub egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi a háttérbeli alkalmazások számára, hogy több millió eszközt ütemezzen és frissítsen feladatok létrehozásához és nyomon követéséhez.  A feladatokat a következő műveletekhez használhatja:
 
 * Eszköz kívánt tulajdonságainak frissítése
-* A címkék frissítése
+* Címkék frissítése
 * Közvetlen metódusok meghívása
 
-Elméleti szinten feladat burkolja az alábbi műveletek egyikét, és nyomon követi a folyamatot a végrehajtás egy eszköz ikereszköz-lekérdezés által definiált eszközök készlete alapján.  Például egy háttér-alkalmazás használatával egy feladat újraindítás metódus meghívása az 10 000 eszköz, egy eszköz ikereszköz-lekérdezés által megadott és a egy későbbi időpontra ütemezve.  Az alkalmazás nyomon követésével folyamat ezeknek az eszközöknek mindegyike kap, és hajtsa végre az újraindítási módszert.
+Elméletileg a feladatok az alábbi műveletek egyikét betakarják, és nyomon követik a végrehajtás előrehaladását egy adott eszközön, amelyet az eszközök kettős lekérdezése határoz meg.  Egy háttérbeli alkalmazás például felhasználhat egy feladatot egy újraindítási módszer meghívására 10 000-eszközökön, egy eszköz kettős lekérdezésével és egy későbbi időpontban ütemezve.  Az alkalmazás ezután nyomon követheti az előrehaladást, mivel az egyes eszközök megkapják és végrehajtják az újraindítási módszert.
 
-További információ az egyes képességek a következő cikkeket:
+További információk a következő cikkekben felsorolt lehetőségekről:
 
-* Ikereszköz és tulajdonságok: [Ikereszközök – első lépések](iot-hub-python-twin-getstarted.md) és [oktatóanyag: Eszköz-ikertulajdonságok használata](tutorial-device-twins.md)
+* Eszköz Twin és tulajdonságai: [Ismerkedés az eszközök ikrekkel](iot-hub-python-twin-getstarted.md) és [oktatóanyaggal: Az eszköz Twin tulajdonságainak használata](tutorial-device-twins.md)
 
-* Közvetlen metódusok: [Az IoT Hub fejlesztői útmutató – közvetlen metódusok](iot-hub-devguide-direct-methods.md) és [oktatóanyag: közvetlen metódusok](quickstart-control-device-python.md)
+* Közvetlen metódusok: [IoT hub fejlesztői útmutató – közvetlen](iot-hub-devguide-direct-methods.md) metódusok és [oktatóanyag: közvetlen metódusok](quickstart-control-device-python.md)
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 Ez az oktatóanyag a következőket mutatja be:
 
-* Python szimulált eszközalkalmazás létrehozása, amely rendelkezik, amely lehetővé teszi a közvetlen metódus **lockDoor**, amelyek meghívhatók a megoldás háttérrendszeréhez.
+* Hozzon létre egy olyan Python által szimulált eszköz alkalmazást, amely közvetlen metódussal rendelkezik, amely lehetővé teszi a **lockDoor**, amelyet a megoldás hátterében hívhat meg.
 
-* Hozzon létre egy Python-Konzolalkalmazás, amely meghívja a **lockDoor** a közvetlen metódus a szimulált eszközalkalmazásnak, feladatok és a frissítések használata a kívánt tulajdonságokkal eszköz feladat használatával.
+* Hozzon létre egy olyan Python-konzol alkalmazást, amely feladatokkal hívja meg a **lockDoor** Direct metódust a szimulált eszköz alkalmazásban, és az eszköz feladataival frissíti a kívánt tulajdonságokat.
 
-Ez az oktatóanyag végén kettő Python-alkalmazással rendelkezik:
+Az oktatóanyag végén két Python-alkalmazás áll rendelkezésére:
 
-**simDevice.py**, amely az IoT hub az eszközidentitással csatlakozik, és megkapja a **lockDoor** közvetlen metódust.
+**simDevice.py**, amely az eszköz identitásával csatlakozik az IoT hubhoz, és egy **lockDoor** Direct metódust kap.
 
-**scheduleJobService.py**, amely hívások közvetlen metódus a szimulált eszközalkalmazásnak, és frissíti az ikereszköz kívánt tulajdonságait egy feladat használatával.
-
-Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
-
-* [Python 2.x vagy 3.x](https://www.python.org/downloads/). Mindenképp a rendszernek megfelelő, 32 vagy 64 bites telepítést használja. Amikor a rendszer erre kéri, mindenképp adja hozzá a Pythont a platformspecifikus környezeti változóhoz. Ha a Python 2.x verziót használja, előfordulhat, hogy [telepítenie vagy frissítenie kell a *pip*-et, a Python csomagkezelő rendszerét](https://pip.pypa.io/en/stable/installing/).
-
-* Ha Windows operációs rendszert használ, a [Visual C++ terjeszthető csomagra](https://www.microsoft.com/download/confirmation.aspx?id=48145) van szükség a Python natív DLL-jei használatához.
-
-* Aktív Azure-fiók. (Ha nincs fiókja, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) mindössze néhány perc alatt.)
+a **scheduleJobService.py**, amely közvetlen metódust hív meg a szimulált eszköz alkalmazásban, és feladatokkal frissíti az eszközhöz tartozó dupla kívánt tulajdonságokat.
 
 > [!NOTE]
-> A **Pythonhoz készült Azure IoT SDK** nem támogatja közvetlenül **feladatok** funkciót. Ebben az oktatóanyagban inkább aszinkron hozzászólásláncok és időzítőket alternatív megoldást kínál. További frissítések, tekintse meg a **szolgáltatás ügyfél-SDK** a szolgáltatások listája a [Pythonhoz készült Azure IoT SDK](https://github.com/Azure/azure-iot-sdk-python) lap. 
+> A **Pythonhoz készült Azure IOT SDK** nem támogatja közvetlenül a **feladatok** funkcióit. Ehelyett ez az oktatóanyag egy alternatív megoldást kínál, amely aszinkron szálakat és időzítőket használ. További frissítésekért tekintse meg az [Azure IOT SDK for Python](https://github.com/Azure/azure-iot-sdk-python) -oldal **szolgáltatás ügyféloldali SDK** -szolgáltatásainak listáját.
 >
+
+[!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
+
+## <a name="prerequisites"></a>Előfeltételek
+
+[!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-### <a name="retrieve-connection-string-for-iot-hub"></a>Az IoT hub kapcsolati karakterlánc
-
-[!INCLUDE [iot-hub-include-find-connection-string](../../includes/iot-hub-include-find-connection-string.md)]
-
-## <a name="register-a-new-device-in-the-iot-hub"></a>Új eszköz regisztrálása az IoT hubban
+## <a name="register-a-new-device-in-the-iot-hub"></a>Új eszköz regisztrálása az IoT hub-ban
 
 [!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
 
 ## <a name="create-a-simulated-device-app"></a>Szimulált eszközalkalmazás létrehozása
 
-Ebben a szakaszban hoz létre egy Python-Konzolalkalmazás, amely a felhő, amely elindít egy szimulált által meghívott közvetlen metódusra válaszol **lockDoor** metódust.
+Ebben a szakaszban egy olyan Python-konzol alkalmazást hoz létre, amely a felhő által meghívott közvetlen metódusra válaszol, amely egy szimulált **lockDoor** metódust indít el.
 
-1. A parancssorban futtassa a telepítéséhez a következő parancsot a **azure-iot-device-client** csomag:
+1. A parancssorban futtassa a következő parancsot az **Azure-IOT-Device** csomag telepítéséhez:
 
     ```cmd/sh
-    pip install azure-iothub-device-client
+    pip install azure-iot-device
     ```
 
-2. Egy szövegszerkesztővel hozzon létre egy új **simDevice.py** fájlt a munkakönyvtárban.
+   > [!NOTE]
+   > Az Azure-iothub-Service-Client pip-csomagjai jelenleg csak Windows operációs rendszer esetén érhetők el. Linux/Mac OS esetén tekintse meg a Linux-és Mac OS-specifikus szakaszt a [fejlesztői környezet előkészítése a Pythonhoz](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) című témakörben.
+   >
 
-3. Adja hozzá a következő `import` utasításokat és változókat elején a **simDevice.py** fájlt. Cserélje le `deviceConnectionString` a fent létrehozott eszköz a kapcsolati karakterláncra:
+2. Egy szövegszerkesztővel hozzon létre egy új **simDevice.py** -fájlt a munkakönyvtárában.
+
+3. Adja hozzá a `import` következő utasításokat és változókat a **simDevice.py** fájl elejéhez. Cserélje `deviceConnectionString` le a szöveget a fent létrehozott eszközhöz tartozó kapcsolatok sztringre:
 
     ```python
+    import threading
     import time
-    import sys
+    from azure.iot.device import IoTHubDeviceClient, MethodResponse
 
-    import iothub_client
-    from iothub_client import IoTHubClient, IoTHubClientError, IoTHubTransportProvider, IoTHubClientResult
-    from iothub_client import IoTHubError, DeviceMethodReturnValue
-
-    METHOD_CONTEXT = 0
-    TWIN_CONTEXT = 0
-    WAIT_COUNT = 10
-
-    PROTOCOL = IoTHubTransportProvider.MQTT
     CONNECTION_STRING = "{deviceConnectionString}"
     ```
 
-4. Adja hozzá a következő függvény visszahívás kezeléséhez a **lockDoor** módszer:
+4. Adja hozzá a következő függvény visszahívást a **lockDoor** metódus kezeléséhez:
 
     ```python
-    def device_method_callback(method_name, payload, user_context):
-        if method_name == "lockDoor":
-            print ( "Locking Door!" )
+    def lockdoor_listener(client):
+        while True:
+            # Receive the direct method request
+            method_request = client.receive_method_request("lockDoor")  # blocking call
+            print( "Locking Door!" )
 
-            device_method_return_value = DeviceMethodReturnValue()
-            device_method_return_value.response = "{ \"Response\": \"lockDoor called successfully\" }"
-            device_method_return_value.status = 200
-            return device_method_return_value
+            resp_status = 200
+            resp_payload = {"Response": "lockDoor called successfully"}
+            method_response = MethodResponse(method_request.request_id, resp_status, resp_payload)
+            client.send_method_response(method_response)
     ```
 
-5. Adjon hozzá egy másik függvény visszahívási device twins frissítések kezelésére:
+5. Új függvény visszahívás hozzáadása az eszközök ikrek frissítéseinek kezeléséhez:
 
     ```python
-    def device_twin_callback(update_state, payload, user_context):
-        print ( "")
-        print ( "Twin callback called with:")
-        print ( "payload: %s" % payload )
+    def twin_update_listener(client):
+        while True:
+            patch = client.receive_twin_desired_properties_patch()  # blocking call
+            print ("")
+            print ("Twin desired properties patch received:")
+            print (patch)
     ```
 
-6. Adja a következő kódot a kezelő regisztrálni a **lockDoor** metódust. Emellett tartalmazza a `main` rutin:
+6. Adja hozzá a következő kódot a kezelő **lockDoor** metódushoz való regisztrálásához. Adja meg a `main` rutint is:
 
     ```python
     def iothub_jobs_sample_run():
         try:
-            client = IoTHubClient(CONNECTION_STRING, PROTOCOL)
-            client.set_device_method_callback(device_method_callback, METHOD_CONTEXT)
-            client.set_device_twin_callback(device_twin_callback, TWIN_CONTEXT)
+            client = IoTHubDeviceClient.create_from_connection_string(CONNECTION_STRING)
 
-            print ( "Direct method initialized." )
-            print ( "Device twin callback initialized." )
-            print ( "IoTHubClient waiting for commands, press Ctrl-C to exit" )
+            print( "Beginning to listen for 'lockDoor' direct method invocations...")
+            lockdoor_listener_thread = threading.Thread(target=lockdoor_listener, args=(client,))
+            lockdoor_listener_thread.daemon = True
+            lockdoor_listener_thread.start()
 
+            # Begin listening for updates to the Twin desired properties
+            print ( "Beginning to listen for updates to Twin desired properties...")
+            twin_update_listener_thread = threading.Thread(target=twin_update_listener, args=(client,))
+            twin_update_listener_thread.daemon = True
+            twin_update_listener_thread.start()
+            
             while True:
-                status_counter = 0
-                while status_counter <= WAIT_COUNT:
-                    time.sleep(10)
-                    status_counter += 1
+                time.sleep(1000)
 
-        except IoTHubError as iothub_error:
-            print ( "Unexpected error %s from IoTHub" % iothub_error )
-            return
         except KeyboardInterrupt:
-            print ( "IoTHubClient sample stopped" )
+            print ( "IoTHubDeviceClient sample stopped" )
 
     if __name__ == '__main__':
         print ( "Starting the IoT Hub Python jobs sample..." )
-        print ( "    Protocol %s" % PROTOCOL )
-        print ( "    Connection string=%s" % CONNECTION_STRING )
+        print ( "IoTHubDeviceClient waiting for commands, press Ctrl-C to exit" )
 
         iothub_jobs_sample_run()
     ```
 
-7. Mentse és zárja be a **simDevice.py** fájlt.
+7. Mentse és zárjuk be a **simDevice.py** fájlt.
 
 > [!NOTE]
-> Az egyszerűség kedvéért ez az oktatóanyag nem valósít meg semmilyen újrapróbálkozási házirendet. Az éles kódban újrapróbálkozási házirendeket (például egy exponenciális leállítást), a cikkben leírtak implementálandó [átmeneti hibák kezelésével](/azure/architecture/best-practices/transient-faults).
+> Az egyszerűség kedvéért ez az oktatóanyag nem valósít meg semmilyen újrapróbálkozási házirendet. Az éles kódban az újrapróbálkozási szabályzatokat (például egy exponenciális leállítási) kell megvalósítani, ahogy azt a cikkben is ismertetjük, az [átmeneti hibák kezelésére](/azure/architecture/best-practices/transient-faults).
 >
 
-## <a name="schedule-jobs-for-calling-a-direct-method-and-updating-a-device-twins-properties"></a>Feladatok ütemezése a közvetlen metódus meghívása és a egy ikereszköz tulajdonságainak frissítése
+## <a name="get-the-iot-hub-connection-string"></a>Az IoT hub-beli kapcsolatok karakterláncának beolvasása
 
-Ebben a szakaszban hoz létre egy Python-Konzolalkalmazás, amely kezdeményezi egy távoli **lockDoor** egy eszközön a közvetlen metódus használatával, és az ikereszköz tulajdonságainak frissítése.
+Ebben a cikkben egy háttér-szolgáltatást hoz létre, amely egy közvetlen metódust hív meg egy eszközön, és frissíti az eszközt. A szolgáltatásnak szüksége van a **szolgáltatás csatlakozási** engedélyére, hogy közvetlen metódust hívjon az eszközön. A szolgáltatásnak szüksége van a **beállításjegyzék olvasási** és **beállításjegyzék-írási** engedélyeire is az azonosító beállításjegyzékének olvasásához és írásához. Nincs olyan alapértelmezett megosztott hozzáférési szabályzat, amely csak ezeket az engedélyeket tartalmazza, ezért létre kell hoznia egyet.
 
-1. A parancssorban futtassa a telepítéséhez a következő parancsot a **azure-iot-service-client** csomag:
+Ha olyan megosztott hozzáférési szabályzatot szeretne létrehozni, amely a **szolgáltatás kapcsolódását**, a **beállításjegyzék olvasási**és **beállításjegyzék-írási** engedélyeit, valamint a szabályzat kapcsolati karakterláncának lekérését kéri, kövesse az alábbi lépéseket:
+
+1. Nyissa meg az IoT hubot a [Azure Portal](https://portal.azure.com). Az IoT hub kiválasztásának legegyszerűbb módja az **erőforráscsoportok**kiválasztása. Válassza ki azt az erőforráscsoportot, ahol az IoT hub található, majd válassza ki az IoT hubot az erőforrások listájából.
+
+2. Az IoT hub bal oldali ablaktábláján válassza a **megosztott hozzáférési házirendek**elemet.
+
+3. A szabályzatok listájának felső menüjében válassza a **Hozzáadás**lehetőséget.
+
+4. A **megosztott hozzáférési házirend hozzáadása** panelen adjon meg egy leíró nevet a szabályzatnak; például: *serviceAndRegistryReadWrite*. Az **engedélyek**területen válassza a **szolgáltatás kapcsolódása** és a **beállításjegyzék írása** lehetőséget (a**beállításjegyzék olvasása** beállítás automatikusan kiválasztásra kerül a beállításjegyzék **írásakor**). Ezután kattintson a **Létrehozás** elemre.
+
+    ![Új megosztott elérési házirend hozzáadásának megjelenítése](./media/iot-hub-python-python-schedule-jobs/add-policy.png)
+
+5. A **megosztott hozzáférési szabályzatok** panelen válassza ki az új házirendet a házirendek listájából.
+
+6. A **megosztott elérési kulcsok**területen válassza a **kapcsolati sztring – elsődleges kulcs** másolási ikonját, és mentse az értéket.
+
+    ![A kapcsolati karakterlánc lekérésének megjelenítése](./media/iot-hub-python-python-schedule-jobs/get-connection-string.png)
+
+További információ a IoT Hub megosztott hozzáférési szabályzatokról és engedélyekről: [hozzáférés-vezérlés és engedélyek](./iot-hub-devguide-security.md#access-control-and-permissions).
+
+## <a name="schedule-jobs-for-calling-a-direct-method-and-updating-a-device-twins-properties"></a>Feladatok ütemezhetnek közvetlen metódus hívásához és az eszközök Twin tulajdonságainak frissítéséhez
+
+Ebben a szakaszban egy olyan Python-konzol alkalmazást hoz létre, amely egy közvetlen metódus használatával kezdeményez egy távoli **lockDoor** az eszközön, és frissíti az eszköz Twin tulajdonságait.
+
+1. A parancssorban futtassa a következő parancsot az **Azure-IOT-Service-Client** csomag telepítéséhez:
 
     ```cmd/sh
     pip install azure-iothub-service-client
     ```
 
-2. Egy szövegszerkesztővel hozzon létre egy új **scheduleJobService.py** fájlt a munkakönyvtárban.
+   > [!NOTE]
+   > Az Azure-iothub-Service-Client és az Azure-iothub-Device-Client pip-csomagjai jelenleg csak Windows operációs rendszer esetén érhetők el. Linux/Mac OS esetén tekintse meg a Linux-és Mac OS-specifikus szakaszt a [fejlesztői környezet előkészítése a Pythonhoz](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) című témakörben.
+   >
 
-3. Adja hozzá a következő `import` utasításokat és változókat elején a **scheduleJobService.py** fájlt:
+2. Egy szövegszerkesztővel hozzon létre egy új **scheduleJobService.py** -fájlt a munkakönyvtárában.
+
+3. Adja hozzá a `import` következő utasításokat és változókat a **scheduleJobService.py** fájl elejéhez. Cserélje le `{IoTHubConnectionString}` a helyőrzőt arra a IoT hub-IoT, amelyet korábban átmásolt a [beolvasás az hub-kapcsolatok karakterláncában](#get-the-iot-hub-connection-string). Cserélje le `{deviceId}` a helyőrzőt az [új eszköz regisztrálása az IoT hub](#register-a-new-device-in-the-iot-hub)-ban regisztrált eszköz azonosítójával:
 
     ```python
     import sys
@@ -197,7 +216,7 @@ Ebben a szakaszban hoz létre egy Python-Konzolalkalmazás, amely kezdeményezi 
     WAIT_COUNT = 5
     ```
 
-4. Adja hozzá a következő függvényt használt eszközök lekérdezéséhez:
+4. Adja hozzá a következő függvényt, amely az eszközök lekérdezésére szolgál:
 
     ```python
     def query_condition(device_id):
@@ -214,7 +233,7 @@ Ebben a szakaszban hoz létre egy Python-Konzolalkalmazás, amely kezdeményezi 
         return 0
     ```
 
-5. Adja hozzá a következő metódusokat, amelyek a közvetlen módszer és eszköz ikereszköz meg a feladatok futtatásához:
+5. Adja hozzá a következő metódusokat a közvetlen metódust és az eszköz ikerét meghívó feladatok futtatásához:
 
     ```python
     def device_method_job(job_id, device_id, wait_time, execution_time):
@@ -244,7 +263,7 @@ Ebben a szakaszban hoz létre egy Python-Konzolalkalmazás, amely kezdeményezi 
             print ( "Device twin updated." )
     ```
 
-6. Adja hozzá a következő kódot a feladatok ütemezése és a feladat állapotának frissítése. Emellett tartalmazza a `main` rutin:
+6. Adja hozzá a következő kódot a feladatok ütemezett és frissítési feladat állapotának megadásához. Adja meg a `main` rutint is:
 
     ```python
     def iothub_jobs_sample_run():
@@ -299,32 +318,32 @@ Ebben a szakaszban hoz létre egy Python-Konzolalkalmazás, amely kezdeményezi 
         iothub_jobs_sample_run()
     ```
 
-7. Mentse és zárja be a **scheduleJobService.py** fájlt.
+7. Mentse és zárjuk be a **scheduleJobService.py** fájlt.
 
 ## <a name="run-the-applications"></a>Az alkalmazások futtatása
 
 Most már készen áll az alkalmazások futtatására.
 
-1. A parancssorban futtassa a következő parancsot, amellyel megkezdheti a újraindítás közvetlen metódus figyeli a munkakönyvtárban:
+1. A munkakönyvtárban a parancssorban futtassa a következő parancsot a közvetlen újraindítási módszer figyelésének megkezdéséhez:
 
     ```cmd/sh
     python simDevice.py
     ```
 
-2. Egy másik parancs parancssorba a következő parancsot a feladatok a ajtajának, és frissíti az ikereszköz aktiválásához a munkakönyvtárban:
+2. A munkakönyvtárban egy másik parancssorban futtassa a következő parancsot a feladatok elindításához az ajtó zárolásához és a Twin frissítéséhez:
   
     ```cmd/sh
     python scheduleJobService.py
     ```
 
-3. Az eszköz megjelenniük a közvetlen metódus, és ikereszközök frissítse a konzolon.
+3. Megjelenik az eszköz válaszai a Direct metódusra és az eszközök ikrek frissítésére a konzolon.
 
-    ![IoT Hub Job sample 1 -- device output](./media/iot-hub-python-python-schedule-jobs/sample1-deviceoutput.png)
+    ![IoT Hub Job minta 1 – eszköz kimenete](./media/iot-hub-python-python-schedule-jobs/sample1-deviceoutput.png)
 
-    ![IoT Hub Job 2 – példa az eszközkimenetre](./media/iot-hub-python-python-schedule-jobs/sample2-deviceoutput.png)
+    ![IoT Hub Job minta 2 – eszköz kimenete](./media/iot-hub-python-python-schedule-jobs/sample2-deviceoutput.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban egy feladat ütemezése és eszköz az ikereszköz tulajdonságok frissítése egy közvetlen metódus használt.
+Ebben az oktatóanyagban egy olyan feladatot használt, amely egy közvetlen metódust ütemez egy eszközre, és az eszköz Twin tulajdonságainak frissítését.
 
-Ismerkedés az IoT Hub és az eszközfelügyeleti minták például távolról keresztül a vezeték nélküli belső vezérlőprogram frissítését a folytatáshoz tekintse meg a [hogyan belső vezérlőprogram frissítése](tutorial-firmware-update.md).
+Ha továbbra is szeretné megkezdeni a IoT Hub és az eszközkezelés mintáit, például a távoli belső vezérlőprogram frissítését, tekintse meg a [belső vezérlőprogram frissítését](tutorial-firmware-update.md)ismertető témakört.

@@ -14,24 +14,22 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 73c9fa82cefc192b237e3880c1e745b2412a323a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e787617ab6e04a5ff2e7f5d4921a5bf7a4a1eb5d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57990669"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64867102"
 ---
 # <a name="monitor-job-progress-using-net"></a>A feladat előrehaladásának figyelése .NET használatával 
-> [!div class="op_single_selector"]
-> * [Portál](media-services-portal-check-job-progress.md)
-> * [.NET](media-services-check-job-progress.md)
-> * [REST](media-services-rest-check-job-progress.md)
-> 
-> 
+
+> [!NOTE]
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még [v3 a v2 migrálási útmutató](../latest/migrate-from-v2-to-v3.md)
 
 Feladatok futtatásakor gyakran igényelnek olyan módon, a feladat előrehaladásának nyomon követéséhez. A folyamat ellenőrzéséhez egy StateChanged eseménykezelő meghatározása (ebben a témakörben leírt) vagy az Azure Queue storage használata a Media Services feladatértesítések figyelésére használt (leírtak szerint [ez](media-services-dotnet-check-job-progress-with-queues.md) témakört).
 
 ## <a name="define-statechanged-event-handler-to-monitor-job-progress"></a>A feladat előrehaladásának figyeléséhez StateChanged eseménykezelő definiálása
+
 Az alábbi példakód a StateChanged eseménykezelő határozza meg. Az eseménykezelő nyomon követi a feladat állapotát, és a frissített állapotot állapotától függően biztosít. A kód a LogJobStop módszert is meghatározza. Ez segédmetódus naplózza a hiba részleteit.
 
 ```csharp

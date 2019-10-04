@@ -1,10 +1,10 @@
 ---
-title: Engedélyezheti vagy tilthatja le egy tűzfalszabályt egy vendég operációs rendszer az Azure virtuális Gépen |} A Microsoft Docs
+title: Tűzfalszabály engedélyezése vagy letiltása egy Azure-beli virtuális gépen futó vendég operációs rendszeren | Microsoft Docs
 description: ''
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
-manager: willchen
+manager: dcscontentpm
 editor: ''
 tags: ''
 ms.service: virtual-machines
@@ -14,157 +14,157 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: ed3d89bc15f960947a48ac4364bd14f3fdf50cc2
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 782240c51833fc841af9f4260860db4c03897c03
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57853069"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71086449"
 ---
-# <a name="enable-or-disable-a-firewall-rule-on-an-azure-vm-guest-os"></a>Engedélyezheti vagy tilthatja le egy tűzfalszabályt egy Azure virtuális gép vendég operációs rendszeren
+# <a name="enable-or-disable-a-firewall-rule-on-an-azure-vm-guest-os"></a>Tűzfalszabály engedélyezése vagy letiltása Azure-beli virtuális gép vendég operációs rendszeren
 
-Ez a cikk egy rá mutató hivatkozást olyan helyzet, amelyben azt gyanítja, hogy a vendég operációs rendszer tűzfala van-e egy virtuális gépen (VM) részleges forgalmat szűrő hibaelhárításhoz. Ez hasznos lehet a következő okok miatt:
+Ez a cikk egy olyan helyzet hibaelhárítását ismerteti, amelyben azt gyanítja, hogy a vendég operációs rendszer tűzfala a részleges forgalmat szűri a virtuális gépen (VM). Ez a következő okok miatt lehet hasznos:
 
-*   Ha a módosítás szándékosan a tűzfalhoz, amelyek miatt nem sikerül RDP-kapcsolatai, az egyéni szkriptek futtatására szolgáló bővítmény funkció használatával is megoldhatja a problémát.
+*   Ha a tűzfal olyan módosítást hajtott végre, amely az RDP-kapcsolatok meghibásodását okozta, akkor az egyéni szkriptek bővítményének használatával elháríthatja a problémát.
 
-*   Letiltja az összes tűzfalprofilnál módja a több üzembiztos, mint az RDP-specifikus tűzfalszabály beállítás a hibaelhárítás.
+*   Ha letiltja az összes tűzfal-profilt, az RDP-specifikus tűzfalszabályok beállításakor a rendszer nem támogatja a hibaelhárítást.
 
 ## <a name="solution"></a>Megoldás
 
-A tűzfalszabályok konfigurálását hogyan attól függ, hogy a virtuális géphez szükséges hozzáférési szintjét. Az alábbi példák az RDP-szabályok használata. Azonban ugyanazokat a módszereket is alkalmazható bármilyen más típusú forgalom mutat, a megfelelő beállításkulcs.
+A tűzfalszabályok konfigurálásának módja a szükséges virtuális géphez való hozzáférés szintjétől függ. Az alábbi példák RDP-szabályokat használnak. Ugyanezeket a metódusokat azonban más típusú forgalomra is alkalmazhatja, ha a megfelelő beállításkulcsot mutat.
 
 ### <a name="online-troubleshooting"></a>Online hibáinak elhárítása 
 
-#### <a name="mitigation-1-custom-script-extension"></a>1. megoldás: Egyéni szkriptbővítmény
+#### <a name="mitigation-1-custom-script-extension"></a>1\. enyhítés: Egyéni szkriptbővítmény
 
-1.  Hozzon létre a parancsfájlt az alábbi sablon használatával.
+1.  Hozza létre a parancsfájlt a következő sablonnal.
 
-    *   Egy szabály engedélyezése:
+    *   Szabály engedélyezése:
         ```cmd
         netsh advfirewall firewall set rule dir=in name="Remote Desktop - User Mode (TCP-In)" new enable=yes
         ```
 
-    *   Egy szabály letiltása:
+    *   Szabály letiltásához:
         ```cmd
         netsh advfirewall firewall set rule dir=in name="Remote Desktop - User Mode (TCP-In)" new enable=no
         ```
 
-2.  Ezt a szkriptet az Azure portal használatával töltse fel a [egyéni szkriptek futtatására szolgáló bővítmény](../extensions/custom-script-windows.md) funkció. 
+2.  Töltse fel ezt a szkriptet a Azure Portal az [egyéni parancsfájl-bővítmény](../extensions/custom-script-windows.md) funkció használatával. 
 
-#### <a name="mitigation-2-remote-powershell"></a>2. megoldás: Remote PowerShell
+#### <a name="mitigation-2-remote-powershell"></a>2\. mérséklés: Távoli PowerShell
 
-Ha a virtuális gép online állapotban, és a egy másik virtuális Géphez ugyanazon a virtuális hálózaton elérhetők, akkor is használhatja az alábbi megoldások a többi virtuális gép használatával.
+Ha a virtuális gép online állapotban van, és ugyanazon a virtuális hálózaton egy másik virtuális gépen is elérhető, a követést a másik virtuális gép használatával végezheti el.
 
-1.  A hibaelhárító virtuális Géphez nyissa meg egy PowerShell-konzolablakot.
+1.  A hibaelhárítási virtuális gépen nyisson meg egy PowerShell-konzol ablakát.
 
-2.  Futtassa a következő parancsokat, szükség szerint.
+2.  Szükség szerint futtassa az alábbi parancsokat.
 
-    *   Egy szabály engedélyezése:
+    *   Szabály engedélyezése:
         ```powershell
         Enter-PSSession (New-PSSession -ComputerName "<HOSTNAME>" -Credential (Get-Credential) -SessionOption (New-PSSessionOption -SkipCACheck -SkipCNCheck)) 
         Enable-NetFirewallRule -DisplayName  "RemoteDesktop-UserMode-In-TCP"
         exit
         ```
 
-    *   Egy szabály letiltása:
+    *   Szabály letiltásához:
         ```powershell
         Enter-PSSession (New-PSSession -ComputerName "<HOSTNAME>" -Credential (Get-Credential) -SessionOption (New-PSSessionOption -SkipCACheck -SkipCNCheck)) 
         Disable-NetFirewallRule -DisplayName  "RemoteDesktop-UserMode-In-TCP"
         exit
         ```
 
-#### <a name="mitigation-3-pstools-commands"></a>3. megoldás: PSTools parancsok
+#### <a name="mitigation-3-pstools-commands"></a>3\. enyhítés: PSTools parancsok
 
-Ha a virtuális gép online állapotban, és a egy másik virtuális Géphez ugyanazon a virtuális hálózaton elérhetők, akkor is használhatja az alábbi megoldások a többi virtuális gép használatával.
+Ha a virtuális gép online állapotban van, és ugyanazon a virtuális hálózaton egy másik virtuális gépen is elérhető, a követést a másik virtuális gép használatával végezheti el.
 
-1.  Töltse le a hibaelhárító virtuális Géphez, a [PSTools](https://docs.microsoft.com/sysinternals/downloads/pstools).
+1.  A hibaelhárítási virtuális gépen töltse le a [PsTools](https://docs.microsoft.com/sysinternals/downloads/pstools).
 
-2.  Nyisson meg egy CMD-példányt, és eléri a virtuális Gépet a belső IP (DIP) keresztül. 
+2.  Nyisson meg egy CMD-példányt, és a belső IP-címén (DIP) keresztül férhet hozzá a virtuális géphez. 
 
-    * Egy szabály engedélyezése:
+    * Szabály engedélyezése:
         ```cmd
         psexec \\<DIP> -u <username> cmd
         netsh advfirewall firewall set rule dir=in name="Remote Desktop - User Mode (TCP-In)" new enable=yes
         ```
 
-    *   Egy szabály letiltása:
+    *   Szabály letiltásához:
         ```cmd
         psexec \\<DIP> -u <username> cmd
         netsh advfirewall firewall set rule dir=in name="Remote Desktop - User Mode (TCP-In)" new enable=no
         ```
 
-#### <a name="mitigation-4-remote-registry"></a>4. megoldás: Remote Registry
+#### <a name="mitigation-4-remote-registry"></a>4\. enyhítés: Távoli beállításjegyzék
 
-Ha a virtuális gép online állapotban, és a egy másik virtuális Géphez ugyanazon a virtuális hálózaton elérhetők, [távoli beállításjegyzék](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry) a többi virtuális gépen.
+Ha a virtuális gép online állapotban van, és ugyanazon a virtuális hálózaton található másik virtuális gépen is elérhető, akkor a másik virtuális GÉPEN is használhatja a [távoli beállításjegyzéket](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry) .
 
-1.  A hibaelhárító virtuális Géphez, indítsa el a Beállításszerkesztőt (regedit.exe), és válassza ki **fájl** > **csatlakozás hálózati beállításjegyzék**.
+1.  A hibaelhárítási virtuális gépen indítsa el a Beállításszerkesztőt (Regedit. exe), majd válassza a **file** > **Network Registry (fájl összekapcsolása**) lehetőséget.
 
-2.  Nyissa meg a *CÉLGÉPEN*\SYSTEM ágban, és adja meg a következő értékeket:
+2.  Nyissa meg a *célszámítógép*\SYSTEM ágat, majd adja meg a következő értékeket:
 
-    * Egy szabály engedélyezéséhez nyissa meg a következő beállításazonosítót:
+    * A szabály engedélyezéséhez nyissa meg a következő beállításértéket:
     
-        *TARGET MACHINE*\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules\RemoteDesktop-UserMode-In-TCP
+        *Célszámítógép*\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules\RemoteDesktop-UserMode-in-TCP
     
-        Majd módosíthatja **aktív = FALSE** való **aktív = TRUE** a karakterlánc:
+        Ezután módosítsa az **aktív = FALSE értéket** az **aktív = True** értékre a karakterláncban:
 
-        **v2.22 |} A művelet = engedélyezése |} Aktív = TRUE |} Dir = In |} Protokoll = 6 |} Profil = Domain |} Profil privát = |} Profil = nyilvános |} LPort 3389-es = |} App=%SystemRoot%\System32\svchost.exe| SVC = termservice |} Name =\@FirewallAPI.dll,-28775 |} Leírás =\@FirewallAPI.dll,-28756 |} EmbedCtxt =\@FirewallAPI.dll,-28752 |}**
+        **v 2.22 | Művelet = engedélyezés | Aktív = igaz | Dir = a | Protokoll = 6 | Profil = tartomány | Profil = Private | Profil = nyilvános | LPort = 3389 | App =%SystemRoot%\system32\svchost.exe | SVC = TermService | Név =\@FirewallAPI. dll,-28775 | Desc =\@FirewallAPI. dll,-28756 | EmbedCtxt =\@FirewallAPI. dll,-28752 |**
     
-    * Egy szabály letiltása, nyissa meg a következő beállításazonosítót:
+    * Egy szabály letiltásához nyissa meg a következő beállításértéket:
     
-        *TARGET MACHINE*\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules\RemoteDesktop-UserMode-In-TCP
+        *Célszámítógép*\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules\RemoteDesktop-UserMode-in-TCP
 
-        Majd módosíthatja **aktív = TRUE** való **aktív = FALSE**:
+        Ezután módosítsa az **aktív = True** **értéket az aktív = false**értékre:
         
-        **v2.22 |} A művelet = engedélyezése |} Aktív = FALSE |} Dir = In |} Protokoll = 6 |} Profil = Domain |} Profil privát = |} Profil = nyilvános |} LPort 3389-es = |} App=%SystemRoot%\System32\svchost.exe| SVC = termservice |} Name =\@FirewallAPI.dll,-28775 |} Leírás =\@FirewallAPI.dll,-28756 |} EmbedCtxt =\@FirewallAPI.dll,-28752 |}**
+        **v 2.22 | Művelet = engedélyezés | Aktív = hamis | Dir = a | Protokoll = 6 | Profil = tartomány | Profil = Private | Profil = nyilvános | LPort = 3389 | App =%SystemRoot%\system32\svchost.exe | SVC = TermService | Név =\@FirewallAPI. dll,-28775 | Desc =\@FirewallAPI. dll,-28756 | EmbedCtxt =\@FirewallAPI. dll,-28752 |**
 
-3.  Indítsa újra a virtuális Gépet, a módosítások életbe léptetéséhez.
+3.  A módosítások alkalmazásához indítsa újra a virtuális gépet.
 
-### <a name="offline-troubleshooting"></a>A kapcsolat nélküli hibáinak elhárítása 
+### <a name="offline-troubleshooting"></a>Offline hibaelhárítás 
 
-Ha bármilyen módszerrel nem éri el a virtuális gép, egyéni Szkriptbővítmény használatával sikertelen lesz, és el közvetlenül a rendszerlemez mivel OFFLINE módban működik.
+Ha a virtuális gépet semmilyen módszerrel nem tudja elérni, az egyéni szkriptek bővítményének használata sikertelen lesz, és a rendszerlemezen keresztüli közvetlen munkavégzéssel OFFLINE módban kell működnie.
 
-Mielőtt végrehajtaná ezeket a lépéseket, pillanatkép készítése a rendszerlemezt az érintett virtuális gép biztonsági mentéséhez. További információkért lásd: [lemez pillanatképének elkészítése](../windows/snapshot-copy-managed-disk.md).
+Mielőtt végrehajtaná ezeket a lépéseket, pillanatkép készítése a rendszerlemezt az érintett virtuális gép biztonsági mentéséhez. További információkért lásd: [lemez pillanatképének elkészítése](../windows/snapshot-copy-managed-disk.md).
 
 1.  [A rendszer lemez csatolása egy helyreállítási virtuális Géphez](troubleshoot-recovery-disks-portal-windows.md).
 
 2.  Indítsa el a helyreállítási virtuális Gépet egy távoli asztali kapcsolatot.
 
-3.  Győződjön meg arról, hogy a lemez megjelölt **Online** a Lemezkezelés konzol. Vegye figyelembe, hogy a meghajtó betűjele, amely hozzá van rendelve a csatolt rendszerlemezt.
+3.  Győződjön meg arról, hogy a lemez megjelölt **Online** a Lemezkezelés konzol. Vegye figyelembe, hogy a csatlakoztatott rendszerlemezhez rendelt meghajtóbetűjel.
 
-4.  Végezze el a módosításokat, mielőtt a \windows\system32\config mappájába másolatának létrehozása, abban az esetben egy, a módosítások visszaállítása szükséges.
+4.  A módosítások elvégzése előtt hozzon létre egy másolatot a \Windows\System32\Config mappából abban az esetben, ha a módosítások visszaállítására van szükség.
 
-5.  A hibaelhárító virtuális Géphez indítsa el a Beállításszerkesztőt (regedit.exe).
+5.  A hibaelhárítási virtuális gépen indítsa el a Beállításszerkesztőt (Regedit. exe).
 
-6.  Jelölje ki a **HKEY_LOCAL_MACHINE** kulcsát, és válassza ki **fájl** > **a struktúra betöltése** a menüből.
+6.  Jelölje ki a **HKEY_LOCAL_MACHINE** kulcsot, majd válassza a **fájl** > **Load kaptár** elemet a menüből.
 
     ![Regedit](./media/enable-or-disable-firewall-rule-guest-os/load-registry-hive.png)
 
-7.  Keresse meg, és nyissa meg a \windows\system32\config\SYSTEM fájlt. 
+7.  Keresse meg, majd nyissa meg a \windows\system32\config\SYSTEM fájlt. 
 
     > [!Note]
-    > A név megadását kéri. Adja meg **BROKENSYSTEM**, majd **HKEY_LOCAL_MACHINE**. Ekkor megjelenik egy további kulcs nevű **BROKENSYSTEM**. A hibaelhárításhoz, ezek a probléma struktúrák csatlakoztatási azt **BROKENSYSTEM**.
+    > A rendszer megkéri a nevet. Adja meg a **BROKENSYSTEM**, majd bontsa ki a **HKEY_LOCAL_MACHINE**elemet. Ekkor megjelenik egy **BROKENSYSTEM**nevű további kulcs. Ebben a hibaelhárításban a probléma-struktúrákat **BROKENSYSTEM**-ként csatlakoztatjuk.
 
-8.  Hajtsa végre a következő módosításokat a BROKENSYSTEM ág:
+8.  Hajtsa végre a következő módosításokat az BROKENSYSTEM ág esetében:
 
-    1.  Ellenőrizze, hogy mely **ControlSet** a virtuális gép elindul a beállításjegyzék-kulcsot. Látni fogja a HKLM\BROKENSYSTEM\Select\Current kulcs száma.
+    1.  Győződjön meg arról, hogy a virtuális gép melyik **ControlSet** -kulcstól indul. A kulcs számát a HKLM\BROKENSYSTEM\Select\Current. fogja látni.
 
-    2.  Egy szabály engedélyezéséhez nyissa meg a következő beállításazonosítót:
+    2.  A szabály engedélyezéséhez nyissa meg a következő beállításértéket:
     
         HKLM\BROKENSYSTEM\ControlSet00X\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules\RemoteDesktop-UserMode-In-TCP
         
-        Majd módosíthatja **aktív = FALSE** való **aktív = True**.
+        Ezután módosítsa az **aktív = FALSE értéket** **aktív = True**értékre.
         
-        **v2.22 |} A művelet = engedélyezése |} Aktív = TRUE |} Dir = In |} Protokoll = 6 |} Profil = Domain |} Profil privát = |} Profil = nyilvános |} LPort 3389-es = |} App=%SystemRoot%\System32\svchost.exe| SVC = termservice |} Name =\@FirewallAPI.dll,-28775 |} Leírás =\@FirewallAPI.dll,-28756 |} EmbedCtxt =\@FirewallAPI.dll,-28752 |}**
+        **v 2.22 | Művelet = engedélyezés | Aktív = igaz | Dir = a | Protokoll = 6 | Profil = tartomány | Profil = Private | Profil = nyilvános | LPort = 3389 | App =%SystemRoot%\system32\svchost.exe | SVC = TermService | Név =\@FirewallAPI. dll,-28775 | Desc =\@FirewallAPI. dll,-28756 | EmbedCtxt =\@FirewallAPI. dll,-28752 |**
 
-    3.  Egy szabály letiltása, nyissa meg a következő beállításkulcsot:
+    3.  Egy szabály letiltásához nyissa meg a következő beállításkulcsot:
 
         HKLM\BROKENSYSTEM\ControlSet00X\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules\RemoteDesktop-UserMode-In-TCP
 
-        Majd módosíthatja **aktív = True** való **aktív = FALSE**.
+        Ezután módosítsa az **aktív = True** **értéket aktív = false**értékre.
         
-        **v2.22 |} A művelet = engedélyezése |} Aktív = FALSE |} Dir = In |} Protokoll = 6 |} Profil = Domain |} Profil privát = |} Profil = nyilvános |} LPort 3389-es = |} App=%SystemRoot%\System32\svchost.exe| SVC = termservice |} Name =\@FirewallAPI.dll,-28775 |} Leírás =\@FirewallAPI.dll,-28756 |} EmbedCtxt =\@FirewallAPI.dll,-28752 |}**
+        **v 2.22 | Művelet = engedélyezés | Aktív = hamis | Dir = a | Protokoll = 6 | Profil = tartomány | Profil = Private | Profil = nyilvános | LPort = 3389 | App =%SystemRoot%\system32\svchost.exe | SVC = TermService | Név =\@FirewallAPI. dll,-28775 | Desc =\@FirewallAPI. dll,-28756 | EmbedCtxt =\@FirewallAPI. dll,-28752 |**
 
-9.  Jelöljön ki **BROKENSYSTEM**, majd válassza ki **fájl** > **struktúra** a menüből.
+9.  Jelölje ki a **BROKENSYSTEM**, majd a menüből válassza ki a **fájl** > **kitöltése struktúrát** .
 
 10. [Válassza le a rendszer lemezt, és hozza létre újból a virtuális gép](troubleshoot-recovery-disks-portal-windows.md).
 

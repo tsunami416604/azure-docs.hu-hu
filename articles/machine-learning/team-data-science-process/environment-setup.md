@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 2c66da6717018237aebaf5fdaf803a8ac98f82be
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 028f289092a0183072ab0ba0be29f9d1f79781bc
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55459092"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534325"
 ---
 # <a name="set-up-data-science-environments-for-use-in-the-team-data-science-process"></a>Adatelemzési környezetek beállítása a csoportos adatelemzési folyamatban történő felhasználásra
 A csoportos adatelemzési folyamat különböző adatelemzési környezetek a tárolási, feldolgozási és elemzési adatokat használ. Azure Blob Storage számos különböző típusú Azure-beli virtuális gépek, a HDInsight (Hadoop) fürtök és az Azure Machine Learning-munkaterületek tartalmazzák. A döntést, mely környezetben használandó attól függ, modellezni típusát és az adatok mennyisége és a cél cél, hogy az adatok a felhőben. 
@@ -37,4 +37,3 @@ Ismerje meg, hogyan hozhat létre:
 - [A DSVM Windows](../data-science-virtual-machine/provision-vm.md)
 - [Ubuntu dsvm-hez](../data-science-virtual-machine/dsvm-ubuntu-intro.md)
 - [CentOS dsvm-hez](../data-science-virtual-machine/linux-dsvm-intro.md)
-- [Mélytanulási virtuális gép](../data-science-virtual-machine/provision-deep-learning-dsvm.md)

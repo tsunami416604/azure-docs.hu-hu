@@ -7,11 +7,11 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2018
 ms.openlocfilehash: 503b7764ba7958a5448903b217b00e204ffcbf61
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527404"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61459270"
 ---
 # <a name="how-to-connect-applications-to-azure-database-for-mysql"></a>Kapcsolódás az alkalmazások az Azure Database for MySQL-hez
 Ez a témakör felsorolja a kapcsolati karakterlánc típusú által támogatott Azure Database for MySQL, példák és sablonok. Lehetséges, hogy különböző paraméterek és beállítások a kapcsolati karakterláncban.

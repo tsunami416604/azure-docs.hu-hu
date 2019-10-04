@@ -1,5 +1,5 @@
 ---
-title: Tekintse át a végpont kimondott szöveg
+title: 'Oktatóanyag: A végpont hosszúságú kimondott szöveg-LUIS áttekintése'
 titleSuffix: Azure Cognitive Services
 description: Fejlesztheti az alkalmazás előrejelzéseit a LUIS által nem ismert LUIS HTTP-végponton keresztül kapott kimondott szövegek ellenőrzésével vagy javításával. Bizonyos kimondott szövegek esetében a szándékot, míg más kimondott szövegek esetében az entitást kell ellenőrizni.
 services: cognitive-services
@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 02/19/2019
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 118ac858103776e880e7304199279a7d50ad71b1
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f81066ed21702dfe94ad7897adc3b82ed5a49f4d
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58112279"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70387522"
 ---
-# <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Oktatóanyag: Javítsa ki a nem tudja, hogy előrejelzéseket végpont utterances áttekintésével
+# <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Oktatóanyag: A nem biztos előrejelzések kijavítása a végpontok hosszúságú kimondott szöveg áttekintésével
 Ebben az oktatóanyagban az alkalmazás előrejelzéseit fejlesztheti a LUIS által nem ismert LUIS HTTP-végponton keresztül kapott kimondott szövegek ellenőrzésével vagy javításával. Bizonyos kimondott szövegek esetében a szándékot, míg más kimondott szövegek esetében az entitást kell ellenőrizni. A végponti kimondott szövegek áttekintésének az ütemezett LUIS-karbantartás szerves részét kell képeznie. 
 
 Az áttekintési folyamat egy másik módja annak, hogy a LUIS megismerje az alkalmazás tartományát. A LUIS kiválasztotta az áttekintési listában megjelenő kimondott szövegeket. Ez a lista a következő tulajdonságokkal rendelkezik:
@@ -33,7 +33,7 @@ A végponti kimondott szövegek áttekintésével ellenőrizheti vagy kijavítha
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Példa-alkalmazás importálása
+> * Alkalmazás importálása – példa
 > * A végpont beszédmódjainak áttekintése
 > * Kifejezéslista frissítése
 > * Alkalmazás betanítása
@@ -42,7 +42,7 @@ A végponti kimondott szövegek áttekintésével ellenőrizheti vagy kijavítha
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="import-example-app"></a>Példa-alkalmazás importálása
+## <a name="import-example-app"></a>Alkalmazás importálása – példa
 
 Folytassa az előző oktatóanyagban létrehozott **EmberiErőforrások** nevű alkalmazással. 
 
@@ -54,9 +54,9 @@ Ehhez a következő lépések szükségesek:
 
 1. A **Manage** (Kezelés) szakasz **Versions** (Verziók) lapján klónozza a verziót, és adja neki a `review` nevet. A klónozás nagyszerű mód, hogy kísérletezhessen a különböző LUIS-funkciókkal anélkül, hogy az az eredeti verzióra hatással lenne. Mivel a verzió neve az URL-útvonal részét képezi, a név nem tartalmazhat olyan karaktert, amely URL-címben nem érvényes.
 
-1. Betanítása, és tegye közzé az új alkalmazást.
+1. Az új alkalmazás betanítása és közzététele.
 
-1. A végpont használatával a következő beszédmódok hozzáadása. Vagy teheti ezt meg egy [parancsfájl](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/demo-upload-endpoint-utterances/endpoint.js) vagy a végpont a böngészőben. A hozzáadandó kimondott szövegek a következők:
+1. A végpont használatával adja hozzá a következő hosszúságú kimondott szöveg. Ezt megteheti egy [parancsfájl](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/demo-upload-endpoint-utterances/endpoint.js) vagy egy böngészőbeli végpont alapján is. A hozzáadandó kimondott szövegek a következők:
 
    [!code-nodejs[Node.js code showing endpoint utterances to add](~/samples-luis/examples/demo-upload-endpoint-utterances/endpoint.js?range=15-26)]
 
@@ -68,41 +68,34 @@ Ehhez a következő lépések szükségesek:
 
 1. Válassza a **Review endpoint utterances** (Végponti kimondott szövegek áttekintése) elemet a bal oldali navigációs menüben. A lista az **ApplyForJob** szándék szerint van szűrve. 
 
-    [![Képernyőkép a felülvizsgálati végpont utterances gomb bal oldali navigációs](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png#lightbox)
+    [![A bal oldali navigációs sávon a végpontok hosszúságú kimondott szöveg áttekintése gomb képernyőképe](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png#lightbox)
 
 1. Váltson az **Entities view** (Entitások nézet) nézetre a címkézett entitások megtekintéséhez. 
     
-    [![Képernyőkép a felülvizsgálati végpont utterances az entitások megtekintéséhez a váltógomb kiemelésével](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png#lightbox)
+    [![Képernyőkép a végpontok hosszúságú kimondott szöveg az entitások nézet váltógomb kiemelésével](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png#lightbox)
+
+
+    Ez a Kimondás `I'm looking for a job with Natural Language Processing`nem megfelelő szándékú. 
+
+    A Kimondás oka, hogy a **ApplyForJob** szándéka 21 hosszúságú kimondott szöveg, a **GetJobInformation**7 hosszúságú kimondott szöveg képest. A további hosszúságú kimondott szöveg szándéka nagyobb előrejelzéssel fog rendelkezni. Fontos, hogy a hosszúságú kimondott szöveg mennyisége és minősége kiegyensúlyozott legyen.
+
+1.  A Kimondás igazításához válassza ki a megfelelő szándékot, és jelölje meg a feladattípust. Adja hozzá a megváltozott kiírást az alkalmazáshoz a zöld jelölőnégyzet bejelölésével. 
 
     |Kimondott szöveg|Megfelelő szándék|Hiányzó entitások|
     |:--|:--|:--|
-    |Természetes nyelvi feldolgozással kapcsolatos állást keresek|GetJobInfo|Állás – „Természetes nyelvi feldolgozás”|
+    |`I'm looking for a job with Natural Language Processing`|GetJobInfo|Állás – „Természetes nyelvi feldolgozás”|
 
-    Ez a kimondott szöveg nem a megfelelő szándékban van, és a pontszáma 50%-nál alacsonyabb. Az **ApplyForJob** szándék 21 kimondott szöveggel rendelkezik, míg a **GetJobInformation** csak héttel. A végponti kimondott szövegek helyes igazítása mellett további kimondott szövegeket kell hozzáadni a **GetJobInformation** szándékhoz. Ezt a feladatot önállóan kell végrehajtania. Minden szándéknak, a **None** szándék kivételével, megközelítőleg ugyanannyi példaként használt kimondott szöveggel kell rendelkeznie. A **None** szándéknak az összes kimondott szöveg 10%-ával kell rendelkeznie az alkalmazásban. 
+    Ha egy `natural language processing` keyPhrase entitást szeretne módosítani egy feladatelemre, válassza ki a kifejezést, majd válassza a **feladatok** elemet a listából. Ha csak a keyPhrase egy részét szeretné kijelölni egy másik entitáshoz, el kell távolítania a keyPhrase entitásként, egy másik entitás címkével, majd újra kell alkalmaznia az keyPhrase entitást az alkalmazásra. 
 
-1. Az `I'm looking for a job with Natual Language Processing` szándék esetében válassza ki a megfelelő szándékot (**GetJobInformation**) az **Aligned intent** (Igazított szándék) oszlopban. 
+    A Kimondás hozzáadásával áthelyezi a kilépést a **felülvizsgálati végpont hosszúságú kimondott szöveg** a **GetJobInformation** szándékba. A végponti kimondott szöveg mostantól ennek a szándéknak a példaként szolgáló kimondott szövege. 
 
-    [![Képernyőkép a felülvizsgálati végpont kimondott szöveg utterance (kifejezés) beszédszándék igazítása](./media/luis-tutorial-review-endpoint-utterances/align-intent-1.png)](./media/luis-tutorial-review-endpoint-utterances/align-intent-1.png#lightbox)
+    A Kimondás megfelelő igazítása mellett további hosszúságú kimondott szöveg kell hozzáadni a **GetJobInformation** szándékához. Ezt a feladatot önállóan kell végrehajtania. Minden szándéknak, a **None** szándék kivételével, megközelítőleg ugyanannyi példaként használt kimondott szöveggel kell rendelkeznie. A **None** szándéknak az összes kimondott szöveg 10%-ával kell rendelkeznie az alkalmazásban. 
 
-1. Ugyanabban a kimondott szövegben a `Natural Language Processing` entitása a keyPhrase. Ennek ehelyett **Job** (Állás) entitásnak kell lennie. Válassza a `Natural Language Processing` lehetőséget, majd a **Job** (Állás) entitást a listából.
+    Tekintse át a szándékban található további kimondott szövegeket, és lássa el őket címkével, illetve javítsa ki az **Igazított szándékot**, ha az nem megfelelő.
 
-    [![Képernyőkép a felülvizsgálati végpont kimondott szöveg címkézés entitás az utterance (kifejezés)](./media/luis-tutorial-review-endpoint-utterances/label-entity.png)](./media/luis-tutorial-review-endpoint-utterances/label-entity.png#lightbox)
+    A **felülvizsgálati végpont hosszúságú kimondott szöveg** listájának már nem kell megjelennie a hosszúságú kimondott szöveg. Ha további kimondott szövegek jelennek meg, haladjon végig a listán, javítsa ki a szándékokat, és címkézze meg a hiányzó entitásokat, amíg a listán már nem szerepel több elem. 
 
-1. Ugyanabban a sorban válassza ki a bekarikázott pipát az **Add to aligned intent** (Hozzáadás igazított szándékhoz) oszlopban. 
-
-    [![Képernyőkép az utterance (kifejezés) igazítása a leképezés véglegesítése](./media/luis-tutorial-review-endpoint-utterances/align-utterance.png)](./media/luis-tutorial-review-endpoint-utterances/align-utterance.png#lightbox)
-
-    Ez a művelet áthelyezi a kimondott szöveget a **Review endpoint utterances** (Végponti kimondott szövegek áttekintése) helyről a **GetJobInformation** szándékba. A végponti kimondott szöveg mostantól ennek a szándéknak a példaként szolgáló kimondott szövege. 
-
-1. Tekintse át a szándékban található további kimondott szövegeket, és lássa el őket címkével, illetve javítsa ki az **Igazított szándékot**, ha az nem megfelelő.
-
-1. Ha minden kimondott szöveg megfelelő, jelölje be az egyes sorok elején található jelölőnégyzeteket, majd válassza az **Add selected** (Kiválasztott hozzáadása) lehetőséget a kimondott szövegek megfelelő igazításához. 
-
-    [![Képernyőkép a fennmaradó utterances igazított beszédszándék véglegesítése](./media/luis-tutorial-review-endpoint-utterances/finalize-utterance-alignment.png)](./media/luis-tutorial-review-endpoint-utterances/finalize-utterance-alignment.png#lightbox)
-
-1. A listán már nem szabad ezeknek a kimondott szövegeknek megjelenniük. Ha további kimondott szövegek jelennek meg, haladjon végig a listán, javítsa ki a szándékokat, és címkézze meg a hiányzó entitásokat, amíg a listán már nem szerepel több elem. 
-
-1. A Filter (Szűrő) listájában válassza ki a következő szándékot, majd folytassa a kimondott szövegek javítását és az entitások címkézését. Ne feledje, hogy minden szándék utolsó lépése az **Add to aligned intent** (Hozzáadás igazított szándékhoz) lehetőség kiválasztása a kimondott szöveg sorában, vagy a jelölőnégyzet bejelölése az egyes szándékok mellett és az **Add selected** (Kiválasztott hozzáadása) lehetőség kiválasztása a tábla felett.
+    A Filter (Szűrő) listájában válassza ki a következő szándékot, majd folytassa a kimondott szövegek javítását és az entitások címkézését. Ne feledje, hogy minden szándék utolsó lépése az **Add to aligned intent** (Hozzáadás igazított szándékhoz) lehetőség kiválasztása a kimondott szöveg sorában, vagy a jelölőnégyzet bejelölése az egyes szándékok mellett és az **Add selected** (Kiválasztott hozzáadása) lehetőség kiválasztása a tábla felett.
 
     Addig folytassa, amíg a szűrési listában szereplő összes szándék és entitás listája üres nem lesz. Ez egy nagyon kicsi alkalmazás. Az áttekintési folyamat csak néhány percet vesz igénybe. 
 

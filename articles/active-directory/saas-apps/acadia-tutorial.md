@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 1/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30c6958fef66e492ae1875538503e4094d8eeccb
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 6797d9824a2dff23f30f6d2c49fb7e62d76b1e0d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57842583"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67107448"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-acadia"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Acadia
 
@@ -54,7 +54,7 @@ Az Azure AD integrálása a Acadia konfigurálásához hozzá kell Acadia a kata
 
 **Acadia hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -117,7 +117,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Acadia, hajtsa végr
     Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím:  `https://<CUSTOMER>.acadia.sysalli.com/Shibboleth.sso/Login`
 
     > [!NOTE]
-    > 4. és 5 értékeit biztosítjuk a metaadatfájl kattintva importálhatók a Acadia csapat **metaadatfájl feltöltése** a a **alapszintű SAML-konfigurációja** szakaszban. Az értékeket módosítsa a tényleges azonosítóját, válasz URL-cím és bejelentkezési URL-címet. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszában, győződjön meg arról, hogy helyesek-e a metaadatértékeket az Azure Portalon. Kapcsolattartó [Acadia ügyfél-támogatási csapatának](mailto:support@systemsalliance.com) Ha a megadott érték helytelen.
+    > 4\. és 5 értékeit biztosítjuk a metaadatfájl kattintva importálhatók a Acadia csapat **metaadatfájl feltöltése** a a **alapszintű SAML-konfigurációja** szakaszban. Az értékeket módosítsa a tényleges azonosítóját, válasz URL-cím és bejelentkezési URL-címet. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszában, győződjön meg arról, hogy helyesek-e a metaadatértékeket az Azure Portalon. Kapcsolattartó [Acadia ügyfél-támogatási csapatának](mailto:support@systemsalliance.com) Ha a megadott érték helytelen.
 
 6. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **összevonási metaadatainak XML**  a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 

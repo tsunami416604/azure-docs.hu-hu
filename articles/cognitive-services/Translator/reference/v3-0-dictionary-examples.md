@@ -1,29 +1,29 @@
 ---
-title: Translator Text API szótár példák metódus
-titlesuffix: Azure Cognitive Services
-description: A Translator Text API szótár példák módszert használja.
+title: Példák a Translator Text API szótárra
+titleSuffix: Azure Cognitive Services
+description: Használja a Translator Text API szótár példákat.
 services: cognitive-services
-author: v-pawal
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
-ms.author: v-jansko
-ms.openlocfilehash: d48349b802023d9a05bf14898440837b7793715d
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.author: swmachan
+ms.openlocfilehash: 419e11862b2c584686922cfc8d1db72ee4751a03
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578269"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934035"
 ---
 # <a name="translator-text-api-30-dictionary-examples"></a>Translator Text API 3.0: Szótár – példák
 
-Példákat talál, amelyek megmutatják, hogyan feltételeket a szótár környezetben használják. Ezzel a művelettel területtel együtt [szótár keresési](./v3-0-dictionary-lookup.md).
+Olyan példákat tartalmaz, amelyek bemutatják, hogyan használják a szótárban található kifejezéseket a kontextusban. Ez a művelet a [szótárbeli kereséssel](./v3-0-dictionary-lookup.md)párhuzamosan használatos.
 
 ## <a name="request-url"></a>Kérés URL-címe
 
-Küldjön egy `POST` kérelmet:
+`POST` Kérelem küldése a következőnek:
 
 ```HTTP
 https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.0
@@ -31,57 +31,57 @@ https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.
 
 ## <a name="request-parameters"></a>A kérés paraméterei
 
-A kérelem lekérdezési karakterláncot az átadott paraméterek a következők:
+A lekérdezési karakterláncon átadott kérési paraméterek a következők:
 
 <table width="100%">
   <th width="20%">Lekérdezési paraméter</th>
   <th>Leírás</th>
   <tr>
-    <td>API-verzió</td>
-    <td>*Kötelező paraméter*.<br/>Az ügyfél által kért API-verzió. Az érték lehet `3.0`.</td>
+    <td>api-version</td>
+    <td>*Kötelező paraméter*.<br/>Az ügyfél által kért API-verzió. Az értéknek `3.0`a számnak kell lennie.</td>
   </tr>
   <tr>
-    <td>forrás:</td>
-    <td>*Kötelező paraméter*.<br/>Meghatározza a bemeneti szöveg nyelvét. A Forrásnyelv egyikének kell lennie a [támogatott nyelvek](./v3-0-languages.md) szerepel a `dictionary` hatókör.</td>
+    <td>from</td>
+    <td>*Kötelező paraméter*.<br/>Megadja a bemeneti szöveg nyelvét. A forrás nyelvének a `dictionary` hatókörben szereplő [támogatott nyelvek](./v3-0-languages.md) egyikének kell lennie.</td>
   </tr>
   <tr>
-    <td>erre:</td>
-    <td>*Kötelező paraméter*.<br/>Meghatározza a kimeneti szöveg nyelvét. A Célnyelv egyikének kell lennie a [támogatott nyelvek](./v3-0-languages.md) szerepel a `dictionary` hatókör.</td>
+    <td>to</td>
+    <td>*Kötelező paraméter*.<br/>Megadja a kimeneti szöveg nyelvét. A célként megadott nyelvnek a `dictionary` hatókörben szereplő [támogatott nyelvek](./v3-0-languages.md) egyikének kell lennie.</td>
   </tr>
 </table>
 
-Kérelemfejlécek a következők:
+A kérelem fejlécei a következők:
 
 <table width="100%">
   <th width="20%">Fejlécek</th>
   <th>Leírás</th>
   <tr>
-    <td>Hitelesítési fejléc(ek)</td>
-    <td><em>Szükséges kérelem fejléce</em>.<br/>Lásd: <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">elérhető lehetőségek a hitelesítéshez</a>.</td>
+    <td>Hitelesítési fejléc (ek)</td>
+    <td><em>Kötelező kérelem fejléce</em><br/>Tekintse <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">meg a hitelesítés elérhető beállításait</a>.</td>
   </tr>
   <tr>
     <td>Content-Type</td>
-    <td>*Szükséges kérelem fejléce*.<br/>Megadja a hasznos tartalom típusát. Lehetséges értékek a következők: `application/json`.</td>
+    <td>*Kötelező kérelem fejléce*<br/>Megadja az adattartalom tartalomtípusát. A lehetséges értékek a `application/json`következők:.</td>
   </tr>
   <tr>
     <td>Content-Length</td>
-    <td>*Szükséges kérelem fejléce*.<br/>A kérelem törzsében mennyi.</td>
+    <td>*Kötelező kérelem fejléce*<br/>A kérelem törzsének hossza</td>
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td>*Választható*.<br/>Egy ügyfél által létrehozott GUID egyedi azonosítására szolgál a kérelmet. Kihagyhatja ezt a fejlécet, ha a lekérdezési karakterláncban nevű lekérdezési paraméter használatával adja meg a nyomkövetési azonosító `ClientTraceId`.</td>
+    <td>*Választható*.<br/>Ügyfél által generált GUID a kérelem egyedi azonosításához. Kihagyhatja ezt a fejlécet, ha a lekérdezési karakterláncban szerepel a nyomkövetési azonosító a `ClientTraceId`nevű lekérdezési paraméter használatával.</td>
   </tr>
 </table> 
 
 ## <a name="request-body"></a>A kérés törzse
 
-A kérelem törzsében egy JSON-tömböt. Egyes tömbelemeken egy JSON-objektum a következő tulajdonságokkal:
+A kérelem törzse egy JSON-tömb. Minden tömb elem egy JSON-objektum, amely a következő tulajdonságokkal rendelkezik:
 
-  * `Text`: Egy olyan karakterláncot kell a keresési kifejezést. Ez az érték legyen egy `normalizedText` vissza a korábbi fordítások a mezőt [szótár keresési](./v3-0-dictionary-lookup.md) kérelmet. Az érték lehet is a `normalizedSource` mező.
+  * `Text`: A keresett kifejezést megadó karakterlánc. Ennek egy `normalizedText` mezőnek kell lennie egy korábbi [szótárbeli keresési](./v3-0-dictionary-lookup.md) kérelem visszafordításakor. A `normalizedSource` mező értéke is lehet.
 
-  * `Translation`: A lefordított szöveg által korábban visszaadott megadó karakterlánc a [szótár keresési](./v3-0-dictionary-lookup.md) műveletet. Ez legyen az értékét a `normalizedTarget` mezőbe a `translations` listája a [szótár keresési](./v3-0-dictionary-lookup.md) választ. A szolgáltatás visszaadja a megadott forrás-cél word-pár példákat.
+  * `Translation`: A [szótár keresési](./v3-0-dictionary-lookup.md) művelete által korábban visszaadott lefordított szöveget megadó karakterlánc. Ennek a `normalizedTarget` [szótár keresési](./v3-0-dictionary-lookup.md) válasza mezőjében `translations` szereplő értéknek kell lennie. A szolgáltatás példákat ad vissza az adott forrás-cél Word-pair számára.
 
-A következő egy példa:
+Példa:
 
 ```json
 [
@@ -89,49 +89,45 @@ A következő egy példa:
 ]
 ```
 
-Az alábbi korlátozások érvényesek:
+A következő korlátozások érvényesek:
 
-* A tömb legfeljebb 10 elemet is rendelkezhet.
-* Egy tömbelem szöveg értéke nem lehet 100 karakternél, beleértve a szóközöket.
+* A tömb legfeljebb 10 elemet tartalmazhat.
+* Egy tömb elemének szöveges értéke nem lehet hosszabb 100 karakternél, beleértve a szóközöket is.
 
-## <a name="response-body"></a>Választörzs
+## <a name="response-body"></a>Válasz törzse
 
-A sikeres válasz egy JSON-tömböt az egyes sztringek a bemeneti számtömbből egy eredmény. Egy objektumra a következő tulajdonságokat tartalmazza:
+A sikeres válasz egy JSON-tömb, amely egyetlen eredménnyel rendelkezik a bemeneti tömb minden karakterláncához. Az eredmény objektum a következő tulajdonságokat tartalmazza:
 
-  * `normalizedSource`: Egy karakterlánc, így a forrás kifejezés normalizált formájában. Általában ez az érték azonos legyen a `Text` mezőt a kérelem törzsében a megfelelő listában indexnél.
+  * `normalizedSource`: Egy karakterlánc, amely a forrás kifejezés normalizált formáját adja. Ez általában azonos a kérelem törzsében lévő egyező lista index `Text` mezőjében szereplő értékkel.
     
-  * `normalizedTarget`: Jogosultságot ad a célként megadott kifejezés normalizált formájában karakterlánc. Általában ez az érték azonos legyen a `Translation` mezőt a kérelem törzsében a megfelelő listában indexnél.
+  * `normalizedTarget`: Egy karakterlánc, amely a célként megadott kifejezés normalizált formáját adja. Ez általában azonos a kérelem törzsében lévő egyező lista index `Translation` mezőjében szereplő értékkel.
   
-  * `examples`: Példák a (forrás időszakra, célként megadott kifejezés) pár. A lista minden eleme egy olyan objektum, a következő tulajdonságokkal:
+  * `examples`: A (forrás kifejezés, a célként megadott kifejezés) párokra vonatkozó példák listája. A lista minden eleme egy olyan objektum, amely a következő tulajdonságokkal rendelkezik:
 
-    * `sourcePrefix`: A karakterlánc összefűzésére _előtt_ értékét `sourceTerm` kialakításához arra az egy teljes példát. Ne adjon hozzá egy szóköz karakter, mert már létezik amikor kell lennie. Ez az érték lehet üres karakterlánc.
+    * `sourcePrefix`: A teljes példa megalkotása _előtt_ `sourceTerm` összefűzni kívánt karakterlánc. Ne adjon hozzá szóközt, mert már ott van. Ez az érték lehet üres karakterlánc.
 
-    * `sourceTerm`: Egy karakterlánc egyenlő a tényleges kifejezést keresi. A karakterlánc adnak `sourcePrefix` és `sourceSuffix` teljes példa kialakításához. Félkövér stílus szerint, megjelölve egy felhasználói felületen, például hogy az értékét választja el azt.
+    * `sourceTerm`: A tényleges kifejezéssel megegyező sztring. A rendszer hozzáadja `sourcePrefix` a karakterláncot `sourceSuffix` a és a teljes példa formájában. Az értéke el van különítve, így egy felhasználói felületen is megadható, például félkövérrel.
 
-    * `sourceSuffix`: A karakterlánc összefűzésére _után_ értékét `sourceTerm` kialakításához arra az egy teljes példát. Ne adjon hozzá egy szóköz karakter, mert már létezik amikor kell lennie. Ez az érték lehet üres karakterlánc.
+    * `sourceSuffix`: Az a karakterlánc, amelyet `sourceTerm` a rendszer az érték után ÖSSZEFŰZ a teljes példa formájában. Ne adjon hozzá szóközt, mert már ott van. Ez az érték lehet üres karakterlánc.
 
-    * `targetPrefix`: Egy karakterlánc hasonló `sourcePrefix` , de a cél.
+    * `targetPrefix`: A célhoz hasonló `sourcePrefix` karakterlánc.
 
-    * `targetTerm`: Egy karakterlánc hasonló `sourceTerm` , de a cél.
+    * `targetTerm`: A célhoz hasonló `sourceTerm` karakterlánc.
 
-    * `targetSuffix`: Egy karakterlánc hasonló `sourceSuffix` , de a cél.
+    * `targetSuffix`: A célhoz hasonló `sourceSuffix` karakterlánc.
 
     > [!NOTE]
-    > Ha nincs példák a szótárban, a válasz-e a 200 (OK), de a `examples` listája üres lista lesz.
+    > Ha a szótárban nincsenek példák, a válasz 200 (ok), de a `examples` lista egy üres lista.
 
 ## <a name="examples"></a>Példák
 
-Ez a példa bemutatja, hogyan példák a pár áll az angol nyelvű kifejezést talált `fly` és a spanyol fordítás `volar`.
+Ez a példa bemutatja, hogyan lehet keresni példákat az angol kifejezésből `fly` és a spanyol fordításból `volar`álló párokra.
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
-
-```
+```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.0&from=en&to=es" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'fly', 'Translation':'volar'}]"
 ```
 
----
-
-A válasz törzsében (rövidítése az átláthatóság érdekében) a következő:
+A válasz törzse (az egyértelműség rövidítése) a következő:
 
 ```
 [

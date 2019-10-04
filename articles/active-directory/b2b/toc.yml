@@ -51,6 +51,8 @@
     - name: Útmutatók
       expanded: true
       items:
+        - name: B2B-megosztás kezelése
+          href: delegate-invitations.md
         - name: Meghívók kezelése
           items:
             - name: B2B felhasználók rendszergazdák általi hozzáadása
@@ -61,8 +63,10 @@
               href: google-federation.md
             - name: Hitelesítés egyszeri PIN-kóddal
               href: one-time-passcode.md
-            - name: B2B megosztási szabályzatok
-              href: delegate-invitations.md
+            - name: Közvetlen összevonás
+              href: direct-federation.md
+            - name: Példa AD FS-sel végzett közvetlen összevonásra
+              href: direct-federation-adfs.md
             - name: Meghívások engedélyezése vagy letiltása
               href: allow-deny-list.md
             - name: B2B felhasználók hozzáadása meghívás nélkül

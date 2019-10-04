@@ -13,16 +13,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/11/2018
 ms.author: dekapur
-ms.openlocfilehash: e5fa46930a3be3c85cd76e655fac3164cc45d957
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: dad37af030c456f9ba2cd814fa92a7811dce6aa1
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58664813"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130327"
 ---
 # <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>Megtervezheti és előkészítheti a Service Fabric önálló fürtök üzembe helyezése
 
-<a id="preparemachines"></a>Az alábbi lépések végrehajtásával, a fürt létrehozása előtt.
+<a id="preparemachines"></a>A fürt létrehozása előtt hajtsa végre a következő lépéseket.
 
 ## <a name="plan-your-cluster-infrastructure"></a>A fürt-infrastruktúra megtervezése
 Ön egy Service Fabric-fürtöt létrehozni a gépeken "saját", így eldöntheti, milyen típusú hibák azt szeretné, a fürt stabilitást biztosít. Például tegye meg kell külön power vonalak vagy hálózati kapcsolatok használata esetén ezek a gépek megadott? Ezenkívül fontolja meg ezek a gépek fizikai biztonságát. Hol találhatók a gépek, és ki kell őket a hozzáférést? Ezek a döntések után logikailag leképezheti a gépek különböző tartalék tartományokra (lásd a következő lépés). Az infrastruktúra tervezésének éles fürtök esetén a bonyolultabb, mint a tesztfürtök esetében.
@@ -45,7 +45,7 @@ Frissítési tartománnyal ClusterConfig.json ad meg, amikor kiválaszthatja az 
 * "upgradeDomain": "UD0"
 * "upgradeDomain": "UD1A"
 * "upgradeDomain": "DomainRed"
-* "upgradeDomain": "Blue"
+* "upgradeDomain": Kék
 
 További részletes információ a tartalék és frissítési tartománnyal,: [leíró, Service Fabric-fürt](service-fabric-cluster-resource-manager-cluster-description.md).
 
@@ -65,10 +65,11 @@ Az alábbiakban néhány javasolt adatait tartalmazza az egyes gépek, a fürth�
 * Legalább 40 GB szabad lemezterület
 * Egy 4 mag, vagy nagyobb CPU
 * Kapcsolat egy biztonságos hálózati vagy a hálózatok minden gép
-* A Windows Server operációs rendszer telepítve van (érvényes verzió: A 2012 R2, a 2016, a 1709-es vagy a 1803)
+* Telepített Windows Server operációs rendszer (érvényes verziók: 2012 R2, 2016, 1709 vagy 1803). Service Fabric a 6.4.654.9590 és újabb verziója is támogatja a 2019-es és a 1809-es kiszolgálót.
 * [.NET-keretrendszer 4.5.1-es vagy újabb](https://www.microsoft.com/download/details.aspx?id=40773), teljes verzióként
 * [Windows PowerShell 3.0](https://msdn.microsoft.com/powershell/scripting/setup/installing-windows-powershell)
 * A [RemoteRegistry szolgáltatás](https://technet.microsoft.com/library/cc754820) minden gépen kell futnia
+* Service Fabric telepítési meghajtójának NTFS fájlrendszerrel kell rendelkeznie
 
 Rendelkeznie kell a fürt rendszergazdája központi telepítését és konfigurálását a fürt [rendszergazdai jogosultságokkal](https://social.technet.microsoft.com/wiki/contents/articles/13436.windows-server-2012-how-to-add-an-account-to-a-local-administrator-group.aspx) az egyes gépek. A Service Fabric tartományvezérlőn nem telepíthető.
 
@@ -103,13 +104,13 @@ Amikor a fürt rendszergazdája konfigurálja a különálló Service Fabric-fü
    * A távoli beállításjegyzék szolgáltatás (a távoli beállításjegyzék) engedélyezve van
    * Fájl megosztási (SMB) engedélyezve van
    * Rendelkezik a szükséges portokat lett megnyitva, a fürt konfiguráció portok alapján
-   * Rendelkezik a szükséges portok megnyitása a Windows az SMB és a távoli beállításjegyzék szolgáltatás: a 135-ös, 137-es, 138, 139-es és a 445-ös
+   * Meg kell nyitni a Windows SMB és a távoli beállításjegyzék szolgáltatáshoz szükséges portokat: 135, 137, 138, 139 és 445
    * Egy másik hálózati kapcsolat
 3. A fürt csomópont gépek egyike egy tartományvezérlő legyen.
 4. Ha a fürt üzembe lesz helyezve egy biztonságos fürt, ellenőrizze a szükséges biztonsági előfeltételeket helyezze el, és megfelelően van konfigurálva a konfiguráció alapján.
 5. Ha a fürt gépek nem internetről elérhető, a fürt konfigurációját a állítsa be a következőket:
-   * Telemetria letiltása: A *tulajdonságok* beállítása *"enableTelemetry": hamis*
-   * Tiltsa le az automatikus Fabric verzió letöltése és értesítések, hogy az aktuális fürt verziója van-e hamarosan megszűnik a támogatás: A *tulajdonságok* beállítása *"fabricClusterAutoupgradeEnabled": hamis*
+   * Telemetria letiltása: A "EnableTelemetry" *tulajdonságnál* adja meg a *következőt: false*
+   * Letilthatja az automatikus háló verziójának letöltését & értesítéseket arról, hogy a fürt aktuális verziója hamarosan megszűnik a támogatás: A "FabricClusterAutoupgradeEnabled" *tulajdonságnál* adja meg a *következőt: false*
    * Azt is megteheti, ha hálózati internet-hozzáférés korlátozott fehér felsorolt tartományokhoz, az alábbi tartományok szükségesek az automatikus frissítés: go.microsoft.com jövőben a Microsoft
 
 6. Állítsa be a megfelelő Service Fabric víruskereső – kizárások:

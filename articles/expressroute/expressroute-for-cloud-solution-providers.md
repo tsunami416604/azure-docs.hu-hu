@@ -6,14 +6,14 @@ author: richcar
 ms.service: expressroute
 ms.topic: article
 ms.date: 10/10/2016
-ms.author: richcar
+ms.author: ricarlse
 ms.custom: seodec18
-ms.openlocfilehash: a03ab7bbdadad2728f54127583583c22bd2ec07a
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: a3bd48f32dfcee1a666ff842cfcab2384a5459ec
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650376"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849265"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>ExpressRoute felhőszolgáltatók (CSP) számára
 A Microsoft hatalmas léptékű szolgáltatásokat kínál a hagyományos viszonteladók és forgalmazók (CSP) számára, hogy gyorsan láthassák el ügyfeleiket új szolgáltatásokat és megoldásokat anélkül, hogy be kellene fektetniük az új szolgáltatások fejlesztésébe. Ahhoz, hogy lehetővé tegye a felhőszolgáltatók (CSP) számára az új szolgáltatások közvetlen felügyeletét, a Microsoft olyan programokat és API-kat biztosít, amelyek segítségével a CSP-k ügyfeleik nevében felügyelhetik a Microsoft Azure-erőforrásokat. Ezeknek az erőforrásoknak az egyike az ExpressRoute. Az ExpressRoute lehetővé teszi, hogy a CSP meglévő ügyfélerőforrásait csatlakoztassa az Azure-szolgáltatásokhoz. Az ExpressRoute egy nagy sebességű privát kommunikációs kapcsolat az Azure-ban lévő szolgáltatásokhoz. 
@@ -31,7 +31,7 @@ A Microsoft Azure egyre nagyobb számban kínál szolgáltatásokat, amelyeket �
 A Microsoft a CSP-k számára API-kat biztosít az Azure-ügyfelek előfizetéseinek kezeléséhez a saját szolgáltatáskezelési rendszereivel való programozott integráció révén. A támogatott kezelési képességek [itt](https://msdn.microsoft.com/library/partnercenter/dn974944.aspx) találhatók.
 
 ## <a name="microsoft-azure-resource-management"></a>Microsoft Azure erőforrás-kezelés
-Az ügyfelével kötött szerződése határozza meg az előfizetés kezelésének módját. A CSP közvetlenül kezelheti az erőforrások létrehozását és karbantartását, vagy az ügyfél megtarthatja a Microsoft Azure-előfizetés feletti felügyeletet, és maga hozhat létre igény szerinti Azure-erőforrásokat. Ha az ügyfél kezeli az erőforrások a Microsoft Azure-előfizetése létrehozását, két következő modell valamelyikét használja majd: "*Szolgáltatón keresztüli csatlakozás*" modell, vagy a "*szolgáltatóhoz való*" modellt. A modellek leírását a következő szakaszok tartalmazzák.  
+Az ügyfelével kötött szerződése határozza meg az előfizetés kezelésének módját. A CSP közvetlenül kezelheti az erőforrások létrehozását és karbantartását, vagy az ügyfél megtarthatja a Microsoft Azure-előfizetés feletti felügyeletet, és maga hozhat létre igény szerinti Azure-erőforrásokat. Ha az ügyfél felügyeli az erőforrások létrehozását a Microsoft Azure-előfizetésben, a két modell egyikét fogja használni: "*Kapcsolódás*" modell vagy "*Direct-to*" modell. A modellek leírását a következő szakaszok tartalmazzák.  
 
 ### <a name="connect-through-model"></a>Szolgáltatón keresztüli csatlakozás modell
 ![helyettesítő szöveg](./media/expressroute-for-cloud-solution-providers/connect-through.png)  
@@ -88,7 +88,7 @@ Támogatást nyújthat a kapcsolat beállításában és az útvonalak konfigur�
 ## <a name="expressroute-routing-domains"></a>ExpressRoute útválasztási tartományok
 Az ExpressRoute három útválasztási tartományt kínál: nyilvános, privát és Microsoft társviszony-létesítés. Az útválasztási tartományok mindegyike egyforma útválasztókkal van konfigurálva aktív-aktív konfigurációban magas rendelkezésre álláshoz. Az ExpressRoute útválasztási tartományokkal kapcsolatos további részleteket lásd [itt](expressroute-circuit-peerings.md).
 
-Az egyéni útvonalszűrőket meghatározhatja úgy is, hogy kizárólag a kívánt vagy szükséges útvonal(ak)at engedélyezzék. További információért vagy bemutató cikkben módosítások végrehajtásához: [Létrehozása és módosítása a PowerShell használatával egy ExpressRoute-kapcsolatcsoport útválasztásának](expressroute-howto-routing-classic.md) útválasztási szűrőkkel kapcsolatos további részletekért.
+Az egyéni útvonalszűrőket meghatározhatja úgy is, hogy kizárólag a kívánt vagy szükséges útvonal(ak)at engedélyezzék. További információkért vagy a módosítások végrehajtásához tekintse meg a cikket: [ExpressRoute-áramkör útválasztásának létrehozása és módosítása a PowerShell használatával](expressroute-howto-routing-classic.md) további részleteket az útválasztási szűrőkről.
 
 > [!NOTE]
 > A Microsoft és a társviszony-létesítéshez a kapcsolatoknak egy, az ügyfél vagy a CSP által birtokolt nyilvános IP-címen keresztül kell megvalósulniuk, és az összes meghatározott szabálynak meg kell felelniük. További információkért lásd az [ExpressRoute-előfeltételek](expressroute-prerequisites.md) lapot.  
@@ -120,7 +120,7 @@ A használt modelltől – Szolgáltatóhoz való csatlakozás vagy Szolgáltat�
 1. **Ügyfél elkülönítése** – Az Azure platform lehetőséget biztosít az ügyfél elkülönítésére az ügyfél-azonosító és a vNet-adatok egy biztonságos adatbázisban való eltárolásával, amelyeket arra használ, hogy az egyes ügyfelek forgalmát egy GRE-alagútba bújtassa.
 2. A **hálózati biztonsági csoport (NSG)** szabályai segítségével meghatározható a vNetek alhálózatainak engedélyezett be- és kimenő forgalma az Azure-ban. Alapértelmezés szerint az NSG blokkolási szabályok használatával blokkolja az internetről a vNet-re irányuló forgalmat, és engedélyezési szabályok használatával engedélyezi a vNeten belüli forgalmat. A hálózati biztonsági csoportokkal kapcsolatos további információkat [itt](https://azure.microsoft.com/blog/network-security-groups/) tekintheti meg.
 3. **Kényszerített bújtatás** – Ezzel a lehetőséggel az Azure-ból származó internetes forgalom átirányítható az ExpressRoute-kapcsolaton keresztül a helyszíni adatközpontba. A kényszerített bújtatással kapcsolatos további információkat [itt](expressroute-routing.md#advertising-default-routes) tekintheti meg.  
-4. **Titkosítás** – Annak ellenére, hogy az ExpressRoute-kapcsolatcsoportok adott ügyfelekre vonatkoznak, fennáll a lehetősége, hogy a hálózatszolgáltató rendszerét feltörik, és így a behatoló megvizsgálhatja a csomagforgalmat. A lehetséges megoldására, ügyfél vagy a CSP forgalom titkosításához a kapcsolaton keresztül definiálásával IPSec-bújtatás módú házirendeket a helyszíni erőforrások és az Azure között áramló teljes forgalomra vonatkozóan (tekintse meg a választható bújtatás módú IPSec ügyfél 1. ábrán látható erőforrások 5: ExpressRoute-biztonság, a fenti). A második lehetőség egy tűzfalkészülék használata az ExpressRoute-kapcsolatcsoport mindegyik végpontján. Ehhez további külső gyártótól származó tűzfal VM-ek/-készülékek telepítése szükséges mindkét végponton az ExpressRoute-kapcsolatcsoporton áthaladó forgalom titkosításához.
+4. **Titkosítás** – Annak ellenére, hogy az ExpressRoute-kapcsolatcsoportok adott ügyfelekre vonatkoznak, fennáll a lehetősége, hogy a hálózatszolgáltató rendszerét feltörik, és így a behatoló megvizsgálhatja a csomagforgalmat. Ennek a lehetőségnek a megoldásához az ügyfél vagy a CSP a kapcsolaton keresztül titkosíthatja a forgalmat a helyszíni erőforrások és az Azure-erőforrások közötti összes forgalomra vonatkozó IPSec-alagút módú házirendek definiálásával (lásd az 1. ügyfél opcionális bújtatási mód IPSec-t 5: ExpressRoute biztonság, fent). A második lehetőség egy tűzfalkészülék használata az ExpressRoute-kapcsolatcsoport mindegyik végpontján. Ehhez további külső gyártótól származó tűzfal VM-ek/-készülékek telepítése szükséges mindkét végponton az ExpressRoute-kapcsolatcsoporton áthaladó forgalom titkosításához.
 
 ![helyettesítő szöveg](./media/expressroute-for-cloud-solution-providers/expressroute-security.png)  
 

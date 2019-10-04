@@ -1,110 +1,89 @@
 ---
-title: Az Azure Active Directory Identity Protection aktív kockázati események bezárása |} A Microsoft Docs
-description: Bemutatjuk a Bezárás aktív kockázati események rendelkezik.
+title: Aktív kockázati észlelések lezárása Azure Active Directory Identity Protectionban | Microsoft Docs
+description: Ismerje meg az aktív kockázatok észlelésével kapcsolatos lehetőségeket.
 services: active-directory
-keywords: az Azure active directory identity protection a következőket cloud app discovery szolgáltatást, alkalmazások, biztonság, kockázati, kockázati szint, biztonsági rést, biztonsági házirend kezelése
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e003aec8fa5aeab587fa07acdae3a13b370a535
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: d24ec94d0381fc2e79fdef97b6d525b7cec33fef
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521159"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126470"
 ---
-# <a name="how-to-close-active-risk-events"></a>kézikönyv: Az aktív kockázati események bezárása
+# <a name="how-to-close-active-risk-detections"></a>kézikönyv: Aktív kockázati észlelések lezárása
 
-A [kockázati események](../reports-monitoring/concept-risk-events.md), Azure Active Directory észleli a mutatók esetleg feltört felhasználói fiókok esetében. A rendszergazdák szeretne kapni a lezárt, az összes kockázati események, hogy az érintett felhasználók már nem veszélyben vannak.
+A [kockázati észlelések](../reports-monitoring/concept-risk-events.md)Azure Active Directory észleli a potenciálisan feltört felhasználói fiókok kijelzőit. Rendszergazdaként az összes kockázati észlelést le szeretné állítani, hogy az érintett felhasználók többé ne legyenek kitéve.
 
-Ez a cikk áttekintést, a további lehetőségek gombra kattintva zárja be az aktív kockázati események rendelkezik.
+Ez a cikk áttekintést nyújt az aktív kockázati észlelések lezárásához szükséges további lehetőségekről.
 
-## <a name="options-to-close-risk-events"></a>A beállítások gombra kattintva zárja be a kockázati események 
+## <a name="options-to-close-risk-detections"></a>A kockázati észlelések lezárásának lehetőségei 
 
-Egy kockázati esemény állapota vagy **aktív** vagy **lezárt**. Az összes aktív kockázati események járulnak hozzá a felhasználói kockázat szintjének nevű érték kiszámítása. A felhasználói kockázat szintje egy jelző (alacsony, közepes, nagy) a valószínűsége annak, hogy a fiók biztonsága sérült. 
+A kockázatok észlelésének állapota **aktív** vagy lezárt. Minden aktív kockázati észlelés hozzájárul a felhasználói kockázati szint nevű érték kiszámításához. A felhasználói kockázati szint egy kijelző (alacsony, közepes és magas), amely a fiók biztonságának valószínűségét jelzi. 
 
-Gombra kattintva zárja be az aktív kockázati események, a következő lehetőségek állnak rendelkezésére:
+Az aktív kockázati észlelések lezárásához a következő lehetőségek közül választhat:
 
-- Felhasználói kockázati házirendet az új jelszó kérése
+- Jelszó-visszaállítás megkövetelése felhasználói kockázati házirenddel
+- Jelszó manuális alaphelyzetbe állítása
+- Az összes kockázati észlelés bezárása 
+- Egyéni kockázati észlelések manuális lezárása
 
-- Manuális jelszó-visszaállítás
+## <a name="require-password-reset-with-a-user-risk-policy"></a>Jelszó-visszaállítás megkövetelése felhasználói kockázati házirenddel
+
+A [felhasználói kockázat feltételes hozzáférési szabályzatának](howto-user-risk-policy.md)konfigurálásával jelszó megváltoztatására van szükség, ha a rendszer automatikusan észlel egy adott felhasználói kockázati szintet. 
+
+![Másik jelszó kérése](./media/howto-close-active-risk-events/13.png)
+
+A jelszó alaphelyzetbe állítása lezárja a kapcsolódó felhasználó összes aktív kockázati eseményét, és biztonságos állapotba helyezi vissza az identitást. A felhasználói kockázati házirend használata az aktív kockázati észlelések bezárására szolgáló előnyben részesített módszer, mivel ez a módszer automatizált. Az érintett felhasználó és az ügyfélszolgálat vagy a rendszergazda között nincs szükség beavatkozásra.
+
+A felhasználói kockázati házirend használata azonban nem mindig alkalmazható. Ez például a következőkre vonatkozik:
+
+- Azok a felhasználók, akik nem regisztráltak a többtényezős hitelesítéshez (MFA).
+- A törölt aktív kockázati észlelésekkel rendelkező felhasználók.
+- Egy vizsgálat, amely azt mutatja, hogy a megbízható felhasználó a jelentett kockázati észlelést végezte.
+
+## <a name="manual-password-reset"></a>Jelszó manuális alaphelyzetbe állítása
+
+Ha a jelszó alaphelyzetbe állítása a felhasználói kockázati házirend használatával nem lehetséges, akkor az összes kockázati észlelést beolvashatja egy manuális jelszó-visszaállítással lezárt felhasználó számára.
+
+![Másik jelszó kérése](./media/howto-close-active-risk-events/04.png)
+
+A kapcsolódó párbeszédpanel két különböző módszert biztosít a jelszó alaphelyzetbe állításához:
+
+![Másik jelszó kérése](./media/howto-close-active-risk-events/05.png)
+
+**Ideiglenes jelszó létrehozása** – ideiglenes jelszó létrehozásával azonnal visszaállíthatja az identitást biztonságos állapotba. Ennek a módszernek az érintett felhasználókkal való interakcióra van szüksége, mivel tudniuk kell, hogy mi az ideiglenes jelszó. Például elküldheti az új ideiglenes jelszót egy másodlagos e-mail-címre a felhasználónak vagy a felhasználó felettesének. Mivel a jelszó ideiglenes, a rendszer a következő bejelentkezéskor megkéri a felhasználót a jelszó módosítására.
+
+**A jelszó** alaphelyzetbe állításának megkövetelése a felhasználótól – a jelszavak alaphelyzetbe állítását igénylő felhasználók számára lehetővé teszi az önhelyreállítást az ügyfélszolgálat vagy a rendszergazda segítsége nélkül A felhasználói kockázati házirendhez hasonlóan ez a módszer csak az MFA-hoz regisztrált felhasználókra vonatkozik. Az MFA-hoz még nem regisztrált felhasználók esetében ez a lehetőség nem érhető el.
+
+## <a name="dismiss-all-risk-detections"></a>Az összes kockázati észlelés bezárása
+
+Ha a jelszó alaphelyzetbe állítása nem lehetséges, zárja be az összes kockázati észlelést is. 
+
+![Másik jelszó kérése](./media/howto-close-active-risk-events/03.png)
+
+Ha az **összes esemény**elvetése gombra kattint, az összes esemény be van zárva, és az érintett felhasználó már nem veszélyeztetett. Mivel azonban ez a módszer nem befolyásolja a meglévő jelszót, nem vonja vissza a kapcsolódó identitást biztonságos állapotba. Ennek a módszernek az előnyben részesített felhasználási esete egy aktív kockázati észleléssel rendelkező törölt felhasználó. 
+
+## <a name="close-individual-risk-detections-manually"></a>Egyéni kockázati észlelések manuális lezárása
+
+Az egyes kockázati észleléseket manuálisan is lezárhatja. A kockázati észlelések manuális bezárásával csökkentheti a felhasználói kockázati szintet. A kockázati észlelések általában manuálisan vannak bezárva egy kapcsolódó vizsgálatra válaszul. Ha például egy felhasználóval beszél, az aktív kockázatok észlelése többé nem szükséges. 
  
-- Az összes kockázati esemény elvetését 
-
-- Zárja be az egyes kockázati események manuális
-
-
-
-## <a name="require-password-reset-with-a-user-risk-policy"></a>Felhasználói kockázati házirendet az új jelszó kérése
-
-A [felhasználói kockázati feltételes hozzáférési szabályzat](howto-user-risk-policy.md) konfigurálásával jelszómódosítást kötelezővé teheti a jelszómódosítást, ha egy adott felhasználó kockázati szintje automatikusan észlelhető. 
-
-![Új jelszó létrehozása](./media/howto-close-active-risk-events/13.png)
-
-A jelszó alaphelyzetbe állítása az összes aktív kockázatok események a kapcsolódó felhasználó bezárja, majd az identitás vissza biztosítható biztonságos állapotba. Felhasználói kockázati házirendet az a következő gombra kattintva zárja be aktív kockázati események, mert ez a módszer automatizált előnyben részesített módszere. Nincs nem szükséges az érintett felhasználó és a Súgó a segélyszolgálathoz vagy a rendszergazda közötti interakció.
-
-Azonban a felhasználói kockázati házirend használatával nem mindig alkalmazható. Ez vonatkozik, például a:
-
-- A felhasználók, amely nincs regisztrálva a többtényezős hitelesítés (MFA).
-- Aktív kockázati események törölt felhasználók.
-- Vizsgálat, amely felfedi, hogy az egy jelentett kockázati esemény a jogosult felhasználó által végrehajtott-e.
-
-
-## <a name="manual-password-reset"></a>Manuális jelszó-visszaállítás
-
-Ha egy jelszó alaphelyzetbe állításával a felhasználói kockázati házirendet használatával nem egy beállítást, az összes kockázati események zárva a manuális jelszó alaphelyzetbe állítása a felhasználók is igénybe.
-
-![Új jelszó létrehozása](./media/howto-close-active-risk-events/04.png)
-
-
-A kapcsolódó párbeszédpanel kétféleképpen jelszó alaphelyzetbe állítása itt:
-
-![Új jelszó létrehozása](./media/howto-close-active-risk-events/05.png)
-
-
-**Ideiglenes jelszó létrehozása** -kódjának létrehozásával egy ideiglenes jelszót, azonnal átvihetők az identitás vissza biztonságos állapotba. Ennél a módszernél az érintett felhasználók implementálására, mert tudja, mit jelent az ideiglenes jelszó szükséges. Például küldhet az új, ideiglenes jelszót a felhasználó másodlagos e-mail cím vagy a felhasználó felettesét. Mert a jelszó ideiglenes kéri a felhasználót, hogy a jelszó módosítása során a következő bejelentkezéskor.
-
-
-**Új jelszó a felhasználónak** – a felhasználók új jelszót igénylő lehetővé teszi önkiszolgáló helyreállítás nélkül léphet kapcsolatba a támogatási szolgálat vagy rendszergazda. Például egy felhasználói kockázati házirend esetén ez a módszer csak érvényes, a multi-factor Authentication regisztrált felhasználók. A felhasználók számára, hogy nincs regisztrálva a multi-factor Authentication még ez a beállítás nem érhető el.
-
-
-## <a name="dismiss-all-risk-events"></a>Az összes kockázati esemény elvetését
-
-Ha a jelszó alaphelyzetbe állítása lehetőség nem az Ön számára, is bezárhatja az összes kockázati eseményt. 
-
-![Új jelszó létrehozása](./media/howto-close-active-risk-events/03.png)
-
-Amikor rákattint **az összes esemény elvetését**, az összes esemény bezárása és az érintett felhasználó már nem veszélyben van. Azonban ez a módszer nincs hatással a meglévő jelszót, mert azt nem állapotba hozza a kapcsolódó identitás vissza biztonságos állapotban. A metódus az előnyben részesített használati eset az aktív kockázati események törölt felhasználó. 
-
-
-## <a name="close-individual-risk-events-manually"></a>Zárja be az egyes kockázati események manuális
-
-Az egyes kockázati események manuális bezárhatja. Kockázati események manuális lezárása, csökkenthető a felhasználói kockázat szintje. Azt jelzi, hogy egy kapcsolódó vizsgálat válaszul manuálisan lezárulnak-általában kockázati események. Például ha kommunikáló felhasználók tárja fel, hogy egy aktív kockázati esemény már nem szükséges. 
- 
-Kockázati események manuális lezárása, amikor egy kockázati esemény állapotának módosítása a következő műveletek bármelyike érvénybe választhat:
+A kockázati észlelések manuális bezárásakor dönthet úgy, hogy a következő műveletek bármelyikét elvégezte a kockázatkezelés állapotának módosításához:
 
 ![Műveletek](./media/howto-close-active-risk-events/06.png)
 
-- **Oldja meg** – Ha vizsgálatát, hogy egy kockázati esemény után egy megfelelő korrekciós műveletet identitásvédelem kívül tartott, és úgy gondolja, hogy a kockázati esemény tekintendők-e zárva, jelölje meg az esemény megoldva. Esemény lezárva a kockázati esemény állapotát állítja be, és a kockázati esemény már nem hozzájárul ahhoz, hogy a felhasználói kockázat feloldani.
-
-- **Jelölje meg a hamis pozitív** – néhány esetben Ön egy kockázati esemény vizsgálata és helytelenül lett megjelölve, a kockázatos felderítése. Segíthet az ilyen előfordulások száma csökkenthető a vakriasztások kockázati esemény megjelölése. Ez segít a gépi tanulási algoritmusok hasonló események besorolása a jövőben javítása érdekében. Vakriasztások események állapotát lezárva, és már nem a felhasználói kockázat is hozzájárul.
-
-- **Hagyja figyelmen kívül** – Ha a szervizelés semmit nem tett, de szeretné, el kell távolítani a aktív listából a kockázati esemény egy kockázati esemény figyelmen kívül hagyása jelölheti meg, és be lesz zárva az esemény állapota. Felhasználói kockázat nem jelentenek figyelmen kívül hagyta eseményt. Ez a beállítás csak szokatlan körülmények között nem használható.
-
-- **Aktiválja újra** -(kiválasztásával megoldása, a hamis pozitív vagy figyelmen kívül hagyása) manuálisan lezárt kockázati események aktiválhatók, állítja vissza az esemény állapota aktív. Újraaktivált kockázati események járulnak hozzá a felhasználó kockázati szintű számítás. Nem lehet újraaktiválni (például egy biztonságos jelszó-visszaállítási) szervizelés útján lezárt kockázati események.
-  
+- **Megoldás** – ha a kockázatfelmérés kivizsgálása után egy megfelelő szervizelési műveletet végzett az Identity protectionn kívül, és úgy gondolja, hogy a kockázat észlelését zártnak kell tekinteni, az eseményt megoldottként kell megjelölni. A megoldott események beállíthatják a kockázat észlelésének állapotát, és a kockázat észlelése már nem járul hozzá a felhasználói kockázathoz.
+- **Megjelölés hamis értékként** – bizonyos esetekben előfordulhat, hogy a kockázatok észlelését vizsgálja, és azt is észleli, hogy a kockázatos jelölése helytelen. Az ilyen előfordulások számának csökkentése érdekében a kockázat észlelését hamis-pozitív értékre kell megjelölni. Ez a művelet segít a gépi tanulási algoritmusok számára a hasonló események jövőbeli besorolásának fejlesztésében. A hamis pozitív események állapota le van zárva, és többé nem járul hozzá a felhasználói kockázathoz.
+- **Figyelmen kívül hagyás** – ha nem végez szervizelési műveletet, de azt szeretné, hogy a kockázat észlelése el legyen távolítva az aktív listából, megadhatja a kockázatok észlelésének mellőzését, és az esemény állapota le lesz zárva. A figyelmen kívül hagyott események nem járulnak hozzá a felhasználói kockázatokhoz. Ezt a lehetőséget csak szokatlan körülmények között lehet használni.
+- **Újraaktiválás** – a manuálisan lezárt kockázati észlelések (a megoldás kiválasztásával, a hamis pozitív vagy figyelmen kívül hagyása) újraaktiválható, az esemény állapotának aktívra állítása. Az újraaktivált kockázati észlelések hozzájárulnak a felhasználói kockázati szint kiszámításához. A kockázatos észlelések szervizelésen keresztüli lezárása (például biztonságos jelszó-visszaállítás) nem aktiválható újra.
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure AD Identity Protection áttekintést kaphat, tekintse meg a [áttekintése az Azure AD Identity Protection](overview.md).
+A Azure AD Identity Protection áttekintéséhez tekintse meg a [Azure ad Identity Protection áttekintését](overview.md).
